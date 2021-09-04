@@ -1,7 +1,7 @@
 pkgbase = nvidia-system-monitor-qt
 	pkgdesc = Task Manager for Linux for Nvidia graphics cards (QT vesrion)
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/congard/nvidia-system-monitor-qt
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = nvidia-system-monitor-qt
 	depends = which
 	source = nvidia-system-monitor-qt::https://github.com/congard/nvidia-system-monitor-qt/archive/v1.3.tar.gz
 	source = nvidia-system-monitor-qt.desktop
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = ccfe0b5aba1eb24b35a79fab4651239f
+	md5sums = dedc8a5da5ad205be610a688d0b3fec5
 
 pkgname = nvidia-system-monitor-qt
