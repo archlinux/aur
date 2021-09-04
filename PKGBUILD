@@ -3,12 +3,12 @@
 pkgname=guile-git
 epoch=1
 _majorver=3.0
-pkgver=3.0.5.r141.g88e703084
+pkgver=3.0.7.r6.g221203b0d
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
-makedepends=('git')
+makedepends=('git' 'gperf')
 optdepends=('texinfo: for using texinfo scheme sources')
 depends=('gc' 'libxcrypt' 'libffi' 'libunistring' 'gmp' 'readline')
 provides=('guile')

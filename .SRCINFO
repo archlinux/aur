@@ -1,6 +1,6 @@
 pkgbase = guile-git
 	pkgdesc = A portable, embeddable Scheme implementation (Git snapshot)
-	pkgver = 3.0.5.r141.g88e703084
+	pkgver = 3.0.7.r6.g221203b0d
 	pkgrel = 1
 	epoch = 1
 	url = http://www.gnu.org/software/guile/
@@ -9,6 +9,7 @@ pkgbase = guile-git
 	arch = aarch64
 	license = GPL
 	makedepends = git
+	makedepends = gperf
 	depends = gc
 	depends = libxcrypt
 	depends = libffi
@@ -25,4 +26,3 @@ pkgbase = guile-git
 	sha256sums = SKIP
 
 pkgname = guile-git
-
