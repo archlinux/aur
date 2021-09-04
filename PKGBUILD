@@ -1,8 +1,8 @@
 # Maintainer: MFW78 <mfw78@chasingseed.com>
 
 pkgname=swarm-bee-clef
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Go Ethereum's external signer packaged for bee"
 arch=('x86_64')
 url='https://swarm.ethereum.org/'
