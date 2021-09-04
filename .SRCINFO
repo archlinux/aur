@@ -5,6 +5,7 @@ pkgbase = macast-git
 	url = https://github.com/xfangfang/Macast
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pillow
 	depends = python-pystray
@@ -14,6 +15,8 @@ pkgbase = macast-git
 	depends = mpv
 	conflicts = macast
 	source = git+https://github.com/xfangfang/Macast.git#branch=dev
+	source = macast.desktop
 	sha256sums = SKIP
+	sha256sums = e55f7308c2620d0151d98f8f0e8bdd6fb5e80aa6f1464d5820a167e4b8c2ff14
 
 pkgname = macast-git
