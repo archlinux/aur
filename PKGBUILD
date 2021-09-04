@@ -1,6 +1,6 @@
-# Maintainer: Akaash Suresh <https://github.com/Curry>
+# Maintainer: Serene-Arc
 pkgname=qmk-git
-pkgver=0.0.31.r0.g120ce55
+pkgver=1.0.0.r0.g710dc3e
 pkgrel=1
 pkgdesc="CLI tool for customizing supported mechanical keyboards."
 arch=('any')
@@ -30,7 +30,7 @@ depends=(
     'wget'
     'zip'
 	)
-makedepends=('python-setuptools' 'python' 'python-pip')
+makedepends=('python' 'python-pip')
 source=('git+https://github.com/qmk/qmk_cli.git')
 sha256sums=('SKIP')
 
@@ -40,15 +40,12 @@ pkgver() {
 }
 
 build() {
-    pip install --no-deps --target="deps" yapf hjson
     cd "$_branch"
-	python setup.py build
+	python -m build --wheel
 }
 
 package() {
-    sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-	cd "$_branch"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    cp -r $srcdir/deps/* $pkgdir/"$sitepackages"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$_branch/dist"
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
+	python -O -m compileall "${pkgdir}/qmk-git"
 }

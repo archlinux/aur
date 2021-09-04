@@ -1,11 +1,10 @@
 pkgbase = qmk-git
 	pkgdesc = CLI tool for customizing supported mechanical keyboards.
-	pkgver = 0.0.31.r0.g120ce55
+	pkgver = 1.0.0.r0.g710dc3e
 	pkgrel = 1
 	url = https://github.com/qmk/qmk_cli
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	makedepends = python
 	makedepends = python-pip
 	depends = arm-none-eabi-binutils
@@ -33,4 +32,3 @@ pkgbase = qmk-git
 	sha256sums = SKIP
 
 pkgname = qmk-git
-
