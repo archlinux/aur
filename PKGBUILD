@@ -1,4 +1,4 @@
-# Maintainer: Leon Schumacher <youremail@domain.com>
+# Maintainer: Leon Schumacher <leonsch@protonmail.com>
 pkgname=hdb
 pkgver=1
 pkgrel=1
