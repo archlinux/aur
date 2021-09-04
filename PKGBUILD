@@ -5,14 +5,14 @@ pkgname=quake3-data-gog
 _pkgname=quake3
 pkgver=1
 _pkgver=2.0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Quake 3 data via GOG"
 arch=('any')
 url="https://www.gog.com/game/quake_iii_gold"
 license=('custom')
 makedepends=('innoextract' 'icoutils')
 provides=('quake3-data')
-conflicts=('quake3-data-steam')
+conflicts=('quake3-data-steam' 'quake3-ta-data-steam')
 source=("setup_${_pkgname}_${_pkgver}.exe::gogdownloader://quake_iii_arena_and_team_arena/en1installer1")
 sha256sums=('f5471b4b29ea9a10cf5d1a8af2bedeedd4a8cfe1c60b1d52878f80a13bf4d5d6')
 
