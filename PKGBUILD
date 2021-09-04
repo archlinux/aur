@@ -1,8 +1,9 @@
-# Maintainer: lf <packages at lfcode dot ca>
+# Maintainer: Tony Finn <aurcomments at tonyfinn dot com>
+# Contributor: lf <packages at lfcode dot ca>
 
 pkgname=acme-dns
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="DNS server for ACME dns-01 challenges"
 arch=('x86_64')
 url="https://github.com/joohoi/acme-dns"
@@ -19,6 +20,7 @@ sha256sums=('edd9873e5d24736b9164467f7543dab42dc177d6c98b4ca6a572dfcbdd2202a4'
             'e8a8b3ffda44a3c346925ba4de197f1b6f139bfe52b9f77e6cb3f87677d3ad98'
             'dea89dea17e9f0eff9adf5af56a876ceb738d94f0281a6ece9ca841ec39cf6be'
             '9b3b1aeeb7aab58c13ca80f1540d78f963d5ddd1aa7c6c6166d5ef1f7042b742')
+backup=('etc/acme-dns/config.cfg')
 
 build() {
   cd "$pkgname-$pkgver"
