@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=0.3
+Type=Application
+Name=Palanteer
+Icon=/usr/share/pixmaps/palanteer.png
+Exec=/usr/local/bin/palanteer
+Comment=Visual Python and C++ profiler, tests enabler - High performance
+Categories=Development
+Terminal=false

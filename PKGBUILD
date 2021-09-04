@@ -3,7 +3,7 @@
 pkgname=palanteer
 pkgver=0.3
 python_pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance visual profiler, debugger, tests enabler for C++ and Python"
 arch=('x86_64')
 url="https://github.com/dfeneyrou/${pkgname}"
