@@ -1,11 +1,12 @@
 pkgbase = pstoedit-emf
 	pkgdesc = Translates PostScript and PDF graphics into other vector formats, with EMF support
 	pkgver = 3.77
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pstoedit.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = texlive-core
 	depends = libzip
 	depends = plotutils
 	depends = gd

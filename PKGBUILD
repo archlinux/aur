@@ -5,13 +5,13 @@
 _pkgname=pstoedit
 pkgname=$_pkgname-emf
 pkgver=3.77
-pkgrel=1
+pkgrel=2
 pkgdesc="Translates PostScript and PDF graphics into other vector formats, with EMF support"
 arch=('i686' 'x86_64')
 url="http://www.pstoedit.net/"
 license=('GPL')
 depends=('libzip' 'plotutils' 'gd' 'imagemagick' 'libemf')
-#makedepends=('ghostscript')
+makedepends=('texlive-core')
 options=('!makeflags')
 conflicts=("$_pkgname")
 provides=("$_pkgname=$pkgver")
