@@ -1,6 +1,6 @@
 pkgbase = bitwarden-git
 	pkgdesc = A secure and free password manager for all of your devices. (development version)
-	pkgver = 1.24.6.r357.g9201730f
+	pkgver = 1.24.6.r384.gfcadedd4
 	pkgrel = 1
 	url = https://github.com/bitwarden/desktop
 	arch = x86_64
@@ -21,11 +21,13 @@ pkgbase = bitwarden-git
 	source = bitwarden::git+https://github.com/bitwarden/desktop.git
 	source = jslib::git+https://github.com/bitwarden/jslib.git
 	source = package.json.patch
+	source = messaging.main.ts.patch
 	source = bitwarden.sh
 	source = bitwarden.desktop
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 4d5ca27983e492243d8945365196686d3986a552b8516f2a9077e9f8653d97f20be20d4203c676bdde6d283181b34bff32e1244695bec703c7b6bf4022fb5321
+	sha512sums = 822d97be407c2ac2a6926f5c925b0fd188c541014a623dd3815fdbf5ef67c0542f43aaf8d11535571a83a265f620e330f5326244f42c3902fddab442128fda95
 	sha512sums = ac220119aa3590858a78f8159c9a055485b9a2b034c99555a2c1b9b140b5f6b9daa615db38dec4b72223dc37d92c3680aeb83d73d8b2a2f16bcd60bf8d833efa
 	sha512sums = 05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd
 
