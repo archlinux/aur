@@ -1,7 +1,7 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 pkgname=sse-file-pc
 pkgver=14R4C
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform java tool for file encryption"
 arch=('any')
 url="https://paranoiaworks.mobi/"
@@ -11,7 +11,9 @@ source=("https://paranoiaworks.mobi/download/files/SSEFilePC.zip"
 "icon.png"
 "sse.desktop"
 )
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('d9a52045ad38cd113cb14b107397e037'
+         'fea7ed69540dfd37adbb7080a8fee6ce'
+         '538207e344240dfe9d773c17593d3e1f')
 package() {
 	install -Dm0644 $srcdir/SSEFilePC/license.txt $pkgdir/usr/share/licenses/$pkgname/license.txt
 	install -Dm0644 $srcdir/SSEFilePC/ssefenc.jar $pkgdir/opt/$pkgname/ssefenc.jar
