@@ -1,14 +1,15 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p-git
-pkgver=20210711.r3.gdbd4a6b
-pkgrel=2
+pkgver=20210809.r0.g4229fad
+pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI (git version)'
 arch=('x86_64')
 url='https://m64p.github.io/'
 license=('GPL3')
 depends=('freetype2' 'hidapi' 'libgl' 'libpng' 'libsamplerate' 'minizip'
-         'qt5-base' 'qt5-websockets' 'sdl2' 'sdl2_net' 'zlib' 'hicolor-icon-theme')
+         'qt5-base' 'qt5-websockets' 'sdl2' 'sdl2_net' 'vulkan-icd-loader'
+         'zlib' 'hicolor-icon-theme')
 optdepends=('p7zip: for 7z/zip support')
 makedepends=('git' 'cmake' 'nasm' 'python' 'zip' 'icoutils')
 provides=('m64p' 'mupen64plus-gui' 'mupen64plus-video-gliden64')
