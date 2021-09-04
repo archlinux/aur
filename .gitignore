@@ -1,0 +1,11 @@
+## jetbrains
+.idea
+
+## python
+__pycache__
+
+## packaging
+src
+pkg
+*.tar.gz
+*.zst
