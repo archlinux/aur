@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text factor.orig/basis/ui/text/pango/pango.factor factor.new/basis/ui/text/pango/pango.factor
+--- factor.orig/basis/ui/text/pango/pango.factor	2021-09-03 18:17:13.817228871 -0600
++++ factor.new/basis/ui/text/pango/pango.factor	2021-09-03 18:18:09.125171618 -0600
+@@ -29,7 +29,7 @@
+ 
+ SYMBOL: dpi
+ 
+-72 dpi set-global
++144 dpi set-global
+ 
+ : set-layout-font ( font layout -- )
+     swap cache-font-description pango_layout_set_font_description ;
