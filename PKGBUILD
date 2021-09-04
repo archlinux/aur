@@ -2,13 +2,14 @@
 
 pkgname=m64p
 pkgver=20210809
-pkgrel=1
+pkgrel=2
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
 url='https://m64p.github.io/'
 license=('GPL3')
 depends=('freetype2' 'hidapi' 'libgl' 'libpng' 'libsamplerate' 'minizip'
-         'qt5-base' 'qt5-websockets' 'sdl2' 'sdl2_net' 'zlib' 'hicolor-icon-theme')
+         'qt5-base' 'qt5-websockets' 'sdl2' 'sdl2_net' 'vulkan-icd-loader'
+         'zlib' 'hicolor-icon-theme')
 optdepends=('p7zip: for 7z/zip support')
 makedepends=('git' 'cmake' 'nasm' 'python' 'zip' 'icoutils')
 provides=('mupen64plus-gui')
