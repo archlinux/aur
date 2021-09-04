@@ -1,6 +1,6 @@
 pkgbase = searx-qt
 	pkgdesc = Lightweight desktop application for Searx
-	pkgver = 0.2.beta2
+	pkgver = 0.2.beta3
 	pkgrel = 1
 	url = https://notabug.org/CYBERDEViL/searx-qt
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = searx-qt
 	depends = python-requests
 	depends = python-pyqt5
 	optdepends = python-pysocks: socks proxy support
-	source = searx-qt-0.2-beta2.tar.gz::https://notabug.org/CYBERDEViL/searx-qt/archive/0.2-beta2.tar.gz
-	sha256sums = 3c917978c154070116f94a5858b7b453f15491dda6f615a8f91d8f813474137e
+	source = searx-qt-0.2-beta3.tar.gz::https://notabug.org/CYBERDEViL/searx-qt/archive/0.2-beta3.tar.gz
+	sha256sums = 4be06b5aa36909035f026aa97a2b151bd53444ac66734638c4c8744c4d24a01e
 
 pkgname = searx-qt
-
