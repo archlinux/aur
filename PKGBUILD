@@ -1,5 +1,5 @@
 # Maintainer: Dominik Kummer <admin[at]arkades[dot]org>
-pkgname=somafm-qt
+pkgname=somafm-qt-git
 pkgver=0.1
 pkgrel=1
 pkgdesc="A player for somafm.com radio channels written in qt5/c++"
@@ -16,7 +16,7 @@ source=("git://github.com/josefbehr/somafm-qt.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname}"
   git describe --tags | sed 's/ver_//;s/_/./g;s/-/.r/;s/-/./'
 }
 
@@ -29,7 +29,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   install -D somafm-qt "$pkgdir/usr/bin/somafm-qt"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/COPYING"
 }
 
 # vim:set ts=2 sw=2 et:

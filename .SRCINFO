@@ -1,4 +1,4 @@
-pkgbase = somafm-qt
+pkgbase = somafm-qt-git
 	pkgdesc = A player for somafm.com radio channels written in qt5/c++
 	pkgver = 0.1
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = somafm-qt
 	source = git://github.com/josefbehr/somafm-qt.git
 	md5sums = SKIP
 
-pkgname = somafm-qt
+pkgname = somafm-qt-git
