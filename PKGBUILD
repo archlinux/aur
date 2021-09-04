@@ -1,5 +1,5 @@
 # Maintainer: Anufriev Roman <anufriev.roman@protonmail.com>
-pkgname=calcure-git
+pkgname=calcure
 pkgver=1
 pkgrel=1
 pkgdesc="Minimalist TUI calendar"
