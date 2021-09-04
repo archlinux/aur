@@ -1,0 +1,23 @@
+pkgbase = stpv-git
+	pkgdesc = File previewer for lf, fzf and the terminal
+	pkgver = r72.ff5ae8d
+	pkgrel = 1
+	url = https://github.com/Naheel-Azawy/stpv
+	install = info.install
+	arch = x86_64
+	groups = 
+	license = GPL
+	depends = ueberzug
+	optdepends = lf: file manager that works with this script
+	optdepends = pandoc: text conversion
+	optdepends = perl-image-exiftool: image file metadata
+	optdepends = epub2txt: epub preview as text
+	optdepends = odt2txt: odt preview as text
+	optdepends = ffmpegthumbnailer: create thumbnails for videos for previews
+	optdepends = pdftoppm: pdf previews
+	optdepends = chafa: ascii previews
+	optdepends = fzf: fuzzy find with a previewer using fzfp
+	source = stpv-git::git+https://github.com/Naheel-Azawy/stpv.git
+	md5sums = SKIP
+
+pkgname = stpv-git
