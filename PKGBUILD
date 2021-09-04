@@ -12,7 +12,7 @@ conflicts=('linvst3x')
 optdepends=('jack')
 suffix="Manjaro"
 source=("https://github.com/osxmidi/LinVst3-X/releases/download/4.5/LinVst3-X-4.5.2-Manjaro.zip")
-md5sums=('b4549a62bb552c284ae3899755f912be')
+md5sums=('ddf6c12a87c50c3e915975835ce79830')
 
 package() {
 	# Shared library
