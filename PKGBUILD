@@ -3,12 +3,12 @@
 pkgname=palanteer
 pkgver=0.3
 python_pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="High performance visual profiler, debugger, tests enabler for C++ and Python"
 arch=('x86_64')
 url="https://github.com/dfeneyrou/${pkgname}"
 license=('AGPL-3.0' 'MIT')
-makedepends=('gcc' 'cmake' 'make' 'python-pip')
+makedepends=('gcc' 'cmake' 'make' 'python-pip' 'python-wheel')
 depends=('python')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=("5ded8fc3587736f8288cedb024b3db5cd14c6e9bea04215eeae2d89abe24ed6a")
