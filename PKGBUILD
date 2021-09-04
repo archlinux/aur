@@ -2,7 +2,7 @@
 # vim: ft=sh:
 pkgname=runit-services
 pkgver=feb30bc458
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of services for runit - stolen from Artix Linux"
 arch=('any')
 url="https://gitea.artixlinux.org/artix/runit-services"
@@ -23,4 +23,5 @@ package() {
 		case "$i" in lvm2|cryptsetup|apparmor|hdparm) continue ;; esac
 		cp -r "$i/"* "$SVDIR"
 	done
+	find "$SVDIR" -type f -exec chmod 755 {} \;
 }
