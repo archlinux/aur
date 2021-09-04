@@ -1,6 +1,6 @@
 # Maintainer: Magnus Anderson <magnus@iastate.edu>
 pkgname=ascii-image-converter-git
-pkgver=v1.8.0.r0.g202179d
+pkgver=1.8.0.r3.ga8701af
 pkgrel=1
 pkgdesc="A cross-platform command-line tool to convert images into ascii art and print them on the console."
 arch=('x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 build() {
   cd "${pkgname%-git}"
