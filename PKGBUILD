@@ -234,7 +234,6 @@ _core_configure_options=" \
                  -release \
                  -pch \
                  -make libs \
-                 -nomake tools \
                  -nomake examples \
                  \
                  -reduce-exports \
