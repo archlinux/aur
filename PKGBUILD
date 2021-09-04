@@ -7,8 +7,8 @@ pkgrel=1
 arch=('x86_64')
 url="https://github.com/grimme-lab/xtb"
 provides=("${_pkgname}")
-depends=('openblas' 'lapack')
-makedepends=('git' 'meson' 'ninja')
+depends=('openblas' 'lapack' 'gcc-libs')
+makedepends=('git' 'meson' 'ninja' 'inetutils' 'gcc-fortran')
 conflicts=("${_pkgname}")
 license=('LGPL3')
 pkgdesc="Semiempirical Extended Tight-Binding Program Package"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  _parent_ver=$(git describe --tags --abbrev=0 | sed 's/\([^-]*-\)g/r\1/;s/-//g' | tr -d '[:alpha:]' )
+  _parent_ver=$(git describe --tags --match 'v*' --abbrev=0 | sed 's/\([^-]*-\)g/r\1/;s/-//g' | tr -d '[:alpha:]' )
   printf "%s.r%s.%s" \
          "${_parent_ver}" \
          "$(git rev-list --count HEAD)" \
