@@ -28,10 +28,11 @@ sha1sums=('578a92207146daf204fd0fa0a454bf337b6cd85b')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver:1}"
 
-	# Prepare and compress the manual page.
-	sed -e "s/\${DATE}/$(date +'%B %Y')/1" archey.1 | \
-		sed -e "s/\${VERSION}/${pkgver:1}/1" | \
-			gzip -c --best - > dist/archey.1.gz
+	# Prepare the manual page.
+	sed \
+		-e "s/\${DATE}/$(date +'%B %Y')/1" \
+		-e "s/\${VERSION}/${pkgver:1}/1" \
+		archey.1 > dist/archey.1
 
 	python3 setup.py build
 }
@@ -48,7 +49,7 @@ package() {
 	install -D -m0644 config.json "${pkgdir}/etc/${pkgname}/config.json"
 
 	# Manual page.
-	install -D -m0644 dist/archey.1.gz "${pkgdir}/usr/share/man/man1/archey.1.gz"
+	install -D -m0644 dist/archey.1 "${pkgdir}/usr/share/man/man1/archey.1"
 
 	# Meta-data files.
 	install -D -m0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
