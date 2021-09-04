@@ -1,0 +1,20 @@
+pkgbase = cod4-wine-steam
+	pkgdesc = Call of Duty 4 Modern Warfare using WINE with data via Steam
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://store.steampowered.com/app/7940/Call_of_Duty_4_Modern_Warfare/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	depends = wine
+	source = https://github.com/jm2/archlinux-package-cod4-wine-steam/raw/master/iw3mp.exe
+	source = cod4.sh
+	source = cod4.desktop
+	source = cod4.png
+	md5sums = 8c40cde102a9d8297a8674cb149f96ed
+	md5sums = 456be6eaf152ac61bce80a900c729d0c
+	md5sums = a7573fdd0c28d1068c536f3d69f09e6c
+	md5sums = 71835265ac73665d8837ff45152f808a
+
+pkgname = cod4-wine-steam

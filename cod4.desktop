@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Call of Duty 4
+Comment=Call of Duty 4 Modern Warfare
+Exec=/usr/bin/cod4
+Icon=cod4
+Terminal=false
+Type=Application
+Categories=Application;Game;
