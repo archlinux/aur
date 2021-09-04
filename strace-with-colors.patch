@@ -1,0 +1,1210 @@
+diff --git a/src/color.h b/src/color.h
+new file mode 100644
+index 000000000..e84b06672
+--- /dev/null
++++ b/src/color.h
+@@ -0,0 +1,12 @@
++#ifndef COLOR_H
++#define COLOR_H
++
++#define C_RESET   "\033[0m"
++#define C_RED     "\033[31m"
++#define C_GREEN   "\033[32m"
++#define C_YELLOW  "\033[33m"
++#define C_BLUE    "\033[34m"
++#define C_MAGENTA "\033[35m"
++#define C_CYAN    "\033[36m"
++
++#endif
+diff --git a/src/futex.c b/src/futex.c
+index 0cfb24de1..53d3ba613 100644
+--- a/src/futex.c
++++ b/src/futex.c
+@@ -25,6 +25,7 @@
+ #include "xlat/futexops.h"
+ #include "xlat/futexwakeops.h"
+ #include "xlat/futexwakecmps.h"
++#include "color.h"
+ 
+ static int
+ do_futex(struct tcb *const tcp, const print_obj_by_addr_fn print_ts)
+@@ -113,18 +114,18 @@ do_futex(struct tcb *const tcp, const print_obj_by_addr_fn print_ts)
+ 		tprint_arg_next();
+ 		if ((val3 >> 28) & FUTEX_OP_OPARG_SHIFT) {
+ 			print_xlat(FUTEX_OP_OPARG_SHIFT);
+-			tprints("<<28|");
++			tprints("<<" C_CYAN "28" C_RESET "|");
+ 		}
+ 		comment = printxval(futexwakeops, (val3 >> 28) & 0x7, NULL)
+ 			? NULL : "FUTEX_OP_???";
+-		tprints("<<28");
++		tprints("<<" C_CYAN "28" C_RESET);
+ 		tprints_comment(comment);
+ 		tprints("|");
+ 		PRINT_VAL_X((val3 >> 12) & 0xfff);
+-		tprints("<<12|");
++		tprints("<<" C_CYAN "12" C_RESET "|");
+ 		comment = printxval(futexwakecmps, (val3 >> 24) & 0xf, NULL)
+ 			? NULL : "FUTEX_OP_CMP_???";
+-		tprints("<<24");
++		tprints("<<" C_CYAN "24" C_RESET);
+ 		tprints_comment(comment);
+ 		tprints("|");
+ 		PRINT_VAL_X(val3 & 0xfff);
+diff --git a/src/ioctl.c b/src/ioctl.c
+index 120290288..da883e50a 100644
+--- a/src/ioctl.c
++++ b/src/ioctl.c
+@@ -12,6 +12,7 @@
+ #include "defs.h"
+ #include <linux/ioctl.h>
+ #include "xlat/ioctl_dirs.h"
++#include "color.h"
+ 
+ #if defined(SPARC) || defined(SPARC64)
+ /*
+@@ -434,10 +435,10 @@ SYS_FUNC(ioctl)
+ 				if (iop) {
+ 					if (ret)
+ 						tprint_alternative_value();
+-					tprints(iop->symbol);
++					tprintf(C_YELLOW "%s" C_RESET, iop->symbol);
+ 					while ((iop = ioctl_next_match(iop))) {
+ 						tprint_alternative_value();
+-						tprints(iop->symbol);
++						tprintf(C_YELLOW "%s" C_RESET, iop->symbol);
+ 					}
+ 				} else if (!ret) {
+ 					ioctl_print_code(tcp->u_arg[1]);
+diff --git a/src/ipc.c b/src/ipc.c
+index 1d2cb0c62..67fa2c93f 100644
+--- a/src/ipc.c
++++ b/src/ipc.c
+@@ -8,6 +8,7 @@
+ 
+ #include "defs.h"
+ #include "xlat/ipccalls.h"
++#include "color.h"
+ 
+ SYS_FUNC(ipc)
+ {
+@@ -17,7 +18,7 @@ SYS_FUNC(ipc)
+ 
+ 	if (version) {
+ 		PRINT_VAL_U(version);
+-		tprints("<<16|");
++		tprints("<<" C_CYAN "16" C_RESET "|");
+ 	}
+ 
+ 	printxval_u(ipccalls, call, NULL);
+diff --git a/src/ipc_shm.c b/src/ipc_shm.c
+index 0e5b01028..a5c1fa7a3 100644
+--- a/src/ipc_shm.c
++++ b/src/ipc_shm.c
+@@ -26,6 +26,7 @@
+ 
+ #include "xlat/shm_resource_flags.h"
+ #include "xlat/shm_flags.h"
++#include "color.h"
+ 
+ SYS_FUNC(shmget)
+ {
+@@ -47,7 +48,7 @@ SYS_FUNC(shmget)
+ 		printflags(shm_resource_flags, flags, NULL);
+ 
+ 	if (hugetlb_value) {
+-		tprintf("%s%u<<",
++		tprintf("%s" C_CYAN "%u" C_RESET "<<",
+ 			flags ? "|" : "",
+ 			hugetlb_value >> SHM_HUGE_SHIFT);
+ 		print_xlat_u(SHM_HUGE_SHIFT);
+diff --git a/src/mem.c b/src/mem.c
+index d8382af5f..7e63cf8fe 100644
+--- a/src/mem.c
++++ b/src/mem.c
+@@ -14,6 +14,7 @@
+ #include "defs.h"
+ #include <linux/mman.h>
+ #include <sys/mman.h>
++#include "color.h"
+ 
+ unsigned long
+ get_pagesize(void)
+@@ -80,7 +81,7 @@ print_mmap_flags(kernel_ulong_t flags)
+ 	}
+ 
+ 	if (hugetlb_value)
+-		tprintf("|%u<<MAP_HUGE_SHIFT",
++		tprintf("|" C_CYAN "%u" C_RESET "<<" C_YELLOW "MAP_HUGE_SHIFT" C_RESET,
+ 			hugetlb_value >> MAP_HUGE_SHIFT);
+ 
+ 	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE)
+diff --git a/src/memfd_create.c b/src/memfd_create.c
+index 16a26533b..2ffbe0680 100644
+--- a/src/memfd_create.c
++++ b/src/memfd_create.c
+@@ -9,6 +9,7 @@
+ #include "defs.h"
+ #include <linux/memfd.h>
+ #include "xlat/memfd_create_flags.h"
++#include "color.h"
+ 
+ #ifndef MFD_NAME_MAX_LEN
+ # define MFD_NAME_MAX_LEN (255 - (sizeof("memfd:") - 1))
+@@ -41,7 +42,7 @@ SYS_FUNC(memfd_create)
+ 			      memfd_create_flags, NULL);
+ 
+ 	if (hugetlb_value)
+-		tprintf("%s%u<<MFD_HUGE_SHIFT",
++		tprintf("%s" C_CYAN "%u" C_RESET "<<" C_YELLOW "MFD_HUGE_SHIFT" C_RESET,
+ 			flags ? "|" : "",
+ 			hugetlb_value >> MFD_HUGE_SHIFT);
+ 
+diff --git a/src/mmsghdr.c b/src/mmsghdr.c
+index 20b294f12..588ddc72e 100644
+--- a/src/mmsghdr.c
++++ b/src/mmsghdr.c
+@@ -13,6 +13,7 @@
+ #include "msghdr.h"
+ #include "xstring.h"
+ #include <limits.h>
++#include "color.h"
+ 
+ static bool
+ fetch_struct_mmsghdr_for_print(struct tcb *const tcp,
+@@ -138,7 +139,7 @@ dumpiov_in_mmsghdr(struct tcb *const tcp, kernel_ulong_t addr)
+ 		fetched = fetch_struct_mmsghdr(tcp, addr, &mmsg);
+ 		if (!fetched)
+ 			break;
+-		tprintf(" = %" PRI_klu " buffers in vector %u\n",
++		tprintf(" =" C_CYAN "%" PRI_klu C_RESET " buffers in vector " C_CYAN "%u" C_RESET "\n",
+ 			(kernel_ulong_t) mmsg.msg_hdr.msg_iovlen, i);
+ 		dumpiov_upto(tcp, mmsg.msg_hdr.msg_iovlen,
+ 			     ptr_to_kulong(mmsg.msg_hdr.msg_iov),
+diff --git a/src/netlink.c b/src/netlink.c
+index d8e4efece..459e7d17e 100644
+--- a/src/netlink.c
++++ b/src/netlink.c
+@@ -52,6 +52,7 @@
+ #include "xlat/nl_sock_diag_types.h"
+ #include "xlat/nl_xfrm_types.h"
+ #include "xlat/nlmsgerr_attrs.h"
++#include "color.h"
+ 
+ /*
+  * Fetch a struct nlmsghdr from the given address.
+@@ -180,7 +181,7 @@ decode_nlmsg_type_netfilter(struct tcb *tcp, const struct xlat *const xlat,
+ 
+ 	printxval(xlat, subsys_id, dflt);
+ 
+-	tprints("<<8|");
++	tprints("<<" C_CYAN "8" C_RESET "|");
+ 	if (subsys_id < ARRAY_SIZE(nf_nlmsg_types))
+ 		printxval(nf_nlmsg_types[subsys_id].xlat,
+ 			  msg_type, nf_nlmsg_types[subsys_id].dflt);
+diff --git a/src/netlink_netlink_diag.c b/src/netlink_netlink_diag.c
+index 35fbb645d..8e22e8f54 100644
+--- a/src/netlink_netlink_diag.c
++++ b/src/netlink_netlink_diag.c
+@@ -19,6 +19,7 @@
+ #include "xlat/netlink_diag_show.h"
+ #include "xlat/netlink_socket_flags.h"
+ #include "xlat/netlink_states.h"
++#include "color.h"
+ 
+ DECL_NETLINK_DIAG_DECODER(decode_netlink_diag_req)
+ {
+@@ -61,10 +62,10 @@ print_group(struct tcb *const tcp,
+ 	    void *const opaque_data)
+ {
+ 	if (elem_size < sizeof(kernel_ulong_t))
+-		tprintf("%#0*x", (int) elem_size * 2 + 2,
++		tprintf(C_CYAN "%#0*x" C_RESET, (int) elem_size * 2 + 2,
+ 			*(unsigned int *) elem_buf);
+ 	else
+-		tprintf("%#0*" PRI_klx, (int) elem_size * 2 + 2,
++		tprintf(C_CYAN "%#0*" PRI_klx C_RESET, (int) elem_size * 2 + 2,
+ 			*(kernel_ulong_t *) elem_buf);
+ 
+ 	return true;
+diff --git a/src/numa.c b/src/numa.c
+index 26ec7a3f7..36bfaaea9 100644
+--- a/src/numa.c
++++ b/src/numa.c
+@@ -8,15 +8,16 @@
+  */
+ 
+ #include "defs.h"
++#include "color.h"
+ 
+ static bool
+ print_node(struct tcb *tcp, void *elem_buf, size_t elem_size, void *data)
+ {
+ 	if (elem_size < sizeof(kernel_ulong_t)) {
+-		tprintf("%#0*x", (int) elem_size * 2 + 2,
++		tprintf(C_CYAN "%#0*x" C_RESET, (int) elem_size * 2 + 2,
+ 			*(unsigned int *) elem_buf);
+ 	} else {
+-		tprintf("%#0*" PRI_klx, (int) elem_size * 2 + 2,
++		tprintf(C_CYAN "%#0*" PRI_klx C_RESET, (int) elem_size * 2 + 2,
+ 			*(kernel_ulong_t *) elem_buf);
+ 	}
+ 
+@@ -95,7 +96,7 @@ print_mode(struct tcb *const tcp, const kernel_ulong_t mode_arg)
+ 	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE)
+ 		tprint_comment_begin();
+ 
+-	tprints(mode_str);
++	tprintf(C_YELLOW "%s" C_RESET, mode_str);
+ 	tprints("|");
+ 	printflags_ex(flags, NULL, XLAT_STYLE_ABBREV, mpol_mode_flags, NULL);
+ 
+diff --git a/src/perf.c b/src/perf.c
+index 805bfb649..0855d426f 100644
+--- a/src/perf.c
++++ b/src/perf.c
+@@ -25,6 +25,7 @@
+ #include "xlat/perf_hw_id.h"
+ #include "xlat/perf_sw_ids.h"
+ #include "xlat/perf_type_id.h"
++#include "color.h"
+ 
+ struct pea_desc {
+ 	struct perf_event_attr *attr;
+@@ -159,7 +160,7 @@ print_perf_event_attr(struct tcb *const tcp, const kernel_ulong_t addr)
+ 		tprints_field_name("config");
+ 		if (attr->config >> 32) {
+ 			PRINT_VAL_X(attr->config >> 32);
+-			tprints("<<32|");
++			tprints("<<" C_CYAN "32" C_RESET "|");
+ 		}
+ 		printxval(perf_hw_id, attr->config & PERF_HW_EVENT_MASK,
+ 			   "PERF_COUNT_HW_???");
+@@ -190,19 +191,19 @@ print_perf_event_attr(struct tcb *const tcp, const kernel_ulong_t addr)
+ 		tprints_field_name("config");
+ 		if (attr->config >> 32){
+ 			PRINT_VAL_X(attr->config >> 32);
+-			tprints("<<32|");
++			tprints("<<" C_CYAN "32" C_RESET "|");
+ 		}
+ 		if ((attr->config & PERF_HW_EVENT_MASK) >> 24) {
+ 			PRINT_VAL_X((attr->config & PERF_HW_EVENT_MASK) >> 24);
+-			tprints("<<24|");
++			tprints("<<" C_CYAN "24" C_RESET "|");
+ 		}
+ 		printxval(perf_hw_cache_op_result_id,
+ 			  (attr->config >> 16) & 0xFF,
+ 			  "PERF_COUNT_HW_CACHE_RESULT_???");
+-		tprints("<<16|");
++		tprints("<<" C_CYAN "16" C_RESET "|");
+ 		printxval(perf_hw_cache_op_id, (attr->config >> 8) & 0xFF,
+ 			   "PERF_COUNT_HW_CACHE_OP_???");
+-		tprints("<<8|");
++		tprints("<<" C_CYAN "8" C_RESET "|");
+ 		printxval(perf_hw_cache_id, attr->config & 0xFF,
+ 			  "PERF_COUNT_HW_CACHE_???");
+ 		break;
+diff --git a/src/personality.c b/src/personality.c
+index 8e16930ac..0332302a2 100644
+--- a/src/personality.c
++++ b/src/personality.c
+@@ -18,7 +18,7 @@ SYS_FUNC(personality)
+ 	if (entering(tcp)) {
+ 		pers = tcp->u_arg[0];
+ 		if (0xffffffff == pers) {
+-			tprints("0xffffffff");
++			tprints(C_CYAN "0xffffffff" C_RESET);
+ 		} else {
+ 			printxval(personality_types, pers & PER_MASK, "PER_???");
+ 			pers &= ~PER_MASK;
+diff --git a/src/print_fields.h b/src/print_fields.h
+index 17b8fdc92..182805051 100644
+--- a/src/print_fields.h
++++ b/src/print_fields.h
+@@ -10,6 +10,7 @@
+ # define STRACE_PRINT_FIELDS_H
+ 
+ # include "static_assert.h"
++#include "color.h"
+ 
+ # ifdef IN_STRACE
+ 
+@@ -94,13 +95,13 @@ tprint_bitset_end(void)
+ static inline void
+ tprint_comment_begin(void)
+ {
+-	tprints(" /* ");
++	tprints(C_MAGENTA " /* ");
+ }
+ 
+ static inline void
+ tprint_comment_end(void)
+ {
+-	tprints(" */");
++	tprints(" */" C_RESET);
+ }
+ 
+ static inline void
+@@ -230,13 +231,13 @@ tprint_bitset_end(void)
+ static inline void
+ tprint_comment_begin(void)
+ {
+-	fputs(" /* ", stdout);
++	fputs(C_MAGENTA " /* ", stdout);
+ }
+ 
+ static inline void
+ tprint_comment_end(void)
+ {
+-	fputs(" */", stdout);
++	fputs(" */" C_RESET, stdout);
+ }
+ 
+ static inline void
+@@ -286,35 +287,35 @@ tprint_unavailable(void)
+ static inline void
+ tprints_field_name(const char *name)
+ {
+-	STRACE_PRINTF("%s=", name);
++	STRACE_PRINTF(C_BLUE "%s" C_RESET "=", name);
+ }
+ 
+ static inline void
+ tprints_arg_name(const char *name)
+ {
+-	STRACE_PRINTF("%s=", name);
++	STRACE_PRINTF(C_BLUE "%s" C_RESET "=", name);
+ }
+ 
+ static inline void
+ tprints_arg_begin(const char *name)
+ {
+-	STRACE_PRINTF("%s(", name);
++	STRACE_PRINTF(C_RED "%s" C_RESET "(", name);
+ }
+ 
+ # define PRINT_VAL_D(val_)	\
+-	STRACE_PRINTF("%lld", sign_extend_unsigned_to_ll(val_))
++	STRACE_PRINTF(C_CYAN "%lld" C_RESET, sign_extend_unsigned_to_ll(val_))
+ 
+ # define PRINT_VAL_U(val_)	\
+-	STRACE_PRINTF("%llu", zero_extend_signed_to_ull(val_))
++	STRACE_PRINTF(C_CYAN "%llu" C_RESET, zero_extend_signed_to_ull(val_))
+ 
+ # define PRINT_VAL_X(val_)	\
+-	STRACE_PRINTF("%#llx", zero_extend_signed_to_ull(val_))
++	STRACE_PRINTF(C_CYAN "%#llx" C_RESET, zero_extend_signed_to_ull(val_))
+ 
+ # define PRINT_VAL_03O(val_)	\
+-	STRACE_PRINTF("%#03llo", zero_extend_signed_to_ull(val_))
++	STRACE_PRINTF(C_CYAN "%#03llo" C_RESET, zero_extend_signed_to_ull(val_))
+ 
+ # define PRINT_VAL_0X(val_)						\
+-	STRACE_PRINTF("%#0*llx", (int) sizeof(val_) * 2,		\
++	STRACE_PRINTF(C_CYAN "%#0*llx" C_RESET, (int) sizeof(val_) * 2,		\
+ 		      zero_extend_signed_to_ull(val_))
+ 
+ # define PRINT_VAL_ID(val_)						\
+diff --git a/src/print_instruction_pointer.c b/src/print_instruction_pointer.c
+index c0d07a6fb..f5d324e17 100644
+--- a/src/print_instruction_pointer.c
++++ b/src/print_instruction_pointer.c
+@@ -14,8 +14,8 @@ print_instruction_pointer(struct tcb *tcp)
+ 
+ 	if (get_instruction_pointer(tcp, &ip)) {
+ 		tprintf(current_wordsize == 4
+-			? "[%08" PRI_klx "] "
+-			: "[%016" PRI_klx "] ", ip);
++			? "[" C_CYAN "%08" PRI_klx C_RESET "] "
++			: "[" C_CYAN "%016" PRI_klx C_RESET "] ", ip);
+ 	} else {
+ 		tprints(current_wordsize == 4
+ 			? "[????????] "
+diff --git a/src/print_syscall_number.c b/src/print_syscall_number.c
+index f9e146059..24e41cb51 100644
+--- a/src/print_syscall_number.c
++++ b/src/print_syscall_number.c
+@@ -6,12 +6,13 @@
+  */
+ 
+ #include "defs.h"
++#include "color.h"
+ 
+ void
+ print_syscall_number(struct tcb *tcp)
+ {
+ 	if (tcp->true_scno != (kernel_ulong_t) -1) {
+-		tprintf("[%4" PRI_klu "] ", tcp->true_scno);
++		tprintf("[" C_CYAN "%4" PRI_klu C_RESET "] ", tcp->true_scno);
+ 	} else {
+ 		tprints("[????] ");
+ 	}
+diff --git a/src/printmode.c b/src/printmode.c
+index b509411a5..111e6ebc8 100644
+--- a/src/printmode.c
++++ b/src/printmode.c
+@@ -16,6 +16,7 @@
+ #include <sys/stat.h>
+ 
+ #include "xlat/modetypes.h"
++#include "color.h"
+ 
+ void
+ print_symbolic_mode_t(const unsigned int mode)
+@@ -31,13 +32,21 @@ print_symbolic_mode_t(const unsigned int mode)
+ 	if (!ifmt || xlat_verbose(xlat_verbosity) == XLAT_STYLE_RAW)
+ 		return;
+ 
+-	(xlat_verbose(xlat_verbosity) == XLAT_STYLE_ABBREV
+-		? tprintf : tprintf_comment)("%s%s%s%s%s%#03o",
++	if(xlat_verbose(xlat_verbosity) == XLAT_STYLE_ABBREV) {
++		tprintf(C_YELLOW "%s" C_RESET "%s%s%s%s" C_CYAN "%#03o" C_RESET,
++			ifmt, ifmt[0] ? "|" : "",
++			(mode & S_ISUID) ? C_YELLOW "S_ISUID" C_RESET "|" : "",
++			(mode & S_ISGID) ? C_YELLOW "S_ISGID" C_RESET "|" : "",
++			(mode & S_ISVTX) ? C_YELLOW "S_ISVTX" C_RESET "|" : "",
++			mode & ~(S_IFMT|S_ISUID|S_ISGID|S_ISVTX));
++	} else {
++		tprintf_comment("%s%s%s%s%s%#03o",
+ 			ifmt, ifmt[0] ? "|" : "",
+ 			(mode & S_ISUID) ? "S_ISUID|" : "",
+ 			(mode & S_ISGID) ? "S_ISGID|" : "",
+ 			(mode & S_ISVTX) ? "S_ISVTX|" : "",
+ 			mode & ~(S_IFMT|S_ISUID|S_ISGID|S_ISVTX));
++	}
+ }
+ 
+ void
+diff --git a/src/ptrace.c b/src/ptrace.c
+index 117ff0eec..fd85f6bb7 100644
+--- a/src/ptrace.c
++++ b/src/ptrace.c
+@@ -30,6 +30,7 @@
+ #include "xlat/ptrace_cmds.h"
+ #include "xlat/ptrace_setoptions_flags.h"
+ #include "xlat/ptrace_peeksiginfo_flags.h"
++#include "color.h"
+ 
+ #define uoff(member)	offsetof(struct user, member)
+ #define XLAT_UOFF(member)	{ uoff(member), "offsetof(struct user, " #member ")" }
+@@ -69,7 +70,7 @@ print_user_offset_addr(const kernel_ulong_t addr)
+ 	if (base_addr == addr)
+ 		tprints(str);
+ 	else
+-		tprintf("%s + %" PRI_klu,
++		tprintf("%s + " C_CYAN "%" PRI_klu C_RESET,
+ 			str, addr - (kernel_ulong_t) base_addr);
+ 
+ 	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE)
+diff --git a/src/s390.c b/src/s390.c
+index e8a9f3e9f..e4128ea8b 100644
+--- a/src/s390.c
++++ b/src/s390.c
+@@ -16,6 +16,7 @@
+ # include "xlat/s390_guarded_storage_commands.h"
+ # include "xlat/s390_runtime_instr_commands.h"
+ # include "xlat/s390_sthyi_function_codes.h"
++#include "color.h"
+ 
+ /*
+  * Since, for some reason, kernel doesn't expose all these nice constants and
+@@ -515,7 +516,7 @@ print_sthyi_machine(struct tcb *tcp, struct sthyi_machine *hdr, uint16_t size,
+ 
+ 	CHECK_SIZE_EX(hdr, last_decoded, size, "machine structure");
+ 
+-	tprints("/* machine */ ");
++	tprints(C_MAGENTA "/* machine */ " C_RESET);
+ 	tprint_struct_begin();
+ 	if (!abbrev(tcp)) {
+ 		if (hdr->infmflg1) { /* Reserved */
+@@ -626,7 +627,7 @@ print_sthyi_partition(struct tcb *tcp, struct sthyi_partition *hdr,
+ 
+ 	*mt = !!(hdr->infpflg1 & 0x80);
+ 
+-	tprints("/* partition */ ");
++	tprints(C_MAGENTA "/* partition */ " C_RESET);
+ 	tprint_struct_begin();
+ 	PRINT_FIELD_0X(*hdr, infpflg1);
+ 	if (!abbrev(tcp) && hdr->infpflg1)
+@@ -797,7 +798,7 @@ print_funcs(const uint8_t funcs[8])
+ 			tprint_comment_begin();
+ 			cont = true;
+ 		}
+-		tprintf("%u: %s", i, func_descs[i]);
++		tprintf(C_CYAN "%u" C_RESET ": %s", i, func_descs[i]);
+ 	}
+ 
+ 	if (cont)
+@@ -812,7 +813,7 @@ print_sthyi_hypervisor(struct tcb *tcp, struct sthyi_hypervisor *hdr,
+ 
+ 	CHECK_SIZE_EX(hdr, last_decoded, size, "hypervisor %d structure", num);
+ 
+-	tprintf("/* hypervisor %d */ ", num);
++	tprintf(C_MAGENTA "/* hypervisor %d */ " C_RESET, num);
+ 	tprint_struct_begin();
+ 	PRINT_FIELD_0X(*hdr, infyflg1);
+ 	if (!abbrev(tcp) && hdr->infyflg1)
+@@ -928,7 +929,7 @@ print_sthyi_guest(struct tcb *tcp, struct sthyi_guest *hdr, uint16_t size,
+ {
+ 	CHECK_SIZE(hdr, size, "guest %d structure", num);
+ 
+-	tprintf("/* guest %d */ ", num);
++	tprintf(C_MAGENTA "/* guest %d */ " C_RESET, num);
+ 	tprint_struct_begin();
+ 	PRINT_FIELD_0X(*hdr, infgflg1);
+ 	if (!abbrev(tcp) && hdr->infgflg1)
+@@ -1138,7 +1139,7 @@ print_sthyi_buf(struct tcb *tcp, kernel_ulong_t ptr)
+ 	tprint_struct_begin();
+ 
+ 	/* Header */
+-	tprints("/* header */ ");
++	tprints(C_MAGENTA "/* header */ " C_RESET);
+ 	tprint_struct_begin();
+ 	PRINT_FIELD_0X(*hdr, infhflg1);
+ 
+@@ -1289,7 +1290,7 @@ SYS_FUNC(s390_sthyi)
+ 
+ 		tprints(", ");
+ 		printnum_int64(tcp, return_code_ptr, "%" PRIu64);
+-		tprintf(", %#" PRI_klx, flags);
++		tprintf(", " C_CYAN "%#" PRI_klx C_RESET, flags);
+ 	}
+ 
+ 	return 0;
+@@ -1353,7 +1354,7 @@ guard_storage_print_gsepl(struct tcb *tcp, uint64_t addr)
+ 	/* Since it is 64-bit even on 31-bit s390... */
+ 	if (sizeof(addr) > current_klongsize &&
+ 	    addr >= (1ULL << (current_klongsize * 8))) {
+-		tprintf("%#" PRIx64, addr);
++		tprintf(C_CYAN "%#" PRIx64 C_RESET, addr);
+ 
+ 		return;
+ 	}
+@@ -1520,9 +1521,9 @@ SYS_FUNC(s390_pci_mmio_write)
+ 	kernel_ulong_t user_buf  = tcp->u_arg[1];
+ 	kernel_ulong_t length    = tcp->u_arg[2];
+ 
+-	tprintf("%#" PRI_klx ", ", mmio_addr);
++	tprintf(C_CYAN "%#" PRI_klx C_RESET ", ", mmio_addr);
+ 	printstr_ex(tcp, user_buf, length, QUOTE_FORCE_HEX);
+-	tprintf(", %" PRI_klu, length);
++	tprintf(", " C_CYAN "%" PRI_klu C_RESET, length);
+ 
+ 	return RVAL_DECODED;
+ }
+@@ -1534,14 +1535,14 @@ SYS_FUNC(s390_pci_mmio_read)
+ 	kernel_ulong_t length    = tcp->u_arg[2];
+ 
+ 	if (entering(tcp)) {
+-		tprintf("%#" PRI_klx ", ", mmio_addr);
++		tprintf(C_CYAN "%#" PRI_klx C_RESET ", ", mmio_addr);
+ 	} else {
+ 		if (!syserror(tcp))
+ 			printstr_ex(tcp, user_buf, length, QUOTE_FORCE_HEX);
+ 		else
+ 			printaddr(user_buf);
+ 
+-		tprintf(", %" PRI_klu, length);
++		tprintf(", " C_CYAN "%" PRI_klu C_RESET, length);
+ 	}
+ 
+ 	return 0;
+diff --git a/src/signal.c b/src/signal.c
+index ff7214e63..8ff038c1b 100644
+--- a/src/signal.c
++++ b/src/signal.c
+@@ -15,6 +15,7 @@
+ #include "defs.h"
+ #include "nsig.h"
+ #include "xstring.h"
++#include "color.h"
+ 
+ /* The libc headers do not define this constant since it should only be
+    used by the implementation.  So we define it here.  */
+@@ -233,8 +234,12 @@ printsignal(int nr)
+ 		PRINT_VAL_D(nr);
+ 	if (!str || xlat_verbose(xlat_verbosity) == XLAT_STYLE_RAW)
+ 		return;
+-	(xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE
+-		? tprints_comment : tprints)(str);
++
++	if(xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE) {
++		tprints_comment(str);
++	} else {
++		tprintf(C_YELLOW "%s" C_RESET, str);
++	}
+ }
+ 
+ static void
+@@ -802,8 +807,10 @@ SYS_FUNC(rt_sigtimedwait_time64)
+ 
+ SYS_FUNC(restart_syscall)
+ {
+-	tprintf("<... resuming interrupted %s ...>",
+-		tcp->s_prev_ent ? tcp->s_prev_ent->sys_name : "system call");
+-
++	if(tcp->s_prev_ent) {
++		tprintf("<... resuming interrupted " C_RED "%s" C_RESET " ...>", tcp->s_prev_ent->sys_name);
++	} else {
++		tprints("<... resuming interrupted system call ...>");
++	}
+ 	return RVAL_DECODED;
+ }
+diff --git a/src/sockaddr.c b/src/sockaddr.c
+index 8b2b0afaf..c4816570a 100644
+--- a/src/sockaddr.c
++++ b/src/sockaddr.c
+@@ -39,6 +39,7 @@
+ #include "xlat/bluetooth_l2_cid.h"
+ #include "xlat/bluetooth_l2_psm.h"
+ #include "xlat/hci_channels.h"
++#include "color.h"
+ 
+ #define SIZEOF_SA_FAMILY sizeof_field(struct sockaddr, sa_family)
+ 
+@@ -120,7 +121,7 @@ print_inet_addr(const int af,
+ 			if (var_name &&
+ 			    (xlat_verbose(xlat_verbosity) == XLAT_STYLE_ABBREV)) {
+ 				tprint_arg_next();
+-				tprintf("&%s", var_name);
++				tprintf(C_BLUE "&%s" C_RESET, var_name);
+ 			}
+ 			tprint_arg_end();
+ 
+@@ -506,7 +507,7 @@ print_sockaddr_data_ll(struct tcb *tcp, const void *const buf,
+ 				tprint_more_data_follows();
+ 				break;
+ 			}
+-			tprintf("%#02x", sa_ll->sll_addr[i]);
++			tprintf(C_CYAN "%#02x" C_RESET, sa_ll->sll_addr[i]);
+ 		}
+ 		tprint_array_end();
+ 	}
+@@ -564,7 +565,7 @@ print_bluetooth_l2_psm(uint16_t psm)
+ 		tprints(" + ");
+ 		PRINT_VAL_U(psm_he - L2CAP_PSM_DYN_START);
+ 	} else {
+-		tprints("L2CAP_PSM_???");
++		tprints(C_YELLOW "L2CAP_PSM_???" C_RESET);
+ 	}
+ 
+ 	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE || !psm_str)
+@@ -599,7 +600,7 @@ print_bluetooth_l2_cid(uint16_t cid)
+ 		tprints(" + ");
+ 		PRINT_VAL_U(cid_he - L2CAP_CID_DYN_START);
+ 	} else {
+-		tprints("L2CAP_CID_???");
++		tprints(C_YELLOW "L2CAP_CID_???" C_RESET);
+ 	}
+ 
+ 	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE || !cid_str)
+diff --git a/src/strace.c b/src/strace.c
+index 6c336c9d9..8ec6dc401 100644
+--- a/src/strace.c
++++ b/src/strace.c
+@@ -41,6 +41,7 @@
+ #include "delay.h"
+ #include "wait.h"
+ #include "secontext.h"
++#include "color.h"
+ 
+ /* In some libc, these aren't declared. Do it ourself: */
+ extern char **environ;
+@@ -719,7 +720,7 @@ void
+ tprints_comment(const char *const str)
+ {
+ 	if (str && *str)
+-		tprintf(" /* %s */", str);
++		tprintf(C_MAGENTA " /* %s */" C_RESET, str);
+ }
+ 
+ void
+@@ -820,7 +821,7 @@ printleader(struct tcb *tcp)
+ 		else
+ 			xsprintf(str, "%lld", (long long) local);
+ 		if (tflag_width)
+-			tprintf("%s.%0*ld ", str, tflag_width,
++			tprintf("%s." C_CYAN "%0*ld" C_RESET " ", str, tflag_width,
+ 				(long) ts.tv_nsec / tflag_scale);
+ 		else
+ 			tprintf("%s ", str);
+@@ -838,9 +839,9 @@ printleader(struct tcb *tcp)
+ 		ts_sub(&dts, &ts, &ots);
+ 		ots = ts;
+ 
+-		tprintf("%s%6ld", tflag_format ? "(+" : "", (long) dts.tv_sec);
++		tprintf("%s" C_CYAN "%6ld" C_RESET, tflag_format ? "(+" : "", (long) dts.tv_sec);
+ 		if (rflag_width) {
+-			tprintf(".%0*ld",
++			tprintf("." C_CYAN "%0*ld" C_RESET,
+ 				rflag_width, (long) dts.tv_nsec / rflag_scale);
+ 		}
+ 		tprints(tflag_format ? ") " : " ");
+diff --git a/src/swapon.c b/src/swapon.c
+index 72ac42308..214d49ad6 100644
+--- a/src/swapon.c
++++ b/src/swapon.c
+@@ -10,6 +10,7 @@
+ #include <sys/swap.h>
+ 
+ #include "xlat/swap_flags.h"
++#include "color.h"
+ 
+ SYS_FUNC(swapon)
+ {
+@@ -24,7 +25,7 @@ SYS_FUNC(swapon)
+ 	/* swapflags */
+ 	if (flags) {
+ 		printflags(swap_flags, flags, "SWAP_FLAG_???");
+-		tprintf("|%u", prio);
++		tprintf("|" C_CYAN "%u" C_RESET, prio);
+ 	} else {
+ 		PRINT_VAL_U(prio);
+ 	}
+diff --git a/src/syscall.c b/src/syscall.c
+index e87b5f9d5..2faa26dac 100644
+--- a/src/syscall.c
++++ b/src/syscall.c
+@@ -440,7 +440,7 @@ print_err(int64_t err, bool negated)
+ 	const char *str = err_name(negated ? -err : err);
+ 
+ 	if (!str || xlat_verbose(xlat_verbosity) != XLAT_STYLE_ABBREV)
+-		tprintf(negated ? "%" PRId64 : "%" PRIu64, err);
++		tprintf(negated ? C_CYAN "%" PRId64 C_RESET : C_CYAN "%" PRIu64 C_RESET, err);
+ 	if (!str || xlat_verbose(xlat_verbosity) == XLAT_STYLE_RAW)
+ 		return;
+ 	(xlat_verbose(xlat_verbosity) == XLAT_STYLE_ABBREV
+@@ -454,10 +454,10 @@ print_err_ret(kernel_ulong_t ret, unsigned long u_error)
+ 	const char *u_error_str = err_name(u_error);
+ 
+ 	if (u_error_str)
+-		tprintf("= %" PRI_kld " %s (%s)",
++		tprintf("= " C_CYAN "%" PRI_kld C_RESET " %s (%s)",
+ 			ret, u_error_str, strerror(u_error));
+ 	else
+-		tprintf("= %" PRI_kld " (errno %lu)", ret, u_error);
++		tprintf("= " C_CYAN "%" PRI_kld C_RESET " (errno " C_CYAN "%lu" C_RESET ")", ret, u_error);
+ }
+ 
+ static long get_regs(struct tcb *);
+@@ -768,7 +768,7 @@ print_syscall_resume(struct tcb *tcp)
+ 	    || (tcp->flags & TCB_REPRINT)) {
+ 		tcp->flags &= ~TCB_REPRINT;
+ 		printleader(tcp);
+-		tprintf("<... %s resumed>", tcp_sysent(tcp)->sys_name);
++		tprintf("<... " C_RED "%s" C_RESET " resumed>", tcp_sysent(tcp)->sys_name);
+ 	}
+ }
+ 
+@@ -850,7 +850,7 @@ syscall_exiting_trace(struct tcb *tcp, struct timespec *ts, int res)
+ 		if (tcp->u_error)
+ 			print_err_ret(tcp->u_rval, tcp->u_error);
+ 		else
+-			tprintf("= %#" PRI_klx, tcp->u_rval);
++			tprintf("= " C_CYAN "%#" PRI_klx C_RESET, tcp->u_rval);
+ 
+ 		print_injected_note(tcp);
+ 	} else if (!(sys_res & RVAL_NONE) && tcp->u_error) {
+@@ -923,12 +923,12 @@ syscall_exiting_trace(struct tcb *tcp, struct timespec *ts, int res)
+ 			case RVAL_HEX:
+ #if ANY_WORDSIZE_LESS_THAN_KERNEL_LONG
+ 				if (current_klongsize < sizeof(tcp->u_rval)) {
+-					tprintf("= %#x",
++					tprintf("= " C_CYAN "%#x" C_RESET,
+ 						(unsigned int) tcp->u_rval);
+ 				} else
+ #endif
+ 				{
+-					tprintf("= %#" PRI_klx, tcp->u_rval);
++					tprintf("= " C_CYAN "%#" PRI_klx C_RESET, tcp->u_rval);
+ 				}
+ 				break;
+ 			case RVAL_OCTAL: {
+@@ -945,12 +945,12 @@ syscall_exiting_trace(struct tcb *tcp, struct timespec *ts, int res)
+ 			case RVAL_UDECIMAL:
+ #if ANY_WORDSIZE_LESS_THAN_KERNEL_LONG
+ 				if (current_klongsize < sizeof(tcp->u_rval)) {
+-					tprintf("= %u",
++					tprintf("= " C_CYAN "%u" C_RESET,
+ 						(unsigned int) tcp->u_rval);
+ 				} else
+ #endif
+ 				{
+-					tprintf("= %" PRI_klu, tcp->u_rval);
++					tprintf("= " C_CYAN "%" PRI_klu C_RESET, tcp->u_rval);
+ 				}
+ 				break;
+ 			case RVAL_FD:
+@@ -963,7 +963,7 @@ syscall_exiting_trace(struct tcb *tcp, struct timespec *ts, int res)
+ 					tprints("= ");
+ 					printfd(tcp, tcp->u_rval);
+ 				} else {
+-					tprintf("= %" PRI_kld, tcp->u_rval);
++					tprintf("= " C_CYAN "%" PRI_kld C_RESET, tcp->u_rval);
+ 				}
+ 				break;
+ 			case RVAL_TID:
+@@ -992,9 +992,9 @@ syscall_exiting_trace(struct tcb *tcp, struct timespec *ts, int res)
+ 	}
+ 	if (Tflag) {
+ 		ts_sub(ts, ts, &tcp->etime);
+-		tprintf(" <%ld", (long) ts->tv_sec);
++		tprintf(" <" C_CYAN "%ld" C_RESET, (long) ts->tv_sec);
+ 		if (Tflag_width) {
+-			tprintf(".%0*ld",
++			tprintf("." C_CYAN "%0*ld" C_RESET,
+ 				Tflag_width, (long) ts->tv_nsec / Tflag_scale);
+ 		}
+ 		tprints(">");
+diff --git a/src/sysctl.c b/src/sysctl.c
+index 55911d865..7ea71a198 100644
+--- a/src/sysctl.c
++++ b/src/sysctl.c
+@@ -23,6 +23,7 @@
+ #include "xlat/sysctl_net_ipv4_conf.h"
+ #include "xlat/sysctl_net_ipv6.h"
+ #include "xlat/sysctl_net_ipv6_route.h"
++#include "color.h"
+ 
+ SYS_FUNC(sysctl)
+ {
+@@ -39,7 +40,7 @@ SYS_FUNC(sysctl)
+ 	    umoven(tcp, (unsigned long) info.name, size, name) < 0) {
+ 		free(name);
+ 		if (entering(tcp))
+-			tprintf("{%p, %d, %p, %p, %p, %lu}",
++			tprintf("{" C_CYAN "%p" C_RESET ", " C_CYAN "%d" C_RESET ", " C_CYAN "%p" C_RESET ", " C_CYAN "%p" C_RESET ", " C_CYAN "%p" C_RESET ", " C_CYAN "%lu" C_RESET "}",
+ 				info.name, info.nlen, info.oldval,
+ 				info.oldlenp, info.newval, (unsigned long)info.newlen);
+ 		return RVAL_DECODED;
+@@ -140,14 +141,14 @@ out:
+ 		if (abbrev(tcp) && max_cnt > max_strlen)
+ 			max_cnt = max_strlen;
+ 		while (cnt < max_cnt)
+-			tprintf(", %x", name[cnt++]);
++			tprintf(", " C_CYAN "%x" C_RESET, name[cnt++]);
+ 		if (cnt < (unsigned) info.nlen)
+ 			tprints(", ...");
+-		tprintf("}, %d, ", info.nlen);
++		tprintf("}," C_CYAN "%d" C_RESET ", ", info.nlen);
+ 	} else {
+ 		size_t oldlen = 0;
+ 		if (info.oldval == NULL) {
+-			tprints("NULL");
++			tprints(C_CYAN "NULL" C_RESET);
+ 		} else if (umove(tcp, ptr_to_kulong(info.oldlenp), &oldlen) >= 0
+ 			   && info.nlen >= 2
+ 			   && ((name[0] == CTL_KERN
+@@ -156,16 +157,16 @@ out:
+ 					)))) {
+ 			printpath(tcp, ptr_to_kulong(info.oldval));
+ 		} else {
+-			tprintf("%p", info.oldval);
++			tprintf(C_CYAN "%p" C_RESET, info.oldval);
+ 		}
+-		tprintf(", %lu, ", (unsigned long)oldlen);
++		tprintf(", " C_CYAN "%lu" C_RESET ", ", (unsigned long)oldlen);
+ 		if (info.newval == NULL)
+-			tprints("NULL");
++			tprints(C_CYAN "NULL" C_RESET);
+ 		else if (syserror(tcp))
+-			tprintf("%p", info.newval);
++			tprintf(C_CYAN "%p" C_RESET, info.newval);
+ 		else
+ 			printpath(tcp, ptr_to_kulong(info.newval));
+-		tprintf(", %lu", (unsigned long)info.newlen);
++		tprintf(", " C_CYAN "%lu" C_RESET, (unsigned long)info.newlen);
+ 	}
+ 
+ 	free(name);
+diff --git a/src/term.c b/src/term.c
+index e9b1f81e2..d3e6c44f7 100644
+--- a/src/term.c
++++ b/src/term.c
+@@ -17,6 +17,7 @@
+ #include "xlat/tcflsh_options.h"
+ #include "xlat/baud_options.h"
+ #include "xlat/modem_flags.h"
++#include "color.h"
+ 
+ static void
+ decode_termios(struct tcb *const tcp, const kernel_ulong_t addr)
+@@ -36,15 +37,15 @@ decode_termios(struct tcb *const tcp, const kernel_ulong_t addr)
+ 			(tios.c_lflag & ECHO) ? "" : "-");
+ 		return;
+ 	}
+-	tprintf("{c_iflags=%#lx, c_oflags=%#lx, ",
++	tprintf("{" C_BLUE "c_iflags" C_RESET "=" C_CYAN "%#lx" C_RESET ", " C_BLUE "c_oflags" C_RESET "=" C_CYAN "%#lx" C_RESET ", ",
+ 		(long) tios.c_iflag, (long) tios.c_oflag);
+-	tprintf("c_cflags=%#lx, c_lflags=%#lx, ",
++	tprintf(C_BLUE "c_cflags" C_RESET "=" C_CYAN "%#lx" C_RESET ", " C_BLUE "c_lflags" C_RESET "=" C_CYAN "%#lx" C_RESET ", ",
+ 		(long) tios.c_cflag, (long) tios.c_lflag);
+-	tprintf("c_line=%u, ", tios.c_line);
++	tprintf(C_BLUE "c_line" C_RESET "=" C_CYAN "%u" C_RESET ", ", tios.c_line);
+ 	if (!(tios.c_lflag & ICANON))
+-		tprintf("c_cc[VMIN]=%d, c_cc[VTIME]=%d, ",
++		tprintf(C_BLUE "c_cc[VMIN]" C_RESET "=" C_CYAN "%d" C_RESET ", " C_BLUE "c_cc[VTIME]" C_RESET "=" C_CYAN "%d" C_RESET ", ",
+ 			tios.c_cc[VMIN], tios.c_cc[VTIME]);
+-	tprints("c_cc=");
++	tprints(C_BLUE "c_cc=" C_RESET);
+ 	print_quoted_string((char *) tios.c_cc, NCCS, QUOTE_FORCE_HEX);
+ 	tprints("}");
+ }
+@@ -68,24 +69,24 @@ decode_termio(struct tcb *const tcp, const kernel_ulong_t addr)
+ 			(tio.c_lflag & ECHO) ? "" : "-");
+ 		return;
+ 	}
+-	tprintf("{c_iflags=%#lx, c_oflags=%#lx, ",
++	tprintf("{" C_BLUE "c_iflags" C_RESET "=" C_CYAN "%#lx" C_RESET ", " C_BLUE "c_oflags" C_RESET "=" C_CYAN "%#lx" C_RESET ", ",
+ 		(long) tio.c_iflag, (long) tio.c_oflag);
+-	tprintf("c_cflags=%#lx, c_lflags=%#lx, ",
++	tprintf(C_BLUE "c_cflags" C_RESET "=" C_CYAN "%#lx" C_RESET ", " C_BLUE "c_lflags" C_RESET "=" C_CYAN "%#lx" C_RESET ", ",
+ 		(long) tio.c_cflag, (long) tio.c_lflag);
+-	tprintf("c_line=%u, ", tio.c_line);
++	tprintf(C_BLUE "c_line" C_RESET "=" C_CYAN "%u" C_RESET ", ", tio.c_line);
+ #ifdef _VMIN
+ 	if (!(tio.c_lflag & ICANON))
+-		tprintf("c_cc[_VMIN]=%d, c_cc[_VTIME]=%d, ",
++		tprintf(C_BLUE "c_cc[_VMIN]" C_RESET "=" C_CYAN "%d" C_RESET ", " C_BLUE "c_cc[_VTIME]" C_RESET "="  C_CYAN "%d" C_RESET ", ",
+ 			tio.c_cc[_VMIN], tio.c_cc[_VTIME]);
+ #else /* !_VMIN */
+ 	if (!(tio.c_lflag & ICANON))
+-		tprintf("c_cc[VMIN]=%d, c_cc[VTIME]=%d, ",
++		tprintf(C_BLUE "c_cc[VMIN]" C_RESET "=" C_CYAN "%d" C_RESET ", " C_BLUE "c_cc[VTIME]" C_RESET "=" C_CYAN "%d" C_RESET ", ",
+ 			tio.c_cc[VMIN], tio.c_cc[VTIME]);
+ #endif /* !_VMIN */
+-	tprints("c_cc=\"");
++	tprints(C_BLUE "c_cc" C_RESET "=" C_GREEN "\"");
+ 	for (i = 0; i < NCC; i++)
+ 		tprintf("\\x%02x", tio.c_cc[i]);
+-	tprints("\"}");
++	tprints("\"" C_RESET "}");
+ }
+ 
+ static void
+@@ -96,7 +97,7 @@ decode_winsize(struct tcb *const tcp, const kernel_ulong_t addr)
+ 	tprints(", ");
+ 	if (umove_or_printaddr(tcp, addr, &ws))
+ 		return;
+-	tprintf("{ws_row=%d, ws_col=%d, ws_xpixel=%d, ws_ypixel=%d}",
++	tprintf("{" C_BLUE "ws_row" C_RESET "=" C_CYAN "%d" C_RESET ", " C_BLUE "ws_col" C_RESET "=" C_CYAN "%d" C_RESET ", " C_BLUE "ws_xpixel" C_RESET "=" C_CYAN "%d" C_RESET ", " C_BLUE "ws_ypixel" C_RESET "=" C_CYAN "%d" C_RESET "}",
+ 		ws.ws_row, ws.ws_col, ws.ws_xpixel, ws.ws_ypixel);
+ }
+ 
+@@ -109,7 +110,7 @@ decode_ttysize(struct tcb *const tcp, const kernel_ulong_t addr)
+ 	tprints(", ");
+ 	if (umove_or_printaddr(tcp, addr, &ts))
+ 		return;
+-	tprintf("{ts_lines=%d, ts_cols=%d}",
++	tprintf("{" C_BLUE "ts_lines" C_RESET "=" C_CYAN "%d" C_RESET ", " C_BLUE "ts_cols" C_RESET "=" C_CYAN "%d" C_RESET "}",
+ 		ts.ts_lines, ts.ts_cols);
+ }
+ #endif
+@@ -200,7 +201,7 @@ term_ioctl(struct tcb *const tcp, const unsigned int code,
+ 	case TCSBRK:
+ 	case TCSBRKP:
+ 	case TIOCSCTTY:
+-		tprintf(", %d", (int) arg);
++		tprintf(", " C_CYAN "%d" C_RESET, (int) arg);
+ 		break;
+ 
+ 	/* ioctls with an indirect parameter displayed as modem flags */
+diff --git a/src/util.c b/src/util.c
+index c944b3816..b3f1b3882 100644
+--- a/src/util.c
++++ b/src/util.c
+@@ -31,6 +31,7 @@
+ #include "string_to_uint.h"
+ #include "xlat.h"
+ #include "xstring.h"
++#include "color.h"
+ 
+ const struct xlat_data *
+ find_xlat_val_ex(const struct xlat_data *items, const char *s, size_t num_items,
+@@ -339,7 +340,7 @@ void
+ printaddr64(const uint64_t addr)
+ {
+ 	if (!addr)
+-		tprints("NULL");
++		tprints(C_CYAN "NULL" C_RESET);
+ 	else
+ 		PRINT_VAL_X(addr);
+ }
+@@ -585,7 +586,7 @@ printdev(struct tcb *tcp, int fd, const char *path)
+ 		print_quoted_string_ex(path, strlen(path),
+ 				       QUOTE_OMIT_LEADING_TRAILING_QUOTES,
+ 				       "<>");
+-		tprintf("<%s %u:%u>",
++		tprintf("<" C_BLUE "%s" C_RESET " " C_CYAN "%u" C_RESET ":" C_CYAN "%u" C_RESET ">",
+ 			S_ISBLK(st.st_mode)? "block" : "char",
+ 			major(st.st_rdev), minor(st.st_rdev));
+ 		return true;
+@@ -969,7 +970,8 @@ print_quoted_string_ex(const char *str, unsigned int size,
+ 	}
+ 
+ 	rc = string_quote(str, outstr, size, style, escape_chars);
+-	tprints(outstr);
++
++	tprintf(C_GREEN "%s" C_RESET, outstr);
+ 
+ 	free(buf);
+ 	return rc;
+@@ -1013,7 +1015,7 @@ printpathn(struct tcb *const tcp, const kernel_ulong_t addr, unsigned int n)
+ 	int nul_seen;
+ 
+ 	if (!addr) {
+-		tprints("NULL");
++		tprints(C_CYAN "NULL" C_RESET);
+ 		return -1;
+ 	}
+ 
+@@ -1072,7 +1074,7 @@ printstr_ex(struct tcb *const tcp, const kernel_ulong_t addr,
+ 	int ellipsis;
+ 
+ 	if (!addr) {
+-		tprints("NULL");
++		tprints(C_CYAN "NULL" C_RESET);
+ 		return -1;
+ 	}
+ 	/* Allocate static buffers if they are not allocated yet. */
+@@ -1116,7 +1118,7 @@ printstr_ex(struct tcb *const tcp, const kernel_ulong_t addr,
+ 		   && ((style & (QUOTE_0_TERMINATED | QUOTE_EXPECT_TRAILING_0))
+ 		       || len > max_strlen);
+ 
+-	tprints(outstr);
++	tprintf(C_GREEN "%s" C_RESET, outstr);
+ 	if (ellipsis)
+ 		tprint_more_data_follows();
+ 
+@@ -1157,7 +1159,7 @@ print_nonzero_bytes(struct tcb *const tcp,
+ 		ret = false;
+ 	} else {
+ 		prefix_fun();
+-		tprintf("/* bytes %u..%u */ ", start_offs, total_len - 1);
++		tprintf(C_MAGENTA "/* bytes %u..%u */ " C_RESET, start_offs, total_len - 1);
+ 
+ 		print_quoted_string(str, size, style);
+ 
+@@ -1216,7 +1218,7 @@ dumpiov_upto(struct tcb *const tcp, const int len, const kernel_ulong_t addr,
+ 			data_size -= iov_len;
+ 			/* include the buffer number to make it easy to
+ 			 * match up the trace with the source */
+-			tprintf(" * %" PRI_klu " bytes in buffer %d\n", iov_len, i);
++			tprintf(" * " C_CYAN "%" PRI_klu C_RESET " bytes in buffer " C_CYAN "%d" C_RESET "\n", iov_len, i);
+ 			dumpstr(tcp, iov_iov_base(i), iov_len);
+ 		}
+ 	}
+@@ -1356,7 +1358,7 @@ dumpstr(struct tcb *const tcp, const kernel_ulong_t addr,
+ 			src++;
+ 		} while (++i & DUMPSTR_BYTES_MASK);
+ 
+-		tprintf(" | %0*" PRI_klx "  %s |\n",
++		tprintf(" | " C_CYAN "%0*" PRI_klx C_RESET "  %s |\n",
+ 			offs_chars, i - DUMPSTR_WIDTH_BYTES, outbuf);
+ 	}
+ }
+@@ -1525,7 +1527,7 @@ print_array_ex(struct tcb *const tcp,
+ 	       const char *index_dflt)
+ {
+ 	if (!start_addr) {
+-		tprints("NULL");
++		tprints(C_CYAN "NULL" C_RESET);
+ 		return false;
+ 	}
+ 
+@@ -1659,7 +1661,7 @@ print_abnormal_hi(const kernel_ulong_t val)
+ 	if (current_klongsize > 4) {
+ 		const unsigned int hi = (unsigned int) ((uint64_t) val >> 32);
+ 		if (hi)
+-			tprintf("%#x<<32|", hi);
++			tprintf(C_CYAN "%#x" C_RESET "<<" C_CYAN "32" C_RESET "|", hi);
+ 	}
+ }
+ 
+diff --git a/src/wait.c b/src/wait.c
+index 9880831c3..7bc4985e9 100644
+--- a/src/wait.c
++++ b/src/wait.c
+@@ -20,6 +20,7 @@
+ 
+ #include "xlat/wait4_options.h"
+ #include "xlat/ptrace_events.h"
++#include "color.h"
+ 
+ static int
+ printstatus(int status)
+@@ -36,7 +37,7 @@ printstatus(int status)
+ 		int sig = WSTOPSIG(status);
+ 		tprintf("{WIFSTOPPED(s) && WSTOPSIG(s) == %s%s}",
+ 			sprintsigname(sig & 0x7f),
+-			sig & 0x80 ? " | 0x80" : "");
++			sig & 0x80 ? " |" C_CYAN "0x80" C_RESET : "");
+ 		status &= ~W_STOPCODE(sig);
+ 	} else if (WIFSIGNALED(status)) {
+ 		tprintf("{WIFSIGNALED(s) && WTERMSIG(s) == %s%s}",
+@@ -44,7 +45,7 @@ printstatus(int status)
+ 			WCOREDUMP(status) ? " && WCOREDUMP(s)" : "");
+ 		status &= ~(W_EXITCODE(0, WTERMSIG(status)) | WCOREFLAG);
+ 	} else if (WIFEXITED(status)) {
+-		tprintf("{WIFEXITED(s) && WEXITSTATUS(s) == %d}",
++		tprintf("{WIFEXITED(s) && WEXITSTATUS(s) == " C_CYAN "%d" C_RESET "}",
+ 			WEXITSTATUS(status));
+ 		exited = 1;
+ 		status &= ~W_EXITCODE(WEXITSTATUS(status), 0);
+@@ -66,7 +67,7 @@ printstatus(int status)
+ 		if (event) {
+ 			tprints(" | ");
+ 			printxval(ptrace_events, event, "PTRACE_EVENT_???");
+-			tprints(" << 16");
++			tprints(" << " C_CYAN "16" C_RESET);
+ 			status &= 0xffff;
+ 		}
+ 		if (status) {
+diff --git a/src/xlat.c b/src/xlat.c
+index 7e2d2baa6..53c8b45ae 100644
+--- a/src/xlat.c
++++ b/src/xlat.c
+@@ -12,6 +12,7 @@
+ #include "defs.h"
+ #include "xstring.h"
+ #include <stdarg.h>
++#include "color.h"
+ 
+ static inline enum xlat_style
+ get_xlat_style(enum xlat_style style)
+@@ -47,7 +48,7 @@ sprint_xlat_val(uint64_t val, enum xlat_style style)
+ static inline void
+ print_xlat_val(uint64_t val, enum xlat_style style)
+ {
+-	tprints(sprint_xlat_val(val, style));
++	tprintf(C_CYAN "%s" C_RESET, sprint_xlat_val(val, style));
+ }
+ 
+ static int
+@@ -247,7 +248,7 @@ printxvals_ex(const uint64_t val, const char *dflt, enum xlat_style style,
+ 				print_xlat_val(val, style);
+ 				tprints_comment(str);
+ 			} else {
+-				tprints(str);
++				tprintf(C_YELLOW "%s" C_RESET, str);
+ 			}
+ 
+ 			goto printxvals_ex_end;
+@@ -457,7 +458,7 @@ printflags_ex(uint64_t flags, const char *dflt, enum xlat_style style,
+ 					tprints("|");
+ 				else if (need_comment)
+ 					tprint_comment_begin();
+-				tprints(xlat->data[idx].str);
++				tprintf(C_YELLOW "%s" C_RESET, xlat->data[idx].str);
+ 				flags &= ~v;
+ 			}
+ 			if (!flags)
+@@ -502,7 +503,7 @@ print_xlat_ex(const uint64_t val, const char *str, uint32_t style)
+ 				print_xlat_val(val, style);
+ 				tprints_comment(str);
+ 			} else {
+-				tprints(str);
++				tprintf(C_YELLOW "%s" C_RESET, str);
+ 			}
+ 			break;
+ 		}
