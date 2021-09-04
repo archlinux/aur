@@ -9,7 +9,7 @@ epoch=1
 pkgver=3369_2
 _pkgvermaj=3369
 _pkgvermin=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Popular first person shooter, native Linux version, installing data files from GOG (requires you having had purchased the GOG version)."
 epoch=1
 arch=('i686' 'x86_64')
@@ -74,11 +74,6 @@ package() {
         rm $pkgdir/opt/ut2004/System/ucc-bin-linux-amd64
         rm $pkgdir/opt/ut2004/System/ut2004-bin-linux-amd64
     fi
-
-    # Installing cd key file placeholder.
-    cat /dev/null > $pkgdir/opt/ut2004/System/CDkey
-    chmod 644 $pkgdir/opt/ut2004/System/CDkey || return 1
-
 
     # Create symbolic links to system libraries in game directory.
     ln -s /usr/lib/libSDL-1.2.so.0 $pkgdir/opt/ut2004/System || return 1

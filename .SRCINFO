@@ -1,7 +1,7 @@
 pkgbase = ut2004-gog
 	pkgdesc = Popular first person shooter, native Linux version, installing data files from GOG (requires you having had purchased the GOG version).
 	pkgver = 3369_2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.gog.com/game/unreal_tournament_2004_ece
 	install = ut2004.install

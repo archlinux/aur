@@ -1,13 +1,3 @@
 post_install() {
-
     echo "To complete installation, write your UT2004 cdkey to /opt/ut2004/System/CDkey as root."
 }
-
-post_remove() {
-
-    # Cleaning up the post install files.
-    rm -r /opt/ut2004 >& /dev/null
-}
-
-
-# vim:set ts=2 sw=2 et:
