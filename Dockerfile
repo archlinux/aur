@@ -1,4 +1,4 @@
-FROM archlinux:base
+FROM docker.io/library/archlinux:base
 
 RUN pacman -Sy --noconfirm binutils fakeroot gcc git go namcap
 
