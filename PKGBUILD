@@ -1,7 +1,7 @@
 # Maintainer: Vlad Frolov <frolvlad@gmail.com>
 
 pkgname=cargo-workspaces
-pkgver=0.2.21
+pkgver=0.2.23
 pkgrel=1
 pkgdesc="Cargo plugin for managing cargo workspaces and their crates"
 url="https://github.com/pksunkara/cargo-workspaces"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pksunkara/cargo-workspaces/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz)
-sha512sums=('c96f6b8ea96dddfeb76052df0e7da072b4ee2d2e5c24eb8ad853861374d117f4a5f50382761e113fc15d248d1e4773f7f1aff3942c727206b31c0679867aa83d')
+sha512sums=('debaf1896b0e958cc0f41f619996cf65d250dc529f3722d9ce634ff1f0004349eac45533be30d08aa5230f9f453e406008174af9adbb827fb2997677f427d9b0')
 
 build() {
   cd "${pkgname}-${pkgver}/${pkgname}"
