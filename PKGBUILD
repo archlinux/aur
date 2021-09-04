@@ -2,13 +2,13 @@
 
 pkgname=ndi-sdk
 pkgver=5.0.3.20210726.r125568
-pkgrel=1
+pkgrel=2
 _majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI SDK'
 arch=('x86_64')
 url='https://ndi.tv/sdk/'
 license=('custom')
-depends=('avahi')
+depends=('avahi' 'hicolor-icon-theme')
 makedepends=('icoutils')
 provides=('libndi')
 conflicts=('libndi')
