@@ -3,13 +3,13 @@
 # Co-Maintainer: Zachary Matthews <zacharymatt5@gmail.com>
 
 pkgname=ylva-git
-pkgver=1.5.r5.gf0a648d
+pkgver=1.6.r21.g3fe428c
 pkgrel=1
 pkgdesc='Command line password manager.'
 arch=('i686' 'x86_64')
 url='https://www.ylvapasswordmanager.com/'
 license=('GPL')
-depends=('openssl' 'sqlite')
+depends=('openssl' 'sqlite' 'qrcodegen')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -21,22 +21,15 @@ pkgver() {
   git describe --tags | sed 's+-+.r+' |tr - . |cut -c2-
 }
 
-prepare() {
-  cd ${pkgname%-git}
-  sed -i -e '/^override/d' \
-         -e 's/^\(PREFIX=\/usr\)\/local/\1/' \
-         Makefile
-}
-
 build() {
-  cd ${pkgname%-git}
-  make
+  cd ${pkgname%-git}/src
+  make 
 }
 
 package () {
   cd ${pkgname%-git}
-  install -Dm755 ${pkgname%-git}  "$pkgdir"/usr/bin/${pkgname%-git}
-  install -Dm644 ${pkgname%-git}.1 "$pkgdir"/usr/share/man/man1/${pkgname%-git}.1
+  install -Dm755 src/${pkgname%-git}  "$pkgdir"/usr/bin/${pkgname%-git}
+  install -Dm644 src/${pkgname%-git}.1 "$pkgdir"/usr/share/man/man1/${pkgname%-git}.1
   install -Dm644 README.md "$pkgdir"/usr/share/doc/"$pkgname"/README.md
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }

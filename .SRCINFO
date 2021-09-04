@@ -1,6 +1,6 @@
 pkgbase = ylva-git
 	pkgdesc = Command line password manager.
-	pkgver = 1.5.r5.gf0a648d
+	pkgver = 1.6.r21.g3fe428c
 	pkgrel = 1
 	url = https://www.ylvapasswordmanager.com/
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = ylva-git
 	makedepends = git
 	depends = openssl
 	depends = sqlite
+	depends = qrcodegen
 	provides = ylva
 	conflicts = ylva
 	source = git+https://github.com/nrosvall/ylva.git
 	sha256sums = SKIP
 
 pkgname = ylva-git
-
