@@ -45,7 +45,6 @@ pkgbase = gnunet
 	optdepends = texi2mdoc: for automatic mdoc generation
 	conflicts = gnunet-git
 	conflicts = gnunet-bin
-	options = !makeflags
 	backup = etc/gnunet.conf
 	source = ftp://ftp.gnu.org/gnu/gnunet/gnunet-0.15.3.tar.gz
 	source = ftp://ftp.gnu.org/gnu/gnunet/gnunet-0.15.3.tar.gz.sig

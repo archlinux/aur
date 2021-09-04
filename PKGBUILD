@@ -30,7 +30,6 @@ optdepends=('postgresql: for an alternative to sqlite in the database plugin'
             'libpabc: for re:claimID zero-knowledge privacy credentials'
             'texi2mdoc: for automatic mdoc generation')
 backup=("etc/${pkgname}.conf")
-options=('!makeflags')
 source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-system.service"
         "${pkgname}-user.service"
@@ -57,7 +56,7 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	./configure --prefix='/usr' --enable-experimental
-	make -j"$(nproc || echo -n 1)"
+	make
 	make -C contrib
 
 }
@@ -70,16 +69,20 @@ package() {
 	make DESTDIR="${pkgdir}" -C contrib install
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/system"
-	install -Dm644 "${srcdir}/${pkgname}-system.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+	install -Dm644 "${srcdir}/${pkgname}-system.service" \
+		"${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/user"
-	install -Dm644 "${srcdir}/${pkgname}-user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+	install -Dm644 "${srcdir}/${pkgname}-user.service" \
+		"${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
 	install -dm755 "${pkgdir}/usr/lib/sysusers.d"
-	install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+	install -Dm644 "${srcdir}/${pkgname}.sysusers" \
+		"${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
-	install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+	install -Dm644 "${srcdir}/${pkgname}.tmpfiles" \
+		"${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
 	# Automatically generate a configuration file using the content of
 	# `/usr/share/gnunet/config.d/` as model; in this way we can ensure
