@@ -8,12 +8,14 @@ pkgbase = xtb-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = inetutils
+	makedepends = gcc-fortran
 	depends = openblas
 	depends = lapack
+	depends = gcc-libs
 	provides = xtb
 	conflicts = xtb
 	source = git+https://github.com/grimme-lab/xtb.git#branch=master
 	md5sums = SKIP
 
 pkgname = xtb-git
-
