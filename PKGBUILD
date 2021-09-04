@@ -3,7 +3,7 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=miopen-hip
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library (HIP backend)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'rocm-cmake' 'miopengemm')
 provides=('miopen')
 conflicts=('miopen')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('034445470cfd44480a1d9854f9fdfe92cfb8efa3f002dee508eb9585e338486d')
+sha256sums=('1fb2fd8b24f984174ec5338a58b7964e128b74dafb101373a41c8ed33955251a')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
