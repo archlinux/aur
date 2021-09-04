@@ -1,5 +1,11 @@
 #!/bin/bash -e
 
+[ -f "/etc/dracut-uefi-hook.conf" ] && source /etc/dracut-uefi-hook.conf
+
+ESP_PATH=$(bootctl --print-esp-path)
+MACHINE_ID=$(</etc/machine-id)
+source <(grep '^BUILD_ID=' /etc/os-release)
+
 kernels=()
 dracut_update=0
 
@@ -29,4 +35,9 @@ for kernel in "${kernels[@]}"; do
 
 	echo "==> Building linux image $kernel ($version)"
 	dracut -q -f --uefi --kver "${version}"
+	
+	if [[ "$pkgbase" == "$default_kernel_package" ]]; then
+		echo "===> Mark linux image $kernel ($version) as default"
+		bootctl set-default "linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi"
+	fi
 done

@@ -1,18 +1,21 @@
 pkgbase = dracut-uefi-hook
 	pkgdesc = Install/update/removal hooks for dracut unifed uefi image generation
-	pkgver = 1
-	pkgrel = 6
+	pkgver = 2
+	pkgrel = 1
 	arch = any
 	license = MIT
 	depends = dracut
 	depends = systemd
+	backup = etc/dracut-uefi-hook.conf
 	source = 90-dracut-uefi-install.hook
 	source = 60-dracut-uefi-remove.hook
 	source = dracut-uefi-install
 	source = dracut-uefi-remove
+	source = dracut-uefi-hook.conf
 	sha256sums = 2429d3a7bd79fbb6f7a736f1beb88eaaa2a3a0585d9321fa18459c4f92085b15
 	sha256sums = 0fb3d028214ff7579386ca4b172a88fb7edb88b81286cfb7f82bd511d2f91832
-	sha256sums = cc9da31b43fc85fc415a88b907bdf6c5a3d0efe38f5d13b3f97425b7af13bfb2
-	sha256sums = f8afca50be5505d32717233c58f58b439a34731559bc699bffefe9f98271e556
+	sha256sums = 0ca3c3763727b9630793eeb43b0d758587831ada83c609ba55c1c29704fb7bae
+	sha256sums = 7029dba277981c1f66f514a003f423a4e65b847d25d749affa37056a2ab922d2
+	sha256sums = 36de95c42cf6d64e352ebd559b0f06630d7d27d3b29ee7c9ac6ccddee6cb6826
 
 pkgname = dracut-uefi-hook
