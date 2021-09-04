@@ -1,0 +1,17 @@
+pkgbase = quake4-data-gog
+	pkgdesc = Quake 4 data via GOG
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.gog.com/game/quake_iii_gold
+	arch = any
+	license = custom
+	makedepends = innoextract
+	makedepends = icoutils
+	provides = quake4-data
+	conflicts = quake4-data-steam
+	source = setup_quake_4_1.4.3_(13519).exe::gogdownloader://quake_4_game/en1installer0
+	source = setup_quake_4_1.4.3_(13519)-1.bin::gogdownloader://quake_4_game/en1installer1
+	sha256sums = 4d09d3d11fca9d5122fc9af9aa12b8701742940b393b9bf63a4d9cdd825c4135
+	sha256sums = 9d163dbf728f8e2c00d26ac8de29a8b8e3bf1111d45ab320dea6371aaedd32eb
+
+pkgname = quake4-data-gog
