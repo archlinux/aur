@@ -1,0 +1,19 @@
+pkgbase = aliyunpan-liupan1890
+	pkgdesc = 阿里云盘小白羊版 阿里云盘PC版
+	pkgver = 2.8.30
+	pkgrel = 1
+	url = https://github.com/liupan1890/aliyunpan
+	arch = x86_64
+	license = None
+	depends = electron
+	depends = aria2
+	provides = freechat
+	options = !strip
+	source = local://阿里小白羊版Linux v2.8.30.zip
+	source = aliyunpan-liupan1890.svg
+	source = aliyunpan-liupan1890.desktop
+	md5sums = 0d5019aa83cc0b97b39eaca1d3492886
+	md5sums = cfea225b67778e82b289f99e57b28c6f
+	md5sums = 0d4e2a0c807b94f933d3b4826224f2cc
+
+pkgname = aliyunpan-liupan1890
