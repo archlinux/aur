@@ -5,6 +5,7 @@ pkgdesc="Multiple-selection, UNIX-flavored modal editor"
 arch=("x86_64" "armv7h")
 url="https://github.com/mawww/kakoune"
 license=("custom:unlicense")
+depends=("gcc-libs")
 optdepends=(
     "aspell: spell check, correct text"
     "clang: error reporting and diagnostics, completion"
