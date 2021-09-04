@@ -1,7 +1,7 @@
 # Maintainer: Serene-Arc
 pkgname=qmk-git
 pkgver=1.0.0.r0.g710dc3e
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool for customizing supported mechanical keyboards."
 arch=('any')
 url="https://github.com/qmk/qmk_cli"
@@ -11,23 +11,25 @@ depends=(
     'arm-none-eabi-binutils'
     'arm-none-eabi-gcc'
     'arm-none-eabi-newlib'
-    'avrdude'
     'avr-binutils'
-    'avr-libc'
-    'python-appdirs'
-	'python-argcomplete'
-	'python-colorama'
-	'python-dotty-dict'
-	'python-hidapi'
-    'flake8'
     'avr-gcc'
+    'avr-libc'
+    'avrdude'
     'clang'
     'dfu-programmer'
     'dfu-util'
     'diffutils'
+    'flake8'
     'gcc'
     'git'
     'libusb-compat'
+    'python-appdirs'
+    'python-argcomplete'
+    'python-build'
+    'python-colorama'
+    'python-dotty-dict'
+    'python-hidapi'
+    'python-milc'
     'unzip'
     'wget'
     'zip'
