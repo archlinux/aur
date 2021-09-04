@@ -1,4 +1,5 @@
-# Maintainer : Ashwin Vishnu <ashwinvis+arch At protonmail DoT cOm>
+# Maintainer : Anthony Wang <ta180m@pm.me>
+# Contributor : Ashwin Vishnu <ashwinvis+arch At protonmail DoT cOm>
 # Contributor : Immae <ismael.bouya@normalesup.org>
 # Contributor : Martin Wimpress <code@flexion.org>
 # Contributor : Jingbei Li <i@jingbei.li>
