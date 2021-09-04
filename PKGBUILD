@@ -2,7 +2,7 @@
 _pkgname=touchcursor-linux
 pkgname=touchcursor-linux-git
 pkgver=r96.1383893
-pkgrel=2
+pkgrel=1
 pkgdesc="TouchCursor style keyboard remapping for Linux, Git version."
 arch=("any")
 url=https://github.com/donniebreve/touchcursor-linux

@@ -5,7 +5,10 @@ pkgbase = touchcursor-linux-git
 	url = https://github.com/donniebreve/touchcursor-linux
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = glibc
+	provides = touchcursor-linux
+	conflicts = touchcursor-linux
 	source = git+https://github.com/donniebreve/touchcursor-linux
 	md5sums = SKIP
 
