@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=stpv-git
 pkgver=r72.ff5ae8d
-pkgrel=1
+pkgrel=2
 pkgdesc="File previewer for lf, fzf and the terminal"
 arch=('x86_64')
 url="https://github.com/Naheel-Azawy/stpv"
