@@ -1,12 +1,12 @@
 pkgbase = ansible-collection-kewlfft-aur
 	pkgdesc = Ansible collection that contains an Ansible module to manage packages from the AUR
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 2
 	url = https://galaxy.ansible.com/kewlfft/aur
 	arch = any
 	license = GPL3
 	depends = ansible-core
-	source = https://github.com/kewlfft/ansible-aur/archive/v0.9.0/ansible-aur-0.9.0.tar.gz
-	sha256sums = 4e3f51e8e0367b20c68a46158e3563f5a04243e820c817c51791990445b0ff87
+	source = https://github.com/kewlfft/ansible-aur/archive/v0.9.1/ansible-aur-0.9.1.tar.gz
+	sha256sums = 29ee274cc2e627b109deefc70984b3fcf617b3d14098cb61069e4b46eba08538
 
 pkgname = ansible-collection-kewlfft-aur
