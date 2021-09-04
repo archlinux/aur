@@ -1,7 +1,7 @@
 pkgbase = quake2-data-gog
 	pkgdesc = Quake 2 data via GOG
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/quake_ii_quad_damage
 	arch = any
 	license = custom
@@ -9,6 +9,8 @@ pkgbase = quake2-data-gog
 	makedepends = icoutils
 	provides = quake2-data
 	conflicts = quake2-data-steam
+	conflicts = quake2-rogue-data-steam
+	conflicts = quake2-xatrix-data-steam
 	source = setup_quake2_quad_damage_2.0.0.3.exe::gogdownloader://quake_ii_quad_damage_game/en1installer1
 	sha256sums = 08b6addf4a33ab09a7846e95a879a33017410f8ddb80152cd4759336747f7fa7
 

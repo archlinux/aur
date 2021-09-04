@@ -5,14 +5,14 @@ pkgname=quake2-data-gog
 _pkgname=quake2
 pkgver=1
 _pkgver=2.0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Quake 2 data via GOG"
 arch=('any')
 url="https://www.gog.com/game/quake_ii_quad_damage"
 license=('custom')
 makedepends=('innoextract' 'icoutils')
 provides=('quake2-data')
-conflicts=('quake2-data-steam')
+conflicts=('quake2-data-steam' 'quake2-rogue-data-steam' 'quake2-xatrix-data-steam')
 source=("setup_${_pkgname}_quad_damage_${_pkgver}.exe::gogdownloader://quake_ii_quad_damage_game/en1installer1")
 sha256sums=('08b6addf4a33ab09a7846e95a879a33017410f8ddb80152cd4759336747f7fa7')
 
