@@ -8,8 +8,7 @@ pkgbase = suraj-snappy-git
 	depends = git
 	depends = ffmpeg
 	depends = scrot
-	provides = snappy
-	conflicts = snappy
+	provides = snappy_screenutility
 	source = git+https://github.com/real4suraj/snappy.git
 	md5sums = SKIP
 
