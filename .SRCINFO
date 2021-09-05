@@ -1,17 +1,17 @@
 pkgbase = nimdow-bin
 	pkgdesc = Tiling Window Manager written in Nim
-	pkgver = 0.7.27
+	pkgver = 0.7.28
 	pkgrel = 0
 	url = https://github.com/avahe-kellenberger/nimdow
 	arch = x86_64
 	license = GPL2
-	source = nimdow-0.7.27::https://github.com/avahe-kellenberger/nimdow/releases/download/v0.7.27/nimdow
-	source = nimdow-config-0.7.27.toml::https://github.com/avahe-kellenberger/nimdow/raw/v0.7.27/config.default.toml
-	source = nimdow-0.7.27.1::https://github.com/avahe-kellenberger/nimdow/raw/v0.7.27/doc/nimdow.1
+	source = nimdow-0.7.28::https://github.com/avahe-kellenberger/nimdow/releases/download/v0.7.28/nimdow
+	source = nimdow-config-0.7.28.toml::https://github.com/avahe-kellenberger/nimdow/raw/v0.7.28/config.default.toml
+	source = nimdow-0.7.28.1::https://github.com/avahe-kellenberger/nimdow/raw/v0.7.28/doc/nimdow.1
 	source = nimdow.desktop
-	sha256sums = 0b44b427a9843b326b5f85c38645f1dd7b83ffaebf7a2e06eff1ff1aeb25b370
-	sha256sums = c63e1b67e76102a24bf5b7fb964a976bccc10870c96f6ad6b19f7ba04c79dc01
-	sha256sums = edbad9ed48dd5635683a1e8dcdad05cf98d607b41c50522ca340ef0d08887729
+	sha256sums = 087f83524242f54335c7944060472c39799f412c9985d887aaf0ed1e5d7a72df
+	sha256sums = ac018389517732a06341ee670e9f98dc7a3e56f5ed380ba3d12ecebe89e1d6cc
+	sha256sums = 05ed7a86f30c7745602ad71831d91ccf3d13f5bd19908842b7179b865be48647
 	sha256sums = ee60c4eb3150e7ec7d69f233a186f90626cc342f51ca6d58eb76e2efa00783c7
 
 pkgname = nimdow-bin
