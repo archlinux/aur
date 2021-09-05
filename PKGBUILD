@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gxr
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="glib wrapper for the OpenVR and soon the OpenXR API"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'glib2' 'gtk3' 'gulkan' 'openvr')
 makedepends=('meson')
 optdepends=('glfw')
 source=("https://gitlab.freedesktop.org/xrdesktop/gxr/-/archive/$pkgver/gxr-$pkgver.tar.bz2")
-sha256sums=('a58b847cdb06e1df75f201228b9fe0d6f1473a0fa4a999055907ec19f0345e06')
+sha256sums=('2bd257d898f45b0c8510ce239604dd1ef4081cb8ee6079ac8042ed4c9e42ce4a')
 
 
 build() {
@@ -22,7 +22,7 @@ build() {
     --prefix="/usr" \
     --sbindir="bin" \
     "_build"
-  ninja -C "_build"
+  meson compile -C "_build"
 }
 
 check() {
