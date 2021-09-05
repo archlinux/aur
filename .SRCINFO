@@ -1,7 +1,7 @@
 pkgbase = tencent-meeting
 	pkgdesc = Tencent Meeting Linux Client 腾讯会议Linux客户端
 	pkgver = 2.8.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wemeet.qq.com
 	arch = x86_64
 	license = unknown
