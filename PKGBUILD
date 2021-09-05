@@ -35,4 +35,7 @@ package() {
 	mkdir -p $pkgdir"$HOME/.local/share/${pkgname%-git}"
 	cp build/tutorial.pdf $pkgdir"$HOME/.local/share/${pkgname%-git}"
 	cp -r build/shaders $pkgdir"$HOME/.local/share/${pkgname%-git}"
+
+	chown -R $USER:$USER $pkgdir$HOME/.config/sioyek
+	chown -R $USER:$USER $pkgdir$HOME/.local/share/sioyek
 }
