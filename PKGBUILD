@@ -1,4 +1,5 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: yan12125
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jelle van der Waa <jelle vdwaa nl>
@@ -10,7 +11,7 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20210210.r3836.d072b5064
+pkgver=20210901.r4054.d4bd00489
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
@@ -18,20 +19,18 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'openssl')
-makedepends=('libxt' 'cmake' 'qt5-base' 'gmock' 'gtest')
+depends=('libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'libnotify' 'libxrandr' 'hicolor-icon-theme')
+makedepends=('libxt' 'cmake' 'qt5-base' 'gmock' 'gtest' 'git' 'qt5-tools')
+checkdepends=('xorg-server-xvfb')
 optdepends=('qt5-base: gui support')
 
 source=(
   "$_pkgname::git+https://github.com/symless/$_pkgname-core.git"
-  "$_pkgname.png"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
 )
-
 sha512sums=(
   'SKIP'
-  'fc4db2f76a52d88d18a10a178ce885d618820a2a32fbde703e70e2000a54bc943d247064e9b0238fd13478dd59c8a1d85fdfafd9abbf80c6a7b45b0f321d84a0'
   'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
   'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
 )
@@ -48,7 +47,7 @@ pkgver() {
 build() {
   # Build synergy
   cd $_pkgname
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DSYNERGY_ENTERPRISE=ON .
   make
 }
 
@@ -56,7 +55,7 @@ check() {
   # Run tests
   cd $_pkgname
   ./bin/unittests
-  ./bin/integtests
+  xvfb-run --auto-display ./bin/integtests
 }
 
 package() {
@@ -80,4 +79,8 @@ package() {
   # Install manfiles
   install -Dm644 doc/${_pkgname}c.man "$pkgdir/usr/share/man/man1/${_pkgname}c.1"
   install -Dm644 doc/${_pkgname}s.man "$pkgdir/usr/share/man/man1/${_pkgname}s.1"
+
+  # Install desktop/icon stuff
+  install -Dm644 res/${_pkgname}.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+  install -Dm644 res/${_pkgname}.desktop "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 }
