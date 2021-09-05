@@ -1,7 +1,7 @@
 # Maintainer: silverhikari
 pkgname=audacium-git
-pkgver=2.4.1.r1698.gf785b4e04
-pkgrel=3
+pkgver=2.4.1.r1709.g4b88a97c1
+pkgrel=1
 epoch=1
 pkgdesc="telemetry free version of audacity"
 arch=(x86_64)
@@ -21,13 +21,11 @@ pkgver() {
 }
 
 build() {
-	cd "audacium"
-	mkdir build && cd build
-	cmake -G "Unix Makefiles" -Daudacity_use_ffmpeg=loaded -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
-	make
+	cmake -B build -S "audacium" -G "Unix Makefiles" -Daudacity_use_ffmpeg=loaded -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+	make -C build
 }
 
 package() {
-	cd "audacium"/build
+	cd build
 	make DESTDIR="$pkgdir/" install
 }
