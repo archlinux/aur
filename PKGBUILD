@@ -1,4 +1,5 @@
 # Maintainer: <max at swk-web.com>
+# Maintainer: <aur at shyim.de>
 
 pkgname=php-sw-frosh-plugin-uploader
 pkgver=0.3.15
@@ -10,7 +11,7 @@ license=('MIT')
 depends=('php>=7.4.0')
 source=("frosh-plugin-upload-${pkgver}.phar::https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/${pkgver}/frosh-plugin-upload.phar"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/FriendsOfShopware/FroshPluginUploader/${pkgver}/LICENSE")
-sha256sums=('0a4b8c01bdae7c60ed0d8ce066456d7c92334c8474e71ef2973f783bc3c13398'
+sha256sums=('18fcdf31060f8c8236c260c02443e9661753c3416732d5bc9fd019fed996621f'
             '4548218c4b3b8ee1da3806f1b6e1d6c285a12335722add43abce71b599b6d518')
 
 package() {
