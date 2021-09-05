@@ -1,17 +1,17 @@
 # Maintainer: Twann <twann@ctemplar.com>
 
 pkgname=python-argumentor
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 provides=("$pkgname")
-pkgdesc="A library to work with command-line arguments"
+pkgdesc="A simple, copylefted, lightweight library to work with command-line arguments in Python"
 url="https://codeberg.org/twann/${pkgname}"
 arch=("any")
 license=("GPL3")
 makedepends=("python>=3" "python-setuptools")
 depends=("python>=3")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/twann/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=("3137b966c5af7c1da3885b978cb002fd0f892b6b880f695f5cd10653162f6724d87c853d9054ffc551f0b8c3fb8527c072c2ee0ae69f260dea51133d7aa23b79")
+sha512sums=("5ecd279cc2ebd32a6c6cf7895964fcd11f5c9d4e357ae35671a5a86ad586cfffb1d98ec243445f8d7025e4d8f826ce74bdef97991f3a107acfad48440b249dcc")
 
 build()
 {
