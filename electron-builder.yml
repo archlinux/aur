@@ -1,0 +1,19 @@
+productName: "Whalebird"
+appId: "org.whalebird.desktop"
+artifactName: "${productName}-${version}-${os}-${arch}.${ext}"
+directories:
+  output: "build"
+extraResources:
+  - "build/sounds/*"
+  - "build/icons/*"
+files:
+  - "dist/electron/**/*"
+  - "build/icons/*"
+
+linux:
+  icon: "build/icons"
+  target:
+    - target: "dir"
+      arch:
+        - "x64"
+  category: "Network"
