@@ -2,7 +2,7 @@
 
 pkgname=hugo-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.88.0
+pkgver=0.88.1
 pkgrel=1
 pkgdesc='Fast and flexible static site generator written in Go'
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=(
 	"$_pkgname-git"
 )
 source=("https://github.com/gohugoio/$_pkgname/releases/download/v$pkgver/${_pkgname}_extended_${pkgver}_Linux-64bit.tar.gz")
-b2sums=(8ad773a3953b2e1950cc9ada37021ad06149c3ed37819c09e5060564f7ad9e4f447201c4267e16b2b20e9d5049c7c447ba5e69d37d9ff30b3368b96179d3a13c)
+b2sums=(3c139dc02fc5e68ff4309d7f7c70ac89d4a62be225aeabfb218b3c63e527b23e887c5088cb6d7c7cdc97833304d5929d56355a250c269c95eb25a6bfc22d816e)
 
 package() {
 	install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin"
