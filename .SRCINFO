@@ -1,7 +1,7 @@
 pkgbase = gruvbox-tilix-git
 	pkgdesc = Gruvbox theme for Tilix
 	pkgver = r7.8c01335
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MichaelThessel/tilix-gruvbox
 	arch = any
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = gruvbox-tilix-git
 	md5sums = SKIP
 
 pkgname = gruvbox-tilix-git
-
