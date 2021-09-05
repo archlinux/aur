@@ -1,14 +1,13 @@
 pkgbase = reddsaver-bin
 	pkgdesc = CLI tool to download saved media from Reddit
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/manojkarthick/reddsaver
 	arch = x86_64
 	license = MIT/Apache-2.0
 	provides = reddsaver
-	options = strip
-	source = https://github.com/manojkarthick/reddsaver/releases/download/v0.3.2/reddsaver-0.3.2-x86_64.tar.gz
-	sha256sums = 97eec609728442097b84e4e6574aa9c1f3d0240243addae85f0bcc485c419ccd
+	conflicts = reddsaver
+	source = https://github.com/manojkarthick/reddsaver/releases/download/v0.4.0/reddsaver-0.4.0-x86_64.tar.gz
+	sha256sums = a60965cf93d6291ba66b8705135317bd9b63209fecfc79e65f05d0307343c848
 
 pkgname = reddsaver-bin
-
