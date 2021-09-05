@@ -1,0 +1,12 @@
+pkgbase = ksysguard-daemon
+	pkgdesc = KSysGuardD without GUI stuff
+	pkgver = 5.22.0
+	pkgrel = 1
+	arch = any
+	makedepends = wget
+	depends = libsensors.so
+	depends = glibc
+	provides = ksysguard
+	conflicts = ksysguard
+
+pkgname = ksysguard-daemon
