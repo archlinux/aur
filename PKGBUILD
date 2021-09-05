@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libjcat-git
-pkgver=0.1.0.r1.gc378ba4
+pkgver=0.1.8.r2.g21976eb
 pkgrel=1
 pkgdesc="Library for reading and writing Jcat files"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ build() {
     --sbindir="bin" \
     --libexecdir="/usr/lib" \
     "_build"
-  ninja -C "_build"
+  meson compile -C "_build"
 }
 
 check() {

@@ -1,6 +1,6 @@
 pkgbase = libjcat-git
 	pkgdesc = Library for reading and writing Jcat files
-	pkgver = 0.1.0.r1.gc378ba4
+	pkgver = 0.1.8.r2.g21976eb
 	pkgrel = 1
 	url = https://github.com/hughsie/libjcat
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = libjcat-git
 	sha256sums = SKIP
 
 pkgname = libjcat-git
-
