@@ -13,7 +13,7 @@ depends=( 'python' 'python-adblockparser' 'python-dnspython>=2.1.0' 'python-exif
           'python-beautifulsoup4' 'python-netaddr' 'python-pysocks'
           'python-requests' 'python-ipwhois' 'python-ipaddress' 'python-pygexf'
           'python-ipaddress' 'python-phonenumbers' 'python-pypdf2' 'python-docx'
-          'python-whois' 'python-secure' 'python-pyopenssl' 'python-pptx'
+          'python-whois' 'python-secure>=0.3.0' 'python-pyopenssl' 'python-pptx'
           'python-networkx' 'python-cryptography' 'python-publicsuffixlist' )
 	
 makedepends=('python')
