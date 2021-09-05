@@ -1,3 +1,5 @@
+# Maintainer: Mateo <kookies@tutamail.com>
+
 pkgname=libctru-git
 _gitname=ctrulib
 _libname=libctru
