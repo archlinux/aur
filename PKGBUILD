@@ -7,8 +7,7 @@ arch=(x86_64)
 url="https://github.com/real4suraj/snappy.git"
 license=('GPL')
 depends=('git' 'ffmpeg' 'scrot')
-provides=(snappy)
-conflicts=(snappy)
+provides=(snappy_screenutility)
 source=("git+$url")
 md5sums=('SKIP')
 
@@ -33,5 +32,5 @@ build() {
 package() {
   cd snappy 
   install -Dm755 xrectsel "${pkgdir}"/usr/bin/xrectsel
-  install -Dm755 snappy_aur "${pkgdir}"/usr/local/bin/snappy
+  install -Dm755 snappy_aur "${pkgdir}"/usr/local/bin/snappy_screenutility
 }
