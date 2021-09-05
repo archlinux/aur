@@ -1,15 +1,15 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=timer-for-harvest
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.3.7
+pkgrel=1
 pkgdesc="Harvest client implemented using GTK+ and Rust"
 url="https://github.com/frenkel/timer-for-harvest"
 arch=(x86_64)
 license=(BSD-2)
 depends=(gtk3)
 makedepends=(cargo git rust)
-_commit=215363b86c121dbeabd8632f849eef7e72930204 # tag/v0.3.6
+_commit=a399dbbb629690c93a15b6c9ab7f16efb0fdf322 # tag/v0.3.7
 source=(
     "git+https://github.com/frenkel/timer-for-harvest.git#commit=${_commit}"
     allow_resize.patch
