@@ -1,11 +1,11 @@
 pkgname=website-stalker-bin
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname/-bin/}"
-license=('LGPL-2.1-or-later')
-depends=()
+license=('LGPL2.1')
+depends=('gcc-libs' 'zlib')
 provides=("${pkgname/-bin/}")
 conflicts=("${pkgname/-bin/}")
 
@@ -40,4 +40,8 @@ package() {
 
   install -Dm644 "systemd/user/systemd.service" "${pkgdir}/usr/lib/systemd/user/${pkgname/-bin/}.service"
   install -Dm644 "systemd/user/systemd.timer" "${pkgdir}/usr/lib/systemd/user/${pkgname/-bin/}.timer"
+}
+
+check() {
+  eval "./website-stalker --help"
 }
