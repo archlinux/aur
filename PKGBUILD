@@ -6,7 +6,7 @@ NJOBS=$(nproc)
 
 pkgname=fsl
 pkgver=6.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
