@@ -1,0 +1,22 @@
+pkgbase = delay-architect-git
+	pkgdesc = A visual, musical editor for delay effects
+	pkgver = r260.20667e6
+	pkgrel = 1
+	url = https://github.com/jpcima/DelayArchitect
+	arch = i686
+	arch = x86_64
+	license = BSD2
+	makedepends = git
+	makedepends = cmake
+	depends = libx11
+	depends = libgl
+	depends = libxext
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxcursor
+	depends = alsa-lib
+	provides = delay-architect
+	source = delay-architect::git+https://github.com/jpcima/DelayArchitect.git
+	md5sums = SKIP
+
+pkgname = delay-architect-git
