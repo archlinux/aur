@@ -6,10 +6,10 @@
 # https://github.com/armbian/build/tree/master/patch/kernel/archive/sunxi-5.11
 
 pkgbase=linux-tqc-a01
-_srcname=linux-5.13
+_srcname=linux-5.14
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=5.13.12
+pkgver=5.14.1
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -41,7 +41,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 [[ ${pkgver##*.} != 0 ]] && \
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
-md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
+md5sums=('a082ef5748b813abca0649dab8be5f52'
          '46d921dba031a9f397955a787c71911e'
          '17aa0c69176c68cd98b4522740a1b747'
          '2285d81ec6fb859d34b7abfd46a59550'
@@ -62,7 +62,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '7d83ac5db385ebe63f68a7ee1774c685')
+         '0e03bc49d0db9ae31a5086ec49be3768')
 
 prepare() {
   cd ${_srcname}
