@@ -1,7 +1,7 @@
 # Maintainer: Lukasz Marianski <lmarianski at protonmail dot com>
 pkgname=powercord-electron-git
 pkgver=r1313.5d7500d5
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=('any')
 url="https://github.com/powercord-org/powercord"
@@ -17,11 +17,15 @@ options=()
 install=
 source=('git+https://github.com/powercord-org/powercord.git' 
 		'powercord.sh'
-		"${pkgname%-electron-git}.patch")
+		"${pkgname%-electron-git}.patch"
+		"powercord.desktop"
+		"powercord.png")
 noextract=()
 md5sums=('SKIP'
          '0da02ab7f1ca40d4fb9891bfb953a9b9'
-         '709b434317999f01a9b28e02547f0d28')
+         '709b434317999f01a9b28e02547f0d28'
+         'ed7e42f11938c61e00c8c07cd1a96427'
+         '567d9d8abddefa0417035759348230d1')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-electron-git}"
@@ -59,6 +63,9 @@ package() {
 
 	echo '{"main":"index.js","name":"discord"}' > $pkgdir/usr/lib/powercord/app/package.json
 	echo 'require(`/opt/powercord/src/patcher.js`)' > $pkgdir/usr/lib/powercord/app/index.js
+
+	install -D "$srcdir/powercord.png" "$pkgdir/usr/share/pixmaps/${pkgname%-electron-git}.png"
+	install -D "$srcdir/powercord.desktop" "$pkgdir/usr/share/applications/${pkgname%-electron-git}.desktop"
 
 	echo "Use the 'powercord' command to launch discord with powercord loaded"
 }
