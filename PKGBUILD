@@ -16,7 +16,7 @@ _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
 pkgver=5.13.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-libre'
 rcnver=5.11.11
 rcnrel=armv7-x14
@@ -29,10 +29,10 @@ makedepends=(
 )
 makedepends_armv7h=(uboot-tools vboot-utils dtc) # required by linux-libre-chromebook
 options=('!strip')
-_srcname=linux-5.13
+_srcname=linux-5.13.8
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
-  "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/patch-${_srcname##*-}-gnu-$pkgver-gnu.xz"{,.sign}
+  "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/patch-${pkgver%.*}-gnu-$pkgver-gnu.xz"{,.sign}
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}{,.sig}
   config.i686 config.x86_64 config.armv7h    # the main kernel config files
   linux-armv7h.preset                        # armv7h preset file for mkinitcpio ramdisk
@@ -73,7 +73,7 @@ validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
   '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-sha512sums=('a24f2db9316297127447b3d7fd7a1e9e7b9a8bdb5e59e6e341568cbf877c4b65d2ccdb27ec1c23b07af6c365b2930b040bcef0d989202b503bc55b107c04d121'
+sha512sums=('77bf66cc3e07b9a034a714be28c1e693b5fb097431608b27283f57ac5d6212ffa99f562c4c8a6dc5cbd89623f4564f6be95fe83a47071a4362ec747653388912'
             'SKIP'
             '53a9a1abfb8ae6e73337986ed780034d5ecf4d89bf1bbf7d4c2b5b04b527b00296c7c427045c8ab454a175db1ab272c76ef115edd4b88f4f530cbd884e604bb5'
             'SKIP'
@@ -124,10 +124,10 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd $_srcname
 
-  if [ "${_srcname##*-}" != "$pkgver" ]; then
-    echo "Applying upstream patch..."
-    patch -Np1 < "../patch-${_srcname##*-}-gnu-$pkgver-gnu"
-  fi
+  #if [ "${_srcname##*-}" != "$pkgver" ]; then
+  #  echo "Applying upstream patch..."
+  #  patch -Np1 < "../patch-${_srcname##*-}-gnu-$pkgver-gnu"
+  #fi
 
   echo "Adding freedo as boot logo..."
   install -m644 -t drivers/video/logo \
