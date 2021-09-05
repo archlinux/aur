@@ -2,7 +2,7 @@
 
 pkgname=gotask-taskfile-bin
 _pkgname=gotask-taskfile
-pkgver=3.7.0
+pkgver=3.7.3
 pkgrel=1
 pkgdesc="A task runner / simpler Make alternative written in Go (official binary version). Installs as gtask to allow coexistance with taskwarrior."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -14,10 +14,10 @@ source_x86_64=("https://github.com/go-task/task/releases/download/v${pkgver}/tas
 source_i686=("https://github.com/go-task/task/releases/download/v${pkgver}/task_linux_386.tar.gz")
 source_aarch64=("https://github.com/go-task/task/releases/download/v${pkgver}/task_linux_arm64.tar.gz")
 source_armv7h=("https://github.com/go-task/task/releases/download/v${pkgver}/task_linux_arm.tar.gz")
-sha256sums_x86_64=('3d3a2651fc28344dc0aea4291a72787a4b8bd172df95d59baa7f14e5bd0f7b2f')
-sha256sums_i686=('19575832d835b1149a47116863158588e60d1f97f15a54507e384b375e4f8c3c')
-sha256sums_aarch64=('dc8f99897ae9473bb703c662fa081e57fd223ab126113fc3c367a2df59a087c9')
-sha256sums_armv7h=('b80ada95b4137e74bf6a2dd74dd49c21c6ec9f6d5c72f282d4728cb70cb515ac')
+sha256sums_x86_64=('23e670ab136e25dad74b3c7d97900f7c2879c6874ccaae29e6fc041061be5fb4')
+sha256sums_i686=('5f435d8633d37666f038f52b0420f2cf3e6d9ef5546d01634b5c22d2d2df9bd2')
+sha256sums_aarch64=('1293450f2c99c6c79a9a86fb4a8538bd5c14783b47e731f8259932e2e727144b')
+sha256sums_armv7h=('2dc4f55cbb87f21f86182c6904b7a55439baa636922b0266757d5da22149819b')
 
 package() {
     install -Dm755 "${srcdir}/task" "${pkgdir}/usr/bin/gtask"
