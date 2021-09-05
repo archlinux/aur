@@ -2,7 +2,7 @@
 # Contributor: Nils Czernia <nils@czserver.de>
 
 pkgname=prometheus-postgresql-exporter
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Prometheus exporter for PostgreSQL"
 arch=('x86_64')
@@ -13,7 +13,7 @@ backup=('etc/conf.d/prometheus-postgresql-exporter')
 source=("https://github.com/prometheus-community/postgres_exporter/archive/v${pkgver}.tar.gz"
 	"prometheus-postgresql-exporter.service"
 	"prometheus-postgresql-exporter.conf")
-sha256sums=('a92d30e9952dfb3387ef2a636d19891e226c396f769729431dac0bddc3f0b29e'
+sha256sums=('76aeba13818fe214a5e3bf8f708fb12e3b4073ba0c3561057629cfba07cf4434'
 	'0d86e650d88c8d4a8bc5b26faecb75023e069eaf29582135bcb0202e4a69a9b9'
 	'5436ad34fbcd6faab69da8675631f3eb5b89d964682eb23164bf4bb816ad1897')
 
