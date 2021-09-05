@@ -8,6 +8,7 @@ pkgdesc='Common Lisp Package Manager'
 license=('BSD')
 url="https://gitlab.common-lisp.net/clpm/clpm"
 depends=('sbcl')
+options+=(!strip)
 provides=('clpm')
 source_x86_64=(https://files.clpm.dev/clpm/clpm-${_pkgver}-linux-amd64.tar.gz)
 source_aarch64=(https://files.clpm.dev/clpm/clpm-${_pkgver}-linux-arm64.tar.gz)

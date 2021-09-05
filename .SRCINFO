@@ -8,6 +8,7 @@ pkgbase = clpm
 	license = BSD
 	depends = sbcl
 	provides = clpm
+	options = !strip
 	source_x86_64 = https://files.clpm.dev/clpm/clpm-0.4.0-alpha.3-linux-amd64.tar.gz
 	sha256sums_x86_64 = 80b1b0412547d73ecad101720dcba0ec73ee276a2c76f2415e132658e5eecca7
 	source_aarch64 = https://files.clpm.dev/clpm/clpm-0.4.0-alpha.3-linux-arm64.tar.gz
