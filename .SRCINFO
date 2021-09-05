@@ -1,7 +1,7 @@
 pkgbase = trezor-udev
 	pkgdesc = Udev rules to connect trezor hardware wallets to your linux box
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trezor/trezor-common
 	install = trezor-udev.install
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = trezor-udev
 	sha256sums = da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768
 
 pkgname = trezor-udev
-
