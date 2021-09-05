@@ -10,12 +10,11 @@ pkgbase = halide
 	makedepends = git
 	makedepends = clang
 	depends = llvm
-	depends = llvm-libs
 	depends = lld
-	depends = libpng
-	depends = libjpeg
 	optdepends = cuda: NVidia PTX backend.
 	optdepends = emscripten: WebAssembly backend.
+	optdepends = libpng: PNG support in the Image IO Utility.
+	optdepends = libjpeg: JPEG support in the Image IO Utility.
 	source = git+https://github.com/halide/Halide.git#tag=v12.0.1
 	md5sums = SKIP
 

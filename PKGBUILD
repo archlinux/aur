@@ -6,11 +6,13 @@ pkgdesc="A language for fast and portable data-parallel computation."
 arch=('x86_64')
 url="https://halide-lang.org/"
 license=('MIT')
-depends=('llvm' 'llvm-libs' 'lld' 'libpng' 'libjpeg')
+depends=('llvm' 'lld')
 makedepends=('cmake' 'ninja' 'git' 'clang')
 optdepends=(
   'cuda: NVidia PTX backend.'
-  'emscripten: WebAssembly backend.')
+  'emscripten: WebAssembly backend.'
+  'libpng: PNG support in the Image IO Utility.'
+  'libjpeg: JPEG support in the Image IO Utility.')
 source=("git+https://github.com/halide/Halide.git#tag=v$pkgver")
 md5sums=('SKIP')
 
