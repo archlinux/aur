@@ -18,7 +18,7 @@ pkgbase = nvidia-430xx-settings
 	source = nvidia-settings-430.40.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/430.40.tar.gz
 	source = libxnvctrl_so.patch
 	source = 0001-nvidia-settings-Make-VDPAUDeviceFunctions-static-to-.patch
-	sha512sums = 7e21282a1d8f0f4096b779fa5d0ac984d5faaf1dc27e30ba65b033ec07490908ece1daf30a113f799979261454cfd57fc87260bddafd9f64df969ab06714f271
+	sha512sums = b45591e2acd0cf35ef96d416727c7fc9c79d02177546084e0e2c939a5f6ad4a3a3c11db45131c2e2ca43c72f13f83c03f03a502a75e07aefaba208c137938c04
 	sha512sums = f69f5dc84fe624579a3c9ce877f4ae4e34c2184877576afbea07b8abdd7ff01e470517f2b77cd11a904518cbcb83fb388ca1d08888006f0ef2854723920c9cf8
 	sha512sums = 0fd6355a10dfecb3636764f40eb0d4a4625f69e48fb653060f40e2bde8bf51eb04ae08be8751163d94e022c6f595a9756cde9d8404a556a4a83e3b5b74052c53
 
