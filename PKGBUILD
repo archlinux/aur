@@ -2,9 +2,10 @@
 # Original submitter: speps <speps at aur dot archlinux dot org>
 
 _pkg=p7zip
-_ver=16.02
+_commit=53abfeb6f1919fce3e65f21e37340153d2e4fe10
+_ver=17.04
 pkgname=lib7zip
-pkgver=3.0.0
+pkgver=3.0.0_${_ver}
 pkgrel=1
 pkgdesc="A library using 7z.dll/7z.so(from 7-Zip) to handle different archive types."
 arch=(i686 x86_64)
@@ -12,16 +13,20 @@ url="https://github.com/stonewell/lib7zip"
 license=('MPL')
 makedepends=('libtool')
 options=('!libtool')
-source=("https://github.com/stonewell/${pkgname}/archive/${pkgver}.tar.gz"
-        "http://downloads.sourceforge.net/project/${_pkg}/${_pkg}/${_ver}/${_pkg}_${_ver}_src_all.tar.bz2")
-sha256sums=('75def3c6393ff4eb390ed5b82f89edc1b93fd1ac92680556a8d9a4e5cad7257c'
-            '5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f')
+source=("git+https://github.com/stonewell/${pkgname}.git"
+        "git+https://github.com/jinfeihan57/${_pkg}/#tag=v${_ver}"
+        "fix_build_errs.patch")
+sha256sums=('SKIP'
+            'SKIP'
+            '4c3f39beea4142283d76c2652d01ceaa647717d72359f75b9e7164082ba3a12d')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}"
+    git checkout ${_commit}
+    patch -p1 < ../fix_build_errs.patch
 
     # point to p7zip source
-    export P7ZIP_SOURCE_DIR="$srcdir/${_pkg}_${_ver}"
+    export P7ZIP_SOURCE_DIR="${srcdir}/${_pkg}"
 
     cmake -DBUILD_SHARED_LIB=ON \
 	    -DP7ZIP_SOURCE_DIR=${P7ZIP_SOURCE_DIR} \
@@ -29,14 +34,14 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}"
     make
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/src"
+    cd "${srcdir}/${pkgname}/src"
 
     # Provided CMakeLists does not install files, so install manually
-    install -Dm755 $pkgname.so $pkgdir/usr/lib/${pkgname}.so
-    install -Dm644 $pkgname.h $pkgdir/usr/include/${pkgname}.h
+    install -Dm755 ${pkgname}.so ${pkgdir}/usr/lib/${pkgname}.so
+    install -Dm644 ${pkgname}.h ${pkgdir}/usr/include/${pkgname}.h
 }

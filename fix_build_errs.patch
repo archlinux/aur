@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8d28c09..bc72155 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,7 +39,7 @@ SET(P7ZIP_INCLUDE_PATH   "${P7ZIP_SOURCE_DIR}"
+ 
+ 
+ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+-  set(warnings -Wall -Wextra -Werror -Wno-unused-parameter)
++  set(warnings -Wall -Wextra -Werror -Wno-unused-parameter -Wno-misleading-indentation)
+   set(cxx_warnings -Wno-class-memaccess)
+   set(no_undefined -Wl,--no-undefined)
+ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3863b34..d69806b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -38,4 +38,5 @@ SET_TARGET_PROPERTIES(lib7zip_shared PROPERTIES LINKER_LANGUAGE CXX)
+ TARGET_INCLUDE_DIRECTORIES(lib7zip_shared PRIVATE
+   "${P7ZIP_INCLUDE_PATH}"
+ )
++TARGET_LINK_LIBRARIES(lib7zip_shared dl)
+ ENDIF()
