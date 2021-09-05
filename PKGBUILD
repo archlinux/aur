@@ -2,8 +2,8 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.8.18
-pkgrel=2
+pkgver=3.8.21
+pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.org/"
@@ -13,7 +13,7 @@ depends=('electron')
 makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn' 'nvm')
 _nodeversion=14
 source=("git://github.com/standardnotes/desktop.git"
-        "git://github.com/standardnotes/web.git#commit=6408941c07effefc99c6622a8e599d1cab98cd09"
+        "git://github.com/standardnotes/web.git#commit=7bede7609fe685dbc9c3e0a6f5d11c1eaae07190"
         "git://github.com/sn-extensions/extensions-manager.git#commit=c8a614bf093a3d6ab95ea8eb5e7507b152ed49e2"
         'webpack.patch'
         'standardnotes-desktop.desktop'
@@ -49,7 +49,7 @@ prepare() {
   if [[ $CARCH == 'aarch64' ]]; then
     export npm_config_target_arch=arm64
     export npm_config_arch=arm64
-    export npm_config_target_host_arch=arm64
+    export npm_config_host_arch=arm64
     # export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
     # export SASS_FORCE_BUILD=1
   fi
@@ -78,7 +78,7 @@ build() {
   if [[ $CARCH == 'aarch64' ]]; then
     export npm_config_target_arch=arm64
     export npm_config_arch=arm64
-    export npm_config_target_host_arch=arm64
+    export npm_config_host_arch=arm64
   fi
 
   _electron_dist=/usr/lib/electron
