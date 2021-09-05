@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Companion
+Comment=Control software for the Elgato Streamdeck with a focus on broadcasting.
+Exec=/usr/bin/companion
+Terminal=false
+Type=Application
+Icon=bitfocus-companion
+Categories=Network

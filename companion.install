@@ -1,0 +1,5 @@
+#!/bin/bash
+
+post_install() {
+	echo "Please reboot to apply udev rules or disconnect devices and run 'sudo udevadm control --reload-rules'"
+}

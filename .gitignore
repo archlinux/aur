@@ -1,0 +1,6 @@
+src/
+pkg/
+
+companion/
+companion*.tar.gz
+companion*.zst
