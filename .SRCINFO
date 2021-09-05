@@ -1,0 +1,16 @@
+pkgbase = sioyek-git
+	pkgdesc = PDF viewer for research papers and technical books.
+	pkgver = 0.31
+	pkgrel = 6
+	url = https://github.com/ahrm/sioyek
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-3d
+	depends = harfbuzz
+	provides = sioyek
+	source = sioyek-git::git+https://github.com/ahrm/sioyek
+	md5sums = SKIP
+
+pkgname = sioyek-git
