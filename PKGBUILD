@@ -2,8 +2,8 @@
 
 _appname=imgbrd-grabber
 pkgname="${_appname}-bin"
-pkgver=7.6.1
-pkgrel=2
+pkgver=7.6.2
+pkgrel=3
 pkgdesc="Unofficial binary installer for ImgBrd Grabber"
 arch=("x86_64")
 url="https://github.com/Bionus/imgbrd-grabber"
