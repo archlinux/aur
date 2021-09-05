@@ -2,7 +2,7 @@
 
 pkgname=jsoncpp-git
 pkgver=1.9.4.r34.gc39fbda
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library for interacting with JSON"
 arch=('i686' 'x86_64')
 url="https://github.com/open-source-parsers/jsoncpp"
@@ -31,7 +31,7 @@ build() {
     --sbindir="bin" \
     --default-library both \
     "_build"
-  ninja -C "_build"
+  meson compile -C "_build"
 }
 
 check() {
