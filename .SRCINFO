@@ -1,6 +1,6 @@
 pkgbase = telegrand-git
-	pkgdesc = A GTK4 telegram client built to be well integrated with the GNOME desktop environment.
-	pkgver = r173.9c1cb51
+	pkgdesc = A Telegram client for GNOME
+	pkgver = r306.47975be
 	pkgrel = 1
 	url = https://github.com/melix99/telegrand
 	arch = x86_64
