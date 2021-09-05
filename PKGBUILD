@@ -1,14 +1,14 @@
 # Maintainer: Kenneth Lyons (ixjlyons) <ixjlyons@gmail.com>
 
 pkgname=python-poppler-qt5-git
-pkgver=0.75.0.r0.gb97edce
-pkgrel=2
+pkgver=21.1.0.r2.g85adedd
+pkgrel=1
 pkgdesc='Python binding to libpoppler-qt5.'
 arch=('any')
 url='https://github.com/frescobaldi/python-poppler-qt5'
 license=('LGPL')
 depends=('python' 'python-pyqt5' 'poppler-qt5')
-makedepends=('git' 'python-sip' 'sip')
+makedepends=('git' 'sip4')
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}")
 source=(${pkgname}::'git+https://github.com/wbsoft/python-poppler-qt5.git')
