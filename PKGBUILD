@@ -2,12 +2,12 @@
 
 pkgname=wingpanel-indicator-session-standalone-git
 pkgver=2.3.0.r42.gb83ff2b
-pkgrel=1
-pkgdesc='Session indicator for Wingpanel'
+pkgrel=2
+pkgdesc='Session indicator for Wingpanel (without Gala dependencies)'
 arch=('x86_64')
 url='https://github.com/elementary/wingpanel-indicator-session'
 license=('GPL2')
-groups=('pantheon-unstable')
+groups=('pantheon-qq')
 depends=('accountsservice' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
          lib{{granite,wingpanel}.so,handy})
 makedepends=('git' 'gobject-introspection' 'granite' 'meson' 'vala'
