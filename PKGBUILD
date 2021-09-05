@@ -6,10 +6,10 @@
 # Mozc compile option
 _bldtype=Release
 
-_mozcver=2.26.4444.102
-_fcitxver=20210329
+_mozcver=2.26.4472.102
+_fcitxver=20210822
 _iconver=20201229
-_utdicver=20210725
+_utdicver=20210822
 pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 
@@ -31,20 +31,20 @@ source=(
   protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-${_fcitxver}.patch
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-icons-${_iconver}.tar.gz
-  'https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F32%2F32757%2Fmozcdic-ut-full-20210725.1.tar.bz2'
+  "https://osdn.net/users/reasonset/pf/aur_mozc_ut_unified/dl/mozcdic-ut-full-${_utdicver}.${pkgrel}.tar.bz2"
   https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
   https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
 )
 
 sha256sums=(
-  '8c9040297a838faa8417439ddb1fd5c8881c38f7f3e6200f5147bfea460aed4f'
+  '51e060b9d401318c3db2b32c03e6fb97f778a6d70596f10a9290969151700346'
   '441db7c09a0565376ecacf0085b2d4c2bbedde6115d7773551bc116212c2a8d6'
   '9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb'
   'e46b1c40facbc969b7a4af154dab30ab414f48a0fdbe57d199f912316977ac25'
   '9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a'
-  'b8c0e65b3e3f8cff8e35a8e044158d78bd534a3a64389cd98256b2a1b4f232ed'
+  'b8e69d58d66b529d3a4803075dfb6e756afe546b3959cc2e7308ecfdf6c1a664'
   '7985e6e8c4f4f45f8d040e54715c90b54cd51bb86f6a97fa3bdb17b2137e927d'
-  '5e8edaf54db7b9c3aa7b2d40c8538423bc00c96a90f93bd96bf6d7eb9e78ff03'
+  '7308a4ac28d62a22a805f58a03a30c3a49e06ecf98e4675acd53404175a18338'
   'SKIP'
   'SKIP'
 )
