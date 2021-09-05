@@ -3,7 +3,7 @@ pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
 pkgver=2.8.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64')
 license=('unknown')
@@ -17,6 +17,7 @@ package() {
     tar xpf data.tar.xz -C ${pkgdir}
     cd ${pkgdir}/usr/share/applications
     sed -i '3c Exec=wemeet %u ' ${_pkgname}app.desktop 
+    sed -i 'N;2aName[zh_CN]=腾讯会议\nComment=Tencent Meeting Linux Client\nComment[zh_CN]=腾讯会议Linux客户端' "${pkgdir}/usr/share/applications/wemeetapp.desktop"
     
     cd ${pkgdir}/opt/${_pkgname}
     
