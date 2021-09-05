@@ -3,7 +3,7 @@
 pkgbase=nvidia-430xx-utils
 pkgname=('nvidia-430xx-utils' 'opencl-nvidia-430xx' 'nvidia-430xx-dkms')
 pkgver=430.40
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -102,7 +102,7 @@ package_nvidia-430xx-utils() {
     install -D -m755 nvidia_drv.so "${pkgdir}/usr/lib/xorg/modules/drivers/nvidia_drv.so"
 
     # GLX extension module for X
-    install -D -m755 "libglx.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglx.so.${pkgver}"
+    install -D -m755 "libGLX.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so.${pkgver}"
     # Ensure that X finds glx
     ln -s "libGLX.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so.1"
     ln -s "libGLX.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so"
