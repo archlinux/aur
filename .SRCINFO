@@ -15,7 +15,7 @@ pkgbase = dingtalk-bin
 	source = com.alibabainc.dingtalk.desktop
 	source = dingtalk.sh
 	md5sums = 2af4a6c81458b9275a09d2457a407a49
-	md5sums = 31f718c33eac8375729f0ba2d102520c
+	md5sums = 2372f8f702beea86558d39de5d7d2b8d
 	md5sums = e1b984a024700a9ef5f77a1018a41f8e
 	md5sums = 0e255cd61852162548db96e46f1dda00
 
