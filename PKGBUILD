@@ -55,7 +55,7 @@ check() {
 package() {
 	cd "$srcdir/${pkgname%-electron-git}"
 	
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-electron-git}/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 $srcdir/powercord.sh "$pkgdir/usr/bin/powercord"
 
 	npm install --cache "${srcdir}/npm-cache" 
