@@ -2,7 +2,7 @@
 
 pkgname=prometheus-nut-exporter
 _pkgname=nut_exporter
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Prometheus exporter for Network UPS Tools metrics"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   'systemd.service'
   'sysusers.conf'
 )
-b2sums=('2c4d3efa18f45c4736d3d0e58d568d5fbbc3d7e4d926dabc530a6b793add90b06cb28d3792f0fdc6da3747efa1045e3f2d64035984baeb0285a5b1d3bae26aad'
+b2sums=('464d1b0a51d281dc45519f074ba14bbf774291425d02164d22dae047c92fada00b5a9211c18d2613a8f44e467bdb6825a836549eca264047c9e8b0d2bcba496e'
         'c37fea15866ccc283ca0aca7ac47edf746b3281bbdc9bb92edde41d110b459d55272aff30b963cda5d3165c9ea27f2cc82b48b0f340900531cc125dd0d719c97'
         'f14c79da6b3efeb0843853e5772bcc021bd6041b76a39952ad45638ce27f143b41f6a491d528992250db9b2d9fd133b76ad8f6f6da9df4c6fb0865766d49d991')
 
