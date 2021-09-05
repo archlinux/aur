@@ -3,7 +3,7 @@
 pkgbase=nvidia-430xx-utils
 pkgname=('nvidia-430xx-utils' 'opencl-nvidia-430xx' 'nvidia-430xx-dkms')
 pkgver=430.40
-pkgrel=2
+pkgrel=5
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
