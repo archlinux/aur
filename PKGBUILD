@@ -33,7 +33,8 @@ optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cytho
   'shared_meataxe: faster matrix arithmetic over finite fields' 'openblas: faster linear algebra'
   'sirocco: for computing the fundamental group of the complement of a plane curve' 'primecount: faster prime_pi implementation'
   'dot2tex: for displaying some diagrams' 'cryptominisat5: SAT solver' 'python-pycosat: picosat SAT solver'
-  'python-pip: to install optional packages with sage -pip' 'sage-notebook-exporter: convert flask notebooks to Jupyter')
+  'python-pip: to install optional packages with sage -pip' 'sage-notebook-exporter: convert flask notebooks to Jupyter'
+  'python-database-knotinfo: interface to the KnotInfo and LinkInfo databases')
 makedepends=(cython boost ratpoints python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe primecount git)
 conflicts=(sagemath)
 provides=(sagemath)
