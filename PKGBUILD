@@ -3,11 +3,10 @@
 
 # Set number of parallel compile jobs, default equals number of CPUs
 NJOBS=$(nproc)
-NJOBS=8
 
 pkgname=fsl
 pkgver=6.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
