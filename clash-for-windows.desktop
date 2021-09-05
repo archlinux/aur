@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=pkgver
+Name=Clash For Windows
+Comment=Clash GUI
+Exec=/usr/lib/clash-for-windows-bin/cfw
+Icon=/usr/lib/clash-for-windows-bin/clash-logo.png
+Terminal=false
+Keywords=clash
+Categories=Network;Utility;
