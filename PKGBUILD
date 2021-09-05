@@ -1,6 +1,6 @@
 # Maintainer: <user11681 at gmail dot com>
 pkgname=circle
-pkgver=build_130
+pkgver=build_131
 pkgrel=1
 pkgdesc='Compiler for the Circle language'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://circle-lang.org'
 license=('custom')
 depends=('gcc>=9.0.0' 'binutils')
 source=("https://www.circle-lang.org/linux/${pkgver}.tgz")
-sha256sums=('f92ab99e2d0f25f74972269c2f19712a6397dccd39b3c2ee5fea0f10022bf71a')
+sha256sums=('e98e422744f3eb2c80f40405cb70aeddcf0ef2fae0a682e9d4cb416399c9eff8')
 
 prepare() {
     chmod +x circle
