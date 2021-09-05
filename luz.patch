@@ -1,0 +1,38 @@
+diff --git a/spa/plugins/alsa/alsa-udev.c b/spa/plugins/alsa/alsa-udev.c
+index e7a9e8c8..d4c81448 100644
+--- a/spa/plugins/alsa/alsa-udev.c
++++ b/spa/plugins/alsa/alsa-udev.c
+@@ -141,9 +141,6 @@ static uint32_t get_card_id(struct impl *this, struct udev_device *dev)
+ 	if ((str = udev_device_get_property_value(dev, "SOUND_CLASS")) && spa_streq(str, "modem"))
+ 		return SPA_ID_INVALID;
+ 
+-	if (udev_device_get_property_value(dev, "SOUND_INITIALIZED") == NULL)
+-		return SPA_ID_INVALID;
+-
+ 	if ((str = udev_device_get_property_value(dev, "DEVPATH")) == NULL)
+ 		return SPA_ID_INVALID;
+ 
+@@ -618,7 +615,7 @@ static int enum_devices(struct impl *this)
+ 
+ 	for (devices = udev_enumerate_get_list_entry(enumerate); devices;
+ 			devices = udev_list_entry_get_next(devices)) {
+-		struct udev_device *dev;
++		struct udev_device *dev, *pdev;
+ 
+ 		dev = udev_device_new_from_syspath(this->udev, udev_list_entry_get_name(devices));
+ 		if (dev == NULL)
+@@ -626,6 +623,13 @@ static int enum_devices(struct impl *this)
+ 
+ 		process_device(this, ACTION_ADD, dev);
+ 
++		pdev = udev_device_get_parent(dev);
++		if (pdev) {
++		    process_device(this, ACTION_ADD, pdev);
++		}
++
++		/* no need to call udev_device_unref(pdev) here.
++		   udev_device_unref() will free parent device implicitly */
+ 		udev_device_unref(dev);
+ 	}
+ 	udev_enumerate_unref(enumerate);
+
