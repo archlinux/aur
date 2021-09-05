@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx
-pkgver=21.51
+pkgver=21.52
 pkgrel=1
 pkgdesc="A program for improving image files made with a digital camera, stable version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
@@ -13,7 +13,7 @@ optdepends=('rawtherapee: for raw image processing'
 	    'hugin: for panorama photos'
 	    'darktable: organize and develop raw images')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('55116f0a71b64962ddbf34e1df885ad00aa6bd0ae0280654f4d1674b4d9b6f38')
+sha256sums=('0566a666cff21d6611b7f1806973e695bb3359289b8fc29cbee79c8413af0c95')
 
 prepare() {
   cd $pkgname
@@ -31,12 +31,4 @@ package() {
   make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps install 
   sed -i 's+/usr/share/fotoxx/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
   sed -i 's+Icon=fotoxx.png+Icon=fotoxx+' "$pkgdir"/usr/share/applications/$pkgname.desktop
-  find "$pkgdir"/usr/share/fotoxx -type f -exec chmod o+r {} \;
-  chmod o+r "$pkgdir"/usr/share/applications/fotoxx.desktop
-  chmod o+r "$pkgdir"/usr/share/doc/fotoxx/"F21.51 changes"
-  chmod o+r "$pkgdir"/usr/share/doc/fotoxx/README
-  chmod o+r "$pkgdir"/usr/share/doc/fotoxx/changelog
-  chmod o+r "$pkgdir"/usr/share/doc/fotoxx/copyright
-  chmod o+r "$pkgdir"/usr/share/doc/fotoxx/license
-  chmod o+r "$pkgdir"/usr/share/pixmaps/fotoxx.png 
 }
