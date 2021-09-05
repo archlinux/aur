@@ -104,8 +104,8 @@ package_nvidia-430xx-utils() {
     # GLX extension module for X
     install -D -m755 "libglx.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglx.so.${pkgver}"
     # Ensure that X finds glx
-    ln -s "libglx.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglx.so.1"
-    ln -s "libglx.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglx.so"
+    ln -s "libGLX.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so.1"
+    ln -s "libGLX.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so"
 
     # GLVND
     install -D -m755 "libGLX_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/libGLX_nvidia.so.${pkgver}"
