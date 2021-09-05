@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.13.13.arch1
+pkgver=5.14.1.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -28,14 +28,13 @@ source=(
   #"sys-kernel_arch-sources-g14_files-0006-fix-tigerlake-pin-mapping.patch"
   
   "https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
-  "sys-kernel_arch-sources-g14_files-0034-btusb-mediatek.patch"
 
   # for now let's just pull the 5 asus-linux patches we need directly and skip all of the git filtering
   "sys-kernel_arch-sources-g14_files-0039-asus-wmi-Add-panel-overdrive-functionality.patch"
   # pull newer version from fedora repo
   #"sys-kernel_arch-sources-g14_files-0040-asus-wmi-Add-dgpu-disable-method.patch"
   #"sys-kernel_arch-sources-g14_files-0041-asus-wmi-Add-egpu-enable-method.patch"
-  "sys-kernel_arch-sources-g14_files-0042-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
+  #"sys-kernel_arch-sources-g14_files-0042-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
   "sys-kernel_arch-sources-g14_files-0043-ALSA-hda-realtek-Fix-speakers-not-working-on-Asus-Fl.patch"
   "sys-kernel_arch-sources-g14_files-0044-claymore.patch"
   "sys-kernel_arch-sources-g14_files-0045-v5-asus-wmi-Add-support-for-platform_profile.patch"
@@ -43,28 +42,28 @@ source=(
 
 
   # k10temp support for Zen3 APUs
-  "sys-kernel_arch-sources-g14_files-8001-x86-amd_nb-Add-AMD-family-19h-model-50h-PCI-ids.patch"
+  #"sys-kernel_arch-sources-g14_files-8001-x86-amd_nb-Add-AMD-family-19h-model-50h-PCI-ids.patch"
   "sys-kernel_arch-sources-g14_files-8002-hwmon-k10temp-support-Zen3-APUs.patch"
 
 
   # mediatek mt7921 bt/wifi patches
-  "sys-kernel_arch-sources-g14_files-8011-Bluetooth-btusb-Add-support-for-Lite-On-Mediatek-Chi.patch"
+  #"sys-kernel_arch-sources-g14_files-8011-Bluetooth-btusb-Add-support-for-Lite-On-Mediatek-Chi.patch"
   #"sys-kernel_arch-sources-g14_files-8012-mt76-mt7921-continue-to-probe-driver-when-fw-already.patch"
   "sys-kernel_arch-sources-g14_files-8013-mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
   "sys-kernel_arch-sources-g14_files-8014-mt76-mt7921-Add-mt7922-support.patch"
 
-  # squashed s0ix enablement through 2021-08-28
-  "sys-kernel_arch-sources-g14_files-9001-v5.13.13-s0ix-patch-2021-08-28.patch"
+  # squashed s0ix enablement through 2021-09-03
+  "sys-kernel_arch-sources-g14_files-9001-v5.14.1-s0ix-patch-2021-09-03.patch"
   "sys-kernel_arch-sources-g14_files-9002-amd-pmc-delay-test.patch"
   # a small amd_pmc SMU debugging patch per Mario Limonciello @AMD
-  "sys-kernel_arch-sources-g14_files-9002-amd-pmc-smu-register-dump-for-diagnostics.patch"
-  
-  #"sys-kernel_arch-sources-g14_files-9003-ACPI-PM-s2idle-Invert-Microsoft-UUID-entry-and-exit.patch"
+  #"sys-kernel_arch-sources-g14_files-9002-amd-pmc-smu-register-dump-for-diagnostics.patch"
   
   "sys-kernel_arch-sources-g14_files-9004-HID-asus-Reduce-object-size-by-consolidating-calls.patch"
   "sys-kernel_arch-sources-g14_files-9005-acpi-battery-Always-read-fresh-battery-state-on-update.patch"
   
   "sys-kernel_arch-sources-g14_files-9006-amd-c3-entry.patch"
+  
+  "sys-kernel_arch-sources-g14_files-9007-squashed-net-tcp_bbr-bbr2-for-5.14.y.patch"
 )
 
 validpgpkeys=(
@@ -75,29 +74,25 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            '761427cf8dbeed10fd3149023bc83d0a2319e70a5cbfdcdda50e7a49e8d2b198'
+            'b6ec10132a4d0a656aa65c7c11686dc5d80fce396e761b398506b364e3529e30'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             'fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0'
-            '9327ac3edacbc60a023928147f9439789527fad62cef66945f35a9165108e30d'
+            '69ecf5456468935958f2cbf35691c2533a56344005537902b6051b6323ffff1f'
             '6806c034b7480245a0b9eec448bd79042ff5ff3f9f5efbf2af78227bc56004a8'
-            '0c515951db1c3dfc847e9b4777249c09be520ac140feb015a39c29e0531a89e6'
             '1ab75535772c63567384eb2ac74753e4d5db2f3317cb265aedf6151b9f18c6c2'
-            '96bf4c0fb920a876d7ec1ed25123bab8a0a43db5f363823e83e14707083d8501'
             '32bbcde83406810f41c9ed61206a7596eb43707a912ec9d870fd94f160d247c1'
             'e2d312ea95d18e91801d131a2b5d03cf2175d3088cac6f84a19410078a5b6b14'
             '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
             '6fe5fe83e06d552f541bdca55d0d9e2cd6e70dd3047c01da749a0ff57fe706cc'
-            'ed28a8051514f8c228717a5cdd13191b1c58181e0228d972fbe2af5ee1d013d7'
             'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
-            '67ebf477b2ecbf367ea3fee1568eeb3de59de7185ef5ed66b81ae73108f6693c'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
-            '41d7a48f113b3924595d327ea3031d1b14c611835e111c46438b9d85219cd76c'
+            '3d6d1e6374688c5f1abbc40b15c03c62f695e9d04d790556c57f8ec5d0d6a3f9'
             'd8dd84c26a44af618c6d1b68723e3bf0f8f50165af04fe090256afb0f931713e'
-            '6e629d4a032165f39202a702ad518a050c9305f911595a43bc34ce0c1d45d36b'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
-            'ee8794a551e33226900654d5c806183bf3b9b2e06f64fdc322987215d233d399')
+            'ee8794a551e33226900654d5c806183bf3b9b2e06f64fdc322987215d233d399'
+            '2d854fc70297bb52bbc27dbf35ca019800530e40565be9740704d7f81bc4c763')
 
 # notable microarch levels:
 #
