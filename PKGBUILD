@@ -4,7 +4,7 @@
 _author=isac322
 _pkgname=tcafe-attending-bot
 pkgname=python-${_pkgname}
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=3
 pkgdesc='Auto attending bot for TCafe'
 arch=('any')
