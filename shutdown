@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+PIDFILE="/run/shutdown.pid"
+NOLOGINFILE="/run/nologin"
+name="${0##*/}"
+
+abort() {
+	printf "%s\n" "$1" >&2
+	exit 1
+}
+
+usage() {
+	abort "$name [-hHPrkc] [time] [warning message]"
+}
+
+cancel() {
+	kill "$(< "$PIDFILE")"
+	rm -f "$PIDFILE" "$NOLOGINFILE"
+	echo "${*:-shutdown cancelled}" | wall
+	exit
+}
+
+action=poweroff
+mesg="${2:-The system is shutting down}"
+while getopts HPrhkc opt; do
+	case "$opt" in
+		h|H|P) action=poweroff;;
+		r)     action=reboot; mesg="${2:-The system is rebooting}";;
+		k)     action=true mesg="${2:-A shutdown test will happen}";;
+		c)     cancel ;;
+		[?])   usage ;;
+	esac
+done
+shift $((OPTIND - 1))
+
+time="${1:-+1}"
+
+[ -e "$PIDFILE" ] && abort "A shutdown is already pending"
+echo "$$" > "$PIDFILE" || abort "Not enough permissions to execute $name"
+
+case "$time" in
+	now) time=0 ;;
+	+*)  time="$((${time#+} * 60))" ;;
+	*:*) time="$(($(date +%s -d "$time") - $(date +%s)))" ;;
+	*)   abort "Invalid time" ;;
+esac
+
+((time < 0)) && abort "Absolute time must lie in the future"
+
+echo "$mesg at $(date +"%H:%M:%S" -d "@$(($(date +%s) + time))") (in $((time / 60)) minutes)" | wall
+
+if ((time > 300)); then
+	sleep "$((time - 300))"
+	touch "$NOLOGINFILE"
+	sleep 300
+else
+	touch "$NOLOGINFILE"
+	sleep "$time"
+fi
+
+echo "$mesg NOW!" | wall
+"$action"
