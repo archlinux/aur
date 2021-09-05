@@ -21,4 +21,3 @@ pkgbase = cpuminer-opt-git
 	md5sums = SKIP
 
 pkgname = cpuminer-opt-git
-

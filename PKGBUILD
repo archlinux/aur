@@ -1,4 +1,5 @@
-# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Maintainer: EndlessEden <eden [at] rose.place>
+#Original Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 pkgname=cpuminer-opt-git
 _pkgname=cpuminer-opt
 pkgver=3.8.3.1.r0.g59c7848
