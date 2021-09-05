@@ -5,7 +5,8 @@ pkgbase = mingw-w64-sratom
 	url = https://drobilla.net/software/sratom/
 	arch = any
 	license = custom:ISC
-	makedepends = mingw-w64-python
+	makedepends = mingw-w64-gcc
+	makedepends = python
 	depends = mingw-w64-lv2
 	depends = mingw-w64-sord
 	options = !libtool
@@ -19,4 +20,3 @@ pkgbase = mingw-w64-sratom
 	sha512sums = SKIP
 
 pkgname = mingw-w64-sratom
-
