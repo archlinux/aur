@@ -2,7 +2,7 @@
 
 pkgname=gotask-taskfile
 _binname=gtask
-pkgver=3.7.0
+pkgver=3.7.3
 pkgrel=1
 pkgdesc="A task runner / simpler Make alternative written in Go. Installs as gtask to allow coexistance with taskwarrior."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -24,7 +24,7 @@ build() {
 
   cd "$pkgname-$pkgver"
   _modname=$(awk '$1 == "module" {print $2}' go.mod)
-  _mainpath=$(awk '$1 == "main:" {print $2}' .goreleaser.yml)
+  _mainpath=$(awk '$1 == "main:" {print $2}' .goreleaser.yml | cut -d'/' -f2-)
   _gobinname=$(awk '$1 == "binary:" {print $2}' .goreleaser.yml)
   export _gobinname
 
