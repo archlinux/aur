@@ -1,7 +1,7 @@
 # Maintainer: Lukasz Marianski <lmarianski at protonmail dot com>
 pkgname=powercord-electron-git
 pkgver=r1313.5d7500d5
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=('any')
 url="https://github.com/powercord-org/powercord"
@@ -23,9 +23,6 @@ md5sums=('SKIP'
          '0da02ab7f1ca40d4fb9891bfb953a9b9'
          '709b434317999f01a9b28e02547f0d28')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
 	cd "$srcdir/${pkgname%-electron-git}"
 
@@ -35,21 +32,15 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-electron-git}"
 
-	# sed -i "s:dirname(require.main.filename):'/','usr','lib','discord-canary':" src/patcher.js
-
 	patch -p1 -i "$srcdir/${pkgname%-electron-git}.patch"
 }
 
 build() {
 	cd "$srcdir/${pkgname%-electron-git}"
-	# ./autogen.sh
-	# ./configure --prefix=/usr
-	# make
 }
 
 check() {
 	cd "$srcdir/${pkgname%-electron-git}"
-	# make -k check
 }
 
 package() {
