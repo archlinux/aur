@@ -1,0 +1,24 @@
+pkgbase = systemd-libs-fake-bin
+	pkgdesc = Fake systemd client libraries without libudev - real binaries
+	pkgver = 249.4
+	pkgrel = 1
+	url = https://www.github.com/systemd/systemd
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = arch-package-download
+	depends = glibc
+	depends = libcap
+	depends = libgcrypt
+	depends = libp11-kit
+	depends = lz4
+	depends = xz
+	depends = zstd
+	provides = systemd-libs-fake
+	provides = systemd-libs
+	provides = libsystemd
+	provides = libsystemd.so
+	conflicts = systemd-libs-fake
+	conflicts = systemd-libs
+	conflicts = libsystemd
+
+pkgname = systemd-libs-fake-bin
