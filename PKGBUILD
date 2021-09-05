@@ -4,8 +4,8 @@
 
 pkgname=dingtalk-bin
 _pkgname=com.alibabainc.dingtalk
-pkgver=1.0.0.278
-pkgrel=2
+pkgver=1.0.0.284
+pkgrel=1
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://gov.dingtalk.com"
@@ -21,8 +21,8 @@ source=("https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linu
 
 # DebSource & pkgvere can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
 
-md5sums=('0c4c02b9dad7de43d089454086a4af36'
-         '06f004ab10031adc090c19821d9aee3d'
+md5sums=('2af4a6c81458b9275a09d2457a407a49'
+         '31f718c33eac8375729f0ba2d102520c'
          'e1b984a024700a9ef5f77a1018a41f8e'
          '0e255cd61852162548db96e46f1dda00')
 
