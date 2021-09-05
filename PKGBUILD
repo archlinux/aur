@@ -1,7 +1,7 @@
 # Maintainer: Leon Schumacher <leonsch@protonmail.com>
 # vim: ft=sh:
 pkgname=runit-conversion
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="Convert your system to use runit instead of systemd"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('base-init-agnostic' 'kisslinux-init' 'runit' 'systemd-libs-fake' 'eudev')
 optdepends=('runit-services: many service definitions')
 source=("$pkgname-$pkgver-$pkgrel-files.tar.xz")
-sha256sums=('af7cf9b3006bfeff2b243e3720965537dac1f86226848d469e4b6360a5030989')
+sha256sums=('20417409cb256b3c61ed582c717d94df703b6fc54378709b50dad665478259a3')
 
 package() {
 	cp -a files/* "$pkgdir/"
