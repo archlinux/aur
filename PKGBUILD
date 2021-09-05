@@ -2,7 +2,7 @@
 
 pkgname=rss-bridge-git
 _pkgname=rss-bridge
-pkgver=2020.02.26.r45.g976445b4
+pkgver=2021.04.25.r72.g32493264
 pkgrel=1
 pkgdesc="The RSS feed for websites missing it"
 arch=("any")
@@ -12,7 +12,7 @@ depends=(php)
 makedepends=(git)
 backup=(
   "etc/webapps/$pkgname/config.ini.php"
-  "usr/share/webapps/$pkgname/whitelist.txt"
+  "etc/webapps/$pkgname/whitelist.txt"
   )
 source=(
   "$_pkgname::git+https://github.com/RSS-Bridge/rss-bridge.git"
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('SKIP'
             '42eb933a4632ada3247341d24f967c76cf363ff50e6ed13b39963983454f8020'
-            '6f9122e50e2b9164e59b1b9062663559cb5bc3ef3bd59b3ffafb7d486ec71a13')
+            '32bc1d3a61862fe87dd8b72b814feebe72e2d2b975e489e00d612fc607ae9d7a')
 provides=("rss-bridge")
 conflicts=("rss-bridge")
 
@@ -39,8 +39,13 @@ package() {
   mkdir -p "$_instdir"
   cp -ra * "$_instdir/"
 
-  # move config to /etc
+  # copy default config to /etc
   install -D config.default.ini.php $pkgdir/etc/webapps/$_pkgname/config.ini.php
+  install -D whitelist.default.txt $pkgdir/etc/webapps/$_pkgname/whitelist.txt
+
+  # and symlink it into correct location
+  ln -s /etc/webapps/$_pkgname/config.ini.php "$_instdir"
+  ln -s /etc/webapps/$_pkgname/whitelist.txt "$_instdir"
 
   # setup user and directory creation
   install -Dm644 "$srcdir/$_pkgname.sysusers" \
@@ -54,4 +59,3 @@ package() {
   find "$pkgdir"/usr/share/webapps/${_pkgname} -type f -exec chmod 0644 {} \;
   find "$pkgdir"/usr/share/webapps/${_pkgname} -type d -exec chmod 0755 {} \;
 }
-
