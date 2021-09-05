@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="A NordVPN Wireguard (\"NordLynx\") client in POSIX shell"
 arch=('any')
 url="https://git.phire.cc/me/wgnord"
-depends=('jq' 'curl' 'wireguard-tools' 'sed' 'grep')
+depends=('jq' 'curl' 'wireguard-tools')
 source=("https://git.phire.cc/me/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("c9460797fb1e119814e5febd2510508a")
 
