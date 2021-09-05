@@ -11,7 +11,7 @@ arch=(i686 x86_64 aarch64)
 makedepends=(cmake)
 depends=(sdl2_image sdl2_mixer sdl2_ttf hicolor-icon-theme python)
 source=("${pkgname}-${pkgver}::https://github.com/flareteam/flare-engine/archive/v${pkgver}.tar.gz")
-sha256sums=('a9574ba080462116820e7cf9f5a68548b2f0d521')
+sha256sums=('287a08532972fa3ac56ce7cb213d21be8be35b529339f61d4eeadbd501c78a8e')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
