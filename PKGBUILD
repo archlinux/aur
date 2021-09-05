@@ -7,8 +7,7 @@ pkgrel=3
 pkgdesc="Unofficial binary installer for ImgBrd Grabber"
 arch=("x86_64")
 url="https://github.com/Bionus/imgbrd-grabber"
-license=("GPL")
-depends=("wget" "imagemagick") 
+license=("Apache-2.0 License")
 options=('!strip')
 conflicts=('imgbrd-grabber-git')
 
