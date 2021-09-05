@@ -1,7 +1,7 @@
-# Maintainer: David Barri <japgolly@gmail.com>
+# Maintainer: hockeymikey <hockeymikey@hockeymikey.com>
 pkgname=vertcoin-qt-bin
 pkgver=0.17.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A digital currency with mining decentralisation and ASIC resistance as a key focus."
 arch=('x86_64')
 url="https://github.com/vertcoin-project/vertcoin-core"
