@@ -1,0 +1,18 @@
+pkgbase = os-251
+	pkgdesc = Pure digital lo-fi synthesizer plugin
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://onsenaudio.com/products/os251
+	arch = x86_64
+	groups = vst3-plugins
+	groups = pro-audio
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = npm
+	makedepends = git
+	provides = os-251
+	source = os-251::git+https://github.com/utokusa/OS-251#tag=v1.0.1
+	md5sums = SKIP
+
+pkgname = os-251
