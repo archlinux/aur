@@ -38,4 +38,3 @@ pkgbase = platypush-git
 	sha512sums = abe1b59130fa176ee3a637363fe271d7c763d3a1a179eef0d47f5f2bec884233f57a540d64fe6751627fe5b696510cf21c821307d3d3c68658a80081f07d1f0a
 
 pkgname = platypush-git
-
