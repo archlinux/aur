@@ -2,7 +2,7 @@
 
 pkgname=python-freiner
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic rate limiting solution for python applications, supporting various strategies and storage backends."
 arch=("any")
 url="https://github.com/djmattyg007/freiner/"
@@ -27,7 +27,8 @@ package() {
     cd "freiner-${pkgver}"
 
     PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/freiner/LICENSE.txt"
-    install -Dm644 CHANGELOG.rst "${pkgdir}/usr/share/doc/python-humanfriendly/CHANGELOG.rst"
-    #cp -r docs/build/html "${pkgdir}/usr/share/doc/python-humanfriendly/html"
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-freiner/LICENSE.txt"
+    install -Dm644 README.rst "${pkgdir}/usr/share/doc/python-freiner/README.rst"
+    install -Dm644 CHANGELOG.rst "${pkgdir}/usr/share/doc/python-freiner/CHANGELOG.rst"
+    #cp -r docs/build/html "${pkgdir}/usr/share/doc/python-freiner/html"
 }

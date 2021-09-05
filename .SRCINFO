@@ -1,7 +1,7 @@
 pkgbase = python-freiner
 	pkgdesc = Generic rate limiting solution for python applications, supporting various strategies and storage backends.
 	pkgver = 3.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/djmattyg007/freiner/
 	arch = any
 	license = MIT
