@@ -1,14 +1,15 @@
 pkgbase = foy
-	pkgdesc = A simple, light-weight and modern task runner for general purpose
-	pkgver = 0.2.1
+	pkgdesc = Simple, lightweight and modern task runner for general purpose
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = http://zaaack.github.io/foy
+	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
-	makedepends = yarn
+	makedepends = npm
 	depends = nodejs
-	source = foy-0.2.1.tar.gz::https://github.com/zaaack/foy/archive/v0.2.1.tar.gz
-	sha256sums = da64520d71a496822cbdd4dc2c522788e735553dadbb8641e176b791faeccaa9
+	noextract = foy-0.2.12.tgz
+	source = foy-0.2.12.tgz::https://registry.npmjs.org/foy/-/foy-0.2.12.tgz
+	sha256sums = 2ff7dd0efffea6da9a8b0b5185e01488b93ace8866a698263f67220b3254c62c
 
 pkgname = foy
-
