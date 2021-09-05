@@ -1,6 +1,6 @@
 pkgbase = lx-music
 	pkgdesc = An Electron-based music player
-	pkgver = 1.12.2
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/lyswhut/lx-music-desktop
 	changelog = CHANGELOG.md
@@ -12,10 +12,10 @@ pkgbase = lx-music
 	makedepends = npm
 	depends = electron
 	depends = nodejs>=14
-	source = lx-music-1.12.2.tar.gz::https://github.com/lyswhut/lx-music-desktop/archive/v1.12.2.tar.gz
+	source = lx-music-1.13.0.tar.gz::https://github.com/lyswhut/lx-music-desktop/archive/v1.13.0.tar.gz
 	source = lx-music.sh
 	source = lx-music.desktop
-	sha256sums = f66fd5db3b87ccd8a319be6224fe391d930328488dc3750861767ed87d028470
+	sha256sums = 18f8b1d809f7b20ea08b3a562b8bb2ba34a281bfa7c81c0bd3c3f528df92eae5
 	sha256sums = 0b19e2d26237f48379c024d48398a3a819b1de72bfe95c680f9a81c3d13c537f
 	sha256sums = 86c65106fb93671b2f3da2896ef69d709f0558b2113779b9ca45bbbb73de64ce
 
