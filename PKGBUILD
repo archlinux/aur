@@ -2,7 +2,7 @@
 
 _pkgname=rlottie
 pkgname=rlottie-git
-pkgver=r857.c0e16e5
+pkgver=r860.327fb7d
 pkgrel=1
 pkgdesc='A platform independent standalone library that plays Lottie Animation'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -37,6 +37,7 @@ package() {
     cd "${_pkgname}/build"
 
     make DESTDIR=${pkgdir} install || return 1
+    install -Dm755 example/lottie2gif "${pkgdir}/usr/bin/lottie2gif"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
