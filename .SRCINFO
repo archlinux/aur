@@ -1,6 +1,6 @@
 pkgbase = python-binance-git
 	pkgdesc = simple python interface to binance.com's web API
-	pkgver = 0.7.4.r0.gc4fdad5
+	pkgver = 1.0.10.r54.ga6f3048
 	pkgrel = 1
 	url = https://github.com/sammchardy/python-binance
 	arch = any
@@ -8,16 +8,12 @@ pkgbase = python-binance-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
-	depends = python-autobahn
-	depends = python-certifi
-	depends = python-chardet
+	depends = python-aiohttp
 	depends = python-dateparser
 	depends = python-requests
-	depends = python-service-identity
-	depends = python-twisted
-	depends = python-urllib3
+	depends = python-ujson
+	depends = python-websockets
 	source = git+https://github.com/sammchardy/python-binance.git
 	md5sums = SKIP
 
 pkgname = python-binance-git
-

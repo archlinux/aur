@@ -1,16 +1,17 @@
+# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Eric Toombs
 
 _pkgname='python-binance'
 pkgname="$_pkgname-git"
-pkgver=0.7.4.r0.gc4fdad5
+pkgver=1.0.10.r54.ga6f3048
 pkgrel=1
 pkgdesc="simple python interface to binance.com's web API"
 arch=('any')
 url='https://github.com/sammchardy/python-binance'
 license=('MIT')
-depends=('python' 'python-autobahn' 'python-certifi' 'python-chardet' 'python-dateparser'
-         'python-requests' 'python-service-identity' 'python-twisted' 'python-urllib3')
+depends=('python' 'python-aiohttp' 'python-dateparser'
+         'python-requests' 'python-ujson' 'python-websockets')
 makedepends=('git' 'python-setuptools')
 source=('git+https://github.com/sammchardy/python-binance.git')
 md5sums=('SKIP')
