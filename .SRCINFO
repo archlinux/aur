@@ -1,7 +1,7 @@
 pkgbase = i2pd-tools-git
 	pkgdesc = Useful tools for I2P (git version)
 	pkgver = r237.g86f1bf9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PurpleI2P/i2pd-tools/
 	arch = x86_64
 	license = BSD

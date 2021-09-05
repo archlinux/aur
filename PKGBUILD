@@ -2,7 +2,7 @@
 
 pkgname=i2pd-tools-git
 pkgver=r237.g86f1bf9
-pkgrel=1
+pkgrel=2
 pkgdesc='Useful tools for I2P (git version)'
 arch=('x86_64')
 url='https://github.com/PurpleI2P/i2pd-tools/'
@@ -36,7 +36,7 @@ package() {
     while read -r -d '' _tool
     do
         install -D -m755 "$_tool" "${pkgdir}/usr/bin/i2pd-${_tool##*/}"
-    done < <(find i2pd-tools -maxdepth 1 -type f -executable -print0)
+    done < <(find i2pd-tools -maxdepth 1 -type f ! -name '*.sh' ! -name '*README*' -executable -print0)
     
     install -D -m644 i2pd-tools/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
