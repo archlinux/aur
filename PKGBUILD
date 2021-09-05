@@ -1,8 +1,8 @@
 # Maintainer: Anufriev Roman <anufriev.roman@protonmail.com>
 pkgname=calcure
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-pkgdesc="Minimalist TUI calendar"
+pkgdesc="Minimalist TUI calendar and task manager"
 arch=('x86_64')
 url="https://github.com/anufrievroman/calcure"
 license=('GPL')

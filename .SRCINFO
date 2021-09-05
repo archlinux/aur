@@ -1,13 +1,13 @@
 pkgbase = calcure
-	pkgdesc = Minimalist TUI calendar
-	pkgver = 1.0
+	pkgdesc = Minimalist TUI calendar and task manager
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/anufrievroman/calcure
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = python
-	source = calcure-1.0.tar.gz::https://github.com/anufrievroman/calcure/archive/1.0.tar.gz
+	source = calcure-1.1.tar.gz::https://github.com/anufrievroman/calcure/archive/1.1.tar.gz
 	md5sums = SKIP
 
 pkgname = calcure
