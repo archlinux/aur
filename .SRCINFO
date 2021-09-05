@@ -7,13 +7,12 @@ pkgbase = rssbridge
 	license = Unlicense
 	depends = php
 	backup = etc/webapps/rss-bridge/config.ini.php
-	backup = usr/share/webapps/rss-bridge/whitelist.txt
+	backup = etc/webapps/rss-bridge/whitelist.txt
 	source = https://github.com/RSS-Bridge/rss-bridge/archive/2021-04-25.tar.gz
 	source = rss-bridge.sysusers
 	source = rss-bridge.tmpfiles
 	sha256sums = 19adf5a55d4db5383625a43aa62892593e493303a7bf772d8be0d199f6d1c3bb
 	sha256sums = 42eb933a4632ada3247341d24f967c76cf363ff50e6ed13b39963983454f8020
-	sha256sums = 6f9122e50e2b9164e59b1b9062663559cb5bc3ef3bd59b3ffafb7d486ec71a13
+	sha256sums = 32bc1d3a61862fe87dd8b72b814feebe72e2d2b975e489e00d612fc607ae9d7a
 
 pkgname = rss-bridge
-

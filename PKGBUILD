@@ -11,7 +11,7 @@ license=("Unlicense")
 depends=(php)
 backup=(
   "etc/webapps/$pkgname/config.ini.php"
-  "usr/share/webapps/$pkgname/whitelist.txt"
+  "etc/webapps/$pkgname/whitelist.txt"
   )
 source=(
   "https://github.com/RSS-Bridge/$pkgname/archive/${pkgver//_/-}.tar.gz"
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('19adf5a55d4db5383625a43aa62892593e493303a7bf772d8be0d199f6d1c3bb'
             '42eb933a4632ada3247341d24f967c76cf363ff50e6ed13b39963983454f8020'
-            '6f9122e50e2b9164e59b1b9062663559cb5bc3ef3bd59b3ffafb7d486ec71a13')
+            '32bc1d3a61862fe87dd8b72b814feebe72e2d2b975e489e00d612fc607ae9d7a')
 
 package() {
 
@@ -31,8 +31,13 @@ package() {
   mkdir -p "$_instdir"
   cp -ra * "$_instdir/"
 
-  # move config to /etc
-  install -D config.default.ini.php $pkgdir/etc/webapps/$pkgname/config.ini.php
+  # copy default config to /etc
+  install -D config.default.ini.php $pkgdir/etc/webapps/$_pkgname/config.ini.php
+  install -D whitelist.default.txt $pkgdir/etc/webapps/$_pkgname/whitelist.txt
+
+  # and symlink it into correct location
+  ln -s /etc/webapps/$_pkgname/config.ini.php "$_instdir"
+  ln -s /etc/webapps/$_pkgname/whitelist.txt "$_instdir"
 
   # setup user and directory creation
   install -Dm644 "$srcdir/$pkgname.sysusers" \
@@ -46,4 +51,3 @@ package() {
   find "$pkgdir"/usr/share/webapps/${pkgname} -type f -exec chmod 0644 {} \;
   find "$pkgdir"/usr/share/webapps/${pkgname} -type d -exec chmod 0755 {} \;
 }
-
