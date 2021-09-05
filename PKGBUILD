@@ -11,7 +11,6 @@ arch=('x86_64')
 url="https://github.com/Skallwar/suckit"
 license=('Apache')
 depends=('openssl' 'gcc-libs')
-makedepends=('rust')
 provides=("$_pkgname" "$pkgname")
 source=("README.md::$url/blob/v$pkgver/README.md")
 sha512sums=('SKIP')

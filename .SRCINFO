@@ -5,7 +5,6 @@ pkgbase = suckit-bin
 	url = https://github.com/Skallwar/suckit
 	arch = x86_64
 	license = Apache
-	makedepends = rust
 	depends = openssl
 	depends = gcc-libs
 	provides = suckit
