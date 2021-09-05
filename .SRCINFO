@@ -1,13 +1,15 @@
 pkgbase = lswt
 	pkgdesc = List Wayland toplevels
-	pkgver = r39.8da4dff
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://git.sr.ht/~leon_plickat/lswt
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	provides = lswt
-	source = git+https://git.sr.ht/~leon_plickat/lswt
+	source = lswt-1.0.1::git+https://git.sr.ht/~leon_plickat/lswt#tag=v1.0.1
+	source = makefile.patch
 	sha256sums = SKIP
+	sha256sums = 876801b43378774ed96d5c9354ee829b426ea360bd1286912507ae7f810aa705
 
 pkgname = lswt
