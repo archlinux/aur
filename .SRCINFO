@@ -1,6 +1,6 @@
 pkgbase = asciidoctor-pdf
 	pkgdesc = translate asciidoctor directly to pdf
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://asciidoctor.org/
 	arch = any
@@ -16,10 +16,9 @@ pkgbase = asciidoctor-pdf
 	depends = ruby-treetop
 	optdepends = ruby-rouge: syntax highlight
 	optdepends = ruby-coderay: syntax highlight
-	noextract = asciidoctor-pdf-1.6.0.gem
+	noextract = asciidoctor-pdf-1.6.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/asciidoctor-pdf-1.6.0.gem
-	sha256sums = 89c730499bbc4086710ae0c1b9ac1510b8457d6861b9b31495e64871f1f8ae6b
+	source = https://rubygems.org/downloads/asciidoctor-pdf-1.6.1.gem
+	sha256sums = f3da5d4f2ec564ddbce1e4356e0ed028d50a84c9817cdcfc8c259b1e8d72a39d
 
 pkgname = asciidoctor-pdf
-
