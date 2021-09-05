@@ -1,7 +1,7 @@
 pkgbase = nginx-quic
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch
 	pkgver = 1.21.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nginx.org
 	install = nginx.install
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = nginx-quic
 	depends = pcre
 	depends = zlib
 	provides = nginx
+	provides = nginx-mainline
 	conflicts = nginx
 	backup = etc/nginx/fastcgi.conf
 	backup = etc/nginx/fastcgi_params
@@ -37,3 +38,10 @@ pkgbase = nginx-quic
 	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
 
 pkgname = nginx-quic
+
+pkgname = nginx-quic-src
+	pkgdesc = Source code of nginx-quic 1.21.2, useful for building modules
+	depends = 
+	provides = nginx-src
+	provides = nginx-mainline-src
+	conflicts = nginx-src

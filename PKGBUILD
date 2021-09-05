@@ -4,9 +4,11 @@
 # Contributor: Sébastien Luttringer
 # Contributor: Drew DeVault
 
-pkgname=nginx-quic
+_pkgbase=nginx
+pkgbase=nginx-quic
+pkgname=(nginx-quic nginx-quic-src)
 pkgver=1.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -23,7 +25,7 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
 install=nginx.install
-provides=('nginx')
+provides=('nginx' 'nginx-mainline')
 conflicts=('nginx')
 source=("hg+https://hg.nginx.org/nginx-quic#revision=fac88e160653"
         "git+https://boringssl.googlesource.com/boringssl#commit=dddb60eb9700110835ff6e2b429de40a17006429"
@@ -35,6 +37,8 @@ sha256sums=('SKIP'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
 
 _common_flags=(
+  --with-compat
+  --with-debug
   --with-file-aio
   --with-http_addition_module
   --with-http_auth_request_module
@@ -56,14 +60,14 @@ _common_flags=(
   --with-mail_ssl_module
   --with-pcre-jit
   --with-stream
+  --with-stream_geoip_module
+  --with-stream_realip_module
   --with-stream_ssl_module
+  --with-stream_ssl_preread_module
   --with-threads
 )
 
 _mainline_flags=(
-  --with-stream_ssl_preread_module
-  --with-stream_geoip_module
-  --with-stream_realip_module
 )
 
 _quic_flags=(
@@ -71,6 +75,11 @@ _quic_flags=(
   --with-http_quic_module
   --with-stream_quic_module
 )
+
+prepare() {
+  # Backup pristine version of nginx source for -src package
+  cp -r ${srcdir}/${pkgname} ${srcdir}/${pkgname}-src
+}
 
 build() {
   # Clear -D_FORTIFY_SOURCE from build flags, it causes Boringssl tests to fail to compile
@@ -114,7 +123,7 @@ build() {
   make
 }
 
-package() {
+package_nginx-quic() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
 
@@ -150,6 +159,18 @@ package() {
     install -Dm644 contrib/vim/${i}/nginx.vim \
       "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
   done
+}
+
+package_nginx-quic-src() {
+  pkgdesc="Source code of nginx-quic $pkgver, useful for building modules"
+  provides=('nginx-src' 'nginx-mainline-src')
+  conflicts=($_pkgbase-src)
+  depends=()
+  install -d "$pkgdir/usr/src"
+  cp -r ${srcdir}/${pkgname} "$pkgdir/usr/src/nginx"
+  # Link the 'configure' script to its location in release tarballs,
+  # as this is where modules expect it
+  ln -s /usr/src/nginx/auto/configure "$pkgdir/usr/src/nginx"
 }
 
 # vim:set ts=2 sw=2 et:
