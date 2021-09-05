@@ -42,9 +42,9 @@ prepare() {
 	# Apply patches
 	patch -Np1 -i "${srcdir}"/001-use_distribution_environment.patch
 	# From https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=fsl;e8fa48c1.1501
-	patch -Np1 -i "${srcdir}"/003-fix_fsl_exec_empty_errorCode.patch
+	patch -Np1 -i "${srcdir}"/002-fix_fsl_exec_empty_errorCode.patch
 	# I'm not sure why -L${LIB_PROB} is missing in some Makefiles 
-	patch -Np1 -i "${srcdir}"/004-fix_missing_LIB_PROB.patch
+	patch -Np1 -i "${srcdir}"/003-fix_missing_LIB_PROB.patch
 
 	# Insert makepkg build flags into configuration
 	sed -i '0,/${AccumulatedIncFlags}/{s^${AccumulatedIncFlags}^& '"${CFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
