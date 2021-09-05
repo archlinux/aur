@@ -3,7 +3,7 @@ pkgbase=python-sphinxemoji
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="An extension to use emoji codes in your Sphinx documentation"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 #'python-sphinx')
 checkdepends=('python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7a0433f4183469f4a12ec118a4f05aad')
+md5sums=('b77f66a04ef0fec85660c7ae08283940')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
