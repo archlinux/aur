@@ -1,11 +1,11 @@
 pkgname=mqttui
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Subscribe to a MQTT Topic or publish something quickly from the terminal"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname}"
-license=('GPL-3.0-or-later')
-depends=()
+license=('GPL3')
+depends=('gcc-libs')
 makedepends=('cargo')
 provides=("${pkgname}")
 
