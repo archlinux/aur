@@ -2,3 +2,5 @@
 *.log
 pkg/
 src/
+airwindows
+CMakeLists.txt
