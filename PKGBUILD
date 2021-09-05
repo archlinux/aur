@@ -2,7 +2,7 @@
 
 pkgname=xmrig-cuda
 pkgver=6.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc='NVIDIA CUDA plugin for XMRig miner.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-cuda'
@@ -13,7 +13,7 @@ license=('GPL')
 source=("${url}/archive/v${pkgver}.tar.gz"
         'fix-compile.patch')
 sha256sums=('64c440a4cb439f3cc8120f1883274158f95df988ab91eccb1d2d2abf0bedbbfe'
-            'f1463f7d456f8f367b8063fdf600653f773ce33b2e3714af58c1c51a102c7d17')
+            '3d545c3947e270a127caa0c33ffa84025b1ef2d51251a4d0b028a47a775b78e2')
 
 prepare () {
   cd "${pkgname}-${pkgver}"
