@@ -3,7 +3,7 @@
 pkgbase=rssbridge
 pkgname=rss-bridge
 pkgver=2021_04_25
-pkgrel=2
+pkgrel=3
 pkgdesc="The RSS feed for websites missing it"
 arch=("any")
 url="https://github.com/RSS-Bridge/rss-bridge/wiki"
@@ -32,12 +32,12 @@ package() {
   cp -ra * "$_instdir/"
 
   # copy default config to /etc
-  install -D config.default.ini.php $pkgdir/etc/webapps/$_pkgname/config.ini.php
-  install -D whitelist.default.txt $pkgdir/etc/webapps/$_pkgname/whitelist.txt
+  install -D config.default.ini.php $pkgdir/etc/webapps/$pkgname/config.ini.php
+  install -D whitelist.default.txt $pkgdir/etc/webapps/$pkgname/whitelist.txt
 
   # and symlink it into correct location
-  ln -s /etc/webapps/$_pkgname/config.ini.php "$_instdir"
-  ln -s /etc/webapps/$_pkgname/whitelist.txt "$_instdir"
+  ln -s /etc/webapps/$pkgname/config.ini.php "$_instdir"
+  ln -s /etc/webapps/$pkgname/whitelist.txt "$_instdir"
 
   # setup user and directory creation
   install -Dm644 "$srcdir/$pkgname.sysusers" \
