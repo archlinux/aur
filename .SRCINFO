@@ -1,6 +1,6 @@
 pkgbase = runit-conversion
 	pkgdesc = Convert your system to use runit instead of systemd
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://smarden.org/runit
 	arch = any
@@ -11,13 +11,7 @@ pkgbase = runit-conversion
 	depends = systemd-libs-fake
 	depends = eudev
 	optdepends = runit-services: many service definitions
-	source = 2
-	source = reboot
-	source = poweroff
-	source = shutdown
-	sha256sums = 8516f76f250e15c27c7713d45e75c5ddaa6cf9abc13f066b695fef94aded0418
-	sha256sums = aa2f3d56dd7f2c1e8810f7d0e3046129d7b1c2dc14c2c4d41c1a3ed466d34541
-	sha256sums = 9c4e8cba8ffc2e3b546401317ef6567acf71e07fe4b0ec0ac6c0f98457e08d1d
-	sha256sums = 0ff5be0b1124c7a8cbe06bd3968be51d4d96782cf96c3dddaa1661fa8f811e9a
+	source = runit-conversion-2-1-files.tar.xz
+	sha256sums = def98567381a9ef2ba619002127b5fb826ae2b3657e4ebf19c4b37caefd14e46
 
 pkgname = runit-conversion
