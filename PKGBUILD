@@ -2,7 +2,7 @@
 # Contributor: Shining Xu <skyfiretime@gmail.com>
 
 pkgname=timecamp-bin
-pkgver=1.7.1.8
+pkgver=1.7.2.0
 pkgrel=1
 pkgdesc='Client application for TimeCamp software (Binary).'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     'LICENSE.html'
 )
 
-sha256sums=('28fa41ac297ff6e214ab0c0360d231b3ce3158b169a465b944b873d436aa5269'
+sha256sums=('0429a006ff65d421d3041c5806e514971a95cefa554e5916337a30cc92e70650'
             '47c5c4cefd061e1f4f2d2fbeaf49b3c13954dce3582e35e6eda732d2e55287fa')
 
 prepare() {
