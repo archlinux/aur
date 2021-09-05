@@ -2,7 +2,7 @@
 #
 # Maintainer: Eden Rose(EndlessEden) <eenov1988 [at] gmail [dot] com>
 pkgname=asc-compositor
-pkgver=0.01.decafa3
+pkgver=0.01.e1da8dd
 pkgrel=1
 pkgdesc="A simple and tiny wayland compositor, written in c and lua."
 arch=('any')
@@ -10,8 +10,6 @@ url="https://github.com/vktec/asc"
 license=('GPL')
 depends=('wayland')
 makedepends=('wlc' 'lua')
-optdepends=('wlc-static-git: For Static Builds, a static copy of WLC 
-is required')
 provides=('asc-compositor')
 source=("$pkgname::git://github.com/EndlessEden/asc.git"
         "asc.desktop")
