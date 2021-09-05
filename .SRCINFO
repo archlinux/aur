@@ -1,7 +1,7 @@
 pkgbase = python-hdf5storage
-	pkgdesc = Python package to read and write a wide range of Python types to/from HDF5 formatted files.
-	pkgver = 0.1.16
-	pkgrel = 2
+	pkgdesc = Read and write a wide range of Python types to/from HDF5 formatted files.
+	pkgver = 0.1.18
+	pkgrel = 1
 	url = https://github.com/frejanordsiek/hdf5storage
 	arch = any
 	license = BSD
@@ -9,8 +9,7 @@ pkgbase = python-hdf5storage
 	depends = python
 	depends = python-numpy
 	depends = python-h5py
-	source = python-hdf5storage-d6e44f83ce2e25f7a5026cdac59b2ac74d832936.tar.gz::https://github.com/frejanordsiek/hdf5storage/archive/d6e44f83ce2e25f7a5026cdac59b2ac74d832936.tar.gz
-	sha256sums = c361f8c49af17a624bee017edf4b6ca9e6ac47703092c9356dbaf9647ccd99c7
+	source = https://github.com/frejanordsiek/hdf5storage/archive/refs/tags/0.1.18.tar.gz
+	sha256sums = ce24b6267d1f59964b116cfa604c3142a1c9d7ac3a4704bca84963d820265e58
 
 pkgname = python-hdf5storage
-
