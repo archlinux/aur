@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-wsgidav
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Generic WebDAV server based on WSGI"
 arch=("any")
@@ -21,7 +21,7 @@ source=(
     "config.example.json5"
 )
 sha256sums=(
-    "963ce0ed546a7bd1ea00013599a4833f31d1fb5e88af71ab66bfc3bb55a14d8d"
+    "e6bdc5af7a4c92f1acb2ac20f272badf4a0b934cf4b951532ea907b00f38ad0d"
     "774ee839b5248d2614294daf2c8a28fda69f1524d8b5b61d9e75de7b9c986b4d"
     "25826e3ceec2e9e01c54e6367966537017b0c758c7eda131566a95f97b474250"
     "9e4d7e9ae9e56a5d0f14c91b296825114e57456888280e59dcf158dad36b9474"
@@ -40,7 +40,7 @@ package() {
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python-wsgidav/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/python-wsgidav/README.md"
-    #install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/python-wsgidav/CHANGELOG.md"
+    install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/python-wsgidav/CHANGELOG.md"
 
     install -Dm644 "${srcdir}/uwsgi.py" "${pkgdir}/usr/share/python-wsgidav/uwsgi.py"
     install -Dm644 "${srcdir}/uwsgi.ini" "${pkgdir}/usr/share/python-wsgidav/uwsgi.ini"
