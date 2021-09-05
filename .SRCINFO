@@ -6,6 +6,7 @@ pkgbase = deemix-pyweb-git
 	arch = any
 	license = gpl3
 	makedepends = git
+	makedepends = unzip
 	depends = python>=3.7
 	depends = deemix
 	depends = python-flask
@@ -21,4 +22,3 @@ pkgbase = deemix-pyweb-git
 	md5sums = SKIP
 
 pkgname = deemix-pyweb-git
-

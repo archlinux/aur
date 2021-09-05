@@ -9,7 +9,7 @@ arch=('any')
 url="https://gitlab.com/RemixDev/$_pkgname"
 license=('gpl3')
 depends=('python>=3.7' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine' 'python-eventlet')
-makedepends=('git')
+makedepends=('git' 'unzip')
 provides=('deemix-pyweb')
 source=("${_pkgname}::git+https://gitlab.com/RemixDev/$_pkgname"
         "deemix-webui.zip::https://gitlab.com/RemixDev/deemix-webui/-/archive/1.6.0/deemix-webui-1.6.0.zip")
