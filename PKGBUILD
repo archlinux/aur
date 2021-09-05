@@ -2,7 +2,7 @@
 # Contributor: Jens Carl <jc [dot] archlinux [at] jens-carl [dot] de>
 
 pkgname=foonathan_memory-shared
-pkgver=0.6.2
+pkgver=0.7.1
 _pkgver=0.6-2
 pkgrel=2
 pkgdesc="STL compatible C++ memory allocator library build with BUILD_SHARED_LIBS=ON"
