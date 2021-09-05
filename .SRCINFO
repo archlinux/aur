@@ -94,6 +94,7 @@ pkgbase = sagemath-git
 	optdepends = python-pycosat: picosat SAT solver
 	optdepends = python-pip: to install optional packages with sage -pip
 	optdepends = sage-notebook-exporter: convert flask notebooks to Jupyter
+	optdepends = python-database-knotinfo: interface to the KnotInfo and LinkInfo databases
 	provides = sagemath
 	conflicts = sagemath
 	source = git://git.sagemath.org/sage.git#branch=develop
