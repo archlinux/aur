@@ -1,0 +1,21 @@
+pkgbase = kraft-git
+	pkgdesc = A program suitable for all trades or crafts
+	pkgver = 0.80beta8.r347.g33edf37
+	pkgrel = 1
+	url = http://www.volle-kraft-voraus.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = asciidoctor
+	makedepends = po4a
+	depends = akonadi-contacts
+	depends = ctemplate
+	depends = python-reportlab
+	depends = python-pypdf2
+	optdepends = python-weasyprint: alternative PDF generator
+	source = kraft-git::git://github.com/dragotin/kraft.git
+	sha256sums = SKIP
+
+pkgname = kraft-git
