@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kvantum-theme-vimix-git
 _gitname=vimix-kde
-pkgver=r35.8ecc8db
+pkgver=2021.09.05.r1.g5b8f265
 pkgrel=1
 pkgdesc="Vimix theme for Kvantum"
 arch=('any')
@@ -15,13 +15,13 @@ source=('git+https://github.com/vinceliuice/vimix-kde.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "$srcdir/$_gitname"
-	install -d "$pkgdir/usr/share"
-	cp -r Kvantum "$pkgdir/usr/share"
+  cd "$srcdir/$_gitname"
+  install -d "$pkgdir/usr/share"
+  cp -r Kvantum "$pkgdir/usr/share"
 }
 
