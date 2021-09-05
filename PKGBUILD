@@ -1,11 +1,11 @@
-# Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
+# Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 # Contributor: Vladimir Protasov <eoranged@ya.ru>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname='moc-pulse'
 _pkgname='moc'
 pkgver=2.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('x86_64')
 url="https://moc.daper.net/"
@@ -34,20 +34,20 @@ validpgpkeys=('59359B80406D9E73E80599BEF3121E4F2885A7AA')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
   # Fix build with ffmpeg 4 (taken from official release on ArchLinux)
   patch -p0 -i ../moc-ffmpeg4.patch
   # Allow https for urls https://moc.daper.net/node/1872 (taken from official release on ArchLinux)
   patch -p0 -i ../moc-https.patch
   # Add pulseaudio backend
   patch -p1 -i ../pulseaudio.patch
+
+  # reconfigure the build system
+  autoreconf -i -f
 }
 
 build() {
   cd "${_pkgname}-${pkgver}"
-
-  aclocal
-  automake --add-missing
-  autoreconf
 
   ./configure --prefix=/usr --without-rcc \
     --with-pulse --with-oss --with-alsa --with-jack --with-aac \
