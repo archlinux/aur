@@ -1,0 +1,16 @@
+pkgbase = ctrcdnfetch-git
+	pkgdesc = Download Content from Nintendo CDN after 11.8 (git)
+	pkgver = a8090ef
+	pkgrel = 1
+	url = https://github.com/KookiesGH/ctrcdnfetch
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = openssl
+	depends = curl
+	provides = ctrcdnfetch
+	conflicts = ctrcdnfetch
+	source = ctrcdnfetch::git+https://github.com/KookiesGH/ctrcdnfetch
+	md5sums = SKIP
+
+pkgname = ctrcdnfetch-git
