@@ -60,5 +60,5 @@ package() {
 	echo '{"main":"index.js","name":"discord"}' > $pkgdir/usr/lib/powercord/app/package.json
 	echo 'require(`/opt/powercord/src/patcher.js`)' > $pkgdir/usr/lib/powercord/app/index.js
 
-	echo -e "Use `powercord` to launch discord with powercord loaded"
+	echo "Use the 'powercord' command to launch discord with powercord loaded"
 }
