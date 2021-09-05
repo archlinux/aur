@@ -2,8 +2,8 @@
 
 pkgname=fabric-installer
 pkgver=0.7.4
-pkgrel=2
-pkgdesc='Installer for the Minecraft mod loader Fabric'
+pkgrel=3
+pkgdesc='installer for the Minecraft mod loader Fabric'
 arch=('any')
 url='https://fabricmc.net'
 license=('Apache-2.0')
