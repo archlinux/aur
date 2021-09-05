@@ -1,0 +1,111 @@
+From a7c1f5fce6303a643fadff7d85d59934bd0cf6b6 Mon Sep 17 00:00:00 2001
+From: Aaron Plattner <aplattner@nvidia.com>
+Date: Mon, 18 May 2020 15:27:01 -0700
+Subject: [PATCH] nvidia-settings: Make VDPAUDeviceFunctions static to
+ ctkvdpau.c
+
+GCC 10 defaults to building with -fno-common, which exposes a bug in
+nvidia-settings: The VDPAUDeviceFunctions structure is defined as global in
+ctkvdpau.h, so both ctkvdpau.o and ctkwindow.o have it as a global, non-static
+"tentative definition" symbol. The GCC 10 man page describes it like this:
+
+       -fcommon
+           In C code, this option controls the placement of global variables
+           defined without an initializer, known as tentative definitions in
+           the C standard.  Tentative definitions are distinct from
+           declarations of a variable with the "extern" keyword, which do not
+           allocate storage.
+
+           The default is -fno-common, which specifies that the compiler
+           places uninitialized global variables in the BSS section of the
+           object file.  This inhibits the merging of tentative definitions by
+           the linker so you get a multiple-definition error if the same
+           variable is accidentally defined in more than one compilation unit.
+
+           The -fcommon places uninitialized global variables in a common
+           block.  This allows the linker to resolve all tentative definitions
+           of the same variable in different compilation units to the same
+           object, or to a non-tentative definition.  This behavior is
+           inconsistent with C++, and on many targets implies a speed and code
+           size penalty on global variable references.  It is mainly useful to
+           enable legacy code to link without errors.
+
+Since the copy of VDPAUDeviceFunctions in ctkwindow.o is not used, just remove
+it by moving the definition of this structure into ctkvdpau.c.
+---
+ src/gtk+-2.x/ctkvdpau.c | 23 +++++++++++++++++++++++
+ src/gtk+-2.x/ctkvdpau.h | 24 ------------------------
+ 2 files changed, 23 insertions(+), 24 deletions(-)
+
+diff --git a/src/gtk+-2.x/ctkvdpau.c b/src/gtk+-2.x/ctkvdpau.c
+index 2f120f0..6149c28 100644
+--- a/src/gtk+-2.x/ctkvdpau.c
++++ b/src/gtk+-2.x/ctkvdpau.c
+@@ -103,6 +103,29 @@ const gchar* __video_mixer_parameter_help =
+ const gchar* __video_mixer_attribute_help =
+ "This shows the video mixer attributes and any applicable ranges.";
+ 
++static struct VDPAUDeviceImpl {
++
++    VdpGetErrorString *GetErrorString;
++    VdpGetProcAddress *GetProcAddress;
++    VdpGetApiVersion *GetApiVersion;
++    VdpGetInformationString *GetInformationString;
++    VdpVideoSurfaceQueryCapabilities *VideoSurfaceQueryCapabilities;
++    VdpVideoSurfaceQueryGetPutBitsYCbCrCapabilities
++        *VideoSurfaceQueryGetPutBitsYCbCrCapabilities;
++    VdpOutputSurfaceQueryCapabilities *OutputSurfaceQueryCapabilities;
++    VdpOutputSurfaceQueryGetPutBitsNativeCapabilities
++        *OutputSurfaceQueryGetPutBitsNativeCapabilities;
++    VdpOutputSurfaceQueryPutBitsYCbCrCapabilities
++        *OutputSurfaceQueryPutBitsYCbCrCapabilities;
++    VdpBitmapSurfaceQueryCapabilities *BitmapSurfaceQueryCapabilities;
++    VdpDecoderQueryCapabilities *DecoderQueryCapabilities;
++    VdpVideoMixerQueryFeatureSupport *VideoMixerQueryFeatureSupport;
++    VdpVideoMixerQueryParameterSupport *VideoMixerQueryParameterSupport;
++    VdpVideoMixerQueryAttributeSupport *VideoMixerQueryAttributeSupport;
++    VdpVideoMixerQueryParameterValueRange *VideoMixerQueryParameterValueRange;
++    VdpVideoMixerQueryAttributeValueRange *VideoMixerQueryAttributeValueRange;
++} VDPAUDeviceFunctions;
++
+ static int queryOutputSurface(CtkVDPAU *ctk_vdpau, VdpDevice device,
+                               VdpGetProcAddress *getProcAddress);
+ 
+diff --git a/src/gtk+-2.x/ctkvdpau.h b/src/gtk+-2.x/ctkvdpau.h
+index ec58d36..2652f6f 100644
+--- a/src/gtk+-2.x/ctkvdpau.h
++++ b/src/gtk+-2.x/ctkvdpau.h
+@@ -45,30 +45,6 @@ G_BEGIN_DECLS
+ #define CTK_VDPAU_GET_CLASS(obj) \
+     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VDPAU, CtkVDPAUClass))
+ 
+-
+-struct VDPAUDeviceImpl {
+-
+-    VdpGetErrorString *GetErrorString;
+-    VdpGetProcAddress *GetProcAddress;
+-    VdpGetApiVersion *GetApiVersion;
+-    VdpGetInformationString *GetInformationString;
+-    VdpVideoSurfaceQueryCapabilities *VideoSurfaceQueryCapabilities;
+-    VdpVideoSurfaceQueryGetPutBitsYCbCrCapabilities
+-        *VideoSurfaceQueryGetPutBitsYCbCrCapabilities;
+-    VdpOutputSurfaceQueryCapabilities *OutputSurfaceQueryCapabilities;
+-    VdpOutputSurfaceQueryGetPutBitsNativeCapabilities
+-        *OutputSurfaceQueryGetPutBitsNativeCapabilities;
+-    VdpOutputSurfaceQueryPutBitsYCbCrCapabilities
+-        *OutputSurfaceQueryPutBitsYCbCrCapabilities;
+-    VdpBitmapSurfaceQueryCapabilities *BitmapSurfaceQueryCapabilities;
+-    VdpDecoderQueryCapabilities *DecoderQueryCapabilities;
+-    VdpVideoMixerQueryFeatureSupport *VideoMixerQueryFeatureSupport;
+-    VdpVideoMixerQueryParameterSupport *VideoMixerQueryParameterSupport;
+-    VdpVideoMixerQueryAttributeSupport *VideoMixerQueryAttributeSupport;
+-    VdpVideoMixerQueryParameterValueRange *VideoMixerQueryParameterValueRange;
+-    VdpVideoMixerQueryAttributeValueRange *VideoMixerQueryAttributeValueRange;
+-} VDPAUDeviceFunctions;
+-
+ /* Generic description structure */
+ typedef struct
+ {
+-- 
+2.27.0
+
