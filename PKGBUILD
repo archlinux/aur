@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
 depends=('akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2')
+conflicts=('kraft')
 optdepends=("python-weasyprint: alternative PDF generator")
 makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor' 'po4a')
 source=(

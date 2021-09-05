@@ -15,6 +15,7 @@ pkgbase = kraft-git
 	depends = python-reportlab
 	depends = python-pypdf2
 	optdepends = python-weasyprint: alternative PDF generator
+	conflicts = kraft
 	source = kraft-git::git://github.com/dragotin/kraft.git
 	sha256sums = SKIP
 
