@@ -1,8 +1,10 @@
-# Maintainer: Bruce Zhang
+# Maintainer: Posi <posi1981@gmail.com>
+
+# Contributor: Bruce Zhang
 pkgname=cpod
 _name=CPod
 _nodeversion=8.16.1
-pkgver=1.27.1
+pkgver=1.28.0
 pkgrel=1
 pkgdesc="A simple, beautiful podcast app for Windows, macOS, and Linux."
 arch=('x86_64' 'i686')
