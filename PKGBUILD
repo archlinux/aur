@@ -2,7 +2,7 @@
 
 pkgname=btrfs-snapshots-git
 pkgver=0.6.1.r7.b61663a
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
 url="https://gitlab.com/jmcantrell/${pkgname%-git}"
@@ -26,11 +26,13 @@ check() {
 }
 
 prepare() {
+    cd "$srcdir/${pkgname%-git}"
     local file
     while read -r file; do
+        sed -i "1s:#\!.*/env \(.*\)$:#\!/usr/bin/\1:" "$file"
         sed -i "\:/usr/local/etc:s:/usr/local::g" "$file"
         sed -i "\:/usr/local:s:/usr/local:/usr:g" "$file"
-    done < <(find "$srcdir/${pkgname%-git}" -type f)
+    done < <(git ls-files)
 }
 
 package() {
