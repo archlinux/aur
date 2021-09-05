@@ -10,7 +10,7 @@ pkgbase = naxalnet-git
 	depends = iwd
 	depends = python-dasbus
 	depends = systemd>=248
-	depends = python-argparse
+	depends = python-systemd
 	optdepends = batctl: for debugging
 	provides = naxalnet
 	source = git+https://git.disroot.org/pranav/naxalnet.git
