@@ -5,7 +5,7 @@
 
 pkgname=libmagick6
 pkgbase=imagemagick6
-_pkgver=6.9.12-20
+_pkgver=6.9.12-21
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
@@ -19,7 +19,7 @@ makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2'
 checkdepends=('gsfonts' 'ttf-dejavu')
 source=("ImageMagick6-$_pkgver.tar.gz::https://github.com/ImageMagick/ImageMagick6/archive/refs/tags/$_pkgver.tar.gz"
         'arch-fonts.diff')
-sha256sums=('8fa7addb7eac2dd417c7fbed46ff9dd5614abf7cefea4d786375306bec2659b1'
+sha256sums=('5e5b238bb34849e7b2ac3916074768ea72e1a915500dcada78064059e95ca0a7'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 
 prepare() {
@@ -99,12 +99,12 @@ package_libmagick6() {
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE NOTICE
 
-# Drop tools
+  # Drop tools
   cd ../binpkg
   mv "$pkgdir/usr/bin" usr/
   mv "$pkgdir/usr/lib/perl5" usr/lib/
   mv "$pkgdir/usr/share/man" usr/share/
 
-# Harden security policy https://bugs.archlinux.org/task/62785
+  # Harden security policy https://bugs.archlinux.org/task/62785
   sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "$pkgdir"/etc/ImageMagick-6/policy.xml
 }
