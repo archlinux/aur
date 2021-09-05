@@ -1,12 +1,9 @@
-# Maintainer:  Thomas Weißschuh <thomas t-8ch de>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Anton Bazhenov <anton.bazhenov at gmail>
-# Contributor: shamrok <szamrok@gmail.com>
+# Maintainer:  Dominik Kummer <admin@arkades.org>
 
 pkgname=kraft-git
 pkgver=0.80beta8.r347.g33edf37
 pkgrel=1
-pkgdesc="A program suitable for all trades or crafts"
+pkgdesc="A program suitable for all trades or crafts (git)"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')

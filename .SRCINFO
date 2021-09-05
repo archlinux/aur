@@ -1,5 +1,5 @@
 pkgbase = kraft-git
-	pkgdesc = A program suitable for all trades or crafts
+	pkgdesc = A program suitable for all trades or crafts (git)
 	pkgver = 0.80beta8.r347.g33edf37
 	pkgrel = 1
 	url = http://www.volle-kraft-voraus.de/
