@@ -19,5 +19,5 @@ build() {
 
 package() {
   cd AlphacodersDownloader-$pkgver
-  python setup_compile.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
