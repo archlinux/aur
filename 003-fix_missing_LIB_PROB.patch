@@ -1,0 +1,35 @@
+--- a/fsl/src/eddy/Makefile	2019-09-29 21:41:53.118138982 +0200
++++ b/fsl/src/eddy/Makefile	2019-09-29 21:25:19.118338652 +0200
+@@ -62,7 +62,7 @@
+         endif
+ 	EXENAME=eddy${TMPNAME_1}${TMPNAME_2}
+ endif
+-USRLDFLAGS=-L${LIB_NEWMAT} -Wl,-rpath,/opt/fmrib/fsl/lib -rdynamic
++USRLDFLAGS=-L${LIB_NEWMAT} -L${LIB_PROB} -Wl,-rpath,/opt/fmrib/fsl/lib -rdynamic 
+ USRINCFLAGS=-I. -I${INC_NEWMAT} -I${INC_PROB} -I${INC_BOOST} -I${INC_CUDA} -I$(CBF_DIR) -I$(INC_BASISFIELD)
+ 
+ OBJS=eddy.o BiasFieldEstimatorImpl.o MoveBySuscCF.o PostEddyAlignShellsFunctions.o EddyCommandLineOptions.o ECModels.o KMatrix.o HyParEstimator.o ECScanClasses.o EddyUtils.o EddyHelperClasses.o DiffusionGP.o b0Predictor.o
+
+--- a/fsl/src/asl_mfree/Makefile	2019-09-29 22:52:54.221367251 +0200
++++ b/fsl/src/asl_mfree/Makefile	2019-09-29 22:53:23.577360889 +0200
+@@ -3,7 +3,7 @@
+ PROJNAME = asl_mfree
+ 
+ USRINCFLAGS = -I${INC_NEWMAT} -I${INC_ZLIB}
+-USRLDFLAGS = -L${LIB_NEWMAT} -L${LIB_ZLIB}
++USRLDFLAGS = -L${LIB_NEWMAT} -L${LIB_ZLIB} -L${LIB_PROB}
+ 
+ FSLVERSION= $(shell cat ${FSLDIR}/etc/fslversion | head -c 1)
+ ifeq ($(FSLVERSION), 5) 
+
+--- a/fsl/src/oxford_asl/Makefile	2019-09-29 22:52:27.621373018 +0200
++++ b/fsl/src/oxford_asl/Makefile	2019-09-29 22:53:41.237357074 +0200
+@@ -3,7 +3,7 @@
+ PROJNAME = oxford_asl
+ 
+ USRINCFLAGS = -I${INC_NEWMAT} -I${INC_ZLIB}
+-USRLDFLAGS = -L${LIB_NEWMAT} -L${LIB_ZLIB}
++USRLDFLAGS = -L${LIB_NEWMAT} -L${LIB_ZLIB} -L${LIB_PROB}
+ 
+ FSLVERSION= $(shell cat ${FSLDIR}/etc/fslversion | head -c 1)
+ ifeq ($(FSLVERSION), 5) 

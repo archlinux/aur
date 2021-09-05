@@ -1,41 +1,35 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 # Contributor: fishburn <frankthefishburn@gmail.com>
 
+# Set number of parallel compile jobs, default equals number of CPUs
+NJOBS=$(nproc)
+NJOBS=8
+
 pkgname=fsl
-pkgver=6.0.4
-pkgrel=2
+pkgver=6.0.5
+pkgrel=1
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
 license=(custom)
-depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk sqlite python3 fslpy bc openblas)
+depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk sqlite python3 'fslpy>=3.7.0' bc openblas)
 makedepends=(boost fftw gcc9)
 optdepends=(cuda)
 source=("https://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
         "https://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-feeds.tar.gz"
 	"buildSettings.mk"
-        "imcp"
-	"imglob"
-	"immv"
+	"fsl_sub"
 	"001-use_distribution_environment.patch"
-	"002-fix_meldata_usage_of_ifstream.patch"
-	"003-fix_fsl_exec_empty_errorCode.patch"
-	"004-fix_missing_LIB_PROB.patch"
-	"005-fix_cuda_thrust_include.patch"
-	"006-compile_ptx2_without_std-c++11.patch")
+	"002-fix_fsl_exec_empty_errorCode.patch"
+	"003-fix_missing_LIB_PROB.patch")
 
-sha256sums=('58b88f38e080b05d70724d57342f58e1baf56e2bd3b98506a72b4446cad5033e'
-	    '411daed14287d6ba536cb531450941ab1f570309cd561de4e2a4b0ec43a7e9f7'
-	    'c7f93adcf037a73182ae42ae6a59d3eb04a492888b6c2a6b528f9cd16539b2b2'
-            '8aac3a2ea61bb4c38eb363262ab7f89e55c49a5feb9912fd2ff71f2439f11fc9'
-	    'b3280bafc86d04dfa8835ef21f50469f2645bf09c36edcdd3f04349ce2c74225'
-	    '8e343b0ff93477280fd9a980822ddc9980afa7201dea51c886376c189c234c99'
+sha256sums=('df12b0b1161a26470ddf04e4c5d5d81580a04493890226207667ed8fd2b4b83f'
+	    'e68e1efeb45750f876f350442f56c4830d211e9fb16daa5ad134bb8e1ef1ae18'
+	    '880c46d4ef8a8ee1401e1fdb71dadd0f79aad2154967a03232844845227394a3'
+	    '2516982d151ab9e450a9ac6d5a6fc87099a7acc067514d80422c69950e618170'
 	    '906ac7de8068e5a5487b083844b50b6afd7562866088a4175fd88030182affdd'
-	    '13d4cf35343e7a73bc2534c94b1b0d4db41c338d374e6982091e4cf7a421d420'
 	    '64b4ccefa63a3cf920b185dd52e94b918c24f2cedaebcec8efb767bd80a6418a'
-	    'adea0372f42026e72e385f1bec19ecc8cffa46de1f617271f14c9345c6b83c04'
-    	    '9471addfc2f880350eedadcb99cb8b350abf42be1c0652ccddf49e34e5e48734'
-            'ab68cb802243ce715eff0d1136cfa29fa34a3e09934e5e20e02a092d69028df1')
+	    'adea0372f42026e72e385f1bec19ecc8cffa46de1f617271f14c9345c6b83c04')
 
 prepare() {
 	cd "${srcdir}"
@@ -48,15 +42,10 @@ prepare() {
 
 	# Apply patches
 	patch -Np1 -i "${srcdir}"/001-use_distribution_environment.patch
-	patch -Np1 -i "${srcdir}"/002-fix_meldata_usage_of_ifstream.patch
 	# From https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=fsl;e8fa48c1.1501
 	patch -Np1 -i "${srcdir}"/003-fix_fsl_exec_empty_errorCode.patch
 	# I'm not sure why -L${LIB_PROB} is missing in some Makefiles 
 	patch -Np1 -i "${srcdir}"/004-fix_missing_LIB_PROB.patch
-	# Adapted from Caspar van Leeuwen's patch: https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=FSL;2b74023.2006
-	patch -Np1 -i "${srcdir}"/005-fix_cuda_thrust_include.patch
-	# ptx2 does not compile when assuming C++11 standard
-	patch -Np1 -i "${srcdir}"/006-compile_ptx2_without_std-c++11.patch
 
 	# Insert makepkg build flags into configuration
 	sed -i '0,/${AccumulatedIncFlags}/{s^${AccumulatedIncFlags}^& '"${CFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
@@ -69,16 +58,22 @@ prepare() {
 build() {
 	export FSLDIR="${srcdir}/fsl"
 	cd "${FSLDIR}"
-	./build
-
-	# Install missing binaries, which are no longer shipped (depends on fslpy)	
-	/usr/bin/install -m 755 "${srcdir}"/{imcp,imglob,immv} "${srcdir}/fsl/bin"
+	MAKEOPTIONS="-j $NJOBS" ./build extras CiftiLib-master utils znzlib NewNifti fslio giftiio miscmaths newimage libvis first_lib meshclass fslvtkio misc_tcl basisfield warpfns bint shapeModel MVdisc
+        MAKEOPTIONS="" ./build fslsurface # fslsurface does not like parallel compiling
+        MAKEOPTIONS="-j $NJOBS" ./build libmeshutils newmesh DiscreteOpt FastPDlib MSMRegLib misc_c topup asl_mfree avwutils basil baycest bet2 bianca cluster fsl_deface eddy fabber_core fabber_models_asl fabber_models_cest fabber_models_dce fabber_models_dsc fabber_models_dualecho fabber_models_dwi fabber_models_pet fabber_models_qbold fabber_models_t1 fast4 fdt feat5 film filmbabe first flameo flirt fnirt fslvbm fugue gps lesions mcflirt melodic misc_scripts miscvis mist mm MSM oxford_asl possum ptx2 qboot randomise siena slicetimer susan swe tbss verbena xtract
+	# Install missing binaries, which are now Python scripts and shipped with fslpy
+	/usr/bin/install -m 755 /usr/bin/{imcp,imglob,immv} "${srcdir}"/fsl/bin
+	# Install missing fsl_sub script from 6.0.4
+	/usr/bin/install -m 755 "${srcdir}"/fsl_sub "${srcdir}"/fsl/bin
+	# Create fake fslpython environment (all dependencies have been taken care of system-wide)
+	ln -s /usr/bin/python "${srcdir}"/fsl/bin/fslpython
 }
 
 check() {
 	export FSLDIR="${srcdir}/fsl"
 	export FEEDSDIR="${srcdir}/feeds"
 	. "${FSLDIR}/etc/fslconf/fsl.sh"
+	export PATH="${FSLDIR}/bin":${PATH}
 	cd "${FEEDSDIR}"
 	time ./RUN all
 }

@@ -1,0 +1,12 @@
+--- a/fsl/src/misc_tcl/fsl_exec.tcl	2018-10-23 18:49:44.000000000 +0200
++++ b/fsl/src/misc_tcl/fsl_exec.tcl	2018-11-25 18:52:30.636934316 +0100
+@@ -175,6 +175,9 @@
+ 	set logout ""
+     }
+ 
++    # make sure errorCode is set
++    if { ! [ info exists ::errorCode ] } { set ::errorCode "NONE" }
++
+     # run and log the actual command
+     if { $do_logout } {
+ 	fsl:echo $logout "\n$thecommand"

@@ -44,9 +44,9 @@ INC_GSL = /usr/include/gsl
 # PNG library
 LIB_PNG = /usr/lib
 INC_PNG = /usr/include/libpng16
-# PROB library
+# PROB library; added -I${FSLEXTINC} for 6.0.5
 LIB_PROB = ${FSLEXTLIB}
-INC_PROB = ${FSLEXTINC}/cprob
+INC_PROB = ${FSLEXTINC}/cprob -I${FSLEXTINC}
 # CPROB library
 LIB_CPROB = ${FSLEXTLIB}
 INC_CPROB = ${FSLEXTINC}/
@@ -71,51 +71,6 @@ INC_XML++ = /usr/include/libxml++-2.6
 INC_XML++CONF = /usr/lib/libxml++-2.6/include
 # NEWMAT library/armadillo
 INC_NEWMAT = ${FSLEXTINC}/armawrap/armawrap -DARMA_USE_LAPACK -DARMA_USE_BLAS -DARMA_64BIT_WORD
-#####################################################################
-#
-#       Darwin specific sys vars and ext libs
-#
-#####################################################################
-ifeq ($(SYSTYPE), Darwin)
-###############   System Vars   #####################################
-CC = cc-9
-CXX = c++-9
-CXX11 = clang++-9
-CSTATICFLAGS =
-CXXSTATICFLAGS =
-CFLAGS = -std=c99
-ARCHFLAGS = -arch x86_64
-ARCHLDFLAGS = -Wl,-search_paths_first -arch x86_64
-PER_ARCH_CFLAGS_x86_64 = -msse3
-OPTFLAGS =  -O3
-GNU_ANSI_FLAGS = -Wall -pedantic -ansi -Wno-long-long
-ANSI_CFLAGS = ${GNU_ANSI_FLAGS}
-ANSI_CXXFLAGS = ${GNU_ANSI_FLAGS} -ansi
-RANLIB = ranlib
-###############   External Libs   #####################################
-# Armadillo library
-LIB_NEWMAT = ${FSLEXTLIB} -llapack -lblas
-# ZLIB library
-LIB_ZLIB = /usr/lib
-INC_ZLIB = /usr/include
-# QT library
-QTDIR = /usr
-LIB_QT = ${QTDIR}/lib
-INC_QT = ${QTDIR}/include/qt
-# VTK library
-VTKDIR_INC = /Users/cowboy/VTK7/include/vtk-7.0
-VTKDIR_LIB = /Users/cowboy/VTK7/lib
-VTKSUFFIX = -7.0
-# CUDA library
-CUDAVER := $(or $(CUDAVER),7.5)
-CUDA_INSTALLATION = /Developer/NVIDIA/CUDA-${CUDAVER}
-GENCODE_FLAGS = $(shell ${FSLDIR}/config/common/supportedGencodes.sh ${CUDA_INSTALLATION})
-LIB_CUDA = ${CUDA_INSTALLATION}/lib
-INC_CUDA = ${CUDA_INSTALLATION}/include
-NVCC = ${CUDA_INSTALLATION}/bin/nvcc
-#Project specific variables
-EDDYBUILDPARAMETERS="cuda=1 CUDAVER=7.5" "cpu=1"
-endif # if Darwin
 #####################################################################
 #
 #       Linux specific sys vars and ext libs
@@ -173,8 +128,8 @@ LIB_NEWMAT = /usr/lib -llapack -lopenblas
 
 #Project specific variables
 EDDYBUILDPARAMETERS = "cuda=1 CUDAVER=8.0" "cuda=1 CUDAVER=9.1" "cpu=1"
-fdt_MASTERBUILD     = COMPILE_GPU = 1
-ptx2_MASTERBUILD    = COMPILE_GPU = 1
+fdt_MASTERBUILD     = COMPILE_GPU = 0
+ptx2_MASTERBUILD    = COMPILE_GPU = 0
 define newline
 
 
