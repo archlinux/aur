@@ -1,13 +1,13 @@
 pkgbase = f21-backgrounds
 	pkgdesc = Fedora 21 backgrounds
 	pkgver = 21.1.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://fedoraproject.org/wiki/F21_Artwork
 	arch = any
 	license = CC-BY
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f21-backgrounds-21.1.0-12.fc34.src.rpm
-	sha256sums = 410b14d59c6ed42aecd7732f1806979c6a7a5309bbad2fb172442bbda24b8c38
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f21-backgrounds-21.1.0-13.fc35.src.rpm
+	sha256sums = 0c2ab5d990747474f6b02eadbf814f867f0f4812100e015f08565e68407a9e64
 
 pkgname = f21-backgrounds
 
