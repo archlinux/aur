@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fuse3-git
-pkgver=3.9.0.r13.g5622233
+pkgver=3.10.4.r11.g9677eca
 pkgrel=1
 pkgdesc="The reference implementation of the Linux FUSE (Filesystem in userspace) interface"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ build() {
     --sbindir="bin" \
     --default-library both \
     "_build"
-  ninja -C "_build"
+  meson compile -C "_build"
 }
 
 package() {
