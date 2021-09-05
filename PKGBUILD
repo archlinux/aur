@@ -1,8 +1,8 @@
 # Maintainer: <user11681 at gmail dot com>
 pkgname=circle
 pkgver=build_131
-pkgrel=1
-pkgdesc='Compiler for the Circle language'
+pkgrel=2
+pkgdesc='compiler for the programming language Circle'
 arch=('any')
 url='https://circle-lang.org'
 license=('custom')

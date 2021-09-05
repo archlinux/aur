@@ -1,7 +1,7 @@
 pkgbase = circle
-	pkgdesc = Compiler for the Circle language
+	pkgdesc = compiler for the programming language Circle
 	pkgver = build_131
-	pkgrel = 1
+	pkgrel = 2
 	url = https://circle-lang.org
 	arch = any
 	license = custom
