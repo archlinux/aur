@@ -9,6 +9,7 @@ url="https://bitbucket.org/angrysoft/pyiot"
 license=('Apache 2.0')
 arch=('any')
 depends=('python-setuptools' 'python-pycryptodomex')
+makedepends=('git' 'python-setuptools')
 source=("${_realname}::git+https://bitbucket.org/angrysoft/pyiot/src/master/")
 md5sums=("SKIP")
 noextract=()
