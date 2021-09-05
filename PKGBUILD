@@ -15,7 +15,7 @@ makedepends=('yarn' 'jq' 'moreutils' 'nvm' 'gulp' 'python2')
 provides=('cpod')
 conflicts=('cpod-bin' 'cpod-git')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/z-------------/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('9d401203f9014abdbcd8e3b2020a299bfffd8ad2e7a860213692eb180b75633d')
+sha256sums=('0c20040e2855427e97fb5f8645ace3e2179bc25b136953f7dd5d12b73936115e')
 
 prepare() {
 	cd "$_name-$pkgver"
