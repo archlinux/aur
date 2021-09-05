@@ -1,37 +1,39 @@
+# Maintainer: FabioLolix
+# Contributor: Daniel Milde <daniel.milde@firma.seznam.cz>
+# Contributor: Bradley Nelson <bradleynelson102@gmail.com>
+
 pkgname=stacer-git
-_gitname=Stacer
-pkgver=v1.1.0.r59.g2af6e58
+pkgver=1.1.0.r87.ga146edd
 pkgrel=1
 pkgdesc="Linux System Optimizer and Monitoring"
-url="https://github.com/oguzhaninan/Stacer"
-arch=('any')
-license=('GPL3')
-depends=('git' 'qt5-charts' 'qt5-svg' 'hicolor-icon-theme')
-conflicts=('stacer' 'stacer-bin')
-source=("git://github.com/oguzhaninan/$_gitname.git" $pkgname.desktop)
-sha256sums=('SKIP'
-            '5c1a6698d1dd4ac2b09ef684564fc120765dd028dbe31fe17ce1d745f1fc4291')
+url="https://oguzhaninan.github.io/Stacer-Web/"
+arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
+license=(GPL3)
+depends=(qt5-charts qt5-svg)
+makedepends=(git cmake qt5-tools)
+provides=(stacer)
+conflicts=(stacer)
+source=("${pkgname%-git}::git+https://github.com/oguzhaninan/Stacer.git")
+sha256sums=('SKIP')
+
 pkgver() {
-  cd "$_gitname"
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_gitname"
+  cd "${pkgname%-git}"
   [ -d build ] && rm -fr build
   mkdir build
   cd build
 
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/qt/path/bin .. 
   sed -i s/\;/" "/g ./stacer/CMakeFiles/stacer.dir/link.txt
-  make -j $(nproc)
-  
-  # Build translations
-  #lrelease ../stacer/stacer.pro
+  make
 }
 
 package() {
-  cd "$srcdir/$_gitname"/build
+  cd "${pkgname%-git}/build"
   mkdir -p "${pkgdir}"/usr/lib/stacer
   
   install -Dm755 ./output/lib/libstacer-core.a "${pkgdir}"/usr/lib

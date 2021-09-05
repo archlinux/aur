@@ -1,20 +1,24 @@
 pkgbase = stacer-git
 	pkgdesc = Linux System Optimizer and Monitoring
-	pkgver = v1.1.0.r59.g2af6e58
+	pkgver = 1.1.0.r87.ga146edd
 	pkgrel = 1
-	url = https://github.com/oguzhaninan/Stacer
-	arch = any
+	url = https://oguzhaninan.github.io/Stacer-Web/
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
-	depends = git
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
 	depends = qt5-charts
 	depends = qt5-svg
-	depends = hicolor-icon-theme
+	provides = stacer
 	conflicts = stacer
-	conflicts = stacer-bin
-	source = git://github.com/oguzhaninan/Stacer.git
-	source = stacer-git.desktop
+	source = stacer::git+https://github.com/oguzhaninan/Stacer.git
 	sha256sums = SKIP
-	sha256sums = 5c1a6698d1dd4ac2b09ef684564fc120765dd028dbe31fe17ce1d745f1fc4291
 
 pkgname = stacer-git
-
