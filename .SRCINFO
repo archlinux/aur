@@ -1,19 +1,23 @@
 pkgbase = buku
-	pkgdesc = Powerful command-line bookmark manager. CLI only.
-	pkgver = 4.3
+	pkgdesc = Bookmark manager like a text-based mini-web
+	pkgver = 4.6
 	pkgrel = 1
-	url = https://github.com/jarun/Buku
-	arch = any
-	license = GPL3
-	makedepends = make
+	url = https://github.com/jarun/buku
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
 	depends = python
-	depends = python-beautifulsoup4
-	depends = python-cryptography
-	depends = python-urllib3
 	depends = python-certifi
+	depends = python-urllib3
+	depends = python-cryptography
+	depends = python-beautifulsoup4
 	depends = python-html5lib
-	source = buku-4.3.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v4.3
-	sha256sums = 4c91cb0ac83164153c65705f46af29aaede78a2ed48d836cd2269b0fc71fed7a
+	optdepends = wl-clipboard: to copy text in wayland
+	optdepends = wl-clipboard-rs: to copy text in wayland
+	optdepends = xsel: to copy text in xorg
+	optdepends = xclip: to copy text in xorg
+	conflicts = buku-git
+	source = buku-4.6.tar.gz::https://github.com/jarun/buku/archive/refs/tags/v4.6.tar.gz
+	sha256sums = 2e1968016d3856184db8ac49cdc92a6c70869f62846185f28c8c60ead0c42888
 
 pkgname = buku
-
