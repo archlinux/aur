@@ -2,8 +2,8 @@
 #Original Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 pkgname=cpuminer-opt-git
 _pkgname=cpuminer-opt
-pkgver=3.8.3.1.r0.g59c7848
-pkgrel=3
+pkgver=3.17.1.r0.g9b905fc
+pkgrel=1
 pkgdesc="Optimized multi-algo CPU miner - git version"
 arch=('x86_64')
 url="https://github.com/JayDDee/cpuminer-opt"
