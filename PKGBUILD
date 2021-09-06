@@ -4,13 +4,13 @@
 
 pkgname=mit-scheme
 pkgver=11.2
-pkgrel=2
+pkgrel=3
 pkgdesc='MIT/GNU Scheme'
 url='https://www.gnu.org/software/mit-scheme/'
 arch=('x86_64')
 license=('GPL')
 depends=('ncurses' 'zlib' 'libx11')
-makedepends=('ghostscript')
+makedepends=('ghostscript' 'texlive-core')
 optdepends=('openssl: support for openssl')
 provides=('x11-shim.so')
 source=("https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/$pkgver/$pkgname-$pkgver-x86-64.tar.gz"

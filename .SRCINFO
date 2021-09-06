@@ -1,11 +1,12 @@
 pkgbase = mit-scheme
 	pkgdesc = MIT/GNU Scheme
 	pkgver = 11.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/mit-scheme/
 	arch = x86_64
 	license = GPL
 	makedepends = ghostscript
+	makedepends = texlive-core
 	depends = ncurses
 	depends = zlib
 	depends = libx11
