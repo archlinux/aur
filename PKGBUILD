@@ -3,8 +3,8 @@
 _pyname=oslo.privsep
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.2
+pkgrel=1
 pkgdesc="OpenStack library for privilege separation"
 arch=(any)
 url="https://docs.openstack.org/oslo.privsep/latest/"
@@ -38,9 +38,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('f69c47ab712f0f20c08131bf4b621765')
-sha256sums=('97a969fac3d70f61151b3dfbfc04b4541b4954b60de34fdc11525dc6002ae0d2')
-sha512sums=('aa042e0ff53bd636e916f68940927ca5aa7b74a4d0ed0d7e62280815beb5b015c3bc8476aff0ab60070bcd948f800b7e3d4b6f83d12ec67eb7d4c5494121a9bb')
+md5sums=('decca9992112049c536fe12555a99c9a')
+sha256sums=('b7bdb7c575cdce6a541ec698387fdf5fba502d4cb32f912e77ed32ac0dc7133a')
+sha512sums=('59cd8567ea31c17d849bc2c6f12ab8b0aeffce3341ae2a6f46c36388229a230930c3b6af9e9d59c754bf5d88a05deb11c413079b27d001ac5e49faa89baa3d1a')
 
 export PBR_VERSION=$pkgver
 
