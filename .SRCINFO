@@ -1,0 +1,21 @@
+pkgbase = flatout2-wine-gog
+	pkgdesc = FlatOut 2 using WINE with data via GOG
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://www.gog.com/game/flatout_2
+	install = flatout2.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = innoextract
+	makedepends = icoutils
+	source = setup_flatout2_2.1.0.9.exe::gogdownloader://flatout_2/en1installer1
+	source = setup_flatout2_2.1.0.9.bin::gogdownloader://flatout_2/en1installer2
+	source = flatout2.desktop
+	source = flatout2.sh
+	sha256sums = b13e87de2e7386a120cd6dfc194e6e9a6bd522fe51fb8a7ad3faad6ab0475df9
+	sha256sums = 9d488e515d6e529127a695998c92fdbfd6d94f4cb35919776116ff4ab073e683
+	sha256sums = 866f48abcb74e0f3196c0ec5e37a80fc0e5144dc7ac5c40ab941bd685888ff36
+	sha256sums = cfd01677861a1687c89cbf0165d0054342aea4b46b0b15eeffe05ca80e33a20a
+
+pkgname = flatout2-wine-gog

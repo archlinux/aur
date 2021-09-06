@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FlatOut 2
+Comment=FlatOut 2 WINE GOG
+Exec=/usr/bin/flatout2
+Icon=flatout2-gog
+Terminal=false
+Type=Application
+Categories=Application;Game;
