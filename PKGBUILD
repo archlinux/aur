@@ -4,7 +4,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=10.0.1.r65.3177b6a88
+pkgver=10.0.2.r306.c51183f1a
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64')
@@ -103,7 +103,7 @@ package() {
   echo -e "${_prefix}Extracting the zip archive"
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
-  unzip -u build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux64.zip -d "$pkgdir"/opt
+  unzip -u build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux_x86_64.zip -d "$pkgdir"/opt
 
   echo -e "${_prefix}Setting up a versionless directory name"
   mv "$pkgdir"/opt/ghidra{_"${_appver}_${_relname}",}
