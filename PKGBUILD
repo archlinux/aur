@@ -15,6 +15,10 @@ depends=('fortune-mod')
 source=(https://www.splitbrain.org/_media/projects/fortunes/fortune-hitchhiker.tgz)
 sha512sums=('a4f4a99c33764e6d4ec823a57f9d2d40168ddf3cb9506e85fb0f6f10b11673abd76d02e9af8a95926ba758a28fbbe895a427b40c36bd31bc43252c4e6dd610b0')
 
+pkgver() {
+    date -ur "${srcdir?}/fortune-hitchhiker/hitchhiker" '+%Y%m%d'
+}
+
 package() {
   mkdir -p "${pkgdir}/usr/share/fortune"
   install -Dm 644 "${srcdir}/fortune-hitchhiker/hitchhiker"* "${pkgdir}/usr/share/fortune/"
