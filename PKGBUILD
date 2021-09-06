@@ -2,19 +2,22 @@
 
 pkgname=rustcat
 _binname=rc
-pkgver=latest
+pkgver=1.1.0
 pkgrel=3
 pkgdesc="Rustcat - Like Netcat but in Rust"
 url="https://github.com/robiot/rustcat"
 license=('MIT')
 arch=('x86_64')
 
-source=("rc::https://github.com/robiot/rustcat/releases/latest/download/rc")
+source=("rc.tar.gz::https://github.com/robiot/rustcat/releases/download/v${pkgver}/rustcat_${pkgver}_amd64-linux.tar.gz")
 conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
 
 package() {
     cd "${srcdir}"
-    chmod +x rc
+    
+    echo "${srcdir}"
+    echo "${pkgdir}"
+    #chmod +x rc
     install -d -m755 ${pkgdir}/usr/bin
     install -d -m755 ${pkgdir}/usr/share/${pkgname}
     cp -r . ${pkgdir}/usr/share/${pkgname}

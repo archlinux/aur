@@ -1,6 +1,6 @@
 pkgbase = rustcat
 	pkgdesc = Rustcat - Like Netcat but in Rust
-	pkgver = latest
+	pkgver = 1.1.0
 	pkgrel = 3
 	url = https://github.com/robiot/rustcat
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rustcat
 	conflicts = rustcat
 	conflicts = rustcat-bin
 	conflicts = rustcat-git
-	source = rc::https://github.com/robiot/rustcat/releases/latest/download/rc
+	source = rc.tar.gz::https://github.com/robiot/rustcat/releases/download/v1.1.0/rustcat_1.1.0_amd64-linux.tar.gz
 	md5sums = SKIP
 
 pkgname = rustcat
