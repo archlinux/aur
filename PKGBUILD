@@ -3,7 +3,7 @@
 pkgname=palanteer
 pkgver=0.3
 python_pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="High performance visual profiler, debugger, tests enabler for C++ and Python"
 arch=('x86_64')
 url="https://github.com/dfeneyrou/${pkgname}"
@@ -30,4 +30,5 @@ package() {
 
   # Python packages.
   pip install "${pkgname}-${pkgver}/build/python/dist/${pkgname}-${pkgver}-cp39-cp39-linux_x86_64.whl" --root="${pkgdir}"
+  pip install "${pkgname}-${pkgver}/build/server/scripting/dist/${pkgname}_scripting-${pkgver}-cp39-cp39-linux_x86_64.whl" --root="${pkgdir}"
 }
