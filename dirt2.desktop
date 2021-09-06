@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Colin McRae: DiRT 2
+Comment=Colin McRae DiRT 2 WINE
+Exec=/usr/bin/dirt2
+Icon=dirt2
+Terminal=false
+Type=Application
+Categories=Application;Game;

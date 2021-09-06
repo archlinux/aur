@@ -1,0 +1,4 @@
+post_install() {
+    echo "On the first run, game startup may take significantly longer while the wine prefix is prepared."
+    echo "If DiRT 2 crashes on first launch, set '<directx forcedx9=\"true\" />' in ~/Documents/My Games/DiRT2/hardwaresettings/hardware_settings_config.xml."
+}
