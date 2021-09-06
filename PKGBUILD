@@ -1,8 +1,9 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# pkg: github openresty/lua-nginx-module
 
 pkgname=nginx-mainline-mod-lua
-pkgver=0.10.19
-pkgrel=2
+pkgver=0.10.20
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 
@@ -14,7 +15,7 @@ url="https://github.com/openresty/lua-nginx-module"
 license=('BSD')
 
 source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz)
-sha256sums=('242d60b97eb7459cd0c0d58083cf7f3195d46181829da45ab8b09a857bb0ed01')
+sha256sums=('efeb38afc966dec36a086a99f9b8706b8a343e5e44d75c19bf8f017ea6657313')
 
 prepare() {
 	mkdir -p build
