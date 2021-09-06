@@ -1,12 +1,12 @@
 pkgbase = mcserv
 	pkgdesc = CLI utility to manage MC server installations.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/DRSchlaubi/mcserv
 	arch = x86_64
 	license = GPL3
 	options = !strip
-	source = https://github.com/DRSchlaubi/mcserv/releases/download/v0.0.1/mcserv-0.0.1-linux.tar.gz
-	sha256sums = 667345010fecbbe1ffcfd3a2e0617c0f8da6701d34ab3079dc25ec5bfa934ae5
+	source = https://github.com/DRSchlaubi/mcserv/releases/download/v0.0.2/mcserv-0.0.2-linux.tar.gz
+	sha256sums = f66b44a740f55bac2bc7a0bb29a47fd125ac6e84895445513cef15d91cfe8bb4
 
 pkgname = mcserv
