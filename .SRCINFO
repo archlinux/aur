@@ -1,5 +1,3 @@
-generated-by = makedeb-makepkg
-
 pkgbase = keyboard-center
 	pkgdesc = Application to map G-keys on (some) Logitech Gaming Keyboards
 	pkgver = 0.1.4
