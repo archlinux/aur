@@ -1,0 +1,5 @@
+post_install() {
+	echo ''
+	echo ':: THIS LIBRARY IS DEPRECATED AND REACHES END OF LIFE ON DECEMBER 31, 2021'
+	echo ''
+}
