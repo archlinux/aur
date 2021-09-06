@@ -6,7 +6,7 @@
 
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
-pkgver=r8835.6ef5c108e
+pkgver=r9202.f90a636c8
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
@@ -23,11 +23,12 @@ replaces=('i-score')
 source=(
 "git+https://github.com/jcelerier/QCodeEditor"
 "git+https://github.com/Vidvox/hap"
+"git+https://github.com/jcelerier/libsndfile"
 "git+https://github.com/ossia/score"
 "git+https://github.com/ossia/libossia"
 "git+https://github.com/catchorg/Catch2"
 "git+https://github.com/OculusVR/Flicks"
-"git+https://github.com/Microsoft/GSL"
+"git+https://github.com/jcelerier/GSL"
 "git+https://github.com/jcelerier/Servus"
 "git+https://github.com/jcelerier/dnssd"
 "git+https://github.com/jcelerier/SmallFunction"
@@ -68,8 +69,8 @@ source=(
 "git+https://github.com/gpakosz/whereami"
 "git+https://github.com/OSSIA/wiiuse.git"
 "git+https://github.com/OSSIA/cmake-modules"
-"git+https://github.com/libpd/libpd"
-"git+https://github.com/pure-data/pure-data"
+"git+https://github.com/jcelerier/libpd"
+"git+https://github.com/jcelerier/pure-data"
 "git+https://github.com/jcelerier/magicitems"
 "git+https://github.com/jcelerier/phantomstyle"
 "git+https://github.com/jcelerier/snappy"
@@ -150,6 +151,7 @@ sha256sums=(
 'SKIP'
 'SKIP'
 'SKIP'
+'SKIP'
 )
 
 _gitname=score
@@ -164,6 +166,7 @@ build() {
 
   git config submodule.3rdparty/QCodeEditor.url $srcdir/QCodeEditor
   git config submodule.3rdparty/hap.url $srcdir/hap
+  git config submodule.3rdparty/libsndfile.url $srcdir/libsndfile
   git config submodule.3rdparty/libossia.url $srcdir/libossia
   git config submodule.3rdparty/libpd.url $srcdir/libpd
   git config submodule.3rdparty/magicitems.url $srcdir/magicitems
@@ -239,7 +242,7 @@ build() {
 	      -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
 	      "$srcdir/$_gitname"
 
-  cmake --build .
+  cmake --build . --parallel
 }
 
 package() {
