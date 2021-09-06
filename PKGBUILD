@@ -4,7 +4,7 @@
 
 pkgname=dingtalk-bin
 _pkgname=com.alibabainc.dingtalk
-pkgver=1.0.0.284
+pkgver=1.0.0.285
 pkgrel=1
 pkgdesc="钉钉"
 arch=("x86_64")
@@ -21,8 +21,8 @@ source=("https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linu
 
 # DebSource & pkgvere can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
 
-md5sums=('2af4a6c81458b9275a09d2457a407a49'
-         '2372f8f702beea86558d39de5d7d2b8d'
+md5sums=('c55d666652ad08c3a2bd0e10b469426f'
+         '330f9b599d1ddd12511fd58317529a7d'
          'e1b984a024700a9ef5f77a1018a41f8e'
          '0e255cd61852162548db96e46f1dda00')
 
@@ -44,7 +44,7 @@ package(){
     install -Dm644 ${_pkgname}.desktop -t ${pkgdir}/usr/share/applications/
 
     # license
-    install -Dm644 service-terms-zh-${pkgver} ${pkgdir}/usr/share/licenses/${pkgname}/service-terms-zh
+    install -Dm644 service-terms-zh-${pkgver} ${pkgdir}/usr/share/licenses/${pkgname}/service-terms-zh.html
 
     rm ${pkgdir}/opt/apps/${_pkgname}/files/*/libm.so.6
 }
