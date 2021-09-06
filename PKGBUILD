@@ -1,12 +1,12 @@
 pkgname=companion
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('i386' 'x86_64')
 url="https://github.com/bitfocus/companion"
 license=('custom')
 depends=('libvips' 'libxss' 'gconf' 'gtk3')
-makedepends=('nvm')
+makedepends=('nvm' 'git')
 install=companion.install
 
 source=("${pkgname}::git+https://github.com/bitfocus/companion.git#tag=v${pkgver}"
