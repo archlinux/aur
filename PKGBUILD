@@ -13,6 +13,7 @@ depends=('dkms')
 conflicts=('nullfs-dkms')
 source=("https://github.com/abbbi/nullfsvfs/archive/"$pkgver".tar.gz")
 b2sums=('0d17810e7e9661f3316268691b4c71ceb44274fc392874187f548f4e5974c9ef7ee10a08b854b9c3a0f58c4cf9fa9432d2a91bf709ac3aa636c00cc76d1bad32')
+url="https://github.com/abbbi/nullfsvfs"
 
 package() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"

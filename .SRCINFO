@@ -2,6 +2,7 @@ pkgbase = nullfsvfs-dkms
 	pkgdesc = nullfsvfs is a null filesystem that acts like /dev/null but can be mounted
 	pkgver = 0.9
 	pkgrel = 1
+	url = https://github.com/abbbi/nullfsvfs
 	arch = any
 	license = GPL3
 	depends = dkms
