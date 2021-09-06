@@ -3,8 +3,8 @@
 _pyname=oslo.reports
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Oslo Reports library"
 arch=(any)
 url="https://docs.openstack.org/oslo.reports/latest/"
@@ -15,7 +15,6 @@ depends=(
 	python-jinja
 	python-oslo-serialization
 	python-psutil
-	python-six
 	python-oslo-i18n
 	python-oslo-utils
 )
@@ -34,13 +33,14 @@ checkdepends=(
 	python-eventlet
 	python-greenlet
 	python-coverage
+	python-pre-commit
 	bandit
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('9979288e77ffe302a4eb5ef5c0bc57a2')
-sha256sums=('cf4a62a427ff1a832ca2b2ee98ae36eb1285e5587254ed6aad1e4502a8c32b42')
-sha512sums=('dd8224a1789318572bcd3e0394c01a0c65f8a1b48afcf6a5dbf6503f310bb3f48457b9c0e9315620d8935156bd29efa30d9c1e0368480484776178875f84840d')
+md5sums=('33bc0d4665c3f060aa84f8b3c8423236')
+sha256sums=('665cb23ca148bfd802ebb4ab883feb5e3e3749ef6fc77d3c18803c7db2c11451')
+sha512sums=('7baf354d6e0a332805c0383cfa47171b9f0f32470a0257bdcff0b67cd401623dfb2187f7e4ba65c74e0da6fa053bf8caca7f5d3cf3ac00b1b4cf7549e0c6bc75')
 
 export PBR_VERSION=$pkgver
 
