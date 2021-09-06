@@ -1,6 +1,6 @@
 pkgbase = servicewall-git
 	pkgdesc = The firewall that remembers the different networks you connect to.
-	pkgver = 0.4.9.r4.397f31d
+	pkgver = 0.4.9.r5.fcfcbdb
 	pkgrel = 1
 	url = https://git.relatif.moi/lafleur/servicewall
 	install = servicewall.install
