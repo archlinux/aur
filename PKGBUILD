@@ -3,8 +3,8 @@
 _pyname=oslo.rootwrap
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=6.2.0
-pkgrel=2
+pkgver=6.3.0
+pkgrel=1
 pkgdesc="Oslo Rootwrap"
 arch=(any)
 url="https://docs.openstack.org/oslo.rootwrap/latest/"
@@ -12,7 +12,6 @@ license=(Apache)
 depends=(
 	python
 	python-pbr
-	python-six
 )
 makedepends=(
 	python-setuptools
@@ -30,6 +29,7 @@ checkdepends=(
 	python-oslotest
 	python-eventlet
 	python-reno
+	python-pre-commit
 	bandit
 )
 options=('!emptydirs')
@@ -37,12 +37,12 @@ source=(
 	https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz
 	0000-lost-binary2string.patch
 )
-md5sums=('3dad1a7a001be9f6283bcc25ce511c39'
-         '781fdf0abc0d4549396493bff5a6dc22')
-sha256sums=('83e01cf523b04a2f7c1a4c9000c55bbc1b75a26391cce25b3a7c94b50cafa848'
-            'e61c6e768aad32df895744652a1238c32d13659b3ba2c8735b830e6e8e95b497')
-sha512sums=('bf3e91ec8a18f92f6f5974a6d8369ae73dba6e61fa3001996678b85d0bfb2426536d27097ad784169e6eca50ad23471505d5089e8d4a6a84c9e0e009a6a38f5a'
-            '3c3dd8a25956eddd8a1c8707c07c2a82fadcf4419e58d7cea72ce36f1147747f2b51fd8c02b94814d9f63189b273ed2a43f42d491dc8b0653aec56f8ebe1d846')
+md5sums=('29a6057c0ff278b08978b3d00ce51246'
+         '3ed48e97d11bf4589718870c36a2cb37')
+sha256sums=('f24a8d0ad64db4570201ad91e40b2b2528f507668f9d888739357fc5eda20a12'
+            '8fe35f8236a75384c67be0121ed5dcacfdaf10f57944b9c46f6f18ae7b67527a')
+sha512sums=('0f22e3b3b23dbad18109b3f11c18c2e278d582afc62bd03909e46445231e905a70b26a38773ab9c5543a0bcd0987f0681dfaf5a633cbf24f0144c6ff1f081626'
+            '2efee44b40ba03d409c55d01f185e8fecd39f1230449ed437007bc8cc942775158d82976285bd5baa54b44d404f83ffa977250693d0109baa30a242809bbfe94')
 
 prepare(){
 	for i in "${source[@]}"
