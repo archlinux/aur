@@ -1,8 +1,8 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
-	pkgver = 5.13.12.arch1
+	pkgver = 5.13.13.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.13.12-arch1
+	url = https://github.com/archlinux/linux/commits/v5.13.13-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-covolunablu-gaming
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.13.12-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.13.13-arch1
 	source = config
 	source = bfq-default.patch
 	source = futex2-tkg.patch
@@ -29,7 +29,7 @@ pkgbase = linux-covolunablu-gaming
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = d62593043d7a666eada0b3c1d5595c49ed0b80896330e0b323c6217c5d211358
+	sha256sums = cc223f9f6eb7fc72cc8f5939e68fa1965210b105966f40cf64666eef1ccb9dd9
 	sha256sums = f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d
 	sha256sums = 32cf6c57412a8ac7272c83a7f44da56f1c6ef9c3ad389d7f37cdc4f8ffd6ae6e
 
