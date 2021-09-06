@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=go-kbdgrab
-pkgver=r22.e829367
+pkgver=r23.43b5f93
 pkgrel=1
 pkgdesc='Key grabber written in golang for cleaning your keyboard'
 arch=(i686 x86_64)
@@ -29,6 +29,7 @@ build() {
 
 	export GOPATH="${srcdir}/go"
 	export PATH="${PATH}:${GOPATH}/bin"
+
 	make
 }
 
