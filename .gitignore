@@ -1,4 +1,7 @@
-*tar*
-pkg
-src
-clash-logo.png
+*
+!PKGBUILD
+!clash-for-windows.desktop
+!clash-for-windows-bin.install
+!cfw
+!.gitignore
+!.SRCINFO
