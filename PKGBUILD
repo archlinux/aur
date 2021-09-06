@@ -1,8 +1,9 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=accupy
 pkgname=python-${_base}
 pkgdesc="Accurate sums and dot products for Python"
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -11,7 +12,7 @@ depends=(python-mpmath python-pyfma eigen)
 makedepends=(python-setuptools pybind11)
 checkdepends=(python-pytest-cov python-perfplot)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ae1b3b8d3291e8f3322bf20075790e6bc7855ab06275427b954f8958939da83b6216d1ac875259b7ae256cdf190693567c828abf6588f9849aec8f0eaf280316')
+sha512sums=('32d0d76eb2b0b6e843cb6a81267c0f54d354fe1ccd812196f14360521f13ccdc62dd2b1dc14739162d4e7d0dbd6bb0521056ac03b8fbb67f4ddaef02b812b779')
 
 export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
