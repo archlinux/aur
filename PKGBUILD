@@ -1,37 +1,28 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Cyker Way <cykerway at gmail dot com>
-# Maintainer:  Cyker Way <cykerway at gmail dot com>
 
 pkgname=ncmpy
-pkgver=1.4
+pkgver=1.5.7
 pkgrel=1
-pkgdesc="A curses-based MPD client written in Python."
-arch=('i686' 'x86_64')
-url="http://www.cykerway.com/projects/ncmpy"
+pkgdesc="Curses-based MPD client"
+arch=('any')
+url="https://github.com/cykerway/ncmpy"
 license=('GPL3')
-depends=('python2' 'python2-mpd')
-conflicts=('ncmpy-git')
-source=("https://github.com/cykerway/ncmpy/archive/v$pkgver.tar.gz")
-sha256sums=('ec85151b3f19e9b4481836a1d4caf1f0d5b82a57f12b65c3a733cfce80e468cc')
+depends=('python-mpd2' 'python-yaml')
+makedepends=('python-setuptools')
+backup=("etc/$pkgname/$pkgname.yaml")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('31009d9c15aeef43c70273b5a52cca2aaf62226cff3e5699c48d3d28e1804695')
+
+build() {
+  cd "$pkgname-$pkgver"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-
-  install -Dm644 \
-    "$srcdir/$pkgname-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/ncmpy/LICENSE"
-
-  install -Dm644 \
-    "$srcdir/$pkgname-$pkgver/INSTALL" \
-    "$pkgdir/usr/share/ncmpy/INSTALL"
-
-  install -Dm644 \
-    "$srcdir/$pkgname-$pkgver/README.md" \
-    "$pkgdir/usr/share/ncmpy/README.md"
-
-  install -Dm644 \
-    "$srcdir/$pkgname-$pkgver/share/ncmpy.conf.example" \
-    "$pkgdir/usr/share/ncmpy/ncmpy.conf.example"
+  cd "$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm 644 data/ncmpy.yaml.example "$pkgdir/etc/$pkgname/$pkgname.yaml"
 }
 
 # vim:set ts=2 sw=2 et:
