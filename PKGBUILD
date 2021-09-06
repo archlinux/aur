@@ -1,7 +1,9 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=pyfma
 pkgname=python-${_base}
 pkgdesc="Fused multiply-add (with a single rounding) for Python"
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -9,8 +11,8 @@ license=(MIT)
 depends=(python-numpy)
 makedepends=(python-setuptools pybind11)
 checkdepends=(python-pytest-codeblocks)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('68a9607cc16a07f9ca5c52bb63caf73645d94223aa50052ce828abd0322727bf611948513653d8b3250a251b3ce7364a15ad81cb4bd2007a65caa2f18b64be6a')
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('be7ebe4c86b408d573ead5e72cf9e0336a9a00277b0a4ea7f6b6e0f77f57474aa98bfce4622d90cdf4cb977023d022b8f68c2c74a4907aa361247e8029069c9d')
 
 export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
