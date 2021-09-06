@@ -8,24 +8,24 @@ _lang=it
 pkgname=${_name}-${_channel}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=89.0a1
-pkgver=89.0a1
+_version=93.0a1
+pkgver=93.0a1
 pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 depends=(dbus-glib gtk3 libxt nss mime-types)
-optdepends=('pulseaudio: audio support'
-            'ffmpeg: h.264 video'
-            'hunspell: spell checking'
-            'hyphen: hyphenation'
-            'libnotify: notification integration'
-            'networkmanager: location detection via available WiFi networks'
+optdepends=('pulseaudio: supporto audio'
+            'ffmpeg: video h.264'
+            'hunspell: controllo ortografico'
+            'hyphen: sillabazione'
+            'libnotify: integrazione per le notifiche'
+            'networkmanager: per determinare la geolocalizzazione attraverso le reti WiFi disponibili'
             'speech-dispatcher: text-to-speech')
 _url="https://download-installer.cdn.mozilla.net/pub/${_name}/${_channel}/latest-mozilla-central-l10n"
 _urlUS="https://download-installer.cdn.mozilla.net/pub/${_name}/${_channel}/latest-mozilla-central"
 _src="${_name}-${_version}.${_lang}.linux"
 _srcUS="${_name}-${_version}.en-US.linux"
-_filename="$(date +%Y%m%d)-${_src}"
+_filename="$(date -u +%Y%m%d)-${_src}"
 source=("${pkgname}.desktop" 'policies.json')
 source_i686=("${_filename}-i686.tar.bz2"::"${_url}/${_src}-i686.tar.bz2"
              "${_filename}-i686.tar.bz2.asc"::"${_url}/${_src}-i686.tar.bz2.asc"
@@ -40,7 +40,7 @@ sha512sums_x86_64=(SKIP SKIP SKIP)
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla’s GnuPG release key
 
 pkgver() {
-  echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt | cut -c-8)"
+  echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt)+h$(tail -n1 ${_filename}-${CARCH}.txt | cut -c 44-55)"
 }
 
 package() {
