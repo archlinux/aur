@@ -1,11 +1,12 @@
-# Maintainer: ajs124 < aur AT ajs124 DOT de >
+# Maintainer: Tblue <tilman (at) ax86 (dot) net>
+# Contributor: ajs124 < aur AT ajs124 DOT de >
 # Contributor : Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: dale <dale@archlinux.org>
 # Contributor: bender02 at gmx dot com
 
 pkgname=fortune-mod-hitchhiker
 pkgver=20050611
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a collection of quotes --- fortune cookies --- from Douglas Adams' famous Hitchhikers Guide to the Galaxy."
 url="http://www.splitbrain.org/projects/fortunes/hg2g"
 arch=('any')
