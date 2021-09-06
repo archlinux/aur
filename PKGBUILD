@@ -5,93 +5,89 @@
 
 pkgbase=lib32-pipewire-git
 _pkgbase=pipewire
-pkgname=(lib32-pipewire-git lib32-pipewire-jack-git lib32-gst-plugin-pipewire-git)
-pkgver=0.3.28.r108.g2a8d511b
+pkgname=(lib32-pipewire-git lib32-pipewire-jack-git)
+pkgver=0.3.34.r73.g435de9942
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (git) (32 bit client libraries)'
 url=https://pipewire.org
 license=(LGPL2.1)
 arch=(x86_64)
-makedepends=(git meson valgrind jack2 libpulse lib32-libpulse
-             alsa-lib lib32-alsa-lib gst-plugins-base lib32-gst-plugins-base
-             rtkit dbus lib32-dbus libsndfile lib32-libsndfile)
+makedepends=(git meson lib32-alsa-lib lib32-systemd lib32-dbus)
 source=(git+https://gitlab.freedesktop.org/pipewire/pipewire.git)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    git -C ${_pkgbase} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C ${_pkgbase} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    export CC="gcc -m32"
-    export CXX="g++ -m32"
-    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  local meson_options=(
+    --libdir /usr/lib32
+    -D examples=disabled
+    -D man=disabled
+    -D tests=disabled
+    -D gstreamer=disabled
+    -D gstreamer-device-provider=disabled
+    -D systemd-user-service=disabled
+    -D bluez5=disabled
+    -D jack=disabled
+    -D v4l2=disabled
+    -D libcamera=disabled
+    -D pw-cat=disabled
+    -D udevrulesdir=/usr/lib/udev/rules.d
+    -D sdl2=disabled
+    -D sndfile=disabled
+    -D libpulse=disabled
+    -D roc=disabled
+    -D avahi=disabled
+    -D echo-cancel-webrtc=disabled
+    -D libusb=disabled
+    -D session-managers="[]"
+  )
 
-    arch-meson ${_pkgbase} build \
-        --libdir /usr/lib32 \
-        -D docs=disabled \
-        -D man=disabled \
-        -D systemd-system-service=disabled \
-        -D tests=disabled \
-        -D audiotestsrc=disabled \
-        -D avahi=disabled \
-        -D bluez5=disabled \
-        -D bluez5-codec-aptx=disabled \
-        -D bluez5-codec-ldac=disabled \
-        -D bluez5-codec-aac=disabled \
-        -D ffmpeg=disabled \
-        -D jack=disabled \
-        -D libcamera=disabled \
-        -D sdl2=disabled \
-        -D videotestsrc=disabled \
-        -D volume=disabled \
-        -D vulkan=disabled \
-        -D udevrulesdir=/usr/lib/udev/rules.d
-    meson compile -C build
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
+
+  arch-meson pipewire build "${meson_options[@]}"
+  meson compile -C build
 }
 
 _pick() {
-    local f d
-    for f; do
-        d="${pkgdir}/${f#$srcdir/install/}"
-        mkdir -p "$(dirname "$d")"
-        mv "$f" "$d"
-        rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
-    done
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
 }
 
 _ver=${pkgver:0:3}
-_spaver="0.2"
 
 package_lib32-pipewire-git() {
-    depends=(rtkit lib32-dbus lib32-libsndfile lib32-libudev0-shim
-        lib32-alsa-lib lib32-systemd)
-    optdepends=('lib32-pipewire-jack: JACK support')
-    provides=(lib32-pipewire)
-    conflicts=(lib32-pipewire)
+  depends=(pipewire lib32-systemd libdbus-1.so libasound.so)
+  optdepends=('lib32-pipewire-jack: JACK support')
+  provides=(libpipewire-$_ver.so)
 
-    DESTDIR="$srcdir/install" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
-    cd "$pkgdir"
+  ( cd "$pkgdir"
+ 
+    _pick jack usr/lib32/pipewire-$_ver/jack
+ 
+    rm -r usr/{bin,include,lib,share}
+  )
 
-    _pick "$srcdir"/install/usr/lib32/libpipewire-${_ver}.so*
-    _pick "$srcdir"/install/usr/lib32/pipewire-${_ver}/libpipewire-module-*.so
-    _pick "$srcdir"/install/usr/lib32/pkgconfig
-    _pick "$srcdir"/install/usr/lib32/spa-${_spaver}
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
 }
 
 package_lib32-pipewire-jack-git() {
-    pkgdesc+=' (JACK support) (git) (32 bit)'
-    depends=(lib32-pipewire lib32-pipewire-git=$pkgver)
-    provides=(lib32-pipewire-jack libjack.so=0-32)
-    conflicts=(lib32-pipewire-jack)
-    _pick "$srcdir"/install/usr/lib32/pipewire-${_ver}/jack
-}
+  pkgdesc+=" - JACK support"
+  license+=(GPL2)  # libjackserver
+  depends=(pipewire-jack lib32-pipewire libpipewire-$_ver.so)
 
-package_lib32-gst-plugin-pipewire-git() {
-    pkgdesc='Multimedia graph framework - pipewire plugin (git) (32 bit)'
-    depends=(lib32-pipewire lib32-pipewire-git=$pkgver lib32-gst-plugins-base-libs)
-    provides=(lib32-gst-plugin-pipewire)
-    conflicts=(lib32-gst-plugin-pipewire)
-    _pick "$srcdir"/install/usr/lib32/gstreamer-1.0
+  mv jack/* "$pkgdir"
+ 
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
 }

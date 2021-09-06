@@ -7,46 +7,24 @@ pkgbase = lib32-pipewire-git
 	license = LGPL2.1
 	makedepends = git
 	makedepends = meson
-	makedepends = valgrind
-	makedepends = jack2
-	makedepends = libpulse
-	makedepends = lib32-libpulse
-	makedepends = alsa-lib
 	makedepends = lib32-alsa-lib
-	makedepends = gst-plugins-base
-	makedepends = lib32-gst-plugins-base
-	makedepends = rtkit
-	makedepends = dbus
+	makedepends = lib32-systemd
 	makedepends = lib32-dbus
-	makedepends = libsndfile
-	makedepends = lib32-libsndfile
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lib32-pipewire-git
-	depends = rtkit
-	depends = lib32-dbus
-	depends = lib32-libsndfile
-	depends = lib32-libudev0-shim
-	depends = lib32-alsa-lib
+	depends = pipewire
 	depends = lib32-systemd
+	depends = libdbus-1.so
+	depends = libasound.so
 	optdepends = lib32-pipewire-jack: JACK support
-	provides = lib32-pipewire
-	conflicts = lib32-pipewire
+	provides = libpipewire-0.3.so
 
 pkgname = lib32-pipewire-jack-git
-	pkgdesc = Low-latency audio/video router and processor (git) (32 bit client libraries) (JACK support) (git) (32 bit)
+	pkgdesc = Low-latency audio/video router and processor (git) (32 bit client libraries) - JACK support
+	license = LGPL2.1
+	license = GPL2
+	depends = pipewire-jack
 	depends = lib32-pipewire
-	depends = lib32-pipewire-git=0.3.28.r108.g2a8d511b
-	provides = lib32-pipewire-jack
-	provides = libjack.so=0-32
-	conflicts = lib32-pipewire-jack
-
-pkgname = lib32-gst-plugin-pipewire-git
-	pkgdesc = Multimedia graph framework - pipewire plugin (git) (32 bit)
-	depends = lib32-pipewire
-	depends = lib32-pipewire-git=0.3.28.r108.g2a8d511b
-	depends = lib32-gst-plugins-base-libs
-	provides = lib32-gst-plugin-pipewire
-	conflicts = lib32-gst-plugin-pipewire
-
+	depends = libpipewire-0.3.so
