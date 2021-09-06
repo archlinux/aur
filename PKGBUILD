@@ -2,8 +2,8 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python36
-pkgver=3.6.14
-pkgrel=3
+pkgver=3.6.15
+pkgrel=1
 _pybasever=3.6
 _pymajver=3
 pkgdesc="Major release 3.6 of the Python high-level programming language"
@@ -14,7 +14,7 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('2663a7a0cfbd00fc76269dce4317db0b54be53c0f4d705aabb32b87efa02d5ae')
+sha256sums=('6e28d7cdd6dd513dd190e49bca3972e20fcf455090ccf2ef3f1a227614135d91')
 provides=('python')
 
 prepare() {
