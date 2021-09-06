@@ -1,0 +1,15 @@
+pkgbase = dvrescue
+	pkgdesc = Supplies technical and tag information about a video or audio file
+	pkgver = 0.20.11
+	pkgrel = 1
+	url = https://mediaarea.net/DVRescue
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = libzen>=0.4.38
+	makedepends = libmediainfo>=20.09
+	makedepends = xmlstarlet
+	source = https://mediaarea.net/download/source/dvrescue/0.20.11/dvrescue_0.20.11.tar.xz
+	sha256sums = 7eb31561616d6b87f486414f91094a3a10a0364485575b27e2c2cbf903b50864
+
+pkgname = dvrescue
