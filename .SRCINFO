@@ -1,5 +1,5 @@
 pkgbase = dvrescue
-	pkgdesc = Supplies technical and tag information about a video or audio file
+	pkgdesc = Archivist-made software that supports data migration from DV tapes into digital files suitable for long-term preservation
 	pkgver = 0.20.11
 	pkgrel = 1
 	url = https://mediaarea.net/DVRescue

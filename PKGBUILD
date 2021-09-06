@@ -4,7 +4,7 @@
 pkgname=dvrescue
 pkgver=0.20.11
 pkgrel=1
-pkgdesc="Supplies technical and tag information about a video or audio file"
+pkgdesc="Archivist-made software that supports data migration from DV tapes into digital files suitable for long-term preservation"
 url="https://mediaarea.net/DVRescue"
 license=('BSD')
 source=("https://mediaarea.net/download/source/${pkgname}/${pkgver}/${pkgname}_${pkgver}.tar.xz")
