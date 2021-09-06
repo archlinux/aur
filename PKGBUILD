@@ -3,7 +3,7 @@
 
 pkgname=typeracer-git
 _pkgname=terminal-typeracer
-pkgver=2.0.7.r0.gf2be6a4
+pkgver=2.0.8.r3.g913294c
 pkgrel=1
 pkgdesc="Terminal typing speed tester (git)"
 arch=('x86_64')
@@ -21,14 +21,19 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$_pkgname"
+  cargo fetch --locked
+}
+
 build() {
   cd "$_pkgname"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "$_pkgname"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
