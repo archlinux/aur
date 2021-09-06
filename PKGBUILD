@@ -4,7 +4,7 @@ pkgbase=jellyfin-bin
 pkgname=(jellyfin-bin jellyfin-web-bin jellyfin-server-bin)
 pkgver=10.7.7
 _pkgver="${pkgver}-1"
-pkgrel=1
+pkgrel=2
 pkgdesc='The Free Software Media System'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://jellyfin.org/'
@@ -27,8 +27,8 @@ sha256sums=('ca06cc1be55cb0393de9cd002e5cd422b7746c68341125b8f4c18907c59647c8'
 	'9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
 	'b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a')
 sha256sums_x86_64=('938c8be07e2d183b4ee23a0f01f78d140ecb7f58aadc7c0a6105b2e4382c7a4e')
-sha256sums_aarch64=('938c8be07e2d183b4ee23a0f01f78d140ecb7f58aadc7c0a6105b2e4382c7a4e')
-sha256sums_armv7h=('938c8be07e2d183b4ee23a0f01f78d140ecb7f58aadc7c0a6105b2e4382c7a4e')
+sha256sums_aarch64=('0c42e615382fa567d8e274e77a65632f878680536eaf2bd77fb13a09dc59ada9')
+sha256sums_armv7h=('685931c972ad044fbdc2ccbea07a5aaf75f93e99562ea799cd6e5a7ac4bdb0cf')
 noextract=("jellyfin-${pkgver}.deb" "jellyfin-web-${pkgver}.deb")
 options=('staticlibs')
 
