@@ -5,7 +5,7 @@
 
 pkgname=qt-dab
 _pkgname=Qt-DAB
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Software DAB decoder for use with various SDR devices"
 arch=(x86_64)
@@ -18,11 +18,11 @@ optdepends=('airspy: Support for Airspy'
             'libad9361: Support for Pluto'
             'rtl-sdr: Support for RTL-SDR'
             'libsdrplay: Support for SDRplay')
-source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4abaee18c385e7c0aade3e53296c96b1779d4e0e5604968cc9c696a4e937a05b')
+source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('782ca6cbcb2861f588896228ec88f62694ce9dc8a980d2f400d793632f495e37')
 
 prepare() {
-	cd "${pkgname}-${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 
 	# The program is officially called Qt-DAB.
 	sed -i 's/Qt_DAB/Qt-DAB/g' dab-maxi/${pkgname}.desktop
@@ -42,14 +42,14 @@ build() {
 		-DHACKRF=ON \
 		-DPLUTO=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		../$pkgname-$pkgname-$pkgver/dab-maxi
+		../$pkgname-$pkgver/dab-maxi
 
 	make
 }
 
 package() {
 	install -Dm 755 build-maxi/${pkgname}-${pkgver} "${pkgdir}"/usr/bin/${pkgname}
-	install -Dm 644 ${pkgname}-${pkgname}-${pkgver}/dab-maxi/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
-	install -Dm 644 ${pkgname}-${pkgname}-${pkgver}/dab-maxi/${pkgname}.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
-	install -Dm 644 ${pkgname}-${pkgname}-${pkgver}/docs/${pkgname}.pdf "${pkgdir}"/usr/share/doc/${pkgname}/${pkgname}.pdf
+	install -Dm 644 ${pkgname}-${pkgver}/dab-maxi/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+	install -Dm 644 ${pkgname}-${pkgver}/dab-maxi/${pkgname}.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
+	install -Dm 644 ${pkgname}-${pkgver}/docs/${pkgname}.pdf "${pkgdir}"/usr/share/doc/${pkgname}/${pkgname}.pdf
 }
