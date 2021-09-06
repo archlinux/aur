@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/fortune"
-  install -Dm 644 "${srcdir}/fortune-hitchhiker/hitchhiker"* "${pkgdir}/usr/share/fortune/"
+    install -Dm 644 -t "${pkgdir?}/usr/share/fortune" \
+        "${srcdir?}/fortune-hitchhiker/hitchhiker"*
 }
