@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=leo
+Comment=Outliner, Editor, and Personal Information Manager
+MimeType=application/x-leo-outline
+Exec=leo
+Categories=TextEditor;Development
+Icon=leo
