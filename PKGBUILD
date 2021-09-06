@@ -3,8 +3,8 @@
 _pyname=oslo.versionedobjects
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Oslo Versioned Objects library"
 arch=(any)
 url="https://docs.openstack.org/oslo.versionedobjects/latest/"
@@ -45,9 +45,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('c6f722cd72fadfcb09e6b42278ce553a')
-sha256sums=('f0149e557d962365f53e61b7ce0aa4d7037d2d83a0db4fecba1e964fd4949926')
-sha512sums=('d3ee20fb5b5743005db7fafa655e9129910d1aba838ad8609dc76849b10b7ebce5afc71e385fb95364cd3598673697b13fe398342516e25b577b4cc3e7bbbddf')
+md5sums=('f3711b4e7c4b5e57372b200b0d4203f8')
+sha256sums=('ad08dbe84a808ce17e76c41ec3f682b1201ed685346e63c6ebcb22fdd908768c')
+sha512sums=('1eceac157f223e25cb08041fc2d7f73d9f4b5d8fb75cf5a542c6c6a1ecb16457c1f15cbed227b742a62c1608744dcee1f11d3dd1e8841bd9bc9990880b9bb73f')
 
 export PBR_VERSION=$pkgver
 
