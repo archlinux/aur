@@ -5,8 +5,8 @@
 
 _pkgbase=sratom
 pkgname=mingw-w64-sratom
-pkgver=0.6.2
-pkgrel=4
+pkgver=0.6.8
+pkgrel=1
 pkgdesc="An LV2 Atom RDF serialisation library"
 arch=('any')
 url="https://drobilla.net/software/sratom/"
@@ -15,7 +15,7 @@ depends=('mingw-w64-lv2' 'mingw-w64-sord')
 makedepends=('mingw-w64-gcc' 'python')
 options=('!libtool' '!strip' '!buildflags' '!makeflags')
 source=("https://download.drobilla.net/${_pkgbase}-${pkgver}.tar.bz2"{,.sig})
-sha512sums=('356e1dfde07fcc3eff99186ff79501557572f5d73338fd096bf639a82d1d4fe3c0e790627c8eb088053e4a2aeed4e548aca0a5572d1ab26316cfdb13374f10ac'
+sha512sums=('49ec4b230a72005ab7a7a3de0bfa630a27a16f9f811ca8e7f6da7fcf6b34526577217075d428a993f95b813dd2a82a9b6892eeb2e36b66b122ada778fbb3fb95'
             'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3')
 
@@ -29,12 +29,13 @@ prepare() {
 
 build() {
   cd "${srcdir}"
-
+  
   for _arch in "${_architectures[@]}"; do
     rm -rf build-${_arch}
     cp -r "${_pkgbase}-${pkgver}" build-${_arch}
     pushd build-${_arch}
-
+	
+	export PKG_CONFIG_PATH="/usr/${_arch}/lib/pkgconfig"
     CC="$_arch-gcc" python waf configure --prefix=/usr/"$_arch" #\
                          #--test
     python waf build
@@ -61,7 +62,7 @@ package() {
     "${pkgdir}/usr/$_arch/share/licenses/${_pkgbase}/LICENSE"
   # docs
   install -t "${pkgdir}/usr/$_arch/share/doc/${_pkgbase}" \
-    -vDm 644 {NEWS,README}
+    -vDm 644 {NEWS,README.md}
 
     # move DLL to bin directory
     install -d $pkgdir/usr/${_arch}/bin

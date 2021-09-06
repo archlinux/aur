@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-sratom
 	pkgdesc = An LV2 Atom RDF serialisation library
-	pkgver = 0.6.2
-	pkgrel = 4
+	pkgver = 0.6.8
+	pkgrel = 1
 	url = https://drobilla.net/software/sratom/
 	arch = any
 	license = custom:ISC
@@ -13,10 +13,10 @@ pkgbase = mingw-w64-sratom
 	options = !strip
 	options = !buildflags
 	options = !makeflags
-	source = https://download.drobilla.net/sratom-0.6.2.tar.bz2
-	source = https://download.drobilla.net/sratom-0.6.2.tar.bz2.sig
+	source = https://download.drobilla.net/sratom-0.6.8.tar.bz2
+	source = https://download.drobilla.net/sratom-0.6.8.tar.bz2.sig
 	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
-	sha512sums = 356e1dfde07fcc3eff99186ff79501557572f5d73338fd096bf639a82d1d4fe3c0e790627c8eb088053e4a2aeed4e548aca0a5572d1ab26316cfdb13374f10ac
+	sha512sums = 49ec4b230a72005ab7a7a3de0bfa630a27a16f9f811ca8e7f6da7fcf6b34526577217075d428a993f95b813dd2a82a9b6892eeb2e36b66b122ada778fbb3fb95
 	sha512sums = SKIP
 
 pkgname = mingw-w64-sratom
