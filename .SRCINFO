@@ -1,15 +1,16 @@
 pkgbase = go-lint-git
 	pkgdesc = golang lint
-	pkgver = 20190909.179_414d861
+	pkgver = 20210508.185_6edffad
 	pkgrel = 1
 	url = https://github.com/golang/lint
 	arch = i686
 	arch = x86_64
 	license = BSD 3-Clause
-	makedepends = go>=1.13
+	makedepends = go>=1.12
 	makedepends = git
+	provides = go-lint
+	conflicts = go-lint
 	source = git://github.com/golang/lint.git
 	md5sums = SKIP
 
 pkgname = go-lint-git
-

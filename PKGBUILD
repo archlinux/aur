@@ -1,5 +1,5 @@
 pkgname=go-lint-git
-pkgver=20190909.179_414d861
+pkgver=20210508.185_6edffad
 pkgrel=1
 pkgdesc="golang lint"
 arch=('i686' 'x86_64')
@@ -26,6 +26,11 @@ backup=(
 )
 
 conflicts=(
+    go-lint
+)
+
+provides=(
+    go-lint
 )
 
 pkgver() {
