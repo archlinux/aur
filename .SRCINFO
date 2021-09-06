@@ -1,0 +1,13 @@
+pkgbase = gitty-bin
+	pkgdesc = Contextual information about your git projects, right on the command-line
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/muesli/gitty
+	arch = x86_64
+	license = MIT
+	provides = gitty
+	conflicts = gitty
+	source_x86_64 = https://github.com/muesli/gitty/releases/download/v0.3.0/gitty_0.3.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 215b253de55e5fec25bddc93456709345d6cd55cf37e9e77fe0bfe273d39a030
+
+pkgname = gitty-bin
