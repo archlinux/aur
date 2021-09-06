@@ -2,7 +2,7 @@
 # Contributor: roger <roger@rogerpc.com.ar>
 
 pkgname=qtile-git
-pkgver=v0.18.0.r111.g6009be07
+pkgver=v0.18.0.r112.g2ec771fe
 pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager. (git version)"
 arch=('x86_64')
@@ -90,10 +90,9 @@ check() {
 package() {
   cd qtile
   python setup.py install --skip-build --optimize=1 --root="$pkgdir"
-  install -vDm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -vDm 644 "$srcdir"/qtile/libqtile/resources/default_config.py \
-    "$pkgdir"/usr/share/doc/$pkgname/default_config.py
-  install -vDm 644 "$srcdir"/qtile/resources/qtile.desktop \
-    "$pkgdir"/usr/share/xsessions/qtile.desktop
-  install -vDm 644  CHANGELOG README.rst  -t "${pkgdir}/usr/share/doc/$pkgname/"
+  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 CHANGELOG README.rst libqtile/resources/default_config.py \
+    -t "${pkgdir}/usr/share/doc/$pkgname/"
+  install -vDm 644 resources/qtile.desktop -t "$pkgdir/usr/share/xsessions/"
+  install -vDm 644 resources/qtile-wayland.desktop -t "$pkgdir/usr/share/wayland-sessions/"
 }
