@@ -1,6 +1,6 @@
 pkgbase = chatterino2-7tv-git
 	pkgdesc = A fork of Chatterino2 with built-in support for 7tv emotes
-	pkgver = r3189.eab1a248
+	pkgver = r3358.31e6ea46
 	pkgrel = 1
 	url = https://github.com/SevenTV/chatterino7
 	install = chatterino2-7tv-git.install
@@ -13,6 +13,7 @@ pkgbase = chatterino2-7tv-git
 	depends = qt5-multimedia
 	depends = qt5-base
 	depends = qt5-tools
+	depends = qt5-imageformats
 	depends = boost-libs
 	depends = openssl
 	optdepends = streamlink: For piping streams to video players
