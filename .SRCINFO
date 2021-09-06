@@ -1,0 +1,15 @@
+pkgbase = python-ghostscript
+	pkgdesc = This package implements an interface to the Ghostscript C-API using ctypes.
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://gitlab.com/pdftools/python-ghostscript
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = ghostscript
+	source = https://gitlab.com/pdftools/python-ghostscript/-/archive/v0.7/python-ghostscript-v0.7.tar.gz
+	sha256sums = fe311cf79cef213b54c5cdfffcb2cf603decefb63f017070fa2ec8da4f27e96d
+
+pkgname = python-ghostscript
