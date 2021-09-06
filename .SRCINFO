@@ -1,6 +1,6 @@
 pkgbase = emacs-mozc-ut
 	pkgdesc = Mozc module for Emacs bundled with the UT dictionary
-	pkgver = 2.26.4486.102.20210906
+	pkgver = 2.26.4486.102.20210907
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = i686
