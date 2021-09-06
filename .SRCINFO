@@ -1,0 +1,18 @@
+pkgbase = ctf-recon-utils
+	pkgdesc = Some scripts that make CTF Reconnaisance alot more straightforward.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/AmeliaYeah/ctf-recon-utils
+	arch = x86_64
+	license = GPL
+	depends = ffuf
+	depends = gobuster
+	depends = nikto
+	depends = curl
+	depends = nmap
+	depends = git
+	depends = python3
+	depends = python-pip
+	optdepends = libnotify
+
+pkgname = ctf-recon-utils
