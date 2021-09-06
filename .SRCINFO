@@ -1,15 +1,15 @@
 pkgbase = verco
-	pkgdesc = Simple Git/Hg tui client focused on keyboard shortcuts
-	pkgver = 5.5.1
+	pkgdesc = A simple Git/Mercurial/PlasticSCM tui client based on keyboard shortcuts
+	pkgver = 6.1.2
 	pkgrel = 1
-	url = https://github.com/matheuslessarodrigues/verco
+	url = https://github.com/vamolessa/verco
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	makedepends = rust
+	depends = gcc-libs
 	optdepends = git: support for git repositories
 	optdepends = mercurial: support for mercurial repositories
-	source = verco-5.5.1.tar.gz::https://github.com/matheuslessarodrigues/verco/archive/v5.5.1.tar.gz
-	sha512sums = 81e5d071b48035c6b3ef9a01478e94a043ef79cf13711331396c85f7a6d529d4d49119ccb5317a124838db41928684f3e71db7ff7b1a303a8776a09e6df5e560
+	source = verco-6.1.2.tar.gz::https://github.com/vamolessa/verco/archive/v6.1.2.tar.gz
+	sha512sums = 69e12d823501faef36f5a0b5a7e6561903d52524c0e310306cb5f1668e66c05d66ca03452e60d6abcd60a8d6a7f367397cd008c6948d3c5abb02b55fb046db71
 
 pkgname = verco
-
