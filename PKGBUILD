@@ -1,7 +1,7 @@
 # Maintainer: Kyle Laker <kyle+aur@laker.email>
 
 pkgname=chalice
-pkgver=1.23.0
+pkgver=1.24.2
 pkgrel=1
 pkgdesc="Python Serverless Microframework for AWS"
 arch=("any")
@@ -25,7 +25,7 @@ makedepends=("python-setuptools" "mypy")
 optdepends=('python-watchdog: server auto-reload support'
             'aws-cdk: AWS CDK support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aws/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('e296c28ab6d1d166dd9114c9abd1fac9d3b8c68646f630c5a045e3e0aef6c495aef4c720f8ca55697771107d700a917a299ae2c7a852ee263c1df556b6444e99')
+sha512sums=('8203d2f9ba3bc35ed77d0cb902632cfe65145d0dd5cd3eb2adcf9b8b4003a051c5fc12e312e1539c8b72ec5f7127aeddd32816da45e28a4cbf6b620dff069f79')
 
 prepare() {
     cd "${srcdir}/$pkgname-$pkgver"
