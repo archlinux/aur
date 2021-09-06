@@ -19,6 +19,6 @@ pkgbase = matomo-git
 	provides = matomo
 	conflicts = matomo
 	source = git+https://github.com/matomo-org/matomo.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = matomo-git
