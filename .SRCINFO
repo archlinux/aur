@@ -1,15 +1,14 @@
 pkgbase = ffpb
 	pkgdesc = A progress bar for ffmpeg. Yay !
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/althonos/ffpb
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	depends = python-sh
 	depends = python-tqdm
-	source = ffpb-0.2.0.tar.gz::https://github.com/althonos/ffpb/archive/v0.2.0.tar.gz
-	md5sums = aa51b61a1382b2868b27019c1f0d348b
+	source = ffpb-0.4.1.tar.gz::https://github.com/althonos/ffpb/archive/v0.4.1.tar.gz
+	sha256sums = 28a040866b3654524d2b40986f475aa7c65abd13746a3ac0808f082116e52c0a
 
 pkgname = ffpb
