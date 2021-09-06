@@ -2,7 +2,7 @@
 
 _pyname=pypowervm
 pkgname=python-$_pyname
-pkgver=1.1.24
+pkgver=1.1.26
 pkgrel=1
 pkgdesc="Python binding for the PowerVM REST API"
 arch=(any)
@@ -11,6 +11,7 @@ license=(Apache)
 depends=(
 	python
 	python-pbr
+	python-babel
 	python-lxml
 	python-oslo-concurrency
 	python-oslo-context
@@ -40,9 +41,9 @@ checkdepends=(
 	python-mock
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('50b580055e5628aadaeb42fd69158ff8')
-sha256sums=('4c6bf225d2b1022b5d363f9b3695fd1692523235d3ce1b5b4506fbc608bdb535')
-sha512sums=('b2d254555c7501961bd45ac7a7bfea886ac12c8eab07b6bc34352e425f6e9c9cb6fa8331796164962f1f60afcaa9aa9e8a711cdf71dcb70cce7c4188c4217543')
+md5sums=('e4e33d88e9b8fd9557d7f4ffb91fb940')
+sha256sums=('7362c474389960cc15e8579683fee60773cacf2ea2f24456e181ddfb117dfee0')
+sha512sums=('c258a5d7b9a38f0e718d28ec07efe08b1bb7fae3086e3c2d0edc56c9cb0e7d8256fd6e8f1c17fe0511b4ce1772b935680b657fe565454bdb3c312a470c490a5d')
 
 export PBR_VERSION=$pkgver
 
@@ -55,8 +56,7 @@ check(){
 	cd $_pyname-$pkgver
 	## mkvterm and rmvterm is not available in archlinux
 	rm -f pypowervm/tests/tasks/test_vterm.py
-	unset LANGUAGE LANG LC_ALL
-	stestr run
+	LANGUAGE=C LANG=C LC_ALL=C stestr run
 }
 
 package(){
