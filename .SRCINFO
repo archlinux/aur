@@ -1,15 +1,14 @@
 pkgbase = python-pystemd
 	pkgdesc = A thin Cython-based wrapper on top of libsystemd, focused on exposing the dbus API via sd-bus in an automated and easy to consume way.
-	pkgver = 0.8
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://github.com/facebookincubator/pystemd
 	arch = any
 	license = LGPL2.1
 	makedepends = python-setuptools
 	depends = python
 	depends = cython
-	source = python-pystemd-0.8.tar.gz::https://github.com/facebookincubator/pystemd/archive/v.0.8.tar.gz
-	md5sums = bdf61ef1575513c70e3036b7aa4ace80
+	source = python-pystemd-0.9.0.tar.gz::https://github.com/facebookincubator/pystemd/archive/v.0.9.0.tar.gz
+	md5sums = f9be8301d4be4dff2c9f112879b71b9f
 
 pkgname = python-pystemd
-
