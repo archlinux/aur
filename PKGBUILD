@@ -1,8 +1,8 @@
 # Maintainer: Master81 <FreeFighter81@protonmail.com>
 
 pkgname=toosheh
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="An unofficial and open-source toosheh client for Linux written in C++. Please USE A VPN or any anti-sensorship tool before installing this program."
 url="https://www.toosheh.org/"
 arch=(x86_64 aarch64)
