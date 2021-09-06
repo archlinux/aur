@@ -1,8 +1,8 @@
 pkgbase = rawk-git
 	pkgdesc = a minimal tool inspired by gawks string seperation ability
 	pkgver = 0.6.8.73.gb14fe60
-	pkgrel = 1
-	url = https://gitlab.com/Zemrod/rawk
+	pkgrel = 2
+	url = https://github.com/Zemrod/rawk
 	arch = x86_64
 	license = MIT
 	makedepends = rust
@@ -10,8 +10,7 @@ pkgbase = rawk-git
 	depends = gcc-libs
 	provides = rawk
 	conflicts = rawk
-	source = git+https://gitlab.com/Zemrod/rawk
+	source = git+https://github.com/Zemrod/rawk
 	md5sums = SKIP
 
 pkgname = rawk-git
-

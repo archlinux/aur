@@ -2,10 +2,10 @@
 _bpn=rawk
 pkgname=$_bpn-git
 pkgver=0.6.8.73.gb14fe60
-pkgrel=1
+pkgrel=2
 pkgdesc="a minimal tool inspired by gawks string seperation ability"
 arch=('x86_64')
-url="https://gitlab.com/Zemrod/$_bpn"
+url="https://github.com/Zemrod/$_bpn"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'git')
