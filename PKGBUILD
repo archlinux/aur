@@ -1,7 +1,7 @@
 pkgname=haskell-pandoc-crossref-bin
 _pkgname=pandoc-crossref
-pkgver=0.3.12.0b
-_pandoc_pkgver=2.14.1
+pkgver=0.3.12.0c
+_pandoc_pkgver=2.14.2
 pkgrel=1
 pkgdesc="Pandoc filter for cross-references - executable only"
 url="https://hackage.haskell.org/package/${_pkgname}"
@@ -15,7 +15,7 @@ depends=("pandoc-bin>=${_pandoc_pkgver}")
 source=(
     "pandoc-crossref-${pkgver}.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v${pkgver}/pandoc-crossref-Linux.tar.xz"
 )
-sha256sums=('4441f3e0fab3efd15813ddb4f984cdc6599450e9afd70d51982e792321f1ce56')
+sha256sums=('90d058d6dffa109a31418301c8e56e41d116bd6f444e9cdacf2840434f6edb7f')
 
 package() {
     cd "${srcdir}"
