@@ -12,6 +12,6 @@ pkgbase = nbxplorer-git
 	provides = nbxplorer
 	conflicts = nbxplorer
 	source = git+https://github.com/dgarage/NBXplorer.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = nbxplorer-git
