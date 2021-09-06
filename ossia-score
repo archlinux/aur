@@ -1,3 +1,6 @@
 #!/bin/sh
 export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
-LD_LIBRARY_PATH=/usr/lib/score /usr/bin/score
+export LD_LIBRARY_PATH=/usr/lib/ossia-score
+export FAUST_LIB_PATH=/usr/share/ossia-score/faust
+
+/usr/bin/ossia-score-bin

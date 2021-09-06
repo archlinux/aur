@@ -1,36 +1,43 @@
 # Maintainer: Sol Bekic <s+aur at s-ol dot nu>
+# Maintainer: Jean-Michaël Celerier <jeanmichael.celerier@gmail.com>
 
 pkgname=ossia-score-appimage
-pkgver=2.5.2
+pkgver=3.0.0b7
+_pkgver=3.0.0-b7
 pkgrel=1
 pkgdesc="an interactive sequencer for the intermedia arts."
 arch=('x86_64')
 url="https://ossia.io/"
-license=('custom')
-depends=('glib2' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-svg' 'qt5-websockets')
-source=("Score.AppImage::https://github.com/OSSIA/score/releases/download/v${pkgver}/Score-v${pkgver}-linux.AppImage"
+license=('GPLv3')
+depends=('glib2' 'jack' 'avahi')
+source=("score.AppImage::https://github.com/ossia/score/releases/download/v${_pkgver}/ossia.score-${_pkgver}-linux-amd64.AppImage"
         "ossia-score")
-md5sums=('c21b30e221d0e13f77f22c80584373af'
-         'da517b82b443be8057ee4fbadb414e43')
-
+sha512sums=('eaf38134d2edf955d6243ac28da932d22e64880423e923a8e040eb48fd0114aacf40325744433f6cf6390300f18c1a98324b52192268eac02cd0189876db80c1'
+            '2a78deed52bf1bcb1abad9b0319c483aef91c16648e45a96a58162f536fb79ce06f92c5f622b547e9cef63e4cf751ce2142fc1f29ae29e470944d35b3d192ba2')
 package() {
   # Extract AppImage
-  chmod +x Score.AppImage
-  ./Score.AppImage --appimage-extract
+  chmod +x score.AppImage
+  ./score.AppImage --appimage-extract
 
   root="${srcdir}/squashfs-root"
-  sed -i "/^Exec=/cExec=ossia-score" "${root}/Score.desktop"
+  sed -i "/^Exec=/cExec=ossia-score" "${root}/ossia-score.desktop"
 
-  install -d "${pkgdir}/usr/lib/score"
-  install -D "${root}/usr/lib/score/"* "${pkgdir}/usr/lib/score/"
-  install -D "${root}/usr/lib/libscore"* "${pkgdir}/usr/lib/"
-  install -D "${root}/usr/lib/libossia"* "${pkgdir}/usr/lib/"
+  # Copy libraries
+  install -d "${pkgdir}/usr/lib/ossia-score"
+  install -D "${root}/usr/lib/"* "${pkgdir}/usr/lib/ossia-score/"
 
+  # Copy binaries
   install -d "${pkgdir}/usr/bin"
-  install -D "${root}/usr/bin/score" "${pkgdir}/usr/bin/"
+  install -D "${root}/usr/bin/ossia-score" "${pkgdir}/usr/bin/ossia-score-bin"
+  install -D "${root}/usr/bin/ossia-score-vstpuppet" "${pkgdir}/usr/bin/"
+  install -D "${root}/usr/bin/ossia-score-vst3puppet" "${pkgdir}/usr/bin/"
   install -D "${srcdir}/ossia-score" "${pkgdir}/usr/bin/"
 
-  install -d "${pkgdir}/usr/share"
-  install -D "${root}/Score.desktop" "${pkgdir}/usr/share/applications/Score.desktop"
-  install -D "${srcdir}/squashfs-root/usr/share/pixmaps/score.png" "${pkgdir}/usr/share/pixmaps/score.png"
+  # Copy faust
+  install -d "${pkgdir}/usr/share/ossia-score"
+  find "${root}/usr/share/faust" -type f -exec install -Dm 755 "{}" "${pkgdir}/usr/share/ossia-score/faust" \;
+
+  # Copy metadata
+  install -D "${root}/ossia-score.desktop" "${pkgdir}/usr/share/applications/ossia-score.desktop"
+  install -D "${srcdir}/squashfs-root/usr/share/pixmaps/ossia-score.png" "${pkgdir}/usr/share/pixmaps/ossia-score.png"
 }
