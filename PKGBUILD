@@ -1,12 +1,12 @@
 # Maintainer:  jon4hz me@jon4hz.io
 pkgname=aaregurucli-git
-pkgver=0.4.3
+pkgver=v0.5.0
 pkgrel=1
 epoch=
 pkgdesc="aare.guru CLI "
 arch=(x86_64)
 url="https://github.com/gexclaude/aaregurucli.git"
-license=('GPLv3')
+license=('GPL3')
 groups=()
 depends=()
 makedepends=(go git)
