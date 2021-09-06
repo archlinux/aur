@@ -8,6 +8,7 @@ pkgdesc="阿里云盘小白羊版 阿里云盘PC版"
 arch=("x86_64")
 license=("None")
 depends=('electron' 'aria2')
+optdepends=('mpv: media preview support')
 provides=("freechat")
 source=("local://阿里小白羊版Linux v${pkgver}.zip"    # https://wwe.lanzoui.com/ivPlAtdn52h
         'aliyunpan-liupan1890.svg'
