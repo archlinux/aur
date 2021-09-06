@@ -1,7 +1,7 @@
 # Maintainer: Nico Ramlow <nico@nycode.de>
 pkgname=mcserv
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI utility to manage MC server installations."
 arch=('x86_64')
 url="https://github.com/DRSchlaubi/mcserv"
