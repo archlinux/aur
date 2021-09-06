@@ -1,15 +1,13 @@
-# Maintainer: Devin Christensen <quixoten at gmail dot com>
+# Contributor: Devin Christensen <quixoten at gmail dot com>
 pkgname=ttf-droid-sans-mono-slashed-powerline-git
-pkgver=r100.a44abd0
-pkgrel=2
+pkgver=r202.e80e3eb
+pkgrel=1
 pkgdesc="Droid Sans Mono for Powerline (Slashed Zero)"
 arch=('any')
 url='https://github.com/powerline/fonts'
 license=('custom:Apache License, Version 2.0')
-depends=(fontconfig xorg-font-utils )
 makedepends=('git')
 conflicts=(powerline-fonts powerline-fonts-git)
-install=$pkgname.install
 source=('git+https://github.com/powerline/fonts.git')
 md5sums=('SKIP')
 
