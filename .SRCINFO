@@ -1,16 +1,16 @@
 pkgbase = python-google-cloud-bigquery
 	pkgdesc = Google BigQuery API client library
-	pkgver = 2.20.0
+	pkgver = 2.26.0
 	pkgrel = 1
 	url = https://pypi.org/project/google-cloud-bigquery/
 	arch = any
-	license = APACHE
+	license = Apache
 	makedepends = python-setuptools
 	depends = python>=3.6
 	depends = python-google-api-core>=1.29.0
 	depends = python-google-cloud-core>=1.4.1
 	depends = python-google-resumable-media>=0.6.0
-	depends = python-grpcio
+	depends = python-grpcio>=1.38.1
 	depends = python-packaging>=14.3
 	depends = python-proto-plus>=1.10.0
 	depends = python-protobuf>=3.12.0
@@ -21,8 +21,7 @@ pkgbase = python-google-cloud-bigquery
 	optdepends = python-fastparquet: for fastparquet support
 	optdepends = python-snappy: for fastparquet support
 	optdepends = python-llvmlite: for fastparquet support
-	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/g/google-cloud-bigquery/google-cloud-bigquery-2.20.0.tar.gz
-	sha256sums = ff728f9a4a64d6b4ec5beb7fd2f6ed550b49bfe2b8bb3755c00821716e0d1f91
+	source = python-google-cloud-bigquery-2.26.0.tar.gz::https://files.pythonhosted.org/packages/source/g/google-cloud-bigquery/google-cloud-bigquery-2.26.0.tar.gz
+	sha256sums = 15ca1f9c8165b584c2d593620354cd3b17c007e87cfd1abd1eebd2c08eb5d109
 
 pkgname = python-google-cloud-bigquery

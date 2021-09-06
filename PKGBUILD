@@ -1,50 +1,44 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _name=google-cloud-bigquery
 
 pkgname=python-google-cloud-bigquery
-pkgver=2.20.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
 url="https://pypi.org/project/google-cloud-bigquery/"
-license=('APACHE')
+license=('Apache')
 depends=(
-  'python>=3.6'
-  'python-google-api-core>=1.29.0'
-  'python-google-cloud-core>=1.4.1'
-  'python-google-resumable-media>=0.6.0'
-  'python-grpcio'
-  'python-packaging>=14.3'
-  'python-proto-plus>=1.10.0'
-  'python-protobuf>=3.12.0'
-  'python-requests>=2.18.0'
-)
+	'python>=3.6'
+	'python-google-api-core>=1.29.0'
+	'python-google-cloud-core>=1.4.1'
+	'python-google-resumable-media>=0.6.0'
+	'python-grpcio>=1.38.1'
+	'python-packaging>=14.3'
+	'python-proto-plus>=1.10.0'
+	'python-protobuf>=3.12.0'
+	'python-requests>=2.18.0')
 makedepends=('python-setuptools')
 optdepends=(
-  'python-arrow>=1.0.0: for pyarrow support'
-  'python-pandas>=0.23.0: for pandas support'
-  'python-tqdm>=4.7.4: for tqdm support'
-  'python-fastparquet: for fastparquet support'
-  'python-snappy: for fastparquet support'
-  'python-llvmlite: for fastparquet support'
-)
-options=(!emptydirs)
-source=(
-  "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
-)
-sha256sums=(
-  'ff728f9a4a64d6b4ec5beb7fd2f6ed550b49bfe2b8bb3755c00821716e0d1f91'
-)
+	'python-arrow>=1.0.0: for pyarrow support'
+	'python-pandas>=0.23.0: for pandas support'
+	'python-tqdm>=4.7.4: for tqdm support'
+	'python-fastparquet: for fastparquet support'
+	'python-snappy: for fastparquet support'
+	'python-llvmlite: for fastparquet support')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('15ca1f9c8165b584c2d593620354cd3b17c007e87cfd1abd1eebd2c08eb5d109')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
+	cd "$_name-$pkgver"
+	python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "$_name-$pkgver"
+	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+	install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
