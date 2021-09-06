@@ -5,7 +5,7 @@ pkgname=android-sdk-build-tools
 #_ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
 _ver=31
 pkgver=r$_ver
-pkgrel=1
+pkgrel=2
 pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
 arch=('x86_64')
 url="https://developer.android.com/studio/releases/build-tools"
@@ -18,7 +18,7 @@ sha512sums=('fa18b60cd0993826bdbf09ca216aa82e127aa711807c0aa500ddb447162eb1eecdd
 options=('!strip')
 
 _sdk=android-sdk
-_android=android-11
+_android=android-12
 
 package() {
   cd "$pkgdir"
