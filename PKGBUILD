@@ -1,13 +1,13 @@
 # Maintainer: Jens Staal <staal1978@gmail.com>
 pkgname=ugene-git
-pkgver=38.1.r140.ge6c8a91c95
+pkgver=38.1.r392.g9a5418cdda
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite."
 arch=('x86_64')
 url="http://ugene.unipro.ru/"
 license=('GPL')
-depends=('libxtst' 'glu' 'qt5-webkit' 'qt5-websockets' 'qt5-svg' 'qt5-script' 'desktop-file-utils' 'qspec-git')
-makedepends=('git')
+depends=('libxtst' 'glu' 'qt5-webkit' 'qt5-websockets' 'qt5-svg' 'qt5-script' 'desktop-file-utils' 'qspec-git' 'opencl-driver')
+makedepends=('git' 'opencl-headers')
 #optdepends lists packages that otherwise are present in ugene-external-tools
 optdepends=('cufflinks' 'bowtie' 'clustalw' 'phyml' 'blast+' 'clustal-omega' 'vcftools' 'mrbayes' 'bwa' 'bedtools'
 	'tcoffee' 'hmmer' 'snpeff' 'samtools' 'mafft' 'trimmomatic' 'stringtie' 'kraken' 'diamond-aligner'
@@ -18,23 +18,28 @@ conflicts=('ugene' 'ugene-bin')
 source=('ugene::git+https://github.com/ugeneunipro/ugene.git')
 sha256sums=('SKIP')
 
-build() {
-  cd "${srcdir}"/ugene
-  #make sure that the wanted branch is active
-  git checkout master
-  CXXFLAGS="$CXXFLAGS -Wno-depreceated"
-  qmake CONFIG+=x64 PREFIX=/usr -r
-  make
-}
-
 pkgver() {
   cd "${srcdir}"/ugene
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
+build() {
+  cd "${srcdir}"/ugene
+  #make sure that the wanted branch is active
+  git checkout master
+  CXXFLAGS="$CXXFLAGS -Wno-depreceated"
+  OPENCL_INC_PATH=/usr/include/CL
+  qmake CONFIG+=x64 INSTALL_PREFIX=${pkgdir}/opt/ugene UGENE_OPENCL_DETECTED=1 UGENE_USE_SYSTEM_SQLITE=1 UGENE_USE_BUNDLED_ZLIB=0 -r
+  make all
+}
+
 package() {
   cd "${srcdir}"/ugene
-  make INSTALL_ROOT="$pkgdir" install
+  make install
+  mkdir -p ${pkgdir}/usr/bin
+  ln -s /opt/ugene/ugene ${pkgdir}/usr/bin/ugene
+  mkdir -p ${pkgdir}/usr/share/applications
+  ln -s /opt/ugene/ugene.desktop ${pkgdir}/usr/share/applications/ugene.desktop
 }
 
 post_install() {
