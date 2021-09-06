@@ -3,7 +3,6 @@ pkgbase = android-sdk-build-tools
 	pkgver = r31
 	pkgrel = 1
 	url = https://developer.android.com/studio/releases/build-tools
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
