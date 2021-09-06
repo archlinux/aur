@@ -2,7 +2,7 @@
 
 pkgname=muwire
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc='An I2P file sharing program'
 arch=('any')
 url='https://muwire.com/'
@@ -14,7 +14,7 @@ source=("git+https://github.com/zlatinb/muwire.git#tag=muwire-${pkgver}?signed"
         'muwire.sh')
 sha256sums=('SKIP'
             '7d61c69613029bd2b2e82f227a230104b880635fd8d44a649b2192b03c3cc509'
-            '05df19c773e30627da851e1885f01896d2eab35696a56878c06a9a7ebd945a43')
+            '14658d6978e5637691f5d8c923ffe2cf605e65988d6808a5eb23d3f37b13c283')
 validpgpkeys=('471B9FD45517A5ED101FC57DA72832072D525E41') # Zlatin Balevsky
 
 build() {
