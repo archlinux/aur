@@ -6,6 +6,7 @@ pkgbase = keyboard-center
 	install = keyboard-center.install
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = python>=3.8
 	depends = python-pyqt5>=5.14
 	depends = python-pip>=20

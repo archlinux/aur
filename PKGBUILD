@@ -17,7 +17,7 @@ depends=(
     'python-inotify-simple>=1.3'
     'libnotify>=0.7.9'
 )
-#conflicts=('')
+makedepends=('git')
 source=("$pkgname-$pkgver::git+https://github.com/zocker-160/keyboard-center.git#tag=$pkgver")
 sha256sums=('SKIP')
 
