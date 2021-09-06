@@ -1,6 +1,6 @@
 pkgbase = pagmo
 	pkgdesc = Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model
-	pkgver = 2.17.0
+	pkgver = 2.18.0
 	pkgrel = 1
 	url = https://github.com/esa/pagmo2
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = pagmo
 	depends = coin-or-ipopt
 	depends = eigen
 	depends = nlopt
-	source = pagmo-2.17.0.tar.gz::https://github.com/esa/pagmo2/archive/v2.17.0.tar.gz
-	sha256sums = 1b95b036f75e6fa0b21082ab228dbd63cd18ca10d9622ac53629245e0f95c35c
+	source = pagmo-2.18.0.tar.gz::https://github.com/esa/pagmo2/archive/v2.18.0.tar.gz
+	sha256sums = 5ad40bf3aa91857a808d6b632d9e1020341a33f1a4115d7a2b78b78fd063ae31
 
 pkgname = pagmo
-
