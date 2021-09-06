@@ -1,0 +1,15 @@
+pkgbase = tabula-java
+	pkgdesc = Extract tables from PDF files
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://tabula.technology
+	arch = any
+	license = MIT
+	depends = java-runtime
+	provides = tabula
+	source = https://github.com/tabulapdf/tabula-java/releases/download/v1.0.5/tabula-1.0.5-jar-with-dependencies.jar
+	source = run.sh
+	md5sums = b9fef34faaf8629499474b7d201cd04a
+	md5sums = b89123d631d17d8e8eba3f10cdb5d230
+
+pkgname = tabula-java
