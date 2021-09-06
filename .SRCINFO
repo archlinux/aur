@@ -1,7 +1,7 @@
 pkgbase = dingtalk-bin
 	pkgdesc = 钉钉
 	pkgver = 1.0.0.285
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gov.dingtalk.com
 	arch = x86_64
 	license = custom
@@ -10,13 +10,13 @@ pkgbase = dingtalk-bin
 	provides = dingtalk
 	conflicts = com.alibabainc.dingtalk
 	replaces = com.alibabainc.dingtalk
-	source = https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/com.alibabainc.dingtalk_1.0.0.285_amd64.deb
+	source = dingtalk_1.0.0.285-x86_64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/com.alibabainc.dingtalk_1.0.0.285_amd64.deb
 	source = service-terms-zh
 	source = com.alibabainc.dingtalk.desktop
 	source = dingtalk.sh
-	md5sums = c55d666652ad08c3a2bd0e10b469426f
-	md5sums = 55c7432e36da19b45102376dad9ebdf7
-	md5sums = e1b984a024700a9ef5f77a1018a41f8e
-	md5sums = 0e255cd61852162548db96e46f1dda00
+	sha512sums = 64de46104e438ea61c7148bfb88a22e4a40ce7c7f3854e1b469caa0989e0852f8bc2dce49e582ad8d08bdec66fa8be4a80902f748425f298ad1fab5d3a81bd64
+	sha512sums = b83d493ed68be0f5a6b851fd93d819bb3a6e62feeb71a5bef10bad24b5ea8f3cf09deea4f31ed727449888a6eae1be99fa9cf263bc921cb8bb2958e2f37a7d64
+	sha512sums = c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f
+	sha512sums = 92216c292ebe74066a51552fce9b93aef3b9ca7d0e25e652852220d13999fc6ca2b7dd126836d375c13ed6bdd169073795f40ad1e0f2c63ea58db40a73deb4c2
 
 pkgname = dingtalk-bin
