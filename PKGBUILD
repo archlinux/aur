@@ -21,10 +21,10 @@ source=("https://github.com/Novum/vkQuake/archive/${pkgver}.tar.gz"
 	'vkquake.desktop'
 	'vkquake.png'
 	'vkquake.svg')
-md5sums=('ea880d31d4bb65f94e2ca1925d86ebad'
-         '202e1efb0491aafcc9de6f44295dc272'
-         'ffc3103326b0378af770b1318cf4e7e6'
-         'd6b9553906db3cbadfbc40aafafa2b5d')
+sha512sums=('c5fd6fec6b245aab5db2c366cf495e9132331a2b24fa53e1faf32c80c0e63b14bbddaadb63d2659e121bf75f5b9dc629404a7d27154d25d51e4b5af8d1a55807'
+            '5dcfd6e8d394d85100a878febb98a45112fc70e3973df219810b61736bc3cc1c033cd24051d14b4543745ca809e2e659133f7aaa7e50fe73ccac0cf3feca8699'
+            '9ac17fb2f549656869a02a9a1896786aa4a4f753c6b1174d14b999c94693164ec71a73f9ab6f4a96591ef3af407ffce4f29b0ed87e878f14bb177e396898f29f'
+            '5a712a6c0447acea7a6c690cb7e63a2111e28646ef0935dfbd40cc4164c9ed5fc6fdba6eeafe44b618b17e856b3b0f60cc3ddbdedd8e536feef97de969d407b0')
 
 
 build() {
