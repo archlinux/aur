@@ -10,13 +10,14 @@
 
 _gitname=rofi
 pkgname=rofi-lbonn-wayland-git
-pkgver=1.3.1.r1349.gf0139710
+pkgver=1.6.1.r204.g2a68677b
 pkgrel=1
 pkgdesc='A window switcher, application launcher and dmenu replacement (Wayland fork)'
 arch=(x86_64)
 url="https://github.com/lbonn/$_gitname"
 license=(MIT)
-depends=(libxdg-basedir startup-notification libxkbcommon-x11 xcb-util-wm xcb-util-xrm librsvg wayland)
+depends=(libxdg-basedir startup-notification libxkbcommon-x11 xcb-util-cursor xcb-util-wm
+         xcb-util-xrm librsvg wayland)
 makedepends=(check git meson wayland-protocols)
 optdepends=('i3-wm: use as a window switcher')
 provides=(rofi)
@@ -26,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/-wayland//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = rofi-lbonn-wayland-git
 	pkgdesc = A window switcher, application launcher and dmenu replacement (Wayland fork)
-	pkgver = 1.3.1.r1349.gf0139710
+	pkgver = 1.6.1.r204.g2a68677b
 	pkgrel = 1
 	url = https://github.com/lbonn/rofi
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = rofi-lbonn-wayland-git
 	depends = libxdg-basedir
 	depends = startup-notification
 	depends = libxkbcommon-x11
+	depends = xcb-util-cursor
 	depends = xcb-util-wm
 	depends = xcb-util-xrm
 	depends = librsvg
@@ -23,4 +24,3 @@ pkgbase = rofi-lbonn-wayland-git
 	sha256sums = SKIP
 
 pkgname = rofi-lbonn-wayland-git
-
