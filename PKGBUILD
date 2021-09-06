@@ -10,11 +10,6 @@ options=(!strip)
 source=("https://github.com/DRSchlaubi/mcserv/releases/download/v$pkgver/$pkgname-$pkgver-linux.tar.gz")
 sha256sums=("f66b44a740f55bac2bc7a0bb29a47fd125ac6e84895445513cef15d91cfe8bb4")
 
-pkgver() {
-    newVer=$(curl --silent https://api.github.com/repos/DRSchlaubi/mcserv/releases/latest | jq -r '."tag_name"')
-    printf ${newVer#v}
-}
-
 package() {
 	cd "$srcdir"
 	mkdir -p "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin"
