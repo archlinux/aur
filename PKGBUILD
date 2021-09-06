@@ -3,7 +3,7 @@
 _pyname=oslo.policy
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=3.8.0
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="Oslo Policy library"
 arch=(any)
@@ -37,9 +37,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('2ad2be0a33a5dcb838d9f5e4b2e3227c')
-sha256sums=('31f4a4c94fddc1247e829349575b4358e21412ee0a4d4d9c1b37ba6be8c3f022')
-sha512sums=('374af8005b677c2d7cf83ac7a6714f44caed1c5e06727261934ba3f5559fbe25db15d9768ade7ff945fd59a85e630b5c5b1898b43249ba21c6345fd4d15df584')
+md5sums=('511a86e6bf9ffd4e8f5fb041d2262d7a')
+sha256sums=('233030f9acbc3cb894c66943fd71406ec12825776021f5dda4afab6f1762837f')
+sha512sums=('6daea44a93f53608529314b5eb780d999a1ffd65c3c54f05d58341254f99754c94e177ad01bb37aa036f98f3211bb3705c499ad6244a68165ae56fa59943c79a')
 
 export PBR_VERSION=$pkgver
 
