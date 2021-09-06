@@ -3782,7 +3782,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgstr "ツール"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx5/po/ko.po
 --- google-mozc-git/src/unix/fcitx5/po/ko.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ko.po	2021-08-22 10:50:49.569551580 +0300
++++ fcitx-mozc-git/src/unix/fcitx5/po/ko.po	2021-09-06 11:35:52.593403970 +0300
 @@ -0,0 +1,112 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3790,15 +3790,15 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +#
 +# Translators:
 +# csslayer <wengxt@gmail.com>, 2017
-+# Jung Hee Lee <daemul72@gmail.com>, 2021
++# JungHee Lee <daemul72@gmail.com>, 2021
 +#
 +msgid ""
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-06-15 20:24+0000\n"
++"POT-Creation-Date: 2021-08-30 20:24+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
-+"Last-Translator: Jung Hee Lee <daemul72@gmail.com>, 2021\n"
++"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2021\n"
 +"Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 +"Language: ko\n"
 +"MIME-Version: 1.0\n"
@@ -3864,7 +3864,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +
 +#: mozc_engine.h:47
 +msgid "Hotkey"
-+msgstr ""
++msgstr "단축키"
 +
 +#: mozc_engine.h:58
 +msgid "Hotkey to expand usage"
