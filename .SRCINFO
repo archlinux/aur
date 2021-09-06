@@ -1,12 +1,12 @@
 pkgbase = python-asttokens
 	pkgdesc = Annotate AST trees with source code positions
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gristlabs/asttokens
 	arch = any
 	license = Apache 2.0
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-setuptools-scm
 	depends = python-six
 	source = https://files.pythonhosted.org/packages/source/a/asttokens/asttokens-2.0.5.tar.gz
 	md5sums = 0a2a057b9c9a220bffdb3e7512062f17
