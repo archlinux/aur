@@ -1,0 +1,17 @@
+pkgbase = gradient-git
+	pkgdesc = CLI tool for playing with color gradients
+	pkgver = 0.2.0.r3.g1884b6d
+	pkgrel = 1
+	url = https://github.com/mazznoer/gradient-rs
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = gradient
+	conflicts = gradient
+	source = gradient-git::git+https://github.com/mazznoer/gradient-rs
+	sha256sums = SKIP
+
+pkgname = gradient-git
