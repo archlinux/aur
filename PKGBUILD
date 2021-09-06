@@ -1,5 +1,5 @@
 pkgname=bandwidth
-pkgver=1.9.4
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Benchmark memory bandwidth"
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="http://zsmith.co/bandwidth.php"
 license=('GPL')
 makedepends=('nasm')
 options=(!makeflags)
-sha256sums=('44f32f6a4afb5a0b39a6dec471a9f20712ac45727503aaa0c03cc23d6447e974')
+sha256sums=('b6bc9afbf7013488adb5001ce6d7329196c899e212a88a253bf63cb8e2348c69')
 source=("https://zsmith.co/archives/${pkgname}-${pkgver}.tar.gz")
 
 build() {
