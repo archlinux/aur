@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Warcraft Logs Uploader
+Exec=warcraftlogsuploader
+Terminal=false
+Type=Application
+Icon=warcraftlogs
+StartupWMClass=Warcraft Logs Uploader
+Comment=Warcraft Logs Uploader
+Categories=Game;
