@@ -1,0 +1,19 @@
+pkgbase = gitty-git
+	pkgdesc = Contextual information about your git projects, right on the command-line
+	pkgver = r21.e656106
+	pkgrel = 1
+	url = https://github.com/muesli/gitty
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = gitty
+	conflicts = gitty
+	source = gitty-git::git://github.com/muesli/gitty.git
+	sha256sums = SKIP
+
+pkgname = gitty-git
