@@ -1,26 +1,17 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 
 pkgname=deepin-mail-bin
-_pkgname=deepin-mail
-pkgver=5.1.0.45
-pkgrel=2
+pkgver=5.2.4_1
+pkgrel=1
 pkgdesc="Deepin mail"
-arch=("x86_64" "i386")
+arch=("x86_64")
 url="https://www.deepin.com/"
 license=("GPL3")
 depends=( 'qt5-webengine'  'liblockfile'  'dtkwidget')
-provides=("${_pkgname}")
-source_x86_64=("https://community-packages.deepin.com/deepin/pool/main/d/deepin-mail/deepin-mail_${pkgver}-1_amd64.deb")
-source_i386=("https://community-packages.deepin.com/deepin/pool/main/d/deepin-mail/deepin-mail_${pkgver}-1_i386.deb")
-sha512sums_x86_64=(
-    '642a2e41883489f6606bdc3801e1f1419c928884994bad0e438e730fe58cde2ef2cf0b72c2f5b34835b586ac8ba8c7ec44743871ebb7e266159b20a14a390978'
-)
-sha512sums_i386=(
-    '32b7e2f715aaff3ca0259fc01807e6ae9a44b1452078ff834a4579cee4a166b7492beeb7ca9397ad18d925d3521c0af1a6cc833ff41f53028888e1da6abedc7a'
-)
+source_x86_64=("https://community-packages.deepin.com/deepin/pool/non-free/d/deepin-mail/deepin-mail_${pkgver//_/-}_amd64.deb")
+sha512sums_x86_64=('1bde1a9ba7c36255b386e6d39528db5286e7a38a52891cd2b90959507896d19d5afe9694c72736cd8c68795f1c779bee1492f8516a0ffca8dbd417801c1a4f4b')
 
 package(){
     cd ${srcdir}
     tar -xJvf data.tar.xz -C "${pkgdir}"
-    sed -i "4c Exec=deepin-mail %U" ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 }
