@@ -1,7 +1,7 @@
 pkgbase = owntone-server
-	pkgdesc = iTunes-compatible media server, originally intended as a rewrite of Firefly Media Server (mt-daapd).
+	pkgdesc = iTunes-compatible media server previously known as forked-daapd, originally intended as a rewrite of Firefly Media Server (mt-daapd).
 	pkgver = 28.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/owntone/owntone-server
 	install = owntone.install
 	arch = armv6h

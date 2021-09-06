@@ -1,8 +1,8 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=owntone-server
 pkgver=28.2
-pkgrel=1
-pkgdesc="iTunes-compatible media server, originally intended as a rewrite of Firefly Media Server (mt-daapd)."
+pkgrel=2
+pkgdesc="iTunes-compatible media server previously known as forked-daapd, originally intended as a rewrite of Firefly Media Server (mt-daapd)."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/owntone/owntone-server"
 license=('GPL')
