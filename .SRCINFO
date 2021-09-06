@@ -1,5 +1,5 @@
 pkgbase = fortune-mod-hitchhiker
-	pkgdesc = This is a collection of quotes --- fortune cookies --- from Douglas Adams' famous Hitchhikers Guide to the Galaxy.
+	pkgdesc = Collection of quotes (fortune cookies) from Douglas Adams' famous Hitchhikers Guide to the Galaxy
 	pkgver = 20050611
 	pkgrel = 2
 	url = http://www.splitbrain.org/projects/fortunes/hg2g
