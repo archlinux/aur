@@ -1,6 +1,6 @@
 pkgbase = hqplayer-pro
 	pkgdesc = Professional high-end audio file converter, recorder and player
-	pkgver = 4.15.0
+	pkgver = 4.15.1
 	pkgrel = 1
 	url = https://www.signalyst.com/professional.html
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = hqplayer-pro
 	depends = qt5-charts
 	depends = wavpack
 	optdepends = evince: hqplayer manual reading
-	source = http://www.signalyst.com/bins/hqplayer4pro_4.15.0-24_amd64.deb
-	sha256sums = c7cd582ae048bd23e3d0b7112add8d357ba5e555d674d100b7e51a767673f46e
+	source = http://www.signalyst.com/bins/hqplayer4pro_4.15.1-25_amd64.deb
+	sha256sums = ec72770c15b5c4a4444eacd83b99cfe30561918b2b84578f4eb0184891dd2b23
 
 pkgname = hqplayer-pro
