@@ -8,14 +8,14 @@
 pkgname=bless-git
 _gitname=bless
 pkgver=r181.59aaaba
-pkgrel=3
+pkgrel=4
 pkgdesc="High-quality, full-featured hex editor (git version)"
 arch=('any')
 url="https://github.com/afrantzis/bless"
 license=('GPL2')
 depends=('gtk-sharp-2' 'mono')
 conflicts=('bless')
-makedepends=('libxslt' 'meson')
+makedepends=('libxslt' 'meson' 'git')
 source=("git://github.com/afrantzis/bless.git")
 sha256sums=('SKIP')
 
