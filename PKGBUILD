@@ -22,7 +22,7 @@ source=("https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linu
 # DebSource & pkgvere can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
 
 md5sums=('c55d666652ad08c3a2bd0e10b469426f'
-         '330f9b599d1ddd12511fd58317529a7d'
+         "SKIP"
          'e1b984a024700a9ef5f77a1018a41f8e'
          '0e255cd61852162548db96e46f1dda00')
 
