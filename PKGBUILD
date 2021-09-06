@@ -3,8 +3,8 @@
 _pyname=oslo.service
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Oslo Service API"
 arch=(any)
 url="https://docs.openstack.org/oslo.service/latest/"
@@ -46,9 +46,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('fb59c5c4e5b3081e0f9172a1af3ec6ce')
-sha256sums=('147da1140bc112f0aba810ebf05f16775a181a7d9e8e87e19e8a59a49ecbcc28')
-sha512sums=('fa7ecc1a62664475a1382b13896e50ae22198fac670580aabafaba4564669b49023372286346e084aa1dc3c44049ba3893429e41eba4f98ed7448a2af6f788eb')
+md5sums=('063c4da5c17164e4b7631957b0f4c011')
+sha256sums=('7d58aa94c407f935570e47362107af8e9d5585c855a17ae34d3b9aa9750939f6')
+sha512sums=('102690b122822bafaf7614d97c753475665befc2153c6af0348e6766fdbb9e96bcb1dcda0221fa925031691a53a9f3c9bf9102a380c2f561c057241920192e12')
 
 export PBR_VERSION=$pkgver
 
