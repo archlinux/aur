@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=orchis-theme-git
-pkgver=2021.06.25.r44.gee918c3
+pkgver=2021.06.25.r52.geb279b5
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
@@ -10,8 +10,7 @@ depends=('gtk3' 'gnome-themes-extra')
 makedepends=('git' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'kvantum-theme-orchis: Matching Kvantum theme'
-            'tela-circle-icon-theme: Recommended icon theme'
-            'plank: for Plank theme')
+            'tela-circle-icon-theme: Recommended icon theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
@@ -37,7 +36,7 @@ package() {
 
   # Wallpapers
   install -Dm644 src/wallpaper/*.jpg -t \
-    "$pkgdir/usr/share/backgrounds/${pkgname%-git}"
+    "$pkgdir/usr/share/backgrounds/orchis"
 
   # Firefox theme
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
