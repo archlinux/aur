@@ -1,0 +1,55 @@
+# Maintainer: zocker_160 <zocker1600 at posteo dot net>
+
+pkgname=keyboard-center
+pkgver=0.1.4
+pkgrel=1
+pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
+arch=('x86_64')
+url="https://github.com/zocker-160/keyboard-center"
+license=('GPL3')
+depends=(
+    'python>=3.8'
+    'python-pyqt5>=5.14'
+    'python-pip>=20'
+    'python-uinput>=0.11.2'
+    'python-ruamel-yaml>=0.15'
+    'python-pyusb>=1.0.2'
+    'python-inotify-simple>=1.3'
+    'libnotify>=0.7.9'
+)
+#conflicts=('')
+source=("$pkgname-$pkgver::git+https://github.com/zocker-160/keyboard-center.git#tag=$pkgver")
+sha256sums=('SKIP')
+
+install=keyboard-center.install
+
+prepare() {
+  cd $pkgname-$pkgver
+  # nothing to see here
+}
+
+build() {
+  cd $pkgname-$pkgver
+  # still nothing to see here
+}
+
+package() {
+  cd $pkgname-$pkgver
+  
+  install -d -m755 src "$pkgdir"/usr/lib/"$pkgname"
+  
+  cp -r src/assets "$pkgdir"/usr/lib/"$pkgname"
+  cp -r src/config "$pkgdir"/usr/lib/"$pkgname"
+  cp -r src/devices "$pkgdir"/usr/lib/"$pkgname"
+  cp -r src/gui "$pkgdir"/usr/lib/"$pkgname"
+  cp -r src/lib "$pkgdir"/usr/lib/"$pkgname"
+  
+  install -D -m755 linux_packaging/assets/keyboard-center.sh "$pkgdir"/usr/bin/"$pkgname"
+  
+  install -D -m755 src/main.py -t "$pkgdir"/usr/lib/"$pkgname"
+  install -D -m755 src/service.py -t "$pkgdir"/usr/lib/"$pkgname"
+  install -D -m644 src/keyboard-center.service -t "$pkgdir"/usr/lib/systemd/user
+  
+  install -D -m644 linux_packaging/assets/keyboard-center.png -t "$pkgdir"/usr/share/icons/hicolor/512x512/apps
+  install -D -m644 linux_packaging/assets/keyboard-center.desktop -t "$pkgdir"/usr/share/applications  
+}

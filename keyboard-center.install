@@ -1,0 +1,15 @@
+post_install() {
+    python3 -m compileall /usr/lib/keyboard-center
+}
+
+pre_remove() {    
+    find /usr/lib/keyboard-center -type f -iname \*.pyc -delete
+    find /usr/lib/keyboard-center -type d -iname __pycache__ -delete
+}
+
+post_remove() {
+    echo "IMPORTANT: in order to stop the background service ###############################################################"
+    echo 'please run "systemctl --user stop keyboard-center.service" and "systemctl --user disable keyboard-center.service" as NON ROOT'
+    echo "##################################################################################################################"
+    sleep 3
+}
