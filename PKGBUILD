@@ -8,7 +8,7 @@ url="https://github.com/DRSchlaubi/mcserv"
 license=('GPL3')
 options=(!strip)
 source=("https://github.com/DRSchlaubi/mcserv/releases/download/v$pkgver/$pkgname-$pkgver-linux.tar.gz")
-sha256sums=("c89e85703500d430f6c9c4d097d09cb6cb2866e35485e280df536a47681b3ca4")
+sha256sums=("f66b44a740f55bac2bc7a0bb29a47fd125ac6e84895445513cef15d91cfe8bb4")
 
 pkgver() {
     newVer=$(curl --silent https://api.github.com/repos/DRSchlaubi/mcserv/releases/latest | jq -r '."tag_name"')
