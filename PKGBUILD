@@ -4,12 +4,12 @@
 
 pkgname=python-aioimaplib
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python asyncio IMAP4rev1 client library'
 arch=('any')
 url='https://github.com/bamthomas/aioimaplib'
 license=('GPL3')
-depends=('python3')
+depends=('python>=3.5' 'python3')
 makedepends=('python-setuptools')
 checkdepends=(
 	'python-asynctest'
