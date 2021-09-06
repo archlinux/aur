@@ -1,0 +1,15 @@
+pkgbase = tdmgr
+	pkgdesc = Tasmota Device Manager is able to find, monitor and do magic things. The easy way. Like a Superhero.
+	pkgver = 0.2.11
+	pkgrel = 1
+	url = https://github.com/jziolkowski/tdm
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-paho-mqtt
+	depends = python-pyqt5
+	source = https://files.pythonhosted.org/packages/source/t/tdmgr/tdmgr-0.2.11.tar.gz
+	sha256sums = 8023075fa19a8d03d9812fbdadb0fae87fac73a3a963e53e10aa26dd4e1ba595
+
+pkgname = tdmgr
