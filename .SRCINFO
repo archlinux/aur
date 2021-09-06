@@ -1,8 +1,8 @@
 pkgbase = unzip-natspec
 	pkgdesc = Unpacks .zip archives with non-latin filenames, using libnatspec patch from AltLinux.
 	pkgver = 6.0
-	pkgrel = 6
-	url = http://www.info-zip.org/
+	pkgrel = 7
+	url = https://www.info-zip.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -13,7 +13,7 @@ pkgbase = unzip-natspec
 	depends = libnatspec
 	provides = unzip
 	conflicts = unzip
-	source = http://downloads.sourceforge.net/infozip/unzip60.tar.gz
+	source = https://downloads.sourceforge.net/infozip/unzip60.tar.gz
 	source = unzip-6.0-alt-natspec.patch
 	source = overflow-fsize.patch
 	source = cve20149636.patch
@@ -35,4 +35,3 @@ pkgbase = unzip-natspec
 	sha256sums = SKIP
 
 pkgname = unzip-natspec
-
