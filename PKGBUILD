@@ -1,14 +1,14 @@
 # Maintainer: fossdd <fossdd@tutanota.com>
 pkgname=fossil-gemini-git
 _pkgname=${pkgname%-gemini-git}
-pkgver=v1.2.r0.g582f6c8
+pkgver=v1.2.r10.ga283026
 pkgrel=1
 pkgdesc="A simple GTK Gopher/Gemini client written in Vala"
 url='https://github.com/koyuspace/fossil'
 license=(MIT)
 arch=(x86_64)
 depends=(gtk3 json-glib gnutls)
-makedepends=(gtk3 vala meson cmake python json-glib gnutls gettext)
+makedepends=(gtk3 vala meson cmake python json-glib gnutls gettext granite)
 conflicts=(fossil)
 provides=(fossil)
 source=("git+https://github.com/koyuspace/fossil.git")
@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd "$_pkgname"
-  install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  ./install.sh
 }
