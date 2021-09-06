@@ -19,6 +19,12 @@ pkgver() {
     date -ur "${srcdir?}/fortune-hitchhiker/hitchhiker" '+%Y%m%d'
 }
 
+build() {
+    cd "${srcdir?}/fortune-hitchhiker"
+
+    strfile hitchhiker
+}
+
 package() {
   mkdir -p "${pkgdir}/usr/share/fortune"
   install -Dm 644 "${srcdir}/fortune-hitchhiker/hitchhiker"* "${pkgdir}/usr/share/fortune/"
