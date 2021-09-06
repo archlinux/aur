@@ -1,6 +1,6 @@
 pkgbase = wasm-pack
 	pkgdesc = Your favorite rust -> wasm workflow tool!
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/rustwasm/wasm-pack
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = wasm-pack
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/rustwasm/wasm-pack/archive/v0.10.0.tar.gz
-	sha384sums = 351ca0996f8304060a11243db1100f1f2ac8fe8b8f26ccc7279460e686d96eb3262a92769d0a8b6e4113732965f185f0
+	source = https://github.com/rustwasm/wasm-pack/archive/v0.10.1.tar.gz
+	sha384sums = 1d76ad08a53a2e691fd503012c1f829442c3cffaf03c76f286b7ce4dff0d7d5431905ca05474386e14ed21d6be2e3a7e
 
 pkgname = wasm-pack
