@@ -2,4 +2,3 @@ pkg/
 src/
 *.deb
 *.zst
-service-terms-zh-*
