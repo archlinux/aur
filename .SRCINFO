@@ -1,20 +1,18 @@
 pkgbase = arduino-beta-bin
 	pkgdesc = A Major Rewrite, Sharing No Code With the Arduino IDE 1.x
 	pkgver = 2.0.0b11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arduino/arduino-ide
 	arch = x86_64
 	license = AGPL3
 	makedepends = tar
 	options = !strip
 	options = emptydirs
-	source = arduino-beta-2.0.0b11.zip::https://github.com/arduino/arduino-ide/releases/download/2.0.0-beta.11/arduino-ide_2.0.0-beta.11_Linux_64bit.zip
+	source = https://github.com/arduino/arduino-ide/releases/download/2.0.0-beta.11/arduino-ide_2.0.0-beta.11_Linux_64bit.zip
 	source = arduino-beta.desktop
 	source = arduino-beta.png
-	source = arduino-beta
-	md5sums = 49f5d427dabe8eb12d8b02b71ce4f7fa
-	md5sums = fdd24c05ca7faed01893ebd5a732351d
-	md5sums = bbc2e7c5c6d340a3c6d1c56f0ef2733c
-	md5sums = 34f9f2dc00f844cd6b40e6d3ee9ec1ed
+	sha256sums = a39875e76c9a4e307ce4c1c887b403b845870e3149ef0b07ec2264eeedaa6c85
+	sha256sums = 77e2cab9b6e79c97b1311b4100049dc1be5d186fd7ab054e7673c662aac27d34
+	sha256sums = 1568663b6ee0c7eb5b642ca1d131cc37b996992ce4b3b8b9e6f720280158fa1b
 
 pkgname = arduino-beta-bin
