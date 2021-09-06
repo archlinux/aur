@@ -1,22 +1,22 @@
 pkgbase = mcaselector
 	pkgdesc = An external tool to export or delete selected chunks and regions from a world save of Minecraft Java Edition.
-	pkgver = 1.15.4
+	pkgver = 1.16.3
 	pkgrel = 1
 	url = https://github.com/Querz/mcaselector
 	arch = any
 	license = MIT
-	depends = java-runtime
+	depends = jre-openjdk
+	depends = java-openjfx
 	depends = bash
-	noextract = mcaselector.jar
+	noextract = mcaselector-1.16.3.jar
 	options = !strip
-	source = mcaselector-1.15.4.jar::https://github.com/Querz/mcaselector/releases/download/1.15.4/mcaselector-1.15.4.jar
+	source = mcaselector-1.16.3.jar::https://github.com/Querz/mcaselector/releases/download/1.16.3/mcaselector-1.16.3.jar
 	source = mcaselector.desktop
 	source = mcaselector.png
 	source = mcaselector
-	sha256sums = 1420c0bb8b94f1aa6f92dcdb6b10711d59200338c29d5681b5716d297c38a2ea
+	sha256sums = 0a9850acdd947f9d482015c9e47eb2df400e95290e6d93260d5adf996e2c2d47
 	sha256sums = 9f97cb7dbdfe2a5871223e7b529d0a621ac342120b53120eaf9d55c5ef9b5b4d
 	sha256sums = c8aa867604c6eb3e31649cfec02d914aa0ab6cd30080cb7a4aecbecef2254837
-	sha256sums = d7a40a819301cf764e6237f2c0a5727047fb3de4bf52841d3ff392c686621482
+	sha256sums = 638f77d331168fa64d7900f5781d27674d80baf651627dec8c273c3c39c8f968
 
 pkgname = mcaselector
-

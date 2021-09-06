@@ -1,2 +1,5 @@
 #!/bin/sh
-java -jar /usr/share/java/mcaselector.jar "$@"
+
+export PATH="/usr/lib/jvm/java-16-openjdk/bin/:$PATH"
+
+java --module-path /usr/lib/jvm/java-16-openjdk/lib/javafx.base.jar:/usr/lib/jvm/java-16-openjdk/lib/javafx.controls.jar:/usr/lib/jvm/java-16-openjdk/lib/javafx.graphics.jar:/usr/lib/jvm/java-16-openjdk/lib/javafx.swing.jar --add-modules javafx.base,javafx.controls,javafx.graphics,javafx.swing -jar /usr/share/java/mcaselector.jar "$@"
