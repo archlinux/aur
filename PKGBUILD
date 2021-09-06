@@ -17,12 +17,10 @@ source=("$pkgname::git+${url}.git")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$pkgname/external"
+  cd "$pkgname"
   git submodule init
   git submodule update
-  cd ".."
   mkdir build
-  mkdir -p build
   # Removing libgss from build dependencies.
   sed -i 's/gss//g' CMakeLists.txt
 }
