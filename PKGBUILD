@@ -4,7 +4,7 @@
 # Contributor: Bruno Inec <bruno at inec dot fr>
 
 pkgname=wtfutil
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
@@ -13,33 +13,33 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wtfutil/wtf/archive/v$pkgver.tar.gz")
-sha256sums=('f1d73879bf75240d1b0f13232bea3904e11188bc75527ab216bebcbc66f83401')
+sha256sums=('1180e1d0c9e8ec8057a213a9dd334f41419b9463d11f3be7af17b323e6338cfe')
 
 prepare() {
-	# Prevent creation of a `go` directory in one's home.
-	# Sometimes this directory cannot be removed with even `rm -rf` unless
-	# one becomes root or changes the write permissions.
-	export GOPATH="$srcdir/gopath"
-	go clean -modcache
+  # Prevent creation of a `go` directory in one's home.
+  # Sometimes this directory cannot be removed with even `rm -rf` unless
+  # one becomes root or changes the write permissions.
+  export GOPATH="$srcdir/gopath"
+  go clean -modcache
 }
 
 build() {
-	cd "wtf-$pkgver"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS+="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
- 	make
+  cd "wtf-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS+="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  make
 
- 	# Clean mod cache for makepkg -C
-	go clean -modcache
+   # Clean mod cache for makepkg -C
+  go clean -modcache
 }
 
 package() {
-	cd "wtf-$pkgver"
-	install -Dm755 "bin/$pkgname" -t "$pkgdir/usr/bin"
-    install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 {README,CHANGELOG}.md -t "$pkgdir/usr/share/doc/$pkgname"
-    cp -r _sample_configs "$pkgdir/usr/share/doc/$pkgname/sample_configs"
+  cd "wtf-$pkgver"
+  install -Dm755 "bin/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 {README,CHANGELOG}.md -t "$pkgdir/usr/share/doc/$pkgname"
+  cp -r _sample_configs "$pkgdir/usr/share/doc/$pkgname/sample_configs"
 }
