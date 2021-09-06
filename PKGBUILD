@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=mdbook-linkcheck
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A mdbook backend which will check all links in a document are valid"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('mdbook')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('573690798277375c2b8fd38a466a35e4fb951cabd016d47930b9fbe4d357f23cc48bb9083d11ec508000eed99276fd9940b30840f3c3b6edaed1408e894e0069')
+b2sums=('2f70057f68b1944be4a7d9c98a59db97876c0a875eb254a5b17a33036f1c68d6677ad8861b86abcbb4c9c818317314b71febf607ae33f4d61d3d577298788829')
 
 prepare() {
   cd "$pkgname-$pkgver"
