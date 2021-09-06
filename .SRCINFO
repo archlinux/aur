@@ -12,6 +12,7 @@ pkgbase = wshowkeys-git
 	depends = pango
 	depends = libinput
 	depends = libxkbcommon
+	depends = wayland
 	provides = wshowkeys
 	conflicts = wshowkeys
 	source = wshowkeys::git+https://github.com/ammgws/wshowkeys
