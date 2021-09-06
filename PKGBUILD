@@ -53,7 +53,7 @@ source=("git+${url}.git")
 # shellcheck disable=SC2034
 noextract=()
 # shellcheck disable=SC2034
-md5sums=("SKIP")
+sha256sums=("SKIP")
 # shellcheck disable=SC2034
 validpgpkeys=()
 

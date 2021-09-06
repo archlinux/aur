@@ -20,6 +20,6 @@ pkgbase = btcpayserver-git
 	provides = btcpayserver
 	conflicts = btcpayserver
 	source = git+https://github.com/btcpayserver/btcpayserver.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = btcpayserver-git
