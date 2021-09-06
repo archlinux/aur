@@ -10,7 +10,7 @@
 ## Helpful internal stuff
 _commit=7e8beed3ddad4f8d1065cbab52f24c16d31f5898
 _mozcver=2.26.4486.102
-_utdicver=20210906
+_utdicver=20210907
 
 pkgname='mozc-ut-common'
 pkgver=${_mozcver}.${_utdicver}
@@ -24,9 +24,9 @@ makedepends=('bazel' 'git' 'pkgconf' 'python-six')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/32/32933/mozcdic-ut-${_utdicver}.tar.bz2")
+        "https://osdn.net/downloads/users/32/32939/mozcdic-ut-${_utdicver}.tar.bz2")
 sha256sums=('SKIP'
-            '190707cb6dc97f6d5ef2a73ad976f8e1166dadc1c48e33bc56442876c38fe841')
+            '8a3642e12f26b63c93547a037e1910d1462863bc44c821fbe05a6f86197a5a93')
 
 prepare() {
     cd ${pkgname}-git
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-    install -Dm644 mozcdic-ut-${_utdicver}/COPYING              ${pkgdir}/usr/share/licenses/mozc/ut-dictionary
+    #install -Dm644 mozcdic-ut-${_utdicver}/COPYING              ${pkgdir}/usr/share/licenses/mozc/ut-dictionary
 
     cd ${pkgname}-git/src
 
