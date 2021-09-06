@@ -2,7 +2,7 @@
 
 pkgname=zx
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for writing better scripts'
 arch=(any)
 url=https://github.com/google/zx
@@ -28,7 +28,7 @@ package() {
 	mkdir -p "$_bindir"
 	ln -s "/usr/lib/node_modules/$pkgname/zx.mjs" "$_bindir/zx"
 
-	install -Dm644 LICENSE "$pkgdir/usr/share/license/$pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: syntax=sh
