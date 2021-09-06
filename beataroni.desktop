@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Beataroni
+Exec=/opt/beataroni-bin/Beataroni
+Terminal=false
+Type=Application
+Icon=access
+Comment=A graphical Beat Saber mod installer
+Categories=Games;
