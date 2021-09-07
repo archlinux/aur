@@ -1,6 +1,6 @@
 pkgname=go-lint-git
 pkgver=20210508.185_6edffad
-pkgrel=1
+pkgrel=2
 pkgdesc="golang lint"
 arch=('i686' 'x86_64')
 license=('BSD 3-Clause')
@@ -42,10 +42,10 @@ pkgver() {
 }
 
 build() {
-	GOBIN=$srcdir/bin/
+	GOBIN=$srcdir/bin
 	mkdir -p $GOBIN
 	cd $srcdir/lint/golint
-	go install -v .
+	GOBIN=$srcdir/bin go install -v .
 }
 
 package() {

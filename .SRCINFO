@@ -1,7 +1,7 @@
 pkgbase = go-lint-git
 	pkgdesc = golang lint
 	pkgver = 20210508.185_6edffad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/golang/lint
 	arch = i686
 	arch = x86_64
