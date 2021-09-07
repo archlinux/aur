@@ -1,13 +1,12 @@
 # Maintainer: midnightix <midnightix@protonmail.com>
 
 pkgname=clash-premium-tun
-_pkgname=clash
-pkgver=2021.07.03
+pkgver=2021.09.07
 pkgrel=1
 pkgdesc="A rule-based tunnel in Go for Linux with TUN"
 arch=('x86_64')
 url="https://github.com/Dreamacro/clash"
-license=('custom')
+license=('unknown')
 install=${pkgname}.install
 depends=('glibc' 'clash-geoip' 'nftables' 'systemd' 'iproute2')
 makedepends=('git' 'gzip')
@@ -15,10 +14,10 @@ provides=('clash')
 conflicts=('clash')
 backup=("etc/clash/config.yaml")
 source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951"
-        "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-${pkgver}.gz"
+        "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-2021.07.03-49-gf09c567.gz"
         "config.yaml")
 sha256sums=('SKIP'
-            '2f6d81b350048c71fc142ea743ee4463663170638286e49d71e1c7b930c2d5b4'
+            '0793978094543482b9ff90eb7e50453f946da4f52c0160591c0970dfc4b68bc8'
             '1938bc7544f8e33a6e41636f45e87a17de2eac0ca14f47c2f7a71c3c87341bf0')
 
 prepare() {
@@ -35,8 +34,8 @@ prepare() {
 
 package() {
 	cd "${srcdir}"
-    gunzip --force clash-linux-amd64-${pkgver}.gz
-	install -Dm 755 clash-linux-amd64-${pkgver} "${pkgdir}"/usr/bin/clash
+    gunzip --force clash-linux-amd64-2021.07.03-49-gf09c567.gz
+	install -Dm 755 clash-linux-amd64-2021.07.03-49-gf09c567 "${pkgdir}"/usr/bin/clash
     install -Dm 644 config.yaml "${pkgdir}"/etc/clash/config.yaml
 	cd "${srcdir}"/clash-premium-installer/scripts
     install -Dm 644 clash-default "${pkgdir}"/etc/default/clash
