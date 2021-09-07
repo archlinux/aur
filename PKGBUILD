@@ -2,7 +2,7 @@
 pkgname=python-app_paths
 _name=${pkgname#python-}
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Like appdirs, but with pathlib, path creation and async support."
 arch=('any')
 url="https://github.com/alexdelorenzo/app_paths"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
         'https://raw.githubusercontent.com/alexdelorenzo/app_paths/master/requirements.txt')
 sha256sums=('0ae3f8a8d451539842d49124e173016671c1553e7df4e595cc8837041febf46f'
-            'e348c437253dbbf7a61470400566b4f5edd7b5f8054a20b0c27158c078c68783')
+            'SKIP')
 
 prepare() {
   cp requirements.txt "$_name-$pkgver"
