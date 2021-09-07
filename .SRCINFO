@@ -1,0 +1,10 @@
+pkgbase = kygekteampmmp4
+	pkgdesc = PocketMine-MP 4 as an Arch/AUR package!
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://kygekteam.org/pm4
+	arch = x86_64
+	license = GPL
+	makedepends = wget
+
+pkgname = kygekteampmmp4
