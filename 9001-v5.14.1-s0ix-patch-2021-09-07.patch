@@ -1,11 +1,32 @@
-From 20d622ad8d682cdfa8d2db3aac2e2940fb6b7f37 Mon Sep 17 00:00:00 2001
+From 138fca2964bb79b2de2762c811e1eca9d7960ce3 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Fri, 3 Sep 2021 06:18:48 -0700
-Subject: [PATCH] v5.14.1 s0ix patch 2021-09-03
+Date: Tue, 7 Sep 2021 10:38:33 -0700
+Subject: [PATCH] v5.14.1 s0ix patch 2021-09-07
 
 Squashed commit of the following:
 
-commit 59a128d473a903fc256ca20b05a83aedae570fef
+commit 3bef8169a10e101d1fba8ac4d89f79093246c6cc
+Author: Scott B <28817345+foundObjects@users.noreply.github.com>
+Date:   Wed Aug 25 07:35:52 2021 -0700
+
+    HACK: amd-pmc delay hack
+
+    This patch adds some delays into the resume process to allow the SMU
+    enough time to wake before servicing resume events.
+
+    This is a dirty hack but it *completely* resolves the SMU state issues
+    we've had for months.
+
+commit 52d0bc60a6cc224c7a92b4d6ce45bae33cf7cc91
+Author: Scott B <28817345+foundObjects@users.noreply.github.com>
+Date:   Wed Jul 21 18:10:28 2021 -0700
+
+    DEBUG: amd-pmc smu register dump for diagnostics
+
+    patch this per Mario's request:
+    https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
+
+commit e6ac6794f048a9d9324f0deb412db6f3ed350918
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -18,7 +39,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit d48c21c63803949bb4655e93b0fb064d56db5682
+commit e10817ed65b87598133c4fa763f1277bd1ccbfec
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -31,7 +52,7 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 2219e4d484f61a7234a1744fe7f44255850264fb
+commit 235811f2100ad24d7a847581a3dc9460f07c876c
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Aug 31 11:36:19 2021 -0500
 
@@ -59,15 +80,6 @@ Date:   Tue Aug 31 11:36:19 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1691
     Reported-by: Maxwell Beck <max@ryt.one>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-
-commit 290e605b95a082a6cef455fcb89e263271db9ee5
-Author: Scott B <28817345+foundObjects@users.noreply.github.com>
-Date:   Wed Jul 21 18:10:28 2021 -0700
-
-    amd-pmc smu register dump for diagnostics
-
-    patch this per Mario's request:
-    https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
 
 commit 69a3e85d633dbdac57017feb9a059b97c8937034
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
@@ -197,8 +209,8 @@ Date:   Fri Jul 9 23:33:11 2021 -0400
  drivers/gpu/drm/amd/pm/swsmu/smu_cmn.h        |   3 +-
  drivers/pinctrl/pinctrl-amd.c                 |  19 +-
  drivers/pinctrl/pinctrl-amd.h                 |   1 +
- drivers/platform/x86/amd-pmc.c                |   1 +
- 8 files changed, 306 insertions(+), 81 deletions(-)
+ drivers/platform/x86/amd-pmc.c                |   9 +-
+ 8 files changed, 313 insertions(+), 82 deletions(-)
 
 diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
 index 3a308461246a..7d1976e5dd8b 100644
@@ -750,14 +762,42 @@ index 95e763424042..1d4317073654 100644
  
  /*  KERNCZ configuration*/
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index 3481479a2942..52a88c9bc0ab 100644
+index 3481479a2942..336303e963c5 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
+@@ -71,7 +71,7 @@
+ #define AMD_CPU_ID_YC			0x14B5
+ 
+ #define PMC_MSG_DELAY_MIN_US		100
+-#define RESPONSE_REGISTER_LOOP_MAX	200
++#define RESPONSE_REGISTER_LOOP_MAX     2000
+ 
+ #define SOC_SUBSYSTEM_IP_MAX	12
+ #define DELAY_MIN_US		2000
 @@ -270,6 +270,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
  	u32 val;
  
  	mutex_lock(&dev->lock);
 +	amd_pmc_dump_registers(dev);
+ 	/* Wait until we get a valid response */
+ 	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
+ 				val, val != 0, PMC_MSG_DELAY_MIN_US,
+@@ -282,12 +283,18 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
+ 	/* Write zero to response register */
+ 	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_RESPONSE, 0);
+ 
++	udelay(500);
++
+ 	/* Write argument into response register */
+ 	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_ARGUMENT, set);
+ 
++	udelay(500);
++
+ 	/* Write message ID to message ID register */
+ 	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_MESSAGE, msg);
+ 
++	udelay(500);
++
  	/* Wait until we get a valid response */
  	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
  				val, val != 0, PMC_MSG_DELAY_MIN_US,

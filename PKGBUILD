@@ -144,9 +144,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "v2-mt76-mt7921-fix-kernel-warning-from-cfg80211_calculate_bitrate.patch"
 
         # squashed s0ix enablement
-        "9001-v5.14.1-s0ix-patch-2021-09-03.patch"
-        # delay hack adding micro delays during resume, drastically improves SMU stability
-        "9002-amd-pmc-delay-test.patch"
+        "9001-v5.14.1-s0ix-patch-2021-09-07.patch"
         )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -179,8 +177,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '5b7a106d371fcf880920967d7e36728f1bcc0368eaa7bf75ebf67a4ddb93c6d5'
             'aa5bb422421cb7e1340d8f07b5471995bbc3c7dd7cf91db76ab1dbe7efc2777a'
             '5e66b5a6a775ad42489dfd0f6057b69dae696a5ec8be428da329f68c1265764a'
-            '3d6d1e6374688c5f1abbc40b15c03c62f695e9d04d790556c57f8ec5d0d6a3f9'
-            'd8dd84c26a44af618c6d1b68723e3bf0f8f50165af04fe090256afb0f931713e')
+            'e04bbbdd23d702c95b67415a20a7a1bd3ba5c236a76b84a81f40101566aaeb19')
 
 # apply UKSM patch; TODO: note to self: don't forget to update the sum here during major version changes
 #
