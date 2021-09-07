@@ -1,14 +1,13 @@
 # Maintainer: Daniel Reibl <janos.daniel.reibl@pm.me>
-# You can download firecapture at http://www.firecapture.de/download.php?file=FireCapture_v2.6.tar.gz
 pkgname=firecapture
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The leading planetary capture tool"
 arch=('x86_64')
 url="http://www.firecapture.de"
 license=('custom:firecapture')
 depends=('libusb')
-source=("local://FireCapture_v${pkgver}.tar.gz")
+source=("FireCapture_v${pkgver}.tar.gz::http://www.firecapture.de/download.php?file=FireCapture_v${pkgver}.tar.gz")
 md5sums=('028ec7767a2f9dab092d4da48c4cb9d2')
 
 prepare() {
