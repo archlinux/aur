@@ -3,7 +3,7 @@
 # Maintainer: tyjak
 
 pkgname=binance
-pkgver=1.22.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="The Binance desktop application"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('unknown')
 checkdepends=('curl' 'coreutils')
 source=('https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb')
 source=("${pkgname}-${pkgver}.deb::https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb")
-sha256sums=('117b42353f4aacdce80e02c32236f7fa40fcd1140e41b04449654fcc19e4f6d4')
+sha256sums=('761dad3fc8a0e9bed51a8a31a90abc7c15e21be81aa561996459d06c5a2f6db8')
 
 check() {
     cd "$srcdir"
