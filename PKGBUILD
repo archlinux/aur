@@ -5,14 +5,14 @@ _pkgname=obsidian
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.12.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
 arch=('x86_64')
 url="https://obsidian.md/"
 license=('custom:Commercial')
 depends=('zlib' 'hicolor-icon-theme' 'fuse')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" 'obsidian' 'obsidian-insider')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
