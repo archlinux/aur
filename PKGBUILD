@@ -3,7 +3,7 @@
 _pyname=sphinx-feature-classification
 pkgname=python-$_pyname
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate a matrix of pluggable drivers and their support to an API in Sphinx."
 arch=('any')
 url="https://docs.openstack.org/sphinx-feature-classification/latest/"
@@ -19,6 +19,7 @@ makedepends=(
 	python-setuptools
 )
 checkdepends=(
+	python-pytest
 	python-hacking
 	python-coverage
 	python-ddt
