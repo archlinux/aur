@@ -8,7 +8,7 @@ pkgdesc="Obsidian is a powerful knowledge base that works on top of a local fold
 arch=('x86_64')
 url="https://obsidian.md/"
 license=('custom:Commercial')
-depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron')
+depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron13')
 makedepends=('asar')
 options=(!strip)
 source=(
@@ -17,8 +17,8 @@ source=(
     "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.tar.gz"
 )
 sha256sums=(
-    'd6b6ea6749b343787a2ab8379f0396c3ea48796717773ad5447afecc10e042e7'
-    '345946f1883d547410e34b85b7daa9d38fb5d1869212653530e87676149fe921'
+    '5f4699e03045f68932e976727a746342f971eddb77fe5a31d8d2c4084034ed5f'
+    '1153b7f4ce342663f766efa38dc07677aec13f7f619afef1f9b8e2b1f1849fe6'
     'd290304e4c7cf41e92d063deb365d749135d07221cf83c222391d7a14aacfd01'
 )
 
