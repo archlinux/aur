@@ -3,7 +3,7 @@
 _pkgname=mergedeep
 pkgname="python-${_pkgname}"
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A deep merge function for Python'
 arch=('any')
 url="https://pypi.org/project/${_pkgname}"
@@ -24,5 +24,5 @@ package() {
   cd "${_pkgname}-${pkgver}"
 
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licences/${pkgname}/LICENSE"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
