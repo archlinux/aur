@@ -1,6 +1,6 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=pylink
-pkgver=0.8.1
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Python interface for the SEGGER J-Link"
 url="https://github.com/Square/pylink"
@@ -14,7 +14,7 @@ optdepends=()
 license=('Apache')
 arch=('any')
 source=("https://github.com/square/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('92e56b69eab7200ea3446593e79a2a4b4dfdba15826aabd03106a7a7cca0c49a040a1d955f666a749df7feef383827dd03ac38a4604573570e87d4b1b2aea458')
+sha512sums=('c19795f9ef1b4716731883fd55b4b3640861a892bf4f5ad15a82552849299c6af16597e8aac6b36883effa6fcac9ed1be20ea75a582c4447da2680fbde495540')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
