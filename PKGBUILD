@@ -3,7 +3,7 @@
 _pyname=zstd
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
-pkgver=1.5.0.1
+pkgver=1.5.0.2
 pkgrel=1
 pkgdesc="ZSTD Bindings for Python"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -17,9 +17,9 @@ makedepends=(
 	python2-setuptools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('414640bed04a2f8827f1672153b43522')
-sha256sums=('718d2875c0f4076ed659ea634e4a7a73e70928a9574f1368e53bd96349077a36')
-sha512sums=('6e7afa59cc2e8962d96533a58aef47c6a7b21b669779aae0aef268cedc7378199f596c4576c43276806f425a569c7bed781f981fabb7d2db1f2f7d69d79f85b9')
+md5sums=('ba4d858bf5d2dad7384be7f534419b9a')
+sha256sums=('8d3388a15135c481b28ca67d079cb5fd79a9691626fd9979e6b4ec00eabb9e79')
+sha512sums=('a7a6033e743c5bc0fa5256dfd256c2a9417c200cda5d5c02c6c7a5d5553d188637e21908658a4a948e565b16bb03f85f57c74d51c63a3ae7eb160f8b3bdbd3c3')
 
 prepare(){
 	cp -a $_pyname-$pkgver{,-py2}
@@ -37,17 +37,16 @@ build(){
 
 check(){
 	pushd $_pyname-$pkgver
-	python setup.py test
+	PYTHONPATH="$(realpath build/lib.linux-*)" python -m pytest
 	popd
 	pushd $_pyname-$pkgver-py2
-	python2 setup.py test
+	PYTHONPATH="$(realpath build/lib.linux-*)" python2 -m pytest
 	popd
 }
 
 _package_python(){
 	depends=(python)
 	cd "$_pyname-$pkgver"
-	python setup.py install --root "$pkgdir" --optimize=1
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
