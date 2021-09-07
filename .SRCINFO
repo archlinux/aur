@@ -1,16 +1,14 @@
 pkgbase = python-pyinstrument_cext
-	pkgdesc = A CPython extension supporting pyinstrument
+	pkgdesc = CPython extension supporting pyinstrument
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joerick/pyinstrument_cext
-	arch = any
+	arch = x86_64
 	license = BSD
+	checkdepends = python-nose
 	makedepends = python-setuptools
-	depends = gcc
 	depends = python
-	options = !emptydirs
-	source = https://github.com/joerick/pyinstrument_cext/archive/v0.2.4.tar.gz
+	source = python-pyinstrument_cext-0.2.4.tar.gz::https://github.com/joerick/pyinstrument_cext/archive/v0.2.4.tar.gz
 	sha256sums = 920c5c584077c13c436829133624b0ba189a1d73b6bba49c79b3e1a46879c9a0
 
 pkgname = python-pyinstrument_cext
-
