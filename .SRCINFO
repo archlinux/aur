@@ -1,7 +1,7 @@
 pkgbase = qaac-wine
 	pkgdesc = QuickTime AAC/ALAC encoder (wine version)
-	pkgver = 2.71
-	pkgrel = 2
+	pkgver = 2.72
+	pkgrel = 1
 	url = https://sites.google.com/site/qaacpage/
 	arch = x86_64
 	license = custom
@@ -10,16 +10,15 @@ pkgbase = qaac-wine
 	makedepends = winetricks
 	makedepends = binutils
 	depends = wine
-	source = https://github.com/nu774/qaac/releases/download/v2.71/qaac_2.71.zip
+	source = https://github.com/nu774/qaac/releases/download/v2.72/qaac_2.72.zip
 	source = iTunes64Setup.exe::https://www.apple.com/itunes/download/win64
 	source = https://raw.githubusercontent.com/nu774/qaac/master/COPYING
 	source = https://www.apple.com/legal/sla/docs/iTunesWindows.pdf
 	source = wrapper.sh
-	sha256sums = f224f1da1e4fc1bd1096025dbb0eea9b4392422abb77810338ecb226b4497aa8
+	sha256sums = e58b703c916cc8426fac1793d5012ea636bfb91a300f5ddc4e86797524d2ccff
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = b56ba8ca4a9f0fef6e0c636a4ee26a9c6a17f1e7ba301aef56fc7ddc0854be42
 
 pkgname = qaac-wine
-
