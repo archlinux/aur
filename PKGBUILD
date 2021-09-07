@@ -1,7 +1,7 @@
 # Maintainers: goetzc
 # Contributors: Jni <jni.viens at protonmail dot com>
 pkgname=bitrise
-pkgver=1.42.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
 arch=('x86_64')
@@ -18,5 +18,5 @@ package() {
   install -Dm755 "$srcdir/$pkgname-Linux-$CARCH" "$pkgdir/usr/bin/bitrise"
 }
 
-sha256sums=('d75cc141c159d9f52c109114483d9d0ce7679509904721489f4991921472bef2'
+sha256sums=('3da2e213ba09cb76d80316695aa15f4586f9bb8bc2c9d5df2925cb52f45fd31a'
             'a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414')
