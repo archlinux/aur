@@ -1,6 +1,6 @@
 # Maintainer: Samuel Laurén <samuel.lauren@iki.fi>
 pkgname=run-or-raise
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Utility for launching applications or focusing their windows"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("GPL3")
 depends=("libxcb")
 makedepends=("rust" "cargo" "python")
 source=("https://github.com/Soft/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=("c5e913aa95e30d76eb3c62a1f6b219bac884753a27d5487fbb69fe4d1208b06c")
+sha256sums=('7fc809f0b75ba52b62d10d2b7acb0a4924a641e3ddc2242fda4075b2d7ed8a16')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
