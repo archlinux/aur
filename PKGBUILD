@@ -6,7 +6,7 @@ pkgdesc="Convex cone solver via operator splitting."
 url="http://github.com/cvxgrp/scs/"
 depends=('python' 'python-numpy' 'python-scipy')
 makedepends=('python-setuptools')
-checkdepends=('python-nose')
+checkdepends=('python-pytest')
 license=('MIT')
 arch=('x86_64')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
@@ -28,6 +28,5 @@ package() {
 check() {
     cd "${_pkgname}-${pkgver}"
     python setup.py build_ext --inplace
-    cp src/__init__.py scs
-    nosetests
+    pytest
 }
