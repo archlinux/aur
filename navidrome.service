@@ -1,7 +1,7 @@
 [Unit]
 Description=Navidrome Music Server and Streamer compatible with Subsonic/Airsonic
 After=remote-fs.target network.target
-AssertPathExists=/var/lib/navidrome
+AssertPathExists=/etc/navidrome
 
 [Install]
 WantedBy=multi-user.target
@@ -9,11 +9,11 @@ WantedBy=multi-user.target
 [Service]
 User=navidrome
 Group=navidrome
-DynamicUser=true
-Environment=PATH=/usr/bin:/usr/bin/navidrome
-Type=simple
-ExecStart=/usr/bin/navidrome --configfile "/var/lib/navidrome/navidrome.toml"
+DynamicUser=yes
+ExecStart=/usr/bin/navidrome --configfile "/etc/navidrome/navidrome.toml"
+StateDirectory=navidrome
 WorkingDirectory=/var/lib/navidrome
+Environment=HOME=/var/lib/navidrome
 TimeoutStopSec=20
 KillMode=process
 Restart=on-failure

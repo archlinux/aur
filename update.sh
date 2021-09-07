@@ -55,10 +55,9 @@ sha512sums_armv7h=()
 sha512sums_aarch64=()
 
 package() {
-  install -d -o navidrome -g navidrome \"\${pkgdir}/var/lib/${EXECUTABLE_NAME}\"
   install -Dm 755 \"\${srcdir}/navidrome\" -t \"\${pkgdir}/usr/bin/\"
   install -Dm 644 \"\${srcdir}/navidrome.service\" -t \"\${pkgdir}/usr/lib/systemd/system\"
-  install -Dm 644 \"\${srcdir}/navidrome.toml\" -t \"\${pkgdir}/var/lib/${EXECUTABLE_NAME}\"
+  install -Dm 644 \"\${srcdir}/navidrome.toml\" -t \"\${pkgdir}/etc/${EXECUTABLE_NAME}\"
 }
 " >> PKGBUILD
 
