@@ -1,7 +1,7 @@
 pkgbase = mhuxd-git
 	pkgdesc = Linux daemon implementing the microHam keyer protocol.
 	pkgver = v0.50rc3.r99.gf11ac15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dj5qv/mhuxd
 	arch = any
 	license = GPL2

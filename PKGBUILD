@@ -2,7 +2,7 @@
 
 pkgname=mhuxd-git
 pkgver=v0.50rc3.r99.gf11ac15
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux daemon implementing the microHam keyer protocol."
 arch=('any')
 url="https://github.com/dj5qv/mhuxd"
@@ -61,7 +61,7 @@ package() {
 
 	cd "$srcdir/$pkgname"
 
-	install -Dm 644 "debian/mhuxd.udev" -t "$pkgdir/usr/lib/udev/rules.d/"
+	install -Dm 644 "debian/mhuxd.udev" -t "$pkgdir/usr/lib/udev/rules.d/20-mhuxd.rules"
 	install -Dm 644 "man/mhuxd.8" -t "$pkgdir/usr/share/man/man8/"
 	install -dm 755 "$pkgdir/usr/share/mhuxd"
 	cp -dr --no-preserve='ownership' "webui" "$pkgdir/usr/share/mhuxd/"
@@ -76,5 +76,9 @@ package() {
 	# TODO: Tighten the security a bit. No need to open all tty ports
 	# (by adding the mhuxd user to uucp group), when we can do it
 	# specifically only for microKeyer.
+
+	# It's also necessary to make /dev/cuse accessible to our mhuxd user:
+	# # chgrp uucp /dev/cuse
+	# # chmod 660 /dev/cuse
 
 }
