@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=kubectl-tree
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Browse object hierarchies as a tree'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('kubectl')
 makedepends=('go')
 groups=('kubectl-plugins')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('fcea81b6c54a524ea15f7169c8750a7349258f966079fd6c29115aa04133c9db')
+sha256sums=('bb93d1b00d6688607df6646863c39246814ddce253c075bdb414e7cf4aaac33f')
 
 build() {
   cd "$pkgname-$pkgver"
