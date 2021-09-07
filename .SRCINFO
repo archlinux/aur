@@ -1,0 +1,17 @@
+pkgbase = age-bin
+	pkgdesc = A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability.
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/FiloSottile/age
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	provides = age
+	conflicts = age-git
+	conflicts = age
+	source_x86_64 = https://github.com/FiloSottile/age/releases/download/v1.0.0/age-v1.0.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6414f71ce947fbbea1314f6e9786c5d48436ebc76c3fd6167bf018e432b3b669
+	source_aarch64 = https://github.com/FiloSottile/age/releases/download/v1.0.0/age-v1.0.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6c82aa1d406e5a401ec3bb344cd406626478be74d5ae628f192d907cd78af981
+
+pkgname = age-bin
