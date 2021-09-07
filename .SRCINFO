@@ -1,14 +1,14 @@
 pkgbase = mybrowse
 	pkgdesc = A simple WebKit browser written in Python3 and using GTK3
-	pkgver = 0.4
-	pkgrel = 2
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://github.com/KaiserBarbarossa/MyBrowse
 	arch = any
 	license = GPL3
 	depends = webkit2gtk
 	depends = python
 	depends = python-gobject
-	source = mybrowse-0.4.tar.gz::https://github.com/KaiserBarbarossa/mybrowse/archive/v0.4.tar.gz
-	sha256sums = 20195b0e61c484c68cc124c66b352305d60a9d779a772dcba95adc9ad43bbe02
+	source = mybrowse-0.5.tar.gz::https://github.com/KaiserBarbarossa/mybrowse/archive/v0.5.tar.gz
+	sha256sums = b5f6f72bd51bbaf44a7eff15d22063ffddfa23b38021d7c20f80f7e91fff1cee
 
 pkgname = mybrowse
