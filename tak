@@ -1,2 +1,2 @@
 #!/bin/sh
-WINEDEBUG=fixme-all exec /usr/bin/wine /usr/share/tak/tak.exe $@
+WINEDEBUG=fixme-all exec /usr/bin/wine /usr/lib/tak/tak.exe "$@"

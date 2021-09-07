@@ -1,20 +1,19 @@
 pkgbase = tak
 	pkgdesc = Tom's lossless Audio Kompressor (TAK) from official site, including tak (GUI) and takc (CLI).
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = http://thbeck.de/Tak/Tak.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = wine
-	source = http://thbeck.de/Download/TAK_2.3.0.zip
+	source = http://thbeck.de/Download/TAK_2.3.1.zip
 	source = http://thbeck.de/Impressum.html
 	source = tak
 	source = takc
-	md5sums = b503af1b39e39429eb00ac13878c6a8f
+	md5sums = 85ac0571d4b2b9ccdc3c5f5584a888f4
 	md5sums = SKIP
-	md5sums = 06236173635d79e7efbf864030f2c4cd
-	md5sums = 4cc05b24ebcde8ed15504f844f8431ff
+	md5sums = f6428a9af03c245f765c1214ffc5a24d
+	md5sums = 27bf5fd4e3f4927e4482c842d314254f
 
 pkgname = tak
-
