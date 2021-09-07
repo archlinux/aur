@@ -1,14 +1,14 @@
 pkgbase = volar-server
 	pkgdesc = Fast Vue Language Support Extension
-	pkgver = 0.27.15
+	pkgver = 0.27.16
 	pkgrel = 1
 	url = https://github.com/johnsoncodehk/volar/tree/master/packages/server
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = server-0.27.15.tgz
-	source = https://registry.npmjs.org/@volar/server/-/server-0.27.15.tgz
-	sha256sums = 66012851344577933566ffb727384bd2f2e5ce71d4a26f7cc4b40280cff9ac08
+	noextract = server-0.27.16.tgz
+	source = https://registry.npmjs.org/@volar/server/-/server-0.27.16.tgz
+	sha256sums = 8256de210738b482ff20e9c2624721b9c8377ea6a455e77f118302101d295120
 
 pkgname = volar-server
