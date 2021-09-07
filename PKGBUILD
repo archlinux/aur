@@ -33,7 +33,6 @@ build() {
 
 package() {
   cd ${pkgname}
-  export PYTHONHASHSEED=0
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   mv "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash-completion" \
      "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
