@@ -24,7 +24,6 @@ prepare() {
 }
 
 build() {
-  export PYTHONHASHSEED=0
   cd "$srcdir/mock-$pkgver"
   python3 setup.py build
 
