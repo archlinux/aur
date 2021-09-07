@@ -4,12 +4,12 @@
 
 pkgname=('python-mdtraj')
 pkgver=1.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern, open library for the analysis of molecular dynamics trajectories'
 url='http://mdtraj.org/'
 license=("LGPL")
 arch=('x86_64')
-depends=() 
+depends=(python-astunparse) 
 makedepends=('python-setuptools' 'cython')
 options=('!libtool')
 source=("https://github.com/SimTk/mdtraj/archive/${pkgver}.tar.gz")
