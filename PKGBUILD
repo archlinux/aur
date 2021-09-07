@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.4.r29820.00c03c7bb'
+pkgver='0.15.4.alpha.0.r29825.3da9cbd62'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -14,24 +14,25 @@ url="http://${_appname}.org"
 license=('AGPL')
 conflicts=("${_appname}" "${_appname}-bin")
 provides=("${_appname}")
-depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
-         'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
-         'openssl' 'libextractor' 'brotli' 'gettext')
-makedepends=('gettext' 'pkgconfig' 'libtool' 'bluez-libs' 'python' 'libpulse'
-             'git' 'opus')
-optdepends=('postgresql: for an alternative to sqlite in the database plugin'
-            'mysql: for an alternative to sqlite in the database plugin'
-            'bluez: for bluetooth transport'
-            'zbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr'
-            'texlive-core: for generating GNS business cards via gnunet-bcd'
-            'miniupnpc: for NAT uPnP support'
-	    'libpulse: for conversation service'
+depends=('bash' 'brotli' 'gettext' 'gnurl' 'gnutls' 'jansson' 'libextractor'
+         'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium' 'libtool'
+         'libunistring' 'nss' 'openssl' 'sqlite' 'which' 'zlib')
+makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'opus'
+             'pkgconfig' 'python')
+optdepends=('bluez: for bluetooth transport'
+            'libgabe: for Attribute-Based Encryption'
 	    'libogg: for conversation service'
+            'libpabc: for re:claimID zero-knowledge privacy credentials'
+	    'libpulse: for conversation service'
+            'miniupnpc: for NAT uPnP support'
+            'mysql: for an alternative to sqlite in the database plugin'
 	    'opus: for conversation service'
             'pbc: for Attribute-Based Encryption'
-            'libgabe: for Attribute-Based Encryption'
-            'libpabc: for re:claimID zero-knowledge privacy credentials'
-            'texi2mdoc: for automatic mdoc generation')
+            'postgresql: for an alternative to sqlite in the database plugin'
+            'python: for test suite'
+            'texi2mdoc: for automatic mdoc generation'
+            'texlive-core: for generating GNS business cards via gnunet-bcd'
+            'zbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr')
 backup=("etc/${_appname}.conf")
 source=("git+https://${_appname}.org/git/${_appname}.git"
         "${_appname}-system.service"
@@ -49,7 +50,7 @@ pkgver() {
 	cd "${_appname}" > /dev/null 2>&1
 
 	printf "'%s.r%s.%s'" \
-		"$(grep 'AC_INIT' 'configure.ac' | grep -o '[0-9]\(\.[0-9]\+\)\+')" \
+		"$(echo 'changequote([,])define([AC_INIT],[patsubst([[$2]],[-],[.])])[]'"$(cat 'configure.ac' | tr '\n' ' ' | grep -o 'AC_INIT([^)]\+)')" | m4)" \
 		"$(git rev-list --count HEAD)" \
 		"$(git rev-parse --short HEAD)"
 
