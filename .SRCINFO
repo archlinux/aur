@@ -1,0 +1,23 @@
+pkgbase = sparta-plugins
+	pkgdesc = A collection of spatial audio related VST plug-ins (loudspeaker/binaural panners, Ambisonics encoders/decoders/visualisers, etc.)
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/leomccormack/SPARTA
+	arch = x86_64
+	license = GPL
+	depends = hdf5
+	depends = netcdf
+	depends = netcdf-fortran
+	depends = libglvnd
+	depends = freetype2
+	depends = libxinerama
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libxext
+	depends = lapack
+	depends = libcurl-gnutls
+	provides = sparta-plugins
+	source = https://github.com/leomccormack/SPARTA/releases/download/v1.5.1/Linux_SPARTA_2021_08_23_v1.5.1.zip
+	md5sums = 9b85d35d4c301a4ffb466ccd7de97d7e
+
+pkgname = sparta-plugins
