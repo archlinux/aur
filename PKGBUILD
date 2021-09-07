@@ -1,13 +1,13 @@
 pkgname=crossftp-client
-pkgver=1.99.6
-pkgrel=3
+pkgver=1.99.7
+pkgrel=1
 pkgdesc="Java based free platform-independent FTP, SFTP, WebDav, Amazon S3, Amazon Glacier, Microsoft Azure, Google storage, and OpenStack Swift client."
-url="http://www.crossftp.com"
+url="https://www.crossftp.com"
 arch=('any')
 license=('freeware')
 depends=('java-runtime')
-source=(http://www.crossftp.com/crossftp_${pkgver}.deb)
-sha256sums=('9dc4289f0bf8258915bc934711a940447a2d4700df8bb447913a99733927cd22')
+source=(https://www.crossftp.com/crossftp_${pkgver}.deb)
+sha256sums=('75d043896c260346d83ec11566a8b951c980762484b0b3672b936a9d1710c4d3')
 install=.INSTALL
 
 build() {
