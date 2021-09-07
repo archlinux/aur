@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -16,10 +16,6 @@ prepare() {
   cd "$srcdir/OpenModelica"
   git remote set-url origin ${_giturl}
   git submodule update --force --init --recursive
-  # OMCompiler: Dont try to install translations
-  git cherry-pick -n 2a39a402d9604a1ce353b0a12574fed5d320be0e
-  # Fix build with cmake >= 3.20
-  git cherry-pick -n 4f3a50974f0f916efd716809699f18d47f1dbe34
 }
 
 build() {
