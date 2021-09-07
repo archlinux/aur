@@ -1,8 +1,8 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
 
 pkgname=keyboard-center
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
 url="https://github.com/zocker-160/keyboard-center"
@@ -10,11 +10,9 @@ license=('GPL3')
 depends=(
     'python>=3.8'
     'python-pyqt5>=5.14'
-    'python-pip>=20'
     'python-uinput>=0.11.2'
     'python-ruamel-yaml>=0.15'
     'python-pyusb>=1.0.2'
-    'python-inotify-simple>=1.3'
     'libnotify>=0.7.9'
 )
 makedepends=('git')
