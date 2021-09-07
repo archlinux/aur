@@ -27,7 +27,6 @@ check() {
 
 package() {
   cd klein-$pkgver
-  # use PYTHONHASHSEED=0 work around https://bugs.python.org/issue34033 (?)
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
