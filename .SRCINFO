@@ -1,6 +1,6 @@
 pkgbase = gradient
 	pkgdesc = CLI tool for playing with color gradients
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/mazznoer/gradient-rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gradient
 	license = Apache
 	makedepends = cargo
 	depends = gcc-libs
-	source = gradient-0.2.0.tar.gz::https://github.com/mazznoer/gradient-rs/archive/v0.2.0.tar.gz
-	sha256sums = dd05d96e376a05e28671c2b67948528f82f6de2bc8e3e7d48c2ed5398d3df93d
+	source = gradient-0.2.1.tar.gz::https://github.com/mazznoer/gradient-rs/archive/v0.2.1.tar.gz
+	sha256sums = 1e1272d53838d021387e04a171c514b51239afb4c4601fc1fabda0d38614d682
 
 pkgname = gradient
