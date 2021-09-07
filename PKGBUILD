@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pika-backup
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Simple backups based on borg"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.gnome.org/World/pika-backup"
+url="https://apps.gnome.org/app/org.gnome.World.PikaBackup"
 license=('GPL')
 depends=('borg' 'gtk3' 'libhandy' 'python-llfuse')
 makedepends=('cargo' 'git' 'meson')
-_commit=e72a828574f1bd1bb7211a3e74da64892de26961 # tag=v0.3.2^0
+_commit=b98fb95feba8b28dd07d54c5b42d048d209fdba4 # tag=v0.3.3^0
 source=("git+https://gitlab.gnome.org/World/pika-backup.git#commit=$_commit"
         'remove-install_script.patch')
 sha256sums=('SKIP'
@@ -28,7 +28,7 @@ prepare() {
   # Disable update-desktop-database & gtk-update-icon-cache
   patch --strip=1 data/meson.build $srcdir/remove-install_script.patch
 
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
