@@ -3,7 +3,7 @@ pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
 pkgver=2.8.0.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64')
 license=('unknown')
@@ -39,7 +39,7 @@ export XDG_SESSION_TYPE=x11
 export QT_QPA_PLATFORM=xcb
 unset WAYLAND_DISPLAY
 if [ -f "/usr/bin/bwrap" ];then
-    bwrap --dev-bind / / --tmpfs $HOME/.config/kdedefaults  wemeetapp $*;
+    bwrap --dev-bind / / --tmpfs $HOME/.config  wemeetapp $*;
 else
     exec wemeetapp $*;
 fi;
