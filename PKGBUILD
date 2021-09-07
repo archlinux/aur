@@ -6,29 +6,30 @@
 
 pkgname='gnunet'
 pkgver='0.15.3'
-pkgrel=2
+pkgrel=3
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
 license=('AGPL')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
-depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
-         'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
-         'openssl' 'libextractor' 'brotli' 'gettext')
-makedepends=('pkgconfig' 'libtool' 'bluez-libs' 'python' 'libpulse' 'opus')
-optdepends=('postgresql: for an alternative to sqlite in the database plugin'
-            'mysql: for an alternative to sqlite in the database plugin'
-            'bluez: for bluetooth transport'
-            'zbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr'
-            'texlive-core: for generating GNS business cards via gnunet-bcd'
-            'miniupnpc: for NAT uPnP support'
-	    'libpulse: for conversation service'
+depends=('bash' 'brotli' 'gettext' 'gnurl' 'gnutls' 'jansson' 'libextractor'
+         'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium' 'libtool'
+         'libunistring' 'nss' 'openssl' 'sqlite' 'which' 'zlib')
+makedepends=('bluez-libs' 'libpulse' 'libtool' 'opus' 'pkgconfig' 'python')
+optdepends=('bluez: for bluetooth transport'
+            'libgabe: for Attribute-Based Encryption'
 	    'libogg: for conversation service'
+            'libpabc: for re:claimID zero-knowledge privacy credentials'
+	    'libpulse: for conversation service'
+            'miniupnpc: for NAT uPnP support'
+            'mysql: for an alternative to sqlite in the database plugin'
 	    'opus: for conversation service'
             'pbc: for Attribute-Based Encryption'
-            'libgabe: for Attribute-Based Encryption'
-            'libpabc: for re:claimID zero-knowledge privacy credentials'
-            'texi2mdoc: for automatic mdoc generation')
+            'postgresql: for an alternative to sqlite in the database plugin'
+            'python: for test suite'
+            'texi2mdoc: for automatic mdoc generation'
+            'texlive-core: for generating GNS business cards via gnunet-bcd'
+            'zbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr')
 backup=("etc/${pkgname}.conf")
 source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-system.service"
