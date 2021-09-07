@@ -2,8 +2,8 @@
 
 pkgname=python-cmsis-pack-manager
 _pkgname=cmsis-pack-manager
-pkgver=0.2.10
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='A Python module for handling CMSIS Pack files'
 arch=(any)
 url='https://github.com/ARMmbed/cmsis-pack-manager'
@@ -16,9 +16,8 @@ depends=('python'
          'rust'
         )
 
-source=(https://github.com/ARMmbed/${_pkgname}/archive/v${pkgver}.tar.gz
-       )
-sha256sums=('75db335b4a7628f8fb38c3f675638c82f7b7c6873769c4f7759725583da2aa27')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('82655136c8a573a0ef81a9afe4f1f5879dacb27094fb3a1495e9430e9530e104')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}

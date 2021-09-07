@@ -1,7 +1,7 @@
 pkgbase = python-cmsis-pack-manager
 	pkgdesc = A Python module for handling CMSIS Pack files
-	pkgver = 0.2.10
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/ARMmbed/cmsis-pack-manager
 	arch = any
 	license = Apache
@@ -11,8 +11,7 @@ pkgbase = python-cmsis-pack-manager
 	depends = python-pyaml
 	depends = python-wheel
 	depends = rust
-	source = https://github.com/ARMmbed/cmsis-pack-manager/archive/v0.2.10.tar.gz
-	sha256sums = 75db335b4a7628f8fb38c3f675638c82f7b7c6873769c4f7759725583da2aa27
+	source = https://github.com/ARMmbed/cmsis-pack-manager/archive/v0.3.0.tar.gz
+	sha256sums = 86c7715c2952af37a5676f6f77d7e70aa82a54fab6c0fe3a28124ca7690b91d2
 
 pkgname = python-cmsis-pack-manager
-
