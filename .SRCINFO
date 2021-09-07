@@ -8,7 +8,6 @@ pkgbase = aliyunpan-liupan1890
 	depends = electron
 	depends = aria2
 	optdepends = mpv: media preview support
-	provides = freechat
 	options = !strip
 	source = local://阿里小白羊版Linux v2.8.30.zip
 	source = aliyunpan-liupan1890.svg
