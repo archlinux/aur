@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-firmware-daemon-git
-pkgver=1.0.28.r0.g031b923
-pkgrel=2
+pkgver=1.0.29.r0.g4ad126b
+pkgrel=1
 pkgdesc="System76 Firmware Daemon provides a daemon for installing firmware updates."
 arch=('any')
 url="https://github.com/pop-os/system76-firmware"
