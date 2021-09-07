@@ -2,7 +2,7 @@
 
 pkgname=python-cfclient
 pkgver=2021.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Host applications and library for Crazyflie written in Python.'
 arch=('any')
 url='https://github.com/bitcraze/crazyflie-clients-python'
@@ -19,6 +19,8 @@ _pkgname=crazyflie-clients-python
 
 prepare() {
     sed -i "s/= get_version()/= \"${pkgver}\"/g" ${srcdir}/${_pkgname}-${pkgver}/setup.py
+    sed -i "s/~/>/g" ${srcdir}/${_pkgname}-${pkgver}/setup.py
+    sed -i "20i'bin_path_includes': ['/usr/lib/python3.9/site-packages/cx_Freeze/bases']," ${srcdir}/${_pkgname}-${pkgver}/setup.py
 }
 
 build() {
