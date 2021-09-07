@@ -1,0 +1,13 @@
+pkgbase = python-smaz
+	pkgdesc = Small string compression using smaz, supports Python 3.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/originell/smaz-py3
+	arch = any
+	license = MIT
+	license = BSD
+	depends = python-setuptools
+	source = https://pypi.io/packages/source/s/smaz-py3/smaz-py3-1.1.0.tar.gz
+	sha512sums = eb5dabbd8c3126b665d410b51027ccae8a66b635392cd15c67bc5c7c0c9c8655007e79eb74267b0c0ae3ae78fbe42d101d348cc27b7609373630e2099f39b89d
+
+pkgname = python-smaz
