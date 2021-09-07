@@ -4,7 +4,7 @@
 
 pkgname=jx2
 pkgver=2.1.155
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line tool for working with Jenkins X v2'
 arch=('x86_64')
 url='https://github.com/jenkins-x/jx'
