@@ -6,7 +6,7 @@
 
 pkgname=xar
 pkgver=1.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc='eXtensible ARchive format'
 arch=('i686' 'x86_64')
 url='http://mackyle.github.io/xar/'
