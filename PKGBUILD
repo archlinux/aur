@@ -74,7 +74,6 @@ prepare() {
 
 build() {
   cd home-assistant
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
