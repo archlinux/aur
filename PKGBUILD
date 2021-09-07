@@ -34,7 +34,6 @@ prepare() {
 
 build() {
   cd lexicon-$pkgver
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
