@@ -1,15 +1,24 @@
 pkgbase = python-datetimerange
-	pkgdesc = Python library to handle a time range
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgdesc = Python library for handling time ranges
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/thombashi/DateTimeRange
 	arch = any
 	license = MIT
+	checkdepends = python-pytest>=6.0.1
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytz
 	makedepends = python-setuptools
-	depends = python-dateutil
-	depends = python-typepy
-	source = https://files.pythonhosted.org/packages/source/D/DateTimeRange/DateTimeRange-1.0.0.tar.gz
-	sha256sums = 8b884202c0aa663e425d0611cc87a9f694d8696e0473d12519c8e08bd394f6be
+	depends = python3
+	depends = python>=3.6
+	depends = python-dateutil>=2.4.2
+	depends = python-dateutil<3
+	depends = python-typepy>=1.0.0
+	depends = python-typepy<2
+	source = python-datetimerange-1.2.0.tar.gz::https://files.pythonhosted.org/packages/source/D/DateTimeRange/DateTimeRange-1.2.0.tar.gz
+	source = python-datetimerange-1.2.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/D/DateTimeRange/DateTimeRange-1.2.0.tar.gz.asc
+	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
+	sha256sums = 47bc10e5df23bb1f0d3ee493a26cb8d1d99e179884aabff62d3e51033b6a73ce
+	sha256sums = SKIP
 
 pkgname = python-datetimerange
-
