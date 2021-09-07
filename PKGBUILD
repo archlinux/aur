@@ -2,7 +2,7 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt
-pkgver=5.13.0.1.realtime1
+pkgver=5.14.1.19.realtime1
 pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')
@@ -16,9 +16,9 @@ source=(
   config
 )
 sha512sums=('SKIP'
-            '51a29df70783d038720744c68bf4832f3e291a3dd5113f29b1f766af38906ed318947daa1ac81407a476c5f64b01cf338f65c68b3b3dbb5bdfef6a7ee887fff6')
+            'dd7d6e39cdd917969dea2b2be62ef95adc9cb603f2ab447b7bf2418694bdd60e81f380aa07984fa407616f45b0dd8e5cd4eb005cd652a1f9b7e5f2e1d65e8366')
 b2sums=('SKIP'
-        '0941986bdc95cc3b0cf4f71d4e4a6f79f8f20120650568ef2b68e424a44611cd83481a05a7d58d36d32fc603f31f73cb74df7e3040c4ded1f4173c68cd4d736f')
+        '68916f6c60ff57f338221ccc6e8542569ba4a964f80020e63c521b57192e552cb4e788ff54f76d38914f14b21007408f726888ccaaac01bdaa36e989550d6e21')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
