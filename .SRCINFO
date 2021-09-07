@@ -1,6 +1,6 @@
 pkgbase = headset-git
 	pkgdesc = Discover and collect music on YouTube
-	pkgver = 3.3.3.g981a492
+	pkgver = 3.2.1.r78.gbc451cf
 	pkgrel = 1
 	url = https://headsetapp.co
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = headset-git
 	depends = libxss
 	provides = headset
 	conflicts = headset
+	source = git+https://github.com/headsetapp/headset-electron.git
 	source = headset.desktop
 	sha256sums = SKIP
+	sha256sums = 4c19f792f923c567eb5b98d5169ecadf31d86a6403e39f68e14c6419c2ed4b98
 
 pkgname = headset-git

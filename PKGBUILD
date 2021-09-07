@@ -1,6 +1,9 @@
-# Maintainer: 7k5x <7k5xlp0onfire@gmail.com>
+# Maintainer: 
+# Contributor: FabioLolix
+# Contributor: 7k5x <7k5xlp0onfire@gmail.com>
+
 pkgname=headset-git
-pkgver=3.3.3.g981a492
+pkgver=3.2.1.r78.gbc451cf
 pkgrel=1
 provides=('headset')
 conflicts=('headset')
@@ -10,33 +13,22 @@ url="https://headsetapp.co"
 license=('MIT')
 depends=('gtk3' 'libnotify' 'nss' 'libxss')
 makedepends=('npm' 'git')
-source=("headset.desktop")
-sha256sums=('SKIP')
+source=("git+https://github.com/headsetapp/headset-electron.git"
+        "headset.desktop")
+sha256sums=('SKIP'
+            '4c19f792f923c567eb5b98d5169ecadf31d86a6403e39f68e14c6419c2ed4b98')
 
-prepare() {
-	if [ ! -d ${srcdir}/headset-electron ]; then
-	git clone --depth=1 https://github.com/headsetapp/headset-electron.git
-	fi
-}
-
-post_install() {
-	update-desktop-database -q
-}
 pkgver() {
 	cd "$srcdir/headset-electron"
-	printf "%s.g%s" "$(curl -s https://github.com/headsetapp/headset-electron/releases/latest | cut -f 8 -d"/" | cut -f 1 -d"\"" | cut -f 2 -d"v")" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	if [ -d ${srcdir}/headset-electron ]; then
 	cd "${srcdir}/headset-electron"
-	fi
 
 	# https://github.com/typicode/husky/issues/851
 	git init .
 
-
-	
 	npm ci --cache "$srcdir/npm-cache"
 
 	${srcdir}/headset-electron/node_modules/.bin/electron-packager . \
@@ -51,9 +43,7 @@ build() {
 }
 
 package() {
-	if [ -d ${srcdir}/headset-electron ]; then
 	cd "${srcdir}/headset-electron"
-	fi
 	# Fix file permissions
 	find ${srcdir}/headset-electron/build/Headset-linux-x64 -type f -exec chmod 0644 {} +
 	find ${srcdir}/headset-electron/build/Headset-linux-x64 -type d -exec chmod 0755 {} +
