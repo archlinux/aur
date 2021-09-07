@@ -1,6 +1,6 @@
 pkgbase = python-mdtraj
 	pkgdesc = A modern, open library for the analysis of molecular dynamics trajectories
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = http://mdtraj.org/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = python-mdtraj
 	makedepends = python-setuptools
 	makedepends = cython
 	options = !libtool
-	source = https://github.com/SimTk/mdtraj/archive/1.9.5.tar.gz
-	sha256sums = ed2a72b85e765024f8d533da26dad026944d0e385b04af7b66572f676ef92040
+	source = https://github.com/SimTk/mdtraj/archive/1.9.6.tar.gz
+	sha256sums = c0614710e65f47701751c697db90638aa382bf650edde48c497dd8514cf13593
 
 pkgname = python-mdtraj
 	depends = python-numpy
@@ -19,4 +19,3 @@ pkgname = python-mdtraj
 	optdepends = python-scripttest: To run some of the tests with nose "nosetest -v mdtraj".
 	optdepends = python-networkx: Required for some of the functions
 	optdepends = python-pytables: Working with HDF5 formatted trajectories requires the PyTables package.
-
