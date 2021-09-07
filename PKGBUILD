@@ -1,42 +1,39 @@
-# Maintainer: Mufeed Ali <lastweakness@tuta.io>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Mufeed Ali <lastweakness@tuta.io>
 pkgname=dialect
-_author=gi-lom
-_gitname=dialect
 pkgver=1.3.0
-pkgrel=1
-pkgdesc='A translation app for GNOME based on Google Translate'
-arch=(any)
-url=https://github.com/gi-lom/dialect
-license=(GPL3)
-depends=(
-  gtk3
-  gst-python
-  libhandy
-  python
-  python-gobject
-  python-googletrans
-  python-gtts
-  python-h2
-  python-httpx
-)
-makedepends=(
-  gobject-introspection
-  meson
-)
-source=("$_gitname-v$pkgver.tar.gz::https://github.com/$_author/$_gitname/archive/$pkgver.tar.gz")
-sha256sums=('c5f11de1c3067d05bd81a8964ec40a9c6334c6772069c61f999f719d5e36cbae')
+pkgrel=2
+pkgdesc="A translation app for GNOME."
+arch=('any')
+url="https://github.com/dialect-app/dialect"
+license=('GPL3')
+depends=('gtk3' 'libhandy' 'python-gobject' 'python-googletrans' 'python-gtts'
+         'python-httpx' 'gst-python')
+makedepends=('meson' 'git' 'gobject-introspection')
+checkdepends=('appstream-glib')
+conflicts=('gnabel')
+replaces=('gnabel')
+source=("git+https://github.com/dialect-app/dialect.git#tag=$pkgver"
+        'git+https://github.com/dialect-app/po.git')
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
-  cd $_gitname-$pkgver
-  cd ..
+  cd "$srcdir/$pkgname"
+  git submodule init
+  git config submodule.po.url $srcdir/po
+  git submodule update
 }
 
 build() {
-  arch-meson $_gitname-$pkgver build
-  ninja -C build
+  arch-meson "$pkgname" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
