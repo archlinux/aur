@@ -1,5 +1,5 @@
 pkgbase = python-defer
-	pkgdesc = Small framework for asynchrouns programming in Python. It is a stripped down version of Twisted's defer
+	pkgdesc = Small framework for asynchrouns programming
 	pkgver = 1.0.6
 	pkgrel = 2
 	url = https://launchpad.net/python-defer

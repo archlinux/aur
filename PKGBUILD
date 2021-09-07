@@ -4,7 +4,7 @@
 pkgname=python-defer
 pkgver=1.0.6
 pkgrel=2
-pkgdesc="Small framework for asynchrouns programming in Python. It is a stripped down version of Twisted's defer"
+pkgdesc="Small framework for asynchrouns programming"
 arch=('any')
 url="https://launchpad.net/python-defer"
 license=('GPL')
