@@ -10,7 +10,7 @@
 
 _gitname=rofi
 pkgname=rofi-lbonn-wayland-git
-pkgver=1.6.1.r204.g2a68677b
+pkgver=1.7.0.r32.g2a68677b
 pkgrel=1
 pkgdesc='A window switcher, application launcher and dmenu replacement (Wayland fork)'
 arch=(x86_64)
