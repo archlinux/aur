@@ -2,7 +2,7 @@
 # Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=python-pulsectl
 _name=${pkgname#python-}
-pkgver=21.5.18
+pkgver=21.9.1
 pkgrel=1
 epoch=1
 pkgdesc="Python high-level interface and ctypes-based bindings for PulseAudio (libpulse)"
@@ -14,23 +14,22 @@ makedepends=('python-setuptools')
 conflicts=('python-pulse-control')
 replaces=('python-pulse-control')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('14e34563cdad5f01d193f1ef7cd859a0fbdaa846726d44b0b68f4451a7458458')
+sha256sums=('8eef4dbfc97d984e63fd609a3f690d005173ec5342be88d10f67dd507affdf32')
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+  cd "$_name-$pkgver"
+  python setup.py build
 }
 
 # Test fails in chroot
 #check() {
-#	cd "$_name-$pkgver"
-#	python -m unittest discover
+#  cd "$_name-$pkgver"
+#  python -m unittest discover
 #}
 
 package() {
-	cd "$_name-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-	install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
