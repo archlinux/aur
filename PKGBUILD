@@ -61,7 +61,7 @@ _build() (
     --with-python=/usr/bin/python$1 \
     --with-icu
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
-  PYTHONHASHSEED=0 make
+  make
   find doc -type f -exec chmod 0644 {} +
 )
 
