@@ -77,9 +77,9 @@ _makenconfig=
 
 pkgbase=linux-xanmod-rog
 xanmod=5.14.1-xanmod1
-pkgver=${xanmod//-/.}
-#pkgver=5.14.1.xanpre0     # NOTE: start 4th position with 'xan...', we rely on parsing for '.xan...' later
-pkgrel=2
+#pkgver=${xanmod//-/.}
+pkgver=5.14.2.xanpre0     # NOTE: start 4th position with 'xan...', we rely on parsing for '.xan...' later
+pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -103,7 +103,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "sphinx-workaround.patch"
 
         # incremental kernel.org patch ahead of official Xanmod release
-        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.13.13-14.xz"
+        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.14.1-2.xz"
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.1.xz"
 
         # don't drop shared caches on C3 state transitions
@@ -154,6 +154,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'dea4b648fbffb1a41b1f8ef907e3dc386bb525ee82ae4314de7bcf1aca580b0e'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
+            '79ad948914a142de91b59f9973520043ba1924837e796b2ec4ac1cfdcba00a2a'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
@@ -200,7 +201,7 @@ prepare() {
   # WARN: mangle Makefile versions here if needed so patches apply cleanly
 
   ## Monkey patch: apply kernel.org patches when mainline is slightly ahead of Xanmod official
-  #patch -Np1 -i ../patch-5.14.1
+  patch -Np1 -i ../patch-5.14.1-2
 
   # Archlinux patches
   local src
