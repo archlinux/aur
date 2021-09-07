@@ -23,7 +23,7 @@ depends=(qemu-headless augeas hivex libconfig libvirt fuse
 makedepends=(pcre cdrtools git libxml2 gperf rpcsvc-proto python perl
              perl-string-shellquote perl-libintl-perl perl-sys-virt
              perl-module-build po4a ruby-rdoc ruby-rake rust
-             gobject-introspection ocaml-findlib ocaml go)
+             gobject-introspection ocaml-findlib ocaml go wget)
 # jansson lua ghc erlang gjs php
 optdepends=("python: Python bindings"
             "ruby: Ruby Bindings"

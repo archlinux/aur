@@ -28,6 +28,7 @@ pkgbase = libguestfs-dev
 	makedepends = ocaml-findlib
 	makedepends = ocaml
 	makedepends = go
+	makedepends = wget
 	depends = qemu-headless
 	depends = augeas
 	depends = hivex
