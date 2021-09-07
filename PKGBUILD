@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
-pkgname=superslicer-prerelease 
-pkgver=2.3.56.7
+pkgname=superslicer-prerelease
+pkgver=2.3.57.0
 _pkgtag=$pkgver
 pkgrel=1
 epoch=1
@@ -9,24 +9,27 @@ pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
-depends=('cgal' 'glew' 'nlopt' 'openvdb' 'wxgtk3-dev-opt' 'boost>=1.73.0' 'qhull>=2020.2-4')
+depends=('cgal' 'glew' 'nlopt' 'openvdb' 'wxgtk3-dev-opt' 'boost-libs>=1.73.0' 'qhull>=2020.2-4')
 replaces=('slic3r++')
-makedepends=('cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2-dev-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+makedepends=('cereal' 'cmake' 'ninja' 'eigen' 'libigl' 'openvdb' 'boost>=1.73.0' 'wxgtk2-dev-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-git')
 source=("https://github.com/supermerill//SuperSlicer/archive/$_pkgtag.tar.gz"
         "start-superslicer.sh"
         "0001-wxgtk3-is-broken-on-wayland.patch"
         "https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch")
-sha512sums=('86386ce83a3a588f0d1a4ace1259c58c21184da06323bcef966fc71e06e969a2968fe642f4e37205713030dace269beb765c6a763605324c4055423e3ef541a5'
-            '6a117a0ae2e82b2c0ad9e8f746fddeceb1b0efe04962468e266d7ee9d38218311fff5a82c9880b82a23b2499461ba6f8f3cabef064fc8f9b906b0e2e35bcd846'
+sha512sums=('f0b7284197526abacd45b8c5a026a20d6833b9f30a6c4b84c0f2db2332c2115c0ef261f6a03133c42c327346847e0a1d5fd546183478295258b71402d543ca14'
+            'db66bb6ddaf5882db26ea10e53c8ca648d94b898a333177c281c353d56e6f9ce75d91a4941ebdc5a9f1f627a986f5e70adbcd785a24d02fc9af58407e22ab926'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
             'c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98')
 
 prepare()
 {
 	cd "$srcdir/SuperSlicer-$_pkgtag"
-
+  [ ! -f build/Makefile ] || rm -rf build
+  mkdir -p build
+  
 	# disabling tests is not enough, we need to remove them explicitly
 	sed -i 's,add_subdirectory(test),,g' src/CMakeLists.txt
 
@@ -38,10 +41,10 @@ prepare()
 build()
 {
 	cd "$srcdir/SuperSlicer-$_pkgtag"
-	mkdir -p build
 	cd build
 
 	cmake .. \
+    -G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DOpenGL_GL_PREFERENCE=GLVND \
@@ -51,16 +54,17 @@ build()
 		-DSLIC3R_GTK=3 \
 		-DSLIC3R_BUILD_TESTS=OFF \
 		-DSLIC3R_ALPHA=ON \
-		-DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev/bin/wx-config
+		-DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev/bin/wx-config \
+    -DCMAKE_CXX_FLAGS="-Wl,-rpath=/opt/wxgtk-dev/lib"
 
-	make
+	ninja
 }
 
 package()
 {
 	cd "$srcdir/SuperSlicer-$_pkgtag/build"
 
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" ninja install
 	test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
 
 	mv "$pkgdir/usr/bin/superslicer" "$pkgdir/usr/share/SuperSlicer"

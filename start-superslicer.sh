@@ -12,4 +12,4 @@ import_settings()
 import_settings "$HOME/.config/SuperSlicer"
 import_settings "$HOME/.SuperSlicer"
 
-LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/wxgtk-dev/lib" /usr/share/SuperSlicer/superslicer "$@"
+/usr/share/SuperSlicer/superslicer "$@"
