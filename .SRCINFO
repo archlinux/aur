@@ -1,0 +1,25 @@
+pkgbase = pyocd-git
+	pkgdesc = Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP
+	pkgver = v0.31.0.r1.ga064d8fb
+	pkgrel = 1
+	url = https://github.com/pyocd/pyOCD
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python
+	depends = python-cmsis-pack-manager
+	depends = python-colorama
+	depends = python-intelhex
+	depends = python-intervaltree
+	depends = python-naturalsort
+	depends = python-prettytable
+	depends = python-pyaml
+	depends = python-pyelftools
+	depends = python-pyusb
+	depends = python-setuptools
+	depends = python-six
+	depends = pylink
+	source = git+https://github.com/pyocd/pyOCD
+	sha512sums = SKIP
+
+pkgname = pyocd-git

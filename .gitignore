@@ -1,0 +1,7 @@
+*.xz
+*.tar.gz
+*.zst
+*.zip
+pyOCD/
+pkg/
+src/
