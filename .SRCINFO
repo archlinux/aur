@@ -1,7 +1,7 @@
 pkgbase = deezer
 	pkgdesc = A proprietary music streaming service
 	pkgver = 5.30.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.deezer.com/
 	arch = any
 	license = custom:"Copyright (c) 2006-2018 Deezer S.A."
@@ -11,7 +11,7 @@ pkgbase = deezer
 	makedepends = imagemagick
 	makedepends = npm
 	makedepends = nodejs
-	depends = electron
+	depends = electron13
 	provides = deezer
 	source = deezer-5.30.50-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/5.30.50
 	source = deezer.desktop
