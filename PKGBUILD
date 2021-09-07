@@ -1,0 +1,89 @@
+# Maintainer: Carl Kittelberger <icedream@icedream.pw>
+# Based on the PKGBUILD for AUR package `ndi-sdk` by Daniel Bermond <dbermond@archlinux.org>
+
+pkgname=ndi-sdk-embedded
+pkgver=4.5.3.20200630.r116025
+pkgrel=1
+_majver="${pkgver%%.*}"
+pkgdesc='NewTek NDI Embedded SDK'
+arch=('aarch64' 'armv6h' 'armv7h' 'x86_64' 'i686')
+url='https://www.newtek.com/ndi/sdk/'
+license=('custom')
+depends=('avahi')
+provides=('libndi' 'libndi-bin' 'ndi-sdk')
+conflicts=('libndi' 'libndi-bin' 'libndi-git' 'ndi-sdk')
+options=('!strip')
+_srcfile="InstallNDISDK_v${pkgver}_Linux_Embedded.tar.gz"
+source=("$_srcfile"::"http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/Embedded_SDK/InstallNDISDK_v${_majver}_Linux_Embedded.tar.gz")
+noextract=("$_srcfile")
+sha256sums=('e930cf814e536b927e3e44dd1288a9963fc65aa332c51f13ef8e2f8d829f1abf')
+
+case "${CARCH}" in
+armv6*)
+    newtek_triplet="arm-rpi1-linux-gnueabihf"
+    ;;
+armv7*)
+    newtek_triplet="arm-rpi2-linux-gnueabihf"
+    ;;
+arm*)
+    newtek_triplet="arm-newtek-linux-gnueabihf"
+    ;;
+aarch*)
+    newtek_triplet="aarch64-rpi4-linux-gnueabi"
+    ;;
+*)
+    newtek_triplet="${CARCH}-linux-gnu"
+    ;;
+esac
+
+prepare() {
+    mkdir -p "${pkgname}-${pkgver}"
+    bsdtar -x -f "$_srcfile" -C "${pkgname}-${pkgver}"
+
+    local _target_line
+    cd "${pkgname}-${pkgver}"
+    _target_line="$(sed -n '/^__NDI_ARCHIVE_BEGIN__$/=' "InstallNDISDK_v${_majver}_Linux_Embedded.sh")"
+    _target_line="$((_target_line + 1))"
+
+    tail -n +"$_target_line" "InstallNDISDK_v${_majver}_Linux_Embedded.sh" |
+        tar -zxv \
+            "NDI SDK for Linux/bin/${newtek_triplet}/" \
+            "NDI SDK for Linux/lib/${newtek_triplet}/" \
+            "NDI SDK for Linux/documentation" \
+            "NDI SDK for Linux/include" \
+            "NDI SDK for Linux/licenses/libndi_licenses.txt" \
+            "NDI SDK for Linux/NDI Embedded License Agreement.txt" \
+            "NDI SDK for Linux/Version.txt"
+}
+
+pkgver() {
+    local _sdkdir="${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux"
+
+    read _ date rel ver < "${_sdkdir}/Version.txt"
+    date="${date//-/}"
+    ver="${ver#v}"
+    printf '%s.%s.%s' "$ver" "$date" "$rel"
+}
+
+package() {
+    local _sdkdir="${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux"
+
+    # binary executables
+    install -D -m755 "${_sdkdir}/bin/${newtek_triplet}/"* -t "${pkgdir}/usr/bin"
+
+    # headers
+    install -D -m644 "${_sdkdir}/include/"* -t "${pkgdir}/usr/include"
+
+    # library
+    install -D -m755 "${_sdkdir}/lib/${newtek_triplet}/libndi.so.${_majver}".*.* -t "${pkgdir}/usr/lib"
+    cd "${pkgdir}/usr/lib"
+    ln -s "libndi.so.${_majver}".*.* "libndi.so.${_majver}"
+    ln -s "libndi.so.${_majver}".*.* libndi.so
+
+    # docs
+    install -D -m644 "${_sdkdir}/documentation/"* -t "${pkgdir}/usr/share/doc/${pkgname}"
+
+    # license
+    install -D -m644 "${_sdkdir}/NDI Embedded License Agreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${_sdkdir}/licenses/libndi_licenses.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
