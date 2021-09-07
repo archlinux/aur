@@ -4,9 +4,9 @@ _pyname=xstatic-angular
 _pycname=XStatic-Angular
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
-pkgver=1.5.8.0
+pkgver=1.8.2.1
 pkgrel=1
-pkgdesc="Angular 1.5.8 (XStatic packaging standard)"
+pkgdesc="Angular 1.8.2 (XStatic packaging standard)"
 arch=(any)
 url="http://angularjs.org/"
 license=(MIT)
@@ -19,9 +19,9 @@ makedepends=(
 	python2-setuptools
 )
 source=(https://pypi.io/packages/source/${_pycname::1}/$_pycname/$_pycname-$pkgver.tar.gz)
-md5sums=('15384e734161d31ff18a644f9632f25b')
-sha256sums=('b1dcdd7a66d3041625698bba2ac480ffc2447b05f551f10fcae2ac33139eb033')
-sha512sums=('87bc6ba1f83a12e2e57f35585ea67c6d4d78b843cc2d8dbf7db972b097f81aefa86f06b389677a7cf2f614c5ca54ebdf2289a62355b0e04847c2fac7d55423e1')
+md5sums=('429e5b05c631cc162f41672ce20762bc')
+sha256sums=('e23a887ae371294a8580ce19259898b97372782b00a077f0a9643e05b72e2b96')
+sha512sums=('2a4778687ad178c8cfe49a8f97c4b3a04d2e6d5053d7d98a22b6e71e038e447483334486c0e391b4320c5dae627eb602e6bf6f2c45693142c2b0c688d6d0dff9')
 
 prepare(){
 	cp -a $_pycname-$pkgver{,-py2}
