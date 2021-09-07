@@ -3,7 +3,7 @@
 _pkgbase=WolkenWelten
 _pkgname=${_pkgbase,,}
 pkgname=${_pkgname}-git
-pkgver=r1771.8a725805
+pkgver=r1777.98f5ecdd
 pkgrel=1
 pkgdesc='Gamemix between Minecraft, Quake ]I[ and Emacs in C99'
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,8 +17,13 @@ source=(${_pkgname}::"git+https://git.sr.ht/~melchizedek6809/${_pkgbase}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd ${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd ${_pkgname}
+  git submodule update --init --recursive
 }
 
 build() {
@@ -30,6 +35,5 @@ package() {
   cd ${_pkgname}
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm755 "${_pkgname}-server" "${pkgdir}/usr/bin/${_pkgname}-server"
-  install -Dm755 "nujel" "${pkgdir}/usr/bin/nujel"
 	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

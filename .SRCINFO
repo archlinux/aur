@@ -1,6 +1,6 @@
 pkgbase = wolkenwelten-git
 	pkgdesc = Gamemix between Minecraft, Quake ]I[ and Emacs in C99
-	pkgver = r1771.8a725805
+	pkgver = r1777.98f5ecdd
 	pkgrel = 1
 	url = https://wolkenwelten.net/
 	arch = i686
