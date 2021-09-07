@@ -1,6 +1,6 @@
 pkgbase = lib32-sdl-git
 	pkgdesc = A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (32-bit)
-	pkgver = 1.2.15.r336.08d4c52c
+	pkgver = 1.2.15.r388.c4cf838b
 	pkgrel = 1
 	url = https://www.libsdl.org
 	arch = x86_64
@@ -17,11 +17,10 @@ pkgbase = lib32-sdl-git
 	depends = sdl
 	optdepends = lib32-alsa-lib: ALSA audio driver
 	optdepends = lib32-libpulse: PulseAudio audio driver
-	provides = lib32-sdl=1.2.15.r336.08d4c52c
+	provides = lib32-sdl=1.2.15.r388.c4cf838b
 	conflicts = lib32-sdl
 	options = staticlibs
 	source = git+https://github.com/libsdl-org/SDL-1.2.git
 	md5sums = SKIP
 
 pkgname = lib32-sdl-git
-

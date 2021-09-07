@@ -6,7 +6,7 @@
 _pkgbasename=sdl
 _pkgname=lib32-$_pkgbasename
 pkgname=$_pkgname-git
-pkgver=1.2.15.r336.08d4c52c
+pkgver=1.2.15.r388.c4cf838b
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (32-bit)"
 arch=('x86_64')
@@ -35,7 +35,8 @@ build() {
   cd "SDL-1.2"
   ./autogen.sh
   ./configure --prefix=/usr --disable-nasm --enable-alsa \
-              --with-x --disable-rpath --disable-static --libdir=/usr/lib32
+              --with-x --disable-rpath --disable-static --libdir=/usr/lib32 \
+              --disable-input-tslib
   make
 }
 
