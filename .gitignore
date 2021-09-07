@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!*.desktop
+!*.patch
+!*.install
+!*.sysusers
+!.SRCINFO

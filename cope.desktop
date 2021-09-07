@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=COPE
+Exec=/opt/cope/cope
+Terminal=false
+Type=Application
+Icon=cope
+Comment=Chinese Old Poem Editor
+Categories=Education;Office;Utility;

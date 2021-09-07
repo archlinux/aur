@@ -1,0 +1,20 @@
+pkgbase = cope-bin
+	pkgdesc = Chinese Old Poem Editor - A modern IDE for writing classical Chinese poetry
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/LingDong-/cope
+	arch = x86_64
+	license = ISC
+	makedepends = libicns
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = cope
+	conflicts = cope
+	options = !strip
+	source = cope-0.3-linux-x64.zip::https://github.com/LingDong-/cope/releases/download/v0.3/cope-linux-x64.zip
+	source = cope.desktop
+	sha256sums = 7999d059fe8683cadad0d7b16a6b2845d757ffd32a5df137929c61fb443812f0
+	sha256sums = 90f16a7e1c2b4c335a5dfb3bddbbbbe0e661ccb7824b1c978c9abf6a5c333fcd
+
+pkgname = cope-bin
