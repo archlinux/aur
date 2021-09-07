@@ -2,7 +2,7 @@
 # Contributor: Michał Lisowski <lisu@riseup.net>
 
 pkgname=kaf
-pkgver=0.1.40
+pkgver=0.1.41
 pkgrel=2
 pkgdesc="Kafka CLI inspired by kubectl & docker"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 url="https://github.com/birdayz/kaf"
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/birdayz/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('a66a906469cf27555c88f29876039bc4')
+md5sums=('8f3af4ea745fb7a784259516744e9355')
 
 prepare() {
   cd "$pkgname-$pkgver"

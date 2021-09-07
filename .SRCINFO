@@ -1,13 +1,12 @@
 pkgbase = kaf
 	pkgdesc = Kafka CLI inspired by kubectl & docker
-	pkgver = 0.1.40
+	pkgver = 0.1.41
 	pkgrel = 2
 	url = https://github.com/birdayz/kaf
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = kaf-0.1.40.tar.gz::https://github.com/birdayz/kaf/archive/v0.1.40.tar.gz
-	md5sums = a66a906469cf27555c88f29876039bc4
+	source = kaf-0.1.41.tar.gz::https://github.com/birdayz/kaf/archive/v0.1.41.tar.gz
+	md5sums = 8f3af4ea745fb7a784259516744e9355
 
 pkgname = kaf
-
