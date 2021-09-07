@@ -1,29 +1,25 @@
 pkgbase = injection
-	pkgdesc = A Python-based ASCII programming-puzzle game.
-	pkgver = 0.9.4
+	pkgdesc = Python-based ASCII programming-puzzle game
+	pkgver = 0.10.2
 	pkgrel = 1
-	url = https://schilcote.itch.io/injection
-	arch = i686
+	url = https://toastengineer.itch.io/injection
 	arch = x86_64
 	license = MIT
-	makedepends = unzip
-	makedepends = curl
+	makedepends = python-setuptools
 	makedepends = python-pip
-	depends = python-pygame
+	depends = cython
+	depends = python-dill
+	depends = python-numpy
+	depends = python-pygame>=1.9.4
 	depends = python-pyperclip
 	depends = python-rsa
-	depends = python-numpy
-	depends = cython
-	depends = tk
-	depends = python-dill
+	source = injection-0.10.2.tar.bz2::https://gitlab.com/toastengineer/injection/-/archive/master/INJECTION-master.tar.bz2
 	source = injection.sh
 	source = injection.desktop
 	source = icon.png
-	source = INJECTION_0.9.4_src.zip.md5
-	md5sums = 5f21ca7a8891291e250f5296ba855324
-	md5sums = cf419413f1dda3dcae7c665c9bb4bf46
-	md5sums = 2e6543984ecc80ddf57ed822b344e0e1
-	md5sums = 9c20daa901cc7f1230481dc45185649c
+	sha256sums = 4fd7c3cbf32d09283d956ca42e92f2ffb97633956288d54bf0c6f0163b9461d5
+	sha256sums = 93fbcd694536f0a9928bcd4c274c5436998c8b0f6b527e7729007bd7c30dc7fe
+	sha256sums = 149b1700eddf2c0aba61a7bc9756ea9a464826478e6bf94bf23ea320781991b1
+	sha256sums = 1b4deae94db1a44d5ff4db9399b5038fe17d5cd45454eaa00f3f4925a49337be
 
 pkgname = injection
-

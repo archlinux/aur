@@ -8,5 +8,3 @@ Path=/usr/lib/injection
 Exec=injection
 Icon=/usr/lib/injection/icon.png
 Terminal=false
-
-
