@@ -1,0 +1,20 @@
+pkgbase = aoe3-wine-steam
+	pkgdesc = Age of Empires 3 using WINE with data via Steam
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://store.steampowered.com/app/105450/Age_of_Empires_III_2007/
+	install = aoe3.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	depends = wine
+	depends = winetricks
+	source = aoe3.sh
+	source = aoe3.desktop
+	source = aoe3.png
+	sha256sums = c1bcb8d0a59a584bd6275f94ed9f2fb3d90fc75556dc401dcfea04910110063f
+	sha256sums = 7a53cc2f88e8ee8d4233428438870803f4e662a4b8ee61a3c05aa1fe8541745c
+	sha256sums = ec3d23d8b0a15a10ed15141fd236efb523f056745df3aabed29e0a6eb71689b9
+
+pkgname = aoe3-wine-steam

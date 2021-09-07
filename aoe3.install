@@ -1,0 +1,4 @@
+post_install() {
+    echo "On the first run, game startup may take significantly longer while the wine prefix is prepared."
+    echo "'aoe3 -o' will run the base game, 'aoe3 -x' will run warchiefs, and 'aoe3 -y' (launcher default) will run asian dynasties."
+}
