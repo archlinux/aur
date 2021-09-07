@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 arch=('x86_64')
 url="https://obsidian.md/"
 license=('custom:Commercial')
-depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron')
+depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron13')
 makedepends=('asar')
 options=(!strip)
 source=(
@@ -24,8 +24,8 @@ source=(
     "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.asar.gz"
 )
 sha256sums=(
-    'd6b6ea6749b343787a2ab8379f0396c3ea48796717773ad5447afecc10e042e7'
-    'b58f58a58278dc5eaddd0e935d973b69eb671d971db678c077892c7369a0f6e4'
+    '5f4699e03045f68932e976727a746342f971eddb77fe5a31d8d2c4084034ed5f'
+    'dcb50a58c1afdfce8f06407b758814d663c3bf05abada607ab801bc0d035ef9b'
     'd290304e4c7cf41e92d063deb365d749135d07221cf83c222391d7a14aacfd01'
     '59ad00676ec5b0e0987dcb4fd9f9746214311f938a9082a2c39559d11124b59e'
 )
