@@ -1,0 +1,17 @@
+pkgbase = relic-git
+	pkgdesc = RELIC is an Efficient Library for Cryptography
+	pkgver = r3281.edf5bd94
+	pkgrel = 1
+	url = https://github.com/relic-toolkit/relic
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	provides = relic
+	conflicts = relic
+	conflicts = relic-bin
+	source = git+https://github.com/relic-toolkit/relic.git
+	sha256sums = SKIP
+
+pkgname = relic-git
