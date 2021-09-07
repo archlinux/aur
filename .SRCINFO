@@ -2,7 +2,7 @@ pkgbase = wike
 	pkgdesc = Wikipedia Reader for the GNOME Desktop
 	pkgver = 1.5.5
 	pkgrel = 1
-	url = https://github.com/hugolabe/Wike
+	url = https://apps.gnome.org/app/com.github.hugolabe.Wike
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
@@ -12,7 +12,7 @@ pkgbase = wike
 	depends = python-gobject
 	depends = python-requests
 	depends = webkit2gtk
-	source = wike-1.5.5.tar.gz::https://github.com/hugolabe/Wike/archive/refs/tags/1.5.5.tar.gz
+	source = wike-1.5.5.tar.gz::https://apps.gnome.org/app/com.github.hugolabe.Wike/archive/refs/tags/1.5.5.tar.gz
 	sha256sums = 28550e18bbb5df49d30e3ea57c085dd7fedd408c8668d8656233f9933fe26198
 
 pkgname = wike
