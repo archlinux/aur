@@ -6,7 +6,7 @@ pkgver=2.4.r19.g944d798
 pkgrel=1
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
-url="https://gitlab.gnome.org/World/apostrophe"
+url="https://apps.gnome.org/app/org.gnome.gitlab.somas.Apostrophe"
 license=('GPL3')
 depends=('webkit2gtk' 'gspell' 'python-pypandoc' 'python-regex' 'python-levenshtein'
          'python-pyenchant' 'python-gobject' 'python-cairo' 'otf-fira-mono' 'libhandy')
@@ -20,19 +20,19 @@ source=('git+https://gitlab.gnome.org/World/apostrophe.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	arch-meson -Dprofile=development "${pkgname%-git}" build
-	meson compile -C build
+  arch-meson -Dprofile=development "${pkgname%-git}" build
+  meson compile -C build
 }
 
 check() {
-	meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" meson install -C build
 }
