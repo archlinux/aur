@@ -2,14 +2,14 @@
 
 pkgname=gnome-shell-extension-lunar-calendar
 pkgver=26
-pkgrel=2
+pkgrel=4
 pkgdesc="Display Chinese Lunar Calendar in panel"
 arch=('any')
 url="https://extensions.gnome.org/extension/675/lunar-calendar/"
 license=('GPL3')
 depends=('gnome-shell>3.40' 'unzip' 'lunar-date')
 source=("https://extensions.gnome.org/extension-data/lunarcalailin.nemui.v26.shell-extension.zip")
-md5sums=('ecf6244c174c8a795babd4de423462e4')
+md5sums=('32e53a4632bf84cae13daa39f171c126')
 
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
@@ -36,4 +36,4 @@ package_10_schemas() {
   cp -r --no-preserve=ownership,mode schemas "$destdir"
   find -name '*.xml' -exec install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" '{}' +
 }
-md5sums=('50deb993073528b865efaa127e0f02ac')
+
