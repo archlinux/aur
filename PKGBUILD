@@ -121,9 +121,6 @@ check() {
   done
 }
 
-# use PYTHONHASHSEED=0 to work around https://bugs.python.org/issue34033 and https://bugs.python.org/issue34722
-export PYTHONHASHSEED=0
-
 package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
   # include setuptools as plugins are enumerated via pkg_resources
