@@ -1,4 +1,4 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-pydstool
 _pkgname=PyDSTool
 pkgver=0.91.0
@@ -9,7 +9,7 @@ license=('BSD')
 arch=('any')
 depends=('python-numpy' 'python-scipy')
 replaces=('python2-pydstool')
-makedepends=('dos2unix')
+makedepends=('dos2unix' 'python-setuptools')
 optdepends=('python-sloppycell')
 checkdepends=('python-pytest-mock' 'python-pytest-xdist')
 source=($_pkgname-$pkgver.tar.gz::https://github.com/robclewley/$_pkgname/archive/v$pkgver.tar.gz)

@@ -8,6 +8,7 @@ pkgbase = python-pydstool
 	checkdepends = python-pytest-mock
 	checkdepends = python-pytest-xdist
 	makedepends = dos2unix
+	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-scipy
 	optdepends = python-sloppycell
@@ -17,4 +18,3 @@ pkgbase = python-pydstool
 	sha256sums = 828730549872851ff78746e17421ad66ce0dfd74026539bc72247f405f5768f7
 
 pkgname = python-pydstool
-
