@@ -127,7 +127,7 @@ LIB_NEWMAT = /usr/lib -llapack -lopenblas
 #$(info GCC PAT VER $(GCCPAT))
 
 #Project specific variables
-EDDYBUILDPARAMETERS = "cuda=1 CUDAVER=8.0" "cuda=1 CUDAVER=9.1" "cpu=1"
+EDDYBUILDPARAMETERS = "cuda=1 CUDAVER=9.1" "cuda=1 CUDAVER=9.1" "cpu=1"
 fdt_MASTERBUILD     = COMPILE_GPU = 0
 ptx2_MASTERBUILD    = COMPILE_GPU = 0
 define newline
