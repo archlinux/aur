@@ -1,18 +1,13 @@
 pkgbase = runit-conversion
 	pkgdesc = Convert your system to use runit instead of systemd
 	pkgver = 4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://smarden.org/runit
 	arch = any
 	license = GPL
-	depends = base-init-agnostic
 	depends = kisslinux-init
 	depends = runit
-	depends = systemd-libs-fake
-	depends = eudev
 	optdepends = runit-services: many service definitions
-	provides = systemd-sysvcompat
-	conflicts = systemd-sysvcompat
 	source = runit-conversion-4-files.tar.xz
 	sha256sums = 20417409cb256b3c61ed582c717d94df703b6fc54378709b50dad665478259a3
 
