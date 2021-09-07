@@ -1,0 +1,6 @@
+teams-nativefier-*.pkg.tar.zst
+teams-nativefier-*.pkg.tar.xz
+teams-nativefier-*.log
+PKGBUILD-namcap.log
+pkg/
+src/

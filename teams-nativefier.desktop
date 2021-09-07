@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Teams
+Comment=Microsoft Teams desktop app built with nativefier (electron)
+Exec=teams-nativefier
+Icon=teams-nativefier
+Encoding=UTF-8
+StartupWMClass=teams-nativefier-d40211
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;
