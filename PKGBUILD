@@ -8,7 +8,7 @@
 
 pkgname=jabref
 pkgver=5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical Java application for managing BibTeX and biblatex (.bib) databases"
 arch=(any)
 url="https://www.jabref.org/"
@@ -32,7 +32,8 @@ sha256sums=('a75f471304d39bc2a8eb6fa99b4d249b6d71d9243b453e3baa60fde71cf93705'
 prepare() {
   cd ${pkgname}-${pkgver}
 
-  # Include CSL locales in our build
+  # Include CSL styles and locales in our build
+  cp -r buildres/csl/csl-styles/* src/main/resources/csl-styles/
   cp -r buildres/csl/csl-locales/* src/main/resources/csl-locales/
 
 }
