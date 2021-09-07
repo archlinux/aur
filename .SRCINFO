@@ -1,4 +1,4 @@
-pkgbase = bxdecay0
+pkgbase = bxdecay0-git
 	pkgdesc = C++ port of the legacy Decay0 FORTRAN library
 	pkgver = 1.0.10.13.g5366e1f
 	pkgrel = 1
