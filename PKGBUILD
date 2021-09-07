@@ -4,7 +4,7 @@
 
 _pkgname=catalogue
 pkgname="python-${_pkgname}"
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='Super lightweight function registries for your library'
 arch=(any)
@@ -13,7 +13,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6ce41a082512c6e42916a2f31d1d9df72e506f35f84e045800bfe93d4fcbb22d')
+sha256sums=('336a35603f447167042ef504114d6befa46688f03f4c14dabdc633a44587b245')
 
 build() {
 	cd "${_pkgname}-${pkgver}"

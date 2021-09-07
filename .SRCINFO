@@ -1,13 +1,13 @@
 pkgbase = python-catalogue
 	pkgdesc = Super lightweight function registries for your library
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/explosion/catalogue
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/catalogue/catalogue-2.0.5.tar.gz
-	sha256sums = 6ce41a082512c6e42916a2f31d1d9df72e506f35f84e045800bfe93d4fcbb22d
+	source = https://files.pythonhosted.org/packages/source/c/catalogue/catalogue-2.0.6.tar.gz
+	sha256sums = 336a35603f447167042ef504114d6befa46688f03f4c14dabdc633a44587b245
 
 pkgname = python-catalogue
