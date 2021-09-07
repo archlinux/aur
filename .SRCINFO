@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-sdl2
 	pkgdesc = A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (mingw-w64)
-	pkgver = 2.0.14
+	pkgver = 2.0.16
 	pkgrel = 1
 	url = http://libsdl.org
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-sdl2
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://libsdl.org/release/SDL2-2.0.14.tar.gz
-	sha256sums = d8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc
+	source = http://libsdl.org/release/SDL2-2.0.16.tar.gz
+	sha256sums = 65be9ff6004034b5b2ce9927b5a4db1814930f169c4b2dae0a1e4697075f287b
 
 pkgname = mingw-w64-sdl2
-
