@@ -107,25 +107,23 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.1.xz"
 
         # don't drop shared caches on C3 state transitions
-        "x86-ACPI-State-Optimize-C3-entry-on-AMD-CPUs.patch"
+        "x86-ACPI-State-Optimize-C3-entry-on-AMD-CPUs.patch"                            # landing in 5.15
 
         # patch from Chromium developers; more accurately report battery state changes
         "acpi-battery-Always-read-fresh-battery-state-on-update.patch"
 
         # k10temp support for Zen3 APUs
         #"x86-amd_nb-Add-AMD-family-19h-model-50h-PCI-ids.patch"                        # included in 5.14
-        "hwmon-k10temp-support-Zen3-APUs.patch"
+        "hwmon-k10temp-support-Zen3-APUs.patch"                                         # landing in 5.15
 
         # ASUS ROG enablement
-        "0101-asus-wmi-Add-panel-overdrive-functionality.patch"
-        "0102-asus-wmi-Add-dgpu-disable-method.patch"
-        "0103-asus-wmi-Add-egpu-enable-method.patch"
-        #"0006-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
-        #"0007-ALSA-hda-realtek-Fix-speakers-not-working-on-Asus-Fl.patch"
+        "asus-wmi-Add-panel-overdrive-functionality.patch"                              # landing in 5.15
+        "asus-wmi-Add-dgpu-disable-method.patch"
+        "asus-wmi-Add-egpu-enable-method.patch"
         "HID-asus-Prevent-Claymore-sending-suspend-event.patch"
         "HID-asus-Reduce-object-size-by-consolidating-calls.patch"
-        "v5-asus-wmi-Add-support-for-platform_profile.patch"
-        "v10-asus-wmi-Add-support-for-custom-fan-curves.patch"
+        "v5-asus-wmi-Add-support-for-platform_profile.patch"                            # landing in 5.15
+        "v10-asus-wmi-Add-support-for-custom-fan-curves.patch"                          # pending
 
         # mediatek mt7921 bt/wifi patches
         #"8010-Bluetooth-btusb-Fixed-too-many-in-token-issue-for-Me.patch"
