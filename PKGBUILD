@@ -2,7 +2,7 @@
 
 pkgname=mhuxd-git
 pkgver=v0.50rc3.r99.gf11ac15
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux daemon implementing the microHam keyer protocol."
 arch=('any')
 url="https://github.com/dj5qv/mhuxd"
@@ -61,7 +61,7 @@ package() {
 
 	cd "$srcdir/$pkgname"
 
-	install -Dm 644 "debian/mhuxd.udev" -t "$pkgdir/usr/lib/udev/rules.d/20-mhuxd.rules"
+	install -Dm 644 "debian/mhuxd.udev" "$pkgdir/usr/lib/udev/rules.d/20-mhuxd.rules"
 	install -Dm 644 "man/mhuxd.8" -t "$pkgdir/usr/share/man/man8/"
 	install -dm 755 "$pkgdir/usr/share/mhuxd"
 	cp -dr --no-preserve='ownership' "webui" "$pkgdir/usr/share/mhuxd/"
