@@ -5,7 +5,7 @@ pkgname=feishu-bin
 pkgver=4.8.0
 _pkgrel=24
 _pkgtyp=beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux client of Feishu (Lark) from Bytedance."
 arch=('x86_64')
 url="https://www.feishu.cn/"
@@ -27,8 +27,8 @@ package(){
   # Modify files
   cd "${pkgdir}"
   ln -s bytedance-feishu-${_pkgtyp} usr/bin/feishu
-  sed -i 's/bytedance-feishu-stable/feishu/g' "${pkgdir}/usr/share/applications/bytedance-feishu.desktop"
-  sed -i 's/bytedance-feishu-stable/feishu/g' "${pkgdir}/usr/share/menu/bytedance-feishu.menu"
+  sed -i "s/bytedance-feishu-${_pkgtyp}/feishu/g" "${pkgdir}/usr/share/applications/bytedance-feishu.desktop"
+  sed -i "s/bytedance-feishu/feishu/g" "${pkgdir}/usr/share/menu/bytedance-feishu.menu"
   sed -i 's/bytedance-feishu/feishu/g' "${pkgdir}/usr/share/appdata/bytedance-feishu.appdata.xml"
   mv "${pkgdir}"/usr/share/menu/{bytedance-,}feishu.menu
   mv "${pkgdir}"/usr/share/applications/{bytedance-,}feishu.desktop
