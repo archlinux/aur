@@ -1,7 +1,7 @@
 # Maintainer: Vincent.Ducamps <aur@ducamps.win>
 pkgname=gnome-shell-extension-pop-shell-git
 pkgdesc="Pop Shell - Tiling window management in Gnome (WIP)"
-pkgver=r749.3873fc5
+pkgver=r775.8be10fa
 pkgrel=1
 _gitorg=pop-os
 _gitname=shell
@@ -13,7 +13,7 @@ install="pop-shell.install"
 optdepends=('gnome-shell-extensions: native-window extension for improved window placement')
 conflicts=("gnome-shell-extension-pop-shell")
 makedepends=("typescript" "git")
-depends=("gnome-shell" "pop-shell-shortcuts-git" "fd")
+depends=("gnome-shell" "pop-shell-shortcuts-git" "pop-launcher-git" "fd")
 
 
 _dir="${_gitname}"
@@ -43,4 +43,3 @@ package() {
 		"$pkgdir/usr/share/gnome-control-center/keybindings"
     install -Dm755 scripts/configure.sh "${pkgdir}/usr/share/gnome-shell/extensions/pop-shell@system76.com/scripts/configure.sh"
 }
-
