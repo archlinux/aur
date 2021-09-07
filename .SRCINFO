@@ -1,6 +1,6 @@
 pkgbase = electronmail-bin
 	pkgdesc = Unofficial ProtonMail Desktop App
-	pkgver = 4.12.6
+	pkgver = 4.12.7
 	pkgrel = 1
 	url = https://github.com/vladimiry/ElectronMail
 	install = electronmail-bin.install
@@ -20,15 +20,14 @@ pkgbase = electronmail-bin
 	depends = snappy
 	depends = libnotify
 	depends = libappindicator-gtk3
-	depends = gconf
 	optdepends = org.freedesktop.secrets: password storage backend required for auto-login feature
 	optdepends = gnome-keyring: for storing passwords in GNOME Keyring
 	optdepends = xfce4-statusnotifier-plugin: SatusNotifier tray icons support for XFCE, see https://github.com/vladimiry/ElectronMail/issues/254
 	provides = electronmail
 	conflicts = electronmail
-	source = https://github.com/vladimiry/ElectronMail/releases/download/v4.12.6/electron-mail-4.12.6-linux-x64.pacman
+	source = https://github.com/vladimiry/ElectronMail/releases/download/v4.12.7/electron-mail-4.12.7-linux-x64.pacman
 	source = LICENSE
-	md5sums = 12e371a62465041ba3332311a6637fd1
+	md5sums = e0c5b816488bd3a0c021b1671c26d50a
 	md5sums = ff3103b5db8ba4e2c66c511b7a73e407
 
 pkgname = electronmail-bin
