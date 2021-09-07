@@ -20,7 +20,6 @@ sha256sums=('6c8cc4aedb10d5d4c905894ba1d850544619ee765606ac43df7405865de29ed0'
 build() {
   cd ${pkgbase}-${pkgver}
 
-  export PYTHONHASHSEED=0
   ./configure \
     --prefix=/usr \
     --disable-fd-passing \
