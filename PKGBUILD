@@ -5,7 +5,7 @@ pkgver=1.3.1
 pkgrel=1
 pkgdesc="Run web apps on your desktop."
 arch=('any')
-url="https://github.com/sonnyp/Tangram"
+url="https://apps.gnome.org/app/re.sonny.Tangram"
 license=('GPL3')
 depends=('gjs' 'libsoup' 'webkit2gtk')
 conflicts=('gigagram' "$pkgname-web")
@@ -18,30 +18,30 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-	cd "$srcdir/$pkgname"
-	git submodule init
-	git config submodule.src/troll.url $srcdir/troll
-	git submodule update
+  cd "$srcdir/$pkgname"
+  git submodule init
+  git config submodule.src/troll.url $srcdir/troll
+  git submodule update
 }
 
 build() {
-	pushd "$srcdir/$pkgname"
-	npm install --cache "$srcdir/npm-cache"
-	./node_modules/.bin/rollup -c
-	popd
+  pushd "$srcdir/$pkgname"
+  npm install --cache "$srcdir/npm-cache"
+  ./node_modules/.bin/rollup -c
+  popd
 
-	arch-meson "$pkgname" build
-	meson compile -C build
+  arch-meson "$pkgname" build
+  meson compile -C build
 }
 
 check() {
 
-	# Validate appstream file fails, only validate desktop & schema files
-	meson test 'Validate desktop file' 'Validate schema file' -C build --print-errorlogs
+  # Validate appstream file fails, only validate desktop & schema files
+  meson test 'Validate desktop file' 'Validate schema file' -C build --print-errorlogs
 }
 
 package(){
-	DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" meson install -C build
 
-	ln -s /usr/bin/re.sonny.Tangram "$pkgdir/usr/bin/$pkgname"
+  ln -s /usr/bin/re.sonny.Tangram "$pkgdir/usr/bin/$pkgname"
 }
