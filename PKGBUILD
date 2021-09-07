@@ -2,7 +2,7 @@
 
 pkgname='python-sparse'
 _pkgname=sparse
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Sparse multidimensional arrays on top of numpy and scipy"
 arch=('any')
@@ -12,15 +12,8 @@ checkdepends=('python-dask' 'python-pytest' 'python-pytest-black' 'python-pytest
 depends=('python-numpy' 'python-scipy' 'python-numba')
 optdepends=()
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pydata/sparse/archive/$pkgver.tar.gz"
-  "black.patch::https://github.com/pydata/sparse/commit/be4fbfcd05349b4006f4600ec00f1d831b74818f.patch")
-sha256sums=('2f53dd4c3d777e814d6d48664266790d981dce6521e783f0c0d39714091e0c6c'
-            '942286fc85383439f40f8b7c4538d006cceb44f632db94f3d115f96b0652ef8f')
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-  patch -p1 -i $srcdir/black.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pydata/sparse/archive/$pkgver.tar.gz")
+sha256sums=('c1f37c2097dfb017789ade963cebd199151b015aa6a30eece2359eb4e3c545e1')
 
 build(){
   cd "$_pkgname-$pkgver"
