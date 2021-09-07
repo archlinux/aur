@@ -1,0 +1,12 @@
+/var/log/mhuxd/*log {
+	weekly
+	missingok
+	rotate 7
+	sharedscripts
+	postrotate
+	systemctl reload mhuxd
+	endscript
+	compress
+	delaycompress
+	notifempty
+}

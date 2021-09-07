@@ -1,0 +1,16 @@
+[Unit]
+Description=microHAM microKeyer daemon
+
+[Service]
+User=mhuxd
+Type=simple
+PIDFile=/var/lib/mhuxd/mhuxd.pid
+EnvironmentFile=/etc/conf.d/mhuxd
+ExecStart=/sbin/mhuxd -w "$MHUXD_LISTEN" -l "$MHUXD_LOG_LEVEL" $MHUXD_ADD_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutSec=20
+Restart=on-abort
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

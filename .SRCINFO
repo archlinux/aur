@@ -1,0 +1,26 @@
+pkgbase = mhuxd-git
+	pkgdesc = Linux daemon implementing the microHam keyer protocol.
+	pkgver = v0.50rc3.r99.gf11ac15
+	pkgrel = 1
+	url = https://github.com/dj5qv/mhuxd
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = fuse2
+	depends = libev
+	provides = mhuxd
+	backup = etc/conf.d/mhuxd
+	source = mhuxd-git::git://github.com/dj5qv/mhuxd.git
+	source = mhuxd.conf
+	source = mhuxd.logrotate
+	source = mhuxd.service
+	source = mhuxd.sysusers
+	source = mhuxd.tmpfiles
+	sha256sums = SKIP
+	sha256sums = cd6892bb01a5f064aab568f302b33947c558e5a6d5c74dbe2a8115e9c1e082f6
+	sha256sums = 91ed9018153f6a7f400ea4d96a4d455a8c0fcb56b9c46e6efd974f297fd3c3bd
+	sha256sums = e19a7cff8681e1d0b3cf53342367adae015aa8dff6edfa2bc262dbb83a5b190a
+	sha256sums = 0f9ec94d7201acd54f518fcfe69490185d4da0c1d579d740594681b4947f08c5
+	sha256sums = 844574b30e2f491ed65f5a6805cc956bab29cc65d50fff8c2bc6dcb3f21face8
+
+pkgname = mhuxd-git

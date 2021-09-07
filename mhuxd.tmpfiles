@@ -1,0 +1,3 @@
+d /run/mhuxd 0755 mhuxd mhuxd -
+d /var/log/mhuxd 0755 mhuxd mhuxd -
+d /var/lib/mhuxd 0755 mhuxd mhuxd -
