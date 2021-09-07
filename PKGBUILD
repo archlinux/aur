@@ -4,7 +4,7 @@ _pyname=nova
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
 pkgver=23.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud computing fabric controller"
 arch=(any)
 url="https://docs.openstack.org/nova/latest/"
@@ -105,8 +105,8 @@ makedepends=(
 	python-osprofiler
 )
 checkdepends=(
+	mypy
 	python-hacking
-	python-mypy
 	python-coverage
 	python-ddt
 	python-fixtures
@@ -140,6 +140,7 @@ source=(
 	sysusers.conf
 	tmpfiles.conf
 	0000-fix-sphinx-4.0.0+-support.patch
+	0001-use-cinderclient-v3.patch
 )
 md5sums=('0bfb86b63aa72c6f4c564dee314a0ca3'
          '3f26a8660462ae32a683ad79ef733b79'
@@ -152,7 +153,8 @@ md5sums=('0bfb86b63aa72c6f4c564dee314a0ca3'
          '063c88893366f685c380fae0aa678b15'
          'fdc38aa4d35b511165091aac88c6614d'
          '7e4af4b03bf0ac69b3a657b6642ae5bb'
-         '6b3edc562202e41d131720edcf11c5be')
+         '6b3edc562202e41d131720edcf11c5be'
+         'efe38189277d7973cd9d3ba2e99a7835')
 sha256sums=('f22653cfcecd5321e93df9b048c79393552d81a89ff6f4b1faf888583ddeee71'
             'ccee044c78f73566662b46ae1d2837b34fa998e607a5b965dff85c5042eb21de'
             '14c3724e55fa7d094cc95c334d564c5b2276d73bbf3771de6fa2c8acaab9f71b'
@@ -164,7 +166,8 @@ sha256sums=('f22653cfcecd5321e93df9b048c79393552d81a89ff6f4b1faf888583ddeee71'
             'a8101096ca72a2f70d003c54b3339d16697315380795d657134cf9c02388a49f'
             'ed64bd90f87a3c41ed57e8fea77055d9df85ed6229bd3f75d74627c42322eb4c'
             '46ac6ef1d5b31996e3cfb4ec3647acbdc056efd01a91ff0d757f5fd8f4f8637d'
-            'ed18988aed0437943cbacec9ad9ab222809050ab5c1a0e2c8775318e05188a13')
+            'ed18988aed0437943cbacec9ad9ab222809050ab5c1a0e2c8775318e05188a13'
+            'de4c7714d7ee777e96c44a98e36baa133e00fac46e8cec6df5a2592219ce9eae')
 sha512sums=('79d2e962923af91e147cd226e5b2b4ce4345ecce48ad6f0c536f6dcbb585dcb9b6a5757e5ca03bbd52ff31b4239a8c8a033311f1a7d6db90740062c48a974283'
             'bcd6c94e9d882528b4883fa947822e6dbea6ca8b438815556471f54f8f5bd8b413f0906d4cc210a85891fef09846972689d7d4c25ed1ae8a582fd413c22c4820'
             'df839698bf257be1de5ed667c1c8f3c53c9384e549edc79b0988edae366ea6c10aff96ca9bbfb272852f5dd2348fbf1ea95c610ef261a771e8e6ca42b3448abc'
@@ -176,7 +179,8 @@ sha512sums=('79d2e962923af91e147cd226e5b2b4ce4345ecce48ad6f0c536f6dcbb585dcb9b6a
             'b2351829821824724106663a64e1237c01cec99ea5c503e92611fcceb32a1c10e85c59fee020a75e05748a8a82d89e08edaeb8f62a52843673dd59e5cfb4f6c4'
             '77a3849f4604fdb4293dbaf7341f9dab62b6e2df82eeab5baa728ed5ae9b3d0ac73f4fd924aee2271d6696ba5c26a50ff21f2a2a452515b8a4a2c12e9fd6a7e9'
             '1ba67c1ef08878dd25db648f80a1aefe73f07e283b18132ec18814176e2e27b67dbc264d0904bcb3df06d4fcc7f2945bd23306e7742a19a6ddb945b3627cb0f6'
-            '00d6f81cf139de263957cc8e369df581d7ead6c424337838bbd3c6c5d23ff1bc30cf97a3d3a52c346de01c889fa5c83d3e06cae142d5c643deb90aa508b0ab5c')
+            '00d6f81cf139de263957cc8e369df581d7ead6c424337838bbd3c6c5d23ff1bc30cf97a3d3a52c346de01c889fa5c83d3e06cae142d5c643deb90aa508b0ab5c'
+            '506e6d4482db4da4c0612ae0da467357b7a1dae504cc29107f05382828313aa0c17613c376db9d20b4a37e67db3aae43d528da5e6e28131b7a072ece3229fbbd')
 
 export PBR_VERSION=$pkgver
 
@@ -198,11 +202,12 @@ build(){
 	sphinx-build -b html doc/source doc/build/html
 }
 
-#check(){
-#	cd $_pyname-$pkgver
-#	export PYTHONPATH="${PWD}"
-#	stestr run
-#}
+check(){
+	cd $_pyname-$pkgver
+	export PYTHONPATH="${PWD}"
+	## skip test_update_forced_down_invalid_service because https://github.com/harlowja/fasteners/issues/36
+	stestr run -E nova.tests.unit.api.openstack.compute.test_services.ServicesTestV253.test_update_forced_down_invalid_service
+}
 
 _package_pkg(){
 	optdepends=(
