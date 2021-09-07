@@ -1,0 +1,23 @@
+pkgbase = qiji-font
+	pkgdesc = 齊伋體 - typeface from Ming Dynasty woodblock printed books
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/LingDong-/qiji-font
+	arch = any
+	license = custom:OFL
+	source = qiji-font-0.0.4.tar.gz::https://github.com/LingDong-/qiji-font/archive/refs/tags/0.0.4.tar.gz
+	source = qiji-font-0.0.4-qiji-combo.ttf::https://github.com/LingDong-/qiji-font/releases/download/0.0.4/qiji-combo.ttf
+	source = qiji-font-0.0.4-qiji-combo.woff2::https://github.com/LingDong-/qiji-font/releases/download/0.0.4/qiji-combo.woff2
+	source = qiji-font-0.0.4-qiji-fallback.ttf::https://github.com/LingDong-/qiji-font/releases/download/0.0.4/qiji-fallback.ttf
+	source = qiji-font-0.0.4-qiji-fallback.woff2::https://github.com/LingDong-/qiji-font/releases/download/0.0.4/qiji-fallback.woff2
+	source = qiji-font-0.0.4-qiji.ttf::https://github.com/LingDong-/qiji-font/releases/download/0.0.4/qiji.ttf
+	source = qiji-font-0.0.4-qiji.woff2::https://github.com/LingDong-/qiji-font/releases/download/0.0.4/qiji.woff2
+	sha256sums = 05e866a893091ea73748403b7404cd6b979538421ee1a3622d2361fdc2c03a86
+	sha256sums = f842291b039e9c5ae69edfe924edbe28b3cfba91bcac95791bf1fbc11db330cf
+	sha256sums = ad34fa3a82102f04e0ca2117ba24ba0d2c8b0e34aeea154bae8eb631ffa3c60c
+	sha256sums = 01c1e4fab1e92b27e61a54adfdbf40b242d3e70ca535339ef2eb3a02bd6fd7a4
+	sha256sums = 77275dc1fa17b2dc79c3a6eeb12bdcfa6a897ceb1e8f0c9a6e358d5f68a8de67
+	sha256sums = 2ee30738d37b102bfa90e56cd04fde2620ccef012b44390b77b0703cf995cf5b
+	sha256sums = 46acdf7646e19ced2317f90fc2941bf628323917b4e261fa55798fd351788b7b
+
+pkgname = qiji-font
