@@ -1,7 +1,7 @@
 # Maintainer: Your name <bros at brocode dot sh>
 
 pkgname=fblog
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="command-line JSON Log viewer"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/brocode/fblog"
 license=('custom:WTFPL')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d8a2e0274e9a9917c3c6a5f2afb866f53c0ca41004863a30e84def48bb8d02cf')
+sha256sums=('8ca2a2c40b96834c21e7bcdfe90dd9cee1103410934a70209d8a617a748160f7')
 
 build() {
   cd "$pkgname-$pkgver"
