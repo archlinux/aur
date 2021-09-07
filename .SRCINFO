@@ -7,8 +7,8 @@ pkgbase = corepack
 	license = MIT
 	makedepends = yarn
 	depends = nodejs
-	provides = webtorrent
-	source = 0.9.0.tar.gz::https://github.com/nodejs/corepack/archive/corepack/0.9.0.tar.gz
+	provides = corepack
+	source = corepack-0.9.0.tar.gz::https://github.com/nodejs/corepack/archive/corepack/0.9.0.tar.gz
 	sha256sums = f5fcc80339a251a485a06416f504a97edde1a87b2df3ae5ac88ce773b2d153a7
 
 pkgname = corepack

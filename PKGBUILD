@@ -8,8 +8,8 @@ url="https://github.com/nodejs/$pkgname"
 license=('MIT')
 depends=('nodejs')
 makedepends=('yarn')
-provides=('webtorrent')
-source=($pkgver.tar.gz::$url/archive/$pkgname/$pkgver.tar.gz)
+provides=('corepack')
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgname/$pkgver.tar.gz)
 sha256sums=('f5fcc80339a251a485a06416f504a97edde1a87b2df3ae5ac88ce773b2d153a7')
 
 build() {
