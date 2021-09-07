@@ -1,13 +1,25 @@
 pkgbase = gitty-bin
 	pkgdesc = Contextual information about your git projects, right on the command-line
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/muesli/gitty
 	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
 	license = MIT
 	provides = gitty
 	conflicts = gitty
 	source_x86_64 = https://github.com/muesli/gitty/releases/download/v0.3.0/gitty_0.3.0_linux_x86_64.tar.gz
 	sha256sums_x86_64 = 215b253de55e5fec25bddc93456709345d6cd55cf37e9e77fe0bfe273d39a030
+	source_i686 = https://github.com/muesli/gitty/releases/download/v0.3.0/gitty_0.3.0_linux_i386.tar.gz
+	sha256sums_i686 = e2d041ade1cd596a08ec4dff56ad5a8a3f575fbebfe0f2698525e8b5657c50ba
+	source_aarch64 = https://github.com/muesli/gitty/releases/download/v0.3.0/gitty_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 30e08154da48f2b2cefc9c09e056dc7f17bf53e893a985bb0e922a606b005c56
+	source_armv6h = https://github.com/muesli/gitty/releases/download/v0.3.0/gitty_0.3.0_linux_armv6.tar.gz
+	sha256sums_armv6h = 291fae27b043b1492f94c6f57069a1c6f4151576b4f0fc0a770283923fd8fae1
+	source_armv7h = https://github.com/muesli/gitty/releases/download/v0.3.0/gitty_0.3.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 7f845597544a4eb802ebd9f3fab069db1f95ecce4313d2c4f2545f3db75797de
 
 pkgname = gitty-bin
