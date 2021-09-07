@@ -13,8 +13,8 @@ pkgname=()
 [ "$_build_opt" -eq 1 ]    && pkgname+=("python-pytorch-opt-rocm")
 
 _pkgname="pytorch"
-pkgver=1.8.1
-_pkgver=1.8.1
+pkgver=1.9.0
+_pkgver=1.9.0
 pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
@@ -64,6 +64,10 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         fix_include_system.patch
         use-system-libuv.patch
         fix-building-for-torchvision.patch
+        benchmark-gcc11.patch
+        xnnpack-gcc11.patch
+        https://github.com/pytorch/pytorch/commit/c74c0c571880df886474be297c556562e95c00e0.patch
+        fix_c10.patch
         disable_non_x86_64.patch)
 sha256sums=('SKIP'
             'SKIP'
@@ -102,7 +106,11 @@ sha256sums=('SKIP'
             'SKIP'
             '557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a'
             'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
-            'f4959cde995382c55ba28c8496321b0bb0a5c0f3f46abcce2e88521004993846'
+            '689c76e89bcf403df1b4cf7ca784381967b6a6527ed6eb6d0ad6681cf789b738'
+            '278fecdb45df065343f51688cc7a1665153b5189f3341a741d546b0b518eac40'
+            '64833e96e47a22f88336381f25fcd73127208dc79e2074398295d88c4596c06a'
+            'ffb13bcd0186f3443a5b576b9fa32791a2ce915222df1d9609bcb0ef789ddd3b'
+            'ba801238afcfc58a35410e54d4ca6a638c447865c0c6b38ed16917fd6d507954'
             'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680')
 
 prepare() {
@@ -157,8 +165,19 @@ prepare() {
   # fix https://github.com/pytorch/vision/issues/3695
   patch -Np1 -i "${srcdir}/fix-building-for-torchvision.patch"
 
+  # GCC 11 fixes
+  patch -Np1 -d third_party/benchmark <../benchmark-gcc11.patch
+  patch -Np1 -d third_party/XNNPACK <../xnnpack-gcc11.patch
+
+  # cuda 11.4 fix
+  patch -Np1 <../c74c0c571880df886474be297c556562e95c00e0.patch
+  # cuda 11.4.1 fix
+  patch -Np1 -i "${srcdir}/fix_c10.patch"
+
   # remove local nccl
   rm -rf third_party/nccl/nccl
+  # also remove path from nccl module, so it's not checked
+  sed -e '/path = third_party\/nccl\/nccl/d' -i ./.gitmodules
 
   # fix build with google-glog 0.5 https://github.com/pytorch/pytorch/issues/58054
   sed -e '/namespace glog_internal_namespace_/d' -e 's|::glog_internal_namespace_||' -i c10/util/Logging.cpp
@@ -173,24 +192,30 @@ prepare() {
   export PYTORCH_BUILD_NUMBER=1
 
   # Check tools/setup_helpers/cmake.py, setup.py and CMakeLists.txt for a list of flags that can be set via env vars.
+  export ATEN_NO_TEST=ON
   export USE_MKLDNN=ON
-  export BUILD_CUSTOM_PROTOBUF=ON
+  export BUILD_CUSTOM_PROTOBUF=OFF
   # export BUILD_SHARED_LIBS=OFF
   export USE_FFMPEG=ON
   export USE_GFLAGS=ON
   export USE_GLOG=ON
   export BUILD_BINARY=ON
   export USE_OPENCV=ON
+  # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
   export USE_SYSTEM_NCCL=ON
-  # export USE_SYSTEM_LIBS=ON
   export NCCL_VERSION=$(pkg-config nccl --modversion)
   export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
-  export CUDAHOSTCXX=g++
+  # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
+  # export USE_FAST_NVCC=ON  # parallel build with nvcc, spawns too many processes
+  export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
+  export CUDAHOSTCXX=/usr/bin/g++
+  export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
-  # export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0;8.0+PTX;8.6;8.6+PTX"
+  export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
+  export TORCH_CUDA_ARCH_LIST="5.2;6.0;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"  #include latest PTX for future compat
+  export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 }
 
 build() {

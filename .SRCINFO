@@ -1,6 +1,6 @@
 pkgbase = python-pytorch-rocm
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = python-pytorch-rocm
 	depends = onednn
 	depends = intel-mkl
 	depends = python-typing_extensions
-	source = pytorch-1.8.1::git+https://github.com/pytorch/pytorch.git#tag=v1.8.1
+	source = pytorch-1.9.0::git+https://github.com/pytorch/pytorch.git#tag=v1.9.0
 	source = python-pytorch-rocm-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git
 	source = python-pytorch-rocm-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git
 	source = python-pytorch-rocm-FP16::git+https://github.com/Maratyszcza/FP16.git
@@ -72,6 +72,10 @@ pkgbase = python-pytorch-rocm
 	source = fix_include_system.patch
 	source = use-system-libuv.patch
 	source = fix-building-for-torchvision.patch
+	source = benchmark-gcc11.patch
+	source = xnnpack-gcc11.patch
+	source = https://github.com/pytorch/pytorch/commit/c74c0c571880df886474be297c556562e95c00e0.patch
+	source = fix_c10.patch
 	source = disable_non_x86_64.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -110,7 +114,11 @@ pkgbase = python-pytorch-rocm
 	sha256sums = SKIP
 	sha256sums = 557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a
 	sha256sums = cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669
-	sha256sums = f4959cde995382c55ba28c8496321b0bb0a5c0f3f46abcce2e88521004993846
+	sha256sums = 689c76e89bcf403df1b4cf7ca784381967b6a6527ed6eb6d0ad6681cf789b738
+	sha256sums = 278fecdb45df065343f51688cc7a1665153b5189f3341a741d546b0b518eac40
+	sha256sums = 64833e96e47a22f88336381f25fcd73127208dc79e2074398295d88c4596c06a
+	sha256sums = ffb13bcd0186f3443a5b576b9fa32791a2ce915222df1d9609bcb0ef789ddd3b
+	sha256sums = ba801238afcfc58a35410e54d4ca6a638c447865c0c6b38ed16917fd6d507954
 	sha256sums = d3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680
 
 pkgname = python-pytorch-rocm
