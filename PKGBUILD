@@ -1,7 +1,7 @@
 pkgname='python-scs'
 _pkgname='scs'
 pkgver='2.1.4'
-pkgrel=1
+pkgrel=2
 pkgdesc="Convex cone solver via operator splitting."
 url="http://github.com/cvxgrp/scs/"
 depends=('python' 'python-numpy' 'python-scipy')
@@ -21,6 +21,7 @@ build() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
+    rm -rf scs.egg-info
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     install -D -m644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
@@ -28,5 +29,6 @@ package() {
 check() {
     cd "${_pkgname}-${pkgver}"
     python setup.py build_ext --inplace
-    pytest
+    cp src/__init__.py scs
+    PYTHONPATH=. pytest
 }

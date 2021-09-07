@@ -1,7 +1,7 @@
 pkgbase = python-scs
 	pkgdesc = Convex cone solver via operator splitting.
 	pkgver = 2.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/cvxgrp/scs/
 	arch = x86_64
 	license = MIT
