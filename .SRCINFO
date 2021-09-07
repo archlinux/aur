@@ -1,12 +1,14 @@
 pkgbase = python-pep257
 	pkgdesc = Python docstring style checker
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GreenSteam/pep257/
 	arch = any
 	license = MIT
 	makedepends = python
+	makedepends = python-setuptools
 	makedepends = python2
+	makedepends = python2-setuptools
 	source = https://pypi.io/packages/source/p/pep257/pep257-0.7.0.tar.gz
 	md5sums = ff3dc9622c2406b7b583a283fbea651e
 	sha256sums = f3d67547f5617a9cfeb4b8097ed94a954888315defaf6e9b518ff1719363bf03
@@ -15,4 +17,3 @@ pkgbase = python-pep257
 pkgname = python-pep257
 
 pkgname = python2-pep257
-

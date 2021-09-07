@@ -4,14 +4,16 @@ _pyname=pep257
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python docstring style checker"
 arch=(any)
 url="https://github.com/GreenSteam/pep257/"
 license=(MIT)
 makedepends=(
 	python
+	python-setuptools
 	python2
+	python2-setuptools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
 md5sums=('ff3dc9622c2406b7b583a283fbea651e')
