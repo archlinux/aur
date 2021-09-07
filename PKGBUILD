@@ -1,16 +1,17 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: Kritias <theodoridisgr at gmail dot com>
+# Previous Maintainer: aksr <aksr at t-com dot me>
 pkgname=creduce-git
-pkgver=2.3.0.14.g49782e7
+pkgver=2.10.0.78.g8ad9a5b
 pkgrel=1
 pkgdesc='A C program reducer.'
 arch=('i686' 'x86_64')
 url='https://github.com/csmith-project/creduce'
 license=('custom:University of Illinois/NCSA Open Source License')
-depends=('astyle' 'clang' 'delta' 'indent' 'llvm' 'perl-benchmark-timer'
-         'perl-exporter-lite' 'perl-file-which' 'perl-getopt-tabular'
-         'perl-regexp-common' 'perl-sys-cpu' 'zlib')
+depends=('clang' 'llvm' 'perl-exporter-lite' 'perl-file-which' 'perl-getopt-tabular'
+         'perl-regexp-common' 'zlib')
+optdepends=('perl-term-readkey')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/csmith-project/creduce.git")
+source=("$pkgname::git+https://github.com/csmith-project/creduce.git#branch=llvm-12.0-dev")
 md5sums=('SKIP')
 
 pkgver() {
