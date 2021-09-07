@@ -4,7 +4,7 @@ pkgname=bfg-git
 _gitname=bfg-repo-cleaner
 pkgver=r465.aeee9e3
 pkgrel=1
-pkgdesc='Removes large blobs like git-filter-branch does, but faster. Git version, no politics.'
+pkgdesc='Removes large blobs like git-filter-branch does, but faster.'
 url='https://github.com/rtyley/bfg-repo-cleaner'
 arch=('any')
 license=('GPL3')
@@ -12,20 +12,13 @@ depends=('java-runtime>8' 'bash')
 makedepends=('sbt')
 conficts=('bfg')
 source=("git+https://github.com/rtyley/bfg-repo-cleaner.git"
-        "bfg.sh"
-        "clean.patch")
+        "bfg.sh")
 sha256sums=('SKIP'
-            'a41ad8ff48364c1118e69f5c1c6c5c070d56ad1d2f9cd09bca3c095385a6b530'
-            '99088f640a8ae89521eb5c5bfbdd96be348b1ccd6ba5072e4727247a04462782')
+            'a41ad8ff48364c1118e69f5c1c6c5c070d56ad1d2f9cd09bca3c095385a6b530')
 
 pkgver() {
   cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$_gitname"
-  patch --forward --strip=2 --input="${srcdir}/clean.patch"
 }
 
 build() {
