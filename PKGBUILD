@@ -22,7 +22,7 @@ source=('git+https://github.com/powercord-org/powercord.git'
 		"powercord.png")
 noextract=()
 md5sums=('SKIP'
-         '0da02ab7f1ca40d4fb9891bfb953a9b9'
+         'd12d081893f9dd8be0354343053d76e5'
          '709b434317999f01a9b28e02547f0d28'
          'ed7e42f11938c61e00c8c07cd1a96427'
          '567d9d8abddefa0417035759348230d1')
