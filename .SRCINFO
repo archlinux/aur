@@ -1,0 +1,21 @@
+pkgbase = libpabc-git
+	pkgdesc = C implementation of BBS+ blind signatures using BLS12-381
+	pkgver = r6.46eabbb
+	pkgrel = 1
+	url = https://github.com/Fraunhofer-AISEC/libpabc
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = doxygen
+	depends = libb64
+	depends = gmp
+	depends = jansson
+	depends = relic
+	provides = libpabc
+	conflicts = libpabc
+	conflicts = libpabc-bin
+	source = git+https://github.com/Fraunhofer-AISEC/libpabc.git
+	md5sums = SKIP
+
+pkgname = libpabc-git
