@@ -5,6 +5,7 @@ pkgname=juicefs-oss
 _pkgname=juicefs
 pkgver=0.16.2
 pkgrel=1
+pkgdesc="A distributed POSIX file system built on top of Redis and S3. (FOSS version)"
 arch=('x86_64')
 url="https://github.com/juicedata/juicefs"
 license=('AGPL3')
