@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron /usr/lib/powercord/app $@
+exec electron13 /usr/lib/powercord/app $@

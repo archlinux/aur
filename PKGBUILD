@@ -1,13 +1,13 @@
 # Maintainer: Lukasz Marianski <lmarianski at protonmail dot com>
 pkgname=powercord-electron-git
 pkgver=r1313.5d7500d5
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=('any')
 url="https://github.com/powercord-org/powercord"
 license=('custom:Porkord')
 groups=()
-depends=('discord-canary-electron-bin')
+depends=('electron13' 'discord-canary-electron-bin')
 makedepends=('git' 'npm')
 provides=("${pkgname%-electron-git}")
 conflicts=("${pkgname%-electron-git}")
