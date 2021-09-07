@@ -1,10 +1,10 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=squeekboard
-pkgver=1.14.0
+pkgver=1.14.0+fdb288c8
 pkgrel=1
 pkgdesc='Virtual keyboard supporting Wayland, built primarily for the Librem 5 phone'
-url='https://source.puri.sm/Librem5/squeekboard'
+url='https://gitlab.gnome.org/World/Phosh/squeekboard'
 license=(GPL3)
 arch=(x86_64 aarch64)
 depends=(
@@ -19,11 +19,12 @@ makedepends=(
 	rust
 	gtk-doc
 )
-source=("${url}/-/archive/v${pkgver}/squeekboard-v${pkgver}.tar.gz")
-sha256sums=('cc83ade8d507d7651e15c07ddf749450f72bdff0d650598b45f3395e47ddda38')
+_commit=fdb288c836acd01a30c88dae2346f543113cc3b5
+source=("${url}/-/archive/${_commit}/squeekboard-${_commit}.tar.gz")
+sha256sums=('6aaef29aec83762c80e35a95b2739e2bd4f2a9b36893cfa05ba264a28a13f0f2')
 
 build() {
-	arch-meson "squeekboard-v${pkgver}" build
+	arch-meson "squeekboard-${_commit}" build
 	meson compile -C build
 }
 
