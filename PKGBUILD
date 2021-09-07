@@ -1,45 +1,44 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_srcname=pyinstrument
+_name=pyinstrument
 
 pkgname=python-pyinstrument
-pkgver=3.4.1
+pkgver=4.0.3
 pkgrel=1
-pkgdesc="Call stack profiler for Python. Shows you why your code is slow!"
-arch=('any')
+pkgdesc="Call stack profiler for Python"
+arch=('x86_64')
 url="https://github.com/joerick/pyinstrument"
 license=('BSD')
-depends=(
-  'python>=3.6'
-  'python-pyinstrument_cext>=0.2.2'
-)
-makedepends=(
-  'npm'
-  'python-setuptools'
-)
-options=(!emptydirs)
-source=(
-  "https://github.com/joerick/pyinstrument/archive/v${pkgver}.tar.gz"
-)
-sha256sums=(
-  'f12dfe47bcad5967f0d72f0059a2c648aecdcd67eea0f95be288aaf48241e375'
-)
-
-prepare() {
-  cd "${srcdir}/${_srcname}-${pkgver}"
-  # no need to include test files
-  rm test/__init__.py
-}
+depends=('python>=3.7' 'python-pyinstrument_cext')
+makedepends=('python-setuptools')
+# checkdepends=(
+# 	'python-pytest'
+# 	'python-pytest-asyncio'
+# 	'python-pytest-runner'
+# 	'python-flaky'
+# 	'python-trio'
+# 	'python-django'
+# 	'python-sphinx'
+# 	'python-myst-parser>=0.15.1'
+# 	'python-greenlet')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('08caf41d21ae8f24afe79c664a34af1ed1e17aa5d4441cd9b1dc15f87bbbac95')
 
 build() {
-  cd "${srcdir}/${_srcname}-${pkgver}"
-  python setup.py build
+	cd "$_name-$pkgver"
+	python setup.py build
 }
 
+# check() {
+# 	cd "$_name-$pkgver"
+# 	local _ver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+# 	PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_ver" python setup.py pytest
+# }
+
 package() {
-  cd "${srcdir}/${_srcname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  install -Dm644 DESIGN.md "${pkgdir}/usr/share/doc/${pkgname}/DESIGN.md"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "$_name-$pkgver"
+	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
