@@ -2,7 +2,7 @@
 
 pkgname=tuxedo-touchpad-switch
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux userspace driver to enable and disable the touchpads on TongFang/Uniwill laptops"
 url="https://github.com/tuxedocomputers/tuxedo-touchpad-switch"
 arch=(x86_64)
@@ -20,6 +20,15 @@ source=(
 )
 sha256sums=(SKIP)
 #sha256sums=('dd4fa6871735fed3e094f177f0a2d0861fd3411ef4e6fbf1fbba5405a01ae219')
+
+prepare() {
+  cd "${pkgname}"
+
+  cat >> "res/99-tuxedo-touchpad-switch.rules" <<EOF
+KERNELS=="i2c-UNIW0001:00", SUBSYSTEMS=="i2c", DRIVERS=="i2c_hid_acpi", ATTRS{name}=="UNIW0001:00", SUBSYSTEM=="hidraw", MODE="0622"
+EOF
+
+}
 
 build() {
   cd "${pkgname}"

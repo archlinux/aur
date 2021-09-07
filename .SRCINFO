@@ -1,7 +1,7 @@
 pkgbase = tuxedo-touchpad-switch
 	pkgdesc = A Linux userspace driver to enable and disable the touchpads on TongFang/Uniwill laptops
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuxedocomputers/tuxedo-touchpad-switch
 	arch = x86_64
 	license = GPL3
