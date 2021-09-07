@@ -1,0 +1,21 @@
+diff --git a/src/Indicator.vala b/src/Indicator.vala
+index 8dde95d..a1a787c 100644
+--- a/src/Indicator.vala
++++ b/src/Indicator.vala
+@@ -209,15 +209,7 @@ public class Session.Indicator : Wingpanel.Indicator {
+             });
+ 
+             log_out.clicked.connect (() => {
+-                session_interface.logout.begin (0, (obj, res) => {
+-                    try {
+-                        session_interface.logout.end (res);
+-                    } catch (Error e) {
+-                        if (!(e is GLib.IOError.CANCELLED)) {
+-                            warning ("Unable to open logout dialog: %s", e.message);
+-                        }
+-                    }
+-                });
++                session_interface.logout (2);
+             });
+ 
+             lock_screen.clicked.connect (() => {

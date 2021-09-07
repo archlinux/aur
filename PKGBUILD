@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-session-standalone-git
-pkgver=2.3.0.r42.gb83ff2b
-pkgrel=2
+pkgver=2.3.0.r45.g498387b
+pkgrel=1
 pkgdesc='Session indicator for Wingpanel (without Gala dependencies)'
 arch=('x86_64')
 url='https://github.com/elementary/wingpanel-indicator-session'
@@ -15,9 +15,10 @@ makedepends=('git' 'gobject-introspection' 'granite' 'meson' 'vala'
 provides=('wingpanel-indicator-session')
 conflicts=('wingpanel-indicator-session')
 source=('git+https://github.com/elementary/wingpanel-indicator-session.git'
-        'wingpanel-indicator-session-standalone-01-shutdown.patch')
+        wingpanel-indicator-session-standalone-{01-shutdown,02-logout}.patch)
 sha256sums=('SKIP'
-            'ca09d91061c301a12cae9e33f958cced8c6e4ee1d14dca4c239c8015191f73eb')
+            'ca09d91061c301a12cae9e33f958cced8c6e4ee1d14dca4c239c8015191f73eb'
+            '2863a0c3163f2fb9c9273bf1bf64dccf3085147ebf916dea76bf261aebbdbb1e')
 
 pkgver() {
   cd wingpanel-indicator-session
@@ -27,6 +28,7 @@ pkgver() {
 prepare() {
   cd wingpanel-indicator-session
   patch -Np1 < ../wingpanel-indicator-session-standalone-01-shutdown.patch
+  patch -Np1 < ../wingpanel-indicator-session-standalone-02-logout.patch
 }
 
 build() {
