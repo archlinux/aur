@@ -1,6 +1,6 @@
 pkgbase = yourls
 	pkgdesc = your own URL shortener
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/YOURLS/YOURLS
 	install = yourls.install
@@ -10,8 +10,7 @@ pkgbase = yourls
 	depends = mysql>=5.0
 	conflicts = yourls-svn
 	backup = etc/webapps/yourls/config.php
-	source = yourls-1.8.1.tar.gz::https://github.com/YOURLS/YOURLS/archive/1.8.1.tar.gz
-	sha512sums = d0bf52b38c84d30a57dd292358d672bf0d004e96b92c7c3f17c701256c5cb72348956adacfbe79e5a6ae852d8087ccebb9ad33b2c82780c8d272be8b07835d9e
+	source = yourls-1.8.2.tar.gz::https://github.com/YOURLS/YOURLS/archive/1.8.2.tar.gz
+	sha512sums = 4b43cc31546ced8747f51afc9d76778e913f8031656d4e11226999194fddcb531eed5611674341ff1046668a2b061a55a0ed76cc875a9ff85946818f7fb32e2a
 
 pkgname = yourls
-
