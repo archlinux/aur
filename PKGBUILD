@@ -1,8 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Que Quotion <quequotion@bugmenot.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-session-standalone-git
 pkgver=2.3.0.r45.g498387b
-pkgrel=1
+pkgrel=2
 pkgdesc='Session indicator for Wingpanel (without Gala dependencies)'
 arch=('x86_64')
 url='https://github.com/elementary/wingpanel-indicator-session'
