@@ -1,8 +1,8 @@
 # Maintainer: zhullyb <5435486@qq.com>
 
 pkgname=purewriter-desktop-bin
-pkgver=1.3.4
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Never loss content editor & Markdown"
 arch=('x86_64')
 url="https://writer.drakeet.com/desktop"
@@ -15,7 +15,7 @@ source=("https://github.com/PureWriter/desktop/releases/download/$pkgver/PureWri
         'purewriter.png'
         'purewriter.desktop')
   
-md5sums=('5d5b5837403fcd26fa372ddc39ebe266'
+md5sums=('8fac394f37dc42936d586cf0546432e4'
          '83e1149ce2ef7f29ad0e128d39e793b8'
          'd24432d9cbba30b03c9f372405166ed9'
          '43d078956e3f3a981329e6233747a078')
