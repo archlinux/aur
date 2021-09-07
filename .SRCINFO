@@ -1,6 +1,6 @@
 pkgbase = re3-git
 	pkgdesc = An open-source project reverse-engineering Grand Theft Auto III
-	pkgver = r3120.6b4b11d8
+	pkgver = r3167.3233ffe1
 	pkgrel = 1
 	url = https://github.com/GTAmodding/re3
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = re3-git
 	makedepends = premake
 	depends = openal
 	depends = glew
-	depends = glfw-x11
+	depends = glfw
 	depends = mpg123
 	depends = zenity
 	provides = re3

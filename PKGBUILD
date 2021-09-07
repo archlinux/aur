@@ -1,13 +1,13 @@
 # Maintainer: hazelnot <scrabcrab@gmail.com>
 _pkgbase=re3
 pkgname=re3-git
-pkgver=r3120.6b4b11d8
+pkgver=r3167.3233ffe1
 pkgrel=1
 pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
 arch=('x86_64')
 url="https://github.com/GTAmodding/re3"
 license=('unknown')
-depends=('openal' 'glew' 'glfw-x11' 'mpg123' 'zenity')
+depends=('openal' 'glew' 'glfw' 'mpg123' 'zenity')
 makedepends=('git' 'premake')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
