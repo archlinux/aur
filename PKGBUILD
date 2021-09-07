@@ -6,12 +6,13 @@
 _pkgname=butane
 pkgname=butane-bin
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fedora CoreOS Config Transpiler"
 arch=('aarch64' 'x86_64')
 url="https://github.com/coreos/butane"
 license=('Apache')
 conflicts=('butane')
+provides=('butane')
 
 source_aarch64=(https://github.com/coreos/butane/releases/download/v$pkgver/butane-aarch64-unknown-linux-gnu{,.asc})
 source_x86_64=(https://github.com/coreos/butane/releases/download/v$pkgver/butane-x86_64-unknown-linux-gnu{,.asc})
