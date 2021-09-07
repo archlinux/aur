@@ -16,7 +16,6 @@ b2sums=('13a62e1ec7a43a8cd0196e01eb1c60471b09f89ef2cb55cce7908de1b76f38a063c63bb
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
