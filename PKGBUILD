@@ -8,7 +8,7 @@
 
 pkgname=jabref
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical Java application for managing BibTeX and biblatex (.bib) databases"
 arch=(any)
 url="https://www.jabref.org/"
@@ -28,6 +28,14 @@ sha256sums=('a75f471304d39bc2a8eb6fa99b4d249b6d71d9243b453e3baa60fde71cf93705'
 # Newer versions typically work as well. However, if using the supplied gradle
 # wrapper, it may use an old version of gradle that limits support for newer Java
 # versions.
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+
+  # Include CSL locales in our build
+  cp -r buildres/csl/csl-locales/* src/main/resources/csl-locales/
+
+}
 
 build() {
   cd ${pkgname}-${pkgver}
