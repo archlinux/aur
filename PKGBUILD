@@ -2,14 +2,14 @@
 
 _pkgname_=fingerpaint
 pkgname=${_pkgname_}-wayland
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Fingerpaint tool with wayland dependencies"
 arch=('any')
 url="https://github.com/Wazzaps/fingerpaint"
 license=('GPL2')
 source=("${_pkgname_}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('db7ab6317c65976c3a02d50f5344f189')
+md5sums=('5e79807fef6b011f381e90866981a185')
 depends=('python-evdev' 'python-pillow' 'python-pyudev' 'dconf' 'tk')
 makedepends=('python-setuptools')
 provides=("${_pkgname_}")
