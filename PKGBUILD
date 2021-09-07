@@ -1,23 +1,48 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
-pkgname=python-glad
+pkgbase=python-glad
+pkgname=(python-glad python2-glad)
 pkgver=0.1.34
-pkgrel=1
-pkgdesc='Multi-language GL/GLES/EGL/GLX/WGL loader-generator based on the official specs'
-arch=(any)
+pkgrel=2
+pkgdesc='Multi-language GL/GLES/EGL/GLX/WGL loader-generator'
+arch=('any')
 url='https://github.com/Dav1dde/glad'
-license=(MIT Apache)
-makedepends=(git python-setuptools)
-source=("git+$url#commit=a5ca31c88a4cc5847ea012629aff3690f261c7c4") # tag: v0.1.34
-b2sums=(SKIP)
+license=('MIT' 'Apache')
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('4be2900ff76ac71a2aab7a8be301eb4c0338491c7e205693435b09aad4969ecd')
 
-build() {
-  cd glad
-  python setup.py build
+prepare() {
+	cp -a "glad-$pkgver" "glad-$pkgver-py2"
 }
 
-package() {
-  cd glad
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+build() {
+	pushd "glad-$pkgver"
+	python setup.py build
+	popd
+
+	pushd "glad-$pkgver-py2"
+	python2 setup.py build
+}
+
+package_python-glad() {
+	depends=('python3')
+
+	cd "glad-$pkgver"
+	export PYTHONHASHSEED=0
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+}
+
+package_python2-glad() {
+	depends=('python2')
+	conflicts=('python-glad')
+
+	cd "glad-$pkgver-py2"
+	export PYTHONHASHSEED=0
+	python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
