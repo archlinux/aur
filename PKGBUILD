@@ -7,12 +7,12 @@ pkgname='ferdi'
 pkgver='5.6.0'
 _recipescommit='ebb2cc3c68f74ce1d8b8a61d128078753d9a0398'
 _internalservercommit='2e15f753b79491df2cad5e436e00c8cf44faf5ca'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
 license=('Apache')
-depends=('electron' 'libxkbfile')
+depends=('electron13' 'libxkbfile')
 makedepends=('git' 'nodejs>=14.0.0' 'npm6' 'python' 'python2')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
@@ -54,7 +54,7 @@ prepare() {
 	mv "../internal-server-$_internalservercommit/" 'src/internal-server/'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron13/version')"'"|' 'package.json'
 
 	# Loosen node version restriction
 	sed -E -i 's|("node": ").*"|\1'"$(node --version | sed 's/^v//')"'"|' 'package.json'
@@ -87,7 +87,7 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx gulp build
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron13' -c.electronVersion="$(cat '/usr/lib/electron13/version')"
 }
 
 package() {
@@ -106,7 +106,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/bin/sh
-NODE_ENV=production ELECTRON_IS_DEV=0 exec electron '/usr/lib/$pkgname/app.asar' "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=0 exec electron13 '/usr/lib/$pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
 
