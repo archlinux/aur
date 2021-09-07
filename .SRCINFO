@@ -17,10 +17,10 @@ pkgbase = clash-premium-tun
 	conflicts = clash
 	backup = etc/clash/config.yaml
 	source = git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951
-	source = https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-2021.07.03-49-gf09c567.gz
+	source = https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-2021.09.07.gz
 	source = config.yaml
 	sha256sums = SKIP
-	sha256sums = 0793978094543482b9ff90eb7e50453f946da4f52c0160591c0970dfc4b68bc8
+	sha256sums = 2ba573b8a5fe7f265e28b6a450d8af875f9cf84f2bf5d10c262a9af27a932de0
 	sha256sums = 1938bc7544f8e33a6e41636f45e87a17de2eac0ca14f47c2f7a71c3c87341bf0
 
 pkgname = clash-premium-tun

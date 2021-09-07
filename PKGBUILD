@@ -14,10 +14,10 @@ provides=('clash')
 conflicts=('clash')
 backup=("etc/clash/config.yaml")
 source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951"
-        "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-2021.07.03-49-gf09c567.gz"
+        "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-${pkgver}.gz"
         "config.yaml")
-sha256sums=('SKIP'
-            '0793978094543482b9ff90eb7e50453f946da4f52c0160591c0970dfc4b68bc8'
+sha256sums=('SKIP' 
+            '2ba573b8a5fe7f265e28b6a450d8af875f9cf84f2bf5d10c262a9af27a932de0'
             '1938bc7544f8e33a6e41636f45e87a17de2eac0ca14f47c2f7a71c3c87341bf0')
 
 prepare() {
@@ -34,8 +34,8 @@ prepare() {
 
 package() {
 	cd "${srcdir}"
-    gunzip --force clash-linux-amd64-2021.07.03-49-gf09c567.gz
-	install -Dm 755 clash-linux-amd64-2021.07.03-49-gf09c567 "${pkgdir}"/usr/bin/clash
+    gunzip --force clash-linux-amd64-${pkgver}.gz
+	install -Dm 755 clash-linux-amd64-${pkgver} "${pkgdir}"/usr/bin/clash
     install -Dm 644 config.yaml "${pkgdir}"/etc/clash/config.yaml
 	cd "${srcdir}"/clash-premium-installer/scripts
     install -Dm 644 clash-default "${pkgdir}"/etc/default/clash
