@@ -2,8 +2,8 @@
 # Contributor: Christian Schwarz <me@cschwarz.com>
 
 pkgname=servefile
-pkgver=0.5.1
-pkgrel=5
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Serve or receive files from shell via a small HTTP server"
 arch=('any')
 url="https://github.com/sebageek/servefile"
@@ -15,7 +15,7 @@ makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/sebageek/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('65bf1eba442ab356cbda54d9ce51471ca6df9ec87d3338a02a5bfb5cb062c157')
+sha256sums=('5520be6cd5a02aedc6c1c409f1b788e994da5754e40fca3d7dc812207b1060d9')
 
 # check() {
 #     cd "$srcdir/$pkgname-$pkgver"
