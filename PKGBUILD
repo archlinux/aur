@@ -25,7 +25,6 @@ sha512sums=('26fc10fce67317676f3c1f8d6de2f9eb148c3302aa392665caa9f3d734d9c8c94f9
 
 build() {
   cd $pkgname-$pkgver
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
