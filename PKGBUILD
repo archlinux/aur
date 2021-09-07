@@ -1,4 +1,5 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
+# Contributor: Steven Seifried <gitlab at canox dot net>
 
 pkgname=tuxedo-touchpad-switch
 pkgver=1.0.1
