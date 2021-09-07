@@ -1,11 +1,11 @@
 pkgbase = twitch-cli-bin
 	pkgdesc = The official Twitch CLI to make developing on Twitch easier.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/twitchdev/twitch-cli
 	arch = x86_64
 	license = Apache
-	source = https://github.com/twitchdev/twitch-cli/releases/download/1.1.0/twitch-cli_1.1.0_Linux_x86_64.tar.gz
-	sha256sums = 291957f9cdc17d32a7fd654aa37035d14f7b2212880594a06574b26e9b06a291
+	source = https://github.com/twitchdev/twitch-cli/releases/download/1.1.1/twitch-cli_1.1.1_Linux_x86_64.tar.gz
+	sha256sums = 6443e5a3cd440ddd2821bdbe91847b0274d4e24b699a3a2d191b08d0e16ca271
 
 pkgname = twitch-cli-bin
