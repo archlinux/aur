@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     quit.patch)
 sha256sums=('f9cc50f27af60e85f561b10f1d13f9934897d328509c15d9b013a0620fd38b6e'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
-            '8717ba2de9cabc5c0a35780315871329c15bde5ff46c4f0bf859a87e42aa96f5'
+            'b464dbfc0d426730259ce2abc660960ecc6a73bbef838b8fbbd15deb2f5dce53'
             '2254632a03ca2cf7ae6b50a4109b0bec417cf0db6d669a8037125d13488e3b9f'
             'd3f96ae6019abb60aa097919b22b1873f83061ed7453cd251e43b3afe5d54919')
 
