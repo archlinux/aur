@@ -23,7 +23,6 @@ prepare () {
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
