@@ -1,14 +1,13 @@
 pkgbase = python-spacy-en_core_web_sm
 	pkgdesc = English pretrained model for spaCy (small)
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://spacy.io/models/en#section-en_core_web_sm
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-spacy
-	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.0.0/en_core_web_sm-3.0.0.tar.gz
-	sha256sums = 0673b3ce4a28a19e99dc0fc3f8f7fe67b936c41749e6b70f778ec5f9f78f3a66
+	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.1.0/en_core_web_sm-3.1.0.tar.gz
+	sha256sums = f624cbee5511e6c90e4ff9ed502c8acab14bf82096c0e28a4645564b70f87660
 
 pkgname = python-spacy-en_core_web_sm
-
