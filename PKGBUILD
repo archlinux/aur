@@ -12,6 +12,7 @@ license=('MIT')
 url="https://github.com/ssut/py-googletrans"
 depends=(
   python-httpx
+  python-h2
 )
 makedepends=(
   python-setuptools

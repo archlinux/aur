@@ -8,6 +8,7 @@ pkgbase = python-googletrans-git
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python-httpx
+	depends = python-h2
 	provides = python-googletrans
 	conflicts = python-googletrans
 	source = git+https://github.com/ssut/py-googletrans.git
