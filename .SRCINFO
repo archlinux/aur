@@ -1,6 +1,6 @@
 pkgbase = python-kintree
 	pkgdesc = Fast part creation in KiCad and InvenTree
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/sparkmicro/Ki-nTree
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-kintree
 	depends = python-pyaml
 	depends = python-validators
 	depends = python-wrapt
-	source = https://files.pythonhosted.org/packages/source/k/kintree/kintree-0.4.4.tar.gz
-	sha256sums = 06beb20eb7b827285eb5e3aa79a35e4ea298d4e22f077f7499ff175cb38ad22e
+	source = https://files.pythonhosted.org/packages/source/k/kintree/kintree-0.4.5.tar.gz
+	sha256sums = c6ca99603024dfaed4189ca66e4ca8a4376be80b237d3cefd33de105f2158e0d
 
 pkgname = python-kintree
