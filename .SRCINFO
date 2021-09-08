@@ -1,7 +1,7 @@
 pkgbase = nextpnr-git
 	pkgdesc = Portable FPGA place and route tool
-	pkgver = r3528.179ae683
-	pkgrel = 1
+	pkgver = r3780.95845b47
+	pkgrel = 2
 	url = https://github.com/YosysHQ/nextpnr
 	arch = i686
 	arch = x86_64
@@ -24,4 +24,3 @@ pkgbase = nextpnr-git
 	sha256sums = SKIP
 
 pkgname = nextpnr-git
-

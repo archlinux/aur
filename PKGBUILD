@@ -1,18 +1,49 @@
-# Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Richard Petri <git@rpls.de>
+# Contributor: Graham Edgecombe <gpe@grahamedgecombe.com>
+_ARCHS=('generic' 'ice40' 'ecp5' 'nexus' 'gowin')
+
 pkgname=nextpnr-git
-pkgver=r3528.179ae683
-pkgrel=1
+pkgver=r3780.95845b47
+pkgrel=2
 pkgdesc='Portable FPGA place and route tool'
 arch=('i686' 'x86_64')
 url='https://github.com/YosysHQ/nextpnr'
 license=('custom:ISC')
 depends=('boost-libs' 'python' 'qt5-base')
-makedepends=('boost' 'cmake' 'eigen' 'git' 'icestorm' 'prjtrellis'
-             'prjtrellis-db' 'prjoxide' 'prjapicula')
+makedepends=('boost' 'cmake' 'eigen' 'git')
 provides=('nextpnr')
 conflicts=('nextpnr')
 source=('nextpnr::git+https://github.com/YosysHQ/nextpnr.git')
 sha256sums=('SKIP')
+
+_CONFIG=()
+for _arch in ${_ARCHS[@]}; do
+  case $_arch in
+    ice40)
+      makedepends+=('icestorm')
+      _CONFIG+=('-DICESTORM_INSTALL_PREFIX=/usr')
+      ;;
+    ecp5)
+      makedepends+=('prjtrellis' 'prjtrellis-db')
+      _CONFIG+=('-DTRELLIS_INSTALL_PREFIX=/usr')
+      ;;
+    nexus)
+      makedepends+=('prjoxide')
+      _CONFIG+=('-DOXIDE_INSTALL_PREFIX=/usr')
+      ;;
+    gowin)
+      makedepends+=('prjapicula')
+      _CONFIG+=('-DGOWIN_BBA_EXECUTABLE=/usr/bin/gowin_bba')
+      ;;
+    generic)
+      ;;
+    *)
+      echo "Unhandled architecture: $_arch" >&2
+      exit 1
+      ;;
+  esac
+done
 
 pkgver() {
   cd "$srcdir/nextpnr"
@@ -26,11 +57,8 @@ build() {
   cd build
 
   cmake \
-    -DARCH=generic\;ice40\;ecp5\;nexus\;gowin \
-    -DICESTORM_INSTALL_PREFIX=/usr \
-    -DTRELLIS_INSTALL_PREFIX=/usr \
-    -DOXIDE_INSTALL_PREFIX=/usr \
-    -DGOWIN_BBA_EXECUTABLE=/usr/bin/gowin_bba \
+    -DARCH=$(IFS=\;; echo "${_ARCHS[*]}") \
+    "${_CONFIG[@]}" \
     -DBUILD_TESTS=ON \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
