@@ -75,8 +75,8 @@ _use_current=
 pkgbase=linux-cacule-rdb-llvm
 pkgname=('linux-cacule-rdb-llvm' 'linux-cacule-rdb-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14.1
-pkgrel=2
+pkgver=5.14.2
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel-RDB by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -101,17 +101,18 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
+        "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
     #   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/0007-v5.14-fsync.patch"
         "${_patchsource}/0007-v5.14-futex2_interface.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
         "${_patchsource}/mm-patches/0001-mm-5.14-protect-mappings-under-memory-pressure.patch"
-        "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
+        "${_patchsource}/pf-patches-v4/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches/0001-xanmod-patches.patch"
         "${_patchsource}/zen-patches/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
-        "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
+        "${_patchsource}/zstd-upstream-patches-v2/0001-zstd-upstream-patches.patch"
         "${_patchsource}/ntfs3-patches-v4/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
@@ -525,7 +526,7 @@ package_linux-cacule-rdb-llvm-headers() {
 
 }
 
-md5sums=('be936a500fab39069e50b0bcfcc0c369'
+md5sums=('e111bd84156ac6b19568a495eed46400'
          '6fa10abe24db00d79c7a46020f68f1e7'
          'cf26387aadf2a90428350ac246b070c9'
          '024a0126cfcd18e000a2241f35c4d69e'
@@ -538,16 +539,17 @@ md5sums=('be936a500fab39069e50b0bcfcc0c369'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
+         'f3fa22a29640a3645108bc54267a8aee'
          '77148eba8e77fc41a44f5f6d3b440573'
          'c1dfe3a0b5c31e9a97d1827642f0bc5b'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '3cf036429a7c962005a344e10a568d7b'
          '8edec54f500ecb2ff705c2a9f32e0560'
-         '30a7be161ab863c46e5ad55796d06a29'
+         '01fe9306e6e6786414476789053cc899'
          '28864f14bf33bad92e57bc48bc5c2c78'
          '381bc4f0ff885e9b67e5899476a30416'
          '808981a36c81165953017e5e432c1fa1'
-         '0553f660f2399549ed17b6d2ca4e930e'
+         '2cd3271bddb2612171afbc5a706b541f'
          'bb5234c6cd12276dbc4d231cc038f8f7'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
