@@ -5,7 +5,6 @@ pkgbase = bxdecay0-git
 	url = https://github.com/BxCppDev/bxdecay0
 	arch = x86_64
 	license = GPL
-	makedepends = gcc
 	makedepends = cmake
 	depends = gsl
 	provides = libBxDecay0.so
