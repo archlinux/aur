@@ -1,7 +1,7 @@
 pkgbase = solarmeter
 	pkgdesc = Read energy from ABB Aurora inverter
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ahpohl/solarmeter
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,6 @@ pkgbase = solarmeter
 	source = solarmeter.service
 	sha256sums = SKIP
 	sha256sums = 8c96a8c940a94b8b86312873ad93a2f2a01a2e1e9dbc52b074b04375189dc26b
-	sha256sums = 094505f8abb0a131186785ccd929050002d5741ed6d290794e94450a7ecaf5a3
+	sha256sums = 912951dac380f61e02a41f6bedfc7f008c76d8a8a763680e631d2ad46028c74e
 
 pkgname = solarmeter
