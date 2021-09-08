@@ -1,11 +1,12 @@
 pkgbase = pystatsd-git
 	pkgdesc = A Python client for statsd
-	pkgver = v3.2.1.r14.gcbb4b23
+	pkgver = v3.3.r13.gf3f304b
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/statsd
 	arch = any
 	license = custom
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-six
 	provides = pystatsd
@@ -14,4 +15,3 @@ pkgbase = pystatsd-git
 	md5sums = SKIP
 
 pkgname = pystatsd-git
-

@@ -1,13 +1,13 @@
 # Maintainer: Georg Pichler <georg.pichler@gmail.com>
 
 pkgname=pystatsd-git
-pkgver=v3.2.1.r14.gcbb4b23
+pkgver=v3.3.r13.gf3f304b
 pkgrel=1
 pkgdesc="A Python client for statsd"
 arch=('any')
 url="https://pypi.python.org/pypi/statsd"
 license=('custom')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 depends=('python' 'python-six')
 source=("${pkgname}::git+https://github.com/jsocol/pystatsd.git")
 options=(!emptydirs)
