@@ -1,15 +1,14 @@
 pkgbase = gnome-shell-extension-bumblebee-status-git
 	pkgdesc = GNOME Shell extension that shows the status of the NVIDIA GPU
 	pkgver = r14.17cd4c1
-	pkgrel = 1
-	url = https://github.com/heatray/gnome-shell-extension-bumblebee-status
+	pkgrel = 2
+	url = https://github.com/dsboger/gnome-shell-extension-bumblebee-status
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell
 	depends = unzip
-	source = gnome-shell-extension-bumblebee-status-git::git+https://github.com/heatray/gnome-shell-extension-bumblebee-status
+	source = gnome-shell-extension-bumblebee-status-git::git+https://github.com/dsboger/gnome-shell-extension-bumblebee-status
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-bumblebee-status-git
-
