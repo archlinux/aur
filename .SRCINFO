@@ -11,6 +11,6 @@ pkgbase = copilot-cli-bin
 	source_aarch64 = copilot-1.10.1::https://github.com/aws/copilot-cli/releases/download/v1.10.1/copilot-linux-arm64-v1.10.1
 	md5sums_aarch64 = 3a3791f7d8440e5b775df36104b4bea7
 	source_x86_64 = copilot-1.10.1::https://github.com/aws/copilot-cli/releases/download/v1.10.1/copilot-linux-amd64-v1.10.1
-	md5sums_x86_64 = 3a3791f7d8440e5b775df36104b4bea7
+	md5sums_x86_64 = 11b79d132715883b66aa48366f6cdc17
 
 pkgname = copilot-cli-bin
