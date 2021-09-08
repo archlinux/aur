@@ -1,7 +1,7 @@
-pkgbase = droidcam-obs-plugin
+pkgbase = droidcam-obs-plugin-bin
 	pkgdesc = plugin for droidcam obs
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://dev47apps.com/obs/
 	arch = x86_64
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = droidcam-obs-plugin
 	makedepends = libjpeg-turbo
 	depends = obs-studio
 	depends = libusbmuxd
-	conflicts = droidcam-obs-plugin-git
-	source = droidcam-obs-plugin::git+https://github.com/dev47apps/droidcam-obs-plugin.git#tag=1.2.1
-	source = fix_Makefile.patch
+	conflicts = droidcam-obs-plugin-bin-git
+	source = https://files.dev47apps.net/obs/droidcam_obs_1.2.2_linux.zip
+	source = ja-JP.ini
 	sha256sums = SKIP
-	sha256sums = 5a52749268fafe141eecbb63f0dea10ac1a100e1b1ba63a2f1cf574837b8c069
+	sha256sums = SKIP
 
-pkgname = droidcam-obs-plugin
+pkgname = droidcam-obs-plugin-bin
