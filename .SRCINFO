@@ -1,18 +1,18 @@
 pkgbase = amule-remote-tools
 	pkgdesc = aMule Remote Tools CLI and GUI
-	pkgver = 11066
+	pkgver = 2.3.3
 	pkgrel = 1
+	epoch = 1
 	url = http://www.amule.org
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	makedepends = boost
 	depends = wxgtk2
+	depends = gd
 	depends = geoip
 	depends = crypto++
 	conflicts = amule
-	source = git://repo.or.cz/amule.git#tag=amule-svn-r11066
-	md5sums = SKIP
+	source = https://download.sourceforge.net/project/amule/aMule/2.3.3/aMule-2.3.3.tar.gz
+	sha256sums = fa85a054153c9787fce2d35a5c5590a3d390429b8fa0c5d8f9ea69e9904c7b72
 
 pkgname = amule-remote-tools
-

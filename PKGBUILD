@@ -6,20 +6,21 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=amule-remote-tools
-pkgver=11066
+epoch=1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="aMule Remote Tools CLI and GUI"
 arch=('x86_64')
 url="http://www.amule.org"
 license=('GPL')
 conflicts=('amule')
-depends=('wxgtk2' 'geoip' 'crypto++')
-makedepends=('git' 'boost')
-source=("git://repo.or.cz/amule.git#tag=amule-svn-r$pkgver")
-md5sums=('SKIP')
+depends=('wxgtk2' 'gd' 'geoip' 'crypto++')
+makedepends=('boost')
+source=("https://download.sourceforge.net/project/amule/aMule/$pkgver/aMule-$pkgver.tar.gz")
+sha256sums=('fa85a054153c9787fce2d35a5c5590a3d390429b8fa0c5d8f9ea69e9904c7b72')
 
 build() {
-  cd amule
+  cd aMule-$pkgver
 
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
