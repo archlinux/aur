@@ -1,0 +1,119 @@
+From 9f11efab0720f77d52ae3151304b9a179bd6bdaa Mon Sep 17 00:00:00 2001
+From: unifreq <flippy@sina.com>
+Date: Fri, 3 Sep 2021 14:12:58 +0800
+Subject: [PATCH] Apply rk3328-dtsi-mmc-vdec-usb3-tweaks.patch
+
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 42 +++++++++++++++++++-----
+ 1 file changed, 34 insertions(+), 8 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 9d52156a7..a07e10c38 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -330,6 +330,10 @@ power-domain@RK3328_PD_HEVC {
+ 			};
+ 			power-domain@RK3328_PD_VIDEO {
+ 				reg = <RK3328_PD_VIDEO>;
++				clocks = <&cru ACLK_RKVDEC>,
++					<&cru HCLK_RKVDEC>,
++					<&cru SCLK_VDEC_CABAC>,
++					<&cru SCLK_VDEC_CORE>;
+ 				#power-domain-cells = <0>;
+ 			};
+ 			power-domain@RK3328_PD_VPU {
+@@ -696,6 +700,7 @@ rkvdec_mmu: iommu@ff360480 {
+ 		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
++		power-domains = <&power RK3328_PD_VIDEO>;
+ 		status = "disabled";
+ 	};
+ 
+@@ -926,6 +931,8 @@ sdmmc: mmc@ff500000 {
+ 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+ 		fifo-depth = <0x100>;
+ 		max-frequency = <150000000>;
++		resets = <&cru SRST_MMC0>;
++		reset-names = "reset";
+ 		status = "disabled";
+ 	};
+ 
+@@ -938,6 +945,8 @@ sdio: mmc@ff510000 {
+ 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+ 		fifo-depth = <0x100>;
+ 		max-frequency = <150000000>;
++		resets = <&cru SRST_SDIO>;
++		reset-names = "reset";
+ 		status = "disabled";
+ 	};
+ 
+@@ -950,6 +959,8 @@ emmc: mmc@ff520000 {
+ 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+ 		fifo-depth = <0x100>;
+ 		max-frequency = <150000000>;
++		resets = <&cru SRST_EMMC>;
++		reset-names = "reset";
+ 		status = "disabled";
+ 	};
+ 
+@@ -1067,25 +1078,41 @@ usb_host0_ohci: usb@ff5d0000 {
+ //		status = "disabled";
+ //	};
+ 
++	sdmmc_ext: dwmmc@ff5f0000 {
++		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
++		reg = <0x0 0xff5f0000 0x0 0x4000>;
++		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru HCLK_SDMMC_EXT>, <&cru SCLK_SDMMC_EXT>,
++			 <&cru SCLK_SDMMC_EXT_DRV>, <&cru SCLK_SDMMC_EXT_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
++		fifo-depth = <0x100>;
++		max-frequency = <150000000>;
++		resets = <&cru SRST_SDMMCEXT>;
++		reset-names = "reset";
++		status = "disabled";
++	};
++
+ 	usbdrd3: usb@ff600000 {
+ 		compatible = "rockchip,rk3328-dwc3", "rockchip,rk3399-dwc3";
+-		clocks = <&cru SCLK_USB3OTG_REF>, <&cru ACLK_USB3OTG>,
+-			 <&cru SCLK_USB3OTG_SUSPEND>;
+-		clock-names = "ref", "bus_early",
+-			      "suspend";
++		clocks = <&cru SCLK_USB3OTG_REF>, <&cru SCLK_USB3OTG_SUSPEND>,
++			 <&cru ACLK_USB3OTG>;
++		clock-names = "ref_clk", "suspend_clk",
++			      "bus_clk";
++		resets = <&cru SRST_USB3OTG>;
++		reset-names = "usb3-otg";
+ 		#address-cells = <2>;
+ 		#size-cells = <2>;
+ 		ranges;
+-		clock-ranges;
+ 		status = "disabled";
+ 
+ 		usbdrd_dwc3: dwc3@ff600000 {
+ 			compatible = "snps,dwc3";
+ 			reg = <0x0 0xff600000 0x0 0x100000>;
+ 			interrupts = <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru SCLK_USB3OTG_REF>, <&cru ACLK_USB3OTG>,
++				 <&cru SCLK_USB3OTG_SUSPEND>;
++			clock-names = "ref", "bus_early", "suspend";
+ 			dr_mode = "otg";
+-			phys = <&u3phy_utmi>, <&u3phy_pipe>;
+-			phy-names = "usb2-phy", "usb3-phy";
+ 			phy_type = "utmi_wide";
+ 			snps,dis_enblslpm_quirk;
+ 			snps,dis-u2-freeclk-exists-quirk;
+@@ -1093,7 +1120,6 @@ usbdrd_dwc3: dwc3@ff600000 {
+ 			snps,dis_u3_susphy_quirk;
+ 			snps,dis-del-phy-power-chg-quirk;
+ 			snps,dis-tx-ipgap-linecheck-quirk;
+-			snps,xhci-trb-ent-quirk;
+ 			status = "disabled";
+ 		};
+ 	};
+-- 
+2.33.0
+

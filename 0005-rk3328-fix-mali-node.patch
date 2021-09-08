@@ -1,0 +1,25 @@
+From ae7e454cd93e20f05ccecd470328b90370e7b86c Mon Sep 17 00:00:00 2001
+From: unifreq <flippy@sina.com>
+Date: Fri, 3 Sep 2021 14:13:41 +0800
+Subject: [PATCH] Apply rk3328-fix-mali-node.patch
+
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index a07e10c38..7e49d4683 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -627,7 +627,7 @@ saradc: adc@ff280000 {
+ 
+ 	gpu: gpu@ff300000 {
+ 		compatible = "rockchip,rk3328-mali", "arm,mali-450";
+-		reg = <0x0 0xff300000 0x0 0x40000>;
++		reg = <0x0 0xff300000 0x0 0x30000>;
+ 		interrupts = <GIC_SPI 90 IRQ_TYPE_LEVEL_HIGH>,
+ 			     <GIC_SPI 87 IRQ_TYPE_LEVEL_HIGH>,
+ 			     <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH>,
+-- 
+2.33.0
+
