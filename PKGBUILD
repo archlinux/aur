@@ -2,7 +2,7 @@
 
 pkgname=quake4
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Quake 4 Engine. You need the retail .pk4 files to play."
 url="https://web.archive.org/web/20061205073314/http://www.idsoftware.com/games/quake/quake4/"
 license=('custom:"Quake 4"' \
@@ -13,12 +13,13 @@ optdepends_x86_64=('lib32-nvidia-utils: Accelerated 3D with the NVIDIA binary bl
 depends_i686=('gcc-libs' 'libgl' 'sdl' 'zlib')
 arch=('i686' 'x86_64')
 install=quake4.install
-source=('quake4.desktop' 'quake4.launcher' 'quake4-dedicated.launcher' 'quake4-smp.launcher' \
+source=('quake4.desktop' 'quake4.launcher' 'quake4-dedicated.launcher' 'quake4-smp.launcher' 'quake4.png' \
         "http://www.slashbunny.com/aur/quake4/quake4-linux-${pkgver}.x86.run")
 sha256sums=('8d2ff5eb71ebf7ffef321097bc74e97755e5e510985df75863dd22cdf5a3ec2e'
             '667992139f08d3496c96ac02d15b830370ae14bcc15cc8e65ded4c58036d3f23'
             'cfb3353c8c9d8be8a9a32ba05a48dca7c2125cef20159b85de7135c78a950e73'
             '62ba170609ca961430e39f7a24e23e1a3b28376e42f779e7e28714868d7758d1'
+            '8bb8443f1f95e399ed16f8ae5c56a580185958d49ec1c8ecb29931bcbaa1bf79'
             '9203b387b1a4075a1b9ad1eb7be32b49a88141a448d9330d9cbe1f40a145bd6a')
 
 package() {
@@ -75,6 +76,9 @@ package() {
         "${pkgdir}/usr/share/applications/quake4.desktop"
 
     # Install Icon File
-    install -D -m 644 "${pkgdir}/opt/quake4/q4icon.bmp" \
-        "${pkgdir}/usr/share/pixmaps/quake4.bmp"
+    install -D -m 644 "${srcdir}/quake4.png" \
+        "${pkgdir}/usr/share/pixmaps/quake4.png"
+
+    # Remove breaking local libraries
+    rm ${pkgdir}/opt/quake4/{libgcc_s.so.1,libstdc++.so.6}
 }
