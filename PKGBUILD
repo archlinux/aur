@@ -1,12 +1,13 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Scott Garrett <Wintervenom@archlinux.us>
 
 pkgname=dmenfm
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple dmenu-based file manager."
-url="http://wintervenom.mine.nu"
-arch=('i686' 'x86_64')
+url="https://github.com/keenerd/dmenfm"
+arch=('any')
 license=('GPL')
 depends=('dmenu')
 makedepends=('git')

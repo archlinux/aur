@@ -1,10 +1,9 @@
 pkgbase = dmenfm
 	pkgdesc = A simple dmenu-based file manager.
 	pkgver = 0.1.2
-	pkgrel = 1
-	url = http://wintervenom.mine.nu
-	arch = i686
-	arch = x86_64
+	pkgrel = 2
+	url = https://github.com/keenerd/dmenfm
+	arch = any
 	license = GPL
 	makedepends = git
 	depends = dmenu
@@ -12,4 +11,3 @@ pkgbase = dmenfm
 	md5sums = SKIP
 
 pkgname = dmenfm
-
