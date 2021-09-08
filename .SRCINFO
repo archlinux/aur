@@ -1,0 +1,14 @@
+pkgbase = python-pypcap
+	pkgdesc = Find the system include paths for clang and gcc based c/c++ compilers
+	pkgver = 1.2.3.1
+	pkgrel = 1
+	url = https://github.com/vpiserchia/pypcap
+	arch = x86_64
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	depends = libpcap
+	source = https://github.com/vpiserchia/pypcap/archive/refs/tags/v1.2.3.1.tar.gz
+	sha256sums = 2b77b641c5bad8993d0d0b4f012cff0872ed235a036e9abf10e5eddf7c2362e8
+
+pkgname = python-pypcap
