@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=verco
-pkgver=6.2.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc="A simple Git/Mercurial/PlasticSCM tui client based on keyboard shortcuts"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('git: support for git repositories'
             'mercurial: support for mercurial repositories')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f0e9c058d09dd2a2a958d87bf666c9f2de92a9b99f35f84e88436360a4ecf80c42f8286843312acb368322030bddf1a41429f871ab3d69801e257545b6638f1f')
+sha512sums=('380742258b7f9a892ff0b9ac3a7523ac10fd7a4997d800ce6ac4d42f829c0f1cb254992c32e62800e06d43c3ee85d8dfcc31e22148f97240a9bd59f5302403bd')
 
 prepare() {
   cd "$pkgname-$pkgver"
