@@ -5,7 +5,7 @@
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
 pkgver=5.7.0
-pkgrel=8
+pkgrel=9
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -18,7 +18,7 @@ license=(Apache)
 # the executable matches the package name (as of 2020-11-15).
 _electron='electron12'
 depends=($_electron)
-makedepends=(git nvm python python2)
+makedepends=(expac git nvm python python2)
 source=("git+https://github.com/meetfranz/$pkgname#tag=v$pkgver"
         franz.desktop
         franz.sh.in)
