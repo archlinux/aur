@@ -1,3 +1,19 @@
+2021.9.5:
+- command line support, issue #135.
+- [new feature] ability to use "custom video extractors" under setting folder/extractors
+- enhance auto segmentation.
+- handle keyboard interrupt e.g. "ctr-c" properly.
+- add 2 themes by @ahmed-tasaly, (White_BlueCryola, and White & Black)
+- fixes for segment progressbar.
+- [GUI-playlist window], add download later option, and total size for selected videos.
+- [GUI] control "os notification" from settings tab.
+- [GUI] organize settings tab.
+- imporove "resume" logic.
+- fix autocheck for update.
+- remove remote dns option and add socks4a, socks5h schemes, issue #269
+- [GUI] add option to import urls from a file in "batch download window"
+- cleanup and various bug fixes.
+
 2021.7.26:
 - [hot fix for 2021.7.25 release] fix webpage_url error when resuming download item.
 
