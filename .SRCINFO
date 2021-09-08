@@ -1,6 +1,6 @@
 pkgbase = shellcaster
 	pkgdesc = ncurses-based TUI podcast manager
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/jeff-hughes/shellcaster
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = shellcaster
 	depends = sqlite>=3.23.0
 	depends = openssl>=1.1.0
 	backup = etc/shellcaster/config.toml
-	source = shellcaster-1.2.0.tar.gz::https://github.com/jeff-hughes/shellcaster/archive/v1.2.0.tar.gz
-	sha256sums = 560c9baedb4f4d6aa3f2f8d45621073b7b128cf06b44f0e9c31d8169f1fc7555
+	source = shellcaster-1.2.1.tar.gz::https://github.com/jeff-hughes/shellcaster/archive/v1.2.1.tar.gz
+	sha256sums = 157f6c3be9831a668c74cc433ac5a8ff0c0a80a91b60bf1e7d60b7abe89d4aa4
 
 pkgname = shellcaster
-
