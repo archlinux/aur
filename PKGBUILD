@@ -1,7 +1,7 @@
 # Maintainer: Vlad Vasiliu <vladvasiliun@yahoo.fr>
 pkgname=copilot-cli-bin
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Your toolkit for containerized applications on AWS.'
 arch=('aarch64' 'x86_64')
 url='https://aws.github.io/copilot-cli/'
