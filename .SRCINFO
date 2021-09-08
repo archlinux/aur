@@ -1,6 +1,6 @@
 pkgbase = alacritty-themes
-	pkgdesc = A utility for choosing and applying Alacritty terminal themes.
-	pkgver = 3.1.0
+	pkgdesc = A cross-platform GPU-accelerated Terminal emulator.
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/rajasegar/alacritty-themes
 	arch = any
@@ -8,9 +8,8 @@ pkgbase = alacritty-themes
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = alacritty-themes-3.1.0.tgz
-	source = https://registry.npmjs.org/alacritty-themes/-/alacritty-themes-3.1.0.tgz
-	md5sums = ddf0def67624656e4f0b6d964ee5282f
+	noextract = alacritty-themes-4.1.1.tgz
+	source = https://registry.npmjs.org/alacritty-themes/-/alacritty-themes-4.1.1.tgz
+	b2sums = 2dd1247ab59f5af74436b8643dedf5b679b063a869d6c70e1925f76aa856c907d77452f179ff5c810e6c8b46bc911da0833a8e63c8849d98a25681cc1f64bcc7
 
 pkgname = alacritty-themes
-
