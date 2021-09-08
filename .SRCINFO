@@ -1,0 +1,17 @@
+pkgbase = cubbit-appimage
+	pkgdesc = Cubbit file-sync application - this package always fetches the latest and greatest, reinstall periodically to update to the latest version
+	pkgver = latest
+	pkgrel = 1
+	url = https://www.cubbit.io/
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = libxss
+	depends = libxtst
+	provides = cubbit
+	options = !strip
+	source = https://get.cubbit.io/desktop/linux/Cubbit-9.0.1.AppImage
+	sha256sums = SKIP
+
+pkgname = cubbit-appimage
