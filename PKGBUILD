@@ -5,7 +5,7 @@
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
 pkgver=5.7.0
-pkgrel=7
+pkgrel=8
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -13,12 +13,12 @@ arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
 # Allow to easily switch between Electron versions.
-# Expected one is 'electron10' (Electron 10). May change soon.
+# Expected one is 'electron12' (Electron 12). May change soon.
 # This is automatically replaced in `franz.sh` with the package name, as
 # the executable matches the package name (as of 2020-11-15).
 _electron='electron12'
 depends=($_electron)
-makedepends=(expac git nvm python python2)
+makedepends=(git nvm python python2)
 source=("git+https://github.com/meetfranz/$pkgname#tag=v$pkgver"
         franz.desktop
         franz.sh.in)
@@ -88,8 +88,9 @@ package() {
 
   # Point the proper Electron package version, so that people can complain when it's updated.
   # This is for extra safety & reminds me of upgrading the package.
-  electron_version="`expac %v $_electron | cut -d'-' -f1`"
-  depends=("${_electron}=${electron_version}")
+  # Keeping this here if I'll switch back to `electron`, which is more unstable.
+  #electron_version="`expac %v $_electron | cut -d'-' -f1`"
+  #depends=("${_electron}=${electron_version}")
 
   # Install the .asar files
   install -dm 755 "$pkgdir/usr/lib/$pkgname"
