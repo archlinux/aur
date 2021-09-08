@@ -7,7 +7,7 @@
 
 pkgname=p7zip
 pkgver=17.04
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Command-line file archiver with high compression ratio"
 arch=('x86_64')
@@ -17,14 +17,19 @@ depends=('gcc-libs' 'sh')
 source=(https://github.com/jinfeihan57/p7zip/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
         oemcp-iconv.patch::https://github.com/jinfeihan57/p7zip/commit/c104127e6a93.patch
         oemcp-cygwin.patch::https://github.com/jinfeihan57/p7zip/commit/0e0a1a8316b6.patch
-        oemcp-apple.patch::https://github.com/jinfeihan57/p7zip/commit/334a01e3f8bc.patch)
+        oemcp-apple.patch::https://github.com/jinfeihan57/p7zip/commit/334a01e3f8bc.patch
+        do-not-gzip-man-pages.patch)
 sha256sums=('ea029a2e21d2d6ad0a156f6679bd66836204aa78148a4c5e498fe682e77127ef'
             '50f2068124c1c6adc2d9ccf455e9816eccd39d31920b953ab8fcb853232d452c'
             '789789216ca46e5ea9b6780e353f964a1f46e9a2bcaa6b16413adcf9a89eb374'
-            'dfe1a625f80078c3ec68038f0aae8ba3a82ea96d0aeb97cb3586dc7fb3ef9650')
+            'dfe1a625f80078c3ec68038f0aae8ba3a82ea96d0aeb97cb3586dc7fb3ef9650'
+            '2179e67764eb46cb414ce9b5c978a532a6499617a6a685deb323b6da122aba00')
 
 prepare() {
   cd $pkgname-$pkgver
+
+  # Leave man page compression to makepkg to maintain reproducibility
+  patch -Np1 -i ../do-not-gzip-man-pages.patch
 
   # https://github.com/jinfeihan57/p7zip/issues/112
   patch -Rp1 -i ../oemcp-apple.patch
