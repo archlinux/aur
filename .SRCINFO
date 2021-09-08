@@ -1,7 +1,7 @@
 pkgbase = touche
 	pkgdesc = The desktop application to configure Touchégg
-	pkgver = 1.0.6
-	pkgrel = 5
+	pkgver = 1.0.7
+	pkgrel = 1
 	url = https://github.com/JoseExposito/touche
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = touche
 	depends = gtk3
 	depends = touchegg
 	provides = libtouche.so
-	source = touche-1.0.6.tar.gz::https://github.com/JoseExposito/touche/archive/1.0.6.tar.gz
-	sha256sums = 116ecdd03070c55444f3d90263d7504a132c70ba4730a6d2fd6fd936c16b9fed
+	source = touche-1.0.7.tar.gz::https://github.com/JoseExposito/touche/archive/1.0.7.tar.gz
+	sha256sums = d711512971f1a832e316ecf10515ca1845ee2597be9538419f8c7e79cc87b7b2
 
 pkgname = touche
