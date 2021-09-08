@@ -1,0 +1,12 @@
+pkgbase = eitaa-bin
+	pkgdesc = Official Desktop version of Eitaa messaging app - Static binaries
+	pkgver = 3.0.12
+	pkgrel = 1
+	url = https://eitaa.com
+	arch = x86_64
+	license = Custom
+	provides = Eitaa
+	source_x86_64 = eitaa-bin-v3.0.12.tar.xz::https://eitaa.com/dl/linux
+	sha256sums_x86_64 = 24792d51851545118df14b6118a3f4ef238fd8f783dfee0e461c1bffa3cc22b8
+
+pkgname = eitaa-bin
