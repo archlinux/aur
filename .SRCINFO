@@ -1,23 +1,25 @@
 pkgbase = python-pysynphot
 	pkgdesc = Python Synthetic Photometry Utilities
-	pkgver = 1.0.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://pysynphot.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python-pytest-astropy-header
 	makedepends = python-setuptools-scm
 	makedepends = python-astropy
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
-	makedepends = graphviz
 	makedepends = python-beautifulsoup4
-	source = https://files.pythonhosted.org/packages/source/p/pysynphot/pysynphot-1.0.1.tar.gz
-	md5sums = 7001d298e310c17aa3f5bfe638ed9cf4
+	makedepends = graphviz
+	source = https://files.pythonhosted.org/packages/source/p/pysynphot/pysynphot-2.0.0.tar.gz
+	md5sums = 967a07ffa027ad5684d626a531e7164f
 
 pkgname = python-pysynphot
-	depends = python-numpy>=1.9
-	depends = python-astropy>=1.1
+	depends = python-astropy
+	depends = python-beautifulsoup4
+	depends = python-six
 	optdepends = python-matplotlib: Plotting support
 	optdepends = python-pysynphot-doc: Documentation for PySynphot
 
