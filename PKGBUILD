@@ -2,8 +2,8 @@
 
 pkgname=python-pypcap
 pkgver=1.2.3.1
-pkgrel=1
-pkgdesc="Find the system include paths for clang and gcc based c/c++ compilers"
+pkgrel=2
+pkgdesc="Python libpcap module"
 arch=('x86_64')
 url="https://github.com/vpiserchia/pypcap"
 license=('custom')
