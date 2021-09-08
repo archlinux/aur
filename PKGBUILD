@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r2044.9b26d3a6
+pkgver=r2245.181779c6
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64')
@@ -23,7 +23,6 @@ makedepends=('git'
 source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/ocornut/imgui.git'
         'git+https://github.com/ocornut/imgui_club.git'
-        'git+https://github.com/grumpycoders/ImGuiColorTextEdit.git'
         'git+https://github.com/mateidavid/zstr.git'
         'git+https://github.com/grumpycoders/uC-sdk.git'
         'git+https://github.com/google/googletest.git'
@@ -40,9 +39,12 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/Distrotech/ucl.git'
         'git+https://github.com/gabomdq/SDL_GameControllerDB'
         'git+https://github.com/herumi/xbyak'
+        'git+https://github.com/nicolasnoble/zep'
+        'git+https://github.com/mackron/miniaudio.git'
         'pcsx-redux.sh'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -74,7 +76,6 @@ prepare() {
   git submodule init
   git config submodule.third_party/imgui.url "$srcdir/imgui"
   git config submodule.third_party/imgui_club.url "$srcdir/imgui_club"
-  git config submodule.third_party/ImGuiColorTextEdit.url "$srcdir/ImGuiColorTextEdit"
   git config submodule.third_party/zstr.url "$srcdir/zstr"
   git config submodule.third_party/uC-sdk.url "$srcdir/uC-sdk"
   git config submodule.third_party/googletest.url "$srcdir/googletest"
@@ -90,10 +91,11 @@ prepare() {
   git config submodule.third_party/ucl.url "$srcdir/ucl"
   git config submodule.third_party/SDL_GameControllerDB.url "$srcdir/SDL_GameControllerDB"
   git config submodule.third_party/xbyak.url "$srcdir/xbyak"
+  git config submodule.third_party/zep.url "$srcdir/zep"
+  git config submodule.third_party/miniaudio.url "$srcdir/miniaudio"
 
   git submodule update third_party/imgui \
                        third_party/imgui_club \
-                       third_party/ImGuiColorTextEdit \
                        third_party/zstr \
                        third_party/uC-sdk \
                        third_party/googletest \
@@ -108,7 +110,9 @@ prepare() {
                        third_party/magic_enum \
                        third_party/ucl \
                        third_party/SDL_GameControllerDB \
-                       third_party/xbyak
+                       third_party/xbyak \
+                       third_party/zep \
+                       third_party/miniaudio
 
   cd third_party/luv
   git submodule init
