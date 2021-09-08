@@ -6,4 +6,4 @@ Target = aria2cd
 [Action]
 Description = Warning user about manyally operations...
 When = PostTransaction
-Exec = /usr/bin/sh -c 'echo "You need to copy /usr/share/aria2/ to \${HOME}/.aria2/ or aria2c will not work correctly.";echo "\${HOME} is the home directory of the user who runs aria2c"'
+Exec = /usr/bin/sh -c 'echo "You need to copy /usr/share/aria2/ to \${HOME}/.aria2/ or aria2c will not work correctly.";echo "\${HOME} is the home directory of the user who runs aria2c";echo "You can also use \${XDG_CONFIG_HOME}/aria2/ instead of \${HOME}/.aria2/"'
