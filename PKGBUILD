@@ -2,7 +2,7 @@
 
 pkgname=etqw
 pkgver=1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Enemy Territory: Quake Wars is a commercial team and class-based multiplayer game. You need the retail DVD to play."
 arch=('i686' 'x86_64')
 url="https://zerowing.idsoftware.com/linux/etqw/ETQWFrontPage/index.html"
@@ -22,7 +22,6 @@ sha256sums=('79393825ab93bb9cecee69ad6ddafdaef3526bf9f757023325bfffc228ad920c'
             '74887f52f0a82fe241bd5a99a1287c26c3c52ef4314cf6720cf3f59c9ad3a62e'
             'ed85a82636aed87c54268d84f0f7e09a0a7a37b0def9415fd8791684c5e90288'
             '827395c5ad7bff36a8456f7f210ab43b8cc2b0d18e9f366d15ff4f11eacfc4c5')
-PKGEXT='.pkg.tar'
 
 package() {
     # Create Destination Directories
@@ -70,5 +69,8 @@ package() {
 
     # Create Directories for Retail Files
     install -d ${pkgdir}/opt/etqw/base/{megatextures,video}
+
+    # Remove breaking local libraries
+    rm ${pkgdir}/opt/etqw/{libgcc_s.so.1,libstdc++.so.6}
 }
 
