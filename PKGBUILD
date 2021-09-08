@@ -12,7 +12,7 @@
 
 pkgname=mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=21.2.0_devel.138224.f601fd635bb
+pkgver=21.3.0_devel.144574.20ec247cb8e
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -30,13 +30,14 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
                 'LICENSE'
+                "12715 - use hasParamAttr instead of hasAttribute.patch"
 )
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-)
+         '87cc71137f5fa8b686ff4f562dbf65d5')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-)
+            '47886f0916dbf68b5cad7cd6aacfc61955d1352bff9431b0958aa17b0280e18d03b3690be872f10156a1d206560b11cf8835446df82f118ffa138acd551e47b8')
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
 # this package uses the environment variable NINJAFLAGS to allow the user to change this behaviour
@@ -55,6 +56,7 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
+    patch --directory=mesa --forward --strip=1 --input="${srcdir}/12715 - use hasParamAttr instead of hasAttribute.patch"
 }
 
 build () {
