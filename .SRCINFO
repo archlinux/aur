@@ -1,0 +1,16 @@
+pkgbase = python-csnake
+	pkgdesc = C code generation helper package.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://gitlab.com/andrejr/csnake
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-numpy
+	optdepends = python-scipy
+	optdepends = python-pillow
+	source = https://files.pythonhosted.org/packages/source/c/csnake/csnake-0.3.4.tar.gz
+	sha256sums = 64b4cce88dfa370797ca815fc399354a62fec5bea2e1c07b2f721c1ea066a7bc
+
+pkgname = python-csnake
