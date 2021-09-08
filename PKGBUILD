@@ -2,7 +2,7 @@
 
 pkgname=cubbit
 pkgdesc='Cubbit desktop-sync application'
-pkgver=8.1.0
+pkgver=9.0.1
 pkgrel=1
 arch=('x86_64')
 url='https://www.cubbit.io/'
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gtk2' 'hicolor-icon-theme' 'libxss' 'libxtst')
 options=('!strip')
 source=("https://get.cubbit.io/desktop/linux/Cubbit-${pkgver}.AppImage")
-sha256sums=('56a2b3646bf31ab9124dff07ab6b1c39f576f9c6886b5502cdc38f667f61c50c')
+sha256sums=('04875a10db43e347eb9a59f5d89dac22c7491b06a7ae05b95edca5d063199b1c')
 
 prepare() {
   chmod +x Cubbit-${pkgver}.AppImage
@@ -37,7 +37,8 @@ package() {
   install -Dm644 "$srcdir"/squashfs-root/v8_context_snapshot.bin -t "$pkgdir"/usr/share/cubbit/
   install -Dm644 "$srcdir"/squashfs-root/vk_swiftshader_icd.json -t "$pkgdir"/usr/share/cubbit/
   install -Dm644 "$srcdir"/squashfs-root/locales/* -t "$pkgdir"/usr/share/cubbit/locales/
-  install -Dm644 "$srcdir"/squashfs-root/resources/* -t "$pkgdir"/usr/share/cubbit/resources
+  install -Dm644 "$srcdir"/squashfs-root/resources/app-update.yml -t "$pkgdir"/usr/share/cubbit/resources
+  install -Dm644 "$srcdir"/squashfs-root/resources/app.asar -t "$pkgdir"/usr/share/cubbit/resources
   install -Dm644 "$srcdir"/squashfs-root/swiftshader/* -t "$pkgdir"/usr/share/cubbit/swiftshader/
   
   install -d "$pkgdir"/usr/bin
