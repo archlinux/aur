@@ -37,6 +37,8 @@ source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_co
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
+            'a038b6d1c5c8dd5e80c1b6e24d650d616d1434486c5e86b270694b540449e3f3'
+            '4d5a9de5f629982b66a8a9ce3a8bb1c1dd76df1214f3a2d5e1c0621b475dfa7a'
             '33fc2be90935fa9b913cccde12677d7234763821d47d71edf3586034d7eece2d')
 
 pkgver() {
