@@ -1,7 +1,7 @@
 pkgbase = remarkable
 	pkgdesc = A free fully featured markdown editor for Linux.
 	pkgver = 1.87
-	pkgrel = 6
+	pkgrel = 7
 	url = http://remarkableapp.github.io
 	install = remarkable.install
 	arch = any
@@ -21,10 +21,11 @@ pkgbase = remarkable
 	optdepends = python-gtkspellcheck: Spellcheck (might cause problems)
 	source = https://github.com/jamiemcg/Remarkable/archive/v1.87.tar.gz
 	source = stable.patch::https://github.com/jamiemcg/Remarkable/compare/v1.87...mbloms:stable.patch
+	source = https://patch-diff.githubusercontent.com/raw/jamiemcg/Remarkable/pull/369.patch
 	source = remarkable.install
 	sha1sums = a492dc5d0a276f36846a99287ae93c02e22a5cd8
 	sha1sums = 8c052787c16a81b9d4c325d2270cdd3412951f6c
+	sha1sums = 0011947d35909e001e24b13f2f65d3e25061c9c2
 	sha1sums = bdbfb750df9e5fb3022f47a46a80555259628cd1
 
 pkgname = remarkable
-
