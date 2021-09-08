@@ -9,7 +9,6 @@ pkgbase = python-datetimerange
 	checkdepends = python-pytest-runner
 	checkdepends = python-pytz
 	makedepends = python-setuptools
-	depends = python3
 	depends = python>=3.6
 	depends = python-dateutil>=2.4.2
 	depends = python-dateutil<3

@@ -9,7 +9,6 @@ arch=('any')
 url='https://github.com/thombashi/DateTimeRange'
 license=('MIT')
 depends=(
-  'python3'
   'python>=3.6'
   'python-dateutil>=2.4.2'
   'python-dateutil<3'
