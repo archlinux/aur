@@ -1,6 +1,6 @@
 pkgbase = vim-clipboard
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor
-	pkgver = 8.2.2891
+	pkgver = 8.2.3412
 	pkgrel = 1
 	url = https://www.vim.org
 	arch = x86_64
@@ -17,26 +17,12 @@ pkgbase = vim-clipboard
 	makedepends = tcl
 	makedepends = pcre
 	makedepends = zlib
-	source = https://github.com/vim/vim/archive/v8.2.2891/vim-clipboard-8.2.2891.tar.gz
-	source = vimrc
-	source = archlinux.vim
-	source = vimdoc.hook
-	sha256sums = 3d0a424f637e4920dc514b124782d7e1f29a7b819031924989ca69e231ee686a
-	sha256sums = b16e85e457397ab2043a7ee0a3c84307c6b4eac157fd0b721694761f25b3ed5b
-	sha256sums = cc3d931129854c298eb22e993ec14c2ad86cc1e70a08a64496f5e06559289972
-	sha256sums = 8e9656934d9d7793063230d15a689e10455e6db9b9fe73afa0f294792795d8ae
-	sha512sums = a16f73720925f59db305f149f5d9bdea9fb2a4a993e7c07d4e83fdca5617ebb17b2e63b77a0d2ea05f8014f14edb0a41e6be633d848b81fce36162a45c23ccca
-	sha512sums = 4b5bed0813f22af9e158ea9aa56a4a9862dd786ba2d201f20159ccf652da6190164aaed0b6b7217d578f7b25c33a8adcc307bfcf3caa8d173a7ff29e2a00fee7
-	sha512sums = fe091d289d876f45319c898f6021ef86d6a238b540c225a279c46efc5c36fa7d868cd0cee73a111811c4be90df160f85340bb251be3a437727dbe5c699950363
-	sha512sums = a02ad0d66f300160911aeb81d8886c6c558436ac4ee3fcd161dd65c6b1e5d1f41b9005a7f5bb5ba68d57027fc1c8e43daabf055bd6207fb5a216a67f758df8d1
-
-pkgname = vim-clipboard
-	depends = vim-runtime=8.2.2891-1
+	depends = vim-runtime=8.2.3412-1
 	depends = gpm
 	depends = acl
 	depends = glibc
+	depends = libxt
 	depends = libgcrypt
-	depends = pcre
 	depends = zlib
 	optdepends = python2: Python 2 language support
 	optdepends = python: Python 3 language support
@@ -57,3 +43,8 @@ pkgname = vim-clipboard
 	replaces = vim-python3
 	replaces = vim-minimal
 	replaces = gvim
+	source = https://github.com/vim/vim/archive/v8.2.3412/vim-8.2.3412.tar.gz
+	sha256sums = 91f60e143860c6e7fc4d4b377c798de0cdbea98f3edd6035bf66694eeaa8bac8
+	sha512sums = 170e76440c06548440c921129da52b806468b97708dc0487029ffcaa83b73af1d2e4662328d3a8bee7b27c173447015b4356a413dcfd39bf9c11323e3b42a148
+
+pkgname = vim-clipboard
