@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-threaded_servers
-pkgver=2021
+pkgver=2021.9
 pkgrel=1
 pkgdesc='Threaded server modules (ThreadedHTTPSServer, ThreadedMulticastServer, Quickserve, Pacserve).'
 arch=(any)
@@ -9,16 +9,16 @@ url="https://xyne.archlinux.ca/projects/python3-threaded_servers"
 depends=(python3)
 optdepends=('avahi: Avahi support' 'pyalpm: required for the Pacserve module' 'python-dbus: Avahi support' 'python-gobject: Avahi support')
 source=(
-  https://xyne.archlinux.ca/projects/python3-threaded_servers/src/python3-threaded_servers-2021.tar.xz
-  https://xyne.archlinux.ca/projects/python3-threaded_servers/src/python3-threaded_servers-2021.tar.xz.sig
+  https://xyne.archlinux.ca/projects/python3-threaded_servers/src/python3-threaded_servers-2021.9.tar.xz
+  https://xyne.archlinux.ca/projects/python3-threaded_servers/src/python3-threaded_servers-2021.9.tar.xz.sig
 )
 sha512sums=(
-  b98bb5364280ee7e3696c267a48f26d9e9e7b0cc184a162b12bf6192a4b498c416a10f6565cc58ef8e511df6245fc1d064c352a4bba7bb494d29bf5d33b4af1f
-  604f616a1891289c0b81bcb5d943fdf8df08983f84215b17b3393b486f25d6b0022d00247c8174a6a768c539013c3a081fb76855d2b84e13abfe18e6b3f6326b
+  28a86c3db8305dba848d25e0bb9ebe87040b6c2815610b9a921c62d82a979f945c79679bebc9690109728482ee653275432c5e05b74965dce9545638f9f53145
+  be6e7b3244b05f54f2362befe4613b896fa10e50976d1a36605eaee3b8230328968199c997104d8f5b5c49aac3e1658380063c1c93eebc1c648f12ad41f0fd1a
 )
 md5sums=(
-  3731f51f997f0923cb183746a00756cd
-  acf3e0c025ecdf3434c59dd2e06d7400
+  aec14c7d0486d9841914e0d5ec7e5c17
+  e982d9dd77be7c71f1deabd7558138b6
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
