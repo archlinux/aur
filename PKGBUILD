@@ -2,14 +2,14 @@
 # Maintainer: Egidio Caprino <me@egidiocaprino.it>
 
 pkgname=dataloader
-pkgver=50.0.0
-pkgrel=4
+pkgver=53.0.0
+pkgrel=1
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
 arch=('i686' 'x86_64')
 url="https://developer.salesforce.com/page/Data_Loader"
 license=("GPL2")
 depends=('java-runtime>=1.11' 'gtk2' 'gtk-update-icon-cache')
-makedepends=('git' 'maven' 'java-environment-jdk>=1.11')
+makedepends=('git' 'maven' 'java-environment>=11')
 install=dataloader.install
 source=(dataloader.desktop dataloader.install dataloader.svg)
 source_i686=(git+https://github.com/forcedotcom/dataloader.git)
@@ -23,12 +23,15 @@ md5sums_x86_64=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   git checkout "tags/v$pkgver"
+  git submodule init
+  git submodule update
   echo "$pkgver"
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  mvn clean package -D skipTests
+  sudo archlinux-java set java-11-openjdk
+  mvn clean package -D skipTests -D targetOS=linux_x86_64
 }
 
 package() {
