@@ -7,7 +7,7 @@
 
 pkgname=p7zip
 pkgver=17.04
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Command-line file archiver with high compression ratio"
 arch=('x86_64')
