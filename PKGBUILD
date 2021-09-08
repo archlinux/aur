@@ -2,8 +2,8 @@
 
 _pyname=taskflow
 pkgname=python-$_pyname
-pkgver=4.6.1
-pkgrel=2
+pkgver=4.6.2
+pkgrel=1
 pkgdesc="Taskflow structured state management library."
 arch=(any)
 url="https://docs.openstack.org/taskflow/latest/"
@@ -60,9 +60,9 @@ optdepends=(
 	python-psycopg2
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('15f5bd3206151c0340fb52b01ec47f51')
-sha256sums=('96f114b7d190529860110f4252fb171fa1cb67c74671069bafe08c3aae4362cc')
-sha512sums=('a098b272125e32ae186430398cb42dc3bccf5974eb3cefdc8fb34df17a4083d6e06d47e1606d690ea48c5335504352acc0a795d892403ca7fd755bcca6df7a04')
+md5sums=('27ea693e859ccf5f7730ff082e2fa687')
+sha256sums=('84b549ca8eb2f4b1cceac99944382824690b110dd9dac5653b738f9aa5e7e3ba')
+sha512sums=('4d674bce5e7f394e812fe9d68687b8f9525ade03dfa79a5573bccab1b4d51eed3a438802712b0377cdd81f848f55a36d39bab3d2b60652ad6bf20b1715a0af12')
 
 export PBR_VERSION=$pkgver
 
