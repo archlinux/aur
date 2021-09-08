@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=solarmeter
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Read energy from ABB Aurora inverter"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver::git+https://github.com/ahpohl/solarmeter.git#tag=v${p
 noextract=()
 sha256sums=('SKIP'
             '8c96a8c940a94b8b86312873ad93a2f2a01a2e1e9dbc52b074b04375189dc26b'
-            '2135d760f07b40935a77b010446209cffc14cf3883f292cbed1e98c0094c1bbb')
+            '094505f8abb0a131186785ccd929050002d5741ed6d290794e94450a7ecaf5a3')
 validpgpkeys=()
 
 build() {
