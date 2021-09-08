@@ -2,11 +2,11 @@
 pkgname=cni-bin
 pkgdesc="Standardised container networking interface"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7h' 'armv7l')
 url="https://www.cni.dev/"
 license=('apache')
-conflicts=('cni')
+conflicts=('cni' 'cni-plugins')
 provides=("cni=${pkgver}")
 source=()
 sha256sums=()
@@ -34,4 +34,6 @@ package() {
   install -Dm755 "${srcdir}/"* "${pkgdir}/opt/cni/bin/."
   # also deposit bins in alternate possible location
   install -Dm755 "${srcdir}/"* "${pkgdir}/usr/lib/cni"
+  # please ensure kubelet args point to one of these two directories preferably the first
+  # I.E the file `/etc/kubernetes/kubelet.env` should contain something like: KUBELET_ARGS=--cni-bin-dir=/opt/cni/bin
 }
