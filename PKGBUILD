@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('ffmpeg' 'gtk4' 'gst-plugins-good' 'libadwaita')
 makedepends=('cargo' 'meson')
 checkdepends=('appstream-glib')
-source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+source=("https://gitlab.gnome.org/YaLTeR/video-trimmer/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('09bb259459ed357a760c2b267d4703561d1759181ad6b893df31b1221856be86')
 
 prepare() {
