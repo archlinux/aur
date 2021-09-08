@@ -100,8 +100,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
-#        "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
-        "${_patchsource}/fixes-miscellaneous-v2/0001-fixes-miscellaneous.patch"
+        "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
+        "${_patchsource}/fixes-miscellaneous-v3/0001-fixes-miscellaneous.patch"
         "${_patchsource}/futex-zen-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-zen-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
@@ -526,7 +526,7 @@ package_linux-cacule-rdb-llvm-headers() {
 }
 
 md5sums=('e111bd84156ac6b19568a495eed46400'
-         '6fa10abe24db00d79c7a46020f68f1e7'
+         '1c0a09a4686636c79fbc0237a7a6ed3f'
          'cf26387aadf2a90428350ac246b070c9'
          '024a0126cfcd18e000a2241f35c4d69e'
          'a804260e2f301ffe2a17d6e3625a9711'
@@ -537,7 +537,8 @@ md5sums=('e111bd84156ac6b19568a495eed46400'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
-         '719316cce732595270043577fe48c8e7'
+         'c504817d4e1659d0bc5d2c4c8a5465e0'
+         'f2d0397fa97df4590cfc54964b354478'
          '0849b25513dc47e3defa00f26f60eedb'
          '2891eb036469d04995d9b21a5e389d8a'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
