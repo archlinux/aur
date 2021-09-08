@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 pkgname=python-kintree
 _name=${pkgname#python-}
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
@@ -10,6 +10,7 @@ depends=(
     'python-digikey-api'
     'python-fuzzywuzzy'
     'python-inventree'
+    'python-mouser'
     'python-multiprocess'
     'python-pysimplegui'
     'python-pyaml'
