@@ -180,7 +180,7 @@ prepare() {
 		third_party/libxml/chromium/*.cc
 
 	# Upstream fixes
-	patch -Np1 -i ../../extend-enable-accelerated-video-decode-flag.patch
+	# patch -Np1 -i ../../extend-enable-accelerated-video-decode-flag.patch
 	patch -Np1 -i ../../linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
 	patch -Np1 -i ../../linux-sandbox-fix-fstatat-crash.patch
 
@@ -188,7 +188,7 @@ prepare() {
 	patch -Np1 -i ../../sql-make-VirtualCursor-standard-layout-type.patch
 
 	# Fix build with FreeType 2.11 (patch from Gentoo)
-	patch -Np1 -i ../../chromium-freetype-2.11.patch
+	# patch -Np1 -i ../../chromium-freetype-2.11.patch
 
 	# Fixes for building with libstdc++ instead of libc++
 	patch -Np1 -i ../../patches/chromium-90-ruy-include.patch
