@@ -1,6 +1,6 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=simdjson
-pkgver=0.9.7
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A C++ library to see how fast we can parse JSON with complete validation."
 arch=('x86_64')
@@ -9,13 +9,20 @@ license=('APACHE')
 depends=(gcc-libs)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/simdjson/simdjson/archive/v$pkgver.tar.gz")
-sha256sums=('a21279ae4cf0049234a822c5c3550f99ec1707d3cda12156d331dcc8cd411ba0')
+sha256sums=('fe54be1459b37e88abd438b01968144ed4774699d1272dd47a790b9362c5df42')
 
 build() {
 	cd "$pkgname-$pkgver"
-	cmake . -DCMAKE_INSTALL_PREFIX="/usr/" -DSIMDJSON_JUST_LIBRARY=On
+	cmake . -DCMAKE_INSTALL_PREFIX="/usr/" -DBUILD_SHARED_LIBS=On
 	make
 }
+
+# Running tests requires enabling developer mode, which greatly increases the
+# required compilation, so we don't.
+# check() {
+# 	cd "$pkgname-$pkgver"
+# 	make test
+# }
 
 package() {
 	cd "$pkgname-$pkgver"
