@@ -1,0 +1,4 @@
+pkg/
+src/
+android-sdk-build-tools-30.0.3*
+build-tools*.zip
