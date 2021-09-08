@@ -4,7 +4,7 @@ _pyname=pyngus
 pkgbase=python-$_pyname
 pkgname=(python-$_pyname)
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Callback API implemented over Proton"
 arch=('any')
 url="https://github.com/kgiusti/pyngus"
@@ -13,9 +13,6 @@ makedepends=(
 	python
 	python-qpid-proton
 	python-setuptools
-	python2
-	python2-qpid-proton
-	python2-setuptools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
 md5sums=('e240e95cfe58adc45aaa92789e056152')
