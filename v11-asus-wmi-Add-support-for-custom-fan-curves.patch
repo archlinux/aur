@@ -1,84 +1,10 @@
-From patchwork Tue Sep  7 11:44:56 2021
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Patchwork-Submitter: "Luke D. Jones" <luke@ljones.dev>
-X-Patchwork-Id: 12478379
-Return-Path: <platform-driver-x86-owner@kernel.org>
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
-	aws-us-west-2-korg-lkml-1.web.codeaurora.org
-X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 282D1C433EF
-	for <platform-driver-x86@archiver.kernel.org>;
- Tue,  7 Sep 2021 11:45:17 +0000 (UTC)
-Received: from vger.kernel.org (vger.kernel.org [23.128.96.18])
-	by mail.kernel.org (Postfix) with ESMTP id 0E62461057
-	for <platform-driver-x86@archiver.kernel.org>;
- Tue,  7 Sep 2021 11:45:17 +0000 (UTC)
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S245145AbhIGLqU (ORCPT
-        <rfc822;platform-driver-x86@archiver.kernel.org>);
-        Tue, 7 Sep 2021 07:46:20 -0400
-Received: from out3-smtp.messagingengine.com ([66.111.4.27]:36451 "EHLO
-        out3-smtp.messagingengine.com" rhost-flags-OK-OK-OK-OK)
-        by vger.kernel.org with ESMTP id S244766AbhIGLqU (ORCPT
-        <rfc822;platform-driver-x86@vger.kernel.org>);
-        Tue, 7 Sep 2021 07:46:20 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
-        by mailout.nyi.internal (Postfix) with ESMTP id 8D6C65C00F5;
-        Tue,  7 Sep 2021 07:45:13 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute3.internal (MEProxy); Tue, 07 Sep 2021 07:45:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-        messagingengine.com; h=cc:content-transfer-encoding:date:from
-        :in-reply-to:message-id:mime-version:references:subject:to
-        :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-        fm3; bh=FsfPvr7s8SSUf97CFf2h+3JW28z6j2dKs3AFVp2NHgo=; b=eutqkN8A
-        Vo7ZTjH1zhMt+kYmJFwK/IzlvUyfjWNC5UygxVlLdCQdZedzhRM8TvQzcEUj0qlg
-        pZxKtbe0YZ2eO8sZQ7vt1whXyfLobq0cnbKVtHDiEjFMTVLPUDRrQvpJQqvxLQR1
-        TEs5tpQcdrOmj8+2W/AIEV/0W2aPvySMocpmXcm5OgM9HeRGdIsX7OTKXv+LtKa7
-        PS3pYJMCJW5I+CPlixF+beM5YNKUICp0griK8rt8jz0oKn+/3x6Z3KWgpGWUm+Jn
-        d1wWnjqYtr5eg6dH4ARGSaHAA2AADtR/wPO6IJXowGzU+RxNXa52NZ5YbLVfB14t
-        +spkgY/zWRYBUQ==
-X-ME-Sender: <xms:yVA3Yav4Asmd_btZlolpzcxL9iqlhTPzVzNgtEhUnSPW0PDzpB6ATA>
-    <xme:yVA3YfeeRxGwS_6Z7tsVkmgS2Sl-4Ig4J94qa3zpK-2MhPA01j_8twbgXY8zx4moA
-    cg0uppIwH27mgxzP00>
-X-ME-Received: 
- <xmr:yVA3YVzxZGlLtodAJTze9ikXjYojjOZx78JID7Dy3_0PZHpFRjww2AcAt-F_>
-X-ME-Proxy-Cause: 
- gggruggvucftvghtrhhoucdtuddrgedvtddrudefhedggeehucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgjfhgggfestdekre
-    dtredttdenucfhrhhomhepfdfnuhhkvgcuffdrucflohhnvghsfdcuoehluhhkvgeslhhj
-    ohhnvghsrdguvghvqeenucggtffrrghtthgvrhhnpedvteekvdeuhedthfeuudelheejie
-    fhvddtteelleeghfekhfeugfehgeekffdtheenucevlhhushhtvghrufhiiigvpedtnecu
-    rfgrrhgrmhepmhgrihhlfhhrohhmpehluhhkvgeslhhjohhnvghsrdguvghv
-X-ME-Proxy: <xmx:yVA3YVPYhh6GI1OA1xZ3m4AUaRYmmbHiz0Y0SU0dVu-3Imywxg_Cgw>
-    <xmx:yVA3Ya9xjMhYXcBnNrtzj0iouef_Vp_I9TT18SquVE8Dg1nevIpEmg>
-    <xmx:yVA3YdU9KqKEWKbCawLrcV4yfSV1Swqqp6I5oWZRB9y8zHKX1g39qw>
-    <xmx:yVA3YeZhj_TBRrbS-dRDI5gbApHOqOq6rtVDpt_oXRyQCVRdSwIxvg>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 7 Sep 2021 07:45:09 -0400 (EDT)
 From: "Luke D. Jones" <luke@ljones.dev>
 To: linux-kernel@vger.kernel.org
 Cc: hdegoede@redhat.com, pobrn@protonmail.com, hadess@hadess.net,
         linux@roeck-us.net, platform-driver-x86@vger.kernel.org,
         "Luke D. Jones" <luke@ljones.dev>
-Subject: [PATCH v10] asus-wmi: Add support for custom fan curves
-Date: Tue,  7 Sep 2021 23:44:56 +1200
-Message-Id: <20210907114456.65315-2-luke@ljones.dev>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210907114456.65315-1-luke@ljones.dev>
-References: <20210907114456.65315-1-luke@ljones.dev>
-MIME-Version: 1.0
-Precedence: bulk
-List-ID: <platform-driver-x86.vger.kernel.org>
-X-Mailing-List: platform-driver-x86@vger.kernel.org
+Subject: [PATCH v11] asus-wmi: Add support for custom fan curves
+Date: Wed,  8 Sep 2021 11:22:32 +1200
 
 Add support for custom fan curves found on some ASUS ROG laptops.
 
@@ -87,7 +13,8 @@ and GPU fans via two ACPI methods.
 
 This patch adds two pwm<N> attributes to the hwmon sysfs,
 pwm1 for CPU fan, pwm2 for GPU fan. Both are under the hwmon of the
-name `asus_custom_fan_curve`.
+name `asus_custom_fan_curve`. There is no safety check of the set
+fan curves - this must be done in userspace.
 
 The fans have settings [1,2,3] under pwm<N>_enable:
 1. Enable and write settings out
@@ -104,12 +31,12 @@ Notes:
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- drivers/platform/x86/asus-wmi.c            | 650 ++++++++++++++++++++-
+ drivers/platform/x86/asus-wmi.c            | 609 ++++++++++++++++++++-
  include/linux/platform_data/x86/asus-wmi.h |   2 +
- 2 files changed, 644 insertions(+), 8 deletions(-)
+ 2 files changed, 603 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index cc5811844012..abd4cd346272 100644
+index cc5811844012..15c01fad30a1 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -106,8 +106,17 @@ module_param(fnlock_default, bool, 0444);
@@ -314,7 +241,7 @@ index cc5811844012..abd4cd346272 100644
  
  	result = kstrtou8(buf, 10, &new_mode);
  	if (result < 0) {
-@@ -2043,6 +2174,497 @@ static ssize_t fan_boost_mode_store(struct device *dev,
+@@ -2043,6 +2174,456 @@ static ssize_t fan_boost_mode_store(struct device *dev,
  // Fan boost mode: 0 - normal, 1 - overboost, 2 - silent
  static DEVICE_ATTR_RW(fan_boost_mode);
  
@@ -467,31 +394,6 @@ index cc5811844012..abd4cd346272 100644
 +	return 0;
 +}
 +
-+static int fan_curve_verify(struct fan_curve_data *data)
-+{
-+	u8 prev_tmp = 0;
-+	u8 tmp = 0;
-+	int i = 0;
-+
-+	for (i = 0; i < FAN_CURVE_POINTS; i++) {
-+		tmp = data->temps[i];
-+		if (tmp < prev_tmp)
-+			return -EINVAL;
-+		prev_tmp = tmp;
-+	}
-+
-+	tmp = 0;
-+	prev_tmp = 0;
-+	for (i = 0; i < FAN_CURVE_POINTS; i++) {
-+		tmp = data->percents[i];
-+		if (tmp < prev_tmp)
-+			return -EINVAL;
-+		prev_tmp = tmp;
-+	}
-+
-+	return 0;
-+}
-+
 +static ssize_t fan_curve_store(struct device *dev,
 +			       struct device_attribute *attr, const char *buf,
 +			       size_t count)
@@ -518,23 +420,7 @@ index cc5811844012..abd4cd346272 100644
 +		old_value = data->temps[index];
 +		data->temps[index] = value;
 +	}
-+	/*
-+	 * The check here forces writing a curve graph in reverse,
-+	 * from highest to lowest.
-+	 */
-+	err = fan_curve_verify(data);
-+	if (err) {
-+		if (pwm) {
-+			dev_err(dev,
-+				"a fan curve percentage was higher than the next in sequence\n");
-+			data->percents[index] = old_value;
-+		} else {
-+			dev_err(dev,
-+				"a fan curve temperature was higher than the next in sequence\n");
-+			data->temps[index] = old_value;
-+		}
-+		return err;
-+	}
++
 +	/*
 +	 * Mark as disabled so the user has to explicitly enable to apply a
 +	 * changed fan curve. This prevents potential lockups from writing out
@@ -812,7 +698,7 @@ index cc5811844012..abd4cd346272 100644
  /* Throttle thermal policy ****************************************************/
  
  static int throttle_thermal_policy_check_present(struct asus_wmi *asus)
-@@ -2053,8 +2675,8 @@ static int throttle_thermal_policy_check_present(struct asus_wmi *asus)
+@@ -2053,8 +2634,8 @@ static int throttle_thermal_policy_check_present(struct asus_wmi *asus)
  	asus->throttle_thermal_policy_available = false;
  
  	err = asus_wmi_get_devstate(asus,
@@ -823,7 +709,7 @@ index cc5811844012..abd4cd346272 100644
  	if (err) {
  		if (err == -ENODEV)
  			return 0;
-@@ -2092,6 +2714,12 @@ static int throttle_thermal_policy_write(struct asus_wmi *asus)
+@@ -2092,6 +2673,12 @@ static int throttle_thermal_policy_write(struct asus_wmi *asus)
  		return -EIO;
  	}
  
@@ -836,7 +722,7 @@ index cc5811844012..abd4cd346272 100644
  	return 0;
  }
  
-@@ -2904,7 +3532,7 @@ static int show_call(struct seq_file *m, void *data)
+@@ -2904,7 +3491,7 @@ static int show_call(struct seq_file *m, void *data)
  	if (ACPI_FAILURE(status))
  		return -EIO;
  
@@ -845,7 +731,7 @@ index cc5811844012..abd4cd346272 100644
  	if (obj && obj->type == ACPI_TYPE_INTEGER)
  		seq_printf(m, "%#x(%#x, %#x) = %#x\n", asus->debug.method_id,
  			   asus->debug.dev_id, asus->debug.ctrl_param,
-@@ -3038,6 +3666,10 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -3038,6 +3625,10 @@ static int asus_wmi_add(struct platform_device *pdev)
  	if (err)
  		goto fail_hwmon;
  
@@ -856,7 +742,7 @@ index cc5811844012..abd4cd346272 100644
  	err = asus_wmi_led_init(asus);
  	if (err)
  		goto fail_leds;
-@@ -3109,6 +3741,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -3109,6 +3700,7 @@ static int asus_wmi_add(struct platform_device *pdev)
  	asus_wmi_sysfs_exit(asus->platform_device);
  fail_sysfs:
  fail_throttle_thermal_policy:
@@ -864,7 +750,7 @@ index cc5811844012..abd4cd346272 100644
  fail_platform_profile_setup:
  	if (asus->platform_profile_support)
  		platform_profile_remove();
-@@ -3134,6 +3767,7 @@ static int asus_wmi_remove(struct platform_device *device)
+@@ -3134,6 +3726,7 @@ static int asus_wmi_remove(struct platform_device *device)
  	asus_wmi_debugfs_exit(asus);
  	asus_wmi_sysfs_exit(asus->platform_device);
  	asus_fan_set_auto(asus);

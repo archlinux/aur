@@ -110,7 +110,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "x86-ACPI-State-Optimize-C3-entry-on-AMD-CPUs.patch"                            # landing in 5.15
 
         # patch from Chromium developers; more accurately report battery state changes
-        "acpi-battery-Always-read-fresh-battery-state-on-update.patch"
+        "acpi-battery-Always-read-fresh-battery-state-on-update.patch"                  # ?
 
         # k10temp support for Zen3 APUs
         #"x86-amd_nb-Add-AMD-family-19h-model-50h-PCI-ids.patch"                        # included in 5.14
@@ -120,10 +120,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "asus-wmi-Add-panel-overdrive-functionality.patch"                              # landing in 5.15
         "asus-wmi-Add-dgpu-disable-method.patch"
         "asus-wmi-Add-egpu-enable-method.patch"
-        "HID-asus-Prevent-Claymore-sending-suspend-event.patch"
-        "HID-asus-Reduce-object-size-by-consolidating-calls.patch"
+        "HID-asus-Prevent-Claymore-sending-suspend-event.patch"                         # ?
+        "HID-asus-Reduce-object-size-by-consolidating-calls.patch"                      # ?
         "v5-asus-wmi-Add-support-for-platform_profile.patch"                            # landing in 5.15
-        "v10-asus-wmi-Add-support-for-custom-fan-curves.patch"                          # pending
+        "v11-asus-wmi-Add-support-for-custom-fan-curves.patch"                          # pending
 
         # mediatek mt7921 bt/wifi patches
         #"8010-Bluetooth-btusb-Fixed-too-many-in-token-issue-for-Me.patch"
@@ -163,7 +163,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'ec317cc2c2c8c1186c4f553fdd010adc013c37600a499802473653fd8e7564df'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
-            'd35c8954099aa63df8cbbd1b0e4657b90e7729f50eb4c07f8edfeabd35a51b98'
+            '4640313efcffe48dc182486e1f948679ad92c1a4871a2140c1d4624526453497'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
             'ea1d552f8fe6907e4fbd374842a655a9a64529e021c45d8459a0595c739e5cc6'
