@@ -1,18 +1,15 @@
 pkgbase = find-cursor
-	pkgdesc = Simple XLib program to highlight the cursor position.
-	pkgver = 1.6
-	pkgrel = 8
+	pkgdesc = Simple XLib program to highlight the cursor position in X11
+	pkgver = 1.7
+	pkgrel = 1
 	url = https://github.com/arp242/find-cursor
-	arch = any
-	groups = system
+	arch = x86_64
 	license = MIT
-	makedepends = xz
-	makedepends = pacman-contrib
-	depends = xorg-xrefresh
-	provides = find-cursor
-	conflicts = find-cursor
-	source = git+https://github.com/arp242/find-cursor.git
-	md5sums = SKIP
+	depends = libx11
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxrender
+	source = https://github.com/arp242/find-cursor/archive/refs/tags/v1.7.tar.gz
+	sha256sums = 4ee50e5bedae92eec6b0f88a0dc1a6e9b783d2c34207b9b08e50dc7af069d610
 
 pkgname = find-cursor
-
