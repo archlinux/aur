@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-espresso-git
-pkgver=r227.53bea6b
+pkgver=r233.60377d9
 pkgrel=1
 pkgdesc="Prevent auto suspend and screensaver functions (forked from caffeine)"
 arch=('any')
