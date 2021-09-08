@@ -2,7 +2,7 @@
 pkgname=python-kintree
 _name=${pkgname#python-}
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
 depends=(
@@ -21,7 +21,7 @@ makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c6ca99603024dfaed4189ca66e4ca8a4376be80b237d3cefd33de105f2158e0d')
+sha256sums=('c4a26387bd70893fd0b98cb3bfa0a1d3695aabcc9c7ff0129994dafee7ad7e1e')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
