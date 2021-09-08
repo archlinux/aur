@@ -1,9 +1,9 @@
 d /var/lib/gnunet 0700 gnunet gnunet - -
-z /usr/lib/gnunet/gnunet-helper-dns 4750 root gnunetdns - -
-z /usr/lib/gnunet/gnunet-service-dns 2750 gnunet gnunetdns - -
-z /usr/lib/gnunet/libexec/gnunet-helper-vpn 4750 root root - -
-z /usr/lib/gnunet/libexec/gnunet-helper-transport-wlan 4750 root root - -
-z /usr/lib/gnunet/libexec/gnunet-helper-transport-bluetooth 4750 root root - -
-z /usr/lib/gnunet/libexec/gnunet-helper-exit 4750 root root - -
-z /usr/lib/gnunet/libexec/gnunet-helper-nat-server 4750 root root - -
-z /usr/lib/gnunet/libexec/gnunet-helper-nat-client 4750 root root - -
+z /usr/lib/gnunet/libexec/gnunet-helper-dns 4750 root gnunetdns - -
+z /usr/lib/gnunet/libexec/gnunet-service-dns 2750 gnunet gnunetdns - -
+z /usr/lib/gnunet/libexec/gnunet-helper-exit 4755 root root - -
+z /usr/lib/gnunet/libexec/gnunet-helper-nat-client 4755 root root - -
+z /usr/lib/gnunet/libexec/gnunet-helper-nat-server 4755 root root - -
+z /usr/lib/gnunet/libexec/gnunet-helper-transport-bluetooth 4755 root root - -
+z /usr/lib/gnunet/libexec/gnunet-helper-transport-wlan 4755 root root - -
+z /usr/lib/gnunet/libexec/gnunet-helper-vpn 4755 root root - -
