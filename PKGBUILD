@@ -1,13 +1,13 @@
 # Maintainer: Viacheslav Chimishuk <vchimishuk@yandex.ru>
 pkgname=stardict-slang-eng-rus
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="English-Russian slang dictionary"
 arch=('i686' 'x86_64')
 url="http://stardict.sourceforge.net"
 license=('GPL')
 depends=('stardict')
-source=(http://downloads.sourceforge.net/xdxf/stardict-comn_sdict_axm05_eng_rus_slang-$pkgver.tar.bz2)
+source=(https://downloads.sourceforge.net/xdxf/stardict-comn_sdict_axm05_eng_rus_slang-$pkgver.tar.bz2)
 md5sums=('dd7464f82387e4b22f3553f1998debcd')
 
 package() {
