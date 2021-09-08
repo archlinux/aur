@@ -1,7 +1,7 @@
 pkgbase = steinberg-asio-sdk
 	pkgdesc = Steinberg's ASIO SDK
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.steinberg.net/en/company/developers.html
 	arch = any
 	license = custom
@@ -11,4 +11,3 @@ pkgbase = steinberg-asio-sdk
 	sha256sums = 1e044e26c3ce275ee08007d524e97ef5ab36e3aa5efbcb1e44844542d7c13ab2
 
 pkgname = steinberg-asio-sdk
-

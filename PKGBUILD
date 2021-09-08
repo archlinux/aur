@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=steinberg-asio-sdk
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Steinberg's ASIO SDK"
 url="https://www.steinberg.net/en/company/developers.html"
 arch=('any')
