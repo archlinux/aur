@@ -32,5 +32,6 @@ pkgbase = base-init-agnostic
 	depends = iputils
 	depends = iproute2
 	optdepends = linux: bare metal support
+	optdepends = shsysusers: systemd-sysusers functionality
 
 pkgname = base-init-agnostic

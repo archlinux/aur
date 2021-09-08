@@ -23,4 +23,7 @@ depends=(
   # networking, ping, etc
   'iputils' 'iproute2'
 )
-optdepends=('linux: bare metal support')
+optdepends=(
+	'linux: bare metal support'
+	'shsysusers: systemd-sysusers functionality'
+)
