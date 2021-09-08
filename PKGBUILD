@@ -2,7 +2,7 @@
 
 _pkgname='keira3'
 pkgname="${_pkgname}"
-pkgver=3.1.0
+pkgver=3.2.0
 _pkgver="${pkgver}"
 gitname="v${_pkgver}"
 pkgrel=1
