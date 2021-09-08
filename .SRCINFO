@@ -1,0 +1,11 @@
+pkgbase = ttf-fanwunhak
+	pkgdesc = A Simplified-Chinese-to-Traditional-Chinese font based on GenYoGothic, which can handle the one-to-many problem
+	pkgver = 1.007
+	pkgrel = 1
+	url = https://github.com/ayaka14732/FanWunHak
+	arch = any
+	license = custom:OFL-1.1
+	source = FanWunHak-Both-1.007.zip::https://github.com/ayaka14732/FanWunHak/releases/download/v1.007/FanWunHak-Both.zip
+	sha256sums = c88f74a4bf38ad4b763634d0a67a63e959c8e6bdceaafa615480ae9ed276799a
+
+pkgname = ttf-fanwunhak
