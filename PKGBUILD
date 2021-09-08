@@ -3,7 +3,7 @@
 
 pkgname=box64
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Userspace x86_64 Emulator with a twist'
 arch=('x86_64' 'aarch64')
 url='https://github.com/ptitSeb/box64'
@@ -38,7 +38,9 @@ package() {
       install -Dm755 box64 -t "${pkgdir}/usr/bin/"
     fi
 
-    # Install documentation (not yet in 0.1.2, but will be there for next release)
-    #install -d "${pkgdir}/usr/share/doc/${_pkgname}/"
-    #cp -R ../docs/* "${pkgdir}/usr/share/doc/${_pkgname}/"
+    install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+    # Install documentation
+    install -d "${pkgdir}/usr/share/doc/${pkgname}/"
+    cp -R ../docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
 }
