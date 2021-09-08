@@ -1,9 +1,9 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=2021
-_gromacsver=2021
-_plumedver=2.7.1
+pkgver=2021.3
+_gromacsver=2021.3
+_plumedver=2.7.2
 pkgrel=2
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
@@ -16,7 +16,7 @@ optdepends=('cuda: Nvidia GPU support'
 makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha256sums=('efa78ab8409b0f5bf0fbca174fb8fbcf012815326b5c71a9d7c385cde9a8f87b')
+sha256sums=('e109856ec444768dfbde41f3059e3123abdb8fe56ca33b1a83f31ed4575a1cc6')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
