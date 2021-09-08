@@ -15,10 +15,11 @@ conflicts=('quake3' 'quake3-icculus-svn' 'quake3-svn' 'ioquake3-svn')
 provides=('quake3' 'ioquake3')
 replaces=('quake3-icculus-svn' 'ioquake3-svn')
 install=quake3.install
-source=('quake3.desktop'
+source=('quake3.desktop' 'quake3.png'
 'http://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake3/linux/linuxq3apoint-1.32b-3.x86.run'
 'quake3::git+https://github.com/ioquake/ioq3.git')
 sha256sums=('12dbd31e9de1493642d120bfd1548dfc4935e47fec806003cfc04b9d84b85673'
+            '1ce9af6ee0055896c5e4ba07ccaa05da0809ea8d97f7b5ed9f7dda9127c6a8f7'
             'c36132c5556b35e01950f1e9c646235033a5130f87ad776ba2bc7becf4f4f186'
             'SKIP')
 
@@ -106,7 +107,7 @@ package() {
         "${pkgdir}/usr/share/applications/quake3.desktop"
 
     # Install Icon File
-    install -D -m 644 "${srcdir}/quake3/misc/quake3.png" \
+    install -D -m 644 "${srcdir}/quake3.png" \
         "${pkgdir}/usr/share/pixmaps/quake3.png"
 }
 
