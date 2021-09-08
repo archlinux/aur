@@ -3,8 +3,8 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio-git
-pkgver=0.8.9.8.r0.gd878cd3
-pkgrel=3
+pkgver=0.8.9.9.r4.g8a01a7f
+pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
 url="http://www.coderholic.com/pyradio/"
@@ -33,7 +33,7 @@ package() {
   cd $pkgname
 
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/pyradio/LICENSE"
-  install -Dm644 README.{html,md} build.{html,md} -t "$pkgdir/usr/share/doc/pyradio"
+  install -Dm644 *{html,md} -t "$pkgdir/usr/share/doc/pyradio"
   install -Dm644 pyradio{,_rb}.1 -t "$pkgdir/usr/share/man/man1"
 
   python setup.py install --root="$pkgdir" --optimize=1
