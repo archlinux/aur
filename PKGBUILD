@@ -1,7 +1,7 @@
 # Maintainer: Franck Lucien Duriez <franck.lucien.duriez@gmail.com>
 
 pkgname=nrfutil
-pkgver=6.1
+pkgver=6.1.2
 pkgrel=1
 pkgdesc="nrfutil command line utility and the nordicsemi library"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-pip')
 options=(!emptydirs)
 source=()
-sha256sums=()
+
 
 package() {
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir"/usr/lib/nrfutil-bundle --ignore-installed nrfutil==$pkgver
