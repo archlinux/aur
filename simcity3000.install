@@ -1,0 +1,3 @@
+post_install() {
+    echo "For sound support you need to enable osspd: 'sudo systemctl enable --now osspd'"
+}

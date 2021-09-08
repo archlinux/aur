@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SimCity 3000
+Comment=SimCity 3000 Unlimited GOG
+Exec=/usr/bin/simcity3000
+Icon=simcity3000-gog
+Terminal=false
+Type=Application
+Categories=Application;Game;
