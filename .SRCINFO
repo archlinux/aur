@@ -17,9 +17,8 @@ pkgbase = autosub-git
 	depends = python-googletrans
 	depends = python-google-cloud-speech
 	depends = python-levenshtein
-	optdepends = ffmpeg
 	optdepends = python-langcodes
-	optdepends = ffmpeg-normalize
+	optdepends = ffmpeg-normalize: for audio pre-processing
 	provides = autosub
 	source = autosub::git+https://github.com/BingLingGroup/autosub.git#branch=alpha
 	sha256sums = SKIP

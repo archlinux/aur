@@ -23,9 +23,8 @@ depends=(
          )
 makedepends=('python-setuptools' 'git')
 optdepends=(
-  'ffmpeg'
   'python-langcodes'
-  'ffmpeg-normalize'
+  'ffmpeg-normalize: for audio pre-processing'
 )
 source=("${pkgname%-git}::git+${url}.git#branch=alpha")
 sha256sums=('SKIP')
@@ -34,6 +33,7 @@ prepare() {
   cd ${srcdir}/autosub
   sed -i 's|auditok==|auditok>=|' setup.py
   sed -i 's|except DistributionNotFound|except|' autosub/constants.py
+  sed -i 's|sample_width=asource.get_sample_width(),|sample_width=2,channels=1,|' autosub/core.py
 }
 
 pkgver() {
