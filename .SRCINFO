@@ -27,6 +27,7 @@ pkgname = wps-office
 	depends = sqlite
 	depends = libtool
 	depends = libxslt
+	depends = qt5-base
 	optdepends = cups: for printing support
 	optdepends = libjpeg-turbo: JPEG image codec support
 	optdepends = pango: for complex (right-to-left) text support
