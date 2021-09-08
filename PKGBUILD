@@ -1,21 +1,40 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Sam L. Yes <samlukeyes123 at gmail dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=autosub-git
-pkgver=r81.d32389c
+pkgver=r241.919059f
 pkgrel=1
 pkgdesc='Command-line utility for auto-generating subtitles for any video file'
 arch=('any')
-url='https://github.com/agermanidis/autosub'
-license=('MIT')
+url='https://github.com/BingLingGroup/autosub'
+license=('GPL2')
 provides=('autosub')
-depends=('python-google-api-python-client'
+depends=(
+         'python-auditok'
+         'python-pysubs2'
+         'python-wcwidth'
+         'python-fuzzywuzzy'
+         'python-websocket-client'
          'python-requests'
-         'python-pysrt'
          'python-progressbar'
-         'python-six')
-makedepends=('python-setuptools')
-source=("${pkgname%-git}::git+https://github.com/agermanidis/autosub")
+         'python-googletrans'
+         'python-google-cloud-speech'
+         'python-levenshtein'
+         )
+makedepends=('python-setuptools' 'git')
+optdepends=(
+  'ffmpeg'
+  'python-langcodes'
+  'ffmpeg-normalize'
+)
+source=("${pkgname%-git}::git+${url}.git#branch=alpha")
 sha256sums=('SKIP')
+
+prepare() {
+  cd ${srcdir}/autosub
+  sed -i 's|auditok==|auditok>=|' setup.py
+  sed -i 's|except DistributionNotFound|except|' autosub/constants.py
+}
 
 pkgver() {
   cd autosub

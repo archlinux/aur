@@ -1,0 +1,5 @@
+autosub/
+src/
+pkg/
+*.log
+*.tar*
