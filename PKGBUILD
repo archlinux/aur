@@ -2,7 +2,7 @@
 
 _pkgbase=dogecoin
 pkgname=('dogecoin-daemon' 'dogecoin-cli' 'dogecoin-tx')
-pkgver=1.14.3
+pkgver=1.14.4
 pkgrel=1
 arch=('x86_64')
 url='https://dogecoin.com/'
@@ -11,7 +11,7 @@ license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgbase/$_pkgbase/archive/v$pkgver.tar.gz"
         'dogecoin.sysusers'
         'dogecoin.tmpfiles')
-sha256sums=('01039ad91adf7d2815ab07b45f751426e1c8e230f868dc878d4f5ff8aefeee47'
+sha256sums=('6b3a7579861d03b69b0f149e10d1396b713f4f8921eab935c7f7608a7b9cb6fb'
             'eae13ea082a6431bb9552b5bddd8d1a5100ba883540c1e520685272d4307ca7f'
             'eaf022a60cb3297a31148b047bd473eef5bb08ec011f6ed29869061a03342d94')
 validpgpkeys=('1DDC450B45DB5ADCCF5DDA7F8E4217C6D47D946D')
