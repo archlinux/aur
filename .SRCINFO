@@ -1,16 +1,15 @@
 pkgbase = texlive-usenix
 	pkgdesc = TeX Live - LaTeX package for USENIX conferences
-	pkgver = 1.2
+	pkgver = 2020.09.21
 	pkgrel = 1
-	url = http://www.usenix.org
+	url = https://www.usenix.org/conferences/author-resources/paper-templates
 	install = texlive.install
 	arch = any
 	license = GPL
 	depends = texlive-core
-	source = http://www.usenix.org/events/samples/usenix.sty
-	source = http://www.usenix.org/events/samples/template.la
-	sha256sums = 2f60e059b2bb7f75d67c9ecd1fe3ba494e5f342a44079678f5b7da569ce97157
-	sha256sums = 6f5de8be9143ce91ce99b508025d67624479b42ebdd6fd5afe715d4fda666677
+	source = https://www.usenix.org/sites/default/files/usenix-2020-09.sty
+	source = https://www.usenix.org/sites/default/files/usenix2019_v3.1.tex
+	sha256sums = 2278c83173e084a00fcf76d3227acb971f5137ecea993a5b4e13a9b2bd67b45e
+	sha256sums = c03672ffcc30db0e0dd86d99b022721278836ff994930d51a5f26cdf53377311
 
 pkgname = texlive-usenix
-
