@@ -5,7 +5,7 @@
 _pkgname=zNotes
 
 pkgname=znotes
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Lightweight crossplatform application for notes managment with simple interface"
 arch=('i686' 'x86_64')
@@ -13,8 +13,7 @@ url="http://znotes.sourceforge.net"
 license=('GPL')
 depends=('qt5-tools')
 source=(https://github.com/proton/zNotes/archive/refs/tags/${pkgver}.tar.gz)
-#md5sums=('SKIP')
-md5sums=('dd727c3888d9e618e1d29acacae723e7')
+md5sums=('f0d35e50bac515503ee13bce3eb480d0')
 
 #
 #

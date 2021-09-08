@@ -1,13 +1,13 @@
 pkgbase = znotes
 	pkgdesc = Lightweight crossplatform application for notes managment with simple interface
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = http://znotes.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt5-tools
-	source = https://github.com/proton/zNotes/archive/refs/tags/0.4.6.tar.gz
-	md5sums = dd727c3888d9e618e1d29acacae723e7
+	source = https://github.com/proton/zNotes/archive/refs/tags/0.4.7.tar.gz
+	md5sums = f0d35e50bac515503ee13bce3eb480d0
 
 pkgname = znotes
