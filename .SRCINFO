@@ -1,6 +1,6 @@
 pkgbase = python-pydeprecate
 	pkgdesc = Python module for deprecation documentation
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/Borda/pyDeprecate
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-pydeprecate
 	depends = python>=3.6
 	provides = python-pydeprecate
 	conflicts = python-pydeprecate
-	source = https://github.com/Borda/pyDeprecate/archive/v0.3.0/pyDeprecate-v0.3.0.tar.gz
+	source = https://github.com/Borda/pyDeprecate/archive/v0.3.2/pyDeprecate-v0.3.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-pydeprecate
-

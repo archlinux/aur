@@ -3,7 +3,7 @@ _name="pyDeprecate"
 _pkgname="pydeprecate"
 _repourl="https://github.com/Borda/$_name"
 pkgname=python-$_pkgname
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Python module for deprecation documentation"
 arch=('any')
@@ -17,13 +17,6 @@ makedepends=(
 	)
 source=("$_repourl/archive/v$pkgver/$_name-v$pkgver.tar.gz")
 sha256sums=('SKIP')
-
-pkgver() {
-	git ls-remote --tags --sort='v:refname' $_repourl \
-	| tail --lines=1 \
-	| cut --delimiter='/' --fields=3 \
-	| sed -e 's/v//'
-}
 
 package() {
 	cd ${srcdir}/$_name-$pkgver
