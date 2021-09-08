@@ -8,8 +8,8 @@ _lang=it
 pkgname=${_name}-${_channel}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=93.0a1
-pkgver=93.0a1
+_version=94.0a1
+pkgver=94.0a1
 pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -19,7 +19,7 @@ optdepends=('pulseaudio: supporto audio'
             'hunspell: controllo ortografico'
             'hyphen: sillabazione'
             'libnotify: integrazione per le notifiche'
-            'networkmanager: per determinare la geolocalizzazione attraverso le reti WiFi disponibili'
+            'networkmanager: per la geolocalizzazione attraverso le reti WiFi disponibili'
             'speech-dispatcher: text-to-speech')
 _url="https://download-installer.cdn.mozilla.net/pub/${_name}/${_channel}/latest-mozilla-central-l10n"
 _urlUS="https://download-installer.cdn.mozilla.net/pub/${_name}/${_channel}/latest-mozilla-central"
