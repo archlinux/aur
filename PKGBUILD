@@ -2,7 +2,7 @@
 # Contributor: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses-git
-pkgver=2.2.3
+pkgver=v2.4.0.r2.g36825374b
 pkgrel=1
 pkgdesc="Blingful TUI/character graphics library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
