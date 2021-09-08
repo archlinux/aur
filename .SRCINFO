@@ -1,6 +1,6 @@
 pkgbase = keyboard-center
 	pkgdesc = Application to map G-keys on (some) Logitech Gaming Keyboards
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/zocker-160/keyboard-center
 	install = keyboard-center.install
