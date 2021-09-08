@@ -1,0 +1,16 @@
+pkgbase = helium-ledger-cli
+	pkgdesc = Helium Application for Ledger
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/helium/helium-ledger-cli
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	makedepends = systemd
+	makedepends = cmake
+	makedepends = clang
+	source = https://github.com/helium/helium-ledger-cli/archive/refs/tags/v2.1.0.tar.gz
+	sha512sums = 08931f57360e2f0bd12a7f7f7d48bb8eedfb80753b41e2fc2e41369d2e9be2a6a11e2e4db88af3cd4bdb4ae191024852cfb7e84214e8b670d9c20a7b607fd61e
+
+pkgname = helium-ledger-cli
