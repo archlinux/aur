@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=mingw-w64-libxlsxwriter-git
-pkgver=0.7.5.r528.18c8cb6
+pkgver=1.1.3.r853.7f54faa
 pkgrel=1
 pkgdesc='A C library for creating Excel XLSX files (mingw-w64)'
 arch=('any')
@@ -18,7 +18,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 pkgver() {
   cd libxlsxwriter
-  echo "$(grep LXW_VERSION include/xlsxwriter.h | cut -d '"' -f2).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "$(grep -Po "LXW_VERSION\s*\"\K[^\"]+" include/xlsxwriter.h).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
