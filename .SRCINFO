@@ -1,14 +1,13 @@
 pkgbase = python-spacy-nl_core_news_sm
 	pkgdesc = Dutch pretrained model for spaCy (small)
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://spacy.io/models/nl#section-nl_core_news_sm
 	arch = any
 	license = CCPL
 	makedepends = python-setuptools
 	depends = python-spacy
-	source = https://github.com/explosion/spacy-models/releases/download/nl_core_news_sm-3.0.0/nl_core_news_sm-3.0.0.tar.gz
-	sha256sums = 0378bcb08bc123c87fdc90c094824fafceb494a7a413aff52ccc97a0df9895d0
+	source = https://github.com/explosion/spacy-models/releases/download/nl_core_news_sm-3.1.0/nl_core_news_sm-3.1.0.tar.gz
+	sha256sums = fb215dc656ca9fbbc0864b4fa3cb58b28e3593f9234cb7c558aed07468d30893
 
 pkgname = python-spacy-nl_core_news_sm
-

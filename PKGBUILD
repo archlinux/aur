@@ -1,16 +1,16 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=python-spacy-nl_core_news_sm
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="Dutch pretrained model for spaCy (small)"
-url="https://spacy.io/models/nl#section-nl_core_news_sm"
-depends=('python-spacy')
-makedepends=('python-setuptools')
-license=('CCPL')
+pkgdesc='Dutch pretrained model for spaCy (small)'
+url='https://spacy.io/models/nl#section-nl_core_news_sm'
+depends=(python-spacy)
+makedepends=(python-setuptools)
+license=(CCPL)
 arch=(any)
 source=("https://github.com/explosion/spacy-models/releases/download/nl_core_news_sm-${pkgver}/nl_core_news_sm-${pkgver}.tar.gz")
-sha256sums=('0378bcb08bc123c87fdc90c094824fafceb494a7a413aff52ccc97a0df9895d0')
+sha256sums=('fb215dc656ca9fbbc0864b4fa3cb58b28e3593f9234cb7c558aed07468d30893')
 
 build(){
 	cd nl_core_news_sm-${pkgver}
