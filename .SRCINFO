@@ -1,18 +1,18 @@
 pkgbase = geph4-vpn-helper
 	pkgdesc = A command-line Geph4 toolset
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
-	url = https://github.com/geph-official/geph4
+	url = https://github.com/geph-official/geph4-vpn-helper
 	arch = x86_64
 	groups = geph4
-	license = GPL3
+	license = unknown
 	makedepends = rust
 	depends = gcc-libs
 	depends = geph4-client
 	conflicts = geph4-vpn-helper-git
-	source = geph4-vpn-helper-0.1.4.tar.gz::https://github.com/geph-official/geph4/archive/geph4-vpn-helper-v0.1.4.tar.gz
+	source = geph4-vpn-helper-0.1.5.tar.gz::https://static.crates.io/crates/geph4-vpn-helper/geph4-vpn-helper-0.1.5.crate
 	source = geph4-vpn-helper.service
-	sha256sums = 952440d5945db031ee615c83cb9492dc35021845b7ba2872f0eceef9f82c0e5d
+	sha256sums = e3a0383ea3deffe524b8b1204dde0fb48fc9e9c02f2760e9a7e51ac0b3cd413e
 	sha256sums = ae990333a1eebd5d5bb57ebd4a930db84d08a2c7db541d349de119280473e043
 
 pkgname = geph4-vpn-helper
