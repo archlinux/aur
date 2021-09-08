@@ -1,40 +1,46 @@
-# Maintainer: Cheru Berhanu <aur attt cheru doot dev>
+# Maintainer: Miko <mikoxyzzz@gmail.com>
+# Contributor: Cheru Berhanu <aur attt cheru doot dev>
 
 pkgname=multimc-git
-pkgver=0.4.7.r1347.g23442442
+pkgver=0.6.12.r182.g6c9dc4c8
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://multimc.org/"
 license=('Apache')
-depends=('zlib' 'libgl' 'qt5-base' 'java-runtime')
+depends=('java-runtime' 'libgl' 'qt5-base' 'zlib')
 provides=('multimc')
 conflicts=('multimc' 'multimc5' 'multimc5-bin')
 makedepends=('cmake' 'java-environment')
-optdepends=('mcedit: Allows editing of minecraft worlds'
+optdepends=('glfw: to use system GLFW libraries'
+            'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
-            'openal: to use system OpenAL libraries'
-            'glfw: to use system GLFW libraries'
 )
 source=("git+https://github.com/MultiMC/MultiMC5"
-"git+https://github.com/MultiMC/libnbtplusplus"
-"git+https://github.com/MultiMC/quazip"
+        "git+https://github.com/MultiMC/libnbtplusplus"
+        "git+https://github.com/MultiMC/quazip"
+        modern-java.patch
 )
 
-sha512sums=('SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            '0005a23628afbecb40591e9ef0fd2fc63367ca1be71a874de6791fb19ae112b5907e19975b40b770122e9e34cc3297b14d2a9d72c42f3fbfac221e41cbc67890')
 
 pkgver() {
   cd MultiMC5
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-cd "${srcdir}/MultiMC5"
-git submodule init
-git config submodule.libnbtplusplus.url "${srcdir}/libnbtplusplus"
-git config submodule.quazip.url "${srcdir}/quazip"
-git submodule update
+  cd "${srcdir}/MultiMC5"
+  patch -p1 < "${srcdir}/modern-java.patch"
+
+  git submodule init
+  git config submodule.libnbtplusplus.url "${srcdir}/libnbtplusplus"
+  git config submodule.quazip.url "${srcdir}/quazip"
+  git submodule update
 }
 
 build() {
@@ -42,7 +48,10 @@ build() {
   mkdir -p build
 
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DMultiMC_LAYOUT=lin-system ..
+  cmake -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DMultiMC_LAYOUT=lin-system \
+    ..
   make
 }
 
