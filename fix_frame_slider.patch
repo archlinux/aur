@@ -1,0 +1,10 @@
+--- src/frame_slider.cpp.old	2021-09-08 16:11:59.407767188 +0200
++++ src/frame_slider.cpp	2021-09-08 16:12:23.529851261 +0200
+@@ -23,6 +23,7 @@
+ #include <QPainter>
+ #include <QSlider>
+ #include <QStyleOptionSlider>
++#include <QPainterPath>
+ 
+ #include <cassert>
+ 
