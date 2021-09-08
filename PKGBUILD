@@ -7,8 +7,8 @@ pkgver() {
   cd "JanD"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r88.ee473a4
-pkgrel=1
+pkgver=r117.9339cfb
+pkgrel=2
 pkgbase=jand-git
 replaces=()
 arch=('x86_64')
@@ -22,7 +22,8 @@ sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}/JanD/JanD"
-  dotnet publish -r linux-x64 -c release -o ./bin/release/aur-build
+  # sets version suffix to the same as $pkgver
+  dotnet publish -r linux-x64 -c release -o ./bin/release/aur-build --version-suffix "aur-$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
   mv ./bin/release/aur-build/JanD ./bin/release/aur-build/jand
   install -Dm 755 ./bin/release/aur-build/jand -t "${pkgdir}/usr/bin/"
 }

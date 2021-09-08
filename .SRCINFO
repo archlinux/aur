@@ -1,7 +1,7 @@
 pkgbase = jand-git
 	pkgdesc = The Jan process manager
-	pkgver = r88.ee473a4
-	pkgrel = 1
+	pkgver = r117.9339cfb
+	pkgrel = 2
 	url = https://github.com/Jan0660/JanD
 	arch = x86_64
 	license = MIT
