@@ -1,42 +1,46 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-_rockname=cldr
+pkgbase=lua-cldr
+_rockname=${pkgbase#lua-}
 _project=$_rockname-lua
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=0.0.0
+pkgname=("$pkgbase" "lua51-$_rockname" "lua52-$_rockname" "lua53-$_rockname")
+pkgver=0.1.0
 _rockrel=0
-pkgrel=8
+pkgrel=1
 pkgdesc='Unicode CLDR data and Lua interface'
-arch=('any')
+arch=(any)
 url="https://github.com/alerque/$_project"
-license=('MIT')
-_lua_deps=('penlight')
-makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
+license=(MIT)
+_luadeps=(penlight)
+makedepends=(lua
+             lua51
+             lua52
+             lua53
+             luarocks)
+_archive="$_project-$pkgver"
 source=("$_rockname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('03cc703e4d8874cb2b94871fa69daa467e4c0fa44e39787e6c02375bfe2b911e')
+sha256sums=('633c4fdf60de8eb56d9c019f85ae7ada77b9b45a8153d4ebc1b13129a5d2fbd6')
 
-_package_helper() {
-  cd "$_project-$pkgver"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
-    make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
+_package() {
+	cd "$_archive"
+	depends=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
+	luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+		make --deps-mode=none --no-manifest "$_rockname-dev-$_rockrel.rockspec"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
 
 package_lua-cldr() {
-  depends=('lua' "${_lua_deps[@]/#/lua-}")
-  _package_helper 5.4
-}
-
-package_lua53-cldr() {
-  depends=('lua53' "${_lua_deps[@]/#/lua53-}")
-  _package_helper 5.3
-}
-
-package_lua52-cldr() {
-  depends=('lua52' "${_lua_deps[@]/#/lua52-}")
-  _package_helper 5.2
+	_package 5.4
 }
 
 package_lua51-cldr() {
-  depends=('lua51' "${_lua_deps[@]/#/lua51-}")
-  _package_helper 5.1
+	_package 5.1
+}
+
+package_lua52-cldr() {
+	_package 5.2
+}
+
+package_lua53-cldr() {
+	_package 5.3
 }
