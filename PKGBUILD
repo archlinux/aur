@@ -48,7 +48,7 @@ build() {
 }
 
 package() {
-  cd amule
+  cd aMule-$pkgver
 
   make DESTDIR=${pkgdir} install
 }
