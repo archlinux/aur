@@ -1,0 +1,17 @@
+pkgbase = spl-token-cli
+	pkgdesc = Command line utility for creating and using tokens on the Solana blockchain
+	pkgver = 2.0.14
+	pkgrel = 1
+	url = https://spl.solana.com
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = pkgconf
+	provides = spl-token
+	conflicts = spl-token-cli-bin
+	conflicts = spl-token-cli-git
+	source = spl-token-cli-2.0.14.tar.gz::https://static.crates.io/crates/spl-token-cli/spl-token-cli-2.0.14.crate
+	b2sums = 537e3955e953a44aaab85f79b8cf169eb6fb4f132ccce201d798699f85bb2bb136da3f71115973c3c85d797fb78829ce0407bcdb8cc48face19d9f3b6f916e1f
+
+pkgname = spl-token-cli
