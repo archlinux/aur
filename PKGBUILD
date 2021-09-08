@@ -15,4 +15,9 @@ sha256sums=('0a7acca5f0af6cc23e770aaeb917ac1e9c8f534d14426953b2ae5bf0d61c27ec')
 package() {
   cd ${pkgdir}
   tar xvf ${srcdir}/data.tar.xz
+  for res in {16,24,32,48,64,128,256}
+  do
+    mkdir -p ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps;
+    mv ${pkgdir}/opt/bytedance/feishu/product_logo_${res}.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/bytedance-feishu.png;
+  done
 }
