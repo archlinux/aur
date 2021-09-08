@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-daily-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary version from RStudio official repository)
-	pkgver = 2021.11.0.daily%2B26
+	pkgver = 2021.11.0.daily%2B27
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = rstudio-desktop-daily-bin
 	depends = postgresql-libs
 	optdepends = pandoc: markdown support
 	optdepends = pandoc-citeproc: markdown support
-	provides = rstudio-desktop-daily=2021.11.0.daily%2B26
+	provides = rstudio-desktop-daily=2021.11.0.daily%2B27
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-bin
 	options = !strip
-	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-2021.11.0-daily%2B26-amd64.deb
-	sha256sums_x86_64 = 131326cad26bd0ba926942ac32809dfbff1fdbaac0e92c87dd59d473948681ae
+	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-2021.11.0-daily%2B27-amd64.deb
+	sha256sums_x86_64 = 64fa572221e79dcc40fcdbdef65fddbc02afe642edb739a2ca9d304bb564cff4
 
 pkgname = rstudio-desktop-daily-bin
