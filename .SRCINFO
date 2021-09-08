@@ -1,13 +1,15 @@
 pkgbase = rpass
 	pkgdesc = An rsync-based password manager and alternative to GNU pass
-	pkgver = 2021.09.02.pr2
+	pkgver = 2021.09.07.pr3
 	pkgrel = 1
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
-	depends = bash
-	depends = gnupg
 	depends = python
-	source = https://cloud.watergateserver.xyz/api/public/dl/Fe-Ugvov
-	sha512sums = a4c6af4df11c6a3c68d162da2f5e9156ff4795709ef0fb02ff5a165c129d969c3d1f61bf996fbd455f01bf228f4f60ad477200596b6002672d2f9bdd9880c4ca
+	depends = gnupg
+	depends = openssh
+	depends = rsync
+	source = https://cloud.watergateserver.xyz/api/public/dl/TfRRUA1B
+	sha512sums = 1df5dce9fbc3028948bf84fc0326d1ac5989ccd4ada6218d5ff0a7094f74e0714e908031d30f10a5eda001a91f4ac1697786dc9f9053802b11832e04ac3eea0c
 
 pkgname = rpass
