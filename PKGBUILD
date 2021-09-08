@@ -1,7 +1,7 @@
 # Maintainer: GeorgeRaven <GeorgeRavenCommunity at pm dot me>
 pkgname=cni-bin
 pkgdesc="Standardised container networking interface"
-pkgver=0.9.1
+pkgver=1.0.1
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h' 'armv7l')
 url="https://www.cni.dev/"
@@ -13,13 +13,13 @@ sha256sums=()
 
 case "$CARCH" in
   arm*) _pkgarch="arm"
-    sha256sums+=('909e800d01cc61ffa26f2629e4a202a58d727e6ccaabd0310ef18d2b1e00943c')
+    sha256sums+=('d35e3e9fd71687fc7e165f7dc7b1e35654b8012995bbfd937946b0681926d62d')
     ;;
   aarch64) _pkgarch="arm64"
-    sha256sums+=('ef17764ffd6cdcb16d76401bac1db6acc050c9b088f1be5efa0e094ea3b01df0')
+    sha256sums+=('2d4528c45bdd0a8875f849a75082bc4eafe95cb61f9bcc10a6db38a031f67226')
     ;;
   x86_64) _pkgarch="amd64"
-    sha256sums+=('962100bbc4baeaaa5748cdbfce941f756b1531c2eadb290129401498bfac21e7')
+    sha256sums+=('5238fbb2767cbf6aae736ad97a7aa29167525dcd405196dfbc064672a730d3cf')
     ;;
 esac
 
