@@ -1,0 +1,15 @@
+pkgbase = python-mouser
+	pkgdesc = Mouser Python API
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sparkmicro/mouser-api/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/m/mouser/mouser-0.1.1.tar.gz
+	sha256sums = f2b09352b0ecbb3eb5f057ac39adcb619bd266b1f19143bf2c1b6686461abbb3
+
+pkgname = python-mouser
