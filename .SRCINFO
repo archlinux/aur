@@ -1,0 +1,13 @@
+pkgbase = kicad-kibuzzard-git
+    pkgdesc = This kicad plugin lets you easily create labels in various fonts.
+    pkgver = r109.99b0aef
+    pkgrel = 1
+    url = https://github.com/gregdavill/KiBuzzard
+    arch = any
+    license = MIT
+    makedepends = git
+    depends = kicad>=5.1.0
+    source = kicad-kibuzzard-git::git+https://github.com/gregdavill/KiBuzzard.git
+    sha256sums = SKIP
+
+pkgname = kicad-kibuzzard-git
