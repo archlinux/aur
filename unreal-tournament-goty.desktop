@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=UT99 GOTY
+Comment=Unreal Tournament GOTY Linux
+Exec=/usr/bin/unreal-tournament-goty
+Icon=unreal-tournament-goty
+Terminal=false
+Type=Application
+Categories=Application;Game;

@@ -1,0 +1,21 @@
+pkgbase = unreal-tournament-goty-steam
+	pkgdesc = Unreal Tournament GOTY Linux with data via Steam
+	pkgver = 469
+	pkgrel = 1
+	url = https://store.steampowered.com/app/13240/Unreal_Tournament_Game_of_the_Year_Edition/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = lib32-libgl
+	depends = lib32-libpulse
+	depends = lib32-sdl
+	source = https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469a/OldUnreal-UTPatch469a-Linux.tar.bz2
+	source = unreal-tournament-goty.desktop
+	source = unreal-tournament-goty.png
+	sha256sums = d521a8339b80a4c86019c3648fb55cfc29edffeec73047ceb72784b159cc84f1
+	sha256sums = 842987c1380e304c87d1b3909f1aa10a732c1206d8083beda448844fe0d6d1ed
+	sha256sums = 69c9c5eb9ff8f6ee5cbfd9df5d16f68461d682fbb15c75a34627eaff2474190e
+
+pkgname = unreal-tournament-goty-steam
