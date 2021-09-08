@@ -11,6 +11,7 @@ pkgbase = pop-shop-git
 	depends = libhandy
 	depends = packagekit
 	depends = appstream
+	depends = flatpak
 	provides = io.elementary.appcenter
 	conflicts = appcenter
 	source = shop-master.tar.gz::https://github.com/pop-os/shop/archive/refs/heads/master.zip
