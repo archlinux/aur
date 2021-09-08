@@ -1,25 +1,31 @@
-# Maintainer: Jeremy Audet <jerebear@protonmail.com>
-#
-# namcap incorrectly states that python{,2} are unnecessary deps.
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-factory_boy
-_pkgname="${pkgname#python-}"
 pkgver=3.2.0
-pkgrel=1
-pkgdesc="A fixtures replacement based on thoughtbot’s factory_bot."
-arch=(any)
-url='https://github.com/FactoryBoy/factory_boy'
-license=(MIT)
-depends=('python-faker>=0.7.0' 'python>=3.6')
-makedepends=(python-distribute)
-options=(!emptydirs)
-source=("https://github.com/FactoryBoy/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f59f8c2dcad310f24a7428532d900c495db0e13e409d2d8aace3d237c2a6d93d')
+pkgrel=2
+pkgdesc="Test fixtures replacement for Python"
+arch=('any')
+url="https://github.com/factoryboy/factory_boy"
+license=('MIT')
+depends=(
+	'python>=3.6'
+	'python-faker>=0.7.0')
+makedepends=('python-setuptools')
+replaces=('python-factoryboy')
+changelog=CHANGELOG
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/f/factory_boy/factory_boy-$pkgver.tar.gz")
+sha256sums=('401cc00ff339a022f84d64a4339503d1689e8263a4478d876e58a3295b155c5b')
 
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+build() {
+	cd "factory_boy-$pkgver"
+	python setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+## no check; upstream uses tox
+
+package() {
+	cd "factory_boy-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+}

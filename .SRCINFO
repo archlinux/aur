@@ -1,16 +1,16 @@
 pkgbase = python-factory_boy
-	pkgdesc = A fixtures replacement based on thoughtbot’s factory_bot.
+	pkgdesc = Test fixtures replacement for Python
 	pkgver = 3.2.0
-	pkgrel = 1
-	url = https://github.com/FactoryBoy/factory_boy
+	pkgrel = 2
+	url = https://github.com/factoryboy/factory_boy
+	changelog = CHANGELOG
 	arch = any
 	license = MIT
-	makedepends = python-distribute
-	depends = python-faker>=0.7.0
+	makedepends = python-setuptools
 	depends = python>=3.6
-	options = !emptydirs
-	source = https://github.com/FactoryBoy/factory_boy/archive/3.2.0.tar.gz
-	sha256sums = f59f8c2dcad310f24a7428532d900c495db0e13e409d2d8aace3d237c2a6d93d
+	depends = python-faker>=0.7.0
+	replaces = python-factoryboy
+	source = python-factory_boy-3.2.0.tar.gz::https://files.pythonhosted.org/packages/source/f/factory_boy/factory_boy-3.2.0.tar.gz
+	sha256sums = 401cc00ff339a022f84d64a4339503d1689e8263a4478d876e58a3295b155c5b
 
 pkgname = python-factory_boy
-
