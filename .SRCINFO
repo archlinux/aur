@@ -1,0 +1,14 @@
+pkgbase = python-krypy
+	pkgdesc = Krylov subspace methods package for Python
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/andrenarchy/krypy
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-scipy
+	source = https://github.com/andrenarchy/krypy/archive/v2.2.0.tar.gz
+	sha512sums = 577d4fcdcc892b5989129ce6f490267fb162c89662955465ed981abab5df9ba3ae3dbdf0197a90f500c472d75a78ffb507412303dc2acc848a7ab463d5a14aac
+
+pkgname = python-krypy
