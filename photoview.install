@@ -1,6 +1,9 @@
 post_install() {
   cat << EOF
 !NOTE!
+  This AUR package as of v2.3.6 implements sysusers.d and tmpfiles.d, and the systemd unit file now runs under the "photoview" user and group. As such, if you already have a database and cache files (default in the /var/lib/photoview and /var/cache/photoview directories) from a prior version, you will need to change the ownership of those directories, recursively, to photoview:photoview. Additionally, your configured pictures directory will need to be readable by the photoview user.
+
+!NOTE!
   You need to have a database backend. Select one from the first three optional dependencies.
 
 Configure the server via its environment variables in /etc/photoview.env.

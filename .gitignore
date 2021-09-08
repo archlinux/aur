@@ -6,3 +6,5 @@
 !*.patch
 !*.service
 !*.diff
+!*.sysusers.conf
+!*.tmpfiles
