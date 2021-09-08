@@ -1,7 +1,7 @@
 pkgbase = base-init-agnostic
 	pkgdesc = Even more minimal package set to define a basic Arch Linux installation
 	pkgver = 2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.archlinux.org
 	arch = any
 	license = GPL

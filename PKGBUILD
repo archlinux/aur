@@ -2,7 +2,7 @@
 # vim: ft=sh:
 pkgname=base-init-agnostic
 pkgver=2
-pkgrel=2
+pkgrel=3
 pkgdesc="Even more minimal package set to define a basic Arch Linux installation"
 arch=('any')
 url="https://www.archlinux.org"
