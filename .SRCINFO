@@ -1,13 +1,13 @@
 pkgbase = python-pytest-factoryboy
 	pkgdesc = factory_boy integration with pytest-runner
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytest-dev/pytest-factoryboy
 	changelog = CHANGES.rst
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-factoryboy>=2.10.0
+	depends = python-factory_boy>=2.10.0
 	depends = python>=3.6
 	depends = python-inflection
 	depends = python-pytest>=4.6

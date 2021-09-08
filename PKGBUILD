@@ -2,16 +2,16 @@
 
 pkgname=python-pytest-factoryboy
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="factory_boy integration with pytest-runner"
 arch=('any')
 url="https://github.com/pytest-dev/pytest-factoryboy"
 license=('MIT')
-groups=()
-depends=('python-factoryboy>=2.10.0'
-         'python>=3.6'
-         'python-inflection'
-         'python-pytest>=4.6')
+depends=(
+	'python-factory_boy>=2.10.0'
+	'python>=3.6'
+	'python-inflection'
+	'python-pytest>=4.6')
 makedepends=('python-setuptools')
 # checkdepends=()
 changelog=CHANGES.rst
