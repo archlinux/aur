@@ -5,7 +5,7 @@
 
 pkgname=syncplay
 pkgver=1.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc across many computers'
 arch=(any)
 url=http://syncplay.pl
@@ -13,7 +13,6 @@ license=(Apache)
 depends=(python
          python-twisted)
 optdepends=('pyside2: GUI'
-            'qt5-declarative: GUI'
             'python-service-identity: TLS'
             'python-certifi: TLS')
 backup=("etc/$pkgname/server.conf")
