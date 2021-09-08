@@ -1,0 +1,10 @@
+--- deps/v8_inspector/third_party/v8_inspector/platform/v8_inspector/String16STL.cpp.old	2021-09-08 18:09:36.288899969 +0200
++++ deps/v8_inspector/third_party/v8_inspector/platform/v8_inspector/String16STL.cpp	2021-09-08 18:10:06.528708959 +0200
+@@ -4,6 +4,7 @@
+ 
+ #include "platform/inspector_protocol/InspectorProtocol.h"
+ 
++#include <limits>
+ #include <algorithm>
+ #include <cctype>
+ #include <cstdio>
