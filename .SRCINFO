@@ -1,6 +1,6 @@
 pkgbase = natscli
 	pkgdesc = The NATS Command Line Interface
-	pkgver = 0.0.25
+	pkgver = 0.0.26
 	pkgrel = 1
 	url = https://github.com/nats-io/natscli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = natscli
 	makedepends = go
 	provides = nats
 	conflicts = natscli-bin
-	source = https://github.com/nats-io/natscli/archive/refs/tags/0.0.25.tar.gz
-	sha256sums = 0b9c143e37932725a802ad3c8b35354384230532060f0b7c61bd8448fd5ac3b1
+	source = https://github.com/nats-io/natscli/archive/refs/tags/0.0.26.tar.gz
+	sha256sums = 50d534ab7a4f579577d8a12f496cc58fc257821b489fc7380d0ba61b9e267b03
 
 pkgname = natscli
