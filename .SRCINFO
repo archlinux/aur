@@ -1,6 +1,6 @@
 pkgbase = php74-igbinary
 	pkgdesc = A drop in replacement for the standard php serializer (PHP 7.4)
-	pkgver = 3.2.2
+	pkgver = 3.2.6
 	pkgrel = 1
 	url = https://pecl.php.net/package/igbinary
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = php74-igbinary
 	depends = glibc
 	depends = php74
 	backup = etc/php74/conf.d/igbinary.ini
-	source = https://pecl.php.net/get/igbinary-3.2.2.tgz
-	sha512sums = 0f1d2bf2d4314e9a4593aac954060ffa342f81aef9e288b46e97ae598965f0a526f5fd3eb31c5941763d6348533f67295a0e33513b3916911491a0f0ca3e9c36
+	source = https://pecl.php.net/get/igbinary-3.2.6.tgz
+	sha512sums = bb1a87f46b0ba2396a3d21b8cc2165498243a86182dc5814d85053bcac14fb099041ec9a67be975eb636e9fae411d2f2695848f0739ddb385c060d56c2f73f4a
 
 pkgname = php74-igbinary
-
