@@ -1,6 +1,6 @@
 # Maintainer: Dario Pellegrini <pellegrini.dario@gmail.com>
 
-pkgname=cgal
+pkgname=cgal5
 pkgver=5.3
 pkgrel=1
 pkgdesc="Computational Geometry Algorithms Library"
@@ -12,6 +12,7 @@ depends=('mpfr' 'gmp' 'mesa' 'glu' 'boost-libs')
 optdepends=('qt5-svg: for CGAL_Qt5'
             'eigen: for some packages, see the CGAL manual')
 makedepends=('cmake' 'qt5-svg' 'eigen' 'boost')
+replaces=('cgal')
 md5sums=('e7358195c1bb7811ff5824607bd456b5')
 
 prepare() {

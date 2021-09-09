@@ -1,4 +1,4 @@
-pkgbase = cgal
+pkgbase = cgal5
 	pkgdesc = Computational Geometry Algorithms Library
 	pkgver = 5.3
 	pkgrel = 1
@@ -17,7 +17,8 @@ pkgbase = cgal
 	depends = boost-libs
 	optdepends = qt5-svg: for CGAL_Qt5
 	optdepends = eigen: for some packages, see the CGAL manual
+	replaces = cgal
 	source = https://github.com/CGAL/cgal/releases/download/v5.3/CGAL-5.3.tar.xz
 	md5sums = e7358195c1bb7811ff5824607bd456b5
 
-pkgname = cgal
+pkgname = cgal5
