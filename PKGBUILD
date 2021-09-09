@@ -2,7 +2,7 @@
 pkgname=streamdeck-ui-git
 _pkgname=streamdeck-ui
 pkgver=r243.c8dffc7
-pkgrel=2
+pkgrel=3
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck"
 arch=('any')
 url="https://timothycrosley.github.io/streamdeck-ui/"
@@ -13,7 +13,7 @@ provides=('streamdeck-ui')
 source=("git+https://github.com/timothycrosley/streamdeck-ui.git"
         "60-streamdeck.rules")
 sha512sums=('SKIP'
-            '8095ffc56e7d5700bd48e61724a1db709d2f07145508e5f3b3ada2d77848453a5a50c810fa60077d84917458f9139058d36067ba3603d49e0c57507e9b243da4')
+            '2c08c9c89fbfb9af832cb131655d79c93b892f4a21875b98bd8293c421bfde5367b21c77b0a4119d999a1e83f46b96ef3210edafc2c163a93b206a0a4b493e87')
 
 pkgver() {
     cd "$_pkgname"
