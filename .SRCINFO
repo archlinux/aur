@@ -1,14 +1,16 @@
 pkgbase = python-md2html
-	pkgdesc = MD to HTML converter
+	pkgdesc = Markdown to HTML converter
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chrispyles/markdown-to-html
 	arch = any
 	license = Apache
-	makedepends = python
-	depends = python
-	source = https://pypi.io/packages/source/m/md2html/md2html-1.3.0.tar.gz
-	md5sums = 428cc90c18eb270a459d1293e6415ef7
+	makedepends = python-setuptools
+	depends = python-markdown2
+	depends = python-pygments
+	depends = python-yaml
+	conflicts = md4c
+	source = python-md2html-1.3.0.tar.gz::https://files.pythonhosted.org/packages/source/m/md2html/md2html-1.3.0.tar.gz
+	sha256sums = f0cf6e6c7fcaddcf10eef13bd3f9d437ee699ca369ed7c52b3c914d9ed6dcb4e
 
 pkgname = python-md2html
-
