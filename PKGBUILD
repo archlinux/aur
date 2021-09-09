@@ -21,7 +21,7 @@ depends=(
 makedepends=(
 	"cmake"
 	"git"
-	"rust"
+	"rust-nightly"
 )
 source=(
 	"git+$url.git"
