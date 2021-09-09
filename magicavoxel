@@ -2,33 +2,61 @@
 
 set -e
 
+app_folder="$HOME/.magicavoxel"
+app_folder_version_file="$app_folder/version.txt"
+app_folder_current_version=1
+
 export WINEDLLOVERRIDES="mscoree,mshtml="
-export WINEARCH=win64 WINEPREFIX="$HOME/.magicavoxel/wine"
+export WINEARCH=win64
+export WINEPREFIX="$app_folder/wine"
 
 function _link() {
   for path in "$@"
   do
-    ln -s "/usr/share/magicavoxel/$path" "$HOME/.magicavoxel/$path"
+    ln -s "/usr/share/magicavoxel/$path" "$app_folder/$path"
   done
 }
 
 function _copy() {
   for path in "$@"
   do
-    cp -r "/usr/share/magicavoxel/$path" "$HOME/.magicavoxel/$path"
+    cp -r "/usr/share/magicavoxel/$path" "$app_folder/$path"
   done
 }
 
-if [ ! -d "$HOME/.magicavoxel" ] ; then
+version=0
+if [ -f "$app_folder_version_file" ] ; then
+    version=$(cat $app_folder_version_file)
+fi
+
+if [ ! -d "$app_folder" ] ; then
   mkdir -p "$WINEPREFIX"
 
   _link MagicaVoxel.exe
   _link plugin OpenImageDenoise.dll tbb.dll tbbmalloc.dll
-  mkdir "$HOME/.magicavoxel/config"
+  mkdir "$app_folder/config"
   _link config/ui
 
   _copy ibl palette shader cache export vox
   _copy config/config.txt config/hotkey.txt config/dict.txt config/locale.txt config/font
 fi
 
-wine "$HOME/.magicavoxel/MagicaVoxel.exe" "$@"
+if [ "$version" -lt "1" ]; then
+    if [ -L "$app_folder/config/font" ]; then
+        rm "$app_folder/config/font"
+        _copy config/font
+    fi
+
+    if [ ! -f "$app_folder/config/dict.txt" ]; then
+        _copy config/dict.txt
+    fi
+
+    if [ ! -f "$app_folder/config/locale.txt" ]; then
+        _copy config/locale.txt
+    fi
+
+    echo 1 > "$app_folder_version_file"
+fi
+
+wine "$app_folder/MagicaVoxel.exe" "$@"
+
