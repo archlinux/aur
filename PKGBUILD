@@ -1,7 +1,7 @@
 # Maintainer: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 
 pkgname=dewobble
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Video stabilisation library with awareness of lens projections"
 url="https://git.sr.ht/~hedgepigdaniel/dewobble"
