@@ -3,7 +3,7 @@
 pkgname=taplo-lsp
 pkgver=0.2.5
 pkgrel=1
-pkgdesc='Language server for Taplo (TOML)'
+pkgdesc='Language server for Taplo, a TOML toolkit'
 arch=('x86_64')
 url=https://taplo.tamasfe.dev/lsp/
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = taplo-lsp
-	pkgdesc = Language server for Taplo (TOML)
+	pkgdesc = Language server for Taplo, a TOML toolkit
 	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://taplo.tamasfe.dev/lsp/
