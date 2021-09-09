@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.14.1.arch1
+pkgver=5.14.2.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -47,7 +47,7 @@ source=(
 
 
   # mediatek mt7921 bt/wifi patches
-  #"sys-kernel_arch-sources-g14_files-8011-Bluetooth-btusb-Add-support-for-Lite-On-Mediatek-Chi.patch"
+  "sys-kernel_arch-sources-g14_files-8011-mt76-mt7921-fix-stupid-mediatek-wth-a-hammer.patch"
   #"sys-kernel_arch-sources-g14_files-8012-mt76-mt7921-continue-to-probe-driver-when-fw-already.patch"
   "sys-kernel_arch-sources-g14_files-8013-mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
   "sys-kernel_arch-sources-g14_files-8014-mt76-mt7921-Add-mt7922-support.patch"
@@ -64,6 +64,10 @@ source=(
   "sys-kernel_arch-sources-g14_files-9006-amd-c3-entry.patch"
   
   "sys-kernel_arch-sources-g14_files-9007-squashed-net-tcp_bbr-bbr2-for-5.14.y.patch"
+
+  "sys-kernel_arch-sources-g14_files-9008-fix-cpu-hotplug.patch"
+  "sys-kernel_arch-sources-g14_files-9009-amd-pstate-sqashed.patch"
+
 )
 
 validpgpkeys=(
@@ -85,6 +89,7 @@ sha256sums=('SKIP'
             '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
             '6fe5fe83e06d552f541bdca55d0d9e2cd6e70dd3047c01da749a0ff57fe706cc'
             'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
+            '63b3c3b2a016209cbbea1b327dd3e977f74943821f65c04c0efb2fe967741bb1'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
             '3d6d1e6374688c5f1abbc40b15c03c62f695e9d04d790556c57f8ec5d0d6a3f9'
