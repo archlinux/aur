@@ -6,7 +6,6 @@ pkgbase = python-meshpy
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-matplotlib
 	makedepends = python-setuptools
 	makedepends = git
 	depends = pybind11

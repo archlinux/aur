@@ -9,7 +9,7 @@ url="https://documen.tician.de/${_base}"
 license=(MIT)
 depends=(pybind11 python-gmsh_interop) # boost
 makedepends=(python-setuptools git)    # ctags
-checkdepends=(python-pytest python-matplotlib)
+checkdepends=(python-pytest)           # python-matplotlib
 source=("git+https://github.com/inducer/${_base}.git?signed#tag=v${pkgver}")
 validpgpkeys=("900A958D9A0ACA58B1468F2471AA298BCA171145") # Andreas Kloeckner
 sha512sums=('SKIP')
