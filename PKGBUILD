@@ -1,16 +1,16 @@
 # Maintainer: Michael Straube <michael.straubej@gmail.com>
 
 pkgname=edges
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=2
 pkgdesc="Command-line tool to set up hot-corners"
 arch=(x86_64)
-url="https://github.com/arisinfenix/edges"
+url="https://github.com/MichaelStraube/edges"
 license=(GPL3)
 depends=(libx11 libxi libxrandr)
 makedepends=(libxfixes)
-source=("https://github.com/arisinfenix/edges/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('fd8b3bc9909e0f896f4f0cf4a8c364f757eb18580dfe496033455812810dbc365dc1475f02f80646a68172fda9541557d9d1e3ba4616d66560f1f42fc8fd39ed')
+source=("https://github.com/MichaelStraube/edges/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('92bb030ce9ad06b3b99672f7efe360afa9020f5918cbfb3e22efa09042a0bba79502b492d3101d8e1cc9831d4c8794cf7d2b80273ed2f548526c6f3a613914e2')
 
 build() {
   cd $pkgname-$pkgver
