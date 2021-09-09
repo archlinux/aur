@@ -1,17 +1,17 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=cpprestsdk
-pkgver=2.10.13
+pkgver=2.10.18
 pkgrel=1
 pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Microsoft/cpprestsdk/"
 license=('Apache')
-depends=('boost' 'websocketpp' 'openssl>=1.0.0')
-makedepends=('cmake>=2.6.0')
+depends=('openssl>=1.0.0' 'zlib' 'gcc-libs')
+makedepends=('cmake>=2.6.0' 'boost' 'websocketpp')
 conflicts=('casablanca' 'casablanca-git' 'cpprestsdk-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Microsoft/cpprestsdk/archive/v${pkgver}.tar.gz")
-sha512sums=('43e60ee1266e0009f04452736a1b5127439d54416060f81544613007a8bcc084705bedd482ec3519140e79a6f56bddba6d25e9752228595bb8f83ce560ae39b8')
+sha512sums=('5f0699e7ba509e16d6a3000e6ac448f6dbc134b8e03de9ab174ba749ad7efa76cbfccb623b226d82f5dba35ef6292f0cdf121b5315d524a5a28454038d420fab')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/
@@ -25,7 +25,8 @@ build() {
     -DBUILD_SAMPLES=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DWERROR=OFF
   make  -j`nproc`
 }
 
