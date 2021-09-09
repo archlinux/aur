@@ -6,7 +6,7 @@ pkgdesc='Additional layers for the german qwertz keyboard layout and others.'
 arch=('any')
 url='https://github.com/mihi314/neolight'
 license=('GPL')
-depends=('xkeyboard-config' 'bash')
+depends=('xkeyboard-config')
 
 _tag="v${pkgver}"
 _repo_url='https://raw.githubusercontent.com/mihi314/neolight'
