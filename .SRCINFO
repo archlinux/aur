@@ -13,9 +13,6 @@ pkgbase = python-pynest2d-git
 	provides = python-pynest2d
 	conflicts = python-pynest2d
 	source = git+https://github.com/Ultimaker/pynest2d
-	source = fix-cpp-version.patch
 	md5sums = SKIP
-	md5sums = 2199ac8a688aee467d92a23c6cb89b73
 
 pkgname = python-pynest2d-git
-
