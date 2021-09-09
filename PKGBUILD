@@ -2,7 +2,7 @@
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 
 pkgname=multimc-git
-pkgver=0.6.12.r182.g6c9dc4c8
+pkgver=0.6.13.r0.ge2355eb2
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
@@ -48,7 +48,7 @@ build() {
   mkdir -p build
 
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Release \
+  cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DMultiMC_LAYOUT=lin-system \
     ..
