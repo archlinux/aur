@@ -6,20 +6,17 @@ arch=('any')
 url='https://github.com/Paragon-Software-Group/linux-ntfs3'
 license=('GPL2')
 depends=('dkms')
+makedepends=('subversion')
 provides=('NTFS3-MODULE' 'ntfs3' 'ntfs3-dkms')
 conflicts=('ntfs3')
 options=('!strip')
-
-local rev=$(curl "https://api.github.com/repos/torvalds/linux/compare/6abaa83c7352b31450d7e8c173f674324c16b02b...Paragon-Software-Group:devel" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
-local sha=$(curl -H "Accept: text/vnd.github.VERSION.sha" "https://api.github.com/repos/Paragon-Software-Group/linux-ntfs3/commits/devel")
-_pkgver="r${rev}.g${sha:0:7}"
 
 source=(
     Makefile.patch
     dkms.conf
     kernel-5.12-backport.patch
     kernel-5.14-backport.patch
-    "ntfs3-${_pkgver}.patch::https://github.com/torvalds/linux/compare/6abaa83c7352b31450d7e8c173f674324c16b02b...Paragon-Software-Group:devel.diff"
+    "ntfs3::svn+https://github.com/Paragon-Software-Group/linux-ntfs3/branches/devel/fs/ntfs3"
 )
 
 sha512sums=(
@@ -31,14 +28,13 @@ sha512sums=(
 )
 
 pkgver() {
-    echo "${_pkgver}"
+    local rev=$(curl "https://api.github.com/repos/Paragon-Software-Group/linux-ntfs3/compare/6abaa83c7352b31450d7e8c173f674324c16b02b...devel" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
+    local sha=$(curl -H "Accept: text/vnd.github.VERSION.sha" "https://api.github.com/repos/Paragon-Software-Group/linux-ntfs3/commits/devel")
+    echo "r${rev}.g${sha:0:7}"
 }
 
 prepare() {
-    mkdir -p "${_pkgver}"
-    cd "${_pkgver}"
-
-    patch -p3 -t -N -i "${srcdir}/ntfs3-${_pkgver}.patch" || true
+    cd "ntfs3"
 
     patch -p0 -N -i "${srcdir}/Makefile.patch"
 
@@ -48,10 +44,10 @@ prepare() {
 }
 
 package() {
-    local dest="${pkgdir}/usr/src/ntfs3-${_pkgver}"
+    local dest="${pkgdir}/usr/src/ntfs3-${pkgver}"
     mkdir -p "${dest}"
     cd "${dest}"
-    cp -r "${srcdir}/${_pkgver}/"* ./
+    cp -r "${srcdir}/ntfs3/"* ./
     cp "${srcdir}/dkms.conf" ./
     mkdir -p "./patches"
     cp "${srcdir}/kernel-"*.patch "./patches/"
