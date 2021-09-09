@@ -10,7 +10,7 @@ license=(GPL3)
 groups=()
 depends=('opencv>=4.0.0' qt5-base qt5-webengine gcc-libs)
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/FastTrackOrg/FastTrack/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('d3071435e0c92a1b174ee44855ec087fbfccdcbcffc3489d51b5310c02e7c1f5')
+sha256sums=('4b20523af0aa5fe5b78292e0c85e479646ea8e9b220890db412ff64b9364b671')
 
 prepare() {
   mv "FastTrack-$pkgver" "$pkgbase-$pkgver"
