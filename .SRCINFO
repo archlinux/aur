@@ -1,6 +1,6 @@
 pkgbase = wem
 	pkgdesc = A tool for managing wine "envs" or prefixes.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://git.sr.ht/~hristoast/wem
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = wem
 	depends = glibc
 	provides = wem
 	conflicts = wem
-	source = wem-0.8.3.tar.gz::https://git.sr.ht/~hristoast/wem/archive/0.8.3.tar.gz
-	sha512sums = 3320f94136e6dc9521d437e9c65635a65fafb696b7f22e3f47fa20c71e798d1d49f75189b1a5d347d21bd711a51413fce319d94e87382d73189e45cb4b7992c3
+	source = wem-0.8.4.tar.gz::https://git.sr.ht/~hristoast/wem/archive/0.8.4.tar.gz
+	sha512sums = 1f9f5f597b288baf184f79be66ca9766efe7977924ffda0429cb8f137e95fcb508f27d255a03a7ad2d036bf0f3e8781a42049db30379285ede03d81d6d5a58eb
 
 pkgname = wem
 
