@@ -1,22 +1,38 @@
 pkgname=python-vici
-_pypi_pkgname=vici
-pkgver=5.8.0
-pkgrel=2
+pkgver=5.9.3
+pkgrel=1
 pkgdesc="vici python egg to talk to strongSwan via VICI socket"
 arch=(any)
 url="https://strongswan.org"
-license=('GPL2')
-makedepends=('python-setuptools')
+license=('MIT')
+makedepends=('automake' 'autoconf' 'python-setuptools')
 depends=('python')
-source=("https://files.pythonhosted.org/packages/f7/5b/59a1b82929255dca851bbef8ff368ea465d5adfa7c6a8b50824bcf6c2f6e/vici-5.8.0.tar.gz")
-sha256sums=('de0b9029e5c4ab16f293567dd56b59de2ad1984dd18a3980c787573aeb44b88a')
+source=("https://github.com/strongswan/strongswan/releases/download/$pkgver/strongswan-$pkgver.tar.bz2"
+    "use-sitepackages.patch"
+    )
+
+sha256sums=('9325ab56a0a4e97e379401e1d942ce3e0d8b6372291350ab2caae0755862c6f7'
+            '658817b0d3c1fd221521176c188b0b499c91f28c6a50a3cdbb3efd181868b960')
 
 build() {
-    cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py build || return 1
+    cd "$srcdir/strongswan-$pkgver"
+    ./configure \
+        --build=$CBUILD \
+        --host=$CHOST \
+        --disable-defaults \
+        --enable-python-eggs
+
+    cd src/libcharon/plugins/vici/python
+    make all
+    python3 setup.py build
+}
+
+check() {
+    cd "$srcdir/strongswan-$pkgver"
+    make -C src/libcharon/plugins/vici/python check
 }
 
 package() {
-    cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py install --root=${pkgdir} --optimize=1 || return 1
+    cd "$srcdir/strongswan-$pkgver/src/libcharon/plugins/vici/python/"
+    python3 setup.py install --root="$pkgdir" --optimize=1
 }
