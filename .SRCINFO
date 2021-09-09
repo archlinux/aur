@@ -1,0 +1,13 @@
+pkgbase = python-json-ref-dict
+	pkgdesc = Python dict-like object which abstracts resolution of JSONSchema references
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/jacksmith15/json-ref-dict
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-jsonpointer
+	source = https://github.com/jacksmith15/json-ref-dict/archive/refs/tags/0.7.0.tar.gz
+	sha256sums = ebd4f6ba724c49abe8d14a61de49e408a48cc5aa5a89e756ee0ef4070ec3a375
+
+pkgname = python-json-ref-dict
