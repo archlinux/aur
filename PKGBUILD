@@ -1,13 +1,13 @@
 # Maintainer: esrh : email at esrh at netc dot eu
 pkgname=mpv-mpvacious
 pkgver=0.13.r21.ga9cb73d
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds mpv keybindings to create Anki cards from movies and TV shows."
 arch=('any')
 url="https://github.com/Ajatt-Tools/mpvacious"
 license=('GPL3')
 depends=('mpv')
-optdepends=('xclip: clipboard autocopy')
+optdepends=('xclip: clipboard autocopy' 'wl-clipboard: clipboard autocopy on wayland')
 source=("mpv-mpvacious::git+https://github.com/Ajatt-Tools/mpvacious")
 md5sums=('SKIP')
 
