@@ -21,7 +21,8 @@ pkgbase = godot-mono
 	makedepends = pkg-config
 	makedepends = rsync
 	makedepends = nuget
-	depends = mono>=5.18.0
+	makedepends = xorg-server-xvfb
+	depends = mono>=6.12.0
 	depends = msbuild
 	depends = dotnet-sdk
 	optdepends = dotnet-core
@@ -31,4 +32,3 @@ pkgbase = godot-mono
 	md5sums = SKIP
 
 pkgname = godot-mono
-

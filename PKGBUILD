@@ -6,7 +6,7 @@ pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
 url="https://godotengine.org/"
 license=('MIT')
-depends=('mono>=5.18.0' 'msbuild' 'dotnet-sdk')
+depends=('mono>=6.12.0' 'msbuild' 'dotnet-sdk')
 optdepends=('dotnet-core')
 makedepends=(
     'git'
@@ -24,6 +24,7 @@ makedepends=(
     'pkg-config'
     'rsync'
     'nuget'
+    'xorg-server-xvfb'
 )
 provides=('godot-mono')
 conflicts=('godot-mono-bin')
@@ -38,7 +39,7 @@ build() {
 
     #Build temporary binaries to generate needed files for mono support
     scons platform=x11 tools=yes module_mono_enabled=yes mono_glue=no
-    bin/godot.x11.tools.64.mono --generate-mono-glue modules/mono/glue
+    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" bin/godot.x11.tools.64.mono --generate-mono-glue modules/mono/glue
 
     # Build normal binaries
     scons platform=x11 target=release_debug tools=yes module_mono_enabled=yes bits=64
