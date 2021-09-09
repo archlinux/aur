@@ -4,7 +4,7 @@
 pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
 pkgver=93.0.4577.63
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
@@ -53,7 +53,7 @@ _gn_version='git_revision:24e2f7df92641de0351a96096fb2c490b2436bb8'
 _gn_revision='39a87c0b36310bdf06b692c098f199a0d97fc810'
 
 sha256sums=(
-  "dc2e76f8ad5b92931deb0db799e35d9a74975f625d568bebda84a63d3274bb01"
+  "091fa8129f390cc90530f92b0e9c90f1e7bb131f3f9e5bcda192a782bf7af19e"
   "ec7e686edd39068acd3122bbae4f4e83ba8540ffdb9fe30790679e72c7318d33"
   "723979ea8245a297fac101ff71e1e9f97f138e0bfb0e84176ef5ca70cc96bf8e"
   "cf74ea4bdd833b18ef52959f2791b11354fea20425b8dbfa4d017fc46732c665"
