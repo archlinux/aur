@@ -1,0 +1,12 @@
+pkgbase = libsocketcan-git
+	pkgdesc = allows control of some basic functions in SocketCAN from userspace
+	pkgver = r101.b464485
+	pkgrel = 1
+	url = http://lalten.github.io/libsocketcan/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	source = libsocketcan::git+https://github.com/lalten/libsocketcan#branch=gh-pages
+	sha256sums = SKIP
+
+pkgname = libsocketcan-git
