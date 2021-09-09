@@ -1,15 +1,15 @@
-# Maintainer: johncena141 <johncena141@protonmail.com>
 pkgname='chad_launcher-git'
 _pkgname='chad_launcher'
-pkgver='r382.efacb92'
+pkgver=r169.81a271b
 pkgrel=1
 pkgdesc='GNU/LINUX GAMING UNLEASHED!'
 arch=('x86_64')
 url='https://gitlab.com/Gnurur/chad_launcher'
 license=('GPL3')
-depends=(python python-fuzzywuzzy python-levenshtein python-gobject python-yaml python-beautifulsoup4 python-lxml python-httpx python-aiofiles python-typer python-pyfzf-git python-pymitter-git python gtk3)
-makedepends=(pkgconf git)
-source=('git+https://gitlab.com/Gnurur/chad_launcher.git')
+depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips)
+makedepends=(cargo npm git squashfs-tools patchelf)
+conflicts=(chad_launcher-bin)
+source=('git+https://gitlab.com/Gnurur/chad_launcher.git#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,12 +19,16 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    python "setup.py" build
+    export RUSTUP_TOOLCHAIN=stable
+    npm install
+    npm run build
+    npm run tauri build
 }
 
 package() {
     cd "$srcdir/$_pkgname"
-    python "setup.py" install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644 ./chad_launcher.desktop "$pkgdir/usr/share/applications/chad_launcher.desktop"
-    install -Dm644 ./src/chad_launcher/data/assets/icon.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "src-tauri/target/release/chad-launcher"
+    install -Dm644 ./chad_launcher.desktop "$pkgdir/usr/share/applications/chad-launcher.desktop"
+    install -Dm644 ./icon.svg "$pkgdir/usr/share/pixmaps/chad-launcher.svg"
 }
+
