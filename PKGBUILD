@@ -7,7 +7,7 @@ pkgdesc='GNU/LINUX GAMING UNLEASHED!'
 arch=('x86_64')
 url='https://gitlab.com/Gnurur/chad_launcher'
 license=('GPL3')
-depends=(cargo webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips)
+depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips)
 makedepends=()
 source=("$pkgname-$pkgver.zip::https://gitlab.com/Gnurur/chad_launcher/-/jobs/artifacts/$_tag/download?job=tauri:build")
 md5sums=('SKIP')

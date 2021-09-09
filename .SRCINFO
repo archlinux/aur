@@ -5,7 +5,6 @@ pkgbase = chad_launcher-bin
 	url = https://gitlab.com/Gnurur/chad_launcher
 	arch = x86_64
 	license = GPL3
-	depends = cargo
 	depends = webkit2gtk
 	depends = curl
 	depends = wget
