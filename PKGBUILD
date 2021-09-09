@@ -3,7 +3,7 @@
 # Corrected with a smile by CvR_XX <info@carlosvanrooijen.nl>
 
 pkgname=nrf5x-command-line-tools
-pkgver=10.13.0
+pkgver=10.14.0
 pkgrel=0
 pkgdesc="Tools for programming Nordic nRF51, nRF52 and nRF91 MCU using J-Link"
 arch=('x86_64')
@@ -14,12 +14,12 @@ provides=('nrfjprog')
 conflicts=('nrfjprog')
 options=()
 source_x86_64=("https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/${pkgver//./-}/nRF-Command-Line-Tools_${pkgver//./_}_Linux64.zip")
-md5sums_x86_64=('ae79b47015e27c79ac637080895f13b4')
+md5sums_x86_64=('8a049bacc67519561b77e014b652d5df')
 
 package() {
-    cd ${srcdir}/nRF-Command-Line-Tools_10_13_0_Linux64
-    tar zxf "nRF-Command-Line-Tools_10_13_0_Linux-amd64.tar.gz"
-    tar xf "nRF-Command-Line-Tools_10_13_0.tar"
+    cd ${srcdir}/nRF-Command-Line-Tools_${pkgver}_Linux64
+    tar zxf "nRF-Command-Line-Tools_${pkgver}_Linux-amd64.tar.gz"
+    tar xf "nRF-Command-Line-Tools_${pkgver}.tar"
 
     # Install nrfjprog and mergehex
     install -dm755 "${pkgdir}/opt/nrfjprog" "${pkgdir}/opt/mergehex"
