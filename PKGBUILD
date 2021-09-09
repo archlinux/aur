@@ -2,14 +2,14 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 pkgname=shim-git
-pkgver=15.4.r7.9f973e4
+pkgver=15.4.r62.69b7bbf
 pkgrel=1
 pkgdesc='UEFI shim loader'
 arch=('x86_64')
 url='https://github.com/rhboot/shim'
 license=('BSD')
 makedepends=('git')
-checkdepends=('xxd')
+checkdepends=('efivar' 'xxd')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=('shim-efi-git')
@@ -29,6 +29,9 @@ prepare() {
 	git submodule init
 	git config submodule.gnu-efi.url "$srcdir/rhboot-gnu-efi"
 	git submodule update
+
+	# Fix compilation of the test suite (https://github.com/rhboot/shim/pull/415)
+	git cherry-pick --no-commit 447148f573018a9af09c1a8b84acdca2f45f864d
 
 	sed -e 's/-Werror //g' -i Makefile Make.defaults
 }
