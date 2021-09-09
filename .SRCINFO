@@ -7,7 +7,6 @@ pkgbase = neolight
 	arch = any
 	license = GPL
 	depends = xkeyboard-config
-	depends = bash
 	source = https://raw.githubusercontent.com/mihi314/neolight/v1.0/linux/neolight
 	source = https://raw.githubusercontent.com/mihi314/neolight/v1.0/linux/register-neolight.sh
 	source = register-neolight.hook
