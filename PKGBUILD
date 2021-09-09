@@ -2,7 +2,7 @@
 _pkgname=tpm-fido
 pkgname=$_pkgname-git
 
-pkgver=r19.80e50c7
+pkgver=r20.2ac4b1d
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -21,9 +21,9 @@ replaces=()
 backup=()
 conflicts=('tpm-fido')
 provides=('tpm-fido')
-md5sums=('SKIP' '3a45c015af2f681c2d5820f034826ec9' '12769495a5f3bcb251f85f5d2d8aafe8' 'bb2e749c3da23a02ed3e63d65f09b309')
+md5sums=('SKIP' '3a45c015af2f681c2d5820f034826ec9' 'b1771a999727fe7c29395f406fe7a7e3' 'bb2e749c3da23a02ed3e63d65f09b309' 'c3df90046656d8f1eea5d6eeee430054')
 
-source=('git+https://github.com/psanford/tpm-fido.git' '99-tpm-fido.rules' 'tpm-fido.service' 'tpm-fido.sysusers')
+source=('git+https://github.com/psanford/tpm-fido.git' '99-tpm-fido.rules' 'tpm-fido.service' 'tpm-fido.sysusers' 'uhid.conf')
 
 build() {
     cd $srcdir/$_pkgname
@@ -35,6 +35,7 @@ package() {
     install -Dm644 "tpm-fido.service" "$pkgdir/usr/lib/systemd/user/tpm-fido.service"
     install -Dm755 "$srcdir/$_pkgname/tpm-fido" "$pkgdir/usr/bin/tpm-fido"
     install -Dm644 "tpm-fido.sysusers" "$pkgdir/usr/lib/sysusers.d/tpm-fido.conf"
+    install -Dm644 "uhid.conf" "$pkgdir/etc/modules-load.d/uhid.conf"
 }
 
 post_install() {
