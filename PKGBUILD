@@ -1,13 +1,13 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=9aa6f8a93f035dd0a1e3978da495d830049480c8  # tags/2.9.0
+_commit=505df5abf8032f3a2295ded417dca9bfb14ea7b8  # tags/2.9.1
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
-pkgver=2.9.0
-pkgrel=2
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -36,6 +36,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
     ${_arch}-meson \
+      -D b_lto=false \
       -D graphite=enabled \
       -D tests=disabled \
       -D docs=disabled \
@@ -69,7 +70,7 @@ package_mingw-w64-harfbuzz() {
     DESTDIR="${pkgdir}" ninja install
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "${pkgdir}/usr/${_arch}" -name '*.a' -and -not -name '*.dll.a' | xargs ${_arch}-strip -g
+    find "${pkgdir}/usr/${_arch}" -name '*.a' | xargs ${_arch}-strip -g
 
     mkdir -p hb-icu/usr/${_arch}/{bin,include/harfbuzz,lib/pkgconfig}; cd hb-icu
     mv "${pkgdir}"/usr/${_arch}/bin/libharfbuzz-icu* ./usr/${_arch}/bin
