@@ -2,7 +2,7 @@
 
 pkgname=animdl-git
 _pkgname=${pkgname%-git}
-pkgver=1.3.17.r3.e221aab
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A highly efficient anime downloader and streamer"
 arch=('any')
@@ -24,7 +24,8 @@ pkgver() {
 	printf "%s.r%s.%s" \
 		"$(grep -o '[0-9.]\+' __version__.py)" \
 		"$(git log --oneline HEAD ^$(git rev-list -1 HEAD __version__.py) | wc -l)" \
-		"$(git rev-parse --short HEAD)"
+		"$(git rev-parse --short HEAD)" \
+		| sed "s/\.r0\..\+//"
 }
 
 package() {
