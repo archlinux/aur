@@ -1,0 +1,13 @@
+pkgbase = go-mangadesk
+	pkgdesc = Terminal client for MangaDex
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/darylhjd/mangadesk
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/darylhjd/mangadesk#tag=v0.5.7?signed
+	validpgpkeys = SKIP
+	sha256sums = SKIP
+
+pkgname = go-mangadesk
