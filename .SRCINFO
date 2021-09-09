@@ -1,6 +1,6 @@
 pkgbase = almh-git
 	pkgdesc = Gives you a CLI menu with some common maintenance options inside an Arch Linux system
-	pkgver = 35.382fb84
+	pkgver = r50.32078a1
 	pkgrel = 1
 	url = https://github.com/voider755/almh
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = almh-git
 	md5sums = SKIP
 
 pkgname = almh-git
-

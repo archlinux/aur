@@ -2,7 +2,7 @@
 # AUR Package Maintainer: lxgr <lxgr@protonmail.com>
 
 pkgname=almh-git
-pkgver=35.382fb84
+pkgver=r50.32078a1
 pkgrel=1
 pkgdesc="Gives you a CLI menu with some common maintenance options inside an Arch Linux system"
 arch=(any)
@@ -16,8 +16,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 package() {
   cd "${srcdir}/$pkgname"
   install -Dm0755 -t "$pkgdir/usr/bin" "almh.py"
