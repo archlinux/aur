@@ -1,17 +1,15 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname=cardano-wallet
-_version=2021-03-04
-pkgver=20210304
+_version=2021-09-09
+pkgver=20210909
 pkgrel=1
 pkgdesc='HTTP server & command-line for managing UTxOs and HD wallets in Cardano.'
 license=('Apache')
 arch=('any')
 url='https://github.com/input-output-hk/cardano-wallet'
-makedepends=('cabal-install-bin' 'ghc-8.6=8.6.5')
-source=("https://github.com/input-output-hk/${pkgname}/archive/v${_version}.zip"
-        "arch-ghc.patch")
-sha256sums=("84fcf0aee57d575c35a29b12d084019df5e0e7bee968d4db92ebdb2fa32c933a"
-        "4212a64f158529417cb06eaeaffb893fa41457fbe5edd310242f9aec54f2e2ff")
+makedepends=('cabal-install-bin' 'ghc')
+source=("https://github.com/input-output-hk/${pkgname}/archive/v${_version}.zip")
+sha256sums=('868247f4a628d0d53ebfcd11bb0969ac2f22aa5579349484b1f3907497d11200')
 
 pkgver() {
     echo ${_version} | sed s/-//g
@@ -20,9 +18,11 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}-${_version}"
   cabal update
+  cabal configure
+  echo "package cardano-crypto-praos" >> ${srcdir}/${pkgname}-${_version}/cabal.project.local
+  echo "  flags: -external-libsodium-vrf" >> ${srcdir}/${pkgname}-${_version}/cabal.project.local
   rm -rf ./arch-build
   mkdir ./arch-build
-  patch -p1 < ../arch-ghc.patch
   cabal install cardano-wallet --install-method=copy --installdir=./arch-build
 }
 
