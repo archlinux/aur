@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/share/X11/xkb/rules/evdev.xml
+Target = usr/share/X11/xkb/rules/evdev
+
+[Action]
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/register-neolight.sh

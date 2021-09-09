@@ -1,0 +1,8 @@
+# exclude everything except for a handful of files
+/*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!README.md
+!neolight.install
+!register-neolight.hook
