@@ -1,7 +1,7 @@
 pkgbase = binmerge
 	pkgdesc = Tool to merge multiple bin/cue tracks into one.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/putnam/binmerge
 	arch = any
 	license = GPL2
