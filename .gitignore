@@ -6,6 +6,8 @@ archlinux-linux
 src/
 pkg/
 
-# packages
+# build logs and packages
+linux-x32-*.log
 linux-x32-*.pkg.tar.xz
 linux-x32-*.pkg.tar.zst
+PKGBUILD-namcap.log
