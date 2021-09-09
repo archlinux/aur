@@ -1,15 +1,14 @@
 pkgbase = haskell-taskell-bin
 	pkgdesc = A CLI kanban board/task manager for Mac and Linux with vim style key-bindings
-	pkgver = 1.10.1
-	pkgrel = 3
+	pkgver = 1.14.4
+	pkgrel = 1
 	url = https://github.com/smallhadroncollider/taskell/
 	arch = x86_64
 	license = unknown
 	depends = ncurses5-compat-libs
 	conflicts = haskell-taskell
-	source = https://github.com/smallhadroncollider/taskell/releases/download/1.10.1/taskell-1.10.1_x86-64-linux.tar.gz
+	source = https://github.com/smallhadroncollider/taskell/releases/download/1.14.4/taskell-1.14.4_x86-64-linux.tar.gz
 	validpgpkeys = SKIP
-	sha512sums = 77cf43670ec4cd26904dfd32d1541a4132b20e13b76b93ff8ee5096665ea700f62e5ceff47d2759c26a1406879132d357263021cddbcd896599d39ba77fead3f
-
+	sha512sums = be081687448fc99886f38a628dc27f66c0cbec6110daad30176a8f3aa42b212b03a644f47179a492159b4ed7918e7ca23a698b36a2b6c3ba97543a7ca0216043
 pkgname = haskell-taskell-bin
 
