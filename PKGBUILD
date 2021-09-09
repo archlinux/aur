@@ -123,7 +123,7 @@ _pkgvermajmin="6.2"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix="beta3"
-pkgrel=4
+pkgrel=5
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -362,6 +362,7 @@ fi
   set &> configure_env
   ${_configure_line}
   cmake --build . --parallel
+  cmake --build . --target docs
 }
 
 create_install_script() {
@@ -415,7 +416,8 @@ package() {
   mkdir -p ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
 
   cd "${_bindir}"
-  DESTDIR="$pkgdir" ninja install || exit 1
+  DESTDIR="$pkgdir" cmake --build . --target install
+  DESTDIR="$pkgdir" cmake --build . --target install_docs
 
   # attempt to fix Qt 5.12.1's insane complete qualification of linked libraries
   # this still results in other sources of the complete path
