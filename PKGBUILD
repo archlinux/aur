@@ -1,9 +1,9 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=palanteer
-pkgver=0.3
-python_pkgver=0.3.0
-pkgrel=4
+pkgver=0.4
+python_pkgver=0.4.0
+pkgrel=1
 pkgdesc="High performance visual profiler, debugger, tests enabler for C++ and Python"
 arch=('x86_64')
 url="https://github.com/dfeneyrou/${pkgname}"
@@ -11,7 +11,7 @@ license=('AGPL-3.0' 'MIT')
 makedepends=('gcc' 'cmake' 'make' 'python-pip' 'python-wheel')
 depends=('python')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("5ded8fc3587736f8288cedb024b3db5cd14c6e9bea04215eeae2d89abe24ed6a")
+sha256sums=("04b0b749f3d171ec0869944972f6301a545ad6e36d7424a610d6ad10c004ac0d")
 
 build() {
   cd ${pkgname}-${pkgver}
