@@ -1,6 +1,6 @@
 pkgbase = mpv-build-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)
-	pkgver = v0.33.0.324.g7314253180
+	pkgver = v0.33.0.336.g62b2c5db98
 	pkgrel = 1
 	url = http://mpv.io
 	arch = x86_64
