@@ -4,7 +4,7 @@
 pkgbase=dogecoin
 pkgname=('dogecoin-cli-bin' 'dogecoin-qt-bin' 'dogecoin-tx-bin')
 pkgver=1.14.4
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://dogecoin.com"
 license=('MIT')
@@ -16,8 +16,8 @@ source_i686=("https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver/$p
 source_armv7h=("https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver/$pkgbase-$pkgver-arm-linux-gnueabihf.tar.gz")
 source_aarch64=("https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver/$pkgbase-$pkgver-aarch64-linux-gnu.tar.gz")
 sha256sums=('49df5d7e132a9ec1ccce2a680cc14298391f4ee7b3e4c8f007c99f5850ed040c'
-            'd5672cab8f48fb8634b7b9c163e9da46edc2c3829cd15af3b4a36f585b66d285'
-            '93d633183b4715ff1d799dc26b30a6edae096a13fb35b062d0d69463f453644e')
+            'a69139912fd61a4e785d6b31840b70b053fbdd9f4e82bee02049f254b50968b4'
+            'ea6fb939303585677397af476a4061bc21e8840da24d349e73b5d4c48843aa27')
 sha256sums_x86_64=('6266235abe4bcbd41ea57bdf42f11ef89aa69f0386e8c8846d5228af69e7fa13')
 sha256sums_i686=('6e93f5edccf528b44112f2088be3ac8f4f44151a757754da09c8c53cdd725815')
 sha256sums_armv7h=('d023b7a6dfc5d92b1635f0fa03e14c9fc787a3eae94fba0cc3aca53b62a8e9ac')
