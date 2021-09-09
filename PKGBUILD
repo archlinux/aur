@@ -4,7 +4,7 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='re'
 pkgname="ocaml-$_projectname"
-pkgver='1.10.0'
+pkgver='1.10.2'
 pkgrel='1'
 pkgdesc='Pure OCaml regular expressions, with support for Perl and POSIX-style strings'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
 	'fix-ounit-name.diff'
 )
-sha512sums=('be284912e5532284f00ba2d8ece5a6504976fa78b29e7bb230dc258f4fea8fe0b15ebdfe34ac3242b7265f78498142a5a2d2f2c35f9e653addb717e34bf21a09'
+sha512sums=('ed89ab547e01ecb8967e9bf0df5673eb56835448ca42dcd8d5558fd1170109a64533c3a0f84ac983f15e512234815ce0c003ef195c8a52e8275e1dc2f1d3602c'
             'cd665ef2d43a82f26a34480265db42031b8f9cd4b0b71890f3e7fc029c1e68c4f518f1ced2b78deedc522808df0037da83b5527f6442aaf65c5dfb1b7823166f')
 
 _sourcedirectory="$pkgname-$pkgver"
