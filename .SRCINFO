@@ -1,12 +1,11 @@
 pkgbase = libspng-git
 	pkgdesc = C library for reading and writing PNG format files with a focus on security and ease of use
-	pkgver = 0.6.2.r17.g573f2db
+	pkgver = 0.7.0.rc3.r20.gbc38395
 	pkgrel = 1
 	url = https://libspng.org/
 	arch = x86_64
 	arch = aarch64
 	license = BSD
-	checkdepends = libpng
 	makedepends = git
 	makedepends = meson
 	depends = zlib
@@ -16,4 +15,3 @@ pkgbase = libspng-git
 	sha256sums = SKIP
 
 pkgname = libspng-git
-

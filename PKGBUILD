@@ -1,18 +1,17 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libspng-git
-pkgver=0.6.2.r17.g573f2db
+pkgver=0.7.0.rc3.r20.gbc38395
 pkgrel=1
-pkgdesc="C library for reading and writing PNG format files with a focus on security and ease of use"
+pkgdesc='C library for reading and writing PNG format files with a focus on security and ease of use'
 arch=(x86_64 aarch64)
-url="https://libspng.org/"
-license=('BSD')
+url='https://libspng.org/'
+license=(BSD)
 depends=(zlib)
 makedepends=(git meson)
-checkdepends=(libpng)
 provides=(libspng)
 conflicts=(libspng)
-source=("git+https://gitlab.com/randy408/libspng.git")
+source=('git+https://gitlab.com/randy408/libspng.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,10 +22,6 @@ pkgver() {
 build() {
 	arch-meson build libspng
 	meson compile -C build
-}
-
-check() {
-	meson test -C build --print-errorlogs
 }
 
 package() {
