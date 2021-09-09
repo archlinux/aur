@@ -3,10 +3,10 @@
 
 pkgname=eudic
 pkgver=12.6.5
-_date=2021-08-19
+_date=2021-08-27
 _lang=en
 _flang=English
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary  ${_flang} dictionary software for linux"
 arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
