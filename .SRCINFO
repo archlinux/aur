@@ -1,0 +1,23 @@
+pkgbase = python-microstructpy
+	pkgdesc = Microstructure modeling, mesh generation, analysis, and visualization
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/kip-hart/microstructpy
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-aabbtree
+	depends = pybind11
+	depends = python-lsq-ellipse
+	depends = python-matplotlib
+	depends = python-meshpy
+	depends = python-pygmsh
+	depends = python-pyquaternion
+	depends = python-pyvoro-mmalahe
+	depends = python-scipy
+	depends = python-xmltodict
+	source = https://github.com/kip-hart/microstructpy/archive/v1.5.2.tar.gz
+	sha512sums = 016cca96116d8ad3e0b170868412e01ad791c51d6040ae03e21ee944f372f5f17040b970b7241a994ad250114554ae94aa1f9d364467ebb014f122eeab3775c5
+
+pkgname = python-microstructpy
