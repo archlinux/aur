@@ -1,0 +1,20 @@
+pkgbase = chad_launcher-bin
+	pkgdesc = GNU/LINUX GAMING UNLEASHED!
+	pkgver = 0.3.alpha3
+	pkgrel = 1
+	url = https://gitlab.com/Gnurur/chad_launcher
+	arch = x86_64
+	license = GPL3
+	depends = cargo
+	depends = webkit2gtk
+	depends = curl
+	depends = wget
+	depends = openssl
+	depends = appmenu-gtk-module
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = libvips
+	source = chad_launcher-bin-0.3.alpha3.zip::https://gitlab.com/Gnurur/chad_launcher/-/jobs/artifacts/0.3-alpha3/download?job=tauri:build
+	md5sums = SKIP
+
+pkgname = chad_launcher-bin
