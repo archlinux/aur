@@ -1,14 +1,14 @@
 # Maintainer: YSTYLE <lxy5266@live.com>
 pkgname=kaf-wifi
-pkgver=v1.0.4
+pkgver=v1.0.5
 pkgrel=1
 epoch=
 pkgdesc="kaf wifi传书软件,支持kindle"
 arch=('x86_64')
 url="https://github.com/ystyle/kaf-wifi"
 license=('MulanPSL')
-source=("https://github.com/ystyle/kaf-wifi/releases/download/$pkgver/kaf-wifi-linux.zip")
-md5sums=('28d7a457e0bcca48ce17e8d116145468')
+source=("https://github.com/ystyle/kaf-wifi/releases/download/$pkgver/kaf-wifi_${pkgver}_linux_amd64.zip")
+md5sums=('8bac52849c063a055d8dfb7f586b210d')
 
 package() {
     install -Dm755 kaf-wifi-linux "$pkgdir/usr/bin/kaf-wifi"
