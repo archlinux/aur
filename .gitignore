@@ -1,12 +1,6 @@
-# source tarball and build directory
-linux-*/
-linux-*.tar.xz
-
-# kernel image
-vmlinuz.*
-
-# makepkg and production
 stable-linux
 src/
 pkg/
+PKGBUILD-namcap.log
 qemu-guest-kernel-*.pkg.tar*
+qemu-guest-kernel-*.log
