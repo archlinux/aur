@@ -1,0 +1,18 @@
+pkgbase = shazam-cli-git
+	pkgdesc = CLI music recognition using the Shazam API.
+	pkgver = r1.1d649b6
+	pkgrel = 1
+	url = https://github.com/loiccoyle/shazam-cli
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = jq
+	depends = ffmpeg
+	depends = libnotify
+	optdepends = dunstify: recognition results in interactive notification.
+	provides = shazam-cli
+	source = shazam-cli::git+https://github.com/loiccoyle/shazam-cli.git
+	md5sums = SKIP
+
+pkgname = shazam-cli-git
