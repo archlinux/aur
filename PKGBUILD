@@ -4,11 +4,11 @@
 pkgbase=dogecoin
 pkgname=('dogecoin-cli-bin' 'dogecoin-qt-bin' 'dogecoin-tx-bin')
 pkgver=1.14.4
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://dogecoin.com"
 license=('MIT')
-source=("https://raw.githubusercontent.com/$pkgbase/$pkgbase/v$pkgver/share/pixmaps/bitcoin128.png"
+source=("https://raw.githubusercontent.com/$pkgbase/$pkgbase/v$pkgver/share/pixmaps/dogecoin128.png"
         "https://raw.githubusercontent.com/$pkgbase/$pkgbase/v$pkgver/contrib/debian/$pkgbase-qt.desktop"
         "https://raw.githubusercontent.com/$pkgbase/$pkgbase/v$pkgver/COPYING")
 source_x86_64=("https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver/$pkgbase-$pkgver-x86_64-linux-gnu.tar.gz")

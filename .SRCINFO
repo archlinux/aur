@@ -1,13 +1,13 @@
 pkgbase = dogecoin
 	pkgver = 1.14.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dogecoin.com
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	source = https://raw.githubusercontent.com/dogecoin/dogecoin/v1.14.4/share/pixmaps/bitcoin128.png
+	source = https://raw.githubusercontent.com/dogecoin/dogecoin/v1.14.4/share/pixmaps/dogecoin128.png
 	source = https://raw.githubusercontent.com/dogecoin/dogecoin/v1.14.4/contrib/debian/dogecoin-qt.desktop
 	source = https://raw.githubusercontent.com/dogecoin/dogecoin/v1.14.4/COPYING
 	sha256sums = 49df5d7e132a9ec1ccce2a680cc14298391f4ee7b3e4c8f007c99f5850ed040c
