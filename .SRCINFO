@@ -1,7 +1,7 @@
 pkgbase = kaf-wifi
 	pkgdesc = kaf wifi传书软件,支持kindle
 	pkgver = v1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ystyle/kaf-wifi
 	arch = x86_64
 	license = MulanPSL
