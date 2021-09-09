@@ -2,14 +2,14 @@
 _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color models"
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=('GPL3')
 depends=('python-matplotlib' 'python-npx')
 makedepends=('python-setuptools' 'git-lfs')
-# checkdepends=('python-pytest-codeblocks' 'python-perfplot' 'gmsh' 'python-colorspacious' 'python-colour-science')
+# checkdepends=('python-pytest-codeblocks' 'python-perfplot' 'gmsh' 'python-colorspacious' 'python-colour-science' 'python-pyvista' 'python-optimesh')
 optdepends=('python-meshio: for creation mesh'
   'python-meshzoo: for creation triangle and cube mesh'
   'python-optimesh: for triangular mesh optimization'
