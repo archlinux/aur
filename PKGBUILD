@@ -3,7 +3,7 @@
 
 _gemname=gollum-rugged_adapter
 pkgname=ruby-$_gemname
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Adapter for Gollum to use Rugged (libgit2) at the backend.'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(ruby
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('91b12d0994e903927594701a938fec7d84892d68')
+sha1sums=('1b465b6dc6c6f4e6815b059daffc7dc79b2911d1')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
