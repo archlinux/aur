@@ -14,6 +14,7 @@ depends=(
   python-httpx
   python-h2
 )
+optdepends=('python-hyper: faster http networking')
 makedepends=(
   python-setuptools
   git

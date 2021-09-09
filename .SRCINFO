@@ -9,6 +9,7 @@ pkgbase = python-googletrans-git
 	makedepends = git
 	depends = python-httpx
 	depends = python-h2
+	optdepends = python-hyper: faster http networking
 	provides = python-googletrans
 	conflicts = python-googletrans
 	source = git+https://github.com/ssut/py-googletrans.git
