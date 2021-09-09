@@ -5,6 +5,7 @@ pkgbase = creators-tf-launcher-bin
 	url = https://github.com/CreatorsTF/Creators.TF-Community-Launcher
 	arch = x86_64
 	license = MIT
+	makedepends = tar
 	depends = libnotify
 	depends = libxss
 	depends = nspr
