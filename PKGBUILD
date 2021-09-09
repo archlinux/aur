@@ -1,18 +1,18 @@
 # Maintainer: Mohd Lee <faulty.lee+aur@gmail.com>
 # Contributor: Ricardo Band <email@ricardo.band>
 pkgname=storageexplorer
-pkgver=1.20.1
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Microsoft Azure Storage Explorer is a standalone app from Microsoft that allows you to easily work with Azure Storage data on Windows, macOS and Linux."
 arch=(x86_64)
 url="https://github.com/microsoft/AzureStorageExplorer/releases"
 license=('unknown')
-depends=('glibc' 'gnome-keyring' 'libgnome-keyring' 'dotnet-runtime-2.1')
+depends=('glibc' 'gnome-keyring' 'libgnome-keyring' 'dotnet-runtime-3.1')
 provides=('storageexplorer')
 changelog=
 source=("Linux.StorageExplorer-linux-x64-v$pkgver.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v$pkgver/Linux_StorageExplorer-x64.tar.gz"
         "storageexplorer.desktop")
-sha256sums=('5ffd18a6b8ba11750c5de5a20a78d609230660f2a3763016c9c6ce07a49daf3e'
+sha256sums=('ef4b4a17cbefd62a11bb7cb763cd40db1ecbeeb6e03c40f168f9f9704645e9d3'
             '0cc2d608894c17d8b3e76f7dd98d73314447d4435a7378d944d4c6ea948d0bf4')
 
 package() {
@@ -25,7 +25,7 @@ package() {
     install -m 644 "libffmpeg.so" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "libGLESv2.so" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "libvk_swiftshader.so" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "libvulkan.so" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "libvulkan.so.1" "${pkgdir}/opt/StorageExplorer/"
     cp -r "locales" "${pkgdir}/opt/StorageExplorer/"
     cp -r "resources" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "resources.pak" "${pkgdir}/opt/StorageExplorer/"
