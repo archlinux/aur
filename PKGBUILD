@@ -4,7 +4,7 @@
 # Contributor: John Trengrove <john at retrofilter dot com>
 
 pkgname=dgraph-bin
-pkgver=21.03.1
+pkgver=21.03.2
 pkgrel=1
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
@@ -19,8 +19,8 @@ source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd
         "https://raw.githubusercontent.com/dgraph-io/dgraph/v$pkgver/contrib/systemd/centos/dgraph-alpha.service"
         "https://raw.githubusercontent.com/dgraph-io/dgraph/v$pkgver/contrib/systemd/centos/dgraph-zero.service"
         "https://raw.githubusercontent.com/dgraph-io/dgraph/v$pkgver/contrib/systemd/centos/add_dgraph_account.sh")
-sha256sums=('49da6d8fbf22276690926581caf046810764524f9c14840a161729f69b578e4a'
-            'efc880649fa4f763814e1bd8e611ae893dc1ae198589a42ec58ab55690a83867'
+sha256sums=('086f8c64f71658be220d29638d295b8f40ee471b34a92ab0744d36c183472eb4'
+            '3145abfcc70503cda7f22c6918fe22fa967f18a38d6393103bf9ed16607793e7'
             'bfdc75136567068dd049c2d226049a57de5f4a1871eab7429c022e95952efb0d'
             'b0436225ea1b65e47cea0e4bc039bcf5c795330f352b6333a99e84f5bd000d23'
             '1d717b444a2bd4a6a5bfe035c8e46bba8319793f9ca211c3d815fa24327dc37f'
