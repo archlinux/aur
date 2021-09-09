@@ -1,14 +1,14 @@
 pkgbase = skpr
 	pkgdesc = The skpr cli tool
-	pkgver = 0.12.2
-	pkgrel = 5
+	pkgver = 0.13.0
+	pkgrel = 6
 	url = https://github.com/skpr/cli
 	arch = x86_64
 	license = MIT
 	makedepends = tar
 	provides = skpr
 	provides = skpr-rsh
-	source = skpr_v0.12.2::https://github.com/skpr/cli/releases/download/v0.12.2/skpr_0.12.2_linux_amd64.tar.gz
-	sha512sums = 6d0264ad50e4f47bfe4e1edc8f373b69f6817faddc54711c42889ca0725e9e25b2e567229a42ccc3f2bdf499d07f0949c9020e721000af5edb5721c80357e254
+	source = skpr_v0.13.0::https://github.com/skpr/cli/releases/download/v0.13.0/skpr_0.13.0_linux_amd64.tar.gz
+	sha512sums = 0f9178e9fea405239b89bcb4f97a84bcb774f4e2987a6ab100e955e26e09cab1181742c39cf9ac2a976c406c160ee1341570a6ef8b83dce1c83af63b0275e2d5
 
 pkgname = skpr
