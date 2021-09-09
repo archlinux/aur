@@ -1,7 +1,7 @@
 pkgbase = notion-app-enhanced
 	pkgdesc = The all-in-one workspace for your notes and tasks, but enhanced
 	pkgver = 2.0.16
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/notion-enhancer/notion-repackaged
 	install = notion-app-enhanced.install
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = notion-app-enhanced
 	depends = libappindicator-gtk3
 	provides = notion-app
 	conflicts = notion-app
-	source = https://github.com/notion-enhancer/notion-repackaged/releases/download/v2.0.16-2/notion-app-enhanced-2.0.16-2.pacman
-	md5sums = f56e78c7531d6891ddd7cfe171328d71
+	source = https://github.com/notion-enhancer/notion-repackaged/releases/download/v2.0.16-3/notion-app-enhanced-2.0.16-3.pacman
+	md5sums = 032f33e0a34087e8849b42895d40447c
 
 pkgname = notion-app-enhanced

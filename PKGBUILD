@@ -2,7 +2,7 @@
 
 pkgname=notion-app-enhanced
 pkgver="2.0.16"
-pkgrel=5
+pkgrel=6
 pkgdesc="The all-in-one workspace for your notes and tasks, but enhanced"
 arch=('i686' 'x86_64')
 url="https://github.com/notion-enhancer/notion-repackaged"
@@ -28,9 +28,9 @@ makedepends=()
 provides=('notion-app')
 conflicts=('notion-app')
 
-notion_repackaged_ver="2.0.16-2"
+notion_repackaged_ver="2.0.16-3"
 source=("https://github.com/notion-enhancer/notion-repackaged/releases/download/v${notion_repackaged_ver}/notion-app-enhanced-${notion_repackaged_ver}.pacman")
-md5sums=('f56e78c7531d6891ddd7cfe171328d71')
+md5sums=('032f33e0a34087e8849b42895d40447c')
 
 install=${pkgname}.install
 
