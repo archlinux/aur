@@ -1,6 +1,6 @@
 pkgbase = obs-image-reaction
 	pkgdesc = OBS Plugin with image that reacts to sound source.
-	pkgver = 1.0
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/scaledteam/obs-image-reaction
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = obs-image-reaction
 	provides = obs-image-reaction
 	conflicts = obs-image-reaction-bin
 	conflicts = obs-image-reaction-git
-	source = https://github.com/scaledteam/obs-image-reaction/archive/refs/tags/1.0.tar.gz
-	source = https://raw.githubusercontent.com/scaledteam/obs-image-reaction/1.0/LICENSE
-	sha512sums = 3b4823aa5aef4c335ecea3c927e3687bea82c27095f80d9d76ef266d4b0e567e6d1efee1949ea4f90fc7d86d8f7e9ebcbf7d8dbdcbd599a5e436edaeeacf0401
+	source = https://github.com/scaledteam/obs-image-reaction/archive/refs/tags/1.2.tar.gz
+	source = https://raw.githubusercontent.com/scaledteam/obs-image-reaction/1.2/LICENSE
+	sha512sums = d8a83a92a057903f6b70da58cb93e49f3eac04e5d248c645758b0862e36a495fa1f0d1a101ff53b5471406a5d21e907e6f255566c1f242dc767f8dbe7d586ce7
 	sha512sums = SKIP
 
 pkgname = obs-image-reaction
