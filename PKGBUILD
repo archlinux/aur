@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=zx
-pkgver=4.1.1
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc='A tool for writing better scripts'
 arch=(any)
 url=https://github.com/google/zx
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(nodejs)
 makedepends=(npm git)
 source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('6ce37a5864b4e3e72f280001a8383705748248e9a31d1ed65e2fd290b78787e999a273369751730a577a2f3ef3290196cec66ae16e3f2d6688ff415406eeaeec')
+sha512sums=('20ac9247ed8690f91e486fb0ddf730056250e40a6cc929dae387a97837a0a5162aa68d465912f32ab5b5c302cfe81bd064e79ead01a0106538d241fbec6935dd')
 
 build() {
 	cd "$pkgname-$pkgver"
