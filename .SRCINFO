@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.13.12.arch1.r1016445.bf6289ccf9e9
+	pkgver = v5.13.15.arch1.r1016481.fc831fce0116
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -22,6 +22,8 @@ pkgbase = linux-bcachefs-git
 	options = !strip
 	source = linux-bcachefs::git+https://github.com/koverstreet/bcachefs.git#branch=master
 	source = linux-archlinux::git+https://github.com/archlinux/linux.git
+	source = arch_patches.patch
+	source = linux::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 	source = git+https://github.com/graysky2/kernel_compiler_patch.git
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -29,8 +31,10 @@ pkgbase = linux-bcachefs-git
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = 8b0cec5f9d5f73a13f186e11ffcac5ec9dc66c5e58d690bcda999ee81d61a3643b779560d6cc31c0bb9559b82bc3cc4fb4ac9994da88726ad12df787683c7dad
 	sha512sums = SKIP
-	sha512sums = 6c5a83576dec33786553689cd1a4e595eb266ed90e3f3ede08c7c2d6b16e2ff8c9fc4b5b0b9229b2236c51c7dc1bac21f93dee99b0c5e8ec1b3dd7c63aa94adb
+	sha512sums = SKIP
+	sha512sums = 3b9493236524806ba489c6bb1e2eddf117e2928a6679d68a5e27fbb8e6e8994160beb92d62db1aa7237291876cf172df72d249af95cef39feeefdffdc3337938
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
