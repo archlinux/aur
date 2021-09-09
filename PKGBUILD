@@ -2,7 +2,7 @@
 
 pkgname=apple-music-electron-git
 _pkgname=Apple-Music-Electron
-pkgver=2.5.0.591.7e073ab
+pkgver=2.5.0.nightly.2.623.67cb38c
 pkgrel=1
 pkgdesc="Electron wrapper for Apple Music based on Electron 14.0.0"
 arch=("aarch64" "armv7h" "i686" "x86_64")
@@ -21,7 +21,8 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	echo "$(grep '"version":.*' package.json | cut -d '"' -f 4 | head -1).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  var=$(grep '"version":.*' package.json | cut -d '"' -f 4 | head -1)
+  echo ${var/-/.}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
