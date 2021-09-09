@@ -1,7 +1,7 @@
 pkgbase = unreal-tournament-goty-steam
 	pkgdesc = Unreal Tournament GOTY Linux with data via Steam
 	pkgver = 469
-	pkgrel = 1
+	pkgrel = 2
 	url = https://store.steampowered.com/app/13240/Unreal_Tournament_Game_of_the_Year_Edition/
 	arch = i686
 	arch = x86_64

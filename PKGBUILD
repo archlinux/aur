@@ -3,7 +3,7 @@
 pkgname=unreal-tournament-goty-steam
 _pkgname=unreal-tournament-goty
 pkgver=469
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('steamcmd' 'icoutils')
 depends=('lib32-libgl'
@@ -34,7 +34,8 @@ package() {
     cp -r $srcdir/${_pkgname}/* $pkgdir/opt/${_pkgname}/
     rm -rf $pkgdir/opt/${_pkgname}/steamapps
     rm $pkgdir/opt/${_pkgname}/installscript.vdf
-    tar --extract --file "OldUnreal-UTPatch469a-Linux.tar.bz2" --directory "$pkgdir/opt/${_pkgname}"    
+    tar --extract --file "OldUnreal-UTPatch469a-Linux.tar.bz2" --directory "$pkgdir/opt/${_pkgname}"
+    chmod 666 $pkgdir/opt/${_pkgname}/System/{UnrealTournament,User}.ini 
 
     # Install desktop file.
     install -D -m 644 $srcdir/${_pkgname}.desktop \
