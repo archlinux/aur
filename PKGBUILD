@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosconsole'
 pkgname='ros-melodic-rosconsole'
 pkgver='1.13.18'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
@@ -40,8 +40,15 @@ depends=(
 )
 
 _dir="rosconsole-${pkgver}/"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rosconsole/archive/${pkgver}.tar.gz")
-sha256sums=('234d83dfddcf864e5d223eaedd58e1505ad0d2707ea4ff497b69c4f28501f179')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rosconsole/archive/${pkgver}.tar.gz"
+  "log4cxx012.patch")
+sha256sums=('234d83dfddcf864e5d223eaedd58e1505ad0d2707ea4ff497b69c4f28501f179'
+  'bc220c8d62f9c0c9cea378908ecae195d4bad1a1993a8de0fae370989ff2445d')
+
+prepare() {
+  cd "${srcdir}/$_dir"
+  patch -p1 --input="${srcdir}/log4cxx012.patch"
+}
 
 build() {
 	# Use ROS environment variables.
