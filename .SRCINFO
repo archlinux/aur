@@ -1,0 +1,18 @@
+pkgbase = ut3-wine-steam
+	pkgdesc = Unreal Tournament 3 Black using WINE with data via Steam
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://store.steampowered.com/app/13210/Unreal_Tournament_3_Black/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	depends = wine
+	source = ut3.desktop
+	source = ut3.sh
+	source = ut3.png
+	sha256sums = 7fa682a9a2c15facd1d1c6361754cddca1dd2c9913d0c90585ff694fa45d62d9
+	sha256sums = e6accb8e23cf06bdd4c70ac8ef095208423777da65b479177b43efe8e03cfb10
+	sha256sums = 1f9441dc8dbae60187883799125393c4333f22eb2eb33fea5bf4a6270bdaa055
+
+pkgname = ut3-wine-steam

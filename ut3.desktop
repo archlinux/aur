@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Unreal Tournament 3
+Comment=Unreal Tournament 3 Black WINE
+Exec=/usr/bin/ut3
+Icon=ut3
+Terminal=false
+Type=Application
+Categories=Application;Game;
