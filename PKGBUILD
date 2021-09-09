@@ -1,6 +1,6 @@
 # Maintainer: baraclese at gmail dot com
 pkgname=binmerge
-pkgver=r17.5d32365
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Tool to merge multiple bin/cue tracks into one."
 url="https://github.com/putnam/binmerge"
@@ -10,13 +10,9 @@ depends=(
     python
     python-argparse
 )
-source=("git+https://github.com/putnam/binmerge")
-sha256sums=('SKIP')
+source=("https://github.com/putnam/binmerge/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('37a06f6a01e7ace0b6fd37090b7c867ffc139eef43dded21a9aca2257d30b741')
 
-pkgver() {
-    cd binmerge
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 package() {
     cd binmerge
     install -Dm 755 binmerge "$pkgdir/usr/bin/binmerge"
