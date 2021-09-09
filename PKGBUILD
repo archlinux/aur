@@ -1,8 +1,8 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: pypi trakt-scrobbler poetry
+# pkg: pypi trakt-scrobbler pyproject
 pkgname=trakt-scrobbler
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
