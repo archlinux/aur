@@ -1,6 +1,6 @@
 pkgbase = scrape-git
 	pkgdesc = Snake like game written in python3
-	pkgver = 2.e7badce
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/scrape
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = scrape-git
 	md5sums = SKIP
 
 pkgname = scrape-git
-

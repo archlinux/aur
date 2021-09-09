@@ -2,13 +2,12 @@
 
 pkgbase=scrape-git
 pkgname='scrape-git'
-pkgver=2.e7badce
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Snake like game written in python3"
 arch=(any)
 url="https://github.com/lxgr-linux/scrape"
 license=('GPL3')
-depends=('python')
 provides=('scrape')
 depends=('python' 'python-scrap_engine-git')
 makedepends=('git')
@@ -17,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgbase"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --tags --always | sed -r 's|release-||g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
