@@ -1,0 +1,19 @@
+pkgbase = assemblyline-git
+	pkgdesc = An in-memory assembler for x86.
+	pkgver = 1.0.0.r27.b4c948e
+	pkgrel = 1
+	url = https://github.com/0xAde1a1de/assemblyline.git
+	arch = x86_64
+	license = Apache
+	checkdepends = nasm
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = make
+	provides = libassemblyline
+	provides = asmline
+	source = git+https://github.com/0xAde1a1de/assemblyline.git
+	sha256sums = SKIP
+
+pkgname = assemblyline-git
