@@ -1,9 +1,13 @@
 post_install() {
   cat <<__EOT__
-This new wallet build (v$1) will hard fork the chain at block
-2286271 (September 24th 12:00 UTC).
+This wallet build (v$1) will hard fork the chain at block 2286271,
+expected to take place on 2021-09-24 at 12:00 UTC.
 
-Please see https://www.bitcanna.io/hard-fork-announcement-v1-0-3/
+Please see
+
+ ⌘ https://www.bitcanna.io/hard-fork-announcement-v1-0-3/
+ ⌘ https://www.bitcanna.io/bitcanna-cosmos-launch-full-update/
+
 for details.
 __EOT__
 }

@@ -4,7 +4,7 @@
 _pkgname='bitcanna-wallet'
 pkgname="${_pkgname}-bin"
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Full node BitCanna (BCNA) versions of bitcannad, bitcanna-cli, bitcanna-qt, and bitcanna-tx, w/GUI and wallet'
 arch=('x86_64')
 url='https://www.bitcanna.io/'
