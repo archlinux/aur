@@ -4,7 +4,7 @@
 pkgbase=dogecoin
 pkgname=('dogecoin-cli-bin' 'dogecoin-qt-bin' 'dogecoin-tx-bin')
 pkgver=1.14.4
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://dogecoin.com"
 license=('MIT')
