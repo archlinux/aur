@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-git
-pkgver=rev.13954
+pkgver=rev.14767
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -39,17 +39,19 @@ build(){
 	cmake ../Vega-Strike-Engine-Source/engine/ \
 	-DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-	-DENABLE_PIE=ON \
-	-DUSE_PYTHON_3=ON
+	-DENABLE_PIE=ON 
 	make
 }
 
 package() {
 #Hopefully we are done horsing around with this now. 
+
 #mkdir -p "${pkgdir}"/usr/bin
 #  cd build
 #  cp -vp {vegastrike,setup/vegasettings,objconv/mesh_tool} "${pkgdir}"/usr/bin
 #
 #This should be the only way to install
 make -C build DESTDIR="${pkgdir}" install
+rm -rf ${pkgdir}/usr/include
+rm -rf ${pkgdir}/usr/lib
 }

@@ -1,6 +1,6 @@
 pkgbase = vegastrike-engine-git
 	pkgdesc = A spaceflight simulator in massive universe
-	pkgver = rev.13954
+	pkgver = rev.14767
 	pkgrel = 1
 	url = www.vega-strike.org
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = vegastrike-engine-git
 	sha1sums = SKIP
 
 pkgname = vegastrike-engine-git
-
