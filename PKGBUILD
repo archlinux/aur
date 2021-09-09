@@ -11,8 +11,8 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor, with ozone
 #   - erbium: 12
 #   - fermium: 14
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron12
-pkgver=1.57.1
+_electron=electron13
+pkgver=1.60.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -30,7 +30,7 @@ source=("$pkgname::git+$url.git#tag=$pkgver"
         '0001-patch-product.json-to-enable-all-extensions.patch')
 sha512sums=('SKIP'
             '6e8ee1df4dd982434a8295ca99e786a536457c86c34212546e548b115081798c5492a79f99cd5a3f1fa30fb71d29983aaabc2c79f4895d4a709d8354e9e2eade'
-            'de6a39384ec1e101d07923544339a5e2d9c9a5b96cdca0f1bfd4fa97115a52678e5c8fe207471e8427bf6593f0495b44cbd7f729a283873c347a5a06e7e435f4'
+            '84c4f14bfa79210721f18b46e2d672f3816638b526721475445ad437b373a7574d96b808e5a16eb1026ea60d5b50e30aa5eef7f69d4bd64019291ee195b2ec89'
             'c3e32bfb1fe75b7cdbb6e341335a1ddf8096f364e9b5d36dd8f84dc129dc0951b1ea7a06f5bf57fa12b6e0bb3e02e9a52c664cb22eeca61df9c9ba673950f14d')
 
 # Even though we don't officially support other archs, let's
