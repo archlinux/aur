@@ -1,0 +1,15 @@
+pkgbase = arcolinux-betterlockscreen
+	pkgdesc = ArcoLinux-betterlockscreen
+	pkgver = 21.08.03
+	pkgrel = 1
+	url = https://github.com/arcolinux/arcolinux-betterlockscreen
+	arch = any
+	license = GPL3
+	makedepends = tar
+	depends = python3
+	depends = betterlockscreen
+	provides = template
+	source = arcolinux-betterlockscreen-21.08-03.tar.gz::https://github.com/arcolinux/arcolinux-betterlockscreen/archive/refs/tags/21.08-03.tar.gz
+	md5sums = SKIP
+
+pkgname = arcolinux-betterlockscreen
