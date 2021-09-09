@@ -1,0 +1,18 @@
+pkgbase = python-meshpy
+	pkgdesc = 2D/3D simplicial mesh generator interface for Python (Triangle, TetGen, gmsh)
+	pkgver = 2020.1
+	pkgrel = 1
+	url = https://documen.tician.de/meshpy
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-matplotlib
+	makedepends = python-setuptools
+	makedepends = git
+	depends = pybind11
+	depends = python-gmsh_interop
+	source = git+https://github.com/inducer/meshpy.git?signed#tag=v2020.1
+	validpgpkeys = 900A958D9A0ACA58B1468F2471AA298BCA171145
+	sha512sums = SKIP
+
+pkgname = python-meshpy
