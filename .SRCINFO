@@ -10,6 +10,6 @@ pkgbase = arcolinux-betterlockscreen
 	depends = betterlockscreen
 	provides = template
 	source = arcolinux-betterlockscreen-21.08-03.tar.gz::https://github.com/arcolinux/arcolinux-betterlockscreen/archive/refs/tags/21.08-03.tar.gz
-	md5sums = SKIP
+	md5sums = 71ac732ad37c26f83ed2a0ef42eeb020
 
 pkgname = arcolinux-betterlockscreen

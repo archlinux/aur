@@ -12,7 +12,7 @@ depends=('python3' 'betterlockscreen')
 makedepends=('tar')
 provides=('template')
 source=("arcolinux-betterlockscreen-${_pkgver}.tar.gz::https://github.com/arcolinux/arcolinux-betterlockscreen/archive/refs/tags/${_pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('71ac732ad37c26f83ed2a0ef42eeb020')
 
 package() {
 	cd "$srcdir/arcolinux-betterlockscreen-${_pkgver}/usr"
