@@ -1,10 +1,10 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=boundary
-pkgver=0.5.1
+pkgver=0.6.0
 # UI version found at: internal/ui/VERSION
 # tar -O -xf boundary-$pkgver.tar.gz boundary-$pkgver/internal/ui/VERSION | head -n 1 | cut -d ' ' -f 1
-_uiver='c04c8f4f0a057d4f5734c8b9409f37fb1c9981db'
+_uiver='1321df32659b2b808ca889f053b09bee4504a368'
 pkgrel=1
 pkgdesc="Enables identity-based access management for dynamic infrastructure"
 arch=('x86_64')
@@ -26,8 +26,8 @@ source=(
   'sysusers.conf'
 )
 noextract=("$pkgname-ui-$_uiver.tar.gz")
-b2sums=('3a68b21ec04577bc7d6a2b844e31e91d656c563e061435439cb8d225ea670c2264ae359e2ae7f96ae0c9eeefe776cf4188ce9e21b1c525d34c4e76dbe3e48896'
-        '0e9d11076051f9b12b4804533969ee86b37e2ca5115f0e0798a92497ef32f43e5900554ec8d55c60b28e963a604f4b417b4530ca3a45b5246a6918c856684a99'
+b2sums=('1489c7a1c66f1842349ec61a77bb9b7510c9e0c3a2f5e376fdcae5767dd77f5f687ddb3ac5d7981ff5efeb2352f0975b2b23ece14c7d4846d7da78b22cc223a6'
+        '989a75a52e4d52b65317c155ccb7276929952e9011b72c297f8a84b988bcab5cda826eabbd4aa5f6ff00854e6f0b772bbf9b8d840ca36d8d63b05b7048cb613a'
         'c35684fbcd28d6aa23abf9e3765321a9434f3826c5d84f5dc95f0695df78007b2f1cb535eeab3a8157f27f7cb6c2444bf40efc468b6a8017de07f87a095e50a1'
         '155721b62bf6d820c59b711f547cfdb5c42c7ad713e1e0bb3d973af511b4d5fd57a913c59a39045af7213b19e6fb76e5836190a2c630e2f93bba975657cd719d'
         '6c1cf64c430d711b544d9655af746b6525d9ee9c441f7842ee2f115b52886e37c684f97cf30b753971b3ac18a731b4249c7ed8e5311cc759bd69d2a62e089aff')
