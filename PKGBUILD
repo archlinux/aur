@@ -4,7 +4,7 @@
 
 pkgname=calima-app
 pkgbase=calima-app-aur
-pkgver=2.0.10
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="Access application for Calima ERP Contábil."
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
 )
 options=('!emptydirs' '!strip')
 source=("https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-${pkgver}.deb")
-sha512sums=('a27a1f238d7bebbfcd09a0b7edaf4e71b649e91207140d08a51949b56b4b8d0d271c0e85136ca18c9de83e69e39876489f3c7ab11e76e8755ebc817aac31fdf0')
+sha512sums=('c226b9d4ba26f314c8eac5ffab2038a817d766be6f7b0f2cf637b461a8f4a6194eb26c3a2a15fe61c86b459078cc629212a8ef3e354a8f75d2e79019f8233380')
 
 package() {
 	msg2 "Extracting the data.tar.xz..."
