@@ -31,7 +31,7 @@ package_dogecoin-qt-bin() {
 
 	install -Dm755 $pkgbase-$pkgver/bin/dogecoin-qt $pkgdir/usr/bin/dogecoin-qt
 	install -Dm644 $pkgbase-$pkgver/share/man/man1/dogecoin-qt.1 $pkgdir/usr/share/man/man1/dogecoin-qt.1
-	install -Dm644 bitcoin128.png $pkgdir/usr/share/pixmaps/dogecoin128.png
+	install -Dm644 dogecoin128.png $pkgdir/usr/share/pixmaps/dogecoin128.png
 	install -Dm644 COPYING $pkgdir/usr/share/licenses/dogecoin-qt-bin/COPYING
 	install -Dm644 dogecoin-qt.desktop $pkgdir/usr/share/applications/dogecoin-qt.desktop
 }
