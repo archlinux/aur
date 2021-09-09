@@ -3,7 +3,7 @@
 pkgname=kubectl-kots-bin
 _pkgname="${pkgname%-bin}"
 _pkgname2="${_pkgname#kubectl-}"
-pkgver=1.49.0
+pkgver=1.50.1
 pkgrel=1
 pkgdesc='Kubectl plugin and admin console to help manage Kubernetes Off-The-Shelf (KOTS) software'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('kubectl')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${_pkgname2}_${pkgver}_${_goos}_${_goarch}.tar.gz::https://github.com/replicatedhq/$_pkgname2/releases/download/v$pkgver/${_pkgname2}_${_goos}_${_goarch}.tar.gz")
-b2sums=(4a887a73098f1556191bbf42f8697c4ff3ea57a8fdda058ac33ddfa99c34570c0aa7e58d2058c1e8d6284554441c8b8c9904ce185c8a43e6c8e0848c898b9b84)
+b2sums=(4143a01ba22cac46748031673df30d9937610c7509959312356c2f288078b01fcb000f5ca86f069fcdda72652c5a4deb51de1c67e6e623759608135c05244ab7)
 
 package() {
 	install -Dm 755 "${_pkgname2}" "$pkgdir/usr/bin/${_pkgname}"
