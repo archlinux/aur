@@ -5,6 +5,7 @@ pkgbase = mingw-w64-libsmf
 	url = https://sourceforge.net/projects/libsmf/
 	arch = x86_64
 	license = BSD
+	makedepends = mingw-w64-configure
 	depends = mingw-w64-glib2
 	options = !libtool
 	options = !strip
@@ -14,4 +15,3 @@ pkgbase = mingw-w64-libsmf
 	sha512sums = 3c383ec8f2fbe48ddab1008b3ecfe6941c38e33cfd963eabdf07f09c8c04c1b8758c8774b25672f70c29b570f2c250c795979d19b39c5027810b54b07035497d
 
 pkgname = mingw-w64-libsmf
-

@@ -14,6 +14,7 @@ arch=('x86_64')
 url="https://sourceforge.net/projects/libsmf/"
 license=('BSD')
 depends=('mingw-w64-glib2')
+makedepends=('mingw-w64-configure')
 options=('!libtool' '!strip' '!buildflags' '!makeflags')
 source=("https://downloads.sourceforge.net/project/${_pkgbase}/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.gz")
 sha512sums=('3c383ec8f2fbe48ddab1008b3ecfe6941c38e33cfd963eabdf07f09c8c04c1b8758c8774b25672f70c29b570f2c250c795979d19b39c5027810b54b07035497d')
@@ -28,7 +29,7 @@ build() {
     cp -r "${_pkgbase}-${pkgver}" build-${_arch}
     pushd build-${_arch}
 
-    ${_arch}-configure
+    ${_arch}-configure .
     make
 
     popd
