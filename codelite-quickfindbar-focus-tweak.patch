@@ -1,0 +1,40 @@
+commit b465885b9dbd1683f39a4b81b186004fa4189a74 (HEAD -> refs/heads/master_cl_quick_find_tweak, refs/remotes/origin/master_cl_quick_find_tweak)
+Author:     Uffe Jakobsen <uffe@uffe.org>
+AuthorDate: Thu Sep 9 18:02:18 2021 +0200
+Commit:     Uffe Jakobsen <uffe@uffe.org>
+CommitDate: Thu Sep 9 18:02:18 2021 +0200
+
+    Change QuickFindBar behaviour to the best of both worlds (#2806)
+    
+    This minor tweak changes the QuickFindBar behaviour to the best of both worlds in respect to issue #2806
+    
+    With this change quickfindbar will show and get focus upon Find...
+    The change is that pressing Find Next/Prev will not affect focus.
+    This means that if focus already is at the quickfindbar it will stay there.
+    But if focus is at the editor - Find Next/Prev will not change focus from the editor and back to the quickfindbar.
+    This has the advantage that you can instantly find and edit - without having to press ESC to get focus back to the editor.
+---
+:100644 100644 e9bc3c6bb 68eadf2bf M	LiteEditor/frame.cpp
+ LiteEditor/frame.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git LiteEditor/frame.cpp LiteEditor/frame.cpp
+index e9bc3c6bb..68eadf2bf 100644
+--- LiteEditor/frame.cpp
++++ LiteEditor/frame.cpp
+@@ -5863,7 +5863,6 @@ void clMainFrame::OnFindSelection(wxCommandEvent& event)
+     wxString selection =
+         editor->GetSelection().IsEmpty() ? GetMainBook()->GetFindBar()->GetFindWhat() : editor->GetSelection();
+     find_bar->SetFindWhat(selection);
+-    GetMainBook()->ShowQuickBar(true);
+     find_bar->FindNext();
+ }
+ 
+@@ -5878,7 +5877,6 @@ void clMainFrame::OnFindSelectionPrev(wxCommandEvent& event)
+     wxString selection =
+         editor->GetSelection().IsEmpty() ? GetMainBook()->GetFindBar()->GetFindWhat() : editor->GetSelection();
+     find_bar->SetFindWhat(selection);
+-    GetMainBook()->ShowQuickBar(true);
+     find_bar->FindPrevious();
+ }
+ 

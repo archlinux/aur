@@ -93,7 +93,7 @@ BUILD_DIR="_build"
 prepare()
 {
   cd "${srcdir}/${_pkg_name_ver}"
-  #patch -p0 < "${startdir}/CMakeLists.txt.patch"
+  patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
 }
 
 
