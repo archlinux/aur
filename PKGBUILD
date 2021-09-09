@@ -2,7 +2,7 @@
 
 pkgname=python-pyiot-git
 _realname=pyiot
-pkgver=v0.1.r139.gaa06209
+pkgver=v0.1.r140.g7d7ba84
 pkgrel=1
 pkgdesc="Python library for IOT devices"
 url="https://bitbucket.org/angrysoft/pyiot"
