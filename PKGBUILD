@@ -2,7 +2,7 @@
 
 _pkgbase=nginx
 pkgname=nginx-mainline-pushstream
-pkgver=1.21.2
+pkgver=1.21.3
 pushstreamver=0.5.4
 pkgrel=1
 pkgdesc='NGINX mainline with Push Stream module'
