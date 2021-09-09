@@ -1,27 +1,35 @@
 # Maintainer: zhullyb <zhullyb@outlook.com>
 
 pkgname=python-html2md
-_pypiname=html2md
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML to Markdown converter"
-url="https://github.com/davidcavazos/html2md"
-depends=('python' )
-makedepends=('python' 'python-pyquery')
 license=('Apache')
-arch=('i686' 'x86_64')
-source=("https://pypi.python.org/packages/source/h/${_pypiname}/${_pypiname}-${pkgver}.tar.gz"
-        "requirements.txt")
-md5sums=('9faf9fb6b103fa6e6ed727ed0b4c6270'
-         '5319822149eda4c961bfb3d43eeeb2a6')
+arch=('any')
+url="https://github.com/davidcavazos/html2md"
+depends=('python-pyquery')
+makedepends=('python-setuptools')
+checkdepends=('python-nose')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/h/html2md/html2md-$pkgver.tar.gz"
+        'requirements.txt')
+sha256sums=('d5deaab7c15271c12494df22c4f6566a93ea3c0649b7849e6f6c2d3982d7e65f'
+            'aefdc3e1a9abe81be57e080798656ebb6d97854183f054381aa3192befb9968b')
+
+prepare() {
+	mv requirements.txt "html2md-$pkgver"
+}
 
 build() {
-    cp requirements.txt $srcdir/${_pypiname}-${pkgver}
-    cd $srcdir/${_pypiname}-${pkgver}
-    python setup.py build
+	cd "html2md-$pkgver"
+	python setup.py build
+}
+
+check() {
+	cd "html2md-$pkgver"
+	python setup.py nosetests
 }
 
 package() {
-    cd $srcdir/${_pypiname}-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1  
+	cd "html2md-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
