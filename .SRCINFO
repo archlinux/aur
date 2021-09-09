@@ -1,0 +1,13 @@
+pkgbase = python-lsq-ellipse
+	pkgdesc = Fitting an Ellipse using a Least Squares method, in Python
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/lsq-ellipse
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	source = https://pypi.org/packages/source/l/lsq-ellipse/lsq-ellipse-2.0.1.tar.gz
+	sha512sums = e26cd66a02000f43a95f780b41871a27cfd567254a5bf3fa236755d6d1fa29dd69970103dfa5af300fef4ec31ecbcd45c098dd80c0e7b43079d62a5bc4a6c9e8
+
+pkgname = python-lsq-ellipse
