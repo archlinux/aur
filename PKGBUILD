@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mbedtls
-pkgver=2.23.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Portable cryptographic and SSL/TLS library, aka polarssl (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=(!strip !buildflags staticlibs)
 source=("https://github.com/ARMmbed/mbedtls/archive/mbedtls-${pkgver}.tar.gz")
-sha256sums=('5c8998217402aa1fc734f4afaeac38fad2421470fac4b3abc112bd46391054fe')
+sha256sums=('377d376919be19f07c7e7adeeded088a525be40353f6d938a78e4f986bce2ae0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
