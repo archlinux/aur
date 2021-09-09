@@ -1,0 +1,26 @@
+pkgbase = visualdl
+	pkgdesc = Deep Learning Visualization Toolkit
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/PaddlePaddle/VisualDL
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-pre-commit
+	makedepends = rustup
+	makedepends = npm
+	makedepends = yarn
+	makedepends = shellcheck
+	depends = python-baidubce
+	depends = flake8
+	depends = python-flask-babel
+	depends = python-pillow
+	depends = python-protobuf
+	depends = python-requests
+	depends = python-six
+	depends = python-matplotlib
+	depends = python-pandas
+	source = visualdl-2.2.1.tar.gz::https://github.com/PaddlePaddle/VisualDL/archive/refs/tags/v2.2.1.tar.gz
+	md5sums = 8a0c393ba68956de94dce5aabc7e456b
+
+pkgname = visualdl
