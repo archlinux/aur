@@ -1,6 +1,6 @@
 # Maintainer: Greyson Christoforo <first name at last name dot net>
 pkgname=rudolfs
-pkgver=0.3.3
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A high-performance, caching Git LFS server"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(
 gcc-libs
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jasonwhite/rudolfs/archive/${pkgver}.tar.gz")
-sha256sums=('f4d77bd218059215b3721343bfe67a25e6e070a548fa764abcb19a34dd571756')
+sha256sums=('f0aa0e35911472015e2af037917f2b9098c1143f22672ff92fcffb324ec2189c')
 
 prepare() {
   cd rudolfs-${pkgver}
