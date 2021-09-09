@@ -1,0 +1,15 @@
+pkgbase = python-baidubce
+	pkgdesc = BCE SDK for python
+	pkgver = 0.8.62
+	pkgrel = 1
+	url = https://pypi.org/project/bce-python-sdk/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-pycryptodome
+	depends = python-future
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/b/bce-python-sdk/bce-python-sdk-0.8.62.tar.gz
+	sha256sums = 66bea585e683fb660f3474bd9e27303d345420d06470e7ebbd7df12bef5c3f59
+
+pkgname = python-baidubce
