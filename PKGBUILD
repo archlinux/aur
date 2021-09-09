@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 depends=('qt5-webkit' 'hicolor-icon-theme' 'freeimage')
 source=("${_pkgname}-${pkgver}.deb::https://xiuxiu.dl.meitu.com/com.meitu.mtxx_${pkgver}_amd64.deb"
 )
-sha512sums=('919ea5975271efd3b2b14ca86eccf32bdd8f3a4cfc5ddc5e983a8d8f718f2ea6d5771ad3abacf834f7620f6cdae708dce62d10de5354fdc6bd58be029223d5ee')
+sha512sums=('81eb6045931bdb46baf46e0be6eca46788a03d9b405aaa6a3742138f7ad767193b671666806c1b9b5741537b34edcfa6711cabbce28ee52d30e9326752550ed9')
 
 prepare(){
     cd ${srcdir}
