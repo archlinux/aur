@@ -3,7 +3,7 @@
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r23
+pkgver=r24
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('vapoursynth-plugin-fmtconv-git')
 #Dirty workaround for not breaking the dependencies.
 provides=('vapoursynth-plugin-fmtconv-git')
 source=("http://ldesoras.free.fr/src/vs/${_plug}-${pkgver}.zip")
-sha256sums=('d2decc302094145490877a309680827cb369bd43277f49a47a30d8493d3830bc')
+sha256sums=('ecc9cf31e2eddb981c543451413d4b36e4cf1af9dca98f9db29681acdc567725')
 
 prepare() {
   cd build/unix
@@ -23,7 +23,6 @@ prepare() {
 
 build() {
   cd build/unix
-  CPPFLAGS+=" $(pkg-config --cflags vapoursynth)" \
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
