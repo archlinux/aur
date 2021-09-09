@@ -2,8 +2,8 @@
 # Contributor: Hervé Bitteur <herve.bitteur@audiveris.com>
 _pkgname=audiveris
 pkgname="${_pkgname}-git"
-pkgver=5.1.0.rc.r0.g0bf682689
-pkgrel=2
+pkgver=5.1.0.rc.r714.g17ea701ae
+pkgrel=1
 pkgdesc="Music score OMR engine - current"
 arch=('x86_64')
 url="https://github.com/Audiveris/audiveris"
@@ -32,6 +32,15 @@ sha256sums=('SKIP'
 pkgver() {
   cd "$pkgname"
   git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  msg2 'Updating gradle build config for newest gradle version'
+  sed -i "s/compile(/implementation(/g" "$srcdir/$pkgname/build.gradle"
+  sed -i "s/runtime(/runtimeOnly(/g" "$srcdir/$pkgname/build.gradle"
+  sed -i "s/testCompile(/testImplementation(/g" "$srcdir/$pkgname/build.gradle"
+  # Quickfix for javadoc
+  #sed -i "s/XmlJavaTypeAdapter;/XmlJavaTypeAdapter;\nimport org.audiveris.omr.sig.relation.Containment;/g" "$srcdir/$pkgname/src/main/org/audiveris/omr/sig/inter/SentenceInter.java"
 }
 
 build() {
