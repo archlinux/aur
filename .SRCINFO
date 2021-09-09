@@ -1,19 +1,31 @@
 pkgbase = python-pytest-discord
-	pkgdesc = pytest plugin to report test results to a Discord channel
-	pkgver = 0.0.5
-	pkgrel = 2
+	pkgdesc = Pytest plugin to report test results to a Discord channel
+	pkgver = 0.0.7
+	pkgrel = 1
 	url = https://github.com/thombashi/pytest-discord
 	arch = any
 	license = MIT
+	checkdepends = python-mock
+	checkdepends = python-dateutil
+	checkdepends = python-pytz
 	makedepends = python-setuptools
-	depends = python-aiohttp
-	depends = python-discord
-	depends = python-pathvalidate
-	depends = python-pytest
-	depends = python-pytest-md-report
-	depends = python-typepy
-	source = https://files.pythonhosted.org/packages/source/p/pytest-discord/pytest-discord-0.0.5.tar.gz
-	sha256sums = a7008333f23f05a33e75683e1f50c88ec27fd583abc89698c336dd099edd3722
+	makedepends = python-pytest-runner
+	depends = python-aiohttp>=3.0.1
+	depends = python-aiohttp<4
+	depends = python-discord>=1.0.1
+	depends = python-discord<2
+	depends = python-pathvalidate>=2.1.0
+	depends = python-pathvalidate<3
+	depends = python-pytest>=3.3.2
+	depends = python-pytest<7
+	depends = python-pytest-md-report>=0.1.0
+	depends = python-pytest-md-report<1
+	depends = python-typepy>=1.1.4
+	depends = python-typepy<2
+	source = python-pytest-discord-0.0.7.tar.gz::https://files.pythonhosted.org/packages/source/p/pytest-discord/pytest-discord-0.0.7.tar.gz
+	source = python-pytest-discord-0.0.7.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytest-discord/pytest-discord-0.0.7.tar.gz.asc
+	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
+	sha256sums = 8e8d8c46da4d77112b76e7cdafc1bc73a4bea746812b869cb77489f47456a6cb
+	sha256sums = SKIP
 
 pkgname = python-pytest-discord
-
