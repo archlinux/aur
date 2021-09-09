@@ -1,3 +1,11 @@
+## Version 0.9.8
+
+* Code improvement for ScienceDirect provider
+
+## Version 0.9.7
+
+* Bugfix for ScienceDirect provider
+
 ## Version 0.9.6
 
 * Bugfix for Springer provider (metadata)
