@@ -1,18 +1,18 @@
 # Maintainer : Ashwin Vishnu <y4d71nsar@relay.firefox.com>
 _name=micromamba
 pkgname=micromamba-bin
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="Tiny version of mamba, the fast conda package installer."
 arch=("x86_64")
 url="https://github.com/mamba-org/mamba"
 license=("BSD")
-source=("${_name}-${pkgver}.tar.bz2::https://micromamba.snakepit.net/api/micromamba/linux-64/${pkgver}")
+source=("${_name}-${pkgver}.tar.bz2::https://api.anaconda.org/download/conda-forge/${_name}/${pkgver}/linux-64/${_name}-${pkgver}-0.tar.bz2")
 options=(strip)
 depends=("glibc")
 provides=("${_name}")
 conflicts=("${_name}")
-sha256sums=('d28e9fb681980cd1a957301552f63834908cfe0570b40109fddd928fef230c10')
+sha256sums=('57dafd0c554b2f03167e50a9aefbae2aef924778d52c2ee78d779c9fa7c89207')
 
 check() {
 	export PREFIX="${srcdir}"
