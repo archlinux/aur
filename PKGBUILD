@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=yoda
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A particle physics package for data analysis (specifically histogramming) classes."
 arch=('x86_64' 'i686')
 url="http://yoda.hepforge.org"
@@ -19,6 +19,6 @@ package() {
   # ## will eventually be fixed upstream (1.9.x)
   touch pyext/yoda/*.pyx
 
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sysconfdir=/etc
   make DESTDIR="$pkgdir/" install
 }
