@@ -25,10 +25,10 @@ if [ ! -d "$HOME/.magicavoxel" ] ; then
   _link MagicaVoxel.exe
   _link plugin OpenImageDenoise.dll tbb.dll tbbmalloc.dll
   mkdir "$HOME/.magicavoxel/config"
-  _link config/font config/ui
+  _link config/ui
 
   _copy ibl palette shader cache export vox
-  _copy config/config.txt config/hotkey.txt
+  _copy config/config.txt config/hotkey.txt config/dict.txt config/locale.txt config/font
 fi
 
 wine "$HOME/.magicavoxel/MagicaVoxel.exe" "$@"

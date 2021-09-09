@@ -9,7 +9,7 @@ pkgname=magicavoxel
 
 # $_pkgver_upstream should ideally match the version in the archive name and the one specified on the website.
 _pkgver_tag='0.99.6' # Git tag associated with the release where the latest archive is.
-_pkgver_suffix='.2' # Anything after $_pkgver_tag that is present in the archive name.
+_pkgver_suffix='.4' # Anything after $_pkgver_tag that is present in the archive name.
 _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 
 # Use the date of the corresponding release archive asset, which can be found e.g. by using the below one-liner
@@ -18,7 +18,7 @@ _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 # $ curl -sSf "https://api.github.com/repos/ephtracy/ephtracy.github.io/releases/tags/$_pkgver_tag" | jq '.assets|map(select(.name|contains("win64.zip")))[0].updated_at|fromdate|strftime("%Y%m%d")'
 #
 # If multiple releases happen on the same day, set $_pkgver_uniqueness to '.2', then '.3' etc.
-_pkgver_date='20200927'
+_pkgver_date='20210908'
 _pkgver_uniqueness='' # Don't forget to reset to '' when date changes.
 
 # Git tag associated with the release where the latest Intel Open Image Denoiser plugin archive is.
@@ -40,9 +40,9 @@ source=("$pkgname-$pkgver.zip::https://github.com/ephtracy/ephtracy.github.io/re
 license=('custom')
 depends=(wine)
 makedepends=(icoutils)
-sha512sums=('38586bf240eeaeb1a65db7797acda231957303f74ad24b59e724983379884e5748c1c692e75763d05ec87a4f57b13eca3669b37d3b9a1d5e01bffbce9aa8ae34'
+sha512sums=('3108bd6bf8d6c0e1b4255de18e161a2012e656ae943cc2c8dd7dc98c56e32e30552fada293e8dca0a5e648484a984a85e5fbbfb3f03eedc339320b493e5b7a66'
             '6509da8d8b04488b369644fd104cdc820037bc2bd2567d868541562d3096041d29d265cdeb2386ccb66f8f6670b94236d565046bfad92aff9cf7b1988b4af53f'
-            '7bd5cfc10ed31851e76de7080c08d350a88488b3d8e878f4656970e097d04b00c98bf235a57b154844cba1db04f8092b0c5604f4b11ca787323bbbbc47dc3f5c'
+            '25a7d9302c64e5efa6e57fc9427c43c18345de1680273e64fc9a75270d904a339e420401265265c3d1a09dc7abe4b5dcd76a5949a7baa3e6a0c519de233ec8f5'
             '0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1'
             'feabbff40cef5402aac75d8344acf434079250c25e05c6bc91af705f1254e0010caaf5e64450fee4ec7d4636ec930a5600412bbc3f588149e7ee0cbeefb0e5ae')
 
