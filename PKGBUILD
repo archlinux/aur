@@ -1,6 +1,6 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 pkgname=paclast
-pkgver=r4
+pkgver=r5
 pkgrel=1
 pkgdesc='list installed pacman packages in chronological order.'
 arch=(any)
@@ -8,7 +8,7 @@ license=(GPL)
 source=($pkgname)
 provides=($pkgname)
 conflicts=($pkgname)
-sha256sums=('13cd28bfb0086408fc75ff3666b99e8566bd0d92bad2987a79349b7fc8efeef6')
+sha256sums=('ba8b0c1d478313d5fef710acb713e687e9c33e54b20269c9f246dfcc1a996d32')
 
 package() {
     cd "$srcdir"
