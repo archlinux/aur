@@ -1,0 +1,15 @@
+pkgbase = tmux-tanlog-bin
+	pkgdesc = Save all console outputs into files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/r6eve/tmux-tanlog
+	arch = x86_64
+	license = Boost
+	depends = tmux
+	depends = zsh
+	provides = tmux-tanlog
+	conflicts = tmux-tanlog
+	source = https://github.com/r6eve/tmux-tanlog/releases/download/1.0.0/tmux-tanlog-x86_64-unknown-linux-musl
+	sha256sums = a024ec1f0f5514cfcaea3debed9fc82abfd32fc4a664daf8d8be078f3a86cf2a
+
+pkgname = tmux-tanlog-bin
