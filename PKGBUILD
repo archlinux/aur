@@ -1,8 +1,8 @@
 # Contributor: Bug <bug2000@gmail.com> [Thank you the all mighty omp!]
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=byond
-_pkgvermajor=513
-_pkgverminor=1542
+_pkgvermajor=514
+_pkgverminor=1566
 pkgver="$_pkgvermajor.$_pkgverminor"
 pkgrel=1
 pkgdesc="Game server based on the 'Byond' language [Build your own net dream]."
@@ -11,7 +11,7 @@ url="https://secure.byond.com/"
 license=('unknown')
 depends=('libpng' 'libstdc++5' 'ncurses' 'gcc-libs')
 source=("https://secure.byond.com/games/download/build/${_pkgvermajor}/${pkgver}_byond_linux.zip")
-md5sums=('5489e5e4601306c4540da2f9901c97ad')
+md5sums=('037d7590e6e1f83cfd2e221caed589df')
 build() {
     cd "${srcdir}/${pkgname}"
     chmod 644 man/man6/DreamDaemon.6
