@@ -1,6 +1,6 @@
 # Maintainer: Takumi <takuoh@tutanota.com>
 pkgname=ttf-firge
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=3
 pkgdesc="Firge, a programming font that is a combination of Fira Mono and Genshin Gothic. "
 arch=("any")
@@ -9,8 +9,8 @@ license=('custom:SIL')
 source=("$url/releases/download/v$pkgver/Firge_v$pkgver.zip"
         "$url/releases/download/v$pkgver/FirgeNerd_v$pkgver.zip")
 
-sha256sums=('d94ef9db6016d9dbf043b03ab45f36dd266ca930063294f464976fc09fa99489'
-            '239048c643207db4912e248d7fd3aaab948f9be78756b0f59e23cd93eab436f6')
+sha256sums=('18ccd0d5c7689a02af4a7217912c0112db9f24071e8b36a716baef3b446c32e7'
+            'da3dd6437aeb3b68cf57c868602f1e7135b0eed7a91e4682f28a5efd7716afc9')
 
 package() {
     install -d $pkgdir/usr/share/fonts/TTF
