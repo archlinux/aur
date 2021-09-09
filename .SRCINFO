@@ -1,0 +1,11 @@
+pkgbase = plank-theme-ixi-inlight
+	pkgdesc = Collection of iXi-inLight Edition Themes for Plank
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1309769/
+	arch = any
+	license = MIT
+	source = https://github.com/MMcQueenGNU/plank-theme-ixi-inlight/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = c6c376b6e1896cfff7dc568f7fb6eb5a28e0542f4ca75a6ccf96d474b1518924
+
+pkgname = plank-theme-ixi-inlight
