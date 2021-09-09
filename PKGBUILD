@@ -1,8 +1,8 @@
 # Maintainer: luosoy <249799588@qq.com>
 pkgname=com.qq.weixin.deepin
-_pkgver=3.2.1.154deepin8
+_pkgver=3.2.1.154deepin13
 pkgver=3.2.1.154
-pkgrel=8
+pkgrel=13
 epoch=
 pkgdesc="Deepin Wine WeChat"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ install=
 changelog=
 source=("http://community-store.deepin.com/appstore/apricot/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
 noextract=("${pkgname}_${_pkgver}_i386.deb")
-md5sums=('3246f43cdfd2a4de9597d7018cb21753')
+md5sums=('1cc7cfc9f77f60147f476121bd9e7542')
 validpgpkeys=()
 
 prepare() {
