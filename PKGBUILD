@@ -1,18 +1,24 @@
 # Arch64 kernel for Beikeyun P1
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
+# PKGBUILD and config: https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-aarch64
+
+# Patches: these patches are extracted from commits in https://github.com/unifreq/linux-5.14.y
+
+# dts: https://github.com/unifreq/linux-5.14.y/blob/main/arch/arm64/boot/dts/rockchip/rk3328-beikeyun-*.dts
+
 pkgbase=linux-beikeyun-p1
 _srcname=linux-5.14
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Beikeyun P1"
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	"rk3328-beikeyun-p1.dts"
 	"0001-add-rk3328-usb3-phy-driver.patch"
 	"0002-rk3328-add-dmc-driver.patch"
@@ -21,6 +27,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	"0005-rk3328-fix-mali-node.patch"
 	"0006-rockchip-rng-driver.patch"
 	"0007-fixed-mmc-index.patch"
+	"0008-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch"
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -30,7 +37,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('a082ef5748b813abca0649dab8be5f52'
-         '0e03bc49d0db9ae31a5086ec49be3768'
          'b712c1d1b1de3091acca6f4fd8bca831'
          '1300797c69bf7f6a26672011334c6a96'
          '010810596a08c508c1b57350de3c1ee5'
@@ -39,10 +45,12 @@ md5sums=('a082ef5748b813abca0649dab8be5f52'
          '9b6fdc9b96013041189fc35bcc32e31d'
          'a9527f30abbbde5c126e93e2bf57b034'
          '966cbe04ab5848bf6972411166adfee4'
-         '5e0c36c663ebe0721fb96b9f2bfef451'
-         '41cb5fef62715ead2dd109dbea8413d6'
+         '7a18066683f3351b2bbd2653db783f80'
+         'da2e45cbcd710b7df01bf83f87fedcb7'
+         '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         '3dc88030a8f2f5a5f97266d99b149f77')
+         '3dc88030a8f2f5a5f97266d99b149f77'
+         'c32f97047814a7c47f13d23ac21ed46e')
 
 prepare() {
   cd ${_srcname}
@@ -63,6 +71,7 @@ prepare() {
   patch -p1 < ../0005-rk3328-fix-mali-node.patch
   patch -p1 < ../0006-rockchip-rng-driver.patch
   patch -p1 < ../0007-fixed-mmc-index.patch
+  patch -p1 < ../0008-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
 
   cat "${srcdir}/config" > ./.config
 
