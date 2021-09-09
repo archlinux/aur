@@ -4,7 +4,7 @@
 
 _gemname=gollum-lib
 pkgname=ruby-$_gemname
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=1
 pkgdesc='A simple, Git-powered wiki.'
 arch=(any)
@@ -23,7 +23,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('592cb42166eb72e7e6be4274f7693bb9909abba1')
+sha1sums=('b82cce5d74630fb2e661339f0127b66dce424e0a')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
