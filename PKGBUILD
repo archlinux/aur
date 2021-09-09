@@ -1,7 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur-git
 _pkgname=buildaur
-pkgver=196.da3f836
+pkgver=42.0.8.9.r13.g3a1179e
 pkgrel=1
 pkgdesc="An AUR helper with asp support (development version)"
 arch=(any)
@@ -17,8 +17,8 @@ source=("$pkgname"::'git+https://github.com/lxgr-linux/buildaur.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$pkgbase"
+  git describe --tags --always | sed -r 's|release-||g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
