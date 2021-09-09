@@ -8,7 +8,7 @@
 _pkgbase=libsmf
 pkgname=mingw-w64-libsmf
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A BSD-licensed C library for handling SMF ("*.mid") files.'
 arch=('x86_64')
 url="https://sourceforge.net/projects/libsmf/"
@@ -23,7 +23,14 @@ _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
 build() {
   cd "${srcdir}"
-
+  
+  # fix for undefined reference to `rpl_malloc'
+  export set ac_cv_func_malloc_0_nonnull=yes
+  # fix for undefined reference to `rpl_realloc'
+  export set ac_cv_func_realloc_0_nonnull=yes
+  # fix for undefined reference to `_imp__ntohl@4'
+  export LDFLAGS="${LDFLAGS} -lwsock32"
+  
   for _arch in "${_architectures[@]}"; do
     rm -rf build-${_arch}
     cp -r "${_pkgbase}-${pkgver}" build-${_arch}
