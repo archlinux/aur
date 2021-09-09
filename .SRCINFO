@@ -1,0 +1,23 @@
+pkgbase = cgal
+	pkgdesc = Computational Geometry Algorithms Library
+	pkgver = 5.3
+	pkgrel = 1
+	url = https://www.cgal.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = cmake
+	makedepends = qt5-svg
+	makedepends = eigen
+	makedepends = boost
+	depends = mpfr
+	depends = gmp
+	depends = mesa
+	depends = glu
+	depends = boost-libs
+	optdepends = qt5-svg: for CGAL_Qt5
+	optdepends = eigen: for some packages, see the CGAL manual
+	source = https://github.com/CGAL/cgal/releases/download/v5.3/CGAL-5.3.tar.xz
+	md5sums = e7358195c1bb7811ff5824607bd456b5
+
+pkgname = cgal
