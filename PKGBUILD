@@ -1,8 +1,8 @@
 # Maintainer: Eric Langlois <eric@langlois.xyz>
 pkgname=python-minerl
 _name=${pkgname#python-}
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Environment for RL from human demonstration in Minecraft"
 arch=('x86_64')
 url="https://github.com/minerllabs/minerl"
@@ -48,7 +48,7 @@ source=(
 	"$_name.patch"
 )
 sha256sums=(
-	'388b708b96a7ca2628ce436b6aa5f80e74dcdf663ca34c291b8857f8c31f8c81'
+	'653d2fe1079e003736dccee09fd957570e238dce1ac411ffa3e2d342bafa4006'
 	'SKIP'
 )
 

@@ -1,7 +1,7 @@
 pkgbase = python-minerl
 	pkgdesc = Environment for RL from human demonstration in Minecraft
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/minerllabs/minerl
 	arch = x86_64
 	license = custom:cc-by-nc-sa-4.0
@@ -29,9 +29,9 @@ pkgbase = python-minerl
 	depends = python-simple-term-menu
 	depends = python-tqdm
 	depends = python-xmltodict
-	source = https://files.pythonhosted.org/packages/source/m/minerl/minerl-0.4.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/minerl/minerl-0.4.2.tar.gz
 	source = minerl.patch
-	sha256sums = 388b708b96a7ca2628ce436b6aa5f80e74dcdf663ca34c291b8857f8c31f8c81
+	sha256sums = 653d2fe1079e003736dccee09fd957570e238dce1ac411ffa3e2d342bafa4006
 	sha256sums = SKIP
 
 pkgname = python-minerl
