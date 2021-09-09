@@ -2,7 +2,7 @@
 
 pkgname=novelwriter-git
 _pkgname=novelWriter
-pkgver=v1.4.1.r3.gc6973043
+pkgver=v1.5b2.r10.gb9311e84
 pkgrel=1
 epoch=1
 pkgdesc="Markdown-like text editor designed for writing novels and larger projects of many smaller plain text documents"
@@ -30,7 +30,7 @@ package() {
 	python setup.py install --root=${pkgdir}/ --optimize=1
 
 	mkdir -p ${pkgdir}/usr/share/pixmaps
-	install -m0644 nw/assets/icons/novelwriter.svg ${pkgdir}/usr/share/pixmaps/novelwriter.svg
+	install -m0644 ${srcdir}/${_pkgname}/novelwriter/assets/icons/novelwriter.svg ${pkgdir}/usr/share/pixmaps/novelwriter.svg
 
 	mkdir -p ${pkgdir}/usr/share/applications
 	install -m0644 ${startdir}/novelwriter.desktop ${pkgdir}/usr/share/applications/novelwriter.desktop
