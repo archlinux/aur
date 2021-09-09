@@ -178,7 +178,7 @@
 
 --- a/ntfs_fs.h
 +++ b/ntfs_fs.h
-@@ -459,11 +459,11 @@
+@@ -457,11 +457,11 @@
  extern const struct file_operations ntfs_dir_operations;
  
  /* Globals from file.c */
@@ -192,7 +192,7 @@
  		  struct iattr *attr);
  int ntfs_file_open(struct inode *inode, struct file *file);
  int ntfs_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
-@@ -668,7 +668,7 @@
+@@ -666,7 +666,7 @@
  int ntfs_flush_inodes(struct super_block *sb, struct inode *i1,
  		      struct inode *i2);
  int inode_write_data(struct inode *inode, const void *data, size_t bytes);
@@ -201,7 +201,7 @@
  				struct inode *dir, struct dentry *dentry,
  				const struct cpu_str *uni, umode_t mode,
  				dev_t dev, const char *symname, u32 size,
-@@ -810,17 +810,17 @@
+@@ -808,17 +808,17 @@
  /* globals from xattr.c */
  #ifdef CONFIG_NTFS3_FS_POSIX_ACL
  struct posix_acl *ntfs_get_acl(struct inode *inode, int type);
@@ -226,25 +226,24 @@
 
 --- a/super.c
 +++ b/super.c
-@@ -557,10 +557,10 @@
+@@ -520,9 +520,9 @@
+ 	struct user_namespace *user_ns = seq_user_ns(m);
  
- 	if (opts->uid)
- 		seq_printf(m, ",uid=%u",
--			   from_kuid_munged(user_ns, opts->fs_uid));
-+			   from_kuid_munged(&init_user_ns, opts->fs_uid));
- 	if (opts->gid)
- 		seq_printf(m, ",gid=%u",
--			   from_kgid_munged(user_ns, opts->fs_gid));
-+			   from_kgid_munged(&init_user_ns, opts->fs_gid));
+ 	seq_printf(m, ",uid=%u",
+-		  from_kuid_munged(user_ns, opts->fs_uid));
++		  from_kuid_munged(&init_user_ns, opts->fs_uid));
+ 	seq_printf(m, ",gid=%u",
+-		  from_kgid_munged(user_ns, opts->fs_gid));
++		  from_kgid_munged(&init_user_ns, opts->fs_gid));
  	if (opts->fmask)
  		seq_printf(m, ",fmask=%04o", ~opts->fs_fmask_inv);
  	if (opts->dmask)
-@@ -1440,7 +1440,7 @@
- 	.name		= "ntfs3",
- 	.mount		= ntfs_mount,
- 	.kill_sb	= kill_block_super,
--	.fs_flags	= FS_REQUIRES_DEV | FS_ALLOW_IDMAP,
-+	.fs_flags	= FS_REQUIRES_DEV,
+@@ -1464,7 +1464,7 @@
+ 	.init_fs_context	= ntfs_init_fs_context,
+ 	.parameters		= ntfs_fs_parameters,
+ 	.kill_sb		= kill_block_super,
+-	.fs_flags		= FS_REQUIRES_DEV | FS_ALLOW_IDMAP,
++	.fs_flags		= FS_REQUIRES_DEV,
  };
  // clang-format on
  
@@ -413,7 +412,7 @@
 +int ntfs_permission(struct inode *inode,
  		    int mask)
  {
- 	if (ntfs_sb(inode->i_sb)->options.no_acs_rules) {
+ 	if (ntfs_sb(inode->i_sb)->options->noacsrules) {
 @@ -774,7 +774,7 @@
  		return 0;
  	}
