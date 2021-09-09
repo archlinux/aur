@@ -1,0 +1,14 @@
+pkgbase = rofi-cmus-git
+	pkgdesc = Rofi frontend for Cmus
+	pkgver = r5.2269e2c
+	pkgrel = 1
+	url = https://github.com/vojdel/rofi-cmus.git
+	arch = any
+	license = unknown
+	depends = rofi
+	depends = cmus
+	provides = rofi-cmus
+	source = rofi-cmus::git+https://github.com/vojdel/rofi-cmus.git
+	sha512sums = SKIP
+
+pkgname = rofi-cmus-git
