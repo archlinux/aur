@@ -82,7 +82,7 @@ pkgbase=linux-cacule-rdb-llvm
 pkgname=('linux-cacule-rdb-llvm' 'linux-cacule-rdb-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.2
-pkgrel=4
+pkgrel=5
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel-RDB by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -102,8 +102,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/0007-string.patch"
         "${_patchsource}/misc/allpollingrate.patch"
-        "${_patchsource}/0002-clang-cfi.patch"
         "${_patchsource}/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+        "${_patchsource}/misc/0001-AMD-CPPC.patch"
         "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
@@ -546,8 +546,8 @@ md5sums=('e111bd84156ac6b19568a495eed46400'
          'a804260e2f301ffe2a17d6e3625a9711'
          'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
-         '0c91c9b8b37727593d39e9d874ebc8dc'
          'f8e172e9ea554bbb1053eb122c3ace35'
+         '302cbad3c979395f37307a094f6d8fd5'
          'a0285c065b902ca625119e4ad43cbab4'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
