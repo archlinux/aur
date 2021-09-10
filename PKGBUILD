@@ -1,18 +1,18 @@
-# Maintainer: Chocopwowwa <chocopowwwa@gmail.com>
+# Contributor: Chocopwowwa <chocopowwwa@gmail.com>
 # Contributor: Rafed Ramzi <rafedramzi@gmail.com>
 
 pkgname=sweet-gtk-theme-dark
 _pkgname=Sweet-Dark
-pkgver=2.0
-pkgrel=2
+pkgver=2.0.r23.5b53ee2
+pkgrel=1
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=('any')
 url='https://github.com/EliverLara/Sweet'
 license=('GPL3')
 conflicts=('sweet-theme-dark')
 replaces=('sweet-theme-dark')
-source=("$url/releases/download/${pkgver}/${_pkgname}.tar.xz")
-md5sums=('f748294586c27156e7ef205d83f8ac6d')
+source=($pkgname-$pkgver.tar.gz::$url/archive/5b53ee233aae437938ab414ae5dcaa79170179be.tar.gz)
+b2sums=('df1fa4efd8cad1a9be2b04173249f0f5668d2f9a77ab054f685d9d97cd391a05fba7acd7b2526c4815c9ddc2a3bf374639515044c4acedb1ff14e61e4e17d13b')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/themes/${_pkgname}"
