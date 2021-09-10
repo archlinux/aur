@@ -1,6 +1,6 @@
 pkgbase = whalebrew
 	pkgdesc = Homebrew, but with Docker images
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/bfirsh/whalebrew
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = whalebrew
 	depends = docker
 	provides = whalebrew
 	conflicts = whalebrew
-	source = https://github.com/bfirsh/whalebrew/releases/download/0.3.0/whalebrew-Linux-x86_64
-	sha256sums = aa201e450cab16fb7b12dbbcdc34394fa7281752095f706935b033a1d74b8880
+	source = https://github.com/bfirsh/whalebrew/releases/download/0.3.1/whalebrew-Linux-x86_64
+	sha256sums = 6b62b280e55a4349a367ff1e8967dc82e05116c99e04d8026f1dcf11cd2da65f
 
 pkgname = whalebrew
-
