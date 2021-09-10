@@ -1,7 +1,7 @@
 # Maintainer: SoftwareRat
 
 pkgname=hostminder
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="This simple GUI allows you to easily update your /etc/hosts file to one of four consolidated hosts files from StevenBlack/hosts."
 arch=('x86_64')

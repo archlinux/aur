@@ -1,13 +1,13 @@
 pkgbase = hostminder
 	pkgdesc = This simple GUI allows you to easily update your /etc/hosts file to one of four consolidated hosts files from StevenBlack/hosts.
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/jeremehancock/hostminder
 	arch = x86_64
 	license = MIT
 	depends = gtk3
-	noextract = hostminder_0.0.4_all.deb
-	source = https://github.com/jeremehancock/hostminder/raw/main/deb/hostminder_0.0.4_all.deb
+	noextract = hostminder_0.0.5_all.deb
+	source = https://github.com/jeremehancock/hostminder/raw/main/deb/hostminder_0.0.5_all.deb
 	sha256sums = a907dad5f7685920cef7c41af3be5d8ab2f0a213d7ed137146a0b1c5b77dd02b
 
 pkgname = hostminder
