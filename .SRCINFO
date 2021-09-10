@@ -1,6 +1,6 @@
 pkgbase = python-sncosmo
 	pkgdesc = Python library for supernova cosmology
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://sncosmo.readthedocs.io
 	arch = i686
@@ -11,20 +11,22 @@ pkgbase = python-sncosmo
 	checkdepends = python-astropy
 	checkdepends = python-extinction
 	checkdepends = python-iminuit
+	checkdepends = python-emcee
+	checkdepends = python-nestle
+	checkdepends = python-matplotlib
 	makedepends = cython
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/s/sncosmo/sncosmo-2.5.0.tar.gz
-	md5sums = 2a1f7c67b4c10734c8c1a7f8e01c74a3
+	source = https://files.pythonhosted.org/packages/source/s/sncosmo/sncosmo-2.6.0.tar.gz
+	md5sums = 8ca17749ef0257330b9e93d268b9a25d
 
 pkgname = python-sncosmo
 	depends = python>=3.5
-	depends = python-scipy>=0.9.0
-	depends = python-astropy>=1.0.0
-	depends = python-extinction>=0.2.2
+	depends = python-scipy>=0.19.0
+	depends = python-astropy>=1.3.0
+	depends = python-extinction>=0.4.2
 	optdepends = python-matplotlib: For plotting functions
 	optdepends = python-iminuit: For light curve fitting using the Minuit minimizer in sncosmo.fit_lc
 	optdepends = python-emcee: For MCMC light curve parameter estimation in sncosmo.mcmc_lc
 	optdepends = python-nestle: For nested sampling light curve parameter estimation in sncosmo.nest_lc
 	optdepends = python-corner: For plotting results from the samplers sncosmo.mcmc_lc and sncosmo.nest_lc
 	optdepends = python-sncosmo-doc: Documentation for SNCosmo
-
