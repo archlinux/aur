@@ -6,13 +6,13 @@
 
 pkgname=jdk8-openj9-bin
 pkgrel=1
-_pkgver_minor="292"
-_pkgver_build="10"
-_j9_version="0.26.0"
+_pkgver_minor="302"
+_pkgver_build="08"
+_j9_version="0.27.0"
 pkgver=8.u${_pkgver_minor}.b${_pkgver_build}
-pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk8"
+pkgdesc="IBM Semeru OpenJ9 with openjdk8"
 arch=('x86_64')
-url="https://adoptopenjdk.net/index.html?variant=openjdk8-openj9"
+url="https://developer.ibm.com/languages/java/semeru-runtimes/"
 license=('GPL')
 depends=('java-runtime-common' 'java-environment-common' 'ca-certificates-utils' 'nss')
 replaces=('jdk8-j9-bin')
@@ -24,15 +24,15 @@ provides=(
 )
 
 makedepends=('coreutils' 'bash')
-source=("https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u${_pkgver_minor}-b${_pkgver_build}_openj9-${_j9_version}/OpenJDK8U-jdk_x64_Linux_openj9_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz")
-noextract=("OpenJDK8U-jdk_x64_Linux_openj9_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz")
+source=("https://github.com/ibmruntimes/semeru8-binaries/releases/download/jdk8u${_pkgver_minor}-b${_pkgver_build}_openj9-${_j9_version}/ibm-semeru-open-jdk_x64_linux_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz")
+noextract=("ibm-semeru-open-jdk_x64_linux_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz")
 
-sha256sums=('06d6c9421778575cf59d50f69b7ac6a7bb237485b3a3c2f89cfb61a056c7b2de')
+sha256sums=('f1fea5d3049754ad13f9b90d90beb9157dbd7e84e00c255c2cef81441f0f348e')
 
 package() {
     cd "$srcdir"
 
     mkdir -p "${pkgdir}/usr/lib/jvm/"
-    tar -xf OpenJDK8U-jdk_x64_Linux_openj9_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz -C "${pkgdir}/usr/lib/jvm/"
+    tar -xf ibm-semeru-open-jdk_x64_linux_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz -C "${pkgdir}/usr/lib/jvm/"
     mv "${pkgdir}/usr/lib/jvm/jdk8u${_pkgver_minor}-b${_pkgver_build}" "${pkgdir}/usr/lib/jvm/java-8-j9"
 }
