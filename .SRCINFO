@@ -1,6 +1,6 @@
 pkgbase = quick-lint-js
 	pkgdesc = Find bugs in JavaScript programs
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://quick-lint-js.com/
 	arch = aarch64
@@ -18,8 +18,7 @@ pkgbase = quick-lint-js
 	makedepends = ninja
 	depends = gcc-libs
 	conflicts = quick-lint-js
-	source = quick-lint-js-0.3.0.tar.gz::https://github.com/quick-lint/quick-lint-js/archive/refs/tags/0.3.0.tar.gz
-	sha512sums = f0b7fa40b0da717f8be4f01f9e45d3b4147e82400ed7723c55a0c08a15c0a1607aa85e4c86cf3ebfa5a0b3012d9d91dae488614d3858e1fd9ae817188c9b8889
+	source = quick-lint-js-0.4.0.tar.gz::https://github.com/quick-lint/quick-lint-js/archive/refs/tags/0.4.0.tar.gz
+	sha512sums = 033b4665e94850cd1ab9e4665e1ad294989c8514062fb27abf031eb163c0daf7810b6f6a778a3695bee21759c5981621aa17d57b1dd8ba46322c6b96b07265a2
 
 pkgname = quick-lint-js
-
