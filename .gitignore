@@ -1,0 +1,5 @@
+src/
+pkg/
+imgaug/
+*.log
+*.tar*

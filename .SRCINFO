@@ -1,0 +1,20 @@
+pkgbase = python-imgaug-git
+	pkgdesc = Image augmentation for machine learning experiments
+	pkgver = 0.4.0.r41.g0101108d
+	pkgrel = 1
+	url = https://github.com/aleju/imgaug
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-opencv
+	depends = python-six
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-scikit-image
+	provides = python-imgaug
+	conflicts = python-imgaug
+	source = git+https://github.com/aleju/imgaug.git
+	sha256sums = SKIP
+
+pkgname = python-imgaug-git
