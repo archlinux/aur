@@ -7,6 +7,7 @@ pkgbase = python-genpy
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-pytools
 	source = git+https://github.com/inducer/genpy.git?signed#tag=v2021.1
 	validpgpkeys = 900A958D9A0ACA58B1468F2471AA298BCA171145

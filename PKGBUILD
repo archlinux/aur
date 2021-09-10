@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://documen.tician.de/${_base}"
 license=(MIT)
 depends=(python-pytools)
-makedepends=(python-setuptools)
+makedepends=(python-setuptools git)
 checkdepends=(python-pytest)
 source=("git+https://github.com/inducer/${_base}.git?signed#tag=v${pkgver}")
 validpgpkeys=("900A958D9A0ACA58B1468F2471AA298BCA171145") # Andreas Kloeckner
