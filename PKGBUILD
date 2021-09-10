@@ -11,6 +11,8 @@ depends=('efibootmgr' 'sed' 'grep' 'util-linux' 'coreutils' 'binutils')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/BiteDasher/kesboot.git")
 sha512sums=("SKIP")
+backup=('etc/kesboot.conf')
+
 pkgver() {
 	cd "$srcdir/$pkgname"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'

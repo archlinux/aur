@@ -12,6 +12,7 @@ pkgbase = kesboot-git
 	depends = util-linux
 	depends = coreutils
 	depends = binutils
+	backup = etc/kesboot.conf
 	source = kesboot-git::git+https://github.com/BiteDasher/kesboot.git
 	sha512sums = SKIP
 
