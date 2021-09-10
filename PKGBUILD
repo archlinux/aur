@@ -4,7 +4,7 @@
 
 
 pkgname=alchemy-next-viewer
-pkgver=6.4.22.47257
+pkgver=6.4.23.47335
 pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer!"
 arch=('i686' 'x86_64')
