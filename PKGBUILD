@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=castor
-pkgver=0.8.16
+pkgver=0.8.17
 pkgrel=1
 pkgdesc="A Gemini, Gopher and Finger protocol client"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('atk' 'cairo' 'gdk-pixbuf2' 'glibc' 'gtk3' 'openssl' 'pango')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~julienxx/castor/archive/$pkgver.tar.gz")
-sha256sums=('9a72ed66a10abd9d6fb44c02349f6c4035ff7d89397eb928c90f1465c3cccf7d')
+sha256sums=('a902f4a18a224fe51c9471ec1c55bb64a4faaddad69833a8bc5424c0f8e1a9f3')
 
 
 check() {
