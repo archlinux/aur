@@ -1,0 +1,14 @@
+pkgbase = pc-nrfutil
+	pkgdesc = nrfutil command line utility and the nordicsemi library
+	pkgver = 6.1.2
+	pkgrel = 1
+	url = https://github.com/NordicSemiconductor/pc-nrfutil
+	arch = any
+	license = BSD
+	depends = python
+	provides = nrfutil
+	options = !emptydirs
+	source = https://github.com/NordicSemiconductor/pc-nrfutil/releases/download/v6.1.2/nrfutil-linux
+	sha256sums = a384e3eb09133054e3006af2033bd497f466a0ae4c2a6dd75e895afaad3c53e3
+
+pkgname = pc-nrfutil
