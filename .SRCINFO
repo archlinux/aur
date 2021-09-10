@@ -30,7 +30,6 @@ pkgbase = cloudcompare
 	depends = qt5-svg
 	depends = shapelib
 	depends = tbb
-	depends = vxl
 	depends = gdal
 	optdepends = pcl
 	source = cloudcompare::git+https://github.com/CloudCompare/CloudCompare.git#tag=v2.11.3
