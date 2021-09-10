@@ -1,14 +1,15 @@
 pkgbase = sweet-gtk-theme-dark
 	pkgdesc = Light and dark colorful Gtk3.20+ theme
-	pkgver = 2.0.r23.5b53ee2
-	pkgrel = 3
+	pkgver = 2.0.r42.21ea24f
+	pkgrel = 1
 	url = https://github.com/EliverLara/Sweet
 	arch = any
 	license = GPL3
+	makedepends = git
 	conflicts = sweet-theme-dark
 	conflicts = sweet-gtk-theme-dark
 	replaces = sweet-theme-dark
-	source = https://dl1.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2Mjg1MzkwODciLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjMwMzAzMDZhZmY1NTljMGUwNGU3NDhkZTZhYzRiZjFlNTU3NzFiOTJiNDVjMmU0NTg1MzdiMjA4OTA5ZjM5MjI5MmEzMjM4MTI3MWQxOGVlYjdlOWFmYTQyOTEyYzA5ZGI4ZGE3M2NiZjQ2NjMyOGNkN2IxZDRjNWZkZTFkZDBhIiwidCI6MTYzMTI3NzM1MCwic3RmcCI6bnVsbCwic3RpcCI6bnVsbH0.-fWbtNV1S2le8G_GSMmL_mFo_Cez2Q3HjNWawOccFx8/Sweet-Dark-v40.tar.xz
-	md5sums = 46f370e1a2a8fa9f3f2314a132836090
+	source = git+https://github.com/EliverLara/Sweet.git#commit=21ea24fd7b8fd2a6eaefe548ee540037f7693f09
+	md5sums = SKIP
 
 pkgname = sweet-gtk-theme-dark
