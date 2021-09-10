@@ -1,14 +1,13 @@
 pkgbase = sphinxbase
-	pkgdesc = Common library for sphinx speech recognition.
+	pkgdesc = Common library for sphinx speech recognition
 	pkgver = 5prealpha
-	pkgrel = 11
+	pkgrel = 12
 	url = http://cmusphinx.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = bison
 	makedepends = swig
-	depends = python2
 	depends = python
 	depends = lapack
 	depends = libpulse
@@ -19,4 +18,3 @@ pkgbase = sphinxbase
 	sha256sums = 1cb485202f83dc517872f5ab41f59d18884af1b85799166d80e08860f7729919
 
 pkgname = sphinxbase
-
