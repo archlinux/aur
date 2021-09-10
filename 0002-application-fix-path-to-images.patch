@@ -1,0 +1,59 @@
+From 43ef3b0f361fca99a6eb8fb0dde47f262a588a1a Mon Sep 17 00:00:00 2001
+From: Henrik Grimler <henrik@grimler.se>
+Date: Fri, 10 Sep 2021 13:57:41 +0200
+Subject: [PATCH 2/2] application: fix path to images
+
+Currently, mvn -Papp fails with something like:
+
+    [INFO] --- maven-assembly-plugin:3.2.0:single (make-assembly) @ imagej ---
+    [INFO] Reading assembly descriptor: src/main/assembly/zip.xml
+    [WARNING] The assembly descriptor contains a *nix-specific root-relative reference (starting with slash). This is not portable and might fail on Windows: /Contents/Resources/
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD FAILURE
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time:  16.036 s
+    [INFO] Finished at: 2021-09-10T13:56:32+02:00
+    [INFO] ------------------------------------------------------------------------
+    [ERROR] Failed to execute goal org.apache.maven.plugins:maven-assembly-plugin:3.2.0:single (make-assembly) on project imagej: Failed to create assembly: Error adding file to archive: /home/grimler/imagej2/src/imagej2-imagej-2.2.0/./logo/ImageJ.icns -> [Help 1]
+    [ERROR]
+    [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+    [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+    [ERROR]
+    [ERROR] For more information about the errors and possible solutions, please read the following articles:
+    [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+
+The paths to the images was changed in d02516a7 ("ImageJ logo
+update"), but the paths in application.xml not updated.
+---
+ src/main/assembly/application.xml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/main/assembly/application.xml b/src/main/assembly/application.xml
+index 5ee238d4b..04e1bc66e 100644
+--- a/src/main/assembly/application.xml
++++ b/src/main/assembly/application.xml
+@@ -67,18 +67,18 @@
+ 
+ 		<!-- Include the ImageJ2 icon in the Mac OS X application bundle. -->
+ 		<file>
+-			<source>${basedir}/logo/ImageJ.icns</source>
++			<source>${basedir}/logo/imagej2-v1/ImageJ.icns</source>
+ 			<outputDirectory>/Contents/Resources/</outputDirectory>
+ 		</file>
+ 
+ 		<!-- Use the ImageJ2 logo for the splash screen. -->
+ 		<file>
+-			<source>${basedir}/logo/imagej.png</source>
++			<source>${basedir}/logo/imagej2-v1/imagej.png</source>
+ 			<outputDirectory>/images/</outputDirectory>
+ 			<destName>icon.png</destName>
+ 		</file>
+ 		<file>
+-			<source>${basedir}/logo/imagej.png</source>
++			<source>${basedir}/logo/imagej2-v1/imagej.png</source>
+ 			<outputDirectory>/images/</outputDirectory>
+ 			<destName>icon-flat.png</destName>
+ 		</file>
+-- 
+2.33.0
+

@@ -1,0 +1,51 @@
+From 332e43625dbca885612d97daac72b6ccdb1f9e9e Mon Sep 17 00:00:00 2001
+From: Henrik Grimler <henrik@grimler.se>
+Date: Fri, 10 Sep 2021 13:44:11 +0200
+Subject: [PATCH 1/2] application: do not try to install imagej-launcher-*.jar
+
+Currently, mvn -Dapp fails with something like:
+
+    [INFO] --- maven-assembly-plugin:3.2.0:single (make-assembly) @ imagej ---
+    [INFO] Reading assembly descriptor: src/main/assembly/zip.xml
+    [WARNING] The assembly descriptor contains a *nix-specific root-relative reference (starting with slash). This is not portable and might fail on Windows: /Contents/Resources/
+    [WARNING] The assembly descriptor contains a *nix-specific root-relative reference (starting with slash). This is not portable and might fail on Windows: /images/
+    [WARNING] The assembly descriptor contains a *nix-specific root-relative reference (starting with slash). This is not portable and might fail on Windows: /images/
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD FAILURE
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time:  15.826 s
+    [INFO] Finished at: 2021-09-10T13:43:20+02:00
+    [INFO] ------------------------------------------------------------------------
+    [ERROR] Failed to execute goal org.apache.maven.plugins:maven-assembly-plugin:3.2.0:single (make-assembly) on project imagej: Failed to create assembly: Error adding file to archive: /home/grimler/imagej2/src/imagej2-imagej-2.2.0/target/imagej-launcher-6.0.1.jar -> [Help 1]
+    [ERROR]
+    [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+    [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+    [ERROR]
+    [ERROR] For more information about the errors and possible solutions, please read the following articles:
+    [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+
+The same error (I think) was fixed for pom.xml in c3562b1c ("Fix
+imagej-launcher dependency").
+---
+ src/main/assembly/application.xml | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/src/main/assembly/application.xml b/src/main/assembly/application.xml
+index 63c63f95b..5ee238d4b 100644
+--- a/src/main/assembly/application.xml
++++ b/src/main/assembly/application.xml
+@@ -84,11 +84,6 @@
+ 		</file>
+ 
+ 		<!-- Include the ImageJ launcher executables in appropriate locations. -->
+-		<file>
+-			<source>target/imagej-launcher-${imagej-launcher.version}.jar</source>
+-			<outputDirectory>jars/</outputDirectory>
+-			<destName>imagej-launcher-${imagej-launcher.version}.jar</destName>
+-		</file>
+ 		<file>
+ 			<source>target/imagej-launcher-linux64</source>
+ 			<destName>ImageJ-linux64</destName>
+-- 
+2.33.0
+
