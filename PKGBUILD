@@ -77,7 +77,6 @@ package() {
   cd "$pkgname-$pkgver"
 
   # Install base package
-  export PYTHONHASHSEED=0
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
 
   # Install daemons and executables
