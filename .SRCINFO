@@ -1,0 +1,15 @@
+pkgbase = python-pytest-cram
+	pkgdesc = Run cram tests with pytest
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pytest-cram/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-cram
+	depends = python-pytest
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pytest-cram/pytest-cram-0.2.2.tar.gz
+	sha256sums = 00e358dff2836239cab47d846656d3029035a5ebb60c0cb188d16c9d6bf50510
+
+pkgname = python-pytest-cram
