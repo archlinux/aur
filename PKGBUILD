@@ -3,7 +3,7 @@
 
 pkgname=xp-pen
 _pkgname=${pkgname}
-pkgver=3.1.4.210605
+pkgver=3.2.0.210824
 pkgrel=1
 pkgdesc="Software for XP-PEN graphics tablets"
 arch=(x86_64)
@@ -12,8 +12,8 @@ license=("unknown")
 depdends=("libxtst")
 provides=(${_pkgname})
 conflicts=(${_pkgname} xp-pen-tablet)
-source=("${pkgname}-${pkgver}.tar.gz::https://download01.xp-pen.com/file/2021/06/XP-PEN-pentablet-${pkgver}-1.${CARCH}.tar.gz")
-sha256sums=('ed37236f6a0e51cae3f893e6318231afed71ec487b046cbcdfad72598d12777c')
+source=("${pkgname}-${pkgver}.tar.gz::https://download01.xp-pen.com/file/2021/08/XP-PEN-pentablet-${pkgver}-1.${CARCH}.tar.gz")
+sha256sums=('24fa9e06432c383b7f75d897fc11786f7e851be17906150b30ae2856bea31bc8')
 
 package() {
     cd "${srcdir}/${pkgname}-pentablet-${pkgver}-1.${CARCH}/App"

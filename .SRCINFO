@@ -1,6 +1,6 @@
 pkgbase = xp-pen
 	pkgdesc = Software for XP-PEN graphics tablets
-	pkgver = 3.1.4.210605
+	pkgver = 3.2.0.210824
 	pkgrel = 1
 	url = https://www.xp-pen.com/download/index.html
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xp-pen
 	provides = xp-pen
 	conflicts = xp-pen
 	conflicts = xp-pen-tablet
-	source = xp-pen-3.1.4.210605.tar.gz::https://download01.xp-pen.com/file/2021/06/XP-PEN-pentablet-3.1.4.210605-1.x86_64.tar.gz
-	sha256sums = ed37236f6a0e51cae3f893e6318231afed71ec487b046cbcdfad72598d12777c
+	source = xp-pen-3.2.0.210824.tar.gz::https://download01.xp-pen.com/file/2021/08/XP-PEN-pentablet-3.2.0.210824-1.x86_64.tar.gz
+	sha256sums = 24fa9e06432c383b7f75d897fc11786f7e851be17906150b30ae2856bea31bc8
 
 pkgname = xp-pen
