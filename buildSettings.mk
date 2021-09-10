@@ -79,9 +79,9 @@ INC_NEWMAT = ${FSLEXTINC}/armawrap/armawrap -DARMA_USE_LAPACK -DARMA_USE_BLAS -D
 #####################################################################
 ifeq ($(SYSTYPE), Linux)
 ###############   System Vars   #####################################
-CC = gcc-9
-CXX = c++-9
-CXX11 = c++-9
+CC = gcc
+CXX = g++ 
+CXX11 = g++
 CSTATICFLAGS = -static
 CXXSTATICFLAGS = -static
 ARCHFLAGS = -m64
