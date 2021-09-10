@@ -1,7 +1,7 @@
 # Maintainer: Aaron J Graves <linux@ajgraves.com>
 pkgname=criptext-bin
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Criptext encrypted email client'
 arch=('x86_64')
 url='https://criptext.com/'
@@ -40,6 +40,6 @@ package() {
   install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 
   install -Dm755 ${srcdir}/criptext ${pkgdir}/usr/bin/criptext
-  install -Dm444 ${srcdir}/LICENSE ${pkgdir}/usr/share/LICENSES/${pkgname}/LICENSE
+  install -Dm444 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
