@@ -5,17 +5,11 @@ KERNEL_NAME=
 KERNEL_VERSION=
 
 post_install () {
-    echo ">>> Generating kernel initramfs..."
-    mkinitcpio -p ${KERNEL_NAME}
+    echo ">>> Don't forget to generate kernel initramfs, if this is not done automatically by your initramfs generator!"
 }
 
 post_upgrade() {
-  if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
-    echo "WARNING: /boot appears to be a separate partition but is not mounted."
-  fi
-
-  echo ">>> Generating kernel initramfs..."
-  mkinitcpio -p ${KERNEL_NAME}
+  echo ">>> Don't forget to generate kernel initramfs, if this is not done automatically by your initramfs generator!"
 
   if [ $(vercmp $2 3.13) -lt 0 ]; then
     echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
@@ -24,8 +18,4 @@ post_upgrade() {
   fi
 }
 
-post_remove() {
-  # also remove the compat symlinks
-  rm -f boot/initramfs-linux${KERNEL_NAME}.img
-  rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
-}
+
