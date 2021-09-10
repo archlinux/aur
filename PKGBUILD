@@ -5,8 +5,8 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
-pkgver=2.5.1
-pkgrel=4
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="An award-winning free and open-source video editor"
 arch=(any)
 url="https://www.openshot.org/"
@@ -15,7 +15,8 @@ depends=(ffmpeg python-pyqt5 python-requests python-setuptools libopenshot
          libopenshot-audio python-pyzmq qt5-base qt5-svg qt5-webkit)
 optdepends=('faac: for exporting audio using AAC')
 source=(https://github.com/OpenShot/openshot-qt/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('8254a45254bbe523b6485b9598022de2c46ec30818e606ac4665790d29486693c4efe9f5bc55ee43d6342de6782cf0090e4bc880e831c08e3b1218bca555af14')
+sha512sums=('9e2d1eae5d72ec2deab914e464dac0d84a864ba2ca63104fad57c90fc907764d5683149fb8136d50030cae993cef9a977e995b0783868988de4668e71a3a5ee2')
+b2sums=('b3a163983bdb811103e5d9307beeb38938719747f743dd58520a0166c08eb11f4592d47bf24224062f9db323a66a2f353eb22f087982b929d60a519cd2c40789')
 
 build() {
   cd ${pkgname}-qt-${pkgver}
@@ -24,9 +25,7 @@ build() {
 
 package() {
   cd ${pkgname}-qt-${pkgver}
-  python setup.py install --skip-build \
-                          --optimize=1 \
-                          --prefix=/usr \
+  python setup.py install --optimize=1 \
                           --root="${pkgdir}"
   install -vDm 644 {AUTHORS,{CONTRIBUTING,README}.md} \
     -t "${pkgdir}"/usr/share/doc/${pkgname}
