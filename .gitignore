@@ -1,5 +1,5 @@
 taskell.md
 *.tar.gz
-./src
+src/
 *log*
 *pkg*
