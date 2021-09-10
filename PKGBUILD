@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=htmlwidgets
-_cranver=1.5.3
+_cranver=1.5.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,9 +10,9 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(r 'r-htmltools>=0.3' 'r-jsonlite>=0.9.16' r-yaml)
-optdepends=(r-knitr r-rmarkdown)
+optdepends=(r-knitr r-rmarkdown r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('01a5833182cc224bd100be2815e57e67b524de9f2bb1542787b6e3d1303f0f29')
+sha256sums=('1a3fc60f40717de7f1716b754fd1c31a132e489a2560a278636ee78eba46ffc1')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
