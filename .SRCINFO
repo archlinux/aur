@@ -9,7 +9,6 @@ pkgbase = python-aiocron
 	checkdepends = python-pytest-runner
 	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
-	depends = python
 	depends = python-tzlocal
 	depends = python-croniter
 	source = python-aiocron-1.7.tar.gz::https://files.pythonhosted.org/packages/source/a/aiocron/aiocron-1.7.tar.gz
