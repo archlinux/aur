@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=ubus-git
-pkgver=r330.4fc532c
+pkgver=r334.a72457b
 pkgrel=1
 pkgdesc='OpenWrt ubus library - system bus'
 url='https://git.openwrt.org/project/ubus.git'
