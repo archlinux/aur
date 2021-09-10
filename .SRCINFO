@@ -1,6 +1,6 @@
 pkgbase = shim-git
 	pkgdesc = UEFI shim loader
-	pkgver = 15.4.r62.69b7bbf
+	pkgver = 15.4.r64.2699836
 	pkgrel = 1
 	url = https://github.com/rhboot/shim
 	arch = x86_64
