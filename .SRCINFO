@@ -1,6 +1,6 @@
 pkgbase = sensei-git
 	pkgdesc = Sensei is a simple command line tool to open documentation for any crate in crates.io.
-	pkgver = 0.2.5.88.b976465
+	pkgver = 0.2.7.101.b42d3b5
 	pkgrel = 1
 	url = https://github.com/edfloreshz/sensei
 	arch = i686
