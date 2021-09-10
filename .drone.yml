@@ -10,6 +10,7 @@ pipeline:
     pull: true
     when:
       branch: master
+    keys: "ABAF11C65A2970B130ABE3C479BE3E4300411886;647F28654894E3BD457199BE38DBBDC86092693E;A2FF3A36AAA56654109064AB19802F8B0D70FC30;C7E7849466FE2358343588377258734B41C31549"
     override_files: "linux-ath-dfs-*.zst"
     repo_name: archrepo
     repo_ownerid: 972
