@@ -1,7 +1,7 @@
 # Maintainer: Vasili Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 
 pkgname=scalafmt-native-bin
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Code formatter for Scala, native version via graalvm, statically compiled with musl'
 url='https://scalameta.org/scalafmt/'
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 
 arch=('x86_64')
 
-sha256sums=('5506b533a279d848403e7001239748cb0633e9e32a84e5e08b7ab3700ec3772c')
+sha256sums=('b3ada170b022fcd70c2a269f6a1df6b3520f79fb37db276d938d3bbda12a69ed')
 
 package() {
   cd "$srcdir"
