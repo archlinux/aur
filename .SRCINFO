@@ -1,0 +1,21 @@
+pkgbase = paddlepaddle-bin
+	pkgdesc = Machine Learning Framework from Industrial Practice
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/PaddlePaddle/Paddle
+	arch = x86_64
+	license = Apache
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python-protobuf
+	depends = python-numpy
+	depends = python-gast
+	depends = python-astor
+	depends = perl
+	provides = paddlepaddle=2.1.2
+	conflicts = paddlepaddle
+	conflicts = paddlepaddle-gpu
+	source = https://files.pythonhosted.org/packages/cp39/p/paddlepaddle/paddlepaddle-2.1.2-cp39-cp39-manylinux1_x86_64.whl
+	sha256sums = 5a7a752df7cd7cfc07b555f2957934cb3cdae9eeaabb12fb0b1129019b9a04ac
+
+pkgname = paddlepaddle-bin
