@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 91.0.2
+	pkgver = 92.0
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf.install
@@ -51,15 +51,15 @@ pkgbase = librewolf
 	options = !strip
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/91.0.2/source/firefox-91.0.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/92.0/source/firefox-92.0.source.tar.xz
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/common.git#tag=v91.0.2-1
+	source = git+https://gitlab.com/librewolf-community/browser/common.git#tag=v92.0-1
 	source = git+https://gitlab.com/librewolf-community/settings.git#tag=1.6
-	sha256sums = 23523af27631e24dd7dbab8429bcd0d828133e9d32b7ab343495c6e15912f6b5
+	sha256sums = 299a472373021cc9194449c9f4bb962d5f74ef05e8af0448c589761ea34fbc84
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_aarch64 = 91.0.2-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
+	source_aarch64 = 92.0-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
 	sha256sums_aarch64 = 2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9
 
 pkgname = librewolf

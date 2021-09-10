@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=91.0.2
+pkgver=92.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -33,7 +33,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/${pkgname}-community/browser/common.git#tag=${_common_tag}"
         "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}")
 source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
-sha256sums=('23523af27631e24dd7dbab8429bcd0d828133e9d32b7ab343495c6e15912f6b5'
+sha256sums=('299a472373021cc9194449c9f4bb962d5f74ef05e8af0448c589761ea34fbc84'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
             'SKIP')
@@ -109,7 +109,7 @@ END
   # we should have more than enough RAM on the CI spot instances.
   # ...or maybe not?
   export LDFLAGS+=" -Wl,--no-keep-memory"
-  patch -Np1 -i ${_patches_dir}/arm.patch
+  # patch -Np1 -i ${_patches_dir}/arm.patch # not required anymore?
   patch -Np1 -i ../${pkgver}-${pkgrel}_build-arm-libopus.patch
 
 else
