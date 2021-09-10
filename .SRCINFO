@@ -1,0 +1,13 @@
+pkgbase = kgctl-bin
+	pkgdesc = a command line tool provided by Kilo for inspecting and interacting with clusters
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/squat/kilo
+	arch = x86_64
+	license = Apache
+	provides = kgctl
+	conflicts = kgctl
+	source = kgctl-0.3.1::https://github.com/squat/kilo/releases/download/0.3.1/kgctl-linux-amd64
+	sha256sums = 7dd9d4b610376d73ebb61ebecfa841031cc36bd3810bd145d83003e2b624ddc3
+
+pkgname = kgctl-bin
