@@ -1,0 +1,17 @@
+pkgbase = python-autoimport
+	pkgdesc = Autoimport automatically fixes wrong import statements
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/lyz-code/autoimport/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-autoflake
+	depends = python-click
+	depends = python-pyprojroot
+	depends = python-sh
+	source = python-autoimport-0.7.3.tar.gz::https://github.com/lyz-code/autoimport/archive/refs/tags/0.7.3.tar.gz
+	sha512sums = c2917dc07065f0842a691eeec1cfdb83e09ddbf618f5c51c294404eb64a55f06a694d1c279140ccaf09c59dbbbcef6dc5648879aa7f7bce327e197d2c0bf787c
+
+pkgname = python-autoimport
