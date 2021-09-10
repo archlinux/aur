@@ -20,6 +20,7 @@ optdepends=('ffmpeg: for DTS conversion'
             )
 makedepends=('qt5-tools'
              'imagemagick'
+             'wget'
              )
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')

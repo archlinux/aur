@@ -7,6 +7,7 @@ pkgbase = mkv-extractor-qt
 	license = GPL3
 	makedepends = qt5-tools
 	makedepends = imagemagick
+	makedepends = wget
 	depends = python-pyqt5
 	depends = mkvtoolnix-cli
 	optdepends = ffmpeg: for DTS conversion
@@ -21,4 +22,3 @@ pkgbase = mkv-extractor-qt
 	sha256sums = SKIP
 
 pkgname = mkv-extractor-qt
-
