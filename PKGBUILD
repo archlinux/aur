@@ -29,16 +29,16 @@ source_aarch64=('https://github.com/navidrome/navidrome/releases/download/v0.45.
                 'navidrome.toml'
               )
 sha256sums_x86_64=('4d9717ab9d6c2a878b3e6711a6fe1520b0e64ba76c4bb971949cd30c7d2d1163'
-                   '54d2e07865168bc5f3ed09c274f593688b05c51afd715cfec359344df3cf553d'
+                   'c960b24e9aa312617f4a8cefea8be2115c7e3ddb270c3c4e2d0258142496bd02'
                    '5ac4183b961438c8f838d82d8772b856d97ea7aeed2ab4ac4d5fc69559da43d4')
 sha256sums_armv6h=('49b752ef6b7078b0ae12e6b8ef5aa936abc3cba26499aa4ea6aea448aa9053c8'
-                   '54d2e07865168bc5f3ed09c274f593688b05c51afd715cfec359344df3cf553d'
+                   'c960b24e9aa312617f4a8cefea8be2115c7e3ddb270c3c4e2d0258142496bd02'
                    '5ac4183b961438c8f838d82d8772b856d97ea7aeed2ab4ac4d5fc69559da43d4')
 sha256sums_armv7h=('baa86452c8d7a48d67145b22eb4fcfa56042172dc4a9f1d3a2328b7d2076e7d1'
-                   '54d2e07865168bc5f3ed09c274f593688b05c51afd715cfec359344df3cf553d'
+                   'c960b24e9aa312617f4a8cefea8be2115c7e3ddb270c3c4e2d0258142496bd02'
                    '5ac4183b961438c8f838d82d8772b856d97ea7aeed2ab4ac4d5fc69559da43d4')
 sha256sums_aarch64=('55ad034a67a68fc86c6b2c283fa58aa3fc7e410cd23701c2a54e155ace65a5b2'
-                    '54d2e07865168bc5f3ed09c274f593688b05c51afd715cfec359344df3cf553d'
+                    'c960b24e9aa312617f4a8cefea8be2115c7e3ddb270c3c4e2d0258142496bd02'
                     '5ac4183b961438c8f838d82d8772b856d97ea7aeed2ab4ac4d5fc69559da43d4')
 
 package() {
