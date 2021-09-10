@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Zettelkasten
+Comment=Zettelkasten
+Exec=[ -x /usr/local/bin/Zettelkasten ] && /usr/local/bin/Zettelkasten || /usr/bin/Zettelkasten
+Terminal=false
+Type=Application
+Categories=Unknown

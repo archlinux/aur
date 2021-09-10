@@ -1,0 +1,18 @@
+pkgbase = zettelkasten
+	pkgdesc = A Zettelkasten software based on the working principle of Niklas Luhmann
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = http://zettelkasten.danielluedecke.de/
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime
+	provides = zettelkasten
+	conflicts = zettelkasten
+	source = https://github.com/Zettelkasten-Team/Zettelkasten/releases/download/v3.3.1/Zettelkasten-3.3.1.jar
+	source = Zettelkasten
+	source = Zettelkasten.desktop
+	sha256sums = 1170f5b9e8f13f7ba6c842348018a22d2d8ae08e228f8bd2daaf1b47143bc6f3
+	sha256sums = e84d4d4b93eeb6be773fc558d8b0fc931245fd3bc38f5fff34342c8610357d2f
+	sha256sums = 51001957c7398f25218b3484523e744c5d6c42a3c94739ef5b80f294efce3fc1
+
+pkgname = zettelkasten
