@@ -26,7 +26,7 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '7c420cb31a9ef6d3a63cddcc1f235823'
+         'fe0f68276f9fc0272879c8c654bc9141'
          'f1ace6f149a3d778bfb789d10181d877')
 
 build() {
