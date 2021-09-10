@@ -18,7 +18,7 @@ optdepends=(
     "adwaita-icon-theme: fallback Adwaita icon theme for Gnome Desktop")
 install="$pkgname.install"
 source=("https://github.com/bikass/kora/archive/$pkgver.tar.gz")
-sha256sums=("192c2637a1c81c61efde4775feff4d417abb6d55f19f769d03afbdb2ccdc6bb32")
+sha256sums=("192c2637a1c81c61efde4775feff4d417abb6d55f19f769d03afbdb2ccdc6bb3")
 
 _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
