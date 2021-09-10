@@ -24,7 +24,6 @@ build() {
 
 check() {
   cd "${_base}"
-  python setup.py install --root="${PWD}/tmp_install" --optimize=1 --skip-build
   local _pyversion=$(python -c "import sys; print(sys.version[:3])")
   PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-${_pyversion}:${PYTHONPATH}" python test/test_meshpy.py
 }
