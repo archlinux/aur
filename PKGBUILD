@@ -2,7 +2,7 @@
 
 pkgname=wolai-bin
 _pkgname=wolai
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="wolai"
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=('wolai')
 options=(!strip)
 source=("https://static2.wolai.com/dist/installers/wolai-${pkgver}.AppImage"
         "start.sh")
-md5sums=('70efc2811c2df5a553f04925335726ee'
+md5sums=('2009b325318debf120fb99c1019bd117'
          '0a949982a3b76ebe44048559cf382c2f')
 _filename=${_pkgname}-${pkgver}.AppImage
 
