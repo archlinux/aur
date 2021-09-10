@@ -76,7 +76,7 @@ pkgbase=linux-cacule-rdb
 pkgname=('linux-cacule-rdb' 'linux-cacule-rdb-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.2
-pkgrel=4
+pkgrel=5
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -97,6 +97,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/misc/0007-string.patch"
         "${_patchsource}/misc/allpollingrate.patch"
         "${_patchsource}/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+        "${_patchsource}/misc/0001-AMD-CPPC.patch"
         "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
@@ -119,7 +120,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/0001-v4l2loopback.patch"
         "${_patchsource}/0001-ksm.patch"
 	      "auto-cpu-optimization.sh"
-)
+                                  )
 BUILD_FLAGS=(
 
             )
@@ -530,6 +531,7 @@ md5sums=('e111bd84156ac6b19568a495eed46400'
          'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
          'f8e172e9ea554bbb1053eb122c3ace35'
+         '302cbad3c979395f37307a094f6d8fd5'
          'a0285c065b902ca625119e4ad43cbab4'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
