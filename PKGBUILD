@@ -4,22 +4,22 @@
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
 
 pkgname=spring-ba
-pkgver=9.46
+pkgver=14.0.1
 pkgrel=1
-pkgdesc="A popular balanced Spring mod based on Absolute Annihilation"
+pkgdesc='A fan mod of Total Annihilation with remastered graphics and balance'
 arch=(any)
-url='https://springrts.com/wiki/Balanced_Annihilation'
+url='https://balancedannihilation.com/'
 license=('GPL' 'CCPL' 'custom:non-free')
 depends=('spring')
-source=("ba-v$pkgver.sdz::https://springfiles.com/downloadmain/start/21088"
+source=("https://www.springfightclub.com/data/balanced_annihilation-v$pkgver.sdz"
 	'license-non-free')
-noextract=("ba-v$pkgver.sdz")
-md5sums=('03eaa6082d36ec26ebbfb16ba4268592'
+noextract=("balanced_annihilation-v$pkgver.sdz")
+md5sums=('196811a65aee80f1c88b4fd76baa3898'
          '28872feaac21fc4b2b4ae00b3f86e52a')
 
 PKGEXT='.pkg.tar'
 
 package() {
-	install -Dm 644 ba-v$pkgver.sdz "$pkgdir/usr/share/spring/games/ba-v$pkgver.sdz"
-	install -Dm 644 license-non-free "$pkgdir/usr/share/licenses/$pkgname/non-free"
+	install -Dm644 balanced_annihilation-v$pkgver.sdz "$pkgdir/usr/share/spring/games/balanced_annihilation-v$pkgver.sdz"
+	install -Dm644 license-non-free "$pkgdir/usr/share/licenses/$pkgname/non-free"
 }
