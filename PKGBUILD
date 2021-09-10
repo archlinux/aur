@@ -4,7 +4,7 @@ pkgbase=python-mbdata-git
 _pkgbase=${pkgbase%-git}
 _name=${_pkgbase#python-}
 pkgname=$pkgbase
-pkgver=25.0.4.r3.g5d8cadf
+pkgver=26.0.0.r4.gb7c5da3
 pkgrel=1
 pkgdesc='MusicBrainz database tools for Python'
 url="https://github.com/lalinsky/$_name"
@@ -14,7 +14,7 @@ depends=(python python-psycopg2 python-six)
 makedepends=('python-setuptools' 'git')
 provides=(${_pkgbase})
 conflicts=(${_pkgbase})
-source=("git+$url.git")
+source=("git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
