@@ -1,19 +1,18 @@
 pkgbase = python-sncosmo-doc
 	pkgdesc = Documentation for SNCosmo
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://sncosmo.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python-sncosmo=2.5.0
+	makedepends = python-sncosmo=2.6.0
 	makedepends = python-numpydoc
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-gallery
 	makedepends = python-iminuit
 	makedepends = graphviz
-	source = https://github.com/sncosmo/sncosmo/archive/v2.5.0.tar.gz
-	md5sums = 1187390982a18207a6cb786fafcef5bc
+	source = https://github.com/sncosmo/sncosmo/archive/v2.6.0.tar.gz
+	md5sums = d10499b6bdcc5e28ab4e3b2e7a06504a
 
 pkgname = python-sncosmo-doc
-
