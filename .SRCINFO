@@ -1,7 +1,7 @@
 pkgbase = visualdl
 	pkgdesc = Deep Learning Visualization Toolkit
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PaddlePaddle/VisualDL
 	arch = any
 	license = Apache

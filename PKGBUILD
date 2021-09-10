@@ -3,7 +3,7 @@
 _name=VisualDL
 pkgname=visualdl
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deep Learning Visualization Toolkit"
 url="https://github.com/PaddlePaddle/VisualDL"
 depends=(
@@ -24,6 +24,11 @@ license=('Apache')
 arch=('any')
 source=($pkgname-$pkgver.tar.gz::https://github.com/PaddlePaddle/VisualDL/archive/refs/tags/v$pkgver.tar.gz)
 md5sums=('8a0c393ba68956de94dce5aabc7e456b')
+
+prepare() {
+    cd $srcdir/${_name}-${pkgver}
+    sed -i '/pre-commit/d;/shellcheck/d' requirements.txt
+}
 
 build() {
     rustup toolchain install stable
