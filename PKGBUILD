@@ -2,7 +2,7 @@
 # Contributor: Rafed Ramzi <rafedramzi@gmail.com>
 
 pkgname=sweet-gtk-theme
-_pkgname=Sweet-v40
+_pkgname=Sweet
 pkgver=2.0.r23.5b53ee2
 pkgrel=2
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
@@ -11,10 +11,42 @@ url='https://github.com/EliverLara/Sweet'
 license=('GPL3')
 conflicts=('sweet-theme')
 replaces=('sweet-theme')
-source=(https://dl3.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2Mjg1MzgyOTgiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6ImY1NDQ1ODE0ZjNhZTg4ODYwNWY2MTE5NmFjNTQxOGJkOTkxMzdhYTllYjFhOWRkMzFhYTMyMGY0Mzc2ZGU4NzkwOGIyODQxMjNlODA4YTE1M2M4NjBkOTkyYWI3NDBkYjhlMDkzZjZlNzIxZWU5ZGVhODNhMmNmYjE4MzVmZmFiIiwidCI6MTYzMTI0MjA4Mywic3RmcCI6bnVsbCwic3RpcCI6bnVsbH0.YpE7VPnY7uaL7cDUjJiLAsVcy0nLGV4BFAh_71x5NxI/Sweet-v40.tar.xz)
-md5sums=('51151ef70bc4126e3f564c26a534da3c')
+makedepends=('git')
+_commit=5b53ee233aae437938ab414ae5dcaa79170179be
+source=(git+$url.git#commit=$_commit)
+md5sums=('SKIP')
+
+prepare() {
+  # Clean out some unneeded files to make installation a little more straightforward
+  find $_pkgname -type f -name "*scss" -exec rm {} \;
+  rm -fr $_pkgname/xfwm4/{assets,render_assets.fish}
+}
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/themes/
-  cp -r "${srcdir}/${_pkgname}" "${pkgdir}/usr/share/themes/Sweet"
+  cd $_pkgname
+
+  # Generic assets
+  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname {LICENSE,README.md,index.theme}
+  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/assets assets/*
+
+  # Cinnamon
+  cp -r cinnamon    "${pkgdir}"/usr/share/themes/$_pkgname/
+
+  # GNOME
+  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/gnome-shell/       gnome-shell/v40/gnome-shell.css
+  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/gnome-shell/assets gnome-shell/assets/*
+
+  # GTK2
+  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/gtk-2.0        gtk-2.0/{gtkrc,main.rc}
+  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/gtk-2.0/apps   gtk-2.0/apps/*
+  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/gtk-2.0/assets gtk-2.0/assets/*
+
+  # GTK3
+  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/gtk-3.0 gtk-3.0/{gtk-dark.css,gtk.css,thumbnail.png}
+
+  # Metacity
+  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/metacity-1 metacity-1/*
+
+  # xfwm
+  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/xfwm4 xfwm4/*
 }
