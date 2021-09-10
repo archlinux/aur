@@ -168,6 +168,17 @@ prepare() {
           echo "Setting config..."
           cp ../config .config
 
+        if [ -n "$_use_cfi" ]; then
+          scripts/config --enable CONFIG_ARCH_SUPPORTS_CFI_CLANG
+          scripts/config --enable CONFIG_CFI_CLANG
+        fi
+
+        if [ -n "$_use_pgo" ]; then
+          scripts/config --enable CONFIG_ARCH_SUPPORTS_PGO_CLANG
+          scripts/config --enable DEBUG_FS
+          scripts/config --enable CONFIG_PGO_CLANG
+        fi
+
       ### Microarchitecture Optimization (GCC/CLANG)
             if [ -n "$_use_optimization" ]; then
               sh "${srcdir}"/auto-cpu-optimization.sh
