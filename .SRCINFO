@@ -1,6 +1,6 @@
 pkgbase = cloud-hypervisor
 	pkgdesc = A Rust-VMM based cloud hypervisor from Intel
-	pkgver = 17.0
+	pkgver = 18.0
 	pkgrel = 1
 	url = https://github.com/cloud-hypervisor/cloud-hypervisor
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = cloud-hypervisor
 	license = Apache:2.0
 	makedepends = rust
 	optdepends = qemu-headless
-	source = https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v17.0.tar.gz
-	sha512sums = 3f32c30212da4cb1f8c967b0b452938e491b918db7063e3238514504bc186657d1fe1094aa7c6445ba357cba7a549969918f71814242012c1bd953b54bfcd904
-	b2sums = 6ed3dfffd888d8380d2469e085f0974d93f020df8679e06c530bd7a56c5b262785ea7d33e7c62218353f0f2544222ae0b10bfe1f940250d44bd714eab0fde481
+	source = https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v18.0.tar.gz
+	sha512sums = 8acda894aec9399a0612fe4dc7291a702975b2e39d0e9c1b0b15efd91c3488ba01447ca13d2bb91bee33826517ca141b9f5cd2b78ee9ecfd43415480f90e4af7
+	b2sums = 47f0ad286c9decf0e496d155f91ae9c44fa364a4ac93e9789e7f397e994e45aee102a5ee1100dcd33c24d3e41c86137d48c08902d103b4a53e7f0f27693a03f9
 
 pkgname = cloud-hypervisor
