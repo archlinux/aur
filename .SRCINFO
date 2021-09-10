@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libwebsockets
 	pkgdesc = Lightweight pure C library built to use minimal CPU and memory resources, and provide fast throughput in both directions. (mingw-w64)
-	pkgver = 1.4
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = http://libwebsockets.org/
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = mingw-w64-libwebsockets
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://git.libwebsockets.org/cgi-bin/cgit/libwebsockets/snapshot/libwebsockets-1.4-chrome43-firefox-36.tar.gz
-	sha256sums = e11492477e582ef0b1a6ea2f18d81a9619b449170a3a5c43f32a9468461a9798
+	source = libwebsockets-4.2.2.tar.gz::https://github.com/warmcat/libwebsockets/archive/refs/tags/v4.2.2.tar.gz
+	sha256sums = c2ae635485b8ef8d383dee0aee29ad6272d4462e527d29d9af014ab4a2465cbd
 
 pkgname = mingw-w64-libwebsockets
-

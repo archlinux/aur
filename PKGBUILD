@@ -1,9 +1,8 @@
 # Maintainer: Mikołaj Milej <mikolajmm@gmail.com>
 
 _libName=libwebsockets
-_suffix="chrome43-firefox-36"
 pkgname=mingw-w64-${_libName}
-pkgver=1.4
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Lightweight pure C library built to use minimal CPU and memory resources, and provide fast throughput in both directions. (mingw-w64)"
 arch=(any)
@@ -12,8 +11,8 @@ license=("LGPL2 + static linking exception")
 makedepends=('mingw-w64-cmake' 'mingw-w64-gcc' 'mingw-w64-zlib')
 depends=('mingw-w64-crt' 'mingw-w64-openssl')
 options=('staticlibs' '!strip' '!buildflags')
-source=("http://git.libwebsockets.org/cgi-bin/cgit/libwebsockets/snapshot/libwebsockets-${pkgver}-${_suffix}.tar.gz")
-sha256sums=('e11492477e582ef0b1a6ea2f18d81a9619b449170a3a5c43f32a9468461a9798')
+source=(libwebsockets-${pkgver}.tar.gz::"https://github.com/warmcat/libwebsockets/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c2ae635485b8ef8d383dee0aee29ad6272d4462e527d29d9af014ab4a2465cbd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -42,7 +41,7 @@ build() {
       -DLWS_WITHOUT_DEBUG:BOOL=ON \
       -DLWS_WITH_HTTP2:BOOL=ON \
       -DLWS_WITH_LATENCY:BOOL=ON \
-      ../../libwebsockets-${pkgver}-${_suffix}
+      ../../libwebsockets-${pkgver}
     make
     popd
   done
