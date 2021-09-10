@@ -3,7 +3,7 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
 pkgver=20.04.41
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -12,7 +12,6 @@ depends=(
   'at'
   'dmidecode'
   'ethtool'
-  'grub'
   'gtk3'
   'lm_sensors'
   'pciutils'
@@ -34,6 +33,7 @@ makepdepends=(
 optdepends=(
   'firmware-manager: Manage System76 firmware updates via standalone application'
   'gnome-control-center-system76: Manage System76 firmware updates via Settings'
+  'grub: Required to apply kernel parameters'
   'pm-utils: For power management features'
   'pulseaudio: To apply microphone fix'
   'system76-dkms: Control hotkeys and fan on certain System76 laptops'
