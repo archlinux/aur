@@ -4,7 +4,7 @@
 # Contributor: Bruno Inec <bruno at inec dot fr>
 
 pkgname=wtfutil
-pkgver=0.39.0
+pkgver=0.39.2
 pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
@@ -13,7 +13,7 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wtfutil/wtf/archive/v$pkgver.tar.gz")
-sha256sums=('1180e1d0c9e8ec8057a213a9dd334f41419b9463d11f3be7af17b323e6338cfe')
+sha256sums=('6719bea25bd775a1f155729c13b2fc4e143eec32736b13f1240dcbb969528ac5')
 
 prepare() {
   # Prevent creation of a `go` directory in one's home.
