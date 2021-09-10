@@ -1,7 +1,7 @@
 # Maintainer: Artemii Sudakov <finziyr@yandex.ru>
 
 pkgname="kesboot-git"
-pkgver=1.2.r0.g8ef3180
+pkgver=1.3.r0.g8bfb582
 pkgrel=1
 pkgdesc='Script for automating work with EFI Kernel Stub (linux)'
 arch=('any')
