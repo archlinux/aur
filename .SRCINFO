@@ -1,13 +1,14 @@
 pkgbase = nerdctl-bin
 	pkgdesc = Docker-compatible CLI for containerd
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.11.1
+	pkgrel = 1
 	url = https://github.com/containerd/nerdctl
 	arch = x86_64
 	license = Apache
 	optdepends = containerd
-	source = https://github.com/containerd/nerdctl/releases/download/v0.8.1/nerdctl-0.8.1-linux-amd64.tar.gz
-	sha256sums = 7c3573db282749079e06f4c592b4585d53628d13fd762746b30389f854d79a47
+	optdepends = rootlesskit
+	optdepends = slirp4netns
+	source = https://github.com/containerd/nerdctl/releases/download/v0.11.1/nerdctl-0.11.1-linux-amd64.tar.gz
+	sha256sums = aa85f3d9a0a44db437a04ad6e0cefa300b6ed8dee6d7f477eec9cb996efebc89
 
 pkgname = nerdctl-bin
-
