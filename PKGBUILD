@@ -2,7 +2,7 @@
 pkgname=solana  
 pkgver=1.6.22
 _splver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://www.solana.com"
 arch=('i686' 'x86_64')
@@ -50,9 +50,9 @@ build() {
   for bin in "${BINS[@]}"; do
     binargs+=(--bin "$bin")
   done
-  cargo build --release --locked "${binargs[@]}"
+  cargo +1.51.0 build --release --locked "${binargs[@]}"
   cd "$srcdir/solana-program-library--solana-spl-token-v$_splver"
-  cargo build --release --locked --bin spl-token
+  cargo +1.51.0 build --release --locked --bin spl-token
 }
 
 package() {
