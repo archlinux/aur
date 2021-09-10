@@ -1,6 +1,6 @@
 # Maintainer: Morganamilo <morganamilo@gmail.com>
 pkgname=pacdiffviewer
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=2
 pkgdesc="Pacfiles manager"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=("vim: view via 'vim -f'"
   "sudo: view via 'sudo -e'")
 conflicts=('yaourt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/pacdiffviewer/archive/v$pkgver.tar.gz")
-sha512sums=('86959316cae74fa08b08e1abbc18bf6fe93be4fd1e2e672d0d2190ac4ade1ae5b39fa2e0360b639979a46c08492e529a9cb8f5923388d8fbdb7c3738e7546b30')
+sha512sums=('3db100b3b63fc1627f3aa918a0d22dd9fe4ea3edabd41893a20a9ba5f79415d97c5fce07d2c126015674fc9e45a760db1c704637bc095e958800cfb35067c42f')
 
 build() {
   cd "$pkgname-$pkgver"
