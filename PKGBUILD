@@ -28,6 +28,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	"0006-rockchip-rng-driver.patch"
 	"0007-fixed-mmc-index.patch"
 	"0008-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch"
+	"0009-rk33328-enable-opp-table-1512mhz.patch"
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -37,7 +38,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('a082ef5748b813abca0649dab8be5f52'
-         'b712c1d1b1de3091acca6f4fd8bca831'
+         '069f53467c8fcad1012fb52e88d13bbb'
          '1300797c69bf7f6a26672011334c6a96'
          '010810596a08c508c1b57350de3c1ee5'
          'ccb144e753dce358915ed615329d2067'
@@ -46,7 +47,8 @@ md5sums=('a082ef5748b813abca0649dab8be5f52'
          'a9527f30abbbde5c126e93e2bf57b034'
          '966cbe04ab5848bf6972411166adfee4'
          '7a18066683f3351b2bbd2653db783f80'
-         '26fc18028c3120660d85f100e6bf1df8'
+         '6dfa62f14b2a3390b1a4ca2e5cf5c9a2'
+         '3b4bdb28542c51a68eb19c5d56d0268e'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -73,6 +75,7 @@ prepare() {
   patch -p1 < ../0006-rockchip-rng-driver.patch
   patch -p1 < ../0007-fixed-mmc-index.patch
   patch -p1 < ../0008-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
+  patch -p1 < ../0009-rk33328-enable-opp-table-1512mhz.patch
 
   cat "${srcdir}/config" > ./.config
 
