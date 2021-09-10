@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-unite-git
-pkgver=r883.9de6a19
+pkgver=r892.15d7a4d
 pkgrel=1
 pkgdesc="Unite makes GNOME Shell look like Ubuntu Unity Shell"
 arch=("any")
