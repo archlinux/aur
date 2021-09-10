@@ -16,16 +16,16 @@ migrateUserData() {
 
     # If needed, create userspace path
     if [[ ! -d "$homedir/.local/share/odin2/Soundbanks" ]] ; then
-        sudo -u "$user" mkdir -p "$homedir/.local/share/odin2/Soundbanks" || return 1
+        sudo -u "$user" mkdir -p "$homedir/.local/share" || return 1
     fi
 
     # Create/Migrate the user data
     if [[ -d /opt/odin2 ]] ; then
-        sudo -u "$user" cp -r '/opt/odin2/Soundbanks/User Patches' "$homedir/.local/share/odin2/Soundbanks" || return 1
+        sudo -u "$user" cp -r '/opt/odin2' "$homedir/.local/share" || return 1
         rm -rf /opt/odin2 || return 1
     else
         if [[ ! -d "$homedir/.local/share/odin2/Soundbanks/User Patches" ]] ; then
-            mkdir "$homedir/.local/share/odin2/Soundbanks/User Patches"
+            mkdir -p "$homedir/.local/share/odin2/Soundbanks/User Patches"
         fi
     fi
 }
