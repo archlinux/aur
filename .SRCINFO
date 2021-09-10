@@ -1,7 +1,7 @@
 pkgbase = python-iso639-lang-0.0.9
 	pkgdesc = A lightweight library for the ISO 639 standard. (v0.0.9)
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LBeaudoux/iso639
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = python-iso639-lang-0.0.9
 	depends = python
 	conflicts = python-iso639-lang
 	source = python-iso639-lang-0.0.9.tar.gz::https://files.pythonhosted.org/packages/ca/9d/36dd248b44bfcebbd63760a0ae262bf0ed15588b6238e3ef58b843dc533c/iso639-lang-0.0.9.tar.gz
-	source = LICENSE.txt::https://github.com/LBeaudoux/iso639/blob/2cbf05ac13d46a788332dee9ac935e76159794b8/LICENSE.txt
+	source = LICENSE.txt::https://raw.githubusercontent.com/LBeaudoux/iso639/2cbf05ac13d46a788332dee9ac935e76159794b8/LICENSE.txt
 	sha256sums = b5e1fba4ceac7afa6849f3f1f7350351b1420852674391ce18c208b2427f04c3
-	sha256sums = ba8a52b3d34359a680881b2437647ae7f32b1ce393811b6c24e111410a71a118
+	sha256sums = ce30b156c415c0a229e8ecee2c562951688a73adcf89bcba54ddf969248a8d77
 
 pkgname = python-iso639-lang-0.0.9
