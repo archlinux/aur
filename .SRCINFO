@@ -22,6 +22,5 @@ pkgbase = beekeeper-studio-bin
 	sha256sums_x86_64 = f0f3f41f6071ec6ce87263d051fb6d085c2a6b8beff4f823f0b93f372f96990b
 	source_aarch64 = https://dl.bintray.com/beekeeper-studio/releases/beekeeper-studio_2.0.0_arm64.deb
 	sha256sums_aarch64 = 57005c1de73e3872682d7cd5a01655ed6dfb7480e3cd5a4c94bad0b9fdca98b0
-
 pkgname = beekeeper-studio-bin
 
