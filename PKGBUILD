@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=shinyWidgets
-_cranver=0.6.0
+_cranver=0.6.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=('r>=3.1.0' r-bslib r-sass 'r-shiny>=0.14' r-htmltools r-jsonlite)
 optdepends=(r-shinydashboard r-testthat r-covr r-shinydashboardplus r-bs4dash r-argonr r-argondash r-tablerdash r-ggplot2 r-dt r-scales)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('0dcf1a79f67d25bb3a18c1ba0c303797')
+md5sums=('b0cc2fb2cf4324282df282a8ac303fcb')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
