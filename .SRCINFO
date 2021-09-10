@@ -9,7 +9,7 @@ pkgbase = megapixels
 	makedepends = meson
 	depends = gtk4
 	depends = zbar
-	source = megapixels-1.3.0::https://git.sr.ht/~martijnbraam/megapixels/archive/1.3.0.tar.gz
+	source = megapixels-1.3.0.tar.gz::https://git.sr.ht/~martijnbraam/megapixels/archive/1.3.0.tar.gz
 	sha256sums = 810f1eaaea49d5fb147ed9b1ff7321630fe8b89bf45685b3f09a531007ddaf39
 
 pkgname = megapixels

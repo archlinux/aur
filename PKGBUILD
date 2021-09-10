@@ -9,7 +9,7 @@ license=(LGPL)
 arch=(x86_64 aarch64)
 depends=(gtk4 zbar)
 makedepends=(meson)
-source=("${pkgname}-${pkgver}::${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('810f1eaaea49d5fb147ed9b1ff7321630fe8b89bf45685b3f09a531007ddaf39')
 
 build() {
