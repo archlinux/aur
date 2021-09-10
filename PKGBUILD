@@ -1,6 +1,6 @@
 pkgname=openmodelica
-pkgver=1.17.0
-pkgrel=3
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
@@ -17,10 +17,6 @@ prepare() {
         cd "${pkgname}"
         git remote set-url origin ${_giturl}
         git submodule update --force --init --recursive
-        # OMCompiler: Dont try to install translations
-        git cherry-pick -n 2a39a402d9604a1ce353b0a12574fed5d320be0e
-        # Fix build with cmake >= 3.20
-        git cherry-pick -n 4f3a50974f0f916efd716809699f18d47f1dbe34
 }
 
 build() {
@@ -28,7 +24,7 @@ build() {
         # See https://github.com/OpenModelica/OpenModelica/issues/7619
         export CXXFLAGS=-std=c++14
         autoreconf -fi
-        ./configure --prefix=/usr
+        ./configure --prefix=/usr --without-omc
         make
 }
 
