@@ -1,0 +1,15 @@
+pkgbase = mkjson-git
+	pkgdesc = A commandline tool to generate static or random JSON records
+	pkgver = 0.3.0.r14.a5fdcf8
+	pkgrel = 1
+	url = https://github.com/mfussenegger/mkjson
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = stack
+	provides = mkjson
+	conflicts = mkjson
+	source = git+https://github.com/mfussenegger/mkjson
+	md5sums = SKIP
+
+pkgname = mkjson-git
