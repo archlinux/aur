@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python2-mako
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="A super-fast templating language that borrows the best ideas from the existing templating languages"
 arch=('any')
 url="https://www.makotemplates.org/"
@@ -11,7 +11,7 @@ makedepends=('python2-setuptools')
 depends=('python2-markupsafe' 'python2-beaker' 'python2-setuptools')
 
 source=("https://pypi.io/packages/source/M/Mako/Mako-$pkgver.tar.gz"{,.asc})
-sha512sums=('73b7a32ceb6e39dc2491734546c83a752bf0c8bc7546bb236801c02a5bccc5b59f2440333a328ff747eee936612dd12279f08d27d76f065fd589081d232692a8'
+sha512sums=('3eff75f1a94f8e01131ce118df73be1ade79306562ae2ca68079eb2b64ef82c48c09cfd7ed6eda42819bf50c70941cf4115f8918b4d8187f7489717c7d4a423b'
             'SKIP')
 validpgpkeys=('83AF7ACE251C13E6BB7DEFBD330239C1C4DAFEE1')  # Michael Bayer
 
