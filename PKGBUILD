@@ -46,7 +46,7 @@ md5sums=('a082ef5748b813abca0649dab8be5f52'
          'a9527f30abbbde5c126e93e2bf57b034'
          '966cbe04ab5848bf6972411166adfee4'
          '7a18066683f3351b2bbd2653db783f80'
-         'da2e45cbcd710b7df01bf83f87fedcb7'
+         '26fc18028c3120660d85f100e6bf1df8'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -56,7 +56,8 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  git apply --whitespace=nowarn ../patch-${pkgver}
+  [[ ${pkgver##*.} != 0 ]] && \
+  patch -p1 < "../patch-${pkgver}"
 
   # dts for Beikeyun P1
   target_dts="rk3328-beikeyun-p1.dts"
@@ -97,7 +98,7 @@ build() {
   # ... or manually edit .config
 
   # Copy back our configuration (use with new kernel version)
-  #cp ./.config ../${pkgbase}.config
+  cp ./.config ../${pkgbase}.config
 
   ####################
   # stop here
