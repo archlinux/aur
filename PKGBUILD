@@ -4,7 +4,7 @@
 pkgname=sweet-gtk-theme
 _pkgname=Sweet-v40
 pkgver=2.0.r23.5b53ee2
-pkgrel=1
+pkgrel=2
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=('any')
 url='https://github.com/EliverLara/Sweet'
@@ -15,6 +15,6 @@ source=(https://dl3.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIU
 md5sums=('51151ef70bc4126e3f564c26a534da3c')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/themes/${_pkgname}"
-  cp -r "${srcdir}/${_pkgname}" "${pkgdir}/usr/share/themes/"
+  mkdir -p ${pkgdir}/usr/share/themes/
+  cp -r "${srcdir}/${_pkgname}" "${pkgdir}/usr/share/themes/Sweet"
 }
