@@ -1,6 +1,6 @@
 pkgbase = libsahtrace-git
 	pkgdesc = Small and flexible library to enable tracing and logging
-	pkgver = 1.0.0.r0.gedbe4ae
+	pkgver = 1.7.2.r0.gf376be0
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/logging/libsahtrace.git
 	arch = x86_64
