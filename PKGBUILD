@@ -19,6 +19,7 @@ depends=(
     'abseil-cpp')
 makedepends=(
     'go'
+    'python-grpcio-tools'
     'python-setuptools')
 optdepends=(
     'logrotate: for logfile rotation support'

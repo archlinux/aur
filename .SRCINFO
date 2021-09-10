@@ -10,6 +10,7 @@ pkgbase = opensnitch
 	arch = aarch64
 	license = GPL3
 	makedepends = go
+	makedepends = python-grpcio-tools
 	makedepends = python-setuptools
 	depends = libnetfilter_queue
 	depends = libpcap
