@@ -1,16 +1,24 @@
 pkgbase = python-tabledata
-	pkgdesc = Represent tabular data
-	pkgver = 1.1.3
-	pkgrel = 2
+	pkgdesc = Python library to represent tabular data
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/thombashi/tabledata
 	arch = any
 	license = MIT
+	checkdepends = python-pytablewriter>=0.46
+	checkdepends = python-pytest-runner
+	checkdepends = python-dateutil
+	checkdepends = python-pytz
 	makedepends = python-setuptools
-	depends = python
-	depends = python-dataproperty
-	depends = python-typepy
-	source = https://files.pythonhosted.org/packages/source/t/tabledata/tabledata-1.1.3.tar.gz
-	sha256sums = fa4c2db55cbb198ca5e21063ae743f418d3efbba94cd4844d2f759f994df76a2
+	depends = python>=3.6
+	depends = python-dataproperty>=0.50.1
+	depends = python-dataproperty<1
+	depends = python-typepy>=1.1.4
+	depends = python-typepy<2
+	source = python-tabledata-1.2.0.tar.gz::https://files.pythonhosted.org/packages/source/t/tabledata/tabledata-1.2.0.tar.gz
+	source = python-tabledata-1.2.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/t/tabledata/tabledata-1.2.0.tar.gz.asc
+	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
+	sha256sums = 0497e408ed3af83e9273d0afa116bde92de89662e67ab4d477118e817eca651a
+	sha256sums = SKIP
 
 pkgname = python-tabledata
-
