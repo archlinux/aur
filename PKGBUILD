@@ -1,7 +1,7 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=prettierd
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="prettier, as a daemon, for ludicrous formatting speed."
 url="https://github.com/fsouza/prettierd"
 license=("ISC")

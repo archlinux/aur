@@ -1,7 +1,7 @@
 pkgbase = prettierd
 	pkgdesc = prettier, as a daemon, for ludicrous formatting speed.
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fsouza/prettierd
 	arch = any
 	license = ISC
