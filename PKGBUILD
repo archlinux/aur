@@ -464,8 +464,6 @@ prepare() {
 
 build() {
   cd mpv-build
-  CORENUM=$(nproc)
-  sed -i "s|scripts/ffmpeg-build|scripts/ffmpeg-build -j ${CORENUM}|" build
   if [ -d /opt/cuda ]; then
     sed -i 's|scripts/mpv-config|sed \-i "s\|-lavfilter\|-L/opt/cuda/targets/x86_64-linux/lib/ -lavfilter\|" build_libs/lib/pkgconfig/libavfilter.pc\nscripts/mpv-config|' "${srcdir}/mpv-build/build"
   fi
