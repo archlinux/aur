@@ -1,14 +1,13 @@
 pkgbase = nodejs-dat
 	pkgdesc = Sync data across the distributed web
-	pkgver = 13.13.1
-	pkgrel = 2
+	pkgver = 14.0.2
+	pkgrel = 1
 	url = https://github.com/datproject/dat
 	arch = any
 	license = custom
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/dat/-/dat-13.13.1.tgz
-	sha256sums = fae1324255783b1033c27a09b916b310da388c9c88e033dcd62002d8191a784f
+	source = https://registry.npmjs.org/dat/-/dat-14.0.2.tgz
+	sha256sums = 8766e5c4f741ed18885bd361de983166132343bd5d68f96f2e5c8763eac4c686
 
 pkgname = nodejs-dat
-

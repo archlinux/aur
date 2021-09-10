@@ -2,8 +2,8 @@
 
 _npmname=dat
 pkgname=nodejs-$_npmname
-pkgver=13.13.1
-pkgrel=2
+pkgver=14.0.2
+pkgrel=1
 pkgdesc="Sync data across the distributed web"
 arch=('any')
 url="https://github.com/datproject/dat"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-sha256sums=('fae1324255783b1033c27a09b916b310da388c9c88e033dcd62002d8191a784f')
+sha256sums=('8766e5c4f741ed18885bd361de983166132343bd5d68f96f2e5c8763eac4c686')
 
 package() {
     cd "${srcdir}"
