@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Daniel Langbein < daniel [ at ] systemli [ dot ] org >
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python2-mako
 pkgver=1.1.5
