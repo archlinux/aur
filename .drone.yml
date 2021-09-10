@@ -12,7 +12,7 @@ pipeline:
     pull: true
     when:
       branch: master
-    override_files: "linux-ath-dfs-*.zst"
+    override_files: "linux-ath-dfs*.zst"
     repo_name: archrepo
     repo_ownerid: 972
     repo_groupid: 971
