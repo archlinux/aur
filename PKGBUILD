@@ -2,18 +2,20 @@
 
 pkgname=funkwhale
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
 arch=(any)
 url="https://funkwhale.audio/"
 license=(GPL3)
 optdepends=('apache: to use the Apache web server'
             'certbot-apache: for the server to be accessible from outside'
-            'nginx: to use nginx web server'
-            'python-daphne: an alternative web server')
-depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
-        'ipython'
-        'mod_xsendfile'
+            'mod_xsendfile: needed if Apache server is used'
+            'nginx: to use nginx web server')
+depends=('ffmpeg'
+        'libjpeg'
+        'postgresql'
+        'python'
+        'python-setuptools'
         'python-django'
         'python-django-environ'
         'python-pillow'
@@ -33,6 +35,7 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-django-versatile-imagefield'
         'python-django-filter'
         'python-django-rest-auth'
+        'ipython'
         'python-mutagen'
         'python-pymemoize'
         'python-django-dynamic-preferences'
@@ -71,23 +74,23 @@ source=("${pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "${pkgname}-${pkgver}-front.zip::${_source_api}build_front"
         "${_source_env}funkwhale_proxy.conf"
         "${_source_env}nginx.template"
+        "funkwhale.service"
         "funkwhale-beat.service"
-        "funkwhale-worker.service"
         "funkwhale-server.service"
+        "funkwhale-worker.service"
         "apache-funkwhale.conf"
         "env-template"
-        "funkwhale.service"
 )
 sha256sums=('5c0689c0e05d3271d161c13e8063e5053f4ecb582e3a7e3d6973d1c46be23887'
             '0b77367cb4e8d1b57af59282af90ac41e0915de85cf5337b02f16e6aa0bd0129'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
             'f56a2e8947809db4325a6c65141f6eb87e7428cc0e5a57032fc7ce050bf396fa'
+            '01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349'
             '812c9a49436725e18768c5eb772c7207c184cdcf3a057432dc998387c481bd8d'
-            '57c17dbd033fff76b344c90114d3b1f9eae3aaaa49128b61fcd1b5e808561dc3'
             '9d5a6f2cae6f18e22c5423247570519e8c772a9447ec2d92bd2fe5d69e519470'
+            '57c17dbd033fff76b344c90114d3b1f9eae3aaaa49128b61fcd1b5e808561dc3'
             'f37b1b6257c5b92272f36773041c83fc72276ff4040100fba92db8136cc9177d'
-            'cea307055e9f8001a1507c507e1be91352d896cab17260a221f4ab8c298506d8'
-            '01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349')
+            'cea307055e9f8001a1507c507e1be91352d896cab17260a221f4ab8c298506d8')
 install=${pkgname}.install
 
 prepare() {
