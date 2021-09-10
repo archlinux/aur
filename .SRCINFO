@@ -1,5 +1,5 @@
 pkgbase = stdcsv
-	pkgdesc = A SQL interpreter for text processing
+	pkgdesc = A tool/library for working with delimited files.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/jasonKercher/libcsv
