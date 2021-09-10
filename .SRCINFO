@@ -1,13 +1,12 @@
 pkgbase = pocketsphinx
-	pkgdesc = Lightweight speech recognition engine, specifically tuned for handheld and mobile devices, though it works equally well on the desktop.
+	pkgdesc = Lightweight speech recognition engine
 	pkgver = 5prealpha
-	pkgrel = 10
+	pkgrel = 12
 	url = http://cmusphinx.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = swig
-	makedepends = python2
 	makedepends = python
 	depends = sphinxbase=5prealpha
 	depends = gst-plugins-base-libs
@@ -16,4 +15,3 @@ pkgbase = pocketsphinx
 	sha256sums = ef5bb5547e2712bdf571f256490ef42a47962033892efd9d7df8eed7fe573ed9
 
 pkgname = pocketsphinx
-
