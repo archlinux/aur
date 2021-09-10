@@ -35,6 +35,7 @@ build() {
       -DVTK_USE_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_BUILD_TESTING=OFF \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
