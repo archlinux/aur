@@ -1,14 +1,17 @@
 pkgbase = python-addict
-	pkgdesc = A Python Dict whos keys can be set both using attribute and item syntax
+	pkgdesc = Python Dict whos keys can be set both using attribute and item syntax
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mewwts/addict
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/addict/addict-2.4.0.tar.gz
+	makedepends = python2-setuptools
+	source = python-addict-2.4.0.tar.gz::https://files.pythonhosted.org/packages/source/a/addict/addict-2.4.0.tar.gz
 	sha256sums = b3b2210e0e067a281f5646c8c5db92e99b7231ea8b0eb5f74dbdf9e259d4e494
 
 pkgname = python-addict
+	depends = python>=3.6
 
+pkgname = python2-addict
+	depends = python2
