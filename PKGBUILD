@@ -49,6 +49,4 @@ package() {
 
   # xfwm
   install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/xfwm4 xfwm4/*
-
-exit 0
 }
