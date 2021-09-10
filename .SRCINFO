@@ -1,0 +1,12 @@
+pkgbase = ce-toolchain
+	pkgdesc = Toolchain and libraries for C/C++ programming on the TI-84+ CE calculator series
+	pkgver = 9.1
+	pkgrel = 1
+	url = https://ce-programming.github.io/toolchain/index.html
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	source = https://github.com/CE-Programming/toolchain/releases/download/v9.1/linux_CEdev.zip
+	sha256sums = 338e48b25369bd09167a77f70493c7b6acaa63b109aae6cd1f07c72f0708c757
+
+pkgname = ce-toolchain
