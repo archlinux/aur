@@ -2,7 +2,7 @@
 
 _pkgname=ksmbd
 pkgname=ksmbd-dkms
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
  pkgdesc="In-kernel SMB server, with the primary goal of improved I/O performance."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
@@ -13,7 +13,7 @@ provides=('KSMBD-MODULE')
 options=('!strip')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "dkms.conf")
-sha256sums=("73c0e81c74e85a7acd5d5ecde01bfe039a6aeb76353e0e6145d60acd3ab66945"
+sha256sums=("939fd4829b5aeadce75b51d2b22046f4e41d2b15ee6489b37f481f33c152a6f3"
             "1d844a3ced7c4b2227a71df1fcb48ffcb64c083a257715dd4afc193cf3f26240")
 
 prepare() {
