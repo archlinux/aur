@@ -2,14 +2,14 @@
 
 pkgname=python-compiler
 pkgver=1.1
-pkgrel=2
-pkgdesc='The compiler package from Python 2, ported to Python 3'
+pkgrel=3
+pkgdesc='Python bytecode compiler written in Python'
 arch=(any)
-url='https://github.com/pfalcon/python-compiler'
+url='https://github.com/facebookincubator/python-compiler'
 license=(custom)
 makedepends=(git python python-setuptools)
-source=("git+https://github.com/pfalcon/python-compiler#commit=e71a47b4bf6570afe12ebb4a16fb70561c134e98") # version 1.1
-sha256sums=('SKIP')
+source=("git+$url#commit=5a9a30b3d5fae5337ff449030873a58b35e875a4") # no release tags yet
+b2sums=(SKIP)
 
 build(){
   cd $pkgname
@@ -18,7 +18,6 @@ build(){
 
 package() {
   cd $pkgname
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --optimize=1 --root="$pkgdir" --skip-build
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
