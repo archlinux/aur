@@ -2,8 +2,8 @@
 # Upstream: TheWaveWarden (Frederik Siepe) <info AT thewavewarden DOT com>
 
 pkgname=odin2-synthesizer
-pkgver=2.2.4
-pkgrel=5
+pkgver=2.3.1
+pkgrel=1
 pkgdesc='24 voice polyphonic synthesizer, with modulation and FX. (Standalone, VST3, LV2)'
 license=('GPL3')
 arch=('x86_64')
@@ -41,17 +41,18 @@ source=("${srcdir}/${pkgname%-synthesizer}::git+https://github.com/TheWaveWarden
         'Makefile.patch')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 backup=('opt/odin2/odin2.conf' 'opt/odin2/Soundbanks/User Patches')
+install='.install'
 
 prepare() {
-    # Checkout the 6.0.1 branch of JUCE, and build Projucer
+    # Checkout the correct branch of JUCE, and build Projucer
     cd "${srcdir}/JUCE"
-    git checkout -q a30f7357863a7d480a771e069abf56909cdf0e13
+    git checkout -q b13af2df9530bf473ff9a85936e5700027bd2af4
     cd extras/Projucer/Builds/LinuxMakefile
     make -j"$(nproc)" CONFIG=Release
 
     # Export Odin 2 build files with Projucer
     git checkout lv2
-    git checkout -q c51d03f11be20cb35eb28e8016e9a81827b50339
+    git checkout -q f00a420bc348d79c4688b33b2b905b8ca0f25a3a
     export GDK_BACKEND=x11
     build/Projucer --set-global-search-path linux defaultJuceModulePath "${srcdir}/JUCE/modules"
     build/Projucer --resave "${srcdir}/${pkgname%-synthesizer}/Odin.jucer"
@@ -67,6 +68,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/odin2/Builds/LinuxMakefile"
+    git checkout v2.3.1
+    git submodule update --init --recursive
     make clean
     make CONFIG=Release -j"$(nproc)"
 }
@@ -85,7 +88,4 @@ package() {
     install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/manifest.ttl" "${pkgdir}/usr/lib/lv2/Odin2.lv2/manifest.ttl"
 
     install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2" "${pkgdir}/usr/bin/odin2-synthesizer"
-
-    mkdir -pm 777 "${pkgdir}/opt/odin2" "${pkgdir}/opt/odin2/Soundbanks/User Patches"
-    cp -r "${srcdir}/odin2/Soundbanks/Factory Presets" "${pkgdir}/opt/odin2/Soundbanks/Factory Presets"
 }
