@@ -1,23 +1,17 @@
-# Maintainer: Anton Leontiev <bunder /at/ t-25.ru>
-
+# Maintainer: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=ttf-ingleby
 pkgver=1.0
-pkgrel=1
-pkgdesc="Ingleby font from dafont.com"
+pkgrel=2
+pkgdesc='Ingleby font by David Engelby'
 arch=('any')
-url="http://www.dafont.com/ingleby.font"
+url='https://www.yufont.com/font/8360/Ingleby/'
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
-install=$pkgname.install
-source=($pkgname.zip::http://img.dafont.com/dl/?f=ingleby 'LICENSE')
-md5sums=('efe53e9821d831bf7f41c94e582e9a86'
+source=($pkgname.zip::https://www.yufont.com/font/download/8360/ 'LICENSE')
+md5sums=('7e15811f04de4e8b805741fd12d84fb0'
          '5f283b3761250226c5f1316d85cf0265')
 
-build() {
-  cd $srcdir
-  install -Dm644 Ingleby_regular.ttf $pkgdir/usr/share/fonts/TTF/Ingleby_regular.ttf
-  install -Dm644 Ingleby_italic.ttf $pkgdir/usr/share/fonts/TTF/Ingleby_italic.ttf
-  install -Dm644 Ingleby_bold.ttf $pkgdir/usr/share/fonts/TTF/Ingleby_bold.ttf
-  install -Dm644 Ingleby_bold_italic.ttf $pkgdir/usr/share/fonts/TTF/Ingleby_bold_italic.ttf
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/ttf-ingleby/LICENSE
+package() {
+	install -dm755 $pkgdir/usr/share/fonts/TTF
+	install -m644 Ingleby/Ingleby_{regular,italic,bold,bold_italic}.ttf $pkgdir/usr/share/fonts/TTF/
+	install -Dm644 LICENSE $pkgdir/usr/share/licenses/ttf-ingleby/LICENSE
 }

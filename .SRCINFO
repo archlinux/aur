@@ -1,17 +1,13 @@
 pkgbase = ttf-ingleby
-	pkgdesc = Ingleby font from dafont.com
+	pkgdesc = Ingleby font by David Engelby
 	pkgver = 1.0
-	pkgrel = 1
-	url = http://www.dafont.com/ingleby.font
-	install = ttf-ingleby.install
+	pkgrel = 2
+	url = https://www.yufont.com/font/8360/Ingleby/
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = ttf-ingleby.zip::http://img.dafont.com/dl/?f=ingleby
+	source = ttf-ingleby.zip::https://www.yufont.com/font/download/8360/
 	source = LICENSE
-	md5sums = efe53e9821d831bf7f41c94e582e9a86
+	md5sums = 7e15811f04de4e8b805741fd12d84fb0
 	md5sums = 5f283b3761250226c5f1316d85cf0265
 
 pkgname = ttf-ingleby
-
