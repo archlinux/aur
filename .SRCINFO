@@ -1,7 +1,7 @@
 pkgbase = systemd-libs-fake-bin
 	pkgdesc = Fake systemd client libraries without libudev - real binaries
 	pkgver = 249.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	license = LGPL2.1

@@ -2,7 +2,7 @@
 # vim: ft=sh:
 pkgname=systemd-libs-fake-bin
 pkgver=249.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Fake systemd client libraries without libudev - real binaries"
 arch=('x86_64')
 url="https://www.github.com/systemd/systemd"
@@ -13,12 +13,18 @@ provides=('systemd-libs-fake' 'systemd-libs' 'libsystemd' 'libsystemd.so')
 conflicts=('systemd-libs-fake' 'systemd-libs' 'libsystemd')
 
 package() {
-	arch-package-download systemd-libs
-	tar xf systemd-libs-*.tar.zst
-	cd usr/lib
-	install -d "$pkgdir/usr/lib"
-	for i in *; do
-		case "$i" in libudev*) continue ;; esac
+	rm -rf systemd*
+	for i in systemd systemd-libs; do
+		mkdir "$i"
+		arch-package-download "$i"
+		tar xf "$i"-*.tar.zst -C "$i"
+	done
+
+	lib="$(cd systemd && echo "usr/lib/systemd/libsystemd-shared-"*.so)"
+	install -Dm755 "systemd/$lib" "$pkgdir/$lib"
+
+	for i in systemd-libs/usr/lib/*; do
+		case "$i" in */libudev*) continue ;; esac
 		cp -P "$i" "$pkgdir/usr/lib/"
 	done
 }
