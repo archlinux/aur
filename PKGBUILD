@@ -2,7 +2,7 @@
 
 pkgname=mangadesk
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal client for MangaDex'
 arch=('x86_64')
 url="https://github.com/darylhjd/mangadesk"
@@ -25,7 +25,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go get -d ./...
-  go build 
+  go build -o build ./...
 }
 
 package() {
