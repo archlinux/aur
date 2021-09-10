@@ -7,7 +7,7 @@ pkgdesc="A phone dialer and call handler for the GNOME desktop"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/calls"
 license=('GPL')
-groups=()
+#groups=('gnome-extra')
 depends=('gst-plugins-good' 'gsettings-desktop-schemas' 'callaudiod' 'libgee'
 	 'evolution-data-server' 'feedbackd' 'folks' 'gdk-pixbuf2' 'gom' 
 	 'gstreamer' 'gtk3' 'libhandy' 'libmm-glib' 'libpeas' 'libsecret'
