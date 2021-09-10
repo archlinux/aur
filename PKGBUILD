@@ -74,8 +74,8 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.13
-_minor=13
+_major=5.14
+_minor=2
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
@@ -105,11 +105,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
+sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            'db626e41d43e74f5c26901dc71e19c6792eed902f44abf0a509ca4a9a2617cb8'
+            '3641a8d48c57d7fd79fee7ebf6830a1a40f740d208052c0addd267bc28b84531'
             'd361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf'
-            'e6e80f91b16dc639679fe1d5dfae5097e1e4e91b11ea4539790719511921ccc0')
+            'e2140782726c69db81dd5be0602479bb4e161772e83e77de1470c9ceea622ca4')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
