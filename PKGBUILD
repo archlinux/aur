@@ -39,8 +39,15 @@ prepare() {
 
 build() {
     cd "$srcdir/opensnitch-$pkgver"
+    
+    export GOPATH="$srcdir/gopath"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=mod"
 
-    export PATH=${PATH}:$(go env GOPATH)/bin
+    export PATH=${PATH}:$GOPATH/bin
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@master
 
     pushd proto
