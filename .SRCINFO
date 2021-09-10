@@ -1,0 +1,25 @@
+pkgbase = tom-package-meta
+	pkgdesc = All the packages i need gets installed
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://archlinux.org/packages/
+	arch = any
+	license = GPL
+	depends = gimp
+	depends = inkscape
+	depends = obs-studio
+	depends = brave-bin
+	depends = stacer-bin
+	depends = neovim
+	depends = transmission-gtk
+	depends = geary
+	depends = virtualbox
+	depends = virtualbox-guest-iso
+	depends = marker
+	depends = lollypop
+	depends = steam
+	depends = cups
+	depends = libva-mesa-driver
+	depends = pamac-flatpak-gnome
+
+pkgname = tom-package-meta
