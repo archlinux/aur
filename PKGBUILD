@@ -2,15 +2,15 @@
 # Maintainer: squitch
 
 pkgname=tess-git
-pkgver=0.4.3.r5.gb1592e0
+pkgver=0.4.3.r40.g36f0244
 pkgrel=1
 epoch=1
 pkgdesc="Hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
 url="https://github.com/SquitchYT/Tess"
 license=(MPL2)
-depends=(gtk3 nss cpr)
-makedepends=(git npm cmake chrpath)
+depends=(gtk3 nss)
+makedepends=(git npm cmake)
 source=("git+https://github.com/SquitchYT/Tess.git")
 sha256sums=('SKIP')
 
@@ -24,18 +24,16 @@ package() {
   install -D Tess.desktop "${pkgdir}/usr/share/applications/Tess.desktop"
   install -D tesshere.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/tesshere.desktop"
   install -D appintess.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/appintess.desktop"
-  install -D src/img/Tess.png "${pkgdir}/usr/share/pixmaps/tess.png"
+  install -D build/icon.png "${pkgdir}/usr/share/pixmaps/tess.png"
 
   if type "$kbuildsycoca5" > /dev/null; then
     kbuildsycoca5
   fi
 
   cd cli
-  mkdir -p build
-  cmake -S . -B build
+  cmake . -B build
   make -C build
   install -Dm755 build/tess-cli -t "${pkgdir}/usr/bin/"
-  chrpath --delete "${pkgdir}/usr/bin/tess-cli"
 
   npm install
   npm run build

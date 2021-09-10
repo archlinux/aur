@@ -1,6 +1,6 @@
 pkgbase = tess-git
 	pkgdesc = Hackable, simple, rapid and beautiful terminal for the new era
-	pkgver = 0.4.3.r5.gb1592e0
+	pkgver = 0.4.3.r40.g36f0244
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/SquitchYT/Tess
@@ -9,10 +9,8 @@ pkgbase = tess-git
 	makedepends = git
 	makedepends = npm
 	makedepends = cmake
-	makedepends = chrpath
 	depends = gtk3
 	depends = nss
-	depends = cpr
 	source = git+https://github.com/SquitchYT/Tess.git
 	sha256sums = SKIP
 
