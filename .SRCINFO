@@ -1,10 +1,12 @@
 pkgbase = unzip-fs60433-patch
 	pkgdesc = Temporary patched package until FS#60433 is fixed.
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.info-zip.org/UnZip.html
 	arch = x86_64
 	license = custom
+	makedepends = make
+	makedepends = gcc
 	depends = bzip2
 	depends = bash
 	provides = unzip
