@@ -48,7 +48,8 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=mod"
 
     export PATH=${PATH}:$GOPATH/bin
-    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@master
+    go install github.com/golang/protobuf/protoc-gen-go
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
     pushd proto
     make
