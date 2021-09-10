@@ -1,7 +1,7 @@
 # Maintainer : sputnick <gilles *DOT* quenot *AT* gmail *DOT *com>
 pkgname=fortune-mod-bashfr
 pkgver=10
-pkgrel=8
+pkgrel=9
 pkgdesc="bashfr.org/DTC (danstonchat.com) fortune file"
 url="https://danstonchat.com"
 source=( 'https://sputnick.fr/scripts/bashfr' 'https://sputnick.fr/scripts/bashfr-cron' )
