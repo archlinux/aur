@@ -5,7 +5,7 @@
 # Contributor: Mantas Mikulėnas <grawity at gmail.com>
 
 pkgname=eggdrop
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="The world's most popular Open Source IRC bot."
 arch=('i686' 'x86_64')
@@ -16,10 +16,10 @@ source=("http://ftp.eggheads.org/pub/$pkgname/source/1.9/$pkgname-$pkgver.tar.gz
         "http://ftp.eggheads.org/pub/$pkgname/source/1.9/$pkgname-$pkgver.tar.gz.asc"
         'dlopen.c' 'utf8.patch')
 backup=("etc/$pkgname.conf")
-sha512sums=('e78e220c8207361c6d7bda06be6d0094d747809ff8554fed2ce4a5fb63df1d87f8b82a98d4f0b98909042af8f6719f4a7bf548f864d3d6dfa8caa57b346d32dc'
-            'SKIP'
-            'e1d254a6adae76198f7e20729aaff5d01a0947cb07faed560574886c1ce3794242204ec0c2f5905584240b243bf36103fffbb06f4154c022228c1b701a070e5c'
-            '7966d4d42994e44a0e571b89f1c66cb41f672d75e6ced7051d1ece23d8c209059c3565b41de950bf9c907701ce7a5e33a215b637587075ed300a002a58eda503')
+b2sums=('73fadeddcebeba5de42328f6f02c05e850e47c19812bc1a868da09f55fd1d297e3596c5a4b167806237554966e7dfbebadcee6215932c56a76b3e67a77d5ee47'
+        'SKIP'
+        '7aa626e67793815e8fb5957ce706c7d4807671d780267cbde3f03ce1f1f4b2c35282c921b669c955b6b17fef81b966db5e70cb82fc7095c10d6a5c7e625ee8cd'
+        '5df161e9f90f54b1ee2e12bbe06d74d01b26e6c35cca9d12225e448874c7ba9c4c571df6c84e968483acc3a22d5259b2cc9519dda626b025577309b4952a3d1c')
 validpgpkeys=('E01C240484DE7DBE190FE141E7667DE1D1A39AFF')
 
 # Want multiple *unique* installations? Change the pkgname, it will just work.
