@@ -3,7 +3,7 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
@@ -12,22 +12,16 @@ arch=('x86_64')
 depends=('glfw' 'capstone' 'mbedtls' 'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')
 source=("${pkgname}::git+https://github.com/WerWolv/ImHex.git#tag=v${pkgver}"
-        imhex.desktop
-        0001-Arch-Linux-customisations.patch)
+  imhex.desktop)
 cksums=('SKIP'
-        '4178124713'
-        '2359030413')
+        '4178124713')
 sha256sums=('SKIP'
-            '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6'
-            '143067b3ab97f29436cd354e27b446cce8e176f61d8012f8a2980a3027fdec30')
+            '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
-        '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc'
-        'bcc4d5d61ede3fa1f45fcc0d43cb06f7b97397847295509941c484352421e8c5a1973c368e8e22ffb9c3af174d9ebc669e86fdc06498bec20d4a54dd289aba04')
+        '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {
   git -C "${pkgname}" submodule update --init --recursive
-
-  git -C "${pkgname}" apply ${srcdir}/*.patch
 }
 
 build() {
