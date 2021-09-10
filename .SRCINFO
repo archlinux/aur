@@ -27,7 +27,7 @@ pkgname = linux-nitrous-fire
 	install = linux-nitrous-fire.install
 	depends = coreutils
 	depends = kmod
-	depends = mkinitcpio>=0.7
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-nitrous-fire-headers: to build DKMS modules against this kernel
 	optdepends = linux-firmware: Additional firmware blobs
