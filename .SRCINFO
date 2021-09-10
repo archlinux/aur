@@ -1,14 +1,14 @@
 pkgbase = rootlesskit-bin
 	pkgdesc = Linux-native 'fake root' for implementing rootless containers
-	pkgver = 0.14.2
-	pkgrel = 2
+	pkgver = 0.14.5
+	pkgrel = 1
 	url = https://github.com/rootless-containers/rootlesskit
 	arch = x86_64
 	license = Apache
 	optdepends = containerd
 	provides = rootlesskit
 	conflicts = rootlesskit
-	source = https://github.com/rootless-containers/rootlesskit/releases/download/v0.14.2/rootlesskit-x86_64.tar.gz
-	sha256sums = 2471175df4fea05121a44b26624aa4ac91fbe956a97f580bdf6d0409ebfba99c
+	source = https://github.com/rootless-containers/rootlesskit/releases/download/v0.14.5/rootlesskit-x86_64.tar.gz
+	sha256sums = 9e485a07e9fb133d4db964cdf84a610c2d5eeffdb5b5e60b9425f802562502f5
 
 pkgname = rootlesskit-bin
