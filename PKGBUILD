@@ -29,6 +29,7 @@ build() {
     # Remove frameless an hide menu
     npx asar extract ./squashfs-root/resources/obsidian.asar ./obsidian.asar
     sed -i 's/frame: false/frame: true,autoHideMenuBar: true/g' ./obsidian.asar/main.js
+    sed -i 's/win.frameless = true/win.framelesss = false/g' ./obsidian.asar/main.js
     npx asar pack ./obsidian.asar ./squashfs-root/resources/obsidian.asar
     unset SOURCE_DATE_EPOCH
     appimagetool squashfs-root
