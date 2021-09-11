@@ -1,7 +1,7 @@
 pkgbase = trine2-gog
-	pkgdesc = GOG version of Trine Enchanted Edition
+	pkgdesc = GOG version of Trine 2 Complete Story
 	pkgver = 2.0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/trine_2_complete_story
 	arch = i686
 	arch = x86_64

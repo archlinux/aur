@@ -3,8 +3,8 @@
 pkgname=trine2-gog
 _pkgname=trine2
 pkgver=2.0.0.5
-pkgrel=1
-pkgdesc="GOG version of Trine Enchanted Edition"
+pkgrel=2
+pkgdesc="GOG version of Trine 2 Complete Story"
 arch=("i686" "x86_64")
 url="https://www.gog.com/game/trine_2_complete_story"
 license=("custom")
