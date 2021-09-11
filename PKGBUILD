@@ -19,6 +19,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/"
+  # link ssp (needed because mingw env's -fstack-protection)
+  export LDFLAGS="${LDFLAGS} -lssp"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
