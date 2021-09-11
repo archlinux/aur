@@ -6,6 +6,7 @@ pkgbase = termpdf.py-git
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	depends = python-pymupdf
 	depends = python-pdfrw
@@ -20,4 +21,3 @@ pkgbase = termpdf.py-git
 	md5sums = SKIP
 
 pkgname = termpdf.py-git
-

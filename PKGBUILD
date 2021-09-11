@@ -6,7 +6,7 @@ pkgdesc="A graphical pdf (and epub, cbz, ...) reader that works inside the kitty
 arch=("x86_64")
 url="https://github.com/dsanson/termpdf.py"
 license=("MIT")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "git")
 depends=("python" "python-pymupdf" "python-pdfrw" "python-pyperclip"
          "python-pybtex" "python-pynvim" "python-roman" "python-pagelabels")
 provides=("termpdf.py")
