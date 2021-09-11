@@ -6,17 +6,17 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.4.alpha.0.r29825.3da9cbd62'
-pkgrel=2
+pkgver='0.15.4.alpha.0.r29826.46e07ed8e'
+pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${_appname}.org"
 license=('AGPL')
 conflicts=("${_appname}" "${_appname}-bin")
 provides=("${_appname}")
-depends=('bash' 'brotli' 'gettext' 'gnurl' 'gnutls' 'jansson' 'libextractor'
-         'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium' 'libtool'
-         'libunistring' 'nss' 'openssl' 'sqlite' 'which' 'zlib')
+depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
+         'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium'
+         'libtool' 'libunistring' 'nss' 'openssl' 'sqlite' 'which' 'zlib')
 makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'opus'
              'pkgconfig' 'python')
 optdepends=('bluez: for bluetooth transport'
@@ -24,6 +24,7 @@ optdepends=('bluez: for bluetooth transport'
 	    'libogg: for conversation service'
             'libpabc: for re:claimID zero-knowledge privacy credentials'
 	    'libpulse: for conversation service'
+            'makeinfo: for building the documentation'
             'miniupnpc: for NAT uPnP support'
             'mysql: for an alternative to sqlite in the database plugin'
 	    'opus: for conversation service'
@@ -31,8 +32,9 @@ optdepends=('bluez: for bluetooth transport'
             'postgresql: for an alternative to sqlite in the database plugin'
             'python: for test suite'
             'texi2mdoc: for automatic mdoc generation'
+            'texinfo: for building the documentation'
             'texlive-core: for generating GNS business cards via gnunet-bcd'
-            'zbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr')
+            'zbar: for reading/writing QR codes using gnunet-qr')
 backup=("etc/${_appname}.conf")
 source=("git+https://${_appname}.org/git/${_appname}.git"
         "${_appname}-system.service"
@@ -50,7 +52,7 @@ pkgver() {
 	cd "${_appname}" > /dev/null 2>&1
 
 	printf "'%s.r%s.%s'" \
-		"$(echo 'changequote([,])define([AC_INIT],[patsubst([[$2]],[-],[.])])[]'"$(cat 'configure.ac' | tr '\n' ' ' | grep -o 'AC_INIT([^)]\+)')" | m4)" \
+		"$(echo 'changequote([,])[]define([AC_INIT],[define([_PKGVER_],patsubst([[$2]],[-],[.]))])[]divert(-1)[]include([configure.ac])[]divert[]_PKGVER_' | m4)" \
 		"$(git rev-list --count HEAD)" \
 		"$(git rev-parse --short HEAD)"
 
