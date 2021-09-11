@@ -1,7 +1,7 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
 
 pkgname=keyboard-center
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     'python-uinput>=0.11.2'
     'python-ruamel-yaml>=0.15'
     'python-pyusb>=1.0.2'
+    'hidapi>=0.10'
     'libnotify>=0.7.9'
 )
 makedepends=('git')
@@ -46,7 +47,9 @@ package() {
   
   install -D -m755 src/main.py -t "$pkgdir"/usr/lib/"$pkgname"
   install -D -m755 src/service.py -t "$pkgdir"/usr/lib/"$pkgname"
+  
   install -D -m644 src/keyboard-center.service -t "$pkgdir"/usr/lib/systemd/user
+  install -D -m644 linux_packaging/60-keyboard-center.rules -t "$pkgdir"/usr/lib/udev/rules.d
   
   install -D -m644 linux_packaging/assets/keyboard-center.png -t "$pkgdir"/usr/share/icons/hicolor/512x512/apps
   install -D -m644 linux_packaging/assets/keyboard-center.desktop -t "$pkgdir"/usr/share/applications  
