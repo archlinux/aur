@@ -1,107 +1,110 @@
-# Maintainer: K1412 <jonathan@opensides.be>
-pkgname=fusiondirectory
-pkgver=1.2.3
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor K1412 <jonathan@opensides.be>
+
+pkgname="fusiondirectory"
+pkgver=1.4.dev
 pkgrel=1
-pkgdesc="FusionDirectory is a combination of system-administrator and end-user web interface, designed to handle LDAP based setups."
-arch=("any")
+_commit="952afba6f3c0adf945937cb2fc21c40fa1d21d36"
+pkgdesc="A combination of system administrator and end user web interface, designed to handle LDAP based setups"
 url="http://fusiondirectory.org/"
-license=("GPL")
-depends=("apache" "smarty3" "smarty3-gettext" "prototype" "scriptaculous" "schema2ldif" "javascript-common"
-"perl-path-class" "perl-ldap" "perl-mime-base64" "perl-digest-sha" "perl-term-readkey" "perl-crypt-rijndael"
-"perl-crypt-cbc" "perl-file-copy-recursive" "perl-xml-twig" "perl-archive-extract" "perl-extutils-makemaker"
-"php-imagick" "php-ldap" "php-pear" "php-gd" "php-imap" "php-apache" "php-cas")
-install=${pkgname}.install
-conflicts=('smarty3-i18n')
-
-backup=('etc/fusiondirectory-apache.conf')
-
-source=("https://repos.fusiondirectory.org/sources/fusiondirectory/fusiondirectory-${pkgver}.tar.gz"
-        "fixes-path.patch"
-        "fixes-apache-path.patch"
-        "fixes-pear-lib.patch"
-        "fixes-headers.patch")
-
-md5sums=('36b18a7f82f6e796ce20f815b449eab4'
-         "5f92d3e4378d0ea7fda7fa9c8b81d29e"
-         "b00b69054c4c40847aa9c575d4550244"
-         "0a78917932d864cbaefa0139f90c6ab0"
-         "762da632f39f44d8fe3a7fff72feec36")
+license=("GPL2")
+arch=("any")
+depends=("gettext"
+         "openldap"
+         "perl-archive-extract"
+         "perl-bytes-random-secure"
+         "perl-crypt-cbc"
+         #"perl-crypt-rijndael"
+         "perl-digest-sha"
+         "perl-file-copy-recursive"
+         #"perl-extutils-makemaker"
+         "perl-ldap"
+         #"perl-mime-base64"
+         "perl-path-class"
+         "perl-term-readkey"
+         "perl-xml-twig"
+         "php>=7.3"
+         "php-cas"
+         #"php-filter"
+         #"php-fpdf"
+         "php-gd"
+         "php-imagick"
+         "php-imap"
+         #"php-json"
+         "php-ldap"
+         #"php-mbstring"
+         #"php-openssl"
+         "php-pear"
+         #"php-session"
+         #"php-simplexml"
+         #"php-xml"
+         "schema2ldif"
+         "smarty3"
+         "smarty3-gettext")
+optdepends=("fusiondirectory-plugins: core plugins"
+            "apache: webserver"
+            "nginx: webserver"
+            #"php-gettext: internationalized interface support"
+            #"php-mhash: ssha encryption support"
+            #"php-sha1: ssha encryption support"
+            #"php-zlib: snapshot support"
+            )
+source=(#"https://repos.fusiondirectory.org/sources/$pkgname/$pkgname-$pkgver.tar.gz"
+        "https://github.com/fusiondirectory/fusiondirectory/archive/$_commit.tar.gz"
+        "http://script.aculo.us/dist/scriptaculous-js-1.9.0.zip"
+        "$pkgname.php.ini"
+        "$pkgname.tmpfiles")
+sha256sums=('4f27b6e1cbb5e78aeaacddfe27ed62155d97897e615a59cd15f08c499c706c09'
+            '1fa39bd110d3326a14f920601803813f088d08ecb2cc645aa7075884d998f6f6'
+            'a17aebba00b9380fdae13011f3ba0350ec861acaf94eedb6d68c0a04ddb0888c'
+            '1732399f263301f212599fd862780422eca5375be1da63acd26506587a348025')
+install="$pkgname.install"
+options=("!strip")
 
 prepare() {
-  # In srcdir
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # Apply patchs
-  patch -p1 -i ../fixes-path.patch
-  patch -p1 -i ../fixes-apache-path.patch
-  patch -p1 -i ../fixes-pear-lib.patch
-  patch -p1 -i ../fixes-headers.patch
-
-  # Right for executables 
-  chmod 750 ./contrib/bin/*
-
-  # Create the man files
-  gzip ./contrib/man/fusiondirectory.conf.5
-  gzip ./contrib/man/fusiondirectory-setup.1
-  gzip ./contrib/man/fusiondirectory-insert-schema.1
+ cd "$pkgname-$_commit"
+ find . -type f -exec sed -i {} \
+                          -e "s|/etc/$pkgname|/etc/webapps/$pkgname|g" \
+                          -e "s|/etc/ldap|/etc/openldap|g" \
+                          -e "s|/var/www/$pkgname|/usr/share/webapps/$pkgname|g" \;
+ sed -i "include/variables_common.inc" -e 's|"PEAR_DIR", "/usr/share/php"|"PEAR_DIR", "/usr/share/pear"|'
 }
 
-package() {
-	# In srcdir
-	cd "$srcdir/$pkgname-$pkgver"
-
-	# Create multiple directories
-	install -d -m 0770 $pkgdir/var/spool/$pkgname/
-        install -d -m 0770 $pkgdir/var/cache/$pkgname/
-	install -d -m 0770 $pkgdir/var/cache/$pkgname/tmp/
-	install -d -m 0770 $pkgdir/var/cache/$pkgname/locale/
-	install -d -m 0770 $pkgdir/var/cache/$pkgname/include/
-	install -d -m 0770 $pkgdir/var/cache/$pkgname/template/
-
-	# Copy man files
-	install -d -m 0755 $pkgdir/usr/share/man/man1/
-	install -d -m 0755 $pkgdir/usr/share/man/man5/
-
-	cp ./contrib/man/fusiondirectory.conf.5.gz $pkgdir/usr/share/man/man5/
-        cp ./contrib/man/fusiondirectory-setup.1.gz $pkgdir/usr/share/man/man1/
-        cp ./contrib/man/fusiondirectory-insert-schema.1.gz $pkgdir/usr/share/man/man1/
-
-	# Copy docs
-	install -d -m 0770 $pkgdir/usr/share/doc/$pkgname/
-	install -d -m 0770 $pkgdir/usr/share/doc/$pkgname/examples/
-
-	cp ./AUTHORS.md ./Changelog ./COPYING $pkgdir/usr/share/doc/$pkgname/
-	cp contrib/$pkgname.conf $pkgdir/usr/share/doc/$pkgname/
-	cp -a contrib/docs/ $pkgdir/usr/share/doc/$pkgname/
-	cp -a contrib/images/ $pkgdir/usr/share/doc/$pkgname/
-	cp -a contrib/apache/* $pkgdir/usr/share/doc/$pkgname/examples/
-	cp -a contrib/lighttpd/* $pkgdir/usr/share/doc/$pkgname/examples/
-
-	# Move fusiondirectory.conf in template
-	cp ./contrib/fusiondirectory.conf $pkgdir/var/cache/$pkgname/template/
-
-	# Move executables
-	mkdir -p $pkgdir/usr/bin/
-	cp ./contrib/bin/fusiondirectory-setup $pkgdir/usr/bin/
-
-	# Move smarty functions and create php lib directory if it exist
-	install -d -m 0755 $pkgdir/usr/share/php/smarty3/plugins/
-
-	cp ./contrib/smarty/plugins/function.msgPool.php $pkgdir/usr/share/php/smarty3/plugins/function.msgPool.php
-	cp ./contrib/smarty/plugins/function.filePath.php $pkgdir/usr/share/php/smarty3/plugins/function.filePath.php
-	cp ./contrib/smarty/plugins/block.render.php $pkgdir/usr/share/php/smarty3/plugins/block.render.php
-
-	# Copy apache configuration
-	install -d -m 0755 $pkgdir/etc/fusiondirectory/
-	cp ./contrib/apache/fusiondirectory-apache.conf $pkgdir/etc/fusiondirectory/
-
-	# FusionDirectory install
-	install -d -m 0755 $pkgdir/usr/share/webapps/${pkgname}/
-	DIRS="ihtml plugins html include locale setup"
-	for i in $DIRS ; do
-  		cp -ua $i $pkgdir/usr/share/webapps/${pkgname}/
-	done
-
-  # Create symbolic link for to /usr/share/javascript
-  ln -s /usr/share/javascript $pkgdir/usr/share/webapps/${pkgname}/html/javascript
+package(){
+ cd "$pkgname-$_commit"
+ # directories
+ install -d -m 755 "$pkgdir/etc/openldap/schema/$pkgname"
+ install -d -m 700 "$pkgdir/var/cache/$pkgname"
+ install -d -m 755 "$pkgdir/var/cache/$pkgname/template"
+ install -d -m 755 "$pkgdir/usr/share/doc/$pkgname/"
+ install -d -m 755 "$pkgdir/usr/share/webapps/$pkgname/"
+ install -d -m 755 "$pkgdir/usr/share/php/smarty3/plugins/"
+ install -d -m 755 "$pkgdir/var/spool/$pkgname/"
+ # webapp files and javascript libraries
+ _dirs=("html" "ihtml" "include" "locale" "plugins" "setup")
+ for _dir in "${_dirs[@]}"; do
+  cp -a "$_dir" "$pkgdir/usr/share/webapps/$pkgname/"
+ done
+ cp -a ../"scriptaculous-js-1.9.0/src/"* "$pkgdir/usr/share/webapps/$pkgname/html/include"
+ cp -a ../"scriptaculous-js-1.9.0/lib/prototype.js" "$pkgdir/usr/share/webapps/$pkgname/html/include"
+ # executables
+ find "contrib/bin/" -type f -exec chmod +x {} \;
+ mv "contrib/bin/" "$pkgdir/usr/"
+ # configuration file template
+ install -D -m 640 "contrib/$pkgname.conf" "$pkgdir/var/cache/$pkgname/template/"
+ # php extensions
+ install -D -m 644 "../$pkgname.php.ini" "$pkgdir/etc/php/conf.d/$pkgname.ini"
+ # smarty3 plugins
+ cp "contrib/smarty/plugins/"* "$pkgdir/usr/share/php/smarty3/plugins/"
+ rm -r "contrib/smarty"
+ # man pages
+ gzip -f "contrib/man/$pkgname-setup.1" "contrib/man/$pkgname-insert-schema.1" "contrib/man/$pkgname.conf.5"
+ install -D -m 644 "contrib/man/$pkgname-setup.1.gz" "$pkgdir/usr/share/man/man1/$pkgname-setup.1.gz"
+ install -D -m 644 "contrib/man/$pkgname-insert-schema.1.gz" "$pkgdir/usr/share/man/man1/$pkgname-insert-schema.1.gz"
+ install -D -m 644 "contrib/man/$pkgname.conf.5.gz" "$pkgdir/usr/share/man/man5/$pkgname.conf.5.gz"
+ rm -r "contrib/man/"
+ # example snippets
+ cp -r "contrib" "$pkgdir/usr/share/doc/$pkgname/"
+ # directories and file permission
+ install -D -m 644 "../$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }

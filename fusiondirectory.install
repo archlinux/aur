@@ -1,25 +1,11 @@
-post_install() {
-  # Create link for httpd-fusiondirectory.conf
-  ln -s /etc/fusiondirectory/fusiondirectory-apache.conf /etc/httpd/conf/extra/httpd-fusiondirectory.conf
-
-  echo '---------------------------------------------------------------------------'
-  echo 'Add this line in your /etc/httpd/conf/httpd.conf'
-  echo 'Include conf/extra/httpd-fusiondirectory.conf'
-  echo '---------------------------------------------------------------------------'
-
-  fusiondirectory-setup --update-cache --update-locales
-  fusiondirectory-setup --yes --check-directories
+post_install(){
+ # commands that must be run as root on the installation device
+ fusiondirectory-setup --update-cache --update-locales
+ fusiondirectory-setup --yes --check-directories
+ chown -R http: /var/cache/fusiondirectory
 }
 
-post_remove() {
-  echo '---------------------------------------------------------------------------' 
-  echo 'Removing of /var/cache/fusiondirectory/'
-  rm -Rf /var/cache/fusiondirectory/
-  echo '---------------------------------------------------------------------------'
-  echo ''
-  echo '---------------------------------------------------------------------------'
-  echo 'Remove this line in your /etc/httpd/conf/httpd.conf'
-  echo 'Include conf/extra/httpd-fusiondirectory.conf'
-  echo '---------------------------------------------------------------------------'
+post_upgrade(){
+ post_install
 }
 
