@@ -78,7 +78,7 @@ _makenconfig=
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
 _major=5.14
-pkgver=${_major}.0
+pkgver=${_major}.2
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -103,11 +103,9 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
         choose-gcc-optimization.sh
-        # "0001-cjktty.patch::${_patches_url}/cjktty-patches/0001-cjktty-${_major}-initial-import-from-https-github.com-zhm.patch"
         "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
         "0002-UKSM.patch::${_patches_url}/uksm-patches-v2/0001-UKSM-for-${_major}.patch"
         "0003-zstd.patch::${_patches_url}/zstd-patches-v2/0001-zstd-patches.patch"
-        # "0004-btrfs.patch::${_patches_url}/btrfs-patches-v2/0001-btrfs-patches.patch"
         )
 
 validpgpkeys=(
@@ -123,12 +121,11 @@ done
 
 b2sums=('0047f5aaa3940dff97f4055ef544faafbbb5282128e6afe21d2f47d8dc8c395806a17016febfa050117d16f59e74b882cb8b9c5011d68f119c230d0a4d120524'
         'SKIP'
-        '86529e6e07dd673a29361639dd92e77bd81c000c0d96a1927ba035b201539d4c2eb4daa4ea6ce3a697c6df0c5f4fec30cfc64a8d68ce0c204b2b1605f6027bf3'
+        'd64f0dcf9c126037e30cb74211d1d0822320248496d9553353a5ab8c4244f7909766bfab970c125a05f36bdbe176f58fdd05c1541f13f14cf9b9307d7df2e5f9'
         '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
         '21d13b890e7b80c924e18ae11f675d69a80adffbe75e37bebd003024e7299c582346b0df60b67c709eba9678bcf6dda7da852c9cf18d43804ddd8ee9388b9ea5'
         '8f6d6263f0e517b6e7a1809fc57e01cc4b13dd261f778041026ec510f48257d4f525c3cb0b0935e291293960c9191282f5765ca0af3d948838e8f865c7deafcc'
         '90b8306ff5b0207fe2c7bf068a03da36ba3f38d68b7ea5ae227000f3d44ef9093541655fe32412686ae23a3c75f795e0b0a4fb24976867ac3c93e4de53145d48'
-        # 'f0baa68af63ae61284584ef474273657cfb132e8b6e129dfe0ef89df3b4468a4324a4b61cccdcf35339b6023cfdc64e6a77a3555df5802689dbeeb411ca369d9'
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
