@@ -1,0 +1,18 @@
+pkgbase = sponsoryeet-git
+	pkgdesc = Yeets Youtube sponsors away from your chromecast
+	pkgver = 27.e646eea
+	pkgrel = 1
+	url = https://github.com/sandsmark/sponsoryeet
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = openssl
+	depends = protobuf
+	provides = sponsoryeet
+	conflicts = sponsoryeet
+	source = git+https://github.com/sandsmark/sponsoryeet.git
+	md5sums = SKIP
+
+pkgname = sponsoryeet-git
