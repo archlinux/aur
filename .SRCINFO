@@ -1,8 +1,8 @@
 pkgbase = displaylink
 	pkgdesc = Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00
-	pkgver = 5.4
-	pkgrel = 3
-	changelog = DisplayLink USB Graphics Software for Ubuntu5.4-Release Notes.txt
+	pkgver = 5.4.1
+	pkgrel = 1
+	changelog = displaylink-release-notes-5.4.1.txt
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -17,13 +17,15 @@ pkgbase = displaylink
 	makedepends = wget
 	depends = evdi>=1.9.1
 	depends = libusb>=1.0.0
-	source = displaylink-driver-5.4.zip::https://www.synaptics.com/sites/default/files/exe_files/2021-04/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu5.4-EXE.zip
+	source = displaylink-driver-5.4.1.zip::https://www.synaptics.com/sites/default/files/exe_files/2021-09/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu5.4.1-EXE.zip
+	source = displaylink-release-notes-5.4.1.txt::https://www.synaptics.com/sites/default/files/release_notes/2021-09/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu5.4.1-Release%20Notes.txt
 	source = DISPLAYLINK-EULA
 	source = udev.sh
 	source = 99-displaylink.rules
 	source = displaylink.service
 	source = displaylink-sleep.sh
-	sha256sums = 88d6ce5a076d76746c41119ee8594d4ffba5af2d20c3793849d77147ed1a54d4
+	sha256sums = 0cc71807122d7bcafab422d7b4bd707018a2f28005bce4fae9f585f4e5e63aae
+	sha256sums = 895a2100cdebf217f43873761554cd179e9eaa498649c9eb68f1f007797fbf83
 	sha256sums = 2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9
 	sha256sums = dc41ae8a2c287fc50fdda65bad8b0ffd76726f7773c25e1b0c5b7de95cecbdb6
 	sha256sums = c08a4726cf4e2f92c7cab00168ae9cc8d69d36a67c570609396a4a674934245a
@@ -31,4 +33,3 @@ pkgbase = displaylink
 	sha256sums = 8be4ab7616e38f91746bdd3e7fafe9004322a8be8e6722389746df9868d576e0
 
 pkgname = displaylink
-

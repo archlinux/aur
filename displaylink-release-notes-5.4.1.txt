@@ -1,0 +1,123 @@
+=============================================================================
+=============================================================================
+
+        DisplayLink Ubuntu Software Release Note
+
+Version: v5.4.1
+Build: posix/55-8043-gba6ff19c894 (174)
+
+Date: 17th August 2021
+
+Extensible Virtual Display Interface version included: v1.9.1-38 (895462f)
+=============================================================================
+=============================================================================
+
+
+A. Introduction
+===============
+
+This is DisplayLink Driver Software v5.4.1 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+
+The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and Ethernet interfaces.
+
+
+A1. Important notes about DL-6xxx, DL5xxx, DL-3x00 and DL-41xx Firmware
+=======================================================================
+
+This software release contains an embedded firmware image. DL-6xxx, DL-5xxx, DL-3xxx and DL-41xx devices will be automatically upgraded with this firmware upon connection if required.
+
+The upgrade is silent, therefore screens connected to DL-6xxx, DL-5xxx, DL-3xxx or DL-41xx devices may require a few seconds to appear when devices are connected for the first time, or after devices have been used on other platforms and OSes.
+
+B. Contents
+===========
+
+A.  Introduction
+A1. Important notes about DL-6xxx, DL-5xxx, DL-3xxx and DL-41xx firmware
+B.  Contents
+C.  Changes in this release
+D.  Supported O/S variants
+E.  Release components
+F.  How to install
+G.  Supported features & hardware
+H.  Limitations & known issues
+I.  Future development
+
+C.  Bugs fixed in this release
+==============================
+
+C.2  Changes in 5.4.1 release
+-----------------------------
+- Added support for kernel 5.13
+- Added beta support for kernel 5.14 beta (33194)
+- DL-6xxx series: improved 5120x1440 - 5K Super Ultrawide resolution selection (33186)
+- Improved performance: added support for damage regions interface from Linux DRM interface (26378
+- Improved performance in Wayland session with AMD GPU machines (33151)
+- DL-6xxx series: fixed blinking mouse cursor while moving across displays (32987)
+
+
+C.1  Changes in 5.4.0 release
+-----------------------------
+- Added support for kernel 5.11 and 5.12
+- DL-6xxx series: added support for nVidia G-SYNC monitors
+- DL-6xxx series: added 5K Ultrawide (5120x1440 @ 60 Hz) display support
+- Other reliability improvements
+
+
+D. Supported O/S variants
+=========================
+
+This release has been prepared to be compatible with Ubuntu 20.04, 19.04 and 18.04. Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
+
+The Software contains binaries which work on Intel x86 platform (32 bit and 64 bit).
+Supported Linux Kernel version range is from 4.15 to 5.13.
+Minimum supported Xorg version is 1.16, minimum supported Mutter (Wayland) version is 3.32.
+
+E. Release components
+=====================
+The Software consists of an open-source kernel mode driver (EVDI) with an accompanying library (libevdi), and a supporting binary application compatible with Intel x86 platform.
+Source code for the open-source components can be found on Synaptics' DisplayLink GitHub, https://github.com/DisplayLink
+
+F. How to install
+=================
+
+To install the release, from a terminal window, with root permissions use the command:
+
+sudo ./displaylink-driver-XXXX.run
+
+Where displaylink-driver-XXXX.run is the name of the extracted DisplayLink driver.
+
+The dkms framework is required for installation of DisplayLink. This can be installed with the command: sudo apt-get install dkms
+
+More detailed information on installation can be found at http://support.displaylink.com/knowledgebase/articles/615714#ubuntu
+
+G. Supported features & hardware
+================================
+
+This driver will support up to 2 displays connected to DisplayLink devices. More than 2 DisplayLink displays may work, but not supported or tested by DisplayLink.
+
+Resolutions up to 4K are supported on the appropriate DisplayLink hardware.
+
+Device families supported:
+- DL-6xxx
+- DL-5xxx
+- DL-41xx
+- DL-3xxx
+
+DL-1x5 and DL-1x0 devices use the open source udl driver, which is not developed or maintained by Synaptics.
+
+H. Limitations & known issues
+=============================
+
+A list of limitations and known issues can be found here:
+http://support.displaylink.com/knowledgebase/articles/641668
+
+I. Future development
+======================
+
+Synaptics are open to suggestions and feedback on improving the proposed architecture and will gladly review patches or proposals from the developer community. Please find a current list of areas we identify as requiring attention below.
+
+- In this release, the user mode driver service is running with root permissions. In future versions, we would like to reduce the privilege level required for this process - e.g. by using a separate low-privileged user and a separate group, to ensure the permissions needed for driving DisplayLink screens are as low as possible.
+
+- The communication between the EVDI kernel module and the wrapper libevdi library is not access-controlled or authenticated. This could be improved in future releases, making it harder to compromise the data EVDI is sending and receiving.
+
+- EVDI kernel module driver is currently a platform_driver, for multiple reasons; most importantly because virtual displays are not discoverable, i.e. cannot be enumerated at the hardware level. EVDI is also a generic device, not tied to any particular kind of device, transport layer or a bus.
