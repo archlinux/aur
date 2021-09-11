@@ -12,7 +12,12 @@ pkgbase = canta-theme
 	source = canta-theme-2021.09.08.tar.gz::https://github.com/vinceliuice/Canta-theme/archive/refs/tags/2021-09-08.tar.gz
 	sha256sums = 98f6b71fbc46b1b9e1b256588cf930f780952f95c57f48c9922065c8b333bacd
 
-pkgname = canta-theme
+pkgname = canta-gtk-theme
+	depends = gnome-themes-extra
+	depends = gtk3
+	optdepends = gtk-engine-murrine: GTK2 theme support
+	optdepends = gtk-engines: GTK2 theme support
+	optdepends = canta-icon-theme: Matching icon theme
 
 pkgname = canta-icon-theme
 	pkgdesc = Flat icons for Canta GTK theme

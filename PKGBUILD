@@ -3,7 +3,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 pkgname=('canta-gtk-theme' 'canta-icon-theme')
-pkgname=canta-theme
 pkgbase=canta-theme
 pkgdesc="Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell"
 _pkgver=2021-09-08
