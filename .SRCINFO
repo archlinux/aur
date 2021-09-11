@@ -1,0 +1,18 @@
+pkgbase = yascreen
+	pkgdesc = Yet Another Screen Library (lib(n)curses alternative)
+	pkgver = 1.86
+	pkgrel = 1
+	url = https://github.com/bbonev/yascreen
+	arch = any
+	license = GPL2
+	depends = glibc
+	provides = libyascreen
+	provides = libyascreen.so
+	replaces = libyascreen0
+	source = https://github.com/bbonev/yascreen/releases/download/v1.86/yascreen-1.86.tar.xz
+	source = https://github.com/bbonev/yascreen/releases/download/v1.86/yascreen-1.86.tar.xz.asc
+	validpgpkeys = BA60BC20F37E59444D6D25001365720913D2F22D
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = yascreen
