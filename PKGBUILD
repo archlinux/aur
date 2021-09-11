@@ -3,7 +3,7 @@ pkgbase=decklink
 pkgname=(decklink mediaexpress)
 _pkgname=decklink
 pkgver=12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
 url="https://www.blackmagicdesign.com/support/family/capture-and-playback"
@@ -29,8 +29,10 @@ DLAGENTS=("https::/usr/bin/curl \
               )"
 )
 
-source=("${_pkgsrc_file}"::"${_pkgsrc_url}")
-sha256sums=('51febf247d22412beea2d637fcc34cc19b1a46df9a5bf0e157d95705bf7c7b73')
+source=("${_pkgsrc_file}"::"${_pkgsrc_url}"
+        "bm_util.c_5.13.4-200.fc34.x86_64.patch")
+sha256sums=('51febf247d22412beea2d637fcc34cc19b1a46df9a5bf0e157d95705bf7c7b73'
+            '66e4bd6a55fcabb1c774c326318daba7fbeb6febcf8867f55c54bf00fc113504')
 
 prepare() {
   cd $srcdir/Blackmagic_Desktop_Video_Linux_$pkgver/other/${_arch}
@@ -39,11 +41,16 @@ prepare() {
 
   cd desktopvideo-*/usr/src
 
-  # for p in ${srcdir}/*.patch;
-  # do
-  #   echo "Applying ${p}"
-  #   patch --forward --strip=1 --input="${p}"
-  # done
+  for p in ${srcdir}/*.patch;
+  do
+    echo "Applying ${p}"
+    patch --forward --strip=1 --input="${p}"
+  done
+
+
+  # fix error related to "initialization of « unsigned int (*)(struct tty_struct *) » from pointer type « int (*)(struct tty_struct *) »"
+  sed "s:^EXTRA_CFLAGS +=:EXTRA_CFLAGS += -Wno-error=incompatible-pointer-types:" -i blackmagic-io-*/Makefile
+  sed "s:^EXTRA_CFLAGS +=:EXTRA_CFLAGS += -Wno-error=incompatible-pointer-types:" -i blackmagic-[0-9]*/Makefile
 }
 
 package_decklink() {
