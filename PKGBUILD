@@ -25,7 +25,7 @@ provides=('phonon-qt4-backend'
            )
 conflicts=('phonon-qt4-mplayer')
 replaces=('phonon-mplayer-git')
-source=('git://anongit.kde.org/phonon-mplayer.git'
+source=('git+https://invent.kde.org/unmaintained/phonon-mplayer.git'
         'fix_find_config.patch'
         'CMakeLists.txt.patch'
         )
