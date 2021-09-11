@@ -6,21 +6,22 @@
 
 pkgname='gnunet'
 pkgver='0.15.3'
-pkgrel=4
+pkgrel=5
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
 license=('AGPL')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
-depends=('bash' 'brotli' 'gettext' 'gnurl' 'gnutls' 'jansson' 'libextractor'
-         'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium' 'libtool'
-         'libunistring' 'nss' 'openssl' 'sqlite' 'which' 'zlib')
+depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
+         'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium'
+         'libtool' 'libunistring' 'nss' 'openssl' 'sqlite' 'which' 'zlib')
 makedepends=('bluez-libs' 'libpulse' 'libtool' 'opus' 'pkgconfig' 'python')
 optdepends=('bluez: for bluetooth transport'
             'libgabe: for Attribute-Based Encryption'
 	    'libogg: for conversation service'
             'libpabc: for re:claimID zero-knowledge privacy credentials'
 	    'libpulse: for conversation service'
+            'makeinfo: for building the documentation'
             'miniupnpc: for NAT uPnP support'
             'mysql: for an alternative to sqlite in the database plugin'
 	    'opus: for conversation service'
@@ -28,8 +29,9 @@ optdepends=('bluez: for bluetooth transport'
             'postgresql: for an alternative to sqlite in the database plugin'
             'python: for test suite'
             'texi2mdoc: for automatic mdoc generation'
+            'texinfo: for building the documentation'
             'texlive-core: for generating GNS business cards via gnunet-bcd'
-            'zbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr')
+            'zbar: for reading/writing QR codes using gnunet-qr')
 backup=("etc/${pkgname}.conf")
 source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-system.service"
