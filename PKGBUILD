@@ -3,7 +3,7 @@ pkgver=11.0.12.0
 _majver=$(sed 's/\.[^.]*$//' <<<${pkgver})
 _minver=7
 pkgrel=1
-pkgdesc="IBM®Semeru Runtime Certified Edition, Version 11"
+pkgdesc="IBM® Semeru Runtime Certified Edition, Version 11"
 arch=('x86_64')
 url="https://www.ibm.com/semeru-runtimes/downloads?license=IBM"
 license=('custom')
