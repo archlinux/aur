@@ -3,7 +3,7 @@
 _pkgname=just
 _reponame="${_pkgname}-js"
 pkgname="${_reponame}"
-pkgver="0.0.22"
+pkgver="0.1.5"
 pkgrel="1"
 pkgdesc='a very small v8 javascript runtime for linux only'
 arch=('x86_64' "i686")
