@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Peter Vágner <pvdeejay@jabber.cz>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
