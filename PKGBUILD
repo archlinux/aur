@@ -33,4 +33,7 @@ build() {
 package() {
     cd build
     make DESTDIR="$pkgdir" install
+
+    cd ../sponsoryeet
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/sponsoryeet/README"
 }
