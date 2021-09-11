@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Kyle Bloss <kylebloss[at]pelpix[dot]info>
 # Contributor: Panagiotis Papadopoulos pano_90 AT gmx DOT net
 
