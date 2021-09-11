@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Jupotter <jupotter.g@gmail.com>
 # Contributor: KillaB <xGenoBlast@gmail.com>
 # Contributor: wizzomafizzo <wizzomafizzo@gmail.com>
