@@ -1,11 +1,13 @@
-# Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 # Maintainer: star2000 <i@star2000.work>
+# Contributor: Sam L. Yes <manjaroyes123@outlook.com>
 # Contributor: Stefano Capitani <stefanoatmanjarodororg>
 
 pkgbase=manjaro-asian-input-support
-pkgname=('ibus-input-support' 'fcitx-input-support' 'fcitx5-input-support')
-pkgver=2020.12
-pkgrel=2
+pkgname=(
+	'ibus-input-support' 'fcitx-input-support' 'fcitx5-input-support'
+)
+pkgver=2021.09
+pkgrel=1
 arch=('any')
 url="https://gitlab.manjaro.org/packages/community/manjaro-asian-input-support"
 license=('GPL')
@@ -13,13 +15,11 @@ pkgdesc='Asian input support from Manjaro'
 source=(
 	'enable-fcitx.sh'
 	'enable-ibus.sh'
-	'enable-fcitx5.sh'
 	'fcitx5.profile'
 	'ibus.desktop'
 )
-md5sums=('42db8df96db00e8fcc023b7bc9135b21'
-         '1a68e770b9f426301b6a08fe8edb47f1'
-         '3c80edd921bc4c1fc87d33ab6ada72f7'
+md5sums=('a5bcd9553acf94b9543b41d7d260793a'
+         '7928e2fb103bafb07e32d1d36a8ab8ab'
          '3578677a7102c9f8be3b9f7ea7d3d06f'
          'f1a9f3406f8268383149889f4816cd52')
 install=input-support.install
@@ -78,8 +78,9 @@ package_fcitx5-input-support() {
 		'fcitx5-anthy: 日本語 | Japanese'
 		'fcitx5-hangul: 한국어 | Korean'
 		'fcitx5-unikey: Tiếng Việt | Vietnamese'
+		'fcitx5-m17n: other languages provided by M17n(http://www.nongnu.org/m17n/)'
 	)
 	provides=("${pkgbase}-fcitx5")
-	install -Dm644 "$srcdir/enable-fcitx5.sh" "$pkgdir/etc/profile.d/input-support.sh"
+	install -Dm644 "$srcdir/enable-fcitx.sh" "$pkgdir/etc/profile.d/input-support.sh"
 	install -Dm644 "$srcdir/fcitx5.profile" "$pkgdir/etc/xdg/fcitx5/profile"
 }
