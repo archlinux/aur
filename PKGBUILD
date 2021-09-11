@@ -1,8 +1,8 @@
 # Maintainer: Mattias Giese <mattias.giese@posteo.net>
 pkgname=beammp-server
 _pkgname=BeamMP-Server
-pkgver=v2.2.0.r0.3d0d5e9
-_pkgver=2.2.0
+pkgver=v2.3.2.r0.3fc3978
+_pkgver=2.3.2
 pkgrel=1
 pkgdesc="Server for BeamMP, providing multiplayer support for the driving simulator beamng.drive"
 arch=(x86_64)
@@ -37,7 +37,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${_pkgname}"
-	git submodule update --init
+	git submodule update --init --recursive
 }
 
 build() {
