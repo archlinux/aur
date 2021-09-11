@@ -1,0 +1,16 @@
+pkgbase = docma-git
+	pkgdesc = A command-line document manager with keyword search
+	pkgver = r19.b956694
+	pkgrel = 1
+	url = https://github.com/patrickschulz/docma
+	arch = any
+	license = custom:unknown
+	makedepends = git
+	depends = lua-penlight
+	depends = lua
+	provides = docma
+	conflicts = docma
+	source = git+https://github.com/patrickschulz/docma
+	sha256sums = SKIP
+
+pkgname = docma-git
