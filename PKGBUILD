@@ -2,7 +2,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Generic greeter daemon"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://git.sr.ht/~kennylevinsen/greetd"
 license=(GPL3)
 source=("https://git.sr.ht/~kennylevinsen/greetd/archive/$pkgver.tar.gz"
         'greetd.pam')
-sha256sums=('5229b7f00be40187de9df6240fc3b1f4012dd5e4777bb8661016cc7c2c105df7'
+sha256sums=('47a73709df60f04b63fc50cfc409e47a451a9620777638f527b9d9333256035f'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
 depends=(systemd pam)
 makedepends=(git rust scdoc)
