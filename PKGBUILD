@@ -2,26 +2,21 @@
 
 pkgname=quickhash-gui-bin
 _pkgname=quickhash
-_pkgver=3-2-0
+_pkgver=3-3-0
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="QuickHash is an open-source Linux GUI that enables hashing of files, text, entire folder trees of files, and physical disks"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://quickhash-gui.org/"
 license=(GPL2)
 depends=(gtk2)
 provides=(quickhash-gui)
 conflicts=(quickhash-gui)
-source=("quickhash-gui-${pkgver}.zip::https://quickhash-gui.org/download/quickhash-v${_pkgver}-debian-packages-for-linux/?wpdmdl=2025")
-sha256sums=('bf1c6e4d8e273a81381bfadf96d0746d7e65f5cc77757df92e88533eaa6d72c6')
+source=("${pkgname}-${pkgver}.zip::https://quickhash-gui.org/download/quickhash-v${_pkgver}-debian-packages-for-linux/?wpdmdl=2166")
+sha256sums=('7e42bb8deca3d1c3e5cfa23b76c0015745b67e27c3e3f7d5cb3fbbfa61b44579')
 
 package() {
-if [[ "${CARCH}" = 'i686' ]]; then
-        bsdtar -xf ${_pkgname}_${pkgver}-1_i386.deb
-    fi
-if [[ "${CARCH}" = 'x86_64' ]]; then
-        bsdtar -xf ${_pkgname}_${pkgver}-1_amd64.deb
-    fi
-
-  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
+  install -Dm755 Quickhash-GUI -t "${pkgdir}/usr/bin"
+  install -D libs/x64/libewf-Linux-x64.so -t "${pkgdir}/usr/lib"
+  install -Dm644 UserManual.pdf -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
