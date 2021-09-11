@@ -2,7 +2,7 @@ pkgname=jdk11-j9-bin
 pkgver=11.0.12.0
 _majver=$(sed 's/\.[^.]*$//' <<<${pkgver})
 _minver=7
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM® Semeru Runtime Certified Edition, Version 11"
 arch=('x86_64')
 url="https://www.ibm.com/semeru-runtimes/downloads?license=IBM"
@@ -24,8 +24,8 @@ build() {
 
 package() {
     mkdir -p "${pkgdir}/usr/lib/jvm"
-    mv "${srcdir}/temp_install/jdk-${_majver}+${_minver}" "${pkgdir}/usr/lib/jvm/java-11-j9"
+    mv "${srcdir}/temp_install/jdk-${_majver}+${_minver}" "${pkgdir}/usr/lib/jvm/java-11-ibm"
     mkdir -p "${pkgdir}/usr/share/licenses"
-    ln -s ../../lib/jvm/java-11-j9/legal/openj9.jvm/license/license_en.txt "${pkgdir}/usr/share/licenses/jdk11-j9"
+    ln -s ../../lib/jvm/java-11-ibm/legal/openj9.jvm/license/license_en.txt "${pkgdir}/usr/share/licenses/jdk11-ibm"
 }
 
