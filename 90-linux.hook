@@ -1,0 +1,12 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = boot/Image
+Target = usr/lib/initcpio/*
+
+[Action]
+Description = Updating %PKGBASE% initcpios...
+When = PostTransaction
+Exec = /usr/bin/sh -ce "/usr/bin/mkinitcpio -p %PKGBASE% && mkimage -A arm64 -O linux -T kernel -C none -a 0x1080000 -e 0x1080000 -n linux -d /boot/Image /boot/uImage && mkimage -A arm64 -O linux -T ramdisk -C gzip -n uInitrd -d /boot/initramfs-%PKGBASE%.img /boot/uInitrd"
+
