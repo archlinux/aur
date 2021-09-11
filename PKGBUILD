@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
 pkgname=python-pyvista
-pkgver=0.31.3
+pkgver=0.32.0
 pkgrel=1
 pkgdesc='3D plotting and mesh analysis through a streamlined interface for the Visualization Toolkit (VTK)'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makdepends=('python-setuptools')
 depends=('python-numpy' 'python-imageio' 'python-pillow' 'python-appdirs' 'python-scooby' 'python-meshio' 'paraview' 'python-transforms3d')
 source=("https://github.com/pyvista/pyvista/archive/${pkgver}.tar.gz")
-sha512sums=('1b3d4b2c92ce3c84e2266235bb5261dd4aee71d4bc2d15561971e8b07bf6afdb56a99ea2af7c3e88a103adbd9087f3f394b44059d59d24c5acacbb7f6da71107')
+sha512sums=('ff89017d36f364762b9efe2e5ab0ef31ef9da543db398ff9ae4f4384b6d1ec7dfab7343d1f0d9b6e6c35414800a94fc1c1fdf875b5c2726a444d056320de46e2')
 
 build() {
   cd "$srcdir"/pyvista-${pkgver}
