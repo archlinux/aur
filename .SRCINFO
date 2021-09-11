@@ -1,0 +1,13 @@
+pkgbase = brother-dcp-b7535dw
+	pkgdesc = LPR and CUPS driver for Brother DCP-B7535DW printer
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=in&lang=en&prod=dcpb7535dw_as_cn
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf103654/dcpb7535dwpdrv-4.0.0-1.i386.rpm
+	md5sums = f434d25defabe54b4ccebe0510ff4c87
+
+pkgname = brother-dcp-b7535dw
