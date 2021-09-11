@@ -1,6 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
 pkgname=mingw-w64-libconfig
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="C/C++ Configuration File Library (mingw-w64)"
 arch=(any)
@@ -10,7 +11,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://hyperrealm.github.io/libconfig/dist/${pkgname#mingw-w64-}-${pkgver}.tar.gz")
-md5sums=('6bd98ee3a6e6b9126c82c916d7a9e690')
+md5sums=('15ec701205f91f21b1187f8b61e0d64f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

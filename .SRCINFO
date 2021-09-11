@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libconfig
 	pkgdesc = C/C++ Configuration File Library (mingw-w64)
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = http://hyperrealm.github.io/libconfig
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-libconfig
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz
-	md5sums = 6bd98ee3a6e6b9126c82c916d7a9e690
+	source = http://hyperrealm.github.io/libconfig/dist/libconfig-1.7.3.tar.gz
+	md5sums = 15ec701205f91f21b1187f8b61e0d64f
 
 pkgname = mingw-w64-libconfig
-
