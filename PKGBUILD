@@ -2,7 +2,7 @@
 
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
-#pkgname=('canta-gtk-theme' 'canta-icon-theme')
+pkgname=('canta-gtk-theme' 'canta-icon-theme')
 pkgname=canta-theme
 pkgbase=canta-theme
 pkgdesc="Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell"
@@ -21,31 +21,31 @@ package_canta-theme() {
   return 0
 }
 
-#package_canta-gtk-theme() {
-#  depends=('gnome-themes-extra' 'gtk3')
-#  optdepends=('gtk-engine-murrine: GTK2 theme support'
-#              'gtk-engines: GTK2 theme support'
-#              'canta-icon-theme: Matching icon theme')
+package_canta-gtk-theme() {
+  depends=('gnome-themes-extra' 'gtk3')
+  optdepends=('gtk-engine-murrine: GTK2 theme support'
+              'gtk-engines: GTK2 theme support'
+              'canta-icon-theme: Matching icon theme')
 
-#  cd "Canta-theme-$_pkgver"
-#  install -d "$pkgdir/usr/share/themes"
+  cd "Canta-theme-$_pkgver"
+  install -d "$pkgdir/usr/share/themes"
 
-#  # Install theme with Nautilus background image
+  # Install theme with Nautilus background image
+  for theme in standard blue indigo; do
+    ./install.sh -t ${theme} -d "$pkgdir/usr/share/themes"
+  done
+
+  # Install theme without Nautilus background image
 #  for theme in standard blue indigo; do
-#    ./install.sh -t ${theme} -d "$pkgdir/usr/share/themes"
+#    ./install.sh -o -t ${theme} -d "$pkgdir/usr/share/themes"
 #  done
+}
 
-#  # Install theme without Nautilus background image
-##  for theme in standard blue indigo; do
-##    ./install.sh -o -t ${theme} -d "$pkgdir/usr/share/themes"
-##  done
-#}
+package_canta-icon-theme() {
+  pkgdesc="Flat icons for Canta GTK theme"
+  optdepends=('numix-circle-icon-theme: if you want a better experience')
 
-#package_canta-icon-theme() {
-#  pkgdesc="Flat icons for Canta GTK theme"
-#  optdepends=('numix-circle-icon-theme: if you want a better experience')
-
-#  cd "Canta-theme-$_pkgver"
-#  install -d "$pkgdir/usr/share/icons"
-#  ./install.sh -i -d "$pkgdir/usr/share/icons"
-#}
+  cd "Canta-theme-$_pkgver"
+  install -d "$pkgdir/usr/share/icons"
+  ./install.sh -i -d "$pkgdir/usr/share/icons"
+}

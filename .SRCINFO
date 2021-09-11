@@ -13,3 +13,7 @@ pkgbase = canta-theme
 	sha256sums = 98f6b71fbc46b1b9e1b256588cf930f780952f95c57f48c9922065c8b333bacd
 
 pkgname = canta-theme
+
+pkgname = canta-icon-theme
+	pkgdesc = Flat icons for Canta GTK theme
+	optdepends = numix-circle-icon-theme: if you want a better experience
