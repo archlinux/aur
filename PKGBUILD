@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=tntdb
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="C++-class-library for easy access to databases (only sqlite support)"
 url="http://www.tntnet.org"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
