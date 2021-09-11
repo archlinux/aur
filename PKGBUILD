@@ -1,14 +1,14 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=pyautosplit-git
-pkgver=r20.4e03efa
+pkgver=r40.f5749b2
 pkgrel=1
 pkgdesc="Autosplitter for Linux (for the LiveSplit Server)"
 arch=('any')
 url="https://github.com/christofsteel/pyautosplit"
 license=('Apache')
 groups=()
-depends=("python-simpleeval" "python-ptrace")
+depends=("python-simpleeval" "python-ptrace" "python-eventlet")
 makedepends=("python-setuptools" "git")
 checkdepends=()
 optdepends=()
