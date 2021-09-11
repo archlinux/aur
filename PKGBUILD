@@ -18,7 +18,7 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 		ln -sfn $_DOWNLOADS_DIR/${_pkg_file_name} ${PWD}
 	else
 		msg2 ""
-		msg2 "The package can be downloaded here: "
+		msg2 "The package can be downloaded here: ${url}"
 		msg2 "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
 		msg2 ""
 	fi
