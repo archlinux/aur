@@ -1,17 +1,35 @@
 # Maintainer: Diab Neiroukh <lazerl0rd at thezest dot dev>
 
 pkgname="keydb"
-pkgver="6.0.16"
-pkgrel=3
-arch=("i686" "x86_64")
+pkgver="6.2.0"
+pkgrel=4
+arch=("aarch64" "i686" "x86_64")
 pkgdesc="A Multithreaded fork of Redis."
 url="https://keydb.dev"
 license=("BSD")
 depends=(
-	"jemalloc"
 	"libatomic_ops"
 	"numactl"
 )
+if [ "$USE_TCMALLOC" = "yes" ]; then
+	depends+=("gperftools")
+	mallocprov="tcmalloc"
+elif [ "$USE_TCMALLOC_MINIMAL" = "yes" ]; then
+	depends+=("gperftools")
+	mallocprov="tcmalloc_minimal"
+elif [ "$USE_JEMALLOC" = "yes" ]; then
+	depends+=("jemalloc")
+	mallocprov="jemalloc"
+elif [ "$USE_JEMALLOC" = "no" ]; then
+	# Glibc's malloc() is used in this case.
+	mallocprov="libc"
+# This env variable isn't "checked" by KeyDB but we add it in for completion's sake.
+elif [ "$USE_MEMKIND" = "yes" ]; then
+	mallocprov="memkind"
+else
+	depends+=("jemalloc")
+	mallocprov="jemalloc"
+fi
 makedepends=(
 	"curl"
 	"git"
@@ -53,17 +71,15 @@ prepare()
 
 build() {
 	export LDFLAGS="$LDFLAGS -latomic"
-	make BUILD_TLS="yes" MALLOC="jemalloc" -C "KeyDB-$pkgver"
+	make BUILD_TLS="yes" MALLOC="$mallocprov" -C "KeyDB-$pkgver"
 }
 
-# TODO: Fix the tests in makepkg's environment.
-"""
 check()
 {
 	cd "KeyDB-$pkgver"
-	make test
+	# TODO: Allow tests to run successfully in Makepkg's fakeroot environment.
+	# make test
 }
-"""
 
 package()
 {
