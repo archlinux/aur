@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fluent-gtk-theme-git
-pkgver=2021.08.08.r23.ge97f950
+pkgver=2021.08.08.r38.g3e5a6a2
 pkgrel=1
 pkgdesc="Fluent design gtk theme for linux desktops"
 arch=('any')
 url="https://www.pling.com/p/1477941"
 license=('GP3')
 depends=('gnome-themes-extra' 'gtk3')
-makedepends=('git' 'sassc')
+makedepends=('git' 'gnome-shell' 'sassc' 'setconf')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'fluent-icon-theme: Matching icon theme'
             'fluent-cursor-theme: Matching cursor theme')
@@ -25,10 +25,20 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/wallpaper"
+  setconf install-gnome-backgrounds.sh BACKGROUND_DIR "$pkgdir/usr/share/backgrounds"
+  setconf install-gnome-backgrounds.sh PROPERTIES_DIR "$pkgdir/usr/share/gnome-background-properties"
+  setconf install-wallpapers.sh WALLPAPER_DIR "$pkgdir/usr/share/backgrounds"
+}
+
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -d "$pkgdir/usr/share/themes"
+
+  # Round version
+  ./install.sh -t all --tweaks round float -d "$pkgdir/usr/share/themes"
 
   # Remove unnecessary files:
   rm -rf "$pkgdir"/usr/share/themes/{Fluent,Fluent-*}/gnome-shell/extensions
@@ -50,4 +60,5 @@ package() {
   cd "$srcdir/wallpaper"
   install -d "$pkgdir"/usr/share/{backgrounds,gnome-background-properties}
   ./install-gnome-backgrounds.sh
+  ./install-wallpapers.sh
 }
