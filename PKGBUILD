@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=filebrowser
-pkgver=2.15.0
+pkgver=2.17.2
 pkgrel=1
 pkgdesc="Standalone web file manager"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go npm go.rice)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/filebrowser/filebrowser/archive/v${pkgver}.tar.gz"
         "filebrowser@.service")
-sha512sums=('e6401512f1e492568e2dc7e5e5447fa262b4df15c908fd0693fd06826fddc37d94a0899d8241e9d88498e65b9107fbe1bc1b7a6d8fe2c0fb23b5e3a5edd1b57f'
+sha512sums=('29c4fc86a86963a171a58a7706f06cb02216a93ca707e73da74ec805692c8779bd3a2b4c064c01f16a9b12457985d84da00d0041173a413c47feda85b60ff920'
             '0846815afbb3c5ccbb097a5361461ca0ada69e04246935afb123f4609d09cd61f9e3fe50e3b6698b3e4c1f335cbb0aa3d998cae13b422e2989aad62ed7ce4682')
 options=(emptydirs)
 
@@ -20,7 +20,6 @@ build() {
 
   npm install
   npm update
-  npm audit fix
   npm run build
 
   cd "${srcdir}/${pkgname}-${pkgver}/http"
