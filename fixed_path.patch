@@ -1,0 +1,14 @@
+diff '--color=auto' --unified --recursive --text src/plug/cmake/plug.desktop src/plug/cmake.new/plug.desktop
+--- src/plug/cmake/plug.desktop	2021-09-11 04:54:53.940483628 -0500
++++ src/plug/cmake.new/plug.desktop	2021-09-11 04:55:37.790787143 -0500
+@@ -3,8 +3,8 @@
+ Version=1.0
+ Name=Plug
+ Comment=Software for Fender Mustang Amps.
+-Path=/usr/bin/plug
+-Exec=plug
++Path=
++Exec=/usr/bin/plug
+ #Icon=plug
+ Terminal=false
+ Categories=AudioVideo;Audio;Music;Qt
