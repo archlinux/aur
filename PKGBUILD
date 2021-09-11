@@ -1,6 +1,6 @@
 # Maintainer: Brenek Harrison <brenekharrison @ gmail d0t com>
 pkgname=encodarr-runner
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Client software for encoding media files to a user-defined format."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MPL2")
 depends=("glibc" "ffmpeg")
 makedepends=("go")
 source=("encodarr-$pkgver.tar.gz"::"https://github.com/BrenekH/encodarr/archive/$pkgver.tar.gz")
-sha256sums=('985d13b26a82222c7eeaf3aae4f496f5cf29eafc84fabe5aa63dc45a5ef58a63')
+sha256sums=('5342452554f0a0915ad19dc4dff2ac8ef28573bc655c8be2119a87efc3ff66ee')
 
 build() {
 	cd "encodarr-$pkgver/runner"
