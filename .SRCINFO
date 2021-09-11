@@ -33,11 +33,11 @@ pkgbase = explusalpha
 	md5sums = abd630033cf29bc26c76953d56c6a914
 	md5sums = a3078f8ec9b5e8368202229bb74c876d
 	md5sums = 377cc589f28f92e3e23aded7c0692f11
-	md5sums = a44ab8b192ca2c36cd5ea4b7f16ace5e
+	md5sums = d1bd1a8c8d591cf0d22fb35c0d2f9667
 	md5sums = 063c8ed112890648644570b7304d915f
 	md5sums = f3aa08d98b3a25a95647ab325226c591
 	md5sums = dfb5aa76514888c80779fe7cd9723c29
-	md5sums = 827172ba9a2bc3931336f427f3c7ca29
+	md5sums = 8fe99c51760d8d802472a465425a0b4e
 	md5sums = e6634fc3a9dda5b55245dfa0aee9b7e9
 	md5sums = 227925816c7c5ff97f258f35a0939ef8
 	md5sums = bf00ffd718325224d25999afa22c2eb0
@@ -55,4 +55,3 @@ pkgbase = explusalpha
 	md5sums = b3f90aa6c1c2c81db36d727f1fbc041a
 
 pkgname = explusalpha
-
