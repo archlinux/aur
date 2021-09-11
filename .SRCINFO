@@ -1,15 +1,17 @@
-pkgbase = supercollider-mkplugins
-	pkgdesc = Mads Kjeldgaard's plugins for SuperCollider
-	pkgver = 0.2.3
-	pkgrel = 4
-	url = https://github.com/madskjeldgaard/mkplugins
+pkgbase = supercollider-portedplugins
+	pkgdesc = SuperCollider plugins ported and remixed from other projects
+	pkgver = 0.3.0d
+	pkgrel = 1
+	url = https://github.com/madskjeldgaard/portedplugins
 	arch = x86_64
 	groups = pro-audio
 	groups = supercollider-plugins
 	license = GPL
 	depends = supercollider
-	source = supercollider-mkplugins-0.2.3.zip::https://github.com/madskjeldgaard/mkplugins/releases/download/v0.2.3/MKPlugins-Linux.zip
-	md5sums = b9b64102b135fa6dbc4fb06f34b00176
+	conflicts = supercollider-mkplugins
+	conflicts = supercollider-mkplugins-git
+	conflicts = supercollider-portedplugins-git
+	source = supercollider-portedplugins-0.3.0d.zip::https://github.com/madskjeldgaard/portedplugins/releases/download/v0.3.0d/PortedPlugins-Linux.zip
+	md5sums = 5b8c1fa90e8d05b13150f28f89828681
 
-pkgname = supercollider-mkplugins
-
+pkgname = supercollider-portedplugins
