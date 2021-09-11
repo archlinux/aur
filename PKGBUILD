@@ -4,7 +4,7 @@
 # Contributor: Utsob Roy <uroybd(at)gmail(dot)com>
 _pkgname='ferdi'
 pkgname="$_pkgname-bin"
-pkgver='5.6.0'
+pkgver='5.6.1'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - binary version'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -17,9 +17,9 @@ _releaseurl="https://github.com/get$_pkgname/$_pkgname/releases/download/v$pkgve
 source_x86_64=("$pkgname-$pkgver-$pkgrel-x86_64.zip::${_releaseurl}_amd64.deb")
 source_armv7h=("$pkgname-$pkgver-$pkgrel-armv7h.zip::${_releaseurl}_armv7l.deb")
 source_aarch64=("$pkgname-$pkgver-$pkgrel-aarch64.zip::${_releaseurl}_arm64.deb")
-sha256sums_x86_64=('c9a01835002f6ed02bc3da80b5b4c30f5d5af671f639010f13c40b83513bf587')
-sha256sums_armv7h=('3953a8794d766aa29458804f6db3701c8f10db2aa64283cac84297b0d0227aed')
-sha256sums_aarch64=('7c5bc192986587de46942251473a6a1e6b66a127ed624249b9f974ca5beed355')
+sha512sums_x86_64=('c787d338c68ee3a664c64329b1690fad3e1f209170222eb9519826a30a00c8d9e44c0d62b6be23964a2697bfa1edb8163c6e0f2dc26c789cf346efffa54da503')
+sha512sums_armv7h=('690d02a15ca933a1b1f213ad8c52c4d868baedcc31a87f06af9d1caf1de9588aeb3d6fc0e4b775aaaf0f91a3b48cfb09bcf3344be531d4c9dde8eefa1ff4761f')
+sha512sums_aarch64=('55597293818139e816833c0bbeaa9b2722fd771d3f5346f2b9237825282bb786b111ec1106f9e04e5006ff8de5445272c36e058daf1c243c9bd0bf329349e027')
 
 _sourcedirectory="$pkgname-$pkgver-$pkgrel"
 
