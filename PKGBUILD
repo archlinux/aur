@@ -1,16 +1,16 @@
 
 pkgname=mingw-w64-libaacs
-pkgver=0.9.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Advanced Access Content System (mingw-w64)"
-url="http://www.videolan.org/libaacs"
+url="https://www.videolan.org/developers/libaacs.html"
 arch=('any')
 license=('LGPL')
 depends=('mingw-w64-crt' 'mingw-w64-libgcrypt')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
-source=(ftp://ftp.videolan.org/pub/videolan/libaacs/${pkgver}/libaacs-${pkgver}.tar.bz2)
-sha256sums=('47e0bdc9c9f0f6146ed7b4cc78ed1527a04a537012cf540cf5211e06a248bace')
+source=(https://download.videolan.org/pub/videolan/libaacs/${pkgver}/libaacs-${pkgver}.tar.bz2)
+sha256sums=('6d884381fbb659e2a565eba91e72499778635975e4b3d6fd94ab364a25965387')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
