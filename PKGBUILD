@@ -1,9 +1,9 @@
 pkgname=jdk11-j9-bin
-pkgver=11.0.11.0
+pkgver=11.0.12.0
 _majver=$(sed 's/\.[^.]*$//' <<<${pkgver})
-_minver=9
+_minver=7
 pkgrel=1
-pkgdesc="IBM® SDK, Java Technology Edition, Version 11"
+pkgdesc="IBM® emeru Runtime Certified Edition, Version 11"
 arch=('x86_64')
 url="https://www.ibm.com/support/pages/java-sdk-downloads-version-110"
 license=('custom')
@@ -14,8 +14,8 @@ provides=(
 'java-runtime-headless=11'
 )
 makedepends=('coreutils' 'bash')
-source=("install_${pkgver}.bin::https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/${pkgver}/linux/x86_64/ibm-java-jdk_x64_linux_${pkgver}-archive.bin")
-sha256sums=('037363b1dd35d7b6a67137baf1c73589b4f7b4e177d40394897726ad6056babd')
+source=("install_${pkgver}.bin::https://github.com/ibmruntimes/semeru11-binaries/releases/download/jdk-${pkgver}-certified/ibm-semeru-certified-jdk_x64_linux_${pkgver}-archive.bin")
+sha256sums=('4691610316eb4a205557e3aa7d6d84caa1f140a8e584eaaef5ecbcc99378c0fd')
 
 build() {
     chmod +x install_${pkgver}.bin
