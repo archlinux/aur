@@ -1,0 +1,13 @@
+pkgbase = skippythebot
+	pkgdesc = Skippy is on an epic quest to unravel its true destiny. A game made by DoctorM64.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://doctorm64.itch.io/skippybot
+	arch = x86_64
+	license = none
+	depends = glibc
+	depends = gcc-libs
+	source = https://matix.li/235665d69843
+	md5sums = SKIP
+
+pkgname = skippythebot
