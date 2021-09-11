@@ -1,0 +1,25 @@
+pkgbase = xerolinux-rollback-git
+	pkgdesc = Xerolinux Rollback Utility to snapshot using the layout proposed in the snapper arch wiki page https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/theduckchannel/xerolinux-rollback
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = coreutils
+	depends = python
+	depends = btrfs-progs
+	depends = snapper
+	depends = python-pyqt5
+	depends = python-psutil
+	depends = konsole
+	depends = rollback-git
+	depends = ttf-fira-code
+	depends = sudo
+	provides = xerolinux-rollback
+	conflicts = xerolinux-rollback
+	backup = etc/xerolinux-rollback.conf
+	source = git+https://github.com/theduckchannel/xerolinux-rollback.git
+	md5sums = SKIP
+
+pkgname = xerolinux-rollback-git
