@@ -4,13 +4,13 @@ pkgname=vim-grammarous
 pkgver=r201.db46357
 # git clone https://github.com/rhysd/vim-grammarous.git && cd vim-grammarous && printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 # `makepkg -so`, then update checksum
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful grammar checker for Vim using LanguageTool'
 arch=('any')
 url='https://github.com/rhysd/vim-grammarous'
 license=('MIT')
 groups=('vim-plugins')
-depends=('vim' 'vim-vital' 'java-runtime=8' 'languagetool')
+depends=('vim' 'vim-vital' 'java-runtime>=8' 'languagetool')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rhysd/vim-grammarous/archive/master.tar.gz")
 sha256sums=('f052681a9b312bb0460dcb834c41324134b7cf493b791a4a5504250382567aea')
 
