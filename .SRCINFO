@@ -1,0 +1,21 @@
+pkgbase = puma-dev-bin
+	pkgdesc = A fast, zero-config development server for macOS and Linux
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://github.com/puma/puma-dev/
+	arch = x86_64
+	license = BSD
+	optdepends = authbind: to bind 80/443 ports
+	optdepends = dev-tld-resolver: to resolve .test domain
+	optdepends = p11-kit: for SSL support
+	provides = puma-dev
+	source = https://github.com/puma/puma-dev/releases/download/v0.16.2/puma-dev-0.16.2-linux-amd64.tar.gz
+	source = system.service
+	source = user.service
+	source = https://raw.githubusercontent.com/puma/puma-dev/v0.16.2/LICENSE
+	md5sums = f6dd065d5cbfe23ab2b6c93c3498d7e6
+	md5sums = 9f88d670d220d36ee75b97c496c7970d
+	md5sums = f0906043620889a1903b5f69c349029f
+	md5sums = SKIP
+
+pkgname = puma-dev-bin

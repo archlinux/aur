@@ -1,0 +1,9 @@
+[Unit]
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/puma-dev -sysbind
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
