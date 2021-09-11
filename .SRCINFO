@@ -1,7 +1,7 @@
 pkgbase = deepin-udis86
 	pkgdesc = Deepin Wine
-	pkgver = 1.72_2
-	pkgrel = 3
+	pkgver = 1.72_4
+	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,8 @@ pkgbase = deepin-udis86
 	conflicts = udis86
 	conflicts = udis86-git
 	conflicts = mingw-w64-udis86
-	noextract = udis86_1.72-2_i386.deb
-	source = https://community-packages.deepin.com/deepin/pool/non-free/u/udis86/udis86_1.72-2_i386.deb
-	md5sums = SKIP
+	noextract = udis86_1.72-4_i386.deb
+	source = https://community-packages.deepin.com/deepin/pool/non-free/u/udis86/udis86_1.72-4_i386.deb
+	md5sums = 806a74d3da003d34340296a985432774
 
 pkgname = deepin-udis86
-

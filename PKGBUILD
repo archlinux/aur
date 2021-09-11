@@ -3,9 +3,9 @@
 
 pkgname=deepin-udis86
 pkgsname=udis86
-pkgvers=1.72-2
-pkgver=1.72_2
-pkgrel=3
+pkgvers=1.72-4
+pkgver=1.72_4
+pkgrel=1
 epoch=
 pkgdesc="Deepin Wine"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://community-packages.deepin.com/deepin/pool/non-free/u/${pkgsname}/${pkgsname}_${pkgvers}_i386.deb")
 noextract=("${pkgsname}_${pkgvers}_i386.deb")
-md5sums=('SKIP')
+md5sums=('806a74d3da003d34340296a985432774')
 validpgpkeys=()
 
 prepare() {
