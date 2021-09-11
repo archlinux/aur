@@ -1,10 +1,11 @@
+# Maintainer: Kenneth Kasilag (hurrian) <kenneth@kasilag.me>
 # Maintainer: Mark Weiman (markzz) <mark.weiman@markzz.com>
 # Maintainer: Katelyn Schiesser (slowbro) <katelyn.schiesser@gmail.com>
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=5.13.12.arch1
+pkgver=5.14.2.arch1
 pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -31,9 +32,9 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549' # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '06ad99b810943f7ce4650fe656156f4b40d11fabd9b89e2b1beff06c46836efc'
+            'e2140782726c69db81dd5be0602479bb4e161772e83e77de1470c9ceea622ca4'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
-            '1c621f67bbf9efef610d1b2d1afd727fca9ceaa298f807bd0348b59ec6ce9562' )
+            '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6' )
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -132,6 +133,9 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;

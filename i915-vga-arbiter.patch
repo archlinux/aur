@@ -2,8 +2,12 @@ From a59b6ecac96eab5e80fa5ee918ddbc8e2fad3a7a Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
 Date: Wed, 27 Jan 2021 13:28:46 -0500
 Subject: [PATCH] i915: Add module option to support VGA arbiter on HD devices
- (5.10)
+ (5.14)
 
+Updated version of Mark Weiman's i915 patch for 5.14.
+
+Original patch messages follow.
+---
 This is an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2014/5/9/517
 
@@ -48,41 +52,40 @@ diff --git a/drivers/gpu/drm/i915/display/intel_display.c b/drivers/gpu/drm/i915
 index aabf09f89cad..528c6886a0b5 100644
 --- a/drivers/gpu/drm/i915/display/intel_display.c
 +++ b/drivers/gpu/drm/i915/display/intel_display.c
-@@ -17887,9 +17887,11 @@ int intel_modeset_init_noirq(struct drm_i915_private *i915)
- 
- 	intel_bios_init(i915);
- 
+@@ -12304,9 +12304,11 @@
+
+	intel_bios_init(i915);
+
 -	ret = intel_vga_register(i915);
 -	if (ret)
--		goto cleanup_bios;
-+    if (!i915_modparams.enable_hd_vgaarb || !HAS_PCH_SPLIT(i915)) {
-+        ret = intel_vga_register(i915);
-+        if (ret)
-+            goto cleanup_bios;
-+    }
- 
- 	/* FIXME: completely on the wrong abstraction layer */
- 	intel_power_domains_init_hw(i915, false);
-@@ -18048,6 +18050,12 @@ int intel_modeset_init(struct drm_i915_private *i915)
- 	if (ret)
- 		return ret;
- 
-+    /*
-+    * Must do this after fbcon init so that
-+    * vgacon_save_screen() works during the handover.
-+    */
-+    intel_vga_disable_mem(i915);
++       if (!i915_modparams.enable_hd_vgaarb || !HAS_PCH_SPLIT(i915)) {
++               ret = intel_vga_register(i915);
++               if (ret)
+		goto cleanup_bios;
++       }
+
+	/* FIXME: completely on the wrong abstraction layer */
+	intel_power_domains_init_hw(i915, false);
+@@ -12476,6 +12478,12 @@
+	if (ret)
+		return ret;
+
++       /*
++        * Must do this after fbcon init so that
++        * vgacon_save_screen() works during the handover.
++        */
++       intel_vga_disable_mem(i915);
 +
- 	/* Only enable hotplug handling once the fbdev is fully set up. */
- 	intel_hpd_init(i915);
- 
-@@ -18895,6 +18903,7 @@ static void intel_hpd_poll_fini(struct drm_i915_private *i915)
- /* part #1: call before irq uninstall */
- void intel_modeset_driver_remove(struct drm_i915_private *i915)
- {
-+	intel_vga_enable_mem(i915);
- 	flush_workqueue(i915->flip_wq);
- 	flush_workqueue(i915->modeset_wq);
+	/* Only enable hotplug handling once the fbdev is fully set up. */
+	intel_hpd_init(i915);
+	intel_hpd_poll_disable(i915);
+@@ -13375,6 +13383,7 @@
+	if (!HAS_DISPLAY(i915))
+		return;
+
++       intel_vga_enable_mem(i915);
+	flush_workqueue(i915->flip_wq);
+	flush_workqueue(i915->modeset_wq);
  
 diff --git a/drivers/gpu/drm/i915/display/intel_display.h b/drivers/gpu/drm/i915/display/intel_display.h
 index d10b7c8cde3f..3daaa0bd3b60 100644
@@ -107,7 +110,7 @@ index be333699c515..a76aa52cde76 100644
 +
 +void intel_vga_enable_mem(struct drm_i915_private *dev_priv)
 +{
-+	struct pci_dev *pdev = dev_priv->drm.pdev;
++	struct pci_dev *pdev = to_pci_dev(dev_priv->drm.dev);
 +
 +	/* Enable VGA memory on Intel HD */
 +	if (i915_modparams.enable_hd_vgaarb && HAS_PCH_SPLIT(dev_priv)) {
@@ -123,7 +126,7 @@ index be333699c515..a76aa52cde76 100644
 +
 +void intel_vga_disable_mem(struct drm_i915_private *dev_priv)
 +{
-+	struct pci_dev *pdev = dev_priv->drm.pdev;
++	struct pci_dev *pdev = to_pci_dev(dev_priv->drm.dev);
 +	/* Disable VGA memory on Intel HD */
 +	if (i915_modparams.enable_hd_vgaarb && HAS_PCH_SPLIT(dev_priv)) {
 +		vga_get_uninterruptible(pdev, VGA_RSRC_LEGACY_IO);
