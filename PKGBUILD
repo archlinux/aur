@@ -10,7 +10,7 @@ license=(MIT)
 depends=(alsa-lib fftw i2c-tools)
 makedepends=(glibc)
 source=(https://github.com/rern/audio_spectrum_oled/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=(SKIP)
+sha256sums=('7b420ff7d51d2c04860db06204e8f26346b7a8d95e6db57aeb023ab8bb0ec509')
 
 build() {
 	export CPPFLAGS="-W -Wall -Wno-psabi"
