@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Nikita Nikishin <i.nnikishi@gmail.com>
 # Contributor: Christian Mauderer <oss@c-mauderer.de>
 # Contributor: Jonas Strassel <jo.strassel@gmail.com>
