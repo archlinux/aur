@@ -1,0 +1,4 @@
+post_install() {
+    echo "On the first run, game startup may take significantly longer while the wine prefix is prepared."
+    echo "Set '<postprocess enabled=\"false\" blur=\"false\" />' in ~/Documents/Codemasters/GRID/hardwaresettings/hardware_settings_config.xml for better visuals."
+}
