@@ -16,5 +16,5 @@ package() {
 
   #data
   mkdir -p "$pkgdir/usr/share/games/simutrans/pak192.comic"
-  cp -r pak192.comic/* "$pkgdir/usr/share/games/simutrans/pak192.comic"
+  cp -r pak192.comic*/* "$pkgdir/usr/share/games/simutrans/pak192.comic"
 }
