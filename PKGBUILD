@@ -1,7 +1,7 @@
 # Maintainer: Alex Parrill <alex.parrill@col32.net>
 
 pkgname=glauth-bin
-pkgver=1.1.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="LDAP authentication server for developers"
 arch=('x86_64')

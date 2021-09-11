@@ -1,14 +1,14 @@
 pkgbase = glauth-bin
 	pkgdesc = LDAP authentication server for developers
-	pkgver = 1.1.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/glauth/glauth
 	install = glauth.install
 	arch = x86_64
 	license = MIT
 	backup = etc/glauth/glauth.cfg
-	source = glauth::https://github.com/glauth/glauth/releases/download/v1.1.2/glauth64
-	source = glauth.cfg::https://raw.githubusercontent.com/glauth/glauth/v1.1.2/sample-simple.cfg
+	source = glauth::https://github.com/glauth/glauth/releases/download/v2.0.0/glauth64
+	source = glauth.cfg::https://raw.githubusercontent.com/glauth/glauth/v2.0.0/sample-simple.cfg
 	source = glauth.service
 	source = glauth-user.conf
 	sha256sums = 5995d2f45a89380640e61d7d45c0884a2d61e54e1c63261970a60ae5e3b0a54f
