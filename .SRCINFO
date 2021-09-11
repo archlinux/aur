@@ -1,6 +1,6 @@
 pkgbase = gnun
 	pkgdesc = GNUnited Nations, build system for www.gnu.org translations
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://www.gnu.org/software/gnun/
 	arch = any
@@ -13,12 +13,12 @@ pkgbase = gnun
 	depends = mailutils
 	depends = sed
 	depends = wdiff
+	depends = gawk
 	backup = etc/gnun/gnun.conf
-	source = http://ftp.gnu.org/gnu/gnun/gnun-1.0.tar.gz
-	source = http://ftp.gnu.org/gnu/gnun/gnun-1.0.tar.gz.sig
-	validpgpkeys = 3EAEC8A04B97561F2A52E35E1BBBC053D835DD16
-	sha256sums = e395b33943be7f187a7bf860081464182b787db2530cd1118959cb5a98928e90
+	source = http://ftp.gnu.org/gnu/gnun/gnun-1.1.tar.gz
+	source = http://ftp.gnu.org/gnu/gnun/gnun-1.1.tar.gz.sig
+	validpgpkeys = BD9D4DEE7B2FF1CBEF2EE0C4E0ACD3E0CBE7874A
+	sha256sums = 7b63943c257ad3cd2c2574064c4bf127b07ae13e40bd7c5a944514279cdd346d
 	sha256sums = SKIP
 
 pkgname = gnun
-

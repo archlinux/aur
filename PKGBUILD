@@ -1,18 +1,18 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnun
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="GNUnited Nations, build system for www.gnu.org translations"
 arch=(any)
 url="https://www.gnu.org/software/gnun/"
 license=('GPL')
-depends=('cvs' 'subversion' 'bzr' 'po4a' 'libxml2' 'mailutils' 'sed' 'wdiff')
+depends=('cvs' 'subversion' 'bzr' 'po4a' 'libxml2' 'mailutils' 'sed' 'wdiff' 'gawk')
 backup=(etc/gnun/gnun.conf)
 source=("http://ftp.gnu.org/gnu/gnun/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('e395b33943be7f187a7bf860081464182b787db2530cd1118959cb5a98928e90'
+sha256sums=('7b63943c257ad3cd2c2574064c4bf127b07ae13e40bd7c5a944514279cdd346d'
             'SKIP')
-validpgpkeys=('3EAEC8A04B97561F2A52E35E1BBBC053D835DD16')
-               # Ineiev <ineiev@gnu.org>
+validpgpkeys=('BD9D4DEE7B2FF1CBEF2EE0C4E0ACD3E0CBE7874A')
+               # Ineiev (fencepost) <ineiev@gnu.org>
 
 prepare() {
 	cd "$pkgname-$pkgver"
