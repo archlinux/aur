@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Jakob Gruber <jakob.gruber@gmail.com>
 
 pkgname=stone-soup-yiuf
