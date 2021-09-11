@@ -2,15 +2,15 @@
 # Contributor: Det
 
 pkgname=egl-wayland-git
-pkgver=1.1.6.r0.g1b0f2b8
+pkgver=1.1.8.r0.gce4c963
 pkgrel=1
 pkgdesc='EGLStream-based Wayland external platform (git version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/egl-wayland/'
 license=('MIT')
 depends=('wayland')
-makedepends=('git' 'meson' 'eglexternalplatform' 'libegl')
-provides=('egl-wayland')
+makedepends=('git' 'meson' 'eglexternalplatform' 'libglvnd>=1.3.4' 'wayland-protocols')
+provides=('egl-wayland' 'libnvidia-egl-wayland.so')
 conflicts=('egl-wayland')
 source=('git+https://github.com/NVIDIA/egl-wayland.git'
         '10_nvidia_wayland.json')
@@ -32,7 +32,7 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" ninja install -C build
-    install -D -m644 egl-wayland/include/*.h -t "${pkgdir}/usr/include"
+    cp -dr --no-preserve='ownership' egl-wayland/include "${pkgdir}/usr"
     install -D -m644 10_nvidia_wayland.json -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
     install -D -m644 egl-wayland/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
