@@ -90,8 +90,8 @@ prepare() {
   # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
   patch -Np1 -i ${_patches_dir}/librewolf/megabar.patch
 
-  # Debian patch to enable global menubar - Breaking building v91, needs investigation
-  patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
+  # Debian patch to enable global menubar
+  # patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
 
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
@@ -113,7 +113,7 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
   # Needed patch to have build working
-  patch -Np1 -i ${_patches_dir}/misc/fix-wayland.patch
+  # patch -Np1 -i ${_patches_dir}/misc/fix-wayland.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
