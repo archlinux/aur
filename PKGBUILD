@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Jonathan Biegert <azrdev@googlemail.com>
 # Contributor: Tobias Breitwieser <tobias@breitwieser.biz>
 # Contributor: Stefan Betz <info@stefan-betz.net>
