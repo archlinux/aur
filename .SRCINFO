@@ -1,6 +1,6 @@
 pkgbase = softethervpn
 	pkgdesc = Multi-protocol VPN Program from University of Tsukuba
-	pkgver = v4.34_9745
+	pkgver = v4.38_9760
 	pkgrel = 1
 	url = https://www.softether.org/
 	arch = i686
@@ -11,16 +11,15 @@ pkgbase = softethervpn
 	depends = bash
 	depends = openssl
 	depends = zlib
-	source = https://www.softether-download.com/files/softether/v4.34-9745-rtm-2020.04.05-tree/Source_Code/softether-src-v4.34-9745-rtm.tar.gz
+	source = https://www.softether-download.com/files/softether/v4.38-9760-rtm-2020.04.05-tree/Source_Code/softether-src-v4.38-9760-rtm.tar.gz
 	source = aarch64.patch
 	source = softethervpn-bridge.service
 	source = softethervpn-client.service
 	source = softethervpn-server.service
-	md5sums = 69452ac0a5d18b057fbe53841818f577
+	md5sums = 8df486ba22fdb14212c453c7211587a8
 	md5sums = 8b92f69f9d8d852a3739d0e48bad0454
 	md5sums = 1d54c0065ae8947bd8455b9e2050c1af
 	md5sums = a1134fea991e6e00dc4910b1be16dc73
 	md5sums = b54b4f68d56555ddfffc50c2c399624f
 
 pkgname = softethervpn
-

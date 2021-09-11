@@ -1,7 +1,7 @@
 # Maintainer: Tun Win Naing <twnaing(at)outlook(dot)com>
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn
-pkgver=v4.34_9745
+pkgver=v4.38_9760
 pkgrel=1
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -13,7 +13,7 @@ source=("https://www.softether-download.com/files/softether/${pkgver//_/-}-rtm-2
         'softethervpn-bridge.service'
         'softethervpn-client.service'
         'softethervpn-server.service')
-md5sums=('69452ac0a5d18b057fbe53841818f577'
+md5sums=('8df486ba22fdb14212c453c7211587a8' 
          '8b92f69f9d8d852a3739d0e48bad0454'
          '1d54c0065ae8947bd8455b9e2050c1af'
          'a1134fea991e6e00dc4910b1be16dc73'
