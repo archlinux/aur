@@ -17,18 +17,16 @@ source_x86_64=("https://www.nordicsemi.com/-/media/Software-and-other-downloads/
 md5sums_x86_64=('8a049bacc67519561b77e014b652d5df')
 
 package() {
-    cd ${srcdir}/nRF-Command-Line-Tools_${pkgver}_Linux64
-    tar zxf "nRF-Command-Line-Tools_${pkgver}_Linux-amd64.tar.gz"
-    tar xf "nRF-Command-Line-Tools_${pkgver}.tar"
+    cd ${srcdir}/nRF-Command-Line-Tools_${pkgver//./_}_Linux64
+    tar zxf "nrf-command-line-tools-${pkgver}_Linux-amd64.tar.gz"
 
     # Install nrfjprog and mergehex
     install -dm755 "${pkgdir}/opt/nrfjprog" "${pkgdir}/opt/mergehex"
     install -dm755 "${pkgdir}/usr/bin" "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    cp -r --preserve=mode nrfjprog/* "${pkgdir}/opt/nrfjprog"
-    cp --preserve=mode mergehex/* "${pkgdir}/opt/mergehex"
-    cp --preserve=mode nrfjprog/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -r --preserve=mode nrf-command-line-tools "${pkgdir}/opt/${pkgname}"
+    cp --preserve=mode nrf-command-line-tools/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    ln -s "/opt/nrfjprog/nrfjprog" "${pkgdir}/usr/bin"
-    ln -s "/opt/mergehex/mergehex" "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/bin/nrfjprog" "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/bin/mergehex" "${pkgdir}/usr/bin"
 }
