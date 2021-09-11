@@ -1,8 +1,8 @@
 diff --unified --recursive --text orig/bin/build-shared-version-info.js patched/bin/build-shared-version-info.js
---- orig/bin/build-shared-version-info.js	2021-06-04 12:23:59.000000000 +0200
-+++ patched/bin/build-shared-version-info.js	2021-06-05 13:45:26.128357170 +0200
-@@ -2,40 +2,8 @@
- const fs = require('fs-extra')
+--- orig/bin/build-shared-version-info.js	2021-09-08 23:50:25.000000000 +0200
++++ patched/bin/build-shared-version-info.js	2021-09-11 14:19:06.671126380 +0200
+@@ -3,40 +3,8 @@
+ const { readFile } = require('fs/promises')
  const { join } = require('path')
  
 -function gatherProcessStdout(cmd, args) {
@@ -39,7 +39,7 @@ diff --unified --recursive --text orig/bin/build-shared-version-info.js patched/
 -  const git_ref =
 -    git_describe + (git_branch === 'master' ? '' : '-' + git_branch)
 -  return git_ref
-+  return "tags/v1.20.2"
++  return "tags/v1.21.0"
  }
  
  async function gatherBuildInfo() {

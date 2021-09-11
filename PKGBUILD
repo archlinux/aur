@@ -1,6 +1,6 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=deltachat-desktop
-pkgver=1.20.3
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
@@ -13,19 +13,16 @@ source=(
     "deltachat-desktop-${pkgver}.tar.gz::https://github.com/deltachat/deltachat-desktop/archive/v${pkgver}.tar.gz"
     "deltachat-desktop.desktop"
     "deltachat-desktop.sh"
-    "remove_git_submodule.patch"
     "static_build_info.patch"
 )
 
-sha256sums=('8451349b8ea3b1d6129ed0c7d707807d94813aed410098a6b5285d6ad5d4e4dc'
+sha256sums=('8886aa9d5b6653efdb0eaa3a3f3e0ce328d2041323aec5ca883e06dff388ee31'
             '39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1'
             'c7d2c3675faa09bb568b7f7c10779971783b1a4f11a225db8b2846fc1a6b4e14'
-            'c7aed1aa75a83eddeca9131261eb22b5ee5ac6c7bc06d68b70bd35739563e44c'
-            '006a9f3179acb79843f98701cc0ebee739817130a9c6af3603c828a3a18c4843')
+            'bbefe25208f49b8cf3561d5b2aaefedab4b93a775c3e3821bf8e340384111cca')
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/remove_git_submodule.patch"
     patch --forward --strip=1 --input="${srcdir}/static_build_info.patch"
 }
 
