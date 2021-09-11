@@ -1,0 +1,13 @@
+pkgbase = dev-tld-resolver-git
+	pkgdesc = Simple top level domain (NSSwitch hosts) resolver for linux based development environment.
+	pkgver = r12.g4924eff
+	pkgrel = 1
+	url = https://github.com/puma/dev-tld-resolver
+	install = dev-tld-resolver.install
+	arch = any
+	license = MIT
+	depends = glibc
+	source = git+https://github.com/puma/dev-tld-resolver.git
+	sha256sums = SKIP
+
+pkgname = dev-tld-resolver-git

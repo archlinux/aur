@@ -1,0 +1,10 @@
+## arg 1:  the new package version
+post_install() {
+    grep -q 'dev_tld' /etc/nsswitch.conf || sed -i '/^hosts/s/$/ dev_tld/' /etc/nsswitch.conf
+}
+
+## arg 1:  the old package version
+post_remove() {
+    grep -q 'dev_tld' /etc/nsswitch.conf && sed -i '/^hosts/s/ dev_tld//' /etc/nsswitch.conf
+}
+
