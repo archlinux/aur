@@ -1,0 +1,27 @@
+pkgbase = mate-layouts
+	pkgdesc = a simple panel layout switching application for the MATE Desktop
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/FreaxMATE/mate-layouts
+	arch = any
+	license = GPL3
+	makedepends = python-distutils-extra
+	makedepends = python-setuptools
+	depends = gtk3
+	depends = libnotify
+	depends = mate-applets
+	depends = python-configobj
+	depends = python-gobject
+	depends = python-psutil
+	depends = python-setproctitle
+	depends = python-distro
+	optdepends = brisk-menu: for Manjaro panel layout
+	optdepends = mate-applet-dock: for Mutiny panel layout
+	optdepends = mate-menu: to enable advanced menu
+	optdepends = mate-netbook: for Netbook panel layout
+	optdepends = plank: for Cupertino panel layout
+	optdepends = vala-panel-appmenu-mate: for Mutiny,Cupertino
+	source = mate-layouts-0.0.4.tar.gz::https://github.com/FreaxMATE/mate-layouts/archive/v0.0.4.tar.gz
+	sha512sums = e620014ad28257ae4f09ac425054922a419b91634b15ab070f88e5ce8e18241a7a443729bf5eee8194d1a4a0ae7cfe615b8c7908208930daa5be888f3d2c16e8
+
+pkgname = mate-layouts
