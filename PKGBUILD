@@ -1,5 +1,5 @@
 pkgname=xerolinux-rollback-git
-pkgver=0.1.27
+pkgver=0.1.30
 pkgrel=1
 pkgdesc='Xerolinux Rollback Utility to snapshot using the layout proposed in the snapper arch wiki page https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout'
 arch=('any')
