@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: DJ Ring, Jr <n1ea@arrl.net>
 # Contributor: mmm
 # Contributor: Woody Gilk <woody@archlinux.org>
