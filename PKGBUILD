@@ -25,9 +25,9 @@ source=("$pkgname-$pkgver::http://www.explusalpha.com/home/general-info/platform
         "ExplusalphaSaturn.desktop")
 
 md5sums=('abd630033cf29bc26c76953d56c6a914' 'a3078f8ec9b5e8368202229bb74c876d'
-         '377cc589f28f92e3e23aded7c0692f11' 'a44ab8b192ca2c36cd5ea4b7f16ace5e'
+         '377cc589f28f92e3e23aded7c0692f11' 'd1bd1a8c8d591cf0d22fb35c0d2f9667'
          '063c8ed112890648644570b7304d915f' 'f3aa08d98b3a25a95647ab325226c591'
-         'dfb5aa76514888c80779fe7cd9723c29' '827172ba9a2bc3931336f427f3c7ca29'
+         'dfb5aa76514888c80779fe7cd9723c29' '8fe99c51760d8d802472a465425a0b4e'
          'e6634fc3a9dda5b55245dfa0aee9b7e9' '227925816c7c5ff97f258f35a0939ef8'
          'bf00ffd718325224d25999afa22c2eb0' '7fb4e3357cb8e95f34febfa18ad551f5'
          '41df52e35459c889062de3723ed953ac' 'ec7d0dd30ab012e65bcd747b74fa013c'
