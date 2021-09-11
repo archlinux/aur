@@ -3,12 +3,12 @@
 
 pkgname=bpfmon
 pkgver=2.49
-pkgrel=1
+pkgrel=2
 pkgdesc="BPF based visual packet rate monitor"
 arch=('any')
 url="https://github.com/bbonev/bpfmon"
 license=('GPL2')
-depends=('glibc' 'libyascreen')
+depends=('glibc' 'libyascreen.so')
 source=("${url}/releases/download/v${pkgver}/bpfmon-${pkgver}.tar.xz" "${url}/releases/download/v${pkgver}/bpfmon-${pkgver}.tar.xz.asc")
 validpgpkeys=('BA60BC20F37E59444D6D25001365720913D2F22D')
 md5sums=('SKIP' 'SKIP')
