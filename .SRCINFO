@@ -12,10 +12,12 @@ pkgbase = mingw-w64-libbs2b
 	options = staticlibs
 	source = https://downloads.sourceforge.net/sourceforge/bs2b/libbs2b-3.1.0.tar.gz
 	source = fix-dll-no-undefined.patch
+	source = fix-format-security-error.patch
 	md5sums = 2c3351f1785364107aabc44f67d33d84
 	md5sums = 032add726f4355682a09b34fcb610328
+	md5sums = 6158826339a7082348195eaa0c205756
 	sha1sums = a71318211611a00bd3d595b0830d2188938ff89d
 	sha1sums = a8f643592e2851e25dda19ecf33f39f5132668a1
+	sha1sums = 8c6ea1d38789107cc9b1a71dd5eb24864ad50341
 
 pkgname = mingw-w64-libbs2b
-
