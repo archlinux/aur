@@ -1,7 +1,7 @@
 pkgbase = librespot-java
 	pkgdesc = A Spotify Connect enabled headless client
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/librespot-org/librespot-java
 	arch = any
 	license = APACHE
@@ -12,8 +12,12 @@ pkgbase = librespot-java
 	source = https://github.com/librespot-org/librespot-java/releases/download/v1.6.1/librespot-player-1.6.1.jar
 	source = https://raw.githubusercontent.com/paulbastian/aur/master/librespot-java/config.toml
 	source = https://raw.githubusercontent.com/paulbastian/aur/master/librespot-java/librespot-java.service
+	source = https://raw.githubusercontent.com/paulbastian/aur/master/librespot-java/librespot-java-restart.service
+	source = https://raw.githubusercontent.com/paulbastian/aur/master/librespot-java/librespot-java-restart.timer
 	sha256sums = d51f3cc94905d6a51bf46d80fc5174c055ce9d912739a4c88358749611526bc5
 	sha256sums = 732a44a47780420484fdddff0c2ec206f58af3b4eddd71aa871e5b755890e3ee
 	sha256sums = 4d0b3452768be2eb380f6ae49c5d7fdfb0a095f699f71ce2a1697260b0c89b3a
+	sha256sums = b1d29eed6e653ea37cc8d2d8c685ab0b12f646cfd12cf2d2d4a631442e3614bf
+	sha256sums = 538f3c76c3882c1ed20ce7185ab721cf25b2c2ae187c20fae72f2f5afa0bd024
 
 pkgname = librespot-java
