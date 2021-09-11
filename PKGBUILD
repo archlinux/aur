@@ -4,7 +4,7 @@ pkgname=flatout2-wine-gog
 _pkgname=flatout2
 pkgver=1.2
 _pkgver=2.1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="FlatOut 2 using WINE with data via GOG"
 arch=('i686' 'x86_64')
 url="https://www.gog.com/game/flatout_2"
@@ -17,7 +17,7 @@ source=("setup_${_pkgname}_${_pkgver}.exe::gogdownloader://flatout_2/en1installe
 sha256sums=('b13e87de2e7386a120cd6dfc194e6e9a6bd522fe51fb8a7ad3faad6ab0475df9'
             '9d488e515d6e529127a695998c92fdbfd6d94f4cb35919776116ff4ab073e683'
             '866f48abcb74e0f3196c0ec5e37a80fc0e5144dc7ac5c40ab941bd685888ff36'
-            'cfd01677861a1687c89cbf0165d0054342aea4b46b0b15eeffe05ca80e33a20a')
+            '609bb031cf4b3786f608509968e7d9735861735a0fef35dc45b1fa27bff9958f')
 
 # If you want to use lgogdownloader add the following to /etc/makepkg.conf
 # DLAGENTS+=('goggogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
