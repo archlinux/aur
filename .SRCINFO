@@ -1,7 +1,7 @@
 pkgbase = trine3-gog
-	pkgdesc = GOG version of Trine Enchanted Edition
+	pkgdesc = GOG version of Trine 3 The Artifacts of Power
 	pkgver = 2.2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/trine_3_the_artifacts_of_power
 	arch = i686
 	arch = x86_64
