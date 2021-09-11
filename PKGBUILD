@@ -3,7 +3,7 @@
 
 pkgname="fusiondirectory"
 pkgver=1.4.dev
-pkgrel=1
+pkgrel=2
 _commit="952afba6f3c0adf945937cb2fc21c40fa1d21d36"
 pkgdesc="A combination of system administrator and end user web interface, designed to handle LDAP based setups"
 url="http://fusiondirectory.org/"
@@ -31,7 +31,6 @@ depends=("gettext"
          "php-imagick"
          "php-imap"
          #"php-json"
-         "php-ldap"
          #"php-mbstring"
          #"php-openssl"
          "php-pear"
@@ -66,7 +65,8 @@ prepare() {
  find . -type f -exec sed -i {} \
                           -e "s|/etc/$pkgname|/etc/webapps/$pkgname|g" \
                           -e "s|/etc/ldap|/etc/openldap|g" \
-                          -e "s|/var/www/$pkgname|/usr/share/webapps/$pkgname|g" \;
+                          -e "s|/var/www/$pkgname|/usr/share/webapps/$pkgname|g" \
+                          -e "s|/usr/share/$pkgname|/usr/share/webapps/$pkgname|g" \;
  sed -i "include/variables_common.inc" -e 's|"PEAR_DIR", "/usr/share/php"|"PEAR_DIR", "/usr/share/pear"|'
 }
 

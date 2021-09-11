@@ -1,7 +1,7 @@
 pkgbase = fusiondirectory
 	pkgdesc = A combination of system administrator and end user web interface, designed to handle LDAP based setups
 	pkgver = 1.4.dev
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fusiondirectory.org/
 	install = fusiondirectory.install
 	arch = any
@@ -22,7 +22,6 @@ pkgbase = fusiondirectory
 	depends = php-gd
 	depends = php-imagick
 	depends = php-imap
-	depends = php-ldap
 	depends = php-pear
 	depends = schema2ldif
 	depends = smarty3
