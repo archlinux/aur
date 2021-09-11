@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: kfgz <kfgz at interia pl>
 # Contributor: sonic414 <kevinjf at live dot in>
 		
