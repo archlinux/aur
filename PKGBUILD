@@ -1,6 +1,6 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=whitesur-gtk-theme-git
-pkgver=2021.07.27.r45.g8750654
+pkgver=2021.07.27.r52.ge3c1398
 pkgrel=1
 pkgdesc="MacOS Big Sur like theme for GNOME desktops"
 arch=('any')
