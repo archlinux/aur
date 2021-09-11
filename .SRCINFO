@@ -1,6 +1,6 @@
 pkgbase = ferdi-git
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - git version
-	pkgver = 5.6.1.nightly.52.r2.ge6ecd48a
+	pkgver = 5.6.1.nightly.56.r3.g3cd0daa8
 	pkgrel = 1
 	url = https://getferdi.com
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = ferdi-git
 	makedepends = git
 	makedepends = nodejs>=14.0.0
 	makedepends = npm6
+	makedepends = pnpm
 	makedepends = python
 	makedepends = python2
 	depends = electron13
@@ -19,13 +20,11 @@ pkgbase = ferdi-git
 	conflicts = ferdi
 	source = ferdi-git::git+https://github.com/getferdi/ferdi
 	source = ferdi-git-recipes::git+https://github.com/getferdi/recipes
-	source = ferdi-git-internal-server::git+https://github.com/getferdi/internal-server
 	source = fix-autostart-path.diff
 	source = remove-meetfranz-unpack.diff
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 1b332afa1276449ca1bfd387ad8a9b28024269a4d66daa030b0944e874df24c1
-	sha256sums = aa06840b98231a7fa3ece7239ba721459f5c6ecd4148d7e0ec4deb716c61ab48
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 4c179a9ec233393d9cdc58f5cc28fc66096b8fcb72eee8c827b045f477fdbc9a30ccf1e42d7aca1bdf46f21ad8962bfabaa84d686116197e73c62d99719b7174
+	sha512sums = fd7f735dbb735b2eb8b2fd63f74981fc415ebe5afd964100a54840676ab8059acfc82c3a48e394db2e8eb4094f266b2578d64f867a448e6932f7b936db3cd151
 
 pkgname = ferdi-git

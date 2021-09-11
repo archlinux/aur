@@ -5,28 +5,26 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.1.nightly.52.r2.ge6ecd48a'
+pkgver='5.6.1.nightly.56.r3.g3cd0daa8'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
 depends=('electron13' 'libxkbfile')
-makedepends=('git' 'nodejs>=14.0.0' 'npm6' 'python' 'python2')
+makedepends=('git' 'nodejs>=14.0.0' 'npm6' 'pnpm' 'python' 'python2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$pkgname::git+https://github.com/get$_pkgname/$_pkgname"
 	"$pkgname-recipes::git+https://github.com/get$_pkgname/recipes"
-	"$pkgname-internal-server::git+https://github.com/get$_pkgname/internal-server"
 	'fix-autostart-path.diff'
 	'remove-meetfranz-unpack.diff'
 )
-sha256sums=('SKIP'
+sha512sums=('SKIP'
             'SKIP'
-            'SKIP'
-            '1b332afa1276449ca1bfd387ad8a9b28024269a4d66daa030b0944e874df24c1'
-            'aa06840b98231a7fa3ece7239ba721459f5c6ecd4148d7e0ec4deb716c61ab48')
+            '4c179a9ec233393d9cdc58f5cc28fc66096b8fcb72eee8c827b045f477fdbc9a30ccf1e42d7aca1bdf46f21ad8962bfabaa84d686116197e73c62d99719b7174'
+            'fd7f735dbb735b2eb8b2fd63f74981fc415ebe5afd964100a54840676ab8059acfc82c3a48e394db2e8eb4094f266b2578d64f867a448e6932f7b936db3cd151')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -52,7 +50,6 @@ prepare() {
 	# Provide git submodules
 	git submodule init
 	git config submodule.recipes.url "$srcdir/$pkgname-recipes"
-	git config submodule.src/internal-server.url "$srcdir/$pkgname-internal-server"
 	git submodule update --init --recursive
 
 	# Set system Electron version for ABI compatibility
@@ -69,8 +66,8 @@ prepare() {
 
 	# Build recipe archives
 	cd "$srcdir/$_sourcedirectory/recipes/"
-	HOME="$srcdir/$_homedirectory" npm install
-	HOME="$srcdir/$_homedirectory" npm run package
+	HOME="$srcdir/$_homedirectory" pnpm install
+	HOME="$srcdir/$_homedirectory" pnpm run package
 
 	# Prepare dependencies
 	cd "$srcdir/$_sourcedirectory/"
