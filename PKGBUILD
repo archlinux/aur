@@ -4,8 +4,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 # pkg: github libvirt/libvirt
 pkgname=libvirt-xen
-pkgver=7.6.0
-pkgrel=2
+pkgver=7.7.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -102,7 +102,7 @@ backup=(
 )
 source=("https://libvirt.org/sources/${pkgname%*-xen}-$pkgver.tar.xz"{,.asc}
 		"find_programs.ini")
-sha256sums=('8f967106d00aabb3cd692724bdd4a9c09e71cb2245053b98193690ee01766141'
+sha256sums=('1b616099c18d14b9424a622f2a0bd3e0cfa286414f3416bd1a8173621b2252b2'
             'SKIP'
             '735ac805fbf06021418f82297845babf481d5681bd939a6994fbdf36fe1661e4')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
