@@ -2,7 +2,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 pkgname=conversejs
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc='Web-based XMPP/Jabber chat client written in JavaScript'
 arch=('any')
@@ -12,7 +12,7 @@ depends=("nodejs-lts-fermium")
 makedepends=('git' 'npm' 'python2')
 backup=('usr/share/webapps/converse.js/fullscreen.html')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/conversejs/converse.js/archive/v$pkgver.tar.gz")
-sha256sums=('ecf005176287e8db7fe78820facf42a65939f924a355c6f71b7ad71b011f893d')
+sha256sums=('6f6950a8990b7e341a7cd73244532a3a9683c648637d6470ebefd81f7094be77')
 
 build() {
     cd "converse.js-$pkgver"
