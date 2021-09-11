@@ -1,14 +1,15 @@
 pkgbase = python-adb-enhanced
-	pkgdesc = Swiss-army knife for Android testing and development.
-	pkgver = 1.9
-	pkgrel = 0
+	pkgdesc = Swiss-army knife for Android testing and development
+	pkgver = 2.5.11
+	pkgrel = 1
 	url = https://github.com/ashishb/adb-enhanced
 	arch = any
-	license = Apache License 2.0
-	depends = python
+	license = Apache
+	makedepends = python-setuptools
 	depends = android-tools
-	source = https://github.com/ashishb/adb-enhanced/archive/1.9.0.tar.gz
-	sha256sums = 3bcc8bf0e462036534103ea5cbe687edf41aa926be8a126471d5ee511f5887f0
+	depends = python-psutil
+	depends = python-docopt
+	source = python-adb-enhanced-2.5.11.tar.gz::https://github.com/ashishb/adb-enhanced/archive/2.5.11.tar.gz
+	sha256sums = b3f8c5f1a1bb27eed67701974f597edefe3bed41c65cee17f5e9b1c0b63bd15c
 
 pkgname = python-adb-enhanced
-

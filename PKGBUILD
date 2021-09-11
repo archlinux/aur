@@ -1,23 +1,25 @@
-# Maintainer: Franck Lucien Duriez <franck.lucien.duriez@gmail.com>
-_pyname="adb-enhanced"
-pkgname="python-${_pyname}"
-pkgver=1.9
-pkgrel=0
-pkgdesc="Swiss-army knife for Android testing and development."
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Franck Lucien Duriez <franck.lucien.duriez@gmail.com>
+
+pkgname=python-adb-enhanced
+_name="${pkgname#python-}"
+pkgver=2.5.11
+pkgrel=1
+pkgdesc="Swiss-army knife for Android testing and development"
 arch=("any")
-url=""
-license=("Apache License 2.0")
-depends=("python" "android-tools")
 url="https://github.com/ashishb/adb-enhanced"
-source=("https://github.com/ashishb/${_pyname}/archive/${pkgver}.${pkgrel}.tar.gz")
-sha256sums=("3bcc8bf0e462036534103ea5cbe687edf41aa926be8a126471d5ee511f5887f0")
+license=("Apache")
+depends=("android-tools" 'python-psutil' 'python-docopt')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('b3f8c5f1a1bb27eed67701974f597edefe3bed41c65cee17f5e9b1c0b63bd15c')
 
 build() {
-  cd "${srcdir}/${_pyname}-${pkgver}.${pkgrel}/${_pyname}"
-  python3 setup.py build
+	cd "$_name-$pkgver"
+	python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pyname}-${pkgver}.${pkgrel}/${_pyname}"
-  python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "$_name-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
