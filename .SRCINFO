@@ -1,0 +1,14 @@
+pkgbase = load-tester-bin
+	pkgdesc = A simple command-line tool for load testing of HTTP servers.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Perniciosius/load-tester.git
+	arch = x86_64
+	license = Apache
+	depends = openssl
+	depends = gcc-libs
+	depends = glibc
+	source = load-tester-0.1.1::https://github.com/Perniciosius/load-tester/releases/download/v0.1.1/load-tester
+	sha256sums = e60bcfaf2cfa8f7f2675104075789ce9c01736927f5419a21059bde970e341c7
+
+pkgname = load-tester-bin
