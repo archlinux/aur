@@ -1,0 +1,13 @@
+pkgbase = lucid
+	pkgdesc = A simple mock-application for programs that work with child processes
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sharkdp/lucid
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	source = lucid-0.3.0.tar.gz::https://github.com/sharkdp/lucid/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 01ec59195307ebd921470803f1546785309661fc0fdc0957fd413d3de3cce457
+
+pkgname = lucid
