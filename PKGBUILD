@@ -1,7 +1,7 @@
 # Maintainer: Artemii Sudakov <finziyr@yandex.ru>
 
 pkgname="kesboot-git"
-pkgver=1.3.r0.g8bfb582
+pkgver=1.4.r0.gc832590
 pkgrel=1
 pkgdesc='Script for automating work with EFI Kernel Stub (linux)'
 arch=('any')
@@ -12,6 +12,7 @@ makedepends=('git')
 source=("${pkgname}::git+https://github.com/BiteDasher/kesboot.git")
 sha512sums=("SKIP")
 backup=('etc/kesboot.conf')
+options=(emptydirs)
 
 pkgver() {
 	cd "$srcdir/$pkgname"
