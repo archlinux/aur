@@ -3,13 +3,13 @@
 
 pkgname=abyss
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler"
 arch=("i686" "x86_64")
 url="https://github.com/bcgsc/abyss"
 license=("GPL3")
 depends=("make" "openmpi" "sqlite")
-makedepends=("automake" "autoconf" "boost" "sparsehash")
+makedepends=("boost" "sparsehash")
 optdepends=(
   'pigz: for parallel gzip'
   'samtools: to read BAM files'

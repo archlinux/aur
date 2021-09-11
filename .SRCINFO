@@ -1,13 +1,11 @@
 pkgbase = abyss
 	pkgdesc = Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcgsc/abyss
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = automake
-	makedepends = autoconf
 	makedepends = boost
 	makedepends = sparsehash
 	depends = make
