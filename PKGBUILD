@@ -3,7 +3,7 @@
 pkgname=dirt2-wine-steam
 _pkgname=dirt2
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('steamcmd' 'icoutils')
 depends=('wine')
@@ -14,8 +14,8 @@ install=dirt2.install
 url='https://steamdb.info/app/12840/'
 sha256sums=('5bbe4cd8ee97fbd22eb5ab457963db73c5d7889ba77952eea318cf2da6d934c8'
             'd4b3617b616551290c4d174f48b9b3130f35d2013cd16993208a70dc1cee213e'
-            '452adc9a777431b19921c6ac7a981517340bf0cc336c1a56071a0e4cc719f6da'
-            '7f32805ab9dbe118efead3ad6a3c348d061a266d7bb5b7312b7dab2127abede3')
+            '6a960fef596825ff2f05fa2e8217f6c2e35487de99d6a572d7e88321ae8f7732'
+            '197214032362607eb10eabf02e3382c522c8bec5fd61e72de6180f09f655caa7')
 
 prepare() {
     mkdir -p $srcdir/${_pkgname}
