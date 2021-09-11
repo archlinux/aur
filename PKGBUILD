@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Matthias Grosser <mtgrosser at gmx dot net>
 # Contributor: Leonard de Ruijter <leonard@aur.archlinux.org>
 
