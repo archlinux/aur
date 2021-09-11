@@ -1,4 +1,4 @@
-# Maintainer: Usama <usama.cit@gmail.com>
+# Maintainer: Usama <usama DOT cit AT gmail DOT com>
 
 pkgname=zekr
 pkgver=1.1.0
