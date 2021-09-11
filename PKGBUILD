@@ -1,6 +1,6 @@
 # Maintainer: Scott Shumate <scott(at)shumatech(dot)com>
 pkgname=gorom
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Manage ROM sets and torrents for game emulators such as MAME."
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=('go' 'upx')
 options=(!strip)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
         gorom.desktop)
-sha256sums=('332a6073bf9eec12d26240cb45dc90716165a1116f6c32d1654155a666956ce8'
+sha256sums=('8b623b916914519822621361aea81c39c126a86126c4e02a68eae7406527232f'
             'a04779995686f47e77b04ce5f131f7d530746c9a4d3c42f9011d70f1e381fbcb')
 
 build() {
