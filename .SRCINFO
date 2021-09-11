@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-git
 	pkgdesc = A Gamecube / Wii emulator
-	pkgver = 5.0.r14899.ga36855c983
+	pkgver = 5.0.r15132.g1b32a61d6a
 	pkgrel = 1
 	url = https://dolphin-emu.org
 	arch = x86_64
@@ -37,7 +37,9 @@ pkgbase = dolphin-emu-git
 	depends = libusb-1.0.so
 	optdepends = pulseaudio: PulseAudio backend
 	source = dolphin-emu-git::git+https://github.com/dolphin-emu/dolphin
-	sha256sums = SKIP
+	source = dolphin-emu-git-mgba::git+https://github.com/mgba-emu/mgba.git
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = dolphin-emu-git
 	pkgdesc = A Gamecube / Wii emulator - git version

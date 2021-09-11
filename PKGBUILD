@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r14899.ga36855c983'
+pkgver='5.0.r15132.g1b32a61d6a'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -22,8 +22,12 @@ depends=(
 )
 makedepends=('cmake' 'git' 'ninja' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
-source=("$pkgname::git+https://github.com/$_mainpkgname/$_projectname")
-sha256sums=('SKIP')
+source=(
+	"$pkgname::git+https://github.com/$_mainpkgname/$_projectname"
+	"$pkgname-mgba::git+https://github.com/mgba-emu/mgba.git"
+)
+sha512sums=('SKIP'
+            'SKIP')
 
 _sourcedirectory="$pkgname"
 
@@ -31,6 +35,12 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
+
+	# Provide mgba submodule
+	_mgbapath="Externals/mGBA/mgba"
+	git submodule init "$_mgbapath"
+	git config "submodule.$_mgbapath.url" "$srcdir/$pkgname-mgba/"
+	git submodule update "$_mgbapath"
 }
 
 pkgver() {
@@ -44,7 +54,6 @@ build() {
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DDISTRIBUTOR=archlinux.org \
-		-DUSE_MGBA=OFF \
 		-DUSE_SHARED_ENET=ON
 	cmake --build 'build/'
 }
