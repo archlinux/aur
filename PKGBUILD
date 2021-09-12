@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: paul2lv [at] gmail dot com
 
 pkgname=fahviewer-beta
