@@ -1,5 +1,5 @@
 pkgname=simple-powermenu-git
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A very simple powermenu for bspwm users.'
 arch=('any')
