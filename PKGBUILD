@@ -2,13 +2,13 @@
 
 pkgname=python-persisting-theory
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Registries that can autodiscover values accross your project apps"
 arch=(any)
-url="https://code.eliotberriot.com/eliotberriot/persisting-theory"
+url="https://code.agate.blue/agate/persisting-theory"
 license=('BSD')
 options=(!emptydirs)
-source=('https://code.eliotberriot.com/eliotberriot/persisting-theory/-/archive/develop/persisting-theory-develop.tar.gz')
+source=('https://code.agate.blue/agate/persisting-theory/-/archive/develop/persisting-theory-develop.tar.gz')
 sha256sums=('8dec8a5fd3f87b57cdd7dff18220fe3060841cabafef3defbb4cafd0f8e1d85a')
 makedepends=('python-setuptools')
 depends=('python')
