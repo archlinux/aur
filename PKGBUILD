@@ -5,8 +5,8 @@
 
 # Maintainer: Anthony HAMON <hamon.anth@gmail.com>
 pkgname=yogo
-pkgver=3.1.1
-pkgchecksum=b73657aa236323887b592b56110f4893
+pkgver=3.3.0
+pkgchecksum=9336e16c7b130998ae074b1ba1eea885
 pkgrel=1
 pkgdesc="Interact with yopmail from command-line"
 arch=('x86_64')
