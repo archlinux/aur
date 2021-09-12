@@ -6,6 +6,7 @@ pkgbase = qolibri-bin
 	arch = x86_64
 	arch = i686
 	license = GPL2
+	makedepends = libarchive
 	depends = libnsl
 	depends = qt5-base
 	depends = qt5-tools
