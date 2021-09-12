@@ -1,8 +1,8 @@
 pkgname=simple-powermenu-git
-pkgver=0.1.3
+pkgver=r6.e691387
 pkgrel=1
 pkgdesc='A very simple powermenu for bspwm users.'
-arch=('any')
+arch=('i686' 'x86_64')
 license=('GPL3')
 url='https://github.com/theduckchannel/simple-powermenu-git'
 depends=('coreutils' 'python' 'python-qdarkstyle' 'python-pyqt5' 'python-pynput' 'i3lock-color')
