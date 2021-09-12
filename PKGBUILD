@@ -1,39 +1,39 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Maintainer: Robert Kubosz <kubosz.robert@gmail.com>
 
 pkgname=python-abjad
-pkgver=3.1
+pkgver=3.4
 pkgrel=1
-groups=('abjad')
-pkgdesc='Tool for formalized music score control.'
+pkgdesc='Python API for building LilyPond files'
 arch=('any')
 url="https://github.com/Abjad/abjad"
 license=('GPL3')
-depends=('lilypond'
-        'python'
-        'python-ply'
-        'python-six'
-        'python-uqbar'
-        'python-roman'
-        )
+groups=('abjad')
+depends=(
+	'lilypond'
+	'python>=3.6'
+	'python-ply'
+	'python-six'
+	## deps below are AUR only
+	'python-quicktions>=1.3'
+	'python-roman'
+	'python-uqbar>=0.4.4')
 makedepends=('python-setuptools')
 optdepends=(
-        'fluidsynth: to play generated MIDI files (instead of timidity++)'
-        'timidity++: to play generated MIDI files (instead of fluidsynth)'
-        'graphviz: to create rhythm-trees graphs and other tree structures'
-        )
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('df5d13a1c78dc89be399fc67a0e40f115377e9ba8fb564b5da614d8c0dc8e362')
-
+	'fluidsynth: playback generated MIDI files'
+	'timidity++: playback generated MIDI files'
+	'graphviz: creates rhythm-trees graphs and other tree structures')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('1b92f33c6d625dd89d88edaa0cd2f5c826875f271f77eeb325272edc087b6ac4')
+# validpgpkeys=('EF80D3D6F5926FC997919D6A27A5BE0A6ADE7F36') ## Trevor Baca
 
 build() {
-    cd $srcdir/abjad-$pkgver
-    python setup.py build
+	cd "abjad-$pkgver"
+	python setup.py build
 }
-
 
 package() {
-    cd $srcdir/abjad-$pkgver
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd "abjad-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
