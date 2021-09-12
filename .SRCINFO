@@ -1,7 +1,7 @@
 pkgbase = terra-station-bin
 	pkgdesc = Web Application to interact with Terra Core
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.terra.money/
 	arch = x86_64
 	license = Unlicensed
