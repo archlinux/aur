@@ -5,4 +5,4 @@ Exec=/usr/bin/macast-gui
 Icon=/usr/share/icons/Macast.png
 Terminal=false
 Type=Application
-Categories=Video
+Categories=Video;AudioVideo;
