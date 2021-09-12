@@ -1,7 +1,7 @@
 pkgbase = fxball-remastered
 	pkgdesc = A classic Breakout / Arkanoid arcade game with a few twists. Made by DoctorM64.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://doctorm64.itch.io/fxb-remastered
 	arch = x86_64
 	license = none
@@ -32,7 +32,8 @@ pkgbase = fxball-remastered
 	depends = lib32-libxau
 	depends = lib32-libxdmcp
 	depends = lib32-libpulse
-	source = https://matix.li/4763d465f26d
-	md5sums = SKIP
+	depends = lib32-libcurl-compat
+	source = fxball-remastered-1.0.zip::https://matix.li/4763d465f26d
+	md5sums = 75b9b759c5c6a798c686d412197e1b05
 
 pkgname = fxball-remastered
