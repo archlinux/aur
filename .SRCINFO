@@ -1,7 +1,7 @@
 pkgbase = drone-runner-exec
 	pkgdesc = Drone pipeline runner that executes builds directly on the host machine
 	pkgver = 1.0.0beta.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drone-runners/drone-runner-exec
 	arch = x86_64
 	license = custom:Polyform-Small-Business-1.0.0
