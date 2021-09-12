@@ -1,8 +1,8 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # pkg: git pyproject
 pkgname=trakt-scrobbler-git
-pkgver=1.3.1.r3.g8dcfd1c
-pkgrel=2
+pkgver=1.3.1.r4.gfe4c11a
+pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
