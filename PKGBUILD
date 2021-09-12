@@ -4,7 +4,7 @@
 # Contributor: Travis Nickles <nickles.travis@gmail.com>
 
 pkgname=antimicrox
-pkgver=3.1.6
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="Graphical program used to map keyboard buttons and mouse controls to a gamepad"
 arch=("aarch64" "arm" "armv6h" "armv7h" "i686" "x86_64")
@@ -16,7 +16,7 @@ provides=("${pkgname/x}")
 conflicts=("${pkgname/x}")
 replaces=("${pkgname/x}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicroX/${pkgname/x/X}/archive/${pkgver}.tar.gz")
-sha256sums=("3437d32764e57e10d8fbaaec4e7d57bef626f89f67f876002648fab45cb15053")
+sha256sums=("6ba9788eb1c212a9b7345e75db8dfc7b6b8cd3f5d14b285c976ae7edb2d9eae6")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
