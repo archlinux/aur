@@ -1,7 +1,7 @@
 pkgbase = clhs
 	pkgdesc = A local copy of the Common Lisp HyperSpec
 	pkgver = 7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lispworks.com/documentation/common-lisp.html
 	arch = any
 	license = custom
