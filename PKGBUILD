@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Francois Garillot <francois[@]garillot.net>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Malkov Fyodor aka krox <iksut@yandex.ru>
