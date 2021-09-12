@@ -14,4 +14,4 @@ pkgbase = vivi3
 	source = vivi-3.0.0.deb::https://downloads.vivi.io/app/3.0.0/vivi.deb
 	md5sums = 2b75ccfbc088fe35d33d588ba210b930
 
-pkgname = vivi
+pkgname = vivi3
