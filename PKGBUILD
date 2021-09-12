@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbluray-git
-pkgver=1.2.0.0.g43059c7e
-pkgrel=2
+pkgver=1.3.0.3.g06d7ce99
+pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
 arch=('x86_64')
 license=('LGPL2.1')
@@ -13,11 +13,10 @@ depends=('libxml2'
          )
 makedepends=('git'
              'apache-ant'
-             'classpath'
-             'java-environment<=13'
+             'java-environment<=16'
              )
 optdepends=('libaacs: Enable AACS decryption'
-            'java-runtime<=13: BD-J library'
+            'java-runtime<=16: BD-J library'
             )
 provides=('libbluray'
           'libbluray.so'
@@ -41,15 +40,15 @@ prepare() {
   cd libbluray
   git config submodule.contrib/libudfread.url "${srcdir}/libudfread"
   git submodule update --init
-
-  ./bootstrap
 }
 
 build() {
-  export JDK_HOME="/usr/lib/jvm/java-13-jdk"
-  export JAVAC="/usr/lib/jvm/java-13-openjdk/bin/javac"
+  export JDK_HOME="/usr/lib/jvm/java-16-openjdk"
+  export JAVAC="/usr/lib/jvm/java-16-openjdk/bin/javac"
 
-  cd build
+  cd libbluray
+  ./bootstrap
+  cd "${srcdir}/build"
   ../libbluray/configure \
     --prefix=/usr \
     --disable-static
@@ -58,8 +57,8 @@ build() {
 }
 
 package() {
-  export JDK_HOME="/usr/lib/jvm/java-13-jdk"
-  export JAVAC="/usr/lib/jvm/java-13-openjdk/bin/javac"
+  export JDK_HOME="/usr/lib/jvm/java-16-openjdk"
+  export JAVAC="/usr/lib/jvm/java-16-openjdk/bin/javac"
 
   make -C build DESTDIR="${pkgdir}" install
 }
