@@ -82,8 +82,13 @@ prepare() {
 }
 
 build() {
+  # Clear -D_FORTIFY_SOURCE from C++ build flags, it causes Boringssl tests to fail to compile
+  export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
+  export CXXFLAGS=${CXXFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
+
   export CXXFLAGS="$CXXFLAGS -fPIC"
-  export CFLAGS="$CFLAGS -fPIC"
+  # Disable some warnings that make Boringssl fail to compile due to a forced -Werror in CMakeLists.txt
+  export CFLAGS="$CFLAGS -fPIC -Wno-stringop-overflow -Wno-array-parameter"
 
   cd ${srcdir}/boringssl
   mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make
