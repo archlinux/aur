@@ -11,7 +11,6 @@ url='http://l-smash.github.io/l-smash'
 license=('custom:l-smash')
 makedepends=('glibc'
              'git')
-provides=('liblsmash.so')
 source=('git+https://github.com/l-smash/l-smash.git')
 sha256sums=('SKIP')
 
@@ -54,9 +53,10 @@ build() {
 package_l-smash-git() {
   pkgdesc='MP4 muxer and other tools. (GIT Version)'
   depends=('glibc')
-  provides+=('l-smash'
-             "l-smash=${pkgver}"
-             )
+  provides=('l-smash'
+            'liblsmash.so'
+            "l-smash=${pkgver}"
+            )
   conflicts=('l-smash')
   make -C build64 DESTDIR="${pkgdir}" install
   install -Dm644 l-smash/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -65,7 +65,9 @@ package_l-smash-git() {
 package_lib32-l-smash-git() {
   pkgdesc='MP4 muxer and other tools. (GIT Version) (32-bits)'
   depends=("l-smash=${pkgver}")
-  provides+=('lib32-l-smash')
+  provides=('lib32-l-smash'
+            'liblsmash.so'
+            )
   conflicts=('lib32-l-smash')
   make -C build32 DESTDIR="${pkgdir}" install-lib
   rm -fr "${pkgdir}/usr/include"
