@@ -13,6 +13,7 @@ pkgbase = animdl-git
 	depends = python-lxml
 	depends = python-pycryptodomex
 	depends = python-requests
+	depends = python-setuptools
 	depends = python-tqdm
 	depends = python-yaml
 	depends = python-yarl

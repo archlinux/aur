@@ -8,7 +8,7 @@ pkgdesc="A highly efficient anime downloader and streamer"
 arch=('any')
 url="https://github.com/justfoolingaround/animdl"
 license=('custom:Unlicensed')
-depends=('python' 'python-click' 'python-cssselect' 'python-httpx' 'python-lxml' 'python-pycryptodomex' 'python-requests' 'python-tqdm' 'python-yaml' 'python-yarl')
+depends=('python' 'python-click' 'python-cssselect' 'python-httpx' 'python-lxml' 'python-pycryptodomex' 'python-requests' 'python-setuptools' 'python-tqdm' 'python-yaml' 'python-yarl')
 makedepends=('git')
 optdepends=(
 	'mpv: stream anime'
