@@ -1,20 +1,20 @@
 # Maintainer: UnkwUsr <ktoto2707043@gmail.com>
 pkgname='rclip-git'
-pkgver=r56.2c97aaf
+pkgver=r58.28a59f4
 pkgrel=1
 pkgdesc="Clipboard manager written in rust with ability to save different entry types (text, images, etc.)"
 arch=('i686' 'x86_64')
 url="https://github.com/UnkwUsr/rclip"
 license=('MIT')
 provides=("rclip")
-makedepends=('git')
+makedepends=('cargo' 'git')
 conflicts=('rclip')
 source=("$pkgname::git+https://github.com/UnkwUsr/rclip")
 sha1sums=('SKIP')
 
 build() {
   cd $pkgname
-  cargo build --frozen --release
+  cargo build --release
 }
 
 pkgver() {
