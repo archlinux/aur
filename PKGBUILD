@@ -10,7 +10,7 @@ license=('MIT')
 depends=("gtk3")
 source=("https://github.com/jeremehancock/hostminder/raw/main/deb/${pkgname}_${pkgver}_all.deb")
 noextract=("${pkgname}_${pkgver}_all.deb")
-sha256sums=('a907dad5f7685920cef7c41af3be5d8ab2f0a213d7ed137146a0b1c5b77dd02b')
+sha256sums=('7afbd4783491bf85fc1d27292b72cea63c7b72ae036c4afe4fa5ca0641ccec3b')
 
 package() {
   bsdtar -O -xf "${pkgname}_${pkgver}_all.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
