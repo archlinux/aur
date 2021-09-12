@@ -1,6 +1,6 @@
 # Maintainer:  <zhaose@empty-PC>
 pkgname=ascii-image-converter
-pkgver=1.3.4
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A cross-platform command-line tool to convert images into ascii art and print them on the console."
 arch=('x86_64')
