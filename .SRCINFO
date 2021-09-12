@@ -1,7 +1,7 @@
 pkgbase = python-nbterm
 	pkgdesc = A tool for viewing, editing and executing Jupyter Notebooks in the terminal
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davidbrochart/nbterm.git
 	arch = any
 	license = MIT
@@ -20,4 +20,3 @@ pkgname = python-nbterm
 	depends = python-rich
 	depends = python-pyzmq
 	depends = python-typer
-
