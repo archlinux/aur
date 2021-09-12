@@ -1,6 +1,6 @@
 pkgbase = fossil-gemini-git
 	pkgdesc = A simple GTK Gopher/Gemini client written in Vala
-	pkgver = v1.3.r2.g76551a2
+	pkgver = v1.3.r2.gee8bb13
 	pkgrel = 1
 	url = https://github.com/koyuspace/fossil
 	arch = x86_64
