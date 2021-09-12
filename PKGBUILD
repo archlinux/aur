@@ -1,7 +1,7 @@
 # Maintainer: dalz <aur @t alsd d0t eu>
 pkgname=moviebattles2
-pkgver=1.8.1
-# _pkgver=1.8.0.1
+pkgver=1.8.1.2
+_pkgver=1.8.1
 pkgrel=1
 pkgdesc="A fast-paced, action packed mod for Jedi Knight: Jedi Academy"
 arch=('i686' 'x86_64')
@@ -9,23 +9,24 @@ url="https://www.moviebattles.org"
 license=('unknown')
 depends=('bin32-openjk')
 source=(
-    "$pkgname-${pkgver}.zip::https://drive.google.com/uc?id=16HDOIJVgtjsfMnIXNh6dRoPDnlhRIHoa&export=download"
+    "$pkgname-${_pkgver}.zip::https://drive.google.com/uc?id=16HDOIJVgtjsfMnIXNh6dRoPDnlhRIHoa&export=download"
     'moviebattles2.desktop'
     'moviebattles2.png'
-    'moviebattles2')
-#    "$pkgname-$pkgver-hotfix.zip::http://update.moviebattles.org/MoviebattlesII_UPGRADE_V1.8.0.1_V1.8.0.2.zip"
+    'moviebattles2'
+    "$pkgname-$pkgver-hotfix.zip::http://update.moviebattles.org/MoviebattlesII_UPGRADE_V1.8.1_V1.8.1.2.zip")
 md5sums=('f045dc24066ac4fb8ff0bebc3577b7a8'
          '14d9db62e04f1cbed851ba7e098ff207'
          '3d20693ab4602ba56d61e9ee401e1dba'
-         '400671872ffab35708b1acd1129b3797')
+         '400671872ffab35708b1acd1129b3797'
+         '28ab2a844041b9e5d5962e91846c13f3')
 install=moviebattles2.install
 
-# makedepends=('unzip')
-# noextract=("$pkgname-$pkgver-hotfix.zip")
-# prepare() {
-#     cd "$srcdir"
-#     unzip -o "$pkgname-$pkgver-hotfix.zip"
-# }
+makedepends=('unzip')
+noextract=("$pkgname-$pkgver-hotfix.zip")
+prepare() {
+    cd "$srcdir"
+    unzip -o "$pkgname-$pkgver-hotfix.zip"
+}
 
 cat > gdrive-dl <<EOF
 #!/bin/sh
