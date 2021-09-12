@@ -1,0 +1,12 @@
+pkgbase = derelict-glfw3
+	pkgdesc = A dynamic binding to the GLFW 3 library.
+	pkgver = 4.0.0_beta.1
+	pkgrel = 1
+	url = https://github.com/DerelictOrg/DerelictGLFW3
+	arch = x86_64
+	license = Boost
+	makedepends = dub
+	source = https://github.com/DerelictOrg/DerelictGLFW3/archive/refs/tags/v4.0.0-beta.1.tar.gz
+	sha256sums = 468b90eff33b8c0b38329e6df057cbf70cacc7b65c34f350a7b7b03a738d08ee
+
+pkgname = derelict-glfw3
