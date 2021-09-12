@@ -1,4 +1,4 @@
-pkgbase = vivi
+pkgbase = vivi3
 	pkgdesc = Client for Vivi, a wireless screen sharing solution
 	pkgver = 3.0.0
 	pkgrel = 1
