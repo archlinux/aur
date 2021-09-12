@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="roundcubemail-plugin-carddav"
-pkgver=4.1.2
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
 url="https://github.com/mstilkerich/rcmcarddav"
@@ -12,7 +12,7 @@ replaces=("roundcube-rcmcarddav")
 depends=("roundcubemail")
 makedepends=("composer" "systemd")
 source=("$url/releases/download/v$pkgver/carddav-v$pkgver.tar.gz")
-sha256sums=("3ccdc427f57786c6d62936f9931256388003f811ab851455af24920119d598df")
+sha256sums=('7e316a385a6b09484ea51a515f332e5110c1bd86244c6c739664dd437ed855bb')
 backup=("etc/webapps/roundcubemail/plugins/carddav/config.inc.php")
 
 build(){
