@@ -33,5 +33,3 @@ package() {
   # Install manual
   install -D -m644 "DNIeRemote_user_manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/README.pdf"
 }
-
-https://www.dnielectronico.es/descargas/Apps/DNIeRemote_1.0-4_amd64.zip
