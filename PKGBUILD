@@ -21,7 +21,7 @@ pkgver(){
 }
 
 prepare(){
-  mv "$pkgname" "$pkgname-$pkgver"
+  mv "nvidia_gpu_prometheus_exporter" "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
   mkdir -p build/
   go mod init ${source[0]#git+https://}
@@ -46,6 +46,6 @@ check() {
 }
 
 package() {
-  install -Dm644 nvidia-gpu-prometheus-exporter.service "$pkgdir"/usr/lib/systemd/system/nvidia-gpu-prometheus-exporter.service
-  install -Dm755 "$pkgname-$pkgver"/build/$pkgname.git "$pkgdir"/usr/bin/nvidia-gpu-prometheus-exporter
+  install -Dm644 nvidia-gpu-prometheus-exporter.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+  install -Dm755 "$pkgname-$pkgver"/build/nvidia_gpu_prometheus_exporter.git "$pkgdir"/usr/bin/$pkgname
 }
