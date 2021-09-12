@@ -1,6 +1,6 @@
 # Maintainer: Martel Théo <marteltheo at gmail dot com>
 pkgname=bettercrewlink-bin
-pkgver=2.7.5
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Free, open, Among Us Proximity Chat'
 arch=('x86_64')
@@ -9,10 +9,10 @@ url="https://github.com/OhMyGuus/BetterCrewLink"
 license=('GPL3')
 install="bettercrewlink.install"
 depends=('libcap>=2')
-source=("https://mirror.bettercrewl.ink/pc/latest/BetterCrewlink-Linux.AppImage"
+source=("https://github.com/OhMyGuus/BetterCrewLink/releases/download/v$pkgver/Better-CrewLink-$pkgver.AppImage"
         "bettercrewlink.desktop"
         "https://raw.githubusercontent.com/OhMyGuus/BetterCrewLink/nightly/src/renderer/logos/BCL-AppIcon.png")
-md5sums=('b7027ead9148710d09fe5e30d4c4408b'
+md5sums=('0338ad51fc871b7a9cd1d7a3c5fc8e81'
          '617a6fc40e38cb2be31a1541e39fcf96'
          '0c383871ddf0e11c81cf4cd3a77bd589')
 options=(!strip libtool emptydirs staticlibs)
@@ -20,7 +20,7 @@ options=(!strip libtool emptydirs staticlibs)
 package() {
 	cd "$srcdir"
 	
-	install -Dm 755 "BetterCrewlink-Linux.AppImage" "$pkgdir/opt/BetterCrewlink/BetterCrewlink-Linux.AppImage"
+	install -Dm 755 "Better-CrewLink-$pkgver.AppImage" "$pkgdir/opt/BetterCrewlink/BetterCrewlink-Linux.AppImage"
 	
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s /opt/BetterCrewlink/BetterCrewlink-Linux.AppImage "$pkgdir/usr/bin/bettercrewlink"
