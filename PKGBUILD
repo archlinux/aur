@@ -2,7 +2,7 @@
 
 pkgname=nvui
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern frontend for Neovim'
 arch=('x86_64')
 url='https://github.com/rohit-px2/nvui'
@@ -21,7 +21,7 @@ makedepends=(
     'catch2'
 )
 source=(
-    "https://github.com/rohit-px2/nvui/archive/refs/tags/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/rohit-px2/nvui/archive/refs/tags/v$pkgver.tar.gz"
     nvui.desktop
     nvui.sh
 )
