@@ -1,6 +1,6 @@
 # Maintainer: TargetGalaxy <maibannightly@gmail.com>
 pkgname=lightpkg
-pkgver=1.0.1.1
+pkgver=1.0.1.2
 pkgrel=1
 pkgdesc="Yet another pacman/AUR helper."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TargetGalaxy/lightpkg/archive/v${pkgver}.tar.gz")
 
-sha256sums=('76e60a8a1e51eb9525cd7177d054222e257b69f9a74133c5fddf98cd0bb22e39')
+sha256sums=('811e2cafccc4b84313f829f4f95ed78098a5ee2fecae2b8484276ef19c56208b')
 
 build() {
   cd "$pkgname-$pkgver"
