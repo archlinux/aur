@@ -3,12 +3,13 @@
 pkgname=python-aioauth-client
 _pkgname=aioauth-client
 pkgver=0.25.10
-pkgrel=1
+pkgrel=2
 pkgdesc="OAuth support for Asyncio/Trio libraries"
 arch=('any')
 url="https://github.com/klen/aioauth-client"
 license=('MIT')
 depends=('python-httpx')
+makedepends=('python-setuptools')
 source=("https://github.com/klen/aioauth-client/archive/refs/tags/${pkgver}.tar.gz")
 
 build() {
