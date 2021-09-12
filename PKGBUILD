@@ -1,7 +1,7 @@
 # Maintainer: Khorne <khorne@khorne.me>
 
 pkgname=escribe-suite-bin
-pkgver=2_SP24
+pkgver=2_SP30
 pkgrel=1
 pkgdesc="Evolv eScribe Suite - DNA Management Suite and Ecigstats - INTL Version"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("https://downloads.evolvapor.com/SetupEScribe${pkgver//./_}_INT.run"
         "escribe-suite-bin.sh"
         "escribe-suite-bin.desktop"
         "ecigstats.desktop")
-md5sums=('62c66416892cfb406d89eeac54101669'
+md5sums=('a451ca27bc69735e1c537a6bd218d00b'
          '53880780578d5bed155dbdf19d56fc21'
          'df3dd8faa3a84bdbec2f73b8432d058b'
          'ac196ccd2f6a532056b7f4e5c52f91de')
