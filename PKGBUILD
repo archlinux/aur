@@ -3,18 +3,17 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgbase=quodlibet
-pkgname=(quodlibet exfalso)
+pkgname=(exfalso)
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Music player and music library manager"
 arch=(any)
 url="https://quodlibet.readthedocs.io/"
 license=(GPL2)
-depends=(gtk3 python-mutagen python-gobject python-cairo python-feedparser)
-makedepends=(gst-plugins-base gst-plugins-bad gst-plugins-good gst-plugins-ugly
-             python-sphinx_rtd_theme xine-lib)
+depends=(dbus-python gtk3 python-cairo python-feedparser python-gobject python-mutagen)
+makedepends=(python-sphinx_rtd_theme)
 # python-raven python-senf are currently vendored
-checkdepends=(python-pytest python-xvfbwrapper)
+checkdepends=(gst-plugins-base gst-plugins-good python-pytest python-xvfbwrapper)
 source=("https://github.com/${pkgbase}/${pkgbase}/releases/download/release-${pkgver}/${pkgbase}-${pkgver}.tar.gz"{,.sig})
 sha256sums=(a03318d2767e4959551763d0a87fad977387af712608fe572714176a24bbf367 SKIP)
 validpgpkeys=(0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC) # Christoph Reiter <reiter.christoph@gmail.com>
@@ -37,35 +36,11 @@ check() {
   pytest -v -k 'not TFlake8'
 }
 
-package_quodlibet() {
-  depends+=(gst-plugins-base xine-lib)
-# python-raven python-senf are currently vendored
-  optdepends=('gst-libav: WMA support'
-              'gst-plugins-bad: mp3, mp4 and opus support and acoustid plugin'
-              'gst-plugins-good: flac, jack and pulseaudio support and replaygain plugin'
-              'gst-plugins-ugly: alternative mp3 support'
-              'gtksourceview3: undo and redo support in multiline text fields'
-              'kakasi: Kana Kanji Simple Inverter plugin'
-              'libappindicator-gtk3: tray icon plugin'
-              'libkeybinder3: Multimedia keys support'
-              'libmodplug: MOD support'
-              'python-dbus: DBus interface, multimedia key support and several plugins'
-              'python-musicbrainzngs: musicbrainz plugin'
-              'python-pyinotify: auto library update plugin'
-              'rygel: uPnP media server'
-              'webkit2gtk: lyrics window plugin')
-
-  cd ${pkgbase}-${pkgver}
-  python setup.py install --root="${pkgdir}" --skip-build --optimize=1
-  install -Dm644 {README,NEWS}.rst -t "${pkgdir}"/usr/share/doc/${pkgbase}
-}
-
 package_exfalso() {
-  optdepends=('gst-plugins-bad: for acoustid plugin'
-              'gst-plugins-good: for replaygain plugin'
-              'kakasi: for "Kana/Kanji Simple Inverter" plugin'
-              'python-dbus: for "Browse Folders" plugin'
-              'python-musicbrainzngs: for "MusicBrainz Lookup" plugin')
+  optdepends=('gst-plugins-bad: Submit Acoustic Fingerprints plugin'
+              'gst-plugins-good: Replay Gain plugin'
+              'kakasi: Kana/Kanji Simple Inverter plugin'
+              'python-musicbrainzngs: MusicBrainz Lookup, MusicBrainz Sync plugins')
   conflicts=("${pkgbase}")
 
   cd ${pkgbase}-${pkgver}
