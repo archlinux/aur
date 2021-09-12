@@ -1,0 +1,12 @@
+pkgbase = derelict-vulkan
+	pkgdesc = A dynamic binding to the vulkan api.
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/Zoadian/DerelictVulkan
+	arch = x86_64
+	license = Boost
+	makedepends = dub
+	source = https://github.com/Zoadian/DerelictVulkan/archive/refs/tags/v0.0.20.tar.gz
+	sha256sums = 018f0ed1daa49137bd5d613c5be8919201227aeecf20d11300fbb4f8622a80a5
+
+pkgname = derelict-vulkan
