@@ -1,7 +1,7 @@
 pkgbase = insomnia-bin
 	pkgdesc = API Client and Design Platform for GraphQL and REST
 	pkgver = 2021.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://insomnia.rest
 	arch = x86_64
 	license = MIT
