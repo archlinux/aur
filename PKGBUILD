@@ -15,7 +15,7 @@ pkgname=(pipewire-full-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
          )
-pkgver=0.3.34.r59.gf85d3907
+pkgver=0.3.35.r16.g535aca1b
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -105,6 +105,10 @@ package_pipewire-full-git() {
 
   meson install -C build --destdir "$pkgdir"
 
+  mkdir -p "$pkgdir/etc/alsa/conf.d"
+  ln -st "$pkgdir/etc/alsa/conf.d" \
+    /usr/share/alsa/alsa.conf.d/50-pipewire.conf
+
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 
   cd "$pkgdir"
@@ -152,7 +156,7 @@ package_pipewire-full-alsa-git() {
 
   mkdir -p "$pkgdir/etc/alsa/conf.d"
   ln -st "$pkgdir/etc/alsa/conf.d" \
-    /usr/share/alsa/alsa.conf.d/{50-pipewire,99-pipewire-default}.conf
+    /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
   install -Dm644 /dev/null "$pkgdir/usr/share/pipewire/media-session.d/with-alsa"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
