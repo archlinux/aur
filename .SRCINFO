@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-vulkan
 	pkgdesc = Complete solution to record, convert and stream audio and video
 	pkgver = 4.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -70,7 +70,7 @@ pkgbase = ffmpeg-vulkan
 	depends = xz
 	depends = zlib
 	depends = vulkan-icd-loader
-	depends = glslang
+	depends = glslang-git
 	optdepends = avisynthplus: AviSynthPlus support
 	optdepends = intel-media-sdk: Intel QuickSync support
 	optdepends = ladspa: LADSPA filters
