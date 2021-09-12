@@ -4,7 +4,7 @@ _pkgname=macast
 _gitname=Macast
 pkgname=${_pkgname}-git
 pkgver=r143.d1aa55b
-pkgrel=3
+pkgrel=4
 pkgdesc="DLNA Media Renderer"
 arch=('any')
 url="https://github.com/xfangfang/Macast"
@@ -13,11 +13,14 @@ conflicts=('macast')
 makedepends=('python-setuptools')
 depends=(
 	'python'
+	'python-appdirs'
 	'python-pillow'
 	'python-pystray'
 	'python-lxml'
+	'python-requests'
 	'python-pyperclip'
 	'python-cherrypy'
+	'python-netifaces'
 	'mpv'
 )
 source=(

@@ -1,17 +1,20 @@
 pkgbase = macast-git
 	pkgdesc = DLNA Media Renderer
 	pkgver = r143.d1aa55b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xfangfang/Macast
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
+	depends = python-appdirs
 	depends = python-pillow
 	depends = python-pystray
 	depends = python-lxml
+	depends = python-requests
 	depends = python-pyperclip
 	depends = python-cherrypy
+	depends = python-netifaces
 	depends = mpv
 	conflicts = macast
 	source = git+https://github.com/xfangfang/Macast.git#branch=dev
