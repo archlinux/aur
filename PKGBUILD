@@ -10,6 +10,7 @@ arch=('x86_64')
 url='http://l-smash.github.io/l-smash'
 license=('custom:l-smash')
 makedepends=('glibc'
+             'lib32-glibc'
              'git')
 source=('git+https://github.com/l-smash/l-smash.git')
 sha256sums=('SKIP')

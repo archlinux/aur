@@ -5,6 +5,7 @@ pkgbase = l-smash-git
 	arch = x86_64
 	license = custom:l-smash
 	makedepends = glibc
+	makedepends = lib32-glibc
 	makedepends = git
 	source = git+https://github.com/l-smash/l-smash.git
 	sha256sums = SKIP
