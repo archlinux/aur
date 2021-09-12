@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tai-bin
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="terminal ascii image -- convert images to ascii art"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
@@ -21,11 +21,11 @@ source_armv7h=("$pkgname-$pkgver-armv7h.tar.gz::$url/releases/download/v$pkgver/
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/tai-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('f56fbec69679d49e7be4268b9373b89ede5df40520b8e7dd1d929d554bdc6614'
             'da1779cbb30ce1380933b545c6a7cedcce64ddf6bd358017e754a3718cbb5305')
-sha256sums_x86_64=('fd5f017905a51b0265360a41712140359721030da435283f44c958c80c23e31c')
-sha256sums_i686=('0988abbf47ed30275cc53200c9a2992f2a502b95d61f0c262fd0626982713444')
-sha256sums_arm=('53f370410db5c50b8c073acf12ae664acab769246d3503a14721b12290fa9597')
-sha256sums_armv7h=('9e819883f5bdcd0f799792620ff5cf1ab5f7117d7a42d3bdc239c4cd7b720192')
-sha256sums_aarch64=('90f75d6ea2bf52b79a1775428c56996f9fc5b6cf8da870a7d4c70b6cdeffdd3e')
+sha256sums_x86_64=('df0779cdd5bf718960088eeb501d7e13cab7b4354699dc1fe8d076aca54d468c')
+sha256sums_i686=('96a2d48fd3c09f85d56e58fe8818491a4d915a74f487079b5e64fda1ab15fa33')
+sha256sums_arm=('4f855485d487fa8eecf9ff0b6deec61b57fd538cea66b34082064bcd7b0ec631')
+sha256sums_armv7h=('876201eacc1085b3711c9598d8453a5cec2cacec8e2eff077e7f8e359c85fc1c')
+sha256sums_aarch64=('4ce691be4a16e8ccc16625c5a6ae9494564257bc7661a4aa8f1c3f8c9c0a09d0')
 
 package() {
 	install -Dm 755 tai -t "$pkgdir/usr/bin/"
