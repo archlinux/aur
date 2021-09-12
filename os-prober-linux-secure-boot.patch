@@ -1,0 +1,30 @@
+From: Andrey Borzenkov <arvidjaar@gmail.com>
+Subject: detect linuxefi/initrdefi secure bootloaders too
+Reference: bnc#810912
+
+Recognize initrdefi and linuxefi too. Whether linux/initrd or
+linuxefi/initrdefi will be emitted is controlled by SECURE_BOOT
+setting in /etc/sysconfig/bootloader.
+Index: os-prober-1.61/linux-boot-probes/mounted/common/40grub2
+===================================================================
+--- os-prober-1.61.orig/linux-boot-probes/mounted/common/40grub2
++++ os-prober-1.61/linux-boot-probes/mounted/common/40grub2
+@@ -71,7 +71,7 @@ parse_grub_menu () {
+ 					ignore_item=1
+ 				fi
+ 			;;
+-			linux)
++			linux|linuxefi)
+ 				# Hack alert: sed off any (hdn,n) but
+ 				# assume the kernel is on the same
+ 				# partition.
+@@ -84,7 +84,7 @@ parse_grub_menu () {
+ 					kernel="/boot$kernel"
+ 				fi
+ 			;;
+-			initrd)
++			initrd|initrdefi)
+ 				initrd="$(echo "$2" | sed 's/(.*)//')"
+ 				# Initrd same.
+ 				if [ "$partition" != "$bootpart" ]; then
+
