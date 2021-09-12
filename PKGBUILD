@@ -1,7 +1,8 @@
 # Maintainer: riey <creeper844@gmail.com>
+# Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 pkgname=kime
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
