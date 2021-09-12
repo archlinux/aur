@@ -3,7 +3,7 @@
 pkgname=clhs
 pkgver=7.0
 _pkgver=7-0
-pkgrel=1
+pkgrel=2
 pkgdesc="A local copy of the Common Lisp HyperSpec"
 url="http://www.lispworks.com/documentation/common-lisp.html"
 arch=('any')
@@ -19,4 +19,5 @@ package() {
   tar -xf "$srcdir/HyperSpec-${_pkgver}.tar.gz" -C "$pkgdir/usr/share/doc/clhs"
 
   chown -R root:root "$pkgdir/usr/share/doc/clhs"
+  chmod -R a=rX "$pkgdir/usr/share/doc/clhs"
 }
