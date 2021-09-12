@@ -1,6 +1,6 @@
 pkgbase = scrt
 	pkgdesc = Vandyke SecureCRT SSH Client
-	pkgver = 9.0.2
+	pkgver = 9.1.0
 	pkgrel = 0
 	url = http://www.vandyke.com/products/securecrt/
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = scrt
 	depends = icu66
 	options = !strip
 	options = !emptydirs
-	source = local://scrt-9.0.2.2496.ubuntu20-64.tar.gz
-	md5sums = 9bbeb83d872540dedd5f4bd060304935
+	source = local://scrt-9.1.0.2579.ubuntu20-64.tar.gz
+	md5sums = 5D84645E8B7A586CC08BD31A338E0F41
 
 pkgname = scrt
