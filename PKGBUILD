@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=align
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A general purpose application for aligning text"
 arch=('x86_64')
@@ -11,12 +11,11 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dc3b16f2b1f61a1fc514d3fcd75ae49da587aaa75d81fc879356d08e2d3f464a')
+sha256sums=('b386fd179d3c6fb7a2b5e65aee98e9eeaf0108741fe249bd9fce40c506d59819')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	mkdir -p build
-	go mod init "${url#https://}"
 	go mod tidy
 }
 
