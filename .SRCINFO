@@ -1,0 +1,12 @@
+pkgbase = clhs
+	pkgdesc = A local copy of the Common Lisp HyperSpec
+	pkgver = 7.0
+	pkgrel = 1
+	url = http://www.lispworks.com/documentation/common-lisp.html
+	arch = any
+	license = custom
+	noextract = HyperSpec-7-0.tar.gz
+	source = http://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz
+	sha256sums = 1ac1666a9dc697dbd8881262cad4371bcd2e9843108b643e2ea93472ba85d7c3
+
+pkgname = clhs

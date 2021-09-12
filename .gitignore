@@ -1,0 +1,5 @@
+HyperSpec-*.tar.gz
+pkg/
+src/
+*.pkg.tar.*
+*.pkg.tar
