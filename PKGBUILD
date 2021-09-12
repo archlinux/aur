@@ -8,7 +8,7 @@ _pkgbase=nginx
 pkgbase=nginx-quic
 pkgname=(nginx-quic nginx-quic-src)
 pkgver=1.21.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -78,6 +78,7 @@ _quic_flags=(
 
 prepare() {
   # Backup pristine version of nginx source for -src package
+  test -d ${srcdir}/${pkgname}-src && rm -r ${srcdir}/${pkgname}-src
   cp -r ${srcdir}/${pkgname} ${srcdir}/${pkgname}-src
 }
 
@@ -91,7 +92,7 @@ build() {
   export CFLAGS="$CFLAGS -fPIC -Wno-stringop-overflow -Wno-array-parameter"
 
   cd ${srcdir}/boringssl
-  mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make
+  mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make crypto ssl
   cd ${srcdir}/boringssl
   mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
   cp ${srcdir}/boringssl/build/crypto/libcrypto.a ${srcdir}/boringssl/build/ssl/libssl.a .openssl/lib && cd ..
@@ -163,11 +164,13 @@ package_nginx-quic() {
 
 package_nginx-quic-src() {
   pkgdesc="Source code of nginx-quic $pkgver, useful for building modules"
+  arch=('any')
   provides=('nginx-src' 'nginx-mainline-src')
   conflicts=($_pkgbase-src)
   depends=()
   backup=()
   install -d "$pkgdir/usr/src"
+  test -d "$pkgdir/usr/src/nginx" && rm -r "$pkgdir/usr/src/nginx"
   cp -r ${srcdir}/${pkgname} "$pkgdir/usr/src/nginx"
   # Link the 'configure' script to its location in release tarballs,
   # as this is where modules expect it
