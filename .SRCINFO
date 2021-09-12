@@ -1,0 +1,14 @@
+pkgbase = interrobang
+	pkgdesc = A tiny launcher menu packing a big bang (syntax)
+	pkgver = 2.0b14
+	pkgrel = 1
+	url = https://code.jessemcclure.org/interrobang
+	arch = x86_64
+	license = custom:MIT
+	makedepends = fossil
+	depends = libxrender
+	depends = libxft
+	depends = bash
+	depends = python
+
+pkgname = interrobang
