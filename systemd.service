@@ -1,0 +1,14 @@
+[Unit]
+Description=Drone CI
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=drone
+Group=drone
+WorkingDirectory=/var/lib/drone
+ReadWritePaths=/var/lib/drone
+ExecStart=/usr/bin/drone-server
+
+[Install]
+WantedBy=multi-user.target
