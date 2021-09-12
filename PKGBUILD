@@ -39,7 +39,7 @@ package() {
 
   ar x "armbian-firmware_${_pkgver}_all.deb"
   tar -xf data.tar.xz
-  ar x "linux-$_ubuntu-root-current-tinkerboard_${pkgver}_armhf.deb"
+  ar x "armbian-bsp-cli-tinkerboard_${pkgver}_armhf.deb"
   tar -xf data.tar.xz
 
   install -Dm644 "lib/systemd/system/tinker-bluetooth.service" "$pkgdir/usr/lib/systemd/system/tinker-bluetooth.service"
