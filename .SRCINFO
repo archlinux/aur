@@ -1,15 +1,16 @@
 pkgbase = python-abjad-ext-rmakers
 	pkgdesc = Abjad rhythm-maker extension
-	pkgver = 3.0.0
-	pkgrel = 2
-	url = https://github.com/Abjad/abjad-ext-rmakers
+	pkgver = 3.4
+	pkgrel = 1
+	url = https://github.com/abjad/abjad-ext-rmakers
 	arch = any
 	groups = abjad
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-abjad
-	source = https://github.com/Abjad/abjad-ext-rmakers/archive/v3.0.0.tar.gz
-	sha256sums = c3f49fe4425b7b37e7491845be0972ac47f5d63120303b30ec077ef3c5522cac
+	source = python-abjad-ext-rmakers-3.4::git+https://github.com/abjad/abjad-ext-rmakers#tag=v3.4?signed
+	validpgpkeys = EF80D3D6F5926FC997919D6A27A5BE0A6ADE7F36
+	sha256sums = SKIP
 
 pkgname = python-abjad-ext-rmakers
-
