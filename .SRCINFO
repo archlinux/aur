@@ -1,6 +1,6 @@
 pkgbase = hr-rust
 	pkgdesc = hr in rust
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/djmattyg007/hr-rust
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = hr-rust
 	makedepends = cargo
 	provides = hr
 	conflicts = hr
-	source = https://github.com/djmattyg007/hr-rust/archive/1.0.0.tar.gz
-	sha512sums = 84a908201fd4903f1549663187252a1f438ed1db6148fb938184d4b87b6a87fd80d8d9669f985fdc9aeaac5ccdb9a01a4086f6541a4f46b589faf970119027dd
+	source = https://github.com/djmattyg007/hr-rust/archive/1.0.1.tar.gz
+	sha512sums = b9976e57244e7d7842ebb893b6d1e9a424ef122fd4b50a8a89a485d53241562ec9634503ae38254424d8500b39d809017e2958419950d50fc61189573a548446
 
 pkgname = hr-rust
-
