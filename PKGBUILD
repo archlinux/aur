@@ -3,18 +3,18 @@
 pkgbase=ttf-twcns-fonts
 pkgname=(${pkgbase}{,-doc})
 pkgdesc='Chinese TrueType fonts by Ministry of Education of Taiwan government, support CNS11643 standard, including Kai and Sung fontface.'
-pkgver=20210705
+pkgver=20210911
 pkgrel=1
 arch=('any')
 url='https://data.gov.tw/node/5961'
 license=('custom')
 makedepends=(dos2unix convmv wget)
 source=('https://www.cns11643.gov.tw/AIDB/Open_Data.zip'
-        '53-twcns.conf' # grab from older version of rpm
-        'LICENSE-zh_TW'
-        'LICENSE')
-sha256sums=('7c20fe628a1efd75fe0b2a91717e4a2e5c52cf42b5c6d3495dff8d4416b34c23'
-            '2ec096a29e801e668785d85b08e5b7f8ec7c79535df5289d6ce4b09674594a7d'
+        '46-twcns.conf' '66-twcns.conf'
+        'LICENSE-zh_TW' 'LICENSE')
+sha256sums=('4665cf5f3b301b27fa851448b4daeac09c87aaed09856f52cf9f20722e77aa4f'
+            '70345fd5ef20a8c290805a89e40a7b74f42b725f07590337ac171511a1014bbf'
+            'fc7ca074ccbd4ab8fa01b99cf03182247b3ae25586300a7ecc015a790eafedbe'
             '5752216377a7b59433b2cc83164be2f93533446e72953a1d4769ceddd1349a00'
             '114afb4ba741595b69fbabb5e1d6668f095bbe4acfee5e5358d83cfbc72f1351')
 #DLAGENTS=('https::/usr/bin/curl -gqb "" -fLC - --retry 999 -o %o %u') # not tested yet
@@ -36,8 +36,10 @@ package_ttf-twcns-fonts() {
     mv -v Fonts/TW-Sung* "${pkgdir}"/usr/share/fonts/TTF/
     msg 'Installing configuration'
     install -dm755 "${pkgdir}"/usr/share/fontconfig/conf.default
-    install -Dm644 "${srcdir}"/53-twcns.conf "${pkgdir}"/usr/share/fontconfig/conf.avail/53-twcns.conf
-    ln -sf ../conf.avail/53-twcns.conf "${pkgdir}"/usr/share/fontconfig/conf.default/53-twcns.conf
+    install -Dm644 "${srcdir}"/46-twcns.conf "${pkgdir}"/usr/share/fontconfig/conf.avail/46-twcns.conf
+    install -Dm644 "${srcdir}"/66-twcns.conf "${pkgdir}"/usr/share/fontconfig/conf.avail/66-twcns.conf
+    ln -sf ../conf.avail/46-twcns.conf "${pkgdir}"/usr/share/fontconfig/conf.default/46-twcns.conf
+    ln -sf ../conf.avail/66-twcns.conf "${pkgdir}"/usr/share/fontconfig/conf.default/66-twcns.conf
     msg 'Installing the license'
     install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -Dm644 ${srcdir}/LICENSE-zh_TW ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-zh_TW
