@@ -1,6 +1,6 @@
 # Maintainer: Khorne <khorne AT khorne DOT me>
 pkgname=drone
-pkgver=2.2.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Drone is a Continuous Delivery platform built on Docker, written in Go - OSS variant"
 arch=('x86_64')
@@ -10,11 +10,18 @@ makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
         "systemd.service"
         "tmpfiles.conf"
-        "sysusers.conf")
-sha256sums=('b7d0e022b84e51768609a6cf122148bba248e31307defa03e6f449078212dad6'
+        "sysusers.conf"
+        "remove-starlark-plugin.patch")
+sha256sums=('b9a6a844a522a8a08966e4d40e730d6a8f4bfd945ef6428f7f78ba1793a93a05'
             'a7f8c05f2a8b418700096b4e8fe57b1fca33bce0c0edeaa658d275c2c6815aec'
             'eb7ae43cf5c0983c9b9c908ea734d445f255c3f24a74682c0022f3f0132a6b44'
-            '72a598c1699996286f0593f4ab392e56b8013de52f79cdee5714b27da815f2a6')
+            '72a598c1699996286f0593f4ab392e56b8013de52f79cdee5714b27da815f2a6'
+            '71da1b05702d1cf2638d1cb7ed954a284257c11da97e1f9a27ebc6eefbc4a27e')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    patch -p1 < ../../remove-starlark-plugin.patch
+}
 
 build() {
     cd "$pkgname-$pkgver"
