@@ -1,0 +1,19 @@
+[Unit]
+Description=Tvheadend - a TV streaming server and DVR
+Wants=network.target
+
+[Service]
+Type=notify
+WatchdogSec=1m
+TimeoutStartSec=2m
+TimeoutStopSec=20
+RuntimeDirectory=tvheadend
+PrivateTmp=yes
+EnvironmentFile=/etc/conf.d/tvheadend
+User=tvheadend
+Group=tvheadend
+ExecStart=/usr/bin/tvheadend -c /etc/tvheadend -n $OPTIONS
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

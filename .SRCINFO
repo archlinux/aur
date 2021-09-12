@@ -1,9 +1,8 @@
 pkgbase = tvheadend-satip-server-git
 	pkgdesc = TV streaming server for Linux
-	pkgver = 4.3.r1857.g221c29b40
-	pkgrel = 2
+	pkgver = 4.3.r1979.g8fc2dfa7e
+	pkgrel = 1
 	url = https://tvheadend.org/
-	install = tvheadend.install
 	arch = i686
 	arch = pentium4
 	arch = x86_64
@@ -20,14 +19,23 @@ pkgbase = tvheadend-satip-server-git
 	depends = uriparser
 	provides = tvheadend
 	conflicts = tvheadend
-	conflicts = hts-tvheadend
-	conflicts = hts-tvheadend-svn
 	conflicts = tvheadend-git
+	options = !strip
+	options = emptydirs
 	backup = etc/conf.d/tvheadend
-	source = tvheadend-git::git+https://github.com/tvheadend/tvheadend.git#branch=master
-	source = dvb-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git#branch=master
-	md5sums = SKIP
-	md5sums = SKIP
+	source = tvheadend-git::git+https://github.com/tvheadend/tvheadend.git
+	source = dvb-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git
+	source = tvheadend.conf
+	source = dbus.conf
+	source = tvheadend.service
+	source = tmpfile.conf
+	source = user.conf
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = f7f630d60217ae64d529d4573c3dbce3f57f2bb1ddd952b789232cd199155591c373ac8986006b9f4f64dbe64f40e18b00b8b3174d4f0c0f4310573d7ae79117
+	sha512sums = 5439d5bacd256a0d3b78b87d176638250e043ce3786fa4a72af36fcbde044d6b4301a6d45f83ccd9ef3eeaf353e909a6c418581972476a30e31776f6fd7330ef
+	sha512sums = 480b0213ccb7dad409027b3e66eeb97035350ff9e145b91dbe4fed8569bac12dd77756fc01aa2ac6bf0127683ab053152e05ac575dfada3c505613ebfc0160ce
+	sha512sums = 1080c8a2530d1f16ab5304cdd81c9c9da23b281e44a4874f4921905c843d876831214af481f9be91a74291ed4a6a10684dbdfb8f926b51bbb6895b92d493b201
+	sha512sums = 5e0475cfe1f915bd3269ba3e9e0ca6cc7e492988bfd4f1feafcbbd3e8b0276c228f0b08a4116f3213d12c0ea940eff0dc71601a6e6ddcda934964cf51a665539
 
 pkgname = tvheadend-satip-server-git
-
