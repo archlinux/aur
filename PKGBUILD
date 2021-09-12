@@ -2,7 +2,7 @@
 # Contributor: <philipp.classen@posteo.de>
 
 pkgname=verifpal
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="Cryptographic protocol analysis for students and engineers."
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://verifpal.com/"
 license=('GPL3')
 depends=('glibc')
 makedepends=('go')
-source=("https://source.symbolic.software/verifpal/verifpal/-/archive/v${pkgver}/verifpal-v${pkgver}.tar.bz2")
-sha256sums=('4b0bc1f1e56fd7d9583b43a915ac45a554519d4030786cfd058e8972013f4589')
+source=("$pkgname-$pkgver.tar.bz2::https://source.symbolic.software/verifpal/verifpal/-/archive/v${pkgver}/verifpal-v${pkgver}.tar.bz2")
+sha256sums=('c3da52c1d9a2cceff14abc69a213343701b2e75f4867bad92e202809e63c4a7b')
 
 prepare() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
