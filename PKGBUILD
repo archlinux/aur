@@ -12,7 +12,7 @@ depends=('gtkmm3')
 source=("https://www.dnielectronico.es/descargas/Apps/DNIeRemote_${pkgver}-${pkgrel}_amd64.zip"
         "https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf")
 #noextract=("DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf'
+sha256sums=('c56acb2e01a75ad00dc2e6b940f4040140f979a9446415d5932118bd3a014bee'
             'afb1520fc5d3329d5ef271d89b6c7026d9208b79c52de0d491eaf543d642f9d0')
 
 package() {
