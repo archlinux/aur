@@ -3,26 +3,29 @@
 # vim: ts=2 sw=2 et:
 
 pkgname=konsave
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Save and apply your KDE Plasma customizations with just one command!"
 url="https://github.com/Prayag2/${pkgname}"
-depends=('python' 'python-pyaml')
-makedepends=('python-setuptools-scm')
-license=('GPL3')
-arch=('any')
+depends=(python python-pyaml)
+makedepends=(python-setuptools-scm)
+license=(GPL3)
+arch=(any)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9d1132e06b229debd0e2bef8b1088ad09dd945576c3333120228e04f26eb70cd')
+sha256sums=(caaa2cfbf6856f72c1fac839bebf36b9f3ad86624efb6b6d7d6d7ada744d7471)
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "${pkgname}-${pkgver}"
+  python setup.py install \
+    --root="${pkgdir}" \
+    --optimize=1 \
+    --skip-build
 
   # Copying configuration files
   _python_folder=$(python -c "import site; print(site.getsitepackages()[0])")
