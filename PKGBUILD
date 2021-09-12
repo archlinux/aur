@@ -1,6 +1,6 @@
 _pkgname=ericw-tools
 pkgname=${_pkgname}-git
-pkgver=0.18.2.rc1.r149.g968a840
+pkgver=0.18.2.rc1.r166.gac79487
 pkgrel=1
 pkgdesc="Quake/Hexen 2 Map compiling tools"
 arch=('x86_64')
@@ -26,9 +26,12 @@ prepare() {
 
 build() {
     cd ${_pkgname}
+    rm -rf build
     mkdir build
     cd build
     cmake ..
+    # HACK fixes cmake not able to copy embree license
+    touch light/EMBREE_LICENSE-NOTFOUND
     make
 }
 
