@@ -74,8 +74,8 @@ _use_current=
 pkgbase=linux-cacule
 pkgname=('linux-cacule' 'linux-cacule-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14.2
-pkgrel=6
+pkgver=5.14.3
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -107,13 +107,14 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/futex2-zen-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
-        "${_patchsource}/mm-patches/0001-mm-5.14-protect-mappings-under-memory-pressure.patch"
-        "${_patchsource}/pf-patches-v4/0001-pf-patches.patch"
+#        "${_patchsource}/mm-patches/0001-mm-5.14-protect-mappings-under-memory-pressure
+        "${_patchsource}/misc/le9fa-5.14.patch"
+        "${_patchsource}/pf-patches-v5/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches/0001-xanmod-patches.patch"
         "${_patchsource}/zen-patches/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
-        "${_patchsource}/zstd-upstream-patches-v2/0001-zstd-upstream-patches.patch"
-        "${_patchsource}/ntfs3-patches-v4/0001-ntfs3-patches.patch"
+        "${_patchsource}/zstd-upstream-patches-v3/0001-zstd-upstream-patches.patch"
+        "${_patchsource}/ntfs3-patches-v5/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
         "${_patchsource}/0001-v4l2loopback.patch"
@@ -241,12 +242,15 @@ prepare() {
             ### Enable protect file mappings under memory pressure
             if [ -n "$_mm_protect" ]; then
               echo "Enabling protect file mappings under memory pressure..."
-              scripts/config --enable CONFIG_UNEVICTABLE_FILE
-              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-              scripts/config --enable CONFIG_UNEVICTABLE_ANON
-              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
-              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
+          #    scripts/config --enable CONFIG_UNEVICTABLE_FILE
+          #    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+          #    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+              scripts/config --set-val CONFIG_CLEAN_LOW_KBYTES 262144
+              scripts/config --set-val CONFIG_CLEAN_MIN_KBYTES 131072
+          #    scripts/config --enable CONFIG_UNEVICTABLE_ANON
+          #    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
+          #    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
+              scripts/config --set-val CONFIG_ANON_MIN_KBYTES 32768
             fi
 
             ### Enable multigenerational LRU
@@ -355,7 +359,7 @@ prepare() {
               scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
               scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
               scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-
+              scripts/config --enable CONFIG_x86_AMD_PSTATE
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
     if [ -n "$_use_current" ]; then
@@ -522,8 +526,8 @@ package_linux-cacule-headers() {
 
 }
 
-md5sums=('e111bd84156ac6b19568a495eed46400'
-         'e83ba8542661e0f4d70d96f3e91ee911'
+md5sums=('b45b18effd1af9077de47f4bc496d2ab'
+         '10560c6534f78016b64d300b9ea34460'
          '8a45ded67e2d5235e652fb0f1672f91d'
          '40a9380b2884f5d417791f06389ba57e'
          'a804260e2f301ffe2a17d6e3625a9711'
@@ -541,13 +545,13 @@ md5sums=('e111bd84156ac6b19568a495eed46400'
          '2891eb036469d04995d9b21a5e389d8a'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '3cf036429a7c962005a344e10a568d7b'
-         '8edec54f500ecb2ff705c2a9f32e0560'
-         '01fe9306e6e6786414476789053cc899'
+         '1c7ef5e6f04ef28de07693dcafb37529'
+         'd4c3a3ca73c2e722ebc790357ba87680'
          '28864f14bf33bad92e57bc48bc5c2c78'
          '381bc4f0ff885e9b67e5899476a30416'
          '808981a36c81165953017e5e432c1fa1'
-         '2cd3271bddb2612171afbc5a706b541f'
-         'bb5234c6cd12276dbc4d231cc038f8f7'
+         '74db4069a1c3985e5de43cf28f44e693'
+         '5bea4a9ae71f859f8f569d99b9e92e68'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
