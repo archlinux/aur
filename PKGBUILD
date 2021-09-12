@@ -3,7 +3,7 @@
 
 pkgname=multimc-git
 pkgver=0.6.13.r0.ge2355eb2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://multimc.org/"
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('java-runtime' 'libgl' 'qt5-base' 'zlib')
 provides=('multimc')
 conflicts=('multimc' 'multimc5' 'multimc5-bin')
-makedepends=('cmake' 'java-environment')
+makedepends=('cmake' 'git' 'java-environment')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
