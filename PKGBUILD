@@ -1,33 +1,31 @@
-# Maintainer: Robert Kubosz <kubosz.robert@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 
-_pkgname=abjad-ext-ipython
-pkgname="python-$_pkgname"
-pkgver=3.0.0
-pkgrel=2
-groups=('abjad')
+pkgname=python-abjad-ext-ipython
+_name="${pkgname#python-}"
+pkgver=3.3
+pkgrel=1
 pkgdesc='Abjad IPython extension'
 arch=('any')
-url="https://github.com/Abjad/$_pkgname"
+url="https://github.com/abjad/abjad-ext-ipython"
 license=('MIT')
+groups=('abjad')
 depends=(
-        'python-abjad'
-        'python-uqbar'
-        'jupyter'
-        )
-makedepends=('python-setuptools')
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('2d1035ad99bd8538d6a00947ac67bc1197aed5f912fb52552ce9500d744b5d24')
-
+	'python-abjad'
+	'python-isort'
+	'jupyter>=1.0.0')
+makedepends=('python-setuptools' 'git')
+source=("$pkgname-$pkgver::git+$url#tag=v$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('EF80D3D6F5926FC997919D6A27A5BE0A6ADE7F36')
 
 build() {
-    cd $srcdir/$_pkgname-$pkgver
-    python setup.py build
+	cd "$pkgname-$pkgver"
+	python setup.py build
 }
-
 
 package() {
-    cd $srcdir/$_pkgname-$pkgver
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd "$pkgname-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
