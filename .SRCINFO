@@ -1,0 +1,12 @@
+pkgbase = kernel-alive
+	pkgdesc = Back up modules of current kernel to prevent some issues after kernel update
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/ste74/kernel-alive
+	arch = any
+	license = GPL3
+	depends = rsync
+	source = https://gitlab.manjaro.org/ste74/kernel-alive/-/archive/ab1144da0459bacaf27bcfdf5201b9019e5d2795/kernel-alive-ab1144da0459bacaf27bcfdf5201b9019e5d2795.tar.gz
+	md5sums = 42821deaf25410646763705f447307cc
+
+pkgname = kernel-alive
