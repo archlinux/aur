@@ -2,7 +2,7 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 
 pkgname=waydroid
-pkgver=r26.ecd0da2
+pkgver=r29.d2f2593
 pkgrel=1
 pkgdesc="A container-based approach to boot a full Android system on a regular Linux system"
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/waydroid'
 depends=('lxc' 'python' 'python-gbinder' 'python-requests')
 makedepends=('git')
 optdepends=('waydroid-image: Android image for use with waydroid')
-_commit="ecd0da2948b65184c759104de9d2a3e46257508f"
+_commit="d2f25933af662bfa168b9d510444b95ab1fa976d"
 source=("waydroid::git+https://github.com/waydroid/waydroid.git#commit=$_commit"
   gbinder.conf)
 
