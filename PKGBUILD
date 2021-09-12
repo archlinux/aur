@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Enrico Bacis <enrico.bacis@gmail.com>
 pkgname=edx-downloader-git
 pkgname_git=edx-dl
