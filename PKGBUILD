@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=linux-wifi-hotspot
-pkgver=4.0.3
+pkgver=4.1.0
 pkgrel=1
-pkgdesc="Create virtual wifi hotspot using same wifi card which is connected to an AP + many features (a GUI tool)"
+pkgdesc="Feature-rich wifi hotspot creator"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lakinduakash/linux-wifi-hotspot"
 license=('BSD')
@@ -16,7 +16,7 @@ conflicts=('wihotspot' 'create_ap')
 backup=('etc/create_ap.conf')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('39298a46daa41ac91034564f2e0a64d4afb90d9de442f1239d8fdfc96bd14900')
+sha256sums=('7deb1aab2545cd1c2a311e678d3c07778688e29fbf53b4f434563a64532e4c25')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -26,6 +26,9 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
+
+  # Fix permissions
+  chmod 750 "$pkgdir/usr/share/polkit-1/rules.d"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
