@@ -8,8 +8,8 @@ url="https://github.com/Audio4Linux/JDSP4Linux"
 license=('GPL3')
 depends=('glibmm' 'gst-plugins-base' 'libpulse' 'qt5-svg')
 makedepends=('git')
-provides=("${pkgname%-git}" 'jamesdsp')
-conflicts=("${pkgname%-git}" 'jamesdsp' 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 replaces=('jdsp4linux-git' 'jdsp4linux-gui-git' 'gst-plugin-jamesdsp-git')
 source=('git+https://github.com/Audio4Linux/JDSP4Linux.git'
         'git+https://github.com/ThePBone/EELEditor.git'
