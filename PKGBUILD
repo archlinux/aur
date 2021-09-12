@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg-vulkan
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64)
@@ -70,7 +70,7 @@ depends=(
   xz
   zlib
   vulkan-icd-loader
-  glslang
+  glslang-git
 )
 makedepends=(
   amf-headers
