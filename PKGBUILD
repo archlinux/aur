@@ -42,6 +42,7 @@ build() {
   ../l-smash/configure \
     --prefix=/usr \
     --libdir='${exec_prefix}/lib32' \
+    --cc="${CC}" \
     --enable-shared \
     --disable-static \
     --extra-cflags="${CFLAGS}" \
@@ -64,7 +65,8 @@ package_l-smash-git() {
 
 package_lib32-l-smash-git() {
   pkgdesc='MP4 muxer and other tools. (GIT Version) (32-bits)'
-  depends=("l-smash=${pkgver}")
+  depends=('lib32-glibc'
+           "l-smash=${pkgver}")
   provides=('lib32-l-smash'
             'liblsmash.so'
             )
