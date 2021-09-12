@@ -1,8 +1,8 @@
 # Maintainer: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=awsume
-pkgver=4.5.0
-pkgrel=3
+pkgver=4.5.3
+pkgrel=1
 pkgdesc="A convenient way to manage AWS session tokens and assume role credentials"
 arch=('any')
 url="https://awsu.me/"
@@ -27,7 +27,7 @@ optdepends=(
     'python-xmltodict: SAML support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/trek10inc/awsume/archive/$pkgver.tar.gz")
-sha256sums=('3b506e08727400f32886db522477e3ae73d5941266611abbd9a470f3bb17d80b')
+sha256sums=('19cdaa043519b88fe9a0cb8546ac55bedddb2a580c6d6f6d52bec35174cc2eae')
 
 build() {
     cd "$pkgname-$pkgver"
