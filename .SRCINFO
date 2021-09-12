@@ -1,6 +1,6 @@
 pkgbase = simple-powermenu-git
 	pkgdesc = A very simple powermenu for bspwm users.
-	pkgver = 0
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/theduckchannel/simple-powermenu-git
 	arch = i686

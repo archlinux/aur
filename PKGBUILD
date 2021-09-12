@@ -1,5 +1,5 @@
 pkgname=simple-powermenu-git
-pkgver=0
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='A very simple powermenu for bspwm users.'
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ conflicts=('simple-powermenu')
 source=(git+"$url.git")
 md5sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#pkgver() {
+#	cd "$pkgname"
+#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 package() {
     cd "$pkgname"
