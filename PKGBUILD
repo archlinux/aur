@@ -52,7 +52,7 @@ sha512sums_armv7h=("${_file_zip_arm_hash}")
 
 # Add a DLAGENTS for hib if it doesn't exist.
 # Borrowed from https://aur.archlinux.org/packages/worldofgoo/ PKGBUILD
-DLAGENTS+=("hib::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf")
+DLAGENTS=("hib::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf")
 
 # Prepares sources for building
 prepare () {
