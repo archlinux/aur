@@ -4,15 +4,14 @@
 pkgname=python-abjad-ext-ipython
 _name="${pkgname#python-}"
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Abjad IPython extension'
 arch=('any')
 url="https://github.com/abjad/abjad-ext-ipython"
 license=('MIT')
 groups=('abjad')
 depends=(
-	'python-abjad'
-	'python-isort'
+	"python-abjad=$pkgver"
 	'jupyter>=1.0.0')
 makedepends=('python-setuptools' 'git')
 source=("$pkgname-$pkgver::git+$url#tag=v$pkgver?signed")

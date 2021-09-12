@@ -1,15 +1,14 @@
 pkgbase = python-abjad-ext-ipython
 	pkgdesc = Abjad IPython extension
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abjad/abjad-ext-ipython
 	arch = any
 	groups = abjad
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = git
-	depends = python-abjad
-	depends = python-isort
+	depends = python-abjad=3.3
 	depends = jupyter>=1.0.0
 	source = python-abjad-ext-ipython-3.3::git+https://github.com/abjad/abjad-ext-ipython#tag=v3.3?signed
 	validpgpkeys = EF80D3D6F5926FC997919D6A27A5BE0A6ADE7F36
