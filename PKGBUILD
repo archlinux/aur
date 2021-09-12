@@ -1,9 +1,9 @@
-# Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Michael Thalmeier <michael@thalmeier.at>
 
 pkgname=curecoin-qt-git
 pkgver=v2.0.0.2.r24.g3ef6a62
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
@@ -28,7 +28,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/CurecoinSource"
-  patch --forward --strip=1 --input="${srcdir}/62.patch"
+  #patch --forward --strip=1 --input="${srcdir}/62.patch"
 }
 
 build() {
