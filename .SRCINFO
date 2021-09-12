@@ -1,17 +1,19 @@
 pkgbase = gfusion-demo
 	pkgdesc = Galcon Fusion is a high-paced multi-player galactic arcade-strategy game (demo)
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.galcon.com/fusion/
 	arch = i686
+	arch = x86_64
 	license = custom:free_demo
 	makedepends = imagemagick
 	makedepends = mesa
-	depends = sdl_image
 	source = http://www.galcon.com/fusion/files/gfusion.tgz
 	source = gfusion-demo.desktop
 	md5sums = ad7781d4eadd9612a5fb6f026073e126
 	md5sums = fb11aeb07b3ef6e26edba60ba0ec0eaf
+	depends_i686 = sdl_image
+	depends_x86_64 = lib32-sdl_image
+	depends_x86_64 = lib32-glu
 
 pkgname = gfusion-demo
-
