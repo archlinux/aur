@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Yet another pacman/AUR helper."
 arch=('i686' 'x86_64')
 url="https://github.com/TargetGalaxy/lightpkg/"
-license=('GPL')
+license=('MIT')
 groups=()
 depends=(
   'pacman>5'
