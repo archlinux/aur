@@ -5,6 +5,7 @@ pkgbase = skippythebot
 	url = https://doctorm64.itch.io/skippybot
 	arch = x86_64
 	license = none
+	makedepends = wget
 	depends = glibc
 	depends = gcc-libs
 	source = https://matix.li/235665d69843

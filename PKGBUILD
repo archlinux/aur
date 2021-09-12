@@ -7,6 +7,7 @@ arch=(x86_64)
 url="https://doctorm64.itch.io/skippybot"
 license=('none')
 depends=('glibc' 'gcc-libs')
+makedepends=('wget')
 source=("https://matix.li/235665d69843")
 md5sums=(SKIP)
 
