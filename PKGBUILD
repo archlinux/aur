@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/abjad/abjad-ext-nauert"
 license=('MIT')
 groups=('abjad')
-depends=('python-abjad')
+depends=("python-abjad=$pkgver")
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('0050b437498d4b2292dd36ae4d073a5aae786fa803c74f107201839a52fe86d0')
