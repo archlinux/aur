@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Egon Geerardyn < egon DOT geerardyn AT gmail DOT com >
 # Contributor: TDY <tdy@gmx.com>
 
