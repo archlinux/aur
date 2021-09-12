@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tai
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="terminal ascii image -- convert images to ascii art"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d81767c7f77c6aa473bc6a7fe272494fc93f8f8f08099128034a483d3e5dbb01')
+sha256sums=('2c1e55dfcbe8824a04e02f3c35743a5995f917ac93ac2f2b0be80629a4849690')
 
 prepare() {
 	cd "$pkgname-$pkgver"
