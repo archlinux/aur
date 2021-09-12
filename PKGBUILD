@@ -3,8 +3,8 @@
 
 pkgsubn=darkreader
 pkgname=chromium-extension-dark-reader-git
-pkgver=r1154.39f4b6a
-pkgrel=2
+pkgver=v4.9.34.r347.gf49a2f015
+pkgrel=1
 pkgdesc="Chrome/Chromium extension for Dark Reader - git/dev"
 arch=('any')
 url='https://github.com/darkreader/darkreader'
@@ -23,9 +23,9 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgsubn}"
 	npm install --cache "${srcdir}/npm-cache"
-	npm run release
+	npm run build
 	mkdir chrome
-	unzip "*build*.zip" -d chrome
+	unzip "${srcdir}/darkreader/build/release/darkreader-chrome.zip" -d chrome
 }
 package() {
 	 mkdir -p "${pkgdir}/usr/share/${pkgname}"
