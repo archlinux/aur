@@ -1,0 +1,12 @@
+pkgbase = derelict-util
+	pkgdesc = Cross-platform shared library loader and a number of utility modules used by the Derelict libraries.
+	pkgver = 3.0.0_beta.2
+	pkgrel = 1
+	url = https://github.com/DerelictOrg/DerelictUtil
+	arch = x86_64
+	license = Boost
+	makedepends = dub
+	source = https://github.com/DerelictOrg/DerelictUtil/archive/refs/tags/v3.0.0-beta.2.tar.gz
+	sha256sums = d6407725cc202121f56382df62e0997b4067dd05ccda7b387cef5dcddbd6c3c4
+
+pkgname = derelict-util
