@@ -1,0 +1,24 @@
+pkgbase = nvui
+	pkgdesc = A modern frontend for Neovim
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/rohit-px2/nvui
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = catch2
+	depends = boost
+	depends = fmt
+	depends = msgpack-c
+	depends = qt5-base
+	depends = qt5-svg
+	depends = hicolor-icon-theme
+	source = https://github.com/rohit-px2/nvui/archive/refs/tags/v0.1.2.tar.gz
+	source = nvui.desktop
+	source = nvui.sh
+	sha256sums = d86c5719f04bc8f28e76a85ef53f15d2d824a1eddb07be432f3ee057cc40639b
+	sha256sums = 529e087f9ea5d212c05e1cfd7da51f5e5718acc186a1925f937707c641ebd509
+	sha256sums = 987f46b07c32efbb5f1ef4783204d15b6d8be32833cb7732d4752eb4fb5b9a08
+
+pkgname = nvui
