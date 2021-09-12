@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: TargetGalaxy <maibannightly@gmail.com>
 pkgname=lightpkg
 pkgver=1.0
 pkgrel=1
