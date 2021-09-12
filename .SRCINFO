@@ -1,6 +1,6 @@
 pkgbase = dictd-runit
 	pkgdesc = runit service scripts for dictd
-	pkgver = r1
+	pkgver = r2
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/dictd-runit
 	arch = any

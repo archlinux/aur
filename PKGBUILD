@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname=dictd
 pkgname=$_pkgname-runit
-pkgver=r1
+pkgver=r2
 pkgrel=1
 pkgdesc="runit service scripts for $_pkgname"
 url="https://aur.archlinux.org/packages/$pkgname"
