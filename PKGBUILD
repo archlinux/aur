@@ -3,13 +3,13 @@
 # Author: Andrey Ovsankin aka EvilBeaver
 # Thanks to https://aur.archlinux.org/packages/onescript/
 
-pkgname=onescript
+pkgname=onescript-bin
 pkgver=1.7.0
 pkgrel=1
 pkgdesc="This project is an alternative implementation of the virtual machine, execute scripts in the language of the 1C:Enterprise"
 arch=("i686" "x86_64")
 license=('GPL3' 'LGPL3')
-url="http://oscript.io/"
+url="https://github.com/EvilBeaver/OneScript/"
 depends=('mono')
 makedepens=('tar ar xz')
 

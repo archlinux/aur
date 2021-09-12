@@ -1,8 +1,8 @@
-pkgbase = onescript
+pkgbase = onescript-bin
 	pkgdesc = This project is an alternative implementation of the virtual machine, execute scripts in the language of the 1C:Enterprise
 	pkgver = 1.7.0
 	pkgrel = 1
-	url = http://oscript.io/
+	url = https://github.com/EvilBeaver/OneScript/
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -11,4 +11,4 @@ pkgbase = onescript
 	source = source.deb::https://github.com/EvilBeaver/OneScript/releases/download/v1.7.0/onescript-engine_1.7.0_all.deb
 	md5sums = 1c9a6bf40455fae9b7d57def19e65119
 
-pkgname = onescript
+pkgname = onescript-bin
