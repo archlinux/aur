@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://www.dnielectronico.es/"
 license=('custom')
 depends=('gtkmm3')
-source=("https://www.dnielectronico.es/descargas/Apps/DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.zip"
+source=("https://www.dnielectronico.es/descargas/Apps/DNIeRemote_${pkgver}-${pkgrel}_amd64.zip"
         "https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf")
 #noextract=("DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb")
 sha256sums=('https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf'
