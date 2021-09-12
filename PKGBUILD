@@ -2,7 +2,7 @@
 
 pkgname=zipkin
 pkgver=2.23.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Opensource Distributed Tracing System'
 arch=('any')
 url='http://zipkin.io'
@@ -14,7 +14,7 @@ source=(https://search.maven.org/remotecontent?filepath=io/zipkin/zipkin-server/
         'zipkin.sh'
         'zipkin.sysusers'
         'zipkin.service')
-sha1sums=('ad94a1ed2e6e4239fb68a94e9adff150144cdf91'
+sha1sums=('c42524abf8b5906728551c990d69fc3f3252b15a'
           'SKIP'
           'SKIP'
           'SKIP')
