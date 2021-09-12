@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg-vulkan
 pkgver=4.4
-pkgrel=4
+pkgrel=1
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64)
@@ -69,6 +69,8 @@ depends=(
   vmaf
   xz
   zlib
+  vulkan-icd-loader
+  glslang
 )
 makedepends=(
   amf-headers
@@ -78,13 +80,13 @@ makedepends=(
   git
   ladspa
   nasm
+  vulkan-headers
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
   'intel-media-sdk: Intel QuickSync support'
   'ladspa: LADSPA filters'
   'nvidia-utils: Nvidia NVDEC/NVENC support'
-  'vulkan-icd-loader: Vulkan support'
 )
 conflicts=(ffmpeg)
 provides=(
@@ -98,9 +100,8 @@ provides=(
   libswresample.so
   libswscale.so
 )
-_tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
 source=(
-  git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
+  git+https://git.ffmpeg.org/ffmpeg.git
   vmaf-model-path.patch
 )
 sha256sums=(
@@ -116,6 +117,12 @@ pkgver() {
 
 prepare() {
   cd ffmpeg
+
+  git fetch --all --tags
+
+  # Get latest stable tag
+  git checkout tags/$(git tag --list 'n*[!d][!e][!v]' | tail -n1)&>/dev/null
+
   git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 }
