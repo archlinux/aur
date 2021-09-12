@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=git-archive-all
 pkgdesc='Wrapper for git-archive that archives a git superproject and its submodules'
-pkgver=1.22.0
+pkgver=1.23.0
 pkgrel=1
 url=https://github.com/Kentzo/git-archive-all
 license=(custom:MIT)
@@ -9,7 +9,7 @@ depends=(git python-setuptools)
 conflicts=(git-archive-all-git)
 arch=(any)
 source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('745e8d1dc0c6c7d20ec0ce89ad72bc78a8756c410339889f505f0b4e217da7d9cb5724f0bf539055a420e27a8fac2052d8aca620b902bf4f259ab5290bd780a7')
+sha512sums=('6d5b97088b8a153d25c05d926b81a95382bfc730263b152a07292cc35756f80d1d25342db946a83b96c3e064bc001195bda89c2ca697acd338c30fd3320e6c44')
 
 build () {
 	cd "${pkgname}-${pkgver}"
