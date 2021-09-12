@@ -1,7 +1,7 @@
 pkgbase = ss-face
 	pkgdesc = ss-face is a simple, cross-platform GUI for shadowsocks client, supports multiple implementations.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/df543/shadowsocks-face
 	arch = x86_64
 	arch = i686
