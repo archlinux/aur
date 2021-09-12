@@ -3,14 +3,14 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=3.1.2.dev1.r5463.5ce98e5f
+pkgver=3.2.0.dev1.r5644.b2b9303c
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
 url="https://nicotine-plus.github.io/nicotine-plus"
 license=('GPL3')
 depends=('python-gobject' 'gtk3')
-makedepends=('git')
+makedepends=('appstream' 'git' 'python-setuptools')
 optdepends=('gspell: for spell checking in chat'
             'libappindicator-gtk3: for tray icon')
 checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest-xvfb')
@@ -50,7 +50,6 @@ check() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
   # Remove duplicate GPL license
