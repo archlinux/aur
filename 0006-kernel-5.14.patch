@@ -1,0 +1,103 @@
+--- a/kernel/os-interface.c
++++ b/kernel/os-interface.c
+@@ -549,7 +549,11 @@
+         // the requested timeout has expired, loop until less
+         // than a jiffie of the desired delay remains.
+         //
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 14, 0)
++        current->__state = TASK_INTERRUPTIBLE;
++#else
+         current->state = TASK_INTERRUPTIBLE;
++#endif
+         do
+         {
+             schedule_timeout(jiffies);
+--- a/kernel/nv-drm.c
++++ b/kernel/nv-drm.c
+@@ -57,10 +57,13 @@
+ #if defined(NV_DRM_GET_PCI_DEV_PRESENT)
+ #define nv_drm_get_pci_dev drm_get_pci_dev
+ #else
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+ #include <drm/drm_agpsupport.h>
++#endif
+ 
+ #include "linux/dma-buf.h"
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+ struct nv_drm_agp_head {
+     struct agp_kern_info agp_info;
+     struct list_head memory;
+@@ -177,6 +180,7 @@
+         dev->agp = NULL;
+     }
+ }
++#endif
+ 
+ static int nv_drm_get_pci_dev(struct pci_dev *pdev,
+                const struct pci_device_id *ent,
+@@ -195,7 +199,9 @@
+     if (ret)
+         goto err_free;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+     dev->pdev = pdev;
++#endif
+ #ifdef __alpha__
+     dev->hose = pdev->sysdata;
+ #endif
+@@ -203,11 +209,13 @@
+     if (drm_core_check_feature(dev, DRIVER_MODESET))
+         pci_set_drvdata(pdev, dev);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+     nv_drm_pci_agp_init(dev);
+ 
+     ret = drm_dev_register(dev, ent->driver_data);
+     if (ret)
+         goto err_agp;
++#endif
+ 
+     /* No locking needed since shadow-attach is single-threaded since it may
+      * only be called from the per-driver module init hook. */
+@@ -218,9 +226,11 @@
+ 
+     return 0;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+ err_agp:
+     nv_drm_pci_agp_destroy(dev);
+     pci_disable_device(pdev);
++#endif
+ err_free:
+     drm_dev_put(dev);
+     return ret;
+@@ -306,11 +316,13 @@
+ 
+     for (nvl = nv_linux_devices; nvl != NULL; nvl = nvl->next)
+     {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+         if (nvl->dev == dev->pdev)
+         {
+             nvl->drm = dev;
+             return 0;
+         }
++#endif
+     }
+ 
+     return -ENODEV;
+@@ -330,12 +342,14 @@
+ 
+     for (nvl = nv_linux_devices; nvl != NULL; nvl = nvl->next)
+     {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+         if (nvl->dev == dev->pdev)
+         {
+             BUG_ON(nvl->drm != dev);
+             nvl->drm = NULL;
+             return 0;
+         }
++#endif
+     }
+ 
+     return -ENODEV;
