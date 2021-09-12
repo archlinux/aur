@@ -2,7 +2,7 @@
 
 _pkgname=yosys-symbiflow-plugins
 pkgname="$_pkgname-git"
-pkgver=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r305.g9e969e2
+pkgver=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r399.g9fad20e
 pkgrel=1
 pkgdesc="Plugins for Yosys developed as part of the SymbiFlow project."
 arch=(x86_64)
@@ -15,10 +15,12 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+$url.git"
         "0001-Makefile-respect-DESTDIR.patch"
-        "0002-Makefile-prepend-to-build-flags.patch")
+        "0002-Makefile-prepend-to-build-flags.patch"
+        "0003-Revert-ci-use-yosys-from-conda.patch")
 sha256sums=('SKIP'
-            '489561c4913b24c5a3d9b759f8b5b4c818767208d1c381c142798dda44afaba1'
-            'c94d506b6f50976716833fb3237570a579285cd0ab667c7b90e730de7fae7a55')
+            '965862ca2f8a2c45b55cca9be35865a2a45eaa68cc3a2c22f4357bf8a34a2870'
+            '0b1948b0f708879beab04e75af88d0cc8d16e8241b7cc6153501baa1fa32e5ef'
+            '63f761ca071556bf28f13a04370d8c5bc6775d10f7200f2f8b6af71eb262f978')
 
 pkgver() {
 	cd "$_pkgname"
@@ -31,6 +33,7 @@ prepare() {
 
 	patch -p1 < "$srcdir/0001-Makefile-respect-DESTDIR.patch"
 	patch -p1 < "$srcdir/0002-Makefile-prepend-to-build-flags.patch"
+	patch -p1 < "$srcdir/0003-Revert-ci-use-yosys-from-conda.patch"
 
 	# conflicts with quicklogic synth flow in upstream yosys
 	sed -i 's/ql-qlf//' Makefile

@@ -1,7 +1,7 @@
-From 5837198cc33ef6875cc5039f9074a2f6e4d98514 Mon Sep 17 00:00:00 2001
+From 42a32df4ebb941c98da070c031d3bd8125831387 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Fri, 22 Jan 2021 21:03:19 +0100
-Subject: [PATCH 2/2] Makefile: prepend to build flags
+Subject: [PATCH 2/3] Makefile: prepend to build flags
 
 ---
  Makefile_plugin.common | 6 +++---
@@ -25,5 +25,5 @@ index 940c29e..3c1f32b 100644
  DATA_DIR ?= $(DESTDIR)$(shell yosys-config --datdir)
  
 -- 
-2.31.0
+2.33.0
 
