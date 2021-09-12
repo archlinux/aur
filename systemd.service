@@ -1,11 +1,11 @@
 [Unit]
 Description=Drone Runner (SSH)
-After=network.target
+Requires=network-online.target
+After=network-online.target
 
 [Service]
 User=drone-runner-ssh
 Group=drone-runner-ssh
-Type=simple
 WorkingDirectory=/var/lib/drone-runner-ssh
 ReadWritePaths=/var/lib/drone-runner-ssh
 ExecStart=/usr/bin/drone-runner-ssh
