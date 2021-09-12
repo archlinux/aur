@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 pkgname=dpsprep-git
 _gitname=dpsprep
 pkgver=r12.8a11d83
