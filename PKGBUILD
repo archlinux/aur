@@ -1,7 +1,7 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
 # Contributor: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=nord-vim
-pkgver=0.15.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="An arctic, north-bluish clean and elegant Vim theme"
 arch=("any")
