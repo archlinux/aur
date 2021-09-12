@@ -1,29 +1,30 @@
 # Maintainer: df543 <df543@protonmail.com>
 pkgname=ss-face
-pkgver=2.2.2
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="A light weight shadowsocks-libev client GUI."
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
-url="https://github.com/df543/Shadowsocks-Face"
-license=('GPL')
+pkgdesc="ss-face is a simple, cross-platform GUI for shadowsocks client, supports multiple implementations."
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/df543/shadowsocks-face"
+license=('GPL3')
 depends=(
   'qt5-base'
-  'shadowsocks-libev'
+)
+makedepends=(
+  'cmake'
+)
+optdepends=(
+  'shadowsocks-rust: recommended shadowsocks backend'
+  'shadowsocks-libev: another shadowsocks backend'
 )
 
+source=("https://github.com/df543/shadowsocks-face/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('1a4dd0d17ff80655a68f331ef4b8cc129b3e2faaa30ed8387cd514e6836b2912')
+
 build() {
-  cd $srcdir
-  git clone https://github.com/df543/Shadowsocks-Face.git
-  cd Shadowsocks-Face
-  git checkout $pkgver
-  mkdir build; cd build
-  qmake-qt5 ..
-  make
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr shadowsocks-face-${pkgver}
+  make ss-face
 }
 
 package() {
-  cd "$srcdir/Shadowsocks-Face"
-  install -Dm755 build/ss-face "$pkgdir/usr/bin/ss-face"
-  install -Dm644 ss-face.desktop "$pkgdir/usr/share/applications/ss-face.desktop"
-  install -Dm644 ss-face.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/ss-face.png"
+  make DESTDIR="$pkgdir" install
 }

@@ -1,3 +1,15 @@
+# build package
 pkg/
 src/
+
+# output
+*.pkg.tar
+*.pkg.tar.Z
+*.pkg.tar.bz2
+*.pkg.tar.gz
+*.pkg.tar.lrz
+*.pkg.tar.lz
+*.pkg.tar.lz4
+*.pkg.tar.lzo
 *.pkg.tar.xz
+*.pkg.tar.zst
