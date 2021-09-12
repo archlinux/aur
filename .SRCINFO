@@ -1,0 +1,11 @@
+pkgbase = otf-linja-sike
+	pkgdesc = A toki pona font for the sitelen pona writing system
+	pkgver = 5
+	pkgrel = 1
+	url = https://wyub.github.io/tokipona/linjasike
+	arch = any
+	license = OFL
+	source = linja-sike-5.otf::https://wyub.github.io/tokipona/linja-sike-5.otf
+	sha256sums = 4c970a20ae9bc816fdff3ca82874e684ca4e1b01d81bf64f9a6ef686e48efd8a
+
+pkgname = otf-linja-sike
