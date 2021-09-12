@@ -8,7 +8,7 @@ pkgbase = python-abjad-ext-rmakers
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = git
-	depends = python-abjad
+	depends = python-abjad=3.4
 	source = python-abjad-ext-rmakers-3.4::git+https://github.com/abjad/abjad-ext-rmakers#tag=v3.4?signed
 	validpgpkeys = EF80D3D6F5926FC997919D6A27A5BE0A6ADE7F36
 	sha256sums = SKIP

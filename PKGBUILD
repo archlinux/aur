@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/abjad/abjad-ext-rmakers"
 license=('MIT')
 groups=('abjad')
-depends=('python-abjad')
+depends=("python-abjad=$pkgver")
 makedepends=('python-setuptools' 'git')
 source=("$pkgname-$pkgver::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
