@@ -1,0 +1,2 @@
+#!/bin/sh
+windscribe start && exec pwait -nf 'windscribe start'
