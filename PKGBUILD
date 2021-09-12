@@ -1,32 +1,28 @@
-# Maintainer: Robert Kubosz <kubosz.robert@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 
-_pkgname=abjad-ext-nauert
-pkgname="python-$_pkgname"
-pkgver=3.0.0
-pkgrel=2
-groups=('abjad')
+pkgname=python-abjad-ext-nauert
+_name="${pkgname#python-}"
+pkgver=3.4
+pkgrel=1
 pkgdesc="Abjad quantization extension, based on Paul Nauert's Q-Grids"
 arch=('any')
-url="https://github.com/Abjad/$_pkgname"
+url="https://github.com/abjad/abjad-ext-nauert"
 license=('MIT')
-depends=(
-        'python-abjad'
-        'python-uqbar'
-        )
+groups=('abjad')
+depends=('python-abjad')
 makedepends=('python-setuptools')
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('94835fa7dfeb8856d222387a9a4a73a3a71cd6b818145d6ec5a09859e6a10f2f')
-
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('0050b437498d4b2292dd36ae4d073a5aae786fa803c74f107201839a52fe86d0')
 
 build() {
-    cd $srcdir/$_pkgname-$pkgver
-    python setup.py build
+	cd "$_name-$pkgver"
+	python setup.py build
 }
-
 
 package() {
-    cd $srcdir/$_pkgname-$pkgver
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd "$_name-$pkgver"
+	export PYTHONHASHSEED=0
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
