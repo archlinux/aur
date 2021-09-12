@@ -1,0 +1,11 @@
+--- go.mod	2021-09-12 20:05:32.241159116 +0300
++++ go.new.mod	2021-09-12 20:05:45.437867489 +0300
+@@ -4,7 +4,7 @@
+ 
+ require (
+ 	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
+-	github.com/golang/protobuf v1.1.0
++	github.com/golang/protobuf v1.0.0
+ 	github.com/matttproud/golang_protobuf_extensions v1.0.0
+ 	github.com/mindprince/gonvml v0.0.0-20180514031326-b364b296c732
+ 	github.com/prometheus/client_golang v0.8.0

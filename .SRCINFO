@@ -1,0 +1,16 @@
+pkgbase = nvidia-gpu-prometheus-exporter
+	pkgdesc = NVIDIA GPU Prometheus Exporter
+	pkgver = r15.0d52cd2
+	pkgrel = 0
+	url = https://github.com/mindprince/nvidia_gpu_prometheus_exporter
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = go
+	source = git+https://github.com/mindprince/nvidia_gpu_prometheus_exporter.git
+	source = go.mod.patch
+	source = nvidia-gpu-prometheus-exporter.service
+	md5sums = SKIP
+	md5sums = e396386370bbec9a228194f1d3918df9
+	md5sums = a2d04c8c0331ae9db991ccb3c7d72f3f
+
+pkgname = nvidia-gpu-prometheus-exporter

@@ -1,0 +1,15 @@
+[Unit]
+Description=NVIDIA GPU Prometheus Exporter
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+ExecStart=/usr/bin/nvidia-gpu-prometheus-exporter
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
