@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=align-git
-pkgver=1.1.2.r0.ga2c6f9c
+pkgver=1.1.3.r0.gc81c6ab
 pkgrel=1
 pkgdesc="A general purpose application for aligning text"
 arch=('x86_64')
@@ -22,7 +22,6 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	mkdir -p build
-	go mod init "${url#https://}"
 	go mod tidy
 }
 
