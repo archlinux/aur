@@ -33,8 +33,8 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
   cd VTK
-  sed -i "s|1ul << 34|1ul << 31|g" ThirdParty/ioss/vtkioss/cgns/Iocgns_Utils.h
-  sed -i "s|1ul << 33|1ul << 30|g" ThirdParty/ioss/vtkioss/cgns/Iocgns_Utils.h
+  #sed -i "s|1ul << 34|1ul << 31|g" ThirdParty/ioss/vtkioss/cgns/Iocgns_Utils.h
+  #sed -i "s|1ul << 33|1ul << 30|g" ThirdParty/ioss/vtkioss/cgns/Iocgns_Utils.h
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/8402.patch | patch -p1
   cd ../ThirdParty/catalyst/vtkcatalyst/catalyst
   curl -L https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch | patch -p1
