@@ -1,17 +1,20 @@
-# Maintainer: J.D. Broberg <jdbroberg72 at gmail dot com>
+# Maintainer: Hannah
+# Maintainer: FabioLolix
+# Contributor: J.D. Broberg <jdbroberg72 at gmail dot com>
 
 pkgname=odin-git
 _pkgname=odin
-pkgver=r973.0134c38
-pkgrel=2
+pkgver=r4558.82736370
+pkgrel=1
 pkgdesc="compiler for the odin programming language"
-arch=('x86_64')
+arch=(x86_64)
 url="http://github.com/odin-lang/odin"
-license=('BSD')
-source=('git+https://github.com/odin-lang/odin.git')
-makedepends=('clang' 'llvm' 'git')
-conflicts=('odin')
-provides=('odin')
+license=(BSD)
+depends=(glibc ncurses)
+makedepends=(git clang llvm11)
+provides=(odin)
+conflicts=(odin)
+source=("git+https://github.com/odin-lang/odin.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +24,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    make debug 
+    make release
 }
 
 package() {
@@ -35,5 +38,5 @@ package() {
 
     cp -av "./core" "${pkgdir}/opt/${_pkgname}"
 
-    install -Dm644 "./LICENSE" "${pkgdir}/opt/${_pkgname}/LICENSE"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

@@ -1,17 +1,18 @@
 pkgbase = odin-git
 	pkgdesc = compiler for the odin programming language
-	pkgver = r973.0134c38
-	pkgrel = 2
+	pkgver = r4558.82736370
+	pkgrel = 1
 	url = http://github.com/odin-lang/odin
 	arch = x86_64
 	license = BSD
-	makedepends = clang
-	makedepends = llvm
 	makedepends = git
+	makedepends = clang
+	makedepends = llvm11
+	depends = glibc
+	depends = ncurses
 	provides = odin
 	conflicts = odin
 	source = git+https://github.com/odin-lang/odin.git
 	sha256sums = SKIP
 
 pkgname = odin-git
-
