@@ -1,33 +1,28 @@
 # Contributor: Jesse McClure <code [at] jessemcclure [dot] org>
-pkgname=interrobang
+pkgbase=interrobang
+pkgname=$pkgbase-fossil
 pkgver=2.0b14
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny launcher menu packing a big bang (syntax)"
 url="https://code.jessemcclure.org/interrobang"
+source=("$pkgbase::fossil+$url")
+md5sums=('SKIP')
 arch=('x86_64')
 license=('custom:MIT')
 depends=('libxrender' 'libxft' 'bash' 'python')
 makedepends=('fossil')
 
-prepare() {
-  rm -rf "${pkgname}" "${pkgname}.fossil"
-  mkdir -p "${pkgname}"
-  fossil clone "${url}" "${pkgname}.fossil";
-  cd "${pkgname}"
-  fossil open "../${pkgname}.fossil"
-}
-
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgbase}"
   echo 2.0b$(fossil info | sed -n 's/check-ins: *//p')
 }
 
 build() {
-  cd "${pkgname}"
+  cd "${pkgbase}"
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgbase}"
   make DESTDIR="${pkgdir}" install
 }
