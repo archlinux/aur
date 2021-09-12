@@ -1,7 +1,7 @@
 pkgbase = lucid
 	pkgdesc = A simple mock-application for programs that work with child processes
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sharkdp/lucid
 	arch = x86_64
 	license = MIT
