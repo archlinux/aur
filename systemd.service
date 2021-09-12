@@ -1,11 +1,11 @@
 [Unit]
 Description=Drone Runner (Exec)
-After=network.target
+Requires=network-online.target
+After=network-online.target
 
 [Service]
 User=drone-runner-exec
 Group=drone-runner-exec
-Type=simple
 WorkingDirectory=/var/lib/drone-runner-exec
 ReadWritePaths=/var/lib/drone-runner-exec
 ExecStart=/usr/bin/drone-runner-exec
