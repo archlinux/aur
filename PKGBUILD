@@ -1,13 +1,13 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libdvdnav-git
-pkgver=6.0.0.3.ged3d4c3
+pkgver=6.1.1.0.g49f36c3
 pkgrel=1
 pkgdesc="Library to navigate DVD disks. (GIT version)"
 arch=('x86_64')
 url='http://dvdnav.mplayerhq.hu'
 license=('GPL2')
-depends=('libdvdread-git')
+depends=('libdvdread.so')
 makedepends=('git')
 provides=('libdvdnav'
           'libdvdnav.so'
@@ -23,13 +23,13 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd libdvdnav
-  autoreconf -vif
 }
 
 build() {
-  cd build
+  cd libdvdnav
+  autoreconf -vif
+
+  cd "${srcdir}/build"
   ../libdvdnav/configure \
     --prefix=/usr \
     --enable-static=no
