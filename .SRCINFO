@@ -1,7 +1,7 @@
 pkgbase = zvvonlinetv
 	pkgdesc = TV | IPTV | youtube player
 	pkgver = 3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://zvvubuntu.blogspot.com
 	arch = i386
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = zvvonlinetv
 	depends = qt5-multimedia
 	depends = ffmpeg
 	depends = youtube-dl
-	source = zvvonlinetv_3.2.deb::https://docs.google.com/uc?id=1_FGSxInNkx2KmxVxNFf-ADAF7hANiYUB
+	source = zvvonlinetv_3.2.deb::https://www.dropbox.com/s/nkg7i996gntb1at/zvvonlinetv_3_2.deb?dl=0
 	md5sums = SKIP
 
 pkgname = zvvonlinetv
-
