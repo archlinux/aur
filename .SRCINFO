@@ -1,9 +1,10 @@
 pkgbase = nftables-git
 	pkgdesc = Netfilter tables userspace tools
-	pkgver = 0.9.5
+	pkgver = 1.0.0
 	pkgrel = 1
+	epoch = 1
 	url = https://netfilter.org/projects/nftables/
-	arch = i686
+	install = nftables.install
 	arch = x86_64
 	license = GPL2
 	makedepends = asciidoc
@@ -23,9 +24,8 @@ pkgbase = nftables-git
 	source = git://git.netfilter.org/nftables
 	source = nftables.conf
 	source = nftables.service
-	sha1sums = SKIP
-	sha1sums = 7869aa31ac802922073310ffd4cbbc16450171e5
-	sha1sums = 59185e947ebfd599954800ad2c774171b3f4cd58
+	sha256sums = SKIP
+	sha256sums = 2aff88019097d21dbfa4713f5b54c184751c86376e458b683f8d90f3abd232a8
+	sha256sums = 3c6a34a400022450df0b6e97b3f16eea5cab7741a0e5f16858b46a3e6591b5af
 
 pkgname = nftables-git
-

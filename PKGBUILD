@@ -3,12 +3,14 @@
 # Contributor: Steven Allen <steven@stebalien.com>
 
 pkgname=nftables-git
-pkgver=0.9.5
+epoch=1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Netfilter tables userspace tools'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='https://netfilter.org/projects/nftables/'
 license=('GPL2')
+optdepends=('python: Python bindings')
 depends=(libmnl libnftnl-git gmp readline ncurses jansson)
 makedepends=(asciidoc git bison flex)
 optdepends=('python: Python bindings')
@@ -18,9 +20,10 @@ conflicts=(nftables)
 source=(git://git.netfilter.org/nftables
         nftables.conf
         nftables.service)
-sha1sums=('SKIP'
-          '7869aa31ac802922073310ffd4cbbc16450171e5'
-          '59185e947ebfd599954800ad2c774171b3f4cd58')
+install=nftables.install
+sha256sums=('SKIP'
+            '2aff88019097d21dbfa4713f5b54c184751c86376e458b683f8d90f3abd232a8'
+            '3c6a34a400022450df0b6e97b3f16eea5cab7741a0e5f16858b46a3e6591b5af')
 
 pkgver() {
   cd nftables
@@ -29,7 +32,6 @@ pkgver() {
 
 build() {
   cd nftables
-  sh autogen.sh
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
