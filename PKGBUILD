@@ -1,30 +1,37 @@
-# Maintainer: Felix Kauselmann <licorn@gmail.com>
+# Maintainer: pepsi <pepsi00@protonmail.com>
+# Contributor: Felix Kauselmann <licorn@gmail.com>
 # Contributor: droserasprout <droserasprout@tuta.io>
 # Contributor: atommixz <atommixz@gmail.com>
 
-pkgname=airdcpp-webclient
-pkgver=2.11.1
+pkgname=airdcpp-webclient-develop-git
+pkgver=2.11.2b.r60.gf411147d
 pkgrel=1
-pkgdesc="A peer-to-peer file sharing client with web user interface"
+_gitname=airdcpp-webclient
+pkgdesc="A peer-to-peer file sharing client with web user interface (git development branch)"
 arch=('x86_64' 'armv7h')
 license=('GPL2')
-url="https://github.com/airdcpp-web/${pkgname}"
+url="https://github.com/airdcpp-web/${_gitname}"
 depends=('miniupnpc' 'boost' 'libmaxminddb' 'leveldb' 'openssl' 'geoip' 'leveldb' 'websocketpp' 'libnatpmp' 'intel-tbb')
 makedepends=('cmake' 'git' 'npm')
-source=("https://github.com/airdcpp-web/airdcpp-webclient/archive/${pkgver}.tar.gz") 
-md5sums=('56023e6bb3e07edd88c0b5133768c094')
+source=("git+https://github.com/airdcpp-web/airdcpp-webclient.git#branch=develop")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}/airdcpp-core"
+    cd "${srcdir}/${_gitname}/airdcpp-core"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_gitname}"
     cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LIBDIR=lib
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_gitname}"
     make DESTDIR="$pkgdir" install
 }
