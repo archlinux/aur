@@ -1,6 +1,6 @@
 pkgbase = soju
 	pkgdesc = A user-friendly IRC bouncer
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://soju.im/
 	install = soju.install
@@ -10,17 +10,16 @@ pkgbase = soju
 	makedepends = scdoc
 	depends = sqlite
 	backup = etc/soju/config
-	source = https://git.sr.ht/~emersion/soju/refs/download/v0.1.2/soju-0.1.2.tar.gz
-	source = https://git.sr.ht/~emersion/soju/refs/download/v0.1.2/soju-0.1.2.tar.gz.sig
+	source = https://git.sr.ht/~emersion/soju/refs/download/v0.2.0/soju-0.2.0.tar.gz
+	source = https://git.sr.ht/~emersion/soju/refs/download/v0.2.0/soju-0.2.0.tar.gz.sig
 	source = soju.sysusers
 	source = soju.service
 	source = soju.tmpfiles
 	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
-	sha256sums = 47c8a0e65675a4d5dff6e0716a55f8e13293a3dfc43326ec4d22745886d2317e
+	sha256sums = 58186fc2e51633d17f09ae8d9dd28c5e01360b272fca61a775493ce8f6c876fc
 	sha256sums = SKIP
 	sha256sums = c050d3f376f43e1cc22e75f445027862df8d09230e18cbb0913ab58ddced78aa
 	sha256sums = d90c047f5f27a06d45840698a0caa9940fc02c75187c04348882f20359655c2b
 	sha256sums = 7d9e772f42765a82be0459bcbded2074f68d450ab09c3627ca3b59978188b61b
 
 pkgname = soju
-
