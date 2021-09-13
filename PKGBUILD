@@ -47,8 +47,8 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
-_major=5.13
-_minor=16
+_major=5.14
+_minor=3
 pkgver=${_major}.${_minor}
 pkgrel=1
 _srcname=linux-${pkgver}
@@ -71,9 +71,9 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K210826v1"
+_bfq_rel="r2K210909v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
-_compiler_path="cpu-patches-v2-sep"
+_compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
@@ -81,7 +81,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0002-Bluetooth-Move-shutdown-callback-before-flushing-tx-.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0003-watchdog-iTCO_wdt-Fix-detection-of-SMI-off-case.patch"
          # the main kernel config files
         'config')
 
@@ -328,12 +330,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('ed4b11bf3c256a70f7114573a05cf63563ab352f9d9bb16fcdcb002ce857565e7251cfe82c3a05eef723270dc2b4d6577e5df80858506f6986c91c4ddd466204'
+sha512sums=('7989beb055219414157f049942de51a36d103896fa25fb47cda8b0323991f531a5352dcbf6013c8a5e9d7e1325103025fd99a80445dd0a8c8a2790e0e20649af'
             'SKIP'
-            'f2b25c9950b39748f4b7f5102d6e4879901e4653b715ce3210fca813bf42f6c741e4a2b89a29e8b00fd15eb04e1050dece0e1b214bfe62c3c48a6cd0b369e772'
-            'c70ed7f971548c32080bf610f0e0d99c5489bea5262945a486df9b4f0c9bde915078a1b4acd15aed0dc6d2ecee511b5a76f5d47ea88977de17e0c6ceb3cde21c'
-            '00969ec0b3478544a4d013c15c719f6109bf217dafb581e56fb54772fa7f974088eba0574a98d8eec449281f01414d179642651a2ff65556f3cd65b9abd1b7a6'
-            '307291c477b1d70f0621c5012311ddd8c9aef1ff2b8229668ec6681f1290b11d861989adc83484563e2be05a1453907bf393cdd730a45760fadadd9ec3094d26')
+            '6b93adf52303ca94a4d27fe52914b1615622a9764a94f39eb32153a38b2504880ff9d225f3b21bd6fa7943d320effacb10fd7f99e799e23024da767a1af75b7a'
+            'b1aef4f4e7350ce8132e019f76a2ac68bee8a46eb981598fbda11402e62a8bcdfd2f49e5b2cc5dcf2e96c88ad047af12d53abb9fda05c9f7acec37879e5240db'
+            '3f8700f9be1ce7049ff15afe6addfe09408fcb0461ad652d5d1795d4ab086837773446a90b85cf02a826d8c073273ebaf38f76495e7164c9af6dd0f7a483fc5d'
+            'cd9acb696f86158dd339298a5a884e10b0014e0d472aef9c28dfed649ef4064f3a8f36060898b0b976badd711b34b1a428152e82a518a1e9495f63d583e62727'
+            'cc843ba2681706ce8045f1c3a1468f671ca135f389ccf567f18d2662e001134f8795b4631b7aff324b4e7c7c2633d52973fe3705573a60564b33362e78cbb9b7'
+            'e84fca9e14d6edf5edef5fdd1603910d9645d38f06a049d1d357fc9c827fab2d2a1c316098af0ddb28452551c438f91fcfd218c65de38f0f0c5f577a772b9efa')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
