@@ -1,7 +1,7 @@
 pkgbase = wemeet-bin
 	pkgdesc = Tencent Video Conferencing, tencent meeting 腾讯会议
-	pkgver = 2.8.0.0
-	pkgrel = 10
+	pkgver = 2.8.0.1
+	pkgrel = 1
 	url = https://source.meeting.qq.com/download-center.html
 	arch = x86_64
 	license = unknown
@@ -15,7 +15,7 @@ pkgbase = wemeet-bin
 	optdepends = bubblewrap: Fix abnormal text color in dark mode.
 	provides = wemeet
 	provides = tencent-meeting
-	source = wemeet-2.8.0.0-x86_64.deb::https://updatecdn.meeting.qq.com/ad878a99-76c4-4058-ae83-22ee948cce98/TencentMeeting_0300000000_2.8.0.0_x86_64.publish.deb
-	sha512sums = 53a7c89f9018f923e847e70e71b4b97d1e6925bf060b9cc9af858b6d08574027d4ffa08c8359856d4b107cec186f3e538cf2b30774bf63f3ab23ba5a187b5851
+	source = wemeet-2.8.0.1-x86_64.deb::https://updatecdn.meeting.qq.com/cos/196cdf1a3336d5dca56142398818545f/TencentMeeting_0300000000_2.8.0.1_x86_64.publish.deb
+	sha512sums = 37d3aec3de68fc79da744690d65f5ceef6d67d9bfba40f52b14429847ec72d9136e34fe87fbdd7d9dd14e91f543bf9b5fdbd4f50cfe25a3677b557daa4ed38ce
 
 pkgname = wemeet-bin
