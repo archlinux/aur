@@ -1,23 +1,34 @@
-From 138fca2964bb79b2de2762c811e1eca9d7960ce3 Mon Sep 17 00:00:00 2001
+From 9c4dc2d665b2e8ff40025ae6cfeac6e76f32115e Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Tue, 7 Sep 2021 10:38:33 -0700
-Subject: [PATCH] v5.14.1 s0ix patch 2021-09-07
+Date: Mon, 13 Sep 2021 15:01:09 -0700
+Subject: [PATCH] v5.14.3 s0ix patch 2021-09-13
 
 Squashed commit of the following:
 
-commit 3bef8169a10e101d1fba8ac4d89f79093246c6cc
-Author: Scott B <28817345+foundObjects@users.noreply.github.com>
-Date:   Wed Aug 25 07:35:52 2021 -0700
+commit 0e07bfdf3838ef7498923f0d1aa9a91d1a9b19c0
+Author: Mario Limonciello <mario.limonciello@amd.com>
+Date:   Thu Sep 9 11:19:43 2021 -0500
 
-    HACK: amd-pmc delay hack
+    platform/x86: amd-pmc: Increase the response register timeout
 
-    This patch adds some delays into the resume process to allow the SMU
-    enough time to wake before servicing resume events.
+    There have been reports of approximately a 9% failure rate in SMU
+    communication timeouts with s0i3 entry on some OEM designs.  Currently
+    the design in amd-pmc is to try every 100us for up to 20ms.
 
-    This is a dirty hack but it *completely* resolves the SMU state issues
-    we've had for months.
+    However the GPU driver which also communicates with the SMU using a
+    mailbox register which the driver polls every 1us for up to 2000ms.
+    In the GPU driver this was increased by commit 055162645a40 ("drm/amd/pm:
+    increase time out value when sending msg to SMU")
 
-commit 52d0bc60a6cc224c7a92b4d6ce45bae33cf7cc91
+    Increase the maximum timeout used by amd-pmc to 2000ms to match this
+    behavior.
+
+    Cc: stable@kernel.org
+    Reported-by: Julian Sikorski <belegdol@gmail.com>
+    BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1629
+    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+
+commit 500b5c17eab7259164e1351a1fe8aed7333ccb62
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Wed Jul 21 18:10:28 2021 -0700
 
@@ -26,7 +37,7 @@ Date:   Wed Jul 21 18:10:28 2021 -0700
     patch this per Mario's request:
     https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
 
-commit e6ac6794f048a9d9324f0deb412db6f3ed350918
+commit c9f31fbddf827df891a9416368c0bc1b7d8aa1ac
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -39,7 +50,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit e10817ed65b87598133c4fa763f1277bd1ccbfec
+commit faea69874ef563f5d0105e59e4e432d5b546c803
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -52,7 +63,7 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 235811f2100ad24d7a847581a3dc9460f07c876c
+commit dfbf9cfbdceed87b412033c42b112a3f135374bf
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Aug 31 11:36:19 2021 -0500
 
@@ -81,7 +92,7 @@ Date:   Tue Aug 31 11:36:19 2021 -0500
     Reported-by: Maxwell Beck <max@ryt.one>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 69a3e85d633dbdac57017feb9a059b97c8937034
+commit df403d50a4a7b53e10cf7bb17a2d7379c2075f24
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:33:01 2021 -0700
 
@@ -93,7 +104,7 @@ Date:   Tue Jul 20 23:33:01 2021 -0700
 
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 
-commit 24c0c263a463b39c74216a640873fd2060d82156
+commit b46c7e704aa77ad64146bf0a1aebf690f8aec616
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:31:31 2021 -0700
 
@@ -105,7 +116,7 @@ Date:   Tue Jul 20 23:31:31 2021 -0700
 
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 
-commit 1406ea8541b9148c692abd0b97de373df3db413f
+commit ce80c567ed47e16ac330be653b6bd21cb9f040f5
 Author: Guchun Chen <guchun.chen@amd.com>
 Date:   Thu Jul 22 17:20:21 2021 +0800
 
@@ -126,7 +137,7 @@ Date:   Thu Jul 22 17:20:21 2021 +0800
     Signed-off-by: Guchun Chen <guchun.chen@amd.com>
     Reviewed-by: Luben Tuikov <luben.tuikov@amd.com>
 
-commit ec7f3b175ad85caf3289506ae95b27ddb106416e
+commit c7869e3ecf5ad7a0ce0a0a5c5eb8bf3f5bc5b1b9
 Author: Luben Tuikov <luben.tuikov@amd.com>
 Date:   Fri Jul 9 23:33:11 2021 -0400
 
@@ -209,8 +220,8 @@ Date:   Fri Jul 9 23:33:11 2021 -0400
  drivers/gpu/drm/amd/pm/swsmu/smu_cmn.h        |   3 +-
  drivers/pinctrl/pinctrl-amd.c                 |  19 +-
  drivers/pinctrl/pinctrl-amd.h                 |   1 +
- drivers/platform/x86/amd-pmc.c                |   9 +-
- 8 files changed, 313 insertions(+), 82 deletions(-)
+ drivers/platform/x86/amd-pmc.c                |   3 +-
+ 8 files changed, 307 insertions(+), 82 deletions(-)
 
 diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
 index 3a308461246a..7d1976e5dd8b 100644
@@ -762,7 +773,7 @@ index 95e763424042..1d4317073654 100644
  
  /*  KERNCZ configuration*/
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index 3481479a2942..336303e963c5 100644
+index 3481479a2942..6d2d3650f8b9 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
 @@ -71,7 +71,7 @@
@@ -770,7 +781,7 @@ index 3481479a2942..336303e963c5 100644
  
  #define PMC_MSG_DELAY_MIN_US		100
 -#define RESPONSE_REGISTER_LOOP_MAX	200
-+#define RESPONSE_REGISTER_LOOP_MAX     2000
++#define RESPONSE_REGISTER_LOOP_MAX	20000
  
  #define SOC_SUBSYSTEM_IP_MAX	12
  #define DELAY_MIN_US		2000
@@ -779,25 +790,6 @@ index 3481479a2942..336303e963c5 100644
  
  	mutex_lock(&dev->lock);
 +	amd_pmc_dump_registers(dev);
- 	/* Wait until we get a valid response */
- 	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
- 				val, val != 0, PMC_MSG_DELAY_MIN_US,
-@@ -282,12 +283,18 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
- 	/* Write zero to response register */
- 	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_RESPONSE, 0);
- 
-+	udelay(500);
-+
- 	/* Write argument into response register */
- 	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_ARGUMENT, set);
- 
-+	udelay(500);
-+
- 	/* Write message ID to message ID register */
- 	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_MESSAGE, msg);
- 
-+	udelay(500);
-+
  	/* Wait until we get a valid response */
  	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
  				val, val != 0, PMC_MSG_DELAY_MIN_US,

@@ -44,7 +44,7 @@ pkgbase = linux-xanmod-rog
 	source = mt76-mt7921-fix-the-inconsistent-state-between-bind-and-unbind.patch
 	source = mt76-mt7921-report-HE-MU-radiotap.patch
 	source = v2-mt76-mt7921-fix-kernel-warning-from-cfg80211_calculate_bitrate.patch
-	source = 9001-v5.14.1-s0ix-patch-2021-09-07.patch
+	source = 9001-v5.14.3-s0ix-patch-2021-09-13.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2
@@ -75,7 +75,7 @@ pkgbase = linux-xanmod-rog
 	sha256sums = 5b7a106d371fcf880920967d7e36728f1bcc0368eaa7bf75ebf67a4ddb93c6d5
 	sha256sums = aa5bb422421cb7e1340d8f07b5471995bbc3c7dd7cf91db76ab1dbe7efc2777a
 	sha256sums = 5e66b5a6a775ad42489dfd0f6057b69dae696a5ec8be428da329f68c1265764a
-	sha256sums = e04bbbdd23d702c95b67415a20a7a1bd3ba5c236a76b84a81f40101566aaeb19
+	sha256sums = 48a20e8597f3681aee046f7b263f1ab018f7175fe9bda6d99055d695a67b319b
 
 pkgname = linux-xanmod-rog
 	pkgdesc = The Linux kernel and modules with Xanmod and ASUS ROG laptop patches (Zephyrus G14, G15, etc)

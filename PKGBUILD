@@ -145,7 +145,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "v2-mt76-mt7921-fix-kernel-warning-from-cfg80211_calculate_bitrate.patch"
 
         # squashed s0ix enablement
-        "9001-v5.14.1-s0ix-patch-2021-09-07.patch"
+        "9001-v5.14.3-s0ix-patch-2021-09-13.patch"
         )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -180,7 +180,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '5b7a106d371fcf880920967d7e36728f1bcc0368eaa7bf75ebf67a4ddb93c6d5'
             'aa5bb422421cb7e1340d8f07b5471995bbc3c7dd7cf91db76ab1dbe7efc2777a'
             '5e66b5a6a775ad42489dfd0f6057b69dae696a5ec8be428da329f68c1265764a'
-            'e04bbbdd23d702c95b67415a20a7a1bd3ba5c236a76b84a81f40101566aaeb19')
+            '48a20e8597f3681aee046f7b263f1ab018f7175fe9bda6d99055d695a67b319b')
 
 # apply UKSM patch; TODO: note to self: don't forget to update the sum here during major version changes
 #
