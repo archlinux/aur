@@ -1,4 +1,4 @@
-# Maintainer: Nahuel Gomez Castro <tomoghno@outlook.com>
+# Maintainer: Tomoghno Sen <tomoghno@outlook.com>
 
 pkgname='fondo'
 pkgver=1.6.1
