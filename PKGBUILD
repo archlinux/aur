@@ -52,6 +52,7 @@ build() {
     export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
     export npm_config_devdir="$srcdir/$pkgname-npm-dev"
     export npm_config_cache="$srcdir/$pkgname-npm-cache"
+    mkdir -p $HOME $XDG_CACHE_HOME $npm_config_devdir $npm_config_cache
     yarn install --ignore-scripts --frozen-lockfile
     yarn add --dev electron-builder
     yarn installkmfrontend
