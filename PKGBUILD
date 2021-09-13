@@ -81,7 +81,7 @@ set -u
 pkgname='npreal2'
 #pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
 pkgver='5.0'; # _build='17110917'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -105,6 +105,7 @@ source=(
   '0006-kernel-5.12-tty-low_latency.patch'
   '0007-tty_unregister_driver-void.patch'
   '0008-kernel-5.13-dropped-tty_check_change.patch'
+  '0009-kernel-5.14-task_struct.state-unsigned-tty.patch'
   'npreal2.sh'
 )
 #_srcdir="${pkgname}"
@@ -120,6 +121,7 @@ md5sums=('4ba260f2e3b2b25419bd40a5f030d926'
          'd8a5ab4731575a4ffe90656e1793b46b'
          'e8c288232d6e2174c165e8f5e098a05d'
          'd5da78ee96047557af03b6e496164160'
+         '16504fb58a0416a26fe04e8e3d9867a7'
          '90ac27b669542c11b0a9b6763f6e0d9b')
 sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605'
@@ -130,6 +132,7 @@ sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             '252ce8e55b835c22e6fdf4e3c661ef906be41fdf9dfc76900d787907892e6f21'
             'd35d49ab325a17976d26d64661a235fc5c8f0e0ce6c7e86483607654e94d5b22'
             'f8496f2e62a4e57d57df5ce27d2bd92eed234581331c8ee6b7b9e139e0e7ac13'
+            '7c9380a794725418015d62411f697850096b3c8a62666f5ec9e562e93ba3ee4c'
             '13e297691ba1b6504f66ef98e072194343321d2a47928c3964e315160b246153')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -270,6 +273,13 @@ prepare() {
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0008-kernel-5.13-dropped-tty_check_change.patch'
   patch -Nbup0 -i "${srcdir}/0008-kernel-5.13-dropped-tty_check_change.patch"
+
+  # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
+  # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
+  # set_current_state https://linux-kernel.vger.kernel.narkive.com/xnPfKhYP/patch-2-5-52-use-set-current-state-instead-of-current-state-take-1
+  #rm -f *.orig; cp -p 'npreal2.c'{,.orig}; false
+  #diff -pNau5 'npreal2.c'{.orig,} > '0009-kernel-5.14-task_struct.state-unsigned-tty.patch'
+  patch -Nbup0 -i "${srcdir}/0009-kernel-5.14-task_struct.state-unsigned-tty.patch"
 
   # Apply PKGBUILD options
   sed -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \

@@ -1,0 +1,174 @@
+--- npreal2.c.orig	2021-09-12 22:09:13.005831652 -0400
++++ npreal2.c	2021-09-12 22:09:48.825927630 -0400
+@@ -406,14 +406,22 @@ static int 	npreal_init_tty(void);
+ static void	npreal_do_softint(struct work_struct *work);
+ static void npreal_flush_to_ldisc(struct work_struct *work);
+ static int	npreal_open(struct tty_struct *,struct file *);
+ static void	npreal_close(struct tty_struct *,struct file *);
+ static int	npreal_write(struct tty_struct *,const unsigned char *,int);
++#if LINUX_VERSION_CODE >= VERSION_CODE(5,14,0)
++static unsigned int	npreal_write_room(struct tty_struct *);
++#else
+ static int	npreal_write_room(struct tty_struct *);
++#endif
+ static void	npreal_flush_buffer(struct tty_struct *);
+ static void	npreal_ldisc_flush_buffer(struct tty_struct *);
++#if LINUX_VERSION_CODE >= VERSION_CODE(5,14,0)
++static unsigned int	npreal_chars_in_buffer(struct tty_struct *);
++#else
+ static int	npreal_chars_in_buffer(struct tty_struct *);
++#endif
+ static void	npreal_flush_chars(struct tty_struct *);
+ static int	npreal_put_char(struct tty_struct *,unsigned char);
+ static int	npreal_ioctl(struct tty_struct *,uint,ulong);
+ static void	npreal_throttle(struct tty_struct *);
+ static void	npreal_unthrottle(struct tty_struct *);
+@@ -1054,11 +1062,11 @@ npreal_close(
+ 			}
+ 			else if (ret < 0)
+ 				break;
+ 			else
+ 				cnt = 0;
+-			current->state = TASK_INTERRUPTIBLE;
++			set_current_state(TASK_INTERRUPTIBLE);
+ 			schedule_timeout(HZ/100);
+ 		}
+ 	}
+ 	npreal_flush_buffer(tty);
+ 	if ( tty->ldisc->ops->flush_buffer )
+@@ -1205,11 +1213,15 @@ static void npreal_wait_until_sent(struc
+ 	if ((info = (struct npreal_struct *)tty->driver_data))
+ 		npreal_wait_oqueue(info,timeout);
+ 
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int npreal_write_room(struct tty_struct * tty)
++#else
+ static int npreal_write_room(struct tty_struct * tty)
++#endif
+ {
+ 	struct npreal_struct *info = (struct npreal_struct *)tty->driver_data;
+ 	int	ret;
+ 
+ 	DBGPRINT(MX_DEBUG_LOUD, "(Entry)\n");
+@@ -1222,11 +1234,15 @@ static int npreal_write_room(struct tty_
+ 	if ( ret < 0 )
+ 		ret = 0;
+ 	return(ret);
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int npreal_chars_in_buffer(struct tty_struct * tty)
++#else
+ static int npreal_chars_in_buffer(struct tty_struct * tty)
++#endif
+ {
+ 	struct npreal_struct *info = (struct npreal_struct *)tty->driver_data;
+ 
+ 	DBGPRINT(MX_DEBUG_LOUD, "(Entry)\n");
+ 
+@@ -1315,11 +1331,11 @@ static void npreal_ldisc_flush_buffer(st
+ 	nd->cmd_ready = 1;
+ 	if ( waitqueue_active(&nd->select_ex_wait))
+ 	{
+ 		wake_up_interruptible( &nd->select_ex_wait );
+ 	}
+-	current->state = TASK_INTERRUPTIBLE;
++	set_current_state(TASK_INTERRUPTIBLE);
+ 	schedule_timeout(HZ/100);
+ }
+ 
+ #if LINUX_VERSION_CODE >= VERSION_CODE(5,13,0)
+ int tty_check_change(struct tty_struct *tty);
+@@ -1471,11 +1487,11 @@ static int npreal_ioctl(struct tty_struc
+ 			cprev = cnow;
+ 			// Scott: 2005-09-04 add begin
+ 			schedule();
+ 			// Scott: 2005-09-04 add end
+ 		}
+-		current->state = TASK_RUNNING;
++		set_current_state(TASK_RUNNING);
+ 		remove_wait_queue(&info->delta_msr_wait, &wait);
+ 		// Scott: 2005-09-04
+ 		// Scott break;
+ 		return ret;
+ 	}
+@@ -1807,11 +1823,11 @@ retval = -EAGAIN;
+ 			retval = -EIO;
+ 			break;
+ 		}
+ 		schedule();
+ 	}
+-	current->state = TASK_RUNNING;
++	set_current_state(TASK_RUNNING);
+ 	remove_wait_queue(&info->open_wait, &wait);
+ 	if ( retval )
+ 		return(retval);
+ 	info->flags |= ASYNC_NORMAL_ACTIVE;
+ 	return(0);
+@@ -1844,11 +1860,11 @@ static int npreal_startup(struct npreal_
+ 			DBGPRINT(MX_DEBUG_ERROR, "signal_pending break\n");
+ 			break;
+ 		}
+ 		schedule();
+ 	}
+-	current->state = TASK_RUNNING;
++	set_current_state(TASK_RUNNING);
+ 	remove_wait_queue(&nd->initialize_wait, &wait);
+ 
+ 	// Scott: 2005/07/13
+ 	// Set tty->driver_data before entering npreal_startup(), so that the tty driver
+ 	// can decrease refcount if npreal_startup() failed, by calling npreal_close().
+@@ -1991,11 +2007,11 @@ static int npreal_startup(struct npreal_
+ 			goto startup_err;
+ 		}		
+ 
+ 		while ((nd->cmd_ready == 1)&&(cnt++ < 10))
+ 		{
+-			current->state = TASK_INTERRUPTIBLE;
++			set_current_state(TASK_INTERRUPTIBLE);
+ 			schedule_timeout(HZ/100);
+ 		}
+ 	}
+ 	/*
+ 	 * and set the speed of the serial port
+@@ -2104,11 +2120,11 @@ static void npreal_shutdown(struct nprea
+ 
+ 	while (test_and_set_bit(NPREAL_NET_DO_INITIALIZE,&nd->flag))
+ 	{
+ 		if ( signal_pending(current) )
+ 			break;
+-		current->state = TASK_INTERRUPTIBLE;
++		set_current_state(TASK_INTERRUPTIBLE);
+ 		schedule_timeout(HZ/100);
+ 	}
+ 
+ 
+ 	if ( !(info->flags & ASYNC_INITIALIZED) )
+@@ -3067,11 +3083,11 @@ static void npreal_send_break(struct npr
+ 	if (!(nd = info->net_node))
+ 		return;
+ 
+ 	npreal_start_break(nd);
+ 
+-	current->state = TASK_INTERRUPTIBLE;
++	set_current_state(TASK_INTERRUPTIBLE);
+ 	schedule_timeout(duration);
+ 
+ 	npreal_stop_break(nd);
+ 
+ }
+@@ -4095,11 +4111,11 @@ npreal_wait_and_set_command(
+ 			return (0);
+ 		}
+ 		else
+ 		{
+ 			up (&nd->cmd_semaphore);
+-			current->state = TASK_INTERRUPTIBLE;
++			set_current_state(TASK_INTERRUPTIBLE);
+ 			schedule_timeout(1);
+ 		}
+ 	}
+ }
+ /*
