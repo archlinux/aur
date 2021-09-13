@@ -1,4 +1,4 @@
-#!/usr/bin/electron
+#!/usr/bin/electron13
 
 const name = 'standardnotes-desktop';
 
