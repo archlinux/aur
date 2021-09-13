@@ -1,13 +1,13 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
-pkgver=5.0.33
-pkgrel=3
+pkgver=5.1.23
+pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
 license=('MIT')
 groups=()
-depends=('mpv' 'ffmpeg' 'postgresql' 'electron11')
+depends=('mpv' 'ffmpeg' 'postgresql' 'electron13')
 makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=12' 'python2' 'patch')
 optdepends=('sudo: for using karaokemugen-install script')
 provides=()
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-source=('karaokemugen::git+https://lab.shelter.moe/karaokemugen/karaokemugen-app.git#tag=v5.0.33'
+source=('karaokemugen::git+https://lab.shelter.moe/karaokemugen/karaokemugen-app.git#tag=v5.1.23'
         'karaokemugen-lib::git+https://lab.shelter.moe/karaokemugen/lib.git'
         'karaokemugen-avatars::git+https://lab.shelter.moe/karaokemugen/medias/guest-avatars.git'
         'install.sh'
