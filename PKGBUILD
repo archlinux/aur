@@ -1,15 +1,16 @@
 #Maintainer: Ovi Chis ovi@ovios.org
 pkgname=tgt
-pkgver=1.0.73
+pkgver=1.0.80
 pkgrel=1
 pkgdesc="iSCSI Target STGT for Arch Linux"
 arch=('x86_64' 'i686' 'arm')
 url="http://stgt.sourceforge.net/"
 license=('GPL')
-depends=('perl-config-general' 'libxslt')
+depends=('perl-config-general' 'libxslt' 'docbook-xsl')
 optdepends=('sg3_utils')
 backup=('etc/tgt/targets.conf')
 source=(https://github.com/fujita/tgt/archive/v$pkgver.tar.gz)
+md5sums=(SKIP)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -21,5 +22,4 @@ package() {
   make DESTDIR="$pkgdir" sbindir=/usr/bin install
   install -Dm644 "$srcdir/$pkgname-$pkgver/scripts/tgtd.service" "$pkgdir/usr/lib/systemd/system/tgtd.service"
 }
-md5sums=(SKIP)
 
