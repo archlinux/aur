@@ -1,7 +1,7 @@
 pkgbase = opencv-cuda
 	pkgdesc = Open Source Computer Vision Library with CUDA support
 	pkgver = 4.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencv.org/
 	arch = x86_64
 	license = BSD
@@ -24,6 +24,7 @@ pkgbase = opencv-cuda
 	depends = libgphoto2
 	depends = jasper
 	depends = cuda
+	depends = cudnn
 	optdepends = opencv-samples: samples
 	optdepends = gtk3: for the HighGUI module
 	optdepends = hdf5: support for HDF5 format

@@ -4,7 +4,7 @@
 
 pkgname=opencv-cuda
 pkgver=4.5.3
-pkgrel=1
+pkgrel=2
 provides=(opencv opencv-samples)
 conflicts=(opencv opencv-samples)
 pkgdesc="Open Source Computer Vision Library with CUDA support"
@@ -12,7 +12,7 @@ arch=(x86_64)
 license=(BSD)
 url="http://opencv.org/"
 options=(staticlibs)
-depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas lapack libgphoto2 jasper cuda)
+depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas lapack libgphoto2 jasper cuda cudnn)
 makedepends=(cmake python-numpy python2-numpy mesa ninja eigen hdf5 lapacke gtk3 nvidia-sdk)
 optdepends=('opencv-samples: samples'
             'gtk3: for the HighGUI module'
@@ -61,6 +61,7 @@ build() {
     -DCPU_BASELINE_REQUIRE=SSE2 \
     -DWITH_NVCUVID=ON \
     -DWITH_CUDA=ON \
+    -DWITH_CUDNN=ON \
     -DCUDA_FAST_MATH=ON \
     -DWITH_CUBLAS=ON \
     -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
