@@ -1,7 +1,7 @@
 # Maintainer: Saurabh Kumar Sharma <imesskayesss@protonmail.com>
 
 pkgname=lolminer
-pkgver=1.31
+pkgver=1.32
 pkgrel=1
 pkgdesc="Unofficial installer for lolMiner"
 arch=("x86_64")
