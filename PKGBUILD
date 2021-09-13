@@ -15,11 +15,9 @@ optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
-	'hadron-build-beta.diff'
 )
 sha512sums=('c1903f8d89f1781173c7f23440a11c2d5998b657c2f808730c3030f85bdecc8c22638b2fec2bae20516cbf5790e1b0bdfdfe20e591c118842abd92a2359bb0ef'
-            '9c93c8aa513c9238e04bb860626d09f1e83643cbfd1b8cd66add35cd41e6a7172fedff42f9f9eeedb0e8a3d6b852e1671a8b5a1fa3066d7dd5a543052392946d'
-            '1623ebab6dc95445cd1b512ffa858fc08e2a06cf6d938ef98f14e7bdd639c3df76173fab6e0831e1bd7487b63c99322d294d53d316bc51f5a5da6d3020e9c8a2')
+            '9c93c8aa513c9238e04bb860626d09f1e83643cbfd1b8cd66add35cd41e6a7172fedff42f9f9eeedb0e8a3d6b852e1671a8b5a1fa3066d7dd5a543052392946d')
 
 _sourcedirectory="compass-$_pkgver"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
@@ -37,11 +35,7 @@ prepare() {
 	HOME="$srcdir/$_homedirectory" npm run bootstrap
 
 	# Apply hadron-build fixes
-	if [[ "$target" =~ -beta$ ]]; then
-		patch -d 'node_modules/hadron-build/' --forward -p1 < "$srcdir/hadron-build-beta.diff"
-	else
-		patch -d 'node_modules/hadron-build/' --forward -p1 < "$srcdir/hadron-build.diff"
-	fi
+	patch -d 'node_modules/hadron-build/' --forward -p1 < "$srcdir/hadron-build.diff"
 }
 
 build() {
@@ -52,11 +46,7 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	if [[ "$target" =~ -beta$ ]]; then
-		NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run release-evergreen "${_target%-beta}"
-	else
-		NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run package-compass "${_target%-beta}"
-	fi
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run package-compass "${_target%-beta}"
 }
 
 package() {
