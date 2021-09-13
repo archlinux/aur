@@ -2,3 +2,4 @@
 /pkg/
 /*.tar.*
 /macbook12-spi-driver/
+/*.patch
