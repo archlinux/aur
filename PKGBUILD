@@ -3,7 +3,7 @@
 pkgbase=nvidia-430xx-utils
 pkgname=('nvidia-430xx-utils' 'opencl-nvidia-430xx' 'nvidia-430xx-dkms')
 pkgver=430.40
-pkgrel=8
+pkgrel=9
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -136,7 +136,6 @@ package_nvidia-430xx-utils() {
 
     # nvidia-tls library
     install -D -m755 "libnvidia-tls.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-tls.so.${pkgver}"
-    install -D -m755 "tls/libnvidia-tls.so.${pkgver}" "${pkgdir}/usr/lib/tls/libnvidia-tls.so.${pkgver}"
 
     # CUDA
     install -D -m755 "libcuda.so.${pkgver}" "${pkgdir}/usr/lib/libcuda.so.${pkgver}"

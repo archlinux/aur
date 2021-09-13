@@ -1,6 +1,6 @@
 pkgbase = nvidia-430xx-utils
 	pkgver = 430.40
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
