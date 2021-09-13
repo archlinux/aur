@@ -1,6 +1,6 @@
 pkgbase = ferdi-bin
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - binary version
-	pkgver = 5.6.1
+	pkgver = 5.6.2
 	pkgrel = 1
 	url = https://getferdi.com
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = ferdi-bin
 	depends = snappy
 	provides = ferdi
 	conflicts = ferdi
-	source_x86_64 = ferdi-bin-5.6.1-1-x86_64.zip::https://github.com/getferdi/ferdi/releases/download/v5.6.1/ferdi_5.6.1_amd64.deb
-	sha512sums_x86_64 = c787d338c68ee3a664c64329b1690fad3e1f209170222eb9519826a30a00c8d9e44c0d62b6be23964a2697bfa1edb8163c6e0f2dc26c789cf346efffa54da503
-	source_armv7h = ferdi-bin-5.6.1-1-armv7h.zip::https://github.com/getferdi/ferdi/releases/download/v5.6.1/ferdi_5.6.1_armv7l.deb
-	sha512sums_armv7h = 690d02a15ca933a1b1f213ad8c52c4d868baedcc31a87f06af9d1caf1de9588aeb3d6fc0e4b775aaaf0f91a3b48cfb09bcf3344be531d4c9dde8eefa1ff4761f
-	source_aarch64 = ferdi-bin-5.6.1-1-aarch64.zip::https://github.com/getferdi/ferdi/releases/download/v5.6.1/ferdi_5.6.1_arm64.deb
-	sha512sums_aarch64 = 55597293818139e816833c0bbeaa9b2722fd771d3f5346f2b9237825282bb786b111ec1106f9e04e5006ff8de5445272c36e058daf1c243c9bd0bf329349e027
+	source_x86_64 = ferdi-bin-5.6.2-1-x86_64.zip::https://github.com/getferdi/ferdi/releases/download/v5.6.2/ferdi_5.6.2_amd64.deb
+	sha512sums_x86_64 = ecb21c658b3958fd3211aaeb08cf99b178bbaa43faa3efa7c6acda0540d09609d821ec42317e1aba7e2fdcbe2f1e66ee33c207fd1c3bef04251dc986f8639a41
+	source_armv7h = ferdi-bin-5.6.2-1-armv7h.zip::https://github.com/getferdi/ferdi/releases/download/v5.6.2/ferdi_5.6.2_armv7l.deb
+	sha512sums_armv7h = c986646025c35385bb5750c3bc32828b1763bad36b6b2b52ae3322308040dbc3d279e02addb22f911d37af10108e1952b9c4ccb1472e8ba2904cd5ec8ba4ae7c
+	source_aarch64 = ferdi-bin-5.6.2-1-aarch64.zip::https://github.com/getferdi/ferdi/releases/download/v5.6.2/ferdi_5.6.2_arm64.deb
+	sha512sums_aarch64 = f399a5156022cd56f3ed8193845a96d0d4eddb3c31a4106f9610e6ea7b49ca5585a687a57456b25a64cd928e3500ef2b137d5c12e87bc9bec6d6400be4f22366
 
 pkgname = ferdi-bin
