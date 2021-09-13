@@ -2,9 +2,9 @@
 # Sun Mar  3 23:45:30 UTC 2019
 pkgbase = emercoin-bin
 	pkgdesc = Emercoin is a digital currency and blockchain service platform.
-	pkgver = 0.7.4
+	pkgver = 0.7.10
 	pkgrel = 1
-	url = http://emercoin.com/
+	url = https://emercoin.com/
 	install = emercoin.install
 	arch = i686
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = emercoin-bin
 	depends = expat>=2.2.0
 	depends = freetype2>=2.7.1
 	depends = protobuf
-	source_i686 = https://github.com/emercoin/emercoin/releases/download/v0.7.4emc/emercoin-0.7.4-i686-pc-linux-gnu.tar.gz
+	source_i686 = https://github.com/emercoin/emercoin/releases/download/v0.7.10emc/emercoin-0.7.10-i686-pc-linux-gnu.tar.gz
 	source_i686 = emercoin.install
-	sha256sums_i686 = 2ff2527f049411131403b282d4b1f87cba5be2e64ccbaabddd08fd4fc7bc5f83
+	sha256sums_i686 = 993ddbebbd78bb654762d7dd9b0fb69bd365dc270a922d566d1adba0ac002174
 	sha256sums_i686 = fae0ebd505eeb13cf1b4ee1ae3b3014e02a6422c77194e2a4d44c481262ceb8e
-	source_x86_64 = https://github.com/emercoin/emercoin/releases/download/v0.7.4emc/emercoin-0.7.4-i686-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/emercoin/emercoin/releases/download/v0.7.10emc/emercoin-0.7.10-x86_64-linux-gnu.tar.gz
 	source_x86_64 = emercoin.install
-	sha256sums_x86_64 = 363e02d8f9b7e2dbd10220fc327826d188294ccb75920c9a36b2f233ac0e978e
+	sha256sums_x86_64 = 6e851f289c652fd1055bd6084abe454ad172cc8df0926efcf05441e58fc14973
 	sha256sums_x86_64 = fae0ebd505eeb13cf1b4ee1ae3b3014e02a6422c77194e2a4d44c481262ceb8e
 
 pkgname = emercoin-bin
