@@ -4,7 +4,7 @@
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgname=libopenshot
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=('x86_64')
@@ -17,8 +17,8 @@ makedepends=('catch2' 'cmake' 'doxygen' 'ffmpeg' 'jsoncpp' 'libopenshot-audio'
 'swig' 'unittestpp' 'x264')
 provides=('libopenshot.so')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot/archive/v$pkgver.tar.gz")
-sha512sums=('13706733280e8c70638a02ad220e6a84f3d26a5a35f5f8f1b820408236aeda8bd8683e19a85a0d466007a1d711ca31bb436f8d4ca4fb6ffbfe169b2976dea525')
-b2sums=('7ad35cfb927e637c4ded38de751f3f484ab6f051a2eea15153dcf4a66a378023883e76ffde361725a2285018741765fece01a60443421d95a8a772065d9de199')
+sha512sums=('71cb0e4010d8f3ff453486c3da3c7019c6569066845dcc58f438049a08b1c8663f31c29a728ce5461e9d3a1ca550038b757d4528e62a26eeb45ecbe600353988')
+b2sums=('511ed214f0ecc43294a787e1c0119f036e274a1e8d051cb6e926bf7a9b5cea416325a2e051fca758d1f80ec2b9d746a4dd268e5ac5322fe8539fa2041a8c4d9d')
 
 build() {
   cd "${pkgname}-${pkgver}"
