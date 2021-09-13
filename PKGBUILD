@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=weechat-matrix-rs-git
-pkgver=r355.a231a27
+pkgver=r405.2b093a7
 pkgrel=1
 pkgdesc='Rust rewrite of the Python weechat-matrix script'
 arch=('x86_64')
