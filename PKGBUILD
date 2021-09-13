@@ -4,7 +4,7 @@
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgname=libopenshot-audio
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A high-quality audio editing and playback library used by libopenshot."
 arch=('x86_64')
@@ -13,9 +13,9 @@ license=('GPL3')
 depends=('gcc-libs' 'glibc' 'zlib')
 makedepends=('alsa-lib' 'cmake' 'doxygen' 'freetype2' 'libx11' 'python')
 provides=('libopenshot-audio.so')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot-audio/archive/v$pkgver.tar.gz")
-sha512sums=('2d9182f6e25df188a4502cea331de15363e4fa013e7f6d173602326cce60530d317300682d057bf03c7af6fbdc930a76226c3c5b135ef040145c0c997bc394d6')
-b2sums=('bde891328991050497f284b1ac9367c2102af9ec224fe0fb36db8bd80432aa86f5d189e74a9e1b3cfb3f8f1385c9b0a07f484210463e17f1e5b698b88d043dce')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('9960c6225dd9b843d18134e851761bf12861220a2c63970055bc73d554725e56abd6d35339f7490b672faaf0699f58e3701ff8a966ab07af3264325a9d0dc472')
+b2sums=('fcf242bdd678d2e79e2775f3aff7507520a4e8b9ddc7696e1506beca0c1f8e0687d66dfa35a31748e2e622def6e1c22c160e9424c1c27527854ebcafc24413ca')
 
 build() {
   cd "${pkgname}-${pkgver}"
