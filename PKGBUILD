@@ -1,7 +1,7 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 pkgname=sse-file-pc
-pkgver=14R4C
-pkgrel=2
+pkgver=15.0.1
+pkgrel=1
 pkgdesc="Cross-platform java tool for file encryption"
 arch=('any')
 url="https://paranoiaworks.mobi/"
@@ -11,7 +11,7 @@ source=("https://paranoiaworks.mobi/download/files/SSEFilePC.zip"
 "icon.png"
 "sse.desktop"
 )
-md5sums=('d9a52045ad38cd113cb14b107397e037'
+md5sums=('eb16b541205698031bdf67630ba7b1f9'
          'fea7ed69540dfd37adbb7080a8fee6ce'
          '538207e344240dfe9d773c17593d3e1f')
 package() {
