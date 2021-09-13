@@ -1,20 +1,12 @@
 pkgbase = python-pyld
-	pkgdesc = An implementation of the JSON-LD specification in Python
-	pkgver = 1.0.5
-	pkgrel = 3
+	pkgdesc = JSON-LD processor written in Python
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://github.com/digitalbazaar/pyld
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/digitalbazaar/pyld/archive/1.0.5.tar.gz
-	source = 0001-Fixed-remote-frame-context-handling.patch
-	sha512sums = a673d953be990fde98a3b32e879e1b7941afc9d3082be6400f69223deee226047e05b0ce68bdf05844cb7e8e3142f731f7c4891b6a4986413518dbdaa2da779c
-	sha512sums = d0b15814c2fe315ad3dddda8ea452229a172be060d7074b6d99ec9eaed857f2e6b715e760cbcc194f9c8a679bc929ac652df847377c6e8b4944bf77795432f19
+	depends = python-setuptools
+	source = https://github.com/digitalbazaar/pyld/archive/2.0.3.tar.gz
+	sha512sums = ec12274cf7b6b6842c054e7c78a74a36d60496377d329c821a930dcf2000a02f24b77263d20086cdd83d28c1be37ab0b0c785026c7b3bf44cc1a42597410e769
 
 pkgname = python-pyld
-	depends = python-setuptools
-
-pkgname = python2-pyld
-	depends = python2-setuptools
-

@@ -1,49 +1,26 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
-pkgname=('python-pyld' 'python2-pyld')
+pkgname=python-pyld
 _pkgname='pyld'
-pkgver=1.0.5
-pkgrel=3
-pkgdesc="An implementation of the JSON-LD specification in Python"
+pkgver=2.0.3
+pkgrel=1
+pkgdesc="JSON-LD processor written in Python"
 arch=('any')
 url="https://github.com/digitalbazaar/pyld"
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=(https://github.com/digitalbazaar/${_pkgname}/archive/${pkgver}.tar.gz
-        0001-Fixed-remote-frame-context-handling.patch)
-sha512sums=('a673d953be990fde98a3b32e879e1b7941afc9d3082be6400f69223deee226047e05b0ce68bdf05844cb7e8e3142f731f7c4891b6a4986413518dbdaa2da779c'
-            'd0b15814c2fe315ad3dddda8ea452229a172be060d7074b6d99ec9eaed857f2e6b715e760cbcc194f9c8a679bc929ac652df847377c6e8b4944bf77795432f19')
-
-prepare() {
-  patch -p1 -d "${srcdir}/${_pkgname}-${pkgver}" < "${srcdir}"/0001-Fixed-remote-frame-context-handling.patch
-
-  cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
-}
+depends=('python-setuptools')
+source=(https://github.com/digitalbazaar/${_pkgname}/archive/${pkgver}.tar.gz)
+sha512sums=('ec12274cf7b6b6842c054e7c78a74a36d60496377d329c821a930dcf2000a02f24b77263d20086cdd83d28c1be37ab0b0c785026c7b3bf44cc1a42597410e769')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
-
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-  python2 setup.py build
 }
 
-package_python-pyld() {
-  depends=('python-setuptools')
-
+package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   python3 setup.py install --root="${pkgdir}" -O1
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-pyld() {
-  depends=('python2-setuptools')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-
-  python2 setup.py install --root="${pkgdir}" -O1
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
