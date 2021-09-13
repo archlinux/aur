@@ -1,0 +1,14 @@
+pkgbase = i3help-git
+	pkgdesc = Dialog to view key bindings for i3wm
+	pkgver = r14.74a56cf
+	pkgrel = 1
+	url = https://github.com/glennular/i3help
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	depends = gtk3
+	source = i3help-git::git+https://github.com/glennular/i3help#branch=master
+	md5sums = SKIP
+
+pkgname = i3help-git
