@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=glewlwyd
-pkgver=2.5.3
-pkgrel=2
+pkgver=2.5.4
+pkgrel=1
 pkgdesc='Single-Sign-On (SSO) server with multiple factor authentication'
 arch=(x86_64)
 url=https://github.com/babelouest/glewlwyd
@@ -30,9 +30,10 @@ makedepends=(
   ninja
   postgresql-libs
   sqlite
+  systemd
 )
 backup=(etc/glewlwyd/glewlwyd.conf)
-_tag=be4cfc79dc15bd4049e83b16ed42619188fcdc19
+_tag=36efbfd3b9851ce57106af22e6718b2c7303ee22
 source=(
   git+https://github.com/babelouest/glewlwyd.git#tag=${_tag}
   glewlwyd.service
@@ -51,7 +52,8 @@ build() {
   cmake -S glewlwyd -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_SYSCONFDIR=/etc
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DDOWNLOAD_DEPENDENCIES=OFF
   ninja -C build
 }
 
