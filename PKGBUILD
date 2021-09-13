@@ -1,7 +1,6 @@
 # Maintainer: Jason Kercher <jkercher43 at gmail>
 pkgname=fql
 pkgver=1.0
-pkgrel=1
 pkgdesc="A SQL interpreter for text processing"
 arch=(x86_64)  # It is only tested on x86_64
 url="https://github.com/jasonKercher/fql"
@@ -9,7 +8,7 @@ license=(MIT)
 depends=(antlr4-runtime pcre stdcsv)
 checkdepends=(check)
 provides=(libfql.so)
-source=("$url/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 md5sums=(fbb253eda765577a89a12ea5718b1518)
 
 build() {
