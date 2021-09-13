@@ -25,7 +25,7 @@ _opt_defaultmode='660' # default: 620
 set -u
 pkgname='nslink'
 pkgver='8.00'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -51,19 +51,22 @@ source=(
   '0002-kernel-5.6-proc_dir_entry-proc_ops.patch'
   '0003-tty_unregister_driver-void.patch'
   '0004-kernel-5.12-tty-low_latency.patch'
+  '0005-kernel-5.14-unsigned-tty-flow-tty.patch'
 )
 md5sums=('b59906d80268e69a24c211b398ffd10c'
          'e3ffb36acfdd321c919e44d477f0774a'
          '581cd5f582ed20c7cf85a4df23a9f78a'
          '36fcfa504772df4aabbde9f23d5459d5'
          '7e0659716e30c6e2ff5c16f20aac07be'
-         '4e0c61dc0c5da4c3125db7ac1e481aac')
+         '4e0c61dc0c5da4c3125db7ac1e481aac'
+         '93e85c98fd375285887b78f2df44ce01')
 sha256sums=('092859a3c198f8e3f5083a752eab0af74ef71dce59ed503d120792be13cc5fa3'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
             'cbaa55f16357688b992a7d7c0f2fb56225edda286d97595918c50e05005d1318'
             '7b7718789a4a23c3f16094f93b9fc0d8a5915e67e6a0aedef17cdb6adb22a1ac'
-            'a48cdf948f907b00919c3a2dadbaa2c41c28891d689195e072765c39b0b4af49')
+            'a48cdf948f907b00919c3a2dadbaa2c41c28891d689195e072765c39b0b4af49'
+            '12c55d7b898b5cdcd09d6927fef1585a702fde356e8e039e7e85bbce64f3eed8')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -100,6 +103,13 @@ prepare() {
   #cp -p nslink.c{,.orig}; false
   #diff -pNau5 nslink.c{.orig,} > '0004-kernel-5.12-tty-low_latency.patch'
   patch -Nbup0 -i "${srcdir}/0004-kernel-5.12-tty-low_latency.patch"
+
+  # tty.stopped https://lore.kernel.org/lkml/20210505091928.22010-13-jslaby@suse.cz/
+  # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
+  # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
+  #cp -p nslink.c{,.orig}; false
+  #diff -pNau5 nslink.c{.orig,} > '0005-kernel-5.14-unsigned-tty-flow-tty.patch'
+  patch -Nbup0 -i "${srcdir}/0005-kernel-5.14-unsigned-tty-flow-tty.patch"
 
   # Make package compatible
   #cp -p 'install.sh' 'install.sh.Arch' # testmode for diff comparison

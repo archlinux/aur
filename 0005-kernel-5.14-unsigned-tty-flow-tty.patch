@@ -1,0 +1,109 @@
+--- nslink.c.orig	2021-09-12 22:30:11.942180898 -0400
++++ nslink.c	2021-09-12 22:30:37.085578537 -0400
+@@ -1401,11 +1401,17 @@ retry:
+ 
+                         /*
+                          * Transmit characters in our transmit buffer
+                          */
+                         if (info->x_char ||
+-                            (info->xmit_cnt && info->tty && !info->tty->hw_stopped && !info->tty->stopped)) {
++                            (info->xmit_cnt && info->tty && !info->tty->hw_stopped && !
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++                             info->tty->flow.stopped
++#else
++                             info->tty->stopped
++#endif
++                            )) {
+                                 if (!hdlc_xmit(si, skb, info, pstate))
+                                         send_packet = 1;
+                         }
+                 } else if (info->remote_status == REM_OPEN_PORT) {
+                         if (hdlc_1byte_cmd(si, skb, i, RK_REMOTE_STATUS, REM_OPEN_PORT)) {
+@@ -3484,11 +3490,17 @@ static void nrp_start(struct tty_struct
+         /*
+          * Start the transmitter remotely, if we ever add a stop
+          * transmitter to nrp_stop.
+          */
+ 
+-        if (info->xmit_cnt <= 0 || tty->stopped || tty->hw_stopped ||
++        if (info->xmit_cnt <= 0 || 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++            tty->flow.stopped
++#else
++            tty->stopped
++#endif
++            || tty->hw_stopped ||
+             !info->xmit_buf)
+                 return;
+ 
+         info->si->need_to_send = 1;
+         if (info->si->use_tcp == 0)
+@@ -3692,11 +3704,16 @@ static void nrp_flush_chars(struct tty_s
+         pstate = &info->si->port_state[info->portnum];
+         if (pstate)
+                 space = get_tx_space_remote(pstate);
+ 
+         if (space <= WAKEUP_CHARS || info->xmit_cnt <= 0 ||
+-            tty->stopped || tty->hw_stopped || !info->xmit_buf)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++            tty->flow.stopped
++#else
++            tty->stopped
++#endif
++            || tty->hw_stopped || !info->xmit_buf)
+                 return;
+ 
+         info->si->need_to_send = 1;
+         if (info->si->use_tcp == 0) {
+                 if (info->xmit_cnt > 64)
+@@ -3813,11 +3830,15 @@ end:
+ /*
+  * Return the number of characters that can be sent.  We estimate
+  * only using the in-memory transmit buffer only, and ignore the
+  * potential space in the remote end.
+  */
++#if LINUX_VERSION_CODE >= VERSION_CODE(5,14,0)
++static unsigned int nrp_write_room(struct tty_struct *tty)
++#else
+ static int nrp_write_room(struct tty_struct *tty)
++#endif
+ {
+         struct nr_port *info = (struct nr_port *) tty->driver_data;
+         int ret;
+ 
+         if (nslink_paranoia_check(info, "nrp_write_room"))
+@@ -3834,11 +3855,15 @@ static int nrp_write_room(struct tty_str
+ 
+ /*
+  * Return the number of characters in the buffer.  Again, this only
+  * counts those characters in the in-memory transmit buffer.
+  */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int nrp_chars_in_buffer(struct tty_struct *tty)
++#else
+ static int nrp_chars_in_buffer(struct tty_struct *tty)
++#endif
+ {
+         struct nr_port *info = (struct nr_port *) tty->driver_data;
+ 
+         if (nslink_paranoia_check(info, "nrp_chars_in_buffer"))
+                 return 0;
+@@ -4617,11 +4642,17 @@ static void tcp_send_remote_cmds(struct
+                                 info->update_action = 0;
+                                 info->action_register = 0;
+                         }
+                         if (info->x_char ||
+                             (info->xmit_cnt && info->tty &&
+-                             !info->tty->hw_stopped && !info->tty->stopped)) {
++                             !info->tty->hw_stopped && 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++                             !info->tty->flow.stopped
++#else
++                             !info->tty->stopped
++#endif
++                            )) {
+                                 if (tcp_room(si, bi, 4)) {
+                                         bi = 0;
+                                         continue;
+                                 }
+                                 dc = tcp_out_data(buf, bi, info, pstate, si);
