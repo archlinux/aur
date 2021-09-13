@@ -7,7 +7,7 @@ pkgbase = stdcsv
 	license = MIT
 	checkdepends = check
 	provides = libcsv.so
-	source = https://github.com/jasonKercher/libcsv/archive/refs/tags/1.0.tar.gz
+	source = stdcsv-1.0::https://github.com/jasonKercher/libcsv/archive/refs/tags/1.0.tar.gz
 	md5sums = f55dd16fb53db59ccdff4ed0c00f97e1
 
 pkgname = stdcsv

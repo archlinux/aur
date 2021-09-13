@@ -8,7 +8,7 @@ url="https://github.com/jasonKercher/libcsv"
 license=(MIT)
 checkdepends=(check)
 provides=(libcsv.so)
-source=("$url/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz")
 md5sums=(f55dd16fb53db59ccdff4ed0c00f97e1)
 
 build() {
