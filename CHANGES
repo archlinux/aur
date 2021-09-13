@@ -1,0 +1,133 @@
+Azkaban
+=======
+
+Version 0.8.0 (04/23/2015)
+--------------------------
+
+* Add flow extension.
+* Improve `urllib3` warning suppression.
+
+Breaking changes:
+
+* Change behavior of `Config.get_option` method to not preprend the `"default"`
+  prefix when looking up the option.
+
+
+Version 0.7.0 (11/10/2014)
+--------------------------
+
+* Display progress percentage during project upload.
+* Added `log` CLI command to view flow and job execution logs.
+* Improved logging and added default file handler for the CLIs.
+* AzkabanPig now waits when the job is in a preparing stage, rather than
+  erroring out (because it is unable to find the logs).
+* Cleaner error message when the Azkaban server is down (i.e. on 500 response).
+* Changed default `--project` CLI option to support both `jobs.py` and `jobs/`
+  as defaults.
+* Added `--option` flag to `build` to allow overriding of project properties.
+* Added `schedule` command for workflows.
+* Added `schedule_workflow`, `unschedule_workflow`, `get_schedule` methods for
+  working with azkaban scheduling.
+* Added `get_workflow_executions`, and `get_running_workflows` methods.
+* Enhanced URL parsing support from `.azkabanrc`.
+
+Breaking changes:
+
+* Removed `create` and `delete` CLI commands.
+* Changed `--options` handling for `info` command (and renamed it to `--option`).
+* Renamed `--skip` option for running flow to `--bounce`
+
+
+Version 0.6.0 (04/26/2014)
+--------------------------
+
+* Added ability to pass runtime properties when executing a workflow.
+* Keyword arguments passed to the `Project.add_job` method will be forwarded to the
+  `Job.on_add` handler. In the case of a project merge, the handler gets the
+  merged project as single keyword argument.
+* Added `Execution.logs` and `Execution.start` methods to respectively view the
+  global execution logs and start a new execution from an existion session.
+* `Job.build` now writes to standard out when no path is specified.
+* `Project.jobs` now returns a dictionary of actual `Job` instances.
+
+Breaking changes:
+
+* Removed the `Job.on_build` method.
+* Removed the effect of the return value of the `Job.on_add` handler. This lead to
+  overly complex archive file generation.
+* To regain some consistency, the `PigJob` class doesn't expect a path to a pig
+  script as first parameter anymore. Instead it requires the `'pig.script'`
+  option to be specified.
+
+
+Version 0.5.0 (04/15/2014)
+--------------------------
+
+* Added `Job.join_options` and `Job.join_prefix` helper methods.
+* `azkaban --files` now also outputs the target filepaths.
+
+Breaking changes:
+
+* The return value of the `Job.on_add` and `Job.on_build` handlers now
+  respectively determines whether the job will be added or built. The
+  default implementations accordingly now return `True`.
+
+
+Version 0.4.0 (04/10/2014)
+--------------------------
+
+* Added project `properties` to set project level default parameters.
+* Added `overwrite` option to `Project.add_file` method.
+
+Breaking changes:
+
+* When adding files to a project where a `root` was specified, the default
+  archive path will be path relative to the project root. Adding files
+  above the project root without specifying an archive path will now raise
+  an error.
+* Merging projects is now only allowed for projects with the same root.
+
+
+Version 0.3.0 (02/16/2014)
+--------------------------
+
+* Added `azkabanpig` extension. It includes the `PigJob` class and
+  a new entry point that allows for easy running of pig scripts.
+* Made `--alias` and `--url` options optional (indeed).
+* Enabled session refresh after initialization (useful for long running
+  jobs, for example with the `azkabanpig` extension).
+
+Breaking changes:
+
+* `~/.azkabanrc` format changed and isn't compatible with the previous
+  one. It now allows for specifying custom defaults for some options.
+* `Project.main` method is not supported anymore.
+* `azkaban list` and `azkaban view` are now combined into `azkaban info`.
+
+
+Version 0.2.0 (02/07/2014)
+--------------------------
+
+Features:
+
+* Separate `azkaban` CLI utility. This allows running workflows on Azkaban,
+  and uploading prebuilt archives without having to create an empty project.
+* Simpler job options. `Job.get_option` and `Job.get_option_list`
+  should allow for easier handling of special job option names.
+* Logging is now separate from the output of `Project.main`. It is now
+  exclusively meant to be used for debugging.
+
+Breaking changes:
+
+* The `Project.main` method is now deprecated in favor of the `azkaban`
+  executable.
+* The `--user` and `URL` command line options have been combined into a single
+  `--url` option. The new format is '[user@]protocol:endpoint'.
+* `Project.merge` is renamed to `Project.merge_into` to be more explicit. Note
+  that the direction of the merge has also been reversed.
+
+
+Version 0.1.0 (10/17/2013)
+--------------------------
+
+* Initial release

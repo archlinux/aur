@@ -1,22 +1,40 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Mathijs Kadijk <maccain13@gmail.com>
 
 pkgname=python-azkaban
-pkgver=0.9.7
+pkgver=0.9.14
 pkgrel=1
 pkgdesc="Lightweight Azkaban client"
 arch=('any')
 url="https://github.com/mtth/azkaban"
-license=('custom')
-depends=('python')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/a/azkaban/azkaban-$pkgver.tar.gz")
+license=('MIT')
+depends=(
+	'python-six>=1.6.1'
+	'python-docopt'
+	'python-requests>=2.4.0'
+	'python-urllib3')
+makedepends=('python-setuptools' 'git')
+checkdepends=('python-nose')
+changelog=CHANGES
+source=("$pkgname-$pkgver::git+$url#tag=$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('5E58F75A5DA44C4BCD6713A07800266DA107476A')
 
-package() {
-    cd "$srcdir"/azkaban-$pkgver
-    python setup.py install --root="$pkgdir" -O1
-    chmod o+r "$pkgdir/usr/lib/python3.6/site-packages/azkaban-$pkgver-py3.6.egg-info/"*
-    install -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+build() {
+	cd "$pkgname-$pkgver"
+	python setup.py build
 }
 
-sha256sums=('c31422fa3ef6849e2c1eba2f99f03056e6c90107a215838fbb0e487a82420f5f')
+check() {
+	cd "$pkgname-$pkgver"
+	python setup.py nosetests
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md AUTHORS -t "$pkgdir/usr/share/doc/$pkgname/"
+	find doc -type f -exec install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" '{}' \+
+}
