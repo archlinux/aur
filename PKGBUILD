@@ -1,8 +1,8 @@
 # Maintainer: Ilias Stamatis <ilstam at mailbox dot org>
 
 pkgname=andotp-decrypt
-pkgver=0.1.4
-pkgrel=3
+pkgver=0.1.7
+pkgrel=1
 pkgdesc="A backup decryptor for the andOTP Android app"
 arch=(any)
 url="https://github.com/asmw/andOTP-decrypt"
@@ -11,7 +11,7 @@ depends=('python-docopt' 'python-pillow' 'python-pycryptodome' 'python-pyotp' 'p
 # the following are sufficient if you care only for andotp_decrypt
 # depends=('python-docopt' 'python-pycryptodome')
 source=("https://github.com/asmw/andOTP-decrypt/archive/${pkgver}.tar.gz")
-sha256sums=('e7d4a43531d9e7b496c0e23c0725e0164604e8c20cac5f7eda6372e9b673abf2')
+sha256sums=('a7e9712b9832edc6a324b04ba7a88710011345e89fda49d7c4d8103b3be0893f')
 
 package() {
   # cd "$pkgname"
