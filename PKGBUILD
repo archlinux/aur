@@ -3,7 +3,7 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r13639.ga1d52e9af'
+pkgver='r13831.g33955ced0'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 depends=('electron6-bin' 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'npm' 'python' 'unzip')
+makedepends=('git' 'nodejs-lts-erbium' 'npm>=7.0.0' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -19,10 +19,10 @@ source=(
 	"$pkgname::git+https://github.com/mongodb-js/compass"
 	'hadron-build.diff'
 )
-sha256sums=('SKIP'
-            '62eea772fce3eb086b59fc5509b8afab6346da9c4c65f28880bb334104c02104')
+sha512sums=('SKIP'
+            '9c93c8aa513c9238e04bb860626d09f1e83643cbfd1b8cd66add35cd41e6a7172fedff42f9f9eeedb0e8a3d6b852e1671a8b5a1fa3066d7dd5a543052392946d')
 
-_sourcedirectory="$pkgname/packages/compass"
+_sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
 
 prepare() {
@@ -30,16 +30,16 @@ prepare() {
 
 	# Replace version in package.json
 	_compassversion="99.99.$(git rev-list --count HEAD)"
-	sed -E -i 's|"version": ".*",|"version": "'"$_compassversion"'",|' 'package.json'
+	sed -E -i 's|"version": ".*",|"version": "'"$_compassversion"'",|' 'packages/compass/package.json'
 
 	# Loosen node version restriction
-	sed -E -i 's|("node": ").*"|\1'"$(node -v | sed 's/^v//')"'"|' 'package.json'
+	sed -E -i 's|("node": ").*"|\1'"$(node -v | sed 's/^v//')"'"|' 'packages/compass/package.json'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version')"'"|' 'packages/compass/package.json'
 
 	# Prepare dependencies
-	HOME="$srcdir/$_homedirectory" npm install
+	HOME="$srcdir/$_homedirectory" npm run bootstrap
 
 	# Apply hadron-build fixes
 	patch -d 'node_modules/hadron-build/' --forward -p1 < "$srcdir/hadron-build.diff"
@@ -58,11 +58,11 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run release-evergreen "$_target"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run package-compass "$_target"
 }
 
 package() {
-	local _distFolder="$srcdir/$_sourcedirectory/dist/MongoDB Compass$_edition-linux"
+	local _distFolder="$srcdir/$_sourcedirectory/packages/compass/dist/MongoDB Compass$_edition-linux"
 	case "$CARCH" in
 		i686)
 			_distFolder="$_distFolder-ia32"
@@ -101,7 +101,7 @@ StartupNotify=true
 Categories=Office;Database;Building;Debugger;IDE;GUIDesigner;Profiling;
 EOF
 
-	install -Dm644 "$srcdir/$_sourcedirectory/src/app/images/linux/mongodb-compass.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+	install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/src/app/images/linux/mongodb-compass.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
 	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
