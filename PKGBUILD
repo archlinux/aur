@@ -5,7 +5,7 @@
 
 pkgname=airdcpp-webclient-develop-git
 pkgver=2.11.2b.r60.gf411147d
-pkgrel=1
+pkgrel=2
 _gitname=airdcpp-webclient
 pkgdesc="A peer-to-peer file sharing client with web user interface (git development branch)"
 arch=('x86_64' 'armv7h')
@@ -13,6 +13,8 @@ license=('GPL2')
 url="https://github.com/airdcpp-web/${_gitname}"
 depends=('miniupnpc' 'boost' 'libmaxminddb' 'leveldb' 'openssl' 'geoip' 'leveldb' 'websocketpp' 'libnatpmp' 'intel-tbb')
 makedepends=('cmake' 'git' 'npm')
+provides=('airdcpp-webclient')
+conflicts=('airdcpp-webclient')
 source=("git+https://github.com/airdcpp-web/airdcpp-webclient.git#branch=develop")
 md5sums=('SKIP')
 
