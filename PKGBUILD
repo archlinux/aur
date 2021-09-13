@@ -1,7 +1,7 @@
 # Maintainer: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname='fondo'
-pkgver=1.3.10
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Wallpaper App for Linux'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname}-git")
 source=("git+${url}.git#tag=${pkgver}"
         "elementary-theme.patch")
 sha256sums=('SKIP'
-            '572d2b1e8bc3acac50dd43e8dee5982560d1c794561744ced69c9670c5243907')
+            'e2204425522f276d7604f7a3b6471d85cc8d11ede2b2d6b12d66a254f581ec9b')
 
 pkgver () {
     cd ${pkgname}
