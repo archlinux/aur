@@ -1,6 +1,6 @@
 pkgbase = gitstatus
 	pkgdesc = Git status for Bash and Zsh prompt
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/romkatv/gitstatus
 	install = gitstatus.install
@@ -12,9 +12,9 @@ pkgbase = gitstatus
 	makedepends = cmake
 	makedepends = zsh
 	depends = glibc
-	source = gitstatus-1.5.2.tar.gz::https://github.com/romkatv/gitstatus/archive/v1.5.2.tar.gz
-	source = libgit2-tag-82cefe2b42300224ad3c148f8b1a569757cc617a.tar.gz::https://github.com/romkatv/libgit2/archive/tag-82cefe2b42300224ad3c148f8b1a569757cc617a.tar.gz
-	sha512sums = 40596cf2f43c6f97094e7f05133e2f1af02e2ce95f5a4688fa11dc7bdeef1ef594e6baba6e9a0a4db7c08ccd3054047792a5c0ac78ac57e595e7f372a83a454d
-	sha512sums = b2760593b9ff0223e10b170702e21fb022c13bd07d360ecffece7fae20ef2fdc9e42597e609dd26803bd02dc5c22bc6a5b85aac91496710ddbf433b67db5a1c0
+	source = gitstatus-1.5.3.tar.gz::https://github.com/romkatv/gitstatus/archive/v1.5.3.tar.gz
+	source = libgit2-tag-5860a42d19bcd226cb6eff2dcbfcbf155d570c73.tar.gz::https://github.com/romkatv/libgit2/archive/tag-5860a42d19bcd226cb6eff2dcbfcbf155d570c73.tar.gz
+	sha512sums = 7cadc28f3a458bf28c721d2b9e669d0b487b6c8e2af255efd2e7385a1edf78eed1109311753b941b4d00ac632e4bd76b4352061b76ef03fea7a34a3f5a0cd99a
+	sha512sums = c9adfa819aa2d587fb30c32d4addb09623078e3ccadc0a4a063402d4c8d779f2ee60051ea3717b2cc5ff5b7c760c74390c67976ee42389895272b9f5cf66f0d1
 
 pkgname = gitstatus
