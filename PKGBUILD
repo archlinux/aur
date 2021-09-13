@@ -1,6 +1,7 @@
 # Maintainer: Jason Kercher <jkercher43 at gmail>
 pkgname=fql
 pkgver=1.0
+pkgrel=1
 pkgdesc="A SQL interpreter for text processing"
 arch=(x86_64)  # It is only tested on x86_64
 url="https://github.com/jasonKercher/fql"
