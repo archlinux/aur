@@ -2,31 +2,14 @@
 pkgname=stdcsv
 pkgver=1.0
 pkgrel=1
-#epoch=
 pkgdesc="A tool/library for working with delimited files."
 arch=(x86_64)  # It is only tested on x86_64
 url="https://github.com/jasonKercher/libcsv"
 license=(MIT)
-groups=()
-depends=()
-makedepends=()
 checkdepends=(check)
-optdepends=()
 provides=(libcsv.so)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jasonKercher/libcsv/releases/download/1.0/libcsv-1.0.tar.gz")
-noextract=()
-md5sums=(a5bdb8eed61d3fa16ca88762447f5d30)
-validpgpkeys=()
-
-prepare() {
-	true
-}
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+md5sums=(f55dd16fb53db59ccdff4ed0c00f97e1)
 
 build() {
 	cd "libcsv-$pkgver"
@@ -41,5 +24,5 @@ check() {
 
 package() {
 	cd "libcsv-$pkgver"
-	sudo make install
+	make DESTDIR="$pkgdir/" install
 }
