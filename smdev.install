@@ -1,8 +1,14 @@
+modprobe_info() {
+	echo "00-modprobe is placed in /etc/smdev. If you want smdev to handle MODALIAS (e.g. it is not handled on higher level), add this script to /etc/smdev/add"
+}
+
 post_install() {
 	id cdrom &>/dev/null || {
 		groupadd cdrom
 	}
-	id cdrom &>/dev/null || {
-		groupadd usb
-	}
+	modprobe_info
+}
+
+post_upgrade() {
+	modprobe_info
 }

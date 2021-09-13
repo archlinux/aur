@@ -3,14 +3,13 @@
 pkgbase=smdev-phkr
 pkgname=smdev
 pkgver=0.2.3
-pkgrel=9
+pkgrel=10
 _rev=8d07540
 pkgdesc='Suckless mdev'
 arch=('i686' 'x86_64' 'aarch64')
 url="http://git.suckless.org/smdev/"
 makedepends=( 'git' )
 provides=('mdev')
-#depends=( 'mksh' ) # mksh allows to procced scripts faster with almost bash compatible syntax
 license=( 'MIT/X' )
 options=( 'strip' )
 install='smdev.install'
@@ -33,8 +32,8 @@ sha1sums=('SKIP'
           'f0e3bfc2956d0c8885e08732cff8d0f9b6cf7103'
           '1f6b9327866981ffab4a275a64ee5c5249038968'
           'd741887a118ed921528189754d886159782ca6fe'
-          '04745465d144a8cf4e367c5a42ab8a0bc39622b3'
-          '6a5369d9e3efc4317c907cc6140e509e82a559a5'
+          '396e84460ba95dcf3aeaaf9f2bc711be92a2c395'
+          '2fa17e2c0ab472fb1ec7a1b04630393df67cf07a'
           '7fe74315c9a3592c2eb66cea8cd652da04461786'
           'ea04c776d0f6b749bfd1fc421d51c5ecd07379b5')
 
@@ -58,7 +57,7 @@ package() {
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 	cd "${srcdir}"
 	install -m744 -D processdev ${pkgdir}/etc/smdev/processdev
-	install -m644 -D 00-modprobe $pkgdir/etc/smdev/add/00-modprobe
+	install -m644 -D 00-modprobe $pkgdir/etc/smdev/00-modprobe
 	install -m644 -D 99-remove_links $pkgdir/etc/smdev/remove/99-remove_links
 	install -m644 -D initcpio.hook $pkgdir/usr/lib/initcpio/hooks/smdev
 	install -m644 -D initcpio.install $pkgdir/usr/lib/initcpio/install/smdev

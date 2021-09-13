@@ -1,7 +1,1 @@
-if [[ $DEVNAME ]]; then
-	for lnk in $(find /dev -type l -exec ls -al {} \; | grep /dev/$DEVNAME); do
-		if [[ $(echo $lnk | awk '{print $11}') == /dev/$DEVNAME ]]; then
-			rm -f $(echo $lnk | awk '{print $9}')
-		fi
-	done
-fi
+[ "$DEVNAME" ] && find /dev -type l -exec sh -c 'for i in "$@"; do [ "$0" = "$(realpath -- "$i")" ] && rm -f -- "$i"; done' "/dev/$DEVNAME" {} +

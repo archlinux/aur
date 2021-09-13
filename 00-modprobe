@@ -1,1 +1,1 @@
-[ "$MODALIAS" ] && modprobe "$MODALIAS"
+[ "$MODALIAS" ] && modprobe "$MODALIAS" 2> /dev/null
