@@ -1,30 +1,39 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Florian Wittmann
 
-_pkgname='typepy'
-pkgname="python-${_pkgname}"
-pkgver=1.1.2
+pkgname=python-typepy
+pkgver=1.2.0
 pkgrel=1
-pkgdesc='Variable run time type checker/validator/converter'
+pkgdesc='Variable runtime type checker/validator/converter'
 arch=('any')
 url='https://github.com/thombashi/typepy'
-_url_pypi='https://pypi.org/project/typepy'
 license=('MIT')
-depends=('python' 'python-mbstrdecoder')
+depends=('python-mbstrdecoder>=1.0.0' 'python-mbstrdecoder<2')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('afec7feeac73d6b01fe6b23314edc17eaf8469f93783d2460c229068ae9dc588')
+optdepends=('python-dateutil' 'python-pytz')
+checkdepends=('python-pytest-runner' 'python-tcolorpy' 'python-dateutil' 'python-pytz')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/typepy/typepy-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/t/typepy/typepy-$pkgver.tar.gz.asc")
+sha256sums=('96b4c50151ffaca025b7202cdd4e84987ca058f4d6cf1aad0d9c82226961455e'
+            'SKIP')
+validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "typepy-$pkgver"
   python setup.py build
 }
 
+check() {
+  cd "typepy-$pkgver"
+  python setup.py pytest
+}
+
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "typepy-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:

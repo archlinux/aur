@@ -1,15 +1,23 @@
 pkgbase = python-typepy
-	pkgdesc = Variable run time type checker/validator/converter
-	pkgver = 1.1.2
+	pkgdesc = Variable runtime type checker/validator/converter
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/thombashi/typepy
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-runner
+	checkdepends = python-tcolorpy
+	checkdepends = python-dateutil
+	checkdepends = python-pytz
 	makedepends = python-setuptools
-	depends = python
-	depends = python-mbstrdecoder
-	source = https://files.pythonhosted.org/packages/source/t/typepy/typepy-1.1.2.tar.gz
-	sha256sums = afec7feeac73d6b01fe6b23314edc17eaf8469f93783d2460c229068ae9dc588
+	depends = python-mbstrdecoder>=1.0.0
+	depends = python-mbstrdecoder<2
+	optdepends = python-dateutil
+	optdepends = python-pytz
+	source = python-typepy-1.2.0.tar.gz::https://files.pythonhosted.org/packages/source/t/typepy/typepy-1.2.0.tar.gz
+	source = python-typepy-1.2.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/t/typepy/typepy-1.2.0.tar.gz.asc
+	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
+	sha256sums = 96b4c50151ffaca025b7202cdd4e84987ca058f4d6cf1aad0d9c82226961455e
+	sha256sums = SKIP
 
 pkgname = python-typepy
-
