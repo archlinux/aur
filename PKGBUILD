@@ -4,9 +4,10 @@
 pkgname=dirsearch-git
 _name="${pkgname%-git}"
 
-pkgver() { git -C "$_name" describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\(alpha\)\([0-9]\+\)/\1_\2/'; }
-pkgver=0.4.2.beta1.r0.1f3fc77
-pkgrel=3
+epoch=1
+pkgver() { git -C "$_name" describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
+pkgver=0.4.2.r0.746dd50
+pkgrel=1
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
 arch=('any')
