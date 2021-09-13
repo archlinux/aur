@@ -1,0 +1,16 @@
+diff --git a/P0267_RefImpl/Tests/CMakeLists.txt b/P0267_RefImpl/Tests/CMakeLists.txt
+index 4bac6d4..ef44677 100644
+--- a/P0267_RefImpl/Tests/CMakeLists.txt
++++ b/P0267_RefImpl/Tests/CMakeLists.txt
+@@ -41,9 +41,9 @@ elseif(APPLE)
+ 	find_library(PNG_LIB png16)
+ 	target_link_libraries(tests ${PNG_LIB})	
+ else() # LINUX
+-	find_path(PNG_INCLUDE_DIR libpng/png.h)
++	find_path(PNG_INCLUDE_DIR libpng16/png.h)
+ 	target_include_directories(tests PUBLIC ${PNG_INCLUDE_DIR})
+-	find_library(PNG_LIB png)
++	find_library(PNG_LIB png16)
+ 	target_link_libraries(tests ${PNG_LIB})	
+ 
+ endif()
