@@ -1,6 +1,6 @@
 pkgbase = mssql-server
 	pkgdesc = Microsoft SQL Server for Linux
-	pkgver = 15.0.4138.2
+	pkgver = 15.0.4153.1
 	pkgrel = 1
 	url = https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15
 	install = mssql-server.install
@@ -10,7 +10,7 @@ pkgbase = mssql-server
 	depends = numactl
 	depends = sssd
 	depends = openssl-1.0>=1.0.2.l
-	source = https://packages.microsoft.com/rhel/7/mssql-server-2019/mssql-server-15.0.4138.2-1.x86_64.rpm
-	sha256sums = 24f4e1622f260d032b6177d758a1d62221283a290e17d0ce4596ce0e0a7c13c1
+	source = https://packages.microsoft.com/rhel/7/mssql-server-2019/mssql-server-15.0.4153.1-6.x86_64.rpm
+	sha256sums = 9d68e5dea059bcd1a979fb9ef4684620c5d22f040a8ec4ce43ef1312193194f7
 
 pkgname = mssql-server
