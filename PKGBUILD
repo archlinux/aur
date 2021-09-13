@@ -1,13 +1,13 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
 	'python-magic-ahupp' 'python-commonmark' 'python-aiohttp' 'python-yarl'
 	'python-mautrix>=0.10.4' 'python-mautrix<0.11' 'python-telethon>=1.22'
-	'python-telethon<1.23' 'python-telethon-session-sqlalchemy')
+	'python-telethon<1.24' 'python-telethon-session-sqlalchemy')
 makedepends=('python-setuptools' 'python-pytest-runner')
 optdepends=('python-cryptg: faster encryption'
 	'python-cchardet: faster encoding detection'
@@ -24,17 +24,18 @@ optdepends=('python-cryptg: faster encryption'
 	'python-unpaddedbase64: end-to-bridge encryption support')
 license=('AGPLv3')
 arch=('any')
-source=("${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
+source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
 sha256sums=('81376427d454b6c99c01b244027cd7609d19ef84653625d4027ba92fd5de0466'
             'a419168bff80e469f2f4e26279afae77d92e6ae86c2457696e1ca9fc6ba1cb12'
             '83dc721df0451c199d23ea74b60a065d92f98e9026dd779aca30d25195b88cf9'
             '2f5c45f6b0a9d1ae5237a91bdcb527609d262bc27cb7fa1dc736b4103ee230e5')
 backup=("etc/${pkgname}/config.yaml" "etc/${pkgname}/registration.yaml")
 install="${pkgname}.install"
+_dirname="${pkgname#mautrix-}-${pkgver}"
 
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_dirname}"
 	# the author makes liberal usage of max version for requirements without a real need
 	# we'll strip them and re-introduce in the deps/optdeps array if truly necessary
 	# to prevent a nightmare during updates while tracking stable releases
@@ -48,12 +49,12 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_dirname}"
 	python setup.py build
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_dirname}"
 
 	_shared_dir="/usr/share/${pkgname}"
 
