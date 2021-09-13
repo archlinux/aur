@@ -1,7 +1,7 @@
 pkgbase = yoga
 	pkgdesc = Yummy Optimizer for Gorgeous Assets
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wanadev/yoga
 	arch = any
 	license = unknown
@@ -14,6 +14,7 @@ pkgbase = yoga
 	depends = python-pyguetzli
 	depends = python-zopflipy
 	depends = assimp
+	depends = python-mozjpeg-lossless-optimization
 	source = https://files.pythonhosted.org/packages/source/y/yoga/yoga-1.1.0.tar.gz
 	sha256sums = dc240470806a369df29f9beeab88316df0f5bb7cc3ac092b00953cb55f0ca45e
 
@@ -26,3 +27,4 @@ pkgname = yoga
 	depends = python-pyguetzli
 	depends = python-zopflipy
 	depends = assimp
+	depends = python-mozjpeg-lossless-optimization
