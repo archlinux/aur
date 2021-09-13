@@ -2,7 +2,7 @@
 # Contributor: Andrew Chen <andrew@xortux.com>
 
 _target=arm-none-linux-gnueabihf
-_pkgver=10.2-2020.11
+_pkgver=10.3-2021.07
 
 pkgname=${_target}-toolchain-bin
 pkgver=${_pkgver//-/_}
@@ -13,7 +13,7 @@ url="https://developer.arm.com/tools-and-software/open-source-software/developer
 license=('GPL' 'LGPL')
 options=(!emptydirs !strip staticlibs)
 source=("https://developer.arm.com/-/media/Files/downloads/gnu-a/${_pkgver}/binrel/gcc-arm-${_pkgver}-x86_64-${_target}.tar.xz")
-md5sums=(14f706db78cfb43aafed9056174572b0)
+md5sums=(87ec580b290df2febc7c476f59484635)
 
 package() {
   mkdir -p ${pkgdir}/usr
