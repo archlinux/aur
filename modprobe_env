@@ -1,0 +1,2 @@
+#!/bin/sh
+exec modprobe $MODALIAS 2> /dev/null

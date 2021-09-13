@@ -6,6 +6,8 @@ build() {
     add_binary /usr/bin/nldev
     add_binary /usr/bin/nltrigger
     add_binary /usr/bin/find
+    add_binary /usr/bin/modprobe_env
+    add_binary /usr/bin/libudev-helper
     add_file /usr/lib/libm.so.6
 
     for file in /etc/smdev/add/*; do

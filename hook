@@ -5,13 +5,13 @@ run_earlyhook() {
     ln -sf /proc/self/fd/0 /dev/stdin
     ln -sf /proc/self/fd/1 /dev/stdout
     ln -sf /proc/self/fd/2 /dev/stderr
-    nldev -r /usr/bin/smdev &
+    nldev &
     echo $! > /run/nldev.pid
 }
 
 run_hook() {
     msg ":: Triggering uevents..."
-    nltrigger add all
+    nltrigger /sys add 0
     sleep 1s
 }
 
