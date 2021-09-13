@@ -1,4 +1,5 @@
-# Maintainer: Juan Simón <play4pro at protonmail dot com>
+# Maintainer: René Wagner <rwa at clttr dot info>
+# Contributor: Juan Simón <play4pro at protonmail dot com>
 # Contributor: alium
 # Contributor: angelsl
 _pkgbase=r8168
@@ -6,7 +7,7 @@ pkgname=${_pkgbase}-dkms
 pkgver=8.049.02
 pkgrel=1
 pkgdesc="A kernel module for Realtek 8168 network cards (DKMS version)"
-url="https://github.com/simonbcn/r8168-dkms"
+url="https://github.com/mtorromeo/r8168"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('glibc' 'dkms')
