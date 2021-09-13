@@ -3,7 +3,7 @@
 _target=msp430-elf
 pkgname=${_target}-newlib
 pkgver=4.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="C library for bare metal systems for the ${_target} target."
 arch=(any)
 url="https://sourceware.org/newlib/"
