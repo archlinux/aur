@@ -46,7 +46,7 @@ prepare() {
 
 	# Comment out XDG plugins patch if it breaks a plugin
 	# Some can be fixed by symlinking
-	# ln -s /usr/share/powercord/src/Powercord/plugins/pc-<name of module> ~/.local/share/powercord/plugins/pc-<name of module>
+	# ln -s /usr/share/powercord/src/Powercord/plugins/pc-<name of module> ~/.local/share/powercord/plugins/
 	# look at error/stack trace to figure name of module
 	patch -p1 -i "$srcdir/$_pkgname-plugins.patch"
 }
