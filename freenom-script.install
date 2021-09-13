@@ -1,0 +1,10 @@
+post_install() {
+        cat << EOF
+Remember to edit "/usr/local/etc/freenom.conf" and set your email and password
+To schedule domain renewals and updates, use these commands:
+- systemctl enable --now freenom-renew@example.tk.timer
+- systemctl enable --now freenom-renew-all.timer
+- systemctl enable --now freenom-update@example.tk.timer
+  * replace 'example.tk' with your domain
+EOF
+}

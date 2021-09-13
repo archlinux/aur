@@ -1,0 +1,52 @@
+diff --git "a/Makefile" "b/Makefile"
+index 6c1dafc..ab77c51 100644
+--- "a/Makefile"
++++ "b/Makefile"
+@@ -1,9 +1,9 @@
+ CONF = freenom.conf
+ SCRIPT = freenom.sh
+-SYSDDIR = /lib/systemd/system
+-CRONDIR = /etc/cron.d
+-INSTDIR = /usr/local/bin
+-CONFDIR = /usr/local/etc
++SYSDDIR = $(DESTDIR)/usr/lib/systemd/system
++CRONDIR = $(DESTDIR)/etc/cron.d
++INSTDIR = $(DESTDIR)/usr/local/bin
++CONFDIR = $(DESTDIR)/usr/local/etc
+ 
+ ifneq ("$(shell grep ^staff: /etc/group)", "")
+   GROUP = staff
+@@ -50,12 +50,14 @@ ifeq ("$(wildcard $(SCRIPT))","")
+ 	$(error ERROR: Installation File "$(SCRIPT)" not found)
+ endif
+ ifeq ("$(EXISTCONF)", "0")
++	$(shell mkdir -p $(CONFDIR))
+ 	$(shell install -C -m 644 -o root -g $(GROUP) $(CONF) $(CONFDIR))
+ 	$(info Remember to edit "$(CONF)" and set your email and password)
+ else
+ 	$(info File "$(CONFDIR)/$(CONF)" already exists)
+ endif
+ ifeq ("$(wildcard $(INSTDIR)/$(SCRIPT))","")
++	$(shell mkdir -p $(INSTDIR))
+ 	$(shell install -C -m 755 -o root -g $(GROUP) $(SCRIPT) $(INSTDIR))
+ else
+ 	$(info File "$(INSTDIR)/$(SCRIPT)" already exists)
+@@ -68,7 +70,8 @@ ifeq ("$(SCHED)", "systemd")
+   ifneq ("$(LISTUNITS)", "")
+ 	$(info Systemd unit files already installed)
+   else
+-	$(shell install -C -D -m 644 -o root -g root systemd/* $(SYSDDIR))
++	$(shell mkdir -p $(SYSDDIR))
++	$(shell install -C -m 644 -o root -g root systemd/* $(SYSDDIR))
+ 	$(shell systemctl daemon-reload)
+     ifeq ("$(wildcard $(SYSDDIR)/freenom-*)","")
+ 	$(info To schedule domain renewals and updates, use these commands:)
+@@ -82,7 +85,7 @@ else ifeq ("$(SCHED)", "cron")
+   ifeq ("$(wildcard cron.d/freenom)","")
+ 	$(error ERROR: Installation path "cron.d/freenom/*" not found)
+   else
+-	$(shell install -C -m 644 -o root -g root cron.d/freenom $(CRONDIR)/freenom)
++	$(shell install -C -D -m 644 -o root -g root cron.d/freenom $(CRONDIR)/freenom)
+ 	$(info Edit "$(CRONDIR)/freenom" to schedule domain renewals and updates)
+ 	$(info $() $() * replace example.tk with your domain and uncomment line(s))
+ 	$(info See README.md for details)
