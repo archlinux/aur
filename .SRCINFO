@@ -1,16 +1,19 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = GNU Coreutils rewritten in Rust
-	pkgver = r2675.1dc7d8cb
+	pkgver = r5937.e9d63519d
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	makedepends = python-sphinx
 	makedepends = cmake
+	makedepends = python-sphinx
+	depends = glibc
+	depends = gcc-libs
+	conflicts = uutils-coreutils
 	source = git+https://github.com/uutils/coreutils.git
 	sha512sums = SKIP
 
 pkgname = uutils-coreutils-git
-
