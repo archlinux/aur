@@ -7,3 +7,4 @@ linux-el-*.pkg.tar*
 
 src/
 pkg/
+*.log
