@@ -1,30 +1,40 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Florian Wittmann
 
-_pkgname='subprocrunner'
-pkgname="python-${_pkgname}"
-pkgver=1.2.1
-pkgrel=2
+pkgname=python-subprocrunner
+_name="${pkgname#python-}"
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Python wrapper library for subprocess module'
 arch=('any')
 url='https://github.com/thombashi/subprocrunner'
-_url_pypi='https://pypi.org/project/subprocrunner'
 license=('MIT')
-depends=('python' 'python-mbstrdecoder')
+depends=('python-mbstrdecoder>=1.0.0' 'python-mbstrdecoder<2')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('446b0763ee6896f8e20e8a4484387c26e3ebd8ba586b84580c7e1fe75e469724')
+# checkdepends=('python-pytest-runner' 'python-pytest-mock' 'python-typepy')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz.asc")
+sha256sums=('1c1e928db282e7453853744290908d04047a8fb3b49ff1e7f8284e6a3be3a810'
+            'SKIP')
+validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "$_name-$pkgver"
   python setup.py build
 }
 
+## tests fail due to nonexistent 'hostname' command
+# check() {
+#   cd "$_name-$pkgver"
+#   python setup.py pytest
+# }
+
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
