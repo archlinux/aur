@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/Lightcord/Lightcord/releases/d
 )
 
 sha256sums=('acfea4f0420d508d16d8d261734031c3dca18a835bcdce10db34f436299e2670'
-            '15032409c31cbf25f0adadeff9b09e3ef45c265ddfbbf48d9cfe91d1da145124'
+            '1b312fc6364cb77d86d163126193b8e57057b32a054785cd8232badb32d620bb'
             '27f7abb09a61deff3a4d6944f1dab4ab3f6ada35767e586fad0a195fab35e0b9'
             '80e14fe1ef2af1b4049874ae3babdc597fe5b49e959c7593333ad59d3a20b94d')
 

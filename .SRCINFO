@@ -14,7 +14,7 @@ pkgbase = lightcord-bin
 	source = https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png
 	source = https://raw.githubusercontent.com/Lightcord/Lightcord/master/LICENSE
 	sha256sums = acfea4f0420d508d16d8d261734031c3dca18a835bcdce10db34f436299e2670
-	sha256sums = 15032409c31cbf25f0adadeff9b09e3ef45c265ddfbbf48d9cfe91d1da145124
+	sha256sums = 1b312fc6364cb77d86d163126193b8e57057b32a054785cd8232badb32d620bb
 	sha256sums = 27f7abb09a61deff3a4d6944f1dab4ab3f6ada35767e586fad0a195fab35e0b9
 	sha256sums = 80e14fe1ef2af1b4049874ae3babdc597fe5b49e959c7593333ad59d3a20b94d
 
