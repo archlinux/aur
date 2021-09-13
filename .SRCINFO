@@ -1,0 +1,30 @@
+pkgbase = lib32-nvidia-430xx-utils
+	pkgver = 430.40
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://us.download.nvidia.com/XFree86/Linux-x86/430.40/NVIDIA-Linux-x86-430.40.run
+	b2sums = 3c5f798a6820c96c47024c2f00de9201bd668500c7195c9d221dd102a9ae940227a7dafb6c94e47e9f9e4279036bdf154a598f054a7d92cbe5192131c6cf72b0
+
+pkgname = lib32-nvidia-430xx-utils
+	pkgdesc = NVIDIA drivers utilities (32-bit), 430xx legacy branch
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = lib32-libglvnd
+	depends = nvidia-430xx-utils
+	optdepends = lib32-opencl-nvidia-430xx: OpenCL support
+	provides = lib32-vulkan-driver
+	provides = lib32-opengl-driver
+	provides = lib32-nvidia-430xx-libgl
+	provides = lib32-nvidia-utils
+	conflicts = lib32-nvidia-utils
+
+pkgname = lib32-opencl-nvidia-430xx
+	pkgdesc = OpenCL implemention for NVIDIA (32-bit), 430xx legacy branch
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = lib32-opencl-driver
+	conflicts = lib32-opencl-nvidia
