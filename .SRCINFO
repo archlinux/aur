@@ -1,16 +1,14 @@
 pkgbase = python-allpairspy
-	pkgdesc = A python library for test combinations generator
+	pkgdesc = Python library for test combinations generator
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thombashi/allpairspy
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
-	makedepends = python-six
 	depends = python
-	source = https://github.com/thombashi/allpairspy/archive/v2.5.0.tar.gz
-	sha256sums = 4af06f6af70d53f126daf04fda82ae1dbb8517b0bdad0f55aaa5e04f3d9daa6a
+	source = python-allpairspy-2.5.0.tar.gz::https://files.pythonhosted.org/packages/source/a/allpairspy/allpairspy-2.5.0.tar.gz
+	sha256sums = 9358484c91abe74ba18daf9d6d6904c5be7cc8818397d05248c9d336023c28b1
 
 pkgname = python-allpairspy
-

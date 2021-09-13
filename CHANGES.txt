@@ -1,0 +1,28 @@
+Version 2.0.1 (April 4, 2009):
+
+    - Moved examples into their own directory.
+
+    - 'example2.2.py' re-written to get rid of frivolous usage of
+      decorators (thanks to Tennis Smith for bringing
+      the example's apparent complexity to our attention).
+
+    - Easier installation through distutils-based setup.py script.
+
+    - Created AllPairs project on SourceForge.net with home page at
+      http://apps.sourceforge.net/trac/allpairs/.
+
+    - Submitted the project to the Python Package Index at
+      http://pypi.python.org/pypi.
+
+
+Version 2.0 (December 2007):
+
+    - Ability to produce n-wise combinations.
+    - Released as open source to MetaCommunications Engineering
+      website (http://engineering.meta-comm.com).
+
+
+Version 1.0 (May 2002):
+
+    Initial version, widely adopted at MetaCommunications Inc. for
+    multiple testing projects.
