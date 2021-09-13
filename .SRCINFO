@@ -1,7 +1,7 @@
 pkgbase = cryptomator
 	pkgdesc = Multiplatform transparent client-side encryption of your files in the cloud.
-	pkgver = 1.5.15
-	pkgrel = 2
+	pkgver = 1.5.17
+	pkgrel = 1
 	url = https://cryptomator.org/
 	arch = x86_64
 	license = GPL3
@@ -14,16 +14,15 @@ pkgbase = cryptomator
 	depends = libnet
 	depends = libxrender
 	options = !strip
-	source = cryptomator-1.5.15::https://github.com/cryptomator/cryptomator/archive/refs/tags/1.5.15.tar.gz
+	source = cryptomator-1.5.17::https://github.com/cryptomator/cryptomator/archive/refs/tags/1.5.17.tar.gz
 	source = org.cryptomator.Cryptomator.desktop
 	source = org.cryptomator.Cryptomator.png
 	source = org.cryptomator.Cryptomator.svg
 	source = cryptomator-vault.xml
-	sha256sums = 04c7b4630278f3303b3e4a3df44be6fd457e32ff1f4f1b188a6f8471a9957892
+	sha256sums = 222192184442d8f0d44bd277ea519111a78fbf61ea8baf8ded77ef65dee493aa
 	sha256sums = 53c509fe54ef1c5c28b469d86291536649367fb2030b2c0fb3101da2031f8e6e
 	sha256sums = d299636d78d093117fa7a26563f22e01cdb75b1fcc6cc279bc88627574c968bd
 	sha256sums = 0989ecc24ecd672c5c525ab6f1f0fb18a9eeca86ebec19738f512801c152f756
 	sha256sums = 78537ead26dcc1488d7fff02f47fce559f70f9bb2d7fa7fa1741ad3cd151bfad
 
 pkgname = cryptomator
-
