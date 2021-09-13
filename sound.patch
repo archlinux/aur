@@ -1,0 +1,17 @@
+--- src/sfx.cpp
++++ src/sfx.cpp
+@@ -747,12 +747,12 @@
+ 
+   /* Work-around to disable fluidsynth and fallback to TiMidity++: */
+   /* TODO: allow user to set it at run-time */
+-  /* SDL_setenv("SDL_SOUNDFONTS="); */
++     SDL_setenv("SDL_SOUNDFONTS", "/usr/share/soundfonts/FluidR3_GM.sf2", 0);
+   /* SDL_setenv("SDL_FORCE_SOUNDFONTS=1"); */
+ 
+   /* To specify an alternate timidity.cfg */
+   /* Cf. SDL2_mixer/timidity/config.h for defaults */
+-  /* SDL_setenv("TIMIDITY_CFG", "somewhere/timidity.cfg", 0); */
++     SDL_setenv("TIMIDITY_CFG", "/etc/timidity/timidity.cfg", 1);
+ 
+   /* MIX_DEFAULT_FREQUENCY is ~22kHz are considered a good default,
+      44kHz is considered too CPU-intensive on older computers */
