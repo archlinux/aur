@@ -1,16 +1,16 @@
 pkgbase = python-multimethod
 	pkgdesc = Multiple argument dispatching
-	pkgver = 1.5
-	pkgrel = 1
+	pkgver = 1.6
+	pkgrel = 2
 	url = https://github.com/coady/multimethod
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
+	makedepends = python-dephell
 	makedepends = python-setuptools
 	depends = python
-	source = multimethod-1.5.tar.gz::https://github.com/coady/multimethod/archive/v1.5.tar.gz
-	sha512sums = dc9d1843480caa91dd7dbcf5203ed70b67e7becae642984c71eb55bd064b6ee8be99693b156b5f0a94129bbfd170cf73d98aef554b266f18fea1bb814a367b3f
+	source = multimethod-1.6.tar.gz::https://github.com/coady/multimethod/archive/v1.6.tar.gz
+	sha512sums = 1c714f7c85a0c3696095804a2e2a248a011fd98ab049e01b03fc0b6b1fa82e9269f9d99088737442b45bc2c00b227b0cec532401372414d29befeddb6a99e7da
 
 pkgname = python-multimethod
-
