@@ -2,7 +2,6 @@
 # Maintainer: FabioLolix
 # Contributor: J.D. Broberg <jdbroberg72 at gmail dot com>
 
-epoch=1
 pkgname=odin-git
 _pkgname=odin
 pkgver=r4572.15c309b0
