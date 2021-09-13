@@ -6,7 +6,7 @@
 # Contributor: AUR[Severus]
 
 pkgname=mattermost-desktop
-pkgver=4.7.1
+pkgver=4.7.2
 pkgrel=1
 pkgdesc='Mattermost Desktop application for Linux'
 arch=(x86_64 i686)
@@ -19,7 +19,7 @@ makedepends=(git jq moreutils npm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "${pkgname/-/.}")
-sha256sums=('65a9980e83e8258f7c6864a344597ffad7c665b7758774e6935482879ee0de4e'
+sha256sums=('c6bef6f48a4e5fc2b0a066adfba1a26481bbf4ba689ef788ea4c8e14011eda82'
             '1c2bf48b6397d04a5a536c5c9f4960db53249c838c380f03f808c612b00ba4c6'
             'e628268d3393aac0d5b7237c6b8818d2e362c373f99874a19171bf96a25e4ffa')
 
