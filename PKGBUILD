@@ -5,7 +5,7 @@
 pkgname=python-plexapi
 _name="PlexAPI"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pkkid/python-plexapi/archive/$pkgver.tar.gz")
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="Python bindings for the Plex API."
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-requests'
          'python-websocket-client')
 makedepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('503abc51b0011e8d82b07811c41c14e59c715900406ad9e1b6db086395275dfe')
+sha256sums=('640967b29565ecfadab1f2f2ecd3db7f9b47c21256e0f97a32b68d806e60e5d3')
 
 package() {
     cd "$_name-$pkgver"
