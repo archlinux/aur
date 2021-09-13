@@ -1,0 +1,107 @@
+diff --git a/src/Powercord/apis/commands.js b/src/Powercord/apis/commands.js
+index a823920..4d5b3ce 100644
+--- a/src/Powercord/apis/commands.js
++++ b/src/Powercord/apis/commands.js
+@@ -52,8 +52,8 @@ class CommandsAPI extends API {
+    */
+   registerCommand (command) {
+     // @todo: remove this once there's a proper implemention (if any) for fetching the command origin.
+-    const stackTrace = (new Error()).stack;
+-    const [ , origin ] = stackTrace.match(new RegExp(`${global._.escapeRegExp(powercord.pluginManager.pluginDir)}.([-\\w]+)`));
++    // const stackTrace = (new Error()).stack;
++    // const [ , origin ] = stackTrace.match(new RegExp(`${global._.escapeRegExp(powercord.pluginManager.pluginDir)}.([-\\w]+)`));
+ 
+     if (typeof command === 'string') {
+       console.error('no');
+diff --git a/src/Powercord/managers/plugins.js b/src/Powercord/managers/plugins.js
+index b904caa..8a04d3c 100644
+--- a/src/Powercord/managers/plugins.js
++++ b/src/Powercord/managers/plugins.js
+@@ -2,9 +2,12 @@ const { resolve } = require('path');
+ const { readdirSync } = require('fs');
+ const { rmdirRf } = require('powercord/util');
+ 
++const XDG_DATA_HOME = process.env.XDG_DATA_HOME || join(process.env.HOME, '.local', 'share');
++
+ module.exports = class PluginManager {
+   constructor () {
+-    this.pluginDir = resolve(__dirname, '..', 'plugins');
++    this.pluginDir = resolve(XDG_DATA_HOME, 'powercord', 'plugins');
++    this.internalPluginDir = resolve(__dirname, '..', 'plugins');
+     this.plugins = new Map();
+ 
+     this.manifestKeys = [ 'name', 'version', 'description', 'author', 'license' ];
+@@ -28,14 +31,14 @@ module.exports = class PluginManager {
+   }
+ 
+   // Mount/load/enable/install shit
+-  mount (pluginID) {
++  mount (pluginDir, pluginID) {
+     let manifest;
+     try {
+       manifest = Object.assign({
+         appMode: 'app',
+         dependencies: [],
+         optionalDependencies: []
+-      }, require(resolve(this.pluginDir, pluginID, 'manifest.json')));
++      }, require(resolve(pluginDir, pluginID, 'manifest.json')));
+     } catch (e) {
+       return console.error('%c[Powercord]', 'color: #7289da', `Plugin ${pluginID} doesn't have a valid manifest - Skipping`);
+     }
+@@ -45,7 +48,7 @@ module.exports = class PluginManager {
+     }
+ 
+     try {
+-      const PluginClass = require(resolve(this.pluginDir, pluginID));
++      const PluginClass = require(resolve(pluginDir, pluginID));
+       Object.defineProperties(PluginClass.prototype, {
+         entityID: {
+           get: () => pluginID,
+@@ -61,19 +64,22 @@ module.exports = class PluginManager {
+         }
+       });
+ 
+-      this.plugins.set(pluginID, new PluginClass());
++      let plugin = new PluginClass();
++      plugin.pluginDir = pluginDir;
++      this.plugins.set(pluginID, plugin);
+     } catch (e) {
+       console.error('%c[Powercord:Plugin]', 'color: #7289da', `An error occurred while initializing "${pluginID}"!`, e);
+     }
+   }
+ 
+   async remount (pluginID) {
++    const pluginDir = this.plugins.get(pluginID).pluginDir;
+     try {
+       await this.unmount(pluginID);
+     } catch (e) {
+       // chhhh
+     }
+-    this.mount(pluginID);
++    this.mount(pluginDir, pluginID);
+     this.plugins.get(pluginID)._load();
+   }
+ 
+@@ -166,7 +172,8 @@ module.exports = class PluginManager {
+   startPlugins (sync = false) {
+     const missingPlugins = [];
+     const isOverlay = (/overlay/).test(location.pathname);
+-    readdirSync(this.pluginDir).sort(this._sortPlugins).forEach(filename => !this.isInstalled(filename) && this.mount(filename));
++    readdirSync(this.internalPluginDir).sort(this._sortPlugins).forEach(filename => !this.isInstalled(filename) && this.mount(this.internalPluginDir, filename));
++    readdirSync(this.pluginDir).sort(this._sortPlugins).forEach(filename => !this.isInstalled(filename) && this.mount(this.pluginDir, filename));
+     for (const plugin of [ ...this.plugins.values() ]) {
+       if (powercord.settings.get('disabledPlugins', []).includes(plugin.entityID)) {
+         continue;
+diff --git a/src/fake_node_modules/powercord/entities/Plugin.js b/src/fake_node_modules/powercord/entities/Plugin.js
+index 3522a54..fa0e0a5 100644
+--- a/src/fake_node_modules/powercord/entities/Plugin.js
++++ b/src/fake_node_modules/powercord/entities/Plugin.js
+@@ -63,7 +63,7 @@ class Plugin extends Updatable {
+     let resolvedPath = path;
+     if (!existsSync(resolvedPath)) {
+       // Assume it's a relative path and try resolving it
+-      resolvedPath = join(powercord.pluginManager.pluginDir, this.entityID, path);
++      resolvedPath = join(this.pluginDir, this.entityID, path);
+ 
+       if (!existsSync(resolvedPath)) {
+         throw new Error(`Cannot find "${path}"! Make sure the file exists and try again.`);

@@ -1,0 +1,18 @@
+diff --git a/src/Powercord/managers/styles.js b/src/Powercord/managers/styles.js
+index 65b97b7..ab4ac64 100644
+--- a/src/Powercord/managers/styles.js
++++ b/src/Powercord/managers/styles.js
+@@ -13,10 +13,12 @@ const ErrorTypes = Object.freeze({
+   INVALID_MANIFEST: 'INVALID_MANIFEST'
+ });
+ 
++const XDG_DATA_HOME = process.env.XDG_DATA_HOME || join(process.env.HOME, '.local', 'share');
++
+ module.exports = class StyleManager {
+   constructor () {
+     this._coreStyles = [];
+-    this.themesDir = join(__dirname, '../themes');
++    this.themesDir = join(XDG_DATA_HOME, 'powercord', 'themes');
+     this.themes = new Map();
+ 
+     if (!window.__SPLASH__) {
