@@ -1,7 +1,7 @@
 pkgbase = duma
 	pkgdesc = Detect Unintended Memory Access (D.U.M.A.) - A Red-Zone memory allocator
 	pkgver = 2.5.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johnsonjh/duma
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = duma
 	depends = bash
 	depends = gcc-libs
 	source = https://github.com/johnsonjh/duma/archive/refs/tags/VERSION_2_5_21.tar.gz
+	source = tests_dynamic_exceptions.patch
 	sha256sums = 470aa72e7018f0beadb5fbe3c932a62ba1b0594c29158a744c614bfa42133e59
+	sha256sums = b83fdf43711da3ff065592da9c45fe6efd422e4f9585159e1e11dc327307697b
 
 pkgname = duma
-
