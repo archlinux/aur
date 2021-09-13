@@ -2,8 +2,8 @@
 
 pkgname=('yoga')
 _module='yoga'
-pkgver='1.0.0'
-pkgrel=6
+pkgver='1.1.0'
+pkgrel=1
 pkgdesc="Yummy Optimizer for Gorgeous Assets"
 url="https://github.com/wanadev/yoga"
 depends=(python3 python-cffi python-pillow python-pycparser python-unidecode python-pyguetzli python-zopflipy assimp)
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('unknown')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('a4e7010969602b42af2ca74c95126ee533e3cf9ea9fdaa0c5c316eec7d985f53')
+sha256sums=('dc240470806a369df29f9beeab88316df0f5bb7cc3ac092b00953cb55f0ca45e')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
