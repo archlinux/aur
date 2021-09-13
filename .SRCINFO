@@ -1,0 +1,19 @@
+pkgbase = playgsf-git
+	pkgdesc = Simple command line player for gsf files based on a winamp plugin
+	pkgver = r9.9653dc6
+	pkgrel = 1
+	url = https://github.com/jpsutton/playgsf
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = unknown
+	makedepends = libsndfile
+	makedepends = libsamplerate
+	depends = libao
+	depends = zlib
+	provides = playgsf
+	conflicts = playgsf
+	source = git+https://github.com/jpsutton/playgsf.git
+	md5sums = SKIP
+
+pkgname = playgsf-git
