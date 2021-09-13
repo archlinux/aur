@@ -4,8 +4,9 @@ post_install() {
     # force load uinput kernel module
     modprobe uinput
     
-    # reload udev rules
+    # force reload udev rules
     udevadm control --reload-rules
+    udevadm trigger
 }
 
 post_upgrade() {
