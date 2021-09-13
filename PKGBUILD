@@ -1,6 +1,6 @@
 # Maintainer: Magnus Anderson <magnus@iastate.edu>
 pkgname=ascii-image-converter-git
-pkgver=1.8.0.r3.ga8701af
+pkgver=1.10.0.r1.g3c6a1a5
 pkgrel=1
 pkgdesc="A cross-platform command-line tool to convert images into ascii art and print them on the console."
 arch=('x86_64')
