@@ -1,0 +1,13 @@
+post_install() {
+  echo -e "\e[1;36mNOTE:\e[0m bk-emulator requires BIOS files to be placed in 'bk' folder under the libretro System/BIOS folder:
+    'B11M_BOS.ROM'
+    'B11M_EXT.ROM'
+    'BAS11M_0.ROM'
+    'BAS11M_1.ROM'
+    'DISK_327.ROM'
+    'BASIC10.ROM'
+    'FOCAL10.ROM'
+    'MONIT10.ROM'"
+}
+  msg2 "\e[1;32mFreeIntv requires Intellivision BIOS files 'exec.bin' and 'grom.bin' to be placed in the libretro 'system' folder. \e[0m"
+
