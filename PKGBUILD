@@ -3,27 +3,30 @@
 pkgname=python-pytest-check
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
-pkgdesc="pytest plugin that allows multiple failures per test"
+pkgdesc="Pytest plugin that allows multiple failures per test"
 arch=('any')
 url="https://github.com/okken/pytest-check"
 license=('MIT')
 depends=('python' 'python-pytest')
-makedepends=('python-setuptools')
-checkdepends=() # TODO
-optdepends=()
+makedepends=('python-build' 'python-pip' 'python-flit-core')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('f759e7977cef1f6910a4027760b30324da445a563ad43a5077b3e57be5a9c82f8ac339a9152a6c3d3904673a4a2d3f1ef3e1e4aea56cc9940a3fa1b7a60e1356')
+b2sums=('9e779f2912dd0de989ec0ee1d588be23bfbdcfbf7fc7ab58d4387622d84332266bd0b39415f6560be83c0a0e25d6eec3bfb2d54360b26ba1b96a06e7cf755fda')
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  PIP_CONFIG_FILE=/dev/null pip install \
+    --isolated \
+    --root="$pkgdir" \
+    --ignore-installed \
+    --no-deps \
+    dist/*.whl
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
