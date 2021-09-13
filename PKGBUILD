@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-bin
 _id="io.github.benjamimgois.${pkgname%-bin}"
-_pkgver=0_6_2
+_pkgver=0_6_3
 pkgver=${_pkgver//_/.}
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
@@ -17,13 +17,13 @@ optdepends=('vkbasalt: Configure vkBasalt'
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/$pkgver/${pkgname%-bin}_${_pkgver}.tar.xz"
-        "${pkgname%-bin}.1.gz"
-        "$_id.desktop"
-        "$_id.metainfo.xml"
-        "${pkgname%-bin}.png")
-sha256sums=('e46ccb180dc99b4bcfed520f21ef2e21477c9f23bec3c1f511e7ce5a9b5915a9'
-            '5fc33dc64105c0bb2a3bdbab80e2a556a282da952b3612e21612a043367025f7'
-            'b48a7402658d78ea5aeab92bea014d9ab71775a33286633c4a777edcbc289fbf'
+        "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/${pkgname%-bin}.1"
+        "https://raw.githubusercontent.com/benjamimgois/goverlay/$pkgver/data/$_id.desktop"
+        "https://raw.githubusercontent.com/benjamimgois/goverlay/$pkgver/data/$_id.metainfo.xml"
+        "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/icons/512x512/${pkgname%-bin}.png")
+sha256sums=('b8cf12c5f3388065e056fc51f6b45b6edfbbbed7415701cc3433937c0cf9e869'
+            'd87db8157e4ef57e14b98e4d1b001c571f5ad4bfd4a12f3bfbe686a1a5541fed'
+            'a02deeb01b390a9a91e8a5646e96424e079201ddcf9116610e4fb5eb8fa0aa62'
             '7828ef36e89e5285e260c36f722838c1f89bce2cd5f21c0c31e2f7dae95cff70'
             '82baf73d583dd13f1073b2b8d6aa7edc0c558521a46d77bdf1a88cc401e7cc7f')
 

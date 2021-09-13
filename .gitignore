@@ -5,7 +5,3 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!goverlay.1.gz
-!io.github.benjamimgois.goverlay.desktop
-!io.github.benjamimgois.goverlay.metainfo.xml
-!goverlay.png
