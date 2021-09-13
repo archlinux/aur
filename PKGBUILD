@@ -5,7 +5,7 @@
 pkgname=os-prober-btrfs
 _pkgname=os-prober
 pkgver=1.79
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to detect other OSes on a set of drives (with additional patches to detect btrfs systems and other systems)"
 url="http://joey.kitenet.net/code/os-prober/"
 arch=('x86_64')
@@ -15,7 +15,6 @@ provides=('os-prober' 'os-prober-garuda')
 conflicts=('os-prober' 'os-prober-garuda')
 replaces=('os-prober-garuda')
 source=(http://http.debian.net/debian/pool/main/o/${_pkgname}/${_pkgname}_${pkgver}.tar.xz
-  os-prober-newnsdirfix.patch
   os-prober-1.49-fix-grub2.cfg-parsing.patch
   os-prober-1.49-grub2-mount.patch
   os-prober-probe-MD-devices.patch
@@ -35,7 +34,6 @@ source=(http://http.debian.net/debian/pool/main/o/${_pkgname}/${_pkgname}_${pkgv
   os-prober-make-btrfsprogs-optional.patch
   os-prober-disable-debug.patch)
 md5sums=('08d3bfff00f1f7c068ce509656728eba'
-         '25472f3c6f27681df6e01ff275a7b571'
          '282040a02e5150736234511d9986f4ac'
          '12cc212f04ac0768de9a1525df12e86e'
          '5532000280ed1ded65e417c90c552c1b'
@@ -55,7 +53,6 @@ md5sums=('08d3bfff00f1f7c068ce509656728eba'
          '03d733433697d5f0e4fddc506b89575e'
          'ab664f2e22a098f83b42c06babd9ab20')
 sha256sums=('abe6317d078c4e51e322e62036b6df4a698bfe80c5be110a08894841179810ee'
-            '9301e3bbb7964a962f43ebe54dea77f56c1dffb91d99e23f306faefd8667c30a'
             '71222cbe521abb676a0441a7e58cd58161b992d1e19e34eb0ee951c6b891e474'
             '754a8ac582dc0d8d882bb4c75d1216d2a2ec892848cd5cef353183d932d7026f'
             '7969ba7066cdd00ad21fdb9d84bf57955adcfc9b844b6955a0b5cb28eafe304a'
@@ -78,7 +75,6 @@ sha256sums=('abe6317d078c4e51e322e62036b6df4a698bfe80c5be110a08894841179810ee'
 prepare() {
   cd ${_pkgname}
 
-  patch -p1 -i "$srcdir"/os-prober-newnsdirfix.patch
   patch -p1 -i "$srcdir"/os-prober-1.49-fix-grub2.cfg-parsing.patch
   patch -p1 -i "$srcdir"/os-prober-1.49-grub2-mount.patch
   patch -p1 -i "$srcdir"/os-prober-probe-MD-devices.patch
