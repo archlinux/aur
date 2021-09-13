@@ -1,0 +1,13 @@
+pkgbase = xfce4-memgraph-plugin
+	pkgdesc = Graphical representation of the MEM load
+	pkgver = 1.2.3
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = intltool
+	depends = xfce4-panel
+	source = git+https://github.com/Cationiz3r/xfce4-memgraph-plugin
+	md5sums = SKIP
+
+pkgname = xfce4-memgraph-plugin
