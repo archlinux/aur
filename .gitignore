@@ -3,3 +3,4 @@ src/
 pkg/
 *.tar.gz
 *.tar.xz
+depends.awk
