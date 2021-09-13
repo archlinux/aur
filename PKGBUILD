@@ -1,7 +1,7 @@
 # Maintainer: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
 pkgname=gitstatus-bin
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Git status for Bash and Zsh prompt'
 arch=('any')
@@ -10,7 +10,8 @@ license=('GPL3')
 provides=("gitstatus")
 conflicts=("gitstatus")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/gitstatus/archive/v${pkgver}.tar.gz")
-sha512sums=('40596cf2f43c6f97094e7f05133e2f1af02e2ce95f5a4688fa11dc7bdeef1ef594e6baba6e9a0a4db7c08ccd3054047792a5c0ac78ac57e595e7f372a83a454d')
+sha512sums=('7cadc28f3a458bf28c721d2b9e669d0b487b6c8e2af255efd2e7385a1edf78eed1109311753b941b4d00ac632e4bd76b4352061b76ef03fea7a34a3f5a0cd99a')
+depends=('glibc')
 makedepends=('zsh')
 install='gitstatus.install'
 
@@ -22,4 +23,5 @@ build() {
 package() {
   cd "$srcdir/gitstatus-${pkgver}"
   find . -type f -exec install -D '{}' "$pkgdir/usr/share/gitstatus/{}" ';'
+  make -C "$pkgdir"/usr/share/gitstatus zwc minify
 }

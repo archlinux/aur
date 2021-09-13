@@ -1,15 +1,16 @@
 pkgbase = gitstatus-bin
 	pkgdesc = Git status for Bash and Zsh prompt
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/romkatv/gitstatus
 	install = gitstatus.install
 	arch = any
 	license = GPL3
 	makedepends = zsh
+	depends = glibc
 	provides = gitstatus
 	conflicts = gitstatus
-	source = gitstatus-bin-1.5.2.tar.gz::https://github.com/romkatv/gitstatus/archive/v1.5.2.tar.gz
-	sha512sums = 40596cf2f43c6f97094e7f05133e2f1af02e2ce95f5a4688fa11dc7bdeef1ef594e6baba6e9a0a4db7c08ccd3054047792a5c0ac78ac57e595e7f372a83a454d
+	source = gitstatus-bin-1.5.3.tar.gz::https://github.com/romkatv/gitstatus/archive/v1.5.3.tar.gz
+	sha512sums = 7cadc28f3a458bf28c721d2b9e669d0b487b6c8e2af255efd2e7385a1edf78eed1109311753b941b4d00ac632e4bd76b4352061b76ef03fea7a34a3f5a0cd99a
 
 pkgname = gitstatus-bin
