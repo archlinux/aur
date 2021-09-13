@@ -1,10 +1,28 @@
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public final class JREMajorVersion {
+
+  private static final Pattern sanitizePattern =
+    Pattern.compile("^\\s*([0-9]+(\\.[0-9]+)*)");
 
   private static final String bugLink =
     "Please report this as a bug to https://aur.archlinux.org/packages/metals/";
 
+  private static String sanitizeVersion(final String value) {
+    final Matcher m = JREMajorVersion.sanitizePattern.matcher(value);
+    if (m.find()) {
+      return m.group(1);
+    } else {
+      throw new AssertionError("Unable to parse valid version number from input: " +
+                               value +
+                               ". This may be a bug in the Arch Linux package of metals, or something very odd in the JRE you are using. " +
+                               JREMajorVersion.bugLink);
+    }
+  }
+
   private static String getMajorVersion() {
-    final String javaVersion = System.getProperty("java.version");
+    final String javaVersion = sanitizeVersion(System.getProperty("java.version"));
     if (javaVersion == null) {
       throw new AssertionError("System property \"java.version\" is null. " + JREMajorVersion.bugLink);
     } else {

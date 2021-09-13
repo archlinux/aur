@@ -1,7 +1,7 @@
 /src/
 /pkg/
 /*.log
-/metals-*.tar.xz
+/metals-*.tar.*
 /v*.tar.gz
 /*.pkg.tar.zst
 /*.class

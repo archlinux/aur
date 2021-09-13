@@ -11,18 +11,19 @@ declare _CP="$_INSTALL_DIR/lib:$_INSTALL_DIR/metals"
 # installation locations of the various JDKs in Arch Linux.
 #
 # We only explicitly try known working versions, at the time of
-# writing that is >= 8 and <= 11. We prefer newer versions to older
+# writing that is >= 8 and <= 17. We prefer newer versions to older
 # ones.
-declare -r -a _JAVA_ARCH_PACKAGE_PATHS=('/usr/lib/jvm/java-11-openjdk/bin'
+declare -r -a _JAVA_ARCH_PACKAGE_PATHS=('/usr/lib/jvm/java-17-openjdk/bin'
+                                        '/usr/lib/jvm/java-16-openjdk/bin'
+                                        '/usr/lib/jvm/java-15-openjdk/bin'
+                                        '/usr/lib/jvm/java-14-openjdk/bin'
+                                        '/usr/lib/jvm/java-13-openjdk/bin'
+                                        '/usr/lib/jvm/java-12-openjdk/bin'
+                                        '/usr/lib/jvm/java-11-openjdk/bin'
                                         '/usr/lib/jvm/java-10-openjdk/bin'
                                         '/usr/lib/jvm/java-8-openjdk/jre/bin'
                                        )
-declare -r -a _DEFAULT_METALS_JAVA_OPTS=('-XX:MaxHeapFreeRatio=20' '-XX:MinHeapFreeRatio=5')
-
-# Good to have, but not supported on JDK 8 (JDK 9 is skipped because
-# it is both EOL and there is no official Arch package to install it
-# anymore.)
-declare -r -a _DEFAULT_JDK_10_PLUS_OPTS=('-XX:MaxRAMPercentage=25')
+declare -r -a _DEFAULT_METALS_JAVA_OPTS=('-XX:MaxHeapFreeRatio=20' '-XX:MinHeapFreeRatio=5' '-XX:MaxRAMPercentage=25.0')
 
 # The _actual_ metals options will be put here after
 # setup_metals_java_opts is run.
