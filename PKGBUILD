@@ -40,6 +40,6 @@ package() {
     cp -r core "${pkgdir}/usr/lib/${_pkgname}/core"
     ln -s "/usr/lib/${_pkgname}/odin" "${pkgdir}/usr/bin/odin"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cp -r examples "${pkgdir}/usr/share/doc/${_pkgname}/examples"
 }
