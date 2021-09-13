@@ -70,7 +70,7 @@ _makenconfig=
 pkgbase=linux-manjaro-xanmod-lts
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.10
-pkgver=${_major}.52
+pkgver=${_major}.64
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -78,7 +78,7 @@ pkgdesc='Linux Xanmod LTS'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="571b7550ed563891bd4cb4c21bf1b4e76132cee4" # 5.10.52-1
+__commit="4e18ce491dc816d725524039cdbb8ca448b1bef9" # 5.10.64-1
 
 license=(GPL2)
 makedepends=(
@@ -98,9 +98,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "https://gitlab.manjaro.org/packages/core/linux510/-/archive/${__commit}/linux510-${__commit}.tar.gz")
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43' # linux-5.4.tar.xz
             'SKIP'                                                             #            .sign
-            '58ae5190fe3331a20c052d0043e712b6e75f666c86514cb2e37bf42eb5afa4b2' # xanmod
+            '833e6b3ae9e058f1e93f4d364198563d7ec692b1aac2cc33c4cf7f7f03f8edea' # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee' # choose-gcc-optimization.sh
-            'f178d20aaceb147412170f4cb9d256e7f193eb86e7993d7858d3ca4fd5c75862') # manjaro
+            '20cb06b53000bf3b6852fba9bc3d7ce119569b83adca40565203e2e045350487') # manjaro
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -142,6 +142,8 @@ prepare() {
   # Manjaro patches
   rm ../linux510-$__commit/0103-futex.patch              # remove conflicting patches
   rm ../linux510-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+  rm ../linux510-$__commit/0105-ucsi-acpi.patch
+  rm ../linux510-$__commit/0106-ucsi.patch
 
   local _patch
   for _patch in ../linux510-$__commit/*; do
@@ -220,7 +222,7 @@ prepare() {
       make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
-      exit
+      exit 1
     fi
   fi
 
