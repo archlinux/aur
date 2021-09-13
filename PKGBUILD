@@ -4,7 +4,7 @@
 pkgname=('libplacebo-git'
          'lib32-libplacebo-git'
          )
-pkgver=v4.157.0.4.ge3331da
+pkgver=v4.157.0.5.g51b0e24
 pkgrel=1
 url='https://code.videolan.org/videolan/libplacebo'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('git'
              'ffmpeg'
              'lib32-ffmpeg'
              'shaderc'
-             'lib32-shaderc'
+#              'lib32-shaderc'
              'glslang'
              'lib32-glslang'
              'lcms2'
@@ -63,10 +63,11 @@ build() {
     --libdir=/usr/lib32 \
     -D vulkan=enabled \
     -D glslang=enabled \
-    -D shaderc=enabled \
+    -D shaderc=disabled \
     -D lcms=enabled \
     -D d3d11=disabled \
-    -D tests=true
+    -D tests=true \
+    -D demos=false
 
   ninja
 }
@@ -106,7 +107,7 @@ package_lib32-libplacebo-git() {
            'lib32-glslang'
            'lib32-libepoxy'
            'lib32-glfw'
-           'libshaderc_shared.so'
+#            'libshaderc_shared.so'
            'libavcodec.so'
            'libavutil.so'
            'libavformat.so'
@@ -118,7 +119,7 @@ package_lib32-libplacebo-git() {
 
   DESTDIR="${pkgdir}" ninja -C build32 install
 
-  mv "${pkgdir}/usr/bin/plplay" "${pkgdir}/usr/bin/plplay-32"
+#   mv "${pkgdir}/usr/bin/plplay" "${pkgdir}/usr/bin/plplay-32"
   rm -fr "${pkgdir}/usr/include"
 
   install -Dm644 libplacebo/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
