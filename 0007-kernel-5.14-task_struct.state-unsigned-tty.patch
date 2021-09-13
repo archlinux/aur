@@ -1,0 +1,142 @@
+diff -pNaru5 driver/2.6.27.orig/dgrp_common.c driver/2.6.27/dgrp_common.c
+--- driver/2.6.27.orig/dgrp_common.c	2021-09-12 14:45:27.901267870 -0400
++++ driver/2.6.27/dgrp_common.c	2021-09-12 14:49:02.969431475 -0400
+@@ -192,13 +192,13 @@ void *dgrp_kzmalloc(size_t size, int pri
+  *
+  *  Returns 0 on success, !0 if interrupted
+  */
+ int dgrp_sleep(ulong ticks)
+ {
+-	current->state = TASK_INTERRUPTIBLE;
++	set_current_state(TASK_INTERRUPTIBLE);
+ 	schedule_timeout(ticks);
+-	current->state = TASK_RUNNING;
++	set_current_state(TASK_RUNNING);
+ 	return signal_pending(current);
+ }
+ 
+ 
+ 
+diff -pNaru5 driver/2.6.27.orig/dgrp_tty.c driver/2.6.27/dgrp_tty.c
+--- driver/2.6.27.orig/dgrp_tty.c	2021-09-12 14:45:27.904601276 -0400
++++ driver/2.6.27/dgrp_tty.c	2021-09-12 14:48:48.089087547 -0400
+@@ -107,13 +107,21 @@ static void dgrp_tty_input_stop(struct t
+ static void drp_wmove(struct ch_struct *, int, void*, int);
+ 
+ static int dgrp_tty_open(struct tty_struct *, struct file *);
+ static void dgrp_tty_close(struct tty_struct *, struct file *);
+ static int dgrp_tty_write(struct tty_struct *, const unsigned char *, int);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int dgrp_tty_write_room(struct tty_struct *);
++#else
+ static int dgrp_tty_write_room(struct tty_struct *);
++#endif
+ static void dgrp_tty_flush_buffer(struct tty_struct *);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int dgrp_tty_chars_in_buffer(struct tty_struct *);
++#else
+ static int dgrp_tty_chars_in_buffer(struct tty_struct *);
++#endif
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,0,0)
+ static int dgrp_tty_ioctl(struct tty_struct *, struct file *, unsigned int, unsigned long);
+ #else
+ static int dgrp_tty_ioctl(struct tty_struct *, unsigned int, unsigned long);
+ #endif
+@@ -733,11 +741,12 @@ static int drp_wait_ack(struct ch_struct
+ 			 *  Prepare the task to accept the wakeup, then
+ 			 *  release our locks and release control.
+ 			 */
+ 
+ 			add_wait_queue(&nd->nd_seq_wque[in], &wait);
+-			current->state = TASK_INTERRUPTIBLE;
++			/* We'll retroactively apply this patch to support non Intel processors.*/
++			set_current_state(TASK_INTERRUPTIBLE);
+ 
+ 			DGRP_UNLOCK(nd->nd_lock, *lock_flags);
+ 
+ 			/*
+ 			 *  Give up control, we'll come back if we're
+@@ -765,11 +774,11 @@ if (ttylock) tty_lock(ch->port.tty);
+ 
+ 			remove_wait_queue(&nd->nd_seq_wque[in], &wait);
+ 
+ 			DGRP_LOCK(nd->nd_lock, *lock_flags);
+ 
+-			current->state = TASK_RUNNING;
++			set_current_state(TASK_RUNNING);
+ 
+ 			if (signal_pending(current))
+ 				return -EINTR;
+ 
+ 			if (nd->nd_seq_wait[in] == 0)
+@@ -816,11 +825,11 @@ static void drp_my_sleep(struct ch_struc
+ 	/*
+ 	 * First make sure we're ready to receive the wakeup.
+ 	 */
+ 
+ 	add_wait_queue(&ch->ch_sleep, &wait);
+-	current->state = TASK_UNINTERRUPTIBLE;
++	set_current_state(TASK_UNINTERRUPTIBLE);
+ 
+ 	/*
+ 	 * Since we are uninterruptible, set a timer to
+ 	 * unset the uninterruptable state in 1 second.
+ 	 */
+@@ -1210,11 +1219,11 @@ static int dgrp_tty_open(struct tty_stru
+ 		 * Prepare the task to accept the wakeup, then
+ 		 * release our locks and release control.
+ 		 */
+ 
+ 		add_wait_queue(&ch->ch_flag_wait, &wait);
+-		current->state = TASK_INTERRUPTIBLE;
++		set_current_state(TASK_INTERRUPTIBLE);
+ 
+ 		DGRP_UNLOCK(nd->nd_lock, lock_flags);
+ 
+ 		/*
+ 		 * Give up control, we'll come back if we're
+@@ -1247,11 +1256,11 @@ static int dgrp_tty_open(struct tty_stru
+ 		dbg_tty_trace(OPEN, ("tty open (%x) awake\n",
+ 				MINOR(tty_devnum(tty))));
+ 
+ 		DGRP_LOCK(nd->nd_lock, lock_flags);
+ 
+-		current->state = TASK_RUNNING;
++		set_current_state(TASK_RUNNING);
+ 
+ 		ch->ch_wait_count[otype]--;
+ 
+ 		if (wait_carrier)
+ 			ch->ch_wait_carrier--;
+@@ -2484,11 +2493,15 @@ static void dgrp_tty_flush_buffer(struct
+ 
+ /*
+  *	Return space available in Tx buffer
+  * 	count = ( ch->ch_tout - ch->ch_tin ) mod (TBUF_MAX - 1)
+  */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int dgrp_tty_write_room(struct tty_struct *tty)
++#else
+ static int dgrp_tty_write_room(struct tty_struct *tty)
++#endif
+ {
+ 	struct un_struct *un;
+ 	struct ch_struct *ch;
+ 	int	count;
+ 
+@@ -2534,11 +2547,15 @@ static int dgrp_tty_write_room(struct tt
+  *
+  * Remember that sequence number math is always with a sixteen bit
+  * mask, not the TBUF_MASK.
+  */
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int dgrp_tty_chars_in_buffer(struct tty_struct *tty)
++#else
+ static int dgrp_tty_chars_in_buffer(struct tty_struct *tty)
++#endif
+ {
+ 	struct un_struct *un;
+ 	struct ch_struct *ch;
+ 	int	count;
+ 	int	count1;

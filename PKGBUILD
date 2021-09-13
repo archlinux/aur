@@ -105,7 +105,7 @@ pkgname='dgrp'
 #_pkgver='1.9-39'; _dl='40002086_Z.tgz'
 _pkgver='1.9-40'; _dl='40002086_AA.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='4'
+pkgrel='5'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -194,6 +194,7 @@ source=(
   '0004-kernel-5.6-proc_dir_entry-proc_ops.patch'
   '0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
   '0006-kernel-5.13-dropped-tty_check_change.patch'
+  '0007-kernel-5.14-task_struct.state-unsigned-tty.patch'
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
@@ -239,7 +240,8 @@ md5sums=('175349c08d19158c88ad582c76916397'
          '4f1c03f1cc5f440a770c080a121d998a'
          'c25c1fdfbdc1fa38d87e45cf1c8511c2'
          '2596b5f38ef54d72af08dca05fcce369'
-         '60a06421a819bc65bd5ba0c3841e0500')
+         '60a06421a819bc65bd5ba0c3841e0500'
+         '5dfc03b8f6b8d190b63271b8ef32986c')
 sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
@@ -280,7 +282,8 @@ sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             '882019276d59e6cc15fcda1bb1dea75b01591509a2644ddb0225ef1d5a17fd1c'
             'b812176f6061d135ab45facecf5a05922d9ffd5ec0a6f17c3e3a5a74729034b1'
             '82f2c244f169c1f5a9b6186e4e4436c116bd020a1be973e8be261097d38bc937'
-            'eaab5a80791644a24950fe0c6db2c09535655c63ed3a263eb70791ab30f86ab9')
+            'eaab5a80791644a24950fe0c6db2c09535655c63ed3a263eb70791ab30f86ab9'
+            '50975ac2377ffd24874746df4b820de1734f53eb322bd25ccc9d51148129a2e0')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -399,6 +402,13 @@ prepare() {
   #cp -pr driver/2.6.27{,.orig}; false
   #diff -pNaru5 driver/2.6.27{.orig,} > '0006-kernel-5.13-dropped-tty_check_change.patch'
   patch -Nbup0 -i "${srcdir}/0006-kernel-5.13-dropped-tty_check_change.patch"
+
+  # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
+  # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
+  # set_current_state https://linux-kernel.vger.kernel.narkive.com/xnPfKhYP/patch-2-5-52-use-set-current-state-instead-of-current-state-take-1
+  #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
+  #diff -pNaru5 driver/2.6.27{.orig,} > '0007-kernel-5.14-task_struct.state-unsigned-tty.patch'
+  patch -Nbup0 -i "${srcdir}/0007-kernel-5.14-task_struct.state-unsigned-tty.patch"
 
   # Standardize name of RealPort
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)
