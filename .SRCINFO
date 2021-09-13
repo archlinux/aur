@@ -1,6 +1,6 @@
 pkgbase = libretro-fceumm-git
 	pkgdesc = libretro implementation of FCEUmm. (Nintendo Entertainment System)
-	pkgver = 1072.eb87c5e
+	pkgver = r1144.afe2b4d
 	pkgrel = 1
 	url = https://github.com/libretro/libretro-fceumm
 	arch = i686
@@ -11,11 +11,9 @@ pkgbase = libretro-fceumm-git
 	groups = libretro
 	license = GPL2
 	makedepends = git
-	depends = zlib
 	depends = glibc
 	depends = libretro-core-info
-	source = git+https://github.com/libretro/libretro-fceumm.git
-	sha256sums = SKIP
+	source = libretro-fceumm::git+https://github.com/libretro/libretro-fceumm.git
+	sha512sums = SKIP
 
 pkgname = libretro-fceumm-git
-
