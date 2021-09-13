@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated-git
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - git version
-	pkgver = r13639.ga1d52e9af
+	pkgver = r13831.g33955ced0
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
@@ -10,7 +10,8 @@ pkgbase = mongodb-compass-isolated-git
 	arch = aarch64
 	license = custom:SSPL
 	makedepends = git
-	makedepends = npm
+	makedepends = nodejs-lts-erbium
+	makedepends = npm>=7.0.0
 	makedepends = python
 	makedepends = unzip
 	depends = electron6-bin
@@ -22,7 +23,7 @@ pkgbase = mongodb-compass-isolated-git
 	conflicts = mongodb-compass-isolated
 	source = mongodb-compass-isolated-git::git+https://github.com/mongodb-js/compass
 	source = hadron-build.diff
-	sha256sums = SKIP
-	sha256sums = 62eea772fce3eb086b59fc5509b8afab6346da9c4c65f28880bb334104c02104
+	sha512sums = SKIP
+	sha512sums = 9c93c8aa513c9238e04bb860626d09f1e83643cbfd1b8cd66add35cd41e6a7172fedff42f9f9eeedb0e8a3d6b852e1671a8b5a1fa3066d7dd5a543052392946d
 
 pkgname = mongodb-compass-isolated-git
