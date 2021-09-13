@@ -3,7 +3,7 @@
 # Contributor: bebehei <bebe@bebehei.de>
 
 pkgname=icinga2
-pkgver=2.12.5
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
@@ -28,6 +28,7 @@ backup=(etc/default/icinga2
         etc/icinga2/features-available/ido-mysql.conf
         etc/icinga2/features-available/ido-pgsql.conf
         etc/icinga2/features-available/influxdb.conf
+        etc/icinga2/features-available/influxdb2.conf
         etc/icinga2/features-available/livestatus.conf
         etc/icinga2/features-available/mainlog.conf
         etc/icinga2/features-available/notification.conf
@@ -46,7 +47,7 @@ changelog="icinga2.changelog"
 source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.tmpfiles"
         "$pkgname.sysusers")
-sha256sums=('f5bdc6057eb5a4fde4c1f359f9b7dde6e8bc8c795601b18532010609c660221b'
+sha256sums=('06f751e3481c0958f6000d11a4e24d42393cb7722af22b740f68a491bdffd41a'
             '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c'
             '2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810')
 
