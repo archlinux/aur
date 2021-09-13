@@ -2,7 +2,7 @@
 
 pkgname=hamclock
 pkgver=2.68
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (800x480 version)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha256sums=('ac9fb741161d34c1385db2e4471fb9484a91e4b652e407db4ee545611b2d3c3f')
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver/ESPHamClock"
+	cd "hamclock-$pkgver/ESPHamClock"
 	# Add -AUR to version
 	sed -i 's/"/-AUR"/g' version.h
 	sed -i 's/\t-AUR"/\t"/g' version.h
@@ -37,12 +37,12 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-$pkgver/ESPHamClock"
+	cd "hamclock-$pkgver/ESPHamClock"
 	make -j 4 hamclock-800x480
 }
 
 package() {
-	cd "$pkgname-$pkgver/ESPHamClock"
+	cd "hamclock-$pkgver/ESPHamClock"
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/applications" "$pkgdir/usr/share/icons"
 	cp hamclock-800x480 "$pkgdir/usr/bin/hamclock"
 	cp hamclock.png "$pkgdir/usr/share/icons"
