@@ -20,9 +20,7 @@ pkgbase = mongodb-compass-isolated-beta
 	optdepends = org.freedesktop.secrets
 	source = mongodb-compass-isolated-beta-1.27.0.beta.10-2.tar.gz::https://github.com/mongodb-js/compass/archive/v1.27.0-beta.10.tar.gz
 	source = hadron-build.diff
-	source = hadron-build-beta.diff
 	sha512sums = d8f312c61c23700235197156bc5f931a8b425a982064e010f09614b7451601655f11ca335b91786b52c0cbc7dce447ddda031b025c441436668d58fd9949d8b7
 	sha512sums = 9c93c8aa513c9238e04bb860626d09f1e83643cbfd1b8cd66add35cd41e6a7172fedff42f9f9eeedb0e8a3d6b852e1671a8b5a1fa3066d7dd5a543052392946d
-	sha512sums = 1623ebab6dc95445cd1b512ffa858fc08e2a06cf6d938ef98f14e7bdd639c3df76173fab6e0831e1bd7487b63c99322d294d53d316bc51f5a5da6d3020e9c8a2
 
 pkgname = mongodb-compass-isolated-beta
