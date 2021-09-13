@@ -1,0 +1,14 @@
+pkgbase = hack-browser-data-git
+	pkgdesc = hack-browser-data is an open-source tool that could help you decrypt data ( password|bookmark|cookie|history|credit card|downloads link ) from the browser.
+	pkgver = r153.ea137f9
+	pkgrel = 1
+	url = https://github.com/moonD4rk/HackBrowserData
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/moonD4rk/HackBrowserData.git#branch=master
+	md5sums = SKIP
+
+pkgname = hack-browser-data-git
