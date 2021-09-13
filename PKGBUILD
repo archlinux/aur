@@ -1,7 +1,7 @@
 # Maintainer: Francisco Salces Carcoba <pacosalces@gmail.com>
 pkgname=python-physunits
 _name=physunits
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Physical units as global variables for simple numerical propagation"
 license=("MIT")
@@ -9,7 +9,7 @@ url="https://pypi.org/project/physunits/"
 makedepends=('python-setuptools')
 depends=('python-numpy')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('49f87b023c133c69720e15d86506a9970b456dfacd6aa12f8ec6f71f638a2762')
+sha256sums=('6ed307958ea47835a680a37ae0bb6fc00cf2cfaec1a972d28149d5a8841a9513')
 arch=('any')
 
 build() {
