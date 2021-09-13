@@ -2,7 +2,7 @@
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 # Contributor:  redtide <redtid3@gmail.com>
-# Maintainer:  chuckdaniels <ismgonval@gmail.com>
+# Maintainer:  Matthew Bakhtiari <contact@altf2.dev>
 
 pkgname=wineasio
 pkgver=1.0.0
