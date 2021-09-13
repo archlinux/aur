@@ -1,33 +1,38 @@
-# Maintainer:  Oliver Jaksch <arch-aur at com-in dot de>
+# Maintainer: Viachaslau Khalikin <khalikin@yandex.by>
+# Maintainer: Oliver Jaksch <arch-aur at com-in dot de>
 
-pkgname=libretro-freeintv-git
-pkgver=189.5fc8d85
+_pkgbase=libretro-freeintv
+pkgname=${_pkgbase}-git
+pkgver=r203.0058a09
 pkgrel=1
 pkgdesc="A libretro emulation core for the Mattel Intellivision designed to be compatible with joypads from the SNES era forward"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/FreeIntv"
-license=('custom:zlib')
+license=('GPL' 'custom:zlib')
 groups=('libretro')
-depends=('zlib' 'glibc' 'libretro-core-info')
-makedepends=('git')
-
-_libname=freeintv_libretro
-_gitname=FreeIntv
-source=("git+https://github.com/libretro/${_gitname}.git")
-sha256sums=('SKIP')
+depends=(
+  glibc
+  libretro-core-info
+)
+makedepends=(
+  git
+)
+install="${pkgname}".install
+source=("$_pkgbase::git+$url.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "${_pkgbase}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_gitname}"
-  make
+  make -C "${_pkgbase}"
 }
 
 package() {
-  install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-  msg2 "\e[1;32mFreeIntv requires Intellivision BIOS files 'exec.bin' and 'grom.bin' to be placed in the libretro 'system' folder. \e[0m"
+  install -Dm 644 "${_pkgbase}"/freeintv_libretro.so  -t "${pkgdir}"/usr/lib/libretro/
+  install -Dm 644 "${_pkgbase}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
+
+# vim:set ft=sh ts=2 sw=2 et:

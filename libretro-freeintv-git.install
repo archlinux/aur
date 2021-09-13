@@ -1,0 +1,6 @@
+post_install() {
+  echo -e "\e[1;36mNOTE:\e[0m FreeIntv requires Intellivision BIOS files to be placed in the libretro System/BIOS folder:
+   'exec.bin'
+   'grom.bin'"
+}
+
