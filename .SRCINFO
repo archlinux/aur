@@ -1,7 +1,7 @@
 pkgbase = kwplayer
 	pkgdesc = An elegant music player which can get songs from kuwo.cn
 	pkgver = 3.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LiuLang/kwplayer
 	arch = any
 	license = GPL3
@@ -18,12 +18,8 @@ pkgbase = kwplayer
 	depends = gstreamer
 	depends = gst-libav
 	depends = gnome-icon-theme-symbolic
-	optdepends = python-mutagenx: convert ID3 tag from GBK to UTF-8
-	optdepends = plyvel: use leveldb for cache data
-	optdepends = python3-keybinder: global keyboard shortcuts
-	conflicts = kwplayer-git
+	optdepends = python-plyvel: use leveldb for cache data
 	source = https://pypi.python.org/packages/source/k/kwplayer/kwplayer-3.5.2.tar.gz
 	md5sums = 3b446246b7a690e9e91fd5380053d11e
 
 pkgname = kwplayer
-
