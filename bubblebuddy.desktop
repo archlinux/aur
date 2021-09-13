@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BubbleBuddy
+Description=BubbleBuddy is a Bubble Hockey game intended for Raspberry Pi
+Exec=bubblebuddy
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/bubblebuddy.png
+Categories=Office;Utilities;
