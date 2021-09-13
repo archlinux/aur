@@ -6,8 +6,10 @@
 !PKGBUILD
 !.SRCINFO
 !ventoy
+!ventoygui
 !ventoyweb
 !ventoy-persistent
 !ventoy-extend-persistent
+!ventoy.desktop
 !sanitize.patch
 !ventoy.install
