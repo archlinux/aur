@@ -39,6 +39,8 @@ if [ ! -d "$app_folder" ] ; then
 
   _copy ibl palette shader cache export vox
   _copy config/config.txt config/hotkey.txt config/dict.txt config/locale.txt config/font
+  
+  echo "$app_folder_current_version" > "$app_folder_version_file"
 fi
 
 if [ "$version" -lt "1" ]; then

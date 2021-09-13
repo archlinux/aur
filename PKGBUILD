@@ -18,7 +18,7 @@ _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 # $ curl -sSf "https://api.github.com/repos/ephtracy/ephtracy.github.io/releases/tags/$_pkgver_tag" | jq '.assets|map(select(.name|contains("win64.zip")))[0].updated_at|fromdate|strftime("%Y%m%d")'
 #
 # If multiple releases happen on the same day, set $_pkgver_uniqueness to '.2', then '.3' etc.
-_pkgver_date='20210908'
+_pkgver_date='20210912'
 _pkgver_uniqueness='' # Don't forget to reset to '' when date changes.
 
 # Git tag associated with the release where the latest Intel Open Image Denoiser plugin archive is.
@@ -27,7 +27,7 @@ _plugin_ver='1.2.0'
 
 pkgver="$_pkgver_upstream.r$_pkgver_date$_pkgver_uniqueness"
 
-pkgrel=2
+pkgrel=1
 
 pkgdesc='A free lightweight 8-bit voxel art editor and GPU based interactive path tracing renderer'
 arch=('x86_64')
@@ -40,9 +40,9 @@ source=("$pkgname-$pkgver.zip::https://github.com/ephtracy/ephtracy.github.io/re
 license=('custom')
 depends=(wine)
 makedepends=(icoutils)
-sha512sums=('3108bd6bf8d6c0e1b4255de18e161a2012e656ae943cc2c8dd7dc98c56e32e30552fada293e8dca0a5e648484a984a85e5fbbfb3f03eedc339320b493e5b7a66'
+sha512sums=('289a23642bb20c452d9abdf10a0d64063580b3bc021bcfea18ddcfe97f57113741a5ecf4178a0d65bc6c9e491ecb09fc41f0b6967f9ee0ff61d9f18bfac913e8'
             '6509da8d8b04488b369644fd104cdc820037bc2bd2567d868541562d3096041d29d265cdeb2386ccb66f8f6670b94236d565046bfad92aff9cf7b1988b4af53f'
-            '4e238d1e7745bbea2af228e80fbe20b52aa5684b2204c724db8cdea278f131ad61320f5c72fed106e248f693aac7b820af3cc4b781a0b626674fa1228bc199d7'
+            'cc3ca199de02c1b83697faa3ef96ea2029c8bc99503a05e1e958f200addbf52f933fae8fea105b1107d61ef584ec79752e353596424e638d56fb1f64969fb1a3'
             '0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1'
             'feabbff40cef5402aac75d8344acf434079250c25e05c6bc91af705f1254e0010caaf5e64450fee4ec7d4636ec930a5600412bbc3f588149e7ee0cbeefb0e5ae')
 
