@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron /usr/lib/moonfm/app.asar "$@"
+exec electron13 /usr/lib/moonfm/app.asar "$@"
