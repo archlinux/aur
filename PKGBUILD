@@ -2,7 +2,7 @@
 # Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 #
 # Based on the linux package by:
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
@@ -32,7 +32,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84')
+            'e2140782726c69db81dd5be0602479bb4e161772e83e77de1470c9ceea622ca4')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
