@@ -8,7 +8,7 @@ pkgbase = crema
 	makedepends = git
 	makedepends = go
 	makedepends = make
-	makedepends = pandoc
+	makedepends = asciidoctor
 	depends = devtools
 	depends = git
 	depends = pacman
@@ -22,4 +22,3 @@ pkgbase = crema
 	md5sums = SKIP
 
 pkgname = crema
-

@@ -21,7 +21,7 @@ makedepends=(
     git
     go
     make
-    pandoc
+    asciidoctor
 ) 
 optdepends=(gnupg) 
 provides=(crema)
