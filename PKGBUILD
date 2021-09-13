@@ -1,7 +1,7 @@
 # Maintainer: entschuld <edgr@openmail.cc>
 
 pkgname=fenics-basix-git
-_realname=basix
+_base=basix
 pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations."
 pkgver=0.1.0.26.gca5876e
 pkgrel=1
@@ -16,12 +16,12 @@ options=(!emptydirs)
 source=("git+${url}")
 md5sums=('SKIP')
 _mainver=$(printf ${pkgver} | cut -d'.' -f1,2,3)
-provides=("${_realname}=$_mainver" "python-${_realname}=$_mainver"
-          "python-${_realname}-git=$_mainver")
-replaces=("${_realname}" "python-${_realname}"
-"python-${_realname}-git")
-conflicts=("${_realname}" "python-${_realname}"
-"python-${_realname}-git")
+provides=("${_base}=$_mainver" "python-${_base}=$_mainver"
+          "python-${_base}-git=$_mainver")
+replaces=("${_base}" "python-${_base}"
+"python-${_base}-git")
+conflicts=("${_base}" "python-${_base}"
+"python-${_base}-git")
 
 #  From UPC: Building And Using Static And Shared "C"
 #  Libraries.html
@@ -98,17 +98,17 @@ export LANG=en_IE.UTF-8
 export LC_ALL=en_IE.UTF-8
 
 pkgver() {
-  cd "${srcdir}/${_realname}"
+  cd "${srcdir}/${_base}"
   git describe --tags --match '*.*' | tr '-' '.'
 }
 
 build() {
   [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 
-  cd "${srcdir}"/"${_realname}"/cpp
+  cd "${srcdir}"/"${_base}"/cpp
   # Add CBLAS to linking libraries
   # (https://github.com/davisking/dlib/issues/154#issuecomment-240651490)
-  sed -i 's%\(target_link_libraries(basix PRIVATE ${BLAS_LIBRARIES})\)%\nset(BLAS_LIBRARIES "-lcblas;-lblas")\n\1%' "${srcdir}"/"${_realname}"/cpp/CMakeLists.txt
+  sed -i 's%\(target_link_libraries(basix PRIVATE ${BLAS_LIBRARIES})\)%\nset(BLAS_LIBRARIES "-lcblas;-lblas")\n\1%' "${srcdir}"/"${_base}"/cpp/CMakeLists.txt
   cmake -DCMAKE_BUILD_TYPE="Release" \
         -B "${srcdir}"/build \
         -S . \
@@ -118,11 +118,11 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/"${_realname}"/cpp
+  cd "${srcdir}"/"${_base}"/cpp
   cmake --install "${srcdir}"/build --prefix="${pkgdir}"/usr
   # make -C "${srcdir}"/build DESTDIR="${pkgdir}" install
 
-  cd "${srcdir}"/"${_realname}"/python
+  cd "${srcdir}"/"${_base}"/python
   python setup.py build
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   # pip install . --no-deps --prefix=/usr --root="${pkgdir}" --compile
