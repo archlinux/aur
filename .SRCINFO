@@ -1,0 +1,21 @@
+pkgbase = alizams
+	pkgver = 1.6.3.1
+	pkgrel = 1
+	url = https://www.aliza-dicom-viewer.com/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-svg
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = insight-toolkit
+	source = git+https://github.com/AlizaMedicalImaging/AlizaMS.git#tag=v1.6.3.1
+	sha256sums = SKIP
+
+pkgname = alizams
