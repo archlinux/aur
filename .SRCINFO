@@ -1,6 +1,6 @@
 pkgbase = nldev-runit
 	pkgdesc = runit service scripts for nldev
-	pkgver = 20210602
+	pkgver = 20210913
 	pkgrel = 1
 	arch = any
 	license = MIT/X
@@ -11,10 +11,10 @@ pkgbase = nldev-runit
 	source = nltrigger.run
 	source = nldev.early
 	source = nltrigger.early
-	sha256sums = 8eaf5bdca799ceff81dc556d5769bd3af234a8e8dec0a123d86abfe77d2d343a
-	sha256sums = 970bc31081ea9a46f6b03d5f593a18920b830da5d7dc8e625566dffbb05362e2
-	sha256sums = 08e171df7501cbd7dbd5ef820bed5f4e572fb28cc64daa05bc83144d77aa1a5e
-	sha256sums = a811aec4f9e5f490d25c206510e5a9b8a453f91c0d00938449c3408075b9b0db
-	sha256sums = 079b80e78135ad0097f83a52b321262fe8c3f3f37a4526ba9b256512ea86bf97
+	sha256sums = a5d3b4faeb2033f26e09e30238f0bd9aad4bd0170008c7324294dd5252e4133e
+	sha256sums = 4aa815aa1fd06c6f794cc00bf21d9d808ce2137c5e4a77bac8ef7e9d20083809
+	sha256sums = cad0f0842390c60c985daf86da80a8c64a44f03cd9bb465e777380ed5ac9f1f7
+	sha256sums = ee667ba8d060325b2e524955320e34d32a9919b6fb016b1266aaf7c1e3b99e86
+	sha256sums = 0e9b7c35e4cc2a984f259643ad10496dd928468ed1374f92ee20eef63213f243
 
 pkgname = nldev-runit

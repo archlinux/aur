@@ -6,7 +6,7 @@
 case "$1" in
     start)
         stat_busy "Triggering udev uevents"
-        nltrigger add all
+        nltrigger /sys add 0
         ret=$?
         (( ret )) && stat_die nltrigger
         add_daemon nltrigger

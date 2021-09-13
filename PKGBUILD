@@ -3,7 +3,7 @@
 _sed_args=(-e 's|/var/service|/run/runit/service|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|/opt/bin|/usr/bin|g' -e 's|/usr/libexec|/usr/lib|g')
 
 pkgname=nldev-runit
-pkgver=20210602
+pkgver=20210913
 pkgrel=1
 pkgdesc="runit service scripts for nldev"
 arch=('any')
@@ -14,11 +14,11 @@ source=("nldev.run"
         "nltrigger.run"
         "nldev.early"
         "nltrigger.early")
-sha256sums=('8eaf5bdca799ceff81dc556d5769bd3af234a8e8dec0a123d86abfe77d2d343a'
-            '970bc31081ea9a46f6b03d5f593a18920b830da5d7dc8e625566dffbb05362e2'
-            '08e171df7501cbd7dbd5ef820bed5f4e572fb28cc64daa05bc83144d77aa1a5e'
-            'a811aec4f9e5f490d25c206510e5a9b8a453f91c0d00938449c3408075b9b0db'
-            '079b80e78135ad0097f83a52b321262fe8c3f3f37a4526ba9b256512ea86bf97')
+sha256sums=('a5d3b4faeb2033f26e09e30238f0bd9aad4bd0170008c7324294dd5252e4133e'
+            '4aa815aa1fd06c6f794cc00bf21d9d808ce2137c5e4a77bac8ef7e9d20083809'
+            'cad0f0842390c60c985daf86da80a8c64a44f03cd9bb465e777380ed5ac9f1f7'
+            'ee667ba8d060325b2e524955320e34d32a9919b6fb016b1266aaf7c1e3b99e86'
+            '0e9b7c35e4cc2a984f259643ad10496dd928468ed1374f92ee20eef63213f243')
 
 _inst_sv() {
     if test -f "$srcdir/$1.conf"; then
@@ -42,5 +42,5 @@ package() {
     install -d ${pkgdir}/etc/rc/{sysinit,shutdown}
     ln -sf /usr/lib/rc/sv.d/nldev ${pkgdir}/etc/rc/sysinit/30-nldev
     ln -sf /usr/lib/rc/sv.d/nldev ${pkgdir}/etc/rc/shutdown/30-nldev
-    ln -sf /usr/lib/rc/sv.d/nltrigger ${pkgdir}/etc/rc/shutdown/31-nltrigger
+    ln -sf /usr/lib/rc/sv.d/nltrigger ${pkgdir}/etc/rc/sysinit/31-nltrigger
 }

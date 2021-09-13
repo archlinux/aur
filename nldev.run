@@ -4,5 +4,4 @@
     kill $(cat /run/nldev.pid)
     rm /run/nldev.pid
 }
-runpath=${runpath:-/usr/bin/smdev}
-exec nldev -r $runpath $optargs 2>&1
+exec nldev -k $optargs 2>&1

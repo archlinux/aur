@@ -1,4 +1,4 @@
 #!/bin/sh
 sv check nldev >/dev/null || exit 1
-nltrigger add all
+nltrigger /sys add 0
 exec pause

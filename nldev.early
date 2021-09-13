@@ -6,7 +6,7 @@
 case "$1" in
     start)
         stat_busy "Starting nldev daemon"
-        nldev -r /usr/bin/smdev &
+        nldev -k &
         echo $! > /run/nldev.pid
         # Note: This is only needed for initialization, nldev will
         #       be controlled by runit on stage 2.
