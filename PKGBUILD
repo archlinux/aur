@@ -1,6 +1,6 @@
 # Maintainer: Rainu <back2git@raysha.de>
 pkgname=back2git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Watch files for changes and backup it to any git repository.'
 arch=('x86_64' 'i686')
