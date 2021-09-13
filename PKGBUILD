@@ -7,7 +7,7 @@
 
 pkgname=ypbind-mt
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux NIS daemon'
 url='https://github.com/thkukuk/ypbind-mt'
 license=('GPL2')
