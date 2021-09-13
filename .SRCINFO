@@ -1,0 +1,13 @@
+pkgbase = wormpy
+	pkgdesc = bsdgames worm, ported to Python and improved
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kj7rrv/wormpy
+	arch = any
+	license = MIT
+	depends = python-blessings
+	depends = python-timeout-decorator
+	source = https://github.com/kj7rrv/wormpy/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 458b983498b4af308b5518860c5411c55f8e7061115e2c1a46097413fc3d2129
+
+pkgname = wormpy
