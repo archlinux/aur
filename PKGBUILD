@@ -1,23 +1,23 @@
-# Maintainer: Michael Serajnik <ms dot mserajnik dot at>
+# Maintainer: Michael Serajnik <m at mser dot at>
 pkgname=traffictoll-git
 _pkgname=TrafficToll
-pkgver=1.4.0.r2.gf246e76
+pkgver=1.5.0.r1.g4569b4c
 pkgrel=1
 pkgdesc="NetLimiter-like traffic shaping for Linux"
-arch=('any')
+arch=("any")
 url="https://github.com/cryzed/${_pkgname}"
-license=('GPL3')
-depends=('python' 'python-loguru' 'python-psutil' 'python-ruamel-yaml')
-optdepends=('speedtest-cli: determine the download and upload speed automatically for traffic prioritization'
-            'ookla-speedtest-bin: determine the download and upload speed automatically for traffic prioritization')
-makedepends=('python-pip' 'python-poetry')
-conflicts=('traffictoll')
+license=("GPL3")
+depends=("python" "python-loguru" "python-psutil" "python-ruamel-yaml")
+optdepends=("speedtest-cli: determine the download and upload speed automatically for traffic prioritization"
+            "ookla-speedtest-bin: determine the download and upload speed automatically for traffic prioritization")
+makedepends=("git" "python-pip" "python-poetry")
+conflicts=("traffictoll")
 source=("git+https://github.com/cryzed/${_pkgname}.git")
-md5sums=('SKIP')
+md5sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

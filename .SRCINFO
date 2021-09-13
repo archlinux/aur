@@ -1,10 +1,11 @@
 pkgbase = traffictoll-git
 	pkgdesc = NetLimiter-like traffic shaping for Linux
-	pkgver = 1.4.0.r2.gf246e76
+	pkgver = 1.5.0.r1.g4569b4c
 	pkgrel = 1
 	url = https://github.com/cryzed/TrafficToll
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-pip
 	makedepends = python-poetry
 	depends = python
@@ -18,4 +19,3 @@ pkgbase = traffictoll-git
 	md5sums = SKIP
 
 pkgname = traffictoll-git
-
