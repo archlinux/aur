@@ -11,7 +11,7 @@ pkgdesc="virtual 1541 disk commander that allows you to create and modify D64 di
 arch=('i686' 'x86_64')
 url="https://github.com/excess-c64/v1541commander"
 license=('custom') # see LICENSE.txt
-depends=()
+depends=('qt5-tools')
 #
 source=(
         ${pkgname}-v${pkgver}.tar.gz::https://github.com/excess-c64/${pkgname}/archive/v${pkgver}.tar.gz
