@@ -32,6 +32,7 @@ pkgver() {
 
 build() {
   cd nftables
+  sh autogen.sh
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
