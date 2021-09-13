@@ -1,0 +1,211 @@
+diff -pNaru5 trueport-6.10.0.orig/ptyx/ptyc.c trueport-6.10.0/ptyx/ptyc.c
+--- trueport-6.10.0.orig/ptyx/ptyc.c	2020-05-28 07:56:32.000000000 -0400
++++ trueport-6.10.0/ptyx/ptyc.c	2021-09-12 22:50:04.105320366 -0400
+@@ -91,29 +91,41 @@ static void ptyx_ctrl_close(struct tty_s
+ 
+ }
+ 
+ 
+   
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int ptyx_ctrl_write_room(struct tty_struct *tty)
++#else
+ static int ptyx_ctrl_write_room(struct tty_struct *tty)
++#endif
+ {
+ 	struct ptyx_struct *ptyx_info;
+ 
+ 	if (!tty || !tty->driver_data)		// paranoia
+ 		return 0;
+ 
+ 	ptyx_info = (struct ptyx_struct *) tty->driver_data;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	if (!tty || tty->flow.stopped || (ptyx_info->flags & SLAVE_CLOSING) )
++#else
+ 	if (!tty || tty->stopped || (ptyx_info->flags & SLAVE_CLOSING) )
++#endif
+ 		return 0;
+ 
+ 	return RECEIVE_ROOM(tty);
+ }
+ 
+ //	The Control tty will pass all statuses in raw mode to the dameon
+ // so in this case we can	return the true count in the buffer.
+ //
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int ptyx_ctrl_chars_in_buffer(struct tty_struct *tty)
++#else
+ static int ptyx_ctrl_chars_in_buffer(struct tty_struct *tty)
++#endif
+ {
+     return 0;
+ }
+ 
+ 
+diff -pNaru5 trueport-6.10.0.orig/ptyx/ptym.c trueport-6.10.0/ptyx/ptym.c
+--- trueport-6.10.0.orig/ptyx/ptym.c	2020-05-28 07:56:32.000000000 -0400
++++ trueport-6.10.0/ptyx/ptym.c	2021-09-12 22:50:24.095375131 -0400
+@@ -173,11 +173,15 @@ static int ptyx_master_write(struct tty_
+ 	ptyx_print(PTYX_DEBUG_WRITE, ("ptyx_master_write(%d): buf=0x%p, count=%d\n", ptyx_info->line, buf, count));
+ 	PTYX_LOCK(&ptyx_info->port_lock, flags);
+ 	s_tty = ptyx_info->s_tty;
+ 	PTYX_UNLOCK(&ptyx_info->port_lock, flags);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	if (!s_tty || tty->flow.stopped || (ptyx_info->flags & SLAVE_CLOSING) )
++#else
+ 	if (!s_tty || tty->stopped || (ptyx_info->flags & SLAVE_CLOSING) )
++#endif
+ 		return 0;
+ 
+ 	if (from_user) 
+ 	{
+ 		down(&tty->flip.pty_sem);
+@@ -243,11 +247,15 @@ static int ptyx_master_write(struct tty_
+ 	ptyx_print(PTYX_DEBUG_WRITE, ("ptyx_master_write(%d): buf=0x%p, count=%d\n", ptyx_info->line, buf, count));
+ 	PTYX_LOCK(&ptyx_info->port_lock, flags);
+ 	s_tty = ptyx_info->s_tty;
+ 	PTYX_UNLOCK(&ptyx_info->port_lock, flags);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	if (!s_tty || tty->flow.stopped || (ptyx_info->flags & SLAVE_CLOSING) )
++#else
+ 	if (!s_tty || tty->stopped || (ptyx_info->flags & SLAVE_CLOSING) )
++#endif
+ 		return 0;
+ 
+     if (count > 0) 
+     {
+         /* Stuff the data into the input queue of the other end */
+@@ -264,11 +272,15 @@ static int ptyx_master_write(struct tty_
+ 
+ 	return c;
+ }
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int ptyx_master_write_room(struct tty_struct *tty)
++#else
+ static int ptyx_master_write_room(struct tty_struct *tty)
++#endif
+ {
+ 	struct ptyx_struct *ptyx_info;
+ 	struct tty_struct *s_tty;
+ 	unsigned long flags;
+ 
+@@ -279,11 +291,15 @@ static int ptyx_master_write_room(struct
+ 
+ 	PTYX_LOCK(&ptyx_info->port_lock, flags);
+ 	s_tty = ptyx_info->s_tty;
+ 	PTYX_UNLOCK(&ptyx_info->port_lock, flags);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	if (!s_tty || tty->flow.stopped || (ptyx_info->flags & SLAVE_CLOSING) )
++#else
+ 	if (!s_tty || tty->stopped || (ptyx_info->flags & SLAVE_CLOSING) )
++#endif
+ 		return 0;
+ 
+ 	return RECEIVE_ROOM(s_tty);
+ }
+ 
+@@ -299,11 +315,15 @@ static int ptyx_master_write_room(struct
+  *	WAKEUP_CHARS is regarded by select() as "full".)  To avoid deadlock 
+  *	the count returned must be 0 if no canonical data is available to be 
+  *	read. (The N_TTY ldisc.chars_in_buffer now knows this.)
+  *  
+  */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int ptyx_master_chars_in_buffer(struct tty_struct *tty)
++#else
+ static int ptyx_master_chars_in_buffer(struct tty_struct *tty)
++#endif
+ {
+     return 0;
+ }
+ 
+ 
+diff -pNaru5 trueport-6.10.0.orig/ptyx/ptys.c trueport-6.10.0/ptyx/ptys.c
+--- trueport-6.10.0.orig/ptyx/ptys.c	2021-09-12 22:49:37.855248337 -0400
++++ trueport-6.10.0/ptyx/ptys.c	2021-09-12 22:50:41.015421437 -0400
+@@ -223,11 +223,15 @@ static int ptyx_slave_write(struct tty_s
+ 
+ 	PTYX_LOCK(&ptyx_info->port_lock, flags);
+ 	m_tty = ptyx_info->m_tty;
+ 	PTYX_UNLOCK(&ptyx_info->port_lock, flags);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	if ( !m_tty || tty->flow.stopped )
++#else
+ 	if ( !m_tty || tty->stopped )
++#endif
+ 		return 0;
+ 
+ 	if (from_user) 
+ 	{
+ 		down(&tty->flip.pty_sem);
+@@ -307,11 +311,15 @@ static int ptyx_slave_write(struct tty_s
+ 
+ 	PTYX_LOCK(&ptyx_info->port_lock, flags);
+ 	m_tty = ptyx_info->m_tty;
+ 	PTYX_UNLOCK(&ptyx_info->port_lock, flags);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	if ( !m_tty || tty->flow.stopped )
++#else
+ 	if ( !m_tty || tty->stopped )
++#endif
+ 		return 0;
+ 	    
+         if (!slave_dump_data(ptyx_info))
+         {
+             if (count > 0) 
+@@ -337,11 +345,15 @@ static int ptyx_slave_write(struct tty_s
+ }
+ #endif // end greater than or equal to 2.6.10
+ 
+  
+  
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int ptyx_slave_write_room(struct tty_struct *tty)
++#else
+ static int ptyx_slave_write_room(struct tty_struct *tty)
++#endif
+ {
+ 	struct ptyx_struct *ptyx_info;
+ 	struct tty_struct *m_tty;
+ 	unsigned long flags;
+ 
+@@ -353,11 +365,15 @@ static int ptyx_slave_write_room(struct
+ 
+ 	PTYX_LOCK(&ptyx_info->port_lock, flags);
+ 	m_tty = ptyx_info->m_tty;
+ 	PTYX_UNLOCK(&ptyx_info->port_lock, flags);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	if (!m_tty || tty->flow.stopped)
++#else
+ 	if (!m_tty || tty->stopped)
++#endif
+ 		return 0;
+ 
+ 	return RECEIVE_ROOM(m_tty);
+ }
+ 
+@@ -365,11 +381,15 @@ static int ptyx_slave_write_room(struct
+  *  
+  *	The Slave side passes all characters in raw mode to the Master side's
+  *	buffer where they can be read immediately, so in this case we can
+  *	return the true count in the buffer.
+  */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int ptyx_slave_chars_in_buffer(struct tty_struct *tty)
++#else
+ static int ptyx_slave_chars_in_buffer(struct tty_struct *tty)
++#endif
+ {
+     return 0;
+ }
+ 
+ 
