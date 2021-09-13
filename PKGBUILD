@@ -3,7 +3,7 @@
 # Maintainer: jgmdev <jgmdev at gmail dot com>
 
 pkgname=lite-xl
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ makedepends=('meson')
 conflicts=("lite")
 provides=("lite")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('40dd2af16db8ff2cee3242fb89ba3d4d3da654b8b5692329f3d09573b441e0c980717a26d3249afa31e87f0adfb318542861af478dfcabb1426fc88e82291946')
-b2sums=('e273da452e1300411cb113bb01bb6499b86c97a67ceb9382304faa6a01070a622c96505c4879f8c82bba7f155ab6a21017f56310a477b8c3331133d9b3f3b56b')
+sha512sums=('c65b459557ddbeaf084e3e28c6a9668e162f7b384e2e20dc855aee2bee25cf9a0f673ccbb99377e808ec2499c734975a07b99521b4a50e0736b5be152424ab3c')
+b2sums=('a46289a121b560a239b72acad5874fdfc8d82a75fbccb7a759c098686590ea59baaeb71203fa9f12da3dbdc875bc128a6fefd59e44d35c3067548bb94da1c00d')
 
 build() {
     cd "$pkgname-$pkgver"
