@@ -11,7 +11,7 @@ depends=('menu-cache' 'gtk2')
 optdepends=('lxmenu-data: LXDE menus' 'gnome-menus: GNOME menus')
 conflicts=('pekwm-menu-hg')
 provides=('pekwm-menu')
-source=https://bitbucket.org/nfisher1226/pekwm-menu/downloads/pekwm-menu-0.5.0.tar.gz
+source=('https://mirrors.dotsrc.org/mirrors/exherbo/pekwm-menu-0.5.0.tar.gz')
 sha256sums=('26e3a6b4f6508529fed5f27a3de340b7cefc322249f7378202f6de3524da413f')
 
 build() {
