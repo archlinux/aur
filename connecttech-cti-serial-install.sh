@@ -4,11 +4,11 @@ _etcconf='/etc/cti-serial-set485.sh'
 
 post_upgrade() {
   set -u
-  mandb -q
+  # mandb -q
   systemctl daemon-reload
   # Handle the module update if DKMS doesn't
   if [ ! -d "/usr/src/${_pkgname}"-*/ ]; then
-    depmod -a
+    # depmod -a # now done by a pacman hook
     if systemctl -q is-enabled "${_servicename}"; then
       systemctl start "${_servicename}"
     fi
@@ -17,14 +17,14 @@ post_upgrade() {
 }
 
 post_install() {
-  set -u
-  set +u
   post_upgrade
+  set -u
   if systemctl -q is-enabled "${_servicename}" && ! systemctl -q is-active "${_servicename}"; then
     # We can't auto start the service because DKMS hasn't made the module yet
     echo "If you have RS-485 jumperless settings add them to ${_etcconf} and start the service with"
     echo "  systemctl start ${_servicename}"
   fi
+  set +u
 }
 
 pre_upgrade() {

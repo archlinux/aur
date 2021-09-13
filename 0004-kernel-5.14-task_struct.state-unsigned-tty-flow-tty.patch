@@ -1,0 +1,123 @@
+diff -pNau5 driver.orig/8250_core.c driver/8250_core.c
+--- driver.orig/8250_core.c	2021-09-12 14:39:56.901351290 -0400
++++ driver/8250_core.c	2021-09-12 14:39:56.908018075 -0400
+@@ -3872,11 +3872,15 @@ void dump_uart(struct uart_port *port)
+ 	else
+ 	{
+         	printk(KERN_INFO "TXCNT 0x%02X\n",serial_inp(up, UART_FLAT_TXCNT));
+ 	        printk(KERN_INFO "RXCNT 0x%02X\n",serial_inp(up, UART_FLAT_RXCNT));
+ 	}
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	printk(KERN_INFO "tty->hw_stopped %d tty->flow.stopped %d\n",tty->hw_stopped, tty->flow.stopped);
++#else
+ 	printk(KERN_INFO "tty->hw_stopped %d tty->stopped %d\n",tty->hw_stopped, tty->stopped);
++#endif
+ }
+ 
+ 
+ static int
+ serial8250_ioctl(struct uart_port *port, unsigned int cmd, unsigned long arg)
+diff -pNau5 driver.orig/serial_core.c driver/serial_core.c
+--- driver.orig/serial_core.c	2021-09-12 14:39:56.904684683 -0400
++++ driver/serial_core.c	2021-09-12 14:43:24.418663852 -0400
+@@ -121,11 +121,16 @@ static void __uart_start(struct tty_stru
+ {
+ 	struct uart_state *state = tty->driver_data;
+ 	struct uart_port *port = state->uart_port;
+ 
+ 	if (!uart_circ_empty(&state->xmit) && state->xmit.buf &&
+-	    !tty->stopped && !tty->hw_stopped)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	    !tty->flow.stopped && !tty->hw_stopped
++#else
++	    !tty->stopped && !tty->hw_stopped
++#endif
++)
+ 		port->ops->start_tx(port);
+ }
+ 
+ static void uart_start(struct tty_struct *tty)
+ {
+@@ -578,11 +583,15 @@ static int uart_write(struct tty_struct
+     pr_debug("uart_write(%d) 2\n", tty->index);
+ 	uart_start(tty);
+ 	return ret;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int uart_write_room(struct tty_struct *tty)
++#else
+ static int uart_write_room(struct tty_struct *tty)
++#endif
+ {
+ 	struct uart_state *state = tty->driver_data;
+ 	unsigned long flags;
+ 	int ret;
+ 
+@@ -590,11 +599,15 @@ static int uart_write_room(struct tty_st
+ 	ret = uart_circ_chars_free(&state->xmit);
+ 	spin_unlock_irqrestore(&state->uart_port->lock, flags);
+ 	return ret;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int uart_chars_in_buffer(struct tty_struct *tty)
++#else
+ static int uart_chars_in_buffer(struct tty_struct *tty)
++#endif
+ {
+ 	struct uart_state *state = tty->driver_data;
+ 	unsigned long flags;
+ 	int ret;
+ 
+@@ -996,11 +1009,16 @@ static int uart_get_lsr_info(struct tty_
+ 	 * avoid a race condition (depending on when the transmit
+ 	 * interrupt happens).
+ 	 */
+ 	if (uport->x_char ||
+ 	    ((uart_circ_chars_pending(&state->xmit) > 0) &&
+-	     !tty->stopped && !tty->hw_stopped))
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	     !tty->flow.stopped && !tty->hw_stopped
++#else
++	     !tty->stopped && !tty->hw_stopped
++#endif
++))
+ 		result &= ~TIOCSER_TEMT;
+ 
+ 	return put_user(result, value);
+ }
+ 
+@@ -1154,11 +1172,12 @@ uart_wait_modem_status(struct uart_state
+ 		}
+ 
+ 		cprev = cnow;
+ 	}
+ 
+-	current->state = TASK_RUNNING;
++	/* We'll retroactively apply this patch to support non Intel processors. This was already done above for set_current_state(TASK_INTERRUPTIBLE) */
++	set_current_state(TASK_RUNNING);
+ 	remove_wait_queue(&port->delta_msr_wait, &wait);
+ 
+ 	return ret;
+ }
+ 
+diff -pNau5 driver.orig/serial_core.h driver/serial_core.h
+--- driver.orig/serial_core.h	2021-04-19 08:11:43.000000000 -0400
++++ driver/serial_core.h	2021-09-12 14:39:56.908018075 -0400
+@@ -626,11 +626,15 @@ void uart_console_write(struct uart_port
+ 	(CIRC_SPACE((circ)->head, (circ)->tail, UART_XMIT_SIZE))
+ 
+ static inline int uart_tx_stopped(struct uart_port *port)
+ {
+ 	struct tty_struct *tty = port->state->port.tty;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++	if(tty->flow.stopped || tty->hw_stopped)
++#else
+ 	if(tty->stopped || tty->hw_stopped)
++#endif
+ 		return 1;
+ 	return 0;
+ }
+ 
+ /*

@@ -8,16 +8,14 @@
 # Todo: Update Copyright dates on utilities
 # Todo: Utility readme repeats set485 in setmodem section
 
-# For now the source file is obtained by request from ConnectTech.
-
 # sudo cat /proc/tty/driver/ctipu
 
 _opt_DKMS=1            # This can be toggled between installs
 
 set -u
 pkgname='connecttech-cti-serial'
-pkgver='1.43'
-pkgrel='4'
+pkgver='1.45'
+pkgrel='1'
 pkgdesc='tty UART driver for BlueStorm BlueHeat Xtreme/104-Plus Titan and Xtreme/104-Express families'
 arch=('i686' 'x86_64')
 url='http://connecttech.com/product/pci-express-bluestorm-express/'
@@ -29,20 +27,22 @@ backup=("${_etcconf#/}")
 install="${pkgname}-install.sh"
 _srcdir="cti_serial_${pkgver//./}"
 source=(
-  "manual://${_srcdir}.tgz"
+  "https://connecttech.com/ftp/dropbox/${_srcdir}.tgz"
   #'0000-kernel-4.18-proc_fops-to-proc_show.patch' # https://patchwork.kernel.org/patch/10349751/
-  '0001-kernel-5.0.0-8250_core-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
+  #'0001-kernel-5.0.0-8250_core-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
   '0002-kernel-5.10-async-initialized.patch'
   '0003-kernel-5.12-tty-low_latency.patch'
+  '0004-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
 )
-md5sums=('52370a65422a372cc2d7c84b4fee230e'
-         'c9f0fc60446b03a66998d90eff031546'
+_srcdir='.'
+md5sums=('ba01c0ad48061ff97429d1438739e211'
          '97cd518024af079d1188398af69ca6cb'
-         'b8a139a882c8aa550f33cd34d2412c45')
-sha256sums=('953d136584f7d1bf276211c0d87e46abc951214a0fba8339db8399cf5f8553fd'
-            'fbb546222486ccbd3fc0cfaf44c146208a27507c20788602fcc6e77853692b00'
+         'b8a139a882c8aa550f33cd34d2412c45'
+         'd6cf91270e603716a90ea4120a928f9f')
+sha256sums=('111efcbcd2ebad89db1692b11a0779cb806ff35de27b39a6427191cf96a233ab'
             '3f1c0aec4f287803b0c571ce0258bf16163fed920170fb6eac2ec717f704e3e5'
-            '4b5a12f5122252ccee5aec97c392f2b718284ed0d4b70ee8b506f64fb89eced7')
+            '4b5a12f5122252ccee5aec97c392f2b718284ed0d4b70ee8b506f64fb89eced7'
+            '3b7b66ac199025183fe1b6e7ddb14524b88251ff6f7f739fbc3973dd4f5039d5')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -87,10 +87,10 @@ prepare() {
 
   #cp -p driver/8250_core.c{,.orig}; false
   #diff -pNau5 driver/8250_core.c{.orig,} > '0001-kernel-5.0.0-8250_core-access_ok.patch'
-  patch -Nbup0 -i "${srcdir}/0001-kernel-5.0.0-8250_core-access_ok.patch"
+  #patch -Nbup0 -i "${srcdir}/0001-kernel-5.0.0-8250_core-access_ok.patch"
 
   # Kernel 5.6
-  sed -e 's:ioremap_nocache:ioremap:g' -i 'driver/8250_core.c' 'driver/8250_pci.c'
+  #sed -e 's:ioremap_nocache:ioremap:g' -i 'driver/8250_core.c' 'driver/8250_pci.c'
 
   # Not compatible with Kernel 4.4 headers
   #sed -n -e '/^#ifndef __KERNEL__/,/^#endif/ p' "/usr/lib/modules/$(uname -r)/build/include/uapi/linux/tty_flags.h" | sed -e 's:__KERNEL__:ASYNC_INITIALIZED:g' >> 'driver/serial_core_kernel510.h'
@@ -105,18 +105,28 @@ prepare() {
   #diff -pNau5 driver/serial_core.c{.orig,} > '0003-kernel-5.12-tty-low_latency.patch'
   patch -Nbup0 -i "${srcdir}/0003-kernel-5.12-tty-low_latency.patch"
 
+  # tty.stopped https://lore.kernel.org/lkml/20210505091928.22010-13-jslaby@suse.cz/
+  # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
+  # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
+  # set_current_state https://linux-kernel.vger.kernel.narkive.com/xnPfKhYP/patch-2-5-52-use-set-current-state-instead-of-current-state-take-1
+  #rm -f driver/*.orig; cp -pr 'driver' 'driver.orig'; false
+  #diff -pNau5 'driver'{.orig,} > '0004-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
+  patch -Nbup0 -i "${srcdir}/0004-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch"
+
   pushd 'driver' > /dev/null
   # Fix permissions
   find -type 'f' -perm '/111' -exec chmod 644 '{}' '+'
   chmod 755 *_dr
   local _ver
-  _ver="$(sed -n -e 's:^#define\sREVISION\s"\([^"]\+\).*$:\1:p' 'serial_core.c')"
+  #_ver="$(sed -n -e 's:^#define\sREVISION\s"\([^"]\+\).*$:\1:p' 'serial_core.c')"
+  _ver="$(sed -n -e 's:^Revision \([0-9.]\+\),.*$:\1:p' 'readme.txt' | tail -1)"
   if [ "${pkgver}" != "${_ver}" ]; then
     echo "Version mismatch ${pkgver} != ${_ver}"
     set +u
     false
   fi
   unset _ver
+  sed -e '/^#define\sREVISION\s/ s:"[^"]\+":"'"${pkgver}"'":g' -i 'serial_core.c'
 
   # Branding in dmesg
   sed -e 's/CTISerial driver revision:%s/& Arch Linux/g' -i 'serial_core.c'
