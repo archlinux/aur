@@ -1,11 +1,11 @@
 # Maintainer: numToStr <sudo@vikasraj.dev>
 
 pkgname=snm
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Smol and simple node version manager"
 arch=('x86_64' 'aarch64' 'armv7')
-url=https://github.com/numToStr/snm
+url=https://github.com/numToStr/snm/
 license=('GPL')
 provides=($pkgname)
 conflicts=($pkgname)
