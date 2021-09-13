@@ -3,7 +3,7 @@
 _pkgbase=macbook12-spi-driver
 pkgname=(${_pkgbase}-dkms)
 pkgver=0+git.304
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for the keyboard, touchpad and touchbar found in newer MacBook (Pro) models"
 arch=('i686' 'x86_64')
 url="https://github.com/roadrunner2/macbook12-spi-driver"
