@@ -1,7 +1,7 @@
 pkgbase = libretro-bk-git
 	pkgdesc = BK-0010/0011/Terak 8510a core
 	pkgver = r117.70f4a2d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libretro/bk-emulator
 	install = libretro-bk-git.install
 	arch = i686

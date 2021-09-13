@@ -3,7 +3,7 @@
 _pkgbase=libretro-bk
 pkgname=${_pkgbase}-git
 pkgver=r117.70f4a2d
-pkgrel=1
+pkgrel=2
 pkgdesc="BK-0010/0011/Terak 8510a core"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/bk-emulator"
@@ -37,4 +37,3 @@ package() {
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
-
