@@ -115,3 +115,6 @@ scripts/config --module CONFIG_ACPI_APEI_ERST_DEBUG
 
 # enable multigen LRU by default
 scripts/config --enable CONFIG_LRU_GEN_ENABLED
+
+# AMD pstate
+scripts/config --enable CONFIG_X86_AMD_PSTATE
