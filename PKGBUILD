@@ -1,30 +1,47 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Florian Wittmann
 
-_pkgname='DataProperty'
-pkgname="python-${_pkgname,,}"
-pkgver=0.50.0
-pkgrel=2
+pkgname=python-dataproperty
+pkgver=0.52.0
+pkgrel=1
 pkgdesc='Extract properties from data'
 arch=('any')
 url='https://github.com/thombashi/DataProperty'
-_url_pypi='https://pypi.org/project/DataProperty'
 license=('MIT')
-depends=('python' 'python-mbstrdecoder' 'python-typepy')
+depends=(
+  'python-mbstrdecoder>=1.0.0'
+  'python-mbstrdecoder<2'
+  'python-typepy>=1.2.0'
+  'python-typepy<2')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('847f2d8927d8426a0eb20e48238e2db19133506bcd1e2608e21314004fa80d72')
+checkdepends=(
+  'python-pytest>=6.0.1'
+  'python-pytest-runner'
+  'python-termcolor'
+  'python-dateutil'
+  'python-pytz')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/D/DataProperty/DataProperty-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/D/DataProperty/DataProperty-$pkgver.tar.gz.asc")
+sha256sums=('8fda054fcc80f01e6c1c91e4853acd6982c99fdc91fb96f536d073c6ddaa2a5a'
+            'SKIP')
+validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "DataProperty-$pkgver"
   python setup.py build
 }
 
+check() {
+  cd "DataProperty-$pkgver"
+  python setup.py pytest
+}
+
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "DataProperty-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
