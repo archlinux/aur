@@ -9,5 +9,3 @@ post_install() {
     'FOCAL10.ROM'
     'MONIT10.ROM'"
 }
-  msg2 "\e[1;32mFreeIntv requires Intellivision BIOS files 'exec.bin' and 'grom.bin' to be placed in the libretro 'system' folder. \e[0m"
-
