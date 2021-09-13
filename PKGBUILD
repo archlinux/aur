@@ -7,13 +7,13 @@
 
 pkgname=ypserv
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux NIS Server'
 arch=('i686' 'x86_64')
 url='https://github.com/thkukuk/ypserv'
 license=('GPL2')
 makedepends=('libxslt' 'libxml2' 'docbook-xml' 'docbook-xsl')
-depends=('gawk' 'yp-tools' 'libsystemd')
+depends=('gawk' 'yp-tools' 'libsystemd' 'gdbm')
 backup=('etc/ypserv.conf' 'etc/netgroup' 'etc/securenets' 'etc/yp/Makefile')
 source=("$url/releases/download/v$pkgver/ypserv-$pkgver.tar.xz"
         'ypxfrd.service'

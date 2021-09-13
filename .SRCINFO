@@ -1,7 +1,7 @@
 pkgbase = ypserv
 	pkgdesc = Linux NIS Server
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thkukuk/ypserv
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = ypserv
 	depends = gawk
 	depends = yp-tools
 	depends = libsystemd
+	depends = gdbm
 	backup = etc/ypserv.conf
 	backup = etc/netgroup
 	backup = etc/securenets
@@ -41,4 +42,3 @@ pkgbase = ypserv
 	md5sums = ee375afa24cdb5ffbf83c39aa2f08e54
 
 pkgname = ypserv
-
