@@ -1,5 +1,5 @@
 pkgname=emercoin-bin
-pkgver=0.7.4
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="Emercoin is a digital currency and blockchain service platform."
 arch=('i686' 'x86_64')    
@@ -9,8 +9,8 @@ license=('GPL3')
 install='emercoin.install'
 source_i686=("https://github.com/emercoin/emercoin/releases/download/v${pkgver}emc/emercoin-${pkgver}-${arch}-pc-linux-gnu.tar.gz" "emercoin.install")
 source_x86_64=("https://github.com/emercoin/emercoin/releases/download/v${pkgver}emc/emercoin-${pkgver}-${arch}-linux-gnu.tar.gz" "emercoin.install")
-sha256sums_i686=('2ff2527f049411131403b282d4b1f87cba5be2e64ccbaabddd08fd4fc7bc5f83' 'fae0ebd505eeb13cf1b4ee1ae3b3014e02a6422c77194e2a4d44c481262ceb8e')
-sha256sums_x86_64=('363e02d8f9b7e2dbd10220fc327826d188294ccb75920c9a36b2f233ac0e978e' 'fae0ebd505eeb13cf1b4ee1ae3b3014e02a6422c77194e2a4d44c481262ceb8e')
+sha256sums_i686=('993ddbebbd78bb654762d7dd9b0fb69bd365dc270a922d566d1adba0ac002174' 'fae0ebd505eeb13cf1b4ee1ae3b3014e02a6422c77194e2a4d44c481262ceb8e')
+sha256sums_x86_64=('6e851f289c652fd1055bd6084abe454ad172cc8df0926efcf05441e58fc14973' 'fae0ebd505eeb13cf1b4ee1ae3b3014e02a6422c77194e2a4d44c481262ceb8e')
 package() {
     cd "emercoin-$pkgver"
     install -D -m771 ./bin/emercoind $pkgdir/usr/bin/emercoind
