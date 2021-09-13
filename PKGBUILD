@@ -3,15 +3,15 @@
 pkgname=standardnotes-desktop
 _pkgname=desktop
 pkgver=3.8.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.org/"
 license=('GPL3')
 conflicts=('sn-bin')
-depends=('electron')
+depends=('electron13')
 makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn' 'nvm')
-_nodeversion=14
+_nodeversion=14.17.3
 source=("git://github.com/standardnotes/desktop.git"
         "git://github.com/standardnotes/web.git#commit=7bede7609fe685dbc9c3e0a6f5d11c1eaae07190"
         "git://github.com/sn-extensions/extensions-manager.git#commit=c8a614bf093a3d6ab95ea8eb5e7507b152ed49e2"
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             'SKIP'
             'a0b2b5e95750b5c58fd65bbe7e9797b8560d1fa61b5d0164e160cdd74ecc883d'
             '8045c3baa6a3f5e0a20387913599eafb2d8c6e843745f38f34daea1ab44e73e7'
-            '2d90137b689cc38d6c68b17fad2336503846152a0061a91ac2073ea0873a6fc5')
+            '5afd4ed47fe7e41574d6c5817271b5a15da744fa6f727dd7afd5f13e1298d551')
 
 prepare() {
   cd $_pkgname
@@ -40,7 +40,7 @@ prepare() {
   cp .env.sample .env
 
   # Set system Electron version for ABI compatibility
-  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
+  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron13/version)'"#' -i package.json
 
   # workaround for TS compilation failing due to a "might be null" error.
   # this might be an ugly thing to just ignore, but, well, uh... (electron >=11/12 needs this)
@@ -81,7 +81,7 @@ build() {
     export npm_config_host_arch=arm64
   fi
 
-  _electron_dist=/usr/lib/electron
+  _electron_dist=/usr/lib/electron13
   _electron_ver=$(cat ${_electron_dist}/version)
   case "$CARCH" in
           aarch64)
