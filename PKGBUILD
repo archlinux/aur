@@ -4,8 +4,8 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 pkgname='ferdi'
-pkgver='5.6.1'
-_recipescommit='62599c06f4b2039219e282b34a51a4ff4fbe5e67'
+pkgver='5.6.2'
+_recipescommit='9db43e100a672b6d6932ac68c0fbe503c129138b'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -19,8 +19,8 @@ source=(
 	'fix-autostart-path.diff'
 	'remove-meetfranz-unpack.diff'
 )
-sha512sums=('c61ac5b76738527698074ade746994109a04c2991d64161dfde903e5bc8143db07b623eefe3d93a29268c3f8fb34268d9fe185bac0c836325389253cf28cd190'
-            '6c1823f77de1b41e6201fd1bb3ef05b0d213e913bdd3c6d124b127023fc96764b8b84074408fd9707cc6f065c80a2e942061d7dc85137865f1f5155435a9e9a0'
+sha512sums=('eb3dc113b8e4d271259c0a86a36f2a1bc1b27b249cd2df18b043cb461ab892defe4b3b03c454f716e6c5f751b0aeeedb6b5724836bcfc705adbc8c3ee9ed9f53'
+            '02dea029eb2c7caa9823032ef28ecad97ff07d1f547ee31ae7e7e617730a2af8b63855d1236fc4305a23fee881e853e4ded243f02bae61e896294d3f1366bb06'
             '4c179a9ec233393d9cdc58f5cc28fc66096b8fcb72eee8c827b045f477fdbc9a30ccf1e42d7aca1bdf46f21ad8962bfabaa84d686116197e73c62d99719b7174'
             'fd7f735dbb735b2eb8b2fd63f74981fc415ebe5afd964100a54840676ab8059acfc82c3a48e394db2e8eb4094f266b2578d64f867a448e6932f7b936db3cd151')
 
