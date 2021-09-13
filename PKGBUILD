@@ -6,14 +6,14 @@
 # Maintainer: David Strawn <isomarcte a__t gmail d__o__t c__o__m>
 pkgname='metals'
 pkgver='0.10.6'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Language Server For Scala'
 url='https://scalameta.org/metals/'
 arch=(any)
 license=('Apache')
 groups=()
-depends=('java-environment<=17' 'findutils' 'python')
+depends=('java-environment>=8' 'findutils' 'python')
 makedepends=('sbt' 'sed' 'grep' 'coreutils')
 checkdepends=()
 optdepends=('bloop')
