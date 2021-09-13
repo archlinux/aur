@@ -2,13 +2,13 @@
 
 pkgname=md5jpegdata
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to calculate the MD5 hashsum of the pure data part of a jpeg-file"
 arch=('i686' 'x86_64')
 license=('GPL3')
-source=(http://www.first.in-berlin.de/software/tools/md5jpegdata/md5jpegdata-1.2.tar.gz)
+source=(https://www.first.in-berlin.de/software/tools/md5jpegdata/md5jpegdata-1.2.tar.gz)
 md5sums=('780a1378d278c9d4d9d9d3f25c42dd43')
-url="http://www.first.in-berlin.de/software/tools/md5jpegdata/"
+url="https://www.first.in-berlin.de/software/tools/md5jpegdata/"
 depends=('libgcrypt' 'libjpeg-turbo')
 options=(!makeflags)
 
