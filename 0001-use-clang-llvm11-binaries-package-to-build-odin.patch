@@ -1,0 +1,80 @@
+From 7b1c32778d81539d410be7af791f4ca2a27099ee Mon Sep 17 00:00:00 2001
+From: pyxel <imhxnna@gmail.com>
+Date: Sun, 12 Sep 2021 21:18:47 -0400
+Subject: [PATCH] use clang+llvm11-binaries package to build odin
+
+---
+ Makefile | 57 +++++++++++++++++++++++++++++---------------------------
+ 1 file changed, 30 insertions(+), 27 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index cdf4f0fc..eeb4e57e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,33 +7,36 @@ CC=clang
+ 
+ OS=$(shell uname)
+ 
+-ifeq ($(OS), Darwin)
+-    LLVM_CONFIG=llvm-config
+-    ifneq ($(shell llvm-config --version | grep '^11\.'),)
+-        LLVM_CONFIG=llvm-config
+-    else
+-        $(error "Requirement: llvm-config must be version 11")
+-    endif
+-
+-    LDFLAGS:=$(LDFLAGS) -liconv
+-    CFLAGS:=$(CFLAGS) $(shell $(LLVM_CONFIG) --cxxflags --ldflags)
+-    LDFLAGS:=$(LDFLAGS) -lLLVM-C
+-endif
+-ifeq ($(OS), Linux)
+-    LLVM_CONFIG=llvm-config-11
+-    ifneq ($(shell which llvm-config-11 2>/dev/null),)
+-        LLVM_CONFIG=llvm-config-11
+-    else
+-        ifneq ($(shell llvm-config --version | grep '^11\.'),)
+-            LLVM_CONFIG=llvm-config
+-        else
+-            $(error "Requirement: llvm-config must be version 11")
+-        endif
+-    endif
+-
+-    CFLAGS:=$(CFLAGS) $(shell $(LLVM_CONFIG) --cxxflags --ldflags)
+-    LDFLAGS:=$(LDFLAGS) $(shell $(LLVM_CONFIG) --libs core native --system-libs)
+-endif
++#ifeq ($(OS), Darwin)
++#    LLVM_CONFIG=llvm-config
++#    ifneq ($(shell llvm-config --version | grep '^11\.'),)
++#        LLVM_CONFIG=llvm-config
++#    else
++#        $(error "Requirement: llvm-config must be version 11")
++#    endif
++#
++#    LDFLAGS:=$(LDFLAGS) -liconv
++#    CFLAGS:=$(CFLAGS) $(shell $(LLVM_CONFIG) --cxxflags --ldflags)
++#    LDFLAGS:=$(LDFLAGS) -lLLVM-C
++#endif
++#ifeq ($(OS), Linux)
++#    LLVM_CONFIG=llvm-config-11
++#    ifneq ($(shell which llvm-config-11 2>/dev/null),)
++#        LLVM_CONFIG=llvm-config-11
++#    else
++#        ifneq ($(shell llvm-config --version | grep '^11\.'),)
++#            LLVM_CONFIG=llvm-config
++#        else
++#            $(error "Requirement: llvm-config must be version 11")
++#        endif
++#    endif
++#
++#    CFLAGS:=$(CFLAGS) $(shell $(LLVM_CONFIG) --cxxflags --ldflags)
++#    LDFLAGS:=$(LDFLAGS) $(shell $(LLVM_CONFIG) --libs core native --system-libs)
++#endif
++
++CFLAGS:=$(CFLAGS) $(shell /opt/clang+llvm11/bin/llvm-config 2>/dev/null --cxxflags)
++LDFLAGS:=$(LDFLAGS) $(shell /opt/clang+llvm11/bin/llvm-config 2>/dev/null --libs --ldflags) -lz -ltinfo
+ 
+ all: debug demo
+ 
+-- 
+2.33.0
+
