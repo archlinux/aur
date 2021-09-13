@@ -1,15 +1,16 @@
 pkgbase = cmdcalc
 	pkgdesc = A simple command-line calculator
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/Benni3D/cmdcalc
 	arch = x86_64
 	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
-	makedepends = cmake
 	depends = readline>=8
-	source = https://github.com/Benni3D/cmdcalc/archive/v2.3.tar.gz
-	md5sums = bea4064000e5cc9f70542719c1e53e80
+	source = https://github.com/Benni3D/cmdcalc/archive/v2.4.tar.gz
+	md5sums = e1e15fb03a24aa8ead244b8c04fe1042
 
 pkgname = cmdcalc
 
