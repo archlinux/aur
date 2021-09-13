@@ -3,7 +3,7 @@
 pkgbase=nvidia-430xx-utils
 pkgname=('nvidia-430xx-utils' 'opencl-nvidia-430xx' 'nvidia-430xx-dkms')
 pkgver=430.40
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -14,7 +14,7 @@ source=('nvidia-drm-outputclass.conf'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
 b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1aa5c66b8d033fc9d5e0cfffed456a87298bd93a3afbbc30b8dc48c4e9'
         'c1da4ce5784e43385465913a95053a3e54f800aac6f1b49f33e2a77504d76da5e6db6ec7074fbe7ba5f52dcef9e1ebaa620942c33ff825a56caba5c9c8b0d1be'
-        '093d3f4779a904a9bbbc0d10e1c2b150665d6515bc9bba9fdaeb06c09be4f1029aa742058635f9309d4dca7f5e8e3fcdbe49f74ed6035075315ed3555b648404')
+	'3c5f798a6820c96c47024c2f00de9201bd668500c7195c9d221dd102a9ae940227a7dafb6c94e47e9f9e4279036bdf154a598f054a7d92cbe5192131c6cf72b0')
 
 create_links() {
     # create soname links
@@ -102,10 +102,10 @@ package_nvidia-430xx-utils() {
     install -D -m755 nvidia_drv.so "${pkgdir}/usr/lib/xorg/modules/drivers/nvidia_drv.so"
 
     # GLX extension module for X
-    install -D -m755 "libGLX.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so.${pkgver}"
+    install -D -m755 "libGLX.so.0" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so.0"
     # Ensure that X finds glx
-    ln -s "libGLX.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so.1"
-    ln -s "libGLX.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so"
+    ln -s "libGLX.so.0" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so.0"
+    ln -s "libGLX.so.0" "${pkgdir}/usr/lib/nvidia/xorg/libGLX.so"
 
     # GLVND
     install -D -m755 "libGLX_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/libGLX_nvidia.so.${pkgver}"
