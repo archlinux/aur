@@ -10,7 +10,7 @@ pkgbase = fql
 	depends = pcre
 	depends = stdcsv
 	provides = libfql.so
-	source = fql-1.0.tar.gz::https://github.com/jasonKercher/fql/releases/download/1.0/fql-1.0.tar.gz
-	md5sums = a729c32296eca30d00c0a00cd8b90a7b
+	source = https://github.com/jasonKercher/fql/archive/refs/tags/1.0.tar.gz
+	md5sums = fbb253eda765577a89a12ea5718b1518
 
 pkgname = fql
