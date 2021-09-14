@@ -27,5 +27,5 @@ package() {
     install -Dm644 "${srcdir}"/${_dirname}/contrib/systemd/alfis.service "${pkgdir}"/usr/lib/systemd/system/alfis.service
     install -Dm644 "${srcdir}"/${_dirname}/contrib/systemd/alfis.sysusers "${pkgdir}"/usr/lib/sysusers.d/alfis.conf
     install -Dm644 "${srcdir}"/${_dirname}/contrib/systemd/alfis.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/alfis.conf
-    install -Dm644 "${srcdir}"/${_dirname}/contrib/org.alfis.Alfis.desktop "${pkgdir}"/usr/share/applications/org.alfis.Alfis.desktop
+    install -Dm644 "${srcdir}"/${_dirname}/contrib/name.alfis.Alfis.desktop "${pkgdir}"/usr/share/applications/name.alfis.Alfis.desktop
 }
