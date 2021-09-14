@@ -12,8 +12,8 @@
 # Contributor: @holos
 
 pkgname=gnupg-git
-pkgver=2.3.2_r9343.g25ae80b8e
-pkgrel=2
+pkgver=2.3.2.beta105_r9343.g25ae80b8e
+pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='https://www.gnupg.org/'
 license=(GPL)
@@ -34,7 +34,7 @@ install=gnupg-git.install
 
 pkgver() {
   cd ${pkgname%-git}
-  echo "$(cat VERSION)_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  echo "$(tr - . < VERSION)_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
