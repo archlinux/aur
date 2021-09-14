@@ -1,6 +1,6 @@
 pkgname="spwn-bin"
 _pkgname="spwn"
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A language for Geometry Dash triggers."
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://www.github.com/Spu7Nix/SPWN-language"
 license=('MIT')
 provides=('spwn')
 conflicts=('spwn')
-source=('https://github.com/Deltara3/spwn-bin-aur/releases/download/v0.6/spwn-bin.tar.gz')
-sha256sums=('546f6d28812bb9da5ae3d1554a25dadd98926978c140c55e376bf15ff69c550d')
+source=('https://github.com/Deltara3/spwn-bin-aur/releases/download/v0.7/spwn-bin.tar.gz')
+sha256sums=('5c56458474f86af6e513877f54ae84cab350cc97540bbf3995305c1bc1108757')
 install=spwn-bin.install
 
 package() {
