@@ -1,14 +1,13 @@
 # Maintainer: Tim Meusel <tim@bastelfreak.de>
-# Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=hiera
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight pluggable hierarchical database'
 arch=('any')
 url="https://github.com/puppetlabs/${pkgname}"
 license=('APACHE')
-depends=('ruby2.7')
+depends=('ruby')
 backup=('etc/hiera.yaml')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.puppetlabs.com/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         ruby3.patch)
@@ -22,7 +21,9 @@ prepare() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  ruby-2.7 install.rb --destdir="${pkgdir}" --sitelibdir="$(ruby-2.7 -e 'puts RbConfig::CONFIG["vendorlibdir"]')" --mandir=/
+  ruby install.rb --destdir="${pkgdir}" --sitelibdir="$(ruby -e 'puts RbConfig::CONFIG["vendorlibdir"]')" --mandir=/
+  #ruby install.rb --destdir="${pkgdir}" --mandir=/
   install -d "${pkgdir}"/var/lib/hiera/
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 CONTRIBUTING.md README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
