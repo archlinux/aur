@@ -6,6 +6,7 @@ pkgbase = ventoy-bin
 	install = ventoy.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = bash
 	depends = util-linux
