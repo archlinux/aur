@@ -1,5 +1,5 @@
 pkgname=lighthouse-ethereum
-pkgver=1.5.1
+pkgver=1.5.2
 _pkgname=lighthouse
 pkgrel=1
 pkgdesc='Ethereum 2.0 client'
