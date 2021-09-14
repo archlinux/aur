@@ -2,14 +2,14 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=remill-git
-pkgver=4.0.11.r0.g37741957
-pkgrel=2
+pkgver=4.0.24.r18.gd8d3b6c7
+pkgrel=1
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
 license=('Apache')
-depends=('cxx-common=0.1.1' 'lib32-glibc' 'lib32-gcc-libs' 'libunwind')
-makedepends=('git' 'cmake')
+depends=('cxx-common=0.1.4' 'lib32-glibc' 'lib32-gcc-libs' 'libunwind')
+makedepends=('cmake' 'ninja')
 checkdepends=()
 provides=('remill')
 conflicts=('remill')
@@ -27,16 +27,16 @@ pkgver() {
 
 build() {
     vcpkg_libs='/opt/cxx-common/installed/x64-linux-rel'
-    export PATH="$vcpkg_libs/bin:${PATH}"
-    export CC="$vcpkg_libs/bin/clang"
-    export CXX="$vcpkg_libs/bin/clang++"
+    export PATH="$vcpkg_libs/bin:$vcpkg_libs/tools/*:${PATH}"
+    export CC="$vcpkg_libs/tools/llvm/clang"
+    export CXX="$vcpkg_libs/tools/llvm/clang++"
 
     cd "$srcdir/$pkgname"
     mkdir -p build && cd build
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_VERBOSE_MAKEFILE=True \
         -DVCPKG_ROOT="/opt/cxx-common" \
+        -G Ninja \
         "$srcdir/$pkgname"
     cmake --build .
 }
@@ -49,7 +49,7 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname/build"
-    cmake --build . --target install -- DESTDIR="${pkgdir}"
+    DESTDIR="${pkgdir}" cmake --build . --target install
     sed -i "$pkgdir/usr/lib/cmake/remill/remillTargets.cmake" \
         -e "s|$srcdir/$pkgname/build/lib|/usr/include/remill|g"
 }
