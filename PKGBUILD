@@ -1,4 +1,5 @@
-# Maintainer: Stefan Heinemann <stefan.heinemann@codedump.ch>
+# Maintainer: Bart Libert <bart dot aur at libert dot email>
+# Contributor: Stefan Heinemann <stefan.heinemann@codedump.ch>
 
 pkgname=pockyt
 pkgver=1.3.1
