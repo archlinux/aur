@@ -1,6 +1,6 @@
 pkgbase = lib32-smbclient
 	pkgdesc = Tools to access a server's filespace and printers via SMB
-	pkgver = 4.12.3
+	pkgver = 4.14.7
 	pkgrel = 1
 	url = http://www.samba.org
 	arch = x86_64
@@ -44,10 +44,10 @@ pkgbase = lib32-smbclient
 	depends = smbclient
 	depends = lib32-ncurses
 	depends = lib32-libunwind
+	depends = lib32-icu
 	provides = lib32-libwbclient
 	replaces = lib32-libwbclient
-	source = https://www.samba.org/samba/samba/ftp/stable/samba-4.12.3.tar.gz
-	sha256sums = 3fadbca4504937820d0d8a34e500a1efdcc35e0c554f05bd0a844916ae528727
+	source = https://www.samba.org/samba/samba/ftp/stable/samba-4.14.7.tar.gz
+	sha256sums = 6f50353f9602aa20245eb18ceb00e7e5ec793df0974aebd5254c38f16d8f1906
 
 pkgname = lib32-smbclient
-

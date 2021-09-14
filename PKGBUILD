@@ -3,7 +3,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=('lib32-smbclient')
-pkgver=4.12.3
+pkgver=4.14.7
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
@@ -18,11 +18,11 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
 depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups'
 	   'lib32-libgcrypt' 'lib32-pam' 'lib32-systemd'
 	   'lib32-talloc' 'lib32-tdb' 'lib32-ldb'
-	   'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'lib32-ncurses' 'lib32-libunwind')
+	   'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'lib32-ncurses' 'lib32-libunwind' 'lib32-icu')
 replaces=('lib32-libwbclient')
 provides=('lib32-libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('3fadbca4504937820d0d8a34e500a1efdcc35e0c554f05bd0a844916ae528727')
+sha256sums=('6f50353f9602aa20245eb18ceb00e7e5ec793df0974aebd5254c38f16d8f1906')
 
 prepare() {
   cd samba-${pkgver}
