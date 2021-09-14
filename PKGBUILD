@@ -3,8 +3,8 @@
 
 pkgname=ocaml-alsa
 pkgver=0.3.0
-pkgrel=3
-_commit=8ffe8abc1cb4907c6be801c5af32a41defaefe54
+pkgrel=4
+_commit=00c17a5653875b8401f22c7ccd5ceaf5998b53ef
 pkgdesc="OCaml ALSA bindings"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-alsa"
@@ -29,4 +29,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('fda8ba6dcfcf25b9aa402a1fe13f7d829e28c4436258bf8da6cf3bf43f3c3bb1')
+sha256sums=('a7d8b6db909647418017e81cfb481c73609fb69d5c66b8ffaf0ed57f7e850c74')
