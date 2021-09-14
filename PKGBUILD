@@ -2,7 +2,7 @@
 
 pkgname=('aspnet-runtime-2.2')
 pkgver=2.2.8.sdk207
-pkgrel=1
+pkgrel=2
 pkgdesc='The ASP.NET Core runtime binary version 2.2 (End of Life)' 
 arch=('x86_64' 'armv7h')
 url='https://www.microsoft.com/net/core'
@@ -19,5 +19,6 @@ sha512sums_x86_64=('954072376698be69acb7e277df2c243f931e10529def21dcbf9ce277609b
 package() {
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
+  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.All "${pkgdir}"/usr/share/dotnet/shared/
   ln -s dotnet-host-2.1 "${pkgdir}"/usr/share/licenses/aspnet-runtime-2.2
 }

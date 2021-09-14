@@ -1,7 +1,7 @@
 pkgbase = aspnet-runtime-2.2
 	pkgdesc = The ASP.NET Core runtime binary version 2.2 (End of Life)
 	pkgver = 2.2.8.sdk207
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -18,4 +18,3 @@ pkgbase = aspnet-runtime-2.2
 	sha512sums_armv7h = fab9a1d9d101716337bb153af2ac36429fc387230c0c0bf2d639b31fb7f787bc8dbaaa31f28f9cbe69f117ffc78d8ddb5a5968da0e77785d3c12c6814ef50f7b
 
 pkgname = aspnet-runtime-2.2
-
