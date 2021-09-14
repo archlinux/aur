@@ -1,5 +1,5 @@
 pkgbase = linux-sumavision-q5
-	pkgver = 5.14.2
+	pkgver = 5.14.3
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -20,14 +20,14 @@ pkgbase = linux-sumavision-q5
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.2.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.3.xz
 	md5sums = a082ef5748b813abca0649dab8be5f52
 	md5sums = 57d05b1fed1b981cf17ea2be0801b561
-	md5sums = da2e45cbcd710b7df01bf83f87fedcb7
+	md5sums = e3d82b0153686de5f2132d8d98bba979
 	md5sums = 66e0ae63183426b28c0ec0c7e10b5e16
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = f016507b4c55d81d1a4132eaefd4cf66
-	md5sums = c32f97047814a7c47f13d23ac21ed46e
+	md5sums = f824457274fe967ff517171f15a19d83
 
 pkgname = linux-sumavision-q5
 	pkgdesc = The Linux Kernel and modules - AArch64 kernel for Sumavision Q5
@@ -37,7 +37,7 @@ pkgname = linux-sumavision-q5
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.14.2
+	provides = linux=5.14.3
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -45,5 +45,5 @@ pkgname = linux-sumavision-q5
 
 pkgname = linux-sumavision-q5-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for Sumavision Q5
-	provides = linux-headers=5.14.2
+	provides = linux-headers=5.14.3
 	conflicts = linux-headers

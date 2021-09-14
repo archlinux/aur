@@ -7,7 +7,7 @@ pkgbase=linux-sumavision-q5
 _srcname=linux-5.14
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Sumavision Q5"
-pkgver=5.14.2
+pkgver=5.14.3
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -26,11 +26,11 @@ source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('a082ef5748b813abca0649dab8be5f52'
          '57d05b1fed1b981cf17ea2be0801b561'
-         'da2e45cbcd710b7df01bf83f87fedcb7'
+         'e3d82b0153686de5f2132d8d98bba979'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          'f016507b4c55d81d1a4132eaefd4cf66'
-         'c32f97047814a7c47f13d23ac21ed46e')
+         'f824457274fe967ff517171f15a19d83')
 
 prepare() {
   cd ${_srcname}
