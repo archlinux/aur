@@ -1,0 +1,44 @@
+diff -pNaru5 snx_V2.0.5.0.orig-0000/driver/snx_serial.c snx_V2.0.5.0/driver/snx_serial.c
+--- snx_V2.0.5.0.orig-0000/driver/snx_serial.c	2019-04-01 15:41:10.000000000 -0400
++++ snx_V2.0.5.0/driver/snx_serial.c	2021-09-14 09:42:59.377335355 -0400
+@@ -1035,20 +1035,22 @@ static int snx_ser_set_info(struct snx_s
+ 	port->custom_divisor   = new_serial.custom_divisor;
+ 	state->close_delay     = close_delay;
+ 	state->closing_wait    = closing_wait;
+ 	port->fifosize         = new_serial.xmit_fifo_size;
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 12, 0))
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 9, 0))
+ 
+ 	tport->low_latency = (port->flags & SNX_UPF_LOW_LATENCY) ? 1 : 0;
+ 
+ #else
+ 
+ 	if (state->info->tty) {
+ 		state->info->tty->low_latency = (port->flags & SNX_UPF_LOW_LATENCY) ? 1 : 0;
+ 	}
+ #endif
++#endif
+ 
+ 
+ check_and_exit:
+ 	retval = 0;
+ 	if (port->type == PORT_UNKNOWN) {
+@@ -3381,15 +3383,17 @@ static int snx_ser_open(struct tty_struc
+ 		}
+ 
+ 		state->port->suspended = 1;
+ 		tty->driver_data = state;
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 12, 0))
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 9, 0))
+ 		tport->low_latency = (state->port->flags & SNX_UPF_LOW_LATENCY) ? 1 : 0;
+ #else
+ 		tty->low_latency = (state->port->flags & SNX_UPF_LOW_LATENCY) ? 1 : 0;
+ #endif
++#endif
+ 
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0))
+ 		tty->alt_speed = 0;
+ #endif
+ 		state->info->tty = tty;

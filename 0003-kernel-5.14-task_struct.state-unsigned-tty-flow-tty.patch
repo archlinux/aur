@@ -1,0 +1,89 @@
+diff -pNaru5 snx_V2.0.5.0.orig-0000/driver/snx_serial.c snx_V2.0.5.0/driver/snx_serial.c
+--- snx_V2.0.5.0.orig-0000/driver/snx_serial.c	2021-09-14 09:44:32.674917745 -0400
++++ snx_V2.0.5.0/driver/snx_serial.c	2021-09-14 09:46:34.705937002 -0400
+@@ -65,18 +65,26 @@ static _INLINE_ void __snx_ser_put_char(
+ static int      snx_ser_put_char(struct tty_struct *, unsigned char);
+ #else
+ static void     snx_ser_put_char(struct tty_struct *, unsigned char);
+ #endif
+ static void     snx_ser_flush_chars(struct tty_struct *);
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 14, 0))
++static unsigned int      snx_ser_chars_in_buffer(struct tty_struct *);
++#else
+ static int      snx_ser_chars_in_buffer(struct tty_struct *);
++#endif
+ static void     snx_ser_flush_buffer(struct tty_struct *);
+ static void     snx_ser_send_xchar(struct tty_struct *, char);
+ static void     snx_ser_throttle(struct tty_struct *);
+ static void     snx_ser_unthrottle(struct tty_struct *);
+ static int      snx_ser_get_info(struct snx_ser_state *, struct serial_struct *);
+ static int      snx_ser_set_info(struct snx_ser_state *, struct serial_struct *);
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 14, 0))
++static unsigned int      snx_ser_write_room(struct tty_struct *);
++#else
+ static int      snx_ser_write_room(struct tty_struct *);
++#endif
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 10))
+ static int      snx_ser_write(struct tty_struct *, const unsigned char *, int);
+ #else
+ static int      snx_ser_write(struct tty_struct *, int, const unsigned char *, int);
+ #endif
+@@ -522,10 +530,13 @@ static void snx_ser_stop(struct tty_stru
+ 	spin_lock_irqsave(&port->lock, flags);
+ 	sunix_ser_stop_tx(port, 1);
+ 	spin_unlock_irqrestore(&port->lock, flags);
+ }
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 14, 0))
++#define stopped flow.stopped /* tty->stopped */
++#endif
+ 
+ static void __snx_ser_start(struct tty_struct *tty)
+ {
+ 	struct snx_ser_state *state = tty->driver_data;
+ 	struct snx_ser_port *port = state->port;
+@@ -752,11 +763,15 @@ static void snx_ser_flush_chars(struct t
+ 
+ 	snx_ser_start(tty);
+ }
+ 
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 14, 0))
++static unsigned int snx_ser_chars_in_buffer(struct tty_struct *tty)
++#else
+ static int snx_ser_chars_in_buffer(struct tty_struct *tty)
++#endif
+ {
+ 	struct snx_ser_state *state = NULL;
+ 	int line = SNX_SER_DEVNUM(tty);
+ 
+ 	if (line >= SNX_SER_TOTAL_MAX) {
+@@ -1074,11 +1089,15 @@ exit:
+ 
+ 	return retval;
+ }
+ 
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 14, 0))
++static unsigned int snx_ser_write_room(struct tty_struct *tty)
++#else
+ static int snx_ser_write_room(struct tty_struct *tty)
++#endif
+ {
+ 	struct snx_ser_state *state = NULL;
+ 	int line = SNX_SER_DEVNUM(tty);
+ 	int status = 0;
+ 
+@@ -1492,11 +1511,11 @@ static int snx_ser_wait_modem_status(str
+ 		}
+ 
+ 		cprev = cnow;
+ 	}
+ 
+-	current->state = TASK_RUNNING;
++	set_current_state(TASK_RUNNING);
+ 	remove_wait_queue(&state->info->delta_msr_wait, &wait);
+ 
+ 	return ret;
+ }
+ 
