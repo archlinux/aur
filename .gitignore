@@ -6,3 +6,5 @@
 !PKGBUILD
 !.SRCINFO
 !sysmontask.patch
+!sysmontask-pkexec
+!org.freedesktop.sysmontask.policy

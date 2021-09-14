@@ -1,36 +1,43 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Nico <d3sox at protonmail dot com>
 pkgname=sysmontask
-_gitname=SysMonTask
-pkgver=1.3.9
-pkgrel=2
-pkgdesc="System Monitor With UI Like Windows"
+pkgver=1.x.x
+pkgrel=1
+epoch=1
+pkgdesc="System monitor with the compactness and usefulness of Windows Task Manager"
 arch=('any')
 url="https://github.com/KrispyCamel4u/SysMonTask"
 license=('BSD')
-depends=('gtk3' 'libwnck3' 'python-cairo' 'python-gobject' 'python-psutil')
+depends=('gtk3' 'libwnck3' 'polkit' 'python-cairo' 'python-gobject' 'python-psutil')
 makedepends=('python-setuptools')
-optdepends=('python-matplotlib: For Log Plot utility')
+optdepends=('python-matplotlib: For Log Plot utility'
+            'nvidia-utils: for NVIDIA GPU monitoring')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$pkgname.patch")
-sha256sums=('efb6934148333aee25560f830d43aa596f19a1145db5503eeaeb82c873013897'
-            'e2286b2c3d59fa8de51ce0b07b58308c560b49c5c7f1967a93c6d6c764a0a93e')
+        "$pkgname.patch"
+        "$pkgname-pkexec"
+        "org.freedesktop.$pkgname.policy")
+sha256sums=('e17b1ea225e93c5b5646ffccdeec5f089568e1d32eac5c8324d7ac7436962cb5'
+            'd2069005efc8552a96da3fb84703e8287ec5abc89f59e69fafa1d173cba0d91e'
+            '5e6538589b0b6509a265cd67a28cb791e0f87a0ae88b9bb86cd97e6227a8d93b'
+            'fc36c4fed51fd543697fb6c9eeb3f57151e9ba2745339119950875d8888d5046')
 
 prepare() {
-  cd "$_gitname-$pkgver"
+  cd "SysMonTask-$pkgver"
   patch -Np1 -i "$srcdir/$pkgname.patch"
 
-  # Fix version in About dialog:
-  sed -i "s/1.3.7/${pkgver}/g" "glade_files/$pkgname.glade"
+  sed -i "s/Exec=$pkgname/Exec=$pkgname-pkexec/g" SysMonTask.desktop
 }
 
 build() {
-  cd "$_gitname-$pkgver"
+  cd "SysMonTask-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$_gitname-$pkgver"
-  export PYTHONHASHSEED=0
+  cd "SysMonTask-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm755 "$srcdir/$pkgname-pkexec" -t "$pkgdir/usr/bin"
+  install -Dm644 "$srcdir/org.freedesktop.$pkgname.policy" -t \
+    "$pkgdir/usr/share/polkit-1/actions"
 }
