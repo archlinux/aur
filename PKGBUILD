@@ -1,8 +1,8 @@
 # Maintainer: Que Quotion <quequotion@mailinator.com>
 
 pkgname=throttlectl
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=1
 pkgdesc="Command-line user discretion power managment utility"
 arch=('any')
 url="https://bbs.archlinux.org/viewtopic.php?id=180762"

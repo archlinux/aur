@@ -1,7 +1,7 @@
 pkgbase = throttlectl
 	pkgdesc = Command-line user discretion power managment utility
-	pkgver = 1
-	pkgrel = 3
+	pkgver = 2
+	pkgrel = 1
 	url = https://bbs.archlinux.org/viewtopic.php?id=180762
 	arch = any
 	license = GPL
@@ -23,4 +23,3 @@ pkgbase = throttlectl
 	sha512sums = d11ed5f4344f07507497e816ccd7612ffc6df70636ca5f4817a9ce6e3b190b3a17fb02c44c4bf648359f640e4c63cc0b0134968ff4d3d989ad05fa4c095b03d3
 
 pkgname = throttlectl
-
