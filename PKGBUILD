@@ -3,8 +3,8 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.4.0.rc.2.r27.8580281
-pkgrel=3
+pkgver=1.4.0.r3.c66d5d6
+pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/rc\.[0-9]*-//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
