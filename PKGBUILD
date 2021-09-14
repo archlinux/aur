@@ -1,8 +1,8 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.14.2
+_kernver=5.14.3
 _archver=arch1
-_pkgrel=2
+_pkgrel=1
 _pkgver="${_kernver}.${_archver}"
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_kernver}-${_archver}-${_pkgrel}"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/archlinux/linux/commits/v5.14.2-arch1"
+url="https://github.com/archlinux/linux/commits/v5.14.3-arch1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('e94a770324d31d26d1497bded6c0e7fd1932d44602586ca094bdff72d6705f99'
-            'ba94c43410e4d3b1498ef92e29a097580cc73fd24cba67da765374f7946012f3'
-            'c1dc9bb779a9920cc88ccddbaf4ae2e99450bdf560ee04b212d2658443673563')
+sha256sums=('025258f65112cc2bea9f2f2abc8ae3eb43232ade74e5d525cb601012d73d0f91'
+            '1a6136d19c8edea88b70e53d0bad968552d924d03e6e6d3a485397d67335632c'
+            '7ce4ec0f9f1226bd0160578051e8a25250a0b90ec1b0bac9f6f581b2db892276')
 
 package_linux-versioned-bin() {
   pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.14.2.arch1-2-bin() {
+package_linux5.14.3.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -81,7 +81,7 @@ package_linux5.14.2.arch1-2-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.14.2.arch1-2-headers-bin() {
+package_linux5.14.3.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +90,7 @@ package_linux5.14.2.arch1-2-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.14.2.arch1-2-docs-bin() {
+package_linux5.14.3.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
