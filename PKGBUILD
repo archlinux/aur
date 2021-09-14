@@ -3,16 +3,15 @@
 
 _pkgname=libarchive
 pkgname=lib32-${_pkgname}
-pkgver=3.3.3
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="library that can create and read several streaming archive formats (32 bit)"
 arch=('x86_64')
 url="http://libarchive.org"
 license=('BSD')
-depends=('lib32-acl' 'lib32-bzip2' 'lib32-expat' 'lib32-lzo' 'lib32-openssl' 'lib32-xz' "${_pkgname}")
-makedepends=('gcc-multilib' 'lib32-zlib')
+depends=('lib32-acl' 'lib32-bzip2' 'lib32-expat' 'lib32-lz4' 'lib32-openssl' 'lib32-xz' 'lib32-zlib' 'lib32-zstd' "${_pkgname}=${pkgver}")
 source=("http://libarchive.org/downloads/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('9d12b47d6976efa9f98e62c25d8b85fd745d4e9ca7b7e6d36bfe095dfe5c4db017d4e785d110f3758f5938dad6f1a1b009267fd7e82cb7212e93e1aea237bab7')
+sha512sums=('2003ec9b24086373451bd7317bdab86d81627f087c14a6f7df1a92e131a216749f9aa352504c3d04dc82b62078b59aeea5aad5543b7e6c1c21fcafa2955d3762')
 
 build() {
   export CC="gcc -m32"
@@ -20,9 +19,20 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd "${_pkgname}-${pkgver}"
-  ./configure --prefix=/usr --without-xml2 --libdir=/usr/lib32 \
-              --without-nettle --libexecdir="/usr/lib32/${_pkgname}"
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --without-xml2 \
+    --without-nettle \
+    --disable-static \
+    --libexecdir="/usr/lib32/${_pkgname}"
+
   make
+}
+
+check() {
+  cd $pkgname-$pkgver
+  make check
 }
 
 package() {
