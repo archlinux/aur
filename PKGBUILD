@@ -1,7 +1,7 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 
 pkgname=bieaz
-pkgver="0.3.0"
+pkgver="0.3.1"
 pkgrel=1
 pkgdesc="boot environment manager"
 arch=(any)
@@ -16,4 +16,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
 }
-sha256sums=('cc23b6a4e695a74b66c0f8f05bc21343f8a7687adbc62cb1c718366fcf44eea6')
+sha256sums=('0c171e4e9a35e092d44ef7b4327703c8175e2ebad5aec873055d3e6101dccd71')
