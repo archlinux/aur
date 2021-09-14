@@ -5,7 +5,7 @@ pkgver() {
   version=$(grep AC_INIT <./configure.ac | awk -F'[\\[\\]]' '{print $4}')
   printf "${version}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=1.0.1.r29.91f5441
+pkgver=1.0.2.r35.6147dbd
 pkgrel=1
 pkgdesc="An in-memory assembler for x86. (main branch)"
 arch=(x86_64)
@@ -14,7 +14,7 @@ license=('Apache')
 makedepends=(git autoconf automake libtool make)
 checkdepends=(nasm)
 provides=(libassemblyline asmline)
-source=("git+$url")
+source=("git+${url}")
 sha256sums=('SKIP')
 
 build() {
