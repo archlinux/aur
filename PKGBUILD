@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: robertfoster
 # Contributor: Bleuzen <supgesu@gmail.com>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
@@ -26,49 +27,49 @@ source=('git+https://github.com/wwmm/easyeffects.git#branch=pulseaudio-legacy')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/easyeffects"
-	printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+  cd "$srcdir/easyeffects"
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-	arch-meson easyeffects build
-	meson compile -C build
+  arch-meson easyeffects build
+  meson compile -C build
 }
 
 check() {
-	meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package_pulseeffects-legacy-git() {
-	depends=('gtk3' 'gtkmm3' 'glibmm' 'pulseaudio' 'gstreamer' 'gst-plugin-gtk'
+  depends=('gtk3' 'gtkmm3' 'glibmm' 'pulseaudio' 'gstreamer' 'gst-plugin-gtk'
              'gst-plugins-bad' 'lilv' 'boost-libs' 'libsigc++'
              'gst-plugins-pulseeffects-legacy')
-	optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
-                'lsp-plugins: equalizer, delay'
-                'rubberband: pitch shifting'
-                'zam-plugins: maximizer'
-                'yelp: in-app help')
-	provides=("${pkgname%-git}" 'pulseeffects')
-	conflicts=("${pkgname%-git}" 'pulseeffects')
+  optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
+              'lsp-plugins: equalizer, delay'
+              'rubberband: pitch shifting'
+              'zam-plugins: maximizer'
+              'yelp: in-app help')
+  provides=("${pkgname%-git}" 'pulseeffects')
+  conflicts=("${pkgname%-git}" 'pulseeffects')
 
-	DESTDIR="$pkgdir" meson install -C build
-	mv "$pkgdir/usr/lib" .
+  DESTDIR="$pkgdir" meson install -C build
+  mv "$pkgdir/usr/lib" .
 }
 
 package_gst-plugins-pulseeffects-legacy-git() {
-	pkgdesc+=" - gstreamer plugins"
-	depends=('gst-plugins-base' 'gstreamer' 'libebur128' 'rnnoise'
-	         'libsamplerate' 'libsndfile' 'zita-convolver')
-	provides=("${pkgname%-git}"
-              'gst-plugins-pulseeffects'
-              'libgstpernnoise.so'
-              'libgstpecrystalizer.so'
-              'libgstpecrystalizer.so'
-              'libgstpeconvolver.so'
-              'libgstpeautogain.so'
-              'libgstpeadapter.so')
-	conflicts=("${pkgname%-git}" 'gst-plugins-pulseeffects')
+  pkgdesc+=" - gstreamer plugins"
+  depends=('gst-plugins-base' 'gstreamer' 'libebur128' 'rnnoise'
+           'libsamplerate' 'libsndfile' 'zita-convolver')
+  provides=("${pkgname%-git}"
+            'gst-plugins-pulseeffects'
+            'libgstpernnoise.so'
+            'libgstpecrystalizer.so'
+            'libgstpecrystalizer.so'
+            'libgstpeconvolver.so'
+            'libgstpeautogain.so'
+            'libgstpeadapter.so')
+  conflicts=("${pkgname%-git}" 'gst-plugins-pulseeffects')
 
-	install -d "$pkgdir/usr"
-	mv lib "$pkgdir/usr"
+  install -d "$pkgdir/usr"
+  mv lib "$pkgdir/usr"
 }
