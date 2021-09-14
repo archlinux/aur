@@ -1,21 +1,21 @@
 # Maintainer: François Freitag <mail at franek dot fr>
 # Contributor: Victor van den Elzen <victor.vde at gmail dot com>
 pkgname=pgbadger
-pkgver=11.5
+pkgver=11.6
 pkgrel=1
 pkgdesc="A fast PostgreSQL Log Analyzer"
 arch=("any")
 url="https://github.com/darold/pgbadger"
 license=("custom:PostgreSQL")
 depends=('perl>=5.10.0')
-checkdepends=("perl-json-xs")
+checkdepends=("perl-text-csv-xs" "perl-json-xs")
 optdepends=(
   "perl-text-csv-xs: parse PostgreSQL CSV log files"
   "perl-json-xs: export statistics as JSON file"
 )
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('49ab18810a61353ebd7fee12b899ccb9adfd064be6099084670b945db5ff1186')
+sha256sums=('9c8744f76123021c2d15da8521d77b3f529e50702fb3518c4d0e0311e457a3ec')
 
 build() {
   # Override perl command line options we don't want. Source:
