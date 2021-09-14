@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-annotations'
-pkgver='0.8.2'
+pkgver='0.8.3'
 pkgrel=1
 pkgdesc='Annotate files and directories'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glib2' 'gtksourceview4' 'libnautilus-extension')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
 install="${pkgname}.install"
-sha256sums=('44913b88173bf3de4fccf45c81f354a3c7d23d930f33bcab0ea0805f6b034ea0')
+sha256sums=('b28cecc7cb5055a2f2f0617e1ef78f212bbbfd9f20320ff3f8b2cb8496f07a0d')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
