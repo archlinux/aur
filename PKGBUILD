@@ -3,7 +3,7 @@
 _pkgname=freenom
 pkgname=${_pkgname}-next
 pkgver=20210910
-pkgrel=1
+pkgrel=2
 pkgdesc='Freenom domain name renews automatically'
 arch=('any')
 url='https://github.com/luolongfei/next-freenom'
@@ -11,11 +11,11 @@ license=('MIT')
 depends=('php')
 backup=('etc/webapps/freenom/freenom.conf')
 options=('!strip')
-source=(${_pkgname}"git+${url}.git"
+source=(${_pkgname}::"git+${url}.git"
         'freenom.service'
 		'freenom.timer')
 sha512sums=('SKIP'
-            'c00eb2e904efc369a2eb01dc81f4ebe06b1332fb8dff84a7c7a296af237c0929af8f0e7f23c152603be5f64b11cfbd769f82006e7621613022669f64ff25df20'
+            '7e8964f4f5994666d26a1c63656aff5364dbf11e9a5292babaab61ce56341e9516272aa67b03520d5876b08e6d05f9246d0449492908d5af0d273234aee47ab3'
 			'0d7b19b9d00d93ce71c29c30fc5613d820dfa783ace7bf222c7cc920a785545eda8bb8d41c1e04bd253953341d9893eab6faaeb89c423b8d31412551c436d1f5')
 provides=("freenom")
 
