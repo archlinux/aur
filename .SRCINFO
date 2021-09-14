@@ -1,6 +1,6 @@
 pkgbase = seatd
 	pkgdesc = Seat management daemon and library
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://git.sr.ht/~kennylevinsen/seatd
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = seatd
 	provides = libseat
 	conflicts = seatd
 	conflicts = libseat
-	source = https://git.sr.ht/~kennylevinsen/seatd/archive/0.6.0.tar.gz
-	sha256sums = 568f170c5a25b3f57366479275421004cc5c8bddc17b0d7e78a7527fafa9766a
+	source = https://git.sr.ht/~kennylevinsen/seatd/archive/0.6.1.tar.gz
+	sha256sums = f8f8d2d2a6c5f08714b2a784595e781a257df15d6086ec4e73701217ee5ec9e8
 
 pkgname = seatd
