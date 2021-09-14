@@ -1,7 +1,7 @@
 pkgname='biblesay'
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-pkgdesc='Print out one out of 99 bible verses in a speech bubble coming from an ASCII-Art dove in your UNIX-Terminal.'
+pkgdesc='Print out a random bible verse in a speech bubble coming from an ASCII-Art dove in your terminal.'
 arch=('any')
 url='https://github.com/theeyeofcthulhu/biblesay'
 license=('GPL')
