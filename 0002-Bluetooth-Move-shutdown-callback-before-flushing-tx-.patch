@@ -1,0 +1,76 @@
+From d3fc3f9b76dc50e11a4c68d408221d51d175bf89 Mon Sep 17 00:00:00 2001
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Date: Tue, 10 Aug 2021 12:53:15 +0800
+Subject: [PATCH 2/4] Bluetooth: Move shutdown callback before flushing tx and
+ rx queue
+
+Commit 0ea9fd001a14 ("Bluetooth: Shutdown controller after workqueues
+are flushed or cancelled") introduced a regression that makes mtkbtsdio
+driver stops working:
+[   36.593956] Bluetooth: hci0: Firmware already downloaded
+[   46.814613] Bluetooth: hci0: Execution of wmt command timed out
+[   46.814619] Bluetooth: hci0: Failed to send wmt func ctrl (-110)
+
+The shutdown callback depends on the result of hdev->rx_work, so we
+should call it before flushing rx_work:
+-> btmtksdio_shutdown()
+ -> mtk_hci_wmt_sync()
+  -> __hci_cmd_send()
+   -> wait for BTMTKSDIO_TX_WAIT_VND_EVT gets cleared
+
+-> btmtksdio_recv_event()
+ -> hci_recv_frame()
+  -> queue_work(hdev->workqueue, &hdev->rx_work)
+   -> clears BTMTKSDIO_TX_WAIT_VND_EVT
+
+So move the shutdown callback before flushing TX/RX queue to resolve the
+issue.
+
+Reported-and-tested-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Guenter Roeck <linux@roeck-us.net>
+Fixes: 0ea9fd001a14 ("Bluetooth: Shutdown controller after workqueues are flushed or cancelled")
+Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Signed-off-by: Marcel Holtmann <marcel@holtmann.org>
+Fixes: https://bugs.archlinux.org/task/72032
+---
+ net/bluetooth/hci_core.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/net/bluetooth/hci_core.c b/net/bluetooth/hci_core.c
+index e1a545c8a69f..2331612839d7 100644
+--- a/net/bluetooth/hci_core.c
++++ b/net/bluetooth/hci_core.c
+@@ -1727,6 +1727,14 @@ int hci_dev_do_close(struct hci_dev *hdev)
+ 	hci_request_cancel_all(hdev);
+ 	hci_req_sync_lock(hdev);
+ 
++	if (!hci_dev_test_flag(hdev, HCI_UNREGISTER) &&
++	    !hci_dev_test_flag(hdev, HCI_USER_CHANNEL) &&
++	    test_bit(HCI_UP, &hdev->flags)) {
++		/* Execute vendor specific shutdown routine */
++		if (hdev->shutdown)
++			hdev->shutdown(hdev);
++	}
++
+ 	if (!test_and_clear_bit(HCI_UP, &hdev->flags)) {
+ 		cancel_delayed_work_sync(&hdev->cmd_timer);
+ 		hci_req_sync_unlock(hdev);
+@@ -1798,14 +1806,6 @@ int hci_dev_do_close(struct hci_dev *hdev)
+ 		clear_bit(HCI_INIT, &hdev->flags);
+ 	}
+ 
+-	if (!hci_dev_test_flag(hdev, HCI_UNREGISTER) &&
+-	    !hci_dev_test_flag(hdev, HCI_USER_CHANNEL) &&
+-	    test_bit(HCI_UP, &hdev->flags)) {
+-		/* Execute vendor specific shutdown routine */
+-		if (hdev->shutdown)
+-			hdev->shutdown(hdev);
+-	}
+-
+ 	/* flush cmd  work */
+ 	flush_work(&hdev->cmd_work);
+ 
+-- 
+2.33.0
+
