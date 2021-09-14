@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=pkg
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 pkgdesc="Package your Node.js project into an executable"
 arch=('x86_64')

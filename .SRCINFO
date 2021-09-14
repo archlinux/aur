@@ -1,6 +1,6 @@
 pkgbase = pkg
 	pkgdesc = Package your Node.js project into an executable
-	pkgver = 5.3.1
+	pkgver = 5.3.2
 	pkgrel = 1
 	url = https://github.com/zeit/pkg
 	arch = x86_64
