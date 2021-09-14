@@ -1,16 +1,18 @@
 pkgbase = wldash-git
 	pkgdesc = Wayland launcher/dashboard
-	pkgver = r90.2bad68a
+	pkgver = r165.5e5e8876f6dbecaf5080
 	pkgrel = 1
 	url = https://github.com/kennylevinsen/wldash
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = rust
+	depends = libpulse
+	depends = alsa-lib
+	depends = fontconfig
 	provides = wldash
 	conflicts = wldash
 	source = git+https://github.com/kennylevinsen/wldash.git
 	md5sums = SKIP
 
 pkgname = wldash-git
-

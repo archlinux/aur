@@ -2,13 +2,13 @@
 # Contributor: Johannes Arnold <johannes.arnold@stud.uni-hannover.de>
 
 pkgname=wldash-git
-pkgver=r90.2bad68a
+pkgver=r165.5e5e8876f6dbecaf5080
 pkgrel=1
 pkgdesc="Wayland launcher/dashboard"
 arch=('x86_64')
 url="https://github.com/kennylevinsen/wldash"
 license=('GPL3')
-depends=()
+depends=(libpulse alsa-lib fontconfig)
 makedepends=('git' 'rust') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
