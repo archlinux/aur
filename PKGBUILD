@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron12
-pkgver=12.1.0
-_commit=ea234f9cb991bfbb0bd4bff7bdf7aba2dd726dfb
+pkgver=12.1.1
+_commit=05c31e912178d7950d62a7f42ee2a9a32148c85e
 _chromiumver=89.0.4389.128
 _gcc_patchset=7
 pkgrel=1
@@ -21,7 +21,7 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'trash-cli: file deletion support (trash-put)'
             "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
 source=('git+https://github.com/electron/electron.git'
-        'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
+        'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
         "https://github.com/stha09/chromium-patches/releases/download/chromium-${_chromiumver%%.*}-patchset-${_gcc_patchset}/chromium-${_chromiumver%%.*}-patchset-${_gcc_patchset}.tar.xz"
         "electron-launcher.sh"
         "electron.desktop"
