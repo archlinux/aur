@@ -1,4 +1,5 @@
 pkgbase = libplacebo-git
+	pkgdesc = Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)
 	pkgver = v4.157.0.5.g51b0e24
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/libplacebo
@@ -9,25 +10,6 @@ pkgbase = libplacebo-git
 	makedepends = ninja
 	makedepends = vulkan-headers
 	makedepends = python-mako
-	makedepends = ffmpeg
-	makedepends = lib32-ffmpeg
-	makedepends = shaderc
-	makedepends = glslang
-	makedepends = lib32-glslang
-	makedepends = lcms2
-	makedepends = lib32-lcms2
-	makedepends = vulkan-icd-loader
-	makedepends = lib32-vulkan-icd-loader
-	makedepends = libepoxy
-	makedepends = lib32-libepoxy
-	makedepends = glfw
-	makedepends = lib32-glfw
-	conflicts = libplacebo
-	source = git+https://code.videolan.org/videolan/libplacebo.git
-	sha256sums = SKIP
-
-pkgname = libplacebo-git
-	pkgdesc = Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)
 	depends = libvulkan.so
 	depends = liblcms2.so
 	depends = glslang
@@ -38,20 +20,9 @@ pkgname = libplacebo-git
 	depends = libavutil.so
 	depends = libavformat.so
 	provides = libplacebo
-	provides = libplacebo=v4.157.0.5.g51b0e24
 	provides = libplacebo.so
+	conflicts = libplacebo
+	source = git+https://code.videolan.org/videolan/libplacebo.git
+	sha256sums = SKIP
 
-pkgname = lib32-libplacebo-git
-	pkgdesc = Reusable library for GPU-accelerated video/image rendering primitives. (GIT version) (32-bits)
-	depends = libplacebo=v4.157.0.5.g51b0e24
-	depends = libvulkan.so
-	depends = liblcms2.so
-	depends = lib32-glslang
-	depends = lib32-libepoxy
-	depends = lib32-glfw
-	depends = libavcodec.so
-	depends = libavutil.so
-	depends = libavformat.so
-	provides = lib32-libplacebo
-	provides = libplacebo.so
-	conflicts = lib32-libplacebo
+pkgname = libplacebo-git
