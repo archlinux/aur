@@ -4,12 +4,12 @@
 # Certain situations where security issues might arise, such as when copying a non-world-readable file to /tmp, are disallowed for this reason, but I can make no promises about the security of using this software
 # If, on the other hand, you have a suggestion to improve the security of the script, please contact me at magnus@iastate.edu or on matrix @magnustesshu:matrix.org and tell me how to improve it
 
-# Since I am lazy and am using this to write small scripts under /usr/local/bin sometimes, I also added a feature for myself to install with permissions already set if you are writing a new file. Do `doasedit new_script 755` for example
+# Since I am lazy and am using this to write small scripts under /usr/local/bin sometimes, I also added a feature for myself to install with permissions already set if you are writing a new file and start it with a shebang.
 
 EDITOR=${EDITOR:-vi}
 
 ERR() {
-    echo 'doasedit: '"$1";
+    echo -e 'doasedit: '"$1";
     exit $2;
 }
 
@@ -17,7 +17,7 @@ ERR() {
 [[ "$(id -u)" == "0" ]] && ERR "Do not run doasedit as root!" 1
 [[ "$(/sbin/doas -C /etc/doas.conf doasedit \"$1\")" == "permit" ]] || ERR "You are not a doer" 2 # To allow doasedit, you must be allowed to run `doas doasedit`
 [[ -d "$1" ]] && ERR "'$1' is a directory" 3; # File is a directory
-[[ $# == "0" ]] && ERR 'usage: `doasedit /file/owned/by/root` or `doasedit /new/file [permissions for chmod]`' 4 # Argument was passed
+[[ $# == "0" ]] && ERR 'usage:\n\tdoasedit /file/owned/by/root\n\tdoasedit /new/file\t(starting a new file with "#!" will make it executable)' 4 # Argument was passed
 
 # In the positive case, the file exists, and we check that anyone can read it and that it is owned by root. In the negative case, the file does not exist
 if [[ -e "$1" ]] ; then
@@ -31,7 +31,7 @@ if [[ -e "$1" ]] ; then
     # Preserves file permissions, amazingly
     cp "$1" /tmp/doasediting || ERR "Cannot copy to /tmp/doasediting" 8
 else
-    # Default permissions are 644, otherwise use whatever is supplied to the second argument
+    # Default permissions are 644
     rm -f /tmp/doasediting || ERR "Cannot remove /tmp/doasediting" 9
     touch /tmp/doasediting || ERR "Cannot touch /tmp/doasediting" 10
 fi
@@ -45,5 +45,5 @@ $EDITOR /tmp/doasediting || ERR "The editor failed to exit successfully" 11
 
 doas cp /tmp/doasediting "$1" || ERR "You put your password in wrong. Manually run 'doas cp /tmp/doasediting $1'" 12
 
-# Change permissions if the file was empty (find this out by reading $fileperms)
-[[ $fileperms != "" ]] || [[ $2 == "" ]] || { echo "doas chmod $2 '$1'" && doas chmod $2 "$1" ; } || ERR "Cannot change permissions of '$1'" 13
+# Change permissions if the file was empty and starts with a shebang
+[[ $fileperms != "" ]] || [[ `head -c 2 /tmp/doasediting` != "#!" ]] || { echo "doasedit: automatically running \`doas chmod +x '$1'\`" && doas chmod +x "$1" ; } || ERR "Cannot change permissions of '$1'" 13
