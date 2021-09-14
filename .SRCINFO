@@ -1,6 +1,6 @@
 pkgbase = wldash-git
 	pkgdesc = Wayland launcher/dashboard
-	pkgver = r165.5e5e8876f6dbecaf5080
+	pkgver = 0.2+67.g5e5e8876f6
 	pkgrel = 1
 	url = https://github.com/kennylevinsen/wldash
 	arch = x86_64
