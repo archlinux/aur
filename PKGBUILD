@@ -1,7 +1,7 @@
 # Maintainer: santost12 <santost12 AT noreply DOT archlinux DOT org>
 
 pkgname=darkmx
-pkgver=1.18
+pkgver=1.21
 pkgrel=1
 pkgdesc="Decentralized communication app that utilizes Tor hidden services to allow you to easily have an anonymous, reliable, and censorship-resistant presence on the internet."
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ depends=('gtk2' 'hicolor-icon-theme' 'dbus-glib')
 optdepends=('gconf: for shell integration')
 install='darkmx.install'
 source=('LICENSE')
-source_i686=("https://download.darkmx.app/darkmx-1.18-linux32.tar.gz")
-source_x86_64=("https://download.darkmx.app/darkmx-1.18-linux64.tar.gz")
+source_i686=("https://download.darkmx.app/darkmx-1.21-linux32.tar.gz")
+source_x86_64=("https://download.darkmx.app/darkmx-1.21-linux64.tar.gz")
 sha256sums=('c4adbd46bfdeaf329fa03c578960b157f211a3626c532ae168be9d60514ef0d0')
-sha256sums_i686=('bf6b8bda67704cd20ea957fb3fe8bbdb5e4759da36ee3063c348f05531c4b2d2')
-sha256sums_x86_64=('073d4f5c817d57f4638f4aa9476966dc07b497f9f2e0303371923766e9c825a8')
+sha256sums_i686=('6e704654b0fd712a471aca55592aea7238adccd983f75e34e01cb1ac2e1c2b9d')
+sha256sums_x86_64=('f8c56900df6c4bf25f29b91c69bd6a7598e10e21d87044568774a2bb5d539447')
 
 package() {
   if [ "$CARCH" == "x86_64" ]
