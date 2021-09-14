@@ -1,7 +1,7 @@
 pkgname='chad_launcher-bin'
 _pkgname='chad_launcher'
-pkgver=0.3.alpha3
-_tag='0.3-alpha3'
+pkgver=0.3.release1
+_tag='0.3'
 pkgrel=1
 pkgdesc='GNU/LINUX GAMING UNLEASHED!'
 arch=('x86_64')
