@@ -26,9 +26,10 @@ pkgbase = libpamac-flatpak
 	conflicts = libpamac
 	conflicts = libpamac-aur
 	conflicts = libpamac-full
+	conflicts = libpamac-full-dev
 	options = !emptydirs
-	source = https://gitlab.manjaro.org/applications/libpamac/-/archive/11.0.1/libpamac-11.0.1.tar.bz2
-	sha256sums = b204d921ca17cbe79b8e46f829f1364c56d9c98cba42372d98c7a8d7f0a7bd6b
+	source = https://gitlab.manjaro.org/applications/libpamac/-/archive/11.1.0/libpamac-11.1.0.tar.bz2
+	sha256sums = 545818a2935efcdbccc1545551918eb847219efc6388d2eff03dac8d5489f2e1
 
 pkgname = libpamac-flatpak
 	backup = etc/pamac.conf
