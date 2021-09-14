@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=gita
-pkgver=0.15.2
-pkgrel=2
+pkgver=0.15.8
+pkgrel=1
 pkgdesc="A command-line tool to manage multiple git repos"
 arch=('any')
 url="https://github.com/nosarthur/gita"
@@ -10,7 +10,7 @@ depends=('python-yaml')
 makedepends=('python-setuptools')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/nosarthur/gita/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('797e0dbd091d5bd3810325eed516603cc048ba9657b465906e2f52e7f5a35242ef6966cbcece04106ca41edec584924e2e97fe3b6ff2629bad2c6e347f7538e9')
+b2sums=('fc1323fbdb6a85dcc0d70c9cdfbe1da8c0ec294967848e810e61041fbdbc3492c69b6cb81ce843cfd54c8de3622c06cb7cac5f45b9c3ab714fc989b7d96c9d60')
 
 build() {
 	cd "$pkgname-$pkgver"
