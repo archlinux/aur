@@ -1,0 +1,10 @@
+pkgbase = kwin-scripts-ultrawidewindows
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://github.com/lucmos/UltrawideWindows
+	arch = any
+	license = GPL-2.0
+	source = kwin-scripts-ultrawidewindows-4.1.tar.gz::https://github.com/lucmos/UltrawideWindows/archive/refs/tags/4.1.tar.gz
+	sha256sums = 59dbd042a29f207053ad0bbc9e11f068654af93bb517000e452fb29840b02dcc
+
+pkgname = kwin-scripts-ultrawidewindows
