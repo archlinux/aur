@@ -5,7 +5,7 @@ pkgbase = rozb3-pac-git
 	url = https://gitlab.com/m_zhou/rozb3-pac
 	arch = any
 	license = GPL
-	depends = bieaz
+	depends = bieaz-git
 	source = rozb3-pac-git::git+https://gitlab.com/m_zhou/rozb3-pac
 	sha256sums = SKIP
 
