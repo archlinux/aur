@@ -1,12 +1,12 @@
 pkgbase = install-date-git
 	pkgdesc = Determine the install date of your Linux install
-	pkgver = 0.1
+	pkgver = r11.083b372
 	pkgrel = 1
 	url = https://github.com/alicela1n/install-date
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
+	makedepends = git
 	source = install-date-git::git+https://github.com/alicela1n/install-date
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = install-date-git
