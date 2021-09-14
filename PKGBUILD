@@ -8,7 +8,7 @@ arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
 source=(https://pak128-german.de/PAK128.german_VS2.1.beta.zip)
-sha256sums=('7aa2cb96cbb04a05fa56d544ef31fec2644b830a601de029bff8c15d3b707d30')
+sha256sums=('0fdbc03d9ad71a76f377c074486ffe9215a068d0011b5606c4518eaee9b680ea')
 
 package() {
   #data
