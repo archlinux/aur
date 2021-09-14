@@ -1,0 +1,47 @@
+diff -pNaru5 perle-serial-3.9.2.orig-0005/pserial/perle-serial.c perle-serial-3.9.2/pserial/perle-serial.c
+--- perle-serial-3.9.2.orig-0005/pserial/perle-serial.c	2021-09-14 11:28:43.064657062 -0400
++++ perle-serial-3.9.2/pserial/perle-serial.c	2021-09-14 11:31:16.193566625 -0400
+@@ -947,10 +947,14 @@ static _INLINE_ void receive_chars(struc
+ #else
+ 	tty_flip_buffer_push(tty);
+ #endif
+ }
+ 
++#if (LINUX_VERSION_CODE >=  KERNEL_VERSION(5,14,0))
++#define stopped flow.stopped /* tty->stopped */
++#endif
++
+ static _INLINE_ void transmit_chars(struct ps_async_struct *info, int *intr_done)
+ {
+ 	int count;
+ 
+ 	/* echo suppression logic */
+@@ -2195,20 +2199,28 @@ static int ps_write(struct tty_struct *
+ }
+ #endif		// > 2.6.10
+ 
+ 
+ 
++#if (LINUX_VERSION_CODE >=  KERNEL_VERSION(5,14,0))
++static unsigned int ps_write_room(struct tty_struct *tty)
++#else
+ static int ps_write_room(struct tty_struct *tty)
++#endif
+ {
+ 	struct ps_async_struct *info = (struct ps_async_struct *)tty->driver_data;
+ 
+ 	if (ps_paranoia_check(info, tty, "ps_write_room"))
+ 		return 0;
+ 	return CIRC_SPACE(info->xmit.head, info->xmit.tail, SERIAL_XMIT_SIZE);
+ }
+ 
++#if (LINUX_VERSION_CODE >=  KERNEL_VERSION(5,14,0))
++static unsigned int ps_chars_in_buffer(struct tty_struct *tty)
++#else
+ static int ps_chars_in_buffer(struct tty_struct *tty)
++#endif
+ {
+ 	struct ps_async_struct *info = (struct ps_async_struct *)tty->driver_data;
+ 				
+ 	if (ps_paranoia_check(info, tty, "ps_chars_in_buffer"))
+ 		return 0;

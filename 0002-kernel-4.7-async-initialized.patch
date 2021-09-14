@@ -1,0 +1,18 @@
+diff -pNaru5 perle-serial-3.9.2.orig-0002/pserial/perle-serial.c perle-serial-3.9.2/pserial/perle-serial.c
+--- perle-serial-3.9.2.orig-0002/pserial/perle-serial.c	2021-09-14 11:10:48.772141908 -0400
++++ perle-serial-3.9.2/pserial/perle-serial.c	2021-09-14 11:10:59.679207370 -0400
+@@ -70,10 +70,14 @@
+  * SERIAL_PARANOIA_CHECK
+  * 		Check the magic number for the async_structure where
+  * 		ever possible.
+  */
+ 
++#undef __KERNEL__
++#include <linux/tty_flags.h>
++#define __KERNEL__ 1
++
+ #include <linux/version.h>
+ #if ! defined (LINUX_VERSION_CODE)
+ #error "Kernel version is not set"
+ #endif
+ 

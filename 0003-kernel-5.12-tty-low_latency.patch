@@ -1,0 +1,31 @@
+diff -pNaru5 perle-serial-3.9.2.orig-0003/pserial/perle-serial.c perle-serial-3.9.2/pserial/perle-serial.c
+--- perle-serial-3.9.2.orig-0003/pserial/perle-serial.c	2021-09-14 11:15:23.675520937 -0400
++++ perle-serial-3.9.2/pserial/perle-serial.c	2021-09-14 11:19:15.647322399 -0400
+@@ -2446,11 +2446,13 @@ static int set_serial_info(struct ps_asy
+ 	info->flags = ((state->flags & ~ASYNC_INTERNAL_FLAGS) |
+ 		       (info->flags & ASYNC_INTERNAL_FLAGS));
+ 	state->custom_divisor = new_serial.custom_divisor;
+ 	state->close_delay = new_serial.close_delay * HZ/100;
+ 	state->closing_wait = new_serial.closing_wait * HZ/100;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0)
+ 	TTY_LOW_LATENCY(info->tty) = (info->flags & ASYNC_LOW_LATENCY) ? 1 : 0;
++#endif
+ 	info->xmit_fifo_size = state->xmit_fifo_size =
+ 		new_serial.xmit_fifo_size;
+ 
+ 	if ((state->type != PORT_UNKNOWN) && state->port) {
+ 		/* UltraPort 16 SI uses 16 bytes per port */
+@@ -3626,11 +3628,13 @@ static int ps_open(struct tty_struct *tt
+ 	printk("ps_open %s%d, count = %d\n", tty->driver->name, info->line,
+ 		       info->state->count);
+ #endif
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0)
+ 	TTY_LOW_LATENCY(info->tty) = (info->flags & ASYNC_LOW_LATENCY) ? 1 : 0;
++#endif
+ 
+ 	/*
+ 	 *	This relies on lock_kernel() stuff so wants tidying for 2.5
+ 	 */
+ 	if (!tmp_buf) {

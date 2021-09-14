@@ -1,0 +1,32 @@
+diff -pNaru5 perle-serial-3.9.2.orig-0004/pserial/perle-serial.c perle-serial-3.9.2/pserial/perle-serial.c
+--- perle-serial-3.9.2.orig-0004/pserial/perle-serial.c	2021-09-14 11:26:40.756869474 -0400
++++ perle-serial-3.9.2/pserial/perle-serial.c	2021-09-14 11:26:52.547298877 -0400
+@@ -5201,26 +5201,23 @@ void ps_unregister_serial(int line)
+ }
+ 
+ static void __exit ps_fini(void) 
+ {
+ //	unsigned long flags;
+-	int e1;
+ 	int i;
+ 	struct ps_async_struct *info;
+ 
+ 	printk(KERN_INFO "Unloading %s: version %s\n", serial_name, serial_version);
+ #ifdef USE_PS_TIMER
+ 	del_timer_sync(&serial_timer);
+ #endif
+     
+ #if LINUX_VERSION_CODE <  KERNEL_VERSION(2,5,0)
+ 	remove_bh( PERLE_SERIAL_BH );
+-	if ((e1 = tty_unregister_driver(&serial_driver)))
+-		printk("serial: failed to unregister Perle's serial driver (%d)\n", e1);
++	tty_unregister_driver(&serial_driver);
+ #else
+-	if ((e1 = tty_unregister_driver(serial_driver)))
+-		printk("serial: failed to unregister Perle's serial driver (%d)\n", e1);
++	tty_unregister_driver(serial_driver);
+ 	put_tty_driver(serial_driver);
+ #endif
+ 	for (i = 0; i < NR_PORTS; i++) {
+ 		if ((info = ps_table[i].info)) {
+ //			if (info->state->XRflatreg) // This code causes oops. Remove for now plus all other Sleep calls.
