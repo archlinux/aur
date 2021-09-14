@@ -1,0 +1,139 @@
+diff --git a/src/Powercord/index.js b/src/Powercord/index.js
+index 1ddfd14..408b5d2 100644
+--- a/src/Powercord/index.js
++++ b/src/Powercord/index.js
+@@ -248,6 +248,58 @@ class Powercord extends Updatable {
+     }
+     return success;
+   }
++
++  async _getUpdateCommits () {
++    // const abort = new AbortController();
++    // const timeout = setTimeout(() => {
++    //   abort.abort();
++    //   throw new Error('Timed out.');
++    // }, TIMEOUT);
++
++    // const branch = await this.getBranch();
++    // const commits = [];
++
++    // const gitLog = await exec(`git log --format="%H -- %an -- %s" ..origin/${branch}`, {
++    //   cwd: this.entityPath,
++    //   signal: abort.signal
++    // }).then(({ stdout }) => stdout.toString());
++
++    // const lines = gitLog.split('\n');
++    // lines.pop();
++    // lines.forEach(line => {
++    //   const data = line.split(' -- ');
++    //   commits.push({
++    //     id: data.shift(),
++    //     author: data.shift(),
++    //     message: data.shift()
++    //   });
++    // });
++
++    // clearTimeout(timeout);
++    return [];
++  }
++  async getBranch () {return this.gitInfos.branch;}
++  async getGitRepo () {return this.gitInfos.upstream;}
++  async _checkForUpdates () {
++    const abort = new AbortController();
++    const timeout = setTimeout(() => {
++      abort.abort();
++      throw new Error('Timed out.');
++    }, 10000);
++
++    try {
++      const latestCommitSha = await exec(`curl https://api.github.com/repos/${this.gitInfos.upstream}/commits/${this.gitInfos.branch} | jq -r .sha`, {
++        cwd: this.entityPath,
++        signal: abort.signal
++      }).then(({ stdout }) => stdout.toString());
++
++      clearTimeout(timeout);
++      return !latestCommitSha.includes(this.gitInfos.revision);
++    } catch (e) {
++      clearTimeout(timeout);
++      return false;
++    }
++  }
+ }
+ 
+ module.exports = Powercord;
+diff --git a/src/Powercord/plugins/pc-updater/components/Settings.jsx b/src/Powercord/plugins/pc-updater/components/Settings.jsx
+index edbc97e..2d8ee92 100644
+--- a/src/Powercord/plugins/pc-updater/components/Settings.jsx
++++ b/src/Powercord/plugins/pc-updater/components/Settings.jsx
+@@ -83,7 +83,7 @@ module.exports = class UpdaterSettings extends React.PureComponent {
+         <div className="about">
+           <div>
+             <span>{Messages.POWERCORD_UPDATES_UPSTREAM}</span>
+-            <span>{powercord.gitInfos.upstream.replace(REPO_URL, Messages.POWERCORD_UPDATES_UPSTREAM_OFFICIAL)}</span>
++            <span>{powercord.gitInfos.upstream.replace(REPO_URL, Messages.POWERCORD_UPDATES_UPSTREAM_OFFICIAL+' (AUR)')}</span>
+           </div>
+           <div>
+             <span>{Messages.POWERCORD_UPDATES_REVISION}</span>
+diff --git a/src/Powercord/plugins/pc-updater/components/Update.jsx b/src/Powercord/plugins/pc-updater/components/Update.jsx
+index d2d9fb7..337e158 100644
+--- a/src/Powercord/plugins/pc-updater/components/Update.jsx
++++ b/src/Powercord/plugins/pc-updater/components/Update.jsx
+@@ -33,6 +33,7 @@ module.exports = class Update extends React.PureComponent {
+         </div>
+       </div>
+       <div className='summary'>
++        {name === 'Powercord' ? <span>Note: Please download the update from the AUR!</span> : ''}
+         {commits.map(commit => <div key={commit.id}>
+           <a href={`https://github.com/${repo}/commit/${commit.id}`} target='_blank'>
+             <code>{commit.id.substring(0, 7)}</code>
+diff --git a/src/Powercord/plugins/pc-updater/index.js b/src/Powercord/plugins/pc-updater/index.js
+index 6456798..71e40e1 100644
+--- a/src/Powercord/plugins/pc-updater/index.js
++++ b/src/Powercord/plugins/pc-updater/index.js
+@@ -150,14 +150,14 @@ module.exports = class Updater extends Plugin {
+     const updates = this.settings.get('updates', []);
+     const failed = [];
+     for (const update of [ ...updates ]) {
+-      let entity = powercord;
++      let entity;
+       if (update.id.startsWith('plugin')) {
+         entity = powercord.pluginManager.get(update.id.replace('plugins_', ''));
+       } else if (update.id.startsWith('theme')) {
+         entity = powercord.styleManager.get(update.id.replace('themes_', ''));
+       }
+ 
+-      const success = await entity._update(force);
++      const success = entity ? await entity._update(force) : false;
+       updates.shift();
+       this.settings.get('updates', updates);
+       if (!success) {
+@@ -246,26 +246,10 @@ module.exports = class Updater extends Plugin {
+   }
+ 
+   async getGitInfos () {
+-    const branch = await exec('git branch', this.cwd)
+-      .then(({ stdout }) =>
+-        stdout
+-          .toString()
+-          .split('\n')
+-          .find(l => l.startsWith('*'))
+-          .slice(2)
+-          .trim()
+-      );
+-
+-    const revision = await exec(`git rev-parse ${branch}`, this.cwd)
+-      .then(r => r.stdout.toString().trim());
+-
+-    const upstream = await exec('git remote get-url origin', this.cwd)
+-      .then(r => r.stdout.toString().match(/github\.com[:/]([\w-_]+\/[\w-_]+)/)[1]);
+-
+     return {
+-      upstream,
+-      branch,
+-      revision
++      upstream: "@PKG_UPSTREAM@",
++      branch: "@PKG_BRANCH@",
++      revision: "@PKG_REVISION@"
+     };
+   }
+ 
