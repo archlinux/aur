@@ -1,6 +1,6 @@
 pkgbase = python-ajsonrpc
 	pkgdesc = Async JSON-RPC 2.0 protocol + server
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/pavlov99/ajsonrpc
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-ajsonrpc
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = https://pypi.org/packages/source/a/ajsonrpc/ajsonrpc-1.1.0.tar.gz
-	sha256sums = 0a01c2b56d20c59868ed96afbc468e0cd73e29b156e2c02c1ed3365e4e42b9ac
+	source = https://pypi.org/packages/source/a/ajsonrpc/ajsonrpc-1.2.0.tar.gz
+	sha256sums = 791bac18f0bf0dee109194644f151cf8b7ff529c4b8d6239ac48104a3251a19f
 
 pkgname = python-ajsonrpc

@@ -1,7 +1,7 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 
 pkgname=python-ajsonrpc
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Async JSON-RPC 2.0 protocol + server"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/pavlov99/ajsonrpc"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.org/packages/source/a/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
-sha256sums=('0a01c2b56d20c59868ed96afbc468e0cd73e29b156e2c02c1ed3365e4e42b9ac')
+sha256sums=('791bac18f0bf0dee109194644f151cf8b7ff529c4b8d6239ac48104a3251a19f')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
