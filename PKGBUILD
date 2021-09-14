@@ -4,12 +4,15 @@
 
 pkgname=ventoy-bin
 pkgver=1.0.52
-pkgrel=3
-pkgdesc='A new multiboot USB solution (Binary)'
-url='http://www.ventoy.net/'
+pkgrel=4
+pkgdesc="A new multiboot USB solution"
 arch=('i686' 'x86_64')
+url="http://www.ventoy.net"
 license=('GPL3')
 depends=('bash' 'util-linux' 'xz' 'dosfstools' 'lib32-glibc')
+optdepends=('gtk2: GTK2 GUI'
+            'gtk3: GTK3 GUI'
+            'qt5-base: Qt5 GUI')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
@@ -30,28 +33,30 @@ sha256sums=('ed1120bcaa63ee810fb8bd712964c73057f70c7648be3125f45e639599a631c2'
             '22225d48023806d0d15e059216ef4921de70cdb78348630be109fa9c669e2900'
             '1555f65997e6d92ca29a774b45052e97a3358430fa5869f521a4fe7818427a1f')
 
-_msg2() {
-  if tty --silent; then printf "\e[1;34m  ->\e[0;1m %s\e[0m\n" "$1"
-  else printf "  -> %s\n" "$1"; fi
-}
-
 prepare() {
-  _msg2 "Decompress tools..."
-  cd "$srcdir/${pkgname%-bin}-${pkgver}/tool/$CARCH"
+  cd "${pkgname%-bin}-$pkgver"
+
+  # Decompress tools
+  pushd tool/$CARCH
   for file in *.xz; do
     xzcat $file > ${file%.xz}
     chmod +x ${file%.xz}
   done
 
-  _msg2 "Cleaning up .xz crap..."
+  # Cleanup .xz crap
   rm -fv ./*.xz
+  popd
 
-  _msg2 "Applying sanitize patch..."
-  cd ../..
+  # Apply sanitize patch
   patch --verbose -p0 < "$srcdir/sanitize.patch"
+
+  # Log location
   sed -i 's|log\.txt|/var/log/ventoy.log|g' WebUI/static/js/languages.js
 
-  _msg2 "Cleaning up unused binaries..."
+  # Non-POSIX compliant scripts
+  sed -i 's|bin/sh|usr/bin/env bash|g' tool/{ventoy_lib.sh,VentoyWorker.sh}
+
+  # Clean up unused binaries
   # Preserving mkexfatfs and mount.exfat-fuse because exfatprogs is incompatible
   for binary in xzcat hexdump; do
     rm -fv tool/$CARCH/$binary
@@ -59,9 +64,7 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-bin}-${pkgver}"
-
-  _msg2 "Copying package files..."
+  cd "${pkgname%-bin}-$pkgver"
   install -Dm644 -vt      "$pkgdir/opt/${pkgname%-bin}/boot/"            boot/*
   install -Dm644 -vt      "$pkgdir/opt/${pkgname%-bin}/${pkgname%-bin}/" "${pkgname%-bin}"/*
   install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/tool/"            tool/*.{cer,glade,json,sh}
@@ -73,11 +76,10 @@ package() {
   install -Dm644 WebUI/static/img/VentoyLogo.png -v "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
   install -Dm644 "$srcdir/${pkgname%-bin}.desktop" -vt "$pkgdir/usr/share/applications"
 
-  _msg2 "Linking system binaries..."
+  # Link system binaries
   for binary in xzcat hexdump; do
     ln -svf /usr/bin/$binary "$pkgdir/opt/${pkgname%-bin}/tool/$CARCH/"
   done
 
-  _msg2 "Creating /usr/bin entries..."
   install -Dm755 "$srcdir/${pkgname%-bin}"{,gui,web,-{,extend-}persistent} -vt "$pkgdir"/usr/bin/
 }
