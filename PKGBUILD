@@ -1,7 +1,7 @@
 # Maintainer: Amal Karunarathna <nasashinega@gmail.com>
 
 pkgname=emojify
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Emoji on the command line.'
 arch=('any')
@@ -12,7 +12,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-    'a3815c8fb6fc3844c4e58cdd01b91bc965c9630a5e8073569fc07f6e222e20d72b5c0df8e40f6cb51793744f3b59b008f97bd4d4dfbf9c64956b7ff804b3dee1'
+    '9d7a4927bd4a16e9aab30d1da6ab608d189247f1ae51771a63016d0cb134889e85e503e5c56f2d87992f3e5e629aff26d0f8db1c808c3e33cc4007ad11575ca0'
 )
 
 package() {
