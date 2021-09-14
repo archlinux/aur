@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=21.3.0_devel.144763.3c18e69078a
+pkgver=21.3.0_devel.144810.e43797ab13b
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -28,17 +28,16 @@ license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
                 'LICENSE'
                 'llvm32.native'
-                "use hasParamAttr instead of hasAttribute.patch"
 )
 
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
          '6b4a19068a323d7f90a3d3cd315ed1f9'
-         '5fb1d94f0714863855e0c3d328f02ce4')
+)
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
             'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe'
-            '4d46d93401efde3be3d879dfb92e3d79453788a87c326968901b1702fd2ba7bda155950b9ce2958320bb0dd6f89b71573610c9f75f809fb5296b9d1355fd1e75')
+)
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -96,7 +95,6 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
-    patch --directory=mesa --forward --strip=1 --input="${srcdir}/use hasParamAttr instead of hasAttribute.patch"
 }
 
 build () {
