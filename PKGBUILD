@@ -3,19 +3,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.19
 
 pkgname='perl-moosex-role-parameterized'
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="roles with composition parameters"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-namespace-autoclean')
-makedepends=('perl-moose' 'perl-test-fatal')
-checkdepends=('perl-test-requires')
+makedepends=('perl-moose' 'perl-test-fatal' 'perl-module-build-tiny')
+checkdepends=('perl-test-requires' 'perl-test-needs')
 url='http://search.cpan.org/dist/MooseX-Role-Parameterized'
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Role-Parameterized-$pkgver.tar.gz")
-md5sums=('28072021d14dcd8ba40d5a0f08ddfbc8')
-sha512sums=('10f6b51dd6e09c30e36496469c4a213e0ab6d12529e0b91161f680ae595b312e9dbff035d6c8a2d10dbff7fa55cf7ca6b53cd66b848f75f7e6ac43b6e6eb9e84')
+md5sums=('a326fd9fb065dafc75fc0211797968e8')
+sha512sums=('7442a10f1593cecfcb01e93f314bcb6ebe95b4b9710262ef5dc7d8065ae118a96e0abbbc9f7b8986c33185a8b8aec60cf8639c0fd6eee4fb94f2e33d95eb7ed9')
 _distdir="MooseX-Role-Parameterized-${pkgver}"
 
 build() {
