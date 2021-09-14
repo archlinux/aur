@@ -2,12 +2,13 @@
 
 pkgname=freenom-script
 pkgver=20210824
-pkgrel=1
+pkgrel=2
 pkgdesc="Freenom.com Domain Renewal and Dynamic DNS script."
 arch=('any')
 url="https://github.com/mkorthof/freenom-script"
 license=('GPL3')
 depends=('curl')
+optdepends=('postfix: Mail Transfer Agent')
 source=("${pkgname}::git+${url}.git"
 		destdir.patch)
 md5sums=('SKIP'
