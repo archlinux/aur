@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Codex
+Comment=A free note-taking software for programmers and Computer Science students
+Icon=codex
+Exec=codex
+StartupNotify=true
