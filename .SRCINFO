@@ -1,0 +1,20 @@
+pkgbase = packetq-git
+	pkgdesc = A tool that provides a basic SQL-frontend to PCAP-files
+	pkgver = 1.4.3.r1.948c28e
+	pkgrel = 1
+	url = https://github.com/DNS-OARC/PacketQ
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = git
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = zlib
+	depends = zlib
+	provides = packetq
+	conflicts = packetq
+	source = git+https://github.com/DNS-OARC/packetq.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = packetq-git
