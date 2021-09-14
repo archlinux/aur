@@ -1,15 +1,15 @@
 # Maintainer: Samuel Laurén <samuel dot lauren at iki dot fi>
 pkgname=xcolor
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight color picker for X11"
 arch=(x86_64)
 url="https://github.com/Soft/xcolor"
 license=("MIT")
-depends=("libxcb")
+depends=("libxcb" "libxcursor" "libx11")
 makedepends=("rust" "cargo" "python")
 source=("https://github.com/Soft/xcolor/archive/${pkgver}.tar.gz")
-sha256sums=('cff417d0ccbece766c66a183413e167868fdbd98b8129516ff9021a4b11a5647')
+sha256sums=("cff417d0ccbece766c66a183413e167868fdbd98b8129516ff9021a4b11a5647")
 
 
 build() {
