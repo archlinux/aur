@@ -1,7 +1,7 @@
 # Maintainer: Xylight <email redacted>
 pkgname=xaur
-pkgver=1
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 epoch=
 pkgdesc="A simple, lightweight AUR helper. (in beta)"
 arch=('x86_64')
