@@ -1,0 +1,14 @@
+pkgbase = xaur
+	pkgdesc = A simple, lightweight AUR helper. (in beta)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Xyphyn/xaur
+	arch = x86_64
+	license = GPL
+	makedepends = pyinstaller
+	makedepends = git
+	depends = python
+	source = xaur::git://github.com/Xyphyn/xaur.git
+	md5sums = SKIP
+
+pkgname = xaur
