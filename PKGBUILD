@@ -3,7 +3,7 @@
 
 pkgname=mopidy-youtube-git
 _pkgname=mopidy-youtube
-pkgver=v3.3.r2.g9db86ff
+pkgver=v3.4.r1.g242b420
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Youtube"
 
@@ -17,7 +17,7 @@ depends=(
   'python-requests'
   'python-cachetools'
   'python-beautifulsoup4'
-  'youtube-dl>=2020.12.22'
+  'youtube-dl>=2021.06.01'
   'python-ytmusicapi')
 makedepends=('python' 'git')
 
