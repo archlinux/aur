@@ -1,7 +1,7 @@
 pkgbase = sparrow-wifi-git
 	pkgdesc = Next-Gen GUI-based WiFi and Bluetooth Analyzer for Linux
-	pkgver = r170.ad95f2e
-	pkgrel = 4
+	pkgver = r179.4b82897
+	pkgrel = 2
 	url = https://github.com/ghostop14/sparrow-wifi
 	install = sparrow-wifi.install
 	arch = any
@@ -38,7 +38,6 @@ pkgbase = sparrow-wifi-git
 	sha256sums = SKIP
 	sha256sums = ec12b01c211e0860c478db732d7328358c0aa8be195168d569902ce159c44d29
 	sha256sums = a481414dc5a34589ca116ae29e4ba062cf773f398356fc73c60501340213525b
-	sha256sums = 2d141b0f79939feecb21ff0d06575a2f4fa58cf8faabba45951aec6ad79c021e
+	sha256sums = eba6a05241ff1e5a892b76c751160449bef1cbc4b6501278badef756c89d6a8e
 
 pkgname = sparrow-wifi-git
-

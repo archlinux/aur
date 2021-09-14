@@ -4,7 +4,7 @@
  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
 
-  <action id="org.freedesktop.policykit.pkexec.run-gparted">
+  <action id="org.freedesktop.policykit.pkexec.run-sparrow-wifi">
     <description>Run Sparrow Wifi</description>
     <message>Authentication is required to run Sparrow Wifi</message>
     <defaults>
