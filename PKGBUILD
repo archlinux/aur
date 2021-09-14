@@ -1,9 +1,9 @@
-# Maintainer: setBoolean <setboolean@icloud.com>
+# Maintainer: Pavers_Career <pavers_career_0d@icloud.com>
 pkgname="bee-git"
 _pkgname="bee"
 _branch="chrysalis-pt-2"
-_pkgver="0.1.2"
-pkgver=0.1.2.r0.gb7d9824f
+_pkgver="0.2.1"
+pkgver=0.2.1.r0.g1fbe96ab
 pkgrel=1
 pkgdesc="A framework for IOTA nodes, clients and applications in Rust"
 arch=('x86_64')
@@ -13,13 +13,13 @@ depends=('openssl')
 makedepends=('rustup' 'npm' 'clang' 'llvm' 'cmake' 'git')
 source=("git://github.com/iotaledger/$_pkgname.git#branch=$_branch"
 	"$_pkgname.service"
-	"https://github.com/iotaledger/bee/releases/download/v$_pkgver/config.toml"
-	"https://github.com/iotaledger/bee/releases/download/v$_pkgver/config_as.toml")
+	"https://github.com/iotaledger/bee/releases/download/v$_pkgver/config.chrysalis-comnet.toml"
+	"https://github.com/iotaledger/bee/releases/download/v$_pkgver/config.chrysalis-mainnet.toml")
 sha256sums=('SKIP'
-            '2ae3649f7912b742a0b84f3573b2baf5fb60ea9448323f84faba03137f4cc250'
-            '1d43988957e84d32679562aef005dfc1086be627031d0b8c6e3c8e93b0e30142'
-            'd676edf941cd4109d0ea6d159345b2d9cc3c598ed57a003bd4d6b2a66591d190')
-backup=('etc/bee/config.toml')
+            '2a0b6c70f7e1480a35c38a697f2b5d6d4181854b5d83941a7b684a5476f9cd17'
+            '2b52c5613b9eed26a676bbe5d877ce949048a01ccbb6c7c73fd82d0d3b783df8'
+            'd1c6466269c5f581d2072496f431cbaf8169c280a9026454d4e57efddcf0c583')
+backup=('etc/bee/config.chrysalis-mainnet.toml' 'etc/bee/config.chrysalis-comnet.toml')
 install=$_pkgname.install
 
 pkgver() {
@@ -53,8 +53,8 @@ build() {
 package() {
 
 	# Install files
-	install -Dm600 ${srcdir}/config.toml ${pkgdir}/etc/bee/config.toml
-	install -Dm600 ${srcdir}/config_as.toml ${pkgdir}/etc/bee/config_as.toml
+	install -Dm600 ${srcdir}/config.chrysalis-comnet.toml ${pkgdir}/etc/bee/config.chrysalis-comnet.toml
+	install -Dm600 ${srcdir}/config.chrysalis-mainnet.toml ${pkgdir}/etc/bee/config.chrysalis-mainnet.toml
 	
 	install -D ${srcdir}/bee/target/release/bee ${pkgdir}/usr/bin/bee
 	

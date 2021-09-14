@@ -15,7 +15,7 @@ User=bee
 WorkingDirectory=/var/lib/bee
 TimeoutSec=1200
 Restart=always
-ExecStart=/usr/bin/bee -c "/etc/bee/config.toml"
+ExecStart=/usr/bin/bee -c "/etc/bee/config.chrysalis-mainnet.toml"
 
 [Install]
 WantedBy=multi-user.target
