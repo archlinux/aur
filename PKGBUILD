@@ -2,41 +2,40 @@
 
 _gemname=rubocop-rails
 pkgname=ruby-${_gemname}
-pkgver=2.11.3
+pkgver=2.12.2
 pkgrel=1
 pkgdesc="Automatic Rails code style checking tool"
 arch=(any)
 depends=(ruby ruby-rubocop ruby-activesupport ruby-rack)
 checkdepends=(ruby-bundler ruby-rake ruby-rspec ruby-yard ruby-bump
               ruby-rubocop-performance ruby-rubocop-rspec ruby-test-queue)
-makedepends=(git rubygems ruby-rdoc)
+makedepends=(rubygems ruby-rdoc)
 url=https://docs.rubocop.org/rubocop-rails/
 license=(MIT)
 options=(!emptydirs)
-source=(git+https://github.com/rubocop/${_gemname}.git?tag=v${pkgver})
-sha256sums=('SKIP')
+source=(https://github.com/rubocop/rubocop-rails/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('70715fa3f5a27d020094563598eef46fb478c2099f047a593a25dc0ba0ca8a89')
 
 prepare() {
-  cd $_gemname
+  cd $_gemname-$pkgver
   sed -i '/yard/d' Gemfile
   sed -i '/simplecov/d' Gemfile
   sed -i "s/, github: 'rubocop\/rubocop'//" Gemfile
-  # rubocop-rspec on the aur is _old_
-  sed -i "s/, '~> 2.4.0'//" Gemfile
+  sed -i 's|git ls-files|find|' ${_gemname}.gemspec
 }
 
 build() {
-  cd $_gemname
+  cd $_gemname-$pkgver
   gem build ${_gemname}.gemspec
 }
 
 check() {
-  cd $_gemname
+  cd $_gemname-$pkgver
   rake spec
 }
 
 package() {
-  cd $_gemname
+  cd $_gemname-$pkgver
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
   gem install \
