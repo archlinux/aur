@@ -11,7 +11,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.16.10
+pkgver=3.16.11
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -26,15 +26,9 @@ optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
-        'qgis-proj8.patch')
+source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
-sha256sums=('d67c12217e0261d0335238b96eaf235427a34635aa2651b83ead7c006a3c03c2'
-            '58f58b5e43cc9f13b55bf2a9742b3c7cb555eee3c4075611980f0496cfd24c89')
-
-prepare() {
-   patch -d "$_pkgname-$pkgver" -p1 < qgis-proj8.patch # https://github.com/qgis/QGIS/issues/41735
- }
+sha256sums=('06e36db772cb44c3907b707aad42569646dd645f38f2ae4a3352145dcce21e9d')
 
 build() {
   cmake -G Ninja -B build -S "$_pkgname-$pkgver" \
