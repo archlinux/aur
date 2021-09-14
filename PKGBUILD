@@ -1,31 +1,31 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: robertfoster
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ffmpeg
-pkgver=0.4.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="OCaml bindings to the FFmpeg library"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-ffmpeg"
 license=('LGPL2.1')
 depends=('ocaml' 'ffmpeg')
-makedepends=('ocaml-findlib')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-ffmpeg/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./bootstrap
-  ./configure
-  make
+  dune build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-  make install
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+
+  install -dm755 "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha512sums=('f55fbfab62998366e56827f2a5a5190e788c44a4f3dc214218fa702a6a6ad891adb1dc7cadf811cd999664ce01be2891b865010ee81bac56fe95bc7651549f19')
+sha512sums=('bba0d883770911ab54ada967e7bb2d606cdec4a01d9af66f546bd997465316abebf8a99e9a29fffd90cd44fffa0fb632ef386a8ffd31340cfb4f4d23fb6e4d79')
