@@ -3,7 +3,7 @@
 
 pkgname=telescope-bin
 _pkgname=${pkgname%-*}
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='w3m-like browser for Gemini.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 	'https://raw.githubusercontent.com/omar-polo/telescope/main/LICENSE'
 )
 sha256sums=(
-	'41a05ecfa3db88e3131440859a043ce7c5c1106229d312c9d78dc5da5a6ed571'
+	'c8382a51122d69b174bb22c8358f469ac08d90f88a484d12729c7287e803429d'
 	'd74e569d89bef32bc5b9b297e581022674b62e4f9317fa72b971947f9e7ecd67'
 )
 
