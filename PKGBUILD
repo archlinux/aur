@@ -3,7 +3,7 @@
 
 pkgname=kronisk
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Runs a command quietly unless it fails. Python implementation of chronic(1).'
 arch=('any')
 url="https://github.com/kseistrup/kronisk"

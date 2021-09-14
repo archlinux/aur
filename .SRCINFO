@@ -1,7 +1,7 @@
 pkgbase = kronisk
 	pkgdesc = Runs a command quietly unless it fails. Python implementation of chronic(1).
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kseistrup/kronisk
 	arch = any
 	license = GPL3
