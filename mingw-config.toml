@@ -13,7 +13,7 @@
 # If it does not match the version that is currently running,
 # `x.py` will prompt you to update it and read the changelog.
 # See `src/bootstrap/CHANGELOG.md` for more information.
-changelog-seen = 1
+changelog-seen = 2
 
 # =============================================================================
 # Global Settings
@@ -38,7 +38,7 @@ changelog-seen = 1
 # This is false by default so that distributions don't unexpectedly download
 # LLVM from the internet.
 #
-# All tier 1 targets are currently supported; set this to `"if-supported"` if
+# All tier 1 targets are currently supported; set this to `"if-available"` if
 # you are not sure whether you're on a tier 1 target.
 #
 # We also currently only support this when building LLVM for the build triple.
@@ -69,7 +69,7 @@ release-debuginfo = false
 assertions = false
 
 # Indicates whether ccache is used when building LLVM
-ccache = false
+#ccache = false
 # or alternatively ...
 #ccache = "/path/to/ccache"
 
@@ -223,11 +223,11 @@ docs = false
 compiler-docs = false
 
 # Indicate whether git submodules are managed and updated automatically.
-submodules = true
+submodules = false
 
 # Update git submodules only when the checked out commit in the submodules differs
 # from what is committed in the main rustc repo.
-fast-submodules = true
+fast-submodules = false
 
 # The path to (or name of) the GDB executable to use. This is only used for
 # executing the debuginfo test suite.
@@ -567,8 +567,8 @@ test-compare-mode = false
 # On Linux target, if crt-static is not enabled, 'no' means dynamic link to
 # `libgcc_s.so`, 'in-tree' means static link to the in-tree build of llvm libunwind
 # and 'system' means dynamic link to `libunwind.so`. If crt-static is enabled,
-# the behavior is depend on the libc. On musl target, 'no' and 'in-tree' both 
-# means static link to the in-tree build of llvm libunwind, and 'system' means 
+# the behavior is depend on the libc. On musl target, 'no' and 'in-tree' both
+# means static link to the in-tree build of llvm libunwind, and 'system' means
 # static link to `libunwind.a` provided by system. Due to the limitation of glibc,
 # it must link to `libgcc_eh.a` to get a working output, and this option have no effect.
 llvm-libunwind = 'no'
