@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-vulkan-headers
 	pkgdesc = Vulkan header files (mingw-w64)
-	pkgver = 1.2.190
+	pkgver = 1.2.191
 	pkgrel = 1
 	url = https://www.khronos.org/vulkan/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-vulkan-headers
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.2.190.tar.gz
-	sha256sums = ce997a3d6f43f9697c5ec232efb0f6e7826d0648412ed141f9495e88429075e0
+	source = https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.2.191.tar.gz
+	sha256sums = ff7c66144df271eeb5dec9ba6cd3773236b8d3a04df4bc55cc45a95e30287371
 
 pkgname = mingw-w64-vulkan-headers
