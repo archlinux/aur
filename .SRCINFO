@@ -1,6 +1,6 @@
 pkgbase = kesboot-git
 	pkgdesc = Script for automating work with EFI Kernel Stub (linux)
-	pkgver = 1.4.r0.g9bcc968
+	pkgver = 1.6.r0.g4531557
 	pkgrel = 1
 	url = https://github.com/BiteDasher/kesboot
 	arch = any
