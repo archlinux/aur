@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.5.beta0.r0.ga3bd57282c
+pkgver=9.5.beta1.r0.gc349c87d0d
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -81,6 +81,7 @@ build() {
   cd sage/pkgs/sagemath-standard
 
   export SAGE_NUM_THREADS=10
+  export PYTHONPATH="$PWD"/../sage-setup
   python setup.py build
 }
 
@@ -88,9 +89,6 @@ package() {
   cd sage/pkgs/sagemath-standard
 
   python setup.py install --root="$pkgdir" --optimize=1
-
-# Remove sage_setup
-  rm -r "$pkgdir"/usr/lib/python*/site-packages/sage_setup
 
 # fix symlinks to assets
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
