@@ -1,6 +1,6 @@
 pkgbase = bieaz
 	pkgdesc = boot environment manager
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://gitlab.com/m_zhou/bieaz
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = bieaz
 	depends = sh
 	depends = grub
 	backup = etc/bieaz.cfg
-	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.3.1/bieaz-0.3.1.tar.gz
-	sha256sums = 0c171e4e9a35e092d44ef7b4327703c8175e2ebad5aec873055d3e6101dccd71
+	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.3.2/bieaz-0.3.2.tar.gz
+	sha256sums = 756547d7e075d8e03c6e70acd6cc0b1bd0353a83b979f5d31b8e8a01819c39ff
 
 pkgname = bieaz
