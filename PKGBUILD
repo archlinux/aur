@@ -4,7 +4,7 @@
 
 pkgname='osu'
 pkgver='20210821'
-pkgrel=1
+pkgrel=2
 pkgdesc='A free-to-win rhythm game'
 _terms_commit='b9f12f580514eaf0da2ad7d5a07a8fa71d816e0b'
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ source=("${pkgname}-installer-${pkgver}.exe::https://m1.ppy.sh/r/osu!install.exe
 sha256sums=('21bcecdc9b0396f075aad4fe12f4ac9d937a62291ee6f633757a31000490716b'
             'b843e4c7750cd324d8b52440dfead07b77b347ba1fada81c782ddc5fa8554cf3'
             '5765f6c08e946170806fa89de1a71351b4c48cd8cf61e1779f00ca71c4c7490f'
-            '926b567b0a280dc36dc27e6435fe03329a655255627d423b64bb641ff071fb2b'
-            '875f836a6869dab61e59ae0f78212770c8b82f2d6739e34053520dcce278ee10')
+            '0a2bb920ba3e8ddc9aa6e1bb2321c748b6efb06189294ccdb59fb1977d7a39b5'
+            '2b901379226333a5a3b735afb4f054d44c48658cc45fa4529e557b92cb8ea196')
 
 build() {
 	wrestool -x -t 3 -n 4 -R -o 'osu-stable.png' "${pkgname}-installer-${pkgver}.exe"

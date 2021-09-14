@@ -24,7 +24,7 @@
 		<glob pattern="*.osu"/>
 	</mime-type>
 
-	<mime-type type="application/x-osu-archive">
+	<mime-type type="application/x-osu-beatmap-archive">
 		<comment>osu! archive</comment>
 		<icon name="application-x-osu"/>
 		<glob pattern="*.osz"/>
