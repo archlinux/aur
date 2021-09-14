@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-getopt-long-descriptive'
-pkgver=0.105
+pkgver=0.109
 pkgrel=1
 pkgdesc="Getopt::Long, but simpler and more powerful"
 arch=('any')
@@ -14,8 +14,8 @@ makedepends=()
 checkdepends=('perl-test-fatal' 'perl-test-warnings>=0.005')
 url='https://metacpan.org/release/Getopt-Long-Descriptive'
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Getopt-Long-Descriptive-$pkgver.tar.gz")
-md5sums=('847733c6c23f168f679a735818c79bfa')
-sha512sums=('e7528ac509bc7fb49ee59a8ed8dec0c9a619a8f34c207e7a9185829666248797211a56576721b7fc8cdd44ae55d2d45f048958b79a6228ee76d91c3a52685236')
+md5sums=('3e16cafabc73d9d81a648d75c59dea48')
+sha512sums=('9bd3af84119264c9e7e72b470f54782fe0a9e37e6071052a7b43af9529087841f77f06f81a70e4cab05380558216893b0902aabefcfbc970916f65614666969a')
 _distdir="Getopt-Long-Descriptive-$pkgver"
 
 build() {
