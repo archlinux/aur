@@ -1,0 +1,17 @@
+diff -pNaru5 driver/2.6.27.orig/dgnc_driver.c driver/2.6.27/dgnc_driver.c
+--- driver/2.6.27.orig/dgnc_driver.c	2021-09-13 20:59:15.005962528 -0400
++++ driver/2.6.27/dgnc_driver.c	2021-09-13 21:01:14.600755648 -0400
+@@ -55,11 +55,13 @@
+ #include "dgnc_sysfs.h"
+ 
+ MODULE_LICENSE("GPL");
+ MODULE_AUTHOR("Digi International, http://www.digi.com");
+ MODULE_DESCRIPTION("Driver for the Digi International Neo and Classic PCI based product line");
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0)
+ MODULE_SUPPORTED_DEVICE("dgnc");
++#endif
+ 
+ /*
+  * insmod command line overrideable parameters
+  *
+  * NOTE: we use a set of macros to create the variables, which allows

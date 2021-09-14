@@ -1,0 +1,73 @@
+diff -pNaru5 driver/2.6.27.orig/dgnc_driver.c driver/2.6.27/dgnc_driver.c
+--- driver/2.6.27.orig/dgnc_driver.c	2021-09-13 21:13:41.814470344 -0400
++++ driver/2.6.27/dgnc_driver.c	2021-09-13 21:13:52.344550262 -0400
+@@ -1031,11 +1031,11 @@ static void dgnc_mbuf(struct board_t *br
+  *
+  * Returns 0 if timed out, !0 (showing signal) if interrupted by a signal.
+  */
+ int dgnc_ms_sleep(ulong ms)
+ {
+-	current->state = TASK_INTERRUPTIBLE;
++	set_current_state(TASK_INTERRUPTIBLE);
+ 	schedule_timeout((ms * HZ) / 1000);
+ 	return (signal_pending(current));
+ }
+ 
+ 
+diff -pNaru5 driver/2.6.27.orig/dgnc_tty.c driver/2.6.27/dgnc_tty.c
+--- driver/2.6.27.orig/dgnc_tty.c	2021-09-13 21:13:41.817803703 -0400
++++ driver/2.6.27/dgnc_tty.c	2021-09-13 21:17:10.562916701 -0400
+@@ -119,13 +119,21 @@ static int dgnc_tty_ioctl(struct tty_str
+ #else
+ static int dgnc_tty_ioctl(struct tty_struct *tty, unsigned int cmd, unsigned long arg);
+ #endif
+ static int dgnc_tty_digigeta(struct tty_struct *tty, struct digi_t __user *retinfo);
+ static int dgnc_tty_digiseta(struct tty_struct *tty, struct digi_t __user *new_info);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int dgnc_tty_write_room(struct tty_struct* tty);
++#else
+ static int dgnc_tty_write_room(struct tty_struct* tty);
++#endif
+ static int dgnc_tty_put_char(struct tty_struct *tty, unsigned char c);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int dgnc_tty_chars_in_buffer(struct tty_struct* tty);
++#else
+ static int dgnc_tty_chars_in_buffer(struct tty_struct* tty);
++#endif
+ static void dgnc_tty_start(struct tty_struct *tty);
+ static void dgnc_tty_stop(struct tty_struct *tty);
+ static void dgnc_tty_throttle(struct tty_struct *tty);
+ static void dgnc_tty_unthrottle(struct tty_struct *tty);
+ static void dgnc_tty_flush_chars(struct tty_struct *tty);
+@@ -2034,11 +2042,15 @@ static void dgnc_tty_close(struct tty_st
+  * Return number of characters that have not been transmitted yet.
+  *
+  * This routine is used by the line discipline to determine if there
+  * is data waiting to be transmitted/drained/flushed or not.
+  */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int dgnc_tty_chars_in_buffer(struct tty_struct *tty)
++#else
+ static int dgnc_tty_chars_in_buffer(struct tty_struct *tty)
++#endif
+ {
+ 	struct channel_t *ch = NULL;
+ 	struct un_t *un = NULL;
+ 	ushort thead;
+ 	ushort ttail;
+@@ -2142,11 +2154,15 @@ static int dgnc_maxcps_room(struct tty_s
+ /*
+  * dgnc_tty_write_room()
+  *
+  * Return space available in Tx buffer
+  */        
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
++static unsigned int dgnc_tty_write_room(struct tty_struct *tty)
++#else
+ static int dgnc_tty_write_room(struct tty_struct *tty)
++#endif
+ {
+ 	struct channel_t *ch = NULL;
+ 	struct un_t *un = NULL;
+ 	ushort head;
+ 	ushort tail;

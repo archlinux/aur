@@ -1,0 +1,17 @@
+diff -pNaru5 driver/2.6.27.orig/dgnc_tty.c driver/2.6.27/dgnc_tty.c
+--- driver/2.6.27.orig/dgnc_tty.c	2021-09-13 21:09:08.726233822 -0400
++++ driver/2.6.27/dgnc_tty.c	2021-09-13 21:09:55.913091170 -0400
+@@ -3249,10 +3249,13 @@ static void dgnc_tty_flush_buffer(struct
+ 	DGNC_UNLOCK(ch->ch_lock, lock_flags);
+ 
+ 	DPR_IOCTL(("dgnc_tty_flush_buffer finish\n"));
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,13,0)
++int tty_check_change(struct tty_struct *tty);
++#endif
+ 
+ 
+ /*****************************************************************************
+  *
+  * The IOCTL function and all of its helpers

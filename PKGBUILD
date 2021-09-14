@@ -17,7 +17,7 @@ pkgname='digi-dgnc'
 #_pkgver='1.3-28'; _dl='40002369_G.tgz'
 _pkgver='1.3-29'; _dl='40002369_H.src.rpm'
 pkgver="${_pkgver//-/.}"
-pkgrel='4'
+pkgrel='5'
 pkgdesc='tty driver for Digi Neo and legacy ClassicBoard PCI PCIe RS-232 serial port'
 arch=('i686' 'x86_64')
 url='https://www.digi.com/'
@@ -31,17 +31,26 @@ source=(
   '0001-Kernel-4-15-timers.patch'
   '0002-kernel-5.0.0-do_gettimeofday.patch'
   '0003-kernel-5.6--proc_dir_entry-proc_ops.patch'
+  '0004-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
+  '0005-kernel-5.13-dropped-tty_check_change.patch'
+  '0006-kernel-5.14-task_struct.state-unsigned-tty.patch'
 )
 md5sums=('6171349852f6d02228d6e30c79b7a434'
          'a171e9ea1a4ff8340c3c58b303632edf'
          '6c16c3c24c79fb558bcf27f780829c75'
          '8e46a778c648ab4f0ca63a337d36df60'
-         '394d24a150676d8123300d6715b81fb8')
+         '394d24a150676d8123300d6715b81fb8'
+         '44b0a7b0ab4dbe661b822fcba9423121'
+         '10ba960da22684d2da89872df1d822cc'
+         '89de6a694ecf827a3358bcd8aea03a6a')
 sha256sums=('e121a31569e3e1f156caeed70742971ec32fef598429ef647bde98f56aa048f5'
             '625bb794d31690b45ad7469f811e7422dac938cf8e9b777aba4d97b60b3c6eae'
             '88d5a8589dca55ca98089dfa4570aa1fbde1095957d0788ad710a27b348c2f4f'
             '737df02a12fc76841325d1059d90451467637eab2df016efc20d84976eb5de7d'
-            '3496e90914e1fa2f209dd85c336e7b1c0b784dbbf67cc45e0f0f55f0b1ef5a0e')
+            '3496e90914e1fa2f209dd85c336e7b1c0b784dbbf67cc45e0f0f55f0b1ef5a0e'
+            'f215451df4a01f0875a53425b6d8452c344f19b61b59b821f8c949b1b276c022'
+            '13257318895327e7438f7f357c5dc7d67310ec0468802df083815414d4743805'
+            'dcedb22e0f3fb0c8197630b38217f86c5468d065ab2d67708c16c17351d6944e')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -96,6 +105,18 @@ prepare() {
   #cp -pr driver/2.6.27{,.orig}; false
   #diff -pNaru5 driver/2.6.27{.orig,} > '0003-kernel-5.6--proc_dir_entry-proc_ops.patch'
   patch -Nbup0 -i "${srcdir}/0003-kernel-5.6--proc_dir_entry-proc_ops.patch"
+
+  #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
+  #diff -pNaru5 driver/2.6.27{.orig,} > '0004-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
+  patch -Nbup0 -i "${srcdir}/0004-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch"
+
+  #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
+  #diff -pNaru5 driver/2.6.27{.orig,} > '0005-kernel-5.13-dropped-tty_check_change.patch'
+  patch -Nbup0 -i "${srcdir}/0005-kernel-5.13-dropped-tty_check_change.patch"
+
+  #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
+  #diff -pNaru5 driver/2.6.27{.orig,} > '0006-kernel-5.14-task_struct.state-unsigned-tty.patch'
+  patch -Nbup0 -i "${srcdir}/0006-kernel-5.14-task_struct.state-unsigned-tty.patch"
 
   # Version check
   local _ver
