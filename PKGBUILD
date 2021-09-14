@@ -1,7 +1,7 @@
 # Maintainer: Siddhartha <dev@sdht.in>
 
 pkgname=zotero-git
-pkgver=r10550.a9c10309f
+pkgver=r11712.20210914.f0a8c9ada
 pkgrel=1
 pkgdesc='Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.'
 arch=('x86_64')
@@ -23,20 +23,18 @@ sha256sums=('2e700ebe97d332a894be80d232b037b0117d84b38c5fa99dffc727cb10918228'
 
 pkgver() {
     cd ${_src_dir_1}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --date=format:"%Y%m%d" --format="%ad")" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
+build() {
     cd ${_src_dir_1}
     git submodule init && git submodule update
     cd ../${_src_dir_2}
     git submodule init && git submodule update
     cd ../${_src_dir_3}
     git submodule init && git submodule update
-}
 
-build() {
-    cd ${_src_dir_1}
+    cd ../${_src_dir_1}
     npm i
     npm run build
     
@@ -58,7 +56,7 @@ package() {
     install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zotero.png
     install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default256.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/zotero.png
     # Copy license
-    install -Dm644 "$builddir"/COPYING "$pkgdir"/usr/share/licenses/zotero/LICENSE
+    install -Dm644 "${_src_dir_3}"/COPYING "$pkgdir"/usr/share/licenses/zotero/LICENSE
     # Disable APP update
     sed -i '/pref("app.update.enabled", true);/c\pref("app.update.enabled", false);' "$pkgdir"/usr/lib/zotero/defaults/preferences/prefs.js
 }
