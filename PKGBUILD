@@ -3,7 +3,7 @@
 pkgname=mopidy-youtube
 pkgver=v3.4.0
 _pkgver=v3.4
-pkgrel=3
+pkgrel=1
 pkgdesc="Mopidy extension for playing music from Youtube"
 
 arch=('any')
