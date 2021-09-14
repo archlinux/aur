@@ -3,7 +3,7 @@
 
 pkgname=remill
 pkgver=4.0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
