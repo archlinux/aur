@@ -6,7 +6,7 @@ pkgdesc="pacman hook for bieaz"
 arch=(any)
 url="https://gitlab.com/m_zhou/rozb3-pac"
 license=('GPL')
-depends=('bieaz-git')
+depends=('bieaz')
 source=("rozb3-pac-git::git+https://gitlab.com/m_zhou/rozb3-pac")
 sha256sums=('SKIP')
 pkgver() {
