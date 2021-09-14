@@ -1,0 +1,17 @@
+pkgbase = bieaz-git
+	pkgdesc = boot environment manager for ZFS
+	pkgver = r50.6150fb3
+	pkgrel = 1
+	url = https://gitlab.com/m_zhou/bieaz
+	arch = any
+	license = GPLv3+
+	depends = coreutils
+	depends = awk
+	depends = sed
+	depends = grep
+	depends = sh
+	depends = grub
+	source = bieaz-git::git+https://gitlab.com/m_zhou/bieaz
+	sha256sums = SKIP
+
+pkgname = bieaz-git
