@@ -1,22 +1,17 @@
 pkgbase = anvill
 	pkgdesc = Forge beautiful LLVM bitcode out of raw machine code
-	pkgver = 0.1.24
+	pkgver = 0.1.39
 	pkgrel = 1
 	url = https://github.com/lifting-bits/anvill
 	arch = x86_64
-	license = Apache
+	license = AGPL3
 	makedepends = cmake
 	makedepends = python-setuptools
-	depends = cxx-common=0.1.1
+	depends = cxx-common=0.1.4
 	depends = remill
 	depends = python
 	depends = libunwind
-	source = https://github.com/lifting-bits/anvill/archive/v0.1.24.tar.gz
-	source = 00-install-specify-bitcode.patch
-	source = 01-remove-python-installation.patch
-	sha256sums = cde3a269370b6c472877b7c3aca72526e19ff10eb1bb3c6bba2ff8649bb67c5a
-	sha256sums = 3207d6df5edf7ddea2c8b7d6176089bd612bbffa3d4c8f0e29f1c98b1e52dcc2
-	sha256sums = b586e9c1bb82f8e55eaca96b7a462a711c751e3684575d3212a13a0aa27da8de
+	source = https://github.com/lifting-bits/anvill/archive/refs/tags/v0.1.39.tar.gz
+	sha256sums = df0f3062807d2476ddcd58a33760c2d9ae14027a113562863c1603688faa356c
 
 pkgname = anvill
-
