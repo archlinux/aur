@@ -48,6 +48,8 @@ prepare() {
 	patch -p1 -i "$srcdir/$_pkgname-themes.patch"
 	patch -p1 -i "$srcdir/$_pkgname-updater.patch"
 
+	git branch
+
 	sed -i "s:@PKG_UPSTREAM@:powercord-org/powercord:;s:@PKG_BRANCH@:${_branch}:;s:@PKG_REVISION@:$(git rev-parse makepkg):" src/Powercord/plugins/pc-updater/index.js
 
 	# Comment out XDG plugins patch if it breaks a plugin
