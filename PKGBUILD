@@ -3,7 +3,7 @@
 pkgname=('aspnet-runtime-2.1')
 pkgver=2.1.30.sdk818
 _runtimever=2.1.30
-pkgrel=1
+pkgrel=2
 pkgdesc='The ASP.NET Core runtime binary version 2.1' 
 arch=('x86_64' 'armv7h')
 url='https://www.microsoft.com/net/core'
@@ -20,5 +20,6 @@ sha512sums_x86_64=('60f65e2e37bb9af54f809ef0f4fe814c4c0dd9c969dea1aa81e94c0dc243
 package() {
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
+  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.All "${pkgdir}"/usr/share/dotnet/shared/
   ln -s dotnet-host-2.1 "${pkgdir}"/usr/share/licenses/aspnet-runtime-2.1
 }

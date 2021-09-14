@@ -1,7 +1,7 @@
 pkgbase = aspnet-runtime-2.1
 	pkgdesc = The ASP.NET Core runtime binary version 2.1
 	pkgver = 2.1.30.sdk818
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
