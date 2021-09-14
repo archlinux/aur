@@ -3,14 +3,13 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.2.24
-pkgrel=2
+pkgver=2.2.25
+pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
 url='https://github.com/GNS3/gns3-server'
 license=('GPL3')
 groups=('gns3')
-makedepends=('python-setuptools')
 depends=(
     'busybox'
     'python-aiofiles'
@@ -25,6 +24,7 @@ depends=(
     'python-psutil'
     'python-py-cpuinfo'
     'python-sentry_sdk'
+    'python-setuptools'
     'python-yarl'
 )
 optdepends=(
@@ -38,7 +38,7 @@ optdepends=(
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
-sha256sums=('ed47d1dde360805bf97b5269fcb361017e20c975a54c904ebbb9de47a1a58556'
+sha256sums=('43faa7d57126e813dae3bf702c11e520148d9c3c234e4f1a7c23872e931c6251'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 prepare() {
@@ -50,7 +50,7 @@ prepare() {
         -e 's|^Jinja2==3\.0\.1$|Jinja2>=3.0.1|' \
         -e 's|^sentry-sdk==1\.3\.1$|sentry-sdk>=1.3.1|' \
         -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
-        -e 's|^distro==1\.6\.0$|distro>=1.5.0|' \
+        -e 's|^distro==1\.6\.0$|distro>=1.6.0|' \
         -e 's|^py-cpuinfo==8\.0\.0$|py-cpuinfo>=8.0.0|' \
         requirements.txt
 }
