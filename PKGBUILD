@@ -3,7 +3,7 @@
 
 _gemname=parallel
 pkgname=ruby-$_gemname
-pkgver=1.20.2
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Ruby: parallel processing made simple and fast"
 arch=(any)
@@ -12,30 +12,32 @@ license=(MIT)
 depends=(ruby)
 checkdepends=(ruby-bundler ruby-rake ruby-rspec ruby-bump ruby-activerecord
               ruby-ruby-progressbar ruby-mysql2 ruby-sqlite3 procps-ng lsof)
-makedepends=(git rubygems ruby-rdoc)
+makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
-source=(git+https://github.com/grosser/parallel.git?tag=v$pkgver)
-sha256sums=('SKIP')
+source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('d1d21c92af684602cebcbf7d31758307cc3f2ebd53e5056c0946445c9d5f904b')
 
 prepare() {
-  cd ${_gemname}
+  cd $_gemname-$pkgver
   rm Gemfile.lock
   sed -i '/rspec-rerun/d' Gemfile
   sed -i '/rspec-legacy_formatters/d' Gemfile
+  sed -i '/rubocop/d' Gemfile
+  sed -i 's|git ls-files|find|' ${_gemname}.gemspec
 }
 
 build() {
-  cd ${_gemname}
+  cd $_gemname-$pkgver
   gem build ${_gemname}.gemspec
 }
 
 check() {
-  cd ${_gemname}
+  cd $_gemname-$pkgver
   rspec spec
 }
 
 package() {
-  cd ${_gemname}
+  cd $_gemname-$pkgver
   local _gemdir="$(gem env gemdir)"
 
   gem install \
