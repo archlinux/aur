@@ -81,7 +81,7 @@
 		pwms = <&pwm0 0 5000 1>;
 		regulator-name = "vcc_arm";
 		regulator-min-microvolt = <950000>;
-		regulator-max-microvolt = <1450000>;
+		regulator-max-microvolt = <1400000>;
 		regulator-settling-time-up-us = <250>;
 		regulator-ramp-delay = <12500>;
 		regulator-always-on;
@@ -381,10 +381,12 @@
 		opp-hz = /bits/ 64 <1392000000>;
 		opp-microvolt = <1400000>;
 		clock-latency-ns = <40000>;
+		status = "disabled";
 	};
 	opp-1512000000 {
 		opp-hz = /bits/ 64 <1512000000>;
-		opp-microvolt = <1450000>;
+		opp-microvolt = <1400000>;
 		clock-latency-ns = <40000>;
+		status = "disabled";
 	};
 };

@@ -11,7 +11,7 @@ pkgbase=linux-beikeyun-p1
 _srcname=linux-5.14
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Beikeyun P1"
-pkgver=5.14.2
+pkgver=5.14.3
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -38,7 +38,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('a082ef5748b813abca0649dab8be5f52'
-         '069f53467c8fcad1012fb52e88d13bbb'
+         'b712c1d1b1de3091acca6f4fd8bca831'
          '1300797c69bf7f6a26672011334c6a96'
          '010810596a08c508c1b57350de3c1ee5'
          'ccb144e753dce358915ed615329d2067'
@@ -48,11 +48,11 @@ md5sums=('a082ef5748b813abca0649dab8be5f52'
          '966cbe04ab5848bf6972411166adfee4'
          '7a18066683f3351b2bbd2653db783f80'
          '6dfa62f14b2a3390b1a4ca2e5cf5c9a2'
-         '3b4bdb28542c51a68eb19c5d56d0268e'
+         '6c45e0ecb314ced19f92f81b7d73b6d3'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         'c32f97047814a7c47f13d23ac21ed46e')
+         'f824457274fe967ff517171f15a19d83')
 
 prepare() {
   cd ${_srcname}
