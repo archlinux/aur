@@ -1,0 +1,126 @@
+From 510b332dfb96b84f4d4ca24f8d31476527112396 Mon Sep 17 00:00:00 2001
+From: atomlong <atom.long@hotmail.com>
+Date: Tue, 14 Sep 2021 16:04:31 +0800
+Subject: [PATCH 2/2] send mail via curl command. MTA is not needed anymore.
+
+---
+ CHANGES.md   |  1 +
+ freenom.conf | 20 +++++++++++++++-----
+ freenom.sh   | 35 ++++++++++++++++++++++-------------
+ 3 files changed, 38 insertions(+), 18 deletions(-)
+
+diff --git a/CHANGES.md b/CHANGES.md
+index a7667bd..f3c39cf 100644
+--- a/CHANGES.md
++++ b/CHANGES.md
+@@ -2,6 +2,7 @@
+ 
+ _order: latest/newest on top_
+ 
++- [**20210914**] send mail via curl command.
+ - [**20210821**] fix issue [#50](https://github.com/mkorthof/freenom-script/issues/50)
+ - [**20210618**] added more config checks (PR [#43](https://github.com/mkorthof/freenom-script/issues/43) from nathanfranke)
+ - [**20210612**] check for uaString and ipCmd settings ([#42](https://github.com/mkorthof/freenom-script/issues/42))
+diff --git a/freenom.conf b/freenom.conf
+index 2dea46d..bc47560 100644
+--- a/freenom.conf
++++ b/freenom.conf
+@@ -101,15 +101,25 @@ ipCmd+=("dig -4 +short whoami.akamai.net @ns1-1.akamaitech.net")
+ # MAIL #
+ ########
+ 
+-# Mail Transfer Agent. A lightweight send-only MTA such as SSMTP should work fine. Or leave empty to disable sending mail.
+-# If you do not have a MTA installed you can use "bashmail.sh": https://git.io/JJdto. Default is "/usr/sbin/sendmail"
+-MTA="/usr/sbin/sendmail"
++# Mail server address to send notifications
++# Note: If gmail is used, check https://myaccount.google.com/u/1/lesssecureapps?pageId=none 
++#       to see if you allow for less secure email clients
++#MAILHOST="smtp.gmail.com"
++
++# Mail server port
++#MAILPORT=587
++
++# Mail server username to login
++#MAILUSERNAME="youraccount@gmail.com"
++
++# Mail server password
++#MAILPASSWD="password"
+ 
+ # E-mail adress to receive notifications e.g. "admin@example.com". Default is "$freenom_email"
+-#RCPTTO="admin@example.com"
++#RCPTTO="$freenom_email"
+ 
+ # Optional e-mail address from which to sent notifications ("From:"). Default is none
+-#MAILFROM="Freenom Script <freenom-script@example.com>"
++#MAILFROM="Freenom Script <${MAILUSERNAME}>"
+ 
+ ######################
+ # Domain name and id #
+diff --git a/freenom.sh b/freenom.sh
+index 01ed3fe..84dd91c 100755
+--- a/freenom.sh
++++ b/freenom.sh
+@@ -159,15 +159,6 @@ if [ -z "$RCPTTO" ]; then
+   RCPTTO="$freenom_email"
+ fi
+ 
+-if [ ! -x "$MTA" ]; then
+-  if [ -x "/usr/sbin/sendmail" ]; then
+-    MTA="/usr/sbin/sendmail"
+-  else
+-    MTA=""
+-    echo "Warning: no MTA found, cant send email"
+-  fi
+-fi
+-
+ # set a few general variables
+ 
+ c_opts="--connect-timeout 30 --compressed -L -s"
+@@ -476,22 +467,40 @@ func_sleep () {
+   fi
+ }
+ 
++# Function sleep: send mail
++func_mailto()
++{
++local ssl_opt smtp_proto
++case ${MAILPORT} in 
++	25) ssl_opt=""; smtp_proto="smtp"; ;;
++	465) ssl_opt="--ssl-reqd"; smtp_proto="smtps"; ;;
++	587) ssl_opt="--ssl-reqd"; smtp_proto="smtp"; ;;
++	*) echo "Error: Unknown MAILPORT: ${MAILPORT}."; return 1;
++esac
++curl --silent ${ssl_opt} --login-options AUTH=LOGIN \
++	--url "${smtp_proto}://${MAILHOST}:${MAILPORT}" \
++	--mail-from "${MAILUSERNAME}" \
++	--mail-rcpt "${1}" \
++	--user "${MAILUSERNAME}:${MAILPASSWD}" \
++	--upload-file -
++}
++
+ # Function mailEvent: send mail
+ #         parameters: $1: event 2: $messages
+ mailEvent() {
+-  if [ "$MTA" != "" ] && [ "$RCPTTO" != "" ]; then
++  if [ "$MAILHOST" != "" ] && [ "$MAILPORT" != "" ] && [ "$MAILUSERNAME" != "" ] && [ "$MAILPASSWD" != "" ]; then
+     if [ "$debug" -ge 1 ]; then
+-      echo "DEBUG: $(date '+%H:%M:%S') email $pad4   HOSTNAME=$HOSTNAME MTA=$MTA RCPTTO=$RCPTTO 1=$1 2=$2"
++      echo "DEBUG: $(date '+%H:%M:%S') email $pad4   HOSTNAME=$HOSTNAME RCPTTO=$RCPTTO 1=$1 2=$2"
+     fi
+     [ "$debug" -ge 3 ] && set -x
+     HEADER="To: <$RCPTTO>\n";
+     if [ "$MAILFROM" ]; then
+       HEADER+="From: $MAILFROM\n"
+     fi
+-    echo -e "${HEADER}Subject: freenom.sh: \"$1\" on \"$HOSTNAME\"\n\nDate: $( date +%F\ %T )\n\n$2" | "$MTA" "$RCPTTO"
++    echo -e "${HEADER}Subject: freenom.sh: \"$1\" on \"$HOSTNAME\"\n\nDate: $( date +%F\ %T )\n\n$2" | func_mailto "$RCPTTO"
+     EXITCODE="$?"
+     if [ "$EXITCODE" -ne 0 ]; then
+-      echo "Error: exit code \"$EXITCODE\" while running $MTA"
++      echo "Error: exit code \"$EXITCODE\" while sending mail."
+     fi
+     [ "$debug" -ge 3 ] && set +x
+   fi
+-- 
+2.33.0.windows.2
+

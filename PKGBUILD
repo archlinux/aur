@@ -2,17 +2,18 @@
 
 pkgname=freenom-script
 pkgver=20210824
-pkgrel=2
+pkgrel=3
 pkgdesc="Freenom.com Domain Renewal and Dynamic DNS script."
 arch=('any')
 url="https://github.com/mkorthof/freenom-script"
 license=('GPL3')
 depends=('curl')
-optdepends=('postfix: Mail Transfer Agent')
 source=("${pkgname}::git+${url}.git"
-		destdir.patch)
+		0001-Makefile-Support-staged-installs-with-DESTDIR.patch
+		0002-send-mail-via-curl-command.patch)
 md5sums=('SKIP'
-		 '4c4c7f8ee434fe6aad153c6eba8f391a')
+		 '1747aec87824ab195db8a39803fc8d49'
+		 'dcd0bb7ae443e9f500744ac9f6c725c0')
 install=freenom-script.install
 
 pkgver() {
@@ -22,7 +23,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  patch -Np1 -i "${srcdir}/destdir.patch"
+  git apply ${srcdir}/0001-Makefile-Support-staged-installs-with-DESTDIR.patch
+  git apply ${srcdir}/0002-send-mail-via-curl-command.patch
 }
 
 package() {
