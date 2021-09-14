@@ -10,7 +10,7 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
-source=("https://github.com/arvindch/pockyt/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/arvindch/pockyt/archive/$pkgver.tar.gz")
 sha256sums=('91c4e89dec141b8999feeab963fb652ea2026147ced44eea449c05d7d464cccf')
 
 
