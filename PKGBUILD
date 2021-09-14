@@ -3,7 +3,7 @@
 _pkgname=freenom
 pkgname=${_pkgname}-next
 pkgver=20210910
-pkgrel=2
+pkgrel=3
 pkgdesc='Freenom domain name renews automatically'
 arch=('any')
 url='https://github.com/luolongfei/next-freenom'
@@ -28,6 +28,9 @@ package() {
   cd "$pkgdir"
   # create folders
   install -dm0755 usr/share/webapps usr/lib/systemd/system etc/webapps/freenom
+  
+  # remove unused files.
+  rm -rf "${srcdir}/${_pkgname}"/{.git,.github}
   
   # app
   cp -a "${srcdir}/${_pkgname}" usr/share/webapps/freenom
