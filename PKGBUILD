@@ -8,7 +8,7 @@
 
 pkgname=peazip-gtk2-bin
 pkgver=8.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc="File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
 "
 arch=('i686' 'x86_64')
@@ -36,9 +36,6 @@ sha256sums=('5eb09e87891de28ea1217a9e8d9efa93e6851bef5920fb2d43ee59023134e3ee')
 
 package() {
   cp -aR usr/ "${pkgdir}/"
-  mv "${pkgdir}/usr/share/PeaZip" "${pkgdir}/usr/share/${pkgname}"
-  rm "${pkgdir}/usr/bin/peazip"
-  ln -s /usr/share/peazip-gtk2-bin/peazip "${pkgdir}/usr/bin/peazip"
+  cp -aR opt/ "${pkgdir}/"
   rm -rf "${pkgdir}/usr/lib"
-  chmod --recursive 755 "${pkgdir}/usr/share/peazip-gtk2-bin/FreeDesktop_integration"
 }

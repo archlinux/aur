@@ -1,7 +1,7 @@
 pkgbase = peazip-gtk2-bin
 	pkgdesc = File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
 	pkgver = 8.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.peazip.org/peazip-linux.html
 	arch = i686
 	arch = x86_64
