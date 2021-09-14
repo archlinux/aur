@@ -1,7 +1,7 @@
 #Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgname=shaderc-git
-pkgver=v2020.4.1.g4089217
+pkgname=('shaderc-git')
+pkgver=2021.2.1.gc42db58
 pkgrel=1
 pkgdesc="A collection of tools, libraries and tests for shader compilation. (GIT version)"
 url='https://github.com/google/shaderc'
@@ -10,6 +10,9 @@ arch=('x86_64')
 depends=('glslang'
          'spirv-tools'
          )
+provides=('shaderc'
+          'libshaderc_shared.so'
+          )
 makedepends=('git'
              'ninja'
              'cmake'
@@ -18,10 +21,10 @@ makedepends=('git'
              'spirv-headers'
              )
 provides=('shaderc'
+          "shaderc=${pkgver}"
           'libshaderc_shared.so'
           )
-conflicts=('shaderc'
-           )
+conflicts=('shaderc')
 source=('git+https://github.com/google/shaderc.git#branch=main'
         'fix-glslang-link-order.patch'
         )
@@ -32,7 +35,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd shaderc
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
@@ -54,9 +57,9 @@ EOF
 build() {
   CPPFLAGS="${CPPFLAGS//2/0}"
 
-  cd build
+  cd "${srcdir}/build"
   cmake ../shaderc \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DSHADERC_SKIP_TESTS=ON \
@@ -71,7 +74,8 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build  install
+
+  DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 -t "${pkgdir}/usr/share/man/man1/" "$srcdir/shaderc/glslc/glslc.1"
 }
