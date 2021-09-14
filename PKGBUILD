@@ -8,6 +8,7 @@ pkgver="${_pkgver_images_system//-/_}"
 pkgrel=1
 pkgdesc="A container-based approach to boot a full Android system on a regular Linux system (Android image)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+license=('Apache')
 url='https://github.com/waydroid'
 depends=('waydroid')
 makedepends=('unzip')

@@ -7,6 +7,7 @@ pkgbase = waydroid-image
 	arch = i686
 	arch = armv7h
 	arch = aarch64
+	license = Apache
 	makedepends = unzip
 	depends = waydroid
 	source_x86_64 = https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86_64/lineage-17.1-20210913-VANILLA-waydroid_x86_64-system.zip
