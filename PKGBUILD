@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname='libplacebo-git'
-pkgver=v4.157.0.5.g51b0e24
+pkgver=4.157.0.5.g51b0e24
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://code.videolan.org/videolan/libplacebo'
@@ -33,7 +33,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd libplacebo
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr -d v| tr - .)"
 }
 
 prepare() {
