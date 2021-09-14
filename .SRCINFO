@@ -1,0 +1,12 @@
+pkgbase = wayland-d
+	pkgdesc = Dynamic Wayland bindings for D
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/rtbo/wayland-d
+	arch = x86_64
+	license = MIT
+	makedepends = dub
+	source = https://github.com/rtbo/wayland-d/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 901be1d5f083c37666dc7ea896aeed886d6d55731ff9a42744c9d93b74a60748
+
+pkgname = wayland-d
