@@ -1,4 +1,5 @@
-# Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
+# Maintainer: Bart Libert <bart dot aur at libert dot email>
+# Contributor: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=cpprestsdk
 pkgver=2.10.18
