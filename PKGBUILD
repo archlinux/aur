@@ -1,21 +1,20 @@
 # Maintainer: Kenneth Flak <kennethflak@protonmail.com>
 
 pkgname=touchosc-bin
-pkgver=1.0.1.94
+pkgver=1.0.5.109
 pkgrel=1
 pkgdesc='Modular control surface'
 arch=('x86_64')
 url=http://hexler.net
 license=(custom:TouchOSC)
 source=("https://hexler.net/pub/touchosc/touchosc-$pkgver-linux-$arch.deb")
-sha256sums=('af95af19bb44961bf416c433f4ed9b8a39422fceb11b6b951c526d1c6598c858')
+sha256sums=('bd6a736aebc1b3640f4c7e29114802835c5438648673b0588a0c4ace9baeade9')
 
 package() {
 
     cd "$srcdir"
 
-    ar x "touchosc-$pkgver-linux-$arch.deb"
-    tar xzvf data.tar.gz
+    tar xzf data.tar.gz
 
     sed -i 's:opt/touchosc:usr/bin:g' usr/share/applications/touchosc.desktop
 
