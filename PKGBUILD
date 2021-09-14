@@ -8,7 +8,7 @@
 
 _gitname=projectm
 pkgname=projectm-git
-pkgver=1966.533e5542b
+pkgver=2193.844678472
 pkgrel=1
 conflicts=('projectm' 'projectm-sdl' 'projectm-pulseaudio')
 provides=('projectm' 'projectm-sdl' 'projectm-pulseaudio')
@@ -17,8 +17,10 @@ arch=('x86_64' 'i686')
 url='https://github.com/projectM-visualizer/projectm'
 license=('LGPL')
 depends=('sdl2' 'libxext' 'glm')
+makedepends=('cmake')
 source=("git+https://github.com/projectM-visualizer/${_gitname}.git")
 sha256sums=(SKIP)
+options=('!buildflags')
 
 pkgver() {
   cd "${_gitname}"
@@ -27,13 +29,14 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  ./autogen.sh
-  ./configure --prefix=/usr --enable-sdl
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_PULSEAUDIO=ON -DQT_VERSION=5 ../
   make
 }
 
 package() {
-  cd "${_gitname}"
+  cd "${_gitname}/build"
   DESTDIR="$pkgdir" make install
   DESTDIR="$pkgdir" install -Dm644 "${srcdir}/${_gitname}/src/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
