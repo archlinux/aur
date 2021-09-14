@@ -3,11 +3,11 @@
 
 pkgname=gdu
 pkgver=5.7.0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
 depends=('glibc')
-makedepends=('go' 'pandoc')
+makedepends=('go')
 arch=('x86_64')
 url="https://github.com/dundee/gdu"
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/dundee/gdu/archive/v${pkgver}.tar.gz")
@@ -32,7 +32,6 @@ build() {
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" ${_BUILDINFO}" \
     -o dist/gdu \
     github.com/dundee/gdu/v5/cmd/gdu
-  sed 's/{{date}}/${_DATE}/g' gdu.1.md | pandoc -s -t man > dist/gdu.1
 }
 
 check() {
@@ -43,7 +42,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 dist/$pkgname "${pkgdir}/usr/bin/$pkgname"
-  install -Dm644 dist/gdu.1    "${pkgdir}/usr/share/man/man1/$pkgname.1"
+  install -Dm644 gdu.1    "${pkgdir}/usr/share/man/man1/$pkgname.1"
   install -D -m644 LICENSE.md  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
