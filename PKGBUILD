@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=93.0.4577.63
+pkgver=93.0.4577.82
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=6
@@ -30,7 +30,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         sql-make-VirtualCursor-standard-layout-type.patch
         chromium-93-ffmpeg-4.4.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('eaf34fa6c2f24054655fbb2376b6e3ddee4cf4868c1324c921e71a45cfc94853'
+sha256sums=('5d66214858fcba11a8f733d7a6fab61ed10e13e7df4ed37e63b66a0370fb2853'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'a44ffd9e25fcbd8b3cc778871890e4da6fe12600ad549c807e1d03f61f0cdf73'
             '268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3'
