@@ -1,12 +1,11 @@
 pkgbase = llr
 	pkgdesc = Program to test primality of special number forms
-	pkgver = 3.8.24b3
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://jpenne.free.fr/index2.html
 	arch = x86_64
 	license = unknown
-	source = http://jpenne.free.fr/llr3/llr38oslinux64.zip
-	sha256sums = 2baefc5a9cf467a51fb65eded14e13113ad4b44a0f2b8b2c14784375f941ec4e
+	source = http://jpenne.free.fr/llr4/llr400slinux64.zip
+	sha256sums = 54ddf911673e1ad608e4435f73495dc195dda646698bb556e8bdbab3db486d3e
 
 pkgname = llr
-
