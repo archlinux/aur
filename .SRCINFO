@@ -1,6 +1,6 @@
 pkgbase = typos-bin
 	pkgdesc = Source code spell checker.
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/crate-ci/typos
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = typos-bin
 	license = Apache
 	provides = typos
 	conflicts = typos
-	source = typos-1.1.8.tar.gz::https://github.com/crate-ci/typos/releases/download/v1.1.8/typos-v1.1.8-x86_64-unknown-linux-musl.tar.gz
-	source = LICENSE-MIT::https://raw.githubusercontent.com/crate-ci/typos/v1.1.8/LICENSE-MIT
-	source = LICENSE-APACHE::https://raw.githubusercontent.com/crate-ci/typos/v1.1.8/LICENSE-APACHE
-	sha256sums = 9e8739907b2cb8361592ae235a13b5475e5364135e9494f04e461f301b166638
+	source = typos-1.1.9.tar.gz::https://github.com/crate-ci/typos/releases/download/v1.1.9/typos-v1.1.9-x86_64-unknown-linux-musl.tar.gz
+	source = LICENSE-MIT::https://raw.githubusercontent.com/crate-ci/typos/v1.1.9/LICENSE-MIT
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/crate-ci/typos/v1.1.9/LICENSE-APACHE
+	sha256sums = 6a32cc2b5ea4e9c2857f8df4e75a49ee83b8535a90212d9a454a3cc1e274ac18
 	sha256sums = 3c3d25d01d6a8e911c4baddc2a0ac74a014928066b7d29f1f7cfa73c2a7550bf
 	sha256sums = c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08
 
