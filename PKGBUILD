@@ -5,17 +5,16 @@
 
 pkgname=tomoyo-tools
 _file=70710
-_basever=2.6.0
-_timestamp=20201111
+_basever=2.6.1
+_timestamp=20210910
 pkgver=${_basever}.${_timestamp}
-pkgrel=2
+pkgrel=1
 pkgdesc='TOMOYO Linux 2.6.x userspace tools for Linux kernel 5.1 and later'
 arch=('x86_64')
 url='https://tomoyo.osdn.jp'
 license=('GPL')
 depends=('ncurses>=6.0')
 optdepends=('linux: TOMOYO Linux enabled kernel')
-conflicts=('linux-lts-tomoyo')
 
 install=tomoyo-tools.install
 source=(
@@ -23,7 +22,7 @@ source=(
         'tomoyo-tools.install'
         'tomoyo-auditd.service'
        )
-sha256sums=('1318f1041122ecbadd6e7405f4d65aec1e23bb9fde226b44ece04573b5e2276d'
+sha256sums=('47a12cdb1fe7bbd0b2e3486150fe1e754fa9c869aeefd42fd311c4022b78010a'
             'SKIP'
             'b5a1b4508f7c0430f73d0977ad496fae686679201c8779843b56c308d295ab21'
             'faf16938762902a73e50fdaa82d17c0fe13ef3c305508b55fa2cc64bacf998dd')
