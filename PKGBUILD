@@ -4,22 +4,20 @@
 pkgname=vivaldi-snapshot
 _rpmversion=4.2.2406.30-1
 pkgver=4.2.2406.30
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
 options=(!strip !zipman)
 license=('custom')
 arch=('x86_64')
 depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
-makedepends=('imagemagick')
+makedepends=('imagemagick' 'w3m')
 optdepends=(
     'vivaldi-snapshot-ffmpeg-codecs: playback of proprietary video/audio'
     'libnotify: native notifications'
 )
-source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.x86_64.rpm"
-        "eula.txt")
-sha512sums=('10a48e53fffb5f1912832d93353fce59772711426f2a282497e8714302f719ea90240afd9c324bdf19a8067f23703b776f049f337af6ae85b3dfbaf7ef0009bd'
-            '7cbfc3258a92ee05eeb67c5b65a92aab27f34146fd097007de5eb8e2703610c03bfa52f7ee1d6055735f927b4dcc919a79b7caf6fb5a5a9596cac11cc083e874')
+source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.x86_64.rpm")
+sha512sums=('10a48e53fffb5f1912832d93353fce59772711426f2a282497e8714302f719ea90240afd9c324bdf19a8067f23703b776f049f337af6ae85b3dfbaf7ef0009bd')
 
 package() {
     cp --parents -a {opt,usr/bin,usr/share} "$pkgdir"
@@ -53,7 +51,8 @@ package() {
     done
 
     # license
-    install -Dm644 "$srcdir/eula.txt" \
-        "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
+    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+    w3m -dump "$pkgdir/opt/$pkgname/LICENSE.html" \
+        | head -n 5 \
+        > "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
-
