@@ -1,0 +1,47 @@
+# from https://github.com/jupyter-xeus/xeus-cling/issues/400
+diff -Naur xeus-cling-0.12.1.orig/src/xmagics/executable.cpp xeus-cling-0.12.1/src/xmagics/executable.cpp
+--- xeus-cling-0.12.1.orig/src/xmagics/executable.cpp   2021-03-16 14:48:10.000000000 +0000
++++ xeus-cling-0.12.1/src/xmagics/executable.cpp        2021-04-29 12:10:03.955599380 +0000
+@@ -131,7 +131,7 @@
+ 
+         // Generate relocations suitable for dynamic linking.
+         auto CodeGenOpts = CI->getCodeGenOpts();
+-        CodeGenOpts.RelocationModel = "pic";
++        CodeGenOpts.RelocationModel = llvm::Reloc::PIC_;
+ 
+         // Enable debug information if requested.
+         if (EnableDebugInfo)
+@@ -187,7 +187,7 @@
+         llvm::sys::path::append(Compiler, "bin", "clang++");
+ 
+         // Construct arguments to linker command.
+-        llvm::SmallVector<const char*, 16> Args;
++        llvm::SmallVector<llvm::StringRef, 16> Args;
+         Args.push_back(Compiler.c_str());
+         Args.push_back(ObjectFile.c_str());
+         for (auto& O : LinkerOptions)
+@@ -196,7 +196,7 @@
+         }
+         Args.push_back("-o");
+         Args.push_back(ExeFile.c_str());
+-        Args.push_back(NULL);
++        // Args.push_back(NULL);
+ 
+         // Redirect output and error streams from linker.
+         llvm::SmallString<64> OutputFile, ErrorFile;
+@@ -207,11 +207,11 @@
+ 
+         llvm::StringRef OutputFileStr(OutputFile);
+         llvm::StringRef ErrorFileStr(ErrorFile);
+-        const llvm::StringRef* Redirects[] = {nullptr, &OutputFileStr,
+-                                              &ErrorFileStr};
+-
++        //const llvm::StringRef* Redirects[] = {nullptr, &OutputFileStr,
++        //                                      &ErrorFileStr};
++        const clang::Optional<llvm::StringRef> Redirects[] = {llvm::NoneType::None, OutputFileStr, ErrorFileStr};
+         // Finally run the linker.
+-        int ret = llvm::sys::ExecuteAndWait(Compiler, Args.data(), nullptr,
++        int ret = llvm::sys::ExecuteAndWait(Compiler, Args, llvm::NoneType::None,
+                                             Redirects);
+ 
+         // Read back output and error streams.
