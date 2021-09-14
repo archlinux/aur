@@ -1,4 +1,6 @@
-# Maintainer: Johannes Arnold <johannes.arnold@stud.uni-hannover.de>
+# Maintainer: Eric Engestrom <aur@engestrom.ch>
+# Contributor: Johannes Arnold <johannes.arnold@stud.uni-hannover.de>
+
 pkgname=wldash-git
 pkgver=r90.2bad68a
 pkgrel=1
