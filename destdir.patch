@@ -1,7 +1,10 @@
-diff --git "a/Makefile" "b/Makefile"
-index 6c1dafc..ab77c51 100644
---- "a/Makefile"
-+++ "b/Makefile"
+ Makefile | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 6c1dafc..79b19ed 100644
+--- a/Makefile
++++ b/Makefile
 @@ -1,9 +1,9 @@
  CONF = freenom.conf
  SCRIPT = freenom.sh
@@ -16,6 +19,23 @@ index 6c1dafc..ab77c51 100644
  
  ifneq ("$(shell grep ^staff: /etc/group)", "")
    GROUP = staff
+@@ -11,14 +11,14 @@ else
+   GROUP = root
+ endif
+ EXISTCRON = 0
+-ifneq ("$(wildcard /run/systemd/system)", "")
++ifneq ("$(wildcard /usr/lib/systemd/system)", "")
+   SCHED = systemd
+ #  ifneq ("$(wildcard /usr/lib/systemd/system)","")
+ #    SYSDDIR = /lib/systemd/system
+ #  else ifneq ("$(wildcard /lib/systemd/system)","")
+ #    SYSDDIR = /usr/lib/systemd/system
+ #  endif
+-  LISTUNITS := $(shell systemctl list-unit-files --no-legend --no-page "freenom-*" 2>/dev/null|cut -d" " -f1)
++  LISTUNITS := $(shell ls $(SYSDDIR)/freenom-* 2>/dev/null)
+ else ifneq ("$(shell which cron 2>/dev/null)", "")
+   EXISTCRON = 1
+   SCHED = cron
 @@ -50,12 +50,14 @@ ifeq ("$(wildcard $(SCRIPT))","")
  	$(error ERROR: Installation File "$(SCRIPT)" not found)
  endif

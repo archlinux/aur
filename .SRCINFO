@@ -10,6 +10,6 @@ pkgbase = freenom-script
 	source = freenom-script::git+https://github.com/mkorthof/freenom-script.git
 	source = destdir.patch
 	md5sums = SKIP
-	md5sums = 0ffe8df86934847971d6e2e04e211e60
+	md5sums = 4c4c7f8ee434fe6aad153c6eba8f391a
 
 pkgname = freenom-script

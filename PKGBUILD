@@ -11,7 +11,7 @@ depends=('curl')
 source=("${pkgname}::git+${url}.git"
 		destdir.patch)
 md5sums=('SKIP'
-		 '0ffe8df86934847971d6e2e04e211e60')
+		 '4c4c7f8ee434fe6aad153c6eba8f391a')
 install=freenom-script.install
 
 pkgver() {
