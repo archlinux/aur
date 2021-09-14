@@ -2,7 +2,7 @@
 # Contributor: Johannes Arnold <johannes.arnold@stud.uni-hannover.de>
 
 pkgname=wldash-git
-pkgver=r165.5e5e8876f6dbecaf5080
+pkgver=0.2+67.g5e5e8876f6
 pkgrel=1
 pkgdesc="Wayland launcher/dashboard"
 arch=('x86_64')
@@ -18,9 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-
-	# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
