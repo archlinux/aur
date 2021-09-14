@@ -212,7 +212,7 @@ build() {
   set -u
   cd "${_srcdir}"
   _configure
-  CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=2/}" \
+  #CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=2/}" \ 
   make -C 'config' -j1
   make -j1
   set +u
