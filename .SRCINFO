@@ -1,6 +1,6 @@
 pkgbase = dnsdist-git
 	pkgdesc = Highly DNS-, DoS- and abuse-aware loadbalancer
-	pkgver = 1.6.0.r10.g4cadb4865
+	pkgver = 1.7.0alpha0.r671.g459a93858
 	pkgrel = 1
 	url = https://dnsdist.org/
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = dnsdist-git
 	depends = h2o
 	depends = libcap
 	depends = libedit
+	depends = libnghttp2
 	depends = libsodium
 	depends = libsystemd
 	depends = lmdb
@@ -32,4 +33,3 @@ pkgbase = dnsdist-git
 	sha512sums = d55ccd612cbe08b353815027d30a3b0f0ec7bf6b0d74a0a634939be53ce6e6b41d23e54c2328946f00738c03e9f306ce4f2dabe5e4b11d9fb28d0abf49917893
 
 pkgname = dnsdist-git
-
