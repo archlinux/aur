@@ -3,7 +3,7 @@
 pkgname=standardnotes-desktop
 _pkgname=desktop
 pkgver=3.8.21
-pkgrel=3
+pkgrel=4
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.org/"
