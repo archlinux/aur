@@ -2,7 +2,7 @@
 
 pkgname=cxx-common
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Common dependency management for various Trail of Bits C++ codebases"
 arch=('x86_64')
 url="https://github.com/lifting-bits/cxx-common"
@@ -25,9 +25,9 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    CPPFLAGS='' ./build_dependencies.sh --release llvm-10
+    CPPFLAGS='' ./build_dependencies.sh --release llvm-11
 
-    cd "$srcdir/$pkgname-$pkgver"/vcpkg/buildtrees/llvm-10/src/org-*/llvm/utils/lit
+    cd "$srcdir/$pkgname-$pkgver"/vcpkg/buildtrees/llvm-11/src/org-*/llvm/utils/lit
     python setup.py build
 }
 
@@ -41,7 +41,7 @@ package() {
         -exec sed -i -e "s,$srcdir/$pkgname-$pkgver/vcpkg/packages/[^ ]*_x64-linux-rel,/opt/$pkgname/installed/x64-linux-rel,g" {} +
 
     ## install lit
-    cd "$srcdir/$pkgname-$pkgver"/vcpkg/buildtrees/llvm-10/src/org-*/llvm/utils/lit
+    cd "$srcdir/$pkgname-$pkgver"/vcpkg/buildtrees/llvm-11/src/org-*/llvm/utils/lit
     python setup.py install \
         --prefix="/opt/$pkgname/installed/x64-linux-rel" \
         --root="$pkgdir" -O1 --skip-build
