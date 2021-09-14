@@ -2,8 +2,8 @@
 # https://gitlab.manjaro.org/packages/extra/pamac
 
 pkgname=pamac-flatpak-gnome
-pkgver=10.1.3
-pkgrel=4
+pkgver=10.2.0
+pkgrel=1
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (with AUR, Flatpak, AppIndicator support, and GNOME integration)"
@@ -17,7 +17,7 @@ provides=('pamac' 'gnome-software')
 options=(!emptydirs)
 install=pamac.install
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('577c0dfca155af9f4a7537b6c09bd37958ea5b5724c187f03239b27bd3d5951a')
+sha256sums=('d553ead69b27b94f039816e7faca462b01883778db39a55cc6cd579bd22a7b4b')
 
 prepare() {
   cd "$srcdir/pamac-v$pkgver"
