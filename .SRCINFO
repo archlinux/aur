@@ -1,7 +1,7 @@
 pkgbase = gllvm-git
 	pkgdesc = Whole Program LLVM: wllvm ported to go
-	pkgver = 1.2.9.r3.g78dee16
-	pkgrel = 2
+	pkgver = 1.3.001.r20.g938e851
+	pkgrel = 1
 	url = https://github.com/SRI-CSL/gllvm
 	arch = any
 	license = BSD
@@ -14,4 +14,3 @@ pkgbase = gllvm-git
 	sha256sums = SKIP
 
 pkgname = gllvm-git
-

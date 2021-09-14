@@ -1,8 +1,8 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=gllvm-git
-pkgver=1.2.9.r3.g78dee16
-pkgrel=2
+pkgver=1.3.001.r20.g938e851
+pkgrel=1
 pkgdesc="Whole Program LLVM: wllvm ported to go"
 arch=('any')
 url="https://github.com/SRI-CSL/gllvm"
