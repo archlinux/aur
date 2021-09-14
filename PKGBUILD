@@ -13,7 +13,7 @@ makedepends=('git' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=()
-source=('git+https://github.com/kennylevinsen/wldash.git')
+source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {

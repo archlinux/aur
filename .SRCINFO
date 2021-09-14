@@ -12,7 +12,7 @@ pkgbase = wldash-git
 	depends = fontconfig
 	provides = wldash
 	conflicts = wldash
-	source = git+https://github.com/kennylevinsen/wldash.git
+	source = https://github.com/kennylevinsen/wldash
 	md5sums = SKIP
 
 pkgname = wldash-git
