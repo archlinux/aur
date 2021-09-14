@@ -1,7 +1,7 @@
 pkgbase = sendmail
 	pkgdesc = A general purpose internetwork email routing MTA
 	pkgver = 8.17.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sendmail.org
 	arch = x86_64
 	license = custom:sendmail

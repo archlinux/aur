@@ -7,7 +7,7 @@
 
 pkgname=sendmail
 pkgver=8.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A general purpose internetwork email routing MTA"
 url="http://www.sendmail.org"
 arch=('x86_64')
