@@ -2,7 +2,7 @@
 
 pkgname=hamclock-big
 pkgver=2.68
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (1600x960 version)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=('hamclock')
-conflicts=()
+conflicts=('hamclock')
 replaces=()
 backup=()
 options=()
@@ -43,9 +43,10 @@ build() {
 
 package() {
 	cd "hamclock-$pkgver/ESPHamClock"
-	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/applications" "$pkgdir/usr/share/icons"
+	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/applications" "$pkgdir/usr/share/icons" "$pkgdir/usr/share/licenses/$pkgname/"
 	cp hamclock-1600x960 "$pkgdir/usr/bin/hamclock"
 	cp hamclock.png "$pkgdir/usr/share/icons"
+	cp LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 	cat > "$pkgdir/usr/share/applications/hamclock.desktop" << HERE
 [Desktop Entry]
 Name=HamClock
