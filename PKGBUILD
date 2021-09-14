@@ -9,8 +9,8 @@
 
 pkgname=snort
 _pkgname=snort3
-_openappid=17843
-pkgver=3.1.10.0
+_openappid=19913
+pkgver=3.1.12.0
 pkgrel=1
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
@@ -25,7 +25,6 @@ backup=('etc/snort/snort.lua'
   'etc/snort/rules/local.rules'
   'etc/snort/rules/snort.rules'
   'etc/logrotate.d/snort')
-options=('!libtool')
 install='snort.install'
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/refs/tags/${pkgver}.tar.gz"
   "snort-openappid-${_openappid}.tar.gz::https://snort.org/downloads/openappid/${_openappid}"
@@ -52,7 +51,7 @@ package() {
   install -D -m644 "${srcdir}"/snort.sysusers "${pkgdir}"/usr/lib/sysusers.d/snort.conf
   install -D -m644 "${srcdir}"/snort.service "${pkgdir}"/usr/lib/systemd/system/snort.service
   install -D -m644 /dev/null "${pkgdir}"/etc/snort/rules/snort.rules
-  echo "HOME_NET = [[ 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 ]]" >"${pkgdir}"/etc/snort/homenet.lua
+  echo "HOME_NET = [[ 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 ]]" > "${pkgdir}"/etc/snort/homenet.lua
   echo -e '#pulledpork will put rules here in snort.rules\n#alert icmp any any -> any any ( msg:"ICMP Traffic Detected"; sid:10000001; metadata:policy security-ips alert; )' >"${pkgdir}"/etc/snort/rules/local.rules
   chmod 0644 "${pkgdir}"/etc/snort/{homenet.lua,rules/{local,snort}.rules}
 
@@ -62,8 +61,8 @@ package() {
 
 }
 
-sha256sums=('6bd1c2c243ff69f9222aee6fb5d48998c7e24acaa4d2349115af324f9810bb01'
-            'd6bbe298648a095f4d4f3ff8806333143f4607fbb9f006388db055e14c5af57d'
+sha256sums=('767c8987ddefbb6be18e340d1cefd15cc3de09fb37e5d4adf438cb12b56762b9'
+            'f0e1b47f4d41891c8657330128cafc1187a6f0da65306d897251fc8eba9fe49f'
             '9fa50b961c034a694d840036c5682b21bcfe55bf9faf17602878d7db719299da'
             '1be3b4e25138a3696be07929d455ca84bb4eddbee5f596ae636188d49309c7f6'
             'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
