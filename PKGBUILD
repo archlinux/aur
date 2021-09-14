@@ -3,19 +3,19 @@
 pkgname=dirt2-wine-steam
 _pkgname=dirt2
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 makedepends=('steamcmd' 'icoutils')
 depends=('wine')
-source=("xlive.dll" "xlive.ini" "${_pkgname}.sh" "${_pkgname}.desktop")
+source=("${_pkgname}.sh" "${_pkgname}.desktop"
+        "https://github.com/ThirteenAG/Ultimate-ASI-Loader/releases/download/v4.59/Ultimate-ASI-Loader.zip")
 pkgdesc="Colin McRae: DiRT 2 using WINE with data via Steam"
 license=('custom')
 install=dirt2.install
 url='https://steamdb.info/app/12840/'
-sha256sums=('5bbe4cd8ee97fbd22eb5ab457963db73c5d7889ba77952eea318cf2da6d934c8'
-            'd4b3617b616551290c4d174f48b9b3130f35d2013cd16993208a70dc1cee213e'
-            '6a960fef596825ff2f05fa2e8217f6c2e35487de99d6a572d7e88321ae8f7732'
-            '197214032362607eb10eabf02e3382c522c8bec5fd61e72de6180f09f655caa7')
+sha256sums=('6a960fef596825ff2f05fa2e8217f6c2e35487de99d6a572d7e88321ae8f7732'
+            '197214032362607eb10eabf02e3382c522c8bec5fd61e72de6180f09f655caa7'
+            'ee55665eceef3ca18b5a0bafe269d41cd814e34d572aa1083c4b78b85d5b3958')
 
 prepare() {
     mkdir -p $srcdir/${_pkgname}
@@ -32,8 +32,7 @@ package() {
 
     # Move required files to pkgdir
     cp -r $srcdir/${_pkgname}/* $pkgdir/opt/${_pkgname}/
-    cp $srcdir/xlive.dll $pkgdir/opt/${_pkgname}/
-    cp $srcdir/xlive.ini $pkgdir/opt/${_pkgname}/
+    cp $srcdir/dinput8.dll $pkgdir/opt/${_pkgname}/xlive.dll
     rm -rf $pkgdir/opt/${_pkgname}/steamapps
     
     # Install desktop file.
