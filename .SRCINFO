@@ -1,6 +1,6 @@
 pkgbase = libpamac-flatpak
 	pkgdesc = Library for Pamac package manager based on libalpm - flatpak support enabled
-	pkgver = 11.0.1
+	pkgver = 11.1.0
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/libpamac
 	arch = i686
