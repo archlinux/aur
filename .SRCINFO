@@ -1,18 +1,17 @@
 pkgbase = rehex
-	pkgdesc = A good general-purpose hex editor with a wide selection of features for analysing and annotating binary file formats
-	pkgver = 0.3.91
-	pkgrel = 2
+	pkgdesc = A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else.
+	pkgver = 0.3.92
+	pkgrel = 1
 	url = https://github.com/solemnwarning/rehex
 	arch = x86_64
-	license = GPL
-	makedepends = jansson
-	makedepends = wxgtk2
-	makedepends = llvm
-	makedepends = capstone
+	license = GPL2
 	depends = jansson
+	depends = capstone
 	depends = wxgtk2
-	source = rehex-0.3.1.zip::https://github.com/solemnwarning/rehex/archive/0.3.91.zip
-	sha256sums = 11eb02da3cd7b189b29a8df0449c69b4d0772630da6b117123e7b52b26813c1f
+	depends = lua>=5.3
+	source = rehex-0.3.92.tar.gz::https://github.com/solemnwarning/rehex/archive/refs/tags/0.3.92.tar.gz
+	source = rehex.patch
+	sha256sums = 08dbea973754e21e580f54f51d65f74ebbd10b300cdbaf8ad19e3540a4e51596
+	sha256sums = 925aa979895253ba482780da91cb72fb11260dc44ce0a0f9650164f4831a5d83
 
 pkgname = rehex
-
