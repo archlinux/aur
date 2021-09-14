@@ -10,6 +10,7 @@ arch=('any')
 url='https://github.com/thombashi/pytablereader'
 license=('MIT')
 depends=(
+  'python>=3.6'
   'python-beautifulsoup4>=4.4.1'
   'python-beautifulsoup4<5'
   'python-dataproperty>=0.50.1'

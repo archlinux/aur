@@ -6,6 +6,7 @@ pkgbase = python-pytablereader
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python>=3.6
 	depends = python-beautifulsoup4>=4.4.1
 	depends = python-beautifulsoup4<5
 	depends = python-dataproperty>=0.50.1
