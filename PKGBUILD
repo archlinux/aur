@@ -8,7 +8,7 @@ arch=(any)
 url="https://gitlab.com/m_zhou/bieaz"
 license=('GPLv3+')
 depends=('coreutils' 'awk' 'sed' 'grep' 'sh' 'grub')
-#backup=('etc/bieaz.cfg' )
+backup=('etc/bieaz.cfg' )
 source=(
         "bieaz-git::git+https://gitlab.com/m_zhou/bieaz"
 )
