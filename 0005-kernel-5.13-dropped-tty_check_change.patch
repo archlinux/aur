@@ -1,0 +1,17 @@
+--- driver/mxuport/mx-uport.c.orig	2021-09-14 08:49:18.570936486 -0400
++++ driver/mxuport/mx-uport.c	2021-09-14 08:51:19.203266750 -0400
+@@ -998,10 +998,14 @@ static void mxuport_break_ctl (struct us
+ 	}
+ 
+ 	return;
+ }
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,13,0))
++int tty_check_change(struct tty_struct *tty);
++#endif
++
+ #if (LINUX_VERSION_CODE > KERNEL_VERSION(2,6,19))        		        
+ static void mxuport_set_termios (struct usb_serial_port *port, struct ktermios *old_termios)
+ #else
+ static void mxuport_set_termios (struct usb_serial_port *port, struct termios *old_termios)
+ #endif

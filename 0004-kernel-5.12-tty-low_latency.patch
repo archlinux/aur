@@ -1,0 +1,61 @@
+--- driver/mxuport/mx-uport.c.orig	2021-09-14 08:47:03.754388063 -0400
++++ driver/mxuport/mx-uport.c	2021-09-14 08:47:21.044774548 -0400
+@@ -594,17 +594,19 @@ static int  mxuport_open(struct usb_seri
+ 	 *  Force low_latency on so that our tty_push actually forces the data through, 
+ 	 *  otherwise it is scheduled, and with high data rates (like with OHCI) data
+ 	 *  can get lost. 
+ 	 */
+ 	 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0))
+ #if (LINUX_VERSION_CODE > KERNEL_VERSION(3,8,0))
+ 	if (port->port.tty)
+ 		port->port.low_latency = (mx_port->flags & ASYNC_LOW_LATENCY) ? 1 : 0;
+ #else  
+ 	if (port->tty)
+ 		port->tty->low_latency = (mx_port->flags & ASYNC_LOW_LATENCY) ? 1 : 0;
+ #endif
++#endif
+ 	
+ 	/* 
+ 	 *  Initial port settings 
+ 	 */
+ 
+@@ -1588,13 +1590,17 @@ static void mxuport_unthrottle (struct u
+     data_len = mx_data_in_queue(mx_port->read_q);
+     spin_unlock_irqrestore(&mx_port->read_splock, flags);
+ 	
+ #if (LINUX_VERSION_CODE > KERNEL_VERSION(3,8,0))
+     if((data_len > 0) && (!atomic_read(&mx_port->read_in_progress))){
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0))
+ 		mx_port->port->port.low_latency = 0;
++#endif
+         mx_tty_recv(mx_port->port->tty, mx_port);
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0))
+ 		mx_port->port->port.low_latency = (mx_port->flags & ASYNC_LOW_LATENCY) ? 1 : 0;
++#endif
+     }
+ #else
+     if((data_len > 0) && (!atomic_read(&mx_port->read_in_progress))){
+ 		mx_port->port->tty->low_latency = 0;
+         mx_tty_recv(mx_port->port->tty, mx_port);
+@@ -3035,18 +3041,20 @@ static int mx_set_serial_info(struct mxu
+ 
+     /*
+      *  set low_latency flag
+      */
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0))
+ #if (LINUX_VERSION_CODE > KERNEL_VERSION(3,8,0))
+ 	if (port->port.tty)
+         port->port.low_latency = (mxport->flags & ASYNC_LOW_LATENCY) ? 1 : 0;
+ //	port->port.low_latency = (mx_port->flags & ASYNC_LOW_LATENCY) ? 1 : 0;
+ #else  
+ 	if (port->tty)
+         port->tty->low_latency = (mxport->flags & ASYNC_LOW_LATENCY) ? 1 : 0;
+ #endif
++#endif
+ 
+ 	if( mx_process_txrx_fifo(mxport, new_serial.type)==0 ){
+ 		mxport->type = new_serial.type;
+ 		//if( mxport->type == PORT_16450 )
+ 		//	printk("Notice: FIFO is disabled.\n");

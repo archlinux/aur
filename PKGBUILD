@@ -44,7 +44,7 @@ _servicename="${pkgname}-settings"
 #pkgver='1.2'; _build='12071314'
 #pkgver='1.2.9'; _build='14103017'
 pkgver='1.2.13'; _build='18030617'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='kernel module driver for Moxa multi port USB serial 1250 1410 1450 1610 1650 RS-232 422 485'
 _servicedesc='Moxa UPort persistent settings'
 arch=('i686' 'x86_64')
@@ -65,9 +65,20 @@ source=(
   #"http://ftp.gwdg.de/pub/opensuse/repositories/hardware/openSUSE_Tumbleweed/src/moxa-${pkgver}_${_build}-1.299.src.rpm"
   "https://download.opensuse.org/repositories/hardware/openSUSE_Leap_42.3/src/moxa-${pkgver}_${_build}-1.1.src.rpm"
   '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
+  '0004-kernel-5.12-tty-low_latency.patch'
+  '0005-kernel-5.13-dropped-tty_check_change.patch'
+  '0006-kernel-5.14-unsigned-tty.patch'
 )
+md5sums=('17a240340a322b3da2e07fc929950288'
+         '9ec720fdaaccc41648ffb6d58c45c64e'
+         '13cc25e1625f1dc8456aaf703efbe816'
+         'c06ffb879ec71eb19a74eb90839f4d91'
+         'b20646163937da295547dc8bf4bbaccf')
 sha256sums=('aed6f9a1bb6e88a22b520dc6cbbb6624accea080dcaca727c0fab031868228b6'
-            'f753e48ea68282288bd53f045c88bd61e39a4c6cf691544953c6929888183370')
+            'f753e48ea68282288bd53f045c88bd61e39a4c6cf691544953c6929888183370'
+            '151a7c84d3815814d45cebd6d58427c27a2b3c6e06c1209d984738e94fea90d8'
+            '4840cccfcd432b7b4f861b5b556c0445f4cd93d277c6cb0045eeebaf92190c4e'
+            '045a3957b540ff8a9f9e401c343683a794837bda4e047759564df6ce2e8912a4')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -149,6 +160,18 @@ prepare() {
   #cp -p driver/mxuport/mx-uport.c{,.orig}; false
   #diff -pNaru5 driver/mxuport/mx-uport.c{.orig,} > '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
   patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
+
+  #cp -p driver/mxuport/mx-uport.c{,.orig}; false
+  #diff -pNaru5 driver/mxuport/mx-uport.c{.orig,} > '0004-kernel-5.12-tty-low_latency.patch'
+  patch -Nbup0 -i "${srcdir}/0004-kernel-5.12-tty-low_latency.patch"
+
+  #cp -p driver/mxuport/mx-uport.c{,.orig}; false
+  #diff -pNaru5 driver/mxuport/mx-uport.c{.orig,} > '0005-kernel-5.13-dropped-tty_check_change.patch'
+  patch -Nbup0 -i "${srcdir}/0005-kernel-5.13-dropped-tty_check_change.patch"
+
+  #cp -p driver/mxusbserial/mxusb-serial.c{,.orig}; false
+  #diff -pNaru5 driver/mxusbserial/mxusb-serial.c{.orig,} > '0006-kernel-5.14-unsigned-tty.patch'
+  patch -Nbup0 -i "${srcdir}/0006-kernel-5.14-unsigned-tty.patch"
 
   # Fix umbrella Makefile
   sed -e '# Disable silent' \

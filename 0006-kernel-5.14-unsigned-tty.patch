@@ -1,0 +1,34 @@
+--- driver/mxusbserial/mxusb-serial.c.orig	2021-09-14 08:57:20.885034201 -0400
++++ driver/mxusbserial/mxusb-serial.c	2021-09-14 08:59:10.920036474 -0400
+@@ -661,11 +661,15 @@ static int serial_write (struct tty_stru
+ #endif
+ exit:
+ 	return retval;
+ }
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0))
++static unsigned int serial_write_room (struct tty_struct *tty)
++#else
+ static int serial_write_room (struct tty_struct *tty)
++#endif
+ {
+ 	struct usb_serial_port *port = tty->driver_data;
+ 	int retval = -EINVAL;
+ 
+ 	if (!port)
+@@ -683,11 +687,15 @@ static int serial_write_room (struct tty
+ 
+ exit:
+ 	return retval;
+ }
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0))
++static unsigned int serial_chars_in_buffer (struct tty_struct *tty)
++#else
+ static int serial_chars_in_buffer (struct tty_struct *tty)
++#endif
+ {
+ 	struct usb_serial_port *port = tty->driver_data;
+ 	int retval = -EINVAL;
+ 
+ 	if (!port)
