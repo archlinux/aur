@@ -1,23 +1,22 @@
 # Maintainer: Z. D. Smith <zd at zdsmith dot com>
 pkgname=bagatto
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A transparent, extensible static site generator'
 arch=('x86_64')
 url='https://bagatto.co/'
-depends=('janet')
+depends=('janet-lang-git')
 license=('BSD3')
 provides=('bagatto')
 
 source=("https://git.sr.ht/~subsetpark/bagatto/archive/v${pkgver}.tar.gz")
 
-sha256sums=('0fea10533a92ab26fce1088cc43721a510fc324f41caf9142fce3a6a2c17bf37')
+sha256sums=('db137528561c8da1e9ed10c7f5987dc4fbc854267baaafe0d5f499079496d4a8')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver"
-        mkdir janet_modules
-        JANET_PATH=janet_modules jpm load-lockfile
-        JANET_PATH=janet_modules jpm build
+        jpm -l load-lockfile
+        jpm -l build
 }
 
 package() {
