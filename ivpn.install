@@ -10,19 +10,19 @@ has_systemd() {
 }
 
 ivpnlogout() {
-  if [ -f /usr/local/bin/ivpn ]; then
-      echo "[+] Logging out ..."
-      /usr/local/bin/ivpn logout || echo "[-] Failed to log out"
+  if [ -f /usr/bin/ivpn ]; then
+      echo "[+] Logging out..."
+      /usr/bin/ivpn logout || echo "[-] Failed to log out"
   fi
 }
 
 disconnect() {
-  if [ -f /usr/local/bin/ivpn ]; then
+  if [ -f /usr/bin/ivpn ]; then
     echo "[+] Trying to disable firewall..."
-    /usr/local/bin/ivpn firewall -off || echo "[-] Failed to disable firewall"
+    /usr/bin/ivpn firewall -off || echo "[-] Failed to disable firewall"
 
-    echo "[+] Trying to disconnect ..."
-    /usr/local/bin/ivpn disconnect || echo "[-] Failed to disconnect"
+    echo "[+] Trying to disconnect..."
+    /usr/bin/ivpn disconnect || echo "[-] Failed to disconnect"
   fi
 }
 

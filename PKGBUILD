@@ -3,7 +3,7 @@
 # PKGBUILD config
 pkgname="ivpn"
 pkgver=3.3.30
-pkgrel=1
+pkgrel=2
 pkgdesc="IVPN Command Line Interface"
 arch=('x86_64')
 url="https://ivpn.net"
@@ -37,7 +37,7 @@ build() {
   # exist, it continues onward.
   EnvironmentFile=-/etc/default/ivpn-service
   EnvironmentFile=-/etc/sysconfig/ivpn-service
-  ExecStart=/usr/local/bin/ivpn-service
+  ExecStart=/usr/bin/ivpn-service
   Restart=always
   WorkingDirectory=/
 
@@ -53,7 +53,7 @@ EOF
 package() {
   cd "$srcdir/desktop-app-${pkgver}/daemon"
 
-  install -Dm755 -g root -o root References/Linux/scripts/_out_bin/ivpn-service "$pkgdir/usr/local/bin/ivpn-service"
+  install -Dm755 -g root -o root References/Linux/scripts/_out_bin/ivpn-service "$pkgdir/usr/bin/ivpn-service"
 
   install -Dm700 -g root -o root References/Linux/etc/client.down "$pkgdir/opt/ivpn/etc/client.down"
   install -Dm700 -g root -o root References/Linux/etc/client.up "$pkgdir/opt/ivpn/etc/client.up"
@@ -63,7 +63,7 @@ package() {
   install -Dm400 -g root -o root References/Linux/etc/ta.key "$pkgdir/opt/ivpn/etc/ta.key"
 
   cd "$srcdir/desktop-app-${pkgver}/cli"
-  install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/local/bin/ivpn"
+  install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/bin/ivpn"
 
   cd "$srcdir"
   install -D "ivpn-service.service" "$pkgdir/usr/lib/systemd/system/ivpn-service.service"

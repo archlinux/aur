@@ -1,7 +1,7 @@
 pkgbase = ivpn
 	pkgdesc = IVPN Command Line Interface
 	pkgver = 3.3.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ivpn.net
 	install = ivpn.install
 	arch = x86_64
