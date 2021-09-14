@@ -1,6 +1,6 @@
 pkgbase = gnome-connections-git
 	pkgdesc = Remote desktop client for the GNOME desktop environment
-	pkgver = 41.beta.r5.gf0f59d1
+	pkgver = 41.beta.r48.g3ebc58a
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/connections
 	arch = x86_64

@@ -2,14 +2,14 @@
 
 pkgname=gnome-connections-git
 _pkgname=connections
-pkgver=41.beta.r5.gf0f59d1
+pkgver=41.beta.r48.g3ebc58a
 pkgrel=1
 pkgdesc="Remote desktop client for the GNOME desktop environment"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/connections"
 license=('GPL3')
 depends=('gtk3' 'glib2' 'libhandy'  'gtk-vnc' 'libusb' 'freerdp' 'libxml2' 'gtk-frdp')
-makedepends=('git' ''gobject-introspection'' 'itstool' 'meson' 'vala')
+makedepends=('git' 'gobject-introspection' 'itstool' 'meson' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
