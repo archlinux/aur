@@ -6,15 +6,15 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=r13686.gdb0954787
-pkgrel=2
+pkgver=r13812.gdce03bae1
+pkgrel=1
 epoch=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
 license=(GPL2 CCPL)
 groups=(pro-audio)
-depends=(gtk3 wxgtk3-dev-opt libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
+depends=(gtk3 wxgtk3-dev-light libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
          soundtouch portaudio portmidi lame jack2)
 makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg nasm chrpath)
@@ -46,9 +46,7 @@ build() {
   CC=clang CXX=clang++ cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev/bin/wx-config-gtk3 \
-    -DwxWidgets_INCLUDE_DIRS=/opt/wxgtk-dev/include/wx-3.1 \
-    -DwxWidgets_LIBRARIES=/opt/wxgtk-dev/lib \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3-3.1 \
     audacity_use_ffmpeg:STRING=loaded \
     ..
   cmake --build .
