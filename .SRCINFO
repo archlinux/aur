@@ -1,15 +1,17 @@
 pkgbase = libdockapp
 	pkgdesc = Library that provides a framework for developing dockapps.
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = http://www.dockapps.net/libdockapp
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = xorg-font-util
+	makedepends = xorg-mkfontscale
+	makedepends = fontconfig
 	depends = libxpm
 	options = !libtool
-	source = http://www.dockapps.net/download/libdockapp-0.7.2.tar.gz
-	md5sums = 219e042f8200448eaa34bdf4fc4aa820
+	source = http://www.dockapps.net/download/libdockapp-0.7.3.tar.gz
+	md5sums = 7b029c2b2542d1974085690427354501
 
 pkgname = libdockapp
-
