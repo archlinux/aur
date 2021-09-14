@@ -1,0 +1,12 @@
+pkgbase = rozb3-pac-git
+	pkgdesc = pacman hook for bieaz
+	pkgver = r8.68cd82b
+	pkgrel = 1
+	url = https://gitlab.com/m_zhou/rozb3-pac
+	arch = any
+	license = GPL
+	depends = bieaz
+	source = rozb3-pac-git::git+https://gitlab.com/m_zhou/rozb3-pac
+	sha256sums = SKIP
+
+pkgname = rozb3-pac-git
