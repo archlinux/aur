@@ -1,6 +1,6 @@
 pkgbase = bee-git
 	pkgdesc = A framework for IOTA nodes, clients and applications in Rust
-	pkgver = 0.1.2.r0.gb7d9824f
+	pkgver = 0.2.1.r0.g1fbe96ab
 	pkgrel = 1
 	url = https://github.com/iotaledger/bee
 	install = bee.install
@@ -13,15 +13,15 @@ pkgbase = bee-git
 	makedepends = cmake
 	makedepends = git
 	depends = openssl
-	backup = etc/bee/config.toml
+	backup = etc/bee/config.chrysalis-mainnet.toml
+	backup = etc/bee/config.chrysalis-comnet.toml
 	source = git://github.com/iotaledger/bee.git#branch=chrysalis-pt-2
 	source = bee.service
-	source = https://github.com/iotaledger/bee/releases/download/v0.1.2/config.toml
-	source = https://github.com/iotaledger/bee/releases/download/v0.1.2/config_as.toml
+	source = https://github.com/iotaledger/bee/releases/download/v0.2.1/config.chrysalis-comnet.toml
+	source = https://github.com/iotaledger/bee/releases/download/v0.2.1/config.chrysalis-mainnet.toml
 	sha256sums = SKIP
-	sha256sums = 2ae3649f7912b742a0b84f3573b2baf5fb60ea9448323f84faba03137f4cc250
-	sha256sums = 1d43988957e84d32679562aef005dfc1086be627031d0b8c6e3c8e93b0e30142
-	sha256sums = d676edf941cd4109d0ea6d159345b2d9cc3c598ed57a003bd4d6b2a66591d190
+	sha256sums = 2a0b6c70f7e1480a35c38a697f2b5d6d4181854b5d83941a7b684a5476f9cd17
+	sha256sums = 2b52c5613b9eed26a676bbe5d877ce949048a01ccbb6c7c73fd82d0d3b783df8
+	sha256sums = d1c6466269c5f581d2072496f431cbaf8169c280a9026454d4e57efddcf0c583
 
 pkgname = bee-git
-
