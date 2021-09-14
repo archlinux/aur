@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='dprint-bin'
-pkgver='0.16.3'
+pkgver='0.17.1'
 pkgrel='1'
 pkgdesc='Pluggable and configurable code formatting platform written in Rust.'
 arch=('x86_64')
