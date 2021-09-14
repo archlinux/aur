@@ -31,7 +31,7 @@ build() {
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd "${_pkgname}-${pkgver}"
   make check
 }
 
