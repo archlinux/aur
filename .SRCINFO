@@ -1,7 +1,7 @@
 pkgbase = qt5-wasm
 	pkgdesc = A cross-platform application and UI framework for WebAssembly (No multithreading)
 	pkgver = 5.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	install = qt5-wasm.install
 	arch = x86_64
@@ -14,11 +14,12 @@ pkgbase = qt5-wasm
 	depends = python
 	options = !strip
 	source = https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
-	source = git+https://github.com/emscripten-core/emsdk.git#tag=2.0.15
+	source = git+https://github.com/emscripten-core/emsdk.git#tag=2.0.29
 	source = qtwasm_env.sh
+	source = qtbase-5.15.2-gcc11.patch
 	sha256sums = 3a530d1b243b5dec00bc54937455471aaa3e56849d2593edb8ded07228202240
 	sha256sums = SKIP
-	sha256sums = d5e93f991453f1b9ff9ba6f053520ae0610f32d6f0fa0772f6587f10f3dfe023
+	sha256sums = c124915abf2de106429de9a6bb8907961a662808331933b448b048e5cd215f32
+	sha256sums = a8f2650fba0ba63b6ed7e37ca3ac857314808fa83fc035f343f2cc764c4a8567
 
 pkgname = qt5-wasm
-

@@ -4,13 +4,14 @@ pkgname='qt5-wasm'
 
 _qtver=5.15.2
 _emsdkver=1.39.8
+_emsdk=2.0.29
 
 _qt="qt-everywhere-src-${_qtver}"
 
 _modules="qtbase qtdeclarative qtquickcontrols2 qtwebsockets qtsvg"
 
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -21,18 +22,21 @@ conflicts=()
 groups=('qt-wasm' 'qt5-wasm')
 install=$pkgname.install
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_qt}.tar.xz"
-        'git+https://github.com/emscripten-core/emsdk.git#tag=2.0.15'
-        'qtwasm_env.sh')
+        "git+https://github.com/emscripten-core/emsdk.git#tag=${_emsdk}"
+        'qtwasm_env.sh'
+        "qtbase-${_qtver}-gcc11.patch")
 sha256sums=('3a530d1b243b5dec00bc54937455471aaa3e56849d2593edb8ded07228202240'
             'SKIP'
-            'd5e93f991453f1b9ff9ba6f053520ae0610f32d6f0fa0772f6587f10f3dfe023')
+            'c124915abf2de106429de9a6bb8907961a662808331933b448b048e5cd215f32'
+            'a8f2650fba0ba63b6ed7e37ca3ac857314808fa83fc035f343f2cc764c4a8567')
 options=('!strip')
 
 _opt=/opt/qt5-wasm
 
 prepare() {
   # qt
-  cd ${srcdir}/${_qt}
+  cd ${srcdir}/${_qt}/qtbase
+  patch -p1 < ${srcdir}/qtbase-${_qtver}-gcc11.patch
 
   # emsdk
   cd ${srcdir}/emsdk
