@@ -2,7 +2,7 @@
 
 pkgname=com.qq.weixin.work.deepin
 pkgver=3.1.6.3605deepin6
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Deepin Wine Weixin Work"
 arch=('i686' 'x86_64')
@@ -28,7 +28,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://community-store-packages.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+#source=("https://community-store-packages.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 #source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/${pkgname}_${pkgver}_i386.deb")
 noextract=("${pkgname}_${pkgver}_i386.deb")
 md5sums=('a9e8e817f5e0767fe904a92b06143184')
