@@ -1,0 +1,538 @@
+From 9de3f195102a356e8139078957d024975ef7857c Mon Sep 17 00:00:00 2001
+From: Chen Zhenge <me@markle.one>
+Date: Sun, 22 Aug 2021 19:42:18 +0800
+Subject: [PATCH] Add nftables set support
+
+---
+ CHANGELOG            |  3 +++
+ Makefile             |  7 +++---
+ dnsmasq.conf.example |  5 ++++
+ man/dnsmasq.8        |  7 ++++++
+ src/cache.c          |  7 ++++++
+ src/config.h         | 18 ++++++++++++++
+ src/dnsmasq.c        | 10 ++++++++
+ src/dnsmasq.h        | 13 +++++++---
+ src/forward.c        | 50 +++++++++++++++++++++++---------------
+ src/nftset.c         | 58 ++++++++++++++++++++++++++++++++++++++++++++
+ src/option.c         | 28 ++++++++++++++++-----
+ src/rfc1035.c        | 19 ++++++++++++++-
+ 12 files changed, 192 insertions(+), 33 deletions(-)
+ create mode 100644 src/nftset.c
+
+diff --git a/CHANGELOG b/CHANGELOG
+index 5e54df9..0d5b1e4 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -92,6 +92,9 @@ version 2.86
+ 	of filename). Thanks to Ed Wildgoose for the initial patch
+ 	and motivation for this.
+ 
++	Allow adding IP address to nftables set in addition to
++	ipset.
++
+ 	
+ version 2.85
+         Fix problem with DNS retries in 2.83/2.84.
+diff --git a/Makefile b/Makefile
+index 0cd592e..e471a4d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -70,6 +70,7 @@ nettle_libs =   `echo $(COPTS) | $(top)/bld/pkg-wrapper HAVE_DNSSEC     $(PKG_CO
+                                                         HAVE_NETTLEHASH $(PKG_CONFIG) --libs nettle`
+ gmp_libs =      `echo $(COPTS) | $(top)/bld/pkg-wrapper HAVE_DNSSEC NO_GMP --copy -lgmp`
+ sunos_libs =    `if uname | grep SunOS >/dev/null 2>&1; then echo -lsocket -lnsl -lposix4; fi`
++nft_libs =     `echo $(COPTS) | $(top)/bld/pkg-wrapper HAVE_NFTSET $(PKG_CONFIG) --libs libnftables` 
+ version =     -DVERSION='\"`$(top)/bld/get-version $(top)`\"'
+ 
+ sum?=$(shell $(CC) -DDNSMASQ_COMPILE_OPTS $(COPTS) -E $(top)/$(SRC)/dnsmasq.h | ( md5sum 2>/dev/null || md5 ) | cut -f 1 -d ' ')
+@@ -82,7 +83,7 @@ objs = cache.o rfc1035.o util.o option.o forward.o network.o \
+        dhcp-common.o outpacket.o radv.o slaac.o auth.o ipset.o pattern.o \
+        domain.o dnssec.o blockdata.o tables.o loop.o inotify.o \
+        poll.o rrfilter.o edns0.o arp.o crypto.o dump.o ubus.o \
+-       metrics.o hash-questions.o domain-match.o
++       metrics.o hash-questions.o domain-match.o nftset.o
+ 
+ hdrs = dnsmasq.h config.h dhcp-protocol.h dhcp6-protocol.h \
+        dns-protocol.h radv-protocol.h ip6addr.h metrics.h
+@@ -91,7 +92,7 @@ all : $(BUILDDIR)
+ 	@cd $(BUILDDIR) && $(MAKE) \
+  top="$(top)" \
+  build_cflags="$(version) $(dbus_cflags) $(idn2_cflags) $(idn_cflags) $(ct_cflags) $(lua_cflags) $(nettle_cflags)" \
+- build_libs="$(dbus_libs) $(idn2_libs) $(idn_libs) $(ct_libs) $(lua_libs) $(sunos_libs) $(nettle_libs) $(gmp_libs) $(ubus_libs)" \
++ build_libs="$(dbus_libs) $(idn2_libs) $(idn_libs) $(ct_libs) $(lua_libs) $(sunos_libs) $(nettle_libs) $(gmp_libs) $(ubus_libs) $(nft_libs)" \
+  -f $(top)/Makefile dnsmasq 
+ 
+ mostly_clean :
+@@ -116,7 +117,7 @@ all-i18n : $(BUILDDIR)
+  top="$(top)" \
+  i18n=-DLOCALEDIR=\'\"$(LOCALEDIR)\"\' \
+  build_cflags="$(version) $(dbus_cflags) $(idn2_cflags) $(idn_cflags) $(ct_cflags) $(lua_cflags) $(nettle_cflags)" \
+- build_libs="$(dbus_libs) $(idn2_libs) $(idn_libs) $(ct_libs) $(lua_libs) $(sunos_libs) $(nettle_libs) $(gmp_libs) $(ubus_libs)"  \
++ build_libs="$(dbus_libs) $(idn2_libs) $(idn_libs) $(ct_libs) $(lua_libs) $(sunos_libs) $(nettle_libs) $(gmp_libs) $(ubus_libs) $(nft_libs)"  \
+  -f $(top)/Makefile dnsmasq
+ 	for f in `cd $(PO); echo *.po`; do \
+ 		cd $(top) && cd $(BUILDDIR) && $(MAKE) top="$(top)" -f $(top)/Makefile $${f%.po}.mo; \
+diff --git a/dnsmasq.conf.example b/dnsmasq.conf.example
+index bf19424..10b3ec7 100644
+--- a/dnsmasq.conf.example
++++ b/dnsmasq.conf.example
+@@ -85,6 +85,11 @@
+ # subdomains to the vpn and search ipsets:
+ #ipset=/yahoo.com/google.com/vpn,search
+ 
++# Add the IPs of all queries to yahoo.com, google.com, and their
++# subdomains to netfilters sets, which is equivalent to
++# 'nft add element ip test vpn { ... }; nft add element ip test search { ... }'
++#nftset=/yahoo.com/google.com/ip test vpn,ip test search
++
+ # You can control how dnsmasq talks to a server: this forces
+ # queries to 10.1.2.3 to be routed via eth1
+ # server=10.1.2.3@eth1
+diff --git a/man/dnsmasq.8 b/man/dnsmasq.8
+index 7ffccad..e91c244 100644
+--- a/man/dnsmasq.8
++++ b/man/dnsmasq.8
+@@ -549,6 +549,13 @@ These IP sets must already exist. See
+ .BR ipset (8)
+ for more details.
+ .TP
++.B --nftset=/<domain>[/<domain>...]/<nftset>[,<nftset>...]
++Similar to the \fB--ipset\fP option, but accepts one or more nftables 
++sets to add IP addresses into.
++These sets must already exist. See
++.BR nft (8)
++for more details.
++.TP
+ .B --connmark-allowlist-enable[=<mask>]
+ Enables filtering of incoming DNS queries with associated Linux connection track marks
+ according to individual allowlists configured via a series of \fB--connmark-allowlist\fP
+diff --git a/src/cache.c b/src/cache.c
+index 8add610..2094b04 100644
+--- a/src/cache.c
++++ b/src/cache.c
+@@ -2010,6 +2010,13 @@ void log_query(unsigned int flags, char *name, union all_addr *addr, char *arg)
+       name = arg;
+       verb = daemon->addrbuff;
+     }
++  else if (flags & F_NFTSET)
++    {
++      source = "nftset add";
++      dest = name;
++      name = arg;
++      verb = daemon->addrbuff;
++    }
+   else
+     source = "cached";
+   
+diff --git a/src/config.h b/src/config.h
+index 30e23d8..5aebc0e 100644
+--- a/src/config.h
++++ b/src/config.h
+@@ -115,6 +115,10 @@ HAVE_IPSET
+     define this to include the ability to selectively add resolved ip addresses
+     to given ipsets.
+ 
++HAVE_NFTSET
++    define this to include the ability to selectively add resolved ip addresses
++    to given nftables sets.
++
+ HAVE_AUTH
+    define this to include the facility to act as an authoritative DNS
+    server for one or more zones.
+@@ -175,6 +179,7 @@ RESOLVFILE
+ #define HAVE_SCRIPT
+ #define HAVE_AUTH
+ #define HAVE_IPSET 
++#define HAVE_NFTSET
+ #define HAVE_LOOP
+ #define HAVE_DUMPFILE
+ 
+@@ -275,12 +280,14 @@ HAVE_SOCKADDR_SA_LEN
+ #   define HAVE_GETOPT_LONG
+ #endif
+ #define HAVE_SOCKADDR_SA_LEN
++#define NO_NFTSET
+ 
+ #elif defined(__APPLE__)
+ #define HAVE_BSD_NETWORK
+ #define HAVE_GETOPT_LONG
+ #define HAVE_SOCKADDR_SA_LEN
+ #define NO_IPSET
++#define NO_NFTSET
+ /* Define before sys/socket.h is included so we get socklen_t */
+ #define _BSD_SOCKLEN_T_
+ /* Select the RFC_3542 version of the IPv6 socket API. 
+@@ -291,17 +298,20 @@ HAVE_SOCKADDR_SA_LEN
+ #  define SOL_TCP IPPROTO_TCP
+ #endif
+ #define NO_IPSET
++#define NO_NFTSET
+ 
+ #elif defined(__NetBSD__)
+ #define HAVE_BSD_NETWORK
+ #define HAVE_GETOPT_LONG
+ #define HAVE_SOCKADDR_SA_LEN
++#define NO_NFTSET
+ 
+ #elif defined(__sun) || defined(__sun__)
+ #define HAVE_SOLARIS_NETWORK
+ #define HAVE_GETOPT_LONG
+ #undef HAVE_SOCKADDR_SA_LEN
+ #define ETHER_ADDR_LEN 6 
++#define NO_NFTSET
+  
+ #endif
+ 
+@@ -344,6 +354,10 @@ HAVE_SOCKADDR_SA_LEN
+ #undef HAVE_IPSET
+ #endif
+ 
++#if defined (NO_NFTSET)
++#undef HAVE_NFTSET
++#endif
++
+ #ifdef NO_LOOP
+ #undef HAVE_LOOP
+ #endif
+@@ -420,6 +434,10 @@ static char *compile_opts =
+ "no-"
+ #endif
+ "ipset "
++#ifndef HAVE_NFTSET
++"no-"
++#endif
++"nftset "
+ #ifndef HAVE_AUTH
+ "no-"
+ #endif
+diff --git a/src/dnsmasq.c b/src/dnsmasq.c
+index 602daed..51ca251 100644
+--- a/src/dnsmasq.c
++++ b/src/dnsmasq.c
+@@ -345,6 +345,16 @@ int main (int argc, char **argv)
+     }
+ #endif
+ 
++#ifdef HAVE_NFTSET
++  if (daemon->nftsets)
++    {
++      nftset_init();
++#  ifdef HAVE_LINUX_NETWORK
++      need_cap_net_admin = 1;
++#  endif
++    }
++#endif
++
+ #if  defined(HAVE_LINUX_NETWORK)
+   netlink_warn = netlink_init();
+ #elif defined(HAVE_BSD_NETWORK)
+diff --git a/src/dnsmasq.h b/src/dnsmasq.h
+index 8674823..5f3838a 100644
+--- a/src/dnsmasq.h
++++ b/src/dnsmasq.h
+@@ -506,6 +506,7 @@ struct crec {
+ #define F_DOMAINSRV (1u<<28)
+ #define F_RCODE     (1u<<29)
+ #define F_SRV       (1u<<30)
++#define F_NFTSET    (1u<<31)
+ 
+ #define UID_NONE      0
+ /* Values of uid in crecs with F_CONFIG bit set. */
+@@ -1108,7 +1109,7 @@ extern struct daemon {
+   struct server *servers, *local_domains, **serverarray, *no_rebind;
+   int server_has_wildcard;
+   int serverarraysz, serverarrayhwm;
+-  struct ipsets *ipsets;
++  struct ipsets *ipsets, *nftsets;
+   u32 allowlist_mask;
+   struct allowlist *allowlists;
+   int log_fac; /* log facility */
+@@ -1298,8 +1299,8 @@ unsigned int extract_request(struct dns_header *header, size_t qlen,
+ 			       char *name, unsigned short *typep);
+ void setup_reply(struct dns_header *header, unsigned int flags, int ede);
+ int extract_addresses(struct dns_header *header, size_t qlen, char *name,
+-		      time_t now, char **ipsets, int is_sign, int check_rebind,
+-		      int no_cache_dnssec, int secure, int *doctored);
++		      time_t now, char **ipsets, char **nftsets, int is_sign,
++                      int check_rebind, int no_cache_dnssec, int secure, int *doctored);
+ #if defined(HAVE_CONNTRACK) && defined(HAVE_UBUS)
+ void report_addresses(struct dns_header *header, size_t len, u32 mark);
+ #endif
+@@ -1583,6 +1584,12 @@ void ipset_init(void);
+ int add_to_ipset(const char *setname, const union all_addr *ipaddr, int flags, int remove);
+ #endif
+ 
++/* nftset.c */
++#ifdef HAVE_NFTSET
++void nftset_init(void);
++int add_to_nftset(const char *setpath, const union all_addr *ipaddr, int flags, int remove);
++#endif
++
+ /* pattern.c */
+ #ifdef HAVE_CONNTRACK
+ int is_valid_dns_name(const char *value);
+diff --git a/src/forward.c b/src/forward.c
+index 3d638e4..5b78a87 100644
+--- a/src/forward.c
++++ b/src/forward.c
+@@ -555,12 +555,34 @@ static int forward_query(int udpfd, union mysockaddr *udpaddr,
+   return 0;
+ }
+ 
++static char **domain_find_sets(struct ipsets *setlist, const char *domain) {
++  /* Similar algorithm to search_servers. */
++  char **sets = 0;
++  struct ipsets *ipset_pos;
++  unsigned int namelen = strlen(domain);
++  unsigned int matchlen = 0;
++  for (ipset_pos = setlist; ipset_pos; ipset_pos = ipset_pos->next) 
++    {
++      unsigned int domainlen = strlen(ipset_pos->domain);
++      const char *matchstart = domain + namelen - domainlen;
++      if (namelen >= domainlen && hostname_isequal(matchstart, ipset_pos->domain) &&
++          (domainlen == 0 || namelen == domainlen || *(matchstart - 1) == '.' ) &&
++          domainlen >= matchlen) 
++        {
++          matchlen = domainlen;
++          sets = ipset_pos->sets;
++        }
++    }
++
++  return sets;
++}
++
+ static size_t process_reply(struct dns_header *header, time_t now, struct server *server, size_t n, int check_rebind, 
+ 			    int no_cache, int cache_secure, int bogusanswer, int ad_reqd, int do_bit, int added_pheader, 
+ 			    int check_subnet, union mysockaddr *query_source, unsigned char *limit, int ede)
+ {
+   unsigned char *pheader, *sizep;
+-  char **sets = 0;
++  char **ipsets = 0, **nftsets = 0;
+   int munged = 0, is_sign;
+   unsigned int rcode = RCODE(header);
+   size_t plen; 
+@@ -571,24 +593,12 @@ static size_t process_reply(struct dns_header *header, time_t now, struct server
+ 
+ #ifdef HAVE_IPSET
+   if (daemon->ipsets && extract_request(header, n, daemon->namebuff, NULL))
+-    {
+-      /* Similar algorithm to search_servers. */
+-      struct ipsets *ipset_pos;
+-      unsigned int namelen = strlen(daemon->namebuff);
+-      unsigned int matchlen = 0;
+-      for (ipset_pos = daemon->ipsets; ipset_pos; ipset_pos = ipset_pos->next) 
+-	{
+-	  unsigned int domainlen = strlen(ipset_pos->domain);
+-	  char *matchstart = daemon->namebuff + namelen - domainlen;
+-	  if (namelen >= domainlen && hostname_isequal(matchstart, ipset_pos->domain) &&
+-	      (domainlen == 0 || namelen == domainlen || *(matchstart - 1) == '.' ) &&
+-	      domainlen >= matchlen) 
+-	    {
+-	      matchlen = domainlen;
+-	      sets = ipset_pos->sets;
+-	    }
+-	}
+-    }
++    ipsets = domain_find_sets(daemon->ipsets, daemon->namebuff);
++#endif
++
++#ifdef HAVE_NFTSET
++  if (daemon->nftsets && extract_request(header, n, daemon->namebuff, NULL))
++    nftsets = domain_find_sets(daemon->nftsets, daemon->namebuff);
+ #endif
+ 
+   if ((pheader = find_pseudoheader(header, n, &plen, &sizep, &is_sign, NULL)))
+@@ -697,7 +707,7 @@ static size_t process_reply(struct dns_header *header, time_t now, struct server
+ 	    }
+ 	}
+       
+-      if (extract_addresses(header, n, daemon->namebuff, now, sets, is_sign, check_rebind, no_cache, cache_secure, &doctored))
++      if (extract_addresses(header, n, daemon->namebuff, now, ipsets, nftsets, is_sign, check_rebind, no_cache, cache_secure, &doctored))
+ 	{
+ 	  my_syslog(LOG_WARNING, _("possible DNS-rebind attack detected: %s"), daemon->namebuff);
+ 	  munged = 1;
+diff --git a/src/nftset.c b/src/nftset.c
+new file mode 100644
+index 0000000..345ff5c
+--- /dev/null
++++ b/src/nftset.c
+@@ -0,0 +1,58 @@
++/* dnsmasq is Copyright (c) 2000-2021 Simon Kelley
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; version 2 dated June, 1991, or
++   (at your option) version 3 dated 29 June, 2007.
++ 
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++     
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++
++
++#include "dnsmasq.h"
++
++#if defined (HAVE_NFTSET) && defined (HAVE_LINUX_NETWORK)
++
++#include <nftables/libnftables.h>
++
++#include <string.h>
++#include <arpa/inet.h>
++
++static struct nft_ctx *ctx = NULL;
++static const char *cmd_add = "add element %s { %s }";
++static const char *cmd_del = "delete element %s { %s }";
++
++#define CMD_BUFFER_SIZE 2048
++static char cmd_buf[CMD_BUFFER_SIZE];
++static char addr_buf[ADDRSTRLEN + 1];
++
++void nftset_init()
++{
++  ctx = nft_ctx_new(NFT_CTX_DEFAULT);
++  if (ctx == NULL)
++    die(_("failed to create nftset context"), NULL, EC_MISC);
++
++  // disable libnftables output
++  nft_ctx_buffer_error(ctx);
++}
++
++int add_to_nftset(const char *setname, const union all_addr *ipaddr, int flags, int remove)
++{
++  const char *cmd = remove ? cmd_del : cmd_add;
++  int ret, af = (flags & F_IPV4) ? AF_INET : AF_INET6;
++
++  inet_ntop(af, ipaddr, addr_buf, ADDRSTRLEN);
++  snprintf(cmd_buf, CMD_BUFFER_SIZE, cmd, setname, addr_buf);
++
++  ret = nft_run_cmd_from_buffer(ctx, cmd_buf);
++  nft_ctx_get_error_buffer(ctx);
++  return ret;
++}
++
++#endif
+diff --git a/src/option.c b/src/option.c
+index ffce9fc..452337c 100644
+--- a/src/option.c
++++ b/src/option.c
+@@ -174,6 +174,7 @@ struct myoption {
+ #define LOPT_CMARK_ALST_EN 365
+ #define LOPT_CMARK_ALST    366
+ #define LOPT_QUIET_TFTP    367
++#define LOPT_NFTSET        368
+  
+ #ifdef HAVE_GETOPT_LONG
+ static const struct option opts[] =  
+@@ -327,6 +328,7 @@ static const struct myoption opts[] =
+     { "auth-sec-servers", 1, 0, LOPT_AUTHSFS },
+     { "auth-peer", 1, 0, LOPT_AUTHPEER }, 
+     { "ipset", 1, 0, LOPT_IPSET },
++    { "nftset", 1, 0, LOPT_NFTSET },
+     { "connmark-allowlist-enable", 2, 0, LOPT_CMARK_ALST_EN },
+     { "connmark-allowlist", 1, 0, LOPT_CMARK_ALST },
+     { "synth-domain", 1, 0, LOPT_SYNTH },
+@@ -514,6 +516,7 @@ static struct {
+   { LOPT_AUTHSFS, ARG_DUP, "<NS>[,<NS>...]", gettext_noop("Secondary authoritative nameservers for forward domains"), NULL },
+   { LOPT_AUTHPEER, ARG_DUP, "<ipaddr>[,<ipaddr>...]", gettext_noop("Peers which are allowed to do zone transfer"), NULL },
+   { LOPT_IPSET, ARG_DUP, "/<domain>[/<domain>...]/<ipset>...", gettext_noop("Specify ipsets to which matching domains should be added"), NULL },
++  { LOPT_NFTSET, ARG_DUP, "/<domain>[/<domain>...]/<nftset>...", gettext_noop("Specify nftables sets to which matching domains should be added"), NULL },
+   { LOPT_CMARK_ALST_EN, ARG_ONE, "[=<mask>]", gettext_noop("Enable filtering of DNS queries with connection-track marks."), NULL },
+   { LOPT_CMARK_ALST, ARG_DUP, "<connmark>[/<mask>][,<pattern>[/<pattern>...]]", gettext_noop("Set allowed DNS patterns for a connection-track mark."), NULL },
+   { LOPT_SYNTH, ARG_DUP, "<domain>,<range>,[<prefix>]", gettext_noop("Specify a domain and address range for synthesised names"), NULL },
+@@ -2773,13 +2776,27 @@ static int one_opt(int option, char *arg, char *errstr, char *gen_err, int comma
+       }
+ 
+     case LOPT_IPSET: /* --ipset */
++    case LOPT_NFTSET: /* --nftset */
+ #ifndef HAVE_IPSET
+-      ret_err(_("recompile with HAVE_IPSET defined to enable ipset directives"));
+-      break;
+-#else
++      if (option == LOPT_IPSET)
++        {
++          ret_err(_("recompile with HAVE_IPSET defined to enable ipset directives"));
++          break;
++        }
++#endif
++#ifndef HAVE_NFTSET
++      if (option == LOPT_NFTSET)
++        {
++          ret_err(_("recompile with HAVE_NFTSET defined to enable nftset directives"));
++          break;
++        }
++#endif
++
+       {
+ 	 struct ipsets ipsets_head;
+ 	 struct ipsets *ipsets = &ipsets_head;
++         struct ipsets **daemon_sets =
++           (option == LOPT_IPSET) ? &daemon->ipsets : &daemon->nftsets;
+ 	 int size;
+ 	 char *end;
+ 	 char **sets, **sets_pos;
+@@ -2831,12 +2848,11 @@ static int one_opt(int option, char *arg, char *errstr, char *gen_err, int comma
+ 	 *sets_pos = 0;
+ 	 for (ipsets = &ipsets_head; ipsets->next; ipsets = ipsets->next)
+ 	   ipsets->next->sets = sets;
+-	 ipsets->next = daemon->ipsets;
+-	 daemon->ipsets = ipsets_head.next;
++	 ipsets->next = *daemon_sets;
++	 *daemon_sets = ipsets_head.next;
+ 	 
+ 	 break;
+       }
+-#endif
+       
+     case LOPT_CMARK_ALST_EN: /* --connmark-allowlist-enable */
+ #ifndef HAVE_CONNTRACK
+diff --git a/src/rfc1035.c b/src/rfc1035.c
+index 6fc4f26..99dd82d 100644
+--- a/src/rfc1035.c
++++ b/src/rfc1035.c
+@@ -540,7 +540,7 @@ static int print_txt(struct dns_header *header, const size_t qlen, char *name,
+    expired and cleaned out that way. 
+    Return 1 if we reject an address because it look like part of dns-rebinding attack. */
+ int extract_addresses(struct dns_header *header, size_t qlen, char *name, time_t now, 
+-		      char **ipsets, int is_sign, int check_rebind, int no_cache_dnssec,
++		      char **ipsets, char **nftsets, int is_sign, int check_rebind, int no_cache_dnssec,
+ 		      int secure, int *doctored)
+ {
+   unsigned char *p, *p1, *endrr, *namep;
+@@ -559,6 +559,11 @@ int extract_addresses(struct dns_header *header, size_t qlen, char *name, time_t
+   int cname_short = 0;
+ #endif
+   unsigned long cttl = ULONG_MAX, attl;
++#ifdef HAVE_NFTSET
++  char **nftsets_cur;
++#else
++  (void)nftsets; /* unused */
++#endif
+   
+   cache_start_insert();
+ 
+@@ -849,6 +854,18 @@ int extract_addresses(struct dns_header *header, size_t qlen, char *name, time_t
+ 			}
+ 		    }
+ #endif
++
++#ifdef HAVE_NFTSET
++		  if (nftsets && (flags & (F_IPV4 | F_IPV6)))
++		  {
++			  nftsets_cur = nftsets;
++			  while (*nftsets_cur)
++			  {
++				  log_query((flags & (F_IPV4 | F_IPV6)) | F_NFTSET, name, &addr, *nftsets_cur);
++				  add_to_nftset(*nftsets_cur++, &addr, flags, 0);
++			  }
++		  }
++#endif
+ 		}
+ 	      
+ 	      if (insert)
+-- 
+2.33.0
+
