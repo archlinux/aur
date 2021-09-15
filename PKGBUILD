@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=creators-tf-launcher-bin
-pkgver=0.2.7
-pkgrel=2
+pkgver=0.2.8
+pkgrel=1
 pkgdesc="The community launcher from the Creators.TF project for Team Fortress 2"
 arch=('x86_64')
 url="https://github.com/CreatorsTF/Creators.TF-Community-Launcher"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3' 'c-ares' 'ffmpeg' 'libevent' 'libnghttp2' 'libxslt' 'minizip' 're2' 'snappy')
 makedepends=('tar')
 source=("https://github.com/ampersoftware/Creators.TF-Community-Launcher/releases/download/$pkgver/creators-tf-launcher_"$pkgver"_amd64.deb")
-sha512sums=('2aebf08ebb44a6db7a90942f180880e575da2fc4d5c39065dac3510cec67337de40ae3d3dc54716f93c36c4dbe672e60c85c9c6c29f21210f2ff37aff8b32068')
+sha512sums=('35d171778e71b205ff30c78b9389a97a0cacae6010aaf697c685e018d8397a806eeac555a48b8a1e051bf9cab1a65dd8df2a2d4a0df5984e075205b77ed0578d')
 conflicts=('creators-tf-launcher')
 
 prepare() {
