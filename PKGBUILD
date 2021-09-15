@@ -2,7 +2,7 @@
 # Contributor: Shiroko <hhx.xxm at gmail.com>
 pkgname=clash-for-windows
 pkgver=0.18.0
-pkgrel=0
+pkgrel=2
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64")
 url="https://github.com/Fndroid/clash_for_windows_pkg"
@@ -25,7 +25,7 @@ source=(
 sha256sums=(
     '5fb4295ae4d340bbd08914eecad5d6626dde41dcd112c372d9f426df6b88f51d'
     'SKIP'
-    'a2997f604a486e264f6fc5344164ae9e1a9a01282006a41784dd181f7d1a2913'
+    '12f6f13248a1de0249ef5fbd85bd3eae44401b98049f2fd42bdd1431edf8919e'
     )
 
 build() {
@@ -36,9 +36,8 @@ build() {
 package() {
     cd "Clash for Windows-${pkgver}-${parch}-linux"
     echo "packaging resource files as 644"
-    pwd
     find . -type f -not \( -name "cfw" -or -name "clash-linux" -or -name "clash-core-service" -or -name "chrome-sandbox" -or -name "*.sh" \) \
-        -exec install -Dm 644 {} "."/{} \;
+        -exec install -Dm 644 {} "${pkgdir}/opt/${pkgname}"/{} \;
     echo "packaging executable files as 755"
     find . -type f \( -name "cfw" -or -name "clash-linux" -or -name "clash-core-service" -or -name "chrome-sandbox" -or -name "*.sh" \) \
        -exec install -Dm 755 {} "${pkgdir}/opt/${pkgname}"/{} \;
