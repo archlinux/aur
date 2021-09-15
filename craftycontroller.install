@@ -1,6 +1,6 @@
 post_install() {
     echo "Creating user for Crafty Controller..."
-    useradd crafty -M -r -s /bin/bash -b /opt/craftycontroller
+    useradd -M -r -s /bin/bash -b /opt/craftycontroller crafty
     echo "Setting Permissions..."
     chown -R /opt/craftycontroller crafty:crafty
     echo "Creating the Python Virtual Enviorment..."
