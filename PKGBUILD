@@ -80,8 +80,8 @@ _use_current=
 pkgbase=linux-cacule-llvm
 pkgname=('linux-cacule-llvm' 'linux-cacule-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14.3
-pkgrel=2
+pkgver=5.14.4
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -384,7 +384,7 @@ prepare() {
               scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
               scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
               scripts/config --enable CONFIG_x86_AMD_PSTATE
-
+              scripts/config --enable CONFIG_ZEN_INTERACTIVE
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
     if [ -n "$_use_current" ]; then
@@ -550,7 +550,7 @@ package_linux-cacule-llvm-headers() {
 
 }
 
-md5sums=('b45b18effd1af9077de47f4bc496d2ab'
+md5sums=('3208dd1c05a8542865a1795cdc5b8cec'
          '5719aaff140940871b91575b30114155'
          '54e7291aee96376a49ab3ba74d3e47f0'
          '40a9380b2884f5d417791f06389ba57e'
