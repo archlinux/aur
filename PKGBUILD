@@ -12,6 +12,7 @@ depends=(
 'gtk4>=4.3.0'
 gobject-introspection
 libpanel
+libadwaita
 )
 makedepends=(
 meson

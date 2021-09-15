@@ -11,8 +11,8 @@ pkgbase = drafting-git
 	depends = gtk4>=4.3.0
 	depends = gobject-introspection
 	depends = libpanel
+	depends = libadwaita
 	source = git+https://gitlab.gnome.org/chergert/drafting.git
 	md5sums = SKIP
 
 pkgname = drafting-git
-
