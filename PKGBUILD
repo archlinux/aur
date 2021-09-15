@@ -15,7 +15,8 @@ pkgver() {
 }
 
 package() {
-        cd "${pkgname}"
-        make DESTDIR="$pkgdir" install
+#        cd "${pkgname}"
+#        make DESTDIR="$pkgdir" install
+         echo "broken do not use"
 }
 
