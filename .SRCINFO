@@ -1,0 +1,15 @@
+pkgbase = python-bottle-websocket
+	pkgdesc = Adds websocket capabilities to bottle, leveraging gevent-websocket and gevent.
+	pkgver = v0.2.9
+	pkgrel = 1
+	url = https://github.com/zeekay/bottle-websocket
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-bottle
+	depends = python-gevent
+	depends = python-gevent-websocket
+	source = python-bottle-websocket-v0.2.9.tar.gz::https://github.com/zeekay/bottle-websocket/archive/v0.2.9.tar.gz
+	sha512sums = e57ffcee8d1bf0f75ebe9e5c4679ebe63d4ab3da31556f217e3849084ae3a69fb5bc05a978484dee7dd8d6822c0d4cff2c68b494d7ad7b075bd0accde2aa4c1a
+
+pkgname = python-bottle-websocket
