@@ -7,6 +7,7 @@ This is a terminal application to play the game of Sudoku.
 ### Prerequisites
 
 - ncurses
+- dialog for filechoosing
 
 ### Makefile
 

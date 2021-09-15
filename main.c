@@ -45,15 +45,27 @@ char* gen_sudoku;
 int editing_notes = 0;
 int* notes;
 
-char* filename;
 int attempts = ATTEMPTS_DEFAULT;
 int gen_visual = 0;
 int from_file = 0;
 int small_mode = 0;
 
+char* filename;
+char* filepath;
+char* sharepath = ".local/share/term-sudoku";
+char* home_dir;
+
 int main(int argc, char **argv){
+	struct passwd *pw = getpwuid(getuid());
+	home_dir = pw->pw_dir;
+	// Create (if not already created) the term-sudoku directory in the .local/share directory
+	char* mkdir_command = malloc(STR_LEN * sizeof(char));
+	sprintf(mkdir_command, "mkdir -p %s/%s", home_dir, sharepath);
+	system(mkdir_command);
+	free(mkdir_command);
+
 	int c;
-	while ((c = getopt (argc, argv, "hsvf:n:")) != -1)
+	while ((c = getopt (argc, argv, "hsvfn:")) != -1)
 	switch (c)
 	{
 	case 'h':
@@ -63,7 +75,7 @@ int main(int argc, char **argv){
 				"-h: display this information\n"
 				"-s: small mode (disables noting numbers)\n"
 				"-v: generate the sudoku visually\n"
-				"-f: FILE: use a file as the sudoku\n"
+				"-f: list save games and use a selected file as the sudoku\n"
 				"-n: NUMBER: numbers to try and remove (default: %d)\n\n"
 				"controls:\n"
 				"%s", ATTEMPTS_DEFAULT, controls);
@@ -73,7 +85,6 @@ int main(int argc, char **argv){
 		break;
 	case 'f':
 		from_file = 1;
-		filename = optarg;
 		break;
 	case 'n':
 		attempts = strtol(optarg, NULL, 10);	
@@ -88,6 +99,87 @@ int main(int argc, char **argv){
 		return 1;
 	default:
 		return 1;
+	}
+
+	//--- USER INIT LOGIC ---
+	
+	//Initialize time and seed random
+	time_t t = time(NULL);
+	srand((unsigned) time(&t));
+
+	user_nums = malloc((SUDOKU_LEN + 1) * sizeof(char));
+	user_nums[SUDOKU_LEN] = '\0';
+
+	notes = malloc(SUDOKU_LEN * LINE_LEN * sizeof(int));
+	notes[SUDOKU_LEN * LINE_LEN] = '\0';
+
+	statusbar = malloc(30 * sizeof(char));
+	
+	if(from_file){
+		filepath = malloc(STR_LEN * sizeof(char));
+		char* dir = malloc(STR_LEN * sizeof(char));
+		sprintf(dir, "%s/%s/", home_dir, sharepath);
+
+		FILE* log = fopen("log", "w");
+
+		char* temp_filename = "temp.tmp";
+
+		FILE* temp_write = fopen(temp_filename, "w");
+		fclose(temp_write);
+
+		char* command = malloc(STR_LEN * STR_LEN * sizeof(char));
+		sprintf(command, "dialog --title 'Use Space to autocomplete, Enter to confirm' --fselect %s 100 100 2>%s", dir, temp_filename);
+		system(command);
+		system("clear");
+		free(command);
+
+		FILE* temp_read = fopen(temp_filename, "r");
+		fscanf(temp_read, "%s", filepath);
+		fclose(temp_read);
+		remove(temp_filename);
+
+		fprintf(log, "%s\n", filepath);
+		fclose(log);
+		sudoku_str = malloc((SUDOKU_LEN + 1) * sizeof(char));
+
+		//Read Sudoku from given file
+		FILE* input_file = fopen(filepath, "r");
+		if(input_file == NULL)
+			finish_with_err_msg("Error accessing file\n");
+
+		fscanf(input_file, "%s\n%s\n", sudoku_str, user_nums);
+		for(int i = 0; i < SUDOKU_LEN * LINE_LEN; i++)
+			fscanf(input_file, "%1d", &notes[i]);
+		fclose(input_file);
+
+		sudoku_str[SUDOKU_LEN] = '\0';
+
+		sprintf(statusbar, "%s", "File opened");
+	}else{
+		//localtime struct for file name
+		struct tm tm = *localtime(&t);
+
+		filename = malloc(STR_LEN * sizeof(char));
+		sprintf(filename, "%4d%02d%02d%02d%02d%02d%s", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, ".sudoku");
+
+		gen_sudoku = malloc((SUDOKU_LEN + 1) * sizeof(char));
+		gen_sudoku[SUDOKU_LEN] = '\0';
+
+		if(gen_visual)
+			curs_set(0);
+		generate_sudoku();
+		if(gen_visual)
+			curs_set(1);
+
+		sudoku_str = gen_sudoku;
+
+		for(int i = 0; i < SUDOKU_LEN; i++)
+			user_nums[i] = '0';
+
+		for(int i = 0; i < SUDOKU_LEN * LINE_LEN; i++)
+			notes[i] = 0;
+
+		sprintf(statusbar, "%s", "Sudoku generated");
 	}
 
 	//--- CURSES INIT LOGIC ---
@@ -112,62 +204,6 @@ int main(int argc, char **argv){
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
 	init_pair(2, COLOR_BLUE, COLOR_BLACK);
 	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
-
-	//--- USER INIT LOGIC ---
-	
-	//Initialize time and seed random
-	time_t t = time(NULL);
-	srand((unsigned) time(&t));
-
-	user_nums = malloc((SUDOKU_LEN + 1) * sizeof(char));
-	user_nums[SUDOKU_LEN] = '\0';
-
-	notes = malloc(SUDOKU_LEN * LINE_LEN * sizeof(int));
-	notes[SUDOKU_LEN * LINE_LEN] = '\0';
-
-	statusbar = malloc(30 * sizeof(char));
-	
-	if(from_file){
-		sudoku_str = malloc((SUDOKU_LEN + 1) * sizeof(char));
-		//Read Sudoku from given file
-		FILE* input_file = fopen(filename, "r");
-		if(input_file == NULL)
-			finish_with_err_msg("Error accessing file\n");
-
-		fscanf(input_file, "%s\n%s\n", sudoku_str, user_nums);
-		for(int i = 0; i < SUDOKU_LEN * LINE_LEN; i++)
-			fscanf(input_file, "%1d", &notes[i]);
-		fclose(input_file);
-
-		sudoku_str[SUDOKU_LEN] = '\0';
-
-		sprintf(statusbar, "%s", "File opened");
-	}else{
-		//localtime struct for file name
-		struct tm tm = *localtime(&t);
-
-		filename = malloc(30 * sizeof(char));
-		sprintf(filename, "%4d%02d%02d%02d%02d%02d%s", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, ".sudoku");
-
-		gen_sudoku = malloc((SUDOKU_LEN + 1) * sizeof(char));
-		gen_sudoku[SUDOKU_LEN] = '\0';
-
-		if(gen_visual)
-			curs_set(0);
-		generate_sudoku();
-		if(gen_visual)
-			curs_set(1);
-
-		sudoku_str = gen_sudoku;
-
-		for(int i = 0; i < SUDOKU_LEN; i++)
-			user_nums[i] = '0';
-
-		for(int i = 0; i < SUDOKU_LEN * LINE_LEN; i++)
-			notes[i] = 0;
-
-		sprintf(statusbar, "%s", "Sudoku generated");
-	}
 
 	cursor.x = 0;
 	cursor.y = 0;
@@ -539,7 +575,12 @@ void generate_visually(char* sudoku_to_display){
 
 //Write changed values back to file
 int savestate(){
-	FILE* savestate = fopen(filename, "w");
+	if(filepath == NULL){
+		filepath = malloc(STR_LEN * sizeof(char));
+		sprintf(filepath, "%s/%s/%s", home_dir, sharepath, filename);
+	}
+
+	FILE* savestate = fopen(filepath, "w");
 
 	if(savestate == NULL)
 		return 0;

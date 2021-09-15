@@ -23,11 +23,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
+#include <sys/types.h>
+#include <pwd.h>
+#include <dirent.h>
 
 #define LINE_LEN 9
 #define SUDOKU_LEN 81
 #define ATTEMPTS_DEFAULT 5
 #define VISUAL_SLEEP 10000
+#define STR_LEN 80
 
 struct cursor;
 struct sudoku_cell_props;
@@ -54,3 +58,4 @@ void read_notes();
 int savestate();
 void finish(int sig);
 void finish_with_err_msg(char* msg);
+char* listfiles(char* dir);

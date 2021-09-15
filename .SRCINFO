@@ -5,10 +5,10 @@ pkgbase = term-sudoku
 	url = https://github.com/theeyeofcthulhu/term-sudoku
 	arch = any
 	license = GPL
-	makedepends = ncurses
 	makedepends = git
+	depends = ncurses
+	depends = dialog
 	source = git://github.com/theeyeofcthulhu/term-sudoku
 	sha1sums = SKIP
 
 pkgname = term-sudoku
-

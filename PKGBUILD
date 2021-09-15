@@ -5,7 +5,8 @@ pkgdesc='Play sudoku in your terminal.'
 arch=('any')
 url='https://github.com/theeyeofcthulhu/term-sudoku'
 license=('GPL')
-makedepends=('ncurses' 'git')
+makedepends=('git')
+depends=('ncurses' 'dialog')
 source=('git://github.com/theeyeofcthulhu/term-sudoku')
 sha1sums=('SKIP')
 
