@@ -1,17 +1,17 @@
 # Maintainer: sem.z <sem.z@protonmail.com>
 
 pkgname=wine-wl-git
-pkgver=wine.6.0.rc1.r3235.g63919e4d631
+pkgver=wine.6.0.rc1.r5959.g18eb84818ec
 pkgrel=1
 
-source=(git+https://gitlab.collabora.com/alf/wine.git/#branch=wip
+source=(git+https://gitlab.collabora.com/alf/wine.git/#branch=wayland-staging-wip
         30-win32-aliases.conf
         wine-binfmt.conf)
 sha512sums=('SKIP'
         '6200d75042a5993294ee58583fa9d145e46a36bcc2a38ddae92482366aaf67423b160556f748cd85d3ee1c521c497488810bdc0b79e192742f83ae49e7f55938'
         '0ae5202b0ec9b4b1437f8c19f6e5f9c8ed32ef5d112f87c2bebdad62dcc60cdc0016fb9fbf911773bfab0701bc7481e686a06d2a25c9127895b7bc2dde2f2035')
 
-pkgdesc="A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wip branch)"
+pkgdesc="A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wayland-staging-wip branch)"
 url="http://www.winehq.com"
 arch=(x86_64)
 options=(staticlibs)
