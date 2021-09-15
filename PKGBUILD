@@ -1,8 +1,8 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.24.10
-pkgrel=2
+pkgver=0.25.4
+pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
 url='https://github.com/dokku/dokku'
@@ -29,6 +29,7 @@ depends=(
   'parallel'
   'plugn'
   'procfile-util'
+  'rsync'
   'rsyslog'
   'sudo'
   'sshcommand'
@@ -37,10 +38,12 @@ depends=(
 source=("https://github.com/dokku/dokku/archive/v$pkgver.zip"
         "$pkgname.install"
         "crontab_calls.patch"
+        "systemd_calls.patch"
         "LICENSE")
-sha256sums=('bed55e2f3d0b037a62599a528dace16083e528428277d8ab03a25041d8a7a2eb'
-            'dd7ca19339e18f8434ca74faeb994ae8446cb3ccf020e558eaa340ad1f72effe'
+sha256sums=('0048a0629ee2bf3afb15143cceda1953cc4ef335f0e29b64566578d5febdb75c'
+            '5b3e99b6be28f8c68e024d9127992bcd49c758566a6ecaa15f9788a411eab0f0'
             '88fae4d0578b9badaa91d1d4771952b4c7560ba2f56f4eda990034078a44431e'
+            'c600fefea1c93e9f94192741adc679fb0a05674775d3677954f10db4e09205c6'
             'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
 install="$pkgname.install"
 
@@ -56,6 +59,9 @@ build() {
 
   # Fix issue on crontab calls with arch linux cron implementation
   patch -p1 -i "${srcdir}/crontab_calls.patch"
+
+  # Fix issue with invalid service manager call for arch linux
+  patch -p1 -i "${srcdir}/systemd_calls.patch"
 
   # Add .core and build go plugins
   for plugin in plugins/*; do

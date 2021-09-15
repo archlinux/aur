@@ -1,5 +1,4 @@
 #!/bin/bash
-
 readonly DOKKU_ROOT="${DOKKU_ROOT:-/home/dokku}"
 readonly DOKKU_LIB_ROOT="${DOKKU_LIB_PATH:-/var/lib/dokku}"
 readonly DOKKU_LOGS_DIR="${DOKKU_LOGS_DIR:-/var/log/dokku}"
@@ -49,8 +48,8 @@ setup-plugins() {
   chown dokku:dokku -R "${DOKKU_LIB_ROOT}/plugins" "${DOKKU_LIB_ROOT}/core-plugins"
 
   echo "Install all core plugins"
-  dokku plugin:install-dependencies --core
-  dokku plugin:install --core
+  # dokku plugin:install-dependencies --core # Disabled since not usefull and pacman lock error
+  dokku plugin:install --core 0>/dev/null
   rm -f /etc/update-motd.d/99-dokku
 
   sed -i 's/ syslog dokku$/ root dokku/g' /etc/logrotate.d/dokku

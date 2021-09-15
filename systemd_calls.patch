@@ -1,0 +1,11 @@
+--- a/plugins/20_events/install	2021-09-10 15:49:02.645000000 +0200
++++ b/plugins/20_events/install	2021-09-06 20:04:19.000000000 +0200
+@@ -78,7 +78,7 @@
+   fi
+
+   if [[ -f "$DOKKU_RSYSLOG_FILTER" && "$flag_rsyslog_needs_restart" == "y" ]]; then
+-    service rsyslog restart
++    systemctl restart rsyslog
+   fi
+
+   [[ ! "$DOKKU_EVENTS" ]] || dokku_log_plugn_trigger_call "$(basename "$0")" "$@"
