@@ -1,11 +1,11 @@
 pkgbase = dart-sass
 	pkgdesc = Sass makes CSS fun again (canonical implementation)
 	pkgver = 1.41.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sass-lang.com/
 	arch = x86_64
 	license = MIT
-	makedepends = dart>=2.6.0
+	makedepends = dart>=2.14.0
 	provides = sass
 	conflicts = ruby-sass
 	options = !strip
