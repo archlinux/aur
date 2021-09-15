@@ -7,7 +7,7 @@ post_install() {
     
     chown -R crafty:crafty '/opt/craftycontroller'
     
-    echo 'Creating the Python Virtual Enviorment..."
+    echo 'Creating the Python Virtual Enviorment...'
     
     cd '/opt/craftycontroller'
     
