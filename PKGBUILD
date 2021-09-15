@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=1.5.2
+pkgver=.5.3
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
@@ -24,7 +24,7 @@ build() {
     cd "$srcdir/v2rayA-$pkgver/service"
     export GO111MODULE=on
     export GOPROXY=https://goproxy.io
-    go build -ldflags '-X github.com/v2rayA/v2rayA/global.Version='$pkgver' -s -w' -o v2raya
+    go build -ldflags '-X github.com/v2rayA/v2rayA/conf.Version='$pkgver' -s -w' -o v2raya
 }
 
 package() {
