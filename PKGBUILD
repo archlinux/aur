@@ -1,6 +1,6 @@
 # Maintainer: chn <g897331845@gmail.com>
 pkgname=xtensor-fftw
-pkgver=0.2.3
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="FFTW bindings for the xtensor C++14 multi-dimensional array library"
 arch=('any')
@@ -25,4 +25,4 @@ package() {
 	cd "${pkgname}-${pkgver}/build"
   make install
 }
-sha512sums=('db947fd162a88b716ff85dadf58d2fcb82d1ffc058b1484322d9978d9c74d68209e0b9e626238027b01e8bb0b45bf221365c2d8319acdb3361c65471322ee3d9')
+sha512sums=('278676eb92767677622bac961b65be599804ea86eba4df4cd72f237f9c9f8f2d20b7daec045bde6c09d7c72e29f5c5e01e6abda7350ac706543f34434c8d40f2')
