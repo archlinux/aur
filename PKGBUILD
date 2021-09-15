@@ -1,7 +1,8 @@
-# Maintainer: ml <>
+# Maintainer: Justin Kromlinger <hashworks@archlinux.org>
+# Contributor: ml <>
 # Contributor: Fredy García <frealgagu at gmail dot com>
 pkgname=kaniko
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Build Container Images In Kubernetes'
 arch=('x86_64')
@@ -11,7 +12,7 @@ depends=('glibc')
 optdepends=('bash: run_in_docker.sh script')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ef0611aff3aec45f010d56a4d528cc48fceaa42c2c997e4e1b5ef1ad1bb53699')
+sha256sums=('114b9de0c32a4196f835bc104e1b606743fa64afac06615552ba4fa36ec27f5f')
 
 build() {
   cd "$pkgname-$pkgver"
