@@ -1,11 +1,12 @@
 pkgbase = anvill
 	pkgdesc = Forge beautiful LLVM bitcode out of raw machine code
 	pkgver = 0.1.39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lifting-bits/anvill
 	arch = x86_64
 	license = AGPL3
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = python-setuptools
 	depends = cxx-common=0.1.4
 	depends = remill

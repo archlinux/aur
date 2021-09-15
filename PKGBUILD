@@ -2,13 +2,13 @@
 
 pkgname=anvill
 pkgver=0.1.39
-pkgrel=1
+pkgrel=2
 pkgdesc="Forge beautiful LLVM bitcode out of raw machine code"
 arch=('x86_64')
 url="https://github.com/lifting-bits/anvill"
 license=('AGPL3')
 depends=('cxx-common=0.1.4' 'remill' 'python' 'libunwind')
-makedepends=('cmake' 'python-setuptools')
+makedepends=('cmake' 'ninja' 'python-setuptools')
 source=("https://github.com/lifting-bits/anvill/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('df0f3062807d2476ddcd58a33760c2d9ae14027a113562863c1603688faa356c')
 
@@ -22,22 +22,22 @@ build() {
     mkdir -p build && cd build
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_VERBOSE_MAKEFILE=True \
         -DANVILL_ENABLE_INSTALL_TARGET=True \
         -DANVILL_ENABLE_TESTS=True \
         -DVCPKG_ROOT="/opt/cxx-common" \
+        -G Ninja \
         "$srcdir/$pkgname-$pkgver"
-    make
+    cmake --build .
 }
 
-check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    cmake --build build --target test
-}
+#check() {
+#    cd "$srcdir/$pkgname-$pkgver"
+#    cmake --build build --target test
+#}
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/build"
-    make DESTDIR="${pkgdir}" install
+    cd "$srcdir/$pkgname-$pkgver"
+    DESTDIR="${pkgdir}" cmake --build build --target install
 }
 
 # vim: set sw=4 ts=4 et:
