@@ -3,7 +3,7 @@
 
 _pkgname=nuclei
 pkgname="${_pkgname}-bin"
-pkgver=2.4.3
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use'
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -16,10 +16,10 @@ source=("LICENSE.md::https://github.com/projectdiscovery/nuclei/raw/master/LICEN
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
 source_armv6h=("${_pkgname}-${pkgver}-armv6.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.zip")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.zip")
-sha256sums=('cbcdaab87df3175107aa28915bd253cebdd618a49c9ac5d6c669c0b1cbebcacb')
-sha256sums_x86_64=('da13f91fc97be0575536361140cf5ca58286d887eb0f8425c89cdeabb3e1b688')
-sha256sums_armv6h=('d9fa281cdadb2fca8461887c8070891ccd080ccd9fb90a6d6134304fc7c8a997')
-sha256sums_aarch64=('bdee80a9c4b7e66587bcf84592a670db22d663ed2b509020ea69e02594c112d6')
+b2sums=('8d39c5fdf160392eb735ae19d5dcb9227c32d6ead9aa9b0f9b59b0b45be63c42412da9b0c97cc7f33a24b16fdcd982f470dab65742849d229f6e43b2d845e758')
+b2sums_x86_64=('06158e3695bba942282780ad54f3124df5bed9c815a2e9ed1ae453cb59562ef80f77ba8276dc6f3d16fe68485e0c0b7a7053c967face15a74bd8861174fc56f3')
+b2sums_armv6h=('43f0c09755757aee8c569eb0ceee7a31d496a03f5041d0099102cc918b56756281432bdb44a4a04de8e0ab5d2f68846ec2a746563c030e7601a2690865c54110')
+b2sums_aarch64=('c75b41abd80d6823ba3421fc661da069a83f97b175149857eeb0865ebb369238a0c02ee3467b777a829047501709c01069d16977e7e8e292568a526ebad0145e')
 
 package() {
   install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
