@@ -3,6 +3,7 @@ pkgbase = craftycontroller-git
 	pkgver = 3.3.0.r9.gc63984a
 	pkgrel = 1
 	url = https://craftycontrol.com/
+	install = craftycontroller.install
 	arch = x86_64
 	license = GPL
 	makedepends = git

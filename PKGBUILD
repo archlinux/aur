@@ -11,6 +11,7 @@ depends=('python' 'python-pip' 'java-runtime=8' 'python-argon2_cffi' 'python-ble
 makedepends=('git')
 provides=("$pkgname" "$_pkgname")
 conflicts=("$_pkgname")
+install="$_pkgname.install"
 source=("$_pkgname"::"git+https://gitlab.com/crafty-controller/crafty-web.git"
 "$_pkgname.install"
 "$_pkgname.service"
