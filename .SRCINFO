@@ -1,6 +1,6 @@
 pkgbase = opendnssec
 	pkgdesc = Turn-key solution for DNSSEC
-	pkgver = 2.1.9
+	pkgver = 2.1.10
 	pkgrel = 1
 	url = http://www.opendnssec.org/
 	install = opendnssec.install
@@ -14,19 +14,19 @@ pkgbase = opendnssec
 	backup = etc/opendnssec/conf.xml
 	backup = etc/opendnssec/kasp.xml
 	backup = etc/opendnssec/zonelist.xml
-	source = http://www.opendnssec.org/files/source/opendnssec-2.1.9.tar.gz
+	source = http://www.opendnssec.org/files/source/opendnssec-2.1.10.tar.gz
 	source = pid-path.patch
 	source = 2.0-migrator.patch
 	source = ods-signer.service
 	source = ods-enforcer.service
 	source = opendnssec.tmpfiles
-	sha1sums = 2b8a065d0b86d860fdb59af3da377156037ce722
+	sha1sums = 450313b710434d1d7531b5eb5c28a475646a49fb
 	sha1sums = 72bff87f9a2900e24921451f35716b8a94fcf695
 	sha1sums = 04e8bf7504cf728b2c3744d19295a63839dd61ca
 	sha1sums = 2a4fac3a16fea3f89b281f0933b6920524978d49
 	sha1sums = fa28111fdce06c389813ff6ed2d4cae136252488
 	sha1sums = f10d783b3e0232fd3beff645a07207c161371d0c
-	sha256sums = 6d1d466c8d7f507f3e665f4bfe4d16a68d6bff9d7c2ab65f852e2b2a821c28b5
+	sha256sums = c0a8427de241118dccbf7abc508e4dd53fb75b45e9f386addbadae7ecc092756
 	sha256sums = d11f75881ddf9f6b753b6179ec039ee3a77bb55baa7bef183af239de3e6db073
 	sha256sums = 1a7f604364c050f7206ba893d109db5851c60cb5b000bd282ac55b81d8ff14ca
 	sha256sums = 596d238ad219de1c88f79fd26a8b829250bf0512a308b34c11fd231d0b4eb0f4
@@ -34,4 +34,3 @@ pkgbase = opendnssec
 	sha256sums = 28a43d8d5ee512db5425c86bdba9c5832753dce0260291958b1b73253e3ebf55
 
 pkgname = opendnssec
-
