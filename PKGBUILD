@@ -32,5 +32,5 @@ package() {
   cp -r * "$pkgdir"/opt/craftycontroller/
   mkdir -p "$pkgdir"/etc/systemd/system/
   cp "$srcdir"/"$_pkgname.service" "$pkgdir"/etc/systemd/system/
-  install -m774 -o crafty "$srcdir"/"start.sh" "$pkgdir"/opt/craftycontroller/
+  install -m774 "$srcdir"/"start.sh" "$pkgdir"/opt/craftycontroller/
 }
