@@ -1,16 +1,16 @@
 pkgbase = mongosh-bin
 	pkgdesc = An interactive shell to connect with MongoDB with syntax highlighting, autocomplete, contextual help and error messages.
-	pkgver = 1.0.5
-	pkgrel = 2
+	pkgver = 1.0.6
+	pkgrel = 1
 	url = https://github.com/mongodb-js/mongosh.git
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	depends = xz
 	depends = krb5
-	source_x86_64 = https://downloads.mongodb.com/compass/mongosh-1.0.5-linux-x64.tgz
+	source_x86_64 = https://downloads.mongodb.com/compass/mongosh-1.0.6-linux-x64.tgz
 	sha256sums_x86_64 = 0e47c60e99dbfb2cc55696a384bd8d23e03df0026ea629e27ceef40e7f0d1770
-	source_aarch64 = https://downloads.mongodb.com/compass/mongosh-1.0.5-linux-arm64.tgz
+	source_aarch64 = https://downloads.mongodb.com/compass/mongosh-1.0.6-linux-arm64.tgz
 	sha256sums_aarch64 = 21aa0655de4af6eeb01e4d8019f7cebbb7fa24743a3092d2f4628a92d5a0811b
 
 pkgname = mongosh-bin
