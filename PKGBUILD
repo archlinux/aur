@@ -1,7 +1,7 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2021.2.1
+pkgver=2021.2.2
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
@@ -9,15 +9,14 @@ url='https://www.jetbrains.com/pycharm/'
 conflicts=('pycharm' 'pycharm-community-edition')
 provides=('pycharm')
 license=('custom')
-backup=("opt/$pkgname/bin/pycharm.vmoptions"
-        "opt/$pkgname/bin/pycharm64.vmoptions"
+backup=("opt/$pkgname/bin/pycharm64.vmoptions"
         "opt/$pkgname/bin/idea.properties")
 depends=('giflib' 'glibc' 'sh' 'libxtst' 'libxslt' 'libxss' 'nss' 'python' 'libdbusmenu-glib')
 source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('828798b73eda6df7ab081dfbbf896ef4e311d9d695a61b4ec010b651729b096a'
+sha256sums=('a6dc59213bdd728b628f14179e3da271eea2344cced8ee50be71582392abf555'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
             '43d05c8bebe48eaa0489f739387c58ad919b2f07a2d9003c8e6fb1cc309e3af2')
