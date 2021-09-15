@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = adapta-gtk-theme
+
+[Action]
+Description = Changing Adapta Nokto Cinnamon font to Cantarell...
+When = PostTransaction
+Depends = patch
+
+Exec = /usr/bin/patch -d/ -p0 -Nr- -i /usr/share/adapta-nokto-cinnamon-cantarell/cinnamon.css.patch
