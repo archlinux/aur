@@ -1,6 +1,6 @@
 pkgbase = xaskpass
 	pkgdesc = A lightweight passphrase dialog
-	pkgver = 2.0.0.beta
+	pkgver = 1.8.7
 	pkgrel = 1
 	url = https://github.com/user827/xaskpass.git
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = xaskpass
 	makedepends = rust
 	makedepends = cargo
 	makedepends = clang
+	makedepends = jq
 	depends = libxcb
 	depends = pango
 	depends = cairo
@@ -16,7 +17,7 @@ pkgbase = xaskpass
 	depends = libxkbcommon-x11
 	provides = x11-ssh-askpass
 	options = strip
-	source = xaskpass::git+https://github.com/user827/xaskpass.git#tag=v2.0.0.beta?signed
+	source = xaskpass::git+https://github.com/user827/xaskpass.git#tag=v1.8.7?signed
 	validpgpkeys = D47AF080A89B17BA083053B68DFE60B7327D52D6
 	sha256sums = SKIP
 
