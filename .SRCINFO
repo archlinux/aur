@@ -1,7 +1,7 @@
 pkgbase = dnsdist
 	pkgdesc = Highly DNS-, DoS- and abuse-aware loadbalancer
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.6.1
+	pkgrel = 1
 	url = https://dnsdist.org/
 	arch = x86_64
 	license = GPL2
@@ -20,15 +20,12 @@ pkgbase = dnsdist
 	depends = openssl
 	depends = re2
 	depends = tinycdb
-	source = https://downloads.powerdns.com/releases/dnsdist-1.6.0.tar.bz2
-	source = https://downloads.powerdns.com/releases/dnsdist-1.6.0.tar.bz2.asc
-	source = fix_missing_mutex_header.patch::https://github.com/PowerDNS/pdns/commit/65bb0ab32a449d8fb8cf9a4802d16ba4912d9fc4.patch
+	source = https://downloads.powerdns.com/releases/dnsdist-1.6.1.tar.bz2
+	source = https://downloads.powerdns.com/releases/dnsdist-1.6.1.tar.bz2.asc
 	source = sysusers.conf
 	validpgpkeys = D6300CABCBF469BBE392E503A208ED4F8AF58446
 	sha512sums = f6a1676c431d5622af075bc184c9f82b4ea0bb40ec84797a8fe835804f91bc0a93a745495f193bb52f3a5204ec0e98ed41bc206c997d1f5b13e872bb31747b0f
 	sha512sums = SKIP
-	sha512sums = 16df904132e4d872d5848a52d2a2058ca22e4b6b5988208033cdc400924ffdb26d8ac08212229a3df3ac8a13ded491f7beef00f9c10dca18892d55bbdd739d08
 	sha512sums = d55ccd612cbe08b353815027d30a3b0f0ec7bf6b0d74a0a634939be53ce6e6b41d23e54c2328946f00738c03e9f306ce4f2dabe5e4b11d9fb28d0abf49917893
 
 pkgname = dnsdist
-
