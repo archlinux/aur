@@ -1,11 +1,12 @@
 pkgbase = st-opinionated
 	pkgdesc = simple terminal with some opinionated picked patches
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://st.suckless.org/
 	arch = any
 	license = custom
-	depends = harfbuzz
+	depends = libx11
+	depends = libxft
 	source = https://st.suckless.org/patches/desktopentry/st-desktopentry-0.8.4.diff
 	source = https://st.suckless.org/patches/bold-is-not-bright/st-bold-is-not-bright-20190127-3be4cf1.diff
 	source = https://st.suckless.org/patches/csi_22_23/st-csi_22_23-0.8.4.diff
