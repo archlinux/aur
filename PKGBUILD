@@ -15,7 +15,7 @@ depends=("nss" "alsa-lib" "libxss" "libxtst" "libglvnd" "pango" "libxcursor" "db
 makedepends=("cmake" "make")
 provides=("cef")
 conflicts=("cef-standard" "cef-git")
-cdn_build_package_url="https://cef-builds.spotifycdn.com/"
+cdn_build_package_url="https://cef-builds.spotifycdn.com"
 
 source_i686=(
   "${cdn_build_package_url}/cef_binary_${_url_pkgver}_linux32_minimal.tar.bz2"
