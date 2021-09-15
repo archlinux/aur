@@ -3,10 +3,10 @@
 
 pkgname=ctree-git
 pkgver=1.0.1.r0.g5d010dc
-pkgrel=1
+pkgrel=2
 pkgdesc="A Christmas tree right from your terminal (git)"
 arch=('x86_64')
-url="https://github.com/Matt-Gleich/ctree"
+url="https://github.com/gleich/ctree"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
