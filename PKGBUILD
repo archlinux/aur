@@ -19,7 +19,7 @@ source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/vozlt/nginx-module-vts/archive/v$pkgver.tar.gz
 )
 
-sha256sums=('31771c560e46d73650568e8193cb94d981081f83dd62d1ba43af1a1e0ba25185'
+sha256sums=('14774aae0d151da350417efc4afda5cce5035056e71894836797e1f6e2d1175a'
             '17ea41d4083f6d1ab1ab83dad9160eeca66867abe16c5a0421f85a39d7c84b65')
 
 build() {
