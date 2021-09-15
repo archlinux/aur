@@ -75,8 +75,8 @@ _use_current=
 pkgbase=linux-cacule-rdb
 pkgname=('linux-cacule-rdb' 'linux-cacule-rdb-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14.3
-pkgrel=2
+pkgver=5.14.4
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -526,7 +526,7 @@ package_linux-cacule-rdb-headers() {
 
 }
 
-md5sums=('b45b18effd1af9077de47f4bc496d2ab'
+md5sums=('3208dd1c05a8542865a1795cdc5b8cec'
          '977445ce9e8e94e9c9a9113758fcad5a'
          '54e7291aee96376a49ab3ba74d3e47f0'
          '024a0126cfcd18e000a2241f35c4d69e'
