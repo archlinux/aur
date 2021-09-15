@@ -1,0 +1,16 @@
+[Unit]
+Description=Crafty Controller
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=3
+User=crafty
+WorkingDirectory=/opt/craftycontroller/
+ExecStart="/opt/craftycontroller/start.sh"
+
+[Install]
+WantedBy=multi-user.target
+

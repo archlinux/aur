@@ -1,0 +1,29 @@
+post_install() {
+    echo "Creating user for Crafty Controller..."
+    useradd crafty -M -r -s /bin/bash -b /opt/craftycontroller
+    echo "Setting Permissions..."
+    chown -R /opt/craftycontroller crafty:crafty
+    echo "Creating the Python Virtual Enviorment..."
+    python3 -m venv craftycontroller
+    echo "Warning: About to run first-time Launch!"
+    echo
+    echo "Prepare for prompt, for first-time configuration!"
+    echo "Crafty Controller/Crafty Web, is located at: /opt/craftycontroller"
+    echo
+    echo "Starting..."
+    echo "3..."
+    echo "2..
+    echo "1."
+    sudo -u crafty ./opt/craftycontroller/start.sh && success=1 & exit 0 
+    if [ ! -z $success ]; then
+        success=0
+    fi
+    if [ "$success" == "0" ]; then
+        echo "Initialisation failed; Please run /opt/craftycontroller/start.sh as 'crafty' user."
+    fi
+}
+
+post_remove() {
+    echo "Removing Crafty User"
+    userdel crafty
+}
