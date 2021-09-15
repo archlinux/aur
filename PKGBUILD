@@ -1,4 +1,5 @@
 # Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=eclipse-java
 epoch=2
@@ -6,11 +7,10 @@ pkgver=4.20
 pkgrel=1
 _release=2021-06/R
 pkgdesc="Highly extensible IDE (Java version)"
-arch=(x86_64)
+arch=('x86_64')
 url="https://www.eclipse.org/"
 license=('EPL')
 depends=('java-environment>=11' webkit2gtk unzip)
-makedepends=()
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
 
@@ -23,15 +23,15 @@ sha512sums=('4047a3b89d577689ad5e78959d85843638d04145af4c24173d0567cbf7642d2e5fa
 backup=('usr/lib/eclipse/eclipse.ini')
 
 package() {
-    install -d "${pkgdir}/usr/lib"
-    cp -r "eclipse" "${pkgdir}/usr/lib/eclipse"
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/eclipse/eclipse" "${pkgdir}/usr/bin/eclipse"
-
-    install -Dm644 "eclipse.desktop" "${pkgdir}/usr/share/applications/eclipse.desktop"
-
-    for i in 16 22 24 32 48 64 128 256 512 1024 ; do
-        install -Dm644 eclipse/plugins/org.eclipse.platform_*/eclipse$i.png \
-            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/eclipse.png"
-    done
+  install -d "${pkgdir}/usr/lib"
+  cp -r "eclipse" "${pkgdir}/usr/lib/eclipse"
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/usr/lib/eclipse/eclipse" "${pkgdir}/usr/bin/eclipse"
+  
+  install -Dm0644 "eclipse.desktop" "${pkgdir}/usr/share/applications/eclipse.desktop"
+  
+  for i in 16 22 24 32 48 64 128 256 512 1024 ; do
+      install -Dm0644 eclipse/plugins/org.eclipse.platform_*/eclipse$i.png \
+          "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/eclipse.png"
+  done
 }
