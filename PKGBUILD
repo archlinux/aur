@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Chrome extension and python server that allows you to play videos in webpages with MPV instead.'
 arch=('any')
 url='https://github.com/Thann/play-with-mpv'
-license=('MIT')
+license=('Unlicense')
 depends=('python' 'python-wheel' 'python-pip' 'youtube-dl' 'mpv')
 optdepends=('peerflix' 'mkchromecast')
 makedepends=('git' 'python-setuptools')
@@ -25,6 +25,6 @@ pkgver() {
 package() {
   cd "$pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  #install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 ../play-with-mpv.service "$pkgdir/usr/lib/systemd/user/play-with-mpv.service"
 }
