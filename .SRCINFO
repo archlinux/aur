@@ -1,7 +1,7 @@
 pkgbase = spotiflyer-bin
 	pkgdesc = Kotlin multiplatform music downloader, supports Spotify/Gaana/Youtube Music/Jio Saavn.
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Shabinder/SpotiFlyer
 	arch = x86_64
 	license = GPL3

@@ -5,5 +5,5 @@ Name=SpotiFlyer
 Comment=Kotlin multiplatform music downloader
 Exec=spotiflyer
 Icon=spotiflyer
-Categories=Audio;
+Categories=Audio;AudioVideo;
 Terminal=false
