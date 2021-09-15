@@ -11,7 +11,7 @@ depends=(udev)
 install='ledger-udev.install'
 
 source=(https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/20-hw1.rules)
-sha256sums=('8151a3d1d2bc656fef397d9a4e9e85f58873ca7a775fdfee36fcf555660d4f6f')
+sha256sums=('e6d262beeb5ce40804ad90ce99716617e3fe046afa85a7b8c24e83362b653221')
 
 package() {
   install -Dm 644 20-hw1.rules "$pkgdir"/usr/lib/udev/rules.d/20-hw1.rules
