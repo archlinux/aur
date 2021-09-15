@@ -1,0 +1,13 @@
+pkgbase = sixtyfps-lsp
+	pkgdesc = An implementation of the LSP server for SixtyFPS featuring diagnostics, code completion, goto definition, and more importantly, live-preview
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/sixtyfpsui/sixtyfps
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = cargo
+	source = sixtyfps-lsp-0.1.2.tar.gz::https://github.com/sixtyfpsui/sixtyfps/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 17da8b37eab3f56b597bd84457bc2632567a976d0f0f99aa37df2d4f218dd726
+
+pkgname = sixtyfps-lsp
