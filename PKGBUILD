@@ -1,29 +1,32 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname='retryrequests'
-pkgname="python-${_pkgname}"
-pkgver=0.0.3
-pkgrel=2
+pkgname=python-retryrequests
+_name="${pkgname#python-}"
+pkgver=0.1.0
+pkgrel=1
 pkgdesc='Python library for HTTP requests using requests package with exponential back-off retry'
 arch=('any')
 url='https://github.com/thombashi/retryrequests'
-_url_pypi='https://pypi.org/project/retryrequests'
 license=('MIT')
-depends=('python-requests')
+depends=('python-requests>=2.18.4' 'python-requests<3')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('eddd18ea7034e2dc2a0708aa1de2aa3e611a7d423d8f40c9fcb4d63fdaa451f9')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz.asc")
+sha256sums=('aa61e2790f5e86ff44636ff865af280198b204fc9e09e1aa2315c512d70ee4fb'
+            'SKIP')
+validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "$_name-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "$_name-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
