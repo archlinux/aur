@@ -13,6 +13,9 @@ sha256sums=('17da8b37eab3f56b597bd84457bc2632567a976d0f0f99aa37df2d4f218dd726')
 
 prepare() {
   cd "$srcdir/sixtyfps-$pkgver/tools/lsp"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo update
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
