@@ -25,8 +25,8 @@ package() {
     install -m755 bin/*.* "${pkgdir}/usr/share/java/${pkgname}/bin/"
     install -m755 bin/mvnd "${pkgdir}/usr/share/java/${pkgname}/bin/"
     install -m755 mvn/bin/*.* "${pkgdir}/usr/share/java/${pkgname}/mvn/bin/"
-    cp -r conf "${pkgdir}/usr/share/java/${pkgname}/conf"
-    cp -r mvn "${pkgdir}/usr/share/java/${pkgname}/mvn"
+    cp -r conf "${pkgdir}/usr/share/java/${pkgname}"
+    cp -r mvn "${pkgdir}/usr/share/java/${pkgname}"
 
     install LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
     install NOTICE.txt "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE.txt"

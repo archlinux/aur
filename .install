@@ -1,3 +1,4 @@
 post_install() {
     echo "\e[1;33mNote: ohmyzsh user who use default maven completion plugin may need to unailas mvnd."
+    echo "\e[1;33mNote: use \e[1;0mcp /usr/share/java/mvnd/conf/mvnd.properties \e[1;33mto copy default mvnd config file."
 }
