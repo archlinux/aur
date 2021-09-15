@@ -1,17 +1,17 @@
 pkgbase = python-pinject
-	pkgdesc = A pythonic dependency injection library
-	pkgver = 0.10.2
+	pkgdesc = Dependency injection library
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://github.com/google/pinject
 	arch = any
 	license = APACHE
-	depends = python>=3.1
-	provides = python-pinject
-	conflicts = python-pinject
-	source = https://github.com/google/pinject/archive/v0.10.2.tar.gz
-	source = object_providers.patch
-	md5sums = ec41fb4da9ddcbf798722d7e660e8d6a
-	md5sums = b395777fa022cf684cb0e7e49e88e6a0
+	checkdepends = python-pytest>=3.8.0
+	checkdepends = python-mock>=3.0.5
+	checkdepends = python-semver
+	makedepends = python-setuptools
+	depends = python-six>=1.7.3
+	depends = python-decorator>=4.3.0
+	source = python-pinject-0.15.3.tar.gz::https://github.com/google/pinject/archive/v0.15.3.tar.gz
+	sha256sums = f2489757a8292ea3343855a4c6c1c8c7b8f663f4d26a72cd1e289547e60ac064
 
 pkgname = python-pinject
-
