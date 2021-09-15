@@ -5,7 +5,7 @@
 pkgname=os-prober-btrfs
 _pkgname=os-prober
 pkgver=1.79
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility to detect other OSes on a set of drives (with additional patches to detect btrfs systems and other systems)"
 url="http://joey.kitenet.net/code/os-prober/"
 arch=('x86_64')
@@ -15,84 +15,64 @@ provides=('os-prober' 'os-prober-garuda')
 conflicts=('os-prober' 'os-prober-garuda')
 replaces=('os-prober-garuda')
 source=(http://http.debian.net/debian/pool/main/o/${_pkgname}/${_pkgname}_${pkgver}.tar.xz
-  os-prober-1.49-fix-grub2.cfg-parsing.patch
-  os-prober-1.49-grub2-mount.patch
-  os-prober-probe-MD-devices.patch
-  os-prober-linux-secure-boot.patch
-  os-prober-btrfsfix.patch
-  os-prober-accept-ESP-on-IMSM.patch
-  os-prober-dont-load-all-fs-module-and-dont-test-mount.patch
-  os-prober-fix-btrfs-subvol-mounted-tests.patch
-  os-prober-skip-part-on-multipath.patch
-  Improve-btrfs-handling-on-os-probing-for-grub2.patch
-  os-prober-btrfs-absolute-subvol.patch
-  os-prober-40grub-check-grub2.patch
-  os-prober-btrfs-snapshot-detection.patch
-  os-prober-btrfs-always-detect-default.patch
-  os-prober-05efi-blkid.patch
-  os-prober-multiple-initrd.patch
-  os-prober-make-btrfsprogs-optional.patch
-  os-prober-disable-debug.patch)
+    os-prober-frugalware.diff
+	os-prober-mdraidfix.patch
+	os-prober-btrfsfix.patch
+	os-prober-bootpart-name-fix.patch
+	os-prober-mounted-partitions-fix.patch
+	os-prober-factor-out-logger.patch
+	os-prober-factored-logger-efi-fix.patch
+	os-prober-umount-fix.patch
+	os-prober-grub2-parsefix.patch
+	os-prober-grub2-multiple-images.patch
+	os-prober-grepfix.patch
+	os-prober-gentoo-fix.patch
+	fix-blkid-path.patch)
 md5sums=('08d3bfff00f1f7c068ce509656728eba'
-         '282040a02e5150736234511d9986f4ac'
-         '12cc212f04ac0768de9a1525df12e86e'
-         '5532000280ed1ded65e417c90c552c1b'
-         '7b396da508fd8c810b25680a0fd48f51'
-         '4570445b02760c8f8580f935ee32d3ca'
-         'd59438eb023d066b134b5c07cf45bf0f'
-         '2c8ee5d22864a274f4f8f755108137bf'
-         '014191f41eb52859160303e8ae439a6c'
-         '675816cc8c78600be13e7d25d9077374'
-         'ad9bc064acd5300e87c5420e2a431bee'
-         'cd8fb7fb7e796a23224debad5a65245f'
-         '56df8e39093ea36ec7cbed7d3cfe4ce5'
-         '60d1b370c3910f01dc38f933069bc315'
-         '79e62f50656ac80eaab99189e23d886b'
-         'dc1f6d454794807b6a98f4146789c0aa'
-         'e3c5edc2b078880ab0dfbf15731549f3'
-         '03d733433697d5f0e4fddc506b89575e'
-         'ab664f2e22a098f83b42c06babd9ab20')
+         '2ae284a2fc6cafb6ec4af0f44d3c3e48'
+         'fa2c878cbb8af6b6dc57b6cd966520ec'
+         'b71e32f69569f8ad693a19c7129cadf2'
+         '672f301022bdb4a2962e9c7f8af05f21'
+         '3c15707f9abbf2867d44886a77dbf74a'
+         '7e4c8f98ff7763472bc46adb4f9119c2'
+         '1a09f769d1e966c773b8885a9b0be44e'
+         '69e5e23a35a2756fcb9d649d0ae2eea5'
+         'b81bdf05173269ccce91c9a81ce4bfe8'
+         '2ac73c1c9f3ff32c4c5670f5fbda9f0d'
+         'ed3242f992b525a4af0a9df9af51e334'
+         'ec05aaa35c83ab669291e8895c252cc8'
+         '20dc42ef9b69f79b920380cd95191ed3')
 sha256sums=('abe6317d078c4e51e322e62036b6df4a698bfe80c5be110a08894841179810ee'
-            '71222cbe521abb676a0441a7e58cd58161b992d1e19e34eb0ee951c6b891e474'
-            '754a8ac582dc0d8d882bb4c75d1216d2a2ec892848cd5cef353183d932d7026f'
-            '7969ba7066cdd00ad21fdb9d84bf57955adcfc9b844b6955a0b5cb28eafe304a'
-            'd66bbed46770f30198c181e6be3168ea288150800098e59874bba78dd0997ace'
-            '66ed152fd58e6cfaf9a4b656140587f3344ade4d79a8979c9e45b10f435f41df'
-            '595feaab34a49445030926d2adc6b472a513441bbb9c780c89425ae7ce97e97b'
-            '4b1b27b466a206e44c3059e637026d4d0e1ce12a5bf30888f5896d29ceaa530a'
-            'ded9ecced92c7c91a56598e3ac1ff197e79cc08395190e9a62725b9c45603734'
-            '7cb99753a4c552f6d764591a8a372bf3ecfb25b2dc888316e8e7840ca208aa16'
-            'fcd2764c95a5f919e9d50c018d090f7c5b7dce801f899083fca2bcd0dc20ee12'
-            '015f9e7c5d38df39928164d6537c3699da7d815bc91a582832714bbbbe56d49f'
-            'ed70c45f0170cbe674beba1f8b7f943a9304e5c6d1843d959ceed9239740a763'
-            '987396baafea006467498cca8bc9d4926b8efe7b553462b9f14b1616992dd03d'
-            '795b2fe197bd9a5df873eb794a42a3e42de487b758fe6076fb356d1779844334'
-            '41cd45207f55f9b7871e05fb2068d9b3f38bd70abea9af5458a046b42dad621d'
-            '509c4e97621f930e59e21ff63b462831df1f6da0750afed27693aa4be0f1abff'
-            '23ddae7702ad49696a6a2b6c53a844f159d1972d9b420d9ea691fcf9c796de1d'
-            'fa9394bdf5298847474e55c528fa5e4fe25611239c5ca9594d572b22baa4d28c')
+            '9a6c22c91ea5955d665bc20d85d899f6721875a6216862d59a1b7f3f4241fd02'
+            '092b0caef6fff45560531c0735e9449cb05a677e2296d72b5a0b4fb568fa4476'
+            '0ebfd75cfc82cfba2d239986ad68213dc8ee92943a1c68111b34e3fefc360232'
+            'c3d094f02b8a00026af10fdfe2ea9286cd1af6a1e25afcc82f3b234bdb64b86f'
+            '7a9c4a0f5bba4053b1bbf1640c854aee83f526fd086c94bc7691e1d3cb28afb7'
+            'b5c41ac1bc1a4544dd2d9efdcf190d6e5c2f0822b6d0e5fc8f7e6e5222da1d8d'
+            '08bf632e4716a3a63bd8f20e729c540754b676b23f4f82ff9156c448910c6f94'
+            '81a5ce0c5e784480dff7520bdfada8f80dfe96b101e14e41bca2d0992e863e68'
+            'afc201d4d71525b73ffa365f7c667148e007836567be4c8ec25ea661d43b43f8'
+            '07b919c7559ce6c5a8d8907d752366fc97ccf40b7ad54cbb2de904a9dd373efd'
+            'a9331117892dd9876b346d941969f70da96d54ce122d7a5ff40d9efe36aded42'
+            '02741e0edbc46327501be5d74977ff2bffa5ddaffe6a55a689e38ce4b8372444'
+            '87bbb0f69ebb47f5136291d6851967fba791db4f27d8883b35fc5be1653ff7a6')
 
 prepare() {
   cd ${_pkgname}
 
-  patch -p1 -i "$srcdir"/os-prober-1.49-fix-grub2.cfg-parsing.patch
-  patch -p1 -i "$srcdir"/os-prober-1.49-grub2-mount.patch
-  patch -p1 -i "$srcdir"/os-prober-probe-MD-devices.patch
-  patch -p1 -i "$srcdir"/os-prober-linux-secure-boot.patch
+  patch -p1 -i "$srcdir"/os-prober-frugalware.diff
+  patch -p1 -i "$srcdir"/os-prober-mdraidfix.patch
   patch -p1 -i "$srcdir"/os-prober-btrfsfix.patch
-  patch -p1 -i "$srcdir"/os-prober-accept-ESP-on-IMSM.patch
-  patch -p1 -i "$srcdir"/os-prober-dont-load-all-fs-module-and-dont-test-mount.patch
-  patch -p1 -i "$srcdir"/os-prober-fix-btrfs-subvol-mounted-tests.patch
-  patch -p1 -i "$srcdir"/os-prober-skip-part-on-multipath.patch
-  patch -p1 -i "$srcdir"/Improve-btrfs-handling-on-os-probing-for-grub2.patch
-  patch -p1 -i "$srcdir"/os-prober-btrfs-absolute-subvol.patch
-  patch -p1 -i "$srcdir"/os-prober-40grub-check-grub2.patch
-  patch -p1 -i "$srcdir"/os-prober-btrfs-snapshot-detection.patch
-  patch -p1 -i "$srcdir"/os-prober-btrfs-always-detect-default.patch
-  patch -p1 -i "$srcdir"/os-prober-05efi-blkid.patch
-  patch -p1 -i "$srcdir"/os-prober-multiple-initrd.patch
-  patch -p1 -i "$srcdir"/os-prober-make-btrfsprogs-optional.patch
-  patch -p1 -i "$srcdir"/os-prober-disable-debug.patch
+  patch -p1 -i "$srcdir"/os-prober-bootpart-name-fix.patch
+  patch -p1 -i "$srcdir"/os-prober-mounted-partitions-fix.patch
+  patch -p1 -i "$srcdir"/os-prober-factor-out-logger.patch
+  patch -p1 -i "$srcdir"/os-prober-factored-logger-efi-fix.patch
+  patch -p1 -i "$srcdir"/os-prober-umount-fix.patch
+  patch -p1 -i "$srcdir"/os-prober-grub2-parsefix.patch
+  patch -p1 -i "$srcdir"/os-prober-grub2-multiple-images.patch
+  patch -p1 -i "$srcdir"/os-prober-grepfix.patch
+  patch -p1 -i "$srcdir"/os-prober-gentoo-fix.patch
+  patch -p1 -i "$srcdir"/fix-blkid-path.patch
 
   # adjust lib dir to allow detection of 64-bit distros
   sed -i -e "s:/lib/ld\*\.so\*:/lib*/ld*.so*:g" os-probes/mounted/common/90linux-distro

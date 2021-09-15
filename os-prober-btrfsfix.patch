@@ -1,11 +1,11 @@
-Index: os-prober/common.sh
-===================================================================
---- os-prober.orig/common.sh
-+++ os-prober/common.sh
+diff --git a/common.sh b/common.sh
+index c2c5f46..8fb3c5f 100644
+--- a/common.sh
++++ b/common.sh
 @@ -155,6 +155,7 @@ parse_proc_mounts () {
  	done
  }
-
+ 
 +# add forth parameter to pickup btrfs subvol info
  parsefstab () {
  	while read -r line; do
@@ -20,7 +20,7 @@ Index: os-prober/common.sh
  		esac
  	done
  }
-
+ 
 +#check_btrfs_mounted $bootsv $bootuuid)
 +check_btrfs_mounted () {
 +	bootsv="$1"
@@ -34,12 +34,12 @@ Index: os-prober/common.sh
  unescape_mount () {
  	printf %s "$1" | \
  		sed 's/\\011/	/g; s/\\012/\n/g; s/\\040/ /g; s/\\134/\\/g'
-Index: os-prober/linux-boot-prober
-===================================================================
---- os-prober.orig/linux-boot-prober
-+++ os-prober/linux-boot-prober
+diff --git a/linux-boot-prober b/linux-boot-prober
+index e32dc84..2a60fa2 100755
+--- a/linux-boot-prober
++++ b/linux-boot-prober
 @@ -5,16 +5,143 @@ set -e
-
+ 
  newns "$@"
  require_tmpdir
 +ERR="n"
@@ -53,9 +53,9 @@ Index: os-prober/linux-boot-prober
 +bootmnt=
 +bootsv=
 +bootuuid=
-
+ 
  grep "^/dev/" /proc/mounts | parse_proc_mounts >"$OS_PROBER_TMP/mounted-map" || true
-
+ 
 -partition="$1"
 +if [ -z "$1" ]; then
 +	ERR=y
@@ -75,14 +75,14 @@ Index: os-prober/linux-boot-prober
 +	partition="$1"
 +	type=other
 +fi
-
+ 
 -if [ -z "$partition" ]; then
 +if [ "x$ERR" != xn ]; then
  	echo "usage: linux-boot-prober partition" >&2
-+	echo "       linux-boot-prober partition | btrfs UUID=<> subvol=<>" >&2
++	echo "       linux-boot-prober btrfs UUID=<> subvol=<>" >&2
  	exit 1
  fi
-
+ 
 +if [ "$type" = btrfs ]; then
 +	# handle all of the btrfs stuff here
 +	if [ ! -e "/proc/self/mountinfo" ]; then
@@ -184,14 +184,24 @@ Index: os-prober/linux-boot-prober
  if ! mapped="$(mapdevfs "$partition")"; then
  	log "Device '$partition' does not exist; skipping"
  	continue
-Index: os-prober/linux-boot-probes/mounted/common/40grub2
-===================================================================
---- os-prober.orig/linux-boot-probes/mounted/common/40grub2
-+++ os-prober/linux-boot-probes/mounted/common/40grub2
-@@ -2,17 +2,27 @@
+@@ -22,8 +149,8 @@ fi
+ 
+ if ! grep -q "^$mapped " "$OS_PROBER_TMP/mounted-map"; then
+ 	for test in /usr/lib/linux-boot-probes/*; do
+-		debug "running $test"
+ 		if [ -x $test ] && [ -f $test ]; then
++			debug "running $test"
+ 			if $test "$partition"; then
+ 				debug "linux detected by $test"
+ 				break
+diff --git a/linux-boot-probes/mounted/common/40grub2 b/linux-boot-probes/mounted/common/40grub2
+index 885614e..db5cbfd 100755
+--- a/linux-boot-probes/mounted/common/40grub2
++++ b/linux-boot-probes/mounted/common/40grub2
+@@ -2,17 +2,30 @@
  . /usr/share/os-prober/common.sh
  set -e
-
+ 
 +# add support for btrfs with no separate /boot
 +# that is, rootsv = bootsv
  partition="$1"
@@ -200,13 +210,16 @@ Index: os-prober/linux-boot-probes/mounted/common/40grub2
  type="$4"
 +rootsv="$5"
 +bootsv="$6"
-
+ 
  found_item=0
-
+ 
  entry_result () {
-+	if [ "x$type" = "xbtrfs" -a "$rootsv" = "$bootsv" ]; then
++	if [ "x$type" = "xbtrfs" -a "$partition" = "$bootpart" ]; then
 +		# trim off the leading subvol
 +		kernelfile=$(echo "$kernel" | cut -d '/' -f 2- | cut -d '/' -f 2-)
++		if [ "x$rootsv" != "x$bootsv" ]; then
++		   kernelfile="/boot/$kernelfile"
++		fi
 +	else
 +		kernelfile=$kernel
 +	fi
@@ -217,33 +230,37 @@ Index: os-prober/linux-boot-probes/mounted/common/40grub2
  		result "$rootpart:$bootpart:$title:$kernel:$initrd:$parameters"
  		found_item=1
  	fi
-Index: os-prober/os-prober
-===================================================================
---- os-prober.orig/os-prober
-+++ os-prober/os-prober
-@@ -79,6 +79,9 @@ partitions () {
- 		echo "$(LVM_SUPPRESS_FD_WARNINGS=1 log_output lvs --noheadings --separator : -o vg_name,lv_name |
+diff --git a/os-prober b/os-prober
+index 8852887..482c3c2 100755
+--- a/os-prober
++++ b/os-prober
+@@ -76,9 +76,12 @@ partitions () {
+ 
+ 	# Also detect OSes on LVM volumes (assumes LVM is active)
+ 	if type lvs >/dev/null 2>&1; then
+-		echo "$(LVM_SUPPRESS_FD_WARNINGS=1 log_output lvs --noheadings --separator : -o vg_name,lv_name |
++		echo "$(LVM_SUPPRESS_FD_WARNINGS=1 log_output lvs --noheadings --separator : -o vg_name,lv_name 2>/dev/null |
  			sed "s|-|--|g;s|^[[:space:]]*\(.*\):\(.*\)$|/dev/mapper/\1-\2|")"
  	fi
 +
 +	# now lets make sure we got all of the btrfs partitions and disks
-+	blkid | grep btrfs | cut -d ':' -f 1
++	blkid | grep 'TYPE="btrfs"' | cut -d ':' -f 1
  }
-
+ 
  parse_proc_swaps () {
-@@ -137,6 +140,8 @@ if [ -f /proc/mdstat ] ; then
- 	grep "^md" /proc/mdstat | parse_proc_mdstat >"$OS_PROBER_TMP/raided-map" || true
+@@ -136,6 +139,8 @@ if [ -f /proc/mdstat ] ; then
+ 	grep "^md" /proc/mdstat | cut -d: -f2- | parse_proc_mdstat >"$OS_PROBER_TMP/raided-map" || true
  fi
-
+ 
 +: >"$OS_PROBER_TMP/btrfs-vols"
 +
  for partition in $(partitions); do
  	if ! mapped="$(mapdevfs "$partition")"; then
  		log "Device '$partition' does not exist; skipping"
-@@ -155,7 +160,26 @@ for partition in $(partitions); do
+@@ -154,7 +159,26 @@ for partition in $(partitions); do
  		continue
  	fi
-
+ 
 -	if ! grep -q "^$mapped " "$OS_PROBER_TMP/mounted-map" ; then
 +	# do btrfs processing here; both mounted and unmounted will
 +	# be handled by 50mounted-tests so we can do a subvol only once.
@@ -260,7 +277,7 @@ Index: os-prober/os-prober
 +			debug "running $test on btrfs $partition"
 +			if "$test" btrfs "$uuid" "$partition"; then
 +				debug "os detected by $test"
-+		   		continue
++				continue
 +			fi
 +		fi
 +
@@ -268,34 +285,59 @@ Index: os-prober/os-prober
  		for test in /usr/lib/os-probes/*; do
  			if [ -f "$test" ] && [ -x "$test" ]; then
  				debug "running $test on $partition"
-Index: os-prober/os-probes/common/50mounted-tests
-===================================================================
---- os-prober.orig/os-probes/common/50mounted-tests
-+++ os-prober/os-probes/common/50mounted-tests
-@@ -19,7 +19,19 @@ do_unmount() {
+diff --git a/os-probes/common/50mounted-tests b/os-probes/common/50mounted-tests
+index 2951ef9..e33eb82 100755
+--- a/os-probes/common/50mounted-tests
++++ b/os-probes/common/50mounted-tests
+@@ -19,19 +19,31 @@ do_unmount() {
  	rmdir "$tmpmnt" || true
  }
-
+ 
 -types="$(fs_type "$partition")"
 +if [ "x$1" = xbtrfs ]; then
-+       types=btrfs
-+       if [ -z "$2" -o -z "$3" ]; then
-+               debug "missing btrfs parameters, exiting"
-+               exit 1
-+       fi
-+       UUID="$2"
-+       BTRFSDEV="$3"
++	types=btrfs
++	if [ -z "$2" -o -z "$3" ]; then
++		debug "missing btrfs parameters, exiting"
++		exit 1
++	fi
++	UUID="$2"
++	BTRFSDEV="$3"
 +else
-+       partition="$1"
-+       types="$(fs_type "$partition")"
++	partition="$1"
++	types="$(fs_type "$partition")" || types=NOT-DETECTED
 +fi
 +
  if [ "$types" = NOT-DETECTED ]; then
  	debug "$1 type not recognised; skipping"
- 	exit 0
-@@ -66,6 +78,76 @@ if [ ! -d "$tmpmnt" ]; then
+-	exit 0
++	exit 1
+ elif [ "$types" = swap ]; then
+ 	debug "$1 is a swap partition; skipping"
+-	exit 0
++	exit 1
+ elif [ "$types" = crypto_LUKS ]; then
+ 	debug "$1 is a LUKS partition; skipping"
+-	exit 0
++	exit 1
+ elif [ "$types" = LVM2_member ]; then
+ 	debug "$1 is an LVM member; skipping"
+-	exit 0
++	exit 1
+ elif [ "$types" = ntfs ]; then
+ 	if type ntfs-3g >/dev/null 2>&1; then
+ 		types='ntfs-3g ntfs'
+@@ -40,7 +52,7 @@ elif [ -z "$types" ]; then
+ 	if type cryptsetup >/dev/null 2>&1 && \
+ 	   cryptsetup luksDump "$partition" >/dev/null 2>&1; then
+ 		debug "$1 is a LUKS partition; skipping"
+-		exit 0
++		exit 1
+ 	fi
+ 	for type in $(grep -v nodev /proc/filesystems); do
+ 		# hfsplus filesystems are mountable as hfs. Try hfs last so
+@@ -63,6 +75,108 @@ if [ ! -d "$tmpmnt" ]; then
  fi
-
+ 
  mounted=
 +
 +# all btrfs processing here.  Handle both unmounted and
@@ -320,45 +362,77 @@ Index: os-prober/os-probes/common/50mounted-tests
 +            rmdir "$tmpmnt" || true
 +            exit 1
 +        fi
-+	if [ -z "$subvols" ]; then
-+		debug "no subvols found on btrfs volume $UUID"
-+		exit 1
-+	fi
++
 +	found=
-+        for subvol in $subvols; do
-+		debug "begin btrfs processing for $UUID subvol=$subvol"
-+		if echo "$rosubvols" | grep -q -x "$subvol"; then
-+			continue
++	mounted=
++
++	mpoint="$(grep btrfs /proc/self/mountinfo | grep "$partition " | cut -d ' ' -f 5)"
++	if [ -n "$mpoint" -a "x$mpoint" = "x/" ]; then
++		debug "This is the root for the running system" #running system must be done elsewhere
++	else
++	    #partition was not root of running system, so lets look for bootable subvols
++	    if [ -n "$mpoint" ] ; then
++		mounted=1  #partition was already mounted,so lets not unmount it when done
++	    else
++		# again, do not mount btrfs ro
++		mount -t btrfs -U "$UUID" "$tmpmnt"
++		mpoint="$tmpmnt"
++	    fi
++
++	    test="/usr/libexec/os-probes/mounted/90linux-distro"
++	    if [ -f "$test" ] && [ -x "$test" ]; then
++		debug "running subtest $test"
++		if "$test" "$partition" "$mpoint" btrfs "UUID=$UUID"; then
++		    debug "os found by subtest $test on $partition"
++		    found=1
 +		fi
-+		if echo "$sssubvols" | grep -q -x "$subvol"; then
-+			continue
++	    fi
++	    if [ -z "$mounted" ]; then
++		if ! umount "$tmpmnt"; then
++		    warn "failed to umount $tmpmnt"
 +		fi
-+		mounted=
-+		mpoint="$(grep btrfs /proc/self/mountinfo | grep "$partition " | grep "/$subvol " | cut -d ' ' -f 5)"
-+		if [ -n "$mpoint" ]; then
-+			if [ "x$mpoint" = "x/" ]; then
-+				continue # this is the root for the running system
++	    fi
++	fi
++
++	if [ -z "$subvols" ]; then
++	        debug "no subvols found on btrfs volume $UUID"
++	else
++		found=
++                for subvol in $subvols; do
++			debug "begin btrfs processing for $UUID subvol=$subvol"
++			if echo "$rosubvols" | grep -q -x "$subvol"; then
++				continue
 +			fi
-+			mounted=1
-+		else
-+			# again, do not mount btrfs ro
-+			mount -t btrfs -o subvol="$subvol" -U "$UUID" "$tmpmnt"
-+			mpoint="$tmpmnt"
-+		fi
-+		test="/usr/lib/os-probes/mounted/90linux-distro"
-+		if [ -f "$test" ] && [ -x "$test" ]; then
-+			debug "running subtest $test"
-+			if "$test" "$partition" "$mpoint" btrfs "UUID=$UUID" "subvol=$subvol"; then
-+				debug "os found by subtest $test on subvol $subvol"
-+				found=1
++			if echo "$sssubvols" | grep -q -x "$subvol"; then
++				continue
 +			fi
-+		fi
-+		if [ -z "$mounted" ]; then
-+			if ! umount "$tmpmnt"; then
-+			    warn "failed to umount $tmpmnt"
++			mounted=
++			mpoint="$(grep btrfs /proc/self/mountinfo | grep "$partition " | grep "/$subvol " | cut -d ' ' -f 5)"
++			if [ -n "$mpoint" ]; then
++				if [ "x$mpoint" = "x/" ]; then
++					continue # this is the root for the running system
++				fi
++				mounted=1
++			else
++				# again, do not mount btrfs ro
++				mount -t btrfs -o subvol="$subvol" -U "$UUID" "$tmpmnt"
++				mpoint="$tmpmnt"
 +			fi
-+		fi
-+	done
++			test="/usr/lib/os-probes/mounted/90linux-distro"
++			if [ -f "$test" ] && [ -x "$test" ]; then
++				debug "running subtest $test"
++				if "$test" "$partition" "$mpoint" btrfs "UUID=$UUID" "subvol=$subvol"; then
++					debug "os found by subtest $test on subvol $subvol"
++					found=1
++				fi
++			fi
++			if [ -z "$mounted" ]; then
++				if ! umount "$tmpmnt"; then
++				    warn "failed to umount $tmpmnt"
++				fi
++			fi
++		done
++	fi
 +	rmdir "$tmpmnt" || true
 +	if [ "$found" ]; then
 +		exit 0
@@ -367,25 +441,25 @@ Index: os-prober/os-probes/common/50mounted-tests
 +	fi
 +fi
 +
- if type grub2-mount >/dev/null 2>&1 && \
-    type grub2-probe >/dev/null 2>&1 && \
-    grub2-mount "$partition" "$tmpmnt" 2>/dev/null; then
-Index: os-prober/os-probes/mounted/common/90linux-distro
-===================================================================
---- os-prober.orig/os-probes/mounted/common/90linux-distro
-+++ os-prober/os-probes/mounted/common/90linux-distro
+ if type grub-mount >/dev/null 2>&1 && \
+    type grub-probe >/dev/null 2>&1 && \
+    grub-mount "$partition" "$tmpmnt" 2>/dev/null; then
+diff --git a/os-probes/mounted/common/90linux-distro b/os-probes/mounted/common/90linux-distro
+index badfbb1..9bc5154 100755
+--- a/os-probes/mounted/common/90linux-distro
++++ b/os-probes/mounted/common/90linux-distro
 @@ -7,6 +7,8 @@ set -e
  partition="$1"
  dir="$2"
  type="$3"
 +uuid="$4"
 +subvol="$5"
-
+ 
  # This test is inaccurate, but given separate / and /boot partitions and the
  # fact that only some architectures have ld-linux.so, I can't see anything
-@@ -143,7 +145,11 @@ if (ls "$dir"/lib*/ld*.so* && [ -d "$dir
+@@ -143,7 +145,11 @@ if (ls "$dir"/lib*/ld*.so* && [ -d "$dir/boot" ] || ls "$dir"/usr/lib*/ld*.so*)
  	fi
-
+ 	
          label="$(count_next_label "$short")"
 -	result "$partition:$long:$label:linux"
 +	if [ "x$type" = "xbtrfs" -a "x$uuid" != "x" -a "x$subvol" != "x" ]; then
@@ -396,24 +470,3 @@ Index: os-prober/os-probes/mounted/common/90linux-distro
  	exit 0
  else
  	exit 1
-Index: os-prober/README.btrfs
-===================================================================
---- /dev/null
-+++ os-prober/README.btrfs
-@@ -0,0 +1,15 @@
-+BTRFS is a new filesystem which combines the filesystem with logical volume
-+management (subvolumes).  For further information, see:
-+      https://btrfs.wiki.kernel.org/index.php/Main_Page
-+      https://btrfs.wiki.kernel.org/index.php/FAQ
-+
-+In order to support BTRFS, a number of changes were necessary to os-prober,
-+os-probes/common/50mounted-tests, os-probes/mounted/common/90linux-distro,
-+linux-boot-prober, and linux-boot-probes/common/50mounted-tests.
-+
-+The biggest impact will be to grub2 where there is additional information
-+output by os-prober and where, if a BTRFS subvolume is being used for root,
-+the parameters for linux-boot-prober have changed.
-+
-+Sun 30 Dec 2012 11:49:52 AM EST Gene Czarcinski <gene@czarc.net>
-+
-
