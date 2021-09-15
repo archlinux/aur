@@ -14,21 +14,22 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('677bfe22c8eba6c538ff57cb9fbfe575953ec9e48d9dbb1f14d5701823b99303')
 
 build() {
-  export GOPATH="${srcdir}/go"
+  cd ${pkgname}-${pkgver}
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_ENABLED=1
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  cd ${pkgname}-${pkgver}
-  make VERSION="v${pkgver}" DESTDIR="{$pkgdir}" PREFIX="/usr"
+  export GOPATH="${srcdir}/go"
+
+  make VERSION="v${pkgver}" DESTDIR="${pkgdir}" PREFIX="/usr"
 }
 
 package() {
   cd ${pkgname}-${pkgver}
   export GOBIN="${pkgdir}/usr/bin"
-  make VERSION="v${pkgver}" DESTDIR="{$pkgdir}" PREFIX="/usr" install
+  make VERSION="v${pkgver}" DESTDIR="${pkgdir}" PREFIX="/usr" install
 
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
