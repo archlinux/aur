@@ -4,7 +4,7 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgname=lft
-pkgver=3.8
+pkgver=3.91
 pkgrel=1
 pkgdesc="A layer four traceroute implementing numerous other features"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 url="http://pwhois.org/lft/"
 depends=('libpcap')
 source=("http://pwhois.org/dl/index.who?file=${pkgname}-${pkgver}.tar.gz")
-md5sums=('31b15aabc619707427a73657512560f8')
+md5sums=('73cb955546692cf0fb5d7931939c56de')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
