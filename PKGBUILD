@@ -2,7 +2,7 @@
 
 pkgname=animdl-git
 _pkgname=${pkgname%-git}
-pkgver=1.3.3
+pkgver=1.3.4.r2.32f1927
 pkgrel=1
 pkgdesc="A highly efficient anime downloader and streamer"
 arch=('any')
