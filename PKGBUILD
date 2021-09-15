@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.14.0.r28.ga38baec1
+pkgver=0.14.0.r239.g9579d62a
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version)'
@@ -20,7 +20,7 @@ depends=(
 	xcb-util-errors
 	xcb-util-renderutil
 	xcb-util-wm
-	libseat
+	seatd
 	systemd
 	xorg-xwayland)
 makedepends=(
