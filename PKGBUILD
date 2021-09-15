@@ -110,7 +110,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "x86-ACPI-State-Optimize-C3-entry-on-AMD-CPUs.patch"                            # landing in 5.15
 
         # patch from Chromium developers; more accurately report battery state changes
-        "acpi-battery-Always-read-fresh-battery-state-on-update.patch"                  # ?
+        "acpi-battery-Always-read-fresh-battery-state-on-update.patch"                  # awaiting ack
 
         # k10temp support for Zen3 APUs
         #"x86-amd_nb-Add-AMD-family-19h-model-50h-PCI-ids.patch"                        # included in 5.14
@@ -121,19 +121,19 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # ASUS ROG enablement
         "asus-wmi-Add-panel-overdrive-functionality.patch"                              # landing in 5.15
-        "asus-wmi-Add-dgpu-disable-method.patch"
-        "asus-wmi-Add-egpu-enable-method.patch"
-        "HID-asus-Prevent-Claymore-sending-suspend-event.patch"                         # ?
-        "HID-asus-Reduce-object-size-by-consolidating-calls.patch"                      # ?
+        "asus-wmi-Add-dgpu-disable-method.patch"                                        # "
+        "asus-wmi-Add-egpu-enable-method.patch"                                         # "
+        "HID-asus-Prevent-Claymore-sending-suspend-event.patch"                         # "
+        "HID-asus-Reduce-object-size-by-consolidating-calls.patch"                      # awaiting ack
         "v5-asus-wmi-Add-support-for-platform_profile.patch"                            # landing in 5.15
         "v14-asus-wmi-Add-support-for-custom-fan-curves.patch"                          # pending
 
         # mediatek mt7921 bt/wifi patches
-        #"8010-Bluetooth-btusb-Fixed-too-many-in-token-issue-for-Me.patch"
-        #"8011-Bluetooth-btusb-Add-support-for-Lite-On-Mediatek-Chi.patch"
-        #"8012-mt76-mt7921-continue-to-probe-driver-when-fw-already.patch"
-        "8013-mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
-        "8014-mt76-mt7921-Add-mt7922-support.patch"
+        #"Bluetooth-btusb-Fixed-too-many-in-token-issue-for-Me.patch"
+        #"Bluetooth-btusb-Add-support-for-Lite-On-Mediatek-Chi.patch"
+        #"mt76-mt7921-continue-to-probe-driver-when-fw-already.patch"
+        "mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
+        "mt76-mt7921-Add-mt7922-support.patch"
         "1-1-Bluetooth-btusb-Enable-MSFT-extension-for-Mediatek-Chip-MT7921.patch"
         "1-2-mt76-mt7915-send-EAPOL-frames-at-lowest-rate.patch"
         "2-2-mt76-mt7921-send-EAPOL-frames-at-lowest-rate.patch"
@@ -171,15 +171,15 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '9d799be6d01a7438ca9999a10137be8fd95348610545c135c6dc9ce2b5afbe29'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
-            'ea1d552f8fe6907e4fbd374842a655a9a64529e021c45d8459a0595c739e5cc6'
-            '051769c129e0e3a5b516b8799712e1a39dd36216d77879b33b416c8e0fd67d7a'
-            'fa96d4e690f3e0b51075be06fe47fe5b6d94b10835767c13416701690e842e4b'
-            '3ed940a006bc1846daac9ca1194bcbffc0b7b71266d0527b7508f2263cdba9d6'
-            '1687b5d7cefdcdbe9f0152d0b38e204229ce75994b1ba5f9fee5eff65580e6a2'
-            '16c30e45665f8be034b25d3a21a9ed4cba025dd38293b77aaa12426892091adb'
-            '5b7a106d371fcf880920967d7e36728f1bcc0368eaa7bf75ebf67a4ddb93c6d5'
-            'aa5bb422421cb7e1340d8f07b5471995bbc3c7dd7cf91db76ab1dbe7efc2777a'
-            '5e66b5a6a775ad42489dfd0f6057b69dae696a5ec8be428da329f68c1265764a'
+            '9f6b8c3ea6e1c285e0a7efda4d743dbae343bc6ee7ad599a4ab7d380c750bc83'
+            '4bfbff4eba07fc9de2ce78097a4a269509468ba0e24c15a82905cd94e093ad55'
+            '021f8539ab2fb722b46937b95fdab22a2308236a24ecc1a9ea8db4853721dd39'
+            '1ce9fd988201c4d2e48794c58acda5b768ec0fea1d29555e99d35cd2712281e4'
+            'e7e37c7c433c58e2f5a79e2a7724823bef1dccaa01e857584397b4e3c837d991'
+            'f075ac354acfd65dff4db49dc9798747cb9b7a3dd9839987bc46495bdbbd22dc'
+            '1770fec49335bc93194e9e55ced49e1cb67f2df4bf6948e80712a0b2ba50fa49'
+            '6da4010f86a74125969fd3dbc953da7b45209d33ff3d216474c3399e82e893ff'
+            'eb391b6d1ebf7ef99ece00b23609b94180a1f3c0149bcf05f6bbeb74d0b724c7'
             '041214e202be4a6e90f00724e87ed787b39db148b24efd5fb03fcf23577601c1')
 
 # apply UKSM patch; TODO: note to self: don't forget to update the sum here during major version changes
