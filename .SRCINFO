@@ -8,7 +8,7 @@ pkgbase = term-sudoku
 	makedepends = git
 	depends = ncurses
 	depends = dialog
-	source = git://github.com/theeyeofcthulhu/term-sudoku
+	source = https://github.com/theeyeofcthulhu/term-sudoku/archive/refs/tags/v1.0.tar.gz
 	sha1sums = SKIP
 
 pkgname = term-sudoku

@@ -7,17 +7,16 @@ url='https://github.com/theeyeofcthulhu/term-sudoku'
 license=('GPL')
 makedepends=('git')
 depends=('ncurses' 'dialog')
-source=('git://github.com/theeyeofcthulhu/term-sudoku')
+source=("https://github.com/theeyeofcthulhu/term-sudoku/archive/refs/tags/v$pkgver.tar.gz")
 sha1sums=('SKIP')
 
 build() {
-    cd "${pkgname}"
+    cd $srcdir/$pkgname-$pkgver
     make
 }
 
 package() {
-    cd "${pkgname}"
+    cd $srcdir/$pkgname-$pkgver
     make PREFIX=/usr DESTDIR="${pkgdir}" install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
