@@ -2,25 +2,19 @@
 
 pkgname=rustcat
 _binname=rc
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=5
-pkgdesc="Rustcat - Like Netcat but in Rust"
+pkgdesc="Rustcat - A Modern Port Listener & Reverse Shell"
 url="https://github.com/robiot/rustcat"
 license=('MIT')
 arch=('x86_64')
 
 source=("rc.tar.gz::https://github.com/robiot/rustcat/releases/download/v${pkgver}/rustcat_${pkgver}_amd64-linux.tar.gz")
 conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
+md5sums=('SKIP')
 
 package() {
     cd "${srcdir}"
-    
-    echo "${srcdir}"
-    echo "${pkgdir}"
-    #chmod +x rc
-    install -d -m755 ${pkgdir}/usr/bin
-    install -d -m755 ${pkgdir}/usr/share/${pkgname}
-    cp -r . ${pkgdir}/usr/share/${pkgname}
-    ln -s /usr/share/${pkgname}/${_binname} ${pkgdir}/usr/bin/${_binname}
+
+    install -Dm 755 "./${_binname}" "$pkgdir/usr/bin/$_binname"
 }
-md5sums=('SKIP')
