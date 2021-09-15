@@ -1,13 +1,14 @@
-From 510b332dfb96b84f4d4ca24f8d31476527112396 Mon Sep 17 00:00:00 2001
+From 3060b7171a5108bcddf8e9a8af8dd625a9f3fcdb Mon Sep 17 00:00:00 2001
 From: atomlong <atom.long@hotmail.com>
 Date: Tue, 14 Sep 2021 16:04:31 +0800
 Subject: [PATCH 2/2] send mail via curl command. MTA is not needed anymore.
 
 ---
  CHANGES.md   |  1 +
- freenom.conf | 20 +++++++++++++++-----
- freenom.sh   | 35 ++++++++++++++++++++++-------------
- 3 files changed, 38 insertions(+), 18 deletions(-)
+ README.md    |  3 +-
+ freenom.conf | 14 +++++----
+ freenom.sh   | 81 +++++++++++++++++++++++++++++++++++++++++++---------
+ 4 files changed, 80 insertions(+), 19 deletions(-)
 
 diff --git a/CHANGES.md b/CHANGES.md
 index a7667bd..f3c39cf 100644
@@ -21,26 +22,34 @@ index a7667bd..f3c39cf 100644
  - [**20210821**] fix issue [#50](https://github.com/mkorthof/freenom-script/issues/50)
  - [**20210618**] added more config checks (PR [#43](https://github.com/mkorthof/freenom-script/issues/43) from nathanfranke)
  - [**20210612**] check for uaString and ipCmd settings ([#42](https://github.com/mkorthof/freenom-script/issues/42))
+diff --git a/README.md b/README.md
+index 43dbcb2..4db7c77 100644
+--- a/README.md
++++ b/README.md
+@@ -58,7 +58,8 @@ NOTES:
+ 
+ ## Installation
+ 
+-_Note that this shell script requires recent versions of "Bash" and "cURL"_
++_Note that this shell script requires recent versions of "Bash" and "cURL";  
++If you want to use your own domain mailbox to send notifications, you also need the "Ping" command._
+ 
+ ### Auto Installer
+ 
 diff --git a/freenom.conf b/freenom.conf
-index 2dea46d..bc47560 100644
+index 2dea46d..a8acb52 100644
 --- a/freenom.conf
 +++ b/freenom.conf
-@@ -101,15 +101,25 @@ ipCmd+=("dig -4 +short whoami.akamai.net @ns1-1.akamaitech.net")
+@@ -101,15 +101,19 @@ ipCmd+=("dig -4 +short whoami.akamai.net @ns1-1.akamaitech.net")
  # MAIL #
  ########
  
 -# Mail Transfer Agent. A lightweight send-only MTA such as SSMTP should work fine. Or leave empty to disable sending mail.
 -# If you do not have a MTA installed you can use "bashmail.sh": https://git.io/JJdto. Default is "/usr/sbin/sendmail"
 -MTA="/usr/sbin/sendmail"
-+# Mail server address to send notifications
++# Mail account to send notifications
 +# Note: If gmail is used, check https://myaccount.google.com/u/1/lesssecureapps?pageId=none 
 +#       to see if you allow for less secure email clients
-+#MAILHOST="smtp.gmail.com"
-+
-+# Mail server port
-+#MAILPORT=587
-+
-+# Mail server username to login
 +#MAILUSERNAME="youraccount@gmail.com"
 +
 +# Mail server password
@@ -57,7 +66,7 @@ index 2dea46d..bc47560 100644
  ######################
  # Domain name and id #
 diff --git a/freenom.sh b/freenom.sh
-index 01ed3fe..84dd91c 100755
+index 01ed3fe..5ec1ea3 100755
 --- a/freenom.sh
 +++ b/freenom.sh
 @@ -159,15 +159,6 @@ if [ -z "$RCPTTO" ]; then
@@ -76,20 +85,66 @@ index 01ed3fe..84dd91c 100755
  # set a few general variables
  
  c_opts="--connect-timeout 30 --compressed -L -s"
-@@ -476,22 +467,40 @@ func_sleep () {
+@@ -476,22 +467,86 @@ func_sleep () {
    fi
  }
  
 +# Function sleep: send mail
 +func_mailto()
 +{
++local MAILHOST MAILPORT
 +local ssl_opt smtp_proto
-+case ${MAILPORT} in 
-+	25) ssl_opt=""; smtp_proto="smtp"; ;;
-+	465) ssl_opt="--ssl-reqd"; smtp_proto="smtps"; ;;
-+	587) ssl_opt="--ssl-reqd"; smtp_proto="smtp"; ;;
-+	*) echo "Error: Unknown MAILPORT: ${MAILPORT}."; return 1;
++
++case ${MAILUSERNAME} in
++	*@gmail.com)
++		MAILHOST="smtp.gmail.com"
++		MAILPORT=587
++		;;
++	*@qq.com)
++		MAILHOST="smtp.qq.com"
++		MAILPORT=587
++		;;
++	@163.com)
++		MAILHOST="smtp.163.com"
++		MAILPORT=465
++		;;
++	*@vip.163.com)
++		MAILHOST="smtp.vip.163.com"
++		MAILPORT=465
++		;;
++	*@outlook.com)
++		MAILHOST="smtp.office365.com"
++		MAILPORT=587
++		;;
++	*)
++		MAILHOST=smtp.${MAILUSERNAME#*@}
++		MAILHOST=$(ping -c 1 ${MAILHOST} | grep -Po '^PING\s*\K\S+')
++		[ -z "${MAILPORT}" ] && curl smtp://${MAILHOST}:587 --ssl-reqd -X "QUIT" &>/dev/null && MAILPORT=587
++		[ -z "${MAILPORT}" ] && curl smtps://${MAILHOST}:465 --ssl-reqd -X "QUIT" &>/dev/null && MAILPORT=465
++		[ -z "${MAILPORT}" ] && curl smtp://${MAILHOST}:25 -X "QUIT" &>/dev/null && MAILPORT=25
++		[ -z "${MAILPORT}" ] && {
++		echo "Error: Unsupport MAILHOST: ${MAILHOST}"
++		return 1
++		}
++		;;
 +esac
++
++case ${MAILPORT} in 
++	25) ssl_opt=""
++		smtp_proto="smtp"
++		;;
++	465) ssl_opt="--ssl-reqd"
++		 smtp_proto="smtps"
++		 ;;
++	587) ssl_opt="--ssl-reqd"
++		 smtp_proto="smtp"
++		 ;;
++	*)
++	echo "Error: Unknown MAILPORT: ${MAILPORT}."
++	return 1
++	;;
++esac
++
 +curl --silent ${ssl_opt} --login-options AUTH=LOGIN \
 +	--url "${smtp_proto}://${MAILHOST}:${MAILPORT}" \
 +	--mail-from "${MAILUSERNAME}" \
@@ -102,7 +157,7 @@ index 01ed3fe..84dd91c 100755
  #         parameters: $1: event 2: $messages
  mailEvent() {
 -  if [ "$MTA" != "" ] && [ "$RCPTTO" != "" ]; then
-+  if [ "$MAILHOST" != "" ] && [ "$MAILPORT" != "" ] && [ "$MAILUSERNAME" != "" ] && [ "$MAILPASSWD" != "" ]; then
++  if [ "$MAILUSERNAME" != "" ] && [ "$MAILPASSWD" != "" ]; then
      if [ "$debug" -ge 1 ]; then
 -      echo "DEBUG: $(date '+%H:%M:%S') email $pad4   HOSTNAME=$HOSTNAME MTA=$MTA RCPTTO=$RCPTTO 1=$1 2=$2"
 +      echo "DEBUG: $(date '+%H:%M:%S') email $pad4   HOSTNAME=$HOSTNAME RCPTTO=$RCPTTO 1=$1 2=$2"

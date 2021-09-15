@@ -2,18 +2,19 @@
 
 pkgname=freenom-script
 pkgver=20210824
-pkgrel=3
+pkgrel=4
 pkgdesc="Freenom.com Domain Renewal and Dynamic DNS script."
 arch=('any')
 url="https://github.com/mkorthof/freenom-script"
 license=('GPL3')
 depends=('curl')
+optdepends=('iputils: support custom domain email address')
 source=("${pkgname}::git+${url}.git"
 		0001-Makefile-Support-staged-installs-with-DESTDIR.patch
 		0002-send-mail-via-curl-command.patch)
 md5sums=('SKIP'
 		 '1747aec87824ab195db8a39803fc8d49'
-		 'dcd0bb7ae443e9f500744ac9f6c725c0')
+		 'be0f303a84acd3b6a8a5388bc17e3813')
 install=freenom-script.install
 
 pkgver() {
