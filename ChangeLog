@@ -1,3 +1,8 @@
+4.9.0 (2021-09-14 15:47:43)
+
+    Fixes loading of the new dyld shared cache,
+    Fixes issues with the Objective-C metadata of Apple Silicon binaries.
+
 4.8.2 (2021-08-06 23:09:32)
 
     Adds an hexadecimal view in the data inspector of the hex editor mode,
