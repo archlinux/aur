@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released"
 # *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.127.0
+pkgver=1.130.0
 pkgrel=1
 epoch=1
 pkgdesc='TL (Legacy) is freeware launcher of Minecraft.'
@@ -30,7 +30,7 @@ _mojang='https://libraries.minecraft.net'
 
 _bootstrap_version='1.14.0'
 _bootstrap_checksum='fb56dc76a1b4d1e44065cc297ea7fcfca805f554e4e22298cb828ddd13c514eb'
-_launcher_checksum='15e1e4fdca2aef2203a5b9c3bc2291e60428c6b0c282591afd809d88caff29cc'
+_launcher_checksum='611f3be151511fbdf71328943159dcaa5a32cc102e4e5c092c5f27aeefef924b'
 
 source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
         "tl-launcher-${pkgver}.jar::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
@@ -61,6 +61,7 @@ source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/legacy_beta/bootstrap/
         ${_maven}/commons-codec/commons-codec/1.11/commons-codec-1.11.jar
         ${_mojang}/com/mojang/authlib/1.5.24/authlib-1.5.24.jar
         ${_librepo}/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar
+        ${_maven}/com/moandjiezana/toml/toml4j/0.7.2/toml4j-0.7.2.jar
 
         'minecraft.256x256.png'
         'minecraft.192x192.png'
@@ -102,6 +103,7 @@ sha256sums=("${_bootstrap_checksum}"
             "e599d5318e97aa48f42136a2927e6dfa4e8881dff0e6c8e3109ddbbff51d7b7d"
             "795f783dc6301d10e356d1f3db9952d71692ed8004ffdd843f0049f813a0d1a5"
             "6b4c15577b5256b64c7e3d69dcdbf8d18f17f68ac5928e36936bd6a40a91c218"
+            "f5475e63e7e89e5db62223489aec7a56bd303543772077a17c2cb54c19ca3a20"
 
             '23909ccb5a61f607f355743cdf553799e033fcaac16538b27f1cb0a80aa7faa3'
             '1d5c9f54a06e6a803c6e69093e3cf429c8a9092b94f61ac693993f3f6c1261a7'
@@ -156,4 +158,5 @@ package() {
   install -Dm0644 "${srcdir}/commons-codec-1.11.jar" "${pkgdir}/opt/tlauncher/lib/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"
   install -Dm0644 "${srcdir}/authlib-1.5.24.jar" "${pkgdir}/opt/tlauncher/lib/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
   install -Dm0644 "${srcdir}/nstweaker-1.0.jar" "${pkgdir}/opt/tlauncher/lib/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar"
+  install -Dm0644 "${srcdir}/toml4j-0.7.2.jar" ${pkgdir}/opt/tlauncher/lib/com/moandjiezana/toml/toml4j/0.7.2/toml4j-0.7.2.jar
 }
