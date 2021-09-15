@@ -1,6 +1,6 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 pkgname=rozb3-pac
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="pacman hook for bieaz"
 arch=(any)
@@ -13,4 +13,4 @@ package() {
     cd "$pkgname-$pkgver"
     make DESTDIR=$pkgdir install
 }
-md5sums=('b8fb611c96d46d12684e5debe849027a')
+sha256sums=('32fe3b97db98e923bbc283c566b6126913415e6bc9bd5e9d4636860b724133cb')
