@@ -2,7 +2,7 @@
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=zsh-abbr
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='zsh abbreviations, ported from fish and enhanced'
 arch=('any')
@@ -11,10 +11,9 @@ license=('MIT')
 depends=('zsh')
 makedepends=('git')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-# source=("$pkgname-$pkgver::git+$url#tag=v$pkgver")
-sha256sums=('390affea4ea8a351660a6b8177f493ccf2674e20d73896f7b8f846670defaf5d')
-# validpgpkeys=('5CCA124DFFF2CD60')
+source=("$pkgname-$pkgver::git+$url#tag=v$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('837940698E0066CF8FE580695CCA124DFFF2CD60')
 
 package() {
 	cd "$pkgname-$pkgver"
