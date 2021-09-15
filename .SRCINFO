@@ -1,7 +1,7 @@
 pkgbase = linux-cacule
 	pkgdesc = Linux-CacULE Kernel by Hamad Marri and with some other patchsets
-	pkgver = 5.14.3
-	pkgrel = 2
+	pkgver = 5.14.4
+	pkgrel = 1
 	url = https://github.com/ptr1337/linux-cacule
 	arch = x86_64
 	arch = x86_64_v3
@@ -19,7 +19,7 @@ pkgbase = linux-cacule
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.3.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.4.tar.xz
 	source = config
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/arch-patches-v4/0001-arch-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE/v5.14/cacule-5.14.patch
@@ -50,7 +50,7 @@ pkgbase = linux-cacule
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/0001-v4l2loopback.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/0001-ksm.patch
 	source = auto-cpu-optimization.sh
-	md5sums = b45b18effd1af9077de47f4bc496d2ab
+	md5sums = 3208dd1c05a8542865a1795cdc5b8cec
 	md5sums = 10560c6534f78016b64d300b9ea34460
 	md5sums = 54e7291aee96376a49ab3ba74d3e47f0
 	md5sums = 40a9380b2884f5d417791f06389ba57e
@@ -95,5 +95,5 @@ pkgname = linux-cacule
 
 pkgname = linux-cacule-headers
 	pkgdesc = Headers and scripts for building modules for the Linux-CacULE Kernel by Hamad Marri and with some other patchsets
-	depends = linux-cacule=5.14.3
+	depends = linux-cacule=5.14.4
 	depends = pahole
