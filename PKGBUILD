@@ -1,5 +1,5 @@
 pkgname=bibcal-bin
-pkgver=0.5.6
+pkgver=0.5.7
 pkgdesc="Calculate dates based on the Bible and the 1st Book of Enoch."
 pkgrel=1
 arch=(x86_64)
@@ -13,8 +13,8 @@ source=("${pkgname%-bin}-$pkgver::$url/releases/download/$pkgver/${pkgname%-bin}
         "${pkgname%-bin}-$pkgver.LICENSE::https://raw.githubusercontent.com/johanthoren/bibcal/$pkgver/LICENSE"
         "${pkgname%-bin}-$pkgver.README.md::https://raw.githubusercontent.com/johanthoren/bibcal/$pkgver/README.md")
 sha256sums=(
-  "05c20bb08fc6108f886ca6fe48bf012f23fb0f289debe7a998f3021fbf083027"
-  "407011102971cb27b32a9f26304ba6e78fc3303abeb80614cbb0df202c155a59"
+  "7bfb56182a8876c4244a2807c376fd498244c1a710ae3a28bd383f64499d3bfd"
+  "1e444b9c809f173eeb0e3e680cbe68caad580e21870e81493215469a70d9af62"
   SKIP
   "42ff7de4bd2675dff14a44fe4c2eb7d5b88f616f8206e72e9aa3a209f51365ba"
   "104f2c2a70ce3d7e270ae33ae9db7a5e400329ef4e643c37ad0560bca742b689"
