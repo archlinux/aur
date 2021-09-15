@@ -5,8 +5,8 @@
 
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
-_gitbranch=5.14
-pkgver=5.14.4.r1031933.g16c743ef6c25
+_gitbranch=5.15
+pkgver=5.15rc1.r1042776.g76ae1c63f2a4
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
@@ -21,7 +21,6 @@ options=('!strip')
 source=(
   "${_srcname}::git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
   config # the main kernel config files
-  sphinx-workaround.patch # Sphinx 3.5 broke the build again
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -29,8 +28,7 @@ validpgpkeys=(
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
 )
 sha256sums=('SKIP'
-            '4f29d57ca28900cbc6da041b8334636c1efc36aba4dae337221f7bba1d355659'
-            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
+            'a850533463b5e85b0ee15c94325643c4c626c7faa7ad1d13f9270f181253ac82')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
