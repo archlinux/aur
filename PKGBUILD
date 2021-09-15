@@ -1,7 +1,7 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
 pkgver=5.1.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
@@ -22,8 +22,7 @@ source=('karaokemugen::git+https://lab.shelter.moe/karaokemugen/karaokemugen-app
         'install.sh'
         'run.sh'
         'icon256.png'
-        'karaokemugen.desktop'
-        'appPath.patch')
+        'karaokemugen.desktop')
 noextract=()
 md5sums=('SKIP'
          'SKIP'
@@ -31,8 +30,7 @@ md5sums=('SKIP'
          '8373c231fb432d6efef66e3ecf94ff0f'
          '19475472f2046c57de4b627ac90982df'
          '5e9a33a42fef7572b7e0fa504c586f32'
-         '10561eed906a5efeed427f90501b4f49'
-         '1c331f8ccc9b3157ac0d9af4b559dd69')
+         '10561eed906a5efeed427f90501b4f49')
 
 prepare() {
     cd "$srcdir/${pkgname}"
@@ -40,8 +38,6 @@ prepare() {
     git config submodule.src/lib.url $srcdir/${pkgname}-lib
     git config submodule.assets/guestAvatars.url $srcdir/${pkgname}-avatars
     git submodule update
-    # Apply appPath patch
-    patch "$srcdir/${pkgname}/src/index.ts" "$srcdir/appPath.patch"
 }
 
 build() {
