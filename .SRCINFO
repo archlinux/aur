@@ -1,20 +1,19 @@
 pkgbase = mcsema
 	pkgdesc = Framework for lifting program binaries to LLVM bitcode
-	pkgver = 3.0.14
-	pkgrel = 2
+	pkgver = 3.0.26
+	pkgrel = 1
 	url = https://github.com/lifting-bits/mcsema
 	arch = x86_64
 	license = AGPL3
 	makedepends = cmake
 	makedepends = python-setuptools
-	depends = cxx-common=0.1.1
+	depends = cxx-common=0.1.4
 	depends = remill
 	depends = anvill
 	depends = libunwind
 	depends = python
 	depends = python-protobuf
-	source = https://github.com/lifting-bits/mcsema/archive/v3.0.14.tar.gz
-	sha256sums = 4ba350e43b92032d9689a3764ebdee6ab2f2340ba6fd363ece94f8aa9d8be179
+	source = https://github.com/lifting-bits/mcsema/archive/refs/tags/v3.0.26.tar.gz
+	sha256sums = 553531d15f6a97973759efc0e0924ab09e9c1d487bd344ed713e471e2c77cb3c
 
 pkgname = mcsema
-
