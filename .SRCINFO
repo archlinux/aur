@@ -1,24 +1,24 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 16.0.2 Oracle Build.
-	pkgver = 16.0.2.u7
+	pkgdesc = Java OpenJDK 17 Oracle Build.
+	pkgver = 17.u35
 	pkgrel = 1
-	url = https://jdk.java.net/16
+	url = https://jdk.java.net/17
 	arch = x86_64
 	license = GPL2
 	depends = java-environment-common
 	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=16
-	provides = java-environment-openjdk=16
-	provides = java-runtime=16
-	provides = java-runtime-openjdk=16
-	provides = java-runtime-headless=16
-	provides = java-runtime-headless-openjdk=16
-	conflicts = jre-openjdk>=16
-	conflicts = jre-openjdk-headless>=16
-	conflicts = jdk-openjdk>=16
-	source = https://download.java.net/java/GA/jdk16.0.2/d4a915d82b4c4fbb9bde534da945d746/7/GPL/openjdk-16.0.2_linux-x64_bin.tar.gz
-	sha256sums = 6c714ded7d881ca54970ec949e283f43d673a142fda1de79b646ddd619da9c0c
+	provides = java-environment=17
+	provides = java-environment-openjdk=17
+	provides = java-runtime=17
+	provides = java-runtime-openjdk=17
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-openjdk=17
+	conflicts = jre-openjdk>=17
+	conflicts = jre-openjdk-headless>=17
+	conflicts = jdk-openjdk>=17
+	source = https://download.java.net/java/GA/jdk17/0d483333a00540d886896bac774ff48b/35/GPL/openjdk-17_linux-x64_bin.tar.gz
+	sha256sums = aef49cc7aa606de2044302e757fa94c8e144818e93487081c4fd319ca858134b
 
 pkgname = java-openjdk-bin
