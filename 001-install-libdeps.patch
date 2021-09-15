@@ -1,5 +1,5 @@
---- xtensor-io-0.12.6/CMakeLists.txt	2021-04-19 20:16:40.000000000 +0800
-+++ xtensor-io-0.12.6/CMakeLists.txt	2021-04-23 15:30:39.746307455 +0800
+--- xtensor-io-0.12.9/CMakeLists.txt	2021-04-19 20:16:40.000000000 +0800
++++ xtensor-io-0.12.9/CMakeLists.txt	2021-04-23 15:30:39.746307455 +0800
 @@ -284,7 +284,7 @@
  include(GNUInstallDirs)
  include(CMakePackageConfigHelpers)
