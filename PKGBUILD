@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-cospend
-pkgver=1.3.12
+pkgver=1.3.18
 pkgrel=1
 pkgdesc="Shared budget manager Nextcloud app"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('nextcloud>=20.0.0')
 makedepends=('npm' 'nodejs<16' 'rsync')
 options=('!strip')
 source=("cospend-nc-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('536d7512cf605ab525ddf30eecd2033a7395b7a29de6fef3d5d9856518f6ac10f344342a9ffe31c4db5f4e7e12e3a2b0ad73c3846daa68b21941c949ea6bd16f')
+sha512sums=('bae431d69909444a85c879c5e49ed0f86ffee3717a0c962248a9e8119c5628c184bf04e7e5ca4fe375c778c98168c77466ebb2712fd31728f7e0065c7ce38910')
 _releasename=cospend-nc
 _appname=cospend
 
@@ -38,7 +38,7 @@ package() {
     rm -f "$_destdir/$_appname/l10n/descriptions/gen_info.xml.sh"
     # Remove references to $srcdir from *.js.map
     find "$pkgdir" -type f -name "*.js.map" | while read file; do
-        sed -i "s|webpack://$_appname/$srcdir/$_releasename-$pkgver/node_modules|webpack://$_appname/./node_modules|" $file
+        sed -i "s|$srcdir|/|g" $file
     done
 }
 
