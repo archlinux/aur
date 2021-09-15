@@ -3,8 +3,8 @@
 
 _pyname=agate-sql
 pkgname=python-$_pyname
-pkgver=0.5.7
-pkgrel=4
+pkgver=0.5.8
+pkgrel=1
 pkgdesc='Adds SQL read/write support to agate'
 arch=(any)
 url="https://$_pyname.readthedocs.org"
@@ -21,11 +21,10 @@ checkdepends=(python-crate
               python-pytest)
 _archive="$_pyname-$pkgver"
 source=("$_archive.tar.gz::https://github.com/wireservice/$_pyname/archive/$pkgver.tar.gz")
-sha256sums=('a324a4831b7b30d6a08237a79f873591b9353ebeb4255a9eca023d4a795dc634')
+sha256sums=('2fa8786f7fb05be237ad8366cd9d13231957bcb7d011ef93563244f81f239410')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 	python setup.py build_sphinx
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
@@ -35,9 +34,7 @@ build() {
 
 check() {
 	cd "$_archive"
-	# Upstream Issue: https://github.com/wireservice/agate-sql/issues/35
-	pytest tests \
-		--deselect tests/test_agatesql.py::TestSQL::test_to_sql_create_statement_with_schema
+	pytest tests
 }
 
 package() {
