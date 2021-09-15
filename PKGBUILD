@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.14
-_minor=3
+_minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -71,9 +71,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-Bluetooth-Move-shutdown-callback-before-flushing-tx-.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0003-watchdog-iTCO_wdt-Fix-detection-of-SMI-off-case.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0002-watchdog-iTCO_wdt-Fix-detection-of-SMI-off-case.patch"
          # the main kernel config files
         'config')
 
@@ -312,13 +311,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('7989beb055219414157f049942de51a36d103896fa25fb47cda8b0323991f531a5352dcbf6013c8a5e9d7e1325103025fd99a80445dd0a8c8a2790e0e20649af'
+sha512sums=('c04a090bfd46fe4d28dfab7661f45940bc470580a9f6686f7da8c0bdf4ccf1bc62427a252ade956960883cd64caf49c67ee6c0314edc7fa488c2342f26e9242f'
             'SKIP'
             'f3e42104cc5fb115ba0b6182a927eb76ff9440fd822827d7feec546cc3ef079484d9d13d1384be8085ca6cb49ca1e7d72c788d11c4a5c7449b72b302f7a58b50'
             'b1aef4f4e7350ce8132e019f76a2ac68bee8a46eb981598fbda11402e62a8bcdfd2f49e5b2cc5dcf2e96c88ad047af12d53abb9fda05c9f7acec37879e5240db'
-            '3f8700f9be1ce7049ff15afe6addfe09408fcb0461ad652d5d1795d4ab086837773446a90b85cf02a826d8c073273ebaf38f76495e7164c9af6dd0f7a483fc5d'
-            'cd9acb696f86158dd339298a5a884e10b0014e0d472aef9c28dfed649ef4064f3a8f36060898b0b976badd711b34b1a428152e82a518a1e9495f63d583e62727'
-            'cc843ba2681706ce8045f1c3a1468f671ca135f389ccf567f18d2662e001134f8795b4631b7aff324b4e7c7c2633d52973fe3705573a60564b33362e78cbb9b7'
+            'a98921b79656965401a751ec99cc090b282d3c02c4f00f55222ce54a6790942ae6ea3c8da373690176c79957e373c712a18199feda9817050f68e6d64720b68c'
+            '5c2e7918f4dc31c271c78716ddddfba1f6e5f944cd87bd7808587646fa628c1e77c9c90283c71e94025f1e3b240ca9109da6ac2bfb2e9acf574154579f57c243'
             '219b6ad22fceaf746d0ecb1b82abba4796fdb932bd47b2ff8f2ef8ce4807948618a6596f33bcb632c4381d1141c57b782342d957f5c9a6128d19a34e8907e435')
 
 validpgpkeys=(
