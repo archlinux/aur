@@ -1,6 +1,6 @@
 pkgbase = linux-clear-lts2020
 	pkgdesc = Clear Linux lts2020
-	pkgver = 5.10.64
+	pkgver = 5.10.65
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-lts2020
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = linux-clear-lts2020
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.10.64.xz
-	source = clearlinux-lts2020::git+https://github.com/clearlinux-pkgs/linux-lts2020.git#tag=5.10.63-14
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.10.65.xz
+	source = clearlinux-lts2020::git+https://github.com/clearlinux-pkgs/linux-lts2020.git#tag=5.10.64-15
 	source = more-uarches-20210818.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210818.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
 	sha256sums = SKIP
-	sha256sums = 4c38a55b5f5212ab6a4cb5007921bffbe9e50578c3389c6cb43c2b57deeb356f
+	sha256sums = 701713c274afdc0575fd782fed03f10720dedb5098f39681c835332e41108e12
 	sha256sums = SKIP
 	sha256sums = d361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf
 
