@@ -10,7 +10,7 @@ license=('unknown')
 depends=(electron)
 makedepends=(p7zip gendesk)
 source=("${pkgname}-${pkgver}.exe::https://www.iautodraw.com/static/version/IAuto%20Setup%20${pkgver}(win%2064).exe")
-sha512sums=('9cbda61e9f58d91ea592ae87ac4560e2169f710959721015c889c2fa84a5a4bbe418a7d5ab55619be69ee56e4045968ca145cf1be7231b1e4bb51a44e4413e28')
+sha512sums=('5b00286fbd63e85e3e7ee55521d76e273f0889ec1d386e580b242e6a955ac9803efcf6ad0cf62a51a15fa884cb4c561b916e2e6b70434cb16479a8e7632142b6')
 
     prepare() {
     cd $srcdir
