@@ -9,6 +9,6 @@ pkgbase = gitleaks
 	makedepends = go
 	depends = glibc
 	source = https://github.com/zricethezav/gitleaks/archive/v7.6.1/gitleaks-v7.6.1.tar.gz
-	sha256sums = 316b418ba0bec92ff427a71146eed414440a955d697b63ee593203653d8771de
+	b2sums = 7a9080917d35a681fad3c2030274aa00f8392efa583d189a66ef7992fd729cec0d269431dcd03f9db4617a0441f0a94f2c24394a46c7f2a64b776709693e9244
 
 pkgname = gitleaks
