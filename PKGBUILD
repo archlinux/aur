@@ -1,9 +1,9 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive-git
-pkgver=2.6.16.Matrix.r0.g4612021
+pkgver=19.0.0.Matrix.r0.gbd75dd8
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 18+"
-arch=('x86_64' 'i686' 'armv7h' 'armv6h')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/xbmc/inputstream.adaptive"
 license=('GPL2')
 depends=('kodi' 'expat')
@@ -14,6 +14,8 @@ conflicts=("${pkgname%-git}")
 # source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Leia')
 # kodi 19
 source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Matrix')
+# kodi 20
+# source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Nexus')
 md5sums=('SKIP')
 
 pkgver() {
