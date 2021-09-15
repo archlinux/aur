@@ -1,0 +1,16 @@
+pkgbase = htmlq-bin
+	pkgdesc = Like jq, but for HTML
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/mgdm/htmlq
+	arch = x86_64
+	license = MIT
+	provides = htmlq
+	conflicts = htmlq
+	noextract = htmlq-bin-0.3.0.tar.gz
+	source = htmlq-bin-0.3.0.tar.gz::https://github.com/mgdm/htmlq/releases/download/v0.3.0/htmlq-x86_64-linux.tar.gz
+	source = htmlq-bin-0.3.0-LICENSE.md::https://raw.githubusercontent.com/mgdm/htmlq/v0.3.0/LICENSE.md
+	sha256sums = cfd8a871b8f3c3921c8b4c943806704cf058af1691248cce382885e8f8ce025f
+	sha256sums = d456ecab8c75cb216100cf7eddb0d6c672e123884745a4ce8d4962496c2f904f
+
+pkgname = htmlq-bin
