@@ -3,12 +3,12 @@
 
 pkgname=waydroid
 pkgver=r30.15bbf62
-pkgrel=1
+pkgrel=2
 pkgdesc="A container-based approach to boot a full Android system on a regular Linux system"
 arch=('any')
 url='https://github.com/waydroid'
 license=('GPL')
-depends=('lxc' 'python' 'python-gbinder' 'python-gobject')
+depends=('lxc' 'python' 'python-gbinder' 'python-gobject' 'nftables' 'dnsmasq')
 makedepends=('git')
 optdepends=('waydroid-image: Android image for use with waydroid')
 _commit="15bbf62e43e8e2482aab809d24153fcbfc83a7bf"
