@@ -1,12 +1,11 @@
 pkgbase = cargo-nono-bin
 	pkgdesc = A cargo subcommand to detect (possible) no_std compatibility of your crate and dependencies
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hobofan/cargo-nono
 	arch = x86_64
 	license = APACHE
 	license = MIT
-	makedepends = cargo
 	provides = cargo-nono
 	conflicts = cargo-nono
 	noextract = cargo-nono-bin-0.1.9.tar.gz

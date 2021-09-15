@@ -1,12 +1,11 @@
 # Maintainer: Funami
 pkgname=cargo-nono-bin
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A cargo subcommand to detect (possible) no_std compatibility of your crate and dependencies"
 arch=('x86_64')
 url="https://github.com/hobofan/cargo-nono"
 license=('APACHE' 'MIT')
-makedepends=('cargo')
 provides=('cargo-nono')
 conflicts=('cargo-nono')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hobofan/cargo-nono/releases/download/$pkgver/cargo-nono-$pkgver-x86_64-unknown-linux-gnu.tar.gz"
