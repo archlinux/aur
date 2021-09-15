@@ -1,7 +1,7 @@
 pkgbase = freenom-next
 	pkgdesc = Freenom domain name renews automatically
 	pkgver = 20210910
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/luolongfei/next-freenom
 	arch = any
 	license = MIT
