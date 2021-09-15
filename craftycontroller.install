@@ -14,9 +14,9 @@ post_install() {
     echo "3..."
     echo "2..
     echo "1."
-    sudo -u crafty ./opt/craftycontroller/start.sh && success=1 & exit 0 
-    if [ ! -z $success ]; then
-        success=0
+    sudo -u crafty ./opt/craftycontroller/start.sh && export success=1 & exit 0 
+    if [ ! -z "$success" ]; then
+        export success="0"
     fi
     if [ "$success" == "0" ]; then
         echo "Initialisation failed; Please run /opt/craftycontroller/start.sh as 'crafty' user."
