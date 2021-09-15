@@ -1,0 +1,16 @@
+pkgbase = hvif-git
+	pkgdesc = HVIF implementation for Linux
+	pkgver = 0.1.0.r0.g2193c3e
+	pkgrel = 1
+	url = https://linkmauve.fr/dev/hvif/
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = cargo
+	depends = gdk-pixbuf2
+	provides = hvif
+	conflicts = hvif
+	source = git+https://git.linkmauve.fr/hvif.git
+	sha256sums = SKIP
+
+pkgname = hvif-git
