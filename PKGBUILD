@@ -4,13 +4,15 @@
 
 pkgname=st-opinionated
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="simple terminal with some opinionated picked patches"
 license=("custom")
 arch=("any")
 url="https://st.suckless.org/"
-depends=("harfbuzz")
-makedepends=()
+depends=(
+  "libx11"
+  "libxft"
+)
 
 source=(
   "https://st.suckless.org/patches/desktopentry/st-desktopentry-0.8.4.diff"
