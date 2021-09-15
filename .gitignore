@@ -1,6 +1,0 @@
-aigpy/
-*.log
-pkg/
-src/
-*.pkg.tar.xz
-*.tar.gz
