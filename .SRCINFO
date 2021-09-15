@@ -1,6 +1,6 @@
 pkgbase = lightpkg
 	pkgdesc = Yet another pacman/AUR helper.
-	pkgver = 1.0.1.2
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/TargetGalaxy/lightpkg/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = lightpkg
 	depends = git
 	depends = sudo
 	depends = lua
-	source = lightpkg-1.0.1.2.tar.gz::https://github.com/TargetGalaxy/lightpkg/archive/v1.0.1.2.tar.gz
-	sha256sums = 811e2cafccc4b84313f829f4f95ed78098a5ee2fecae2b8484276ef19c56208b
+	source = lightpkg-1.1.tar.gz::https://github.com/TargetGalaxy/lightpkg/archive/v1.1.tar.gz
+	sha256sums = 58a7213a224e6f1da82d85988560e1ca55a156fe59e201694a1260929757a8d0
 
 pkgname = lightpkg
