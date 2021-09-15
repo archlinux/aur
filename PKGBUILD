@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname=dictd
 pkgname=$_pkgname-runit
-pkgver=r2
+pkgver=r3
 pkgrel=1
 pkgdesc="runit service scripts for $_pkgname"
 url="https://aur.archlinux.org/packages/$pkgname"
@@ -9,7 +9,7 @@ arch=(any)
 license=(GPL)
 depends=(runit $_pkgname)
 source=($_pkgname.run $_pkgname.finish)
-sha256sums=('03e14ddf8a5bbe63625d96a8942ad166b467ae7b78672035964e7dc2bdbd9965'
+sha256sums=('385133bb1030b109d85cd474be1e6a751e84ee2870813c19981f577779edaa2e'
             '22a2152e470acbeda7059141314d270d8e727719b8cf7c43e7265480add2187d')
 
 package() {

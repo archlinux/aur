@@ -1,6 +1,6 @@
 pkgbase = dictd-runit
 	pkgdesc = runit service scripts for dictd
-	pkgver = r2
+	pkgver = r3
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/dictd-runit
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dictd-runit
 	depends = dictd
 	source = dictd.run
 	source = dictd.finish
-	sha256sums = 03e14ddf8a5bbe63625d96a8942ad166b467ae7b78672035964e7dc2bdbd9965
+	sha256sums = 385133bb1030b109d85cd474be1e6a751e84ee2870813c19981f577779edaa2e
 	sha256sums = 22a2152e470acbeda7059141314d270d8e727719b8cf7c43e7265480add2187d
 
 pkgname = dictd-runit

@@ -1,5 +1,4 @@
 #!/bin/sh
 killall -q dictd
 [ -r /etc/conf.d/dictd ] && . /etc/conf.d/dictd
-/usr/bin/dictd $DICTD_ARGS -- $DICTD_EARGS &&
-    exec pwait -nx dictd
+dictd $DICTD_ARGS -- $DICTD_EARGS && exec pwait -nx dictd
