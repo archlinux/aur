@@ -1,0 +1,14 @@
+diff --git a/meson.build b/meson.build
+index 1eb2a91d4a77ad88af55014a54a6a6805c457b13..62efb39f2f3ae9bb518b0ffe00e3c1e668a93a8b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -75,7 +75,8 @@ if not py_installation.found()
+ endif
+ dependency('glib-2.0')
+ dependency('gobject-introspection-1.0', version: '>=1.35.9')
+-dependency('gtk+-3.0', version :'>=3.24')
++dependency('gtk4', version :'>=4.4.0')
++dependency('libadwaita-1', version :'>=1.0.0')
+
+ gnome = import('gnome')
+ prefix = get_option('prefix') # should be /usr

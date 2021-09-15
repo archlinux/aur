@@ -1,7 +1,7 @@
 pkgbase = giara
 	pkgdesc = Reddit gtk client
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/giara
 	arch = any
 	license = GPL3
@@ -22,6 +22,8 @@ pkgbase = giara
 	conflicts = redditgtk
 	replaces = redditgtk
 	source = https://gitlab.gnome.org/World/giara/-/archive/1.0/giara-1.0.tar.gz
+	source = gtk4.patch
 	sha256sums = ec8a7c7cba8ae6b79cf36db7cefe1ee58f8818d04a7ff305773ba5a317fba88f
+	sha256sums = b5fe4b2164a076d43baa964a10aff78dcf281300ca6122ca7109e383cf21329e
 
 pkgname = giara
