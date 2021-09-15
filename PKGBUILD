@@ -2,7 +2,7 @@
 # Maintainer: monosans
 # Based on wlroots-git PKGBUILD
 pkgname=wlroots-eglstreams-git
-pkgver=0.14.1.r5023.509ee5fd
+pkgver=0.14.1.r5090.f23c7612
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library with EGLStreams support (git version)'
@@ -20,7 +20,7 @@ depends=(
 	xcb-util-errors
 	xcb-util-renderutil
 	xcb-util-wm
-	libseat
+	seatd
 	systemd
 	xorg-xwayland)
 makedepends=(
@@ -51,7 +51,7 @@ package () {
 }
 
 post_upgrade() {
-	echo "Make sure to upgrade wlroots-eglstream-git and sway-git together."
+	echo "Make sure to upgrade wlroots-eglstreams-git and sway-git together."
 	echo "Upgrading one but not the other is unsupported."
 }
 # vim:set ts=4 sw=4 noet:
