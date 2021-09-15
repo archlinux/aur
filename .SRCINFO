@@ -1,13 +1,13 @@
 pkgbase = knockson-bin
 	pkgdesc = simple multi-threaded port scanner written in rust
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/joshmuente/knockson
 	arch = x86_64
 	license = MIT
 	provides = knockson
 	conflicts = knockson
-	source = https://github.com/joshmuente/knockson/releases/download/v0.7.1/knockson_v0.7.1_x86_64-unknown-linux-musl.tar.xz
-	sha256sums = 8bc557aad999a79106dbcc36fe1c4db793925379f71dad88335e9cfa421e35dd
+	source = https://github.com/joshmuente/knockson/releases/download/v0.8.0/knockson_v0.8.0_x86_64-unknown-linux-musl.tar.xz
+	sha256sums = 85b0d669bba0c453eee1f4b506090eae1706f7fdd56682c8a35c9d688d5f0865
 
 pkgname = knockson-bin
