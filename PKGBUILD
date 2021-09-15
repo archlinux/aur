@@ -1,6 +1,6 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=ttf-qurancomplex-fonts
-pkgver=20210608
+pkgver=20210808
 pkgrel=1
 pkgdesc="Arabic fonts by King Fahd Glorious Quran Printing Complex in al-Madinah al-Munawwarah"
 arch=('any')
@@ -20,12 +20,12 @@ source=(https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2018/10/Basmal
 	https://fonts.qurancomplex.gov.sa/download/Symbols1_Ver02.otf
 	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/01/UthmanicBazzi_v07-font.zip
 	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2020/12/UthmanicDoori_v09-font.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/03/UthmanicHafs1-Ver17.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2020/12/UthmanicQaloon_v09-font.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2020/12/UthmanicQumbul_v07-font.zip
+	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/08/UthmanicHafs1_Ver18.zip
+	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/08/UthmanicQaloon_Ver10.zip
+	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/08/UthmanicQumbul_v07.zip
 	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2020/12/UthmanicShouba_v08-font.zip
 	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2020/12/UthmanicSoosi_v09-font.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/01/UthmanicWarsh_v9-font.zip
+	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/08/UthmanicWarsh_Ver10.zip
 	https://fonts.qurancomplex.gov.sa/wp-content/uploads/2012/06/UthmanTN1-Ver10.zip
 	https://fonts.qurancomplex.gov.sa/wp-content/uploads/2012/06/UthmanTN1B-Ver10.zip)
 sha256sums=(
@@ -43,12 +43,12 @@ sha256sums=(
 	'3f7746014ff9e4124882e66b4f0e2c11629bbc99f3c42be4ea324988f7572809'
 	'464738f0052c4ba943e511c56bc9875a99068193a2aff1cb46adb6586edbb7b3'
 	'0b3fb97057f01144428f88abe180fcdf39927d610f9470505153f00300f41149'
-	'88173f7f45e791d598ab209a6bdba7f38db43d5c3d894a82920ce4bce2cf4bd7'
-	'db05facd97cf87d2bc0f357db2eae260c34dba627031df27a2233faaf3ec38b5'
-	'5665abd9747d625643dfb923ebaee8581df35b4bd2f9e7992ccee0b8e986f137'
+	'a6d67e7d6d01b8af401af03a7c5c11c8b5dcd5b12fb737c463863e9db006fb50'
+	'd86951b3f1692d77765c83378c6e514a4552c6e50e42eed552cfd64142f102a9'
+	'694f6015a15a9f00ee9f93c15057dfb34bde5b5176af34330a3594493e6503da'
 	'c6111a89d78ad6a282b901871ce259a565dba367060212ccfe79596f0df3c067'
 	'edea604474cb8aa4de4563bda9d31b8a498458a2712fe1d226a1f381fd5e6185'
-	'bb57fac2e962f44e2783b62914d6835ec75fe9e94f8daf80ec8ca435fe3eadcc'
+	'88dd4f5017bcff91417e0d84bc51c8d1a1bd472057af1439601395683294560d'
 	'f5a2c73eb3b618e499afbd03d559b5204bcdabb46d59b8b7cacd13a485162bf9'
 	'73e7fc1c556cc3a7e3048d90fb26f919688464d7e0c9c0e4815871c13588a8c8')
 
