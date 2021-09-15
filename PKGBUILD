@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.14
-_minor=3
+_minor=4
 pkgver=${_major}.${_minor}
 pkgrel=1
 _srcname=linux-${pkgver}
@@ -71,7 +71,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K210909v1"
+_bfq_rel="r2K210914v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -81,9 +81,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-Bluetooth-Move-shutdown-callback-before-flushing-tx-.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0003-watchdog-iTCO_wdt-Fix-detection-of-SMI-off-case.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0002-watchdog-iTCO_wdt-Fix-detection-of-SMI-off-case.patch"
          # the main kernel config files
         'config')
 
@@ -330,13 +329,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('7989beb055219414157f049942de51a36d103896fa25fb47cda8b0323991f531a5352dcbf6013c8a5e9d7e1325103025fd99a80445dd0a8c8a2790e0e20649af'
+sha512sums=('c04a090bfd46fe4d28dfab7661f45940bc470580a9f6686f7da8c0bdf4ccf1bc62427a252ade956960883cd64caf49c67ee6c0314edc7fa488c2342f26e9242f'
             'SKIP'
-            '6b93adf52303ca94a4d27fe52914b1615622a9764a94f39eb32153a38b2504880ff9d225f3b21bd6fa7943d320effacb10fd7f99e799e23024da767a1af75b7a'
+            '32d7894fdd8dee5c819cb7a1a645ad20e19c5b30002e92531d532e65ce92a531e658e6438df1afd9adf7b04109ea8f6263f1de340c4f15ca913db28a99a1d1ec'
             'b1aef4f4e7350ce8132e019f76a2ac68bee8a46eb981598fbda11402e62a8bcdfd2f49e5b2cc5dcf2e96c88ad047af12d53abb9fda05c9f7acec37879e5240db'
-            '3f8700f9be1ce7049ff15afe6addfe09408fcb0461ad652d5d1795d4ab086837773446a90b85cf02a826d8c073273ebaf38f76495e7164c9af6dd0f7a483fc5d'
-            'cd9acb696f86158dd339298a5a884e10b0014e0d472aef9c28dfed649ef4064f3a8f36060898b0b976badd711b34b1a428152e82a518a1e9495f63d583e62727'
-            'cc843ba2681706ce8045f1c3a1468f671ca135f389ccf567f18d2662e001134f8795b4631b7aff324b4e7c7c2633d52973fe3705573a60564b33362e78cbb9b7'
+            'a98921b79656965401a751ec99cc090b282d3c02c4f00f55222ce54a6790942ae6ea3c8da373690176c79957e373c712a18199feda9817050f68e6d64720b68c'
+            '5c2e7918f4dc31c271c78716ddddfba1f6e5f944cd87bd7808587646fa628c1e77c9c90283c71e94025f1e3b240ca9109da6ac2bfb2e9acf574154579f57c243'
             'e84fca9e14d6edf5edef5fdd1603910d9645d38f06a049d1d357fc9c827fab2d2a1c316098af0ddb28452551c438f91fcfd218c65de38f0f0c5f577a772b9efa')
 
 validpgpkeys=(
