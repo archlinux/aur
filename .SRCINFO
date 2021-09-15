@@ -1,14 +1,14 @@
 pkgbase = python-xmlformatter
 	pkgdesc = Provides formatting of XML documents
-	pkgver = 0.1.1
+	pkgver = 0.2.4
 	pkgrel = 1
-	url = http://pamoller.com/xmlformatter.html
+	url = https://github.com/pamoller/xmlformatter
 	arch = any
-	license = custom: MIT
+	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/x/xmlformatter/xmlformatter-0.1.1.tar.gz
-	sha256sums = 1897b8c7868860d4b02c450d2f208391cb6f18bf60102ab0d89703b3088280e2
+	source = https://pypi.python.org/packages/source/x/xmlformatter/xmlformatter-0.2.4.tar.gz
+	sha256sums = 6d93c4bc04cffb1d4cf6eb9d9034018e9b264e4554269e7da67539ba4bff03f5
 
 pkgname = python-xmlformatter
 	pkgdesc = Provides formatting of XML documents (python3 version)
@@ -17,4 +17,3 @@ pkgname = python-xmlformatter
 pkgname = python2-xmlformatter
 	pkgdesc = Provides formatting of XML documents (python2 version)
 	depends = python2
-
