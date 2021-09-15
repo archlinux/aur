@@ -3,7 +3,7 @@
 
 pkgname=corepaint
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A paint app from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd build
-  DESTDIR="${srcdir}" ninja install
+  DESTDIR="${pkgdir}" ninja install
 }

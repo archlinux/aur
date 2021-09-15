@@ -1,7 +1,7 @@
 pkgbase = corepaint
 	pkgdesc = A paint app from the C Suite
 	pkgver = 4.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/cubocore/coreapps/corepaint
 	arch = x86_64
 	arch = aarch64
@@ -15,4 +15,3 @@ pkgbase = corepaint
 	md5sums = 288f4e5b336ea369efa31579d6838d39
 
 pkgname = corepaint
-
