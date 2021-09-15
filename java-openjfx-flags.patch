@@ -37,8 +37,8 @@ index 7a7cbc72..6705a0f3 100644
      linkFlags += "-g"
 @@ -294,7 +299,7 @@ LINUX.iio.nativeSource = [
  LINUX.iio.compiler = compiler
- LINUX.iio.ccFlags = [ccFlags].flatten()
- LINUX.iio.linker = linker
+ LINUX.iio.ccFlags = [cFlags, "-fvisibility=hidden"].flatten()
+ LINUX.iio.linker = IS_STATIC_BUILD ? "ld" : linker
 -LINUX.iio.linkFlags = [linkFlags].flatten()
 +LINUX.iio.linkFlags = [linkFlags, "-ljpeg"].flatten()
  LINUX.iio.lib = "javafx_iio"
@@ -57,19 +57,23 @@ index 450b55d3..f27b9479 100644
           -Wformat                \
           -Wextra                 \
           -Wformat-security       \
-@@ -29,13 +29,8 @@ CFLAGS = -fPIC                   \
+@@ -29,17 +29,13 @@ CFLAGS = -fPIC                   \
           -DLINUX                 \
           -DGST_DISABLE_LOADSAVE  \
           -DGSTREAMER_LITE \
 -         -ffunction-sections -fdata-sections
--
++         -ffunction-sections -fdata-sections \
++         ${CFLAGS}
+
+ ifneq ($(ARCH), aarch64)
+     CFLAGS += -msse2
+ endif
+
 -ifeq ($(BUILD_TYPE), Release)
 -    CFLAGS += -Os
 -else
 -    CFLAGS += -g -Wall
 -endif
-+         -ffunction-sections -fdata-sections \
-+         ${CFLAGS}
  
  PACKAGES_INCLUDES := $(shell pkg-config --cflags glib-2.0)
  PACKAGES_LIBS     := $(shell pkg-config --libs glib-2.0 gobject-2.0)
@@ -101,20 +105,24 @@ index 1e58d4d3..627865f9 100644
           -Wformat                \
           -Wextra                 \
           -Wformat-security       \
-@@ -30,14 +30,8 @@ CFLAGS = -fPIC                   \
+@@ -30,18 +30,13 @@ CFLAGS = -fPIC                   \
           -DGST_DISABLE_LOADSAVE  \
           -DGST_DISABLE_GST_DEBUG \
           -DGSTREAMER_LITE \
 -         -ffunction-sections -fdata-sections
--
++         -ffunction-sections -fdata-sections \
++         ${CFLAGS}
+ 
+ ifneq ($(ARCH), aarch64)
+     CFLAGS += -msse2
+ endif
+
 -ifeq ($(BUILD_TYPE), Release)
 -    CFLAGS += -Os
 -else
 -    CFLAGS += -g -Wall
 -endif
 -
-+         -ffunction-sections -fdata-sections \
-+         ${CFLAGS}
  
  INCLUDES = -I$(SRCBASE_DIR) \
  	   $(addprefix -I$(SRCBASE_DIR)/,$(DIRLIST)) \
