@@ -3,9 +3,9 @@
 
 pkgname=eclipse-java
 epoch=2
-pkgver=4.20
+pkgver=4.21
 pkgrel=1
-_release=2021-06/R
+_release=2021-09/R
 pkgdesc="Highly extensible IDE (Java version)"
 arch=('x86_64')
 url="https://www.eclipse.org/"
@@ -17,7 +17,7 @@ conflicts=(eclipse)
 _srcfilename="$pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
         "eclipse.desktop")
-sha512sums=('4047a3b89d577689ad5e78959d85843638d04145af4c24173d0567cbf7642d2e5faf4d919b8457203fedd68827b6ad3ddacfe1eba6cc997755b0ab5e05bd7179'
+sha512sums=('1baeed0f32ea23eed2c1166ab6b92b086f181a030c9a4e59bf424515c558bf1c57c5f6ce077c2f94c12644eb8224f6034b5d724d726636454428c12459f2028f'
             '676d79e18ef847fc27efc68d85e5f3c3af3eaaa9946acc98161998a3a0771d2a72c7197bdb6d8c180e1b59c2a0bb591150d15114b416c1a0a0f5dbdb06bdb13e')
 
 backup=('usr/lib/eclipse/eclipse.ini')
@@ -31,7 +31,7 @@ package() {
   install -Dm0644 "eclipse.desktop" "${pkgdir}/usr/share/applications/eclipse.desktop"
   
   for i in 16 22 24 32 48 64 128 256 512 1024 ; do
-      install -Dm0644 eclipse/plugins/org.eclipse.platform_*/eclipse$i.png \
+      install -Dm0644 eclipse/plugins/org.eclipse.platform_${pkgver}*/eclipse$i.png \
           "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/eclipse.png"
   done
 }
