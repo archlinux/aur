@@ -1,13 +1,14 @@
 pkgbase = python-opterator
-	pkgdesc = Opterator is an option parsing script for Python that takes the boilerplate out of option parsing.
+	pkgdesc = Option parsing script that generates commandline options from the main method signature
 	pkgver = 0.5
-	pkgrel = 1
-	url = https://github.com/buchuki/opterator/
+	pkgrel = 2
+	url = https://github.com/buchuki/opterator
 	arch = any
 	license = MIT
-	depends = python>=3.2
-	source = https://github.com/buchuki/opterator/archive/0.5.tar.gz
-	md5sums = 3f48e185e1b602cd3b5706a8f1889995
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	source = python-opterator-0.5.tar.gz::https://github.com/buchuki/opterator/archive/0.5.tar.gz
+	sha256sums = 767420569553272331021d6eda764a544dc5583ee384cf695fdd6e44c2ecb841
 
 pkgname = python-opterator
-
