@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname=windscribe
 pkgname=$_pkgname-runit
-pkgver=r2
+pkgver=r3
 pkgrel=1
 pkgdesc="runit service scripts for $_pkgname"
 url="https://aur.archlinux.org/packages/$pkgname"
@@ -9,7 +9,7 @@ arch=(any)
 license=(GPL)
 depends=(runit $_pkgname-cli)
 source=($_pkgname.run $_pkgname.finish)
-sha256sums=('b6ac48f46440f0426f3c2b9275bfad9869211637c58b3ce3f7a2cf44d3cce59d'
+sha256sums=('f719b57b18fb2fda60920a5394f8532070fa70db555456c0dc7ae21371fd0cb0'
             'c6a27438d58724f74ceddfb41feec50822c72f16d8216a68b121bae706d5d9a3')
 
 package() {

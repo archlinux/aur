@@ -1,2 +1,2 @@
 #!/bin/sh
-windscribe start && exec pwait -nf 'windscribe start'
+windscribe start >/dev/null && exec pwait -nf 'windscribe start'
