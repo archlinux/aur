@@ -1,55 +1,36 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-stsci.stimage
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python2-${_pyname}")
-pkgver=0.2.4
+pkgname=("python-${_pyname}")
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="STScI image processing"
 arch=('i686' 'x86_64')
-url="http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python"
+url="https://stscistimage.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-numpy' 'python2-numpy')
-#checkdepends=('python-pytest')
+makedepends=('python-setuptools-scm' 'python-numpy')
+checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('724307233dff3cde9578848cd1bea91c')
+md5sums=('88cd348d05fa525c7ae8fbdde8ea62c7')
 
 prepare() {
-    cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
+   export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
-    msg "Building Python2"
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-    python2 setup.py build
-
-    msg "Building Python3"
     cd ${srcdir}/${_pyname}-${pkgver}
+
     python setup.py build
 }
 
 check() {
-#   msg "Checking Python3"
-#   cd ${srcdir}/${_pyname}-${pkgver}
-#   python setup.py test
-#   pytest
-
-#   msg "Checking Python2"
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-    python2 setup.py test
-}
-
-package_python2-stsci.stimage() {
-    depends=('python2-numpy')
-    optdepends=('python-stsci.stimage-doc: Documentation for STScI STImage')
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-    install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
-    python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    pytest "build/lib.linux-${CARCH}-${_pyver}" || warning "Tests failed"
 }
 
 package_python-stsci.stimage() {
-    depends=('python-numpy')
+    depends=('python-numpy>=1.14')
     optdepends=('python-stsci.stimage-doc: Documentation for STScI STImage')
     cd ${srcdir}/${_pyname}-${pkgver}
 

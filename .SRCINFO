@@ -1,23 +1,17 @@
 pkgbase = python-stsci.stimage
 	pkgdesc = STScI image processing
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
-	url = http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python
+	url = https://stscistimage.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	checkdepends = python-pytest
+	makedepends = python-setuptools-scm
 	makedepends = python-numpy
-	makedepends = python2-numpy
-	source = https://files.pythonhosted.org/packages/source/s/stsci.stimage/stsci.stimage-0.2.4.tar.gz
-	md5sums = 724307233dff3cde9578848cd1bea91c
+	source = https://files.pythonhosted.org/packages/source/s/stsci.stimage/stsci.stimage-0.2.5.tar.gz
+	md5sums = 88cd348d05fa525c7ae8fbdde8ea62c7
 
 pkgname = python-stsci.stimage
-	depends = python-numpy
+	depends = python-numpy>=1.14
 	optdepends = python-stsci.stimage-doc: Documentation for STScI STImage
-
-pkgname = python2-stsci.stimage
-	depends = python2-numpy
-	optdepends = python-stsci.stimage-doc: Documentation for STScI STImage
-
