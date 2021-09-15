@@ -11,7 +11,7 @@ conflicts=(${pkgname%-*})
 url="https://github.com/Dr-Noob/gpufetch"
 license=('MIT')
 depends=('glibc' 'cuda')
-makedepends=('git' 'make' 'cuda-tools')
+makedepends=('git' 'make' 'cmake' 'cuda-tools')
 source=("git+https://github.com/Dr-Noob/gpufetch")
 md5sums=('SKIP')
 
@@ -22,10 +22,19 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_name"
+  mkdir build/
+  cd build/
+  cmake -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -Wno-dev \
+        ..
+  MAKEFLAGS="-j$(nproc) --no-print-directory"
   make
 }
 
 package() {
   cd "$srcdir/$_name"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" make -C build install
+  install -Dm644 "LICENSE"    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "gpufetch.1" "$pkgdir/usr/share/man/man1/gpufetch.1.gz"
 }
