@@ -1,61 +1,33 @@
-# Maintainer: peeweep <peeweep at 0x0 dot ee>
+# Maintainer : Frikilinux <frikilinux@gmail.com>
 
-pkgname=('python-aigpy-git' 'python2-aigpy-git')
-_pkgname=aigpy
-pkgver=20190925.fc958ab
+pkgname=python-aigpy-git
+_pkgname=AIGPY
+pkgver=r66.2d65c80
 pkgrel=1
-pkgdesc="Python Common Lib"
+pkgdesc="Python-universal-library."
 arch=('any')
-url="https://github.com/yaronzz/AIGPY"
+url="https://github.com/AIGMix/AIGPY"
 license=('MIT')
-makedepends=(
-  'git'
-  'python-setuptools'
-  'python2-setuptools'
-)
-source=("${_pkgname}::git+${url}.git")
+depends=('ffmpeg' 'python-requests' 'python-colorama' 'python-mutagen')
+makedepends=('python-setuptools')
+source=(git+"${url}.git")
 sha256sums=('SKIP')
+conflicts=('python-aigpy')
+provides=('python-aigpy')
+
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
-}
-
-prepare() {
-  cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-2"
+  cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
   python setup.py build
-
-  cd "${srcdir}/${_pkgname}-2"
-  python2 setup.py build
 }
 
-package_python-aigpy-git() {
-  depends=(
-    'python'
-    'python-requests'
-    'python-colorama'
-    'python-mutagen'
-  )
-  cd "${srcdir}/${_pkgname}"
+package() {
+  cd "${_pkgname}"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
-
-package_python2-aigpy-git() {
-  depends=(
-    'python2'
-    'python2-requests'
-    'python2-colorama'
-    'python2-mutagen'
-    'python2-futures'
-  )
-  cd "${srcdir}/${_pkgname}-2"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  install -Dm644 "${srcdir}/${_pkgname}-2/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-# vim:set ts=2 sw=2 et:
