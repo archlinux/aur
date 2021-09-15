@@ -1,7 +1,7 @@
 # Maintainer: Roman Kupriyanov <mr.eshua@gmail.com>
 _pkgname=jitsi-meet-desktop
 pkgname=${_pkgname}-bin
-pkgver=2.8.11
+pkgver=2.8.12
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application powered by Electron"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/jitsi/jitsi-meet-electron"
 license=('Apache')
 provides=(${_pkgname})
 conflicts=(${_pkgname}
-           'jitsi-meet-electron')
+          'jitsi-meet-electron')
 replaces=('jitsi-meet-electron')
 depends=()
 makedepends=('coreutils')
@@ -18,7 +18,7 @@ backup=()
 options=(!strip)
 source=("jitsi-meet-${arch[0]}-${pkgver}.AppImage::https://github.com/jitsi/jitsi-meet-electron/releases/download/v${pkgver//_/-}/jitsi-meet-${arch[0]}.AppImage"
         "${_pkgname}.desktop")
-sha256sums=('0f39db4b00355084b0dc49087cce611a09884e8797b07d5bd4707b50e8034ca5'
+sha256sums=('c145599ac3481f05cb6ff58e098ee085492935ccba3067587512a2d5b1f09b04'
             '16de58926874dd4bbb0f2a232eb7df7b57058d04637f0109cda4dbdeb0c23b9c')
 
 
