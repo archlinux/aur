@@ -1,7 +1,7 @@
 # Maintainer: freb
 
 pkgname=burpsuite-pro
-pkgver=2021.8.2
+pkgver=2021.8.3
 pkgrel=1
 pkgdesc="An integrated platform for performing security testing of web applications (professional edition)"
 url="https://portswigger.net/burp/"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.jar::https://portswigger.net/burp/releases/downloa
         splash.png)
 install=burpsuite-pro.install
 sha256sums=(
-  'f8706df120be5478c6da361b316050e7b8423d9973f0b1a946de57c4085355a6' # jar
+  '1490cab5a0d0f54eb8850a5c6a4e8591eaf583b0c8b62931692dc69c6ff3caca' # jar
   '740a01fd3feacee5b0563edc4c6634219d367bf2590ecfc954959a95354506c8' # burpsuite-pro.desktop
   'f9b8bedbab02c8f0e03b2f5e3f99fa003c58d767168c3c4aa135233b3b533d4b' # icon128.png
   '3aaa84dd4c3d31a88cd065b8445d164737c7fad4fb56833fb994de0bf6dbe3be' # splash.png
