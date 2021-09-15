@@ -8,13 +8,12 @@
 # Contributor: Sean Pringle <sean.pringle@gmail.com>
 # Contributor: SanskritFritz (gmail)
 
-_gitname=rofi
 pkgname=rofi-lbonn-wayland-git
-pkgver=1.7.0.r32.g2a68677b
+pkgver=1.7.0.r33.ga97ba40b
 pkgrel=1
 pkgdesc='A window switcher, application launcher and dmenu replacement (Wayland fork)'
 arch=(x86_64)
-url="https://github.com/lbonn/$_gitname"
+url='https://github.com/lbonn/rofi'
 license=(MIT)
 depends=(libxdg-basedir startup-notification libxkbcommon-x11 xcb-util-cursor xcb-util-wm
          xcb-util-xrm librsvg wayland)
@@ -22,24 +21,25 @@ makedepends=(check git meson wayland-protocols)
 optdepends=('i3-wm: use as a window switcher')
 provides=(rofi)
 conflicts=(rofi)
-source=("${_gitname}::git+${url}.git#branch=wayland")
+source=("rofi::git+https://github.com/lbonn/rofi.git#branch=wayland")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd rofi
   git describe --long --tags | sed 's/-wayland//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $_gitname
+  cd rofi
   git submodule update --init
 }
 
 build() {
-  arch-meson \
-    -Dwayland=enabled \
-    -Dcheck=enabled \
-    $_gitname build
+  local meson_options=(
+    -D wayland=enabled
+    -D check=enabled
+  )
+  arch-meson rofi build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -48,10 +48,9 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir="$pkgdir"
 
-  cd $_gitname
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  install -dm755 "$pkgdir/usr/share/doc/$_gitname/examples"
-  install -Dm755 Examples/*.sh "$pkgdir/usr/share/doc/$_gitname/examples"
+  cd rofi
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname/ COPYING
+  install -Dm755 -t "$pkgdir"/usr/share/doc/rofi/examples/ Examples/*.sh
 }
