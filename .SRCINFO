@@ -1,7 +1,7 @@
 pkgbase = doas
 	pkgdesc = A port of OpenBSD's doas(1), an alternative to sudo(1)
-	pkgver = 6.3p2
-	pkgrel = 4
+	pkgver = 6.3p6
+	pkgrel = 1
 	url = https://github.com/slicer69/doas
 	install = doas.install
 	changelog = doas.changelog
@@ -16,14 +16,11 @@ pkgbase = doas
 	conflicts = opendoas-git
 	backup = etc/doas.conf
 	backup = etc/pam.d/doas
-	source = doas-6.3p2.tar.gz::https://github.com/slicer69/doas/archive/6.3p2.tar.gz
-	source = 00-Makefile.patch
+	source = doas-6.3p6.tar.gz::https://github.com/slicer69/doas/archive/6.3p6.tar.gz
 	source = doas-pam
 	source = doas.conf
-	sha256sums = 037813a404bfe35289f2c6cb22a8c4de6f636b2a491e546a90d2ae2afa54aa64
-	sha256sums = 627a97d223365100f378de31786ab3abe337752012830d32adc994a02e46144f
+	sha256sums = aa6f5d686942d9148506634e7b84af561af2564b689a287434023b1f272c064a
 	sha256sums = b064704fb3448c3511904c3963b0e167ecf6274aea48afb9c42d452447dfd042
 	sha256sums = 1f28802fad6ae0eaa5b94bb8d945ada923631ddfb7ae63e934962dbe41774976
 
 pkgname = doas
-

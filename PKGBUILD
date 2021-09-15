@@ -1,13 +1,13 @@
 # Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 # Contributor: Stephen Gregoratto <dev at sgregoratto dot me>
 pkgname=doas
-pkgver=6.3p2
-pkgrel=4
+pkgver=6.3p6
+pkgrel=1
 pkgdesc="A port of OpenBSD's doas(1), an alternative to sudo(1)"
 license=('BSD')
 url="https://github.com/slicer69/doas"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=()
+depends=() # bash & pam are dependencies of base
 makedepends=('bison')
 optdepends=('vi: default editor for vidoas')
 backup=('etc/doas.conf'
@@ -16,17 +16,11 @@ install="doas.install"
 changelog="doas.changelog"
 conflicts=('opendoas' 'opendoas-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-				'00-Makefile.patch'
         'doas-pam'
 				'doas.conf')
-sha256sums=('037813a404bfe35289f2c6cb22a8c4de6f636b2a491e546a90d2ae2afa54aa64'
-            '627a97d223365100f378de31786ab3abe337752012830d32adc994a02e46144f'
+sha256sums=('aa6f5d686942d9148506634e7b84af561af2564b689a287434023b1f272c064a'
             'b064704fb3448c3511904c3963b0e167ecf6274aea48afb9c42d452447dfd042'
             '1f28802fad6ae0eaa5b94bb8d945ada923631ddfb7ae63e934962dbe41774976')
-
-prepare() {
-  patch "$pkgname-$pkgver/Makefile" "${srcdir}/00-Makefile.patch"
-}
 
 build() {
   cd "$pkgname-$pkgver"
@@ -37,7 +31,7 @@ package() {
   install -Dm644 "doas-pam" "$pkgdir/etc/pam.d/doas"
 	install -Dm644 "doas.conf" "$pkgdir/etc/doas.conf"
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  make PREFIX="/usr" DESTDIR="$pkgdir" MANDIR="$pkgdir/usr/share/man" install
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
