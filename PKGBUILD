@@ -11,7 +11,7 @@ conflicts=(${pkgname%-*})
 url="https://github.com/Dr-Noob/gpufetch"
 license=('MIT')
 depends=('glibc' 'cuda')
-makedepends=('git' 'make' 'cmake' 'cuda-tools')
+makedepends=('git' 'cmake' 'cuda-tools')
 source=("git+https://github.com/Dr-Noob/gpufetch")
 md5sums=('SKIP')
 
