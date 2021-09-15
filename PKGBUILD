@@ -17,7 +17,7 @@ source=("$_pkgname"::"git+https://gitlab.com/crafty-controller/crafty-web.git"
 "$_pkgname.service"
 "start.sh")
 md5sums=('SKIP'
-'620e11d73a8a0c1822a724280a0988cc'
+'f18b2c7e59c71dc94b4260c8bd2a2807'
 '2e7d24f5d2982fc6f7ac224378cf2f02'
 '0b6cd32e5c31ed3bb576f5ad652c0db6')
 
