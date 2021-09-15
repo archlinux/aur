@@ -6,7 +6,7 @@
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
 _gitbranch=5.14
-pkgver=5.14.r1031552.ge3bb405d9143
+pkgver=5.14.4.r1031933.g16c743ef6c25
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
@@ -29,7 +29,7 @@ validpgpkeys=(
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
 )
 sha256sums=('SKIP'
-            'ba850f32774735429f3ba44f914e8f7574cd4ca676542bd1b27c021013ec1e56'
+            '4f29d57ca28900cbc6da041b8334636c1efc36aba4dae337221f7bba1d355659'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -42,7 +42,7 @@ pkgver() {
     "$(grep '^VERSION = ' Makefile|awk -F' = ' '{print $2}')" \
     "$(grep '^PATCHLEVEL = ' Makefile|awk -F' = ' '{print $2}')" \
     "$(grep '^SUBLEVEL = ' Makefile|awk -F' = ' '{print $2}'|grep -vE '^0$'|sed 's/.*/.\0/')" \
-    "$(grep '^EXTRAVERSION = ' Makefile|awk -F' = ' '{print $2}'|tr -d -)" \
+    "$(grep '^EXTRAVERSION = ' Makefile|awk -F' = ' '{print $2}'|tr -d -|sed -E 's/hardened[0-9]+//')" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
