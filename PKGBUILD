@@ -49,4 +49,6 @@ package() {
     install -Dt       "${pkgdir}"/usr/bin jpm/jpm
     install -Dm644 -t "${pkgdir}"/usr/lib/janet/jpm jpm/*.janet
     install -Dm644 -t "${pkgdir}"/usr/share/man jpm.1
+    install -Dm644 -t "${pkgdir}"/usr/share/janet/jpm/configs configs/*
+    install -m644 -T configs/linux_config.janet "${pkgdir}"/usr/lib/janet/jpm/default-config.janet
 }
