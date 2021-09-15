@@ -1,6 +1,6 @@
 pkgbase = dijo-git
 	pkgdesc = scriptable, curses-based, digital habit tracker
-	pkgver = 0.1.4.107.g2a3be00
+	pkgver = 0.2.7.191.gbe6e0e3
 	pkgrel = 1
 	url = https://github.com/NerdyPepper/dijo
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = dijo-git
 	sha256sums = SKIP
 
 pkgname = dijo-git
-
