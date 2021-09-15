@@ -4,7 +4,7 @@
 
 pkgname=ventoy-bin
 pkgver=1.0.52
-pkgrel=5
+pkgrel=6
 pkgdesc="A new multiboot USB solution"
 arch=('i686' 'x86_64')
 url="http://www.ventoy.net"
