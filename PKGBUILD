@@ -2,7 +2,7 @@
 # Contributor: Ryan Dowling <ryan@ryandowling.me>
 
 pkgname=hyper-bin
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('gtk3' 'libxss' 'nss')
 options=('!strip')
 source=("${pkgname}-${pkgver}-amd64.deb::https://github.com/zeit/hyper/releases/download/v${pkgver}/Hyper_${pkgver}_amd64.deb"
         "${pkgname}-${pkgver}-LICENSE::https://github.com/zeit/hyper/raw/v${pkgver}/LICENSE")
-sha256sums=('af7872e791d2a0c13b67ea864e1370b32181f0f14db5f81ab76bb54761f23dd6'
+sha256sums=('c3e1484887867f72b5767ca4204cd4dca7afc9a14d9785f46de4fa0dd2d6fb34'
             '07a1ce5a08f3f385ea6f2aef0c8246c2d9bdd7c8dd21235b76b1cb7116efc13f')
 
 package() {

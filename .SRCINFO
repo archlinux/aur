@@ -1,6 +1,6 @@
 pkgbase = hyper-bin
 	pkgdesc = A terminal built on web technologies
-	pkgver = 3.1.2
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://hyper.is
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = hyper-bin
 	conflicts = hyper
 	conflicts = hyper-appimage
 	options = !strip
-	source = hyper-bin-3.1.2-amd64.deb::https://github.com/zeit/hyper/releases/download/v3.1.2/Hyper_3.1.2_amd64.deb
-	source = hyper-bin-3.1.2-LICENSE::https://github.com/zeit/hyper/raw/v3.1.2/LICENSE
-	sha256sums = af7872e791d2a0c13b67ea864e1370b32181f0f14db5f81ab76bb54761f23dd6
+	source = hyper-bin-3.1.3-amd64.deb::https://github.com/zeit/hyper/releases/download/v3.1.3/Hyper_3.1.3_amd64.deb
+	source = hyper-bin-3.1.3-LICENSE::https://github.com/zeit/hyper/raw/v3.1.3/LICENSE
+	sha256sums = c3e1484887867f72b5767ca4204cd4dca7afc9a14d9785f46de4fa0dd2d6fb34
 	sha256sums = 07a1ce5a08f3f385ea6f2aef0c8246c2d9bdd7c8dd21235b76b1cb7116efc13f
 
 pkgname = hyper-bin
