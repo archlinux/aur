@@ -2,7 +2,7 @@
 
 _pkgname=janet
 pkgname=janet-lang-git
-pkgver=1.17.1.r3053.ef233563
+pkgver=1.17.1.r3118.da2c1be4
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -26,7 +26,7 @@ build() {
     cd "${srcdir}/${_pkgname}"
     CFLAGS+=" -fPIC"
     LDFLAGS+=" -rdynamic"
-    make PREFIX="/usr" $janet_build
+    make PREFIX="/usr" $janet_build -j7
     make PREFIX="/usr" build/janet.pc
     make PREFIX="/usr" docs
 }
@@ -55,4 +55,6 @@ package() {
     install -Dt       "${pkgdir}"/usr/bin jpm/jpm
     install -Dm644 -t "${pkgdir}"/usr/lib/janet/jpm jpm/*
     install -Dm644 -t "${pkgdir}"/usr/share/man jpm.1
+    install -Dm644 -t "${pkgdir}"/usr/share/janet/jpm/configs configs/*
+    install -m644 -T configs/linux_config.janet "${pkgdir}"/usr/lib/janet/jpm/default-config.janet
 }
