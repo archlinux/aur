@@ -1,0 +1,15 @@
+pkgbase = starlark-rust
+	pkgdesc = Rust implementation of the Starlark language
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/facebookexperimental/starlark-rust
+	arch = x86_64
+	license = Apache
+	makedepends = rustup
+	depends = gcc-libs
+	provides = starlark
+	source = starlark-rust-0.5.0.tar.gz::https://github.com/facebookexperimental/starlark-rust/archive/v0.5.0.tar.gz
+	sha512sums = 769fc64864764693b6388a2cfffd61353e3df2903293fd4713736f02fcecff18dcd3908ee5b8d36a6d0194698a056f081d853b620739fc2caeb1aa455ae5ffa1
+	b2sums = 66b64be38e8fbfa5c278d262a6c9ad68b1c12feff322eea85e2cffd3aba3ee438684c60834cc36a532ecf1b608ea2c65df3259d6b45215c083060c926e5d698b
+
+pkgname = starlark-rust
