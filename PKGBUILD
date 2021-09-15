@@ -4,7 +4,7 @@
 
 pkgname=webstorm-eap
 _pkgname=WebStorm
-pkgver=212.5284.34
+pkgver=212.5284.41
 _pkgver=2021.2.2
 pkgrel=1
 pkgdesc="JavaScript IDE and HTML editor. Early Access Program."
@@ -14,13 +14,11 @@ url="http://www.jetbrains.com/webstorm"
 license=('custom')
 depends=()
 
-source=(https://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
-        webstorm-eap.sh
+source=(https://download.jetbrains.com/webstorm/${_pkgname}-${_pkgver}.tar.gz
         jetbrains-webstorm-eap.desktop
         ${_pkgname}_license.txt)
 
-sha256sums=('f1b20df5a1701cf6f79d1fb2066c5dd592b45c33e654d00621825fe6eaf850d2'
-            '5d71fec58a85d936a24fce93f9e95339cf276902a646da1f2982267fe926a7ed'
+sha256sums=('226d039746ac2a6148e7c7b7b45ae87f0080eb64ede78e85226cd9a43ea67ba8'
             'e8d1be7f980b7d371ef5aa65f2375397d970e887659bf3b280601cced8498e32'
             '8464fc766dbb4f6a0de4acd84007fc2916b50ca48ce7d22654144f549c8c6f4c')
 
@@ -38,6 +36,5 @@ package() {
   install -m 644 "${pkgdir}/opt/${pkgname}/bin/webstorm.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
   install -m 644 "${startdir}/${_pkgname}_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt"
 
-  # Install binary (start from symlink is broken since 211.5787.16)
-  install -Dm 755 "webstorm-eap.sh" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/bin/webstorm.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
