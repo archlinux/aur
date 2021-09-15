@@ -1,0 +1,23 @@
+pkgbase = harbour-amazfish
+	pkgdesc = Companion application for Huami Devices and the Pinetime Infinitime
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/piggz/harbour-amazfish
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	depends = qt5-base
+	depends = kdb
+	depends = kcontacts
+	depends = kcoreaddons
+	depends = qt5-location
+	depends = qt5-connectivity
+	depends = qtmpris
+	depends = nemo-qml-plugin-dbus
+	provides = harbour-amazfish
+	conflicts = harbour-amazfish
+	conflicts = harbour-amazfish-git
+	source = https://github.com/piggz/harbour-amazfish/archive/refs/tags/2.0.2.tar.gz
+	sha512sums = a6b196104da1833895957437651bdcab85ebef56a79fa839150e5c14abf5afca323082a0c3c773f2d2518dabb0ca4903ec3725f6186f1b2dd533b5c534310ef3
+
+pkgname = harbour-amazfish
