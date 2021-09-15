@@ -1,0 +1,16 @@
+pkgbase = crustris
+	pkgdesc = Retro style 2D Tetris game using the crustygame engine.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/paulguy/crustygame
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = sdl2
+	depends = sdl2
+	source = crustygame-0.3.tar.gz::https://github.com/paulguy/crustygame/archive/refs/tags/0.3.tar.gz
+	source = crustris.sh
+	sha256sums = 98441d8cd19706e720195fc0c68e699008bfd1f49513d678c283f91ab4c2b644
+	sha256sums = 1e846c139a1d8b1543f8c42eb63c7d41501afbeb23bbe350920fc6ca09214be0
+
+pkgname = crustris
