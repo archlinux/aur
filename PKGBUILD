@@ -96,7 +96,7 @@ _repo_url_upstream="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux
 
 _reponame_kernel_patch="kernel_compiler_patch"
 _repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
-_kernel_patch_name="more-uarches-for-kernel-5.8+.patch"
+_kernel_patch_name="more-uarches-for-kernel-5.8-5.14.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
