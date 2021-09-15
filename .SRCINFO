@@ -1,6 +1,6 @@
 pkgbase = gtkeddit
 	pkgdesc = GTK4 Reddit client
-	pkgver = 0.2.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://gitlab.com/caveman250/gtkeddit
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = gtkeddit
 	depends = websocketpp
 	depends = libadwaita
 	depends = libsecret
-	source = gtkeddit-0.2.3.tar.gz::https://gitlab.com/caveman250/gtkeddit/-/archive/0.2.3/Gtkeddit-0.2.3.tar.gz
-	sha256sums = d2883451a02587c1ae98bd1d4bcfccd74ac058a61bb9eada1a8d82e4f71486c6
+	source = gtkeddit-0.3.1.tar.gz::https://gitlab.com/caveman250/gtkeddit/-/archive/0.3.1/Gtkeddit-0.3.1.tar.gz
+	sha256sums = f291d62812a6d5ed763d57f80ee9e734fde133927f7526ff68bb6a126ece5b8b
 
 pkgname = gtkeddit

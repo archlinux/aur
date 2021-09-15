@@ -2,7 +2,7 @@
 # Contributor: Jason Wood <jwood@startmail.com>
 
 pkgname=gtkeddit
-pkgver=0.2.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="GTK4 Reddit client"
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
 )
 makedepends=('cmake' 'boost')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/Gtkeddit-$pkgver.tar.gz")
-sha256sums=('d2883451a02587c1ae98bd1d4bcfccd74ac058a61bb9eada1a8d82e4f71486c6')
+sha256sums=('f291d62812a6d5ed763d57f80ee9e734fde133927f7526ff68bb6a126ece5b8b')
 
 build() {
 	cmake \
