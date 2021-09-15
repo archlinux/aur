@@ -1,15 +1,18 @@
 pkgbase = python-tblfaker
 	pkgdesc = Python library to generate fake tabular data
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/thombashi/tblfaker
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-faker
-	depends = python-tabledata
-	source = https://files.pythonhosted.org/packages/source/t/tblfaker/tblfaker-0.2.3.tar.gz
-	sha256sums = 48e3ff4f2c58d7d3c51ca61a2dcf807c394f54b1cac443d15241127a6169b198
+	depends = python-tabledata>=1.1.1
+	depends = python-tabledata<2
+	source = python-tblfaker-0.2.4.tar.gz::https://files.pythonhosted.org/packages/source/t/tblfaker/tblfaker-0.2.4.tar.gz
+	source = python-tblfaker-0.2.4.tar.gz.asc::https://files.pythonhosted.org/packages/source/t/tblfaker/tblfaker-0.2.4.tar.gz.asc
+	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
+	sha256sums = 3da3b13cfee632a20608b5854c9a40665c0e23d47db59b1f88ea0c3a0beb6fe2
+	sha256sums = SKIP
 
 pkgname = python-tblfaker
-
