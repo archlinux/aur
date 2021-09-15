@@ -1,7 +1,7 @@
 # Maintainer: AK <crt@archlinux.email>
 pkgname=discord-irc
 _npmname='discord-irc'
-pkgver=2.8.1
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Connects Discord and IRC channels by sending messages back and forth"
 url="https://github.com/reactiflux/discord-irc"
@@ -16,8 +16,8 @@ source=(
   "system.service"
 )
 noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('7541a06ae8f1481ac027ddcf525c64865f28c2a507bc64bc3ed4c53222c7dcb4'
-            'SKIP')
+sha256sums=('d68e140ef09455596109e8d8cc79c0992b81a3205e5b541abe41472466c51d65'
+            '32c517a078299bc528d69aa29b30f2c8bb79e617aab177da1bafc8117763f669')
 
 package() {
   local _etc="$pkgdir/etc/$pkgname"
@@ -36,7 +36,4 @@ package() {
 
   install -D -m644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    grep -FRlZ "$startdir" "$pkgdir" | \
-    xargs -0 -- sed -i "s|$startdir|/tmp/build|g"
 }
