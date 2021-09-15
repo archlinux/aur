@@ -1,7 +1,7 @@
 pkgbase = mopidy-youtube
 	pkgdesc = Mopidy extension for playing music from Youtube
 	pkgver = v3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/natumbri/mopidy-youtube
 	arch = any
 	license = APACHE

@@ -2,8 +2,8 @@
 
 pkgname=mopidy-youtube
 pkgver=v3.4.0
-_pkgver=v3.4
-pkgrel=1
+_pkgver=3.4
+pkgrel=2
 pkgdesc="Mopidy extension for playing music from Youtube"
 
 arch=('any')
@@ -20,10 +20,10 @@ depends=(
   'python-ytmusicapi')
 makedepends=('python' 'git')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
 
 package() {
-  cd "$pkgname-3.3"
+  cd "$pkgname-$_pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
