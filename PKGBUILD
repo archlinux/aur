@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-bin
-pkgver=21.0125a
+pkgver=21.0905a
 gamefilesver=18.0328
 pkgrel=1
 pkgdesc="Rewrite of Re-Volt, popular R/C car racing game from 1999."
@@ -15,7 +15,8 @@ optdepends=('rvgl-dcpack: dreamcast content pack'
             'libsndfile: for uncompressed audio support'
             'libvorbis: for OGG Vorbis support'
             'flac: for FLAC support'
-            'mpg123: for MPEG support')
+            'mpg123: for MPEG support'
+            'fluidsynth: for SoundFont 2 support')
 makedepends=('git')
 groups=('rvgl-basic' 'rvgl-original' 'rvgl-community')
 source=("rvgl_game_files"::git+https://gitlab.com/re-volt/game_files.git#tag=${gamefilesver}
@@ -41,7 +42,6 @@ package() {
     find * -type f -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
 
     # User folders
-    install -dm777 "$pkgdir/opt/rvgl/cups"
     install -dm777 "$pkgdir/opt/rvgl/cache"
     install -dm777 "$pkgdir/opt/rvgl/profiles"
     install -dm777 "$pkgdir/opt/rvgl/replays"
