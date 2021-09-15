@@ -1,14 +1,22 @@
 pkgbase = python-envinfopy
 	pkgdesc = Python Library to get execution environment information
-	pkgver = 0.0.3
-	pkgrel = 2
+	pkgver = 0.0.7
+	pkgrel = 1
 	url = https://github.com/thombashi/envinfopy
 	arch = any
 	license = MIT
+	checkdepends = python-pytest>=6.0.1
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-discord>=0.0.5
+	checkdepends = python-pytest-md-report>=0.1
+	checkdepends = python-subprocrunner>=1.2.1
+	checkdepends = python-subprocrunner<2
 	makedepends = python-setuptools
-	depends = python
-	source = https://files.pythonhosted.org/packages/source/e/envinfopy/envinfopy-0.0.3.tar.gz
-	sha256sums = cbee4e6ea91b48b9cfafc5817aa97a44f1d61065a9aa37e5e909838da232ec20
+	depends = python>=3.6
+	source = python-envinfopy-0.0.7.tar.gz::https://files.pythonhosted.org/packages/source/e/envinfopy/envinfopy-0.0.7.tar.gz
+	source = python-envinfopy-0.0.7.tar.gz.asc::https://files.pythonhosted.org/packages/source/e/envinfopy/envinfopy-0.0.7.tar.gz.asc
+	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
+	sha256sums = 83f1f3e9d735fbcbf8b76bcec1f972109aec8450df5688109b88a1952e66512e
+	sha256sums = SKIP
 
 pkgname = python-envinfopy
-
