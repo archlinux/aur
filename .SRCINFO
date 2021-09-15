@@ -1,0 +1,17 @@
+pkgbase = juicevm-bin
+	pkgdesc = Juice Vm is a small RISC-V virtual machine and run the latest kernel.The chip which contain hundreds of KB RAM can run this virtual machine,but it wouldn't contain any third-party libraries.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/juiceRv/JuiceVm
+	arch = x86_64
+	license = GPLv3
+	makedepends = libarchive
+	depends = bash
+	provides = juicevm-bin
+	conflicts = juicevm
+	conflicts = juicevm-git
+	options = !strip
+	source = http://xiaohui.mongoyun.com:3333/pool/main/j/juicevm/juicevm_2.0.0_amd64.deb
+	sha256sums = f72b999e0492bff8e4f5da6fc37672c6257927d8fdc0990902fd9385c0cfa229
+
+pkgname = juicevm-bin
