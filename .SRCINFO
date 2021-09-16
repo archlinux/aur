@@ -1,12 +1,11 @@
 pkgbase = kubefwd-bin
 	pkgdesc = kubefwd is a command line utility built to port forward some or all pods within a Kubernetes namespace.
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/txn2/kubefwd
 	arch = x86_64
 	license = apache
-	source = kubefwd-1.20.0.tar.gz::https://github.com/txn2/kubefwd/releases/download/1.20.0/kubefwd_Linux_x86_64.tar.gz
-	sha256sums = b7e69207349e15d0df5243dae933db214daae7cd1a06047ff87d3bd4cc1f3884
+	source = kubefwd-1.21.0.tar.gz::https://github.com/txn2/kubefwd/releases/download/1.21.0/kubefwd_Linux_x86_64.tar.gz
+	sha256sums = 6277f6d79c98af7fefad5a5524c5867c55588392aef699d63e0706640e265948
 
 pkgname = kubefwd-bin
-
