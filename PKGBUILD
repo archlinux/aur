@@ -1,6 +1,6 @@
 # Maintainer: ivanich
 pkgname=kodi-addon-inputstream-ffmpegdirect
-pkgver=1.21.8
+pkgver=19.0.0
 pkgrel=1
 pkgdesc="Inputstream ffmpegdirect kodi plugin"
 _koditarget=Matrix
@@ -17,8 +17,9 @@ source=("https://github.com/xbmc/${_gitname}/archive/${pkgver}-${_koditarget}.ta
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
 
-sha256sums=('c40d05db6f7efae2b3e6c703ad32863f4a11582af7349c8ab940840e4b0fb0a5'
+sha256sums=('47b920094d1ffaa8a6204ffb223cff94078a764c035a97384ae969e87a3f5e6e'
             '195a916a32057e259e6f42b49ba8f07cc6253460018851a52deb058ae938c58c')
+
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
 }
