@@ -1,7 +1,7 @@
 pkgbase = fdutils
 	pkgdesc = Utilities for the Linux floppy driver, i.e. for formatting extra capacity disks
-	pkgver = 5.5
-	pkgrel = 5
+	pkgver = 5.6
+	pkgrel = 1
 	url = http://fdutils.linux.lu/index.html
 	install = fdutils.install
 	arch = i686
@@ -17,10 +17,11 @@ pkgbase = fdutils
 	options = !strip
 	options = !makeflags
 	options = !buildflags
-	source = http://deb.debian.org/debian/pool/main/f/fdutils/fdutils_5.5-20060227.orig.tar.gz
-	source = http://deb.debian.org/debian/pool/main/f/fdutils/fdutils_5.5-20060227-7.debian.tar.xz
-	md5sums = cccab0f580659b91810a590436f688ee
-	md5sums = 0168d881016bfde31c7f0d0c0667bf30
+	source = http://deb.debian.org/debian/pool/main/f/fdutils/fdutils_5.6.orig.tar.gz
+	source = http://deb.debian.org/debian/pool/main/f/fdutils/fdutils_5.6-2.debian.tar.xz
+	source = destdir_fix.patch
+	md5sums = 85efbd7b9a4cf87687d3270ed2a7e7fd
+	md5sums = 734bc4ad5e69014b37c2ed2afe3d8c16
+	md5sums = 22e16c952f64e0a4385db74fc089170b
 
 pkgname = fdutils
-

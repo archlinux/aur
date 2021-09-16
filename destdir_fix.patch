@@ -1,0 +1,22 @@
+--- src/fdutils-5.6/doc/Makefile.in	2021-09-16 23:04:17.423703401 +0200
++++ Makefile.in	2021-09-16 23:04:06.116908414 +0200
+@@ -9,12 +9,13 @@
+ DESTDIR     =
+ prefix      = @prefix@
+ exec_prefix = @exec_prefix@
+-bindir      = $(DESTDIR)@bindir@
+-infodir     = $(DESTDIR)@infodir@
+-mandir      = $(DESTDIR)@mandir@
+-infodir     = $(DESTDIR)@infodir@
+-sysconfdir  = $(DESTDIR)@sysconfdir@
+-datarootdir = $(DESTDIR)@datarootdir@
++bindir      = @bindir@
++infodir     = @infodir@
++mandir      = @mandir@
++infodir     = @infodir@
++sysconfdir  = @sysconfdir@
++datarootdir = @datarootdir@
++
+ 
+ mandir1     = $(mandir)/man1
+ mandir4     = $(mandir)/man4
