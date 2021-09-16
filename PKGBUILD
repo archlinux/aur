@@ -1,24 +1,22 @@
-# Maintainer: web.de jan.stuehler
+# Maintainer: xeruf <27f at pm dot me>
 _pkgname=chordpro
-_author="Johan Vromans"
-pkgname=chordpro-git
-pkgbase=chordpro-git
-pkgver=R0_975.r4.g1b12db5
+pkgname="${_pkgname}-git"
+pkgver=5.982.r6.gaf467dc
 pkgrel=1
 pkgdesc='Reference implementation of the ChordPro standard for musical lead sheets.'
 arch=('any')
-url="https://github.com/ChordPro/chordpro"
+url="https://github.com/ChordPro/${_pkgname}"
 license=('Artistic2.0')
-provides=($pkgname)
+provides=("${_pkgname}")
 optdepends=(perl-text-layout)
-depends=(git perl-string-interpolate-named perl-font-ttf perl-image-info perl-io-string perl-json-pp perl-pdf-api2 perl-app-packager perl-file-loadlines)
+depends=(git perl-string-interpolate-named perl-font-ttf perl-image-info perl-io-string perl-json-pp perl-pdf-api2 perl-app-packager perl-file-loadlines perl-pod-parser)
 options=('!emptydirs' purge)
 source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^R//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
