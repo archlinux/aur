@@ -15,11 +15,11 @@ source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgnam
 sha256sums=('4bb1d87bb6605823379b07f6c02c8af45df01a27cc85bd6abb7cf1446ce7d188')
 
 build() {
-  cd $_pkgname-$pkgver
+  cd ${_pkgname/-/_}-$pkgver
   python setup.py build
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd ${_pkgname/-/_}-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
