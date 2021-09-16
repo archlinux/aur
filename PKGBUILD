@@ -74,8 +74,8 @@ _use_current=
 pkgbase=linux-cacule
 pkgname=('linux-cacule' 'linux-cacule-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14.4
-pkgrel=2
+pkgver=5.14.5
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -527,7 +527,7 @@ package_linux-cacule-headers() {
 
 }
 
-md5sums=('3208dd1c05a8542865a1795cdc5b8cec'
+md5sums=('8d239f7b469b7b21514fb60143894dd5'
          '10560c6534f78016b64d300b9ea34460'
          '9abde29217354c69925d2bc672f66d67'
          '40a9380b2884f5d417791f06389ba57e'
