@@ -15,8 +15,8 @@ conflicts=(
 backup=('etc/authelia/configuration.yml')
 
 source_x86_64=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-amd64.tar.gz")
-source_aarch64=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm64v8.tar.gz")
-source_armv7h=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm32v7.tar.gz")
+source_aarch64=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm64.tar.gz")
+source_armv7h=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm.tar.gz")
 
 sha256sums_x86_64=('4394c93623affd13bc3c3ed611b82c62f1a9d1b0ce2bf0eb8141bd2359263d0e')
 sha256sums_aarch64=('d780286c6256970d27db15cf053eb0bc88fede84f796a2ea2864599aaed01028')
