@@ -2,7 +2,7 @@
 pkgname=mainsail-git
 _pkgname="${pkgname%-git}"
 pkgver=r1087.61232df
-pkgrel=1
+pkgrel=2
 pkgdesc="Klipper web frontend"
 arch=(any)
 url="https://github.com/meteyou/mainsail"
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/meteyou/mainsail.git#branch=develop' 'mainsail-klipper.cfg' 'mainsail-nginx.conf')
 sha256sums=('SKIP'
-            '8cc7f8e97459cc9e529363f63151a205d4a3702a1d20ce864d9f7d7b51a4e1cf'
+            '3eca6e0cb002cb7def79ed41d81c734f12c5f365dee43f1fad38b0a7ae7a30dc'
             '7c86d687ac7b1fb84fc04d1ffcd468a05767a9c9d880ad6d666b2527523495ec')
 
 pkgver() {

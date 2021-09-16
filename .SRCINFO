@@ -1,7 +1,7 @@
 pkgbase = mainsail-git
 	pkgdesc = Klipper web frontend
 	pkgver = r1087.61232df
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meteyou/mainsail
 	arch = any
 	license = GPLv3
@@ -14,7 +14,7 @@ pkgbase = mainsail-git
 	source = mainsail-klipper.cfg
 	source = mainsail-nginx.conf
 	sha256sums = SKIP
-	sha256sums = 8cc7f8e97459cc9e529363f63151a205d4a3702a1d20ce864d9f7d7b51a4e1cf
+	sha256sums = 3eca6e0cb002cb7def79ed41d81c734f12c5f365dee43f1fad38b0a7ae7a30dc
 	sha256sums = 7c86d687ac7b1fb84fc04d1ffcd468a05767a9c9d880ad6d666b2527523495ec
 
 pkgname = mainsail-git
