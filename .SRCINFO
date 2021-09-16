@@ -1,0 +1,12 @@
+pkgbase = python-eth-keys
+	pkgdesc = A common API for Ethereum key operations with pluggable backends
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/ethereum/eth-keys
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/e/eth-keys/eth-keys-0.3.3.tar.gz
+	sha256sums = a9a1e83e443bd369265b1a1b66dc30f6841bdbb3577ecd042e037b7b405b6cb0
+
+pkgname = python-eth-keys
