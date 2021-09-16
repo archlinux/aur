@@ -1,0 +1,6 @@
+pkg
+src
+*.tar.gz
+*.pkg.tar.zst
+LICENSE.html
+OSS-LICENSES.html

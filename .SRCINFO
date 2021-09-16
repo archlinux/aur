@@ -1,0 +1,27 @@
+pkgbase = discord-electron
+	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
+	pkgver = 0.0.15
+	pkgrel = 1
+	url = https://discordapp.com
+	arch = x86_64
+	license = custom
+	makedepends = asar
+	depends = electron
+	depends = libnotify
+	depends = libxss
+	depends = nspr
+	depends = nss
+	depends = gtk3
+	optdepends = libpulse: Pulseaudio support
+	optdepends = xdg-utils: Open files
+	conflicts = discord
+	source = https://dl.discordapp.net/apps/linux/0.0.15/discord-0.0.15.tar.gz
+	source = discord.sh
+	source = LICENSE.html::https://discordapp.com/terms
+	source = OSS-LICENSES.html::https://discordapp.com/licenses
+	sha512sums = 4f220ecd0e0c9fcd793ed065055479391506d9401b75ca541cde4136d0290f2720fccca87139091faf269fdb2c020adb5b7333710a31ca603ce8552f3dd4841b
+	sha512sums = b5fe7bfd31ae1867f3392605bd52ac155c6c02c4a2a132419d9806c08e61715461818919c2e480ba8e7f14b51aefcd588dcaa247f15d24286e177e45f43e17f9
+	sha512sums = 6a2ebf7aadf06ba804c1c6f10677a014b2b9eb17a2bb34538426bf4c76686c4c11976bd682610965535f7a5d4a2f6b36dfa5aa875578defef1213ed866acb530
+	sha512sums = f6d46b7a2dd6c8475625a988f36419788ab90149317c9a4e5e8ffea8613f27d0746c1557467332770c033349abd370bf721990ecadc383b4aee63cb8b74a280c
+
+pkgname = discord-electron
