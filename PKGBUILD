@@ -1,6 +1,6 @@
 pkgname=piwigo
 pkgver=11.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Photo gallery software for the web'
 arch=(any)
 url="https://piwigo.org/"
@@ -19,7 +19,7 @@ source=('piwigo.zip::https://piwigo.org/download/dlcounter.php?code=latest'
         'apache.conf'
         'piwigo.perm.sh')
 sha256sums=('bfecdd743c62cdb4e1936662178d019af264ea763d26c8c832da836fbe09652d'
-            '5810668c0f9e7066a2f63e2c6b6fb5d13b7caa96fed16c882f6da2e7a6766219'
+            '64435b2f5fe29ab6201e00a755bff5dbe77bc4450559a2668a21e750ce13f8be'
             '0e6d4af6552f4eead62825999eee115152cf5f884f2c65b759379ac5b15d36f7')
 
 package() {
