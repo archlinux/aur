@@ -1,6 +1,6 @@
 pkgbase = libusbmuxd-git
 	pkgdesc = A client library to multiplex connections from and to iOS devices
-	pkgver = 2.0.1.r3.g563cd25
+	pkgver = 2.0.2.r18.g2ec5354
 	pkgrel = 1
 	url = http://www.libimobiledevice.org/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = libusbmuxd-git
 	makedepends = git
 	depends = libusb
 	depends = libplist
+	depends = libimobiledevice-glue-git
 	provides = libusbmuxd
 	conflicts = libusbmuxd
 	conflicts = usbmuxd<1.0.9
@@ -17,4 +18,3 @@ pkgbase = libusbmuxd-git
 	sha512sums = SKIP
 
 pkgname = libusbmuxd-git
-
