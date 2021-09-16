@@ -5,13 +5,13 @@
 
 pkgname=usbmuxd-git
 epoch=1
-pkgver=1.1.0.r66.g9af2b12
+pkgver=1.1.1.r28.gb1c7b16
 pkgrel=1
 pkgdesc="A socket daemon to multiplex connections from and to iOS devices"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
 license=('GPL2' 'GPL3')
-depends=('libimobiledevice')
+depends=('libimobiledevice' 'libimobiledevice-glue-git')
 makedepends=('git')
 provides=('usbmuxd')
 conflicts=('usbmuxd')
