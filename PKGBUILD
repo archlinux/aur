@@ -2,7 +2,7 @@
 
 pkgname='python-eth-abi'
 _pkgname=${pkgname#python-}
-pkgver=1.2.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Python utilities for working with Ethereum ABI definitions, especially encoding and decoding."
 arch=('any')
