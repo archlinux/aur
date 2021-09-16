@@ -2,7 +2,7 @@
 
 pkgname=alda-bin
 _pkgname=alda
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='A music programming language for musicians. 🎶'
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=('java-environment>=8')
 options=('!strip')
 source=("https://${_pkgname}-releases.nyc3.digitaloceanspaces.com/${pkgver}/client/linux-amd64/${_pkgname}"
         "https://${_pkgname}-releases.nyc3.digitaloceanspaces.com/${pkgver}/player/non-windows/${_pkgname}-player")
-sha512sums=('254a584b5ae5f10ee767052afc9d40bd616b613efe142442a9a4caf36eb454eff121d853b87e13382639ee218b5bd7140db16b0dbf003358521326f611c9eb81'
-            '3cdc201065acf10e36212f4821c5e00d7c40ec998957803a4fc9d68dac44cdd41c172d2b726f0cdff23257f8c646b101a7397f9ce4f6a3dfb6ae761b9d6e73f7')
+sha512sums=('b3f16cd1eca537e836f20186b6ef76565e7faa24ad11750dee45a297f2025e84c30541443310c3d743dd0452864f3b11a201b6cd94f59ec8a35df5e4bc1a4327'
+'3001273140ed45bb9ee80558e014229c1ad5c069eea6d990cfe51a39e8108686d6ba5a6ccc1cabd70a1eb432b42b9d9ef9a75add711464e2c1bfe2f70cd85d38')
 noextract=('alda'
            'alda-player')
 
