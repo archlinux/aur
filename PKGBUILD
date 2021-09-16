@@ -2,7 +2,7 @@
 # Contributor: Simon Kronberg <Simon.Kronberg at gmail dot com>
 
 pkgname=waterfox-g3-bin
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Third generation of customizable privacy-conscious web browser."
 arch=('x86_64')
@@ -59,4 +59,4 @@ END
 }
 
 sha256sums=('6e86d11bd147e6ea29118c6f5e4d1cd7376ffb61feca25979d6996731b6b663d'
-            '706d20f1e78d784e9bb69c674e50631936449b7b8d98f0c54f5f75cde777b2a8')
+            '282545d697ec0113365b9c5c1ac08d323bbcc25f084b34d7067928af3f54099c')
