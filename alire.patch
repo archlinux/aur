@@ -1,8 +1,8 @@
-Index: alire/alr_env.gpr
+Index: alire-1.1.0/alr_env.gpr
 ===================================================================
---- alire.orig/alr_env.gpr
-+++ alire/alr_env.gpr
-@@ -3,17 +3,17 @@ aggregate project Alr_Env is
+--- alire-1.1.0.orig/alr_env.gpr
++++ alire-1.1.0/alr_env.gpr
+@@ -3,22 +3,22 @@ aggregate project Alr_Env is
     for Create_Missing_Dirs use "True";
  
     for Project_Path use (
@@ -12,22 +12,32 @@ Index: alire/alr_env.gpr
 -                         "deps/ansi",
 -                         "deps/gnatcoll-slim",
 -                         "deps/minirest",
+-                         "deps/optional",
 -                         "deps/semantic_versioning",
 -                         "deps/simple_logging",
+-                         "deps/si_units",
+-                         "deps/stopwatch",
+-                         "deps/toml_slicer",
 -                         "deps/uri-ada",
 -                         "deps/xmlezout",
--                         "deps/spdx");
+-                         "deps/spdx",
+-                         "deps/clic");
 +                         "../aaa",
 +                         "../ada-toml",
 +                         "../ajunitgen",
 +                         "../ansi-ada",
 +                         "../gnatcoll-slim",
 +                         "../minirest",
++                         "../optional",
 +                         "../semantic_versioning",
 +                         "../simple_logging",
++                         "../si_units",
++                         "../stopwatch",
++                         "../toml_slicer",
 +                         "../uri-ada",
 +                         "../xmlezout",
-+                         "../spdx_ada");
++                         "../spdx_ada",
++                         "../clic");
  
     for Project_Files use ("alr.gpr");
  
