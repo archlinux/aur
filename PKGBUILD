@@ -24,6 +24,8 @@ sha256sums=('bfecdd743c62cdb4e1936662178d019af264ea763d26c8c832da836fbe09652d'
 
 package() {
     install_path="${pkgdir}/usr/share/webapps/piwigo"
+    var_path="${pkgdir}/var/lib/piwigo"
+    http_user=33
 
     cd "${srcdir}"
 
@@ -31,6 +33,24 @@ package() {
     install -d "${install_path}"
     cp -a piwigo/* "${install_path}/"
 
+    # Variable data directories.  Should be in /var, but no way to change it in
+    # piwigo configuration (Bug Report?).  So use symbolic links to allow that.
+    install -d "${var_path}"
+    mv "${install_path}/_data" "${var_path}/"
+    ln -s "${var_path#${pkgdir}}/_data" "${install_path}/"
+    mv "${install_path}/upload" "${var_path}/"
+    ln -s "${var_path#${pkgdir}}/upload" "${install_path}/"
+    chown -R ${http_user}:${http_user} "${var_path}"
+
     # Install apache & nginx conf'
     install -D -m644 apache.conf "${pkgdir}/etc/webapps/piwigo/apache.conf"
+
+    # database.inc.php should be writeable in ${install_path}/local/config,
+    # with no way to select the path of this file.  Make that directory
+    # writable by http.  Also, make it not readable by anyone else for
+    # security.
+    # TODO: raise a bug request to be able to set this path to go in e.g.
+    # /etc/piwigo/.  It will better fit here.
+    chown ${http_user}:${http_user} "${install_path}/local/config"
+    chmod o-rwx "${install_path}/local/config/"
 }
