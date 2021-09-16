@@ -1,0 +1,35 @@
+# Maintainer: Aki-nyan <aur@catgirl.link>
+
+pkgname=icestorm-nightly
+pkgver=83b8ef9_20210816
+pkgrel=1
+pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation"
+arch=("any")
+url="https://github.com/YosysHQ/icestorm"
+license=("custom:ISC")
+groups=()
+options=("!strip")
+depends=("python" "libftdi-compat".)
+optdepends=()
+makedepends=("git" "make" "g++")
+conflicts=("icestorm-git")
+replaces=("icestorm-git")
+source=(
+	"icestorm::git+https://github.com/YosysHQ/icestorm.git"#commit=83b8ef9
+)
+sha256sums=(
+	"SKIP"
+)
+
+build() {
+	cd "${srcdir}/icestorm"
+	make CXX=g++ PREFIX="${_PREFIX}" -j $(nproc)
+	cd ..
+}
+
+package() {
+	cd "${srcdir}/icestorm"
+	make PREFIX="${_PREFIX}" DESTDIR="${pkgdir}" install
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/icestorm/LICENSE"
+	cd ..
+}
