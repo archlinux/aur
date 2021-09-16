@@ -2,7 +2,7 @@
 
 _plug=nnedi3cl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r7.3.0.g2b74109
+pkgver=r8.0.geb2a810
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL'
 license=('GPL2')
 depends=('vapoursynth'
          'vapoursynth-plugin-nnedi3_weights_bin'
-         'ocl-icd'
+         'opencl-icd-loader'
          )
 makedepends=('git'
              'opencl-headers'
@@ -38,6 +38,7 @@ prepare() {
 build() {
   cd build
   arch-meson "../${_plug}" \
+    --buildtype=release \
     --libdir /usr/lib/vapoursynth \
     --datadir /usr/lib/vapoursynth
 
