@@ -1,4 +1,5 @@
-# Maintainer: Anderson Rocha <anderson2320@gmail.com>
+# Maintainer: Alice Gaudon <alice at gaudon dot pro>
+# Contributor: Anderson Rocha <anderson2320@gmail.com>
 
 pkgname=cef-minimal-obs-studio-browser
 pkgver=88.2.8
