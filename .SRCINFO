@@ -1,0 +1,13 @@
+pkgbase = perl-regexp-pattern-defhash
+	pkgdesc = Regexp patterns related to DefHash
+	pkgver = 0.001
+	pkgrel = 1
+	url = https://github.com/perlancar/perl-Regexp-Pattern-DefHash
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	source = https://www.cpan.org/modules/by-module/Regexp/Regexp-Pattern-DefHash-0.001.tar.gz
+	sha512sums = d1dc846b1c44cfc2c0d7b1e23ac8ba2b9958f2827d777890f429758570f6418eb003a9b708b733a74acea568cf08a66388800f1a950eb5b579dc3dbcad7b5593
+
+pkgname = perl-regexp-pattern-defhash
