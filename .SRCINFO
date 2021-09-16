@@ -12,12 +12,8 @@ pkgbase = fondo
 	depends = granite
 	depends = libsoup
 	depends = json-glib
-	depends = gtk-theme-elementary
-	depends = elementary-icon-theme
 	conflicts = fondo-git
 	source = git+https://github.com/calo001/fondo.git#tag=1.6.1
-	source = elementary-theme.patch
 	sha256sums = SKIP
-	sha256sums = e2204425522f276d7604f7a3b6471d85cc8d11ede2b2d6b12d66a254f581ec9b
 
 pkgname = fondo
