@@ -22,12 +22,12 @@ url=https://github.com/endeavouros-team/PKGBUILDS
 _commit=a4727ec460b22a0853de4245a9d09f9f955ae969
 
 source=(
-  $url/raw/$_commit/$pkgname
-  $url/raw/$_commit/$pkgname.desktop
-  $url/raw/$_commit/$pkgname.conf
-  $url/raw/$_commit/$pkgname-tool.conf
-  $url/raw/$_commit/mirrorlist-rank-info
-  $url/raw/$_commit/eos-latest-arch-mirrorlist
+  $url/raw/$_commit/$pkgname/$pkgname
+  $url/raw/$_commit/$pkgname/$pkgname.desktop
+  $url/raw/$_commit/$pkgname/$pkgname.conf
+  $url/raw/$_commit/$pkgname/$pkgname-tool.conf
+  $url/raw/$_commit/$pkgname/mirrorlist-rank-info
+  $url/raw/$_commit/$pkgname/eos-latest-arch-mirrorlist
 )
 sha512sums=('1637cf77f63cee0706f2f8774f32a8fe40d944915e46aeee7f0426d77b149f7dbd6477abfeac3b47e2d69a677a30dac19c71aa834d7543a913686a1bf77cc5e2'
             '3435d083e8df72f17a291cca4c3cc62ac7824d1f528e746bf689f8962159fbdd97b6a57d45b3b379a2191e2e49536b77040b13d704a58753fbed00017f4403d0'
