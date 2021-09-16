@@ -2,8 +2,8 @@
 # Contributor: tuxsavvy
 
 pkgname=realrtcw
-pkgver=3.2n
-pkgrel=2
+pkgver=3.3n
+pkgrel=1
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -11,14 +11,14 @@ license=('GPL')
 depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2' 'zlib')
 makedepends=('unzip')
 install='realrtcw.install'
-sha256sums=('3dba9afe8d945c9e351acfde3d6b66e895b6f3aa8f7240204fb71046e9bcb6ce'
+sha256sums=('d57b15f66f02a72891b235336db7350e48b9b6b75367eab169de20f93258184d'
             'SKIP'
             'SKIP'
             '643bd2a56b06fbdf9790b3bb7557c7f6663cc3e86295431f6470b347e37b4bb2'
             'e68d6f400342e36d3db94e519978da0afa2d74f3368b1fe88014c4bdb26b193e'
             '43501d60c80ae4a2837295fb5faf01d42e31f31371fcd6cecc8054eed965b8f6'
             '6482482e637d38ce6eff6ab740f971f86b7e0d205797b2c5044aecfcf5701364')
-_commit="a1344ab17a53bda530e1f34c1a80bca7afcadcf4"
+_commit="8b827c4680c5f1e9a1d702a6743ebf3dcb0d4a47"
 
 _mainid=201571
 _addonsid=201574
