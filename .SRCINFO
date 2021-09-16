@@ -1,14 +1,14 @@
 pkgbase = arm-linux-gnueabihf-gdb
 	pkgdesc = The GNU Debugger for the ARM hard float target
-	pkgver = 10.2
-	pkgrel = 2
+	pkgver = 11.1
+	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = x86_64
 	license = GPL3
 	depends = gdb-common
 	depends = guile2.0
 	options = !emptydirs
-	source = http://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.xz
-	sha256sums = aaa1223d534c9b700a8bec952d9748ee1977513f178727e1bee520ee000b4f29
+	source = http://ftp.gnu.org/gnu/gdb/gdb-11.1.tar.xz
+	sha256sums = cccfcc407b20d343fb320d4a9a2110776dd3165118ffd41f4b1b162340333f94
 
 pkgname = arm-linux-gnueabihf-gdb
