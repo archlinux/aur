@@ -2,7 +2,7 @@
 
 _name=HTMLHint
 pkgname=htmlhint
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc='Static Code Analysis Tool for your HTML'
 arch=('any')
@@ -10,6 +10,7 @@ url=https://htmlhint.com/
 license=('MIT')
 depends=('nodejs')
 makedepends=('git' 'npm')
+options=('!emptydirs')
 source=("git+https://github.com/htmlhint/HTMLHint.git#tag=v$pkgver")
 b2sums=('SKIP')
 
