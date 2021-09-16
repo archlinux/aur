@@ -1,8 +1,8 @@
 modname := shiftfs
 obj-m := $(modname).o
 
-KVERSION := $(shell uname -r)
-KDIR ?= /lib/modules/`uname -r`/build
+KVERSION ?= $(shell uname -r)
+KDIR ?= /lib/modules/$(KVERSION)/build
 PWD := "$$(pwd)"
 
 ifdef DEBUG
