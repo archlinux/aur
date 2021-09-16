@@ -1,7 +1,7 @@
 # Maintainer: Felix Höffken <felix at ctrl.alt.coop>
 
 _npmname=@nestjs/cli
-_npmver=7.5.4
+_npmver=8.1.1
 _srcname="cli-${_npmver}.tgz"
 pkgname=nodejs-nestjs-cli
 pkgver=${_npmver}
@@ -14,11 +14,11 @@ depends=('npm' 'jq' 'typescript')
 optdepends=()
 source=(http://registry.npmjs.org/${_npmname}/-/${_srcname})
 noextract=(${_srcname})
-sha256sums=('9e3658eb5d10028f0b6f79310c41746b803f39cf809e2babafe9f6ce8af1b7cb')
+sha256sums=('304eee9b3dbede6d9b619976c8d7d0326ca65223495b90ade5a9cb965a473d44')
 
 package() {
-  npm install --cache "${srcdir}/npm-cache" -g --user root --prefix "$pkgdir"/usr "${srcdir}/${_srcname}"
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+  npm install --cache "${srcdir}/npm-cache" -g --prefix "$pkgdir/usr" "${srcdir}/${_srcname}"
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 
   # Remove references to $pkgdir
   find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
@@ -29,6 +29,10 @@ package() {
   jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
+
+  # npm gives ownership of ALL FILES to build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "${pkgdir}"
 }
 
 # vim:set ts=2 sw=2 et:
