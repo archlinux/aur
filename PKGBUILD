@@ -20,7 +20,7 @@ depends=(
 	xcb-util-errors
 	xcb-util-renderutil
 	xcb-util-wm
-	libseat
+	seatd
 	systemd)
 makedepends=(
 	git
