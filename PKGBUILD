@@ -76,7 +76,7 @@ pkgbase=linux-cacule-rdb
 pkgname=('linux-cacule-rdb' 'linux-cacule-rdb-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -90,14 +90,15 @@ _caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
         "config"
-#        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/arch-patches-v4/0001-arch-patches.patch"
+        "${_patchsource}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+#        "${_patchsource}/arch-patches-v4/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14-full.patch"
         "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/0007-string.patch"
         "${_patchsource}/misc/allpollingrate.patch"
         "${_patchsource}/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${_patchsource}/misc/0001-AMD-CPPC.patch"
+        "${_patchsource}/misc/zen-tweaks-cacule.patch"
         "${_patchsource}/bfq-patches-v2/0001-bfq-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
@@ -528,13 +529,14 @@ package_linux-cacule-rdb-headers() {
 
 md5sums=('3208dd1c05a8542865a1795cdc5b8cec'
          '977445ce9e8e94e9c9a9113758fcad5a'
-         '54e7291aee96376a49ab3ba74d3e47f0'
+         '9abde29217354c69925d2bc672f66d67'
          '024a0126cfcd18e000a2241f35c4d69e'
          'a804260e2f301ffe2a17d6e3625a9711'
          'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
          'f8e172e9ea554bbb1053eb122c3ace35'
          '302cbad3c979395f37307a094f6d8fd5'
+         '9d7612159f8745044254077ce8a76df6'
          '58eab1d2000ac3fa1d6ab933b13397cc'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
