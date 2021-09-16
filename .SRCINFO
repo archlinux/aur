@@ -1,6 +1,6 @@
 pkgbase = pass-clip-git
 	pkgdesc = A pass extension to copy passwords to the clipboard using fzf or rofi.
-	pkgver = v0.2.r7.g9ef6e93
+	pkgver = 0.2.r9.g26a8668
 	pkgrel = 1
 	url = https://github.com/ibizaman/pass-clip
 	arch = any
