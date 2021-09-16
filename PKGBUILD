@@ -6,7 +6,7 @@ pkgver=5.23.1
 pkgrel=2
 pkgdesc="A Python library for interacting with Ethereum, inspired by web3.js"
 arch=('any')
-depends=('python-aiohttp' 'python-eth-abi' 'python-eth-account' 'python-eth' 'python-eth-typing' 'python-eth-utils' \
+depends=('python-aiohttp' 'python-eth-abi' 'python-eth-account' 'python-eth-hash' 'python-eth-typing' 'python-eth-utils' \
          'python-hexbytes' 'python-ipfshttpclient' 'python-jsonschema' 'python-lru-dict' 'python-protobuf' 'python-requests' \
          'python-websockets')
 
