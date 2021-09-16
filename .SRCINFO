@@ -1,0 +1,18 @@
+pkgbase = scrabble-1d
+	pkgdesc = A one-dimensional scrabble-like console game.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YassenEfremov/scrabble-1d.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = automake
+	depends = glib2
+	depends = json-glib
+	depends = ncurses
+	provides = scrabble-1d
+	source = git+https://github.com/YassenEfremov/scrabble-1d.git
+	md5sums = SKIP
+
+pkgname = scrabble-1d
