@@ -1,22 +1,22 @@
 pkgbase = chordpro-dev-git
-	pkgdesc = Reference implementation of the ChordPro standard for musical lead sheets, dev branch
+	pkgdesc = Reference implementation of the ChordPro standard for musical lead sheets, development branch
 	pkgver = r1198.12d6d39
 	pkgrel = 1
-	url = https://github.com/ChordPro/chordpro
+	url = https://github.com/ChordPro/chordpro/tree/dev
 	arch = any
 	license = Artistic2.0
 	depends = git
+	depends = perl-app-packager
 	depends = perl-string-interpolate-named
 	depends = perl-font-ttf
 	depends = perl-image-info
 	depends = perl-io-string
 	depends = perl-json-pp
 	depends = perl-pdf-api2
-	depends = perl-app-packager
 	depends = perl-file-loadlines
-	depends = perl-text-layout
-	depends = perl-pdf-builder
-	provides = chordpro-dev-git
+	depends = perl-pod-parser
+	optdepends = perl-text-layout
+	provides = chordpro
 	conflicts = chordpro-git
 	options = !emptydirs
 	options = purge
@@ -24,4 +24,3 @@ pkgbase = chordpro-dev-git
 	md5sums = SKIP
 
 pkgname = chordpro-dev-git
-

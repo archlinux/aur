@@ -1,20 +1,17 @@
-# Maintainer: web.de jan.stuehler
+# Maintainer: xeruf <27f at pm dot me>
 _pkgname=chordpro
-_author="Johan Vromans"
-pkgname=chordpro-dev-git
-pkgbase=chordpro-dev-git
+pkgname="${_pkgname}-dev-git"
 pkgver=r1198.12d6d39
 pkgrel=1
-pkgdesc='Reference implementation of the ChordPro standard for musical lead sheets, dev branch'
+pkgdesc='Reference implementation of the ChordPro standard for musical lead sheets, development branch'
 arch=('any')
-url="https://github.com/ChordPro/chordpro"
+url="https://github.com/ChordPro/chordpro/tree/dev"
 license=('Artistic2.0')
-provides=($pkgname)
-conflicts=(chordpro-git)
-optdepends=()
-depends=(git perl-string-interpolate-named perl-font-ttf perl-image-info perl-io-string perl-json-pp perl-pdf-api2 perl-app-packager perl-file-loadlines perl-text-layout perl-pdf-builder)
+provides=("$_pkgname")
+conflicts=("$_pkgname-git")
+optdepends=(perl-text-layout)
+depends=(git perl-app-packager perl-string-interpolate-named perl-font-ttf perl-image-info perl-io-string perl-json-pp perl-pdf-api2 perl-file-loadlines perl-pod-parser)
 options=('!emptydirs' purge)
-#source=("git+${url}.git#branch=dev")
 source=("git+https://github.com/ChordPro/chordpro.git#branch=dev")
 md5sums=('SKIP')
 
