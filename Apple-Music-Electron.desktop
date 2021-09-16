@@ -1,12 +1,11 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
-Type=Application
 Name=Apple Music
-Comment=Electron wrapper for Apple Music
-GenericName=Apple Music
-Exec=apple-music-electron
+Exec="/opt/apple-music-electron/apple-music-electron" %U
+Terminal=False
+Type=Application
 Icon=apple-music-electron
-Categories=AudioVideo;Audio;
-Terminal=false
-StartupNotify=true
-Version=2.3.0
+StartupWMClass=Apple Music
+Encoding=UTF-8
+Comment=Electron wrapper for the Apple Music Web Application using Electron 14.0.0 and several other modules to expand the usability.
+MimeType=x-scheme-handler/ame;x-scheme-handler/itms;x-scheme-handler/itmss;x-scheme-handler/musics;x-scheme-handler/music;
+Categories=AudioVideo;
