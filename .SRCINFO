@@ -1,0 +1,15 @@
+pkgbase = python-eth-rlp
+	pkgdesc = RLP definitions for common Ethereum objects in Python
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/ethereum/eth-rlp
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-rlp
+	depends = python-eth-utils
+	depends = python-hexbytes
+	source = https://files.pythonhosted.org/packages/source/e/eth-rlp/eth-rlp-0.2.1.tar.gz
+	sha256sums = f016f980b0ed42ee7650ba6e4e4d3c4e9aa06d8b9c6825a36d3afe5aa0187a8b
+
+pkgname = python-eth-rlp
