@@ -23,7 +23,7 @@ pkgbase = linux-amd
 	sha256sums = b4919a0a14402d64cda7ee44e4571331394ba98e5ce8df933121120128c7773e
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
-	sha256sums = 09945620d24a83608a66b1104477a1c1073701ac04b7aeae2f7819a2bf185c85
+	sha256sums = 2f99d9e37f372925e054115bfead4723a328ffbdb7bf958753aab2ac48dc5673
 
 pkgname = linux-amd
 	pkgdesc = Linux kernel aimed at the latest AMD Ryzen CPU based hardware (ZNVER3/MZEN3)
