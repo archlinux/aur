@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Raymond Li <aur@raymond.li>
 # Contributor: Mark Wagie <mark.wagie at tutanota dot com
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
@@ -6,12 +6,12 @@
 # Contributor: sausageandeggs <sausageandeggs@archlinux.us>
 pkgname=x-tile
 pkgver=3.3
-pkgrel=2
-pkgdesc="Allows you to select a number of windows and tile them in different ways"
+pkgrel=3
+pkgdesc="Allows you to select a number of windows and tile them in different ways (Fancyzones for Linux)"
 arch=('any')
 url="https://www.giuspen.com/x-tile"
 license=('GPL2')
-depends=('gtk3' 'python-gobject')
+depends=('gtk3' 'python-gobject' 'python-cairo' 'python-prctl')
 checkdepends=('desktop-file-utils' 'appstream-glib')
 optdepends=('libappindicator-gtk3: Tray icon support')
 source=("http://www.giuspen.com/software/$pkgname-$pkgver.tar.xz"
