@@ -1,18 +1,17 @@
 pkgbase = wayland-utils-git
 	pkgdesc = Wayland tools to display information about current compositor
-	pkgver = 1.0.0.r1.g23d5d8b
+	pkgver = 1.0.0.r3.g6edadee
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wayland/wayland-utils
 	arch = x86_64
 	license = MIT
 	makedepends = meson
+	makedepends = wayland-protocols
 	makedepends = git
 	depends = wayland
-	depends = wayland-protocols
 	provides = wayland-utils
 	conflicts = wayland-utils
 	source = git+https://gitlab.freedesktop.org/wayland/wayland-utils.git
 	sha256sums = SKIP
 
 pkgname = wayland-utils-git
-

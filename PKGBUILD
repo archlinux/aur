@@ -2,14 +2,14 @@
 
 _pkgname=wayland-utils
 pkgname=wayland-utils-git
-pkgver=1.0.0.r1.g23d5d8b
+pkgver=1.0.0.r3.g6edadee
 pkgrel=1
 pkgdesc="Wayland tools to display information about current compositor"
 url="https://gitlab.freedesktop.org/wayland/wayland-utils"
 arch=(x86_64)
 license=(MIT)
-depends=(wayland wayland-protocols)
-makedepends=(meson git)
+depends=(wayland)
+makedepends=(meson wayland-protocols git)
 conflicts=(wayland-utils)
 provides=(wayland-utils)
 source=("git+${url}.git")
@@ -22,10 +22,11 @@ pkgver() {
 }
 
 build() {
-  arch-meson ${_pkgname} build
+  meson ${_pkgname} build --prefix=/usr
   meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir="$pkgdir"
+  install -Dm644 "${_pkgname}"/COPYING -t "$pkgdir"/usr/share/licenses/"${_pkgname}"
 }
