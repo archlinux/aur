@@ -4,7 +4,7 @@ pkgbase=linux-amd-znver2
 _srcname=linux
 gitver=v5.14.5
 patchver=20210914
-patchname='more-uarches-for-kernel-5.8-5.14.patch'
+patchname=more-uarches-for-kernel-5.8-5.14.patch
 pkgver=5.14.v.5
 pkgrel=1
 arch=('x86_64')
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #grayskypatch
-            '09945620d24a83608a66b1104477a1c1073701ac04b7aeae2f7819a2bf185c85'
+            '2f99d9e37f372925e054115bfead4723a328ffbdb7bf958753aab2ac48dc5673'
 )
 
 _kernelname=${pkgbase#linux}
