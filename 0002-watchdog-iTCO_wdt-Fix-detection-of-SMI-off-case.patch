@@ -1,7 +1,7 @@
-From 53f97d0158180e3e48173cb3a6485cf254a95f12 Mon Sep 17 00:00:00 2001
+From a497875b691e68fd44cdb4110d9bf0e87ff80e98 Mon Sep 17 00:00:00 2001
 From: Jan Kiszka <jan.kiszka@siemens.com>
 Date: Mon, 26 Jul 2021 13:46:13 +0200
-Subject: [PATCH 3/4] watchdog: iTCO_wdt: Fix detection of SMI-off case
+Subject: [PATCH 2/3] watchdog: iTCO_wdt: Fix detection of SMI-off case
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
