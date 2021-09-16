@@ -1,13 +1,13 @@
 pkgbase = icdiff
 	pkgdesc = Improved colored diff
-	pkgver = 2.0.0
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/jeffkaufman/icdiff
 	arch = any
 	license = PSF
+	makedepends = python-setuptools
 	depends = python
-	source = icdiff-2.0.0.tar.gz::https://github.com/jeffkaufman/icdiff/archive/release-2.0.0.tar.gz
-	sha256sums = bce07ff4995aafe9de274ca0a322e56275dc264948b125457d2cc73dd7e9eee2
+	source = icdiff-2.0.4.tar.gz::https://github.com/jeffkaufman/icdiff/archive/release-2.0.4.tar.gz
+	sha256sums = ec21632b64159990a1bcedc8b25f96b476e7a6d9e18b75422420c0ae9b694eac
 
 pkgname = icdiff
-
