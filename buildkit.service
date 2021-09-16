@@ -1,0 +1,10 @@
+# https://github.com/moby/buildkit/issues/1793#issuecomment-727535402
+[Unit]
+Description=BuildKit
+Documentation=https://github.com/moby/buildkit
+
+[Service]
+ExecStart=/usr/bin/buildkitd
+
+[Install]
+WantedBy=multi-user.target
