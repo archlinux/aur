@@ -1,7 +1,7 @@
 pkgbase = python-aioesphomeapi
-	pkgdesc = Solution for your ESP8266/ESP32 projects with Home Assistant
+	pkgdesc = Python Client for ESPHome native API. Used by Home Assistant.
 	pkgver = 9.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esphome/ESPHome
 	arch = any
 	license = MIT
