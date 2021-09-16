@@ -5,7 +5,7 @@ _pkgname="${pkgbase%-git}"
         
 pkgname=('fake-background-webcam-git')
 pkgver=r244.5f5d90c
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual background-replacing camera"
 #'python-cmapy>=0.6.6'
 depends=('v4l2loopback-dkms' 
@@ -28,7 +28,7 @@ conflicts=('fake-background-webcam')
 arch=('x86_64')
 url="https://github.com/fangfufu/Linux-Fake-Background-Webcam"
 license=("GPL")
-makedepends=('git' 'npm')
+makedepends=('git')
 
 source=("${pkgname}::git+${url}.git" 
         'fake-background-webcam@.service'

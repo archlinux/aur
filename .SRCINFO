@@ -1,13 +1,12 @@
 pkgbase = fake-background-webcam-git
 	pkgdesc = Virtual background-replacing camera
 	pkgver = r244.5f5d90c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fangfufu/Linux-Fake-Background-Webcam
 	install = fake-background-webcam.install
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = npm
 	depends = v4l2loopback-dkms
 	depends = python
 	depends = python-opencv>=4.4.0.46
