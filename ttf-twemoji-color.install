@@ -1,4 +1,4 @@
-config=56-ttf-twemoji-color.conf
+config=46-ttf-twemoji-color.conf
 
 post_install() {
   echo "To finish installation, update the default font in /etc/fonts/conf.avail/${config} to your system font,"
@@ -8,6 +8,9 @@ post_install() {
 }
 
 post_upgrade() {
+  echo "NOTE: The fontconfig file has been renamed from 56-ttf-twemoji-color.conf to ${config}."
+  echo "You should ensure that you update any links or copies of this file in /etc/fonts/conf.d or ~/.config/fontconfig/conf.d"
+  echo
   echo "You should now check the default system font is correct in /etc/fonts/conf.avail/${config}"
   echo "and ensure a copy of or link to this file is present in /etc/fonts/conf.d, or ~/.config/fontconfig/conf.d."
 }
