@@ -9,8 +9,8 @@ license=('GPL3')
 install='emercoin.install'
 source_i686=("https://github.com/emercoin/emercoin/releases/download/v${pkgver}emc/emercoin-${pkgver}-i686-pc-linux-gnu.tar.gz" "emercoin.install" "emercoind.service")
 source_x86_64=("https://github.com/emercoin/emercoin/releases/download/v${pkgver}emc/emercoin-${pkgver}-x86_64-linux-gnu.tar.gz" "emercoin.install" "emercoind.service")
-sha256sums_i686=('993ddbebbd78bb654762d7dd9b0fb69bd365dc270a922d566d1adba0ac002174' '3cc2325294d7a4d0408f8ee09b4933cc3f11b9c1c6394e76c69265bf73194b1e' '9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed')
-sha256sums_x86_64=('6e851f289c652fd1055bd6084abe454ad172cc8df0926efcf05441e58fc14973' '3cc2325294d7a4d0408f8ee09b4933cc3f11b9c1c6394e76c69265bf73194b1e' '9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed')
+sha256sums_i686=('993ddbebbd78bb654762d7dd9b0fb69bd365dc270a922d566d1adba0ac002174' '9ab66d1537081746f5eec016628bc810d216ed393f062368decbeea3756bca35' '9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed')
+sha256sums_x86_64=('6e851f289c652fd1055bd6084abe454ad172cc8df0926efcf05441e58fc14973' '9ab66d1537081746f5eec016628bc810d216ed393f062368decbeea3756bca35' '9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed')
 package() {
     install -Dm644 ${srcdir}/emercoind.service ${pkgdir}/usr/lib/systemd/system/emercoind.service
     cd "emercoin-$pkgver"

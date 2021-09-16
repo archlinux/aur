@@ -44,6 +44,8 @@ emcdnsallowed=.coin|.emc|.lib|.bazar
 emcdnsport=5335" > /var/lib/emc/.emercoin/emercoin.conf
     fi
     chown -R emercoin:emercoin /var/lib/emc
+    chmod 640 /var/lib/emc/.emercoin/emercoin.conf
+    chmod 750 /var/lib/emc/.emercoin
 }
 
 ## arg 1:  the old package version
