@@ -1,66 +1,75 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=gitit
-pkgver=0.13.0.0
-pkgrel=2
+pkgver=0.15.0.0
+pkgrel=1
 pkgdesc="A wiki backed by a git, darcs, or mercurial filestore"
 arch=(i686 x86_64)
 url=https://hackage.haskell.org/package/gitit
 license=(GPL)
 depends=(gmp mailcap numactl zlib)
 optdepends=("git: git support" "mercurial: mercurial support")
-makedepends=(cabal-install ghc8.8)
+makedepends=(cabal-install ghc8.10)
 source=(haskell-ConfigFile-1.1.4.tar.gz::https://hackage.haskell.org/package/ConfigFile-1.1.4/ConfigFile-1.1.4.tar.gz
         haskell-Diff-0.4.0.tar.gz::https://hackage.haskell.org/package/Diff-0.4.0/Diff-0.4.0.tar.gz
+        haskell-Glob-0.10.1-1.cabal::https://hackage.haskell.org/package/Glob-0.10.1/revision/1.cabal
         haskell-Glob-0.10.1.tar.gz::https://hackage.haskell.org/package/Glob-0.10.1/Glob-0.10.1.tar.gz
-        haskell-HStringTemplate-0.8.7-1.cabal::https://hackage.haskell.org/package/HStringTemplate-0.8.7/revision/1.cabal
-        haskell-HStringTemplate-0.8.7.tar.gz::https://hackage.haskell.org/package/HStringTemplate-0.8.7/HStringTemplate-0.8.7.tar.gz
+        haskell-HStringTemplate-0.8.8.tar.gz::https://hackage.haskell.org/package/HStringTemplate-0.8.8/HStringTemplate-0.8.8.tar.gz
         haskell-HTTP-4000.3.16.tar.gz::https://hackage.haskell.org/package/HTTP-4000.3.16/HTTP-4000.3.16.tar.gz
         haskell-HsYAML-0.2.1.0-2.cabal::https://hackage.haskell.org/package/HsYAML-0.2.1.0/revision/2.cabal
         haskell-HsYAML-0.2.1.0.tar.gz::https://hackage.haskell.org/package/HsYAML-0.2.1.0/HsYAML-0.2.1.0.tar.gz
         haskell-JuicyPixels-3.3.5.tar.gz::https://hackage.haskell.org/package/JuicyPixels-3.3.5/JuicyPixels-3.3.5.tar.gz
+        haskell-MissingH-1.4.3.0-1.cabal::https://hackage.haskell.org/package/MissingH-1.4.3.0/revision/1.cabal
         haskell-MissingH-1.4.3.0.tar.gz::https://hackage.haskell.org/package/MissingH-1.4.3.0/MissingH-1.4.3.0.tar.gz
-        haskell-QuickCheck-2.13.2-1.cabal::https://hackage.haskell.org/package/QuickCheck-2.13.2/revision/1.cabal
-        haskell-QuickCheck-2.13.2.tar.gz::https://hackage.haskell.org/package/QuickCheck-2.13.2/QuickCheck-2.13.2.tar.gz
+        haskell-QuickCheck-2.14.2.tar.gz::https://hackage.haskell.org/package/QuickCheck-2.14.2/QuickCheck-2.14.2.tar.gz
         haskell-SHA-1.6.4.4.tar.gz::https://hackage.haskell.org/package/SHA-1.6.4.4/SHA-1.6.4.4.tar.gz
-        haskell-aeson-1.4.7.1-1.cabal::https://hackage.haskell.org/package/aeson-1.4.7.1/revision/1.cabal
-        haskell-aeson-1.4.7.1.tar.gz::https://hackage.haskell.org/package/aeson-1.4.7.1/aeson-1.4.7.1.tar.gz
+        haskell-aeson-1.5.6.0-2.cabal::https://hackage.haskell.org/package/aeson-1.5.6.0/revision/2.cabal
+        haskell-aeson-1.5.6.0.tar.gz::https://hackage.haskell.org/package/aeson-1.5.6.0/aeson-1.5.6.0.tar.gz
         haskell-aeson-pretty-0.8.8.tar.gz::https://hackage.haskell.org/package/aeson-pretty-0.8.8/aeson-pretty-0.8.8.tar.gz
         haskell-ansi-terminal-0.11.tar.gz::https://hackage.haskell.org/package/ansi-terminal-0.11/ansi-terminal-0.11.tar.gz
+        haskell-appar-0.1.8.tar.gz::https://hackage.haskell.org/package/appar-0.1.8/appar-0.1.8.tar.gz
         haskell-asn1-encoding-0.9.6-2.cabal::https://hackage.haskell.org/package/asn1-encoding-0.9.6/revision/2.cabal
         haskell-asn1-encoding-0.9.6.tar.gz::https://hackage.haskell.org/package/asn1-encoding-0.9.6/asn1-encoding-0.9.6.tar.gz
         haskell-asn1-parse-0.9.5.tar.gz::https://hackage.haskell.org/package/asn1-parse-0.9.5/asn1-parse-0.9.5.tar.gz
         haskell-asn1-types-0.3.4.tar.gz::https://hackage.haskell.org/package/asn1-types-0.3.4/asn1-types-0.3.4.tar.gz
+        haskell-assoc-1.0.2-1.cabal::https://hackage.haskell.org/package/assoc-1.0.2/revision/1.cabal
+        haskell-assoc-1.0.2.tar.gz::https://hackage.haskell.org/package/assoc-1.0.2/assoc-1.0.2.tar.gz
         haskell-async-2.2.3.tar.gz::https://hackage.haskell.org/package/async-2.2.3/async-2.2.3.tar.gz
-        haskell-attoparsec-0.13.2.5-1.cabal::https://hackage.haskell.org/package/attoparsec-0.13.2.5/revision/1.cabal
-        haskell-attoparsec-0.13.2.5.tar.gz::https://hackage.haskell.org/package/attoparsec-0.13.2.5/attoparsec-0.13.2.5.tar.gz
-        haskell-base-compat-0.11.2.tar.gz::https://hackage.haskell.org/package/base-compat-0.11.2/base-compat-0.11.2.tar.gz
-        haskell-base-compat-batteries-0.11.2.tar.gz::https://hackage.haskell.org/package/base-compat-batteries-0.11.2/base-compat-batteries-0.11.2.tar.gz
-        haskell-base-noprelude-4.13.0.0.tar.gz::https://hackage.haskell.org/package/base-noprelude-4.13.0.0/base-noprelude-4.13.0.0.tar.gz
-        haskell-base-orphans-0.8.4.tar.gz::https://hackage.haskell.org/package/base-orphans-0.8.4/base-orphans-0.8.4.tar.gz
+        haskell-attoparsec-0.14.1.tar.gz::https://hackage.haskell.org/package/attoparsec-0.14.1/attoparsec-0.14.1.tar.gz
+        haskell-base-compat-0.12.0.tar.gz::https://hackage.haskell.org/package/base-compat-0.12.0/base-compat-0.12.0.tar.gz
+        haskell-base-compat-batteries-0.12.0-1.cabal::https://hackage.haskell.org/package/base-compat-batteries-0.12.0/revision/1.cabal
+        haskell-base-compat-batteries-0.12.0.tar.gz::https://hackage.haskell.org/package/base-compat-batteries-0.12.0/base-compat-batteries-0.12.0.tar.gz
+        haskell-base-orphans-0.8.5.tar.gz::https://hackage.haskell.org/package/base-orphans-0.8.5/base-orphans-0.8.5.tar.gz
         haskell-base16-bytestring-1.0.1.0.tar.gz::https://hackage.haskell.org/package/base16-bytestring-1.0.1.0/base16-bytestring-1.0.1.0.tar.gz
-        haskell-base64-bytestring-1.0.0.3-1.cabal::https://hackage.haskell.org/package/base64-bytestring-1.0.0.3/revision/1.cabal
-        haskell-base64-bytestring-1.0.0.3.tar.gz::https://hackage.haskell.org/package/base64-bytestring-1.0.0.3/base64-bytestring-1.0.0.3.tar.gz
+        haskell-base64-bytestring-1.2.1.0.tar.gz::https://hackage.haskell.org/package/base64-bytestring-1.2.1.0/base64-bytestring-1.2.1.0.tar.gz
         haskell-basement-0.0.12-1.cabal::https://hackage.haskell.org/package/basement-0.0.12/revision/1.cabal
         haskell-basement-0.0.12.tar.gz::https://hackage.haskell.org/package/basement-0.0.12/basement-0.0.12.tar.gz
+        haskell-bifunctors-5.5.11-1.cabal::https://hackage.haskell.org/package/bifunctors-5.5.11/revision/1.cabal
+        haskell-bifunctors-5.5.11.tar.gz::https://hackage.haskell.org/package/bifunctors-5.5.11/bifunctors-5.5.11.tar.gz
         haskell-blaze-builder-0.4.2.1.tar.gz::https://hackage.haskell.org/package/blaze-builder-0.4.2.1/blaze-builder-0.4.2.1.tar.gz
         haskell-blaze-html-0.9.1.2-1.cabal::https://hackage.haskell.org/package/blaze-html-0.9.1.2/revision/1.cabal
         haskell-blaze-html-0.9.1.2.tar.gz::https://hackage.haskell.org/package/blaze-html-0.9.1.2/blaze-html-0.9.1.2.tar.gz
         haskell-blaze-markup-0.8.2.8.tar.gz::https://hackage.haskell.org/package/blaze-markup-0.8.2.8/blaze-markup-0.8.2.8.tar.gz
+        haskell-byteorder-1.0.4.tar.gz::https://hackage.haskell.org/package/byteorder-1.0.4/byteorder-1.0.4.tar.gz
         haskell-cabal-doctest-1.0.8-2.cabal::https://hackage.haskell.org/package/cabal-doctest-1.0.8/revision/2.cabal
         haskell-cabal-doctest-1.0.8.tar.gz::https://hackage.haskell.org/package/cabal-doctest-1.0.8/cabal-doctest-1.0.8.tar.gz
         haskell-case-insensitive-1.2.1.0.tar.gz::https://hackage.haskell.org/package/case-insensitive-1.2.1.0/case-insensitive-1.2.1.0.tar.gz
         haskell-cereal-0.5.8.1.tar.gz::https://hackage.haskell.org/package/cereal-0.5.8.1/cereal-0.5.8.1.tar.gz
-        haskell-cmark-gfm-0.2.2.tar.gz::https://hackage.haskell.org/package/cmark-gfm-0.2.2/cmark-gfm-0.2.2.tar.gz
+        haskell-citeproc-0.5.tar.gz::https://hackage.haskell.org/package/citeproc-0.5/citeproc-0.5.tar.gz
         haskell-cmdargs-0.10.21.tar.gz::https://hackage.haskell.org/package/cmdargs-0.10.21/cmdargs-0.10.21.tar.gz
-        haskell-colour-2.3.5.tar.gz::https://hackage.haskell.org/package/colour-2.3.5/colour-2.3.5.tar.gz
+        haskell-colour-2.3.6.tar.gz::https://hackage.haskell.org/package/colour-2.3.6/colour-2.3.6.tar.gz
+        haskell-commonmark-0.2.1.tar.gz::https://hackage.haskell.org/package/commonmark-0.2.1/commonmark-0.2.1.tar.gz
+        haskell-commonmark-extensions-0.2.1.2.tar.gz::https://hackage.haskell.org/package/commonmark-extensions-0.2.1.2/commonmark-extensions-0.2.1.2.tar.gz
+        haskell-commonmark-pandoc-0.2.1.1.tar.gz::https://hackage.haskell.org/package/commonmark-pandoc-0.2.1.1/commonmark-pandoc-0.2.1.1.tar.gz
+        haskell-comonad-5.0.8-1.cabal::https://hackage.haskell.org/package/comonad-5.0.8/revision/1.cabal
+        haskell-comonad-5.0.8.tar.gz::https://hackage.haskell.org/package/comonad-5.0.8/comonad-5.0.8.tar.gz
         haskell-conduit-1.3.4.1.tar.gz::https://hackage.haskell.org/package/conduit-1.3.4.1/conduit-1.3.4.1.tar.gz
         haskell-conduit-extra-1.3.5.tar.gz::https://hackage.haskell.org/package/conduit-extra-1.3.5/conduit-extra-1.3.5.tar.gz
         haskell-connection-0.3.1-1.cabal::https://hackage.haskell.org/package/connection-0.3.1/revision/1.cabal
         haskell-connection-0.3.1.tar.gz::https://hackage.haskell.org/package/connection-0.3.1/connection-0.3.1.tar.gz
         haskell-cookie-0.4.5.tar.gz::https://hackage.haskell.org/package/cookie-0.4.5/cookie-0.4.5.tar.gz
-        haskell-cryptohash-md5-0.11.100.1-5.cabal::https://hackage.haskell.org/package/cryptohash-md5-0.11.100.1/revision/5.cabal
+        haskell-cryptohash-md5-0.11.100.1-6.cabal::https://hackage.haskell.org/package/cryptohash-md5-0.11.100.1/revision/6.cabal
         haskell-cryptohash-md5-0.11.100.1.tar.gz::https://hackage.haskell.org/package/cryptohash-md5-0.11.100.1/cryptohash-md5-0.11.100.1.tar.gz
-        haskell-cryptohash-sha1-0.11.100.1-5.cabal::https://hackage.haskell.org/package/cryptohash-sha1-0.11.100.1/revision/5.cabal
+        haskell-cryptohash-sha1-0.11.100.1-6.cabal::https://hackage.haskell.org/package/cryptohash-sha1-0.11.100.1/revision/6.cabal
         haskell-cryptohash-sha1-0.11.100.1.tar.gz::https://hackage.haskell.org/package/cryptohash-sha1-0.11.100.1/cryptohash-sha1-0.11.100.1.tar.gz
         haskell-cryptonite-0.29.tar.gz::https://hackage.haskell.org/package/cryptonite-0.29/cryptonite-0.29.tar.gz
         haskell-css-text-0.1.3.0.tar.gz::https://hackage.haskell.org/package/css-text-0.1.3.0/css-text-0.1.3.0.tar.gz
@@ -69,58 +78,60 @@ source=(haskell-ConfigFile-1.1.4.tar.gz::https://hackage.haskell.org/package/Con
         haskell-data-default-instances-containers-0.0.1.tar.gz::https://hackage.haskell.org/package/data-default-instances-containers-0.0.1/data-default-instances-containers-0.0.1.tar.gz
         haskell-data-default-instances-dlist-0.0.1.tar.gz::https://hackage.haskell.org/package/data-default-instances-dlist-0.0.1/data-default-instances-dlist-0.0.1.tar.gz
         haskell-data-default-instances-old-locale-0.0.1.tar.gz::https://hackage.haskell.org/package/data-default-instances-old-locale-0.0.1/data-default-instances-old-locale-0.0.1.tar.gz
-        haskell-digest-0.0.1.2.tar.gz::https://hackage.haskell.org/package/digest-0.0.1.2/digest-0.0.1.2.tar.gz
-        haskell-dlist-0.8.0.8.tar.gz::https://hackage.haskell.org/package/dlist-0.8.0.8/dlist-0.8.0.8.tar.gz
+        haskell-data-fix-0.3.2.tar.gz::https://hackage.haskell.org/package/data-fix-0.3.2/data-fix-0.3.2.tar.gz
+        haskell-digest-0.0.1.3.tar.gz::https://hackage.haskell.org/package/digest-0.0.1.3/digest-0.0.1.3.tar.gz
+        haskell-distributive-0.6.2.1-1.cabal::https://hackage.haskell.org/package/distributive-0.6.2.1/revision/1.cabal
+        haskell-distributive-0.6.2.1.tar.gz::https://hackage.haskell.org/package/distributive-0.6.2.1/distributive-0.6.2.1.tar.gz
+        haskell-dlist-1.0.tar.gz::https://hackage.haskell.org/package/dlist-1.0/dlist-1.0.tar.gz
         haskell-doclayout-0.3.0.2.tar.gz::https://hackage.haskell.org/package/doclayout-0.3.0.2/doclayout-0.3.0.2.tar.gz
-        haskell-doctemplates-0.8.3.tar.gz::https://hackage.haskell.org/package/doctemplates-0.8.3/doctemplates-0.8.3.tar.gz
+        haskell-doctemplates-0.10.tar.gz::https://hackage.haskell.org/package/doctemplates-0.10/doctemplates-0.10.tar.gz
         haskell-emojis-0.1.tar.gz::https://hackage.haskell.org/package/emojis-0.1/emojis-0.1.tar.gz
+        haskell-entropy-0.4.1.6-1.cabal::https://hackage.haskell.org/package/entropy-0.4.1.6/revision/1.cabal
         haskell-entropy-0.4.1.6.tar.gz::https://hackage.haskell.org/package/entropy-0.4.1.6/entropy-0.4.1.6.tar.gz
+        haskell-errors-2.3.0-1.cabal::https://hackage.haskell.org/package/errors-2.3.0/revision/1.cabal
         haskell-errors-2.3.0.tar.gz::https://hackage.haskell.org/package/errors-2.3.0/errors-2.3.0.tar.gz
-        haskell-exceptions-0.10.4-2.cabal::https://hackage.haskell.org/package/exceptions-0.10.4/revision/2.cabal
-        haskell-exceptions-0.10.4.tar.gz::https://hackage.haskell.org/package/exceptions-0.10.4/exceptions-0.10.4.tar.gz
         haskell-extensible-exceptions-0.1.1.4.tar.gz::https://hackage.haskell.org/package/extensible-exceptions-0.1.1.4/extensible-exceptions-0.1.1.4.tar.gz
-        haskell-fail-4.9.0.0.tar.gz::https://hackage.haskell.org/package/fail-4.9.0.0/fail-4.9.0.0.tar.gz
+        haskell-feed-1.3.2.0-2.cabal::https://hackage.haskell.org/package/feed-1.3.2.0/revision/2.cabal
         haskell-feed-1.3.2.0.tar.gz::https://hackage.haskell.org/package/feed-1.3.2.0/feed-1.3.2.0.tar.gz
+        haskell-file-embed-0.0.15.0.tar.gz::https://hackage.haskell.org/package/file-embed-0.0.15.0/file-embed-0.0.15.0.tar.gz
         haskell-filestore-0.6.5.tar.gz::https://hackage.haskell.org/package/filestore-0.6.5/filestore-0.6.5.tar.gz
         haskell-ghc-paths-0.1.0.12-2.cabal::https://hackage.haskell.org/package/ghc-paths-0.1.0.12/revision/2.cabal
         haskell-ghc-paths-0.1.0.12.tar.gz::https://hackage.haskell.org/package/ghc-paths-0.1.0.12/ghc-paths-0.1.0.12.tar.gz
         haskell-gitit-$pkgver.tar.gz::https://hackage.haskell.org/package/gitit-$pkgver/gitit-$pkgver.tar.gz
-        haskell-gitit-0.13.0.0.tar.gz::https://hackage.haskell.org/package/gitit-0.13.0.0/gitit-0.13.0.0.tar.gz
-        haskell-haddock-library-1.8.0-1.cabal::https://hackage.haskell.org/package/haddock-library-1.8.0/revision/1.cabal
-        haskell-haddock-library-1.8.0.tar.gz::https://hackage.haskell.org/package/haddock-library-1.8.0/haddock-library-1.8.0.tar.gz
-        haskell-happstack-server-7.6.1.tar.gz::https://hackage.haskell.org/package/happstack-server-7.6.1/happstack-server-7.6.1.tar.gz
-        haskell-hashable-1.3.2.0.tar.gz::https://hackage.haskell.org/package/hashable-1.3.2.0/hashable-1.3.2.0.tar.gz
-        haskell-hoauth2-1.11.0.tar.gz::https://hackage.haskell.org/package/hoauth2-1.11.0/hoauth2-1.11.0.tar.gz
+        haskell-haddock-library-1.10.0.tar.gz::https://hackage.haskell.org/package/haddock-library-1.10.0/haddock-library-1.10.0.tar.gz
+        haskell-happstack-server-7.7.1.1.tar.gz::https://hackage.haskell.org/package/happstack-server-7.7.1.1/happstack-server-7.7.1.1.tar.gz
+        haskell-hashable-1.3.3.0.tar.gz::https://hackage.haskell.org/package/hashable-1.3.3.0/hashable-1.3.3.0.tar.gz
+        haskell-hoauth2-1.16.0.tar.gz::https://hackage.haskell.org/package/hoauth2-1.16.0/hoauth2-1.16.0.tar.gz
         haskell-hourglass-0.2.12.tar.gz::https://hackage.haskell.org/package/hourglass-0.2.12/hourglass-0.2.12.tar.gz
         haskell-hsc2hs-0.68.7-1.cabal::https://hackage.haskell.org/package/hsc2hs-0.68.7/revision/1.cabal
         haskell-hsc2hs-0.68.7.tar.gz::https://hackage.haskell.org/package/hsc2hs-0.68.7/hsc2hs-0.68.7.tar.gz
-        haskell-hslogger-1.3.1.0-2.cabal::https://hackage.haskell.org/package/hslogger-1.3.1.0/revision/2.cabal
+        haskell-hslogger-1.3.1.0-3.cabal::https://hackage.haskell.org/package/hslogger-1.3.1.0/revision/3.cabal
         haskell-hslogger-1.3.1.0.tar.gz::https://hackage.haskell.org/package/hslogger-1.3.1.0/hslogger-1.3.1.0.tar.gz
-        haskell-hslua-1.0.3.2.tar.gz::https://hackage.haskell.org/package/hslua-1.0.3.2/hslua-1.0.3.2.tar.gz
+        haskell-hslua-1.3.0.1.tar.gz::https://hackage.haskell.org/package/hslua-1.3.0.1/hslua-1.3.0.1.tar.gz
+        haskell-hslua-module-path-0.1.0.1.tar.gz::https://hackage.haskell.org/package/hslua-module-path-0.1.0.1/hslua-module-path-0.1.0.1.tar.gz
         haskell-hslua-module-system-0.2.2.1.tar.gz::https://hackage.haskell.org/package/hslua-module-system-0.2.2.1/hslua-module-system-0.2.2.1.tar.gz
-        haskell-hslua-module-text-0.2.1.tar.gz::https://hackage.haskell.org/package/hslua-module-text-0.2.1/hslua-module-text-0.2.1.tar.gz
+        haskell-hslua-module-text-0.3.0.1.tar.gz::https://hackage.haskell.org/package/hslua-module-text-0.3.0.1/hslua-module-text-0.3.0.1.tar.gz
         haskell-html-1.0.1.2.tar.gz::https://hackage.haskell.org/package/html-1.0.1.2/html-1.0.1.2.tar.gz
-        haskell-http-client-0.6.4.1.tar.gz::https://hackage.haskell.org/package/http-client-0.6.4.1/http-client-0.6.4.1.tar.gz
+        haskell-http-client-0.7.9.tar.gz::https://hackage.haskell.org/package/http-client-0.7.9/http-client-0.7.9.tar.gz
         haskell-http-client-tls-0.3.5.3-1.cabal::https://hackage.haskell.org/package/http-client-tls-0.3.5.3/revision/1.cabal
         haskell-http-client-tls-0.3.5.3.tar.gz::https://hackage.haskell.org/package/http-client-tls-0.3.5.3/http-client-tls-0.3.5.3.tar.gz
         haskell-http-conduit-2.3.8.tar.gz::https://hackage.haskell.org/package/http-conduit-2.3.8/http-conduit-2.3.8.tar.gz
         haskell-http-types-0.12.3.tar.gz::https://hackage.haskell.org/package/http-types-0.12.3/http-types-0.12.3.tar.gz
-        haskell-hxt-9.3.1.22.tar.gz::https://hackage.haskell.org/package/hxt-9.3.1.22/hxt-9.3.1.22.tar.gz
-        haskell-hxt-charproperties-9.5.0.0.tar.gz::https://hackage.haskell.org/package/hxt-charproperties-9.5.0.0/hxt-charproperties-9.5.0.0.tar.gz
-        haskell-hxt-regex-xmlschema-9.2.0.7.tar.gz::https://hackage.haskell.org/package/hxt-regex-xmlschema-9.2.0.7/hxt-regex-xmlschema-9.2.0.7.tar.gz
-        haskell-hxt-unicode-9.0.2.4.tar.gz::https://hackage.haskell.org/package/hxt-unicode-9.0.2.4/hxt-unicode-9.0.2.4.tar.gz
+        haskell-indexed-traversable-0.1.1-1.cabal::https://hackage.haskell.org/package/indexed-traversable-0.1.1/revision/1.cabal
+        haskell-indexed-traversable-0.1.1.tar.gz::https://hackage.haskell.org/package/indexed-traversable-0.1.1/indexed-traversable-0.1.1.tar.gz
         haskell-integer-logarithms-1.0.3.1.tar.gz::https://hackage.haskell.org/package/integer-logarithms-1.0.3.1/integer-logarithms-1.0.3.1.tar.gz
+        haskell-iproute-1.7.11.tar.gz::https://hackage.haskell.org/package/iproute-1.7.11/iproute-1.7.11.tar.gz
         haskell-ipynb-0.1.0.1.tar.gz::https://hackage.haskell.org/package/ipynb-0.1.0.1/ipynb-0.1.0.1.tar.gz
-        haskell-jira-wiki-markup-1.1.4.tar.gz::https://hackage.haskell.org/package/jira-wiki-markup-1.1.4/jira-wiki-markup-1.1.4.tar.gz
+        haskell-jira-wiki-markup-1.4.0.tar.gz::https://hackage.haskell.org/package/jira-wiki-markup-1.4.0/jira-wiki-markup-1.4.0.tar.gz
         haskell-json-0.10-1.cabal::https://hackage.haskell.org/package/json-0.10/revision/1.cabal
         haskell-json-0.10.tar.gz::https://hackage.haskell.org/package/json-0.10/json-0.10.tar.gz
         haskell-memory-0.16.0.tar.gz::https://hackage.haskell.org/package/memory-0.16.0/memory-0.16.0.tar.gz
         haskell-microlens-0.4.12.0.tar.gz::https://hackage.haskell.org/package/microlens-0.4.12.0/microlens-0.4.12.0.tar.gz
         haskell-mime-types-0.1.0.9.tar.gz::https://hackage.haskell.org/package/mime-types-0.1.0.9/mime-types-0.1.0.9.tar.gz
-        haskell-monad-control-1.0.2.3.tar.gz::https://hackage.haskell.org/package/monad-control-1.0.2.3/monad-control-1.0.2.3.tar.gz
-        haskell-mono-traversable-1.0.15.1.tar.gz::https://hackage.haskell.org/package/mono-traversable-1.0.15.1/mono-traversable-1.0.15.1.tar.gz
-        haskell-network-3.1.0.1.tar.gz::https://hackage.haskell.org/package/network-3.1.0.1/network-3.1.0.1.tar.gz
-        haskell-network-bsd-2.8.1.0-3.cabal::https://hackage.haskell.org/package/network-bsd-2.8.1.0/revision/3.cabal
+        haskell-monad-control-1.0.3.1.tar.gz::https://hackage.haskell.org/package/monad-control-1.0.3.1/monad-control-1.0.3.1.tar.gz
+        haskell-mono-traversable-1.0.15.2.tar.gz::https://hackage.haskell.org/package/mono-traversable-1.0.15.2/mono-traversable-1.0.15.2.tar.gz
+        haskell-network-3.1.2.2.tar.gz::https://hackage.haskell.org/package/network-3.1.2.2/network-3.1.2.2.tar.gz
+        haskell-network-bsd-2.8.1.0-4.cabal::https://hackage.haskell.org/package/network-bsd-2.8.1.0/revision/4.cabal
         haskell-network-bsd-2.8.1.0.tar.gz::https://hackage.haskell.org/package/network-bsd-2.8.1.0/network-bsd-2.8.1.0.tar.gz
         haskell-network-info-0.2.0.10-1.cabal::https://hackage.haskell.org/package/network-info-0.2.0.10/revision/1.cabal
         haskell-network-info-0.2.0.10.tar.gz::https://hackage.haskell.org/package/network-info-0.2.0.10/network-info-0.2.0.10.tar.gz
@@ -129,64 +140,70 @@ source=(haskell-ConfigFile-1.1.4.tar.gz::https://hackage.haskell.org/package/Con
         haskell-old-locale-1.0.0.7.tar.gz::https://hackage.haskell.org/package/old-locale-1.0.0.7/old-locale-1.0.0.7.tar.gz
         haskell-old-time-1.1.0.3-2.cabal::https://hackage.haskell.org/package/old-time-1.1.0.3/revision/2.cabal
         haskell-old-time-1.1.0.3.tar.gz::https://hackage.haskell.org/package/old-time-1.1.0.3/old-time-1.1.0.3.tar.gz
-        haskell-pandoc-2.9.2.1.tar.gz::https://hackage.haskell.org/package/pandoc-2.9.2.1/pandoc-2.9.2.1.tar.gz
-        haskell-pandoc-types-1.20-1.cabal::https://hackage.haskell.org/package/pandoc-types-1.20/revision/1.cabal
-        haskell-pandoc-types-1.20.tar.gz::https://hackage.haskell.org/package/pandoc-types-1.20/pandoc-types-1.20.tar.gz
+        haskell-pandoc-2.14.2.tar.gz::https://hackage.haskell.org/package/pandoc-2.14.2/pandoc-2.14.2.tar.gz
+        haskell-pandoc-types-1.22.tar.gz::https://hackage.haskell.org/package/pandoc-types-1.22/pandoc-types-1.22.tar.gz
         haskell-pem-0.2.4.tar.gz::https://hackage.haskell.org/package/pem-0.2.4/pem-0.2.4.tar.gz
-        haskell-primitive-0.7.1.0-3.cabal::https://hackage.haskell.org/package/primitive-0.7.1.0/revision/3.cabal
-        haskell-primitive-0.7.1.0.tar.gz::https://hackage.haskell.org/package/primitive-0.7.1.0/primitive-0.7.1.0.tar.gz
+        haskell-primitive-0.7.2.0.tar.gz::https://hackage.haskell.org/package/primitive-0.7.2.0/primitive-0.7.2.0.tar.gz
         haskell-random-1.1-1.cabal::https://hackage.haskell.org/package/random-1.1/revision/1.cabal
         haskell-random-1.1.tar.gz::https://hackage.haskell.org/package/random-1.1/random-1.1.tar.gz
         haskell-recaptcha-0.1.0.4.tar.gz::https://hackage.haskell.org/package/recaptcha-0.1.0.4/recaptcha-0.1.0.4.tar.gz
+        haskell-regex-base-0.94.0.1-1.cabal::https://hackage.haskell.org/package/regex-base-0.94.0.1/revision/1.cabal
         haskell-regex-base-0.94.0.1.tar.gz::https://hackage.haskell.org/package/regex-base-0.94.0.1/regex-base-0.94.0.1.tar.gz
+        haskell-regex-compat-0.95.2.1-1.cabal::https://hackage.haskell.org/package/regex-compat-0.95.2.1/revision/1.cabal
         haskell-regex-compat-0.95.2.1.tar.gz::https://hackage.haskell.org/package/regex-compat-0.95.2.1/regex-compat-0.95.2.1.tar.gz
-        haskell-regex-pcre-builtin-0.95.2.3.8.43.tar.gz::https://hackage.haskell.org/package/regex-pcre-builtin-0.95.2.3.8.43/regex-pcre-builtin-0.95.2.3.8.43.tar.gz
-        haskell-regex-posix-0.96.0.0-2.cabal::https://hackage.haskell.org/package/regex-posix-0.96.0.0/revision/2.cabal
-        haskell-regex-posix-0.96.0.0.tar.gz::https://hackage.haskell.org/package/regex-posix-0.96.0.0/regex-posix-0.96.0.0.tar.gz
-        haskell-resourcet-1.2.4.2.tar.gz::https://hackage.haskell.org/package/resourcet-1.2.4.2/resourcet-1.2.4.2.tar.gz
+        haskell-regex-posix-0.96.0.1.tar.gz::https://hackage.haskell.org/package/regex-posix-0.96.0.1/regex-posix-0.96.0.1.tar.gz
+        haskell-resourcet-1.2.4.3.tar.gz::https://hackage.haskell.org/package/resourcet-1.2.4.3/resourcet-1.2.4.3.tar.gz
         haskell-safe-0.3.19.tar.gz::https://hackage.haskell.org/package/safe-0.3.19/safe-0.3.19.tar.gz
         haskell-scientific-0.3.7.0.tar.gz::https://hackage.haskell.org/package/scientific-0.3.7.0/scientific-0.3.7.0.tar.gz
-        haskell-semigroups-0.19.1.tar.gz::https://hackage.haskell.org/package/semigroups-0.19.1/semigroups-0.19.1.tar.gz
+        haskell-semigroups-0.19.2.tar.gz::https://hackage.haskell.org/package/semigroups-0.19.2/semigroups-0.19.2.tar.gz
         haskell-sendfile-0.7.11.1.tar.gz::https://hackage.haskell.org/package/sendfile-0.7.11.1/sendfile-0.7.11.1.tar.gz
-        haskell-skylighting-0.8.5.tar.gz::https://hackage.haskell.org/package/skylighting-0.8.5/skylighting-0.8.5.tar.gz
-        haskell-skylighting-core-0.8.5.tar.gz::https://hackage.haskell.org/package/skylighting-core-0.8.5/skylighting-core-0.8.5.tar.gz
+        haskell-skylighting-0.11.tar.gz::https://hackage.haskell.org/package/skylighting-0.11/skylighting-0.11.tar.gz
+        haskell-skylighting-core-0.11.tar.gz::https://hackage.haskell.org/package/skylighting-core-0.11/skylighting-core-0.11.tar.gz
         haskell-socks-0.6.1.tar.gz::https://hackage.haskell.org/package/socks-0.6.1/socks-0.6.1.tar.gz
         haskell-split-0.2.3.4-1.cabal::https://hackage.haskell.org/package/split-0.2.3.4/revision/1.cabal
         haskell-split-0.2.3.4.tar.gz::https://hackage.haskell.org/package/split-0.2.3.4/split-0.2.3.4.tar.gz
-        haskell-splitmix-0.0.5.tar.gz::https://hackage.haskell.org/package/splitmix-0.0.5/splitmix-0.0.5.tar.gz
+        haskell-splitmix-0.1.0.3.tar.gz::https://hackage.haskell.org/package/splitmix-0.1.0.3/splitmix-0.1.0.3.tar.gz
         haskell-streaming-commons-0.2.2.1.tar.gz::https://hackage.haskell.org/package/streaming-commons-0.2.2.1/streaming-commons-0.2.2.1.tar.gz
+        haskell-strict-0.4.0.1-1.cabal::https://hackage.haskell.org/package/strict-0.4.0.1/revision/1.cabal
+        haskell-strict-0.4.0.1.tar.gz::https://hackage.haskell.org/package/strict-0.4.0.1/strict-0.4.0.1.tar.gz
         haskell-syb-0.7.2.1.tar.gz::https://hackage.haskell.org/package/syb-0.7.2.1/syb-0.7.2.1.tar.gz
         haskell-system-filepath-0.4.14-1.cabal::https://hackage.haskell.org/package/system-filepath-0.4.14/revision/1.cabal
         haskell-system-filepath-0.4.14.tar.gz::https://hackage.haskell.org/package/system-filepath-0.4.14/system-filepath-0.4.14.tar.gz
-        haskell-tagged-0.8.6.1-1.cabal::https://hackage.haskell.org/package/tagged-0.8.6.1/revision/1.cabal
+        haskell-tagged-0.8.6.1-2.cabal::https://hackage.haskell.org/package/tagged-0.8.6.1/revision/2.cabal
         haskell-tagged-0.8.6.1.tar.gz::https://hackage.haskell.org/package/tagged-0.8.6.1/tagged-0.8.6.1.tar.gz
         haskell-tagsoup-0.14.8.tar.gz::https://hackage.haskell.org/package/tagsoup-0.14.8/tagsoup-0.14.8.tar.gz
         haskell-temporary-1.3.tar.gz::https://hackage.haskell.org/package/temporary-1.3/temporary-1.3.tar.gz
-        haskell-texmath-0.12.3.tar.gz::https://hackage.haskell.org/package/texmath-0.12.3/texmath-0.12.3.tar.gz
+        haskell-texmath-0.12.3.1.tar.gz::https://hackage.haskell.org/package/texmath-0.12.3.1/texmath-0.12.3.1.tar.gz
         haskell-text-conversions-0.3.1.tar.gz::https://hackage.haskell.org/package/text-conversions-0.3.1/text-conversions-0.3.1.tar.gz
-        haskell-th-abstraction-0.3.2.0.tar.gz::https://hackage.haskell.org/package/th-abstraction-0.3.2.0/th-abstraction-0.3.2.0.tar.gz
-        haskell-th-compat-0.1.2.tar.gz::https://hackage.haskell.org/package/th-compat-0.1.2/th-compat-0.1.2.tar.gz
+        haskell-th-abstraction-0.4.3.0.tar.gz::https://hackage.haskell.org/package/th-abstraction-0.4.3.0/th-abstraction-0.4.3.0.tar.gz
+        haskell-th-compat-0.1.3.tar.gz::https://hackage.haskell.org/package/th-compat-0.1.3/th-compat-0.1.3.tar.gz
         haskell-th-lift-0.8.2-1.cabal::https://hackage.haskell.org/package/th-lift-0.8.2/revision/1.cabal
         haskell-th-lift-0.8.2.tar.gz::https://hackage.haskell.org/package/th-lift-0.8.2/th-lift-0.8.2.tar.gz
         haskell-th-lift-instances-0.1.18.tar.gz::https://hackage.haskell.org/package/th-lift-instances-0.1.18/th-lift-instances-0.1.18.tar.gz
+        haskell-these-1.1.1.1-2.cabal::https://hackage.haskell.org/package/these-1.1.1.1/revision/2.cabal
+        haskell-these-1.1.1.1.tar.gz::https://hackage.haskell.org/package/these-1.1.1.1/these-1.1.1.1.tar.gz
         haskell-threads-0.5.1.6.tar.gz::https://hackage.haskell.org/package/threads-0.5.1.6/threads-0.5.1.6.tar.gz
-        haskell-time-compat-1.9.6.tar.gz::https://hackage.haskell.org/package/time-compat-1.9.6/time-compat-1.9.6.tar.gz
+        haskell-time-compat-1.9.6.1.tar.gz::https://hackage.haskell.org/package/time-compat-1.9.6.1/time-compat-1.9.6.1.tar.gz
         haskell-time-locale-compat-0.1.1.5.tar.gz::https://hackage.haskell.org/package/time-locale-compat-0.1.1.5/time-locale-compat-0.1.1.5.tar.gz
         haskell-tls-1.5.5.tar.gz::https://hackage.haskell.org/package/tls-1.5.5/tls-1.5.5.tar.gz
-        haskell-transformers-base-0.4.5.2.tar.gz::https://hackage.haskell.org/package/transformers-base-0.4.5.2/transformers-base-0.4.5.2.tar.gz
+        haskell-transformers-base-0.4.6.tar.gz::https://hackage.haskell.org/package/transformers-base-0.4.6/transformers-base-0.4.6.tar.gz
         haskell-transformers-compat-0.6.6.tar.gz::https://hackage.haskell.org/package/transformers-compat-0.6.6/transformers-compat-0.6.6.tar.gz
-        haskell-typed-process-0.2.6.0.tar.gz::https://hackage.haskell.org/package/typed-process-0.2.6.0/typed-process-0.2.6.0.tar.gz
-        haskell-unicode-transforms-0.3.7.1-1.cabal::https://hackage.haskell.org/package/unicode-transforms-0.3.7.1/revision/1.cabal
-        haskell-unicode-transforms-0.3.7.1.tar.gz::https://hackage.haskell.org/package/unicode-transforms-0.3.7.1/unicode-transforms-0.3.7.1.tar.gz
-        haskell-unliftio-core-0.2.0.1-1.cabal::https://hackage.haskell.org/package/unliftio-core-0.2.0.1/revision/1.cabal
+        haskell-typed-process-0.2.6.1.tar.gz::https://hackage.haskell.org/package/typed-process-0.2.6.1/typed-process-0.2.6.1.tar.gz
+        haskell-unicode-collation-0.1.3.tar.gz::https://hackage.haskell.org/package/unicode-collation-0.1.3/unicode-collation-0.1.3.tar.gz
+        haskell-unicode-data-0.1.0.1.tar.gz::https://hackage.haskell.org/package/unicode-data-0.1.0.1/unicode-data-0.1.0.1.tar.gz
+        haskell-unicode-transforms-0.3.8.tar.gz::https://hackage.haskell.org/package/unicode-transforms-0.3.8/unicode-transforms-0.3.8.tar.gz
+        haskell-uniplate-1.6.13-1.cabal::https://hackage.haskell.org/package/uniplate-1.6.13/revision/1.cabal
+        haskell-uniplate-1.6.13.tar.gz::https://hackage.haskell.org/package/uniplate-1.6.13/uniplate-1.6.13.tar.gz
+        haskell-unliftio-core-0.2.0.1-2.cabal::https://hackage.haskell.org/package/unliftio-core-0.2.0.1/revision/2.cabal
         haskell-unliftio-core-0.2.0.1.tar.gz::https://hackage.haskell.org/package/unliftio-core-0.2.0.1/unliftio-core-0.2.0.1.tar.gz
         haskell-unordered-containers-0.2.14.0.tar.gz::https://hackage.haskell.org/package/unordered-containers-0.2.14.0/unordered-containers-0.2.14.0.tar.gz
-        haskell-uri-bytestring-0.3.3.0.tar.gz::https://hackage.haskell.org/package/uri-bytestring-0.3.3.0/uri-bytestring-0.3.3.0.tar.gz
+        haskell-uri-bytestring-0.3.3.1.tar.gz::https://hackage.haskell.org/package/uri-bytestring-0.3.3.1/uri-bytestring-0.3.3.1.tar.gz
         haskell-uri-bytestring-aeson-0.1.0.8.tar.gz::https://hackage.haskell.org/package/uri-bytestring-aeson-0.1.0.8/uri-bytestring-aeson-0.1.0.8.tar.gz
         haskell-url-2.1.3.tar.gz::https://hackage.haskell.org/package/url-2.1.3/url-2.1.3.tar.gz
         haskell-utf8-string-1.0.2.tar.gz::https://hackage.haskell.org/package/utf8-string-1.0.2/utf8-string-1.0.2.tar.gz
         haskell-uuid-1.3.15.tar.gz::https://hackage.haskell.org/package/uuid-1.3.15/uuid-1.3.15.tar.gz
         haskell-uuid-types-1.0.5.tar.gz::https://hackage.haskell.org/package/uuid-types-1.0.5/uuid-types-1.0.5.tar.gz
+        haskell-vector-0.12.3.0-2.cabal::https://hackage.haskell.org/package/vector-0.12.3.0/revision/2.cabal
         haskell-vector-0.12.3.0.tar.gz::https://hackage.haskell.org/package/vector-0.12.3.0/vector-0.12.3.0.tar.gz
         haskell-vector-algorithms-0.8.0.4-1.cabal::https://hackage.haskell.org/package/vector-algorithms-0.8.0.4/revision/1.cabal
         haskell-vector-algorithms-0.8.0.4.tar.gz::https://hackage.haskell.org/package/vector-algorithms-0.8.0.4/vector-algorithms-0.8.0.4.tar.gz
@@ -204,59 +221,69 @@ source=(haskell-ConfigFile-1.1.4.tar.gz::https://hackage.haskell.org/package/Con
         haskell-xss-sanitize-0.3.6.tar.gz::https://hackage.haskell.org/package/xss-sanitize-0.3.6/xss-sanitize-0.3.6.tar.gz
         haskell-zip-archive-0.4.1-1.cabal::https://hackage.haskell.org/package/zip-archive-0.4.1/revision/1.cabal
         haskell-zip-archive-0.4.1.tar.gz::https://hackage.haskell.org/package/zip-archive-0.4.1/zip-archive-0.4.1.tar.gz
+        haskell-zlib-0.6.2.3-1.cabal::https://hackage.haskell.org/package/zlib-0.6.2.3/revision/1.cabal
         haskell-zlib-0.6.2.3.tar.gz::https://hackage.haskell.org/package/zlib-0.6.2.3/zlib-0.6.2.3.tar.gz)
 sha512sums=('4455110c95172461b2d82ae88ba4f386d5e49ddd7f7def83714d2f6198090f0d121166eece3efa735341da9bbc0029e704be00d3e671d24ad27e838dfe913776'
             '6a48a234d3140bc8c641cdf649a1f0daa39ab4de4064435dcbb15a9ea52994c967aadc8584f70aab89ef78e17ecc66b8ce3d8dd2157eb5b85277dfff80fd608c'
+            '102ff7e95297ba5aaf40efbf02889ef6720a8ce9362f12ff1112d929f0b6da91f7ceb58c8a05543d8936baf17f9c0a72cc538b908f64889ae951277038b05057'
             'b2b2ee93f2cadf01f8a6828b9e742a241601f5fada1f73388dc0044f8e0985c601bd6a42738c60c54eecb619b6289ac1302751d8e2402f6494aaeb2b2a4abb42'
-            '6a96747e53069ddddc717fa43a62285d97bc5e9db304d1d34c43913f5755027d5d3d659daaf017969d3611e35dd52087c2fe22f02b3a2ef9dffb2b0dd75c9f70'
-            'a00552a104231aa44e06c558f200a36430774351de2e7c55b0f25fd064d29aa25e62e48185d79184d916fe7440ad2a6d20dd54a5b4ad4bb635e58fc259185e5b'
+            '12a9d5e8ee3da4fb88103f9cb63012ba1e405a3d011fc7d09f2283e399b7246730c0075d46e5e64df0bb317330d803a7cf8ed25dcdb4f6345817a30e3b3508f9'
             'b5136b55967d4db7569a0269b429c8e419878acc548d962af94efa5aa0ddbb8a6ab22bc3096ce3d78b61dc708996c408d4bfa55c6c7fb6c0d915389503cbd755'
             '515b7e2aebd14102b351ea27e2c59627ee81353492863fd852101c83795bf03591d3058f19fa1003c8c8c6fb5b08c737c16e39446d407f4123b6c8b922532b98'
             'f8ad41a99e48183835093ad8bf6a3fbdf4b9ad9df3bea46b12efd55a9555c22bd2595c72b1ac2e73379ab47e21f6cbf9022412db8971e1c7c02a32e824f53304'
             '40ce63d01fb4dea77caeb055cf2f9f16b32252c7c5ea501b93c9020e426da9ea019b6e618da373fa41bae93789b76561f2b091bfe9340ee9c75f4d8fe29f90ed'
+            '967fd91df50eb676134fc60f10e5b6b485a1efe1e2ad8d8375f241f73f57e586cbe01573ae1309bc6d6736161aa10f6e31d43b1c56ed3a7f1a8b27508eb06038'
             'eb42ad9fd09347d2ec661f8181c6d2c95fb4f9f05634373ac27b377508056afd909b4925f725b9e11441ee9877b66b46038005e469d0b754f8f6cb1cda66d1dc'
-            '08512c9279a4142e4875a8d5a4dd5787ebcff1280091da361865cd2d7fddd6503408c3da7bff050647c886301d0aa2bd6b94875a9b77a8825f1cf67f8e59abd6'
-            'd2c92caec8bdf9089483b1f256f17f3d50e066f57eddb630f1831a232c4e33a0d4f55a0f927aa433cd3379283fa2615fd2937941e6847b234ea00b0fbeb46b98'
+            '84decd354e6093bc72afd125410499dd4be3ae8fdbf0a3b466011b4dbcb5c5657e51ab75cfe22790e22bf4ac54cbb1203ff7a0d108e872ce60f4831be827a6e5'
             '77a525cb9ef45a410595a2f9c11a848a3aaeb6c7cb9b0ff11395326a259c0bea0e75689e3c7fa410e25be7d4480887830e11c891801f03c439b6ae9f55e5c125'
-            'e30c84a9eecec23552228937e4b0164dbb4e286d84509facbc5366699a318a34167a3f0bac1f62571d61d8c98354e4e83c8fffcaf24293e047784c66aaa430ac'
-            '236ed1b2cc4b39d49277cea5b787b6107c7efbe1c0d73de2005d400746bacf44c6b8ef5d26619395e24844f8948115685963ec7d03a998d0b728ab992e32e705'
+            'd5c18b54dc161964977a88a4c8634f1452ecfff390c23c444cdf72a6cd44dcf45f3fdc6709d1c5ca846423f8a12090010e81514b4edf3def15b736980186ff99'
+            '31e0339945aec6d84aec230c09001fe6e7926f008d3444d12264bb323d0a050515303fdc8eeb6563733594209d930cdd2f82eb4dfe4dd4d5c573748aaa71813d'
             '5867343c5d51d632bb299fcbc00cdb29b0feb1931f0ff9c3cf89c5752f1a103c68c9e6fa65e8538ac19212853c39f6d1d6e0c2d9f0bf49fe001c1bfd792db779'
             '2a608da18bbb3d11373dc0c6ee1bf4c890d5d4e39a2b13e547c7a3a4060eb86789d6afa04d1bd9e5df91f3745ea33adea8b15df213d39e75eca296275a74700d'
+            '6954f4e966685fc47d91b34c527c524bdea29d2c8eba14f4c4ed1d268ee812926d23d2daf1b63c92b72d99be83b536f7ebc498f5981f8f4cd5c3c1e7769f0290'
             '1de6b6a3b7e7bf2c0db638c25127d3fa1755fbc540ffd20798f1bbedf2966c0870d1f6e3b19bd273bb72850641d164d4b872432a2db5596dfc78bab437774cd2'
             'e31362881ebec21be5dab1c46284ea6e2571dd87f5c730690787303363a01712945ba85969c39bb2e2d76f9bcefce5d3bad247564e4b6959008804346f65fc9c'
             'd352422479a4bb31a6c7ea02fc3da701d1417bb37a9f029636f6e2646530e4bd8a8de65e192b2beaa5b0b115487c45f42252acf05f58e5f513dea4c81be59a7f'
             '0c2b76f134a77da65ecaa797d92b2ee273a72e9bd4467d354012c2b584216cdf2084974393fa4b850207720a3e0801d4a5af5f15137574ff1d7a341c5014184d'
+            '5d277da45e1d94c37b2e1b073571ea2c2766a41f1f6519f95b0b8ea0ef1579d5d4aa3c23c7f3c45c559397ee08f84761d2bdcfc0f172d6223985f043e6ee1b8a'
+            '20fd0056dcc2dff9504e090be5c2ef27692a795133620e60b9382cfdfbaf26d1019617acf48f0f762e22d699068bc4dbd35a714177ce3a36761c0065708b9168'
             '99a7cd04d05362b6d007ec75a32cf0a6c11f4b3e46ab706349289f5bb0ad128fd2a9809e4d30634917a0a608b0d611c6d4e936ea36535c7c5ec167fead5f3248'
-            '3bfd39894d8eddd956a6140a78d7c73f2a9590bfd3b1e8dac896ce236bd9fec7710951f558e14851d529a7d20f42f41eff13988ec5b06c9180913f0523a6f1ce'
-            '357545ebd003faff09485cdf89adee9f1f87b49ab9c26a133ef3d0ac165e3880eecd147431131ede425f5863f07ee79857fe2cbbfba1a3155abd70894f553c59'
-            'ff2223da24b8be8048e3360d6817b32f5648a9033e4ca8cc9d43a2abec057072c3c7c946d65bcf245fd5513dd501c7cab7de0c333f708f167b3c0fb51e137b23'
-            '0b54b53bb762ca99cbfe82799a63f73229447325438ccae4849df676d14a4758177d9481391b628cca7921d9796ac3172ad8226b2530e151b7c59f86b82f381a'
-            '658ff8e23648d490d97de1083a8412194076f8a0a07fe5843d0d68887225294f296ad2e1c32b9bae3fa32e1f94261aaeb350eec47642edb35ca5ba1dd1a69ecf'
-            'ce59bd56c5acc38f3c5c55d619b27684a8cc35c0b14c2dac6a4cfa56d503e25c7a764210a7cb9cef93b0acc02371af0e40d8024b7a48e88a8ebdf406fed206a6'
+            'a43925cdfd4685c7ae34057536d713fc4edda9681a06cdf386bac618441499a2ed6c6088059e7c003381d3039ce32e413ed4f87a8ead0fd0f18c8aac3ce127ac'
+            '23d964a5dbd3e76fa9bf447d216312510fa7dd97a66e3934ea4eefac20c43e599a7a8a2e568a0233c06f5200b85d01ea80427b60c3d3d77960f282496f89f99a'
+            'cae37ce8b6ce2b077fa6781021967ab82ec5af1ff76e8c4e8192243dd4a515b96babc13292d6f7db09715990437c0b9564af9f26c408afe6ea7e0936af58fea0'
+            '5eb31f42553f16d840822056ef84cf80949b29b91508bba3a8399da59b49252b9509f2c83531fa9f095abfeea6d65b7b541a1f9a526604ffc038ff6346a27a5d'
+            '17c46a6108dbc6b3a9756c7855319c340fd472b5c70008ec7f2698c4102bfb3fd5d37c13796781276f6170134436b19f503d3963e56eb73ab4dfbeb5ba2e187c'
             'e95f4422c7442c8a8f05b98e0cc8c7ffe67b59f0e1b89e7016bea1cbad351a3766a0193d3499c721614aa4607cacc9aba9ed275b92188980ae67108abd28d6e6'
-            'cf584c5ab41850443d7910cb787246f6ba050f521fd92db2db8e6cd4e48aec68e553393ecf6c2da589c8d7f2fd41f572dca28f551b457c7d1a63099a00a73778'
-            'e4e244752491ac279a88afc4ceb0fe4c44b75fc369ff47ec29e3c99996b4be967051034c94f0c659d47a153d6b9e0b65a75ea419fdfd52fd50cdc0da2dca7db6'
+            '730d5fd7bd1cf90792d0eea75de1fd333c6cab73f4d178db6d3c7006d77f222734a53bb10ef3a296862ca31338e2ae387acfdd44b119014cff7a0a13362e6e96'
             '1b0cebb655b98e8e01b6a2a6e37333ad36fb16564c42a21def1461bf2e32e66536c69f8d6de199ce50a4b40475ff2f339ba4c7f95f1382915aa64cf87b3ae2f5'
             '4515fbecfb8280cfd669313d236a5e3b4ef45ba3fd3da8626073fa3a44a889370c48c582ea633eac5df4a5e716c495cf827deb9239274fbdb63a14d19f9682fb'
+            '154666aab863b0c3a6791bd7ac4596de6a723d857688b82f23e9919e008f93d30c37a49577bf694d24a87a0c517d0854f85b2e259ba5222892f193fc2a014baf'
+            '09f66d1a086a72a822e804521c2258acb16fd5a4a29c3758b97987f27a271f58e3dd4103518b31b3bdf44465c87fe5573a0bba168ba109287ca3370b8ab491a1'
             '30f8d1d70a1aeb5b4c4e3170e40207c0f39933050e04bbdff49683a8b2e850921e80fa8e2d7f2b7a2a19fd6340bb65fad9c1d33999abf8a388d3f0ce921d0744'
             'd778d98988dae8895be59ef8fad7215dca432fb78ba3292b91db6d530d7c949013539cc270a8a44c214d917d3cec0cf3e05f30b9a7f2a1965944803be8d333d6'
             '26e5294285033fa453ab9914a5bdb37c42f5b7c3a10400be1ff6dd125a70499d556c106cc8128154dc0c455c8b80b489a883265fcb626e2d4afcd8e4d94374bc'
             'd677b611c751c2dfd4bd12c1b1aa612b08356c90b9962b60d4972a9626ddd0337bcaf40b4595b64c1d3bf506d017f058771d00fa55979b94283095061be18944'
+            '970f74a394947b023ab88fa7bc713478b50565e3e9535479ec641283f18e04cb952788334b2ab38fafe723f2d398b1626af92f349abc11a6c6ca5a6974653025'
             'bc41fc9dad87d44ddcfc34edb20f0904ebcc39da7047c747170a2d57f8cbf0d808f903eb295af9d201861d829a658f987c2adaa52336804b4bce8a2df06262ef'
             '121827f4f9117673c5c41beeaff2ef74f75ca55fba8460f6289d69b1ebfdebb9568f23b4b7d0ab2f3d436cbcdaa073709a26562b39e5f57a6a705088d0a2ff71'
             '8e3bab4d1035d0bf96da24c7a4b79953b855c849cb0197bf65dc66b4394a92fea263fcffca4179005507a35234b7f60d873df41bc01a94fb2dfdbd91092e176b'
             'aced40e81301fbc73c6029be2c4045cf63f81d40361d5939713f3d60db196dc25a70e556e9e74e194e6a3b6cac86997d2bfc8b1f91c630676af7d066268a25b4'
-            'f4d5825b19beeef42402b0bed0928ebfb7923aee6c59d4937516877a89cce832667ff19fdf3a6279d484ffaad06d763e0ac4946275b1051c3cae12d7928a2567'
+            '8740789d8a02acbe31dc7d0d0276303d3152cb25b1c38b380e7e44e73cbb2b07501ca85ee98378567fffa6fc6dd37871af74b5bf15057891a9abb8273d708f19'
             'f17b7f56c9382a4ea3235b2d7669866e0ea366ab7c30984dc3f017f18d25015508f5cbce535eec4a601c09a33cffabe71b8da5cc15d301daf6ed3f3e40dbd2af'
-            '2232f51b3cfdda1a64436e8395c2441e49db083982a0370d3ec38c304b0a6234666887b3abc886107a9b21c425d3253284cce0186c1a210a302a0a14808364d8'
+            '82f7d92e46f7235706832be9d3a981bc09f729ef4e7f891dae85bf808f342e498aa152bc106f9c011ab0e79e5cc2d57067de596d774ad5010e9845df521ed275'
+            'b91a02d44c95d1691fe8df8e380e4754cda98d0b3c5ec93163a71ecf596c5a5ac9bb54d618a13427211837c80e4e83c4a3dcc7b9ef18655ff0dadddc6121d665'
+            'f2a41ad2f71d67512affc0c5882d86256e7b9f7dce1194c8a6708ba5dfbb0807d8dbdd8a7972c6c2e0a0dcf6695fe68cd1430488756222dc1a545671e0aa10e1'
+            'fe3dfee3eec4e400c896db5427a6f228b94b71e7bb6d6ace6eead0fe2a495d931e355649f1652cc3b3a928b8abd22f37e6005b3a43d3c95e255c858c89246842'
+            '425f0fadb85e99dc4047fff47dfbae9d4d33a9bb1d3f26493c7b14af03ca26b29f4f57693c5670ddafa9d48c9315ca34072cd76c6e2eaf47d9c5d14e5ebb5d61'
+            'b823ea36826da74c6ec46cb835493224f62da66516841b9660a04c391dee803c31e140b2c523b563fb51f46509d99cce157b456a88fbaf2371da11933d5d787e'
             'fdb5eb22e0e49a6b150b7bafe9775e9b2b41b70338647d447ae20a3901d93de9b286cc2ac0ff7533bffeb0b3ca9a5b898fd6c0341898b4ecddde9a9eb4a2823a'
             '27cb6e1eba8c01154a1a7002521ce0190028790d1cb3f07d268722da2e2d32cc9ec8a78b897832f3e96fc40a4d6bf1755b7d068ba986178830aea0373b38cb38'
             '9312457f4118438b9f2e8fb08619f069db1ae07f6ef6ee53e26970913172576c8aeaa1f6dfa11d5312efe8f1e9b3dd4342ee9bfa844c57296f33d885b5738daf'
             '06da91d39e0d9a556a78da77a7ca31d520d5e7e8fd65509f82be926ad2c34282ef1f4d03aa6065c5834bc89417cf51b573f3cf4529fe3ead72eb1e80cc6d7a98'
             'b3d4c12b4683f4f02e4d59b47ec3867554dee2fcb106fe59a073b8ead63a220458b91e8b5a2321e46a91666ba61e88798361448a7bc86e496a47d6731b8c0b93'
-            'e40b439cf4e87eb045c897470fb7089aad72c45aadb5be93c7ea6c97efd4f1e8421b35ec5dd1e38bc23ec771d8f2e60a870efd57f64ce49ae8044d1db218b4a1'
+            '6b7be0bd0b5e663fd6cce73de16b6396818762a892cf30f6cf9cd08425f06c8c078cc4ee5634d843ffe4014c55c207535589a323dae1c5ff3f76883805e55b54'
             'f2efb197005ed5f12a7c2be490a64a83186cacb34eaedec6cbd76e52c30221733da1d31201c5209538226508db760fd9eed0afc8d72643e1509b32c7287cb12e'
-            '035bcac812a9b42987e90aefaaa6840742edb2155445c66c817735ef60510e9915aad8fc2d23ab562eb423f18a76424445a0d9208e5891ab075dd4d937e8c11c'
+            '3077375cbff05b415168152eeb213a9ec1c0d0d48f63b394f65399f7ae1421adc8f0e760e1ec7f7a5f83c78377151209c77d23ab01cf0ceb36e899aa000310f3'
             'e3528c70501ffaf4649adc0fe120a0b333329761fa66505083269afa67828c16695fd91567035adef0b77915df47a6bcc99d2d90f0ecb26eda583829261cb1bc'
             '7f80268e429a9f700709ebdb00da1e2831f2edca064feaa06a9050060fea572abc2fdfee976f60b18a4085cf3a3533e70129104c82e7b050358a97e8575928f2'
             '2f7b4fc758e3e6da7dadbaf48c9174770de8230ef4578d9fda610ca9b7a4ad497284623e382bf55111ddc852550275415f58311a2e726721f050d9f704050628'
@@ -265,58 +292,60 @@ sha512sums=('4455110c95172461b2d82ae88ba4f386d5e49ddd7f7def83714d2f6198090f0d121
             'a12352eb0484ad772b16674b2ef8145b3733473f716c182841d6378d8a2d3b196e8fc966afd7c335e81e924ea83088a9c67c4aaddb14a87a7a816cbe27236bfd'
             'b3794c296d5f1ca54badaab4c267b302967ce73ac649d8df031daafa17f66537bf670ee42fda1b75b92998eb4b8862c1e0a9bdd3716c31dfd0937c3c76b6f03d'
             'bbaf4626c922820dca8cc230585fef80b6f6bd6278d335cc7abd4e5b7a857f0626ca9937ea95066e7655387dfcc684e6fbb0f6f5bc6905e539fbd1176ddd99ec'
-            'f7961c098677c0e75561e3706446b073f60c6a8646aca6d139d6559952b2cba189221ac8af59f2dc6e4da65ee4a789f703e2ebbcf1e9c3df3f98167409bdf7c9'
-            '07f144525835e07d26ec6345f12b9173b47345dfd8233db1b958fca1e3292f48583f95d21ce6934ae588b1dc5f9efd73413e616577a589a91fddff2de5ec32d6'
+            '70b0c15522ea1fa623397bd399d83cc0921736012e6daaad21a9940ec9f447373f7e0e3915369127c7c54def7cb1d066c4641e676fa5f444f3d5dd761c258b63'
+            '2b4a6f58dc70ea18e359ddaa93088bfbefa96c6c37f256cf0c75bdd61087a874584d8a1d47176adb114a4399400b866d7911c12a2c8c1ebafee3398ca58caba2'
+            '2b5dee1afc7b437c7035d490e9540e9d12e5a4d6549d8e2afb74a163e00d1011aa5034e82aff93295b2954b5f6ad5309b78a9b8b921f8f7810fed2545470f0c0'
+            '387c7b6e0b2f917fd68d52ffbc79b9db21e488629309bfaf0dc77450bfd37c0f7f8a29458532616b5395552f84f3727b462cb2876e5aca79101e2c752b26e0a7'
+            '8985b9e775e8d99c3d8cf59eabfb7ed13c395482186b086831a79afea9b980ee59e386856df82dcc030f430be55cc95fa057e962776fe37a371e8be5ae19abef'
             '5f777b66c5bb589021ce6f74e4cb4520a5078621cbcc62bc4eb8b73d54771f18523dfe40935f83553a5a4244219a86b6af22e7e3f33d251b3c567f91bb9596c0'
-            'a6fb0bc32a0e93e236392a41fcc6b176c03eccc6244c339c5996855241a11dfdbe3c4f25fdf1300720d4f0d2bd4bdffd3b39dc06248393950de00cc409bfff86'
+            '3b974314f2bcd3edf269ab89d2edb7dbf2e4e052ff0c098ebb6c2eb5b77a839639860c9de45259cb92eb0e35a9ce56ed865efe7597e61a1326e3091eae726a57'
             '587c67bff3f77c362b16c93889762a9aad6fb5250c0bced45f5053f59dd6a11ab2886e53f286bbc4de2b8793be133708b1f9c5d4d52bcef1820f5a7c1ecfa7d2'
+            'a9e2e001be2a53c638f66277cfadd662e3918ed5190c5dede61d7095a3aa10941d7911168b52dc74d8139d93aa5b73a0902f36fb38299912556a713e0072a695'
             '201a75efe210be5728a1c94ba9ec62514b96c388b6791d9301b34d2fce0208a9fa4ef25965c7840d052fd6221f15a1bec196a6eb209e6d03c3e1f971161df1b1'
+            'c3a323a2cfe052a4d02b9bd18452373d434bd307533ad2b82f70eea7048d411955a40c49e93b5975e20897af766b8ca7f1b0848231e6b95b079fe02eb075c656'
             'dddfc63505fd7023c4a669b3cc3d736cf7ecb774b53dcdfeee2d203dcdf4684f5d149a1c217134de214b64af4e154a3ef08b315615c85a1c734ceb42e80823b4'
-            'c477785f58976f9f09b4e51c23943915a271d0dfd1301019cd1cff2f27f99c91ad45d79e944c90858c2ea9da1dc41c2bcd5e65f47f23fc3ca9a258afccff709e'
-            '3df1edb4abab8e2e2dbd7387809d9768efca36c6840225ce33bee8679a4efdcf86d28beafb54a9a40e512163e4d088f94e788341bf614869bbdbd9d701bca4a2'
             'b63bb6b8bc846571db37c23801b711748a10a27a6a6b25035e992013f6705ad9b3ad86e61a7de839c9ac61c26ad3640b9642a8747d6b76a03336834c39e93dca'
-            '0b4e6111387768482ff10b8ee55ff0b3b04750d8def057b7935bef814902de4536d0825e18b95a342722735b29cf88aafec21eb3b2a75eb4f0c55aa7c6b80108'
+            '65a7bd94c9fe23d386bde8b7b6af50f2d46221d674f1312a24fcefbd4cd23e35cc390bfb94229b22e3f75dcd1c304bba0283a0de0fa915359540a827ad2d35e7'
             '17d182c3ebf07b3f9f72f90ece7dcbfaa91931410663b513fda4e85c19b4d3118eb7e8ac685cf0f868d00fa9d05153409b2b4ce40ccdcdf3cf13bfed1929ebdd'
+            '49020f4f7d28ad57d72d0a91853cb85bf905baa86df4f48f3992114a30d97edecb889fb21eb95de3bc3edab206379aad783b79fabde2e06fbe9d0984f92a83ce'
             'e4710e1e01cf0eb25a60e48961679009f7d1838104ec81ef1444c39fb25f1426e8d9e2ab557d69a2196d503b829d3bc2791f18083cf39ca623efc6fc0d070dcc'
             'de978e0be3e25f0c0743e99af975bbad704d506c4125fbc779869f73fa6c90baa6a08f802a6b98c30601b305dd2beb727cbdc6a778cc746623c9707d11c3e167'
             '1c66caf459f5783bde38a47ce1292bf5c47fef21e3f69d7f6c052b4eb39f446ed5decd38f0e4143a90d55ba44ebc0891b4497050cc652cbf3fcad636d45690e9'
-            'dce06c73813a71df4e9896e62f611906de708a5186ace2ba4679bd53bae48495ced5b888febb65a395cef3b11ecb595dfca079b1c3ed24fb464aa997e710ab1e'
-            'dce06c73813a71df4e9896e62f611906de708a5186ace2ba4679bd53bae48495ced5b888febb65a395cef3b11ecb595dfca079b1c3ed24fb464aa997e710ab1e'
-            'f3d24a093da17f0ad75ae20cc1c24a082b6ae41466304b30dcece6f9c1a9b589c3b05ded70553305fc77cb2f8f0916f88480ab477a0d2503f8587d8e10f5c7eb'
-            'f84672b67dd4b18402efb8b40eb0e2cb912ecf894cfdedf61b0ada87392e63609cf1101d4fc793686cc4af354665661bf4dc902313bb466efee683a7c64bbe2b'
-            'e75bc986b16777563410ce42010a161790df5f5a575b253dac2a85ca7e724a9bf1a7485406f7235395d3a9adc3d8205dd3549fd718815390927aeed3c0b8a05e'
-            'e828f566d90a8af01db90ac89aa68d3b6c6872363bce648b914ba9229c8e63255931cc46aec4ef646b544a91d33be133553d7a572b11498dc410a18e42cda9a2'
-            '179c97045f33da6f6cb4c153b9be3482031ce8a150ad70defcbbbfa3c67ff10b31c86c45d845aa605b9c4d3ac921f4372bcd49fbb384e0c78409219bc0bf1607'
+            '8b2eb40fa5c6f3a30fc262b81b235bfb712a8d02127fc7068efff826308647b5c3e469e06efb901dc2cb43a769932213c96b770c28c87cc646cbbcfd24c9c5ab'
+            'dac536a2b8e2764de1a1b1a16fc328e15455656c2992fb3b3bccdeae2bb6ac81fe94e164aa2a70cff7cea3b97347b8510aadb5fa1c0564bb2429947f0aace0d1'
+            '2b9dfb5953276a50ce4d730dd9ff94c714c0c53ebe71a11ef21b669035b04bf6b2c08edd9bcfe91fc688e7ad451dd3ed21e2e40d4c228783b69c0b8957c0d276'
+            '0c1bbd1439083f79b84192597c8db72f5ad2847f2956328d50ab8672aa3e35798fd5ef18d825eb6ebd5525ba256c5fae2a61390ab4969c0dd73bc9cbc1179776'
+            'fe42759c2ccaf035bfa15d9276a7c8bf6608a7b74732c6950c2081616196296a73c34474989c1eda5fcfc15066626e1facf2f58b6977d5e00520290948731cb6'
             'c748d7f875ca0b1ea9034dba1a5cfa3fc4e51613ce24c90b54856fdc385d9ccc5eda3559f1674abf3ea966cc7851891dfee86bad897062a97a79db8408574bdc'
             '642695f6e718a03f84ff5e9e09bb415d0f866bce8daa9059af81b45bca0953a5b1f286b587b303935a53e7f2bf7b82639bb1a02f3b4cb92c9b42e8b47fc0d8e8'
             '3e3448e5d751e3cb90cd8966cb5e487d60e7dfa28fcdb8b94e64571c677a4a3986ba59d4cf1aae76b85bceb3beeb6f35614f178ac17a54a6b14b95f36bbcfb36'
-            '875b8b426239fd184f2aeb1d7dc49187c4ce2e220ebad783e6355297d024b16ea10cdc9839200fa933243dc0e0ae82cf2d881447a892dfa9dc481ca159314fc9'
+            'd0a1092ae700647bec1e7de0bee708207a6d6bd4f8d187081c326f86dd0a1d2c205e9a39345d555924764cb721e3e886cf9c355eaccb16eef898dc196dd82638'
             'a08e7c85efe2b3f97e87b54db993f78ac31380f9b6f8d926517854771f482b2c64c358ddd12a449a413e5af0f374c034161b6f772148835b50551dc2cdbfa15a'
-            '2e047e32a55d0c9512388445ba318d7ceec85f467c89ad825cceb2c60b5b1dce10fa5f014009cb105f71d109fd66eca0c94b88d3a5e26a85ae0dc3e327606e38'
+            '6c270cfd3abd81c3b06dc2005796909ea96e14ecc2ff4689f18164ac38fe13f99ff0e5cd25ed1aa020ad422c7e52d2d40001e1c7298436c10e04f3670aa08e98'
+            'b6448d187ffff02340612c69d28fde429186de44874f52a01b3b3cc77cfe7a105426b4cdbe8e27b13620869a64ac0893abbfc5ffd7d2d500008efb94af00a3bb'
             '66cf57b8c80605bdfa5145fc61dbe59b66dd67a82a8365006b80e2ab74a71fff0fdf0ffa690daab66e82b8ad086adbcd622a6844b2107c0b9719b8cdabdf542b'
-            'e2da17ec688c00968537e49c18d71a3e365a57bb0c8cb2639b2052d04771686ee695186726569e82f72723c78841bccdc0de33d0302e943e67f3432bd5fb9d13'
+            '15ba5e97261e9fa0bb4053575a0dd368048141a401200c32bb53a969cc741d2bd2d04890fef5c488fb6f476438d28e4d5ab9fea4a62aecdee285e8f1a1adecc4'
             'e7ce2be53ce4c7898aa8772c34d1469a90fcb5258ffec0cb1da544f334b6f13ecb73060dfec2284622be1156a2adbadec8b9cac5088c1ca9d84edfb50719b9e0'
-            'b9595ebf3cb48c5ed288934976b78270a3092a35ae083853684c848301ee88a18e0e41534180033df071ab87dc9f9cbab99da37cbc74d538472409c13dcfce7d'
+            '3a27e754d3455c0323146c8f24b3a58e395fa1a990d9e68ab84813b606f361bf4b0049c3c59c852feb93ea317855523c15427eb7debb3920ecf986bfe1cd139b'
             'cffe688251bc5120402587a6747f4a0306ab060a2ee7278daaf5b179195eb77b679ce84ceb7775c83528ddd1968c91ba45ca24d89abbc7e4da70ea302b7d9da3'
             'df4fff9fbd6736a52d54bf04669107b24e3d31c22b0f7882310204ca4ef1a895e9f79cea289423341aa575759a2667ff9ca86b889567605ad3daec266a1bbb14'
             '44c337f1a0a0ec74a5d6e4e28a3aa5a32609c3a4da9424e99aedc2a8db67fc4684ef10cf82d6bda0761c7ffba4f0222e683946ab6dd8de1ab8225a40cc14cf66'
             'fdaf95cfd29ed47445af4ad6349fcbbf4dcd8341f3963da453f8be5eccae4757904d3c4e7a8719ab576a7e7857aaa035ecfc1aa8f99f4ec6fce950c7ccc76597'
-            'ac7720a01a7769bfb528aa5de29fff9a993c430af75d1326bd50e845c3b7378be09bdda8c99bdd7e45fc5c09fac10c6fc318ff77cf65b2ad7ea2709aff2c1af8'
-            '67e1d02a6f0c89e902fb210b99784ba4e3689b35d05ab149686f7343695a936b0fbf695e672ed088a8bbb283a0517e4a2580b64e36a8322534f45e7e99aba82d'
-            '8ce1b2c1bcc79f8072d5b1dcfc9d184bb3286065b290e4df80fd02d454725d97d4346554a913a167eb97a45fba43b5000a08e8a9cf1dac129ff261b917d2e4cf'
-            '4daab9c754e05e15bb0f32bce4ccc0c581c6d8dd4ca4d4868ca7b756a6e40cc9ae8890fc3c925b63bb419db0354229ca6e61fa96bec048f0c61b3ebb43d212bb'
+            '2c924359665935d407deb2ce69a29ef89aef847ec30ab8982ebb06f194ce60234edd72aaf8b31f0bfa81a8506281e78ef64f61f2b75ef4aff1d8f626725f2370'
+            '63d6c305f33d97f34c4efaeaede0e5c06c5ff95df9c45307e849de54693c0f93ec017d0e163c64e14bbb498bb2b02a3d54d1cd6a4e75992c8f96609bb73c8dbc'
             '670aff419de8d6afd1b7e1a40b68290bcf7aefad788c3b08aebfa5ca3e709f5d22543fce82fb75dc18b3ba0ef6d8a8f61735cde647a7a6c9392a60ec365534b3'
+            '47a9e2a08cd70e3e279eb4792ad1e89fa2b7bd966d96acabc5114e0384896a4b1b247787d54c4c11a5b99a5250ed954eff72ec72787dc498ee10d4169f1ae1f5'
             'b1e547ac9353c84619832c723586146d2fd72c85c75d11b9ff99c16852ae2dfd1a2d61382ab9cc54bc9ad2bf8e1c3c0a8dc50d49c034d525e7a3393057a0275b'
-            '89a89ca7bc43598c77328cbf93ce6215a446322a6ce5d5bbcb1180cf664be56e26e61d49332006988b27d460ac2a32af466fb974af6b52e2f5d9e69f4821474f'
+            'f20bf4b5242657a34cae1aeeb88ba6de61748ccc212243ae6a6d5a4defc3e2ad25445705a87a55d5cb3b6378f5f500887bf509459a66741a75a49025e1549750'
             '3f33edfa02ca1cca32595c6c26da4c213ca0950a3eb1d2ae5397682cd0f50cb62286bc6a19294ee8dfecc3665367effa25f4a88f642a2328c30f17541b0e2290'
             '4015693c363810701114a222207083ab9610ebd1196d24f0eb8dcad35af54e9067259ca412b131eaa986b8dbfbf0ce62058ca4c31aeeff29fdf21f17e8d86e90'
             '1f911b988ce2c8431cd0a2dee1caa39fd3b8d6c9b738fe2ad9e159669188d131cf22940d8798e1ad4807874381f25e115bf9432a979b2f035cbd7cab2661d890'
             '6fb9d4b2ee97b9c20121979c40588ee06b901b14ca7eae6ca28e761b9137595c125ea581a4e54ab381e4e54256fa56bcd7aeee4aab618abb5e2b4285f7b70a62'
             'cffc9d4d808d52b35bf6b5bdd6c069411ec8746bb3951e7c1a6200eecb2ae0617ede9891aa3e077e9ea5fc6f08bc2a1c44547971ed2a66108c96fd9dda30e6db'
-            '59837326ec9f25220cb6c7329c91a5806b0ec7412d6af24c0f0d52c4fd93b084e92edd4f5f61a4f9c4248034fa540c23b65d2aacdfca737ece98bb132b8f08d4'
-            'adf1af35b93af0605667d8b033415f318c6dab225499fdd1d9eab349fb1eedca2623c98f9dce83f94ed27db75b6f0aa88027daa748c7b3db05f47f68b505b0c8'
-            'b8e84d5e2ef74ccb18d315b18b2340f19ce0dad216a3bbd507454a2110a6e1205695406581c40b7cf4d74c197bdad3b1bbaf9787541af3e68e89f44cbe534a88'
-            '222ffefb3b714047e5fa07f6743ad0b28f25e68d0ef4101e04465bba47b18a70134e9437aab3d9d70a8490e9653b129c747d8fb7fc7a2f683eae8c4c0e0bd551'
+            'b82ac2d3b2ab1892f79bab1341c9ff17ea89b988438cfd40c246f5ffe4560cb2b77e4a1ed1aa9dc2bb64644b9d6da76eda7b40acf8cc34bb03e77b18127e93a1'
+            '28f27b8d625159f99e23c7f693ff20aa7e4eb5ca70f4704593ccc885d5d14e89fbde76973b603a113fe8a416b415905113314b838c12126c1233d97924702701'
+            'bb649af2b1080ec0fe710d9968ec882a9f30cebf3c846e778bcc91b025e8c64788d143a37b2bdd60a666484382e337d135fef3f86b1e07e17fe6fd2879256989'
+            '4e2036ec198c0e47272ecc5ffbf947a5f9b21f57be5a46c1c738072254fef2b5630b5ba19c31faae1873c8f139ca88c455e18eae2aa4d01832daeb26e993046e'
             'b2f66c6705c490e1cbaab6ca88444294bc90b3711da4039046a9279060ed41228ab855b40039f56bd02eabcc0351200de3e043a108a0cdc98192d563702de7f3'
             'eedcdb9c0299d6596ee675bb09557ed9244bd5c1a25e70e22dc65a1165a153c891fc98499d92f165fe18b273f8ca22f5f0e03635eded9696c31b32e09d17aa53'
             'd578f64860fb3c04d11a444d9636bde57402b6728529e73c7741b056ef0d8f68cb0958118212f2d47826dc28ba9b2bfcc9aef8b5b2e9fc3da8eaadc796160895'
@@ -325,64 +354,70 @@ sha512sums=('4455110c95172461b2d82ae88ba4f386d5e49ddd7f7def83714d2f6198090f0d121
             '34d018cb040de9adce3ddb8cffabe2a0610f6cd0ff5340ee721b7076671bd5cc3e830f58d16e73240df4b068510f7a24fd1995efc38f002b52d228abc4581d6a'
             '59b283b26b1f44e5e8c09d2c69bb38227ea018e482736959165a38ac62043841b23389c052f35b75666a84f930d65cd8de086d6d8050414dfbe5f4d1cf051109'
             'a701c62266f9f3c6dc60eba970b6c25a61bf82b6b8bb6b0073e0e44908598926fe7813a7ae1b1f9da98e4861a8f0565d0bd025cb97307b71c08cb9b0b2e321bb'
-            '35ac491a7e0a2f6d8fe0f2c2ffe265748b13920904e974f88c92b3f82edb2f1c03e28ebef1bc344ead13d566117a5e50707a68edc49f95159157f974210b23b2'
-            'dde07baa57254f28a1a620ba5dc3a2720eddf48be0947ad625c664dab58ee2a525abb65b6498d48515e6da8a31e38b55e139de3e400fbb410149770eae89f1bc'
-            '36c658093237246a344dc65bf9e214b250ea1a0aecf9931d80299f44ee152553c4326948bfae8e0f3e5aaabe93bc7a9aca0c79383e48b0f9d2696383df2b40ee'
+            'b6ea6e57fe500d4944d84007c693758a47890ef4880836ccdc7bf5b8d8f3e91c17f05e2d34892e308fdb99bacfa2098065af3d7f18d277f685eff81e810eee17'
+            'b5f7c15b31c5ee6faa4d7574baa32d252b1e79350840f2d7ac3f3896b969e18241e514fb06e85aa97d7a74c0904839d04a4d8e5d4ff86d0a2b80957b99279ee0'
             'c27531ae89e69cebbeeecdf3cf72b897eb65c2f9b22c898bf88d79664f1b54b592f0e0f2bc007f84ec3b0efee8bd20eee187bf73a2947b2fc7d9f4a7e418872d'
-            '76fcc0b11549a94beeb78523dc47231a354381720bf5af19c299fcded384e04ac5b2ff65cf7790d07954e63833107e1cc320c368b36f243ed08042bf00b6c6bd'
-            '8ade11d0b2221cfdf042da0263b5b5367a7ca2a9b9e1141844e4a65bb0467df879c92cd3515440d715b59345860c1ec3cb3efd7a3d702269ea15e18692586367'
+            'ff273e272255484ca9578758befd4ef549e9a067975dbdfd61fad444868746ea392e3fec4f161e102c93d3cda336923c7651acc6fa684e5c08dd78877dd0d05c'
             'cccc9fe05ec22db1e9e1399c9807e49f1312211fb9739a2ae3a455cc2fd00c1d9a74e64380541d83bb9b34fb02f00d80c67f2c1368ff7d1d631b7152b981d175'
             '7f128b1c88adfe7ee6405578d3c999bb77e9e3c21e16f82a5197c0ad1d6731851e99e08d8169c6a8b1068ad8a1614c1c0ef8c04c1958337a6e325f1de0c718a3'
             'e1827f03b70131dfdfe087f139c1ace6da8bd1849ea83ddf4fe7ee33e224369f9530cf6e9d93c38acdf92ff0470c42e79774ae3cddce3209210f597ddb82e41f'
+            '0f416380b81d353bd60990317d97d73aa4831321c1048da099ed8c612a2b7a4327d785ccd76d4cd65abc416c3f1d9fe6c062fe07eca61e847c6f4104c2e34d57'
             '2a1f088532c4488e4dea417222b8723436fbffcf8a8a3596d66c5fd4941250e97c0271c23025244ef3f4ba5295cff82ad8b49a6776d9410210efa7f199bc8b7e'
+            '8768e5bf21738fd24ca87658482d5cec3409adba1272212456bfd9de1d56fb3729016c3ee706b06add1443ea538760d293ec0e853d8dbebba7a3cb04f836c341'
             '87a671729dcdb2c89ce079fbb124cd2f16407f2dca0ed5d0d898a9cf06f893b82c184566efe80d966afbc7dde2cab1693b81516adc4832a9c65283a65fecd919'
-            '16f794170b10ae520cf5fcfb3df4aa9bc84848fe6dba269c1626017c4a4b93713ecf1baf88ffeb482180d4d42c9ba7432c08bc2c5c868b905299d3579e66a029'
-            '6b5fe50e2d9ec0dbdcdec5362c97beb8a80d3d9e9c0a95f766181f49b080d231ae5802d48efd02d8ab006e48354e32b9ea209adb4fb4ef7efb9736ca7aeca7d6'
-            '91bdc672a535cd1a6a65b1ae2adef43605b792ec9f99150fa239ab4353cddad47988ac7baa65673c53be36e83c8fad1511ba85fb5f7b43c51b4ae526d9af248a'
-            '9f415a902261e64916e8c937a3d464eb29ff3a59fde511a17304aa4aa58c01f882d29c304375a0f23d87fa770763f09c84e428ed9f75c9b187fe2aabbbf4adf2'
+            '4d6383e34fd6144af3004caee70bc83c8894c8e78c147c2e829cdbd9c74af3d1807604db0927554aea20c69a8b5c1eb3dd01d3963b2e615ee39beaa48095125b'
+            '75a3b4885d9fc8273c988f830c30fc4458efd938d89dba5ae34dbe9256c9a5c6ce42beb930cfa59666e87c97bf4c616a4053ef70e917259934e15bd0fee61bdd'
             '9e987a895f0f888338bb2b0088732a404246a28ce32d73808ed6aa3b6d909da884ec54d5fe71fd190e287f108be1800bef2865acfcfac3bf6873dfb7c679cfea'
             'dbd13060a6d1d101138715b4106382a78d115cff247859cb6f83aca3cdb6f6caf8a2c52d7ae99be64845c5e4a7959940bbf31df6265b15079c236f193b087865'
-            'ea073a8aac0d6a4d82205a31bacc672b7f4e2471403b7a97f04b080535da71054abb987af6c7e459ea16908625b03991bc90055d0447d2b0cac55fef335362d4'
+            'fee8104828fa709cbfceef5e55101a3f967cb16da83a3004bc4ebebded9318dd97329934de69e451298d7828ee2f97b0e989b3f61757e8da539b97b5a51aeaa5'
             '284b26bf210f2fc5e7c9e56bdff9f296fca0367c78b7a3ac1a2d2a86a76d0a1508480d9324825cd183d7b8e72c18d24eaa603f9e284fe7ba8d7d4b614e490094'
-            '9d40d96020a3b54d549259f6c981ff63f666f490e900f29eda437ed76965f172e9c77c4def36850e448ca0d3fad035ce4e9a244fd0b3748c6c24fb413c69614f'
-            'ad411d7e0fd72adeb4cdbf6fc57d6191c51d9319b25c8d41ad35a66f885d518a842846cd7cf5ce35bdc31da74e0f9d97445f492628a4b5a2bceb85642aa23257'
+            'adba0f7db32326cec7b63f10b262941512006576a1614c8e8a5e669c2ee05143849dabf06679817bb4df229091ffc4d25bf60789cb03385656fcb44516a525b6'
+            'ca3c5f15b2388a23f980d46bea89bd4b9b903c481cadfc187696081c6cb1f41d8612c1f13257a3bcd285741657517b7c6e031fb58aed7f35af3a221a769f0ac0'
             'ff56c1b356491e36888f9c1b4187fbd0d00485692960a27ec2f03dbd3c3fb961869d99da1f7a301578ab07df30739d8a0d4ae3c7559c83d0e2493d5de158175b'
             'f2042a8ea77c608e1903bf8abd73b06b94c15172956ffaf07ed44966a3935fca5adaa88b51381c51054be9dbc0c95f476983d8241a8564c2062c68a361e7d6c5'
             'a60566106a5f285224b0d555d30b2af3315c707012f5c8e9384d4b8216894e6a6263e838b0e367418c4f8bfb5f4f2cc056ca14acb6b27a5ca3446576b057ca15'
-            'b2e86ce9f856ed16ebaea2a9c8758a7c3db66c35ca577d215316e9e73f30c5654210143eb636812eb562a4556f7ade6f0ba07e21fdb624a2558910da288900ae'
+            '22a3f0759e1c1150aabde01a77b48087509dfc7ff9614e97e5e06af73f533170993ff2e18101d940e7ddba81b8d6e496795be3851fccfa07b75e9d922f325064'
             '6dc1141070f28ca278ea1ec45a2b1b4fca34c06459dfe975dd2787e08a3e875aa22efbbb4ac905d3161e30b9af20df2d5d89325abe9e2181d7e50239388752a1'
+            '3b13ed1a900539d0df1a07a1a4bb0015cffd15cb5c54a5b8dd33d7c813d6bfcd5a67b8ca163eed8ff2bfb90b5c8ba88d1773c1b31ac0bd690a3b308ccb790e6c'
+            'e0c37396fa507ad4d03e46ce4a02ec5bacbd7add75ca551433671871d3e7dde0eb0c620182904d1bdeb7b80e1b311a70f36030cbeae63d8776059150fef30235'
             '6c356af3cc72f29c362b2859292a96b8107dd3241cff79d717f361e517edf478295f477c0f426fb8d0ae0952cd5c7521114cf1cac1f3faf2b0c96d3b8a335e69'
             '72c8331f3373b186045524f34740ebc0c49648362d9ae4f4fc9cd21445a2e71aa66bcf84c9144d9a5609196b59b7c5e64bd0fb84ef29384fb4c4ea21b413d1b7'
             'd858b077516ecb76e27d032fd123aadbbbb154afea87fab93f148aa8a0007587c1fb04d87217cf0b51a80e9a81ab20357dcc5e345899e1c2b6513900da1e6768'
-            'c9700e1d07e257d2562de2e841213ed3f5756f801a335d49cd4a095d7aaa94c75faccf12b9336c8b58171023e1e15737203e5c8e821981f3ea6bbfa5499e0cd0'
+            '5ab5025e49d200f75bb0369eb7466513ae9e39d04972d323bf0e4cf9b1698c3cd61fc2eb6ca94b924228ea13efc5ba05be5268feca80a2f2c5772fa0649cb589'
             '289be845821aada538caf3fd0fc85b8ed115c657dc5beb0408816e43cf72153881ad305a982effa572a46e5b1842d2772af44313674cb0a252db8aeb6953f345'
             '2fc0adfc43402e537dac043682d876cae29834ebe9bcec7b53cc26ba769324b987be9cd86f9174f52344635342b7ff8f6cc2186be92c5bf4b359968f3cdd17e4'
             'e3078caf54da95c4efa9e9c936b35a98b62296ecce2242cd4e103605a9d29e8a9d6c7027dbf50d02b6a893bea558ea5b07dbb1df7c59bf26d86db76ccf112f25'
-            '4fac33434f971711e90650511fb32b22456bd3559d294dd712400cf5006b56744109961f49b419faae260a71f22f3c63b707e23e221fb78c843a4b226050a257'
+            '48c18c851b76368a0b106d8bc962f11784de62d03f347967ade726cdbee181bd147765bf4fb644e93649852fa079cea987dc779ae056376b6fc6057b00709c6f'
             '4c0fe08024a56e326b632a67b945fa869a798b00fa45b56f4f181a0075ed5cd6802edec0f0e38c0f4b5cc4b81c6f6bd98e3382b968cec6ad884d24ee31dbf600'
-            'd03087e52c51f6038d41a35fbfd0c6ab8b890c6d0aa91bc1a42c46f746f60d3c19c41766006977e0ebee4517bab5aab0f0439a2ed2434e5d41a7086eeb3ecea3'
-            '4910a8fdbd4ec9658205f78be0e5c832deaffe77c51695776563758de9b28e190c6134101c0467a7abc96a51a6ddf02c77943c252d2f3e41f0c4bc1fcb461073'
+            'a474bd042721efb83db5f707537589faa320f0e4ccf6bc839c450ff8d0970d3835003c134fc59f88e692d47264b1717bbd053543623dd40aa591155531a31003'
+            'acb64eebf22093568fde29e7e5b78a8bce04d74b96a197a1c1f3383890b876c8d2e0a52206bbbc9708e3bf78a05f48e9bd3ea4929cbf6a7e712a4444917c1269'
             'f54ade230bdd8ba072fb3b72b44b0a5ed2bf93274b7bcba1d93f0667be5017f566c5e368345d78e762b29e2a7b8984c7c0fc64b81fac835faf122e0c96fa9566'
             'bda1fd661274d911898eb163427a83db81bf5cc6d7cdd2936a84cb314268be2d38c5753727c1e87e83f8edb61e8bbbd0976001f680830b3bc2d4eb96178505ec'
             '02be3ac9acba3df052b4307271168236d8040d0476823ab8485f260134efd30d619a8f463a535df3847c65cc803fbfeaaa054f665782565c45b281b6136cc23b'
+            '423f4e08d0bfd3e99e50da1713aa91f564581540dfdbfbcae744197331bdc3f0a0be2ad07270bf653384b7f622c7528806208457e5847a95e2cd4d328410a3a7'
+            '23246164648bf4cb028719e7cb2e5f450ab55558af9e1dc7f0ddec323ca4ce124afbfd3bf367446c2d69ec91abe42daf77e11a26a13f2898275dafbc095637d5'
             'd34d97e5614f23afc5d2bb671c3979d779a9d0e29147a8bf25059f35ed562264302a3242224b022388e554177aa34455cb59dc640b2fa19ec452f15afac10525'
-            '810b9f73b3e667df48e300613716bfed59dd46fe0278fd46c17b17c1d57fc4516cb3e36e07dc7bb7b3b71991a4fc88fe54982e8ea683c838c69efd3c4b757b8a'
+            'ca0b19aa5e7948fd7d9fbd8ff5e1b0f93a2d8d410d515e7078b40370e7d9fc363c111d53551d57a0320efb0894bcc2210afa8fc04da9f003ded626f53b7e58ea'
             'a8a87b77f017ca7e4db98101b527016a39abe4f264b3684b887464c53b792f564d0bec3304d8ed5f5889a3e3cb7e41f4d049e61e5adab688363a3342608f695c'
             '7fd7159e6cb9304b495e7d8235f457f06f6628a91e4184686a8aeab846c78ffca15608f55c281e09400386123732ba843b52f85415dc5a595f554f5c27068a41'
-            '5953d99fee3a02f825c096cf035a5ee825da17e154ca9847ddb215dee54a96a8b28af2b4adb639ef3548ea9aa8a2cb781563c7ffbb399bed5a35c056d03bcbd4'
+            'b056b01bd5b3d882cf08bc9977c518ed6231d7da529cee61f2f52de886da4b8ee57e4505c767f59205a75be755870254f7351358bfc2142170fb3f31f25d66b5'
             '1f34e40e17e7c19c889e58101f5ed6a019b5bb08be4c798a1f233158b27b6a2cd05b9260d2cf7065cd2bdfb4df4cbbda463abee69c4ba00b6f445392659e920d'
-            'a40b8db4ef2179273943a3aab0200891bd3dffe584bcd51037ddf9cebae88d4d95292883a745a0c31900c7bf2eebe2c71175fbb86dc470b60660b443f8b1e3e0'
-            'bba0ccd51770bf09b27af0a9a97d0189d46103f6c34ff2edc25043075e775f5f4338f57060e9d7b6070ffa15586b1768492d73b03fe005a3f15645dbd91460eb'
-            'a4e39b943bcea6c86ebb8df7253a39ecf2a7bf5a083d0cf2ee1e5720af4afe47111330a787353a5728793d02739448debae2fd73fe6ba2d0eb94cbbb4bfef30f'
-            '983c33589550cee39abe0ea7f4f6af2505b88c08c2d11deee72bf3c6af3c310db5c0a1d0ae55c11de167bdb73cea7e5efe685de1a8f6c8952dabbaffd932d306'
+            'e50ea73d5a7a10af868308fd1bed64b676ddd19b114e720746b79e3695778f16b415c407277038958bfaee188a2cf1d74ce9eb37cdbb8ed07ea99c288777dcbc'
+            'ad952a10ee259f9c8d43b3d04a4bc4f093de51d3254092b168c79811a0ded2fdf7004a291e999c5f11a8f6971444e7745b471534343ab294325293d1a23b21bc'
+            'a7196eb53360100e411d47be4e8814b7d7de36092396d7331aec666dc6b6ec570a86c90cae48e3f4a5ccedd794285d67ecfc71accf8ab42d94f1c077b8019518'
+            '65a3c5da022d1fca6a2d9e52110c5d56127d4225bd8beee45af5d821b77d98dadadf742e5f1309f0b8e256bd121d89b2c753d8552a2ecda9f373df4ac3e538f5'
+            'ec71f2d85f593920dba74a0bc21f0db46d88aa5ce4042f2cd85a64bb5febf46bfe54155e75329b1f44856a9b00b81358a2aff17521d78285197eb135d9a63439'
+            '8cab820d40b318c7483319de4174bdbd3637e1c93f42bc6b796c6a8a1fa93331c0a2ff3b7c77f6a2ec0509fb48bb922ef732c7d79e8e6bcf7987bde949459310'
+            'ca25d94169789d558f7ee8e9d302744c4a740a9a2b67fdc19bea1df37de14a1a1b2af88e84aa98f7f36f17de2d7d3a405812127f4131a91e3941218da7a9c23e'
             '6bb6bbab7336ea460b354e897c7fae236a53e7975af0430abcb2bb9d23374da0340381176d55f827f8a2b17809fa0205c6baf2a2542c72b9557b874c593d1b02'
             'e6ce8d37478db96dedfed2a06b8b7e25dbda275e4ca8523827e8bd8ca2816b3a96f26ea22f2d291bb89b87cf675c706f6b15759dc4e17a63ad94ad63704bc2bf'
-            '29be8a04bc95e5d86cb3f1c042e0acfec3970af7d9424c8e3218e143b2b9d783d1e7585597ba588928bd843b4d7f02dbb7f3ad862f39c60e4baa6c262faa9669'
+            '58a467b94a887c018be118f1775e9c7b8ecdf75d655fc1dd235bc2a49a7e5356b4be5a51cabc3135341193a78065e1b44901745ebe9016fcc6636131a2c28672'
             '8bdb34b3fd611e74adb160898c26336a7f16134524cde6b7818f2688e5cf6258e5a12b45996e46878553633697bd487a1502f08f7112775b72bf98db6ea0fc67'
             '53ee2aabc877c91d06c7e029ff807057f88bb4ce712ad02d47655d43869ad83af9032eea85d0ecddf3cad19839827bb723c9bf0a17b580ee7018f4b08c691cd8'
             'b20b61e942a77848d12f9105f88790b3f02e3e2835b87e0ce1900b5ea1e97c4b055003603e435415e7fbbc9586f9c6ca2402f86cf5d2b7b6ced2ddcae3968d24'
             'acb5c17b809bee5ce2f1591f3382a7c3a57e9d20a47d8f47be717b0e7fbfd803603810ebaaf88597bcf98dff698f4807dc7d8122a0d7d36785a47e0e065fb59e'
             '0e0821a426120ab63d991a6cd39ded65a89472751ada4d5fb5e4f12177d8e797ede3b6b74d6817ce260d6334adeb42de31b0073389f58a27a06ec8ea4a574ef6'
+            '6904f960bc8e05251a850ed847b15893cf941c574bc09d2456115d1c4615f5ba8a3427ef42cde8db0b656f8ec7daedb5ad370020f3448f40612e15918dea4b13'
             '7078f5179913f385f67e21150d1d0a1d80f6a5419a8be54728ecd0eadd1c26be262736df8f345e88d9cffeadb0248f19256d7df282fcdd524d36691cb2563fff'
             'a6620cf0753f5b61a3cc26aa189ca1feeeb23e8bddca17867f157f679fbb176f314e5de485d1e30e261c032b0460da228967317b561d6978e95efd69d46e3059'
             'da5f52493c7f68df0a2c718724dcac9be758b09b14c8fa913aa328ee4c1286893fb239882018202d0fcd56709364ccddf3d620ff3b886d830102ef52a0868d42'
@@ -400,6 +435,7 @@ sha512sums=('4455110c95172461b2d82ae88ba4f386d5e49ddd7f7def83714d2f6198090f0d121
             '8d038d807b7fa01a65f4b73d135c87ab75385f4c91ce174b332cd5fd1dc1ebdec26b0c5713cf3f68c27351e19e099815d1b530af3ecb7e4c45e71fec4ae12b4c'
             'd75097619e9d999f84e80e8fe7f541e3df81289ce40763f9193460e23a0dcb0d37c5cad7ce6b0fe7a8f32d856e4b231bc83dab34729248a6bf1dda1377b94691'
             '216555bd73a46da5061291c2c071e9c71239bd5ae253ac06ee80ade65bb1871366cc8e4dffbad983c5b6a7f4b0cb2a1439dfa5971db3e183124fa90442a73f0c'
+            'cd09ebae641001cb69d861f4111e7b5ab6a2d51457e39e35cd36d2d30dafae5c788a27bd987665748569e20b13fa80e0784d1fa3b4110cc643031ea32ac20903'
             '535fc711af639967c032791c6a0c09680ac186c706e02a28cfabd9b2dcddc84a6ee5f6007e2ed67c1dc19dd6d561cb821d8840dba7386b63cc002418c4d5040a')
 noextract=("${source[@]%%::*}")
 
@@ -407,7 +443,7 @@ prepare() {
     unset CABAL_SANDBOX_CONFIG CABAL_SANDBOX_PACKAGE_PATH GHC_PACKAGE_PATH
     mkdir -p .cabal
     cat >.cabal/config <<EOF
-with-compiler: ghc-8.8
+with-compiler: ghc-8.10
 jobs: \$ncpus
 EOF
     cabal --config=.cabal/config v1-sandbox init
