@@ -11,9 +11,11 @@ depends=('ttf-ms-fonts')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/$pkgver/${_archivename}.tar.gz"
-        "beataroni.desktop")
+        "beataroni.desktop"
+	"beataroni.png")
 sha256sums=('8eae352080b93b6e4b6ec55705bfe62aff3749ceef78f820ae04f94b6a9afd9b'
-            'e8f45beb1894008f668207370e01a7f3fba91afedbab7fd070652d8686a7b018')
+            'SKIP'
+            'SKIP')
 options=("!strip")
 
 package() {
@@ -23,5 +25,6 @@ package() {
   install -Dm755 "Beataroni.pdb" -t "$pkgdir/opt/${pkgname}"
   install -Dm755 "IPA-Minimal.pdb" -t "$pkgdir/opt/${pkgname}"
 
-  install -Dm755 "beataroni.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "beataroni.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "beataroni.png" "$pkgdir/usr/share/pixmaps/beataroni.png"
 }

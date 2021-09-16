@@ -3,6 +3,6 @@ Name=Beataroni
 Exec=/opt/beataroni-bin/Beataroni
 Terminal=false
 Type=Application
-Icon=access
+Icon=beataroni
 Comment=A graphical Beat Saber mod installer
 Categories=Games;
