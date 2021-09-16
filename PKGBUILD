@@ -1,8 +1,8 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=prometheus-php-fpm-exporter
-_commit=65a8273ea259e3c1ef91bdc6967db710abf1cf70
-pkgver=2.0.1
+_commit=17599df3d12dc522fee97f85fcf37be70295637a
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Prometheus exporter for PHP-FPM"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go-pie')
 source=("php-fpm_exporter-${pkgver}.tar.gz::https://github.com/hipages/php-fpm_exporter/archive/v${pkgver}.tar.gz"
         "prometheus-php-fpm-exporter.service")
-sha512sums=('aa149990dd24807ca500477669fcabb1c02edf1b5cb13dbbc75eff6e9d5f154cf772db528c59c086bd31e23b87b3573303f45ac41b91b05ecd56842279acc4cb'
+sha512sums=('45ef89e8dd96abab14e10cfad4c6ed49a3b585fb96be48ae4853c13d62b6a26ad96252f4b41d6dcfba8b3902064eae0c0a6685d4a7d1abccb8e76ee0d4d62f0e'
             '1b7a4128c08ffa5f2b1c4a20225c97a238e221fd9f77c454eaa093fecdede9e493d2db2dd4948f0b071995b4db2eea2e69ec254aa2d5ed35e722200dc75b2b37')
 
 prepare() {

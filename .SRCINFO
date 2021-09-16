@@ -1,16 +1,15 @@
 pkgbase = prometheus-php-fpm-exporter
 	pkgdesc = Prometheus exporter for PHP-FPM
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/hipages/php-fpm_exporter
 	arch = x86_64
 	license = Apache
 	makedepends = go-pie
 	depends = glibc
-	source = php-fpm_exporter-2.0.1.tar.gz::https://github.com/hipages/php-fpm_exporter/archive/v2.0.1.tar.gz
+	source = php-fpm_exporter-2.0.3.tar.gz::https://github.com/hipages/php-fpm_exporter/archive/v2.0.3.tar.gz
 	source = prometheus-php-fpm-exporter.service
-	sha512sums = aa149990dd24807ca500477669fcabb1c02edf1b5cb13dbbc75eff6e9d5f154cf772db528c59c086bd31e23b87b3573303f45ac41b91b05ecd56842279acc4cb
+	sha512sums = 45ef89e8dd96abab14e10cfad4c6ed49a3b585fb96be48ae4853c13d62b6a26ad96252f4b41d6dcfba8b3902064eae0c0a6685d4a7d1abccb8e76ee0d4d62f0e
 	sha512sums = 1b7a4128c08ffa5f2b1c4a20225c97a238e221fd9f77c454eaa093fecdede9e493d2db2dd4948f0b071995b4db2eea2e69ec254aa2d5ed35e722200dc75b2b37
 
 pkgname = prometheus-php-fpm-exporter
-
