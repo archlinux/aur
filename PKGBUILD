@@ -3,13 +3,13 @@
 
 pkgname=libirecovery-git
 epoch=2
-pkgver=1.0.0.r1.gfbcfbf2
+pkgver=1.0.0.r27.ge017429
 pkgrel=1
 pkgdesc="Library and utility to talk to iBoot/iBSS via USB"
 arch=('i686' 'x86_64')
 url="http://www.libimobiledevice.org/"
 license=('LGPL2.1')
-depends=('libusb' 'readline')
+depends=('libusb' 'readline' 'libimobiledevice-glue-git')
 makedepends=('git')
 provides=("libirecovery")
 conflicts=("libirecovery")
