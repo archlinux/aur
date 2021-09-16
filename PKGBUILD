@@ -30,7 +30,7 @@ prepare() {
 
 build(){
   cd "$srcdir/bsc"
-  make GHC="ghc -dynamic" GHCJOBS=2 GHCRTSFLAGS='+RTS -M5G -A128m -RTS'
+  make GHC="ghc -dynamic" GHCJOBS=2 GHCRTSFLAGS='+RTS -M5G -A128m -RTS' install-src
 }
 
 package() {
