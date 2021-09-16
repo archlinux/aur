@@ -2,7 +2,7 @@
 # Contributor: Piotr Rogoża <piotr dot r dot public at gmail dot com>
 
 pkgname=perl-file-find-object
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 _author="S/SH/SHLOMIF"
 _perlmod="File-Find-Object"
@@ -10,7 +10,7 @@ pkgdesc="File::Find::Object - An object oriented File::Find replacement"
 arch=('any')
 url="http://search.cpan.org/dist/File-Find-Object/"
 license=('GPL' 'PerlArtistic')
-depends=(perl)
+depends=(perl perl-file-treecreate)
 checkdepends=()
 makedepends=(perl-class-xsaccessor)
 provides=(
@@ -22,7 +22,7 @@ perl-file-find-object-toppath
 )
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('dc4124abe64dc1274e8e8a5e5bf9e17a2a9269debace458115b57469f1e16a91')
+sha256sums=('1ae797d12348920d8bb0dd0030a96aa5235285a95e343e8ed8737eefac535695')
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
