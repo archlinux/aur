@@ -3,12 +3,12 @@
 
 pkgname=portfolio-performance-bin
 pkgver=0.54.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple tool to calculate the overall performance of an investment portfolio."
 arch=('x86_64')
 url="https://www.portfolio-performance.info"
 options=('!strip')
-depends=('jre11-openjdk')
+depends=('jre11-openjdk' 'webkit2gtk')
 
 source=(
     portfolio_$pkgver.tar.gz::"https://github.com/buchen/portfolio/releases/download/${pkgver}/PortfolioPerformance-${pkgver}-linux.gtk.x86_64.tar.gz"
