@@ -14,6 +14,7 @@ pkgbase = vscodium-git
 	makedepends = libxdmcp
 	makedepends = bash
 	makedepends = git
+	makedepends = git-lfs
 	makedepends = patch
 	makedepends = python
 	makedepends = make

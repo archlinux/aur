@@ -44,6 +44,7 @@ makedepends=(
     'libxdmcp'
     'bash'
     'git'
+    'git-lfs'
     'patch'
     'python'
     'make'
