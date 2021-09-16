@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 896296d..84fb475 100644
+--- a/setup.py
++++ b/setup.py
+@@ -20,7 +20,7 @@ def read(path):
+ 
+ vpath = os.path.join(name, "__init__.py")
+ if os.path.isfile(vpath):
+-    kwargs["packages"] = find_packages()
++    kwargs["packages"] = find_packages(exclude=['tests', 'tests.*', '*_test*'])
+ else:
+     vpath = "{}.py".format(name)
+     kwargs["py_modules"] = [name]

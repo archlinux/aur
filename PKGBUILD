@@ -1,39 +1,33 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
 
-pkgbase=python-endpoints
-pkgname=('python-endpoints' 'python2-endpoints')
 pkgname=python-endpoints
-pkgver=1.1.16
-pkgrel=2
-pkgdesc="Get an api up and running quickly."
-arch=(any)
-url="http://github.com/firstopinion/endpoints"
+pkgver=4.3.0
+pkgrel=1
+pkgdesc="Lightweight REST API framework"
+arch=('any')
+url="https://github.com/jaymon/endpoints"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
-options=(!emptydirs)
-source=("https://pypi.python.org/packages/31/0a/21fbf591a767faf484b83546b595ccb78790330c091561141e095bbb7057/endpoints-${pkgver}.tar.gz")
-sha256sums=('356bff15aff88249c8c8b9a07e5d42aee50378640dde5ace432c2703ec17b849')
+depends=('python-decorator' 'python-datatypes')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/e/endpoints/endpoints-$pkgver.tar.gz"
+        '001-setup.py.patch')
+sha256sums=('c29088ebe60944e2049f25ac424d9fe1ce3b59033e73c6819ce380977a780c86'
+            'a2d153ce864bada83622dd4ff8b7f7c83a04ba84c7cc8cf83707e4a420f27e23')
 
-package_python2-endpoints() {
-  depends=('python2-decorators')
-  pkgdesc="Get an api up and running quickly. (python2 version)"
-  
-  cd "${srcdir}/endpoints-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
-
-  install -v -m755 -d "${pkgdir}/usr/share/doc/python2-endpoints"
-  install -v -m644 README.rst "${pkgdir}/usr/share/doc/python2-endpoints/"
+prepare() {
+  ## setup.py installs tests directory; remove it
+  patch -p1 -d "endpoints-$pkgver" < 001-setup.py.patch
 }
 
-package_python-endpoints() {
-  depends=('python-decorators')
-  pkgdesc="Get an api up and running quickly. (python3 version)"
+build() {
+  cd "endpoints-$pkgver"
+  python setup.py build
+}
 
-  cd "${srcdir}/endpoints-${pkgver}"  
-  python setup.py install --root="${pkgdir}/" --optimize=1
-
-  install -v -m755 -d "${pkgdir}/usr/share/doc/python-endpoints"
-  install -v -m644 README.rst "${pkgdir}/usr/share/doc/python-endpoints/"
+package() {
+  cd "endpoints-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
