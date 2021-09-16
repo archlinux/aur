@@ -1,32 +1,30 @@
 pkgbase = perl-pod-weaver
-	pkgdesc = weave together a Pod document from an outline
-	pkgver = 4.015
+	pkgdesc = A system for building Pod documents from templates
+	pkgver = 4.018
 	pkgrel = 1
 	url = https://metacpan.org/release/Pod-Weaver
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-differences>=0
-	depends = perl-config-mvp>=2
-	depends = perl-config-mvp-reader-ini>=0
-	depends = perl-datetime>=0
-	depends = perl-list-moreutils>=0
-	depends = perl-log-dispatchouli>=1.100710
-	depends = perl-mixin-linewise>=0
-	depends = perl-module-runtime>=0
-	depends = perl-moose>=0
-	depends = perl-ppi>=0
-	depends = perl-params-util>=0
-	depends = perl-pod-elemental>=0.100220
-	depends = perl-software-license>=0
-	depends = perl-string-flogger>=1
-	depends = perl-string-formatter>=0.100680
-	depends = perl-string-rewriteprefix>=0
-	depends = perl-namespace-autoclean>=0
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Weaver-4.015.tar.gz
-	md5sums = dd3f223882d17273d5b4ea6d600c1db9
-	sha512sums = 333e29757766b0c2ddd39cde3ef0649a3e79143a611c48c3644807d248c0c7d6a027683ca88158bf59b369b1e329cdd6f3f1c3dda6c3baaa26648f80ecdb4a8d
+	checkdepends = perl-ppi
+	checkdepends = perl-software-license
+	checkdepends = perl-test-differences
+	depends = perl-config-mvp
+	depends = perl-config-mvp-reader-ini
+	depends = perl-datetime
+	depends = perl-list-moreutils
+	depends = perl-log-dispatchouli
+	depends = perl-mixin-linewise
+	depends = perl-module-runtime
+	depends = perl-moose
+	depends = perl-params-util
+	depends = perl-pod-elemental
+	depends = perl-string-flogger
+	depends = perl-string-formatter
+	depends = perl-string-rewriteprefix
+	depends = perl-text-template
+	depends = perl-namespace-autoclean
+	source = https://www.cpan.org/modules/by-module/Pod/Pod-Weaver-4.018.tar.gz
+	sha512sums = fd8d2665866e4fb0606111ddeddfc992077b90419bb21905514590815594b0b918a98ccbfa92fa57a646b52a0a061a02e718926edd3a7dfed52977c00bd18472
 
 pkgname = perl-pod-weaver
-

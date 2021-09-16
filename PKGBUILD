@@ -1,50 +1,38 @@
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-pod-weaver'
-pkgver='4.015'
-pkgrel='1'
-pkgdesc="weave together a Pod document from an outline"
+pkgname=perl-pod-weaver
+pkgver=4.018
+pkgrel=1
+pkgdesc="A system for building Pod documents from templates"
 arch=('any')
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-config-mvp>=2' 'perl-config-mvp-reader-ini>=0' 'perl-datetime>=0' 'perl-list-moreutils>=0' 'perl-log-dispatchouli>=1.100710' 'perl-mixin-linewise>=0' 'perl-module-runtime>=0' 'perl-moose>=0' 'perl-ppi>=0' 'perl-params-util>=0' 'perl-pod-elemental>=0.100220' 'perl-software-license>=0' 'perl-string-flogger>=1' 'perl-string-formatter>=0.100680' 'perl-string-rewriteprefix>=0' 'perl-namespace-autoclean>=0')
-makedepends=()
-checkdepends=('perl-test-differences>=0')
-url='https://metacpan.org/release/Pod-Weaver'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Weaver-4.015.tar.gz')
-md5sums=('dd3f223882d17273d5b4ea6d600c1db9')
-sha512sums=('333e29757766b0c2ddd39cde3ef0649a3e79143a611c48c3644807d248c0c7d6a027683ca88158bf59b369b1e329cdd6f3f1c3dda6c3baaa26648f80ecdb4a8d')
-_distdir="Pod-Weaver-4.015"
+depends=('perl-config-mvp' 'perl-config-mvp-reader-ini' 'perl-datetime'
+         'perl-list-moreutils' 'perl-log-dispatchouli' 'perl-mixin-linewise'
+         'perl-module-runtime' 'perl-moose' 'perl-params-util'
+         'perl-pod-elemental' 'perl-string-flogger' 'perl-string-formatter'
+         'perl-string-rewriteprefix' 'perl-text-template'
+         'perl-namespace-autoclean' )
+checkdepends=('perl-ppi' 'perl-software-license' 'perl-test-differences')
+url="https://metacpan.org/release/Pod-Weaver"
+source=("https://www.cpan.org/modules/by-module/Pod/Pod-Weaver-${pkgver}.tar.gz")
+sha512sums=('fd8d2665866e4fb0606111ddeddfc992077b90419bb21905514590815594b0b918a98ccbfa92fa57a646b52a0a061a02e718926edd3a7dfed52977c00bd18472')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "${srcdir}/Pod-Weaver-${pkgver}"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/Pod-Weaver-${pkgver}"
+
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+  cd "${srcdir}/Pod-Weaver-${pkgver}"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+}
