@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark.wagie at tutanota dot com
+# Maintainer:
+# Contributor: Mark Wagie <mark.wagie at tutanota dot com
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Andriy Kovtun <kovtunos@yandex.ru>
@@ -31,7 +32,6 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1
 
   install -Dm644 "$srcdir/$pkgname.appdata.xml" -t "$pkgdir/usr/share/metainfo"
