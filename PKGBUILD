@@ -2,14 +2,14 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.1.r551.fbb60ec
+pkgver=1.1.1.r552.1ba48ce
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=171379'
 license=('GPL')
-depends=('ocl-icd'
-         'vapoursynth'
+depends=('vapoursynth'
+         'opencl-icd-loader'
          )
 makedepends=('git'
              'opencl-headers'
@@ -33,7 +33,8 @@ prepare() {
 
 build() {
   cd build
-  arch-meson "../${_plug}"
+  arch-meson "../${_plug}" \
+    --buildtype=release
 
   ninja
 }
