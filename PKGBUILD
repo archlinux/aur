@@ -1,5 +1,6 @@
 # Maintainer: Chris Novoa <dev at chrisnovoa dot com>
 # Contributor: Grey Christoforo <first name at last name dot net>
+# Contributor: Thomas K.
 
 pkgname=kicad-libraries-git
 pkgver=5.1.6.r235.g2f244c565
@@ -14,6 +15,7 @@ cmake
 ninja
 git
 stepreduce-git
+parallel
 )
 conflicts=(
 kicad-library
@@ -50,7 +52,7 @@ pkgver() {
 prepare() {
   pushd kicad-packages3D
   msg2 "ensmall the step files"
-  find -name '*.step' -exec stepreduce {} {}.reduced \; -exec mv {}.reduced {} \;
+  find -name '*.step' | parallel 'stepreduce {} {}.reduced; mv {}.reduced {};'
   popd
 }
 
