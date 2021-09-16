@@ -22,8 +22,8 @@ package() {
   install -Dm755 "Beataroni" -t "$pkgdir/opt/${pkgname}"
   install -Dm755 "libHarfBuzzSharp.so" -t "$pkgdir/opt/${pkgname}"
   install -Dm755 "libSkiaSharp.so" -t "$pkgdir/opt/${pkgname}"
-  install -Dm755 "Beataroni.pdb" -t "$pkgdir/opt/${pkgname}"
-  install -Dm755 "IPA-Minimal.pdb" -t "$pkgdir/opt/${pkgname}"
+  install -Dm644 "Beataroni.pdb" -t "$pkgdir/opt/${pkgname}"
+  install -Dm644 "IPA-Minimal.pdb" -t "$pkgdir/opt/${pkgname}"
 
   install -Dm644 "beataroni.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "beataroni.png" "$pkgdir/usr/share/pixmaps/beataroni.png"
