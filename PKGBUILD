@@ -2,8 +2,8 @@
 
 pkgname=perl-re-engine-re2
 pkgver=0.14
-pkgrel=1
-pkgdesc="Module for handling arrays using integer ranges"
+pkgrel=2
+pkgdesc="Replaces perl's regex engine in a given lexical scope with RE2"
 arch=('x86_64')
 url="https://github.com/dgl/re-engine-RE2"
 license=('GPL' 'PerlArtistic')
