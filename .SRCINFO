@@ -1,23 +1,30 @@
 pkgbase = python-requests-cache-git
 	pkgdesc = Transparent persistent cache for http://python-requests.org library (git version)
-	pkgver = r543.g0e933fc
+	pkgver = 0.8.r1.4f13fb2
 	pkgrel = 1
 	url = https://github.com/reclosedev/requests-cache
 	arch = any
 	license = custom:BSD-2-clause
+	checkdepends = python-pytest
+	checkdepends = python-requests-mock
+	checkdepends = python-responses
+	checkdepends = python-itsdangerous
+	checkdepends = python-ujson
+	checkdepends = python-timeout-decorator
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-poetry
 	makedepends = git
-	makedepends = python-setuptools
-	makedepends = python-dephell
-	depends = python-itsdangerous
 	depends = python-requests
 	depends = python-url-normalize
 	depends = python-cattrs
+	depends = python-appdirs
 	optdepends = python-boto3: Cache backend for Amazon DynamoDB database
 	optdepends = python-redis: Cache backend for Redis cache
 	optdepends = python-pymongo: Cache backend for MongoDB database
 	provides = python-requests-cache
 	conflicts = python-requests-cache
-	source = python-requests-cache::git+https://github.com/reclosedev/requests-cache
+	source = git+https://github.com/reclosedev/requests-cache#commit=4f13fb21bec27d1a89f585bfa544411844594cb6
 	sha512sums = SKIP
 
 pkgname = python-requests-cache-git
