@@ -1,0 +1,19 @@
+pkgbase = perl-file-find-object-rule
+	pkgdesc = Alternative interface to File::Find::Object
+	pkgver = 0.0313
+	pkgrel = 1
+	url = https://metacpan.org/release/File-Find-Object-Rule
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-file-treecreate
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-class-xsaccessor
+	depends = perl-file-find-object
+	depends = perl-number-compare
+	depends = perl-text-glob
+	source = https://www.cpan.org/modules/by-module/File/File-Find-Object-Rule-0.0313.tar.gz
+	sha512sums = cfcd4294e053609c9c6ce50c198ad61a7abb02a8755cef47014d39fdee84ef184e9817a0a9ee90d1beb1c81110a8de51ddba729fa13aeeee223d93faaac196e8
+
+pkgname = perl-file-find-object-rule
