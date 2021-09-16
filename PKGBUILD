@@ -1,4 +1,5 @@
-# Maintainer: hashhar <hashhar_dev AT outlook DOT com>
+# Maintainer: steanne <steanne AT sent DOT com>
+# Contributor: hashhar <hashhar_dev AT outlook DOT com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: maoserr
 
