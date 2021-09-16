@@ -1,3 +1,15 @@
+=== Morgen 2.2.3
+Improvements
+- Several performance improvements were added. Most notably, the contacts and location autocompletion now run much smoother.
+- Authentication with Google and Microsoft are now working more reliably
+- General updates for security and performance
+
+Bug Fixes
+- Fixed an issue that could cause the local database to grow disproportionally with some calendar subscriptions
+- Fixed a problem preventing Search to find all the relevant events
+- Some events were not updated when moved from being all-day events to timed events: this is now solved
+- Fixed an issue causing some all-day events to be displayed over two days, instead of one
+
 === Morgen 2.2.2
 Ouch! While improving the stability of Google accounts already connected to Morgen, we have broken the possibility to connect additional Google accounts! This release is only about fixing this issue. Apologies to all affected users 🙏
 
