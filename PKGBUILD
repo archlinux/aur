@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=icestorm-nightly
-pkgver=83b8ef9_20210816
+pkgver=83b8ef9_20210916
 pkgrel=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation"
 arch=("any")
@@ -11,7 +11,7 @@ groups=()
 options=("!strip")
 depends=("python" "libftdi-compat".)
 optdepends=()
-makedepends=("git" "make" "g++")
+makedepends=("git" "make" "gcc")
 conflicts=("icestorm-git")
 replaces=("icestorm-git")
 source=(
