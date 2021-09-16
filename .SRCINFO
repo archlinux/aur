@@ -1,0 +1,19 @@
+pkgbase = emblem-git
+	pkgdesc = Generate project avatars for your Matrix rooms an git forges
+	pkgver = r26.c33bab4
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/design/emblem
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = rust
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	provides = emblem
+	conflicts = emblem
+	source = git+https://gitlab.gnome.org/World/design/emblem.git
+	sha256sums = SKIP
+
+pkgname = emblem-git
