@@ -1,27 +1,32 @@
 pkgbase = python-cryptolyzer
-	pkgdesc = Fast and flexible server cryptographic (TLS/SSL) settings analyzer library for Python 2.7/3.4+ with CLI
-	pkgver = 0.3.1
+	pkgdesc = Fast and flexible server cryptographic (TLS/SSL) settings analyzer library
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://gitlab.com/coroner/cryptolyzer
 	arch = any
 	license = MPL2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	conflicts = python2-cryptolyzer-git
-	conflicts = python-cryptolyzer-git
-	source = cryptolyzer-0.3.1.tar.gz::https://files.pythonhosted.org/packages/fc/87/4058ec84584656bb0c3792a04a2badbf601690c219b442cf6bd8a518aed2/cryptolyzer-0.3.1.tar.gz
-	sha256sums = 6e34659fdcfbabab2181fec7f07833ebfa6b19f3ef5c4f213ed4fcde95686a37
+	source = python-cryptolyzer-0.7.0.tar.gz::https://files.pythonhosted.org/packages/source/C/CryptoLyzer/CryptoLyzer-0.7.0.tar.gz
+	sha256sums = 886f44dc7c2d50f46dd3df7532a0960135200ca34e54098df4e7cefa925b7846
 
 pkgname = python2-cryptolyzer
-	depends = python2-cryptography
-	depends = python2-urllib3
+	depends = python2-attrs>=19.1
+	depends = python2-certvalidator
+	depends = python2-cryptoparser>=0.6.0
+	depends = python2-enum34
+	depends = python2-ipaddress
+	depends = python2-dateutil
+	depends = python2-requests
 	depends = python2-six
-	depends = python2-cryptoparser
-	depends = python-enum-compat
+	depends = python2-typing
+	depends = python2-urllib3
 
 pkgname = python-cryptolyzer
-	depends = python-cryptography
-	depends = python-urllib3
+	depends = python-attrs>=19.1
+	depends = python-certvalidator
+	depends = python-cryptoparser>=0.6.0
+	depends = python-dateutil
+	depends = python-requests
 	depends = python-six
-	depends = python-cryptoparser
-
+	depends = python-urllib3
