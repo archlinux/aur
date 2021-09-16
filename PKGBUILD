@@ -1,17 +1,17 @@
-# maintainer: web.de jan.stuehler
-_author="Johan Vromans"
+# maintainer: xeruf <27f at pm dot me>
+_pkgname='String-Interpolate-Named'
 pkgname=perl-string-interpolate-named
-pkgver=1.00
+pkgver=1.01
 pkgrel=1
 pkgdesc="Interpolated named arguments in string"
 arch=('any')
 license=('unknown')
 options=('!emptydirs')
 depends=()
-url='https://metacpan.org/release/String-Interpolate-Named'
-source=('https://cpan.metacpan.org/authors/id/J/JV/JV/String-Interpolate-Named-1.00.tar.gz')
-sha512sums=('81e03c05bc2cd32bf44272d45ee8159c12f6515feea37556e29a55e99ae013aa7b87c445c87dc41288106fbf87a90f646e72f3d46f2c92efa128f3564968df09')
-_distdir="String-Interpolate-Named-1.00"
+url="https://metacpan.org/release/${_pkgname}"
+source=("https://cpan.metacpan.org/authors/id/J/JV/JV/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('c32b2659119a18749a0741c4ff2a7103b5084938b9d07e4d39b2c19de98c8afdbd90953910c4d9fa6a87440eb9f33b53b7c32b7f9a4e2a638aee925ea2443f34')
+_distdir="${_pkgname}-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
