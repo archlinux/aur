@@ -2,11 +2,11 @@
 _pkgname='discordo'
 pkgname='discordo-git'
 pkgdesc='A lightweight and feature-rich terminal-based Discord client'
-url="https://github.com/rigormorrtiss/$_pkgname/"
+url="https://github.com/ayntgl/$_pkgname/"
 license=('MIT')
 pkgver=r119.795d557
 pkgrel=1
-source=("git+https://github.com/rigormorrtiss/$_pkgname.git")
+source=("git+https://github.com/ayntgl/$_pkgname.git")
 md5sums=('SKIP')
 provides=('discordo')
 depends=('glibc')
