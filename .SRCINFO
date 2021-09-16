@@ -1,20 +1,18 @@
 pkgbase = perl-regexp-pattern-license
 	pkgdesc = Regular expressions for legal licenses
-	pkgver = 3.4.0
+	pkgver = 3.9.3
 	pkgrel = 1
 	url = https://salsa.debian.org/build-common-team/regexp-pattern-license
 	arch = any
 	license = GPL3
 	checkdepends = perl-regexp-pattern
-	checkdepends = perl-test-exception
+	checkdepends = perl-test2-suite
 	checkdepends = perl-test-regexp-pattern
-	checkdepends = perl-test-requires
+	checkdepends = perl-test-without-module
 	checkdepends = perl-try-tiny
 	depends = perl
-	depends = perl-re-engine-re2
-	depends = perl-strictures
-	source = https://www.cpan.org/modules/by-module/Regexp/Regexp-Pattern-License-v3.4.0.tar.gz
-	sha512sums = 5524535f8eebe6cc2ce2065bae1f726b9a2717c34262df2ddd9106464dcfbaeb67eb310679bb636e728669f17041e4f101c7fb241a8e07a6cf3dc6fb3ae88e12
+	optdepends = perl-re-engine-re2
+	source = https://www.cpan.org/modules/by-module/Regexp/Regexp-Pattern-License-v3.9.3.tar.gz
+	sha512sums = 0f5363ad26de6dbe8214aec8a284315940938fa8aa842edd72178c71b65658bff13f3b4f112f4c875e38425ccc8d6450771c8bbe8195359900589d1107c39525
 
 pkgname = perl-regexp-pattern-license
-

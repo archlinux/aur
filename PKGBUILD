@@ -1,22 +1,24 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=perl-regexp-pattern-license
-pkgver=3.4.0
+pkgver=3.9.3
 pkgrel=1
 pkgdesc="Regular expressions for legal licenses"
 arch=('any')
 url="https://salsa.debian.org/build-common-team/regexp-pattern-license"
 license=('GPL3')
-depends=('perl' 'perl-re-engine-re2' 'perl-strictures')
-checkdepends=('perl-regexp-pattern' 'perl-test-exception'
-              'perl-test-regexp-pattern' 'perl-test-requires' 'perl-try-tiny')
+depends=('perl')
+checkdepends=('perl-regexp-pattern' 'perl-test2-suite'
+              'perl-test-regexp-pattern' 'perl-test-without-module'
+              'perl-try-tiny')
+optdepends=('perl-re-engine-re2')
 source=("https://www.cpan.org/modules/by-module/Regexp/Regexp-Pattern-License-v${pkgver}.tar.gz")
-sha512sums=('5524535f8eebe6cc2ce2065bae1f726b9a2717c34262df2ddd9106464dcfbaeb67eb310679bb636e728669f17041e4f101c7fb241a8e07a6cf3dc6fb3ae88e12')
+sha512sums=('0f5363ad26de6dbe8214aec8a284315940938fa8aa842edd72178c71b65658bff13f3b4f112f4c875e38425ccc8d6450771c8bbe8195359900589d1107c39525')
 
 build() {
   cd "${srcdir}/Regexp-Pattern-License-v${pkgver}"
 
-  perl Makefile.PL NO_PACKLIST=true
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
   make
 }
 
@@ -29,5 +31,5 @@ check() {
 package() {
   cd "${srcdir}/Regexp-Pattern-License-v${pkgver}"
 
-  make pure_install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
