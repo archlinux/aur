@@ -19,10 +19,10 @@ pkgbase = linux-slim
 	source = linux.install
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20210914/more-uarches-for-kernel-5.8+.patch
 	sha256sums = SKIP
-	sha256sums = e1d1db97b7efda18ca59258e7ecdb138f3ca1e6201a9a6d7602b4cbfcbfad48a
+	sha256sums = 47888d0a275efdfa1d244925806a458659487ae42cb0ff4ac59dda2b731dea48
 	sha256sums = e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
-	sha256sums = 
+	sha256sums = 09945620d24a83608a66b1104477a1c1073701ac04b7aeae2f7819a2bf185c85
 
 pkgname = linux-slim
 	pkgdesc = Linux kernel slimmed down to only work on AMD hardware. Zero compatibility.
