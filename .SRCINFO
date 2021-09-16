@@ -1,7 +1,7 @@
 pkgbase = airdcpp-webclient-develop-git
 	pkgdesc = A peer-to-peer file sharing client with web user interface (git development branch)
-	pkgver = 2.11.2b.r60.gf411147d
-	pkgrel = 2
+	pkgver = 2.11.2b.r62.gbd80cdbd
+	pkgrel = 1
 	url = https://github.com/airdcpp-web/airdcpp-webclient
 	arch = x86_64
 	arch = armv7h
