@@ -3,7 +3,7 @@
 
 pkgname=naiveproxy-git
 _pkgname=naiveproxy
-pkgver=v91.0.4472.77.1.r0.g724caf7f3
+pkgver=v93.0.4577.63.2.r3.g696e87142
 pkgrel=1
 pkgdesc='Make a fortune quietly'
 arch=('x86_64' 'amd64' 'i386' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -21,14 +21,12 @@ conflicts=('naiveproxy' 'naiveproxy-bin')
 prepare() {
   cd ${srcdir}/${_pkgname}/src
   #sed -ri "s|./gn/out/||" build.sh
-  git checkout 90.0.4430.85
   chmod a+x build.sh
   ./get-clang.sh
 }
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  git checkout 90.0.4430.85
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 

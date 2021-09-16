@@ -1,6 +1,6 @@
 pkgbase = naiveproxy-git
 	pkgdesc = Make a fortune quietly
-	pkgver = v91.0.4472.77.1.r0.g724caf7f3
+	pkgver = v93.0.4577.63.2.r3.g696e87142
 	pkgrel = 1
 	url = https://github.com/klzgrad/naiveproxy
 	arch = x86_64
@@ -32,4 +32,3 @@ pkgbase = naiveproxy-git
 	md5sums = SKIP
 
 pkgname = naiveproxy-git
-
