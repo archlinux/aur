@@ -1,10 +1,11 @@
 pkgbase = mosdns-cn
 	pkgdesc = A DNS forwarder
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IrineSistiana/mosdns-cn
 	arch = any
 	license = GPL3
+	makedepends = go
 	optdepends = v2ray-domain-list-community: geosite.dat
 	optdepends = v2ray-geoip: geoip.dat
 	optdepends = v2ray-rules-dat-git: geosite.dat & geoip.dat
