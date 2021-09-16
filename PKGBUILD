@@ -1,52 +1,40 @@
-# Maintainer: Lukas Zimmermann <luk.zim91 at gmail dot com> 
-
+# Maintainer: ml <>
+# Contributor: Lukas Zimmermann <luk.zim91 at gmail dot com>
 pkgname=docker-ls
-pkgver=0.3.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Tools for browsing and manipulating docker registries'
 url='https://github.com/mayflower/docker-ls'
 license=('MIT')
 arch=('x86_64')
-makedepends=('fakeroot' 'git' 'gcc' 'go')
-options=('strip' '!staticlibs' '!emptydirs')
-changelog=ChangeLog
-
-source=("https://github.com/mayflower/${pkgname}/archive/v${pkgver}.tar.gz"
-        'LICENSE')
-sha256sums=('aa26657ca6271456ee9944ac4f18f25ff1593e7a85e7da6156c907681e342478'
-            '36f5440582577e61065f48b6fc26e2dd563ef2eb11a04255fed3bf47d138ca9e')
-
-# Custom variables
-_os=linux
-_arch=amd64
-_release=release
+depends=('glibc')
+makedepends=('go')
+source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('53e6bf3f7b24d37f1038e2ed7dedbf7608d314c93f60f325e6fe7ab3883c5881')
 
 build() {
-  # Regenerate GOPATH  
-  rm -rf "${srcdir}/go" && mkdir -p "${srcdir}/go"  
+  cd "$pkgname-$pkgver"
+  export CGO_ENABLED=1
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOFLAGS='-buildmode=pie -modcacherw -trimpath -ldflags=-linkmode=external'
+  go generate ./lib/version.go
+  go build -o . ./cli/docker-{ls,rm}
 
-  # Get all the dependencies for the command line tools
-  cd "${srcdir}/${pkgname}-${pkgver}/cli/docker-ls"
-  GOPATH="${srcdir}/go" go get -v -t -d
-  cd "${srcdir}/${pkgname}-${pkgver}/cli/docker-rm"
-  GOPATH="${srcdir}/go" go get -v -t -d
-
-  # Test and build the necessary library
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  rm -rf "${_release}" && mkdir -p "${_release}/${_os}_${_arch}"
-  GOPATH="${srcdir}/go" go test github.com/mayflower/docker-ls/lib/...
-  GOPATH="${srcdir}/go" go generate github.com/mayflower/docker-ls/lib/...
-
-  # Build the executables for the AMD64 platform
-  GOPATH="${srcdir}/go" CGO_ENABLED=0 GOOS="${_os}" GOARM=5 GOARCH="${_arch}" go build -o "${_release}/${_os}_${_arch}/docker-ls" github.com/mayflower/docker-ls/cli/docker-ls
-  GOPATH="${srcdir}/go" CGO_ENABLED=0 GOOS="${_os}" GOARM=5 GOARCH="${_arch}" go build -o "${_release}/${_os}_${_arch}/docker-rm" github.com/mayflower/docker-ls/cli/docker-rm
+  for i in docker-{ls,rm}; do
+    ./"$i" autocomplete bash >"$i".bash
+    ./"$i" autocomplete zsh >"$i".zsh
+  done
 }
 
 package() {
-   
-  install -D -m755 "${pkgname}-${pkgver}/${_release}/${_os}_${_arch}/docker-ls" "${pkgdir}/usr/bin/docker-ls"
-  install -D -m755 "${pkgname}-${pkgver}/${_release}/${_os}_${_arch}/docker-rm" "${pkgdir}/usr/bin/docker-rm" 
-  install -D -m644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$pkgname-$pkgver"
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"
+  for i in docker-{ls,rm}; do
+    install -Dm755 "$i" -t "$pkgdir"/usr/bin
+    install -Dm644 "$i".bash "$pkgdir"/usr/share/bash-completion/completions/"$i"
+    install -Dm644 "$i".zsh "$pkgdir"/usr/share/zsh/site-functions/_"$i"
+  done
 }
-
-# vim:set ts=4 sw=4 et:
