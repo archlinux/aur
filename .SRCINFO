@@ -1,0 +1,14 @@
+pkgbase = python-eth-keyfile
+	pkgdesc = A library for handling the encrypted keyfiles used to store ethereum private keys
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/ethereum/eth-keyfile
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-pypandoc
+	source = https://files.pythonhosted.org/packages/source/e/eth-keyfile/eth-keyfile-0.5.1.tar.gz
+	sha256sums = 939540efb503380bc30d926833e6a12b22c6750de80feef3720d79e5a79de47d
+
+pkgname = python-eth-keyfile
