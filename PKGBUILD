@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=perl-pod-pom-view-restructured
-pkgver=1.000002
+pkgver=1.000003
 pkgrel=1
 pkgdesc="View for Pod::POM that outputs reStructuredText"
 arch=('any')
@@ -9,12 +9,12 @@ url="https://metacpan.org/release/Pod-POM-View-Restructured"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-pod-pom')
 source=("https://www.cpan.org/modules/by-module/Pod/Pod-POM-View-Restructured-${pkgver}.tar.gz")
-sha512sums=('7174bddcf83d4456cebae6d11c030a4b11b1ff4aca05b85987717ca66d18b4f5c588df4198e3dca0c616358cf81102153cb3fdb92125c719a49f75d9321aa733')
+sha512sums=('b3578ea86ef1c690bf652a11e2ba866c54b40e5b287d0dffeb7888de587ebc5f856826502940a23a22aeb5c9f943615d8a3f4b66048b691fea347a299b9c395b')
 
 build() {
   cd "${srcdir}/Pod-POM-View-Restructured-${pkgver}"
 
-  perl Makefile.PL NO_PACKLIST=true
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
   make
 }
 
@@ -27,5 +27,5 @@ check() {
 package() {
   cd "${srcdir}/Pod-POM-View-Restructured-${pkgver}"
 
-  make pure_install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
