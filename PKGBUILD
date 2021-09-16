@@ -7,6 +7,7 @@ pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) 
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
 license=(GPL3)
+depends=(gnatcoll-core)
 makedepends=(git gprbuild)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v$pkgver.tar.gz"
 alire.patch

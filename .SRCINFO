@@ -8,6 +8,7 @@ pkgbase = alire
 	license = GPL3
 	makedepends = git
 	makedepends = gprbuild
+	depends = gnatcoll-core
 	source = alire-1.1.0.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v1.1.0.tar.gz
 	source = alire.patch
 	source = git+https://github.com/alire-project/xmlezout.git#commit=1fcbd0b9303d044d8f09a8ef652afa8c0400ee8b
