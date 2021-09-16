@@ -1,7 +1,0 @@
-post_install () {
-    set-piwigo-perm
-}
-
-post_upgrade() {
-    set-piwigo-perm
-}
