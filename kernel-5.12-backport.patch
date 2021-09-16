@@ -52,7 +52,7 @@
 
 --- a/fsntfs.c
 +++ b/fsntfs.c
-@@ -1601,7 +1601,7 @@
+@@ -1599,7 +1599,7 @@
  		lbo = (u64)lcn << cluster_bits;
  		len = (u64)clen << cluster_bits;
  new_bio:
