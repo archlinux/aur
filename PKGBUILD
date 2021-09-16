@@ -1,4 +1,5 @@
 # CPAN Name  : App-Cmd
+# Maintainer : camb
 # Contributor: camb
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
