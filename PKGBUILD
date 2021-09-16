@@ -2,7 +2,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
 pkgver=0.14.0.r239.g9579d62a
-pkgrel=1
+pkgrel=2
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version)'
 url=https://github.com/swaywm/wlroots
@@ -43,8 +43,6 @@ pkgver () {
 build () {
 	arch-meson \
 		--buildtype=debug \
-		-Dlogind-provider=systemd \
-		-Dlibseat=enabled \
 		-Dwerror=false \
 		-Dexamples=false \
 		"${pkgname}" build
