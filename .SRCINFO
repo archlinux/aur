@@ -1,14 +1,14 @@
 pkgbase = python-coinmarketcap
-	pkgdesc = Python wrapper around the coinmarketcap.com API.
+	pkgdesc = Python wrapper for coinmarketcap.com API
 	pkgver = 5.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barnumbirr/coinmarketcap
 	arch = any
 	license = Apache
-	license = v2.0
-	license = License
-	makedepends = python
-	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python-requests>=2.18.4
+	depends = python-requests-cache>=0.4.13
+	source = python-coinmarketcap-5.0.3.tar.gz::https://files.pythonhosted.org/packages/source/c/coinmarketcap/coinmarketcap-5.0.3.tar.gz
+	sha256sums = 1cfee31bf330a17cedf188e4e99588e6a4c6c969c93da71f55a9f4ec6a6c216f
 
 pkgname = python-coinmarketcap
-

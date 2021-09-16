@@ -1,16 +1,23 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=python-coinmarketcap
 pkgver=5.0.3
-pkgrel=1
-pkgdesc="Python wrapper around the coinmarketcap.com API."
-arch=(any)
+pkgrel=2
+pkgdesc="Python wrapper for coinmarketcap.com API"
+arch=('any')
 url="https://github.com/barnumbirr/coinmarketcap"
-license=(Apache v2.0 License)
-makedepends=("python" "python-pip")
+license=('Apache')
+depends=('python-requests>=2.18.4' 'python-requests-cache>=0.4.13')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/coinmarketcap/coinmarketcap-$pkgver.tar.gz")
+sha256sums=('1cfee31bf330a17cedf188e4e99588e6a4c6c969c93da71f55a9f4ec6a6c216f')
+
 build() {
-  pip install --no-deps --target="coinmarketcap" coinmarketcap==5.0.3
+	cd "coinmarketcap-$pkgver"
+	python setup.py build
 }
+
 package() {
-  sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-  mkdir -p $pkgdir/"$sitepackages"
-  cp -r $srcdir/coinmarketcap/* $pkgdir/"$sitepackages"
+	cd "coinmarketcap-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
