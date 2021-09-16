@@ -1,0 +1,18 @@
+tip() {
+  echo ""
+  echo ""
+  echo ""
+  echo "=== use 'mutter_setting' command to set window rounded radius. ==="
+  echo ""
+  echo ""
+  echo ""
+}
+
+post_install() {
+  tip
+  setcap cap_sys_nice+ep usr/bin/mutter
+}
+
+post_upgrade() {
+  post_install
+}
