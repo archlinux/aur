@@ -3,7 +3,7 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=1.8.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
@@ -12,7 +12,7 @@ license=(LGPL)
 depends=(glib2 pipewire fuse2 geoclue2)
 makedepends=(python xmlto docbook-xsl git flatpak libportal)
 checkdepends=(epiphany gedit gvfs)
-_commit=5768e075090413f780b8905b0351bc5aa487b9f3
+_commit=cafdbae4a0abf14b939b3bfd73c7d5e5cadfd899  # tags/1.10.0^0
 source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -23,7 +23,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -40,6 +39,7 @@ check() {
 
 package() {
   depends+=(xdg-desktop-portal-impl)
+
   cd $pkgname
   make DESTDIR="$pkgdir" install
 }
