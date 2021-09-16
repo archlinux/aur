@@ -6,13 +6,18 @@ The systemd service instance name is mapped to the video device number. So for e
 systemctl start fake-background-webcam@0.service
 ```
 
-would use `/dev/video0` as the source and create `/dev/video20` as the virutal camera with fake background.
+would use `/dev/video0` as the source and create `/dev/video20` as the virtual camera with fake background.
 
 ## Customization
-Override the systemd unit file: 
+Edit the `/etc/fake-background-webcam/config.ini` and restart the systemd service.
+
+The `background-image` can be changed there instead of customizing the systemd unit file.
+
+### Multiple cameras
+Override the systemd unit file:
 
 ```sh
-systemctl edit fake-background-webcam@0.service 
+systemctl edit fake-background-webcam@0.service
 #edit
 systemctl daemon-reload
 systemctl restart fake-background-webcam@0.service
@@ -21,20 +26,20 @@ systemctl restart fake-background-webcam@0.service
 
 ```sh
 [Service]
-# Change folder with background/mask images and add additional arguments 
-# See https://github.com/fangfufu/Linux-Fake-Background-Webcam#fakecamfakepy
-Environment=IMAGE_FOLDER=/home/myBackground FAKE_BACKGROUND_WEBCAM_ARGS="--hologram --scale-factor 1"
 
-# To avoid automatic loading/removing of the v4l2loopback kernel module
+# To disable automatic loading/removing of the v4l2loopback kernel module completely
 ExecStartPre=
-ExecStartPost=
-
- 
+ExecStartPost= 
 ```
 
-It is possible to have multiple cameras sharing the same bodypix detector. Only disable the `Pre/Post` commands (for all `@` instances) as shown above and load the modules manually. For example:
+It is then possible to for example handle multiple cameras by loading the module manually with custom parameters:
 
 ```sh
 modprobe v4l2loopback video_nr=20,21 card_label="Fake Background cam1","Fake Background cam2" exclusive_caps=1
 
 ```
+
+```sh
+systemctl start fake-background-webcam@{0,1}.service
+```
+

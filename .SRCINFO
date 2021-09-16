@@ -1,6 +1,6 @@
 pkgbase = fake-background-webcam-git
 	pkgdesc = Virtual background-replacing camera
-	pkgver = r193.5e29493
+	pkgver = r244.5f5d90c
 	pkgrel = 1
 	url = https://github.com/fangfufu/Linux-Fake-Background-Webcam
 	install = fake-background-webcam.install
@@ -11,24 +11,28 @@ pkgbase = fake-background-webcam-git
 	depends = v4l2loopback-dkms
 	depends = python
 	depends = python-opencv>=4.4.0.46
-	depends = akvcam-dkms
 	depends = opencv
-	depends = python-numpy>=1.18.2
+	depends = python-numpy>=1.19.3
 	depends = python-requests>=2.23.0
 	depends = python-requests-unixsocket
 	depends = python-aiohttp>=3.6.2
 	depends = python-inotify-simple>=1.2
 	depends = python-pyfakewebcam
 	depends = python-mediapipe
+	depends = python-configargparse
+	depends = python-cmapy
 	provides = fake-background-webcam
 	conflicts = fake-background-webcam
+	backup = etc/fake-background-webcam/config.ini
 	source = fake-background-webcam-git::git+https://github.com/fangfufu/Linux-Fake-Background-Webcam.git
 	source = fake-background-webcam@.service
 	source = readme.md
 	source = fake-background-webcam.install
+	source = config.ini
 	sha256sums = SKIP
-	sha256sums = 848d8ff2700ae616b5c1bb69d99d2fc54427a43ca23b54638aeff99833ac59eb
-	sha256sums = f6b37aff68926eb16c510db56df665ec2a3f8aa7348c0e8ddf247bcaa770a955
+	sha256sums = b5aaa8e9c45687b5e61b9691d7de1c41b54392d9ed66a9177be1dbe0ed4edf6a
+	sha256sums = f4ddf1a2ee79663696d645a82f2ba1f2c07c91d1d9e1e6286ad93e7ab2ee3461
 	sha256sums = b57c70f3b498d646d8834d770d806219b306251c908cc8591b0d711e3638916f
+	sha256sums = 82a6ea84a0f1246ca11f058a88b83854d6ecb268fb2331a4a186b9b01920bfc9
 
 pkgname = fake-background-webcam-git
