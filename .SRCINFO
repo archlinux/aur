@@ -1,6 +1,6 @@
 pkgbase = supercollider-squinewave-git
-	pkgdesc = Description
-	pkgver = r19.847b4bb
+	pkgdesc = A SuperCollider plugin with sine-square-saw-pulse morphing oscillator with hardsync
+	pkgver = r24.ce2f19e
 	pkgrel = 1
 	url = https://github.com/required-field/squinewave
 	arch = any

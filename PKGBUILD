@@ -1,8 +1,8 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-squinewave-git
-pkgver=r19.847b4bb
+pkgver=r24.ce2f19e
 pkgrel=1
-pkgdesc='Description'
+pkgdesc='A SuperCollider plugin with sine-square-saw-pulse morphing oscillator with hardsync'
 arch=('any')
 url='https://github.com/required-field/squinewave'
 license=('GPL')
@@ -14,14 +14,14 @@ source=("$pkgname"::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname/supercollider"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 		SC_SRC="/usr/share/supercollider-headers"
 
-		cd "$srcdir/$pkgname"
+		cd "$srcdir/$pkgname/supercollider"
 
 		mkdir build; cd build
 		DEST="$pkgdir/usr/share/SuperCollider/Extensions"
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname/build"
+	cd "$srcdir/$pkgname/supercollider/build"
 	cmake --build . --config Release --target install
 }
