@@ -1,15 +1,20 @@
 pkgbase = piwigo
 	pkgdesc = Photo gallery software for the web
 	pkgver = 11.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://piwigo.org/
 	arch = any
 	license = GPL
 	makedepends = unzip
 	depends = php
-	depends = php-gd
 	depends = mariadb
-	optdepends = php-apache: to use the Apache web server
+	depends = php-apache
+	optdepends = php-gd: graphic library (one graphic library is required)
+	optdepends = imagemagick: graphic library (one graphic library is required)
+	optdepends = exiftool: Write Metadata plugin or any other plugin dealing with EXIF/IPTC metadata
+	optdepends = ffmpeg: VideoJS plugin to create video poster
+	optdepends = jpegtran: RotateImage plugin to rotate images with no compression
+	optdepends = pdftoppm: generate poster from PDF files (instead of ImageMagick)
 	options = emptydirs
 	backup = etc/webapps/piwigo/apache.conf
 	source = piwigo.zip::https://piwigo.org/download/dlcounter.php?code=latest
