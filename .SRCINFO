@@ -1,14 +1,14 @@
 pkgbase = wsid
 	pkgdesc = web show image directory
-	pkgver = 0.3
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/matheuz1210/wsid
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = python>=3.9
+	depends = python>=3.7
 	optdepends = python-pyqt5: for gui
-	source = wsid-0.3.tar.gz::https://github.com/matheuz1210/wsid/archive/refs/tags/0.3.tar.gz
-	b2sums = ac11eb4e81b96b85b2fcc9d859edaf8f7165ffed02f87e817193db328968136df3357170be2c3bc8d5ef60248eb7c12a6753b9d498b1026aeb3360d1329f4db1
+	source = wsid-0.5.tar.gz::https://github.com/matheuz1210/wsid/archive/refs/tags/0.5.tar.gz
+	b2sums = e98b5eb4ae29726a99a98fed7f7ca0f14b1407977f5058e475ff6168140170d6bc7aadfdd97e6dbe2e1add3aa46758cf393c22e789010c06529437e52255da32
 
 pkgname = wsid
