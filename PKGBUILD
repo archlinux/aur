@@ -1,6 +1,6 @@
 # Maintainer: Anderson Rocha <anderson2320@gmail.com>
 
-pkgname=cef-minimal
+pkgname=cef-minimal-obs-studio-browser
 pkgver=88.2.8
 _pkgcommit="ge484012"
 _chromiumver="88.0.4324.150"
@@ -13,8 +13,8 @@ url="https://bitbucket.org/chromiumembedded/cef"
 license=("BSD")
 depends=("nss" "alsa-lib" "libxss" "libxtst" "libglvnd" "pango" "libxcursor" "dbus" "libxrandr" "libxcomposite" "at-spi2-atk")
 makedepends=("cmake" "make")
-provides=("cef")
-conflicts=("cef-standard" "cef-git")
+provides=("cef-minimal=88.2.8")
+conflicts=("cef-standard" "cef-git" "cef")
 cdn_build_package_url="https://cef-builds.spotifycdn.com"
 
 source_i686=(

@@ -1,4 +1,4 @@
-pkgbase = cef-minimal
+pkgbase = cef-minimal-obs-studio-browser
 	pkgdesc = Chromium Embedded Framework minimal release
 	pkgver = 88.2.8
 	pkgrel = 1
@@ -19,12 +19,13 @@ pkgbase = cef-minimal
 	depends = libxrandr
 	depends = libxcomposite
 	depends = at-spi2-atk
-	provides = cef
+	provides = cef-minimal=88.2.8
 	conflicts = cef-standard
 	conflicts = cef-git
+	conflicts = cef
 	source_i686 = https://cef-builds.spotifycdn.com/cef_binary_88.2.8%2Bge484012%2Bchromium-88.0.4324.150_linux32_minimal.tar.bz2
 	sha1sums_i686 = f3dec9b8c13590a4b88c782862a9c69c5bb9c986
 	source_x86_64 = https://cef-builds.spotifycdn.com/cef_binary_88.2.8%2Bge484012%2Bchromium-88.0.4324.150_linux64_minimal.tar.bz2
 	sha1sums_x86_64 = 0ff708f6104fab3e43fbcd41d0a9aea6f69bc3f5
 
-pkgname = cef-minimal
+pkgname = cef-minimal-obs-studio-browser
