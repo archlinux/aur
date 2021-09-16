@@ -24,10 +24,10 @@ pkgbase = vscodium-bin
 	source = vscodium-bin.desktop
 	sha256sums = 65e6b053e6d8be61763801312ded64a82cf835d77a6eabe1b9d7eb9e87b2e49b
 	source_x86_64 = https://github.com/VSCodium/vscodium/releases/download/1.60.1/VSCodium-linux-x64-1.60.1.tar.gz
-	sha256sums_x86_64 = cc22bca430b0f5818337e42946c3592b9be0aba77770501e7a213865b71efcd3
+	sha256sums_x86_64 = 098ee45af269c88532956a388117c9fbb3e2a1667bcb1aa83604b8bdfee5e60f
 	source_aarch64 = https://github.com/VSCodium/vscodium/releases/download/1.60.1/VSCodium-linux-arm64-1.60.1.tar.gz
 	sha256sums_aarch64 = 71f4f24832097cc43e3a89b7e747164dfa8b41c7c4539cd4f0be802d8e7d3b16
 	source_armv7h = https://github.com/VSCodium/vscodium/releases/download/1.60.1/VSCodium-linux-armhf-1.60.1.tar.gz
-	sha256sums_armv7h = 891e0e342ece0fd8d523176a9f9d3eeba474c1744c7e93ce044597ab12fc9110
+	sha256sums_armv7h = 7873c7cabaf03668d88f4b04ebdb81d3e7521333f021dfb3bb0b1f3a0caa5eac
 
 pkgname = vscodium-bin
