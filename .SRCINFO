@@ -1,7 +1,7 @@
 pkgbase = vscodium
 	pkgdesc = Free/Libre Open Source Software Binaries of VSCode (git build from latest release).
 	pkgver = 1.60.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VSCodium/vscodium.git
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = vscodium
 	makedepends = libxdmcp
 	makedepends = bash
 	makedepends = git
+	makedepends = git-lfs
 	makedepends = patch
 	makedepends = python
 	makedepends = make
