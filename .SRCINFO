@@ -9,6 +9,7 @@ pkgbase = kicad-libraries-git
 	makedepends = ninja
 	makedepends = git
 	makedepends = stepreduce-git
+	makedepends = parallel
 	provides = kicad-library
 	conflicts = kicad-library
 	conflicts = kicad-library-nightly
