@@ -43,10 +43,11 @@ build() {
 
   cd ${_build_dir}
 
-  unset PETSC_ARCH
+  export PETSC_ARCH=${_petsc_arch}
   export PETSC_DIR=${_build_dir}
 
-  CONFOPTS="--with-shared-libraries=1 --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3 --FOPTFLAGS=-O3 \
+  CONFOPTS="--with-shared-libraries=1 \
+            --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3 --FOPTFLAGS=-O3 \
             --with-cc=$(which mpicc) --with-cxx=$(which mpicxx) --with-fc=$(which mpifort)"
   CONFOPTS="${CONFOPTS} $(sh ${srcdir}/test_optdepends.sh)"
 
@@ -54,10 +55,9 @@ build() {
   python ./configure \
     --with-mpi-f90module-visibility=0 \
     --prefix=${_install_dir} \
-    --PETSC_ARCH=${_petsc_arch} \
     ${CONFOPTS}
 
-  make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_petsc_arch} all
+  make ${MAKEFLAGS} all
 }
 
 check() {
