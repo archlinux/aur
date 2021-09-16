@@ -80,7 +80,7 @@ _use_current=
 pkgbase=linux-cacule-llvm
 pkgname=('linux-cacule-llvm' 'linux-cacule-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14.4
+pkgver=5.14.5
 pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO'
@@ -551,7 +551,7 @@ package_linux-cacule-llvm-headers() {
 
 }
 
-md5sums=('3208dd1c05a8542865a1795cdc5b8cec'
+md5sums=('8d239f7b469b7b21514fb60143894dd5'
          '5719aaff140940871b91575b30114155'
          '9abde29217354c69925d2bc672f66d67'
          '40a9380b2884f5d417791f06389ba57e'

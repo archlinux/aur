@@ -1,6 +1,6 @@
 pkgbase = linux-cacule-llvm
 	pkgdesc = Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO
-	pkgver = 5.14.4
+	pkgver = 5.14.5
 	pkgrel = 1
 	url = https://github.com/ptr1337/linux-cacule
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = linux-cacule-llvm
 	makedepends = clang
 	makedepends = compiler-rt
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.4.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.5.tar.xz
 	source = config
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE/v5.14/cacule-5.14.patch
@@ -56,7 +56,7 @@ pkgbase = linux-cacule-llvm
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/0001-v4l2loopback.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/0001-ksm.patch
 	source = auto-cpu-optimization.sh
-	md5sums = 3208dd1c05a8542865a1795cdc5b8cec
+	md5sums = 8d239f7b469b7b21514fb60143894dd5
 	md5sums = 5719aaff140940871b91575b30114155
 	md5sums = 9abde29217354c69925d2bc672f66d67
 	md5sums = 40a9380b2884f5d417791f06389ba57e
@@ -101,5 +101,5 @@ pkgname = linux-cacule-llvm
 
 pkgname = linux-cacule-llvm-headers
 	pkgdesc = Headers and scripts for building modules for the Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO
-	depends = linux-cacule-llvm=5.14.4
+	depends = linux-cacule-llvm=5.14.5
 	depends = pahole
