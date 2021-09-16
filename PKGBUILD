@@ -3,7 +3,7 @@
 pkgname='python-web3'
 _pkgname=${pkgname#python-}
 pkgver=5.23.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python library for interacting with Ethereum, inspired by web3.js"
 arch=('any')
 depends=('python-aiohttp' 'python-eth-abi' 'python-eth-account' 'python-eth-hash' 'python-eth-typing' 'python-eth-utils' \
