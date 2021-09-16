@@ -1,25 +1,36 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=python-better-bencode
-_pkgname=better-bencode
+_pkgname="${pkgname#python-}"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, standard compliant Bencode serialization"
-arch=('any')
-options=('!strip')
+arch=('x86_64')
 url="https://github.com/kosqx/better-bencode"
 license=('BSD')
-depends=('')
+depends=('python')
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/0e/c2/a9060ea075dadc97d3933286166c821dfc60b8c5f7f28120e958cb484200/better-bencode-0.2.1.tar.gz")
-sha256sums=('SKIP')
+checkdepends=('python-pytest-runner')
+_commit=46bdc09f1b3003b39aa4263e0a052883a5209c2a
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('bec74e73c597a473ae286f9e543b7f03af28676b349472d214569c5885540b07')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver/"
+  cd "$_pkgname-$_commit"
   python setup.py build
 }
 
+check() {
+  cd "$_pkgname-$_commit"
+  local _ver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_ver" python setup.py pytest
+}
+
 package() {
-  cd "$srcdir/$_pkgname-$pkgver/"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "$_pkgname-$_commit"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
