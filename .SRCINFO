@@ -14,17 +14,11 @@ pkgbase = emercoin-bin
 	depends = expat>=2.2.0
 	depends = freetype2>=2.7.1
 	depends = protobuf
-	source_i686 = https://github.com/emercoin/emercoin/releases/download/v0.7.10emc/emercoin-0.7.10-i686-pc-linux-gnu.tar.gz
-	source_i686 = emercoin.install
-	source_i686 = emercoind.service
-	sha256sums_i686 = 993ddbebbd78bb654762d7dd9b0fb69bd365dc270a922d566d1adba0ac002174
-	sha256sums_i686 = 3cc2325294d7a4d0408f8ee09b4933cc3f11b9c1c6394e76c69265bf73194b1e
-	sha256sums_i686 = 9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed
-	source_x86_64 = https://github.com/emercoin/emercoin/releases/download/v0.7.10emc/emercoin-0.7.10-x86_64-linux-gnu.tar.gz
-	source_x86_64 = emercoin.install
-	source_x86_64 = emercoind.service
-	sha256sums_x86_64 = 6e851f289c652fd1055bd6084abe454ad172cc8df0926efcf05441e58fc14973
-	sha256sums_x86_64 = 3cc2325294d7a4d0408f8ee09b4933cc3f11b9c1c6394e76c69265bf73194b1e
-	sha256sums_x86_64 = 9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed
+	source = https://github.com/emercoin/emercoin/releases/download/v0.7.10emc/emercoin-0.7.10-x86_64-linux-gnu.tar.gz
+	source = emercoin.install
+	source = emercoind.service
+	sha256sums = 6e851f289c652fd1055bd6084abe454ad172cc8df0926efcf05441e58fc14973
+	sha256sums = 3cc2325294d7a4d0408f8ee09b4933cc3f11b9c1c6394e76c69265bf73194b1e
+	sha256sums = 9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed
 
 pkgname = emercoin-bin
