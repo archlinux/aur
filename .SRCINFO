@@ -1,7 +1,7 @@
 pkgbase = rpi-imager-bin
 	pkgdesc = Raspberry Pi Imaging Utility
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi/rpi-imager
 	arch = x86_64
 	license = APACHE
@@ -20,8 +20,6 @@ pkgbase = rpi-imager-bin
 	conflicts = rpi-imager
 	noextract = rpi-imager-bin-1.6.2.deb
 	source = rpi-imager-bin-1.6.2.deb::https://github.com/raspberrypi/rpi-imager/releases/download/v1.6.2/rpi-imager_1.6.2_amd64.deb
-	source = rpi-imager-bin-1.6.2-license.txt::https://raw.githubusercontent.com/raspberrypi/rpi-imager/v1.6.2/license.txt
 	sha256sums = 820e98550ced67e297c8254df28fd8f6930e322e52749070d7a9694d90fc993e
-	sha256sums = cf5ed51359b97e6fc01c1e61a5b2bc2f413c0e1490b486572332d9b3a50a9575
 
 pkgname = rpi-imager-bin
