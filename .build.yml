@@ -14,6 +14,7 @@ tasks:
     makepkg -i --noconfirm
     cd ..
     yay -S --answerclean=All --noconfirm xmlada
+    yay -S gnatcoll-core --noconfirm
 - build: |
     cd aur-alire
     makepkg
