@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 # Maintainer: Shi Liang <shiliang2008@msn.com>
 pkgname=caddy-naiveproxy
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Caddy web server"
 arch=('any')
@@ -26,7 +26,7 @@ sha256sums=(
 )
 
 build() {
-  xcaddy build v2.4.4 --with github.com/caddy-dns/cloudflare --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
+  xcaddy build v${pkgver} --with github.com/caddy-dns/cloudflare --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
 }
 
 package() {
