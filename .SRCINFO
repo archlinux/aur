@@ -1,12 +1,13 @@
 pkgbase = factor-git
 	pkgdesc = A general purpose, dynamically typed, stack-based programming language
-	pkgver = 0.98.r1776.24607b2608
+	pkgver = 0.98.r1821.7b451bb813
 	pkgrel = 1
 	url = http://factorcode.org
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = gcc
 	depends = pango
 	depends = cairo
 	depends = glib2
@@ -24,4 +25,3 @@ pkgbase = factor-git
 	md5sums = 59242ddb19a9be927915e489e2bfca27
 
 pkgname = factor-git
-

@@ -5,7 +5,7 @@
 
 pkgname=factor-git
 _pkgname=factor
-pkgver=0.98.r1776.24607b2608
+pkgver=0.98.r1821.7b451bb813
 pkgrel=1
 pkgdesc="A general purpose, dynamically typed, stack-based programming language"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ provides=(factor)
 conflicts=(factor)
 depends=(pango cairo glib2 freetype2 mesa libgl gtkglext)
 optdepends=(udis86)
-makedepends=(git)
+makedepends=(git gcc)
 options=(!strip)
 source=(
   'git+https://github.com/factor/factor.git'
