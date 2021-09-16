@@ -1,0 +1,17 @@
+pkgbase = funkcio
+	pkgdesc = Draw functions from points
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/wbernard/funkcio
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = lapack
+	depends = pybind11
+	depends = python-numpy
+	depends = python-scipy
+	source = https://github.com/wbernard/funkcio/archive/v0.3.tar.gz
+	sha512sums = ad063330d4760a297ba3989564c3eebb34120cba31d7b28fbff45cd437552c848e007958981d1564c39405261b3b81152f8aee8db65a1d394fc92788c12cf7fb
+
+pkgname = funkcio
