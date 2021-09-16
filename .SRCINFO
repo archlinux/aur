@@ -1,27 +1,25 @@
 pkgbase = perl-pod-elemental
-	pkgdesc = work with nestable Pod elements
-	pkgver = 0.103004
+	pkgdesc = A system for treating a Pod documents as trees of elements
+	pkgver = 0.103005
 	pkgrel = 1
 	url = https://metacpan.org/release/Pod-Elemental
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-deep>=0
-	checkdepends = perl-test-differences>=0
-	depends = perl-class-load>=0
-	depends = perl-mixin-linewise>=0
-	depends = perl-moose>=0
-	depends = perl-moosex-types>=0
-	depends = perl-pod-eventual>=0
-	depends = perl-string-rewriteprefix>=0
-	depends = perl-string-truncate>=0
-	depends = perl-sub-exporter>=0
-	depends = perl-sub-exporter-formethods>=0
-	depends = perl-namespace-autoclean>=0
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Elemental-0.103004.tar.gz
-	md5sums = 15458de0d87404ee94285633acadec9f
-	sha512sums = d2cae23f7c4131f74374f72aa52e58840035f2245d290f82594265089400fe669c0c03cf01c5b65688770b1b5eba6f611b60693b245af637711330fe8c617a66
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-differences
+	depends = perl
+	depends = perl-class-load
+	depends = perl-mixin-linewise
+	depends = perl-moose
+	depends = perl-moosex-types
+	depends = perl-pod-eventual
+	depends = perl-string-rewriteprefix
+	depends = perl-string-truncate
+	depends = perl-sub-exporter
+	depends = perl-sub-exporter-formethods
+	depends = perl-namespace-autoclean
+	source = https://www.cpan.org/modules/by-module/Pod/Pod-Elemental-0.103005.tar.gz
+	sha512sums = bd3c6c6d5aef5b0242daddbba7c00b9cabdee4e26111562bb3efcd6032044b581ee8e66877d8ea07baff6b076cd6cccd0f55be210fbb35344a324f93d79ca667
 
 pkgname = perl-pod-elemental
-

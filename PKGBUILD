@@ -1,50 +1,33 @@
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-pod-elemental'
-pkgver='0.103004'
-pkgrel='1'
-pkgdesc="work with nestable Pod elements"
+pkgname=perl-pod-elemental
+pkgver=0.103005
+pkgrel=1
+pkgdesc="A system for treating a Pod documents as trees of elements"
 arch=('any')
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-class-load>=0' 'perl-mixin-linewise>=0' 'perl-moose>=0' 'perl-moosex-types>=0' 'perl-pod-eventual>=0' 'perl-string-rewriteprefix>=0' 'perl-string-truncate>=0' 'perl-sub-exporter>=0' 'perl-sub-exporter-formethods>=0' 'perl-namespace-autoclean>=0')
-makedepends=()
-checkdepends=('perl-test-deep>=0' 'perl-test-differences>=0')
+depends=('perl' 'perl-class-load' 'perl-mixin-linewise' 'perl-moose' 'perl-moosex-types' 'perl-pod-eventual' 'perl-string-rewriteprefix' 'perl-string-truncate' 'perl-sub-exporter' 'perl-sub-exporter-formethods' 'perl-namespace-autoclean')
+checkdepends=('perl-test-deep' 'perl-test-differences')
 url='https://metacpan.org/release/Pod-Elemental'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Elemental-0.103004.tar.gz')
-md5sums=('15458de0d87404ee94285633acadec9f')
-sha512sums=('d2cae23f7c4131f74374f72aa52e58840035f2245d290f82594265089400fe669c0c03cf01c5b65688770b1b5eba6f611b60693b245af637711330fe8c617a66')
-_distdir="Pod-Elemental-0.103004"
+source=("https://www.cpan.org/modules/by-module/Pod/Pod-Elemental-${pkgver}.tar.gz")
+sha512sums=('bd3c6c6d5aef5b0242daddbba7c00b9cabdee4e26111562bb3efcd6032044b581ee8e66877d8ea07baff6b076cd6cccd0f55be210fbb35344a324f93d79ca667')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "${srcdir}/Pod-Elemental-${pkgver}"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/Pod-Elemental-${pkgver}"
+
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+  cd "${srcdir}/Pod-Elemental-${pkgver}"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+}
