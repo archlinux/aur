@@ -1,7 +1,7 @@
 pkgbase = jeveassets
 	pkgdesc = Out-of-game asset manager for Eve-Online, written in Java
-	pkgver = 6.9.3
-	pkgrel = 5
+	pkgver = 6.9.4
+	pkgrel = 2
 	url = http://eve.nikr.net/jeveasset
 	install = jeveassets.install
 	arch = any
