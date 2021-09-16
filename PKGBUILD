@@ -1,13 +1,14 @@
 # Maintainer: Funami
 pkgname=git-interactive-rebase-tool-bin
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native cross-platform full feature terminal-based sequence editor for git interactive rebase"
 arch=('x86_64')
 url="https://github.com/MitMaro/git-interactive-rebase-tool"
 license=('GPL3')
 provides=('git-interactive-rebase-tool')
 conflicts=('git-interactive-rebase-tool')
+install=git-interactive-rebase-tool.install
 source=("$pkgname-$pkgver.deb::https://github.com/MitMaro/git-interactive-rebase-tool/releases/download/$pkgver/git-interactive-rebase-tool-$pkgver-debian-bullseye_amd64.deb")
 noextract=("$pkgname-$pkgver.deb")
 sha256sums=('4ac6c112b7b9a60207df4be9b17d68c0fa053b23871c410a8187c397673387b2')

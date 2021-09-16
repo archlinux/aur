@@ -1,8 +1,9 @@
 pkgbase = git-interactive-rebase-tool-bin
 	pkgdesc = Native cross-platform full feature terminal-based sequence editor for git interactive rebase
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MitMaro/git-interactive-rebase-tool
+	install = git-interactive-rebase-tool.install
 	arch = x86_64
 	license = GPL3
 	provides = git-interactive-rebase-tool
