@@ -1,0 +1,14 @@
+pkgbase = wasm-pack-bin
+	pkgdesc = Your favorite rust -> wasm workflow tool!
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/rustwasm/wasm-pack
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	provides = wasm-pack
+	conflicts = wasm-pack
+	source = wasm-pack-bin-0.10.1.tar.gz::https://github.com/rustwasm/wasm-pack/releases/download/v0.10.1/wasm-pack-v0.10.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 524f8333e69c7157239c14c3140ee485b8cb4000d530344d62984e544f27c67f
+
+pkgname = wasm-pack-bin
