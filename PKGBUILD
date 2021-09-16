@@ -2,9 +2,9 @@
 
 pkgname=python-aioesphomeapi
 pkgver=9.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python Client for ESPHome native API. Used by Home Assistant."
-url="https://github.com/esphome/ESPHome"
+url="https://github.com/esphome/aioesphomeapi"
 depends=('python-setuptools'
 	'python-protobuf'
 	'python-zeroconf'
