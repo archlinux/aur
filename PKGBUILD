@@ -7,11 +7,13 @@ _pkgbase="${pkgbase//-}"
 pkgname=("$pkgbase" "lua51-$_rockname" "lua52-$_rockname" "lua53-$_rockname")
 pkgver=35.1
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='POSIX bindings for Lua'
 arch=(x86_64 i686)
 url="https://github.com/$_pkgbase/$_pkgbase"
 license=(MIT)
+depends=(libxcrypt
+         libcrypt.so)
 _luadeps=(std-normalize)
 makedepends=(lua
              lua51
@@ -30,21 +32,21 @@ _package() {
 }
 
 package_lua-posix() {
-	depends=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
+	depends+=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
 	_package 5.4
 }
 
 package_lua51-posix() {
-	depends=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
+	depends+=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
 	_package 5.1
 }
 
 package_lua52-posix() {
-	depends=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
+	depends+=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
 	_package 5.2
 }
 
 package_lua53-posix() {
-	depends=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
+	depends+=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
 	_package 5.3
 }
