@@ -13,7 +13,7 @@ depends=('gtk3' 'libsecret' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/LycheeSlicer-$pkgver.deb")
-sha512sums_x86_64=('2949c8e81a34cd932d3f0aa817bc8a2d56b3e3c891ea23c7f39bc96900d21009a65668dabb612762624dae88c0af61a832c045f47c17721702ca1b8e5894ca56')
+sha512sums_x86_64=('33dc78d5c0eae91cfadc007c70dcdbd5ff89a8507e6ef1038c135d2486d11e9933f88bc88d89354cd47cea53b9f5d767bb0f7eff441e600f64d2431a1bab1e88')
 package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
