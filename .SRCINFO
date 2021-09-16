@@ -1,17 +1,17 @@
 pkgbase = python-dparse
-	pkgdesc = A parser for Python dependency files
+	pkgdesc = Parser for Python dependency files
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyupio/dparse
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-runner
+	checkdepends = python-pipenv
 	makedepends = python-setuptools
-	depends = python
 	depends = python-packaging
-	depends = python-six
-	depends = python-yaml
-	source = https://github.com/pyupio/dparse/archive/0.5.1.tar.gz
-	md5sums = e74e6d8720586113fe8311b996da8222
+	depends = python-toml
+	depends = python-pyaml
+	source = python-dparse-0.5.1.tar.gz::https://github.com/pyupio/dparse/archive/0.5.1.tar.gz
+	sha256sums = 71dd0a0763fbb3f9112996c75e5f8258c77f348dfc1b9c6097a89fa377173a95
 
 pkgname = python-dparse
-
