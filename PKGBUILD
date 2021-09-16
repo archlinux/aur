@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
 pkgver=2021.07.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
 url="https://www.basilisk-browser.org/"
@@ -12,18 +12,18 @@ license=('MPL' 'GPL' 'LGPL')
 depends=('gtk3' 'gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
 makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13' 'gcc10')
 options=('!emptydirs')
-_UXP=20210719
-source=("https://repo.palemoon.org/MoonchildProductions/Basilisk/archive/v${pkgver}.tar.gz"
-        "https://repo.palemoon.org/MoonchildProductions/UXP/archive/RELBASE_${_UXP}.tar.gz"
-        "https://repo.palemoon.org/MoonchildProductions/Pale-Moon/raw/commit/7046794388319744751208a8d0e98e27861f67ce/palemoon/branding/unofficial/browser.desktop")
+_UXP=20210823
+source=("https://repo.palemoon.org/mcp-graveyard/Basilisk/archive/v${pkgver}.tar.gz"
+        "https://repo.palemoon.org/mcp-graveyard/UXP/archive/RELBASE_${_UXP}.tar.gz"
+        "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop")
 sha256sums=('df59dcb2226340dee546cfc52a99aa7b1a24a6273c9494117bf8fed57378b4ce'
-            'b3031967e1f5399a711fd3f744b8371e0d74656e91aca4c86f157d09b264e4ad'
+            '65cf94e8071d2b1e5465848c64fbe06cfe33425a920911f40fe877cade9cfc3c'
             '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
 prepare() {
   cd "$srcdir/$pkgname"
 
-  [[ ! -d platform ]] && mv -T "$srcdir/uxp" platform
+  [[ -d platform ]] && mv "$srcdir/uxp/*" platform/ || mv -T "$srcdir/uxp" platform
   ln -sf basilisk browser
 
   cat > .mozconfig << EOF
