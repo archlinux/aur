@@ -1,0 +1,50 @@
+# Maintainer: Aki-nyan <aur@catgirl.link>
+
+pkgname=prjoxide-nightly
+pkgver=@OXIDE_VER@
+pkgrel=1
+pkgdesc="Documenting Lattice's 28nm FPGA parts"
+arch=("any")
+url="https://github.com/gatecat/prjoxide"
+license=("custom:ISC")
+groups=()
+options=("!strip")
+depends=()
+optdepends=()
+makedepends=("git" "cargo")
+conflicts=(
+	"prjoxide-git"
+)
+replaces=(
+	"prjoxide-git"
+)
+source=(
+	"prjoxide::git+https://github.com/gatecat/prjoxide.git"#commit=@OXIDE_HASH@
+	"prjoxide-db::git+https://github.com/gatecat/prjoxide-db.git"#commit=@DB_HASH@
+)
+sha256sums=(
+	"SKIP"
+	"SKIP"
+)
+
+
+_PREFIX="/usr"
+prepare() {
+	cd "${srcdir}/prjoxide"
+	git submodule init
+	git config submodule.database.url "$srcdir/prjoxide-db"
+	git submodule update
+	cd ..
+}
+
+build() {
+	cd "${srcdir}/prjoxide/libprjoxide"
+	cargo build --release
+	cd ..
+}
+
+package() {
+	install -Dm755 "${srcdir}/prjoxide/libprjoxide/target/release/prjoxide" "${pkgdir}${_PREFIX}/bin/prjoxide"
+	install -Dm644 "${srcdir}/prjoxide/libprjoxide/target/release/libpyprjoxide.so" "${pkgdir}${_PREFIX}/lib/libpyprjoxide.so"
+	install -Dm644 "${srcdir}/prjoxide/COPYING" "${pkgdir}${_PREFIX}/share/licenses/prjoxide/COPYING"
+}
