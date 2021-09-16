@@ -1,0 +1,17 @@
+pkgbase = brother-dcp-b7500d
+	pkgdesc = LPR and CUPS driver for Brother DCP-B7500D printer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=in&lang=en&prod=dcpb7500d_as_cn
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	depends = cups
+	depends = lib32-glibc
+	optdepends = brscan4: scanning support via sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	source = https://download.brother.com/welcome/dlf103650/dcpb7500dpdrv-4.0.0-1.i386.rpm
+	md5sums = 86f952616ef5826ee9942445136c4615
+
+pkgname = brother-dcp-b7500d
