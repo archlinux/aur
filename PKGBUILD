@@ -7,7 +7,10 @@ pkgrel=1
 pkgdesc="A system for treating a Pod documents as trees of elements"
 arch=('any')
 license=('PerlArtistic' 'GPL')
-depends=('perl' 'perl-class-load' 'perl-mixin-linewise' 'perl-moose' 'perl-moosex-types' 'perl-pod-eventual' 'perl-string-rewriteprefix' 'perl-string-truncate' 'perl-sub-exporter' 'perl-sub-exporter-formethods' 'perl-namespace-autoclean')
+depends=('perl' 'perl-class-load' 'perl-mixin-linewise' 'perl-moose'
+         'perl-moosex-types' 'perl-pod-eventual' 'perl-string-rewriteprefix'
+         'perl-string-truncate' 'perl-sub-exporter'
+         'perl-sub-exporter-formethods' 'perl-namespace-autoclean')
 checkdepends=('perl-test-deep' 'perl-test-differences')
 url='https://metacpan.org/release/Pod-Elemental'
 source=("https://www.cpan.org/modules/by-module/Pod/Pod-Elemental-${pkgver}.tar.gz")
