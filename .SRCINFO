@@ -1,17 +1,15 @@
 pkgbase = pjson
 	pkgdesc = Command-line tool to validate and pretty-print JSON and XML
 	pkgver = 1.1
-	pkgrel = 1
-	url = http://igorgue.com/pjson
+	pkgrel = 2
+	url = https://github.com/igorgue/pjson
 	arch = any
 	license = MIT
-	depends = python
-	depends = python-pygments
+	depends = python-pygments>=1.6
 	depends = python-xmlformatter
 	source = https://files.pythonhosted.org/packages/source/p/pjson/pjson-1.1.tar.gz
-	source = https://raw.githubusercontent.com/igorgue/pjson/ed52f9d98efa/LICENSE
+	source = https://github.com/igorgue/pjson/raw/master/LICENSE
 	sha256sums = f4fc3c3996551eee3d2fa33e8d29364c7f47f156a1371b48617a12e9153bd6c1
 	sha256sums = e640161ec133206a5c8a582fd742519d3ea5409bd7b5929d6c978a24da6ad731
 
 pkgname = pjson
-
