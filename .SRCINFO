@@ -1,6 +1,6 @@
 pkgbase = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client —
-	pkgver = 1.8.1.r41.gc6e6ac18a
+	pkgver = 1.8.5.r27.g1aa2efd2c
 	pkgrel = 1
 	url = https://element.io
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = element-desktop-git
 	makedepends = nodejs-lts-fermium
 	provides = element-web
 	conflicts = element-web
-	replaces = element-desktop-git
 	source = element-web::git+https://github.com/vector-im/element-web.git
 	source = element-desktop::git+https://github.com/vector-im/element-desktop.git
 	source = autolaunch.patch
@@ -36,7 +35,7 @@ pkgname = element-web-git
 
 pkgname = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client — desktop version.
-	depends = element-web-git=1.8.1.r41.gc6e6ac18a
+	depends = element-web-git=1.8.5.r27.g1aa2efd2c
 	depends = electron
 	depends = sqlcipher
 	provides = element-desktop

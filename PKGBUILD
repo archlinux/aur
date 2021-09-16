@@ -5,10 +5,9 @@
 
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
-pkgver=1.8.1.r41.gc6e6ac18a
+pkgver=1.8.5.r27.g1aa2efd2c
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client — "
-replaces=(element-desktop-git)
 arch=(x86_64)
 url="https://element.io"
 license=(Apache)
@@ -51,6 +50,9 @@ prepare() {
   sed -i 's|"electronVersion": "13.1.6"|"electronVersion": "13.1.8"|' package.json
   sed -i 's|"https://packages.riot.im/desktop/update/"|null|' element.io/release/config.json
   yarn install --no-fund
+
+  cd ../element-web/node_modules/matrix-react-sdk
+  yarn reskindex
 }
 
 build() {
@@ -100,7 +102,7 @@ package_element-desktop-git() {
 
   # Required extras
   install -Dm644 ../io.element.Element.desktop -t "${pkgdir}"/usr/share/applications/
-  install -Dm755 ../${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
+  install -Dm755 ../${pkgname%-git}.sh "${pkgdir}"/usr/bin/${pkgname%-git}
 
   # Icons
   install -Dm644 ../element-web/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/io.element.Element.svg
