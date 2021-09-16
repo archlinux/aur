@@ -1,4 +1,5 @@
 # Maintainer: Vasilly Prokopyev <Vasilly.Prokopyev at google mail>
+# Contributor: 欠陥電気 <misaka13514 at google mail>
 
 pkgname=easyeda-bin
 pkgver=6.4.24
