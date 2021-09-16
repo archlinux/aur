@@ -3,7 +3,7 @@
 # Contributor: E5ten <e5ten.arch@gmail.com>
 
 pkgname=yq2-bin
-pkgver=4.12.1
+pkgver=4.13.0
 pkgrel=1
 pkgdesc='A lightweight and portable command-line YAML processor'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 provides=('yq')
 conflicts=('yq')
 source=("yq-${pkgver}::${url}/releases/download/v${pkgver}/yq_linux_amd64")
-sha256sums=('9fb9f92dd10899467d5e966b86c3cd981b1664ece9d8d61c13f16958bd1ac586')
+sha256sums=('c20b373b95a59d0e5771c52d154d2e70d9c3da98e238ab7f6dde87f60d6abe82')
 
 package() {
 	install -Dm755 "${srcdir}/yq-${pkgver}" "${pkgdir}/usr/bin/yq"

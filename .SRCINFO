@@ -1,13 +1,13 @@
 pkgbase = yq2-bin
 	pkgdesc = A lightweight and portable command-line YAML processor
-	pkgver = 4.12.1
+	pkgver = 4.13.0
 	pkgrel = 1
 	url = https://github.com/mikefarah/yq
 	arch = x86_64
 	license = MIT
 	provides = yq
 	conflicts = yq
-	source = yq-4.12.1::https://github.com/mikefarah/yq/releases/download/v4.12.1/yq_linux_amd64
-	sha256sums = 9fb9f92dd10899467d5e966b86c3cd981b1664ece9d8d61c13f16958bd1ac586
+	source = yq-4.13.0::https://github.com/mikefarah/yq/releases/download/v4.13.0/yq_linux_amd64
+	sha256sums = c20b373b95a59d0e5771c52d154d2e70d9c3da98e238ab7f6dde87f60d6abe82
 
 pkgname = yq2-bin
