@@ -1,17 +1,18 @@
-# maintainer: web.de jan.stuehler
+# maintainer: xeruf <27f at pm dot me>
 _author="Johan Vromans"
+_pkgname="File-LoadLines"
 pkgname=perl-file-loadlines
-pkgver=0.02
+pkgver=1.021
 pkgrel=1
 pkgdesc="load the contents of a text file into an array of lines"
 arch=('any')
 license=('PerlArtistic')
 options=('!emptydirs')
 depends=()
-url='https://metacpan.org/release/File-LoadLines'
-source=('https://cpan.metacpan.org/authors/id/J/JV/JV/File-LoadLines-0.02.tar.gz')
-sha512sums=('be7c567b4bba99f4aa12601d6dd0dc60956eac661f956ab9a820272148e477c7c24dfbbcdeff4e816492bcdcf9650077dbe309205aa21e802aa1dcc00f2ff5d1')
-_distdir="File-LoadLines-0.02"
+url="https://metacpan.org/release/${_pkgname}"
+source=("https://cpan.metacpan.org/authors/id/J/JV/JV/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('b7b6f3676df537422e038377ea76f0b7c42270d543975903cdfbcc9e1fe6701b3a132432800d242a5127ff3899de02c0bad40eb25cb5142a468679f92719d6c7')
+_distdir="${_pkgname}-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
