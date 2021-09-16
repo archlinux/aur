@@ -143,6 +143,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "mt76-mt7921-fix-the-inconsistent-state-between-bind-and-unbind.patch"
         "mt76-mt7921-report-HE-MU-radiotap.patch"
         "v2-mt76-mt7921-fix-kernel-warning-from-cfg80211_calculate_bitrate.patch"
+        "1-2-mt76-mt7921-robustify-hardware-initialization-flow.patch"
+        "2-2-mt76-mt7921-fix-retrying-release-semaphore-without-end.patch"
 
         # squashed s0ix enablement
         "9001-v5.14.4-s0ix-patch-2021-09-15.patch"
@@ -179,6 +181,8 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '1770fec49335bc93194e9e55ced49e1cb67f2df4bf6948e80712a0b2ba50fa49'
             '6da4010f86a74125969fd3dbc953da7b45209d33ff3d216474c3399e82e893ff'
             'eb391b6d1ebf7ef99ece00b23609b94180a1f3c0149bcf05f6bbeb74d0b724c7'
+            'c368cc4eefff20b7ae904eec686b7e72b46ff02b32c8a4fbd6bd4039f087e7ba'
+            '1a8639167a1ee1b66f580c0c6f8304e6ef359a68cfa3eb869d9200a9f0234098'
             '041214e202be4a6e90f00724e87ed787b39db148b24efd5fb03fcf23577601c1')
 
 # apply UKSM patch; TODO: note to self: don't forget to update the sum here during major version changes
