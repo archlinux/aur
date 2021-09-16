@@ -2,16 +2,15 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=('system76-firmware' 'system76-firmware-daemon')
 pkgbase=system76-firmware
-pkgver=1.0.29
+pkgver=1.0.30
 pkgrel=1
 pkgdesc="System76 CLI tool for installing firmware updates and systemd service that exposes a DBUS API for handling firmware updates"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-firmware"
 license=('GPL3')
 makedepends=('cargo' 'dbus')
-conflicts=("$pkgbase-daemon-git")
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7cd1bb6086b32846ae60fb61d642d797ad15a4a07ec1c75ec95dd3ba085c3189')
+sha256sums=('61aa946e3e76801278fba6906b6e9174dd4d8da1d6c13383784c44f9b07b0693')
 
 prepare() {
   cd "$pkgname-$pkgver"
