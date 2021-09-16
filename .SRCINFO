@@ -16,6 +16,7 @@ pkgbase = swaync-git
 	depends = gobject-introspection>=1.68
 	depends = libgee>=0.20
 	depends = json-glib>=1.0
+	depends = libhandy>=1.4.0
 	source = git+https://github.com/ErikReider/SwayNotificationCenter
 	sha256sums = SKIP
 
