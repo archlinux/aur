@@ -1,7 +1,7 @@
 pkgbase = super_unko
 	pkgdesc = Super Unko project is the one of the awesome, clean and sophisticated OSS project in the world.
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unkontributors/super_unko
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = super_unko
 	optdepends = cowsay: for unko.think
 	provides = super_unko
 	source = https://github.com/unkontributors/super_unko/archive/refs/tags/1.0.5.zip
+	source = https://raw.githubusercontent.com/fumiyas/home-commands/master/echo-sd
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = super_unko
