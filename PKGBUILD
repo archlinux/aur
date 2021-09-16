@@ -2,14 +2,14 @@
 
 _plug=eedi3cl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.1.gefcba5f
+pkgver=r4.7.gd11bdb3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3'
 license=('GPL2')
 depends=('vapoursynth'
-         'ocl-icd'
+         'opencl-icd-loader'
          )
 makedepends=('git'
              'opencl-headers'
@@ -37,6 +37,7 @@ prepare() {
 build() {
   cd build
   arch-meson "../${_plug}" \
+    --buildtype=release \
     --libdir /usr/lib/vapoursynth
 
   ninja
