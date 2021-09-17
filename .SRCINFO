@@ -1,7 +1,7 @@
 pkgbase = osu
 	pkgdesc = A free-to-win rhythm game
 	pkgver = 20210821
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osu.ppy.sh
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,6 @@ pkgbase = osu
 	sha256sums = b843e4c7750cd324d8b52440dfead07b77b347ba1fada81c782ddc5fa8554cf3
 	sha256sums = 5765f6c08e946170806fa89de1a71351b4c48cd8cf61e1779f00ca71c4c7490f
 	sha256sums = 0a2bb920ba3e8ddc9aa6e1bb2321c748b6efb06189294ccdb59fb1977d7a39b5
-	sha256sums = 2b901379226333a5a3b735afb4f054d44c48658cc45fa4529e557b92cb8ea196
+	sha256sums = 85a5f5468a22dad75b8e8cfad8bd0754ed5e4ece693a398de0b90ba1934ac4fe
 
 pkgname = osu
