@@ -1,13 +1,13 @@
 pkgbase = nightwaveplaza-tui-bin
 	pkgdesc = simple multi-threaded port scanner written in rust
-	pkgver = 0.2.15
+	pkgver = 0.2.16
 	pkgrel = 1
 	url = https://github.com/joshmuente/nightwaveplaza-tui
 	arch = x86_64
 	license = MIT
 	provides = nightwaveplaza-tui
 	conflicts = nightwaveplaza-tui
-	source = https://github.com/joshmuente/nightwaveplaza-tui/releases/download/v0.2.15/nightwaveplaza-tui_v0.2.15_x86_64-unknown-linux-gnu.xz
-	sha256sums = Not Found
+	source = https://github.com/joshmuente/nightwaveplaza-tui/releases/download/v0.2.16/nightwaveplaza-tui_v0.2.16_x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 3539da6990724a18d5d17d0f9b19c9d0992e0d882406ca8f372881b6e1d3e44a
 
 pkgname = nightwaveplaza-tui-bin
