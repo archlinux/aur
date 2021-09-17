@@ -148,7 +148,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "2-2-mt76-mt7921-fix-retrying-release-semaphore-without-end.patch"
 
         # squashed s0ix enablement
-        "9001-v5.14.4-s0ix-patch-2021-09-15.patch"
+        "9001-v5.14.5-s0ix-patch-2021-09-16.patch"
         )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -185,7 +185,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'eb391b6d1ebf7ef99ece00b23609b94180a1f3c0149bcf05f6bbeb74d0b724c7'
             'c368cc4eefff20b7ae904eec686b7e72b46ff02b32c8a4fbd6bd4039f087e7ba'
             '1a8639167a1ee1b66f580c0c6f8304e6ef359a68cfa3eb869d9200a9f0234098'
-            '041214e202be4a6e90f00724e87ed787b39db148b24efd5fb03fcf23577601c1')
+            'b505528d2b2d8018849926f6f589ac5fefbd9116edd0ba44de88226f1aba4798')
 
 # apply UKSM patch; TODO: note to self: don't forget to update the sum here during major version changes
 #

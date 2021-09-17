@@ -1,11 +1,26 @@
-From a7056f48cf6be7f02cad9fa8406cd92dd8e23b10 Mon Sep 17 00:00:00 2001
+From df16033e953f32aff878421cbd4658b875c1d6fe Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Wed, 15 Sep 2021 03:19:12 -0700
-Subject: [PATCH] v5.14.4 s0ix patch 2021-09-15
+Date: Thu, 16 Sep 2021 17:14:12 -0700
+Subject: [PATCH] v5.14.5 s0ix patch 2021-09-16
 
 Squashed commit of the following:
 
-commit 172a95ed32721a87abb5b865608ca52cf469da6c
+commit 7f82e15521045eca9fc1f0a1d19c33f7341192ea
+Author: Mario Limonciello <mario.limonciello@amd.com>
+Date:   Wed Sep 15 16:52:16 2021 -0500
+
+    ACPI: processor idle: Allow playing dead in C3
+
+    commit 1a022e3f1be1 ("idle, x86: Allow off-lined CPU to enter
+    deeper C states") originally allowed offlined CPUs to play dead
+    up to ACPI C2.  Although this improves power consumption of offlined
+    CPUs, it does not allow the CPUs to get into the deepest state
+    on AMD platforms blocking s0i3 entry.
+
+    BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
+    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+
+commit 94c60b2289ca7483f2d48d200edb8b23f39881ae
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Sep 9 11:19:43 2021 -0500
 
@@ -28,7 +43,7 @@ Date:   Thu Sep 9 11:19:43 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1629
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit b53b1045fd67d18ed948ff9d54517e9bfe01ce83
+commit 36a13294c884011b705a4ff1d3b9d9deab78ec47
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Wed Jul 21 18:10:28 2021 -0700
 
@@ -37,7 +52,7 @@ Date:   Wed Jul 21 18:10:28 2021 -0700
     patch this per Mario's request:
     https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
 
-commit ef5537a8e3ad810798d4296f687445d4e538e5e4
+commit 7ac02cee0dc17a5c0071b8f0ad4f9eeab20bb543
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -50,7 +65,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 2ed2ba9e98dd6438596792b2204ffb79f850d898
+commit fcc81ce9f30d45568c13b57112511af1c08b4757
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -63,7 +78,7 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit fa619f720d9b7ecf7c9914f9164a2d33e7c4dbad
+commit 33e3bd8dde8e7c55f2d02c89f8503141ee77227b
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Aug 31 11:36:19 2021 -0500
 
@@ -92,7 +107,7 @@ Date:   Tue Aug 31 11:36:19 2021 -0500
     Reported-by: Maxwell Beck <max@ryt.one>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit a8126200ab377bbb8025ba3a60b935a485ca7602
+commit a5ca9759e756abdc8f2fa6394957040294b4b952
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:33:01 2021 -0700
 
@@ -104,7 +119,7 @@ Date:   Tue Jul 20 23:33:01 2021 -0700
 
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 
-commit aaaa4dc0eedb97a20688dbe7936bb1701118648a
+commit 5303dcf8d0a01669d8d2d638e4f1e8ce26ee43a6
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:31:31 2021 -0700
 
@@ -116,14 +131,29 @@ Date:   Tue Jul 20 23:31:31 2021 -0700
 
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 ---
+ drivers/acpi/processor_idle.c                 |  3 +-
  drivers/acpi/x86/s2idle.c                     | 67 +++++++++++--------
  .../gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c    |  3 +
  .../gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c    |  3 +
  drivers/pinctrl/pinctrl-amd.c                 | 19 ++++--
  drivers/pinctrl/pinctrl-amd.h                 |  1 +
  drivers/platform/x86/amd-pmc.c                |  3 +-
- 6 files changed, 62 insertions(+), 34 deletions(-)
+ 7 files changed, 64 insertions(+), 35 deletions(-)
 
+diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
+index 095c8aca141e..1b6529396371 100644
+--- a/drivers/acpi/processor_idle.c
++++ b/drivers/acpi/processor_idle.c
+@@ -789,7 +789,8 @@ static int acpi_processor_setup_cstates(struct acpi_processor *pr)
+ 		state->enter = acpi_idle_enter;
+ 
+ 		state->flags = 0;
+-		if (cx->type == ACPI_STATE_C1 || cx->type == ACPI_STATE_C2) {
++		if (cx->type == ACPI_STATE_C1 || cx->type == ACPI_STATE_C2
++		 || cx->type == ACPI_STATE_C3) {
+ 			state->enter_dead = acpi_idle_play_dead;
+ 			drv->safe_state_index = count;
+ 		}
 diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
 index 3a308461246a..7d1976e5dd8b 100644
 --- a/drivers/acpi/x86/s2idle.c
