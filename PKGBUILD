@@ -38,8 +38,7 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-system.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
-        "${pkgname}-uri-scheme.desktop"
-        "${pkgname}-uri-scheme.xml"
+        "${pkgname}-uri.desktop"
         "${pkgname}-user.service")
 validpgpkeys=('D8423BCB326C7907033929C7939E6BE1E29FC3CC')
 sha256sums=('d62669a8f41e078eaa220ce77a32f4f3f801e3099357ae8c705498fe73884ec5'
@@ -48,8 +47,8 @@ sha256sums=('d62669a8f41e078eaa220ce77a32f4f3f801e3099357ae8c705498fe73884ec5'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
             '98e4e1d6d4fd7c7fd05d9e16402c95f1e7afeb4b97c8c68ac63e8abd11ff4ee7'
-            '64b75446af932766aa3d9ee22573facda33da1ec3b1205222d5d6366867d57a6'
             '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5')
+
 
 prepare() {
 
@@ -92,12 +91,8 @@ package() {
 	install -Dm644 "${srcdir}/${pkgname}.tmpfiles" \
 		"${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-	install -dm755 "${pkgdir}/usr/share/mime/x-scheme-handler"
-	install -Dm644 "${srcdir}/${pkgname}-uri-scheme.xml" \
-		"${pkgdir}/usr/share/mime/x-scheme-handler/${pkgname}.xml"
-
 	install -dm755 "${pkgdir}/usr/share/applications"
-	install -Dm644 "${srcdir}/${pkgname}-uri-scheme.desktop" \
+	install -Dm644 "${srcdir}/${pkgname}-uri.desktop" \
 		"${pkgdir}/usr/share/applications/${pkgname}-uri.desktop"
 
 	# Automatically generate a configuration file using the content of

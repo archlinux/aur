@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-  <!--Created automatically by update-mime-database. DO NOT EDIT!-->
-  <mime-type type="x-scheme-handler/gnunet">
-    <comment>GNUnet URI</comment>
-  </mime-type>
-</mime-info>
