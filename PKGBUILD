@@ -2,12 +2,12 @@
 
 pkgname=evtx
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform parser for Windows XML EventLog Format"
 arch=('x86_64')
 url="https://github.com/omerbenamram/evtx"
 license=('MIT' 'Apache')
-depends=('glibc')
+depends=('gcc-libs')
 makedepends=('cargo')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
