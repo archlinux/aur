@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=icestorm-nightly
-pkgver=83b8ef9_20215417
+pkgver=83b8ef9_20215017
 pkgrel=2
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation"
 arch=("any")
