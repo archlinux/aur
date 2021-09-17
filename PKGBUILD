@@ -9,7 +9,7 @@ pkgrel=5
 pkgdesc="Cantora ('Singer' in Spanish) is a friendly semi-formal, semi-condensed, semi–sans-serif font, from Pablo Impallari"
 arch=(any)
 url='https://fonts.google.com/specimen/Cantora+One'
-license=('custom:OFL')
+license=('OFL')
 groups=("${_group}-fonts")
 source=("Cantora_One.zip::https://fonts.google.com/download?family=Cantora%20One")
 sha256sums=('e117ac04349b3b31d08dcc6cf9a31c61ceb508423bdf0f2193aa41e307af9ae9')
