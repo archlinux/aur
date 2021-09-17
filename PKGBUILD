@@ -2,7 +2,7 @@
 
 pkgname=changie
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Automated changelog tool for preparing releases with lots of customization options."
 arch=('x86_64')
@@ -36,6 +36,7 @@ build() {
     CGO_ENABLED=0 \
     GOPATH="$srcdir" \
     go build \
+        -modcacherw \
         -o "$srcdir/changie" \
         -gcflags "all=-trimpath=$srcdir" \
         -asmflags "all=-trimpath=$srcdir" \
