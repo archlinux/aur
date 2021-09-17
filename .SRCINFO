@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, GNOME Wayland fix, Drag & Drop fix backported, V4L2 devices by paths and my bind interface.
 	pkgver = 27.0.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -46,14 +46,12 @@ pkgbase = obs-studio-tytan652
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.0.1
 	source = python_fix.patch
 	source = bind_iface.patch
-	source = wayland_qt.patch
 	source = v4l2_by-path.patch
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8
 	sha256sums = SKIP
 	sha256sums = 430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9
 	sha256sums = a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea
-	sha256sums = c96ab95f3638f76c223291575bb84d70147891e7a7259409fee4cb4acbe0c9ce
 	sha256sums = fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e
 	sha256sums = SKIP
 	sha256sums = SKIP
