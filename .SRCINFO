@@ -5,9 +5,8 @@ pkgbase = ttf-impallari-cantora
 	url = https://fonts.google.com/specimen/Cantora+One
 	arch = any
 	groups = impallari-fonts
-	license = custom:OFL
+	license = OFL
 	source = Cantora_One.zip::https://fonts.google.com/download?family=Cantora%20One
 	sha256sums = e117ac04349b3b31d08dcc6cf9a31c61ceb508423bdf0f2193aa41e307af9ae9
 
 pkgname = ttf-impallari-cantora
-
