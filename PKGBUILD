@@ -1,14 +1,14 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
 pkgver=5.1.23
-pkgrel=2
+pkgrel=3
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
 license=('MIT')
 groups=()
-depends=('mpv' 'ffmpeg' 'postgresql' 'electron13')
-makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=12' 'python2' 'patch')
+depends=('mpv' 'ffmpeg' 'postgresql' 'patch' 'electron13')
+makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=12' 'python2')
 optdepends=('sudo: for using karaokemugen-install script')
 provides=()
 conflicts=()
@@ -54,10 +54,10 @@ build() {
     yarn installkmfrontend
     # Build and package with electron-builder
     export NODE_ENV='production'
-    electronVer=$(electron11 --version | tail -c +2)
+    electronVer=$(electron13 --version | tail -c +2)
     yarn build
     yarn buildkmfrontend
-    yarn electron-builder --linux --x64 -c.electronDist=/usr/lib/electron11 -c.electronVersion=$electronVer --dir
+    yarn electron-builder --linux --x64 -c.electronDist=/usr/lib/electron13 -c.electronVersion=$electronVer --dir
 }
 
 package() {
