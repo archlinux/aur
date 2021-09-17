@@ -4,7 +4,7 @@
 # Contributor: atommixz <atommixz@gmail.com>
 
 pkgname=airdcpp-webclient-develop-git
-pkgver=2.11.2b.r62.gbd80cdbd
+pkgver=2.11.2b.r66.g519b26a9
 pkgrel=1
 _gitname=airdcpp-webclient
 pkgdesc="A peer-to-peer file sharing client with web user interface (git development branch)"
