@@ -1,0 +1,16 @@
+pkgbase = arduino-language-server-git
+	pkgdesc = An Arduino Language Server based on Clangd to Arduino code autocompletion
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/arduino/arduino-language-server
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = go
+	provides = arduino-language-server
+	conflicts = arduino-language-server
+	source = git+https://github.com/arduino/arduino-language-server
+	sha256sums = SKIP
+
+pkgname = arduino-language-server-git
