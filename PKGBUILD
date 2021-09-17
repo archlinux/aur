@@ -1,7 +1,7 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 
 pkgname=thinlinc-server
-pkgver=4.12.1
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Cendio ThinLinc Linux remote desktop server"
 arch=('i686' 'x86_64')
@@ -9,14 +9,14 @@ url="http://www.cendio.com/"
 license=('custom')
 install=${pkgname}.install
 
-depends=('ghostscript' 'hicolor-icon-theme' 'java-environment'
-         'ncurses5-compat-libs' 'net-tools' 'nspr' 'nss' 'pcsclite' 'procps-ng'
-         'pulseaudio' 'pygtk' 'python2' 'smtp-forwarder' 'xdg-utils'
-         'xorg-xauth')
+depends=('dbus' 'ghostscript' 'glibc' 'hicolor-icon-theme' 'iproute2' 'krb5'
+         'libasyncns' 'libcap' 'libsndfile' 'libx11' 'libxcb' 'libxcrypt' 'nspr'
+         'nss' 'pam' 'procps-ng' 'python' 'python-gobject' 'rtkit'
+         'smtp-forwarder' 'systemd' 'xdg-utils' 'xorg-xauth' 'zlib')
 optdepends=('apache: Web integration'
             'mod_nss: Web integration'
             'nfs-utils: Local drive redirection'
-            'python2-ldap: LDAP integration tools')
+            'python-ldap: LDAP integration tools')
 
 _archive_name=tl-${pkgver}-server
 
@@ -26,7 +26,7 @@ source=("${_archive_name}.zip::https://www.cendio.com/downloads/server/download.
         'tlwebadm.service'
         'vsmagent.service'
         'vsmserver.service')
-sha256sums=('824d0f8bda46babdbb9565f2fcc7e651552545a4f080519a842f430ffbad0d36'
+sha256sums=('fcf7869079e80d1b5c97ebf2f8fcd7d3edb9c8af051c4dd539bd31275d1e9d87'
             '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e'
             '8e70ef23f9716dcb100eba660932e7f5d05351d63074fb262cf925812dbdbb63'
             '5a92c5beac6c64487debd92a4d94b56074b9f9b0cd38d154a14a320105f3bccd'
@@ -45,7 +45,6 @@ build()
     done
 
     cd "${_extract_dir}"
-    [[ "$CARCH" == "x86_64" ]] && mkdir "usr" && mv "lib64" "usr/lib"
     rm -Rf "etc/init.d"
 }
 
