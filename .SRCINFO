@@ -1,7 +1,7 @@
 pkgbase = loki-render
 	pkgdesc = Distribute the rendering of Blender 3D images (frames) across several computers
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://loki-render.berlios.de
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = loki-render
 	noextract = LokiRender-072.jar
 	source = loki-render
 	source = http://downloads.sourceforge.net/project/loki-render/loki-render/0.7.2/LokiRender-072.jar
-	md5sums = 973dfa476bb2e5f513730009af90deea
+	md5sums = ddf917b76e908190c50934dd01cbce69
 	md5sums = 56e486e8881b493c96c890556bbdf795
 
 pkgname = loki-render
-
