@@ -1,4 +1,5 @@
-# Maintainer: Matthew Warren <mw@matthewwarren.dev>
+# Maintainer: Matthew Warren <`base64 -d`(bXcK)@matthewwarren.dev>
+# Contributer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 pkgname=loki-render
 pkgver=0.7.2
 _pkgver=${pkgver//\./}
