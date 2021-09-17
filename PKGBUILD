@@ -1,6 +1,6 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=tiempo-git
-pkgver=1.1.0.r1.ad7a95b
+pkgver=1.1.1.r0.8cb7bb5
 pkgrel=1
 pkgdesc="A command line time tracker"
 arch=('i686' 'x86_64')
