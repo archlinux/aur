@@ -41,15 +41,13 @@ source=("git+https://${_appname}.org/git/${_appname}.git"
         "${_appname}-system.service"
         "${_appname}.sysusers"
         "${_appname}.tmpfiles"
-        "${_appname}-uri-scheme.desktop"
-        "${_appname}-uri-scheme.xml"
+        "${_appname}-uri.desktop"
         "${_appname}-user.service")
 sha256sums=('SKIP'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
             '98e4e1d6d4fd7c7fd05d9e16402c95f1e7afeb4b97c8c68ac63e8abd11ff4ee7'
-            '64b75446af932766aa3d9ee22573facda33da1ec3b1205222d5d6366867d57a6'
             '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5')
 
 pkgver() {
@@ -105,12 +103,8 @@ package() {
 	install -Dm644 "${srcdir}/${_appname}.tmpfiles" \
 		"${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
 
-	install -dm755 "${pkgdir}/usr/share/mime/x-scheme-handler"
-	install -Dm644 "${srcdir}/${_appname}-uri-scheme.xml" \
-		"${pkgdir}/usr/share/mime/x-scheme-handler/${_appname}.xml"
-
 	install -dm755 "${pkgdir}/usr/share/applications"
-	install -Dm644 "${srcdir}/${_appname}-uri-scheme.desktop" \
+	install -Dm644 "${srcdir}/${_appname}-uri.desktop" \
 		"${pkgdir}/usr/share/applications/${_appname}-uri.desktop"
 
 	# Automatically generate a configuration file using the content of

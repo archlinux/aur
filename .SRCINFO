@@ -57,15 +57,13 @@ pkgbase = gnunet-git
 	source = gnunet-system.service
 	source = gnunet.sysusers
 	source = gnunet.tmpfiles
-	source = gnunet-uri-scheme.desktop
-	source = gnunet-uri-scheme.xml
+	source = gnunet-uri.desktop
 	source = gnunet-user.service
 	sha256sums = SKIP
 	sha256sums = 163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262
 	sha256sums = 66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755
 	sha256sums = 5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0
 	sha256sums = 98e4e1d6d4fd7c7fd05d9e16402c95f1e7afeb4b97c8c68ac63e8abd11ff4ee7
-	sha256sums = 64b75446af932766aa3d9ee22573facda33da1ec3b1205222d5d6366867d57a6
 	sha256sums = 60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5
 
 pkgname = gnunet-git
