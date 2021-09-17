@@ -2,7 +2,7 @@
 #Auto generated. Do not edit.
 _pkgname='nightwaveplaza-tui'
 pkgname="${_pkgname}-bin"
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='simple multi-threaded port scanner written in rust'
 arch=('x86_64')
