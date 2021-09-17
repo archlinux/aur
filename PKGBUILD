@@ -1,6 +1,6 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=fuf-git
-pkgver=0.1.r1.g82b4740
+pkgver=latest.build.r0.g0e23958
 pkgrel=1
 pkgdesc='Fairly Usable cli Filebrowser. dev/git version'
 arch=('any')
