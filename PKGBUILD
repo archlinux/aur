@@ -203,26 +203,33 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 prepare() {
   cd "linux-${_major}"
 
-  # Apply Xanmod patch
-  msg2 "Applying Xanmod patch..."
-  patch -Np1 -i "../patch-${xanmod}"
+  # WARN: mangle Makefile versions here if needed to apply patches cleanly
 
-  # WARN: mangle Makefile versions here if needed so patches apply cleanly
-
-  ## Monkey patch: apply kernel.org patches when mainline is slightly ahead of Xanmod official
-  patch -Np1 -i ../patch-5.14.4-5
-
-  # Archlinux patches
+  # Apply patches
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
-    [[ "$src" =~ .*(patch|diff)$ ]] || continue
-    msg2 "Applying patch $src..."
-    patch -Np1 < "../$src"
+    case "$src" in
+      patch-${_major}*xanmod*xz)
+        # Apply Xanmod patch
+        msg2 "Applying Xanmod patch..."
+        patch -Np1 -i "../${src%\.xz}"
+        ;;
+      patch-${_major}*xz)
+        # Apply kernel.org point releases if we're building ahead of Xanmod official
+        msg2 "Applying kernel.org point release ${src%\.xz} ..."
+        patch -Np1 -i "../${src%\.xz}"
+        ;;
+      *patch|*diff)
+        # Apply any other patches
+        msg2 "Applying patch $src..."
+        patch -Np1 < "../$src"
+        ;;
+    esac
   done
 
-  # WARN: mangle Makefile versions if needed before calling setlocalversion
+  # WARN: mangle Makefile versions here if needed before calling setlocalversion
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
