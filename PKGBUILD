@@ -1,16 +1,17 @@
-# Maintainer: Adria Arrufat
+# Maintainer: Adria Arrufat <swiftscythe at gmail dot com>
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.31.4
+pkgver=41.0+1+g029f36fc9
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
-url="http://www.gnome.org/projects/$_pkgname/"
-arch=('i686' 'x86_64')
+url="https://wiki.gnome.org/Apps/Web"
+arch=('x86_64')
 license=('GPL')
-depends=(webkit2gtk gcr libdazzle libhandy)
-makedepends=(meson docbook-xml startup-notification lsb-release
-             gobject-introspection yelp-tools autoconf-archive appstream-glib git)
+depends=(webkit2gtk gcr icu libdazzle libhandy libportal libarchive)
+makedepends=(docbook-xml startup-notification lsb-release gobject-introspection
+             yelp-tools git meson)
+checkdepends=(xorg-server-xvfb aspell hspell hunspell nuspell libvoikko)
 groups=(gnome)
 replaces=(epiphany)
 provides=(epiphany)
@@ -20,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed 's/-/+/g'
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
@@ -30,10 +31,12 @@ build() {
   ninja -C build
 }
 
-# check() {
-#   cd $_pkgname
-#   ninja -C build test
-# }
+check() {
+  cd $_pkgname
+  dbus-run-session xvfb-run \
+    -s '-screen 0 1920x1080x24 -nolisten local' \
+    meson test -C build --print-errorlogs
+}
 
 package() {
   cd $_pkgname
