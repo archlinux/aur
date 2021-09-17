@@ -1,8 +1,8 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-all-nightly
-pkgver=67bd349e_20212917
-pkgrel=1
+pkgver=67bd349e_20214317
+pkgrel=2
 pkgdesc="nextpnr portable FPGA place and route tool - all"
 arch=("any")
 url="https://github.com/YosysHQ/nextpnr"
@@ -19,12 +19,7 @@ depends=(
 conflicts=(
 	"nextpnr-git"
 )
-provides=(
-	"nextpnr-ice40"
-	"nextpnr-ecp5"
-	"nextpnr-nexus-nightly"
-	"nextpnr-generic-nightly"
-)
+
 
 package() {
 	echo "nya"

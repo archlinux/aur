@@ -2,7 +2,7 @@
 
 pkgname=nextpnr-all-nightly
 pkgver=@NPR_VER@
-pkgrel=1
+pkgrel=2
 pkgdesc="nextpnr portable FPGA place and route tool - all"
 arch=("any")
 url="https://github.com/YosysHQ/nextpnr"
@@ -19,12 +19,7 @@ depends=(
 conflicts=(
 	"nextpnr-git"
 )
-provides=(
-	"nextpnr-ice40"
-	"nextpnr-ecp5"
-	"nextpnr-nexus-nightly"
-	"nextpnr-generic-nightly"
-)
+
 
 package() {
 	echo "nya"
