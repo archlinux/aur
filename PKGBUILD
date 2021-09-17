@@ -2,7 +2,7 @@
 
 _gemname=dry-effects
 pkgname=ruby-$_gemname
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A practical, production-oriented implementation of algebraic effects"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('6a772497f610ba42eaaf139f81f789446a440c61a9c7bc3053b1c5774045fc40992630237479a0a9102da1f6a845b7746ee13fe72739aeb378eb4137aedfbd27')
+b2sums=('c332c58e49dfce606e0928a28ffcab9f953431e466c2cbc09d7c4bd23913922ebb17f7d435186f7c5a618eeb65aeb83a5efca82d30db3f655527b5d80fcac691')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
