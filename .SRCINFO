@@ -1,6 +1,6 @@
 pkgbase = prjoxide-nightly
 	pkgdesc = Documenting Lattice's 28nm FPGA parts
-	pkgver = 21c5e20_20215516
+	pkgver = 21c5e20_20210017
 	pkgrel = 1
 	url = https://github.com/gatecat/prjoxide
 	arch = any
