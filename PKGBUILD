@@ -3,8 +3,8 @@
 
 _gemname=dry-container
 pkgname=ruby-$_gemname
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A simple container intended for use as an IoC container"
 arch=('any')
 url="https://github.com/dry-rb/dry-container"
@@ -14,7 +14,7 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('d59a07a9f5972babdc0578e520615075ec30d5e45ee7afc5f80daf553ab6ef22839c9916ec2d9b64d367ace16943a826854876609492dc66a325cf6a26d58c9e')
+b2sums=('b635c58149bfc33c39968134c6df2a5b0bc5824bf1156203d357728420f41c95990fb40eb4518300223853b1e73625cff81026993067fba7635426cac9a95b67')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

@@ -1,7 +1,7 @@
 pkgbase = ruby-dry-container
 	pkgdesc = A simple container intended for use as an IoC container
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://github.com/dry-rb/dry-container
 	arch = any
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = ruby-dry-container
 	depends = ruby
 	depends = ruby-concurrent
 	depends = ruby-dry-configurable
-	noextract = dry-container-0.8.0.gem
+	noextract = dry-container-0.9.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/dry-container-0.8.0.gem
-	b2sums = d59a07a9f5972babdc0578e520615075ec30d5e45ee7afc5f80daf553ab6ef22839c9916ec2d9b64d367ace16943a826854876609492dc66a325cf6a26d58c9e
+	source = https://rubygems.org/downloads/dry-container-0.9.0.gem
+	b2sums = b635c58149bfc33c39968134c6df2a5b0bc5824bf1156203d357728420f41c95990fb40eb4518300223853b1e73625cff81026993067fba7635426cac9a95b67
 
 pkgname = ruby-dry-container
