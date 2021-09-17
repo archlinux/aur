@@ -1,33 +1,31 @@
 pkgbase = python-akshare
-	pkgdesc = AkShare is an elegant and simple financial data interface library for Python, built for human beings
-	pkgver = 0.7.17
+	pkgdesc = Financial data interface library
+	pkgver = 1.1.17
 	pkgrel = 1
 	url = https://www.akshare.xyz
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-beautifulsoup4
-	depends = python-lxml
-	depends = python-matplotlib
-	depends = python-numpy
-	depends = python-pandas
-	depends = python-requests
-	depends = python-urllib3
+	depends = python-beautifulsoup4>=4.9.1
+	depends = python-lxml>=4.2.1
+	depends = python-matplotlib>=3.1.1
+	depends = python-numpy>=1.17.2
+	depends = python-pandas>=0.25
+	depends = python-requests>=2.22.0
+	depends = python-urllib3>=1.25.8
 	depends = python-demjson
-	depends = python-pillow
-	depends = python-pinyin
-	depends = python-websocket-client
-	depends = python-html5lib
-	depends = python-xlrd
-	depends = python-tqdm
-	depends = python-openpyxl
-	depends = python-jsonpath-ng
-	depends = python-tabulate
-	depends = python-decorator
-	depends = python-pyminiracer
-	provides = akshare
-	source = python-akshare-0.7.17.tar.gz::https://github.com/jindaxiang/akshare/archive/v0.7.17.tar.gz
-	sha256sums = 3b89c798c5ced054b895671205c416b992fb500f86fd043daa58ee4c57719b63
+	depends = python-pillow>=6.2.1
+	depends = python-pinyin>=0.35.0
+	depends = python-websocket-client>=0.56.0
+	depends = python-html5lib>=1.0.1
+	depends = python-tqdm>=4.43.0
+	depends = python-xlrd>=1.2.0
+	depends = python-openpyxl>=3.0.3
+	depends = python-jsonpath-ng>=0.82
+	depends = python-tabulate>=0.8.6
+	depends = python-decorator>=4.4.2
+	depends = python-pyminiracer>=0.6.0
+	source = python-akshare-1.1.17.tar.gz::https://github.com/jindaxiang/akshare/archive/v1.1.17.tar.gz
+	sha256sums = ab55b3f470fb1d8f2d6bbb90aacbaeaed394bee1020d6efb6a7b463cd883a0c8
 
 pkgname = python-akshare
-
