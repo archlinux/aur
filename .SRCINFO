@@ -1,6 +1,6 @@
 pkgbase = xdroid-bin
 	pkgdesc = 卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。
-	pkgver = 7.1002
+	pkgver = 7.1021
 	pkgrel = 1
 	url = https://www.linzhuotech.com/Product/download
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = xdroid-bin
 	depends = dkms
 	depends = xdg-utils
 	provides = xDroidInstall
-	noextract = xdroid-bin-7.1002.tar.gz
+	noextract = xdroid-bin-7.1021.tar.gz
 	options = !strip
-	source = xdroid-bin-7.1002.tar.gz::https://d3.injdk.cn/xDroid/xDroidInstall-x86_64-v7.1002-20210820092942.tar.gz
-	sha256sums = 771ae4b8cacb7bd2d6952665832257e2e16fcbff613f03727597508dd25d7920
+	source = xdroid-bin-7.1021.tar.gz::https://d6.injdk.cn/xdroid/xDroidInstall-x86_64-v7.1021.tar.gz
+	sha256sums = 595567f6a6abfe63107fcb2b1b08b61659a5b61f97b316c5b2cd84b83f13d3b2
 
 pkgname = xdroid-bin
