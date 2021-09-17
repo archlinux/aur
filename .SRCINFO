@@ -1,6 +1,6 @@
 pkgbase = lact-git
 	pkgdesc = AMDGPU Controller application (git version)
-	pkgver = r157.e63dae3
+	pkgver = r168.e9fd31f
 	pkgrel = 1
 	url = https://github.com/ilyazzz/LACT
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = lact-git
 	sha512sums = SKIP
 
 pkgname = lact-git
-

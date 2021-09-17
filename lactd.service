@@ -3,6 +3,7 @@ Description=AMDGPU Control Daemon
 After=multi-user.target
 
 [Service]
+ExecStartPre=/usr/bin/sleep 2
 ExecStart=/usr/bin/lact-daemon
 
 [Install]
