@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.15.4
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -36,32 +36,30 @@ sha256sums=('1e62fb0859a12891022765d1e24660cfcd704291c58667082d81a0618d6b0047'
             'f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623')
 
 _install_dir=/opt/petsc/${_config}
-_petsc_arch="arch-${_config}"
+_petsc_arch=arch-${_config}
 
 build() {
-  _build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
-
+  _build_dir=${srcdir}/${pkgname}-${pkgver/_/-}
   cd ${_build_dir}
 
   export PETSC_ARCH=${_petsc_arch}
   export PETSC_DIR=${_build_dir}
 
   CONFOPTS="--with-shared-libraries=1 \
+            --with-mpi-f90module-visibility=0 \
             --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3 --FOPTFLAGS=-O3 \
-            --with-cc=$(which mpicc) --with-cxx=$(which mpicxx) --with-fc=$(which mpifort)"
-  CONFOPTS="${CONFOPTS} $(sh ${srcdir}/test_optdepends.sh)"
+            --with-cc=$(which mpicc) --with-cxx=$(which mpicxx) --with-fc=$(which mpifort) \
+            $(sh ${srcdir}/test_optdepends.sh)"
 
   echo ${CONFOPTS}
-  python ./configure \
-    --with-mpi-f90module-visibility=0 \
-    --prefix=${_install_dir} \
-    ${CONFOPTS}
+  python ./configure --prefix=${_install_dir} ${CONFOPTS}
 
   make ${MAKEFLAGS} all
+  make DESTDIR=${srcdir}/tmp install
 }
 
 check() {
-  _build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
+  _build_dir=${srcdir}/${pkgname}-${pkgver/_/-}
   cd ${_build_dir}
 
   if [ -z $(ldconfig -p | grep libcuda.so.1) ]; then
@@ -71,26 +69,23 @@ check() {
 }
 
 package() {
-  _build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
+  _build_dir=${srcdir}/${pkgname}-${pkgver/_/-}
 
-  cd ${_build_dir}
-  echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} DESTDIR=${pkgdir} install"
-  export PETSC_DIR=${_build_dir}
-  make ${MAKEFLAGS} PETSC_DIR=${_build_dir} DESTDIR=${pkgdir} install
 
-  export PETSC_DIR=${_install_dir}
+  mkdir -p ${pkgdir}/${_install_dir}
+  cp -Hr ${srcdir}/tmp/* ${pkgdir}
 
   # install licence (even though there is no such word as licenses)
   install -Dm 644 ${_build_dir}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 
   mkdir -p ${pkgdir}/etc/profile.d
-  echo "export PETSC_DIR=${_install_dir}" > ${pkgdir}/etc/profile.d/petsc.sh
+  echo export PETSC_DIR=${_install_dir} > ${pkgdir}/etc/profile.d/petsc.sh
   chmod +x ${pkgdir}/etc/profile.d/petsc.sh
 
   # show where the shared libraries are
-  install -dm 755 "${pkgdir}"/etc/ld.so.conf.d/
-  echo "${_install_dir}/lib" > "${pkgdir}"/etc/ld.so.conf.d/petsc.conf
+  install -dm 755 ${pkgdir}/etc/ld.so.conf.d/
+  echo ${_install_dir}/lib > ${pkgdir}/etc/ld.so.conf.d/petsc.conf
 
   # install pkgconfig settings
-  install -Dm 644 "${_build_dir}/${_petsc_arch}"/lib/pkgconfig/PETSc.pc "${pkgdir}"/usr/share/pkgconfig/PETSc.pc
+  install -Dm 644 ${_build_dir}/${_petsc_arch}/lib/pkgconfig/PETSc.pc ${pkgdir}/usr/share/pkgconfig/PETSc.pc
 }
