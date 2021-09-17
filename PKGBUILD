@@ -1,4 +1,4 @@
-# Maintainer: Ranadeep Biswas <mail@rnbguy.at>
+# Maintainer: Ranadeep B < mail at rnbguy dot at >
 
 pkgname=starport
 pkgver=0.17.3
