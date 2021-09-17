@@ -1,23 +1,25 @@
-# Maintainer: Decrypted Epsilon <decrypted.epsilon (at) gmail (dot) com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Co-Maintainer: Saulius Lukauskas < luksaulius @ gmail . com >
+# Contributor: Decrypted Epsilon <decrypted.epsilon (at) gmail (dot) com>
 
 pkgname=flexbar
-pkgver=2.5
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="flexible barcode and adapter removal for sequencing platforms"
 arch=("any")
-url="http://sourceforge.net/projects/flexbar"
+url="https://github.com/seqan/flexbar/"
 license=('GPL3')
 depends=('seqan' 'cmake')
-source=("http://downloads.sourceforge.net/project/flexbar/2.5/${pkgname}_v${pkgver}_src.tgz")
-sha512sums=('4ffd5444c2dc1de3dcd33bcd674376c007bd6bc2acfc94ff25fbd73ea6aabc963d4344f51f4a597b59b4965711a68f7900efcead1229ba9c2d3659c5b55c9a30')
+source=("https://github.com/seqan/flexbar/archive/v${pkgver}.tar.gz")
+md5sums=('0e07bf4afebfd731c4718b401383224a')
 
 build() {
-		cd ${pkgname}_v${pkgver}_src
-		cmake src
-		make
+        cd ${pkgname}-${pkgver}
+        cmake src
+        make
 }
 
 package() {
-		install -d ${pkgdir}/usr/bin
-		install -Dm755 ${srcdir}/${pkgname}_v${pkgver}_src/flexbar ${pkgdir}/usr/bin
+        install -d ${pkgdir}/usr/bin
+        install -Dm755 ${srcdir}/${pkgname}-${pkgver}/flexbar ${pkgdir}/usr/bin
 }
