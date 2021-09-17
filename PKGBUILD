@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-ice40-nightly
-pkgver=67bd349e_20211217
+pkgver=67bd349e_20211417
 pkgrel=1
 pkgdesc="nextpnr portable FPGA place and route tool - for ice40"
 arch=("any")
@@ -48,13 +48,13 @@ build() {
 			-DUSE_OPENMP=ON	\
 			..
 	cd ..
-	ninja -C build
+	ninja -C build-ice40
 	cd ..
 }
 
 package() {
 	cd "${srcdir}/nextpnr"
-	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build install
+	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-ice40 install
 	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr-ice40/COPYING"
 	cd ..
 }
