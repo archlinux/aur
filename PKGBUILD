@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=21.08.0.1
+pkgver=21.08.1.1
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
 # this will substitute any full stops (.) with hyphens
@@ -30,13 +30,13 @@ optdepends=("hwloc: enables the task/cgroup plugin"
 	"gtk2: enables the sview command, a simple graphical frontend"
 	"pmix: support Open MPI applications using PMIx")
 makedepends=('python' 'gtk2' 'hwloc' 'rrdtool' 'hdf5')
-backup=('etc/sysconfig/slurmd' 'etc/sysconfig/slurmctld', 'etc/sysconfig/slurmdbd')
+backup=('etc/sysconfig/slurmd' 'etc/sysconfig/slurmctld' 'etc/sysconfig/slurmdbd')
 source=("slurm-llnl.sysusers"
 	"slurm-llnl.tmpfiles"
 	"https://github.com/SchedMD/slurm/archive/slurm-${pkgver//./-}.tar.gz")
 sha512sums=('8373ef791d68a7e0b2114f5ce670da1936bd8d96fd51fa7319d4feb85f16a673f89abcb823a114455d32d8fd9eee3e121c313a0aa986542540f120e6d35686e6'
             '4f7d1e36abc2ca5aa38b40403292b68f769238766ecdd44ea5d29f8106bd9b7c3e0d2236208f92e00818e37dd24c9520b6e9fe06e01b6e552ac485a1df682edd'
-            'e0312e69411647bfaf511399b330fcb5d3bb61ff14793b21327cef5e1ad62dfdcf293dafd6e945f39215175807cef35ecf0820427eb2715f37ee5a0e0b8b9122')
+            '89bd81c1995c23beba1106ab7d48ead31bbf2cfd55ecf78422682409ed7d48811a4e6205216c382764ef7e9628a366654567c091e92d631ee7395cc196332edd')
 
 
 build() {
