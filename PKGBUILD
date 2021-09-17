@@ -1,10 +1,10 @@
 # Maintainer: Vladimir Gladkov <vovkos[at]gmail>
 
 pkgname=ioninja
-pkgver=3.15.1
-pkgtag=-a
-pkgrel=2
-pkgdesc="Professional, scriptable, all-in-one terminal/sniffer"
+pkgver=5.0.3
+pkgtag=
+pkgrel=1
+pkgdesc="Professional all-in-one terminal emulator, sniffer, and protocol analyzer"
 arch=("i686" "x86_64")
 url="https://ioninja.com"
 license=("custom")
@@ -12,8 +12,8 @@ depends=("qt5-base" "openssl")
 options=("!strip")
 source_i686=("https://tibbo.com/downloads/archive/ioninja/ioninja-$pkgver/ioninja-$pkgver$pkgtag-linux-x86.tar.xz")
 source_x86_64=("https://tibbo.com/downloads/archive/ioninja/ioninja-$pkgver/ioninja-$pkgver$pkgtag-linux-amd64.tar.xz")
-sha256sums_i686=("acc51b678d40d2bc3bfda25a045368731e6d61eb939844afcc59c27acbccfa34")
-sha256sums_x86_64=("f0c833e9add4c6a895f3335d0d708f77b8273cf6c8558290c17efb3cb3b77276")
+sha256sums_i686=("5e959872129fd7afe4776780c2efc7a743f559c1ccef008c090c52c23361d2cb")
+sha256sums_x86_64=("98c8651f662fe4a402f460544270765488170bd402c81221e395d9591d7e45e8")
 
 package() {
 	if [ "$CARCH" == "x86_64" ]; then
