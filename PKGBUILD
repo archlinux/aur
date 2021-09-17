@@ -1,43 +1,33 @@
-# Maintainer: Mark Weiman <mark dot weriman at markzz dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Mark Weiman <mark dot weriman at markzz dot com>
 
-pkgbase=python-evtx
-pkgname=('python-evtx' 'python2-evtx')
-pkgver=0.6.1
+pkgname=python-evtx
+pkgver=0.7.4
 pkgrel=1
-pkgdesc="Python library for parsing evtx files"
+pkgdesc="Pure Python parser for Windows Event Log Files"
 arch=('any')
 license=('Apache')
-url="https://pypi.python.org/pypi/evtx/${pkgver}"
-makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
-source=("evtx-$pkgver.tar.gz::https://github.com/williballenthin/python-evtx/archive/v$pkgver.tar.gz")
-md5sums=('ae32c631b9cc2c528a44f216f24f8aeb')
-
-prepare() {
-  cp -a "$srcdir/python-evtx-$pkgver" "$srcdir/python2-evtx-$pkgver"
-
-  find "$srcdir/python2-evtx-$pkgver" -name '*.py' | \
-    xargs sed -i "s|#!/usr/bin/env python$|#!/usr/bin/env python2|"
-}
+url='https://github.com/williballenthin/python-evtx'
+depends=('python-six' 'python-hexdump')
+makedepends=('python-setuptools')
+# checkdepends=('python-pytest-runner' 'python-pytest-cov' 'python-lxml')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('ecf3c1736ec9e080ddd1c64b6dad23c756e20d54bd30acc21245b9706258fdd9')
 
 build() {
-  cd "$srcdir/python-evtx-$pkgver"
-  python setup.py build
-
-  cd "$srcdir/python2-evtx-$pkgver"
-  python2 setup.py build
+	cd "$pkgname-$pkgver"
+	python setup.py build
 }
 
-package_python-evtx() {
-  cd "$srcdir/python-evtx-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
-  
-  install -Dm644 LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-}
+## requires an older version of pytest
+# check() {
+# 	cd "$pkgname-$pkgver"
+# 	python setup.py pytest
+# }
 
-package_python2-evtx() {
-  cd "$srcdir/python2-evtx-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  
-  install -Dm644 LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+package() {
+	cd "$pkgname-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENSE.TXT -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-

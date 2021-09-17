@@ -1,18 +1,14 @@
 pkgbase = python-evtx
-	pkgdesc = Python library for parsing evtx files
-	pkgver = 0.6.1
+	pkgdesc = Pure Python parser for Windows Event Log Files
+	pkgver = 0.7.4
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/evtx/0.6.1
+	url = https://github.com/williballenthin/python-evtx
 	arch = any
 	license = Apache
-	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	source = evtx-0.6.1.tar.gz::https://github.com/williballenthin/python-evtx/archive/v0.6.1.tar.gz
-	md5sums = ae32c631b9cc2c528a44f216f24f8aeb
+	depends = python-six
+	depends = python-hexdump
+	source = python-evtx-0.7.4.tar.gz::https://github.com/williballenthin/python-evtx/archive/v0.7.4.tar.gz
+	sha256sums = ecf3c1736ec9e080ddd1c64b6dad23c756e20d54bd30acc21245b9706258fdd9
 
 pkgname = python-evtx
-
-pkgname = python2-evtx
-
