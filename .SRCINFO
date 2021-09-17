@@ -1,6 +1,6 @@
 pkgbase = kpt-bin
 	pkgdesc = Git-native tool for packaging, customizing, validating, and applying Kubernetes resources
-	pkgver = 1.0.0_beta.4
+	pkgver = 1.0.0_beta.5
 	pkgrel = 1
 	url = https://kpt.dev
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kpt-bin
 	provides = kpt
 	conflicts = kpt
 	conflicts = kpt-git
-	source = kpt-1.0.0-beta.4::https://github.com/googlecontainertools/kpt/releases/download/v1.0.0-beta.4/kpt_linux_amd64
-	b2sums = 6e8196d4a6ab54d3118f11cfe4e2d12a5e42755470f3bb99492b81c02f391a61469eab10305a729763bb3dc3cd63368096b1f5c06946f9e4b2c7ae1d51afcbfe
+	source = kpt-1.0.0-beta.5::https://github.com/googlecontainertools/kpt/releases/download/v1.0.0-beta.5/kpt_linux_amd64
+	b2sums = cca8d5997cff8723663f4e857e08501f6ad61d699f2674b6c148dc7a63b827783799f6deb8f4c1faa892327fb00396e204a2d1ef90c8ee0688b21206c60c11b3
 
 pkgname = kpt-bin
