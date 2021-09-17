@@ -1,0 +1,15 @@
+pkgbase = qeh-git
+	pkgdesc = Very simple and fast image viewer
+	pkgver = r13.3f82632
+	pkgrel = 1
+	url = https://github.com/sandsmark/qeh
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	provides = qeh
+	conflicts = qeh
+	source = git://github.com/sandsmark/qeh.git
+	md5sums = SKIP
+
+pkgname = qeh-git
