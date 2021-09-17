@@ -2,8 +2,8 @@
 
 pkgname=python-aioauth-client
 _pkgname=aioauth-client
-pkgver=0.25.10
-pkgrel=2
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="OAuth support for Asyncio/Trio libraries"
 arch=('any')
 url="https://github.com/klen/aioauth-client"
@@ -23,4 +23,4 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('6f49a1789623f113343c1fb4018e1b6b1f44b1233712421bff568174231a3c3c6fb364a3c3f7288dc0d3d1c09ae31c2f43a4c08b2d75815654fd4dc6bca84284')
+sha512sums=('582935e3a6a889159bc25222b7c150061c6ca176cccefa7174bb941fe3776f96e28aca3d437e6daf91ff1c70150b9986105226b1296b5bb8e84ecfafdbc2ffa6')
