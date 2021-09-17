@@ -1,7 +1,7 @@
-# Maintainer: xeruf <27f at pm dot me>
+# Maintainer: xerus <27f at pm dot me>
 _pkgname=chordpro
 pkgname="${_pkgname}-dev-git"
-pkgver=r1198.12d6d39
+pkgver=5.980.r48.g6066ede
 pkgrel=1
 pkgdesc='Reference implementation of the ChordPro standard for musical lead sheets, development branch'
 arch=('any')
@@ -17,10 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/^R//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
