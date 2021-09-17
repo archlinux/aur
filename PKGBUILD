@@ -1,8 +1,8 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-generic-nightly
-pkgver=67bd349e_20212917
-pkgrel=1
+pkgver=67bd349e_20214817
+pkgrel=2
 pkgdesc="nextpnr portable FPGA place and route tool - generic"
 arch=("any")
 url="https://github.com/YosysHQ/nextpnr"
@@ -37,7 +37,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/nextpnr"
-	cd build-ice40
+	cd build-generic
 		cmake -G Ninja        \
 			-DARCH=generic    \
 			-DBUILD_PYTHON=ON \
