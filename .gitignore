@@ -1,3 +1,4 @@
 *.tar.*
+*.log
 src/
 pkg/
