@@ -1,0 +1,19 @@
+pkgbase = purple-googlechat
+	pkgdesc = A Pidgin plugin to support the proprietary protocol used by Google for the Google Chat service
+	pkgver = r482.d25b529
+	pkgrel = 1
+	url = https://github.com/EionRobb/purple-googlechat
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPLv3+
+	makedepends = git
+	depends = libpurple
+	depends = glib2
+	depends = json-glib
+	depends = protobuf-c
+	provides = purple-googlechat
+	source = purple-googlechat::git+https://github.com/EionRobb/purple-googlechat.git
+	sha1sums = SKIP
+
+pkgname = purple-googlechat-git
