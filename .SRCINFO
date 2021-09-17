@@ -1,6 +1,6 @@
 pkgbase = bloomrpc
 	pkgdesc = GUI Client for gRPC Services
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/uw-labs/bloomrpc
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = bloomrpc
 	depends = python2
 	depends = libxss
 	depends = libxtst
-	source = bloomrpc::git+https://github.com/uw-labs/bloomrpc.git#tag=1.5.2
+	source = bloomrpc::git+https://github.com/uw-labs/bloomrpc.git#tag=1.5.3
 	source = bloomrpc.desktop
 	sha1sums = SKIP
 	sha1sums = 165cba3a4717d7903c76d73c21db4dc276e0e298

@@ -1,6 +1,6 @@
 # Maintainer: Denis Lobanov <first name dot last name at zooei dot com>
 pkgname=bloomrpc
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="GUI Client for gRPC Services"
 arch=(any)
@@ -16,6 +16,24 @@ sha1sums=('SKIP'
 prepare() {
   cd "${pkgname}"
   sed -i '/_where/d' package.json
+
+  # Fix infinite build loop
+  git apply << 'EOF'
+diff --git a/app/package.json b/app/package.json
+index abe8e47..30e6682 100644
+--- a/app/package.json
++++ b/app/package.json
+@@ -10,8 +10,7 @@
+     "url": "https://github.com/fenos"
+   },
+   "scripts": {
+-    "electron-rebuild": "node ../internals/scripts/ElectronRebuild.js",
+-    "postinstall": "yarn electron-rebuild --version=7.1.11"
++    "electron-rebuild": "node ../internals/scripts/ElectronRebuild.js"
+   },
+   "externals": [
+     "grpc"
+EOF
 }
 
 build() {
@@ -24,7 +42,6 @@ build() {
   export CC=clang
 
   yarn
-  ./node_modules/.bin/electron-rebuild
   npm --cache "${srcdir}/npm-cache" run package-linux
 }
 
@@ -34,16 +51,14 @@ package() {
   install -dm755 "${pkgdir}/opt/BloomRPC"
   cp -rd release/linux-unpacked/* "${pkgdir}/opt/BloomRPC/"
 
-  cd resources/icons
-  for i in $(ls *.png)
-  do 
-    mkdir -p "$pkgdir/usr/share/icons/hicolor/${i%.png}/apps/"
-    install -Dm644  $i "$pkgdir/usr/share/icons/hicolor/${i%.png}/apps/bloomrpc.png"
+  for i in resources/icons/*.png; do
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${i%.png}/apps/"
+    install -Dm644  $i "${pkgdir}/usr/share/icons/hicolor/${i%.png}/apps/bloomrpc.png"
   done
 
-  mkdir -p $pkgdir/usr/local/bin
-  ln -sf /opt/BloomRPC/bloomrpc $pkgdir/usr/local/bin/bloomrpc
-  install -Dm644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+  mkdir -p "${pkgdir}/usr/local/bin"
+  ln -sf "/opt/BloomRPC/bloomrpc" "${pkgdir}/usr/local/bin/bloomrpc"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
