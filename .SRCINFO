@@ -1,0 +1,17 @@
+pkgbase = album_splitter-git
+	pkgdesc = Simple awk/bash script to split a (single-video) album from YouTube into separate tracks, based on the tracks listed in its description.
+	pkgver = r19.d883a0d
+	pkgrel = 1
+	url = https://github.com/Pab0/album_splitter.git
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = youtube-dl
+	depends = ffmpeg
+	provides = album_splitter
+	source = git+https://github.com/Pab0/album_splitter.git
+	source = album_splitter.sh
+	sha512sums = SKIP
+	sha512sums = 9b2f50265ae2b4f567ad9537f2bd07cfee16b6264e5b948f5d252d4441fba36c1c219dce6e43da819c6cf853d5fef25c8c7a72fc7a457b7128ab8f474ca4b953
+
+pkgname = album_splitter-git
