@@ -3,21 +3,30 @@
 
 pkgname=qt5-virtualkeyboard
 _qtver=5.15.2
-pkgver=${_qtver/-/}
+pkgver=5.15.2+kde+r4
 pkgrel=1
+_commit=353b75b2e34bdae901625bbddf5c5e3f3e6c0de5
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
 pkgdesc='Virtual keyboard framework'
 depends=('qt5-declarative' 'qt5-svg' 'hunspell')
-makedepends=()
+makedepends=('git')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('9a3193913be30f09a896e3b8c2f9696d2e9b3f88a63ae9ca8c97a2786b68cf55')
+_pkgfqn=qtvirtualkeyboard
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgfqn
+  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+}
 
 prepare() {
   mkdir -p build
+
+  cd $_pkgfqn
+  git revert -n 94fa973de0ec77d27e144f73bc4b788241644090 # Revert version bump
 }
 
 build() {
