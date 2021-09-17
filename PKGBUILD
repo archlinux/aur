@@ -1,7 +1,7 @@
 # Maintainer: Remi Gacogne <rgacogne(at)archlinux(dot)org>
 _pkgbase=lkrg
 pkgname=lkrg-dkms-git
-pkgver=r322.b9ff711
+pkgver=r378.dd7fcec
 pkgrel=1
 pkgdesc='Linux Kernel Runtime Guard (DKMS)'
 arch=('any')
@@ -21,12 +21,20 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  # Copy dkms.conf
-  install -Dm644 "${srcdir}/dkms.conf" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+prepare() {
+  # Set version
+  cp ../dkms.conf "${_pkgbase}-${pkgver}/"
+  sed -e "s/@PKGVER@/${pkgver}/" \
+      -i "${_pkgbase}-${pkgver}/dkms.conf"
+}
 
+package() {
   # Copy sources (including Makefile)
+  mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
   cp -r "${srcdir}/${pkgname}"/* "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
   find "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/" -type f -exec chmod 644 {} \;
   find "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/" -type d -exec chmod 755 {} \;
+
+  # Copy OUR dkms.conf
+  install -Dm644 "${_pkgbase}-${pkgver}/dkms.conf" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 }
