@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=prjtrellis-nightly
-pkgver=1.0_532_g03e0070
+pkgver=1.0_532_g03e0070_20214717
 pkgrel=1
 pkgdesc="Documenting the Lattice ECP5 bit-stream format."
 arch=("any")
