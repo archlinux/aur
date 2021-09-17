@@ -1,7 +1,7 @@
 pkgbase = wayfire-desktop-git
 	pkgdesc = A meta package to use Wayfire as a desktop
-	pkgver = 0.7
-	pkgrel = 4
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://wayfire.org/
 	arch = any
 	depends = wayfire
@@ -32,7 +32,7 @@ pkgbase = wayfire-desktop-git
 	depends = wtype
 	depends = wlogout
 	depends = wofi
-	depends = nwg-launchers
+	depends = nwg-drawer
 	depends = bemenu-wlroots
 	depends = dex
 	depends = perl-file-mimeinfo
@@ -40,7 +40,7 @@ pkgbase = wayfire-desktop-git
 	depends = xdg-utils
 	depends = xdg-desktop-portal-wlr
 	optdepends = blueberry: for bluetooth
-	optdepends = connman-gtk: for connman gtk frontend
+	optdepends = network-manager-applet: for nm gtk frontend
 	optdepends = greetd-qtgreet: recommonded display manager
 	optdepends = xorg-server-xwayland: xwayland support
 	optdepends = xorg-xhost: to run xwayland apps with elevated privilage
@@ -49,4 +49,3 @@ pkgbase = wayfire-desktop-git
 	conflicts = wayfire-desktop
 
 pkgname = wayfire-desktop-git
-

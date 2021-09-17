@@ -1,8 +1,8 @@
 # Maintainer: Librewish <librewish@gmail.com>
 
 pkgname=wayfire-desktop-git
-pkgver=0.7
-pkgrel=4
+pkgver=0.7.2
+pkgrel=1
 arch=(any)
 url='https://wayfire.org/'
 pkgdesc='A meta package to use Wayfire as a desktop'
@@ -37,7 +37,7 @@ depends=(
         'wtype'
         'wlogout'
         'wofi'
-        'nwg-launchers'
+        'nwg-drawer'
         'bemenu-wlroots'
         'dex'
 		'perl-file-mimeinfo'
@@ -47,7 +47,7 @@ depends=(
         )
 optdepends=(
         'blueberry: for bluetooth'
-        'connman-gtk: for connman gtk frontend'
+        'network-manager-applet: for nm gtk frontend'
         'greetd-qtgreet: recommonded display manager'
         'xorg-server-xwayland: xwayland support'
         'xorg-xhost: to run xwayland apps with elevated privilage'
