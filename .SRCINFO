@@ -38,11 +38,11 @@ pkgbase = mutter-rounded
 	source = rounded_corners_40.4.patch
 	source = meta_clip_effect.c
 	source = meta_clip_effect.h
-	source = mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/7370b166a10976a0846b57a5ebbe2737/main.js
+	source = mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/100ce7589dd614832b8d500f3602ebe9/main.js
 	sha256sums = SKIP
 	sha256sums = 993cb349226afe198771bdca32c225d1bf663b2b14a3454270fa0b64f4e19cab
 	sha256sums = 1d4757a46db018f0ac080787c372a01f563499a19c6315fd1b4c3610f450b041
 	sha256sums = 2a4670913601b97f809a486da7c11b4e14472f62211154d5a417d3b3e4d77859
-	sha256sums = 08a3dbbea7205cdc422901f9b78fd5fbe95bf7378197f33a07bf70a342f35dc5
+	sha256sums = bf3c1cd55f97ae9482b368b585575eb61e07f09c189a2bc0d472fe7149a9d3a0
 
 pkgname = mutter-rounded

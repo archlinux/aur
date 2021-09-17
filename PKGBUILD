@@ -29,7 +29,7 @@ _setting_src="mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setti
 
 if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
   _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
-  # _setting_src="mutter_setting::https://gitee.com/lluo/mutter-rounded-setting/attach_files/834737/download/main.js"
+  _setting_src="mutter_setting::https://gitee.com/lluo/mutter-rounded-setting/attach_files/834737/download/main.js"
 fi
 
 source=("$_mutter_src"
