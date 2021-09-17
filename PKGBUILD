@@ -1,3 +1,4 @@
+# Maintainer: Mandeep Sangwan <mandeep@spydrr.com>
 pkgname=brother-dcp-b7535dw
 pkgver=4.0.0
 pkgrel=1
