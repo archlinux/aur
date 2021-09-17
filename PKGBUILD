@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.4.alpha.0.r29826.46e07ed8e'
+pkgver='0.15.4.alpha.0.r29830.fc9ca33bc'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
 makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'opus'
              'pkgconfig' 'python')
 optdepends=('bluez: for bluetooth transport'
+            'gnunet-gtk: for handling the gnunet:// URI scheme'
             'libgabe: for Attribute-Based Encryption'
 	    'libogg: for conversation service'
             'libpabc: for re:claimID zero-knowledge privacy credentials'
@@ -38,14 +39,18 @@ optdepends=('bluez: for bluetooth transport'
 backup=("etc/${_appname}.conf")
 source=("git+https://${_appname}.org/git/${_appname}.git"
         "${_appname}-system.service"
-        "${_appname}-user.service"
         "${_appname}.sysusers"
-        "${_appname}.tmpfiles")
+        "${_appname}.tmpfiles"
+        "${_appname}-uri-scheme.desktop"
+        "${_appname}-uri-scheme.xml"
+        "${_appname}-user.service")
 sha256sums=('SKIP'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
-            '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
-            '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0')
+            '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
+            '98e4e1d6d4fd7c7fd05d9e16402c95f1e7afeb4b97c8c68ac63e8abd11ff4ee7'
+            '64b75446af932766aa3d9ee22573facda33da1ec3b1205222d5d6366867d57a6'
+            '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5')
 
 pkgver() {
 
@@ -99,6 +104,14 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
 	install -Dm644 "${srcdir}/${_appname}.tmpfiles" \
 		"${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
+
+	install -dm755 "${pkgdir}/usr/share/mime/x-scheme-handler"
+	install -Dm644 "${srcdir}/${_appname}-uri-scheme.xml" \
+		"${pkgdir}/usr/share/mime/x-scheme-handler/${_appname}.xml"
+
+	install -dm755 "${pkgdir}/usr/share/applications"
+	install -Dm644 "${srcdir}/${_appname}-uri-scheme.desktop" \
+		"${pkgdir}/usr/share/applications/${_appname}-uri.desktop"
 
 	# Automatically generate a configuration file using the content of
 	# `/usr/share/gnunet/config.d/` as model; in this way we can ensure
