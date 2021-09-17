@@ -3,19 +3,20 @@
 
 _name=gzdoom
 pkgname=lzdoom
-pkgver=3.88
+_pkgver=3.88a
+pkgver=3.88.a
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (legacy version)'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
 depends=('hicolor-icon-theme'
-		 'libjpeg'
-		 'sdl2'
-		 'alsa-lib')
+			'libjpeg'
+			'sdl2'
+			'alsa-lib')
 makedepends=('cmake'
-			 'fluidsynth>=2'
-			 'gtk3')
+				'fluidsynth>=2'
+				'gtk3')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
 			'chexquest3-wad: Chex Quest 3 game data'
 			'doom1-wad: Doom shareware game data'
@@ -39,16 +40,16 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
 			'square1-wad: The Adventures of Square, Episode 1 game data'
 			'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
 			'xorg-xmessage: crash dialog (other)')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/drfrag666/${_name}/archive/refs/tags/${pkgver}.tar.gz"
+source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/drfrag666/${_name}/archive/refs/tags/${_pkgver}.tar.gz"
 		"${pkgname}.desktop")
-sha256sums=('40b79d2dad489ea8b07a5e400042ea2918ecaeb9c3561d9c3290796d48f901ad'
-			'7b3ffa8b74e5d6283206dd074b09e944aa07670ec7d7b1fe587350ffb91819b3')
+sha256sums=('729e389d0fb649129512dfa955a8cda1beccac8b2eeb22733bc74185650843dc'
+            '7b3ffa8b74e5d6283206dd074b09e944aa07670ec7d7b1fe587350ffb91819b3')
 
 prepare() {
-	cd "$srcdir/${_name}-$pkgver"
+	cd "$srcdir/${_name}-$_pkgver"
 
 	# Patches GCC 11 errors
-	sed -i '/^#include "types.h"$/a \#include <limits>' src/scripting/types.cpp
+	sed -i '/^#include "types\.h"$/a \#include <limits>' src/scripting/types.cpp
 
 	# Patches soundfonts paths
 	sed -i -f - src/gameconfigfile.cpp <<- "EOF"
@@ -60,7 +61,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${_name}-$pkgver"
+	cd "$srcdir/${_name}-$_pkgver"
 
 	local _cflags="-ffile-prefix-map=\"$PWD\"=. \
 					-DSHARE_DIR=\\\"/usr/share/$pkgname\\\" \
@@ -77,7 +78,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${_name}-$pkgver"
+	cd "$srcdir/${_name}-$_pkgver"
 
 	make install DESTDIR="$pkgdir"
 	install -D -m644 "soundfonts/${pkgname}.sf2" \
