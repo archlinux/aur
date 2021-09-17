@@ -3,8 +3,8 @@
 pkgname=obs-studio-rc
 _pkgver=27.1.0-rc3
 pkgver=`echo "$_pkgver" | tr - _`
-pkgrel=1
-pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only a patch for python"
+pkgrel=2
+pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only patches for dependencies compatibility"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
@@ -68,6 +68,9 @@ prepare() {
   git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
+
+  ## linux-capture: Lookup session handle without typechecks (https://github.com/obsproject/obs-studio/commit/ef0540c0d7df64b6cb148c80d566281a4ff3ba5c)
+  git cherry-pick --no-commit ef0540c0d7df64b6cb148c80d566281a4ff3ba5c
 
   cd "$srcdir/obs-studio"
 
