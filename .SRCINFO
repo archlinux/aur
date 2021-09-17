@@ -1,0 +1,11 @@
+pkgbase = starport
+	pkgdesc = Starport is the all-in-one platform to build, launch and maintain any crypto application on a sovereign and secured blockchain
+	pkgver = 0.17.3
+	pkgrel = 1
+	url = https://cosmos.network/starport
+	arch = x86_64
+	license = Apache
+	source = https://github.com/tendermint/starport/releases/download/v0.17.3/starport_0.17.3_linux_amd64.tar.gz
+	sha256sums = 9fc1baa16d68e22d8e426914b22a4fa2a4da18fab3268ec68cefd6d693165638
+
+pkgname = starport
