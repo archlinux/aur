@@ -1,12 +1,13 @@
 pkgbase = anime4k
 	pkgdesc = A High-Quality Real Time Upscaler for Anime Video
-	pkgver = 3.2
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/bloc97/Anime4K#anime4k
 	arch = any
 	license = MIT
-	provides = anime4k
-	source = https://github.com/bloc97/Anime4K/releases/download/v3.2/Anime4K_v3.2.zip
-	sha256sums = 06c798a52d155c534b1bc88eff9db495bc83ab9be431759879c519d2d9e4ebdc
+	source = Anime4K_v4.0.zip::https://github.com/bloc97/Anime4K/releases/download/v4.0.1/Anime4K_v4.0.zip
+	source = LICENSE::https://raw.githubusercontent.com/bloc97/Anime4K/v4.0.1/LICENSE
+	sha256sums = 139cd282086457c5adc79caf7b75b8b825091d71c9b54958c18745fea62d7ed7
+	sha256sums = SKIP
 
 pkgname = anime4k

@@ -1,20 +1,38 @@
 # Maintainer: Sumit Sahrawat <archlinux at sums dot rs>
 
-provides=('anime4k')
-conflicts=()
-pkgver=3.2
 pkgname=anime4k
+pkgver=4.0.1
 pkgrel=1
-pkgdesc="A High-Quality Real Time Upscaler for Anime Video"
+_tag="v${pkgver}"
+_zip="Anime4K_v${pkgver:0:-2}.zip"
+pkgdesc='A High-Quality Real Time Upscaler for Anime Video'
 arch=('any')
+url='https://github.com/bloc97/Anime4K#anime4k'
+license=('MIT')
+groups=()
 depends=()
 makedepends=()
-url="https://github.com/bloc97/Anime4K#anime4k"
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+install=''
+changelog=''
 options=()
-license=('MIT')
-source=("https://github.com/bloc97/Anime4K/releases/download/v${pkgver}/Anime4K_v${pkgver}.zip")
-sha256sums=('06c798a52d155c534b1bc88eff9db495bc83ab9be431759879c519d2d9e4ebdc')
+source=(
+    "${_zip}::https://github.com/bloc97/Anime4K/releases/download/${_tag}/${_zip}"
+    "LICENSE::https://raw.githubusercontent.com/bloc97/Anime4K/${_tag}/LICENSE"
+)
+noextract=()
+validpgpkeys=()
+sha256sums=(
+    '139cd282086457c5adc79caf7b75b8b825091d71c9b54958c18745fea62d7ed7'
+    'SKIP'
+)
 
 package() {
     install -Dm644 -t "${pkgdir}"/usr/share/anime4k "${srcdir}"/*.glsl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
