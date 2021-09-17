@@ -1,6 +1,6 @@
 pkgbase = vlang-bin
 	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://vlang.io
 	install = vlang-bin.install
@@ -8,8 +8,7 @@ pkgbase = vlang-bin
 	license = MIT
 	depends = glibc
 	provides = vlang
-	source = vlang-bin-0.2.2.zip::https://github.com/vlang/v/releases/download/0.2.2/v_linux.zip
-	sha256sums = d791102173b35f8af1446b7a6207b326dc8d3ddf3f43f433979616550e85d56d
+	source = vlang-bin-0.2.4.zip::https://github.com/vlang/v/releases/download/0.2.4/v_linux.zip
+	sha256sums = 2656b81e8cc46ffb157c9d2dc67e5494522d33418f01dfc098757bfc64f8d085
 
 pkgname = vlang-bin
-
