@@ -2,7 +2,7 @@
 
 pkgname=nextpnr-ecp5-nightly
 pkgver=@NPR_VER@
-pkgrel=1
+pkgrel=2
 pkgdesc="nextpnr portable FPGA place and route tool - for ecp5"
 arch=("any")
 url="https://github.com/YosysHQ/nextpnr"
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/nextpnr"
-	cd build-ice40
+	cd build-ecp5
 		cmake -G Ninja        \
 			-DARCH=ecp5      \
 			-DBUILD_PYTHON=ON \
