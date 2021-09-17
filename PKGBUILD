@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=27.1.0-rc2
+_pkgver=27.1.0-rc3
 pkgver=`echo "$_pkgver" | tr - _`
 pkgrel=1
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only a patch for python"
