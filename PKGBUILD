@@ -25,11 +25,11 @@ install=mutter.install
 
 _commit=2bfef7dbdc6f432a5433c93c1fcdbf00099367c8  # tags/40.4^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-_setting_src="mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/7370b166a10976a0846b57a5ebbe2737/main.js"
+_setting_src="mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/100ce7589dd614832b8d500f3602ebe9/main.js"
 
-if [ "${LANG}" == "zh_CN.UTF-8" ] ; then
+if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
   _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
-  _setting_src="mutter_setting::https://gitee.com/lluo/mutter-rounded-setting/attach_files/833785/download/main.js"
+  # _setting_src="mutter_setting::https://gitee.com/lluo/mutter-rounded-setting/attach_files/834737/download/main.js"
 fi
 
 source=("$_mutter_src"
@@ -41,7 +41,7 @@ sha256sums=('SKIP'
             '993cb349226afe198771bdca32c225d1bf663b2b14a3454270fa0b64f4e19cab'
             '1d4757a46db018f0ac080787c372a01f563499a19c6315fd1b4c3610f450b041'
             '2a4670913601b97f809a486da7c11b4e14472f62211154d5a417d3b3e4d77859'
-            '08a3dbbea7205cdc422901f9b78fd5fbe95bf7378197f33a07bf70a342f35dc5')
+            'bf3c1cd55f97ae9482b368b585575eb61e07f09c189a2bc0d472fe7149a9d3a0')
 
 pkgver() {
   cd $pkgname
@@ -57,6 +57,7 @@ prepare() {
 }
 
 build() {
+  echo "skip" > /dev/null
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
   arch-meson $pkgname build \
@@ -67,27 +68,27 @@ build() {
   meson compile -C build
 }
 
-_check() (
-  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
-  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
-  export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
+# _check() (
+#   mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
+#   glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
+#   export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
 
-  pipewire &
-  _p1=$!
+#   pipewire &
+#   _p1=$!
 
-  pipewire-media-session &
-  _p2=$!
+#   pipewire-media-session &
+#   _p2=$!
 
-  trap "kill $_p1 $_p2; wait" EXIT
+#   trap "kill $_p1 $_p2; wait" EXIT
 
-  meson test -C build --print-errorlogs
-)
+#   meson test -C build --print-errorlogs
+# )
 
-check() {
-  dbus-run-session xvfb-run \
-    -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
-    bash -c "$(declare -f _check); _check"
-}
+# check() {
+#   dbus-run-session xvfb-run \
+#     -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
+#     bash -c "$(declare -f _check); _check"
+# }
 
 package() {
   meson install -C build --destdir "$pkgdir"
