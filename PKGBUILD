@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=21.08.0.1.r33.g30f31a7b6f
+pkgver=21.08.1.1.r74.g4a2cbec635
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -29,7 +29,7 @@ optdepends=("hwloc: enables the task/cgroup plugin"
 makedepends=('git' 'python' 'gtk2' 'hwloc' 'rrdtool' 'hdf5')
 provides=("slurm-llnl=${pkgver}")
 conflicts=('slurm-llnl')
-backup=('etc/sysconfig/slurmd' 'etc/sysconfig/slurmctld', 'etc/sysconfig/slurmdbd')
+backup=('etc/sysconfig/slurmd' 'etc/sysconfig/slurmctld' 'etc/sysconfig/slurmdbd')
 source=("slurm-llnl.sysusers"
 	"slurm-llnl.tmpfiles"
 	"${pkgname}"::"git+https://github.com/SchedMD/slurm.git")
