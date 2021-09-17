@@ -1,0 +1,25 @@
+pkgbase = nextpnr-nexus-nightly
+	pkgdesc = nextpnr portable FPGA place and route tool - for nexus
+	pkgver = 67bd349e_20212017
+	pkgrel = 1
+	url = https://github.com/YosysHQ/nextpnr
+	arch = any
+	license = custom:ISC
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gawk
+	makedepends = eigen
+	depends = yosys-nightly
+	depends = oxide-nightly
+	depends = python
+	depends = boost-libs
+	depends = qt5-base
+	conflicts = nextpnr-git
+	options = !strip
+	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=67bd349e
+	sha256sums = SKIP
+
+pkgname = nextpnr-nexus-nightly
