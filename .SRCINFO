@@ -1,8 +1,9 @@
 pkgbase = slimbookamdcontroller
 	pkgdesc = Application for the performance management of AMD processors
 	pkgver = 0.3.4beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://slimbook.es
+	install = slimbookamdcontroller.install
 	arch = any
 	license = GPL
 	depends = dbus-python
