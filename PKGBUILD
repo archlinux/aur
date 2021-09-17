@@ -2,7 +2,7 @@
 
 pkgname=('conan')
 pkgver=1.40.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -47,4 +47,4 @@ package() {
   install -m644 contributors.txt "${pkgdir}/usr/share/doc/conan/"
 }
 md5sums=('36ff37d694b0128baad1eb92df5e0568'
-         'd69aeef95e3477798f20f9604f5ef3ed')
+         'a65771e352eecee27a6c9fbbc01d3491')
