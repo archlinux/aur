@@ -2,13 +2,13 @@
 
 pkgname=breeze-cursors-lh
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Breeze cursor themes for lefties"
 arch=(any)
 url="https://store.kde.org/p/999680/"
 license=('CCPL:by-nc')
-source=("https://cl.ly/4aa545307da1/download/breeze-cursors-lh.tar.bz2")
-md5sums=('d928113e284c705461da4bbb82a94457')
+source=("https://share.getcloudapp.com/Qwu5L5eN/download/breeze-cursors-lh")
+sha256sums=('0d39dc8b6cb29cfdb07aa8fe267e88e5add145723c7d14db232fef2203a0f491')
 
 package() {
 	mkdir -p ${pkgdir}/usr/share/icons
