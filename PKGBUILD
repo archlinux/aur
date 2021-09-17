@@ -1,7 +1,7 @@
 # Maintainer: c0gnitivefl0w
 
 pkgname=seadrive-gui
-pkgver=2.0.13
+pkgver=2.0.16
 pkgrel=1
 pkgdesc="GUI part of seadrive"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -11,8 +11,7 @@ depends=('qt5-webengine' 'qt5-tools'
          'seadrive-daemon')
 makedepends=("cmake")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6991156213b8cf030d9ef00d5184c727889c0cb85b891d6809e4a9ed03a5a62d')
-
+sha256sums=('76778f5c1d94a4d78ac4b6558f8be792106c3e950e1c6801933e1781cae465fc')
 
 prepare() {
   cd "${srcdir}"
