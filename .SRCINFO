@@ -1,0 +1,12 @@
+pkgbase = go-checksum
+	pkgdesc = Simple tool to calc Golang module checksum of go.mod and module dir
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vikyd/go-checksum
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = go-checksum-1.0.0.tar.gz::https://github.com/vikyd/go-checksum/archive/v1.0.0.tar.gz
+	sha256sums = 8f86aadaa07de76e760382d2080403c413539bbb6e5b4cc663a39243b8bfb276
+
+pkgname = go-checksum
