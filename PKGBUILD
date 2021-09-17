@@ -2,7 +2,7 @@
 
 pkgname=typedb-server
 _pkgname=typedb
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="TypeDB: a strongly-typed database"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('AGPL-3.0')
 makedepends=()
 depends=('jre-openjdk')
 source=("https://github.com/vaticle/${_pkgname}/releases/download/${pkgver}/${pkgname}-linux-${pkgver}.tar.gz")
-sha256sums=('0fcf273c91e7a08c2b170b4c9b56c211270e68ae98c053d1921aa1b9eb8c5cba')
+sha256sums=('ee7ed5905dc3804dff9418000db972ac8b30d509b12cf7ebe67416cd3003d34d')
 _dirname="${pkgname}-linux-${pkgver}"
 
 package() {
