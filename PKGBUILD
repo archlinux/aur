@@ -1,7 +1,7 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=lact
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="AMDGPU Controller application"
 url="https://github.com/ilyazzz/LACT"
@@ -14,7 +14,7 @@ source=(
 	"lactd.service" 
 	"lact.desktop")
 sha256sums=('65dfd9836444a57fc2e330322f114242a4e79c98ea0d259269f2d8af2c308c3c'
-            'a03d7ac86236e13ec415ba4ea4dafeb678ef3b44d8eb35c2d0260d5bc570eb6f'
+            '86f9f94f7f3f5b0f65710daf0701075836683a34245efee2d730b259bda30c67'
             '427a4ac2dc863af74bdb0bfa3514e20586de8872d3939cd2454ce7f1663fc21b')
 
 build() {
