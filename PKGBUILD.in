@@ -2,7 +2,7 @@
 
 pkgname=nextpnr-nexus-nightly
 pkgver=@NPR_VER@
-pkgrel=1
+pkgrel=2
 pkgdesc="nextpnr portable FPGA place and route tool - for nexus"
 arch=("any")
 url="https://github.com/YosysHQ/nextpnr"
@@ -11,7 +11,7 @@ groups=()
 options=("!strip")
 depends=(
 	"yosys-nightly"
-	"oxide-nightly"
+	"prjoxide-nightly"
 	"python"
 	"boost-libs"
 	"qt5-base"
