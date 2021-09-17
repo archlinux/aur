@@ -1,6 +1,6 @@
 _engine='crustygame'
 pkgname='crustris'
-pkgver='0.3'
+pkgver='0.3.2'
 pkgrel=1
 license=('GPL3')
 pkgdesc='Retro style 2D Tetris game using the crustygame engine.'
@@ -13,7 +13,7 @@ source=(
     "crustris.sh"
 )
 sha256sums=(
-    '98441d8cd19706e720195fc0c68e699008bfd1f49513d678c283f91ab4c2b644'
+    '75fed36b562fa6d8dd6c3970dff86ab62dec329fa031193d1dba3ad7c98e8484'
     '1e846c139a1d8b1543f8c42eb63c7d41501afbeb23bbe350920fc6ca09214be0'
 )
 
