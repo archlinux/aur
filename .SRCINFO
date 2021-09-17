@@ -1,6 +1,6 @@
 pkgbase = ruby-dry-configurable
 	pkgdesc = A mixin to add configuration functionality to your classes
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/dry-rb/dry-configurable
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = ruby-dry-configurable
 	depends = ruby
 	depends = ruby-concurrent
 	depends = ruby-dry-core
-	noextract = dry-configurable-0.12.1.gem
+	noextract = dry-configurable-0.13.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/dry-configurable-0.12.1.gem
-	b2sums = 558da9552b891d62088c47946cb890a45e154166513790cb819120336ec0a77d93a520dbfccbcc40a0c673068435b38368e91a4f49d38979680c57aae4439e65
+	source = https://rubygems.org/downloads/dry-configurable-0.13.0.gem
+	b2sums = bb2faa7387b3a2066d95d0ae3dd1e83edd0f61983b7cefaa7b3faa4c8809ae52eb654087e684bac9ad3ac837e6fb4470f7931cfdc9a1fde47add0b4ab1e5d38d
 
 pkgname = ruby-dry-configurable
