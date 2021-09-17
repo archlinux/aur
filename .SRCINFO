@@ -1,6 +1,6 @@
 pkgbase = yosys-nightly
 	pkgdesc = Yosys Open SYnthesis Suite, A framework for RTL synthesis
-	pkgver = yosys_0.9_5600_gc88eaea6e
+	pkgver = yosys_0.9_5600_gc88eaea6_20213117
 	pkgrel = 1
 	url = https://yosyshq.net/yosys/
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = yosys-nightly
 	replaces = yosys
 	replaces = yosys-git
 	options = !strip
-	source = yosys::git+https://github.com/YosysHQ/yosys.git#commit=c88eaea6e
-	source = yosys-abc::git+https://github.com/YosysHQ/abc.git#commit=54763e68
+	source = yosys::git+https://github.com/YosysHQ/yosys.git#commit=c88eaea6
+	source = yosys-abc::git+https://github.com/YosysHQ/abc.git#commit=
 	source = yosys.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
