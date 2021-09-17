@@ -1,0 +1,14 @@
+pkgbase = llhttp
+	pkgdesc = Port of http_parser to llparse
+	pkgver = 6.0.5
+	pkgrel = 1
+	url = https://llhttp.org
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = glibc
+	source = llhttp-6.0.5.tar.gz::https://github.com/nodejs/llhttp/archive/refs/tags/release/v6.0.5.tar.gz
+	sha512sums = 1600ed8ec1beab4f8c660a18cf6c486a7c894e6e2dd524a864868567527ecb93149a6808ca30f878e54df56d4ecba9afeb148955ce5bb18a3ec97e5135deeebc
+	b2sums = 5f4fd2196af6f42abdb793f4c4ab2870b6f903266a927aa2d7dada02e931e7cfe15401bf7c7610d3029c0c51dec073a80f085e0c22d6cb437eac3bd500dfb39e
+
+pkgname = llhttp
