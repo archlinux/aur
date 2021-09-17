@@ -3,7 +3,7 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-gcc
-pkgver=11.1.0
+pkgver=11.2.0
 _target="i686-pc-msdosdjgpp"
 _islver=0.20
 _djver=2.05
@@ -23,7 +23,7 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
         "lto.patch"
 	"gcc-djgpp.diff")
-sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
+sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
             'b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0'
             '2dfebf23706673e09bffdd367464ccc29e29b5fbcc38885511554430bec4d225')
@@ -88,7 +88,7 @@ package_djgpp-gcc() {
     if [ -f $file ] ; then strip $file; else echo $file not found; fi
   done
 
-  ${_target}-strip -v -g $pkgdir/usr/lib/gcc/i686-pc-msdosdjgpp/11.1.0/*.a
+  ${_target}-strip -v -g $pkgdir/usr/lib/gcc/i686-pc-msdosdjgpp/$pkgver/*.a
   ${_target}-strip -v -g $pkgdir/usr/i686-pc-msdosdjgpp/lib/*.a
 
   # for compatibility
