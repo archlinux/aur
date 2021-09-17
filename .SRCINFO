@@ -1,6 +1,6 @@
 pkgbase = muwire-git
 	pkgdesc = An I2P file sharing program (git version)
-	pkgver = 0.8.8.r14.gaeb124ce
+	pkgver = 0.8.9.r0.g5cd06bc5
 	pkgrel = 1
 	url = https://muwire.com/
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = muwire-git
 	depends = sh
 	depends = java-runtime=11
 	depends = hicolor-icon-theme
+	optdepends = i2p-router: for connecting through a local I2P router
 	provides = muwire
 	conflicts = muwire
 	source = git+https://github.com/zlatinb/muwire.git
