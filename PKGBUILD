@@ -5,14 +5,14 @@
 
 pkgname=leatherman
 pkgver=1.12.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of C++ and CMake utility libraries"
 arch=('x86_64')
 url="https://github.com/puppetlabs/leatherman"
 license=('APACHE')
 depends=('boost-libs' 'libcurl.so' 'icu' 'gcc-libs' 'glibc')
 makedepends=('boost' 'cmake' 'rapidjson' 'python')
-checkdepends=('ruby2.7')
+checkdepends=('ruby')
 optdepends=('python: cpplint cmake script')
 provides=(
   leatherman_curl.so
@@ -27,13 +27,11 @@ provides=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/puppetlabs/leatherman/archive/${pkgver}.tar.gz"
         librapidjson-1.1.patch
-        1.12.4-shared_nowide.patch
-        build-against-ruby27.patch)
+        1.12.4-shared_nowide.patch)
 
 sha512sums=('4e2a1ee2e7226224f115648a78bc3e4798ef0528ef32e01d1e7ebcbeb1250fd6ed88001c9db21456feeef3bd6ff201b0fd68fd5feb2671a66d13519dd3454386'
             'bf05009e466ea62282a78c16fe23e8cfacfbb6e5da9fdf118bf7b1b257a3b48c5c5665ef080bfdf12c9088cb4e180358d11a5bd05e2e658bdbe8f35e0bba4969'
-            '1f95d6e0ac1000d2eb8cdfee6184ca74d2bb96a9dec50cdd1539cb7e3060decbf1e4863fa2594ce1cf3405b1edf270b94b82f1c9ca79aaeb6f32f11d10c7eece'
-            '86b2adaa55560fa6564b84041fcc27268f74acf85bf082723b7b721313168806c4dcb3ce48bf166c6b2ab7249e3880266b573bb98028f1b5bc2f80bdce1e89b0')
+            '1f95d6e0ac1000d2eb8cdfee6184ca74d2bb96a9dec50cdd1539cb7e3060decbf1e4863fa2594ce1cf3405b1edf270b94b82f1c9ca79aaeb6f32f11d10c7eece')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -45,8 +43,6 @@ prepare() {
   patch -Np1 < ../librapidjson-1.1.patch
   # Boost 1.74 provides nowide, and since leatherman vendors nowide it has to be patched out.
   patch -Np1 < ../1.12.4-shared_nowide.patch
-  # update leatherman to use ruby-2.7 and not ruby
-  patch -Np1 < ../build-against-ruby27.patch
 }
 
 build() {
