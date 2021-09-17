@@ -4,15 +4,16 @@
 
 pkgbase=kitty-git
 pkgname=(kitty-git kitty-terminfo-git)
-pkgver=0.21.2.r132.gaa339a8a
+pkgver=nightly.r6.gfbc8a1cd
 pkgrel=1
 pkgdesc="Modern, hackable, featureful, OpenGL based terminal emulator"
 arch=(i686 x86_64)
-url="https://github.com/kovidgoyal/kitty"
+url="https://sw.kovidgoyal.net/kitty/"
 license=(GPL3)
 depends=(python freetype2 fontconfig wayland libx11 libxi libgl libcanberra dbus lcms2)
-makedepends=(git python-setuptools libxinerama libxcursor libxrandr libxkbcommon libxkbcommon-x11 wayland-protocols mesa python-sphinx
-             python-sphinx-copybutton python-sphinx-inline-tabs python-sphinxext-opengraph python-sphinx-furo)
+makedepends=(git python-setuptools libxinerama libxcursor libxrandr libxkbcommon mesa
+             libxkbcommon-x11 wayland-protocols python-sphinx python-sphinx-copybutton
+             python-sphinx-inline-tabs python-sphinxext-opengraph python-sphinx-furo librsync)
 source=("git+https://github.com/kovidgoyal/kitty.git")
 sha256sums=('SKIP')
 
