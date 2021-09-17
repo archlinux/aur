@@ -1,11 +1,7 @@
 tip() {
-  echo ""
-  echo ""
-  echo ""
-  echo "=== use 'mutter_setting' command to set window rounded radius. ==="
-  echo ""
-  echo ""
-  echo ""
+  echo -e "\n\n\n"
+  echo -e "\033[31m === use 'mutter_setting' command to set window rounded radius. === \033[0m"
+  echo -e "\n\n\n"
 }
 
 post_install() {
