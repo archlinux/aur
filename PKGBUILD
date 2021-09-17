@@ -1,10 +1,10 @@
-# Maintainer: relrel <relrelbachar@gmail.com>
+# Contributor: relrel <relrelbachar@gmail.com>
 # Contributor: Aaron Fischer <mail@aaaron-fischer.net>
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Bram Schoenmakers <me@bramschoenmakers.nl>
 pkgname=closure-compiler
 pkgver=v20210907
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="A JavaScript checker and optimizer"
 arch=('any')
