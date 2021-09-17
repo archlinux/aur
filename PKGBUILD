@@ -2,7 +2,7 @@
 
 _pipname=nbclassic
 pkgname=jupyter-$_pipname
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Jupyter Notebook as a Jupyter Server Extension'
 arch=(any)
@@ -11,7 +11,7 @@ license=(custom)
 depends=(jupyter-server jupyter-notebook)
 makedepends=(python-setuptools)
 source=(https://pypi.io/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz)
-sha256sums=('f920f8d09849bea7950e1017ff3bd101763a8d68f565a51ce053572e65aa7947')
+sha256sums=('863462bf6a6e0e5e502dcc479ce2ea1edf60437c969f1850d0c0823dba0c39b7')
 
 build() {
   cd $_pipname-$pkgver
