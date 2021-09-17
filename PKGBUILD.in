@@ -21,6 +21,7 @@ sha256sums=(
 	"SKIP"
 )
 
+_PREFIX="/usr"
 build() {
 	cd "${srcdir}/icestorm"
 	make CXX=g++ PREFIX="${_PREFIX}" -j $(nproc)
