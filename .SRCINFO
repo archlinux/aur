@@ -1,6 +1,6 @@
 pkgbase = wezterm-git
 	pkgdesc = A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering.
-	pkgver = 20210914.084355.a2110fed
+	pkgver = 20210916.085405.e36cf754
 	pkgrel = 1
 	url = https://github.com/wez/wezterm
 	arch = x86_64

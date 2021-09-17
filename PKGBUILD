@@ -3,7 +3,7 @@
 
 pkgname=("wezterm-git")
 pkgdesc="A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering."
-pkgver=20210914.084355.a2110fed
+pkgver=20210916.085405.e36cf754
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/wez/wezterm"
@@ -49,6 +49,7 @@ pkgver() {
 
 build() {
   cd $srcdir/wezterm
+  bash ci/check-rust-version.sh 
   cargo build --frozen --release --all-features
 }
 
