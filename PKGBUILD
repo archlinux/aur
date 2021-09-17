@@ -3,8 +3,8 @@
 _pkgname=v
 pkgname=vlang
 # Package maintainer(s): remember to update the commit for vc in prepare()
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -15,12 +15,12 @@ makedepends=('git')
 conflicts=('v' 'vlang-bin' 'vlang-git')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$_pkgname/archive/$pkgver.tar.gz"
         'git+https://github.com/vlang/vc')
-sha256sums=('9152eec96d2eeb575782cf138cb837f315e48c173878857441d98ba679e3a9bf'
+sha256sums=('8cdbc32fb928051ce7959dd943af3efee26bddc4ed3700a1cb365be73a306bf9'
             'SKIP')
 
 prepare() {
     cd vc
-    git checkout 31dd14b7927f154682437be1f2fbeed36c59ea2b # 0.2.2
+    git checkout fd5f57740ff6d7a8566b774318df54c2fa460f92 # 0.2.4
 }
 
 build() {
