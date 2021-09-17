@@ -2,7 +2,7 @@
 
 pkgname=icestorm-nightly
 pkgver=@ICE_VER@
-pkgrel=1
+pkgrel=2
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation"
 arch=("any")
 url="https://github.com/YosysHQ/icestorm"
