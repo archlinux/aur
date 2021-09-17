@@ -2,7 +2,7 @@
 
 pkgname=anime4k
 pkgver=4.0.1
-pkgrel=1
+pkgrel=3
 _tag="v${pkgver}"
 _zip="Anime4K_v${pkgver:0:-2}.zip"
 pkgdesc='A High-Quality Real Time Upscaler for Anime Video'
