@@ -1,6 +1,6 @@
 pkgbase = stash-bin
 	pkgdesc = An organizer for your porn, written in Go
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/stashapp/stash
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = stash-bin
 	arch = armv7h
 	license = AGPL3
 	provides = stash
-	source_x86_64 = stash-bin-0.8.0::https://github.com/stashapp/stash/releases/download/v0.8.0/stash-linux
-	sha256sums_x86_64 = 97907d9d8502af510d5dbea4b36df919f3437e75c09655df7a1a43cd788bb2af
-	source_aarch64 = stash-bin-0.8.0::https://github.com/stashapp/stash/releases/download/v0.8.0/stash-linux-arm64v8
-	sha256sums_aarch64 = f9365e38139acfd1d1cd70cfe76f3ca80842ad10ed7361340097fb80e841a7eb
-	source_armv7h = stash-bin-0.8.0::https://github.com/stashapp/stash/releases/download/v0.8.0/stash-linux-arm32v7
-	sha256sums_armv7h = 9e32f7a8ed7ea4391e85994f92cf6d0dbcee9f2ce1a52f88fe36bddafce519c1
+	source_x86_64 = stash-bin-0.9.0::https://github.com/stashapp/stash/releases/download/v0.9.0/stash-linux
+	sha256sums_x86_64 = 934722695bde2bfba53d3c19fbfac6921180f0b347341f478f8039fba8fa2fdb
+	source_aarch64 = stash-bin-0.9.0::https://github.com/stashapp/stash/releases/download/v0.9.0/stash-linux-arm64v8
+	sha256sums_aarch64 = 934722695bde2bfba53d3c19fbfac6921180f0b347341f478f8039fba8fa2fdb
+	source_armv7h = stash-bin-0.9.0::https://github.com/stashapp/stash/releases/download/v0.9.0/stash-linux-arm32v7
+	sha256sums_armv7h = 934722695bde2bfba53d3c19fbfac6921180f0b347341f478f8039fba8fa2fdb
 
 pkgname = stash-bin
