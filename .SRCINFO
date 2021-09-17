@@ -1,6 +1,6 @@
 pkgbase = astah-uml
-	pkgdesc = Lightweight and easy-to-use UML2.x modeler (Trial)
-	pkgver = 8.2.0.b743f7.0
+	pkgdesc = Lightweight and easy-to-use UML2.x modeler (With trial)
+	pkgver = 8.4.0.8fdff6.0
 	pkgrel = 1
 	url = https://astah.net/products/astah-uml
 	arch = i686
@@ -14,8 +14,7 @@ pkgbase = astah-uml
 	conflicts = astah-professional
 	options = !emptydirs
 	options = !strip
-	source = http://cdn.change-vision.com/files/astah-uml-8.2.0.b743f7-0.noarch.rpm
-	sha256sums = e384286a1b7cf0ed592d84be52c473652ff88716972e7235a8a4daddf0018f1f
+	source = http://cdn.change-vision.com/files/astah-uml-8.4.0.8fdff6-0.noarch.rpm
+	md5sums = 16219b742b8293468fbc50631cd0ec85
 
 pkgname = astah-uml
-
