@@ -38,7 +38,6 @@ pkgbase = gnunet-git
 	optdepends = libogg: for conversation service
 	optdepends = libpabc: for re:claimID zero-knowledge privacy credentials
 	optdepends = libpulse: for conversation service
-	optdepends = makeinfo: for building the documentation
 	optdepends = miniupnpc: for NAT uPnP support
 	optdepends = mysql: for an alternative to sqlite in the database plugin
 	optdepends = opus: for conversation service
