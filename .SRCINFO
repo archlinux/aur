@@ -1,0 +1,14 @@
+pkgbase = eliteforce-data-gog
+	pkgdesc = Star Trek Voyager: Elite Force data via GOG
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.gog.com/game/star_trek_voyager_elite_force
+	arch = any
+	license = custom
+	makedepends = innoextract
+	makedepends = icoutils
+	provides = eliteforce-data
+	source = setup_star_trek_voyagertm_elite_force_1.2_(34378).exe::gogdownloader://star_trek_voyager_elite_force/en1installer0
+	sha256sums = 2adb604a8916688689b700a9be3083903d036e1633e1fe675a97776891ac2ae8
+
+pkgname = eliteforce-data-gog
