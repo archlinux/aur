@@ -1,0 +1,26 @@
+pkgbase = pfusp-bin
+	pkgdesc = Fujitsu SP series Image Scanner Driver for SANE
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://imagescanner.fujitsu.com/global/dl/
+	arch = x86_64
+	license = custom
+	depends = sane
+	source = http://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/220/pfusp-ubuntu_2.2.0_amd64.deb
+	source = pfusp.pdf::http://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/220/P2U3-0210-03ENZ0.pdf
+	source = 60-pfusp.rules
+	source = pfusp
+	source = pfusp.conf
+	source = pfuspscanbutton.service
+	source = simple-scan.conf
+	source = consumablessettings.xml
+	sha256sums = 6bd1289b52a2d2574f5260dd29ea9e1a9a75bd6f02ccc904c9fc3d6f2d8642dc
+	sha256sums = cbf3cbb95d7266a53b8203c590af8256787b588b5ba12cfb30c645edf8d2fd85
+	sha256sums = 1a385519132a6a6935956d6dc150e75dcba1bdfd8b4137547aa9f5c1bf2bada0
+	sha256sums = df13d759a010d83058e934c86c86cd5491c3f4ff9a46f79aae07822b2bb37a4a
+	sha256sums = 3e3d083b2e9bc3eaf6a16f29a6d901765ff9613265a6fae7ad2674092321b478
+	sha256sums = cfc777703f7df2f43e749852e9f658bbeb78c1a5a14fd9e8d0ae711cae43632f
+	sha256sums = 5bdb32b26949be8934756427e62f3694999151229fbedd90fcd9353d61d75113
+	sha256sums = 6b1ba6fbfbd5759f218c2c158aef2cc09718edf50d7ecea9e58064eeb2197b07
+
+pkgname = pfusp-bin

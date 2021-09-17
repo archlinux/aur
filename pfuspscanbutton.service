@@ -1,0 +1,11 @@
+[Unit]
+Description=pfusp scanbutton manager
+
+[Service]
+Type=simple
+ExecStart=/opt/pfusp/bin/pfuspscanmanager
+PIDFile=/var/run/pfuspscanbutton.pid
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
