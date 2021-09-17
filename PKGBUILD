@@ -23,6 +23,7 @@ sha256sums=(
 	"5bc68e4b7265e9e14fe70c89b818b4a0429dc6a1ff240262bb68b8ecedea3531"
 )
 
+_PREFIX="/usr"
 prepare() {
 	cd "${srcdir}/yosys"
 	[ ! -f "${srcdir}/yosys/abc" ] && ln -s "${srcdir}/yosys-abc/" "${srcdir}/yosys/abc"
