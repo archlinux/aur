@@ -1,4 +1,4 @@
-# Maintainer: Denis Lobanov <first name dot last name at zooei dot com>
+# Maintainer: Pedro Gameiro <pm underscore gameiro undercore act at posteo dot pt>
 pkgname=bloomrpc
 pkgver=1.5.3
 pkgrel=1
@@ -51,9 +51,10 @@ package() {
   install -dm755 "${pkgdir}/opt/BloomRPC"
   cp -rd release/linux-unpacked/* "${pkgdir}/opt/BloomRPC/"
 
-  for i in resources/icons/*.png; do
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${i%.png}/apps/"
-    install -Dm644  $i "${pkgdir}/usr/share/icons/hicolor/${i%.png}/apps/bloomrpc.png"
+  cd resources/icons/
+  for f in *.png; do
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${f%.png}/apps/"
+    install -Dm644 $f "${pkgdir}/usr/share/icons/hicolor/${f%.png}/apps/bloomrpc.png"
   done
 
   mkdir -p "${pkgdir}/usr/local/bin"
