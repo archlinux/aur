@@ -1,5 +1,5 @@
 pkgbase = nsxiv
-	pkgdesc = Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer
+	pkgdesc = Neo Simple X Image Viewer
 	pkgver = 27.1
 	pkgrel = 1
 	url = https://github.com/nsxiv/nsxiv

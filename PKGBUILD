@@ -1,7 +1,7 @@
 pkgname=nsxiv
 pkgver=27.1
 pkgrel=1
-pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer'
+pkgdesc='Neo Simple X Image Viewer'
 arch=('x86_64')
 license=('GPL2')
 url='https://github.com/nsxiv/nsxiv'
