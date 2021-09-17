@@ -8,7 +8,7 @@
 
 pkgbase=gcc-git
 pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d}-git)
-pkgver=12.0.0_r187762.g2484f7a4b0f
+pkgver=12.0.0_r188038.g31e924c52f4
 _majorver=${pkgver%%.*}
 _isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep "isl-.*tar\.xz" | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
 pkgrel=2
@@ -83,6 +83,10 @@ build() {
 
   # See https://aur.archlinux.org/pkgbase/gcc-git/#comment-822240
   CXXFLAGS=${CXXFLAGS/-Werror=format-security}
+
+  # avoid warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+  CPPFLAGS+=" -O2"
+  CPPFLAGS=${CPPFLAGS/-Werror=format-security}
 
   "$srcdir/gcc/configure" --prefix=/usr \
       --libdir=/usr/lib \
