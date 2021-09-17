@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Lilium Voyager Elite Force
+Comment=lilium-voyager: Open Source Elite Force Engine
+Exec=/usr/bin/liliumvoyhm
+Icon=lilium-voyager
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Qt;KDE;GNOME;Application;Game;
+

@@ -1,0 +1,15 @@
+
+post_install() {
+    echo ">>>"
+    echo ">>> To play EF with the Retail Version:"
+    echo ">>>   Move all the *.pk3 files from the original game CD/GOG to:"
+    echo ">>>      /opt/lilium-voyager/baseEF/"
+    echo ">>>"
+    echo ">>> When you have the .pk3 file(s) installed, run the game:"
+    echo ">>>      liliumvoyhm"
+    echo ">>>"
+}
+
+post_upgrade() {
+    post_install $1
+}
