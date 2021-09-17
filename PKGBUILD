@@ -1,4 +1,4 @@
-# Maintainer: Luo Yi <langisme@qq.com>
+# Maintainer: Luo Yi <langisme_at_qq_dot_com>
 
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
@@ -22,12 +22,22 @@ provides=(mutter libmutter-8.so)
 conflicts=(mutter)
 groups=(gnome)
 install=mutter.install
-_commit=2bfef7dbdc6f432a5433c93c1fcdbf00099367c8  # tags/40.3^0
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+
+_commit=2bfef7dbdc6f432a5433c93c1fcdbf00099367c8  # tags/40.4^0
+_mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+_setting_src="mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/7370b166a10976a0846b57a5ebbe2737/main.js"
+
+if [ "${LANG}" == "zh_CN.UTF-8" ] ; then
+  echo  -e "\033[31m using mirror in gitee, for better speed. \033[0m"
+  _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
+  _setting_src="mutter_setting::https://gitee.com/lluo/mutter-rounded-setting/attach_files/833785/download/main.js"
+fi
+
+source=("$_mutter_src"
         "rounded_corners_${pkgver}.patch"
         "meta_clip_effect.c"
         "meta_clip_effect.h"
-        "mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/7370b166a10976a0846b57a5ebbe2737/main.js")
+        "$_setting_src")
 sha256sums=('SKIP'
             '993cb349226afe198771bdca32c225d1bf663b2b14a3454270fa0b64f4e19cab'
             '1d4757a46db018f0ac080787c372a01f563499a19c6315fd1b4c3610f450b041'
