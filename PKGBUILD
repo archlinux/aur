@@ -3,7 +3,7 @@
 
 pkgname=airsonic-advanced-bin
 pkgver=10.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, web-based media streamer and jukebox fork"
 arch=('any')
 url="https://github.com/airsonic-advanced/airsonic-advanced"
@@ -12,9 +12,9 @@ depends=('java-runtime-headless' 'ttf-dejavu')
 provides=(airsonic)
 conflicts=(airsonic)
 backup=('etc/airsonic/airsonic.conf')
-noextract=(airsonic.war airsonic.sysusers airsonic.tmpfiles)
-source=(airsonic.war::${url}/releases/download/v${pkgver}/airsonic.war
-        src.tar.gz::${url}/archive/v${pkgver}.tar.gz
+noextract=(airsonic-${pkgver}.war airsonic.sysusers airsonic.tmpfiles)
+source=(airsonic-${pkgver}.war::${url}/releases/download/v${pkgver}/airsonic.war
+        src-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
         airsonic.sysusers
         airsonic.tmpfiles)
 
@@ -35,7 +35,7 @@ package() {
     install -dm755 "${pkgdir}/etc/airsonic"
 
     install -Dm644 \
-        "${srcdir}/airsonic.war" \
+        "${srcdir}/airsonic-${pkgver}.war" \
         "${pkgdir}/var/lib/airsonic/airsonic.war"
     install -Dm644 \
         "${srcdir}/${_dirname}/contrib/airsonic-systemd-env" \

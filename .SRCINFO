@@ -1,7 +1,7 @@
 pkgbase = airsonic-advanced-bin
 	pkgdesc = Free, web-based media streamer and jukebox fork
 	pkgver = 10.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/airsonic-advanced/airsonic-advanced
 	arch = any
 	license = GPL3
@@ -9,12 +9,12 @@ pkgbase = airsonic-advanced-bin
 	depends = ttf-dejavu
 	provides = airsonic
 	conflicts = airsonic
-	noextract = airsonic.war
+	noextract = airsonic-10.6.0.war
 	noextract = airsonic.sysusers
 	noextract = airsonic.tmpfiles
 	backup = etc/airsonic/airsonic.conf
-	source = airsonic.war::https://github.com/airsonic-advanced/airsonic-advanced/releases/download/v10.6.0/airsonic.war
-	source = src.tar.gz::https://github.com/airsonic-advanced/airsonic-advanced/archive/v10.6.0.tar.gz
+	source = airsonic-10.6.0.war::https://github.com/airsonic-advanced/airsonic-advanced/releases/download/v10.6.0/airsonic.war
+	source = src-10.6.0.tar.gz::https://github.com/airsonic-advanced/airsonic-advanced/archive/v10.6.0.tar.gz
 	source = airsonic.sysusers
 	source = airsonic.tmpfiles
 	sha256sums = 528f417e59499161ad7fd8b86d391e3c7eff70e0825465e315f86d3417664c69
@@ -23,4 +23,3 @@ pkgbase = airsonic-advanced-bin
 	sha256sums = 952c15c8c6b53b9c63a96eb6b2402eae42bde56dc9c6c60484cf039a03a82963
 
 pkgname = airsonic-advanced-bin
-
