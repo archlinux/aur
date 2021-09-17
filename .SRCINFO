@@ -1,0 +1,14 @@
+pkgbase = catfs-git
+	pkgdesc = Cache AnyThing filesystem written in Rust
+	pkgver = 0.8.0.r38.gcbd7ab7
+	pkgrel = 1
+	url = https://github.com/kahing/catfs
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	provides = catfs
+	conflicts = catfs
+	source = catfs::git+https://github.com/kahing/catfs.git
+	sha256sums = SKIP
+
+pkgname = catfs-git
