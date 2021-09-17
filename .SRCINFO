@@ -1,12 +1,13 @@
 pkgbase = frame-eth
 	pkgdesc = System-wide Web3
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://frame.sh
 	install = frame-eth.install
 	arch = x86_64
 	license = GPL3
-	makedepends = nodejs>=14.8.0
+	makedepends = npm
+	makedepends = nvm
 	makedepends = libusb
 	makedepends = python3
 	makedepends = git
@@ -21,4 +22,3 @@ pkgbase = frame-eth
 	sha256sums = SKIP
 
 pkgname = frame-eth
-
