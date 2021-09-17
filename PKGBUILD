@@ -2,9 +2,9 @@
 
 pkgname=phoc-embedded-wlroots
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wlroots based Phone compositor (matching wlroots embedded)'
-url='https://source.puri.sm/Librem5/phoc'
+url='https://gitlab.gnome.org/World/Phosh/phoc'
 license=('GPL3')
 arch=(x86_64 aarch64)
 depends=(
@@ -21,7 +21,7 @@ makedepends=(
 )
 checkdepends=(xorg-server-xvfb)
 provides=(phoc)
-conflicts=(phoc wlroots)
+conflicts=(phoc)
 source=(
 	"git+${url}.git#tag=v${pkgver}"
 	"git+https://source.puri.sm/Librem5/wlroots.git"
@@ -32,7 +32,7 @@ prepare() {
 	cd phoc
 
 	git submodule init
-	git submodule set-url subprojects/wlroots "$srcdir/wlroots"
+	git submodule set-url subprojects/wlroots "${srcdir}/wlroots"
 	git submodule update
 }
 
@@ -49,4 +49,8 @@ check() {
 
 package() {
 	DESTDIR="${pkgdir}" meson install -C build
+	
+	rm -rf "${pkgdir}/usr/include/"
+	rm -rf "${pkgdir}/usr/lib/pkgconfig/"
+
 }
