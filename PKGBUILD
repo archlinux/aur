@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=symbiyosys-nightly
-pkgver=15278f1_20215516
+pkgver=15278f1_20210017
 pkgrel=1
 pkgdesc="Front-end for Yosys-based formal verification flows"
 arch=("any")
@@ -25,10 +25,10 @@ sha256sums=(
 	"SKIP"
 )
 
-
+_PREFIX="/usr"
 package() {
-	pushd "${srcdir}/symbiyosys"
+	cd "${srcdir}/symbiyosys"
 	make PREFIX="${_PREFIX}" DESTDIR="${pkgdir}" install
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/symbiyosys/LICENSE"
-	popd
+	cd ..
 }
