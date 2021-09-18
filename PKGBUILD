@@ -1,10 +1,10 @@
 # Maintainer: Sythelux Rikd <dersyth@gmail.com>
+# Maintainer: Mattia Basaglia <glax@dragon.best>
 _corpname=glaxnimate
 _pkgname='glaxnimate'
 pkgname="$_pkgname-git"
-pkgver=0.4.5
+pkgver=0.4.5_2_g1e47f885
 pkgrel=1
-pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 pkgdesc="Simple vector animation program."
 url="https://glaxnimate.mattbas.org/"
 license=('GPL3')
@@ -14,7 +14,7 @@ depends=('python' 'zlib' 'hicolor-icon-theme' 'qt5-base' 'potrace' 'ffmpeg' 'qt5
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-	"$_pkgname::git+https://gitlab.com/mattbas/$_pkgname/#branch=release"
+	"$_pkgname::git+https://gitlab.com/mattbas/$_pkgname/#branch=master"
 )
 sha256sums=('SKIP')
 

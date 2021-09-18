@@ -1,6 +1,6 @@
 pkgbase = glaxnimate-git
 	pkgdesc = Simple vector animation program.
-	pkgver = 0.4.5
+	pkgver = 0.4.5_2_g1e47f885
 	pkgrel = 1
 	url = https://glaxnimate.mattbas.org/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = glaxnimate-git
 	depends = libarchive
 	provides = glaxnimate
 	conflicts = glaxnimate
-	source = glaxnimate::git+https://gitlab.com/mattbas/glaxnimate/#branch=release
+	source = glaxnimate::git+https://gitlab.com/mattbas/glaxnimate/#branch=master
 	sha256sums = SKIP
 
 pkgname = glaxnimate-git
