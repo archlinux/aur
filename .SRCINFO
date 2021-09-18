@@ -1,0 +1,29 @@
+pkgbase = python-glaxnimate
+	pkgdesc = Python bindings for Glaxnimate.
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://glaxnimate.mattbas.org/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	arch = riscv32
+	arch = riscv64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = python
+	makedepends = zlib
+	makedepends = hicolor-icon-theme
+	makedepends = potrace
+	makedepends = ffmpeg
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = python
+	depends = qt5-base
+	depends = potrace
+	depends = ffmpeg
+	source = glaxnimate::git+https://gitlab.com/mattbas/glaxnimate/#branch=release
+	sha256sums = SKIP
+
+pkgname = python-glaxnimate
