@@ -14,39 +14,24 @@ depends=("gettext"
          "perl-archive-extract"
          "perl-bytes-random-secure"
          "perl-crypt-cbc"
-         #"perl-crypt-rijndael"
+         "perl-crypt-rijndael"
          "perl-digest-sha"
          "perl-file-copy-recursive"
-         #"perl-extutils-makemaker"
          "perl-ldap"
-         #"perl-mime-base64"
          "perl-path-class"
          "perl-term-readkey"
          "perl-xml-twig"
-         "php>=7.3"
-         "php-cas"
-         #"php-filter"
-         #"php-fpdf"
-         "php-gd"
-         "php-imagick"
-         "php-imap"
-         #"php-json"
-         #"php-mbstring"
-         #"php-openssl"
+         "php7>=7.3"
+         "php7-imagick"
+         "php7-imap"
          "php-pear"
-         #"php-session"
-         #"php-simplexml"
-         #"php-xml"
          "schema2ldif"
          "smarty3"
          "smarty3-gettext")
 optdepends=("fusiondirectory-plugins: core plugins"
             "apache: webserver"
             "nginx: webserver"
-            #"php-gettext: internationalized interface support"
-            #"php-mhash: ssha encryption support"
-            #"php-sha1: ssha encryption support"
-            #"php-zlib: snapshot support"
+            "php-cas: cas authentication"
             )
 source=(#"https://repos.fusiondirectory.org/sources/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://github.com/fusiondirectory/fusiondirectory/archive/$_commit.tar.gz"
@@ -55,7 +40,7 @@ source=(#"https://repos.fusiondirectory.org/sources/$pkgname/$pkgname-$pkgver.ta
         "$pkgname.tmpfiles")
 sha256sums=('4f27b6e1cbb5e78aeaacddfe27ed62155d97897e615a59cd15f08c499c706c09'
             '1fa39bd110d3326a14f920601803813f088d08ecb2cc645aa7075884d998f6f6'
-            'a17aebba00b9380fdae13011f3ba0350ec861acaf94eedb6d68c0a04ddb0888c'
+            'f39473f669a0f7469004ce8eb71d637c7f2777ea9b91739c6014c1aa4a4b7c32'
             '1732399f263301f212599fd862780422eca5375be1da63acd26506587a348025')
 install="$pkgname.install"
 options=("!strip")
@@ -90,10 +75,12 @@ package(){
  # executables
  find "contrib/bin/" -type f -exec chmod +x {} \;
  mv "contrib/bin/" "$pkgdir/usr/"
+ # ldap schemas
+ cp "contrib/openldap/"* "$pkgdir/etc/openldap/schema/$pkgname/"
  # configuration file template
  install -D -m 640 "contrib/$pkgname.conf" "$pkgdir/var/cache/$pkgname/template/"
  # php extensions
- install -D -m 644 "../$pkgname.php.ini" "$pkgdir/etc/php/conf.d/$pkgname.ini"
+ install -D -m 644 "../$pkgname.php.ini" "$pkgdir/etc/php7/conf.d/$pkgname.ini"
  # smarty3 plugins
  cp "contrib/smarty/plugins/"* "$pkgdir/usr/share/php/smarty3/plugins/"
  rm -r "contrib/smarty"
