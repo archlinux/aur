@@ -64,7 +64,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.14.5
+pkgver=5.14.6
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -86,19 +86,19 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-watchdog-iTCO_wdt-Fix-detection-of-SMI-off-case.patch
+  0002-SUNRPC-don-t-pause-on-incomplete-allocation.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('9a647c2d153a11e15bd3b730d6da73bb21777d349b2cbd213986aa76b531cbb3fa4397845d4ad5f69c6c517adf65aa6d36b169f3dce9ea2bea770dbb3628d141'
+b2sums=('a60c98265c4e795cb8fad90c57b9237b586423c6c8d6961c2f64db13bc6203925e3e6d79ff8858f32363a45f7f1a463de1014fddf9f4a14216a3d3ba638327d6'
         'SKIP'
         'a0f4869294fe26b51f88171b235377df3ab8ad7f93824933f98e7706057419bb9cf2adf31422c0fc654dd07376e375545bc06bd1148666bb638f6640ec281e7b'
         'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
         'bd20774ee2c9856601af2c89a3af95c6abc812b71253368090e9c252edcce452f416bfeed54ced0886d401b5a9e1cb72c16ea5f04a72d8ded596c0d083f80e42'
         '7addf1973ad4284c5313da2f78e91f1ec4693c472c1bf892f377dfce051d62ba4d1adf00d70f5f015206f53d55faa589e076a60401defb4e9632ed04d310e2bc'
-        'c1bfe16e54181905301bbf6b4334e4ea17f9e81f15455e96890610f4447c7cca405e968801c71544f080d8220a4c02e933da3a36c10b56a8a874725ade83a5c3')
+        '61e39425d70ec9e4225e21cc10c413c99fc47babe6d6570171f83833ea4b1e51b34050bcf7726db163d78af74eae95a490f6cdd51599769c259230bb96fab901')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
