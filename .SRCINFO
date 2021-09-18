@@ -1,0 +1,13 @@
+pkgbase = masskulator
+	pkgdesc = Aplication to plot a chat of the weight evolution.
+	pkgver = v0.1.2
+	pkgrel = 1
+	url = https://www.drguell.es
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt5-charts
+	source = masskulator::git+https://gitlab.com/drguell/masskulator.git#tag=v0.1.2
+	sha256sums = SKIP
+
+pkgname = masskulator
