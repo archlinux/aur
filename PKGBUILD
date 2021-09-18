@@ -7,10 +7,22 @@ pkgdesc='Very simple and fast image viewer'
 arch=('i686' 'x86_64')
 url='https://github.com/sandsmark/qeh'
 license=('GPL')
-depends=('qt5-base')
+depends=('qt5-base' 'qt5-x11extras')
+makedepends=('cmake' 'git')
 conflicts=(qeh)
 provides=(qeh)
 source=('git://github.com/sandsmark/qeh.git')
+optdepends=(
+    'kimageformats: Support for Windows cursors, AVIF, EPS, OpenEXR, Radiance HDR, HEIF, Krita, OpenRaster, Gimp, pic, Photoshop, SunOS raster, SGI RGB, Targa'
+    'qt5-imageformats: Support for WebP, JPEG 2000, Targa, TIFF, Wireless Bitmap, MNG, DirectX textures, Apple icons'
+    'qvtf: Support for Valve Texture Files'
+    'qt5-jpegxl-image-plugin: Support for JPEG XL'
+    'qt5-apng-plugin: Support for Animated PNG'
+    'qt-avif-image-plugin: Alternative to kimageformats for AVIF support'
+    'qt5-pbfimageplugin: Support for Mapbox vector tiles'
+    'extra-imageformats-qt: Support for BPG, FUIF and PGF'
+    'qtraw: Support for RAW files via libraw'
+    )
 md5sums=('SKIP')
 
 pkgver() {
