@@ -20,6 +20,7 @@ source=(
 )
 source+=('zoipdl.sh' 'readme.sh')
 noextract=("${_srcfil}")
+
 md5sums=('7addaa261d6fb53526c996adaa2eae1e'
          'af44d50f7be21acccbb3f70e831b57b9'
          '1c77ec64b25899d3b027153da9a0a598'
@@ -27,7 +28,7 @@ md5sums=('7addaa261d6fb53526c996adaa2eae1e'
          'd2a00d37c81be11e43c273b5b18e1c09'
          'a2b638b39dd25ae029ec80ade53cd48b'
          'b03e6d65d8b5e22566c20b9a34eb5b95'
-         '5b8ff14d5b35553775f43db264630109'
+         '5ab0d7bbefdfc83470dedff4f5c51182'
          'fd42ad359f60c60d757e3e162c291879')
 sha256sums=('7a8b1f44c87107ed9e9e27910c3f08898063fcaadad2176ae05b920b44ae453a'
             '4ed406e6786163514ff0714af7417e680c56cbe1edcb297196d6dbee2ffa798b'
@@ -36,7 +37,7 @@ sha256sums=('7a8b1f44c87107ed9e9e27910c3f08898063fcaadad2176ae05b920b44ae453a'
             '79bac289dba2ed8bc65886643ba6aaf1a5057ed1ff5605a0eac166d7f4afd0b8'
             '5a795b8248a576a7166e7f4d773f83a41a640d698917a35eb8bfa7eef7c4bfcc'
             '619466b96c560fbd2511c04120810f0cb30a58aa12d5bcca2af977bcd527fb41'
-            '9081235eda1c4020b578b43414071ee64a50552bcd7ac16acd0507899e5a90e2'
+            '68627904f73617d145a91439f267f5c43d95f9dac10a3d4a8069b5460ddb3c8c'
             '112b1528f30537e4374f94af822c61f382269a5b6e6bd55dc5df1ee9bfe38ea9')
 PKGEXT='.pkg.tar.gz'
 

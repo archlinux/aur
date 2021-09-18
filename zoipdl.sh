@@ -26,7 +26,7 @@ _fn_zoip() {
   if :; then
     curl -c "${_cookie}" "${_opts[@]}" -f -s -o '/dev/null' "${_url1}"
     _fn_moreopts
-    curl -b "${_cookie}" "${_opts[@]}" -f -C '-' -O -J "${_url2}"
+    curl -b "${_cookie}" "${_opts[@]}" -f -O -J "${_url2}"
     # curl -b <( curl -c - -o '/dev/null' 'https://www.zoiper.com/en/voip-softphone/download/current' ) -o 'zoiper5_5.2.6_x86_64.tar.xz' 'https://www.zoiper.com/en/voip-softphone/download/zoiper5/for/linux'
   else
     wget -q -O /dev/null --keep-session-cookies --save-cookies "${_cookie}" "${_opts[@]}" "${_url1}"
