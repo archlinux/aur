@@ -3,10 +3,10 @@
 pkgname=python-kifield
 _name=${pkgname#python-}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for manipulating part fields in KiCad schematic files or "\
 "libraries."
-url="https://github.com/xesscorp/KiField"
+url="https://github.com/devbisme/KiField"
 arch=(any)
 license=('MIT')
 depends=(

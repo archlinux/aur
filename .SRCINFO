@@ -1,8 +1,8 @@
 pkgbase = python-kifield
 	pkgdesc = A utility for manipulating part fields in KiCad schematic files or libraries.
 	pkgver = 0.2.0
-	pkgrel = 1
-	url = https://github.com/xesscorp/KiField
+	pkgrel = 2
+	url = https://github.com/devbisme/KiField
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
