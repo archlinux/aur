@@ -3,7 +3,7 @@
 
 pkgname=session-desktop-appimage
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
 
@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://github.com/oxen-io/session-desktop"
 
 license=('GPL3')
-depends=('gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
+depends=('gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss' 'fuse2')
 provides=('session-desktop-appimage')
 conflicts=('session-desktop' 'session-desktop-bin')
 

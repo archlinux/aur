@@ -1,7 +1,7 @@
 pkgbase = session-desktop-appimage
 	pkgdesc = Private messaging from your desktop
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oxen-io/session-desktop
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = session-desktop-appimage
 	depends = nss
 	depends = xdg-utils
 	depends = libxss
+	depends = fuse2
 	provides = session-desktop-appimage
 	conflicts = session-desktop
 	conflicts = session-desktop-bin
