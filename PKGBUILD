@@ -2,23 +2,24 @@
 
 pkgname=logsend
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="tool for sending e-mail notifications about changes in (log) files"
 arch=('any')
-url="http://logsend.sourceforge.net"
+url="https://github.com/jose1711/logsend"
 license=('GPL')
 depends=('bash' 'inotify-tools')
 source=("http://downloads.sourceforge.net/logsend/${pkgname}-${pkgver}.tar.gz")
-md5sums=('e6de052161c3d553391f99620027a33b')
+source=("https://github.com/jose1711/logsend/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('17e628d3265d8d15177fc97a9863b474')
 
 build() {
-sed -i 's/DESTDIR="${prefix}\/${ORV_PKG_NAME}"/DESTDIR="${prefix}"\/usr/' $srcdir/$pkgname-$pkgver/install.sh
+  sed -i 's/DESTDIR="${prefix}\/${ORV_PKG_NAME}"/DESTDIR="${prefix}"\/usr/' $srcdir/$pkgname-$pkgver/install.sh
 }
 
 package() {
-cd $srcdir/$pkgname-$pkgver
-prefix=$pkgdir/ make install
-find $pkgdir/ -exec chown root '{}' \;
-sed -i '/^DESTDIR=/s/.*/DESTDIR="\/usr"/' $pkgdir/usr/bin/logsend
-sed -i 's/\$"\([57]\)"/$\1/' $pkgdir/usr/lib/logsend-1.0/logsend-config
+  cd $srcdir/$pkgname-$pkgver
+  prefix=$pkgdir/ make install
+  find $pkgdir/ -exec chown root '{}' \;
+  sed -i '/^DESTDIR=/s/.*/DESTDIR="\/usr"/' $pkgdir/usr/bin/logsend
+  sed -i 's/\$"\([57]\)"/$\1/' $pkgdir/usr/lib/logsend-${pkgver}/logsend-config
 }
