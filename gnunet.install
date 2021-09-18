@@ -17,7 +17,7 @@ post_install() {
 	echo
 	echo '    sudo usermod -aG gnunet YOUR-USERNAME'
 	echo
-	echo 'If later you want to remove your user from the group, launch:'
+	echo 'If later you want to remove your user from the group, launch'
 	echo
 	echo '    sudo gpasswd --delete YOUR-USERNAME gnunet'
 	echo
