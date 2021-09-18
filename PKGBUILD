@@ -75,7 +75,7 @@ pkgbase=linux-cacule
 pkgname=('linux-cacule' 'linux-cacule-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.5
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -92,7 +92,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
 #        "${_patchsource}/arch-patches-v4/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14.patch"
-        "${_patchsource}/misc/0004-folio-mm.patch"
+#        "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/0007-string.patch"
         "${_patchsource}/misc/allpollingrate.patch"
         "${_patchsource}/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
@@ -108,14 +108,15 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/futex2-zen-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
-#        "${_patchsource}/mm-patches/0001-mm-5.14-protect-mappings-under-memory-pressure
-        "${_patchsource}/misc/le9fa-5.14.patch"
+        "${_patchsource}/lru-patches-v3/0001-lru-patches.patch"
+#        "${_patchsource}/le9-patches-v4/0001-mm-vmscan-add-sysctl-knobs-for-protecting-the-workin.patch"
+#        "${_patchsource}/misc/le9fa-5.14.patch"
         "${_patchsource}/pf-patches-v5/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches/0001-xanmod-patches.patch"
         "${_patchsource}/zen-patches/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches-v3/0001-zstd-upstream-patches.patch"
-        "${_patchsource}/ntfs3-patches-v6/0001-ntfs3-patches.patch"
+        "${_patchsource}/ntfs3-patches-v7/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
         "${_patchsource}/0001-v4l2loopback.patch"
@@ -243,15 +244,12 @@ prepare() {
             ### Enable protect file mappings under memory pressure
             if [ -n "$_mm_protect" ]; then
               echo "Enabling protect file mappings under memory pressure..."
-          #    scripts/config --enable CONFIG_UNEVICTABLE_FILE
-          #    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-          #    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-              scripts/config --set-val CONFIG_CLEAN_LOW_KBYTES 262144
-              scripts/config --set-val CONFIG_CLEAN_MIN_KBYTES 131072
-          #    scripts/config --enable CONFIG_UNEVICTABLE_ANON
-          #    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
-          #    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
-              scripts/config --set-val CONFIG_ANON_MIN_KBYTES 32768
+              scripts/config --enable CONFIG_UNEVICTABLE_FILE
+              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+              scripts/config --enable CONFIG_UNEVICTABLE_ANON
+              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
+              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
             fi
 
             ### Enable multigenerational LRU
@@ -345,13 +343,6 @@ prepare() {
               echo "Enabling KBUILD_CFLAGS -O3..."
               scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
               scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-              echo "Enable PREEMPT"
-              scripts/config --disable CONFIG_PREEMPT_NONE
-              scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
-              scripts/config --enable CONFIG_PREEMPT
-              scripts/config --enable CONFIG_PREEMPT_COUNT
-              scripts/config --enable CONFIG_PREEMPTION
-              scripts/config --enable CONFIG_PREEMPT_DYNAMIC
               echo "Enable NTFS3"
               scripts/config --module CONFIG_NTFS_FS
               scripts/config --enable CONFIG_NTFS_RW
@@ -528,10 +519,9 @@ package_linux-cacule-headers() {
 }
 
 md5sums=('8d239f7b469b7b21514fb60143894dd5'
-         '10560c6534f78016b64d300b9ea34460'
+         'cda913dd18858ccbce5930418aae8a53'
          '9abde29217354c69925d2bc672f66d67'
          '40a9380b2884f5d417791f06389ba57e'
-         'a804260e2f301ffe2a17d6e3625a9711'
          'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
          'f8e172e9ea554bbb1053eb122c3ace35'
@@ -547,13 +537,13 @@ md5sums=('8d239f7b469b7b21514fb60143894dd5'
          '2891eb036469d04995d9b21a5e389d8a'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '3cf036429a7c962005a344e10a568d7b'
-         '5c709561b32066b910b78fe08e4c356d'
+         '8e2219f09adfe049b3e8b59fb8c4348a'
          'd4c3a3ca73c2e722ebc790357ba87680'
          '28864f14bf33bad92e57bc48bc5c2c78'
          '381bc4f0ff885e9b67e5899476a30416'
          '808981a36c81165953017e5e432c1fa1'
          '74db4069a1c3985e5de43cf28f44e693'
-         '58bea4e0eeeabc766ba1fb91ce85d8ca'
+         'a967dc62d8a3bbd772f2594a6257cc2a'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
