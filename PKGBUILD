@@ -1,5 +1,7 @@
 # $Id$
 # Maintainer: Martchus <martchus@gmx.net>
+# Maintainer: Jakob (XDjackieXD) <aur at chaosfield dot at>
+# Contributor: Trevor Bergeron <aur at sec dot gd>
 
 pkgname=nginx-mod-rtmp
 pkgver=1.2.2
