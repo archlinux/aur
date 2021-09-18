@@ -3,7 +3,7 @@
 pkgname=plots
 _gitname=Plots
 
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A graph plotting app for GNOME"
 
@@ -28,7 +28,7 @@ conflicts=('plots')
 source=(
     "$pkgname-$pkgver::https://github.com/alexhuntley/$_gitname/archive/v$pkgver.tar.gz"
 )
-sha256sums=('d05b68fae27adff4d862ee1194bb6adf9116b50c45772d70a012d9ca000214ad')
+sha256sums=('cfc918dc68cf0e1a19494a23c4df9d8cc048b229717dfdc533922367c9e0c20a')
 
 build() {
     cd "$_gitname-$pkgver"
