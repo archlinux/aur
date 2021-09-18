@@ -1,13 +1,13 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
 
 pkgname=archwrt-ss.sh-git
-pkgver=r66.c6e4c48
+pkgver=r67.8218b67
 pkgrel=1
 pkgdesc="A simple Shadowsocks transparent proxy setup script by archwrt."
 arch=('any')
 url="https://github.com/archwrt/archwrt-ss.sh"
 license=('GPL')
-depends=(dnsmasq ipset iptables)
+depends=(smartdns smartdns-china-list-git ipset iptables)
 backup=(etc/archwrt/ss/archwrt-ss.conf)
 optdepends=('simple-obfs: shadowsocks-libev plugin'
             'shadowsocks-v2ray-plugin: shadowsocks-libev plugin'
