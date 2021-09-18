@@ -22,8 +22,6 @@ depends=(
 
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-provides=('plots')
-conflicts=('plots')
 
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/alexhuntley/$_gitname/archive/v$pkgver.tar.gz"
