@@ -3,8 +3,8 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-_pkgver=92.0
-_beta=5
+_pkgver=93.0
+_beta=2
 pkgver="${_pkgver}b${_beta}"
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org — Beta version'
@@ -12,16 +12,17 @@ url='https://www.mozilla.org/thunderbird/'
 arch=(x86_64)
 license=(MPL GPL LGPL)
 depends=(
-  glibc gtk3 libgdk-3.so mime-types dbus libdbus-1.so dbus-glib alsa-lib nss
-  hunspell sqlite ttf-font libvpx libvpx.so zlib bzip2 botan libwebp libevent
-  libjpeg-turbo libffi nspr gcc-libs libx11 libxrender libxfixes libxext
-  libxcomposite libxdamage pango libpango-1.0.so cairo gdk-pixbuf2 icu
-  libicui18n.so libicuuc.so freetype2 libfreetype.so fontconfig
-  libfontconfig.so glib2 libglib-2.0.so pixman libpixman-1.so gnupg
+  glibc gtk3 libgdk-3.so libgtk-3.so mime-types dbus libdbus-1.so dbus-glib
+  alsa-lib nss hunspell sqlite ttf-font libvpx libvpx.so zlib bzip2 libbz2.so
+  botan libwebp libwebp.so libwebpdemux.so libevent libjpeg-turbo libffi
+  libffi.so nspr gcc-libs libx11 libxrender libxfixes libxext libxcomposite
+  libxdamage pango libpango-1.0.so cairo gdk-pixbuf2 icu libicui18n.so
+  libicuuc.so freetype2 libfreetype.so fontconfig libfontconfig.so glib2
+  libglib-2.0.so pixman libpixman-1.so gnupg
 )
 makedepends=(
   unzip zip diffutils python python-setuptools yasm nasm mesa imake libpulse
-  inetutils xorg-server-xvfb autoconf2.13 rust clang llvm gtk2 cbindgen nodejs
+  xorg-server-xvfb autoconf2.13 rust clang llvm cbindgen nodejs
   gawk perl findutils libotr
 )
 optdepends=(
@@ -66,7 +67,9 @@ build() {
   if [[ -n "${SOURCE_DATE_EPOCH}" ]]; then
     export MOZ_BUILD_DATE=$(date --date "@${SOURCE_DATE_EPOCH}" "+%Y%m%d%H%M%S")
   fi
-
+  export MOZBUILD_STATE_PATH="${srcdir}/.mozbuild"
+#  export MOZ_AUTOMATION=1
+#  export MACH_USE_SYSTEM_PYTHON=1
   ./mach create-mach-environment
   ./mach configure
   ./mach build
@@ -80,6 +83,9 @@ package() {
   install -Dm 644 ../vendor-prefs.js -t "$pkgdir/usr/lib/${_pkgname}/defaults/pref"
   install -Dm 644 ../distribution.ini -t "$pkgdir/usr/lib/${_pkgname}/distribution"
   install -Dm 644 ../thunderbird-beta.desktop -t "$pkgdir/usr/share/applications"
+
+  install -Dm 644 comm/mail/branding/thunderbird/net.thunderbird.Thunderbird.appdata.xml \
+    "$pkgdir/usr/share/metainfo/net.thunderbird.Thunderbird.appdata.xml"
 
   for i in 16 22 24 32 48 64 128 256; do
     install -Dm644 comm/mail/branding/thunderbird/default${i}.png \
@@ -104,7 +110,7 @@ END
     "$pkgdir/usr/lib/${_pkgname}/thunderbird-bin"
 }
 
-sha256sums=('5974ebb747eb47599e001425198e3079138a691f2c882196eee01a06159bb78c'
+sha256sums=('0ba4d0b7dbe22fff09810c74456691961f144a5c4a1468a3f0520df50be1e476'
             'SKIP'
             '71251951e99d33c1bc56d8e1729270cb1c0bd026a86cd840b8ac9ac54a68d846'
             'fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85'
