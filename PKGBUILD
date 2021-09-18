@@ -1,4 +1,5 @@
-# Maintainer: Jeremy Kescher <jeremy@kescher.at>
+# Maintainer: Giuseppe Calà <gcala at mailbox dot org>
+
 pkgname=libdeltachat-git
 _srcname=deltachat-core-rust
 pkgver=1.60.0.r68.g398cea64
