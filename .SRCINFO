@@ -1,0 +1,13 @@
+pkgbase = python-puremagic
+	pkgdesc = A Python python module that will identify a file based off it’s magic numbers.
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://github.com/cdgriffith/puremagic
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/puremagic/puremagic-1.10.tar.gz
+	sha512sums = fcbd9513c290e7a4ae65795fbd9b787f54ad6b1a1e27d16dec999c90614b534c46d121216869490838a91abd3fe4d758561474000ad37f379305ab19bf75d58b
+
+pkgname = python-puremagic
