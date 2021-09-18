@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=ipred
-_cranver=0.9-11
+_cranver=0.9-12
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,10 @@ pkgdesc="Improved Predictors"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
-depends=('r>=2.10' r-prodlim)
+depends=('r>=2.10' 'r-rpart>=3.1.8' r-prodlim)
 optdepends=(r-mvtnorm r-mlbench r-th.data r-randomforest r-party)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('b7568f3a951bc0ad37bdc9a343bd79a76dc1d6cb838704c877608bc38e780e12')
+sha256sums=('d6e1535704d39415a799d7643141ffa4f6f55597f03e763f4ccd5d8106005843')
 
 build() {
   cd "${srcdir}"
