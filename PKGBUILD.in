@@ -2,7 +2,7 @@
 
 pkgname=yosys-nightly
 pkgver=@YOSYS_VER@
-pkgrel=2
+pkgrel=1
 pkgdesc="Yosys Open SYnthesis Suite, A framework for RTL synthesis"
 arch=("any")
 url="https://yosyshq.net/yosys/"
