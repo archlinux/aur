@@ -1,0 +1,18 @@
+pkgbase = synct-git
+	pkgdesc = A POSIX shell client for the Syncthing REST API with personal idiosyncracies
+	pkgver = r2.118e94a
+	pkgrel = 1
+	url = https://github.com/xeruf/synct
+	arch = any
+	license = Unlicense
+	depends = coreutils
+	depends = grep
+	depends = curl
+	depends = bat
+	optdepends = 
+	provides = synct
+	conflicts = synct
+	source = git+https://github.com/xeruf/synct
+	sha512sums = SKIP
+
+pkgname = synct-git
