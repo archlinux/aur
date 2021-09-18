@@ -1,0 +1,15 @@
+pkgbase = screenpen-git
+	pkgdesc = On-screen drawing application for presentations
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/belonesox/screenpen
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	source = git+https://github.com/belonesox/screenpen.git
+	sha256sums = SKIP
+
+pkgname = screenpen-git
