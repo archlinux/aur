@@ -3,7 +3,7 @@
 # Contributor: Mister.Bubbles <http://crbserver.net>
 # Contributor: daemonTutorials <http://www.daemon-tuts.de>
 pkgname=wii-u-gc-adapter
-pkgver=0.0.43
+pkgver=0.0.45
 pkgrel=1
 pkgdesc="Tool for using the Wii U GameCube Adapter on Linux"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/ToadKing/wii-u-gc-adapter"
 license=('MIT')
 depends=('libusb')
 makedepends=('git')
-source=('git+https://github.com/ToadKing/wii-u-gc-adapter.git#commit=64d7ddc511adb12f2eb05bd97294bc51cf51bfab'
+source=('git+https://github.com/ToadKing/wii-u-gc-adapter.git#commit=fa098efa7f6b34f8cd82e2c249c81c629901976c'
         '51-ignore-gc-controller.conf'
         'wii-u-gc-adapter.service')
 sha512sums=('SKIP'
