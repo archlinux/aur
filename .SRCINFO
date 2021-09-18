@@ -1,10 +1,9 @@
 pkgbase = sitala-bin
 	pkgdesc = Drum sampler plugin and standalone app.
-	pkgver = 1.0
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://decomposer.de/sitala/
 	arch = x86_64
-	groups = 
 	license = unknown
 	depends = alsa-lib>=1.0.16
 	depends = freetype2>=2.2.1
@@ -18,4 +17,3 @@ pkgbase = sitala-bin
 	sha512sums_x86_64 = 294f313969c9ef9a2a2fca80b34d4ff537d60012ccf0112db365a4706d3e98a2a46a5c75fd37fbdeb7365c1ceca06dea77b3274317e8db0a5ece473f399b70c4
 
 pkgname = sitala-bin
-
