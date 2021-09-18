@@ -1,12 +1,10 @@
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-#
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
-# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
-#
 pkgname="python2-gimp"
 _pkgname="gimp"
-pkgver="2.10.24"
+pkgver="2.10.28"
 pkgrel="1"
 pkgdesc='Python 2 plugins support for GIMP'
 url='https://www.gimp.org/'
@@ -15,7 +13,8 @@ license=('LGPL')
 depends=('gimp' 'pygtk')
 makedepends=('gtk-doc' 'intltool' 'autoconf')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('bd1bb762368c0dd3175cf05006812dd676949c3707e21f4e6857435cb435989e')
+sha512sums=('587f6f46741672f0700fd642a5b779694d2d8bc8ad70e7677ccdbfc2266dc62203ed347d6aaffaa4b8e7d84a84a25f7d5a51507dfd64b21b4c05970856d3ab94')
+
 
 prepare() {
     cd ${_pkgname}-${pkgver}
@@ -47,5 +46,3 @@ package() {
     cd ${_pkgname}-${pkgver}
     make -C plug-ins/pygimp DESTDIR="${pkgdir}" install
 }
-
-# vim: set ts=4 sw=4 et syn=sh ft=sh:
