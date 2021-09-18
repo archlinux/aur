@@ -10,11 +10,12 @@ pkgbase = drone-runner-docker
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = Apache 2
+	license = Polyform-Small-Business-1.0.0
+	license = Polyform-Free-Trial-1.0.0
 	makedepends = go
 	depends = docker
-	conflicts = drone-agent
-	backup = etc/drone/drone-runner-docker.ini
+	conflicts = drone-runner-docker-git
+	backup = etc/drone-runner/drone-runner-docker.ini
 	source = drone-runner-docker-1.6.3.tar.gz::https://github.com/drone-runners/drone-runner-docker/archive/v1.6.3.tar.gz
 	source = drone-runner-docker.service
 	source = drone-runner-docker.ini
@@ -25,4 +26,3 @@ pkgbase = drone-runner-docker
 	sha256sums = 24d550d856360ba31558177a683bfcdc9535f0b001c4c02c2f502b23b8f7c541
 
 pkgname = drone-runner-docker
-
