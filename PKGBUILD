@@ -4,7 +4,7 @@
 pkgname=electronic-wechat-zzy-ac
 pkgver=2.3.1.1
 pkgrel=1
-pkgdesc="A better WeChat on macOS and Linux. Built with Electron. Maintained by kooritea"
+pkgdesc="A better WeChat on macOS and Linux. Built with Electron. Maintained by zzy-ac"
 url=https://github.com/zzy-ac/electronic-wechat
 arch=(x86_64)
 replaces=('electronic-wechat' 'electronic-wechat-git' 'electronic-wechat-bin')
