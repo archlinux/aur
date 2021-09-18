@@ -68,7 +68,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd qtile
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
