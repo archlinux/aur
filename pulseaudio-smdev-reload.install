@@ -1,0 +1,6 @@
+post_install() {
+	echo  '==============================================='
+	echo  ' Add this line to your .xinitrc or .xprofile:'
+	echo  ' pulseaudio-smdev-reload &' 
+	echo  '==============================================='
+}

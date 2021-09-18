@@ -1,8 +1,9 @@
 pkgbase = pulseaudio-smdev-reload
 	pkgdesc = Reload pulseaudio devices on smdev systems
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/pulseaudio-smdev-reload
+	install = pulseaudio-smdev-reload.install
 	arch = any
 	license = Apache
 	depends = smdev
