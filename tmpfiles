@@ -1,4 +1,4 @@
-d /run/hellpot 0770 hellpot hellpot - -
+d /run/hellpot 0775 hellpot hellpot - -
 Z /run/hellpot - hellpot hellpot - -
 d /var/log/hellpot 0775 hellpot hellpot - -
 Z /var/log/hellpot - hellpot hellpot - -
