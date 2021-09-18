@@ -1,6 +1,6 @@
 # Maintainer: Henry Nelson <hcnelson99@gmail.com>
 pkgname=zig-static
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 epoch=
 pkgdesc="robust, optimal, and clear programming language"
@@ -12,7 +12,7 @@ makedepends=()
 provides=('zig')
 conflicts=('zig')
 source=("https://ziglang.org/download/$pkgver/zig-linux-x86_64-$pkgver.tar.xz")
-md5sums=('fd4167264ed40766a17ccd25c878d825')
+md5sums=('b74c2451c7786248a6e2ba657150efb7')
 
 package() {
     cd "$srcdir/zig-linux-x86_64-$pkgver"
@@ -20,5 +20,5 @@ package() {
     install -D LICENSE "$pkgdir/usr/share/licenses/zig/LICENSE"
     cp -r lib "$pkgdir/usr"
     install -d "$pkgdir/usr/share/doc"
-    cp -r docs "$pkgdir/usr/share/doc/zig"
+    cp -r doc "$pkgdir/usr/share/doc/zig"
 }
