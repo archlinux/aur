@@ -26,7 +26,7 @@ provides=('plots')
 conflicts=('plots')
 
 source=(
-    "$pkgname-$pkgver::https://github.com/alexhuntley/$_gitname/archive/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/alexhuntley/$_gitname/archive/v$pkgver.tar.gz"
 )
 sha256sums=('cfc918dc68cf0e1a19494a23c4df9d8cc048b229717dfdc533922367c9e0c20a')
 
