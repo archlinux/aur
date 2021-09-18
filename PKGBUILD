@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.14.2.arch1
+pkgver=5.14.5.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -47,14 +47,23 @@ source=(
 
 
   # mediatek mt7921 bt/wifi patches
-  "sys-kernel_arch-sources-g14_files-8011-mt76-mt7921-fix-stupid-mediatek-wth-a-hammer.patch"
-  #"sys-kernel_arch-sources-g14_files-8012-mt76-mt7921-continue-to-probe-driver-when-fw-already.patch"
-  "sys-kernel_arch-sources-g14_files-8013-mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
-  "sys-kernel_arch-sources-g14_files-8014-mt76-mt7921-Add-mt7922-support.patch"
+  "sys-kernel_arch-sources-g14_files-8011-Bluetooth-btusb-Enable-MSFT-extension-for-Mediatek-Chip-MT7921.patch"
+  "sys-kernel_arch-sources-g14_files-8012-mt76-mt7915-send-EAPOL-frames-at-lowest-rate.patch"
+  "sys-kernel_arch-sources-g14_files-8013-mt76-mt7921-robustify-hardware-initialization-flow.patch"
+  "sys-kernel_arch-sources-g14_files-8014-mt76-mt7921-fix-retrying-release-semaphore-without-end.patch"
+  "sys-kernel_arch-sources-g14_files-8015-mt76-mt7921-send-EAPOL-frames-at-lowest-rate.patch"
+  "sys-kernel_arch-sources-g14_files-8016-mt76-mt7921-Add-mt7922-support.patch"
+  "sys-kernel_arch-sources-g14_files-8017-mt76-mt7921-enable-VO-tx-aggregation.patch"
+  "sys-kernel_arch-sources-g14_files-8018-mt76-mt7921-fix-dma-hang-in-rmmod.patch"
+  "sys-kernel_arch-sources-g14_files-8019-mt76-mt7921-fix-firmware-usage-of-RA-info-using-legacy-rates.patch"
+  "sys-kernel_arch-sources-g14_files-8020-mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
+  "sys-kernel_arch-sources-g14_files-8021-mt76-mt7921-fix-the-inconsistent-state-between-bind-and-unbind.patch"
+  "sys-kernel_arch-sources-g14_files-8022-mt76-mt7921-report-HE-MU-radiotap.patch"
+  "sys-kernel_arch-sources-g14_files-8023-v2-mt76-mt7921-fix-kernel-warning-from-cfg80211_calculate_bitrate.patch"
 
   # squashed s0ix enablement through 2021-09-03
-  "sys-kernel_arch-sources-g14_files-9001-v5.14.1-s0ix-patch-2021-09-03.patch"
-  "sys-kernel_arch-sources-g14_files-9002-amd-pmc-delay-test.patch"
+  "sys-kernel_arch-sources-g14_files-9001-v5.14.4-s0ix-patch-2021-09-15.patch"
+  #"sys-kernel_arch-sources-g14_files-9002-amd-pmc-delay-test.patch"
   # a small amd_pmc SMU debugging patch per Mario Limonciello @AMD
   #"sys-kernel_arch-sources-g14_files-9002-amd-pmc-smu-register-dump-for-diagnostics.patch"
   
@@ -67,7 +76,7 @@ source=(
 
   "sys-kernel_arch-sources-g14_files-9008-fix-cpu-hotplug.patch"
   "sys-kernel_arch-sources-g14_files-9009-amd-pstate-sqashed.patch"
-
+  "sys-kernel_arch-sources-g14_files-9010-amd-apci-allow-c3.patch"
 )
 
 validpgpkeys=(
@@ -78,7 +87,7 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            'b6ec10132a4d0a656aa65c7c11686dc5d80fce396e761b398506b364e3529e30'
+            'aa50b2ec33ce304f9b99ce80555a17ea18b1005dae147a560587acbdae00546f'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             'fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0'
             '69ecf5456468935958f2cbf35691c2533a56344005537902b6051b6323ffff1f'
@@ -87,17 +96,29 @@ sha256sums=('SKIP'
             '32bbcde83406810f41c9ed61206a7596eb43707a912ec9d870fd94f160d247c1'
             'e2d312ea95d18e91801d131a2b5d03cf2175d3088cac6f84a19410078a5b6b14'
             '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
-            '6fe5fe83e06d552f541bdca55d0d9e2cd6e70dd3047c01da749a0ff57fe706cc'
+            '9d799be6d01a7438ca9999a10137be8fd95348610545c135c6dc9ce2b5afbe29'
             'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
-            '63b3c3b2a016209cbbea1b327dd3e977f74943821f65c04c0efb2fe967741bb1'
-            '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
+            '9f6b8c3ea6e1c285e0a7efda4d743dbae343bc6ee7ad599a4ab7d380c750bc83'
+            '4bfbff4eba07fc9de2ce78097a4a269509468ba0e24c15a82905cd94e093ad55'
+            'c368cc4eefff20b7ae904eec686b7e72b46ff02b32c8a4fbd6bd4039f087e7ba'
+            '1a8639167a1ee1b66f580c0c6f8304e6ef359a68cfa3eb869d9200a9f0234098'
+            '021f8539ab2fb722b46937b95fdab22a2308236a24ecc1a9ea8db4853721dd39'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
-            '3d6d1e6374688c5f1abbc40b15c03c62f695e9d04d790556c57f8ec5d0d6a3f9'
-            'd8dd84c26a44af618c6d1b68723e3bf0f8f50165af04fe090256afb0f931713e'
+            '1ce9fd988201c4d2e48794c58acda5b768ec0fea1d29555e99d35cd2712281e4'
+            'e7e37c7c433c58e2f5a79e2a7724823bef1dccaa01e857584397b4e3c837d991'
+            'f075ac354acfd65dff4db49dc9798747cb9b7a3dd9839987bc46495bdbbd22dc'
+            '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
+            '1770fec49335bc93194e9e55ced49e1cb67f2df4bf6948e80712a0b2ba50fa49'
+            '6da4010f86a74125969fd3dbc953da7b45209d33ff3d216474c3399e82e893ff'
+            'eb391b6d1ebf7ef99ece00b23609b94180a1f3c0149bcf05f6bbeb74d0b724c7'
+            '041214e202be4a6e90f00724e87ed787b39db148b24efd5fb03fcf23577601c1'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             'ee8794a551e33226900654d5c806183bf3b9b2e06f64fdc322987215d233d399'
-            '2d854fc70297bb52bbc27dbf35ca019800530e40565be9740704d7f81bc4c763')
+            '2d854fc70297bb52bbc27dbf35ca019800530e40565be9740704d7f81bc4c763'
+            '1cec0be41732a23c709e66d4a67e71bc5a75c77a3e4b73faafb5d7bfd3fafc0f'
+            'e62cbe1cb1577b1d80095fbb566d0516592e6174e7740e61a340164aff9bf2ec'
+            'bcb5966742921cdc772f163f6cbf0998e22cb1527d5a82b7b71eab4d605243dd')
 
 # notable microarch levels:
 #
@@ -152,7 +173,7 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
+    warning "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
