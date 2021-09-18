@@ -11,12 +11,12 @@ pkgver=0.3.0.beta.1.r3.g059886c
 pkgrel=1
 pkgdesc='Brix Scaffolding System'
 arch=('i686' 'x86_64')
-url="git+https://github.com/miapolis/${_pkgname}"
+url="https://github.com/miapolis/${_pkgname}"
 license=('MIT')
 makedepends=('cargo' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${url}.git")
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
