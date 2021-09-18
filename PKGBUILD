@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=python-bus
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Python 3 module for bus"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(bus python)
 makedepends=(cython)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(fd4325d226b94ce08095bef56a86b5b2a0b639f8d8e4b315a717f84e1de9f7f1)
+sha256sums=(9901615ffac666b463399191e56bdebf2eabb20380f193f88b6b6c45ed56e3e0)
 
 
 build() {
@@ -21,6 +21,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr install DESTDIR="$pkgdir"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
