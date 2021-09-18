@@ -1,7 +1,7 @@
 pkgbase = electron12
 	pkgdesc = Build cross platform desktop apps with web technologies
 	pkgver = 12.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org/
 	arch = x86_64
 	license = MIT
@@ -49,6 +49,8 @@ pkgbase = electron12
 	source = add-dependency-on-opus-in-webcodecs.patch
 	source = chromium-fix-libva-redef.patch
 	source = chromium-glibc-2.33.patch
+	source = chromium-harfbuzz-3.0.0.patch
+	source = skia-harfbuzz-3.0.0.patch
 	source = sql-make-VirtualCursor-standard-layout-type.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -60,6 +62,8 @@ pkgbase = electron12
 	sha256sums = b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121
 	sha256sums = de9eb3612d44616a500c2eccdffac814eb90ad9a868cc1030d17fc6783d544e2
 	sha256sums = 2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b
+	sha256sums = 7ce947944a139e66774dfc7249bf7c3069f07f83a0f1b2c1a1b14287a7e15928
+	sha256sums = c9ed1dbadaf4be6097e25bc5577b91751799befc2d0376b143e1bd10def5754e
 	sha256sums = dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150
 
 pkgname = electron12

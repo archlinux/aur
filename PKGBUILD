@@ -5,7 +5,7 @@ pkgver=12.1.1
 _commit=05c31e912178d7950d62a7f42ee2a9a32148c85e
 _chromiumver=89.0.4389.128
 _gcc_patchset=7
-pkgrel=1
+pkgrel=2
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
@@ -30,6 +30,8 @@ source=('git+https://github.com/electron/electron.git'
         'add-dependency-on-opus-in-webcodecs.patch'
         'chromium-fix-libva-redef.patch'
         'chromium-glibc-2.33.patch'
+        'chromium-harfbuzz-3.0.0.patch'
+        'skia-harfbuzz-3.0.0.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
        )
 sha256sums=('SKIP'
@@ -42,6 +44,8 @@ sha256sums=('SKIP'
             'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
             'de9eb3612d44616a500c2eccdffac814eb90ad9a868cc1030d17fc6783d544e2'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
+            '7ce947944a139e66774dfc7249bf7c3069f07f83a0f1b2c1a1b14287a7e15928'
+            'c9ed1dbadaf4be6097e25bc5577b91751799befc2d0376b143e1bd10def5754e'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
            )
 
@@ -137,6 +141,8 @@ prepare() {
   patch -Np1 -i ../add-dependency-on-opus-in-webcodecs.patch
   patch -Np1 -i ../chromium-fix-libva-redef.patch
   patch -Np1 -i ../chromium-glibc-2.33.patch
+  patch -Np1 -i ../chromium-harfbuzz-3.0.0.patch
+  patch -Np1 -d third_party/skia <../skia-harfbuzz-3.0.0.patch
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
   patch -Np1 -i ../use-system-libraries-in-node.patch
   patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
