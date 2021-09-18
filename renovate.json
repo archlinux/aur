@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  "extends": ["config:base"],
+
+  "assignees": ["languitar"],
+  "reviewers": ["languitar"],
+
+  "regexManagers": [
+    {
+      "fileMatch": ["^PKGBUILD$"],
+      "matchStrings": [
+        "^pkgver=(?<currentValue>.*?)"
+      ],
+      "depNameTemplate": "jgraph/drawio-desktop/releases",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
+}
