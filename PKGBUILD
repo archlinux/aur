@@ -5,7 +5,7 @@
 _pkgname=pulumi
 pkgname=pulumi-bin
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Infrastructure as Code"
 arch=('x86_64')
 license=('Apache-2.0')
