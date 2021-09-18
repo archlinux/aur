@@ -1,7 +1,7 @@
-pkgbase = linux-lqx-test
+pkgbase = linux-lqx
 	pkgdesc = Linux Liquorix
 	pkgver = 5.14.6.lqx1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://liquorix.net/
 	arch = x86_64
 	license = GPL2
@@ -21,7 +21,7 @@ pkgbase = linux-lqx-test
 	sha512sums = SKIP
 	sha512sums = db51ffa0bb421f414cccf3e1ef54ad3f1b0cfd6b5583a9a80ec4b8c9e7982c5b7efa43a5bb7e9809d42617df4361d230256d60f7848797ae8a1480c1e614583e
 
-pkgname = linux-lqx-test
+pkgname = linux-lqx
 	pkgdesc = The Linux Liquorix kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -32,11 +32,11 @@ pkgname = linux-lqx-test
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
-pkgname = linux-lqx-test-headers
+pkgname = linux-lqx-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Liquorix kernel
-	depends = linux-lqx-test
+	depends = linux-lqx
 	depends = pahole
 
-pkgname = linux-lqx-test-docs
+pkgname = linux-lqx-docs
 	pkgdesc = Documentation for the Linux Liquorix kernel
-	depends = linux-lqx-test
+	depends = linux-lqx

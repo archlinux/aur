@@ -57,9 +57,9 @@ _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
 _lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
-pkgbase=linux-lqx-test
+pkgbase=linux-lqx
 pkgver=5.14.6.lqx1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -230,7 +230,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-lqx-test' 'pahole')
+    depends=('linux-lqx' 'pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -312,7 +312,7 @@ _package-headers() {
 
 _package-docs() {
     pkgdesc="Documentation for the $pkgdesc kernel"
-    depends=('linux-lqx-test')
+    depends=('linux-lqx')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
