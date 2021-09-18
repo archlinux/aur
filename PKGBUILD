@@ -2,7 +2,7 @@
 # Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=geeqie-git
-pkgver=20210627
+pkgver=20210917
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="http://www.geeqie.org/"
 license=('GPL2')
 depends=('exiv2' 'gtk3' 'ffmpegthumbnailer'
          'djvulibre' 'libheif' 'libchamplain'
-         'poppler-glib')
+         'poppler-glib' 'libarchive')
 makedepends=('git'
              'intltool' 'python' 'librsvg'
              'libwmf' 'libwebp' 'imagemagick'
@@ -33,6 +33,10 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/geeqie"
+
+    # Remove Werror
+    sed -i 's|^CFLAGS+=" -Werror|# CFLAGS+=" -Werror|' configure.ac
+
     NOCONFIGURE=1 ./autogen.sh
 }
 
