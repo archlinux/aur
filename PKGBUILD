@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=timeprefix
-pkgver=2
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Prefix each line with the time it as written"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/maandree/timeprefix"
 license=('custom:ISC')
 depends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(00961089a5c56b41b0bf53da23818874dfeeb7644cf32a4e126df788d6f4d2e1)
+sha256sums=(4bd9d75f31b7b7f1945607022547913b71563096907e6a5766b7854ac6cdc8bb)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -23,5 +23,5 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr install DESTDIR="$pkgdir"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
