@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libsha1
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="SHA-1 and SHA-0 hashing library"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=()
 checkdepends=()
 makedepends=()
 source=(libsha1-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(94b9de0edde7a922bb96ccc3585f06b9d9bce0adc0261bfd4e19048544782825)
+sha256sums=(08e9c8396839ed42a82145993558523aff83851d420d5c9307ac873707684be9)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
