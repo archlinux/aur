@@ -2,11 +2,11 @@
 
 _pkgname=drone-runner-docker
 pkgname=drone-runner-docker-git
-pkgver=1.6.3.r5.g67ee5cc
-pkgrel=2
+pkgver=1.6.3.r17.g0dd3da2
+pkgrel=1
 pkgdesc="Drone pipeline runner that executes builds inside Docker containers"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-license=('Apache 2')
+license=('Polyform-Small-Business-1.0.0' 'Polyform-Free-Trial-1.0.0')
 url="https://github.com/drone-runners/drone-runner-docker"
 depends=('docker')
 makedepends=('go')

@@ -1,7 +1,7 @@
 pkgbase = drone-runner-docker-git
 	pkgdesc = Drone pipeline runner that executes builds inside Docker containers
-	pkgver = 1.6.3.r5.g67ee5cc
-	pkgrel = 2
+	pkgver = 1.6.3.r17.g0dd3da2
+	pkgrel = 1
 	url = https://github.com/drone-runners/drone-runner-docker
 	install = drone-runner-docker.install
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = drone-runner-docker-git
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = Apache 2
+	license = Polyform-Small-Business-1.0.0
+	license = Polyform-Free-Trial-1.0.0
 	makedepends = go
 	depends = docker
 	provides = drone-runner-docker
@@ -26,4 +27,3 @@ pkgbase = drone-runner-docker-git
 	sha256sums = 24d550d856360ba31558177a683bfcdc9535f0b001c4c02c2f502b23b8f7c541
 
 pkgname = drone-runner-docker-git
-
