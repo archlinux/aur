@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DiRT Showdown
+Comment=DiRT Showdown WINE
+Exec=/usr/bin/dirtshowdown
+Icon=dirtshowdown
+Terminal=false
+Type=Application
+Categories=Application;Game;

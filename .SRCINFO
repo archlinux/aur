@@ -1,0 +1,25 @@
+pkgbase = dirtshowdown-wine-steam
+	pkgdesc = DiRT Showdown using WINE with data via Steam
+	pkgver = 1.2
+	pkgrel = 2
+	url = https://steamdb.info/app/201700/
+	install = dirtshowdown.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = wine
+	depends = winetricks
+	source = dirtshowdown.sh
+	source = dirtshowdown.desktop
+	source = https://github.com/jm2/archlinux-package-dirtshowdown-wine-steam/raw/master/showdown.exe
+	source = https://github.com/jm2/archlinux-package-dirtshowdown-wine-steam/raw/master/showdown_avx.exe
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = a97428269726324ecb4107e6bc8cb44a651edc6d23d935ad78a9523660e38729
+	sha256sums = 836e67420ef664f6d917e3c68a4e8c4b07195893d2375486282b4d92a2e9b59b
+	sha256sums = 80b9b3bc95f2e1a3c1f8a183c32bb911f1dbbb662f4e09071c0f6d70b536a9e2
+	sha256sums = a62e1cb44020951d38ee4ab3c49a25fe76c77d9defd42661b81292d9ce495b7f
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = dirtshowdown-wine-steam
