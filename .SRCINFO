@@ -6,15 +6,9 @@ pkgbase = python-cheetah3
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
+	optdepends = python-markdown
 	source = https://files.pythonhosted.org/packages/source/C/Cheetah3/Cheetah3-3.2.6.post2.tar.gz
 	sha512sums = 94b45c4e48e507b9eca254d097fff7175b2d75597cfda05a7a8f373917d333a5bc2e48ff7eebe5f8f711b0ed2531adbe2bfee3c271c093026c3ece2627734e1b
 
 pkgname = python-cheetah3
-	depends = python
-	optdepends = python-markdown
-
-pkgname = python2-cheetah3
-	depends = python2
-	optdepends = python2-markdown
-
