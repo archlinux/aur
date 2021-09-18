@@ -8,7 +8,7 @@
 _pkgname=brix
 pkgname=${_pkgname}-git
 pkgver=0.3.0.beta.1.r3.g059886c
-pkgrel=1
+pkgrel=2
 pkgdesc='Brix Scaffolding System'
 arch=('i686' 'x86_64')
 url="https://github.com/miapolis/${_pkgname}"
@@ -31,8 +31,6 @@ prepare() {
 
 build() {
   cd $_pkgname
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   export RUSTFLAGS="-C target-cpu=native"
   cargo build --frozen --release
 }
