@@ -15,10 +15,10 @@ source=('git://github.com/sandsmark/qeh.git')
 optdepends=(
     'kimageformats: Support for Windows cursors, AVIF, EPS, OpenEXR, Radiance HDR, HEIF, Krita, OpenRaster, Gimp, pic, Photoshop, SunOS raster, SGI RGB, Targa'
     'qt5-imageformats: Support for WebP, JPEG 2000, Targa, TIFF, Wireless Bitmap, MNG, DirectX textures, Apple icons'
-    'qvtf: Support for Valve Texture Files'
+    'qvtf-git: Support for Valve Texture Files'
     'qt5-jpegxl-image-plugin: Support for JPEG XL'
     'qt5-apng-plugin: Support for Animated PNG'
-    'qt-avif-image-plugin: Alternative to kimageformats for AVIF support'
+    'qt-avif-image-plugin-git: Alternative to kimageformats for AVIF support'
     'qt5-pbfimageplugin: Support for Mapbox vector tiles'
     'extra-imageformats-qt: Support for BPG, FUIF and PGF'
     'qtraw: Support for RAW files via libraw'
