@@ -1,8 +1,8 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-nexus-nightly
-pkgver=67bd349e_20214817
-pkgrel=2
+pkgver=67bd349e_20210018
+pkgrel=1
 pkgdesc="nextpnr portable FPGA place and route tool - for nexus"
 arch=("any")
 url="https://github.com/YosysHQ/nextpnr"

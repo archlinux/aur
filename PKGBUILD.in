@@ -2,7 +2,7 @@
 
 pkgname=nextpnr-nexus-nightly
 pkgver=@NPR_VER@
-pkgrel=2
+pkgrel=1
 pkgdesc="nextpnr portable FPGA place and route tool - for nexus"
 arch=("any")
 url="https://github.com/YosysHQ/nextpnr"
