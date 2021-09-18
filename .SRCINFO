@@ -1,13 +1,14 @@
 pkgbase = perl-mail-bimi
 	pkgdesc = BIMI object
 	pkgver = 3.20210512
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Mail-BIMI
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	makedepends = perl-net-dns-resolver-mock
 	makedepends = perl-test-class
+	makedepends = perl-test-differences
 	makedepends = perl-test-exception
 	makedepends = perl-test-requiresinternet
 	depends = perl
@@ -18,6 +19,7 @@ pkgbase = perl-mail-bimi
 	depends = perl-convert-asn1
 	depends = perl-crypt-openssl-verify
 	depends = perl-crypt-openssl-x509
+	depends = perl-file-slurp
 	depends = perl-http-tiny-paranoid
 	depends = perl-import-into
 	depends = perl-json
@@ -38,4 +40,3 @@ pkgbase = perl-mail-bimi
 	sha256sums = f6a360db130e120f58a58a2b4feef219c9d2a377f507b9693adda66f2838b130
 
 pkgname = perl-mail-bimi
-
