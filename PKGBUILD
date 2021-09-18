@@ -52,14 +52,14 @@ _htmldocs_enable=
 ### Do not edit below this line unless you know what you're doing
 
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
-_major=5.13
+_major=5.14
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=16
+_lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
-pkgbase=linux-lqx
-pkgver=5.13.19.lqx1
-pkgrel=2
+pkgbase=linux-lqx-test
+pkgver=5.14.6.lqx1
+pkgrel=1
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -79,9 +79,9 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha512sums=('a8edf97e9d38a49f1be2bde1e29ad96274bb2c6f7e8a2bebaa1161dd4df9cabcbaec4ff644c45bee94f86ae47725087d6deed0cd954209cec717621d137db85e'
+sha512sums=('8e4f3ec3d36f774280f75dc7b004a43e09417af58f12e9c9f8348976659d4cfda7ad905f306f43fed66a27922e5c45db22e46bbfa7a0b9f365012380de3b6f64'
             'SKIP'
-            'ab978d6f210904392a11ce2236e4a5292dda7af7d765fe5a2d964219115c421e273b527cc7a99070acf255292e97bfdf331aba95193b9b30bf1155f789b415b0')
+            'db51ffa0bb421f414cccf3e1ef54ad3f1b0cfd6b5583a9a80ec4b8c9e7982c5b7efa43a5bb7e9809d42617df4361d230256d60f7848797ae8a1480c1e614583e')
 
 
 
@@ -230,7 +230,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-lqx' 'pahole')
+    depends=('linux-lqx-test' 'pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -312,7 +312,7 @@ _package-headers() {
 
 _package-docs() {
     pkgdesc="Documentation for the $pkgdesc kernel"
-    depends=('linux-lqx')
+    depends=('linux-lqx-test')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
