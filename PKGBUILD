@@ -7,7 +7,7 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-gcc-stage1
-pkgver=11.1.0
+pkgver=11.2.0
 _majorver=${pkgver%%.*}
 _islver=0.24
 pkgrel=1
@@ -15,7 +15,7 @@ pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target}
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-depends=("${_target}-binutils>=2.36.1-1" libmpc zlib)
+depends=("${_target}-binutils>=2.37-1" libmpc zlib)
 options=(!emptydirs !distcc !strip)
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
         http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
@@ -26,12 +26,12 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
+sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
             'SKIP'
             '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
             '88acab8b777759a002e186a1f9d96f96b651bf20454bfdf891a0d64231097c32'
-            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
-            '504e4b5a08eb25b6c35f19fdbe0c743ae4e9015d0af4759e74150006c283585e')
+            '867e7ef398932bec08b1d381c297877dceec031c0077a02dce2d662c5fa23183'
+            'f2878f006949165ba5a400a10f008249e8e27a833ebb92b3221d4e6bf5886992')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
