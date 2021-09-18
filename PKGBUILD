@@ -1,7 +1,7 @@
 #Maintainer: zebdo <zebdo 4t zebdo d0t net>
 
 pkgname=flipflip-bin
-pkgver=3.1.4
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="The latest pre-compiled package from the official GitHub page - a glorified slideshow, with lots of bells and whistles"
 url="https://github.com/ififfy/flipflip"
