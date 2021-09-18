@@ -6,7 +6,7 @@
 
 pkgname='gnunet'
 pkgver='0.15.3'
-pkgrel=6
+pkgrel=7
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -38,7 +38,9 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}-uri.desktop"
+        "${pkgname}-user.conf"
         "${pkgname}-user.service")
+install="${pkgname}.install"
 validpgpkeys=('D8423BCB326C7907033929C7939E6BE1E29FC3CC')
 sha256sums=('d62669a8f41e078eaa220ce77a32f4f3f801e3099357ae8c705498fe73884ec5'
             'SKIP'
@@ -46,6 +48,7 @@ sha256sums=('d62669a8f41e078eaa220ce77a32f4f3f801e3099357ae8c705498fe73884ec5'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
             '98e4e1d6d4fd7c7fd05d9e16402c95f1e7afeb4b97c8c68ac63e8abd11ff4ee7'
+            '3f17b9ed2c1f8cc0f919fe477df99678c17778a31f1eeb56517e285e3cef30f2'
             '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5')
 
 
@@ -93,6 +96,10 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/applications"
 	install -Dm644 "${srcdir}/${pkgname}-uri.desktop" \
 		"${pkgdir}/usr/share/applications/${pkgname}-uri.desktop"
+
+	install -dm755 "${pkgdir}/etc/skel/.config"
+	install -Dm644 "${srcdir}/${pkgname}-user.conf" \
+		"${pkgdir}/etc/skel/.config/${pkgname}.conf"
 
 	# Automatically generate a configuration file using the content of
 	# `/usr/share/gnunet/config.d/` as model; in this way we can ensure
