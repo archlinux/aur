@@ -1,5 +1,5 @@
 pkgbase = masskulator
-	pkgdesc = Aplication to plot a chat of the weight evolution.
+	pkgdesc = An application to plot a chart with weight evolution.
 	pkgver = v0.1.2
 	pkgrel = 1
 	url = https://www.drguell.es
