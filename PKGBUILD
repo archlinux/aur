@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=93.0.4577.82
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=6
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -29,6 +29,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         replace-blacklist-with-ignorelist.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         chromium-93-ffmpeg-4.4.patch
+        chromium-harfbuzz-3.0.0.patch
+        skia-harfbuzz-3.0.0.patch
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('5d66214858fcba11a8f733d7a6fab61ed10e13e7df4ed37e63b66a0370fb2853'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
@@ -38,6 +40,8 @@ sha256sums=('5d66214858fcba11a8f733d7a6fab61ed10e13e7df4ed37e63b66a0370fb2853'
             'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
+            '7ce947944a139e66774dfc7249bf7c3069f07f83a0f1b2c1a1b14287a7e15928'
+            'dae11dec5088eb1b14045d8c9862801a342609c15701d7c371e1caccf46e1ffd'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -94,6 +98,10 @@ prepare() {
 
   # Fix build with older ffmpeg
   patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
+
+  # Fix build with harfbuzz 3.0.0
+  patch -Np1 -i ../chromium-harfbuzz-3.0.0.patch
+  patch -Np1 -d third_party/skia <../skia-harfbuzz-3.0.0.patch
 
   # Revert transition to -fsanitize-ignorelist (needs newer clang)
   patch -Rp1 -i ../replace-blacklist-with-ignorelist.patch
