@@ -2,7 +2,7 @@
 
 pkgname=sabnzbd
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
 url='http://www.sabnzbd.org'
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
   'python-configobj'
   'python-cherrypy'
   'python-portend'
+  'python-puremagic'
   'python-chardet'
   'python-notify2'
   'python-cheetah3'
