@@ -2,18 +2,26 @@
 
 pkgname=bootstrap-dht-git
 pkgver=r122.679c661
-pkgrel=1
+pkgrel=2
 pkgdesc="Bittorrent DHT bootstrap server"
 arch=('i686' 'x86_64')
 url="https://github.com/bittorrent/bootstrap-dht"
 license=('MIT')
 depends=('glibc' 'boost-libs')
-makedepends=('git' 'boost-build')
+makedepends=('git' 'boost')
 provides=('bootstrap-dht')
 conflicts=('bootstrap-dht')
-source=("git+https://github.com/bittorrent/bootstrap-dht.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/bittorrent/bootstrap-dht.git"
+        "boost.patch::https://github.com/bittorrent/bootstrap-dht/commit/131e4d2caccc227afa62837899123f424dccb296.patch")
+sha256sums=('SKIP'
+            '2984970318c71910e1e23093564f5048f9311ed0d4d16d1ef5623e9f9b86f331')
 
+
+prepare() {
+  cd "bootstrap-dht"
+
+  patch -Np1 -i "$srcdir/boost.patch"
+}
 
 pkgver() {
   cd "bootstrap-dht"
@@ -24,20 +32,26 @@ pkgver() {
 build() {
   cd "bootstrap-dht"
 
-  b2 "$MAKEFLAGS" release
+  b2 \
+    cflags="$CFLAGS" \
+    cxxflags="$CXXFLAGS" \
+    linkflags="$LDFLAGS" \
+    release
 }
 
 check() {
   cd "bootstrap-dht/tests"
 
-  b2 "$MAKEFLAGS" release
+  b2 \
+    cflags="$CFLAGS" \
+    cxxflags="$CXXFLAGS" \
+    linkflags="$LDFLAGS" \
+    release
 }
 
 package() {
   cd "bootstrap-dht"
 
-  install -d "$pkgdir/usr/bin/"
-  install -m755 "dht-bootstrap" "$pkgdir/usr/bin/"
-
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/bootstrap-dht/LICENSE"
+  install -Dm755 "dht-bootstrap" -t "$pkgdir/usr/bin"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/bootstrap-dht"
 }
