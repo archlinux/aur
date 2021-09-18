@@ -1,6 +1,6 @@
 pkgbase = flipflip-bin
 	pkgdesc = The latest pre-compiled package from the official GitHub page - a glorified slideshow, with lots of bells and whistles
-	pkgver = 3.1.4
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/ififfy/flipflip
 	arch = x86_64
