@@ -2,9 +2,9 @@ Avoid leaking current data on generated file for Ada.
 
 Index: gcc/ada/gcc-interface/Makefile.in
 ===================================================================
---- gcc/ada/gcc-interface/Makefile.in	(revision 268977)
-+++ gcc/ada/gcc-interface/Makefile.in	(working copy)
-@@ -2407,6 +2407,7 @@ $(RTSDIR)/s-oscons.ads: ../stamp-gnatlib
+--- gcc/ada/gcc-interface/Makefile.in	2021-07-28 09:55:06.816280772 +0300
++++ gcc/ada/gcc-interface/Makefile.in	2021-09-17 02:16:17.169904292 +0300
+@@ -613,6 +613,7 @@
  	    $(OSCONS_CPP) ; \
  	    $(OSCONS_EXTRACT) ; \
  	    ../bldtools/oscons/xoscons s-oscons)
@@ -12,4 +12,3 @@ Index: gcc/ada/gcc-interface/Makefile.in
  
  gnatlib: ../stamp-gnatlib1-$(RTSDIR) ../stamp-gnatlib2-$(RTSDIR) $(RTSDIR)/s-oscons.ads
  	test -f $(RTSDIR)/s-oscons.ads || exit 1
-
