@@ -1,0 +1,17 @@
+pkgbase = osume-git
+	pkgdesc = Extract music from osu!lazer beatmaps
+	pkgver = 0.1.0.r1.g2d06485
+	pkgrel = 1
+	url = https://github.com/bbb651/osume
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-mutagen
+	depends = python-inquirer
+	depends = python-tqdm
+	conflicts = osume
+	source = osume::git+https://github.com/bbb651/osume.git#branch=main
+	sha256sums = SKIP
+
+pkgname = osume-git
