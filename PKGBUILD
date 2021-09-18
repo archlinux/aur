@@ -3,28 +3,33 @@
 # Contributor : Joel Sevilleja Febrer Joel7987[at].gmail.com
 
 
-pkgname=htmlunit
+pkgbase=htmlunit
+pkgname=("$pkgbase" "$pkgbase-doc")
 
-pkgver=2.52.0
+pkgver=2.53.0
 pkgrel=1
 
 pkgdesc='Headless HTTP webclient for Java'
 arch=('any')
-url="http://$pkgname.sourceforge.net"
+url="http://$pkgbase.sourceforge.net"
 license=('Apache')
 
-depends=('java-runtime-common')
-
-#source=("http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver-bin.zip")
-source=("https://github.com/$pkgname/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-bin.zip")
-sha256sums=('30082ede9542b0205dfc50999fe6bef6dae233b1de6d615dc78bf8fe6f411164')
+#source=("http://sourceforge.net/projects/$pkgbase/files/$pkgbase/$pkgver/$pkgbase-$pkgver-bin.zip")
+source=("https://github.com/$pkgbase/$pkgbase/releases/download/$pkgver/$pkgbase-$pkgver-bin.zip")
+sha256sums=('9b455d3489f1de73503cef23e66f8d60a61b302e29f3231675116a3761e62f3d')
 
 
-package() {
-  cd "$pkgname-$pkgver"
-  install -Dm644 lib/*.jar    -t"$pkgdir/usr/share/java/$pkgname/"
-  install -dm755                "$pkgdir/usr/share/doc"
-  cp -a --no-preserve=o apidocs "$pkgdir/usr/share/doc/$pkgname"
+package_htmlunit() {
+  depends=('java-runtime-common')
+  optdepends=("$pkgbase-doc: API documentation")
+
+  cd "$pkgbase-$pkgver/lib"
+  install -Dm644 *.jar -t"$pkgdir/usr/share/java/$pkgbase/"
+}
+
+package_htmlunit-doc() {
+  install -dm755 "$pkgdir/usr/share/doc"
+  cp -a --no-preserve=o "$pkgbase-$pkgver/apidocs" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
 
