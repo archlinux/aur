@@ -1,8 +1,8 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-ecp5-nightly
-pkgver=67bd349e_20215017
-pkgrel=2
+pkgver=67bd349e_20210018
+pkgrel=1
 pkgdesc="nextpnr portable FPGA place and route tool - for ecp5"
 arch=("any")
 url="https://github.com/YosysHQ/nextpnr"
