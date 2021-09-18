@@ -1,7 +1,7 @@
 pkgbase = libdeltachat-git
 	pkgdesc = Deltachat-core written in Rust
 	pkgver = 1.60.0.r68.g398cea64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deltachat/deltachat-core-rust/
 	arch = x86_64
 	arch = aarch64
