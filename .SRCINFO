@@ -1,6 +1,6 @@
 pkgbase = sabnzbd-git
 	pkgdesc = A web-interface based binary newsgrabber with NZB file support
-	pkgver = r7363.6627510a
+	pkgver = r7963.d89b6f814
 	pkgrel = 1
 	url = http://www.sabnzbd.org
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = sabnzbd-git
 	depends = python-configobj
 	depends = python-cherrypy
 	depends = python-portend
+	depends = python-puremagic
 	depends = python-chardet
 	depends = python-notify2
 	depends = python-cheetah3
@@ -40,4 +41,3 @@ pkgbase = sabnzbd-git
 	sha256sums = 3a3c292020cca0251478c70a6499afa64aeca3dfcb6d5e32f6e21d5d4d94fa81
 
 pkgname = sabnzbd-git
-

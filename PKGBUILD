@@ -1,28 +1,31 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sabnzbd-git
-pkgver=r7363.6627510a
+pkgver=r7963.d89b6f814
 pkgrel=1
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
 url='http://www.sabnzbd.org'
 arch=('any')
 license=('GPL')
-depends=('curl'
-         'par2cmdline'
-         'python'
-         'python-six'
-         'python-cryptography'
-         'python-feedparser'
-         'python-configobj'
-         'python-cherrypy'
-         'python-portend'
-         'python-chardet'
-         'python-notify2'
-         'python-cheetah3'
-         'python-sabyenc3'
-         'sqlite'
-         'unrar'
-         'unzip')
+depends=(
+  'curl'
+  'par2cmdline'
+  'python'
+  'python-six'
+  'python-cryptography'
+  'python-feedparser'
+  'python-configobj'
+  'python-cherrypy'
+  'python-portend'
+  'python-puremagic'
+  'python-chardet'
+  'python-notify2'
+  'python-cheetah3'
+  'python-sabyenc3'
+  'sqlite'
+  'unrar'
+  'unzip'
+)
 
 optdepends=('python-pygobject: tray icon'
             'python-pyopenssl: ssl support'
