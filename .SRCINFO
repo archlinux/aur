@@ -1,18 +1,18 @@
 pkgbase = lib32-egl-wayland
 	pkgdesc = EGLStream-based Wayland external platform (32-bit)
-	pkgver = 1.1.6
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/NVIDIA/egl-wayland
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	makedepends = git
+	makedepends = lib32-libglvnd
 	depends = lib32-wayland
-	depends = eglexternalplatform
-	depends = egl-wayland
+	depends = egl-wayland=1.1.8
+	provides = libnvidia-egl-wayland.so
 	options = !emptydirs
-	source = git+https://github.com/NVIDIA/egl-wayland#commit=1b0f2b8dd906c82d20de45974f81295fda9f2bd0
+	source = git+https://github.com/NVIDIA/egl-wayland#tag=1.1.8
 	sha256sums = SKIP
 
 pkgname = lib32-egl-wayland
-
