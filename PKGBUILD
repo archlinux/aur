@@ -22,6 +22,7 @@ optdepends=('libpipewire02: WebRTC desktop sharing under Wayland'
             'ttf-liberation: fix fonts for some PDFs - CRBug #369991'
             'xdg-utils')
 options=(!strip !zipman)
+install=$_pkgname.install
 _channel=beta
 source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/${_pkgname}_${pkgver}-1_amd64.deb"
         "microsoft-edge-beta.sh"
