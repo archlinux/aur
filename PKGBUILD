@@ -4,13 +4,13 @@
 
 pkgname=dolt
 pkgver=0.28.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Git for data! A version controlled relational database'
 arch=(x86_64)
 url=https://www.dolthub.com
 license=(Apache)
-depends=(gcc-libs)
-makedepends=(gcc-go)
+depends=(glibc)
+makedepends=(go)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::https://github.com/dolthub/dolt/archive/v$pkgver.tar.gz")
 sha256sums=('5165dc83be0ddb927ed29da594b296f958fae5182b0828f37c61c269ea7e21f9')
@@ -31,7 +31,7 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
-		-gccgoflags "-extldflags=\"$LDFLAGS\"" \
+		-ldflags "-extldflags=\"$LDFLAGS\"" \
 		-o build \
 		./cmd/...
 }
