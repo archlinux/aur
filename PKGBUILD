@@ -80,8 +80,8 @@ _use_current=
 pkgbase=linux-cacule-llvm
 pkgname=('linux-cacule-llvm' 'linux-cacule-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14.5
-pkgrel=2
+pkgver=5.14.6
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -108,7 +108,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
-        "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v4/0001-btrfs-patches.patch"
         "${_patchsource}/fixes-miscellaneous-v3/0001-fixes-miscellaneous.patch"
         "${_patchsource}/futex-zen-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-zen-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
@@ -542,7 +542,7 @@ package_linux-cacule-llvm-headers() {
 
 }
 
-md5sums=('8d239f7b469b7b21514fb60143894dd5'
+md5sums=('006dc61878252d9f0e2a0b0bd9d134ff'
          'be6eae9f753b07270a90b81b998a893e'
          '9abde29217354c69925d2bc672f66d67'
          '40a9380b2884f5d417791f06389ba57e'
@@ -555,7 +555,7 @@ md5sums=('8d239f7b469b7b21514fb60143894dd5'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
-         'c504817d4e1659d0bc5d2c4c8a5465e0'
+         'da72ef09deade4f800510e470eaf2f77'
          'f2d0397fa97df4590cfc54964b354478'
          '0849b25513dc47e3defa00f26f60eedb'
          '2891eb036469d04995d9b21a5e389d8a'
