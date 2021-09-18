@@ -1,7 +1,7 @@
 # Maintainer: Amaan Hashmi-Ubhi <amaanhub at protonmail dot com>
 
 pkgname=mangadesk
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Terminal client for MangaDex'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('93242ee3cc6b397684bcadb8ebcb32ff93c6d01e53b1a5a439dddad42df2c218386eeb46b500e7846ca92a78add69389e5028a6b89abf16b227292c203ce4581')
+sha512sums=('a03bd208911d3e49c9f8090688c9e87742c725ea4600a76ea90b427f8795e8944fd3cdfb8a175f547c22efc24a31da2ae5f766a213aed30d21f77a91b40a9e59')
 validpgpkeys=('SKIP')
 
 prepare(){
