@@ -1,9 +1,8 @@
 # Maitainer: Loek Le Blansch <loek@pipeframe.xyz>
 
 pkgname=arduino-language-server-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-epoch=1
 pkgdesc="An Arduino Language Server based on Clangd to Arduino code autocompletion"
 arch=('any')
 makedepends=('git' 'go')
@@ -15,19 +14,19 @@ provides=('arduino-language-server')
 conflicts=('arduino-language-server')
 
 pkgver() {
-	cd ${pkgname}
-	git describe --tags | sed "s+-+.r+" | tr - .
+	cd ${pkgname%-git}
+	git rev-parse HEAD | cut -c1-7
 }
 
 build() {
-	cd ${pkgname}
+	cd ${pkgname%-git}
 
 	msg2 'Building...'
 	go build
 }
 
 package() {
-	cd ${pkgname}
+	cd ${pkgname%-git}
 
 	msg2 'Installing executables...'
 	install -Dm 755 arduino-language-server -t "$pkgdir"/usr/bin
