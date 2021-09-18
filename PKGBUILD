@@ -2,7 +2,7 @@
 _pkgname=libinput
 _patch=multiplier.patch
 pkgname=$_pkgname-multiplier
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='scroll patch, discrete deltay multiplier'
 arch=(x86_64)
@@ -17,7 +17,7 @@ optdepends=('gtk3: libinput debug-gui'
             'python-evdev: libinput measure')
 source=(https://freedesktop.org/software/$_pkgname/$_pkgname-$pkgver.tar.xz
         $_patch)
-sha512sums=(9a834f075d7a1f892416bb6b241eb052f749d3aa883c4b39c0f1c9616c115d6b9a541b587508646fddaf0d3fe57af92fe4629b522d1d51196499e7b523e0aa90
+sha512sums=(daf42ce797f2b5aef8d6f7a5c0d967590581e6ac12c26fa6bde5fbc619d75319e39ca55d65d5347e554dd6a48b91f5fed4d3167eabef8ad1ebc43bc0c3e8e220
             cae69ca6c92b7566e91ba073c34c0752464a878c1415306a7ec9a22a158989f4e3bb11eb5b0237bac947a6ee1765daabc8bb5af5f1e02bea2d98c6d9cfc01a4c)
 prepare() {
   cd "${srcdir}"/$_pkgname-$pkgver
