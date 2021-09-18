@@ -1,6 +1,6 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 pkgname=vtchs
-pkgver=1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Listen for VT switches"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=('ISC')
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(fb7cb42fc796eea4c86bb53d7257503cd73b033bf76962b420609c5b8351a37f)
+sha256sums=(94e790982663e384f8df57beea3ae7a3426246151c47f22fa4ca7ad5b0734dbf)
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
