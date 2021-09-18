@@ -1,0 +1,27 @@
+pkgbase = aliyunpan-cli
+	pkgdesc = Aliyunpan CLI
+	pkgver = 2.7.14
+	pkgrel = 1
+	url = https://github.com/wxy1343/aliyunpan
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	depends = python-click-aliases
+	depends = python-requests
+	depends = python-pyexecjs
+	depends = python-rsa
+	depends = python-colorama
+	depends = python-flask
+	depends = python-pyperclip-git
+	depends = python-npyscreen
+	depends = python-ruamel-yaml
+	depends = python-ruamel-base
+	depends = python-treelib
+	depends = aria2p
+	provides = aliyunpan
+	source = aliyunpan-2.7.14.tar.gz::https://github.com/wxy1343/aliyunpan/archive/refs/tags/v2.7.14.tar.gz
+	source = dlnap-master.tar::https://github.com/cherezov/dlnap/archive/master.tar.gz
+	sha256sums = d5b86bf040781c9e6981cba07ef1daab4d8f7ff4d6e17d910018a48a4f5fa7da
+	sha256sums = SKIP
+
+pkgname = aliyunpan-cli
