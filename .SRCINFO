@@ -1,5 +1,5 @@
 pkgbase = turengo
-	pkgdesc = CLI tool for turengo.com
+	pkgdesc = CLI tool for tureng.com
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/mesuutt/turengo

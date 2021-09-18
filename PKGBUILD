@@ -1,7 +1,7 @@
 pkgname=turengo
 pkgver=1.0.0
 pkgrel=1
-pkgdesc='CLI tool for turengo.com'
+pkgdesc='CLI tool for tureng.com'
 arch=('x86_64')
 url="https://github.com/mesuutt/$pkgname"
 license=('MIT')
