@@ -1,7 +1,7 @@
 # Maintainer: Artemii Sudakov <finziyr@yandex.ru>
 
 pkgname="rubin-git"
-pkgver=1.1.r0.g50f646d
+pkgver=1.2.r0.g1bfb442
 pkgrel=1
 pkgdesc='Translates English binaries to Russian'
 arch=('any')
