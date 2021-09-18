@@ -3,7 +3,7 @@
 
 pkgname=lite-xl-git
 _pkgname=lite-xl
-pkgver=2.0.beta1.r32.g8c86cc5
+pkgver=2.0.2.r91.g80a6b22
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lua52' 'sdl2' 'freetype2' 'pcre2' 'hicolor-icon-theme')
 makedepends=('meson>=0.58')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/franko/lite-xl")
+source=("git+https://github.com/lite-xl/lite-xl")
 sha256sums=('SKIP')
 
 pkgver() {
