@@ -1,0 +1,14 @@
+pkgbase = gaia
+	pkgdesc = Cosmos SDK application for the Cosmos Hub
+	pkgver = 5.0.6
+	pkgrel = 1
+	url = https://github.com/cosmos/gaia
+	arch = x86_64
+	license = Apache
+	provides = gaiad
+	source = gaiad::https://github.com/cosmos/gaia/releases/download/v5.0.6/gaiad-v5.0.6-linux-amd64
+	source = https://raw.githubusercontent.com/cosmos/gaia/v5.0.6/LICENSE
+	sha256sums = 402e05d8e6260f9b19266187db58912c26ab0ee33bafee656c06fe2ae332bbb2
+	sha256sums = 98bf5ef31e3c439d9d721a2b919fa285ad6a1ee607d71fb062a8b1849ae1e1fc
+
+pkgname = gaia
