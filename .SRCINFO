@@ -1,0 +1,15 @@
+pkgbase = lugat
+	pkgdesc = CLI for Turkish Language Association's Güncel Türkçe Sözlük
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ademozay/lugat
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-termcolor
+	depends = python-requests
+	source = https://pypi.io/packages/source/l/lugat/lugat-0.2.0.tar.gz
+	sha256sums = 82e00f76bfdd71d28eb8a9cda0c11c76f3f99f2bf196744ee0056be4b4b4e9b3
+
+pkgname = lugat
