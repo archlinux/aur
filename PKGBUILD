@@ -9,7 +9,7 @@
 
 pkgname=platformio
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="https://github.com/platformio/platformio-core/"
@@ -24,6 +24,8 @@ depends=('python-setuptools'
          'python-tabulate'
          'python-pyelftools'
          'python-marshmallow'
+         # Python 3
+         'python-zeroconf'
          # "pio home" requirements:
          'python-aiofiles'
          'python-ajsonrpc'
