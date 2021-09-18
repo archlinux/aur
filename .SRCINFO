@@ -1,19 +1,14 @@
 pkgbase = nginx-mod-rtmp
 	pkgdesc = Module for nginx that adds RTMP support
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/arut/nginx-rtmp-module
-	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = nginx
-	source = http://nginx.org/download/nginx-9.tar.gz
-	source = http://nginx.org/download/nginx-9.tar.gz.asc
-	source = https://github.com/arut/nginx-rtmp-module/archive/v1.2.1.tar.gz
-	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 87aa597400b0b5a05274ee2d23d8cb8224e12686227a0abe31d783b3a645ea37
+	makedepends = nginx-src
+	depends = nginx=1.20.1
+	depends = libutil-linux
+	source = nginx-mod-rtmp-1.2.2::https://github.com/arut/nginx-rtmp-module/archive/v1.2.2.tar.gz
+	sha256sums = 07f19b7bffec5e357bb8820c63e5281debd45f5a2e6d46b1636d9202c3e09d78
 
 pkgname = nginx-mod-rtmp
-
