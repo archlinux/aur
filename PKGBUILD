@@ -1,3 +1,5 @@
+# Maintainer: Sanjay Pavan <tsppavan7@gmail.com>
+
 pkgname=nsxiv
 pkgver=27.1
 pkgrel=1
