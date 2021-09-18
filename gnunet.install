@@ -1,0 +1,28 @@
+post_install() {
+
+	local _PWD_PAIRS_="$(awk -F ':' '$3>=1000 && $3<2000 {print $1":"$6}' '/etc/passwd')"
+	local _USER_
+	local _CFG_FILE_
+
+	for _PWD_PAIR_ in ${_PWD_PAIRS_}; do
+		_USER_="$(echo $_PWD_PAIR_ | cut -d ':' -f 1)"
+		_CFG_FILE_="$(echo $_PWD_PAIR_ | cut -d ':' -f 2)/.config/gnunet.conf"
+		test -e "${_CFG_FILE_}" || install -Dm644 -o "${_USER_}" -g \
+			"$(id -gn "${_USER_}")" /etc/skel/.config/gnunet.conf \
+			"${_CFG_FILE_}"
+	done
+
+	echo
+	echo 'Do not forget to add your user to the `gnunet` group, with'
+	echo
+	echo '    sudo usermod -aG gnunet YOUR-USERNAME'
+	echo
+	echo 'If later you want to remove your user from the group, launch:'
+	echo
+	echo '    sudo gpasswd --delete YOUR-USERNAME gnunet'
+	echo
+	echo 'For information on how to use GNUnet plaese refer to the GNUnet article in the'
+	echo 'ArchWiki (https://wiki.archlinux.org/title/GNUnet).'
+	echo
+
+}

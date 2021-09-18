@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.4.alpha.0.r29830.fc9ca33bc'
+pkgver='0.15.4.alpha.0.r29840.ad9c10e6e'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -36,17 +36,20 @@ optdepends=('bluez: for bluetooth transport'
             'texlive-core: for generating GNS business cards via gnunet-bcd'
             'zbar: for reading/writing QR codes using gnunet-qr')
 backup=("etc/${_appname}.conf")
-source=("git+https://${_appname}.org/git/${_appname}.git"
+source=("git+https://git.${_appname}.org/git/${_appname}.git"
         "${_appname}-system.service"
         "${_appname}.sysusers"
         "${_appname}.tmpfiles"
         "${_appname}-uri.desktop"
+        "${_appname}-user.conf"
         "${_appname}-user.service")
+install="${_appname}.install"
 sha256sums=('SKIP'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
             '98e4e1d6d4fd7c7fd05d9e16402c95f1e7afeb4b97c8c68ac63e8abd11ff4ee7'
+            '3f17b9ed2c1f8cc0f919fe477df99678c17778a31f1eeb56517e285e3cef30f2'
             '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5')
 
 pkgver() {
@@ -105,6 +108,11 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/applications"
 	install -Dm644 "${srcdir}/${_appname}-uri.desktop" \
 		"${pkgdir}/usr/share/applications/${_appname}-uri.desktop"
+
+	install -dm755 "${pkgdir}/etc/skel/.config"
+	install -Dm644 "${srcdir}/${_appname}-user.conf" \
+		"${pkgdir}/etc/skel/.config/${_appname}.conf"
+
 
 	# Automatically generate a configuration file using the content of
 	# `/usr/share/gnunet/config.d/` as model; in this way we can ensure
