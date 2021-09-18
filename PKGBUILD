@@ -2,7 +2,7 @@
 pkgname=hellpot-git
 _srcname=HellPot
 _targetname=hellpot
-pkgver=0.1.r20.g8434521
+pkgver=0.1.r23.g6fd1661
 pkgrel=1
 pkgdesc="An endless honeypot that sends bots to hell."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -31,12 +31,6 @@ sha256sums=('SKIP'
 pkgver() {
   cd "$_srcname"
   git describe --long --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  # Temporary
-  cd "$srcdir/$_srcname"
-  go mod tidy
 }
 
 build() {
