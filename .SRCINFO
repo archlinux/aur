@@ -12,6 +12,7 @@ pkgbase = xunlei-bin
 	depends = alsa-lib
 	depends = nss
 	depends = libxss
+	depends = rsync
 	provides = xunlei
 	source = license.html
 	source = xunlei

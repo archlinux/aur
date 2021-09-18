@@ -7,7 +7,7 @@ pkgdesc="Xunlei download, 迅雷"
 arch=("x86_64" "aarch64")
 url="https://www.xunlei.com/"
 license=("custom")
-depends=('dbus-glib'  'libxtst' 'gtk2' 'alsa-lib' 'nss' 'libxss')
+depends=('dbus-glib'  'libxtst' 'gtk2' 'alsa-lib' 'nss' 'libxss' 'rsync')
 provides=('xunlei')
 source=("license.html"
 "xunlei"
