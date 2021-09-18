@@ -2,7 +2,7 @@
 
 pkgname=nodejs-addon-api
 _npmname=${pkgname/js}
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Node.js API (N-API)'
 arch=(any)
@@ -12,22 +12,23 @@ depends=(nodejs)
 makedepends=(jq
              moreutils
              npm)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7da61958aa9137fb6dbfff84b2ff833c53e2a42d9fec7142079e0d70ae2913a2')
+_archive="$_npmname-$pkgver"
+source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('3e07fda7b3778cdf5dde5b6fd8eff9d2d489030490b08a6acdbf6745a7f89c99')
 
 prepare() {
-	cd "$_npmname-$pkgver"
+	cd "$_archive"
 	# Suppress install or link against this package triggering a build!
 	jq 'del(.scripts[])' package.json | sponge package.json
 }
 
 build() {
-	cd "$_npmname-$pkgver"
+	cd "$_archive"
 	npm pack
 }
 
 package() {
-	cd "$_npmname-$pkgver"
+	cd "$_archive"
 	npm install \
 		--production \
 		--global \
@@ -36,7 +37,7 @@ package() {
 		--no-fund \
 		--cache "$srcdir/npm-cache" \
 		--prefix "$pkgdir/usr" \
-		$_npmname-$pkgver.tgz
+		$_archive.tgz
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
