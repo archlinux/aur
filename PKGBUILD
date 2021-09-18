@@ -7,7 +7,7 @@
 # I created a macro for ufw, because that's what I use, if you have a macro for a different firewall, feel free to email me a patch.
 
 pkgname=valheim-server
-pkgver=0.156.2
+pkgver=0.202.19
 pkgrel=1
 pkgdesc="Dedicated server for the Valheim PC game"
 arch=('x86_64')
