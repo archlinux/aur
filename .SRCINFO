@@ -1,6 +1,6 @@
 pkgbase = moarvm
 	pkgdesc = A VM with adaptive optimization and JIT compilation, built for Rakudo
-	pkgver = 2021.07
+	pkgver = 2021.08
 	pkgrel = 1
 	url = http://moarvm.com/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = moarvm
 	makedepends = perl>=5.8
 	depends = zstd
 	options = !makeflags
-	source = http://moarvm.com/releases/MoarVM-2021.07.tar.gz
-	b2sums = 9a3a05238b38cd708ffc97bcba70a722904bf44ba7351b03f9e8190bf98020225bf3aa80a3675b034ea69bcc770262890868e267dcf6d66b0a6c9cc31a5bc34a
+	source = http://moarvm.com/releases/MoarVM-2021.08.tar.gz
+	b2sums = 433cfaaad4138d8b98fc4bacd5495281f2a8da5195aa74aded118126afdf11cdf0175fd033472e951e91ab3c1eb11877ab039cd24d911553d5854be18021a87e
 
 pkgname = moarvm
