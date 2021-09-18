@@ -1,11 +1,11 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 
 # The check function contains several remote site api checks, may fail due to too many try or site down.
-# Feel free to `--nocheck` and comment out checkdepends line to skip it.
+# Feel free to `--nocheck` and comment out checkdepends=() line to skip it.
 # If cannot pass the check due to python package error, try to force the pkgver of depends as shown in requirements-test.txt
 
 pkgname=zdict
-pkgver=3.7.0
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="CLI dictionary framework mainly focus on any kind of online dictionary"
 arch=('any')
@@ -17,7 +17,7 @@ checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-flake8' 'python
 _completion_commit=8698dc733b3174f5aac319234fec60dfa380a87e
 source=("https://pypi.io/packages/source/z/zdict/$pkgname-$pkgver.tar.gz"
         git+https://github.com/zdict/zdict.sh.git#commit=$_completion_commit)
-sha256sums=('d2b3c00cf66515a601a8da3069608905691faa164225a6c09a7aca0ffc07d2bb'
+sha256sums=('6c9b33c607c3206c46ffb72e911b76c5512bff39bddcbf00568fdba4f3be7ce9'
             'SKIP')
 
 build() {
