@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=rgdal
-_cranver=1.5-25
+_cranver=1.5-27
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.5.0' 'r-sp>=1.1.0' proj gdal)
 optdepends=(r-knitr r-dbi r-rsqlite r-maptools r-mapview r-rmarkdown r-curl r-rgeos)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('cafa04417a77e969e6c70dc01e85ce7f8fe2c9a3ec966f29203b8daa02d7576a')
+sha256sums=('62a555ed7b5424dd0252b3764e3542fb30c524d06e8245215bcfaedd84ee5756')
 
 build() {
   cd "${srcdir}"
