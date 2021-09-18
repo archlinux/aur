@@ -2,7 +2,7 @@
 
 pkgname=libindi-astromechfoc
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="3rd party drivers for INDI, support for Astromechanics Focuser T-Ring"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL2.1)
@@ -17,7 +17,7 @@ prepare() {
   cd  indi-3rdparty-${pkgver}
 
   #set all to off by default
-  sed -i -e '/option(WITH_.*On/s/ On/ Off/' CMakeLists.txt
+  sed -i -e '/option(WITH_.*On/s/ On)/ Off)/' CMakeLists.txt
 }
 
 build() {
