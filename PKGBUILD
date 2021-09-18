@@ -12,7 +12,7 @@ pkgbase=linux-mainline-anbox               # Build stock -ARCH kernel
 _tag=v5.15-rc1
 pkgver=5.15rc1
 pkgrel=1
-pkgdesc="Linux Mainline with ashmem and binder modules enabled"
+pkgdesc="Linux Mainline"
 arch=(x86_64)
 url="https://kernel.org/"
 license=(GPL2)
@@ -71,11 +71,11 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules"
+  pkgdesc="The $pkgdesc kernel and modules with ashmem and binder enabled"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux-mainline)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-mainline wireguard-maineline)
 
   cd $_srcname
@@ -99,7 +99,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-  provides=(linux-mainline-headers)
   depends=(pahole)
 
   cd $_srcname
@@ -182,7 +181,6 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
-  provides=(linux-mainline-docs)  
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

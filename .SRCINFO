@@ -1,5 +1,5 @@
 pkgbase = linux-mainline-anbox
-	pkgdesc = Linux Mainline with ashmem and binder modules enabled
+	pkgdesc = Linux Mainline
 	pkgver = 5.15rc1
 	pkgrel = 1
 	url = https://kernel.org/
@@ -29,7 +29,7 @@ pkgbase = linux-mainline-anbox
 	sha256sums = 5cdca495212b2986c8ff9d1b0cd87f2d344a880c09237f062699385c9bbedf80
 
 pkgname = linux-mainline-anbox
-	pkgdesc = The Linux Mainline with ashmem and binder modules enabled kernel and modules
+	pkgdesc = The Linux Mainline kernel and modules with ashmem and binder enabled
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -37,15 +37,12 @@ pkgname = linux-mainline-anbox
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	provides = linux-mainline
 	replaces = virtualbox-guest-modules-mainline
 	replaces = wireguard-maineline
 
 pkgname = linux-mainline-anbox-headers
-	pkgdesc = Headers and scripts for building modules for the Linux Mainline with ashmem and binder modules enabled kernel
+	pkgdesc = Headers and scripts for building modules for the Linux Mainline kernel
 	depends = pahole
-	provides = linux-mainline-headers
 
 pkgname = linux-mainline-anbox-docs
-	pkgdesc = Documentation for the Linux Mainline with ashmem and binder modules enabled kernel
-	provides = linux-mainline-docs
+	pkgdesc = Documentation for the Linux Mainline kernel
