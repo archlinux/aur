@@ -1,13 +1,12 @@
 pkgbase = setpgrp
 	pkgdesc = Commands providing access to the setpgrp and getpgrp system calls
-	pkgver = 2.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/maandree/setpgrp
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	source = setpgrp-2.1.tar.gz::https://github.com/maandree/setpgrp/archive/2.1.tar.gz
-	sha256sums = c6511283fd46bfee856f26dcf114994486ef2c6467ef673d72ad78c3f5a49739
+	source = setpgrp-2.1.1.tar.gz::https://github.com/maandree/setpgrp/archive/2.1.1.tar.gz
+	sha256sums = 8d5a9bd824de6054a81642c351b659fd25fb5e7ab392e98859c709186095743c
 
 pkgname = setpgrp
-
