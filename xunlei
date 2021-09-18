@@ -1,0 +1,76 @@
+#!/usr/bin/bash  
+
+#作者：flwwater
+#https://forum.ubuntu.org.cn/viewtopic.php?f=21&t=491878&p=3224825&hilit=%E7%A1%AC%E7%9B%98#p3224825
+
+# tmpfs内存目录
+
+XLTMPFS="/dev/shm/ThunderNetwork"
+
+# Linux版迅雷的配置目录
+
+XLHDD="${HOME}/.config/thunder/ThunderNetwork"  
+
+# Linux版迅雷的配置目录 
+
+XLHOME="${HOME}/ThunderNetwork"  
+
+# 同步时间间隔(秒) 
+
+INTERVAL=600  
+
+# 确保做事之前存在 XLHDD 目录
+
+if [ ! -d "${XLHDD}" ]; then  
+    mkdir "${XLHDD}"
+fi  
+
+# 检查并创建tmpfs目录
+
+if [ ! -d "${XLTMPFS}" ]; then  
+
+    mkdir -p ${XLTMPFS}  
+
+fi  
+
+# 检查 ~/ThunderNetwork 是否存在并且不是链接
+
+if [ -e "${XLHOME}" ] && [ ! -L "${XLHOME}" ]; then  
+    rm -rf "${XLHDD}"
+    mv "${XLHOME}"    "${XLHDD}"
+fi
+
+if [ ! -e "${XLHOME}" ]; then  
+    #如果不存在 XLHOME 目录，那么创建到它的软链接
+    ln -s "${XLTMPFS}" "${XLHOME}"  
+
+fi  
+
+# 同步至 tmpfs  
+
+echo "同步文件夹 ${XLHDD} 至 ${XLTMPFS}"  
+
+rsync -avi --delete "${XLHDD}/" "${XLTMPFS}/"  
+
+echo "每间隔 ${INTERVAL} 秒执行一次同步"  
+
+( while true; do sleep ${INTERVAL}; rsync -avi --delete "${XLTMPFS}/" "${XLHDD}/"; done; ) &  
+
+SYNC=$!  
+
+echo "正在启动 迅雷";  
+
+export LD_LIBRARY_PATH=/opt/xunlei:$LD_LIBRARY_PATH
+/opt/xunlei/thunder -start $1
+
+echo "迅雷已关闭！"  
+
+echo "请等等数秒，正在执行数据恢复......"  
+
+kill $!  
+
+rsync -avi --delete "${XLTMPFS}/" "${XLHDD}/"  
+
+echo "同步已完成";  
+rm ${XLHOME}
+ 
