@@ -16,6 +16,7 @@ license=('BSD')
 options=(staticlibs)
 depends=('python' 'openmpi' 'boost' 'lapack')
 makedepends=('gcc' 'gcc-fortran' 'cmake')
+provides=('petsc4py')
 optdepends=('trilinos: support for trilinos'
   'ptscotch: support for ptscotch sequential and parallel graph partitioning library'
   'parmetis: support for parmetis parallel graph partitioning library'
@@ -46,6 +47,7 @@ build() {
   export PETSC_DIR=${_build_dir}
 
   CONFOPTS="--with-shared-libraries=1 \
+            --with-petsc4py=1 \
             --with-mpi-f90module-visibility=0 \
             --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3 --FOPTFLAGS=-O3 \
             --with-cc=$(which mpicc) --with-cxx=$(which mpicxx) --with-fc=$(which mpifort) \
@@ -55,7 +57,7 @@ build() {
   python ./configure --prefix=${_install_dir} ${CONFOPTS}
 
   make ${MAKEFLAGS} all
-  make DESTDIR=${srcdir}/tmp install
+  make SUDO_USER=$USER DESTDIR=${srcdir}/tmp install
 }
 
 check() {
@@ -65,7 +67,7 @@ check() {
   if [ -z $(ldconfig -p | grep libcuda.so.1) ]; then
     export OMPI_MCA_opal_warn_on_missing_libcuda=0
   fi
-  make check
+  PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
 }
 
 package() {
@@ -80,6 +82,7 @@ package() {
 
   mkdir -p ${pkgdir}/etc/profile.d
   echo export PETSC_DIR=${_install_dir} > ${pkgdir}/etc/profile.d/petsc.sh
+  echo export PYTHONPATH=${_install_dir}/lib:'${PYTHONPATH}' >> ${pkgdir}/etc/profile.d/petsc.sh
   chmod +x ${pkgdir}/etc/profile.d/petsc.sh
 
   # show where the shared libraries are
