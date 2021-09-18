@@ -1,23 +1,24 @@
 pkgbase = electrumx
 	pkgdesc = Server implementation for the Electrum wallet
 	pkgver = 1.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/spesmilo/electrumx
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = leveldb
 	depends = python>=3.7
-	depends = python-aiorpcx>=0.18.3
+	depends = python-aiorpcx>=0.18.5
 	depends = python-aiorpcx<0.19.0
 	depends = python-attrs
 	depends = python-plyvel
 	depends = python-pylru
 	depends = python-aiohttp>=3.3.0
+	depends = python-aiohttp<4.0.0
 	depends = python-websockets
 	optdepends = bitcoin-daemon: Bitcoin core headless P2P node
 	optdepends = electrum: Bitcoin thin client
-	optdepends = python-rapidjson<1.0: Alternative JSON parsing library for improved performance
+	optdepends = python-rapidjson<2.0: Alternative JSON parsing library for improved performance
 	optdepends = python-ujson<4.0: Alternative JSON parsing library for improved performance
 	backup = etc/electrumx/electrumx.conf
 	source = electrumx-1.16.0.tar.gz::https://codeload.github.com/spesmilo/electrumx/tar.gz/1.16.0
@@ -30,4 +31,3 @@ pkgbase = electrumx
 	sha256sums = 761a21723d21348d598be96655e6de4827b2fcff93270895303e82670e0532f1
 
 pkgname = electrumx
-
