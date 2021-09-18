@@ -1,19 +1,46 @@
-# Maintainer: Thomas Hobson <thomas@hexf.me>
+# Maintainer: ml <>
 pkgname=chart-testing
-pkgver=3.0.0
+pkgver=3.4.0
 pkgrel=1
-epoch=0
-source=('https://github.com/helm/chart-testing/releases/download/v3.0.0/chart-testing_3.0.0_linux_amd64.tar.gz')
-sha256sums=('d0c324cb7edee0c894bb52df63cd8d5e7d85659d94e61004915c688a87d054ea')
-pkgdesc="CLI tool for linting and testing Helm charts"
-arch=('x86_64')
-url="https://github.com/helm/chart-testing/"
+pkgdesc='CLI tool for linting and testing Helm charts'
+arch=('x86_64' 'aarch64' 'armv6h')
+url='https://github.com/helm/chart-testing'
 license=('Apache')
-depends=('helm' 'kubectl' 'yamllint' 'git' 'yamale')
-provides=('ct')
-backup=('etc/lintconfig.conf')
+depends=('kubectl' 'git' 'yamllint' 'helm' 'yamale')
+makedepends=('go')
+source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('f1e3c4004c3157fca2cbd6eeb95f2618e4e1f8c52af149d22a342bb0bc0611a4')
+backup=('etc/ct/lintconf.yaml')
+
+build() {
+  local _commit=
+  _commit=$(bsdcat "$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)
+  local -a x=(
+    BuildDate="$(TZ=UTC printf '%(%FT%T)TZ' "$SOURCE_DATE_EPOCH")"
+    GitCommit="${_commit:?}"
+    Version="v$pkgver"
+  )
+  cd "$pkgname-$pkgver"
+  export CGO_ENABLED=1
+  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
+  go build -o bin/ct \
+    -ldflags "-linkmode=external ${x[*]/#/-X=github.com/helm/chart-testing/v3/ct/cmd.}" ./ct
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  go test -ldflags "-linkmode=external ${x[*]/#/-X=github.com/helm/chart-testing/v3/ct/cmd.}" -short ./...
+}
+
 package() {
-  cp -r etc/ $pkgdir/
-  mkdir -p $pkgdir/usr/bin/
-  cp ct $pkgdir/usr/bin/
+  cd "$pkgname-$pkgver"
+  install -Dm755 bin/ct -t "$pkgdir/usr/bin"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 etc/lintconf.yaml etc/chart_schema.yaml -t "$pkgdir/etc/ct"
+  cp -a doc -t "$pkgdir/usr/share/doc/$pkgname"
+  cp -a examples -t "$pkgdir/usr/share/doc/$pkgname"
 }
