@@ -2,7 +2,7 @@
 
 pkgname=lug-helper
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Star Citizen's Linux Users Group Helper Script"
 arch=('any')
 depends=('bash' 'coreutils' 'curl' 'bc')
@@ -16,7 +16,7 @@ source=(
     'lug-helper.desktop'
 )
 sha256sums=(
-    '513f61fdeb65d4b520143448767602559e0f6f500553c14cac5ca50264e145d6'
+    'b083365f432a37400abaa18215c4c79cc7cdc1d2a3bca08ba6e8527081eb2e00'
     'a69118baac0cd55dfb85a81de1873ab1fee85d3477e13c10628a824ebdc5e22f'
 )
 
