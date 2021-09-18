@@ -1,6 +1,6 @@
 pkgbase = hellpot-git
 	pkgdesc = An endless honeypot that sends bots to hell.
-	pkgver = 0.1.r5.g97fe39b
+	pkgver = 0.1.r20.g8434521
 	pkgrel = 1
 	url = https://github.com/yunginnanet/HellPot
 	arch = i686
@@ -20,12 +20,11 @@ pkgbase = hellpot-git
 	source = service
 	source = tmpfiles
 	source = sysusers
-	source = config.patch
+	source = config.toml
 	sha256sums = SKIP
 	sha256sums = 0136fd65b73e678d12ddff09cd5f71bfea360787cf7955770fe95b64dabe8274
 	sha256sums = faa5d114cd5457075bc6e0a329425814617f4d832d557e19de13a06d3252ca09
 	sha256sums = d462d4a84021cb2ce0052ba6c46ad0ea6e7aab7a9459d048de892d8503a99aee
-	sha256sums = b76d5c946ade6b4de649580f26a0ee885284b44bf555bf6bfa386fef957e8934
+	sha256sums = 8da2c84ec00ff3fc09a468c5389bf9388d3ca59184acfe65f1976e17840371bf
 
 pkgname = hellpot-git
-
