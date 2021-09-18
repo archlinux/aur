@@ -5,7 +5,7 @@
 pkgname=pixelorama-git
 _pkgname=pixelorama
 pkgver=1623.5118d30a
-pkgrel=1
+pkgrel=2
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64')
 url="https://orama-interactive.itch.io/pixelorama"
@@ -82,6 +82,7 @@ package() {
   install -Dm644 "${srcdir}/${_pkgname^}/build/${_pkgname}.pck" \
                  "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}.pck"
 
+  sed -i 's/usr\/lib\/pixelorama /usr\/lib\/pixelorama\/pixelorama /' "${srcdir}/${_pkgname^}/Misc/Linux/${_pkgname}.sh"
   install -Dm755 "${srcdir}/${_pkgname^}/Misc/Linux/${_pkgname}.sh" \
                  "${pkgdir}/usr/bin/${_pkgname}"
 
