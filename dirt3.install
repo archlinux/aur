@@ -1,0 +1,4 @@
+post_install() {
+    echo "On the first run, game startup may take significantly longer while the wine prefix is prepared."
+    echo "If DiRT 3 crashes on first launch, first try setting your native display resolution in ~/Documents/My Games/DiRT3/hardwaresettings/hardware_settings_config.xml; otherwise, set '<directx forcedx9=\"true\" />' as well."
+}

@@ -1,0 +1,21 @@
+pkgbase = dirt3-wine-steam
+	pkgdesc = DiRT 3 Complete Edition using WINE with data via Steam
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://steamdb.info/app/321040/
+	install = dirt3.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = wine
+	depends = winetricks
+	source = dirt3.sh
+	source = dirt3.desktop
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = be6a230f3b9ab47988ed51ed5adf400c404c70448a977b929769c54d4974642c
+	sha256sums = 2637145ea2d9d736330fae8207015bc6c231d58f36131898d5e622de8658f92a
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = dirt3-wine-steam
