@@ -1,0 +1,19 @@
+pkgbase = electronic-wechat-zzy-ac
+	pkgdesc = A better WeChat on macOS and Linux. Built with Electron. Maintained by kooritea
+	pkgver = 2.3.1.1
+	pkgrel = 1
+	url = https://github.com/zzy-ac/electronic-wechat
+	arch = x86_64
+	license = MIT
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	depends = electron4-bin
+	conflicts = electronic-wechat
+	conflicts = electronic-wechat-git
+	replaces = electronic-wechat
+	replaces = electronic-wechat-git
+	source = https://github.com/zzy-ac/electronic-wechat/releases/download/v2.3.1.1/electronic-wechat-linux-x64.tar.gz
+	md5sums = 965fdff3701fa8c8be9be1353659e349
+
+pkgname = electronic-wechat-zzy-ac
