@@ -14,7 +14,7 @@ license=('MIT')
 depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libpulse' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr')
 makedepends=('curl' 'godot' 'unzip' 'xorg-server-xvfb')
 provides=('pixelorama')
-conflicts=('pixelorama-bin' 'pixelorama-git')
+conflicts=('pixelorama-bin' 'pixelorama')
 source=("${_pkgname}::git+${_url}.git")
 sha512sums=(SKIP)
 

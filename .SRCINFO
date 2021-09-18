@@ -25,7 +25,7 @@ pkgbase = pixelorama-git
 	depends = libxrandr
 	provides = pixelorama
 	conflicts = pixelorama-bin
-	conflicts = pixelorama-git
+	conflicts = pixelorama
 	source = pixelorama::git+https://github.com/Orama-Interactive/Pixelorama.git
 	sha512sums = SKIP
 
