@@ -1,7 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: github alexhuntley/Plots
+# pkg: github alexhuntley/Plots setuptools
 pkgname=plots
-_gitname=Plots
+_name=Plots
 
 pkgver=0.6.0
 pkgrel=2
@@ -12,13 +12,6 @@ url="https://github.com/alexhuntley/Plots"
 license=('GPL')
 depends=(
     'gtk3'
-    'python-gobject'
-    'python-opengl'
-    'python-jinja'
-    'python-numpy'
-    'python-lark-parser'
-    'python-freetype-py'
-    'python-pyglm'
     'otf-latinmodern-math'
 )
 
@@ -26,21 +19,21 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/alexhuntley/$_gitname/archive/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/alexhuntley/$_name/archive/v$pkgver.tar.gz"
 )
 sha256sums=('cfc918dc68cf0e1a19494a23c4df9d8cc048b229717dfdc533922367c9e0c20a')
 
 build() {
-    cd "$_gitname-$pkgver"
+    cd "$_name-$pkgver"
     python setup.py build
 }
 check() {
-    cd "$_gitname-$pkgver"
+    cd "$_name-$pkgver"
     python setup.py test
 }
 
 package() {
-    cd "$_gitname-$pkgver"
+    cd "$_name-$pkgver"
     rm -rf build/lib/tests
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -D -t "$pkgdir/usr/share/help/C/plots/" help/C/*
