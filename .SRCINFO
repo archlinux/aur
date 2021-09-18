@@ -1,0 +1,14 @@
+pkgbase = rubin-git
+	pkgdesc = Translates English binaries to Russian
+	pkgver = 1.0.r2.g922992a
+	pkgrel = 1
+	url = https://github.com/BiteDasher/rubin
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = sed
+	source = rubin-git::git+https://github.com/BiteDasher/rubin.git
+	sha512sums = SKIP
+
+pkgname = rubin-git
