@@ -1,0 +1,17 @@
+pkgbase = dungeondefenders-hib
+	pkgdesc = Dungeon Defenders Linux-native with data via Humble Bundle
+	pkgver = 03052013
+	pkgrel = 1
+	url = https://www.humblebundle.com/store/dungeon-defenders-collection
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	source = dungeondefenders.sh
+	source = dungeondefenders.desktop
+	source = hib://dundef-linux-03052013.mojo.run
+	sha256sums = 87f7777610ffe8355b7c08bd779b89f4703e49e5486688c1d8f26a6c016ccf2b
+	sha256sums = 099db209518621519045611c7f57ceb786cc8a51a046081e4958bb47d7e29ae1
+	sha256sums = bc81021859871169285111ef7b1806952dcc17b128f3e387d9b5072918490c61
+
+pkgname = dungeondefenders-hib

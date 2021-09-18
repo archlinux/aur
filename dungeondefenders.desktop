@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Dungeon Defenders
+Comment=Dungeon Defenders Linux-native
+Exec=/usr/bin/dungeondefenders
+Icon=dungeondefenders
+Terminal=false
+Type=Application
+Categories=Application;Game;
