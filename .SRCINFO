@@ -1,6 +1,6 @@
 pkgbase = metar
 	pkgdesc = Trivial, yet fully fledged, weather report
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/maandree/metar
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = metar
 	depends = curl
 	depends = coreutils
 	depends = python3
-	source = metar-1.3.3.tar.gz::https://github.com/maandree/metar/archive/1.3.3.tar.gz
-	sha256sums = e3d705f9eefbae585bb614cb2bc7fe74e14fb8dc760df0dc2ff0e0b3b087d5a0
+	source = metar-1.3.4.tar.gz::https://github.com/maandree/metar/archive/1.3.4.tar.gz
+	sha256sums = 599b3e11002bfb87dfbf2f32baa53eb8494083fc284ff35d9562cc1c9b1a2cca
 
 pkgname = metar
-
