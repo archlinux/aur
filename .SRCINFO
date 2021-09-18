@@ -1,6 +1,6 @@
 pkgbase = mozillavpn
 	pkgdesc = A fast, secure and easy to use VPN. Built by the makers of Firefox.
-	pkgver = 2.4.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://vpn.mozilla.org/
 	arch = i686
@@ -28,9 +28,11 @@ pkgbase = mozillavpn
 	depends = wireguard-tools
 	depends = WIREGUARD-MODULE
 	depends = openresolv
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.4.1-hirsute1/mozillavpn_2.4.1.orig.tar.gz
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.4.1-hirsute1/mozillavpn_2.4.1-hirsute1.debian.tar.xz
-	sha256sums = 41072b7554cd0aaf5f66c90c088bf6b88e241fc02723c251a2f61aedcd99de4e
-	sha256sums = deeaed77c2835786e0d36c572440549c40d1f3c909f4ca6026163d20c11634fa
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.5.0-hirsute2/mozillavpn_2.5.0.orig.tar.gz
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.5.0-hirsute2/mozillavpn_2.5.0-hirsute2.debian.tar.xz
+	source = libgo.patch
+	sha256sums = 2549774bd742e08cdbe2177fe43f2ce514f2dd102b1c6f68e587ce1fdbc7a71a
+	sha256sums = 7a76fc487168bfde3b31361f380ca93feb59517e8f31c8153fa7fb67cfe37719
+	sha256sums = 3c5b7047481922a1b5c6673ae78750d1af8e9dbde85632804356c829dadfa301
 
 pkgname = mozillavpn

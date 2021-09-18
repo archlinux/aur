@@ -1,0 +1,12 @@
+--- src/src.pro	2021-09-11 11:19:13.000000000 -0700
++++ src/src_new.pro	2021-09-18 13:45:48.866137046 -0700
+@@ -382,9 +382,6 @@
+     QT += networkauth
+     QT += dbus
+ 
+-    system(c++ -lgo 2>&1 | grep "__go_init_main" > /dev/null) {
+-        LIBS += -lgo
+-    }
+ 
+     CONFIG += c++14
+ 
