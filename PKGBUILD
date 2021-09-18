@@ -24,7 +24,7 @@ source=(
 backup=('etc/hellpot/config.toml')
 sha256sums=('SKIP'
             '0136fd65b73e678d12ddff09cd5f71bfea360787cf7955770fe95b64dabe8274'
-            'faa5d114cd5457075bc6e0a329425814617f4d832d557e19de13a06d3252ca09'
+            'a370bd1f4f1caa1aa4777e3a6cb6c752f711721c9913e09c78a11d304bc53b37'
             'd462d4a84021cb2ce0052ba6c46ad0ea6e7aab7a9459d048de892d8503a99aee'
             '8da2c84ec00ff3fc09a468c5389bf9388d3ca59184acfe65f1976e17840371bf')
 
