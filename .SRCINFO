@@ -37,12 +37,15 @@ pkgname = linux-mainline-anbox
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	provides = linux-mainline
 	replaces = virtualbox-guest-modules-mainline
 	replaces = wireguard-maineline
 
 pkgname = linux-mainline-anbox-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline with ashmem and binder modules enabled kernel
 	depends = pahole
+	provides = linux-mainline-headers
 
 pkgname = linux-mainline-anbox-docs
 	pkgdesc = Documentation for the Linux Mainline with ashmem and binder modules enabled kernel
+	provides = linux-mainline-docs
