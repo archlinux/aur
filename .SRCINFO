@@ -1,6 +1,6 @@
 pkgbase = r-shinywidgets
 	pkgdesc = Custom Inputs Widgets for Shiny
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shinyWidgets
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-shinywidgets
 	optdepends = r-ggplot2
 	optdepends = r-dt
 	optdepends = r-scales
-	source = https://cran.r-project.org/src/contrib/shinyWidgets_0.6.1.tar.gz
-	md5sums = b0cc2fb2cf4324282df282a8ac303fcb
+	source = https://cran.r-project.org/src/contrib/shinyWidgets_0.6.2.tar.gz
+	md5sums = 609f923997609f16e64f35d74513a7cd
 
 pkgname = r-shinywidgets
