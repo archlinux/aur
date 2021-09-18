@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=bfind
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="find alternative optimised for finding files rather then listing files"
 url="https://github.com/maandree/bfind"
@@ -10,7 +10,7 @@ license=(custom:ISC)
 depends=()
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=(d50ac7dd28829e4ae7e5c0ad5509ca2036f87207f898e2b6cd97fa1735ae0104)
+sha256sums=(b5f44e57464debaeb48f3df38ac26468d6fdee3ef53f5c79e3367b94e1b6ae5d)
 
 
 build() {

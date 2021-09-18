@@ -1,12 +1,11 @@
 pkgbase = bfind
 	pkgdesc = find alternative optimised for finding files rather then listing files
-	pkgver = 3.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/maandree/bfind
 	arch = any
 	license = custom:ISC
-	source = bfind-3.0.tar.gz::https://github.com/maandree/bfind/archive/3.0.tar.gz
-	sha256sums = d50ac7dd28829e4ae7e5c0ad5509ca2036f87207f898e2b6cd97fa1735ae0104
+	source = bfind-3.0.1.tar.gz::https://github.com/maandree/bfind/archive/3.0.1.tar.gz
+	sha256sums = b5f44e57464debaeb48f3df38ac26468d6fdee3ef53f5c79e3367b94e1b6ae5d
 
 pkgname = bfind
-
