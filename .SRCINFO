@@ -1,6 +1,6 @@
 pkgbase = python-mathlibtools
 	pkgdesc = This package contains leanproject, a supporting tool for Lean mathlib
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 2
 	url = https://github.com/leanprover-community/mathlib-tools
 	arch = any
@@ -16,8 +16,9 @@ pkgbase = python-mathlibtools
 	depends = python-networkx
 	depends = python-pydot
 	depends = python-yaml
+	depends = python-atomicwrites
 	optdepends = lean-community
-	source = https://pypi.io/packages/source/m/mathlibtools/mathlibtools-1.0.0.tar.gz
-	sha256sums = da41c65e206f55b1faea303581fc11215e52d6e6990b827336b2e1eb82aad96c
+	source = https://pypi.io/packages/source/m/mathlibtools/mathlibtools-1.1.0.tar.gz
+	sha256sums = 789f070f35424e89e4f2e2c007382250133cc48877627e37c5c463bcf4a1b58a
 
 pkgname = python-mathlibtools
