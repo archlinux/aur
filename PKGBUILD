@@ -3,11 +3,11 @@
 
 pkgname="fusiondirectory-plugins"
 pkgver=1.4.dev
-pkgrel=1
+pkgrel=2
 _commit="ffbf0f994950abac4a411b7840fcbcc614db9692"
 pkgdesc="FusionDirectory core plugins"
 url="http://fusiondirectory.org/"
-license=("GPL")
+license=("GPL2")
 arch=("any")
 depends=("fusiondirectory")
 source=("https://github.com/fusiondirectory/fusiondirectory-plugins/archive/$_commit.tar.gz")
@@ -29,6 +29,13 @@ package(){
   if [ -d "contrib/openldap" ]; then
    mkdir -p "$pkgdir/etc/openldap/schema/fusiondirectory"
    cp -a "contrib/openldap"/* "$pkgdir/etc/openldap/schema/fusiondirectory"
+  fi
+  ################################ /usr/share/webapps/fusiondirectory/ihtml
+  if [ -d "ihtml/themes" ]; then
+   # recreate existing folder structure in target directory and copy files
+   find "ihtml/themes" -type d -exec mkdir -p "$pkgdir/usr/share/webapps/fusiondirectory/{}" \;
+   find "ihtml/themes" -type f -exec mv -n '{}' "$pkgdir/usr/share/webapps/fusiondirectory/{}" \;
+   rm -r "ihtml/themes"
   fi
   ################################ /usr/share/webapps/fusiondirectory/html
   if [ -d "html" ]; then
