@@ -3,7 +3,7 @@
 
 pkgname=qtile-git
 pkgver=v0.18.0.r112.g2ec771fe
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured, pure-Python tiling window manager. (git version)"
 arch=('x86_64')
 url="http://www.qtile.org"
