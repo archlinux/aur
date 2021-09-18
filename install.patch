@@ -1,43 +1,87 @@
-79,80c79,80
-<   - directory ${LIBDIR}/ccfe/ccfe.menu     (the previous test menu)
-<   - file      ${LIBDIR}/ccfe/it_works.txt  (this file)
----
->   - directory /usr/lib/ccfe/ccfe.menu     (the previous test menu)
->   - file      /usr/lib/ccfe/it_works.txt  (this file)
-121a122,128
->   exp_etcdir="\/etc\/ccfe"
->   exp_bindir="\/usr\/bin"
->   exp_libdir="\/usr\/lib"
->   exp_logdir="\/var\/log\/ccfe"
->   exp_msgdir="\/usr\/share\/ccfe\/msg"
->   exp_docdir="\/usr\/share\/doc"
-> 
-158,167c165,174
-<     cat <<EOT > "$ETCDIR/$SAVED_INFO"
-< # Installed on $(date)
-< ETCDIR="$ETCDIR"
-< BINDIR="$BINDIR"
-< LIBDIR="$LIBDIR"
-< LOGDIR="$LOGDIR"
-< MSGDIR="$MSGDIR"
-< MANDIR="$MANDIR"
-< DOCDIR="$DOCDIR"
-< EOT
----
->     #cat <<EOT > "$ETCDIR/$SAVED_INFO"
-> ## Installed on $(date)
-> #ETCDIR="$ETCDIR"
-> #BINDIR="$BINDIR"
-> #LIBDIR="$LIBDIR"
-> #LOGDIR="$LOGDIR"
-> #MSGDIR="$MSGDIR"
-> #MANDIR="$MANDIR"
-> #DOCDIR="$DOCDIR"
-> #EOT
-316,321d322
-<   exp_etcdir=$(echo $ETCDIR | sed -e 's/\//\\\//g')
-<   exp_bindir=$(echo $BINDIR | sed -e 's/\//\\\//g')
-<   exp_libdir=$(echo $LIBDIR | sed -e 's/\//\\\//g')
-<   exp_logdir=$(echo $LOGDIR | sed -e 's/\//\\\//g')
-<   exp_msgdir=$(echo $MSGDIR | sed -e 's/\//\\\//g')
-<   exp_docdir=$(echo $DOCDIR | sed -e 's/\//\\\//g')
+diff -aur src.orig/ccfe-1.58/install.sh src/ccfe-1.58/install.sh
+--- src.orig/ccfe-1.58/install.sh	2021-09-18 23:45:22.434752742 +0200
++++ src/ccfe-1.58/install.sh	2021-09-18 23:59:34.092535077 +0200
+@@ -95,23 +95,23 @@
+   IT WORKS!!!
+ 
+   Please remove the following objects:
+-  - directory ${LIBDIR}/ccfe/ccfe.menu     (the previous test menu)
+-  - file      ${LIBDIR}/ccfe/it_works.txt  (this file)
++  - directory /usr/lib/ccfe/ccfe.menu     (the previous test menu)
++  - file      /usr/lib/ccfe/it_works.txt  (this file)
+ 
+   The demo menu will still be available running the command
+ 
+-    ${BINDIR}/ccfe demo
++    /usr/bin/ccfe demo
+ 
+   but if you want to remove it, you have to delete the following directories:
+-    ${LIBDIR}/ccfe/demo.menu
+-    ${LIBDIR}/ccfe/demo.d
++    /usr/lib/ccfe/demo.menu
++    /usr/lib/ccfe/demo.d
+ 
+   CCFE demos uses /bin/sh as shell interpreter, and they assume that it is a
+   Bourne compatible shell. If it is not like this, please change the CCFE shell
+-  in the ${ETCDIR}/ccfe.conf file.
++  in the /etc/ccfe.conf file.
+ 
+   You can find documentation, samples and Licensing Information in the
+-  directory ${DOCDIR}.
++  directory /usr/share/doc/ccfe.
+ 
+ 
+   Enjoy!
+@@ -138,6 +138,13 @@
+   fi
+   
+   echo "Copying program files..."
++  exp_etcdir="\/etc\/ccfe"
++  exp_bindir="\/usr\/bin"
++  exp_libdir="\/usr\/lib"
++  exp_logdir="\/var\/log\/ccfe"
++  exp_msgdir="\/usr\/share\/ccfe\/msg"
++  exp_docdir="\/usr\/share\/doc"
++
+   sed -e "/^\$PREFIX = /d ; s/^\$ETCDIR = .*$/\$ETCDIR = '$exp_etcdir';/ ; s/^\$BINDIR = .*$/\$BINDIR = '$exp_bindir';/ ;s/^\$LIBDIR = .*$/\$LIBDIR = '$exp_libdir';/ ;s/^\$LOGDIR = .*$/\$LOGDIR = '$exp_logdir';/ ;s/^\$MSGDIR = .*$/\$MSGDIR = '$exp_msgdir';/ ;" ccfe.pl > $BINDIR/ccfe
+   chmod 755 $BINDIR/ccfe
+ 
+@@ -175,16 +182,16 @@
+   if [ $update -eq 0 ]; then
+     # Save subdirs for future uninstall option:
+     echo "Saving install informations..."
+-    cat <<EOT > "$ETCDIR/$SAVED_INFO"
+-# Installed on $(date)
+-ETCDIR="$ETCDIR"
+-BINDIR="$BINDIR"
+-LIBDIR="$LIBDIR"
+-LOGDIR="$LOGDIR"
+-MSGDIR="$MSGDIR"
+-MANDIR="$MANDIR"
+-DOCDIR="$DOCDIR"
+-EOT
++    #cat <<EOT > "$ETCDIR/$SAVED_INFO"
++## Installed on $(date)
++#ETCDIR="$ETCDIR"
++#BINDIR="$BINDIR"
++#LIBDIR="$LIBDIR"
++#LOGDIR="$LOGDIR"
++#MSGDIR="$MSGDIR"
++#MANDIR="$MANDIR"
++#DOCDIR="$DOCDIR"
++#EOT
+   fi
+   echo "Done."
+ }
+@@ -333,11 +340,5 @@
+ 
+ if [ \( "$keybuff" = 'S' -o "$keybuff" = 's' \) -o $batch -eq 1 ]
+ then
+-  exp_etcdir=$(echo $ETCDIR | sed -e 's/\//\\\//g')
+-  exp_bindir=$(echo $BINDIR | sed -e 's/\//\\\//g')
+-  exp_libdir=$(echo $LIBDIR | sed -e 's/\//\\\//g')
+-  exp_logdir=$(echo $LOGDIR | sed -e 's/\//\\\//g')
+-  exp_msgdir=$(echo $MSGDIR | sed -e 's/\//\\\//g')
+-  exp_docdir=$(echo $DOCDIR | sed -e 's/\//\\\//g')
+   install
+ fi

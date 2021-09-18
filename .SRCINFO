@@ -1,7 +1,7 @@
 pkgbase = ccfe
 	pkgdesc = Tool to supply an interactive screen-oriented interface to command line scripts and commands
 	pkgver = 1.58
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ccfe.altervista.org
 	arch = any
 	license = GPL2
@@ -11,6 +11,6 @@ pkgbase = ccfe
 	source = install.patch
 	md5sums = 043617fe5331776a8aa600e505d5fdfa
 	md5sums = 9f78a2fa9c90676d60fa9cae28393733
-	md5sums = 4ce34496f93ce68a7f0bde297d18acfd
+	md5sums = 2c95353b53b3399ac9317a7a6fd299a4
 
 pkgname = ccfe
