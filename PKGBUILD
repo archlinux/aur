@@ -2,7 +2,7 @@
 
 pkgname=drone-runner-docker
 pkgver=1.6.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Drone pipeline runner that executes builds inside Docker containers"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('Polyform-Small-Business-1.0.0' 'Polyform-Free-Trial-1.0.0')

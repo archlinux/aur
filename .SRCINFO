@@ -1,7 +1,7 @@
 pkgbase = drone-runner-docker
 	pkgdesc = Drone pipeline runner that executes builds inside Docker containers
 	pkgver = 1.6.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/drone-runners/drone-runner-docker
 	install = drone-runner-docker.install
 	arch = x86_64
