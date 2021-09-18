@@ -5,7 +5,7 @@ _static_liftoff=0
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.9.r18.gb5001aa
+pkgver=3.9.2.r1.g14c4b70
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -19,10 +19,10 @@ source=("git+https://github.com/Plagman/gamescope.git")
 sha512sums=('SKIP')
 
 if [ $_static_wlroots -gt 0 ]; then
-    depends+=("libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors")
+    depends+=("libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors" "seatd")
     makedepends+=("cmake")
 else
-    depends+=("wlroots=0.13.0")
+    depends+=("wlroots-git")
 fi
 
 if [ $_static_liftoff -gt 0 ]; then
