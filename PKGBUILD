@@ -4,7 +4,7 @@ pkgname=plots
 _gitname=Plots
 
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graph plotting app for GNOME"
 
 arch=(any)
@@ -17,6 +17,8 @@ depends=(
     'python-jinja'
     'python-numpy'
     'python-lark-parser'
+    'python-freetype-py'
+    'python-pyglm'
     'otf-latinmodern-math'
 )
 
