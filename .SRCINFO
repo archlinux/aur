@@ -20,5 +20,6 @@ pkgbase = fluent-bit
 	backup = etc/fluent-bit/parsers.conf
 	source = https://fluentbit.io/releases/1.8/fluent-bit-1.8.7.tar.gz
 	sha512sums = 966cec103580ed52257245b801ccd35fda13c3a4cbefbf52533248e291fa4e80225ab06e01911c4aa5411f5254246e1237c736374c3d1cde4e20aefc13800565
+	b2sums = eeb77789a9adf83e8ef094587175689b0d143b2157ea4ae8543e6f44fb06e381ad055ffb05dc21291bf66a88bd76242777b1c3de5eb12b592f0f948a4a726e5a
 
 pkgname = fluent-bit
