@@ -1,7 +1,7 @@
 # Maintainer: Jesús Castro <x51v4n@gmail.com>
 
 pkgname=i3-gnome
-pkgver=40
+pkgver=40.4
 pkgrel=1
 epoch=1
 pkgdesc="Use i3 with GNOME Session integration."
@@ -18,7 +18,7 @@ optdepends=(
 	'gnome-flashback'
 )
 source=($pkgname-$pkgver.zip::https://github.com/i3-gnome/i3-gnome/archive/$pkgver.zip)
-sha512sums=('54cf1e0f3ca2f9966d81caa183e9cc2abf7717f5a4aa6e191e8d3c37c84f26e8048e6e7caf02c45637e6c8679ac230c7be87c3bfff89a3fd6cb1fb8a4f913e91')
+sha512sums=('21e97de791bd99e971ed6837f4e3349a02add98cfe6c6d392adf22d1bab17ade783bbc0833ee77cafcf27460e33a14c0305b0b442b20a2ea1c03425e4c15b867')
 
 build() {
   cd "$pkgname-$pkgver"
