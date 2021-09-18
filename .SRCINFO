@@ -11,8 +11,10 @@ pkgbase = electronic-wechat-zzy-ac
 	depends = electron4-bin
 	conflicts = electronic-wechat
 	conflicts = electronic-wechat-git
+	conflicts = electronic-wechat-bin
 	replaces = electronic-wechat
 	replaces = electronic-wechat-git
+	replaces = electronic-wechat-bin
 	source = https://github.com/zzy-ac/electronic-wechat/releases/download/v2.3.1.1/electronic-wechat-linux-x64.tar.gz
 	md5sums = 965fdff3701fa8c8be9be1353659e349
 
