@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libclut
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="C library for manipulating colour lookup tables"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('ISC')
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(efb1b8b81c16a329e676bc56b6b546086da096ec58ee76f6869f10bfa5954235)
+sha256sums=(43b38b117dc73f241d32274b79487bd55428fe494e710d4ddb8df475ee7084cc)
 
 
 build() {
@@ -21,5 +21,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make install PREFIX=/usr DESTDIR="$pkgdir"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }

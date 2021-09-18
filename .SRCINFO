@@ -1,13 +1,12 @@
 pkgbase = libclut
 	pkgdesc = C library for manipulating colour lookup tables
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/maandree/libclut
 	arch = i686
 	arch = x86_64
 	license = ISC
-	source = libclut-1.2.tar.gz::https://github.com/maandree/libclut/archive/1.2.tar.gz
-	sha256sums = efb1b8b81c16a329e676bc56b6b546086da096ec58ee76f6869f10bfa5954235
+	source = libclut-1.2.1.tar.gz::https://github.com/maandree/libclut/archive/1.2.1.tar.gz
+	sha256sums = 43b38b117dc73f241d32274b79487bd55428fe494e710d4ddb8df475ee7084cc
 
 pkgname = libclut
-
