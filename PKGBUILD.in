@@ -3,6 +3,7 @@
 pkgname=foss-fpga-tools-nightly
 pkgver=@VER@
 pkgrel=1
+epoch=1
 pkgdesc="Meta package for the nightly version of the FOSS FPGA Tools"
 arch=("any")
 url="https://aur.archlinux.org/packages/foss-fpga-tools-nightly/"
@@ -10,12 +11,15 @@ license=("custom:ISC")
 groups=()
 options=("!strip")
 depends=(
-	"yosys-nightly"
-	"symbiyosys-nightly"
-	"nextpnr-generic-nightly"
-	"icestorm-nightly" "nextpnr-ice40-nightly"
-	"prjtrellis-nightly" "nextpnr-ecp5-nightly"
-	"prjoxide-nightly" "nextpnr-nexus-nightly"
+	"yosys-nightly>=@YOSYS_VER@"
+	"symbiyosys-nightly>=@SBY_VER@"
+	"nextpnr-generic-nightly>=@NPRG_VER@"
+	"icestorm-nightly>=@ICE_VER@"
+	"nextpnr-ice40-nightly>=@NPRI_VER@"
+	"prjtrellis-nightly>=@TREL_VER@"
+	"nextpnr-ecp5-nightly>=@NPRE_VER@"
+	"prjoxide-nightly>=@OXIDE_VER@"
+	"nextpnr-nexus-nightly>=@NPRO_VER@"
 )
 
 package() {
