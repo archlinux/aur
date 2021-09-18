@@ -3,12 +3,12 @@
 _pkgname=devtools
 pkgname="python-${_pkgname}"
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python's missing debug print command and other development tools."
 arch=('any')
 url="https://pypi.org/project/${_pkgname}"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-executing')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/samuelcolvin/python-devtools/archive/v${pkgver}.tar.gz"
         LICENSE)
