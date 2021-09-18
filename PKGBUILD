@@ -4,6 +4,7 @@ pkgbase=linux-slim
 _srcname=linux
 gitver=v5.14.6
 patchver=20210914
+patchname=more-uarches-for-kernel-5.8-5.14.patch
 pkgver=5.14.v.6
 pkgrel=1
 arch=('x86_64')
@@ -20,7 +21,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 	# linux package install directives for pacman
 	'linux.install'
 	# patch from our graysky archlinux colleague
-	"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/$patchver/more-uarches-for-kernel-5.8+.patch"
+	"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/$patchver/$patchname"
 )
 sha256sums=('SKIP'
             #config.x86_64
