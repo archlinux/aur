@@ -5,7 +5,7 @@ pkgver=13.4.0
 _commit=75f366f4d0be2318584ffd3157b0e7356fce7c78
 _chromiumver=91.0.4472.164
 _gcc_patchset=5
-pkgrel=1
+pkgrel=2
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
@@ -30,6 +30,8 @@ source=('git+https://github.com/electron/electron.git'
         'add-clang-nomerge-attribute-to-CheckError.patch'
         'chromium-freetype-2.11.patch'
         'chromium-glibc-2.33.patch'
+        'chromium-harfbuzz-3.0.0.patch'
+        'skia-harfbuzz-3.0.0.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
         'unbundle-use-char16_t-as-UCHAR_TYPE.patch'
        )
@@ -43,6 +45,8 @@ sha256sums=('SKIP'
             '50133dd196d288ad538bb536aa51dccd6cb4aacfd9a60160f77e8fb16034b460'
             '940346d3599d09366068d88b65dfcbcab187ceb5d14dc7c7f9b6ae5e6f25ec7d'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
+            '7ce947944a139e66774dfc7249bf7c3069f07f83a0f1b2c1a1b14287a7e15928'
+            'c9ed1dbadaf4be6097e25bc5577b91751799befc2d0376b143e1bd10def5754e'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
            )
@@ -138,6 +142,8 @@ prepare() {
   patch -Rp1 -i ../add-clang-nomerge-attribute-to-CheckError.patch
   patch -Np1 -i ../chromium-freetype-2.11.patch
   patch -Np1 -i ../chromium-glibc-2.33.patch
+  patch -Np1 -i ../chromium-harfbuzz-3.0.0.patch
+  patch -Np1 -d third_party/skia <../skia-harfbuzz-3.0.0.patch
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
   patch -Np1 -i ../unbundle-use-char16_t-as-UCHAR_TYPE.patch
   patch -Np1 -i ../use-system-libraries-in-node.patch
