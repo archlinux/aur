@@ -1,11 +1,43 @@
-From df16033e953f32aff878421cbd4658b875c1d6fe Mon Sep 17 00:00:00 2001
+From c76d0e81f0480e7a40db872677e837ae4c8a44aa Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Thu, 16 Sep 2021 17:14:12 -0700
-Subject: [PATCH] v5.14.5 s0ix patch 2021-09-16
+Date: Sat, 18 Sep 2021 15:36:27 -0700
+Subject: [PATCH] v5.14.6 s0ix patch 2021-09-18
 
 Squashed commit of the following:
 
-commit 7f82e15521045eca9fc1f0a1d19c33f7341192ea
+commit 90f4fc1b714d70c368ae7458b5c9682775a6e0e1
+Author: Sanket Goswami <Sanket.Goswami@amd.com>
+Date:   Thu Sep 16 18:11:30 2021 +0530
+
+    platform/x86: amd-pmc: Check s0i3 cycle status
+
+    As the PM firmware returns the status of the last s0i3 in the smu_metrics
+    structure, the existing name "s0i3_cyclecount" seems to be a misnomer.
+    Change it accordingly to "s0i3_last_entry_status".
+
+    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
+    Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+
+commit 014e2fdeaf232d1c5fd1a74813f749a7a6c0f812
+Author: Sanket Goswami <Sanket.Goswami@amd.com>
+Date:   Thu Sep 16 18:10:02 2021 +0530
+
+    platform/x86: amd-pmc: Export Idlemask values based on the APU
+
+    IdleMask is the metric used by the PM firmware to know the status of each
+    of the Hardware IP blocks monitored by the PM firmware.
+
+    Knowing this value is key to get the information of s2idle suspend/resume
+    status. This value is mapped to PMC scratch registers, retrieve them
+    accordingly based on the CPU family and the underlying firmware support.
+
+    Co-developed-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
+    Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
+
+commit 50913ca2c9ffb1d07fe0f402249ae151e95e87df
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -20,7 +52,7 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 94c60b2289ca7483f2d48d200edb8b23f39881ae
+commit 949ccde94b90a5966c23d1bd286b28778b5dbf20
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Sep 9 11:19:43 2021 -0500
 
@@ -43,7 +75,7 @@ Date:   Thu Sep 9 11:19:43 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1629
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 36a13294c884011b705a4ff1d3b9d9deab78ec47
+commit 235b6c0ae71da1245e4cb5fcede464f629d8d1ec
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Wed Jul 21 18:10:28 2021 -0700
 
@@ -52,7 +84,7 @@ Date:   Wed Jul 21 18:10:28 2021 -0700
     patch this per Mario's request:
     https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
 
-commit 7ac02cee0dc17a5c0071b8f0ad4f9eeab20bb543
+commit fe0d159834023ad729170befd9cd09f82cef4471
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -65,7 +97,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit fcc81ce9f30d45568c13b57112511af1c08b4757
+commit 9cf6e041f865e42514bcb8429a20c1c056d7a5ab
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -78,7 +110,7 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 33e3bd8dde8e7c55f2d02c89f8503141ee77227b
+commit 91f7908d258f1edc3287429b236710ee790dd217
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Aug 31 11:36:19 2021 -0500
 
@@ -107,7 +139,7 @@ Date:   Tue Aug 31 11:36:19 2021 -0500
     Reported-by: Maxwell Beck <max@ryt.one>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit a5ca9759e756abdc8f2fa6394957040294b4b952
+commit 04cd8a215540e78dba7c63aeba71fc563ea4038b
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:33:01 2021 -0700
 
@@ -119,7 +151,7 @@ Date:   Tue Jul 20 23:33:01 2021 -0700
 
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 
-commit 5303dcf8d0a01669d8d2d638e4f1e8ce26ee43a6
+commit dd4c25dc971802f3f8ccb9d21f3b4842b8894c5e
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:31:31 2021 -0700
 
@@ -132,13 +164,13 @@ Date:   Tue Jul 20 23:31:31 2021 -0700
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 ---
  drivers/acpi/processor_idle.c                 |  3 +-
- drivers/acpi/x86/s2idle.c                     | 67 +++++++++++--------
+ drivers/acpi/x86/s2idle.c                     | 67 ++++++++-------
  .../gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c    |  3 +
  .../gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c    |  3 +
- drivers/pinctrl/pinctrl-amd.c                 | 19 ++++--
+ drivers/pinctrl/pinctrl-amd.c                 | 19 +++--
  drivers/pinctrl/pinctrl-amd.h                 |  1 +
- drivers/platform/x86/amd-pmc.c                |  3 +-
- 7 files changed, 64 insertions(+), 35 deletions(-)
+ drivers/platform/x86/amd-pmc.c                | 84 ++++++++++++++++++-
+ 7 files changed, 143 insertions(+), 37 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index 095c8aca141e..1b6529396371 100644
@@ -347,10 +379,21 @@ index 95e763424042..1d4317073654 100644
  
  /*  KERNCZ configuration*/
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index 3481479a2942..6d2d3650f8b9 100644
+index 3481479a2942..a489f1e4d7dc 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
-@@ -71,7 +71,7 @@
+@@ -29,6 +29,10 @@
+ #define AMD_PMC_REGISTER_RESPONSE	0x980
+ #define AMD_PMC_REGISTER_ARGUMENT	0x9BC
+ 
++/* PMC Scratch Registers */
++#define AMD_PMC_SCRATCH_REG_CZN		0x94
++#define AMD_PMC_SCRATCH_REG_YC		0xD14
++
+ /* Base address of SMU for mapping physical address to virtual address */
+ #define AMD_PMC_SMU_INDEX_ADDRESS	0xB8
+ #define AMD_PMC_SMU_INDEX_DATA		0xBC
+@@ -71,7 +75,7 @@
  #define AMD_CPU_ID_YC			0x14B5
  
  #define PMC_MSG_DELAY_MIN_US		100
@@ -359,7 +402,113 @@ index 3481479a2942..6d2d3650f8b9 100644
  
  #define SOC_SUBSYSTEM_IP_MAX	12
  #define DELAY_MIN_US		2000
-@@ -270,6 +270,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
+@@ -110,6 +114,10 @@ struct amd_pmc_dev {
+ 	u32 base_addr;
+ 	u32 cpu_id;
+ 	u32 active_ips;
++/* SMU version information */
++	u16 major;
++	u16 minor;
++	u16 rev;
+ 	struct device *dev;
+ 	struct mutex lock; /* generic mutex lock */
+ #if IS_ENABLED(CONFIG_DEBUG_FS)
+@@ -133,7 +141,7 @@ static inline void amd_pmc_reg_write(struct amd_pmc_dev *dev, int reg_offset, u3
+ struct smu_metrics {
+ 	u32 table_version;
+ 	u32 hint_count;
+-	u32 s0i3_cyclecount;
++	u32 s0i3_last_entry_status;
+ 	u32 timein_s0i2;
+ 	u64 timeentering_s0i3_lastcapture;
+ 	u64 timeentering_s0i3_totaltime;
+@@ -162,7 +170,8 @@ static int smu_fw_info_show(struct seq_file *s, void *unused)
+ 	seq_puts(s, "\n=== SMU Statistics ===\n");
+ 	seq_printf(s, "Table Version: %d\n", table.table_version);
+ 	seq_printf(s, "Hint Count: %d\n", table.hint_count);
+-	seq_printf(s, "S0i3 Cycle Count: %d\n", table.s0i3_cyclecount);
++	seq_printf(s, "Last S0i3 Status: %s\n", table.s0i3_last_entry_status ? "Success" :
++		   "Unknown/Fail");
+ 	seq_printf(s, "Time (in us) to S0i3: %lld\n", table.timeentering_s0i3_lastcapture);
+ 	seq_printf(s, "Time (in us) in S0i3: %lld\n", table.timein_s0i3_lastcapture);
+ 
+@@ -201,6 +210,66 @@ static int s0ix_stats_show(struct seq_file *s, void *unused)
+ }
+ DEFINE_SHOW_ATTRIBUTE(s0ix_stats);
+ 
++static int amd_pmc_get_smu_version(struct amd_pmc_dev *dev)
++{
++	int rc;
++	u32 val;
++
++	rc = amd_pmc_send_cmd(dev, 0, &val, SMU_MSG_GETSMUVERSION, 1);
++	if (rc)
++		return rc;
++
++	dev->major = (val >> 16) & GENMASK(15, 0);
++	dev->minor = (val >> 8) & GENMASK(7, 0);
++	dev->rev = (val >> 0) & GENMASK(7, 0);
++
++	dev_dbg(dev->dev, "SMU version is %u.%u.%u\n", dev->major, dev->minor, dev->rev);
++
++	return 0;
++}
++
++static int amd_pmc_idlemask_read(struct amd_pmc_dev *pdev, struct device *dev,
++				 struct seq_file *s)
++{
++	u32 val;
++
++	switch (pdev->cpu_id) {
++	case AMD_CPU_ID_CZN:
++		val = amd_pmc_reg_read(pdev, AMD_PMC_SCRATCH_REG_CZN);
++		break;
++	case AMD_CPU_ID_YC:
++		val = amd_pmc_reg_read(pdev, AMD_PMC_SCRATCH_REG_YC);
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	if (dev)
++		dev_dbg(pdev->dev, "SMU idlemask s0i3: 0x%x\n", val);
++
++	if (s)
++		seq_printf(s, "SMU idlemask : 0x%x\n", val);
++
++	return 0;
++}
++
++static int amd_pmc_idlemask_show(struct seq_file *s, void *unused)
++{
++	struct amd_pmc_dev *dev = s->private;
++	int rc;
++
++	if (dev->major > 56 || (dev->major >= 55 && dev->minor >= 37)) {
++		rc = amd_pmc_idlemask_read(dev, NULL, s);
++		if (rc)
++			return rc;
++	} else {
++		seq_puts(s, "Unsupported SMU version for Idlemask\n");
++	}
++
++	return 0;
++}
++DEFINE_SHOW_ATTRIBUTE(amd_pmc_idlemask);
++
+ static void amd_pmc_dbgfs_unregister(struct amd_pmc_dev *dev)
+ {
+ 	debugfs_remove_recursive(dev->dbgfs_dir);
+@@ -213,6 +282,8 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
+ 			    &smu_fw_info_fops);
+ 	debugfs_create_file("s0ix_stats", 0644, dev->dbgfs_dir, dev,
+ 			    &s0ix_stats_fops);
++	debugfs_create_file("amd_pmc_idlemask", 0644, dev->dbgfs_dir, dev,
++			    &amd_pmc_idlemask_fops);
+ }
+ #else
+ static inline void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
+@@ -270,6 +341,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
  	u32 val;
  
  	mutex_lock(&dev->lock);
@@ -367,6 +516,33 @@ index 3481479a2942..6d2d3650f8b9 100644
  	/* Wait until we get a valid response */
  	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
  				val, val != 0, PMC_MSG_DELAY_MIN_US,
+@@ -349,6 +421,8 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
+ 	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_RESET, 0);
+ 	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_START, 0);
+ 
++	/* Dump the IdleMask before we send hint to SMU */
++	amd_pmc_idlemask_read(pdev, dev, NULL);
+ 	msg = amd_pmc_get_os_hint(pdev);
+ 	rc = amd_pmc_send_cmd(pdev, 1, NULL, msg, 0);
+ 	if (rc)
+@@ -371,6 +445,9 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
+ 	if (rc)
+ 		dev_err(pdev->dev, "resume failed\n");
+ 
++	/* Dump the IdleMask to see the blockers */
++	amd_pmc_idlemask_read(pdev, dev, NULL);
++
+ 	return 0;
+ }
+ 
+@@ -457,6 +534,7 @@ static int amd_pmc_probe(struct platform_device *pdev)
+ 	if (err)
+ 		dev_err(dev->dev, "SMU debugging info not supported on this platform\n");
+ 
++	amd_pmc_get_smu_version(dev);
+ 	platform_set_drvdata(pdev, dev);
+ 	amd_pmc_dbgfs_register(dev);
+ 	return 0;
 -- 
 2.33.0
 
