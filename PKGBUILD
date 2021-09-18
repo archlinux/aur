@@ -1,6 +1,6 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 pkgname=adjbacklight
-pkgver=8.2
+pkgver=8.2.1
 pkgrel=1
 pkgdesc="Convenient method for adjusting the backlight on your portable computer"
 arch=('x86_64' 'i686')
@@ -8,7 +8,7 @@ url="https://github.com/maandree/adjbacklight"
 license=('custom:ISC')
 depends=('linux')
 source=(adjbacklight-$pkgver.tar.gz::https://github.com/maandree/adjbacklight/archive/${pkgver}.tar.gz)
-sha256sums=(a9b1775860e9d2ad2c9b1996ce1e19dd5ef93cf8f24c510a80590ed520268ec6)
+sha256sums=(b7a3c90826ced10bd7c31081d07fa834b9900a54e36c8f84b29cb51871bc69c6)
 
 build() {
   cd "${srcdir}/adjbacklight-${pkgver}"
