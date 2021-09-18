@@ -1,0 +1,16 @@
+pkgbase = distance-hib
+	pkgdesc = Distance Linux-native with data via Humble Bundle
+	pkgver = 6895
+	pkgrel = 1
+	url = https://www.humblebundle.com/store/distance
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = distance.sh
+	source = distance.desktop
+	source = hib://distance_6895_linux.tar.gz
+	sha256sums = 996d991435bb7891aa732bd686cf46902d2a9c3721c3b736ec7a86eb20b0f3a2
+	sha256sums = 0cfb7f275ea0665344b63c4aa158016f6741875e3e271ab63fb5d2ab3857d777
+	sha256sums = a6fe7d235ae3e201e841824be1a4c368f8f88265df26e948660e03585d69adae
+
+pkgname = distance-hib

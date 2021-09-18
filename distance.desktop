@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Distance
+Comment=Distance Linux-native
+Exec=/usr/bin/distance
+Icon=distance
+Terminal=false
+Type=Application
+Categories=Application;Game;
