@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libhaiku
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Poetic error messages"
 arch=(x86_64 i686)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(c5988a22d0bb56f4e2d1555e58beb00b9ab62d301f05739c4c127443ef4d2bec)
+sha256sums=(595537127f5206008f48b365362e447a3ca45a705473e31416cca8f09160e169)
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -19,5 +19,5 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    make install PREFIX=/usr DESTDIR="$pkgdir"
+    make PREFIX=/usr DESTDIR="$pkgdir" install
 }
