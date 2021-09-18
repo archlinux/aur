@@ -9,8 +9,8 @@ pkgbase = zcentral_rb-bin
 	depends = dmidecode
 	conflicts = hgsreceiver-bin
 	options = emptydirs
-	source = file://ZCentral_RB_2020.1.0_Linux_Receiver_M39127-001.tar.gz
-	md5sums = ca830774793920bce0dc706d74a5541f
+	source = file://ZCentral_RB_20.3_Linux_Receiver_M39127-005.tar.gz
+	md5sums = b94f87aebe0bf59602d2063d2c4658e3
 
 pkgname = zcentral_rb-bin
 

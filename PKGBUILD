@@ -15,19 +15,21 @@ conflicts=('hgsreceiver-bin')
 #makedepends=('')
 options=('emptydirs')
 noextract=()
-source=("file://ZCentral_RB_2020.1.0_Linux_Receiver_M39127-001.tar.gz")
-md5sums=('ca830774793920bce0dc706d74a5541f')
+
+source=("file://ZCentral_RB_20.3_Linux_Receiver_M39127-005.tar.gz")
+md5sums=('b94f87aebe0bf59602d2063d2c4658e3')
 
 prepare() {
-bsdtar xf ZCentral_RB_2020.1.0_Linux_Receiver_M39127-001.tar.gz
-bsdtar xf rhel7-8/receiver/*.rpm
+bsdtar xf ZCentral_RB_20.3_Linux_Receiver_M39127-005.tar.gz
+bsdtar xf rhel7-8/receiver/*.tar.gz
+bsdtar xf ./*.rpm
 }
 
 package() {
 cd "${srcdir}"
 
 # install licence
-install -m644 -D rhel7-8/receiver/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+install -m644 -D LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 # hack needed to register advance features 
 # N.B. rgsmbiosreader does not work under KVM/QEMU/OVMF bios, nor kernel greater than 4.4.44
@@ -57,8 +59,8 @@ if [ "$_legacyWacomEnabled" = "yes" ]; then
     install -d -m644 etc/udev/rules.d
     cp -uf opt/hpremote/rgreceiver/rules/rgs-pen-tablet.rules etc/udev/rules.d/
 else
-    if [ -f /etc/udev/rules.d/rgs-pen-tablet.rules ]; then
-        rm -f /etc/udev/rules.d/rgs-pen-tablet.rules
+    if [ -f etc/udev/rules.d/rgs-pen-tablet.rules ]; then
+        rm -f etc/udev/rules.d/rgs-pen-tablet.rules
     fi
 fi
 
