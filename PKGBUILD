@@ -1,46 +1,31 @@
-# Maintainer: manolollr <manolollr at riseup dot net>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
-pkgname='raceintospace-git'
-pkgver=r455.e0d423d
+_pkgname=raceintospace
+pkgname=${_pkgname}-git
+pkgver=r1328.58fd94b
 pkgrel=1
 pkgdesc='The computer version of the Liftoff! board game by Fritz Bronner'
-arch=('i686' 'x86_64')
-url='http://www.raceintospace.org/'
+arch=('any')
+url='https://www.raceintospace.org/'
 license=('GPL2')
-depends=('sdl' 'libvorbis' 'libtheora' 'libpng' 'jsoncpp')
-makedepends=('git' 'cmake' 'boost' 'protobuf' 'clang')
-provides=('raceintospace')
-conflicts=('raceintospace')
-source=("$pkgname::git+https://github.com/raceintospace/raceintospace")
+depends=('sdl' 'libvorbis' 'libtheora' 'boost' 'libogg' 'libpng' 'jsoncpp' 'zlib')
+makedepends=('git' 'cmake')
+conflicts=(${_pkgname})
+source=("git+https://github.com/${_pkgname}/${_pkgname}.git")
 md5sums=('SKIP')
-install=$pkgname.install
 
 pkgver() {
-  cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd $pkgname
-
-	# Delete jsoncpp route in some .h files
-	# The repository is prepared to compile using Debian package libjsoncpp-dev
-	# In Debian package route is /usr/include/jsoncpp/json/*
-	# But in Arch Linux package route is /usr/include/json/*
-
-	grep -rl jsoncpp src/game/* | xargs sed -i 's/jsoncpp\///g'
+	cd "${_pkgname}"
+ 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd $pkgname
-	mkdir raceintospace-build; cd raceintospace-build
-	export CXX=clang++ ; export CC=clang
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
-	make
+	cd ${srcdir}/${_pkgname}
+	cmake .
 }
 
 package()
 {
-	cd $pkgname/raceintospace-build
-	make DESTDIR=$pkgdir install
+	cd ${srcdir}/${_pkgname}
+	make DESTDIR=${pkgdir} install
 }

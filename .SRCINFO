@@ -1,26 +1,22 @@
 pkgbase = raceintospace-git
 	pkgdesc = The computer version of the Liftoff! board game by Fritz Bronner
-	pkgver = r455.e0d423d
+	pkgver = r1328.58fd94b
 	pkgrel = 1
-	url = http://www.raceintospace.org/
-	install = raceintospace-git.install
-	arch = i686
-	arch = x86_64
+	url = https://www.raceintospace.org/
+	arch = any
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	makedepends = boost
-	makedepends = protobuf
-	makedepends = clang
 	depends = sdl
 	depends = libvorbis
 	depends = libtheora
+	depends = boost
+	depends = libogg
 	depends = libpng
 	depends = jsoncpp
-	provides = raceintospace
+	depends = zlib
 	conflicts = raceintospace
-	source = raceintospace-git::git+https://github.com/raceintospace/raceintospace
+	source = git+https://github.com/raceintospace/raceintospace.git
 	md5sums = SKIP
 
 pkgname = raceintospace-git
-
