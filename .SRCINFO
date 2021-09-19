@@ -1,0 +1,19 @@
+pkgbase = rtc-pcf85063-dkms
+	pkgdesc = PC85063 kernel module (DKMS)
+	pkgver = 5.11
+	pkgrel = 1
+	url = https://kernel.org
+	arch = any
+	license = GPL2
+	makedepends = dkms
+	makedepends = git
+	provides = rtc-pcf85063
+	conflicts = rtc-pcf85063
+	source = https://raw.githubusercontent.com/torvalds/linux/v5.11/drivers/rtc/rtc-pcf85063.c
+	source = dkms.conf
+	source = Makefile
+	sha256sums = 7052640bb954f19c6c5ba38cb7e050d79f833cb9b9e53bfa2ca23869dc3b5d4b
+	sha256sums = 06612e69e2c592b9dd32d15a4eae118e7a717b3e89170ecc02a6f64dbaf3bf21
+	sha256sums = 4cd1a6449b1b74d11e103e25e43007c60ca646e96485e98fc359815a7c12a7fa
+
+pkgname = rtc-pcf85063-dkms
