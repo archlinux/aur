@@ -3,6 +3,10 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
+# Maintainer: Ulises Jeremias Cornejo Fandos <ulisescf.24@gmail.com>
+# Maintainer: Federico Ramon Gasquez <federicogasquez@gmail.com>
+# Maintainer: Maria Macarena Lindo Poisson <maquipoisson@gmail.com>
+
 fonts=(
 	nerd-fonts-hack
 	noto-fonts
@@ -65,7 +69,6 @@ xfce4_pkgs=(
 	xfce4-notifyd
 )
 
-# Maintainer: Ulises Jeremias Cornejo Fandos <ulisescf.24@domain.com>
 pkgname=dots-git
 pkgver=1.0.r327.877790f
 pkgrel=1
