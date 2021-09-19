@@ -19,6 +19,7 @@ depends=('polkit'
          'freetype2'
          'qt5-charts'
          'qt5-declarative'
+         'qt5-websockets'
          'qt5-graphicaleffects'
          'qt5-imageformats'
          'qt5-networkauth'
@@ -28,7 +29,7 @@ depends=('polkit'
          'wireguard-tools'
          'WIREGUARD-MODULE'
          'openresolv')
-makedepends=('qt5-tools' 'go' 'flex')
+makedepends=('qt5-tools' 'go' 'flex' 'python-yaml')
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 source=(
     "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
