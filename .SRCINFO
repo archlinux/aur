@@ -1,0 +1,11 @@
+pkgbase = gsettings-desktop-schemas-dummy
+	pkgdesc = gsettings-desktop-schemas is Gnome desktop only, and not all packages understand that and add it as a dependency.
+	pkgver = 1
+	pkgrel = 1
+	url = https://bugs.archlinux.org/task/66849
+	arch = any
+	license = GPL
+	provides = gsettings-desktop-schemas
+	conflicts = gsettings-desktop-schemas
+
+pkgname = gsettings-desktop-schemas-dummy
