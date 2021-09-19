@@ -1,19 +1,34 @@
-# Maintainer: Conrad Sachweh <conrad+aur@spamthis.space>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Conrad Sachweh <conrad+aur@spamthis.space>
+
 pkgname=python-fastdtw
-_pkgname=fastdtw
-pkgver=0.3.2
+_name="${pkgname#python-}"
+pkgver=0.3.4
 pkgrel=1
-pkgdesc="Python implementation of FastDTW, whis is an approximate Dynamic Time Warping (DTW) algorithm that provides optimal or near-optimal alignments with an O(N) time and memory complexity."
+pkgdesc="Python implementation of FastDTW"
 url="https://github.com/slaypni/fastdtw"
-arch=('any')
+arch=('x86_64')
 license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('63d55d14dbc4a40d2d1ceecb756d0ee4')
+depends=('python-numpy')
+makedepends=('python-setuptools' 'cython')
+checkdepends=('python-pytest-runner')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('da9bea6a9bc3c3a3424de1d82d3ce7d0545514ed255af16558ef4ddce28f36a7')
+
+build() {
+	cd "$_name-$pkgver"
+	python setup.py build
+}
+
+check() {
+	cd "$_name-$pkgver"
+	local _ver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+	PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_ver" python setup.py pytest
+}
 
 package() {
-  cd $srcdir/${_pkgname}-${pkgver}
-
-  python setup.py install --root="${pkgdir}/" --optimize=1
+	cd "$_name-$pkgver"
+	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+	install -D LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -D README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
