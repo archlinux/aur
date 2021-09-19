@@ -29,5 +29,5 @@ build() {
 
 package() {
     install -D -m755 build/ospStudio -t "${pkgdir}/usr/bin"
-    install -D -m755 build/libospray_studio.so -t "${pkgdir}/usr/lib"
+    install -D -m755 build/libospray_sg.so -t "${pkgdir}/usr/lib"
 }
