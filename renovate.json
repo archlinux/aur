@@ -6,14 +6,22 @@
   "assignees": ["languitar"],
   "reviewers": ["languitar"],
 
+  "postUpgradeTasks": {
+    "commands": ["./post-update.sh"],
+    "fileFilters": ["PKGBUILD", ".SRCINFO"],
+    "executionMode": "branch"
+  },
+
   "regexManagers": [
     {
       "fileMatch": ["^PKGBUILD$"],
       "matchStrings": [
-        "^pkgver=(?<currentValue>.*?)\n$"
+        "pkgver=(?<currentValue>.*?)\n"
       ],
+      "matchStringsStrategy": "combination",
       "depNameTemplate": "jgraph/drawio-desktop",
-      "datasourceTemplate": "github-releases"
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.*)$"
     }
   ]
 }
