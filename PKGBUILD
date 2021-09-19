@@ -2,7 +2,7 @@
 
 pkgbase=scrap_engine-git
 pkgname=('python-scrap_engine-git' 'lil_t-git')
-pkgver=0.3.3
+pkgver=1.0.0
 pkgrel=1
 arch=(any)
 url="https://github.com/lxgr-linux/scrap_engine"
