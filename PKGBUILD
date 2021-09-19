@@ -2,7 +2,7 @@
 
 pkgname=icestorm-nightly
 pkgver=83b8ef9_20210919
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation"
 arch=("any")
