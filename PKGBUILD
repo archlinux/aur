@@ -43,8 +43,12 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-### Disable MUQSS
-_muqss_disable=
+### Selecting the CPU scheduler
+# ATTENTION - one of three predefined values should be selected!
+# 'bmq' - select 'BitMap Queue CPU scheduler'
+# 'pds' - select 'Priority and Deadline based Skip list multiple queue CPU scheduler'
+# 'none' - select 'Completely Fair Scheduler'
+_projectc='pds'
 
 ### Enable htmldocs (increases compile time)
 _htmldocs_enable=
@@ -59,7 +63,7 @@ _lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.14.6.lqx1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -144,18 +148,27 @@ prepare() {
 		fi
 	fi
 
-    ### Disable MUQSS
-        if [ -n "$_muqss_disable" ]; then
-        echo "Disabling MUQSS..."
-            scripts/config --disable CONFIG_SCHED_MUQSS
-            scripts/config --disable CONFIG_RQ_NONE
-            scripts/config --disable CONFIG_RQ_SMT
-            scripts/config --disable CONFIG_RQ_MC
-            scripts/config --disable CONFIG_RQ_MC_LLC
-            scripts/config --disable CONFIG_RQ_SMP
-            scripts/config --disable CONFIG_RQ_ALL
-            scripts/config --undefine CONFIG_SHARERQ
-        fi
+    ### Selecting the CPU scheduler
+	if [ "$_projectc" = "bmq" ]; then
+		echo "Selecting BMQ CPU scheduler..."
+		scripts/config --enable CONFIG_SCHED_BMQ
+		scripts/config --disable CONFIG_SCHED_PDS
+	elif [ "$_projectc" = "pds" ]; then
+		echo "Selecting PDS CPU scheduler..."
+		scripts/config --disable CONFIG_SCHED_BMQ
+		scripts/config --enable CONFIG_SCHED_PDS
+	elif [ "$_projectc" = "none" ]; then
+		echo "Selecting Completely Fair Scheduler..."
+		scripts/config --disable CONFIG_SCHED_ALT
+	else
+		if [ -n "$_projectc" ]; then
+			error "The value $_projectc is invalid. Choose the correct one again."
+		else
+			error "The value is empty. Choose the correct one again."
+		fi
+		error "Selecting the CPU scheduler failed!"
+		exit
+	fi
 
     ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
