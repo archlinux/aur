@@ -2,7 +2,7 @@
 #Contributor: socke <github@socker.lepus.uberspace.de>
 
 pkgname=assimp-git
-pkgver=5.0.1.r10393.g76e3092b2
+pkgver=5.0.1.r10510.g71a87b653
 pkgrel=1
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner"
 arch=(i686 x86_64)
@@ -17,6 +17,9 @@ _gitname="assimp"
 source=("git://github.com/assimp/assimp.git")
 md5sums=('SKIP')
 
+prepare() {
+  grep -Rl '//.*include.*exception' "${srcdir}/$_gitname"|xargs sed -r 's|//.*(#include.*exception.*$)|\1|' -i
+}
 
 pkgver() {
   cd $_gitname
