@@ -96,11 +96,6 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-	cd ./dotfiles || exit
-	printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
 	cd ./dotfiles || exit
 	rm -rf "${pkgdir}"/opt/"${pkgname}"
