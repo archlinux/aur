@@ -14,6 +14,11 @@ scripts/config --enable CONFIG_IKCONFIG \
 scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
 scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
 
+## s0ix debugging
+scripts/config --enable CONFIG_CMDLINE_BOOL \
+               --set-str CONFIG_CMDLINE "pm_debug_messages amd_pmc.dyndbg=+p acpi.dyndbg=file drivers/acpi/x86/s2idle.c +p" \
+               --disable CMDLINE_OVERRIDE
+
 ## NOTE: Add any options here that you'd like to change from kernel defaults
 
 # sync default hostname with Arch
