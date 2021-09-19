@@ -1,0 +1,7 @@
+post_install() {
+	mkdir -p -m 777 /opt/ryujinx/Logs
+}
+
+pre_remove() {
+	 rm -rf /opt/ryujinx/Logs
+}
