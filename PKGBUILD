@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-    cd build
-    make DESTDIR="${pkgdir}" install
+    install -D -m755 build/ospStudio -t "${pkgdir}/usr/bin"
+    install -D -m755 build/libospray_studio.so -t "${pkgdir}/usr/lib"
 }
