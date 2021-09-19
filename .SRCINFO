@@ -1,0 +1,20 @@
+pkgbase = dirt4-wine-steam
+	pkgdesc = DiRT 4 using WINE with data via Steam
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://store.steampowered.com/app/421020/DiRT_4/
+	install = dirt4.install
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = wine
+	depends = winetricks
+	source = dirt4.sh
+	source = dirt4.desktop
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = 279ea715ad9af75cf06c3f977c246e0450297a0368f7a43069080420b6f96b44
+	sha256sums = ef00e7e096d5649c180a1b7a1b977c6a640d08a32c27d0ace0ec36aa9feee58e
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = dirt4-wine-steam
