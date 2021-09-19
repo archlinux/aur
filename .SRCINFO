@@ -1,7 +1,7 @@
 pkgbase = simcity-3000-gog
 	pkgdesc = SimCity 3000 Linux with data via GOG
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/simcity_3000
 	install = simcity3000.install
 	arch = i686
@@ -20,10 +20,10 @@ pkgbase = simcity-3000-gog
 	source = simcity3000.sh
 	sha256sums = 84a73753d9aa6e8e4e8097adec18fc4ea8d897dd9a2dc67d23463cf6338be280
 	sha256sums = 122fd83f099c80929cbdc3602a3155d448b7f8879f632583060e61144c553b33
-	sha256sums = e417c254472c4297f3555a1233d9ad342db65d996f23c5482f97d9f7d0a0c93b
+	sha256sums = c55292c7bd183b8fc54b6c7e0ec9c53fc3657e759603cc5a174d83803b288de0
 	sha256sums = 60932597d4ee94f0b629d7194774c2b9ce867f9519887d85e98eea84577c0e46
 	sha256sums = 0f4aa72d88022f39501773c10fe5dc175795d7c3281f2197655dc5810b7eea8e
 	sha256sums = 7b457a4ac29c48e8811e16db5d9fbf4f93e16ed5be2de92dc8b80f1c14c4e0d7
-	sha256sums = 21fbae2c18f4563fea93ae7d0b8f1a77f9f188ff1f79b8fbb8f088589493a206
+	sha256sums = b8b034ebc75d10899ae9cef073675222bc592e2051875c85b5811f04b05ec6a8
 
 pkgname = simcity-3000-gog
