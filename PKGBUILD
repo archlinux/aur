@@ -54,15 +54,6 @@ xfce4_pkgs=(
 	exo
 	libxfce4ui
 	libxfce4util
-	thunar
-	thunar-archive-plugin
-	thunar-media-tags-plugin
-	thunar-volman
-	tumbler
-	xfce4-battery-plugin
-	xfce4-datetime-plugin
-	xfce4-power-manager
-	xfce4-pulseaudio-plugin
 	xfce4-settings
 	xfce4-xkb-plugin
 	xfconf
@@ -70,7 +61,7 @@ xfce4_pkgs=(
 )
 
 pkgname=dots-git
-pkgver=1.0.r327.877790f
+pkgver=1.0.r329.8f029ea
 pkgrel=1
 epoch=
 pkgdesc="Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs"
@@ -81,7 +72,18 @@ groups=()
 depends=( git "${fonts[@]}" "${needed_pkgs[@]}" "${xfce4_pkgs[@]}")
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=(
+	"bluez: Daemons for the bluetooth protocol stack. Needed for the bluetooth integration in polybar"
+	"blueman: GTK+ Bluetooth Manager. Optional."
+	"pulseaudio-module-bt: PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support. Needed for the bluetooth integration in polybar"
+	"dunst: Customizable and lightweight notification-daemon. Will be used by default for notifications if installed"
+	"thunar: Modern file manager for Xfce"
+	"thunar-archive-plugin: Create and extract archives in Thunar"
+	"thunar-media-tags-plugin: Adds special features for media files to the Thunar File Manager"
+	"thunar-volman: Automatic management of removeable devices in Thunar"
+	"xfce4-power-manager: Power manager for the Xfce4 desktop"
+	"xfce4-screenshooter: An application to take screenshots"
+)
 provides=(dots)
 conflicts=(dots)
 replaces=()
