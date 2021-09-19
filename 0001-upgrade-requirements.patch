@@ -1,0 +1,37 @@
+From a19eff5283ee837c43f8c41c09322c463520c3b0 Mon Sep 17 00:00:00 2001
+From: atomlong <atom.long@hotmail.com>
+Date: Sun, 19 Sep 2021 14:13:09 +0800
+Subject: [PATCH] upgrade requirements
+
+---
+ requirements.txt | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index 99f92d6..6fdbfd5 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,14 +1,14 @@
+ treelib==1.6.1
+-requests~=2.25.1
++requests~=2.26.0
+ click_aliases==1.0.1
+-rsa==4.0
+-click==7.1.2
++rsa==4.7.2
++click==8.0.1
+ ruamel.base==1.0.0
+ ruamel.yaml
+-colorama~=0.4.3
++colorama~=0.4.4
+ npyscreen==4.10.5
+ windows-curses;platform_system=="Windows"
+-pyperclip~=1.8.1
++pyperclip~=1.8.2
+ aria2p
+ Flask
+ PyExecJS
+\ No newline at end of file
+-- 
+2.33.0.windows.2
+

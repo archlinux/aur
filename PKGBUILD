@@ -3,7 +3,7 @@
 _pkgname=aliyunpan
 pkgname=${_pkgname}-cli
 pkgver=2.7.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Aliyunpan CLI"
 arch=('any')
 url="https://github.com/wxy1343/aliyunpan"
@@ -24,13 +24,16 @@ depends=('python-click-aliases'
          'aria2p')
 provides=('aliyunpan')
 source=(${_pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        dlnap-master.tar::"https://github.com/cherezov/dlnap/archive/master.tar.gz")
+        dlnap-master.tar::"https://github.com/cherezov/dlnap/archive/master.tar.gz"
+		"0001-upgrade-requirements.patch")
 sha256sums=('d5b86bf040781c9e6981cba07ef1daab4d8f7ff4d6e17d910018a48a4f5fa7da'
-            'SKIP')
+            'SKIP'
+			'8b110fda7c0e9dd6a66df51bd3a5a687148cce547de54e8e8ff7c06e6f0e5573')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
   mv -vTf "${srcdir}"/dlnap-master dlnap
+  patch -Np1 -i "${srcdir}/0001-upgrade-requirements.patch"
 }
 
 build() {

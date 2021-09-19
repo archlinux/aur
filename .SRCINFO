@@ -1,7 +1,7 @@
 pkgbase = aliyunpan-cli
 	pkgdesc = Aliyunpan CLI
 	pkgver = 2.7.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wxy1343/aliyunpan
 	arch = any
 	license = GPL-3.0
@@ -21,7 +21,9 @@ pkgbase = aliyunpan-cli
 	provides = aliyunpan
 	source = aliyunpan-2.7.14.tar.gz::https://github.com/wxy1343/aliyunpan/archive/refs/tags/v2.7.14.tar.gz
 	source = dlnap-master.tar::https://github.com/cherezov/dlnap/archive/master.tar.gz
+	source = 0001-upgrade-requirements.patch
 	sha256sums = d5b86bf040781c9e6981cba07ef1daab4d8f7ff4d6e17d910018a48a4f5fa7da
 	sha256sums = SKIP
+	sha256sums = 8b110fda7c0e9dd6a66df51bd3a5a687148cce547de54e8e8ff7c06e6f0e5573
 
 pkgname = aliyunpan-cli
