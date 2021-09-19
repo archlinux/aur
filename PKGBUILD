@@ -56,18 +56,18 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=13
+_minor=14
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=12
-_pfrel=6
+_unpatched_sublevel=2
+_pfrel=2
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_projectcpatchname=prjc_v5.13-r3.patch
+_projectcpatchname=prjc_v5.14-r2.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER STEAMROLLER MEXCAVATOR ZEN ZEN2 MPSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -293,11 +293,11 @@ build() {
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  groups=('base')
-  depends=('coreutils' 'linux-firmware' 'kmod>=9-2' 'mkinitcpio>=0.7' 'linux-pf-preset')
+  depends=('coreutils' 'kmod>=9-2' 'mkinitcpio>=0.7' 'linux-pf-preset')
   optdepends=('crda: to set the correct wireless channels of your country'
 	            'nvidia-pf: NVIDIA drivers for linux-pf'
               'uksmd: Userspace KSM helper daemon'
+              'linux-firmware: firmware images needed for some devices'
 	            'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
   provides=('linux-tomoyo'
             VIRTUALBOX-GUEST-MODULES
@@ -659,13 +659,13 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
-            'e6e80f91b16dc639679fe1d5dfae5097e1e4e91b11ea4539790719511921ccc0'
-            'd2a1c6f0fd79ed0ba61e6f54fce5db3c778c4f7aca56f6a8dda0641463ffb365'
+sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
+            'f98065a286a6d2dbb0e226867a6417e344aaa44ef6eac967707e1f09671be445'
+            '1e7c0680f7d63d354877e2ad9e734ff5e924f7b315fd03fe629e3830cf1fe39a'
             '8723eb2d5e3473db978bfa7e8d94c80efeac61d71e7fad2f1214ad55671a33a2'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '8bd5306b843288cc328701733ba46ed3aeda9cbfe71007366fd838cd1fec192e'
-            'ccf925b6326a8cf63d28c00a7645a0fa120608bfcf5dabb77a4522f249aa306d'
+            '520357e5f2521ab11c7f76cad813a6e044c16b80b4c06c9ce4ad7c4b117e140b'
+            '42ca7bceade1e6a998eeee394c77e3dd93db45ff0870a5dab22350bd0af45272'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
