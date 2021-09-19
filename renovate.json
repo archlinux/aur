@@ -12,7 +12,7 @@
       "matchStrings": [
         "^pkgver=(?<currentValue>.*?)"
       ],
-      "depNameTemplate": "jgraph/drawio-desktop/releases",
+      "depNameTemplate": "jgraph/drawio-desktop",
       "datasourceTemplate": "github-releases"
     }
   ]
