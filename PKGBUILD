@@ -10,17 +10,16 @@ groups=('pro-audio')
 depends=('rofi')
 makedepends=('git')
 optdepends=('jack2' 'jack')
-source=("$pkgname-$pkgver"::git+$url.git)
+source=("$pkgname"::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm755 $srcdir/$pkgname-$pkgver/rofi-jack-connect $pkgdir/usr/bin/rofi-jack-connect
-	install -Dm755 $srcdir/$pkgname-$pkgver/rofi-jack-device $pkgdir/usr/bin/rofi-jack-device
+	cd "$srcdir/$pkgname"
+	install -Dm755 $srcdir/$pkgname/rofi-jack-connect $pkgdir/usr/bin/rofi-jack-connect
+	install -Dm755 $srcdir/$pkgname/rofi-jack-device $pkgdir/usr/bin/rofi-jack-device
 }
-
