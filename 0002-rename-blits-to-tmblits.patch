@@ -1,0 +1,54 @@
+Bug-Debian: https://bugs.debian.org/986623
+Forwarded: no
+Last-Update: 2021-04-20
+
+--- tuxmath-2.0.3.orig/src/titlescreen.c
++++ tuxmath-2.0.3/src/titlescreen.c
+@@ -55,7 +55,7 @@ struct blit {
+     SDL_Rect *srcrect;
+     SDL_Rect *dstrect;
+     unsigned char type;
+-} blits[MAX_UPDATES];
++} tmblits[MAX_UPDATES];
+ 
+ // Lessons available for play
+ char **lesson_list_titles = NULL;
+@@ -1019,8 +1019,8 @@ void init_blits(void) {
+     int i;
+ 
+     for (i = 0; i < MAX_UPDATES; ++i) {
+-	blits[i].srcrect = &srcupdate[i];
+-	blits[i].dstrect = &dstupdate[i];
++	tmblits[i].srcrect = &srcupdate[i];
++	tmblits[i].dstrect = &dstupdate[i];
+     }
+ }
+ 
+@@ -1032,14 +1032,14 @@ void update_screen(int *frame) {
+ 
+     /* -- First erase everything we need to -- */
+     for (i = 0; i < numupdates; i++)
+-	if (blits[i].type == 'E')
+-	    SDL_LowerBlit(blits[i].src, blits[i].srcrect, screen, blits[i].dstrect);
++	if (tmblits[i].type == 'E')
++	    SDL_LowerBlit(tmblits[i].src, tmblits[i].srcrect, screen, tmblits[i].dstrect);
+     //        SNOW_erase();
+ 
+     /* -- then draw -- */
+     for (i = 0; i < numupdates; i++)
+-	if (blits[i].type == 'D')
+-	    SDL_BlitSurface(blits[i].src, blits[i].srcrect, screen, blits[i].dstrect);
++	if (tmblits[i].type == 'D')
++	    SDL_BlitSurface(tmblits[i].src, tmblits[i].srcrect, screen, tmblits[i].dstrect);
+     //        SNOW_draw();
+ 
+     /* -- update the screen only where we need to! -- */
+@@ -1067,7 +1067,7 @@ void add_rect(SDL_Rect* src, SDL_Rect* d
+ 	return;
+     }
+ 
+-    update = &blits[numupdates++];
++    update = &tmblits[numupdates++];
+ 
+     update->srcrect->x = src->x;
+     update->srcrect->y = src->y;

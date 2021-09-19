@@ -1,0 +1,26 @@
+From c471e2a94798787afbad4e547a1e2485ef9835db Mon Sep 17 00:00:00 2001
+From: Adrian Bunk <bunk@debian.org>
+Date: Sun, 3 Jan 2021 14:22:29 +0200
+Subject: src/menu_lan.c: Remove unused duplicate lan_player_info definition
+
+This broke the build with gcc 10:
+https://bugs.debian.org/976513
+---
+ src/menu_lan.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/menu_lan.c b/src/menu_lan.c
+index 4512eb1..d85f2c6 100644
+--- a/src/menu_lan.c
++++ b/src/menu_lan.c
+@@ -37,7 +37,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ 
+ 
+ /* lan_player_type now defined in network.h */
+-lan_player_type lan_player_info[MAX_CLIENTS];
+ 
+ /* Local function prototypes: ------------------- */
+ void draw_player_table(void);
+-- 
+2.20.1
+

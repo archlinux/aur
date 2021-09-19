@@ -8,33 +8,34 @@
 
 pkgname=tuxmath
 pkgver=2.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc="An educational math tutorial game starring Tux, the Linux Penguin"
 arch=("i686" "x86_64")
 url="https://github.com/tux4kids/${pkgname}/"
 license=("custom:OFL" "GPL")
 depends=("t4kcommon")
-makedepends=("gcc9")
 options=(!docs)
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/tux4kids/${pkgname}/archive/upstream/${pkgver}.tar.gz"
-  "menu_lan.patch"
+  "0001-src-menu_lan.c-Remove-unused-duplicate-lan_player_in.patch"
+  "0002-rename-blits-to-tmblits.patch"
 )
 sha256sums=(
   "ab91bd6df17eb9377e5608701030bd32110a3588933bf0e4c26b5697fb2a4698"
-  "f6dad4cb620bf11ad9608dd95190ae6cafc78f0345fd92d8fb43a2a427dbb0df"
+  "852f82370e323ea34825864c063bd44a5dbd6dd60fb2c52338edbeb0b70fbafe"
+  "b5ede8e1a870cd19010890d8ca1867c8eae86c9dc3b78712c44e5e7576c05b91"
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-upstream-${pkgver}"
 
-  patch -Np1 -i "${srcdir}/menu_lan.patch"
+  patch -Np1 -i "${srcdir}/0001-src-menu_lan.c-Remove-unused-duplicate-lan_player_in.patch"
+  patch -Np1 -i "${srcdir}/0002-rename-blits-to-tmblits.patch"
 }
 
 build() {
   cd "${srcdir}/${pkgname}-upstream-${pkgver}"
 
-  export CC=/usr/bin/gcc-9
   ./configure \
     --prefix=/usr \
     --localstatedir=/usr/share/games \
