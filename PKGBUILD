@@ -1,36 +1,54 @@
-# $Id: PKGBUILD 252139 2015-12-02 21:33:21Z heftig $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=librsvg-git
 _pkgname=librsvg
-pkgver=2.46.0.r79.g4df27786
+pkgver=2.52.0.r10.g9d9c4c1d
 pkgrel=1
-pkgdesc="A SVG viewing library"
-arch=(i686 x86_64)
-license=('LGPL')
-depends=('gdk-pixbuf2' 'pango' 'libcroco')
-makedepends=('intltool' 'gobject-introspection' 'vala' 'python2' 'git' 'cargo' 'gtk-doc')
-optdepends=('gtk3: to run rsvg-view-3 viewer')
-options=('!emptydirs')
-url="https://live.gnome.org/LibRsvg"
-install=$_pkgname.install
+epoch=2
+pkgdesc="SVG rendering library"
+url="https://wiki.gnome.org/Projects/LibRsvg"
+arch=(x86_64 i686)
+license=(LGPL)
+depends=(gdk-pixbuf2 pango)
+makedepends=(gobject-introspection vala gtk-doc git rust)
+provides=(librsvg-${pkgver%%.*}.so "${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/$_pkgname.git")
 sha256sums=('SKIP')
-provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
-conflicts=("${_pkgname}")
 
 pkgver() {
   cd $pkgname
   git describe --tags | sed -r 's,^[^0-9]*,,;s,([0-9]*-g),r\1,;s,[-_],.,g'
 }
 
+prepare() {
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
+
+# Use LTO
+export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+
 build() {
   cd $pkgname
-  ./autogen.sh --prefix=/usr --disable-static --enable-vala --disable-tools
-  make V=0
+  ./configure --prefix=/usr --disable-static --enable-vala \
+    --enable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
+  make
+}
+
+check() {
+  cd $pkgname
+  # Test suite is very dependent on the versions of
+  # Cairo, Pango, FreeType and HarfBuzz
+  make check || :
 }
 
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
 }
+
+# vim:set sw=2 et:

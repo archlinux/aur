@@ -1,28 +1,23 @@
 pkgbase = librsvg-git
-	pkgdesc = A SVG viewing library
-	pkgver = 2.46.0.r79.g4df27786
+	pkgdesc = SVG rendering library
+	pkgver = 2.52.0.r10.g9d9c4c1d
 	pkgrel = 1
-	url = https://live.gnome.org/LibRsvg
-	install = librsvg.install
-	arch = i686
+	epoch = 2
+	url = https://wiki.gnome.org/Projects/LibRsvg
 	arch = x86_64
+	arch = i686
 	license = LGPL
-	makedepends = intltool
 	makedepends = gobject-introspection
 	makedepends = vala
-	makedepends = python2
-	makedepends = git
-	makedepends = cargo
 	makedepends = gtk-doc
+	makedepends = git
+	makedepends = rust
 	depends = gdk-pixbuf2
 	depends = pango
-	depends = libcroco
-	optdepends = gtk3: to run rsvg-view-3 viewer
-	provides = librsvg=2.46.0-1
+	provides = librsvg-2.so
+	provides = librsvg=2.52.0-1
 	conflicts = librsvg
-	options = !emptydirs
 	source = librsvg-git::git+https://gitlab.gnome.org/GNOME/librsvg.git
 	sha256sums = SKIP
 
 pkgname = librsvg-git
-
