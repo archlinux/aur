@@ -3,7 +3,7 @@
 _pkgname=cpod
 pkgname=$_pkgname-appimage
 pkgver=1.28.0
-pkgrel=2
+pkgrel=3
 _appimage=${_pkgname}-${pkgver}.AppImage
 pkgdesc='A simple, beautiful podcast app for Windows, macOS, and Linux.'
 arch=('x86_64')
@@ -20,6 +20,7 @@ _desktopfile=$_pkgname.desktop
 _desktopfilesrc=squashfs-root/$_desktopfile
 _installdir=/opt/$pkgname
 _bintarget=$_installdir/$_appimage
+_binlinktarget=/usr/bin/$_pkgname
 
 prepare() {
   echo Making AppImage executable...
@@ -29,7 +30,7 @@ prepare() {
   ./$_appimage --appimage-extract
 
   echo Fixing desktop file
-  sed -i "s+Exec=AppRun+Exec=$_bintarget+" "$_desktopfilesrc"
+  sed -i "s+Exec=AppRun+Exec=$_binlinktarget+" "$_desktopfilesrc"
 }
 
 package() {
@@ -40,6 +41,7 @@ package() {
   _iconstarget=$pkgdir/usr/share/icons
   _binfulltarget=$pkgdir$_bintarget
   _binsrc=$(realpath $srcdir/$_appimage)
+	_binlinkfulltarget=${pkgdir}$_binlinktarget
 
   echo Installing desktop file...
   install -vDm644 $_desktopfilesrc "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
@@ -54,7 +56,9 @@ package() {
   install -Dm755 $_binsrc $_binfulltarget
 
   echo Creating symlinks
-  mkdir -vp $pkgdir/usr/bin
-  ln -vsf $_bintarget $pkgdir/usr/bin/$_pkgname
+	mkdir -vp $pkgdir/usr/bin
+	echo "#!/usr/bin/env bash" >> $_binlinkfulltarget
+	echo "APPIMAGELAUNCHER_DISABLE=true $_bintarget  \$@" >> $_binlinkfulltarget
+	chmod 755 $_binlinkfulltarget
 }
 
