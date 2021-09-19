@@ -3,7 +3,7 @@
 _gitname=gitoops
 pkgname=gitoops-git
 pkgver=0.0.0.r33
-pkgrel=1
+pkgrel=2
 pkgdesc="Identify lateral movement and privilege escalation paths in CI/CD environments"
 url="https://github.com/ovotech/gitoops"
 makedepends=('go')
@@ -28,7 +28,7 @@ package() {
   cd "${_gitname}"
   install -Dm755 gitoops -t "${pkgdir}/usr/bin"
   install -Dm644 README.md docs/* \
-    -t "${pkgdir}/usr/share/doc"
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
