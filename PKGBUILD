@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=6ca387974e6a3e248c261d3dac15b8d4a742d3aa  # tags/2.50.7
+_commit=1729feb4c197a7dd94fe303931d51eb843bdcaf9  # tags/2.50.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.50.7
+pkgver=2.52.0
 pkgrel=1
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
@@ -65,6 +65,8 @@ build() {
     sed -i "s/^deplibs_check_method=.*/deplibs_check_method=\"pass_all\"/g" libtool
     # add missing crt libs (ws2_32 and userenv) to LIBRSVG_LIBS
     sed -i "s/^LIBRSVG_LIBS = .*/& -lws2_32 -luserenv/g" Makefile
+    # add missing ".exe" to name
+    sed -i "s/mv \$(RSVG_CONVERT_BIN) rsvg-convert/&\$(EXEEXT)/g" Makefile
     make
     popd
   done
