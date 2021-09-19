@@ -2,7 +2,7 @@
 
 pkgname=foss-fpga-tools-nightly
 pkgver=20210919
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Meta package for the nightly version of the FOSS FPGA Tools"
 arch=("any")
@@ -11,15 +11,15 @@ license=("custom:ISC")
 groups=()
 options=("!strip")
 depends=(
-	"yosys-nightly>=yosys_0.9_5600_gc88eaea6_20210918"
-	"symbiyosys-nightly>=15278f1_20210918"
-	"nextpnr-generic-nightly>=67bd349e_20210918"
-	"icestorm-nightly>=83b8ef9_20210918"
-	"nextpnr-ice40-nightly>=67bd349e_20210918"
-	"prjtrellis-nightly>=1.0_532_g03e0070_20210918"
-	"nextpnr-ecp5-nightly>=67bd349e_20210918"
-	"prjoxide-nightly>=21c5e20_20210918"
-	"nextpnr-nexus-nightly>=67bd349e_20210918"
+	"yosys-nightly>=yosys_0.9_5603_g3931b3a0_20210919"
+	"symbiyosys-nightly>=15278f1_20210919"
+	"nextpnr-generic-nightly>=e926cddc_20210919"
+	"icestorm-nightly>=83b8ef9_20210919"
+	"nextpnr-ice40-nightly>=e926cddc_20210919"
+	"prjtrellis-nightly>=1.0_532_g03e0070_20210919"
+	"nextpnr-ecp5-nightly>=e926cddc_20210919"
+	"prjoxide-nightly>=7d56d63_20210919"
+	"nextpnr-nexus-nightly>=e926cddc_20210919"
 )
 
 package() {
