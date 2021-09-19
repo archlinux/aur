@@ -1,6 +1,6 @@
 pkgbase = bspwm-git
 	pkgdesc = A tiling window manager based on binary space partitioning
-	pkgver = 0.9.9.r3.gdf7c6cc
+	pkgver = 0.9.10.r33.ge22d0fa
 	pkgrel = 1
 	url = https://github.com/baskerville/bspwm
 	arch = i686
@@ -17,10 +17,9 @@ pkgbase = bspwm-git
 	optdepends = sutils-git: for the example panel
 	optdepends = terminus-font: for the example panel
 	optdepends = python3: for some scripting examples
-	provides = bspwm=0.9.9-1
+	provides = bspwm=0.9.10-1
 	conflicts = bspwm
 	source = bspwm-git::git://github.com/baskerville/bspwm.git
 	md5sums = SKIP
 
 pkgname = bspwm-git
-
