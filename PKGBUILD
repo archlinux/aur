@@ -2,9 +2,9 @@
 
 pkgbase=sointu-track
 pkgname=$pkgbase-git
-pkgver=r471.60e4518
+pkgver=r475.1a5251d
 pkgrel=1
-pkgdesc='4klang tracker'
+pkgdesc='Music tracker that uses 4klang'
 arch=(x86_64)
 url='https://github.com/vsariola/sointu'
 license=(MIT)
