@@ -20,8 +20,9 @@ options=('!emptydirs')
 
 prepare() {
   mkdir -p build
-  # follow cmake search path
-  sed 's|cmake/${PN}${SUFFIX64}|${PN}${SUFFIX64}/cmake|g' \
+
+  # set cmake file path in DCMAKE_INSTALL_LIBDIR
+  sed 's|share/cmake/${PN}${SUFFIX64}|${CMAKE_INSTALL_LIBDIR}/cmake/${PN}${SUFFIX64}|g' \
     -i "OpenBLAS-${pkgver}/CMakeLists.txt"
 }
 
