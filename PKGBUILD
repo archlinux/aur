@@ -3,7 +3,7 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=('python-google-cloud-storage: support for Google Cloud'
 	    )
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('482052ef51d3d988424e32eefcce97c9ae1684d872f824e520d37793fd131681')
+sha256sums=('b40052c4cab0dcd25d091cb05c0602522d8ce5dae4e0d3202181ea2a7da9cdee')
 
 package() {
   cd ${pkgname}-${pkgver}
