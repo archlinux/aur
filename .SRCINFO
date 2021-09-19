@@ -1,7 +1,7 @@
 pkgbase = cryptopro-csp-k1
 	pkgdesc = CryptoPro CSP 5.0
 	pkgver = 5.0.12222
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cryptopro.ru/products/cryptopro-csp
 	install = cryptopro-csp-k1.install
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = cryptopro-csp-k1
 	options = !strip
 	source = linux-amd64.tgz
 	source = https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades_linux_amd64.tar.gz
-	md5sums = 0f7b7c16f0a5427903cbd26223f0de6d
-	md5sums = 11ec1def2383ba5644066ab73163785f
+	sha256sums = b7229c7884ea5340b10ecc3e11c378a69c4ef9d8266e0a96a1f087082481026e
+	sha256sums = 5eef8664765a08c2354248289a3c232adf1a4596fedb520460877fe7e2c295ec
 
 pkgname = cryptopro-csp-k1
