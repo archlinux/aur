@@ -7,12 +7,12 @@ pkgver=0.12.9.158.g03a28f5
 pkgrel=2
 pkgdesc="Headers defining SPICE protocols"
 arch=("any")
-url="http://www.spice-space.org"
+url="https://www.spice-space.org"
 license=("BSD")
 makedepends=("git" "python-six" "python-pyparsing")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git://anongit.freedesktop.org/spice/spice-protocol")
+source=("git+https://gitlab.freedesktop.org/spice/$_pkgname.git")
 sha256sums=("SKIP")
 
 pkgver() {
