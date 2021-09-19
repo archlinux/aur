@@ -2,7 +2,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=devtools-git
-pkgver=20200407
+pkgver=20210202
 pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')

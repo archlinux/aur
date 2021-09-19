@@ -1,6 +1,6 @@
 pkgbase = devtools-git
 	pkgdesc = Tools for Arch Linux package maintainers
-	pkgver = 20200407
+	pkgver = 20210202
 	pkgrel = 1
 	url = https://git.archlinux.org/devtools.git/
 	arch = any
@@ -34,4 +34,3 @@ pkgbase = devtools-git
 	sha512sums = SKIP
 
 pkgname = devtools-git
-
