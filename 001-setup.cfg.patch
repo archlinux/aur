@@ -1,0 +1,15 @@
+diff --git a/setup.cfg b/setup.cfg
+index d70a302..1421931 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,9 +1,5 @@
+ [tool:pytest]
+-addopts = --doctest-plus
+-doctest_plus = enabled
+-doctest_rst = True
+-testspaths = astroML doc examples
+-doctest_optionflags = FLOAT_CMP ELLIPSIS NORMALIZE_WHITESPACE
++testspaths = astroML
+ filterwarnings =
+     error::DeprecationWarning
+     error::FutureWarning
