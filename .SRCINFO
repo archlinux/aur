@@ -1,6 +1,6 @@
 pkgbase = system76-power
 	pkgdesc = System76 Power Management
-	pkgver = 1.1.17
+	pkgver = 1.1.18
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-power
 	install = system76-power.install
@@ -10,15 +10,16 @@ pkgbase = system76-power
 	depends = dbus
 	depends = libusb
 	depends = polkit
-	depends = systemd
 	optdepends = system76-acpi-dkms: some systems might need this driver
 	optdepends = system76-dkms: some systems might need this driver
 	optdepends = system76-io-dkms: some systems might need this driver
-	source = https://github.com/pop-os/system76-power/archive/1.1.17.tar.gz
+	source = https://github.com/pop-os/system76-power/archive/1.1.18.tar.gz
 	source = use-mkinitcpio.patch
 	source = makefile.patch
-	sha256sums = d817e22047e41110ce2520f792ee5eae55220ba6d5fc4138a73040ebeb06e9b5
+	source = rust-toolchain
+	sha256sums = 7a6b8b18b28948808b3c51f732c42e72797f8eddd79fa57f4285689087d781cd
 	sha256sums = 2ead269c71919c220a7880b0036c6d62aadeae3d6cde769029784d3565686539
 	sha256sums = 97deb1f9cf6a312e8378bb96a4a83dae2498a4936c130e2ef5b125d13b92bb65
+	sha256sums = f6a0b9759d1af128dd09bb3f49812c052c89168e7b159e6d269036a2faba3260
 
 pkgname = system76-power
