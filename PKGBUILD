@@ -7,12 +7,12 @@
 
 pkgname=vim-clipboard
 pkgver=8.2.3441
-pkgrel=1
+pkgrel=2
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
 arch=('x86_64')
 license=('custom:vim')
-depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'acl' 'glibc' 'libxt' 'libgcrypt' 'zlib')
+depends=('vim-runtime' 'gpm' 'acl' 'glibc' 'libxt' 'libgcrypt' 'zlib')
 makedepends=('glibc' 'libgcrypt' 'gpm' 'python2' 'python' 'ruby' 'libxt' 'lua'
              'gawk' 'tcl' 'pcre' 'zlib')
 optdepends=('python2: Python 2 language support'
@@ -28,7 +28,16 @@ source=(https://github.com/vim/vim/archive/v${pkgver}/vim-${pkgver}.tar.gz)
 sha256sums=('3db6c3af32b741c2e618358bbf002cffe9db2ab8d21f9ea277110fce54fec4d2')
 sha512sums=('1d85fdb2d6b50f0b786a8436d091a084b9ca0bb43c3cfbdeaa329b231b82ea790589b7bae6bdb6e60b2c12c97cc4178ab8e61677e0c1070c805021cfdbc34d5f')
 
+_vimrun_ver=$(pacman -Q vim-runtime | awk '{print $2}')
+
 prepare() {
+  if [ "${_vimrun_ver%-*}" = "$pkgver" ]; then
+    echo "OK, vim-runtime ver matches $pkgver"
+  else
+    echo "ERROR, please update vim-runtime"
+    exit
+  fi
+  
   cd vim-${pkgver}/src
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
   sed -E 's|^.*(#define SYS_.*VIMRC_FILE.*").*$|\1|g' -i feature.h

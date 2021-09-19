@@ -1,7 +1,7 @@
 pkgbase = vim-clipboard
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor
 	pkgver = 8.2.3441
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vim.org
 	arch = x86_64
 	license = custom:vim
@@ -17,7 +17,7 @@ pkgbase = vim-clipboard
 	makedepends = tcl
 	makedepends = pcre
 	makedepends = zlib
-	depends = vim-runtime=8.2.3441-1
+	depends = vim-runtime
 	depends = gpm
 	depends = acl
 	depends = glibc
