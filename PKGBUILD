@@ -1,8 +1,7 @@
 # Maintainer: Victor <victor@xirion.net>
 
 pkgname=rke-bin
-pkgver=1.3.0
-_pkgver=v$pkgver
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Rancher Kubernetes Engine, an extremely simple, lightning fast Kubernetes installer that works everywhere."
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -10,16 +9,15 @@ url='https://github.com/rancher/rke'
 license=('Apache')
 provides=('rke')
 conflicts=('rke')
-_rke_file=rke-$_pkgver
 
 case "${CARCH}" in
-  x86_64)    _CARCH=amd64 && sha256sums=('d33d41c3b3175e35e1648515b6e550a87c398c6f3835a03d9933f5d23ffb7d7e');;
-  arm*)      _CARCH=arm   && sha256sums=('dcfaae00eb02b82fd754f70cfcd072a5ac51888227eb5d00d89a106255455ca7');;
-  aarch64)   _CARCH=arm64 && sha256sums=('bce1a0f200ff216d59205bbb29c18809471e862af0164ced2e3a59ee302c7457');;
+  x86_64)  _CARCH=amd64 && sha256sums=('154d55b3a587edc2da497f621f2b302a393cf70e332001fcd2aad612dd479a41');;
+  arm*)    _CARCH=arm   && sha256sums=('e9ae183289775bc262fdf8ed35189f1aa902b61f5af0b05ca0de40cb19e9ef38');;
+  aarch64) _CARCH=arm64 && sha256sums=('ff22dc39005ea36fd4b3fd132df506571d67e995535f3f29c88be869cde3e44c');;
 esac
 
-source=($_rke_file::"https://github.com/rancher/rke/releases/download/${_pkgver}/rke_linux-${_CARCH}")
+source=("https://github.com/rancher/rke/releases/download/v${pkgver}/rke_linux-${_CARCH}")
 
 package() {
-    install -Dm 755 "$srcdir/$_rke_file" "${pkgdir}/usr/bin/rke"
+  install -Dm 755 "${srcdir}/rke_linux-${_CARCH}" "${pkgdir}/usr/bin/rke"
 }
