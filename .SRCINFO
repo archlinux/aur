@@ -1,7 +1,7 @@
 pkgbase = rofi-jack-git
 	pkgdesc = Scripts for controlling jack using rofi
 	pkgver = r37.f47a3b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madskjeldgaard/rofi-jack
 	arch = any
 	groups = pro-audio
