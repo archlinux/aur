@@ -1,0 +1,9 @@
+[Unit]
+Description=Teddit Daemon
+After=network.service
+
+[Service]
+ExecStart=/usr/bin/teddit
+
+[Install]
+WantedBy=multi-user.target
