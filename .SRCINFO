@@ -1,0 +1,13 @@
+pkgbase = nbmerge
+	pkgdesc = A tool to merge / concatenate Jupyter (IPython) notebooks
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/jbn/nbmerge
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = jupyter-nbformat
+	source = https://files.pythonhosted.org/packages/source/n/nbmerge/nbmerge-0.0.4.tar.gz
+	sha256sums = f432797ee685ed495a2daa4dbb76e2b52028d2c3a38142b523bb5cb832df0882
+
+pkgname = nbmerge
