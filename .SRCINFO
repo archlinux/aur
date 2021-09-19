@@ -1,11 +1,12 @@
 pkgbase = spice-protocol-git
 	pkgdesc = Headers defining SPICE protocols
-	pkgver = 0.12.9.158.g03a28f5
-	pkgrel = 2
+	pkgver = 0.14.3.4.g969baca
+	pkgrel = 1
 	url = https://www.spice-space.org
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = meson
 	makedepends = python-six
 	makedepends = python-pyparsing
 	provides = spice-protocol

@@ -3,13 +3,13 @@
 
 _pkgname=spice-protocol
 pkgname=$_pkgname-git
-pkgver=0.12.9.158.g03a28f5
-pkgrel=2
+pkgver=0.14.3.4.g969baca
+pkgrel=1
 pkgdesc="Headers defining SPICE protocols"
 arch=("any")
 url="https://www.spice-space.org"
 license=("BSD")
-makedepends=("git" "python-six" "python-pyparsing")
+makedepends=("git" "meson" "python-six" "python-pyparsing")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://gitlab.freedesktop.org/spice/$_pkgname.git")
@@ -21,14 +21,15 @@ pkgver() {
 }
 
 build() {
+    mkdir build
     cd $_pkgname
-    ./autogen.sh --prefix=/usr
-    make
+    arch-meson ../build
+    ninja -v -C ../build
 }
 
 package() {
     cd $_pkgname
-    make DESTDIR=$pkgdir install
+    DESTDIR="$pkgdir/" ninja -C ../build install
     install -D -m644 $srcdir/$_pkgname/COPYING \
       $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
