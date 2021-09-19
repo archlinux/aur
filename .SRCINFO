@@ -1,0 +1,20 @@
+pkgbase = gnome-shell-extension-dash-to-dock-vinceliuice-git
+	pkgdesc = Moves the dash out of the overview transforming it in a dock (vinceliuice fork)
+	pkgver = 54.r562.f3445ac
+	pkgrel = 1
+	url = https://github.com/vinceliuice/dash-to-dock
+	arch = any
+	license = GPL
+	makedepends = intltool
+	makedepends = gettext
+	makedepends = sassc
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-dash-to-dock
+	provides = gnome-shell-extension-dash-to-dock-vinceliuice
+	conflicts = gnome-shell-extension-dash-to-dock
+	conflicts = gnome-shell-extension-dash-to-dock-vinceliuice
+	source = gnome-shell-extension-dash-to-dock-vinceliuice-git-54.r562.f3445ac::git+https://github.com/vinceliuice/dash-to-dock
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-dash-to-dock-vinceliuice-git
