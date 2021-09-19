@@ -1,15 +1,22 @@
 pkgbase = sssd-nosmb
 	pkgdesc = System Security Services Daemon
-	pkgver = 2.2.2
+	pkgver = 2.5.2
 	pkgrel = 1
-	url = https://pagure.io/SSSD/sssd
+	url = https://github.com/SSSD/sssd
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	checkdepends = check
+	checkdepends = cmocka
+	checkdepends = libfaketime
+	checkdepends = openssh
+	checkdepends = softhsm
 	makedepends = docbook-xsl
 	makedepends = doxygen
 	makedepends = python
-	makedepends = python2
+	makedepends = systemd
+	makedepends = tevent
+	makedepends = ldb
 	depends = bind
 	depends = c-ares
 	depends = cyrus-sasl-gssapi
@@ -23,10 +30,19 @@ pkgbase = sssd-nosmb
 	depends = glib2
 	depends = nfsidmap
 	depends = jansson
-	provides = sssd=2.2.2-1
+	depends = libtevent.so
+	depends = libldb.so
+	provides = sssd=2.5.2-1
 	conflicts = sssd
-	source = https://releases.pagure.org/SSSD/sssd/sssd-2.2.2.tar.gz
-	sha512sums = 4cce8fdbcc05d1469dad5ba987cb0f9bc33702b37f85e8e248975461bb50b0740fec92ff213bdb640b506405be7ead936ff253ab02d4a27205ddf20cc0e54801
+	backup = etc/logrotate.d/sssd
+	source = https://github.com/SSSD/sssd/releases/download/2.5.2/sssd-2.5.2.tar.gz
+	source = https://github.com/SSSD/sssd/releases/download/2.5.2/sssd-2.5.2.tar.gz.asc
+	source = fix-py-tests.patch
+	validpgpkeys = E4E366758CA0716AAB8048671EC6AB7532E7BC25
+	validpgpkeys = 16F24229488E736048952737BA88000FE6398272
+	validpgpkeys = 1A41DC67505F89A330828B66AFFE75DDE8508E12
+	sha512sums = a9bac7b2cc23022dce3bcda314c9c26a0a0914c448f6d5a51c5ba18670f04c1fd1a94cb20173235b6285df1dcc9251cb6b3f3e71a220037b4eb66668e6f33c48
+	sha512sums = SKIP
+	sha512sums = 7570e1e67d6d23654a6be0307a1e9e0595447473f9783a70be0df7c8902833bc7f35e296b5006c6ae1e684452cd6e26d61be5e3f561b481c50d6edafaafa0698
 
 pkgname = sssd-nosmb
-

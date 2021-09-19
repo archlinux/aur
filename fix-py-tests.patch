@@ -1,0 +1,39 @@
+diff --git a/src/tests/pyhbac-test.py b/src/tests/pyhbac-test.py
+index 06163afc5..a0775d452 100755
+--- a/src/tests/pyhbac-test.py
++++ b/src/tests/pyhbac-test.py
+@@ -27,7 +27,7 @@ import copy
+ import tempfile
+ 
+ BUILD_DIR = os.getenv('builddir') or "."
+-TEST_DIR = os.getenv('SSS_TEST_DIR') or "."
++TEST_DIR = os.path.abspath(os.getenv('SSS_TEST_DIR') or ".")
+ MODPATH = tempfile.mkdtemp(prefix="tp_pyhbac_", dir=TEST_DIR)
+ 
+ 
+diff --git a/src/tests/pysss-test.py b/src/tests/pysss-test.py
+index 30bc074ab..9ecaed9ec 100755
+--- a/src/tests/pysss-test.py
++++ b/src/tests/pysss-test.py
+@@ -26,7 +26,7 @@ import os
+ import tempfile
+ 
+ BUILD_DIR = os.getenv('builddir') or "."
+-TEST_DIR = os.getenv('SSS_TEST_DIR') or "."
++TEST_DIR = os.path.abspath(os.getenv('SSS_TEST_DIR') or ".")
+ MODPATH = tempfile.mkdtemp(prefix="tp_pysss_", dir=TEST_DIR)
+ 
+ 
+diff --git a/src/tests/pysss_murmur-test.py b/src/tests/pysss_murmur-test.py
+index 531f8b55f..89d5077b7 100755
+--- a/src/tests/pysss_murmur-test.py
++++ b/src/tests/pysss_murmur-test.py
+@@ -25,7 +25,7 @@ import os
+ import tempfile
+ 
+ BUILD_DIR = os.getenv('builddir') or "."
+-TEST_DIR = os.getenv('SSS_TEST_DIR') or "."
++TEST_DIR = os.path.abspath(os.getenv('SSS_TEST_DIR') or ".")
+ MODPATH = tempfile.mkdtemp(prefix="tp_pysss_murmur_", dir=TEST_DIR)
+ 
+ 
