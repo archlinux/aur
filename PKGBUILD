@@ -7,12 +7,12 @@
 
 pkgname=libpurple-signald
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pidgin libpurple bridge to signald.'
 url='https://github.com/hoehermann/libpurple-signald'
 license=('GPL3')
 arch=('any')
-depends=('json-glib' 'libpurple' 'signald')
+depends=('json-glib' 'libpurple' 'signald' 'qrencode')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hoehermann/libpurple-signald/archive/v${pkgver}.tar.gz")
 sha256sums=('331b30aa21a8dbd9a1c50f35e7cc20f538a3f3691553998a2f53045a4c1abe20')
 
