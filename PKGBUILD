@@ -2,7 +2,7 @@
 
 _pkgname=janet
 pkgname=janet-lang-git
-pkgver=1.17.1.r3118.da2c1be4
+pkgver=1.17.1.r3124.8b10a5fb
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -12,8 +12,10 @@ depends=()
 makedepends=('git')
 provides=('janet' 'jpm')
 conflicts=('janet-lang')
-source=("git+https://github.com/janet-lang/janet.git" "git+https://github.com/janet-lang/jpm")
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://github.com/janet-lang/janet.git" "git+https://github.com/janet-lang/jpm" "default_config.janet")
+sha256sums=('SKIP'
+            'SKIP'
+            '7fb56585e6027ea800920a364acd73b49205298dcf887a4ee71fb65125c4539f')
 options=('staticlibs')
 
 pkgver() {
@@ -56,5 +58,5 @@ package() {
     install -Dm644 -t "${pkgdir}"/usr/lib/janet/jpm jpm/*
     install -Dm644 -t "${pkgdir}"/usr/share/man jpm.1
     install -Dm644 -t "${pkgdir}"/usr/share/janet/jpm/configs configs/*
-    install -m644 -T configs/linux_config.janet "${pkgdir}"/usr/lib/janet/jpm/default-config.janet
+    install -m644 -T "${srcdir}"/default_config.janet "${pkgdir}"/usr/lib/janet/jpm/default-config.janet
 }

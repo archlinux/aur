@@ -1,6 +1,6 @@
 pkgbase = janet-lang-git
 	pkgdesc = A dynamic Lisp dialect and bytecode vm
-	pkgver = 1.17.1.r3118.da2c1be4
+	pkgver = 1.17.1.r3124.8b10a5fb
 	pkgrel = 1
 	url = https://janet-lang.org/
 	arch = arm
@@ -17,7 +17,9 @@ pkgbase = janet-lang-git
 	options = staticlibs
 	source = git+https://github.com/janet-lang/janet.git
 	source = git+https://github.com/janet-lang/jpm
+	source = default_config.janet
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 7fb56585e6027ea800920a364acd73b49205298dcf887a4ee71fb65125c4539f
 
 pkgname = janet-lang-git
