@@ -1,48 +1,54 @@
-# Maintainer: thorsten w. <p@thorsten-wissmann.de>
-# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Jonathan Steel <jsteel at archlinux.org>
+# Contributor: thorsten w. <p@thorsten-wissmann.de>
 
 pkgname=herbstluftwm-git
 _pkgname=herbstluftwm
-pkgver=0.9.1.r21.gf18eef44
+pkgver=0.9.3.r23.g9cdf6938
 pkgrel=1
+epoch=1
 pkgdesc="Manual tiling window manager for X"
-arch=('i686' 'x86_64')
-url="http://herbstluftwm.org"
+arch=('x86_64' 'i686')
+url="https://herbstluftwm.org"
 license=('BSD')
-depends=('libx11' 'libxinerama' 'libxft' 'freetype2')
-optdepends=(
-        'bash: needed by most scripts'
-        'xterm: used by the default autostart'
-        'dmenu: needed by some scripts'
-        'dzen2: needed by panel.sh'
-        'dzen2-xft-xpm-xinerama-git: view icons as tags'
-    )
-makedepends=('git' 'asciidoc' 'cmake')
+depends=('bash' 'libxinerama' 'libxrandr' 'libxft')
+makedepends=('git' 'cmake' 'asciidoc')
+optdepends=('xorg-xsetroot: to set wallpaper color in default autostart'
+            'xterm: used as the terminal in default autostart'
+            'dzen2: used in the default panel.sh'
+            'dmenu: used in some example scripts')
+source=("$pkgname::git://github.com/herbstluftwm/$_pkgname")
+sha256sums=('SKIP')
+validpgpkeys=('72B6C05CDFF309C6396167D464EF02821CAFF810') # Thorsten Wißmann <edu@thorsten-wissmann.de>
+
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git://github.com/herbstluftwm/$_pkgname")
-md5sums=( SKIP )
 
 pkgver() {
-  cd $_pkgname
+  cd ${pkgname}
   git describe --tags --long | sed -r 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
 }
 
-prepare() {
-  rm -r build || true
-  mkdir build
-}
-
 build() {
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ../$_pkgname
+  cd $pkgname
+
+  mkdir -p build; cd build
+
+  cmake \
+    -DBASHCOMPLETIONDIR=/usr/share/bash-completion/completions \
+    -DZSHCOMPLETIONDIR=/usr/share/zsh/functions/Completion/X \
+    -DCMAKE_INSTALL_PREFIX="/usr" ..
+
   make
 }
 
 package() {
-  cd build
+  cd $pkgname/build
+
   make DESTDIR="$pkgdir" install
 
-  cd "$srcdir/$_pkgname"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -d "$pkgdir"/usr/share/licenses/$pkgname/
+
+  ln -s /usr/share/doc/$_pkgname/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
