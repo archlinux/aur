@@ -1,9 +1,9 @@
 pkgbase = libxcvt-git
-	pkgdesc = libxcvt is a library providing a standalone version of the X server implementation of the VESA CVT standard timing modelines generator.
-	pkgver = 0.1.0+2+gdb5141a
+	pkgdesc = library providing a standalone version of the X server implementation of the VESA CVT standard timing modelines generator
+	pkgver = 0.1.0+3+g69fb7bf
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/lib/libxcvt
-	arch = any
+	arch = x86_64
 	license = custom
 	makedepends = git
 	makedepends = meson
