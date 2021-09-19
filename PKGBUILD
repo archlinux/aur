@@ -1,7 +1,7 @@
 # Maintainer: Philipp Kühn <p dot kuehn at posteo dot de>
 pkgname=sioyek-git
-pkgver=0.31
-pkgrel=6
+pkgver=0.31.6
+pkgrel=2
 pkgdesc="PDF viewer for research papers and technical books."
 arch=('any')
 license=('GPL3')
@@ -25,17 +25,18 @@ build() {
 
 package() {
 	cd $pkgname
-	install -Dm755 build/sioyek $pkgdir/usr/bin/sioyek
-	install -Dm755 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -Dm755 ./build/sioyek $pkgdir/usr/bin/sioyek
 
-	for config in keys.config keys_user.config prefs.config prefs_user.config; do
-		install -Dm644 build/$config -t $pkgdir/"$HOME/.config/${pkgname%-git}"
-	done
+	install -Dm755 ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
-	mkdir -p $pkgdir"$HOME/.local/share/${pkgname%-git}"
-	cp build/tutorial.pdf $pkgdir"$HOME/.local/share/${pkgname%-git}"
-	cp -r build/shaders $pkgdir"$HOME/.local/share/${pkgname%-git}"
+	install -Dm644 ./resources/sioyek-icon-linux.png ${pkgdir}/usr/share/icons/${pkgname%-git}-icon-linux.png
+	install -Dm644 ./resources/${pkgname%-git}.desktop $pkgdir/usr/share/applications/${pkgname%-git}.desktop
 
-	chown -R $USER:$USER $pkgdir$HOME/.config/sioyek
-	chown -R $USER:$USER $pkgdir$HOME/.local/share/sioyek
+	mkdir $pkgdir/usr/share/sioyek
+	install -Dm644 -t $pkgdir/etc/xdg/sioyek build/keys_user.config build/prefs_user.config
+	install -Dm644 -t $pkgdir/usr/share/sioyek build/keys.config build/prefs.config build/tutorial.pdf
+	cp -r build/shaders $pkgdir/usr/share/sioyek
+
+	echo "Data files can be found in /usr/share/sioyek"
+	echo "Be sure to copy them to the according locations"
 }
