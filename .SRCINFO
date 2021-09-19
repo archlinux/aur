@@ -1,6 +1,6 @@
 pkgbase = hck-bin
 	pkgdesc = A sharp cut(1) clone
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/sstadick/hck
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = hck-bin
 	depends = gcc-libs
 	provides = hck
 	conflicts = hck
-	source = hck-bin-0.6.3-LICENSE-MIT::https://raw.githubusercontent.com/sstadick/hck/v0.6.3/LICENSE-MIT
+	source = hck-bin-0.6.4-LICENSE-MIT::https://raw.githubusercontent.com/sstadick/hck/v0.6.4/LICENSE-MIT
 	b2sums = 57222a9fc85c83c7c2b05e76fe7db55003ee78727fd0361e4b5fbfc81fdb53eed69bd3b0259dcfa055f2bb57628aaf9246fa5cf2a4fc29b6cc1b524c225ceefa
-	source_x86_64 = hck-bin-0.6.3-x86_64::https://github.com/sstadick/hck/releases/download/v0.6.3/hck-linux-amd64
-	b2sums_x86_64 = cd7f5978035375ce4c7a4d2f633ad0b6c9c61f932a57d09806523043207aca4673f340a8f94f99c10c362e9539c038b4c0c8f9ae700fa5d401be39c825751408
+	source_x86_64 = hck-bin-0.6.4-x86_64::https://github.com/sstadick/hck/releases/download/v0.6.4/hck-linux-amd64
+	b2sums_x86_64 = 5489ac5927cea9482e6d72aae2e7591aa7be473064147ed820d88c7a0559ab303ba3601f5ef24f6dddc6a67d3b2676bd73b802ffe11f1b9538dd80b177f908ab
 
 pkgname = hck-bin
