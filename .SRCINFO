@@ -1,6 +1,6 @@
 pkgbase = apple-music-electron-git
 	pkgdesc = Electron wrapper for Apple Music based on Electron 14.0.0
-	pkgver = 2.5.0.nightly.2.623.67cb38c
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/Apple-Music-Electron/Apple-Music-Electron.git
 	arch = aarch64
