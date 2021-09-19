@@ -1,8 +1,10 @@
 post_install() {
-    echo 'You could use `ln -s /usr/share/applications/clash-for-windows.desktop /etc/xdg/autostart/` to enable auto start.'
-    echo 'Installing Service Mode may requires manually restart of program'
+    echo 'Clash for Windows has it own built-in autostart since 0.18.1.'
+    echo 'Enable it will create .desktop file under $HOME/.config/autostart/'
+    # echo 'You cloud use `ln -s /usr/share/applications/clash-for-windows.desktop /etc/xdg/autostart/` to enable auto start when bulit-in's not working.'
+    # echo 'Installing Service Mode may requires manually restart of program'
 }
 
-pre_remove() {
-    rm -f /etc/xdg/autostart/clash-for-windows.desktop 2>/dev/null
-}
+# pre_remove() {
+#    rm -f /etc/xdg/autostart/clash-for-windows.desktop 2>/dev/null
+# }
