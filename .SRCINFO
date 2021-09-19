@@ -1,7 +1,7 @@
 pkgbase = symbiyosys-nightly
 	pkgdesc = Front-end for Yosys-based formal verification flows
 	pkgver = 15278f1_20210919
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/YosysHQ/SymbiYosys
 	arch = any
