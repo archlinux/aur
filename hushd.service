@@ -1,0 +1,9 @@
+[Unit]
+Description=Hush daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/hushd
+
+[Install]
+WantedBy=default.target

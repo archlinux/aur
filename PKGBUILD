@@ -3,7 +3,7 @@
 pkgname=hush3-bin
 _pkgname=hush3
 pkgver=3.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
@@ -13,10 +13,12 @@ makedepends=('wget' 'git' 'curl')
 conflicts=('hush3')
 source=("hush-$pkgver-amd64.deb::https://git.hush.is/attachments/28a44c53-636e-4f07-91ef-0b8c4d07f604"
         "$url/raw/branch/master/LICENSE"
-        "$url/raw/branch/master/src/hush-smart-chain")
+        "$url/raw/branch/master/src/hush-smart-chain"
+		"hushd.service")
 sha256sums=('e80d61509343f1a9c4744aa7f04046e34012a983342e8f5145ed293b1bf79a0f'
             '6eae06cda3a8320e607ac0ee96cbdfc52b977463151ff4d5b119a26ee0cf666d'
-            'c7afef544ec5c462b33996fdbd746932e7be3428c2addfad0da3a97ba1b737cf')
+            'c7afef544ec5c462b33996fdbd746932e7be3428c2addfad0da3a97ba1b737cf'
+            '54503ef9d84e2b83b2e1e290c3da839a4d3bfc255cb01b8e5b905247a05af704')
 
 package() {
   # extract from deb file
@@ -53,4 +55,7 @@ package() {
   ln -s /opt/${_pkgname}/sapling-output.params "${pkgdir}/usr/share/hush"
   ln -s /opt/${_pkgname}/sapling-spend.params "${pkgdir}/usr/share/hush"
   ln -s /opt/${_pkgname}/asmap.dat "${pkgdir}/usr/share/hush"
+
+  # install systemd service
+  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/user "${srcdir}"/hushd.service
 }
