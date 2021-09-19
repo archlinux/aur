@@ -1,9 +1,10 @@
-# Maintainer: Jake <aur@ja-ke.tech>
+# Maintainer: Capezotte ( base32 -d <<<'NVXWGLTMNFQW2Z2AHE4TAMTBNZQXEYLDBI======' | rev )
+# Contributor: Jake <aur@ja-ke.tech>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Chris Giles <Chris.G.27 (at) Gmail.com>
 
 pkgname=q4wine
-pkgver=1.3.12
+pkgver=1.3.13
 pkgrel=1
 pkgdesc="A Qt5 GUI for Wine"
 arch=("x86_64")
@@ -14,8 +15,8 @@ makedepends=("cmake" "qt5-tools" "qt5-svg")
 optdepends=("winetricks" "fuseiso")
 options=('!emptydirs')
 source=("https://github.com/brezerk/q4wine/archive/v${pkgver}.tar.gz")
-sha256sums=('7d6cd83d4d106f241407d96d97a3b6066643b83819be52f77aa80da90706c508')
-            
+sha256sums=('8d75c51285aa100cabdd544e81671444cc40a68a0ebb5d13e40a9113c7e00e4e')
+
 build() {
   cd "$srcdir"/${pkgname}-${pkgver/_/-}
   cmake \
