@@ -10,7 +10,7 @@ url='https://github.com/LBCrion/sfwbar'
 license=('GPL3')
 depends=(
     'gtk3'
-    'libucl-git'
+    'json-c'
     'gtk-layer-shell'
     )
 makedepends=(
