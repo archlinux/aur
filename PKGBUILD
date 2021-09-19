@@ -2,7 +2,7 @@
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clightd
 pkgver=5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clightd"
@@ -30,4 +30,8 @@ build() {
 
 package() {
   make -C build DESTDIR="$pkgdir" install
+
+  install -d "$pkgdir/usr/lib/systemd/system"
+  mv "$pkgdir/etc/systemd/system/$pkgname.service" "$pkgdir/usr/lib/systemd/system"
+  rm -rf "$pkgdir/etc/systemd"
 }
