@@ -1,0 +1,12 @@
+pkgbase = prey-data-steam
+	pkgdesc = Prey data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = https://steamdb.info/app/3970/
+	arch = any
+	license = custom
+	makedepends = steamcmd
+	optdepends = prey: Linux game binaries for Prey
+	provides = prey-data
+
+pkgname = prey-data-steam
