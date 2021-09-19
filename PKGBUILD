@@ -2,7 +2,7 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web
-pkgver=0.40.1
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -17,11 +17,11 @@ optdepends=('pantalaimon: used for E2E encryption')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=(
-    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.2.3-stable.tar.xz"
+    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.5.1-stable.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz"
 )
-sha256sums=('66a271aa9f4286596841f5c89fd5d22e4ae0042127459e88d5650ca989ba948d'
-            '366f62f02d33f54aa0b91d2c093371c35dd850a075d55c18a7bca4c88c3f8236')
+sha256sums=('6267b686d8d1c9297265a8eb3788fa234a4fa9a125e56f58ba8965ade2f9cc8b'
+            '58a21346b6f7136c76c6b9a6be4b8ec3edd6b2cd5db60f6fb40a0b953a6ece9b')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
 )
