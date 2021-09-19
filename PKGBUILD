@@ -33,6 +33,7 @@ optdepends=(
   'python-pyopenssl: ssl support'
   'par2cmdline-tbb: par2 multi-threading'
   'p7zip: for .7z support'
+  'dbus-python: for system power management'
 )
 
 backup=('var/lib/sabnzbd/sabnzbd.ini')

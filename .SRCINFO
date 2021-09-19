@@ -28,6 +28,7 @@ pkgbase = sabnzbd
 	optdepends = python-pyopenssl: ssl support
 	optdepends = par2cmdline-tbb: par2 multi-threading
 	optdepends = p7zip: for .7z support
+	optdepends = dbus-python: for system power management
 	backup = var/lib/sabnzbd/sabnzbd.ini
 	source = https://github.com/sabnzbd/sabnzbd/releases/download/3.4.0/SABnzbd-3.4.0-src.tar.gz
 	source = sabnzbd.service
