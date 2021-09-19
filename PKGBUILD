@@ -2,7 +2,7 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=0.98.4
+pkgver=0.99.0
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
@@ -26,8 +26,8 @@ source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.
         'xnviewmp.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
-sha256sums=('45C21B55FBDCDF2BD026C43059FF34D355ADD87469800B3498963544D307A804'
-            '2DAAC0261789B79AA056EB7E38C9B4E9853EB7DE30A8BF4232EBEE7D81D4295C'
+sha256sums=('224A7FADB9531D5487DE8DB277A7C7F4B60327971D947B888697C91E19DB6B5B'
+            '87ec80c5049745dc3018fcdcf4dddf0e877ae3b20706705f2a80715232ad2141'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A'
             'C35FE8CD0AD76F77C0117DE1D81A8C3945D6E472D7663D6D5645592C18809423'
             '3D6DA484CD55EAC8910D5CF87F9057E6EADEAC842A249DCBDA35E1C6F3FCDC0D')
@@ -95,6 +95,10 @@ package() {
   ln -s /usr/lib/libwebp.so "${pkg_opt_dir}/Plugins/libwebp.so"
   ln -s /usr/lib/libIlmImf.so "${pkg_opt_dir}/Plugins/IlmImf.so"
   ln -s /usr/lib/libopenjp2.so "${pkg_opt_dir}/Plugins/openjp2.so"
+
+  # Using the system libraw doesn't seem to work (assertion failure in libc when
+  # attempting to view a RAW file), use the one provided.
+  install -D -m644 "lib/liblibraw.so.1" -t "${pkg_opt_dir}/lib"
 
   install -m755 "${srcdir}/xnview.sh" "${pkg_opt_dir}"
 
