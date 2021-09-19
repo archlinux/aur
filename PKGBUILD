@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 url='http://m210.duke4.net/index.php'
 license=('GPL')
 depends=('java-environment=8')
-makedepends=('unzip')
 provides=('buildgdx')
 conflicts=('buildgdx')
 source=('https://m210.duke4.net/index.php/downloads/send/8-java/54-buildgdx.zip'

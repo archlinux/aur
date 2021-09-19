@@ -6,7 +6,6 @@ pkgbase = buildgdx
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = unzip
 	depends = java-environment=8
 	provides = buildgdx
 	conflicts = buildgdx
