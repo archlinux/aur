@@ -8,12 +8,14 @@ arch=('x86_64' 'aarch64')
 url="https://gitlab.com/whynothugo/darkman"
 license=('ISC')
 depends=('geoclue')
-makedepends=('go')
-source=("https://gitlab.com/WhyNotHugo/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha512sums=('9b0890b0e56cdc71c6aadd6c0e4c67948932b3f629bafbb4339bb8fed090b6a764e13de4e0ed34675d68f6a30003a2b7fe222d2e1b93c03178a4a659e1a79a9f')
+makedepends=('go' 'git')
+source=("git+https://gitlab.com/WhyNotHugo/darkman.git?signed#tag=v${pkgver}")
+sha512sums=('SKIP')
+validpgpkeys=("13FF264E91839686966CA2AC388ADF1E2EEA7F1A")
 
 build() {
   cd "$pkgname-v$pkgver"
+
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
