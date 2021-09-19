@@ -69,7 +69,7 @@ arch=(x86_64 i686)
 url="https://github.com/ulises-jeremias/dotfiles"
 license=('MIT')
 groups=()
-depends=( git "${fonts[@]}" "${needed_pkgs[@]}" "${xfce4_pkgs[@]}")
+depends=(git "${fonts[@]}" "${needed_pkgs[@]}" "${xfce4_pkgs[@]}")
 makedepends=()
 checkdepends=()
 optdepends=(
@@ -97,16 +97,6 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 package() {
-	cd ./dotfiles || exit
-	rm -rf "${pkgdir}"/opt/"${pkgname}"
-	mkdir -p "${pkgdir}"/opt/"${pkgname}"
-	cp -Rf ./* "${pkgdir}"/opt/"${pkgname}"
-	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-	install -Dm644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
-	cp -Rf arch-linux "${pkgdir}"/opt/"${pkgname}"
-	cp -Rf common "${pkgdir}"/opt/"${pkgname}"
-	cp -Rf default-config "${pkgdir}"/opt/"${pkgname}"
-	cp -Rf scripts "${pkgdir}"/opt/"${pkgname}"
-	cp -Rf util "${pkgdir}"/opt/"${pkgname}"
-	install -Dm755 dots "${pkgdir}"/usr/bin/dots
+	chmod +x ./dotfiles/install || exit
+	PKGDIR="${pkgdir}" PKGNAME="${pkgname}" sudo ./dotfiles/install || exit
 }
