@@ -14,13 +14,13 @@ _fragment="${FRAGMENT:-#branch=master}"
 
 # Use CUDA_ARCH to build for specific GPU architecture
 # Supports: single arch (sm_52) and list of archs (sm_52;sm_60)
-[[ -v CUDA_ARCH ]] && _cuda_arch="-DCYCLES_CUDA_BINARIES_ARCH=${CUDA_ARCH}"
+[[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
 #some extra, unofficially supported stuff goes here:
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.0.r107536.gfaa65f151d9
+pkgver=3.0.r108561.g257c7753e9b
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -83,8 +83,7 @@ build() {
   _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ]; then
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
-                    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
-                    "$_cuda_arch" )
+                    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
   fi
 
   # check for optix
