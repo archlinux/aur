@@ -13,19 +13,19 @@ pkgname=(
   'xorg-server-xvfb-git'
 )
 _pkgbase='xserver'
-pkgver=21.0.99.1.r70.g7c63c582a
+pkgver=21.0.99.1.r111.gc93c2e771
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="https://xorg.freedesktop.org"
-makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
+makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'xtrans' 'libxcvt'
              'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'meson' 'git'
-             'wayland-protocols' 'egl-wayland' 'libxcvt')
+             'wayland-protocols' 'egl-wayland')
 source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
         xvfb-run # with updates from FC master
         xvfb-run.1)
@@ -47,16 +47,17 @@ build() {
   export CXXFLAGS="${CXXFLAGS/-fno-plt -fno-lto}"
   export LDFLAGS="${LDFLAGS/,-z,now,-fno-lto}"
 
-  arch-meson ${_pkgbase} build \
-    -D os_vendor="Archlinux" \
+  arch-meson "${_pkgbase}" build \
+    -D vendor_name="Archlinux" \
+    -D vendor_web="https://aur.archlinux.org/xorg-server-git.git" \
     -D ipv6=true \
     -D xvfb=true \
     -D xnest=true \
     -D xcsecurity=true \
     -D xorg=true \
     -D xephyr=true \
-    -D xwayland=false \
-    -D xwayland_eglstream=false \
+    -D xwayland=true \
+    -D xwayland_eglstream=true \
     -D glamor=true \
     -D udev=true \
     -D systemd_logind=true \
@@ -122,7 +123,7 @@ package_xorg-server-git() {
   _install fakeinstall/usr/lib/xorg/modules/*
   _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
   _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,gtf}.1
-  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting,inputtestdrv}.4
+  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting}.4
   _install fakeinstall/usr/share/man/man5/{Xwrapper.config,xorg.conf,xorg.conf.d}.5
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
