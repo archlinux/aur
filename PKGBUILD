@@ -4,7 +4,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=unison-git
-pkgver=2.51.3.70.r29.g3c54310
+pkgver=2.51.4.r62.ga39c572
 pkgrel=1
 pkgdesc='File-synchronization tool'
 url='http://www.cis.upenn.edu/~bcpierce/unison/'
