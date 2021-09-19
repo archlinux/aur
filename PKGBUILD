@@ -1,7 +1,6 @@
 # Maintainer: Jonas Bögle <aur@iwr.sh>
 # Contributor: Jonathan Duck <duckbrain30@gmail.com>
 
-# Expiremental System electron package, set ELECTRON env to electron
 pkgname=typora
 pkgver=0.11.8
 pkgrel=1
@@ -17,6 +16,8 @@ optdepends=(
 source=("https://typora.io/linux/$filename")
 sha512sums=('08d385582b799dd6c64e27ee33c1e2ef3cf497bcab2d8c1f3402fa496d83fbd94418170ed8a38ba5d81ebb790f35eb8969d8f295ce9a4625108a0af1bd33940e')
 
+# Set the ELECTRON environment variable to "electron" to use the electron package instead of the shipped electron version.
+# Warning: this is experimental and will probably break typora.
 if [[ ! -z $ELECTRON ]]; then
 	depends+=($ELECTRON)
 	source+=(typora.js)
@@ -27,8 +28,12 @@ package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 	rm -rf "$pkgdir/usr/share/lintian/"
 	chmod 4755 "$pkgdir/usr/share/typora/chrome-sandbox"
+	# Remove write permission for group/other
+	chmod -R go-w "$pkgdir/usr/share/typora/resources/node_modules"
 	sed -i '/Change Log/d' "$pkgdir/usr/share/applications/typora.desktop"
 	find "$pkgdir" -type d -exec chmod 755 {} \;
+
+	# Alternatively use the systems electron as described above.
 	if [[ ! -z $ELECTRON ]]; then
 		appdir="${pkgdir}/usr/share/typora"
 		mv "${appdir}" tmp/
