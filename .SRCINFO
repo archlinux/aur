@@ -1,0 +1,19 @@
+pkgbase = serioussam3-steam
+	pkgdesc = Serious Sam 3 BFE Linux-native with data via Steam
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://store.steampowered.com/app/41070/Serious_Sam_3_BFE/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	source = serioussam3.sh
+	source = serioussam3.desktop
+	source = serioussam3.png
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = 3b0320ce691539ce5013bb9e5b50cc6aa80707296e6e67761e46c2f95b9f9b4d
+	sha256sums = b34af72b78b9a30cb2bc0499e8c69cb9d879958ea4d2ecb84da5702c4fdffea5
+	sha256sums = 327b16903ef25e0953aa1b9046895dd374a8859225062acab4c0e92313ff0ba6
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = serioussam3-steam
