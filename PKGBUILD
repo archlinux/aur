@@ -3,7 +3,7 @@
 
 pkgname="fusiondirectory"
 pkgver=1.4.dev
-pkgrel=2
+pkgrel=3
 _commit="952afba6f3c0adf945937cb2fc21c40fa1d21d36"
 pkgdesc="A combination of system administrator and end user web interface, designed to handle LDAP based setups"
 url="http://fusiondirectory.org/"
@@ -40,8 +40,8 @@ source=(#"https://repos.fusiondirectory.org/sources/$pkgname/$pkgname-$pkgver.ta
         "$pkgname.tmpfiles")
 sha256sums=('4f27b6e1cbb5e78aeaacddfe27ed62155d97897e615a59cd15f08c499c706c09'
             '1fa39bd110d3326a14f920601803813f088d08ecb2cc645aa7075884d998f6f6'
-            'f39473f669a0f7469004ce8eb71d637c7f2777ea9b91739c6014c1aa4a4b7c32'
-            '1732399f263301f212599fd862780422eca5375be1da63acd26506587a348025')
+            'a8264c307ff6ec8fd3723831414bd8ce343703347dcddaa945b8cb18be4c89a7'
+            '1929afae6a7917535e44feac5455be35a2d6045a226e858a5ddd9b6204852f84')
 install="$pkgname.install"
 options=("!strip")
 
@@ -59,6 +59,7 @@ package(){
  cd "$pkgname-$_commit"
  # directories
  install -d -m 755 "$pkgdir/etc/openldap/schema/$pkgname"
+ install -d -m 750 "$pkgdir/etc/webapps/$pkgname"
  install -d -m 700 "$pkgdir/var/cache/$pkgname"
  install -d -m 755 "$pkgdir/var/cache/$pkgname/template"
  install -d -m 755 "$pkgdir/usr/share/doc/$pkgname/"

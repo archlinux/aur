@@ -1,7 +1,7 @@
 pkgbase = fusiondirectory
 	pkgdesc = A combination of system administrator and end user web interface, designed to handle LDAP based setups
 	pkgver = 1.4.dev
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fusiondirectory.org/
 	install = fusiondirectory.install
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = fusiondirectory
 	source = fusiondirectory.tmpfiles
 	sha256sums = 4f27b6e1cbb5e78aeaacddfe27ed62155d97897e615a59cd15f08c499c706c09
 	sha256sums = 1fa39bd110d3326a14f920601803813f088d08ecb2cc645aa7075884d998f6f6
-	sha256sums = f39473f669a0f7469004ce8eb71d637c7f2777ea9b91739c6014c1aa4a4b7c32
-	sha256sums = 1732399f263301f212599fd862780422eca5375be1da63acd26506587a348025
+	sha256sums = a8264c307ff6ec8fd3723831414bd8ce343703347dcddaa945b8cb18be4c89a7
+	sha256sums = 1929afae6a7917535e44feac5455be35a2d6045a226e858a5ddd9b6204852f84
 
 pkgname = fusiondirectory

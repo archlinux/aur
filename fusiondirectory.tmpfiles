@@ -1,4 +1,4 @@
-f /etc/webapps/fusiondirectory/fusiondirectory.conf 0640 root http
+d /etc/webapps/fusiondirectory/ 0750 root http
 d /var/cache/fusiondirectory 0700 http http
 d /var/spool/fusiondirectory 0755 http http
 Z /var/cache/fusiondirectory - http http
