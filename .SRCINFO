@@ -1,0 +1,21 @@
+pkgbase = wreckfest-wine-steam
+	pkgdesc = Wreckfest using WINE with data via Steam
+	pkgver = 1.27
+	pkgrel = 1
+	url = https://store.steampowered.com/app/228380/Wreckfest/
+	install = wreckfest.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = wine
+	depends = winetricks
+	source = wreckfest.sh
+	source = wreckfest.desktop
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = 18c0153c64618b01106732bd6b3fa511c1f99a1ca1a2eb58f83c5cc281d0b7e5
+	sha256sums = b794e5f02c2346e977cb5a5c5ecd8963daf12d10d7c54a84676e20ad199b7941
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = wreckfest-wine-steam

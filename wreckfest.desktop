@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Wreckfest
+Comment=Wreckfest WINE
+Exec=/usr/bin/wreckfest
+Icon=wreckfest
+Terminal=false
+Type=Application
+Categories=Application;Game;
