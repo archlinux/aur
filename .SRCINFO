@@ -1,7 +1,7 @@
 pkgbase = gitoops-git
 	pkgdesc = Identify lateral movement and privilege escalation paths in CI/CD environments
 	pkgver = 0.0.0.r33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ovotech/gitoops
 	arch = i686
 	arch = x86_64
