@@ -1,4 +1,4 @@
-# Maintainer: Robert Orzanna <orschiro at gmail dot com>
+# Previous maintainer: Robert Orzanna <orschiro at gmail dot com>
 
 pkgname=sxiv-rifle
 pkgver=1.3
