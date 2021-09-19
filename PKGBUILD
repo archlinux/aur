@@ -67,7 +67,7 @@ xfce4_pkgs=(
 
 # Maintainer: Ulises Jeremias Cornejo Fandos <ulisescf.24@domain.com>
 pkgname=dots-git
-pkgver=1.0
+pkgver=1.0.r327.877790f
 pkgrel=1
 epoch=
 pkgdesc="Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs"
@@ -100,14 +100,13 @@ package() {
 	cd ./dotfiles || exit
 	rm -rf "${pkgdir}"/opt/"${pkgname}"
 	mkdir -p "${pkgdir}"/opt/"${pkgname}"
-	cp -rf ./* "${pkgdir}"/opt/"${pkgname}"
+	cp -Rf ./* "${pkgdir}"/opt/"${pkgname}"
 	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 	install -Dm644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
-	install -Dm755 arch-linux/* -t "${pkgdir}"/opt/"${pkgname}"/arch-linux
-	install -Dm755 common/* -t "${pkgdir}"/opt/"${pkgname}"/common
-	install -Dm755 default-config/* -t "${pkgdir}"/opt/"${pkgname}"/default-config
-	install -Dm755 scripts/* -t "${pkgdir}"/opt/"${pkgname}"/scripts
-	install -Dm755 util/* -t "${pkgdir}"/opt/"${pkgname}"/util
-	install -Dm755 dots -t "${pkgdir}"/opt/"${pkgname}"/dots
-	ln -sf /usr/bin/dots "${pkgdir}"/opt/"${pkgname}"/dots
+	cp -Rf arch-linux "${pkgdir}"/opt/"${pkgname}"
+	cp -Rf common "${pkgdir}"/opt/"${pkgname}"
+	cp -Rf default-config "${pkgdir}"/opt/"${pkgname}"
+	cp -Rf scripts "${pkgdir}"/opt/"${pkgname}"
+	cp -Rf util "${pkgdir}"/opt/"${pkgname}"
+	install -Dm755 dots "${pkgdir}"/usr/bin/dots
 }
