@@ -2,14 +2,18 @@ post_install() {
 
 	local _PWD_PAIRS_="$(awk -F ':' '$3>=1000 && $3<2000 {print $1":"$6}' '/etc/passwd')"
 	local _USER_
-	local _CFG_FILE_
+	local _GROUP_
+	local _CFG_DIR_
 
 	for _PWD_PAIR_ in ${_PWD_PAIRS_}; do
 		_USER_="$(echo $_PWD_PAIR_ | cut -d ':' -f 1)"
-		_CFG_FILE_="$(echo $_PWD_PAIR_ | cut -d ':' -f 2)/.config/gnunet.conf"
-		test -e "${_CFG_FILE_}" || install -Dm644 -o "${_USER_}" -g \
-			"$(id -gn "${_USER_}")" /etc/skel/.config/gnunet.conf \
-			"${_CFG_FILE_}"
+		_GROUP_="$(id -gn "${_USER_}")"
+		_CFG_DIR_="$(echo $_PWD_PAIR_ | cut -d ':' -f 2)/.config"
+		test -e "${_CFG_DIR_}/gnunet.conf" || (install -dm700 -o \
+			"${_USER_}" -g "${_GROUP_}" "${_CFG_DIR_}" && install \
+			-Dm600 -o "${_USER_}" -g "${_GROUP_}" \
+			'/etc/skel/.config/gnunet.conf' \
+			"${_CFG_DIR_}/gnunet.conf")
 	done
 
 	echo

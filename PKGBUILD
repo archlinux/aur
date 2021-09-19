@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.4.alpha.0.r29840.ad9c10e6e'
+pkgver='0.15.4.alpha.0.r29842.df00745ee'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -109,8 +109,8 @@ package() {
 	install -Dm644 "${srcdir}/${_appname}-uri.desktop" \
 		"${pkgdir}/usr/share/applications/${_appname}-uri.desktop"
 
-	install -dm755 "${pkgdir}/etc/skel/.config"
-	install -Dm644 "${srcdir}/${_appname}-user.conf" \
+	install -dm700 "${pkgdir}/etc/skel/.config"
+	install -Dm600 "${srcdir}/${_appname}-user.conf" \
 		"${pkgdir}/etc/skel/.config/${_appname}.conf"
 
 
