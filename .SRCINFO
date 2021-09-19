@@ -1,0 +1,13 @@
+pkgbase = raspbee2-rtc
+	pkgdesc = RTC service file for RaspBee II
+	pkgver = 20200609
+	pkgrel = 1
+	url = https://github.com/dresden-elektronik/raspbee2-rtc
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = rtc-pcf85063
+	source = git+https://github.com/dresden-elektronik/raspbee2-rtc.git#commit=6fabff2ee826c004dfb17eb4a5df115e262a0157
+	sha256sums = SKIP
+
+pkgname = raspbee2-rtc
