@@ -1,0 +1,14 @@
+pkgbase = python-ruamel-base
+	pkgdesc = (future) place for elements common to multiple packages
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/ruamel.base
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	source = https://pypi.io/packages/source/r/ruamel.base/ruamel.base-1.0.0.tar.gz
+	sha512sums = a847f0ae8d889bbc593f6d3507b3208c69d3027a73dddc39058e6da7316937234ef0208394e264a07fd3fa970c97713a14db7a62e374433a27625932bb76c44c
+
+pkgname = python-ruamel-base
