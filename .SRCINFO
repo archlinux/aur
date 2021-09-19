@@ -1,7 +1,7 @@
 pkgbase = fusiondirectory-plugins
 	pkgdesc = FusionDirectory core plugins
 	pkgver = 1.4.dev
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fusiondirectory.org/
 	install = fusiondirectory-plugins.install
 	arch = any

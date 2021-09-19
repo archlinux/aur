@@ -1,19 +1,17 @@
 post_install(){
  fusiondirectory-setup --update-cache --update-locales
+ fusiondirectory-setup --yes --check-directories
  cat <<INFO
 
-To complete the installation process, run the following command to update your LDAP schemas
+To complete the installation process, run the following command to import the required LDAP schemas
 
-    sudo find /etc/openldap/schema/fusiondirectory -type f -exec fusiondirectory-insert-schema -i {} \;
+   sudo find /etc/openldap/schema/fusiondirectory -type f -iname "*.ldif" -exec fusiondirectory-insert-schema -i {} \;
 
 INFO
 }
 
 post_upgrade(){
- post_install
-}
-
-post_remove(){
  fusiondirectory-setup --update-cache --update-locales
+ fusiondirectory-setup --yes --check-directories
 }
 
