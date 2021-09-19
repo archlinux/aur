@@ -1,0 +1,38 @@
+From 957162f83b6cfa0c89d325c6bc6134127cc99a09 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Sun, 19 Sep 2021 15:10:13 +0200
+Subject: [PATCH 2/2] Set correct library names
+
+---
+ CMakeLists.txt | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3fa17c4..de99ca2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,6 +34,7 @@ else()
+ endif()
+ if (NOT USE_SYSTEM_YARA)
+     add_subdirectory(external/yara)
++    set(YARA_LIBRARIES libyara)
+ else()
+     find_package(PkgConfig REQUIRED)
+     pkg_check_modules(YARA REQUIRED IMPORTED_TARGET yara)
+@@ -99,9 +100,11 @@ set_target_properties(imhex PROPERTIES CXX_VISIBILITY_PRESET hidden)
+ target_link_directories(imhex PRIVATE ${CAPSTONE_LIBRARY_DIRS} ${MAGIC_LIBRARY_DIRS})
+ 
+ if (WIN32)
+-    target_link_libraries(imhex ${CMAKE_DL_LIBS} capstone LLVMDemangle libimhex ${Python_LIBRARIES} wsock32 ws2_32 libyara Dwmapi.lib dl)
++  target_link_libraries(imhex ${CMAKE_DL_LIBS} capstone LLVMDemangle libimhex ${Python_LIBRARIES} wsock32 ws2_32
++    ${YARA_LIBRARIES} Dwmapi.lib dl)
+ else ()
+-    target_link_libraries(imhex ${CMAKE_DL_LIBS} capstone LLVMDemangle libimhex ${Python_LIBRARIES} dl pthread libyara)
++  target_link_libraries(imhex ${CMAKE_DL_LIBS} capstone LLVMDemangle libimhex ${Python_LIBRARIES} dl pthread
++    ${YARA_LIBRARIES})
+ endif ()
+ 
+ createPackage()
+-- 
+2.33.0
+

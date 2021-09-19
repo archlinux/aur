@@ -4,32 +4,48 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
 arch=('x86_64')
-depends=('glfw' 'capstone' 'mbedtls' 'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme')
+depends=('glfw' 'capstone' 'mbedtls' 'libssh2'
+         'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme'
+         'yara')
 makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')
 source=("${pkgname}::git+https://github.com/WerWolv/ImHex.git#tag=v${pkgver}"
+  0001-warnings-fix-format-security-warnings-299.patch
+  0002-Set-correct-library-names.patch
   imhex.desktop)
 cksums=('SKIP'
+        '403159140'
+        '3838345833'
         '4178124713')
 sha256sums=('SKIP'
+            'd2b254869a23144117243fd971e646c83fedfbe5b227e2050431155a127dd91f'
+            '687ecb3b6dc4491a1e8ea91f03377801af41225cbf4263330b75630d0c485e46'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
+        '7838d9d7bccf9841848913effbdc9ed692770c76bd6a5851d95d4e1a1d9c318fef5f6d05074be4b98750ce55819091cfe8f90c85751701d1fea866d1bac67b96'
+        '7b6f2a76b0009dcc784291251ae363b2733598220667aa41eb443d167d7bb94c512d503369ee61429bd4dd4d957b4988a6cbbbc74fc34909b6fe68198620ba93'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {
-  git -C "${pkgname}" submodule update --init --recursive
+  git -C "$pkgname" submodule update --init --recursive
+
+  git -C "$pkgname" apply -v \
+    "$srcdir/0001-warnings-fix-format-security-warnings-299.patch" \
+    "$srcdir/0002-Set-correct-library-names.patch"
 }
 
 build() {
-  cmake -B build -S "${pkgname}" \
+  cmake -B build -S "$pkgname" \
     -Wno-dev \
     -D CMAKE_BUILD_TYPE=RelWithDebInfo \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D PROJECT_VERSION="${pkgver}"
+    -D USE_SYSTEM_LLVM=ON \
+    -D USE_SYSTEM_YARA=ON \
+    -D PROJECT_VERSION="$pkgver"
   cmake --build build
 }
 
