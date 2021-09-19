@@ -2,7 +2,7 @@
 
 pkgname=xcircuit-git
 _pkgname=xcircuit
-pkgver=3.10.26.r0.gb42222f
+pkgver=3.10.30.r0.gadc6bf9
 _pkgver=3.10
 pkgrel=1
 pkgdesc="A program for drawing publishable-quality electrical circuit schematic diagrams (development version)"
@@ -11,7 +11,7 @@ url="http://opencircuitdesign.com/xcircuit"
 license=('GPL2')
 depends=('tk' 'libxpm' 'zlib' 'cairo')
 makedepends=('git' 'chrpath' 'imagemagick')
-source=($pkgname::git+https://github.com/RTimothyEdwards/XCircuit.git#tag=3.10.26
+source=($pkgname::git+https://github.com/RTimothyEdwards/XCircuit.git#tag=3.10.30
         "xcircuit.desktop"
         "http://opencircuitdesign.com/xcircuit/xcicon_sm.gif")
 sha256sums=('SKIP'
