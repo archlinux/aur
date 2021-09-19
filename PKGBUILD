@@ -1,7 +1,7 @@
 # Maintainer: Your Name <macx cool at tutanota dot com>
 pkgname=xml2abc
 pkgver=143
-pkgrel=1
+pkgrel=2
 pkgdesc="Python utility that translates MusicXML into ABC+ notation"
 arch=('any')
 url="https://wim.vree.org/svgParse/xml2abc.html"
@@ -10,7 +10,7 @@ depends=('python')
 source=("https://wim.vree.org/svgParse/${pkgname}.py-${pkgver}.zip"
 		"xml2abc")
 sha256sums=('14678a24b82200c3dda4342891f05ba0d700dc6930712e3c773ec03674650a24'
-            'd82ea29eb07a8ca32a64d93795f55ec60e65f6be1f1f8e58b6b571341f4ad37e')
+            'a7d043c0f692063a596b63b605be6e14afc28acfc5438135a11314d7df943cb6')
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"

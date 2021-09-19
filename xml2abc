@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-python /usr/bin/xml2abc.py "$1"
+python /usr/bin/xml2abc.py "$@"
