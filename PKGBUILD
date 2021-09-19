@@ -1,7 +1,7 @@
 # Contributor: David Vachulka <archdvx@dxsolutions.org>
 
 pkgname=wxdfast
-pkgver=0.70.2
+pkgver=0.70.3
 pkgrel=1
 pkgdesc="Multithread download manager"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('wxgtk3' 'aria2' 'openssl')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(https://github.com/archdvx/wxdfast/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('1c1247b0169f5ed38472ea917286c7e8')
+md5sums=('bb8a7a88417b563e4b515a966a7c1127')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
