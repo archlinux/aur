@@ -4,8 +4,8 @@
 # To install, run `makepkg -is`
 
 pkgname=ulauncher
-pkgver=5.13.0
-pkgrel=2
+pkgver=5.14.0
+pkgrel=1
 pkgdesc='Application launcher for Linux'
 arch=('any')
 url="https://ulauncher.io"
@@ -16,7 +16,7 @@ depends=('gobject-introspection-runtime' 'libkeybinder3' 'gtk3' 'webkit2gtk' 'li
 makedepends=('git' 'python-setuptools' 'python-distutils-extra')
 optdepends=('libappindicator-gtk3: tray icon')
 install="ulauncher.install"
-source=("https://github.com/Ulauncher/Ulauncher/releases/download/5.13.0/ulauncher_5.13.0.tar.gz")
+source=("https://github.com/Ulauncher/Ulauncher/releases/download/5.14.0/ulauncher_5.14.0.tar.gz")
 sha256sums=('SKIP')
 
 build() {
