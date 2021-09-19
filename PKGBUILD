@@ -2,13 +2,13 @@
 
 _pkgname=virt-viewer
 pkgname=$_pkgname-git
-pkgver=9.0.7.gc6afc28
-pkgrel=2
+pkgver=10.0.37.g40eec08
+pkgrel=1
 pkgdesc='A lightweight interface for interacting with the graphical display of virtualized guest OS'
 arch=('i686' 'x86_64')
 url='https://virt-manager.org'
 license=('GPL')
-depends=('gtk-vnc' 'libvirt-glib' 'spice-gtk' 'gobject-introspection')
+depends=('gtk-vnc' 'libvirt-glib' 'spice-gtk' 'gobject-introspection' 'libgovirt' 'vte3' 'bash-completion')
 makedepends=('git' 'meson' 'intltool' 'spice-protocol-git')
 provides=("$_pkgname" 'virtviewer')
 conflicts=("$_pkgname" 'virtviewer')
