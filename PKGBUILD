@@ -4,7 +4,7 @@
 # Contributor: Rene Pärts <rene87@hot.ee>
 pkgname=libp11-git
 _pkgname=libp11
-pkgver=0.4.10.r10.g109261f
+pkgver=0.4.11.r39.g5126132
 pkgrel=1
 pkgdesc="A library implementing a small layer on top of the PKCS11 API"
 arch=('i686' 'x86_64')
