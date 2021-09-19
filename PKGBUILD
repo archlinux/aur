@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='https://virt-manager.org'
 license=('GPL')
 depends=('gtk-vnc' 'libvirt-glib' 'spice-gtk' 'gobject-introspection')
-makedepends=('git' 'intltool' 'spice-protocol-git')
+makedepends=('git' 'meson' 'intltool' 'spice-protocol-git')
 provides=("$_pkgname" 'virtviewer')
 conflicts=("$_pkgname" 'virtviewer')
 source=("git+https://gitlab.com/$_pkgname/$_pkgname.git")
@@ -21,12 +21,13 @@ pkgver() {
 }
 
 build() {
+    mkdir build
     cd $_pkgname
-    ./autogen.sh --prefix=/usr --disable-update-mimedb
-    make
+    arch-meson ../build
+    ninja -v -C ../build
 }
 
 package() {
     cd $_pkgname
-    make DESTDIR=$pkgdir install
+    DESTDIR="$pkgdir/" ninja -C ../build install
 }

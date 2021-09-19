@@ -7,6 +7,7 @@ pkgbase = virt-viewer-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = meson
 	makedepends = intltool
 	makedepends = spice-protocol-git
 	depends = gtk-vnc
@@ -21,4 +22,3 @@ pkgbase = virt-viewer-git
 	sha256sums = SKIP
 
 pkgname = virt-viewer-git
-
