@@ -2,8 +2,8 @@
 # Maintainer: Joost Molenaar <jjm@j0057.nl>
 
 pkgname=mrouted
-pkgver=4.2
-pkgrel=4
+pkgver=4.3
+pkgrel=1
 pkgdesc="An implementation of the DVMRP multicast routing protocol. It turns a UNIX workstation into a DVMRP multicast router with tunnel support, in order to cross non-multicast-aware routers."
 arch=('i686' 'x86_64')
 url="https://github.com/troglobit/mrouted"
@@ -29,6 +29,6 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('689541334ea951286054b771640e9d0f26b6a3242ff7f3894a3ef1b680811b34')
+sha256sums=('20daba275e2dc55fbfde6bc4f2f4a3a8467d7fbebce27d645a3e877b41fc6db1')
 
 # vim: se sw=2 et ts=2:
