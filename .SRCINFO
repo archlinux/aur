@@ -1,16 +1,18 @@
 pkgbase = python-binary
-	pkgdesc = Easily convert between binary and SI units (kibibyte, kilobyte, etc.).
+	pkgdesc = Easily convert between binary and SI units
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ofek/binary
 	arch = any
 	license = MIT
 	license = APACHE
+	checkdepends = python-pytest-runner
+	checkdepends = python-coverage
 	makedepends = python-setuptools
 	depends = python
-	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/7a/09/403408a5908f0af33f454c3f825c9cbb85ce7c1648594e81925de1d9e0d5/binary-1.0.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/b/binary/binary-1.0.0.tar.gz
+	source = 001-setup.py.patch
 	sha256sums = 6ec010e58f7331ebc8bc9638dbe6c66d635de60d5818b0723bef4dead0ec28a6
+	sha256sums = f2cd5dc99ca22d9a2fc8a20c2fd7f1f77922338c22085a73a7737ea08dfc955f
 
 pkgname = python-binary
-
