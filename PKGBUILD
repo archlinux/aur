@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clightd-git
-pkgver=5.2.r2.gadb439b
-pkgrel=1
+pkgver=5.4.r13.gf930ee9
+pkgrel=2
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clightd"
@@ -16,25 +16,29 @@ source=("${pkgname%-git}::git+https://github.com/FedeDP/Clightd.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cmake -B build -S "${pkgname%-git}" \
-		-G "Unix Makefiles" \
-		-DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBEXECDIR=lib/"${pkgname%-git}" \
-		-DENABLE_DDC=1 \
-		-DENABLE_GAMMA=1 \
-		-DENABLE_DPMS=1 \
-		-DENABLE_SCREEN=1 \
-		-DENABLE_YOCTOLIGHT=1 \
-		-Wno-dev
-	make -C build
+  cmake -B build -S "${pkgname%-git}" \
+    -G "Unix Makefiles" \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib/"${pkgname%-git}" \
+    -DENABLE_DDC=1 \
+    -DENABLE_GAMMA=1 \
+    -DENABLE_DPMS=1 \
+    -DENABLE_SCREEN=1 \
+    -DENABLE_YOCTOLIGHT=1 \
+    -Wno-dev
+  make -C build
 }
 
 package() {
-	make -C build DESTDIR="$pkgdir" install
+  make -C build DESTDIR="$pkgdir" install
+
+  install -d "$pkgdir/usr/lib/systemd/system"
+  mv "$pkgdir/etc/systemd/system/${pkgname%-git}.service" "$pkgdir/usr/lib/systemd/system"
+  rm -rf "$pkgdir/etc/systemd"
 }
