@@ -4,8 +4,8 @@
 
 pkgname="odoo"
 pkgver=14.0
-_pkgsubver=20210604
-pkgrel=1
+_pkgsubver=20210919
+pkgrel=2
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
 arch=("any")
@@ -67,12 +67,12 @@ source=("https://nightly.odoo.com/$pkgver/nightly/src/${pkgname}_$pkgver.$_pkgsu
         "odoo.service"
         "odoo.sysusers"
         "odoo.tmpfiles")
-sha256sums=("62d529ee4f919a18682be962609a5ec76c1e69201edc3db295d8ed3bf0a42fb2"
-            "33d3331e47ab31705e2122ee9cebf791bf2a23169767960fd949ff26e3fb420e"
-            "0cfb2d663be2c23491be71ded73284a6a81460e44e5e1f3c37cfcdd73ee51c01"
-            "949cfeb604af5425860cffa197b7464b9d87ab3999424d890b2210511823264f"
-            "b06fcf6f6fc0cd7e3dbc7699bbd31138b39a0a1d1f8d06984ff2605a5eeb3257"
-            "b6bae94d1a5e51c6cae42987124dd1528626a6f87331c1777c104394c34a95cb")
+sha256sums=('8aca6cce04abccb4601b445eac6c9aef4ad2c9f73d6ddf065b502363d4312fc9'
+            '33d3331e47ab31705e2122ee9cebf791bf2a23169767960fd949ff26e3fb420e'
+            '0cfb2d663be2c23491be71ded73284a6a81460e44e5e1f3c37cfcdd73ee51c01'
+            '949cfeb604af5425860cffa197b7464b9d87ab3999424d890b2210511823264f'
+            'b06fcf6f6fc0cd7e3dbc7699bbd31138b39a0a1d1f8d06984ff2605a5eeb3257'
+            'b6bae94d1a5e51c6cae42987124dd1528626a6f87331c1777c104394c34a95cb')
 backup=("etc/odoo/odoo.conf")
 install="odoo.install"
 options=("!strip")
