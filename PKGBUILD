@@ -38,9 +38,9 @@ source=("$_mutter_src"
         "meta_clip_effect.h"
         "$_setting_src")
 sha256sums=('SKIP'
-            '993cb349226afe198771bdca32c225d1bf663b2b14a3454270fa0b64f4e19cab'
-            '1d4757a46db018f0ac080787c372a01f563499a19c6315fd1b4c3610f450b041'
-            '2a4670913601b97f809a486da7c11b4e14472f62211154d5a417d3b3e4d77859'
+            '0ea54e94d6f497fc37044a0bb6ec2e992cafb1bf9b6b38053aa7b1f157955767'
+            '0fdb280566584dfe7226e56b5aa1e7e3f6ec462d097a6ebb9913fb08c5b60e58'
+            'cd836fa66e219f58d7294536e30f3654c41d45423861da633bb41ad0bc550de3'
             'bf3c1cd55f97ae9482b368b585575eb61e07f09c189a2bc0d472fe7149a9d3a0')
 
 pkgver() {

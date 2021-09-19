@@ -1,6 +1,4 @@
-/**
- * for mutter 40.4
- */
+// for 40.4
 
 #pragma once
 

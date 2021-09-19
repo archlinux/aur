@@ -1,5 +1,5 @@
 diff --git a/data/org.gnome.mutter.gschema.xml.in b/data/org.gnome.mutter.gschema.xml.in
-index 23fa9f3ad..d3429b458 100644
+index 23fa9f3ad..a7a002eeb 100644
 --- a/data/org.gnome.mutter.gschema.xml.in
 +++ b/data/org.gnome.mutter.gschema.xml.in
 @@ -2,6 +2,49 @@
@@ -22,7 +22,7 @@ index 23fa9f3ad..d3429b458 100644
 +        
 +        The key of "apps" object represent the instance part of the window's
 +        `WM_CLASS` property, as same as the output of `xprop WM_CLASS|cut -d 
-+        \" -f 1`
++        \" -f 2`
 +
 +        This is a example:
 +
@@ -45,7 +45,7 @@ index 23fa9f3ad..d3429b458 100644
 +      <summary>window here will not be rounded</summary>
 +      <description>
 +        The contents of the list represent the instance part of the window's
-+        `WM_CLASS`, as same as the output of `xprop WM_CLASS|cut -d \" -f 1`
++        `WM_CLASS`, as same as the output of `xprop WM_CLASS|cut -d \" -f 2`
 +      </description>
 +    </key>
 +
@@ -143,16 +143,15 @@ index d6424d3be..b67bdda79 100644
    { "popup-menu",    { 1, -1, 0, 0, 128 }, { 1, -1, 0, 0, 128 } },
    { "dropdown-menu", { 1, -1, 0, 0, 128 }, { 1, -1, 0, 0, 128 } },
 diff --git a/src/compositor/meta-window-actor-private.h b/src/compositor/meta-window-actor-private.h
-index 64741e416..7ef9f6735 100644
+index 64741e416..220de0895 100644
 --- a/src/compositor/meta-window-actor-private.h
 +++ b/src/compositor/meta-window-actor-private.h
-@@ -99,4 +99,12 @@ void meta_window_actor_update_regions (MetaWindowActor *self);
+@@ -99,4 +99,11 @@ void meta_window_actor_update_regions (MetaWindowActor *self);
  
  gboolean meta_window_actor_can_freeze_commits (MetaWindowActor *self);
  
 +gboolean meta_window_actor_should_clip(MetaWindowActor *self);
 +void meta_window_actor_update_clipped_bounds(MetaWindowActor *window_actor);
-+void meta_window_actor_setup_glsl(MetaWindowActor *self);
 +void meta_window_actor_update_glsl(MetaWindowActor *self);
 +void meta_window_actor_get_corner_rect(MetaWindowActor *self, MetaRectangle *rect);
 +void meta_window_actor_update_corner_radius(MetaWindowActor *self);
@@ -267,7 +266,7 @@ index e18b1b28b..a1a7a22a1 100644
  
        /* The frame bounds are already subtracted from actor_x11->shadow_clip
 diff --git a/src/compositor/meta-window-actor.c b/src/compositor/meta-window-actor.c
-index d4fc9a43a..e00a5321e 100644
+index d4fc9a43a..3a7395564 100644
 --- a/src/compositor/meta-window-actor.c
 +++ b/src/compositor/meta-window-actor.c
 @@ -41,6 +41,8 @@
@@ -291,7 +290,7 @@ index d4fc9a43a..e00a5321e 100644
    int geometry_scale;
  
    /*
-@@ -119,6 +126,126 @@ G_DEFINE_ABSTRACT_TYPE_WITH_CODE (MetaWindowActor, meta_window_actor, CLUTTER_TY
+@@ -119,6 +126,129 @@ G_DEFINE_ABSTRACT_TYPE_WITH_CODE (MetaWindowActor, meta_window_actor, CLUTTER_TY
                                    G_IMPLEMENT_INTERFACE (META_TYPE_CULLABLE, cullable_iface_init)
                                    G_IMPLEMENT_INTERFACE (META_TYPE_SCREEN_CAST_WINDOW, screen_cast_window_iface_init));
  
@@ -350,8 +349,11 @@ index d4fc9a43a..e00a5321e 100644
 +  bounds.width = frame_rect.width;
 +  bounds.height = frame_rect.height;
 +
-+  if (bounds.width < 0 || bounds.height < 0)
++  if (bounds.width <= 0 || bounds.height <= 0)
 +    return;
++
++  if (priv->clip_padding[0] == -1 && window->res_name)
++    meta_prefs_get_clip_edge_padding(window->res_name, priv->clip_padding);
 +
 +  meta_clip_effect_set_bounds(priv->round_clip_effect, &bounds, priv->clip_padding);
 +}
@@ -418,26 +420,24 @@ index d4fc9a43a..e00a5321e 100644
  static void
  meta_window_actor_class_init (MetaWindowActorClass *klass)
  {
-@@ -216,6 +343,7 @@ meta_window_actor_init (MetaWindowActor *self)
+@@ -216,6 +346,8 @@ meta_window_actor_init (MetaWindowActor *self)
      meta_window_actor_get_instance_private (self);
  
    priv->geometry_scale = 1;
 +  priv->effect_setuped = FALSE;
++  priv->clip_padding[0] = -1;
  }
  
  static void
-@@ -470,6 +598,10 @@ meta_window_actor_set_property (GObject      *object,
+@@ -470,6 +602,7 @@ meta_window_actor_set_property (GObject      *object,
      {
      case PROP_META_WINDOW:
        priv->window = g_value_dup_object (value);
 +      priv->round_clip_effect = create_clip_effect(self);
-+      if (priv->round_clip_effect)
-+        meta_prefs_get_clip_edge_padding(priv->window->res_name,
-+                                         priv->clip_padding);
        g_signal_connect_object (priv->window, "notify::appears-focused",
                                 G_CALLBACK (window_appears_focused_notify), self, 0);
        break;
-@@ -675,6 +807,9 @@ meta_window_actor_after_effects (MetaWindowActor *self)
+@@ -675,6 +808,9 @@ meta_window_actor_after_effects (MetaWindowActor *self)
  
    if (priv->needs_destroy)
      {
@@ -447,7 +447,7 @@ index d4fc9a43a..e00a5321e 100644
        clutter_actor_destroy (CLUTTER_ACTOR (self));
      }
    else
-@@ -803,6 +938,19 @@ meta_window_actor_queue_destroy (MetaWindowActor *self)
+@@ -803,6 +939,19 @@ meta_window_actor_queue_destroy (MetaWindowActor *self)
      clutter_actor_destroy (CLUTTER_ACTOR (self));
  }
  
@@ -468,7 +468,7 @@ index d4fc9a43a..e00a5321e 100644
  meta_window_actor_sync_actor_geometry (MetaWindowActor *self,
                                         gboolean         did_placement)
 diff --git a/src/core/prefs.c b/src/core/prefs.c
-index 60d7a278a..859d16f69 100644
+index 60d7a278a..e0772d984 100644
 --- a/src/core/prefs.c
 +++ b/src/core/prefs.c
 @@ -33,6 +33,8 @@
@@ -654,7 +654,7 @@ index 60d7a278a..859d16f69 100644
      }
  
    return "(unknown)";
-@@ -2226,3 +2346,50 @@ meta_prefs_set_force_fullscreen (gboolean whether)
+@@ -2226,3 +2346,51 @@ meta_prefs_set_force_fullscreen (gboolean whether)
  {
    force_fullscreen = whether;
  }
@@ -674,8 +674,9 @@ index 60d7a278a..859d16f69 100644
 +  JsonObject *obj;
 +  JsonArray *arr;
 +
-+  if (!clip_edge_padding) {
++  if (!clip_edge_padding || !name) {
 +    SET_PADDING(padding, 0, 0, 0, 0);
++    return;
 +  }
 +
 +  obj = json_node_get_object(clip_edge_padding);
@@ -824,3 +825,17 @@ index 73dee1737..03b19ba40 100644
  void meta_ui_frame_get_mask (MetaUIFrame           *frame,
                               cairo_rectangle_int_t *frame_rect,
                               cairo_t               *cr);
+diff --git a/src/wayland/meta-window-wayland.c b/src/wayland/meta-window-wayland.c
+index 12e9567d9..7138330bc 100644
+--- a/src/wayland/meta-window-wayland.c
++++ b/src/wayland/meta-window-wayland.c
+@@ -1002,6 +1002,9 @@ meta_window_wayland_finish_move_resize (MetaWindow              *window,
+     gravity = META_GRAVITY_STATIC;
+   meta_window_move_resize_internal (window, flags, gravity, rect);
+ 
++  if (flags & META_MOVE_RESIZE_RESIZE_ACTION)
++    meta_window_actor_update_glsl(meta_window_actor_from_window(window));
++
+   g_clear_pointer (&acked_configuration, meta_wayland_window_configuration_free);
+ }
+ 

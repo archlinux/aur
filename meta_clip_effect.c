@@ -1,6 +1,4 @@
-/**
- * for mutter 40.4
- */
+// for 40.4
 
 #include "meta_clip_effect.h"
 #include "meta/prefs.h"
@@ -60,12 +58,14 @@ G_DEFINE_TYPE_WITH_PRIVATE(MetaClipEffect, meta_clip_effect, CLUTTER_TYPE_OFFSCR
 "}                                                                                      \n"
 
 #define ROUNDED_CLIP_FRAGMENT_SHADER_CODE                                    \
-"vec4 bg = texture2D(cogl_sampler0, cogl_tex_coord0_in.xy) * opacity;                  \n"\
-"if (skip == 1)\n"\
-"  cogl_color_out = bg;                      \n"\
-"else\n"\
-"  cogl_color_out = bg * cal_alpha();                      \n"
-// "cogl_color_out = bg * 0.6 + (vec4(0.4) * cal_alpha());                      \n"
+"vec4 bg = texture2D(cogl_sampler0, cogl_tex_coord0_in.xy) * opacity;         \n"\
+"if (skip == 1)                                                               \n"\
+"  cogl_color_out = bg;                                                       \n"\
+"else                                                                         \n"\
+"  cogl_color_out = bg * cal_alpha();                                         \n"
+
+// "cogl_color_out = bg * 0.6 + (vec4(0.4) * cal_alpha());  // for_debug         \n"
+
 
 
 
@@ -124,7 +124,7 @@ CoglTexture *gen_texture(void)
                                         stride);
   cairo_t *cr = cairo_create(image);
 
-  /* draw a 1 / 4 circel, a small texture sifed with radius x radius
+  /* draw a 1 / 4 circel, a small texture sized with radius x radius
    * texture will be look like this:
    * 
    *                 XXXX
@@ -291,9 +291,14 @@ meta_clip_effect_skip(MetaClipEffect *effect)
 
   g_return_if_fail(priv->pipeline && priv->actor);
 
+  int location_opacity = 
+    cogl_pipeline_get_uniform_location(priv->pipeline, "opacity");
   int location_skip = 
     cogl_pipeline_get_uniform_location(priv->pipeline, "skip");
 
+  cogl_pipeline_set_uniform_1f(priv->pipeline,
+                               location_opacity,
+                               clutter_actor_get_opacity(priv->actor) / 255.0);
   cogl_pipeline_set_uniform_1i(priv->pipeline, location_skip, 1);
 }
 
