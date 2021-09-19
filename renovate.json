@@ -10,7 +10,7 @@
     {
       "fileMatch": ["^PKGBUILD$"],
       "matchStrings": [
-        "^pkgver=(?<currentValue>.*?)"
+        "^pkgver=(?<currentValue>.*?)\n$"
       ],
       "depNameTemplate": "jgraph/drawio-desktop",
       "datasourceTemplate": "github-releases"
