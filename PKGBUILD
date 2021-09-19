@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: INhBQfUQO2eFzulN <281587887a at protonmail dot ch>
 # If you want TOR functionality, remove '--no-optional' from the 35th line
 
 _pkgname=bibliogram
