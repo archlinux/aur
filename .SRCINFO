@@ -1,0 +1,20 @@
+pkgbase = buildgdx
+	pkgdesc = A port of the Build Engine games based on Java's libGDX
+	pkgver = 1.15
+	pkgrel = 1
+	url = http://m210.duke4.net/index.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = java-environment=8
+	provides = buildgdx
+	conflicts = buildgdx
+	source = https://m210.duke4.net/index.php/downloads/send/8-java/54-buildgdx.zip
+	source = buildgdx.desktop
+	source = buildgdx
+	sha256sums = SKIP
+	sha256sums = 52e5c860572f0f1e38c6fb2d55221e9dfeaa4b49e89142166634c9934d35f4f5
+	sha256sums = f74ba6eae81693f79434c3f8dec4bca75b51a55b67b5875d4e1dd2340ff55c5c
+
+pkgname = buildgdx
