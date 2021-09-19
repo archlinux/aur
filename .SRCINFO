@@ -1,0 +1,22 @@
+pkgbase = bibliogram-git
+	pkgdesc = An alternative front-end for Instagram
+	pkgver = r387.f14837b
+	pkgrel = 1
+	url = https://sr.ht/~cadence/bibliogram/
+	arch = any
+	license = AGPL
+	makedepends = git
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	optdepends = graphicsmagick: Required for resizing images for thumbnailing
+	provides = bibliogram
+	conflicts = bibliogram
+	source = bibliogram-git::git+https://git.sr.ht/~cadence/bibliogram#branch=master
+	source = bibliogram.service
+	source = bibliogram.sh
+	sha256sums = SKIP
+	sha256sums = 29edbea6200df766d01e49a56a1aee710a5a58a8108e11b78b8ea4bb961d9123
+	sha256sums = 6f3841030ba3e2be042ba54f7c8e65fb1282eac392b4501e461a0e3d10a6248f
+
+pkgname = bibliogram-git

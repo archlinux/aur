@@ -1,0 +1,9 @@
+[Unit]
+Description=Bibliogram Daemon
+After=network.service
+
+[Service]
+ExecStart=/usr/bin/bibliogram
+
+[Install]
+WantedBy=multi-user.target
