@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-jincresize-git
+	pkgdesc = Plugin for Vapoursynth: jincresize (GIT version)
+	pkgver = r7.2.5.ga557614
+	pkgrel = 1
+	url = https://github.com/Kiyamou/VapourSynth-JincResize
+	arch = any
+	license = MIT
+	makedepends = git meson
+	depends = vapoursynth
+	provides = vapoursynth-plugin-jincresize
+	conflicts = vapoursynth-plugin-jincresize
+	source = jincresize::git+https://github.com/Kiyamou/VapourSynth-JincResize.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-jincresize-git
+
