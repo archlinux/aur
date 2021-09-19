@@ -6,6 +6,7 @@ pkgbase = graphite-gtk-theme-git
 	arch = any
 	license = GPL2
 	makedepends = git
+	makedepends = sassc
 	depends = gnome-themes-extra
 	optdepends = gtk-engine-murrine
 	provides = graphite-gtk-theme

@@ -12,7 +12,7 @@ url="https://github.com/vinceliuice/${_reponame}"
 license=("GPL2")
 depends=("gnome-themes-extra")
 optdepends=("gtk-engine-murrine")
-makedepends=("git")
+makedepends=("git" "sassc")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -22,8 +22,9 @@ pkgver(){
 }
 
 package() {
-    dst="${pkgdir}/usr/share/themes"
-    mkdir -p "${dst}"
+    dist="${pkgdir}/usr/share/themes"
+    mkdir -p "${dist}"
     cd "${srcdir}/${_reponame}"
-    ./install.sh -t all -d "${dst}"
+    ./install.sh -t all -d "${dist}"
+    ./install.sh -t all -d "${dist}" -s compact
 }
