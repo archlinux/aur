@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=rofi-jack-git
 pkgver=r37.f47a3b1
-pkgrel=1
+pkgrel=2
 pkgdesc='Scripts for controlling jack using rofi'
 arch=('any')
 url='https://github.com/madskjeldgaard/rofi-jack'
