@@ -3,14 +3,14 @@
 _pkg=pidgin-musictracker
 pkgname=${_pkg}-mpris2
 pkgver=0.4.22
-pkgrel=7
+pkgrel=8
 pkgdesc="A plugin for Pidgin which displays the music track currently playing."
 url='http://code.google.com/p/pidgin-musictracker'
 license=('GPL2')
 depends=('pidgin' 'gtk2' 'dbus-glib')
 makedepends=('xmms2')
 arch=('i686' 'x86_64')
-source=("http://pidgin-musictracker.googlecode.com/files/${_pkg}-${pkgver}.tar.bz2"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${_pkg}/${_pkg}-${pkgver}.tar.bz2"
  pidgin-musictracker-mpris2.diff
  pidgin-musictracker-0.4.22-makefile.patch)
 options=('!libtool')
@@ -27,7 +27,8 @@ prepare() {
 build() {
   cd "$srcdir/$_pkg-$pkgver"
   ./configure --prefix=/usr
-  make CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+  make CFLAGS="$CFLAGS -Wno-deprecated-declarations -Wno-expansion-to-defined -Wno-stringop-truncation -Wno-implicit-fallthrough -Wno-format-truncation -fcommon"
+
 }
 
 package() {
