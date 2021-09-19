@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.14
-_minor=5
+_minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -72,8 +72,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0002-watchdog-iTCO_wdt-Fix-detection-of-SMI-off-case.patch"
+        "${_lucjanpath}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -312,12 +311,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('8213a77210a1dc58adf60bc6afe7d6a5e2931fd838f30683bb6503286b3d291ee01ae1f60adc426a36a03d857c18a5fb4d156041aed4e1542d3456e9e459bd1f'
+sha512sums=('117b466e7edd9e2cac79ae9559ba1e24d7cdf1cc6b277292f08b58baedef7a8d6e17a5a16fb47f662d9b2ac6fc36b2c561dbe4b95d848e645a6c6b27c8504c51'
             'SKIP'
             '966bac05a1f495cea22b494f7c98adcca56b0e0c1971c8627efe97504c3eba980d2874b15a57503ecaac6481bcc504ab859e0b8489ff9fe8e3d87049fd915d36'
             'b1aef4f4e7350ce8132e019f76a2ac68bee8a46eb981598fbda11402e62a8bcdfd2f49e5b2cc5dcf2e96c88ad047af12d53abb9fda05c9f7acec37879e5240db'
-            'a98921b79656965401a751ec99cc090b282d3c02c4f00f55222ce54a6790942ae6ea3c8da373690176c79957e373c712a18199feda9817050f68e6d64720b68c'
-            '5c2e7918f4dc31c271c78716ddddfba1f6e5f944cd87bd7808587646fa628c1e77c9c90283c71e94025f1e3b240ca9109da6ac2bfb2e9acf574154579f57c243'
+            'ec5f95c9cb50d856719f5225b8be1ee4bfa6f08078b1cf2039cd5ee1a7d7d819704efc4bb998fbc3bf5495d34b10eb7532a5cdccd1198b2e0167e58074816ce5'
             '66bde0e888c83179a6c18c0b8747eb54ba59ab3d9dd04a17f1e0ba01192fcba477ec046c97184a13ce1413c172a5e227de2ccec8d54002e22383b0d54c9ebcb0')
 
 validpgpkeys=(
