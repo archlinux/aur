@@ -6,7 +6,7 @@
 
 pkgname='gnunet'
 pkgver='0.15.3'
-pkgrel=7
+pkgrel=8
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -97,8 +97,8 @@ package() {
 	install -Dm644 "${srcdir}/${pkgname}-uri.desktop" \
 		"${pkgdir}/usr/share/applications/${pkgname}-uri.desktop"
 
-	install -dm755 "${pkgdir}/etc/skel/.config"
-	install -Dm644 "${srcdir}/${pkgname}-user.conf" \
+	install -dm700 "${pkgdir}/etc/skel/.config"
+	install -Dm600 "${srcdir}/${pkgname}-user.conf" \
 		"${pkgdir}/etc/skel/.config/${pkgname}.conf"
 
 	# Automatically generate a configuration file using the content of
