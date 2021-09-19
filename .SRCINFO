@@ -1,18 +1,21 @@
 pkgbase = pywws
 	pkgdesc = Python software for USB Wireless WeatherStations
 	pkgver = 21.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jim-easterbrook/pywws
 	arch = any
 	license = GPL
-	makedepends = python-pip
+	makedepends = python-setuptools
 	depends = python-tzlocal
-	depends = python-pyusb
-	options = !emptydirs
-	source = https://pypi.io/packages/source/p/pywws/pywws-21.4.0.tar.gz
-	source = service
-	sha512sums = ce38a087c4910632c3fdf9d14abc5c61d9b46a66e1c246965d481e626687bf39ee2ad718f8c28bb194774d197cb7ea415e3dc478c131f0c7bb0cb51f7bb5c34c
-	sha512sums = 27ff5e179cf84beb4f534fcb908a04ef1d81f2d3a9d01365b46484cdba780970d5ea897e214b4cbfcf88ecfc19970589d892206f388d6e367cd926906d1faa16
+	depends = python-libusb1
+	optdepends = python-croniter: flexible timed tasks
+	optdepends = python-daemon: runs pywws as a proper UNIX daemon process
+	optdepends = gnuplot>=4.2: draws weather data graphs
+	optdepends = python-requests: weather service uploading
+	optdepends = python-paramiko: secure website uploading over SFTP
+	optdepends = python-pycrypto: secure website uploading over SFTP
+	optdepends = python-paho-mqtt: sends weather data to an MQTT broker
+	source = https://files.pythonhosted.org/packages/source/p/pywws/pywws-21.4.0.tar.gz
+	sha256sums = 169bf3c85cec5fb8bab0655809c45090210654afbf641020f5406be2062a7e59
 
 pkgname = pywws
-

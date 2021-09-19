@@ -1,26 +1,49 @@
-# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
+
 pkgname=pywws
 pkgver=21.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python software for USB Wireless WeatherStations"
 arch=('any')
 url="https://github.com/jim-easterbrook/pywws"
 license=('GPL')
-makedepends=('python-pip')
-depends=('python-tzlocal' 'python-pyusb')
-options=(!emptydirs)
-source=(https://pypi.io/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz
-'service')
-sha512sums=('ce38a087c4910632c3fdf9d14abc5c61d9b46a66e1c246965d481e626687bf39ee2ad718f8c28bb194774d197cb7ea415e3dc478c131f0c7bb0cb51f7bb5c34c'
-            '27ff5e179cf84beb4f534fcb908a04ef1d81f2d3a9d01365b46484cdba780970d5ea897e214b4cbfcf88ecfc19970589d892206f388d6e367cd926906d1faa16')
+depends=('python-tzlocal' 'python-libusb1')
+optdepends=(
+  'python-croniter: flexible timed tasks'
+  'python-daemon: runs pywws as a proper UNIX daemon process'
+  'gnuplot>=4.2: draws weather data graphs'
+  'python-requests: weather service uploading'
+  ## paramiko and pycrypto are co-dependents
+  'python-paramiko: secure website uploading over SFTP'
+  'python-pycrypto: secure website uploading over SFTP'
+  # 'python-twitter3: twitter updates' # ????
+  # 'python-oauth2' ## not in AUR yet
+  'python-paho-mqtt: sends weather data to an MQTT broker')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
+        "$pkgname.service"
+        "$pkgname.sysusers"
+        "$pkgname.tmpfiles"
+        "$pkgname.udev")
+sha256sums=('169bf3c85cec5fb8bab0655809c45090210654afbf641020f5406be2062a7e59'
+            '295a6d5c213556b587d9c8067257a13333b82bb809dc3a604fb50f3187bc91f5'
+            'f65e849c1b1e59384c9a57fd8ccac43722302817a82b25e3479eabf4bf802931'
+            'edf31725feb47cb928f5c676b27d2fcc97288a07ca1ccf4d51571ea4d47b9065'
+            '90e646e74d4c8000529324d287b9b41679c1b6ffe6b952c155fddba9f968af78')
 
+build() {
+  cd "$pkgname-$pkgver"
+  python setup.py build
+}
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 "${srcdir}"/service \
-    "${pkgdir}"/usr/lib/systemd/system/pywws-livelog.service
-
+  install -Dm 644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm 644 "$pkgname.sysusers"   "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm 644 "$pkgname.tmpfiles"   "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -Dm 644 "$pkgname.udev"       "$pkgdir/usr/lib/udev/rules.d/$pkgname.conf"
+  cd "$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:

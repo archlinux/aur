@@ -1,0 +1,6 @@
+SUBSYSTEM=="usb" \
+, ATTRS{idVendor}=="1941" \
+, ATTRS{idProduct}=="8021" \
+, OWNER="pywws" \
+, TAG+="systemd" \
+, ENV{SYSTEMD_WANTS}="pywws.service"
