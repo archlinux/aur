@@ -113,7 +113,6 @@ package() {
 	install -Dm600 "${srcdir}/${_appname}-user.conf" \
 		"${pkgdir}/etc/skel/.config/${_appname}.conf"
 
-
 	# Automatically generate a configuration file using the content of
 	# `/usr/share/gnunet/config.d/` as model; in this way we can ensure
 	# that this configuration file is the one backed up with each update,
