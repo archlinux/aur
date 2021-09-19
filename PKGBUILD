@@ -1,14 +1,14 @@
-# Maintainer: Bruno Jacquet <maxijac at free dot fr>
+# Maintainer: Amr Okasha <amradel55 at gmail dot com>
 
 pkgname=gminer-bin
 _pkgbasename=gminer
-pkgver=2.65
+pkgver=2.68
 pkgrel=1
 pkgdesc="Multi currency GPU miner"
 arch=("x86_64")
 url="https://github.com/develsoftware/GMinerRelease"
 source=("${_pkgbasename}-${pkgver}.tar.xz::https://github.com/develsoftware/GMinerRelease/releases/download/${pkgver}/gminer_${pkgver/\./_}_linux64.tar.xz")
-sha256sums=("1fecf17d288e643f65402aa1a8cb0a43261ed59a66c7cdef4ff91bb4be8c3bf7")
+sha256sums=('b124062a4fb985d7045821fac14ad6e690ab7b4661b7631b4727fe269c382734')
 options=('!strip')
 
 package() {
