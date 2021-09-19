@@ -1,0 +1,18 @@
+pkgbase = rocketleague-steam
+	pkgdesc = Rocket League Linux-native with data via Steam
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://steamdb.info/app/252950/
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	source = rocketleague.sh
+	source = rocketleague.desktop
+	source = rocketleague.png
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = 135f0cf26ee3c626f7116e3c04f6b611d69706a78ee1c8062f211ebf2ba860f8
+	sha256sums = e33bf02d2b017bfc094bc0f7744a466b64d3c6e22f1ae718b80f7dc84f864a24
+	sha256sums = 1f35b795dd8affc510212103a7b28bd780fd38992e40f00a3b16c97b73f39c2c
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = rocketleague-steam

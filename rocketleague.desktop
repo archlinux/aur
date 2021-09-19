@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Rocket League
+Comment=Rocket League Linux-native
+Exec=/usr/bin/rocketleague
+Icon=rocketleague
+Terminal=false
+Type=Application
+Categories=Application;Game;
