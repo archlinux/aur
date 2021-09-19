@@ -2,7 +2,6 @@
 # Contributor: Quan Guo <guotsuan@gmail.com>
 
 pkgname=python-astroml
-_pkgname=astroML
 pkgver=1.0
 pkgrel=1
 pkgdesc='Machine learning, statistics, and data mining for astronomy and astrophysics'
