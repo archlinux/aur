@@ -1,0 +1,16 @@
+pkgbase = colorized-logs
+	pkgdesc = Tools for logs with ANSI color
+	pkgver = 2.6
+	pkgrel = 1
+	url = https://github.com/kilobyte/colorized-logs
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc
+	conflicts = python-ansi2html
+	source = https://github.com/kilobyte/colorized-logs/archive/refs/tags/v2.6.tar.gz
+	sha256sums = d209d9fb45f5332ba4792624746f2bbbbcf425e6539fa69657e9602e2bee6570
+
+pkgname = colorized-logs
