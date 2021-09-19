@@ -4,7 +4,7 @@
 
 pkgname=mosdns-cn-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS forwarder"
 license=("GPL3")
 arch=("x86_64" "armv7h" "aarch64")
@@ -17,7 +17,7 @@ conflicts=("mosdns-cn")
 
 source_x86_64=("$pkgname-$pkgver.zip::https://github.com/IrineSistiana/mosdns-cn/releases/download/v$pkgver/mosdns-cn-linux-amd64.zip")
 source_armv7h=("$pkgname-$pkgver.zip::https://github.com/IrineSistiana/mosdns-cn/releases/download/v$pkgver/mosdns-cn-linux-arm-7.zip")
-source_aarch64=("$pkgname-$pkgver.zip::https://github.com/IrineSistiana/mosdns-cn/releases/download/v$pkgver/mosdns-cn-linux-arm-7.zip")
+source_aarch64=("$pkgname-$pkgver.zip::https://github.com/IrineSistiana/mosdns-cn/releases/download/v$pkgver/mosdns-cn-linux-arm64.zip")
 
 package() {
   install -Dm755 mosdns-cn "$pkgdir/usr/bin/mosdns-cn"
