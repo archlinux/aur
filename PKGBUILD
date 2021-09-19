@@ -1,32 +1,34 @@
-# Maintainer: xeruf <27f at pm dot me>
+# Maintainer: xerus <27f at pm dot me>
 
-_pkgbasename='batstat'
-pkgname="${_pkgbasename}-git"
+_pkgname='batstat'
+pkgname="${_pkgname}-git"
 pkgver=r14.c04f124
 pkgrel=1
 pkgdesc='CLI battery status'
 arch=('any')
-url="https://github.com/xeruf/${_pkgbasename}"
+url="https://github.com/xeruf/${_pkgname}"
 license=('unknown')
 depends=()
-provides=("${_pkgbasename}")
-conflicts=("${_pkgbasename}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 optdepends=('')
 source=("git+${url}")
 sha512sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${_pkgbasename}/"
+  cd "${srcdir}/${_pkgname}/"
   g++ main.cpp -lncurses -pthread -std=c++11 -o batstat
 }
 
 package() {
-  cd "${srcdir}/${_pkgbasename}/"
-  sudo cp batstat /usr/bin
+  cd "${srcdir}/${_pkgname}/"
+  bin=$pkgdir/usr/bin
+  mkdir -p "$bin"
+  cp batstat "$bin"
 }
 
 pkgver() {
-  cd "${_pkgbasename}"
+  cd "${_pkgname}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
