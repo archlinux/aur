@@ -14,11 +14,9 @@ fonts=(
 # Needed apps, themes and icons
 needed_pkgs=(
 	alacritty
-	alacritty-theme-switch
 	arc-gtk-theme
 	arandr
 	dbus-python
-	drun
 	feh
 	graphicsmagick
 	i3lock-fancy
