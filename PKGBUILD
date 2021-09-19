@@ -2,10 +2,10 @@
 
 pkgname=broforce-gog
 pkgver=1130_20201008
-pkgrel=1
+pkgrel=2
 pkgdesc="GOG version of Broforce"
 arch=("i686" "x86_64")
-url="http://www.gog.com/game/torchlight_ii"
+url="http://www.gog.com/game/broforce"
 license=("custom")
 groups=("games")
 source=("broforce_${pkgver}_41824.sh::gogdownloader://broforce/en3installer0" "broforce-gog" "broforce-gog.desktop")
@@ -15,7 +15,7 @@ sha256sums=('405793776eda4d2fb54dcf20652021bc994070be60db2964395b79b61fbdae7f'
 depends=(libgl libx11 libxext desktop-file-utils)
 
 # If you want to use lgogdownloader add the following to /etc/makepkg.conf
-# DLAGENTS+=('goggogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
+# DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 DLAGENTS+=("gogdownloader::/usr/bin/echo Could not find gog installer file (%u). Manually download it to \"$(pwd)\", or set up a gogdownloader:// DLAGENT in /etc/makepkg.conf. See PKGBUILD for example.")
 
 package() {
@@ -23,10 +23,12 @@ package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
   cp -r "${srcdir}/data/noarch/"* "${pkgdir}/opt/${pkgname}/"
 
-  # launcher
+  # launcher and permissions
+  # Note: Saves and Levels data may be permissions restricted to one user by default.
   chmod 755 "${pkgdir}/opt/${pkgname}/start.sh"
   chmod 755 "${pkgdir}/opt/${pkgname}/game/Broforce.x86_64"
   chmod 755 "${pkgdir}/opt/${pkgname}/game/Broforce.x86"
+  chmod 777 "${pkgdir}/opt/${pkgname}/game"
   install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   # desktop environment integration

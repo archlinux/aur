@@ -1,8 +1,8 @@
 pkgbase = broforce-gog
 	pkgdesc = GOG version of Broforce
 	pkgver = 1130_20201008
-	pkgrel = 1
-	url = http://www.gog.com/game/torchlight_ii
+	pkgrel = 2
+	url = http://www.gog.com/game/broforce
 	arch = i686
 	arch = x86_64
 	groups = games
