@@ -2,7 +2,7 @@
 
 pkgname=pycharm-professional
 pkgver=2021.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
 url='https://www.jetbrains.com/pycharm/'
@@ -34,14 +34,15 @@ optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'jupyter: For support Jupyter Notebook')
             
 build() {
-    # compile PyDev debugger used by PyCharm to speedup debugging
+    # clean up and compile PyDev debugger used by PyCharm to speedup debugging
     find pycharm-${pkgver}/plugins/python/helpers/pydev/ \( -name *.so -o -name *.pyd \) -delete
     sed -i '1s/^/# cython: language_level=3\n/' pycharm-${pkgver}/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_cython.pxd
     python pycharm-${pkgver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
+    cd pycharm-${pkgver}/plugins/python/helpers/pydev/pydevd_attach_to_process/linux_and_mac/; bash compile_linux.sh; cd -  # for attach debugger
+
     rm -rf pycharm-${pkgver}/plugins/python/helpers/pydev/build/
     find pycharm-${pkgver}/plugins/python/helpers/pydev/ -name __pycache__ -exec rm -rf {} \;
-    
-    rm -r pycharm-${pkgver}/lib/pty4j-native/linux/{mips64el,ppc64le,aarch64}
+    rm -r pycharm-${pkgver}/lib/pty4j-native/linux/{mips64el,ppc64le,aarch64,arm,x86}
 }
 
 package() {
