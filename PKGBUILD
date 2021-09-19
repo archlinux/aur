@@ -3,7 +3,7 @@
 
 pkgname=xorg-xrdb-mcpp
 _pkgname=xorg-xrdb
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="X server resource database utility"
 arch=('x86_64' 'i686')
@@ -14,8 +14,12 @@ makedepends=('xorg-util-macros')
 optdepends=('gcc: for preprocessing'
             'mcpp: a lightweight alternative for preprocessing')
 groups=('xorg-apps' 'xorg')
-source=(https://xorg.freedesktop.org/archive/individual/app/xrdb-${pkgver}.tar.bz2)
-sha512sums=('14e1cdfb2152fb28f1f4641b177ab236648d7e967a95b952bf4cfce8d3e1ef085e85385354e3381aaf644462e8888a1847f755ab4016ecb4cb4a715b001dd2ef')
+source=(https://xorg.freedesktop.org/archive/individual/app/xrdb-${pkgver}.tar.bz2{,.sig})
+sha512sums=('d88135cdfea8536523dfb986249ee42761d5363c936352f12f55b4d0c849f21236f7d74d39869c5ec5b549019d6ed89d9096cde4b3c2b4816c2778a8e370b5c9'
+            'SKIP')
+#validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # "Alan Coopersmith <alan.coopersmith@oracle.com>"
+validpgpkeys=('C41C985FDCF1E5364576638B687393EE37D128F8') # "Matthieu Herrb <matthieu.herrb@laas.fr>"
+
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 
