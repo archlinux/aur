@@ -1,8 +1,8 @@
 # Maintainer: Konrad Malik (https://konradmalik.github.io/)
 
 pkgname=evernote-for-linux-bin
-pkgver=10.20.4
-buildver=2893
+pkgver=10.21.5
+buildver=2931
 pkgrel=1
 pkgdesc="Official Evernote client for Windows repackaged for Linux"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     )
 noextract=("evernote-client_${pkgver}_amd64.deb")
 sha256sums=(
-    '6898fe960b707270f6effc938e0c9dcb4f9288c02f968c597378f842c401e3e7'
+    '8c863ec0b5e803acc3af3e9a23be75787f66588728514511ac8c1f944757554a'
 )
 
 package() {
