@@ -1,0 +1,16 @@
+pkgbase = quest-package-manager-git
+	pkgdesc = Package manager for Quest mods
+	pkgver = r201.44b19ae
+	pkgrel = 1
+	url = https://github.com/sc2ad/QuestPackageManager
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-host
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	options = staticlibs
+	source = quest-package-manager-git::git+https://github.com/sc2ad/QuestPackageManager.git
+	md5sums = SKIP
+
+pkgname = quest-package-manager-git
