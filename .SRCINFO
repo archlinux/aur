@@ -1,0 +1,20 @@
+pkgbase = apalache-bin
+	pkgdesc = A symbolic model checker for TLA+
+	pkgver = 0.15.13
+	pkgrel = 1
+	url = https://apalache.informal.systems/
+	arch = any
+	license = Apache
+	makedepends = patch
+	depends = java-runtime>=11
+	depends = glibc=2.33
+	depends = findutils
+	depends = coreutils
+	depends = util-linux
+	provides = apalache
+	source = https://github.com/informalsystems/apalache/releases/download/v0.15.13/apalache-v0.15.13.tgz
+	source = sys-install.patch
+	sha256sums = 5eea0f3a873f1ac96ae4fd6347c7372351576f71730d2067fb135ef8686aa230
+	sha256sums = 825557bfdd2928787480e7d21e3b8397e48080fddc3fa6656d4b910db6c58c01
+
+pkgname = apalache-bin
