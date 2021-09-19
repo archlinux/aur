@@ -1,6 +1,6 @@
 pkgbase = macchina
-	pkgdesc = A system information fetcher, with an emphasis on performance and minimalism.
-	pkgver = 0.9.2
+	pkgdesc = A system information fetcher, with an (unhealthy) emphasis on performance.
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/Macchina-CLI/macchina
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = macchina
 	depends = gcc-libs
 	depends = glibc
 	optdepends = wmctrl: window manager support
-	source = https://github.com/Macchina-CLI/macchina/archive/refs/tags/v0.9.2.tar.gz
+	source = https://github.com/Macchina-CLI/macchina/archive/refs/tags/v1.1.6.tar.gz
 	sha256sums = f5ac11a49470639d81424b208fc5d95b111a77b97138af7fce347ad3daae8005
 
 pkgname = macchina

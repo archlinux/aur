@@ -1,9 +1,9 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=0.9.2
+pkgver=1.1.6
 pkgrel=1
-pkgdesc="A system information fetcher, with an emphasis on performance and minimalism."
+pkgdesc="A system information fetcher, with an (unhealthy) emphasis on performance."
 
 arch=('x86_64')
 url="https://github.com/Macchina-CLI/macchina"
@@ -23,12 +23,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-  outdir=$(find "${CARGO_TARGET_DIR:-target}" -name macchina-stamp -print0 \
-        | xargs -0 ls -t \
-        | head -n1 \
-        | xargs dirname)
-  install -Dm644 "$outdir/macchina.fish" "$pkgdir/usr/share/fish/vendor_completions.d/macchina.fish"
-  install -Dm644 "$outdir/macchina.bash" "$pkgdir/usr/share/bash-completion/completions/macchina"
-  install -Dm 755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
-	install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+   install -Dm 755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+   install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
