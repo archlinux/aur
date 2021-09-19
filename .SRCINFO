@@ -1,7 +1,7 @@
 pkgbase = nblood-git
 	pkgdesc = Blood port based on EDuke32 (git version)
-	pkgver = 1.01+858+g8ad376d
-	pkgrel = 1
+	pkgver = r12582+5b9fe377
+	pkgrel = 2
 	url = http://nukeykt.retrohost.net/
 	arch = i686
 	arch = x86_64
@@ -27,4 +27,3 @@ pkgbase = nblood-git
 	makedepends_i686 = nasm
 
 pkgname = nblood-git
-
