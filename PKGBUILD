@@ -3,7 +3,7 @@
 _pkgname='synct'
 pkgname="${_pkgname}-git"
 pkgver=r2.118e94a
-pkgrel=1
+pkgrel=2
 pkgdesc='A POSIX shell client for the Syncthing REST API with personal idiosyncracies'
 arch=('any')
 url="https://github.com/xeruf/${_pkgname}"
@@ -17,8 +17,10 @@ sha512sums=('SKIP')
 
 package() {
   cd "${srcdir}/${_pkgname}/"
-  sudo cp synct* /usr/bin/
-  sudo sed -i "s/Usage/synct version ${pkgver}\n\0/" /usr/bin/synct
+  bin="$pkgdir/usr/bin/"
+  mkdir -p "$bin"
+  cp synct* "$bin"
+  sed -i "s/Usage/synct version ${pkgver}\n\0/" "$bin/synct"
 }
 
 pkgver() {
