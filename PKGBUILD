@@ -3,7 +3,7 @@
 
 pkgname=typora
 pkgver=0.11.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal markdown editor and reader."
 arch=('x86_64')
 filename="${pkgname}_${pkgver}_amd64.deb"
