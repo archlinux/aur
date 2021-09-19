@@ -2,7 +2,7 @@
 
 pkgname=graphite-gtk-theme-git
 _reponame='Graphite-gtk-theme'
-pkgver=202109173g62a3fa0
+pkgver=2021.09.17.r4.g2875838
 pkgrel=1
 pkgdesc='Graphite gtk theme'
 arch=("any")
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver(){
     cd "${srcdir}/${_reponame}"
-    git describe --tags | sed 's/-//g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
