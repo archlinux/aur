@@ -2,20 +2,19 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=procdump
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc='Generate coredumps based off performance triggers'
 arch=('x86_64')
 url=https://github.com/Sysinternals/ProcDump-for-Linux
 license=('MIT')
 depends=('gdb')
-makedepends=('gcc8')
 source=("$url/archive/$pkgver/ProcDump-for-Linux-$pkgver.tar.gz")
-sha256sums=('712be77d97f802ca7ad7eaaa521f7742c15db93af0c968c8b54e48e3ab341baa')
+sha256sums=('40857406464baeec9feda33877601231cb5fb1bf2c477f0592b93595ca0a4035')
 
 build() {
   cd ProcDump-for-Linux-$pkgver
-  make -j1 CC=gcc-8
+  make -j1
 }
 
 package() {
