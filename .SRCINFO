@@ -1,0 +1,16 @@
+pkgbase = quest-discord-presence-client-git
+	pkgdesc = An alternative client for Oculus Quest Beat Saber Discord RPC
+	pkgver = r48.09b53cf
+	pkgrel = 1
+	url = https://github.com/Lauriethefish/Quest-Discord-Presence-Client
+	arch = x86_64
+	license = ZLIB
+	makedepends = git
+	makedepends = dotnet-host
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	options = staticlibs
+	source = quest-discord-presence-client-git::git+https://github.com/Lauriethefish/Quest-Discord-Presence-Client.git
+	md5sums = SKIP
+
+pkgname = quest-discord-presence-client-git
