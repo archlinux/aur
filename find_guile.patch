@@ -1,0 +1,95 @@
+diff --git a/cmake/FindGuile.cmake b/cmake/FindGuile.cmake
+index 844e817..46ef61b 100644
+--- a/cmake/FindGuile.cmake
++++ b/cmake/FindGuile.cmake
+@@ -1,36 +1,71 @@
+-# Locate Guile. 
++# Locate Guile.
+ # Note: `guile-config` ultimately calls pkg-config anyway
+ # Nothing gets marked `advanced` since there aren't that many variables
+ 
+-find_program(GUILE_SNARF NAMES guile-snarf guile-snarf3.0 guile-snarf2.2 guile-snarf2.0)
++# Use PkgConfig when possible to find the version of guile which is available,
++# and then use its results as hints toward the actual library/include paths
+ 
+-# PkgConfig is only there to provide hints
+ find_package(PkgConfig)
+-pkg_check_modules(PC_GUILE QUIET guile)
++pkg_check_modules(PC_GUILE QUIET guile-3.0)
++if (PC_GUILE_FOUND)
++    find_program(GUILE_SNARF NAMES guile-snarf3.0 guile-snarf)
++    find_path(GUILE_INCLUDE_DIR libguile.h
++            HINTS ${PC_GUILE_INCLUDEDIR} ${PC_GUILE_INCLUDE_DIRS}
++            PATH_SUFFIXES guile/3.0 guile)
++    find_library(GUILE_LIBRARY NAMES guile-3.0 guile
++                HINTS ${PC_GUILE_LIBDIR} ${PC_GUILE_LIBRARY_DIRS} )
++endif(PC_GUILE_FOUND)
++
+ if (NOT PC_GUILE_FOUND)
+-  pkg_check_modules(PC_GUILE QUIET guile-3.0)
+-  if (NOT PC_GUILE_FOUND)
+     pkg_check_modules(PC_GUILE QUIET guile-2.2)
+-    if (NOT PC_GUILE_FOUND)
+-        pkg_check_modules(PC_GUILE QUIET guile-2.0)
+-    endif(NOT PC_GUILE_FOUND)
+-  endif(NOT PC_GUILE_FOUND)
++    if (PC_GUILE_FOUND)
++        find_program(GUILE_SNARF NAMES guile-snarf2.2 guile-snarf)
++        find_path(GUILE_INCLUDE_DIR libguile.h
++                HINTS ${PC_GUILE_INCLUDEDIR} ${PC_GUILE_INCLUDE_DIRS}
++                PATH_SUFFIXES guile/2.2 guile)
++        find_library(GUILE_LIBRARY NAMES guile-2.2 guile
++                    HINTS ${PC_GUILE_LIBDIR} ${PC_GUILE_LIBRARY_DIRS} )
++    endif(PC_GUILE_FOUND)
+ endif(NOT PC_GUILE_FOUND)
+ 
++if (NOT PC_GUILE_FOUND)
++    pkg_check_modules(PC_GUILE QUIET guile-2.0)
++    if (PC_GUILE_FOUND)
++        find_program(GUILE_SNARF NAMES guile-snarf2.0 guile-snarf)
++        find_path(GUILE_INCLUDE_DIR libguile.h
++                HINTS ${PC_GUILE_INCLUDEDIR} ${PC_GUILE_INCLUDE_DIRS}
++                PATH_SUFFIXES guile/2.0 guile)
++        find_library(GUILE_LIBRARY NAMES guile-2.0 guile
++                    HINTS ${PC_GUILE_LIBDIR} ${PC_GUILE_LIBRARY_DIRS} )
++    endif(PC_GUILE_FOUND)
++endif(NOT PC_GUILE_FOUND)
+ 
+-set(GUILE_DEFINITIONS ${PC_GUILE_CFLAGS_OTHER})
++if (NOT PC_GUILE_FOUND)
++    pkg_check_modules(PC_GUILE QUIET guile)
++    if (PC_GUILE_FOUND)
++        find_program(GUILE_SNARF NAMES guile-snarf)
++        find_path(GUILE_INCLUDE_DIR libguile.h
++                HINTS ${PC_GUILE_INCLUDEDIR} ${PC_GUILE_INCLUDE_DIRS}
++                PATH_SUFFIXES guile)
++        find_library(GUILE_LIBRARY NAMES guile
++                    HINTS ${PC_GUILE_LIBDIR} ${PC_GUILE_LIBRARY_DIRS} )
++    endif(PC_GUILE_FOUND)
++endif(NOT PC_GUILE_FOUND)
+ 
+-find_path(GUILE_INCLUDE_DIR libguile.h
+-          HINTS ${PC_GUILE_INCLUDEDIR} ${PC_GUILE_INCLUDE_DIRS}
+-          PATH_SUFFIXES guile guile/3.0 guile/2.2 guile/2.0)
++if (NOT PC_GUILE_FOUND)
++    find_program(GUILE_SNARF NAMES
++            guile-snarf3.0 guile-snarf2.2 guile-snarf2.0 guile-snarf)
++    find_path(GUILE_INCLUDE_DIR libguile.h
++            PATH_SUFFIXES guile/3.0 guile/2.2 guile/2.0 guile)
++    find_library(GUILE_LIBRARY NAMES guile-3.0 guile-2.2 guile-2.0 guile)
++endif(NOT PC_GUILE_FOUND)
+ 
+-find_library(GUILE_LIBRARY NAMES guile guile-3.0 guile-2.2 guile-2.0
+-             HINTS ${PC_GUILE_LIBDIR} ${PC_GUILE_LIBRARY_DIRS} )
++set(GUILE_DEFINITIONS ${PC_GUILE_CFLAGS_OTHER})
+ 
+ include(FindPackageHandleStandardArgs)
+-find_package_handle_standard_args(Guile REQUIRED_VARS
+-                                  GUILE_LIBRARY GUILE_INCLUDE_DIR
+-                                  VERSION_VAR PC_GUILE_VERSION)
++find_package_handle_standard_args(Guile
++        REQUIRED_VARS GUILE_LIBRARY GUILE_INCLUDE_DIR
++        VERSION_VAR PC_GUILE_VERSION)
+ 
+ set(GUILE_LIBRARIES ${GUILE_LIBRARY} )
+ set(GUILE_INCLUDE_DIRS ${GUILE_INCLUDE_DIR} )
