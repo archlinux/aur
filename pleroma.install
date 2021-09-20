@@ -6,6 +6,9 @@ post_install() {
     config_dir="/etc/${username}"
     tmp_psql="/tmp/setup_otp_db.psql"
 
+    chown -R pleroma "$home_dir"
+    chown -R pleroma "$config_dir"
+
     instance_gen_params="instance gen\
  --output \"${config_dir}/config.exs\"\
  --output-psql \"$tmp_psql\"\
