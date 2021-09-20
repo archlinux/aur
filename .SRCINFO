@@ -6,15 +6,15 @@ pkgbase = foss-fpga-tools-nightly
 	url = https://aur.archlinux.org/packages/foss-fpga-tools-nightly/
 	arch = any
 	license = custom:ISC
-	depends = yosys-nightly>=yosys_0.9_5603_g3931b3a0_20210919
-	depends = symbiyosys-nightly>=15278f1_20210919
-	depends = nextpnr-generic-nightly>=e926cddc_20210919
-	depends = icestorm-nightly>=83b8ef9_20210919
-	depends = nextpnr-ice40-nightly>=e926cddc_20210919
-	depends = prjtrellis-nightly>=1.0_532_g03e0070_20210919
-	depends = nextpnr-ecp5-nightly>=e926cddc_20210919
-	depends = prjoxide-nightly>=7d56d63_20210919
-	depends = nextpnr-nexus-nightly>=e926cddc_20210919
+	depends = yosys-nightly>=yosys_0.9_5603_g3931b3a0_20210920
+	depends = symbiyosys-nightly>=15278f1_20210920
+	depends = nextpnr-generic-nightly>=e926cddc_20210920
+	depends = icestorm-nightly>=83b8ef9_20210920
+	depends = nextpnr-ice40-nightly>=e926cddc_20210920
+	depends = prjtrellis-nightly>=1.0_532_g03e0070_20210920
+	depends = nextpnr-ecp5-nightly>=e926cddc_20210920
+	depends = prjoxide-nightly>=7d56d63_20210920
+	depends = nextpnr-nexus-nightly>=e926cddc_20210920
 	options = !strip
 
 pkgname = foss-fpga-tools-nightly
