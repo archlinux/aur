@@ -11,10 +11,10 @@ license=("custom:ISC")
 groups=()
 options=("!strip")
 depends=(
-	"nextpnr-ice40-nightly>=e926cddc_20210919"
-	"nextpnr-ecp5-nightly>=e926cddc_20210919"
-	"nextpnr-nexus-nightly>=e926cddc_20210919"
-	"nextpnr-generic-nightly>=e926cddc_20210919"
+	"nextpnr-ice40-nightly>=e926cddc_20210920"
+	"nextpnr-ecp5-nightly>=e926cddc_20210920"
+	"nextpnr-nexus-nightly>=e926cddc_20210920"
+	"nextpnr-generic-nightly>=e926cddc_20210920"
 )
 
 conflicts=(

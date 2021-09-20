@@ -6,10 +6,10 @@ pkgbase = nextpnr-all-nightly
 	url = https://github.com/YosysHQ/nextpnr
 	arch = any
 	license = custom:ISC
-	depends = nextpnr-ice40-nightly>=e926cddc_20210919
-	depends = nextpnr-ecp5-nightly>=e926cddc_20210919
-	depends = nextpnr-nexus-nightly>=e926cddc_20210919
-	depends = nextpnr-generic-nightly>=e926cddc_20210919
+	depends = nextpnr-ice40-nightly>=e926cddc_20210920
+	depends = nextpnr-ecp5-nightly>=e926cddc_20210920
+	depends = nextpnr-nexus-nightly>=e926cddc_20210920
+	depends = nextpnr-generic-nightly>=e926cddc_20210920
 	conflicts = nextpnr-git
 	options = !strip
 
