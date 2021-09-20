@@ -1,7 +1,7 @@
 pkgbase = reciteword
-	pkgdesc = Reciteword is an educational software that helps Chinese natives learn English, especially in vocabulary enrichment. It claims to embrace la interfaz gráfica de usuario bonita. It also claims learners are to enjoy English learning with this reciteword.
+	pkgdesc = Reciteword is an educational software that helps Chinese natives learn English, especially in vocabulary enrichment. It claims to embrace la interfaz gráfica de usuario bonita. It also claims that learners are to enjoy English learning with reciteword.
 	pkgver = 0.8.6
-	pkgrel = 6
+	pkgrel = 7
 	url = https://sourceforge.net/projects/reciteword/
 	arch = x86_64
 	license = GPL
