@@ -1,7 +1,7 @@
 pkgbase = darktable-cr3
 	pkgdesc = A virtual lighttable and darkroom for photographers with CR3 support
 	pkgver = 3.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.darktable.org/
 	install = darktable.install
 	arch = i686
@@ -23,6 +23,7 @@ pkgbase = darktable-cr3
 	depends = lensfun
 	depends = iso-codes
 	depends = zlib
+	depends = sed
 	depends = exiv2
 	depends = flickcurl
 	depends = openjpeg2
