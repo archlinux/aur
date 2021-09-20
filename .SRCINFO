@@ -1,7 +1,7 @@
 pkgbase = zvvonlinetv-test
 	pkgdesc = TV | IPTV | youtube player(testing)
 	pkgver = 5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zvvubuntu.blogspot.com
 	arch = i386
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = zvvonlinetv-test
 	depends = ffmpeg
 	depends = youtube-dl
 	conflicts = zvvonlinetv
-	source = zvvonlinetv-test_5.2.deb::https://docs.google.com/uc?id=17lWM4Kmg-xS4I31ygl16tKo3Y1TdcSwg
+	source = zvvonlinetv-test_5.2.deb::https://www.dropbox.com/s/f4vy6htkmmrxzcq/zvvonlinetv5_2.deb?dl=0
 	md5sums = 5a543ce9294aa6d2c3b77450b573a4e4
 
 pkgname = zvvonlinetv-test
-
