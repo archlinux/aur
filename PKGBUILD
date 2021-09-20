@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev at mail dot ru>
 pkgname=python-pyteomics
-pkgver=4.4.2
+pkgver=4.5
 pkgrel=1
 pkgdesc="A framework for proteomics data analysis."
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('python-matplotlib: for pylab_aux module'
             'python-pynumpress: for Numpress support')
 options=(!emptydirs)
 source=("https://pypi.debian.net/pyteomics/pyteomics-${pkgver}-py2.py3-none-any.whl")
-sha256sums=('4dc72253a4727bda9bcb1b11a46c5ed13dd8a4c1fb0e35dda094420b1ef26044')
+sha256sums=('48ea75a6228a659fc3fb57da174f7c2632a9d296f8fe271595734e062f5f218e')
 changelog=CHANGELOG
 
 package() {
