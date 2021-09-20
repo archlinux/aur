@@ -1,11 +1,11 @@
 pkgbase = zelvici-git
 	pkgdesc = 2D arcade game featuring lovely turtle (git)
 	pkgver = r1.fba84ee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/knihovnice/zelvici
 	arch = x86_64
 	license = GPL-2
-	makedepends = subversion
+	makedepends = git
 	depends = gcc-libs
 	depends = sdl_mixer
 	replaces = zelvici-svn
