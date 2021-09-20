@@ -19,6 +19,7 @@ backup=()
 options=()
 install=
 changelog=
+options=(!strip)
 source=("https://h30326.www3.hpe.com/hpn/via-4.2.0.2105106-rpm.x86_64.rpm?merchantId=ASP_DROPBOX")
 noextract=()
 sha256sums=('ef2bee83b0041e33b4250f0c53f6d25365182daee5723d2b6c04e80c203cdbcf')
