@@ -1,13 +1,14 @@
 pkgbase = prosody-filer
 	pkgdesc = Golang mod_http_upload_external server for Prosody
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ThomasLeister/prosody-filer
 	install = prosody-filer.install
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	backup = etc/prosody-filer.toml
 	source = git+https://github.com/ThomasLeister/prosody-filer.git#tag=v1.0.2
 	source = prosody-filer.service
@@ -15,4 +16,3 @@ pkgbase = prosody-filer
 	sha256sums = 3f64c61eb4bd0d801c8a24d4bf3eae1e04c82ade000d363081d0d673eaaabe9f
 
 pkgname = prosody-filer
-

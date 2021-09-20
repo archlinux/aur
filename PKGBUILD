@@ -2,12 +2,12 @@
 
 pkgname=prosody-filer
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Golang mod_http_upload_external server for Prosody'
 url='https://github.com/ThomasLeister/prosody-filer'
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=(go)
+makedepends=(go git)
 backup=("etc/prosody-filer.toml")
 install=prosody-filer.install
 source=("git+https://github.com/ThomasLeister/${pkgname}.git#tag=v${pkgver}"
