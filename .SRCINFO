@@ -11,7 +11,6 @@ pkgbase = mingw-w64-mesa
 	depends = mingw-w64-llvm
 	depends = mingw-w64-vulkan-icd-loader
 	depends = mingw-w64-dlfcn
-	depends = mingw-w64-regex
 	options = staticlibs
 	options = !strip
 	options = !buildflags

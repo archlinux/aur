@@ -6,7 +6,7 @@ arch=('any')
 url="https://www.mesa3d.org/"
 license=("custom")
 makedepends=('mingw-w64-meson' 'mingw-w64-cmake' 'python-mako')
-depends=('mingw-w64-llvm' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-dlfcn' 'mingw-w64-regex')
+depends=('mingw-w64-llvm' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-dlfcn')
 options=('staticlibs' '!strip' '!buildflags')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
               '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
