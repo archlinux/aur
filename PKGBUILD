@@ -3,11 +3,11 @@
 
 _pkgbase=zenmonitor
 pkgname=zenmonitor-git
-pkgver=56.26d4f9e
+pkgver=60.ae6e53e
 pkgrel=1
 pkgdesc="Zen monitor is monitoring software for AMD Zen-based CPUs"
 arch=('x86_64' 'i686')
-url="https://github.com/ocerman/zenmonitor"
+url="https://github.com/Maxr1998/zenmonitor"
 license=('GPL')
 depends=('zenpower' 'gtk3')
 optdepends=('polkit: support application shortcut to launch Zen monitor as root')
