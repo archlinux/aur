@@ -5,7 +5,7 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray-bin
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=2
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "xray.service"
     "xray@.service"
 )
-sha512sums=('e3b36adfb95d6383cb1c4d5c202d6d07932b52c248c884d58e5ae9023a242ae4f718cdabaa24b91ffdeeebfea1bc0dd3b280f9327b3b24d7852a695464df68fe'
+sha512sums=('7cd236fcad538edbdffd7670763620abd7a87683a86779ed1d51c46070505c032a85bacfbe8d789d892797758e17101c2e2f02e95a48cfc3a446e09cfd83380b'
             '2000211cbf987adaee7f278cc8cb23268965caab3bc46401f9324f2beaad95bec11012f5f4500f1016f4b75f097f3ac96cc5be2da7a6df0261582b3f23b3d78d'
             '9914fd3da02511b716951e521ca22006a6e8ad66e64d32cc7dd7dc3544a754174b37e35df6108ca217130f02763265d74f8bc56c4e52b262bdd48dcdb5310eb5'
             '532f66fe19196de0cc43df1812d6f32cbca7bbcacaa0cd4141bd80b3121b17eb8b23e0464765cf05a97b11e0213fb688eade83e393e36b3e7ebded6f0925de97'
