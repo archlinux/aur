@@ -1,11 +1,11 @@
 # Maintainer: TommyJerryMairo <tjm@member.fsf.org>
 pkgname=reciteword
 pkgver=0.8.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Reciteword is an educational software that helps Chinese natives learn English, especially in vocabulary enrichment. It claims to embrace la interfaz gráfica de usuario bonita. It also claims learners are to enjoy English learning with this reciteword."
 arch=("x86_64")
 url="https://sourceforge.net/projects/reciteword/"
-depends=("gtk2" "esound" "glib2" "espeak-ng")
+depends=("gtk2" "esound" "glib2" "espeak")
 license=('GPL')
 provides=("reciteword")
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2")
