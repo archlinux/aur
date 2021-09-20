@@ -1,6 +1,6 @@
 pkgbase = shinobi-git
 	pkgdesc = The Open Source CCTV and NVR Solution
-	pkgver = r2023.f260011
+	pkgver = r2038.04a7bae
 	pkgrel = 1
 	url = https://shinobi.video/
 	install = shinobi.install

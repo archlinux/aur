@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="shinobi-git"
-pkgver=r2023.f260011
+pkgver=r2038.04a7bae
 pkgrel=1
 pkgdesc="The Open Source CCTV and NVR Solution"
 url="https://shinobi.video/"
@@ -39,11 +39,12 @@ prepare(){
  cd "Shinobi"
  # avoid hardcode database name
  sed -i "sql/framework.sql" \
-     -e "s|CREATE DATABASE|/*CREATE DATABASE|" \
-     -e 's|USE `ccio`;|USE `ccio`;*/|'
+     -e 's|CREATE DATABASE|-- CREATE DATABASE|' \
+     -e 's|USE `ccio`;|-- USE `ccio`|'
 }
 
 package(){
+ cd dddddd
  # no /usr/bin, just systemd files
  cd "Shinobi"
  # program files
