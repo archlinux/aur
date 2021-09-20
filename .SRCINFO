@@ -1,15 +1,14 @@
 pkgbase = python-ppft
 	pkgdesc = distributed and parallel python
-	pkgver = 1.6.4.9
+	pkgver = 1.6.6.4
 	pkgrel = 1
-	url = http://trac.mystic.cacr.caltech.edu/project/pathos/wiki.html
+	url = https://github.com/uqfoundation/ppft
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-six
 	depends = python-dill
-	source = https://github.com/uqfoundation/ppft/releases/download/ppft-1.6.4.9/ppft-1.6.4.9.tar.gz
-	sha256sums = 5537b00afb7b247da0f59cc57ee5680178be61c8b2e21b5a0672b70a3d247791
+	source = https://github.com/uqfoundation/ppft/archive/ppft-1.6.6.4.tar.gz
+	sha512sums = 766fe9e0606f998409f123497a22b12500d7662340eefb3a4825bf18e01c0bdac784f9b662764ae807f80e6b32002ea8e2af82bc9ffe713a1e620673007ef5a5
 
 pkgname = python-ppft
-

@@ -1,22 +1,28 @@
-pkgname=python-ppft
-pkgver=1.6.4.9
-pkgrel=1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Michel Zou <xantares09@hotmail.com>
+_base=ppft
+pkgname=python-${_base}
 pkgdesc="distributed and parallel python"
-url="http://trac.mystic.cacr.caltech.edu/project/pathos/wiki.html"
-arch=(any)
+pkgver=1.6.6.4
+pkgrel=1
+url="https://github.com/uqfoundation/${_base}"
+arch=('any')
 license=('BSD')
-makedepends=('python-setuptools')
-depends=('python-six' 'python-dill')
-source=("https://github.com/uqfoundation/ppft/releases/download/ppft-${pkgver}/ppft-${pkgver}.tar.gz")
-sha256sums=('5537b00afb7b247da0f59cc57ee5680178be61c8b2e21b5a0672b70a3d247791')
+depends=(python-six python-dill)
+makedepends=(python-setuptools)
+source=(${url}/archive/${_base}-${pkgver}.tar.gz)
+sha512sums=('766fe9e0606f998409f123497a22b12500d7662340eefb3a4825bf18e01c0bdac784f9b662764ae807f80e6b32002ea8e2af82bc9ffe713a1e620673007ef5a5')
+
+export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
 build() {
-  cd "${srcdir}"/ppft-$pkgver
+  cd "${_base}-${_base}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/ppft-$pkgver"
-  python setup.py install --root=${pkgdir} --optimize=1
+  cd "${_base}-${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
