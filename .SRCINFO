@@ -1,7 +1,7 @@
 pkgbase = zvvradio
 	pkgdesc = radio player
 	pkgver = 2.0
-	pkgrel = 1.2
+	pkgrel = 2
 	url = https://zvvubuntu.blogspot.com
 	arch = i386
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = zvvradio
 	depends = python-pyqt5
 	depends = vlc
 	conflicts = zvvradio-git
-	source = ZVVRadio_2.0.deb::https://docs.google.com/uc?id=1WBO8Wged20zAb1_8xbWaRNUKhQg4VlXy
+	source = ZVVRadio_2.0.deb::https://www.dropbox.com/s/ad7llycxk5km9ps/ZVVRadio2.deb?dl=0
 	source = zvvradio
 	source = Radio.desktop
 	md5sums = 970583d63a06fed0d2ee8079a61a3e13
@@ -17,4 +17,3 @@ pkgbase = zvvradio
 	md5sums = eafda782b08cc9e7246a95d49ef04418
 
 pkgname = zvvradio
-
