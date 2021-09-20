@@ -1,0 +1,15 @@
+pkgbase = hipify-clang-git
+	pkgdesc = Clang-based tool for translating CUDA sources into HIP sources
+	pkgver = r1415.a53fe40
+	pkgrel = 1
+	url = https://github.com/ROCm-Developer-Tools/HIPIFY
+	arch = x86_64
+	license = Custom
+	makedepends = git
+	depends = ncurses
+	depends = zlib
+	depends = rocm-dev
+	source = git+https://github.com/ROCm-Developer-Tools/HIPIFY
+	md5sums = SKIP
+
+pkgname = hipify-clang-git
