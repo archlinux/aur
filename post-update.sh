@@ -14,7 +14,7 @@ sed -i 's/pkgrel=.*/pkgrel=1/' ./PKGBUILD
 # makepkg in this container cannot be run as root. Therefore, create a
 # temporary user for this. This used need to use the UID of the host's user to
 # avoid file access problems when using bind mounts in docker.
-docker run -v "$(pwd):/pkg" archlinux:latest bash -c "
+docker run --rm -v "$(pwd):/pkg" archlinux:latest bash -c "
 set -exuo pipefail
 pacman -Syu --noconfirm pacman-contrib binutils
 useradd -u ${uid} builder
