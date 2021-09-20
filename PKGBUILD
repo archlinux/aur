@@ -1,6 +1,6 @@
 # Maintainer: Youngjae Lee <ls4154.lee@gmail.com>
 pkgname=dm-zoned-tools
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="User space utility for managing zoned block devices used with the dm-zoned device mapper "
 arch=("x86_64")
@@ -9,12 +9,12 @@ license=("GPL3")
 depends=("glibc" "util-linux-libs" "kmod" "device-mapper")
 makedepends=("autoconf" "automake" "libtool" "autoconf-archive")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/westerndigitalcorporation/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=("d836ee377d17235710c06b07fc747da3")
+md5sums=("801c38767332efb7c040545e8b7f813a")
 
 build() {
 	cd "$pkgname-$pkgver"
 	./autogen.sh
-	./configure --prefix=/usr --sbindir='${exec_prefix}/bin'
+	./configure --prefix=/usr --sbindir=/usr/bin
 	make
 }
 
