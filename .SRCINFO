@@ -1,16 +1,15 @@
 pkgbase = python-pathos
 	pkgdesc = parallel graph management and execution in heterogeneous computing
-	pkgver = 0.2.3
+	pkgver = 0.2.8
 	pkgrel = 1
-	url = http://trac.mystic.cacr.caltech.edu/project/pathos/wiki.html
+	url = https://github.com/uqfoundation/pathos
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-ppft
 	depends = python-pox
 	depends = python-multiprocess
-	source = https://github.com/uqfoundation/pathos/archive/pathos-0.2.3.tar.gz
-	sha256sums = 5a325a19f66bd92fe3978febf4e96b8836f45f851ab23b07eaf589beac9c21bc
+	source = https://github.com/uqfoundation/pathos/archive/pathos-0.2.8.tar.gz
+	sha512sums = 3552e7db41ec134fdebcda0e8e483e1f06e8de18b1e31184599d44c35367baf02f04d8c4f8932820e1793eeb81c4fddab6eb2026fae0ebd932be50d708f2e214
 
 pkgname = python-pathos
-
