@@ -1,6 +1,6 @@
 pkgbase = mudlet-git
 	pkgdesc = A modern MUD client with a graphical user inteface and built in Lua scripting (git development branch
-	pkgver = r913.g9571f211
+	pkgver = r1143.g68133f54b
 	pkgrel = 1
 	url = http://www.mudlet.org
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = mudlet-git
 	depends = lua51-sql-sqlite
 	depends = lrexlib-pcre5.1
 	depends = qt5-gamepad
-	depends = lua51-utf8
+	depends = lua51-luautf8
 	depends = ttf-font
 	depends = pugixml
 	depends = lua-yajl
@@ -31,4 +31,3 @@ pkgbase = mudlet-git
 	sha256sums = SKIP
 
 pkgname = mudlet-git
-
