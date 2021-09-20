@@ -3,7 +3,7 @@
 
 pkgname=dyff
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Diff tool for YAML files"
 arch=('x86_64')
 url="https://github.com/homeport/dyff"
@@ -39,4 +39,7 @@ package() {
 	install -D build/dyff -t "$pkgdir/usr/bin"
 	install -D LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -D README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	build/dyff completion bash | install -D /dev/stdin "$pkgdir/usr/share/bash-completion/completions/dyff"
+	build/dyff completion zsh  | install -D /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_dyff"
+	build/dyff completion fish | install -D /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/dyff.fish"
 }

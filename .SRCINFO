@@ -1,7 +1,7 @@
 pkgbase = dyff
 	pkgdesc = Diff tool for YAML files
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/homeport/dyff
 	arch = x86_64
 	license = MIT
