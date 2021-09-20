@@ -1,6 +1,6 @@
 pkgbase = php-codesniffer-drupal
 	pkgdesc = Drupal coding standard for PHP_CodeSniffer
-	pkgver = 8.x_3.10
+	pkgver = 8.x_3.11
 	pkgrel = 1
 	url = http://drupal.org/project/coder
 	install = php-codesniffer-drupal.install
@@ -12,4 +12,3 @@ pkgbase = php-codesniffer-drupal
 	sha512sums = SKIP
 
 pkgname = php-codesniffer-drupal
-
