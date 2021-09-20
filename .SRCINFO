@@ -1,0 +1,17 @@
+pkgbase = pmenu-pie-menu-git
+	pkgdesc = A simple, unixy circular menu for X11. Also known as πmenu
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/phillbush/pmenu
+	arch = x86_64
+	license = MIT
+	depends = imlib2
+	depends = libx11
+	depends = libxft
+	depends = libxinerama
+	provides = pmenu-pie-menu
+	conflicts = pmenu
+	source = git+https://github.com/phillbush/pmenu.git
+	md5sums = SKIP
+
+pkgname = pmenu-pie-menu-git
