@@ -2,7 +2,7 @@
 
 _pkgname=pleroma
 pkgname=${_pkgname}-git
-pkgver=v2.4.1.r0.g0b2119d4a
+pkgver=2.4.1.r0.g0b2119d4a
 pkgrel=1
 pkgdesc='A microblogging server software that can federate (= exchange messages with) other servers that support ActivityPub.'
 url='https://git.pleroma.social/pleroma/pleroma'
@@ -47,5 +47,5 @@ package() {
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
