@@ -6,7 +6,7 @@ pkgname=nblood-git
 pkgver=r12582+5b9fe377
 pkgrel=2
 pkgdesc='Blood port based on EDuke32 (git version)'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='http://nukeykt.retrohost.net/'
 license=('GPL' 'custom:BUILD')
 depends=('flac'
@@ -26,6 +26,11 @@ source=('NBlood::git+https://github.com/nukeykt/NBlood.git'
         'nblood.desktop')
 sha256sums=('SKIP'
             '58807697e95e071a6354f87e8e2fdae9f32af0e08dad1a510a0089845df42184')
+
+pkgver() {
+    cd NBlood
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 build() {
     cd NBlood

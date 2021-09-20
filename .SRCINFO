@@ -5,6 +5,7 @@ pkgbase = nblood-git
 	url = http://nukeykt.retrohost.net/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	license = custom:BUILD
 	makedepends = git
