@@ -38,7 +38,8 @@ package() {
     install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     cd "${_pkgname}"
-    echo "y\ny" | mix deps.get
+    mix local.hex --force
+    mix deps.get
     MIX_ENV=prod mix pleroma.instance gen
     mv config/{generated_config.exs,prod.secret.exs}
     psql -f config/setup_db.psql
