@@ -96,6 +96,11 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
+pkgver() {
+	cd ./dotfiles || exit
+	printf "%s-r%s.%s" "${pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
 	chmod +x ./dotfiles/install || exit
 	PKGDIR="${pkgdir}" PKGNAME="${pkgname}" sudo ./dotfiles/install || exit
