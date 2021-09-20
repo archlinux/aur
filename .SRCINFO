@@ -1,14 +1,13 @@
 pkgbase = bazel-buildtools
 	pkgdesc = Developer tools for working with Google's bazel buildtool.
-	pkgver = 4.0.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	license = Apache
 	makedepends = bazel
 	makedepends = git
-	source = https://github.com/bazelbuild/buildtools/archive/4.0.0.tar.gz
-	sha256sums = 0d3ca4ed434958dda241fb129f77bd5ef0ce246250feed2d5a5470c6f29a77fa
+	source = https://github.com/bazelbuild/buildtools/archive/4.2.1.tar.gz
+	sha256sums = b8b69615e8d9ade79f3612311b8d0c4dfe01017420c90eed11db15e9e7c9ff3c
 
 pkgname = bazel-buildtools
-
