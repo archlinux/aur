@@ -1,6 +1,5 @@
 pkgbase = vkd3d-git
-	pkgdesc = D3D12 to Vulkan translation library. (GIT version)
-	pkgver = 1.2.79.ga9abb0d
+	pkgver = 1.2.493.g4509f08
 	pkgrel = 1
 	url = https://source.winehq.org/git/vkd3d.git
 	arch = x86_64
@@ -9,13 +8,31 @@ pkgbase = vkd3d-git
 	makedepends = vulkan-headers
 	makedepends = xcb-proto
 	makedepends = wine
-	depends = spirv-tools
-	depends = vulkan-icd-loader
-	depends = libxcb
+	makedepends = spirv-tools
+	makedepends = lib32-spirv-tools
+	makedepends = vulkan-icd-loader
+	makedepends = lib32-vulkan-icd-loader
+	makedepends = libxcb
+	makedepends = lib32-libxcb
 	provides = vkd3d
 	conflicts = vkd3d
 	source = git://source.winehq.org/git/vkd3d.git
 	sha256sums = SKIP
 
 pkgname = vkd3d-git
+	pkgdesc = D3D12 to Vulkan translation library. (GIT version)
+	depends = spirv-tools
+	depends = libvulkan.so
+	depends = libxcb
+	provides = vkd3d
+	provides = vkd3d=1.2.493.g4509f08
+	conflicts = vkd3d
 
+pkgname = lib32-vkd3d-git
+	pkgdesc = D3D12 to Vulkan translation library. (GIT version) (32-bits)
+	depends = vkd3d=1.2.493.g4509f08
+	depends = lib32-spirv-tools
+	depends = libvulkan.so
+	depends = lib32-libxcb
+	provides = lib32-vkd3d
+	conflicts = lib32-vkd3d
