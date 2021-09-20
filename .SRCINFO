@@ -1,0 +1,19 @@
+pkgbase = tessen
+	pkgdesc = An interactive menu to autotype and copy password-store data
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ayushnix/tessen
+	arch = x86_64
+	license = GPL
+	depends = pass
+	depends = bemenu
+	depends = wtype
+	depends = wl-clipboard
+	depends = libnotify
+	optdepends = rofi-lbonn-wayland-git: the wayland native fork of rofi
+	optdepends = rofi: Xorg rofi for use in xwayland mode
+	conflicts = tessen-git
+	source = tessen-1.0.0.tar.gz::https://github.com/ayushnix/tessen/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = ab41014d6a16bd33cbf7fe33e09f55b5f0031f8844d9f907c454043522512195
+
+pkgname = tessen
