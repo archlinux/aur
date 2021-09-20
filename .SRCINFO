@@ -1,6 +1,6 @@
 pkgbase = pacdiff-pacman-hook-git
-	pkgdesc = Pacman hook to run pacdiff automatically
-	pkgver = r71.5c080db
+	pkgdesc = Pacman hook to review .pacnew files automatically
+	pkgver = r72.3f0c76a
 	pkgrel = 1
 	url = https://github.com/desbma/pacman-hooks
 	arch = any
