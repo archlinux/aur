@@ -1,7 +1,7 @@
 #Maintainer: NiNjA <heinep at gmail dot com>
 #Maintainer: float <flo.at at gmx dot de>
 
-pkgname=s25rttr-bin
+pkgname=s25rttr-stable-bin
 pkgver=20210918
 pkgsubver=0.9.1
 build=7273dd8c3fa98f3892af28d415aca77a5d58fdd4
