@@ -1,0 +1,11 @@
+pkgbase = dyff-bin
+	pkgdesc = diff tool for YAML files
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/homeport/dyff
+	arch = x86_64
+	license = MIT
+	source = https://github.com/homeport/dyff/releases/download/v1.4.5/dyff_1.4.5_linux_amd64.tar.gz
+	sha256sums = 6850d5c47fe02e5cb2401471aa702c44ea6aafcb7c404961a5b58c6a8ba86695
+
+pkgname = dyff-bin
