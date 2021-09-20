@@ -1,10 +1,10 @@
-# Maintainer: Basil Schneider <basil dot schneider at cern dot ch>
+# Maintainer: Kevin Franz Stehle <kevin dot franz dot stehle at cern dot ch>
 pkgname=lpadmincern
-pkgver=1.3.18   # 1.3.18-1.slc6 (published 2016-11-02)
+pkgver=1.3.25
 pkgrel=1
-pkgdesc="CERN LDAP printer database client"
-url="https://printservice.web.cern.ch/printservice/"
-arch=('any')   # according to RPM spec; only tested on x86_64
+pkgdesc="CERN LDAP printer database client. Note: CERN IT does not provide official support for Arch Linux. Use at your own risk."
+url="https://linuxsoft.cern.ch/cern/centos/7/cern/x86_64/repoview/lpadmincern.html"
+arch=('any')
 license=('GPL')
 depends=('cups' 'perl' 'perl-ldap' 'python')
 optdepends=()
@@ -12,53 +12,29 @@ makedepends=('gzip' 'tar')
 conflicts=()
 replaces=()
 backup=()
-#install=()
-source=("http://ftp.riken.jp/Linux/cern/slc60beta/x86_64/updates/SRPMS/lpadmincern-1.3.18-1.slc6.src.rpm")
-md5sums=('0665c14243091dd0ca017ff0bfba8fe3')
-
-build() {
-  msg2 "Unpacking"
-  tar xf "${pkgname}"-"${pkgver}".tar.gz
-  cd "${pkgname}"-"${pkgver}"
-  # Okay, this is ugly. Instead of
-  # $ systemctl start cups
-  # we need to call
-  # $ systemctl enable org.cups.cupsd.service
-  # $ systemctl daemon-reload
-  # $ systemctl start org.cups.cupsd.service
-  msg2 "Updating script to CUPS 2.0"
-  sed -i "/systemctl restart cups/s#\
-       \( *\)\(\$cupsc=\)'\(/usr/bin/systemctl\).*#\
-       \1\2'\3 enable org.cups.cupsd; \\n\
-       \1        \3 daemon-reload; \\n\
-       \1        \3 start org.cups.cupsd'#" "${pkgname}".pl
-  msg2 "Creating man page"
-  pod2man "${pkgname}".pl > "${pkgname}".1
-}
+source=("https://linuxsoft.cern.ch/cern/centos/7/cern/x86_64/Packages/lpadmincern-${pkgver}-${pkgrel}.el7.cern.noarch.rpm")
+md5sums=('946aa1878b68752ee114c5221d434d17')
 
 package() {
-  cd "${pkgname}"-"${pkgver}"
-
   msg2 "Creating directories"
   mkdir -p "${pkgdir}"/usr/bin
-  mkdir -p "${pkgdir}"/usr/share/man/man1
   mkdir -p "${pkgdir}"/etc/cron.daily/
   mkdir -p "${pkgdir}"/etc/logrotate.d/
   mkdir -p "${pkgdir}"/etc/sysconfig/
   mkdir -p "${pkgdir}"/usr/share/"${pkgname}"/ppds/
   mkdir -p "${pkgdir}"/usr/share/man/man1
   mkdir -p "${pkgdir}"/usr/share/man/man8
- 
+  mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"-"${pkgver}"
+
   msg2 "Installing scripts"
-  install -m 755 "${pkgname}".pl "${pkgdir}"/usr/bin/"${pkgname}"
-  install -m 644 "${pkgname}".1 "${pkgdir}"/usr/share/man/man1/
-  install -m 644 ppds/* "${pkgdir}"/usr/share/"${pkgname}"/ppds/
+  install -m755 usr/sbin/"${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"
+  install -m644 usr/share/"${pkgname}"/ppds/* "${pkgdir}"/usr/share/"${pkgname}"/ppds/
   
-  install -m755 lpq-cern.py "${pkgdir}"/usr/bin/lpq.cern
-  install -m755 lprm-cern.py "${pkgdir}"/usr/bin/lprm.cern
-  install -m755 lpadmincern.cron "${pkgdir}"/etc/cron.daily/lpadmincern
-  install -m755 lpadmincern.logrotate "${pkgdir}"/etc/logrotate.d/lpadmincern
-  install -m755 lpadmincern.sysconfig "${pkgdir}"/etc/sysconfig/lpadmincern
+  install -m755 usr/bin/lpq.cern "${pkgdir}"/usr/bin/lpq.cern
+  install -m755 usr/bin/lprm.cern "${pkgdir}"/usr/bin/lprm.cern
+  install -m755 etc/cron.daily/lpadmincern "${pkgdir}"/etc/cron.daily/lpadmincern
+  install -m644 etc/logrotate.d/lpadmincern "${pkgdir}"/etc/logrotate.d/lpadmincern
+  install -m644 etc/sysconfig/lpadmincern "${pkgdir}"/etc/sysconfig/lpadmincern
  
   msg2 "Creating symlinks"
   pushd "${pkgdir}"/usr/bin > /dev/null
@@ -70,18 +46,16 @@ package() {
   ln -sf lpc.cups lpc.cern
   popd > /dev/null
  
-  msg2 "Installing manpages"
-  install -m644 man/cancel-cern.1 "${pkgdir}"/usr/share/man/man1/cancel-cern.1
-  install -m644 man/lp-cern.1 "${pkgdir}"/usr/share/man/man1/lp-cern.1
-  install -m644 man/lpq-cern.1 "${pkgdir}"/usr/share/man/man1/lpq-cern.1
-  install -m644 man/lpr-cern.1 "${pkgdir}"/usr/share/man/man1/lpr-cern.1
-  install -m644 man/lprm-cern.1 "${pkgdir}"/usr/share/man/man1/lprm-cern.1
-  install -m644 man/lpstat-cern.1 "${pkgdir}"/usr/share/man/man1/lpstat-cern.1
-  install -m644 man/lpc-cern.8 "${pkgdir}"/usr/share/man/man8/lpc-cern.8
+  msg2 "Installing manpages"  
+  install -m644 usr/share/man/man1/"${pkgname}".1.gz "${pkgdir}"/usr/share/man/man1/"${pkgname}".1.gz
+  install -m644 usr/share/man/man1/cancel-cern.1.gz "${pkgdir}"/usr/share/man/man1/cancel-cern.1.gz
+  install -m644 usr/share/man/man1/lp-cern.1.gz "${pkgdir}"/usr/share/man/man1/lp-cern.1.gz
+  install -m644 usr/share/man/man1/lpq-cern.1.gz "${pkgdir}"/usr/share/man/man1/lpq-cern.1.gz
+  install -m644 usr/share/man/man1/lpr-cern.1.gz "${pkgdir}"/usr/share/man/man1/lpr-cern.1.gz
+  install -m644 usr/share/man/man1/lprm-cern.1.gz "${pkgdir}"/usr/share/man/man1/lprm-cern.1.gz
+  install -m644 usr/share/man/man1/lpstat-cern.1.gz "${pkgdir}"/usr/share/man/man1/lpstat-cern.1.gz
+  install -m644 usr/share/man/man8/lpc-cern.8.gz "${pkgdir}"/usr/share/man/man8/lpc-cern.8.gz
   
-  pushd "${pkgdir}"/usr/share/man/man1 > /dev/null
-  gzip cancel-cern.1 lp-cern.1 lpq-cern.1 lpr-cern.1 lprm-cern.1 lpstat-cern.1
-  cd "${pkgdir}"/usr/share/man/man8
-  gzip lpc-cern.8
-  popd > /dev/null
+  msg2 "Installing docs"
+  install -m644 usr/share/doc/"${pkgname}"-"${pkgver}"/README "${pkgdir}"/usr/share/doc/"${pkgname}"-"${pkgver}"/README 
 }
