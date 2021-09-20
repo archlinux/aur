@@ -1,7 +1,7 @@
 pkgbase = obs-studio-ftl
 	pkgdesc = Free, open source software for live streaming and recording (with FTL protocol support)
 	pkgver = 27.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com
 	arch = x86_64
 	license = GPL2
@@ -34,8 +34,10 @@ pkgbase = obs-studio-ftl
 	provides = obs-studio
 	conflicts = obs-studio
 	source = obs-studio-27.0.1.tar.gz::https://github.com/jp9000/obs-studio/archive/27.0.1.tar.gz
+	source = linux-capture_pipewire.patch::https://github.com/obsproject/obs-studio/commit/ef0540c0d7df64b6cb148c80d566281a4ff3ba5c.patch
 	source = fix_python_binary_loading.patch
 	md5sums = 48b51f558858f512928efda0f3aee1a1
+	md5sums = ff855407700e3c8e9b956c562528a306
 	md5sums = 051b90f05e26bff99236b8fb1ad377d1
 
 pkgname = obs-studio-ftl

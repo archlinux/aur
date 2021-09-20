@@ -1,0 +1,53 @@
+From ef0540c0d7df64b6cb148c80d566281a4ff3ba5c Mon Sep 17 00:00:00 2001
+From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+Date: Fri, 17 Sep 2021 11:59:53 -0300
+Subject: [PATCH] linux-capture: Lookup session handle without typechecks
+
+g_variant_lookup() obligatorily receives the type of the variant to
+lookup. This function is used when retrieving the session handle
+from the portal's response, and the variant type passed is "s" (a
+string).
+
+However, xdg-desktop-portal had a bug: the documentation explicitly
+mentions that the session handle is an object path (of variant type
+"o"), but it passed a string (of variant type "s"). This mismatch
+was fixed in the xdg-desktop-portal release 1.10 [1], but that broke
+the PipeWire capture code, which was passing specifically the "s"
+value to the variant lookup.
+
+Fix this by not checking the variant type at all. Object paths ("o")
+are simply strings with a few extra checks, and we don't actually need
+to perform these checks.
+
+This change probably broke other apps, and that makes me extremely sad :(
+
+[1] https://github.com/flatpak/xdg-desktop-portal/pull/609
+---
+ plugins/linux-capture/pipewire.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/linux-capture/pipewire.c b/plugins/linux-capture/pipewire.c
+index 848b0fbca13..655e5183dba 100644
+--- a/plugins/linux-capture/pipewire.c
++++ b/plugins/linux-capture/pipewire.c
+@@ -958,6 +958,7 @@ static void on_create_session_response_received_cb(
+ 	UNUSED_PARAMETER(interface_name);
+ 	UNUSED_PARAMETER(signal_name);
+ 
++	g_autoptr(GVariant) session_handle_variant = NULL;
+ 	g_autoptr(GVariant) result = NULL;
+ 	struct dbus_call_data *call = user_data;
+ 	obs_pipewire_data *obs_pw = call->obs_pw;
+@@ -975,8 +976,10 @@ static void on_create_session_response_received_cb(
+ 
+ 	blog(LOG_INFO, "[pipewire] screencast session created");
+ 
+-	g_variant_lookup(result, "session_handle", "s",
+-			 &obs_pw->session_handle);
++	session_handle_variant =
++		g_variant_lookup_value(result, "session_handle", NULL);
++	obs_pw->session_handle =
++		g_variant_dup_string(session_handle_variant, NULL);
+ 
+ 	select_source(obs_pw);
+ }
