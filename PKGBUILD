@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-polls
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Poll app for Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL3')
 depends=('nextcloud>=21.0.0' 'nextcloud<23.0.0')
 makedepends=('npm' 'composer')
 source=("polls-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('a6aaf33799ad9011d21a3f1c0955c07e7702b106857de1353bf6391873be18c988fa94d9c8f82b66ddd8fb6a086130d6b9b360671d4575241d742e2f50263a5f')
+sha512sums=('232c270c0b80af062681de32b65bef361f46319d58663aaf2621edb13aa0a548fc516005176f2ad9d415a0f59d6a5cbed0bcdcd63321fd4e0fd76dbf42cdd356')
 
 build() {
     cd "${srcdir}/polls-${pkgver}"
