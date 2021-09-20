@@ -2,14 +2,14 @@
 
 pkgname=zvvonlinemusic
 pkgver=0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Online music player"
 arch=('i386' 'x86_64')
 url="https://zvvubuntu.blogspot.com"
 license=('custom')
 depends=('python-pyqt5' 'vlc') 
 
-source=("${pkgname}_${pkgver}.deb::https://docs.google.com/uc?id=15pykzYXxh0zTJnb1FnDnrpHQkE9yW4m6"
+source=("${pkgname}_${pkgver}.deb::https://www.dropbox.com/s/2af2ls7jmug9ca2/zvvonlinemusic_06.deb?dl=0"
 "zvvonlinemusic" "ZVVOnlineMusic.desktop")
 md5sums=('d29e3701467a694676566fbb2a8bf409'
          '5983b546cc455df767ac3767008c69ff'
