@@ -1,7 +1,7 @@
 pkgbase = via
 	pkgdesc = Aruba Networks' Virtual Intranet Access (VIA)
 	pkgver = 4.2.0.2105106
-	pkgrel = 1
+	pkgrel = 3
 	url = https://asp.arubanetworks.com/downloads;fileTypes=SOFTWARE;products=Aruba%20Virtual%20Intranet%20Access%20%28VIA%29;fileContents=Linux
 	arch = x86_64
 	license = unknown

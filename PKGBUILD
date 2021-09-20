@@ -1,7 +1,7 @@
 # Maintainer: Matthew Hiles <matthew.hiles@hpe.com>
 pkgname=via
 pkgver=4.2.0.2105106
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Aruba Networks' Virtual Intranet Access (VIA)"
 arch=('x86_64')
@@ -41,5 +41,9 @@ package() {
 	#cd "$pkgname-$pkgver"
 	cp -R "$srcdir/usr" "$srcdir/etc" "$pkgdir/"
 	cp -R "$srcdir/lib64/security" "$pkgdir/usr/lib/"
+	## autostart by default is bad :|
+	rm "${pkgdir}/etc/xdg/autostart/via-auto.desktop"
+	rmdir "${pkgdir}/etc/xdg/autostart"
+	rmdir "${pkgdir}/etc/xdg"
 	#rpmextract.sh ../$pkgname-$pkgver*.rpm*
 }
