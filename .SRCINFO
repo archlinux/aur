@@ -1,9 +1,8 @@
 pkgbase = petsc-git
-	pkgdesc = Portable, extensible toolkit for scientific computation (external downloads enabled)
-	pkgver = 20210515
-	pkgrel = 1
+	pkgdesc = Portable, extensible toolkit for scientific computation
+	pkgver = 3.15.4.27.g1085e15b135
+	pkgrel = 2
 	url = https://gitlab.com/petsc/petsc
-	install = petsc.install
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -11,31 +10,60 @@ pkgbase = petsc-git
 	makedepends = gcc-fortran
 	makedepends = cmake
 	makedepends = sowing
-	makedepends = python
 	makedepends = git
 	makedepends = cython
 	makedepends = chrpath
+	makedepends = hypre=2.18.2
 	depends = openmpi
 	depends = lapack
 	depends = fftw
-	depends = hdf5
-	depends = suitesparse
-	depends = metis
-	depends = parmetis
-	depends = superlu
-	depends = eigen
+	depends = zlib
 	depends = cython
 	depends = python-mpi4py
-	optdepends = opencl: GPU computing
-	optdepends = hwloc: hardware locality
-	optdepends = cgns: CFD data support
-	optdepends = libpng: PNG support
-	optdepends = libyaml: YAML configuration support
-	optdepends = libx11: GUI tools
-	provides = petsc
-	conflicts = petsc
-	source = petsc::git+https://gitlab.com/petsc/petsc.git#branch=release
-	sha256sums = SKIP
+	depends = python-numpy
+	depends = eigen>=3
+	depends = openblas
+	options = !staticlibs
+	source = git+https://gitlab.com/petsc/petsc.git#branch=release
+	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-3.15.4.tar.gz
+	source = test_optdepends.sh
+	source = petsc4py_newuser.patch
+	source = blaslapack_download.patch
+	sha512sums = SKIP
+	sha512sums = b6a1d48aab1c2639a4c1cbd8b313ace253f1c36eedaa3de3508ffbd6060e1def99e2f516ed9bb509307f614b41791d09342e2c2280c0b2c25dda1092b0e569d2
+	sha512sums = 2c2c48f6b87e24b6f5fccfd2a6eb0889d47385c0be7ba14614c55c774f8b915c33a5d5ec5cc1637d41f7407423b77ac1bcc129bfa3d7967bb917ad8d1de3a6b5
+	sha512sums = 038f4f54cb8771590b528e41666f33095d9381bf07636c53841293a3937faeb8604bfe3cb98fac588b647661ea74602e6c261cf7809e0cec7ed086e8b01b5f01
+	sha512sums = af899ea1d06bf6d4cee1c1fe86902ba2772d1001caf00e89363c6217fed9dd837588ee6f7f827ca8b8fd2a01316fbcd73d98874e28d452af71b9598127b6f179
 
 pkgname = petsc-git
+	optdepends = boost: Free peer-reviewed portable C++ source libraries
+	optdepends = cgns: Recording and recovering computer data
+	optdepends = eigen: Lightweight C++ template library for vector and matrix math
+	optdepends = fftw: Fast-Fourier Transform
+	optdepends = gdb: Debugging
+	optdepends = hdf5: large files
+	optdepends = hwloc: Portable Hardware Locality (abstraction of hierarchical architectures)
+	optdepends = med>=4.0: Data Modelization and Exchanges (meshes)
+	optdepends = metis: Partitioning library (for meshes)
+	optdepends = mumps: Sparse solver library
+	optdepends = openblas: Linear algebra libraries
+	optdepends = opencl-headers: for opencl (GPU computing)
+	optdepends = opencl: GPU computing
+	optdepends = openmp: Parallel distributed tasks
+	optdepends = png
+	optdepends = scalapack: Parallel memory linear algebra
+	optdepends = scotch: Partitioning with sparse matrices
+	optdepends = suitesparse: Sparse matrix library
+	optdepends = superlu: Subroutines for sparsse linear systems
+	optdepends = yaml: configuration files
+	provides = petsc=3.15.4
+	provides = petsc4py=3.15.4
+	conflicts = petsc
 
+pkgname = petsc-doc
+	pkgdesc = Documentation for PETSc
+	depends = 
+	optdepends = 
+	provides = petsc-doc
+	conflicts = 
+	replaces = petsc-doc

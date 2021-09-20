@@ -1,179 +1,212 @@
-# Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
+# Based on AUR petsc and petsc-git package.
 
-pkgname=petsc-git
-pkgver=20210515
-pkgrel=1
-_config=linux-c-opt
-pkgdesc="Portable, extensible toolkit for scientific computation (external downloads enabled)"
-provides=(petsc)
-conflicts=(petsc)
+# Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
+# Contributor: Martin Diehl <aur@martin-diehl.net>
+
+_base=petsc
+pkgname=("${_base}"-git "${_base}"-doc)
+pkgver=3.15.4.27.g1085e15b135
+pkgrel=2
+_mainver="${pkgver:0:6}"
+pkgdesc="Portable, extensible toolkit for scientific computation"
 arch=('i686' 'x86_64')
-url="https://gitlab.com/petsc/petsc"
+url="https://gitlab.com/petsc/${_base}"
 license=('BSD')
-depends=('openmpi' 'lapack' 'fftw' 'hdf5' 'suitesparse' 'metis' 'parmetis' 'superlu' 'eigen' 'cython' 'python-mpi4py')
-makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' 'python' 'git' 'cython' 'chrpath')
-optdepends=("opencl: GPU computing"
-            "hwloc: hardware locality"
-            "cgns: CFD data support"
-            "libpng: PNG support"
-            "libyaml: YAML configuration support"
-            "libx11: GUI tools")
-install=petsc.install
-source=(petsc::git+https://gitlab.com/petsc/petsc.git#branch=release)
-sha256sums=('SKIP')
+options=(!staticlibs)
+depends=('openmpi' 'lapack' 'fftw' 'zlib' 'cython'
+         'python-mpi4py' "python-numpy" "eigen>=3" "openblas")
+makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing'
+             'git' 'cython' 'chrpath' "hypre=2.18.2")
+source=(git+${url}.git#branch=release
+        https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
+        test_optdepends.sh
+        petsc4py_newuser.patch
+        blaslapack_download.patch)
+sha512sums=('SKIP'
+            'b6a1d48aab1c2639a4c1cbd8b313ace253f1c36eedaa3de3508ffbd6060e1def99e2f516ed9bb509307f614b41791d09342e2c2280c0b2c25dda1092b0e569d2'
+            '2c2c48f6b87e24b6f5fccfd2a6eb0889d47385c0be7ba14614c55c774f8b915c33a5d5ec5cc1637d41f7407423b77ac1bcc129bfa3d7967bb917ad8d1de3a6b5'
+            '038f4f54cb8771590b528e41666f33095d9381bf07636c53841293a3937faeb8604bfe3cb98fac588b647661ea74602e6c261cf7809e0cec7ed086e8b01b5f01'
+            'af899ea1d06bf6d4cee1c1fe86902ba2772d1001caf00e89363c6217fed9dd837588ee6f7f827ca8b8fd2a01316fbcd73d98874e28d452af71b9598127b6f179')
 
-_petsc_arch="arch-${_config}"
-_petsc_dir='/usr/local/petsc'
-_install_dir="${_petsc_dir}/${_config}"
+_config=linux-c-opt
+_install_dir="/usr"
 
-generic_flags="-fPIC -fopenmp -O3 -march=x86-64 -mtune=generic"
-# generic_flags="-fPIC -fopenmp -O3 -march=amdfam10 -mtune=generic"
+#  From UPC: Building And Using Static And Shared "C"
+#  Libraries.html
+# #+begin_QUOTE
+# we need that all jump calls ("goto", in assembly speak)
+# and subroutine calls will use relative addresses, and not
+# absolute addresses. Thus, we need to use ... ~-fPIC~ or
+# ~-fpic~
+# #+end_QUOTE
+#
+#  From makepkg.conf
+# -march (or -mcpu) builds exclusively for an architecture
+# -mtune optimizes for an architecture, but builds for
+#  whole processor family
+#
+# -O3 optimises
+#
+# -D-FORTIFY-SOURCE=2
+# | https://stackoverflow.com/a/16604146
+# |- man 7 feature_test_macros
+# checks to be performed to detect some buffer overflow
+# errors when employing various string and memory
+# manipulation functions ... some  conforming programs
+# might fail
+#
+# -fcf-protection
+# | Info pages for gcc (gnu compiler collection)
+# intended to protect against such threats as
+# Return-oriented Programming (ROP), and similarly
+# call/jmp-oriented programming (COP/JOP)
+#
+# -pipe
+# | Info pages for gcc (controlling the kind of output)
+# Use pipes rather than temporary files for communication
+# between the various stages of compilation
+#
+# -fno-plt
+# | Info pages for gcc (code generation conventions)
+# leads to more efficient code by eliminating PLT stubs and
+# exposing GOT loads to optimizations
+#
+# -fopenmp
+# | Info pages for gcc (controlling c dialect)
+# Enable handling of OpenMP directives
+#
 
-export COPTFLAGS=-O3
-export CXXOPTFLAGS=-O3
-export FOPTFLAGS=-O3
-export CPPFLAGS="$generic_flags -O2 -D-FORTIFY-SOURCE=2"
-export CFLAGS="$generic_flags"
-export CXXFLAGS="$generic_flags"
-export FFLAGS="$generic_flags"
-export FCFLAGS="$generic_flags"
-export F90FLAGS="$generic_flags"
-export F77FLAGS="$generic_flags"
+safe_flags="-Wp,-D-FORTIFY-SOURCE=2,-D_GLIBCXX_ASSERTIONS"
+safe_flags+=" -fcf-protection -fno-plt"
+safe_flags+=" -fstack-clash-protection -Wformat"
+safe_flags+=" -Werror=format-security"
+generic_flags="-pipe -fno-plt -fPIC -fopenmp"
+generic_flags+=" -march=native"
+generic_flags+=" -mtune=native ${safe_flags}"
+opt_flags="${generic_flags} -O3"
+generic_flags="${generic_flags} -O2"
 
-
-pkgver() {
-    cd petsc
-    git log --format="%cd" --date=short -1 | sed 's/-//g'
-}
-
+export LANG=C
+export OMPI_MCA_opal_cuda_support=0
+unset PETSC_DIR
+export PETSC_ARCH=${_config}
 
 prepare() {
-    cd "${srcdir}/petsc"
-    sed -i 's-\(self.publicInstall[^=]*=[[:space:]]\)[^#]*-\10 -g' config/BuildSystem/config/package.py
+  patch -p1 -i blaslapack_download.patch
+  patch -p1 -i petsc4py_newuser.patch
 }
 
+pkgver() {
+  cd "${srcdir}"/"${_base}"
+  git describe --tags --match '*.*' | tr '-' '.' | sed 's-^v--'
+}
 
 build() {
-    cd petsc
 
-    declare -a CONFOPTS
-    CONFOPTS=(
-      --COPTFLAGS="$COPTFLAGS"
-      --CXXOPTFLAGS="$CXXOPTFLAGS"
-      --CPPFLAGS="$CPPFLAGS"
-      --CFLAGS="$CFLAGS"
-      --CXXFLAGS="$CXXFLAGS"
-      --FFLAGS="$FFLAGS"
-      --FCFLAGS="$FCFLAGS"
-      --F90FLAGS="$F90FLAGS"
-      --F77FLAGS="$F77FLAGS"
+  CONFOPTS=(
+    --silent --enable-silent-rules
+    --ignoreWarnings=1
+    --prefix="${_install_dir}"
+    --COPTFLAGS="${opt_flags}"
+    --CXXOPTFLAGS="${opt_flags}"
+    --FOPTFLAGS="${opt_flags}"
+    --CFLAGS="${generic_flags}"
+    --CXXFLAGS="$generic_flags"
+    --CPPFLAGS="$generic_flags"
+    --FCFLAGS="$generic_flags"
+    --F90FLAGS="$generic_flags"
+    --FFLAGS="$generic_flags"
+    --MAKEFLAGS=${MAKEFLAGS}
+    --LDFLAGS=${LDFLAGS}
+    --with-environment-variables=0
+    --disable-environment-variables=1
+    --with-cxx-dialect=auto
+    --with-mpi=1
+    --with-pic=1
+    --with-shared-libraries=1
+    --with-zlib=1
+    --with-petsc4py=1
+    --with-scalar-type=complex
+    --with-single-library=1
+    " $(sh ${srcdir}/test_optdepends.sh)")
 
-      --with-cxx-dialect=C++11
-      --with-mpi=1
-      --with-pic=1
-      --with-shared-libraries=1
-      --with-zlib=1
+  cd "${srcdir}"/"${_base}"
+  python ./configure ${CONFOPTS[@]}
 
-      --with-fftw=1
-      --with-hdf5=1
-      --with-suitesparse=1
-
-      --with-parmetis=1
-      --with-metis=1
-      --with-superlu=1
-      --with-superlu-include=/usr/include/superlu
-      --with-superlu-lib=superlu
-      --with-eigen=1
-      --with-eigen-pkg-config=/usr/share/pkgconfig
-
-      --with-scalar-type=complex
-
-      --download-scotch=1
-      --download-ptscotch=1
-      --download-mumps=1
-      --download-scalapack=1
-      --download-hypre=1
-    )
-
-    CONFOPTS=( "${CONFOPTS[@]}" )
-
-    # Add OpenCL support
-    OPENCL_DIR="/usr/include/CL/"
-    if [ -f "${OPENCL_DIR}/cl.h" ]; then
-        CONFOPTS="${CONFOPTS} --with-opencl=1"
-    fi
-
-    # Add hwloc support
-    if [ -f "/usr/lib/libhwloc.so" ]; then
-        CONFOPTS="${CONFOPTS} --with-hwloc=1 --with-hwloc-pkg-config=/usr/lib/pkgconfig/"
-    fi
-
-    # Add CGNS support
-    if [ -f "/usr/lib/libcgns.so" ]; then
-        CONFOPTS="${CONFOPTS} --with-cgns=1"
-    fi
-
-    # Add PNG support
-    if [ -f "/usr/lib/libpng.so" ]; then
-        CONFOPTS="${CONFOPTS} --with-png=1 --with-png-pkg-config=/usr/lib/pkgconfig/"
-    fi
-
-    # Add YAML support
-    if [ -f "/usr/lib/libyaml.so" ]; then
-        CONFOPTS="${CONFOPTS} --with-yaml=1 --with-yaml-pkg-config=/usr/lib/pkgconfig/"
-    fi
-
-    # if --with-debugging=1 is set then PETSC_ARCH is automatically set to
-    # "linux-c-debug" for some things, so _config should be changed to "linux-c-debug"
-    #CONFOPTS="${CONFOPTS} --with-debugging=1"
-
-    export PETSC_DIR="${srcdir}/petsc"
-    export PETSC_ARCH="${_petsc_arch}"
-
-    python ./configure LDFLAGS="$LDFLAGS" \
-           --prefix="${_install_dir}" \
-           --MAKEFLAGS="$MAKEFLAGS" \
-           $(for (( i=1; i<=${#CONFOPTS[@]}; i++)); do echo "${CONFOPTS[$i]}"; done)
-
-    make all
+  make -s ${MAKEFLAGS} all
 }
 
-package() {
-    cd petsc
+check() {
+  cd "${srcdir}"/"${_base}"
+  make check
+  }
 
-    _build_dir="${srcdir}/petsc"
+package_petsc-git() {
+  optdepends=(
+    "boost: Free peer-reviewed portable C++ source libraries"
+    "cgns: Recording and recovering computer data"
+    "eigen: Lightweight C++ template library for vector and matrix math"
+    "fftw: Fast-Fourier Transform"
+    "gdb: Debugging"
+    "hdf5: large files"
+    "hwloc: Portable Hardware Locality (abstraction of hierarchical architectures)"
+    "med>=4.0: Data Modelization and Exchanges (meshes)"
+    "metis: Partitioning library (for meshes)"
+    "mumps: Sparse solver library"
+    "openblas: Linear algebra libraries"
+    "opencl-headers: for opencl (GPU computing)"
+    "opencl: GPU computing"
+    "openmp: Parallel distributed tasks"
+    "png"
+    "scalapack: Parallel memory linear algebra"
+    "scotch: Partitioning with sparse matrices"
+    "suitesparse: Sparse matrix library"
+    "superlu: Subroutines for sparsse linear systems"
+    "yaml: configuration files")
+  provides=(${_base}="${_mainver}" petsc4py="${_mainver}")
+  conflicts=(${_base})
 
-    export PETSC_DIR=${_build_dir}
-    export PETSC_ARCH="${_petsc_arch}"
+  unset PETSC_DIR
+  _build_dir="${srcdir}"/"${_base}"
 
-    make DESTDIR="${pkgdir}" install
+  make -C "${_build_dir}" \
+       ${MAKEFLAGS} DESTDIR="${pkgdir}" install
 
-    # petsc4py
-    pushd ${_build_dir}/src/binding/petsc4py
-    CFLAGS="$(echo "${CFLAGS}" | sed 's%-D[^[:space:]]*%%g')" python setup.py install --root="${pkgdir}"
-    popd
+  export PETSC_DIR=${_install_dir}
 
-    # install license
-    install -Dm 644 ${_build_dir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  # install licence (even though there is no such word as licenses)
+  install -Dm 644 ${_build_dir}/LICENSE \
+          "${pkgdir}"/"${_install_dir}"/share/licenses/"${pkgname}"/LICENSE
 
-    mkdir -p "${pkgdir}/etc/profile.d"
-    printf "export PETSC_DIR=${_install_dir}" > "${pkgdir}/etc/profile.d/petsc.sh"
-    chmod +x "${pkgdir}/etc/profile.d/petsc.sh"
+  mkdir -p "${pkgdir}"/etc/profile.d
+  echo "export PETSC_DIR=${_install_dir}" > \
+       "${pkgdir}"/etc/profile.d/${_base}.sh
+  echo "export PYTHONPATH=\$PYTHONPATH:/${_install_dir}/${_base}/${_config}/lib" \
+       >> "${pkgdir}"/etc/profile.d/${_base}.sh
+  chmod +x "${pkgdir}"/etc/profile.d/${_base}.sh
 
-    # show where the shared libraries are
-    install -dm 755 "${pkgdir}/etc/ld.so.conf.d/"
-    printf "${_install_dir}/lib" > "${pkgdir}/etc/ld.so.conf.d/petsc.conf"
+  # show where the shared libraries are
+  install -dm 755 "${pkgdir}"/etc/ld.so.conf.d/
+  echo "${_install_dir}/lib" > \
+       "${pkgdir}"/etc/ld.so.conf.d/${_base}.conf
 
-    printf "PETSC_DIR  = ${_petsc_dir}\nPETSC_ARCH = ${_petsc_arch}" \
-        > "${pkgdir}/usr/lib/python3.9/site-packages/petsc4py/lib/petsc.cfg"
+  # install pkgconfig settings
+  install -Dm 644 "${_build_dir}/${_config}"/lib/pkgconfig/PETSc.pc \
+          "${pkgdir}"/"${_install_dir}"/share/pkgconfig/PETSc.pc
+}
 
-    _rem_dir="${_build_dir}/${_petsc_arch}"
-
-    sed -i "s#-L${_rem_dir}/lib ##" "${pkgdir}${_install_dir}/lib/pkgconfig/PETSc.pc"
-    sed -i "s#-L${_rem_dir}/lib ##" "${pkgdir}${_install_dir}/lib/pkgconfig/petsc.pc"
-    sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/include/petscmachineinfo.h"
-    sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/lib/petsc/conf/pkg.conf.mumps"
-    sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/lib/petsc/conf/pkg.conf.hypre"
-    sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/lib/petsc/conf/petscvariables"
-    sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/lib/petsc/conf/petscrules"
+package_petsc-doc () {
+  depends=()
+  optdepends=()
+  provides=(${_base}-doc)
+  replaces=(${_base}-doc)
+  conflicts=()
+  pkgdesc="Documentation for PETSc"
+  # Two options: compile the documentation or get it from
+  # the web. Downloading is easier.
+  [[ -d ${pkgdir}/${_install_dir}/share/doc ]] && \
+    rm -fr "${pkgdir}"/"${_install_dir}"/share/doc
+  mkdir -p "${pkgdir}"/"${_install_dir}"/share/doc
+  cp -r "${srcdir}/${_base}-${_mainver}/docs" \
+     "${pkgdir}"/"${_install_dir}"/share/doc/${_base}
 }
