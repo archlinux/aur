@@ -36,10 +36,10 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -D build/dyff -t "$pkgdir/usr/bin"
-	install -D LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -D README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	build/dyff completion bash | install -D /dev/stdin "$pkgdir/usr/share/bash-completion/completions/dyff"
-	build/dyff completion zsh  | install -D /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_dyff"
-	build/dyff completion fish | install -D /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/dyff.fish"
+	install -Dm 755 build/dyff -t "$pkgdir/usr/bin"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	build/dyff completion bash | install -Dm 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/dyff"
+	build/dyff completion zsh  | install -Dm 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_dyff"
+	build/dyff completion fish | install -Dm 644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/dyff.fish"
 }
