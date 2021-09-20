@@ -1,7 +1,7 @@
 pkgbase = knemo
 	pkgdesc = The KDE Network Monitor
 	pkgver = 1.7.7.1_git20191016
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.linux-apps.com/content/show.php?content=12956
 	arch = x86_64
 	license = GPL
@@ -19,7 +19,9 @@ pkgbase = knemo
 	depends = iw
 	depends = plasma-framework
 	depends = hicolor-icon-theme
-	source = git+https://github.com/KDE/knemo.git
+	source = git+https://github.com/KDE/knemo.git#commit=5ffe42353bbdd52ffdf9fd505c32ba81fdf2de91
+	source = switch_rx-tx.patch
 	sha256sums = SKIP
+	sha256sums = 00b8b795490fb6cef5e07cb241264f9903eeba2ff6000fc90d74395e907e34e9
 
 pkgname = knemo
