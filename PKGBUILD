@@ -1,6 +1,6 @@
 # Maintainer: Katherine J. Cumberbatch <stykers@stykers.moe>
 pkgname=binfmt-qemu
-pkgver=20190725
+pkgver=20210922
 pkgrel=1
 pkgdesc="Register qemu interpreters for various binary formats"
 arch=('any')
@@ -8,7 +8,7 @@ url="http://www.freedesktop.org/software/systemd/man/binfmt.d.html"
 license=('GPL')
 optdepends=('qemu-user')
 source=("qemu.conf")
-md5sums=('9f757fd19c31e5dbe539a6381129cb81')
+md5sums=('e2069c1bf6bfdb5a075e0ad7043c7ffb')
 
 package() {
   install -Dm 644 "$srcdir/qemu.conf" "$pkgdir/usr/lib/binfmt.d/qemu.conf"
