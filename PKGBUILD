@@ -76,7 +76,7 @@ pkgbase=linux-cacule-rdb
 pkgname=('linux-cacule-rdb' 'linux-cacule-rdb-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.6
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -90,8 +90,8 @@ _caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
         "config"
-        "${_patchsource}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-#        "${_patchsource}/arch-patches-v4/0001-arch-patches.patch"
+#        "${_patchsource}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_patchsource}/arch-patches-v6/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14-full.patch"
 #        "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/0007-string.patch"
@@ -108,7 +108,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/futex-zen-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-zen-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
-        "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
+        "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
         "${_patchsource}/lru-patches-v3/0001-lru-patches.patch"
 #        "${_patchsource}/le9-patches-v4/0001-mm-vmscan-add-sysctl-knobs-for-protecting-the-workin.patch"
 #        "${_patchsource}/misc/le9fa-5.14.patch"
@@ -520,7 +520,7 @@ package_linux-cacule-rdb-headers() {
 
 md5sums=('006dc61878252d9f0e2a0b0bd9d134ff'
          '8066473543540ff55225fa1b6a88eaca'
-         '9abde29217354c69925d2bc672f66d67'
+         '7524899b1b1c14e6d993be59dc68faf3'
          '024a0126cfcd18e000a2241f35c4d69e'
          'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
@@ -536,7 +536,7 @@ md5sums=('006dc61878252d9f0e2a0b0bd9d134ff'
          '0849b25513dc47e3defa00f26f60eedb'
          '2891eb036469d04995d9b21a5e389d8a'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
-         '3cf036429a7c962005a344e10a568d7b'
+         '366c90b64f9582c0733b8fb607a07594'
          '8e2219f09adfe049b3e8b59fb8c4348a'
          'd4c3a3ca73c2e722ebc790357ba87680'
          '28864f14bf33bad92e57bc48bc5c2c78'
