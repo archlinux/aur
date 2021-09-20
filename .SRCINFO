@@ -1,6 +1,6 @@
 pkgbase = s25rttr
-	pkgdesc = Return to the Roots. A free clone of The Settlers II from 1996 (Original copy required)
-	pkgver = 20170924
+	pkgdesc = Return to the Roots. A free clone of The Settlers II from 1996 (Original copy required) Put your S2-Installation in /usr/share/s25rttr/S2/
+	pkgver = 20210918
 	pkgrel = 1
 	url = http://www.siedler25.org/
 	install = s25rttr.install
@@ -13,10 +13,12 @@ pkgbase = s25rttr
 	source = s25rttr.desktop
 	source = s25rttr.xpm
 	source = s25rttr.install
+	source = http://www.siedler25.org/uploads/stable/s25rttr_0.9.1-7273dd8c3fa98f3892af28d415aca77a5d58fdd4-linux.x86_64.tar.bz2
 	md5sums = 23235e636d60c380aa1631b44fabbb6b
 	md5sums = 8c486f63efb1c9bec6d50306270f1b4c
 	md5sums = a7bf0908aac3dbfaed837c19695ca362
 	md5sums = f51bc71ef665266ae68ce134892ca612
+	md5sums = 956a47cde4334a8cdaf7362df6777009
+	md5sums = 956a47cde4334a8cdaf7362df6777009
 
 pkgname = s25rttr
-
