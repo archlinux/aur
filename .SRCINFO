@@ -1,6 +1,6 @@
 pkgbase = commit
 	pkgdesc = Commit message editor.
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/sonnyp/Commit
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = commit
 	optdepends = git: git support
 	optdepends = mercurial: mercurial support
 	optdepends = gspell: spell checking support
-	source = commit-2.1.0.tar.gz::https://github.com/sonnyp/Commit/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 9b6c9bc427229d2d0a539ab4dae27fe444a10c0db686e40af1b51a038bd2174f
+	source = commit-2.2.0.tar.gz::https://github.com/sonnyp/Commit/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 79f3d88eb8cdc0c0a024e3953f03db0faab5d0368e4a917c91321571f6ff32ed
 
 pkgname = commit
