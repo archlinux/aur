@@ -3,16 +3,16 @@
 # Python package author: Steven Myint <UNKNOWN>
 _name=autoflake
 pkgname=python-autoflake
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc='Removes unused imports and unused variables'
 arch=(any)
 url="https://github.com/myint/$_name"
 license=("MIT")
 depends=('python-pyflakes')
 makedepends=('python')
-source=("https://github.com/myint/$_name/archive/v1.3.1.tar.gz")
-sha256sums=('c271b46565e61cd6f754ed456cb1139d88615a821c6f31a6c621eccd15c7fa84')
+source=("https://github.com/myint/$_name/archive/v${pkgver}.tar.gz")
+sha256sums=('b3c573b0ab507b22359e80bdfd4c3fcf64b1b1d3352a6209a9fe73116c0ed36e')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
