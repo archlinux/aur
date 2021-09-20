@@ -1,10 +1,11 @@
-# Maintainer: Arkham <arkham at archlinux dot us>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Arkham <arkham at archlinux dot us>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: Paul Bredbury <brebs@sent.com>
 
 pkgname=darkplaces
 pkgver=20140513
-pkgrel=3
+pkgrel=4
 pkgdesc="An advanced Quake 1 game engine"
 arch=('i686' 'x86_64')
 url="http://icculus.org/twilight/darkplaces/"
@@ -13,9 +14,11 @@ depends=('alsa-lib' 'hicolor-icon-theme' 'libjpeg-turbo' 'libxpm'
          'libxxf86vm' 'sdl' 'zlib')
 install=$pkgname.install
 source=(http://icculus.org/twilight/$pkgname/files/darkplacesengine$pkgver.zip
-        $pkgname.desktop)
+        $pkgname.desktop
+        gcc-11.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/games-fps/darkplaces/files/darkplaces-20140513-gcc-11.patch?id=bc2ba1cd6fdc5a7ad7d161efb21652b73c6b207e)
 sha512sums=('45864b590057c6de0ea978b3cc967feb879b87b2d376f3b4d8525e037b10ca1fc68599c152506494bb06669c6c2304e0aa0ee1b28f7a0d589d10c23f7285052c'
-            'daed32cb397b8f5d8a569b0679680377b9a1fb7a30fc5b99742381723850b792424d221deafb48ed4bad99d9fc7812f8a667263d9f0e63a40fbc2d9e1013c1d6')
+            'daed32cb397b8f5d8a569b0679680377b9a1fb7a30fc5b99742381723850b792424d221deafb48ed4bad99d9fc7812f8a667263d9f0e63a40fbc2d9e1013c1d6'
+            '426e6e3926872131afde4b6f162453f5f24ee0075b13c2da9732c7519bdbae9f05348502f74cafce88b183adddf5d9916020d1df0db25b953fafdeda7b49f1e2')
 noextract=(darkplacesengine$pkgver.zip)
 
 prepare() {
@@ -27,6 +30,9 @@ prepare() {
 	# Fix a couple options in the Makefile.
 	sed -i '1i DP_LINK_TO_LIBJPEG=1' makefile
 	sed -i '/(STRIP)/d' makefile.inc
+
+	# Fix compilation with GCC-11
+	patch -p1 -i "${srcdir}/gcc-11.patch"
 }
 
 build() {
