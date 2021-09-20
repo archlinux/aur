@@ -3,12 +3,12 @@
 pkgname=darktable-cr3-git
 _gitname=darktable
 pkgver=3.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A virtual lighttable and darkroom for photographers with CR3 support"
 arch=('i686' 'x86_64')
 url=http://www.darktable.org/
 license=('GPL3')
-depends=(pugixml libjpeg-turbo colord-gtk libgphoto2 openexr lensfun iso-codes zlib
+depends=(pugixml libjpeg-turbo colord-gtk libgphoto2 openexr lensfun iso-codes zlib sed
          exiv2 flickcurl openjpeg2 graphicsmagick lua53 osm-gps-map libsecret openmp
          gmic libavif)
 optdepends=('dcraw: base curve script'
@@ -40,6 +40,7 @@ prepare() {
   git config submodule.src/external/rawspeed.url "https://github.com/cytrinox/rawspeed.git"
   git config submodule.src/external/rawspeed.branch "canon_cr3"
   git submodule update --remote
+  sed '/-Werror/d' -i src/CMakeLists.txt
 }
 
 build() {
