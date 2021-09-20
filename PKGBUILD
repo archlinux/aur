@@ -40,10 +40,9 @@ package() {
     cd "${_pkgname}"
     mix local.hex --force
     mix deps.get
+    mix local.rebar --force
     MIX_ENV=prod mix pleroma.instance gen
     mv config/{generated_config.exs,prod.secret.exs}
-    psql -f config/setup_db.psql
-    MIX_ENV=prod mix ecto.migrate
 }
 
 pkgver() {
