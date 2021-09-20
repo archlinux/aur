@@ -1,4 +1,5 @@
-# Maintainer: Felix Schindler <aur at felixschindler dot net>
+# Contributor: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Felix Schindler <aur at felixschindler dot net>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Imanol Celaya <ornitorrincos@archlinux-es.org>
@@ -9,7 +10,7 @@
 
 pkgname=qtcreator42
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight, cross-platform integrated development environment (4.2.x)'
 arch=('i686' 'x86_64')
 url='http://qt-project.org'
@@ -29,7 +30,7 @@ optdepends=('qt5-doc: integrated Qt documentation'
             'valgrind: analyze support')
 provides=('qtcreator=4.2.2')
 conflicts=('qtcreator')
-source=("http://download.qt.io/official_releases/qtcreator/4.2/${pkgver}/qt-creator-opensource-src-${pkgver}.tar.xz")
+source=("https://download.qt.io/archive/qtcreator/4.2/${pkgver}/qt-creator-opensource-src-${pkgver}.tar.xz")
 md5sums=('e63ed4d896b1b83dd9bb9c8e66c227d1')
 sha512sums=('cab23a75b3b8ef68cadf4fe57b81e96ef647bb48ab4c57618bf6dd25aed50abb412ac7fa76848b97da01f2df589ec763c95321956506aa4f159383f188efbf2d')
 
