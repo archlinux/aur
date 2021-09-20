@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.14.5.arch1
+pkgver=5.14.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -47,6 +47,7 @@ source=(
 
 
   # mediatek mt7921 bt/wifi patches
+  
   "sys-kernel_arch-sources-g14_files-8011-Bluetooth-btusb-Enable-MSFT-extension-for-Mediatek-Chip-MT7921.patch"
   "sys-kernel_arch-sources-g14_files-8012-mt76-mt7915-send-EAPOL-frames-at-lowest-rate.patch"
   "sys-kernel_arch-sources-g14_files-8013-mt76-mt7921-robustify-hardware-initialization-flow.patch"
@@ -60,9 +61,11 @@ source=(
   "sys-kernel_arch-sources-g14_files-8021-mt76-mt7921-fix-the-inconsistent-state-between-bind-and-unbind.patch"
   "sys-kernel_arch-sources-g14_files-8022-mt76-mt7921-report-HE-MU-radiotap.patch"
   "sys-kernel_arch-sources-g14_files-8023-v2-mt76-mt7921-fix-kernel-warning-from-cfg80211_calculate_bitrate.patch"
+  
+  #"sys-kernel_arch-sources-g14_files-8024-mediatek-19-09-2021-squashed.patch"
 
   # squashed s0ix enablement through 2021-09-03
-  "sys-kernel_arch-sources-g14_files-9001-v5.14.4-s0ix-patch-2021-09-15.patch"
+  "sys-kernel_arch-sources-g14_files-9001-v5.14.6-s0ix-patch-2021-09-18.patch"
   #"sys-kernel_arch-sources-g14_files-9002-amd-pmc-delay-test.patch"
   # a small amd_pmc SMU debugging patch per Mario Limonciello @AMD
   #"sys-kernel_arch-sources-g14_files-9002-amd-pmc-smu-register-dump-for-diagnostics.patch"
@@ -76,7 +79,7 @@ source=(
 
   "sys-kernel_arch-sources-g14_files-9008-fix-cpu-hotplug.patch"
   "sys-kernel_arch-sources-g14_files-9009-amd-pstate-sqashed.patch"
-  "sys-kernel_arch-sources-g14_files-9010-amd-apci-allow-c3.patch"
+  #"sys-kernel_arch-sources-g14_files-9010-amd-apci-allow-c3.patch"
 )
 
 validpgpkeys=(
@@ -111,14 +114,13 @@ sha256sums=('SKIP'
             '1770fec49335bc93194e9e55ced49e1cb67f2df4bf6948e80712a0b2ba50fa49'
             '6da4010f86a74125969fd3dbc953da7b45209d33ff3d216474c3399e82e893ff'
             'eb391b6d1ebf7ef99ece00b23609b94180a1f3c0149bcf05f6bbeb74d0b724c7'
-            '041214e202be4a6e90f00724e87ed787b39db148b24efd5fb03fcf23577601c1'
+            '526052481abf77ab25ae1b27567e459bb9d18bd4928ed904a1bc4bbd97833f0c'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             'ee8794a551e33226900654d5c806183bf3b9b2e06f64fdc322987215d233d399'
             '2d854fc70297bb52bbc27dbf35ca019800530e40565be9740704d7f81bc4c763'
             '1cec0be41732a23c709e66d4a67e71bc5a75c77a3e4b73faafb5d7bfd3fafc0f'
-            'e62cbe1cb1577b1d80095fbb566d0516592e6174e7740e61a340164aff9bf2ec'
-            'bcb5966742921cdc772f163f6cbf0998e22cb1527d5a82b7b71eab4d605243dd')
+            'e62cbe1cb1577b1d80095fbb566d0516592e6174e7740e61a340164aff9bf2ec')
 
 # notable microarch levels:
 #
@@ -173,7 +175,7 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    warning "Applying patch $src..."
+    msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 

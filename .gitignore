@@ -10,3 +10,4 @@ fedora-kernel-*.zip
 old
 old-mediatek
 new-mediatek
+*.tar.zst
