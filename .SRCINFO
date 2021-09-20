@@ -5,6 +5,8 @@ pkgbase = python-sphinxcontrib-fulltoc
 	url = https://github.com/sphinx-contrib/fulltoc
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/8e/a6/d1297db9b75650681e5429e92e13df139ee6b64303ff1b2eea4ebd32c0a9/sphinxcontrib-fulltoc-1.2.0.tar.gz
 	md5sums = 1b4326b588ae9e7bfe69b51670b74cfb
 
@@ -15,4 +17,3 @@ pkgname = python-sphinxcontrib-fulltoc
 pkgname = python2-sphinxcontrib-fulltoc
 	depends = python2
 	depends = python2-sphinx
-

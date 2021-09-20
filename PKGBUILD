@@ -8,6 +8,8 @@ pkgrel='3'
 pkgdesc="Include a full table of contents in your Sphinx HTML sidebar"
 arch=('any')
 url="https://github.com/sphinx-contrib/fulltoc"
+makedepends=('python-setuptools'
+             'python2-setuptools')
 license=('GPL')
 source=("https://files.pythonhosted.org/packages/8e/a6/d1297db9b75650681e5429e92e13df139ee6b64303ff1b2eea4ebd32c0a9/sphinxcontrib-fulltoc-${pkgver}.tar.gz")
 md5sums=('1b4326b588ae9e7bfe69b51670b74cfb')
