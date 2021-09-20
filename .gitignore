@@ -1,0 +1,8 @@
+.code
+.idea
+
+keep-wg-alive-git/
+pkg/
+src/
+*.pkg.*
+
