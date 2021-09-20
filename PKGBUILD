@@ -1,12 +1,12 @@
 pkgname=mingw-w64-mesa-git
-pkgver=21.1.0_devel.135801.23b87b56b6f
+pkgver=21.3.0_devel.143406.ec66c581389
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
 url="https://www.mesa3d.org/"
 license=("custom")
 makedepends=('mingw-w64-meson' 'mingw-w64-cmake' 'python-mako')
-depends=('mingw-w64-llvm' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-dlfcn' 'mingw-w64-regex')
+depends=('mingw-w64-llvm' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-dlfcn')
 provides=('mingw-w64-mesa')
 conflicts=('mingw-w64-mesa')
 options=('staticlibs' '!strip' '!buildflags')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}"/mesa
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast
+    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast -Dgallium-opencl=icd
     ninja -C build-${_arch} ${MAKEFLAGS}
   done
 }
@@ -34,6 +34,7 @@ package() {
   for _arch in ${_architectures}; do
     install -d "$pkgdir"/usr/${_arch}/bin
     install -m755 build-${_arch}/src/gallium/targets/libgl-gdi/opengl32.dll "$pkgdir"/usr/${_arch}/bin
+    install -m755 build-${_arch}/src/gallium/targets/wgl/libgallium_wgl.dll "$pkgdir"/usr/${_arch}/bin
     install -m755 build-${_arch}/src/gallium/targets/lavapipe/vulkan_lvp.dll "$pkgdir"/usr/${_arch}/bin
     install -m644 build-${_arch}/src/gallium/targets/lavapipe/lvp_icd.*.json "$pkgdir"/usr/${_arch}/bin
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
