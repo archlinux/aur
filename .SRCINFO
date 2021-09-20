@@ -19,6 +19,7 @@ pkgbase = nblood-git
 	depends = sdl2
 	depends = sdl2_mixer
 	depends = timidity++
+	optdepends = blood-demo
 	provides = nblood
 	conflicts = nblood
 	source = NBlood::git+https://github.com/nukeykt/NBlood.git

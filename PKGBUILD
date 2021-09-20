@@ -20,6 +20,7 @@ depends=('flac'
          'timidity++')
 makedepends=('git' 'imagemagick')
 makedepends_i686=('nasm')
+optdepends=('blood-demo')
 provides=('nblood')
 conflicts=('nblood')
 source=('NBlood::git+https://github.com/nukeykt/NBlood.git'
@@ -51,4 +52,5 @@ package() {
     install -D -t "$pkgdir"/usr/share/licenses/$pkgname -m 644 package/common/buildlic.txt
     install -D -t "$pkgdir"/usr/share/applications -m 644 "$srcdir"/nblood.desktop
     install -D -t "$pkgdir"/usr/share/icons/hicolor/192x192/apps -m 644 nblood.png
+    echo "Place your game files in ~/.config/nblood"
 }
