@@ -1,0 +1,16 @@
+Make the "Text" icon show rx below tx.
+It's much more intuitive for the download rate to be down and the upload rate to be up!
+
+diff --git a/src/knemod/trayicon.cpp b/src/knemod/trayicon.cpp
+index 95ae383..a12af26 100644
+--- a/src/knemod/trayicon.cpp
++++ b/src/knemod/trayicon.cpp
+@@ -412,7 +412,7 @@ void TrayIcon::updateTextIcon( bool force )
+     if ( !force )
+         return;
+ 
+-    setIconByPixmap( genTextIcon(m_rxText, m_txText, plasmaTheme->smallestFont(), mInterface->backendData()->status) );
++    setIconByPixmap( genTextIcon(m_txText, m_rxText, plasmaTheme->smallestFont(), mInterface->backendData()->status) );
+     QPixmapCache::clear();
+ }
+ 
