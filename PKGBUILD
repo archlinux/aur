@@ -98,7 +98,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd ./dotfiles || exit
-	printf "%s-r%s.%s" "${pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "1.0.0-r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
