@@ -1,5 +1,5 @@
-pkgbase = scrt-sfx
-	pkgdesc = SecureCRT + SecureFX 9.0 Bundle
+pkgbase = scrt-sfx-bundle
+	pkgdesc = SecureCRT + SecureFX 9.1.0 Bundle
 	pkgver = 9.1.0
 	pkgrel = 2579
 	url = https://www.vandyke.com/
@@ -32,4 +32,4 @@ pkgbase = scrt-sfx
 	source = local://scrt-sfx-9.1.0.2579.ubuntu20-64.tar.gz
 	md5sums = 5c67d0a51af27bb8f18546a885b5ffbe
 
-pkgname = scrt-sfx
+pkgname = scrt-sfx-bundle

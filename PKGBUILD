@@ -6,10 +6,10 @@
 
 ## Ensure the 'pkgver' and 'pkgrel' variables are updated below to match your package version
 
-pkgname=scrt-sfx
+pkgname=scrt-sfx-bundle
 pkgver=9.1.0
 pkgrel=2579
-pkgdesc='SecureCRT + SecureFX 9.0 Bundle'
+pkgdesc='SecureCRT + SecureFX 9.1.0 Bundle'
 arch=('x86_64')
 url='https://www.vandyke.com/'
 license=('custom:VanDyke')
@@ -19,12 +19,15 @@ depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups' 'libpng'
   'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'icu66')
 options=('!strip' '!emptydirs')
 provides=('SecureCRT' 'SecureFX')
-source=("local://${pkgname}-${pkgver}.${pkgrel}.ubuntu20-64.tar.gz")
+_bundle_name=scrt-sfx
+_tarball_base_name=${_bundle_name}-${pkgver}.${pkgrel}.ubuntu20-64
+_tarball_name=${_tarball_base_name}.tar.gz
+source=("local://${_tarball_name}")
 md5sums=('5c67d0a51af27bb8f18546a885b5ffbe')
 
 
 package() {
-      cd "${srcdir}"/${pkgname}-${pkgver}
+      cd "${srcdir}"/${_bundle_name}-${pkgver}
 
       install -Dm 755 ./SecureCRT ${pkgdir}/usr/bin/SecureCRT
       install -Dm 755 ./SecureFX ${pkgdir}/usr/bin/SecureFX
