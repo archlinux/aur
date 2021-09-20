@@ -14,7 +14,7 @@ optdepends=('wmctrl: window manager support')
 makedepends=('rust' 'cargo' 'git')
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f5ac11a49470639d81424b208fc5d95b111a77b97138af7fce347ad3daae8005')
+sha256sums=('7f721c3498e9db2d9340d9ac50bb2561b2d2629415143a7742efd9c904b92000')
 
 build() {
 	cd "$pkgname-$pkgver"
