@@ -2,7 +2,7 @@
 # Maintainer: Mahor Foruzesh <mahorforuzesh at pm dot me>
 
 pkgname=tachidesk
-pkgver=0.5.1_r940
+pkgver=0.5.2_r951
 pkgrel=1
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
@@ -19,7 +19,7 @@ source=("${url}/releases/download/${_semver}/${_jar}"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}.sh")
-sha256sums=('32f85d875db30ae5b3bcebb547f5e20b69424edbc5ff1843e5860f21374b1d90'
+sha256sums=('14f9fb86f3f1ddb702ea92b2fb70ca9bcaaa7f579499e9054bba39171b631ff1'
             '22a6a9a8c8198985759f66b35377d87bce82d46dbf7a4a7505b55621a9c5487e'
             '7528715b5b8d8360a9fd7dc096b51fd52bf3da671167e224b6cb637437fc4831'
             '3ac5c813b88f2dd4f38fac5dcd344f1f54dd9929fbb8faba758a972015d12c19')
