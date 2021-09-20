@@ -1,6 +1,6 @@
 pkgbase = ringcentral-meetings-bin
 	pkgdesc = Video Conferencing and Web Conferencing Service
-	pkgver = 7.0.1
+	pkgver = 21.3.52668.0913
 	pkgrel = 1
 	url = https://www.ringcentral.com
 	arch = x86_64
@@ -28,10 +28,9 @@ pkgbase = ringcentral-meetings-bin
 	optdepends = qt5-quickcontrols2: Qt Controls plugin support
 	provides = ringcentral-meetings
 	conflicts = ringcentral-meetings
-	source = http://dn.ringcentral.com/data/web/download/RCMeetings/1210/RCMeetingsClientSetup.deb
+	source = https://downloads.ringcentral.com/RCM/RC/meetings/linux/RCMeetingsClientSetup.deb
 	source = LICENSE.html::https://www.ringcentral.com/legal/rcmeetings-tos.html
-	sha256sums = d2abe77670263d1def0c98da3b1c949ca9f2b13cf477b0969a08ab843a0e6b88
+	sha256sums = af6899d4e68fbe8fc45faa454f3be00b0751df1442f2a45904368fc3deaf6753
 	sha256sums = SKIP
 
 pkgname = ringcentral-meetings-bin
-

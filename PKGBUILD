@@ -1,11 +1,10 @@
 # Maintainer: Aaron Bishop < erroneous at gmail >
 
 _pkgname=RCMeetings
-_pkgver=1210
 pkgname=ringcentral-meetings-bin
 provides=('ringcentral-meetings')
 conflicts=('ringcentral-meetings')
-pkgver=7.0.1
+pkgver=21.3.52668.0913
 pkgrel=1
 depends=(
 	'glib2'
@@ -37,14 +36,18 @@ arch=('x86_64')
 license=('custom')
 url="https://www.ringcentral.com"
 source=(
-	"http://dn.ringcentral.com/data/web/download/${_pkgname}/${_pkgver}/${_pkgname}ClientSetup.deb"
+	"https://downloads.ringcentral.com/RCM/RC/meetings/linux/RCMeetingsClientSetup.deb"
 	"LICENSE.html::https://www.ringcentral.com/legal/rcmeetings-tos.html"
 	)
 
 sha256sums=(
-	'd2abe77670263d1def0c98da3b1c949ca9f2b13cf477b0969a08ab843a0e6b88'
+	'af6899d4e68fbe8fc45faa454f3be00b0751df1442f2a45904368fc3deaf6753'
 	'SKIP'
 	)
+
+pkgver() {
+	tar -xOf control.tar.xz ./control | grep Version | awk -e '{print $2}'
+}
 
 package() {
 	tar -xJC "${pkgdir}" -f data.tar.xz
