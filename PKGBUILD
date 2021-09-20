@@ -1,7 +1,7 @@
 # Maintainer: Arnaud Berthomier <arnaud@cyprio.net>
 
 pkgname=gleam
-pkgver="0.16.1"
+pkgver="0.17.0"
 pkgrel=1
 pkgdesc="A statically typed language for the Erlang VM"
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('rust')
 provides=('gleam')
 options=(strip !docs !libtool !staticlibs)
 source=("https://github.com/gleam-lang/gleam/archive/v${pkgver}.tar.gz")
-sha256sums=('a3c9990e5adcb384a42c344c72823e38cb92f0f71483c45368626b828fb1712f')
-sha512sums=('45ffb5ae45c03fe6e2602050686eee65259a5e6ad9967b489f6d52806803fe3268976c671a3a5672f576913947b7dc03f207aa22eda028334e3c13c86b59ca76')
+sha256sums=('9530e616d42b4158ffcc5dd1befdc87ab2ea2af784fce6c57aec8c42a71a4ce2')
+sha512sums=('7ed0955fc323cd5223fca075a70d92720d84527dfbe65c6755d9a1cb960c0151328554885cdef9df628a6d18b07a64a766b36b34a7364bb6d85bb5295f69ab20')
 
 prepare() {
     cd "$pkgname-$pkgver"
