@@ -1,10 +1,10 @@
-# Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Maintainer: Stefan Auditor <stefan@auditor.email>
 # Contributor: Adolfo silerio
 # Contributor: Duvan Felipe Suarez <duvanera@gmail.com>
 
 pkgname=oranchelo-icon-theme
-pkgver=0.8.0.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Oranchelo is a flat-design icon theme for XFCE4 based on Super Flat Remix and inspired by "Corny icons" by Patryk Goworowski.'
 arch=(any)
 depends=('git')
