@@ -1,14 +1,16 @@
 pkgbase = python-coolname
 	pkgdesc = Random Name and Slug Generator
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexanderlukanin13/coolname
 	arch = any
 	license = BSD
+	checkdepends = python-mock
+	checkdepends = python-six
+	checkdepends = python-pytest-runner
+	makedepends = python-setuptools
 	depends = python
-	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/c/coolname/coolname-1.1.0.tar.gz
+	source = python-coolname-1.1.0.tar.gz::https://files.pythonhosted.org/packages/source/c/coolname/coolname-1.1.0.tar.gz
 	sha256sums = 410fe6ea9999bf96f2856ef0c726d5f38782bbefb7bb1aca0e91e0dc98ed09e3
 
 pkgname = python-coolname
-
