@@ -26,6 +26,7 @@ depends=(
 	'qt5-webengine'
 	'qt5-xmlpatterns'
 	'qt5-svg'
+	'qt5-wayland'
 	)
 optdepends=(
 	'gtk3: GTK Theme support'

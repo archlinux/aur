@@ -24,6 +24,7 @@ pkgbase = ringcentral-meetings-bin
 	depends = qt5-webengine
 	depends = qt5-xmlpatterns
 	depends = qt5-svg
+	depends = qt5-wayland
 	optdepends = gtk3: GTK Theme support
 	optdepends = qt5-quickcontrols2: Qt Controls plugin support
 	provides = ringcentral-meetings
