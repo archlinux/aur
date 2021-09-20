@@ -1,5 +1,5 @@
 pkgbase = s25rttr
-	pkgdesc = Return to the Roots. A free clone of The Settlers II from 1996 (Original copy required) Put your S2-Installation in /usr/share/s25rttr/S2/
+	pkgdesc = Return to the Roots is an unofficial extension of (Die Siedler II) ® by BlueByte Software GmbH. Put the files from the original game in the folder /usr/share/s25rttr/S2/
 	pkgver = 20210918
 	pkgrel = 1
 	url = http://www.siedler25.org/
