@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9e8319e..f41236e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,8 @@
+ PROJECT(iDSK)
+ 
++set(CMAKE_CXX_FLAGS "-std=c++14")
++set(CMAKE_INSTALL_PREFIX "/usr/")
++
+ add_executable(iDSK
+ 	src/Basic.cpp
+ 	src/BitmapCPC.cpp
+@@ -13,3 +16,5 @@ add_executable(iDSK
+ 	src/ViewFile.cpp
+ 	src/Ascii.cpp
+ )
++
++install(TARGETS iDSK DESTINATION ${CMAKE_INSTALL_BINDIR})
