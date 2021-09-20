@@ -16,7 +16,6 @@ pkgbase = pleroma-git
 	optdepends = ffmpeg: media preview proxy support for videos
 	optdepends = perl-image-exiftool: supporting stripping location (GPS) data from uploaded images with Pleroma.Upload.Filters.Exiftool
 	provides = pleroma
-	conflicts = pleroma
 	backup = etc/pleroma/config.exs
 	source = pleroma.sysusers
 	source = pleroma.tmpfiles

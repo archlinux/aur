@@ -15,7 +15,6 @@ optdepends=('postgresql: local postgresql database support'
             'ffmpeg: media preview proxy support for videos'
             'perl-image-exiftool: supporting stripping location (GPS) data from uploaded images with Pleroma.Upload.Filters.Exiftool')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 backup=('etc/pleroma/config.exs')
 install=pleroma.install
 source=('pleroma.sysusers'
@@ -40,9 +39,10 @@ package() {
 
     cd "${_pkgname}"
     echo "y\ny" | mix deps.get
-    mix pleroma.instance gen
+    MIX_ENV=prod mix pleroma.instance gen
+    mv config/{generated_config.exs,prod.secret.exs}
     psql -f config/setup_db.psql
-    mix ecto.migrate
+    MIX_ENV=prod mix ecto.migrate
 }
 
 pkgver() {
