@@ -2,7 +2,7 @@
 
 pkgname="shinobi-git"
 pkgver=r2038.04a7bae
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source CCTV and NVR Solution"
 url="https://shinobi.video/"
 license=("custom") # not free for commercial use
@@ -44,7 +44,6 @@ prepare(){
 }
 
 package(){
- cd dddddd
  # no /usr/bin, just systemd files
  cd "Shinobi"
  # program files
