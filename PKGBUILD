@@ -1,7 +1,7 @@
 # Maintainer: onbjerg <hi@notbjerg.me>
 pkgname=frame-eth-dev
 pkgver="0.5.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="System-wide Web3"
 arch=('x86_64')
 url='https://frame.sh'
@@ -10,6 +10,7 @@ depends=('gtk3' 'nss' 'libxss')
 _node_ver=16
 makedepends=('npm' 'nvm' 'libusb' 'python3' 'git' 'node-gyp')
 provides=('frame')
+conflicts=('frame-eth')
 install=$pkgname.install
 source=("git+https://github.com/floating/frame.git#tag=v0.5.0-beta.6"
         "$pkgname.desktop")
