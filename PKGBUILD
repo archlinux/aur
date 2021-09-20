@@ -3,8 +3,8 @@
 
 pkgname=fluffychat-bin
 _pkgname=fluffychat
-pkgver=0.41.0
-_gitea_uuid="668b5049-845e-4428-90b3-6ab26b3983f2"
+pkgver=0.41.1
+_gitea_uuid="04637f26-ab72-4d63-9f9d-85daa0daeab6"
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64'  'aarch64') #no arm64 build
@@ -16,8 +16,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.zst::https://git.entr0py.de/attachments/${_gitea_uuid}")
 source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-linux-arm64.tar.gz")
-sha256sums_x86_64=('f8a3b5096a910c46567f4eadebad8b4f0ab2e1bc32c7a5c98c0b02516fbe9685')
-sha256sums_aarch64=('4d4dd1a0a1b838955ef6a11d5850037620134e5a8e3d9cd4690d384fc0763a79')
+sha256sums_x86_64=('5061918b938109debfdf7d6b1fe3436004e5954e3411944bc77d17197358d1fb')
+sha256sums_aarch64=('c30ddd00801b568ced4a1682bbf08fcb2e40588f132782dafd3371fa7e6e8308')
 
 
 package() {  
