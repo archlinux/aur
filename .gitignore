@@ -1,6 +1,10 @@
-GDLauncher-*.zip
-gdlauncher-beta-bin-*-x86_64.pkg.tar.zst
-icon.png
-.directory
+# Source file
+GDLauncher-*.deb
+
+# Building directories, built package, 
 pkg
 src
+gdlauncher-beta-bin-*-x86_64.pkg.tar.zst
+
+# Dolphin directory config file
+.directory
