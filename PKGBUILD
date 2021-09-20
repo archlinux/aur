@@ -3,7 +3,7 @@
 
 pkgname=mopidy-mpd
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for controlling playback from MPD clients"
 arch=('any')
 url="http://www.mopidy.com"
@@ -12,7 +12,7 @@ depends=('mopidy>=3.0'
          'python-pykka')
 makedepends=('python3' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mopidy/mopidy-mpd/archive/v${pkgver}.tar.gz")
-md5sums=('b376055cc7370dce61956aed98a9465e')
+sha256sums=('d18cd6ec7af4da1de9278bd6cfb7647de9740370bee1e90e04910adcde4461cb')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
