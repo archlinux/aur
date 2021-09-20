@@ -1,3 +1,16 @@
+=== Morgen 2.2.4
+Improvements
+- When you create a scheduling link, you can now set the limit for booking events in the future up to 12 weeks and there are more options for the minimum notice.
+- While searching, it is now possible to use the keyboard tab to switch between Past and Future tabs faster.
+- We increased the area where you can grab the window and drag it around. Before it was hard to find the right locations where this was working.
+- The shortcut C now creates a new event on the visible day/week, rather than jumping to Today.
+- Google introduced an additional step to authenticate: now we provide better guidance on this process.
+
+Bug Fixes
+- Fixed an issue making it impossible to edit start/end times for an event in some cases.
+- Fixed an issue causing non-native notifications on Linux not to be displayed.
+- Fixed a layout issue with timed events expanded to become longer than 24h
+
 === Morgen 2.2.3
 Improvements
 - Several performance improvements were added. Most notably, the contacts and location autocompletion now run much smoother.
