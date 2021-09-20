@@ -1,89 +1,75 @@
-# Maintainer Seva Alekseyev <sevaa@yarxi.ru>
-# Maintainer Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer: Matthew Spangler (mattspangler@protonmail.com)
 
-pkgbase=pkgbase
-pkgname=yarxi
-pkgver=1.10
-pkgrel=1
-pkgdesc="Japanese-Russian kanji and word dictionary"
-url="http://www.susi.ru/yarxi/"
-license=('custom')
-_source=(
-    "http://www.susi.ru/yarxi/yarxi_${pkgver}-${pkgrel}_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqtcore4_4.8.7+dfsg-11_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqtgui4_4.8.7+dfsg-11_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqt4-network_4.8.7+dfsg-11_amd64.deb"
-)
+# SecureCRT software is owned and copyrighted by Vandyke Inc. The software is free to download for eval and requires a separately purchased license for full features and support
+
+## To install this package, you need to download the SecureCRT for Linux package in tar.gz format and place it in the same directory as the PKGBUILD
+
+## Ensure the 'pkgver' and 'pkgrel' variables are updated below to match your package version
+
+pkgname=scrt-sfx
+pkgver=9.1.0
+pkgrel=2579
+pkgdesc='SecureCRT + SecureFX 9.0 Bundle'
 arch=('x86_64')
-_md5sums=(
-    '812d2265816ed781751c5c0eb6664d91'
-    'b243ada8569b2b3d4586dc4178fd8d56'
-    '797e351a57c9d56368f710e7cba40f21'
-    'b3cff12767e21d3a76794046557d3df0'
-)
-depends=(
-   ttf-sazanami nas
-)
+url='https://www.vandyke.com/'
+license=('custom:VanDyke')
+depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups' 'libpng'
+  'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'openssl'
+  'qt5-base' 'qt5-multimedia' 'xcb-util-image' 'xcb-util-keysyms'
+  'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'icu66')
+options=('!strip' '!emptydirs')
+provides=('SecureCRT' 'SecureFX')
+source=("local://${pkgname}-${pkgver}.${pkgrel}.ubuntu20-64.tar.gz")
+md5sums=('5c67d0a51af27bb8f18546a885b5ffbe')
 
-prepare() {
-    cd $srcdir/
-    echo "Due to 'makepkg' and 'PKGBUILD' specs limitations I need to dowanload sources and validate them by myself"
-    for source_url in ${_source[@]}; do
-        source_filename=${source_url##*/}
-        if [ ! -f "$source_filename" ]; then
-            echo "Downloading next source - $source_filename ..."
-            curl -A DUMMY -O "$source_url";
-        else
-            echo "Found already downloaded source - $source_filename"
-        fi
-    done
-    echo "And now we must validated dowanloaded sources ..."
-    for (( i=0; i<${#_source[@]}; ++i )); do
-        source_url=${_source[i]}
-        source_filename=${source_url##*/}
-        source_expected_md5sum=${_md5sums[i]}
-        source_actual_md5sum=$(md5sum $source_filename | awk '{print $1}')
-        if [ "$source_actual_md5sum" == "$source_expected_md5sum" ]; then
-            echo "Validated next source - $source_filename"
-        else
-            echo "Found corrupted source - $source_filename"; return 1
-        fi
-    done    
-}
-
-build() {
-    cd $srcdir/
-    mkdir -p deb/{$pkgname,qt4core,qt4gui,qt4network}
-    bsdtar xf yarxi_${pkgver}-${pkgrel}_amd64.deb -C deb/$pkgname/
-    bsdtar xf libqtcore4_4.8.7+dfsg-11_amd64.deb -C deb/qt4core/
-    bsdtar xf libqtgui4_4.8.7+dfsg-11_amd64.deb -C deb/qt4gui/
-    bsdtar xf libqt4-network_4.8.7+dfsg-11_amd64.deb -C deb/qt4network/
-    for dir in deb/$pkgname deb/qt4core deb/qt4gui deb/qt4network; do
-        cd $dir; tar xf data.tar.*; cd $srcdir
-    done
-}
 
 package() {
-    cd $srcdir/
-    mkdir -p $pkgdir/usr/lib/
-    mkdir -p $pkgdir/usr/bin/
-    mkdir -p $pkgdir/usr/share/
-    mkdir -p $pkgdir/usr/share/applications/
-    mkdir -p $pkgdir/usr/share/doc/$pkgname/
-    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16/apps,32x32/apps,48x48/apps}/
-    mkdir -p $pkgdir/usr/share/pixmaps/
-    mkdir -p $pkgdir/usr/share/$pkgname/
-    install -m 0755 $srcdir/deb/$pkgname/usr/bin/$pkgname $pkgdir/usr/bin/$pkgname
-    install -m 0755 $srcdir/deb/qt4core/usr/lib/x86_64-linux-gnu/libQtCore.so.4.8.7 $pkgdir/usr/lib/libQtCore.so.4
-    install -m 0755 $srcdir/deb/qt4gui/usr/lib/x86_64-linux-gnu/libQtGui.so.4.8.7 $pkgdir/usr/lib/libQtGui.so.4
-    install -m 0755 $srcdir/deb/qt4network/usr/lib/x86_64-linux-gnu/libQtNetwork.so.4.8.7 $pkgdir/usr/lib/libQtNetwork.so.4
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/applications/seva-yarxi.desktop $pkgdir/usr/share/applications/
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/doc/$pkgname/copyright $pkgdir/usr/share/doc/$pkgname/
-    for icons in 16x16 32x32 48x48; do
-        install -m 0644 $srcdir/deb/$pkgname/usr/share/icons/hicolor/$icons/apps/seva-yarxi.png $pkgdir/usr/share/icons/hicolor/$icons/apps/
-    done
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/pixmaps/*.xpm $pkgdir/usr/share/pixmaps/
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/$pkgname/yarxice.db $pkgdir/usr/share/$pkgname/
-}
+      cd "${srcdir}"/${pkgname}-${pkgver}
 
-#vim: syntax=sh
+      install -Dm 755 ./SecureCRT ${pkgdir}/usr/bin/SecureCRT
+      install -Dm 755 ./SecureFX ${pkgdir}/usr/bin/SecureFX
+
+      install -Dm 755 ./libClientConfigUiQt.so ${pkgdir}/usr/lib/scrt/libClientConfigUiQt.so
+      install -Dm 755 ./libQt5Multimedia.so.5 ${pkgdir}/usr/lib/scrt/libQt5Multimedia.so.5
+      install -Dm 755 ./libpython3Qt.so ${pkgdir}/usr/lib/scrt/libpython3Qt.so
+      install -Dm 755 ./libibusplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so
+      install -Dm 755 ./libcomposeplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
+      install -Dm 755 ./libqxcb.so ${pkgdir}/usr/lib/scrt/plugins/platforms/libqxcb.so
+      install -Dm 755 ./libCommonUiQt.so ${pkgdir}/usr/lib/scrt/libCommonUiQt.so
+      install -Dm 755 ./libQt5Gui.so.5 ${pkgdir}/usr/lib/scrt/libQt5Gui.so.5
+      install -Dm 755 ./libQt5PrintSupport.so.5 ${pkgdir}/usr/lib/scrt/libQt5PrintSupport.so.5
+      install -Dm 755 ./libQt5Core.so.5 ${pkgdir}/usr/lib/scrt/libQt5Core.so.5
+      install -Dm 755 ./libQt5Widgets.so.5 ${pkgdir}/usr/lib/scrt/libQt5Widgets.so.5
+      install -Dm 755 ./libQt5Network.so.5 ${pkgdir}/usr/lib/scrt/libQt5Network.so.5
+      install -Dm 755 ./libQt5XcbQpa.so.5 ${pkgdir}/usr/lib/scrt/lib/libQt5XcbQpa.so.5
+      install -Dm 755 ./libQt5DBus.so.5 ${pkgdir}/usr/lib/scrt/lib/libQt5DBus.so.5
+
+      install -Dm 755 ./libClientConfigUiQt.so ${pkgdir}/usr/lib/sfx/libClientConfigUiQt.so
+      install -Dm 755 ./libQt5Multimedia.so.5 ${pkgdir}/usr/lib/sfx/libQt5Multimedia.so.5
+      install -Dm 755 ./libpython3Qt.so ${pkgdir}/usr/lib/sfx/libpython3Qt.so
+      install -Dm 755 ./libibusplatforminputcontextplugin.so ${pkgdir}/usr/lib/sfx/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so
+      install -Dm 755 ./libcomposeplatforminputcontextplugin.so ${pkgdir}/usr/lib/sfx/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
+      install -Dm 755 ./libqxcb.so ${pkgdir}/usr/lib/sfx/plugins/platforms/libqxcb.so
+      install -Dm 755 ./libCommonUiQt.so ${pkgdir}/usr/lib/sfx/libCommonUiQt.so
+      install -Dm 755 ./libQt5Gui.so.5 ${pkgdir}/usr/lib/sfx/libQt5Gui.so.5
+      install -Dm 755 ./libQt5PrintSupport.so.5 ${pkgdir}/usr/lib/sfx/libQt5PrintSupport.so.5
+      install -Dm 755 ./libQt5Core.so.5 ${pkgdir}/usr/lib/sfx/libQt5Core.so.5
+      install -Dm 755 ./libQt5Widgets.so.5 ${pkgdir}/usr/lib/sfx/libQt5Widgets.so.5
+      install -Dm 755 ./libQt5Network.so.5 ${pkgdir}/usr/lib/sfx/libQt5Network.so.5
+      install -Dm 755 ./libQt5XcbQpa.so.5 ${pkgdir}/usr/lib/sfx/lib/libQt5XcbQpa.so.5
+      install -Dm 755 ./libQt5DBus.so.5 ${pkgdir}/usr/lib/sfx/lib/libQt5DBus.so.5
+
+      install -Dm 644 ./SecureCRT_fr.qm ${pkgdir}/usr/share/vandyke/data/SecureCRT_fr.qm
+      install -Dm 644 ./SecureCRT_README.txt ${pkgdir}/usr/share/doc/scrt/SecureCRT_README.txt
+      install -Dm 644 ./SecureCRT_SecureFX_Ubuntu_Copyright.txt ${pkgdir}/usr/share/doc/scrt/copyright
+      install -Dm 644 ./SecureCRT_SecureFX_EULA.txt ${pkgdir}/usr/share/doc/scrt/SecureCRT_EULA.txt
+      install -Dm 644 ./SecureCRT_HISTORY.txt ${pkgdir}/usr/share/doc/scrt/SecureCRT_HISTORY.txt
+      install -Dm 644 ./changelog.Debian.gz ${pkgdir}/usr/share/doc/scrt/changelog.Debian.gz
+
+      cp -rp ./SecureCRTHelp ${pkgdir}/usr/share/doc/scrt/SecureCRTHelp
+
+      install -Dm 644 ./securecrt_64.png ${pkgdir}/usr/share/vandyke/data/securecrt_64.png
+      install -Dm 644 ./SecureCRT.desktop ${pkgdir}/usr/share/applications/SecureCRT.desktop
+      install -Dm 644 ./SecureFX.desktop ${pkgdir}/usr/share/applications/SecureFX.desktop
+      install -Dm 644 ./securefx_64.png ${pkgdir}/usr/share/vandyke/data/securefx_64.png
+}
