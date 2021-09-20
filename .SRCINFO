@@ -7,7 +7,7 @@ pkgbase = zvvbook
 	arch = x86_64
 	license = custom
 	depends = python-pyqt5
-	source = ZVVBook_5.1_beta.deb::https://docs.google.com/uc?id=1tWZsNm8OaZtbphOySdq0ARdB0NJmEiAH
+	source = ZVVBook_5.1_beta.deb::https://www.dropbox.com/s/tvyl44vt821bn7s/ZVVBook_051.deb?dl=0
 	source = zvvbook
 	source = ZVVBook.desktop
 	md5sums = db903a0084e51cea040a2bb6b45a4bbf
@@ -15,4 +15,3 @@ pkgbase = zvvbook
 	md5sums = 4c97905e644c0a2a8cdc1df864659828
 
 pkgname = zvvbook
-

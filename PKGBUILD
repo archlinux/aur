@@ -11,7 +11,7 @@ url="https://zvvubuntu.blogspot.com"
 license=('custom')
 depends=('python-pyqt5') 
 
-source=("${_pkgname}_${pkgver}.deb::https://docs.google.com/uc?id=1tWZsNm8OaZtbphOySdq0ARdB0NJmEiAH" "$pkgname" "${_pkgname}.desktop")
+source=("${_pkgname}_${pkgver}.deb::https://www.dropbox.com/s/tvyl44vt821bn7s/ZVVBook_051.deb?dl=0" "$pkgname" "${_pkgname}.desktop")
 md5sums=('db903a0084e51cea040a2bb6b45a4bbf'
          'be29d1142c22607c19fefbf42f7aa2e4'
          '4c97905e644c0a2a8cdc1df864659828')
