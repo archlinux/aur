@@ -2,14 +2,14 @@
 
 pkgname=novelwriter-git
 _pkgname=novelWriter
-pkgver=v1.5b2.r10.gb9311e84
+pkgver=v1.5.r7.g3f972250
 pkgrel=1
 epoch=1
 pkgdesc="Markdown-like text editor designed for writing novels and larger projects of many smaller plain text documents"
 arch=(any)
 url="https://github.com/vkbo/novelWriter"
 license=(GPL3)
-makedepends=('python-lxml' 'python-pyqt5' 'python-pypandoc' 'python-latexcodec' 'git')
+makedepends=('python-lxml' 'python-pyqt5' 'python-pypandoc' 'python-latexcodec' 'git' 'python-setuptools')
 depends=('python')
 optdepends=('python-pyenchant')
 source=('git+https://github.com/vkbo/novelWriter.git')
