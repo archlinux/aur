@@ -1,3 +1,47 @@
+4.5
+---
+
+ - Add support for `mzMLb <https://www.biorxiv.org/content/10.1101/2020.02.13.947218v3>`_
+   (`#35 <https://github.com/levitsky/pyteomics/pull/35>`_
+   and `#38 <https://github.com/levitsky/pyteomics/pull/38>`_ by Joshua Klein)
+   with new module :py:mod:`pyteomics.mzmlb`.
+
+ - Add ProteomeExchange backend for PROXI requests and implement an aggregator for responses from all backends
+   (`#36 <https://github.com/levitsky/pyteomics/pull/36>`_,
+   `#45 <https://github.com/levitsky/pyteomics/pull/45>`_, and
+   `#55 <https://github.com/levitsky/pyteomics/pull/55>`_ by Joshua Klein)
+   in :py:mod:`pyteomics.usi`.
+
+ - Add support for `ProForma <https://www.psidev.info/proforma>`_
+   (`#37 <https://github.com/levitsky/pyteomics/pull/37>`_ by Joshua Klein)
+   in new module :py:mod:`pyteomics.proforma`.
+
+ - New arguments `keep_nterm_M` and `fix_aa` in :py:func:`pyteomics.fasta.shuffle`
+   (`#54 <https://github.com/levitsky/pyteomics/pull/54>`_ by Vladimir Gorshkov).
+
+ - Fx for unwanted warnings in :py:func:`pyteomics.auxiliary.file_helpers._check_use_index` when
+   `use_index` is explicitly passed (`#52 <https://github.com/levitsky/pyteomics/issues/52>`_).
+
+ - Update the default XML schema for featureXML and fix issues with incorrectly specified data types
+   (`#53 <https://github.com/levitsky/pyteomics/pull/53>`_).
+
+ - Add a new backend for spectrum annotation and plotting. :py:func:`pyteomics.pylab_aux.plot_spectrum` and
+   :py:func:`pyteomics.pylab_aux.annotate_spectrum` can now use
+   `spectrum_utils <https://github.com/bittremieux/spectrum_utils>`_ under the hood
+   (`#43 <https://github.com/levitsky/pyteomics/pull/43>`_).
+
+   See new `Example 4 <examples/example_annotation.html>`_ for demonstration.
+
+ - New function :py:func:`pyteomics.pylab_aux.mirror` for making a
+   `spectrum_utils <https://github.com/bittremieux/spectrum_utils>`_ mirror plot.
+
+ - :py:func:`pyteomics.pylab_aux.plot_spectrum` and :py:func:`pyteomics.pylab_aux.annotate_spectrum` now
+   always return :py:class:`matplotlib.pyplot.Axes`.
+
+ - Add a warning when passing an existing file by name in writing functions.
+   The default mode for output files will change from `'a'` to `'w'` in a future version.
+
+
 4.4.2
 -----
 
