@@ -20,7 +20,7 @@
       ],
       "matchStringsStrategy": "combination",
       "depNameTemplate": "eclipse/eclipse.jdt.ls",
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "github-tags",
       "extractVersionTemplate": "^v(?<version>.*)$"
     }
   ]
