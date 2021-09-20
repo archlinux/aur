@@ -1,0 +1,16 @@
+pkgbase = yuna-appimage
+	pkgdesc = Anime player & list manager integrating AniList, Simkl, Crunchyroll, and Hidive
+	pkgver = 1.4.23
+	pkgrel = 1
+	url = https://yuna.moe
+	arch = x86_64
+	license = AGPL3
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	conflicts = yuna
+	options = !strip
+	source = Yuna-1.4.23.AppImage::https://github.com/BeeeQueue/yuna/releases/download/v1.4.23/Yuna-1.4.23.AppImage
+	sha512sums = a8371f2aeef08c9ec850bbedd621b486b50367d20787fb7b99ebe83b3b2ec2c5435302a7de478f644b470a3607abffbda90c915b097a55808ab670e329d11b8e
+
+pkgname = yuna-appimage
