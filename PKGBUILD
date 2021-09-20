@@ -1,7 +1,7 @@
 # Maintainer: Alice Gaudon <alice at gaudon dot pro>
 # Contributor: Anderson Rocha <anderson2320@gmail.com>
 
-pkgname=cef-minimal-obs-studio-browser
+pkgname=cef-minimal-obs-studio-browser-bin
 pkgver=88.2.8
 _pkgcommit="ge484012"
 _chromiumver="88.0.4324.150"

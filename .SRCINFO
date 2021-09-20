@@ -1,4 +1,4 @@
-pkgbase = cef-minimal-obs-studio-browser
+pkgbase = cef-minimal-obs-studio-browser-bin
 	pkgdesc = Chromium Embedded Framework minimal release
 	pkgver = 88.2.8
 	pkgrel = 1
@@ -28,4 +28,4 @@ pkgbase = cef-minimal-obs-studio-browser
 	source_x86_64 = https://cef-builds.spotifycdn.com/cef_binary_88.2.8%2Bge484012%2Bchromium-88.0.4324.150_linux64_minimal.tar.bz2
 	sha1sums_x86_64 = 0ff708f6104fab3e43fbcd41d0a9aea6f69bc3f5
 
-pkgname = cef-minimal-obs-studio-browser
+pkgname = cef-minimal-obs-studio-browser-bin
