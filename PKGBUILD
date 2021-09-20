@@ -1,5 +1,8 @@
+# Maintainer: Jörn Hofmann <joernhofmann@web.de>
+# Contributor: Radoslaw Mejer <radmen@radmen.info>
+
 pkgname="git-toolbelt"
-pkgver=1.5.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A suite of useful Git commands that aid with scripting or every day command line usage"
 arch=(any)
@@ -9,7 +12,7 @@ source=(
     "git-toolbelt-$pkgver.zip::https://github.com/nvie/git-toolbelt/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-    "0fe8551fe5f9c05aaa566aba6f94667240cb0f6221a3c8d0d8cccff31244b1a8"
+    "ea17c85a2494c98daf56c517c3dfcfb288a726ce867120ffb52befb22d42f2c5"
 )
 
 package() {
