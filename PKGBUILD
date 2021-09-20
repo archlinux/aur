@@ -11,7 +11,7 @@ developer="patrikx3"
 repo="onenote"
 tarballpath="archive/refs/tags"
 license=('MIT')
-depends=('electron13')
+depends=('electron')
 makedepends=('npm')
 
 source=("$projecthost/$developer/$repo/$tarballpath/v${pkgver//_/-}.tar.gz"
