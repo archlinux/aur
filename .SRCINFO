@@ -1,0 +1,13 @@
+pkgbase = blood-demo
+	pkgdesc = Monolith's Blood, Demo files taken from Archive.org
+	pkgver = 0.99a
+	pkgrel = 1
+	url = https://lith.com
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = custom: shareware
+	source = https://archive.org/download/Blood_64/BLOOD.zip
+	sha256sums = SKIP
+
+pkgname = blood-demo
