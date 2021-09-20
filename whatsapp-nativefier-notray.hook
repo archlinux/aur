@@ -4,6 +4,13 @@ Operation = Install
 Operation = Upgrade
 Target = whatsapp-nativefier
 
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = whatsapp-nativefier-notray-hook
+
+
 [Action]
 Description = Disabling tray...
 When = PostTransaction
