@@ -1,17 +1,16 @@
 pkgbase = openldap-migrationtools
-	pkgdesc = set of scripts for migrating data from local files (i.e. /etc/passwd) or a NIS domain to an LDAP directory
+	pkgdesc = scripts for migrating data from local files or a NIS domain to an LDAP directory
 	pkgver = 47
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.padl.com/OSS/MigrationTools.html
 	arch = x86_64
 	groups = openldap
 	groups = openldap-beta
 	license = BSD
 	depends = openldap
-	source = https://www.padl.com/download/MigrationTools-47.tar.gz
+	source = http://web.archive.org/web/20150802074048/https://www.padl.com/download/MigrationTools-47.tar.gz
 	source = migration-tools.txt
 	sha256sums = 9c1e3679ee17e74e69bd1f8854f7ac67513294d09c0d837d2db26f1b1a6782b0
 	sha256sums = 51ac36634bf71256f25a6c68d98d109ff4e6b306106298e54b7f9f36c02988fa
 
 pkgname = openldap-migrationtools
-
