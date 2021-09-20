@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Frame
+Comment=System-wide Web3 for macOS, Windows and Linux
+Exec=/usr/bin/frame %U
+Terminal=false
+Type=Application
+Icon=frame
