@@ -1,6 +1,6 @@
 # Maintainer: Rene Peinthor <rene.peinthor@linbit.com>
 pkgname=virter
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="Virter is a command line tool for simple creation and cloning of virtual machines based on libvirt"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -20,7 +20,7 @@ makedepends=(
   'go'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LINBIT/virter/archive/v${pkgver}.tar.gz")
-sha256sums=('2c661154bfcee771e2d672f0d68d7aaadac5d1033385af489d60b70dedfc78ed')
+sha256sums=('e269df23553cb6351346356c201b7b3d7c919262eae5e39b9478e98edc4243d5')
 
 build() {
   export GOPATH="$srcdir"/gopath
