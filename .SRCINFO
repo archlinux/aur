@@ -1,13 +1,13 @@
 pkgbase = ttc-iosevka-ss06-super
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 10.2.0
+	pkgver = 10.3.0
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v10.2.0/super-ttc-iosevka-ss06-10.2.0.zip
-	source = ttc-iosevka-ss06-super-10.2.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v10.2.0/LICENSE.md
-	sha256sums = d9964e11534072ddf4c54c96a85005c4f662e53302c5d4418602df36afb1653b
+	source = https://github.com/be5invis/Iosevka/releases/download/v10.3.0/super-ttc-iosevka-ss06-10.3.0.zip
+	source = ttc-iosevka-ss06-super-10.3.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v10.3.0/LICENSE.md
+	sha256sums = 00e2563f957df86bfbef0632876e36e64357f96eae2649e18369c1dab64f55bb
 	sha256sums = 72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80
 
 pkgname = ttc-iosevka-ss06-super
