@@ -1,0 +1,1882 @@
+.. _changelog:
+
+================
+ Change history
+================
+
+.. version-4.4.0:
+
+4.4.0
+=====
+:release-date: 2020-09-28 11:00 A.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Supervisors now raises :exc:`SystemExit` on max restarts exceeded.
+
+- Queue: Now includes high pressure and pressure drop conditions.
+
+    This means you can now add callbacks when the queue is under high
+    pressure, and for when the pressure drops again.
+
+- Service: Added ``human_tracebacks()`` method.
+
+
+.. _version-4.3.2:
+
+4.3.2
+=====
+:release-date: 2020-02-13 3:21 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Tracebacks: Added support for async generators.
+
+    Also added new functions:
+
+        + :func:`~mode.utils.tracebacks.format_agen_stack`
+        + :func:`~mode.utils.tracebacks.print_agen_stack`
+
+- Logging: New version of log argument formatters.
+
+    The existing log argument formatter callbacks did
+    not have access to the original log record, so could
+    not make decisions based on matching the log message string
+    for example.
+
+    A new :func:`~mode.utils.logging.formatter2` decorator
+    has been added that registers callbacks taking two arguments.
+
+    Example:
+
+    .. sourcecode:: python
+
+        from mode.utils.logging import formatter2
+
+        @formatter2
+        def format_log_argument(arg: Any, record: logging.LogRecord):
+            # improve aiokafka logging to sort the list
+            # of topics logged when subscribing to topics
+            # and make it more human readable
+            if record.msg.startswith('Subscribing to topics'):
+                if isinstance(arg, frozenset):
+                    return ', '.join(sorted(arg))
+
+.. _version-4.3.1:
+
+4.3.1
+=====
+:release-date: 2020-02-10 2:40 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Added :func:`mode.utils.times.humanize_seconds_ago`
+
+    This formats seconds float to text "n seconds ago",
+    or "just now" if less than one second.
+
+- Added :func:`mode.utils.text.enumeration`
+
+    This formats a list of strings to a enumerated list,
+    for example:
+
+    .. sourcecode:: pycon
+
+        >>> text.enumeration(['x', 'y', '...'])
+        "1) x\n2) y\n3) ..."
+
+.. _version-4.3.0:
+
+4.3.0
+=====
+:release-date: 2020-01-22 2:25 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Threads: Now runs with :envvar:`PYTHONASYNCIODEBUG`.
+
+- Threads: Fixed race condition where pending methods are lost
+
+- utils.tracebacks: Adds ``print_coro_stack`` and
+  ``format_coro_stack`` for debugging coroutines.
+
+- Timers: Adds sleeptime and runtime to logs for more info.
+
+- Threads: Threads now do two-way keepalive (thread -> parent, parent -> thread)
+
+- Service: ``add_future`` now sets task name
+
+- Worker: ``SIGUSR2`` now starts :mod:`pdb` session.
+
+.. _version-4.2.0:
+
+4.2.0
+=====
+:release-date: 2020-01-15 5:00 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Timers: Exclude timer callback time in drift calculation
+
+- Service: `maybe_start()` now returns bool, and :const:`True`
+  if the service was started.
+
+.. _version-4.1.9:
+
+4.1.9
+=====
+:release-date: 2020-01-13 11:18 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- QueueServiceThread: Stop method queue before stopping child services.
+
+- Small fixes to render graph images correctly.
+
+.. _version-4.1.8:
+
+4.1.8
+=====
+:release-date: 2020-01-07 4:00 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- ``ServiceThread.crash()`` now immediately sets exception
+  when called in main thread.
+
+.. _version-4.1.7:
+
+4.1.7
+=====
+:release-date: 2020-01-07 3:20 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Now depends on :pypi:`typing_extensions` (Issue #53)
+
+    This dependency was previously missing resulting in errors.
+
+- Fixed :class:`~mode.threads.ServiceThread` hang on exceptions raised
+  (Issue #54).
+
+    Contributed by Alexey Basov (:github_user:`r313pp`)
+    and Jonathan Booth (:github_user:`jbooth-mastery`).
+
+
+
+.. _version-4.1.6:
+
+4.1.6
+=====
+:release-date: 2019-12-12 2:30 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- logging: Fixes recursion error on Python 3.6 (Issue #52)
+
+- Makefile: Added `make develop` to install dependencies into the currently
+    activated virtualenv.
+
+- Tests: Removed `was never awaited` warning during test run.
+
+- CI: Revert back to using Python 3.7.5 for Windows build.
+
+.. _version-4.1.5:
+
+4.1.5
+=====
+:release-date: 2019-12-11 3:45 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Tests passing on Python 3.8.0
+
+- Fixed typing related issues.
+
+- Added :file:`__init__.py` to `mode.utils` package.
+
+.. _version-4.1.4:
+
+4.1.4
+=====
+:release-date: 2019-10-30 3:23 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Timers: Do not log drift for subsecond interval timers.
+
+.. _version-4.1.3:
+
+4.1.3
+=====
+:release-date: 2019-10-29 2:14 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Service: Ignore :exc:`asyncio.CancelledError` when a child service
+           is stopped.
+
+- flight recorder: Adds ability to add logging extra-data that
+  propagates to child recorders.
+
+
+.. _version-4.1.2:
+
+4.1.2
+=====
+:release-date: 2019-10-02 3:41 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Adds easy flight recorder interface.
+
+    Instead of passing flight recorders around, we now have the concept
+    of a ``current_flight_recorder``.
+
+    There is also a new ``on_timeout`` wrapper object that always
+    logs to the current flight recorder:
+
+    .. sourcecode:: python
+
+        from mode.utils.logging import flight_recorder, on_timeout
+
+        async def main():
+            with flight_recorder(logger, timeout=300):
+                some_function()
+
+        def some_function():
+            on_timeout.error('Fetching data')
+            fetch_data()
+
+            on_timeout.error('Processing data')
+            process_data()
+
+    This uses a :class:`~mode.utils.locals.LocalStack`,
+    so flight recorders can be arbitrarily nested.
+    Once a flight recorder context exits, the previously active flight
+    recorder will be set active again.
+
+- Logging: Default logging format now includes process PID.
+
+- Adds :class:`~mode.utils.collections.Heap` as generic interface
+  to the heapq module
+
+.. _version-4.1.1:
+
+4.1.1
+=====
+:release-date: 2019-10-02 3:41 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- ``is_optional``: Now works with union having multiple args on Python 3.6.
+
+- ``Proxy``: Due to `Python issue #29581`_ the ``source`` class option
+  to :class:`~mode.locals.Proxy` cannot be used on Python 3.6.
+
+    To work around this when support for 3.6 is a requirement
+    you can now use a ``__proxy_source__`` class attribute instead:
+
+    .. sourcecode:: python
+
+        class MappingProxy(Proxy[Mapping]):
+            proxy_source__ = Mapping
+
+     you want to support 3.7 and up you can continue to use the class syntax:
+
+     .. sourcecode:: python
+
+        class MappingProxy(Proxy[Mapping], source=Mapping):
+        ...
+
+.. _`Python issue #29581`: https://bugs.python.org/issue29581
+
+.. _version-4.1.0:
+
+4.1.0
+=====
+:release-date: 2019-09-27 2:00 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Worker: Adds ``override_logging`` option to use your own logging
+  setup (Issue #46).
+
+- Service: Adds ``Service.crash_reason`` (Issue #50).
+
+- Service: Adds ``remove_dependency`` to disable dependencies at runtime
+  (Issue #49).
+
+    Contributed by Martin Maillard.
+
+- Timers: Increase max drift to silence noisy logs.
+
+- Proxy: Adds support for lazy proxying of objects.
+
+    See :mod:`mode.locals`.
+
+- Documentation improvements by:
+
+    + :github_user:`tojkamaster`.
+
+    + :github_user:`casio`
+
+.. _version-4.0.1:
+
+4.0.1
+=====
+:release-date: 2019-07-17 3:42 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Utils: :class:`~mode.utils.future.stampede` objects can now be
+  read by :pypi:`Sphinx` and :func:`inspect.signature`.
+
+- CI: Adds CPython 3.7.3 to build matrix, and set as default for lint stages
+
+.. _version-4.0.0:
+
+4.0.0
+=====
+:release-date: 2019-05-07 2:21 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- 100% Test Coverage
+
+- Fixed several edge case bugs that were never reported.
+
+.. _version-3.2.2:
+
+3.2.2
+=====
+:release-date: 2019-04-07 6:18 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- :class:`~mode.utils.typing.AsyncGenerator` takes two arguments.
+
+    Mistakenly had it take three arguments, like :class:`typing.Generator`.S
+
+.. _version-3.2.1:
+
+3.2.1
+=====
+:release-date: 2019-04-07 4:07 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Adds :class:`mode.utils.typing.AsyncGenerator`
+  to import :class:`typing.AsyncGenerator` missing from Python 3.6.0.
+
+.. _version-3.2.0:
+
+3.2.0
+=====
+:release-date: 2019-04-06 11:00 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Adds ``Service.itertimer``: used to perform periodic
+  tasks, but with automatic drift adjustment.
+
+- Adds :func:`mode.utils.mocks.ContextMock`
+
+    To mock a regular context manager.
+
+.. _version-3.1.3:
+
+3.1.3
+=====
+:release-date: 2019-04-04 08:41 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- ``mode.utils.worker.exiting`` now takes option to print exceptions.
+
+- Threads: Method queue "starting..." logs now logged with debug severity.
+
+- Worker: execute_from_commandline no longer swallow errors if loop closed.
+
+- Adds :class:`mode.locals.LocalStack`.
+
+.. _version-3.1.2:
+
+3.1.2
+=====
+:release-date: 2019-04-04 08:37 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
++ **Revoked release**: Version without changelog entry was uploaded to PyPI.
+  Please upgrade to 3.1.3.
+
+.. _version-3.1.1:
+
+3.1.1
+=====
+:release-date: 2019-03-27 10:02 A.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Service: property ``should_stop`` is now true if service crashed.
+
+- Timers: Avoid drift + introduce a tiny bit of drift to timers.
+
+    Thanks to Bob Haddleton (:github_user:`bobh66`) for discovering
+    this issue.
+
+.. _version-3.1.0:
+
+3.1.0
+=====
+:release-date: 2019-03-21 03:26 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Adds :class:`~mode.utils.contexts.nullcontext`
+  and :class:`~mode.utils.contexts.asyncnullcontext`.
+
+    Backported from Python 3.7 you can import these
+    from :mod:`mode.utils.contexts`.
+
+- Mode project changes:
+
+    + Added :pypi:`bandit` to CI lint build.
+
+    + Added :pypi:`pydocstyle` to CI lint build.
+
+.. _version-3.0.13:
+
+3.0.13
+======
+:release-date: 2019-03-20 04:58 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Adds ``CompositeLogger.warning`` alias to ``warn``.
+
+    :pypi:`flake8-logging-format` has a rule that says
+    you are only allowed to use ``.warning``, so going with that.
+
+.. _version-3.0.12:
+
+3.0.12
+======
+:release-date: 2019-03-20 03:23 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Adds :func:`~mode.utils.futures.all_tasks` as a backward compatible
+  :func:`asyncio.all_tasks`.
+
+- Signal: Fixes ``.connect()`` decorator to work with parens and without
+
+    Signal decorator now works with parens:
+
+    .. sourcecode:: python
+
+        @signal.connect()
+        def my_handler(sender, **kwargs):
+            ...
+
+    and without parens:
+
+    .. sourcecode:: python
+
+        @signal.connect
+        def my_handler(sender, **kwargs):
+        ...
+
+- Signal: Do not use weakref by default.
+
+    Using weakref by default meant it was too easy to connect
+    a signal handler to only have it disappear because there were
+    no more references to the object.
+
+.. _version-3.0.11:
+
+3.0.11
+======
+:release-date: 2019-03-19 08:50 A.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Adds ThrowableQueue._throw() for non-async version of .throw().
+
+.. _version-3.0.10:
+
+3.0.10
+======
+:release-date: 2019-03-14 03:55 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Worker: was giving successful exit code when an exception is raised.
+
+    The ``.execute_from_commandline`` method now always exits
+    (its return type is :class:`typing.NoReturn`).
+
+- Adds :class:`~mode.utils.compat.NoReturn` to :mod:`mode.utils.compat`.
+
+    Import :class:`typing.NoReturn` from here to support Python versions
+    before 3.6.3.
+
+.. _version-3.0.9:
+
+3.0.9
+=====
+:release-date: 2019-03-08 01:20 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Threads: Add multiple workers for thread method queue.
+
+    Default number of workers is now 2, to allow for
+    two recursive calls.
+
+- Signal: Use `Signal.label` instead of ``.indent`` to be more consistent.
+
+- Signal: Properly set ``.name`` when signal is member of class.
+
+- Adds ability to log the FULL traceback of :class:`asyncio.Task`.
+
+- Service: Stop faster if stopped immediately after start
+
+- Service: Correctly track dependencies for services added
+  using ``Service.on_init_dependencies`` (Issue #40).
+
+    Contributed by Nimi Wariboko Jr (:github_user:`nemosupremo`).
+
+.. _version-3.0.8:
+
+3.0.8
+=====
+:release-date: 2019-01-25 03:54 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Fixes ``DeprecationWarning`` importing from ``collections``.
+
+- stampede: Fixed edge case where stampede wrapped function
+  called multiple times.
+
+    Calling the same stampede wrapped function multiple times
+    within the same event loop iteration would previously call
+    the function multiple times.
+
+    For example using :func:`asyncio.gather`:
+
+    .. sourcecode:: python
+
+        from mode.utils.futures import stampede
+
+        count = 0
+        @stampede
+        async def update_count():
+            global count
+            count += 1
+
+        async def main():
+            await asyncio.gather(
+                update_count(),
+                update_count(),
+                update_count(),
+                update_count(),
+            )
+
+            assert count == 1
+
+    Previously this would call the function four times, but with the
+    fix it's only called once and provides the expected result.
+
+- Mocks: Adds :func:`~mode.utils.mocks.mask_module` and
+         :func:`~mode.utils.mocks.patch_module`.
+
+- CI: Added Windows build.
+
+- CI: Enabled random order for tests.
+
+
+.. _version-3.0.7:
+
+3.0.7
+=====
+:release-date: 2019-01-18 01:12 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- **ServiceThread** ``.stop()`` would wait for thread shutdown
+  even if thread was never started.
+
+- **CI**: Adds CPython 3.7.2 and 3.6.8 to build matrix
+
+.. _version-3.0.6:
+
+3.0.6
+=====
+:release-date: 2019-01-07 12:10 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Adds ``%(extra)s`` as log format option.
+
+    To add additional context to your logging statements use for example::
+
+        logger.error('Foo', extra={'data': {'database': 'db1'}})
+
+.. _version-3.0.5:
+
+3.0.5
+=====
+:release-date: 2018-12-19 04:40 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Fixes compatibility with :pypi:`colorlog` 4.0.x.
+
+    Contributed by Ryan Whitten (:github_user:`rwhitten577`).
+
+.. _version-3.0.4:
+
+3.0.4
+=====
+:release-date: 2018-12-07 04:40 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Now depends on :pypi:`mypy_extensions`.
+
+.. _version-3.0.3:
+
+3.0.3
+=====
+:release-date: 2018-12-07 3:22 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Threads: Fixed delay in shutdown if ``on_thread_stop`` callback raises
+  exception.
+
+- Service: Stopping of children no longer propagates exceptions, to ensure
+  other services are still stopped.
+
+- Worker: Fixed race condition if worker stopped before being fully started.
+
+    This would lead the worker to shutdown early before fully stopping
+    all dependent services.
+
+- Tests: Adds :class:`~mode.utils.mocks.AsyncMagicMock`
+
+.. _version-3.0.2:
+
+3.0.2
+=====
+:release-date: 2018-12-07 1:14 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Worker: Fixes crash on Windows where signal handlers cannot be registered.
+
+- Utils: Adds :func:`~mode.utils.objects.shortname` to get non-qualified
+  object path.
+
+- Utils: Adds :func:`~mode.utils.objects.canonshortname` to get non-qualified
+  object path that attempts to resolve the real name of ``__main__``.
+
+.. _version-3.0.1:
+
+3.0.1
+=====
+:release-date: 2018-12-06 10:20 A.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Worker: Added new callback ``on_worker_shutdown``.
+
+- Worker: Do not stop twice, instead wait for original stop to complete.
+
+    Signals would start multiple stopping coroutines, leading to
+    the worker shutting down too fast.
+
+- Threads: All ``ServiceThread`` services needs a keepalive
+  coroutine to be scheduled.
+
+- Supervisor: Fixed issue with ``CrashingSupervisor`` where
+  service would not crash.
+
+.. _version-3.0.0:
+
+3.0.0
+=====
+:release-date: 2018-11-30 4:48 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- ``ServiceThread`` no longer uses ``run_in_executor``.
+
+    Since services are long running, it is not a good idea for
+    them to block pool worker threads. Instead we run one
+    thread for every ServiceThread.
+
+- Adds :class:`~mode.threads.QueuedServiceThread`
+
+    This subclass of :class:`~mode.threads.ServiceThread` enables
+    the use of a queue to send work to the service thread.
+
+    This is useful for services that wrap blocking network clients
+    for example.
+
+    If you have a blocking Redis client you could run it in a separate
+    thread like this:
+
+    .. code-block:: python
+
+        class Redis(QueuedServiceThread):
+            _client: StrictRedis = None
+
+            async def on_start(self) -> None:
+                self._client = StrictRedis()
+
+            async def get(self, key):
+                return await self.call_thread(self._client.get, key)
+
+            async def set(self, key, value):
+                await self.call_thread(self._client.set, key, value)
+
+    The actual redis client will be running in a separate thread (with a
+    separate event loop). The ``get`` and ``set`` methods will delegate
+    to the thread, and return only when the thread is finished handling
+    them and is ready with a result:
+
+    .. sourcecode:: python
+
+        async def use_redis():
+            # We use async-with-statement here, but
+            # can also do `await redis.start()` then `await redis.stop()`
+            async with Redis() as redis:
+                await redis.set(key='foo', value='bar')
+                assert await redis.get(key='foo') == 'bar'
+
+- Collections: ``FastUserSet`` and ``ManagedUserSet`` now implements
+  all :class:`set` operations.
+
+- Collections are now generic types.
+
+    You can now subclass collections with typing information:
+
+    - ``class X(FastUserDict[str, int]): ...``
+    - ``class X(ManagedUserDict[str, int]): ...``
+    - ``class X(FastUserSet[str]): ...``
+    - ``class X(ManagedUserSet[str]): ...``
+
+- :func:`~mode.utils.futures.maybe_async` utility now
+  also works with ``@asyncio.coroutine`` decorated coroutines.
+
+- Worker: SIGUSR1 cry handler: Fixed crash when coroutine does not have
+  ``__name__`` attribute.
+
+.. _version-2.0.4:
+
+2.0.4
+=====
+:release-date: 2018-11-19 1:07 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- ``FlowControlQueue.clear`` now cancels all waiting for ``Queue.put``.
+
+.. _version-2.0.3:
+
+2.0.3
+=====
+:release-date: 2018-11-05 5:20 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Adds `Service.wait_first(*coros)`
+
+    Wait for the first coroutine to return, where coroutines can also
+    be :class:`asyncio.Event`.
+
+    Returns :class:`mode.services.WaitResults` with fields:
+
+        - ``.done`` - List of arguments that are now done.
+        - ``.results`` - List of return values in order of ``.done``.
+        - ``.stopped`` - Set to True if the service was stopped.
+
+.. _version-2.0.2:
+
+2.0.2
+=====
+:release-date: 2018-11-03 9:07 A.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Now depends on :pypi:`aiocontextvars` 0.2
+
+    This release uses :pep:`508` syntax for conditional requirements,
+    as :ref:`version-2.0.1` did not work when installing wheel.
+
+.. _version-2.0.1:
+
+2.0.1
+=====
+:release-date: 2018-11-02 7:38 P.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Now depends on :pypi:`aiocontextvars` 0.2
+
+.. _version-2.0.0:
+
+2.0.0
+=====
+:release-date: 2018-11-02 9:12 A.M PST
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Services now create the event loop on demand.
+
+    This means the event loop is no longer created in `Service.__init__`
+    so that services can be defined at module scope without initializing
+    the loop.
+
+    This makes the ``ServiceProxy`` pattern redundant for most use cases.
+
+- Adds ``.utils.compat.current_task`` as alias for
+  :mod:`asyncio.current_task`.
+
+- Adds support for contextvars in Python 3.6 using :pypi:`aiocontextvars`.
+
+    In mode services you can now use :mod:`contextvars` module even
+    on Python 3.6, thanks to the work of :github_user:`fantix`.
+
+.. _version-1.18.2:
+
+1.18.2
+======
+:release-date: 2018-11-30 6:23 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Worker: SIGUSR1 cry handler: Fixed crash when coroutine does not have
+  ``__name__`` attribute.
+
+.. _version-1.18.1:
+
+1.18.1
+======
+:release-date: 2018-10-03 2:49 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- **Service**: ``Service.from_awaitable(coro)`` improvements.
+
+    The resulting ``service.start`` will now:
+
+    + Convert awaitable to :class:`asyncio.Task`.
+    + Wait for task to complete.
+
+    then ``service.stop`` will:
+
+    + Cancel the task.
+
+    This ensures an ``asyncio.sleep(10.0)`` within can be
+    cancelled. If you need some operation to absolutely finish you must
+    use `asyncio.shield`.
+
+- **Utils**: ``cached_property`` adds new ``.is_set(o)`` method on descriptor
+
+    This can be used to test for the attribute having been cached/used.
+
+    If you have a class with a ``cached_property``:
+
+    .. sourcecode:: python
+
+        from mode.utils.objects import cached_property
+
+        class X:
+
+            @cached_property
+            def foo(self):
+                return 42
+
+        x = X()
+        print(x.foo)
+
+    From an instance you can now check if the property was accessed:
+
+    .. sourcecode:: python
+
+        if type(x).foo.is_set(x):
+            print(f'Someone accessed x.foo and it was cached as: {x.foo}')
+
+.. _version-1.18.0:
+
+1.18.0
+======
+:release-date: 2018-10-02 3:32 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- **Worker**: Fixed error when starting :pypi:`aioconsole` on ``--debug``
+
+    The worker would crash with:
+
+    .. sourcecode:: text
+
+        TypeError: Use `self.add_context(ctx)` for non-async context
+
+    when started with the ``--debug`` flag.
+
+- **Worker**: New ``daemon`` argument controls shutdown of worker.
+
+    When the flag is enabled, the default, the worker will not shut
+    down until the worker instance is either explicitly stopped, or
+    it receives a terminating process signal (``SIGINT``/``SIGTERM``/etc.)
+
+    When disabled, the worker for the given service will shut down as soon as
+    ``await service.start()`` returns.
+
+    You can think of it as a flag for daemons, but one that doesn't actually
+    do any of the UNIX daemonization stuff (detaching, etc.). It merely
+    means the worker continues to run in the background until stopped by
+    signal.
+
+- **Service**: Added class method: ``Service.from_awaitable``.
+
+    This can be used to create a service out of any coroutine
+    or :class:`~typing.Awaitable`:
+
+    .. sourcecode:: python
+
+        from mode import Service, Worker
+
+        async def me(interval=1.0):
+            print('ME STARTING')
+            await asyncio.sleep(interval)
+            print('ME STOPPING')
+
+        def run_worker(interval=1.0):
+            coro = me(interval=1.0)
+            Worker(Service.from_awaitable(coro)).execute_from_commandline()
+
+        if __name__ == '__main__':
+            run_worker()
+
+    .. note::
+
+        Using a service with ``await self.sleep(1.0)`` is often not what
+        you want, as stopping the service will have to wait for the sleep
+        to finish.
+
+        ``Service.from_awaitable`` is as such a last resort for cases
+        where you're provided a coroutine you cannot implement as a service.
+
+        ``Service.sleep()`` is useful as it will stop sleeping immediately
+        if the service is stopped:
+
+            class Me(Service):
+
+                async def on_start(self) -> None:
+                    await self.sleep(1.0)
+
+- **Service**: New method ``_repr_name`` can be used to override the service
+               class name used in ``repr(service)``.
+
+.. _version-1.17.3:
+
+1.17.3
+======
+:release-date: 2018-09-18 4:00 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Service: New attribute ``mundane_level`` decides the logging level
+  of mundane logging events such as "[X] Starting...", for starting/stopping
+  and tasks being cancelled.
+
+    The value for this must be a logger level name, and is ``"info"`` by
+    default.
+
+    If logging for a service is noisy at info-level, you can move it
+    to debug level by setting this attribute to ``"debug"``:
+
+    .. sourcecode:: python
+
+        class X(Service):
+            mundane_level = 'debug'
+
+.. _version-1.17.2:
+
+1.17.2
+======
+:release-date: 2018-09-17 3:00 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Removed and fixed import from ``collections`` that will be moved
+  to ``collections.abc`` in Python 3.8.
+
+    This also silences a ``DeprecationWarning`` that was being emitted
+    on Python 3.7.
+
+- Type annotations now passing checks on :pypi:`mypy` 0.630.
+
+.. _version-1.17.1:
+
+1.17.1
+======
+:release-date: 2018-09-13 6:27 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- Fixes several bugs related to unwrapping ``Optional[List[..]]``
+  in :func:`mode.utils.objects.annotations`.
+
+    This functionality is not really related to mode at all, so
+    should be moved out of this library.  Faust uses it for models.
+
+.. _version-1.17.0:
+
+1.17.0
+======
+:release-date: 2018-09-12 5:39 P.M PDT
+:release-by: Ask Solem (:github_user:`ask`)
+
+- New async iterator utility: :class:`~mode.utils.aiter.arange`
+
+    Like :class:`range` but returns an async iterator::
+
+        async for n in arange(0, 10, 2):
+            ...
+
+- New async iterator utility: :func:`~mode.utils.aiter.aslice`
+
+    Like :class:`itertools.islice` but works on asynchronous iterators.
+
+- New async iterator utility: :func:`~mode.utils.aiter.chunks`
+
+    :class:`~mode.utils.aiter.chunks` takes an async iterable and divides
+    it up into chunks of size n::
+
+        # Split range of 100 numbers into chunks of 10 each.
+        async for chunk in chunks(arange(100), 10):
+            yield chunk
+
+    This gives chunks like this::
+
+        [
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+            ...,
+        ]
+
+.. _version-1.16.0:
+
+1.16.0
+======
+:release-date: 2018-09-11 1:37 P.M PDT
+:release-by: Ask Solem
+
+- **Distribution**: Installing mode no longer installs the ``t`` directory
+                    containing tests as a Python package.
+
+    Contributed by Michael Seifert
+
+- **Testing**: New :class:`~mode.utils.mocks.AsyncContextManagerMock`
+
+    You can use this to mock asynchronous context managers.
+
+    Please see :class:`~mode.utils.mocks.AsyncContextManagerMock` for
+    an example.
+
+- **CI**: Python 3.7.0 and 3.6.0 was added to the build matrix.
+
+.. _version-1.15.1:
+
+1.15.1
+======
+:release-date: 2018-08-15 11:17 A.M PDT
+:release-by: Ask Solem
+
+- Tests now passing on CPython 3.7.0
+
+- **Utils**: Adds ``remove_optional`` function in :mod:`mode.utils.objects`
+
+    This can be used to extract the concrete type from ``Optional[Foo]``.
+
+- **Utils**: Adds ``humanize_seconds`` function to :mod:`mode.utils.times`
+
+.. _version-1.15.0:
+
+1.15.0
+======
+:release-date: 2018-06-27 1:39 P.M PDT
+:release-by: Ask Solem
+
+- Worker: Logging can now be set up using dictionary config, by passing
+  the ``logging_config`` argument to :class:`mode.Worker`.
+
+    Contributed by Allison Wang.
+
+- Worker: No longer supports the ``logformat`` argument.
+
+    To set up custom log format you must now pass in dict configuration
+    via the ``logging_config`` argument.
+
+- Service: ``start()`` accidentally silenced :exc:`asyncio.CancelledError`.
+
+- Service: Invalid assert caused :class:`~mode.CrashingSupervisor` to
+  crash with strange error
+
+.. _version-1.14.1:
+
+1.14.1
+======
+:release-date: 2018-06-06 1:26 P.M PDT
+:release-by: Ask Solem
+
+- Service: Fixed "coroutine x was never awaited" for background
+  tasks (``@Service.task`` decorator) when service is started and stopped
+  in quick succession.
+
+.. _version-1.14.0:
+
+1.14.0
+======
+:release-date: 2018-06-05 12:13 P.M PDT
+:release-by: Ask Solem
+
+- Adds method ``Service.wait_many(futures, *, timeout=None)``
+
+.. _version-1.13.0:
+
+1.13.0
+======
+:release-date: 2018-05-16 1:26 P.M PDT
+:release-by: Ask Solem
+
+- Mode now registers as a library having static type annotations.
+
+    This conforms to :pep:`561` -- a new specification that defines
+    how Python libraries register type stubs to make them available
+    for use with static analyzers like :pypi:`mypy` and :pypi:`pyre-check`.
+
+- The code base now passes ``--strict-optional`` type checks.
+
+.. _version-1.12.5:
+
+1.12.5
+======
+:release-date: 2018-05-14 4:48 P.M PDT
+:release-by: Ask Solem
+
+- Supervisor: Fixed wrong index calculation in management
+  of index-based service restart.
+
+.. _version-1.12.4:
+
+1.12.4
+======
+:release-date: 2018-05-07 3:20 P.M PDT
+:release-by: Ask Solem
+
+- Adds new mock class for async functions: :func:`mode.utils.mocks.AsyncMock`
+
+    This can be used to mock an async callable::
+
+        from mode.utils.mocks import AsyncMock
+
+        class App(Service):
+
+            async def on_start(self):
+                self.ret = await self.some_async_method('arg')
+
+            async def some_async_method(self, arg):
+                await asyncio.sleep(1)
+
+        @pytest.fixture
+        def app():
+            return App()
+
+        @pytest.mark.asyncio
+        async def test_something(*, app):
+            app.some_async_method = AsyncMock()
+            async with app: # starts and stops the service, calling on_start
+                app.some_async_method.assert_called_once_with('arg')
+                assert app.ret is app.some_async_method.coro.return_value
+
+- Added 100% test coverage for modules:
+
+    + :mod:`mode.proxy`
+    + :mod:`mode.threads`
+    + :mod:`mode.utils.aiter`
+
+.. _version-1.12.3:
+
+1.12.3
+======
+:release-date: 2018-05-07 3:33 P.M PDT
+:release-by: Ask Solem
+
+Important Notes
+---------------
+
+- Moved to https://github.com/ask/mode
+
+Changes
+-------
+
+- Signal: Improved repr when signal has a default sender.
+
+- DictAttribute: Now supports ``len`` and ``del(d[key])``.
+
+- Worker: If overriding ``on_first_start`` you can now call
+  ``default_on_first_start`` instead of super.
+
+    Example::
+
+        class MyWorker(Worker):
+
+            async def on_first_start(self) -> None:
+                print('FIRST START')
+                await self.default_on_first_start()
+
+.. _version-1.12.2:
+
+1.12.2
+======
+:release-date: 2018-04-26 11:47 P.M PDT
+:release-by: Ask Solem
+
+- Fixed shutdown error in :class:`~mode.threads.ServiceThread`.
+
+.. _version-1.12.1:
+
+1.12.1
+======
+:release-date: 2018-04-24 11:28 P.M PDT
+:release-by: Ask Solem
+
+- Now works with CPython 3.6.1 and 3.6.0.
+
+.. _version-1.12.0:
+
+1.12.0
+======
+:release-date: 2018-04-23 1:28 P.M PDT
+:release-by: Ask Solem
+
+Backward Incompatible Changes
+-----------------------------
+
++ Changed ``Service.add_context``
+
+    - To add an async context manager (:class:`~typing.AsyncContextManager`),
+      use :meth:`~mode.Service.add_async_context`::
+
+        class S(Service):
+
+            async def on_start(self) -> None:
+                self.context = await self.add_async_context(MyAsyncContext())
+
+    - To add a regular context manager (:class:`~typing.ContextManager`),
+      use :meth:`~mode.Service.add_context`::
+
+        class S(Service):
+
+            async def on_start(self) -> None:
+                self.context = self.add_context(MyContext())
+
+    This change was made so that contexts can be added from non-async
+    functions. To add an *async context* you still need to be within an
+    async function definition.
+
+News
+----
+
++ Worker: Now redirects :data:`sys.stdout` and :data:`sys.stderr` to the
+          logging subsystem by default.
+
+    - To disable this pass ``Worker(redirect_stdouts=False)``.
+
+    - The default severity level for ``print`` statements are
+      :data:`logging.WARN`, but you can change this using
+      ``Worker(redirect_stdouts_level='INFO')``.
+
++ :class:`~mode.Seconds`/:func:`~mode.want_seconds` can now be expressed
+  as strings and rate strings:
+
+    - float as string: ``want_seconds('1.203') == 1.203``
+
+    - *10 in one second*: ``want_seconds('10/s') == 10.0``
+
+    - *10.33 in one hour*: ``want_seconds('10.3/h') == 0.0028611111111111116``
+
+    - *100 in one hour*: ``want_seconds('100/h') == 0.02777777777777778``
+
+    - *100 in one day*: ``want_seconds('100/d') == 0.0011574074074074076``
+
+    This is especially useful for the rate argument
+    to the :class:`~mode.utils.times.rate_limit` helper.
+
++ Added new context manager: :func:`mode.utils.logging.redirect_stdouts`.
+
++ Module :mod:`mode.types` now organized by category:
+
+    - Service types: :mod:`mode.types.services`
+
+    - Signal types: :mod:`mode.types.signals`
+
+    - Supervisor types: :mod:`mode.types.supervisors`
+
++ :class:`mode.flight_recorder` can now wrap objects so that every method call
+  on that object will result in the call and arguments to that call
+  being logged.
+
+    Example logging statements with ``INFO`` severity::
+
+        with flight_recorder(logger, timeout=10.0) as on_timeout:
+            redis = on_timeout.wrap_info(self.redis)
+            await redis.get(key)
+
+    There's also ``wrap_debug(o)``, ``wrap_warn(o)``, ``wrap_error(o)``,
+    and for any severity: ``wrap(logging.CRIT, o)``.
+
+Fixes
+-----
+
++ Fixed bug in ``Service.wait`` on Python 3.7.
+
+.. _version-1.11.5:
+
+1.11.5
+======
+:release-date: 2018-04-19 3:12 P.M PST
+:release-by: Ask Solem
+
++ FlowControlQueue now available in ``mode.utils.queues``.
+
+    This is a backward compatible change.
+
++ Tests for FlowControlQueue
+
+.. _version-1.11.4:
+
+1.11.4
+======
+:release-date: 2018-04-19 9:36 A.M PST
+:release-by: Ask Solem
+
++ Adds :class:`mode.flight_recorder`
+
+    This is a logging utility to log stuff only when something
+    times out.
+
+    For example if you have a background thread that is sometimes
+    hanging::
+
+        class RedisCache(mode.Service):
+
+            @mode.timer(1.0)
+            def _background_refresh(self) -> None:
+                self._users = await self.redis_client.get(USER_KEY)
+                self._posts = await self.redis_client.get(POSTS_KEY)
+
+    You want to figure out on what line this is hanging, but logging
+    all the time will provide way too much output, and will even change
+    how fast the program runs and that can mask race conditions, so that
+    they never happen.
+
+    Use the flight recorder to save the logs and only log when it times out:
+
+    .. sourcecode:: python
+
+        logger = mode.get_logger(__name__)
+
+        class RedisCache(mode.Service):
+
+            @mode.timer(1.0)
+            def _background_refresh(self) -> None:
+                with mode.flight_recorder(logger, timeout=10.0) as on_timeout:
+                    on_timeout.info(f'+redis_client.get({USER_KEY!r})')
+                    await self.redis_client.get(USER_KEY)
+                    on_timeout.info(f'-redis_client.get({USER_KEY!r})')
+
+                    on_timeout.info(f'+redis_client.get({POSTS_KEY!r})')
+                    await self.redis_client.get(POSTS_KEY)
+                    on_timeout.info(f'-redis_client.get({POSTS_KEY!r})')
+
+    If the body of this :keyword:`with` statement completes before the
+    timeout, the logs are forgotten about and never emitted -- if it
+    takes more than ten seconds to complete, we will see these messages
+    in the log:
+
+    .. sourcecode:: text
+
+        [2018-04-19 09:43:55,877: WARNING]: Warning: Task timed out!
+        [2018-04-19 09:43:55,878: WARNING]: Please make sure it is hanging before restarting.
+        [2018-04-19 09:43:55,878: INFO]: [Flight Recorder-1] (started at Thu Apr 19 09:43:45 2018) Replaying logs...
+        [2018-04-19 09:43:55,878: INFO]: [Flight Recorder-1] (Thu Apr 19 09:43:45 2018) +redis_client.get('user')
+        [2018-04-19 09:43:55,878: INFO]: [Flight Recorder-1] (Thu Apr 19 09:43:49 2018) -redis_client.get('user')
+        [2018-04-19 09:43:55,878: INFO]: [Flight Recorder-1] (Thu Apr 19 09:43:46 2018) +redis_client.get('posts')
+        [2018-04-19 09:43:55,878: INFO]: [Flight Recorder-1] -End of log-
+
+    Now we know this ``redis_client.get`` call can take too long to complete,
+    and should consider adding a timeout to it.
+
+.. _version-1.11.3:
+
+1.11.3
+======
+:release-date: 2018-04-18 5:22 P.M PST
+:relese-by: Ask Solem
+
+- Cry handler (`kill -USR1`): Truncate huge data in stack frames.
+
+- ServiceProxy: Now supports ``_crash`` method.
+
+.. _version-1.11.2:
+
+1.11.2
+======
+:release-date: 2018-04-18 5:02 P.M PST
+:release-by: Ask Solem
+
+- Service: ``add_future()`` now maintains futures in a set and futures
+  are automatically removed from it when done.
+
+- Cry handler (`kill -USR1`) now shows name of Service.task background tasks.
+
+- Stampede: Now propagates cancellation.
+
+.. _version-1.11.1:
+
+1.11.1
+======
+:release-date: 2018-04-18 11:08 P.M PST
+:release-by: Ask Solem
+
+- Service.add_context: Now works with AsyncContextManager.
+
+- CI now runs functional tests.
+
+- Added supervisor and service tests.
+
+.. _version-1.11.0:
+
+1.11.0
+======
+:release-date: 2018-04-17 1:23 P.M PST
+:release-by: Ask Solem
+
+- Supervisor: Fixes bug with max restart triggering too early.
+
+- Supervisor: Also restart child services.
+
+- Service: Now supports ``__post_init__`` like Python 3.7 dataclasses.
+
+- Service: Crash is logged even if crashed multiple times.
+
+.. _version-1.10.4:
+
+1.10.4
+======
+:release-date: 2018-04-13 3:53 P.M PST
+:release-by: Ask Solem
+
+- Supervisor: Log full traceback when restarting service.
+
+.. _version-1.10.3:
+
+1.10.3
+======
+:release-date: 2018-04-11 10:58 P.M PST
+:release-by: Ask Solem
+
+- setup_logging: now ensure logging is setup by clearing root logger handlers.
+
+.. _version-1.10.2:
+
+1.10.2
+======
+:release-date: 2018-04-03 4:50 P.M PST
+:release-by: Ask Solem
+
+- Fixed wrong version number in Changelog.
+
+.. _version-1.10.1:
+
+1.10.1
+=======
+:release-date: 2018-04-03 4:43 P.M PST
+:release-by: Ask Solem
+
+- Service.wait: If the future we are waiting for is cancelled we must
+                propagate :exc:`CancelledError`.
+
+.. _version-1.10.0:
+
+1.10.0
+======
+:release-date: 2018-03-30 12:36 P.M PST
+:release-by: Ask Solem
+
+- New supervisor: :class:`~mode.supervisors.ForfeitOneForOneSupervisor`.
+
+    If a service in the group crashes we give up on that service
+    and don't start it again.
+
+- New supervisor: :class:`~mode.supervisor.ForfeitOneForAllSupervisor`.
+
+    If a service in the group crashes we give up on it, but also
+    stop all services in the group and give up on them also.
+
+- Service Logging: Renamed ``self.log.crit`` to ``self.log.critical``.
+
+    The old name is still available and is not deprecated at this time.
+
+
+.. _version-1.9.2:
+
+1.9.2
+=====
+:release-date: 2018-03-20 10:17 P.M PST
+:release-by: Ask Solem
+
+- Adds ``FlowControlEvent.clear()`` to clear all contents of flow
+  controlled queues.
+
+- :class:`~mode.utils.futures.FlowControlEvent` now starts in a suspended
+  state.
+
+    To disable this pass ``FlowControlEvent(initially_suspended=False))``.
+
+- Adds ``Service.service_reset`` method to reset service
+  start/stopped/crashed/etc., flags
+
+.. _version-1.9.1:
+
+1.9.1
+=====
+:release-date: 2018-03-05 11:51 P.M PST
+:release-by: Ask Solem
+
+- No longer depends on :pypi:`terminaltables`.
+
+.. _version-1.9.0:
+
+1.9.0
+=====
+:release-date: 2018-03-05 11:33 P.M PST
+:release-by: Ask Solem
+
+Backward Incompatible Changes
+=============================
+
+- Module ``mode.utils.debug`` renamed to :mod:`mode.debug`.
+
+    This is unlikely to affect users as this module is only used by mode
+    internally.
+
+    This module had to move because it imports ``mode.Service``, and
+    the :mod:`mode.utils` package is not allowed to import from the
+    :mod:`mode` package at all.
+
+News
+====
+
+- Added function :func:`mode.utils.import.smart_import`.
+
+- Added non-async version of :class:`mode.Signal`: :class:`mode.SyncSignal`.
+
+    The signal works exactly the same as the asynchronous version, except
+    ``Signal.send`` must not be :keyword:`await`-ed::
+
+        on_configured = SyncSignal()
+        on_configured.send(sender=obj)
+
+
+- Added method ``iterate`` to :class:`mode.utils.imports.FactoryMapping`.
+
+    This enables you to iterate over the extensions added to a
+    :mod:`setuptools` entrypoint.
+
+Fixes
+=====
+
+- ``StampedeWrapper`` now correctly clears flag when original call done.
+
+.. _version-1.8.0:
+
+1.8.0
+=====
+:release-date: 2018-02-20 04:01 P.M PST
+:release-by: Ask Solem
+
+Backward Incompatible Changes
+-----------------------------
+
+- API Change to fix memory leak in ``Service.wait``.
+
+    The ``Service.wait(*futures)`` method was added to be able to wait for
+    this list of futures but also stop waiting if the service is stopped or
+    crashed::
+
+        import asyncio
+        from mode import Service
+
+        class X(Service):
+            on_thing_ready: asyncio.Event
+
+            def __post_init__(self):
+                self.on_thing_ready = asyncio.Event(loop=loop)
+
+            @Service.task
+            async def _my_background_task(self):
+                while not self.should_stop:
+                    # wait for flag to be set (or service stopped/crashed)
+                    await self.wait(self.on_thing_ready.wait())
+                    print('FLAG SET')
+
+    The problem with this was
+
+    1) The wait flag would return None and not raise an exception if the
+       service is stopped/crashed.
+    2) Futures would be scheduled on the event loop but not properly cleaned
+       up, creating a very slow memory leak.
+    3) No return value was returned for succesful feature.
+
+    So to properly implement this we had to change the API of the ``wait``
+    method to return a tuple instead, and to only allow a single coroutine to
+    be passed to wait::
+
+        @Service.task
+        async def _my_background_task(self):
+            while not self.should_stop:
+                # wait for flag to be set (or service stopped/crashed)
+                result, stopped = await self.wait(self.on_thing_ready)
+                if not stopped:
+                    print('FLAG SET')
+
+    This way the user can provide an alternate path when the service is
+    stopped/crashed while waiting for this event.
+
+    A new shortcut method ``wait_for_stopped(fut)`` was also added::
+
+        # wait for flag to be set (or service stopped/crashed)
+        if not await self.wait_for_stopped(self.on_thing_ready):
+            print('FLAG SET')
+
+    Moreover, you can now pass :class:`asyncio.Event` objects directly to
+    ``wait()``.
+
+News
+----
+
+- Added :class:`mode.utils.collections.DictAttribute`.
+
+- Added :class:`mode.utils.collections.AttributeDict`.
+
+Bugs
+----
+
+- Signals can create clone of signal with default sender already set
+
+    .. code-block:: python
+
+        signal: Signal[int] = Signal()
+        signal = signal.with_default_sender(obj)
+
+.. _version-1.7.0:
+
+1.7.0
+=====
+:release-date: 2018-02-05 12:28 P.M PST
+:release-by: Ask Solem
+
+- Adds :mod:`mode.utils.aiter` for missing ``aiter`` and ``anext`` functions.
+
+- Adds :mod:`mode.utils.futures` for :class:`asyncio.Task` related tools.
+
+- Adds :mod:`mode.utils.collections` for custom mapping/set and list
+  data structures.
+
+- Adds :mod:`mode.utils.imports` for importing modules at runtime,
+  as well as utilities for typed :mod:`setuptools` entry-points.
+
+- Adds :mod:`mode.utils.text` for fuzzy matching user input.
+
+.. _version-1.6.0:
+
+1.6.0
+=====
+:release-date: 2018-02-05 11:10 P.M PST
+:release-by: Ask Solem
+
+- Fixed bug where ``@Service.task`` background tasks were not started
+  in subclasses.
+
+- Service: Now has two exit stacks: ``.exit_stack`` & ``.async_exit_stack``.
+
+    This is a backward incompatible change, but probably nobody was accessing
+    ``.exit_stack`` directly.
+
+    Use ``await Service.enter_context(ctx)`` with both regular and
+    asynchronous context managers::
+
+        class X(Service):
+
+            async def on_start(self) -> None:
+                # works with both context manager types.
+                await self.enter_context(async_context)
+                await self.enter_context(context)
+
+- Adds :func:`~mode.utils.contextlib.asynccontextmanager`` decorator
+  from CPython 3.7b1.
+
+    This decorator works exactly the same as
+    :func:`contextlib.contextmanager`, but for :keyword:`async with`.
+
+    Import it from :mod:`mode.utils.contexts`::
+
+        from mode.utils.contexts import asynccontextmanager
+
+        @asynccontextmanager
+        async def connection_or_default(conn: Connection = None) -> Connection:
+            if connection is None:
+                async with connection_pool.acquire():
+                    yield
+            else:
+                yield connection
+
+        async def main():
+            async with connection_or_default() as connection:
+                ...
+
+- Adds :class:`~mode.utils.contexts.AsyncExitStack` from CPython 3.7b1
+
+    This works like :class:`contextlib.ExitStack`, but for asynchronous
+    context managers used with :keyword:`async with`.
+
+- Logging: Worker debug log messages are now colored blue when colors are
+  enabled.
+
+
+.. _version-1.5.0:
+
+1.5.0
+=====
+:release-date: 2018-01-04 03:43 P.M PST
+:release-by: Ask Solem
+
+- Service: Adds new ``await self.add_context(context)``
+
+    This adds a new context manager to be entered when the service starts,
+    and exited once the service exits.
+
+    The context manager can be either a :class:`typing.AsyncContextManager`
+    (:keyword:`async with`) or a
+    regular :class:`typing.ContextManager` (:keyword:`with`).
+
+- Service: Added ``await self.add_runtime_dependency()`` which unlike
+  ``add_dependency`` starts the dependent service if the self is already
+  started.
+
+- Worker: Now supports a new ``console_port`` argument to specify a port
+  for the :pypi:`aiomonitor` console, different than the default (50101).
+
+    .. note::
+
+        The aiomonitor console is only started when ``Worker(debug=True, ...)``
+        is set.
+
+.. _version-1.4.0:
+
+1.4.0
+=====
+:release-date: 2017-12-21 09:50 A.M PST
+:release-by: Ask Solem
+
+- Worker: Add support for parameterized logging handlers.
+
+    Contributed by Prithvi Narasimhan.
+
+.. _version-1.3.0:
+
+1.3.0
+=====
+:release-date: 2017-12-04 01:17 P.M PST
+:release-by: Ask Solem
+
+- Now supports color output in logs when logging to a terminal.
+
+- Now depends on :pypi:`colorlog`
+
+- Added :class:`mode.Signal`: async. implementation of the observer
+  pattern (think Django signals).
+
+- DependencyGraph is now a generic type: ``DependencyGraph[int]``
+
+- Node is now a generic type: ``Node[Service]``.
+
+.. _version-1.2.1:
+
+1.2.1
+=====
+:release-date: 2017-11-06 04:50 P.M PST
+:release-by: Ask Solem
+
+- Service: Subclasses can now override a Service.task method.
+
+    Previously it would unexpectedly start two tasks:
+    the task defined in the superclass and the task defined in
+    the subclass.
+
+.. _version-1.2.0:
+
+1.2.0
+=====
+:release-date: 2017-11-02 03:17 P.M PDT
+:release-by: Ask Solem
+
+- Renames PoisonpillSupervisor to CrashingSupervisor.
+
+- Child services now stopped even if not fully started.
+
+    Previously ``child_service.stop()`` would not be called
+    if `child_service.start()` never completed, but as a service
+    might be in the process of starting other child services, we need
+    to call stop even if not fully started.
+
+.. _version-1.1.1:
+
+1.1.1
+=====
+:release-date: 2017-10-25 04:34 P.M PDT
+:release-by: Ask Solem
+
+- Added alternative event loop implementations: eventlet, gevent, uvloop.
+
+    E.g. to use gevent as the event loop, install mode using:
+
+    .. sourcecode:: console
+
+        $ pip install mode[gevent]
+
+    and add this line to the top of your worker entrypoint module::
+
+        import mode.loop
+        mode.loop.use('gevent')
+
+- Service: More fixes for the weird `__init_subclass__` behavior
+  only seen in Python 3.6.3.
+
+- ServiceThread: Now propagates errors raised in the thread
+  to the main thread.
+
+.. _version-1.1.0:
+
+1.1.0
+=====
+:release-date: 2017-10-19 01:35 P.M PDT
+:release-by: Ask Solem
+
+- ServiceThread: Now inherits from Service, and uses
+  ``loop.run_in_executor()`` to start the service as a thread.
+
+- setup_logging: filename argument is now respected.
+
+.. _version-1.0.2:
+
+1.0.2
+=====
+:release-date: 2017-10-10 01:51 P.M PDT
+:release-by: Ask Solem
+
+- Adds support for Python 3.6.0
+
+- Adds backports of typing improvements in CPython 3.6.1
+  to ``mode.utils.compat``: ``AsyncContextManager``, ``ChainMap``,
+  ``Counter``, and ``Deque``.
+
+- ``Supervisor.add`` and ``.discard`` now takes an arbitrary number
+  of services to add/discard as star arguments.
+
+- Fixed typo in example: ``Service.task`` -> ``mode.Service.task``.
+
+    Contributed by Xu Jing.
+
+.. _version-1.0.1:
+
+1.0.1
+=====
+:release-date: 2017-10-05 02:53 P.M PDT
+:release-by: Ask Solem
+
+- Fixes compatibility with Python 3.6.3.
+
+    Python 3.6.3 badly broke ``__init_subclass__``, in such a way that
+    any class attribute set is set for all subclasses.
+
+.. _version-1.0.0:
+
+1.0.0
+=====
+:release-date: 2017-10-04 01:29 P.M PDT
+:release-by: Ask Solem
+
+- Initial release

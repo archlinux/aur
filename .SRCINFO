@@ -1,0 +1,15 @@
+pkgbase = python-mode
+	pkgdesc = Python AsyncIO Services
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://github.com/ask/mode
+	changelog = Changelog
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-colorlog>=2.9.0
+	depends = python-mypy_extensions
+	source = python-mode-4.4.0.tar.gz::https://files.pythonhosted.org/packages/source/m/mode/mode-4.4.0.tar.gz
+	sha256sums = 2a73f1b8034f922d31b3827016cbddf3b64d01815eed9d6c31377ef82a11d9a6
+
+pkgname = python-mode
