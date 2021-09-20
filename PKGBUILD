@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cicero
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Unicode tool with a terminal user interface"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('fontconfig' 'freetype2')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('353875e82d311ed518bf0452acd8128ebdbb9a85678dcc8a3bf032f2dc863c5c88b0ed28f3815e10839ced70bc604d26d2190330fbd41974db3b14c9537cb9d2')
+sha512sums=('2aefc4f6dd9a96dddf08550495f2e30351ce76efabb5b8a99e4e2e74869d6bcbb3efd552376a9406e556f2eb0f28ef9fce8025b8fcad98bcf31fe69ab37049e4')
 
 build() {
   cd "$pkgname-tui-$pkgver"
