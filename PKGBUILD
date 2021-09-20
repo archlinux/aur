@@ -2,11 +2,11 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=eudic
-pkgver=12.6.5
-_date=2021-08-27
+pkgver=12.6.7
+_date=2021-09-16
 _lang=en
 _flang=English
-pkgrel=2
+pkgrel=1
 pkgdesc="Proprietary  ${_flang} dictionary software for linux"
 arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
@@ -17,7 +17,7 @@ depends=(
          'qt5-webkit'
          )
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha512sums=('de477031bb575638c475f70cd058910eb9a2bf02592ede333e3b00cb6cb876370dde76dce00524ee9bded414c9487bc8863835253435b7f97f578aeb6296330c')
+sha512sums=('437a39a3c09e0ccde24f30f7d6accb8148da768b005df4792bbd5ca281c8f90e21187606903e953413223c08af97192d182107e9a134c1d7227d61aaf71defcb')
 
 # sometime use curl to download source deb, throws 404 not found. 
 # user other UA instead of origion one fixed it.
