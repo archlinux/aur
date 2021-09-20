@@ -1,6 +1,6 @@
 # Maintainer: Kamil Cukrowski <kamilcukrowski@gmail.com
 pkgname=negrep-bin
-pkgver=1.1.8
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Grep-like utility based on Nevod Textual Pattern Matching"
 arch=('x86_64')

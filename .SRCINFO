@@ -1,12 +1,12 @@
 pkgbase = negrep-bin
 	pkgdesc = Grep-like utility based on Nevod Textual Pattern Matching
-	pkgver = 1.1.8
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/nezaboodka/nevod
 	arch = x86_64
 	license = Apache
 	depends = curl
-	source = https://github.com/nezaboodka/nevod/releases/download/v1.1.8/negrep-rhel.6-x64.tar.gz
+	source = https://github.com/nezaboodka/nevod/releases/download/v1.2.2/negrep-rhel.6-x64.tar.gz
 	sha256sums = 7f45a21899eb1a0b75990c3f2b81c24dd0e90637e675bea7cb55df70db58d169
 
 pkgname = negrep-bin
