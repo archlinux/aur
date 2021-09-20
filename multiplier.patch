@@ -1,8 +1,8 @@
 diff --git a/src/evdev.c b/src/evdev.c
-index 8afa8e4..fae672a 100644
+index f332bc1..0dbb4e0 100644
 --- a/src/evdev.c
 +++ b/src/evdev.c
-@@ -1186,6 +1186,7 @@ evdev_read_wheel_click_props(struct evdev_device *device)
+@@ -1369,6 +1369,7 @@ evdev_read_wheel_click_props(struct evdev_device *device)
  	} else {
  		angles.x = angles.y;
  	}
@@ -11,7 +11,7 @@ index 8afa8e4..fae672a 100644
  	return angles;
  }
 diff --git a/src/libinput.c b/src/libinput.c
-index 6d00a00..0bf1324 100644
+index a0c8504..112f96d 100644
 --- a/src/libinput.c
 +++ b/src/libinput.c
 @@ -33,6 +33,9 @@
@@ -24,7 +24,7 @@ index 6d00a00..0bf1324 100644
  
  #include "libinput.h"
  #include "libinput-private.h"
-@@ -719,6 +722,16 @@ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
+@@ -747,6 +750,16 @@ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
  	return value;
  }
  
@@ -41,8 +41,12 @@ index 6d00a00..0bf1324 100644
  LIBINPUT_EXPORT double
  libinput_event_pointer_get_axis_value_discrete(struct libinput_event_pointer *event,
  					       enum libinput_pointer_axis axis)
-@@ -739,7 +752,7 @@ libinput_event_pointer_get_axis_value_discrete(struct libinput_event_pointer *ev
- 			value = event->discrete.x;
+@@ -764,10 +777,10 @@ libinput_event_pointer_get_axis_value_discrete(struct libinput_event_pointer *ev
+ 	} else {
+ 		switch (axis) {
+ 		case LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL:
+-			value = event->discrete.x;
++			value = event->discrete.x * atoi(multiplier);
  			break;
  		case LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL:
 -			value = event->discrete.y;
@@ -50,7 +54,20 @@ index 6d00a00..0bf1324 100644
  			break;
  		}
  	}
-@@ -1783,6 +1796,7 @@ libinput_init(struct libinput *libinput,
+@@ -820,10 +833,10 @@ libinput_event_pointer_get_scroll_value_v120(struct libinput_event_pointer *even
+ 	} else {
+ 		switch (axis) {
+ 		case LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL:
+-			value = event->v120.x;
++			value = event->v120.x * atoi(multiplier);
+ 			break;
+ 		case LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL:
+-			value = event->v120.y;
++			value = event->v120.y * atoi(multiplier);
+ 			break;
+ 		}
+ 	}
+@@ -1874,6 +1887,7 @@ libinput_init(struct libinput *libinput,
  		close(libinput->epoll_fd);
  		return -1;
  	}
