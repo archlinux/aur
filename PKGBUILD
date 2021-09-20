@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -68,8 +68,8 @@ prepare() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    dxvk64_cflags="$dxvk_cflags -mno-avx"
-    dxvk32_cflags="$dxvk_cflags -mno-avx"
+    dxvk64_cflags="$dxvk_cflags -mno-avx -mno-avx2"
+    dxvk32_cflags="$dxvk_cflags -mno-avx -mno-avx2"
     # These flags are taken from Proton, I don't know if there are issues with Arch wine.
     dxvk64_cflags="$dxvk_cflags -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
     dxvk32_cflags="$dxvk_cflags -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
