@@ -3,7 +3,7 @@
 # Contributor: Victor Häggqvist <aur a snilius d com>
 
 pkgname=solaar-git
-pkgver=1.0.4.r57.g69f889e
+pkgver=1.0.7rc2.r0.ge82457f
 pkgrel=1
 pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
 url="https://pwr-solaar.github.io/Solaar/"
@@ -38,6 +38,9 @@ build() {
 
 package() {
   cd "${pkgname}"
+
+  tools/po-compile.sh
+
   python setup.py install --skip-build \
     --optimize=1 \
     --prefix=/usr \
