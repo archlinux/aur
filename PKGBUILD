@@ -19,10 +19,7 @@ md5sums=('23235e636d60c380aa1631b44fabbb6b'
          'f51bc71ef665266ae68ce134892ca612'
          '956a47cde4334a8cdaf7362df6777009')
 
-if [[ $CARCH == 'i686' ]]; then
-    source+=("http://www.siedler25.org/uploads/stable/${pkgname}_${pkgsubver}-${build}-linux.i386.tar.bz2")
-    md5sums+=('6feec68e1f229e856ce6b9d6bbfef006')
-elif [[ $CARCH == 'x86_64' ]]; then
+if [[ $CARCH == 'x86_64' ]]; then
     source+=("http://www.siedler25.org/uploads/stable/${pkgname}_${pkgsubver}-${build}-linux.x86_64.tar.bz2")
     md5sums+=('956a47cde4334a8cdaf7362df6777009')
 fi
