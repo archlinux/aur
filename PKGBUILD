@@ -1,36 +1,34 @@
-# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Maintainer: Marc Plano-Lesay <kernald@enoent.fr>
+# Contributor: Muflone http://www.muflone.com/contacts/english/
 # Contributor: lestb <tkhdlstfl dot l plus aur at gmail dot com>
-# Contributor: Christoph Bayer <chrbayer@criby.de>
 
-_sdkver=7.0
-_apilevel='24'
-_rev='r07'
-_arch='x86'
-pkgname="android-${_arch/x86_/x86-}-system-image-${_apilevel}"
-pkgver="${_sdkver}_${_rev}"
+_apilevel=24
+_arch=x86
+pkgname=android-${_arch}-system-image-${_apilevel}
+pkgver=r08
 pkgrel=1
-pkgdesc="Android ${_arch} System Image, API-${_apilevel}"
+pkgdesc="Android ${_arch} Atom System Image, API-${_apilevel}"
 arch=('any')
-url='https://software.intel.com/en-us/android/tools'
+url='https://developer.android.com/studio/index.html'
 license=('custom')
 depends=("android-platform-${_apilevel}")
 optdepends=('qemu' 'libvirt')
-provides=("${pkgname/x86-/x86_}-${_apilevel}")
-conflicts=("${pkgname/x86-/x86_}-${_apilevel}")
-options=('!strip' '!upx')
-PKGEXT='.pkg.tar'
-source=("http://dl.google.com/android/repository/sys-img/android/${_arch}-${_apilevel}_${_rev}.zip"
-        "source.properties")
-sha1sums=('566fdee283a907854bfa3c174265bc31f396eabd'
-          '15a76e74cf65b144fe45663ac7f0a73d9d34d090')
+provides=("${pkgname}")
+options=('!strip')
+source=("https://dl-ssl.google.com/android/repository/sys-img/android/${_arch}-${_apilevel}_${pkgver}.zip")
+        sha256sums=('ef242578ed86f73fd4be27935d094d58f2c4b7ab53362b74978e2257a8df3bba')
+
+prepare() {
+  # Fix permissions
+  cd "${_arch}"
+  find . -type f -print0 | xargs --null chmod -R u=rw,go=r
+  find . -type d -print0 | xargs --null chmod -R u=rwx,go=rx
+}
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
   mkdir -p "${_destdir}"
-  mv "${srcdir}/${_arch}" "${_destdir}"
-  install -Dm644 "${srcdir}/source.properties" "${_destdir}/${_arch}"
+  mv "${srcdir}/${_arch}" "${_destdir}/"
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
-
-# vim:set et sw=2 sts=2 tw=80:
