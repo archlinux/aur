@@ -14,7 +14,7 @@ makedepends=('asciidoc' 'git')
 optdepends=('btrfs-progs: btrfs support')
 provides=('devtools')
 conflicts=('devtools')
-source=("git+https://git.archlinux.org/devtools.git?signed")
+source=("$pkgname::git+https://github.com/archlinux/devtools.git?signed")
 validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53'
               '4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC'
               '86CFFCA918CF3AF47147588051E8B148A9999C34'
