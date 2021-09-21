@@ -1,7 +1,7 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=sonic3air-bin
-pkgver=v21.05.08.0
+pkgver=v21.09.12.0
 pkgrel=1
 pkgdesc='A fan-made widescreen remaster of Sonic 3 & Knuckles.'
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
 )
 
 sha256sums=(
-	'cb3dbfb5eaa51b5f6b5c52cbdf3d97027a43428777e64fb68fa7fcc0bdd9c5ff'
+	'43c31721b3abf048d79c070da6592b2f04234730a27b78002f387afad41deb50'
 	'7c5568d01131935c189b3060ea0319cc0047c8a76c9152bf5d461e70f676eebd'
 	'0ac3f4ea42157e6956f85e1e68e7bd456104fd264d10dd2be43e4c38421b3426'
 	'4bff643c05c2396b7e2987721c2f77cd3921434a0a2511f4a3bf31fc53fd7d76'
