@@ -1,11 +1,13 @@
 # Based on the AUR package, adapted to my PETSc
 # (Metis, Hypre, OpenMPI, VTK, HDF5, ifem, nodeconstraint
 # shared libraries; Methods: opt oprof dbg; x86_64)
+#
+# Maintainer eDgar <eDgar % a t % openmail cc>
 
 pkgname=libmesh-petsc
 pkgbase=libmesh
 pkgrel=1
-pkgver=cpp03_final.r6253.g27ad98c5a
+pkgver=cpp03_final.r6437.gf6aec9225
 pkgdesc="A C++ Finite Element Library"
 arch=("x86_64")
 url="http://libmesh.github.io/"
@@ -25,11 +27,6 @@ source=(
 sha256sums=('SKIP'
             'b6b2d10d1f423b9a088e6b55d9368d8f1ac7291646da34864c5f58124f5e3880'
             'da0ef283dcee18dbe2878d4b998a82d83dbf94323146cf257bc77304427533d4')
-
-# Find the location of the header files of PETSc
-# Get the PETSc directory
-petsc_incl=$(pkgconf --cflags-only-I PETSc)
-export PETSC_DIR=${petsc_incl##-I}
 
 #  From UPC: Building And Using Static And Shared "C"
 #  Libraries.html
@@ -101,8 +98,14 @@ export F77FLAGS="$generic_flags"
 # export METHODS="opt oprof dbg"
 export METHODS="opt dbg"
 
+export OMPI_MCA_opal_cuda_support=0
 export CC=mpicc CXX=mpicxx FC=mpifort
-export PETSC_DIR=/usr/Local/petsc
+# Find the location of the header files of PETSc
+# # Get the PETSc directory
+# petsc_incl=$(pkgconf --cflags-only-I PETSc)
+# export PETSC_DIR=${petsc_incl##-I}
+[ -f "/etc/profile.d/petsc.sh" ] &&
+  source "/etc/profile.d/petsc.sh"
 
 # Use English, metres, dates like the rest of us
 export LANG=en_IE.UTF-8 LANGUAGE=en_IE.UTF-8 LC_ALL=en_IE.UTF-8
@@ -215,7 +218,7 @@ build() {
   CC=mpicc \
     CXX=mpicxx \
     FC=mpifort \
-    PETSC_DIR=/usr/local/petsc/linux-c-opt \
+    PETSC_DIR="${PETSC_DIR}" \
     OMPI_MCA_opal_warn_on_missing_libcuda=0 \
     $config_file $(for (( i=1; i<=${#CONFOPTS[@]}; i++)); do
                    echo "${CONFOPTS[$i]}";
@@ -229,11 +232,11 @@ build() {
   make examples_doc
 }
 
-check() {
-  buildir="${srcdir}"/build
-  cd "${buildir}"
-  make check
-}
+# check() {
+#   buildir="${srcdir}"/build
+#   cd "${buildir}"
+#   make check
+# }
 
 package() {
   export OMPI_MCA_opal_warn_on_missing_libcuda=0
