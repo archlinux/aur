@@ -70,8 +70,8 @@ _override_max_perf=
 pkgbase=nvidia-dkms-performance
 pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance
 	 lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
-pkgver=470.63.01
-pkgrel=3
+pkgver=470.74
+pkgrel=1
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -86,7 +86,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '0003-nvidia-drm-modeset.patch'
         '0004-NVreg-Improvements.patch'
         '0005-nvidia-settings-paths.patch')
-sha256sums=('6f1a44cc4a2ce27dce749ccd1e403c1db0f4791e2d22c05ec966842101d3ed14'
+sha256sums=('33e513dee329f2a9b106882979f1747eccb64eb698952c12cd030987cecadf6a'
             'ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
