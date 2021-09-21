@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-bluetooth-quick-connect
 	pkgdesc = Allow to connect bluetooth paired devices from gnome control panel.
-	pkgver = 20
+	pkgver = 23
 	pkgrel = 1
 	url = https://github.com/bjarosze/gnome-bluetooth-quick-connect
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = gnome-shell-extension-bluetooth-quick-connect
 	depends = gnome-shell
 	depends = bluez-utils
 	conflicts = gnome-shell-extension-bluetooth-quick-connect-git
-	source = gnome-shell-extension-bluetooth-quick-connect-20.tar.gz::https://github.com/bjarosze/gnome-bluetooth-quick-connect/archive/refs/tags/v20.tar.gz
-	md5sums = c828a10942a536c475983a43ffba75e4
+	source = gnome-shell-extension-bluetooth-quick-connect-23.tar.gz::https://github.com/bjarosze/gnome-bluetooth-quick-connect/archive/refs/tags/v23.tar.gz
+	md5sums = dd01f159983c69d20b14173c1e1196e8
 
 pkgname = gnome-shell-extension-bluetooth-quick-connect
-
