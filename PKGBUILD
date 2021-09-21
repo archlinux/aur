@@ -1,4 +1,4 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-cgen
 _pkgname=cgen
 pkgver=2020.1
@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/inducer/cgen"
 license=('MIT')
 depends=('python>=3.6')
+makedepends=('python-setuptools')
 source=($url/archive/v$pkgver.tar.gz)
 source=($pkgname-$pkgver.tar.gz::https://github.com/inducer/cgen/archive/v$pkgver.tar.gz)
 sha256sums=('3d7309225294b989a4759a9362a5cb8487ac69d97ef3a49e850905fa1c8d852f')
