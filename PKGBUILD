@@ -1,7 +1,7 @@
 # Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 pkgname=easy-copy
-pkgver=0.4.5
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="modern alternative to coreutils' file handling - beta version"
 license=('GPL3')
 url="https://github.com/scrouthtv/easy-copy"
@@ -10,11 +10,11 @@ depends=()
 makedepends=('go')
 optdepends=()
 conflicts=('easycopy-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-beta.tar.gz")
-sha512sums=("dfdf6f1827c217aa0bac20b0664a0c9f38fe2f7dd8608a59cc89224a2a312e36a3fe764e9f6bd0eedfed5044af08832832f52ff4ec472b82ef665264c5304f65")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-rc1.tar.gz")
+sha512sums=("2cfc611904f99b22eb6fea0f1e9daa45469811073085702e9858bd3a48fe3c53f3e6a0aeef3ec517f3e0b74ad9b5c18fb28e46cd230f4a9a7b7793c0b2c90d35")
 
 build() {
-  cd "$pkgname-$pkgver-beta"
+  cd "$pkgname-$pkgver-rc1"
 
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver-beta"
+	cd "$pkgname-$pkgver-rc1"
 
 	# binary:
   install -Dm755 "easy-copy" "$pkgdir/usr/bin/ec"
