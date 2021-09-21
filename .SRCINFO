@@ -1,0 +1,16 @@
+pkgbase = android-x86-system-image-27
+	pkgdesc = Android x86 Atom System Image, API-27
+	pkgver = r01
+	pkgrel = 1
+	url = https://developer.android.com/studio/index.html
+	arch = any
+	license = custom
+	depends = android-platform-27
+	optdepends = qemu
+	optdepends = libvirt
+	provides = android-x86-system-image-27
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/sys-img/android/x86-27_r01.zip
+	sha256sums = 84a90d758459b500857de8bfa78dbbac1a975d57766256ac048351f2b195b287
+
+pkgname = android-x86-system-image-27
