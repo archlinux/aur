@@ -1,7 +1,7 @@
 # Maintainer: Fabio Manganiello <info@fabiomanganiello.com>
 
 pkgname=platypush-git
-pkgver=0.22.1.r0.cb0638fe
+pkgver=0.22.1.r0.d18245b1
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
@@ -19,7 +19,7 @@ conflicts=('platypush')
 provides=('platypush')
 options=(!strip)
 source=("platypush.tar.gz::https://git.platypush.tech/platypush/platypush/-/archive/master/platypush-master.tar.gz")
-sha512sums=('988b7e94e3ef7c2aa8f817e9124f7fbd3fac70ec65b9a4a29e72668305b47743d9c6ee145f588adab3ee2c6ddb2ab31f88e18c1fec47dd8b710a95726b897e04')
+sha512sums=('ba61d2db40764046fb397d483fd3e66ae712d172d0a598af76847b1e583d7e035bf04cc08229f979eca3d7629fdddd7b7859865834ad7d145707dc623241d39c')
 
 package() {
     cd "${srcdir}/platypush-master"
