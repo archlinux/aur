@@ -1,5 +1,6 @@
 *.xz
 *.zip
+*.zst
 pkg
 src
 IBC.jar
