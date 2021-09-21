@@ -3,7 +3,7 @@
 
 _pkgname=qtermwidget
 pkgname=$_pkgname-git
-pkgver=0.14.1.57.g911ae03
+pkgver=0.17.0.23.g68a019e
 pkgrel=1
 pkgdesc="A terminal widget for Qt, used by QTerminal"
 arch=("x86_64")
@@ -12,7 +12,7 @@ url="https://github.com/lxqt/qtermwidget"
 license=("LGPL" "custom:BSD" "custom:Public Domain")
 depends=("qt5-base")
 makedepends=("git" "cmake" "lxqt-build-tools-git" "qt5-tools"
-             "python-pyqt5" "python-sip" "sip")
+             "python-pyqt5" "python-sip4" "sip4")
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 optdepends=(

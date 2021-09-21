@@ -1,6 +1,6 @@
 pkgbase = qtermwidget-git
 	pkgdesc = A terminal widget for Qt, used by QTerminal
-	pkgver = 0.14.1.57.g911ae03
+	pkgver = 0.17.0.23.g68a019e
 	pkgrel = 1
 	url = https://github.com/lxqt/qtermwidget
 	arch = x86_64
@@ -12,14 +12,13 @@ pkgbase = qtermwidget-git
 	makedepends = lxqt-build-tools-git
 	makedepends = qt5-tools
 	makedepends = python-pyqt5
-	makedepends = python-sip
-	makedepends = sip
+	makedepends = python-sip4
+	makedepends = sip4
 	depends = qt5-base
 	optdepends = python: PyQt5 bindings
-	provides = qtermwidget=0.14.1.57.g911ae03
+	provides = qtermwidget=0.17.0.23.g68a019e
 	conflicts = qtermwidget
 	source = git+https://github.com/lxqt/qtermwidget.git
 	sha256sums = SKIP
 
 pkgname = qtermwidget-git
-
