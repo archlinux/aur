@@ -1,0 +1,4 @@
+pkg/
+src/
+mapset-verifier-bin-*.pkg.*
+mapsetverifier-*.tar.gz
