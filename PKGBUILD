@@ -1,5 +1,6 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: pypi PyGLM
+# from: pypi
+# what: PyGLM
 
 pkgbase='python-pyglm'
 pkgname=('python-pyglm')
