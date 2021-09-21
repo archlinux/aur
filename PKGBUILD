@@ -1,19 +1,18 @@
 # Maintainer: John-Michael Mulesa <jmulesa [at] gmail.com>
 
 pkgname=cod4-wine-steam
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('steamcmd')
 depends=('wine')
-source=("https://github.com/jm2/archlinux-package-cod4-wine-steam/raw/master/iw3mp.exe" "cod4.sh" "cod4.desktop" "cod4.png")
+source=("cod4.sh" "cod4.desktop" "cod4.png")
 pkgdesc="Call of Duty 4 Modern Warfare using WINE with data via Steam"
 license=('custom')
 url='https://store.steampowered.com/app/7940/Call_of_Duty_4_Modern_Warfare/'
-md5sums=('8c40cde102a9d8297a8674cb149f96ed'
-         '456be6eaf152ac61bce80a900c729d0c'
-         'a7573fdd0c28d1068c536f3d69f09e6c'
-         '71835265ac73665d8837ff45152f808a')
+sha256sums=('5c3c872cd5a793ca5ff5b9867100754aac265d9f05a47796c4c4f82f0b13c5fd'
+            '4114e972e71dd0283165642d78cfbe9b01a0e86d3d13c85ccc0dbb1dc9cb222f'
+            'a9f40a206d1b93869f874afa54d8f45ac76bb2d3ea8491c17f6ec6072564619c')
 
 prepare() {
     mkdir -p $srcdir/cod4
@@ -29,7 +28,6 @@ package() {
 
     # Move required files to pkgdir
     cp -r $srcdir/cod4/* $pkgdir/opt/cod4/
-    cp $srcdir/iw3mp.exe $pkgdir/opt/cod4/iw3mp.exe
     rm -rf $pkgdir/opt/cod4/steamapps
     rm $pkgdir/opt/cod4/installscript.vdf
     
