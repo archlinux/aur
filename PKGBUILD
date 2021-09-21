@@ -3,14 +3,14 @@
 
 pkgname=gnome-shell-extension-screenshotlocations-git
 _reponame=gnome-shell-screenshotlocations-extension
-pkgver=r31.dfdcf12
+pkgver=r32.1daf0f9
 pkgrel=1
 pkgdesc="A GNOME extension for changing the screenshot output directory"
 arch=('any')
 url="https://codeberg.org/kiyui/gnome-shell-screenshotlocations-extension"
 license=('GPL2')
 depends=('gnome-shell')
-makedepends=('git' 'meson' 'eslint')
+makedepends=('git' 'meson') 
 source=('git+'${url}'.git')
 sha256sums=('SKIP')
 
