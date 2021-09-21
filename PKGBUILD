@@ -9,7 +9,7 @@ depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
 pkgver=2.52
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -19,8 +19,10 @@ options=('!strip' 'emptydirs')
 install=snapd.install
 source=(
     "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
+    "0001-cmd-libsnap-confine-private-g_spawn_check_exit_statu.patch"
 )
-sha256sums=('a686a071251f8853c5c6789023091510332a49063334c9af29d48b066f8726c4')
+sha256sums=('a686a071251f8853c5c6789023091510332a49063334c9af29d48b066f8726c4'
+            'fb2bece54758fd167b4e7d8df71786a204617ccbed241457ee30d27ab0048f77')
 
 _gourl=github.com/snapcore/snapd
 
