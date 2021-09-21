@@ -1,6 +1,6 @@
-# Maintainer: Maire Piontek <marie@mxy.gg>
+# Maintainer: Marie Piontek <marie@mxy.gg>
 pkgname=koemimoe-desktop-git
-pkgver=25.0d49135
+pkgver=27.0d49135
 pkgrel=1
 pkgdesc="User-first, privacy focused chat platform."
 arch=("x86_64")
@@ -38,7 +38,7 @@ package() {
     
     install -Dm644 build/icons/icon.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
     
-    install -dm755 "${pkgdir}/usr/bin" "revolt-desktop"
+    install -dm755 "${pkgdir}/usr/bin" "koemimoe-desktop"
     
     install -Dm755 "koemimoe-desktop.sh" "$pkgdir/usr/bin/${pkgname%-git}"
     install -Dm644 "koemimoe-desktop.desktop" -t "$pkgdir/usr/share/applications"

@@ -1,6 +1,6 @@
 pkgbase = koemimoe-desktop-git
 	pkgdesc = User-first, privacy focused chat platform.
-	pkgver = 26.0d49135
+	pkgver = 27.0d49135
 	pkgrel = 1
 	url = https://koemi.moe
 	arch = x86_64
