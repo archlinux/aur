@@ -1,21 +1,25 @@
 pkgbase = python-mamba-org
 	pkgdesc = The Fast Cross-Platform Package Manager
 	pkgver = 0.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mamba-org/mamba
 	arch = any
 	license = BSD
+	checkdepends = pytest
+	checkdepends = gtest
+	checkdepends = gmock
 	makedepends = python-setuptools>=49.2.1
 	makedepends = pybind11>=2.2
 	makedepends = libarchive
 	makedepends = openssl
 	makedepends = curl
+	makedepends = yaml-cpp
 	makedepends = libsolv-conda-forge
 	makedepends = cpp-ghc-filesystem
 	makedepends = nlohmann-json
-	makedepends = python-conda
 	depends = python
 	depends = reproc
+	depends = python-conda
 	conflicts = python-mamba
 	source = mamba-0.15.3.tar.gz::https://github.com/mamba-org/mamba/archive/refs/tags/0.15.3.tar.gz
 	sha256sums = f2ad92625954cd029b84725bc33f658020a589cefda0b18adb1b7825ab7d4a1f
