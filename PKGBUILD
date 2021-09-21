@@ -1,6 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # Contributor: Marek Kubica <marek@xivilization.net>
-# pkg: git
+# from: git
+
 pkgname=git-cal-git
 pkgver=r96.b3bb376
 pkgrel=4
