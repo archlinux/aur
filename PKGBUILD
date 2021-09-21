@@ -3,7 +3,7 @@
 
 pkgname=audex-git
 _gitname=audex
-pkgver=r219.7840729
+pkgver=r223.196f829
 pkgrel=1
 pkgdesc='Audex is an audio grabber tool for CD-ROM drives built with KDE Frameworks'
 arch=('x86_64')
