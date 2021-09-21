@@ -1,5 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: pypi urlmatch
+# from: pypi
+# what: urlmatch
+
 _name=urlmatch
 pkgname=( python-$_name python2-$_name)
 pkgbase=python-$_name
