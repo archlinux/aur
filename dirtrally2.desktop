@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DiRT Rally 2.0
+Comment=DiRT Rally 2.0 WINE
+Exec=/usr/bin/dirtrally2
+Icon=dirtrally2
+Terminal=false
+Type=Application
+Categories=Application;Game;

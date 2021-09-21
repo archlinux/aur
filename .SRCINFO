@@ -1,0 +1,20 @@
+pkgbase = dirtrally2-wine-steam
+	pkgdesc = DiRT Rally 2.0 using WINE with data via Steam
+	pkgver = 1.18
+	pkgrel = 1
+	url = https://store.steampowered.com/app/690790/DiRT_Rally_20/
+	install = dirtrally2.install
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = wine
+	depends = winetricks
+	source = dirtrally2.sh
+	source = dirtrally2.desktop
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = 54efc57383072f7464aa892d2042d598b43f78fe9395953edc5ab6be9912b86a
+	sha256sums = 6e861a168f8d5418646a12e8596cebe01b0f1f0ab6fbd542bff298c3d7c4988b
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = dirtrally2-wine-steam
