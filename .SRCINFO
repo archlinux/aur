@@ -1,6 +1,6 @@
 pkgbase = ruby-terminal-table
 	pkgdesc = Simple, feature rich ascii table generation library
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/tj/terminal-table
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = ruby-terminal-table
 	depends = ruby
 	depends = ruby-unicode-display_width>=1.1.1
 	options = !emptydirs
-	source = ruby-terminal-table-3.0.1.tar.gz::https://github.com/tj/terminal-table/archive/v3.0.1.tar.gz
-	sha1sums = 774d905f3e5a8bef9507bb3a47214f9a58f426e6
+	source = ruby-terminal-table-3.0.2.tar.gz::https://github.com/tj/terminal-table/archive/v3.0.2.tar.gz
+	sha1sums = b8ccfd06e6a990b66b06802e97ef8d7282dac5f2
 
 pkgname = ruby-terminal-table
-
