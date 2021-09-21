@@ -6,8 +6,8 @@ pkgbase = python-circlevis
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	depends = circleguard>=5.2.3
-	depends = circleguard<6
+	depends = python-circlecore>=5.2.3
+	depends = python-circlecore<6
 	depends = python
 	depends = python-slider>=0.4
 	depends = python-pyqt5
