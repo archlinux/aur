@@ -15,7 +15,7 @@ url="https://www.mcs.anl.gov/petsc"
 license=('BSD')
 options=(staticlibs)
 depends=('python-numpy' 'openmpi' 'boost' 'lapack')
-makedepends=('gcc' 'gcc-fortran' 'cmake')
+makedepends=('gcc' 'gcc-fortran' 'cmake' 'cython')
 provides=('petsc4py')
 optdepends=('trilinos: support for trilinos'
   'ptscotch: support for ptscotch sequential and parallel graph partitioning library'

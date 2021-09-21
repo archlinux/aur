@@ -10,6 +10,7 @@ pkgbase = petsc
 	makedepends = gcc
 	makedepends = gcc-fortran
 	makedepends = cmake
+	makedepends = cython
 	depends = python-numpy
 	depends = openmpi
 	depends = boost
