@@ -1,0 +1,104 @@
+85a86,90
+> #if(LINUX_VERSION_CODE < KERNEL_VERSION(5,12,6))
+> #define ASYNCB_FIRST_KERNEL 0
+> #else
+> #define ASYNCB_FIRST_KERNEL 1
+> #endif
+166,167c171,184
+< static int mxu1_write_room(struct tty_struct *tty);
+< static int mxu1_chars_in_buffer(struct tty_struct *tty);
+---
+> static 
+> #if(LINUX_VERSION_CODE < KERNEL_VERSION(5,14,0))
+> int 
+> #else
+> unsigned int
+> #endif
+> mxu1_write_room(struct tty_struct *tty);
+> static
+> #if(LINUX_VERSION_CODE < KERNEL_VERSION(5,14,0))
+> int 
+> #else
+> unsigned int
+> #endif
+> mxu1_chars_in_buffer(struct tty_struct *tty);
+225a243,246
+> #if (LINUX_VERSION_CODE > KERNEL_VERSION(5,13,0))
+> static void mxu1_get_serial_info2(struct tty_struct *tty,
+> 	struct serial_struct __user *ret_arg);
+> #else
+227a249
+> #endif
+526c548
+< 	.chars_in_buffer	= mxu1_chars_in_buffer,
+---
+> 	.chars_in_buffer= mxu1_chars_in_buffer,
+1185c1207,1213
+< static int mxu1_write_room(struct tty_struct *tty)
+---
+> static 
+> #if(LINUX_VERSION_CODE < KERNEL_VERSION(5,14,0))
+> int
+> #else
+> unsigned int
+> #endif
+> mxu1_write_room(struct tty_struct *tty)
+1197a1226,1227
+> 
+> #if(LINUX_VERSION_CODE < KERNEL_VERSION(5,14,0))
+1198a1229,1231
+> #else
+>         return 0;
+> #endif
+1213c1246,1252
+< static int mxu1_chars_in_buffer(struct tty_struct *tty)
+---
+> static 
+> #if(LINUX_VERSION_CODE < KERNEL_VERSION(5,14,0))
+> int
+> #else
+> unsigned int
+> #endif
+> mxu1_chars_in_buffer(struct tty_struct *tty)
+1215c1254
+< 	struct usb_serial_port *port = tty->driver_data;
+---
+>     struct usb_serial_port *port = tty->driver_data;
+1224a1264
+> #if(LINUX_VERSION_CODE < KERNEL_VERSION(5,14,0))
+1225a1266,1268
+> #else
+>         return 0;
+> #endif
+2269c2312,2318
+< static int mxu1_get_serial_info2(struct tty_struct *tty,
+---
+> static 
+> #if (LINUX_VERSION_CODE > KERNEL_VERSION(5,13,0))
+> void 
+> #else
+> int
+> #endif
+> mxu1_get_serial_info2(struct tty_struct *tty,
+2275,2277c2324,2332
+< 	if (!ret_arg)
+< 		return -EFAULT;
+< 	
+---
+> 	if (!ret_arg) {
+>         
+> #if (LINUX_VERSION_CODE > KERNEL_VERSION(5,13,0))
+> 		return;
+> #else
+>         return -EFAULT;
+> #endif
+> 	}
+> 
+2287,2288c2342,2345
+< 
+< 	return 0;
+---
+>     
+> #if (LINUX_VERSION_CODE < KERNEL_VERSION(5,13,0))
+>     return 0;
+> #endif
