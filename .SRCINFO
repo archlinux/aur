@@ -1,6 +1,6 @@
 pkgbase = kwalletcli
 	pkgdesc = Command-Line Interface for the KDE Wallet
-	pkgver = 3.02
+	pkgver = 3.03
 	pkgrel = 1
 	url = https://www.mirbsd.org/kwalletcli.htm
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = kwalletcli
 	license = LGPL3
 	depends = kwallet
 	depends = mksh
-	source = https://www.mirbsd.org/MirOS/dist/hosted/kwalletcli/kwalletcli-3.02.tar.gz
-	sha512sums = 26e598ca44ee3846d4d458edd8b15f1d2739bec32451e46114602f959cece471f614e869536aad7a55709d1a3165c1043444f1064aa86bd0cd02e855968dd415
+	source = https://www.mirbsd.org/MirOS/dist/hosted/kwalletcli/kwalletcli-3.03.tar.gz
+	sha512sums = 237d427f87f2d313378aacfdb056c658f0a51fda3a8592d24792916d14efc462153aa0f9ebabdcf38375824f349208db367be6f369f3f7c9c1fea8187f787bfa
 
 pkgname = kwalletcli
 
