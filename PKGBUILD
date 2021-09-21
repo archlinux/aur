@@ -2,7 +2,7 @@
 
 pkgname=qt6-jpegxl-image-plugin
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt6 plug-in to allow Qt6 and KDE based applications to read/write JXL images'
 arch=('x86_64')
 url='https://github.com/novomesk/qt-jpegxl-image-plugin/'
@@ -24,6 +24,7 @@ build() {
     cmake -B build -S "qt-jpegxl-image-plugin-${pkgver}" \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DKDE_INSTALL_QTPLUGINDIR:PATH='lib/qt6/plugins' \
         -DQT_MAJOR:STRING='6' \
         -Wno-dev
     make -C build
@@ -36,5 +37,4 @@ check() {
 package() {
     make -C build DESTDIR="$pkgdir" install
     install -d -m755 "${pkgdir}/usr/lib/qt6/plugins/imageformats"
-    mv "${pkgdir}/usr/lib/plugins/imageformats"/*.so "${pkgdir}/usr/lib/qt6/plugins/imageformats"
 }
