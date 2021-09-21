@@ -42,5 +42,4 @@ check() {
 
 package() {
     make -C build DESTDIR="$pkgdir" install
-    install -d -m755 "${pkgdir}/usr/lib/qt6/plugins/imageformats"
 }
