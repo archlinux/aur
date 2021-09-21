@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-sentry_sdk
 _name=sentry-sdk
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
@@ -29,17 +29,16 @@ optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-pure_eval: for richer stacktraces & additional variables'
             'python-executing: for richer stacktraces & better function names')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ebe99144fa9618d4b0e7617e7929b75acd905d258c3c779edcd34c0adfffe26c')
+sha256sums=('963326914aa219ad5abda5b479b871fed2b3d2ddc9d27037340637647c9a4cdb')
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+  cd "$_name-$pkgver"
+  python setup.py build
 }
 
 package() {
-	cd "$_name-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
