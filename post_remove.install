@@ -1,2 +1,0 @@
-# delete file added after installation
-rm -f /etc/linux-enable-ir-emitter.yaml 
