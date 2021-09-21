@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.68.4
+pkgver=2.70.0
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -12,7 +12,7 @@ arch=(x86_64)
 provides=(glib2=$pkgver libgio-2.0.so libglib-2.0.so libgmodule-2.0.so
            libgobject-2.0.so libgthread-2.0.so)
 conflicts=('glib2')
-depends=(pcre libffi util-linux-libs zlib tumbler libmount.so)
+depends=(pcre libffi util-linux-libs zlib tumbler libmount.so libffi.so)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
              meson dbus)
 checkdepends=(desktop-file-utils)
@@ -33,11 +33,6 @@ sha256sums=('SKIP'
             '2a9f9b8235f48e3b7d0f6cfcbc76cd2116c45f28692cac4bd61074c495bd5eb7'
             '92d08db5aa30bda276bc3d718e7ff9dd01dc40dcab45b359182dcc290054e24e')
 validpgpkeys=('923B7025EE03C1C59F42684CF0942E894B2EAFA0') # Philip Withnall (https://endlessos.org/) <pwithnall@endlessos.org>
-
-pkgver() {
-  cd glib
-  git describe --tags | sed 's/-/+/g'
-}
 
 prepare() {
   cd glib
@@ -69,7 +64,6 @@ package() {
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
   install -D gio-querymodules.script "$pkgdir/usr/share/libalpm/scripts/gio-querymodules"
 
-  export PYTHONHASHSEED=0
   python -m compileall -d /usr/share/glib-2.0/codegen \
     "$pkgdir/usr/share/glib-2.0/codegen"
   python -O -m compileall -d /usr/share/glib-2.0/codegen \
