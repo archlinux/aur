@@ -1,6 +1,6 @@
 pkgbase = nautilus-launch-git
 	pkgdesc = A simple Nautilus extension that allows to run executables and launchers via right-click menu
-	pkgver = r8.b3ecc35
+	pkgver = r11.2f534d0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/madmurphy/nautilus-launch
 	install = nautilus-launch-git.install
