@@ -1,39 +1,48 @@
-# Maintainer: 
-# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Maintainer: Maxime Dirksen <dirksen.maxime@gmail.com>
+# Co-Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Co-Maintener: Supdrewin <supdrewin@outlook.com>
 # Contributor: Nikolay Bryskin <nbryskin@gmail.com>
 
 pkgname=linux-enable-ir-emitter-git
-pkgver=r167.04f6c73
+pkgver=r213.bbd130e
 pkgrel=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
-arch=(x86_64)
 url="https://github.com/EmixamPP/linux-enable-ir-emitter"
 license=(MIT)
-depends=(python python-opencv python-yaml)
-makedepends=(git)
-optdepends=('python-pyshark: full configuration setup support')
+arch=(x86_64)
+
 provides=(linux-enable-ir-emitter)
 conflicts=(linux-enable-ir-emitter chicony-ir-toggle)
+
+makedepends=(git)
+depends=(python python-opencv python-yaml)
+
+install=linux-enable-ir-emitter.install
+
 source=("git+https://github.com/EmixamPP/linux-enable-ir-emitter")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/linux-enable-ir-emitter/sources"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/linux-enable-ir-emitter/sources"
-    make
+    make -C "${srcdir}/linux-enable-ir-emitter/sources/uvc"
 }
 
 package() {
-    cd "${srcdir}/linux-enable-ir-emitter"
-    install -Dm 755 sources/enable-ir-emitter "${pkgdir}"/usr/lib/linux-enable-ir-emitter/enable-ir-emitter
-    install -Dm 644 sources/config.yaml "${pkgdir}"/usr/lib/linux-enable-ir-emitter/config.yaml
-    install -Dm 755 sources/*.py "${pkgdir}"/usr/lib/linux-enable-ir-emitter/
-    install -Dm 644 sources/linux-enable-ir-emitter.service "${pkgdir}"/usr/lib/systemd/system/linux-enable-ir-emitter.service
-    install -dm 755 "${pkgdir}"/usr/bin/
-    ln -s /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py "${pkgdir}"/usr/bin/linux-enable-ir-emitter
-    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cd "${srcdir}/${pkgname/-git}"
+
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    # software
+    install -Dm 755 sources/uvc/*query  -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/uvc/
+    install -Dm 755 sources/uvc/*query.o  -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/uvc/
+
+    install -Dm 644 sources/command/*.py -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/command/
+
+    install -Dm 644 sources/*.py -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/
+
+    # boot service
+    install -Dm 644 sources/linux-enable-ir-emitter.service -t ${pkgdir}/usr/lib/systemd/system/
 }

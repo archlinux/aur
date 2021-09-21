@@ -1,0 +1,19 @@
+post_install() {
+  # executable
+  chmod +x /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py
+  ln -fs /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py \
+    /usr/bin/linux-enable-ir-emitter
+}
+
+post_upgrade() {
+  # executable
+  chmod +x /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py
+  ln -fs /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py \
+    /usr/bin/linux-enable-ir-emitter
+}
+
+post_remove() {
+  # delete file added after installation
+  rm -f /etc/linux-enable-ir-emitter.yaml
+  rm -f /usr/bin/linux-enable-ir-emitter
+}
