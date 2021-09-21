@@ -15,4 +15,3 @@ pkgname = python-combomethod
 
 pkgname = python2-combomethod
 	depends = python2
-
