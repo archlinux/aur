@@ -1,0 +1,20 @@
+pkgbase = grid2019-wine-steam
+	pkgdesc = GRID (2019) using WINE with data via Steam
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://store.steampowered.com/app/703860/GRID/
+	install = grid2019.install
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = wine
+	depends = winetricks
+	source = grid2019.sh
+	source = grid2019.desktop
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = 2d8391eaccf10226be2f586faa239c2d6d0d5b74195629456a1d160e9522561c
+	sha256sums = 4538d12d15325bd4a4be73fe386f58f100fca2a44844c6a672eda43301dc6ca0
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = grid2019-wine-steam

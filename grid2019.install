@@ -1,0 +1,3 @@
+post_install() {
+    echo "On the first run, game startup may take significantly longer while the wine prefix is prepared."
+}

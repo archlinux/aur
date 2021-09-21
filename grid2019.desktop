@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GRID (2019)
+Comment=GRID (2019) WINE
+Exec=/usr/bin/grid2019
+Icon=grid2019
+Terminal=false
+Type=Application
+Categories=Application;Game;
