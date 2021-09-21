@@ -1,6 +1,6 @@
 pkgbase = libcgroup-git
 	pkgdesc = Library that abstracts the control group file system in Linux
-	pkgver = 2.0.r3.g85c61fc
+	pkgver = 2.0.r22.g27ba904
 	pkgrel = 1
 	url = https://github.com/libcgroup/libcgroup
 	install = libcgroup.install
@@ -16,11 +16,8 @@ pkgbase = libcgroup-git
 	backup = etc/cgrules.conf
 	backup = etc/cgsnapshot_blacklist.conf
 	source = libcgroup::git+https://github.com/libcgroup/libcgroup#branch=main
-	source = cgconfig.service
 	source = cgrules.service
 	sha256sums = SKIP
-	sha256sums = 808fc354abf36d7b6673dad790be275309ac57a2606d1be3732b9b3aeb5885eb
 	sha256sums = 6b1340ff6717f55e5e57dacc72accc0bfaed7e50ef31439271b6ddc893cbf671
 
 pkgname = libcgroup-git
-

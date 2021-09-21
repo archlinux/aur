@@ -4,7 +4,7 @@
 
 pkgname=libcgroup-git
 _pkgname=libcgroup
-pkgver=2.0.r3.g85c61fc
+pkgver=2.0.r22.g27ba904
 pkgrel=1
 pkgdesc='Library that abstracts the control group file system in Linux'
 arch=('i686' 'x86_64')
@@ -19,10 +19,8 @@ install=libcgroup.install
 provides=('libcgroup')
 conflicts=('libcgroup')
 source=("$_pkgname"::'git+https://github.com/libcgroup/libcgroup#branch=main'
-	'cgconfig.service'
 	'cgrules.service')
 sha256sums=('SKIP'
-            '808fc354abf36d7b6673dad790be275309ac57a2606d1be3732b9b3aeb5885eb'
             '6b1340ff6717f55e5e57dacc72accc0bfaed7e50ef31439271b6ddc893cbf671')
 
 pkgver() {
@@ -53,7 +51,7 @@ package() {
 	install -D -m0644 samples/cgrules.conf "${pkgdir}/etc/cgrules.conf"
 	install -D -m0644 samples/cgsnapshot_blacklist.conf "${pkgdir}/etc/cgsnapshot_blacklist.conf"
 
-	install -D -m0644 ${srcdir}/cgconfig.service "${pkgdir}/usr/lib/systemd/system/cgconfig.service"
+	install -D -m0644 dist/cgconfig.service "${pkgdir}/usr/lib/systemd/system/cgconfig.service"
 	install -D -m0644 ${srcdir}/cgrules.service "${pkgdir}/usr/lib/systemd/system/cgrules.service"
 
 	rm -f ${pkgdir}/usr/lib/security/pam_cgroup.{a,la}
