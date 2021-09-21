@@ -1,6 +1,6 @@
 pkgbase = idris2-git
 	pkgdesc = Funtional Programming Lanugage with Dependent Types
-	pkgver = 0.3.0.r154.g37a4c6f1
+	pkgver = 0.5.1.r2.ga0846af5
 	pkgrel = 1
 	url = https://www.idris-lang.org/
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = idris2-git
 	md5sums = SKIP
 
 pkgname = idris2-git
-

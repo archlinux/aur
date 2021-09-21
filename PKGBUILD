@@ -3,7 +3,7 @@
 # 
 
 pkgname=idris2-git
-pkgver=0.3.0.r154.g37a4c6f1
+pkgver=0.5.1.r2.ga0846af5
 pkgrel=1
 pkgdesc="Funtional Programming Lanugage with Dependent Types"
 url="https://www.idris-lang.org/"
@@ -48,15 +48,23 @@ package() {
     unset MAKEFLAGS
     export SCHEME=scheme
 
+    # Install compiler and runtime
     PREFIX="$pkgdir/usr/lib" make install-idris2
     PREFIX="$pkgdir/usr/lib" make install-support
-    for lib in prelude base contrib network ; do
-        cd libs/$lib
-        IDRIS2_PREFIX="$pkgdir/usr/lib" ../../build/exec/idris2 --install $lib.ipkg
-        cd ../..
-    done
 
-    # clean up install
+    IDRIS2_BINARY="$srcdir/$_srcname/build/exec/idris2"
+
+    # Install libraries
+    install_lib() {
+        IDRIS2_PREFIX="$pkgdir/usr/lib" \
+            "$IDRIS2_BINARY" --install-with-src $1.ipkg
+    }
+    for lib in prelude base contrib network test ; do
+        ( cd libs/$lib ; install_lib $lib )
+    done
+    install_lib idris2api
+
+    # Clean up install
     mkdir -p "$pkgdir/usr/bin"
     mv "$pkgdir/usr/lib/bin/idris2_app/idris2.so" "$pkgdir/usr/bin/idris2"
     rm -r "$pkgdir/usr/lib/bin"
@@ -66,5 +74,7 @@ package() {
     # Fix permissions
     find "$pkgdir" -type d -exec chmod 755 {} \;
 
+    install -Dm644 <("$IDRIS2_BINARY" --bash-completion-script idris2) \
+        "$pkgdir/usr/share/bash-completion/completions/idris2"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
