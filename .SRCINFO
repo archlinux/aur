@@ -1,7 +1,7 @@
 pkgbase = mroonga
 	pkgdesc = Fast fulltext search on MySQL(MariaDB bundled Mroonga package).
 	pkgver = 11.06
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mroonga.org/
 	arch = i686
 	arch = x86_64

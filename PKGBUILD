@@ -2,7 +2,7 @@
 
 pkgname=mroonga
 pkgver=11.06
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast fulltext search on MySQL(MariaDB bundled Mroonga package)."
 mariadbver=10.6.4
 MYSQL_VERSION=mariadb-${mariadbver}
@@ -82,10 +82,6 @@ build() {
         -DWITH_SYSTEMD=yes
         -DWITH_UNIT_TESTS=OFF
         -DWITH_ZLIB=system
-
-        # workaround.
-        # See: https://jira.mariadb.org/browse/MDEV-21368
-        -DPLUGIN_CASSANDRA=NO
     )
     cmake . "${_cmake_options[@]}"
 
