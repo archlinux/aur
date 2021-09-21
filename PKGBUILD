@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=go-yq-bin
-pkgver=4.13.0
+pkgver=4.13.2
 pkgrel=1
 pkgdesc="portable command-line YAML processor"
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=()
 conflicts=('yq' 'go-yq')
 providers=('yq')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mikefarah/yq/releases/download/v${pkgver}/yq_linux_amd64.tar.gz")
-sha256sums=('2b52c2be869818f7518af0272021fda0dd4622365a5eb4a809279bcb4f373f5b')
+sha256sums=('b462478cfee8fb02b1b6bbee87b2b1d2f0ef4f0b693a95c04308006f04cc525e')
 
 package() {
   install -Dm0755 "${srcdir}/yq_linux_amd64" "${pkgdir}/usr/bin/yq"
