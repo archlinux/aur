@@ -1,5 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# pkg: github openresty/lua-resty-lrucache
+# from: github
+# what: openresty/lua-resty-lrucache
+
 pkgname=lua-resty-lrucache
 pkgver=0.11
 pkgrel=1
