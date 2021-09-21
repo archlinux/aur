@@ -1,16 +1,17 @@
 pkgbase = gnome-text-editor
 	pkgdesc = Simple text editor that focuses on session management
-	pkgver = 40.0
+	pkgver = 41.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-text-editor
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = meson
+	depends = enchant
+	depends = glib2>=2.70.0
 	depends = gtksourceview5
 	depends = libadwaita
-	source = https://gitlab.gnome.org/GNOME/gnome-text-editor/-/archive/0e72a3a1535821301f9675566154586d53f2ea8d/gnome-text-editor-0e72a3a1535821301f9675566154586d53f2ea8d.tar.gz
-	sha256sums = 54faa47758b8fb0be25ff5dc0c54d768a35d18d4a0d2b94c3ef48dbefd073ff3
+	source = https://gitlab.gnome.org/GNOME/gnome-text-editor/-/archive/41.0/gnome-text-editor-41.0.tar.gz
+	sha256sums = 67e84acb0b76c4018fe57612a633a4c8e5d38f9c18c80f50d0a1cf4e96587c1b
 
 pkgname = gnome-text-editor
-
