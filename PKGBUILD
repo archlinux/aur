@@ -29,5 +29,5 @@ build() {
 
 package() {
     cd "$srcdir/circlevis-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python setup.py install --root="$pkgdir"
 }
