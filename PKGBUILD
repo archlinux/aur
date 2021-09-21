@@ -9,7 +9,7 @@
 
 pkgname=acroread
 pkgver=9.5.5
-pkgrel=18
+pkgrel=19
 pkgdesc="Adobe Acrobat Reader is a PDF file viewer"
 arch=('i686' 'x86_64')
 url="http://www.adobe.com/products/reader/"
@@ -38,7 +38,8 @@ source=($pkgname.desktop
 	http://archlinux.arkena.net/archive/packages/l/lib32-atk/lib32-atk-2.24.0+4+gbf71ccc-1-x86_64.pkg.tar.xz
 	http://archlinux.arkena.net/archive/packages/l/lib32-cairo/lib32-cairo-1.14.10-1-x86_64.pkg.tar.xz
 	http://archlinux.arkena.net/archive/packages/l/lib32-libffi/lib32-libffi-3.2.1-2-x86_64.pkg.tar.xz
-	http://archlinux.arkena.net/archive/packages/l/lib32-libx11/lib32-libx11-1.6.9-1-x86_64.pkg.tar.xz)
+	http://archlinux.arkena.net/archive/packages/l/lib32-libx11/lib32-libx11-1.6.9-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-freetype2/lib32-freetype2-2.6-1-x86_64.pkg.tar.xz)
 	
 noextract=("${source[@]%%::*}")
 sha512sums=('178ca8a3abf630195eaebd6a76a7e5ac19165708acd52b99acab2de3d0bdb57fdf81d666edae41a947fa5a3fc14442c86fa855860d5d3d0d3e1db0386c583b96'
@@ -56,7 +57,8 @@ sha512sums=('178ca8a3abf630195eaebd6a76a7e5ac19165708acd52b99acab2de3d0bdb57fdf8
 	    'a5b7b739ce60c88d853540958523ffabe7850b30a7b5e32371daf64f20c123eefba5a33750f709e00eccbfdf41f889c4b88ceea1afba33d0e485810ef2983b86'
 	    'd10ef55002b07c393321d16e977e8f3a3bdb01cb6a408c61733e43c8a970ef3f579c85917329f3eeb1e3d1a365006fcb6c663339517c9f6970867284ef0d16f2'
 	    '03ef1684265e938f72f62dc4b0401a250fabbecfea7d88f25af8d42f532d287772e0d3ba806b690217204393bde090f5ced46a1e674b8bea30bed3c656f60f85'
-	    'd27adb892bf1b44b527bdb08f6c65363b80b0123af254156c35178b9d3021add80d375f9e21a5f778db5b63869eaa935907d0719c33904b7a0f9641f67fe00ec')
+	    'd27adb892bf1b44b527bdb08f6c65363b80b0123af254156c35178b9d3021add80d375f9e21a5f778db5b63869eaa935907d0719c33904b7a0f9641f67fe00ec'
+	    '89fa576f193007f62a8e0de9bd4b887396221120a2434ff78c07ac5e167c69d4cb773e1ee49dddd203e4d33c59bc89d573a3f1665137e38d0bf841148fa68cac')
 prepare() {
     # Extracting content from bin file
     tail -c+6889 AdbeRdr9.5.5-1_i486linux_enu.bin | xz -qqd | tar x
@@ -75,6 +77,7 @@ prepare() {
     tar -C oldlib -axf lib32-cairo-1.14.10-1-x86_64.pkg.tar.xz
     tar -C oldlib -axf lib32-libffi-3.2.1-2-x86_64.pkg.tar.xz
     tar -C oldlib -axf lib32-libx11-1.6.9-1-x86_64.pkg.tar.xz
+    tar -C oldlib -axf lib32-freetype2-2.6-1-x86_64.pkg.tar.xz
 
     cd AdobeReader/
     bsdtar -xf COMMON.TAR
