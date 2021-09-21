@@ -1,0 +1,36 @@
+From c2c12fc981458ca59d515dc5d9c007ea78f141ef Mon Sep 17 00:00:00 2001
+From: Tasos Sahanidis <tasos@tasossah.com>
+Date: Fri, 16 Jul 2021 17:43:52 +0300
+Subject: [PATCH] Fix cmake reconfiguration with quazip 1
+
+---
+ cmake/modules/FindQuaZip.cmake | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/modules/FindQuaZip.cmake b/cmake/modules/FindQuaZip.cmake
+index 2fe94c12..021ed21e 100644
+--- a/cmake/modules/FindQuaZip.cmake
++++ b/cmake/modules/FindQuaZip.cmake
+@@ -20,13 +20,13 @@
+ # QuaZip_LIBRARIES           - List of QuaZip libraries
+ # QuaZip_ZLIB_INCLUDE_DIR    - The include dir of zlib headers
+ 
++# First try to find QuaZip 1.0
++find_package(QuaZip-Qt5 QUIET)
+ 
+ IF (QuaZip_LIBRARIES)
+     # in cache already
+     SET(QuaZip_FOUND TRUE)
+-ELSE (QuaZip_LIBRARIES)
+-    # First try to find QuaZip 1.0
+-    find_package(QuaZip-Qt5 QUIET)
++ELSE ()
+     IF(QuaZip-Qt5_FOUND)
+         message("-- Found QuaZip: QuaZip::QuaZip")
+         SET(QuaZip_FOUND TRUE)
+@@ -48,4 +48,4 @@ ELSE (QuaZip_LIBRARIES)
+         SET(QuaZip_INCLUDE_DIRS ${QuaZip_INCLUDE_DIR} ${QuaZip_ZLIB_INCLUDE_DIR})
+         find_package_handle_standard_args(QuaZip DEFAULT_MSG QuaZip_LIBRARIES QuaZip_INCLUDE_DIR QuaZip_ZLIB_INCLUDE_DIR QuaZip_INCLUDE_DIRS)
+     ENDIF ()
+-ENDIF (QuaZip_LIBRARIES)
++ENDIF ()
