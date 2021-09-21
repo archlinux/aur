@@ -1,7 +1,7 @@
 pkgbase = kwalletcli
 	pkgdesc = Command-Line Interface for the KDE Wallet
 	pkgver = 3.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mirbsd.org/kwalletcli.htm
 	arch = i686
 	arch = x86_64

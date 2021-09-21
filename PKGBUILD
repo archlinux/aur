@@ -3,7 +3,7 @@
 
 pkgname=kwalletcli
 pkgver=3.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-Line Interface for the KDE Wallet"
 url="https://www.mirbsd.org/kwalletcli.htm"
 license=('custom:MirOS' 'LGPL3')
@@ -14,7 +14,8 @@ sha512sums=('237d427f87f2d313378aacfdb056c658f0a51fda3a8592d24792916d14efc462153
 
 build() {
   cd "${srcdir}/${pkgname}"
-  sed -i -e 's/CPPFLAGS+=       ${KDE_INCS} -D_GNU_SOURCE/CPPFLAGS+=    ${KDE_INCS} -fPIC -D_GNU_SOURCE/' GNUmakefile
+  sed -i -e 's/CPPFLAGS+=\t${KDE_INCS} -D_GNU_SOURCE/CPPFLAGS+=\t${KDE_INCS} -fPIC -D_GNU_SOURCE/' GNUmakefile
+  sed -i -e 's/CFLAGS?=\t.O2/CFLAGS?=\t-O2 -fPIC\nLDDFLAGS?=\t-fPIC/' GNUmakefile
   make KDE_VER=5
 }
 
