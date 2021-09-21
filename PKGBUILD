@@ -5,7 +5,7 @@ pkgver=2.0.0
 pkgrel=1
 pkgdesc="A python wrapper for the osu! api."
 arch=('any')
-license=('GPL3')
+license=('MIT')
 source=(
     "https://github.com/circleguard/ossapi/archive/refs/tags/v${pkgver}.tar.gz"
 )
@@ -30,4 +30,5 @@ build() {
 package() {
     cd "$srcdir/ossapi-${pkgver}"
     python setup.py install --root="$pkgdir" --optimize=1
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
