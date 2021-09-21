@@ -3,7 +3,7 @@
 
 pkgname=gmid-bin
 _pkgname=${pkgname%-*}
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
@@ -19,10 +19,10 @@ source=(
 	"https://raw.githubusercontent.com/omar-polo/$_pkgname/$pkgver/README.md"
 )
 sha256sums=(
-	'f141058d9ec6930b97a67556dc80178ef346d4a7228e0fbaca1afb3dbd44f798'
-	'25b39eda4bbf94b8b9e5e04d156ef0bd2a63994766186eaf12aeeb40802571cd'
+	'fdf092d35b37fb8a0fe059aa0b811ff7121d4cfd723181ba72ba17f93840c6c6'
+	'469f9097186c9798305e6ee274aeb990e20519bb598b94d4c1c7f283c40d13ed'
 	'f82c1fa80d35427d109a77ed59ecda41474ef46539238750876702fa40579f9f'
-	'a5917d6f3e0a56612fdae554ed26993282d872a4a8655bcfa9289c9d270e418c'
+	'425308363e30b4fa0d2fdd321d20070816ce856fe55c8a4654ebd1fd3ad7a23f'
 )
 
 package() {
