@@ -3,7 +3,7 @@
 
 _basever=2.0.0.master
 pkgname=libmypaint-git
-pkgver=2.0.0.master.r981.c28b059
+pkgver=2.0.0.master.r1042.826069d
 pkgrel=1
 pkgdesc="A library for making brushstrokes which is used by MyPaint and other projects."
 arch=('i686' 'x86_64')
