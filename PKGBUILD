@@ -1,5 +1,6 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# pkg: git
+# from: git
+
 pkgname=anbox-launchers-git
 pkgver=r15.0448156
 pkgrel=2
