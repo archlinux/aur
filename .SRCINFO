@@ -1,0 +1,16 @@
+pkgbase = android-x86-system-image-25
+	pkgdesc = Android x86 Atom System Image, API-25
+	pkgver = r01
+	pkgrel = 1
+	url = https://developer.android.com/studio/index.html
+	arch = any
+	license = custom
+	depends = android-platform-25
+	optdepends = qemu
+	optdepends = libvirt
+	provides = android-x86-system-image-25
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/sys-img/android/x86-25_r01.zip
+	sha256sums = a9908b08e295e00cf03261f7f276744cf31ba8be6a065a063239e2a14a57b3da
+
+pkgname = android-x86-system-image-25
