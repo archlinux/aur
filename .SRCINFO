@@ -5,20 +5,19 @@ pkgbase = python-circlecore
 	url = https://github.com/circleguard/circlecore
 	arch = any
 	license = GPL3
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
 	depends = python-slider>=0.5.1
 	depends = python-scipy
 	depends = python-requests
 	depends = python-numpy
-	depends = python-wtc==1.2.1
+	depends = python-wtc=1.2.1
 	depends = python-ossapi>=2
 	depends = python-ossapi<3
 	depends = python-osrparse>=5
 	depends = python-osrparse<6
 	conflicts = python-circlecore-git
 	source = https://github.com/circleguard/circlecore/archive/refs/tags/v5.2.3.tar.gz
-	sha256sums = d7361e0ed07d4fef834f18a14baef058907fb95af9191bad8d83dfc1d719db65
+	sha256sums = a5ac7dc0dc1f348ec6ef4fcb0f675e88457c736ab018cb83579444b9a521511f
 
 pkgname = python-circlecore
