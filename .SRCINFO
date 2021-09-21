@@ -1,12 +1,12 @@
 pkgbase = btop
 	pkgdesc = A monitor of system resourecs, bpytop ported to C++
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/aristocratos/btop
 	arch = x86_64
 	license = apache
 	depends = gcc-libs
-	source = btop-1.0.3.tar.gz::https://github.com/aristocratos/btop/archive/v1.0.3.tar.gz
-	sha256sums = 7e4c7e1c489714050142f269d6e15f5d8f2ad358394288176931a78aa6fc0cbf
+	source = btop-1.0.4.tar.gz::https://github.com/aristocratos/btop/archive/v1.0.4.tar.gz
+	sha256sums = 3ac10fc408705322f5e1ae51c2a5bb57bd3749fa64f8afe690162929934be60a
 
 pkgname = btop
