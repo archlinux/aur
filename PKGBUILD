@@ -1,5 +1,6 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# pkg: git
+# from: git
+
 pkgname=plots-git
 pkgver=0.6.1.r1.g85f984d
 pkgrel=1
