@@ -4,8 +4,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.30
-pkgrel=1
+pkgver=3.24.30+62+g8d04980f38
+pkgrel=2
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -13,17 +13,18 @@ url="https://github.com/Dudemanguy/gtk"
 depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2
          dconf libxcomposite libxdamage pango shared-mime-info at-spi2-atk
          wayland libxkbcommon adwaita-icon-theme json-glib librsvg
-         wayland-protocols desktop-file-utils mesa cantarell-fonts libcolord
-         rest libcups libcanberra fribidi iso-codes libcloudproviders
+         desktop-file-utils mesa cantarell-fonts libcolord rest libcups
+         libcanberra fribidi iso-codes libcloudproviders tracker3
          gtk-update-icon-cache)
 optdepends=('glib2-patched-thumbnailer: Thumbnail generation in upload dialog')
-makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
+makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson
+             wayland-protocols)
 provides=(gtk3=$pkgver gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil-3.so)
 conflicts=(gtk3 gtk3-print-backends)
 replaces=('gtk3-print-backends<=3.22.26-1')
 license=(LGPL)
 install=gtk3.install
-_commit=d4e2d05cd9518ba04d6fbe1cbcec27142788ac95  # tags/3.24.30^0
+_commit=8d04980f38d58bea7ba721a6ff2e3d38dfdc0486  # gtk-3-24
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-query-immodules-3.0.hook
         gtk3-filechooser-icon-view.patch)        
@@ -44,11 +45,11 @@ prepare() {
 }
 
 build() {
-  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
+  CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
   local meson_options=(
     -D broadway_backend=true
     -D cloudproviders=true
-    -D tracker3=false
+    -D tracker3=true
     -D colord=yes
     -D gtk_doc=false
     -D demos=false
@@ -60,7 +61,7 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/gtk-3.0/settings.ini" <<END
 [Settings]
