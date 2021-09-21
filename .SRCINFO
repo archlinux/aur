@@ -1,6 +1,6 @@
 pkgbase = koemimoe-desktop-git
 	pkgdesc = User-first, privacy focused chat platform.
-	pkgver = 25.0d49135
+	pkgver = 26.0d49135
 	pkgrel = 1
 	url = https://koemi.moe
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = koemimoe-desktop-git
 	makedepends = npm
 	depends = electron
 	provides = koemimoe-desktop
-	source = git+https://github.com/KoemiMoe/desktop.git
+	source = git+https://github.com/KoemiMoe/KoemiMoe-Desktop.git
 	md5sums = SKIP
 
 pkgname = koemimoe-desktop-git

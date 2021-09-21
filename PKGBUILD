@@ -9,7 +9,7 @@ license=("AGPL3")
 depends=("electron")
 makedepends=("git" "npm")
 provides=("${pkgname%-git}")
-source=("git+https://github.com/KoemiMoe/desktop.git")
+source=("git+https://github.com/KoemiMoe/KoemiMoe-Desktop.git")
 md5sums=('SKIP')
 
 pkgver() {
