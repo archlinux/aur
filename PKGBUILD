@@ -6,15 +6,13 @@
 pkgbase=glibc-dso
 pkgname=(glibc-dso lib32-glibc-dso)
 pkgver=2.33
-pkgrel=7
+pkgrel=8
 arch=(x86_64)
-provides=("glibc=${pkgver%%.r*}")
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
 makedepends=(git gd lib32-gcc-libs python cpio)
 optdepends=('perl: for mtrace')
 options=(!strip staticlibs)
-conflicts=('glibc')
 #_commit=3de512be7ea6053255afed6154db9ee31d4e557a
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
@@ -171,6 +169,8 @@ package_glibc-dso() {
   backup=(etc/gai.conf
           etc/locale.gen
           etc/nscd.conf)
+  provides=("glibc=${pkgver%%.r*}")
+  conflicts=('glibc')
 
   install -dm755 "$pkgdir/etc"
   touch "$pkgdir/etc/ld.so.conf"
@@ -224,6 +224,8 @@ package_lib32-glibc-dso() {
   pkgdesc='GNU C Library (32-bit) - DSO patch'
   depends=("glibc=$pkgver")
   options+=('!emptydirs')
+  provides=("lib32-glibc=${pkgver%%.r*}")
+  conflicts=('lib32-glibc')
 
   cd lib32-glibc-build
 

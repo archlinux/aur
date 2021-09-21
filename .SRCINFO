@@ -1,6 +1,6 @@
 pkgbase = glibc-dso
 	pkgver = 2.33
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.gnu.org/software/libc
 	arch = x86_64
 	license = GPL
@@ -11,8 +11,6 @@ pkgbase = glibc-dso
 	makedepends = python
 	makedepends = cpio
 	optdepends = perl: for mtrace
-	provides = glibc=2.33
-	conflicts = glibc
 	options = !strip
 	options = staticlibs
 	source = https://ftp.gnu.org/gnu/glibc/glibc-2.33.tar.xz
@@ -51,6 +49,8 @@ pkgname = glibc-dso
 	depends = tzdata
 	depends = filesystem
 	optdepends = gd: for memusagestat
+	provides = glibc=2.33
+	conflicts = glibc
 	backup = etc/gai.conf
 	backup = etc/locale.gen
 	backup = etc/nscd.conf
@@ -58,6 +58,8 @@ pkgname = glibc-dso
 pkgname = lib32-glibc-dso
 	pkgdesc = GNU C Library (32-bit) - DSO patch
 	depends = glibc=2.33
+	provides = lib32-glibc=2.33
+	conflicts = lib32-glibc
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
