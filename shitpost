@@ -22,6 +22,9 @@
 # TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND  MODIFICATION
 # 0. You just DO WHAT THE FUCK YOU WANT TO.
 
+usage() {
+    printf "Usage: shitpost -f /path/to/file [-t top -b bottom -o outfile]\n\t-f\tPath to image file - Mandatory!\n\t-t\tTop Text\n\t-b\tBottom Text\n\t-o\tOutput file name\n"
+}
 # Check if imagemagick (just convert checked, but others used) is installed and exit if missing
 command -v convert >/dev/null 2>&1 || { echo >&2 "I require ImageMagick but it's not installed.  Aborting."; exit 1; }
 
@@ -35,7 +38,7 @@ OPTIND=1
 while getopts "h?t:b:f:o:" opt; do
     case "$opt" in
     h|\?)
-        printf "Usage: shitpost -f /path/to/file [-t top -b bottom]\n\t-f\tPath to image file - Mandatory!\n\t-t\tTop Text\n\t-b\tBottom Text\n\t-o\tOutput file name\n"
+        usage
         exit 0
         ;;
     t)  top_text="$OPTARG"
@@ -50,7 +53,7 @@ while getopts "h?t:b:f:o:" opt; do
 done
 
 # Ensure that an image file is provided and exists. Does not check that it actually contains image data
-[[ -z "$image_file" ]] && echo "You must specify an image file. Use -h or -? for help." && exit 1
+[[ -z "$image_file" ]] && echo "You must specify an image file!" && usage && exit 1
 
 # Let the user know any options that were invalid that were not already handled by getopts.
 shift $((OPTIND-1))
