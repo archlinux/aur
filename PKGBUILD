@@ -1,11 +1,11 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls
-pkgver=0.3.4
+pkgver=41.0
 pkgrel=1
-pkgdesc="Phone dialer and call handler"
+pkgdesc='Phone dialer and call handler'
 arch=(x86_64 aarch64)
-url="https://source.puri.sm/Librem5/calls"
+url='https://gitlab.gnome.org/GNOME/calls'
 license=(GPL3)
 depends=(
 	callaudiod
@@ -22,11 +22,12 @@ makedepends=(
 	meson
 	vala
 )
-source=("${url}/-/archive/v${pkgver}/calls-v${pkgver}.tar.gz")
-sha256sums=('97cd5f689b9f1312b97ad99a44d10d35774a7d2b58d92446aa0101d2d11bfdf9')
+_commit=${pkgver}
+source=("${url}/-/archive/${_commit}/calls-${_commit}.tar.gz")
+sha256sums=('c6ccd265f4eec611eaac3b3920fd1127179d1946adcd2a4adfca9c304168b01f')
 
 build() {
-	arch-meson calls-v${pkgver} build -D tests=false
+	arch-meson calls-${_commit} build -D tests=false
 	meson compile -C build
 }
 
