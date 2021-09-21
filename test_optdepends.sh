@@ -129,12 +129,8 @@ fi
 OPENBLAS_SO="$(whereis -b libblas.so | cut -d' ' -f2)"
 if [ -f "${OPENBLAS_SO}" ]; then
 	CONFOPTS+=" --with-openblas=1"
-	# CONFOPTS+=" --with-openblas-lib=[-lopenblas,-lm,-lpthread,-lgfortran,-lm,-lpthread,-lgfortran]"
-	# CONFOPTS+=" --with-openblas-include=/usr/include"
 	CONFOPTS+=" --with-openblas-pkg-config="
     CONFOPTS+="$(dirname $(pkgconf --path openblas))"
-	# CONFOPTS+=" --download-openblas=0"
-	CONFOPTS+=" --download-f2cblaslapack=0"
 fi
 
 # OpenCL: GPU computing

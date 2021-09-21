@@ -5,8 +5,8 @@
 
 _base=petsc
 pkgname=("${_base}"-git "${_base}"-doc)
-pkgver=3.15.4.27.g1085e15b135
-pkgrel=2
+pkgver=3.15.4.31.g36206f8ec7e
+pkgrel=1
 _mainver="${pkgver:0:6}"
 pkgdesc="Portable, extensible toolkit for scientific computation"
 arch=('i686' 'x86_64')
@@ -15,17 +15,15 @@ license=('BSD')
 options=(!staticlibs)
 depends=('openmpi' 'lapack' 'fftw' 'zlib' 'cython'
          'python-mpi4py' "python-numpy" "eigen>=3" "openblas")
-makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing'
+makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
              'git' 'cython' 'chrpath' "hypre=2.18.2")
 source=(git+${url}.git#branch=release
         https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
         test_optdepends.sh
-        petsc4py_newuser.patch
         blaslapack_download.patch)
 sha512sums=('SKIP'
             'b6a1d48aab1c2639a4c1cbd8b313ace253f1c36eedaa3de3508ffbd6060e1def99e2f516ed9bb509307f614b41791d09342e2c2280c0b2c25dda1092b0e569d2'
-            '2c2c48f6b87e24b6f5fccfd2a6eb0889d47385c0be7ba14614c55c774f8b915c33a5d5ec5cc1637d41f7407423b77ac1bcc129bfa3d7967bb917ad8d1de3a6b5'
-            '038f4f54cb8771590b528e41666f33095d9381bf07636c53841293a3937faeb8604bfe3cb98fac588b647661ea74602e6c261cf7809e0cec7ed086e8b01b5f01'
+            '4561205ad12cb1f0031ad4cfcf2117a909002c475a992eede429b8af0e06df44baf1ce9caa95413593a1710b688e5d9c75a3b896b8c428a3cc04ae38324faae5'
             'af899ea1d06bf6d4cee1c1fe86902ba2772d1001caf00e89363c6217fed9dd837588ee6f7f827ca8b8fd2a01316fbcd73d98874e28d452af71b9598127b6f179')
 
 _config=linux-c-opt
@@ -93,7 +91,6 @@ export PETSC_ARCH=${_config}
 
 prepare() {
   patch -p1 -i blaslapack_download.patch
-  patch -p1 -i petsc4py_newuser.patch
 }
 
 pkgver() {
