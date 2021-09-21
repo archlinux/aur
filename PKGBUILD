@@ -1,14 +1,15 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 
 pkgname=healthchecks
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="A cron monitoring service with a web-based dashboard, API, and notification integrations."
 arch=('any')
 url="https://github.com/healthchecks/healthchecks"
 license=('BSD')
 depends=('python-cron-descriptor' 'python-croniter' 'python-django' 'python-django-compressor'
-	 'python-fido2' 'python-pytz' 'python-requests' 'python-statsd' 'uwsgi' 'uwsgi-plugin-python')
+	 'python-fido2' 'python-pyotp' 'python-pytz' 'python-requests' 'python-segno'
+	 'python-statsd' 'python-whitenoise' 'uwsgi' 'uwsgi-plugin-python')
 optdepends=('python-psycopg2: Add support for postgreSQL.'
 	    'python-apprise: Add support for the Apprise integration.')
 backup=("var/lib/$pkgname/local_settings.py" "etc/uwsgi/$pkgname.ini")
@@ -24,7 +25,7 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz"
 	"$pkgname.sysusers"
         "$pkgname.tmpfiles"
 	"local_settings.py")
-sha256sums=('a7db3b85a258ce508751dcbcb4bcf08656c9756ce48b1649404b1c6332c6b76a'
+sha256sums=('6b78d5433c1d2493ed8b8015ce51de8878556d0d78e183bd0302e47778c19826'
 	    'a7b75bdd35c6952e06e1cd3824450f7c613aff5e3fb1d9f4f57f517b57cefbde'
 	    '355ac237284642e24a3cbe7ddb285bf7dbb802e72ea7fe7c68f0476178ab94fc'
 	    '9d32c4d1404079cac9b7a4ccbc97e01d867735c2536f915220d2ac5dffc333e7'
@@ -34,7 +35,7 @@ sha256sums=('a7db3b85a258ce508751dcbcb4bcf08656c9756ce48b1649404b1c6332c6b76a'
 	    'efa32e5bb8ef6dae017e2e196e8a37e42e73c2aade36743905f544c0c8b936b8'
 	    '2407d81ae0224d5c394b35e20a3b29d138fbde3fdde951de9dfea44d97e73eca'
 	    'c04de046d176958b3705d751ac09cf018d395b6c37f38977ec4048a561d5041f'
-	    '1b398980c2dacc1a39d8f8d363815e0a5c07ea3b3ca0a7f6431c8d7d79ff212f')
+	    '5602dff3d3c96977eb5feeb1deb391bae189b9ad7c75b3226bd86665a7ed7762')
 
 build() {
     cd "$pkgname-$pkgver"

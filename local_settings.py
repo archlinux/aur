@@ -4,6 +4,9 @@
 #Base URL of the healthchecks instance.
 #SITE_ROOT="http://localhost:8000"
 
+#Logo URL
+#SITE_LOGO_URL=""
+
 #Ping settings.
 #PING_EMAIL_DOMAIN="localhost"
 #PING_ENDPOINT="<SITE_ROOT/ping/>"
