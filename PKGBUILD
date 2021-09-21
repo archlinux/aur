@@ -64,11 +64,11 @@ _localmodcfg=
 _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
-pkgbase=linux-ck
+pkgbase=linux-ck-uksm-cjktty
 pkgver=5.14.6
 pkgrel=1
 arch=(x86_64)
-url="https://wiki.archlinux.org/index.php/Linux-ck"
+url="https://github.com/RiverOnVenus/linux-ck-uksm-cjktty"
 license=(GPL2)
 makedepends=(
   bc kmod libelf        cpio perl tar xz
@@ -218,7 +218,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ck's hrtimer patches"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck's hrtimer patches and uksm patch and cjktty patch default bbr2"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')

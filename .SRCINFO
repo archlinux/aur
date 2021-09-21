@@ -1,7 +1,7 @@
-pkgbase = linux-ck
+pkgbase = linux-ck-uksm-cjktty
 	pkgver = 5.14.6
 	pkgrel = 1
-	url = https://wiki.archlinux.org/index.php/Linux-ck
+	url = https://github.com/RiverOnVenus/linux-ck-uksm-cjktty
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -35,8 +35,8 @@ pkgbase = linux-ck
 	b2sums = 21d13b890e7b80c924e18ae11f675d69a80adffbe75e37bebd003024e7299c582346b0df60b67c709eba9678bcf6dda7da852c9cf18d43804ddd8ee9388b9ea5
 	b2sums = e263f1cf228d5a2c26340f37fa1b4a6d6c643b1a22378f37c96b68f5ec10372d65e2bf96716aec0722b18d76ca752b9debf82f621896e03917c977d8db2a4b21
 
-pkgname = linux-ck
-	pkgdesc = The Linux-ck kernel and modules with ck's hrtimer patches
+pkgname = linux-ck-uksm-cjktty
+	pkgdesc = The Linux-ck-uksm-cjktty kernel and modules with the ck's hrtimer patches and uksm patch and cjktty patch default bbr2
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -45,6 +45,6 @@ pkgname = linux-ck
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
-pkgname = linux-ck-headers
-	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
-	depends = linux-ck
+pkgname = linux-ck-uksm-cjktty-headers
+	pkgdesc = Headers and scripts for building modules for Linux-ck-uksm-cjktty kernel
+	depends = linux-ck-uksm-cjktty
