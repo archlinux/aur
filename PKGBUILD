@@ -1,19 +1,50 @@
-# Maintainer: Konstantin Gizdov <arch@kge.pw>
+# Maintainer: MnJ (minionjim13 at gmail dot com)
+# Contributor: Konstantin Gizdov <arch@kge.pw>
 
 pkgname=(tensorflow_datasets)
-_name=datasets
-pkgver='1.3.0'
-pkgrel=2
+_name='tensorflow-datasets'
+pkgver='4.4.0'
+pkgrel=1
 url="https://github.com/tensorflow/datasets"
 pkgdesc="A collection of datasets ready to use with TensorFlow"
-depends=('python-attrs' 'python-dill' 'python-future' 'python-promise' 'python-requests'
-         'python-termcolor' 'python-tqdm' 'python-wrapt' 'tensorflow_metadata')
-makedepends=('python-setuptools' 'python-wheel')
-checkdepends=('jupyter' 'mako' 'python-pytest' 'python-pytest-xdist')
+depends=('absl-py'
+         'python-attrs'
+         'python-dill'
+         'python-future'
+         'python-numpy'
+         'python-promise'
+         'python-protobuf'
+         'python-requests'
+         'python-six'
+         'tensorflow_metadata'
+         'python-termcolor'
+         'python-tqdm')
+makedepends=('python-setuptools'
+             'python-wheel')
+optdepends=('python-beautifulsoup4: wsc273'
+            'python-pycocotools: youtube_vis'
+            'python-h5py: robonet'
+            'python-imagecodecs: eurosat'
+            'python-langdetect: c4'
+            'python-librosa: nsynth'
+            'python-lxml: wsc273'
+            'python-matplotlib: cats_vs_dogs'
+            'python-mwparserfromhell: wikipedia'
+            'python-networkx: ogbg_molpcba'
+            'python-nltk: c4'
+            'python-opencv: imagenet2012_corrupted'
+            'python-pandas: ogbg_molpcba, pet_finder'
+            'python-pillow: colorectal_histology, wider_face'
+            'python-pydub: common_voice, groove, gtzan, librispeech'
+            'python-scikit-image: eurosat, imagenet2012_corrupted'
+            'python-scikit-learn: nsynth'
+            'python-scipy: aflw2k3d, duke_ultrasound, imagenet2012_corrupted, svhn, the300w_lp'
+            'python-tifffile: eurosat'
+            'python-tldextract: c4')
 license=('Apache')
 arch=('any')
-source=("${_name}-${pkgver}::https://github.com/tensorflow/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('8da3b40b5599f4dd007cf7305b9bdbe674db52174c5c16d2ad0f4f55ff6faedd')
+source=("https://files.pythonhosted.org/packages/04/9c/002251b49db860edeb7e203ad12b1369234f9f619bacb0931c60eacbf3ee/${_name}-${pkgver}.tar.gz")
+sha256sums=('3e95a61dec1fdb7b05dabc0dbed1b531e13d6c6fd362411423d0a775e5e9b960')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -21,25 +52,8 @@ build() {
   python setup.py bdist_wheel
 }
 
-check() {
-  # tests fail badly atm, skip them
-  return 0
-  TF2_IGNORE_TESTS="
-  tensorflow_datasets/image/lsun_test.py
-  "
-  TF2_IGNORE=$(for test in $TF2_IGNORE_TESTS; do echo "--ignore=$test "; done)
-  pytest \
-    -n auto \
-    --disable-warnings \
-    $TF2_IGNORE \
-    --ignore="tensorflow_datasets/audio/nsynth_test.py" \
-    --ignore="tensorflow_datasets/testing/test_utils.py" \
-    --ignore="tensorflow_datasets/scripts/build_docs_test.py" \
-    --ignore="tensorflow_datasets/eager_not_enabled_by_default_test.py"
-}
-
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python setup.py install --root="${pkgdir}" -O2 --skip-build
 }
