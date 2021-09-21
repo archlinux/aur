@@ -1,5 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: pypi notify-send.py
+# from: pypi
+# what: notify-send.py
+
 pkgname=notify-send-py
 pkgver=1.2.7
 pkgrel=1
