@@ -1,0 +1,16 @@
+pkgbase = android-x86-system-image-28
+	pkgdesc = Android x86 Atom System Image, API-28
+	pkgver = r04
+	pkgrel = 1
+	url = https://developer.android.com/studio/index.html
+	arch = any
+	license = custom
+	depends = android-platform-28
+	optdepends = qemu
+	optdepends = libvirt
+	provides = android-x86-system-image-28
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/sys-img/android/x86-28_r04.zip
+	sha256sums = 7c3615c55b64713fe56842a12fe6827d6792cb27a9f95f9fa3aee1ff1be47f16
+
+pkgname = android-x86-system-image-28
