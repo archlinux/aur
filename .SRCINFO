@@ -1,7 +1,7 @@
 pkgbase = pscale-bin
 	pkgdesc = The command-line client for Planetscale DBaaS
-	pkgver = 0.40.0
-	pkgrel = 1
+	pkgver = 0.72.0
+	pkgrel = 0
 	url = https://github.com/planetscale/cli
 	install = pscale.install
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = pscale-bin
 	provides = pscale
 	conflicts = pscale
 	conflicts = pscale-git
-	source = https://github.com/planetscale/cli/releases/download/v0.40.0/pscale_0.40.0_linux_amd64.tar.gz
-	sha256sums = c7ce4b060cef1a9924ae43bb3197b39d655439540d3f42517c4d3201669cbdeb
+	source = https://github.com/planetscale/cli/releases/download/v0.72.0/pscale_0.72.0_linux_amd64.tar.gz
+	sha256sums = 5badc2e1e6122a6b6ec64895b1812a67afea9f3a89d39f4c7fa2ea706df93a6f
 
 pkgname = pscale-bin
 
