@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='s5cmd'
-pkgver='1.3.0'
+pkgver='1.4.0'
 pkgrel='1'
 pkgdesc='Parallel S3 and local filesystem execution tool.'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url="https://github.com/peak/${pkgname}"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fbc1c2f40bcfb277fee3fd40193313f1b0bac4e13cdaa0f3b96b9e8c493e9ae6')
+sha256sums=('b756ac8c69175d04e972c3b4deb6b689986d4260fbe83e32caea52d1061995a0')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
