@@ -15,4 +15,3 @@ pkgname = python-nulltype
 
 pkgname = python2-nulltype
 	depends = python2
-

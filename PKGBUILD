@@ -1,5 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: pypi nulltype
+# from: pypi
+# what: nulltype
+
 _name=nulltype
 pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
