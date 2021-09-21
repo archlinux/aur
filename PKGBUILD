@@ -3,7 +3,7 @@
 
 pkgbase=pomerium-bin
 pkgname=(pomerium-bin pomerium-cli-bin)
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc='An identity-aware access proxy'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,12 +17,12 @@ source_armv7h=("pomerium-cli-${pkgver}-armv7h.tar.gz::https://github.com/pomeriu
 source_aarch64=("pomerium-server-${pkgver}-aarch64.deb::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium_${pkgver}-1_arm64.deb"
                "pomerium-cli-${pkgver}-aarch64.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-cli-linux-arm64.tar.gz")
 sha256sums=('36b44da89f922a8017d5b26ac6fd71215e4d82525d94161f999aba6e223fd111')
-sha256sums_x86_64=('4393bf776ee0daeeb8c3a8c2b2da62868fa9862dfee5958b2b095a52a1c22fa8'
-                   'ab96c160f50e4f45962195f098273c83e5e58a3968e20f1c3807a218af5b584e')
-sha256sums_armv6h=('bf041690f4377beacaa9a4e3468498ebb42c1f48ef35572188e9eaba009d464e')
-sha256sums_armv7h=('c41b053b3fc4975c93f5c5e8a15a5837e6f521e4a063f678294fd86f604924d1')
-sha256sums_aarch64=('f7e96d53b1ec3461e9036535a8f651d5b36d76e771e8f4950d8e3d9fd9a44c41'
-                    'd2ded80b56b014a20a55832dec7ff5f44cbdc5cb158d00e26bc4411cb01b5feb')
+sha256sums_x86_64=('fab56cb93e5db5a43af1c4c9d20f0c0e2f7c2f5ed39964aa96f674b288e49965'
+                   '0afa7fbb064f4cd1a6d098b82338e7d299a5f80fabe63d6c59343d3171763485')
+sha256sums_armv6h=('ada538237e63da97c538f36b75da536159e708e4a1fc3e64947b67c639914dde')
+sha256sums_armv7h=('19b6461c566c3d33c78e2686123fe5522b9d09b9c076e386365a8aca76c7ddc0')
+sha256sums_aarch64=('79d393b62bbabe44e70bf7a65b9521493bd036d393749c69a1c87d54231d00d4'
+                    'f4e8fba6f3603b4885b503c4f9f730cdb7c6026a71c6b6abb21a311232e9ca9b')
 
 prepare() {
 	mkdir dump
