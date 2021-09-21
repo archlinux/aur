@@ -1,0 +1,20 @@
+pkgname=wine-arm
+pkgver=6.17
+pkgrel=1
+pkgdesc="Wine is not emu"
+url="https://winehq.org"
+license=(LGPL2.1)
+arch=('aarch64' 'armv7')
+depends=()
+makedepends=('alsa-lib' 'libpulse' 'dbus' 'fontconfig' 'freetype'2 'gnutls' 'libjpeg-turbo' 'libpng' 'libtiff' 'mesa' 'libxml2' 'libxslt' 'faudio' 'gstreamer' 'mpg123' 'sdl2' 'vkd3d' 'vulkan-headers' 'bison' 'clang' 'gcc' 'make')
+checkdepends=(desktop-file-utils)
+source=("https://dl.winehq.org/wine/source/6.x/wine-$pkgver.tar.xz")
+sha256sums=('SKIP')
+
+package() {
+cd $srcdir/wine-$pkgver/
+echo 正在安装，可能需要亿些时间
+./configure --prefix=/usr --without-x --without-freetype CC=clang CXX=clang++
+make 
+make install
+}
