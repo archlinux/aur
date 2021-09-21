@@ -3,7 +3,7 @@
 # Contributor: xantares
 
 pkgname=python-pytablewriter
-pkgver=0.62.0
+pkgver=0.63.0
 pkgrel=1
 pkgdesc='Python library to write a table in various formats'
 arch=('any')
@@ -33,7 +33,7 @@ makedepends=('python-setuptools')
 #   'python-tablib')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pytablewriter/pytablewriter-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytablewriter/pytablewriter-$pkgver.tar.gz.asc")
-sha256sums=('19b2c48c8edde5c40e73cb91920eac8a9f8cd64dab155f4884ca394c35a59707'
+sha256sums=('af480d27cb16cd6a6e1fb19746988fd40b772af80e0d1f99802da017b9e51e1d'
             'SKIP')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
