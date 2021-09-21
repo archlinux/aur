@@ -3,7 +3,7 @@
 
 _pkgname=nuclei
 pkgname="${_pkgname}-bin"
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='Fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use'
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -12,14 +12,14 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('glibc')
-source=("LICENSE.md::https://github.com/projectdiscovery/nuclei/raw/master/LICENSE.md")
+source=("LICENSE.md::https://github.com/projectdiscovery/nuclei/raw/v${pkgver}/LICENSE.md")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
 source_armv6h=("${_pkgname}-${pkgver}-armv6.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.zip")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.zip")
-b2sums=('8d39c5fdf160392eb735ae19d5dcb9227c32d6ead9aa9b0f9b59b0b45be63c42412da9b0c97cc7f33a24b16fdcd982f470dab65742849d229f6e43b2d845e758')
-b2sums_x86_64=('06158e3695bba942282780ad54f3124df5bed9c815a2e9ed1ae453cb59562ef80f77ba8276dc6f3d16fe68485e0c0b7a7053c967face15a74bd8861174fc56f3')
-b2sums_armv6h=('43f0c09755757aee8c569eb0ceee7a31d496a03f5041d0099102cc918b56756281432bdb44a4a04de8e0ab5d2f68846ec2a746563c030e7601a2690865c54110')
-b2sums_aarch64=('c75b41abd80d6823ba3421fc661da069a83f97b175149857eeb0865ebb369238a0c02ee3467b777a829047501709c01069d16977e7e8e292568a526ebad0145e')
+b2sums=('c699be7ccfc40564b59bfa217e254c9553678f343466becebad5017d81310d7b7519837a9a25df2e09e16b6e1bd5a209d7aeb039662a206dd8966b9697c02ede')
+b2sums_x86_64=('b3d4cf4b87fb883d2e5779f91e8b87ced12ed684d521281c8e4a442818aadb4059ef9b7768be647ca6de32d90720d5e7f4bb40395852f7e7f0e8e7678fb29394')
+b2sums_armv6h=('5aadd11fcbb2295a2349430022b3d774d603fa70438481c09725d1f7fabdf8c06b857e7b223891aa3f8f90763796a90ad1bdadafd640adb5200671524b764ce4')
+b2sums_aarch64=('0fd93724b1303fecea17a555232c1092cfd5a6ef45d854121abdf36802e9b4a6a8b940b88e53d617980eaaa9f932ae130814d0ceeaaf410c323eaba35c8edde5')
 
 package() {
   install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
