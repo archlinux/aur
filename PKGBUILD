@@ -1,5 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: git pyproject
+# from: git
+# deps: pyproject
+
 pkgname=trakt-scrobbler-git
 pkgver=1.3.1.r4.gfe4c11a
 pkgrel=1
