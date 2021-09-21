@@ -29,6 +29,6 @@ check() {
 
 package() {
     cd "$srcdir/osu-replay-parser-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python setup.py install --root="$pkgdir"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
