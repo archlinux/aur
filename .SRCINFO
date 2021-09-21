@@ -1,4 +1,4 @@
-pkgbase = iris-git
+pkgbase = iris-wall-git
 	pkgdesc = A highly configurable wallpaper manager with awesome features and lightweight behaviour
 	pkgver = 0.2.0.r1.g807a60b
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = iris-git
 	source = iris::git+https://github.com/Shravan-1908/iris.git
 	sha256sums = SKIP
 
-pkgname = iris-git
+pkgname = iris-wall-git
