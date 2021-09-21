@@ -1,6 +1,6 @@
 # Maintainer: Ruslan Magomedov <rmagomedov.iam@yahoo.com>
 pkgname=scanastudio
-pkgver=4.0.17
+pkgver=4.0.19
 pkgrel=1
 epoch=
 pkgdesc="ScanaStudio is a software for Ikalogic logic analyzers"
@@ -20,12 +20,12 @@ options=()
 install=
 changelog=
 source=(
-	"https://cdn.ikalogic.com/dist/scanastudio/binaries/v4.0.17/scanastudio_linux_x64_v4.0.17.tar.bz2"
+	"https://cdn.ikalogic.com/dist/scanastudio/binaries/v4.0.19/scanastudio_linux_x64_v4.0.19.tar.bz2"
 	"scanastudio.desktop"
 )
 noextract=()
 sha256sums=(
-	'2400ba1f9822e99c9fd6cff0c5efe99503447bf13a176fbbcfac96596005ea50'
+	'9930b5a46218a716f9f9ec13699c80c1e4741b9c84aae2d6ecafae8cb071ec92'
 	'abb172b2fa0f00380c9c34b5ce51ae35b7434e93da127c23336bf9de81b49957'
 )
 validpgpkeys=()
