@@ -1,6 +1,6 @@
 # Maintainer: Caleb Fontenot <foley2431 at gmail dot com>
 pkgname=mmsd-tng-git
-pkgver=1.0.r0.gc43a464
+pkgver=1.2.r0.gd4e1cd8
 pkgrel=1
 pkgdesc="Multimedia Messaging Service Daemon - The Next Generation"
 url="https://git.kernel.org/pub/scm/network/ofono/mmsd.git"
