@@ -33,8 +33,8 @@ package() {
 
   # Emulate `npm prune --production`
   cp package.json{,.bak}
-  yarn remove --frozen-lockfile "$(jq -r '.devDependencies | keys | join(" ")' \
-    package.json)"
+  read -ra devDependencies < <(jq -r '.devDependencies | keys | join(" ")' package.json)
+  yarn remove --frozen-lockfile "${devDependencies[@]}"
   mv package.json{.bak,}
 
   install -d "$pkgdir"/usr/{bin,lib/node_modules/$pkgname}
