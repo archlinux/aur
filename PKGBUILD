@@ -1,11 +1,11 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls-git
-pkgver=0.3.3.r1.g2ac43f3
+pkgver=41.0.r14.g54bac16
 pkgrel=1
-pkgdesc="Phone dialer and call handler"
+pkgdesc='Phone dialer and call handler'
 arch=(x86_64 aarch64)
-url="https://source.puri.sm/Librem5/calls"
+url='https://gitlab.gnome.org/GNOME/calls'
 license=(GPL3)
 depends=(
 	callaudiod
@@ -30,7 +30,7 @@ md5sums=(SKIP)
 
 pkgver() {
 	cd calls
-	git describe --long --tags | sed 's/^pureos\///;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
