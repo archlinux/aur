@@ -1,7 +1,7 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 
 pkgname=anki-release-source
-pkgver=2.1.47
+pkgver=2.1.48
 pkgrel=1
 pkgdesc="The latest release building from source locally"
 url="https://apps.ankiweb.net/"
@@ -57,7 +57,7 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz"
 "no-update.patch"
 )
-sha256sums=('e7cf87a11b7e3e6577a5d1e30d366546e8b161f8ae3e34e3dcd132ec99119103'
+sha256sums=('a7928008ff945d64d06b8df52ac85d42902585b39d0eaf360aa8e3f4077634a4'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
 )
 
