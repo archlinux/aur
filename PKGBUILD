@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-ipopt
-pkgver=3.14.3
+pkgver=3.14.4
 pkgrel=1
 pkgdesc="Interior Point OPTimizer (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-lapack' 'mingw-w64-coin-or-asl' 'mingw-w64-coin-or-coinmumps
 makedepends=('mingw-w64-configure' 'mingw-w64-wine' 'wget')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/coin-or/Ipopt/archive/releases/${pkgver}.tar.gz")
-sha256sums=('29bbf8bbadd5f2965e18e33451723d1fed0c42b14f6493396cf53a05cdfd2c09')
+sha256sums=('60865150b6fad19c5968395b57ff4a0892380125646c3afa2a714926f5ac9487')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
