@@ -1,6 +1,6 @@
 pkgbase = grub-themes-git
 	pkgdesc = Flat Design themes for Grub
-	pkgver = 2021.01.26.r4.gae0fced
+	pkgver = 2021.09.19.r0.g2b42974
 	pkgrel = 1
 	url = https://github.com/vinceliuice/grub2-themes
 	arch = any
@@ -261,4 +261,3 @@ pkgname = grub-theme-whitesur-whitesur-2k-git
 pkgname = grub-theme-whitesur-whitesur-4k-git
 	provides = grub-theme-whitesur-whitesur-4k
 	conflicts = grub-theme-whitesur-whitesur-4k
-

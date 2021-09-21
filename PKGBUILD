@@ -65,7 +65,7 @@ pkgname=('grub-theme-tela-color-1080p-git'
          'grub-theme-whitesur-whitesur-1080p-git'
          'grub-theme-whitesur-whitesur-2k-git'
          'grub-theme-whitesur-whitesur-4k-git')
-pkgver=2021.01.26.r4.gae0fced
+pkgver=2021.09.19.r0.g2b42974
 pkgrel=1
 pkgdesc="Flat Design themes for Grub"
 arch=('any')
@@ -92,12 +92,15 @@ _package() {
             if [[ "${resolution}" == 'ultrawide' ]]; then
                 install -Dm 644 assets/assets-select/select-1080p/* -t "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/
                 install -Dm 644 assets/"assets-${icon}"/icons-1080p/* -t "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/icons/
+                install -Dm 644 assets/info-1080p.png "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/info.png
             elif [[ "${resolution}" == 'ultrawide2k' ]]; then
                 install -Dm 644 assets/assets-select/select-2k/* -t "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/
                 install -Dm 644 assets/"assets-${icon}"/icons-2k/* -t "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/icons/
+                install -Dm 644 assets/info-2k.png "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/info.png
             else
                 install -Dm 644 assets/assets-select/"select-${resolution}"/* -t "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/
                 install -Dm 644 assets/"assets-${icon}"/"icons-${resolution}"/* -t "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/icons/
+                install -Dm 644 assets/"info-${resolution}.png" "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/info.png
             fi
         fi
     done
