@@ -1,7 +1,7 @@
 # Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 pkgname=easy-copy
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="modern alternative to coreutils' file handling - beta version"
 license=('GPL3')
 url="https://github.com/scrouthtv/easy-copy"
