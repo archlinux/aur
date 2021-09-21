@@ -1,7 +1,7 @@
 pkgbase = freetube-git
 	pkgdesc = An open source desktop YouTube player built with privacy in mind - built from git source tree.
-	pkgver = 0.13.1.beta.r435.g03779e07
-	pkgrel = 2
+	pkgver = 0.13.1.beta.r493.g859411ac
+	pkgrel = 3
 	url = https://freetubeapp.io
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = freetube-git
 	makedepends = git
 	makedepends = npm
 	makedepends = nodejs
+	makedepends = yarn
 	depends = gtk3
 	depends = nss
 	depends = electron13

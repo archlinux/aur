@@ -2,14 +2,14 @@
 
 pkgname=freetube-git
 _pkgname=FreeTube
-pkgver=0.13.1.beta.r435.g03779e07
-pkgrel=2
+pkgver=0.13.1.beta.r493.g859411ac
+pkgrel=3
 pkgdesc='An open source desktop YouTube player built with privacy in mind - built from git source tree.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://freetubeapp.io"
 license=('AGPL3')
 depends=('gtk3' 'nss' 'electron13')
-makedepends=('git' 'npm' 'nodejs')
+makedepends=('git' 'npm' 'nodejs' 'yarn')
 provides=('freetube')
 conflicts=('freetube')
 source=(git+https://github.com/FreeTubeApp/FreeTube
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  npm --cache "${srcdir}/npm-cache" install
+  yarn --cache-folder "${srcdir}/yarn-cache" install
   npm --cache "${srcdir}/npm-cache" run build
 }
 
