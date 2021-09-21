@@ -1,7 +1,7 @@
 pkgbase = python-botoy
 	pkgdesc = OPQ/IOTQQ/IOTBot的一个Python开发助手
-	pkgver = 7.0
-	pkgrel = 2
+	pkgver = 7.1
+	pkgrel = 1
 	url = https://github.com/xiyaowong/botoy
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = python-botoy
 	depends = python-apscheduler
 	depends = python-pydantic
 	depends = python-colorama
-	source = python-botoy-7.0.tar.gz::https://github.com/xiyaowong/botoy/archive/v7.0.tar.gz
-	sha256sums = de802acb1196ad02c1221ee17bb3ceb392975bc31f6ef1deec37612a9fc2b36b
+	source = python-botoy-7.1.tar.gz::https://github.com/xiyaowong/botoy/archive/v7.1.tar.gz
+	sha256sums = 6ae12c87c6b14605572eda719eeb5e2dc150eda87df01b7e57e1596d3463a83a
 
 pkgname = python-botoy
