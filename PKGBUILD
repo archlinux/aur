@@ -1,5 +1,8 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: github alexhuntley/Plots setuptools
+# from: github
+# what: alexhuntley/Plots
+# deps: setuptools
+
 pkgname=plots
 _name=Plots
 
