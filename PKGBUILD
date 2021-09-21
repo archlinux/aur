@@ -2,7 +2,7 @@
 
 _appname='nextgen'
 pkgname="${_appname}-git"
-pkgver='r14.81d3e71'
+pkgver='r16.589d0ed'
 pkgrel=1
 pkgdesc='An interactive Bash script that lets you easily set up a new extension project for GNOME Files (Nautilus)'
 arch=('any')
