@@ -5,7 +5,7 @@
 
 _basever=2.0.0.master
 pkgname=mypaint-brushes-git
-pkgver=2.0.0.master.r194.0df6d13
+pkgver=2.0.0.master.r195.08da4a4
 pkgrel=1
 pkgdesc="Brushes used by MyPaint and other software using libmypaint"
 arch=('any')
