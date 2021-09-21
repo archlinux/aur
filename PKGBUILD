@@ -2,7 +2,7 @@
 pkgname=wine-arm
 pkgver=6.17
 pkgrel=1
-pkgdesc="Wine is not emu"
+pkgdesc="Wine is not emulator"
 url="https://winehq.org"
 license=(LGPL2.1)
 arch=('aarch64' 'armv7')
