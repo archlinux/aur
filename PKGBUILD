@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname=perl-io-interactive
-pkgver=1.022
+pkgver=1.023
 pkgrel=1
 pkgdesc="Utilities for interactive I/O"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/IO-Interactive'
 source=("http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/IO-Interactive-$pkgver.tar.gz")
-md5sums=('bd48bfaac706b5c4b848210872d9c9fa')
+md5sums=('0eacf6d6ead8f244383cd10822a9e626')
 _distdir="IO-Interactive-$pkgver"
 
 build() {

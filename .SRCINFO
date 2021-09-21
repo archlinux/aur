@@ -1,6 +1,6 @@
 pkgbase = perl-io-interactive
 	pkgdesc = Utilities for interactive I/O
-	pkgver = 1.022
+	pkgver = 1.023
 	pkgrel = 1
 	url = http://search.cpan.org/dist/IO-Interactive
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = perl-io-interactive
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/IO-Interactive-1.022.tar.gz
-	md5sums = bd48bfaac706b5c4b848210872d9c9fa
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/IO-Interactive-1.023.tar.gz
+	md5sums = 0eacf6d6ead8f244383cd10822a9e626
 
 pkgname = perl-io-interactive
-
