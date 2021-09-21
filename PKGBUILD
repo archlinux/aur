@@ -1,19 +1,17 @@
-# Maintainer: Jason Moore <j at sonmoore dot me>
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Nico <d3sox at protonmail dot com>
+# Contributor: Jason Moore <j at sonmoore dot me>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Cobalt Space <cobaltspace at protonmail dot com>
 
 pkgname=blobsaver-bin
 _pkgname=blobsaver
-pkgver=2.5.5
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="A cross-platform GUI app for saving SHSH blobs using tsschecker"
 arch=('x86_64')
 url='https://github.com/airsquared/blobsaver'
 license=('GPL3')
 depends=('java-runtime=8'
-         'java8-openjfx'
-         'archlinux-java-run'
-         'libfragmentzip'
          'bash'
          'zlib'
          )
@@ -21,17 +19,23 @@ provides=('blobsaver')
 optdepends=('libimobiledevice: Get plugged in device information'
     'libirecovery: Utility to talk to iBoot/iBSS via USB')
 makedepends=('gendesk')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/blobsaver-linux.tar.gz")
-sha256sums=('8937da15c27d24c6df30afaadd39201cde406f3c3647cb4cb310d864d299fe76')
+source=("$url/releases/download/v$pkgver/blobsaver-$pkgver.tar.gz")
+sha256sums=('860b5f3fc9238b99b0f25031f913f35177d7cce6b9516b20b71df751e127c8c5')
 
 package() {
-  gendesk -f -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" \
-    --exec="${_pkgname}" --categories=Utility --icon "${_pkgname}"
-  echo "#!/usr/bin/env bash
-  archlinux-java-run -a 8 -b 8 -- -jar /opt/blobsaver/blobsaver.jar
-  " > "${_pkgname}.sh"
-  install -Dm755 "$srcdir/blobsaver/tsschecker" -t "${pkgdir}/opt/${_pkgname}"
-  install -Dm755 "$srcdir/blobsaver/blobsaver.jar" -t "${pkgdir}/opt/${_pkgname}"
-  install -Dm775 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+  gendesk -f -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" \
+    --exec="$_pkgname" --categories=Utility --icon "$_pkgname"
+
+  #install -Dm755 "$srcdir/lib" "${pkgdir}/opt/$_pkgname"
+  mkdir -p "$pkgdir/opt/$_pkgname"
+  cp -r "$srcdir/bin" "${pkgdir}/opt/$_pkgname"
+  cp -r "$srcdir/lib" "${pkgdir}/opt/$_pkgname"
+  
+
+  # install binary symlink
+  mkdir -p "$pkgdir/usr/bin/"
+  ln -sf "/opt/$_pkgname/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  
   install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "$srcdir/lib/blobsaver.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
