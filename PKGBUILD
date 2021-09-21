@@ -1,5 +1,5 @@
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Arghya Sarkar <arghyasarkar.nolan@gmail.com>
 
 pkgname=iris-wall-git
 pkgver=0.2.0.r1.g807a60b
@@ -8,7 +8,8 @@ pkgdesc="A highly configurable wallpaper manager with awesome features and light
 arch=(x86_64 i686)
 url="https://github.com/Shravan-1908/iris.git"
 license=(MIT)
-makedepends=(git go)
+depends=(feh)
+makedepends=(git)
 source=("iris::git+https://github.com/Shravan-1908/iris.git")
 sha256sums=('SKIP')
 
