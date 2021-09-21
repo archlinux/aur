@@ -2,7 +2,7 @@
 
 _name=klepto
 pkgname=python-klepto
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="persistent caching to memory, disk, or database"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('python-h5py'
             'python-cloudpickle'
             'python-setuptools')
 source=("https://github.com/uqfoundation/${_name}/releases/download/${_name}-${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('cc85faf7663b2b7b3e561b2b40db508b3a2667c3eea3e26e8bed6f8bd0ae1e423c28d8d5ca72b4b0001e3921a6a30753039ff68e506a30475e30a2b4bc219d38')
+sha512sums=('584246985eaf6a3076b4fb67a39fa11144dc8902844a7b67b603e0108ef9b25f27225bdbd938e307b1100f0598c55713167737d3e1af2ff29c871d2e61540aa7')
 
 build() {
   cd "${_name}-${pkgver}"
