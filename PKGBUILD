@@ -1,7 +1,8 @@
-# Maintainer: Jim Rees at rees.org
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Jim Rees at rees.org
 
 pkgname=xfishtank
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Fish swimming across your Root Window"
 arch=('i686' 'x86_64')
@@ -10,12 +11,12 @@ license=('custom')
 depends=('libx11' 'libxext' 'libxcb' 'libxau' 'libxdmcp' 'imlib2' 'libpng')
 makedepends=('imake')
 source=(http://jim.rees.org/computers/xfishtank.tar.gz)
-md5sums=('3aadec19d46d9ab1a115185428c19c1b')
+md5sums=('7349487c47e972565e488dc574103dfa')
 
 build() {
   cd "$srcdir/$pkgname"
   xmkmf
-  make || return 1
+  make
 }
 
 package() {

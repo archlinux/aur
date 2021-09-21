@@ -1,6 +1,6 @@
 pkgbase = xfishtank
 	pkgdesc = Fish swimming across your Root Window
-	pkgver = 2.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = http://jim.rees.org/computers/xfishtank.html
 	arch = i686
@@ -15,7 +15,6 @@ pkgbase = xfishtank
 	depends = imlib2
 	depends = libpng
 	source = http://jim.rees.org/computers/xfishtank.tar.gz
-	md5sums = 3aadec19d46d9ab1a115185428c19c1b
+	md5sums = 7349487c47e972565e488dc574103dfa
 
 pkgname = xfishtank
-
