@@ -1,5 +1,6 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# pkg: gitlab GNOME/gedit gitlab.gnome.org
+# from: gitlab gitlab.gnome.org
+# what: GNOME/gedit
 
 pkgname=gedit-menubar
 pkgver=41.alpha
