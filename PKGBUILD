@@ -2,7 +2,7 @@
 pkgname=python-osrparse
 url="https://github.com/kszlim/osu-replay-parser"
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A python parser for osu! replays."
 arch=('any')
 license=('MIT')
