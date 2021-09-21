@@ -1,0 +1,11 @@
+pkgbase = aquayman-bin
+	pkgdesc = Manage quay.io teams and permissions declaratively.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/kubermatic-labs/aquayman
+	arch = x86_64
+	license = Apache
+	source = aquayman-bin-0.3.2.tar.gz::https://github.com/kubermatic-labs/aquayman/releases/download/v0.3.2/aquayman_0.3.2_linux_amd64.zip
+	sha256sums = 18ddd24bb051c071f901c37fcbf553236a92bf30023a5caf568f9d356c63e169
+
+pkgname = aquayman-bin
