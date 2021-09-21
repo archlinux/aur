@@ -1,14 +1,14 @@
 pkgbase = python-google-crc32c
-	pkgdesc = Wraps Google's CRC32C library into a Python wrapper
+	pkgdesc = Wraps Google's crc32c library into a Python wrapper
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googleapis/python-crc32c
-	arch = any
+	arch = x86_64
 	license = APACHE
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python>=3.6
-	optdepends = google-crc32c: use C extension instead of pure Python implementation (requires rebuild)
+	depends = google-crc32c
 	source = python-google-crc32c-1.2.0.tar.gz::https://github.com/googleapis/python-crc32c/archive/v1.2.0.tar.gz
 	sha256sums = 7cb079223a4f175c685d2c2c26efc5176d72b23eae65f532a83db227e24dce79
 

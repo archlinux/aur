@@ -1,7 +1,0 @@
-*
-!.gitignore
-!PKGBUILD
-!*.patch
-!*.install
-!*.sysusers
-!.SRCINFO
