@@ -1,15 +1,15 @@
 pkgbase = sync-my-l2p
 	pkgdesc = Sync the Moodle instance of RWTH Aachen University.
-	pkgver = 2.4.3
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://github.com/rwthmoodle/Sync-my-L2P
 	arch = x86_64
 	license = LGPL3
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	source = Sync-my-L2P-2.4.3.tar.gz::https://github.com/rwthmoodle/Sync-my-L2P/archive/refs/tags/v2.4.3.tar.gz
-	source = https://github.com/rwthmoodle/Sync-my-L2P/releases/download/v2.4.3/SyncMyL2P-2.4.3-linux.AppImage
-	sha256sums = b5e652d5f7038b0f160b1d0c2fb09ecda938323a97fc37c8579181b9d0705136
-	sha256sums = 8e40a4848617612c118028c2bb8d684f4fde962e72838bcaa292908cbad5103b
+	source = Sync-my-L2P-2.4.5.tar.gz::https://github.com/rwthmoodle/Sync-my-L2P/archive/refs/tags/v2.4.5.tar.gz
+	source = https://github.com/rwthmoodle/Sync-my-L2P/releases/download/v2.4.5/SyncMyL2P-2.4.5-linux.AppImage
+	sha256sums = 22652803a4fc80166b0fb92078d3873fb4485f9d35755ce750829c4c7b3339d4
+	sha256sums = b7604230d0483c68f4e3ae3cc3f4a99ebd48c47e22546c68ce780e49a2bba59e
 
 pkgname = sync-my-l2p
