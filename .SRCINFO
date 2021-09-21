@@ -1,0 +1,17 @@
+pkgbase = perl-barcode-datamatrix
+	pkgdesc = Perl module to generate data for Data Matrix barcodes
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://metacpan.org/pod/Barcode::DataMatrix
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-assertions
+	makedepends = perl-test-pod-coverage
+	makedepends = perl-module-install
+	depends = perl>=5.6.0
+	depends = perl-moo
+	source = https://cpan.metacpan.org/authors/id/M/MS/MSTRAT/Barcode-DataMatrix-0.10.tar.gz
+	sha512sums = e2480faac134b4059b62c70f5c50002ccd4612c26362df2d22df15e2f6c376255730c746a80a614834ef0aa93765ab4cef97d8c41901f140a815e6542a727080
+
+pkgname = perl-barcode-datamatrix
