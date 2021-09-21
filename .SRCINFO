@@ -1,0 +1,21 @@
+pkgbase = neovim-blue-moon-git
+	pkgdesc = Dark colorscheme derived from palenight and carbonight
+	pkgver = r19.e4943a7
+	pkgrel = 1
+	url = https://github.com/kyazdani42/blue-moon
+	install = blue-moon.install
+	arch = any
+	groups = neovim-plugin
+	license = MIT
+	makedepends = git
+	depends = neovim
+	optdepends = neovim-tree-sitter
+	optdepends = vim-polyglot
+	provides = neovim-blue-moon
+	provides = neovim-lightline-blue-moon
+	conflicts = neovim-blue-moon
+	conflicts = neovim-lightline-blue-moon
+	source = neovim-blue-moon-git::git+https://github.com/kyazdani42/blue-moon
+	md5sums = SKIP
+
+pkgname = neovim-blue-moon-git
