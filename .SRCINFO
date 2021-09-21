@@ -1,7 +1,7 @@
 pkgbase = wmspaceclock
 	pkgdesc = Dockapp showing antialiased analog clock.
 	pkgver = 1.2d
-	pkgrel = 7
+	pkgrel = 8
 	url = http://wmspaceclock.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = wmspaceclock
 	md5sums = 97bcf9cc8a5518f8b37752beba9a7a9c
 
 pkgname = wmspaceclock
-
