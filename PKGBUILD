@@ -1,7 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir at gmail dot com>
 # Inspired by: aur/anbox-image-gapps
 # shellcheck shell=bash disable=SC2034,SC2164,SC2154
-# pkg: git
+# from: git
 
 pkgname=anbox-image-nocsd
 pkgver=r7.5052c81c
