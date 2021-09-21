@@ -1,0 +1,59 @@
+From 7cf57afbcb7a538a94480ff8546d08d4a264464a Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Mon, 30 Aug 2021 08:36:34 +1000
+Subject: [PATCH 2/3] SUNRPC: don't pause on incomplete allocation
+
+alloc_pages_bulk_array() attempts to allocate at least one page based on
+the provided pages, and then opportunistically allocates more if that
+can be done without dropping the spinlock.
+
+So if it returns fewer than requested, that could just mean that it
+needed to drop the lock.  In that case, try again immediately.
+
+Only pause for a time if no progress could be made.
+
+Reported-and-tested-by: Mike Javorski <mike.javorski@gmail.com>
+Reported-and-tested-by: Lothar Paltins <lopa@mailbox.org>
+Fixes: f6e70aab9dfe ("SUNRPC: refresh rq_pages using a bulk page allocator")
+Signed-off-by: NeilBrown <neilb@suse.de>
+Acked-by: Mel Gorman <mgorman@suse.com>
+Signed-off-by: Chuck Lever <chuck.lever@oracle.com>
+Fixes: https://bugs.archlinux.org/task/71775
+---
+ net/sunrpc/svc_xprt.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/net/sunrpc/svc_xprt.c b/net/sunrpc/svc_xprt.c
+index dbb41821b1b8..cd5a2b186f0d 100644
+--- a/net/sunrpc/svc_xprt.c
++++ b/net/sunrpc/svc_xprt.c
+@@ -662,7 +662,7 @@ static int svc_alloc_arg(struct svc_rqst *rqstp)
+ {
+ 	struct svc_serv *serv = rqstp->rq_server;
+ 	struct xdr_buf *arg = &rqstp->rq_arg;
+-	unsigned long pages, filled;
++	unsigned long pages, filled, ret;
+ 
+ 	pages = (serv->sv_max_mesg + 2 * PAGE_SIZE) >> PAGE_SHIFT;
+ 	if (pages > RPCSVC_MAXPAGES) {
+@@ -672,11 +672,12 @@ static int svc_alloc_arg(struct svc_rqst *rqstp)
+ 		pages = RPCSVC_MAXPAGES;
+ 	}
+ 
+-	for (;;) {
+-		filled = alloc_pages_bulk_array(GFP_KERNEL, pages,
+-						rqstp->rq_pages);
+-		if (filled == pages)
+-			break;
++	for (filled = 0; filled < pages; filled = ret) {
++		ret = alloc_pages_bulk_array(GFP_KERNEL, pages,
++					     rqstp->rq_pages);
++		if (ret > filled)
++			/* Made progress, don't sleep yet */
++			continue;
+ 
+ 		set_current_state(TASK_INTERRUPTIBLE);
+ 		if (signalled() || kthread_should_stop()) {
+-- 
+2.33.0
+

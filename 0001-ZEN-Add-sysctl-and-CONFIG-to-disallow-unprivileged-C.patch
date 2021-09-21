@@ -1,7 +1,7 @@
-From 37b5b75497cd7fb1bcc544ecbfc124c14f3d5983 Mon Sep 17 00:00:00 2001
+From 0735052e6d84964f4c9cef57ea619e40d05832ca Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
-Subject: [PATCH 1/8] ZEN: Add sysctl and CONFIG to disallow unprivileged
+Subject: [PATCH 1/3] ZEN: Add sysctl and CONFIG to disallow unprivileged
  CLONE_NEWUSER
 
 Our default behavior continues to match the vanilla kernel.
@@ -14,10 +14,10 @@ Our default behavior continues to match the vanilla kernel.
  5 files changed, 53 insertions(+)
 
 diff --git a/include/linux/user_namespace.h b/include/linux/user_namespace.h
-index f6c5f784be5a..07d194f23587 100644
+index eb70cabe6e7f..dda54e3bc47c 100644
 --- a/include/linux/user_namespace.h
 +++ b/include/linux/user_namespace.h
-@@ -108,6 +108,8 @@ void dec_ucount(struct ucounts *ucounts, enum ucount_type type);
+@@ -137,6 +137,8 @@ static inline void set_rlimit_ucount_max(struct user_namespace *ns,
  
  #ifdef CONFIG_USER_NS
  
@@ -26,7 +26,7 @@ index f6c5f784be5a..07d194f23587 100644
  static inline struct user_namespace *get_user_ns(struct user_namespace *ns)
  {
  	if (ns)
-@@ -141,6 +143,8 @@ extern bool current_in_userns(const struct user_namespace *target_ns);
+@@ -170,6 +172,8 @@ extern bool current_in_userns(const struct user_namespace *target_ns);
  struct ns_common *ns_get_owner(struct ns_common *ns);
  #else
  
@@ -36,10 +36,10 @@ index f6c5f784be5a..07d194f23587 100644
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index 5f5c776ef192..afd708ed0241 100644
+index 55f9f7738ebb..33c6a820ac08 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1177,6 +1177,22 @@ config USER_NS
+@@ -1198,6 +1198,22 @@ config USER_NS
  
  	  If unsure, say N.
  
@@ -63,12 +63,12 @@ index 5f5c776ef192..afd708ed0241 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 426cd0c51f9e..e83a79860d58 100644
+index 44f4c2d83763..7d4e04e18eef 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
-@@ -97,6 +97,10 @@
- #include <linux/scs.h>
+@@ -98,6 +98,10 @@
  #include <linux/io_uring.h>
+ #include <linux/bpf.h>
  
 +#ifdef CONFIG_USER_NS
 +#include <linux/user_namespace.h>
@@ -77,7 +77,7 @@ index 426cd0c51f9e..e83a79860d58 100644
  #include <asm/pgalloc.h>
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
-@@ -1872,6 +1876,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1876,6 +1880,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -88,7 +88,7 @@ index 426cd0c51f9e..e83a79860d58 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -2971,6 +2979,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -2980,6 +2988,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -102,10 +102,10 @@ index 426cd0c51f9e..e83a79860d58 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index 62fbd09b5dc1..01192edd25f3 100644
+index 272f4a272f8c..760e8a2d815d 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
-@@ -103,6 +103,9 @@
+@@ -105,6 +105,9 @@
  #ifdef CONFIG_LOCKUP_DETECTOR
  #include <linux/nmi.h>
  #endif
@@ -115,7 +115,7 @@ index 62fbd09b5dc1..01192edd25f3 100644
  
  #if defined(CONFIG_SYSCTL)
  
-@@ -1902,6 +1905,15 @@ static struct ctl_table kern_table[] = {
+@@ -1908,6 +1911,15 @@ static struct ctl_table kern_table[] = {
  		.proc_handler	= proc_dointvec,
  	},
  #endif
@@ -132,7 +132,7 @@ index 62fbd09b5dc1..01192edd25f3 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index 9a4b980d695b..4388ca13ea3f 100644
+index ef82d401dde8..5a6c2e07174b 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -21,6 +21,13 @@
@@ -150,5 +150,5 @@ index 9a4b980d695b..4388ca13ea3f 100644
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.32.0
+2.33.0
 
