@@ -1,7 +1,7 @@
 pkgbase = anki-release-source
 	pkgdesc = The latest release building from source locally
 	pkgver = 2.1.48
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apps.ankiweb.net/
 	arch = x86_64
 	license = AGPL3

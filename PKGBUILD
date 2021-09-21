@@ -2,7 +2,7 @@
 
 pkgname=anki-release-source
 pkgver=2.1.48
-pkgrel=2
+pkgrel=3
 pkgdesc="The latest release building from source locally"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -71,7 +71,7 @@ build() {
     cd "anki-$pkgver"
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
-    bazel build -c opt dist
+    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build -c opt dist
 }
 
 package() {
