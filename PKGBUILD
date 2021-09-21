@@ -1,14 +1,14 @@
 # Maintainer: matheuz1210 <matheuz1210 at gmail dot com>
 
 pkgname=wsid-git
-pkgver=0.3.r0.313eb8d
+pkgver=1.0.r0.1933840
 pkgrel=1
 pkgdesc='web show image directory'
 arch=(any)
 url='https://github.com/matheuz1210/wsid'
 license=(GPL)
 depends=(
-    'python>=3.9' )
+    'python>=3.7' )
 makedepends=(
     git )
 optdepends=(
@@ -24,10 +24,10 @@ pkgver(){
 
 build(){
     cd "${srcdir}/${pkgname%-git}"
-    python - build <<<"from setuptools import setup; setup()"
+    python setup.py build
 }
 
 package(){
     cd "${srcdir}/${pkgname%-git}"
-    python - install --root="${pkgdir}" --optimize=1 --skip-build <<<"from setuptools import setup; setup()"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
