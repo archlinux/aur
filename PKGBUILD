@@ -3,7 +3,7 @@
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: Charles Lindsay <charles@chaoslizard.org>
-# pkg: git
+# from: git
 
 pkgname=vhba-module-dkms-git
 _pkgname=vhba-module
