@@ -1,19 +1,19 @@
 pkgbase = gsplus-git
 	pkgdesc = Modern cross-platform Apple IIgs emulator
 	pkgver = r556.4805720
-	pkgrel = 1
+	pkgrel = 2
 	url = http://apple2.gs/plus/
 	install = gsplus.install
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	depends = git
-	depends = libpcap
-	depends = sdl2
+	makedepends = pkgconfig
+	makedepends = re2c
 	depends = sdl2_image
 	depends = libxext
-	depends = re2c
+	depends = freetype2
 	optdepends = alsa-oss
+	optdepends = git
 	provides = gsplus
 	conflicts = gsplus
 	source = git+https://github.com/digarok/gsplus
@@ -26,4 +26,3 @@ pkgbase = gsplus-git
 	sha256sums = b49a30685334485d0d6fea480a90c36c6d5ed2821bfe90490ed5bb971fe6735a
 
 pkgname = gsplus-git
-
