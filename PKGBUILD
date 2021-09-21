@@ -1,5 +1,6 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# pkg: git
+# from: git
+
 pkgname=(zapret-{nfqws,tpws}-git)
 pkgbase=zapret-git
 pkgver=r97.6363732
