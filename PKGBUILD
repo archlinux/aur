@@ -9,16 +9,16 @@ url='https://btdex.trade'
 license=('GPL3')
 depends=('java-runtime' 'xdg-utils')
 source=("https://github.com/btdex/btdex/releases/download/v$pkgver/btdex-v${pkgver}-all.jar"
-        "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/dist/btdex.sh"
         "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/src/main/resources/icon.png"
         "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/dist/btdex.desktop"
-        "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/LICENSE")
+        "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/LICENSE"
+        "btdex.sh")
 sha256sums=('c74d36459ef5e769159a4f87dc572c1ba9c087aec4f51ea6062fbcd91c4b4c7e'
-            '1bd216359e3202bdc9691e10fd67e315f3c10c7a2a88cfeabb8baff7474a26d4'
             '568d8a08b942868ab9aa67458ad9bfcee4d56ef079d2467dd259613bb37d0bff'
             'fa8e5f6561192d1f2554365a7f49c36ac368ae00413f489c0873a801c11e6219'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-noextract=('btdex-all-v$pkgver.jar')
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            'e4f8a00dbb222484d4d73ada2dfd5748a56542aeb7ab83abeed5bea4596d411e')
+noextract=('btdex-v${pkgver}-all.jar')
 
 package() {
 	install -Dm644 btdex-v${pkgver}-all.jar "$pkgdir"/opt/btdex/btdex-all.jar
