@@ -1,3 +1,4 @@
+# Maintainer: mawenbo <b1431736437@163.com>
 pkgname=wine-arm
 pkgver=6.17
 pkgrel=1
