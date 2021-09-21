@@ -1,7 +1,7 @@
 # Maintainer: Christoph Schmidpeter <john.doe@example.com>
 # Co-Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # Contributor: Iwan Timmer <irtimmer@gmail.com>
-# pkg: git
+# from: git
 
 pkgname=anbox-git
 pkgver=r1353.31d584e
