@@ -12,6 +12,7 @@ source=("pnpm-$pkgver::$url/releases/download/v${pkgver}/pnpm-linux-x64")
 sha256sums=("6023f98a31d5bfdbd64a467795ec2a3c9ed9318521aacda973b0cff8c365014d")
 
 package() {
-  install -d "$pkgdir/usr/bin" && cp "$srcdir/pnpm-$pkgver" "$_/pnpm"
+  install -d "$pkgdir/usr/bin"
+  mv "$srcdir/pnpm-$pkgver" "$pkgdir/usr/bin/pnpm"
   chmod +x "$pkgdir/usr/bin/pnpm"
 }
