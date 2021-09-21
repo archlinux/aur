@@ -1,5 +1,8 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: pypi trakt-scrobbler pyproject
+# from: pypi
+# what: trakt-scrobbler
+# deps: pyproject
+
 pkgname=trakt-scrobbler
 pkgver=1.3.1
 pkgrel=2
