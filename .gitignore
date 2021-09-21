@@ -1,3 +1,5 @@
 *.AppImage
 /pkg
 /src
+*.zst
+*.part
