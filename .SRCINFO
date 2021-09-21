@@ -1,6 +1,6 @@
 pkgbase = rua
 	pkgdesc = AUR helper in Rust providing control, review, patch application and safe build options
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/vn971/rua
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = rua
 	optdepends = bubblewrap-suid: version of bubblewrap that works on linux-hardened kernel
 	optdepends = shellcheck: allows checking PKGBUILD scripts, taking care of special variables
 	optdepends = sudo: allows package installation via sudo, if desired
-	source = rua-0.18.1.tar.gz::https://github.com/vn971/rua/archive/v0.18.1.tar.gz
-	sha256sums = ac1ff3c4fa237ebc1defc82a471918e4e9bfba718f85a910be43c015812b8545
+	source = rua-0.18.2.tar.gz::https://github.com/vn971/rua/archive/v0.18.2.tar.gz
+	sha256sums = e5e7e27bc2c6359fde000baefa4051176f29f456c6163bea60a46e0096397c76
 
 pkgname = rua
