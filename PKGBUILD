@@ -2,7 +2,9 @@
 # Contributor: Christian Rebischke <chris.rebischke@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
-# pkg: github libvirt/libvirt
+# from: github
+# what: libvirt/libvirt
+
 pkgname=libvirt-xen
 pkgver=7.7.0
 pkgrel=1
