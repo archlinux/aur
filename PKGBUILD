@@ -13,8 +13,8 @@ sha256sums=(
     'd7361e0ed07d4fef834f18a14baef058907fb95af9191bad8d83dfc1d719db65'
 )
 depends=(
-    'circleguard>=5.2.3'
-    'circleguard<6'
+    'python-circlecore>=5.2.3'
+    'python-circlecore<6'
     'python'
     'python-slider>=0.4'
     'python-pyqt5'
