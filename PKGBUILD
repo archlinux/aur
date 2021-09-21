@@ -1,24 +1,34 @@
-# Maintainer: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
+# Maintainer: Marc Plano-Lesay <kernald@enoent.fr>
+# Contributor: Muflone http://www.muflone.com/contacts/english/
+# Contributor: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 
-_sdkver=21
-_sdkint=21
-_rel=r03
-pkgname=android-x86-system-image-${_sdkint,,}
-pkgver=${_sdkver}_${_rel}
-pkgrel=2
-pkgdesc="Android x86 Atom System Image, API-${_sdkint}"
+_apilevel=21
+_arch=x86
+pkgname=android-${_arch}-system-image-${_apilevel}
+pkgver=r05
+pkgrel=1
+pkgdesc="Android ${_arch} Atom System Image, API-${_apilevel}"
 arch=('any')
-url="https://software.intel.com/en-us/android/tools"
+url='https://developer.android.com/studio/index.html'
 license=('custom')
-depends=("android-platform-${_sdkint,,}")
+depends=("android-platform-${_apilevel}")
 optdepends=('qemu' 'libvirt')
+provides=("${pkgname}")
 options=('!strip')
-source=("http://dl.google.com/android/repository/sys-img/android/sysimg_x86-${_sdkver}_${_rel}.zip")
-sha512sums=('91744a516f9bf77d01bca62091976b44f03a63ce43528c5633efad484f47e8f94e0c23cdde85f77b5a041459097f5ed37e8446fe59f2dde41c683952eb70cf4e')
+source=("https://dl-ssl.google.com/android/repository/sys-img/android/${_arch}-${_apilevel}_${pkgver}.zip")
+        sha256sums=('2a7d1a01a4a455b989353d16c3f2bc427b6e133300072c790c7650e5e0080095')
+
+prepare() {
+  # Fix permissions
+  cd "${_arch}"
+  find . -type f -print0 | xargs --null chmod -R u=rw,go=r
+  find . -type d -print0 | xargs --null chmod -R u=rwx,go=rx
+}
 
 package() {
-  mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_sdkver}/default"
-  cp -dpr --no-preserve=ownership "${srcdir}/x86" "${pkgdir}/opt/android-sdk/system-images/android-${_sdkver}/default/x86"
+  _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
+  mkdir -p "${_destdir}"
+  mv "${srcdir}/${_arch}" "${_destdir}/"
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
