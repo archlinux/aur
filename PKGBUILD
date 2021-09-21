@@ -1,15 +1,15 @@
-# Maintainer: Paul Makles <paulmakles@gmail.com>
-pkgname=revolt-desktop-git
+# Maintainer: Maire Piontek <marie@mxy.gg>
+pkgname=koemimoe-desktop-git
 pkgver=25.0d49135
 pkgrel=1
 pkgdesc="User-first, privacy focused chat platform."
 arch=("x86_64")
-url="https://revolt.chat"
+url="https://koemi.moe"
 license=("AGPL3")
 depends=("electron")
 makedepends=("git" "npm")
 provides=("${pkgname%-git}")
-source=("git+https://github.com/revoltchat/desktop.git")
+source=("git+https://github.com/KoemiMoe/desktop.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -40,6 +40,6 @@ package() {
     
     install -dm755 "${pkgdir}/usr/bin" "revolt-desktop"
     
-    install -Dm755 "revolt-desktop.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-    install -Dm644 "revolt-desktop.desktop" -t "$pkgdir/usr/share/applications"
+    install -Dm755 "koemimoe-desktop.sh" "$pkgdir/usr/bin/${pkgname%-git}"
+    install -Dm644 "koemimoe-desktop.desktop" -t "$pkgdir/usr/share/applications"
 }
