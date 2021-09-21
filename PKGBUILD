@@ -1,5 +1,6 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# pkg: git
+# from: git
+
 pkgname=systemd-cron-next-git
 pkgver=v1.0.2.r16.ga4c2de7
 pkgrel=1

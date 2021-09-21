@@ -23,4 +23,3 @@ pkgbase = systemd-cron-next-git
 	sha256sums = 095f20fd780717da18c0251df0ff702a5953816120f3040a317ccc9dc3e1572b
 
 pkgname = systemd-cron-next-git
-
