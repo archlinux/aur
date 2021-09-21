@@ -15,4 +15,3 @@ pkgname = python-options
 
 pkgname = python2-options
 	depends = python2
-

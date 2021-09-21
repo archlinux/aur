@@ -1,5 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: pypi options
+# from: pypi
+# what: options
+
 _name=options
 pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
