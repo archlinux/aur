@@ -3,7 +3,7 @@
 # Contributor: Thomas Glamsch <thomas.glamsch@gmail.com>
 # Contributor: Alexander Kratzsch <alexander-kratzsch at web dot de>
 
-_revision=3546
+_revision=3610
 pkgname=koma-script
 pkgver=3.32.${_revision}
 pkgrel=1
@@ -14,7 +14,7 @@ license=('LPPL')
 depends=('texlive-core' 'texlive-latexextra')
 makedepends=('unzip')
 source=("http://sourceforge.net/projects/koma-script/files/KOMA-Script/koma-script-${_revision}.zip")
-sha512sums=('3bc34e00bd66f0d379e2457772888fc07fe936db27db56d2cbe144c4359be88573791a6e1364c287dfb0f7d48460b6d741938dc3d454bed2e1f7e24b2f5aadf7')
+sha512sums=('b58d781f29ad6f4c77c9ce3528e61fe6e08c7f59e631e24fb6b1986c59c951df5d01e57b2d37bad45de352636659e2fa547f06f0f3da179d2bc83e47b9c223cd')
 noextract=("koma-script-${_revision}.zip")
 install=texlive.install
 
