@@ -2,11 +2,11 @@
 
 pkgname=wmsolar-git
 pkgver=r2.37b9014
-pkgrel=1
+pkgrel=2
 pkgdesc="A dockapp depicting the solar system (90 deg. heliocentric)"
 url=""https://github.com/engerim42/wmsolar
 license=('GPL')
-arch=('i386' 'x86_64')
+arch=('i686' 'x86_64')
 depends=('libxpm' 'gcc-libs')
 makedepends=('git' 'make' 'ed')
 provides=('wmsolar')
