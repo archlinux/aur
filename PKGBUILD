@@ -2,34 +2,25 @@
 
 _pkgname=assemblyscript
 pkgname=assemblyscript-git
-pkgver=0.7.0.r682.227c6269
-pkgrel=1
+pkgver=v0.19.16.r1.g250dc70b4
+pkgrel=2
 pkgdesc="Compiles TypeScript to WebAssembly using Binaryen"
 arch=('any')
 url="https://github.com/AssemblyScript/${_pkgname}"
 license=('Apache')
 depends=('nodejs')
-makedepends=('npm' 'git')
-source=("${_pkgname}::git+${url}#branch=master")
+makedepends=('npm' 'git' 'jq')
+source=("${_pkgname}::git+${url}#branch=main")
 sha256sums=('SKIP')
 
-get_pkgver() {
-  _pkgver=$(node -pe "require('${srcdir}/${_pkgname}/package.json').version")
-}
-
 pkgver() {
-  get_pkgver
   cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  get_pkgver
   npm pack "${srcdir}/${_pkgname}"
-  npm install -g --user root --prefix "${pkgdir}/usr" "${_pkgname}-${_pkgver}.tgz"
+  npm install -g --user root --prefix "${pkgdir}/usr" "${_pkgname}-0.0.0.tgz"
   find "${pkgdir}" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
 
   # Remove references to $srcdir
