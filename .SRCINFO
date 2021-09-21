@@ -1,6 +1,6 @@
 pkgbase = python-podman
 	pkgdesc = Python bindings for Podman's RESTful API
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/containers/podman-py
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-podman
 	makedepends = python-setuptools
 	depends = python
 	provides = python-podman-py
-	source = https://github.com/containers/podman-py/releases/download/v3.2.0/podman-3.2.0.tar.gz
-	sha256sums = c0e81a9477b854a3ceeea2b6f8b2afc6bbbb86c85cbdebe9a75ae1c28c18c0c9
+	source = https://github.com/containers/podman-py/releases/download/v3.2.1/podman-3.2.1.tar.gz
+	sha256sums = 12a2f5acf449f203739a736021b3df36b31d4c25ec13849d17fec6657ba07b56
 
 pkgname = python-podman
