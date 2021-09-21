@@ -1,6 +1,6 @@
 pkgbase = polybar-git
 	pkgdesc = A fast and easy-to-use status bar
-	pkgver = 3.5.6
+	pkgver = 3.5.7
 	pkgrel = 1
 	url = https://github.com/polybar/polybar
 	install = polybar.install
@@ -35,4 +35,3 @@ pkgbase = polybar-git
 	sha256sums = SKIP
 
 pkgname = polybar-git
-
