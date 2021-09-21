@@ -1,7 +1,7 @@
 pkgname=ntfs3-dkms-git
 pkgver=r78.g880301b
 pkgrel=1
-pkgdesc="NTFS read-write driver GPL implementation by Paragon Software. Current version works with NTFS (including v3.1), normal/compressed/sparse files and supports journal replaying."
+pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
 arch=('any')
 url='https://github.com/Paragon-Software-Group/linux-ntfs3'
 license=('GPL2')
