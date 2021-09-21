@@ -1,0 +1,14 @@
+pkgbase = python-wtc
+	pkgdesc = An extension of the lzma compression format designed to make osu!std replays smaller.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/circleguard/wtc-lzma-compressor
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	conflicts = python-wtc-git
+	source = https://github.com/circleguard/wtc-lzma-compressor/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = c6f693a510bcbfb59c1898778fe93f4c3be347eaaa68b55dcac283206d2f5e2a
+
+pkgname = python-wtc
