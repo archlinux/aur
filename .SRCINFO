@@ -1,10 +1,10 @@
 pkgbase = ccat-git
 	pkgdesc = Colorizes output for cat.
-	pkgver = 1.1.0.r31.g7cf6d90
+	pkgver = 1.1.0.r33.g27844a7
 	pkgrel = 1
 	url = https://github.com/jingweno/ccat
 	arch = any
-	license = CUSTOM
+	license = MIT
 	makedepends = go
 	makedepends = git
 	conflicts = ccat
@@ -13,4 +13,3 @@ pkgbase = ccat-git
 	sha256sums = SKIP
 
 pkgname = ccat-git
-
