@@ -2,8 +2,8 @@
 # Maintainer: Boian Bonev <bbonev@ipacct.com>
 
 pkgname=bpfmon
-pkgver=2.49
-pkgrel=2
+pkgver=2.50
+pkgrel=1
 pkgdesc="BPF based visual packet rate monitor"
 arch=('any')
 url="https://github.com/bbonev/bpfmon"
