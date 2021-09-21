@@ -1,7 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # Contributor: William Luc Ritchie <luc dot ritchie at gmail dot com>
 # Contributor: Borja Ruiz <borja [at] libcrack [dot] so>
-# pkg: git
+# from: git
 
 _pkgname=apkstudio
 pkgname=$_pkgname-git
