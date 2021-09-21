@@ -1,5 +1,6 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# pkg: git
+# from: git
+
 pkgname=hsandbox-git
 pkgver=1.1.r29.gbf81769
 pkgrel=1

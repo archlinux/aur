@@ -13,4 +13,3 @@ pkgbase = hsandbox-git
 	sha256sums = SKIP
 
 pkgname = hsandbox-git
-
