@@ -1,6 +1,6 @@
 # Maintainer: Matt Geskey <matt@celtra.com>
 pkgname=kolide-launcher-git
-pkgver=v0.11.6.r2.g0cdd690
+pkgver=v0.11.22.r4.g554bd92
 pkgrel=1
 pkgdesc="osquery command and control"
 url="https://www.kolide.co/"
@@ -15,8 +15,8 @@ source=("${pkgname}::git+https://github.com/kolide/launcher.git"
 )
 backup=("etc/kolide/launcher.conf")
 sha256sums=("SKIP"
-            "84e6c43518ae8e0fb8a94a954fcb7bb56df8f14d4adb7916913d2635f1bdac9c"
-            "6b0f9ec82302b7cf52e1710668f2b84ccce84d917cefa2ed32557eb1673972dc"
+            "424544443f3165e37622b8e1f3ca4280c39d85bf46c061477891ec75a38bc5e1"
+            "f8f6e60c417aff696c531ef000035feb982f76a5a0767aed5501819aa44255fb"
 )
 
 pkgver() {

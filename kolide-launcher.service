@@ -4,7 +4,7 @@ After=network.service syslog.service
 
 [Service]
 ExecStart=/usr/bin/kolide-launcher \
-	-config /etc/kolide/launcher.conf
+          -config /etc/kolide/launcher.conf
 Restart=on-failure
 RestartSec=3
 
