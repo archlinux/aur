@@ -10,6 +10,13 @@ Changes:
     - Keep old Arduinos available (needed for old circuits by now).
     - New Arduinos as experimental.
     
+  SR2:
+    - RamTable: scale sizes to font scale.
+    - Set "Fusion" as default style.
+    - Oscope: set Font size in pixels.
+    - SubPackage: Allow unselect Main Component.
+    
+    
 New Features:
   RC1:
     - Update Oscope to V3.
@@ -34,6 +41,16 @@ New Features:
     - Arduino Shields (experimental).
     - Memories: Show Memory Table (editable).
     - Turkish translation (by Aejwt).
+    
+  SR5:
+    - Warning Message after crash: save backup file.
+    - Editor: GcBasic sintax updated to match GCB IDE.
+    - OpAmp: Switch Power Pins property & Power Pin labels.
+    
+  SR6:
+    - Meters: Switch Pins property.
+    - Portuguese translation added.
+    - Mono font embeded (keeps consistency across systems).
     
 Bug Fixes:
   RC1:
@@ -112,6 +129,75 @@ Bug Fixes:
     - MCU extra step time not in sync with Simulation time.
     - 7 Seg BCD not working in Subcircuits.
   
+  SR2:
+    - Package errors: 74377, 74373, 74688
+    - DC Motor not cleared at simulation stop.
+    - Memory table: Crash clicking on column 16.
+    - Variable Resistors: error setting value from properties.
+    - Translations: missing properties.
+    - Error in simulation speed after changing step ns, save and open again.
+    - BJT pnp not working.
+    - PIC: Crash using Usart.
+    - PIC: Crash in devices with no EEPROM.
+    - Frequencymeter not detecting freqs below 2 Hz.
+    - Clock: "Always On" property not initialized.
+    - Mosfet: error in some cases.
+    - MCUs: dedicated Reset Pin not working.
+    - Oscope: spinBoxes rejects values > 1e3.
+    - AVR gdb not initialized.
+    - Shields not saved to Circuit file.
+    - AVR Timer: Error writting OCRA, wrong next compare match.
+    - Arduino Mega: some PWM channels not working.
+    - SR04 Error at distance = 0.
+    - I2C RAM: data container not resized.
+    - Memory Table: wrong Address column size for memories > 256.
+    - McuMonitor: Errors in Flash word size.
+    - Crash resizing Memory after opening MemTable.
+    - RAM/ROM not resizing MemTable.
+    - Tunnels & Packages should not be Main Component is Subcircuits.
+    
+  SR3:
+    - All Message Boxes to non-blocking.
+    - AVR I2C: Master not sending ACK when reading
+    - MCU: Load EEPROM data not working.
+    - Mcu Monitor: Crash selecting Register name with no cell selected.
+    - McuMonitor: Sort Register list.
+    - Errors in Arduino packages.
+    - ILI9341 not working in 18 bit RGB mode.
+    
+  SR4:
+    - Buses not working if Pins share eNode
+    - Subcircuit: Name label editable.
+    - Editor/Compiler: no Error msg if upload not successful.
+    - OpAmp: Wrong Power Pin names (not working in subcircuits).
+    - Errors in some AVR Packages.
+    - MCUs: Dialog non blocking for proccessor not created.
+    - 74HC139 Errors (by Sergey Roenko).
+    
+  SR5:
+    - Errors in Diode.
+    - Arduino Compiler: Error path with spaces.
+    - Avrs: Can't find file with non-latin characters in firmware path.
+    - Arduino Compiler: some erros not detected in Windows version.
+    - 74HC164 not working.
+    - L298P not working.
+    - Variable resistors: don't allow negative values.
+    
+  SR6:
+    - Arduino custom board: don't include default context (arduino:avr:).
+    - HD44780 LCD: Error in cursor position, Blink color and speed.
+    - Arduino Compiler: add quotes to paths in Linux version as well.
+    - MCUs: Error connecting to Pins while simulation is running.
+    - Arduino Mega: errors in package file (missing OCxX).
+    - Serial Monitor not always on top in some systems.
+    - Subcircuit category translation not working.
+    - Avr Timer not working: top=ICRx if ICRx is written after Timer configured.
+    - WS2812 Led: chaining leds not working.
+    
+  SR7:
+    - Bjt errors.
+    - Diode "phantom Voltage" with switches.
+    
 New Components:
   RC1:
     - aip31068 I2C LCD (by acebrian).
@@ -131,14 +217,27 @@ New Components:
     - Ili9341 TFT display.
     - Logic Analizer basic implementation.
     - New Subcircuits (sergey Roenko): 
-      7489, 74200, 74219, 74301.
+        7489, 74200, 74219, 74301.
       
   Final:
     - atmega8515 (by avklab)
     
     - New Subcircuits (by sergey Roenko): 
-      7497, 74184, 74185, 74502, 74503, 
-      CD4054, CD4055, CD4056,
-      K155ID11, K155ID13, 564Ik2
-      L298, ULN2001, ULN2803
+        7497, 74184, 74185, 74502, 74503, 
+        CD4054, CD4055, CD4056,
+        K155ID11, K155ID13, 564Ik2
+        L298, ULN2001, ULN2803
+  
+  SR2:
+    - "Tools" Boards (by Sergey Roenko).
+
+  SR3:
+    - Subcircuits (by Sergey Roenko).
+        74XX121, CD4098, K490IP1, K490Ip2
+        AM1402ttl, AM1403ttl, AM1404_ttl.
+
+  SR4:
+    - Subcircuits (by Sergey Roenko).
+        AD7224, AD7520, AD7521, AD7524, AD7845,
+        DAC7621, DAC8562, 74HC139.
   

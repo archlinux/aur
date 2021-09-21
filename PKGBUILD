@@ -3,7 +3,7 @@
 # Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide
-pkgver=0.4.15_SR1
+pkgver=0.4.15_SR7
 _realver=${pkgver//_/-}
 pkgrel=2
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)"
@@ -11,11 +11,11 @@ arch=("x86_64")
 url="https://www.simulide.com/"
 license=("GPL3")
 source=(
-        "https://launchpad.net/simulide/${pkgver//_*/}/${_realver,,}/+download/simulide_${_realver}_Sources.tar.gz"
+        "https://launchpad.net/simulide/${pkgver//_*/}/${pkgver//_*/}-stable/+download/simulide_${_realver}_Sources.zip"
         "simulide.desktop"
         "changelog.txt")
 
-md5sums=('c8e8e1d737dbe4d04e2a2b6555918d03'
+md5sums=('4ea0d28b7570965a549c6c28f69d875c'
          'SKIP'
          'SKIP')
 
