@@ -2,7 +2,7 @@
 
 pkgname=anki-release-source
 pkgver=2.1.48
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest release building from source locally"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -38,7 +38,7 @@ makedepends=(
     'rsync'
     'git'
 
-    'bazel40-bin'
+    'bazel'
     'clang'
 
     'maturin'
@@ -64,6 +64,7 @@ sha256sums=('a7928008ff945d64d06b8df52ac85d42902585b39d0eaf360aa8e3f4077634a4'
 prepare(){
     cd "anki-$pkgver"
     patch -p1 < "$srcdir/no-update.patch"
+    rm .bazelversion
 }
 
 build() {
