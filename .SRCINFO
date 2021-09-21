@@ -1,5 +1,5 @@
 pkgbase = wine-arm
-	pkgdesc = Wine is not emu
+	pkgdesc = Wine is not emulator
 	pkgver = 6.17
 	pkgrel = 1
 	url = https://winehq.org
