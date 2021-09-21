@@ -5,15 +5,15 @@ pkgrel=1
 pkgdesc='AUR helper in Rust providing control, review, patch application and safe build options'
 url='https://github.com/vn971/rua'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vn971/rua/archive/v${pkgver}.tar.gz")
-arch=('x86_64' 'i686')
+arch=('any')
 license=('GPL3')
 
-makedepends=('cargo')
+makedepends=('cargo' 'libseccomp')
 depends=('bubblewrap' 'git' 'pacman' 'xz')
 optdepends=(
   'bubblewrap-suid: version of bubblewrap that works on linux-hardened kernel'
-  'shellcheck: check PKGBUILD scripts, taking care of special variables'
-  'sudo: package installation can be done via sudo, if convenient'
+  'shellcheck: allows checking PKGBUILD scripts, taking care of special variables'
+  'sudo: allows package installation via sudo, if desired'
 )
 
 #options+=(!strip)  # uncomment if you want readable stack traces
@@ -36,4 +36,3 @@ package() {
   install -Dm644 target/completions/rua.fish "${pkgdir}/usr/share/fish/completions/rua.fish"
   install -Dm644 target/completions/_rua "${pkgdir}/usr/share/zsh/functions/Completion/Linux/_rua"
 }
-
