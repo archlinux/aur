@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.15.4
-pkgrel=2
+pkgrel=3
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 url="https://www.mcs.anl.gov/petsc"
 license=('BSD')
 options=(staticlibs)
-depends=('python' 'openmpi' 'boost' 'lapack')
+depends=('python-numpy' 'openmpi' 'boost' 'lapack')
 makedepends=('gcc' 'gcc-fortran' 'cmake')
 provides=('petsc4py')
 optdepends=('trilinos: support for trilinos'
