@@ -15,4 +15,5 @@ post_upgrade() {
 post_remove() {
   # delete file added after installation
   rm -f /etc/linux-enable-ir-emitter.yaml
+  rm -f /usr/bin/linux-enable-ir-emitter
 }
