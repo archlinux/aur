@@ -1,0 +1,15 @@
+pkgbase = python-osrparse
+	pkgdesc = A python parser for osu! replays.
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/kszlim/osu-replay-parser
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	conflicts = python-osrparse-git
+	source = https://github.com/kszlim/osu-replay-parser/archive/refs/tags/v5.0.0.tar.gz
+	sha256sums = 6b01d11bf769685ee6450dfe331d150fb1938695dd8f15bdbeb4979af8fe623e
+
+pkgname = python-osrparse
