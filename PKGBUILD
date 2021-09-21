@@ -11,7 +11,7 @@ pkgdesc="A cross-platform GUI app for saving SHSH blobs using tsschecker"
 arch=('x86_64')
 url='https://github.com/airsquared/blobsaver'
 license=('GPL3')
-depends=('java-runtime=8'
+depends=('java-runtime=16'
          'bash'
          'zlib'
          )

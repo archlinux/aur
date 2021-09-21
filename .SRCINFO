@@ -6,7 +6,7 @@ pkgbase = blobsaver-bin
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
-	depends = java-runtime=8
+	depends = java-runtime=16
 	depends = bash
 	depends = zlib
 	optdepends = libimobiledevice: Get plugged in device information
