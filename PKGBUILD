@@ -22,6 +22,8 @@ conflicts=('python-ossapi-git')
 
 build() {
     cd "$srcdir/ossapi-${pkgver}"
+    # required due to conflict between this and python-osrparse. can't test anyways.
+    rm -rf tests
     python setup.py build
 }
 
