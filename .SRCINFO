@@ -1,0 +1,20 @@
+pkgbase = wmudmount-gtk2
+	pkgdesc = A filesystem mounter dockapp that uses udisks.
+	pkgver = 1.13
+	pkgrel = 4
+	url = https://sourceforge.net/projects/wmudmount/
+	arch = i686
+	arch = x86_64
+	groups = x11
+	license = GPL
+	makedepends = imagemagick
+	depends = dbus-glib
+	depends = gtk2
+	depends = libgnome-keyring
+	depends = libnotify
+	provides = wmudmount=1.13
+	conflicts = wmudmount
+	source = https://downloads.sourceforge.net/project/wmudmount/wmudmount/wmudmount-1.13.tar.gz
+	md5sums = 988955faca6db4f9c4d26f8b79a38744
+
+pkgname = wmudmount-gtk2
