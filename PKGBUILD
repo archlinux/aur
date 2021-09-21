@@ -1,5 +1,6 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
-# pkg: git
+# from: git
+
 pkgname=mpv-libunity-git
 pkgver=r6.ef1c45c
 pkgrel=2
