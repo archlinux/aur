@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 pkgname=gtk3-typeahead
-pkgver=3.24.30
+pkgver=3.24.30+62+g8d04980f38
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit - Typeahead feature enabled for file chooser widget"
 arch=(x86_64)
@@ -12,15 +12,16 @@ license=(LGPL)
 depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2
          dconf libxcomposite libxdamage pango shared-mime-info at-spi2-atk
          wayland libxkbcommon adwaita-icon-theme json-glib librsvg
-         wayland-protocols desktop-file-utils mesa cantarell-fonts libcolord
-         rest libcups libcanberra fribidi iso-codes libcloudproviders
+         desktop-file-utils mesa cantarell-fonts libcolord rest libcups
+         libcanberra fribidi iso-codes libcloudproviders tracker3
          gtk-update-icon-cache)
-makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
+makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson
+             wayland-protocols)
 provides=("gtk3=$pkgver" gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil-3.so)
 conflicts=(gtk3 gtk3-print-backends)
 replaces=("gtk3-print-backends<=3.22.26-1")
 install=gtk3.install
-_commit=d4e2d05cd9518ba04d6fbe1cbcec27142788ac95  # tags/3.24.30^0
+_commit=8d04980f38d58bea7ba721a6ff2e3d38dfdc0486  # gtk-3-24
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-query-immodules-3.0.hook
         typeahead.patch)
@@ -41,12 +42,13 @@ prepare() {
 }
 
 build() {
-  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
+  CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
   local meson_options=(
     -D broadway_backend=true
     -D cloudproviders=true
-    -D tracker3=false
+    -D tracker3=true
     -D colord=yes
+    -D gtk_doc=false
     -D examples=false \
     -D demos=false \
     -D man=true
@@ -57,7 +59,7 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/gtk-3.0/settings.ini" <<END
 [Settings]
