@@ -1,51 +1,29 @@
-# Maintainer: Igor <f2404@yandex.ru>
-# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
-# Original package: Jan de Groot <jgc@archlinux.org>
-
-_realname=gnome-terminal
-pkgname=$_realname-git
-
-pkgver=3.37.0.6396.5e7209c4
-_realver=3.7.3
+pkgname=gnome-terminal-git
+_pkgname=gnome-terminal
+pkgver=3.41.90+29+g9100fd9a
 pkgrel=1
-pkgdesc="The GNOME Terminal Emulator. Git Version"
-arch=('i686' 'x86_64')
-license=('GPL')
+pkgdesc="The GNOME Terminal Emulator"
+url="https://wiki.gnome.org/Apps/Terminal"
+arch=(x86_64)
+license=(GPL)
 depends=('vte3-git' 'gsettings-desktop-schemas')
-makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'appdata-tools' 'yelp-tools')
-options=('!emptydirs')
-url="https://www.gnome.org"
-groups=('gnome')
-
-provides=($_realname=$pkgver)
-conflicts=($_realname)
-
-source=("git+https://gitlab.gnome.org/GNOME/${_realname}.git")
-md5sums=("SKIP")
-
-subver() {
-  PREFIX="m4_define(\[terminal_version_$1\],\["
-  echo $(grep $PREFIX configure.ac | eval sed "'s/$PREFIX//'" | sed 's/\])//')
-}
+makedepends=('docbook-xsl' 'git' 'gnome-shell' 'libnautilus-extension' 'meson' 'yelp-tools')
+source=("git+https://gitlab.gnome.org/GNOME/gnome-terminal.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd $_realname
-  major=$(subver major)
-  minor=$(subver minor)
-  micro=$(subver micro)
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-  echo $major.$minor.$micro.$revision.$hash
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd $_realname
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-scrollkeeper
-  make
+  arch-meson $_pkgname build
+  ninja -C build
 }
 
+check() {
+  meson test -C build --print-errorlogs
+}
 package() {
-  cd $_realname
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
