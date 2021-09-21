@@ -1,5 +1,6 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# pkg: git
+# from: git
+
 pkgname=sd-boot-helper-git
 pkgver=r17.ebc9707
 pkgrel=1
