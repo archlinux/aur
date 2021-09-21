@@ -1,5 +1,6 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-# pkg: github openresty/lua-nginx-module
+# from: github
+# what: openresty/lua-nginx-module
 
 pkgname=nginx-mainline-mod-lua
 pkgver=0.10.20
