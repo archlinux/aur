@@ -4,11 +4,11 @@ pkgver=1.0.r0.gc43a464
 pkgrel=1
 pkgdesc="Multimedia Messaging Service Daemon - The Next Generation"
 url="https://git.kernel.org/pub/scm/network/ofono/mmsd.git"
-arch=("x86_64" "aarch64")
+arch=('x86_64' 'aarch64')
 license=("GPL2")
 provides=("mmsd" "mmsd-tng")
 conflicts=("mmsd" "mmsd-tng")
-makedepends=("git" "meson")
+makedepends=("git" "meson" "c-ares")
 source=("$pkgname::git+https://gitlab.com/kop316/mmsd.git")
 sha256sums=("SKIP")
 
