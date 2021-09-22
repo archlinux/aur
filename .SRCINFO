@@ -1,16 +1,17 @@
 pkgbase = python-pytest-doctestplus
 	pkgdesc = Pytest plugin that provides advanced features for testing example code in documentation
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/astropy/pytest-doctestplus
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python-pytest-remotedata
 	makedepends = python-setuptools-scm
 	depends = python-pytest>=4.6
 	depends = python-setuptools>=30.3.0
 	depends = python-packaging>=17.0
-	source = https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest-doctestplus-0.10.1.tar.gz
-	md5sums = 3f7627713cf25c5726659e05b5ed16b8
+	source = https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest-doctestplus-0.11.0.tar.gz
+	md5sums = c759b220acb20d6dc6b2247369719ef3
 
 pkgname = python-pytest-doctestplus
