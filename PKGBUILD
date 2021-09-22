@@ -6,13 +6,13 @@
 
 pkgname=spectemu
 pkgver=0.99.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Fast and accurate emulator of the original 48k ZX Spectrum."
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/${pkgname}/"
+url="https://sourceforge.net/projects/${pkgname}/"
 license=('GPL')
 depends=('libxxf86vm' 'readline')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('ef47b553acc9436768eaa99b2b6de7d7')
 
 build() {
