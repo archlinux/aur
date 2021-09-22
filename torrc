@@ -91,7 +91,7 @@ DataDirectory /var/lib/tor
 ## yourself to make this work.
 #ORPort 443 NoListen
 #ORPort 127.0.0.1:9090 NoAdvertise
-## If you want to listen on IPv6 your numeric address must be explictly
+## If you want to listen on IPv6 your numeric address must be explicitly
 ## between square brackets as follows. You must also listen on IPv4.
 #ORPort [2001:DB8::1]:9050
 
@@ -242,7 +242,7 @@ DataDirectory /var/lib/tor
 ## mechanisms like https://bridges.torproject.org/. If you want to run
 ## a private bridge, for example because you'll give out your bridge
 ## address manually to your friends, uncomment this line:
-#PublishServerDescriptor 0
+#BridgeDistribution none
 
 ## If non-zero, try to write to disk less frequently than we would otherwise.
 ## This is useful when running on flash memory or other media that support
@@ -264,4 +264,4 @@ DisableAllSwap 1
 ## folder will be parsed following lexical order. Files starting with a dot are ignored. Files
 ## on subfolders are ignored.
 ## The %include option can be used recursively.
-%include /etc/tor/torrc.d/
+%include /etc/tor/torrc.d/*.conf
