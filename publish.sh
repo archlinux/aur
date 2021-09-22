@@ -21,7 +21,8 @@ makepkg -crfC
 
 changelog=$(echo "$release" | jq -r .body)
 date=$(echo "$release" | jq -r .published_at | cut -dT -f1)
-echo -e "## $version ($date)\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
+echo -e "## $version ($date)\n\n$changelog\n\n$(cat CHANGELOG.md)" | sed 's/\r$//' > CHANGELOG.md.tmp
+mv CHANGELOG.md.tmp CHANGELOG.md
 
 git add .SRCINFO CHANGELOG.md PKGBUILD
 git commit --edit --message "Publish yopass $version" --verbose
