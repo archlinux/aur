@@ -1,7 +1,7 @@
 pkgbase = broforce-gog
-	pkgdesc = GOG version of Broforce
+	pkgdesc = Broforce Linux-native with data via GOG
 	pkgver = 1130_20201008
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gog.com/game/broforce
 	arch = i686
 	arch = x86_64
@@ -11,11 +11,13 @@ pkgbase = broforce-gog
 	depends = libx11
 	depends = libxext
 	depends = desktop-file-utils
+	provides = broforce
+	conflicts = broforce-steam
 	source = broforce_1130_20201008_41824.sh::gogdownloader://broforce/en3installer0
-	source = broforce-gog
-	source = broforce-gog.desktop
+	source = broforce.sh
+	source = broforce.desktop
 	sha256sums = 405793776eda4d2fb54dcf20652021bc994070be60db2964395b79b61fbdae7f
-	sha256sums = e3f5fd7d180e2db767d288befbb0c1b23e724d5b7fced1b0c98680277ea21219
-	sha256sums = d0a43b39be7b3160f3e199554a7f97d0dbe75666d55a8c479128dce935f5d3e4
+	sha256sums = cae03d845e18a3879864bbdd039c30ffdf3e5aa50f79ffae81d5663f23117cc7
+	sha256sums = f4d0ab0b9014724ded958a7cf4a6c62e6bcc056c1ffc27ea21a11d506f22bebf
 
 pkgname = broforce-gog

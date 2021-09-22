@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /opt/broforce-gog
+cd /opt/broforce
 ./start.sh
