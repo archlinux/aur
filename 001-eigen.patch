@@ -1,0 +1,15 @@
+diff --git a/setup.py b/setup.py
+index fc8d9d2..0882a1f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -45,8 +45,8 @@ def compile_kernels(fns):
+ 
+ if __name__ == "__main__":
+     # The include directory for the Eigen headers
+-    localincl = "vendor"
+-    if not os.path.exists(os.path.join(localincl, "eigen", "Eigen", "Core")):
++    localincl = "/usr/include"
++    if not os.path.exists(os.path.join(localincl, "eigen3", "Eigen", "Core")):
+         raise RuntimeError("couldn't find Eigen headers")
+ 
+     include_dirs = [

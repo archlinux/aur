@@ -1,26 +1,25 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: xantares
 
-_name=george
 pkgname=python-george
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Fast Gaussian Processes for regression"
 url="https://github.com/dfm/george"
-arch=(any)
+arch=('x86_64')
 license=('MIT')
-depends=('python-scipy' 'python-numpy' 'pybind11')
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-md5sums=('0ce0f2a225eb3a0ed4517a10b93a1dd6')
-
+depends=('python-scipy' 'python-numpy')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'pybind11')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/g/george/george-$pkgver.tar.gz")
+sha256sums=('3c88304b4a816c41b01198c084e3107ba7b0ab43881c60d249829eb2321245b1')
 
 build() {
-  cd "$_name-$pkgver"
-  python setup.py build
-} 
-
-package() {
-  cd "$_name-$pkgver"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	cd "george-$pkgver"
+	python setup.py build
 }
 
+package() {
+	cd "george-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+}
