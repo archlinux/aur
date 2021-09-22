@@ -1,7 +1,7 @@
 pkgbase = alacritty-themes
 	pkgdesc = A cross-platform GPU-accelerated Terminal emulator.
-	pkgver = 4.1.1
-	pkgrel = 2
+	pkgver = 4.1.2
+	pkgrel = 1
 	url = https://github.com/rajasegar/alacritty-themes
 	install = alacritty-themes.install
 	arch = any
@@ -11,8 +11,10 @@ pkgbase = alacritty-themes
 	depends = nodejs
 	conflicts = alacritty-themes
 	replaces = alacritty-themes
-	noextract = alacritty-themes-4.1.1.tgz
-	source = https://registry.npmjs.org/alacritty-themes/-/alacritty-themes-4.1.1.tgz
-	b2sums = 2dd1247ab59f5af74436b8643dedf5b679b063a869d6c70e1925f76aa856c907d77452f179ff5c810e6c8b46bc911da0833a8e63c8849d98a25681cc1f64bcc7
+	noextract = alacritty-themes-4.1.2.tgz
+	source = https://registry.npmjs.org/alacritty-themes/-/alacritty-themes-4.1.2.tgz
+	source = fixing_v4.1.2.patch
+	b2sums = aac71402d02519b7921c8172f0218ee161bd1b3fb6343e497eed22407abf34623b0781bbbdadd687eae2e3861bfaab4c9ff6f09790145966e8349ddd643723d5
+	b2sums = SKIP
 
 pkgname = alacritty-themes

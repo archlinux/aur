@@ -2,8 +2,8 @@
 # Contributor: Ben Silverman <bensilverman10 at gmail dot com>
 
 pkgname=alacritty-themes
-pkgver=4.1.1
-pkgrel=2
+pkgver=4.1.2
+pkgrel=1
 
 pkgdesc="A cross-platform GPU-accelerated Terminal emulator."
 arch=(any)
@@ -16,9 +16,11 @@ conflicts=("$pkgname")
 replaces=("$pkgname")
 install="$pkgname.install"
 
-source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
+	"fixing_v4.1.2.patch")
 noextract=("${pkgname}-${pkgver}.tgz")
-b2sums=('2dd1247ab59f5af74436b8643dedf5b679b063a869d6c70e1925f76aa856c907d77452f179ff5c810e6c8b46bc911da0833a8e63c8849d98a25681cc1f64bcc7')
+b2sums=('aac71402d02519b7921c8172f0218ee161bd1b3fb6343e497eed22407abf34623b0781bbbdadd687eae2e3861bfaab4c9ff6f09790145966e8349ddd643723d5'
+	'SKIP')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
@@ -39,4 +41,6 @@ package() {
         mv "$tmppackage" "$pkgjson"
         chmod 644 "$pkgjson"
     done
+
+    patch $pkgdir/usr/lib/node_modules/alacritty-themes/src/helpers/index.js -i fixing_v4.1.2.patch    
 }

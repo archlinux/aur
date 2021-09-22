@@ -3,3 +3,5 @@
 !PKGBUILD
 !.SCRINFO
 !alacritty-themes.install
+
+!fixing_v4.1.2.patch
