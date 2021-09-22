@@ -2,7 +2,7 @@
 
 pkgname=qt6-jpegxl-image-plugin-git
 pkgver=0.2.0.r8.g67d2eb0
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt6 plug-in to allow Qt6 and KDE based applications to read/write JXL images (git version)'
 arch=('x86_64')
 url='https://github.com/novomesk/qt-jpegxl-image-plugin/'
@@ -16,7 +16,7 @@ options=('!emptydirs')
 source=('git+https://github.com/novomesk/qt-jpegxl-image-plugin.git'
         '010-qt-jpegxl-image-plugin-add-qt6-support.patch')
 sha256sums=('SKIP'
-            '05d7106ddc07a91ae3dccaa8815cf74fa9aef87c12e2961dfadc1240c5f07790')
+            'aa8438527c072a26cc33114ecbe32417c39adb270176ba70a9d4a39dca105c82')
 
 prepare() {
     patch -d qt-jpegxl-image-plugin -Np1 -i "${srcdir}/010-qt-jpegxl-image-plugin-add-qt6-support.patch"
@@ -42,4 +42,5 @@ check() {
 
 package() {
     make -C build DESTDIR="$pkgdir" install
+    rm -r "${pkgdir}/usr/share/kservices5/qimageioplugins"
 }
