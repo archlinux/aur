@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.14.6 Kernel Configuration
+# Linux/x86 5.14.7 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -2278,7 +2278,7 @@ CONFIG_MTD_COMPLEX_MAPPINGS=y
 # CONFIG_MTD_ICHXROM is not set
 # CONFIG_MTD_ESB2ROM is not set
 # CONFIG_MTD_CK804XROM is not set
-CONFIG_MTD_SCB2_FLASH=m
+# CONFIG_MTD_SCB2_FLASH is not set
 # CONFIG_MTD_NETtel is not set
 # CONFIG_MTD_L440GX is not set
 CONFIG_MTD_PCI=m
