@@ -1,11 +1,12 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=pnpm-bin
 pkgver=6.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, disk space efficient package manager"
 arch=("x86_64")
 url="https://github.com/pnpm/pnpm"
 license=("MIT License")
+options=("!strip")
 provides=("pnpm")
 conflicts=("pnpm" "pnpm-git")
 source=("pnpm-$pkgver::$url/releases/download/v${pkgver}/pnpm-linux-x64")
