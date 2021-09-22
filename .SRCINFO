@@ -2,7 +2,7 @@ pkgbase = toppler
 	pkgdesc = A reimplementation of the classic jump & run game "Nebulus"
 	pkgver = 1.1.6
 	pkgrel = 3
-	url = http://toppler.sourceforge.net/
+	url = https://toppler.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -15,4 +15,3 @@ pkgbase = toppler
 	md5sums = 95f97271fe1f629c396d20bb4d21b924
 
 pkgname = toppler
-
