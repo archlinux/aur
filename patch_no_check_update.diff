@@ -1,40 +1,40 @@
-diff -c -r pgmodeler-0.9.0-alpha1-orig/conf/defaults/pgmodeler.conf pgmodeler-0.9.0-alpha1/conf/defaults/pgmodeler.conf
-*** pgmodeler-0.9.0-alpha1-orig/conf/defaults/pgmodeler.conf	2017-02-14 16:29:17.431695027 +0100
---- pgmodeler-0.9.0-alpha1/conf/defaults/pgmodeler.conf	2017-02-14 16:33:11.807849231 +0100
+diff -c -r pgmodeler-0.9.4-alpha1-orig/assets/conf/defaults/pgmodeler.conf pgmodeler-0.9.4-alpha1/assets/conf/defaults/pgmodeler.conf
+*** pgmodeler-0.9.4-alpha1-orig/assets/conf/defaults/pgmodeler.conf	2021-07-22 11:59:37.184473344 +0200
+--- pgmodeler-0.9.4-alpha1/assets/conf/defaults/pgmodeler.conf	2021-07-22 12:00:24.371236247 +0200
 ***************
-*** 19,25 ****
+*** 22,28 ****
                  code-tab-width="4"
                  canvas-corner-move="true"
                  invert-rangesel-trigger="false"
 !                check-update="true"
+                 check-versions="all"                 
                  save-last-position="true"
                  show-main-menu="false"
-                 disable-smoothness="false"
---- 19,25 ----
+--- 22,28 ----
                  code-tab-width="4"
                  canvas-corner-move="true"
                  invert-rangesel-trigger="false"
 !                check-update="false"
+                 check-versions="all"                 
                  save-last-position="true"
                  show-main-menu="false"
-                 disable-smoothness="false"
-diff -c -r pgmodeler-0.9.0-alpha1-orig/conf/pgmodeler.conf pgmodeler-0.9.0-alpha1/conf/pgmodeler.conf
-*** pgmodeler-0.9.0-alpha1-orig/conf/pgmodeler.conf	2017-02-14 16:29:17.431695027 +0100
---- pgmodeler-0.9.0-alpha1/conf/pgmodeler.conf	2017-02-14 16:33:04.520989402 +0100
+diff -c -r pgmodeler-0.9.4-alpha1-orig/assets/conf/pgmodeler.conf pgmodeler-0.9.4-alpha1/assets/conf/pgmodeler.conf
+*** pgmodeler-0.9.4-alpha1-orig/assets/conf/pgmodeler.conf	2021-07-22 11:59:37.184473344 +0200
+--- pgmodeler-0.9.4-alpha1/assets/conf/pgmodeler.conf	2021-07-22 12:00:38.354598103 +0200
 ***************
-*** 19,25 ****
+*** 22,28 ****
                  code-tab-width="4"
                  canvas-corner-move="true"
                  invert-rangesel-trigger="false"
 !                check-update="true"
+                 check-versions="all"                 
                  save-last-position="true"
                  show-main-menu="false"
-                 disable-smoothness="false"
---- 19,25 ----
+--- 22,28 ----
                  code-tab-width="4"
                  canvas-corner-move="true"
                  invert-rangesel-trigger="false"
 !                check-update="false"
+                 check-versions="all"                 
                  save-last-position="true"
                  show-main-menu="false"
-                 disable-smoothness="false"

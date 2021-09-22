@@ -14,7 +14,18 @@ YELLOW="${BOLD}$(tput setaf 3)"
 
 
 post_upgrade() {
+  # reinstall the file association, in case something has changed
+  /usr/bin/pgmodeler-cli -mt uninstall -sw || true
+  /usr/bin/pgmodeler-cli -mt install -sw || true
   [ -x usr/bin/update-desktop-database ] && update-desktop-database -q || true
+}
+
+post_install() {
+  /usr/bin/pgmodeler-cli -mt install -sw || true
+}
+
+pre_remove() {
+  /usr/bin/pgmodeler-cli -mt uninstall -sw || true
 }
 
 post_remove() {

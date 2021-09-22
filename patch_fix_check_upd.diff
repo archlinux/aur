@@ -1,0 +1,22 @@
+diff -r -c pgmodeler-0.9.4-beta/libs/libgui/src/settings/generalconfigwidget.cpp pgmodeler-0.9.4-beta-new/libs/libgui/src/settings/generalconfigwidget.cpp
+*** pgmodeler-0.9.4-beta/libs/libgui/src/settings/generalconfigwidget.cpp	2021-09-20 16:08:24.000000000 +0200
+--- pgmodeler-0.9.4-beta-new/libs/libgui/src/settings/generalconfigwidget.cpp	2021-09-22 07:37:04.647917909 +0200
+***************
+*** 221,228 ****
+  	});
+  
+  #ifdef NO_UPDATE_CHECK
+! 	check_upd_chk->setChecked(false);
+! 	check_upd_chk->setVisible(false);
+  #endif
+  
+  	//Retrieving the available UI dictionaries
+--- 221,228 ----
+  	});
+  
+  #ifdef NO_UPDATE_CHECK
+! 	check_update_chk->setChecked(false);
+! 	check_update_chk->setVisible(false);
+  #endif
+  
+  	//Retrieving the available UI dictionaries
