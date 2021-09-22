@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=jitterentropy-git
-pkgver=1.0.8.r4.gad4d636
+pkgver=1.2.5.r0.g22e0f9b
 pkgrel=1
 pkgdesc="Jitter RNG daemon"
 arch=('i686' 'x86_64')
@@ -30,12 +30,15 @@ pkgver() {
 build() {
   cd "jitterentropy-rngd"
 
-  make
+  make CFLAGS=""
 }
 
 package() {
   cd "jitterentropy-rngd"
 
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/jitterentropy/COPYING"
+  make \
+    DESTDIR="$pkgdir" \
+    PREFIX="/usr" \
+    install
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/jitterentropy"
 }
