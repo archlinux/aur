@@ -1,0 +1,23 @@
+pkgbase = castle-engine-git
+	pkgdesc = Cross-platform 3D and 2D game engine using modern Object Pascal
+	pkgver = v7.0.alpha.1.r16494.f39aec48a
+	pkgrel = 1
+	url = https://castle-engine.io/
+	arch = x86_64
+	license = LGPL with static linking exception
+	makedepends = git
+	makedepends = make
+	makedepends = fpc
+	makedepends = lazarus
+	depends = gtk2
+	depends = freetype2
+	depends = openal
+	depends = libpng
+	depends = libvorbis
+	depends = mesa
+	optdepends = fpc: to compile games
+	optdepends = lazarus: to compile castle-editor
+	source = git+https://github.com/castle-engine/castle-engine.git
+	md5sums = SKIP
+
+pkgname = castle-engine-git
