@@ -1,8 +1,8 @@
-# Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Contributor: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-gmpq'
-pkgver='0.46'
+pkgver='0.47'
 pkgrel='1'
 pkgdesc="Math::GMPq - perl interface to the GMP library's rational (mpq) functions."
 arch=('i686' 'x86_64')
@@ -12,8 +12,7 @@ depends=('perl>=5.10.1' 'gmp>=6.1.0')
 makedepends=()
 url='https://metacpan.org/release/Math-GMPq'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPq-$pkgver.tar.gz")
-md5sums=('6f53ce25f379bb355fda19b10543cd9a')
-sha512sums=('1cdfd1389ef94a39e55cb271de897e2c93c75b40a9793b24698a11d7aa051a1ca983c921f996e72a468025ceb8476e4659145ba43a29adf180d1d2a4a95b0a90')
+sha512sums=('6a8779d9fd597ee5fa4372d129a192599cd431cad983aeddfd1f1649e7809e2d4254bcf160d447b7673442f5000450d3d891ea9f5d6b9d898ca4021b842bce02')
 _distdir="Math-GMPq-$pkgver"
 
 build() {
