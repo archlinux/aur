@@ -3,7 +3,7 @@
 pkgbase='python-prospector'
 pkgname=('python-prospector')
 _module='prospector'
-pkgver='1.3.1'
+pkgver='1.5.1'
 pkgrel=1
 pkgdesc="Python static analysis tool"
 url="http://prospector.readthedocs.io"
