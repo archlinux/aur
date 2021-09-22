@@ -1,10 +1,10 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 pkgname=hellpot-git
-_srcname=HellPot
 _targetname=hellpot
-pkgver=0.1.r23.g6fd1661
+pkgver=v0.3.r4.gbb5c91a
 pkgrel=1
-pkgdesc="An endless honeypot that sends bots to hell."
+_srcname=HellPot
+pkgdesc="An endless honeypot that sends bots to hell. (Git version)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/yunginnanet/HellPot"
 license=('MIT')

@@ -1,6 +1,6 @@
 pkgbase = hellpot-git
-	pkgdesc = An endless honeypot that sends bots to hell.
-	pkgver = 0.1.r23.g6fd1661
+	pkgdesc = An endless honeypot that sends bots to hell. (Git version)
+	pkgver = v0.3.r4.gbb5c91a
 	pkgrel = 1
 	url = https://github.com/yunginnanet/HellPot
 	arch = i686
