@@ -1,20 +1,18 @@
 # Maintainer: ffqq <shuttara@gmail.com>
 pkgname=liteaur
-pkgver=1.5.3
+pkgver=1.5.5
 pkgrel=1
-pkgdesc="LiteAUR: The shell script light-weight AUR helper"
+pkgdesc="LiteAUR: Just another AUR helper"
 arch=('any')
-url="https://gitlab.com/TechSour12/liteaur"
+url="https://gitea.com/ffqq/liteaur"
 license=('GPL3')
 depends=('pacman' 'git')
-optdepends=('doas' 'sudo')
-provides=(liteaur)
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/TechSour12/liteaur/-/archive/v${pkgver}/liteaur-v${pkgver}.tar.gz")
+optdepends=('sudo')
+source=("LiteAUR-v${pkgver}.tar.gz::https://gitea.com/ffqq/LiteAUR/archive/v${pkgver}.tar.gz")
 noextract=()
 md5sums=("SKIP")
-validpgpkeys=()
 
 package() {
-	cd "$pkgname-v$pkgver"
+	cd "v$pkgver"
 	install -D -m755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
