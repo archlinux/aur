@@ -56,17 +56,13 @@ xfce4_pkgs=(
 )
 
 pkgname=dots-git
-pkgver=1.0
+pkgver=1.0.0.r11.ge8b9cfc
 pkgrel=1
-epoch=
 pkgdesc="Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs"
-arch=(x86_64 i686)
+arch=(any)
 url="https://github.com/ulises-jeremias/dotfiles"
 license=('MIT')
-groups=()
 depends=(git "${fonts[@]}" "${needed_pkgs[@]}" "${xfce4_pkgs[@]}")
-makedepends=()
-checkdepends=()
 optdepends=(
 	"bluez: Daemons for the bluetooth protocol stack. Needed for the bluetooth integration in polybar"
 	"blueman: GTK+ Bluetooth Manager. Optional."
@@ -81,22 +77,19 @@ optdepends=(
 )
 provides=(dots)
 conflicts=(dots)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("git+$url.git")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
 
 pkgver() {
-	cd ./dotfiles || exit
-	printf "1.0-r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  	cd dotfiles
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	chmod +x ./dotfiles/install || exit
-	PKGDIR="${pkgdir}" PKGNAME="${pkgname}" sudo ./dotfiles/install || exit
+	  cd dotfiles
+    install -d "${pkgdir}/opt/${pkgname}"
+    cp -Rf * "${pkgdir}/opt/${pkgname}"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm755 dots -t "${pkgdir}/usr/bin/"
 }
