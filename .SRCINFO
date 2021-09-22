@@ -1,15 +1,14 @@
 pkgbase = inputplug
-	pkgdesc = Xinput hotplug event daemon
-	pkgver = 0.3
+	pkgdesc = Xinput hotplug event monitor daemon
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/andrewshadura/inputplug
 	arch = x86_64
 	license = MIT
-	makedepends = libxi
-	makedepends = libxfixes
-	depends = libxcb
-	source = inputplug-0.3.tar.gz::https://github.com/andrewshadura/inputplug/archive/0.3.tar.gz
-	sha256sums = acac8e3972f3f10f9b6791321d2441e6b54d93d97c2de81e13eb14734a635ef7
+	makedepends = cargo
+	depends = gcc-libs
+	depends = libbsd
+	source = inputplug-0.4.0.tar.gz::https://static.crates.io/crates/inputplug/inputplug-0.4.0.crate
+	sha512sums = 920aee68defbdf91e699a1e5c4ff312f6e3c1a6ee1887bec409dfdee851358f4a7e6e845dfa3e5b57a2035195a6bc1afee400c5475eeb821c07d748e760127b8
 
 pkgname = inputplug
-
