@@ -1,17 +1,17 @@
 pkgbase = python-flexx
 	pkgdesc = Write desktop and web apps in pure Python
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.8.3
+	pkgrel = 1
 	url = https://github.com/flexxui/flexx
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python-dialite
-	depends = python-pscript
+	makedepends = python-sphinx
+	depends = python-dialite>=0.5.2
+	depends = python-pscript>=0.7.3
 	depends = python-tornado
-	depends = python-webruntime
-	source = https://files.pythonhosted.org/packages/source/f/flexx/flexx-0.8.1.tar.gz
-	sha256sums = a691f1f950efef17c37831a994c7e09c6fc24573b95a45439c2c8d1b6c765388
+	depends = python-webruntime>=0.5.6
+	source = python-flexx-0.8.3.tar.gz::https://github.com/flexxui/flexx/archive/v0.8.3.tar.gz
+	sha256sums = 213bcd79a3758a755c3f5ef92e4b576ac83b2fd879d81c772435b777d0f53ef3
 
 pkgname = python-flexx
-
