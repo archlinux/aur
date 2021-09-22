@@ -1,7 +1,7 @@
 pkgbase = htop-solarized
 	pkgdesc = Interactive process viewer with solarized patch
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://htop.dev/
 	arch = i686
 	arch = x86_64
