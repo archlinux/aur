@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=coredns-bin
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="A DNS server that chains plugins (official binary version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(coredns_x64_${pkgver}.tar.gz::https://github.com/coredns/coredns/release
 coredns.service
 coredns-sysusers.conf)
 
-sha256sums=('aede302ae591c9747040e10dc749d144df4812bd8bb141041d3d24c6204f309d'
+sha256sums=('deea1ef712be4060f3896be28975b7c4481bf334d7a3295ad81e34410bb8aec4'
             '030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1'
             '536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7')
 
