@@ -2,16 +2,17 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgbase=sia
-pkgname=('siac' 'siad')
-pkgver=1.5.6
+pkgname=('siad')
+pkgver=1.5.7
 pkgrel=1
-pkgdesc='Decentralized storage for the post-cloud world'
+pkgdesc='Sia - Decentralized storage for the post-cloud world'
 arch=('x86_64')
 makedepends=('git' 'go')
 url='https://sia.tech'
 license=('MIT')
-conflicts=('sia-daemon')
-source=("git+https://gitlab.com/NebulousLabs/Sia.git#tag=v${pkgver}"
+conflicts=('sia-daemon' 'siac')
+provides=('siac')
+source=("git+https://github.com/SiaFoundation/siad.git#tag=v${pkgver}"
         "sia.sysusers"
         "sia.tmpfiles"
         "siad.service")
@@ -21,7 +22,7 @@ sha256sums=('SKIP'
             '1533734e672d7ae490fd33307b080730876de5043aa6507a88369e761a14a34d')
 
 build() {
-  cd "$srcdir/Sia"
+  cd "$srcdir/siad"
   
   export GOPATH="$srcdir"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
@@ -29,19 +30,8 @@ build() {
   make release
 }
 
-package_siac() {
-  pkgdesc="Sia Client - $pkgdesc"
-  optdepends=('siad: sia daemon to interact with')
-  
-  cd "$srcdir/Sia"
-  install -Dm 755 "$srcdir/bin/siac" -t "$pkgdir/usr/bin"
-}
-
-package_siad() {
-  pkgdesc="Sia Daemon - $pkgdesc"
-  optdepends=('siac: cli tool to manage a siad instance')
-
-  cd "$srcdir/Sia"
+package() {
+  cd "$srcdir/siad"
 
   install -Dm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/sia"
   
@@ -56,4 +46,5 @@ package_siad() {
   cp -dp doc/manpages/* "$pkgdir/usr/share/man/man1"
   
   install -Dm 755 "$srcdir/bin/siad" -t "$pkgdir/usr/bin"
+  install -Dm 755 "$srcdir/bin/siac" -t "$pkgdir/usr/bin"
 }
