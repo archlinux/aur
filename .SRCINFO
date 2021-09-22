@@ -1,0 +1,21 @@
+pkgbase = codwaw-wine-steam
+	pkgdesc = Call of Duty: World at War using WINE with data via Steam
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://store.steampowered.com/app/10090/Call_of_Duty_World_at_War/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = wine
+	source = codwaw.sh
+	source = codwaw.desktop
+	source = https://github.com/jm2/archlinux-package-codwaw-wine-steam/raw/master/CoDWaW.exe
+	source = https://github.com/jm2/archlinux-package-codwaw-wine-steam/raw/master/CoDWaWmp.exe
+	sha256sums = 84437aa7bf7baf82596c636d0a026933ee9197e67efd2887de59fb03c5aa8715
+	sha256sums = d3f8517b127a1cb03e991d963c40df17bbe6de57f5e8a662fbc6598e43e797db
+	sha256sums = f751d06799ed27f30c61d157ed292aa3adce73fbf9c30b92a5657b29624e8b31
+	sha256sums = b0e265592901cd248b7358e8b37c8c1b5c85c6b24fb3cb378f62d601378e4fae
+
+pkgname = codwaw-wine-steam
