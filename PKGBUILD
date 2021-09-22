@@ -1,25 +1,28 @@
-#  Maintainer: sudokode <sudokode@gmail.com>
+# Maintainer: a821
+# Contributor: sudokode <sudokode.gmail.com>
 # Contributor: Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Matt Parnell <parwok aatt gmail ddoott ccoomm>
 # Contributor: Ronald van Haren <ronald.archlinux.org> 
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname="e2fsprogs-git"
-pkgver=1.42.12.r488.gad5d05d
+pkgver=1.46.4.r5.g4cda2545
 pkgrel=1
 pkgdesc="Ext2/3/4 filesystem utilities (git)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'MIT')
 url="http://e2fsprogs.sourceforge.net"
-groups=('base')
-depends=('sh' 'util-linux')
-makedepends=('git' 'bc')
+depends=('sh' 'util-linux-libs')
+makedepends=('git' 'util-linux' 'systemd')
 conflicts=('e2fsprogs')
-provides=('e2fsprogs')
+provides=('e2fsprogs'
+          'libcom_err.so'
+          'libe2p.so'
+          'libext2fs.so'
+          'libss.so')
 backup=('etc/mke2fs.conf')
-install=e2fsprogs.install
 options=('staticlibs')
-source=("$pkgname::git://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git"
+source=("$pkgname::git+https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git"
         'MIT-LICENSE')
 sha256sums=('SKIP'
             'cc45386c1d71f438ad648fd7971e49e3074ad9dbacf9dd3a5b4cb61fd294ecbb')
@@ -59,9 +62,14 @@ build() {
               #--enable-jbd-debug  # this likes to break the build
 
   make
+
+  # regenerate locale files
+  find po/ -name '*.gmo' -delete
+  make -C po update-gmo
 }
 
 package() {
+  unset MAKEFLAGS
   cd $pkgname
 
   make DESTDIR="$pkgdir" install install-libs
@@ -76,9 +84,8 @@ package() {
   rm "$pkgdir"/usr/lib/lib{com_err,e2p,ext2fs,ss}.a
 
   # install MIT license
-  install -Dm644 "$srcdir"/MIT-LICENSE "$pkgdir/usr/share/licenses/e2fsprogs/MIT-LICENSE"
+  install -Dm644 "$srcdir"/MIT-LICENSE "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
 
-  find "$pkgdir" -type d -name '.git' -exec rm -r '{}' +
 }
 
 # vim:set ts=2 sw=2 et:
