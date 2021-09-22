@@ -34,7 +34,7 @@ sha256sums_x86_64=('f840e95211907080f7ca339d0699cfcf95ec58f7ce060d843713950a64f7
 
 package() {
   cd "$srcdir"
-  install -Dm755 $_srcname/$_targetname "${pkgdir}"/usr/bin/$_targetname
+  install -Dm755 $_targetname "${pkgdir}"/usr/bin/$_targetname
   install -Dm644 config.toml "${pkgdir}"/etc/$_targetname/config.toml
   install -Dm644 service "${pkgdir}"/usr/lib/systemd/system/$_targetname.service
   install -Dm644 tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/$_targetname.conf
