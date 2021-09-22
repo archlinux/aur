@@ -1,0 +1,21 @@
+pkgbase = gnome-cowsay
+	pkgdesc = A simple GNOME UI implementation of Cowsay
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Eonfge/cowsay
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = gtk3
+	depends = glib2
+	depends = libgee
+	depends = libsoup
+	depends = json-glib
+	depends = sqlite3
+	conflicts = cowsay
+	replaces = cowsay
+	source = https://gitlab.gnome.org/Eonfge/cowsay/-/archive/1.9.0/cowsay-1.9.0.tar.gz
+	sha512sums = f03d77e8ec972538139c25d8ac38bec49ce02b40b6c6601bc06cb251da6d8be8acbd7a596a26d140042c699634317fcd89af791758dbbe391ec97e84d74d4330
+
+pkgname = gnome-cowsay
