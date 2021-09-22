@@ -76,11 +76,10 @@ prepare() {
   mkdir -p build_qt6{,_plugins}
   mkdir -p build_cli{,_plugins}
 
-  #exit
   cd avidemux
 
   git config submodule.i18n.url "${srcdir}/avidemux2_i18n"
-  git submodule update --init i18n
+  git submodule update --init
 
   # http://avidemux.org/smif/index.php/topic,16301.0.html
   patch -p1 -i "${srcdir}/fix_verbose.patch"
@@ -89,6 +88,9 @@ prepare() {
   patch -p1 -i "${srcdir}/add_settings_pluginui_message_error.patch"
 
   patch --binary -p1 -i "${srcdir}/opus_check.patch"
+
+  # fix build with Qt6 and Vapoursynth plugin
+  sed 's|c++11|c++17|g' -i avidemux_plugins/ADM_demuxers/VapourSynth/qt4/CMakeLists.txt
 }
 
 build() {
@@ -166,7 +168,6 @@ build() {
     -DUSE_EXTERNAL_LIBASS=ON \
     -DUSE_EXTERNAL_LIBMAD=ON \
     -DUSE_EXTERNAL_MP4V2=ON \
-    -DVAPOURSYNTH=OFF \
     -DFAKEROOT="${srcdir}/fakeroot"
 
   make DESTDIR="${srcdir}/fakeroot" install
@@ -243,6 +244,8 @@ package_avidemux-core-git() {
               'wine: AVSload (Load Avisynth scripts on Avidemux)'
               'vapoursynth: vsProxy (Load Vapoursynth scripts on Avidemux)'
               'cuda: Nvidia hw encoder'
+              'libva-intel-driver: Intel hw encoder'
+              'libva-mesa-driver: Mesa hw encoder'
               )
   provides=('avidemux-core')
   conflicts=('avidemux-core')

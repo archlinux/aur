@@ -87,6 +87,8 @@ pkgname = avidemux-core-git
 	optdepends = wine: AVSload (Load Avisynth scripts on Avidemux)
 	optdepends = vapoursynth: vsProxy (Load Vapoursynth scripts on Avidemux)
 	optdepends = cuda: Nvidia hw encoder
+	optdepends = libva-intel-driver: Intel hw encoder
+	optdepends = libva-mesa-driver: Mesa hw encoder
 	provides = avidemux-core
 	conflicts = avidemux-core
 
