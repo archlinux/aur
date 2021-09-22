@@ -1,7 +1,7 @@
 pkgbase = python-nbstripout
 	pkgdesc = Strips outputs from Jupyter and IPython notebooks
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/nbstripout/
 	arch = any
 	license = MIT
