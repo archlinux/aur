@@ -4,7 +4,7 @@
 pkgname=kryoflux
 pkgdesc="USB Floppy Controller for Software Preservation"
 pkgver=2.6
-pkgrel=6
+pkgrel=7
 arch=('i686' 'x86_64')
 url="http://www.kryoflux.com"
 license=('custom')
@@ -13,7 +13,7 @@ conflicts=('capsimage')
 depends=('libusb')
 install=kryoflux.install
 makedepends=('gendesk' 'imagemagick')
-optdepends=('java-runtime: for the Kryoflux GUI' 'archlinux-java-run: for the Kryoflux GUI')
+optdepends=('java-runtime: for the Kryoflux GUI')
 source=("http://www.kryoflux.com/download/kryoflux_${pkgver}_linux.tar.bz2"
         'https://kryoflux.com/kryoflux-ui.jar'
         '80-kryoflux.rules'
