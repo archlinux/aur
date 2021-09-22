@@ -12,7 +12,6 @@ pkgbase = hellpot
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	makedepends = git
 	provides = hellpot
 	conflicts = hellpot
 	backup = etc/hellpot/config.toml

@@ -8,10 +8,7 @@ pkgdesc="An endless honeypot that sends bots to hell."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/yunginnanet/HellPot"
 license=('MIT')
-makedepends=(
-  'go'
-  'git'
-)
+makedepends=('go')
 provides=('hellpot')
 conflicts=('hellpot')
 source=(
