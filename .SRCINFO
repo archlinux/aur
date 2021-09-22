@@ -23,7 +23,6 @@ pkgbase = lv2-plugins-aur-meta
 	depends = mclk.lv2
 	depends = midiomatic
 	depends = midi-trigger.lv2-git
-	depends = mod-cv-plugins-git
 	depends = mystery.lv2-git
 	depends = nanoinvaders.lv2-git
 	depends = newtonator
