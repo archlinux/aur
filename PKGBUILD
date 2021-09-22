@@ -11,6 +11,7 @@ source=("git+$url")
 md5sums=('SKIP')
 depends=('perl>=5' 'hwinfo' 'curl' 'dmidecode' 'pciutils' 'usbutils' 'net-tools' 'edid-decode')
 optdepends=('hdparm' 'smartmontools' 'inxi' 'pnputils')
+makedepends=('git')
 conflicts=('hw-probe')
 provides=("hw-probe=${pkgver%+*}")
 

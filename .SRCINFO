@@ -5,6 +5,7 @@ pkgbase = hw-probe-git
 	url = https://github.com/linuxhw/hw-probe
 	arch = any
 	license = GPLv2
+	makedepends = git
 	depends = perl>=5
 	depends = hwinfo
 	depends = curl
