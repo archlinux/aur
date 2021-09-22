@@ -1,24 +1,29 @@
-pkgbase='python-googlemaps'
-pkgname=('python-googlemaps')
-_module='googlemaps'
-pkgver='3.1.4'
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
+pkgname=python-googlemaps
+pkgver=4.5.3
 pkgrel=1
 pkgdesc="Python client library for Google Maps Platform"
 url="https://github.com/googlemaps/google-maps-services-python"
-depends=('python')
-makedepends=('python-setuptools')
-license=('Apache')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('fc51565fa5e008391dc1df526997a029424dc7be60517ab12fc07708c2bf5930')
+license=('Apache')
+depends=('python-requests')
+makedepends=('python-setuptools')
+checkdepends=('python-pytest' 'python-responses')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('8574de885d5d7632a3a75e3c391de1ecddb9b56154582ea3e84b1a2c2b1ccd89')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+	cd "google-maps-services-python-$pkgver"
+	python setup.py build
+}
+
+check() {
+	cd "google-maps-services-python-$pkgver"
+	pytest -c /dev/null
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	cd "google-maps-services-python-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
