@@ -1,6 +1,46 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.4...HEAD)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.5...HEAD)
+
+
+<a name="3.1.5"></a>
+## [3.1.5](https://gitlab.com/langurmonkey/gaiasky/tree/3.1.4) (2021-09-22)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.4...3.1.5)
+
+### Bug Fixes
+- pointer guides use wrong shader program and render incorrectly 
+- concurrent camera state modification issue resulting in camera jumps and skips when capturing still frames -- regression introduced with arbitrary precision module in `3.1.0` 
+- order of repositories in build file 
+- frame output target FPS not persisted correctly 
+- add notice when location log is empty 
+- individual visibility in asteroids and other orbital elements-based objects 
+- preferences dialog catalog selection tab 
+- manipulate visibility of stars with proper names 
+- bug in `goToObject()` camera direction 
+- star offset in star groups [#375](https://gitlab.com/langurmonkey/gaiasky/issues/375) 
+- some tweaks to VR mode, fix crashes 
+
+### Build System
+- remove gradle plugin portal from repositories 
+
+### Code Refactoring
+- API change: `unparkRunnable()` is now deprecated in favour of `removeRunnable()` 
+- remove all statics from global resources 
+- encapsulate global resources 
+- remove generics from IAttribute, remove static model from star groups 
+- multiple internal initialization changes 
+
+### Documentation
+- update URLs in  file 
+
+### Features
+- change value of screenshot mode from 'redraw' to 'advanced' both in the API call `setFrameOutputMode()` and in the config file 
+- improve welcome screen button icons 
+- add a filter textbox to per-object visibility window 
+- add collapsible groups to catalog selection window 
+- add mouse-over behavior for most UI elements 
+- add hover over feature to buttons in skins 
+- new YAML based configuration system to replace java properties file 
 
 
 <a name="3.1.4"></a>
