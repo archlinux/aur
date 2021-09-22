@@ -1,6 +1,6 @@
 pkgbase = jdk-adoptopenjdk
-	pkgdesc = OpenJDK Java 16 development kit (AdoptOpenJDK build)
-	pkgver = 16.0.2.u7
+	pkgdesc = OpenJDK Java 17 development kit (AdoptOpenJDK build)
+	pkgver = 17.u35
 	pkgrel = 1
 	url = https://adoptopenjdk.net/
 	install = install_jdk-adoptopenjdk.sh
@@ -14,20 +14,20 @@ pkgbase = jdk-adoptopenjdk
 	depends = alsa-lib
 	optdepends = gtk2: for the Gtk+ 2 look and feel
 	optdepends = gtk3: for the Gtk+ 3 look and feel
-	provides = java-runtime-headless=16
-	provides = java-runtime-headless-openjdk=16
-	provides = jre16-openjdk-headless=16.0.2.u7
-	provides = jre-openjdk-headless=16.0.2.u7
-	provides = java-runtime=16
-	provides = java-runtime-openjdk=16
-	provides = jre16-openjdk=16.0.2.u7
-	provides = jre-openjdk=16.0.2.u7
-	provides = java-environment=16
-	provides = java-environment-openjdk=16
-	provides = jdk16-openjdk=16.0.2.u7
-	provides = jdk-openjdk=16.0.2.u7
-	provides = openjdk16-src=16.0.2.u7
-	provides = openjdk-src=16.0.2.u7
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-openjdk=17
+	provides = jre17-openjdk-headless=17.u35
+	provides = jre-openjdk-headless=17.u35
+	provides = java-runtime=17
+	provides = java-runtime-openjdk=17
+	provides = jre17-openjdk=17.u35
+	provides = jre-openjdk=17.u35
+	provides = java-environment=17
+	provides = java-environment-openjdk=17
+	provides = jdk17-openjdk=17.u35
+	provides = jdk-openjdk=17.u35
+	provides = openjdk17-src=17.u35
+	provides = openjdk-src=17.u35
 	backup = etc/jdk-adoptopenjdk/logging.properties
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.access
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.password.template
@@ -43,13 +43,13 @@ pkgbase = jdk-adoptopenjdk
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_local.policy
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_US_export.policy
 	backup = etc/jdk-adoptopenjdk/sound.properties
-	source = https://github.com/adoptium/temurin16-binaries/releases/download/jdk-16.0.2%2B7/OpenJDK16U-jdk_x64_linux_hotspot_16.0.2_7.tar.gz
+	source = https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17%2B35/OpenJDK17-jdk_x64_linux_hotspot_17_35.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 323d6d7474a359a28eff7ddd0df8e65bd61554a8ed12ef42fd9365349e573c2c
-	sha256sums = e931a0070e4a69dd4b37789c28057c1b956e9830fbedc0efe38aa9988a02b444
-	sha256sums = bb86dc8ef9ad1bac2045b575e84fb6696d70104dd610d8a5507b068d1f96cc58
-	sha256sums = 31122fb2dc414968d7cea452e5abc90c32813cce8db2f83023d19fe04b40f6d5
+	sha256sums = 6f1335d9a7855159f982dac557420397be9aa85f3f7bc84e111d25871c02c0c7
+	sha256sums = f1e1a1d78c8696b79a7b12c31fcff519913bb52cb88c71997e5bf88444307be2
+	sha256sums = 245ef426db05c256fc1cc5e94293fc5538227bc322e4259eedf4a093e7dc7b5c
+	sha256sums = d0dec731c8964dd1e42da135602e4d42f803f569d3c3df69bac94ee71971ced3
 
 pkgname = jdk-adoptopenjdk

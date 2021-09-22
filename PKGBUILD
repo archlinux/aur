@@ -7,9 +7,9 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
-_majorver=16
-_completever=16.0.2
-_updatever=7
+_majorver=17
+_completever=17
+_updatever=35
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
@@ -54,14 +54,14 @@ backup=(etc/${pkgname}/logging.properties
         etc/${pkgname}/sound.properties)
 install=install_jdk-adoptopenjdk.sh
 
-source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
+source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('323d6d7474a359a28eff7ddd0df8e65bd61554a8ed12ef42fd9365349e573c2c'
-            'e931a0070e4a69dd4b37789c28057c1b956e9830fbedc0efe38aa9988a02b444'
-            'bb86dc8ef9ad1bac2045b575e84fb6696d70104dd610d8a5507b068d1f96cc58'
-            '31122fb2dc414968d7cea452e5abc90c32813cce8db2f83023d19fe04b40f6d5')
+sha256sums=('6f1335d9a7855159f982dac557420397be9aa85f3f7bc84e111d25871c02c0c7'
+            'f1e1a1d78c8696b79a7b12c31fcff519913bb52cb88c71997e5bf88444307be2'
+            '245ef426db05c256fc1cc5e94293fc5538227bc322e4259eedf4a093e7dc7b5c'
+            'd0dec731c8964dd1e42da135602e4d42f803f569d3c3df69bac94ee71971ced3')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-adoptopenjdk
 _jdkdir=jdk-${_tag_ver}
