@@ -1,19 +1,18 @@
-# Maintainer: Ponas <mykolas.peteraitis@gmail.com>
-pkgname="netctl-tray-auto"
-pkgver=0.2.2
+pkgname="netctl-tray-auto-noping"
+pkgver=0.2.3
 pkgrel=1
-pkgdesc="A lightweight netctl tray app with notifications (netctl-auto)"
+pkgdesc="A lightweight netctl tray app with notifications (for netctl-auto, without ping)"
 arch=('x86_64')
-url="https://github.com/PonasKovas/netctl-tray"
+url="https://github.com/mortzu/netctl-tray"
 license=('MIT')
 makedepends=('rustup'
-			 'cmake')
+             'cmake')
 depends=('qt5-base'
-     	 'polkit')
-conflicts=("netctl-tray")
+         'polkit')
+conflicts=("netctl-tray" "netctl-tray-auto")
 install=".install"
-source=("netctl-tray-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/${pkgver}.tar.gz")
-md5sums=('d6fb801d64b3e75c0b49d65cac673e89')
+source=("netctl-tray-${pkgver}.tar.gz::https://github.com/mortzu/netctl-tray/archive/${pkgver}.tar.gz")
+md5sums=('d2c5f2744cffeb450d0a82f58fb80a59')
 
 build () {
   cd "$srcdir/netctl-tray-$pkgver"
