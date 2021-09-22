@@ -1,6 +1,14 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.5...HEAD)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.6...HEAD)
+
+
+<a name="3.1.6"></a>
+## [3.1.6](https://gitlab.com/langurmonkey/gaiasky/tree/3.1.5) (2021-09-22)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.5...3.1.6)
+
+### Bug Fixes
+- VR GUI object initialization -- consolidate init() signature 
 
 
 <a name="3.1.5"></a>
