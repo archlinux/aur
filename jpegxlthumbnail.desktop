@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+Name=JPEG-XL Images
+Name[en_GB]=JPEG-XL Images
+Name[pt]=Imagens JPEG-XL
+Name[pt_BR]=Imagens JPEG-XL
+X-KDE-ServiceTypes=ThumbCreator
+MimeType=image/jxl;
+X-KDE-Library=imagethumbnail
+CacheThumbnail=true

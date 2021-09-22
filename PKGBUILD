@@ -2,7 +2,7 @@
 
 pkgname=qt5-jpegxl-image-plugin
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Qt5 plug-in to allow Qt5 and KDE based applications to read/write JXL images'
 arch=('x86_64')
 url='https://github.com/novomesk/qt-jpegxl-image-plugin/'
@@ -11,19 +11,14 @@ depends=('libjxl' 'qt5-base')
 makedepends=('cmake' 'extra-cmake-modules' 'highway')
 checkdepends=('appstream')
 source=("https://github.com/novomesk/qt-jpegxl-image-plugin/archive/v${pkgver}/qt-jpegxl-image-plugin-${pkgver}.tar.gz"
-        '010-qt-jpegxl-image-plugin-allow-qt6-coinstall.patch')
+        'jpegxlthumbnail.desktop')
 sha256sums=('90c8c5b0afb709d4a71f536b3c1eb04d4f26a186220b2cae1b396c42ffbe299c'
-            '05d7106ddc07a91ae3dccaa8815cf74fa9aef87c12e2961dfadc1240c5f07790')
-
-prepare() {
-    patch -d "qt-jpegxl-image-plugin-${pkgver}" -Np1 -i "${srcdir}/010-qt-jpegxl-image-plugin-allow-qt6-coinstall.patch"
-}
+            'd57870099934ebd6fddfc38ca8c6420e891f072e7a3c1779496cc1ad75039315')
 
 build() {
     cmake -B build -S "qt-jpegxl-image-plugin-${pkgver}" \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DQT_MAJOR:STRING='5' \
         -Wno-dev
     make -C build
 }
@@ -34,4 +29,5 @@ check() {
 
 package() {
     make -C build DESTDIR="$pkgdir" install
+    install -D -m644 jpegxlthumbnail.desktop -t "${pkgdir}/usr/share/kservices5"
 }
