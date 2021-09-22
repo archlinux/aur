@@ -1,7 +1,7 @@
 # Maintainer: numToStr <sudo@vikasraj.dev>
 
 pkgname=zenv
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Dotenv (.env) loader written in rust"
 arch=('x86_64' 'aarch64' 'armv7')
@@ -9,12 +9,6 @@ url=https://github.com/numToStr/zenv
 license=('GPL')
 provides=($pkgname)
 conflicts=($pkgname)
-
-depends=(
-  'pacman<6'
-  'sudo'
-  'git'
-)
 
 source_x86_64=(
     "$url/releases/download/v$pkgver/$pkgname-x86_64-unknown-linux-gnu.tar.gz"
