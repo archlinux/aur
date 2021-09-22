@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Torchlight 2
+Comment=Torchlight II Linux-native
+Exec=/usr/bin/torchlight2
+Icon=torchlight2
+Terminal=false
+Type=Application
+Categories=Game;

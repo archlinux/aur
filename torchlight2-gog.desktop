@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Torchlight 2
-Comment=GOG version of Torchlight 2
-Exec=/usr/bin/torchlight2-gog
-Icon=torchlight2-gog
-Terminal=false
-Type=Application
-Categories=Game;

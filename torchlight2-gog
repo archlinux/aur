@@ -1,3 +1,0 @@
-#!/bin/bash
-cd /opt/torchlight2-gog
-./start.sh
