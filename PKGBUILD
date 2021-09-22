@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='pop-sound-theme-bin'
-pkgver='5.4.4'
+pkgver='5.4.3'
 pkgrel=1
 _timestamp=1629398560
 _commit=6615e45
@@ -13,13 +13,15 @@ license=('GPL2' 'CCPL:by-sa')
 conflicts=('pop-sound-theme')
 provides=('pop-sound-theme')
 
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-sound-theme_${pkgver}~${_timestamp}~21.10~${_commit}_all.deb")
-sha256sums=('4c8ae42e6e6b24cf2fd820b40b1ccdf58192ddecbe47cfd3d5dec483b7897b58')
+#source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-sound-theme_${pkgver}~${_timestamp}~21.10~${_commit}_all.deb")
+source=("https://github.com/pop-os/gtk-theme/releases/download/v${pkgver}/pop-sound-theme_${pkgver}_all.deb")
+sha256sums=('a735103610468239fbf118624c600892849239ed5875be09a73abe712322ac2a')
 
 package() {
   cd "${srcdir}"
   
-  tar --zstd -xC "${pkgdir}" -f data.tar.zst
+  #tar --zstd -xC "${pkgdir}" -f data.tar.zst
+  tar -xJC "${pkgdir}" -f data.tar.xz
 }
 
 # vim: ts=2 sw=2 et:
