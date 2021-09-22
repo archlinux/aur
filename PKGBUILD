@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://github.com/LBCrion/sfwbar'
 license=('GPL3')
 depends=(
+    'wayland'
     'gtk3'
     'json-c'
     'gtk-layer-shell'
