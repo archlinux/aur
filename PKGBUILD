@@ -2,7 +2,7 @@
 # Contributor: Simon Conseil <contact+aur at saimon dot org>
 
 pkgname=pip-tools
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="A set of tools to keep your pinned Python dependencies fresh."
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python-click>=7' 'python-pep517' 'python-pip>=20.3' 'python-setuptools' 'python-wheel')
 makedepends=('python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9ed38c73da4993e531694ea151f77048b4dbf2ba7b94c4a569daa39568cc6564')
+sha256sums=('1835a1848bdfb22b2b6e5d10d630844ff5ee15e24b6c3bf92319c76f205d347f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,7 +28,7 @@ package() {
   # documentation
   install -Dm644 CHANGELOG.md CONTRIBUTING.md README.rst \
     -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 img/*.png \
+  install -Dm644 img/*.svg \
     -t "$pkgdir/usr/share/doc/$pkgname/img"
   install -Dm644 examples/* \
     -t "$pkgdir/usr/share/doc/$pkgname/examples"
