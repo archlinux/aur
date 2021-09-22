@@ -1,15 +1,16 @@
-# Maintainer: timescam <rex.ky.ng@gmail.com>
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: timescam <rex.ky.ng@gmail.com>
 
 _pkgname=polybar-spotify
 pkgname=${_pkgname}-git
-pkgver=r32.50cfd6b
-pkgrel=2
+pkgver=r42.9bc2997
+pkgrel=1
 pkgdesc='This is a module that shows the current song playing and its primary artist on Spotify.'
 arch=(any)
 url=https://github.com/Jvanrhijn/${_pkgname}
 license=('MIT')
-makedepends=(git)
 depends=('python' 'python-dbus')
+makedepends=(git)
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
