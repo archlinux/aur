@@ -3,12 +3,13 @@
 pkgname=python-zlmdb
 _pkgname=zlmdb
 pkgver=21.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Object-relational zero-copy in-memory database layer for LMDB."
 arch=('any')
 url="https://github.com/crossbario/zlmdb"
 license=('MIT')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools'
+             'python-pip')
 depends=('python>=3.7'
          'python-cbor2'
          'python-txaio'
