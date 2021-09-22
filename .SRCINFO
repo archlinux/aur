@@ -1,7 +1,7 @@
 pkgbase = routeconverter
 	pkgdesc = A free tool to edit and convert routes, tracks and waypoints
 	pkgver = 2.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.routeconverter.de/en
 	changelog = ChangeLog
 	arch = i686

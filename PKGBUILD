@@ -4,7 +4,7 @@
 
 pkgname=routeconverter
 pkgver=2.30
-pkgrel=1
+pkgrel=2
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints"
 arch=('i686' 'x86_64')
 url="http://www.routeconverter.de/en"
@@ -41,7 +41,7 @@ package()
   	install -m644 "${srcdir}/${_}-${pkgver}.jar" "${pkgdir}/usr/lib/${pkgname}/${_}.jar"
   done
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  unzip -p "${srcdir}/RouteConverterLinux.jar" slash/navigation/converter/gui/RouteConverter.png >"${pkgdir}/usr/share/pixmaps/routeconverter.png"
+  unzip -p "${srcdir}/RouteConverterLinux-${pkgver}.jar" slash/navigation/converter/gui/RouteConverter.png >"${pkgdir}/usr/share/pixmaps/routeconverter.png"
 }
 
 md5sums=('44b20257184f3b23014ca12b975dc5b0'
