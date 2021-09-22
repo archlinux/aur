@@ -1,6 +1,6 @@
 pkgbase = python-taichi
 	pkgdesc = Productive & portable programming language for high-performance, sparse & differentiable computing on CPUs & GPUs
-	pkgver = 0.7.30
+	pkgver = 0.7.32
 	pkgrel = 1
 	url = https://github.com/taichi-dev/taichi
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = python-taichi
 	optdepends = python-gitpython
 	optdepends = yapf
 	optdepends = cuda
-	source = https://files.pythonhosted.org/packages/cp39/t/taichi/taichi-0.7.30-cp39-cp39-manylinux1_x86_64.whl
-	b2sums = 7b953fb7fa60f9cdd94044f4e73b05ca102b792958d0389c39afab4b4e40fa6546a6ba181cd3758e1480e6f104a4de49a39fdeea53b340a9b902dd1ec8cd407e
+	source = https://files.pythonhosted.org/packages/cp39/t/taichi/taichi-0.7.32-cp39-cp39-manylinux1_x86_64.whl
+	b2sums = 7c4efa1e4a48975ace862fe72d209bd655080c4aed749ec801782b4f198ab0c9272a1b381a4f0b416f3784f1b5335392aa90022a8c77a1f0a9ba5e76bb47a3c4
 
 pkgname = python-taichi
