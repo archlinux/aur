@@ -1,22 +1,21 @@
 pkgbase = papyrus
 	pkgdesc = Graphical editing tool for UML based on eclipse.
-	pkgver = 5.0.0
-	pkgrel = 2
+	pkgver = 5.2.0
+	pkgrel = 1
 	url = http://www.eclipse.org/papyrus/
 	arch = x86_64
 	license = EPL
 	makedepends = tar
-	depends = java-runtime
+	depends = java-runtime>=11
 	depends = python
 	depends = libsecret
 	provides = papyrus
 	conflicts = papyrus
-	source = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/2020-12/5.0.0/papyrus-2020-12-5.0.0-linux64.tar.gz
+	source = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/2021-09/5.2.0/papyrus-2021-09-5.2.0-linux64.tar.gz
 	source = papyrus.png
 	source = papyrus.desktop
-	sha256sums = 7a69c82a8d53b91036f80ab81c7a26a375fbfd3ac488c91c203cdc55f9a67d8d
+	sha256sums = 8f8fc4e157d43cafefbf271566b093e6e00e54685396b7640c5768504f2c5737
 	sha256sums = 0bf0ff5eacc3e955a01c171cc21d8c989707ed9eee668ce176d67cfae06c8608
 	sha256sums = 255f1d8b0277bb9e4a3f84d09294fe34a54485b29f67220733343f37db052b94
 
 pkgname = papyrus
-
