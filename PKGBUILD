@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clightd-git
-pkgver=5.4.r13.gf930ee9
-pkgrel=2
+pkgver=5.4.r14.ga386f97
+pkgrel=1
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clightd"
@@ -37,8 +37,4 @@ build() {
 
 package() {
   make -C build DESTDIR="$pkgdir" install
-
-  install -d "$pkgdir/usr/lib/systemd/system"
-  mv "$pkgdir/etc/systemd/system/${pkgname%-git}.service" "$pkgdir/usr/lib/systemd/system"
-  rm -rf "$pkgdir/etc/systemd"
 }
