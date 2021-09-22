@@ -1,9 +1,10 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: vscncls <lucaslou4@protonmail.com>
 
 _pkgname='quich'
 pkgname="${_pkgname}-git"
-pkgver=3.0.0.r45.ge5b0b48
+pkgver=4.0.0.r1.gf932fc3
 pkgrel=1
 pkgdesc='Small, easy to use, fast and useful calculator for your terminal with numerous features'
 arch=('x86_64')
