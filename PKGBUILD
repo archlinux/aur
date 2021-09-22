@@ -2,7 +2,7 @@
 
 pkgname=apnotes
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface for Linux to View, Edit, Create and Sync Notes written on apple devices'
 url='https://github.com/findus/apnotes'
 arch=('x86_64')
