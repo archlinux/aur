@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='pop-gtk-theme-bin'
-pkgver='5.4.4'
+pkgver='5.4.3'
 pkgrel=1
 _timestamp=1629398560
 _commit=6615e45
@@ -30,13 +30,15 @@ optdepends=(
 	"ttf-fira-mono: Recommended monospace font"
 	"ttf-roboto-slab: Recommended font for documents"
 )
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~${_timestamp}~21.10~${_commit}_all.deb")
-sha256sums=('e9ae4c53aec62dcb02866be3f614551f0aa4a3e35d6b9e936c32e1f2a8d43345')
+#source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~${_timestamp}~21.10~${_commit}_all.deb")
+source=("https://github.com/pop-os/gtk-theme/releases/download/v${pkgver}/pop-gtk-theme_${pkgver}_all.deb")
+sha256sums=('d1cbe385886d4ccfc1709b1656be9f12ca42edcfd8468c1d0d7fa3b858b2559f')
 
 package() {
   cd "${srcdir}"
   
-  tar --zstd -xC "${pkgdir}" -f data.tar.zst
+  #tar --zstd -xC "${pkgdir}" -f data.tar.zst
+  tar -xJC "${pkgdir}" -f data.tar.xz
 }
 
 # vim: ts=2 sw=2 et:
