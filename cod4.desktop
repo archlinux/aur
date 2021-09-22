@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Call of Duty 4
-Comment=Call of Duty 4 Modern Warfare
+Name=Call of Duty 4: Modern Warfare
+Comment=Call of Duty 4: Modern Warfare WINE
 Exec=/usr/bin/cod4
 Icon=cod4
 Terminal=false
