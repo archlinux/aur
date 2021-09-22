@@ -1,13 +1,13 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.1.6.r2.8da7c9f6
+pkgver=0.4.0.r0.73d141ed
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. (supports Wayland)"
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=("AGPL3")
 depends=()
-makedepends=("git" "yarn" "npm" "clojure")
+makedepends=("git" "yarn" "npm" "clojure" "nodejs>=16")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "logseq-desktop-bin")
 source=(
@@ -38,14 +38,14 @@ prepare() {
     # patch :parallel-build true in shadow-cljs.edn
 
     # download required js modules
-    yarn
+    yarn install
 
     # create and sync files to folder `static`
     yarn gulp:build
 
     # go to folder `static` and download required js modules in static
     cd "${srcdir}/${pkgname}/static"
-    yarn
+    yarn install
 
     # go back to the top-level folder and download clojure dependencies
     cd "${srcdir}/${pkgname}"
@@ -59,7 +59,7 @@ build() {
     export GITLIBS="${srcdir}/${pkgname}/.gitlib"
 
     # build
-    clojure -M:cljs release app electron
+    yarn cljs:release
 
     # packaging javescript files to an executable
     cd "${srcdir}/${pkgname}/static"
