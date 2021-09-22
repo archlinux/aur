@@ -1,0 +1,21 @@
+
+[deception]
+  server_name = "nginx"
+
+[http]
+  bind_addr = "127.0.0.1"
+  bind_port = "8080"
+  paths = ["wp-login.php","wp-login"]
+  unix_socket_path = "/run/hellpot/socket"
+  unix_socket_permissions = "0666"
+  use_unix_socket = true
+
+[logger]
+  debug = false
+  directory = "/var/log/hellpot/"
+  nocolor = true
+  use_date_filename = true
+
+[performance]
+  max_workers = 256
+  restrict_concurrency = false

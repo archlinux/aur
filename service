@@ -1,0 +1,29 @@
+[Unit]
+Description=Hellpot
+
+[Service]
+Type=simple
+User=hellpot
+Group=hellpot
+WorkingDirectory=/etc/hellpot
+ExecStart=/usr/bin/hellpot
+ProtectSystem=strict
+ProtectHome=on
+ReadWritePaths=/run/hellpot/ /var/log/hellpot/
+CapabilityBoundingSet=~CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_SETPCAP CAP_SYS_PTRACE CAP_SYS_TIME CAP_NET_ADMIN CLONE_NEWUSER CAP_SYS_NICE CAP_SYS_RESOURCE CAP_KILL 
+PrivateUsers=on
+PrivateDevices=on
+DeviceAllow=
+ProtectClock=on
+ProtectKernelTunables=on
+ProtectKernelModules=on
+ProtectKernelLogs=on
+ProtectControlGroups=on
+PrivateTmp=on
+NoNewPrivileges=on
+RestrictSUIDSGID=on
+RestrictNamespaces=uts ipc pid user cgroup
+PrivateNetwork=off
+
+[Install]
+WantedBy=multi-user.target
