@@ -1,12 +1,12 @@
 pkgbase = rate-mirrors-bin
 	pkgdesc = Everyday-use client-side map-aware mirror ranking tool - pre-built with musl
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/westandskif/rate-mirrors
 	arch = x86_64
 	license = custom
 	conflicts = rate-mirrors
-	source = rate-mirrors-bin-0.5.0.tar.gz::https://github.com/westandskif/rate-mirrors/releases/download/v0.5.0/rate-mirrors-v0.5.0-x86_64-unknown-linux-musl.tar.gz
-	sha512sums = 1ee6ccc6b7a59f34153b8f724b826808d1af6f1300723765e34a986fa5867712c8040ec73395ba41537f7048cbba74c346cf9272ba44b8515d90c06bfba6a4e7
+	source = rate-mirrors-bin-0.5.1.tar.gz::https://github.com/westandskif/rate-mirrors/releases/download/v0.5.1/rate-mirrors-v0.5.1-x86_64-unknown-linux-musl.tar.gz
+	sha512sums = 1d50f5024e098be8cad104bdad48e10b4d8837f34526fad0eea16945a6d3ec753742a663c516f3075dd313789519193f9e507467b87d473bb770a7ddb1a39397
 
 pkgname = rate-mirrors-bin
