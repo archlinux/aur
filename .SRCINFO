@@ -1,0 +1,14 @@
+pkgbase = denoiseit-git
+	pkgdesc = Tiny utility to run audio files through RNNoise
+	pkgver = 20210922.36cc813
+	pkgrel = 1
+	url = https://github.com/DragoonAethis/DenoiseIt
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cmake
+	depends = rnnoise
+	depends = libsndfile
+	source = git+https://github.com/DragoonAethis/DenoiseIt.git
+	sha256sums = SKIP
+
+pkgname = denoiseit-git
