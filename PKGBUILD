@@ -27,7 +27,7 @@ validpgpkeys=('F7ABE8761E6FE68638E6283AFE0842EE36DD8C0C') # Nathan Scott <nathan
 source=("git+https://github.com/htop-dev/htop.git#tag=${_tag}?signed"
         'htop-solarized.patch')
 sha256sums=('SKIP'
-            '7c7526c4564eed5e725610f8024cc547468d208fb424a81b827fef844d5b638d')
+            'a89800696603ad3ccdfc9a51345f6b24d7de651e1e8691dc16671e951b4cc3e5')
 
 prepare() {
   cd "${_pkgname}"
