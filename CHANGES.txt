@@ -1,0 +1,61 @@
+v1.3.3, 2017-01-04
+
+    Update version numbers everywhere
+
+
+v1.3.2, 2017-01-04
+
+    Generate wheel
+
+
+v1.3.1, 2016-10-10
+
+    Documentation fixes
+
+
+v1.3.0, 2014-01-28
+
+    Fix: make sure week arithmetics preserve the Week class
+
+    Added week.days() method
+
+    Added week.contains(day) method
+
+
+v1.2.0, 2011-10-20
+
+    The module now works with Python 3.
+
+
+v1.1.0, 2011-10-10
+
+    Add min/max/resolution attibutes to Week (like datetime.date has)
+    Introduce Week.last_week_of_year() method
+    Support arithmethics with timedelta
+
+
+v1.0.1, 2011-10-07
+
+    Constructor failed for week 53 in years with 53 weeks
+
+
+v1.0.0, 2011-10-07
+
+    Allow "-" after year in Week.fromstring
+    Documentation tweaks
+
+
+v0.2.0, 2011-09-06
+
+    Allow Unicode strings passed to Week.fromstring()
+    Provide isoformat() method
+    Provide replace() method
+    Arithmetics with longs should work as well
+    repr() in the same style as for datetime.date
+
+    Improved documentation
+
+
+v0.1.0, 2011-09-05
+
+    Initial release.
