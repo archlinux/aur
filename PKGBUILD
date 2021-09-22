@@ -1,31 +1,33 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Ronuk Raval <ronuk.raval at gmail dot com>
 
-_pkgname='pscript'
-pkgname="python-${_pkgname}"
-pkgver=0.7.4
-pkgrel=2
+pkgname=python-pscript
+pkgver=0.7.6
+pkgrel=1
 pkgdesc='Python to JavaScript compiler'
 arch=('any')
 url='https://github.com/flexxui/pscript'
-_url_pypi='https://pypi.org/project/pscript'
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('4cca30461bdcbefcb205a24dfb16ea764f43fc9d7ed06956dc01180cea9fe7ac')
+makedepends=('python-setuptools' 'python-sphinx')
+changelog=releasenotes.rst
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('1bc8b5c1319e677837df5659289f14052c84da977c445acde95bf1ada653a6c5')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "pscript-$pkgver"
   python setup.py build
+  cd docs
+  make man
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "pscript-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 docs/_build/man/PScript.1 "$pkgdir/usr/share/man/man1/pscript.1"
 }
 
 # vim: ts=2 sw=2 et:

@@ -1,14 +1,14 @@
 pkgbase = python-pscript
 	pkgdesc = Python to JavaScript compiler
-	pkgver = 0.7.4
-	pkgrel = 2
+	pkgver = 0.7.6
+	pkgrel = 1
 	url = https://github.com/flexxui/pscript
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = python-sphinx
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pscript/pscript-0.7.4.tar.gz
-	sha256sums = 4cca30461bdcbefcb205a24dfb16ea764f43fc9d7ed06956dc01180cea9fe7ac
+	source = python-pscript-0.7.6.tar.gz::https://github.com/flexxui/pscript/archive/v0.7.6.tar.gz
+	sha256sums = 1bc8b5c1319e677837df5659289f14052c84da977c445acde95bf1ada653a6c5
 
 pkgname = python-pscript
-
