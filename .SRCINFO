@@ -1,0 +1,14 @@
+pkgbase = pensela-bin
+	pkgdesc = The Swiss Army Knife of Screen Annotation Tools
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/weiameili/Pensela
+	arch = x86_64
+	license = ISC
+	depends = imagemagick
+	noextract = pensela-1.2.3.pacman
+	options = !strip
+	source = https://github.com/weiameili/Pensela/releases/download/v1.2.3/pensela-1.2.3.pacman
+	sha256sums = 10b30a543017dc0352e8df4ebc4d06167ba3afcb7fe9374dffaff23ad726bbd3
+
+pkgname = pensela-bin
