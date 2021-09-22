@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojo-pg'
-pkgver='4.25'
+pkgver='4.26'
 pkgrel='1'
 pkgdesc="Mojolicious ♥ PostgreSQL"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-dbd-pg>=3.7.4' 'perl-mojolicious>=7.53' 'perl-sql-abstract-pg>=1.
 makedepends=('perl-test-deep')
 url='https://metacpan.org/release/Mojo-Pg'
 source=("https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojo-Pg-${pkgver}.tar.gz")
-md5sums=('554a3b2cb04fc6bdc440e718e4f94d07')
-sha512sums=('fcba4619960521a58c895f2c953b504e32a15476d2dd0c4a1737e8267e5221588fc4306fcfb98d42fc7687ab686f84e9260eaee4c36709f0e264164781e95717')
+md5sums=('08512b2634673d4bdbe1a2480e168060')
+sha512sums=('53a01115951ef4c0d6f42bbdefd1604183eefabdc668cad988b26c761415168d90672a1724d750e683d0a28766719a9cab86c75463e5923b51328b5109ff0f0a')
 _distdir="Mojo-Pg-${pkgver}"
 
 build() {
