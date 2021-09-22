@@ -10,7 +10,7 @@ url="https://github.com/Azure/azure-cli"
 license=('MIT')
 depends=("python")
 conflicts=("python-azure-cli")
-source=("install-$pkgver.py::https://raw.githubusercontent.com/Azure/azure-cli/azure-cli-$pkgver/scripts/curl_install_pypi/install.py"
+source=("install-$pkgver.py::https://azurecliprod.blob.core.windows.net/install.py"
         "install.response"
         "az")
 sha256sums=("c5107b96cfe881c46c8d8d9f401fcf931aab2b769a20fda58626b6e6e907219b"
