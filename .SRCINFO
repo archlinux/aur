@@ -1,8 +1,8 @@
 pkgbase = statsite
 	pkgdesc = A C implementation of StatsD
 	pkgver = 0.8.0
-	pkgrel = 1
-	url = http://statsite.github.io/statsite
+	pkgrel = 2
+	url = https://statsite.github.io/statsite
 	arch = x86_64
 	arch = arm
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = statsite
 	sha512sums = 5c5d3735ff6acab17d6ff9a5b0ab473e868a84d00dd19a1171322fc0b1ffdba789e56ae387b41aed455ab4db3c19c9b0527ad552f68a9827318f004e6bcdeafe
 
 pkgname = statsite
-

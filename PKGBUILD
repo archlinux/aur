@@ -1,8 +1,8 @@
-pkgname='statsite'
+pkgname=statsite
 pkgdesc='A C implementation of StatsD'
-pkgver='0.8.0'
-pkgrel='1'
-url='http://statsite.github.io/statsite'
+pkgver=0.8.0
+pkgrel=2
+url=https://statsite.github.io/statsite
 license=('custom:BSD')
 makedepends=('scons')
 depends=('glibc')
