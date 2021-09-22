@@ -1,33 +1,24 @@
 # Maintainer: Trung Le (Kagamma) <kagamma(dot)km(at)gmail(dot)com>
+
 pkgname=castle-engine-git
 pkgver=v7.0.alpha.1.r16494.f39aec48a
 pkgrel=1
-epoch=
 pkgdesc="Cross-platform (desktop, mobile, console) 3D and 2D game engine using modern Object Pascal"
 arch=(x86_64)
 url="https://castle-engine.io/"
 license=('LGPL with static linking exception')
-groups=()
 depends=(gtk2 freetype2 openal libpng libvorbis mesa)
 makedepends=(git make fpc lazarus)
-checkdepends=()
 optdepends=('fpc: to compile games'
             'lazarus: to compile castle-editor')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=(git+https://github.com/castle-engine/castle-engine.git)
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
+
 pkgver() {
           cd castle-engine
           printf "%s.r%s.%s" "$(git describe --abbrev=0 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 build() {
           # Build tools
           cd castle-engine
@@ -35,6 +26,7 @@ build() {
           tools/build-tool/castle-engine --project tools/castle-editor compile
           make cleanall
 }
+
 package() {
           cd castle-engine
           # Prepare desktop file
