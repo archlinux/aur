@@ -65,7 +65,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck-uksm-cjktty
-pkgver=5.14.6
+pkgver=5.14.7
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/RiverOnVenus/linux-ck-uksm-cjktty"
@@ -97,7 +97,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('a60c98265c4e795cb8fad90c57b9237b586423c6c8d6961c2f64db13bc6203925e3e6d79ff8858f32363a45f7f1a463de1014fddf9f4a14216a3d3ba638327d6'
+b2sums=('861405cd1333958cb829017b6c1d6692a7256d179a48fad751bb02cd02ba09227ff210d9252c592a99d3820c1fbdcc3a6e133cbed31fdecb68ba9cf27dfc8f78'
         'SKIP'
         'a0f4869294fe26b51f88171b235377df3ab8ad7f93824933f98e7706057419bb9cf2adf31422c0fc654dd07376e375545bc06bd1148666bb638f6640ec281e7b'
         'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
