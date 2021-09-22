@@ -3,24 +3,24 @@
 # Contributor: willemw
 
 pkgname=routeconverter
-pkgver=2.29
+pkgver=2.30
 pkgrel=1
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints"
 arch=('i686' 'x86_64')
 url="http://www.routeconverter.de/en"
 license=('GPL')
-depends=('java-environment>=6' 'java-openjfx')
+depends=('java-environment>=6' 'java-openjfx' 'archlinux-java-run')
 makedepends=('gendesk' 'unzip')
 optdepends=('gpsbabel: for some additional format support')
 changelog=ChangeLog
 source=(routeconverter
         routeconverter-offline
         routeconverter-cli
-        http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterCmdLine.jar
-        http://static.routeconverter.com/download/RouteConverterLinux.jar)
+        RouteConverterCmdLine-${pkgver}.jar::http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterCmdLine.jar
+        RouteConverterLinux-${pkgver}.jar::http://static.routeconverter.com/download/RouteConverterLinux.jar)
 
-noextract=(RouteConverterCmdLine.jar
-           RouteConverterLinux.jar)
+noextract=(RouteConverterCmdLine-${pkgver}.jar
+           RouteConverterLinux-${pkgver}.jar)
 
 build() {
   cd "${srcdir}"
@@ -38,14 +38,14 @@ package()
 		"${pkgdir}/usr/bin/"
   for _ in RouteConverterCmdLine RouteConverterLinux
   do
-  	install -m644 "${srcdir}/${_}.jar" "${pkgdir}/usr/lib/${pkgname}/"
+  	install -m644 "${srcdir}/${_}-${pkgver}.jar" "${pkgdir}/usr/lib/${pkgname}/${_}.jar"
   done
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   unzip -p "${srcdir}/RouteConverterLinux.jar" slash/navigation/converter/gui/RouteConverter.png >"${pkgdir}/usr/share/pixmaps/routeconverter.png"
 }
 
-md5sums=('e4cdc9db82a9f8c550afb44f851d897f'
+md5sums=('44b20257184f3b23014ca12b975dc5b0'
          'a9e4b76c2aa26c6a0b7a9474964c9648'
          'fdf570309917df1c1536b7e3c7740b33'
-         '201fdb8a73571b331a486c582ba2ff4d'
-         '88c5cceb74c68771f1cf1b502d04495c')
+         '17f7ca5f2867307d698f09f99bb57498'
+         '16ac84548211dec18be7c46cdbfac360')

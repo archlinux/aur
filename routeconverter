@@ -6,5 +6,4 @@ java=`which java`
 java_opts=""
 
 jar="/usr/lib/routeconverter/RouteConverterLinux.jar"
-
-"$java" $java_opts -jar "$jar" $@
+archlinux-java-run --max 11 -- -jar "${jar}" $@
