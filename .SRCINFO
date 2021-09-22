@@ -1,6 +1,6 @@
 pkgbase = perl-graph
 	pkgdesc = graph data structures and algorithms
-	pkgver = 0.9722
+	pkgver = 0.9724
 	pkgrel = 1
 	url = https://metacpan.org/release/Graph
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = perl-graph
 	depends = perl-heap
 	depends = perl-set-object
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETJ/Graph-0.9722.tar.gz
-	b2sums = b7299fee7bb44b75ed54b0d34dae64e607cf3b7cd00fda7ea1bbfcfabd8be4284e1b77447369bd117d3b5291bdf3c83a212f27eea0b0602412e55897736eb891
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETJ/Graph-0.9724.tar.gz
+	b2sums = fc36f53b7029b416f5b0abeeacf446d2a3d767f0e10d88712edf06aecd6ed4b30f52efb8c5afa651d1610562d870726e6400ec48ace433e23284a8e5562f73b0
 
 pkgname = perl-graph

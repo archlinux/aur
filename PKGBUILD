@@ -5,9 +5,10 @@
 
 pkgname='perl-graph'
 _dist='Graph'
-pkgver='0.9722'
+pkgver='0.9724'
 pkgrel='1'
 pkgdesc='graph data structures and algorithms'
+url='https://metacpan.org/release/Graph'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -16,12 +17,13 @@ depends=(
   'perl-heap'
   'perl-set-object'
 )
-url='https://metacpan.org/release/Graph'
+
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
-b2sums=('b7299fee7bb44b75ed54b0d34dae64e607cf3b7cd00fda7ea1bbfcfabd8be4284e1b77447369bd117d3b5291bdf3c83a212f27eea0b0602412e55897736eb891')
+b2sums=('fc36f53b7029b416f5b0abeeacf446d2a3d767f0e10d88712edf06aecd6ed4b30f52efb8c5afa651d1610562d870726e6400ec48ace433e23284a8e5562f73b0')
 
 build() {
-  cd "$srcdir/$_dist-$pkgver"
+  cd "$srcdir/$_dist-$pkgver" || exit
+
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 
   export PERL_MM_USE_DEFAULT=1 \
@@ -33,7 +35,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_dist-$pkgver"
+  cd "$srcdir/$_dist-$pkgver" || exit
 
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
@@ -42,16 +44,11 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$_dist-$pkgver"
+  cd "$srcdir/$_dist-$pkgver" || exit
+
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
