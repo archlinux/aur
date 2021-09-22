@@ -6,10 +6,10 @@
 # Mozc compile option
 _bldtype=Release
 
-_mozcver=2.26.4486.102
+_mozcver=2.26.4500.102
 _fcitxver=20210822
 _iconver=20201229
-_utdicver=20210907
+_utdicver=20210922
 pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 
@@ -24,27 +24,27 @@ makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'qt5-base' 'fcit
 conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'fcitx-mozc-neologd-ut+ut2' 'mozc-ut-unified-full' 'fcitx-mozc-ut-unified-full' 'mozc-ut-unified' 'fcitx-mozc-ut-unified')
 
 source=(
-  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozc-${_mozcver}.tar.bz2
+  https://osdn.net/users/reasonset/pf/aur_mozc_ut_neologd/dl/mozc-${_mozcver}.tar.bz2
   abseil-cpp-20210324.1.tar.gz::https://github.com/abseil/abseil-cpp/archive/refs/tags/20210324.1.tar.gz
   googletest-release-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
   japanese-usage-dictionary-master.zip::https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/master.zip
   protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-${_fcitxver}.patch
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-icons-${_iconver}.tar.gz
-  https://osdn.net/users/reasonset/pf/aur_mozc_ut_neologd/dl/mozcdic-ut-neologd-${_utdicver}.${pkgrel}.tar.bz2
+  https://osdn.net/users/reasonset/pf/aur_mozc_ut_neologd/dl/mozcdic-ut-neologd-${_utdicver}.tar.bz2
   https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
   https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
 )
 
 sha256sums=(
-  'ff54af870892c9e5e1586e54dda805a27c3f61e32c0ef7f1bd6fe4a70b62f62d'
+  'c7a081ef512c8a5ac44835660fc9bdd88b5ba67c095eaa9b99f574478c901548'
   '441db7c09a0565376ecacf0085b2d4c2bbedde6115d7773551bc116212c2a8d6'
   '9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb'
   'e46b1c40facbc969b7a4af154dab30ab414f48a0fdbe57d199f912316977ac25'
   '9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a'
   'b8e69d58d66b529d3a4803075dfb6e756afe546b3959cc2e7308ecfdf6c1a664'
   '7985e6e8c4f4f45f8d040e54715c90b54cd51bb86f6a97fa3bdb17b2137e927d'
-  'b704b9fc0f2cee693d167913c2442602727f0ccffb4c103754869096fb081ded'
+  'c3fd6fecc3ab20a43ef92c52fc8a378b922281519117b7d521fbbceb128ce171'
   'SKIP'
   'SKIP'
 )
