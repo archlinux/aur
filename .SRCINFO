@@ -1,5 +1,5 @@
 pkgbase = polybar-spotify-git
-	pkgdesc = This is a module that shows the current song playing and its primary artist on Spotify.
+	pkgdesc = Spotify artist and song module for Polybar
 	pkgver = r42.9bc2997
 	pkgrel = 1
 	url = https://github.com/Jvanrhijn/polybar-spotify
