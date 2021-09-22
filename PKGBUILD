@@ -50,7 +50,7 @@ pkgbase=linux-bfq-dev
 _major=5.14
 _minor=7
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -81,8 +81,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v6-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v6-sep/0002-SUNRPC-don-t-pause-on-incomplete-allocation.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0002-SUNRPC-don-t-pause-on-incomplete-allocation.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0003-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0004-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0005-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0006-ALSA-pci-rme-Set-up-buffer-type-properly.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0007-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch"
          # the main kernel config files
         'config')
 
@@ -333,8 +338,13 @@ sha512sums=('ab1dd61a9e0e5ed82b38684d01fbc5c00fbf28acdd5ee754095a9fabe5a5fca7c22
             'SKIP'
             '62d3e809cd7218e3e783b41a5abad0780db17b29f025ee1aca3610ebf058dec8371cb78696677a3913d3217052a5513887b3cc5b285e1942d9421ab4c09c4388'
             'b1aef4f4e7350ce8132e019f76a2ac68bee8a46eb981598fbda11402e62a8bcdfd2f49e5b2cc5dcf2e96c88ad047af12d53abb9fda05c9f7acec37879e5240db'
-            '1e4601174a2157397ca836f1fc595b7baa7bc53076b3e62136950caa6d5dd948a773a060fea28e2ab62fb74a1da6b99912e74acdd229353ef6dcec2372149408'
-            '57f35645a619959b52cb4cec218b62ce6d9edb9e9a504a6aaf8e5bbfd5752144099a117e9a23336f0928a3237176c81f4dc3c4d11a3f34c3c7961e13c568bcde'
+            '9282db03456d6423212d8403f7770bad442e0e8b0373c8a729ab70a6c730487685e4ca84adfecab92126489aef9ffa3534c4dbfaf97f2b2a14efb96f0ab866b0'
+            'e2bc17a59e56ca0f1fb848b4f54aaba88c5dcd8e267b20d3f1dc5f02951d1afca1bdabc063a33eaaab3d6ab1396565241bf15d92388e352610f205a4d59b53fc'
+            '58d81540ab3024390c2a71ff2cad71799cd0ad6a9c4aec9f7a5064e3d5a3ced86b10e92ac4666d42a2f695e3cebada55a3a7459934fba6932935db8efd0601cc'
+            'f06c8da1e35f25fd2f4d71b38d6c0057cbc9d810596524b07cf4e15a8e5c3f3c7985876d621b730cf6b8274f4d0a8fd71103b89d9d8b2d7b50bf56c499cd8708'
+            '2633f0495bcf0366aba975e0d2d5a2b5a1aba94eaf902fff39bd6c0e7b63beb7834c752674ec1757b750216369f73be6c4e52427b41e7e58a27dbc029a15ba89'
+            '8ee036bb1cfb48a1acb2967f9aed604fdd22d3b43a8b08f47a4e6956e43268a29c4f938d42284a078338330d8e999701b642b89afdcaa8924199e7bc73cb432c'
+            '01b7536086a439ab3351606bbc90596df96b02c2915c433bb439f3544f63f5945e1691cd7b91b04caab496481251482902323b91928abbab73cb07b4347f3b36'
             'd9a0e72debff2a9002fd3c0021a4f3bff041f26aeb21b98e9aae6f5f913729963d02ddf410d91f82cf0a117d05d9c9f33d30c847bccbaa05a2a70aea3b131537')
 
 validpgpkeys=(
