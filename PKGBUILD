@@ -1,7 +1,7 @@
 # Maintainer: Kyuunex <kyuunex at protonmail dot ch>
 
 pkgname=mapset-verifier-bin
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 
 pkgdesc="A modding tool for osu!"
@@ -19,7 +19,7 @@ source=(
     "mapsetverifier.desktop"
 )
 
-sha256sums=('206072da2e98675d3a952e3836b6d0306032b434c15f694bffd4bbb4c49db791'
+sha256sums=('bbcfd023bccf92e58615f34802175f47c36b34569e3f4c6edc09bb40217aa1e7'
             'e4f3c0303ff1092c541246f542509fa1147059c7978f287d3147d0e1a89b4bce'
             '26bbe0ef4b125e240c936ca570cd8e420ec1acbef826210a73f97ddcb7aa97a1')
 
