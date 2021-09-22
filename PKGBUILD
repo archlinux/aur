@@ -1,6 +1,6 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
-pkgname=gnome-cowsay
+pkgname=gnome-cowsay-git
 _pkgname=cowsay
 pkgver=1.9.0.r0.g2940e97
 pkgrel=1

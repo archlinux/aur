@@ -1,4 +1,4 @@
-pkgbase = gnome-cowsay
+pkgbase = gnome-cowsay-git
 	pkgdesc = A simple GNOME UI implementation of Cowsay
 	pkgver = 1.9.0.r0.g2940e97
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = gnome-cowsay
 	source = git+https://gitlab.gnome.org/Eonfge/cowsay.git
 	sha256sums = SKIP
 
-pkgname = gnome-cowsay
+pkgname = gnome-cowsay-git
