@@ -2,7 +2,7 @@
 
 pkgname=jitterentropy-rngd-git
 pkgver=1.2.5.r0.g22e0f9b
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitter RNG daemon"
 arch=('i686' 'x86_64')
 url="https://www.chronox.de/jent.html"
@@ -30,7 +30,8 @@ pkgver() {
 build() {
   cd "jitterentropy-rngd"
 
-  make CFLAGS=""
+  unset CFLAGS
+  make
 }
 
 package() {
