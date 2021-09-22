@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=retext-git
-pkgver=7.1.0.r1115.047ca40
+pkgver=7.2.1.r1255.0c605f9
 pkgrel=1
 pkgdesc="A simple editor for Markdown and ReStructuredText markup languages."
 arch=('any')
@@ -37,26 +37,12 @@ pkgver() {
 }
 
 build () {
-  cd $pkgname/locale
+  cd $pkgname/ReText/locale
   lrelease-qt5 *.ts
 }
 
 package () {
-  cd $pkgname
+  cd $pkgname/
   python setup.py install --root="$pkgdir"
-  
-  # install icons
-  for size in 16 22 24 32 48 128; do
-    install -d "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps
-    convert -resize $size icons/retext.png "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/retext.png
-  done
-  install -Dm644 icons/retext.svg "$pkgdir"/usr/share/icons/scalable/apps/retext.svg
-  
-  # install mime files
-  install -Dm644 "$srcdir"/x-retext-markdown.xml "$pkgdir"/usr/share/mime/packages/x-retext-markdown.xml
-  install -Dm644 "$srcdir"/x-retext-rst.xml "$pkgdir"/usr/share/mime/packages/x-retext-rst.xml
-  
-  # install desktop file
-  install -Dm644 "$srcdir"/retext.desktop "$pkgdir"/usr/share/applications/retext.desktop
 }
 
