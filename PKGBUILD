@@ -31,7 +31,7 @@ optdepends=('trilinos: support for trilinos'
   'suitesparse: support for the suitesparse sparse matrix libraries'
   )
 install=petsc.install
-source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz
+source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
 sha256sums=('1e62fb0859a12891022765d1e24660cfcd704291c58667082d81a0618d6b0047'
             'f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623')
@@ -40,7 +40,7 @@ _install_dir=/opt/petsc/${_config}
 _petsc_arch=arch-${_config}
 
 build() {
-  _build_dir=${srcdir}/${pkgname}-${pkgver/_/-}
+  _build_dir=${srcdir}/${pkgname}-${pkgver}
   cd ${_build_dir}
 
   export PETSC_ARCH=${_petsc_arch}
@@ -61,8 +61,7 @@ build() {
 }
 
 check() {
-  _build_dir=${srcdir}/${pkgname}-${pkgver/_/-}
-  cd ${_build_dir}
+  cd ${srcdir}/${pkgname}-${pkgver}
 
   if [ -z $(ldconfig -p | grep libcuda.so.1) ]; then
     export OMPI_MCA_opal_warn_on_missing_libcuda=0
@@ -71,7 +70,7 @@ check() {
 }
 
 package() {
-  _build_dir=${srcdir}/${pkgname}-${pkgver/_/-}
+  _build_dir=${srcdir}/${pkgname}-${pkgver}
 
 
   mkdir -p ${pkgdir}/${_install_dir}
