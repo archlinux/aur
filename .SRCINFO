@@ -1,6 +1,6 @@
 pkgbase = cast_control
 	pkgdesc = Control Chromecasts from Linux and D-Bus
-	pkgver = 0.11.4
+	pkgver = 0.11.4.post1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/alexdelorenzo/cast_control
@@ -20,7 +20,7 @@ pkgbase = cast_control
 	optdepends = gnome-shell-extension-mpris-indicator-button: MPRIS indicator for GNOME
 	conflicts = chromecast_mpris
 	replaces = chromecast_mpris
-	source = https://pypi.org/packages/source/c/cast_control/cast_control-0.11.4.tar.gz
-	sha256sums = 5af538e145c91d2bc3c3e36706f3b693d24797e68174e06d5efb229e9ab65fbf
+	source = https://pypi.org/packages/source/c/cast_control/cast_control-0.11.4.post1.tar.gz
+	sha256sums = 4d32bafff95d8dfdffe10b30e140a05090165c6551c942c7a3bb9bbacd7fb0f7
 
 pkgname = cast_control
