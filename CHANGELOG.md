@@ -1,6 +1,13 @@
+## 11.2.0 (2021-09-16)
+
+Notable changes:
+
+- Disable grammarly extenion and spellcheck attribute on textfield
+- improve internationalization #1037
+
 ## 11.1.2 (2021-03-11)
 
-#812 Fixes bug where secret would be downloaded from the browser twice.   
+#812 Fixes bug where secret would be downloaded from the browser twice.
 
 ## 11.1.1 (2021-03-08)
 
