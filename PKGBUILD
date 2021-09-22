@@ -11,7 +11,7 @@
 pkgname=chromium-no-extras
 _pkgname=chromium
 pkgver=94.0.4606.54
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=3
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
@@ -254,7 +254,7 @@ package() {
     libGLESv2.so
 
     chromedriver
-    crashpad_handler
+    chrome_crashpad_handler
   )
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
