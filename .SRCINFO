@@ -1,7 +1,7 @@
 pkgbase = pnpm-bin
 	pkgdesc = Fast, disk space efficient package manager
 	pkgver = 6.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
 	license = MIT License
