@@ -1,0 +1,17 @@
+pkgbase = dspy-git
+	pkgdesc = It's like d-feet, but written in C and blisteringly fast. Also comes with a library for IDE integration
+	pkgver = 1.0.0.r0.g85e405d
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/d-spy
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	provides = dspy
+	conflicts = dspy
+	source = git+https://gitlab.gnome.org/GNOME/d-spy.git
+	sha256sums = SKIP
+
+pkgname = dspy-git
