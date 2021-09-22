@@ -1,0 +1,15 @@
+pkgbase = cotp-bin
+	pkgdesc = Trustworthy encrypted command line authenticator app compatible with multiple backups.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/replydev/cotp
+	arch = x86_64
+	license = GPL3
+	makedepends = libxcb
+	makedepends = libxkbcommon-x11
+	provides = cotp
+	conflicts = cotp
+	source = https://github.com/replydev/cotp/releases/download/0.1.8/cotp-0.1.8-1-x86_64.pkg.tar.zst
+	sha256sums = 18caabad0aff478da21b0099f7cf701053a7b92d3e7156ca27f46d7900f64436
+
+pkgname = cotp-bin
