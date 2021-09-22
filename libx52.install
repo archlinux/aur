@@ -1,0 +1,6 @@
+post_install()
+{
+	echo "$(tput setaf 4)To use libx52 as non-root user, you need to reload the udev rules$(tput sgr0)"
+	echo "$(tput setaf 2)sudo udevadm control --reload-rules$(tput sgr0)"
+	echo "$(tput setaf 2)sudo udevadm trigger --subsystem-match=usb --attr-match=idVendor=06a3 --action=add$(tput sgr0)"
+}
