@@ -29,7 +29,8 @@ b2sums=('SKIP'
 prepare() {
   git -C "$pkgname" submodule update --init --recursive
 
-  git -C "$pkgname" apply -v "$srcdir"/*.patch
+  git -C "$pkgname" apply -v \
+    "$srcdir/0001-Set-correct-library-names.patch"
 }
 
 build() {
