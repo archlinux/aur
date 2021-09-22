@@ -1,22 +1,13 @@
 pkgbase = ttf-signika
 	pkgdesc = Sans-serif typeface from Google by Anna Giedryś
-	pkgver = 1.002
-	pkgrel = 4
-	url = https://fonts.google.com/specimen/Signika
+	pkgver = 2.000
+	pkgrel = 1
+	url = https://github.com/Ancymonic/Signika
 	arch = any
-	license = custom:SIL Open Font License v1.1
+	license = OFL
 	conflicts = ttf-google-fonts-opinionated-git
 	conflicts = ttf-signika-family-ib
-	source = Signika-Bold-1.002.ttf::https://github.com/google/fonts/raw/d774fc0799fdeddbd8720616a6d2d791be29fafa/ofl/signika/Signika-Bold.ttf
-	source = Signika-Light-1.002.ttf::https://github.com/google/fonts/raw/d774fc0799fdeddbd8720616a6d2d791be29fafa/ofl/signika/Signika-Light.ttf
-	source = Signika-Regular-1.002.ttf::https://github.com/google/fonts/raw/d774fc0799fdeddbd8720616a6d2d791be29fafa/ofl/signika/Signika-Regular.ttf
-	source = Signika-SemiBold-1.002.ttf::https://github.com/google/fonts/raw/d774fc0799fdeddbd8720616a6d2d791be29fafa/ofl/signika/Signika-SemiBold.ttf
-	source = ttf-signika-1.002-OFL.txt::https://github.com/google/fonts/raw/d774fc0799fdeddbd8720616a6d2d791be29fafa/ofl/signika/OFL.txt
-	sha256sums = 2c64c17725f9413432c29edc78d074fd7c4a59797c1d2a962fd4ea3fec1f5090
-	sha256sums = 9ce8ef63ec2ed396fd9ce4e31b6f798d0143746d46bf6f5bcebdd8477d7978e7
-	sha256sums = cea6cddac67d6baa98edfe13bafdea2650244dee850db1f530916e9acac6d1d7
-	sha256sums = c654b274f8d0dbc0eafb39e670371e2fa4bc3984c8e950a15d025efc59cc8d1a
-	sha256sums = 1ba345a91338581e5f8fccc3e37e447ddea5b99ec9caec1b76c7c39492387d2f
+	source = Signika-2.0.tar.gz::https://github.com/Ancymonic/Signika/archive/refs/tags/Signika-2.0.tar.gz
+	sha256sums = 717d8e8525080e5f6df71aa2a423481adb2c634ff4756e2788717e96796b9051
 
 pkgname = ttf-signika
-
