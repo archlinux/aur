@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=btop
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='A monitor of system resourecs, bpytop ported to C++'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(apache)
 depends=(gcc-libs)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3ac10fc408705322f5e1ae51c2a5bb57bd3749fa64f8afe690162929934be60a')
+sha256sums=('26626209fec84beedd8f240e508fcde38ff14af57681ae425c9c5735826f422f')
 
 build() {
 	cd "$_archive"
