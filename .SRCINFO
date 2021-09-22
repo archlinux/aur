@@ -10,6 +10,7 @@ pkgbase = insomnia-electron
 	makedepends = fontconfig
 	depends = electron11
 	provides = insomnia
+	conflicts = insomnia
 	source = https://github.com/Kong/insomnia/archive/core@2021.5.3.tar.gz
 	source = insomnia.sh
 	source = insomnia.desktop

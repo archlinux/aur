@@ -12,9 +12,8 @@ url=https://github.com/Kong/insomnia
 license=('MIT')
 depends=("$_electron")
 makedepends=(npm nvm fontconfig)
-checkdepends=()
-optdepends=()
-provides=(insomnia)
+provides=("$_appname")
+conflicts=("$_appname")
 source=("$url/archive/core@$pkgver.tar.gz"
         "$_appname.sh"
 				"$_appname.desktop")
