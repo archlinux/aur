@@ -9,16 +9,4 @@ index 39d7333..6c49474 100644
 -Exec=/usr/sbin/snapperd
 +Exec=/usr/bin/snapperd
  User=root
-diff --git a/pam/Makefile.am b/pam/Makefile.am
-index befccf8..dd1652c 100644
---- a/pam/Makefile.am
-+++ b/pam/Makefile.am
-@@ -8,7 +8,7 @@ AM_CFLAGS = -D_GNU_SOURCE -Wwrite-strings
- 
- AM_CPPFLAGS = -I$(top_srcdir) $(DBUS_CFLAGS)
- 
--securelibdir = $(shell echo /`basename $(libdir)`/security)
-+securelibdir = $(shell echo /usr/`basename $(libdir)`/security)
- 
- securelib_LTLIBRARIES = pam_snapper.la
  
