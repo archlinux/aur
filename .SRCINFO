@@ -1,6 +1,6 @@
 pkgbase = simple-http-server-git
 	pkgdesc = Simple http server in Rust
-	pkgver = r145.3483193
+	pkgver = 0.6.1.r6.g2712a92
 	pkgrel = 1
 	url = https://github.com/TheWaWaR/simple-http-server
 	install = simple-http-server-git.install
@@ -19,4 +19,3 @@ pkgbase = simple-http-server-git
 	sha384sums = a92987285f702de7eb5c34261e1c7d187b63c151db91fe6428c94428f24f771f0d38139d30febc4dfbfc76a8a697312f
 
 pkgname = simple-http-server-git
-

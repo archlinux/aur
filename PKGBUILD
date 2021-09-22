@@ -1,9 +1,10 @@
-# Maintainer: caiye <ye dot jingchen at gmail dot com>
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: caiye <ye dot jingchen at gmail dot com>
 # Contributor: Dario Ostuni <dario.ostuni@gmail.com>
 
 _pkgname=simple-http-server
 pkgname=$_pkgname-git
-pkgver=r145.3483193
+pkgver=0.6.1.r6.g2712a92
 pkgrel=1
 pkgdesc="Simple http server in Rust"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -22,7 +23,7 @@ sha384sums=('SKIP'
 
 pkgver() {
     cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
