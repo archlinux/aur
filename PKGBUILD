@@ -1,30 +1,37 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Ronuk Raval <ronuk.raval at gmail dot com>
 
-_pkgname='dialite'
-pkgname="python-${_pkgname}"
+pkgname=python-dialite
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight pure-Python package to show simple dialogs'
 arch=('any')
 url='https://github.com/flexxui/dialite'
-_url_pypi='https://pypi.org/project/dialite'
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('de968f805fdc7f5545f15f5e17c2472198e0f6665b77f72be056f553d99292ef')
+makedepends=('python-setuptools' 'python-sphinx')
+checkdepends=('python-pytest-runner')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('327b172a722b05b63d1427d110cf431c4de260c7d48bcac8fa312369ab1e79c2')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "dialite-$pkgver"
   python setup.py build
+  cd docs
+  make man
+}
+
+check() {
+  cd "dialite-$pkgver"
+  python setup.py pytest
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "dialite-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 docs/_build/man/Dialite.1 "$pkgdir/usr/share/man/man1/dialite.1"
 }
 
 # vim: ts=2 sw=2 et:
