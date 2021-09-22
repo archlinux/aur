@@ -8,27 +8,29 @@
 
 _pkgname=htop
 pkgname=$_pkgname-solarized
-pkgver=3.0.3
+_tag='a8637afe0398f0be0131f73563b55ef9315ca351' # git rev-parse ${pkgver}
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Interactive process viewer with solarized patch"
 arch=('i686' 'x86_64' 'armv7h')
 url='https://htop.dev/'
 license=('GPL')
-depends=('ncurses' 'libncursesw.so' 'libnl')
-makedepends=('lm_sensors')
+depends=('libcap' 'libcap.so' 'libnl' 'ncurses' 'libncursesw.so')
+makedepends=('git' 'lm_sensors')
 optdepends=('lm_sensors: show cpu temperatures'
             'lsof: show files opened by a process'
             'strace: attach to a running process')
 provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
-source=("https://github.com/htop-dev/htop/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+validpgpkeys=('F7ABE8761E6FE68638E6283AFE0842EE36DD8C0C') # Nathan Scott <nathans@debian.org>
+source=("git+https://github.com/htop-dev/htop.git#tag=${_tag}?signed"
         'htop-solarized.patch')
-sha256sums=('725103929c925a7252b4dedeb29b3a1da86a2f74e96c50eb9ea6c8fec1942cd2'
-            '9d2c3b48fa62023eedea61ccb96ff6b8ed90294c5dea2635056756c8ffabaeb9')
+sha256sums=('SKIP'
+            '7c7526c4564eed5e725610f8024cc547468d208fb424a81b827fef844d5b638d')
 
 prepare() {
-  cd "$_pkgname-$pkgver"
+  cd "${_pkgname}"
 
   autoreconf -fi
 
@@ -37,7 +39,7 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "${_pkgname}"
 
   ./configure \
       --prefix=/usr \
@@ -52,7 +54,9 @@ build() {
 }
 
 package() {
-  make -C "$_pkgname-$pkgver" DESTDIR="$pkgdir" install
+  cd "${_pkgname}"
+
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:

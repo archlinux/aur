@@ -1,8 +1,8 @@
 diff --git a/CRT.c b/CRT.c
-index 68f6405..95c230a 100644
+index 2533f613..c549a0e4 100644
 --- a/CRT.c
 +++ b/CRT.c
-@@ -119,7 +119,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -132,7 +132,7 @@ static int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [LED_COLOR] = ColorPair(Green, Black),
        [TASKS_RUNNING] = A_BOLD | ColorPair(Green, Black),
        [PROCESS] = A_NORMAL,
@@ -11,25 +11,25 @@ index 68f6405..95c230a 100644
        [PROCESS_TAG] = A_BOLD | ColorPair(Yellow, Black),
        [PROCESS_MEGABYTES] = ColorPair(Cyan, Black),
        [PROCESS_GIGABYTES] = ColorPair(Green, Black),
-@@ -136,7 +136,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -149,7 +149,7 @@ static int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [PROCESS_COMM] = ColorPair(Magenta, Black),
        [PROCESS_THREAD_COMM] = ColorPair(Blue, Black),
        [BAR_BORDER] = A_BOLD,
 -      [BAR_SHADOW] = A_BOLD | ColorPairGrayBlack,
 +      [BAR_SHADOW] = A_BOLD | ColorPair(Green,Black), // Solarized
        [SWAP] = ColorPair(Red, Black),
+       [SWAP_CACHE] = ColorPair(Yellow, Black),
        [GRAPH_1] = A_BOLD | ColorPair(Cyan, Black),
-       [GRAPH_2] = ColorPair(Cyan, Black),
-@@ -144,7 +144,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
-       [MEMORY_BUFFERS] = ColorPair(Blue, Black),
-       [MEMORY_BUFFERS_TEXT] = A_BOLD | ColorPair(Blue, Black),
-       [MEMORY_CACHE] = ColorPair(Yellow, Black),
+@@ -163,7 +163,7 @@ static int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [HUGEPAGE_2] = ColorPair(Yellow, Black),
+       [HUGEPAGE_3] = ColorPair(Red, Black),
+       [HUGEPAGE_4] = ColorPair(Blue, Black),
 -      [LOAD_AVERAGE_FIFTEEN] = ColorPair(Cyan, Black),
 +      [LOAD_AVERAGE_FIFTEEN] = ColorPair(Green,Black), // Solarized
        [LOAD_AVERAGE_FIVE] = A_BOLD | ColorPair(Cyan, Black),
        [LOAD_AVERAGE_ONE] = A_BOLD | ColorPair(White, Black),
        [LOAD] = A_BOLD,
-@@ -160,7 +160,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -180,7 +180,7 @@ static int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [CPU_NICE_TEXT] = A_BOLD | ColorPair(Blue, Black),
        [CPU_NORMAL] = ColorPair(Green, Black),
        [CPU_SYSTEM] = ColorPair(Red, Black),
