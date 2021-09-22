@@ -1,18 +1,22 @@
 pkgbase = python-filterpy
-	pkgdesc = Kalman filtering and optimal estimation library in Python.
+	pkgdesc = Kalman filtering and optimal estimation library
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rlabbe/filterpy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-numpy
-	makedepends = python-scipy
-	makedepends = python-matplotlib
-	source = https://github.com/rlabbe/filterpy/archive/1.4.5.tar.gz
+	makedepends = python2-setuptools
+	source = python-filterpy-1.4.5.tar.gz::https://github.com/rlabbe/filterpy/archive/1.4.5.tar.gz
 	sha256sums = fc371ad800ca5a5ff8b8352894a09c353b794ccc8b813c03d5187df451ccef3a
 
 pkgname = python-filterpy
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
 
 pkgname = python2-filterpy
-
+	install = py2.install
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-matplotlib
