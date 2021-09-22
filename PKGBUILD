@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=R50.111.g1565c60a
+pkgver=R55.20.g3d18191a
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=('libzimg.so'
 makedepends=('git'
              'cython'
              'python-sphinx'
+             'python-sphinx_rtd_theme'
              'imagemagick'
              'libass.so'
              'tesseract'
@@ -36,7 +37,7 @@ optdepends=('imagemagick: imwri plugin'
             'libavcodec.so: subtext plugin'
             'libavutil.so: subtext plugin'
             )
-source=('git+https://github.com/vapoursynth/vapoursynth.git'
+source=('git+https://github.com/vapoursynth/vapoursynth.git' #branch=doodle1'
         'vapoursynth.xml'
         'wtfpl.txt::http://www.wtfpl.net/txt/COPYING'
         )
@@ -53,6 +54,7 @@ pkgver() {
 prepare() {
   mkdir -p build
   mkdir -p vapoursynth/doc/_static
+  sed "s|'vspipe', 'vspipe'|'output', 'vspipe'|g" -i vapoursynth/doc/conf.py
 }
 
 build() {
@@ -66,6 +68,11 @@ build() {
   make
 
   make -C "${srcdir}/vapoursynth/doc" html man
+}
+
+check() {
+  cd vapoursynth
+  python -m unittest discover -s test -p "*test.py" -v
 }
 
 package() {
