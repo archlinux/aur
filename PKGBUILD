@@ -10,7 +10,7 @@ depends=('python'
     'python-numpy'
     'python-pandas'
     'python-traitlets')
-checkdepends=('python-pytest' 'python-traitlets')
+checkdepends=('python-pytest' 'python-traittypes')
 makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
