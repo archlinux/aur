@@ -1,7 +1,7 @@
 pkgbase = lolminer
 	pkgdesc = Unofficial installer for lolMiner
-	pkgver = 1.32
-	pkgrel = 1
+	pkgver = 1.32a
+	pkgrel = 2
 	url = https://github.com/Lolliedieb/lolMiner-releases
 	arch = x86_64
 	license = custom: lolMiner License Agreement
