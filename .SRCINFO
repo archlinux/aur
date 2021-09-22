@@ -1,7 +1,7 @@
 pkgbase = jitterentropy-rngd
 	pkgdesc = Jitter RNG daemon
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chronox.de/jent.html
 	arch = i686
 	arch = x86_64
