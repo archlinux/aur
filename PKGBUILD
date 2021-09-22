@@ -8,7 +8,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client - slang version"
 url="http://www.mutt.org/"
@@ -31,7 +31,7 @@ validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA') # Kevin J. McCarthy <k
 
 prepare() {
   cd "${_pkgbase}"
-  autoreconf -vfi
+  autoreconf -fiv
 }
 
 build() {
