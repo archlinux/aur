@@ -1,5 +1,5 @@
 pkgbase = castle-engine-git
-	pkgdesc = Cross-platform 3D and 2D game engine using modern Object Pascal
+	pkgdesc = Cross-platform (desktop, mobile, console) 3D and 2D game engine using modern Object Pascal
 	pkgver = v7.0.alpha.1.r16494.f39aec48a
 	pkgrel = 1
 	url = https://castle-engine.io/

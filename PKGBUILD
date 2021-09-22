@@ -3,7 +3,7 @@ pkgname=castle-engine-git
 pkgver=v7.0.alpha.1.r16494.f39aec48a
 pkgrel=1
 epoch=
-pkgdesc="Cross-platform 3D and 2D game engine using modern Object Pascal"
+pkgdesc="Cross-platform (desktop, mobile, console) 3D and 2D game engine using modern Object Pascal"
 arch=(x86_64)
 url="https://castle-engine.io/"
 license=('LGPL with static linking exception')
@@ -67,9 +67,7 @@ Keywords=editor;pascal;fpc;design;castle;engine;' > castle-editor.desktop
           rm -f castle-editor.desktop
           rm -rf .git
           # Install the rest to /usr/src
-          mkdir -p ${pkgdir}/usr/src/castle-engine
-          cp -rf * ${pkgdir}/usr/src/castle-engine
-          # Cleanup temporary source
+          mkdir -p ${pkgdir}/usr/src
           cd ..
-          rm -rf castle-engine
+          mv castle-engine ${pkgdir}/usr/src/castle-engine
 }
