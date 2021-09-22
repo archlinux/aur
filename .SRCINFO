@@ -1,0 +1,27 @@
+pkgbase = python-decord
+	pkgdesc = An efficient video loader for deep learning with smart shuffling that's super easy to digest
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/dmlc/decord
+	arch = x86_64
+	license = Apache
+	makedepends = chrpath
+	makedepends = cmake
+	makedepends = cuda
+	makedepends = cython
+	makedepends = git
+	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = python-numpy
+	source = decord-0.6.0::git+https://github.com/dmlc/decord.git#tag=v0.6.0
+	sha512sums = SKIP
+
+pkgname = python-decord
+
+pkgname = python-decord-cuda
+	pkgdesc = An efficient video loader for deep learning with smart shuffling that's super easy to digest (with CUDA)
+	depends = ffmpeg
+	depends = python-numpy
+	depends = cuda
+	provides = python-decord=0.6.0
+	conflicts = python-decord
