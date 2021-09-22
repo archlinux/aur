@@ -80,8 +80,8 @@ _use_current=
 pkgbase=linux-cacule-llvm
 pkgname=('linux-cacule-llvm' 'linux-cacule-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14.6
-pkgrel=2
+pkgver=5.14.7
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -99,12 +99,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/arch-patches-v6/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14.patch"
 #        "${_patchsource}/misc/0004-folio-mm.patch"
-        "${_patchsource}/misc/0007-string.patch"
+#        "${_patchsource}/misc/0007-string.patch"
         "${_patchsource}/misc/allpollingrate.patch"
         "${_patchsource}/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${_patchsource}/misc/0001-AMD-CPPC.patch"
         "${_patchsource}/misc/zen-tweaks-cacule.patch"
-        "${_patchsource}/bfq-patches-v2/0001-bfq-patches.patch"
+#        "${_patchsource}/bfq-patches-v2/0001-bfq-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
@@ -122,7 +122,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/zen-patches/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches-v3/0001-zstd-upstream-patches.patch"
-        "${_patchsource}/ntfs3-patches-v7/0001-ntfs3-patches.patch"
+        "${_patchsource}/ntfs3-patches-v9/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
         "${_patchsource}/0001-v4l2loopback.patch"
@@ -206,7 +206,7 @@ prepare() {
             fi
             ### Optionally set tickrate to 500HZ
           if [ -n "$_750_HZ_ticks" ]; then
-            echo "Setting tick rate to 500HZ..."
+            echo "Setting tick rate to 750HZ..."
             scripts/config --disable CONFIG_HZ_300
             scripts/config --enable CONFIG_HZ_750
             scripts/config --set-val CONFIG_HZ 750
@@ -375,7 +375,7 @@ prepare() {
               scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
               scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
               scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-              scripts/config --enable CONFIG_x86_AMD_PSTATE
+           #   scripts/config --enable CONFIG_x86_AMD_PSTATE
               scripts/config --enable CONFIG_ZEN_INTERACTIVE
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -542,16 +542,14 @@ package_linux-cacule-llvm-headers() {
 
 }
 
-md5sums=('006dc61878252d9f0e2a0b0bd9d134ff'
-         'be6eae9f753b07270a90b81b998a893e'
+md5sums=('4119cf1e59ef6f109b9be9451a0899ae'
+         '6b2fce762a64585d4331b98584f63c61'
          '7524899b1b1c14e6d993be59dc68faf3'
          '40a9380b2884f5d417791f06389ba57e'
-         'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
          'f8e172e9ea554bbb1053eb122c3ace35'
          '302cbad3c979395f37307a094f6d8fd5'
          '9d7612159f8745044254077ce8a76df6'
-         '58eab1d2000ac3fa1d6ab933b13397cc'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
@@ -567,7 +565,7 @@ md5sums=('006dc61878252d9f0e2a0b0bd9d134ff'
          '381bc4f0ff885e9b67e5899476a30416'
          '808981a36c81165953017e5e432c1fa1'
          '74db4069a1c3985e5de43cf28f44e693'
-         'a967dc62d8a3bbd772f2594a6257cc2a'
+         '6e67c94d6dbc63b910f78b6480962993'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
