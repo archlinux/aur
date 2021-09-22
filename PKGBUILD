@@ -1,8 +1,9 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname='httpx'
 pkgname="${_pkgname}-bin"
-pkgver=1.0.3
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Fast and multi-purpose HTTP toolkit'
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -11,13 +12,13 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
-source_armv6h=("${_pkgname}-${pkgver}-armv6.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
+source_armv6h=("${_pkgname}-${pkgver}-armv6.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.zip")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.zip")
 
-sha256sums_x86_64=('5cd5dba56a84d2acedb47f93272770dec0a1cf3020597bc83fbf0e3655b220b8')
-sha256sums_armv6h=('cbdfa4b4862ec772bd70c5af60dc22df705e7c95c18b618444f628f747af0fb0')
-sha256sums_aarch64=('4fde28ba2328e0f49ea301a7e1ab16b5fc2ae1545fa8a3a71b0aaea19e8fe651')
+sha256sums_x86_64=('6ad2ea9024855cbda05e45f0b380de435ff873d431b9def8dc200dffbc90de9b')
+sha256sums_armv6h=('b602b6a946fe9c08b2c3db9f29dd283859d7614afa8f09db4a9b90c50e950903')
+sha256sums_aarch64=('eba8f3183879713d2299873395052ec5b60062a555fdadf2348669e591c4702f')
 
 package() {
   install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
