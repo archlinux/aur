@@ -1,0 +1,17 @@
+pkgbase = python-zlmdb
+	pkgdesc = Object-relational zero-copy in-memory database layer for LMDB.
+	pkgver = 21.2.1
+	pkgrel = 1
+	url = https://github.com/crossbario/zlmdb
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-cbor2
+	depends = python-txaio
+	depends = python-lmdb
+	depends = python-yaml
+	source = python-zlmdb-21.2.1.tar.gz::https://github.com/crossbario/zlmdb/archive/v21.2.1.tar.gz
+	sha1sums = e8896d186b64f14de4ec42f820a62fb7252b1cf8
+
+pkgname = python-zlmdb
