@@ -4,7 +4,7 @@
 # Contributor: Antoine Bertin <ant.bertin@gmail.com>
 
 pkgname=linux-enable-ir-emitter
-pkgver=3.0.0
+pkgver=2.1.0
 pkgrel=2
 epoch=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box."
@@ -15,15 +15,21 @@ arch=('x86_64')
 provides=(linux-enable-ir-emitter)
 conflicts=(linux-enable-ir-emitter-git chicony-ir-toggle)
 
-depends=(python python-opencv python-yaml)
-
-install=linux-enable-ir-emitter.install
-
+depends=(
+    'python'
+    'python-opencv'
+    'python-yaml'
+    'nano'
+)
+optdepends=(
+    'python-pyshark: full configuration setup support'
+)
 source=("https://github.com/EmixamPP/linux-enable-ir-emitter/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('982f7c6dbcd81b733facfdd3c55b4be760540dbb7ea1ce07a4e32dee12a7232c')
+sha256sums=('f37df1dd55d56b0b0f0c029fe16756b5e8c2294d2240ace59925d1a9fbbd0b5c')
 
 build() {
-    make -C "${srcdir}/${pkgname}-${pkgver}/sources/uvc"
+    cd "${srcdir}/${pkgname}-${pkgver}/sources"
+    make
 }
 
 package() {
@@ -31,14 +37,12 @@ package() {
 
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    # software
-    install -Dm 755 sources/uvc/*query  -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/uvc/
-    install -Dm 755 sources/uvc/*query.o  -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/uvc/
+    install -Dm 755 sources/enable-ir-emitter -t "${pkgdir}"/usr/lib/linux-enable-ir-emitter/
+    install -Dm 644 sources/config.yaml -t "${pkgdir}"/usr/lib/linux-enable-ir-emitter/
+    install -Dm 755 sources/*.py -t "${pkgdir}"/usr/lib/linux-enable-ir-emitter/
 
-    install -Dm 644 sources/command/*.py -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/command/
+    install -Dm 644 sources/linux-enable-ir-emitter.service -t "${pkgdir}"/usr/lib/systemd/system/
 
-    install -Dm 644 sources/*.py -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/
-
-    # boot service
-    install -Dm 644 sources/linux-enable-ir-emitter.service -t ${pkgdir}/usr/lib/systemd/system/
+    install -dm 755 ${pkgdir}/usr/bin/
+    ln -fs /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py ${pkgdir}/usr/bin/linux-enable-ir-emitter
 }
