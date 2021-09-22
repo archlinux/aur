@@ -1,6 +1,6 @@
 pkgbase = python-anyconfig
 	pkgdesc = Python library provides common APIs to load and dump configuration files in various formats
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/ssato/python-anyconfig
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-anyconfig
 	optdepends = python-anyconfig-json5-backend: Json5 load and dump support
 	optdepends = python-anyconfig-fortios-backend: Fortios load and parse support
 	conflicts = python-anyconfig-git
-	source = https://files.pythonhosted.org/packages/source/a/anyconfig/anyconfig-0.11.1.tar.gz
-	b2sums = 61c4e8191fdf3fa694401afd3feb2060d633d489c4bce6228c1ff3231af06240d5aa53091ccb75580de34558963e1e0104f24ebce70c665aa5327af2a2b38168
+	source = https://files.pythonhosted.org/packages/source/a/anyconfig/anyconfig-0.12.0.tar.gz
+	b2sums = db78a5530e1f0bce222482e5b1b92ee67bc0e3e53b9446e2abd127d6c4afd8b2e3501faca88f6f407d95f4cf5792aec126d659ac98a033661daaa4b04779d031
 
 pkgname = python-anyconfig
