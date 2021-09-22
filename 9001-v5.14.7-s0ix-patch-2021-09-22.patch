@@ -1,11 +1,38 @@
-From c76d0e81f0480e7a40db872677e837ae4c8a44aa Mon Sep 17 00:00:00 2001
+From 22d2b83a74f2e7283f968bd6d40a1826c6f8c58e Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Sat, 18 Sep 2021 15:36:27 -0700
-Subject: [PATCH] v5.14.6 s0ix patch 2021-09-18
+Date: Wed, 22 Sep 2021 05:05:15 -0700
+Subject: [PATCH] v5.14.7 s0ix patch 2021-09-22
 
 Squashed commit of the following:
 
-commit 90f4fc1b714d70c368ae7458b5c9682775a6e0e1
+commit b9e75e8574ffc65fee47ed0876b59737cc5d2bae
+Author: Sanket Goswami <Sanket.Goswami@amd.com>
+Date:   Tue Sep 21 17:30:20 2021 +0530
+
+    platform/x86: amd-pmc: Add a message to print resume time info
+
+    Add a message to print the resume time information obtained from the
+    smu_metrics structure.
+
+    Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
+
+commit bf2b06077c8f643a166a185f8b4929f312a856a6
+Author: Sanket Goswami <Sanket.Goswami@amd.com>
+Date:   Tue Sep 21 17:29:10 2021 +0530
+
+    platform/x86: amd-pmc: Send command to dump data after clearing OS_HINT
+
+    It was reported that the resume stats received from the firmware are
+    always zero. This happens because the SMU expects the driver to send the
+    command to dump the log data after clearing the OS_HINT.
+
+    Adjust the order of the commands sent to SMU.
+
+    Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
+
+commit 87b43c89ee336cbad8d36339a1070241d44d99eb
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -18,7 +45,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 014e2fdeaf232d1c5fd1a74813f749a7a6c0f812
+commit eda40b8f4a503078d6c0675997577be0f013950f
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -37,7 +64,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 50913ca2c9ffb1d07fe0f402249ae151e95e87df
+commit f75ed35c7e5238ef34308db196174e02bbd6a14b
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -52,7 +79,7 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 949ccde94b90a5966c23d1bd286b28778b5dbf20
+commit db2ee08ca04b312c17182a434249e825cf3c6b5f
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Sep 9 11:19:43 2021 -0500
 
@@ -75,16 +102,7 @@ Date:   Thu Sep 9 11:19:43 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1629
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 235b6c0ae71da1245e4cb5fcede464f629d8d1ec
-Author: Scott B <28817345+foundObjects@users.noreply.github.com>
-Date:   Wed Jul 21 18:10:28 2021 -0700
-
-    DEBUG: amd-pmc smu register dump for diagnostics
-
-    patch this per Mario's request:
-    https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
-
-commit fe0d159834023ad729170befd9cd09f82cef4471
+commit 6a2a3cf8c0d37f3ba64fad051576f95adf527690
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -97,7 +115,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 9cf6e041f865e42514bcb8429a20c1c056d7a5ab
+commit c1c35a904317a8261cebd47f6097705ab30dfc46
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -110,7 +128,7 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 91f7908d258f1edc3287429b236710ee790dd217
+commit 85c2988c6e71c4092ae5624e2a0eebe2a79fd599
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Aug 31 11:36:19 2021 -0500
 
@@ -139,7 +157,16 @@ Date:   Tue Aug 31 11:36:19 2021 -0500
     Reported-by: Maxwell Beck <max@ryt.one>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 04cd8a215540e78dba7c63aeba71fc563ea4038b
+commit e245179ba290b24f76e366d90df8bb7fc6ba0233
+Author: Scott B <28817345+foundObjects@users.noreply.github.com>
+Date:   Wed Jul 21 18:10:28 2021 -0700
+
+    DEBUG: amd-pmc smu register dump for diagnostics
+
+    patch this per Mario's request:
+    https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
+
+commit b2638c9fa3c01bceccf8bb093964d1a325dd5052
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:33:01 2021 -0700
 
@@ -151,7 +178,7 @@ Date:   Tue Jul 20 23:33:01 2021 -0700
 
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 
-commit dd4c25dc971802f3f8ccb9d21f3b4842b8894c5e
+commit 87517a102609c8891c8c123fadd4e0e7fb8a824a
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:31:31 2021 -0700
 
@@ -164,13 +191,13 @@ Date:   Tue Jul 20 23:31:31 2021 -0700
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 ---
  drivers/acpi/processor_idle.c                 |  3 +-
- drivers/acpi/x86/s2idle.c                     | 67 ++++++++-------
+ drivers/acpi/x86/s2idle.c                     | 67 ++++++++------
  .../gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c    |  3 +
  .../gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c    |  3 +
- drivers/pinctrl/pinctrl-amd.c                 | 19 +++--
+ drivers/pinctrl/pinctrl-amd.c                 | 19 +++-
  drivers/pinctrl/pinctrl-amd.h                 |  1 +
- drivers/platform/x86/amd-pmc.c                | 84 ++++++++++++++++++-
- 7 files changed, 143 insertions(+), 37 deletions(-)
+ drivers/platform/x86/amd-pmc.c                | 92 +++++++++++++++++--
+ 7 files changed, 148 insertions(+), 40 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index 095c8aca141e..1b6529396371 100644
@@ -379,7 +406,7 @@ index 95e763424042..1d4317073654 100644
  
  /*  KERNCZ configuration*/
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index 3481479a2942..a489f1e4d7dc 100644
+index 3481479a2942..81b000241648 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
 @@ -29,6 +29,10 @@
@@ -422,7 +449,7 @@ index 3481479a2942..a489f1e4d7dc 100644
  	u32 timein_s0i2;
  	u64 timeentering_s0i3_lastcapture;
  	u64 timeentering_s0i3_totaltime;
-@@ -162,7 +170,8 @@ static int smu_fw_info_show(struct seq_file *s, void *unused)
+@@ -162,9 +170,12 @@ static int smu_fw_info_show(struct seq_file *s, void *unused)
  	seq_puts(s, "\n=== SMU Statistics ===\n");
  	seq_printf(s, "Table Version: %d\n", table.table_version);
  	seq_printf(s, "Hint Count: %d\n", table.hint_count);
@@ -431,8 +458,12 @@ index 3481479a2942..a489f1e4d7dc 100644
 +		   "Unknown/Fail");
  	seq_printf(s, "Time (in us) to S0i3: %lld\n", table.timeentering_s0i3_lastcapture);
  	seq_printf(s, "Time (in us) in S0i3: %lld\n", table.timein_s0i3_lastcapture);
++	seq_printf(s, "Time (in us) to resume from S0i3: %lld\n",
++		   table.timeto_resume_to_os_lastcapture);
  
-@@ -201,6 +210,66 @@ static int s0ix_stats_show(struct seq_file *s, void *unused)
+ 	seq_puts(s, "\n=== Active time (in us) ===\n");
+ 	for (idx = 0 ; idx < SOC_SUBSYSTEM_IP_MAX ; idx++) {
+@@ -201,6 +212,66 @@ static int s0ix_stats_show(struct seq_file *s, void *unused)
  }
  DEFINE_SHOW_ATTRIBUTE(s0ix_stats);
  
@@ -499,7 +530,7 @@ index 3481479a2942..a489f1e4d7dc 100644
  static void amd_pmc_dbgfs_unregister(struct amd_pmc_dev *dev)
  {
  	debugfs_remove_recursive(dev->dbgfs_dir);
-@@ -213,6 +282,8 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
+@@ -213,6 +284,8 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
  			    &smu_fw_info_fops);
  	debugfs_create_file("s0ix_stats", 0644, dev->dbgfs_dir, dev,
  			    &s0ix_stats_fops);
@@ -508,7 +539,7 @@ index 3481479a2942..a489f1e4d7dc 100644
  }
  #else
  static inline void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
-@@ -270,6 +341,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
+@@ -270,6 +343,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
  	u32 val;
  
  	mutex_lock(&dev->lock);
@@ -516,7 +547,7 @@ index 3481479a2942..a489f1e4d7dc 100644
  	/* Wait until we get a valid response */
  	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
  				val, val != 0, PMC_MSG_DELAY_MIN_US,
-@@ -349,6 +421,8 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
+@@ -349,6 +423,8 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
  	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_RESET, 0);
  	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_START, 0);
  
@@ -525,17 +556,28 @@ index 3481479a2942..a489f1e4d7dc 100644
  	msg = amd_pmc_get_os_hint(pdev);
  	rc = amd_pmc_send_cmd(pdev, 1, NULL, msg, 0);
  	if (rc)
-@@ -371,6 +445,9 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
+@@ -363,14 +439,17 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
+ 	int rc;
+ 	u8 msg;
+ 
+-	/* Let SMU know that we are looking for stats */
+-	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_DUMP_DATA, 0);
+-
+ 	msg = amd_pmc_get_os_hint(pdev);
+ 	rc = amd_pmc_send_cmd(pdev, 0, NULL, msg, 0);
  	if (rc)
  		dev_err(pdev->dev, "resume failed\n");
  
++	/* Let SMU know that we are looking for stats */
++	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_DUMP_DATA, 0);
++
 +	/* Dump the IdleMask to see the blockers */
 +	amd_pmc_idlemask_read(pdev, dev, NULL);
 +
  	return 0;
  }
  
-@@ -457,6 +534,7 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -457,6 +536,7 @@ static int amd_pmc_probe(struct platform_device *pdev)
  	if (err)
  		dev_err(dev->dev, "SMU debugging info not supported on this platform\n");
  
