@@ -1,20 +1,19 @@
 pkgbase = python-fmf
-	pkgdesc = Flexible Metadata Format.
-	pkgver = 0.10
+	pkgdesc = Flexible Metadata Format
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/psss/fmf
 	arch = any
 	license = GPL2
-	makedepends = python
-	makedepends = python2
+	checkdepends = python-pytest-runner
+	checkdepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/psss/fmf/archive/0.10.tar.gz
-	sha512sums = 3f59bcb2c188594d5cfd9e5ac9bdd68b08d8f29538f8da741d1ec5f19e19c335f83e2fc50b59a93901a051150e0ee9151348535b63a0f9bd9cc4cde5892a8641
+	makedepends = python-docutils
+	depends = python-pyaml
+	depends = python-filelock
+	provides = fmf
+	conflicts = fmf
+	source = python-fmf-0.16.0.tar.gz::https://github.com/psss/fmf/archive/0.16.0.tar.gz
+	sha256sums = 74605b652b9763c87bef458941468be860f3b66b9a6bea9c0eaca19264398710
 
 pkgname = python-fmf
-	depends = python-pyaml
-
-pkgname = python2-fmf
-	depends = python2-pyaml
-
