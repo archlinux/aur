@@ -4,8 +4,8 @@
 _pkgname=sile
 pkgname=$_pkgname-luajit
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.11.1
-pkgrel=3
+pkgver=0.12.0
+pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
 license=(MIT)
@@ -44,13 +44,14 @@ depends+=(libfreetype.so
           libicui18n.so
           libicuio.so
           libicuuc.so)
+optdepends=('libertinus-font: math package default font')
 checkdepends=(poppler)
 provides=(libtexpdf.so
           "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 _archive="$_pkgname-$pkgver"
 source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('a3e627d543bf07ff43ff06cacdbceb8f37aa056a31af25e68f706ad33f497d19')
+sha256sums=('c983a2b32d171ba392191eb29de2c3b433452d6cb514f270b17a7b3889fb6de6')
 
 build () {
 	cd "$_archive"
