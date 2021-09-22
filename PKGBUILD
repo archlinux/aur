@@ -3,7 +3,7 @@
 
 _gemname=rubocop-rspec
 pkgname=ruby-${_gemname}
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Code style checking for RSpec files"
 arch=(any)
@@ -15,7 +15,7 @@ url=https://github.com/rubocop/rubocop-rspec
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/rubocop/rubocop-rspec/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('f336c18125218e76a52f7b78d94dc0b9e4967563c76dc9d269e9ed6c1538ee0d')
+sha256sums=('17aea198b1ec4e9daf1619ec1298b598de29948fd3269cae89187043d256408e')
 
 prepare() {
   cd $_gemname-$pkgver
@@ -51,3 +51,5 @@ package() {
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm0644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
+
+# vim: set ts=2 sw=2 et:
