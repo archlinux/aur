@@ -7,3 +7,4 @@ src
 *.tar.gz
 
 petsc
+clean-configure.sh

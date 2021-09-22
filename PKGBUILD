@@ -5,7 +5,7 @@
 
 _base=petsc
 pkgname=("${_base}"-git "${_base}"-doc)
-pkgver=3.15.4.31.g36206f8ec7e
+pkgver=3.15.4.33.g0bac13e0fe9
 pkgrel=1
 _mainver="${pkgver:0:6}"
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -19,12 +19,10 @@ makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
              'git' 'cython' 'chrpath' "hypre=2.18.2")
 source=(git+${url}.git#branch=release
         https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
-        test_optdepends.sh
-        blaslapack_download.patch)
+        test_optdepends.sh)
 sha512sums=('SKIP'
             'b6a1d48aab1c2639a4c1cbd8b313ace253f1c36eedaa3de3508ffbd6060e1def99e2f516ed9bb509307f614b41791d09342e2c2280c0b2c25dda1092b0e569d2'
-            '4561205ad12cb1f0031ad4cfcf2117a909002c475a992eede429b8af0e06df44baf1ce9caa95413593a1710b688e5d9c75a3b896b8c428a3cc04ae38324faae5'
-            'af899ea1d06bf6d4cee1c1fe86902ba2772d1001caf00e89363c6217fed9dd837588ee6f7f827ca8b8fd2a01316fbcd73d98874e28d452af71b9598127b6f179')
+            '4561205ad12cb1f0031ad4cfcf2117a909002c475a992eede429b8af0e06df44baf1ce9caa95413593a1710b688e5d9c75a3b896b8c428a3cc04ae38324faae5')
 
 _config=linux-c-opt
 _install_dir="/usr"
@@ -89,10 +87,6 @@ export OMPI_MCA_opal_cuda_support=0
 unset PETSC_DIR
 export PETSC_ARCH=${_config}
 
-prepare() {
-  patch -p1 -i blaslapack_download.patch
-}
-
 pkgver() {
   cd "${srcdir}"/"${_base}"
   git describe --tags --match '*.*' | tr '-' '.' | sed 's-^v--'
@@ -129,7 +123,6 @@ build() {
 
   cd "${srcdir}"/"${_base}"
   python ./configure ${CONFOPTS[@]}
-
   make -s ${MAKEFLAGS} all
 }
 

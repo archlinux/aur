@@ -126,11 +126,18 @@ if [ -f "$(whereis -b libpnetcdf.so | cut -d' ' -f2)" ]; then
 fi
 
 # OpenBLAS: Linear algebra libraries
-OPENBLAS_SO="$(whereis -b libblas.so | cut -d' ' -f2)"
-if [ -f "${OPENBLAS_SO}" ]; then
+BLAS_SO="$(whereis -b libblas.so | cut -d' ' -f2)"
+OPENBLAS_SO="$(whereis -b libopenblas.so | cut -d' ' -f2)"
+LAPACK_SO="$(whereis -b liblapack.so | cut -d' ' -f2)"
+if [ -f "${BLAS_SO}" && \-f "${OPENBLAS_SO}" && \
+         -f "${LAPACK_SO}"]; then
 	CONFOPTS+=" --with-openblas=1"
-	CONFOPTS+=" --with-openblas-pkg-config="
-    CONFOPTS+="$(dirname $(pkgconf --path openblas))"
+	CONFOPTS+=" --with-openblas-lib=${OPENBLAS_SO}"
+	CONFOPTS+=" --with-openblas-include=/usr/include"
+    # With help from Satish Balay
+    # @ 3.15.4.33.g0bac13e0fe9 2021-09-21
+    #  nm -AoD /usr/lib64/libopenblas.so | grep dgetrs_
+    CONFOPTS+=" --with-blaslapack-lib=${LAPACK_SO},${BLAS_SO}"
 fi
 
 # OpenCL: GPU computing
