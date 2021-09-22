@@ -1,7 +1,7 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
-pkgver=1.1.10
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
@@ -13,18 +13,20 @@ depends=(
     'gcc-libs'
     'openssl'
 )
-makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'sg3_utils')
+makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils')
 source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
-    "0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
-    "0002-remove-apt-dependency.patch"
+    "0001-move-dump-catalog-shell-cli-doc-helper-to-proxmox-ba.patch"
+    "0001-re-route-dependencies-not-available-on-crates.io-to-.patch"
     "elf-strip-unused-dependencies.sh"
 )
+# either a git repo or tracked by this git repo, so not much gained by encoding
+# checksums here in this git repo
 sha512sums=(
     'SKIP'
-    '25f526f0c6a8f9a8a2dccd89aafc16e399d1c262626a9fd542e3072ae22b231f092da3258b07696344224a002d2477ac7320c449ee8f7b75b861777f029ec45d'
-    'c473c03ea470d9008ad17a425301dce669a883e5a9b8941adaee9db3b75926fbdb9b3f7056bf85c470bb4609b87b89fddf3198ba83417a63823286a341d8995e'
-    '8ebadc9854ff8bcd4e1e2e849728ef5724164b834793d0dda989e72ff0180d44b1318fdd6a4c1bf29b6d93bb8241c8dc47839d7d6a4b9f59a8a03f7e208e9991'
+    'SKIP'
+    'SKIP'
+    'SKIP'
 )
 
 _apply() {
@@ -34,15 +36,25 @@ _apply() {
 
 prepare() {
   cd "$pkgname-$pkgver"
-  _apply "0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
-  _apply "0002-remove-apt-dependency.patch"
-  rm src/api2/node/apt.rs src/tools/apt.rs src/bin/proxmox-daily-update.rs # belongs to patch 0002
+  rm .cargo/config # drop Debian-style redirect of crates.io to local registry
+
+  _apply 0001-move-dump-catalog-shell-cli-doc-helper-to-proxmox-ba.patch
+  _apply 0001-re-route-dependencies-not-available-on-crates.io-to-.patch
+
+  # fetch all in prepare to allow build() to be run offline
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$pkgname-$pkgver"
 
-  cargo build --release --bin proxmox-backup-client --bin pxar --bin dump-catalog-shell-cli
+  cargo build --release \
+    --package proxmox-backup-client \
+      --bin proxmox-backup-client \
+      --bin dump-catalog-shell-cli \
+    --package pxar-bin \
+      --bin pxar \
+    ;
 
   # fixup rust linking "feature" which links in all dependencies somewhere used
   # in the crate, even if not referenced at all in this binary...
@@ -58,7 +70,12 @@ check() {
   cd "$pkgname-$pkgver"
 
   mkdir -p target/testout/
-  cargo test --release --bin proxmox-backup-client --bin pxar
+  cargo test --release \
+    --package proxmox-backup-client \
+      --bin proxmox-backup-client \
+    --package pxar-bin \
+      --bin pxar \
+    ;
 }
 
 package() {

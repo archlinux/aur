@@ -1,6 +1,6 @@
 pkgbase = proxmox-backup-client
 	pkgdesc = Client for Proxmox Backup Server
-	pkgver = 1.1.10
+	pkgver = 2.0.10
 	pkgrel = 1
 	url = https://www.proxmox.com
 	arch = x86_64
@@ -12,18 +12,17 @@ pkgbase = proxmox-backup-client
 	makedepends = llvm
 	makedepends = patchelf
 	makedepends = python-docutils
-	makedepends = sg3_utils
 	depends = acl
 	depends = fuse3
 	depends = gcc-libs
 	depends = openssl
-	source = proxmox-backup-client-1.1.10::git://git.proxmox.com/git/proxmox-backup.git#tag=v1.1.10
-	source = 0001-adapt-cargo-toml-and-remove-systemd-linking.patch
-	source = 0002-remove-apt-dependency.patch
+	source = proxmox-backup-client-2.0.10::git://git.proxmox.com/git/proxmox-backup.git#tag=v2.0.10
+	source = 0001-move-dump-catalog-shell-cli-doc-helper-to-proxmox-ba.patch
+	source = 0001-re-route-dependencies-not-available-on-crates.io-to-.patch
 	source = elf-strip-unused-dependencies.sh
 	sha512sums = SKIP
-	sha512sums = 25f526f0c6a8f9a8a2dccd89aafc16e399d1c262626a9fd542e3072ae22b231f092da3258b07696344224a002d2477ac7320c449ee8f7b75b861777f029ec45d
-	sha512sums = c473c03ea470d9008ad17a425301dce669a883e5a9b8941adaee9db3b75926fbdb9b3f7056bf85c470bb4609b87b89fddf3198ba83417a63823286a341d8995e
-	sha512sums = 8ebadc9854ff8bcd4e1e2e849728ef5724164b834793d0dda989e72ff0180d44b1318fdd6a4c1bf29b6d93bb8241c8dc47839d7d6a4b9f59a8a03f7e208e9991
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = proxmox-backup-client
