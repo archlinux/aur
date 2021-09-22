@@ -2,9 +2,9 @@
 # Contributor: Andreas B. Wagner <AndreasBWagner@pointfree.net>
 
 pkgname=maptiler
-pkgver=11.1
+pkgver=11.2.1
 pkgrel=1
-pkgdesc="Map Tile Cutter - Tile Overlay Generator for Google Maps and Google Earth"
+pkgdesc="Map Tiler Desktop - software for converting your data into zoomable maps"
 arch=('x86_64')
 url="http://www.maptiler.org/"
 license=('BSD')
@@ -12,13 +12,12 @@ depends=('gdal' 'libwebp')
 options=(!strip)
 makedepends=('dpkg')
 replaces=('maptiler-64bit')
-install=maptiler.install
 _pkgname="${pkgname}-desktop-${pkgver}-free-linux.deb"
-source=("https://maptiler.download/desktop/${_pkgname}")
-md5sums=('206940e3df5325aecc42cfa7acc0f744')
+source=("${pkgname}-${pkgver}.deb"::"https://maptiler.download/desktop/${_pkgname}")
+md5sums=('884152ba8eb96d6b08381460bcc6764e')
 
 package() {
-  dpkg -x "${_pkgname}" "$pkgdir"
+  dpkg -x "${pkgname}-${pkgver}.deb" "$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
