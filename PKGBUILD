@@ -74,9 +74,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=147
+_minor=148
 _srcname=linux-${_major}
-_clr=${_major}.145-138
+_clr=${_major}.147-140
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -345,7 +345,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            'ad91a33ad5fca64ff45e73fb203a3dc7d127c8ff2b1f384efaa4914ae099a8a7'
+            '6e4e952ab005d77e8266dad6d88c290b956cc2c63e60fd903ce6ff629aafd084'
             'SKIP'
             'd361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf')
 
