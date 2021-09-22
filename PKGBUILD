@@ -82,7 +82,7 @@ md5sums=('SKIP')
 
 pkgver() {
   	cd dotfiles
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
