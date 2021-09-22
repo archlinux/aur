@@ -12,10 +12,14 @@ checkdepends=(desktop-file-utils)
 source=("https://dl.winehq.org/wine/source/6.x/wine-$pkgver.tar.xz")
 sha256sums=('SKIP')
 
-package() {
+build() {
 cd $srcdir/wine-$pkgver/
 echo 正在安装，可能需要亿些时间
 ./configure --prefix=/usr --without-x --without-freetype CC=clang CXX=clang++
-make 
-make install
+make -j6
+}
+package() {
+make STRIP=true prefix="$pkgdir/usr" \
+       libdir="$pkgdir/usr/lib" \                                                              
+       dlldir="$pkgdir/usr/lib/wine" install
 }
