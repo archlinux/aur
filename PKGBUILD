@@ -3,8 +3,8 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
@@ -14,28 +14,22 @@ depends=('glfw' 'capstone' 'mbedtls' 'libssh2'
          'yara')
 makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')
 source=("${pkgname}::git+https://github.com/WerWolv/ImHex.git#tag=v${pkgver}"
-  0001-warnings-fix-format-security-warnings-299.patch
-  0002-Set-correct-library-names.patch
+  0001-Set-correct-library-names.patch
   imhex.desktop)
 cksums=('SKIP'
-        '403159140'
-        '3838345833'
+        '3656399322'
         '4178124713')
 sha256sums=('SKIP'
-            'd2b254869a23144117243fd971e646c83fedfbe5b227e2050431155a127dd91f'
-            '687ecb3b6dc4491a1e8ea91f03377801af41225cbf4263330b75630d0c485e46'
+            'a8f936c6685979f888a2008d9b407a556bd581d4655df1a88664cd35f7416d16'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
-        '7838d9d7bccf9841848913effbdc9ed692770c76bd6a5851d95d4e1a1d9c318fef5f6d05074be4b98750ce55819091cfe8f90c85751701d1fea866d1bac67b96'
-        '7b6f2a76b0009dcc784291251ae363b2733598220667aa41eb443d167d7bb94c512d503369ee61429bd4dd4d957b4988a6cbbbc74fc34909b6fe68198620ba93'
+        '6e68b4674888b1888f1e2a9afb9b894f180e6823c3bc0579ca6ddbe99cc23ba167761d9122ed411e421e50a951276c4a5f34b13cfbb04081fca217b895603284'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {
   git -C "$pkgname" submodule update --init --recursive
 
-  git -C "$pkgname" apply -v \
-    "$srcdir/0001-warnings-fix-format-security-warnings-299.patch" \
-    "$srcdir/0002-Set-correct-library-names.patch"
+  git -C "$pkgname" apply -v "$srcdir"/*.patch
 }
 
 build() {
@@ -72,7 +66,6 @@ package() {
   install -Dm0644 "${pkgname}/res/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/imhex.svg"
 
   # Misc files
-  install -Dm0644 build/magic_dbs.mgc "${pkgdir}/usr/share/imhex/magic/imhex.mgc"
   install -Dm0644 -t "${pkgdir}/usr/share/imhex/resources" "${pkgname}/res/resources"/*
 
   # License

@@ -1,14 +1,14 @@
-From 957162f83b6cfa0c89d325c6bc6134127cc99a09 Mon Sep 17 00:00:00 2001
+From 8735d30e13067146ba6e1968b491b4654fdb19f7 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 19 Sep 2021 15:10:13 +0200
-Subject: [PATCH 2/2] Set correct library names
+Subject: [PATCH] Set correct library names
 
 ---
  CMakeLists.txt | 7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3fa17c4..de99ca2 100644
+index 4aab3a3..5178b35 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -34,6 +34,7 @@ else()
@@ -19,7 +19,7 @@ index 3fa17c4..de99ca2 100644
  else()
      find_package(PkgConfig REQUIRED)
      pkg_check_modules(YARA REQUIRED IMPORTED_TARGET yara)
-@@ -99,9 +100,11 @@ set_target_properties(imhex PROPERTIES CXX_VISIBILITY_PRESET hidden)
+@@ -103,9 +104,11 @@ set_target_properties(imhex PROPERTIES CXX_VISIBILITY_PRESET hidden)
  target_link_directories(imhex PRIVATE ${CAPSTONE_LIBRARY_DIRS} ${MAGIC_LIBRARY_DIRS})
  
  if (WIN32)
