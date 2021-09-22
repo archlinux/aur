@@ -6,13 +6,13 @@
 
 pkgname=toppler
 pkgver=1.1.6
-pkgrel=3
+pkgrel=4
 pkgdesc='A reimplementation of the classic jump & run game "Nebulus"'
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/toppler/"
 license=('GPL')
 depends=('gcc-libs' 'sdl_mixer' 'zlib')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
 
 build() {
