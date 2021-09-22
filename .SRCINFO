@@ -1,0 +1,22 @@
+pkgbase = broforce-steam
+	pkgdesc = Broforce Linux-native with data via Steam
+	pkgver = 1130_20201008
+	pkgrel = 1
+	url = https://store.steampowered.com/app/274190/Broforce/
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	makedepends = steamcmd
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
+	provides = broforce
+	conflicts = broforce-gog
+	source = broforce.sh
+	source = broforce.desktop
+	sha256sums = d7d6801f8928f0929b88f318cc18abc3c75664c598e8d549cc877c5cf2a6ceb9
+	sha256sums = f4d0ab0b9014724ded958a7cf4a6c62e6bcc056c1ffc27ea21a11d506f22bebf
+
+pkgname = broforce-steam

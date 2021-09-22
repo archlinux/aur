@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Broforce
+Comment=Broforce Linux-native
+Exec=/usr/bin/broforce
+Icon=broforce
+Terminal=false
+Type=Application
+Categories=Game;
