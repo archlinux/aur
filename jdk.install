@@ -1,7 +1,7 @@
 case "$CARCH" in
      armv?h) THIS_JDK='zulu-embedded-13' ;;
-    aarch64) THIS_JDK='zulu-embedded-16' ;;
-          *) THIS_JDK='zulu-embedded-16' ;;
+    aarch64) THIS_JDK='zulu-embedded-17' ;;
+          *) THIS_JDK='zulu-embedded-17' ;;
 esac
 
 fix_default() {
