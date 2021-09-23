@@ -10,7 +10,7 @@
 ## Helpful internal stuff
 _commit=a3e19dec25cb6d1414cf3e39a418fc398ed67b49
 _mozcver=2.26.4500.102
-_utdicver=20210922
+_utdicver=20210923
 
 pkgname='fcitx5-mozc-ut'
 pkgver=${_mozcver}.${_utdicver}
