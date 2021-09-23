@@ -1,7 +1,7 @@
 pkgbase = vifm-git
 	pkgdesc = Ncurses based file manager with vi like keybindings
 	pkgver = 0.10.1.r692.g65d63f0b5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vifm.info/
 	install = vifm-git.install
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = vifm-git
 	sha256sums = SKIP
 
 pkgname = vifm-git
-
