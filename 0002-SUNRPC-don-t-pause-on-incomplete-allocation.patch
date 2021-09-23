@@ -1,7 +1,7 @@
-From 7cf57afbcb7a538a94480ff8546d08d4a264464a Mon Sep 17 00:00:00 2001
+From c74596c67f1307dd27a42f39371032dd20f98004 Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.de>
 Date: Mon, 30 Aug 2021 08:36:34 +1000
-Subject: [PATCH 2/3] SUNRPC: don't pause on incomplete allocation
+Subject: [PATCH 2/8] SUNRPC: don't pause on incomplete allocation
 
 alloc_pages_bulk_array() attempts to allocate at least one page based on
 the provided pages, and then opportunistically allocates more if that
