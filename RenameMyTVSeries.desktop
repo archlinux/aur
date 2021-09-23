@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=RenameMyTVSeries
+GenericName=Rename My TV Series
+Comment=Utility to rename TV show episode files
+Type=Application
+Categories=Utility;
+Terminal=false
+Keywords=rename;files;tv;series;shows;video;
+Exec=/usr/share/RenameMyTVSeries/RenameMyTVSeries
+Icon=/usr/share/RenameMyTVSeries/icons/512x512.png
