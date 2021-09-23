@@ -1,9 +1,9 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_binver=1.5.30
+_binver=1.5.31
 
 pkgname=kotlin-native-bin
-pkgver=1.5.30
+pkgver=1.5.31
 pkgrel=2
 pkgdesc="An LLVM based backend for the Kotlin compiler and native implementation of the Kotlin standard library"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
   "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-linux-x86_64-${_binver}.tar.gz"
 )
 sha256sums=(
-  '1efad86f35543e3d5365dc6fe7dbde7f20e8330e70cf43b94d6a3f9080b2636f'
+  '636b7e9e54eefa3fa1d284677a8ec2271d0f98b024a8a60127ef20a3badaae03'
 )
 
 package() {
