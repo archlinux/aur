@@ -226,7 +226,7 @@
 
 --- a/super.c
 +++ b/super.c
-@@ -518,9 +518,9 @@
+@@ -514,9 +514,9 @@
  	struct user_namespace *user_ns = seq_user_ns(m);
  
  	seq_printf(m, ",uid=%u",
@@ -238,7 +238,7 @@
  	if (opts->fmask)
  		seq_printf(m, ",fmask=%04o", ~opts->fs_fmask_inv);
  	if (opts->dmask)
-@@ -1407,7 +1407,7 @@
+@@ -1403,7 +1403,7 @@
  	.init_fs_context	= ntfs_init_fs_context,
  	.parameters		= ntfs_fs_parameters,
  	.kill_sb		= kill_block_super,

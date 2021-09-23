@@ -1,5 +1,5 @@
 pkgname=ntfs3-dkms-git
-pkgver=r78.g880301b
+pkgver=r84.g82cb875
 pkgrel=1
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
 arch=('any')
@@ -22,7 +22,7 @@ source=(
 sha512sums=(
     '533c249f0f6bd4833faf02d0d92ca1b5802a49afc5feb2e46a7d37275cfca7896db76cd83593f4f313977d278a9a7e92eda550667be2b93910c49cfb68ead4fb'
     'ac00adb4a6d7fc685c39af054474631c930455e9ad0838338e6b3622b72451e81397506866b83a4a51dd0e34ed7752963c0fed9e8b017da5122e0dca3d345fb6'
-    '3f0a5a30a4a79714b1ece1f151edbeeec31ebbdb845868687228587ad82d6914a7cbd0ab6d46e1fae63cd5bc0f8f31cc277cda7f5e37ec41f456fbe69f380726'
+    '3348d710e3b2f886e8dc247fc962bf01b4c32abfaa1a07550dcf937ffa0b784d44a27da3237c20bec0b4b0e1d377f65225b1ce5b5e2b1a5408ad1ed6b470d5f0'
     'c4a127bb2214242d0ae23a12c1b2eaa064feeb30d4dd21ed1cecf6d9787723da83491724142f1952e493303ea06669b75054ab476769c3b0db7fe7a1403d6acf'
     'SKIP'
 )
