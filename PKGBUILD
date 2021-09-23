@@ -1,47 +1,39 @@
-# Maintainer: Dustin Falgout <dustin@antergos.com>
 # Maintainer: Giovanni Santini <itachi.sama.amaterasu@gmail.com>
+# Contributor: Dustin Falgout <dustin@antergos.com>
 
 pkgname=obs-service-tar_scm-git
-_pkgver=0.6.0
-pkgver=0.6.0.r434
+pkgver=0.10.28.r750
 pkgrel=1
 pkgdesc="Source Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
 url="https://github.com/openSUSE/obs-service-tar_scm"
 license=('GPL3')
-source=("${pkgname}::git+https://github.com/openSUSE/${pkgname%-git}.git"
-        "proper-python-check.patch")
+source=("${pkgname}::git+${url}.git")
 groups=('obs')
-depends=('python2'
-        'obs-build'
-        'git'
-        'python2-yaml'
-        'python2-dateutil')
+depends=('python'
+         'obs-build'
+         'git'
+         'python-yaml'
+         'python-dateutil')
 checkdepends=('flake8'
-            'python2-mock'
-            'python2-pylint'
-            'bzr'
-            'cpio'
-            'mercurial'
-            'subversion')
+              'python-mock'
+              'python-pylint'
+              'bzr'
+              'cpio'
+              'mercurial'
+              'subversion')
 optdepends=('cpio: needed for running properly the obs_scm source service'
             'subversion: svn repo support.'
             'mercurial: hg repo support.'
             'bzr: bzr repo support.')
 backup=("etc/obs/services/tar_scm")
-sha256sums=('SKIP'
-            '8f12240b2ba47718901be613a798a9afe6bff0548591741035a3bb5cc02788d1')
+sha256sums=('SKIP')
 # Comment this line to run tests
 BUILDENV+=('!check')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "%s.r%s" "${_pkgver}" "$(git rev-list --count HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    git apply "${srcdir}/proper-python-check.patch"
+    printf "%s.r%s" "$(git describe)" "$(git rev-list --count HEAD)"
 }
 
 check() {
