@@ -1,0 +1,13 @@
+diff --git a/diagrams/__init__.py b/diagrams/__init__.py
+index 6968bc4..a67c33e 100644
+--- a/diagrams/__init__.py
++++ b/diagrams/__init__.py
+@@ -418,7 +418,7 @@ class Node:
+
+     def _load_icon(self):
+         basedir = Path(os.path.abspath(os.path.dirname(__file__)))
+-        return os.path.join(basedir.parent, self._icon_dir, self._icon)
++        return os.path.join(basedir, self._icon_dir, self._icon)
+
+
+ class Edge:
