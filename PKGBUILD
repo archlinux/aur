@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.15.4
-pkgrel=4
+pkgrel=5
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -29,13 +29,14 @@ optdepends=('trilinos: support for trilinos'
   'fftw: support for the FFTW fast Fourier transform'
   'triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator'
   'suitesparse: support for the suitesparse sparse matrix libraries'
+  'valgrind: support for valgrind to help find memory-management problems in programs'
   )
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh
         petsc4py_nosudo.patch)
 sha256sums=('1e62fb0859a12891022765d1e24660cfcd704291c58667082d81a0618d6b0047'
-            'f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623'
+            '92b543fdaebd59611d48d0c7c9aa2d44a35b2486840d58c58ab5e3915a456a44'
             'df9d1ec9bd515fe17e25a6f98df8a913759cb0af21684c9aa454ad9e0a3a77bf')
 
 _install_dir=/opt/petsc/${_config}
