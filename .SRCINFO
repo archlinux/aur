@@ -1,15 +1,20 @@
 pkgbase = devpi-web
 	pkgdesc = Web interface plugin for devpi-server
-	pkgver = 4.0.7
-	pkgrel = 2
+	pkgver = 4.0.8
+	pkgrel = 1
 	url = https://doc.devpi.net/
+	changelog = CHANGELOG
 	arch = any
 	groups = devpi
 	license = MIT
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-cov
+	checkdepends = python-mock
+	checkdepends = python-webtest
 	makedepends = python-setuptools
 	depends = devpi-server>=5.2.0
 	depends = devpi-common>=3.2.0
-	depends = python>=3.4
+	depends = python
 	depends = python-beautifulsoup4>=4.3.2
 	depends = python-defusedxml
 	depends = python-docutils>=0.11
@@ -17,7 +22,7 @@ pkgbase = devpi-web
 	depends = python-pyramid>1.10
 	depends = python-readme-renderer>=23.0
 	depends = python-whoosh<3
-	source = https://files.pythonhosted.org/packages/source/d/devpi-web/devpi-web-4.0.7.tar.gz
-	sha256sums = 6b56406af005551544333257ba9f49cb139fc9ce21d786572f017023a71c31c0
+	source = https://files.pythonhosted.org/packages/source/d/devpi-web/devpi-web-4.0.8.tar.gz
+	sha256sums = e55002e3086a51b902c6ba30a4fbab1b3815fa986feb144df5ceedba6337326d
 
 pkgname = devpi-web

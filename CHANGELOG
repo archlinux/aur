@@ -1,0 +1,516 @@
+
+
+.. towncrier release notes start
+
+4.0.8 (2021-08-12)
+==================
+
+Bug Fixes
+---------
+
+- On startup loop over mirror indexes last to avoid filling up the indexing queue, which processes non mirror indexes first.
+
+
+4.0.7 (2021-07-11)
+==================
+
+Bug Fixes
+---------
+
+- The "Not Found" view now works correctly with request methods other than GET, HEAD and POST.
+
+
+4.0.6 (2021-02-19)
+==================
+
+Bug Fixes
+---------
+
+- Fix trying to import fcntl on Windows.
+
+
+4.0.5 (2020-07-16)
+==================
+
+Bug Fixes
+---------
+
+- Empty documentation zip files are now handled gracefully instead of causing exceptions in views and during indexing.
+
+- Use a lock file to prevent concurrent unpacking of documentation.
+
+
+Other Changes
+-------------
+
+- Provide location and exception info for indexing errors in log.
+
+- Slightly faster lookup of existing data during indexing.
+
+
+4.0.4 (2020-05-11)
+==================
+
+Bug Fixes
+---------
+
+- Fix avoiding re-index of existing indexed projects on startup.
+
+
+4.0.3 (2020-05-04)
+==================
+
+Bug Fixes
+---------
+
+- Fix some problems with deletion from index when project was deleted after indexing changes in 4.0.0.
+
+- Fix replication error list on +status when there are more than 10 failures.
+
+
+4.0.2 (2020-01-31)
+==================
+
+Bug Fixes
+---------
+
+- Fix project view if project doesn't exist on the index, but in an inherited index.
+
+
+4.0.1 (2019-12-18)
+==================
+
+Bug Fixes
+---------
+
+- Fix #756: correct URL to toxresults when using ``latest`` or ``stable`` as version in URL.
+
+- Fix caching of Whoosh indexer, so memory is properly freed.
+
+- Add warnings and errors for indexing to status page/badge.
+
+
+4.0.0 (2019-10-19)
+==================
+
+Deprecations and Removals
+-------------------------
+
+- The ``--recreate-search-index`` option was replaced with the ``devpi-clear-search-index`` command.
+
+- Dropped support for Python 2.7.
+
+
+Features
+--------
+
+- project.pt: implement #319 - add link to latest version and summary of latest version to project view
+
+- doc.pt: implement #339: when viewing older documentation, show link to latest and stable documentation.
+
+- implement #346: add support for 'latest' and 'stable' versions for project version URLs
+
+- version.pt, style.css: implement #347 - show navigation link when newer version is available
+
+- status.pt: Fix #500 - the outside url in ``+status`` is now clickable.
+
+- Fix 564: set response headers to not cache anything for "latest" and "stable" documentation URLs.
+
+- index.pt, toxresult.pt, version.pt, style.css: Fix #632 - show warning symbol when no tests were run in tox results.
+
+- The search indexing is now performed in a separate thread. Indexing prioritizes private indexes, then projects downloaded from mirrors and lastly never downloaded projects from mirrors.
+
+- On server start a refresh run for the search index is started automatically. In addition to that the indexing is done in smaller batches, which allows resuming of indexing the large pypi project lists.
+
+- In many cases re-indexing is now avoided.
+
+- The master url in the ``+status`` view is now clickable.
+
+- Add new ``--documentation-path`` option to set the path where documentation is unzipped to.
+
+- version.pt, common.js: all list like metadata is now collapsed to ~3 lines instead of only classifiers.
+
+- The ``--recreate-search-index`` option now just removes the whole index. Upon server restart the index is rebuilt automatically in the background.
+
+- Indexing of mirrors will not trigger a refresh of the simple links for projects which have downloaded releases. This allows quicker indexing for new replicas and in case the search index is rebuilt using ``--recreate-search-index``.
+
+- root.pt: added new view for user
+
+- The path for Whoosh index files can now be specified as an option like this: ``--indexer-backend whoosh:path=/...``
+
+- Indexer backend options can now be specified as a dict in yaml config files.
+
+
+Bug Fixes
+---------
+
+- Fix #567: the ``pip search`` view is no longer proxied to the master.
+
+- Pass query string on to documentation iframe, this fixes Sphinx search among other things.
+
+
+Other Changes
+-------------
+
+- macros.pt, version.pt, style.css: moved separators to css.
+
+- The minimum supported version of devpi-server is now 5.2.0.
+
+- The interface of ``update_projects`` for search indexers has changed. The list of projects is now a list of ``ProjectIndexingInfo`` objects instead of ``dict``. To get the dictionary as before, call ``preprocess_project`` on the object.
+
+
+3.5.2 (2019-06-28)
+==================
+
+Bug Fixes
+---------
+
+- iterate over mirror projects instead of building full list for indexing.
+
+
+3.5.1 (2019-04-26)
+==================
+
+Bug Fixes
+---------
+
+- when mirror names are indexed a full reindex was triggered, now only the project names of the mirror are indexed.
+
+- require --offline mode when using --recreate-search-index option. Otherwise reindexing may hang when trying to index a mirror.
+
+
+3.5.0 (2018-11-16)
+==================
+
+Features
+--------
+
+- feature #193: adding support for using markdown in package descriptions.
+
+
+Bug Fixes
+---------
+
+- fix #594: fix more url in search results
+
+
+3.4.1 (2018-09-18)
+==================
+
+Bug Fixes
+---------
+
+- Fix rendering of empty description which caused a traceback on Python 2.7.
+
+
+3.4.0 (2018-09-08)
+==================
+
+Features
+--------
+
+- implement #503: the package description is rendered on demand instead of by event handling.
+
+- implement #504: the documentation is unpacked and cached on demand instead of relying on event processing.
+
+- Add possibility for plugins to implement search backends as replacement for the default whoosh based backend.
+
+
+3.3.0 (2018-05-04)
+==================
+
+Features
+--------
+
+- add ``devpiserver_on_remove_file`` hook implementation to handle removal of
+  unpacked documentation. Thanks to Dr Colin Kong for the PR.
+
+- Use ``mirror_web_url_fmt`` in ``get_description`` for mirror indexes.
+
+
+Bug Fixes
+---------
+
+- fix #487: rewrite internal links in order to update browser history/URL
+
+- fix #494: fix redirect for +simple pages after PEP 503 fixes in devpi-server.
+
+- fix scroll for anchors on internal links of documentation
+
+
+3.2.2 (2018-01-17)
+==================
+
+Bug Fixes
+---------
+
+- fix issue482: let external links in documentation open outside of iframe.
+
+- Prevent stale static resources from browser caching by adding devpi-web
+  version to their URLs.
+
+
+3.2.1 (2017-11-23)
+==================
+
+No significant changes.
+
+
+3.2.1rc1 (2017-09-08)
+=====================
+
+Bug Fixes
+---------
+
+- make search results compatible with pip showing INSTALLED/LATEST info.
+
+- fix server error by returning 404 when a toxresult can't be found.
+
+
+3.2.0 (2017-04-23)
+==================
+
+- version.pt: add "No releases" when there are none.
+
+- project.pt: add "Documentation" column with link to documentation per version.
+
+
+3.1.1 (2016-07-15)
+==================
+
+- removed unnecessary fetching of mirror data during indexing.
+
+
+3.1.0 (2016-04-22)
+==================
+
+- use readme-renderer like PyPI does.
+
+- if rendering the description causes errors, they are appended at the end.
+
+- When creating the preview snippet for search results on documentation and the
+  extracted doc files can't be accessed, then the preview will contain error
+  information instead of raising an internal server error. See issue324
+
+- fix issue335: The documentation wasn't linked for projects with
+  non-normalized names.
+
+- fix issue324: The project name wasn't correctly normalized when trying to
+  access unpacked documentation in some code paths.
+
+- all generated URLs in devpi-web are now normalized and don't go through a
+  redirect anymore.
+
+- added some internal infos to view data for use in theme templates. Any view
+  data starting with an underscore is internal and may change between releases
+  without notice. see issue319
+
+
+3.0.0 (2016-02-12)
+==================
+
+- dropped support for python2.6
+
+- index.pt, root.pt, style.css: added title and description to
+  users and indexes.
+
+- root.pt, style.css: more compact styling of user/index overview using
+  flexbox, resulting in three columns at most sizes
+
+- cleanup previously unpacked documentation to remove obsolete files.
+
+- store hash of doczip with the unpacked data to avoid unpacking if the data
+  already exists.
+
+- project.pt, version.pt: renamed ``pypi_whitelist`` related things to
+  ``mirror_whitelist``.
+
+- require and adapt to devpi-server-3.0.0 which always uses
+  normalized project names internally and offers new hooks.
+  devpi-web-3.0.0 is incompatible to devpi-server-2.X.
+
+- doc.pt, macros.pt, style.css, docview.js: use scrollbar of documentation
+  iframe, so documentation that contains dynamically resizing elements works
+  correctly. For that to work, the search from and navigation was moved into a
+  wrapping div with class ``header``, so it can overlap the top of the iframe.
+
+
+2.6.0 (2016-01-29)
+==================
+
+- fix issue305: read documentation html files in binary and let BeautifulSoup
+                detect the encoding.
+
+- require devpi-server >= 2.6.0
+
+- support for ``pip search`` command on indexes
+
+
+2.5.0 (2015-11-19)
+==================
+
+- fix issue288: classifiers rendering wrong with read only data views
+
+- index.pt, project.pt, version.pt: added info about pypi_whitelist. This
+  requires devpi-server > 2.4.0 to work.
+
+- fix issue286: indexing of most data failed due to new read only views
+
+
+2.4.2 (2015-11-11)
+==================
+
+- log exceptions during search index updates.
+
+- adapted tests/code to work with devpi-server-2.4
+
+
+2.4.1 (2015-10-09)
+==================
+
+- fix issue255: close and discard whoosh searchers after each use, they use too
+  much memory if stored in a thread local for reuse.
+
+
+2.4.0 (2015-07-09)
+==================
+
+- macros.pt: Add autofocus attribute to search field
+
+- macros.pt and style.css: Moved "How to search?" to the right of the search
+  button and adjusted width of search field accordingly.
+
+- fix issue244: server status info
+
+  - added support for status message plugin hook ``devpiweb_get_status_info``
+  - macros.pt: added macros ``status`` and ``statusbadge`` and placed them
+    below the search field.
+  - added status.pt: shows server status information
+
+- toxresults.pt: fix missing closing ``div`` tag.
+
+
+2.3.0 (2015-05-13)
+==================
+
+- toxresults.pt: use just one line for result status indicator
+
+- adapt devpi-web to devpi-server-2.2.0 hash-spec changes
+
+- version.pt: moved hash to title attribute of table cell. With the upcoming
+  change to sha256 it's too long and it's available from the link url as well.
+
+- use renamed devpiserver_run_commands hook 
+
+- fix issue233: projects on root/pypi with no releases lead to a traceback
+
+
+2.2.3 (2015-02-24)
+==================
+
+- fix issue207: added documentation url for latest stable release of a package.
+
+
+2.2.2 (2014-11-27)
+==================
+
+- fix issue184: better height calculation of documentation iframe.
+
+
+2.2.1
+=====
+
+- require devpi-server>=2.1.2
+
+- fix issue175: use normalized name of projects, so redirects from unnormalized
+  names works.  NOTE that if you had issues with documentation uploads
+  not appearing because of normalization issues ("-" or "_" appearing 
+  in the name for example) you need to re-upload the docs or 
+  do a full export/import cycle.  
+
+- fix view when tox results can not be parsed. 
+
+- version.pt: removed "code" tag around overwrite count.
+
+- macros.pt: added "footer" tag around the whole footer part.
+
+- version.pt: moved file type, python version and size info from their own
+  columns into the file column.
+
+- version.pt: moved history column from before the tox results column to behind
+  the tox results.
+
+- version.pt: removed "last modified" from history column
+
+- version.pt: removed timestamp from "replaced" action in history column
+
+- version.pt: add link to PyPI page if applicable.
+
+- fix project page view if there are downloads with filenames which can't be
+  parsed as packages with version number
+
+- fix notfound-redirect when serving under an outside URL with a sub path
+
+
+
+2.2.0
+=====
+
+- require devpi-server >= 2.1.0
+
+- static resources now have a plus in front to avoid clashes with usernames and
+  be consistent with how other urls work: "+static/..." and "+theme-static/..."
+
+- adjusted font-sizes and cut-off width of content.
+
+- only show underline on links when hovering.
+
+- make the "description hasn't been rendered" warning stand out.
+
+- version.pt: moved md5 sum from it's own column to the file column below the
+  download link
+
+- version.pt: added "history" column showing last modified time and infos
+  about uploads and pushes.
+
+- fix issue153: friendly error messages on upstream errors.
+
+- index.pt: show permissions on index page
+
+
+2.1.1
+=====
+
+- better exception handling/reporting while indexing.
+
+- renamed ``--index-projects`` to ``--recreate-search-index``.
+
+
+2.1.0
+=====
+
+- allow overwriting of templates for theming.
+
+- show version info for currently active packages/plugins.
+
+- fix encoding issue when loading long description with Python 3.4 on Windows.
+
+- requires devpi-server 2.0.6.
+
+
+2.0.1
+=====
+
+- fix issue125: javascript for embedded doc view didn't work correctly.
+
+- fix issue118: rendering of description with unicode.
+
+
+2.0.0
+=====
+
+- initial release
+
+- fix issue112 (reported on devpi-server): introduce a URL for showing
+  docs using ``latest`` instead of a version.  This will dynamically
+  resolve to the latest version.
