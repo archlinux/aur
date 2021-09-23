@@ -31,9 +31,7 @@ prepare() {
 build() {
     cd "${srcdir}"/$_pkgname
     ./configure --prefix=/usr \
-                --without-gtk \
-                --sysconfdir=/etc \
-                --without-X11
+                --sysconfdir=/etc
     make
 }
 
