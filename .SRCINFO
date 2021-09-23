@@ -1,6 +1,6 @@
 pkgbase = crio-bin
 	pkgdesc = Open Container Initiative-based implementation of Kubernetes Container Runtime Interface
-	pkgver = 1.21.0
+	pkgver = 1.21.3
 	pkgrel = 1
 	url = https://cri-o.io/
 	arch = x86_64
@@ -22,8 +22,7 @@ pkgbase = crio-bin
 	backup = etc/containers/policy.json
 	source = https://raw.githubusercontent.com/cri-o/cri-o/580db0719d68b3ff3bb30f60397c3892be383eb5/LICENSE
 	sha256sums = b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1
-	source_x86_64 = https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.21.0.tar.gz
-	sha256sums_x86_64 = 75d1aefd93d9b6eea9627d20c1a8b65307e10396b7c28d440308bb351ca041bb
+	source_x86_64 = https://storage.googleapis.com/k8s-conform-cri-o/artifacts/cri-o.amd64.ff0b7feb8e12509076b4b0e338b6334ce466b293.tar.gz
+	sha256sums_x86_64 = 96759067cc21b98c176f425ae621e3cd12d15d2527a7bdb3c2921aaec7eaa940
 
 pkgname = crio-bin
-
