@@ -1,5 +1,3 @@
-# $Id$
-
 _target=aarch64-none-elf
 pkgname=$_target-gdb
 pkgver=11.1
