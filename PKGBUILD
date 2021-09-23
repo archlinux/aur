@@ -3,7 +3,7 @@
 
 pkgname=zotero-beta
 _pkgname=zotero-beta
-pkgver=5.0.97beta.43
+pkgver=5.0.97beta.46
 pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
 arch=('x86_64' 'i686')
@@ -47,8 +47,8 @@ source_i686=("Zotero-${pkgver}_linux_i686.tar.bz2::https://www.zotero.org/downlo
 sha256sums=('7b23d5238430701c1f5cc6f81dfd9b9f67cc643d506e42aa0e62aba5a58191fa'
             '94211568bbd206d10f1c1e0a2565905fcd27c8586835b7aef6458e657caa8213'
             '09752d833320d195ce5f8a65ef900edcda85816c3de210a572871fdfbb92e97a')
-sha256sums_x86_64=('663bef580bb467314523bca14fa2a84d34899b52b5423b9796eb37fd88b2bfe2')
-sha256sums_i686=('7d63a07b7918126456c21970b794c3dc075f47217c7b2b6b9117755199e3e63c')
+sha256sums_x86_64=('c8ed87a8ef6933a446e3c4bb6d4454a2b7bbf18db7452d2e5654349b623caaae')
+sha256sums_i686=('9366f4e7d93667616f8184199a089bf66eae1da6c8ee7b8c7b7d7b2d6d51a5b4')
 
 prepare() {
   patch --directory="Zotero_linux-$CARCH" --forward --strip=1 --input="${srcdir}/zotero-absolute-path-fix.patch"
