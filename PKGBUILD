@@ -1,26 +1,24 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=tetzle
-pkgver=2.1.6
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A tetromino jigsaw puzzle game'
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url="https://gottcode.org/$pkgname/"
 license=('GPL3')
-depends=('qt5-base')
-makedepends=('qt5-tools')
+depends=('qt6-base')
+makedepends=('cmake' 'qt6-tools')
 source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('fbc3c86b5bf64187f89379176bd0085c636605d9594c7af8d0c056760d6cf80a')
+sha256sums=('18650ab9b4668effba59c07b06977bd8ae7e767cbf6abf1dd7a15e7233920779')
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  qmake-qt5 PREFIX=/usr
-  make
+  cmake -B build -S $pkgbase-$pkgver \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  make INSTALL_ROOT="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
