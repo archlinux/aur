@@ -3,7 +3,7 @@
 
 pkgname=python-fontmake
 _pyname=${pkgname#python-}
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)'
 arch=(any)
@@ -14,7 +14,7 @@ _pydeps=(attrs
          fontmath
          fonttools
          fs # for fonttools[ufo]
-         glyphslib
+         'glyphslib<6' # https://github.com/googlefonts/fontmake/releases/tag/v2.4.2
          lxml # for fonttools[lxml] and defcon[lxml]
          ufo2ft
          ufolib2
@@ -29,7 +29,7 @@ optdepends=(python-mutatormath
             python-skia-pathops)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('ab348144d4b80ce4d600f72f35337ec64f2c7330798f70f01cad497bc54a36de')
+sha256sums=('e2bdb029b0205f4609948d3c7738864887f76a7081563eb8f5d87e1252502a75')
 
 build() {
 	cd "$_archive"
