@@ -8,6 +8,7 @@ pkgbase = raspberrypi-rtc-ds1307
 	arch = aarch64
 	license = MIT
 	makedepends = git
+	depends = i2c-tools
 	source = rtc-ds1307-load.sh
 	source = rtc-ds1307.service
 	source = rtc-ds1307.conf

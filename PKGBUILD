@@ -7,6 +7,7 @@ pkgdesc="Raspberry Pi i2C RTC DS1307 clock boot load scripts"
 url="http://github.com/darajnish/raspberrypi-i2c-rtc-ds1307"
 arch=('armv6h' 'armv7h' 'aarch64')
 license=('MIT')
+depends=('i2c-tools')
 makedepends=('git')
 source=('rtc-ds1307-load.sh'
 	'rtc-ds1307.service'
