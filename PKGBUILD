@@ -35,7 +35,7 @@ package() {
     # not create it, so we do it ourselves.
     mkdir -p "$pkgdir/usr/etc"
 
-	make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 
     # /usr/sbin is a symbolic link to /usr/bin on Archlinux, and Pacman does
     # not like packages referencing it.
