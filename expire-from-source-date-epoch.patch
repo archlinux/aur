@@ -1,6 +1,6 @@
---- a/Gruntfile.js
-+++ b/Gruntfile.js
-@@ -203,9 +203,7 @@ module.exports = grunt => {
+--- a/Gruntfile.js	2021-09-23 04:25:41.069024593 -0500
++++ b/Gruntfile.js	2021-09-23 04:26:20.878766965 -0500
+@@ -171,9 +171,7 @@
    });
  
    grunt.registerTask('getExpireTime', () => {
@@ -8,6 +8,6 @@
 -    const gitinfo = grunt.config.get('gitinfo');
 -    const committed = gitinfo.local.branch.current.lastCommitTime;
 +    const committed = parseInt(process.env.SOURCE_DATE_EPOCH, 10) * 1000;
-     const time = Date.parse(committed) + 1000 * 60 * 60 * 24 * 90;
+     const buildCreation = Date.parse(committed);
+     const buildExpiration = buildCreation + 1000 * 60 * 60 * 24 * 90;
      grunt.file.write(
-       'config/local-production.json',
