@@ -29,7 +29,7 @@ makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('700d7918d93d73035a2a58fb18c6be0b609a0481fc6e0908843fa856b89e52c6')
+sha256sums=('851c2892cd615cfee91fd27cfaf7a5061d14daf2853aa8f012e927b98f919578')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
