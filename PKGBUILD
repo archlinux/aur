@@ -1,4 +1,5 @@
-# Maintainer: relrel <relrelbachar@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: relrel <relrelbachar@gmail.com>
 # Contributor: Luis Aranguren <pizzaman@hotmail.com>
 # Contributor: Adrian Perez <aperez@igalia.com>
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
@@ -8,17 +9,17 @@
 # Contributor: Andreas Schrafl <aschrafl@gmail.com>
 # Contributor: piojo <aur@zwell.net>
 # Contributor: hack.augusto <hack.augusto@gmail.com>
+
 pkgname=depot-tools-git
-pkgver=r7308.7f3861357
+pkgver=r8355.04d9c8345
 pkgrel=1
-pkgdesc="Tools for working with Chromium development"
-arch=('any')
-url="https://chromium.googlesource.com/chromium/tools/depot_tools"
-license=('custom')
-depends=(git)
-optdepends=('bash-completion: for bash completion')
+pkgdesc='Tools for working with Chromium development'
+arch=(x86_64)
+url='https://chromium.googlesource.com/chromium/tools/depot_tools'
+license=(custom)
+depends=(git glibc python java-runtime)
 install="$pkgname.install"
-source=("git+$url")
+source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {

@@ -1,15 +1,16 @@
 pkgbase = depot-tools-git
 	pkgdesc = Tools for working with Chromium development
-	pkgver = r7308.7f3861357
+	pkgver = r8355.04d9c8345
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromium/tools/depot_tools
 	install = depot-tools-git.install
-	arch = any
+	arch = x86_64
 	license = custom
 	depends = git
-	optdepends = bash-completion: for bash completion
-	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools
+	depends = glibc
+	depends = python
+	depends = java-runtime
+	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	sha512sums = SKIP
 
 pkgname = depot-tools-git
-
