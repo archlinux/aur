@@ -1,4 +1,4 @@
-# Maintainer: second2050 <dilan.neusa+aur at gmail dot com
+# Maintainer: second2050 <aur at second2050 dot me>
 # Contributor: steeltitanium <steeltitanium1 at gmail dot com>
 
 # Variables which can be customized at build time. Use env or export to set
@@ -13,7 +13,7 @@ fi
 _buildflags="NOUPX=1 NOOBJDUMP=1 "
 
 pkgname=srb2kart-moe-mansion-git
-pkgver=r7357.a3939035
+pkgver=r7373.df0db020
 _dataver=1.3
 pkgrel=1
 pkgdesc="A rolling release/nightly version of srb2kart 1.3 based on birdhouse with a couple other changes."
