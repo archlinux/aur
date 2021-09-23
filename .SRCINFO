@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-framework
 	pkgdesc = GTK themes built with the GTK Theme Framework
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/jaxwilko/gtk-theme-framework
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = gtk-theme-framework
 	conflicts = material-gtk-framework
 	replaces = material-gtk-framework
 	options = !strip
-	source = gtk-theme-framework-0.2.2.tar.gz::https://github.com/jaxwilko/gtk-theme-framework/archive/v0.2.2.tar.gz
+	source = gtk-theme-framework-0.2.3.tar.gz::https://github.com/jaxwilko/gtk-theme-framework/archive/v0.2.3.tar.gz
 	source = git+https://github.com/vinceliuice/vimix-icon-theme.git
-	sha256sums = 0d698d525607095d1e99122b79f2cbeacc79361693115d2a0ae2cf7ed8f2b988
+	sha256sums = 03321d21359f303f05872db688e78698d3fc9c22e66190ecf0afd0fa57cb605d
 	sha256sums = SKIP
 
 pkgname = palenight-gtk-theme
@@ -31,4 +31,3 @@ pkgname = oceanic-gtk-theme
 
 pkgname = spacx-gtk-theme
 	pkgdesc = Spacex GTK theme & icon set: built with the GTK Theme Framework
-
