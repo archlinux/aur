@@ -2,7 +2,7 @@
 
 pkgname=wsid
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='web show image directory'
 arch=(any)
 url='https://github.com/matheuz1210/wsid'
@@ -10,7 +10,7 @@ license=(GPL)
 depends=(
     'python>=3.7' )
 makedepends=(
-    git )
+    python-setuptools )
 optdepends=(
     'python-pyqt5: for gui' )
 source=(
