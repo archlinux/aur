@@ -1,7 +1,7 @@
 # Maintainer: easymodo <easymodofrf@gmail.com>
 pkgname=qimgv-git
 _pkgname=qimgv
-pkgver=v0.9.1.r0.gef7c786
+pkgver=v1.0.0.r0.gc4e1155
 pkgrel=1
 pkgdesc="Qt5 image viewer. Fast, configurable, easy to use. Supports video playback."
 arch=('i686' 'x86_64')
@@ -12,7 +12,9 @@ makedepends=('git' 'cmake' 'pkgconf' 'qt5-tools' 'mpv' 'exiv2' 'opencv')
 #checkdepends=()
 optdepends=('kimageformats: support for more image formats'
             'qt5-apng-plugin: apng support'
-            'qtraw-git: raw support')
+            'qtraw-git: RAW support'
+            'qt5-jpegxl-image-plugin: JPEG-XL support'
+            'qt-avif-image-plugin-git: AVIF support')
 provides=("qimgv")
 conflicts=("qimgv")
 source=('git+https://github.com/easymodo/qimgv.git')
