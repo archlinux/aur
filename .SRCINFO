@@ -7,6 +7,7 @@ pkgbase = liteaur-git
 	license = BSD3-Clause
 	depends = pacman
 	depends = git
+	depends = jq
 	optdepends = sudo
 	provides = liteaur
 	source = liteaur-git::git+https://gitea.com/ffqq/liteaur.git
