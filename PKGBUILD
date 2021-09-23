@@ -1,6 +1,6 @@
 # Maintainer: Marie Piontek <marie@mxy.gg>
 pkgname=koemimoe-desktop-git
-pkgver=27.0d49135
+pkgver=28.0d49135
 pkgrel=1
 pkgdesc="User-first, privacy focused chat platform."
 arch=("x86_64")
