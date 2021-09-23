@@ -1,4 +1,4 @@
-# Maintainer: second2050 <dilan.neusa [plus] aur [at] gmail [dot] com>
+# Maintainer: second2050 <aur at second2050 dot me >
 
 pkgname='ttf-delugia-code'
 pkgver=2108.26.1
