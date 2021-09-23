@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
 
 pkgname=python-mbed-manifest-tool
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='A tool for creating and parsing update manifests'
 arch=('any')
@@ -16,10 +16,9 @@ depends=(
   'python-jsonschema>=2.6.0' 'python-jsonschema<=3.2.0'
   'python-pyasn1>=0.3.1' 'python-pyasn1<=0.4.8'
   'python-requests>=2.20.0' 'python-requests<=2.26.0'
-  'python-mbed-cloud-sdk'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('19ff61ed139dc9143767856c8d8e27d9d056f176ce029814d465d1e3d8a265cb')
+sha256sums=('375645900133a98d3df3d6bf68802f16bf384fa8a8aa8a9c97bcfdc017e2e3ba')
 
 package() {
   cd "manifest-tool-${pkgver}"
