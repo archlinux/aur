@@ -2,17 +2,17 @@
 
 _target=aarch64-none-elf
 pkgname=$_target-gdb
-pkgver=8.0.1
+pkgver=11.1
 pkgrel=1
 pkgdesc='The GNU Debugger for the ARM64 target'
 arch=(i686 x86_64)
-url='http://www.gnu.org/software/gdb/'
+url='https://www.gnu.org/software/gdb/'
 license=(GPL3)
 depends=(xz ncurses expat python guile2.0 gdb-common)
 options=(!emptydirs)
-source=(ftp://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz{,.sig})
+source=(https://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz{,.sig})
 validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker
-sha256sums=('3dbd5f93e36ba2815ad0efab030dcd0c7b211d7b353a40a53f4c02d7d56295e3'
+sha256sums=('cccfcc407b20d343fb320d4a9a2110776dd3165118ffd41f4b1b162340333f94'
             'SKIP')
 
 prepare() {
