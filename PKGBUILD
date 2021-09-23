@@ -1,7 +1,8 @@
 # Maintainer: Raphael Emberger(raember) <raphael.emberger@hotmail.ch>
 # Contributor: Hervé Bitteur <herve.bitteur@audiveris.com>
 pkgname=audiveris
-pkgver=5.2.3
+pkgver=5.2.4
+_gitcommit=3353f40
 pkgrel=1
 pkgdesc="Music score OMR engine"
 arch=('x86_64')
@@ -23,19 +24,20 @@ source=(
   "$pkgname-${pkgver/_/-}.tar.gz::https://github.com/Audiveris/$pkgname/archive/${pkgver/_/-}.tar.gz"
   "$pkgname"
 )
-sha256sums=('57ae968bc4b679a06f1e85908b6785bd8c4f105a002f74f2b6fbea9db05d15cf'
+sha256sums=('ab7f686484c87640dfa67777b4392bf3aa1809d08f6ea2370d6fcc6ea3298aff'
             '12223d402f4f6719051df7ab4776a82c7326c41f49403d4d1868c5b041678743')
 
 prepare() {
   msg2 'Replacing git commit request with static commit hash'
-  #sed -i "s/git rev-parse --short HEAD/echo '4f234fefb8a5e004f3b82fee11e68b57c004b20a'/g" "$srcdir/$pkgname-${pkgver/_/-}/build.gradle"
+  sed -i "s/git rev-parse --short HEAD/echo '${_gitcommit}'/g" "$srcdir/$pkgname-${pkgver/_/-}/build.gradle"
+
   msg2 'Updating gradle build config for newest gradle version'
   sed -i "s/compile(/implementation(/g" "$srcdir/$pkgname-${pkgver/_/-}/build.gradle"
   sed -i "s/runtime(/runtimeOnly(/g" "$srcdir/$pkgname-${pkgver/_/-}/build.gradle"
   sed -i "s/testCompile(/testImplementation(/g" "$srcdir/$pkgname-${pkgver/_/-}/build.gradle"
-  # Quickfix for javadoc
-  sed -i "s/XmlRootElement;/XmlRootElement;\nimport org.audiveris.omr.sig.inter.AbstractInter;/g" "$srcdir/$pkgname-${pkgver/_/-}/src/main/org/audiveris/omr/sig/relation/MirrorRelation.java"
-
+  
+  msg2 'Quickfix for javadoc'
+  sed -i "s/XmlJavaTypeAdapter;/XmlJavaTypeAdapter;\nimport org.audiveris.omr.sig.relation.Containment;/g" "$srcdir/$pkgname-${pkgver/_/-}/src/main/org/audiveris/omr/sig/inter/SentenceInter.java"
 }
 
 build() {
@@ -57,3 +59,4 @@ package() {
   install -dm755 "$pkgdir/usr/share/doc"
   cp -r "$srcdir/$pkgname-${pkgver/_/-}/build/docs/javadoc" "$pkgdir/usr/share/doc/$pkgname"
 }
+
