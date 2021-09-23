@@ -1,6 +1,6 @@
 pkgbase = eccodes-git
 	pkgdesc = ECMWF decoding library for GRIB, BUFR and GTS
-	pkgver = 2020.10.1.r0.g929aee77
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/ecmwf/eccodes
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = eccodes-git
 	md5sums = SKIP
 
 pkgname = eccodes-git
-
