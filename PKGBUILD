@@ -1,7 +1,7 @@
 # Maintainer: Matthew Hiles <matthew.hiles@hpe.com>
 pkgname=via
 pkgver=4.2.0.2105106
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Aruba Networks' Virtual Intranet Access (VIA)"
 arch=('x86_64')
