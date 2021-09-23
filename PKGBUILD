@@ -2,12 +2,12 @@
 
 pkgname=python-libcsearcher-git
 pkgver=r24.10128fe
-pkgrel=1
+pkgrel=2
 pkgdesc="LibcSearcher-ng -- get symbols' offset in glibc. "
 arch=('any')
 url="https://github.com/dev2ero/LibcSearcher"
 license=('BSD')
-depends=()
+depends=('python-requests')
 makedepends=('python-setuptools' 'git')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
@@ -19,6 +19,12 @@ pkgver() {
 			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
+prepare(){
+	cd ${pkgname}
+	mkdir LibcSearcher
+	mv LibcSearcher.py LibcSearcher
+	echo "from .LibcSearcher import *" > ./LibcSearcher/__init__.py
+}
 build() {
 	cd "$pkgname"
 	python setup.py build
@@ -26,5 +32,5 @@ build() {
 
 package() {
 	cd "$pkgname"
-	python setup.py install --root="$pkgdir/" -O1 --skip-build
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
