@@ -2,7 +2,7 @@
 
 pkgname=cgal-git
 _pkgname=cgal
-pkgver=r91288.6b679968c6
+pkgver=r98262.16c0aab3cc0
 pkgrel=1
 pkgdesc="Computational Geometry Algorithms Library"
 arch=('x86_64')
@@ -38,7 +38,7 @@ package () {
   make install DESTDIR="$pkgdir"
 
   # The tarball still has all these licenses included
-  for _license in "LICENSE"{,.FREE_USE,.GPL,.LGPL,.BSL,.COMMERCIAL,.RFL}; do
+  for _license in "LICENSE"{,.GPL,.LGPL,.BSL,.COMMERCIAL,.RFL}; do
     install -D -m644 "$srcdir/$_pkgname/Installation/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
   done
 }
