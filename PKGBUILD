@@ -7,7 +7,7 @@
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 
 pkgname=tea-qt
-pkgver=60.5.0
+pkgver=60.5.1
 pkgrel=1
 pkgdesc="Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS with PDF and DJVU support"
 arch=(x86_64)
@@ -18,7 +18,7 @@ makedepends=(cmake)
 optdepends=('poppler-qt6: open and search text in PDF files'
             'djvulibre: open and search in DJVU')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/psemiletov/tea-qt/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('e62ba4a57dfd212c3848e2cd730628e34b28aab379768294cb80ff931a60ce8de00d0fe11046564a251a633b40c287abe39a280cb4ed865c2aea2a6cdc40669b')
+sha512sums=('86be61a8acff29e40151eea69ce790a16fce52082b0ebf356d19ebd32f512c33bee4e0f2d23911b31bd06353e067cce10a39e26bac773832ab2996b5bbe3eda2')
 
 prepare() {
   mkdir -p "${srcdir}/tea-qt-${pkgver}/build"
@@ -32,10 +32,14 @@ build() {
     -DUSE_DJVU=ON
 
   make
+
+  cd "${srcdir}/tea-qt-${pkgver}/desktop"
+  sed -i 's/tea %U/tea-qt %U/g' tea.desktop
 }
 
 package(){
   cd "${srcdir}/tea-qt-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
+  mv "${pkgdir}/usr/bin/tea" "${pkgdir}/usr/bin/tea-qt"
 }
 
