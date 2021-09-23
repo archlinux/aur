@@ -1,6 +1,6 @@
 pkgbase = imgurqt-git
 	pkgdesc = Console application implementing basic commands of imgur.com APIv3
-	pkgver = 20170202
+	pkgver = 14.f87671e
 	pkgrel = 1
 	url = https://gitlab.com/luspi/imgurqt
 	arch = i686

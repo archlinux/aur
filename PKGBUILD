@@ -3,7 +3,7 @@
 _pkgname=imgurqt
 pkgname=imgurqt-git
 pkgrel=1
-pkgver=20170202
+pkgver=14.f87671e
 pkgdesc="Console application implementing basic commands of imgur.com APIv3"
 arch=("i686" "x86_64")
 url="https://gitlab.com/luspi/imgurqt"
@@ -16,7 +16,8 @@ source=("git+https://gitlab.com/luspi/imgurqt.git")
 md5sums=("SKIP")
 
 pkgver() {
-    date --iso-8601 | sed 's/-//g'
+    cd "$srcdir/$_pkgname"
+    echo "$(git rev-list --all --count).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
