@@ -10,7 +10,7 @@
 ## Helpful internal stuff
 _commit=a3e19dec25cb6d1414cf3e39a418fc398ed67b49
 _mozcver=2.26.4500.102
-_utdicver=20210922
+_utdicver=20210923
 
 pkgname='mozc-ut-common'
 pkgver=${_mozcver}.${_utdicver}
@@ -24,9 +24,9 @@ makedepends=('bazel' 'git' 'pkgconf' 'python-six')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/33/33009/mozcdic-ut-${_utdicver}.tar.bz2")
+        "https://osdn.net/downloads/users/33/33018/mozcdic-ut-${_utdicver}.tar.bz2")
 sha256sums=('SKIP'
-            '719425705980cc6909b530ad08106d9dcd6ff6aa8743bfca55626933f35e9218')
+            '23c742ca2505ec07de743a670fa0e4f1ed0810b94ae90ee6a783d5c2748ba407')
 
 prepare() {
     cd ${pkgname}-git
