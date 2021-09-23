@@ -1,15 +1,15 @@
 pkgbase = python-termplotlib
 	pkgdesc = Plotting on the command line
-	pkgver = 0.3.8
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/nschloe/termplotlib
 	arch = any
 	license = GPL
+	checkdepends = python-pytest-codeblocks
 	makedepends = python-setuptools
-	depends = python
 	depends = python-numpy
 	depends = gnuplot
-	source = https://files.pythonhosted.org/packages/source/t/termplotlib/termplotlib-0.3.8.tar.gz
-	b2sums = f3276ac23b550ad3ad22bb1d7001828f32bec779dab39666c960e7f0fd704de8f9fd96902dc75c5d32e86c53dc391db21cff259d541aa9821bcf8293729a1d27
+	source = https://files.pythonhosted.org/packages/source/t/termplotlib/termplotlib-0.3.9.tar.gz
+	b2sums = 651b5951636d4279a2a1f55d478b5c5a2c4a11f373ce36bb1549fadc8290ec1870a249c48e92c393b2108a74de5a93eeb708e9a214fa6858659f6c4258b8aa4b
 
 pkgname = python-termplotlib
