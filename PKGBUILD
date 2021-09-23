@@ -1,12 +1,12 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-rosario
-pkgver=1.200
+pkgver=1.201
 pkgrel=1
 pkgdesc='Sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/rosario/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/OFL.txt"
+source=("${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/LICENSE.md"
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Bold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-BoldItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Italic.otf'
@@ -15,18 +15,18 @@ source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.c
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Regular.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-SemiBold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-SemiBoldItalic.otf')
-sha256sums=('944998f475ee63b332a19137840d9e334c94ec6300f8091a5049a647798ca33a'
-            'a8c598cd88980d40509698fc0738a074772b810e366264a6b5f3d86b4fbddd57'
-            'b9c168c1b76b8853bd76aea8536548b153634ecbe723ef7b83573c263bfe8e01'
-            '0de8155294f9a2e0197204325e6721ee8ddc22512c574b57e5aa35af7c641379'
-            '059fdf5d496e5c4ee84d361a40577c776a2ad0c6bbecc0eb7a9e329b8694bb2c'
-            '9d3df37a8678d1def9f9f0b84533c6c3b2cddef3dd88ff8235aabca01df89ab2'
-            'adb487ee239704d17b83eefe660cb69d5b99056934d11a7c97be6f9b187a8c69'
-            'e73d1fc8bd1b38dfad5dba6ad73e37837ddda1615a094150fcf5b15ac6556bc2'
-            'c7c64b04d9f46c18500b43a5436ab88b3c824dfb1fd2037b3592674311726654')
+sha256sums=('03a0ecffec02fa4ee8286b929df620c7a8803a8bea8021c9edb5bcdedd043549'
+            '3c1e1b98e6c86ffbb03f292d8a011767a11db2ae2f710d8e22780ed3ba822dd7'
+            'd371600ff34bbf44acf33b89341bf9b2d35ce174c3b18c9881337bb25a7d5bf2'
+            '9ea6699d897cd130ece400c606d60109230d21b930a987b65a613b8567ff9a35'
+            '4d7b9cdbbaa0868cc97a8de39d5b02dc7e192a34ae6f492599f8542e6d9c4e8b'
+            'd5d98e1d7b552136338cdec27f5040cdc18a7da800ffa2a961c8215df99598ed'
+            '9f3aa363b0ee5db18b0ff36ea13528f6a1036a7161b4209d01400b8842cba918'
+            'f3c0f5d84709ff6b00ff324f17fb4a20fbd23946e572c6f115b77a7eb3770e43'
+            'e3c6338c3e6fad2b590e83e98df767ab3682c1ea4586f08fbf0e11d6844a335b')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/OTF/
     install -m644 *.otf ${pkgdir}/usr/share/fonts/OTF/
-    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
+    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
