@@ -11,7 +11,7 @@ options=(!libtool !strip !buildflags)
 conflicts=(mingw-w64-libjpeg-turbo)
 provides=(mingw-w64-libjpeg-turbo)
 source=("http://www.ijg.org/files/jpegsrc.v$pkgver.tar.gz")
-sha256sums=('650250979303a649e21f87b5ccd02672af1ea6954b911342ea491f351ceb7122')
+sha256sums=('1e9793e1c6ba66e7e0b6e5fe7fd0f9e935cc697854d5737adec54d93e5b3f730')
 
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
