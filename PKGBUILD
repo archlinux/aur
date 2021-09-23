@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=qimgv
-pkgver=0.9.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Qt5 image viewer with experimental webm playback"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -10,10 +10,10 @@ license=(GPL3)
 depends=(qt5-base qt5-imageformats qt5-svg mpv exiv2 opencv)
 makedepends=(cmake qt5-tools)
 optdepends=('kimageformats: support for more image formats'
-             'qt5-apng-plugin: animated png support'
-             'qtraw: raw images support')
+            'qt5-apng-plugin: animated png support'
+            'qtraw: raw images support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/easymodo/qimgv/archive/v${pkgver}.tar.gz")
-sha256sums=('728b05b0e26d0188b3d25eb564effab4a77dd0c7453d82e024f1eaa8781e8f4b')
+sha256sums=('82888f744435e7e944558d26b0b4ac053cf5f2e581e2497cbb6ce3d65cf47fea')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
