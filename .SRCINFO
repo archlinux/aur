@@ -1,7 +1,7 @@
 pkgbase = bibliogram-git
 	pkgdesc = An alternative front-end for Instagram
 	pkgver = r387.f14837b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~cadence/bibliogram/
 	arch = any
 	license = AGPL

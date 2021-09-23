@@ -4,7 +4,7 @@
 _pkgname=bibliogram
 pkgname=bibliogram-git
 pkgver=r387.f14837b
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative front-end for Instagram"
 arch=('any')
 url="https://sr.ht/~cadence/bibliogram/"
@@ -46,7 +46,7 @@ package() {
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/cli/issues/1103 for details.
-  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  find "${pkgdir}/opt" -type d -exec chmod 755 {} +
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
