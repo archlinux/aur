@@ -6,6 +6,6 @@ Target = xkeyboard-config
 
 [Action]
 Description = Install qwerty-fr keyboard layout
-Exec = /usr/bin/xkb-qwerty-fr.install triggered
+Exec = /usr/share/libalpm/scripts/xkb-qwerty-fr.install triggered
 When = PostTransaction
 Depends = perl

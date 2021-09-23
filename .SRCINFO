@@ -1,7 +1,7 @@
 pkgbase = xkb-qwerty-fr
 	pkgdesc = French qwerty keymap - provides a keymap for French users of qwerty keyboards. All French characters are directly accessible with AltGr and smartly mapped.
 	pkgver = 0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://marin.jb.free.fr/qwerty-fr/
 	install = xkb-qwerty-fr.install
 	arch = any
@@ -11,9 +11,8 @@ pkgbase = xkb-qwerty-fr
 	source = http://marin.jb.free.fr/qwerty-fr/xkb-qwerty-fr_0.5_all.deb
 	source = xkb-qwerty-fr.hook
 	md5sums = cefc7f02f2a23633d1160c32caa6c132
-	md5sums = 7b16a0405f6fd5b308869b4b87abc7e7
+	md5sums = a48aeeed95e5309eb22399ec4455bfd3
 	sha256sums = 03fc6b72b62fb6661e5671bc3e500934ed9aa457159141ef02d989616276ef64
-	sha256sums = 38e7edfaa1eee4bc6e3a8e8b9fddd87e463372d81cc4e0c00429fb9c8c800f98
+	sha256sums = 093d2b1d27f77ac5d0cff9a6057ceff18ddc73901a9636ba6533a8e40a63e3cc
 
 pkgname = xkb-qwerty-fr
-
