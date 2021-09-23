@@ -5,7 +5,7 @@ pkgdesc="Fast linker"
 arch=(x86_64)
 url="https://github.com/rui314/mold"
 license=("unknown")
-depends=(gcc-libs openssl zlib)
+depends=(xxhash mimalloc gcc-libs openssl zlib)
 makedepends=(clang cmake git)
 source=("mold::git+https://github.com/rui314/mold")
 sha256sums=("SKIP")
@@ -18,9 +18,13 @@ pkgver() {
 
 build() {
 	cd $reponame
-	make
+	make -C "${srcdir}/${reponame}" -j "$(nproc)" LTO=1 SYSTEM_MIMALLOC=1
 }
 
 package() {
-	install -Dm755 $srcdir/mold/mold "$pkgdir/usr/bin/mold"
+	cd $reponame
+	make -C "${srcdir}/${reponame}" LTO=1 SYSTEM_MIMALLOC=1 DESTDIR="${pkgdir}" install
+	ln -snf mold "${pkgdir}/usr/bin/ld.mold"
+	# Mold checks for the lib alongside itself, which is rather silly
+	cp "${pkgdir}/usr/lib/mold/mold-wrapper.so" "${pkgdir}/usr/bin"
 }
