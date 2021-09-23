@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-git
 _pkgname=gnome-shell
-pkgver=41.beta+59+geac04888e
+pkgver=41.0+2+g563437de9
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -12,7 +12,7 @@ url="https://gitlab.gnome.org/GNOME/gnome-shell"
 arch=(x86_64)
 license=(GPL)
 depends=(accountsservice gcr gjs-git gnome-bluetooth upower gnome-session gtk4
-         gnome-settings-daemon gnome-themes-extra gsettings-desktop-schemas-git
+         gnome-settings-daemon gnome-themes-extra gsettings-desktop-schemas
          libcanberra-pulse libgdm libsecret mutter-git nm-connection-editor unzip
          gstreamer libibus gnome-autoar gnome-disk-utility gst-plugin-pipewire)
 makedepends=(gtk-doc gnome-control-center evolution-data-server
