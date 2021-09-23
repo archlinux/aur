@@ -1,12 +1,12 @@
 # Maintainer: samarthj <dev@samarthj.com>
 
-# shellcheck disable=2034,2154
+# shellcheck disable=2034,2148,2154
 
 pkgbase=podman-git
 pkgname=(podman-git podman-docker-git)
 _pkgname=podman
 _pkgname_docker=podman-docker
-pkgver=4.0.0_dev.r12572.gb644e37ab
+pkgver=4.0.0_dev.r12938.gb0d1c0fe2
 pkgrel=1
 pkgdesc="Tool and library for running OCI-based containers in pods (git)"
 arch=('any')
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname" || exit 1
   commit=$(printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
-  ver=$(./hack/get_release_info.sh VERSION)
+  ver=$(sed -ne 's/^var\s\+Version\s\+=\s.*("\(.*\)").*/\1/p' <"$srcdir"/"$_pkgname"/version/version.go)
   echo "${ver//-/_}.${commit}"
 }
 
