@@ -1,7 +1,7 @@
 pkgbase = deltachat-desktop
 	pkgdesc = A privacy oriented chat application built on e-mail
 	pkgver = 1.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deltachat/deltachat-desktop
 	arch = any
 	license = GPL
@@ -19,6 +19,6 @@ pkgbase = deltachat-desktop
 	sha256sums = cf39131357c56f5c2bb5edbbf8853a3fe83d4b35f6e0fa6e778c710a6a64192b
 	sha256sums = 39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1
 	sha256sums = c7d2c3675faa09bb568b7f7c10779971783b1a4f11a225db8b2846fc1a6b4e14
-	sha256sums = bbefe25208f49b8cf3561d5b2aaefedab4b93a775c3e3821bf8e340384111cca
+	sha256sums = 6496cd6d1e7a262df81956b7e734612882c48a1f90582e58a54229391b59f263
 
 pkgname = deltachat-desktop
