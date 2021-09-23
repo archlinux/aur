@@ -6,8 +6,7 @@ pkgbase = nssnippets-bin
 	arch = any
 	license = GPL
 	options = !strip
-	source = https://gitlab.com/Taro94/nwscript-snippets/uploads/74b6a4ba2bcc4308ad57b6b47952e74a/nssnippets.tar.7z
-	md5sums = 890fd62d9c100a354cea9bed114f1b53
+	source = https://gitlab.com/Taro94/nwscript-snippets/uploads/1dcad24796db14d23ea27a7fbda11bfd/nssnippets.tar.7z
+	md5sums = 992bfb95aaac7aaf4f3c6ccacd39b6b0
 
 pkgname = nssnippets-bin
-
