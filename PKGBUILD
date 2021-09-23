@@ -1,39 +1,32 @@
-# Contributor: Trevor Jim
-# Maintainer: Sean Greenslade <aur AT seangreenslade DOT com>
+# Contributor: Trevor Jim, amezin
+# Maintainer: Carlos Bellino <carlosbellino@gmail.com>
 
 pkgname=libwebcam-git
-pkgver=20160427
+pkgver=0.2.5.r2.g0233106
 pkgrel=1
 pkgdesc="A library that is designed to simplify the development of webcam applications"
 arch=(i686 x86_64)
 url="http://sourceforge.net/projects/libwebcam/"
-license=('GPL')
+license=('GPL3')
 depends=('libxml2')
-makedepends=('cmake' 'linux-headers')
-source=('fix_path.patch')
+makedepends=('cmake' 'linux-headers' 'git')
+source=("$pkgname::git+http://git.code.sf.net/p/libwebcam/code" 'fix_path.patch')
+sha512sums=('SKIP' 'bd2c86e5e32a20a85bb36cdcfb47737a6bbf6dfd2b44126de679d7cd241eefcdec8983a54236d0ee574c2439c3deafafba3d02695ce5d8128a6646d7c9395d6e')
 
-_gitroot="http://git.code.sf.net/p/libwebcam/code"
-_gitname="libwebcam"
+pkgver() {
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+  patch -p2 -i ../fix_path.patch
+}
 
 build() {
-  cd $srcdir
-  msg 'Connecting to GIT server...'
-  if [ -d $_gitname ] ; then
-    (cd $_gitname; git pull origin)
-    msg 'The local files are updated.'
-  else
-    git clone $_gitroot $_gitname
-  fi
-  msg "GIT checkout done or server timeout"
-
-  patch -p1 < fix_path.patch
-
-  msg "Starting make..."
-
-  rm -rf build
-  mkdir build
+  mkdir -p build
   cd build
-  cmake ../$_gitname -DCMAKE_INSTALL_PREFIX=/usr -DUVCVIDEO_INCLUDE_PATH=../common/include/
+  cmake ../$pkgname -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
@@ -41,4 +34,3 @@ package() {
   cd $srcdir/build
   make DESTDIR=$pkgdir install
 }
-sha512sums=('bd2c86e5e32a20a85bb36cdcfb47737a6bbf6dfd2b44126de679d7cd241eefcdec8983a54236d0ee574c2439c3deafafba3d02695ce5d8128a6646d7c9395d6e')
