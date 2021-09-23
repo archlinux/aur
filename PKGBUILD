@@ -3,7 +3,7 @@
 
 _pkgname=evolution-data-server
 pkgname=$_pkgname-git
-pkgver=3.40.0.r043.g13ba9492c
+pkgver=3.42.0.r010.g067bf117a
 pkgrel=1
 pkgdesc="Centralized access to appointments and contacts"
 arch=(i686 x86_64)
@@ -18,7 +18,6 @@ makedepends=(git
              gobject-introspection
              gperf
              gtk-doc
-             intltool
              vala
              )
 install=$_pkgname.install

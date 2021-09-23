@@ -1,6 +1,6 @@
 pkgbase = evolution-data-server-git
 	pkgdesc = Centralized access to appointments and contacts
-	pkgver = 3.40.0.r043.g13ba9492c
+	pkgver = 3.42.0.r010.g067bf117a
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Evolution
 	install = evolution-data-server.install
@@ -12,7 +12,6 @@ pkgbase = evolution-data-server-git
 	makedepends = gobject-introspection
 	makedepends = gperf
 	makedepends = gtk-doc
-	makedepends = intltool
 	makedepends = vala
 	depends = libgdata
 	depends = libgweather
@@ -25,4 +24,3 @@ pkgbase = evolution-data-server-git
 	sha256sums = SKIP
 
 pkgname = evolution-data-server-git
-
