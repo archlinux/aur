@@ -1,8 +1,9 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Johannes Fürmann 
 
 pkgname=py3status-git
-pkgver=2.4.r42.gc4535a4
+pkgver=3.39.r4.gcafe0c7a
 pkgrel=1
 pkgdesc="An extensible i3status replacement/wrapper written in python (development version)"
 url="https://github.com/ultrabug/py3status"
@@ -26,7 +27,7 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
   # doc
   install -d "$pkgdir"/usr/share/doc/$pkgname
-  install -m644 doc/* README.rst CHANGELOG "$pkgdir"/usr/share/doc/$pkgname
+  install -m644 docs/user-guide/* README.md CHANGELOG "$pkgdir"/usr/share/doc/$pkgname
   # license
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

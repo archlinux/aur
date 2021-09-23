@@ -1,6 +1,6 @@
 pkgbase = py3status-git
 	pkgdesc = An extensible i3status replacement/wrapper written in python (development version)
-	pkgver = 2.4.r42.gc4535a4
+	pkgver = 3.39.r4.gcafe0c7a
 	pkgrel = 1
 	url = https://github.com/ultrabug/py3status
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = py3status-git
 	md5sums = SKIP
 
 pkgname = py3status-git
-
