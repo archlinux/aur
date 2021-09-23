@@ -1,0 +1,20 @@
+pkgbase = raspberrypi-rtc-ds1307
+	pkgdesc = Raspberry Pi i2C RTC DS1307 clock boot load scripts
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/darajnish/raspberrypi-i2c-rtc-ds1307
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	source = rtc-ds1307-load.sh
+	source = rtc-ds1307.service
+	source = rtc-ds1307.conf
+	source = LICENSE
+	md5sums = a8a465f320d9e0171b4859cc5316df44
+	md5sums = c8bbf6826620d1b89faa47da2b52ab0f
+	md5sums = b6c1d9e9c47c21193874ec190e82db62
+	md5sums = 2d327893436081b1eb7243ed5b9273d7
+
+pkgname = raspberrypi-rtc-ds1307

@@ -1,0 +1,11 @@
+
+post_install() {
+	if ! grep -Fxq "dtoverlay=i2c-rtc,ds1307" /boot/config.txt ; then
+		if grep -Fxq "# dtoverlay=i2c-rtc,ds1307" /boot/config.txt ; then
+			sed -i "s/^# dtoverlay=i2c-rtc/dtoverlay=i2c-rtc/" /boot/config.txt
+		else
+			echo "dtoverlay=i2c-rtc,ds1307" >> /boot/config.txt
+		fi
+	fi
+}
+
