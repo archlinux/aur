@@ -1,5 +1,5 @@
-pkgbase = linux-cacule-rdb-llvm
-	pkgdesc = Linux-CacULE Kernel-RDB by Hamad Marri and with some other patchsets compiled with FULL-LTO
+pkgbase = linux-cacule-llvm
+	pkgdesc = Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO
 	pkgver = 5.14.7
 	pkgrel = 2
 	url = https://github.com/ptr1337/linux-cacule
@@ -27,7 +27,7 @@ pkgbase = linux-cacule-rdb-llvm
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.7.tar.xz
 	source = config
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/arch-patches-v7/0001-arch-patches.patch
-	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE/v5.14/cacule-5.14-full.patch
+	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE/v5.14/cacule-5.14.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/misc/0007-string.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/misc/allpollingrate.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/misc/zen-tweaks-cacule.patch
@@ -57,9 +57,9 @@ pkgbase = linux-cacule-rdb-llvm
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/0001-ksm.patch
 	source = auto-cpu-optimization.sh
 	md5sums = 4119cf1e59ef6f109b9be9451a0899ae
-	md5sums = b232ca9b091712a60c3449d39921b783
+	md5sums = 14f3672328818fe6b015c02cfa868a93
 	md5sums = 01b196f5df07ddfb1dd97026472da196
-	md5sums = 024a0126cfcd18e000a2241f35c4d69e
+	md5sums = 40a9380b2884f5d417791f06389ba57e
 	md5sums = d6e5581b4fade267a28deb8e73d236f5
 	md5sums = f154315498da9bf593c11d88041bde48
 	md5sums = 9d7612159f8745044254077ce8a76df6
@@ -89,8 +89,8 @@ pkgbase = linux-cacule-rdb-llvm
 	md5sums = 566435a0444ee45816599f2e0e362c7a
 	md5sums = 6bfbbe0bbb79379203889ed7df5e5288
 
-pkgname = linux-cacule-rdb-llvm
-	pkgdesc = The Linux-CacULE Kernel-RDB by Hamad Marri and with some other patchsets compiled with FULL-LTO and modules
+pkgname = linux-cacule-llvm
+	pkgdesc = The Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -98,9 +98,8 @@ pkgname = linux-cacule-rdb-llvm
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	replaces = 
 
-pkgname = linux-cacule-rdb-llvm-headers
-	pkgdesc = Headers and scripts for building modules for the Linux-CacULE Kernel-RDB by Hamad Marri and with some other patchsets compiled with FULL-LTO
-	depends = linux-cacule-rdb-llvm=5.14.7
+pkgname = linux-cacule-llvm-headers
+	pkgdesc = Headers and scripts for building modules for the Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO
+	depends = linux-cacule-llvm=5.14.7
 	depends = pahole
