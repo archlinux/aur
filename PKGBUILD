@@ -6,11 +6,11 @@ pkgname=minecraftsp-anjocaido
 epoch=1
 pkgver=4.400
 _jarver="v${pkgver//./}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Minecraft is a sandbox game which allows players to build constructions out of textured cubes in a 3D world.'
 arch=(any)
 license=(unknown)
-url="https://teamshiginima.com/update/"
+url="https://archive.org/details/shiginima-launcher"
 # Based on official Minecraft dependencies
 # Adjustments: gconf -> dconf
 depends=('java-runtime=8' xorg-xrandr libxss libx11 libxcb alsa-lib gtk2 gtk3 dconf libxtst nss)
@@ -21,7 +21,7 @@ source=('minecraft'
         'minecraft.png'
         'readme.txt'
         #"https://teamshiginima.com/update/ShiginimaSE_${_jarver}.zip"
-        "ShiginimaSP.$_jarver.jar::https://mc-pc.net/backend/download.php?id=1568")
+        "ShiginimaSP.$_jarver.jar::https://archive.org/download/shiginima-launcher/Shiginima%20Launcher%20SE.v4400.jar")
 sha256sums=('ee83fe03a964489fe201d786dfb10f6a31afdb96b1b7fd983e4c45e9ab8675bf'
             'b6a74142c394fe874206d3f5b9cbdc809972f4c39351e2a112cc92e72d3d6181'
             '81dfe3dea0a61bb314dd95271903ded6fff35cec0751794cbd33b3fc838f060e'
