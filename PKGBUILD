@@ -2,7 +2,7 @@
 # Contributor: Hervé Bitteur <herve.bitteur@audiveris.com>
 _pkgname=audiveris
 pkgname="${_pkgname}-git"
-pkgver=5.1.0.rc.r714.g17ea701ae
+pkgver=5.1.0.rc.r723.g3353f409c
 pkgrel=1
 pkgdesc="Music score OMR engine - current"
 arch=('x86_64')
@@ -39,8 +39,9 @@ prepare() {
   sed -i "s/compile(/implementation(/g" "$srcdir/$pkgname/build.gradle"
   sed -i "s/runtime(/runtimeOnly(/g" "$srcdir/$pkgname/build.gradle"
   sed -i "s/testCompile(/testImplementation(/g" "$srcdir/$pkgname/build.gradle"
-  # Quickfix for javadoc
-  #sed -i "s/XmlJavaTypeAdapter;/XmlJavaTypeAdapter;\nimport org.audiveris.omr.sig.relation.Containment;/g" "$srcdir/$pkgname/src/main/org/audiveris/omr/sig/inter/SentenceInter.java"
+
+  msg2 'Quickfix for javadoc'
+  sed -i "s/XmlJavaTypeAdapter;/XmlJavaTypeAdapter;\nimport org.audiveris.omr.sig.relation.Containment;/g" "$srcdir/$pkgname/src/main/org/audiveris/omr/sig/inter/SentenceInter.java"
 }
 
 build() {
@@ -62,3 +63,4 @@ package() {
   install -dm755 "$pkgdir/usr/share/doc"
   cp -r "$srcdir/$pkgname/build/docs/javadoc" "$pkgdir/usr/share/doc/$_pkgname"
 }
+
