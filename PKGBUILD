@@ -1,4 +1,4 @@
-# Maintainer: Lukas Spies <lukas_dot_spies_at_web_dot_de>
+# Maintainer: Lukas Spies <lukas_at_photoqt_dot_org>
 
 _pkgname=imgurqt
 pkgname=imgurqt-git
@@ -6,7 +6,7 @@ pkgrel=1
 pkgver=20170202
 pkgdesc="Console application implementing basic commands of imgur.com APIv3"
 arch=("i686" "x86_64")
-url="http://photoqt.org/imgurqt"
+url="https://gitlab.com/luspi/imgurqt"
 provides=("imgurqt")
 conflicts=("imgurqt")
 license=("GPL2")
