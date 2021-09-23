@@ -1,11 +1,10 @@
 # Maintainer: simon chou <sentientcatgmaildotcom>
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 pkgname=eccodes-git
-pkgver=2020.10.1.r0.g929aee77
+pkgver=latest
 pkgrel=1
 pkgdesc="ECMWF decoding library for GRIB, BUFR and GTS"
 arch=('x86_64')
-#url="https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home"
 url="https://github.com/ecmwf/${pkgname%-git}"
 license=('Apache')
 depends=('openjpeg' 'libpng' 'python3' 'netcdf' 'libaec')
