@@ -1,6 +1,6 @@
 pkgbase = cgal-git
 	pkgdesc = Computational Geometry Algorithms Library
-	pkgver = r91288.6b679968c6
+	pkgver = r98262.16c0aab3cc0
 	pkgrel = 1
 	url = https://github.com/CGAL/cgal.git
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = cgal-git
 	sha256sums = SKIP
 
 pkgname = cgal-git
-
