@@ -1,7 +1,7 @@
 pkg/*
 src/*
 
-*.pkg.*
+*.tar*
 
 *.asc
 *.sig

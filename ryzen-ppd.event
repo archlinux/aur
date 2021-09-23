@@ -1,3 +1,0 @@
-# Pass ac_adapter events to our handler script
-event=ac_adapter.*
-action=/etc/acpi/ryzen-ppd.sh %e

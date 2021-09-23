@@ -2,10 +2,21 @@ post_install() {
   cat << EOM
 
 :: Setup instructions
-- configure profiles in '/etc/ryzen-ppd'
-- optionally set up 'acpid' for switching profiles on AC and battery modes
-- verify that the profiles work as expected by running 'ryzen-ppd' and checking limits with 'ryzenadj -i'
+- configure settings in '/etc/ryzen-ppd.ini'
+- optionally install the 'acpi_call' package for setting ACPI platform profiles
+- verify that the profiles work as expected by running 'ryzen-ppd -v' and checking limits with 'ryzenadj -i'
 - enable the systemd service 'ryzen-ppd.service'
+
+EOM
+}
+
+post_upgrade() {
+  [ $(vercmp $2 0.2) != 1 ] && [ $(vercmp $1 0.3) != -1 ] || exit 0
+  cat << EOM
+
+:: Upgrade instructions
+Version 0.3 was rewritten in Python and the configuration file syntax changed.
+Please update your settings at '/etc/ryzen-ppd.ini'.
 
 EOM
 }
