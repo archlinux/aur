@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel at milde dot cz>
 
 pkgname=gore
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 license=('MIT')
 pkgdesc="Yet another Go REPL that works nicely"
