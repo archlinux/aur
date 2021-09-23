@@ -19,19 +19,15 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-  # Set to statically link dependencies
-  sed -i "/option(BUILD_SHARED_LIBS/d" "CMakeLists.txt"
-}
-
 build() {
   cd "$srcdir/${pkgname%-git}"
   rm -rf build
   mkdir build
   cd build
 
+  # Statically link dependencies
   cmake \
+    -DBUILD_SHARED_LIBS=OFF \
     -DSTANDARDESE_BUILD_TEST=OFF \
     -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -DLIBCLANG_INCLUDE_DIR="/usr/include/" \
