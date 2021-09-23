@@ -1,6 +1,6 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr
-pkgver=16.0.0.rc2.r0.g3f217bcf
+pkgver=16.0.0.r0.gece4d74c
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -11,10 +11,10 @@ depends=('vulkan-driver' 'ffmpeg-vulkan' 'gtk3')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'libunwind')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=('alvr'::'git+https://github.com/alvr-org/ALVR.git#tag=v16.0.0-rc2'
+source=('alvr'::'git+https://github.com/alvr-org/ALVR.git#tag=v16.0.0'
 		'alvr-paths.patch')
 md5sums=('SKIP'
-         '9a5e85628eb01e2f286bf573e264f734')
+         '8a2815f250ac231bb7252599771352f6')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -69,7 +69,7 @@ package() {
 	install -Dm755 target/release/alvr_launcher -t "$pkgdir/usr/bin/"
 
 	# vrcompositor wrapper
-	install -Dm655 target/release/vrcompositor-wrapper -t "$pkgdir/usr/bin/alvr/"
+	install -Dm755 target/release/vrcompositor-wrapper -t "$pkgdir/usr/lib/alvr/"
 
 	# OpenVR Driver
 	install -Dm655 target/release/libalvr_server.so "$pkgdir/usr/lib/steamvr/alvr/bin/linux64/driver_alvr_server.so"
@@ -91,5 +91,8 @@ package() {
 	install -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
 	cp -r icons/* $pkgdir/usr/share/icons/
 
-	install -Dm655 packaging/firewalld/alvr.xml -t "$pkgdir/usr/lib/firewalld/services/"
+	install -Dm655 packaging/firewall/$pkgname-firewalld.xml "$pkgdir/usr/lib/firewalld/services/${pkgname}.xml"
+	install -Dm655 packaging/firewall/ufw-$pkgname -t "$pkgdir/etc/ufw/applications.d/"
+
+	install -Dm755 packaging/firewall/alvr_fw_config.sh -t "$pkgdir/usr/lib/alvr/"
 }

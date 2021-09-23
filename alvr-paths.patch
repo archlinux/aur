@@ -10,7 +10,7 @@ index 82c367f0..2d3e127c 100644
 +            openvr_driver_dir: PathBuf::from("lib/steamvr/alvr"),
              presets_dir: PathBuf::from("share/alvr/presets"),
 -            vrcompositor_wrapper: PathBuf::from("libexec/alvr/vrcompositor-wrapper"),
-+            vrcompositor_wrapper: PathBuf::from("bin/alvr/vrcompositor-wrapper"),
++            vrcompositor_wrapper: PathBuf::from("lib/alvr/vrcompositor-wrapper"),
              launcher_exe: PathBuf::from("bin/alvr_launcher"),
              dashboard_resources_dir: PathBuf::from("share/alvr/dashboard"),
          }
