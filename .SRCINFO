@@ -1,13 +1,15 @@
 pkgbase = gokart
 	pkgdesc = Static analysis tool for Go
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/praetorian-inc/gokart
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	makedepends = git
-	source = gokart-0.2.0.tar.gz::https://github.com/praetorian-inc/gokart/archive/v0.2.0.tar.gz
-	b2sums = 9e99a459f8ad75fcb432e3e254f949d1d8c96bca469b390172facea2e6357c61ce2e81538093a5543f80d26187f87b2fdc4f91801181d72df417fc8830629ac9
+	depends = glibc
+	source = gokart-0.3.0.tar.gz::https://github.com/praetorian-inc/gokart/archive/v0.3.0.tar.gz
+	sha512sums = 4c6df68a52e27fee902d4111eb02ea1c8868e45a6bd8f96e03f1f962afb017254d6ee77b8df241bf76c0664a8dd0531a1b43f4995f5a721ca249e455682edfb9
+	b2sums = d0d9df9d553c2ccaebb805eda9dc815341f9af5ad2e19684f3c1985ef9d97c753ddf33ffe579038d440c960fb75a304ef1f38b8e24f2028b63ade9a37da5fe15
 
 pkgname = gokart
