@@ -1,14 +1,14 @@
 # Maintainer: Shohei Maruyama<cheat.sc.linux@outlook.com>
 
 pkgname=(otto-kde-git kvantum-theme-otto-git)
-pkgver=0
+pkgver=r14.fd67d36
 pkgrel=1
 pkgdesc="Otto Theme for Kde Plasma"
 arch=('any')
 url="https://www.opencode.net/jomada/otto"
 license=('GPL3')
 depends=()
-makedepends=()
+makedepends=('git')
 conflicts=()
 source=("git+${url}.git")
 sha512sums=('SKIP')

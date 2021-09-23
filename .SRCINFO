@@ -1,10 +1,11 @@
 pkgbase = otto-kde-git
 	pkgdesc = Otto Theme for Kde Plasma
-	pkgver = 0
+	pkgver = r14.fd67d36
 	pkgrel = 1
 	url = https://www.opencode.net/jomada/otto
 	arch = any
 	license = GPL3
+	makedepends = git
 	source = git+https://www.opencode.net/jomada/otto.git
 	sha512sums = SKIP
 
@@ -15,4 +16,3 @@ pkgname = otto-kde-git
 pkgname = kvantum-theme-otto-git
 	pkgdesc = Otto theme for kvantum
 	depends = kvantum-qt5
-
