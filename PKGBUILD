@@ -75,7 +75,7 @@ source=(
 	0005-Make-pyenv-target-just-create-venv.patch
 )
 sha256sums=('SKIP'
-            '36693fda3bb4515aa4832017155e6055e6063912bc7d62c918d1e0b3aaf8d424'
+            '4926c6956f83edc88b6af7e96a77094f553ed721bbaad767049b34bd07a5a505'
             '30a8739badea5e2d8be263c2595e25534863d8d2af23608689ebface6a64787b'
             '6500f5483d6121e9f07b64fac1bd00800107b01a353b8e15024ed30b773a26f1'
             'SKIP'
