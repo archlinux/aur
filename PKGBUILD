@@ -1,13 +1,13 @@
 # Maintainer: Nikolay Bogoychev <nheart@gmail.com>
 
 pkgname=translatelocally-git
-pkgver=0.0.1
+pkgver=48aae74
 pkgrel=1
 pkgdesc='A fast privacy focused machine translation client that translates on your own machine.'
 arch=('x86_64')
 url='https://github.com/XapaJIaMnu/translateLocally'
 license=('MIT')
-depends=('qt5-base' 'qt5-tools' 'libarchive' 'protobuf')
+depends=('qt5-base' 'qt5-tools' 'qt5-svg' 'pcre2' 'libarchive' 'protobuf')
 makedepends=('git' 'cmake' 'gcc-libs' 'make' 'binutils')
 source=("git+$url.git")
 sha256sums=('SKIP')
