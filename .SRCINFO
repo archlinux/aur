@@ -1,0 +1,19 @@
+pkgbase = freebsd-pkg
+	pkgdesc = Package management tool for FreeBSD.
+	pkgver = 1.17.2
+	pkgrel = 1
+	url = https://github.com/freebsd/pkg
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkgconf
+	depends = libarchive
+	depends = libbsd
+	depends = libelf
+	source = https://github.com/freebsd/pkg/archive/refs/tags/1.17.2.tar.gz
+	sha256sums = daf56189d855781dc15d210fd264adc761591f86ffd4fcb7360015b004777061
+
+pkgname = freebsd-pkg
