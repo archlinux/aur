@@ -14,6 +14,7 @@ setup(
     },
     install_requires=[
         "pygobject",
+        "manimpango"
     ],
     package_data={
         "emote": [

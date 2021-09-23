@@ -1,26 +1,24 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=emote
-pkgver=2.0.0
-_pkgref=c6be700ab1af53ddd94d1935bc84e6c16fcdf931
-pkgrel=2
+pkgver=3.0.3
+_pkgref=ff40e3d66b251aaf2e91116ba177e59f087e1021
+pkgrel=1
 url="https://github.com/tom-james-watson/Emote"
 pkgdesc="Emoji Picker for Linux written in GTK3"
 arch=('any')
 license=('GPL3')
-depends=('python' 'gtk3' 'python-gobject' 'python-xlib' 'libkeybinder3' 'emoji-font' 'xdotool')
-optdepends=(
-  'noto-fonts-emoji: colour emoji'
-  'ttf-joypixels: colour emoji'
-)
+depends=('python' 'gtk3' 'python-gobject' 'python-xlib' 'python-manimpango' 'libkeybinder3' 'xdotool')
 makedepends=('python-setuptools' 'python-pipenv')
 source=(
-  "setup.py"
   "https://github.com/tom-james-watson/Emote/archive/${_pkgref}.tar.gz"
+  'setup.py'
+  'fix-relative-paths.patch'
 )
 sha512sums=(
-  '83b6697b96882d3854c0f64a208571bfeec3e6324790e5508a6bd32092c5d462e86fa676c561111d98cce8058f1730303658612427b66daac086236e3e365316'
   'SKIP'
+  'ef8caea8ad9e9bc0487dd8c816561027adda743c1e8e2779a64e7ae99fb227c820f31ef9c87fb910bae7a8ffc623e5e2e1a53a8c69ce0a35ad96557e97a5a949'
+  '421f51590edcaa5c2143cc0ad3b8e29276219445365750ea359b36e4b1f1f8b48ccf85e966ba8a2d9166c74fdca3fbebf747e49498a1916c917149d0e68b6790'
 )
 
 build() {
@@ -29,9 +27,10 @@ build() {
   # Move static files into the library
   mv -T "$srcdir/Emote-$_pkgref/static" "$srcdir/Emote-$_pkgref/emote/static"
   # Fix relative paths
-  find "$srcdir/Emote-$_pkgref" -type f -name "*.py" -print0 |
-    xargs -0 \
-      sed -Ei 's/"static\/[^"]*"/os.path.join(os.path.dirname(__file__), &)/g'
+  #find "$srcdir/Emote-$_pkgref" -type f -name "*.py" -print0 |
+  #  xargs -0 \
+  #    sed -Ei 's/"static\/[^"]*"/os.path.join(os.path.dirname(__file__), &)/g'
+  patch -d "$srcdir/Emote-$_pkgref" -p1 <"$srcdir/fix-relative-paths.patch"
   # Fix .desktop file
   sed -Ei 's/\$\{SNAP\}//' "$srcdir/Emote-$_pkgref/snap/gui/emote.desktop"
   # Fix version number
