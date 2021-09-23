@@ -2,8 +2,8 @@
 pkgname='python-sklearn-bayes'
 _pkgname='sklearn-bayes'
 pkgdesc='Python package for Bayesian Machine Learning with scikit-learn API'
-pkgver=r542.619bea4
-pkgrel=2
+pkgver=r550.fc0687d
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/AmazaspShumik/sklearn-bayes'
 license=('MIT')
