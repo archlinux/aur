@@ -3,7 +3,7 @@
 
 _name=bashlex
 pkgname=python-bashlex
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="Python port of the parser used internally by GNU bash"
 arch=('any')
@@ -12,7 +12,9 @@ license=('GPL3')
 depends=('python')
 makedepends=('perl')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('8cc3cea45f812c1d7d59f09411eba38f1d97a26a76736062ff6b5bab723fb6e8')
+sha512sums=(
+    'b3110ee47bad7cef23e100c1c2205e53457cb9419cefdef990a48482dcf191eb73fb80548ea920783970805a4d0566189f2ff50fe5fe08ffec7f66f4b63ca151'
+)
 
 build() {
     cd "$srcdir/$_name-$pkgver"
