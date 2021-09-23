@@ -9,7 +9,7 @@ _bldtype=Release
 _mozcver=2.26.4500.102
 _fcitxver=20210822
 _iconver=20201229
-_utdicver=20210922
+_utdicver=20210923
 pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 
