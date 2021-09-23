@@ -2,12 +2,12 @@
 # If you think this package is shit, contact me with patch
 
 pkgname=keystore-explorer-git
-pkgver=v5.4.4+159+g3899c7be
+pkgver=v5.4.4+169+g667c3c84
 pkgrel=1
 pkgdesc="KeyStore Explorer is a free GUI replacement for the Java command-line utilities keytool and jarsigner."
 _pkgname=keystore-explorer
 _short_pkgname=kse
-_short_pkgver=5.4.4
+_short_pkgver=5.5.0
 arch=('any')
 url="https://keystore-explorer.org/"
 license=('GPLv3')
@@ -57,15 +57,15 @@ package() {
   install -D -m644 lib/*.jar "${pkgdir}/opt/${_pkgname}/lib"
 
   # copy some reading material
-  install -D -m644 ${srcdir}/${_pkgname}/${_short_pkgname}/res/readmes/readme.txt "${pkgdir}/opt/${_pkgname}"
-  install -D -m644 ${srcdir}/${_pkgname}/${_short_pkgname}/res/licenses/license-*.txt "${pkgdir}/opt/${_pkgname}/licenses"
+  install -D -m644 ${srcdir}/${_pkgname}/${_short_pkgname}/res/readme.txt "${pkgdir}/opt/${_pkgname}"
+  install -D -m644 ${srcdir}/${_pkgname}/${_short_pkgname}/licenses/*.txt "${pkgdir}/opt/${_pkgname}/licenses"
   
   # install desktop file to system
   install -D -m644 ${srcdir}/${_pkgname}/${_short_pkgname}/res/kse.desktop ${pkgdir}/usr/share/applications/kse.desktop
 
   # generate icons
   for i in 16 32 48 128 256 512; do
-      install -Dm644 ${srcdir}/${_pkgname}/${_short_pkgname}/res/icons/kse_${i}.png \
+      install -Dm644 ${srcdir}/${_pkgname}/${_short_pkgname}/icons/kse_${i}.png \
       ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/kse.png
   done
 
