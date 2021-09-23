@@ -1,7 +1,7 @@
 pkgbase = teddit-git
 	pkgdesc = Alternative Reddit front-end focused on privacy
-	pkgver = r574.9e515c4
-	pkgrel = 1
+	pkgver = r575.8bb949b
+	pkgrel = 2
 	url = https://codeberg.org/teddit/teddit
 	arch = any
 	license = AGPL

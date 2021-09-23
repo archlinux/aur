@@ -2,8 +2,8 @@
 
 _pkgname=teddit
 pkgname=teddit-git
-pkgver=r574.9e515c4
-pkgrel=1
+pkgver=r575.8bb949b
+pkgrel=2
 pkgdesc="Alternative Reddit front-end focused on privacy"
 arch=('any')
 url="https://codeberg.org/teddit/teddit"
@@ -47,7 +47,7 @@ package() {
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/cli/issues/1103 for details.
-  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  find "${pkgdir}/opt" -type d -exec chmod 755 {} +
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
