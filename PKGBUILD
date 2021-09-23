@@ -2,19 +2,23 @@
 # based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
 
 _projectname=electron
-_major=14
-_pkgname=${_projectname}
+_major=15
+_pkgname="${_projectname}"
+pkgname="${_pkgname}-bin"
 _pkgver=${_major}.0.0
 pkgver="${_pkgver/-/.}"
-pkgname=${_pkgname}-bin
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies – binary version"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url=https://electronjs.org/
 license=('MIT')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxslt' 'minizip' 'nss' 're2' 'snappy')
+provides=("${_pkgname}" "${_projectname}${_major}-bin")
+conflicts=("${_pkgname}" "${_projectname}${_major}-bin")
+depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxslt' 'minizip'
+         'nss' 're2' 'snappy')
+makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
+             'java-runtime-headless' 'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja'
+             'npm' 'pciutils' 'pipewire' 'python2' 'wget' 'yarn')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'pipewire: WebRTC desktop sharing under Wayland'
@@ -37,14 +41,14 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('37481bb3946df0db54a30d0c6cc5ec08f3d53890f7b2641c426186a198e8e8d2'
-                   '0a40533a50a42e6668e5265a84e2983979eededbb61f9e201d569d8b1b37ce0f')
-sha256sums_i686=('94b4c5332cc2bf00656f11c444efe28af77b5bcde314f691bdfa5d3dfaad5e03'
-                 '955280a0eb862eef913f9f394c7c7574138a5a48ffa85c59e84cc0163564fbfa')
-sha256sums_armv7h=('34927fd478180a5ecff07c13687900ff5f6107103dcd41d267de18458435de0d'
-                   '825684b3f759bc6c5d2e5be7c6a7679b7a1b8e0d9091f7d2f9904d0c24f6c978')
-sha256sums_aarch64=('d724b31982675de3543f5472a42c4259fdeba7c09a95a9c9b2cd0ac346e42d9f'
-                    '367e76b34dcc58371232c87f540dd227c51de94ce8a916761379c3c4b890dd80')
+sha256sums_x86_64=('d840c4cb9583f5d4c7f78f2d82853209f024eb2daad8865c6b3f8f89aa594942'
+                   '4f0c95f27402b1b39a7ef0d540940b99b5e3088624569607d6aa56276b43fcad')
+sha256sums_i686=('c561c56b0adfddd8230ca2f1c2b642d1706ccfc7a1cc8e01d0b41ef641c8e519'
+                 'b33b849a9aad440b6ec729c879b0922a4a7d4d94f47a6b535eb4caba08778fb6')
+sha256sums_armv7h=('a1e5d7cce076d0b11e6003f2e99b86ac03345beddbff8531685c78637fd309ca'
+                   'c905fa0f0d491d658f1635aa3027e5c480a979382a3a246f5b14af999c85ca1c')
+sha256sums_aarch64=('31b82e6012b811c28792edb5f6d98b2c853c1f04e2be2b53984f4f8bf2f2aebc'
+                    'aeb8736cf4d0b50c1a8ec7f7c90e4c767c22bab9e91c3d89f06d2950a3d19ef7')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
