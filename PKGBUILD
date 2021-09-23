@@ -66,7 +66,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck-uksm-cjktty
 pkgver=5.14.7
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/RiverOnVenus/linux-ck-uksm-cjktty"
 license=(GPL2)
@@ -87,8 +87,7 @@ source=(
   config         # the main kernel config file
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_commit.tar.gz"
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-SUNRPC-don-t-pause-on-incomplete-allocation.patch
+  "${_patchsource}/arch/0001-arch-patches.patch"
   "${_patchsource}/uksm/0001-UKSM-for-5.14.patch"
   "${_patchsource}/cjktty/0001-cjktty-5.14.patch"
   "${_patchsource}/bbr/0001-bbr2-5.14-introduce-BBRv2.patch"
@@ -102,8 +101,7 @@ b2sums=('861405cd1333958cb829017b6c1d6692a7256d179a48fad751bb02cd02ba09227ff210d
         'a0f4869294fe26b51f88171b235377df3ab8ad7f93824933f98e7706057419bb9cf2adf31422c0fc654dd07376e375545bc06bd1148666bb638f6640ec281e7b'
         'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
         'bd20774ee2c9856601af2c89a3af95c6abc812b71253368090e9c252edcce452f416bfeed54ced0886d401b5a9e1cb72c16ea5f04a72d8ded596c0d083f80e42'
-        '7addf1973ad4284c5313da2f78e91f1ec4693c472c1bf892f377dfce051d62ba4d1adf00d70f5f015206f53d55faa589e076a60401defb4e9632ed04d310e2bc'
-        '61e39425d70ec9e4225e21cc10c413c99fc47babe6d6570171f83833ea4b1e51b34050bcf7726db163d78af74eae95a490f6cdd51599769c259230bb96fab901'
+        '4e8198623f1b036df326397897e609a7412820262bee7a954fae9c90a25db32a1f1f94c75d6b42ee88985c9ff72aa77d7d29b1df59a715588bd97c537c40e617'
         '8f6d6263f0e517b6e7a1809fc57e01cc4b13dd261f778041026ec510f48257d4f525c3cb0b0935e291293960c9191282f5765ca0af3d948838e8f865c7deafcc'
         '21d13b890e7b80c924e18ae11f675d69a80adffbe75e37bebd003024e7299c582346b0df60b67c709eba9678bcf6dda7da852c9cf18d43804ddd8ee9388b9ea5'
         'e263f1cf228d5a2c26340f37fa1b4a6d6c643b1a22378f37c96b68f5ec10372d65e2bf96716aec0722b18d76ca752b9debf82f621896e03917c977d8db2a4b21')
