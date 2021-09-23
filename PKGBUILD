@@ -2,7 +2,7 @@
 
 pkgname=standardese-git
 pkgver=0.5.2.r9.gefbc112
-pkgrel=3
+pkgrel=4
 pkgdesc="A (work-in-progress) nextgen Doxygen for C++"
 arch=('i686' 'x86_64')
 url="https://github.com/foonathan/standardese"
@@ -17,6 +17,12 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  # Set to statically link dependencies
+  sed -i "/option(BUILD_SHARED_LIBS/d" "CMakeLists.txt"
 }
 
 build() {
