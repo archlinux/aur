@@ -1,5 +1,5 @@
 pkgname=openmodelica-omlibraries
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - A collection of Modelica libraries for use with OpenModelica."
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('OSMC-PL')
 groups=(openmodelica)
 _group=OpenModelica
 _name=OMLibraries
-_commit=c5f7048f4682b367d59a01145e777a041ac4a558
+_commit=0f47ccf67304b00f9ded87ab3209939ecb581770
 depends=('openmodelica-omc')
 makedepends=('git' 'python-requests' 'python-simplejson' 'python-joblib' 'perl-xml-xpath')
 source=("git+https://github.com/${_group}/${_name}.git#commit=${_commit}")
