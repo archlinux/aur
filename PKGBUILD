@@ -27,7 +27,7 @@ _750_HZ_ticks=y
 _500_HZ_ticks=
 
 ### Enable protect file mappings under memory pressure
-_mm_protect=y
+#_mm_protect=y
 _lru_enable=y
 
 ### Enable Linux Random Number Generator
@@ -82,7 +82,7 @@ pkgbase=linux-cacule-rdb-llvm
 pkgname=('linux-cacule-rdb-llvm' 'linux-cacule-rdb-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.7
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel-RDB by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -97,14 +97,17 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
         "config"
 #        "${_patchsource}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/arch-patches-v6/0001-arch-patches.patch"
+        "${_patchsource}/arch-patches-v7/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14-full.patch"
 #        "${_patchsource}/misc/0004-folio-mm.patch"
-#        "${_patchsource}/misc/0007-string.patch"
+        "${_patchsource}/misc/0007-string.patch"
         "${_patchsource}/misc/allpollingrate.patch"
-        "${_patchsource}/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
 #        "${_patchsource}/misc/0001-AMD-CPPC.patch"
         "${_patchsource}/misc/zen-tweaks-cacule.patch"
+        "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+        "${_patchsource}/ll-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
+        "${_patchsource}/ll-patches/0004-mm-set-8-megabytes-for-address_space-level-file-read.patch"
+        "${_patchsource}/writeback-patches/0001-writeback-patches.patch"
 #        "${_patchsource}/bfq-patches-v2/0001-bfq-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
@@ -115,12 +118,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/futex2-zen-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
-        "${_patchsource}/lru-patches-v3/0001-lru-patches.patch"
+        "${_patchsource}/lru-xanmod-patches/0001-lru-xanmod-patches.patch"
 #        "${_patchsource}/le9-patches-v4/0001-mm-vmscan-add-sysctl-knobs-for-protecting-the-workin.patch"
 #        "${_patchsource}/misc/le9fa-5.14.patch"
         "${_patchsource}/pf-patches-v5/0001-pf-patches.patch"
-        "${_patchsource}/xanmod-patches/0001-xanmod-patches.patch"
-        "${_patchsource}/zen-patches/0001-zen-patches.patch"
+        "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
+        "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches-v3/0001-zstd-upstream-patches.patch"
         "${_patchsource}/ntfs3-patches-v9/0001-ntfs3-patches.patch"
@@ -137,10 +140,24 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
           source+=("${_patchsource}/0001-PGO.patch")
         fi
 
-BUILD_FLAGS=(
-  LLVM=1
-  LLVM_IAS=1
-            )
+export BUILD_FLAGS=(
+          LLVM=1
+          LLVM_IAS=1
+          CC=clang
+          CXX=clang++
+          LD=ld.lld
+          AR=llvm-ar
+          NM=llvm-nm
+          STRIP=llvm-strip
+          READELF=llvm-readelf
+          HOSTCC=clang
+          HOSTCXX=clang++
+          HOSTAR=llvm-ar
+          HOSTLD=ld.lld
+          OBJCOPY=llvm-objcopy
+          OBJDUMP=objdump
+          )
+          
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -273,8 +290,8 @@ prepare() {
               echo "Enabling multigenerational LRU..."
               scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
               scripts/config --enable CONFIG_LRU_GEN
-              scripts/config --set-val CONFIG_NR_LRU_GENS 7
-              scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+              scripts/config --set-val CONFIG_NR_LRU_GENS 4
+              scripts/config --set-val CONFIG_TIERS_PER_GEN 2
               scripts/config --enable CONFIG_LRU_GEN_ENABLED
               scripts/config --disable CONFIG_LRU_GEN_STATS
             fi
@@ -547,12 +564,16 @@ package_linux-cacule-rdb-llvm-headers() {
 }
 
 md5sums=('4119cf1e59ef6f109b9be9451a0899ae'
-         'c6763e6be7e207d959589abbc128968f'
-         '7524899b1b1c14e6d993be59dc68faf3'
+         'b232ca9b091712a60c3449d39921b783'
+         '01b196f5df07ddfb1dd97026472da196'
          '024a0126cfcd18e000a2241f35c4d69e'
+         'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
-         'f8e172e9ea554bbb1053eb122c3ace35'
          '9d7612159f8745044254077ce8a76df6'
+         'f8e172e9ea554bbb1053eb122c3ace35'
+         'af7328eb8c72c754e5bc8c7be1ca2f1c'
+         'f0d84fc024b9933bc19db696e0393a4e'
+         'bf1ac40e460c8794d955d136f073b124'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
@@ -562,7 +583,7 @@ md5sums=('4119cf1e59ef6f109b9be9451a0899ae'
          '2891eb036469d04995d9b21a5e389d8a'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '366c90b64f9582c0733b8fb607a07594'
-         '8e2219f09adfe049b3e8b59fb8c4348a'
+         'b5d149398c727b1eebcc188c882bc443'
          'd4c3a3ca73c2e722ebc790357ba87680'
          '28864f14bf33bad92e57bc48bc5c2c78'
          '381bc4f0ff885e9b67e5899476a30416'
