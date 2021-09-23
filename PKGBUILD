@@ -4,33 +4,48 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
 arch=('x86_64')
 depends=('glfw' 'capstone' 'mbedtls' 'libssh2'
          'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme'
-         'yara')
+         'yara' 'fmt')
 makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')
 source=("${pkgname}::git+https://github.com/WerWolv/ImHex.git#tag=v${pkgver}"
-  0001-Set-correct-library-names.patch
+  "nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git"
+  "git+https://git.sr.ht/~danyspin97/xdgpp"
+  0001-build-Fix-system-libraries-usage.patch
   imhex.desktop)
 cksums=('SKIP'
-        '3656399322'
+        'SKIP'
+        'SKIP'
+        '2019546358'
         '4178124713')
 sha256sums=('SKIP'
-            'a8f936c6685979f888a2008d9b407a556bd581d4655df1a88664cd35f7416d16'
+            'SKIP'
+            'SKIP'
+            '25f2b3fe49d0c75207ad561995a3ad24b45581cad878c04922402d3d60e98ef1'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
-        '6e68b4674888b1888f1e2a9afb9b894f180e6823c3bc0579ca6ddbe99cc23ba167761d9122ed411e421e50a951276c4a5f34b13cfbb04081fca217b895603284'
+        'SKIP'
+        'SKIP'
+        '00982d536e4623a47acdc648d53a97fe4eb64e1a19f807b7a1a5aa66cda5056100cc9bc968a2c914f64e924c0beb47d5443dcb013c858d30af8a24c16e0a82bf'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {
-  git -C "$pkgname" submodule update --init --recursive
+  git -C "$pkgname" submodule init
+  for name in nativefiledialog xdgpp; do
+    git -C "$pkgname" config submodule.external/$name.url "$srcdir/$name"
+  done
+  for name in yara/yara fmt curl; do
+    git -C "$pkgname" config --remove-section submodule.external/$name
+  done
+  git -C "$pkgname" submodule update
 
   git -C "$pkgname" apply -v \
-    "$srcdir/0001-Set-correct-library-names.patch"
+    "$srcdir/0001-build-Fix-system-libraries-usage.patch"
 }
 
 build() {
@@ -38,8 +53,14 @@ build() {
     -Wno-dev \
     -D CMAKE_BUILD_TYPE=RelWithDebInfo \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_SKIP_RPATH=ON \
+    -D CMAKE_C_COMPILER="gcc" \
+    -D CMAKE_CXX_COMPILER="g++" \
     -D USE_SYSTEM_LLVM=ON \
     -D USE_SYSTEM_YARA=ON \
+    -D USE_SYSTEM_FMT=ON \
+    -D USE_SYSTEM_CURL=ON \
+    -D USE_SYSTEM_NLOHMANN_JSON=ON \
     -D PROJECT_VERSION="$pkgver"
   cmake --build build
 }
