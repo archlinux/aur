@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.15.4
-pkgrel=3
+pkgrel=4
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -32,12 +32,19 @@ optdepends=('trilinos: support for trilinos'
   )
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver}.tar.gz
-        test_optdepends.sh)
+        test_optdepends.sh
+        petsc4py_nosudo.patch)
 sha256sums=('1e62fb0859a12891022765d1e24660cfcd704291c58667082d81a0618d6b0047'
-            'f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623')
+            'f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623'
+            'df9d1ec9bd515fe17e25a6f98df8a913759cb0af21684c9aa454ad9e0a3a77bf')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch=arch-${_config}
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  patch --forward --strip=1 --input=${srcdir}/petsc4py_nosudo.patch
+}
 
 build() {
   _build_dir=${srcdir}/${pkgname}-${pkgver}
@@ -57,7 +64,7 @@ build() {
   python ./configure --prefix=${_install_dir} ${CONFOPTS}
 
   make ${MAKEFLAGS} all
-  make SUDO_USER=$USER DESTDIR=${srcdir}/tmp install
+  make DESTDIR=${srcdir}/tmp install
 }
 
 check() {

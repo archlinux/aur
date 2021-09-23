@@ -1,7 +1,7 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
 	pkgver = 3.15.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mcs.anl.gov/petsc
 	install = petsc.install
 	arch = i686
@@ -31,7 +31,9 @@ pkgbase = petsc
 	options = staticlibs
 	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.15.4.tar.gz
 	source = test_optdepends.sh
+	source = petsc4py_nosudo.patch
 	sha256sums = 1e62fb0859a12891022765d1e24660cfcd704291c58667082d81a0618d6b0047
 	sha256sums = f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623
+	sha256sums = df9d1ec9bd515fe17e25a6f98df8a913759cb0af21684c9aa454ad9e0a3a77bf
 
 pkgname = petsc
