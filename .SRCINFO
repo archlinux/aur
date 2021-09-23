@@ -1,0 +1,18 @@
+pkgbase = gitgud-git
+	pkgdesc = Git Gud - a utility for when you are told to 'get good'
+	pkgver = r14.0655606
+	pkgrel = 1
+	url = https://github.com/fsufitch/git-gud
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-argparse
+	depends = python-pyfiglet
+	depends = git
+	provides = gitgud-git
+	conflicts = gitgud-git
+	source = git+https://github.com/fsufitch/git-gud.git
+	md5sums = SKIP
+
+pkgname = gitgud-git
