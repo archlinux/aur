@@ -2,7 +2,7 @@
 
 pkgname=ares
 pkgver=2.5.7.3083
-pkgrel=1
+pkgrel=2
 pkgdesc="A free open source file sharing program that enables users to share any digital file including images, audio, video, software, documents, etc. (via wine)"
 arch=(i686 x86_64)
 url="https://aresgalaxy.io/"
@@ -12,17 +12,17 @@ makedepends=(p7zip)
 _version=257
 _filename="aresregular"$_version"_installer.exe"
 source=(ares.sh ares.desktop ares.xpm https://aresgalaxy.io/$_filename)
-md5sums=('c7bc3239f0a3f6e001942823f882bdcb'
-         '7c3aba1d0d98002f89d3d0eb68ed3703'
-         'f89b51f21633e02c9017222b33544c1b'
-         '84601a3b742e08b5373e65718144631d')
+sha256sums=('bfa8650a5c9192fe8ebc2cdf8ddefa3dbf7b95f003a5b0c233c6b820ca10489d'
+            'dc5552f166262247a26baa93549428f4a376ceea420b04ba9292d2986c8b040a'
+            '408e8e672aaf8024757aa09c1609543d671d5ce88028ed45bf351008db051724'
+            '7b069f605fe679ebc5fd1d0133db4158ae2269d9a297e20ed50bf6862c152a0d')
 
 noextract=()
 options=(!strip)
 
 build() {
   cd $srcdir/
-  7z x -o $pkgname $_filename
+  7z x -o$pkgname $_filename
 }
 
 package() {
