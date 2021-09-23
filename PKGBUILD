@@ -26,7 +26,7 @@ pkgname=(
   "${pkgbase}-xsl"
 )
 pkgver=7.4.23
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('PHP')
 url='https://www.php.net/'
@@ -66,6 +66,7 @@ source=(
   'php.ini.patch'
   'phpize.m4.patch'
   'enchant-2.patch'
+  'gd-2.3.3.patch'
 )
 sha256sums=(
   'cea52313fcffe56343bcd3c66dbb23cd5507dc559cc2e3547cf8f5452e88a05d'
@@ -77,6 +78,7 @@ sha256sums=(
   '3a6d101962db9d311d9bba3b561b9dfd417701d9d2b607b70b9df218f6e029d7'
   '354b1d5fd83e9902c6a4f7ca5d2101631bd67404f3c55a7194d9a6862656b479'
   'd94d22ad8bcd13829addda84e9de6b73fa04be9bc6da8622086c7e19c97ab724'
+  '5de9ab1618f79ce0d588bcd6a2785afa0d286abf454dca734eed38cc9be68b8b'
 )
 
 validpgpkeys=(
@@ -92,6 +94,7 @@ prepare() {
   patch -p0 -i ${srcdir}/php.ini.patch
   patch -p0 -i ${srcdir}/phpize.m4.patch
   patch -p0 -i ${srcdir}/enchant-2.patch
+  patch -p0 -i ${srcdir}/gd-2.3.3.patch
   autoconf
 
   rm tests/output/stream_isatty_*.phpt
