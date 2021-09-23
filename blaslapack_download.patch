@@ -1,0 +1,11 @@
+--- b/petsc/config/BuildSystem/config/packages/BlasLapack.py	2021-09-17 23:26:42.115594175 -0500
++++ b/petsc/config/BuildSystem/config/packages/BlasLapack.py	2021-09-17 22:53:07.122154127 -0500
+@@ -187,7 +187,7 @@
+         yield ('OpenBLAS with full path', None, os.path.join(self.openblas.libDir,'libopenblas.a'),self.openblas.known64,self.openblas.usesopenmp)
+       else:
+         yield ('OpenBLAS', None, self.openblas.lib,self.openblas.known64,self.openblas.usesopenmp)
+-      raise RuntimeError('--download-openblas libraries cannot be used')
++      ###raise RuntimeError('--download-openblas libraries cannot be used')
+     if 'with-blas-lib' in self.argDB and not 'with-lapack-lib' in self.argDB:
+       raise RuntimeError('If you use the --with-blas-lib=<lib> you must also use --with-lapack-lib=<lib> option')
+     if not 'with-blas-lib' in self.argDB and 'with-lapack-lib' in self.argDB:

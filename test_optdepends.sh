@@ -11,8 +11,10 @@ find_so () {
 # Find directory where a pkg-config file is
 #   example: find_pc glut
 find_pc () {
-    $(dirname "$(pkgconf --path "$1")")
+    dirname "$(pkgconf --path "$1")"
 }
+
+ONLY_INC="--keep-system-cflags --cflags-only-I";
 
 type mpicc >/dev/null && \
     CONFOPTS="${CONFOPTS} --with-cc=mpicc"
@@ -132,16 +134,13 @@ fi
 BLAS_SO="$(find_so libblas.so)"
 OPENBLAS_SO="$(find_so libopenblas.so)"
 LAPACK_SO="$(find_so liblapack.so)"
-if [ -f "${BLAS_SO}" && \-f "${OPENBLAS_SO}" && \
-         -f "${LAPACK_SO}" ]; then
-    OPENBLAS_INC="$(pkgconf -keep-system-cflags -cflags openblas)"
-	CONFOPTS="${CONFOPTS} --with-openblas=1"
+if [ -f "${BLAS_SO}" ] && [ -f "${OPENBLAS_SO}" ] \
+       && [ -f "${LAPACK_SO}" ]; then
+    CONFOPTS="${CONFOPTS} --with-openblas=1"
+    OPENBLAS_INC="$(pkgconf ${ONLY_INC} openblas)"
+    OPENBLAS_INC="${OPENBLAS_INC//-I/}"
 	CONFOPTS="${CONFOPTS} --with-openblas-lib=${OPENBLAS_SO}"
 	CONFOPTS="${CONFOPTS} --with-openblas-include=${OPENBLAS_INC}"
-    # With help from Satish Balay
-    # @ 3.15.4.33.g0bac13e0fe9 2021-09-21
-    #  nm -AoD /usr/lib64/libopenblas.so | grep dgetrs_
-    CONFOPTS="${CONFOPTS} --with-blaslapack-lib=${LAPACK_SO},${BLAS_SO}"
 fi
 
 # OpenCL: GPU computing
@@ -239,15 +238,15 @@ if [ -f "${OPENCL_SO}" ]; then
 fi
 
 # X: to enable ksp_xmonitor
-LIBX11="$(find_so libX11.so)"
-LIBX11_DIR="$(dirname ${LIBX11})"
-if [ -f "${LIBX11}" ]; then
-    LIBX11_INC="--keep-system-cflags --cflags-only-I";
-    LIBX11_INC="$(pkgconf ${LIBX11_INC} x11)";
+LIBX11_SO="$(find_so libX11.so)"
+LIBX11_DIR="$(dirname ${LIBX11_SO})"
+if [ -f "${LIBX11_SO}" ]; then
+    LIBX11_INC="$(pkgconf ${ONLY_INC} x11)";
+    LIBX11_INC="${LIBX11_INC//-I/}";
 	CONFOPTS="${CONFOPTS} --with-x-lib=[${LIBX11_DIR}/";
     # As per X11.pc, it seems that xcb.so is needed
-    CONFOPTS="${CONFOPTS}libX11-xcb.so,${LIBX11}]"
-    CONFOPTS="${CONFOPTS} --with-x-include=${LIBX11_INC//-I/}"
+    CONFOPTS="${CONFOPTS}libX11-xcb.so,${LIBX11_SO}]"
+    CONFOPTS="${CONFOPTS} --with-x-include=${LIBX11_INC}"
 fi
 
 # ZLIB
