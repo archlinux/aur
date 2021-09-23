@@ -20,12 +20,6 @@ _winesync=y
 ### Set performance governor as default
 _per_gov=y
 
-### Disable MQ-Deadline I/O scheduler
-_mq_deadline_disable=y
-
-### Disable Kyber I/O scheduler
-_kyber_disable=y
-
 ### Running with a 2000 HZ, 1000HZ, 750Hz or  500HZ tick rate
 _2k_HZ_ticks=
 _1k_HZ_ticks=
@@ -33,7 +27,7 @@ _750_HZ_ticks=y
 _500_HZ_ticks=
 
 ### Enable protect file mappings under memory pressure
-_mm_protect=y
+#_mm_protect=y
 _lru_enable=y
 
 ### Enable Linux Random Number Generator
@@ -42,6 +36,12 @@ _lrng_enable=y
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
+### Disable MQ-Deadline I/O scheduler
+_mq_deadline_disable=y
+
+### Disable Kyber I/O scheduler
+_kyber_disable=y
+
 ## Setting some security options
 use_selinux=n
 use_tomoyo=n
@@ -49,7 +49,7 @@ use_yama=n
 use_apparmor=
 
 ## Apply Kernel automatic Optimization
-_use_auto_optimization=y
+_use_optimization=y
 
 ## Apply Kernel Optimization selecting
 _use_optimization_select=
@@ -59,6 +59,7 @@ _use_cfi=
 
 ## Enable PGO (patch is failing when cfi is also used)
 _use_pgo=
+
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -77,13 +78,13 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-pkgbase=linux-cacule-llvm
-pkgname=('linux-cacule-llvm' 'linux-cacule-llvm-headers')
+pkgbase=linux-cacule-rdb-llvm
+pkgname=('linux-cacule-rdb-llvm' 'linux-cacule-rdb-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.7
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
-pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO'
+pkgdesc='Linux-CacULE Kernel-RDB by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/ptr1337/linux-cacule"
@@ -96,14 +97,17 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
         "config"
 #        "${_patchsource}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/arch-patches-v6/0001-arch-patches.patch"
-        "${_caculepatches}/v5.14/cacule-5.14.patch"
+        "${_patchsource}/arch-patches-v7/0001-arch-patches.patch"
+        "${_caculepatches}/v5.14/cacule-5.14-full.patch"
 #        "${_patchsource}/misc/0004-folio-mm.patch"
-#        "${_patchsource}/misc/0007-string.patch"
+        "${_patchsource}/misc/0007-string.patch"
         "${_patchsource}/misc/allpollingrate.patch"
-        "${_patchsource}/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
-        "${_patchsource}/misc/0001-AMD-CPPC.patch"
+#        "${_patchsource}/misc/0001-AMD-CPPC.patch"
         "${_patchsource}/misc/zen-tweaks-cacule.patch"
+        "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+        "${_patchsource}/ll-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
+        "${_patchsource}/ll-patches/0004-mm-set-8-megabytes-for-address_space-level-file-read.patch"
+        "${_patchsource}/writeback-patches/0001-writeback-patches.patch"
 #        "${_patchsource}/bfq-patches-v2/0001-bfq-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
@@ -114,12 +118,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/futex2-zen-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
-        "${_patchsource}/lru-patches-v3/0001-lru-patches.patch"
+        "${_patchsource}/lru-xanmod-patches/0001-lru-xanmod-patches.patch"
 #        "${_patchsource}/le9-patches-v4/0001-mm-vmscan-add-sysctl-knobs-for-protecting-the-workin.patch"
 #        "${_patchsource}/misc/le9fa-5.14.patch"
         "${_patchsource}/pf-patches-v5/0001-pf-patches.patch"
-        "${_patchsource}/xanmod-patches/0001-xanmod-patches.patch"
-        "${_patchsource}/zen-patches/0001-zen-patches.patch"
+        "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
+        "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches-v3/0001-zstd-upstream-patches.patch"
         "${_patchsource}/ntfs3-patches-v9/0001-ntfs3-patches.patch"
@@ -136,10 +140,24 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
           source+=("${_patchsource}/0001-PGO.patch")
         fi
 
-BUILD_FLAGS=(
-  LLVM=1
-  LLVM_IAS=1
-            )
+export BUILD_FLAGS=(
+          LLVM=1
+          LLVM_IAS=1
+          CC=clang
+          CXX=clang++
+          LD=ld.lld
+          AR=llvm-ar
+          NM=llvm-nm
+          STRIP=llvm-strip
+          READELF=llvm-readelf
+          HOSTCC=clang
+          HOSTCXX=clang++
+          HOSTAR=llvm-ar
+          HOSTLD=ld.lld
+          OBJCOPY=llvm-objcopy
+          OBJDUMP=objdump
+          )
+          
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -170,19 +188,19 @@ prepare() {
           echo "Setting config..."
           cp ../config .config
 
-          if [ -n "$_use_cfi" ]; then
-            scripts/config --enable CONFIG_ARCH_SUPPORTS_CFI_CLANG
-            scripts/config --enable CONFIG_CFI_CLANG
-          fi
+        if [ -n "$_use_cfi" ]; then
+          scripts/config --enable CONFIG_ARCH_SUPPORTS_CFI_CLANG
+          scripts/config --enable CONFIG_CFI_CLANG
+        fi
 
-          if [ -n "$_use_pgo" ]; then
-            scripts/config --enable CONFIG_ARCH_SUPPORTS_PGO_CLANG
-            scripts/config --enable DEBUG_FS
-            scripts/config --enable CONFIG_PGO_CLANG
-          fi
+        if [ -n "$_use_pgo" ]; then
+          scripts/config --enable CONFIG_ARCH_SUPPORTS_PGO_CLANG
+          scripts/config --enable DEBUG_FS
+          scripts/config --enable CONFIG_PGO_CLANG
+        fi
 
       ### Microarchitecture Optimization (GCC/CLANG)
-            if [ -n "$_use_auto_optimization" ]; then
+            if [ -n "$_use_optimization" ]; then
               sh "${srcdir}"/auto-cpu-optimization.sh
             fi
             if [ -n "$_use_optimization_select" ]; then
@@ -197,20 +215,23 @@ prepare() {
               scripts/config --set-val CONFIG_HZ 2000
             fi
 
-      ### Optionally set tickrate to 1000
+      ### Optionally set tickrate to 1000Hz
             if [ -n "$_1k_HZ_ticks" ]; then
               echo "Setting tick rate to 1k..."
               scripts/config --disable CONFIG_HZ_300
               scripts/config --enable CONFIG_HZ_1000
               scripts/config --set-val CONFIG_HZ 1000
             fi
-            ### Optionally set tickrate to 500HZ
+
+            ### Optionally set tickrate to 750HZ
           if [ -n "$_750_HZ_ticks" ]; then
-            echo "Setting tick rate to 750HZ..."
+            echo "Setting tick rate to 500HZ..."
             scripts/config --disable CONFIG_HZ_300
             scripts/config --enable CONFIG_HZ_750
             scripts/config --set-val CONFIG_HZ 750
           fi
+
+
         ### Optionally set tickrate to 500HZ
             if [ -n "$_500_HZ_ticks" ]; then
               echo "Setting tick rate to 500HZ..."
@@ -253,6 +274,28 @@ prepare() {
               scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
             fi
 
+            ### Enable protect file mappings under memory pressure
+            if [ -n "$_mm_protect" ]; then
+              echo "Enabling protect file mappings under memory pressure..."
+              scripts/config --enable CONFIG_UNEVICTABLE_FILE
+              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+              scripts/config --enable CONFIG_UNEVICTABLE_ANON
+              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
+              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
+            fi
+
+            ### Enable multigenerational LRU
+            if [ -n "$_lru_enable" ]; then
+              echo "Enabling multigenerational LRU..."
+              scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
+              scripts/config --enable CONFIG_LRU_GEN
+              scripts/config --set-val CONFIG_NR_LRU_GENS 4
+              scripts/config --set-val CONFIG_TIERS_PER_GEN 2
+              scripts/config --enable CONFIG_LRU_GEN_ENABLED
+              scripts/config --disable CONFIG_LRU_GEN_STATS
+            fi
+
             ### Disable MQ-Deadline I/O scheduler
         	   if [ -n "$_mq_deadline_disable" ]; then
         		   echo "Disabling MQ-Deadline I/O scheduler..."
@@ -264,29 +307,6 @@ prepare() {
         		   echo "Disabling Kyber I/O scheduler..."
         		   scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
         	   fi
-
-             ### Enable protect file mappings under memory pressure
-             if [ -n "$_mm_protect" ]; then
-               echo "Enabling protect file mappings under memory pressure..."
-               scripts/config --enable CONFIG_UNEVICTABLE_FILE
-               scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-               scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-               scripts/config --enable CONFIG_UNEVICTABLE_ANON
-               scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
-               scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
-             fi
-
-            ### Enable multigenerational LRU
-            if [ -n "$_lru_enable" ]; then
-              echo "Enabling multigenerational LRU..."
-              scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
-              scripts/config --enable CONFIG_LRU_GEN
-              scripts/config --set-val CONFIG_NR_LRU_GENS 7
-              scripts/config --set-val CONFIG_TIERS_PER_GEN 4
-              scripts/config --enable CONFIG_LRU_GEN_ENABLED
-              scripts/config --disable CONFIG_LRU_GEN_STATS
-            fi
-
 
             if [ "$use_selinux" = "n" ]; then
               echo "Disabling SELinux..."
@@ -375,8 +395,8 @@ prepare() {
               scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
               scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
               scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-           #   scripts/config --enable CONFIG_x86_AMD_PSTATE
               scripts/config --enable CONFIG_ZEN_INTERACTIVE
+
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
     if [ -n "$_use_current" ]; then
@@ -423,12 +443,13 @@ build() {
     make ${BUILD_FLAGS[*]} all
 }
 
-package_linux-cacule-llvm() {
+package_linux-cacule-rdb-llvm() {
   pkgdesc="The ${pkgdesc} and modules"
   depends=(coreutils kmod initramfs )
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=()
 
   cd "${srcdir:?}/linux-${pkgver}" || (
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Package linux kernel failed! \E[0m"
@@ -454,10 +475,10 @@ package_linux-cacule-llvm() {
 
 }
 
-package_linux-cacule-llvm-headers() {
+package_linux-cacule-rdb-llvm-headers() {
 
   pkgdesc="Headers and scripts for building modules for the ${pkgdesc}"
-  depends=("linux-cacule-llvm=${pkgver}" "pahole")
+  depends=("linux-cacule-rdb-llvm=${pkgver}" "pahole")
 
   cd "${srcdir:?}/linux-${pkgver}" || (
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Package linux headers failed! \E[0m"
@@ -543,13 +564,16 @@ package_linux-cacule-llvm-headers() {
 }
 
 md5sums=('4119cf1e59ef6f109b9be9451a0899ae'
-         '6b2fce762a64585d4331b98584f63c61'
-         '7524899b1b1c14e6d993be59dc68faf3'
-         '40a9380b2884f5d417791f06389ba57e'
+         'b232ca9b091712a60c3449d39921b783'
+         '01b196f5df07ddfb1dd97026472da196'
+         '024a0126cfcd18e000a2241f35c4d69e'
+         'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
-         'f8e172e9ea554bbb1053eb122c3ace35'
-         '302cbad3c979395f37307a094f6d8fd5'
          '9d7612159f8745044254077ce8a76df6'
+         'f8e172e9ea554bbb1053eb122c3ace35'
+         'af7328eb8c72c754e5bc8c7be1ca2f1c'
+         'f0d84fc024b9933bc19db696e0393a4e'
+         'bf1ac40e460c8794d955d136f073b124'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
@@ -559,7 +583,7 @@ md5sums=('4119cf1e59ef6f109b9be9451a0899ae'
          '2891eb036469d04995d9b21a5e389d8a'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '366c90b64f9582c0733b8fb607a07594'
-         '8e2219f09adfe049b3e8b59fb8c4348a'
+         'b5d149398c727b1eebcc188c882bc443'
          'd4c3a3ca73c2e722ebc790357ba87680'
          '28864f14bf33bad92e57bc48bc5c2c78'
          '381bc4f0ff885e9b67e5899476a30416'
@@ -571,9 +595,9 @@ md5sums=('4119cf1e59ef6f109b9be9451a0899ae'
          '95eb4457f95f3f8dd153983612ee65c0'
          '566435a0444ee45816599f2e0e362c7a'
          '6bfbbe0bbb79379203889ed7df5e5288')
-         if [ -n "$_use_cfi" ]; then
-           md5sums+=("SKIP")
-         fi
-         if [ -n "$_use_pgo" ]; then
-           md5sums+=("SKIP")
-         fi
+if [ -n "$_use_cfi" ]; then
+  md5sums+=("SKIP")
+fi
+if [ -n "$_use_pgo" ]; then
+  md5sums+=("SKIP")
+fi
