@@ -1,7 +1,7 @@
 # Maintainer: Gleb Sinyavskiy <zhulik.gleb@gmail.com>
 pkgname=neolink-git
 _pkgname=neolink
-pkgver=0.3.0.5a62bb1
+pkgver=0.3.0.cf54129
 pkgrel=1
 pkgdesc="An RTSP bridge to Reolink IP cameras."
 arch=('x86_64')

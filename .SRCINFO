@@ -1,6 +1,6 @@
 pkgbase = neolink-git
 	pkgdesc = An RTSP bridge to Reolink IP cameras.
-	pkgver = 0.3.0.5a62bb1
+	pkgver = 0.3.0.cf54129
 	pkgrel = 1
 	url = https://github.com/thirtythreeforty/neolink
 	arch = x86_64
