@@ -1,7 +1,7 @@
 # Maintainer: matheuz1210 <matheuz1210 at gmail dot com>
 
 pkgname=wsid-git
-pkgver=1.0.r0.1933840
+pkgver=1.0.r2.2b08472
 pkgrel=1
 pkgdesc='web show image directory'
 arch=(any)
@@ -10,7 +10,7 @@ license=(GPL)
 depends=(
     'python>=3.7' )
 makedepends=(
-    git )
+    git python-setuptools )
 optdepends=(
     'python-pyqt5: for gui' )
 source=(
