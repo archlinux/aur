@@ -1,13 +1,13 @@
 pkgbase = kube-dump
 	pkgdesc = Backup a Kubernetes cluster as a yaml manifest
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WoozyMasta/kube-dump
 	arch = x86_64
 	license = GPL3
 	depends = kubectl
 	depends = jq
-	depends = yq
+	depends = yq2-bin
 	source = https://github.com/WoozyMasta/kube-dump/releases/download/v1.0.6/kube-dump
 	sha256sums = 6e239d3cb80de09f56d6408683e7d3a5cc1e8692e25df54998021e533a5040b2
 
