@@ -2,8 +2,8 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gzdoom
-pkgver=4.6.1
-pkgrel=2
+pkgver=4.7.0
+pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -40,7 +40,7 @@ source=("gzdoom::git://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
         '0001-Fix-file-paths.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            '9b6c37c6fc90080ceb4162673f23187210b083af7cd61294ece2711790eac186')
+            '7db3c08eb3756a19a9b6eda76f169e82e8c47b9a28108f17aac24774e2e53ff1')
 
 prepare() {
     cd gzdoom

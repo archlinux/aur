@@ -1,7 +1,7 @@
 pkgbase = gzdoom
 	pkgdesc = Feature centric port for all Doom engine games
-	pkgver = 4.6.1
-	pkgrel = 2
+	pkgver = 4.7.0
+	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -36,12 +36,12 @@ pkgbase = gzdoom
 	optdepends = xorg-xmessage: crash dialog (other)
 	replaces = gzdoom1
 	replaces = gzdoom-legacy
-	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g4.6.1
+	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g4.7.0
 	source = gzdoom.desktop
 	source = 0001-Fix-file-paths.patch
 	sha256sums = SKIP
 	sha256sums = 59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d
-	sha256sums = 9b6c37c6fc90080ceb4162673f23187210b083af7cd61294ece2711790eac186
+	sha256sums = 7db3c08eb3756a19a9b6eda76f169e82e8c47b9a28108f17aac24774e2e53ff1
 	optdepends_x86_64 = vulkan-driver: Vulkan renderer
 	optdepends_x86_64 = vulkan-icd-loader: Vulkan renderer
 
