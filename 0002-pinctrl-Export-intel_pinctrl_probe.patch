@@ -1,0 +1,51 @@
+From f40594acf1c3223ba28d2b9e588c8c54959cdaf3 Mon Sep 17 00:00:00 2001
+From: Jeremy Soller <jeremy@system76.com>
+Date: Tue, 14 Sep 2021 12:08:15 -0600
+Subject: [PATCH 2/3] pinctrl: Export intel_pinctrl_probe
+
+(cherry picked from commit 6a0e5e36a2b127160554dbf0720799f588397d3e)
+Signed-off-by: David Cohen <dacohen@pm.me>
+---
+ drivers/pinctrl/intel/pinctrl-intel.c | 5 +++--
+ drivers/pinctrl/intel/pinctrl-intel.h | 2 ++
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/pinctrl/intel/pinctrl-intel.c b/drivers/pinctrl/intel/pinctrl-intel.c
+index 85750974d182..c7cdec2bf507 100644
+--- a/drivers/pinctrl/intel/pinctrl-intel.c
++++ b/drivers/pinctrl/intel/pinctrl-intel.c
+@@ -1456,8 +1456,8 @@ static int intel_pinctrl_pm_init(struct intel_pinctrl *pctrl)
+ 	return 0;
+ }
+ 
+-static int intel_pinctrl_probe(struct platform_device *pdev,
+-			       const struct intel_pinctrl_soc_data *soc_data)
++int intel_pinctrl_probe(struct platform_device *pdev,
++			const struct intel_pinctrl_soc_data *soc_data)
+ {
+ 	struct intel_pinctrl *pctrl;
+ 	int i, ret, irq;
+@@ -1571,6 +1571,7 @@ static int intel_pinctrl_probe(struct platform_device *pdev,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(intel_pinctrl_probe);
+ 
+ int intel_pinctrl_probe_by_hid(struct platform_device *pdev)
+ {
+diff --git a/drivers/pinctrl/intel/pinctrl-intel.h b/drivers/pinctrl/intel/pinctrl-intel.h
+index c4fef03b663f..95f89154cae8 100644
+--- a/drivers/pinctrl/intel/pinctrl-intel.h
++++ b/drivers/pinctrl/intel/pinctrl-intel.h
+@@ -244,6 +244,8 @@ struct intel_pinctrl {
+ 	int irq;
+ };
+ 
++int intel_pinctrl_probe(struct platform_device *pdev,
++			const struct intel_pinctrl_soc_data *soc_data);
+ int intel_pinctrl_probe_by_hid(struct platform_device *pdev);
+ int intel_pinctrl_probe_by_uid(struct platform_device *pdev);
+ 
+-- 
+2.33.0
+
