@@ -3,7 +3,7 @@
 
 _gitname=telepathy-morse
 pkgname=telepathy-morse-git
-pkgver=r224.0a84492
+pkgver=r290.a59a608
 pkgrel=1
 pkgdesc="Telepathy Connection Manager for the Telegram network"
 arch=(i686 x86_64)
@@ -13,8 +13,8 @@ depends=(telepathy-qt telegram-qt-git)
 makedepends=(cmake git)
 provides=(telepathy-morse)
 conflicts=(telepathy-morse)
-source=("git+https://github.com/TelepathyQt/$_gitname")
-md5sums=('SKIP')
+source=("git+https://github.com/TelepathyIM/$_gitname")
+sha512sums=('SKIP')
 
 pkgver() {
   cd $_gitname
