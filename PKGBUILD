@@ -1,26 +1,32 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kooha
-pkgver=1.2.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Simple screen recorder for GNOME"
 arch=('x86_64')
 url="https://apps.gnome.org/app/io.github.seadve.Kooha"
 license=('GPL3')
-depends=('gstreamer' 'gtk4' 'libadwaita' 'python-gobject')
-makedepends=('meson')
+depends=('gst-plugin-pipewire' 'gstreamer' 'gtk4' 'libadwaita-git' 'python-gobject'
+         'xdg-desktop-portal')
+makedepends=('cargo' 'meson')
 checkdepends=('appstream-glib')
-sha256sums=('1aea99804489363e3708559e45e6ad0583a092430fb7c446240e74f2d9bb19eb')
+sha256sums=('bd56477d35b21cfb1fb5c7ccff539f6abc7f67c0809d4faaf453c99a1fcc7824')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SeaDve/Kooha/archive/v$pkgver.tar.gz")
 
+prepare() {
+  cd Kooha-$pkgver
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   arch-meson Kooha-$pkgver build
   meson compile -C build
 }
 
 check() {
-
-  # Validate appstream file test failing
-  meson test -C build 'Validate desktop file' 'Validate schema file' --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
