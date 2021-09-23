@@ -1,32 +1,31 @@
-#Maintainer: David McInnis <dave@dave3.xyz>
-
-pkgname=('python-pyamg')
-_name='pyamg'
-pkgver='4.0.0'
-pkgrel=2
-pkgdesc="PyAMG: Algebraic Multigrid Solvers in Python"
-url="https://github.com/pyamg/pyamg"
-depends=('python')
-makedepends=('python-setuptools' 'pybind11')
-license=('MIT')
-arch=('i686' 'x86_64')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3ceb38ffd86e29774e759486f2961599c8ed847459c68727493cadeaf115a38a')
+# Maintainer: David McInnis <dave@dave3.xyz>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+_base=pyamg
+pkgname=python-${_base}
+pkgdesc="Algebraic Multigrid Solvers in Python"
+pkgver=4.1.0
+pkgrel=1
+arch=('any')
+url="https://github.com/${_base}/${_base}"
+license=(MIT)
+depends=(python-scipy python-pytest)
+makedepends=(python-setuptools pybind11)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('43bb22a03023a3be101bec88f13528095847fdc4a1b8b669ff9583de2184982673c63ef869bded3599f2aa81d8746914cc01ddff9c7307c5598d0e17da5e9000')
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py build
+  cd "${_base}-${pkgver}"
+  python setup.py build
 }
 
 check() {
-	cd "${srcdir}/${_name}-${pkgver}"
-	python setup.py test
+  cd "${_base}-${pkgver}"
+  python setup.py test
 }
 
-
 package() {
-    depends+=()
-    cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.md"
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
