@@ -3,7 +3,7 @@
 _srcname=koka
 
 pkgname=koka-bin
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Koka: a function-oriented language with effect inference"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
 )
 noextract=("koka-v${pkgver}-linux-x64.tar.gz")
 sha256sums=(
-  'b0e8bb4e7daf1a40921ae4243638c308155cb8ace15b0e3126abd0d9e99bcd58'
+  'c618c7b67d316eb9e4941e482699b4cc727f25fae0b7aaeb20453023f59c1d02'
 )
 
 package() {
