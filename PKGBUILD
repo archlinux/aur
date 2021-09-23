@@ -5,13 +5,13 @@ pkgver=0.5.2.r9.gefbc112
 pkgrel=4
 pkgdesc="A (work-in-progress) nextgen Doxygen for C++"
 arch=('i686' 'x86_64')
-url="https://github.com/foonathan/standardese"
+url="https://github.com/standardese/standardese"
 license=('MIT')
 depends=('clang>=3.7.1' 'boost-libs>=1.55' 'llvm')
 makedepends=('git' 'cmake' 'boost>=1.55' 'cmark')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/foonathan/standardese.git')
+source=('git+https://github.com/standardese/standardese.git')
 md5sums=('SKIP')
 
 pkgver() {

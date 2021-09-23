@@ -2,7 +2,7 @@ pkgbase = standardese-git
 	pkgdesc = A (work-in-progress) nextgen Doxygen for C++
 	pkgver = 0.5.2.r9.gefbc112
 	pkgrel = 4
-	url = https://github.com/foonathan/standardese
+	url = https://github.com/standardese/standardese
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = standardese-git
 	depends = llvm
 	provides = standardese
 	conflicts = standardese
-	source = git+https://github.com/foonathan/standardese.git
+	source = git+https://github.com/standardese/standardese.git
 	md5sums = SKIP
 
 pkgname = standardese-git
