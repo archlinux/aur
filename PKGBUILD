@@ -1,4 +1,6 @@
-# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
+# Maintainer: Posi <posi1981@gmail.com>
+
+# Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Timm Preetz <timm@preetz.us>
 # Contributor: Michael 'manveru' Fellinger <m.fellinger@gmail.com>
@@ -9,8 +11,8 @@ _desktop_ftl=51320cd
 _desktop_i18n=67b07d5
 
 pkgname=anki
-pkgver=2.1.35
-pkgrel=3
+pkgver=2.1.44
+pkgrel=1
 
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://ankisrs.net/"
