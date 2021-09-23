@@ -13,12 +13,12 @@ source=("git+https://github.com/KoemiMoe/KoemiMoe-Desktop.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/desktop"
+    cd "$srcdir/KoemiMoe-Desktop"
     echo "$(git rev-list HEAD --count).$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/desktop"
+	cd "$srcdir/KoemiMoe-Desktop"
     
     electronDist=/usr/lib/electron
     electronVer=$(electron --version | tail -c +2)
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/desktop"
+	cd "$srcdir/KoemiMoe-Desktop"
     
     install -dm755 "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -dr --no-preserve=ownership dist/linux-unpacked/resources/* "${pkgdir}/usr/lib/${pkgname%-git}/"
