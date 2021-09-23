@@ -43,7 +43,6 @@ pkgbase = via
 	depends = systemd-libs
 	depends = tdb
 	depends = util-linux-libs
-	depends = via
 	depends = xz
 	depends = zlib
 	depends = zstd

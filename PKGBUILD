@@ -9,7 +9,7 @@ url="https://asp.arubanetworks.com/downloads;fileTypes=SOFTWARE;products=Aruba%2
 license=('unknown') # have not been able to find this
 groups=()
 # auto generated dpends might be excessive...
-depends=(brotli bzip2 dbus double-conversion e2fsprogs freetype2 gcc-libs glib2 glibc graphite harfbuzz icu keyutils krb5 libcap libffi libgcrypt libglvnd libgpg-error libnm libpng libproxy libx11 libxau libxcb libxdmcp libxml2 lz4 md4c nspr nss openssl pcre pcre2 qt5-base systemd-libs tdb util-linux-libs via xz zlib zstd)
+depends=(brotli bzip2 dbus double-conversion e2fsprogs freetype2 gcc-libs glib2 glibc graphite harfbuzz icu keyutils krb5 libcap libffi libgcrypt libglvnd libgpg-error libnm libpng libproxy libx11 libxau libxcb libxdmcp libxml2 lz4 md4c nspr nss openssl pcre pcre2 qt5-base systemd-libs tdb util-linux-libs xz zlib zstd)
 makedepends=()
 checkdepends=()
 optdepends=(networkmanager)
@@ -42,6 +42,7 @@ package() {
 	#cd "$pkgname-$pkgver"
 	cp -R "$srcdir/usr" "$srcdir/etc" "$pkgdir/"
 	cp -R "$srcdir/lib64/security" "$pkgdir/usr/lib/"
+	chmod o+s "${pkgdir}/usr/bin/via-vpn-srv"
 	## autostart by default is bad :|
 	rm "${pkgdir}/etc/xdg/autostart/via-auto.desktop"
 	rmdir "${pkgdir}/etc/xdg/autostart"
