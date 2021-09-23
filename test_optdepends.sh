@@ -136,11 +136,10 @@ OPENBLAS_SO="$(find_so libopenblas.so)"
 LAPACK_SO="$(find_so liblapack.so)"
 if [ -f "${BLAS_SO}" ] && [ -f "${OPENBLAS_SO}" ] \
        && [ -f "${LAPACK_SO}" ]; then
-    CONFOPTS="${CONFOPTS} --with-openblas=1"
-    OPENBLAS_INC="$(pkgconf ${ONLY_INC} openblas)"
-    OPENBLAS_INC="${OPENBLAS_INC//-I/}"
-	CONFOPTS="${CONFOPTS} --with-openblas-lib=${OPENBLAS_SO}"
-	CONFOPTS="${CONFOPTS} --with-openblas-include=${OPENBLAS_INC}"
+    # With help from Satish Balay
+    # @ 3.15.4.33.g0bac13e0fe9 2021-09-21
+    #  nm -AoD /usr/lib64/libopenblas.so | grep dgetrs_
+    CONFOPTS="${CONFOPTS} --with-blaslapack-lib=[${LAPACK_SO},${BLAS_SO}]"
 fi
 
 # OpenCL: GPU computing

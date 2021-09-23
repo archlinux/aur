@@ -1,6 +1,6 @@
 pkgbase = petsc-git
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.15.4.33.g0bac13e0fe9
+	pkgver = 3.15.4.37.g17c486c0fcd
 	pkgrel = 1
 	url = https://gitlab.com/petsc/petsc
 	arch = i686
@@ -30,7 +30,7 @@ pkgbase = petsc-git
 	source = test_optdepends.sh
 	sha512sums = SKIP
 	sha512sums = b6a1d48aab1c2639a4c1cbd8b313ace253f1c36eedaa3de3508ffbd6060e1def99e2f516ed9bb509307f614b41791d09342e2c2280c0b2c25dda1092b0e569d2
-	sha512sums = 26145ebce4c3c2a418488e1412579ea56744e9da07f0f6ebc9e457a14ca8679d207135b36a351e5e49efa5083ea6506516f6bfb2aef978d3986fcde7ebe8d4c0
+	sha512sums = 77b257ea28a9f109c48c8447ab2db4204f6dba715626f15e916ec8f54c18d01588aa4d760c30b9a58659eefddafc7b54319525f8d89a693fd5305144eba7fc28
 
 pkgname = petsc-git
 	optdepends = boost: Free peer-reviewed portable C++ source libraries
