@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 prepare() {
   cd "$srcdir/OpenModelica"
   git remote set-url origin ${_giturl}
-  git submodule update --force --init --recursive
+  git submodule update --force --init --recursive OMCompiler/3rdParty
 }
 
 build() {
