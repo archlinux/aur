@@ -1,13 +1,12 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone
-pkgver=8.20201008
+pkgver=8.20210804
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone version, with no Haskell dependency."
 arch=(x86_64)
 url="https://git-annex.branchable.com/"
 license=('GPL')
-depends=("file" "git" "lsof" "rsync" "sqlite")
-optdepends=()
+depends=("bzip2" "file" "git" "gmp" "libffi" "lsof" "rsync" "sqlite" "xz" "zlib")
 provides=("git-annex")
 conflicts=("git-annex")
 source=("git-annex-standalone-amd64-$pkgver.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz"
@@ -24,9 +23,9 @@ pkgver() {
 package() {
   cd "$srcdir/git-annex.linux"
 
-  for lib in libffi.so.7; do
-    install -Dm644 usr/lib/x86_64-linux-gnu/$lib "$pkgdir/usr/share/$pkgname/lib/$lib"
-  done
+  # for lib in libffi.so.7; do
+  #   install -Dm644 lib/x86_64-linux-gnu/$lib "$pkgdir/usr/share/$pkgname/lib/$lib"
+  # done
 
   for exe in git-annex git-annex-shell; do
     install -Dm755 shimmed/$exe/$exe "$pkgdir/usr/share/$pkgname/bin/$exe"
