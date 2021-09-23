@@ -3,13 +3,13 @@
 
 _gitname=telegram-qt
 pkgname=telegram-qt-git
-pkgver=r1915.e24cd50
+pkgver=r2645.aef1f443
 pkgrel=1
 pkgdesc="Qt bindings for the Telegram protocol"
 arch=(i686 x86_64)
 url="https://github.com/Kaffeine/telegram-qt"
 license=(GPL)
-depends=(qt5-declarative openssl-1.0)
+depends=(qt5-declarative openssl)
 makedepends=(cmake git)
 provides=(telegram-qt)
 conflicts=(telegram-qt)
@@ -27,7 +27,6 @@ prepare() {
 
 build() {
   cd build
-  export PKG_CONFIG_PATH="/usr/lib/openssl-1.0/pkgconfig"
   cmake ../$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
