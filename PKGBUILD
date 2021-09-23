@@ -3,7 +3,7 @@
 pkgbase=linux-system76-gaze16
 pkgver=5.14.7.arch1_gaze16
 _pkgver=${pkgver%_*}
-pkgrel=2
+pkgrel=1
 pkgdesc='Oficial Arch Linux + system76 gaze16 touchpad and mic fix'
 _srctag=v${_pkgver%.*}-${_pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
@@ -44,8 +44,8 @@ prepare() {
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
-  echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
+  echo "${pkgbase#linux-system76}" > localversion.10-pkgname
+  echo "-$pkgrel" > localversion.20-pkgrel
 
   local src
   for src in "${source[@]}"; do

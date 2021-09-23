@@ -1,7 +1,7 @@
 pkgbase = linux-system76-gaze16
 	pkgdesc = Oficial Arch Linux + system76 gaze16 touchpad and mic fix
 	pkgver = 5.14.7.arch1_gaze16
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/archlinux/linux/commits/v5.14.7-arch1
 	arch = x86_64
 	license = GPL2
