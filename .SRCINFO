@@ -1,8 +1,9 @@
 pkgbase = devpi-server
-	pkgdesc = reliable private and pypi.python.org caching server
-	pkgver = 6.1.0
-	pkgrel = 2
+	pkgdesc = Python PyPi staging server and release tool
+	pkgver = 6.2.0
+	pkgrel = 1
 	url = https://doc.devpi.net/
+	changelog = CHANGELOG
 	arch = any
 	groups = devpi
 	license = MIT
@@ -19,18 +20,18 @@ pkgbase = devpi-server
 	depends = python-itsdangerous>=0.24
 	depends = python-passlib
 	depends = python-pluggy>=0.6.0
-	depends = python-pluggy<1.0
+	depends = python-pluggy<2.0
 	depends = python-pyramid>=2
 	depends = python-repoze.lru>=0.6
 	depends = python-ruamel-yaml
 	depends = python-waitress>=1.0.1
 	depends = python-strictyaml
 	optdepends = devpi-client
-	source = https://files.pythonhosted.org/packages/source/d/devpi-server/devpi-server-6.1.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/devpi-server/devpi-server-6.2.0.tar.gz
 	source = devpi-server.service
 	source = devpi-server.sysusers
 	source = devpi-server.tmpfiles
-	sha256sums = 2585e6355f5414458b4e64a7a9d7daa8167ece0f66469d63d80bb5728e0f6098
+	sha256sums = f7f17d80097546d76aa4acfe54f1d86b93eafb681787e242cee3a6cfa0fad1b4
 	sha256sums = 1ebfe9edc2bf0f368162f15540e48a8e046db0023b5da23e98daf43f0e075a95
 	sha256sums = 4327d0e72b277ef7b05dfb4b3bac6ab4c70d55a96c9ad114a90ebb00c954bd48
 	sha256sums = bcd2321ff41bebcf08392ca02dbfaa0ac2693eba3432f0e5793ff384753ce0f1

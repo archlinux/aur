@@ -1,9 +1,0 @@
-post_install() {
-    groupadd -g 3141 devpi
-    useradd -u 3141 -g devpi -s /bin/false -d /var/lib/devpi devpi
-}
-
-pre_remove() {
-    userdel devpi
-    groupdel devpi
-}

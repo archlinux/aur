@@ -1,0 +1,1791 @@
+
+
+.. towncrier release notes start
+
+6.2.0 (2021-08-12)
+==================
+
+Bug Fixes
+---------
+
+- Optimized some database access patterns. A new index is added to the database on first startup. For large databases that can take a while.
+
+- Improved performance of loads from database.
+
+- Optimized memory and cache use for database access.
+
+- Use frozenset for project name cache of mirror indexes. This mitigates memory fragmentation on some Linux distributions.
+
+
+6.1.0 (2021-07-11)
+==================
+
+Deprecations and Removals
+-------------------------
+
+- Renamed 'pypi_submit' permission to 'upload'. The old permission still works, but will be removed in a later major release.
+
+
+Features
+--------
+
+- Allow patching index with same json layout as the output of fetching json for an index.
+
+- Allow user and index URLs to work with a trailing slash.
+
+
+Bug Fixes
+---------
+
+- fix #631: race condition in fetching project links from mirrors.
+
+
+6.0.1 (2021-06-23)
+==================
+
+Bug Fixes
+---------
+
+- fix #843: add explicit ruamel.yaml dependency declaration after strictyaml vendored it.
+
+
+6.0.0 (2021-05-16)
+==================
+
+Deprecations and Removals
+-------------------------
+
+- Remove deprecated command line options which were replaced by separate scripts.
+
+- Dropped support for Python 2.7, 3.4 and 3.5. Python 3.x versions will be supported until their EOL (see https://devguide.python.org/#status-of-python-branches). After that, any release might break support for EOLed versions.
+
+- Removed deprecated ``--start``, ``--stop`` and ``--status`` options.
+
+
+Features
+--------
+
+- fix #140: support ``force`` flag for deletion on non-volatile indexes.
+
+- fix #725: new option ``mirror_whitelist_inheritance`` for indexes.
+  The ``union`` setting is the old behaviour and used for existing indexes to not break existing installations.
+  With it the whitelist of each index in the inheritance order is merged into the current whitelist.
+  This could lead to unexpected whitelisting.
+  The new ``intersection`` setting is used for all new indexes and it intersects the whitelist at each step in the inheritance order which is more secure and never causes unexpected whitelisting.
+
+- fix #792: support data-yanked attribute from PEP 592 for mirror indexes.
+
+- fix #827: add ``--listen`` option corresponding to ``listen`` kwarg of waitress server.
+
+- Replicas download files asynchronously from the metadata and will do so with multiple parallel requests. This means the metadata will be in sync faster and downloads will process quicker. Missing files will be downloaded on demand if they haven't been fetched yet. The new ``--file-replication-threads`` option allows controlling the amount of parallel downloads. Event processing waits until files for that serial are available. Since newest files are downloaded first, event processing might wait until all files are downloaded.
+
+- Add ``devpi-gen-secret`` script to generate a file with a random secret and proper permissions.
+
+- Installers will get simple results directly instead of a redirect when an index is used without /+simple or without a trailing slash.
+
+- Much faster mirror project names parsing. For PyPI the speedup can be about 30x.
+
+- Do some validity and security checks on the secret provided by ``--secretfile``.
+
+- The server secret for token signing is now derived via argon2 from the data provided by ``--secretfile``. Existing login tokens are invalidated by this.
+
+- Add ``--trusted-proxy``, ``--trusted-proxy-count`` and ``--trusted-proxy-headers`` to support proxy headers with waitress.
+
+- The user creation and modification time is now stored. Adding or removing an index doesn't count as a modification.
+
+
+Bug Fixes
+---------
+
+- fix #210: the original fix was incomplete and the test for it was subtly wrong.
+
+- fix #451: packages not on mirror_whitelist no longer query the mirror
+
+- fix #680: indexes with multiple mirror bases now work correctly with default secure whitelist settings.
+
+- Handle cases where the ``Content-Type`` header from a mirror can be an empty string.
+
+
+Other Changes
+-------------
+
+- The ``X-Outside-URL`` header now takes precedence over the ``--outside-url`` option. This allows the option to be the fallback when there is no proxy in front, instead of overwriting the header.
+
+- Warning! Once you used 6.0.0 with a replica you have to check that all files have been downloaded with ``devpi-fsck`` before attempting to downgrade to 5.x.y, as those older versions have no mechanism to re-download those.
+
+- Add new ``devpiserver_auth_request`` hook and deprecate ``devpiserver_auth_user`` hook.
+
+- Require pyramid>=2.
+
+- Use secrets.token_bytes instead of os.urandom for salts and server secrets.
+
+- Replicas need to use the same secret as the master for the ``--secretfile`` option to be able to authenticate with the master.
+
+- Replicas will no longer proxy to the master to determine the authentication status now that the secret must be shared between master and replicas.
+
+- When using ``--restrict-modify`` those users can't delete their own user object to prevent lockout.
+
+- The secret file must be user accessible only, devpi-server will not start if it is not.
+
+
+5.5.1 (2021-03-01)
+==================
+
+Bug Fixes
+---------
+
+- Pin to pyramid<2.
+
+
+5.5.0 (2020-05-04)
+==================
+
+Features
+--------
+
+- Proxy requests from replica to master are now streamed if possible. This improves reliability of large uploads through replicas and reduces RAM usage on the replica.
+
+
+5.4.1 (2020-03-26)
+==================
+
+Bug Fixes
+---------
+
+- Import won't abort anymore when a base index was removed. The bases setting will be imported as is.
+
+
+5.4.0 (2020-01-31)
+==================
+
+.. note::
+  This is the last feature release with Python 2.7 support!
+
+  We will only make export related bugfix releases of 5.4.x.
+
+Features
+--------
+
+- The ``requires_python`` metadata is now included in version data on mirror indexes.
+
+- Downloaded files from mirrors can be included in exports with the ``--include-mirrored-files`` option.
+
+- On import files for mirror indexes are now imported when they were included in the dump (see ``--include-mirrored-files``).
+
+
+Bug Fixes
+---------
+
+- Fix ``--no-root-pypi`` option when importing devpi data.
+
+- Fix pushing from mirror to an index when the file was removed and ``mirror_use_external_urls`` is active.
+
+
+5.3.1 (2019-12-05)
+==================
+
+Bug Fixes
+---------
+
+- fix #688: on file upload existing metadata is only updated, not replaced.
+
+
+5.3.0 (2019-12-03)
+==================
+
+Features
+--------
+
+- fix #732: add ``--unix-socket-perms`` option to set Unix socket permissions when a Unix socket is in use, defaults to '600' if not specified, ignored if ``--unix-socket`` is not used.
+
+- proxy requests from the replica to the master will use number of seconds from the new ``--proxy-timeout`` option as their timeout value.
+
+
+Bug Fixes
+---------
+
+- ignore obsolete pypi_whitelist index setting when sent by devpi-client and remove it when an index config is updated.
+
+
+5.2.0 (2019-10-18)
+==================
+
+Deprecations and Removals
+-------------------------
+
+- The ``--export`` option is deprecated, use the new ``devpi-export`` command instead.
+
+- The ``--gen-config`` option is deprecated, use the new ``devpi-gen-config`` command instead.
+
+- The ``--import`` option is deprecated, use the new ``devpi-import`` command instead.
+
+- The ``--init`` option is deprecated, use the new ``devpi-init`` command instead.
+
+- The ``--passwd`` option is deprecated, use the new ``devpi-passwd`` command instead.
+
+
+Features
+--------
+
+- fix #253: add ``--unix-socket`` option to listen on a unix socket. When this is used the ``--host`` and ``--port`` options are forbidden.
+
+- Add new option ``mirror_use_external_urls`` for mirrors which when ``true`` redirects to the original release URL when the release isn't locally cached yet. No new releases are stored locally from that point on. The metadata is still stored in the database.
+
+- Add devpi-fsck command which compares the hash of files with the hash in the database.
+
+- Metrics for the sqlite storage cache are exposed in the JSON output of the +status view.
+
+- Storage options can now be specified as a dict in yaml config files.
+
+
+Bug Fixes
+---------
+
+- fix #403: extract auth credentials from ``--master-url`` to prevent them from leaking in logs and ``+status``.
+
+- fix #545: provide proper error message when there is an exception during push to an external repository.
+
+- fix #686: prevent name clashes for toxresults by including the timestamp in the filename.
+
+- fix #722: prevent bogus "failed to check mirror whitelist" warnings.
+
+- Fix possible race condition when writing files.
+
+- Fix possible assertion error if importing multiple changes in a replica fails in the middle and fetching a single change set is tried as fallback.
+
+- For plugins the ``offline`` attribute of mirror stage instances now works independently of the ``--offline-mode`` command line option. This only applies to ``_perstage`` methods.
+
+- Files created in a transaction are written directly to temporary files instead of being kept in memory until commit.
+
+- Unnecessary database writes where the final value didn't change are now prevented.
+
+
+Other Changes
+-------------
+
+- The timeout when fetching the list of remote projects for a mirror index is set to a minimum of 30s by default and to 60s when running as replica. Other fetches of mirrors still use the timeout specified via ``--request-timeout``.
+
+
+5.1.0 (2019-08-05)
+==================
+
+Features
+--------
+
+- Allow stage customizer plugins to filter projects and versions.
+
+- Replicas will use the multiple changelog endpoint added in devpi-server 4.9.0 to reduce the number of requests necessary to synchronize state.
+
+
+5.0.0 (2019-06-28)
+==================
+
+Deprecations and Removals
+-------------------------
+
+- fix #518: There are no URLs on PyPI anymore that need to be scraped or crawled, so the code for that was removed.
+
+- removed support for long deprecated ``acl_upload`` and ``bases`` mirror index option. They were only kept for compatibility with devpi-client <= 2.4.1.
+
+- the ``--start``, ``--stop``, ``--status`` and ``--log`` options are deprecated. Use ``--gen-config`` to create example configuration files for various process managers.
+
+- removed long deprecated ``pypi_whitelist`` index option. It was only kept for compatibility with devpi-client <= 2.4.1.
+
+- deprecated Python 2.7 support. This is the last major version supporting Python 2.7. For upgrading to Python 3.x you have to export your data using your current setup with Python 2.7 and import it in a new installation with Python 3.x.
+
+
+Features
+--------
+
+- fix #249: unknown keys for index configuration now result in an error instead of being silently ignored.
+
+- fix #625: project registration is now optional. A file upload with twine or setuptools will automatically register the project.
+
+- fix #636: support ignore_bases argument for project listings.
+
+- support ``:AUTHENTICATED:`` for permissions. This resolves to any user which is logged in, regardless of username or groups.
+
+- added experimental support for stage customizers to let plugins add index types with customized behaviour. See ``BaseStageCustomizer`` in ``model.py`` for the API and ``devpiserver_get_stage_customizer_classes`` for the registration.
+
+- support no_projects argument for index json requests. The list of projects will not be added to the result.
+
+- when credentials for the user are rejected, the error message now says so instead of claiming the user could not be found.
+
+
+Other Changes
+-------------
+
+- boolean values can now only be set via the following values: 'false', 'no', 'true', 'yes' and actual booleans in the REST API. Before any string not matching 'false' and 'no' was converted into boolean true.
+
+- the default logging configuration now outputs to stdout instead of stderr.
+
+- major releases don't require an export/import cycle anymore except when explicitly announced. You should always make a backup though! When upgrading to devpi-server 5.0.0 you can keep the state as is and even downgrade to the last 4.9.x release if necessary. Don't forget to backup before upgrades!
+
+- the server secret isn't automatically persisted for new installations. A server restart invalidates login tokens. An existing installation will still use it's stored secret, but log a warning. Use ``--secretfile`` to explicitly specify a persistent secret file.
+
+- the ``--storage`` option is now required when a storage plugin like devpi-postgresql is in use. It's recommended to use a configuration file for devpi-server to have everything in one place (see ``--configfile``).
+
+- for the ``--logger-cfg`` yaml loading we now use ``safe_load`` of ``ruamel.yaml`` instead of ``load`` from ``pyyaml``.
+
+
+4.9.0 (2019-04-26)
+==================
+
+Features
+--------
+
+- implement #93: When creating a user, the password hash can be set directly with ``pwhash``. Upon database initialization allow setting root user password with ``--root-passwd`` and the password hash with ``--root-passwd-hash`` options. Thanks to Andreas Palsson.
+
+- decouple devpi server version from database version to enable major releases that do not require export import of data
+
+- support ``--hard-links`` option during import for releases and doc zips.
+
+- added new endpoint to download multiple changelog entries at once. This will be used for faster replication in the future.
+
+- add option ``--replica-file-search-path`` to point to existing files. If a match is found it will be copied locally instead of fetched from the master. These files could be from a previous replication attempt or separately copied/restored.
+
+- add ``--hard-links`` support for replicas together with the ``--replica-file-search-path`` option. When a matching file is found it's hard linked instead of writing a copy.
+
+
+Bug Fixes
+---------
+
+- fix multiple triggering of mirror project names initialization.
+
+- fix updating time stamp of mirror project name cache when no project names have changed. This makes subsequent fetches actually use the cache instead of always fetching the data again from the mirror.
+
+- use timeout when waiting for data from master in replica on mirror simple pages.
+
+
+Other Changes
+-------------
+
+- slightly improved replica performance by removing unnecessary DB read and using fewer transactions.
+
+
+4.8.1 (2019-03-14)
+==================
+
+Bug Fixes
+---------
+
+- fix #520: uploads work with and without a trailing slash for the index url.
+
+- fix #597: handle ConnectionError in httpget
+
+- fix #615: setting of mirror index options with server side patching didn't work
+
+
+4.8.0 (2018-11-16)
+==================
+
+Features
+--------
+
+- feature #193: ensuring that the `description_content_type` and `provides_extras` fields are handled.
+
+  This is used to add support for using alternative content types in the package descriptions such as `text/markdown`.
+
+- The PATCH method of indexes supports a list of arguments with operations in the form of ``key=value`` for setting values and for lists in the form of ``key+=value`` and ``key-=value`` to add and remove items. This prevents undoing changes sent in concurrent PATCH requests.
+
+
+Bug Fixes
+---------
+
+- fix #598: streaming download now uses BytesIO to avoid performance issues for downloads with more than a few MB.
+
+  Thanks to Dom Hudson from http://www.thoughtriver.com for the report and initial benchmark code.
+
+- handle mirrors that don't return a correct X-PYPI-LAST-SERIAL header.
+
+
+4.7.1 (2018-09-10)
+==================
+
+Bug Fixes
+---------
+
+- Fix missing releases in simple pages for data from previous devpi-server versions.
+
+- Fixed key error 'requires_python' for data from previous devpi-server versions.
+
+
+4.7.0 (2018-09-08)
+==================
+
+Deprecations and Removals
+-------------------------
+
+- Deprecated DEVPI_SERVERDIR environment variable in favor of DEVPISERVER_SERVERDIR to be consistent with the other option overwrites.
+
+
+Features
+--------
+
+- fix #502: add support for YAML config files.
+
+- environment variables can now be used for configuration.
+  The option name needs to be changed to uppercase, prefixed with ``DEVPISERVER_`` and dashes replaced by underscores.
+  For example ``--restrict-modify`` becomes ``DEVPISERVER_RESTRICT_MODIFY``.
+
+- fix #511: support PEP508 requires-python attribute on links. Thanks to Sergey Kolosov for the parsing parts.
+
+- Allow deletion of mirrored package releases.
+
+- Allow deletion of mirrored projects and their releases.
+
+- Allow deletion of specific package versions on a mirror. Only the downloaded files will be removed. The file will be fetched again from the mirror source on request.
+
+- Better handling of 404s in mirror indexes. Every project not found would create an entry in the database which would grow it unnecessarily.
+
+
+Bug Fixes
+---------
+
+- Allow deleting releases even if the file was removed from the filesystem outside of devpi.
+
+- fix #491: when a file was previously fetched in a mirror index, but is now missing and needs to be fetched again then skip writing an empty changeset with new serial.
+
+- When deleting a mirror, delete all it's data as well. Previously deleting a mirror and recreating it would result in old entries showing up.
+
+- In offline mode the full project list returns all projects with locally stored releases.
+
+- In offline mode no bogus 503 responses show up in the log anymore.
+
+- when a file was missing on a replica and has to be fetched from master, it is now written to disk, so it doesn't have to be fetched again.
+
+- Only projects with locally stored releases show up in the full project list of mirrors if upstream can't be reached.
+
+
+4.6.0 (2018-07-13)
+==================
+
+Features
+--------
+
+- implement #448: allow deletion of single release files.
+
+- implement #530: set caching headers for release files to expire far in the
+  future.
+
+- implement #535: Generate absolute URLs on project simple index pages when
+  ``--absolute-urls`` option is used or ``X-DEVPI-ABSOLUTE-URLS`` header is
+  set.
+
+- add `--max-request-body-size` option to control maximum upload size
+
+- add `--request-timeout` option to provide adjustable request timeout
+
+
+Bug Fixes
+---------
+
+- fix #549: reduce timeout for requests to PyPI etc from 30 to 5 seconds. This
+  can be changed with the ``--request-timeout`` option.
+
+- fix raising of UpstreamError by using correct ``status_code`` attribute of
+  response instead of not existing ``status``.
+
+- Fix cumulating log tags for request numbers by wrapping the responsible code
+  in a try/finally block to always remove the tag, even when there was an
+  exception.
+
+
+4.5.0 (2018-05-04)
+==================
+
+Features
+--------
+
+- add ``devpiserver_on_remove_file`` hook to handle removal of files in
+  plugins. Thanks to Dr Colin Kong for the PR.
+
+- Use ``pypi.org`` as new default for ``root/pypi`` mirror index.
+
+
+Bug Fixes
+---------
+
+- adjust minimum version of pyramid to 1.8 (related to #430)
+
+- fix #494: PEP 503 compliance, html and redirect fixes.
+
+- fix #510: catch another possible error when trying to open sqlite db with uri
+  keyword.
+
+
+4.4.0 (2018-01-17)
+==================
+
+Features
+--------
+
+- fix issue469: Add ``acl_toxresult_upload`` to index configuration.
+
+
+Bug Fixes
+---------
+
+- fix issue477: importing with --no-root-pypi failed.
+
+
+4.3.2 (2017-12-19)
+==================
+
+Bug Fixes
+---------
+
+- fix issue480: store additional metadata for packages.
+
+- fix issue489: ignore download errors in replica thread for mirrored files
+  that were removed from the filesystem on master and from the mirrored source.
+
+
+4.3.1 (2017-11-23)
+==================
+
+Bug Fixes
+---------
+
+- fix +api on replica when master is down.
+
+
+4.3.1rc1 (2017-09-08)
+=====================
+
+Bug Fixes
+---------
+
+- fix issue345: remove ``expires -1`` option in example nginx proxy config for
+  devpi. When there are no ``Expires`` and ``Cache-Control`` headers, then pip
+  does not cache the simple pages, the headers set by ``expires -1`` caused pip
+  to cache for 5 minutes.
+
+- fix issue402: the redirect to simple index didn't take X-Outside-Url into
+  account.
+
+- fix for url decoding issue with mirrors. When package filenames contain
+  characters such as `!` or `+`, these get URL encoded to `%21` and `%2B` in
+  the remote simple index. This fix ensures that in the filename saved to the
+  disk cache these are decoded back to `!` or `+`.
+
+- fix issue434: ``--status`` didn't work anymore. The background server
+  functionality is now deprecated, see --gen-config to use a process manager
+  from your OS.
+
+- fix issue449: push to pypi broke again due to a changed reply.
+
+- fix remote file url for mirrors not named "root/pypi" which provide file
+  hashes.
+
+- fix issue401: fix traceback and inaccessible index by ignoring removed bases.
+
+
+4.3.0 (2017-04-23)
+==================
+
+- allow upload of documentation without first registering the project or
+  uploading releases.
+
+- add a new command line option ``--replica-max-retries``
+
+  Under certain network conditions, it's possible for a connection from devpi
+  to replicas (such as pypi) to be dropped, resulting in a 502 bad gateway
+  being returned from devpi. When replica-max-retries is set to a number > 0,
+  devpi will attempt to retry connections until the retry limit is reached.
+
+- fix ``--import`` after ``--init`` option was added.
+
+- fix import when the export contains a bases cycle.
+
+- fix issue350: use absolute path to devpi-server when starting
+  background process.
+
+- fix issue392: setting user password from command line when password hash
+  wasn't migrated yet failed.
+
+- fix #381: indicate acceptable exit status for systemd.
+
+- remove broken ``--bypass-cdn`` option.
+
+
+4.2.1 (2016-12-22)
+==================
+
+- the new ``--init`` option now exits after done, so it can be used in
+  automation scripts. When using with ``--start`` it still starts the
+  background server immediately.
+
+
+4.2.0 (2016-12-14)
+==================
+
+SECURITY NOTE:
+
+Before devpi-server 4.2.0 passwords were hashed with a very weak algorithm.
+It's strongly recommended to change any passwords created before 4.2.0
+after upgrading! The password salt and hashes are exposed via the /+changelog
+URL used for replication. If you use replication you should use client
+side certificates or https with basic authentication to secure /+changelog.
+
+UPGRADE NOTE:
+
+Starting with devpi-server 4.2.0 the replication protocol is disabled by
+default to prevent accidental information leaks, like password hashes. To
+enable the replication protocol, you have to use ``--role master`` when
+starting the master devpi-server instance.
+
+- fix issue378: the replication protocol is now disabled by default.
+
+- fix push to PyPI by skipping failing "register" step and adding additional
+  fields in POST data on "file_upload".
+
+- fix issue372: correctly set isolation_level for sqlite3 connections. This
+  also fixes Python 3.6 compatibility.
+
+- fix issue334: The event handler for the simple page cache failed when an
+  index was deleted and a new replica tried to run the event hooks.
+
+- fix issue314: Fetch external file on replica from original source if master
+  is down.
+
+- fix issue363: Replace weak password hashing with argon2 using passlib.
+  Existing logins will be migrated on login.
+
+- fix issue377: Add new ``--init`` option required to initialize a server
+  directory. This prevents accidental use of wrong or empty ``--serverdir``.
+
+- fix issue285: require waitress >= 1.0.1 to enable IPv6 support.
+
+
+4.1.1 (2016-10-14)
+==================
+
+- when a project has no releases (only setup.py register ran) and it isn't
+  whitelisted, then upstream releases will now be blocked as expected.
+
+- Adjust event processing status messages and the times when they are shown:
+  After 5 minutes of no event processing there will be a warning.
+  After 30 minutes this will turn into a fatal status.
+  After 1 hour of not being in sync there will be a warning.
+  After 6 hours of desync the status turns fatal.
+
+- handle sqlite3.NotSupportedError when the installed sqlite doesn't support
+  URI filenames at all.
+
+
+4.1.0 (2016-07-15)
+==================
+
+- Try opening read only transactions in SQLite read only mode for better
+  concurrency/locking behaviour. This is officially supported with Python 3.4,
+  but many systems allow it implicitly in older Python versions.
+
+- fix issue353: If an index inherits from a mirror with an empty cache and the
+  mirror is returning errors, there would be an error returned by devpi. Now
+  this situation is treated like the mirror has no releases and just the
+  releases from the index are returned.
+
+- fix issue352: When there was an issue during commit or rollback, the thread
+  local info got into an inconsistent state. This caused an AttributeError
+  whenever that thread was used. Eventually this could exhaust all worker
+  threads and make devpi unresponsive.
+
+- fix issue354: allow more general agent versions, such as 'Python-urllib/3.5'
+  to appear before the installer user agent string so redirects for setuptools
+  versions which had that work.
+
+- fix issue214: change the order in which indices are searched to fix the
+  mirror whitelisting and also make sure that packages, if available,
+  are always installed from internal indices instead of root/pypi.
+
+
+4.0.0 (2016-05-12)
+==================
+
+.. note::
+
+  Please note that devpi-server 4.0.0 is a bug fix/compatibility release as it
+  only changes project name normalization compared to 3.1.x. The internal use
+  of the normalization requires an export/import cycle, which is the reason for
+  the major version increase. There are no other big changes and so everyone
+  who used devpi-server 3.x.y should be fine just using 4.0.0. It's also fine
+  to export from 2.6.x and import with 4.0.0.
+
+- require devpi-common 3.0.0 which changes the normalization of project names.
+
+- allow import of exported data from devpi-server 3.1.2 with inconsistently
+  normalized project names.
+
+
+3.1.2 (2016-05-12)
+==================
+
+- fix issue336: the mirror_whitelist setting got lost on import.
+
+- allow export if a package with dotted name was uploaded while
+  devpi-common 2.0.9 was installed. The resulting export will only be
+  importable with devpi-server 4.x. It will fail to import in 3.x with a
+  MissingRegistration error.
+
+
+3.1.1 (2016-05-11)
+==================
+
+- fix import of releases for packages with dots in their name after PEP-503
+  fix in devpi-common 2.0.9.
+
+
+3.1.0 (2016-04-22)
+==================
+
+- fix issue208: Uncached mirrored files (PyPI) are streamed to the client while
+  downloading. This prevents timeouts in pip etc. The files are only cached if
+  there were no errors and in case there is a checksum, the content matches.
+  Downloads on replicas won't wait until they are in sync, but pass on what
+  they get from the master.
+
+- fix issue229: A replica talking to a master behind nginx decoded gzipped
+  data, but left the Content-Encoding header unchanged. Now data is passed on
+  unchanged.
+  Thanks to Chad Wagner for the fix.
+
+- fix issue317: When there is no data in the directory specified via
+  ``--serverdir`` during export, then the process aborts instead of creating
+  and exporting an empty database.
+
+- fix issue210: When an external user authenticated by a plugin tries to create
+  an index the required user object is now created automatically if the
+  permissions allow it.
+
+- address issue267: We unconditionally clean up the transaction if there was an
+  exception in rollback or commit. This prevents issues in logging and a
+  possible server lockup if at some point all threads contain a failed
+  transaction object.
+
+- fix issue321: All exceptions in the replica and event processing threads are
+  caught now and can't stop the threads anymore.
+
+- fix issue338: Handle trailing slash in project listing for mirror indexes.
+
+- Added checks on the index dependency tree built from bases during import.
+
+- Every project is now imported together with all it's release files on it's
+  own serial. Before the release files each got their own serial. This reduces
+  the number of serials generated, especially when there are many projects and
+  releases. That in turn improves import, as well as replication and event
+  handling times (in particular devpi-web indexing).
+
+
+3.0.2 (2016-03-03)
+==================
+
+- fix setting of ``mirror_whitelist``.
+
+- normalize names when setting ``mirror_whitelist``.
+
+- fix handling of 404 in mirror indexes on replicas.
+
+- include version in file paths in exported data to avoid possible
+  name conflicts.
+
+
+3.0.1 (2016-02-12)
+==================
+
+- fix importing of uploaded files. Only the last index from exported data
+  was processed.
+
+
+3.0.0 (2016-02-12)
+==================
+
+- dropped support for python2.6
+
+- block most ascii symbols for user and index names except ``-.@_``.
+  unicode characters are fine.
+
+- add ``--no-root-pypi`` option which prevents the creation of the
+  ``root/pypi`` mirror instance on first startup.
+
+- added optional ``title`` and ``description`` options to users and indexes.
+
+- new indexes have no bases by default anymore. If you want to be able to
+  install pypi packages, then you have to explicitly add ``root/pypi`` to
+  the ``bases`` option of your index.
+
+- added optional ``custom_data`` option to users.
+
+- generalized mirroring to allow adding mirror indexes other than only PyPI
+
+- renamed ``pypi_whitelist`` to ``mirror_whitelist``
+
+- speed up simple-page serving for private indexes. A private index
+  with 200 release files should now be some 5 times faster.
+
+- internally use normalized project names everywhere, simplifying
+  code and slightly speeding up some operations.
+
+- change {name} in route_urls to {project} to disambiguate.
+  This is potentially incompatible for plugins which have registered
+  on existing route_urls.
+
+- use "project" variable naming consistently in APIs
+
+- drop calling of devpi_pypi_initial hook in favor of
+  the new "devpi_mirror_initialnames(stage, projectnames)" hook
+  which is called when a mirror is initialized.
+
+- introduce new "devpiserver_stage_created(stage)" hook which is
+  called for each index which is created.
+
+- simplify and unify internal mirroring code some more
+  with "normal" stage handling.
+
+- don't persist the list of mirrored project names anymore
+  but rely on a per-process RAM cache and the fact
+  that neither the UI nor pip/easy_install typically
+  need the projectnames list, anyway.
+
+- introduce new "devpiserver_storage_backend" hook which allows plugins to
+  provide custom storage backends. When there is more than one backend
+  available, the "--storage" option becomes required for startup.
+
+- introduce new "--requests-only" option to start devpi-server in
+  "worker" mode.  It can be used both for master and replica sites.  It
+  starts devpi-server without event processing and replication threads and
+  thus depends on respective "main" instances (those not using
+  "--request-only") to perform event and hook processing.  Each
+  worker instance needs to share the filesystem with a main instance.
+  Worker instances can not serve the "/+status" URL which must
+  always be routed to the main instance.
+
+
+2.6.1 (2016-03-03)
+==================
+
+- add more info when importing data.  Thanks Marc Abramowitz for the PR.
+
+- include version in file paths in exported data to avoid possible
+  name conflicts.
+
+
+2.6.0 (2016-01-29)
+==================
+
+- fix issue262: new experimental option --offline-mode will prevent
+  devpi-server from even trying to perform network requests and it
+  also strip all non-local release files from the simple index.
+  Thanks Daniel Panteleit for the PR.
+
+- fix issue304: mark devpi-server versions older than 2.2.x as incompatible
+  and requiring an import/export cycle.
+
+- fix issue296: try to fetch files from master again when requested, if there
+  were checksum errors during replication.
+
+- if a user can't be found during authentication (with ``setup.py upload`` for
+  example), then the http return code is now 401 instead of 404.
+
+- fix issue293: push from root/pypi to another index is now supported
+
+- fix issue265: ignore HTTP(S) proxies when checking if the server is
+                already running.
+
+- Add ``content_type`` route predicate for use by plugins.
+
+
+2.5.3 (2015-11-23)
+==================
+
+- fix a bug that resulted from accessing a non-existing project on 
+  root/pypi where upstream does not contain the X-PYPI-LAST-SERIAL
+  header usually.  Thanks Matthias Bach.
+
+
+2.5.2 (2015-11-20)
+==================
+
+- recognize "pex" for redirections of user/index/NAME to
+  user/index/+simple/NAME just like we do with pip/setuptools.
+
+- fix py2 incompatibility introduced with 2.5.1 where we used
+  a unicode header and pyramid only likes str-headers.
+
+
+2.5.1 (2015-11-20)
+==================
+
+- fix issue289: fix simple page serving on replicas
+
+
+2.5.0 (2015-11-19)
+==================
+
+- fix a regression of 2.3.0 which would cause many write-transactions
+  for mirrored simple-page entries that didn't change.  Previous to the fix,
+  accesses to mirrored simple pages will result in a new
+  write-transaction every 30 minutes if the page is accessed which
+  is likely on a somewhat busy site.  If you running with replicas
+  it is recommended to do an an export/import cycle to remove all 
+  the unneccessary writes that were produced since devpi-server-2.3.0.
+  They delay the setup of new replicas considerably.
+
+- add info about pypi_whitelist on simple page when root/pypi is blocked for
+  a project.
+
+- replica simple-page serving will not unneccessarily wait for new 
+  simple-page entries to arrive at the replication side if the master 
+  does not return any changes in the initial simple-page request.
+  Previously a replica would wait for the replication-thread to catch
+  up even if no links changed.
+
+- fix setup.py to work on py34 and with LANG="C" environments.
+  Thanks Jason R. Coombs.
+
+- fix issue284: allow users who are listed in acl_upload to delete packages
+
+
+2.4.0 (2015-11-11)
+==================
+
+- NOTE: devpi-server-2.4 is compatible to data from devpi-server-2.3 but
+  not the other way round.  Once you run devpi-server-2.4 you can not go
+  back. It's always a good idea to make a backup before trying a new version :)
+
+- NOTE: if you use ``--logger-cfg`` with .yaml files you will need to
+  install pyyaml yourself as devpi-server-2.4 dropped it as a direct
+  dependency as it does not install for win32/python3.5 and is 
+  not needed for devpi-server operations except for logging configuration.
+  Specifying a ``*.json`` file always works.
+
+- add timeout to replica requests
+
+- fix issue275: improve error message when a serverdir exists but has no
+  version
+
+- improve testing mechanics and name normalization related to storing doczips
+
+- refine keyfs to provide lazy deep readonly-views for
+  dict/set/list/tuple types by default.  This introduces safety because
+  users (including plugins) of keyfs-values can only write/modify a value
+  by explicitly getting it with readonly=False (thereby deep copying it)
+  and setting it with the transaction.  It also allows to avoid unnecessary
+  copy-operations when just reading values.
+
+- fix issue283: pypi cache didn't work for replicas.
+
+- performance improvements for simple pages with lots of releases.
+  this also changed the db layout of the caching from pypi.python.org mirrors
+  but will seamlessly work on older data, see NOTE at top.
+
+- add "--profile-requests=NUM" option which turns on per-request
+  profiling and will print out after NUM requests are executed
+  and then restart profiling.
+
+- fix tests for pypy. We officially support pypy now.
+
+
+2.3.1 (2015-09-14)
+==================
+
+- fix issue272: require devpi-common >= 2.0.6
+
+- recognize newly registered PyPI projects, now that we don't watch the
+  PyPI changelog anymore
+
+
+2.3.0 (2015-09-10)
+==================
+
+- switched to semantic versioning. Only major revisions will ever require an
+  export/import cycle.
+
+- fix issue260: Log identical upload message on level "info"
+
+- Log upload trigger message on level "warn"
+
+- The PyPI changelog isn't watched for changes anymore.
+  Instead we cache release data for 30 minutes, this can be adjusted with the
+  ``--mirror-cache-expiry`` option.
+
+- fix issue251: Require and validate the "X-DEVPI-SERIAL" from master in
+  replica thread
+
+- fix issue258: fix FileReplicationError representation for proper logging
+
+- fix issue256: if a project removes all releases from pypi or the project is
+  deleted on pypi, we get a 404 back. In that case we now return an empty list
+  of releases instead of returning an UpstreamError.
+
+- Change nginx template to serve HEAD in addition to GET requests of files
+  directly instead of proxying to devpi-server
+
+- make keyfs cache size configurable via "--keyfs-cache-size" option and
+  increase the default size to improve performance for installations with many
+  writes
+
+
+2.2.2 (2015-07-09)
+==================
+
+- make replica thread more robust by catching more exceptions
+
+- Remove duplicates in plugin version info
+
+- track timestamps for event processing and replication and expose in /+status
+
+- implement devpiweb_get_status_info hook for devpi-web >= 2.4.0 status messages
+
+- UPGRADE NOTE: if devpi-web is installed, you have to request
+  ``application/json`` for ``/+status``, or you might get a html page.
+
+- address issue246: refuse uploading release files if they do not
+  contain the version that was transferred with the metadata of
+  the upload request.
+
+- fix issue248: prevent change of index type after creation
+
+
+2.2.1 (2015-05-20)
+==================
+
+- fix issue237: fix wrong initial replica setup which would prevent
+  initialization.  Thanks Stephan Erb.
+
+
+2.2.0 (2015-05-13)
+==================
+
+- add "--no-events" option to postpone running events after import
+  to server start
+
+- add new ``devpiserver_get_credentials`` plugin hook to extract credentials
+  from request
+
+- fix issue216: use sha256 instead of md5 checksums for serving own files
+  (BACKWARD INCOMPATIBLE: needs export/import)
+
+- parse arbitrary checksums from PyPI in preparation for 
+  a pending change on pypi.python.org which will see 
+  it serving sha256 checksums only.
+
+- fix debug logging to actually show debug logs
+  (logging was not properly reconfigured)
+
+- make logging fully configurable via a config yaml/json
+  (e.g., log to an external syslog server)
+
+- fix issue221: avoid looking at file entries who are not part of a project
+  (because they got deleted)
+
+- fix issue217: systematically avoid using bytes in persisted dictionaries 
+  to avoid any py2/py3 bytes/unicode issue.
+
+- show actual instead of prospective replica serial in master /+status page 
+
+- fix issue165: make off-line serving more robust when we know there is
+  a change but pypi is currently not reachable (just serve the old cached
+  links and issue an error to the logs)
+
+- fix flaky devpi-server "--start" startup detection which would
+  previously assume success if another server was already running on
+  the address/port we want to run on. 
+
+- fix importing of indexes with custom_data and importing of
+  documentation which follows uncommon package naming
+
+- fix issue228: when a stage is deleted don't veriy if it was root/pypi
+  because you cannot delete root/pypi anyway.
+
+- fix issue232: pypi-refresh now works better for projects which have  
+  have a non-nomalized projectname, and also works better across replication.
+
+- add new ``devpiserver_indexconfig_defaults`` plugin hook to add key names for
+  settings in the index configuration.
+
+- add new ``devpiserver_on_upload_sync`` plugin hook and use it to move the
+  Jenkins triggering to the ``devpi-jenkins`` plugin.
+
+- rename hooks: ``devpiserver_auth_credentials`` to
+  ``devpiserver_get_credentials`` and ``devpiserver_run_commands`` to
+  ``devpiserver_cmdline_run``.
+
+- add ``--hard-links`` option to use hard links for releases and doc zips
+  during export.
+
+- speed up detecting replica/master mismatches and let a replica
+  instantly die if it talks to a master that doesn't match the
+  master id the replica is operating for.
+
+
+2.1.5 (2015-03-16)
+==================
+
+- fix devpi-ldap issue17: the push command directly used the username instead
+  of using a general permission check, that caused groups in acl_upload to not
+  be honored.
+- fix issue171: "devpi push" of an existing package fails on non volatile index
+  and overwrites on volatile.
+- before devpi-server 2.1.5 it was possible to upload multiple documentation
+  zip files for the same package version if the filename differed in case, this
+  broke export and replication of server state and the documentation view.
+  Now the newest upload will be used and older ones ignored.
+
+- fix issue217: try harder to avoid using "bytes" in python2 to allow
+  py2/py3 master/replica setups and generally have more type-uniform bytes.
+
+
+2.1.4
+=====
+
+- fix issue214: the whitelisting code stopped inheritance too early.
+
+- fix regression: easy_install went to the full simple project list for a
+  non existing project.
+
+- When uploading an existing version to a non-volatile index, it's now a
+  no op instead of an error if the content is identical. If the content is
+  different, it's still an error.
+
+- Uploading documentation to non-volatile indexes is now protected the same
+  way as packages.
+
+- added code to allow filtering on packages with stable version numbers.
+
+- Change nginx template to set the X-outside-url header based on the
+  requested URL.  This makes it possible to connect by IP address when
+  the server name is not in DNS.
+
+2.1.3
+=====
+
+- fix replication when files with identical name are later changed. This can
+  happen with toxresults. These kind of errors are tracked and when a later
+  changeset fixes them, the error is removed. The errors are exposed through
+  the /+status view of replica servers.
+
+- fix issue179: protect deletion of versions 
+
+- fix issue176: better allow replicas to export their state by removing 
+  an obsolete way of normalizing project names upon export (nowadays,
+  project names should be normalized already and normalization
+  is bound to change/be refined further for devpi-server-2.2)
+
+- fix replication when a "volatile" file like egg-links from
+  repositories are involved: a master will not re-fetch such files
+  but rather use the existing one if the request comes from a replica.
+
+2.1.2
+=====
+
+- fix issue172: avoid traceback when user/index/name/version is accessed.
+
+- fix issue170: ensure that we parse the prospective pip-6.0 user agent
+  string properly so that using the username/index url works with pip.
+  Thanks Donald Stufft and Florian Schulze.
+
+- fix issue158: redirect to normalized projectname for all GET views.
+
+- fix issue169: change /+status to expose "event_serial" as "the last
+  event serial that was processed".  document "serial" and
+  "event-serial" and also refine internals wrt to "event-serial" so that
+  it means the "last serial for which events have been processed"
+
+2.1.1
+=====
+
+- fix replication issue reported by a customer: if a replica lags
+  behind a master and a file was created and then deleted meanwhile,
+  the replica would get stuck with a FileReplicationError.  We now
+  let the master report a 410 GONE code so that the replica knows
+  it can safely proceed because the file was deleted later anyways.
+
+- generate "systemd" configuration example when "--gen-config" is issued.
+  Thanks Pavel Sedlak.
+
+- fix issue109: fix relative URLs in simple index pages and 404 errors on
+  uploading toxresults and downloading files when serving under an outside URL
+  with a sub path.  Thanks to Joe Holloway for detailed infos.
+
+- drop limitation on maximum documentation size. Body size is now only
+  controlled by frontends such as nginx. Thanks Stephan Erb.
+
+- use newer version of virtualenv for jenkins trigger. Thank brunsgaard.
+
+2.1.0
+=====
+
+- make replication more precise: if a file cannot be replicated,
+  fail with an error log and try again in a few seconds.
+  This helps to maintain a consistent replica and discover 
+  the potential remaining bugs in the replication code.
+
+- add who/when metadata to release files, doczips and test results
+  and preserve it during push operations so that any such file provides
+  some history which can be visualized via the web-plugin.  The metadata
+  is also exposed via the json API (/USER/INDEX/PROJECTNAME[/VERSION])
+
+- fix issue113: provide json status information at /+status including roles 
+  and replica polling status, UUIDs of the repository. See new
+  server status docs for more info.
+
+- support for external authentication plugins: new devpiserver_auth_user 
+  hook which plugins can implement for user/password validation and
+  for providing group membership.
+
+- support groups for acl_upload via the ":GROUPNAME" syntax. This
+  requires an external authentication plugin that provides group
+  information.
+
+- on replicas return auth status for "+api" requests 
+  by relaying to the master instead of using own key.
+
+- add "--restrict-modify" option to specify users/groups which can create,
+  delete and modify users and indices.
+
+- make master/replica configuration more permanent and a bit safer
+  against accidental errors: introduce "--role=auto" option, defaulting
+  to determine the role from a previous invocation or the presence of the
+  "--master-url" option if there was no previous invocation.  Also verify
+  that a replica talks to the same master UUID as with previous requests.
+
+- replaced hack from nginx template which abused "try_files" in "location /"
+  with the recommended "error_page"/"return" combo.
+  Thanks Jürgen Hermann
+
+- change command line option "--master" to "--master-url"
+
+- fix issue97: remove already deprecated --upgrade 
+  option in favor of just using --export/--import
+
+- actually store UTC in last_modified attribute of release files instead of
+  the local time disguising as UTC.  preserve last_modified when pushing 
+  a release.  
+
+- fix exception when a static resource can't be found.
+
+- address issue152: return a proper 400 "not registered" message instead
+  of 500 when a doczip is uploaded without prior registration.
+
+- add OSX/launchd example configuration when "--gen-config" is issued.
+  thanks Sean Fisk.
+
+- fix replica proxying: don't pass original host header when relaying a
+  modifying request from replica to master.
+
+- fix export error when a private project doesnt exist on pypi
+
+- fix pushing of a release when it contains multiple tox results.
+
+- fix "refresh" button on simple pages on replica sites
+
+- fix an internal link code issue possibly affecting strangeness
+  or exceptions with test result links
+
+- be more tolerant when different indexes have different project names 
+  all mapping to the same canonical project name.
+
+- fix issue161: allow "{pkgversion}" to be part of a jenkins url
+
+2.0.6
+=====
+
+- log version information of all found plugins on startup.
+
+2.0.5
+=====
+
+- fix issue145: restrict devpi_common dependency so that a future
+  "pip install 'devpi-server<2.0'" has a higher chance of working.
+
+- fix issue144: fix interaction with requests-2.4.0 -- 
+  use new devpi-common-offered "Errors" enumeration to check for exceptions.
+
+- add '*' as possible option for pypi_whitelist to whitelist all packages of
+  an index at once. Refs issue110
+
+- outside url now works with paths, so you can host a devpi server on something
+  like http://example.com/foo/
+
+- fix issue84: during upload: if a previously registered name diverges from a freshly
+  submitted one take the previously registered one.  This can happen when uploading
+  wheels and in other situations.
+
+- fix issue132: during exporting use whatever name comes with the
+  versiondata instead of trying too hard to assert consistency of different
+  versions.
+
+- fix issue130: fix deletion of users so that is properly deletes all
+  indexes and projects and files on each index.
+
+2.0.4
+=====
+
+- fix issue139: adapt to a recent change in pypi which now serves
+  under URLs using normalized project names instead of the "real" registered name
+  Thanks Timothy Allen and others for sorting this out.
+  
+- fix issue129: fix __init__ provided version and add a test that it always matches
+  the one which pkg_resources sees (which gets it effectively from setup.py)
+
+2.0.3
+=====
+
+- fix issue128: a basic auth challenge needs to be sent back on submit when no
+  authorization headers are sent with the post request.
+
+2.0.2
+=====
+
+- fix issue120: link to "upgrade" section from main index page.
+
+- preserve http reason string for setup.py submit through replica proxying
+
+- proper error message when "devpi push X" uses an X that comes from 
+  a base index or is not existent
+
+- fix issue121: depend on py-1.4.23 to fix python3.4 compatibility
+  for a venusian/py34/py interaction import oddity.
+
+- fix issue126: handle deletion of pypi project cache entries correctly 
+  (i.e. ones that are triggered by "refresh" on simple page).
+
+- Add special handling of ":ANONYMOUS:" user in acl_upload to allow anonymous
+  submit.
+
+- fix nginx template so that when used in a replica setting the master
+  always answers HEAD requests without nginx short-cirtcuiting it.
+
+- increase internal cache size to improve performance when many indexes
+  and projects are served.
+
+2.0.1
+=====
+
+- fix regression which prevented the basic authentication for the setuptools
+  upload/register commands to fail. Thanks Florian Schulze.
+
+- fix issue106: better error messages on upload failures.
+  And better allow auto-registration when uploading release files.
+
+2.0.0
+=====
+
+- major revamp of the internal core of devpi to support
+  replication (both master and server code), a plugin architecture
+  with the new devpi-web plugin providing a new web interface.
+  Mostly done by Florian Schulze and Holger Krekel.
+
+- moved all html views except for files and the simple index to new
+  devpi-web package. Thanks to Florian Schulze for the PR.
+
+- implement issue103: By default if you register a package in an index,
+  no lookup on pypi is made for that package anymore. You have to add the
+  package to the pypi_whitelist of the index to let pypi releases be mixed in.
+  This is to prevent malicious uploads on pypi to overwrite private packages.
+
+- change json api to get rid of the different meaning of URLs with and
+  without a trailing slash. "/{user}/" is now the same as "/user" and always
+  lists indices.  "/{user}/{index}" and "/{user}/{index}/ now always
+  lists the index config and the contained per-stage projects
+  (not inherited ones).
+
+- switch the wsgi app to use Pyramid and waitress for WSGI serving.
+
+- don't refresh releaselinks from the mirroring thread but rather
+  rely on the next access to do it.
+
+- fix issue98: deleting a project config or a project version now accepts
+  names which map to the canonical name of a project.
+
+- fix issue82 and fix issue81: root/pypi now provides the same
+  attributes as normal indexes and results in a 409 MethodNotAllowed
+  http code when trying to change the config.
+
+- fix issue91: make serverport available as well. Thanks David Bonner.
+
+- fix issue100: support large file uploads.  As we switched away from 
+  bottle to pyramid, the body-size limit is gone.
+
+- fix issue99: make "devpi-server --start" etc work when devpi-server
+  is not itself on PATH (by using sys.argv[0] for finding the binary)
+
+- fix issue84: uploading of wheels where the registered package name 
+  has an underscore works despite a wheel's metadata carrying
+  hyphens instead.  At submit-file time we now lookup the registered
+  name and use that instead of assuming the one coming with the wheel
+  is the correct one.
+
+- add refresh button on root/pypi project simple index pages which clears the
+  internal cache to force a refetch from PyPI.
+
+- implement issue75: We use the custom X-Devpi-Auth header for authentication
+  now, instead of overwriting the Authentication header.
+
+- added experimental support for using client certificates when running as a
+  replica of a server running behind a proxy
+
+1.2.2
+=====
+
+- fix issue78: create less directories for pypi package files by
+  splitting the md5 part into two. Avoids TooManyLinks errors in
+  large installations.
+
+- fix --stop on windows.  Thanks to Christian Ullrich for the PR.
+
+- fix issue79: interoperate with pip-1.5 by interpreting accept
+  header as "*/*" as html_preferred.  Thanks Richard Jones.
+
+- use latest virtualenv-1.11.2 when bootstrapping on jenkins
+
+- fix issue89: adapt for bottle changes in 0.12.1.  Thanks 
+  Alexey Sveshnikov.
+
+1.2.1
+=====
+
+- fix an import issue for doc files which were wrongly tied to a newer
+  version of a base index. now version "auto" detection for storing
+  doc files only works within a stage.  Thanks Laurent Brack for bringing
+  it up and providing the repo.
+
+- fix issue66: api endpoints now also respect --outside-url setting
+  so that you can serve devpi from a subpath.  Thanks for Fabian
+  Snovna for reporting and analysis.
+
+- fix issue63: skip egg links that go to a directory (this requires
+  doing a SVN checkout which devpi-server does not do).  Thanks
+  Ken Jung for analyzing the problem.
+
+- fix issue68: don't derive metadata from filename but instead
+  look it up in metadata or submitted form.
+
+- fix cache-invalidation when normalized_project_name != real_name
+  (e.g. for Django but also many others). addresses issue59.
+
+- add newline to simple list output for better human readability of the
+  page (thanks Brandon Maister)
+
+- make xmlrpc calls to pypi's changelog API use "requests" sessions 
+  so that http proxies are respected there as well (fixes issue58).
+  thanks to riehlm for identifying the problem and testing the fix.
+
+- internally refactor and consolidate mocking against requests library
+
+- --upgrade-state will upgrade now between major.minor/major.minor+1 changes.
+
+1.2
+===
+
+- serve links to files on simple pages and index root as relative
+  paths so that it works more nicely with proxy-pass server setups.
+  fixes issue56.
+
+- make devpi-server and devpi-common python3.3 compatible, addresses
+  issue57
+
+- use system http/s proxy settings from devpi-server.  fixes issue58.
+
+- refactor locations to allow nginx serving static files more directly.
+  Also updated nginx template accordingly.
+
+- rework "--upgrade-state" to detect the state version of the server dir
+  and create an appropriate virtualenv with a devpi-server install in order
+  to export data, and then import that version.
+
+- allow to use /user/index as indexserver url for pip/easy_install by
+  redirecting non-json queries to /user/index/PROJ[/] to 
+  /user/index/+simple/PROJ/
+
+- fix submission of multi-value fields like "classifiers" or "platform"
+  (previously they would be wrongly collapsed to become the last value of a list)
+
+- fix normalization import/export issue: pypi names take precendence
+  for defining the "real" name of a project.
+
+- always store uploaded documentation with a version.  While 
+  "devpi upload" will make sure to pass in the version, "setup.py upload_docs"
+  will not pass in a version.  In the latter case, devpi-server assumes
+  the documentation belongs to the highest yet registered release.
+  This change requires exporting with devpi-1.1 and importing with devpi-1.2
+  in order to properly store versioned docs internally.
+
+- use types/url/metadata/validation functionality of new depdency devpi_common 
+
+- internal cleanup using pytest-flakes
+
+- make devpi-server use a proper UserAgent string
+
+1.1
+===
+
+- systematically test pypi/mirror code against all 34K pypi projects
+  so that we know that all http/https installable archive links that pypi offers 
+  are correctly recognized by devpi-server's root/pypi index.
+
+- if no pypi mirror state is known, devpi-server now calls
+  pypi to obtain names/serials.  It will fail to start
+  if no such initial connection is possible.  Once a first mirror
+  state is known, subsequent devpi-server starts will
+  not perform this initial query.
+
+- speed up and make more reliable all operations on private packages which
+  have no pypi.python.org release: we can now determine if a project
+  exists on pypi and under which name exactly without
+  remote queries or redirects to pypi.python.org.
+
+- fix issue45: register/upload package names are now properly 
+  validated and redirects take place if e.g. a project was
+  registered as "name-sub" and "+simple/name_sub" is queried.
+
+- new --upgrade-state command to allow for easy and safe
+  in-place upgrading of server state.  This is not guranteed
+  to be possible for all future releases which might require
+  using --export with an older version and --import with a newer
+  version.
+
+- new --export/--import options to dump and import server contents:
+  users, indexes, docs, release files and (test) attachments.
+  Note that root/pypi (PyPI-caching information) will not be exported/imported.
+  (maybe in the future if there is demand). 
+
+- fix issue49: both push and import/export now support docfiles.  Note,
+  however, that docfiles relate to a project as a whole and are not tied
+  to a particular version.  This property is inherited from the PyPI
+  standard upload_docs action and cannot be changed without interfering
+  or replacing the upload_docs protocol of setuptools/sphinx.
+
+- fix issue51: return 200 code if release file is successfully uploaded 
+  but jenkins could not be triggered (previously returned 500)
+
+- reject simple/NAME if NAME contains non-ascii characters
+  (PEP426 naming rules)
+
+- devpi-server now returns a X-DEVPI-API-VERSION and
+  X-DEVPI-SERVER-VERSION header.  For future incompatible changes 
+  these versions allow clients to reject interactions.
+
+- also add ".serverversion" file and write it if it does not
+  exist, and make devpi-server use it to verify if
+  operating on a compatible server data layout, otherwise bail out.
+
+- address issue43: --gendeploy now uses pip without --pre and
+  explicitely instructs pip to install the exact same version 
+  of devpi-server with which --gendeploy is issued.
+
+- fix issue46 -- for GET /root/pypi/ only show a link to the
+  simple page instead of computing "latest in-stage packages"
+  which is only useful for devpi's user indices.
+
+- fix issue37: upload with expired login causes proper 401
+
+
+1.0
+===
+
+- rename "--datadir" to "serverdir" to better match
+  the also picked up DEVPI_SERVERDIR environment variable.
+
+- fix a strange effect in that sometimes tools ask to receive
+  a package url with a "#md5=..." arriving at the server side.
+  We now strip that part out before trying to serve the file.
+
+- on startup don't create any initial indexes other 
+  than the "root/pypi" pypi caching mirror.
+
+- introduce ``--start``, ``--stop`` and ``--log`` commands for
+  controling a background devpi-server run. (these commands
+  previously were implemented with the devpi-client and the "server"
+  sub command)
+
+- fix issue27: provide full list of pypi names in root/pypi's simple
+  view (and simple pages from inheriting indices)
+
+- default to "eventlet" server when creating deployment with --gendeploy
+
+- fix issue25: return 403 Forbidden when trying to delete the root user.
+
+- fix name mangling issue for pypi-cache: "project_name*" is now matched
+  correctly when a lookup for "project-name" happens.
+
+- fix issue22: don't bypass CDN by default, rather provide an
+  "--bypass-cdn" option to do it (in case you have cache-invalidation troubles)
+
+- fix issue20 and fix issue23: normalize index specs internally ("/root/dev" ->
+  "root/dev") and check if base indices exist.
+
+- add Jenkins build job triggering for running the tests for a package
+  through tox.
+
+- inheritance cleanup: inherited versions for a project are now shadowed
+  and not shown anymore with get_releaselinks() or in +simple pages
+  if the "basename" is exactly shadowed.
+
+- fix issue16: enrich projectconfig json with a "+shadow" file which
+  lists shadowed "versions"
+
+- initial wheel support: accept "whl" uploads and support caching 
+  of whl files from pypi.python.org
+
+- implemented internal push operation between devpi indexes
+
+- show "docs" link if documentation has been uploaded
+
+- pushing releases to pypi.python.org will now correctly 
+  report the filetype/pyversion in the metadata.
+
+- add setting of acl_upload for indexes.   Only the owning
+  user and acl_upload users may upload releases, files 
+  or documentation to an index.
+
+- add --passwd USER option for setting a user's password server-side
+
+- don't require email setting for creating users
+
+0.9.4
+=====
+
+- fix issue where lookups into subpages of the simple index
+  (simple/NAME/VER) would not trigger a 404 as they should.
+
+0.9.3
+=====
+
+- fixed issue9: caching of packages where upstream provides no
+  last-modified header now works.
+
+- fixed issue8: only http/https archives are allowed and other
+  schemes (such as ftp) are silently skipped
+
+- added support for REST DELETE methods of projects and versions on an index
+
+- added "argcomplete" support for tab completion on options
+  (thanks to Anthon van der Neut)
+
+0.9.2
+=====
+
+- fix /USER/INDEXNAME root views to contain only latest in-stage packages
+
+- make +api calls return bases so that "devpi use" can show them
+
+0.9.1
+=====
+
+- return 404 for submits to root/pypi
+
+- properly sorted release file links on stage indexes
+
+- "push" method on indexes for transfering release files to another
+  pypi index
+
+- properly handle urls from indexes with ~ and other special chars
+
+- fix root/pypi and root/dev page serving in various cases
+
+0.9.0
+=====
+
+- implement more precise pypi.python.org CDN/caching invalidation
+  technique, using the most recent PyPI API ("X-PYPI-LAST-SERIAL" 
+  on simple pages and xmlrpc.list_packages_with_serial()).
+  also simplify background tasks to become only one async 
+  task doing both changelog checking and triggering updates.
+
+- use a filesystem based storage mechanism instead of Redis
+
+- prevent automatic decoding of gzip files in case of content encoding
+
+- XXX preliminarily introduce new int/dev, int/prod indexes where int/dev 
+  inherits packages from both int/prod and ext/pypi.  
+
+- XXX introduce preliminary support for client-side "devpi" workflow tool
+
+- allow uploads to int/dev
+
+- if no crontab exists for a user, simply create one
+  instead of erroring out.  Thanks Andi Albrecht.
+
+- internal refactoring for better organisation of redis access
+
+
+0.8.5
+=====
+
+- re-fix issue6: tests and fixes for django-debug-toolbar
+  where recursive scraping was accidentally triggered
+
+- remove fine-grained http caching for now because caching 
+  on the index level seems enough.  This avoids an issues that
+  occured when installing icalendar and also some offline/online
+  state change issues.  
+
+- added a note to README for how to upgrade --gendeploy installs
+
+- remove general dependency on virtualenv which 
+  is only needed for --gendeploy.  Adapt docs accordingly.
+
+- remove dependency on pip by shifting the relevant 
+  scraping bits directly to _pip.py
+
+0.8.4
+=====
+
+- use pip's link parser rather than beautifulsoup
+  to benefit from link parsing code tested out 
+  and maintained in the wild.  Adapt README.
+
+- skip a test if crontab command is not present
+
+  (thanks Markus Zapke-Gruendemann)
+
+- release 0.8.3 is not useable
+
+0.8.2
+=====
+
+- fix issue6 - some edge cases for link parsing uncovered
+  by BeautifulSoup and CouchApp installs. Thanks Anton Baklanov.
+
+- fix issue5 - require minimal versions for deps, thanks Andi Albrecht
+
+- remove superflous include lines in MANIFEST.in
+
+
+0.8.1
+=====
+
+- fix: change gendeployed supervisord.conf  to not autostart
+  processes on "devpi-ctl" invocations.  "devpi-ctl help"
+  would autostart the processes after a shutdown which is
+  not very intuitive.  This is actually compatible with the 
+  documentation.
+
+- refactor --gendeploy related code to be in gendeploy.py
+
+- fix: fixate path of devpi-server in gendeployed configuration
+  to point to the freshly installed devpi-server. also add
+  a note to the README.
+
+0.8
+===
+
+- introduce "--gendeploy=TARGETDIR" for generating a virtualenv
+  directory with supervisor-based configuration in TARGETDIR/etc
+  and a TARGETDIR/bin/devpi-ctl helper to control the running
+  of devpi-server and redis-server processes.
+
+- fix issue4: keep the "changelog" thread active across
+  network/reachability errors.  Thanks Laurent Brack.
+
+- use argparse instead of optparse, simplify and group options
+
+- fix python2.6 and simplify logging configuration
+
+0.7
+===
+
+-  Initial release
+
