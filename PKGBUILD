@@ -114,7 +114,6 @@ prepare() {
   patch -Rp1 -i ../replace-blacklist-with-ignorelist.patch
 
   # Upstream fixes
-  patch -Np1 -i ../extend-enable-accelerated-video-decode-flag.patch
   patch -Np1 -i ../linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
   patch -Np1 -i ../linux-sandbox-fix-fstatat-crash.patch
 
