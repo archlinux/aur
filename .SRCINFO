@@ -1,0 +1,18 @@
+pkgbase = swaystatus-git
+	pkgdesc = Generates a status line for swaybar
+	pkgver = 0.1.2.r4.81db8c8
+	pkgrel = 1
+	url = https://gitlab.com/jmcantrell/swaystatus
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = git
+	depends = python
+	depends = python-toml
+	provides = swaystatus
+	conflicts = swaystatus
+	source = git+https://gitlab.com/jmcantrell/swaystatus.git
+	md5sums = SKIP
+
+pkgname = swaystatus-git
