@@ -1,0 +1,8 @@
+post_install() {
+	echo ':: Sample configuration file installed to /usr/share/doc/cpass/cpass.cfg'
+	echo ':: You can copy this to $HOME/.config/cpass/cpass.cfg and edit it'
+}
+
+post_upgrade() {
+	post_install
+}

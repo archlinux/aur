@@ -1,18 +1,18 @@
 pkgbase = cpass-py
 	pkgdesc = An urwid based TUI frontend for pass
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/oliverlew/cpass
+	install = cpass.install
 	changelog = CHANGELOG
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = pass
 	depends = python-urwid
-	depends = python3
 	provides = cpass
 	conflicts = cpass
-	source = https://files.pythonhosted.org/packages/source/c/cpass/cpass-0.9.2.tar.gz
-	sha256sums = 8f55c68c12a8ac38677f55a168857bd730e2232c0af232f53b8a4a70ba9197aa
+	source = https://files.pythonhosted.org/packages/source/c/cpass/cpass-0.9.3.tar.gz
+	sha256sums = 75e139de3eaa0f87ea5fcc70a6c0b0521291700bc059d1edd1251e66c372cc34
 
 pkgname = cpass-py
