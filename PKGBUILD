@@ -2,7 +2,7 @@
 
 _pyname=bashate
 pkgname=python-$_pyname
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A pep8 equivalent for bash scripts"
 arch=(any)
@@ -11,26 +11,27 @@ license=(Apache)
 depends=(
 	python
 	python-pbr
-	python-babel
 )
 makedepends=(
 	python
-	python-hacking
-	python-mock
-	python-coverage
-	python-discover
 	python-fixtures
-	python-subunit
 	python-sphinx
 	python-openstackdocstheme
+	python-reno
+	python-setuptools
+)
+checkdepends=(
 	python-testtools
 	python-stestr
-	python-reno
+	python-subunit
+	python-coverage
+	python-discover
+	python-hacking
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('8143df66c83808ab25a59319da236fb1')
-sha256sums=('eb990cf07c0ca09ee06f3b7eff79232a2d6eff9d2bdf141e8126efebb0521a17')
-sha512sums=('f6bacddcad1077d034df0de4313b13aa24ba4c60baa456912d1f40511830a58ca118a72193d4cac358963870e097bee4b0e2ae5a7f7aec42f0ba1663180eb401')
+md5sums=('e910cde1c80a2518eec647a6110bae2e')
+sha256sums=('a0df143639715dc2fb6cf9aa6907e4a372d6f0a43afeffc55c5fb3ecfe3523c8')
+sha512sums=('6ef17da86113195d8dae093fddb7c17a365b4cd7816ef0ebb98ac6cda61f52526092f7da6c39c11fba9d709a124970e18e93e267f7d0fb38190e313208f66e98')
 
 export PBR_VERSION=$pkgver
 
