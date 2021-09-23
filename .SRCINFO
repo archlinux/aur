@@ -15,8 +15,8 @@ pkgbase = castle-engine-git
 	depends = libpng
 	depends = libvorbis
 	depends = mesa
-	optdepends = fpc: to compile games
-	optdepends = lazarus: to compile castle-editor
+	depends = fpc
+	depends = lazarus
 	source = git+https://github.com/castle-engine/castle-engine.git
 	md5sums = SKIP
 

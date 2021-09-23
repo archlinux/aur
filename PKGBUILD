@@ -1,4 +1,5 @@
 # Maintainer: Trung Le (Kagamma) <kagamma(dot)km(at)gmail(dot)com>
+# Maintainer: Michalis Kamburelis (michalis) <michalis@castle-engine.io>
 
 pkgname=castle-engine-git
 pkgver=v7.0.alpha.1.r16494.f39aec48a
@@ -7,10 +8,8 @@ pkgdesc="Cross-platform (desktop, mobile, console) 3D and 2D game engine using m
 arch=(x86_64)
 url="https://castle-engine.io/"
 license=('LGPL with static linking exception')
-depends=(gtk2 freetype2 openal libpng libvorbis mesa)
+depends=(gtk2 freetype2 openal libpng libvorbis mesa fpc lazarus)
 makedepends=(git make fpc lazarus)
-optdepends=('fpc: to compile games'
-            'lazarus: to compile castle-editor')
 source=(git+https://github.com/castle-engine/castle-engine.git)
 md5sums=('SKIP')
 
