@@ -2,7 +2,7 @@
 # contributor: loqs 
 
 pkgname=ecbuild-git
-pkgver=3.4.1.r0.gd4347cf
+pkgver=latest
 pkgrel=1
 #pkgdesc="A CMake-based build system"
 pkgdesc="ecbuild - ECMWF build system"
