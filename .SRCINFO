@@ -1,7 +1,7 @@
 pkgbase = gore
 	pkgdesc = Yet another Go REPL that works nicely
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/motemen/gore
 	arch = x86_64
 	license = MIT

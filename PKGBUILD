@@ -2,7 +2,7 @@
 
 pkgname=gore
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="Yet another Go REPL that works nicely"
 depends=('go')
