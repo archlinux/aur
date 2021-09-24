@@ -7,7 +7,7 @@ pkgbase = dmenu-gregdan3
 	license = MIT
 	provides = dmenu
 	conflicts = dmenu
-	source = git://git.suckless.org/dmenu#tag=5.0
+	source = dmenu-gregdan3::git://git.suckless.org/dmenu#tag=5.0
 	source = config.h
 	source = https://tools.suckless.org/dmenu/patches/numbers/dmenu-numbers-4.9.diff
 	source = https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff
