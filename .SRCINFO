@@ -1,0 +1,41 @@
+pkgbase = sensu-go
+	pkgver = 6.4.3
+	pkgrel = 1
+	url = https://sensu.io
+	arch = x86_64
+	groups = sensu-go
+	license = MIT
+	makedepends = go
+	makedepends = curl
+	makedepends = jq
+	source = sensu-go-6.4.3.tar.gz::https://github.com/sensu/sensu-go/archive/refs/tags/v6.4.3.tar.gz
+	source = sensu-agent.service
+	source = sensu-backend.service
+	source = sensu-go-agent-6.4.yml.example::https://docs.sensu.io/sensu-go/6.4/files/agent.yml
+	source = sensu-go-backend-6.4.yml.example::https://docs.sensu.io/sensu-go/6.4/files/backend.yml
+	source = sensu.sysusers
+	source = sensu.tmpfiles
+	sha256sums = 19744bcec1e0c0f89b8fb582e704076c85be621a588b96a790a0c2497474efbf
+	sha256sums = 2e512118a12f6e716c9279efd7d48eaa4e5e927a8a80444868808f34223e3c99
+	sha256sums = 57c4e7835da2d58186e8e36518dc9e0b7cee93bd018619ec2a7210bf212d0d27
+	sha256sums = caa84541efca9c58a82aeb567cf2adb48fb5b4c252e41e62d41b209862169572
+	sha256sums = abfa22de5794962ed39807d157806fa85c57a0db72817adbc4a482c4f74bbffa
+	sha256sums = c4560bc809d59d5b4bff5a03c7c0082ae4eb903b82dee1d8d01b431a98eccbb2
+	sha256sums = 7e5f0c7d8eb9161d9e9f40fd8ef825cc500156d4575eb3599c2083013bd22407
+
+pkgname = sensu-go-agent
+	pkgdesc = Sensu Go Agent
+	provides = sensu-agent
+	conflicts = sensu-agent
+
+pkgname = sensu-go-backend
+	pkgdesc = Sensu Go Backend
+	install = sensu-go-backend.install
+	provides = sensu-backend
+	conflicts = sensu-backend
+
+pkgname = sensu-go-cli
+	pkgdesc = Sensu Go CLI
+	install = sensu-go-cli.install
+	provides = sensu-cli
+	conflicts = sensu-cli

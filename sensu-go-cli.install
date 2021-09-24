@@ -1,0 +1,8 @@
+post_install() {
+    echo "Setup sensuctl with:"
+    echo "sensuctl configure -n \\"
+    echo "  --username 'YOUR_USERNAME' \\"
+    echo "  --password 'YOUR_PASSWORD' \\"
+    echo "  --namespace default \\"
+    echo "  --url 'http://127.0.0.1:8080'"
+}

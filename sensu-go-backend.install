@@ -1,0 +1,6 @@
+post_install() {
+    echo "Initialize sensu-backup like this:"
+    echo "export SENSU_BACKEND_CLUSTER_ADMIN_USERNAME=<username>"
+    echo "export SENSU_BACKEND_CLUSTER_ADMIN_PASSWORD=<password>"
+    echo "sensu-backend init"
+}
