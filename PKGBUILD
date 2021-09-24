@@ -1,8 +1,8 @@
 # Maintainer: Thilo Wischmeyer <thwischm@gmail.com>
 pkgname=lesbar
 pkgver=0.5
-pkgrel=1
-pkgdesc="A status bar with decent font rendering"
+pkgrel=2
+pkgdesc="A view layer for desktop widgets and statusbars"
 arch=('x86_64')
 url="https://git.sr.ht/~salmiak/lesbar"
 license=('MIT')
@@ -12,7 +12,7 @@ depends=('cairo'
          'libx11')
 makedepends=('scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~salmiak/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("5f0af08af4821a5a6bc6c6f9bf941b4ec469a1d1180bc44a9ea1af8ee75173b5")
+sha256sums=("1eb6419de61ce653c2941845797489f15fe851ffee3ff3630fe54f24d7500289")
 
 build() {
 	cd "$pkgname-v$pkgver"

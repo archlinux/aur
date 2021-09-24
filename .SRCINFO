@@ -1,7 +1,7 @@
 pkgbase = lesbar
-	pkgdesc = A status bar with decent font rendering
+	pkgdesc = A view layer for desktop widgets and statusbars
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~salmiak/lesbar
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = lesbar
 	depends = pango
 	depends = libx11
 	source = lesbar-0.5.tar.gz::https://git.sr.ht/~salmiak/lesbar/archive/v0.5.tar.gz
-	sha256sums = 5f0af08af4821a5a6bc6c6f9bf941b4ec469a1d1180bc44a9ea1af8ee75173b5
+	sha256sums = 1eb6419de61ce653c2941845797489f15fe851ffee3ff3630fe54f24d7500289
 
 pkgname = lesbar
