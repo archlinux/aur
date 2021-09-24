@@ -4,9 +4,9 @@
 # Forked from https://aur.archlinux.org/packages/spotify/
 
 pkgname=spotify-noshows
-pkgver=1.1.56.595
+pkgver=1.1.68.632
 epoch=1
-_commit=g2d2da0de
+_commit=g2b11de83
 pkgrel=1
 pkgdesc='Patched version of spotify AUR package excluding podcast recommendations from the home page'
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=('spotify.protocol'
         "${pkgname}-${pkgver}-x86_64-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages")
 sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            '4a270461d07c339a3fdf49cd0a8728d4fc7300be001a1ba59c74f05bf273b79a61bde6d046c27a6af38dfb6af58963fbd8b8cd7468c91b91e48b0d32b3dcc2b5'
+            '742bf459d7d87cc269a4c29cd2489753c6f7b62f3ee2150808c4931c29ee0d89f5b5ae47589112768e5958da73cba857074845fd017bd53c4574ea84c6770074'
             'SKIP'
             'SKIP'
             'SKIP')
