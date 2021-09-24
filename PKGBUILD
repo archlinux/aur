@@ -41,7 +41,6 @@ package() {
     make INSTALL_ROOT="$pkgdir" install
     mkdir -p ${pkgdir}/usr/share/applications
     mkdir -p ${pkgdir}/usr/share/pixmaps
-    cp ../icon_1024x1024.png ../mudlet.png
     install -m 644 ../mudlet.desktop ${pkgdir}/usr/share/applications
     install -m 644 ../mudlet.svg ${pkgdir}/usr/share/pixmaps    
 }
