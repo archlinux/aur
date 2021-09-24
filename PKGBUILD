@@ -3,7 +3,7 @@
 
 pkgname=eudic
 pkgver=12.6.7
-_date=2021-09-16
+_date=2021-09-23
 _lang=en
 _flang=English
 pkgrel=1
