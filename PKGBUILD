@@ -9,14 +9,12 @@ arch=('x86_64')
 url="https://github.com/Audiveris/audiveris"
 license=('AGPL3')
 depends=(
-  'java-runtime>=7'
-  'java-runtime<=8'
+  'java-runtime=11'
   'tesseract-data-eng'
   'freetype2'
 )
 makedepends=(
-  'java-environment>=7'
-  'java-environment<=8'
+  'java-environment=11'
   'gradle'
 )
 optdepends=('tesseract-data: For languages other than english')
