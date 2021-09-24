@@ -1,7 +1,7 @@
 pkgbase = find-the-command-git
 	pkgdesc = Advanced command-not-found hook for bash, fish and zsh using the power of pacman
 	pkgver = 1.4.2.r2.g0fc7e85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agura-lex/find-the-command
 	install = find-the-command.install
 	arch = any

@@ -20,13 +20,10 @@ post_install() {
 	>> pacman files database update:
 	# systemctl enable pacman-files.timer
 EOF
-
-systemctl enable pacman-files.timer
 }
 
 post_upgrade() {
 	post_install
-	systemctl enable pacman-files.timer
 }
 
 pre_remove() {

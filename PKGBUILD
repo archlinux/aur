@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=find-the-command-git
 pkgver=1.4.2.r2.g0fc7e85
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced command-not-found hook for bash, fish and zsh using the power of pacman"
 arch=('any')
 url="https://github.com/agura-lex/find-the-command"
