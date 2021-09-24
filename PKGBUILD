@@ -12,7 +12,7 @@ _desktop_i18n=67b07d5
 
 pkgname=anki
 pkgver=2.1.44
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://ankisrs.net/"
