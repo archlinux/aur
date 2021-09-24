@@ -29,7 +29,7 @@ source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-SHA512.tar.gz"
         sedutil-sleep.service)
 sha256sums=('e31fdfdc9d57f8bc63652bca5abe0468be145b6f5d5a215ce34b666cf9893f84'
             'c192b82c7ce0080e920e805a05b49b0cca4692467b9d716e6c5fcbf8f2a9463c'
-            '8f1e5c43e70382cef32a9fe888d7aba71c8cceecd9c045c492746a85a200ab17'
+            '71335d5f2b9b5b51aa15b0dc90bf421509ee78ac6618418a19f85929716ed343'
             'fa4729c0922f07f6349567bfb11e62f4c25f117da191a4d8caa684dcd1bde502'
             '74bf3b603cd62a571626a6238c48354c9d0448d05039fb02e412cce7829dbf30'
             'd9a7b66d8365e7f4eb0233b30c0ab70b5e978f6554960bf12994a1f0910c1447'
