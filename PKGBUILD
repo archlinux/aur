@@ -1,6 +1,6 @@
 # Maintainer: Makima0 <kekelanact@gmail.com>
 pkgname=postman-bin-zh
-pkgver=8.5.1
+pkgver=9.0.3
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=(
 	"postman.desktop"
 )
 depends=(libxss nss gtk3)
-sha256sums=('e78b6b66af5a48a043c1f0abcf1e626da2168c1c47afdbc57b8d335d60ba3f8f'
-	    '226715972cfcb792dc2c3a065ddfca6c8e51b36543a0df8636584e75aae36fe3'
+sha256sums=('b3c104d82c8daa46430963c58f3038b875048c5848e31af6b12b4f25a3f74681'
+	    '57cb4270e23f51e6000dd29dc6c86e8483c54393be7babda24706626b9b43807'
             '74b2d8570658e207e31f729e7f4768952252383aee7c695218d077bd0ef13245')
 package() {
 	rm -rf Postman/app/resources/app/
@@ -26,11 +26,11 @@ package() {
   	install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/postman/Postman" "${pkgdir}/usr/bin/postman"
     # License
-    install -D -m644 "Postman/app/LICENSE" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # install -D -m644 "Postman/app/LICENSE" \
+    #   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     # Chromium License
-    install -D -m644 "Postman/app/LICENSES.chromium.html" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+    # install -D -m644 "Postman/app/LICENSES.chromium.html" \
+    #   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
     # Desktop file
     install -D -m644 "postman.desktop" \
         "${pkgdir}/usr/share/applications/postman.desktop"
