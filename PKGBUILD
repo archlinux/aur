@@ -2,8 +2,8 @@
 
 pkgname=gnome-metronome
 _appname=metronome
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Practice music with a regular tempo"
 arch=(x86_64)
 url=https://gitlab.gnome.org/aplazas/metronome
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(libadwaita gstreamer)
 makedepends=(cargo meson)
 source=("$url/-/archive/$pkgver/$_appname-$pkgver.tar.gz")
-sha512sums=('5a63b6bfe9ab30ef909e10c5e2beb7f079f876d9bda33e2dd52477960e1f0e1ca242b16c4bf889fff5f010cec65c373592390cfd485909de1dc1be2853d1584b')
+sha512sums=('213073080810f11a7d9ab46b385a7a59037ce65bd75160127eb7e823c84a034258f8da197b8002aaaf66121827578ccacd59f32c1cedba8d6fa2c2e830ef901f')
 
 build() {
 	arch-meson "$_appname-$pkgver" build
