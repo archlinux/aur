@@ -14,7 +14,7 @@ _patches=("https://tools.suckless.org/dmenu/patches/numbers/dmenu-numbers-4.9.di
           "https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff"
           "https://tools.suckless.org/dmenu/patches/grid/dmenu-grid-4.9.diff"
           "https://tools.suckless.org/dmenu/patches/gridnav/dmenu-gridnav-5.0.diff")
-source=("git://git.suckless.org/dmenu#tag=5.0"
+source=("$pkgname::git://git.suckless.org/dmenu#tag=5.0"
         "config.h"
         "${_patches[@]}")
 sha256sums=('SKIP'
