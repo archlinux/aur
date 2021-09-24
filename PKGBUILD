@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=supercollider-vstplugin
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=2
 pkgdesc="The IEM vstplugin plugin for SuperCollider"
 arch=("x86_64")
@@ -9,9 +9,9 @@ license=('GPL')
 groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
 #This is the subfolder on IEM's gitlab containing the particular version. Each release is in a new folder.
-_version_folder="d68f9e435590ae7f2d9e83aab8d08038"
-source=("pkgname-$pkgver-$pkgrel.zip::${url}/uploads/${_version_folder}/VSTPlugin_v${pkgver}_Linux.zip")
-md5sums=('dfa36b1a9a00af124fc61b08537589b3')
+_version_folder="9cb0c5c78d4dac101bc9070146a8882e"
+source=("$pkgname-$pkgver-$pkgrel.zip::${url}/uploads/${_version_folder}/VSTPlugin_v${pkgver}_Linux.zip")
+md5sums=('d12ffb94488f22969e9bd9870d22085e')
 
 package() {
 	DESTINATION_="usr/share/SuperCollider/Extensions/"
