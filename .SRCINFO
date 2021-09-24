@@ -1,7 +1,7 @@
 pkgbase = reaper-bin
 	pkgdesc = A complete digital audio production application for computers, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset
 	pkgver = 6.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reaper.fm
 	arch = x86_64
 	arch = i686
@@ -15,6 +15,9 @@ pkgbase = reaper-bin
 	optdepends = jack
 	optdepends = pulseaudio
 	provides = reaper=6.36
+	provides = lv2-host
+	provides = vst-host
+	provides = vst3-host
 	source_x86_64 = https://reaper.fm/files/6.x/reaper636_linux_x86_64.tar.xz
 	sha256sums_x86_64 = dc5d7cbd5e4beeb0667211884576f16f9a68d4360a4ded6beedb2c161f88bf4f
 	source_i686 = https://reaper.fm/files/6.x/reaper636_linux_i686.tar.xz

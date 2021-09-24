@@ -3,14 +3,14 @@
 
 pkgname=reaper-bin
 pkgver=6.36
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete digital audio production application for computers, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset"
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
 url="https://reaper.fm"
 license=('custom')
 depends=('gtk3' 'desktop-file-utils' 'xdg-utils' 'aribb24')
 optdepends=('jack' 'pulseaudio')
-provides=("reaper=${pkgver}")
+provides=("reaper=${pkgver}" 'lv2-host' 'vst-host' 'vst3-host')
 source_x86_64=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_x86_64.tar.xz")
 source_i686=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_i686.tar.xz")
 source_aarch64=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_aarch64.tar.xz")
