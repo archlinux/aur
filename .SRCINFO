@@ -1,11 +1,11 @@
 pkgbase = notion-app
 	pkgdesc = The all-in-one workspace for your notes and tasks
 	pkgver = 2.0.16
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/notion-enhancer/notion-repackaged
 	install = notion-app.install
-	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = c-ares
 	depends = ffmpeg
@@ -23,7 +23,9 @@ pkgbase = notion-app
 	depends = libappindicator-gtk3
 	provides = notion-app
 	conflicts = notion-app
-	source = https://github.com/notion-enhancer/notion-repackaged/releases/download/v2.0.16-2/notion-app-2.0.16-2.pacman
-	md5sums = e6e4e560305466095722eacb7f9caa1b
+	source_x86_64 = https://github.com/notion-enhancer/notion-repackaged/releases/download/v2.0.16-5/notion-app-2.0.16-5.pacman
+	sha256sums_x86_64 = 22cfd38a1009997fb66342212eef54f8de8067388a62af4e04cb1120ef24d98a
+	source_aarch64 = https://github.com/notion-enhancer/notion-repackaged/releases/download/v2.0.16-5/notion-app-2.0.16-5-aarch64.pacman
+	sha256sums_aarch64 = c48341ef74a193ef30678e82f95fef95e50627ba1c9cdd2266b6be8091bd230c
 
 pkgname = notion-app
