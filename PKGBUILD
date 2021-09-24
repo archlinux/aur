@@ -2,7 +2,7 @@
 # Contributor: Sergey Zolotorev <sergey.zolotorev@gmail.com>
 
 pkgname=pacman-hook-kernel-install
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Pacman hooks for kernel-install."
 url='https://man.archlinux.org/man/kernel-install.8'
@@ -10,16 +10,15 @@ arch=('any')
 license=('GPL')
 depends=('bash' 'systemd')
 source=(
-	'kernel-install-add.hook'
-	'kernel-install-remove.hook'
+	'90-kernel-install-add.hook'
+	'90-kernel-install-remove.hook'
 )
 
 package() {
-	install -Dm644 'kernel-install-add.hook' 'kernel-install-remove.hook' \
+	install -Dm644 '90-kernel-install-add.hook' '90-kernel-install-remove.hook' \
 		-t"${pkgdir}/usr/share/libalpm/hooks"
 }
 
-
 # sums
-sha256sums=('ca9d66fb7dad75087cd127232fe9d050ede2db9e8c0f988c80a78a31c495c115'
-            '13a265c01a0c45026a9793b92288b8e7248f8d849863e44bdb1c8300cc0bb64c')
+sha256sums=('44f46cc566ff194a033daa2c1a755f387838e68520d4ef8da41730813fc3619d'
+            '38f7019c229403a40d04b2f253a17f7644ceb5d67d499f199e9e324d44b432c5')
