@@ -9,12 +9,12 @@
 pkgname=redshift-minimal
 _name=redshift
 pkgver=1.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Adjusts the color temperature of your screen according to your surroundings, with minimal dependencies."
 arch=('i686' 'x86_64')
 url='http://jonls.dk/redshift/'
 license=('GPL3')
-makedepends=('intltool')
+makedepends=('intltool' 'libxcb')
 conflicts=('redshift')
 provides=('redshift')
 source=("https://github.com/jonls/${_name}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.xz")
