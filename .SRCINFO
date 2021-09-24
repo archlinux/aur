@@ -1,0 +1,24 @@
+pkgbase = sensu-go-web
+	pkgdesc = Web UI for Sensu Go clusters
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://sensu.io
+	arch = x86_64
+	groups = sensu-go
+	license = MIT
+	depends = yarn
+	depends = nodejs
+	provides = sensu-web
+	conflicts = sensu-web
+	options = !strip
+	backup = etc/sysonfig/sensu-go-web
+	source = sensu-go-web-1.1.0.tar.gz::https://github.com/sensu/web/archive/refs/tags/v1.1.0.tar.gz
+	source = sensu-go-web.service
+	source = sensu-go-web.sysusers
+	source = sensu-go-web.sysconfig
+	sha256sums = 732f18f648b939b538208aaa494ce7bb642121272d0bac1324ec2a373a6e1aae
+	sha256sums = 958d1deb1c45810747ff0e9ca1d13b7816d9edfb87f7dbd9c227acc27f43c20b
+	sha256sums = 5198dc5f331286165d2bca737249bd5704bc64e707e694d31884fa8e343f1e1e
+	sha256sums = 0a57fa1f7b408246ae4c172190a643e61485fe79b9dae2758bf875fda2b5439b
+
+pkgname = sensu-go-web

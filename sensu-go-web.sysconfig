@@ -1,0 +1,9 @@
+# Set listening port
+PORT=5000
+
+# Set URI for sensu backend
+API_URL=https://my-sensu-backend-api:8080
+
+# You might not have a signed CA certificate for the API URL for the sensu backend
+# Set this environment variable to false to turn off SSL cert verification
+#NODE_PROXY_SECURE=false

@@ -1,0 +1,14 @@
+[Unit]
+Description=Sensu Web UI Service
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/sensu-go-web
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/yarn node scripts serve #--modules-folder /opt/sensu/yarn/node_modules
+User=sensu_web
+Group=sensu_web
+WorkingDirectory=/opt/sensu/web
+
+[Install]
+WantedBy=multi-user.target

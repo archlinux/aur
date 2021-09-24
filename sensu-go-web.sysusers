@@ -1,0 +1,2 @@
+u sensu_web - "Sensu Monitoring Framework Dashboard" /opt/sensu/web /sbin/nologin
+g sensu_web - -
