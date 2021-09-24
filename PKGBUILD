@@ -1,10 +1,11 @@
 # Maintainer: Maxime Dirksen <dirksen.maxime@gmail.com>
-# Co-Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 # Co-Maintener: Supdrewin <supdrewin@outlook.com>
+# Co-Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
+# Co-Maintainer: Rui ZHAO <renyuneyun@gmail.com>
 # Contributor: Antoine Bertin <ant.bertin@gmail.com>
 
 pkgname=linux-enable-ir-emitter
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 epoch=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box."
@@ -20,7 +21,7 @@ depends=(python python-opencv python-yaml)
 install=linux-enable-ir-emitter.install
 
 source=("https://github.com/EmixamPP/linux-enable-ir-emitter/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0e22d5c86f1e05f18965c99fbaa4b0835e0832fd82bf01c1d8a01863270c9c50')
+sha256sums=('81a23c9a0b8f01ef8d460e97752e3deda31a23eaa15a2d6b177f298f2ab13dc2')
 
 build() {
     make -C "${srcdir}/${pkgname}-${pkgver}/sources/uvc"
