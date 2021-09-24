@@ -1,8 +1,8 @@
 # Maintainer: luosoy <249799588@qq.com>
 
 pkgname=com.qq.weixin.work.deepin
-pkgver=3.1.6.3605deepin6
-pkgrel=3
+pkgver=3.1.12.6001deepin8
+pkgrel=1
 epoch=
 pkgdesc="Deepin Wine Weixin Work"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${pkg
 #source=("https://community-store-packages.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 #source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/${pkgname}_${pkgver}_i386.deb")
 noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('a9e8e817f5e0767fe904a92b06143184')
+md5sums=('36c6c6cc6033468a3dd8f130d6f8afad')
 validpgpkeys=()
 
 prepare() {
