@@ -1,7 +1,7 @@
 pkgbase = ocaml-ocp-indent
 	pkgdesc = Indentation tool for OCaml, to be used from editors like Emacs and Vim.
-	pkgver = 1.8.1
-	pkgrel = 2
+	pkgver = 1.8.2
+	pkgrel = 1
 	url = https://github.com/OCamlPro/ocp-indent
 	arch = x86_64
 	license = MIT
@@ -13,10 +13,7 @@ pkgbase = ocaml-ocp-indent
 	provides = ocaml-ocp-indent
 	conflicts = ocaml-ocp-indent
 	options = !strip
-	source = https://github.com/OCamlPro/ocp-indent/archive/1.8.1.tar.gz
-	source = config.patch
-	sha256sums = 5c7bffd3a488ed3efc3e2c3cf9641433d317a53c8386f7f3c6fc737e3fdf0c67
-	sha256sums = 253c69d1e786484ef13592a1a8a14c4be92fce634d75ff8d1077b868f4658b59
+	source = https://github.com/OCamlPro/ocp-indent/archive/1.8.2.tar.gz
+	sha256sums = 013069cf0b2219593351077e7eb11379879310e7e3e09f4f1c399bb40f24388f
 
 pkgname = ocaml-ocp-indent
-
