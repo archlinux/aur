@@ -9,7 +9,7 @@ depends=('go')
 arch=('x86_64')
 url="https://github.com/motemen/gore"
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/motemen/gore/archive/v${pkgver}.tar.gz")
-sha256sums=('6df45dceff3767cb69c391711ba70d4183a8c6b0ed93866c4107b44310902c6d')
+sha256sums=('7b97773932526378a409fbdd04f86f174989fa8eccf3dc80fe4e387c51b5442a')
 
 build() {
   cd "$pkgname-$pkgver"
