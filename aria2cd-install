@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+if [[ -z XDG_CONFIG_HOME ]]
+then
+    mkdir -p $XDG_CONFIG_HOME/aria2
+    cp /usr/share/aria2/aria2.conf $XDG_CONFIG_HOME/aria2/aria2.conf
+    TARGET=$XDG_CONFIG_HOME/aria2/aria2.conf
+else
+    mkdir -p $HOME/.config/aria2
+    cp /usr/share/aria2/aria2.conf $HOME/.config/aria2/aria2.conf
+    TARGET=$HOME/.config/aria2/aria2.conf
+fi
+echo "Cpoied Aria2 config to ${TARGET}"
+if [[ -z XDG_CACHE_HOME ]]
+then
+    mkdir -p $XDG_CACHE_HOME/aria2
+    cp /usr/share/aria2/dht.dat $XDG_CACHE_HOME/aria2/dht.dat
+    cp /usr/share/aria2/dht6.dat $XDG_CACHE_HOME/aria2/dht6.dat
+    cp /usr/share/aria2/aria2.session $XDG_CACHE_HOME/aria2/aria2.session
+    TARGET=$XDG_CACHE_HOME/aria2
+else
+    mkdir -p $HOME/.cache/aria2
+    cp /usr/share/aria2/dht.dat $HOME/.cache/aria2/dht.dat
+    cp /usr/share/aria2/dht6.dat $HOME/.cache/aria2/dht6.dat
+    cp /usr/share/aria2/aria2.session $HOME/.cache/aria2/aria2.session
+    TARGET=$HOME/.cache/aria2
+fi
+echo "Copied Aria2 cache files to ${TARGET}"

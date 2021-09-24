@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
-echo "aria2cd has been installed/updated successfully, but there is something extra to do:"
+echo "aria2cd has been installed/updated successfully, but there is something extra to do."
+echo "You can run aria2cd-install to do it automatically or do the follow manually:"
 echo "You need to copy /usr/share/aria2/ to \${HOME}/.aria2/ or aria2c will not work correctly."
 echo "\${HOME} is the home directory of the user who runs aria2c"
 echo "You can also use \${XDG_CONFIG_HOME}/aria2/ instead of \${HOME}/.aria2/ for config and \${XDG_CACHE_HOME}/aria2/ for cache files such as DHT file and session file."

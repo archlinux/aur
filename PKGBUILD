@@ -1,8 +1,8 @@
 # Maintainer ZhangHua<zhanghua.00@qq.com>
 
 pkgname=aria2cd
-pkgver=1.0
-pkgrel=8
+pkgver=1.1
+pkgrel=1
 pkgdesc="A systemd Service to start aria2 automatically."
 arch=(any)
 url="https://aur.archlinux.org/aria2cd.git"
@@ -10,12 +10,14 @@ license=(custom:WTFPL)
 depends=(aria2 systemd)
 source=(
 	notify-user
+	aria2cd-install
 	${pkgname}.hook
 	aria2.conf
 	aria2@.service
 	LICENSE::http://www.wtfpl.net/txt/copying
 )
-sha256sums=('6cde5c3c4877fff8d7804ae958ab3cc6dad366e4275f757b0f7f146427450f8d'
+sha256sums=('5dd14105fcd2224c60103e5521922af0ddcb2a9ec2ef1734b092d946100019f6'
+            '85436b68fac425bd33fdcc966910782b618e5303dda0d68c1d23f26f9eea8279'
             '182b39e8f4f9cc979aa9cbaebbbb88298f009bfdb1c0bcb2d44fa538ff9fe73c'
             'a075c9b90a4732ea7fb332e81ad50244e778977ec028a56ae0b29f895fd7db87'
             'c863595990e32eb41aa76fd55d151acb04cee401fcf219d4e418b96fdc1468b2'
@@ -29,4 +31,5 @@ package(){
 	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licences/${pkgname}/LICENSE
 	install -Dm644 ${srcdir}/${pkgname}.hook ${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook
 	install -Dm755 ${srcdir}/notify-user ${pkgdir}/usr/share/libalpm/scripts/notify-user
+	install -Dm755 ${srcdir}/aria2cd-install ${pkgdir}/usr/bin/aria2cd-install
 }
