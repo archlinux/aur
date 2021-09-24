@@ -1,23 +1,35 @@
-# Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Hans-Nikolai Viessmann <hans AT viess.mn>
+
 pkgname=python-spython
-_pkgname=spython
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
-pkgdesc="Singularity Python a Python API to work with the Singularity open source software"
+pkgdesc="CLI tool for working with Singularity Python"
 arch=('any')
 url="https://singularityhub.github.io/singularity-cli/"
 license=('MPL2')
-depends=('python')
+depends=('python-requests' 'python-semver')
 optdepends=('singularity-container: to use and manipulate Singularity Containers')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7674b8b9b3b2e723e5754849985bd668c8056f9d79ff019ba6f4237c70e15367')
+makedepends=('python-setuptools' 'python-pytest-runner')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/spython/spython-$pkgver.tar.gz")
+sha256sums=('0d3d9a2f77da48b5e635af54d26de45a908d8eba2cb184b7791e928dd3b00f45')
+
+# prepare() {
+# 	cd "spython-$pkgver"
+# 	echo 'prune spython/tests' >> MANIFEST.in
+# }
 
 build() {
-	cd "${_pkgname}-${pkgver}"
-    /usr/bin/python setup.py build
+	cd "spython-$pkgver"
+	python setup.py build
+}
+
+check() {
+	cd "spython-$pkgver"
+	python setup.py pytest
 }
 
 package() {
-	cd "${_pkgname}-${pkgver}"
-    /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	cd "spython-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
