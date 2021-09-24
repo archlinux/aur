@@ -7,7 +7,7 @@
 
 pkgname=snmptt
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Perl-based SNMP trap handler for use with the Net-SNMP / UCD-SNMP snmptrapd program"
 arch=('any')
 url="http://snmptt.sourceforge.net/"
@@ -19,8 +19,21 @@ optdepends=(
   'perl-dbd-odbc: To add support for ODBC driver'
 )
 install="${pkgname}.install"
-source=("https://sourceforge.net/projects/${pkgname}/files/snmptt/${pkgname}_${pkgver}/${pkgname}_${pkgver}.tgz")
-md5sums=('4aba8b70bdd11e0cecca90fd9d979fd0')
+source=("https://sourceforge.net/projects/${pkgname}/files/snmptt/${pkgname}_${pkgver}/${pkgname}_${pkgver}.tgz"
+        'snmptt.sysusers'
+        'snmptt.tmpfiles'
+        'snmptt.service')
+sha256sums=('1b455a5ae252dab5d828926125073b5376e36855e38423aca8da9bce6c4920c5'
+            'f761511c33355bc2e4b760bcf85745f069846ec1acd3b6d5fa3756bc2accdca2'
+            'cafe8ccff31e03e820db7a7c861f0f068911f88c6e270f4e264939c6e59ea029'
+            'bb8ee914fbecb01c68e8cd8a0f497abefec6598164df0e4c7f1df98955e86437')
+
+prepare () {
+  cd "${srcdir}/${pkgname}_${pkgver}"
+
+  # modify INI PID setting to new path
+  sed -i 's/var\/run/run/' snmptt.ini
+}
 
 package() {
   cd "${srcdir}/${pkgname}_${pkgver}"
@@ -39,6 +52,14 @@ package() {
   # logrotation
   install -d "$pkgdir/etc/logrotate.d"
   install -Dm644 snmptt.logrotate "$pkgdir/etc/logrotate.d/snmptt"
+
+  # systemd service
+  install -d "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 "$srcdir/snmptt.service" "$pkgdir/usr/lib/systemd/system/snmptt.service"
+  install -d "$pkgdir/usr/lib/sysusers.d"
+  install -Dm644 "$srcdir/snmptt.sysusers" "$pkgdir/usr/lib/sysusers.d/snmptt.conf"
+  install -d "$pkgdir/usr/lib/tmpfiles.d"
+  install -Dm644 "$srcdir/snmptt.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/snmptt.conf"
 
   # install docs
   install -d "$pkgdir/usr/share/doc/snmptt"

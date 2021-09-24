@@ -1,0 +1,12 @@
+[Unit]
+Description=SNMPTT Daemon
+After=network.target local-fs.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/snmptt --daemon
+PIDFile=/run/snmptt.pid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
