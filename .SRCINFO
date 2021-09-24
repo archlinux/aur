@@ -1,0 +1,30 @@
+pkgbase = batterycm-switcher-git
+	pkgdesc = An advanced Ideapad Laptops conservation mode adjustment tool
+	pkgver = r22.c5e1610
+	pkgrel = 1
+	url = https://github.com/supdrewin/batterycm-switcher
+	install = batterycm.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gzip
+	makedepends = make
+	makedepends = xz
+	depends = bash
+	depends = coreutils
+	depends = man-db
+	depends = polkit
+	depends = vim
+	optdepends = acpid: For enable use function key to switch mode
+	optdepends = espeak: For enable show status using voice
+	optdepends = systemd: For optional function key backend service
+	provides = batterycm
+	provides = batterycm-switcher
+	provides = batterycm-charger
+	conflicts = batterycm
+	conflicts = batterycm-switcher
+	conflicts = batterycm-charger
+	source = batterycm-switcher::git+https://github.com/supdrewin/batterycm-switcher#branch=testing
+	sha256sums = SKIP
+
+pkgname = batterycm-switcher-git
