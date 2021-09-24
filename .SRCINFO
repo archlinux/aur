@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-xalan-c-git
 	pkgdesc = A XSLT processor for transforming XML documents (mingw-w64)
-	pkgver = r2.d8240ca
+	pkgver = 1.12.0.r10.g58dc1ac6c
 	pkgrel = 1
 	url = https://xalan.apache.org/
 	arch = any
@@ -18,7 +18,6 @@ pkgbase = mingw-w64-xalan-c-git
 	source = git+https://github.com/apache/xalan-c
 	source = fix-cross-compile.patch
 	sha256sums = SKIP
-	sha256sums = 08400961f038c1aed090174425e894673ffc359b52bcbad73d2c537a89ea34b7
+	sha256sums = bffe4d394b877d7a36c08efd7563ce9ccde3621ae3851dc9c00ce065cd360050
 
 pkgname = mingw-w64-xalan-c-git
-

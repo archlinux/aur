@@ -1,5 +1,5 @@
 diff --git a/src/xalanc/Include/XalanVersion.hpp.in b/src/xalanc/Include/XalanVersion.hpp.in
-index d0a7d971..63911ede 100644
+index d0a7d9719..63911ede3 100644
 --- a/src/xalanc/Include/XalanVersion.hpp.in
 +++ b/src/xalanc/Include/XalanVersion.hpp.in
 @@ -26,11 +26,11 @@
@@ -18,33 +18,56 @@ index d0a7d971..63911ede 100644
  /**
   * Xalan-C++ version represented as a single integer value.
 diff --git a/src/xalanc/Utils/CMakeLists.txt b/src/xalanc/Utils/CMakeLists.txt
-index dc39ad0c..78b61601 100644
+index dc39ad0c8..e104cd310 100644
 --- a/src/xalanc/Utils/CMakeLists.txt
 +++ b/src/xalanc/Utils/CMakeLists.txt
-@@ -41,13 +41,22 @@ add_custom_target(locale ALL)
+@@ -17,35 +17,37 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-set(GEN_SUPPORTDIR "${PROJECT_BINARY_DIR}/src/xalanc/PlatformSupport")
++cmake_path(APPEND PROJECT_BINARY_DIR "src" "xalanc" "PlatformSupport" OUTPUT_VARIABLE GEN_SUPPORTDIR)
+ file(MAKE_DIRECTORY "${GEN_SUPPORTDIR}")
+ 
+-set(XSL_NLS_SRC_DIR "${PROJECT_SOURCE_DIR}/src/xalanc/NLS")
+-set(XSL_NLS_BIN_DIR "${PROJECT_BINARY_DIR}/src/xalanc/NLS")
+-set(XSL_NLS_INC_DIR "${PROJECT_BINARY_DIR}/src/xalanc/NLS/include")
+-set(XSL_NLS_GEN_DIR "${PROJECT_BINARY_DIR}/src/xalanc/NLS/gen")
++cmake_path(APPEND PROJECT_SOURCE_DIR "src" "xalanc" "NLS" OUTPUT_VARIABLE XSL_NLS_SRC_DIR)
++cmake_path(APPEND PROJECT_BINARY_DIR "src" "xalanc" "NLS" OUTPUT_VARIABLE XSL_NLS_BIN_DIR)
++cmake_path(APPEND XSL_NLS_BIN_DIR "include" OUTPUT_VARIABLE XSL_NLS_INC_DIR)
++cmake_path(APPEND XSL_NLS_BIN_DIR "gen" OUTPUT_VARIABLE XSL_NLS_GEN_DIR)
+ file(MAKE_DIRECTORY "${XSL_NLS_LIB_DIR}")
+ file(MAKE_DIRECTORY "${XSL_NLS_GEN_DIR}")
+ file(MAKE_DIRECTORY "${XSL_NLS_INC_DIR}")
+ 
+ set(MSGFILENAME XalanMsg_${LOCALE})
+ 
+-set(XLIFF_FILE_NAME ${XSL_NLS_SRC_DIR}/${LOCALE}/${MSGFILENAME}.xlf)
++cmake_path(APPEND XSL_NLS_SRC_DIR "${LOCALE}" "${MSGFILENAME}.xlf" OUTPUT_VARIABLE XLIFF_FILE_NAME)
+ 
+-set(GENMSGINDEX "${XSL_NLS_GEN_DIR}/LocalMsgIndex.hpp")
+-set(GENMSGDATA "${XSL_NLS_GEN_DIR}/LocalMsgData.hpp")
+-set(INCLUDEMSGDATA "${XSL_NLS_INC_DIR}/LocalMsgData.hpp")
+-set(SUPPORTMSGINDEX "${GEN_SUPPORTDIR}/LocalMsgIndex.hpp")
++cmake_path(APPEND XSL_NLS_GEN_DIR "LocalMsgIndex.hpp" OUTPUT_VARIABLE GENMSGINDEX)
++cmake_path(APPEND XSL_NLS_GEN_DIR "LocalMsgData.hpp" OUTPUT_VARIABLE GENMSGDATA)
++cmake_path(APPEND XSL_NLS_INC_DIR "LocalMsgData.hpp" OUTPUT_VARIABLE INCLUDEMSGDATA)
++cmake_path(APPEND GEN_SUPPORTDIR "LocalMsgIndex.hpp" OUTPUT_VARIABLE SUPPORTMSGINDEX)
+ 
+ add_custom_target(locale ALL)
  set_target_properties(locale PROPERTIES FOLDER "Message Library")
  
  if(msgloader STREQUAL "inmemory")
-+	set(MsgCreatorCommandFilename "${XLIFF_FILE_NAME}")
-+	set(MsgCreatorCommand "$<TARGET_FILE:MsgCreator>" -TYPE inmem -LOCALE ${LOCALE})
-+	
-+	if(CMAKE_CROSSCOMPILING_EMULATOR)
-+		set(MsgCreatorCommand "${CMAKE_CROSSCOMPILING_EMULATOR}" "${MsgCreatorCommand}")
-+		if(WIN32)
-+			set(MsgCreatorCommandFilename "Z:${MsgCreatorCommandFilename}")
-+		endif()
-+	endif()
-+	
-+	set(MsgCreatorCommand "${MsgCreatorCommand}" "${MsgCreatorCommandFilename}")
-+	
++  cmake_path(RELATIVE_PATH XLIFF_FILE_NAME BASE_DIRECTORY "${XSL_NLS_GEN_DIR}" OUTPUT_VARIABLE XLIFF_RELPATH)
++  
    add_custom_command(
      OUTPUT "${GENMSGINDEX}"
             "${GENMSGDATA}"
 -    COMMAND "$<TARGET_FILE:MsgCreator>"
 -           "${XLIFF_FILE_NAME}"
--           -TYPE inmem
--           -LOCALE ${LOCALE}
-+    COMMAND ${MsgCreatorCommand}
++    COMMAND MsgCreator
++           "${XLIFF_RELPATH}"
+            -TYPE inmem
+            -LOCALE ${LOCALE}
      WORKING_DIRECTORY "${XSL_NLS_GEN_DIR}"
-     COMMENT "Generating inmemory locale message data"
-     DEPENDS MsgCreator "${XLIFF_FILE_NAME}")
