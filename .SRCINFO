@@ -1,7 +1,7 @@
 pkgbase = python-prospector
 	pkgdesc = Python static analysis tool
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://prospector.readthedocs.io
 	arch = any
 	license = GPL
