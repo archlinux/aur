@@ -17,7 +17,7 @@ source=(
 	LICENSE::http://www.wtfpl.net/txt/copying
 )
 sha256sums=('5dd14105fcd2224c60103e5521922af0ddcb2a9ec2ef1734b092d946100019f6'
-            '85436b68fac425bd33fdcc966910782b618e5303dda0d68c1d23f26f9eea8279'
+            '68416b3df5a44c8b953b7d15f554056f21acaca7c6e3353e97c7b44fc6c322ca'
             '182b39e8f4f9cc979aa9cbaebbbb88298f009bfdb1c0bcb2d44fa538ff9fe73c'
             'a075c9b90a4732ea7fb332e81ad50244e778977ec028a56ae0b29f895fd7db87'
             'c863595990e32eb41aa76fd55d151acb04cee401fcf219d4e418b96fdc1468b2'
