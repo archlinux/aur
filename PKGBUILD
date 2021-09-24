@@ -4,7 +4,7 @@ pkgname=mingw-w64-xalan-c-icu
 provides=('mingw-w64-xalan-c')
 conflicts=('mingw-w64-xalan-c')
 pkgver=1.12.0
-pkgrel=6
+pkgrel=7
 _filever='1_12_0'
 pkgdesc='A XSLT processor for transforming XML documents (ICU) (mingw-w64)'
 arch=('any')
@@ -33,6 +33,9 @@ build() {
 	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -Dtranscoder=icu -Ddoxygen=OFF )
 	
 	for _arch in ${_architectures}; do
+		${_arch}-cmake -S "xalan-c-Xalan-C_${_filever}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		cmake --build "build-${_arch}-static"
+		
 		${_arch}-cmake -S "xalan-c-Xalan-C_${_filever}" -B "build-${_arch}" "${_flags[@]}"
 		cmake --build "build-${_arch}"
 	done
@@ -40,6 +43,10 @@ build() {
 
 package() {
 	for _arch in ${_architectures}; do
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
+		rm -rf "$pkgdir"/usr/${_arch}/static/{bin,share}
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
+		
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 		${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll

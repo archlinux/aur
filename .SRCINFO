@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-xalan-c-icu
 	pkgdesc = A XSLT processor for transforming XML documents (ICU) (mingw-w64)
 	pkgver = 1.12.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://xalan.apache.org/
 	arch = any
 	license = APACHE
