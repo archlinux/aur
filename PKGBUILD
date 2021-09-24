@@ -5,8 +5,8 @@
 
 _pkgname=vim-fugitive
 pkgname="${_pkgname}-git"
-pkgver=3.4.113.ge1d382b
-pkgrel=1
+pkgver=3.4.115.g142a0dc
+pkgrel=2
 pkgdesc='Git wrapper so awesome, it should be illegal.'
 url='https://github.com/tpope/vim-fugitive'
 arch=('any')
@@ -28,7 +28,7 @@ pkgver() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  find autoload doc ftdetect plugin syntax -type f -exec \
+  find autoload doc ftdetect ftplugin plugin syntax -type f -exec \
     install -Dm 644 '{}' "${pkgdir}/usr/share/vim/vimfiles/{}" \;
 
   install -Dm 644 "${srcdir}/license.txt" \
