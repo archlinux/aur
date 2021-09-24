@@ -1,4 +1,4 @@
-# Maintainer: Hans-Nikolai Viessmann <hv15@hw.ac.uk>
+# Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 # XXX  Currently, it is assumed that the user intends to only
 #      use snmptt in standalone-mode, meaning that it is not
 #      intended to run as a daemon. As such, additional config
@@ -7,8 +7,8 @@
 
 pkgname=snmptt
 pkgver=1.4.2
-pkgrel=1
-pkgdesc="This is an SNMP trap handler written in Perl for use with the Net-SNMP / UCD-SNMP snmptrapd program."
+pkgrel=2
+pkgdesc="A Perl-based SNMP trap handler for use with the Net-SNMP / UCD-SNMP snmptrapd program"
 arch=('any')
 url="http://snmptt.sourceforge.net/"
 license=('GPL')
@@ -19,7 +19,6 @@ optdepends=(
   'perl-dbd-odbc: To add support for ODBC driver'
 )
 install="${pkgname}.install"
-changelog='CHANGELOG.md'
 source=("https://sourceforge.net/projects/${pkgname}/files/snmptt/${pkgname}_${pkgver}/${pkgname}_${pkgver}.tgz")
 md5sums=('4aba8b70bdd11e0cecca90fd9d979fd0')
 
@@ -36,6 +35,10 @@ package() {
   install -d "$pkgdir/etc/snmp"
   install -Dm644 snmptt.ini "$pkgdir/etc/snmp/snmptt.ini"
   install -Dm644 examples/snmptt.conf.generic "$pkgdir/etc/snmp/snmptt.conf"
+
+  # logrotation
+  install -d "$pkgdir/etc/logrotate.d"
+  install -Dm644 snmptt.logrotate "$pkgdir/etc/logrotate.d/snmptt"
 
   # install docs
   install -d "$pkgdir/usr/share/doc/snmptt"

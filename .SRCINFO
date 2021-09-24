@@ -1,10 +1,9 @@
 pkgbase = snmptt
-	pkgdesc = This is an SNMP trap handler written in Perl for use with the Net-SNMP / UCD-SNMP snmptrapd program.
+	pkgdesc = A Perl-based SNMP trap handler for use with the Net-SNMP / UCD-SNMP snmptrapd program
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://snmptt.sourceforge.net/
 	install = snmptt.install
-	changelog = CHANGELOG.md
 	arch = any
 	license = GPL
 	depends = perl>=5.6.1
@@ -17,4 +16,3 @@ pkgbase = snmptt
 	md5sums = 4aba8b70bdd11e0cecca90fd9d979fd0
 
 pkgname = snmptt
-
