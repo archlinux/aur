@@ -1,23 +1,17 @@
 pkgbase = python-mopidy-tidal
 	pkgdesc = Tidal music service integration
-	pkgver = 0.2.4
-	pkgrel = 01
+	pkgver = 0.2.5
+	pkgrel = 1
 	url = https://github.com/tehkillerbee/mopidy-tidal
 	arch = any
 	license = Apache
-	makedepends = python-pip
-	depends = python
-	depends = mopidy
-	depends = python-setuptools
-	depends = python-tidalapi
-	depends = python-requests
-	depends = python-pykka
-	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/8c/99/aa810c8f1f2483e4ad7a77f18fce472386273cec5fd92641ec9471f36f92/Mopidy-Tidal-0.2.2.tar.gz
-	source = LICENSE
-	md5sums = SKIP
-	md5sums = ebc71dbe991ea53486d063ed046956f9
-	md5sums = 3b83ef96387f14655fc854ddc3c6bd57
+	makedepends = python-setuptools
+	depends = mopidy>=3.0
+	depends = python-pykka>=1.1
+	depends = python-tidalapi>=0.6.8
+	depends = python-tidalapi<0.7.0
+	depends = python-requests>=2.0.0
+	source = python-mopidy-tidal-0.2.5.tar.gz::https://files.pythonhosted.org/packages/source/M/Mopidy-Tidal/Mopidy-Tidal-0.2.5.tar.gz
+	sha256sums = f77a1d8aef2fe7565482a054fc6d4c65ea62c14cccdc81864b867dfd3d037cde
 
 pkgname = python-mopidy-tidal
-
