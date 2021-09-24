@@ -3,7 +3,7 @@ pkgbase=python-sphinx-book-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A lightweight book theme built off of the pydata sphinx theme"
 arch=('any')
@@ -11,8 +11,9 @@ url="https://sphinx-book-theme.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools')
 checkdepends=('python-yaml' 'python-sphinx' 'python-click' 'python-pydata-sphinx-theme' 'python-beautifulsoup4')
+#checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('72c18a4a1f2949b89c2e2b76c6c0fe6a')
+md5sums=('ad88b3d2c700b0b22518bff87c9935ba')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -25,7 +26,6 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   python setup.py test
     python setup.py test || warning "Tests failed"
 #   pytest #|| warning "Tests failed"
 }
