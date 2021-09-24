@@ -3,7 +3,7 @@
 # See http://www.c-evo.org/
 
 pkgname=c-evo-bin
-pkgver=400.1.1
+pkgver=400.4.1
 pkgrel=1
 pkgdesc="Empire Building Game, C-evo: New Horizons"
 arch=('x86_64')
@@ -12,12 +12,12 @@ license=('GPL2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo')
-source=("$pkgname-$pkgver.data.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/all/c-evo-data_400+dfsg.1-1_all.deb"
-       "$pkgname-$pkgver.stdai.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-stdai_400+dfsg.1-1_amd64.deb"
-        "$pkgname-$pkgver.gtk2.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-gtk2_400+dfsg.1-1_amd64.deb")
-sha256sums=('4e9bad355f379ece2244a140b7e26c05bcd059e45422b657c9f6127705df87f5'
-            'cba2df6adadc057a5f6092433edf785b7c4978b6eb086a998c0e82a94c5a31d8'
-            'be746e637defb6586130917f89952c828e90e30dce62cb53f7e16d13b357039c')
+source=("$pkgname-$pkgver.data.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/all/c-evo-data_400+dfsg.4-1_all.deb"
+       "$pkgname-$pkgver.stdai.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-stdai_400+dfsg.4-1_amd64.deb"
+        "$pkgname-$pkgver.gtk2.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-gtk2_400+dfsg.4-1_amd64.deb")
+sha256sums=('f4d2d476f4ebf8bf50ababf2280e0248b037b991db42108fdca61b5874fc6cc9'
+            'a26d0c58e2b50d67b1649d75fe19edb5a45aadbe78035c5a67747def008c2971'
+            '0904ed92a184211a373e769a8d392d8666e03b3b74d67fca2dfb4001b271633c')
 
 noextract=("$pkgname-$pkgver.data.deb"
 	  "$pkgname-$pkgver.stdai.deb"
