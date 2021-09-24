@@ -1,6 +1,6 @@
 pkgbase = swaystatus-git
 	pkgdesc = Generates a status line for swaybar
-	pkgver = 0.1.2.r4.81db8c8
+	pkgver = 0.2.2.r0.0d1a388
 	pkgrel = 1
 	url = https://gitlab.com/jmcantrell/swaystatus
 	arch = any
