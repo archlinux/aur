@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=9.5.28
+pkgver=9.6.104
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -29,12 +29,11 @@ sha256sums=('SKIP'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0')
 
-OUTFLD=x86.release
+OUTFLD=x64.release
 
 prepare() {
 
   export PATH=`pwd`/depot_tools:"$PATH"
-  export GYP_GENERATORS=ninja
 
   if [ ! -d "v8" ]; then
     msg2 "Fetching V8 code"
@@ -67,18 +66,23 @@ prepare() {
   msg2 "Running GN..."
   gn gen $OUTFLD \
     -vv --fail-on-unused-args \
-    --args='is_clang=false
-            is_asan=false
-            use_lld=true
+    --args='is_asan=false
+            is_clang=false
             is_component_build=true
             is_debug=false
             is_official_build=false
             treat_warnings_as_errors=false
-            v8_enable_i18n_support=true
-            v8_use_external_startup_data=false
-            v8_generate_external_defines_header=true
             use_custom_libcxx=false
-            use_sysroot=false'
+            use_lld=true
+            use_sysroot=false
+            v8_enable_backtrace=true
+            v8_enable_disassembler=true
+            v8_generate_external_defines_header=true
+            v8_enable_i18n_support=true
+            v8_enable_object_print=true
+            v8_enable_verify_heap=true
+            v8_use_external_startup_data=false
+            dcheck_always_on=false'
 
   # Fixes bug in generate_shim_headers.py that fails to create these dirs
   msg2 "Adding icu missing folders"
@@ -89,7 +93,6 @@ prepare() {
 
 build() {
   export PATH=`pwd`/depot_tools:"$PATH"
-  export GYP_GENERATORS=ninja
 
   cd $srcdir/v8
 
@@ -101,9 +104,9 @@ check() {
   cd $srcdir/v8
 
   msg2 "Testing, this will also take a while..."
-  python2  tools/run-tests.py --no-presubmit \
-                              --outdir=$OUTFLD \
-                              --arch="x64" || true
+  python2 tools/run-tests.py --no-presubmit \
+                             --outdir=$OUTFLD \
+                             --arch="x64" || true
 }
 
 package() {
