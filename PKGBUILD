@@ -8,7 +8,8 @@
 #######################
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=1.4.1725
+pkgver=2021.09.0+351
+pkgver_url=2021.09.0%2B351
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
@@ -22,8 +23,8 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('74addff0b7d326c6d9892575f18330bbaefa92b433325bd1614fe03de54235bb')
-source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver}-amd64.deb")
+sha256sums_x86_64=('0d7ef2629dce118a577c1e1da2e14a2886c593a0aeef98ceb193641188ad66c7')
+source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
 
 package() {
 
@@ -31,7 +32,7 @@ package() {
 
   msg "Converting debian package..."
 
-  ar x rstudio-${pkgver}-amd64.deb
+  ar x rstudio-${pkgver_url}-amd64.deb
 
   cd "$srcdir"
   tar Jxf data.tar.xz -C "$pkgdir"
