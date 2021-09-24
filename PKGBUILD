@@ -4,7 +4,7 @@
 # Contributor: Ralf Schmitt <ralf@systemexit.de>
 
 pkgname=python2-greenlet
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Lightweight in-process concurrent programming"
 license=('MIT')
@@ -12,22 +12,21 @@ arch=('x86_64')
 url="https://pypi.org/project/greenlet/"
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-${pkgver}.tar.gz")
-sha512sums=('13547917860d9a19f2fab519380121805d8f7801ad47b1584003833a5de66eb703373c71e67b32f13b770d429bcee6856b35bc6fc8afb7be598c2bf509bede03')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-$pkgver.tar.gz")
+sha512sums=('156ad7dfcb73764818d5f6176b5c80dc5a3ac532db5af5ffe654033a5e336d35a9e9edadb3b37fa9bf5fc338f706baf3693dcfb550598d8f17f042f5a27b86f9')
 
 build() {
-	cd "$srcdir"/greenlet-$pkgver
+	cd "greenlet-$pkgver"
 	python2 setup.py build
 }
 
 check() {
-	cd "$srcdir"/greenlet-$pkgver
+	cd "greenlet-$pkgver"
 	PYTHONPATH="$PWD/build/lib.linux-$CARCH-2.7" python2 -m unittest discover -v greenlet.tests
 }
 
 package() {
-	cd greenlet-$pkgver
-	python2 setup.py install -O1 --root="$pkgdir" --skip-build
+	cd "$srcdir"/greenlet-$pkgver
+	PYTHONHASHSEED=0 python2 setup.py install -O1 --root="$pkgdir" --skip-build
 	install -Dm0644 LICENSE.PSF "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.PSF
 }
-
