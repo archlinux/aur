@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.43.1
+pkgver=2.44.0
 pkgrel=1
 pkgdesc='Text editor'
 arch=(x86_64)
@@ -9,12 +9,13 @@ url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=f5d0db86c30ae5fb104bf6bc758d2575e0ad1364") # tag: 2.43.1
+source=("git+$url#commit=171a0c59d23e5ee13a1073d5c2c051cacd50844c") # tag: v2.44.0
 optdepends=('asciidoctor: for writing man pages'
             'astyle: for formatting C#'
             'autopep8: for formatting Python'
             'brittany: for formatting Haskell'
             'clang: for formatting C++ code with clang-format'
+            'clojure: for compiling Clojure'
             'crystal: for compiling Crystal'
             'cxx: for compiling C++'
             'fpc: for compiling Object Pascal'
@@ -26,6 +27,7 @@ optdepends=('asciidoctor: for writing man pages'
             'kotlin: for compiling Kotlin'
             'lua: for compiling Lua'
             'lua-format: for formatting Lua'
+            'mono: for compiling C#'
             'ocaml: for compiling and formatting OCaml'
             'odin: for compiling Odin'
             'pandoc: for exporting Markdown to PDF'

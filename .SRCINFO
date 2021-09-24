@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Text editor
-	pkgver = 2.43.1
+	pkgver = 2.44.0
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = o
 	optdepends = autopep8: for formatting Python
 	optdepends = brittany: for formatting Haskell
 	optdepends = clang: for formatting C++ code with clang-format
+	optdepends = clojure: for compiling Clojure
 	optdepends = crystal: for compiling Crystal
 	optdepends = cxx: for compiling C++
 	optdepends = fpc: for compiling Object Pascal
@@ -24,6 +25,7 @@ pkgbase = o
 	optdepends = kotlin: for compiling Kotlin
 	optdepends = lua: for compiling Lua
 	optdepends = lua-format: for formatting Lua
+	optdepends = mono: for compiling C#
 	optdepends = ocaml: for compiling and formatting OCaml
 	optdepends = odin: for compiling Odin
 	optdepends = pandoc: for exporting Markdown to PDF
@@ -34,7 +36,7 @@ pkgbase = o
 	optdepends = tidy: for formatting HTML
 	optdepends = v: for compiling and formatting V
 	optdepends = zig: for compiling and formatting Zig
-	source = git+https://github.com/xyproto/o#commit=f5d0db86c30ae5fb104bf6bc758d2575e0ad1364
+	source = git+https://github.com/xyproto/o#commit=171a0c59d23e5ee13a1073d5c2c051cacd50844c
 	b2sums = SKIP
 
 pkgname = o
