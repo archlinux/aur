@@ -4,7 +4,7 @@ _pyname=zstd
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
 pkgver=1.5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ZSTD Bindings for Python"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/sergey-dryabzhinsky/python-zstd"
@@ -47,6 +47,7 @@ check(){
 _package_python(){
 	depends=(python)
 	cd "$_pyname-$pkgver"
+	python setup.py install --root "$pkgdir" --optimize=1
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
