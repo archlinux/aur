@@ -10,11 +10,11 @@ license=('GPL')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=('atk' 'cairo' 'fontconfig' 'libxft' 'gdk-pixbuf2' 'gtk2' 'libunwind'
          'mandoc' 'xterm' 'perl')
-optdepends=('evince: for xxx'
-           'gv: for xxx'
-           'lighttpd: for xxx'
-           'man2html: for xxx'
-           'lighttpd: for xxx')
+optdepends=('evince: for unknown'
+            'gv: for unknown'
+            'lighttpd: for unknown'
+            'man2html: for unknown'
+            'lighttpd: for unknown')
 source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}-5.3build1/${pkgname}_${pkgver}.orig.tar.gz"
         "https://launchpadlibrarian.net/470122831/${pkgname}_${pkgver}-5.3build1.debian.tar.xz"
 	'gman-commands.patch'
