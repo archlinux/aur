@@ -1,0 +1,12 @@
+pkgbase = jooby-cli
+	pkgdesc = CLI for jooby
+	pkgver = 2.11.0
+	pkgrel = 1
+	url = https://jooby.io
+	arch = any
+	license = Apache
+	depends = java-runtime-common
+	source = jooby-cli-2.11.0.zip::https://repo1.maven.org/maven2/io/jooby/jooby-cli/2.11.0/jooby-cli-2.11.0.zip
+	sha256sums = 065e0fe8eec48067f3263f36703edc9249e900319cc73f1534fabbc015e826fd
+
+pkgname = jooby-cli
