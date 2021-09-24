@@ -1,0 +1,43 @@
+From 26d61e2abc22707e628045b1c33ea9930e8ca0dc Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Fri, 24 Sep 2021 00:06:51 +0800
+Subject: [PATCH] GDK/Win32: Fix MinGW autotools build
+
+MinGW-w64 CRT provides no 'hid.lib' file. Instead, it has 'libhid.a'
+which can be linked with '-lhid' linker argument.
+
+Also, we have to declare the '_LIBADD' variable and add 'LDADDS' to it,
+or 'LDADDS' won't do anything for the build.
+
+https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/3991
+---
+ gdk/win32/Makefile.am | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/gdk/win32/Makefile.am b/gdk/win32/Makefile.am
+index 5fe1289570..21f4579192 100644
+--- a/gdk/win32/Makefile.am
++++ b/gdk/win32/Makefile.am
+@@ -22,7 +22,7 @@ AM_CPPFLAGS += "-DGDK_WIN32_ENABLE_EGL=1"
+ endif #WIN32_GLES
+ 
+ libgdk_win32_DEP_LIBS = \
+-	hid.lib
++	-lhid
+ 
+ LDADDS = $(libgdk_win32_DEP_LIBS) $(GDK_DEP_LIBS)
+ 
+@@ -87,6 +87,10 @@ libgdk_win32_la_SOURCES = \
+ 	wintab.h \
+ 	xcursors.h
+ 
++libgdk_win32_la_LIBADD = \
++	$(LDADDS) \
++	$(NULL)
++
+ libgdkinclude_HEADERS =		\
+ 	gdkwin32.h
+ 
+-- 
+GitLab
+

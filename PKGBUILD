@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.24.29
+pkgver=3.24.30
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -27,9 +27,13 @@ depends=(
   'mingw-w64-pango>=1.41.0')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
-  "https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
+  "https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
+  'gtk3-merge-3991-fix-autotools-build.patch'
+  "${pkgname}-${pkgver}-winpointer.h::https://gitlab.gnome.org/GNOME/gtk/-/raw/${pkgver}/gdk/win32/winpointer.h")
 sha256sums=(
-  'f57ec4ade8f15cab0c23a80dcaee85b876e70a8823d9105f067ce335a8268caa')
+  'ba75bfff320ad1f4cfbee92ba813ec336322cc3c660d406aad014b07087a3ba9'
+  '17d1a2307655a648f9f321cd720e6207fa507ea7cae8f72445621dc8313ec3a6'
+  '66d01eb23bc87533f7838f298354567c52ce246d9c8270ed503d5d5b654c2cd0')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
@@ -43,10 +47,14 @@ prepare() {
         ;;
     esac
   done
+  for source_file in "${source[@]:2:1}"; do
+    cp "${srcdir}/${source_file%%::*}" "gdk/win32/${source_file##*/}"
+  done
 }
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
+  NOCONFIGURE=1 ./autogen.sh
   for _arch in "${_architectures[@]}"; do
     export PKG_CONFIG="${_arch}-pkg-config"
     export PKG_CONFIG_FOR_BUILD="pkg-config"
