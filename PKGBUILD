@@ -2,12 +2,12 @@
 _release_type=alpha
 
 pkgname=makedeb-alpha
-pkgver=6.4.1
+pkgver=6.4.2
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release_type} release)"
 arch=('any')
 license=('GPL3')
-depends=('tar' 'binutils' 'makedeb-makepkg-alpha')
+depends=('tar' 'binutils' 'lsb-release' 'makedeb-makepkg-alpha')
 conflicts=('makedeb' 'makedeb-beta')
 url="https://github.com/makedeb/makedeb"
 
