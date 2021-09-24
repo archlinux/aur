@@ -8,7 +8,7 @@
 #######################
 
 pkgname=rstudio-desktop-daily-bin
-pkgver=2021.12.0.daily%2B76
+pkgver=2021.12.0.daily+76
 pkgver_url=2021.12.0-daily%2B76
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
