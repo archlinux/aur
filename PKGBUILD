@@ -2,7 +2,7 @@
 
 pkgname=libsmacker
 pkgver=1.2.0r43
-pkgrel=2
+pkgrel=3
 pkgdesc="A C library for decoding .smk Smacker Video files"
 arch=('i686' 'x86_64')
 url="http://libsmacker.sourceforge.net"
@@ -38,5 +38,5 @@ package() {
 }
 
 sha256sums=('e259b0ea31d205f490d840c5612ab8fb9c8f6f738cbafd0cbb8ddb2e89ad42ab'
-  '8ccac2d16943f15b0d3338261867673292091b664997c915206311b72e371155'
+  '46190ae6101ef8505522b55a905be3301a5ab3eb23d333c6d307187bd9a9cbf0'
   '78ef757866194e2a94181d3ec01018dd1d7c3f1bf1c12942a277cf2aa3623142')

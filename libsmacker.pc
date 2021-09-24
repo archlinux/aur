@@ -5,6 +5,6 @@ includedir=${prefix}/include
 
 Name: libsmacker
 Description: C library for decoding Smacker Video files
-Version: 1.1.1r35
+Version: 1.2.0r43
 Libs: -L${libdir} -lsmacker
 Cflags: -I${includedir}
