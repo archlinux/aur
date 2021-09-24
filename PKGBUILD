@@ -4,7 +4,7 @@
 
 pkgname=c-evo
 pkgver=400
-pkgrel=1
+pkgrel=4
 pkgdesc="Empire Building Game, C-evo: New Horizons"
 arch=('x86_64')
 url="https://app.zdechov.net/c-evo"
@@ -13,10 +13,10 @@ makedepends=('fpc' 'lazarus-gtk2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo-bin')
-source=("$pkgname-$pkgver.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_$pkgver+dfsg.1.orig.tar.xz"
-        "$pkgname-$pkgver.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_400+dfsg.1-1.debian.tar.xz")
-sha256sums=('380dec7d278778a69b9a39141a9d1fbbb16573df8209f3997debcdbbaf37914a'
-            'bed29c2ab017bcec95999968deb1ace45b491983b5408f3ad2cae5d44401e5e1')
+source=("$pkgname-$pkgver.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_$pkgver+dfsg.4.orig.tar.xz"
+        "$pkgname-$pkgver.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_$pkgver+dfsg.4-1.debian.tar.xz")
+sha256sums=('e0b9d0dd50124e083440179bc71e767ba7e6921f67823d8973cdafe49ae1dea4'
+            'ef8fedf34f10811016357a56c92e65f073bf1daf9f9954dfb1a588168e38a003')
 
 prepare() {
   cd "${srcdir}"
@@ -42,6 +42,7 @@ prepare() {
   patch -Np1 < debian/patches/024-mapfilename.patch
   patch -Np1 < debian/patches/025-common.patch
   patch -Np1 < debian/patches/026-help.patch
+  patch -Np1 < debian/patches/027-rangechecks.patch
 
   # Arch does not use a 'games' folder
   sed -i "s|share/games|share|"   debian/extras/$pkgname-launch-gtk2
@@ -66,7 +67,7 @@ prepare() {
 
   # Remove most of the ocean only maps (now we have the map generator)
   rm -f Maps/0*.png
-  rm -f Maps/0*.cevo\ map
+  rm -f Maps/0*.cevomap
 }
 
 
@@ -142,14 +143,15 @@ package() {
 
   install -Dm 644 readme.txt                        -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/README.source              -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 debian/README.linux               -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 debian/README.gameplay            -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 debian/NEWS		                -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/copyright                  -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/changelog                  -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/extras/techchart.png       -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/extras/Tutorial.html       -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/extras/C-evo-HOWTO.html    -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/extras/Release-Notes.txt   -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 debian/extras/C-evo-Mil.html      -t "$pkgdir/usr/share/doc/$pkgname"
+# install -Dm 644 debian/extras/C-evo-Mil.html      -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/extras/c-evo-launch-gtk2.6 -t "$pkgdir/usr/share/man/man6"
   install -Dm 644 debian/extras/c-evo-gtk2.6        -t "$pkgdir/usr/share/man/man6"
   install -Dm 644 debian/c-evo-gtk2.metainfo.xml    -t "$pkgdir/usr/share/metainfo"
