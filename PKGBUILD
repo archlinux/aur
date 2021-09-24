@@ -7,6 +7,8 @@ pkgdesc="A menu for quickly opening applications."
 arch=("any")
 license=('MIT')
 depends=()
+provides=('dmenu')
+conflicts=('dmenu')
 url=https://tools.suckless.org/dmenu
 _patches=("https://tools.suckless.org/dmenu/patches/numbers/dmenu-numbers-4.9.diff"
           "https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff"
