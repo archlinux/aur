@@ -1,14 +1,14 @@
 pkgbase = python-stdlib-list
-	pkgdesc = A list of Python Standard Libraries (2.6-7, 3.2-8).
-	pkgver = 0.7.0
-	pkgrel = 2
-	url = https://github.com/jackmaney/stdlib-list
+	pkgdesc = A list of Python Standard Libraries
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/jackmaney/python-stdlib-list
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
-	noextract = stdlib_list-0.7.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/stdlib-list/stdlib_list-0.7.0-py3-none-any.whl
-	sha256sums = 0ed79a0badf4f666aad046cde364ccac68ca1438a211ec74b0153e0eb5642a3e
+	source = python-stdlib-list-0.8.0.tar.gz::https://github.com/jackmaney/python-stdlib-list/archive/v0.8.0.tar.gz
+	sha512sums = e18d893e257408125249064b9466e50f684a5358d0d8ab1693bf3529f23b47f82dc23b52cea6f8be89c7dc2bac58f8981ace0b7d7a016b295855562dba1aebc3
+	b2sums = 856b602fc7041fba987e9801571ecf9ccfafa935375dbc5a3248fd89803981b367fd03874b58a4f173bc6e5ed59e1d0711e54f2f210e640aeebc8c83eabce59d
 
 pkgname = python-stdlib-list
-
