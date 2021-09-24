@@ -17,7 +17,7 @@ optdepends=(
     'libnotify: native tray notifications')
 makedepends=()
 source=("https://github.com/runelite/launcher/releases/download/${pkgver}/RuneLite.jar"
-    "https://raw.githubusercontent.com/runelite/launcher/${pkgver}/LICENSE"
+    "RuneLite.LICENSE::https://raw.githubusercontent.com/runelite/launcher/${pkgver}/LICENSE"
     "https://raw.githubusercontent.com/runelite/launcher/${pkgver}/appimage/runelite.png"
     runelite.desktop)
 noextract=('RuneLite.jar')
@@ -40,7 +40,7 @@ package() {
         "${pkgdir}/usr/share/pixmaps/runelite.png"
 
     install -D -m644 \
-        "${srcdir}/LICENSE" \
+        "${srcdir}/RuneLite.LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -D -m755 \
