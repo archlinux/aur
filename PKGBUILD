@@ -21,7 +21,8 @@ install=
 changelog=
 source=("https://gitlab.com/dazars/radio_bash/-/blob/master/radio_bash" "https://gitlab.com/dazars/radio_bash/-/blob/master/radios")
 noextract=()
-md5sums=('546a6b4a0973d89866f23f161123f0ae' '9261c5dec2775e277009381345bde2cc')
+md5sums=('546a6b4a0973d89866f23f161123f0ae')
+# '9261c5dec2775e277009381345bde2cc')
 validpgpkeys=()
 
 package() {
