@@ -1,0 +1,12 @@
+pkgbase = r-lmodel2
+	pkgdesc = Computes model II simple linear regression using ordinary least squares (OLS), major axis (MA), standard major axis (SMA), and ranged major axis (RMA).
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=lmodel2
+	arch = any
+	license = GPL
+	depends = r>=2.14.0
+	source = https://cran.r-project.org/src/contrib/lmodel2_1.7-3.tar.gz
+	sha256sums = cb425276ab20cc1fa98b11e53c931cb622f768e2b547a4c387713937adb031ba
+
+pkgname = r-lmodel2
