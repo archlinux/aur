@@ -1,15 +1,17 @@
 # Maintainer: Eric Lemieux <eric at lemieuxdev dot com>
 
 pkgname='dank-bin'
-pkgver='v2.2.1'
+pkgver='2.2.2'
 pkgrel='1'
 pkgdesc='Download memes from reddit in parallel so that you can more efficiently waste time.'
 url='https://github.com/EricLemieux/dank'
 license=('Apache')
 arch=('x86_64')
+depends=('gcc-libs' 'openssl')
 provides=('dank')
-source=("https://github.com/EricLemieux/dank/releases/download/${pkgver}/dank-linux.tar.gz")
-sha256sums=('e79a6a0de3bc6f3994ce8e4b546e463a8320e80e5adc78f071733320b0b4f1b3')
+conflicts=('dank')
+source=("https://github.com/EricLemieux/dank/releases/download/v${pkgver}/dank-v${pkgver}-${CARCH}-linux.tar.gz")
+sha256sums=('2cd9d0e19613bc7ab05c1d553800ee56d3b040a95ff8545d19e90128a875de00')
 
 package() {
   install -Dm 755 "$srcdir/dank" "$pkgdir/usr/bin/dank"
