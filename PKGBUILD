@@ -2,7 +2,7 @@
 
 pkgname=dmenu-grid
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A menu for quickly opening applications. Grid/Gridnav patches pre-applied."
 arch=("any")
 license=('MIT')
@@ -51,4 +51,5 @@ package() {
   install $binopts "$bindir" "$_sourcedir/dmenu"
   install $binopts "$bindir" "$_sourcedir/dmenu_run"
   install $binopts "$bindir" "$_sourcedir/dmenu_path"
+  install $binopts "$bindir" "$_sourcedir/stest"
 }

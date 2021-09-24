@@ -1,7 +1,7 @@
 pkgbase = dmenu-grid
 	pkgdesc = A menu for quickly opening applications. Grid/Gridnav patches pre-applied.
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tools.suckless.org/dmenu
 	arch = any
 	license = MIT
