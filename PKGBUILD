@@ -3,7 +3,7 @@
 _pkgname=audiveris
 pkgname="${_pkgname}-git"
 pkgver=5.1.0.rc.r723.g3353f409c
-pkgrel=1
+pkgrel=2
 pkgdesc="Music score OMR engine - current"
 arch=('x86_64')
 url="https://github.com/Audiveris/audiveris"
