@@ -3,7 +3,7 @@
 _pkgname=duplicacy
 pkgname=${_pkgname}-cli-bin-git
 pkgver=2.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A new generation cloud backup tool based on lock-free deduplication"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/gilbertchen/duplicacy'
@@ -21,7 +21,8 @@ sha256sums_armv7h=('fe92fe2bff4941a3c165cb9a02666457d871973396006dedbaea66009798
 
 source=('https://raw.githubusercontent.com/gilbertchen/duplicacy/master/LICENSE.md')
 sha256sums=('f5470a1440ab371c5b21026a0b28a1777345183017ece8b5c7552d58501c52bf')
-
+provides=("$_pkgname" "${_pkgname}-git")
+conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
   # License
