@@ -2,7 +2,7 @@
 
 
 pkgname=astrodmx-capture
-pkgver=0.90.2
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64')
@@ -13,11 +13,11 @@ license=(custom)
 options=(!strip)
 install=$pkgname.install
 
-source=("https://www.astrodmx-capture.org.uk/sites/downloads/astrodmx/current/x86-64/astrodmx-glibc-2.30_${pkgver}_x86-64-manual.tar.gz")
-sha256sums=("3c1c1ae9bebfa63296e608cd61edd0508acbfadd27b580a1652cbaddff91e086")
+source=("https://www.astrodmx-capture.org.uk/sites/downloads/astrodmx/current/x86-64/astrodmx-capture_${pkgver}_x86-64-manual.tar.gz")
+sha256sums=("6887d53c2c6983253aa317837adc0d848dec180ae54a15cabb40ea5c37089a8b")
 
 _instdir="/usr/local/AstroDMx_Capture"
-_prefix="R-Linux-64-2.30"
+_prefix="AstroDMx-${pkgver}-manual"
 
 package() {
     # create the desitination folder
