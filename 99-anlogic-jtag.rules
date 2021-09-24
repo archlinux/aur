@@ -1,0 +1,4 @@
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0547", ATTRS{idProduct}=="1002", \
+  GROUP="plugdev", \
+  MODE="0660"
+
