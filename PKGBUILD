@@ -2,7 +2,7 @@
 
 pkgname=structurizr-cli
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line utility for Structurizr"
 arch=(any)
 url="https://github.com/structurizr/cli"
@@ -17,7 +17,7 @@ package() {
     cd "${srcdir}"
     mkdir -p "${pkgdir}/opt/structurizr-cli"
     mkdir -p "${pkgdir}/usr/bin"
-    cp "structurizr-cli-${pkgver}.jar" "${pkgdir}/opt/structurizr-cli"
+    cp -R "lib" "${pkgdir}/opt/structurizr-cli/lib"
     cp "structurizr.sh" "${pkgdir}/opt/structurizr-cli/structurizr.sh"
     chmod +x "${pkgdir}/opt/structurizr-cli/structurizr.sh"
     cp launcher.sh "${pkgdir}/usr/bin/structurizr"
