@@ -1,0 +1,22 @@
+--- a/mandata.c	2002-05-21 07:39:34.000000000 +0100
++++ b/mandata.c	2021-09-24 12:28:11.179118333 +0100
+@@ -316,7 +316,7 @@
+ 		strcat(buffer,loc_name);
+ 		strcat(buffer," ; ");
+ 		strcat(buffer,(char*)context->get_value("browser_command"));
+-		//if (strstr((char*)context->get_value("browser_command"),"mozilla")) strcat(buffer," -chrome ");
++		if (strstr((char*)context->get_value("browser_command"),"mozilla")) strcat(buffer," -chrome ");
+ 		strcat(buffer,loc_name);
+ 		strcat(buffer," ; sleep 120; rm ");
+ 		strcat(buffer,loc_name);
+--- a/gman.c	2021-09-24 12:54:13.464903000 +0100
++++ b/gman.c	2021-09-24 12:59:31.346113598 +0100
+@@ -89,7 +89,7 @@
+ 	context->set_default_value("show_status_bar","int",(void*)0);
+ 	context->set_default_value("show_warning","int",(void*)0);
+ 	context->set_default_value("show_mode","int",(void*)0); // 0 = xterm, 1 = ghostview
+-	context->set_default_value("xterm_command","char*",(void*)"x-terminal-emulator");
++	context->set_default_value("xterm_command","char*",(void*)"xterm");
+ 	context->set_default_value("gv_command","char*",(void*)"gv");
+ 	context->set_default_value("evince_command","char*",(void*)"evince");
+ 	context->set_default_value("browser_command","char*",(void*)"sensible-browser"); // kfm also works

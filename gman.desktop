@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=GMan
+GenericName=Small man(1) front-end for X
+Comment=Manual pages
+Exec=gman
+Icon=help
+Categories=System;
+X-GNOME-UsesNotifications=true
