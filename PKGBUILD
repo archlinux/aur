@@ -2,11 +2,11 @@
 
 pkgname=timescaledb-toolkit
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PostgreSQL extension for TimescaleDB analytics"
 arch=('x86_64')
 url="https://github.com/timescale/timescaledb-toolkit"
-license=('Apache' 'custom:Timescale')
+license=('custom:Timescale')
 depends=('gcc-libs' 'postgresql' 'timescaledb')
 makedepends=('rust' 'clang' 'llvm')
 # last commit to license - used to pin license version
@@ -70,7 +70,7 @@ package() {
   cd "$pkgname-$pkgver"
 
   # extension
-  cp -rv "target/release/timescaledb_toolkit-pg$_PGMAJOR/"* "$pkgdir"
+  cp -rv "target/release/timescaledb_toolkit-pg$_PGMAJOR/." "$pkgdir"
 
   # licenses
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" NOTICE LICENSE

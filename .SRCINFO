@@ -1,10 +1,9 @@
 pkgbase = timescaledb-toolkit
 	pkgdesc = PostgreSQL extension for TimescaleDB analytics
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timescale/timescaledb-toolkit
 	arch = x86_64
-	license = Apache
 	license = custom:Timescale
 	makedepends = rust
 	makedepends = clang
