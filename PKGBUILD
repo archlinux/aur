@@ -2,9 +2,9 @@ pkgdesc="ROS - Extra nodes and plugins for MAVROS."
 url='https://wiki.ros.org/mavros_extras'
 
 pkgname='ros-noetic-mavros-extras'
-pkgver='1.8.0'
+pkgver='1.9.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
 
 ros_makedepends=(ros-noetic-std-msgs
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 
 _dir="mavros-release-upstream-${pkgver}/mavros_extras"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros-release/archive/refs/tags/upstream/${pkgver}.tar.gz")
-sha256sums=('936569a2f3dc4a829187f957ba93c80a65925a4445e3407443d30f717bd93571')
+sha256sums=('ef8b837d83d887c6997b8d1175b7b834deba2bd49206e70b5ad098c17475c27f')
 
 build() {
   # Use ROS environment variables
@@ -51,8 +51,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
+        -DCMAKE_CXX_STANDARD=17 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
-  make
+  make 
 }
 
 package() {
