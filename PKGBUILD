@@ -4,7 +4,7 @@ pkgver=2.2.0
 pkgrel=1
 pkgdesc="Commit message editor."
 arch=('x86_64')
-url="https://github.com/sonnyp/Commit"
+url="https://apps.gnome.org/app/re.sonny.Commit"
 license=('GPL3')
 depends=('gjs' 'gtk3')
 makedepends=('meson')
@@ -12,7 +12,7 @@ makedepends=('meson')
 optdepends=('git: git support'
             'mercurial: mercurial support'
             'gspell: spell checking support')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sonnyp/Commit/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('79f3d88eb8cdc0c0a024e3953f03db0faab5d0368e4a917c91321571f6ff32ed')
 
 build() {
