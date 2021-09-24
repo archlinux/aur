@@ -1,7 +1,7 @@
 # Maintainer: amesgen <amesgen AT amesgen DOT de>
 
 pkgname='ormolu-bin'
-pkgver=0.3.0.0
+pkgver=0.3.0.1
 pkgrel=1
 pkgdesc="A formatter for Haskell source code"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('ormolu' 'haskell-ormolu')
 
 source=("ormolu-$pkgver.zip::https://github.com/tweag/ormolu/releases/download/$pkgver/ormolu-Linux.zip"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/tweag/ormolu/$pkgver/LICENSE.md")
-sha256sums=('16a5de3482c786c1001cda90527aa7976f0ebdefcd788ef8681bbff652791731'
+sha256sums=('c2db077cdbd9ee1eaa308385d4c6fd734d0d50b6f2990000472a400ee734de64'
             '6572a825b43b87cf53d197723e1d64ce78535fe8bfa19b1377be582909b81141')
 
 package() {
