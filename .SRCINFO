@@ -5,6 +5,8 @@ pkgbase = dmenu-gregdan3
 	url = https://tools.suckless.org/dmenu
 	arch = any
 	license = MIT
+	provides = dmenu
+	conflicts = dmenu
 	source = git://git.suckless.org/dmenu#tag=5.0
 	source = config.h
 	source = https://tools.suckless.org/dmenu/patches/numbers/dmenu-numbers-4.9.diff
