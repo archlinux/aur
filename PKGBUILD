@@ -2,9 +2,9 @@
 _release_type=alpha
 
 pkgname=makedeb-alpha
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
-pkgdesc="Create Debian archives from PKGBUILDs (${_release_type} release)"
+pkgdesc="The modern packaging tool for Debian archives (${_release_type} release)"
 arch=('any')
 license=('GPL3')
 depends=('tar' 'binutils' 'makedeb-makepkg-alpha')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "makedeb-${pkgver}-${_release_type}"
-  
+
   # Set package version, release type, and target OS
   sed -i "s|makedeb_package_version=.*|makedeb_package_version=${pkgver}-${pkgrel}|"  src/makedeb.sh
   sed -i "s|makedeb_release_type=.*|makedeb_release_type=${_release_type}|" src/makedeb.sh
