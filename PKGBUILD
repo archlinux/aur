@@ -1,6 +1,6 @@
 # Maintainer: Thilo Wischmeyer <thwischm@gmail.com>
 pkgname=lesbar
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="A status bar with decent font rendering"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('cairo'
          'libx11')
 makedepends=('scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~salmiak/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=("bda4149e80313bd1784642bb7e0064b5")
+sha256sums=("5f0af08af4821a5a6bc6c6f9bf941b4ec469a1d1180bc44a9ea1af8ee75173b5")
 
 build() {
 	cd "$pkgname-v$pkgver"
