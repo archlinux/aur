@@ -1,7 +1,7 @@
 pkgbase = jooby-cli
 	pkgdesc = CLI for jooby
 	pkgver = 2.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jooby.io
 	arch = any
 	license = Apache
