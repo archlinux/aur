@@ -55,7 +55,7 @@ source=(${source[@]}
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            'ac6ff40201f389ca43a07563f7fefc2b33f956f7867d7fa8ff65312019496640'
+            'f2cdc21c025a8728982232daff5d27c63c175112322a6418b60be143110ce802'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
