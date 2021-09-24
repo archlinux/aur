@@ -1,0 +1,30 @@
+pkgbase = r-ggpp
+	pkgdesc = Extensions to 'ggplot2' respecting the grammar of graphics paradigm.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ggpp
+	arch = any
+	license = GPL
+	depends = r>=3.6
+	depends = r-ggplot2>=3.3.2
+	depends = r-rlang
+	depends = r-magrittr
+	depends = r-glue
+	depends = r-gridextra
+	depends = r-scales
+	depends = r-tibble
+	depends = r-dplyr
+	depends = r-xts
+	depends = r-zoo
+	depends = r-polynom
+	depends = r-lubridate
+	depends = r-stringr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-gginnards
+	optdepends = r-ggrepel
+	optdepends = r-magick
+	source = https://cran.r-project.org/src/contrib/ggpp_0.4.2.tar.gz
+	sha256sums = 122ad3773ad2f33d85c2d81d9ce59d6761c32361a0b9d4fda71d778a67c25c54
+
+pkgname = r-ggpp
