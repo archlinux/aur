@@ -1,9 +1,10 @@
 # Maintainer: Thomas Quillan <tjquillan@gmail.com>
+# Maintainer: Dobromir Marinov <mr.d.marinov@gmail.com>
 
 pkgname=intellij-idea-community-edition-jre
 _appname=jetbrains-idea-ce
-pkgver=2021.2.1
-_buildver=212.5080.55	
+pkgver=2021.2.2
+_buildver=212.5284.40	
 pkgrel=1
 pkgdesc="Intellij Idea Community Edition with bundled JRE"
 arch=('any')
@@ -14,7 +15,7 @@ provides=("$_appname")
 conflicts=("$_appname")
 source=("https://download.jetbrains.com/idea/ideaIC-$pkgver.tar.gz"
 		"$_appname.desktop")
-sha256sums=('ff078524f38391d396747007de41f9db02698c107f8e9cd86178fb1c0a1bc4a9'
+sha256sums=('919002deb71b764aa2a072996d07338294f1a2ea8ea0028f036f01296bf5a96f'
             '91aa66e16e428d595c9f76a02f5a6d54d6fb0b1d1ccac4159cfb7070cff26a4b')
 
 package() {
