@@ -24,6 +24,6 @@ pkgbase = plask
 	optdepends = ipython: for interactive shell
 	noextract = plask-2021.09.24.tar.zst
 	source = plask-2021.09.24.tar.zst::https://get.plask.app/packages/plask-2021.09.24-1-x86_64.pkg.tar.zst
-	sha256sums = 9f952d9b1ddf644b183bd5a9c8b1ab947955f78c6566c41d820bec02a011a093
+	sha256sums = 41ba5d25e1513709c5c0dea7c8f25e24a47527c690949a199d4d9eb63ea97a3b
 
 pkgname = plask
