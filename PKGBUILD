@@ -4,8 +4,8 @@
 # Inspiration for service and config files: https://github.com/Bisa/factorio-init
 
 pkgname=factorio-headless
-pkgver=1.1.40
-pkgrel=2
+pkgver=1.1.41
+pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories - Server version (stable branch)"
 arch=('x86_64')
 url="http://www.factorio.com/"
@@ -23,14 +23,14 @@ source=(LICENSE
         factorio-headless.service
         factorio-headless.conf
         factorio-headless.sysusers
-        factorio_headless_x64_1.1.39.tar.xz::http://www.factorio.com/get-download/1.1.39/headless/linux64
+        factorio_headless_x64_${pkgver}.tar.xz::http://www.factorio.com/get-download/${pkgver}/headless/linux64
 )
 
 sha256sums=('3bfab9744936c48b309ab18d9a8d05bfb1f3be31079f745a05409e779c0b5716'
             '72bbef31fced163e5993eff0e73a836a557165775eb77e0d69b24fe5ec4690a7'
             '40931abfd15db6027c02471c20f86923e74471a9eb91453638c42e0f968027f5'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
-            '5528b8e23ac5d3a13e3328a0c64fee71f4a321792afe7b2fe46f95e62b7ed119')
+            '824cd413ed056e4a28dbce76f743961d42e5aef87b385e27a9c57f1e924a9a5e')
 
 # no modifications needed, the executable looks for:
 # - data in /usr/share/factorio
