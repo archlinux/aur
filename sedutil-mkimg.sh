@@ -11,7 +11,7 @@ IMGSIZE=64M
 # Partition label
 PARTLABEL=SEDUTIL
 # Kernel image
-KERNEL=$(find /usr/lib/modules -mindepth 1 -print -quit)/vmlinuz
+KERNEL=$(find /usr/lib/modules -type f -name vmlinuz -print -quit)
 # Required packages
 DEPENDS=(gptfdisk syslinux)
 
@@ -49,6 +49,7 @@ package() {
   install -D /usr/lib/syslinux/efi64/ldlinux.e64         -t mnt-"${buildtype}"/efi/boot/
   install -D /usr/share/sedutil/syslinux-"${buildtype}".cfg mnt-"${buildtype}"/syslinux.cfg
   # copy Linux image and initramfs
+  [ -f $KERNEL ] || { echo 'could not find kernel'; cleanup "$buildtype" "$loopdev"; exit 1; }
   install -D "$KERNEL"                       mnt-"${buildtype}"/vmlinuz-linux
   install -D initramfs-"${buildtype}".img -t mnt-"${buildtype}"/
   [ "$buildtype" = "pba" ] && export SEDUTIL_PBA_IMG=$(realpath "$img")
