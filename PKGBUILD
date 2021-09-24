@@ -1,14 +1,14 @@
 # Maintainer: Rubi Wilkins <epicalert@protonmail.com>
 pkgname=facecam2d
-pkgver=0.2.1
-pkgrel=3
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="2D avatar facecam software"
 arch=('any')
 license=('GPL3')
 depends=(libzip fmt libwebp opencv glew freeglut wxgtk3 libglvnd)
 makedepends=(gcc make cmake glm)
-source=("https://epicalert.xyz/software/tarballs/$pkgname-$pkgver.tar.gz")
-sha256sums=(4a24c0f99246c68bf9950eadcbcd99f53977c6b2e87d5b9ebe98184ec8989e29)
+source=("https://files.epicalert.xyz/software/src/$pkgname-v$pkgver.tar.gz")
+sha256sums=('3d8f323d133ce74ea0d9098871d128cd90108ca1d7d5ea439d3ef1aa3f7ce5e8')
 
 build() {
 	cd $srcdir
