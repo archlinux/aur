@@ -4,7 +4,7 @@
 
 pkgname=ros2-git
 pkgver=r224.3d98527
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of software libraries and tools for building robot applications (Rolling Distro)"
 url="https://docs.ros.org/en/rolling/"
 arch=('any')
@@ -57,6 +57,8 @@ prepare() {
     git -C $srcdir/ros2/src/ros2/ros1_bridge revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit
     ## cyclonedds
     git -C $srcdir/ros2/src/eclipse-cyclonedds/cyclonedds cherry-pick bdf270a588aae77d0f1a0f0070b53ad1388da61c
+    ## rcl_logging
+    git -C $srcdir/ros2/src/ros2/rcl_logging cherry-pick 77b5b2a6c948a6db1986501edc83f12ceadedba3
 }
 
 build() {
