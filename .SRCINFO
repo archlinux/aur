@@ -1,7 +1,7 @@
 pkgbase = aria2cd
 	pkgdesc = A systemd Service to start aria2 automatically.
 	pkgver = 1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://aur.archlinux.org/aria2cd.git
 	arch = any
 	license = custom:WTFPL

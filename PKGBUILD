@@ -2,7 +2,7 @@
 
 pkgname=aria2cd
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A systemd Service to start aria2 automatically."
 arch=(any)
 url="https://aur.archlinux.org/aria2cd.git"
@@ -29,4 +29,5 @@ package(){
 	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licences/${pkgname}/LICENSE
 	install -Dm644 ${srcdir}/${pkgname}.hook ${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook
 	install -Dm644 ${srcdir}/notify-user ${pkgdir}/usr/share/libalpm/scripts/notify-user
+	chmod +x ${pkgdir}/usr/share/libalpm/scripts/notify-user
 }
