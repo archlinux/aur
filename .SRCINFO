@@ -1,7 +1,7 @@
 pkgbase = ko-bin
 	pkgdesc = Simple and fast container image builder for Go applications
-	pkgver = 0.8.3
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/google/ko
 	arch = x86_64
 	license = Apache
@@ -12,7 +12,7 @@ pkgbase = ko-bin
 	provides = ko
 	conflicts = ko
 	conflicts = ko-git
-	source = https://github.com/google/ko/releases/download/v0.8.3/ko_0.8.3_Linux_x86_64.tar.gz
-	b2sums = b127d97447403ba6591d5cde395e0171ad2b240d023e73deca53ef6ceb92cf1d9891ee2bd5475c6e518de57be9477fe50f0a9aca93f649853576a573da1a5c81
+	source = https://github.com/google/ko/releases/download/v0.9.1/ko_0.9.1_Linux_x86_64.tar.gz
+	b2sums = 7383a6dd24fa478e2e42b33486305b76584576518fca2e16b5bb8fdaccdc5a5e2e105769f08cd519dc7505d36f91b8fe62f5ae15b81186b685c63c04b871a221
 
 pkgname = ko-bin
