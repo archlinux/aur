@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 18 Early-Access Build
-	pkgver = 18b15
+	pkgver = 18b16
 	pkgrel = 1
 	url = https://jdk.java.net/18
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=18
 	provides = java-runtime-headless=18
 	provides = java-runtime-headless-openjdk=18
-	source = https://download.java.net/java/early_access/jdk18/15/GPL/openjdk-18-ea+15_linux-x64_bin.tar.gz
-	sha256sums = d04e7163eb9519d4c918acc60d1f92fd7b6ff28bb0a43d7019790590b120725c
+	source = https://download.java.net/java/early_access/jdk18/16/GPL/openjdk-18-ea+16_linux-x64_bin.tar.gz
+	sha256sums = ec604f7aef23624c0acdc0db346a2b226aab47d120538833070f0d5e01d571c1
 
 pkgname = java-openjdk-ea-bin
