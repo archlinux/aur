@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-opencolorio
 	pkgdesc = A color management framework for visual effects and animation (mingw-w64)
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://opencolorio.org/
 	arch = any
@@ -12,14 +12,11 @@ pkgbase = mingw-w64-opencolorio
 	depends = mingw-w64-lcms2
 	depends = mingw-w64-freeglut
 	depends = mingw-w64-glew
-	depends = mingw-w64-openexr
+	depends = mingw-w64-imath
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v2.0.1.tar.gz
-	source = opencolorio-openexr3.patch
-	sha256sums = ff1397b4516fdecd75096d5b575d6a23771d0c876bbcfc7beb5a82af37adcdf9
-	sha256sums = 1b857e43fb4e3c048a88a00c379d1fd61c557a24a3f6a7d475daf588af8ea064
+	source = mingw-w64-opencolorio-2.1.0.tar.gz::https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v2.1.0.tar.gz
+	sha256sums = 81fc7853a490031632a69c73716bc6ac271b395e2ba0e2587af9995c2b0efb5f
 
 pkgname = mingw-w64-opencolorio
-
