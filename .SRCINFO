@@ -4,12 +4,11 @@ pkgbase = cotp
 	pkgrel = 1
 	url = https://github.com/replydev/cotp
 	arch = x86_64
-	arch = aarch64
-	arch = armv7
 	license = GPL3
-	makedepends = rust
-	makedepends = libxcb
-	makedepends = libxkbcommon-x11
+	makedepends = cargo
+	makedepends = python
+	depends = libxcb
+	depends = libxkbcommon-x11
 	source = cotp-0.1.8.tar.gz::https://github.com/replydev/cotp/archive/0.1.8.tar.gz
 	sha256sums = d2c66a18db2edd5930c8d0a34ae0fd64fe2888fa3cec134ca59fc590ff650442
 
