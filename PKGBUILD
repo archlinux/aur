@@ -3,19 +3,18 @@
 
 pkgbase=python-cryptolyzer
 pkgname=('python2-cryptolyzer' 'python-cryptolyzer')
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Fast and flexible server cryptographic (TLS/SSL) settings analyzer library'
 arch=('any')
 url='https://gitlab.com/coroner/cryptolyzer'
 license=('MPL2')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("$pkgbase-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/C/CryptoLyzer/CryptoLyzer-$pkgver.tar.gz")
-sha256sums=('886f44dc7c2d50f46dd3df7532a0960135200ca34e54098df4e7cefa925b7846')
+source=("$pkgbase-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/cryptolyzer/cryptolyzer-$pkgver.tar.gz")
+sha256sums=('624289a023b1e581792838f1e0737ab191e5f4cb505747f6d57bc9a38871e0e0')
 
 prepare() {
-  cp -a "CryptoLyzer-$pkgver" "cryptolyzer-$pkgver-py2"
-  mv "CryptoLyzer-$pkgver" "cryptolyzer-$pkgver"
+  cp -a "cryptolyzer-$pkgver" "cryptolyzer-$pkgver-py2"
 }
 
 build() {
@@ -38,7 +37,7 @@ package_python-cryptolyzer() {
     'python-urllib3')
 
   cd "cryptolyzer-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python2-cryptolyzer() {
@@ -55,7 +54,7 @@ package_python2-cryptolyzer() {
     'python2-urllib3')
 
   cd "cryptolyzer-${pkgver}-py2"
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  PYTHONHASHSEED=0 python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
