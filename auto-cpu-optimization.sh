@@ -28,5 +28,5 @@ echo "----------------------------------"
 echo "| APPLYING AUTO-CPU-OPTIMIZATION |"
 echo "----------------------------------"
 echo "[*] DETECTED CPU (MARCH) : ${MARCH}"
-sed -i "/CONFIG_GENERIC_CPU=y/d;s/\# CONFIG_M${MARCH} is not set/CONFIG_M${MARCH}=y/g" *config*
+sed -i "/CONFIG_GENERIC_CPU=y/d;s/\# CONFIG_M${MARCH} is not set/CONFIG_M${MARCH}=y/g" .config
 sleep 3 && echo
