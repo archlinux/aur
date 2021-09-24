@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID)"
 arch=('i686' 'x86_64')
@@ -40,19 +40,16 @@ sha512sums=('SKIP'
 install='autenticacao-gov-pt.install'
 
 prepare(){
-	# Temporary Fix in order to compile with archlinux java handling neededs sudo and conflicts with GNU classpath
-	sudo archlinux-java set java-11-openjdk
-	sudo ln -sf /usr/lib/jvm/default/include/jni.h /usr/include/jni.h
-	sudo ln -sf /usr/lib/jvm/default/include/linux/jni_md.h /usr/include/jni_md.h
-	sudo ln -sf /usr/include/openjpeg-2.4/openjpeg.h /usr/include/openjpeg.h
-	sudo ln -sf /usr/include/openjpeg-2.4/opj_stdint.h /usr/include/opj_stdint.h
-	sudo ln -sf /usr/include/openjpeg-2.4/opj_config.h /usr/include/opj_config.h
+cat >> ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidlibJava_Wrapper/eidlibJava_Wrapper.pro <<EOF
+INCLUDEPATH += /usr/lib/jvm/default/include
+INCLUDEPATH += /usr/lib/jvm/default/include/linux
+EOF
 }
 
 build() {
 	cd ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw
-		qmake pteid-mw.pro
-		make
+	qmake pteid-mw.pro
+	make -j${nproc}
 }
 
 package() {
