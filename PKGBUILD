@@ -1,48 +1,30 @@
-# Maintainer: Mike Yuan <me@yhndnzj.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: heavysink
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.13.13.zen1
-pkgrel=1
-pkgdesc='Linux ZEN with patches for Zephyrus G14'
+pkgver=5.14.7.zen1
+pkgrel=2
+pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
-  xmlto
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
 _srcname=zen-kernel
 source=(
-  "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://github.com/archlinux/svntogit-packages/raw/795a1fd364a702928d0d956550c082fd6e8a2b50/trunk/config"
-  "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.13.patch"
-
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0001-asus-wmi-Add-panel-overdrive-functionality.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0001-asus-wmi-Add-support-for-platform_profile.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0001-asus-wmi-Add-support-for-custom-fan-curves.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0002-asus-wmi-Add-dgpu-disable-method.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0003-asus-wmi-Add-egpu-enable-method.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0004-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
-)
-validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
-  'C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D'  # Steven Barrett <steven@liquorix.net>
+  "$_srcname::git+https://github.com/zen-kernel/zen-kernel#tag=$_srctag"
+  "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config" # the main kernel config file
+  "git+https://gitlab.com/asus-linux/fedora-kernel.git#branch=rog-5.14"
 )
 sha256sums=('SKIP'
-            'a02dd97aa3ec17ab38c4698f7ca6596da5ef0410e2da3577afded678911ea880'
-            'd38e2ee1f43bd6ca18845c80f5e68c0e597db01780004ff47607dd605e9aa086'
-            'b398326e3177b65ff47c78a787e3a54794a83243db640a322f8f3edf51780582'
-            '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
-            '235cd11e8cad02ca19d3bca4b6a112d878110c3f66e24437810c11d3fd2f0b8d'
-            'f11b31d5ffa04a846c2d8f13890f41e99941279b06b3ec3a169d82cb795502a9'
-            '859bfbfee7731c8dd3bded9247d44fd57d924e6f5f518bf8467772e8e44fa03b'
-            '0f35ea4573333c1bb44680de7b1ae5ba6dc98f5151d5686560bccfbcfd1e8541')
+            'e4dafc832ab5c7401d06a4758048e40e9a3ba7db6e764061708c9bf063e05bff'
+            'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -51,22 +33,34 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd $_srcname
 
+  cp ../fedora-kernel/0*.patch $srcdir
+
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+  
+  
+  patch -Np1 < ../0002-asus-wmi-Add-dgpu-disable-method.patch
+  rm ../0002-asus-wmi-Add-dgpu-disable-method.patch
+  patch -Np1 <../0003-asus-wmi-Add-egpu-enable-method.patch
+  rm ../0003-asus-wmi-Add-egpu-enable-method.patch
+  patch -Np1 <../0001-asus-wmi-Add-panel-overdrive-functionality.patch
+  rm ../0001-asus-wmi-Add-panel-overdrive-functionality.patch
+  patch -Np1 <../0001-asus-wmi-Add-support-for-platform_profile.patch
+  rm ../0001-asus-wmi-Add-support-for-platform_profile.patch
+  cd $srcdir
 
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
+  for src in $(ls -1 *.patch); do
+    cd $_srcname
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
+    cd ..
   done
-
+  
+  cd $_srcname
   echo "Setting config..."
-  cp ../config-$pkgver .config
+  cp ../config .config
   make olddefconfig
 
   make -s kernelrelease > version
@@ -76,6 +70,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
+  make htmldocs
 }
 
 _package() {
@@ -187,7 +182,26 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers")
+_package-docs() {
+  pkgdesc="Documentation for the $pkgdesc kernel"
+
+  cd $_srcname
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+  echo "Installing documentation..."
+  local src dst
+  while read -rd '' src; do
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
+
+  echo "Adding symlink..."
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+}
+
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")

@@ -1,8 +1,8 @@
 pkgbase = linux-zen-g14
-	pkgdesc = Linux ZEN with patches for Zephyrus G14
-	pkgver = 5.13.13.zen1
-	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.13.13-zen1
+	pkgdesc = Linux ZEN
+	pkgver = 5.14.7.zen1
+	pkgrel = 2
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.14.7-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -14,33 +14,21 @@ pkgbase = linux-zen-g14
 	makedepends = tar
 	makedepends = xz
 	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.13.13-zen1
-	source = config-5.13.13.zen1::https://github.com/archlinux/svntogit-packages/raw/795a1fd364a702928d0d956550c082fd6e8a2b50/trunk/config
-	source = https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.13.patch
-	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0001-asus-wmi-Add-panel-overdrive-functionality.patch
-	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0001-asus-wmi-Add-support-for-platform_profile.patch
-	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0001-asus-wmi-Add-support-for-custom-fan-curves.patch
-	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0002-asus-wmi-Add-dgpu-disable-method.patch
-	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0003-asus-wmi-Add-egpu-enable-method.patch
-	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0004-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch
-	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
-	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
-	validpgpkeys = C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel#tag=v5.14.7-zen1
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config
+	source = git+https://gitlab.com/asus-linux/fedora-kernel.git#branch=rog-5.14
 	sha256sums = SKIP
-	sha256sums = a02dd97aa3ec17ab38c4698f7ca6596da5ef0410e2da3577afded678911ea880
-	sha256sums = d38e2ee1f43bd6ca18845c80f5e68c0e597db01780004ff47607dd605e9aa086
-	sha256sums = b398326e3177b65ff47c78a787e3a54794a83243db640a322f8f3edf51780582
-	sha256sums = 4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8
-	sha256sums = 235cd11e8cad02ca19d3bca4b6a112d878110c3f66e24437810c11d3fd2f0b8d
-	sha256sums = f11b31d5ffa04a846c2d8f13890f41e99941279b06b3ec3a169d82cb795502a9
-	sha256sums = 859bfbfee7731c8dd3bded9247d44fd57d924e6f5f518bf8467772e8e44fa03b
-	sha256sums = 0f35ea4573333c1bb44680de7b1ae5ba6dc98f5151d5686560bccfbcfd1e8541
+	sha256sums = e4dafc832ab5c7401d06a4758048e40e9a3ba7db6e764061708c9bf063e05bff
+	sha256sums = SKIP
 
 pkgname = linux-zen-g14
-	pkgdesc = The Linux ZEN with patches for Zephyrus G14 kernel and modules
+	pkgdesc = The Linux ZEN kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -52,5 +40,8 @@ pkgname = linux-zen-g14
 	replaces = 
 
 pkgname = linux-zen-g14-headers
-	pkgdesc = Headers and scripts for building modules for the Linux ZEN with patches for Zephyrus G14 kernel
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel
 	depends = pahole
+
+pkgname = linux-zen-g14-docs
+	pkgdesc = Documentation for the Linux ZEN kernel
