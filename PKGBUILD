@@ -4,7 +4,7 @@
 pkgbase=python-cryptolyzer
 pkgname=('python2-cryptolyzer' 'python-cryptolyzer')
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and flexible server cryptographic (TLS/SSL) settings analyzer library'
 arch=('any')
 url='https://gitlab.com/coroner/cryptolyzer'
@@ -30,7 +30,7 @@ package_python-cryptolyzer() {
   depends=(
     'python-attrs>=19.1'
     'python-certvalidator' ## AUR
-    'python-cryptoparser>=0.6.0' ## AUR
+    'python-cryptoparser>=0.7.1' ## AUR
     'python-dateutil'
     'python-requests'
     'python-six'
@@ -44,7 +44,7 @@ package_python2-cryptolyzer() {
   depends=(
     'python2-attrs>=19.1'
     'python2-certvalidator'
-    'python2-cryptoparser>=0.6.0'
+    'python2-cryptoparser>=0.7.1'
     'python2-enum34'
     'python2-ipaddress'
     'python2-dateutil'
