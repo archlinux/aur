@@ -2,13 +2,12 @@
 
 pkgname=inform-git
 _gitpkg=inform6unix
-pkgver=6.35.r3.0.gfeb21c4
+pkgver=6.35.r3.1.g41f7061
 pkgrel=1
 pkgdesc="Interactive fiction compiler (git version)"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url="http://www.inform-fiction.org/"
 license=('Artistic2.0' 'MIT')
-depends=('glibc')
 provides=('inform')
 conflicts=('inform')
 groups=(inform)
@@ -21,17 +20,17 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}"/"${_gitpkg}"
+  cd "${srcdir}/${_gitpkg}"
   make submodules
 }
 
 build() {
-  cd "${srcdir}"/"${_gitpkg}"
+  cd "${srcdir}/${_gitpkg}"
   make PREFIX=/usr MAN_PREFIX=/usr/share
 }
 
 package() {
-  cd "${srcdir}"/"${_gitpkg}"
+  cd "${srcdir}/${_gitpkg}"
   make REAL_PREFIX=/usr PREFIX="${pkgdir}"/usr MAN_PREFIX="${pkgdir}"/usr/share install
 
   cd "${pkgdir}"/usr/bin
