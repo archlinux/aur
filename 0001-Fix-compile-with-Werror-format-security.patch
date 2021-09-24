@@ -1,0 +1,36 @@
+From 7fb2aed4607ff31a89841ac1dded72f9817b0bcc Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Fri, 24 Sep 2021 14:17:39 +0200
+Subject: [PATCH] Fix compile with -Werror=format-security
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In file included from helloworld1.c:8:
+mylog.h: In function ‘mylog_msg’:
+mylog.h:42:9: error: format not a string literal and no format arguments [-Werror=format-security]
+   42 |         log4c_category_log(log4c_category_get(catName), a_priority, msg);
+      |         ^~~~~~~~~~~~~~~~~~
+---
+ examples/helloworld1/mylog.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/examples/helloworld1/mylog.h b/examples/helloworld1/mylog.h
+index 280f3dc..f8e0c81 100644
+--- a/examples/helloworld1/mylog.h
++++ b/examples/helloworld1/mylog.h
+@@ -39,9 +39,9 @@ static LOG4C_INLINE int mylog_fini(){
+ 
+ static LOG4C_INLINE void mylog_msg(char *catName,int a_priority, char *msg){
+ #ifndef WITHOUT_LOG4C
+-	log4c_category_log(log4c_category_get(catName), a_priority, msg);
++	log4c_category_log(log4c_category_get(catName), a_priority, "%s", msg);
+ #else
+-	printf(msg);
++	printf("%s", msg);
+ #endif
+ }
+ 
+-- 
+2.33.0
+
