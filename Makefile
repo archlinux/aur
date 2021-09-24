@@ -1,11 +1,20 @@
-build:
+.PHONY: make install clean purge
+
+make:
+	makepkg
+
+install:
 	makepkg -si
 
 update:
+	# TODO: check for update?
 	updpkgsums
+	makepkg --printsrcinfo > .SRCINFO
+	git add ./PKGBUILD ./.SRCINFO
+	# User: Go commit!
 
 clean:
-	rm -rf pkg src dmenu *.diff
+	rm -rf pkg src st *.diff
 
 purge:
-	rm -rf pkg src dmenu *.diff *.zst
+	rm -rf pkg src st *.diff *.zst
