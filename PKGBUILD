@@ -1,7 +1,7 @@
 # Maintainer: Pedro Gameiro <pm underscore gameiro undercore act at posteo dot pt>
 pkgname=bloomrpc
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI Client for gRPC Services"
 arch=(any)
 url="https://github.com/uw-labs/bloomrpc"
