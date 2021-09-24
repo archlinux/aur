@@ -7,7 +7,7 @@
 # community/freerdp contributor: Stijn Segers <francesco dot borromini at gmail dot com>
 
 pkgname=freerdp-git
-pkgver=2.0.0.r703.gfab649a1b
+pkgver=2.0.0.r1099.g03a9ca80c
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP) - git checkout"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('Apache')
 depends=('dbus-glib' 'fuse' 'glibc' 'gstreamer' 'gst-plugins-base-libs' 'libcups'
 'libgssglue' 'libx11' 'libxcursor' 'libxext' 'libxdamage' 'libxfixes'
 'libxkbcommon' 'libxi' 'libxinerama' 'libxkbfile' 'libxrandr' 'libxrender'
-'libxtst' 'openh264' 'openssl' 'pcsclite' 'wayland')
+'libxtst' 'openssl' 'pcsclite' 'wayland')
 optdepends=('libva')
 makedepends=('alsa-lib' 'cmake' 'docbook-xsl' 'ffmpeg' 'krb5' 'libjpeg-turbo'
 'libpulse' 'libusb' 'pam' 'systemd-libs' 'xmlto' 'xorgproto')
@@ -50,7 +50,6 @@ build() {
         -DWITH_CLIENT_CHANNELS=ON \
         -DWITH_SERVER_CHANNELS=ON \
         -DCHANNEL_URBDRC_CLIENT=ON \
-        -DWITH_OPENH264=ON \
         -DWITH_VAAPI=ON \
         -DWITH_FUSE=ON \
         -Wno-dev \
