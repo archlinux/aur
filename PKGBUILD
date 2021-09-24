@@ -1,9 +1,9 @@
-# Maintainer: Seth Flynn <g3tchoo@protonmail.com>
+# Maintainer: seth <getchoo at tuta dot io>
 
 pkgname=joshuto
 _pkgname=joshuto
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ranger-like terminal file manager written in Rust"
 arch=("any")
 url="https://github.com/kamiyaa/joshuto"
