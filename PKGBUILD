@@ -2,12 +2,12 @@
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=zsh-abbr
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc='zsh abbreviations, ported from fish and enhanced'
 arch=('any')
 url='https://github.com/olets/zsh-abbr'
-license=('MIT')
+license=('custom')
 depends=('zsh')
 makedepends=('git')
 changelog=CHANGELOG.md
