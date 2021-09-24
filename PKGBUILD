@@ -19,13 +19,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/dazars/radio_bash/-/blob/master/radio_bash" "https://gitlab.com/dazars/radio_bash/-/blob/master/radios")
+source=("https://gitlab.com/dazars/radio_bash/-/archive/master/radio_bash-master.tar.gz")
 noextract=()
-md5sums=(546a6b4a0973d89866f23f161123f0ae 9261c5dec2775e277009381345bde2cc)
-# '9261c5dec2775e277009381345bde2cc')
-validpgpkeys=()
+sha256sums=('5b32a2f9db772d72fc3031d3ca56cb9c4f96367ec277022b23f9556c2c714faa')
+#validpgpkeys=()
 
 package() {
-install -Dm755 "$srcdir"/radio_bash "$pkgdir"/usr/bin/radio_bash
-install -Dm644 "$srcdir"/radios "$HOME"/.config/bashradio/radios
+    install -Dm755 "$srcdir/radio_bash-master/radio_bash" "$pkgdir/usr/bin/radio_bash"
+    install -Dm644 "$srcdir/radio_bash-master/radios" "$HOME/.config/bashradio/radios"
 }

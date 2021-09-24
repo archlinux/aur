@@ -7,9 +7,7 @@ pkgbase = radio_bash
 	depends = mpv
 	depends = libnotify
 	depends = figlet
-	source = https://gitlab.com/dazars/radio_bash/-/blob/master/radio_bash
-	source = https://gitlab.com/dazars/radio_bash/-/blob/master/radios
-	md5sums = 546a6b4a0973d89866f23f161123f0ae
-	md5sums = 9261c5dec2775e277009381345bde2cc
+	source = https://gitlab.com/dazars/radio_bash/-/archive/master/radio_bash-master.tar.gz
+	sha256sums = 5b32a2f9db772d72fc3031d3ca56cb9c4f96367ec277022b23f9556c2c714faa
 
 pkgname = radio_bash
