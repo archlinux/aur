@@ -41,7 +41,7 @@ package() {
 
     install -D -m644 \
         "${srcdir}/LICENSE" \
-        "${pkgdir}/usr/share/licenses/${pkgname}"
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -D -m755 \
         "/dev/null" \
