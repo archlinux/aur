@@ -29,7 +29,7 @@ sha256sums=('92269b5e3f6bbb64c3a38131faf9c560947354dbd3f789b02c2f7713dae2ea04'
 package() {
     install -D -m644 \
         "${srcdir}/RuneLite.jar" \
-        "${pkgdir}/usr/share/runelite/RuneLite.jar"
+        "${pkgdir}/usr/share/java/runelite/RuneLite.jar"
 
     install -D -m644 \
         "${srcdir}/runelite.desktop" \
@@ -48,5 +48,5 @@ package() {
         "${pkgdir}/usr/bin/runelite"
 
     echo '#!/bin/sh' > "${pkgdir}/usr/bin/runelite"
-    echo 'exec java -Dhttps.protocols=TLSv1.2 -jar /usr/share/runelite/RuneLite.jar "$@"' >> "${pkgdir}/usr/bin/runelite"
+    echo 'exec java -Dhttps.protocols=TLSv1.2 -jar /usr/share/java/runelite/RuneLite.jar "$@"' >> "${pkgdir}/usr/bin/runelite"
 }
