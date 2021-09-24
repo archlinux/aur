@@ -13,10 +13,8 @@ provides+=($_gitname)
 conflicts+=($_gitname)
 
 pkgver() {
-  #echo 3.32.r43.gc26c688
   cd ${_gitname:-$pkgname}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  #[ ${PIPESTATUS[0]} -ne 0 ] && \
   if [ "$?" -ne "0" ]; then
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
