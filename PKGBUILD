@@ -2,7 +2,7 @@
 
 pkgname=python-xdoctest
 _pkgname="${pkgname#python-}"
-pkgver=0.15.8
+pkgver=0.15.9
 pkgrel=1
 pkgdesc="A rewrite of Python's doctest module"
 arch=('any')
@@ -12,7 +12,8 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('a16578e6d50398ac80d950bcc9a05131880816e2ff3a15bd1489474e532f9b495d099dcea204d8375c884c6957aaaba9b276fbcb65b5717b2850314453f787f7')
+sha512sums=('6a49fbe7f2535ab86ac7047406fbcc9f7e98c964664a95a115c3d945ba8157e4e70ab8c31edae6faee932cfd5e90201d883d9b4b10e2cea9cdc8ff14b5d52d54')
+b2sums=('9980752ad5742a7c4a73418a3ace408c38a6bef6cd43ee5cd1893d6cb195a7c387c5062735b2c903725898ea670e3e6d8e683d4341dcf2dc9e17a2c723107910')
 
 build() {
   cd "$_pkgname-$pkgver"
