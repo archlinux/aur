@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=94.0.4606.54
+pkgver=94.0.4606.61
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=3
@@ -32,7 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-94-ffmpeg-roll.patch
         unexpire-accelerated-video-decode-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('033d9461e24251b790da17e64471eb22e3dfb09090744d3d0b7b4d0fbd75135d'
+sha256sums=('6446db535c02c461c7e5c8d294a0300db03abba791f97f0c70bc52255aedb9bf'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '22692bddaf2761c6ddf9ff0bc4722972bca4d4c5b2fd3e5dbdac7eb60d914320'
             'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
