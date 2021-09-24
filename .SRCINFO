@@ -1,0 +1,15 @@
+pkgbase = radio_bash
+	pkgdesc = Radio en terminal mediante bash y mpv
+	pkgver = 0.0.2
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = mpv
+	depends = libnotify
+	depends = figlet
+	source = https://gitlab.com/dazars/radio_bash/-/blob/master/radio_bash
+	source = https://gitlab.com/dazars/radio_bash/-/blob/master/radios
+	md5sums = 546a6b4a0973d89866f23f161123f0ae
+	md5sums = 9261c5dec2775e277009381345bde2cc
+
+pkgname = radio_bash
