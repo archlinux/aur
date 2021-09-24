@@ -4,14 +4,14 @@
 
 pkgname=libxml
 pkgver=1.8.17
-pkgrel=3
+pkgrel=4
 pkgdesc="The XML C parser and toolkit of Gnome. Older version."
 arch=(i686 x86_64)
 url="http://xmlsoft.org/"
 license=('GPL')
 depends=('zlib')
 options=('!libtool')
-source=("ftp://xmlsoft.org/libxml2/old/${pkgname}-${pkgver}.tar.gz")
+source=("http://xmlsoft.org/sources/old/${pkgname}-${pkgver}.tar.gz")
 md5sums=('53846294aa850a7d042948176d1d19dc')
 
 build() {
