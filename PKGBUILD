@@ -14,7 +14,7 @@ arch=('any')
 url="http://astah.net/products/astah-professional"
 conflicts=('astah_community' 'astah-uml')
 license=('custom')
-depends=('jdk8-adoptopenjdk=8u292')
+depends=('jdk8-adoptopenjdk')
 source=("https://cdn.change-vision.com/files/astah-professional_${pkgver}.${_pkgrel}-0_all.deb"
 	"https://astah.net/wp-content/uploads/2020/11/AstahLicenseAgreement-16th.pdf"
 	"LICENSE"

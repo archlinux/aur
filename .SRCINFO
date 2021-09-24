@@ -6,7 +6,7 @@ pkgbase = astah-professional
 	install = astah-professional.install
 	arch = any
 	license = custom
-	depends = jdk8-adoptopenjdk=8u292
+	depends = jdk8-adoptopenjdk
 	conflicts = astah_community
 	conflicts = astah-uml
 	source = https://cdn.change-vision.com/files/astah-professional_8.4.0.8fdff6-0_all.deb
