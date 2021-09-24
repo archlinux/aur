@@ -4,7 +4,7 @@ pkgname=japokwm-git
 _pkgname=japokwm
 url=https://github.com/werererer/japokwm
 pkgver=v0.3.6
-pkgrel=1
+pkgrel=2
 license=("BSD 2-Clause")
 pkgdesc="A wlroots and dwl based tiling-windowmanager based around creating layouts"
 makedepends=(
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 build() {
-    arch-meson "$_pkgname" build
+    arch-meson "$_pkgname" build -Dxwayland=true
     meson compile -C build
 }
 
