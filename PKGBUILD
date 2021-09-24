@@ -2,7 +2,7 @@
 # Contributor: Eric Lemieux <eric at lemieuxdev dot com>
 
 pkgname=dank
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Reddit meme downloader'
 url='https://github.com/EricLemieux/dank'
@@ -11,7 +11,7 @@ arch=('x86_64')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1da5783ab7839ed1a307adadbfb569c28e3ed52e4238d8b5394fcb308f05899b')
+sha256sums=('64aa93358331d0a111fb2899a3502ca68c69aa23365365455aea65c76e2e8cef')
 
 prepare() {
 	cd "$pkgname-$pkgver"
