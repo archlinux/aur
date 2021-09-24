@@ -1,6 +1,6 @@
 pkgbase = japokwm-git
 	pkgdesc = A wlroots and dwl based tiling-windowmanager based around creating layouts
-	pkgver = v0.3.5
+	pkgver = v0.3.6
 	pkgrel = 1
 	url = https://github.com/werererer/japokwm
 	arch = x86_64
