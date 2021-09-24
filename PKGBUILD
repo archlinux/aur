@@ -20,7 +20,7 @@ sha256sums=('SKIP'
             'f79de21544b83fa1e86f0aed5e849b1922ebae8d822e492fbc9066c0f07ddb69'
             'd9a1e759cd518348fc37c2c83fbd097232098562ebfd1edf85b51413ff524b79'
             'd70d888c1d70289aaad7a9bcaec61203654a588ae11e10ce2fc8d03c8c38a3b4'
-            '75cc8831d0af46c13d37f460825630f9599a76742a3e00ee66bef3ad4fa97412')
+            'a11a5a25e45cf745e48bc8815bf6964de1d261f2238afcf6e38b429271d6f766')
 _sourcedir=("$pkgname")
 _makeopts="--directory=$_sourcedir"
 
