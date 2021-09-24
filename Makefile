@@ -1,5 +1,8 @@
 .PHONY: make install clean purge
 
+setup-repo:
+	git remote set-url aur ssh://aur@aur.archlinux.org/dmenu-gregdan3.git
+
 make:
 	makepkg
 
