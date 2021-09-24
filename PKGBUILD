@@ -1,34 +1,36 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 pkgname=python-globus-cli
-_pkgname=globus-cli
-pkgver=1.13.0
+pkgver=2.1.0.r97.gc0fa9e3
 pkgrel=1
-pkgdesc="A command line interface to Globus"
-arch=(any)
+pkgdesc='CLI for Globus'
+arch=('any')
 url="https://globus.github.io/globus-cli"
 license=('Apache')
 depends=(
-    'python-globus-sdk'
-    'python-click'
-    'python-jmespath'
-    'python-configobj'
-    'python-requests'
-    'python-six'
-    'python-cryptography')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e319050c0289b11bb77d6e852486187314449df6b3084b8ce2aba0b9ae062153')
+	'python-globus-sdk=3.0.1'
+	'python-click>=8.0.0'
+	'python-click<9'
+	'python-jmespath=0.10.0'
+	'python-requests>=2.0.0'
+	'python-requests<3.0.0'
+	'python-cryptography>=1.8.1'
+	'python-cryptography<35.0.0')
+makedepends=('python-setuptools' 'git')
+provides=('globus-cli')
+changelog=changelog.adoc
+## upstream updated dependencies without releasing a new version
+source=("$pkgname-$pkgver::git+https://github.com/globus/globus-cli#commit=c0fa9e38341927303be41acea27825a70a5dc6ce?signed")
+sha256sums=('SKIP')
+validpgpkeys=('FC694E40DC03A8B702D96372CF7E843C41E814C9')
 
-prepare() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    # HACK: use new version of jmespatch
-    sed -i 's/jmespath==0.9.4/jmespath>=0.9.4/g' setup.py
-    # HACK: use new version of globus-sdk
-    sed -i 's/globus-sdk==1.9.0/globus-sdk>=1.9.0/g' setup.py
+build() {
+	cd "$pkgname-$pkgver"
+	python setup.py build
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+	cd "$pkgname-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
-
