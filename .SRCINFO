@@ -1,7 +1,7 @@
 pkgbase = inform-git
 	pkgdesc = Interactive fiction compiler (git version)
-	pkgver = 6.35.r3.0.gfeb21c4
-	pkgrel = 1
+	pkgver = 6.35.r3.1.g41f7061
+	pkgrel = 2
 	url = http://www.inform-fiction.org/
 	arch = aarch64
 	arch = arm
@@ -13,7 +13,6 @@ pkgbase = inform-git
 	groups = inform
 	license = Artistic2.0
 	license = MIT
-	depends = glibc
 	provides = inform
 	conflicts = inform
 	source = git+https://gitlab.com/DavidGriffith/inform6unix.git
