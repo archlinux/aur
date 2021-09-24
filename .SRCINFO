@@ -1,6 +1,6 @@
 pkgbase = gomics-git
 	pkgdesc = A lightweight and free comic viewer
-	pkgver = r22.c3016ed
+	pkgver = r24.ae62ce3
 	pkgrel = 1
 	url = https://github.com/salviati/gomics
 	arch = i686

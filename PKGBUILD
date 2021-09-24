@@ -2,7 +2,7 @@
 
 pkgname=gomics-git
 _pkgname=gomics
-pkgver=r22.c3016ed
+pkgver=r24.ae62ce3
 pkgrel=1
 pkgdesc="A lightweight and free comic viewer"
 url="https://github.com/salviati/gomics"
