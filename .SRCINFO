@@ -1,6 +1,6 @@
 pkgbase = linux-enable-ir-emitter-git
 	pkgdesc = Enables infrared cameras that are not directly enabled out-of-the box
-	pkgver = r213.bbd130e
+	pkgver = r3.3ecdb3b
 	pkgrel = 1
 	url = https://github.com/EmixamPP/linux-enable-ir-emitter
 	install = linux-enable-ir-emitter.install

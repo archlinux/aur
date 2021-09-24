@@ -1,10 +1,10 @@
 # Maintainer: Maxime Dirksen <dirksen.maxime@gmail.com>
+# Co-Maintener: supdrewin <supdrewin@outlook.com>
 # Co-Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
-# Co-Maintener: Supdrewin <supdrewin@outlook.com>
 # Contributor: Nikolay Bryskin <nbryskin@gmail.com>
 
 pkgname=linux-enable-ir-emitter-git
-pkgver=r213.bbd130e
+pkgver=r3.3ecdb3b
 pkgrel=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
 url="https://github.com/EmixamPP/linux-enable-ir-emitter"
