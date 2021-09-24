@@ -4,7 +4,7 @@ pkgname="gdlauncher-beta-bin"
 _pkgname="gdlauncher"
 pkgver="1.1.15.beta.4"
 _pkgver="1.1.15-beta.4"  # Upstream version, used in the download url.
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
@@ -24,8 +24,8 @@ package() {
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
     find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
 
-    # make sure the main binary has the right permissions
-    chmod +x "${pkgdir}/opt/GDLauncher/${_pkgname}"
+    # make sure the main binary and 7za binary have the right permissions
+    chmod a+x "${pkgdir}/opt/GDLauncher/"{${_pkgname},7za}
 
     # link the binary
     install -d -m755 "${pkgdir}/usr/bin/"
