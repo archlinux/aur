@@ -1,3 +1,6 @@
+setup-repo:
+	ssh://aur@aur.archlinux.org/doppler-cli-bin.git
+
 make:
 	makepkg
 
