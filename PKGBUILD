@@ -3,7 +3,7 @@
 
 pkgname=alacritty-themes
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A cross-platform GPU-accelerated Terminal emulator."
 arch=(any)
@@ -13,7 +13,6 @@ license=("MIT")
 depends=("nodejs")
 makedepends=("npm" "jq")
 conflicts=("$pkgname")
-replaces=("$pkgname")
 install="$pkgname.install"
 
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
