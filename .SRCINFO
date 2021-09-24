@@ -1,0 +1,23 @@
+pkgbase = r-ggpmisc
+	pkgdesc = Provide for uniform handling of R's different time-based data classes by extending zoo, maximizing native format information preservation and allowing for user level customization and extension, while simplifying cross-class interoperability.
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ggpmisc
+	arch = any
+	license = GPL
+	makedepends = r-splus2r
+	makedepends = r-lmodel2
+	makedepends = r-plyr
+	depends = r>=3.6.0
+	depends = r-ggpp>=0.4.2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-ggrepel
+	optdepends = r-broom
+	optdepends = r-broom.mixed
+	optdepends = r-nlme
+	optdepends = r-gginnards
+	source = https://cran.r-project.org/src/contrib/ggpmisc_0.4.3.tar.gz
+	sha256sums = 33fecbecefedb7e5260662d4cde58ba2d8f484a1e3d90276608818229727c839
+
+pkgname = r-ggpmisc
