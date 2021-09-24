@@ -1,0 +1,5 @@
+*.diff
+*.zst
+dmenu*/
+pkg/
+src/
