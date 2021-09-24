@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-range-v3-git
+	pkgdesc = Experimental range library for C++11/14/17 (mingw-w64)
+	pkgver = 0.11.0.r71.g8f690283c
+	pkgrel = 1
+	url = https://github.com/ericniebler/range-v3
+	arch = any
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = git
+	depends = mingw-w64-crt
+	provides = mingw-w64-range-v3
+	conflicts = mingw-w64-range-v3
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/ericniebler/range-v3.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-range-v3-git
