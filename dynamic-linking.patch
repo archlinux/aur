@@ -1,0 +1,12 @@
+diff --git a/app/Main.hs b/app/Main.hs
+index dc0fce6..03aadf6 100644
+--- a/app/Main.hs
++++ b/app/Main.hs
+@@ -81,6 +81,7 @@ compileAndRunWith options = do
+            , "-o"
+            , executablePath
+            , "-O2"
++           , "-dynamic"
+            , configFile
+            ]
+   changeWorkingDirectory configDir
