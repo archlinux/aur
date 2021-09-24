@@ -2,7 +2,7 @@
 pkgbase=python-web-compile
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A CLI to compile/minify SCSS & JS, and associated pre-commit hook"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 checkdepends=('python-jinja' 'python-libsass' 'python-gitpython' 'python-yaml' 'python-rjsmin' 'python-toml')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('11eb06c747431fdb7c9becba04bc023c')
+md5sums=('75e94c115aad3379b317536bc8c5e534')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
