@@ -49,10 +49,10 @@ use_yama=n
 use_apparmor=
 
 ## Apply Kernel automatic Optimization
-_use_auto_optimization=
+_use_auto_optimization=y
 
 ## Apply Kernel Optimization selecting
-_use_optimization_select=y
+_use_optimization_select=
 
 ## Enable CFI (booting seems to be broken at nvidia based systems)
 _use_cfi=
@@ -81,7 +81,7 @@ pkgbase=linux-cacule-llvm
 pkgname=('linux-cacule-llvm' 'linux-cacule-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.7
-pkgrel=2
+pkgrel=3
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -125,7 +125,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches-v3/0001-zstd-upstream-patches.patch"
-        "${_patchsource}/ntfs3-patches-v9/0001-ntfs3-patches.patch"
+        "${_patchsource}/ntfs3-patches-v10/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
         "${_patchsource}/0001-v4l2loopback.patch"
@@ -585,12 +585,12 @@ md5sums=('4119cf1e59ef6f109b9be9451a0899ae'
          '381bc4f0ff885e9b67e5899476a30416'
          '808981a36c81165953017e5e432c1fa1'
          '74db4069a1c3985e5de43cf28f44e693'
-         '6e67c94d6dbc63b910f78b6480962993'
+         '709f2f2b5623debde32637b206781c6d'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
          '566435a0444ee45816599f2e0e362c7a'
-         '6bfbbe0bbb79379203889ed7df5e5288')
+         '21c98f19e883879dd3336c1fa143fd31')
          if [ -n "$_use_cfi" ]; then
            md5sums+=("SKIP")
          fi
