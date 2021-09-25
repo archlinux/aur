@@ -1,14 +1,14 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=no-more-secrets
-pkgver=0.3.3
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A command line tool that recreates the famous data decryption effect seen in the 1992 movie Sneakers."
 url="https://github.com/bartobri/no-more-secrets"
 arch=('i686' 'x86_64')
 license=('GPL3')
 source=("https://github.com/bartobri/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('cfcf408768c6b335780e46a84fbc121a649c4b87e0564fc972270e96630efdce')
+sha256sums=('4422e59bb3cf62bca3c73d1fdae771b83aab686cd044f73fe14b1b9c2af1cb1b')
 conflicts=("no-more-secrets-git")
 
 build() {
