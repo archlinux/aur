@@ -1,8 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tree-sitter-lua-git
-pkgver=1.6.0.r10.gb6d4e9e
-pkgrel=2
+pkgver=1.6.0.r12.g6f5d401
+pkgrel=1
 pkgdesc="Lua grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/nvim-treesitter/tree-sitter-lua"
@@ -33,10 +33,10 @@ build() {
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-lua.so"
+	install -Dm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-lua.so"
 	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
 	ln -s "/usr/lib/libtree-sitter-lua.so" "$pkgdir/usr/share/nvim/runtime/parser/lua.so"
 	cd "$pkgname"
-	install -Dvm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
