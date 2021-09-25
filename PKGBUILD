@@ -15,7 +15,7 @@ optdepends=('ffmpeg: for video post-processing'
             'atomicparsley: for embedding thumbnails into m4a files'
             'aria2: for using aria2 as external downloader')
 source=("https://github.com/yt-dlp/yt-dlp/releases/download/${pkgver}/yt-dlp.tar.gz")
-sha256sums=('6fd6a32ba43ea10ff12dd96c744b531c9b2a79a883b5f06f431a99e3bfc59598')
+sha256sums=('ae08e0b56fea59a8bfdadacd92eddc9bdfdc1473199178cb4e31bacfd991864a')
 
 prepare() {
     cd "$pkgname"
