@@ -3,7 +3,7 @@ _pkgname=pacext
 pkgname="${_pkgname}-git"
 pkgver="r1.0"
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgrel=1
