@@ -1,17 +1,16 @@
 pkgbase = fopnu
 	pkgdesc = A new and powerful P2P File Sharing System
-	pkgver = 1.53
-	pkgrel = 1
+	pkgver = 1.55
+	pkgrel = 2
 	url = https://www.fopnu.com
 	arch = x86_64
 	license = custom:fopnu
 	makedepends = tar
 	depends = gtk2
 	depends = dbus-glib
-	source = fopnu-1.53.deb::https://download2.fopnu.com/download/fopnu_1.53-1_amd64.deb
+	source = fopnu-1.55.deb::https://download2.fopnu.com/download/fopnu_1.55-1_amd64.deb
 	source = LICENSE
 	sha256sums = eef5ecc105a71d7d215d978ea102ee0370714b00cddd07b99a26a9f90552903a
 	sha256sums = 0bc342f6415aa54c3d313af6a45152cb005024c7167d4fd0c71bfa004a2f8e4f
 
 pkgname = fopnu
-

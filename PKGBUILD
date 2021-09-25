@@ -2,8 +2,8 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=fopnu
-pkgver=1.53
-pkgrel=1
+pkgver=1.55
+pkgrel=2
 pkgdesc='A new and powerful P2P File Sharing System'
 arch=('x86_64')
 url='https://www.fopnu.com'
