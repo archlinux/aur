@@ -8,7 +8,7 @@
 pkgname=selinux-refpolicy-arch
 _reponame=selinux-policy-arch
 _policyname=refpolicy-arch
-pkgver=20210203
+pkgver=20210908
 pkgrel=1
 pkgdesc="Modular SELinux reference policy including headers and docs with Arch Linux patches"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = selinux-refpolicy-arch
 	pkgdesc = Modular SELinux reference policy including headers and docs with Arch Linux patches
-	pkgver = 20210203
+	pkgver = 20210908
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/refpolicy/wiki
 	install = selinux-refpolicy-arch.install
@@ -18,4 +18,3 @@ pkgbase = selinux-refpolicy-arch
 	sha256sums = c9f7cce9a06fd0595b3dd47d4fdde9d9c7457120c42c5f08bfdc5e89eb9a61df
 
 pkgname = selinux-refpolicy-arch
-
