@@ -1,5 +1,5 @@
 pkgbase = anki-release-source
-	pkgdesc = The latest release building from source locally
+	pkgdesc = Helps you remember facts efficiently. Latest release building locally
 	pkgver = 2.1.48
 	pkgrel = 3
 	url = https://apps.ankiweb.net/

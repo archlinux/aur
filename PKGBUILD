@@ -3,7 +3,7 @@
 pkgname=anki-release-source
 pkgver=2.1.48
 pkgrel=3
-pkgdesc="The latest release building from source locally"
+pkgdesc="Helps you remember facts efficiently. Latest release building locally"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
 arch=('x86_64')
