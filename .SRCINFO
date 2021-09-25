@@ -1,15 +1,16 @@
 pkgbase = python-logging-helper
-	pkgdesc = Provides some enhancements to built-in logging module
-	pkgver = 1.8.6
+	pkgdesc = Provides enhancements to built-in logging module
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/logging-helper
 	arch = any
 	license = MIT
+	checkdepends = python-testfixtures
 	makedepends = python-setuptools
-	depends = python-better-exceptions
-	depends = python-future
-	source = https://pypi.io/packages/source/l/logging_helper/logging_helper-1.8.6.tar.gz
-	sha256sums = 270b7b57f163528709a162d48388518d8a109d33b014fd44893a493841549942
+	depends = python-better-exceptions>=0.1.6
+	depends = python-logging-tree>=1.7
+	depends = python-future>=0.16.0
+	source = python-logging-helper-1.9.0.tar.gz::https://files.pythonhosted.org/packages/source/l/logging_helper/logging_helper-1.9.0.tar.gz
+	sha256sums = 03aaff3c4e6967f7a18d576acba1adf22c47d30df4d4bf9164514d046c818645
 
 pkgname = python-logging-helper
-
