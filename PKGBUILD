@@ -19,7 +19,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/elementary-icon-theme"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  # https://wiki.archlinux.org/title/VCS_package_guidelines#Git
+  # Upstream has annotated tags
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
