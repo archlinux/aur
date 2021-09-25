@@ -1,0 +1,12 @@
+diff -Naur 4kstogram_3.4.3.3630_amd64.orig/4kstogram.sh 4kstogram_3.4.3.3630_amd64/4kstogram.sh
+--- 4kstogram_3.4.3.3630_amd64.orig/4kstogram.sh	2021-07-14 13:43:17.000000000 +0200
++++ 4kstogram_3.4.3.3630_amd64/4kstogram.sh	2021-09-25 18:47:11.864792239 +0200
+@@ -1,7 +1,6 @@
+ #!/bin/sh
+ 
+-SCRIPT_DIR=$(dirname "$0")
+-SCRIPT_DIR=`cd "$SCRIPT_DIR"; pwd` #make path absolute
++SCRIPT_DIR=$(dirname $(readlink -f "$0"))
+ 
+ LD_LIBRARY_PATH=$SCRIPT_DIR
+ export LD_LIBRARY_PATH

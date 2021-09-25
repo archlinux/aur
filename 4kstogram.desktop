@@ -6,6 +6,6 @@ Comment=View instagram photos
 Exec=4kstogram
 Terminal=false
 Type=Application
-Icon=4kstogram.png
+Icon=4kstogram
 Categories=Network;Qt;
 
