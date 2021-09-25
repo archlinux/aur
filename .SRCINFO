@@ -1,6 +1,6 @@
 pkgbase = yt-dlp
 	pkgdesc = A youtube-dl fork with additional features and fixes
-	pkgver = 2021.09.02
+	pkgver = 2021.09.25
 	pkgrel = 1
 	url = https://github.com/yt-dlp/yt-dlp
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = yt-dlp
 	optdepends = rtmpdump: for rtmp streams support
 	optdepends = atomicparsley: for embedding thumbnails into m4a files
 	optdepends = aria2: for using aria2 as external downloader
-	source = https://github.com/yt-dlp/yt-dlp/releases/download/2021.09.02/yt-dlp.tar.gz
+	source = https://github.com/yt-dlp/yt-dlp/releases/download/2021.09.25/yt-dlp.tar.gz
 	sha256sums = 6fd6a32ba43ea10ff12dd96c744b531c9b2a79a883b5f06f431a99e3bfc59598
 
 pkgname = yt-dlp
