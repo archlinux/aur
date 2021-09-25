@@ -10,7 +10,7 @@ makedepends=("cargo")
 provides=("patchup")
 conflicts=("patchup")
 source=("https://github.com/patchup/cli/releases/download/0.1.0/patchup-cli-bin.tar.gz")
-sha256sums=("4de9a88c54d0fadb5a1c7d6fcfefc7dc980ea4dd58484b5a8b96c10e61bc6ae2")
+sha256sums=("946ff094ac765a31a69fed314d5d78b650aa2d6ff84397e41c15a50ebaad6a59")
 
 package() {
     install -Dm755 "target/release/patchup" "$pkgdir/usr/bin/patchup"    
