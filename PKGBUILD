@@ -1,4 +1,5 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
+
 pkgbase='sensu-go'
 pkgname=('sensu-go-agent' 'sensu-go-backend' 'sensu-go-cli')
 pkgver=6.4.3
