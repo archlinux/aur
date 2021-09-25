@@ -1,14 +1,14 @@
 pkgbase = palemoon-i18n-hu
 	pkgdesc = Hungarian language pack for Pale Moon browser
-	pkgver = 29.2.0
+	pkgver = 29.4.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-hu-29.2.0.xpi
-	source = palemoon-i18n-hu-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-hu@palemoon.org
-	sha256sums = ebca153409c8e23af6899dd8b428712b67f1cfe8ab73ac9581af835a50ad5d48
+	noextract = palemoon-i18n-hu-29.4.0.xpi
+	source = palemoon-i18n-hu-29.4.0.xpi::https://addons.palemoon.org/?component=download&version=29.4.0&id=langpack-hu@palemoon.org
+	sha256sums = c05c8fd314cbd7c8250eb497d50fcf4a432ee6841b5edd150337aaf583ff6be3
 
 pkgname = palemoon-i18n-hu
