@@ -1,0 +1,27 @@
+pkgbase = lib32-libttf2
+	pkgdesc = A free, high-quality, and portable font engine (32-bit)
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://www.freetype.org/freetype1/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	source = https://sourceforge.net/projects/freetype/files/freetype/1.3.1/freetype-1.3.1.tar.gz
+	source = freetype-tools-1.3.1.patch
+	source = freetype-1.3.1.dif
+	source = freetype-1.3.1-nopatent.patch
+	source = freetype-1.3.1-gcc.patch
+	source = freetype-1.3.1-kpathsea.patch
+	source = update-config-files.diff
+	source = libtool32bitweirdness.diff
+	sha1sums = a398fb4d6dd756826e459058d8075759086f8ca4
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = lib32-libttf2

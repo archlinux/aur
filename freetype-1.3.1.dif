@@ -1,0 +1,86 @@
+--- contrib/ttf2bdf/remap.c
++++ contrib/ttf2bdf/remap.c	2002/06/12 15:53:43
+@@ -477,13 +477,15 @@
+     for (i = t = 0; i < 2; i++) {
+         if (nodes[t].kids == 0) {
+             n = getnode(codes[i]);
+-            nodes[t].kids = t = n;
++            nodes[t].kids = n;
++	    t = n;
+         } else if (nodes[nodes[t].kids].key == codes[i])
+           t = nodes[t].kids;
+         else if (nodes[nodes[t].kids].key > codes[i]) {
+             n = getnode(codes[i]);
+             nodes[n].sibs = nodes[t].kids;
+-            nodes[t].kids = t = n;
++            nodes[t].kids = n;
++	    t = n;
+         } else {
+             t = nodes[t].kids;
+             for (l = t; nodes[t].sibs && nodes[t].key < codes[i]; ) {
+@@ -492,11 +494,13 @@
+             }
+             if (nodes[t].key < codes[i]) {
+                 n = getnode(codes[i]);
+-                nodes[t].sibs = t = n;
++                nodes[t].sibs = n;
++		t = n;
+             } else if (nodes[t].key > codes[i]) {
+                 n = getnode(codes[i]);
+                 nodes[n].sibs = t;
+-                nodes[l].sibs = t = n;
++                nodes[l].sibs = n;
++		t = n;
+             }
+         }
+     }
+--- contrib/ttf2pk/configure.in
++++ contrib/ttf2pk/configure.in	2002/06/12 15:53:43
+@@ -27,16 +27,16 @@
+ 
+ if test -n "$kpathsea_dir"; then
+   LIBS="$LIBS -L$kpathsea_dir/lib"
+-  CPPFLAGS="$CPPFLAGS -I$kpathsea_dir/include -I$srcdir"
++  CPPFLAGS="$CPPFLAGS -I$srcdir"
+ 
+   dnl the function kpse_set_program_name() is available since kpathsea 3.2
+-  AC_CHECK_LIB(kpathsea, kpse_set_program_name, [[]], AC_DEFINE(OLD_KPATHSEA))
++  AC_CHECK_LIB(kpathsea, kpse_set_program_name, , [AC_DEFINE(OLD_KPATHSEA)])
+ 
+   AC_CHECK_LIB(kpathsea, kpse_init_prog, ,[
+                AC_MSG_ERROR([Can't find kpathsea library! Use --with-kpathsea-dir option.])])
+ 
+   dnl the header file kpathsea.h doesn't exist in kpathsea 2.6 and before
+-  AC_CHECK_HEADER(kpathsea/kpathsea.h, [[]], AC_DEFINE(VERY_OLD_KPATHSEA))
++  AC_CHECK_HEADER(kpathsea/kpathsea.h, , [AC_DEFINE(VERY_OLD_KPATHSEA)])
+ 
+   AC_CHECK_HEADER(kpathsea/c-auto.h, ,[
+                   AC_MSG_ERROR([Can't find kpathsea include files! Use --with-kpathsea-dir option.])])
+--- contrib/ttf2pk/ttfaux.c
++++ contrib/ttf2pk/ttfaux.c	2002/06/12 15:53:43
+@@ -134,8 +134,8 @@
+ 
+   static Boolean initialized = False;
+ 
+-  TT_UShort in_string[2];
+-  TTO_GSUB_String in, out;
++  static TT_UShort in_string[2];
++  static TTO_GSUB_String in, out;
+ 
+   TT_UShort script_index, language_index, feature_index;
+   TT_UShort req_feature_index = 0xFFFF;
+--- ltconfig
++++ ltconfig	2002/06/12 15:54:01
+@@ -1931,11 +1931,7 @@
+   if test -f /lib/ld.so.1; then
+     dynamic_linker='GNU ld.so'
+   else
+-    # Only the GNU ld.so supports shared libraries on MkLinux.
+-    case "$host_cpu" in
+-    powerpc*) dynamic_linker=no ;;
+-    *) dynamic_linker='Linux ld.so' ;;
+-    esac
++    dynamic_linker='Linux ld.so'
+   fi
+   ;;
+ 

@@ -1,0 +1,13 @@
+Index: contrib/ttf2pk/filesrch.c
+===================================================================
+--- contrib/ttf2pk/filesrch.c.orig
++++ contrib/ttf2pk/filesrch.c
+@@ -36,7 +36,7 @@
+ 
+ #ifdef KPSEDLL
+ /* this is kpathsea 3.3 and newer */
+-extern KPSEDLL char *kpathsea_version_string;
++extern KPSEDLL const char *kpathsea_version_string;
+ #else
+ extern DllImport char *kpathsea_version_string;
+ #endif
