@@ -3,7 +3,7 @@
 pkgname=emote
 pkgver=3.0.3
 _pkgref=ff40e3d66b251aaf2e91116ba177e59f087e1021
-pkgrel=1
+pkgrel=2
 url="https://github.com/tom-james-watson/Emote"
 pkgdesc="Emoji Picker for Linux written in GTK3"
 arch=('any')
@@ -13,24 +13,21 @@ makedepends=('python-setuptools' 'python-pipenv')
 source=(
   "https://github.com/tom-james-watson/Emote/archive/${_pkgref}.tar.gz"
   'setup.py'
-  'fix-relative-paths.patch'
+  'fix-skin-tone-static-path.patch'
 )
 sha512sums=(
   'SKIP'
   'ef8caea8ad9e9bc0487dd8c816561027adda743c1e8e2779a64e7ae99fb227c820f31ef9c87fb910bae7a8ffc623e5e2e1a53a8c69ce0a35ad96557e97a5a949'
-  '421f51590edcaa5c2143cc0ad3b8e29276219445365750ea359b36e4b1f1f8b48ccf85e966ba8a2d9166c74fdca3fbebf747e49498a1916c917149d0e68b6790'
+  '332917b145cdfc2bc80fcac310cc21df1d0dcb1bec78b675930383295d074f80a176fec0d4c35ab7728a5bc948c05f53ce4037504e21f8f41708b5de2393edf1'
 )
 
 build() {
   # Replace setup.py
   mv -f "$srcdir/setup.py" "$srcdir/Emote-$_pkgref/setup.py"
+  # Fix skin tone and `static/` path issues when not running as a snap
+  patch -d "$srcdir/Emote-$_pkgref" -p1 <"$srcdir/fix-skin-tone-static-path.patch"
   # Move static files into the library
   mv -T "$srcdir/Emote-$_pkgref/static" "$srcdir/Emote-$_pkgref/emote/static"
-  # Fix relative paths
-  #find "$srcdir/Emote-$_pkgref" -type f -name "*.py" -print0 |
-  #  xargs -0 \
-  #    sed -Ei 's/"static\/[^"]*"/os.path.join(os.path.dirname(__file__), &)/g'
-  patch -d "$srcdir/Emote-$_pkgref" -p1 <"$srcdir/fix-relative-paths.patch"
   # Fix .desktop file
   sed -Ei 's/\$\{SNAP\}//' "$srcdir/Emote-$_pkgref/snap/gui/emote.desktop"
   # Fix version number
