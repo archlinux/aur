@@ -2,7 +2,7 @@
 
 pkgname='python-eth-account'
 _pkgname=${pkgname#python-}
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Sign Ethereum transactions and messages with local private keys"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 url="https://github.com/ethereum/$_pkgname"
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('60396fedde2546bb23d3b1a4f28a959387738c9906090d2fdd01b9e663eaa829')
+sha256sums=('baef80956e88af5643f8602e72aab6bcd91d8a9f71dd03c7a7f1145f5e6fd694')
 
 build() {
   cd $_pkgname-$pkgver
