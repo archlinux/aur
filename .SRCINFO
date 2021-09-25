@@ -1,0 +1,11 @@
+pkgbase = zabbix-getter-bin
+	pkgdesc = Simple tool to get latest value from zabbix
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/yakumo-saki/zabbix-getter/
+	arch = x86_64
+	license = MIT
+	source = https://github.com/yakumo-saki/zabbix-getter/releases/download/v0.9.1/zabbix-getter_v0.9.1_linux_amd64.tar.gz
+	md5sums = 483e87356f1066459a3a002a5169b4a8
+
+pkgname = zabbix-getter-bin
