@@ -1,14 +1,14 @@
 pkgbase = palemoon-i18n-fi
 	pkgdesc = Finnish language pack for Pale Moon browser
-	pkgver = 29.2.0
+	pkgver = 29.4.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-fi-29.2.0.xpi
-	source = palemoon-i18n-fi-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-fi@palemoon.org
-	sha256sums = 677c91bd276e6c466813a842d1d8b7e78d4fedabcdc977cf71f2064095e579c3
+	noextract = palemoon-i18n-fi-29.4.0.xpi
+	source = palemoon-i18n-fi-29.4.0.xpi::https://addons.palemoon.org/?component=download&version=29.4.0&id=langpack-fi@palemoon.org
+	sha256sums = ee9378db87c874c1a462bb484752e7dbda382f262ae29855ef095da7f11ebe2b
 
 pkgname = palemoon-i18n-fi
