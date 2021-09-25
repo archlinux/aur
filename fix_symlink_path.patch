@@ -1,0 +1,12 @@
+diff -Naur 4kslideshowmaker.orig/4kslideshowmaker.sh 4kslideshowmaker/4kslideshowmaker.sh
+--- 4kslideshowmaker.orig/4kslideshowmaker.sh	2020-04-01 15:13:19.000000000 +0200
++++ 4kslideshowmaker/4kslideshowmaker.sh	2021-09-25 19:02:06.878171417 +0200
+@@ -1,7 +1,6 @@
+ #!/bin/sh
+ 
+-SCRIPT_DIR=$(dirname "$0")
+-SCRIPT_DIR=`cd "$SCRIPT_DIR"; pwd` #make path absolute
++SCRIPT_DIR=$(dirname $(readlink -f "$0"))
+ 
+ LD_LIBRARY_PATH=$SCRIPT_DIR
+ export LD_LIBRARY_PATH
