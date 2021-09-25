@@ -1,0 +1,17 @@
+pkgbase = openlibm-git
+	pkgdesc = A high quality, portable, standalone C mathematical library
+	pkgver = 0.8.0.r0.ged7aea3
+	pkgrel = 1
+	url = https://openlibm.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	provides = openlibm
+	conflicts = openlibm
+	options = staticlibs
+	source = git+https://github.com/JuliaMath/openlibm.git
+	sha256sums = SKIP
+
+pkgname = openlibm-git
