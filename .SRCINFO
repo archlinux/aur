@@ -10,4 +10,3 @@ pkgbase = lucene-grep-bin
 	sha256sums = 37a085da89749d79f16a2496e587da9d2f5147d2a06d7d6e0d21871f75376825
 
 pkgname = lucene-grep-bin
-
