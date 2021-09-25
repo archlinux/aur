@@ -5,8 +5,8 @@ pkgbase = peekprof
 	url = https://github.com/exapsy/peekprof
 	arch = x86_64
 	license = MIT
-	makedepends = golang
-	source = peekprof-0.5.8.tar.gz::https://github.com/exapsy/peekprof/archive/0.5.8.tar.gz
+	makedepends = go
+	source = peekprof-0.5.8.tar.gz::https://github.com/exapsy/peekprof/archive/refs/tags/v0.5.8.tar.gz
 	sha1sums = SKIP
 
 pkgname = peekprof
