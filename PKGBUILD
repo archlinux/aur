@@ -1,8 +1,9 @@
-# Maintainer Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=elementary-icon-theme-git
-pkgver=r2392.395d6a7e
+pkgver=6.0.0.r4.g9c8e5b0f
 pkgrel=1
 pkgdesc='Named, vector icons for elementary OS'
 arch=('any')
