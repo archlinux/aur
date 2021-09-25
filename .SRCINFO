@@ -1,7 +1,7 @@
 pkgbase = ntfs2btrfs-git
 	pkgdesc = Convertion from ntfs to btrfs keeping NT metadata
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	makedepends = cmake
@@ -11,4 +11,3 @@ pkgbase = ntfs2btrfs-git
 	md5sums = SKIP
 
 pkgname = ntfs2btrfs-git
-

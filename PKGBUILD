@@ -3,7 +3,7 @@ _pkgbase=ntfs2btrfs
 pkgname=$_pkgbase-git
 pkgbase=$_pkgbase-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Convertion from ntfs to btrfs keeping NT metadata"
 arch=(any)
@@ -25,4 +25,5 @@ build() {
 package() {
 	cd "$_pkgbase/b"
 	make DESTDIR="$pkgdir/" install
+  mv $pkgdir/usr/sbin $pkgdir/usr/bin
 }
