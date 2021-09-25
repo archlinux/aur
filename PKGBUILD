@@ -10,23 +10,29 @@
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
-_NUMAdisable=
+_NUMAdisable=y
 # Enable fsync
-_fsync=y
+_fsync=
 #enable futex2
 _futex2=
 #enable winesync
 _winesync=
 ### Set performance governor as default
-_per_gov=
+_per_gov=y
 ### Disable Deadline I/O scheduler
-_deadline_disable=
+_deadline_disable=y
 ### Disable Kyber I/O scheduler
-_kyber_disable=
+_kyber_disable=y
 ### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
 _2k_HZ_ticks=
-_1k_HZ_ticks=
-_500_HZ_ticks=
+_1k_HZ_ticks=y
+_750_HZ_ticks=
+_mm_protect=
+_lrng_enable=
+## Apply Kernel automatic Optimization
+_use_optimization=y
+## Apply Kernel Optimization selecting
+_use_optimization_select=
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
@@ -48,65 +54,39 @@ _use_current=
 
 pkgbase=linux-cacule-rc
 # pkgname=('linux-cacule' linux-cacule-headers)
-_major=5.14
+_major=5.15
 #_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc7
+_rcver=rc2
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
 _srcname=linux-${_stablerc}
 pkgrel=1
 pkgdesc='Linux-CacULE Kernel-RC by Hamad Marri and with some other patchsets'
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
-_caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE"
-_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.14"
+_caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE"
+_patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15"
 source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
         "config"
-    #    "${_patchsource}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_caculepatches}/v5.14/cacule-5.14.patch"
-      #  "${_patchsource}/misc/0003-clang.patch"
-        "${_patchsource}/bbr2-5.14.patch"
-        "${_patchsource}/lrng-5.14.patch"
-        "${_patchsource}/misc/0004-folio-mm.patch"
-        "${_patchsource}/misc/0007-string.patch"
-        "${_patchsource}/cpu-5.14.patch"
-       # "${_patchsource}/misc-5.14.patch"
-        "${_patchsource}/zstd-5.14.patch"
-#        "${_patchsource}/lrng/1004-dev-random-new-lrng-approach-v40.patch"
-   #     "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
-      #  "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
-      #  "${_patchsource}/futex2-stable-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
-       # "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
-       # "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
-       # "${_patchsource}/lqx-patches-v2/0001-lqx-patches.patch"
-      #  "${_patchsource}/bfq-patches-v8/0001-bfq-patches.patch"
-  #  "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
-    #    "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-      #  "${_patchsource}/btrfs-patches-v8/0001-btrfs-patches.patch"
-       # "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-       # "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
-       # "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
-      #  "${_patchsource}/zstd-dev-patches-v3/0001-zstd-dev-patches.patch"
-      #  "${_patchsource}/clearlinux-patches-v3/0001-clearlinux-patches.patch"
-      #  "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch"
+        "${_caculepatches}/v5.15/cacule-5.15.patch"
+#        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+#        "${_patchsource}/misc/5.15-rt.patch"
+#        "${_patchsource}/misc/0007-v5.15-fsync.patch"
+#        "${_patchsource}/misc/0003-glitched-cfs.patch"
+        "${_patchsource}/misc/more-uarches-for-kernel-5.15+.patch"
+##        "${_patchsource}/misc/0007-v5.15-winesync.patch"
+        "${_patchsource}/misc/perf.patch"
+#        "${_patchsource}/misc/0002-clear-patches.patch"
+#        "${_patchsource}/misc/0004-mm-set-8-megabytes-for-address_space-level-file-read.patch"
+#        "${_patchsource}/0001-bbr2.patch"
+	       "auto-cpu-optimization.sh"
       )
-
-sha512sums=('39c87c7cc05cbc57ecb23f92b467016b86d95de3d1cdf8889dcac325af8132e8d61bcfe6401d50d5e1fd3651a5a16f58c4e991e0bfd9db08b43c659218445dba'
-            'ad2dc94146cd01777f92bdb99bcd2687f2f2d97d9bb7f8a9c25acf55e499917672a5659386e6546422140c707f534cd9d94fc2cbc1f66cdfd30429ab19381449'
-            '38b0fd8b67d577cadc6afbaf545752eb7a38779f29f5a465035183a3e2f6112244b5b38f15801f819b7672ab8645c0d7ec14694ad7bf44aaec02c4c53f811798'
-            '7f46e2c51d2f694ca851ef0f88c824e69425015deade8167ddf4694610b614ebd74784892c596105dad7cc422c35637b85f8eeff0855a1c619dc31bc6e5fb5f8'
-            '424da49dbb06288a73bf737b68e281575ef3cc1090dc26ecf9fcd0531b2aad28bdee871dcc893e35b6c4372cc5571504134626f86bcb5197d32361e7955002fe'
-            '40eb64517a45027b9c47de0d5fd72081b86d5b10eb394b611d43f3acc625377f9968ea38ce060bc01062c2a2645bf9a610847671bee038c58dec946434d7800a'
-            'ed2e61717b37570c7f058915b8ee2f6515ec3b22884be4646f3bcf2d5b48f17b57be93cfc63970f6988fc70e6e236b574b30c5ce09f54a56b601827cc1793299'
-            'b928e2233fab6aa7919b95ca7c35442dc8e48998f1ef195f24b5ee13f8d275397ddfacb9275031553512273f8045c6a2c8df10b48a5d408f945bd2dd6d677b30'
-            '9d19321f93637094bdbaaa91b9a8acb216a4f0e9b2a106c46782b1f2e57c7da98a74fe5fa840f1fd700aa1de831aa71615f5a48b43de70d63d1b9df813916cee')
-
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
@@ -134,55 +114,127 @@ prepare() {
     ### Setting config
         echo "Setting config..."
         cp ../config .config
-        make olddefconfig
 
-    ### Prepared version
-        make -s kernelrelease > version
-        echo "Prepared $pkgbase version $(<version)"
+        ### Microarchitecture Optimization (GCC/CLANG)
+              if [ -n "$_use_optimization" ]; then
+                sh "${srcdir}"/auto-cpu-optimization.sh
+              fi
+              if [ -n "$_use_optimization_select" ]; then
+                source "${startdir}"/configure
+                cpu_arch
+              fi
+
+             ### Enable protect file mappings under memory pressure
+            if [ -n "$_mm_protect" ]; then
+              echo "Enabling protect file mappings under memory pressure..."
+              scripts/config --enable CONFIG_UNEVICTABLE_FILE
+              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+              scripts/config --enable CONFIG_UNEVICTABLE_ANON
+              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
+              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
+            fi
+
+              ### Enable Linux Random Number Generator
+          	if [ -n "$_lrng_enable" ]; then
+          		echo "Enabling Linux Random Number Generator ..."
+          		scripts/config --enable CONFIG_LRNG
+          		scripts/config --disable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
+          		scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 0
+          		scripts/config --set-val CONFIG_LRNG_SEED_BUFFER_INIT_ADD_BITS 0
+          		scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
+          		scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
+          		scripts/config --disable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
+          		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_32
+          		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_256
+          		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
+          		scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
+          		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
+          		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
+          		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
+          		scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
+          		scripts/config --disable CONFIG_LRNG_HEALTH_TESTS
+          		scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
+          		scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
+          		scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
+          		scripts/config --enable CONFIG_LRNG_JENT
+          		scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
+          		scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
+          		scripts/config --disable CONFIG_LRNG_DRNG_SWITCH
+          		scripts/config --disable CONFIG_LRNG_DRBG
+          		scripts/config --disable CONFIG_LRNG_TESTING_MENU
+          		scripts/config --disable CONFIG_LRNG_SELFTEST
+          	fi
+              echo "Disabling TCP_CONG_CUBIC..."
+              scripts/config --module CONFIG_TCP_CONG_CUBIC
+              scripts/config --disable CONFIG_DEFAULT_CUBIC
+              echo "Enabling TCP_CONG_BBR2..."
+              scripts/config --enable CONFIG_TCP_CONG_BBR2
+              scripts/config --enable CONFIG_DEFAULT_BBR2
+              scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
+              echo "Enable VHBA-Module"
+              scripts/config --module CONFIG_VHBA
+              ### Enabling ZSTD COMPRESSION ##
+              echo "Set module compression to ZSTD"
+              scripts/config --enable CONFIG_MODULE_COMPRESS
+              scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+              scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+              scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+              scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+              echo "Enabling KBUILD_CFLAGS -O3..."
+              scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+              scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+              echo "Enable PREEMPT"
+              scripts/config --disable CONFIG_PREEMPT_NONE
+              scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
+              scripts/config --enable CONFIG_PREEMPT
+              scripts/config --enable CONFIG_PREEMPT_COUNT
+              scripts/config --enable CONFIG_PREEMPTION
+              scripts/config --enable CONFIG_PREEMPT_DYNAMIC
 
     ### Optionally use running kernel's config
-	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
-	if [ -n "$_use_current" ]; then
-		if [[ -s /proc/config.gz ]]; then
-			echo "Extracting config from /proc/config.gz..."
-			# modprobe configs
-			zcat /proc/config.gz > ./.config
-		else
-			warning "Your kernel was not compiled with IKCONFIG_PROC!"
-			warning "You cannot read the current config!"
-			warning "Aborting!"
-			exit
-		fi
-	fi
-
-  source "${startdir}"/configure
-
-  cpu_arch
-
-
-
-### Optionally load needed modules for the make localmodconfig
-# See https://aur.archlinux.org/packages/modprobed-db
-    if [ -n "$_localmodcfg" ]; then
-        if [ -f $HOME/.config/modprobed.db ]; then
-        echo "Running Steven Rostedt's make localmodconfig now"
-        make LSMOD=$HOME/.config/modprobed.db localmodconfig
-    else
-        echo "No modprobed.db data found"
-        exit
+    # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
+    if [ -n "$_use_current" ]; then
+        if [[ -s /proc/config.gz ]]; then
+            echo "Extracting config from /proc/config.gz..."
+            # modprobe configs
+            zcat /proc/config.gz > ./.config
+        else
+            warning "Your kernel was not compiled with IKCONFIG_PROC!"
+            warning "You cannot read the current config!"
+            warning "Aborting!"
+            exit
         fi
     fi
 
-### Save configuration for later reuse
-   echo "Save config for reuse"
-   cat .config > "${startdir}/config.last"
+    ### Optionally load needed modules for the make localmodconfig
+    # See https://aur.archlinux.org/packages/modprobed-db
+    if [ -n "$_localmodcfg" ]; then
+        if [ -e $HOME/.config/modprobed.db ]; then
+            echo "Running Steven Rostedt's make localmodconfig now"
+            make ${BUILD_FLAGS[*]} LSMOD=$HOME/.config/modprobed.db localmodconfig
+        else
+            echo "No modprobed.db data found"
+            exit
+        fi
+    fi
+
+    make ${BUILD_FLAGS[*]} olddefconfig
+
+    make ${BUILD_FLAGS[*]} -s kernelrelease > version
+    echo "Prepared $pkgbase version $(<version)"
+
+    [[ -z "$_makenconfig" ]] || make ${BUILD_FLAGS[*]} nconfig
+
+    ### Save configuration for later reuse
+    cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
 }
 
 build() {
   cd $_srcname
 
-  make all
+make ${BUILD_FLAGS[*]} all
 }
 
 _package() {
@@ -298,3 +350,11 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
+
+
+md5sums=('8f9b7869b6973284cddb631d4e7ca40c'
+         'aed2897ca8daff3174f1e34f739d21c2'
+         '0783aae3228c2a709cbd7afc86717ebe'
+         'ff4b20b981d9ae0bdda68f012b03e756'
+         'b90a3e4c5b789444b98563fc092bac24'
+         '21c98f19e883879dd3336c1fa143fd31')
