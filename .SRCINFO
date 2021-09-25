@@ -1,5 +1,5 @@
 pkgbase = wofi-calc
-	pkgdesc = Search code documentation from rofi
+	pkgdesc = A simple calculator for wofi, inspired in rofi-calc.
 	pkgver = 1.0.r16.5e7024b
 	pkgrel = 1
 	url = https://github.com/Zeioth/wofi-calc.git
@@ -7,6 +7,9 @@ pkgbase = wofi-calc
 	arch = i686
 	license = MIT
 	makedepends = wofi
+	makedepends = libqalculate
+	depends = wofi
+	depends = libqalculate
 	provides = wofi-calc
 	conflicts = wofi-calc
 	source = git+https://github.com/Zeioth/wofi-calc.git
