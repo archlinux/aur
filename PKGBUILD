@@ -3,7 +3,7 @@
 pkgname='gourmand'
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A recipe manager for desktop with the possibilities to import, organize, and tweak recipes"
+pkgdesc="A recipe manager for desktop that can import recipes"
 arch=('any')
 url="https://github.com/GourmandRecipeManager/gourmand"
 license=('GPL')
@@ -19,4 +19,3 @@ package() {
   # https://wiki.archlinux.org/title/Python_package_guidelines#pip
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
 }
-# vim:set ts=2 sw=2 et:
