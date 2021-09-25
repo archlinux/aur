@@ -1,0 +1,21 @@
+pkgbase = exman-git
+	pkgdesc = manuals for other systems
+	pkgver = r28.f2ef5b106882
+	pkgrel = 1
+	url = https://git.causal.agency/exman
+	arch = any
+	license = ISC
+	makedepends = bmake
+	makedepends = git
+	depends = man
+	depends = sh
+	provides = exman
+	conflicts = exman
+	options = libtool
+	options = staticlibs
+	options = !strip
+	options = !zipman
+	source = git+https://git.causal.agency/exman
+	sha256sums = SKIP
+
+pkgname = exman-git
