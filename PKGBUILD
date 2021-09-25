@@ -1,35 +1,55 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
-_pipname=log_colorizer
 pkgbase=python-log_colorizer
-pkgname=('python2-log_colorizer' 'python-log_colorizer')
-pkgver=1.6
+_name="${pkgbase#python-}"
+pkgname=('python-log_colorizer' 'python2-log_colorizer')
+pkgver=1.8.5
 pkgrel=1
-pkgdesc="A color formater for python logging"
+pkgdesc="Python logging formatter and handler"
 arch=('any')
 url="https://github.com/Kozea/log_colorizer"
 license=('BSD')
-makedepends=('python2-setuptools' 'python-setuptools')
-source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-md5sums=('f052908c63a1bfb0cda4287414f43bef')
+makedepends=('python-setuptools' 'python2-setuptools')
+checkdepends=('python-pytest-runner' 'python2-pytest-runner')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        'LICENSE')
+sha256sums=('abc32c3832cde0a45b80af503c7e4a592747565cb520c7c6e374fdd21173407e'
+            'f2dd41cf835899bee66416c983c98c1057658d113fd5364549f41affe4e200be')
 
 prepare() {
-    cp -R $_pipname-$pkgver python2-$_pipname-$pkgver
+	cp -a "$_name-$pkgver"{,-py2}
 }
 
-package_python2-log_colorizer() {
-depends=('python2')
+build() {
+	pushd "$_name-$pkgver"
+	python setup.py build
+	popd
 
-    cd python2-$_pipname-$pkgver
-    python2 setup.py install --root="$pkgdir/" --optimize=1
-#    mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
-#    install -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname
+	pushd "$_name-$pkgver-py2"
+	python2 setup.py build
+}
+
+check() {
+	pushd "$_name-$pkgver"
+	python setup.py pytest
+	popd
+
+	pushd "$_name-$pkgver-py2"
+	python2 setup.py pytest
 }
 
 package_python-log_colorizer() {
-depends=('python')
+	depends=('python')
 
-    cd $_pipname-$pkgver 
-    python setup.py install --root="$pkgdir/" --optimize=1
-#    mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
-#    install -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	cd "$_name-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+}
+
+package_python2-log_colorizer() {
+	depends=('python2')
+
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	cd "$_name-$pkgver-py2"
+	PYTHONHASHSEED=0 python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
