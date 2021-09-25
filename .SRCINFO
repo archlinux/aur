@@ -1,0 +1,11 @@
+pkgbase = doom3xp-data-steam
+	pkgdesc = Doom 3 Expansion data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = https://store.steampowered.com/app/9070/DOOM_3_Resurrection_of_Evil/
+	arch = any
+	license = custom
+	makedepends = steamcmd
+	provides = doom3xp-data
+
+pkgname = doom3xp-data-steam
