@@ -14,7 +14,7 @@ source=('rtc-ds1307-load.sh'
 	'rtc-ds1307.conf'
 	'LICENSE')
 md5sums=('72f654b0127a4b5fa8128f8289eaf051'
-	'c8bbf6826620d1b89faa47da2b52ab0f'
+	'9f7f3f6bc9105ef73319d404167c2947'
 	'b6c1d9e9c47c21193874ec190e82db62'
 	'2d327893436081b1eb7243ed5b9273d7')
 

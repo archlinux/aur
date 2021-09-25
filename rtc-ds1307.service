@@ -1,10 +1,11 @@
 [Unit]
 Description=Raspberry Pi i2C RTC DS1307 clock boot load script
-After=multi-user.target
+After=systemd-modules-load.service
 
 
 [Service]
-Type=idle
+Type=oneshot
+RemainAfterExit=yes
 ExecStart=/usr/lib/systemd/scripts/rtc-ds1307-load
 
 

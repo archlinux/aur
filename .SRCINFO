@@ -14,7 +14,7 @@ pkgbase = raspberrypi-rtc-ds1307
 	source = rtc-ds1307.conf
 	source = LICENSE
 	md5sums = 72f654b0127a4b5fa8128f8289eaf051
-	md5sums = c8bbf6826620d1b89faa47da2b52ab0f
+	md5sums = 9f7f3f6bc9105ef73319d404167c2947
 	md5sums = b6c1d9e9c47c21193874ec190e82db62
 	md5sums = 2d327893436081b1eb7243ed5b9273d7
 
