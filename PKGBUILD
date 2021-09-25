@@ -1,6 +1,6 @@
 # Maintainer: Mikołaj "D1SoveR" Banasik <d1sover@gmail.com>
 pkgname='luxtorpeda-git'
-pkgver=30.0.0.r270.415ad45
+pkgver=36.0.0.r289.0253e5c
 pkgrel=1
 pkgdesc='Steam Play compatibility tool to run games using native Linux engines'
 arch=('x86_64' 'i686')
@@ -13,11 +13,9 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 source=("git+${url}.git"
-        'reproducible-build.patch'
         'size-optimisations.patch')
 sha256sums=('SKIP'
-            'e97cf95dedcf60c97edb3a693052964e4ce6da795631ca5c9f04182462f67895'
-            '2bd6a8b0586cf5f382d4e98ed8803bc34af2b5227f31a3f219957b4d6f50ada3')
+            '1aea00fecd857e8d7b8a3d4c3a5d2f9ef18007bb9366461b4f16878d64a7bf40')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -29,7 +27,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  patch -Np1 -i "$srcdir/reproducible-build.patch"
   patch -Np1 -i "$srcdir/size-optimisations.patch"
 }
 
