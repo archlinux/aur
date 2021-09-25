@@ -1,0 +1,16 @@
+pkgbase = pacext-git
+	pkgdesc = Pacman extensions with more convenient syntax
+	pkgver = r1.93ab058
+	pkgrel = 1
+	url = https://github.com/CRISPYricePC/pacext
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = pacman
+	optdepends = sudo: Running root commands
+	optdepends = doas: Running root commands
+	provides = pacext
+	source = pacext::git+https://github.com/CRISPYricePC/pacext.git
+	md5sums = SKIP
+
+pkgname = pacext-git
