@@ -23,4 +23,4 @@ package() {
 
 
 sha256sums=('3c8902abf5d44aa066f45c7ca0f7d4c096648f4ae05558cb0e58c6a9d6cdfbdd'
-            'd2007c388d622b26db3a21b210641a863ec274a8e353a5131ac1b5e6cc0cfa25')
+            '12fbaf9d83d54763bd5f5b0ea37906b148f5dcb85c39d4035bec41f589019bcd')

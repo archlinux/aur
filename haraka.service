@@ -1,13 +1,3 @@
-#
-# systemd service file for Haraka
-#
-# Ensure that `daemonize` in `smtp.ini` is set to `false` (which is the default value).
-#
-# Put this file in /etc/systemd/system,  modify the paths to suit, then run:
-# sudo systemctl enable haraka
-# sudo systemctl start haraka
-#
-
 [Unit]
 Description=Haraka MTA
 After=syslog.target network.target remote-fs.target nss-lookup.target
@@ -15,7 +5,7 @@ After=syslog.target network.target remote-fs.target nss-lookup.target
 [Service]
 Type=simple
 PIDFile=/var/run/haraka.pid
-ExecStart=/usr/bin/haraka -c /etc/haraka/config
+ExecStart=/usr/bin/haraka -c /etc/haraka
 KillMode=process
 PrivateTmp=true
 
