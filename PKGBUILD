@@ -1,8 +1,8 @@
-# Maintainer: grufo <madmurphy333@gmail.com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 _libname='libconfini'
 pkgname="${_libname}-git"
-pkgver='r150.ebd664e'
+pkgver='r152.863999c'
 pkgrel=1
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
