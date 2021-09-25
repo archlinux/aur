@@ -6,17 +6,17 @@
 
 _locale='gl'
 pkgname=palemoon-i18n-gl
-pkgver=29.2.0
+pkgver=29.4.0
 pkgrel=1
 pkgdesc="Galician language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('c015b8135a310dee96c9aade13c78455ca9f3ad07f834f971dfca8894adaaabf')
+sha256sums=('8f8ecaa9fdb47e9bb4916f6c87112be8b3f1670f2e533634eda6800119d03579')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
-DLAGENTS=("https::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
+DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
           "${DLAGENTS[@]}")
 
 package() {
