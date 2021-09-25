@@ -1,0 +1,14 @@
+pkgbase = git-subtrac
+	pkgdesc = Keep the content for your git submodules all in one place: the parent repo.
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://github.com/apenwarr/git-subtrac
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = git
+	conflicts = git-subtrac-git
+	source = https://github.com/apenwarr/git-subtrac/archive/v0.04.tar.gz
+	sha256sums = 162baf3614e7ba0c6ccf2838acae4780bbf8e1795e8294d9a32ff32379125e27
+
+pkgname = git-subtrac
