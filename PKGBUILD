@@ -3,23 +3,30 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=vvvvvv
-pkgver=2.2
+_pkgname=VVVVVV
+pkgver=2.3.4
 _pkgver=10202016
-pkgrel=3
+pkgrel=1
 pkgdesc='A retro-styled 2D platformer (game sold separately)'
 arch=('i686' 'x86_64')
 url='https://thelettervsixtim.es/'
 groups=('humblebundle3' 'humblebundle4' 'humblebundles')
 license=('custom')
 depends=('sh' 'sdl2_mixer')
+makedepends=('cmake')
 _gamepkg="${pkgname}-${_pkgver}-bin"
-source=("hib://${_gamepkg}" "${pkgname}.desktop" "${pkgname}.sh")
+source=("hib://${_gamepkg}"
+        "${_pkgname}-${pkgver}.tar.gz::https://github.com/TerryCavanagh/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+        "${pkgname}.desktop"
+        "rm-srcdir-in-bin.patch")
 md5sums=('2a67882173f36c685f532e3cce0607af'
+         'e6ee8b4f7f143104a495d91bad057807'
          'f3f06f16bf7f3280279e2d3da425a5d2'
-         '6d1c555a18bcd5cba8c55a62cf0964ac')
+         '9e0cf26cc72b5d409321895c36a6ade6')
 sha256sums=('8b02d2c55dbc3b94e12c5131cc896b81ae3001aa13c90bb25dffe2ed8b5d2e55'
+            '514b85ee21a3a8d9bfb9af00bc0cd56766d69f84c817799781da93506f30dd9c'
             '8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4'
-            '883913125c4630d16fe0081d9a96bf65f2bc08ace7fa345613669d827a8ea7c1')
+            '1707013fe1bc924d1f9a1443d504e7cbef6eb5595fe2a5c6586945fb908f778a')
 noextract=("${_gamepkg}")
 # You can download the Humble Indie Bundle file manually, or you can configure
 # DLAGENTS in makepkg.conf or ~/.makepkg.conf to auto-download.
@@ -40,29 +47,44 @@ DLAGENTS+=('hib::/usr/bin/bash -c echo\ Could\ not\ find\ %u.\ Download\ manuall
 prepare() {
   cd "${srcdir}"
 
-  mkdir -p "${pkgname}-${pkgver}"
-  bsdtar -x -C "${pkgname}-${pkgver}" -f "${_gamepkg}"
+  mkdir -p "${_gamepkg}-extract"
+  bsdtar -x -C "${_gamepkg}-extract" -f "${_gamepkg}"
+
+  patch -p1 -i "${srcdir}/rm-srcdir-in-bin.patch" -d "${_pkgname}-${pkgver}"
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}/desktop_version"
+
+  mkdir -p build
+  cd build
+  cmake -DOFFICIAL_BUILD=ON ..
+  make
+
+  cd "${srcdir}/${_gamepkg}-extract"
+
+  echo "No known license for data.zip. Not for redistribution" >> LICENSE
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
+  install -D -m755 "desktop_version/build/${_pkgname}" \
+      "${pkgdir}/usr/lib/${pkgname}/${_pkgname}"
+  install -D -m644 "LICENSE.md" \
+      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-bin"
+
+  cd "${srcdir}/${_gamepkg}-extract"
+
+  install -D -m644 "LICENSE" \
+      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-data"
   cd data
-  install -d "${pkgdir}/opt/${pkgname}"
-  install -m644 -t "${pkgdir}/opt/${pkgname}" \
-      data.zip \
-      Linux.README
-  if [ "${CARCH}" = "x86_64" ]; then
-    install -m755 x86_64/${pkgname}.x86_64 \
-        "${pkgdir}/opt/${pkgname}/${pkgname}"
-  else
-    install -m755 x86/${pkgname}.x86 \
-        "${pkgdir}/opt/${pkgname}/${pkgname}"
-  fi
-
-  install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -D -m644 "data.zip" "${pkgdir}/usr/lib/${pkgname}"
   install -D -m644 "VVVVVV.png" \
       "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s "../lib/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -D -m644 "${srcdir}/${pkgname}.desktop" \
       "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

@@ -1,7 +1,7 @@
 pkgbase = vvvvvv
 	pkgdesc = A retro-styled 2D platformer (game sold separately)
-	pkgver = 2.2
-	pkgrel = 3
+	pkgver = 2.3.4
+	pkgrel = 1
 	url = https://thelettervsixtim.es/
 	arch = i686
 	arch = x86_64
@@ -9,18 +9,21 @@ pkgbase = vvvvvv
 	groups = humblebundle4
 	groups = humblebundles
 	license = custom
+	makedepends = cmake
 	depends = sh
 	depends = sdl2_mixer
 	noextract = vvvvvv-10202016-bin
 	source = hib://vvvvvv-10202016-bin
+	source = VVVVVV-2.3.4.tar.gz::https://github.com/TerryCavanagh/VVVVVV/archive/refs/tags/2.3.4.tar.gz
 	source = vvvvvv.desktop
-	source = vvvvvv.sh
+	source = rm-srcdir-in-bin.patch
 	md5sums = 2a67882173f36c685f532e3cce0607af
+	md5sums = e6ee8b4f7f143104a495d91bad057807
 	md5sums = f3f06f16bf7f3280279e2d3da425a5d2
-	md5sums = 6d1c555a18bcd5cba8c55a62cf0964ac
+	md5sums = 9e0cf26cc72b5d409321895c36a6ade6
 	sha256sums = 8b02d2c55dbc3b94e12c5131cc896b81ae3001aa13c90bb25dffe2ed8b5d2e55
+	sha256sums = 514b85ee21a3a8d9bfb9af00bc0cd56766d69f84c817799781da93506f30dd9c
 	sha256sums = 8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4
-	sha256sums = 883913125c4630d16fe0081d9a96bf65f2bc08ace7fa345613669d827a8ea7c1
+	sha256sums = 1707013fe1bc924d1f9a1443d504e7cbef6eb5595fe2a5c6586945fb908f778a
 
 pkgname = vvvvvv
-

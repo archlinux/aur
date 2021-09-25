@@ -1,0 +1,11 @@
+--- a/desktop_version/CMakeLists.txt
++++ b/desktop_version/CMakeLists.txt
+@@ -293,6 +293,8 @@
+ 	endif()
+ 
+ 	target_link_libraries(VVVVVV physfs-static tinyxml2-static lodepng-static)
++	cmake_path(GET CMAKE_SOURCE_DIR PARENT_PATH REPO_DIR)
++	target_compile_options(physfs-static PRIVATE "-ffile-prefix-map=${REPO_DIR}=.")
+ else()
+ 	find_package(utf8cpp CONFIG)
+ 
