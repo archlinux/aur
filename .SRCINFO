@@ -1,7 +1,7 @@
 pkgbase = yesplaymusic
 	pkgdesc = A third party music application for Netease Music
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/qier222/YesPlayMusic
 	arch = x86_64
 	license = MIT
