@@ -1,6 +1,6 @@
 pkgbase = prjoxide-nightly
 	pkgdesc = Documenting Lattice's 28nm FPGA parts
-	pkgver = c0a7652_20210924
+	pkgver = 318331f_20210925
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/gatecat/prjoxide
@@ -11,7 +11,7 @@ pkgbase = prjoxide-nightly
 	conflicts = prjoxide-git
 	replaces = prjoxide-git
 	options = !strip
-	source = prjoxide::git+https://github.com/gatecat/prjoxide.git#commit=c0a7652
+	source = prjoxide::git+https://github.com/gatecat/prjoxide.git#commit=318331f
 	source = prjoxide-db::git+https://github.com/gatecat/prjoxide-db.git#commit=48cb553
 	sha256sums = SKIP
 	sha256sums = SKIP
