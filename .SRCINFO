@@ -1,5 +1,5 @@
 pkgbase = vim-vi
-	pkgver = 8
+	pkgver = 9
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/vim-vi
 	arch = any

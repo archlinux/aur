@@ -1,7 +1,7 @@
 # Maintainer: <https://aur.archlinux.org/user/vorbote>
 
 pkgname=('vim-vi' 'gvim-vi')
-pkgver=8
+pkgver=9
 pkgrel=1
 arch=('any')
 url="https://aur.archlinux.org/packages/vim-vi"
@@ -33,13 +33,13 @@ package_gvim-vi() {
   provides+=('vim-vi')
   conflicts+=('vim-vi')
   replaces+=('vim-vi')
-  ln -sf /usr/bin/gvim "$pkgdir"/usr/bin/edit
-  ln -sf /usr/bin/gvim "$pkgdir"/usr/bin/ex
-  ln -sf /usr/bin/gvim "$pkgdir"/usr/bin/vi
-  ln -sf /usr/bin/gvim "$pkgdir"/usr/bin/view
-  ln -sf /usr/bin/gvim "$pkgdir"/usr/bin/redit
-  ln -sf /usr/bin/gvim "$pkgdir"/usr/bin/rex
-  ln -sf /usr/bin/gvim "$pkgdir"/usr/bin/rvi
+  ln -sf /usr/bin/vim "$pkgdir"/usr/bin/edit
+  ln -sf /usr/bin/vim "$pkgdir"/usr/bin/ex
+  ln -sf /usr/bin/vim "$pkgdir"/usr/bin/vi
+  ln -sf /usr/bin/vim "$pkgdir"/usr/bin/view
+  ln -sf /usr/bin/vim "$pkgdir"/usr/bin/redit
+  ln -sf /usr/bin/vim "$pkgdir"/usr/bin/rex
+  ln -sf /usr/bin/vim "$pkgdir"/usr/bin/rvi
 }
 
 # vim: ts=2 sw=2 et :
