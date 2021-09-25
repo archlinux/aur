@@ -1,14 +1,13 @@
 pkgbase = android-x86-system-image-22
 	pkgdesc = Android x86 Atom System Image, API-22
-	pkgver = 5.1_r01
+	pkgver = 5.1_r06
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
 	depends = android-platform-22
 	options = !strip
-	source = http://dl.google.com/android/repository/sys-img/android/sysimg_x86-22_r01.zip
-	sha1sums = 6c7bb51e41a16099bb1f2a3cc81fdb5aa053fc15
+	source = https://dl.google.com/android/repository/sys-img/android/x86-22_r06.zip
+	sha256sums = aa72bfcc81dcea09efb8bd7dcdf108b6a85c11bca1b287a64fa1a90d2cdd3538
 
 pkgname = android-x86-system-image-22
-

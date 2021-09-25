@@ -1,9 +1,9 @@
 # Maintainer: Christoph Bayer <chrbayer@criby.de>
 
-_rev=r01
+_rev=r06
 _sdkver=5.1
 _sdkint=22
-pkgname=android-x86-system-image-${_sdkint}
+pkgname=android-x86-system-image-22
 pkgver=${_sdkver}_${_rev}
 pkgrel=1
 pkgdesc="Android x86 Atom System Image, API-${_sdkint}"
@@ -12,8 +12,8 @@ url="http://developer.android.com/sdk/index.html"
 license=('custom')
 depends=("android-platform-${_sdkint}")
 options=('!strip')
-source=("http://dl.google.com/android/repository/sys-img/android/sysimg_x86-${_sdkint}_${_rev}.zip")
-sha1sums=('6c7bb51e41a16099bb1f2a3cc81fdb5aa053fc15')
+source=("https://dl.google.com/android/repository/sys-img/android/x86-${_sdkint}_${_rev}.zip")
+sha256sums=('aa72bfcc81dcea09efb8bd7dcdf108b6a85c11bca1b287a64fa1a90d2cdd3538')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_sdkint}/default"
