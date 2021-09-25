@@ -1,7 +1,7 @@
 pkgname=firedragon-extension-plasma-integration
 pkgver=1.8.0.1
 pkgrel=1
-pkgdesc='plasma browser integration addon for firedragon.'
+pkgdesc='Plasma browser integration addon for FireDragon'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/'
 license=('GPLV3')
