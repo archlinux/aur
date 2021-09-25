@@ -1,4 +1,4 @@
-# Maintainer: Sergii Fesenko <megapoliss@ukr.net>
+# Maintainer: Sergii Fesenko <sergii underscore f dot at outlook dot com>
 # Contributor: Alain Kalker <a.c.kalker@gmail.com>
 # Contributor: jedahu <jedahu@gmail.com>
 # Contributor: Leonidas <marek@xivilization.net>
@@ -29,7 +29,7 @@ pkgver() {
 
 md5sums=('SKIP'
          '59242ddb19a9be927915e489e2bfca27')
-         
+
 build() {
   cd "$srcdir/$_pkgname"
 
