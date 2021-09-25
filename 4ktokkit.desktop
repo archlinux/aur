@@ -1,0 +1,12 @@
+
+[Desktop Entry]
+Name=4K Tokkit
+GenericName=4K Tokkit
+Comment=Download content from TikTok
+Exec=4ktokkit
+Terminal=false
+Type=Application
+Icon=4ktokkit
+Categories=Network;Qt;
+StartupWMClass=4ktokkit-bin
+StartupNotify=true

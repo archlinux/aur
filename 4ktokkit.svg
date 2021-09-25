@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="70"
+   height="70"
+   viewBox="0 0 70 70"
+   fill="none"
+   version="1.1"
+   id="svg175"
+   sodipodi:docname="4ktokkit.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs179" />
+  <sodipodi:namedview
+     id="namedview177"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="11.9"
+     inkscape:cx="15.504202"
+     inkscape:cy="35.042017"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg175" />
+  <mask
+     id="mask0"
+     mask-type="alpha"
+     maskUnits="userSpaceOnUse"
+     x="0"
+     y="0"
+     width="70"
+     height="70">
+    <circle
+       cx="35"
+       cy="35"
+       r="35"
+       fill="#FE0D80"
+       id="circle164" />
+  </mask>
+  <circle
+     cx="35"
+     cy="35"
+     r="35"
+     fill="#fe0d80"
+     id="circle167"
+     style="fill:#fe0d80;fill-opacity:1" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M 64.1591,10.1073 V 10.0486 C 61.2594,9.45088 58.6368,7.94733 56.6867,5.76455 54.5111,3.34094 53.3117,0.225447 53.3127,-3 H 43.0698 V 19.9059 C 40.6425,18.6865 37.9014,18 34.9999,18 c -9.9411,0 -18,8.0589 -18,18 0,9.9411 8.0589,18 18,18 9.9412,0 18,-8.0589 18,-18 H 53 l 0.1634,-20.6802 c 3.9904,2.797 8.9275,4.6939 13.8365,4.6854 v -9.6037 c -0.9547,-0.0028 -1.9066,-0.1014 -2.8408,-0.2942 z"
+     fill="#f9f9f9"
+     id="path169" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M 37,41.4203 V 26 H 34 V 41.4203 L 28.0588,35 26,37.381 l 8.4706,9.1537 c 0.5741,0.6204 1.4847,0.6204 2.0588,0 L 45,37.381 42.9412,35 Z"
+     fill="#fe0d80"
+     id="path171" />
+</svg>
