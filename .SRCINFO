@@ -1,0 +1,14 @@
+pkgbase = sapulatar-qt
+	pkgdesc = A simple gui apps to help you remove background from various images.
+	pkgver = 1.0.dev1
+	pkgrel = 1
+	url = https://github.com/devlovers-id/sapulatar-qt
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = pyside2
+	depends = python
+	source = sapulatar-qt::git+https://github.com/devlovers-id/sapulatar-qt
+	sha256sums = SKIP
+
+pkgname = sapulatar-qt
