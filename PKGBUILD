@@ -2,7 +2,7 @@
 _pkgname=libsigmf
 pkgname=$_pkgname-git
 pkgver=r13.8ac7dbc
-pkgrel=1
+pkgrel=2
 pkgdesc="A header-only C++ library for working with SigMF metadata"
 arch=(any)
 url="https://github.com/deepsig/libsigmf"
@@ -13,9 +13,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git"
         "0001-cmake-fix-installation-of-fbs-files.patch"
+        "0002-fix-for-flatbuffers-v2.patch"
 )
 sha256sums=('SKIP'
-            '03012d41f55c1a2f7a61f952c79d14e80bba1f2ee508d77a3d94fe78f3ab394c')
+            '03012d41f55c1a2f7a61f952c79d14e80bba1f2ee508d77a3d94fe78f3ab394c'
+            '9eae8483e26085999654ef9a633648b7025eca2c7a16b19b471ad7c189c47e04')
 
 pkgver() {
 	cd "$_pkgname"
@@ -25,6 +27,7 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 	patch -p1 < "$srcdir/0001-cmake-fix-installation-of-fbs-files.patch"
+	patch -p1 < "$srcdir/0002-fix-for-flatbuffers-v2.patch"
 }
 
 build() {
