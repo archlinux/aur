@@ -25,5 +25,3 @@ package() {
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dvm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
