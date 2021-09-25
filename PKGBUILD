@@ -1,17 +1,20 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=bdsup2subpp-git
-pkgver=1.0.3.13.g38dddf9
+pkgver=1.0.3.34.g48e0395
 pkgrel=1
 pkgdesc="Subtitle conversion tool for image based stream formats with scaling capabilities and some other nice features. (GIT version)"
 arch=('x86_64')
 license=('Apache')
 url='http://forum.doom9.org/showthread.php?t=167051'
 depends=('qt5-base')
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             'qt5-tools'
+             )
 provides=('bdsup2subpp')
 conflicts=('bdsup2subpp')
-source=('bdsup2subpp::git+https://github.com/amichaeltm/BDSup2SubPlusPlus.git')
+source=('bdsup2subpp::git+https://github.com/TheGreatMcPain/BDSup2SubPlusPlus.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,12 +25,17 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  cd build
-  qmake-qt5 "${srcdir}/bdsup2subpp/src"
+  sed 's|bdsup2sub++|bdsup2subpp|g' \
+    -i bdsup2subpp/meson.build \
+    -i bdsup2subpp/bundle/linux/bdsup2sub++.desktop
 }
 
 build() {
-  make -C build
+  cd build
+  arch-meson ../bdsup2subpp \
+    --prefix /usr
+
+  ninja
 }
 
 package() {

@@ -1,16 +1,17 @@
 pkgbase = bdsup2subpp-git
 	pkgdesc = Subtitle conversion tool for image based stream formats with scaling capabilities and some other nice features. (GIT version)
-	pkgver = 1.0.3.13.g38dddf9
+	pkgver = 1.0.3.34.g48e0395
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=167051
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = meson
+	makedepends = qt5-tools
 	depends = qt5-base
 	provides = bdsup2subpp
 	conflicts = bdsup2subpp
-	source = bdsup2subpp::git+https://github.com/amichaeltm/BDSup2SubPlusPlus.git
+	source = bdsup2subpp::git+https://github.com/TheGreatMcPain/BDSup2SubPlusPlus.git
 	sha256sums = SKIP
 
 pkgname = bdsup2subpp-git
-
