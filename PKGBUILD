@@ -1,13 +1,13 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=d2vwitch-git
-pkgver=v3.3.gbd0b13b
+pkgver=v5.2.gb379384
 pkgrel=1
 pkgdesc="Cross-platform D2V creator. (GIT version)"
 arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=173090'
 license=('LGPL2.1' 'ISC')
-depends=('vapoursynth'
+depends=('vapoursynth-plugin-d2vsource-git'
          'libavutil.so'
          'libavformat.so'
          'libavcodec.so'
