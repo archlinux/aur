@@ -1,7 +1,7 @@
 pkgbase = jitsi-nightly
 	pkgdesc = Audio/video SIP VoIP phone and instant messenger (formerly SIP-Communicator)
 	pkgver = 2.11.20210926
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org
 	install = jitsi-nightly.install
 	arch = i686
@@ -32,6 +32,6 @@ pkgbase = jitsi-nightly
 	md5sums = SKIP
 	md5sums = f5c21e511756458172dc0ae8020c7bd5
 	md5sums = 345b5ab9e26038952eef90ce18b78002
-	md5sums = 68475c5c47505b504646cb595529d90b
+	md5sums = 92f6b21cdfa361c430cb837956967b20
 
 pkgname = jitsi-nightly

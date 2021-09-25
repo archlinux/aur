@@ -8,7 +8,7 @@ _pkgname=jitsi
 _pkgvermajor=2.11
 # pkgver is determined automatically
 pkgver=2.11.20210926
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio/video SIP VoIP phone and instant messenger (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
 url="https://jitsi.org"
@@ -30,7 +30,7 @@ source=(
 md5sums=('SKIP'
          'f5c21e511756458172dc0ae8020c7bd5'
          '345b5ab9e26038952eef90ce18b78002'
-         '68475c5c47505b504646cb595529d90b')
+         '92f6b21cdfa361c430cb837956967b20')
 install=jitsi-nightly.install
 
 pkgver() {
