@@ -2,7 +2,7 @@
 
 _plug=libp2p
 pkgname=vapoursynth-lib-${_plug}-git
-pkgver=r2.0.g25dbd45
+pkgver=r2.1.g770cc31
 pkgrel=1
 pkgdesc="Library for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -24,8 +24,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  sed '/-static/d' -i libp2p/meson.build
 }
 
 build() {
@@ -33,7 +31,7 @@ build() {
   arch-meson "../${_plug}" \
     --prefix /usr
 
-  LC_ALL=C ninja
+  ninja
 }
 
 package() {
