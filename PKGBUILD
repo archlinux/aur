@@ -6,7 +6,7 @@
 
 
 pkgbase=linux-hardened-cacule
-pkgver=5.14.6.hardened1
+pkgver=5.14.7.hardened1
 pkgrel=1
 pkgdesc='Security-Hardened Linux with the cacule scheduler'
 url='https://github.com/anthraxx/linux-hardened'
@@ -26,8 +26,8 @@ source=(
   cpu-patches.patch
   config         # the main kernel config file
 )
-sha256sums=('54848c1268771ee3515e4c33e29abc3f1fa90d8144894cce6d0ebc3b158bccec'
-            'bd43c295ec2202598672502cdbb0aa90376a7ab5bc535fc8e923cdbcd7966535'
+sha256sums=('af2539449f6a6161621609572b17d269bbbae4fcfffe3e044249b0b8b5ba7eab'
+            '6f0bdbaceaf4e9e4b364901b1c847c46e50df4d42e16aa26785ba8f761c720a2'
             'bfc4a35b30ebe39fe2520ae8b2c08b97b6549c2c99a9ecf8c0d57ea27b558e75'
             '4f22a6e4e5fe6f3bb39ca39073fa812eb9c0dbb3ac9cec64ed0a90d06b54d32a'
             '8ed949148810642ee912c32edbd049f5f6f4f921edf74b9d149557f4953182c1')
