@@ -6,7 +6,7 @@
 
 pkgname=linux-enable-ir-emitter
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box."
 url='https://github.com/EmixamPP/linux-enable-ir-emitter'
@@ -42,4 +42,10 @@ package() {
 
     # boot service
     install -Dm 644 sources/linux-enable-ir-emitter.service -t ${pkgdir}/usr/lib/systemd/system/
+
+    # executable
+    install -d "${pkgdir}"/usr/bin/
+    chmod +x "${pkgdir}"/usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py
+    ln -fs /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py \
+    "${pkgdir}"/usr/bin/linux-enable-ir-emitter
 }
