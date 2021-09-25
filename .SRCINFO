@@ -1,14 +1,13 @@
 pkgbase = fork-awesome
 	pkgdesc = Fork of the iconic Font Awesome font and CSS toolkit
-	pkgver = 1.1.7
-	pkgrel = 1
+	pkgver = 1.2.0
+	pkgrel = 2
 	url = https://forkaweso.me/Fork-Awesome/
 	arch = any
 	license = CCPL
 	license = MIT
 	license = OFL
-	source = Fork-Awesome-1.1.7.tar.gz::https://github.com/ForkAwesome/Fork-Awesome/archive/1.1.7.tar.gz
-	sha256sums = 94aff930bcb81871c91bc3167003b46c29e5939ca403dcb10e35b3e875132455
+	source = Fork-Awesome-1.2.0.tar.gz::https://github.com/ForkAwesome/Fork-Awesome/archive/1.2.0.tar.gz
+	sha256sums = 23fba5f191f204e0414c547bf4c9b10fd7ca42c151260e8f64698449a75fbdb3
 
 pkgname = ttf-fork-awesome
-
