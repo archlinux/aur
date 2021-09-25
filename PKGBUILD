@@ -4,7 +4,7 @@ pkgbase=linux-system76-gaze16
 pkgver=5.14.7.arch1_gaze16
 _pkgver=${pkgver%_*}
 pkgrel=2
-pkgdesc='Linux kernel for system76 gaze16 laptop with touchpad + mic fix'
+pkgdesc='Oficial Arch Linux + system76 gaze16 touchpad and mic fix'
 _srctag=v${_pkgver%.*}-${_pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
@@ -71,7 +71,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules"
+  pkgdesc="$pkgdesc : kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -98,7 +98,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  pkgdesc="$pkgdesc : headers and scripts for building modules"
   depends=(pahole)
 
   cd $_srcname
@@ -180,7 +180,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel"
+  pkgdesc="$pkgdesc : documentation"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
