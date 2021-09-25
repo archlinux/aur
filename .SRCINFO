@@ -1,6 +1,6 @@
 pkgbase = ytcc
 	pkgdesc = Command line tool to keep track of playlists
-	pkgver = 2.2.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/woefe/ytcc
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = ytcc
 	depends = python-wcwidth
 	optdepends = mpv
 	optdepends = fzf
-	source = https://github.com/woefe/ytcc/archive/v2.2.0.tar.gz
-	sha256sums = 6c60b9463b5fd3c403a8495c1bc5c9f81de96dea0ba3eaab66378cf72b965da5
+	source = https://github.com/woefe/ytcc/archive/v2.4.0.tar.gz
+	sha256sums = 2efc3e4c85c78d7b765c3ca69413b64348419612825089e2be9d8a25f7c2cc38
 
 pkgname = ytcc
-
