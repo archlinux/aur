@@ -1,6 +1,6 @@
 pkgbase = lebiniou
 	pkgdesc = User-friendly, powerful music visualization / VJing tool
-	pkgver = 3.62.0
+	pkgver = 3.62.1
 	pkgrel = 1
 	url = https://biniou.net
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = lebiniou
 	depends = ffmpeg
 	depends = lebiniou-data>=3.62.0
 	depends = ulfius
-	source = https://gitlab.com/lebiniou/lebiniou/-/archive/version-3.62.0/lebiniou-version-3.62.0.tar.gz
-	sha256sums = d6e29c41b1db87bb600be1ec7809cd938df9bd3792dbbf5e14140741fbe48344
+	source = https://gitlab.com/lebiniou/lebiniou/-/archive/version-3.62.1/lebiniou-version-3.62.1.tar.gz
+	sha256sums = cfa83f51d79e5ef5534ca24398ab25f61982f2368447e4a50861d3dd877c079b
 
 pkgname = lebiniou
