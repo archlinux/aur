@@ -1,14 +1,14 @@
 pkgbase = adwmod-theme-git
 	pkgdesc = A modified default GNOME/GTK theme with some extras/enhancements/additions.
-	pkgver = r190.012cb0a
+	pkgver = r621.c56ba51
 	pkgrel = 1
 	url = https://gitlab.com/hrdwrrsk/AdwMod-theme
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = gnome-shell
 	makedepends = meson
 	makedepends = sassc
-	optdepends = gnome-shell: if not installed during build, will use styles for last gnome-shell version available
 	provides = adwmod-theme
 	conflicts = adwmod-theme
 	conflicts = adwaita-extended-git
@@ -17,4 +17,3 @@ pkgbase = adwmod-theme-git
 	sha256sums = SKIP
 
 pkgname = adwmod-theme-git
-
