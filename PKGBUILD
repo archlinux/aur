@@ -3,29 +3,30 @@
 # Contributor: Bjoern Franke <bjo at nord-west.org>
 # Contributor: flan_suse
 pkgname=xfce-theme-greybird
-pkgver=3.22.14
-pkgrel=2
+pkgver=3.22.15
+pkgrel=1
 pkgdesc="Desktop Suite for Xfce"
 arch=('any')
 url="https://shimmerproject.org"
 license=('CC-BY-SA-3.0' 'GPL')
 makedepends=('librsvg' 'meson' 'sassc')
 optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
+            'gtk3: required for CSS/GTK3 theme'
             'lightdm-gtk-greeter: required for the LightDM GTK theme'
             'shimmer-wallpapers: contains the Greybird wallpaper, among others'
             'gtk-engine-murrine: GTK2 theme support'
             'lib32-gtk-engine-murrine: required for multilib')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/shimmerproject/Greybird/archive/v$pkgver.tar.gz")
-sha256sums=('37fc4b8f83ff667e43e9889f6605a9e5da2ce2f5c5801c1ceef90814fb57b294')
+sha256sums=('dbf8440d9904bd8d9fb9b612ece5b9cd604c08ff308755a46d41db7e9ea4b617')
 
 build() {
-	arch-meson "Greybird-$pkgver" build
-	meson compile -C build
+  arch-meson "Greybird-$pkgver" build
+  meson compile -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
-	cd "Greybird-$pkgver"
-	install -Dm644 LICENSE.CC -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd "Greybird-$pkgver"
+  install -Dm644 LICENSE.CC -t "$pkgdir/usr/share/licenses/$pkgname"
 }
