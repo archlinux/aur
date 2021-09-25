@@ -2,7 +2,7 @@ pkgbase = nodejs-somafm
 	pkgdesc = Command Line Tool to play soma.fm
 	pkgver = 2.7.0
 	pkgrel = 1
-	url = http://github.com/uschek/somafm
+	url = https://github.com/uschek/somafm
 	arch = any
 	license = MIT
 	makedepends = npm
@@ -14,4 +14,3 @@ pkgbase = nodejs-somafm
 	sha256sums = 07f644ebe57d11631af9bc47384d849d679def9724b7bb174822c2006e9c0b80
 
 pkgname = nodejs-somafm
-
