@@ -1,6 +1,14 @@
 --- a/src/fbconfig.cpp	2010-10-18 11:20:11.000000000 +0300
-+++ b/src/fbconfig.cpp	2021-05-19 14:17:36.510535281 +0300
-@@ -38,16 +38,12 @@
++++ b/src/fbconfig.cpp	2021-09-25 04:04:09.407720173 +0300
+@@ -28,6 +28,7 @@
+ #include "config.h"
+ #include "fbconfig.h"
+
++#define CONFIG_FILE_NAME "fbtermrc"
+ #define MAX_CONFIG_FILE_SIZE 10240
+
+ DEFINE_INSTANCE_DEFAULT(Config)
+@@ -38,16 +39,19 @@
  	mConfigBuf = 0;
  	mConfigEntrys = 0;
 
@@ -9,28 +17,35 @@
 -		if (getuid()) return;
 -		home = "/root";
 -	}
-+	const s8 *home = getenv("XDG_CONFIG_HOME");
-+	if (!home)
-+		return;
++	s8 name[256];
 
- 	s8 name[64];
+-	s8 name[64];
 -	snprintf(name, sizeof(name), "%s/%s", home, ".fbtermrc");
--
++	const s8 *home = getenv("XDG_CONFIG_HOME");
++	if (!home || !home[0])
++	{
++		home = getenv("HOME");
++		if (!home || !home[0])
++			return;
+
 -	checkConfigFile(name);
-+	snprintf(name, sizeof(name), "%s/%s", home, "fbtermrc");
++		snprintf(name, sizeof(name), "%s/.config/" CONFIG_FILE_NAME, home);
++	}
++	else
++		snprintf(name, sizeof(name), "%s/" CONFIG_FILE_NAME, home);
 
  	struct stat cstat;
  	if (stat(name, &cstat) == -1) return;
-
---- a/doc/fbterm.1.in	2021-05-19 14:20:03.100094341 +0300
-+++ b/doc/fbterm.1.in	2021-05-19 14:19:21.990217395 +0300
-@@ -22,8 +22,7 @@
+--- a/doc/fbterm.1.in	2010-10-18 11:20:11.000000000 +0300
++++ b/doc/fbterm.1.in	2021-09-25 04:27:09.778563998 +0300
+@@ -22,8 +22,8 @@
  file. If that is not set, /bin/sh will be used. You should use the \fI--\fR argument to separate FbTerm's options from
  the arguments supplied to the \fIcommand\fR.
 
 -FbTerm first uses option value specified in command line arguments, then in the configure file \fI$HOME/.fbtermrc\fR.
 -If that file doesn't exist, FbTerm will create it with default options on startup.
 +FbTerm first uses option value specified in command line arguments, then in the configure file \fI$XDG_CONFIG_HOME/fbtermrc\fR.
++If \fIXDG_CONFIG_HOME\fR is unset or empty, FbTerm uses \fI$HOME/.config/fbtermrc\fR instead.
  .TP
  \fB-h, --help\fR
  display the help and exit

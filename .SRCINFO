@@ -1,7 +1,7 @@
 pkgbase = fbterm
 	pkgdesc = Framebuffer terminal emulator
 	pkgver = 1.7_5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/debian/fbterm
 	arch = x86_64
 	arch = armv7h
@@ -26,4 +26,3 @@ pkgbase = fbterm
 	sha256sums = SKIP
 
 pkgname = fbterm
-
