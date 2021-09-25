@@ -6,7 +6,7 @@ _pkgname='quich'
 pkgname="${_pkgname}-git"
 pkgver=4.0.0.r1.gf932fc3
 pkgrel=1
-pkgdesc='Small, easy to use, fast and useful calculator for your terminal with numerous features'
+pkgdesc='calculator for terminal with numerous features'
 arch=('x86_64')
 url='https://github.com/Usbac/quich'
 license=('MIT')
@@ -30,5 +30,3 @@ package() {
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
-
-# vim: ts=2 sw=2 et:
