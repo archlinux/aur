@@ -2,8 +2,8 @@
 
 pkgname=joshuto
 _pkgname=joshuto
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="ranger-like terminal file manager written in Rust"
 arch=("any")
 url="https://github.com/kamiyaa/joshuto"
@@ -13,7 +13,7 @@ makedepends=("git" "cargo")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("https://github.com/kamiyaa/joshuto/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('294fdc737ec044955e5ccd7c8ee6ae43')
+md5sums=('a80cb1d2ff252f861f80b438f582b556')
 
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=loop
 build() {
