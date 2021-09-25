@@ -1,7 +1,7 @@
 pkgbase = python-onnxruntime
 	pkgdesc = Cross-platform, high performance scoring engine for ML models
-	pkgver = 1.8.2
-	pkgrel = 3
+	pkgver = 1.9.0
+	pkgrel = 2
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
 	license = MIT
@@ -24,6 +24,7 @@ pkgbase = python-onnxruntime
 	makedepends = nlohmann-json
 	makedepends = chrono-date
 	makedepends = boost
+	makedepends = eigen
 	makedepends = flatbuffers
 	makedepends = cuda
 	makedepends = cudnn
@@ -37,14 +38,14 @@ pkgbase = python-onnxruntime
 	depends = python-protobuf
 	depends = openmpi
 	options = !lto
-	source = git+https://github.com/microsoft/onnxruntime#tag=v1.8.2
-	source = git+https://gitlab.com/libeigen/eigen.git
+	source = git+https://github.com/microsoft/onnxruntime#tag=v1.9.0
 	source = git+https://github.com/onnx/onnx.git
 	source = git+https://github.com/dcleblanc/SafeInt.git
 	source = git+https://github.com/martinmoene/optional-lite.git
 	source = git+https://github.com/tensorflow/tensorboard.git
 	source = git+https://github.com/dmlc/dlpack.git
 	source = git+https://github.com/jarro2783/cxxopts.git
+	source = pytorch_cpuinfo::git+https://github.com/pytorch/cpuinfo.git
 	source = build-fixes.patch
 	source = clang.patch
 	sha512sums = SKIP
@@ -56,7 +57,7 @@ pkgbase = python-onnxruntime
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 685f0235abed6e1277dd0eb9bda56c464d1987fe7fc90a3550e17ec70cc49fd15f34996a0e159f9622c4ca3e6bf29917fe51b7849342531fa2a6808d782f1e06
-	sha512sums = 55ba879c015df11582ff4afaa9ccca19c0e3d3a8be503629718402dbdc826e36bc3ec3ce4dd589705371d7fcf250ba2a9b30c5a3dd0cfccb8e008346f1bd6252
+	sha512sums = ad94af8bb25744b244c4f82e9a06189741f82b295a88523ca0e8005568fac710c2299d783989457e9cf96ef8da0593fb4f70c8792d416f44ab29d6493e204f13
 
 pkgname = python-onnxruntime
 
@@ -71,5 +72,5 @@ pkgname = python-onnxruntime-cuda
 	depends = cuda
 	depends = cudnn
 	depends = nccl
-	provides = python-onnxruntime=1.8.2
+	provides = python-onnxruntime=1.9.0
 	conflicts = python-onnxruntime
