@@ -1,0 +1,17 @@
+pkgbase = python-pylatex
+	pkgdesc = Python library for creating LaTeX files
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://jeltef.github.io/PyLaTeX/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-ordered-set
+	optdepends = python-numpy
+	optdepends = python-matplotlib
+	optdepends = python-quantities
+	optdepends = texlive-core
+	source = python-pylatex-1.4.1.tar.gz::https://github.com/jeltef/pylatex/archive/v1.4.1.tar.gz
+	sha256sums = 79f1c94ed7c251378d1a4008635b3123191dbe65bac79c9aaeb0eaefbdfcf13c
+
+pkgname = python-pylatex
