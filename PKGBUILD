@@ -11,7 +11,7 @@ url="https://github.com/jamesofarrell/i3-swallow"
 license=('MIT')
 depends=('i3-wm' 'python-i3ipc')
 makedepends=('git')
-conflicts=('i3-swallow')
+provides=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
@@ -26,5 +26,3 @@ package() {
   install -Dm 755 swallow.py "${pkgdir}"/usr/bin/swallow
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
