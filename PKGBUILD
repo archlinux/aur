@@ -1,8 +1,8 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 
 pkgname=xunlei-bin
-pkgver=1.0.0.1
-pkgrel=7
+pkgver=1.0.0.2
+pkgrel=1
 pkgdesc="Xunlei download, 迅雷"
 arch=("x86_64" "aarch64")
 url="https://www.xunlei.com/"
@@ -12,18 +12,13 @@ provides=('xunlei')
 source=("license.html"
 "xunlei"
 )
-source_x86_64=("http://archive.kylinos.cn/kylin/partner/pool/com.xunlei.download_${pkgver}_amd64.deb")
-source_aarch64=("http://archive.kylinos.cn/kylin/partner/pool/com.xunlei.download_${pkgver}_arm64.deb")
+source_x86_64=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xunlei.download/com.xunlei.download_${pkgver}_amd64.deb")
+source_aarch64=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xunlei.download/com.xunlei.download_${pkgver}_arm64.deb")
 
 sha512sums=('3b0056713d046b01b01de9679a605bbf810c1f6f8c022b2200e14ef864db0583c46b3b9ccc9a0246bb3d70d3fad3415c33804cac5486d1cffb2d3081566d17bd'
-'c7de252b7c2abfe26963c1202b1b394057ac68a98c31eebc39e9d21087f53ee15c8aeb30e09138748090ec8e2388b6038c4560e484fb97b119dbdcc6486b2a6a'
-)
-sha512sums_x86_64=(
-    '8ed010593eb2d6cf94b8b5591c1bb69e259be501d3f1925874359058226c4bd3aebdbcbc3bf4b6c4c09f028db8e3d465fc939fd0bf710065a8593ffbc325f066'
-)
-sha512sums_aarch64=(
-    'c656df9aeeab938a4e8e0cb2cbf9a2ad09dfddead081bb5f3d53cebd98492363164220aa3b9fab2bc187e3c54cc437ce4708367b2dd410bd2cea34646a0116ef'
-)
+            'c7de252b7c2abfe26963c1202b1b394057ac68a98c31eebc39e9d21087f53ee15c8aeb30e09138748090ec8e2388b6038c4560e484fb97b119dbdcc6486b2a6a')
+sha512sums_x86_64=('d65824b64f65af22037e62be14abf0363e552909cc11fef3c54e99c30dc8acd4340185445092b3ab37d226923a06d459037b83fe2c4c6a1b429f7bc31315e52b')
+sha512sums_aarch64=('4d05277ef5510d00c6a450fce6b224fcd05231a20689138041b250aec9f80f8c8ee3ff248d7554aa1086e32dcd99b980fc0d9f6543c647a2d4aa2bd51c205764')
 
 prepare(){
     cd ${srcdir}
