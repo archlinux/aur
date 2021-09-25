@@ -1,12 +1,12 @@
 pkgname=carla-bridges-linux32
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Carla linux32 bridge (Stable)"
 arch=('x86_64')
 url="https://kxstudio.linuxaudio.org/Applications:Carla"
 license=('GPL2')
 groups=('pro-audio')
-depends=('gcc-libs' 'glibc' 'lib32-alsa-lib' 'lib32-gcc-libs' 'lib32-glib2' 'lib32-glibc' 'lib32-gtk2' 'lib32-gtk3' 'lib32-libglvnd' 'lib32-libx11' 'libglvnd' 'libx11' 'python-pyqt5' 'python-pyliblo'
+depends=('carla' 'gcc-libs' 'glibc' 'lib32-alsa-lib' 'lib32-gcc-libs' 'lib32-glib2' 'lib32-glibc' 'lib32-gtk2' 'lib32-gtk3' 'lib32-libglvnd' 'lib32-libx11' 'libglvnd' 'libx11' 'python-pyqt5' 'python-pyliblo'
 'python-rdflib' 'qt5-base' 'qt5-svg')
 makedepends=('alsa-lib' 'file' 'fluidsynth' 'gcc-multilib' 'glib2' 'gtk2' 'gtk3'
 'libsndfile' 'liblo' 'libpulse' 'qt5-tools')

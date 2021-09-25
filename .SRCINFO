@@ -1,7 +1,7 @@
 pkgbase = carla-bridges-linux32
 	pkgdesc = Carla linux32 bridge (Stable)
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kxstudio.linuxaudio.org/Applications:Carla
 	arch = x86_64
 	groups = pro-audio
@@ -17,6 +17,7 @@ pkgbase = carla-bridges-linux32
 	makedepends = liblo
 	makedepends = libpulse
 	makedepends = qt5-tools
+	depends = carla
 	depends = gcc-libs
 	depends = glibc
 	depends = lib32-alsa-lib
@@ -40,6 +41,7 @@ pkgbase = carla-bridges-linux32
 	sha256sums = 960a1288ef82543df27e0896a174dae8ff68d24594b6efe0b952105797162c0e
 
 pkgname = carla-bridges-linux32
+	depends = carla
 	depends = gcc-libs
 	depends = glibc
 	depends = lib32-alsa-lib
