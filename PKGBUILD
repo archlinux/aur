@@ -13,16 +13,16 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.0.4
+pkgver=7.1.0.8
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
-pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features)"
+pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all possible features)"
 url='https://www.imagemagick.org/'
 license=('custom')
 makedepends=(
     # official repositories:
-        'git' 'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
+        'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
         'zstd' 'chrpath' 'xorgproto'
         'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
         'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'gperftools' 'libraw'
@@ -30,21 +30,22 @@ makedepends=(
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip'
     # AUR:
-        'autotrace-nomagick' 'dmalloc' 'flif' 'libfpx' 'libumem-git'
+        'dmalloc' 'flif' 'libfpx' 'libumem-git'
 )
-_commit='53694931e6abe01d86ecabd3b45dc60a0d7461df'
-source=("git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
+source=("https://download.imagemagick.org/ImageMagick/download/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('SKIP'
+sha256sums=('393280a93396cbb10f4a88e4dafaa03b0bc8031a86d92fb80948f814fc5d0c01'
+            'SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
+validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
 
 prepare() {
     # fix up typemaps to match Arch Linux packages, where possible
-    patch -d ImageMagick -Np1 -i "${srcdir}/arch-fonts.diff"
+    patch -d "ImageMagick-${pkgver%.*}-${pkgver##*.}" -Np1 -i "${srcdir}/arch-fonts.diff"
 }
 
 build() {
-    cd ImageMagick
+    cd "ImageMagick-${pkgver%.*}-${pkgver##*.}"
     export CFLAGS+=' -I/usr/include/FLIF'
     
     ./configure \
@@ -72,7 +73,7 @@ build() {
         --with-x \
         --with-zlib \
         --with-zstd \
-        --with-autotrace \
+        --without-autotrace \
         --without-dps \
         --with-fftw \
         --with-flif \
@@ -115,7 +116,7 @@ build() {
 }
 
 check() {
-    make -C ImageMagick check
+    make -C "ImageMagick-${pkgver%.*}-${pkgver##*.}" check
 }
 
 package_imagemagick-full() {
@@ -127,20 +128,20 @@ package_imagemagick-full() {
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl'
         # AUR:
-            'autotrace-nomagick' 'dmalloc' 'flif' 'libfpx' 'libumem-git'
+            'dmalloc' 'flif' 'libfpx' 'libumem-git'
     )
     optdepends=('imagemagick-full-doc: manual and API docs')
-    backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type{,-dejavu,-ghostscript}}.xml)
+    backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type-{apple,dejavu,ghostscripturw-base35,windows,}}.xml)
     options=('!emptydirs' 'libtool')
     provides=("imagemagick=${pkgver}" "libmagick=${pkgver}" "libmagick-full=${pkgver}")
     conflicts=('imagemagick' 'libmagick')
     replaces=('libmagick-full')
     
-    make -C ImageMagick DESTDIR="$pkgdir" install
+    make -C "ImageMagick-${pkgver%.*}-${pkgver##*.}" DESTDIR="$pkgdir" install
     find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
     rm "$pkgdir"/usr/lib/*.la
     mv "${pkgdir}/usr/share/doc" .
-    install -D -m644 ImageMagick/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 "ImageMagick-${pkgver%.*}-${pkgver##*.}"/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # harden security policy: https://bugs.archlinux.org/task/62785
     sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "${pkgdir}/etc/ImageMagick-${pkgver%%.*}/policy.xml"
@@ -152,6 +153,6 @@ package_imagemagick-full-doc() {
     provides=("imagemagick-doc=${pkgver}")
     conflicts=('imagemagick-doc')
     
-    install -D -m644 ImageMagick/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 "ImageMagick-${pkgver%.*}-${pkgver##*.}"/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
     mv doc "${pkgdir}/usr/share"
 }
