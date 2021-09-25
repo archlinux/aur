@@ -2,7 +2,7 @@
 # Maintainer: Thilo Wischmeyer <thwischm@gmail.com>
 
 pkgname=liesbar
-pkgver=0.1.0.0
+pkgver=0.1.0.1
 pkgrel=1
 pkgdesc="Small Haskell framework for creating status bars with lesbar"
 url="https://git.sr.ht/~salmiak/liesbar"
@@ -11,7 +11,7 @@ arch=('x86_64')
 depends=('ghc-libs' 'haskell-async' 'haskell-xdg-basedir' 'lesbar')
 makedepends=('ghc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~salmiak/${pkgname}/archive/v${pkgver}.tar.gz" "dynamic-linking.patch")
-sha256sums=("92751404b9ad48ffa8a0a18d715e83175c94454d505bea74a33ccafe1d6728e3" "1581087ea4efddbbc59d3896988a7737135536dee4a80949d3e9407b26c207c8")
+sha256sums=("b58ebcfb5ed7b6c58aece78cb1b704e745799d20a02a13f831842755797fd991" "1581087ea4efddbbc59d3896988a7737135536dee4a80949d3e9407b26c207c8")
 
 prepare() {
   cd $pkgname-v$pkgver
