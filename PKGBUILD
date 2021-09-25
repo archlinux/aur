@@ -12,14 +12,13 @@
 
 pkgname=openssh-selinux
 pkgver=8.7p1
-pkgrel=1
+pkgrel=2
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol, with SELinux support'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
 arch=('x86_64' 'aarch64')
 depends=('glibc' 'krb5' 'openssl' 'libedit' 'ldns' 'libxcrypt' 'libcrypt.so' 'zlib' 'pam' 'libselinux')
 makedepends=('linux-headers' 'libfido2')
-checkdepends=('inetutils')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X'
             'libfido2: FIDO/U2F support')
@@ -121,7 +120,7 @@ package() {
 	install -Dm644 contrib/ssh-copy-id.1 "${pkgdir}"/usr/share/man/man1/ssh-copy-id.1
 
 	sed \
-		-e '/^#ChallengeResponseAuthentication yes$/c ChallengeResponseAuthentication no' \
+		-e '/^#KbdInteractiveAuthentication yes$/c KbdInteractiveAuthentication no' \
 		-e '/^#PrintMotd yes$/c PrintMotd no # pam does that' \
 		-e '/^#UsePAM no$/c UsePAM yes' \
 		-i "${pkgdir}"/etc/ssh/sshd_config
