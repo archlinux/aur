@@ -1,15 +1,16 @@
 pkgbase = fcitx-fbterm-git
-	pkgdesc = add fbterm support to fcitx
-	pkgver = 20110825
+	pkgdesc = Fbterm support for fcitx
+	pkgver = 0.2.0.r1.ga0ecce1
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx-fbterm
 	install = fcitx-fbterm-git.install
 	arch = x86_64
 	arch = i686
 	license = GPLv2
-	depends = fbterm-git
+	depends = fbterm
 	depends = fcitx
 	provides = fcitx-fbterm
+	source = git+https://github.com/fcitx/fcitx-fbterm
+	md5sums = SKIP
 
 pkgname = fcitx-fbterm-git
-

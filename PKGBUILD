@@ -1,40 +1,36 @@
-## Maintainer: realasking
+## Maintainer: OliverLew <oliver_lew at outlook dot com>
+## Contributor: realasking
+_pkgname=fcitx-fbterm
 pkgname=fcitx-fbterm-git
-pkgver=20110825
+pkgver=0.2.0.r1.ga0ecce1
 pkgrel=1
-pkgdesc='add fbterm support to fcitx'
+pkgdesc='Fbterm support for fcitx'
 arch=(x86_64 i686)
 url='https://github.com/fcitx/fcitx-fbterm'
 license=('GPLv2')
-depends=('fbterm-git' 'fcitx')
+depends=('fbterm' 'fcitx')
 provides=('fcitx-fbterm')
-source=()
-md5sums=()
-install="${pkgname}.install"
+source=("git+https://github.com/fcitx/$_pkgname")
+md5sums=('SKIP')
+install=$pkgname.install
 
-_proj=https://github.com/fcitx/fcitx-fbterm.git
-_name=fcitx-fbterm
+pkgver() {
+	cd "$_pkgname"
+	( set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
 
 build() {
-	cd "$srcdir" 
-	msg "Starting Git..."
-	if [[ -d "$_proj" ]]; then
-	    cd "$_proj" 
-	    git pull origin
-	else
-	    git clone "$_proj" "$_name"
-	fi
-	msg "Project synchronization Finished."
-	msg "Starting build..."
-	
-	cd "$_name"
-	mkdir build 
-	cd build 
+	cd "$_pkgname"
+	mkdir -p build
+	cd build
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
 package() {
-	cd "$srcdir/$_name/build"
-	make DESTDIR="${pkgdir}" install 
+	cd "$_pkgname/build"
+	make DESTDIR="${pkgdir}" install
 }
