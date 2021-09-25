@@ -2,13 +2,14 @@
 pkgname=service-tools-git
 _pkgname=service-tools
 pkgver=r54.48577a1
-pkgrel=1
+pkgrel=2
 pkgdesc='A growing collection of convenient little tools to work with systemd services'
 provides=('service-tools')
 arch=('any')
 url="https://github.com/muesli/service-tools"
 license=('MIT')
-makedepends=('go')
+makedepends=('git' 'go')
+depends=('systemd')
 source=("git+https://github.com/muesli/service-tools")
 sha256sums=('SKIP')
 
