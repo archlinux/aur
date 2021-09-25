@@ -1,7 +1,7 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.5.7
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
@@ -26,7 +26,8 @@ depends=('qt5-base'
 	'x11vnc')
 optdepends=('kldap: KDE support')
 makedepends=('git' 'gcc' 'cmake' 'qt5-tools' 'procps-ng' 'kldap')
-source=("git+${url}/veyon.git#tag=v${pkgver}")
+_commit="465279c01040483fce066c5cb7a41cdca0ac6a6d"
+source=("git+${url}/veyon.git#commit=${_commit}")
 
 sha256sums=('SKIP')
 
