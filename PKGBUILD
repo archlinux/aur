@@ -3,7 +3,7 @@
 pkgbase='sensu-go'
 pkgname=('sensu-go-agent' 'sensu-go-backend' 'sensu-go-cli')
 pkgver=6.4.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://sensu.io'
 license=('MIT')
@@ -69,7 +69,6 @@ package_sensu-go-backend() {
     provides=("${pkgname/-go-/-}")
     conflicts=("${pkgname/-go-/-}")
     #backup=('etc/sensu/backend.yml')
-    install="${pkgname}.install"
 
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
@@ -88,7 +87,6 @@ package_sensu-go-cli() {
     pkgdesc="Sensu Go CLI"
     provides=("${pkgname/-go-/-}")
     conflicts=("${pkgname/-go-/-}")
-    install="${pkgname}.install"
 
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
