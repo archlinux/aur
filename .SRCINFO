@@ -1,14 +1,14 @@
 pkgbase = palemoon-i18n-tl
 	pkgdesc = Filipino (Tagalog) language pack for Pale Moon browser
-	pkgver = 29.2.0
+	pkgver = 29.4.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-tl-29.2.0.xpi
-	source = palemoon-i18n-tl-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-tl@palemoon.org
-	sha256sums = 2e3163c4465437fd752f2dc28dbecbf3b362d33a2f87a32dc410c54ae4c3551b
+	noextract = palemoon-i18n-tl-29.4.0.xpi
+	source = palemoon-i18n-tl-29.4.0.xpi::https://addons.palemoon.org/?component=download&version=29.4.0&id=langpack-tl@palemoon.org
+	sha256sums = 698c1565603b316d652f04294efbbb78f90d4ce671fb737364a0834531e488fe
 
 pkgname = palemoon-i18n-tl
