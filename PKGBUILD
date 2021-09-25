@@ -7,16 +7,17 @@ ROOT_LABEL='Archlinux'
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## --- PKGBUILD
 
 ## Major kernel version
 _major=5.10
 ## Minor kernel version
-_minor=61
+_minor=68
 
 pkgbase=linux-multimedia-lts
+#pkgver=${_major}
 pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux Multimedia Optimized (LTS)'
@@ -41,7 +42,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('82eae38cc5cd11dd6aaac91c02ff0d006c7bafd6d4cf5c6a791930820a3a91d1'
+sha256sums=('1baa830e3d359464e3762c30b96c1ba450a34d97834a57e455618c99de229421'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -66,15 +67,14 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-clear-patches.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-base.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs-additions.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0005-v5.10_undead-pds099o.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex2_interface.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
 
   msg2 "Apply GCC Optimization Patch..."
-  patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.8+.patch
+  patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.8-5.14.patch
 
   ### Setting config
   echo "Setting config..."
@@ -86,10 +86,14 @@ prepare() {
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
-  ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
   msg2 "Disabling NUMA from kernel config..."
   scripts/config --disable CONFIG_NUMA
+
+  ### Set PDS as the default CPU scheduler
+  msg2 "Setting Default CPU Scheduler..."
+  scripts/config --disable CONFIG_SCHED_BMQ
+  scripts/config --enable CONFIG_SCHED_PDS
 
   ### Set tickrate to 1000HZ
   msg2 "Setting tick rate to 1k..."
