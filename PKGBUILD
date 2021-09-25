@@ -6,17 +6,17 @@
 
 _locale='ro'
 pkgname=palemoon-i18n-ro
-pkgver=29.2.0
+pkgver=29.4.0
 pkgrel=1
 pkgdesc="Romanian language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('ce7c63a636b2094f1826e417462d16b7f3986f46ec5aa42649e0b76f39d7d060')
+sha256sums=('3451ec02e5b748eee749d1b73add4209254ee8e34e76b4bbda485dc06583e27a')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
-DLAGENTS=("https::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
+DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
           "${DLAGENTS[@]}")
 
 package() {

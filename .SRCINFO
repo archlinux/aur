@@ -1,14 +1,14 @@
 pkgbase = palemoon-i18n-ro
 	pkgdesc = Romanian language pack for Pale Moon browser
-	pkgver = 29.2.0
+	pkgver = 29.4.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-ro-29.2.0.xpi
-	source = palemoon-i18n-ro-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-ro@palemoon.org
-	sha256sums = ce7c63a636b2094f1826e417462d16b7f3986f46ec5aa42649e0b76f39d7d060
+	noextract = palemoon-i18n-ro-29.4.0.xpi
+	source = palemoon-i18n-ro-29.4.0.xpi::https://addons.palemoon.org/?component=download&version=29.4.0&id=langpack-ro@palemoon.org
+	sha256sums = 3451ec02e5b748eee749d1b73add4209254ee8e34e76b4bbda485dc06583e27a
 
 pkgname = palemoon-i18n-ro
