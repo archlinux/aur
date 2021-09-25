@@ -27,7 +27,7 @@ _750_HZ_ticks=y
 _500_HZ_ticks=
 
 ### Enable protect file mappings under memory pressure
-#_mm_protect=y
+_mm_protect=y
 _lru_enable=y
 
 ### Enable Linux Random Number Generator
@@ -97,7 +97,7 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
         "config"
 #        "${_patchsource}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/arch-patches-v7/0001-arch-patches.patch"
+        "${_patchsource}/arch-patches-v8/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14-full.patch"
 #        "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/0007-string.patch"
@@ -113,20 +113,20 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
         "${_patchsource}/btrfs-patches-v4/0001-btrfs-patches.patch"
-        "${_patchsource}/fixes-miscellaneous-v3/0001-fixes-miscellaneous.patch"
+        "${_patchsource}/fixes-miscellaneous-v4/0001-fixes-miscellaneous.patch"
         "${_patchsource}/futex-zen-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-zen-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
-        "${_patchsource}/lru-xanmod-patches/0001-lru-xanmod-patches.patch"
+        "${_patchsource}/lru-zen-patches-v3/0001-lru-zen-patches.patch"
 #        "${_patchsource}/le9-patches-v4/0001-mm-vmscan-add-sysctl-knobs-for-protecting-the-workin.patch"
 #        "${_patchsource}/misc/le9fa-5.14.patch"
-        "${_patchsource}/pf-patches-v5/0001-pf-patches.patch"
+        "${_patchsource}/pf-patches-v6/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches-v3/0001-zstd-upstream-patches.patch"
-        "${_patchsource}/ntfs3-patches-v10/0001-ntfs3-patches.patch"
+        "${_patchsource}/ntfs3-patches-v11/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
         "${_patchsource}/0001-v4l2loopback.patch"
@@ -290,8 +290,8 @@ prepare() {
               echo "Enabling multigenerational LRU..."
               scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
               scripts/config --enable CONFIG_LRU_GEN
-              scripts/config --set-val CONFIG_NR_LRU_GENS 4
-              scripts/config --set-val CONFIG_TIERS_PER_GEN 2
+              scripts/config --set-val CONFIG_NR_LRU_GENS 7
+              scripts/config --set-val CONFIG_TIERS_PER_GEN 4
               scripts/config --enable CONFIG_LRU_GEN_ENABLED
               scripts/config --disable CONFIG_LRU_GEN_STATS
             fi
@@ -564,9 +564,9 @@ package_linux-cacule-rdb-llvm-headers() {
 }
 
 md5sums=('4119cf1e59ef6f109b9be9451a0899ae'
-         'b232ca9b091712a60c3449d39921b783'
-         '01b196f5df07ddfb1dd97026472da196'
-         '024a0126cfcd18e000a2241f35c4d69e'
+         '958ee4813421adec7a921475076c0dee'
+         'ef749be7f2048456ae738f93229bf354'
+         '979d95fc529b2c443e13ed11346ba9c8'
          'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
          '9d7612159f8745044254077ce8a76df6'
@@ -578,18 +578,18 @@ md5sums=('4119cf1e59ef6f109b9be9451a0899ae'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
          'da72ef09deade4f800510e470eaf2f77'
-         'f2d0397fa97df4590cfc54964b354478'
+         '6df5d4daa7aeb0fc5340a1bf42757096'
          '0849b25513dc47e3defa00f26f60eedb'
          '2891eb036469d04995d9b21a5e389d8a'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '366c90b64f9582c0733b8fb607a07594'
-         'b5d149398c727b1eebcc188c882bc443'
-         'd4c3a3ca73c2e722ebc790357ba87680'
+         'd24fd0f81fbeed243b1b71fde7659548'
+         'ccfbfe2efd7e51dbd67581a7d892230f'
          '28864f14bf33bad92e57bc48bc5c2c78'
          '381bc4f0ff885e9b67e5899476a30416'
          '808981a36c81165953017e5e432c1fa1'
          '74db4069a1c3985e5de43cf28f44e693'
-         '709f2f2b5623debde32637b206781c6d'
+         '41a41f2a5ba649da97cdb2b499ddb818'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
