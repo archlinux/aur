@@ -4,6 +4,6 @@ post_install() {
     echo "Be aware, this package has several vulnerabilities."
     echo "========================="
     echo
-    echo "You may also want to run: haraka -i /etc/haraka/config"
+    echo "You may also want to run: haraka -i /etc/haraka"
     echo
 }
