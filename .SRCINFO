@@ -1,0 +1,15 @@
+pkgbase = bulldog-vst
+	pkgdesc = Brute-Force Amp Sim (VST Plugin)
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://audioassault.mx/collections/plugins/products/bulldog
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+
+pkgname = bulldog-vst
