@@ -1,5 +1,5 @@
 pkgbase = emacs-application-framework-git
-	pkgdesc = EAF extends GNU Emacs to an entire universe of powerful GUI applications.
+	pkgdesc = A free/libre and open-source extensible framework that revolutionizes the graphical capabilities of Emacs, the key to ultimately Live in Emacs
 	pkgver = r2509.962a3b98
 	pkgrel = 1
 	url = https://github.com/emacs-eaf/emacs-application-framework
