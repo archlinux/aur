@@ -1,15 +1,17 @@
 pkgbase = somafm-qt
 	pkgdesc = A player for somafm.com radio channels written in qt5/c++
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.github.com/josefbehr/somafm-qt
 	arch = x86_64
 	arch = i686
 	license = MIT
 	depends = qt5-base
 	depends = qt5-multimedia
-	source = git://github.com/josefbehr/somafm-qt.git#tag=v0.1
-	md5sums = SKIP
+	depends = qt5-webengine
+	source = https://github.com/josefbehr/somafm-qt/archive/refs/tags/v0.1.tar.gz
+	source = https://patch-diff.githubusercontent.com/raw/josefbehr/somafm-qt/pull/3.patch
+	md5sums = 47a4e4db069b65cdb9e7a559a4fc88d3
+	md5sums = 1696c1d0c6457ada2ebd88be706f2dc1
 
 pkgname = somafm-qt
-
