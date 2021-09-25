@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=91.0.4472.10
+pkgver=96.0.4651.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -23,21 +23,20 @@ url='http://www.chromium.org'
 license=('BSD')
 depends=(
 #          'libsrtp'
-         'libxslt'
+#          'libxslt'
          'libxss'
 #          'minizip'
          'nss'
          'pciutils'
 #          're2'
-         'snappy'
+#          'snappy'
          'xdg-utils'
 #          'protobuf'
 #          'libevent'
 #          'ffmpeg'
 #          'icu'       # https://crbug.com/678661.
          'gtk3'
-         'openh264'
-         'vulkan-icd-loader'
+#          'openh264'
          'libpulse'
          'libwebp'
 #          'libvpx'
@@ -55,7 +54,6 @@ makedepends=(
              'python-protobuf'
              'python-setuptools'
              'python'
-             'python2' # for Nacl
              'yasm'
              'nasm'
              'git'
@@ -79,14 +77,12 @@ source=(
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo.
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-89-EnumTable-crash.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-93-EnumTable-crash.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-93-InkDropHost-crash.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-shim_headers.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-91-system-icu.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-91-ThemeService-crash.patch'
         # Misc Patches.
-        'fix_hevc_in_non_cromeos_r1.patch'
+#
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
-        'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/chromium/trunk/chromium-glibc-2.33.patch'
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/chromium/trunk/use-oauth2-client-switches-as-default.patch'
         )
 sha256sums=(
@@ -95,14 +91,12 @@ sha256sums=(
             'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
-            '61066e638ee795e888d12cc2c4af42c8cf3fe9f473b1dc0b78c9e87faf5eacda'
+            'f5058b3d359072833319d622eb3b0e068f45165038041411e9c89f618cefc2d6'
+            '04bba6fb19ea5a4ab3949b65f06c88728a00ab296f42022ece62ca2fa25ec2e7'
             'fabf66cfb15449011a20e377d600573b6338cc4c52e3f28f80e0541772659e8b'
-            '1276018471004688356ef70be708ce96a816ffca6625ed7cc99cb985b6e15559'
-            '26cc77232d06e55b50a253617fb87218b0058ba2b0271fef5845bcc474f6a117'
             # Misc Patches
-            '70f7a1736aabd63bbdf5060c015b220ede7d5d19837408eb4a5172099aecd862'
+#
             # Patch from crbug (chromium bugtracker) or Arch chromium package
-            '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             )
 install=chromium-dev.install
@@ -119,7 +113,7 @@ _google_api_key="AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM"
 #_google_default_client_id="413772536636.apps.googleusercontent.com"
 #_google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 
-# List of third-party components needed for build chromium. The rest is remove by remove_bundled_libraries srcipt in prepare().
+# List of third-party components needed for build chromium. The rest is removed by remove_bundled_libraries srcipt in prepare().
 _keeplibs=(
            'base/third_party/cityhash'
            'base/third_party/double_conversion'
@@ -133,6 +127,7 @@ _keeplibs=(
            'base/third_party/xdg_user_dirs'
            'buildtools/third_party/libc++'
            'buildtools/third_party/libc++abi'
+           'buildtools/third_party/eu-strip'
            'chrome/third_party/mozilla_security_manager'
            'courgette/third_party'
            'native_client/src/third_party/dlmalloc'
@@ -146,7 +141,6 @@ _keeplibs=(
            'third_party/angle/src/common/third_party/base'
            'third_party/angle/src/common/third_party/smhasher'
            'third_party/angle/src/common/third_party/xxhash'
-           'third_party/angle/src/third_party/compiler'
            'third_party/angle/src/third_party/libXNVCtrl'
            'third_party/angle/src/third_party/trace_event'
            'third_party/angle/src/third_party/volk'
@@ -161,8 +155,8 @@ _keeplibs=(
            'third_party/catapult'
            'third_party/catapult/common/py_vulcanize/third_party/rcssmin'
            'third_party/catapult/common/py_vulcanize/third_party/rjsmin'
-           'third_party/catapult/third_party/beautifulsoup4'
-           'third_party/catapult/third_party/html5lib-python'
+           'third_party/catapult/third_party/beautifulsoup4-4.9.3'
+           'third_party/catapult/third_party/html5lib-1.1'
            'third_party/catapult/third_party/polymer'
            'third_party/catapult/third_party/six'
            'third_party/catapult/tracing/third_party/d3'
@@ -183,6 +177,7 @@ _keeplibs=(
            'third_party/dav1d'
            'third_party/dawn'
            'third_party/dawn/third_party/khronos'
+           'third_party/dawn/third_party/tint'
            'third_party/depot_tools'
            'third_party/devscripts'
            'third_party/devtools-frontend'
@@ -190,7 +185,7 @@ _keeplibs=(
            'third_party/devtools-frontend/src/front_end/third_party/axe-core'
            'third_party/devtools-frontend/src/front_end/third_party/chromium'
            'third_party/devtools-frontend/src/front_end/third_party/codemirror'
-           'third_party/devtools-frontend/src/front_end/third_party/fabricjs'
+           'third_party/devtools-frontend/src/front_end/third_party/diff'
            'third_party/devtools-frontend/src/front_end/third_party/i18n'
            'third_party/devtools-frontend/src/front_end/third_party/intl-messageformat'
            'third_party/devtools-frontend/src/front_end/third_party/lighthouse'
@@ -199,6 +194,7 @@ _keeplibs=(
            'third_party/devtools-frontend/src/front_end/third_party/marked'
            'third_party/devtools-frontend/src/front_end/third_party/puppeteer'
            'third_party/devtools-frontend/src/front_end/third_party/wasmparser'
+           'third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n'
            'third_party/devtools-frontend/src/third_party'
            'third_party/dom_distiller_js'
            'third_party/eigen3'
@@ -214,7 +210,7 @@ _keeplibs=(
            'third_party/google_input_tools/third_party/closure_library'
            'third_party/google_input_tools/third_party/closure_library/third_party/closure'
            'third_party/googletest'
-           'third_party/harfbuzz-ng/utils'
+           'third_party/harfbuzz-ng'
            'third_party/highway'
            'third_party/hunspell'
            'third_party/iccjpeg'
@@ -247,7 +243,9 @@ _keeplibs=(
            'third_party/libwebm'
            'third_party/libx11'
            'third_party/libxcb-keysyms'
+           'third_party/libxml'
            'third_party/libxml/chromium'
+           'third_party/libxslt'
            'third_party/libyuv'
            'third_party/libzip'
            'third_party/llvm'
@@ -255,6 +253,9 @@ _keeplibs=(
            'third_party/lss'
            'third_party/lzma_sdk'
            'third_party/mako'
+           'third_party/maldoca'
+           'third_party/maldoca/src/third_party/tensorflow_protos'
+           'third_party/maldoca/src/third_party/zlibwrapper'
            'third_party/markupsafe'
            'third_party/mesa'
            'third_party/metrics_proto'
@@ -267,6 +268,7 @@ _keeplibs=(
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
            'third_party/one_euro_filter'
            'third_party/opencv'
+           'third_party/openh264'
            'third_party/openscreen'
            'third_party/openscreen/src/third_party/mozilla'
            'third_party/openscreen/src/third_party/tinycbor/src/src'
@@ -311,14 +313,15 @@ _keeplibs=(
            'third_party/swiftshader/third_party/marl'
            'third_party/swiftshader/third_party/subzero'
            'third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1'
+           'third_party/tcmalloc'
            'third_party/tensorflow-text'
            'third_party/tflite'
            'third_party/tflite/src/third_party/eigen3'
            'third_party/tflite/src/third_party/fft2d'
-           'third_party/tflite-support'
            'third_party/tcmalloc'
-           'third_party/tint'
            'third_party/ruy'
+           'third_party/six'
+           'third_party/snappy'
            'third_party/ukey2'
            'third_party/unrar'
            'third_party/usrsctp'
@@ -343,7 +346,6 @@ _keeplibs=(
            'third_party/xcbproto'
            'third_party/zxcvbn-cpp'
            'third_party/zlib' # /google
-           'tools/grit/third_party/six'
            'url/third_party/mozilla'
            'v8/src/third_party/siphash'
            'v8/src/third_party/valgrind'
@@ -375,9 +377,10 @@ _flags=(
         "ffmpeg_branding=\"ChromeOS\""
         'proprietary_codecs=true'
         "google_api_key=\"${_google_api_key}\""
-        "google_default_client_id=\"${_google_default_client_id}\""
-        "google_default_client_secret=\"${_google_default_client_secret}\""
-        'fieldtrial_testing_like_official_build=true'
+#         "google_default_client_id=\"${_google_default_client_id}\""
+#         "google_default_client_secret=\"${_google_default_client_secret}\""
+        'disable_fieldtrial_testing_config=true'
+        'blink_enable_generated_code_formatting=false'
         'blink_symbol_level=0'
         'use_aura=true'
         'use_gio=false'
@@ -401,19 +404,29 @@ _flags=(
         'ozone_auto_platforms=false'
         'ozone_platform_headless=true'
         'use_thin_lto=false'
+        'enable_pseudolocales=false'
+        'enable_platform_hevc=true'
+        'enable_platform_hevc_decoding=true'
+        'dcheck_always_on=false'
+        'dcheck_is_configurable=false'
         )
 
 if [ "${_use_wayland}" = "1" ]; then
   _flags+=(
            'ozone_platform_wayland=true'
            'use_system_libdrm=true'
-           'use_system_minigbm=true'
+#            'use_system_minigbm=true'
            'use_system_libwayland=true'
+           'use_system_harfbuzz=false'
            'use_v4l2_codec=true'
            'use_xkbcommon=true'
-           "ozone_platform=\"wayland"\"
+           "ozone_platform=\"wayland\""
            'rtc_use_pipewire=true'
-           'rtc_pipewire_version="0.3"' # will be the default in Chromium 90
+           'rtc_link_pipewire=true'
+           )
+elif [ "${_use_wayland}" = "0" ]; then
+  _flags+=('ozone_platform_x11=true'
+           "ozone_platform=\"x11\""
            )
 fi
 
@@ -424,7 +437,7 @@ _use_system=(
              'flac'
              'fontconfig'
              'freetype'
-             'harfbuzz-ng'
+#              'harfbuzz-ng'
 #              'icu'          # https://crbug.com/678661.
              'libdrm'
 #              'libevent'     # Get segfaults and other problems https://bugs.gentoo.org/593458.
@@ -432,12 +445,12 @@ _use_system=(
              'libpng'
 #              'libvpx'
              'libwebp'
-             'libxml'
-             'libxslt'
-             'openh264'
+#              'libxml'
+#              'libxslt'
+#              'openh264'
              'opus'
 #              're2'
-             'snappy'
+#              'snappy'
 #              'yasm'
 #              'zlib'         # NaCL needs it
              )
@@ -478,14 +491,7 @@ _lld="ld.lld"
 prepare() {
   cd "${srcdir}/chromium-${pkgver}"
 
-  # Force script incompatible with Python 3 to use /usr/bin/python2.
-   sed -e '1s|python$|&2|' \
-     -i third_party/ffmpeg/chromium/scripts/generate_gn.py \
-     -i third_party/dom_distiller_js/protoc_plugins/json_values_converter.py \
-     -i third_party/dom_distiller_js/protoc_plugins/json_values_converter_tests.py
-
   # Py3toniced.
-  2to3 -w --no-diff build/linux/unbundle/remove_bundled_libraries.py
   2to3 -w --no-diff third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
 
   # Remove most bundled libraries. Some are still needed.
@@ -496,7 +502,7 @@ prepare() {
   build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
 
   msg2 "Setup NaCl/PNaCl SDK: Download and install toolchains"
-  build/download_nacl_toolchains.py --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
+  build/download_nacl_toolchains.py --packages saigo_newlib,nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
 
   msg2 "Download prebuild clang from Google"
   tools/clang/scripts/update.py
@@ -550,16 +556,13 @@ prepare() {
       -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
       -i third_party/libxml/chromium/libxml_utils.cc
 
-  ln -s /usr/bin/java third_party/jdk/current/bin/java
-
   # Fix build if enable HEVC in non-chromeOS system
-  patch -p1 -i "${srcdir}/fix_hevc_in_non_cromeos_r1.patch"
+#   patch -p1 -i "${srcdir}/fix_hevc_in_non_cromeos_r1.patch"
 
   # # Patch from Gentoo
-  patch -p1 -i "${srcdir}/chromium-89-EnumTable-crash.patch"
+  patch -p1 -i "${srcdir}/chromium-93-EnumTable-crash.patch"
+  patch -p1 -i "${srcdir}/chromium-93-InkDropHost-crash.patch"
   patch -p1 -i "${srcdir}/chromium-shim_headers.patch"
-  patch -p1 -i "${srcdir}/chromium-91-ThemeService-crash.patch"
-  patch -p1 -i "${srcdir}/chromium-91-system-icu.patch"
 
   # # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
 
@@ -568,9 +571,8 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -p1 -i "${srcdir}/use-oauth2-client-switches-as-default.patch"
 
-  # https://crbug.com/1164975
-  patch -p1 -i "${srcdir}/chromium-glibc-2.33.patch"
-  sed '34i#define AT_EMPTY_PATH 0x1000' -i sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.cc
+  # https://crbug.com/1192875.
+  ln -s /usr/bin/java third_party/jdk/current/bin/java
 
   # Upstream fixes
 
@@ -599,7 +601,7 @@ prepare() {
 
 build() {
   # set python 2 for build pnacl.
-  export PNACLPYTHON=/usr/bin/python2
+  export PNACLPYTHON=/usr/bin/python
 
   msg2 "Build the Launcher"
   make -C chromium-launcher \
@@ -658,7 +660,8 @@ package() {
         'chromium-dev'
         'chrome_sandbox'
         'chromedriver'
-        'crashpad_handler'
+        'chromedriver.unstripped'
+        'chrome_crashpad_handler'
         )
   for i in "${_bin[@]}"; do
     case "$i" in
@@ -669,7 +672,13 @@ package() {
         install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
         ;;
     esac
-  strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/${i}"
+    case "$i" in
+      chromedriver.unstripped)
+        ;;
+      *)
+        strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/${i}"
+        ;;
+    esac
   done
 
   ln -sf /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
