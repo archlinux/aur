@@ -6,6 +6,6 @@ Comment=Download online video
 Exec=4kvideotomp3
 Terminal=false
 Type=Application
-Icon=4kvideotomp3.png
+Icon=4kvideotomp3
 Categories=AudioVideo;Qt;
 
