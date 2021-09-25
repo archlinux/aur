@@ -1,14 +1,14 @@
 pkgbase = palemoon-i18n-zh-tw
 	pkgdesc = Chinese (Traditional) language pack for Pale Moon browser
-	pkgver = 29.2.0
+	pkgver = 29.4.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-zh-tw-29.2.0.xpi
-	source = palemoon-i18n-zh-tw-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-zh-TW@palemoon.org
-	sha256sums = 2c318d40c75ac4e7bc0af876b94f43d34228de59fe98a1cfe3c7d0bc008d62ec
+	noextract = palemoon-i18n-zh-tw-29.4.0.xpi
+	source = palemoon-i18n-zh-tw-29.4.0.xpi::https://addons.palemoon.org/?component=download&version=29.4.0&id=langpack-zh-TW@palemoon.org
+	sha256sums = 7a449798669cb412cc3bf72498b4684db14f26d186bb965f86fba814d5cbbd1a
 
 pkgname = palemoon-i18n-zh-tw
