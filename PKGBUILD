@@ -1,5 +1,5 @@
-# Maintainer: Arthur Borsboom <arthurborsboom@gmail.com>
-# Contributors: Prurigro, Keshav P R, atommix aka Aleks Lifey, Xavion, Ḷḷumex03
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributors: Arthur Borsboom <arthurborsboom@gmail.com>, Prurigro, Keshav P R, atommix aka Aleks Lifey, Xavion, Ḷḷumex03
 # Contributors: Ananda Samaddar, Dan Serban, Xavier Devlamynck, David Zaragoza, Joris Steyn
 
 pkgname=jitsi-nightly
@@ -7,15 +7,15 @@ _pkgname=jitsi
 # pkgvermajor needs manual increment
 _pkgvermajor=2.11
 # pkgver is determined automatically
-pkgver=2.11.20200316
+pkgver=2.11.20210926
 pkgrel=1
-pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
+pkgdesc="Audio/video SIP VoIP phone and instant messenger (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
 url="https://jitsi.org"
 license=('Apache')
 provides=(jitsi)
 conflicts=(jitsi jitsi-stable)
-depends=('java-environment=8' 'bash' 'gtk2' 'libxv' 'alsa-lib' 'libxss' 'ffmpeg-compat-57')
+depends=('java-environment=8' 'bash' 'gtk2' 'libxv' 'alsa-lib' 'libxss' 'ffmpeg' 'archlinux-java-run')
 makedepends=('ant')
 optdepends=(
   'libpulse: PulseAudio support'
@@ -25,12 +25,12 @@ source=(
   git+https://github.com/jitsi/jitsi.git
   ${_pkgname}.desktop
   ${_pkgname}.sh
+  MANIFEST.MF
 )
-md5sums=(
-  'SKIP'
-  'f5c21e511756458172dc0ae8020c7bd5'
-  '800cb34c0d15f07c7e087ad0d83a39e3'
-)
+md5sums=('SKIP'
+         'f5c21e511756458172dc0ae8020c7bd5'
+         '345b5ab9e26038952eef90ce18b78002'
+         '68475c5c47505b504646cb595529d90b')
 install=jitsi-nightly.install
 
 pkgver() {
@@ -43,9 +43,9 @@ build() {
   # append the build revision to the jitsi version
   sed -i "s/BUILD_ID="\"".*"\""/BUILD_ID="\"$(date +%Y%m%d)\""/" src/net/java/sip/communicator/impl/version/NightlyBuildID.java
 
-  # Override the default Java version and force to compile with Java 8, since Java 10+ results in compile errors.
   export PATH=/usr/lib/jvm/java-8-openjdk/bin/:$PATH
   export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+
   ant rebuild
 }
 
@@ -61,4 +61,8 @@ package() {
   for _file in resources/install/debian/*.{svg,xpm}; do
       install -Dm644 "$_file" "${pkgdir}/usr/share/pixmaps/jitsi${_file/*sip-communicator/}"
   done
+
+  # manual update of manifest.
+  cd "${srcdir}"
+  jar uvfm "${pkgdir}/usr/lib/jitsi/sc-bundles/libjitsi.jar" MANIFEST.MF
 }
