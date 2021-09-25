@@ -1,13 +1,13 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus-git
-pkgver=0.2.2.r0.0d1a388
+pkgver=0.2.2.r3.56b0135
 pkgrel=1
 pkgdesc="Generates a status line for swaybar"
 arch=('any')
 url="https://gitlab.com/jmcantrell/${pkgname%-git}"
 license=('GPL3')
-depends=('python' 'python-toml')
+depends=('python' 'python-toml' 'python-setuptools')
 makedepends=('git')
 checkdepends=('python-pytest' 'python-pytest-cov')
 provides=("${pkgname%-git}")
@@ -27,5 +27,5 @@ check() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    python setup.py install --root="$pkgdir"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
