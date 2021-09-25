@@ -1,11 +1,12 @@
 pkgbase = factor-hidpi-git
 	pkgdesc = A general purpose, dynamically typed, stack-based programming language. Patched to function on HiDPI displays.
 	pkgver = 0.98.r1822.d07d256748
-	pkgrel = 1
+	pkgrel = 2
 	url = http://factorcode.org
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = gcc
 	makedepends = git
 	depends = pango
 	depends = cairo

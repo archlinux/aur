@@ -9,7 +9,7 @@
 pkgname=factor-hidpi-git
 _pkgname=factor
 pkgver=0.98.r1822.d07d256748
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose, dynamically typed, stack-based programming language. Patched to function on HiDPI displays."
 arch=(i686 x86_64)
 url="http://factorcode.org"
@@ -18,7 +18,7 @@ provides=(factor factor-vm)
 conflicts=(factor factor-git)
 depends=(pango cairo glib2 freetype2 mesa libgl gtkglext)
 optdepends=(udis86)
-makedepends=(git)
+makedepends=(gcc git)
 options=(!strip)
 source=(
   'git+https://github.com/factor/factor.git'
