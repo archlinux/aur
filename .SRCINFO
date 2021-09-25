@@ -1,0 +1,12 @@
+pkgbase = bibox2-bin
+	pkgdesc = Launcher for BlueMaxima's Flashpoint with script to install data files
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/FlashpointProject/launcher
+	arch = x86_64
+	license = custom
+	depends = gnome-keyring
+	source = https://static.bibox2.westermann.de/electron/autoUpdate/BiBox%202.0%202.1.0.deb
+	sha512sums = a19ddc43c5251bed713c420a69ecaba4ee08f725b52121ee500b82e9a81705e18c55d2e80222475ba2f9334462480c637cb5301b8309f5d84c94ad6b5b613160
+
+pkgname = bibox2-bin
