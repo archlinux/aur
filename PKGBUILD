@@ -1,50 +1,47 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
-pkgname="python-tabulator"
-_name=${pkgname#python-}
-pkgdesc="Consistent interface for stream reading and writing tabular data (csv/xls/json/etc)"
-url="https://github.com/frictionlessdata/tabulator-py"
-
-pkgver=1.35.0
+pkgname=python-tabulator
+pkgver=1.53.5
 pkgrel=1
-
-arch=("any")
-license=("MIT")
-
-makedepends=(
-    "python-setuptools"
-)
+pkgdesc='Python library for reading and writing tabular data via streams'
+arch=('any')
+license=('MIT')
+url='https://github.com/frictionlessdata/tabulator-py'
 depends=(
-    "python"
-    "python-boto3"
-    "python-cchardet"
-    "python-click"
-    "python-ijson"
-    "python-jsonlines"
-    "python-linear-tsv"
-    "python-openpyxl"
-    "python-requests"
-    "python-six"
-    "python-sqlalchemy"
-    "python-unicodecsv"
-)
+	'python-boto3>=1.9'
+	'python-chardet>=3.0'
+	'python-click>=6.0'
+	'python-ijson>=3.0.3'
+	'python-jsonlines>=1.1'
+	'python-linear-tsv>=1.0'
+	'python-openpyxl>=2.6'
+	'python-requests>=2.8'
+	'python-six>=1.9'
+	'python-sqlalchemy>=0.9.6'
+	'python-unicodecsv>=0.14')
+makedepends=('python-setuptools')
+# checkdepends=('python-pytest' 'python-pytest-cov' 'python-mock' 'pylama' 'python-moto')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('cd357ed6cbca2622e7afb71d0af48df2d973cf4c9b30da4a1c641855a3a827ea')
 
-source=(
-    "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-)
-sha256sums=(
-    "986e6419e916bc6e5473d5f6c779002fc6b38e08415eab9f3b15a08b1f9aa20c"
-)
-
-build() {
-    cd "${srcdir}"/${_name}-${pkgver}
-    python setup.py build
+prepare() {
+	cd "tabulator-py-$pkgver"
+	sed -i '/PACKAGES/s/tests/tests*/' setup.py
 }
 
+build() {
+	cd "tabulator-py-$pkgver"
+	python setup.py build
+}
+
+# check() {
+# 	cd "tabulator-py-$pkgver"
+# 	pytest -m 'not remote'
+# }
+
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
-
-    install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+	cd "tabulator-py-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

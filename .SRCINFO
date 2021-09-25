@@ -1,25 +1,23 @@
 pkgbase = python-tabulator
-	pkgdesc = Consistent interface for stream reading and writing tabular data (csv/xls/json/etc)
-	pkgver = 1.35.0
+	pkgdesc = Python library for reading and writing tabular data via streams
+	pkgver = 1.53.5
 	pkgrel = 1
 	url = https://github.com/frictionlessdata/tabulator-py
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	depends = python-boto3
-	depends = python-cchardet
-	depends = python-click
-	depends = python-ijson
-	depends = python-jsonlines
-	depends = python-linear-tsv
-	depends = python-openpyxl
-	depends = python-requests
-	depends = python-six
-	depends = python-sqlalchemy
-	depends = python-unicodecsv
-	source = https://files.pythonhosted.org/packages/source/t/tabulator/tabulator-1.35.0.tar.gz
-	sha256sums = 986e6419e916bc6e5473d5f6c779002fc6b38e08415eab9f3b15a08b1f9aa20c
+	depends = python-boto3>=1.9
+	depends = python-chardet>=3.0
+	depends = python-click>=6.0
+	depends = python-ijson>=3.0.3
+	depends = python-jsonlines>=1.1
+	depends = python-linear-tsv>=1.0
+	depends = python-openpyxl>=2.6
+	depends = python-requests>=2.8
+	depends = python-six>=1.9
+	depends = python-sqlalchemy>=0.9.6
+	depends = python-unicodecsv>=0.14
+	source = python-tabulator-1.53.5.tar.gz::https://github.com/frictionlessdata/tabulator-py/archive/v1.53.5.tar.gz
+	sha256sums = cd357ed6cbca2622e7afb71d0af48df2d973cf4c9b30da4a1c641855a3a827ea
 
 pkgname = python-tabulator
-
