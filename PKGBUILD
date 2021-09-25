@@ -2,7 +2,7 @@
 
 pkgname=raspberrypi-rtc-ds1307
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Raspberry Pi i2C RTC DS1307 clock boot load scripts"
 url="http://github.com/darajnish/raspberrypi-i2c-rtc-ds1307"
 arch=('armv6h' 'armv7h' 'aarch64')

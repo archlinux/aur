@@ -1,7 +1,7 @@
 pkgbase = raspberrypi-rtc-ds1307
 	pkgdesc = Raspberry Pi i2C RTC DS1307 clock boot load scripts
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/darajnish/raspberrypi-i2c-rtc-ds1307
 	arch = armv6h
 	arch = armv7h
