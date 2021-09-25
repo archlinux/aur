@@ -1,7 +1,7 @@
 pkgbase = haraka
 	pkgdesc = A fast, highly extensible, and event driven SMTP server
 	pkgver = 2.8.27
-	pkgrel = 1
+	pkgrel = 2
 	url = http://haraka.github.io/
 	install = haraka.install
 	arch = i686
