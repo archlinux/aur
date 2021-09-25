@@ -1,7 +1,7 @@
 # Maintainer: Yash Karandikar <nerdstep710@gmail.com>
 
 pkgname=haur
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Helper for the Arch User Repository"
 arch=('any')
