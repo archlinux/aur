@@ -1,14 +1,14 @@
 pkgbase = palemoon-i18n-ja
 	pkgdesc = Japanese language pack for Pale Moon browser
-	pkgver = 29.2.0
+	pkgver = 29.4.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-ja-29.2.0.xpi
-	source = palemoon-i18n-ja-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-ja@palemoon.org
-	sha256sums = 4747e1646946c24ca80f5fb0804cb51af1c083ad7fcdcd1302c69fb8611a3e15
+	noextract = palemoon-i18n-ja-29.4.0.xpi
+	source = palemoon-i18n-ja-29.4.0.xpi::https://addons.palemoon.org/?component=download&version=29.4.0&id=langpack-ja@palemoon.org
+	sha256sums = 0a2e02a42fdf860895068b106361dca3d9729625c33003e523964ce450178073
 
 pkgname = palemoon-i18n-ja
