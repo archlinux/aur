@@ -1,7 +1,7 @@
 pkgbase = emote
 	pkgdesc = Emoji Picker for Linux written in GTK3
 	pkgver = 3.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tom-james-watson/Emote
 	arch = any
 	license = GPL3
@@ -19,6 +19,6 @@ pkgbase = emote
 	source = fix-skin-tone-static-path.patch
 	sha512sums = SKIP
 	sha512sums = ef8caea8ad9e9bc0487dd8c816561027adda743c1e8e2779a64e7ae99fb227c820f31ef9c87fb910bae7a8ffc623e5e2e1a53a8c69ce0a35ad96557e97a5a949
-	sha512sums = 332917b145cdfc2bc80fcac310cc21df1d0dcb1bec78b675930383295d074f80a176fec0d4c35ab7728a5bc948c05f53ce4037504e21f8f41708b5de2393edf1
+	sha512sums = 52d3dce0cecfe62ccc4469b4b35b27c8332d6dce2d1e2dd5603c85a3025fb4a415df303eaaace5579c4204923cbd8d86846deb1026a01f8b201452453c61746f
 
 pkgname = emote
