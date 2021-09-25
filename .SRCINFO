@@ -1,6 +1,6 @@
 pkgbase = sapphire-butler
 	pkgdesc = An extensible task executor that aims to make certain tasks easy and user friendly.
-	pkgver = 0.3
+	pkgver = 0.4.1
 	pkgrel = 0
 	url = https://codeberg.org/Sapphire/sapphire-butler
 	arch = any
@@ -9,7 +9,8 @@ pkgbase = sapphire-butler
 	depends = bash
 	depends = perl
 	depends = xdg-utils
-	source = https://codeberg.org/Sapphire/sapphire-butler/archive/0.3.tar.gz
-	sha256sums = d1700e95774803b029b5c95416193d8a2d26ac78d93f14d8f977b9bc2be46703
+	depends = pikaur
+	source = https://codeberg.org/Sapphire/sapphire-butler/archive/0.4.1.tar.gz
+	sha256sums = f9235d6713a72f4e827e01d42adf772cf4e2e294b891693e2f48183b9c0afe22
 
 pkgname = sapphire-butler

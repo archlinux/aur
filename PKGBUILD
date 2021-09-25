@@ -1,14 +1,14 @@
 # Maintainer: Matthew "Madness" Evan <mattmadness@420blaze.it>
 pkgname=sapphire-butler
-pkgver=0.3
+pkgver=0.4.1
 pkgrel=0
 pkgdesc="An extensible task executor that aims to make certain tasks easy and user friendly."
 arch=(any)
 license=('GPL3')
 url='https://codeberg.org/Sapphire/sapphire-butler'
-depends=('yad' 'bash' 'perl' 'xdg-utils')
+depends=('yad' 'bash' 'perl' 'xdg-utils' 'pikaur')
 source=("https://codeberg.org/Sapphire/sapphire-butler/archive/${pkgver}.tar.gz")
-sha256sums=("d1700e95774803b029b5c95416193d8a2d26ac78d93f14d8f977b9bc2be46703")
+sha256sums=("f9235d6713a72f4e827e01d42adf772cf4e2e294b891693e2f48183b9c0afe22")
 
 package() {
 	cd "$srcdir/sapphire-butler"
