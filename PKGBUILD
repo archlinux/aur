@@ -19,7 +19,7 @@ _minor=7
 pkgbase=linux-multimedia
 #pkgver=${_major}
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -72,7 +72,7 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex2_interface.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-prjc_v5.14-r2.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-prjc_v${_major}-r2.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
   
   msg2 "Apply GCC Optimization Patch..."
@@ -88,12 +88,9 @@ prepare() {
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
-  ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
-  if [ "$_NUMAdisable" = "y" ]; then
-    msg2 "Disabling NUMA from kernel config..."
-    scripts/config --disable CONFIG_NUMA
-  fi
+  msg2 "Disabling NUMA from kernel config..."
+  scripts/config --disable CONFIG_NUMA
 
   ### Set PDS as the default CPU scheduler
   msg2 "Setting Default CPU Scheduler..."
