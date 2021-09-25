@@ -1,6 +1,6 @@
 pkgname=haraka
 pkgver=2.8.27
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast, highly extensible, and event driven SMTP server'
 arch=(i686 x86_64 aarch64)
 url=http://haraka.github.io/
