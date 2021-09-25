@@ -1,6 +1,6 @@
 pkgbase = selinux-refpolicy-src
 	pkgdesc = SELinux reference policy sources
-	pkgver = 20210203
+	pkgver = 20210908
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/refpolicy/wiki
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = selinux-refpolicy-src
 	makedepends = libsepol>=3.0
 	makedepends = libsemanage>=3.0
 	optdepends = linux-hardened: Linux kernel with SELinux support
-	source = https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20210203/refpolicy-2.20210203.tar.bz2
-	sha256sums = 48cbf2c63ff9003bef05e03c8d3cdddb4e8f63fef2a072ae51c987301f0b874d
+	source = https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20210908/refpolicy-2.20210908.tar.bz2
+	sha256sums = 4d3140d9fbb91322f5de36d73959464ce1d8946dcd149e36fcaf60e92444e902
 
 pkgname = selinux-refpolicy-src
-
