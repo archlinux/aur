@@ -3,8 +3,8 @@
 # Maintainer: Jan Cholasta <jan at cholasta net>
 
 pkgname=nblood-git
-pkgver=r12582+5b9fe377
-pkgrel=2
+pkgver=r12582.5b9fe377b
+pkgrel=1
 pkgdesc='Blood port based on EDuke32 (git version)'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://nukeykt.retrohost.net/'
