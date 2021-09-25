@@ -4,7 +4,7 @@
 
 pkgname=pixelorama-git
 _pkgname=pixelorama
-pkgver=1623.5118d30a
+pkgver=1633.27d42dbd
 pkgrel=2
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64')
@@ -25,7 +25,10 @@ pkgver()
 }
 
 prepare() {
-  ln -s pixelorama Pixelorama
+  if [ ! -e Pixelorama ]
+  then
+    ln -s pixelorama Pixelorama
+  fi
   # Checks if the user's directory has the export templates
   # and downloads them, if necessary
 

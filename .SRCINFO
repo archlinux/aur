@@ -1,6 +1,6 @@
 pkgbase = pixelorama-git
 	pkgdesc = A free & open-source 2D sprite editor
-	pkgver = 1623.5118d30a
+	pkgver = 1633.27d42dbd
 	pkgrel = 2
 	url = https://orama-interactive.itch.io/pixelorama
 	arch = i686
