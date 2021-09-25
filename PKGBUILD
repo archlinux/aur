@@ -1,12 +1,12 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Andya <hugo981@gmx.com>
 # Contributor: Lazaros Koromilas <koromilaz@gmail.com>
 
 pkgname=saxon-he
-pkgver=10.2
+pkgver=10.6
 _pkgver=${pkgver//./-}
-pkgrel=2
+pkgrel=1
 pkgdesc="XSLT 2.0 / XPath 2.0 and 3.0 / XQuery 1.0 and 3.0 processor for Java - Home Edition"
 url="http://saxon.sourceforge.net"
 license=('MPL')
@@ -17,9 +17,9 @@ conflicts=('java-saxon')
 source=("https://downloads.sourceforge.net/saxon/SaxonHE${_pkgver}J.zip"
         "saxon-xslt.sh"
         "saxon-xquery.sh")
-sha256sums=('1cdb9edc158159e940937035464ad4e188bc342e2eda8a1c72e2d02d170d3aa1'
-            '53519c8a4ea91ea4c6fe4b4799ccd630f6c4023e8611f3e65d1fee2672bddcbe'
-            'f7bf71426e30e6d528cdab885fd27191b9697163e3e447c8644a81de193b6311')
+sha256sums=('0e590ede60eef6d8a98e759f72769c20417173f99191ebbc2f9ec4e331dbc296'
+            '407e00b19754d21df78e39912d5499e62fa02988374e86c59d8d9e41b3235948'
+            'e4e72afa5cc1f8277d9e87acbf51cb3ed734d2d7d3c4a8c28b2bb7d39699830f')
 
 package() {
     cd "$srcdir"
