@@ -15,7 +15,7 @@ _micro=""
 pkgbase=compiz-core
 pkgname=(compiz-core compiz-gtk)
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=3
 pkgdesc="This is the latest stable release of Compiz without DE deps"
 url="https://gitlab.com/compiz/${_upstream}/"
 license=('GPL' 'LGPL' 'MIT')
@@ -23,7 +23,8 @@ arch=('i686' 'x86_64')
 depends=('startup-notification' 'librsvg' 'dbus' 'glu' 'libxslt' 'libxrandr' 'libsm' 'libxcomposite' 'libxinerama' 'libxi' 'libxcursor')
 makedepends=('intltool' 'libice')
 options=(!libtool !emptydirs)
-source=("${url}-/archive/v${pkgver}/${_upstream}-v${pkgver}.tar.bz2")
+source=("${url}-/archive/v${pkgver}/${_upstream}-v${pkgver}.tar.bz2"
+"fix-rsvg-features-include.patch")
 
 _configure_opts=(
   --prefix=/usr
@@ -59,6 +60,12 @@ else
 	_configure_opts+=("--with-gtk=2.0")
 	echo "Using GTK+2 for gtk-window-decorator" >&2
 fi
+
+prepare()
+{
+  cd "${srcdir}/${_upstream}-v${pkgver}"
+  patch -Np1 -i "${srcdir}/fix-rsvg-features-include.patch"
+}
 
 build()
 {
@@ -136,4 +143,5 @@ package_compiz-gtk()
   done
 }
 
-sha256sums=('e87018b2d6c9ab3da87d910b117a7ae35f64328eea485e6c2a532501b361144c')
+sha256sums=('e87018b2d6c9ab3da87d910b117a7ae35f64328eea485e6c2a532501b361144c'
+            'eeeb8629fb4757a8305aa782aae7dba41e82ab12b330e461b10a2b5935f68f77')

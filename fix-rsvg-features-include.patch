@@ -1,0 +1,12 @@
+diff -aur compiz-core/plugins/svg.c compiz-core.modified/plugins/svg.c
+--- compiz-core/plugins/svg.c	2021-09-24 17:15:53.604807992 -0700
++++ compiz-core.modified/plugins/svg.c	2021-09-24 17:34:27.267538329 -0700
+@@ -32,7 +32,7 @@
+ #include <librsvg/rsvg-cairo.h>
+ #endif
+ #ifndef LIBRSVG_FEATURES_H
+-#include <librsvg/librsvg-features.h>
++#include <librsvg/rsvg-features.h>
+ #endif
+ 
+ #include <X11/Xatom.h>

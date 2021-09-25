@@ -1,7 +1,7 @@
 pkgbase = compiz-core
 	pkgdesc = This is the latest stable release of Compiz without DE deps
 	pkgver = 0.8.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/compiz/compiz-core/
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,9 @@ pkgbase = compiz-core
 	options = !libtool
 	options = !emptydirs
 	source = https://gitlab.com/compiz/compiz-core/-/archive/v0.8.18/compiz-core-v0.8.18.tar.bz2
+	source = fix-rsvg-features-include.patch
 	sha256sums = e87018b2d6c9ab3da87d910b117a7ae35f64328eea485e6c2a532501b361144c
+	sha256sums = eeeb8629fb4757a8305aa782aae7dba41e82ab12b330e461b10a2b5935f68f77
 
 pkgname = compiz-core
 	pkgdesc = This is the latest stable release of Compiz without DE deps (Core w/o decorator)
@@ -44,4 +46,3 @@ pkgname = compiz-gtk
 	depends = libxi
 	depends = libxcursor
 	depends = compiz-core
-
