@@ -2,7 +2,7 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=libass-git
-pkgver=0.14.0.4.g98727c3
+pkgver=0.15.2.11.g4c3ace7
 pkgrel=1
 pkgdesc="A portable library for SSA/ASS subtitles rendering. (GIT version)"
 arch=('x86_64')
@@ -27,20 +27,21 @@ pkgver() {
 }
 
 prepare() {
-  cd libass
-  ./autogen.sh
+  mkdir -p build
 }
 
 build() {
   cd libass
-  ./configure \
+  autoreconf -vfi
+
+  cd "${srcdir}/build"
+  ../libass/configure \
     --prefix=/usr
 
   make
 }
 
 package() {
-  cd libass
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 libass/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
