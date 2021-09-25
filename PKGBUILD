@@ -1,7 +1,7 @@
 # Maintainer: Ben Mitchell <bjosephmitchell@gmail.com>
 _pkgname=pacext
 pkgname="${_pkgname}-git"
-pkgver=r1.93ab058
+pkgver=r1.76ffcd9
 pkgrel=1
 pkgdesc="Pacman extensions with more convenient syntax"
 arch=('any')
