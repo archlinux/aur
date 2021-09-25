@@ -19,7 +19,7 @@ source_x86_64=("${_appimage}::https://github.com/mrstallion/fchat-rising/release
                "https://raw.githubusercontent.com/mrstallion/fchat-rising/v${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('9964b9ac27a261188abf0237a6fb9aefd8b3b1ebbebf82a34e4b9f23af8e2d8e'
+sha256sums_x86_64=('d7b01756a471c0890eddf72c42f388dc4d964477ce0956284f959df12b71f430'
                    'SKIP')
 
 prepare() {
