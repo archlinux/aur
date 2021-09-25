@@ -1,0 +1,17 @@
+pkgbase = doom3bfg-data-gog
+	pkgdesc = Doom 3 BFG data via GOG
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.gog.com/game/doom_3_bfg_edition
+	arch = any
+	license = custom
+	makedepends = innoextract
+	makedepends = icoutils
+	provides = doom3bfg-data
+	conflicts = doom3bfg-data-steam
+	source = setup_doom_3_bfg_1.14_(13452).exe::gogdownloader://doom_3_bfg_edition_game/en1installer0
+	source = setup_doom_3_bfg_1.14_(13452)-1.bin::gogdownloader://doom_3_bfg_edition_game/en1installer1
+	sha256sums = 8e6796c0f81e90de726e57978858ebdc8e162366060736bb080a51c73151936f
+	sha256sums = e71a1f1cf2674748046b677b88015a4807a624a14831a2e7ce1e084c82bd0952
+
+pkgname = doom3bfg-data-gog
