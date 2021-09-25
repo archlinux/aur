@@ -6,17 +6,17 @@
 
 _locale='el'
 pkgname=palemoon-i18n-el
-pkgver=29.2.0
+pkgver=29.4.0
 pkgrel=1
 pkgdesc="Greek language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('0b1c8e1b912bf93db89ecf0490ef944ec35465d345302f381c90f499c593e581')
+sha256sums=('a3d363a2843a307c61c8db89d4d7f6d5707344a29fcc0abfc55d4c4b0aa65845')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
-DLAGENTS=("https::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
+DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
           "${DLAGENTS[@]}")
 
 package() {
