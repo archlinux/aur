@@ -5,7 +5,7 @@
 pkgname=maltego
 
 pkgver=4.2.19.13940
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Information gathering software by Paterva'
 url="https://www.$pkgname.com"
@@ -24,7 +24,9 @@ sha256sums=('8cb8094366b9eaf4bb60d436ad48afd84cc54a73442de5f850ecc9d877643ba6'
 package() {
   bsdtar -xf data.tar.gz -C "$pkgdir"
   sed -i 's|\(Exec=\)x-www-browser|\1xdg-open|g;s|^\(Version=\).*|\11.0|' \
-         "$pkgdir/usr/share/applications/$pkgname"{,_config}.desktop
+         "$pkgdir/usr/share/applications/$pkgname.desktop"
+  # maltego_memory_config is defined as action in maltego.desktop, don't need that twice
+  rm     "$pkgdir/usr/share/applications/${pkgname}_config.desktop"
   sed -i '1s|bash|sh|' "$pkgdir/usr/bin/$pkgname"
   chmod g-w "$pkgdir"/usr{,/bin,/share{,/applications,"/$pkgname",/pixmaps}}
   install -Dm644 LICENSE.pdf -t"$pkgdir/usr/share/licenses/$pkgname/"
