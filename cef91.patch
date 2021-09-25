@@ -1,0 +1,74 @@
+diff --git a/browser-app.cpp b/browser-app.cpp
+index c1da827..1760c62 100644
+--- a/browser-app.cpp
++++ b/browser-app.cpp
+@@ -110,7 +110,7 @@ void BrowserApp::OnContextCreated(CefRefPtr<CefBrowser> browser,
+ {
+ 	CefRefPtr<CefV8Value> globalObj = context->GetGlobal();
+ 
+-	CefRefPtr<CefV8Value> obsStudioObj = CefV8Value::CreateObject(0, 0);
++	CefRefPtr<CefV8Value> obsStudioObj = CefV8Value::CreateObject(nullptr, nullptr);
+ 	globalObj->SetValue("obsstudio", obsStudioObj,
+ 			    V8_PROPERTY_ATTRIBUTE_NONE);
+ 
+@@ -156,7 +156,7 @@ void BrowserApp::ExecuteJSFunction(CefRefPtr<CefBrowser> browser,
+ 	CefRefPtr<CefV8Value> jsFunction = obsStudioObj->GetValue(functionName);
+ 
+ 	if (jsFunction && jsFunction->IsFunction())
+-		jsFunction->ExecuteFunction(NULL, arguments);
++		jsFunction->ExecuteFunction(nullptr, arguments);
+ 
+ 	context->Exit();
+ }
+@@ -312,7 +312,7 @@ bool BrowserApp::OnProcessMessageReceived(CefRefPtr<CefBrowser> browser,
+ 
+ 		CefRefPtr<CefV8Value> dispatchEvent =
+ 			globalObj->GetValue("dispatchEvent");
+-		dispatchEvent->ExecuteFunction(NULL, arguments);
++		dispatchEvent->ExecuteFunction(nullptr, arguments);
+ 
+ 		context->Exit();
+ 
+@@ -342,7 +342,7 @@ bool BrowserApp::OnProcessMessageReceived(CefRefPtr<CefBrowser> browser,
+ 		args.push_back(retval);
+ 
+ 		if (callback)
+-			callback->ExecuteFunction(NULL, args);
++			callback->ExecuteFunction(nullptr, args);
+ 
+ 		context->Exit();
+ 
+diff --git a/obs-browser-plugin.cpp b/obs-browser-plugin.cpp
+index 1a6a009..0911b7b 100644
+--- a/obs-browser-plugin.cpp
++++ b/obs-browser-plugin.cpp
+@@ -298,7 +298,7 @@ static void BrowserInit(void)
+ 	prod_ver << std::to_string(obs_maj) << "." << std::to_string(obs_min)
+ 		 << "." << std::to_string(obs_pat);
+ 
+-	CefString(&settings.product_version) = prod_ver.str();
++	CefString(&settings.user_agent) = prod_ver.str();
+ 
+ #ifdef USE_QT_LOOP
+ 	settings.external_message_pump = true;
+diff --git a/obs-browser-source.cpp b/obs-browser-source.cpp
+index ab1181e..bc5d664 100644
+--- a/obs-browser-source.cpp
++++ b/obs-browser-source.cpp
+@@ -177,12 +177,15 @@ bool BrowserSource::CreateBrowser()
+ 		cefBrowserSettings.default_font_size = 16;
+ 		cefBrowserSettings.default_fixed_font_size = 16;
+ 
++#if CHROME_VERSION_BUILD < 4430
+ #if ENABLE_LOCAL_FILE_URL_SCHEME
+ 		if (is_local) {
+ 			/* Disable web security for file:// URLs to allow
+-			 * local content access to remote APIs */
++			 * local content access to remote APIs
++			 * This flag was removed from CEF >= 91 */
+ 			cefBrowserSettings.web_security = STATE_DISABLED;
+ 		}
++#endif
+ #endif
+ 
+ 		cefBrowser = CefBrowserHost::CreateBrowserSync(

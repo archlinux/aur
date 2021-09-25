@@ -15,7 +15,7 @@ depends=("ffmpeg" "jack" "jansson" "libxinerama" "libxkbcommon-x11"
          "qt5-svg" "qt5-x11extras" "curl" "gtk-update-icon-cache" "mbedtls"
          "pipewire" "libxcomposite")
 makedepends=("cmake" "git" "libfdk-aac" "x264"
-             "vlc-luajit" "swig" "luajit" "python" "cef-minimal>=87.0.0" "cef-minimal<89.0.0"
+             "vlc-luajit" "swig" "luajit" "python" "cef-minimal>=91.0.0"
              "wayland" "qt5-wayland" "sndio")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libva-intel-driver: Hardware encoding"
@@ -32,20 +32,23 @@ source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "git+https://github.com/Mixer/ftl-sdk.git"
         "git+https://github.com/obsproject/obs-browser.git"
         "git+https://github.com/obsproject/obs-vst.git"
-        "fix_python_binary_loading.patch")
+        "fix_python_binary_loading.patch"
+        "cef91.patch")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '93ad704cef425073b417d1ed95e076f688a6e45cdf589472c65e437d77297303f31dd8f15c7d5e30f83276a6396b732dfb5a695db9c773911aaa0423c5262177')
+            '93ad704cef425073b417d1ed95e076f688a6e45cdf589472c65e437d77297303f31dd8f15c7d5e30f83276a6396b732dfb5a695db9c773911aaa0423c5262177'
+            '20c348c9e2439ae2077357d8aee5d9f3d06701cc2eb60bcb24e43701df0c8f48ba4810c5e4c746889baf4ae8bdacfcacf2f279da903e6e1ed4814a950092678e')
 
 prepare() {
-    cd $pkgname
+    cd "$srcdir/$pkgname"
     patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
     git config submodule.plugins/obs-outputs/ftl-sdk.url "$srcdir"/ftl-sdk
     git config submodule.plugins/obs-browser.url "$srcdir"/obs-browser
     git config submodule.plugins/obs-vst.url "$srcdir"/obs-vst
     git submodule update
+    patch -d "$srcdir/$pkgname/plugins/obs-browser" -Np1 < "$srcdir"/cef91.patch
 }
 
 build() {
