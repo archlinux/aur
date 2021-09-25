@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rosconsole'
 pkgname='ros-noetic-rosconsole'
 pkgver='1.14.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
@@ -18,7 +18,7 @@ makedepends=(
     cmake
     ros-build-tools
     ${ros_makedepends[@]}
-    log4cxx
+    google-glog
     boost
 )
 
@@ -61,7 +61,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DROSCONSOLE_BACKEND=log4cxx #log4cxx/glog/print
+        -DROSCONSOLE_BACKEND=glog #log4cxx/glog/print, for now log4cxx is broken
     make
 }
 
