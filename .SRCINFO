@@ -1,0 +1,19 @@
+pkgbase = audio-sharing-git
+	pkgdesc = Share your computer audio
+	pkgver = 0.1.1.r3.g6117012
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/AudioSharing
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	makedepends = meson
+	depends = gst-rtsp-server
+	depends = libadwaita
+	provides = audio-sharing
+	conflicts = audio-sharing
+	source = git+https://gitlab.gnome.org/World/AudioSharing.git
+	sha256sums = SKIP
+
+pkgname = audio-sharing-git
