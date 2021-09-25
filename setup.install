@@ -1,0 +1,16 @@
+post_install() {
+	echo ':: This plugin requires manual setup.'
+	echo ':: Consult upstream documentation for more information.'
+	echo ':: A copy has been installed under /usr/share/doc/neovim-tree-lua-git/README.md for your reference.'
+}
+
+post_upgrade() {
+	if [[ $(vercmp 1.3.0 "$2") -eq 1 ]]; then
+		echo ':: Breaking changes from upstream now require manual setup in your init scripts.'
+		echo ':: Check upstream documentation for more information.'
+	fi
+}
+
+post_remove() {
+	echo ':: Remember to remove all references to this plugin from your init scripts.'
+}
