@@ -2,7 +2,7 @@
 
 pkgname=pulse-secure
 pkgver=9.1r12.0_b10247
-pkgrel=1
+pkgrel=2
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
 license=(custom)
@@ -10,7 +10,7 @@ url='https://www.pulsesecure.net/'
 depends=(gcc-libs libgnome-keyring openssl curl dbus libbsd)
 install=${pkgname}.install
 source=(EULA.txt)
-source_x86_64=("http://ccnet.ntu.edu.tw/vpn/Download/ps-pulse-linux-9.1r12.0-b10247-64-bit-installer.rpm")
+source_x86_64=("https://gml.noaa.gov/aftp/user/cornwall/Pulse%20Client/ps-pulse-linux-9.1r12.0-b10247-64-bit-installer.rpm")
 md5sums=('261848a28201e5386ec4bf587473a48b')
 md5sums_x86_64=('74f180159f742e138e166b3b8d7eb4d5')
 optdepends=('psmisc: for pulsesvc -K', 'gtkmm3: for pulseUi', 'webkit2gtk: for pulseUi')
