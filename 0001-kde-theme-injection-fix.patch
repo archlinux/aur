@@ -1,0 +1,38 @@
+    Revert "Don't add counter when icon theme has 'panel' icon"
+    
+    This reverts commit 2fe2105a5f6ab44e5175fc771426177f91680133.
+
+diff --git a/Telegram/SourceFiles/platform/linux/main_window_linux.cpp b/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
+index 2dcee5bb8..fa1fc6368 100644
+--- a/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
+@@ -245,13 +245,6 @@ QIcon TrayIconGen(int counter, bool muted) {
+ 	}
+ 
+ 	const auto iconName = GetTrayIconName(counter, muted);
+-	const auto panelIconName = GetPanelIconName(counter, muted);
+-
+-	if (iconName == panelIconName) {
+-		const auto result = QIcon::fromTheme(iconName);
+-		UpdateIconRegenerationNeeded(result, counter, muted, iconThemeName);
+-		return result;
+-	}
+ 
+ 	QIcon result;
+ 	QIcon systemIcon;
+@@ -649,14 +642,7 @@ void MainWindow::Private::setSNITrayIcon(int counter, bool muted) {
+ 	const auto iconName = GetTrayIconName(counter, muted);
+ 	const auto panelIconName = GetPanelIconName(counter, muted);
+ 
+-	if (iconName == panelIconName) {
+-		if (sniTrayIcon->iconName() == iconName) {
+-			return;
+-		}
+-
+-		sniTrayIcon->setIconByName(iconName);
+-		sniTrayIcon->setToolTipIconByName(iconName);
+-	} else if (IsIndicatorApplication()) {
++	if (IsIndicatorApplication()) {
+ 		if (!IsIconRegenerationNeeded(counter, muted)
+ 			&& trayIconFile
+ 			&& sniTrayIcon->iconName() == trayIconFile->fileName()) {
