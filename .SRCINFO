@@ -1,6 +1,6 @@
 pkgbase = wmbluemem
 	pkgdesc = A memory monitoring dockapp (for WindowMaker, OpenBOx, AfterStep etc)
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	url = http://github.com/vampirefrog/wmbluemem
 	arch = i686
@@ -13,4 +13,3 @@ pkgbase = wmbluemem
 	md5sums = SKIP
 
 pkgname = wmbluemem
-

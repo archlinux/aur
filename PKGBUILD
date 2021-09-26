@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=wmbluemem
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="A memory monitoring dockapp (for WindowMaker, OpenBOx, AfterStep etc)"
 arch=('i686' 'x86_64')
@@ -10,6 +10,16 @@ depends=('libxpm' 'libxft')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/vampirefrog/wmbluemem.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git rev-list --count HEAD
+}
+
+prepare() {
+  cd $pkgname
+  sed -i -e 's,(LIBS),(LIBS) $(LDFLAGS),' Makefile
+}
 
 build() {
   cd $pkgname
