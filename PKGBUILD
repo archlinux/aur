@@ -3,8 +3,8 @@
 
 pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
-pkgver=93.0.4577.63
-pkgrel=2
+pkgver=94.0.4606.61
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
@@ -47,18 +47,18 @@ _update_helper() {
   rm -r "${pkgname}-${pkgver}-${pkgrel}"
 }
 
-_clang_path='clang-llvmorg-13-init-15163-g98033fdc-1.tgz'
-_PGO_PATH='chrome-linux-4577-1629902302-97a75bab19e52f72bda9d9d33032dd998433e8c2.profdata'
-_gn_version='git_revision:24e2f7df92641de0351a96096fb2c490b2436bb8'
+_clang_path='clang-llvmorg-14-init-1002-gb5e470aa-1.tgz'
+_PGO_PATH='chrome-linux-4606-1632147900-2674511630c4bfe602871b9780dec43586d68327.profdata'
+_gn_version='git_revision:69ec4fca1fa69ddadae13f9e6b7507efa0675263'
 _gn_revision='39a87c0b36310bdf06b692c098f199a0d97fc810'
 
 sha256sums=(
-  "091fa8129f390cc90530f92b0e9c90f1e7bb131f3f9e5bcda192a782bf7af19e"
+  "26c00dfe14284ff19fe78e4185649a48292582adf7d6e3d2d0e994098c393097"
   "ec7e686edd39068acd3122bbae4f4e83ba8540ffdb9fe30790679e72c7318d33"
   "723979ea8245a297fac101ff71e1e9f97f138e0bfb0e84176ef5ca70cc96bf8e"
-  "cf74ea4bdd833b18ef52959f2791b11354fea20425b8dbfa4d017fc46732c665"
-  "f8874377e631b3bccc6581a79bd9f720b5d0700f7e021930d00b626cf7ab3874"
-  "b1df7d28776ebf714edc98abaaa09aa8b308212eef5a23fa24de8f4107ae1cd3"
+  "bed9118082c98d990434c02230d9eec5e3aa3158b479d4cd3317482906d4e897"
+  "d729c99079a619fc0fa33b3f79a731942cad7fcefae0a683678e3c32530d1bf7"
+  "8bedd600ac58311f384e5113ab6a544bc72edb587ccb8f9e784c4dff208872c4"
 )
 
 source=(
