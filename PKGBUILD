@@ -1,4 +1,4 @@
-# Maintainer: Noah (coolreader18)
+# Maintainer: Noa (coolreader18)
 pkgname=ndless-sdk-git
 pkgver=r503.79d2aa6
 pkgrel=1
