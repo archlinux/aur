@@ -7,7 +7,7 @@
 _pkgname='opencore-amr'
 pkgname=vo-aacenc
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="VisualOn Advanced Audio Coding (AAC) encoder"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://sourceforge.net/projects/$_pkgname/"
@@ -17,14 +17,19 @@ options=('!emptydirs' '!libtool')
 source=("https://sourceforge.net/projects/opencore-amr/files/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('2c006cb9d5f651bfb5e60156dbff6af3c9d35c7bbcc9015308c0aff1e14cd341')
 
+prepare() {
+	cd "$srcdir/$_pkgname-$pkgver"
+	autoreconf -vfi
+}
+
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
-package () {
+package() {
   cd "$srcdir/$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
+  install -vDm 644 {ChangeLog,README} -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
-
