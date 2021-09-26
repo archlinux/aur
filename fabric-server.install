@@ -1,9 +1,8 @@
-_user="fabric-1.17.1"
 _server_root="/srv/fabric-1.17.1"
 
 
 post_install() {
-	echo "The world data is stored under ${_server_root} and the server runs as ${_user} user to increase security."
+	echo "The world data is stored under ${_server_root} and the server runs as fabric-1-17-1 user to increase security."
 	echo "Use the fabricd-1.17.1 script under /usr/bin/ to start, stop or backup the server."
 	echo "Adjust the configuration file under /etc/conf.d/fabric-1.17.1 to your liking."
 	echo "For the server to start you have to accept the EULA in ${_server_root}/eula.txt !"
@@ -12,5 +11,5 @@ post_install() {
 
 post_remove() {
 	[ -d "$_server_root" ] && echo "Game saves in ${_server_root} were kept on your system."
-	echo "The ${_user} user was preserved on your system."
+	echo "The fabric-1-17-1 user was preserved on your system."
 }
