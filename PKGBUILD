@@ -1,33 +1,38 @@
-# Maintainer: Dylan Baker <dylan@pnwbakers.com>
-_name=jsonstreams
-pkgname=python-${_name}
-pkgver=0.4.1
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dylan Baker <dylan@pnwbakers.com>
+
+pkgname=python-jsonstreams
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="A Python module for writing JSON as a stream"
+pkgdesc='Python module for writing JSON as a stream'
 arch=('any')
-url="https://github.com/dcbaker/jsonstreams"
+url='https://github.com/dcbaker/jsonstreams'
 license=('MIT')
-depends=()
-makedepends=('python-setuptools')
+depends=('python-six')
 optdepends=('python-simplejson')
-options=(!emptydirs)
-source=('https://pypi.python.org/packages/09/9b/21a1d63160166e58a4b2e24f068c1bf9bfb3610f389d39cd5e96910b4f47/jsonstreams-0.4.1.tar.gz'
-        'https://pypi.python.org/packages/09/9b/21a1d63160166e58a4b2e24f068c1bf9bfb3610f389d39cd5e96910b4f47/jsonstreams-0.4.1.tar.gz.asc'
-        'https://raw.githubusercontent.com/dcbaker/jsonstreams/master/LICENSE')
-sha256sums=('875c03c0a93e1e23a7eaa7a7a89e36290ff29613286bce563dad37fb7061addd'
-            'SKIP'
-            '8b1cc8af45b502fd5bfce434721cb0d9a833298f05fe983ebc6c7f36d06fab59')
+makedepends=('python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
+checkdepends=('python-pytest-runner')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('2ae77cf5db3f7a2c5e5a882594ef2cc0c160b4068cbb36389980f551c260b8a2')
 validpgpkeys=('5303CCAA8FFEE5A1472F3538089E1696140688EF')  # Dylan Baker <dylan@pnwbakers.com>
 
-prepare() {
-  cp LICENSE "$srcdir/${_name}-$pkgver"/
+build() {
+  cd "jsonstreams-$pkgver"
+  python setup.py build
+  cd docs
+  make man
+}
+
+check() {
+  cd "jsonstreams-$pkgver"
+  python setup.py pytest
 }
 
 package() {
-  cd "$srcdir/${_name}-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "jsonstreams-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 docs/build/man/jsonstreams.1 -t "$pkgdir/usr/share/man/man1/"
 }
 
 # vim:set ts=2 sw=2 et:

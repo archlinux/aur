@@ -1,20 +1,18 @@
 pkgbase = python-jsonstreams
-	pkgdesc = A Python module for writing JSON as a stream
-	pkgver = 0.4.1
+	pkgdesc = Python module for writing JSON as a stream
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/dcbaker/jsonstreams
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	depends = python-six
 	optdepends = python-simplejson
-	options = !emptydirs
-	source = https://pypi.python.org/packages/09/9b/21a1d63160166e58a4b2e24f068c1bf9bfb3610f389d39cd5e96910b4f47/jsonstreams-0.4.1.tar.gz
-	source = https://pypi.python.org/packages/09/9b/21a1d63160166e58a4b2e24f068c1bf9bfb3610f389d39cd5e96910b4f47/jsonstreams-0.4.1.tar.gz.asc
-	source = https://raw.githubusercontent.com/dcbaker/jsonstreams/master/LICENSE
+	source = python-jsonstreams-0.6.0.tar.gz::https://github.com/dcbaker/jsonstreams/archive/0.6.0.tar.gz
 	validpgpkeys = 5303CCAA8FFEE5A1472F3538089E1696140688EF
-	sha256sums = 875c03c0a93e1e23a7eaa7a7a89e36290ff29613286bce563dad37fb7061addd
-	sha256sums = SKIP
-	sha256sums = 8b1cc8af45b502fd5bfce434721cb0d9a833298f05fe983ebc6c7f36d06fab59
+	sha256sums = 2ae77cf5db3f7a2c5e5a882594ef2cc0c160b4068cbb36389980f551c260b8a2
 
 pkgname = python-jsonstreams
-
