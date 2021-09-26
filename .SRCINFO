@@ -1,14 +1,16 @@
 pkgbase = python-primesieve
-	pkgver = 2.0.0
+	pkgdesc = Python bindings for primesieve library
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/hickford/primesieve-python
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = cython
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/primesieve/primesieve-2.0.0.tar.gz
-	sha256sums = da7d5f13e0c5949ef598642aa39fcd9aa84487b116d8ea7d5e3a47a6ed2936cb
+	depends = primesieve
+	depends = python-numpy
+	source = python-primesieve-2.3.0.tar.gz::https://files.pythonhosted.org/packages/source/p/primesieve/primesieve-2.3.0.tar.gz
+	sha256sums = 948d9d9502cb45077834892c05d7ac2678834efeca0d39f328715591b27ab3d5
 
 pkgname = python-primesieve
-	depends = python
-
