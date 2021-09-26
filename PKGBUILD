@@ -7,6 +7,7 @@ pkgdesc="Turkish deasciifier in Python based on Deniz Yüret's turkish-mode for 
 arch=('any')
 url="https://github.com/emres/turkish-deasciifier"
 license=('custom')
+depends=('python')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

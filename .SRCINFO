@@ -6,6 +6,7 @@ pkgbase = turkish-deasciifier-git
 	arch = any
 	license = custom
 	makedepends = git
+	depends = python
 	provides = turkish-deasciifier
 	conflicts = turkish-deasciifier
 	source = git+https://github.com/emres/turkish-deasciifier.git
