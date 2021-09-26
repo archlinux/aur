@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-graphene
+	pkgdesc = A thin layer of graphic data types (mingw-w64)
+	pkgver = 1.10.6
+	pkgrel = 1
+	url = https://ebassi.github.io/graphene/
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-meson
+	depends = mingw-w64-crt
+	depends = mingw-w64-glib2>=2.30.0
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/ebassi/graphene/releases/download/1.10.6/graphene-1.10.6.tar.xz
+	sha256sums = 80ae57723e4608e6875626a88aaa6f56dd25df75024bd16e9d77e718c3560b25
+
+pkgname = mingw-w64-graphene
