@@ -1,9 +1,9 @@
-# Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
+# Maintainer: pappy <pa314159@users.noreply.github.com>
 
 _pkgname=cyrus-imapd
 _srcname=cyrus-imapd-cyrus-imapd
 pkgname=cyrus-imapd2
-pkgver=2.5.16
+pkgver=2.5.17
 pkgrel=1
 pkgdesc="Cyrus IMAP mail server - 2.5"
 arch=('x86_64' 'armv6h' 'armv7h')
@@ -20,7 +20,7 @@ source=(https://github.com/cyrusimap/cyrus-imapd/archive/cyrus-imapd-$pkgver.tar
         'cyrus-master-conf.d'
         'cyrus-imapd.install'
         'cyrus-master.service')
-sha256sums=('1650bb6e7fb8667af99a8f7d96141dad96589f253ff077cb95397fa184593715'
+sha256sums=('acdf35e32498d83fd9fed5c21ca765c36a14351c52b50961d2042bafcbcabb86'
             '45ed31ae8205b86c320ce74bd007f7b05c8f0fb05cf917f1814056b24234e4a1'
             '6b55becbb58ceb66408de19fb6465e4364bf16528d0caa8b756c4316d88419dc'
             '1c6054397b84866831ccc1647d154365cb46158d6d6b162f08bc205edda7119a'
