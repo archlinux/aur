@@ -1,0 +1,14 @@
+pkgbase = turkish-deasciifier-git
+	pkgdesc = Turkish deasciifier in Python based on Deniz Yüret's turkish-mode for Emacs
+	pkgver = r69.665154c
+	pkgrel = 1
+	url = https://github.com/emres/turkish-deasciifier
+	arch = any
+	license = custom
+	makedepends = git
+	provides = turkish-deasciifier
+	conflicts = turkish-deasciifier
+	source = git+https://github.com/emres/turkish-deasciifier.git
+	sha256sums = SKIP
+
+pkgname = turkish-deasciifier-git
