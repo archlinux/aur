@@ -82,8 +82,8 @@ _use_current=
 pkgbase=linux-cacule-llvm
 pkgname=('linux-cacule-llvm' 'linux-cacule-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14.7
-pkgrel=3
+pkgver=5.14.8
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -102,8 +102,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_caculepatches}/v5.14/cacule-5.14.patch"
 #        "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/0007-string.patch"
-        "${_patchsource}/misc/allpollingrate.patch"
-#        "${_patchsource}/misc/0001-AMD-CPPC.patch"
+        "${_patchsource}/0001-Allow-polling-rate-to-be-set-for-all-usb-devices.patch"
+        "${_patchsource}/misc/0001-AMD-CPPC.patch"
         "${_patchsource}/misc/zen-tweaks-cacule.patch"
         "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${_patchsource}/ll-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
@@ -140,22 +140,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
           source+=("${_patchsource}/0001-PGO.patch")
         fi
 
-export BUILD_FLAGS=(
+BUILD_FLAGS=(
           LLVM=1
           LLVM_IAS=1
           CC=clang
           CXX=clang++
-          LD=ld.lld
-          AR=llvm-ar
-          NM=llvm-nm
-          STRIP=llvm-strip
-          READELF=llvm-readelf
-          HOSTCC=clang
-          HOSTCXX=clang++
-          HOSTAR=llvm-ar
-          HOSTLD=ld.lld
-          OBJCOPY=llvm-objcopy
-          OBJDUMP=objdump
           )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -393,7 +382,7 @@ prepare() {
               scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
               scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
               scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-           #   scripts/config --enable CONFIG_x86_AMD_PSTATE
+              scripts/config --enable CONFIG_x86_AMD_PSTATE
               scripts/config --enable CONFIG_ZEN_INTERACTIVE
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -560,12 +549,13 @@ package_linux-cacule-llvm-headers() {
 
 }
 
-md5sums=('4119cf1e59ef6f109b9be9451a0899ae'
+md5sums=('ce6434b646ade20e292fb28c1aacde58'
          '49fdee67a1749f5189a9f246bd6bf9ce'
          'ef749be7f2048456ae738f93229bf354'
          '40a9380b2884f5d417791f06389ba57e'
          'd6e5581b4fade267a28deb8e73d236f5'
-         'f154315498da9bf593c11d88041bde48'
+         '2e2baa635eda7d6a66b5f7437c055a37'
+         '302cbad3c979395f37307a094f6d8fd5'
          '9d7612159f8745044254077ce8a76df6'
          'f8e172e9ea554bbb1053eb122c3ace35'
          'af7328eb8c72c754e5bc8c7be1ca2f1c'
