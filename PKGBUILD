@@ -1,4 +1,4 @@
-# Maintainer: Noah (coolreader18)
+# Maintainer: Noa (coolreader18)
 
 # Please fetch this PKGBUILD manually and place a legally obtained ROM of Super Mario 64 in the
 # same directory with the name `baserom.us.z64`. e.g.:
