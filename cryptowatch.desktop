@@ -3,7 +3,6 @@ Type=Application
 Version=0.4.3
 Name=cryptowatch
 Comment=Charting and trading for cryptocurrency
-Path=/usr/bin/cryptowatch
 Exec=/usr/bin/cryptowatch
 Icon=/usr/share/pixmaps/cryptowatch.png
 Terminal=false

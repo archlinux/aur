@@ -9,7 +9,7 @@ depends=('gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 options=('!strip' '!emptydirs')
 provides=('cryptowatch-desktop-bin')
 
-pkgver=0.4.3
+pkgver=0.4.3_1
 source=("https://cryptowat.ch/desktop/download/linux/0.4.3")
 sha256sums=('15f21a6c0ce2c22caff36fcfac652c242ffbb43afec2dc48567f96807b752949')
 

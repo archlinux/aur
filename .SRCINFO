@@ -1,6 +1,6 @@
 pkgbase = cryptowatch-desktop-bin
 	pkgdesc = Charting & trading terminal for cryptocurrency markets
-	pkgver = 0.4.3
+	pkgver = 0.4.3_1
 	pkgrel = 1
 	url = https://cryptowat.ch/apps/desktop
 	arch = x86_64
