@@ -25,13 +25,13 @@ prepare() {
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan-layer/layer/alvr_x86_64.json
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$srcdir/${_pkgname}"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 
 	export ALVR_ROOT_DIR=/usr
 
@@ -51,7 +51,7 @@ build() {
 	for res in 16x16 32x32 48x48 64x64 128x128 256x256; do
 		mkdir -p "icons/hicolor/${res}/apps/"
 		convert 'alvr/launcher/res/launcher.ico' -thumbnail "${res}" -alpha on -background none -flatten "./icons/hicolor/${res}/apps/alvr.png"
-	done		
+	done
 }
 
 # check() {
@@ -89,7 +89,7 @@ package() {
 
 	# Misc
 	install -Dm644 packaging/freedesktop/alvr.desktop -t "$pkgdir/usr/share/applications"
-	
+
 	install -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
 	cp -r icons/* $pkgdir/usr/share/icons/
 
