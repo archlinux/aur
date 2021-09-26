@@ -2,7 +2,7 @@
 pkgname=system76-keyboard-configurator
 pkgbase=keyboard-configurator
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Configures keymap and backlight of System76 keyboards."
 arch=('x86_64')
 url="https://github.com/pop-os/keyboard-configurator"
