@@ -1,6 +1,6 @@
 # Maintainer: Kival Mahadew <kivalm@protonmail.com>
 pkgname=spotblock-rs
-pkgver=0.8.0
+pkgver=0.9.0
 pkgdesc="Spotify Advertisment muter for linux"
 pkgrel=1
 depends=('playerctl')
@@ -22,6 +22,7 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     cp "${srcdir}/spotblock-rs/target/release/spotblock-rs" "${pkgdir}/usr/bin/spotblock-rs"
     cp "${srcdir}/spotblock-rs/run.sh" "${pkgdir}/usr/bin/spotblock-run"
+    mkdir "${pkgdir}/usr/share"
     mkdir "${pkgdir}/usr/share/applications"
     cp "${srcdir}/spotblock-rs/Spotblock.desktop" "${pkgdir}/usr/share/applications/spotblock.desktop"
     chmod +x "${pkgdir}/usr/bin/spotblock-rs"
