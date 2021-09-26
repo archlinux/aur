@@ -2,7 +2,7 @@
 
 _pkgname=vysor
 pkgname=${_pkgname}-bin
-pkgver=4.1.62
+pkgver=4.1.77
 pkgrel=1
 pkgdesc="Mirror and control your Android device"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 provides=('vysor')
 conflicts=('vysor')
 source=("https://github.com/koush/vysor.io/releases/download/v$pkgver/Vysor-linux-$pkgver.deb")
-sha256sums=('88564a3a0ebff4dea9f40ee7ab24a0aabbff5ac7a291c343d7908fe6d9fcb754')
+sha256sums=('8b2b51750407d505fad82d980bc5db163f2ff14e6fb72512621e166523b624cc')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
