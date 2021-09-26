@@ -1,18 +1,18 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr
 pkgver=16.0.0.r0.gece4d74c
-pkgrel=3
+pkgrel=4
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
 depends=('vulkan-driver' 'ffmpeg-vulkan' 'gtk3' 'libunwind')
-makedepends=('git' 'cargo' 'clang' 'imagemagick')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=('alvr'::'git+https://github.com/alvr-org/ALVR.git#tag=v16.0.0'
-		'alvr-paths.patch')
+		"${pkgname}.patch")
 md5sums=('SKIP'
          '8a2815f250ac231bb7252599771352f6')
 
@@ -24,7 +24,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname}"
 
-	patch --strip=1 --input=$srcdir/alvr-paths.patch
+	patch --strip=1 --input=$srcdir/${pkgname}.patch
 
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -35,8 +35,11 @@ build() {
     export CARGO_TARGET_DIR=target
 
 	# export ALVR_ROOT_DIR=/usr
-	# export ALVR_LIBRARIES_DIR=$ALVR_ROOT_DIR/lib/alvr/
-	# export ALVR_OPENVR_DRIVER_ROOT_DIR=$ALVR_ROOT_DIR/lib/steamvr/alvr/
+
+	# export ALVR_LIBRARIES_DIR=$ALVR_ROOT_DIR/lib/
+
+	# export ALVR_OPENVR_DRIVER_ROOT_DIR=$ALVR_LIBRARIES_DIR/steamvr/alvr/
+	# export ALVR_VRCOMPOSITOR_WRAPPER_DIR=$ALVR_LIBRARIES_DIR/alvr/
 
 	cargo build \
 		--frozen \
@@ -60,7 +63,7 @@ build() {
 # 		-p alvr_server \
 # 		-p alvr_launcher \
 # 		-p alvr_vulkan-layer \
-#		-p vrcompositor-wrapper
+# 		-p vrcompositor-wrapper
 # }
 
 package() {
