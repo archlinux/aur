@@ -1,13 +1,14 @@
 pkgbase = python-flake8-deprecated
-	pkgdesc = Warns about deprecated method calls.
+	pkgdesc = Flake8 plugin that warns about deprecated method calls
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gforcada/flake8-deprecated
 	arch = any
-	license = GPL-2.0
+	license = GPL2
+	checkdepends = python-pytest
+	makedepends = python-setuptools
 	depends = flake8
-	source = https://github.com/gforcada/flake8-deprecated/archive/1.3.tar.gz
-	md5sums = 51bb7161af44baf4ef5f1c610e0343b5
+	source = python-flake8-deprecated-1.3.tar.gz::https://github.com/gforcada/flake8-deprecated/archive/1.3.tar.gz
+	sha256sums = 2cc9c9da5aad69c65a83b0005d887703f4a2e8d9ec7327c0c5d9b7258988caa8
 
 pkgname = python-flake8-deprecated
-
