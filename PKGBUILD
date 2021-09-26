@@ -3,14 +3,14 @@
 
 pkgname=netkit-bsd-finger
 pkgver=0.17
-pkgrel=9
+pkgrel=10
 pkgdesc="BSD-finger ported to Linux"
 arch=('i686' 'x86_64')
 url='http://ftp.linux.org.uk/pub/linux/Networking/netkit'
 license=('BSD')
 depends=('glibc')
 
-source=("http://ftp.linux.org.uk/pub/linux/Networking/netkit/bsd-finger-${pkgver}.tar.gz"
+source=("https://web.archive.org/web/20201216144539/http://ftp.linux.org.uk/pub/linux/Networking/netkit/bsd-finger-0.17.tar.gz"
         'LICENSE'
         'fix-manpage-typo.patch'
         'finger.socket'
