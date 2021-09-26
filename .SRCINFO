@@ -1,16 +1,16 @@
 pkgbase = kubergrunt-bin
 	pkgdesc = A standalone go binary with a collection of commands that attempts to fill in the gaps between Terraform, Helm, and Kubectl for managing a Kubernetes Cluster.
-	pkgver = 0.6.12
+	pkgver = 0.7.9
 	pkgrel = 1
 	url = https://github.com/gruntwork-io/kubergrunt
 	arch = x86_64
 	license = Apache
 	provides = kubergrunt
 	conflicts = kubergrunt
-	source = https://raw.githubusercontent.com/gruntwork-io/kubergrunt/v0.6.12/LICENSE
-	source = kubergrunt_linux_amd64-0.6.12::https://github.com/gruntwork-io/kubergrunt/releases/download/v0.6.12/kubergrunt_linux_amd64
+	source = https://raw.githubusercontent.com/gruntwork-io/kubergrunt/v0.7.9/LICENSE
+	source = kubergrunt_linux_amd64-0.7.9::https://github.com/gruntwork-io/kubergrunt/releases/download/v0.7.9/kubergrunt_linux_amd64
 	sha256sums = d1dc9a105a814822337e0f8eab8668e4eb05bb04b4d6b234c5e9b79b76550a91
-	sha256sums = 391bac56f400b0ab27585a66660a2d29c1ed269705cc2018351ce5f73a86fcff
+	sha256sums = c6c75248e72ecdfecfe5a6b2018491d0301589da4772345457860ad67bffcfb7
 
 pkgname = kubergrunt-bin
 
