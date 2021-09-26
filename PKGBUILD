@@ -5,22 +5,22 @@
 # Package Repository: https://github.com/mij-aur-packages/android-google-apis
 
 _rev=r1
-_apilevel=24
+_apilevel=25
 pkgname=android-google-apis
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
 pkgdesc="Android Google APIs, latest API"
 arch=('any')
-url="http://code.google.com/android/add-ons/google-apis"
+url="https://developers.google.com/android"
 license=('custom')
 depends=("android-platform")
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/google_apis-24_r1.zip"
+source=("http://dl-ssl.google.com/android/repository/google_apis-${pkgver}.zip"
         "source.properties")
-sha1sums=('31361c2868f27343ee917fbd259c1463821b6145'
-          '533997bff35f4143f5996aaef4b8922ff5ba8f4e')
+sha256sums=('351a5877d03821465fcd583e61ebe7c3315d234bf0af124a6359961d7858ed2e'
+            'c83a87d77c6b3b65ba63e62fac8194631895e92c32d555aaab069f78b8c310ee')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/add-ons/"
