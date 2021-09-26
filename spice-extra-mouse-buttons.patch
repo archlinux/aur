@@ -1,0 +1,35 @@
+From ddc5c530681bbadb8c56e915eb3ddeae4d711e79 Mon Sep 17 00:00:00 2001
+From: Kevin Pouget <kpouget@redhat.com>
+Date: Thu, 14 May 2020 16:19:55 +0200
+Subject: [PATCH] vdagentd/uinput: handle PREV and NEXT mouse buttons
+
+---
+ src/vdagentd/uinput.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/vdagentd/uinput.c b/src/vdagentd/uinput.c
+index ff37e1e..8a14737 100644
+--- a/src/vdagentd/uinput.c
++++ b/src/vdagentd/uinput.c
+@@ -140,6 +140,8 @@ void vdagentd_uinput_update_size(struct vdagentd_uinput **uinputp,
+     ioctl(uinput->fd, UI_SET_KEYBIT, BTN_LEFT);
+     ioctl(uinput->fd, UI_SET_KEYBIT, BTN_MIDDLE);
+     ioctl(uinput->fd, UI_SET_KEYBIT, BTN_RIGHT);
++    ioctl(uinput->fd, UI_SET_KEYBIT, BTN_SIDE);
++    ioctl(uinput->fd, UI_SET_KEYBIT, BTN_EXTRA);
+ 
+     /* wheel */
+     ioctl(uinput->fd, UI_SET_EVBIT, EV_REL);
+@@ -200,6 +202,9 @@ void vdagentd_uinput_do_mouse(struct vdagentd_uinput **uinputp,
+         { .name = "left",   .mask =  VD_AGENT_LBUTTON_MASK, .btn = BTN_LEFT      },
+         { .name = "middle", .mask =  VD_AGENT_MBUTTON_MASK, .btn = BTN_MIDDLE    },
+         { .name = "right",  .mask =  VD_AGENT_RBUTTON_MASK, .btn = BTN_RIGHT     },
++        { .name = "prev" ,  .mask =  VD_AGENT_SBUTTON_MASK, .btn = BTN_EXTRA     },
++        { .name = "next" ,  .mask =  VD_AGENT_EBUTTON_MASK, .btn = BTN_SIDE      },
++
+     };
+     static const struct button_s wheel[] = {
+         { .name = "up",     .mask =  VD_AGENT_UBUTTON_MASK, .btn = 1  },
+-- 
+GitLab
+
