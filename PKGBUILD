@@ -3,8 +3,7 @@
 pkgname=ezusb
 _pkgname=EZUSB_Linux
 pkgver=1.5.3
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="Driver for Castles Technology EZ100PU/EZMINI PC/SC Smart Card Reader."
 arch=('x86_64')
 url="https://www.castlestech.com/"
