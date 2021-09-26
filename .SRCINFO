@@ -1,6 +1,6 @@
 pkgbase = unsilence
 	pkgdesc = Console Interface and Library to remove silent parts of a media file
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/lagmoellertim/unsilence
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = unsilence
 	depends = python
 	depends = python-argparse
 	depends = python-rich
-	source = unsilence-1.0.7.tar.gz::https://github.com/lagmoellertim/unsilence/archive/1.0.7.tar.gz
-	sha256sums = 52f53d57f5a395d9b07c3ab724d2b590522266fd6ec38912f956ea778128b8d0
+	source = unsilence-1.0.8.tar.gz::https://github.com/lagmoellertim/unsilence/archive/1.0.8.tar.gz
+	sha256sums = bd377d279ae155d02cc29cb6fbe836021c2ca2d1bc2766675c0beeb2f50c9e43
 
 pkgname = unsilence
-
