@@ -1,27 +1,37 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: BrainDamage
 # Contributor: Jat
 # Contributor: xantares
 
 pkgname=python-flask-testing
-pkgver=0.8.0
+_name="${pkgname#python-}"
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Flask unittest integration"
 url="https://github.com/jarus/flask-testing"
-arch=(any)
+arch=('any')
 license=('BSD')
-depends=('python' 'python-flask')
-makedepends=('python-setuptools')
-source=("https://github.com/jarus/flask-testing/archive/v${pkgver}.tar.gz")
-sha256sums=('b9f6da673a46b2891c44a5963ec14fc405f9b8fed76bad910f47b7c2e9a06733')
-
-_basename="${pkgname#python-}"
+depends=('python-flask')
+makedepends=('python-setuptools' 'python-sphinx')
+checkdepends=('python-blinker')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
+sha256sums=('47663a4f6cd173bb22cda6e4691145697be742c5a0f6678e55a218bc6f2cfb0e')
 
 build() {
-	cd "${srcdir}/${_basename}-${pkgver}"
+	cd "$_name-$pkgver"
 	python setup.py build
+	cd docs
+	make man BUILDDIR="$srcdir"
+}
+
+check() {
+	cd "$_name-$pkgver"
+	python setup.py test
 }
 
 package_python-flask-testing() {
-	cd "${srcdir}/${_basename}-${pkgver}"
-	python setup.py install --optimize=1 --skip-build --root="${pkgdir}/" --prefix="/usr"
+	cd "$_name-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --optimize=1 --skip-build --root="${pkgdir}/" --prefix="/usr"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 "$srcdir/man/flask-testing.1" -t "$pkgdir/usr/share/man/man1/"
 }
