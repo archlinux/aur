@@ -1,6 +1,6 @@
 # Maintainer: Oleh Prypin <oleh@pryp.in>
 pkgname=crystal-icr
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=2
 pkgdesc="Interactive console for Crystal programming language"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=(LGPL)
 depends=('crystal' 'readline')
 makedepends=('shards')
 source=("https://github.com/crystal-community/icr/archive/v$pkgver.tar.gz")
-sha256sums=('8c7825dd035bbb4bc6499873d4bd125185a01cae10dc8dd6f98e6e013def381c')
+sha256sums=('2530293e94b60d69919a79b49e83270f1462058499ad37a762233df8d6e5992c')
 
 build() {
   cd "icr-$pkgver"
