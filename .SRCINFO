@@ -1,0 +1,36 @@
+pkgbase = fabric-server-1.16.5
+	pkgdesc = Minecraft 1.16.5 fabric server unit files, script, and jar
+	pkgver = 1.16.5_0.7.4
+	pkgrel = 1
+	url = https://fabricmc.net
+	arch = any
+	license = Apache
+	depends = java-runtime-headless>=16
+	depends = tmux
+	depends = sudo
+	depends = bash
+	depends = awk
+	depends = sed
+	optdepends = tar: needed in order to create world backups
+	optdepends = netcat: required in order to suspend an idle server
+	provides = fabric-server=1.16.5_0.7.4
+	noextract = fabric-installer-0.7.4.jar
+	backup = etc/conf.d/fabric-1.16.5
+	source = fabric-installer-0.7.4.jar::https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.7.4/fabric-installer-0.7.4.jar
+	source = fabricd-1.16.5-backup.service
+	source = fabricd-1.16.5-backup.timer
+	source = fabricd-1.16.5.service
+	source = fabricd-1.16.5.sysusers
+	source = fabricd-1.16.5.tmpfiles
+	source = fabricd-1.16.5.conf
+	source = fabricd-1.16.5.sh
+	sha512sums = e45db22eced9688f2a4ba3633718abd968686392615124a62a875d00b1e71d88f541a3c0e3eea6be4a3825c17a403f5816d17fb2c51e5e27087d0a40d0d1a096
+	sha512sums = fd44a846acc57c4ba3a8ee7ec4ffdcd720be71b7803d05175de3042a8c7e24ee01d04a1fa81b9dfd47a0cee470b90ad980a75a17e4cd65e511d5fc7521b3ba5d
+	sha512sums = deba03bd549ea3e62c251ce324d5af3788498145bbb6af4db8046beef19c7389fdd20d2954f6c7118f9cf9d74bbd062af99395ee0751196e52ddc89b81be9d69
+	sha512sums = 2cf8574c012104a00a915edc000e66732a4fac55edae562c40c4ec45553a55b5fa837d75b01f5b7e104bc90e42ecb069c025c9ccb122754678b60f2aebde8e63
+	sha512sums = 5393eb421abe1865fdcffe4d5fa879632ecebf002a95e153490f2d0d3c227c7fe1b248343754975e36c9fba9bcea2649f926638cacfb0ddd54016ce7b6f84db3
+	sha512sums = b2815a619c1be925b9c6be432b1f5e27b8d9b9a00db4d66a7687a7ce8eea1d47537b526e4d4fc36bf27e2d4ed646e9fd973f1fceedba037fbc8290976e5b1dc1
+	sha512sums = 9b95ef8a5539b64586c0ab74ad231d445119f979f73fc3423cbfb973f1bb685f8f9b6fb1d59a3f9a5ebb6a0fcb19d1de39e391c9ff7055956468babcd7e3aef6
+	sha512sums = aef125b9cc25b122a6f0b1d6cebd96e2d9a0035e6df78e7f5acc07babff1cb282e4dbe7a43eb03dfadfdd88aaa544ff2037f66f9bc02aea87103afe749f648a9
+
+pkgname = fabric-server-1.16.5
