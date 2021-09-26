@@ -1,19 +1,17 @@
 pkgbase = pyhoca-gui
 	pkgdesc = Graphical client (wx) for the X2Go system
-	pkgver = 0.5.0.8
+	pkgver = 0.6.1.1
 	pkgrel = 1
 	url = http://www.x2go.org/
 	arch = any
 	license = AGPL
-	makedepends = python2-setuptools
-	makedepends = python2-distutils-extra
-	depends = python2-x2go
-	depends = python2-pycups
-	depends = python2-setproctitle
-	depends = python2-notify
-	depends = wxpython
-	source = http://code.x2go.org/releases/source/pyhoca-gui/pyhoca-gui-0.5.0.8.tar.gz
-	sha256sums = 13915a38238b0dc48ccdbc7d904bd15fe78f476d1806d343789c3fd5de002a7a
+	makedepends = python-setuptools
+	makedepends = python-distutils-extra
+	depends = python-x2go
+	depends = python-pycups
+	depends = python-setproctitle
+	depends = python-wxpython
+	source = http://code.x2go.org/releases/source/pyhoca-gui/pyhoca-gui-0.6.1.1.tar.gz
+	sha256sums = 4c71e74b19c4e820e1e38b22f16da4cf46cc852e1c95fd4d3d4153dc4fd1b22a
 
 pkgname = pyhoca-gui
-

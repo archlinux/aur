@@ -1,16 +1,16 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=pyhoca-gui
-pkgver=0.5.0.8
+pkgver=0.6.1.1
 pkgrel=1
 pkgdesc="Graphical client (wx) for the X2Go system"
 url="http://www.x2go.org/"
 arch=('any')
 license=('AGPL')
-makedepends=('python2-setuptools' 'python2-distutils-extra')
-depends=('python2-x2go' 'python2-pycups' 'python2-setproctitle' 'python2-notify' 'wxpython')
+makedepends=('python-setuptools' 'python-distutils-extra')
+depends=('python-x2go' 'python-pycups' 'python-setproctitle' 'python-wxpython')
 source=("http://code.x2go.org/releases/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('13915a38238b0dc48ccdbc7d904bd15fe78f476d1806d343789c3fd5de002a7a')
+sha256sums=('4c71e74b19c4e820e1e38b22f16da4cf46cc852e1c95fd4d3d4153dc4fd1b22a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -19,7 +19,7 @@ prepare() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   # Install executable
   install -m 755 -d "${pkgdir}/usr/bin"
   install -m 755 -t "${pkgdir}/usr/bin" "${pkgname}"
