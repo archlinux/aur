@@ -1,7 +1,7 @@
 pkgbase = workcraft
 	pkgdesc = A framework for interpreted graph models including petri nets and STGs
-	pkgver = 3.3.2
-	pkgrel = 2
+	pkgver = 3.3.5
+	pkgrel = 1
 	url = http://www.workcraft.org/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = workcraft
 	optdepends = stack: Concepts support
 	provides = workcraft
 	conflicts = workcraft
-	source = http://www.workcraft.org/_media/download/workcraft-v3.3.2-linux.tar.gz
-	md5sums = fb645790bd4eb47ad80fc31e9c3fc48e
+	source = http://www.workcraft.org/_media/download/workcraft-v3.3.5-linux.tar.gz
+	md5sums = 4ea82de15d255f2485bb707928f7ee19
 
 pkgname = workcraft
-

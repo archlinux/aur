@@ -1,7 +1,7 @@
 # Maintainer: Adrian Wheeldon <arandomowl at gmail dot com>
 pkgname=workcraft
-pkgver=3.3.2
-pkgrel=2
+pkgver=3.3.5
+pkgrel=1
 pkgdesc="A framework for interpreted graph models including petri nets and STGs"
 arch=('i686' 'x86_64')
 url="http://www.workcraft.org/"
@@ -17,7 +17,7 @@ source=(
   http://www.workcraft.org/_media/download/workcraft-v${pkgver}-linux.tar.gz
 )
 md5sums=(
-  'fb645790bd4eb47ad80fc31e9c3fc48e'
+  '4ea82de15d255f2485bb707928f7ee19'
 )
 
 package() {
