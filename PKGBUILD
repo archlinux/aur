@@ -15,10 +15,29 @@ url="https://github.com/DMBuce/buceutils"
 license=('unknown')
 groups=()
 depends=(
-  'tar' 'p7zip' 'gzip' 'bzip2' 'unrar' 'xz' 'unzip' 'java-environment'
-  'rpmextract' 'cpio' 'cabextract' 'curl' 'openssh' 'diffutils' 'perl'
-  'perl-net-cidr-lite' 'perl-spreadsheet-writeexcel' 'alsa-utils'
-  'xorg-xrandr' 'awk' 'imagemagick' 'python'
+  tar
+  p7zip
+  gzip
+  bzip2
+  unrar
+  xz
+  unzip
+  java-environment
+  rpmextract
+  cpio
+  cabextract
+  curl
+  openssh
+  diffutils
+  perl
+  perl-net-cidr-lite
+  perl-spreadsheet-writeexcel
+  alsa-utils
+  xorg-xrandr
+  awk
+  imagemagick
+  python
+  restic
 )
 makedepends=('git')
 provides=(buceutils)

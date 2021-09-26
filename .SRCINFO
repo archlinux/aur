@@ -28,6 +28,7 @@ pkgbase = buceutils-git
 	depends = awk
 	depends = imagemagick
 	depends = python
+	depends = restic
 	provides = buceutils
 	conflicts = buceutils
 	backup = etc/resticbackup.d/config
