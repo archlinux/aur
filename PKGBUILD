@@ -2,12 +2,12 @@
 _release_type=alpha
 
 pkgname=makedeb-alpha
-pkgver=6.4.2
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release_type} release)"
 arch=('any')
 license=('GPL3')
-depends=('tar' 'binutils' 'lsb-release' 'makedeb-makepkg-alpha')
+depends=('tar' 'binutils' 'lsb-release' 'dpkg' 'makedeb-makepkg-alpha')
 conflicts=('makedeb' 'makedeb-beta')
 url="https://github.com/makedeb/makedeb"
 
@@ -20,10 +20,10 @@ prepare() {
   # Set package version, release type, and target OS
   sed -i "s|makedeb_package_version=.*|makedeb_package_version=${pkgver}-${pkgrel}|"  src/makedeb.sh
   sed -i "s|makedeb_release_type=.*|makedeb_release_type=${_release_type}|" src/makedeb.sh
-  sed -i 's|target_os="debian"|target_os="arch"|'                           src/makedeb.sh
+  sed -i 's|target_os="debian"|target_os="arch"|' src/makedeb.sh
 
   # Remove testing commands
-  sed -i 's|.*# REMOVE AT PACKAGING||g'                                     src/makedeb.sh
+  sed -i 's|.*# REMOVE AT PACKAGING||g' src/makedeb.sh
 }
 
 package() {
