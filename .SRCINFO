@@ -1,0 +1,20 @@
+pkgbase = sunset-dark-kde-git
+	pkgdesc = Sunset kde is a light clean theme for KDE Plasma desktop
+	pkgver = r3.ab72f40
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/sunset-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/yeyushengfan258/sunset-kde.git
+	sha256sums = SKIP
+
+pkgname = sunset-dark-kde-git
+	optdepends = kvantum-theme-sunset-dark: Sunset Dark theme for Kvantum Qt style (recommended)
+	provides = sunset-dark-kde
+
+pkgname = kvantum-theme-sunset-dark-git
+	pkgdesc = Sunset Dark theme for KDE Plasma 5
+	depends = kvantum-qt5
+	provides = kvantum-theme-sunset-dark
