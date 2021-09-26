@@ -1,7 +1,7 @@
 # Maintainer: easymodo <easymodofrf@gmail.com>
 pkgname=qimgv-git
 _pkgname=qimgv
-pkgver=v1.0.1.r1.g4404d74
+pkgver=v1.0.1.r2.gf5ea208
 pkgrel=1
 pkgdesc="Qt5 image viewer. Fast, configurable, easy to use. Supports video playback."
 arch=('i686' 'x86_64')
