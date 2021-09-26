@@ -12,9 +12,9 @@ makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=('alvr'::'git+https://github.com/alvr-org/ALVR.git#tag=v16.0.0'
-		"${pkgname}.patch")
+	"${pkgname}.patch")
 md5sums=('SKIP'
-         '8a2815f250ac231bb7252599771352f6')
+	'8a2815f250ac231bb7252599771352f6')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -26,13 +26,13 @@ prepare() {
 
 	patch --strip=1 --input=$srcdir/${pkgname}.patch
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$srcdir/${pkgname}"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 
 	# export ALVR_ROOT_DIR=/usr
 
@@ -52,7 +52,7 @@ build() {
 	for res in 16x16 32x32 48x48 64x64 128x128 256x256; do
 		mkdir -p "icons/hicolor/${res}/apps/"
 		convert 'alvr/launcher/res/launcher.ico' -thumbnail "${res}" -alpha on -background none -flatten "./icons/hicolor/${res}/apps/alvr.png"
-	done		
+	done
 }
 
 # check() {
@@ -90,7 +90,7 @@ package() {
 
 	# Misc
 	install -Dm644 packaging/freedesktop/alvr.desktop -t "$pkgdir/usr/share/applications"
-	
+
 	install -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
 	cp -r icons/* $pkgdir/usr/share/icons/
 
