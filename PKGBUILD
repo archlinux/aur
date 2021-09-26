@@ -13,6 +13,7 @@ makedepends=(
   'mingw-w64-pkg-config'
   'mingw-w64-configure'
   'gobject-introspection'
+  'gtk-doc'
   'gtk-update-icon-cache'
   'python') # python is required to run gdbus-codegen
 depends=(

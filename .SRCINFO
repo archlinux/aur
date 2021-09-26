@@ -10,6 +10,7 @@ pkgbase = mingw-w64-gtk3
 	makedepends = mingw-w64-pkg-config
 	makedepends = mingw-w64-configure
 	makedepends = gobject-introspection
+	makedepends = gtk-doc
 	makedepends = gtk-update-icon-cache
 	makedepends = python
 	depends = mingw-w64-crt
