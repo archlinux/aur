@@ -1,8 +1,9 @@
-# Maintainer: AlphaJack <alpha at tuta dot io>
+# Maintainer: nobodyinperson <nobodyinperson at posteo de>
+# Contributor: AlphaJack <alpha at tuta dot io>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 
 pkgname="opentimestamps-client-git"
-pkgver=0.7.0.r2.g40de42f
+pkgver=0.7.0.r5.g616718c
 pkgrel=1
 pkgdesc="Command-line tool to create and validate timestamp proofs with the OpenTimestamps protocol"
 license=("LGPL3")
@@ -33,4 +34,5 @@ check(){
 package(){
  cd "opentimestamps-client"
  python setup.py install --skip-build --root="$pkgdir" --optimize=1
+ install -m755 ots-git-gpg-wrapper.sh -Dt "$pkgdir"/usr/bin
 }
