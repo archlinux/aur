@@ -1,6 +1,6 @@
---- zimfw.zsh   2021-07-28 16:45:25.000000000 +1000
-+++ zimfw.zsh   2021-07-28 16:45:25.000000000 +1000
-@@ -52,26 +52,19 @@
+--- zimfw.zsh   2021-09-21 16:26:34.034179638 +1000
++++ zimfw.zsh   2021-09-21 16:30:58.546504098 +1000
+@@ -53,10 +53,6 @@
 
  _zimfw_build_init() {
    local -r ztarget=${ZIM_HOME}/init.zsh
@@ -10,9 +10,10 @@
 -  fi
    _zimfw_mv =(
      print -R "zimfw() { source ${ZIM_HOME}/zimfw.zsh \"\${@}\" }"
-     if (( ${#_zfpaths} )) print -R 'fpath=('${_zfpaths:A}' ${fpath})'
-     if (( ${#_zfunctions} )) print -R 'autoload -Uz '${_zfunctions}
-     print -R ${(F)_zcmds}
+     print -R "zmodule() { source ${ZIM_HOME}/zimfw.zsh \"\${@}\" }"
+@@ -65,16 +61,13 @@
+     if (( ${#_zfunctions} )) print -R 'autoload -Uz '${_zfunctions#${~zpre}}
+     print -R ${(F)_zcmds#${~zpre}}
    ) ${ztarget}
 +  chmod -R u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
  }
@@ -28,7 +29,7 @@
    _zimfw_mv =(
      print -Rn "() {
    setopt LOCAL_OPTIONS CASE_GLOB EXTENDED_GLOB
-@@ -98,6 +91,7 @@
+@@ -101,6 +94,7 @@
  } \"\${@}\"
  "
    ) ${ztarget}
