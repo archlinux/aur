@@ -1,7 +1,7 @@
 pkgbase = nbdkit
 	pkgdesc = NBD server toolkit
-	pkgver = 1.24.4
-	pkgrel = 2
+	pkgver = 1.28.0
+	pkgrel = 1
 	url = https://gitlab.com/nbdkit/nbdkit/
 	arch = i686
 	arch = x86_64
@@ -21,12 +21,10 @@ pkgbase = nbdkit
 	optdepends = libssh
 	optdepends = libtorrent-rasterbar
 	optdepends = libselinux
-	source = http://download.libguestfs.org/nbdkit/1.24-stable/nbdkit-1.24.4.tar.gz
-	source = http://download.libguestfs.org/nbdkit/1.24-stable/nbdkit-1.24.4.tar.gz.sig
-	source = https://gitlab.com/nbdkit/nbdkit/-/commit/e29a0c0a2fb725ea0c3e4f363a77b2964ecea7ec.patch
+	source = http://download.libguestfs.org/nbdkit/1.28-stable/nbdkit-1.28.0.tar.gz
+	source = http://download.libguestfs.org/nbdkit/1.28-stable/nbdkit-1.28.0.tar.gz.sig
 	validpgpkeys = F7774FB1AD074A7E8C8767EA91738F73E1B768A0
-	sha256sums = e3368c51d3f08b0001af6a6d3751cb6177b6db0ca2f3d0ac8e1ed2eeb5d1b54d
+	sha256sums = 46f589d9f336d1244c244718ae4b737b4f2710fec7e0a0d2ffdfec211782e7b0
 	sha256sums = SKIP
-	sha256sums = a161ec4bfcc772d90a07b92a387c00b5e1602c819ab6c87e13d6fbec1ef759ce
 
 pkgname = nbdkit
