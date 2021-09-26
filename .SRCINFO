@@ -1,6 +1,6 @@
 pkgbase = dolphin-root
 	pkgdesc = KDE File Manager
-	pkgver = 21.04.1
+	pkgver = 21.08.1
 	pkgrel = 2
 	url = https://apps.kde.org/dolphin/
 	arch = x86_64
@@ -26,15 +26,14 @@ pkgbase = dolphin-root
 	optdepends = packagekit-qt5: service menu installer
 	provides = dolphin
 	conflicts = dolphin
-	source = https://download.kde.org/stable/release-service/21.04.1/src/dolphin-21.04.1.tar.xz
-	source = https://download.kde.org/stable/release-service/21.04.1/src/dolphin-21.04.1.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/21.08.1/src/dolphin-21.08.1.tar.xz
+	source = https://download.kde.org/stable/release-service/21.08.1/src/dolphin-21.08.1.tar.xz.sig
 	source = root.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 292377aca0454189186d4046ed69785d7fda672270362c3b538a001c9daa826e
+	sha256sums = 6e5dce2629f8333b426074d0f35dc96d40b528948db101443f8270ea554cb3ee
 	sha256sums = SKIP
-	sha256sums = b09c01217fe63cad2698f0421c7466b3c8145403a7bbc3feba681708d36ff528
+	sha256sums = da2ead285c8c58d9864b15138826629443f9003c45e024201c5cc02dbab1187b
 
 pkgname = dolphin-root
-
