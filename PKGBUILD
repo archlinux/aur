@@ -22,7 +22,7 @@ source=(git+${url}.git#branch=release
         test_optdepends.sh)
 sha512sums=('SKIP'
             'b6a1d48aab1c2639a4c1cbd8b313ace253f1c36eedaa3de3508ffbd6060e1def99e2f516ed9bb509307f614b41791d09342e2c2280c0b2c25dda1092b0e569d2'
-            'e9ca635fde40291ae78c3985c03fe68f97ce4c2d15674ba776a3d3f820ef0d82b19f62b51c285f849ea6baa1bb67b6a89dea17c398f0ce0b65b12c0a3ffc0829')
+            '77b257ea28a9f109c48c8447ab2db4204f6dba715626f15e916ec8f54c18d01588aa4d760c30b9a58659eefddafc7b54319525f8d89a693fd5305144eba7fc28')
 
 _config=linux-c-opt
 _install_dir="/usr"
@@ -84,6 +84,7 @@ generic_flags="${generic_flags} -O2"
 
 export LANG=C
 export OMPI_MCA_opal_cuda_support=0
+export OMPI_MCA_mpi_oversubscribe=0
 unset PETSC_DIR
 export PETSC_ARCH=${_config}
 
@@ -109,8 +110,7 @@ build() {
     --FFLAGS="$generic_flags"
     --MAKEFLAGS=${MAKEFLAGS}
     --LDFLAGS=${LDFLAGS}
-    --with-environment-variables=0
-    --disable-environment-variables=1
+    --with-environment-variables=1
     --with-cxx-dialect=auto
     --with-mpi=1
     --with-pic=1
@@ -124,6 +124,7 @@ build() {
   cd "${srcdir}"/"${_base}"
   python ./configure ${CONFOPTS[@]}
   make -s ${MAKEFLAGS} all
+  # MPIEXEC="$(which mpiexec) --nooversubscribe" make -s ${MAKEFLAGS} all
 }
 
 check() {
