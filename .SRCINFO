@@ -1,0 +1,24 @@
+pkgbase = transcend
+	pkgdesc = retro-style, abstract 2D shooter
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://transcend.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	groups = games
+	license = GPL-2
+	makedepends = graphicsmagick
+	makedepends = quilt
+	depends = freeglut
+	depends = glu
+	depends = portaudio
+	depends = mesa-libgl
+	source = transcend-0.3.tar.gz::https://downloads.sourceforge.net/transcend/Transcend_0.3_UnixSource.tar.gz
+	source = https://deb.debian.org/debian/pool/main/t/transcend/transcend_0.3.dfsg2-3.debian.tar.gz
+	source = app-transcend-128px.png
+	sha512sums = 5a2d21256c202ee045f8e2c926705f79885f6efbb5f44d3129e5b05cb1e28f909a32a5d873a9673d5fa48cbe4e79766c44947f147089e988e2fa3f83cde1b91d
+	sha512sums = 572c411d3c1f83f14f67e31201846d4b9bec3561f166cf03e327c730e557ce66f3b84ea20a2ed3e731b0d688209ba3ce6ee1a0846a23f5607001be9364dcba20
+	sha512sums = 1f94578424efaa06e4121674ee75103de56507402b31fc51a7a9784fd380ca320404029b27ad976c1019f38b4c08b2557627a457fd1663b32542e20009f2f00e
+
+pkgname = transcend
+
