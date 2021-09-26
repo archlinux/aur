@@ -1,6 +1,6 @@
 pkgbase = gnome-remote-desktop-git
 	pkgdesc = Remote desktop daemon for GNOME using pipewire
-	pkgver = 40.0.2.gdc75240
+	pkgver = 41.0.2.ge284cb0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = gnome-remote-desktop-git
 	arch = armv7h
 	license = GPL2
 	makedepends = git
+	makedepends = ffnvcodec-headers
 	makedepends = meson
 	depends = cairo
 	depends = dconf
@@ -18,10 +19,10 @@ pkgbase = gnome-remote-desktop-git
 	depends = libsecret
 	depends = libvncserver
 	depends = pipewire
+	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	provides = gnome-remote-desktop
 	conflicts = gnome-remote-desktop
 	source = git+https://gitlab.gnome.org/GNOME/gnome-remote-desktop.git
 	sha512sums = SKIP
 
 pkgname = gnome-remote-desktop-git
-
