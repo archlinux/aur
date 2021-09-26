@@ -13,7 +13,7 @@
 
 pkgname='fabric-server-1.17.1'
 pkgver='1.17.1_0.7.4'
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft 1.17.1 fabric server unit files, script, and jar"
 arch=('any')
 url="https://fabricmc.net"
@@ -34,7 +34,7 @@ source=("fabric-installer-0.7.4.jar"::"https://maven.fabricmc.net/net/fabricmc/f
 	"fabricd-1.17.1.sh")
 noextract=("fabric-installer-0.7.4.jar")
 sha512sums=(
-            'd4fe643f9e208533f5768ae17057419d060df6fe5c2f65a08e0edcb6f88033666b4916f35e41cfe1b78e03c14f46764a783e7312e5502768300c437c6df6eab0'
+            'e45db22eced9688f2a4ba3633718abd968686392615124a62a875d00b1e71d88f541a3c0e3eea6be4a3825c17a403f5816d17fb2c51e5e27087d0a40d0d1a096'
             'a3edf08518f6642101d3c49a604d0cbae76f3b6ee9e0260089521152cefd64602365efafaa534854fa5201bcbc8ffc99bf3421704caff4a904abbde7c05e7e35'
             'd4fe643f9e208533f5768ae17057419d060df6fe5c2f65a08e0edcb6f88033666b4916f35e41cfe1b78e03c14f46764a783e7312e5502768300c437c6df6eab0'
             'c80965fc0daa8d2287af0238bc70e3010682ea7a10f33d1ac2cd1e5ec3b3a019c3624beb21da754e3cb02f3f8e19f740e36f93810b6ad7fb7ac59ace10a67b68'
