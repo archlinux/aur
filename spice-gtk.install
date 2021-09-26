@@ -1,0 +1,8 @@
+post_install() {
+# this is executed by make install, but doesn't work since setcap can only be run as root
+  setcap CAP_FOWNER=+ep /usr/lib/spice-client-glib-usb-acl-helper
+}
+
+post_upgrade() {
+  post_install
+}

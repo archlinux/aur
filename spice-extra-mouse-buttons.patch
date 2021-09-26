@@ -1,0 +1,90 @@
+From c67a35580039c3e81c5b59085f3cf7a94fbbf5d4 Mon Sep 17 00:00:00 2001
+From: Kevin Pouget <kpouget@redhat.com>
+Date: Thu, 14 May 2020 16:00:59 +0200
+Subject: [PATCH] Capture and forward mouse buttons 8 and 9
+
+These buttons are not mapped by GTK
+(`/usr/include/gtk-3.0/gdk/gdktypes.h`) but still exposed, so I
+hardcoded their values:
+
+    #define _GTK_BUTTON_PREV_MASK (1 << 15) /* button 9 */
+    #define _GTK_BUTTON_NEXT_MASK (1 << 16) /* button 8 */
+---
+ src/channel-inputs.c | 12 ++++++++++++
+ src/spice-widget.c   | 16 ++++++++++++++++
+ 2 files changed, 28 insertions(+)
+
+diff --git a/src/channel-inputs.c b/src/channel-inputs.c
+index 5e6c7b4a..293344ed 100644
+--- a/src/channel-inputs.c
++++ b/src/channel-inputs.c
+@@ -426,6 +426,12 @@ void spice_inputs_channel_button_press(SpiceInputsChannel *channel, gint button,
+     case SPICE_MOUSE_BUTTON_RIGHT:
+         button_state |= SPICE_MOUSE_BUTTON_MASK_RIGHT;
+         break;
++    case SPICE_MOUSE_BUTTON_SIDE:
++        button_state |= SPICE_MOUSE_BUTTON_MASK_SIDE;
++        break;
++    case SPICE_MOUSE_BUTTON_EXTRA:
++        button_state |= SPICE_MOUSE_BUTTON_MASK_EXTRA;
++        break;
+     }
+ 
+     c->bs  = button_state;
+@@ -491,6 +497,12 @@ void spice_inputs_channel_button_release(SpiceInputsChannel *channel, gint butto
+     case SPICE_MOUSE_BUTTON_RIGHT:
+         button_state &= ~SPICE_MOUSE_BUTTON_MASK_RIGHT;
+         break;
++    case SPICE_MOUSE_BUTTON_SIDE:
++        button_state &= ~SPICE_MOUSE_BUTTON_MASK_SIDE;
++        break;
++    case SPICE_MOUSE_BUTTON_EXTRA:
++        button_state &= ~SPICE_MOUSE_BUTTON_MASK_EXTRA;
++        break;
+     }
+ 
+     c->bs = button_state;
+diff --git a/src/spice-widget.c b/src/spice-widget.c
+index 5cef966b..85d0f4db 100644
+--- a/src/spice-widget.c
++++ b/src/spice-widget.c
+@@ -1997,6 +1997,10 @@ static int button_gdk_to_spice(guint gdk)
+         [ 3 ] = SPICE_MOUSE_BUTTON_RIGHT,
+         [ 4 ] = SPICE_MOUSE_BUTTON_UP,
+         [ 5 ] = SPICE_MOUSE_BUTTON_DOWN,
++        [ 6 ] = 0,
++        [ 7 ] = 0,
++        [ 8 ] = SPICE_MOUSE_BUTTON_EXTRA,
++        [ 9 ] = SPICE_MOUSE_BUTTON_SIDE,
+     };
+ 
+     if (gdk < SPICE_N_ELEMENTS(map)) {
+@@ -2011,6 +2015,10 @@ static int button_gdk_to_spice_mask(guint gdk)
+         [1] = SPICE_MOUSE_BUTTON_MASK_LEFT,
+         [2] = SPICE_MOUSE_BUTTON_MASK_MIDDLE,
+         [3] = SPICE_MOUSE_BUTTON_MASK_RIGHT,
++        [6] = 0,
++        [7] = 0,
++        [8] = SPICE_MOUSE_BUTTON_EXTRA,
++        [9] = SPICE_MOUSE_BUTTON_SIDE,
+     };
+ 
+     if (gdk < SPICE_N_ELEMENTS(map)) {
+@@ -2029,6 +2037,14 @@ static int button_mask_gdk_to_spice(int gdk)
+         spice |= SPICE_MOUSE_BUTTON_MASK_MIDDLE;
+     if (gdk & GDK_BUTTON3_MASK)
+         spice |= SPICE_MOUSE_BUTTON_MASK_RIGHT;
++    /* Mouse buttons above 5 are not defined by GDK */
++#define _GTK_BUTTON_PREV_MASK (1 << 15) /* button 9 */
++#define _GTK_BUTTON_NEXT_MASK (1 << 16) /* button 8 */
++    if (gdk & _GTK_BUTTON_PREV_MASK)
++        spice |= SPICE_MOUSE_BUTTON_MASK_EXTRA;
++    if (gdk & _GTK_BUTTON_NEXT_MASK)
++        spice |= SPICE_MOUSE_BUTTON_MASK_SIDE;
++
+     return spice;
+ }
+ 
+-- 
+GitLab
+

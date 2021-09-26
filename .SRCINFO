@@ -1,0 +1,36 @@
+pkgbase = spice-gtk-extra-mouse-buttons
+	pkgdesc = GTK+ client library for SPICE (with support for extra mouse buttons)
+	pkgver = 0.39
+	pkgrel = 3
+	url = https://www.spice-space.org/
+	install = spice-gtk.install
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = spice-protocol
+	makedepends = usbutils
+	makedepends = vala
+	depends = gtk3
+	depends = libcacard
+	depends = libjpeg-turbo
+	depends = opus
+	depends = phodav
+	depends = usbredir
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	provides = spice-glib=0.39
+	provides = spice-gtk3=0.39
+	provides = spice-gtk
+	conflicts = spice-gtk
+	replaces = spice-glib
+	replaces = spice-gtk3
+	source = https://www.spice-space.org/download/gtk/spice-gtk-0.39.tar.xz
+	source = https://www.spice-space.org/download/gtk/spice-gtk-0.39.tar.xz.sig
+	source = spice-extra-mouse-buttons.patch
+	validpgpkeys = 206D3B352F566F3B0E6572E997D9123DE37A484F
+	sha256sums = 23acbee197eaaec9bce6e6bfd885bd8f79708332639243ff04833020865713cd
+	sha256sums = SKIP
+	sha256sums = 8b8ed51d76f7170aea7d5d9af3b60ab17d43d4437b07979ac297589ef65ec05b
+
+pkgname = spice-gtk-extra-mouse-buttons
