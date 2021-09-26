@@ -1,15 +1,15 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=libnbd
-pkgver=1.8.3
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="NBD client library in userspace"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/nbdkit/libnbd"
 license=('LGPL2.1')
 depends=()
 makedepends=('perl')
-validpgpkeys=('71C2CC22B1C4602927D2F3AAA7A16B4A2527436A')
+validpgpkeys=('F7774FB1AD074A7E8C8767EA91738F73E1B768A0')
 _dldir="${pkgver%.*}"
 source=(
 		"http://download.libguestfs.org/libnbd/${_dldir}-stable/libnbd-${pkgver}.tar.gz"
@@ -34,5 +34,5 @@ check() {
   make check
 }
 
-sha256sums=('9043610e952b0070747540114d9179a94ab0dda67c51edb57de6de25598112a2'
+sha256sums=('e3eb1fa29f4029f0c2714cebe379c06fa5f68a117a91e312eb594b96da0e8f60'
             'SKIP')
