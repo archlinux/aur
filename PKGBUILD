@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=pyhoca-cli
-pkgver=0.6.0.1
+pkgver=0.6.1.2
 pkgrel=1
 pkgdesc="Command line X2Go client written in Python"
 url="http://www.x2go.org/"
@@ -10,7 +10,7 @@ license=('AGPL')
 makedepends=('python-setuptools')
 depends=('python-x2go' 'python-setproctitle')
 source=("http://code.x2go.org/releases/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8ad4e711fe4f34f7177e6ea1a54f72b82da11cf729292b3f608e71e56afdd875')
+sha256sums=('fef5d3e3b9cefc5ab8bb32b9e3af046ea11cc8b8435d613603a462b3b7675e89')
 
 build() {
   cd "${pkgname}-${pkgver}"
