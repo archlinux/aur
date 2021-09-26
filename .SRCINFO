@@ -1,6 +1,6 @@
 pkgbase = wasm3-git
 	pkgdesc = A high performance WebAssembly interpreter written in C
-	pkgver = v0.4.9.r212.4f0b769
+	pkgver = v0.5.0.r10.8850f91
 	pkgrel = 1
 	url = https://github.com/wasm3/wasm3
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = wasm3-git
 	md5sums = SKIP
 
 pkgname = wasm3-git
-
