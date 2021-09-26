@@ -2,17 +2,17 @@
 #   - ported to AUR4 from upstream PKGBUILD
 
 pkgname=repo-make
-pkgver=1.2.0
-pkgrel=3
-pkgdesc="Tool to autobuild a set of PKGBUILDs into a working repository"
+pkgver=3.2.0
+pkgrel=1
+pkgdesc="Tool for autobuilding a repository full of PKGBUILD's into a working Arch Linux binary repository"
 arch=('any')
-url="http://repo-make.tuxfamily.org/"
+url="https://github.com/M-Reimer/repo-make"
 license=('AGPL3')
 depends=('perl')
-source=(http://downloads.tuxfamily.org/repomake/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('4b9cb580dc82238210d4697e4dd257a399caea6d33985bdb937335269b3b9879')
+source=("https://github.com/M-Reimer/repo-make/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('efbfbf96503ff09407e9a3f7a786272e9b329405027e61b0918f267b188df65a')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR=$pkgdir PREFIX=/usr install
+	make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
