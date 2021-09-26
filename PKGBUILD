@@ -6,7 +6,7 @@
 
 pkgname=obs-studio-browser
 pkgver=27.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Free and open source software for video recording and live streaming. Built with browser, vst plugins."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
