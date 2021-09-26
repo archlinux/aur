@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=6.16-GE-1
+_srctag=6.18-GE-1
 pkgver=${_srctag//-/.}
 pkgrel=1
 
@@ -14,16 +14,20 @@ pkgrel=1
 _winever=$pkgver
 _pkgbasever=${pkgver/rc/-rc}
 
-source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom#tag=$_srctag
-        wine-gloriouseggroll::git+https://github.com/GloriousEggroll/wine.git
-        wine-ge-custom-more_8x5_res.patch
-        wine-ge-custom-wmclass.patch
+source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=$_srctag
+        wine::git+https://github.com/wine-mirror/wine.git
+        wine-staging::git+https://github.com/wine-staging/wine-staging.git
+        wine-more_8x5_res.patch
+        wine-wmclass.patch
+        wine-isolate_home.patch
         30-win32-aliases.conf
         wine-binfmt.conf)
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
+            '13b0a9b1712eb3bf847a7bc78a46d5d32d6a8358c59b94289594811c2f25de925334aa7f76033176b49156117ada1c58bc1425a3e8514cbf305c27650a2b84e2'
+            '30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569'
+            '3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
@@ -123,14 +127,16 @@ conflicts=('wine' 'wine-wow64')
 install=wine.install
 
 prepare() {
-
   pushd $pkgname
-  git submodule init wine
-  git config submodule.wine.url "$srcdir"/wine-gloriouseggroll
-  git submodule update wine
+  git submodule init wine wine-staging
+  git config submodule.wine.url "$srcdir"/wine
+  git config submodule.wine-staging.url "$srcdir"/wine-staging
+  git submodule update wine wine-staging
+  patches/protonprep.sh
   pushd wine
-  patch -p1 -i "$srcdir"/wine-ge-custom-more_8x5_res.patch
-  patch -p1 -i "$srcdir"/wine-ge-custom-wmclass.patch
+  patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+  patch -p1 -i "$srcdir"/wine-wmclass.patch
+  patch -p1 -i "$srcdir"/wine-isolate_home.patch
   dlls/winevulkan/make_vulkan
   tools/make_requests
   autoreconf -f
@@ -146,8 +152,8 @@ prepare() {
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
   # Disable AVX instead of using 02, same as dxvk, the rest are from Proton
-  export CFLAGS+=" -mno-avx -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
-  export CXXFLAGS+=" -mno-avx -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
+  export CFLAGS+=" -mno-avx -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
+  export CXXFLAGS+=" -mno-avx -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
 
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"

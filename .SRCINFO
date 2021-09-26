@@ -1,6 +1,6 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
-	pkgver = 6.16.GE.1
+	pkgver = 6.18.GE.1
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
 	install = wine.install
@@ -150,16 +150,18 @@ pkgbase = wine-ge-custom
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=6.16.GE.1
-	provides = wine-wow64=6.16.GE.1
+	provides = wine=6.18.GE.1
+	provides = wine-wow64=6.18.GE.1
 	conflicts = wine
 	conflicts = wine-wow64
 	options = !staticlibs
 	options = !lto
-	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom#tag=6.16-GE-1
-	source = wine-gloriouseggroll::git+https://github.com/GloriousEggroll/wine.git
-	source = wine-ge-custom-more_8x5_res.patch
-	source = wine-ge-custom-wmclass.patch
+	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=6.18-GE-1
+	source = wine::git+https://github.com/wine-mirror/wine.git
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git
+	source = wine-more_8x5_res.patch
+	source = wine-wmclass.patch
+	source = wine-isolate_home.patch
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	validpgpkeys = 5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
@@ -167,7 +169,9 @@ pkgbase = wine-ge-custom
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = 13b0a9b1712eb3bf847a7bc78a46d5d32d6a8358c59b94289594811c2f25de925334aa7f76033176b49156117ada1c58bc1425a3e8514cbf305c27650a2b84e2
+	sha512sums = 30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569
+	sha512sums = 3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
 
