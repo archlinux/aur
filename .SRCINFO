@@ -1,0 +1,12 @@
+pkgbase = grc-rs
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = grc
+	source = https://github.com/larsch/grc-rs/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 8736269ac826dade4491307ba4fda51604778df8ca1df08b9916541492964901
+
+pkgname = grc-rs
