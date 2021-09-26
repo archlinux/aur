@@ -1,12 +1,14 @@
 pkgbase = shsysusers
 	pkgdesc = A replacement for systemd-sysusers written in bash
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/42LoCo42/shsysusers
 	arch = any
 	license = GPL
 	depends = bash
-	source = shsysusers-1.tar.gz::https://github.com/42LoCo42/shsysusers/archive/refs/tags/v1.tar.gz
-	sha256sums = 4ec4ef90e8f003abbd63dfb369ef4e9acd6c9cadc89f143044b1420a00596a18
+	source = shsysusers-2.tar.gz::https://github.com/42LoCo42/shsysusers/archive/refs/tags/v2.tar.gz
+	source = 20-shsysusers.hook
+	sha256sums = 4427ef5b61ad546e179a750cd04b4655ba5c4fbb801fb7770898dc8482bb59d5
+	sha256sums = fe6eb1752d6b4a08b34c13276a19b5b521c700348e405cdbd74e13cdf7c8c07b
 
 pkgname = shsysusers
