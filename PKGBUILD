@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  install -Dm755 build/bdsup2sub++ "${pkgdir}/usr/bin/bdsup2subpp"
+  install -Dm755 build/bdsup2subpp "${pkgdir}/usr/bin/bdsup2subpp"
 
   install -Dm644 bdsup2subpp/bundle/linux/bdsup2sub++.desktop "${pkgdir}/usr/share/applications/bdsup2subpp.desktop"
   install -Dm644 bdsup2subpp/bundle/linux/bdsup2subpp.png "${pkgdir}/usr/share/pixmaps/bdsup2subpp.png"
