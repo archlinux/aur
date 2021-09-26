@@ -1,11 +1,11 @@
 # Maintainer: Lars Christensen <larsch@belunktum.dk>
 pkgname=grc-rs
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="Generic Colouriser (grc) ported to Rust"
 arch=('x86_64')
-url=""
+url="https://github.com/larsch/grc-rs"
 license=('MIT')
 groups=()
 depends=('grc')
