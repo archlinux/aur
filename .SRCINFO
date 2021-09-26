@@ -1,15 +1,18 @@
 pkgbase = python-flake8-sql
-	pkgdesc = Plugin that checks SQL code against opinionated style rules.
-	pkgver = 0.4.0
+	pkgdesc = Plugin that checks SQL code against opinionated style rules
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/pgjones/flake8-sql
+	changelog = CHANGELOG.rst
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
 	depends = flake8
+	depends = python-sqlparse
 	provides = flake8-sql
 	replaces = flake8-sql
-	source = https://github.com/pgjones/flake8-sql/archive/0.4.0.tar.gz
-	md5sums = 2068ed9edba616d42a9e67d0391e2d29
+	source = python-flake8-sql-0.4.1.tar.gz::https://github.com/pgjones/flake8-sql/archive/0ed4d53dfed6d243254d9065646b17cf8f49708d.tar.gz
+	sha256sums = b4fac5b0c0c129a5ef9a863ad23c997e5b28a4a11d810493c6d38971052e253d
 
 pkgname = python-flake8-sql
-
