@@ -1,0 +1,17 @@
+pkgbase = mnotify-git
+	pkgdesc = A simple Matrix CLI client, primarily designed for sending notifications
+	pkgver = r44.95a4448
+	pkgrel = 1
+	url = https://codeberg.org/rumpelsepp/mnotify/
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = libolm
+	source = git+https://codeberg.org/rumpelsepp/mnotify.git
+	sha256sums = SKIP
+
+pkgname = mnotify-git
