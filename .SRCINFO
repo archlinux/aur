@@ -1,0 +1,18 @@
+pkgbase = python-x2go
+	pkgdesc = Python module providing X2Go client API
+	pkgver = 0.6.1.3
+	pkgrel = 2
+	url = http://www.x2go.org/
+	arch = any
+	license = AGPL
+	makedepends = python-setuptools
+	depends = python-gevent
+	depends = python-paramiko
+	depends = python-requests
+	depends = python-simplejson
+	depends = python-xlib
+	depends = nxproxy
+	source = http://code.x2go.org/releases/source/python-x2go/python-x2go-0.6.1.3.tar.gz
+	sha256sums = 08b951b434ba3b0e232fc5d01ab07c4b1d9c0e8d16af9722f78f52dd271a09f8
+
+pkgname = python-x2go
