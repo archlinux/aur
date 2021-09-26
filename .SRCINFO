@@ -1,0 +1,10 @@
+pkgbase = npm_xdg_base_directory
+	pkgdesc = Configuration file to make `npm` follow the XDG Base Directory specification
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = npm
+	noextract = npmrc
+
+pkgname = npm_xdg_base_directory
