@@ -1,7 +1,7 @@
 # Maintainer: Popa Ioan Alexandru <alexioanpopa11@gmail.com>
 
 pkgname=themechanger-git
-pkgver=r13.2600bbe
+pkgver=r20.51884ec
 pkgrel=1
 pkgdesc="Theme changing utility for Linux"
 url="https://github.com/ALEX11BR/ThemeChanger"
@@ -9,7 +9,8 @@ arch=(x86_64)
 license=(GPL)
 depends=(gtk3 python-gobject)
 makedepends=(git meson)
-optdepends=('kvantum-qt5: Kvantum theme changing support')
+optdepends=('kvantum-qt5: Kvantum theme changing support'
+            'xsettingsd: Instantaneously apply your setting changes')
 provides=("themechanger")
 conflicts=("themechanger")
 source=("git+https://github.com/ALEX11BR/ThemeChanger")

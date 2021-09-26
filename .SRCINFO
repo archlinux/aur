@@ -1,6 +1,6 @@
 pkgbase = themechanger-git
 	pkgdesc = Theme changing utility for Linux
-	pkgver = r13.2600bbe
+	pkgver = r20.51884ec
 	pkgrel = 1
 	url = https://github.com/ALEX11BR/ThemeChanger
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = themechanger-git
 	depends = gtk3
 	depends = python-gobject
 	optdepends = kvantum-qt5: Kvantum theme changing support
+	optdepends = xsettingsd: Instantaneously apply your setting changes
 	provides = themechanger
 	conflicts = themechanger
 	source = git+https://github.com/ALEX11BR/ThemeChanger
