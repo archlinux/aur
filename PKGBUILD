@@ -1,4 +1,5 @@
-# Maintainer: Mark Foxwell <fastfret79@archlinux.org.uk>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Mark Foxwell <fastfret79@archlinux.org.uk>
 # Contributor: Nicolas Martyanoff <khaelin@gmail.com> 
 # Contributor: Rick Chen <stuffcorpse@archlinux.us>
 
@@ -7,12 +8,12 @@ pkgver=1.4.48
 pkgrel=2
 pkgdesc="a modern implementation of DBM"
 arch=('i686' 'x86_64')
-url="http://fallabs.com/tokyocabinet/"
+url="https://fallabs.com/tokyocabinet/"
 license=('LGPL')
 makedepends=('gcc>=3.1' 'make' 'pkgconfig')
 depends=('zlib' 'bzip2')
-source=("http://fallabs.com/tokyocabinet/${pkgname}-${pkgver}.tar.gz")
-md5sums=('fd03df6965f8f56dd5b8518ca43b4f5e')
+source=("https://fallabs.com/tokyocabinet/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('a003f47c39a91e22d76bc4fe68b9b3de0f38851b160bbb1ca07a4f6441de1f90')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -28,10 +29,10 @@ build() {
   make
 }
 
-# uncomment check routine if needed (can take ~5mins to run check)
+# disable checks if needed (can take ~5mins to run check)
 check() {
- cd "$srcdir/$pkgname-$pkgver"
- make -k check
+  cd "$srcdir/$pkgname-$pkgver"
+  make -k check
 }
 
 package() {
