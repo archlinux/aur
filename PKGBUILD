@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fluent-gtk-theme-git
-pkgver=2021.08.08.r38.g3e5a6a2
+pkgver=2021.08.08.r44.g14aad9e
 pkgrel=1
 pkgdesc="Fluent design gtk theme for linux desktops"
 arch=('any')
@@ -53,8 +53,8 @@ package() {
   # Dash to dock theme
   cp -r src/dash-to-dock "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-  # Fix for Dash to panel & Workspaces to Dock
-  cp -r src/gnome-shell/extensions/* "$pkgdir/usr/share/doc/${pkgname%-git}"
+  # Fix for Dash to panel
+  cp -r src/gnome-shell/extensions/dash-to-dock "$pkgdir/usr/share/doc/${pkgname%-git}"
 
   # Wallpapers
   cd "$srcdir/wallpaper"
