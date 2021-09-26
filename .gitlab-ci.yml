@@ -22,11 +22,13 @@ build:
 
 test:
   stage: test
-  image: archlinux:latest
+  image:
+    name: countstarlight/makepkg:latest
+    entrypoint: [""]
   script:
-    - pacman -Syu --noconfirm
-    - pacman --noconfirm -U *.pkg.tar.zst
-    - pass-git-helper -h
+    - yay -Syu --noconfirm python-portalocker
+    - yay --noconfirm -U *.pkg.tar.zst
+    - autosuspend -h
 
 deploy:
   stage: deploy
