@@ -19,6 +19,13 @@ scripts/config --enable CONFIG_CMDLINE_BOOL \
                --set-str CONFIG_CMDLINE "pm_debug_messages amd_pmc.dyndbg=+p acpi.dyndbg=file drivers/acpi/x86/s2idle.c +p" \
                --disable CMDLINE_OVERRIDE
 
+## asusctl/supergfxctl compatibility
+scripts/config --module CONFIG_VFIO_IOMMU_TYPE1 \
+               --module CONFIG_VFIO_VIRQFD \
+               --module CONFIG_KVM_VFIO \
+               --disable CONFIG_VFIO_NOIOMMU \
+               --module CONFIG_VFIO_PCI
+
 ## NOTE: Add any options here that you'd like to change from kernel defaults
 
 # sync default hostname with Arch
