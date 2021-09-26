@@ -4,12 +4,13 @@
 
 pkgname=bibox2-bin
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Offizieller Client für Westermann Schulbücher / Official Client for german school books from Westermann"
 arch=('x86_64')
 url="https://www.bibox.schule"
 license=('custom')
 depends=('gnome-keyring')
+makedepends=('tar')
 optdepends=()
 conflicts=()
 source=("https://static.bibox2.westermann.de/electron/autoUpdate/BiBox%202.0%202.1.0.deb")
