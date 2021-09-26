@@ -1,6 +1,6 @@
 # Maintainer: Kival Mahadew <kivalm@protonmail.com>
 pkgname=spotblock-rs
-pkgver=0.7.0
+pkgver=0.8.0
 pkgdesc="Spotify Advertisment muter for linux"
 pkgrel=1
 depends=('playerctl')
