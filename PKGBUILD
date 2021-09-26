@@ -10,7 +10,7 @@ pkgname=fritzing
 # We drop the "b" at the end of the version number. It probably means beta
 # while there is also "d" for development versions. This would not be correctly
 # parsed by `pkgver` anyway (d > b), so let's leave out the b suffix entirely.
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 
 # Tag version can be obtained from github release page. Sometimes this is the
@@ -19,8 +19,8 @@ pkgrel=1
 # guess what corresponds to the latest official release.
 #_tagver=0.9.8
 
-# This is probably closest to what has been released as 0.9.8.
-_gitrev=67355fc7ccf026eac607c5adcc72bbb769b10584
+# This is probably closest to what has been released as 0.9.9.
+_gitrev=f0af53a9077f7cdecef31d231b85d8307de415d4
 
 # Parts come from a different respository and are not versioned anymore since
 # 2016. Sometimes we can get the revision by downloading the release build,
@@ -28,7 +28,7 @@ _gitrev=67355fc7ccf026eac607c5adcc72bbb769b10584
 # release build seems to be hidden behind a paywall. Then we need to guess
 # based on the master branch of the fritzing-parts repository and the date when
 # the release archive was created.
-_partsrev=703a7ac8f115deef39784ef27a696f9878357e98
+_partsrev=640fa25650211afccd369f960375ade8ec3e8653
 
 pkgdesc='PCB layout prototyping application'
 arch=('aarch64' 'i686' 'x86_64')
