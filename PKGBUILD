@@ -2,7 +2,7 @@
 # Contributor: JP Cimalando <jp-dev at inbox dot ru>
 pkgname=ptcollab-git
 _pkgname=ptcollab
-pkgver=0.4.3.r3.g181048f
+pkgver=0.4.3
 pkgrel=1
 epoch=
 pkgdesc="Multiplayer music editor"
