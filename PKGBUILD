@@ -2,45 +2,38 @@
 # shellcheck disable=SC2164
 # Maintainer: Štěpán Němec <stepnem@gmail.com>
 
-pkgname=exman-git
-_pkgname=${pkgname%-git}
-pkgver=r28.f2ef5b106882
+pkgname=exman
+pkgver=2062.53
 pkgrel=1
 pkgdesc="manuals for other systems"
 arch=(any)
-url="https://git.causal.agency/$_pkgname"
+url="https://git.causal.agency/$pkgname"
 license=(ISC)
 depends=(man sh)
 makedepends=(bmake git)
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+https://git.causal.agency/$_pkgname")
-sha256sums=(SKIP)
+source=("https://git.causal.agency/$pkgname/snapshot/$pkgname-$pkgver.tar.gz")
+sha256sums=(f1ad19c020c7bd44d04e18730a5ebfb3cb4fa063c51aeb77f9634347c8d79c12)
 # zipman autocompression took 40m(!?) on my machine (4-core i7),
-# parallelized and all (compared to ~1m with the custom package()
+# parallelized and all (compared to ~20s with the custom package()
 # below)
+# the other options prevent searching for stuff that doesn't exist,
+# leading to further speedup
 options=(libtool staticlibs !strip !zipman)
 
-pkgver() {
-  # shellcheck disable=SC2154
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$pkgname-$pkgver"
   # these two are better obtained via the 'man-pages' package, exclude
   # them
   sed -i -e '/^SYSTEMS += \(Linux\|POSIX\)/d' Makefile
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$pkgname-$pkgver"
   bmake PREFIX=/usr TAR=bsdtar
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$pkgname-$pkgver"
   # shellcheck disable=SC2154
   bmake DESTDIR="$pkgdir"/ PREFIX=/usr TAR=bsdtar install
 
@@ -87,9 +80,9 @@ package() {
        sh -c 'ln -sf "$(readlink "$1")".gz "$1".gz && rm "$1"' sh {} \;
   echo 'Fixing symbolic links...done'
 
-  install -dm755 "$pkgdir"/usr/share/licenses/"$_pkgname"
+  install -dm755 "$pkgdir"/usr/share/licenses/"$pkgname"
   sed -ne '/^# Copyright (C) /,/^# PERFORMANCE OF THIS / p' exman.in \
-      >"$pkgdir"/usr/share/licenses/"$_pkgname"/LICENSE
+      >"$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
   chown -R root:root "$pkgdir"
 }
