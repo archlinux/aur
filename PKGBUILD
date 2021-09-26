@@ -1,6 +1,6 @@
 # Maintainer: Mihai-Drosi Câju at cajum dot bugs at yandex dot com
 pkgname=juju
-pkgver=2.8.10
+pkgver=2.9.14
 pkgrel=1
 pkgdesc="Simple, secure devops tooling built to manage today's complex applications wherever you run your software."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 	"build.patch"
 )
 sha512sums=(
-	"58a44e924e18babc1382d66fe9f7c771ec7b6e3f334094d145885509059d3d99db6be1e5aa71a8b4ca3622004f5e28da2d99f5eb96ee9fbc4db6d4ceffcc2e58"
+	"b47682e407f178e6499b7cbb6519fd4279fb42e53e93c8fc21d118411b929c247c1a1db968661dee76fe9ffb0efe8f05c4d25318616a05fc988a6d0a5c2210da"
 	"3f2da865fb180cdbd170aaaa25bccc2d279e4921a9ad2e34f5894a2aaf02b18a8519331a9f4ec67da6f06b132c1732b41d4b24fb02b56d2c47f69eac65f6ab6e"
 )
 
