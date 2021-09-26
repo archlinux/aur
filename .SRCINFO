@@ -1,0 +1,12 @@
+pkgbase = lib32-ezusb
+	pkgdesc = Driver for Castles Technology EZ100PU/EZMINI PC/SC Smart Card Reader. (32-bit)
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://www.castlestech.com/
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	source = lib32-ezusb-1.5.3.zip::https://www.castlestech.com/wp-content/uploads/2016/08/201511920271676073.zip
+	md5sums = c4adcc5cb7f34f3a6092b1474c06c513
+
+pkgname = lib32-ezusb
