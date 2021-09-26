@@ -1,4 +1,5 @@
-# Maintainer: Det <nimetonmaili gmail a-dot com>
+# Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Det <nimetonmaili gmail a-dot com>
 # Contributor: vorbote <palopezv AT gmail DOT com >
 # Contributor: td123 <gostrc AT gmail DOT com>
 # Contributor: phoenixlzx < phoenixlzx AT phoenixsec DOT org >
@@ -9,7 +10,7 @@ pkgrel=1
 _ver=${pkgver//./} 
 pkgdesc="A feature-rich Java-based BitTorrent client (previously called 'Azureus')"
 arch=('x86_64')
-url="http://sourceforge.net/projects/azureus/"
+url="https://sourceforge.net/projects/azureus/"
 license=('GPL')
 depends=('desktop-file-utils' 'java-runtime')
 optdepends=('vuze-plugin-countrylocator: Country flags for the "Peers" tab'
@@ -17,8 +18,8 @@ optdepends=('vuze-plugin-countrylocator: Country flags for the "Peers" tab'
             'xulrunner192: Needed for the channels GUI')
 options=('!strip')
 install=$pkgname.install
-source=("http://downloads.sourceforge.net/azureus/vuze/Vuze_${_ver}/Vuze_${_ver}_linux.tar.bz2")
-md5sums=('0c6cba3f2ef401df5c09e020ce9b1ff3')
+source=("https://downloads.sourceforge.net/azureus/vuze/Vuze_${_ver}/Vuze_${_ver}_linux.tar.bz2")
+sha256sums=('1c5995ed8a25bac4bf1cea012b583af92af04c15579ab686689bca13e6cad36c')
 
 package() {
   cd $pkgname
