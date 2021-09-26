@@ -6,10 +6,10 @@
 # Mozc compile option
 _bldtype=Release
 
-_mozcver=2.26.4500.102
+_mozcver=2.26.4507.102
 _fcitxver=20210822
 _iconver=20201229
-_utdicver=20210923
+_utdicver=20210925
 pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 
@@ -37,7 +37,7 @@ source=(
 )
 
 sha256sums=(
-  '231c4ad148119a7c4cf949fcf27512260ee8f7c2926e66ce42e7dfb8a37af7a1'
+  'ab35c19efbae45b1fbd86e61625d4d41ad4fb95beefdf5840bdd7ee2f7b825cd'
   '441db7c09a0565376ecacf0085b2d4c2bbedde6115d7773551bc116212c2a8d6'
   '9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb'
   'e46b1c40facbc969b7a4af154dab30ab414f48a0fdbe57d199f912316977ac25'
