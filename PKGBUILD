@@ -1,10 +1,10 @@
-# Maintaner: Young Acinonyx <young dot acinonyx at gmail dot com>
+# Maintainer: Young Acinonyx <young dot acinonyx at gmail dot com>
 
 pkgname=printmyfonts
 _pkgname=PrintMyFonts
-pkgver=21.5.5
+pkgver=21.9.1
 pkgrel=1
-pkgdesc="A tool to show, demonstrate, and print all of the installed fonts on the computer."
+pkgdesc="A tool to show, print, and/or export an arbitraty text in any font."
 arch=('i686' 'x86_64')
 url="https://www.sttmedia.com/printmyfonts"
 license=('custom')
@@ -14,19 +14,19 @@ makedepends=('binutils')
 if [[ $CARCH == 'i686' ]]
 then
 	_CARCH='i386'
-	source=("https://www.sttmedia.com/downloads/${_pkgname}Deb.zip"
+	source=("${pkgname}-${pkgver}.zip::https://www.sttmedia.com/downloads/${_pkgname}Deb.zip"
 	"LICENSE")
-	md5sums=('a472384ded1bfc810c5ff55839404f88'
-         	 '19cb049712d6b49c891e537d84cf23e9')
+sha256sums=('d16fc9c8799247526e1018c4e5920f6cc5c525c18838b2ef7ae5a0c850665e3d'
+            '2a2526a1675f24970a17be03667a2dfe6b5462350ad35965d8862f9188ab0ffb')
 fi
 
 if [[ $CARCH == 'x86_64' ]]
 then
 	_CARCH='amd64'
-	source=("https://www.sttmedia.com/downloads/${_pkgname}Deb64.zip"
+	source=("${pkgname}-${pkgver}.zip::https://www.sttmedia.com/downloads/${_pkgname}Deb64.zip"
 	"LICENSE")
-	md5sums=('5bc24e3f413d5fe9ec2bc933a3fdd27e'
-         	 '19cb049712d6b49c891e537d84cf23e9')
+	sha256sums=('d16fc9c8799247526e1018c4e5920f6cc5c525c18838b2ef7ae5a0c850665e3d'
+	            '2a2526a1675f24970a17be03667a2dfe6b5462350ad35965d8862f9188ab0ffb')
 fi
 
 prepare() {
