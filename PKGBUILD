@@ -66,7 +66,7 @@ package() {
 	install -Dvm644 debian/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
 	install -Dvm644 debian/menu ${pkgdir}/usr/share/menu/${pkgname}
 	for res in {32,128}; do
-		install -Dvm644 ../app-${pkgname}-${res}px.png -t ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png
+		install -Dvm644 ../app-${pkgname}-${res}px.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png
 	done
 	for ext in {png,xpm}; do
 		install -Dvm644 ../app-${pkgname}-32px.${ext} ${pkgdir}/usr/share/pixmaps/${pkgname}.${ext}
