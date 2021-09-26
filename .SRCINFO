@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gst-rtsp-server
 	pkgdesc = RTSP server library based on GStreamer (mingw-w64)
-	pkgver = 1.18.4
+	pkgver = 1.18.5
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-gst-rtsp-server
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.18.4.tar.xz
-	sha256sums = a46bb8de40b971a048580279d2660e616796f871ad3ed00c8a95fe4d273a6c94
+	source = http://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.18.5.tar.xz
+	sha256sums = 04d63bf48816c6f41c73f6de0f912a7cef0aab39c44162a7bcece1923dfc9d1f
 
 pkgname = mingw-w64-gst-rtsp-server
