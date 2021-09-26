@@ -1,6 +1,6 @@
 pkgbase = np2kai-git
 	pkgdesc = Neko Project II Kai, a PC-9801 emulator. (GIT version)
-	pkgver = 0.86.rev.22.36.g6d461af
+	pkgver = 0.86.rev.22.127.g3e8fedc7
 	pkgrel = 1
 	url = http://domisan.sakura.ne.jp/article/np2kai/np2kai.html
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = np2kai-git
 	provides = np2kai
 	conflicts = np2kai
 	source = np2kai::git+https://github.com/AZO234/NP2kai.git
+	source = git+https://github.com/aminosbh/sdl2-cmake-modules.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = np2kai-git
-
