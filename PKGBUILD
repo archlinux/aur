@@ -3,11 +3,11 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.13
-_major=5.13
+_srcname=linux-5.14
+_major=5.14
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=13
+_minor=7
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,19 +30,27 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch
+  0003-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch
+  0004-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch
+  0005-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch
+  0006-ALSA-pci-rme-Set-up-buffer-type-properly.patch
+  0007-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('5f2b1b072a75e22bf81c369439848196c0306230c2ef3defef42681a2de30c7563f44f1e13dbe44a870c51439fa025532dc3527c8f956fc5976eb3e9dc8229d9'
+b2sums=('a788bd30b0c2986c841aa3455c11c749c568584ef7b71da4273266aa3580ff479333219f79373ff3b6ea855cba5d055f4338f3004c57328a0d7ee9fcdd13c00b'
         'SKIP'
-        'c763adef68a11c42a6e9435522300c5327a9dd3c8b25f1c41e0fdc536e224aac83dbb13d86bb52973304520f1cc28c4c9158baddf6087af54b1e5fbe010be485'
+        '861405cd1333958cb829017b6c1d6692a7256d179a48fad751bb02cd02ba09227ff210d9252c592a99d3820c1fbdcc3a6e133cbed31fdecb68ba9cf27dfc8f78'
         'SKIP'
-        '65c2a6790e288fd7bfab74ffb5a93c91ae880d699338852ffc2059c666974fdc469ee36e0d1455f74a4c377ba749649173347af0a054328032fd866688739c04'
-        'cec1b369710d673d8c2c678ee5d20b8eb62f21160aeff1a07bb58063dedf09893b559861d3b785bf5a91126d4122721e366cdb5b79ddad52e85884f741dd9b1d'
-        'f9480d4586b106d82780a3354e96bc79c3a3a5a684dbdcd55f407edd6d6a21cbfa7b3b745590a25111d0d88f8837c5fc09d7c18668727e27be3040e2921b2215')
+        'a0f4869294fe26b51f88171b235377df3ab8ad7f93824933f98e7706057419bb9cf2adf31422c0fc654dd07376e375545bc06bd1148666bb638f6640ec281e7b'
+        'f16dd5c1ee0147a9a613fd48ffc3767573c380fdd8d7b936e0ba6ee94a53a7461360db9b3b317e995dea890622637067d332778c0042fea906c6c403f3d8a635'
+        'aa66e8b19dac7109a2dca121de8cee3b25332b1dc71b810b7133f3576af9844999034bb3c0a69fa701085a76c158cbe69f82d81965b0b0027029a46100c76bd0'
+        'ce6572e8c83d9c5ae7c7fe7d00663fa7719721d0567dc65f232c51794e5c73ca2c579b29a0171832bfdc8d5e92b4dc4f8fd11eec684e127ea55dcc6e94ce70d1'
+        'e32c9166d453f462da2270a9219b5c87fef552d67f5ce6adee22b68425ce82436b5c443c8464c3c7d6a20673ba2e8e80851bb5c26812224f4d4622465cc3c81d'
+        '3aef2a0b7e2e99efda96f03215ec87ec312eeee9ae207a257c336d5995587f6105cbc1687612b0f869d6a43fefce11598568a2b99a2f1de4d5480c30ec9401b0'
+        'ea2af5b7c3e581bfb93175d19e4e9a6ce810b4e1c2d058be683dfbedd19a329441384c26ffd6e38206007ca840f97e552da38d7f36c6fb6b05e5727fb57a873e')
 
 
 export KBUILD_BUILD_HOST=archlinux
@@ -50,7 +58,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  # hacky work around for ck1 not getting extracted
+  # hacky work around for rc1 not getting extracted
   # https://bbs.archlinux.org/viewtopic.php?id=265115
   if [[ ! -f "$srcdir/$_rcpatch" ]]; then
     xz -dc "$SRCDEST/$_rcpatch.xz" > "$_rcpatch"
