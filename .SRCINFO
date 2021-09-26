@@ -1,0 +1,14 @@
+pkgbase = vis-filetype-settings-git
+	pkgdesc = A plugin for the vis editor that lets the user set options depending on filetype.
+	pkgver = r8.60f8fa3
+	pkgrel = 1
+	url = https://github.com/jocap/vis-filetype-settings
+	arch = any
+	license = MIT
+	depends = vis
+	provides = vis-filetype-settings
+	conflicts = vis-filetype-settings
+	source = git+https://github.com/jocap/vis-filetype-settings
+	sha256sums = SKIP
+
+pkgname = vis-filetype-settings-git
