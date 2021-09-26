@@ -1,7 +1,8 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='dnsx'
-pkgver=1.0.1
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Fast and multi-purpose DNS toolkit'
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cd8111d27333d8f71904befdea7c362babca6698531327b55d8c5c79203c9d75')
+sha256sums=('ef0ade0508f0d6d8ed7e80f06e2ed888eaca9837fde513fc801451044b6a567e')
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
@@ -34,5 +35,3 @@ package() {
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
