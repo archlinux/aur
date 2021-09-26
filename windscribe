@@ -1,0 +1,17 @@
+#!/usr/bin/openrc-run
+
+name=$RC_SVCNAME
+description="Windscribe VPN CLI Service"
+supervisor="supervise-daemon"
+command="/usr/bin/windscribe"
+command_args="start"
+
+depend() {
+	after syslog net netmount dns 
+}
+
+stop() {
+	ebegin "Stopping $RC_SVCNAME"
+	/usr/bin/windscribe stop
+	eend $?
+}

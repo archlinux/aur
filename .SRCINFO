@@ -1,0 +1,13 @@
+pkgbase = windscribe-runit
+	pkgdesc = openrc service scripts for windscribe
+	pkgver = r1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/windscribe-openrc
+	arch = any
+	license = GPL
+	depends = openrc
+	depends = windscribe-cli
+	source = windscribe
+	sha256sums = ff0deb5d75b9a59c60786033d3d256b7adc800d5a23040e1f2df021158be3841
+
+pkgname = windscribe-openrc
