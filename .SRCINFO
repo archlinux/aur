@@ -1,4 +1,4 @@
-pkgbase = windscribe-runit
+pkgbase = windscribe-openrc
 	pkgdesc = openrc service scripts for windscribe
 	pkgver = r1
 	pkgrel = 1
