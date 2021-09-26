@@ -1,7 +1,7 @@
 # Maintainer: Gyara <laxect39@gmail.com>
 
 pkgname=cargo-feature
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Allows conveniently modify features of crate"
 url="https://github.com/Riey/$pkgname"
@@ -9,7 +9,7 @@ arch=("x86_64")
 license=("MIT")
 depends=("cargo")
 source=(https://github.com/Riey/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('6a51d14346dc8e5184a1ddf716fc2287512b36719ed42e92c76a7d2d7c6c2ef2')
+sha256sums=('8efb2bed3941cfaadf5616fc4c4f7f10ef775a40bbe745d02afe0f37b08dd38e')
 
 build()
 {
