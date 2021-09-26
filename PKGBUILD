@@ -2,7 +2,7 @@
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=debian-keyring
-pkgver=2021.07.26
+pkgver=2021.09.25
 pkgrel=1
 pkgdesc="GnuPG keys for Debian (non-archive)"
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=(gnupg)
 
 source=("https://httpredir.debian.org/debian/pool/main/d/debian-keyring/${pkgname}_${pkgver}_all.deb")
-sha256sums=('9a935fd9b86072fbf7edbb81a571d420162d4abd540671615467ce098d0ded7b')
+sha256sums=('8456b68e35d78723299b90b2811bc77b2147714c625049baf825406ce5f03f47')
 
 package() {
     bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
