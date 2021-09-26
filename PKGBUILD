@@ -4,7 +4,7 @@
 
 pkgname=python-jpype1
 _pkgname=jpype
-pkgver=0.7.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Python to Java bridge, an effort to allow Python programs full access to Java class libraries"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'ant')
 depends=('python')
 conflicts=('jpype' 'python-jpype')
 source=("JPype1-${pkgver}.tar.gz"::"https://github.com/jpype-project/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('04908b361bde115b618fd18c515b72440d9d56c59958d5275043cc3c4067722d')
+sha256sums=('90728f0cb472c7399e2f6d08690af4a81de76dec16fc7f29ac2fcd776afae2ac')
 
 build() {
   cd "${_pkgname}-${pkgver}"
