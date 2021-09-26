@@ -10,7 +10,7 @@ url="http://spamassassin.apache.org"
 depends=('openssl' 'zlib')
 makedepends=('perl-digest-sha1' 'perl-html-parser' 'perl-net-dns' 'perl-netaddr-ip') 
 license=('APACHE')
-source=(http://www.us.apache.org/dist/spamassassin/source/Mail-SpamAssassin-${pkgver}.tar.gz)
+source=(http://dlcdn.apache.org/spamassassin/source/Mail-SpamAssassin-${pkgver}.tar.gz)
 sha256sums=('500c7e2a7cdf3aa4dd822d97aaff2ab22235a60cf17a68ab817861d215a4e568')
 
 build() {
