@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=archipelago-git
 _pkgname=archipelago
-pkgver=v2.3.2.r482.61afeb0
+pkgver=v4.0.0.rc1.r3.576eddc3
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -24,8 +24,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${_pkgname}"
     yarn install
-    yarn run compile
-    yarn run build
+    yarn run dist -- -l deb
 }
 
 package() {
