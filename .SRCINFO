@@ -1,14 +1,13 @@
 pkgbase = zek-bin
 	pkgdesc = Generate a Go struct from XML
-	pkgver = 0.1.10
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://github.com/miku/zek
 	arch = x86_64
 	license = GPL3
 	depends = glibc
 	provides = zek
-	source = zek-bin-0.1.10.deb::https://github.com/miku/zek/releases/download/v0.1.10/zek_0.1.10_amd64.deb
-	sha256sums = 6f428de40f5a6ce60403c30d31e47df95d3bc52fa17cee40ab6115a2755b25cc
+	source = zek-bin-0.1.16.deb::https://github.com/miku/zek/releases/download/v0.1.16/zek_0.1.16_amd64.deb
+	sha256sums = c4b65446890a321f1f59bba3fc2e618d3119d2e729a599f5590421ba09c4fd0d
 
 pkgname = zek-bin
-
