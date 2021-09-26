@@ -1,0 +1,29 @@
+From f96c4eb5bb44d3676cc2b58845a254038e7866bb Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Sun, 26 Sep 2021 17:47:33 +0800
+Subject: [PATCH] broadway: Use the correct way to call find_library
+
+While broadway currently doesn't build on Windows, it is still better to
+avoid using the old and unsupported way to call find_library.
+
+https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/3999
+---
+ gdk/broadway/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdk/broadway/meson.build b/gdk/broadway/meson.build
+index 530dcd99ef..ef7fa0ef58 100644
+--- a/gdk/broadway/meson.build
++++ b/gdk/broadway/meson.build
+@@ -64,7 +64,7 @@ libgdk_broadway = static_library('gdk-broadway',
+ 
+ # gtk4-broadwayd
+ 
+-broadwayd_syslib = os_win32 ? find_library('ws2_32') : shmlib
++broadwayd_syslib = os_win32 ? cc.find_library('ws2_32') : shmlib
+ 
+ executable('gtk4-broadwayd',
+   sources: [
+-- 
+GitLab
+
