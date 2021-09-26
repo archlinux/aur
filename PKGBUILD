@@ -3,7 +3,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -20,7 +20,7 @@ optdepends=('gtk3: GTK environment integration'
             'webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz")
-sha512sums=('7fbb5722917c482aed820154e425642c4a3c7649defebae7076e48ac25da8744933877b70539d5cd6952e9f80493ccc5f144bf2c0c01083bade3473f00a23ec4')
+sha512sums=('68b30792270b9f3cd0df3388243818c987be970545685dd4e5793d0ff0df6523c9298173da61f8a4951bae481ca6fa04f0813f987a2fec7a336593aa6c145c9e')
 
 prepare() {
     cd tdesktop-$pkgver-full
