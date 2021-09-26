@@ -8,7 +8,7 @@
 pkgname=wine-ge-custom
 _srctag=6.18-GE-1
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 
 #_winever=${pkgver%.*}
 _winever=$pkgver
@@ -128,20 +128,30 @@ install=wine.install
 
 prepare() {
   pushd $pkgname
-  git submodule init wine wine-staging
-  git config submodule.wine.url "$srcdir"/wine
-  git config submodule.wine-staging.url "$srcdir"/wine-staging
-  git submodule update wine wine-staging
-  patches/protonprep.sh
-  pushd wine
-  patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
-  patch -p1 -i "$srcdir"/wine-wmclass.patch
-  patch -p1 -i "$srcdir"/wine-isolate_home.patch
-  dlls/winevulkan/make_vulkan
-  tools/make_requests
-  autoreconf -f
+    git submodule init wine wine-staging
+    git config submodule.wine.url "$srcdir"/wine
+    git config submodule.wine-staging.url "$srcdir"/wine-staging
+    git submodule update wine wine-staging
+    patches/protonprep.sh
+    pushd wine
+      patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+      patch -p1 -i "$srcdir"/wine-wmclass.patch
+      patch -p1 -i "$srcdir"/wine-isolate_home.patch
+      dlls/winevulkan/make_vulkan
+      tools/make_requests
+      autoreconf -f
+    popd
   popd
-  popd
+
+  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/wine/configure*
+
+  # Get rid of old build dirs
+  rm -rf $pkgname-{32,64}-build
+  mkdir $pkgname-{32,64}-build
+}
+
+build() {
+  cd "$srcdir"
 
   export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
   export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
@@ -158,16 +168,6 @@ prepare() {
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"
   export CROSSLDFLAGS="$LDFGFLAGS -Wl,--file-alignment,4096"
-
-  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/wine/configure*
-
-  # Get rid of old build dirs
-  rm -rf $pkgname-{32,64}-build
-  mkdir $pkgname-{32,64}-build
-}
-
-build() {
-  cd "$srcdir"
 
   msg2 "Building Wine-64..."
 
