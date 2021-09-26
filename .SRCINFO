@@ -1,13 +1,13 @@
 pkgbase = nasher
 	pkgdesc = A command-line utility for managing a Neverwinter Nights script or module repository
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/squattingmonk/nasher.nim
 	arch = any
 	license = MIT
 	depends = nwnsc-bin
 	depends = neverwinter.nim
-	source = https://github.com/squattingmonk/nasher/releases/download/0.15.1/nasher_linux.tar.gz
-	md5sums = a9e215328aba83fb88ab3f18e5b90705
+	source = https://github.com/squattingmonk/nasher/releases/download/0.15.2/nasher_linux.tar.gz
+	md5sums = 60eb70157e1bff45fea9a376527dd056
 
 pkgname = nasher
