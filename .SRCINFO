@@ -1,6 +1,6 @@
 pkgbase = yaru
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 21.10.1
+	pkgver = 21.10.2
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = yaru
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/ubuntu/yaru/archive/21.10.1.tar.gz
-	sha256sums = 8a79e37efed926ddad91532bfa95f9a833e4b843dfb7c100b70cc628b6b8edd3
+	source = https://github.com/ubuntu/yaru/archive/21.10.2.tar.gz
+	sha256sums = 996e4a3e51d438dcb8ec63829de981d9c0a1a893c5553fd5c5a261c936cea551
 
 pkgname = yaru-sound-theme
 	pkgdesc = Yaru default ubuntu sound theme
@@ -30,6 +30,9 @@ pkgname = yaru-gtksourceview-theme
 pkgname = yaru-gnome-shell-theme
 	pkgdesc = Yaru default ubuntu gnome shell theme
 	depends = gnome-shell
+
+pkgname = yaru-xfwm4-theme
+	pkgdesc = Yaru default ubuntu xfwm4 theme
 
 pkgname = yaru-unity-theme
 	pkgdesc = Yaru default ubuntu unity theme

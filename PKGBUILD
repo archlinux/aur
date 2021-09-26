@@ -5,11 +5,12 @@ pkgname=('yaru-sound-theme'
          'yaru-gtk-theme'
          'yaru-gtksourceview-theme'
          'yaru-gnome-shell-theme'
+         'yaru-xfwm4-theme'
          'yaru-unity-theme'
          'yaru-metacity-theme'
          'yaru-icon-theme'
          'yaru-session')
-pkgver=21.10.1
+pkgver=21.10.2
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -20,11 +21,11 @@ makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("https://github.com/ubuntu/yaru/archive/${pkgver}.tar.gz")
-sha256sums=('8a79e37efed926ddad91532bfa95f9a833e4b843dfb7c100b70cc628b6b8edd3')
+sha256sums=('996e4a3e51d438dcb8ec63829de981d9c0a1a893c5553fd5c5a261c936cea551')
 
 build() {
   arch-meson $pkgbase-$pkgver build
-  meson configure build -Dubuntu-unity=true
+  meson configure build -Dubuntu-unity=true -Dxfwm4=true
   ninja -C build
 }
 
@@ -42,8 +43,11 @@ _delete_all_from_pkgdir_except() {
         rm "${pkgdir}"/usr/share/themes/Yaru{,-light}/gnome-shell
         rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-light}
     fi
+    if [[ "$1" != "xfwm4-theme" ]]; then
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/xfwm4
+    fi
     if [[ "$1" != "unity-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru/unity
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/unity
     fi
     if [[ "$1" != "metacity-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/metacity-1
@@ -60,7 +64,7 @@ _delete_all_from_pkgdir_except() {
 }
 
 package_yaru-sound-theme() {
-  pkgdesc="Yaru default ubuntu sound theme"  
+  pkgdesc="Yaru default ubuntu sound theme"
 
   DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   _delete_all_from_pkgdir_except "sound-theme"
@@ -76,7 +80,7 @@ package_yaru-gtk-theme() {
 
 package_yaru-gtksourceview-theme() {
   pkgdesc="Yaru default ubuntu gtksourceview theme"
-
+  
   DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   _delete_all_from_pkgdir_except "gtksourceview-theme"
 }
@@ -89,9 +93,16 @@ package_yaru-gnome-shell-theme() {
   _delete_all_from_pkgdir_except "gnome-shell-theme"
 }
 
-package_yaru-unity-theme() {
-  pkgdesc="Yaru default ubuntu unity theme"  
+package_yaru-xfwm4-theme() {
+  pkgdesc="Yaru default ubuntu xfwm4 theme"  
+  
+  DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+  _delete_all_from_pkgdir_except "xfwm4-theme"
+}
 
+package_yaru-unity-theme() {
+  pkgdesc="Yaru default ubuntu unity theme"
+  
   DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   _delete_all_from_pkgdir_except "unity-theme"
 }
