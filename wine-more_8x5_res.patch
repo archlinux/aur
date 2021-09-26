@@ -1,7 +1,7 @@
 diff --git a/dlls/winex11.drv/fs.c b/dlls/winex11.drv/fs.c
 index c37899605e7..6470d2ffbb9 100644
---- a/wine/dlls/winex11.drv/fs.c
-+++ b/wine/dlls/winex11.drv/fs.c
+--- a/dlls/winex11.drv/fs.c
++++ b/dlls/winex11.drv/fs.c
 @@ -78,6 +78,10 @@ static struct fs_monitor_size fs_monitor_sizes[] =
      {2880, 1620}, /* 16:9 */
      {2954, 1662}, /* 16:9 - 'FSR 2160p Ultra Quality' */

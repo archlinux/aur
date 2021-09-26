@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.16-GE-1
+_srctag=6.18-GE-2
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=6.3.0
+_monover=6.4.0
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
@@ -105,36 +105,36 @@ makedepends=(${makedepends[@]} ${depends[@]})
 #install=${pkgname}.install
 source=(
     proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=${_srctag}
-    wine::git://source.winehq.org/git/wine.git
-    wine-staging::git+https://github.com/wine-staging/wine-staging.git
+    wine::git+https://github.com/wine-mirror/wine.git
     dxvk::git+https://github.com/doitsujin/dxvk.git
-    dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
-    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
-    OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
-    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
-    Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     FAudio::git+https://github.com/FNA-XNA/FAudio.git
-    protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
-    lsteamclient-gloriouseggroll::git+https://github.com/gloriouseggroll/lsteamclient.git
-    vrclient_x64-gloriouseggroll::git+https://github.com/gloriouseggroll/vrclient_x64.git
-    ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
-    gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
+    gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
+    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
+    OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
+    dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
+    wine-staging::git+https://github.com/wine-staging/wine-staging.git
+    ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
+    lsteamclient-gloriouseggroll::git+https://github.com/gloriouseggroll/lsteamclient.git
+    vrclient_x64-gloriouseggroll::git+https://github.com/gloriouseggroll/vrclient_x64.git
+    protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
     gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
+    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
+    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
+    Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
+    proton-remove_broken_patch_segments.patch
+    wine-more_8x5_res.patch
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
-    proton-more_8x5_res.patch
-    proton-remove_broken_patch_segments.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -158,25 +158,34 @@ prepare() {
 
     [ ! -d build ] && mkdir build
     cd proton-ge-custom
-    for submodule in openvr OpenXR-SDK fonts/liberation-fonts FAudio vkd3d-proton dxvk-nvapi; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-        git submodule update "${submodule}"
-    done
-    git submodule init ffmpeg
-    git config submodule.ffmpeg.url "$srcdir"/ffmpeg-meson
-    git submodule update ffmpeg
 
-    for submodule in wine wine-staging dxvk; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-        git submodule update "${submodule}"
-    done
+    _submodules=(
+        wine
+        dxvk
+        openvr
+        liberation-fonts::fonts/liberation-fonts
+        FAudio
+        gstreamer
+        gst-plugins-base
+        gst-plugins-good
+        gst-orc
+        vkd3d-proton
+        OpenXR-SDK
+        dxvk-nvapi
+        wine-staging
+        ffmpeg-meson::ffmpeg
+        lsteamclient-gloriouseggroll::lsteamclient
+        vrclient_x64-gloriouseggroll::vrclient_x64
+        protonfixes-gloriouseggroll::protonfixes
+        gst-plugins-bad
+        gst-plugins-ugly
+        gst-libav
+    )
 
-    for submodule in gstreamer gst-{plugins-{base,good,bad,ugly},libav,orc}; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-        git submodule update "${submodule}"
+    for submodule in "${_submodules[@]}"; do
+        git submodule init "${submodule#*::}"
+        git config submodule."${submodule#*::}".url "$srcdir"/"${submodule%::*}"
+        git submodule update "${submodule#*::}"
     done
 
     pushd vkd3d-proton
@@ -193,26 +202,22 @@ prepare() {
     popd
 
     pushd dxvk-nvapi
-    for submodule in external/Vulkan-Headers; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-        git submodule update "${submodule}"
-    done
+    git submodule init external/Vulkan-Headers
+    git config submodule.external/Vulkan-Headers.url "$srcdir"/Vulkan-Headers
+    git submodule update external/Vulkan-Headers
     popd
-
-    for submodule in lsteamclient vrclient_x64 protonfixes; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}-gloriouseggroll"
-        git submodule update "${submodule}"
-    done
 
     patch -p1 -i "$srcdir"/proton-remove_broken_patch_segments.patch
     ./patches/protonprep.sh
 
+    pushd wine
+    # Adds more 16:10 resolutions for use with FSR
+    patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+    popd
+
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
-    patch -p1 -i "$srcdir"/proton-more_8x5_res.patch
 }
 
 build() {
@@ -331,10 +336,10 @@ sha256sums=('SKIP'
             'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            'eb67426ff60ed6395b70437e838883ee08b6189cad84faf036b1a4d7366a34e2'
+            '0473570207938f983994addb1ff3c3904a30f6cc07ecaa291c7900f5f7e4cc21'
+            'e8cb8d0517822be7ce80782c2c7b1fea5b34467e87a4b2cd23c320007eba909a'
+            '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
             '6dc9620ba46832b13ea0c2a5e7dec3d0d9473bd3652e79b382419a355bd62ced'
             '61dbdb4d14e22c2c34b136e5ddb800eac54023b5b23c19acd13a82862f94738c'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-            '9071f1432b136071e58a7be9f40c8c7daf4147e75f455c194593e9cdf3872fa2'
-            'e8cb8d0517822be7ce80782c2c7b1fea5b34467e87a4b2cd23c320007eba909a'
 )
