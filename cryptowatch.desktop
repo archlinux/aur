@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=0.4.3
+Name=cryptowatch
+Comment=Charting and trading for cryptocurrency
+Path=/usr/bin/cryptowatch
+Exec=cryptowatch
+Icon=/usr/share/cryptowatch/icons/cryptowatch.png
+Terminal=false
+Categories=Finance;

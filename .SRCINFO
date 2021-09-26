@@ -1,6 +1,6 @@
 pkgbase = cryptowatch-desktop-bin
 	pkgdesc = Charting & trading terminal for cryptocurrency markets
-	pkgver = 0.4.0
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://cryptowat.ch/apps/desktop
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cryptowatch-desktop-bin
 	provides = cryptowatch-desktop-bin
 	options = !strip
 	options = !emptydirs
-	source = https://cryptowat.ch/desktop/download/linux/0.4.0
-	sha256sums = c03501d069626484db46a4def00fdb82d9d1d408a528e5b64d51972be355a07f
+	source = https://cryptowat.ch/desktop/download/linux/0.4.3
+	sha256sums = 15f21a6c0ce2c22caff36fcfac652c242ffbb43afec2dc48567f96807b752949
 
 pkgname = cryptowatch-desktop-bin
