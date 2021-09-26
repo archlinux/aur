@@ -3,7 +3,7 @@
 
 _projectname=dnsproxy
 pkgname=dnsproxy-adguard
-pkgver=0.39.6
+pkgver=0.39.7
 pkgrel=1
 pkgdesc="Simple DNS proxy with DoH, DoT, and DNSCrypt support by AdguardTeam"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=("go" "git")
 backup=(etc/conf.d/dnsproxy-adguard)
 sha256sums=('7a6c7a49bae6865e23db6ea0bb438a5588769cae742936bfd4c6d7b0a0c6b424'
             'de2afa0883f2829a1f7487899ddc9e711913686aea1ce186a60aad022604df4b'
-            '5ed038e0c9eb07703cc0fe25f8218b4cfb3c58635ac988fbd59931d8ce3aaa42')
+            'f70287026257828018e6de4926b438b2301b4db0523e7066be8a76951529cae1')
 
 build(){
     cd "${srcdir}/${_projectname}-${pkgver}"
