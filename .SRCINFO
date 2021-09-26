@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-pcl-ros
 	pkgdesc = ROS - PCL (Point Cloud Library) ROS interface stack.
-	pkgver = 1.7.2
-	pkgrel = 2
+	pkgver = 1.7.3
+	pkgrel = 1
 	url = https://wiki.ros.org/perception_pcl
 	arch = i686
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = ros-noetic-pcl-ros
 	depends = ros-noetic-tf2-ros
 	depends = eigen
 	depends = pcl
-	source = ros-noetic-pcl-ros-1.7.2.tar.gz::https://github.com/ros-perception/perception_pcl/archive/1.7.2.tar.gz
-	sha256sums = 1d131d1897f5380617842805f1aff193071a8104c8994737d32bab8b3caa08a4
+	source = ros-noetic-pcl-ros-1.7.3.tar.gz::https://github.com/ros-perception/perception_pcl/archive/1.7.3.tar.gz
+	sha256sums = 1047c20bcc559834bf36baebb89b2eeec9ae503f34b53dd414e056291908bb1b
 
 pkgname = ros-noetic-pcl-ros

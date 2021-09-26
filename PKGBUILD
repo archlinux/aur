@@ -2,9 +2,9 @@ pkgdesc="ROS - PCL (Point Cloud Library) ROS interface stack."
 url='https://wiki.ros.org/perception_pcl'
 
 pkgname='ros-noetic-pcl-ros'
-pkgver='1.7.2'
+pkgver='1.7.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -45,7 +45,7 @@ depends=(
 
 _dir="perception_pcl-${pkgver}/pcl_ros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/perception_pcl/archive/${pkgver}.tar.gz")
-sha256sums=('1d131d1897f5380617842805f1aff193071a8104c8994737d32bab8b3caa08a4')
+sha256sums=('1047c20bcc559834bf36baebb89b2eeec9ae503f34b53dd414e056291908bb1b')
 
 build() {
     # Use ROS environment variables
