@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=buceutils-git
-pkgver=0.r50.g29583d6
+pkgver=0.r70.g6514897
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -24,7 +24,20 @@ makedepends=('git')
 provides=(buceutils)
 conflicts=(buceutils)
 replaces=()
-backup=()
+backup=(
+	etc/resticbackup.d/config
+	etc/resticbackup.d/exclude
+	etc/resticbackup.d/password
+	etc/bashrc.d/functions.sh
+	etc/bashrc.d/basic.sh
+	etc/bashrc.d/restic.sh
+	etc/bashrc.d/colorterm.sh
+	etc/bashrc.d/root.sh
+	etc/bashrc.d/login.sh
+	etc/bashrc.d/vars.sh
+	etc/bashrc.d/misc.sh
+	etc/bash_completion.d/buceutils
+)
 options=()
 install=
 source=("$pkgname::git+https://github.com/DMBuce/${pkgname%-git}.git")
