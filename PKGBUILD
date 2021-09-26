@@ -8,7 +8,7 @@ license=('MIT')
 arch=('x86_64')
 url='https://github.com/hickford/primesieve-python'
 depends=('python-numpy')
-makedepends=('python-setuptools' 'cython')
+makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/primesieve/primesieve-$pkgver.tar.gz")
 sha256sums=('948d9d9502cb45077834892c05d7ac2678834efeca0d39f328715591b27ab3d5')
 
