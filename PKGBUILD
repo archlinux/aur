@@ -1,8 +1,9 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freediameter
-pkgver=1.2.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="An open source implementation of the diameter protocol"
 arch=('i686' 'x86_64')
@@ -11,9 +12,9 @@ license=('BSD')
 depends=('gnutls' 'libidn')
 makedepends=('cmake')
 install="$pkgname.install"
-source=("http://www.freediameter.net/hg/freeDiameter/archive/$pkgver.tar.gz"
+source=("https://github.com/freeDiameter/freeDiameter/archive/refs/tags/$pkgver.tar.gz"
         'freediameter.service')
-sha256sums=('0601a7f559af6596dff8e18f5c9b17bc66de50d8e05640aa64a3403a841cb228'
+sha256sums=('cc4ceafd9d0d4a6a5e3aa02bf557906fe755df9ec14d16c4fcd5dab6930296aa'
             'd6bea4c108526222d1096a031eb8d1ff168eb73b0a22747a6efe85098759d52f')
 
 build() {
