@@ -21,7 +21,7 @@ pkgbase = memento
 	optdepends = youtube-dl: streaming support
 	optdepends = mpv-git: additional secondary subtitle support
 	optdepends = noto-fonts-cjk: optimal font support
-	source = memento.tar.gz::https://github.com/ripose-jp/Memento/archive/refs/tags/v0.5.1-1-beta.tar.gz
+	source = memento-0.5.1-1.tar.gz::https://github.com/ripose-jp/Memento/archive/refs/tags/v0.5.1-1-beta.tar.gz
 	sha256sums = 192cef894d1a8202172e4a8035fb84803d2e76e8b2f6c47fe2a2b995be0d72d4
 
 pkgname = memento

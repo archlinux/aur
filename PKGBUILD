@@ -23,7 +23,7 @@ optdepends=(
     'mpv-git: additional secondary subtitle support'
     'noto-fonts-cjk: optimal font support'
 )
-source=("${pkgname}.tar.gz::https://github.com/ripose-jp/Memento/archive/refs/tags/v${pkgver}-${pkgrel}-beta.tar.gz")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/ripose-jp/Memento/archive/refs/tags/v${pkgver}-${pkgrel}-beta.tar.gz")
 sha256sums=('192cef894d1a8202172e4a8035fb84803d2e76e8b2f6c47fe2a2b995be0d72d4')
 
 prepare() {
