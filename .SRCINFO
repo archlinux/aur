@@ -1,8 +1,8 @@
 pkgbase = bibox2-bin
-	pkgdesc = Launcher for BlueMaxima's Flashpoint with script to install data files
+	pkgdesc = Offizieller Client für Westermann Schulbücher / Official Client for german school books from Westermann
 	pkgver = 2.1.0
-	pkgrel = 1
-	url = https://github.com/FlashpointProject/launcher
+	pkgrel = 2
+	url = https://www.bibox.schule
 	arch = x86_64
 	license = custom
 	depends = gnome-keyring
