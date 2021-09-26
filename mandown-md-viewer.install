@@ -1,5 +1,7 @@
 post_install() {
   cat << EOF
+
   The name of the executable is 'mdn'
+
 EOF
 }

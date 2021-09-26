@@ -3,6 +3,7 @@ pkgbase = mandown-md-viewer
 	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Titor8115/mandown
+	install = mandown-md-viewer.install
 	arch = x86_64
 	license = MIT
 	makedepends = ncurses
