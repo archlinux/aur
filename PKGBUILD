@@ -1,12 +1,12 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=fuf-git
-pkgver=latest.build.r0.g0e23958
+pkgver=latest.build.r0.gac1498f
 pkgrel=1
 pkgdesc='Fairly Usable cli Filebrowser. dev/git version'
 arch=('any')
 url=https://github.com/ckath/fuf
 license=('MIT')
-depends=('ncurses')
+depends=('ncurses' 'libx11')
 makedepends=('git')
 optdepends=('w3m: image previews')
 conflicts=('fuf')
