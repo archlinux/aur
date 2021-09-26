@@ -5,7 +5,7 @@
 
 _base=petsc
 pkgname=("${_base}"-git "${_base}"-doc)
-pkgver=3.15.4.37.g17c486c0fcd
+pkgver=3.15.4.39.g3348d10f62a
 pkgrel=1
 _mainver="${pkgver:0:6}"
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -157,6 +157,9 @@ package_petsc-git() {
   provides=(${_base}="${_mainver}" petsc4py="${_mainver}")
   conflicts=(${_base})
 
+  # # From OpenCV (hack destination of petsc4py)
+  # _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
+  # sed -i "s%\(installLibPath = \)os.path.join(self.installDir, 'lib')%\1'${_pythonpath}'%"
   unset PETSC_DIR
   _build_dir="${srcdir}"/"${_base}"
 
@@ -172,8 +175,8 @@ package_petsc-git() {
   mkdir -p "${pkgdir}"/etc/profile.d
   echo "export PETSC_DIR=${_install_dir}" > \
        "${pkgdir}"/etc/profile.d/${_base}.sh
-  echo "export PYTHONPATH=\$PYTHONPATH:/${_install_dir}/${_base}/${_config}/lib" \
-       >> "${pkgdir}"/etc/profile.d/${_base}.sh
+  # echo "export PYTHONPATH=\$PYTHONPATH:/${_install_dir}/${_base}/${_config}/lib" \
+  #      >> "${pkgdir}"/etc/profile.d/${_base}.sh
   chmod +x "${pkgdir}"/etc/profile.d/${_base}.sh
 
   # show where the shared libraries are
@@ -184,6 +187,13 @@ package_petsc-git() {
   # install pkgconfig settings
   install -Dm 644 "${_build_dir}/${_config}"/lib/pkgconfig/PETSc.pc \
           "${pkgdir}"/"${_install_dir}"/share/pkgconfig/PETSc.pc
+
+  # cd "${srcdir}"/"${_base}"/src/binding/petsc4py
+  # CFLAGS="$(echo "${CFLAGS}" | sed 's%-D[^[:space:]]*%%g')" python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  # cd -
+  _pythonpath="${pkgdir}"/`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
+  install -dm 755 ${_pythonpath}
+  ln -s "${pkgdir}"/"${_install_dir}"/lib/petsc4py ${_pythonpath}
 }
 
 package_petsc-doc () {

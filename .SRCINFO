@@ -1,6 +1,6 @@
 pkgbase = petsc-git
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.15.4.37.g17c486c0fcd
+	pkgver = 3.15.4.39.g3348d10f62a
 	pkgrel = 1
 	url = https://gitlab.com/petsc/petsc
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = petsc-git
 	makedepends = git
 	makedepends = cython
 	makedepends = chrpath
-	makedepends = hypre=2.18.2
+	makedepends = hypre
 	depends = openmpi
 	depends = lapack
 	depends = fftw
@@ -22,7 +22,7 @@ pkgbase = petsc-git
 	depends = cython
 	depends = python-mpi4py
 	depends = python-numpy
-	depends = eigen>=3
+	depends = eigen
 	depends = openblas
 	options = !staticlibs
 	source = git+https://gitlab.com/petsc/petsc.git#branch=release
