@@ -1,11 +1,11 @@
-From 22d2b83a74f2e7283f968bd6d40a1826c6f8c58e Mon Sep 17 00:00:00 2001
+From 607ece118420432b0afbdedcecac8ef778570844 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Wed, 22 Sep 2021 05:05:15 -0700
-Subject: [PATCH] v5.14.7 s0ix patch 2021-09-22
+Date: Sun, 26 Sep 2021 10:33:54 -0700
+Subject: [PATCH] v5.14.8 s0ix patch 2021-09-26
 
 Squashed commit of the following:
 
-commit b9e75e8574ffc65fee47ed0876b59737cc5d2bae
+commit 86c163d2b8b39fc7e6596556679481721aa26c06
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -17,7 +17,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit bf2b06077c8f643a166a185f8b4929f312a856a6
+commit 741e5c16a38778ecf9d71eba250d0c377e1fd772
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -32,7 +32,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 87b43c89ee336cbad8d36339a1070241d44d99eb
+commit 4b8f41b5ba2d90e66c6e03ecf18ac2d18d543706
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -45,7 +45,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit eda40b8f4a503078d6c0675997577be0f013950f
+commit 457b0e8f5cf2e63326f632bb483b69688fa8afe6
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -64,7 +64,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit f75ed35c7e5238ef34308db196174e02bbd6a14b
+commit 265bef2092d3bfa40f2ce0e319cc18b286317b72
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -79,7 +79,7 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit db2ee08ca04b312c17182a434249e825cf3c6b5f
+commit cd383898f0a77915ba0fb662273c024507102f5a
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Sep 9 11:19:43 2021 -0500
 
@@ -102,7 +102,7 @@ Date:   Thu Sep 9 11:19:43 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1629
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 6a2a3cf8c0d37f3ba64fad051576f95adf527690
+commit 20f7369cd141e2038e6fdb5d72f4f7c328681208
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -115,7 +115,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit c1c35a904317a8261cebd47f6097705ab30dfc46
+commit 0446fe2418330c84c587fc4d003fc0eaa8544ee3
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -128,36 +128,7 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 85c2988c6e71c4092ae5624e2a0eebe2a79fd599
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Tue Aug 31 11:36:19 2021 -0500
-
-    ACPI: PM: s2idle: Run both AMD and Microsoft methods if both are supported
-
-    It was reported that on "HP ENVY x360" that power LED does not come back
-    on, certain keys like brightness controls do not work, and the fan never
-    spins up, even under load.
-
-    In analysis of the SSDT it's clear that the Microsoft UUID doesn't provide
-    functional support, but rather the AMD UUID should be supporting this
-    system.
-
-    Because this is a gap in the expected logic, confirmation with internal
-    team is that AMD uPEP *does* run even when Microsoft UUID present, but
-    most OEM systems have adopted value of "0x3" for supported functions and
-    hence nothing runs.
-
-    Henceforth add support for running both Microsoft and AMD methods.  This
-    approach will also allow the same logic on Intel systems if desired at a
-    future time as well by pulling the evaluation of
-    `lps0_dsm_func_mask_microsoft` out of the if block for
-    `acpi_s2idle_vendor_amd`.
-
-    BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1691
-    Reported-by: Maxwell Beck <max@ryt.one>
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-
-commit e245179ba290b24f76e366d90df8bb7fc6ba0233
+commit cc6d263edd23f00c1cfc46aca214f9db1fa2d109
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Wed Jul 21 18:10:28 2021 -0700
 
@@ -166,7 +137,7 @@ Date:   Wed Jul 21 18:10:28 2021 -0700
     patch this per Mario's request:
     https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
 
-commit b2638c9fa3c01bceccf8bb093964d1a325dd5052
+commit ad644634a9f2e5890cdf78ed4eb31105f71f4b99
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:33:01 2021 -0700
 
@@ -178,7 +149,7 @@ Date:   Tue Jul 20 23:33:01 2021 -0700
 
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 
-commit 87517a102609c8891c8c123fadd4e0e7fb8a824a
+commit 6bafa8e255a98dcfa44cca9d0ea1ac4f89cc0fdb
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:31:31 2021 -0700
 
@@ -191,13 +162,12 @@ Date:   Tue Jul 20 23:31:31 2021 -0700
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 ---
  drivers/acpi/processor_idle.c                 |  3 +-
- drivers/acpi/x86/s2idle.c                     | 67 ++++++++------
  .../gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c    |  3 +
  .../gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c    |  3 +
  drivers/pinctrl/pinctrl-amd.c                 | 19 +++-
  drivers/pinctrl/pinctrl-amd.h                 |  1 +
  drivers/platform/x86/amd-pmc.c                | 92 +++++++++++++++++--
- 7 files changed, 148 insertions(+), 40 deletions(-)
+ 6 files changed, 109 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index 095c8aca141e..1b6529396371 100644
@@ -213,100 +183,6 @@ index 095c8aca141e..1b6529396371 100644
  			state->enter_dead = acpi_idle_play_dead;
  			drv->safe_state_index = count;
  		}
-diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
-index 3a308461246a..7d1976e5dd8b 100644
---- a/drivers/acpi/x86/s2idle.c
-+++ b/drivers/acpi/x86/s2idle.c
-@@ -449,25 +449,30 @@ int acpi_s2idle_prepare_late(void)
- 	if (pm_debug_messages_on)
- 		lpi_check_constraints();
- 
--	if (lps0_dsm_func_mask_microsoft > 0) {
-+	/* screen off */
-+	if (lps0_dsm_func_mask > 0)
-+		acpi_sleep_run_lps0_dsm(acpi_s2idle_vendor_amd() ?
-+					ACPI_LPS0_SCREEN_OFF_AMD :
-+					ACPI_LPS0_SCREEN_OFF,
-+					lps0_dsm_func_mask, lps0_dsm_guid);
-+
-+	if (lps0_dsm_func_mask_microsoft > 0)
- 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SCREEN_OFF,
- 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
-+
-+	/* lps0 entry */
-+	if (lps0_dsm_func_mask > 0)
-+		acpi_sleep_run_lps0_dsm(acpi_s2idle_vendor_amd() ?
-+					ACPI_LPS0_ENTRY_AMD :
-+					ACPI_LPS0_ENTRY,
-+					lps0_dsm_func_mask, lps0_dsm_guid);
-+	if (lps0_dsm_func_mask_microsoft > 0) {
-+		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY,
-+				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
-+		/* modern standby entry */
- 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_MS_ENTRY,
- 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
--		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY,
--				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
--	} else if (acpi_s2idle_vendor_amd()) {
--		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SCREEN_OFF_AMD,
--				lps0_dsm_func_mask, lps0_dsm_guid);
--		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY_AMD,
--				lps0_dsm_func_mask, lps0_dsm_guid);
--	} else {
--		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SCREEN_OFF,
--				lps0_dsm_func_mask, lps0_dsm_guid);
--		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY,
--				lps0_dsm_func_mask, lps0_dsm_guid);
- 	}
--
- 	return 0;
- }
- 
-@@ -476,24 +481,30 @@ void acpi_s2idle_restore_early(void)
- 	if (!lps0_device_handle || sleep_no_lps0)
- 		return;
- 
--	if (lps0_dsm_func_mask_microsoft > 0) {
--		acpi_sleep_run_lps0_dsm(ACPI_LPS0_EXIT,
--				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
-+	/* mdoern standby exit */
-+	if (lps0_dsm_func_mask_microsoft > 0)
- 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_MS_EXIT,
- 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
-+
-+	/* lps0 exit */
-+	if (lps0_dsm_func_mask > 0)
-+		acpi_sleep_run_lps0_dsm(acpi_s2idle_vendor_amd() ?
-+					ACPI_LPS0_EXIT_AMD :
-+					ACPI_LPS0_EXIT,
-+					lps0_dsm_func_mask, lps0_dsm_guid);
-+	if (lps0_dsm_func_mask_microsoft > 0)
-+		acpi_sleep_run_lps0_dsm(ACPI_LPS0_EXIT,
-+				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
-+
-+	/* screen on */
-+	if (lps0_dsm_func_mask_microsoft > 0)
- 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SCREEN_ON,
- 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
--	} else if (acpi_s2idle_vendor_amd()) {
--		acpi_sleep_run_lps0_dsm(ACPI_LPS0_EXIT_AMD,
--				lps0_dsm_func_mask, lps0_dsm_guid);
--		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SCREEN_ON_AMD,
--				lps0_dsm_func_mask, lps0_dsm_guid);
--	} else {
--		acpi_sleep_run_lps0_dsm(ACPI_LPS0_EXIT,
--				lps0_dsm_func_mask, lps0_dsm_guid);
--		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SCREEN_ON,
--				lps0_dsm_func_mask, lps0_dsm_guid);
--	}
-+	if (lps0_dsm_func_mask > 0)
-+		acpi_sleep_run_lps0_dsm(acpi_s2idle_vendor_amd() ?
-+					ACPI_LPS0_SCREEN_ON_AMD :
-+					ACPI_LPS0_SCREEN_ON,
-+					lps0_dsm_func_mask, lps0_dsm_guid);
- }
- 
- static const struct platform_s2idle_ops acpi_s2idle_ops_lps0 = {
 diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c b/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
 index 0a5d46ac9ccd..626d7c2bdf66 100644
 --- a/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
