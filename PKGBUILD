@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2021.08.1
+pkgver=2021.09
 pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -98,7 +98,7 @@ ac_add_options --x-libraries=/usr/lib
 #Building with system NSS and NSPR can cause issues
 #ac_add_options --with-system-nspr
 #ac_add_options --with-system-nss
-ac_add_options --with-system-icu
+#ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
