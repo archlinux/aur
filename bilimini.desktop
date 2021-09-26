@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=bilimini
+Comment=Hide!bilibili
+Exec=bilimini %U
+Terminal=false
+Type=Application
+Icon=bilimini
+Categories=AudioVideo;Network
+StartupWMClass=bilibilimini

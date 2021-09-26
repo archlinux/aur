@@ -1,0 +1,21 @@
+pkgbase = bilimini-git
+	pkgdesc = Hide!bilibili
+	pkgver = v1.5.5.r0.g486ec06
+	pkgrel = 1
+	url = https://github.com/chitosai/bilimini
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = npm
+	makedepends = imagemagick
+	depends = electron9
+	provides = bilimini
+	conflicts = bilimini
+	source = bilimini::git+https://github.com/chitosai/bilimini.git
+	source = bilimini.desktop
+	source = bilimini.sh
+	sha256sums = SKIP
+	sha256sums = efeaac1a7ac1f9d6a12ca81e3e401df38a6f0c94e3ce995fd402c78accc5253b
+	sha256sums = 704ece204bc99a06eef8155f3262880654c6d20dec2cd712052ec4ed51029811
+
+pkgname = bilimini-git
