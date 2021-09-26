@@ -1,0 +1,15 @@
+pkgbase = sedutil-cli
+	pkgdesc = DTA sedutil Self encrypting drive software
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://github.com/Drive-Trust-Alliance/sedutil
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	source = sedutil-cli-1.20.0.tar.gz::https://github.com/Drive-Trust-Alliance/sedutil/archive/refs/tags/1.20.0.tar.gz
+	cksums = 2780899707
+	sha256sums = 88016b93cbbef98fa6f5c4e6f58e6c871662b6a7f1fc8dc788c8599fa37a44f3
+	b2sums = 6eb18b15a00a2555684459f00c59a9ffa1c0a85ab275bfd4de50225e3e7e9990751c7e4065987527f9c9c798c52abb5d45ef2336c72d6ee1c0e06c8a668ca210
+
+pkgname = sedutil-cli
