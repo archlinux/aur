@@ -1,6 +1,6 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=netkit-bsd-finger-ipv6
-pkgver=0.17+deb15
+pkgver=0.17+deb17
 _pkgver=${pkgver%+*}
 pkgrel=1
 pkgdesc="bsd-finger ported to Linux, with IPv6 and other Debian patches"
@@ -11,21 +11,21 @@ provides=(netkit-bsd-finger)
 conflicts=(netkit-bsd-finger)
 backup=(etc/xinetd.d/finger)
 source=("http://ftp.de.debian.org/debian/pool/main/b/bsd-finger/bsd-finger_${_pkgver}.orig.tar.bz2"
-        "http://ftp.de.debian.org/debian/pool/main/b/bsd-finger/bsd-finger_${pkgver/+deb/-}.debian.tar.bz2"
+        "http://ftp.de.debian.org/debian/pool/main/b/bsd-finger/bsd-finger_${pkgver/+deb/-}.debian.tar.xz"
         "finger.xinetd"
         "fingerd.socket"
         "fingerd@.service"
         "LICENSE"
         "fxputc-utf8.patch")
 md5sums=('99ef35e79cad0d941d860a10498420fd'
-         '4f610b636c88c465ac2090645bd8f4cd'
+         '1fb6da7103b1d59b9b5d408b7978c0db'
          'f6e07ede6acab481051f7bf51ce1fe8e'
          '03675e125705fe7ca1424d7d0514e8d8'
          '538dc00efa569de9fa36ca04a0880b62'
          '5fc568418a0379fc3a358ed1c2523b44'
          'ceb45b74b0a98a4b5dd2b143d69e88bc')
 sha256sums=('28b34d605d23ea687d79e0fc48c035abe80f88d9c1547e7aa46796d1081c0363'
-            '8435a3a00a4066a0c7403596eec33df5e4e71eb35006dbb5a81ae7c952436777'
+            '3d8cbc2127d99915e474137cebce08bda0f4bd13d57a4916d1a455dab10cce3c'
             'ce8e90ac9e149e6696fe67766adc19c6f8973515ecafe9f3432f6588c064980d'
             'e0d2febdfa1240893d88d7795f329cc8f3354a679c35e973c31d26970b9b095c'
             '2c3e0f45ecea483b129288be96e17f5f45199d24611e8027ca29e13758fd68d3'
