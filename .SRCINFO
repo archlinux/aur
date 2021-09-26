@@ -1,6 +1,6 @@
 pkgbase = syslog-ng-git
 	pkgdesc = Enhanced system logging daemon
-	pkgver = 3.29.1.r66.g088fc40ef
+	pkgver = 3.34.1.r22.ge18982343
 	pkgrel = 1
 	url = https://www.syslog-ng.com/products/open-source-log-management/
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = syslog-ng-git
 	makedepends = mongo-c-driver
 	makedepends = net-snmp
 	makedepends = librdkafka
+	makedepends = paho-mqtt-c
 	makedepends = python
 	makedepends = systemd
 	depends = systemd-libs
@@ -47,6 +48,7 @@ pkgbase = syslog-ng-git
 	optdepends = mongo-c-driver: for the MongoDB plugin
 	optdepends = net-snmp: for the SNMP plugin
 	optdepends = librdkafka: for the Kafka C plugin
+	optdepends = paho-mqtt-c: for the MQTT plugin
 	optdepends = python: for Python-based plugins
 	provides = syslog-ng
 	conflicts = syslog-ng
@@ -62,4 +64,3 @@ pkgbase = syslog-ng-git
 	sha256sums = SKIP
 
 pkgname = syslog-ng-git
-

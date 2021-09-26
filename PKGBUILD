@@ -3,7 +3,7 @@
 
 pkgname=syslog-ng-git
 _pkgname=syslog-ng
-pkgver=3.29.1.r66.g088fc40ef
+pkgver=3.34.1.r22.ge18982343
 pkgrel=1
 pkgdesc="Enhanced system logging daemon"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL2' 'LGPL2.1')
 depends=('systemd-libs' 'awk' 'glib2' 'ivykis' 'openssl' 'pcre' 'json-c' 'curl' 'libnet')
 makedepends=('git' 'autoconf-archive' 'libxslt' 'docbook-xsl' 'json-c' 'curl' 'libdbi' 'libesmtp'
              'hiredis' 'librabbitmq-c' 'riemann-c-client' 'libmaxminddb' 'mongo-c-driver'
-             'net-snmp' 'librdkafka' 'python' 'systemd')
+             'net-snmp' 'librdkafka' 'paho-mqtt-c' 'python' 'systemd')
 checkdepends=('criterion' 'python-nose' 'python-ply')
 optdepends=('logrotate: for rotating log files'
             'json-c: for the JSON plugin'
@@ -26,6 +26,7 @@ optdepends=('logrotate: for rotating log files'
             'mongo-c-driver: for the MongoDB plugin'
             'net-snmp: for the SNMP plugin'
             'librdkafka: for the Kafka C plugin'
+            'paho-mqtt-c: for the MQTT plugin'
             'python: for Python-based plugins')
 provides=("$_pkgname")
 conflicts=("$_pkgname" 'eventlog')
