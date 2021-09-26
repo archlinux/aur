@@ -3,6 +3,7 @@ pkgbase = fritzing
 	pkgver = 0.9.8
 	pkgrel = 1
 	url = http://fritzing.org
+	install = fritzing.install
 	arch = aarch64
 	arch = i686
 	arch = x86_64

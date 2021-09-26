@@ -34,6 +34,7 @@ pkgdesc='PCB layout prototyping application'
 arch=('aarch64' 'i686' 'x86_64')
 url=http://fritzing.org
 license=(GPL3)
+install=fritzing.install
 makedepends=('boost' 'git')
 depends=('libgit2' 'qt5-serialport' 'qt5-svg')
 source=("git+https://github.com/fritzing/fritzing-app.git#commit=${_gitrev}"
