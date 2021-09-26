@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rviz'
 pkgname='ros-noetic-rviz'
 pkgver='1.14.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -43,6 +43,7 @@ ros_depends=(
     ros-noetic-std-srvs
     ros-noetic-tf2-ros
     ros-noetic-tf2-geometry-msgs
+    ros-noetic-tf2-eigen
     ros-noetic-urdf
     ros-noetic-visualization-msgs
     ros-noetic-media-export
