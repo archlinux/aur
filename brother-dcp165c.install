@@ -1,0 +1,26 @@
+post_install() {
+    # lpr
+    /usr/local/Brother/Printer/dcp165c/inf/setupPrintcapij dcp165c -i
+    
+    # cupswrapper
+    /usr/local/Brother/Printer/dcp165c/cupswrapper/cupswrapperdcp165c
+    
+    systemctl restart cups.service
+}
+
+post_upgrade() {
+    /bin/true
+}
+
+pre_remove() {
+    # lpr
+    /usr/local/Brother/Printer/dcp165c/inf/setupPrintcapij dcp165c -e
+    
+    # cupswrapper
+    /usr/local/Brother/Printer/dcp165c/cupswrapper/cupswrapperdcp165c -e
+}
+
+op=$1
+shift
+
+$op "$@"

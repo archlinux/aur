@@ -1,0 +1,10 @@
+--- ./usr/local/Brother/Printer/dcp165c/inf/setupPrintcapij.old	2008-10-24 15:32:59.000000000 +0200
++++ ./usr/local/Brother/Printer/dcp165c/inf/setupPrintcapij	2021-09-26 12:33:23.763845407 +0200
+@@ -34,7 +34,7 @@
+ 	if [ ! -d $SPOOLER_NAME ]; then
+ 	        mkdir $SPOOLER_NAME
+ 	fi
+-	chown lp $SPOOLER_NAME
++	chown root $SPOOLER_NAME
+ 	chgrp lp $SPOOLER_NAME
+ 	chmod 700 $SPOOLER_NAME
