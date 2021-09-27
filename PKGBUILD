@@ -2,8 +2,8 @@
 # Contributor: Rax Garfield <admin at dvizho.ks.ua>
 
 pkgname=hunspell-uk
-pkgver=5.3.1
-pkgrel=2
+pkgver=5.5.2
+pkgrel=1
 pkgdesc="Ukrainian spelling dictionary"
 arch=('any')
 url='https://github.com/brown-uk/dict_uk'
@@ -11,7 +11,7 @@ license=('CCPL')
 optdepends=('hunspell: the spell checking libraries and apps')
 makedepends=('qt5-webengine')
 source=("https://github.com/brown-uk/dict_uk/releases/download/v${pkgver}/hunspell-uk_UA_${pkgver}.zip")
-sha256sums=('71ab63a82841110e0745f3f7ccda41320ca815809a502c5c73c7d875a558fd23')
+sha256sums=('7930b34c9f8d15feb46b9f71a5fd4179d7cd2235401e5fb234cf51303569cd0c')
 
 package() {
   install -dm755 "$pkgdir"/usr/share/hunspell
