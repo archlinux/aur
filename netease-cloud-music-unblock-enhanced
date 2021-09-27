@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+trap 'kill $(jobs -p)' SIGINT SIGTERM EXIT
+name=netease-cloud-music-unblock-enhanced
+cd /usr/share/$name
+certutil -d sql:$HOME/.pki/nssdb -D -n $name
+certutil -d sql:$HOME/.pki/nssdb -A -i './ca.crt' -n $name -t C,,
+port=($(comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n 2))
+node ./app.js -p ${port[0]}:${port[1]} "$@" &
+export all_proxy=http://127.0.0.1:${port[0]}
+netease-cloud-music
