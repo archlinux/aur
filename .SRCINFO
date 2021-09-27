@@ -7,8 +7,7 @@ pkgbase = bass-fish
 	license = MIT
 	checkdepends = python
 	depends = fish
-	source = https://github.com/edc/bass/archive/v1.0.tar.gz
-	b2sums = SKIP
+	source = bass-fish-1.0.tar.gz::https://github.com/edc/bass/archive/v1.0.tar.gz
+	b2sums = b2f9e0489f27c22354c8e2a23f5e499bbf54166737a989bd754afa3e22c433a20df7df1708d1a8c59d549bbcf67dadb72632554beec353d3105b74204b2334e9
 
 pkgname = bass-fish
-

@@ -14,10 +14,10 @@ checkdepends=(
     python
 )
 source=(
-    "$url/archive/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
 
-b2sums=(SKIP)
+b2sums=('b2f9e0489f27c22354c8e2a23f5e499bbf54166737a989bd754afa3e22c433a20df7df1708d1a8c59d549bbcf67dadb72632554beec353d3105b74204b2334e9')
 
 _extracted="$_pkgname-$pkgver"
 _fish_vendor_func="usr/share/fish/vendor_functions.d/"
@@ -25,28 +25,21 @@ _license_dir="usr/share/licenses/$pkgname/"
 _doc_dir="usr/share/doc/$pkgname/"
 
 check() {
-    _test_path="$srcdir/$_extracted/test"
-    fish "$_test_path/test_bass.fish" &&
-        fish "$_test_path/test_dollar_on_output.fish"
+    make -C "$srcdir/$_extracted" test # call test target from upstream
 }
 
 package() {
-    install -dm0755 \
-        "$pkgdir/$_fish_vendor_func" \
-        "$pkgdir/$_license_dir" \
-        "$pkgdir/$_doc_dir"
+    install -Dm0644 \
+            "$srcdir/$_extracted/functions/__bass.py" \
+            "$srcdir/$_extracted/functions/bass.fish" \
+            -t "$pkgdir/$_fish_vendor_func/"
 
     install -Dm0644 \
-        "$srcdir/$_extracted/functions/__bass.py" \
-        "$srcdir/$_extracted/functions/bass.fish" \
-        "$pkgdir/$_fish_vendor_func"
+            "$srcdir/$_extracted/LICENSE" \
+            -t "$pkgdir/$_license_dir/"
 
     install -Dm0644 \
-        "$srcdir/$_extracted/LICENSE" \
-        "$pkgdir/$_license_dir"
-
-    install -Dm0644 \
-        "$srcdir/$_extracted/README.md" \
-        "$pkgdir/$_doc_dir"
+            "$srcdir/$_extracted/README.md" \
+            -t "$pkgdir/$_doc_dir/"
 }
 
