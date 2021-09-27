@@ -1,5 +1,5 @@
 pkgbase = linux-tqc-a01
-	pkgver = 5.14.3
+	pkgver = 5.14.8
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -35,7 +35,7 @@ pkgbase = linux-tqc-a01
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.3.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.8.xz
 	md5sums = a082ef5748b813abca0649dab8be5f52
 	md5sums = 46d921dba031a9f397955a787c71911e
 	md5sums = 17aa0c69176c68cd98b4522740a1b747
@@ -53,11 +53,11 @@ pkgbase = linux-tqc-a01
 	md5sums = 05c4d9cbe622d5ff15e6b84b1c5c1a70
 	md5sums = d1543c205b4faf9be4552d4308228217
 	md5sums = e4ef0ae46cdfb23abb11d729452f68b2
-	md5sums = 51ad2844b5fe4b9bb735055c82d01682
+	md5sums = 80fec552244267a059d06399c1a3c931
 	md5sums = 66e0ae63183426b28c0ec0c7e10b5e16
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 3dc88030a8f2f5a5f97266d99b149f77
-	md5sums = f824457274fe967ff517171f15a19d83
+	md5sums = 767e2bd13b4f1497f7500877792cbff2
 
 pkgname = linux-tqc-a01
 	pkgdesc = The Linux Kernel and modules - AArch64 kernel for TQC A01
@@ -67,7 +67,7 @@ pkgname = linux-tqc-a01
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.14.3
+	provides = linux=5.14.8
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -75,5 +75,5 @@ pkgname = linux-tqc-a01
 
 pkgname = linux-tqc-a01-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for TQC A01
-	provides = linux-headers=5.14.3
+	provides = linux-headers=5.14.8
 	conflicts = linux-headers

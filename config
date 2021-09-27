@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.14.3-1 Kernel Configuration
+# Linux/arm64 5.14.8-1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 10.2.0"
 CONFIG_CC_IS_GCC=y
@@ -7480,6 +7480,7 @@ CONFIG_DVB_SP8870=m
 # CONFIG_LTE_GDM724X is not set
 # CONFIG_GS_FPGABOOT is not set
 # CONFIG_UNISYSSPAR is not set
+# CONFIG_COMMON_CLK_XLNX_CLKWZRD is not set
 CONFIG_FB_TFT=m
 CONFIG_FB_TFT_AGM1264K_FL=m
 CONFIG_FB_TFT_BD663474=m
