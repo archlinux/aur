@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 optdepends=('sxhkd: keybind support [recommended]'
 			'st: example rc files default terminal'
 			'dmenu: example rc files default launcher')
-makedepends=('git' 'xcb-proto' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms' 'xcb-util-cursor')
+depends=('git' 'xcb-proto' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms' 'xcb-util-cursor')
 install="${pkgname}.install"
 
 package()

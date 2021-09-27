@@ -6,12 +6,12 @@ pkgbase = dk
 	install = dk.install
 	arch = x86_64
 	license = MIT
-	makedepends = git
-	makedepends = xcb-proto
-	makedepends = xcb-util
-	makedepends = xcb-util-wm
-	makedepends = xcb-util-keysyms
-	makedepends = xcb-util-cursor
+	depends = git
+	depends = xcb-proto
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	depends = xcb-util-cursor
 	optdepends = sxhkd: keybind support [recommended]
 	optdepends = st: example rc files default terminal
 	optdepends = dmenu: example rc files default launcher
@@ -19,4 +19,3 @@ pkgbase = dk
 	sha256sums = SKIP
 
 pkgname = dk
-
