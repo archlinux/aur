@@ -2,7 +2,7 @@
 pkgname=easy-legendary-git
 _pkgname=easy-legendary
 pkgver=1.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Script writen in BASH by Franklin Souza to make legendary be easy."
 arch=('any')
 url="https://github.com/RedsonBr140/${_pkgname}"

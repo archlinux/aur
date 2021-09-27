@@ -1,7 +1,7 @@
 pkgbase = easy-legendary-git
 	pkgdesc = Script writen in BASH by Franklin Souza to make legendary be easy.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/RedsonBr140/easy-legendary
 	arch = any
 	license = GPL
