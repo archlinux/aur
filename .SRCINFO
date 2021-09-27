@@ -1,19 +1,18 @@
 pkgbase = libdaq-static
 	pkgdesc = Data Acquisition library for packet I/O.
-	pkgver = 2.2.2
+	pkgver = 3.0.5
 	pkgrel = 1
-	url = http://www.snort.org/
+	url = https://www.snort.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = ca-certificates
 	depends = libpcap
-	provides = libdaq
+	depends = libnetfilter_queue
+	provides = libdaq=3.0.5
 	conflicts = libdaq
-	options = !libtool
 	options = staticlibs
-	source = http://www.snort.org/downloads/snortplus/daq-2.2.2.tar.gz
-	sha512sums = 7c5341853eff6d2f94cc0b0c38df03b3595c6b829581cbe756582c33de813fba018fa4a984e8ea66fbb2849e573d33bb1fbd23a77f4ac7e0f93fe66ff205c95d
+	source = libdaq-3.0.5.tar.gz::https://github.com/snort3/libdaq/archive/refs/tags/v3.0.5.tar.gz
+	sha512sums = 8eaf6f47bba64e9482bea0189ed342b744df17974b6ee0e8ab19a244ef2a9c995aec6ef077a8bc131a5bad61a363b5a01b7477ae31b3bce17188dd0771533649
 
 pkgname = libdaq-static
-

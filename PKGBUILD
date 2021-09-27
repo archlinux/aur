@@ -2,27 +2,29 @@
 
 pkgname=libdaq-static
 _pkgname=libdaq
-pkgver=2.2.2
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='Data Acquisition library for packet I/O.'
 arch=('i686' 'x86_64')
-url='http://www.snort.org/'
+url='https://www.snort.org/'
 license=('GPL')
-depends=('libpcap')
-provides=('libdaq')
-conflicts=('libdaq')
-options=('!libtool' 'staticlibs')
+depends=('libpcap' 'libnetfilter_queue')
+provides=("${_pkgname}=$pkgver")
+conflicts=("${_pkgname}")
+options=('staticlibs')
 makedepends=('ca-certificates')
-source=(http://www.snort.org/downloads/snortplus/daq-${pkgver}.tar.gz)
-sha512sums=('7c5341853eff6d2f94cc0b0c38df03b3595c6b829581cbe756582c33de813fba018fa4a984e8ea66fbb2849e573d33bb1fbd23a77f4ac7e0f93fe66ff205c95d')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('8eaf6f47bba64e9482bea0189ed342b744df17974b6ee0e8ab19a244ef2a9c995aec6ef077a8bc131a5bad61a363b5a01b7477ae31b3bce17188dd0771533649')
 
 build() {
-  cd "${srcdir}/daq-${pkgver}"
+  cd ${_pkgname}-${pkgver}
+  ./bootstrap
   ./configure --prefix=/usr
-  make -j1
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make V=0
 }
 
 package() {
-  cd "${srcdir}/daq-${pkgver}"
+  cd ${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
