@@ -1,6 +1,6 @@
 pkgbase = kcoreaddons-git
 	pkgdesc = Addons to QtCore
-	pkgver = 5.86.0_r1273.gdb7f2594
+	pkgver = 5.87.0_r1298.g61ce6c7b
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kcoreaddons-git
 	makedepends = clang
 	makedepends = python-pyqt5
 	makedepends = doxygen
-	makedepends = sip
+	makedepends = sip4
 	depends = qt5-base
 	optdepends = python-pyqt5: for the Python bindings
 	provides = kcoreaddons
