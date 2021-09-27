@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=uwm-git
-pkgver=0.30.13
+pkgver=0.32.6
 pkgrel=1
 pkgdesc="Micro (u) Window Manager"
 arch=('i686' 'x86_64')
