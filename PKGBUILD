@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=buceutils-git
-pkgver=0.r70.g6514897
+pkgver=0.r75.g9fcdf21
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -34,6 +34,7 @@ depends=(
   perl-spreadsheet-writeexcel
   alsa-utils
   xorg-xrandr
+  xclip
   awk
   imagemagick
   python

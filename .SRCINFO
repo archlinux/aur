@@ -1,6 +1,6 @@
 pkgbase = buceutils-git
 	pkgdesc = A collection of simple utilities.
-	pkgver = 0.r70.g6514897
+	pkgver = 0.r75.g9fcdf21
 	pkgrel = 1
 	url = https://github.com/DMBuce/buceutils
 	arch = any
@@ -25,6 +25,7 @@ pkgbase = buceutils-git
 	depends = perl-spreadsheet-writeexcel
 	depends = alsa-utils
 	depends = xorg-xrandr
+	depends = xclip
 	depends = awk
 	depends = imagemagick
 	depends = python
