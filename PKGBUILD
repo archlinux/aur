@@ -6,6 +6,9 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
+# Documentation:
+# https://docs.nvidia.com/video-technologies/video-codec-sdk/ffmpeg-with-nvidia-gpu/
+
 pkgname=ffmpeg-cuda
 pkgver=4.4
 pkgrel=1
