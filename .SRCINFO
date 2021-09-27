@@ -1,6 +1,6 @@
 pkgbase = gtksu-git
 	pkgdesc = A Qt5-based replacement for gksu
-	pkgver = r102.a8528e7
+	pkgver = 0.1.6.r3.ga8528e7
 	pkgrel = 1
 	url = https://github.com/KeithDHedger/GtkSu
 	arch = any

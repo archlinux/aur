@@ -1,34 +1,39 @@
-# Maintainer: Dominik Fuchs <d.fuchs@mail.com>
-
 pkgname=gtksu-git
-pkgver=r102.a8528e7
+pkgver=0.1.6.r3.ga8528e7
 pkgrel=1
-pkgdesc='A Qt5-based replacement for gksu'
-arch=('any')
-url='https://github.com/KeithDHedger/GtkSu'
+pkgdesc="A simple replacement for gksu"
+arch=('x86_64')
+url="https://github.com/KeithDHedger/GtkSu"
 license=('GPL')
 depends=('qt5-base')
-makedepends=('git' 'automake-1.15')
-conflicts=('gksu')
-provides=('gksu')
-source=("$pkgname::git+https://github.com/KeithDHedger/GtkSu.git#branch=master")
+makedepends=('git')
+provides=("${pkgname%-git}" 'gksu')
+conflicts=("${pkgname%-git}" 'gksu')
+source=(""${pkgname%-git}"::git+https://github.com/KeithDHedger/GtkSu.git")
 md5sums=('SKIP')
-
+ 
 pkgver() {
-  cd $pkgname
-  # git describe can't describe anything without tags
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${pkgname%-git}"
+    git describe --long --tags | sed 's/^gtksu.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
+ 
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+ 
+    # Fix building with aclocal 1.16
+    find . -type f -exec sed -i 's|1.15|1.16|g' {} \;
+}
+ 
 build() {
-   cd $pkgname
-   ./configure --enable-qt5 --prefix=/usr
-   make || return 1
+     cd "$srcdir/${pkgname%-git}"
+     ./autogen.sh
+     ./configure --prefix=/usr --enable-qt5
+     make
 }
-
+ 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
-  cd $pkgdir/usr/bin
-  ln -s gtksu gksu
+    cd "$srcdir/${pkgname%-git}"
+    make DESTDIR="$pkgdir" install
+ 
+    ln -s "/usr/bin/$_pkgname" "$pkgdir/usr/bin/gksu"
 }
