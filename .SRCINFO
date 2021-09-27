@@ -1,0 +1,13 @@
+pkgbase = printit-bin
+	pkgdesc = CLI for printing at Chalmers University
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hulthe/printit
+	arch = x86_64
+	license = MPL2
+	provides = printit
+	conflicts = printit
+	source = https://github.com/hulthe/printit/releases/download/1.0.0/printit-1.0.0-x86_64.tar.gz
+	sha256sums = 2040afcd7da008495b21f05fe82b4f415ba861f149f02021bbee9f7c30beeaa0
+
+pkgname = printit-bin
