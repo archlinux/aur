@@ -50,10 +50,11 @@ provides+=(spice-vdagent)
 conflicts+=(spice-vdagent)
 
 source+=("spice-extra-mouse-buttons.patch")
-sha256sums+=('776e631c0c1c2d95281bf6f40fab5105a047c3d1f77e803935a53d3bc7722974')
+sha256sums+=('9737a2476e3f240eafbd5dec386f7d9949c0db1f4a967449c530fdd2ea7cbfef')
 
 _pkgname=$pkgname
 pkgname+="-extra-mouse-buttons"
+pkgrel="$pkgrel.1"
 pkgdesc+=" (with support for extra mouse buttons)"
 eval "$(declare -f prepare | sed 's/$pkgname/$_pkgname/g')"
 eval "$(declare -f build | sed 's/$pkgname/$_pkgname/g')"
