@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=uwm-git
-pkgver=0.30.11
+pkgver=0.30.13
 pkgrel=1
 pkgdesc="Micro (u) Window Manager"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ provides=('uwm')
 conflicts=('uwm')
 backup=(usr/share/X11/uwm/system.uwmrc)
 depends=('xcb-util-renderutil' 'xcb-util-image' 'xcb-util-keysyms' 'bash' 'libpng' 'libjpeg' 'xcb-util-wm')
-makedepends=('git')
+makedepends=('git' 'libx11')
 source=("$pkgname::git://git.code.sf.net/p/uwm/code"
         "arrayextern.patch"
         "uwm.desktop")
@@ -31,7 +31,7 @@ prepare() {
   sed 's,/usr/local/etc/system.uwmrc,/usr/share/X11/uwm/system.uwmrc,' -i uwmrc.5
   sed 's,/etc/system.uwmrc /usr/local/etc/system.uwmrc,/usr/share/X11/uwm/system.uwmrc,' -i uwm.1
   cd core-array
-  patch -Np1 <../../arrayextern.patch
+# patch -Np1 <../../arrayextern.patch
 }
 
 build() {
