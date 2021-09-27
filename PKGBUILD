@@ -1,24 +1,23 @@
-# Maintainer: Luke Arms <luke@arms.to>
+# Maintainer: xerus <27jf at pm dot me>
 
-pkgname=stretchly-git
-_pkgname=${pkgname%-git}
-pkgver=960.86c901e
+_pkgname=stretchly
+pkgname=${_pkgname}-xeruf-git
+pkgver=986.1312677
 pkgrel=1
-pkgdesc="The break time reminder app"
+pkgdesc="The break time reminder app, hardened"
 arch=('any')
-url="https://github.com/hovancik/stretchly/"
+url="https://github.com/xeruf/stretchly"
 license=('BSD')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'electron')
 makedepends=('git' 'nvm' 'jq' 'python')
+optdepends=('libxss')
 provides=("$_pkgname")
-conflicts=("$_pkgname" "${_pkgname}-bin")
-source=("git+https://github.com/hovancik/stretchly.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    printf '%s.%s' \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf '%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 _ensure_local_nvm() {
