@@ -32,6 +32,7 @@ pkgbase = mutter-x11-scaling
 	depends = xorg-xwayland
 	depends = graphene
 	depends = libxkbfile
+	depends = wayland-protocols
 	provides = mutter
 	provides = libmutter-8.so
 	conflicts = mutter

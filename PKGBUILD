@@ -13,7 +13,7 @@ license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
-         xorg-xwayland graphene libxkbfile)
+         xorg-xwayland graphene libxkbfile wayland-protocols)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server)
 checkdepends=(xorg-server-xvfb pipewire-media-session)
 conflicts=($_pkgname)
