@@ -38,7 +38,7 @@ build() {
   autoreconf -i
 
   # disable guestfish tests because of https://bugs.archlinux.org/task/71746
-  ./configure --prefix=/usr --sbindir=/usr/bin GUESTFISH=no
+  ./configure --prefix=/usr --sbindir=/usr/bin GUESTFISH=no --without-libguestfs
   make
 }
 
