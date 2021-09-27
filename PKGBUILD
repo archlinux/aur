@@ -1,5 +1,4 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 # Based on thunderbird-beta-bin: Det <nimetonmaili g-mail>
 # Based on [extra]'s thunderbird: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Based on tor-browser: grufo <madmurphy333 AT gmail DOT com>
@@ -10,7 +9,7 @@
 #
 
 pkgname=thunderbird-localized-beta-bin
-pkgver=93.0b3
+pkgver=93.0b4
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org — localized beta version'
 arch=('i686' 'x86_64')
