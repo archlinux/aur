@@ -1,0 +1,809 @@
+--- a/src/Language/SystemVerilog/AST/Number.hs	2021-07-31 20:11:02.000000000 +0200
++++ b/src/Language/SystemVerilog/AST/Number.hs	2021-09-27 17:49:30.524549944 +0200
+@@ -328,7 +328,7 @@
+ 
+ -- number concatenation
+ instance Semigroup Number where
+-    (n1 @ Based{}) <> (n2 @ Based{}) =
++    (n1@Based{}) <> (n2@Based{}) =
+         Based size signed base values kinds
+         where
+             size = size1 + size2
+@@ -344,7 +344,7 @@
+     n1 <> n2 =
+         toBased n1 <> toBased n2
+         where
+-            toBased (n @ Based{}) = n
++            toBased (n@Based{}) = n
+             toBased (Decimal size signed num) =
+                 Based size signed Hex num 0
+             toBased (UnbasedUnsized bit) =
+--- a/src/Language/SystemVerilog/AST/Expr.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Language/SystemVerilog/AST/Expr.hs	2021-09-27 17:52:39.545214047 +0200
+@@ -91,11 +91,11 @@
+             showPatternItem (Left t, v) = printf "%s: %s" tStr (show v)
+                 where tStr = if null (show t) then "default" else show t
+     show (MinTypMax a b c) = printf "(%s : %s : %s)" (show a) (show b) (show c)
+-    show (e @ UniOp{}) = showsPrec 0 e ""
+-    show (e @ BinOp{}) = showsPrec 0 e ""
+-    show (e @ Dot  {}) = showsPrec 0 e ""
+-    show (e @ Mux  {}) = showsPrec 0 e ""
+-    show (e @ Call {}) = showsPrec 0 e ""
++    show (e@UniOp{}) = showsPrec 0 e ""
++    show (e@BinOp{}) = showsPrec 0 e ""
++    show (e@Dot  {}) = showsPrec 0 e ""
++    show (e@Mux  {}) = showsPrec 0 e ""
++    show (e@Call {}) = showsPrec 0 e ""
+ 
+     showsPrec _ (UniOp   o e  ) =
+         shows o .
+@@ -185,12 +185,12 @@
+ showRange (h, l) = '[' : show h ++ ':' : show l ++ "]"
+ 
+ showUniOpPrec :: Expr -> ShowS
+-showUniOpPrec (e @ UniOp{}) = (showParen True . shows) e
+-showUniOpPrec (e @ BinOp{}) = (showParen True . shows) e
++showUniOpPrec (e@UniOp{}) = (showParen True . shows) e
++showUniOpPrec (e@BinOp{}) = (showParen True . shows) e
+ showUniOpPrec e = shows e
+ 
+ showBinOpPrec :: Expr -> ShowS
+-showBinOpPrec (e @ BinOp{}) = (showParen True . shows) e
++showBinOpPrec (e@BinOp{}) = (showParen True . shows) e
+ showBinOpPrec e = shows e
+ 
+ type ParamBinding = (Identifier, TypeOrExpr)
+--- a/src/Language/SystemVerilog/AST/Stmt.hs	2021-09-27 17:55:49.292475468 +0200
++++ b/src/Language/SystemVerilog/AST/Stmt.hs	2021-09-27 17:56:07.555863130 +0200
+@@ -104,9 +104,9 @@
+ showAssign (l, op, e) = (showPad l) ++ (showPad op) ++ (show e)
+ 
+ showBranch :: Stmt -> String
+-showBranch (Block Seq "" [] (stmts @ [CommentStmt{}, _])) =
++showBranch (Block Seq "" [] (stmts@[CommentStmt{}, _])) =
+     '\n' : (indent $ show stmts)
+-showBranch (block @ Block{}) = ' ' : show block
++showBranch (block@Block{}) = ' ' : show block
+ showBranch stmt = '\n' : (indent $ show stmt)
+ 
+ showBlockedBranch :: Stmt -> String
+@@ -129,11 +129,11 @@
+             _ -> False
+ 
+ showElseBranch :: Stmt -> String
+-showElseBranch (stmt @ If{}) = ' ' : show stmt
++showElseBranch (stmt@If{}) = ' ' : show stmt
+ showElseBranch stmt = showBranch stmt
+ 
+ showShortBranch :: Stmt -> String
+-showShortBranch (stmt @ Asgn{}) = ' ' : show stmt
++showShortBranch (stmt@Asgn{}) = ' ' : show stmt
+ showShortBranch stmt = showBranch stmt
+ 
+ showCase :: Case -> String
+--- a/src/Convert/UnnamedGenBlock.hs	2021-07-13 03:18:12.000000000 +0200
++++ b/src/Convert/UnnamedGenBlock.hs	2021-09-27 17:59:17.843072378 +0200
+@@ -31,10 +31,10 @@
+ initialState = ([], 1)
+ 
+ traverseModuleItemM :: ModuleItem -> S ModuleItem
+-traverseModuleItemM (item @ (Genvar x)) = declaration x item
+-traverseModuleItemM (item @ (NInputGate  _ _ x _ _)) = declaration x item
+-traverseModuleItemM (item @ (NOutputGate _ _ x _ _)) = declaration x item
+-traverseModuleItemM (item @ (Instance    _ _ x _ _)) = declaration x item
++traverseModuleItemM (item@(Genvar x)) = declaration x item
++traverseModuleItemM (item@(NInputGate  _ _ x _ _)) = declaration x item
++traverseModuleItemM (item@(NOutputGate _ _ x _ _)) = declaration x item
++traverseModuleItemM (item@(Instance    _ _ x _ _)) = declaration x item
+ traverseModuleItemM (MIPackageItem (Decl decl)) =
+     traverseDeclM decl >>= return . MIPackageItem . Decl
+ traverseModuleItemM (MIAttr attr item) =
+@@ -56,10 +56,10 @@
+ -- label the generate blocks within an individual generate item which is already
+ -- in a list of generate items (top level or generate block)
+ traverseGenItemM :: GenItem -> S GenItem
+-traverseGenItemM (item @ GenIf{}) = do
++traverseGenItemM (item@GenIf{}) = do
+     item' <- labelGenElse item
+     incrCount >> return item'
+-traverseGenItemM (item @ GenBlock{}) = do
++traverseGenItemM (item@GenBlock{}) = do
+     item' <- labelBlock item
+     incrCount >> return item'
+ traverseGenItemM (GenFor a b c item) = do
+--- a/src/Convert/KWArgs.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/KWArgs.hs	2021-09-27 18:02:55.903653860 +0200
+@@ -55,7 +55,7 @@
+ convertStmt _ other = other
+ 
+ convertInvoke :: TFs -> (Expr -> Args -> a) -> Expr -> Args -> a
+-convertInvoke tfs constructor (Ident func) (Args pnArgs (kwArgs @ (_ : _))) =
++convertInvoke tfs constructor (Ident func) (Args pnArgs (kwArgs@(_ : _))) =
+     case tfs Map.!? func of
+         Nothing -> constructor (Ident func) (Args pnArgs kwArgs)
+         Just ordered -> constructor (Ident func) (Args args [])
+--- a/src/Convert/MultiplePacked.hs	2021-07-18 05:12:44.000000000 +0200
++++ b/src/Convert/MultiplePacked.hs	2021-09-27 18:02:55.916987228 +0200
+@@ -42,7 +42,7 @@
+ convert = map $ traverseDescriptions convertDescription
+ 
+ convertDescription :: Description -> Description
+-convertDescription (description @ (Part _ _ Module _ _ _ _)) =
++convertDescription (description@(Part _ _ Module _ _ _ _)) =
+     partScoper traverseDeclM traverseModuleItemM traverseGenItemM traverseStmtM
+     description
+ convertDescription other = other
+@@ -52,7 +52,7 @@
+ traverseDeclM (Variable dir t ident a e) = do
+     t' <- traverseTypeM t a ident
+     traverseDeclExprsM traverseExprM $ Variable dir t' ident a e
+-traverseDeclM net @ Net{} =
++traverseDeclM net@Net{} =
+     traverseNetAsVarM traverseDeclM net
+ traverseDeclM (Param s t ident e) = do
+     t' <- traverseTypeM t [] ident
+@@ -233,7 +233,7 @@
+             if head x == tag
+                 then Ident $ tail x
+                 else Ident x
+-        rewriteExpr (orig @ (Bit (Bit expr idxInner) idxOuter)) =
++        rewriteExpr (orig@(Bit (Bit expr idxInner) idxOuter)) =
+             if isJust maybeDims && expr == rewriteExpr expr
+                 then Bit expr' idx'
+                 else rewriteExprLowPrec orig
+@@ -244,7 +244,7 @@
+                 idxOuter' = orientIdx dimOuter idxOuter
+                 base = BinOp Mul idxInner' (rangeSize dimOuter)
+                 idx' = simplify $ BinOp Add base idxOuter'
+-        rewriteExpr (orig @ (Range (Bit expr idxInner) NonIndexed rangeOuter)) =
++        rewriteExpr (orig@(Range (Bit expr idxInner) NonIndexed rangeOuter)) =
+             if isJust maybeDims && expr == rewriteExpr expr
+                 then rewriteExpr $ Range exprOuter IndexedMinus range
+                 else rewriteExprLowPrec orig
+@@ -256,7 +256,7 @@
+                 base = endianCondExpr rangeOuter baseDec baseInc
+                 len = rangeSize rangeOuter
+                 range = (base, len)
+-        rewriteExpr (orig @ (Range (Bit expr idxInner) modeOuter rangeOuter)) =
++        rewriteExpr (orig@(Range (Bit expr idxInner) modeOuter rangeOuter)) =
+             if isJust maybeDims && expr == rewriteExpr expr
+                 then Range expr' modeOuter range'
+                 else rewriteExprLowPrec orig
+@@ -279,7 +279,7 @@
+             rewriteExprLowPrec other
+ 
+         rewriteExprLowPrec :: Expr -> Expr
+-        rewriteExprLowPrec (orig @ (Bit expr idx)) =
++        rewriteExprLowPrec (orig@(Bit expr idx)) =
+             if isJust maybeDims && expr == rewriteExpr expr
+                 then Range expr' mode' range'
+                 else orig
+@@ -291,7 +291,7 @@
+                 len = rangeSize dimOuter
+                 base = BinOp Add (endianCondExpr dimOuter (snd dimOuter) (fst dimOuter)) (BinOp Mul idx' len)
+                 range' = (simplify base, simplify len)
+-        rewriteExprLowPrec (orig @ (Range expr NonIndexed range)) =
++        rewriteExprLowPrec (orig@(Range expr NonIndexed range)) =
+             if isJust maybeDims && expr == rewriteExpr expr
+                 then rewriteExpr $ Range expr IndexedMinus range'
+                 else orig
+@@ -302,7 +302,7 @@
+                 base = endianCondExpr range baseDec baseInc
+                 len = rangeSize range
+                 range' = (base, len)
+-        rewriteExprLowPrec (orig @ (Range expr mode range)) =
++        rewriteExprLowPrec (orig@(Range expr mode range)) =
+             if isJust maybeDims && expr == rewriteExpr expr
+                 then Range expr' mode' range'
+                 else orig
+--- a/src/Convert/ImplicitNet.hs	2021-07-23 21:46:42.000000000 +0200
++++ b/src/Convert/ImplicitNet.hs	2021-09-27 18:02:55.930320596 +0200
+@@ -49,20 +49,20 @@
+ traverseModuleItemM :: DefaultNetType -> ModuleItem -> Scoper () ModuleItem
+ traverseModuleItemM _ (Genvar x) =
+     insertElem x () >> return (Genvar x)
+-traverseModuleItemM defaultNetType (orig @ (Assign _ x _)) = do
++traverseModuleItemM defaultNetType (orig@(Assign _ x _)) = do
+     needsLHS defaultNetType x
+     return orig
+-traverseModuleItemM defaultNetType (orig @ (NInputGate _ _ x lhs exprs)) = do
++traverseModuleItemM defaultNetType (orig@(NInputGate _ _ x lhs exprs)) = do
+     insertElem x ()
+     needsLHS defaultNetType lhs
+     _ <- mapM (needsExpr defaultNetType) exprs
+     return orig
+-traverseModuleItemM defaultNetType (orig @ (NOutputGate _ _ x lhss expr)) = do
++traverseModuleItemM defaultNetType (orig@(NOutputGate _ _ x lhss expr)) = do
+     insertElem x ()
+     _ <- mapM (needsLHS defaultNetType) lhss
+     needsExpr defaultNetType expr
+     return orig
+-traverseModuleItemM defaultNetType (orig @ (Instance _ _ x _ ports)) = do
++traverseModuleItemM defaultNetType (orig@(Instance _ _ x _ ports)) = do
+     insertElem x ()
+     _ <- mapM (needsExpr defaultNetType . snd) ports
+     return orig
+--- a/src/Convert/TypeOf.hs	2021-07-31 03:09:08.000000000 +0200
++++ b/src/Convert/TypeOf.hs	2021-09-27 18:02:55.943653964 +0200
+@@ -41,7 +41,7 @@
+ 
+ -- insert the given declaration into the scope, and convert an TypeOfs within
+ traverseDeclM :: Decl -> ST Decl
+-traverseDeclM decl @ Net{} =
++traverseDeclM decl@Net{} =
+     traverseNetAsVarM traverseDeclM decl
+ traverseDeclM decl = do
+     decl' <- traverseDeclNodesM traverseTypeM traverseExprM decl
+@@ -98,7 +98,7 @@
+ traverseExprM (Cast (Left t) (Number (UnbasedUnsized bit))) =
+     -- defer until this expression becomes explicit
+     return $ Cast (Left t) (Number (UnbasedUnsized bit))
+-traverseExprM (Cast (Left (t @ (IntegerAtom TInteger _))) expr) =
++traverseExprM (Cast (Left (t@(IntegerAtom TInteger _))) expr) =
+     -- convert to cast to an integer vector type
+     traverseExprM $ Cast (Left t') expr
+     where
+@@ -186,14 +186,14 @@
+         size = numberBitLength n
+         sg = if numberIsSigned n then Signed else Unspecified
+ typeof (Call (Ident x) args) = typeofCall x args
+-typeof (orig @ (Bit e _)) = do
++typeof (orig@(Bit e _)) = do
+     t <- typeof e
+     let t' = popRange t
+     case t of
+         TypeOf{} -> lookupTypeOf orig
+         Alias{} -> return $ TypeOf orig
+         _ -> return $ typeSignednessOverride t' Unsigned t'
+-typeof (orig @ (Range e NonIndexed r)) = do
++typeof (orig@(Range e NonIndexed r)) = do
+     t <- typeof e
+     let t' = replaceRange r t
+     return $ case t of
+@@ -214,7 +214,7 @@
+             if mode == IndexedPlus
+                 then BinOp Sub (BinOp Add base len) (RawNum 1)
+                 else BinOp Add (BinOp Sub base len) (RawNum 1)
+-typeof (orig @ (Dot e x)) = do
++typeof (orig@(Dot e x)) = do
+     t <- typeof e
+     case t of
+         Struct _ fields [] -> return $ fieldsType fields
+@@ -401,7 +401,7 @@
+         sz2 = typeSize t2
+         typeSize :: Type -> Maybe Expr
+         typeSize (IntegerVector _ _ rs) = Just $ dimensionsSize rs
+-        typeSize (t @ IntegerAtom{}) =
++        typeSize (t@IntegerAtom{}) =
+             typeSize $ tf [(RawNum 1, RawNum 1)]
+             where (tf, []) = typeRanges t
+         typeSize _ = Nothing
+--- a/src/Convert/DimensionQuery.hs	2021-07-24 22:47:53.000000000 +0200
++++ b/src/Convert/DimensionQuery.hs	2021-09-27 18:02:55.950320648 +0200
+@@ -56,12 +56,12 @@
+     DimsFn fn $ Left $ TypeOf e
+ convertExpr (DimFn fn (Right e) d) =
+     DimFn fn (Left $ TypeOf e) d
+-convertExpr (orig @ (DimsFn FnUnpackedDimensions (Left t))) =
++convertExpr (orig@(DimsFn FnUnpackedDimensions (Left t))) =
+     case t of
+         UnpackedType _ rs -> RawNum $ fromIntegral $ length rs
+         TypeOf{} -> orig
+         _ -> RawNum 0
+-convertExpr (orig @ (DimsFn FnDimensions (Left t))) =
++convertExpr (orig@(DimsFn FnDimensions (Left t))) =
+     case t of
+         IntegerAtom{} -> RawNum 1
+         Alias{} -> orig
+--- a/src/Convert/HierConst.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/HierConst.hs	2021-09-27 18:02:55.956987332 +0200
+@@ -48,7 +48,7 @@
+ convertDescription description = description
+ 
+ expandParam :: [Identifier] -> ModuleItem -> ModuleItem
+-expandParam shadowed (MIPackageItem (Decl (param @ (Param Parameter _ x _)))) =
++expandParam shadowed (MIPackageItem (Decl (param@(Param Parameter _ x _)))) =
+     if elem x shadowed
+         then Generate $ map (GenModuleItem . wrap) [param, extra]
+         else wrap param
+@@ -82,14 +82,14 @@
+ 
+ -- substitute hierarchical references to constants
+ traverseExprM :: Expr -> ST Expr
+-traverseExprM (expr @ (Dot _ x)) = do
++traverseExprM (expr@(Dot _ x)) = do
+     expr' <- traverseSinglyNestedExprsM traverseExprM expr
+     detailsE <- lookupElemM expr'
+     detailsX <- lookupElemM x
+     case (detailsE, detailsX) of
+         (Just ([_, _], _, Left{}), Just ([_, _], _, Left{})) ->
+             return $ Ident x
+-        (Just (accesses @ [Access _ Nil, _], _, Left False), _) -> do
++        (Just (accesses@[Access _ Nil, _], _, Left False), _) -> do
+             details <- lookupElemM $ prefix x
+             when (details == Nothing) $
+                 insertElem accesses (Left True)
+--- a/src/Convert/Interface.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/Interface.hs	2021-09-27 18:02:55.963654016 +0200
+@@ -88,7 +88,7 @@
+         traverseModuleItemM :: ModuleItem -> Scoper [ModportDecl] ModuleItem
+         traverseModuleItemM (Modport modportName modportDecls) =
+             insertElem modportName modportDecls >> return (Generate [])
+-        traverseModuleItemM (instanceItem @ Instance{}) = do
++        traverseModuleItemM (instanceItem@Instance{}) = do
+             modports <- embedScopes (\l () -> l) ()
+             if isNothing maybePartInfo then
+                 return instanceItem
+@@ -129,7 +129,7 @@
+ 
+         -- add explicit slices for bindings of entire modport instance arrays
+         addImpliedSlice :: Scopes [ModportDecl] -> Expr -> Expr
+-        addImpliedSlice modports (orig @ (Dot expr modportName)) =
++        addImpliedSlice modports (orig@(Dot expr modportName)) =
+             case lookupIntfElem modports (InstArrKey expr) of
+                 Just (_, _, InstArrVal l r) ->
+                     Dot (Range expr NonIndexed (l, r)) modportName
+@@ -485,7 +485,7 @@
+             case lookup (Bit expr Tag) exprReplacements of
+                 Just resolved -> replaceArrTag (replaceExpr' local elt) resolved
+                 Nothing -> Bit (replaceExpr' local expr) (replaceExpr' local elt)
+-        replaceExpr' local (expr @ (Dot Ident{} _)) =
++        replaceExpr' local (expr@(Dot Ident{} _)) =
+             case lookup expr exprReplacements of
+                 Just expr' -> expr'
+                 Nothing -> checkExprResolution local expr $
+@@ -555,7 +555,7 @@
+                     Implicit Unspecified rs ->
+                         IntegerVector TLogic Unspecified rs
+                     _ -> t
+-        removeDeclDir decl @ Net{} =
++        removeDeclDir decl@Net{} =
+             traverseNetAsVar removeDeclDir decl
+         removeDeclDir other = other
+ 
+@@ -620,7 +620,7 @@
+         collectDeclDir (Variable dir _ ident _ _) =
+             when (dir /= Local) $
+                 tell $ Map.singleton ident dir
+-        collectDeclDir net @ Net{} =
++        collectDeclDir net@Net{} =
+             collectNetAsVarM collectDeclDir net
+         collectDeclDir _ = return ()
+         findDeclDir :: Identifier -> Direction
+@@ -641,7 +641,7 @@
+         loopVar = "_arr_" ++ key
+ 
+         isArray = not $ null ranges
+-        [arrayRange @ (arrayLeft, arrayRight)] = ranges
++        [arrayRange@(arrayLeft, arrayRight)] = ranges
+ 
+         -- wrap the given item in a generate loop if necessary
+         wrapInstance :: Identifier -> [ModuleItem] -> ModuleItem
+--- a/src/Convert/EmptyArgs.hs	2021-07-13 03:15:53.000000000 +0200
++++ b/src/Convert/EmptyArgs.hs	2021-09-27 18:02:55.966987358 +0200
+@@ -20,7 +20,7 @@
+ convert = map $ traverseDescriptions convertDescription
+ 
+ convertDescription :: Description -> Description
+-convertDescription (description @ Part{}) =
++convertDescription (description@Part{}) =
+     traverseModuleItems
+         (traverseExprs $ traverseNestedExprs $ convertExpr functions)
+         description'
+--- a/src/Convert/Jump.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/Jump.hs	2021-09-27 18:02:55.970320700 +0200
+@@ -105,7 +105,7 @@
+     where (decls, [stmt']) = addJumpStateDeclTF [] [stmt]
+ 
+ removeJumpState :: Stmt -> Stmt
+-removeJumpState (orig @ (Asgn _ _ (LHSIdent ident) _)) =
++removeJumpState (orig@(Asgn _ _ (LHSIdent ident) _)) =
+     if ident == jumpState
+         then Null
+         else orig
+--- a/src/Convert/ExprUtils.hs	2021-07-31 03:09:37.000000000 +0200
++++ b/src/Convert/ExprUtils.hs	2021-09-27 18:02:55.973654042 +0200
+@@ -44,9 +44,9 @@
+     Number $ Decimal size False value
+ simplifyStep (Concat [Number (Based size _ base value kinds)]) =
+     Number $ Based size False base value kinds
+-simplifyStep (Concat [e @ Stream{}]) = e
+-simplifyStep (Concat [e @ Concat{}]) = e
+-simplifyStep (Concat [e @ Repeat{}]) = e
++simplifyStep (Concat [e@Stream{}]) = e
++simplifyStep (Concat [e@Concat{}]) = e
++simplifyStep (Concat [e@Repeat{}]) = e
+ simplifyStep (Concat es) = Concat $ filter (/= Concat []) es
+ simplifyStep (Repeat (Dec 0) _) = Concat []
+ simplifyStep (Repeat (Dec 1) es) = Concat es
+@@ -91,23 +91,23 @@
+ simplifyBinOp Sub e1 (UniOp UniSub e2) = BinOp Add e1 e2
+ simplifyBinOp Sub (UniOp UniSub e1) e2 = UniOp UniSub $ BinOp Add e1 e2
+ 
+-simplifyBinOp Add (BinOp Add e (n1 @ Number{})) (n2 @ Number{}) =
++simplifyBinOp Add (BinOp Add e (n1@Number{})) (n2@Number{}) =
+     BinOp Add e (BinOp Add n1 n2)
+-simplifyBinOp Sub (n1 @ Number{}) (BinOp Sub (n2 @ Number{}) e) =
++simplifyBinOp Sub (n1@Number{}) (BinOp Sub (n2@Number{}) e) =
+     BinOp Add (BinOp Sub n1 n2) e
+-simplifyBinOp Sub (n1 @ Number{}) (BinOp Sub e (n2 @ Number{})) =
++simplifyBinOp Sub (n1@Number{}) (BinOp Sub e (n2@Number{})) =
+     BinOp Sub (BinOp Add n1 n2) e
+-simplifyBinOp Sub (BinOp Add e (n1 @ Number{})) (n2 @ Number{}) =
++simplifyBinOp Sub (BinOp Add e (n1@Number{})) (n2@Number{}) =
+     BinOp Add e (BinOp Sub n1 n2)
+-simplifyBinOp Add (n1 @ Number{}) (BinOp Add (n2 @ Number{}) e) =
++simplifyBinOp Add (n1@Number{}) (BinOp Add (n2@Number{}) e) =
+     BinOp Add (BinOp Add n1 n2) e
+-simplifyBinOp Add (n1 @ Number{}) (BinOp Sub e (n2 @ Number{})) =
++simplifyBinOp Add (n1@Number{}) (BinOp Sub e (n2@Number{})) =
+     BinOp Add e (BinOp Sub n1 n2)
+-simplifyBinOp Sub (BinOp Sub e (n1 @ Number{})) (n2 @ Number{}) =
++simplifyBinOp Sub (BinOp Sub e (n1@Number{})) (n2@Number{}) =
+     BinOp Sub e (BinOp Add n1 n2)
+-simplifyBinOp Add (BinOp Sub e (n1 @ Number{})) (n2 @ Number{}) =
++simplifyBinOp Add (BinOp Sub e (n1@Number{})) (n2@Number{}) =
+     BinOp Sub e (BinOp Sub n1 n2)
+-simplifyBinOp Add (BinOp Sub (n1 @ Number{}) e) (n2 @ Number{}) =
++simplifyBinOp Add (BinOp Sub (n1@Number{}) e) (n2@Number{}) =
+     BinOp Sub (BinOp Add n1 n2) e
+ simplifyBinOp Ge (BinOp Sub e (Dec 1)) (Dec 0) = BinOp Ge e (toDec 1)
+ 
+--- a/src/Convert/ParamNoDefault.hs	2021-07-13 03:15:53.000000000 +0200
++++ b/src/Convert/ParamNoDefault.hs	2021-09-27 18:02:55.976987384 +0200
+@@ -65,7 +65,7 @@
+ 
+ -- check for instances missing values for parameters without defaults
+ traverseModuleItem :: Parts -> ModuleItem -> ModuleItem
+-traverseModuleItem parts (orig @ (Instance part params name _ _)) =
++traverseModuleItem parts (orig@(Instance part params name _ _)) =
+     if maybePartInfo == Nothing || null missingParams
+         then orig
+         else error $ "instance " ++ show name ++ " of " ++ show part
+--- a/src/Convert/StringParam.hs	2021-07-13 03:15:53.000000000 +0200
++++ b/src/Convert/StringParam.hs	2021-09-27 18:02:55.980320726 +0200
+@@ -72,7 +72,7 @@
+ elaborateStringParam :: Idents -> ModuleItem -> ModuleItem
+ elaborateStringParam idents (MIAttr attr item) =
+     MIAttr attr $ elaborateStringParam idents item
+-elaborateStringParam idents (orig @ (StringParam x str)) =
++elaborateStringParam idents (orig@(StringParam x str)) =
+     if Set.member x idents
+         then Generate $ map wrap [width, param]
+         else orig
+@@ -99,7 +99,7 @@
+     where
+         expand :: [Identifier] -> ParamBinding -> [ParamBinding]
+         expand _ (paramName, Left t) = [(paramName, Left t)]
+-        expand stringParams (orig @ (paramName, Right expr)) =
++        expand stringParams (orig@(paramName, Right expr)) =
+             if elem paramName stringParams
+                 then [(widthName paramName, Right width), orig]
+                 else [orig]
+--- a/src/Convert/FuncRoutine.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/FuncRoutine.hs	2021-09-27 18:02:55.983654068 +0200
+@@ -22,7 +22,7 @@
+ convert = map $ traverseDescriptions convertDescription
+ 
+ convertDescription :: Description -> Description
+-convertDescription (description @ Part{}) =
++convertDescription (description@Part{}) =
+     traverseModuleItems traverseModuleItem description
+     where
+         traverseModuleItem =
+--- a/src/Convert/Stream.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/Stream.hs	2021-09-27 18:02:55.986987409 +0200
+@@ -27,7 +27,7 @@
+         expr' = resize exprSize lhsSize expr
+         lhsSize = DimsFn FnBits $ Left t
+         exprSize = sizeof expr
+-traverseDeclM (Variable d t x [] (expr @ (Stream StreamL chunk exprs))) = do
++traverseDeclM (Variable d t x [] (expr@(Stream StreamL chunk exprs))) = do
+     inProcedure <- withinProcedureM
+     if inProcedure
+         then return $ Variable d t x [] expr
+@@ -40,7 +40,7 @@
+         expr' = Call (Ident fnName) (Args [Concat exprs] [])
+ traverseDeclM (Variable d t x a expr) =
+     traverseExprM expr >>= return . Variable d t x a
+-traverseDeclM decl @ Net{} = traverseNetAsVarM traverseDeclM decl
++traverseDeclM decl@Net{} = traverseNetAsVarM traverseDeclM decl
+ traverseDeclM decl = return decl
+ 
+ traverseModuleItemM :: ModuleItem -> Scoper () ModuleItem
+--- a/src/Convert/Scoper.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/Scoper.hs	2021-09-27 18:02:55.993654093 +0200
+@@ -276,7 +276,7 @@
+     Entry _ "" subMapping <- Map.lookup x mapping
+     directResolve subMapping rest
+ directResolve mapping (Access x e : rest) = do
+-    Entry _ (index @ (_ : _)) subMapping <- Map.lookup x mapping
++    Entry _ (index@(_ : _)) subMapping <- Map.lookup x mapping
+     (replacements, element) <- directResolve subMapping rest
+     let replacements' = Map.insert index e replacements
+     Just (replacements', element)
+--- a/src/Convert/ParamType.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/ParamType.hs	2021-09-27 18:02:55.996987435 +0200
+@@ -39,7 +39,7 @@
+         -- add type parameter instantiations
+         files'' = map (concatMap explodeDescription) files'
+         explodeDescription :: Description -> [Description]
+-        explodeDescription (part @ (Part _ _ _ _ name _ _)) =
++        explodeDescription (part@(Part _ _ _ _ name _ _)) =
+             (part :) $
+             filter (not . alreadyExists) $
+             map (rewriteModule part) theseInstances
+@@ -57,7 +57,7 @@
+             both (Map.fromListWith Set.union) $
+             execWriter $ mapM (mapM collectUsageM) files''
+         collectUsageM :: Description -> Writer (UsageMap, UsageMap) ()
+-        collectUsageM (part @ (Part _ _ _ _ name _ _)) =
++        collectUsageM (part@(Part _ _ _ _ name _ _)) =
+             tell $ both makeList $ execWriter $
+                 (collectModuleItemsM collectModuleItemM) part
+             where makeList s = zip (Set.toList s) (repeat $ Set.singleton name)
+@@ -93,7 +93,7 @@
+ 
+         -- instantiate the type parameters if this is a used default instance
+         reduceTypeDefaults :: Description -> Description
+-        reduceTypeDefaults (part @ (Part _ _ _ _ name _ _)) =
++        reduceTypeDefaults (part@(Part _ _ _ _ name _ _)) =
+             if shouldntReduce
+                 then part
+                 else traverseModuleItems (traverseDecls rewriteDecl) part
+@@ -149,7 +149,7 @@
+                 additionalParamItems = concatMap makeAddedParams $
+                     Map.toList $ Map.map snd inst
+                 rewriteExpr :: Expr -> Expr
+-                rewriteExpr (orig @ (Dot (Ident x) y)) =
++                rewriteExpr (orig@(Dot (Ident x) y)) =
+                     if x == m
+                         then Dot (Ident m') y
+                         else orig
+@@ -157,7 +157,7 @@
+                     traverseExprTypes rewriteType $
+                     traverseSinglyNestedExprs rewriteExpr other
+                 rewriteLHS :: LHS -> LHS
+-                rewriteLHS (orig @ (LHSDot (LHSIdent x) y)) =
++                rewriteLHS (orig@(LHSDot (LHSIdent x) y)) =
+                     if x == m
+                         then LHSDot (LHSIdent m') y
+                         else orig
+@@ -192,7 +192,7 @@
+ 
+ -- write down module parameter names and type parameters
+ collectDescriptionM :: Description -> Writer Modules ()
+-collectDescriptionM (part @ (Part _ _ _ _ name _ _)) =
++collectDescriptionM (part@(Part _ _ _ _ name _ _)) =
+     tell $ Map.singleton name typeMap
+     where
+         typeMap = Map.fromList $ execWriter $
+@@ -250,7 +250,7 @@
+         (traverseTypeExprsM $ traverseNestedExprsM prepareExpr)
+     where
+         prepareExpr :: Expr -> Writer (IdentSet, DeclMap) Expr
+-        prepareExpr (e @ Call{}) = do
++        prepareExpr (e@Call{}) = do
+             tell (Set.empty, Map.singleton x decl)
+             prepareExpr $ Ident x
+             where
+@@ -281,7 +281,7 @@
+ 
+ -- attempt to rewrite instantiations with type parameters
+ convertModuleItemM :: ModuleItem -> Writer Instances ModuleItem
+-convertModuleItemM (orig @ (Instance m bindings x r p)) =
++convertModuleItemM (orig@(Instance m bindings x r p)) =
+     if hasOnlyExprs then
+         return orig
+     else if not hasUnresolvedTypes then do
+--- a/src/Convert/Struct.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/Struct.hs	2021-09-27 18:02:56.000320778 +0200
+@@ -24,7 +24,7 @@
+ convert = map $ traverseDescriptions convertDescription
+ 
+ convertDescription :: Description -> Description
+-convertDescription (description @ (Part _ _ Module _ _ _ _)) =
++convertDescription (description@(Part _ _ Module _ _ _ _)) =
+     partScoper traverseDeclM traverseModuleItemM traverseGenItemM traverseStmtM
+     description
+ convertDescription other = other
+@@ -103,7 +103,7 @@
+ 
+ -- write down the types of declarations
+ traverseDeclM :: Decl -> Scoper Type Decl
+-traverseDeclM decl @ Net{} =
++traverseDeclM decl@Net{} =
+     traverseNetAsVarM traverseDeclM decl
+ traverseDeclM decl = do
+     decl' <- case decl of
+@@ -196,7 +196,7 @@
+         e1' = convertExpr t e1
+         e2' = convertExpr t e2
+ 
+-convertExpr (struct @ (Struct _ fields [])) (Pattern itemsOrig) =
++convertExpr (struct@(Struct _ fields [])) (Pattern itemsOrig) =
+     if not (null extraNames) then
+         error $ "pattern " ++ show (Pattern itemsOrig) ++
+             " has extra named fields " ++ show extraNames ++
+@@ -301,7 +301,7 @@
+ 
+ -- TODO: This is a conversion for concat array literals with elements
+ -- that are unsized numbers. This probably belongs somewhere else.
+-convertExpr (t @ IntegerVector{}) (Concat exprs) =
++convertExpr (t@IntegerVector{}) (Concat exprs) =
+     if all isUnsizedNumber exprs
+         then Concat $ map (Cast $ Left t') exprs
+         else Concat $ map (convertExpr t') exprs
+@@ -316,7 +316,7 @@
+ 
+ -- TODO: This is really a conversion for using default patterns to
+ -- populate arrays. Maybe this should be somewhere else?
+-convertExpr t (orig @ (Pattern [(Left UnknownType, expr)])) =
++convertExpr t (orig@(Pattern [(Left UnknownType, expr)])) =
+     if null rs
+         then orig
+         else Repeat count [expr']
+--- a/src/Convert/Simplify.hs	2021-07-31 03:09:37.000000000 +0200
++++ b/src/Convert/Simplify.hs	2021-09-27 18:02:56.003654119 +0200
+@@ -155,6 +155,6 @@
+ substituteIdent :: Scopes Expr -> Expr -> Expr
+ substituteIdent scopes (Ident x) =
+     case lookupElem scopes x of
+-        Just (_, _, n @ Number{}) -> n
++        Just (_, _, n@Number{}) -> n
+         _ -> Ident x
+ substituteIdent _ other = other
+--- a/src/Convert/BlockDecl.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/BlockDecl.hs	2021-09-27 18:02:56.006987461 +0200
+@@ -42,7 +42,7 @@
+ convertStmt other = other
+ 
+ splitDecl :: Decl -> (Decl, Maybe (LHS, Expr))
+-splitDecl (decl @ (Variable _ _ _ _ Nil)) =
++splitDecl (decl@(Variable _ _ _ _ Nil)) =
+     (decl, Nothing)
+ splitDecl (Variable d t ident a e) =
+     (Variable d t ident a Nil, Just (LHSIdent ident, e))
+--- a/src/Convert/Package.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/Package.hs	2021-09-27 18:02:56.010320804 +0200
+@@ -87,8 +87,8 @@
+     tell (Map.empty, Map.singleton name (decls, map unpackClassItem items), [])
+     where
+         unpackClassItem :: ClassItem -> PackageItem
+-        unpackClassItem (item @ (_, Task{})) = checkTF item
+-        unpackClassItem (item @ (_, Function{})) = checkTF item
++        unpackClassItem (item@(_, Task{})) = checkTF item
++        unpackClassItem (item@(_, Function{})) = checkTF item
+         unpackClassItem item = checkNonTF item
+         checkTF :: ClassItem -> PackageItem
+         checkTF (QStatic, item) = item
+@@ -242,7 +242,7 @@
+         -- produces partial mappings of exported identifiers, while also
+         -- checking the validity of the exports
+         resolveExportMI :: IdentStateMap -> ModuleItem -> PackagesState IdentStateMap
+-        resolveExportMI mapping (MIPackageItem (item @ (Export pkg ident))) =
++        resolveExportMI mapping (MIPackageItem (item@(Export pkg ident))) =
+             if null packageName
+                 then error $ "invalid " ++ (init $ show item)
+                         ++ " outside of package"
+@@ -304,12 +304,12 @@
+                         ++ intercalate ", " rootPkgs
+ 
+         traversePackageItemM :: PackageItem -> Scope PackageItem
+-        traversePackageItemM (orig @ (Import pkg ident)) = do
++        traversePackageItemM (orig@(Import pkg ident)) = do
+             if null ident
+                 then wildcardImports pkg
+                 else explicitImport pkg ident
+             return $ Decl $ CommentDecl $ "removed " ++ show orig
+-        traversePackageItemM (orig @ (Export pkg ident)) = do
++        traversePackageItemM (orig@(Export pkg ident)) = do
+             () <- when (not (null pkg || null ident)) $ do
+                 localName <- resolveIdent ident
+                 rootPkg <- lift $ resolveRootPackage pkg ident
+@@ -459,7 +459,7 @@
+     assertMsg (not $ elem packageName stack) $
+         "package dependency loop: " ++ show first ++ " depends on "
+             ++ intercalate ", which depends on " (map show rest)
+-    let Just (package @ (exports, _))= maybePackage
++    let Just (package@(exports, _))= maybePackage
+     if Map.null exports
+         then do
+             -- process and resolve this package
+@@ -613,7 +613,7 @@
+ 
+ -- nests packages items missing from modules
+ convertDescription :: PIs -> Description -> Description
+-convertDescription pis (orig @ Part{}) =
++convertDescription pis (orig@Part{}) =
+     if Map.null pis
+         then orig
+         else Part attrs extern kw lifetime name ports items'
+--- a/src/Convert/UnbasedUnsized.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Convert/UnbasedUnsized.hs	2021-09-27 18:02:56.013654145 +0200
+@@ -207,7 +207,7 @@
+     Cast te $ convertExpr SelfDetermined e
+ convertExpr _ (Concat exprs) =
+     Concat $ map (convertExpr SelfDetermined) exprs
+-convertExpr context (Pattern [(Left UnknownType, e @ UU{})]) =
++convertExpr context (Pattern [(Left UnknownType, e@UU{})]) =
+     convertExpr context e
+ convertExpr _ (Pattern items) =
+     Pattern $ zip
+@@ -218,7 +218,7 @@
+     where pnArgs' = map (convertExpr SelfDetermined) pnArgs
+ convertExpr _ (Repeat count exprs) =
+     Repeat count $ map (convertExpr SelfDetermined) exprs
+-convertExpr SelfDetermined (Mux cond (e1 @ UU{}) (e2 @ UU{})) =
++convertExpr SelfDetermined (Mux cond (e1@UU{}) (e2@UU{})) =
+     Mux
+     (convertExpr SelfDetermined cond)
+     (convertExpr SelfDetermined e1)
+--- a/src/Language/SystemVerilog/Parser/Parse.y	2021-07-31 20:11:02.000000000 +0200
++++ b/src/Language/SystemVerilog/Parser/Parse.y	2021-09-27 18:02:56.020320830 +0200
+@@ -1576,7 +1576,7 @@
+   parseError (tokenPosition tok) $ "cannot use inside with " ++ show kw
+ 
+ addMIAttr :: Attr -> ModuleItem -> ModuleItem
+-addMIAttr _ (item @ (MIPackageItem (Decl CommentDecl{}))) = item
++addMIAttr _ (item@(MIPackageItem (Decl CommentDecl{}))) = item
+ addMIAttr attr item = MIAttr attr item
+ 
+ missingToken :: String -> ParseState a
+@@ -1644,15 +1644,15 @@
+     check sg [] = unexpectedSigning pos sg (show typ)
+ 
+ addMITrace :: ModuleItem -> [ModuleItem] -> [ModuleItem]
+-addMITrace _ items @ (MIPackageItem (Decl CommentDecl{}) : _) = items
++addMITrace _ items@(MIPackageItem (Decl CommentDecl{}) : _) = items
+ addMITrace trace items = trace : items
+ 
+ addPITrace :: PackageItem -> [PackageItem] -> [PackageItem]
+-addPITrace _ items @ (Decl CommentDecl{} : _) = items
++addPITrace _ items@(Decl CommentDecl{} : _) = items
+ addPITrace trace items = trace : items
+ 
+ addCITrace :: ClassItem -> [ClassItem] -> [ClassItem]
+-addCITrace _ items @ ((_, Decl CommentDecl{}) : _) = items
++addCITrace _ items@((_, Decl CommentDecl{}) : _) = items
+ addCITrace trace items = trace : items
+ 
+ makeFor :: Either [Decl] [(LHS, Expr)] -> Expr -> [(LHS, AsgnOp, Expr)] -> Stmt -> Stmt
+--- a/src/Language/SystemVerilog/Parser/ParseDecl.hs	2021-07-30 19:52:01.000000000 +0200
++++ b/src/Language/SystemVerilog/Parser/ParseDecl.hs	2021-09-27 18:02:56.023654171 +0200
+@@ -82,7 +82,7 @@
+     where
+         dropTrailingComma :: [DeclToken] -> [DeclToken]
+         dropTrailingComma [] = []
+-        dropTrailingComma [DTComma{}, end @ DTEnd{}] = [end]
++        dropTrailingComma [DTComma{}, end@DTEnd{}] = [end]
+         dropTrailingComma (tok : toks) = tok : dropTrailingComma toks
+ 
+ -- internal parseDTsAsPortDecls after the removal of an optional trailing comma
+@@ -102,7 +102,7 @@
+         pieces' = filter (not . isAttr) pieces
+ 
+         propagateDirections :: Direction -> [Decl] -> [Decl]
+-        propagateDirections dir (decl @ (Variable _ InterfaceT{} _ _ _) : decls) =
++        propagateDirections dir (decl@(Variable _ InterfaceT{} _ _ _) : decls) =
+             decl : propagateDirections dir decls
+         propagateDirections lastDir (Variable currDir t x a e : decls) =
+             decl : propagateDirections dir decls
+@@ -167,7 +167,7 @@
+ -- internal; attempt to parse an elaboration system task
+ asElabTask :: [DeclToken] -> Maybe ModuleItem
+ asElabTask tokens = do
+-    DTIdent _ x @ ('$' : _) <- return $ head tokens
++    DTIdent _ x@('$' : _) <- return $ head tokens
+     severity <- lookup x elabTasks
+     Just $ ElabTask severity args
+     where
+@@ -328,7 +328,7 @@
+             "unexpected " ++ surprise ++ " in for loop initialization"
+ 
+ shiftIncOrDec :: [DeclToken] -> [DeclToken]
+-shiftIncOrDec (tok @ (DTAsgn _ AsgnOp{} _ _) : toks) =
++shiftIncOrDec (tok@(DTAsgn _ AsgnOp{} _ _) : toks) =
+     before ++ tok : delim : shiftIncOrDec after
+     where (before, delim : after) = break isCommaOrEnd toks
+ shiftIncOrDec [] = []
