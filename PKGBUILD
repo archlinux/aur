@@ -1,5 +1,5 @@
 # Maintainer: Jianqiu Zhang <void001@archlinuxcn.org>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=oomd-git
 pkgver=20190207
@@ -16,21 +16,12 @@ source=(
     "oomd::git+https://github.com/facebookincubator/oomd.git"
 )
 
-
-prepare() {
-    echo "Prepare do nothing"
-#    cp fix-meson-no-install.patch $srcdir/oomd/
-#    cd $srcdir/oomd/
-#    patch -p1 < fix-meson-no-install.patch
-}
-
 build() {
-    cd $srcdir/oomd
-    meson --prefix "$pkgdir/usr" build && ninja -C build
+    arch-meson oomd build
+    ninja -C build
 }
 
 package() {
-    cd $srcdir/oomd
-    ninja -C build install
-    install -Dm644 $srcdir/oomd/src/oomd/etc/desktop.json $pkgdir/etc/desktop.json.example
+    DESTDIR=$pkgdir ninja -C build install
+    install -Dm644 $srcdir/oomd/src/oomd/etc/desktop.json $pkgdir/etc/oomd/desktop.json.example
 }
