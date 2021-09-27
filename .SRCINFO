@@ -1,7 +1,7 @@
 pkgbase = nand2tetris
 	pkgdesc = Software suite accompanying Nand2Tetris course.
 	pkgver = 2.6
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.nand2tetris.org/
 	arch = any
 	license = GPL
@@ -27,4 +27,3 @@ pkgbase = nand2tetris
 	sha256sums = 2cd1b2c93dd68de97b7c3d9504dc850f4b60774065a70aa8496ba82c7889dc89
 
 pkgname = nand2tetris
-

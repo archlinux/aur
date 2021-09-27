@@ -3,7 +3,7 @@
 
 pkgname=nand2tetris
 pkgver=2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Software suite accompanying Nand2Tetris course."
 arch=('any')
 url="http://www.nand2tetris.org/"
@@ -39,7 +39,7 @@ prepare() {
     exit 1
   fi
 
-  echo "f4ea1e104c9296f98d5b3ebd30acc283a876fedcf289f7679ad80885902bebe4  ${_nand2teris_source}" | sha256sum -c --quiet
+  echo "d2cb160ad64ccb792158907d720976fb4fef8b8610bf9160dca38368153edbd9  ${_nand2teris_source}" | sha256sum -c --quiet
   if [[ ! $? -eq 0 ]]
   then
     echo "Integrity check failed for ${_nand2teris_source}"
