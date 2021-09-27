@@ -5,7 +5,7 @@
 # Contributor: Adam Vogt <vogt.adam@gmail.com>
 
 pkgname=dtach-git
-pkgver=r40.c794d06
+pkgver=r46.748020b
 pkgrel=1
 pkgdesc="emulates the detach feature of screen"
 arch=('i686' 'x86_64')

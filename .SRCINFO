@@ -1,6 +1,6 @@
 pkgbase = dtach-git
 	pkgdesc = emulates the detach feature of screen
-	pkgver = r40.c794d06
+	pkgver = r46.748020b
 	pkgrel = 1
 	url = http://dtach.sourceforge.net/
 	arch = i686
