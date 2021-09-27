@@ -48,9 +48,9 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.14
-_minor=7
+_minor=8
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -81,13 +81,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v7-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0002-SUNRPC-don-t-pause-on-incomplete-allocation.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0003-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0004-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0005-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0006-ALSA-pci-rme-Set-up-buffer-type-properly.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0007-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch"
          # the main kernel config files
         'config')
 
@@ -334,17 +333,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('ab1dd61a9e0e5ed82b38684d01fbc5c00fbf28acdd5ee754095a9fabe5a5fca7c220b37f80c2adbdd0bd46be461ded6397e40f7a827ea18035124f06756ad743'
+sha512sums=('7da2a72f30d394a66088015873c63ee47160048c5058c0662e334a967ca14ae3259832434775ded49c23d0f2f8123b1ea1bd925b2069c43fa0301d1af054c80f'
             'SKIP'
             '62d3e809cd7218e3e783b41a5abad0780db17b29f025ee1aca3610ebf058dec8371cb78696677a3913d3217052a5513887b3cc5b285e1942d9421ab4c09c4388'
             'b1aef4f4e7350ce8132e019f76a2ac68bee8a46eb981598fbda11402e62a8bcdfd2f49e5b2cc5dcf2e96c88ad047af12d53abb9fda05c9f7acec37879e5240db'
-            '9282db03456d6423212d8403f7770bad442e0e8b0373c8a729ab70a6c730487685e4ca84adfecab92126489aef9ffa3534c4dbfaf97f2b2a14efb96f0ab866b0'
-            'e2bc17a59e56ca0f1fb848b4f54aaba88c5dcd8e267b20d3f1dc5f02951d1afca1bdabc063a33eaaab3d6ab1396565241bf15d92388e352610f205a4d59b53fc'
-            '58d81540ab3024390c2a71ff2cad71799cd0ad6a9c4aec9f7a5064e3d5a3ced86b10e92ac4666d42a2f695e3cebada55a3a7459934fba6932935db8efd0601cc'
-            'f06c8da1e35f25fd2f4d71b38d6c0057cbc9d810596524b07cf4e15a8e5c3f3c7985876d621b730cf6b8274f4d0a8fd71103b89d9d8b2d7b50bf56c499cd8708'
-            '2633f0495bcf0366aba975e0d2d5a2b5a1aba94eaf902fff39bd6c0e7b63beb7834c752674ec1757b750216369f73be6c4e52427b41e7e58a27dbc029a15ba89'
-            '8ee036bb1cfb48a1acb2967f9aed604fdd22d3b43a8b08f47a4e6956e43268a29c4f938d42284a078338330d8e999701b642b89afdcaa8924199e7bc73cb432c'
-            '01b7536086a439ab3351606bbc90596df96b02c2915c433bb439f3544f63f5945e1691cd7b91b04caab496481251482902323b91928abbab73cb07b4347f3b36'
+            '99bb98c2d7b72250161a0f98d0b984a83b099f2ff0aa9c043da460b75096a5a9e83f330546f1fd6e2ad1f2c9ab92de77e9899f9c99ddb769853d2c943eaecba8'
+            '63e861587d159ad43c8001b1d109b184873cd8880dc33430e73e010c41329a4e58b7236d02091ab9dde93aac9b1e55ac2e6903125bc9c14f0e5220c29a099ddf'
+            '851107e0a6d6df8800fd14fa63c7cc0975b7e66d6857bcb7588e21cdf5ee7384a610781ef662613c65687401e60f0b827b4badd4b4383ae4522518dc6164fcad'
+            '7d17683ed8af2b569023b985ce98478e16c0a1f6e22318adc23533533c17ff19286395e87d00bc526e1eb0087bbbd5f757b4fa8d0d646d6945161eb8e48c296a'
+            '0140a68463202b9607c8ab97f5ac15cf076fe8bd09004414cda41904d1db58adcadf71b0617493f977453ed9878fd79245b4876f0bcf3e2945069f288febd664'
+            '904983b1919f60a59afa3144901cc528f50246d1dc56a888df01cf7dc77c28b7ec924b09f92cd53f59a33d1b065510deae6029ccfd9605618ed5b429b7052db2'
             'd9a0e72debff2a9002fd3c0021a4f3bff041f26aeb21b98e9aae6f5f913729963d02ddf410d91f82cf0a117d05d9c9f33d30c847bccbaa05a2a70aea3b131537')
 
 validpgpkeys=(
