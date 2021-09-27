@@ -7,8 +7,8 @@ These buttons are not mapped by GTK
 (`/usr/include/gtk-3.0/gdk/gdktypes.h`) but still exposed, so I
 hardcoded their values:
 
-    #define _GTK_BUTTON_PREV_MASK (1 << 15) /* button 9 */
-    #define _GTK_BUTTON_NEXT_MASK (1 << 16) /* button 8 */
+    #define _GTK_BUTTON_SIDE_MASK  (1 << 15) /* button 8 */
+    #define _GTK_BUTTON_EXTRA_MASK (1 << 16) /* button 9 */
 
 Co-Authored-By: Joan Bruguera <joanbrugueram@gmail.com>
 ---
@@ -56,8 +56,8 @@ index 5cef966b..85d0f4db 100644
          [ 5 ] = SPICE_MOUSE_BUTTON_DOWN,
 +        [ 6 ] = 0,
 +        [ 7 ] = 0,
-+        [ 8 ] = SPICE_MOUSE_BUTTON_EXTRA,
-+        [ 9 ] = SPICE_MOUSE_BUTTON_SIDE,
++        [ 8 ] = SPICE_MOUSE_BUTTON_SIDE,
++        [ 9 ] = SPICE_MOUSE_BUTTON_EXTRA,
      };
  
      if (gdk < SPICE_N_ELEMENTS(map)) {
@@ -67,8 +67,8 @@ index 5cef966b..85d0f4db 100644
          [3] = SPICE_MOUSE_BUTTON_MASK_RIGHT,
 +        [6] = 0,
 +        [7] = 0,
-+        [8] = SPICE_MOUSE_BUTTON_EXTRA,
-+        [9] = SPICE_MOUSE_BUTTON_SIDE,
++        [8] = SPICE_MOUSE_BUTTON_SIDE,
++        [9] = SPICE_MOUSE_BUTTON_EXTRA,
      };
  
      if (gdk < SPICE_N_ELEMENTS(map)) {
@@ -77,12 +77,12 @@ index 5cef966b..85d0f4db 100644
      if (gdk & GDK_BUTTON3_MASK)
          spice |= SPICE_MOUSE_BUTTON_MASK_RIGHT;
 +    /* Mouse buttons above 5 are not defined by GDK */
-+#define _GTK_BUTTON_PREV_MASK (1 << 15) /* button 9 */
-+#define _GTK_BUTTON_NEXT_MASK (1 << 16) /* button 8 */
-+    if (gdk & _GTK_BUTTON_PREV_MASK)
-+        spice |= SPICE_MOUSE_BUTTON_MASK_EXTRA;
-+    if (gdk & _GTK_BUTTON_NEXT_MASK)
++#define _GTK_BUTTON_SIDE_MASK  (1 << 15) /* button 8 */
++#define _GTK_BUTTON_EXTRA_MASK (1 << 16) /* button 9 */
++    if (gdk & _GTK_BUTTON_SIDE_MASK)
 +        spice |= SPICE_MOUSE_BUTTON_MASK_SIDE;
++    if (gdk & _GTK_BUTTON_EXTRA_MASK)
++        spice |= SPICE_MOUSE_BUTTON_MASK_EXTRA;
 +
      return spice;
  }
