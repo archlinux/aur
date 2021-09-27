@@ -1,6 +1,6 @@
 pkgbase = noverify-bin
 	pkgdesc = Pretty fast linter (code static analysis utility) for PHP
-	pkgver = 0.2.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/VKCOM/noverify
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = noverify-bin
 	provides = noverify
 	conflicts = noverify
 	conflicts = noverify-git
-	source = https://github.com/VKCOM/noverify/releases/download/v0.2.0/noverify-0.2.0-linux-amd64.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/VKCOM/noverify/releases/download/v0.5.1/noverify-linux-amd64.zip
+	sha256sums = 184d4ea250e024bb71d589715c03eb923e6653a4aaa32e76300ee07a37b70daf
 
 pkgname = noverify-bin
-
