@@ -1,6 +1,6 @@
 pkgname=firefox-extension-bitwarden
-pkgver=1.50.0
-pkgrel=4
+pkgver=1.53.0
+pkgrel=1
 pkgdesc='Bitwarden addon for Firefox'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/'
