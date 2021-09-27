@@ -1,7 +1,7 @@
 pkgbase = ignition-gui
 	pkgdesc = Builds on top of Qt to provide widgets which are useful when developing robotics applications, such as a 3D view, plots, dashboard, etc, and can be used together in a convenient unified interface.
-	pkgver = 4.1.0
-	pkgrel = 4
+	pkgver = 5.2.0
+	pkgrel = 1
 	url = https://ignitionrobotics.org/libs/gui
 	arch = x86_64
 	license = Apache
@@ -16,10 +16,7 @@ pkgbase = ignition-gui
 	depends = ignition-rendering
 	depends = ignition-msgs
 	depends = ignition-tools
-	source = ignition-gui-4.1.0.tar.gz::https://github.com/ignitionrobotics/ign-gui/archive/ignition-gui4_4.1.0.tar.gz
-	source = qapplication.patch::https://patch-diff.githubusercontent.com/raw/ignitionrobotics/ign-gui/pull/165.patch
-	sha256sums = 9811710faa0ff07c134f07f82cbc0020dcc44c62c4feb087250e25bece252a7b
-	sha256sums = SKIP
+	source = ignition-gui-5.2.0.tar.gz::https://github.com/ignitionrobotics/ign-gui/archive/ignition-gui5_5.2.0.tar.gz
+	sha256sums = 2753ed861ffca3c3a522ec2baefa025da85f65f48ea7684e18ad26c417d51fb7
 
 pkgname = ignition-gui
-
