@@ -2,14 +2,14 @@
 # https://aur.archlinux.org/packages/port-bin/
 
 pkgname=port-bin
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A ship runner and manager for Urbit OS"
 arch=("x86_64")
-url="https://github.com/arthyn/port"
+url="https://github.com/urbit/port"
 license=("MIT" "custom:chromium")
-source=("https://github.com/arthyn/port/releases/download/v${pkgver}/port-linux-x64-${pkgver}.zip")
-sha512sums=("1f1a6475d7f04844ba331caef592c52468acfc266ab6eb36b0b094f9ccf98a35c95bdc553a7a4f29dab98b6cbed15725f17fb570218d7517a515914ba11786af")
+source=("https://github.com/urbit/port/releases/download/v${pkgver}/port-linux-x64-${pkgver}.zip")
+sha512sums=("16650be2a8784032b23bf249fc529d8b39e12743e6a062b96da049e996ea32d3ec372201900dbcc811fb89c2973d11e182abce03dc667ccc3c385a4fde0778c4")
 conflicts=("port")
 
 package() {
