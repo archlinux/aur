@@ -1,6 +1,6 @@
 pkgbase = xde-styles-git
 	pkgdesc = Four consistent styles across light-weight WMs for XDE
-	pkgver = 1.7.r1.g2510194
+	pkgver = 1.7.r2.g8e70fe2
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-styles
 	arch = any
@@ -12,10 +12,9 @@ pkgbase = xde-styles-git
 	optdepends = xde-menu: for root menus
 	optdepends = xde-ctools: for window menus
 	optdepends = xde-session: for key bindings
-	provides = xde-styles=1.7.r1.g2510194
+	provides = xde-styles=1.7.r2.g8e70fe2
 	conflicts = xde-styles
 	source = xde-styles-git::git+https://github.com/bbidulock/xde-styles.git
 	md5sums = SKIP
 
 pkgname = xde-styles-git
-
