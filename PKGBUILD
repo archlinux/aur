@@ -11,7 +11,7 @@ license=('custom')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core'
 	 'util-linux-libs' 'libappindicator-gtk3' 'libsecret')
 source=("${pkgname}-${pkgver}.deb::https://www.guilded.gg/downloads/Guilded-Linux.deb")
-sha256sums=('0fcd190f12bc7cdaf7b085352105c774ea5212b09cd1a34a0c5427957ccfe5d')
+sha256sums=('0fcd190f12bc7cdaf7b085352105c774ea5212b09cd1a34a0c5427957ccfe5da')
 
 prepare() {
   tar Jxvf data.tar.xz
