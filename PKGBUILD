@@ -9,16 +9,16 @@ arch=('x86_64' 'i686')
 url="https://github.com/AbdeltwabMF/nxprayer.git"
 license=('GPL-v3')
 depends=(
-	'jq'
-	'gawk'
-	'bash'
-	'libnotify'
+    'jq'
+    'gawk'
+    'bash'
+    'libnotify'
 )
 makedepends=(
-	'git'
-	'make'
-	'gcc'
-	'python3'
+    'git'
+    'make'
+    'gcc'
+    'python3'
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -26,18 +26,18 @@ source=("git://github.com/AbdeltwabMF/nxprayer")
 sha1sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}"
-	printf "%s.r%s.%s" "$(awk '/^VERSION =/ {print $3}' config.mk)" \
-		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${pkgname}"
+    printf "%s.r%s.%s" "$(awk '/^VERSION =/ {print $3}' config.mk)" \
+           "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${pkgname}"
-	make clean install
+    cd "${pkgname}"
+    make clean install
 }
 
 package() {
     cd "${pkgname}"
-		install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-		install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
