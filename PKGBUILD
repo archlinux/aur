@@ -2,10 +2,10 @@
 
 pkgname=jupyter-server-mathjax
 pkgver=0.2.3
-pkgrel=1
-pkgdesc="MathJax resources as a Jupyter Server Extension"
+pkgrel=2
+pkgdesc='MathJax resources as a Jupyter Server Extension'
 arch=(any)
-url="https://jupyter.org/"
+url='https://jupyter.org/'
 license=(BSD)
 depends=(jupyter-server mathjax2)
 makedepends=(python-setuptools python-jupyter_packaging)
@@ -19,7 +19,10 @@ build() {
 
 package() {
   cd ${pkgname//-/_}-$pkgver
-  python setup.py install --skip-build --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
+  mv "$pkgdir"{/usr,}/etc
+
+# Unbundle mathjax
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
   rm -r "$pkgdir"/$_pythonpath/jupyter_server_mathjax/static
   ln -s /usr/share/mathjax2 "$pkgdir"/$_pythonpath/jupyter_server_mathjax/static
