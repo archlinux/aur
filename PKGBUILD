@@ -4,7 +4,7 @@
 pkgname=python-google-crc32c
 _name="${pkgname/-google/}"
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Wraps Google's crc32c library into a Python wrapper"
 arch=('x86_64')
 url="https://github.com/googleapis/python-crc32c"
@@ -30,5 +30,5 @@ check() {
 package() {
 	cd "$_name-$pkgver"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 README.md SECURITY.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 README.md SECURITY.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
