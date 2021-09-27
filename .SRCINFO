@@ -1,6 +1,6 @@
 pkgbase = gmid
 	pkgdesc = Fast Gemini server written with security in mind.
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://gmid.omarpolo.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gmid
 	depends = libretls
 	conflicts = gmid-git
 	conflicts = gmid-bin
-	source = https://git.omarpolo.com/gmid/snapshot/gmid-1.7.3.tar.gz
-	sha256sums = bc5ea8756e433f919e8e524f1055b4f8b6e1237c9558842450e3e6829a0e578b
+	source = https://git.omarpolo.com/gmid/snapshot/gmid-1.7.4.tar.gz
+	sha256sums = 955bc3a3509874d374f3e6949d34d96b7fb4d041717dc47d782686115146a102
 
 pkgname = gmid
