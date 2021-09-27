@@ -1,11 +1,13 @@
 pkgbase = python-google-cloud-bigquery
 	pkgdesc = Google BigQuery API client library
-	pkgver = 2.27.0
+	pkgver = 2.27.1
 	pkgrel = 1
 	url = https://pypi.org/project/google-cloud-bigquery/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-recommonmark
 	depends = python>=3.6
 	depends = python-google-api-core>=1.29.0
 	depends = python-google-cloud-core>=1.4.1
@@ -15,13 +17,13 @@ pkgbase = python-google-cloud-bigquery
 	depends = python-proto-plus>=1.10.0
 	depends = python-protobuf>=3.12.0
 	depends = python-requests>=2.18.0
-	optdepends = python-arrow>=1.0.0: for pyarrow support
-	optdepends = python-pandas>=0.23.0: for pandas support
-	optdepends = python-tqdm>=4.7.4: for tqdm support
-	optdepends = python-fastparquet: for fastparquet support
-	optdepends = python-snappy: for fastparquet support
-	optdepends = python-llvmlite: for fastparquet support
-	source = python-google-cloud-bigquery-2.27.0.tar.gz::https://files.pythonhosted.org/packages/source/g/google-cloud-bigquery/google-cloud-bigquery-2.27.0.tar.gz
-	sha256sums = 98dd424093c3e2fbc515b69227872c86cd2ccec54f45c3333b382de70cc5a545
+	optdepends = python-arrow>=1.0.0: pyarrow support
+	optdepends = python-pandas>=0.23.0: pandas support
+	optdepends = python-tqdm>=4.7.4: tqdm support
+	optdepends = python-fastparquet: fastparquet support
+	optdepends = python-snappy: fastparquet support
+	optdepends = python-llvmlite: fastparquet support
+	source = python-google-cloud-bigquery-2.27.1.tar.gz::https://github.com/googleapis/python-bigquery/archive/v2.27.1.tar.gz
+	sha256sums = 28a89a9830c8fca7d8cc96a497d69e96316b38f831cf506548fa9fb165fb5e7a
 
 pkgname = python-google-cloud-bigquery
