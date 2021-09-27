@@ -1,14 +1,13 @@
 pkgbase = gnome-python
 	pkgdesc = PyGNOME Python extension module
 	pkgver = 2.28.1
-	pkgrel = 13
+	pkgrel = 14
 	url = http://www.pygtk.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = pygtk
 	depends = gconf
-	depends = python2-gconf
 	depends = libgnomecanvas
 	depends = libgnome
 	depends = libgnomeui
