@@ -1,6 +1,6 @@
 pkgbase = mutter-x11-scaling
 	pkgdesc = A window manager for GNOME (with X11 fractional scaling patch)
-	pkgver = 40.4
+	pkgver = 40.5
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	install = mutter.install
@@ -35,7 +35,7 @@ pkgbase = mutter-x11-scaling
 	provides = mutter
 	provides = libmutter-8.so
 	conflicts = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=2bfef7dbdc6f432a5433c93c1fcdbf00099367c8
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=2b2b3ab8502a5bcc2436e169279d2421f6f1a605
 	source = https://salsa.debian.org/gnome-team/mutter/-/raw/91d9bdafd5d624fe1f40f4be48663014830eee78/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch
 	sha256sums = SKIP
 	sha256sums = 19de314590e3311563b11da3305d8e9c8ba1f859fe65db668ccd0457250a9ca5
