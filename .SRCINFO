@@ -1,9 +1,9 @@
 pkgbase = ttf-karla
 	pkgdesc = Grotesque Sans Serif Latin typeface
 	pkgver = 2.002
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://gitlab.collabora.com/collabora/fonts-karla
+	url = https://fonts.google.com/specimen/Karla
 	arch = any
 	license = custom:OFL
 	provides = ttf-font
@@ -11,4 +11,3 @@ pkgbase = ttf-karla
 	sha512sums = 3d8ea03a7e6530ede46e27f261639b105fd5c5c5e3108b98f982271479f29b0d2b47c0e7e2c6f941e742767382f0814d6e472bf28ff7d4b1419f316bc1714516
 
 pkgname = ttf-karla
-
