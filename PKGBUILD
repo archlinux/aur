@@ -2,7 +2,7 @@
 # Maintainer: HER0 01 <aconrad 103 at gmail.com>
 
 pkgname=robocode
-pkgver=1.9.4.2
+pkgver=1.9.4.3
 pkgrel=1
 pkgdesc="Programming game, where the goal is to develop a robot battle tank to battle against other tanks in Java or .NET. The robot battles are running in real-time and on-screen."
 arch=(any)
@@ -10,18 +10,18 @@ url='http://robocode.sourceforge.net'
 depends=(java-environment)
 license=('EPL')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver-setup.jar robocode.desktop)
-md5sums=('710be73521a1f764a5caf332489c2a67'
+md5sums=('f19aa8e3f8cf32c6f806fd8e1f1443b2'
          '8a556209b3ffb39839f28f30479a8c8d')
 
 package(){
     # remove windows and jar specific files
-    find $srcdir/src -type l -exec rm {} \;
-    find $srcdir/src -iname "*.bat"  -exec rm {} \;
-    find $srcdir/src -iname "*.command" -exec rm {} \;
-    rm -r $srcdir/src/META-INF   
+    find $srcdir -type l -exec rm {} \;
+    find $srcdir -iname "*.bat"  -exec rm {} \;
+    find $srcdir -iname "*.command" -exec rm {} \;
+    rm -r $srcdir/META-INF   
 
     mkdir -p $pkgdir/opt/robocode
-    cp -r $srcdir/src/* $pkgdir/opt/robocode
+    cp -r $srcdir/* $pkgdir/opt/robocode
 
     # link volatile dirs to /var/lib
     mkdir -p $pkgdir/var/lib/robocode/config
@@ -38,7 +38,7 @@ package(){
 
     # Menu item
     mkdir -p $pkgdir/usr/share/applications
-    install -m 664 $srcdir/robocode.desktop $pkgdir/usr/share/applications
+    install -m 664 $startdir/robocode.desktop $pkgdir/usr/share/applications
 
     # fix startup scripts
     mkdir -p $pkgdir/usr/bin
