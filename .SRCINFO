@@ -1,12 +1,12 @@
 pkgbase = zephyrusbling-git
 	pkgdesc = A utility to display images on the LEDs on the back of the Zephyrus G14 laptop
-	pkgver = r21.458624a
+	pkgver = r24.80956bf
 	pkgrel = 1
 	url = https://github.com/Meumeu/ZephyrusBling
 	arch = x86_64
 	makedepends = boost
 	makedepends = cmake
-	depends = asus-nb-ctrl
+	depends = asusctl
 	depends = cli11
 	depends = fmt
 	depends = glm
@@ -18,4 +18,3 @@ pkgbase = zephyrusbling-git
 	sha256sums = fa16762e0cd11ff6e53d3a0de4e57745ac32e8dea819cd9df9d93e7e4aca30b5
 
 pkgname = zephyrusbling-git
-

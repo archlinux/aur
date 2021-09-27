@@ -1,10 +1,10 @@
 pkgname=zephyrusbling-git
-pkgver=r21.458624a
+pkgver=r24.80956bf
 pkgrel=1
 pkgdesc="A utility to display images on the LEDs on the back of the Zephyrus G14 laptop"
 url="https://github.com/Meumeu/ZephyrusBling"
 arch=("x86_64")
-depends=("asus-nb-ctrl" "cli11" "fmt" "glm" "microsoft-gsl" "sdbus-cpp")
+depends=("asusctl" "cli11" "fmt" "glm" "microsoft-gsl" "sdbus-cpp")
 makedepends=("boost" "cmake")
 source=(
     "${pkgname%-git}::git+https://github.com/Meumeu/ZephyrusBling.git"
