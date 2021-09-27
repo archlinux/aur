@@ -1,7 +1,7 @@
 # Maintainer: Brodi <me@brodi.space>
 _pluginname=scale-to-sound
 pkgname=obs-${_pluginname}-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="OBS filter plugin to make a source scale reactively to sound"
 arch=("x86_64")
@@ -10,15 +10,13 @@ license=("GPL2")
 depends=('obs-studio>=24.0.0')
 provides=("obs-${_pluginname}")
 conflicts=("obs-${_pluginname}" "obs-${_pluginname}-git")
-source=("${url}/releases/download/${pkgver}/obs-${_pluginname}-${pkgver}-linux64.zip"
+source=("${url}/releases/download/${pkgver}/obs-${_pluginname}-${pkgver}-linux64.tar.gz"
 	"https://raw.githubusercontent.com/Qufyy/obs-scale-to-sound/main/LICENSE")
-sha512sums=("6acc2ded4ad6e6cdf98c5de62a4d32e63546b5c37f82bf2362ebcb94b506c4f17d23cd5f2fdc072c389732ab899bb92c80b935b3efe9b90ba1e7774c48a398df"
+sha512sums=("142db5b6442dec704fa87e7fe0f74227bdffab41612cc1010d996ba04fdfbfae82a323d1131de3baac827393b6d13e0de6f28390b3b1c8d09aad507a6c2b9012"
 	 'SKIP')
 
 package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/obs-${_pluginname}/LICENSE"
-
-	tar xzvf obs-${_pluginname}-*-linux64.tar.gz
 
 	cd ${srcdir}/obs-${_pluginname}
 
