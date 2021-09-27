@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-hawkmoth-git
 	pkgdesc = Sphinx autodoc C extension
-	pkgver = 0.7.0.0r.g69cde0b
+	pkgver = 0.8.0.69r.g4bebfe2
 	pkgrel = 1
 	url = https://github.com/jnikula/hawkmoth
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = python-sphinx-hawkmoth-git
 	md5sums = SKIP
 
 pkgname = python-sphinx-hawkmoth-git
-

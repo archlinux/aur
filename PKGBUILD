@@ -3,7 +3,7 @@
 upstream_name=hawkmoth
 aur_name=python-sphinx-hawkmoth
 pkgname=$aur_name-git
-pkgver=0.7.0.0r.g69cde0b
+pkgver=0.8.0.69r.g4bebfe2
 pkgrel=1
 pkgdesc='Sphinx autodoc C extension'
 arch=('i686' 'x86_64')
@@ -13,6 +13,7 @@ depends=('python-sphinx' 'clang')
 provides=($aur_name)
 conflicts=($aur_name)
 source=('git+https://github.com/jnikula/hawkmoth')
+# source=('git+https://gitlab.com/bms-contrib/hawkmoth#branch=anonym')
 md5sums=('SKIP')
 
 pkgver() {
@@ -20,8 +21,13 @@ pkgver() {
 	git describe --long | sed 's/v\(.*\)\([^-]*-g\)/\1r\2/;s/-/./g'
 }
 
-package() {
-	install -D -m644 $srcdir/$upstream_name/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+build() {
 	cd $srcdir/$upstream_name
-	python setup.py install --optimize=1 --root=$pkgdir
+	python -m build --wheel --no-isolation
+}
+
+package() {
+	cd $srcdir/$upstream_name
+	python -m install --optimize=1 --destdir="$pkgdir" dist/*.whl
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
