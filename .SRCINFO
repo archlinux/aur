@@ -1,6 +1,6 @@
 pkgbase = xde-session-git
 	pkgdesc = X Desktop Environment Display and Session Management
-	pkgver = 1.13.r1.g048e9ee
+	pkgver = 1.13.r4.g6823c50
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-session
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = xde-session-git
 	depends = xdg-launch-git
 	depends = libcanberra
 	depends = numlockx
+	depends = json-c
 	optdepends = xorg-xdm-xlogin-git: to use xde-xlogin and xde-xchooser
 	provides = xde-session
 	conflicts = xde-session
@@ -28,4 +29,3 @@ pkgbase = xde-session-git
 	md5sums = SKIP
 
 pkgname = xde-session-git
-
