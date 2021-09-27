@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname='python-jax'
-pkgver=0.2.20
+pkgver=0.2.21
 pkgrel=1
 pkgdesc='Differentiate, compile, and transform Numpy code.'
 arch=('x86_64')
