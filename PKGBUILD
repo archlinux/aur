@@ -8,7 +8,7 @@
 
 pkgname=surf
 pkgver=2.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A simple web browser based on WebKit/GTK+.'
 arch=('x86_64')
 url='https://surf.suckless.org/'
@@ -17,7 +17,8 @@ depends=('webkit2gtk' 'gcr' 'xorg-xprop')
 optdepends=('dmenu: URL-bar'
             'ca-certificates: SSL verification'
             'xterm: default download handler'
-            'curl: default download handler')
+            'curl: default download handler'
+            'tabbed: tabbed frontend')
 makedepends=()
 install='surf.install'
 source=("https://dl.suckless.org/surf/surf-${pkgver}.tar.gz")
