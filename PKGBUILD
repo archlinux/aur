@@ -2,7 +2,7 @@
 # Contributor: K. Morton <pryre.dev@outlook.com>
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL3')
 pkgver_gps='5afc11588b2b6ec0861ecf9ef673c7a9e2109129' # src/GPS/Drivers
 pkgver_mavlink='5637057af5ab8ec5667e3f8e5f8c73d3bc60eed8' # libs/mavlink/include/mavlink/v2.0
 pkgver_aossl='3aaff1bd9e35047abdb363239bb3e3c114d07ea1' # libs/OpenSSL/android_openssl
-pkgver_gst='4f2189a6e172ec8a244666cdad1d48fe5b7cd432' # libs/qmlglsink/gst-plugins-good
+pkgver_gst='9d782fad9dc0384ba86ecae64511c193f6149f93' # libs/qmlglsink/gst-plugins-good
 
 depends=('bzip2'
          'dbus'
@@ -60,15 +60,15 @@ source=("qgroundcontrol-${pkgver}.tar.gz::https://github.com/mavlink/qgroundcont
         "mavlink-v2.0-qgc${pkgver}.tar.gz::https://github.com/mavlink/c_library_v2/archive/${pkgver_mavlink}.tar.gz"
         "aossl-qgc${pkgver}.tar.gz::https://github.com/Auterion/android_openssl/archive/${pkgver_aossl}.tar.gz"
         "gst-plugins-good-qgc${pkgver}.tar.gz::https://github.com/GStreamer/gst-plugins-good/archive/${pkgver_gst}.tar.gz"
+        "gst-volatile.patch::https://patch-diff.githubusercontent.com/raw/mavlink/gst-plugins-good/pull/1.patch"
         "libicudata-qgc.patch::https://github.com/mavlink/qgroundcontrol/commit/cc95825594fc99e7537198003cab4a0dd1172bcb.patch"
-        "loop-construct.patch::https://patch-diff.githubusercontent.com/raw/mavlink/qgroundcontrol/pull/9670.patch"
 )
 
-sha256sums=('07dbff6f2576add64214c18549d842708a596275d903cd803cd8edee20f9831a'
+sha256sums=('a55160dc0f071c87e33a86d362721e592ec3d22724551c3dea557077d47ce2d2'
             '9d158a4f611d605714ec0b6f643ab9ee02be6f64d67d8ba823fbc4bb29d853f2'
             '9f251211db18eb0e1b636033a0eae7344ff88718cc61ae46249ca628e906de2e'
             '93598e63fbbd86fec5e15f2596bba8b1f1654c854a99222099516933fd22a118'
-            'fc1403a3d9ff29965fb83dbc2a5699a2f87498a8b20d651f643b0f6c2df05c6e'
+            'd5aad13c8eff7f3cce75c8cf3bbf6ac592ac82455e666dccd17cf006deec3e55'
             'SKIP'
             'SKIP'
 )
@@ -102,8 +102,8 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch --strip=1 < "${srcdir}/libicudata-qgc.patch"
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch --strip=1 < "${srcdir}/loop-construct.patch"
+  cd "${srcdir}/${pkgname}-${pkgver}/libs/qmlglsink/gst-plugins-good"
+  patch --strip=1 < "${srcdir}/gst-volatile.patch"
 }
 
 build() {
