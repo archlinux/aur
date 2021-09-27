@@ -1,0 +1,22 @@
+pkgbase = nxprayer
+	pkgdesc = Time of the next Islamic prayer in your status bar.
+	pkgver = v0.1.1
+	pkgrel = 1
+	url = https://github.com/AbdeltwabMF/nxprayer.git
+	arch = x86_64
+	arch = i686
+	license = GPL-v3
+	makedepends = git
+	makedepends = make
+	makedepends = g++
+	makedepends = python3
+	depends = jq
+	depends = gawk
+	depends = bash
+	depends = libnotify
+	provides = nxprayer
+	conflicts = nxprayer
+	source = git+https://github.com/AbdeltwabMF/nxprayer.git
+	md5sums = SKIP
+
+pkgname = nxprayer
