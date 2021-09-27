@@ -1,7 +1,9 @@
+# Maintainer: Nicolas Martyanoff <khaelin@gmail.com>
 # Contributor: relrel <relrelbachar@gmail.com>
 # Contributor: Aaron Fischer <mail@aaaron-fischer.net>
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Bram Schoenmakers <me@bramschoenmakers.nl>
+
 pkgname=closure-compiler
 pkgver=v20210907
 pkgrel=2
