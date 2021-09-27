@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/jnikula/hawkmoth'
 license=('BSD2')
 depends=('python-sphinx' 'clang')
+makedepends=('python-build' 'python-install' 'python-wheel')
 provides=($aur_name)
 conflicts=($aur_name)
 source=('git+https://github.com/jnikula/hawkmoth')
