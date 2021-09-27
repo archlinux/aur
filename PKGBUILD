@@ -1,8 +1,8 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-physics
-pkgver=3.1.0
-pkgrel=5
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Abstract physics interface designed to support simulation and rapid
 development of robot applications."
 arch=('x86_64')
@@ -11,17 +11,10 @@ license=('Apache')
 depends=('ignition-cmake' 'ignition-math' 'ignition-plugin' 'ignition-common'
          'libdart' 'sdformat')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-physics/archive/${pkgname}3_${pkgver}.tar.gz"
-        "entity.patch::https://patch-diff.githubusercontent.com/raw/ignitionrobotics/ign-physics/pull/185.patch")
-sha256sums=('b8e5460d2808e20237b2ee0a6a6b7613b56412f5f6e2a5e153e48e8faae8ab77'
-            'SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-physics/archive/${pkgname}4_${pkgver}.tar.gz")
+sha256sums=('3c902441d919542aab5effc2f8a72e05b8e77b8821fe5bde7cc775c36ea009ff')
 
-_dir="ign-physics-${pkgname}3_${pkgver}"
-
-prepare() {
-  cd "$srcdir/$_dir"
-  patch --forward --strip=1 --input="${srcdir}/entity.patch"
-}
+_dir="ign-physics-${pkgname}4_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
