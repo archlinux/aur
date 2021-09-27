@@ -1,4 +1,4 @@
-pkgbase = haskell-sv2v
+pkgbase = sv2v
 	pkgdesc = SystemVerilog to Verilog conversion
 	pkgver = 0.0.8
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = haskell-sv2v
 	sha256sums = fd9d4dfd5537347d3ca6c3c1e5f166c7d6417acfe84541b8feb837fb043879f8
 	sha256sums = 6f0ab8b52a0592e42de5f07a75e16f13fa576d37c8d223e5932e9f2d8b8689f6
 
-pkgname = haskell-sv2v
+pkgname = sv2v

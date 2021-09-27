@@ -2,7 +2,7 @@
 # Maintainer: Ferdinand Bachmann <theferdi265@gmail.com>
 
 _hkgname=sv2v
-pkgname=haskell-sv2v
+pkgname=$_hkgname
 pkgver=0.0.8
 pkgrel=1
 pkgdesc="SystemVerilog to Verilog conversion"
