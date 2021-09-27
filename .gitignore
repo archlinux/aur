@@ -1,0 +1,9 @@
+# Ignore common directories.
+/pkg/
+/src/
+
+# Ignore ArchLinux packages.
+*.pkg.tar.*
+
+# Ignore source code tarballs.
+*.tar.gz
