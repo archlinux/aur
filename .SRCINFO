@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-hdl-graph-slam-git
 	pkgdesc = ROS package for real-time 6DOF SLAM using a 3D LIDAR
-	pkgver = r167.3a12a13
-	pkgrel = 1
+	pkgver = r168.d93a8be
+	pkgrel = 2
 	url = https://github.com/koide3/hdl_graph_slam
 	arch = i686
 	arch = x86_64
