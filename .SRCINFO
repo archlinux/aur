@@ -1,6 +1,6 @@
 pkgbase = python-playwright
 	pkgdesc = a Python library to automate Chromium, Firefox and WebKit browsers with a single API
-	pkgver = 1.13.1
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/microsoft/playwright-python
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-playwright
 	depends = python-greenlet
 	depends = python-pyee
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/py3/p/playwright/playwright-1.13.1-py3-none-manylinux1_x86_64.whl
-	sha256sums = f3fac1509f3fa5a121e396c2ed57889a8bfe5785435ac0ae8fcce94045853e0b
+	source = https://files.pythonhosted.org/packages/py3/p/playwright/playwright-1.15.0-py3-none-manylinux1_x86_64.whl
+	sha256sums = b2619003000c769fb028f5fd4465f5985c8a0865b8bace935896698843e9b747
 
 pkgname = python-playwright
