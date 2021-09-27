@@ -2,7 +2,7 @@
 
 _pkgname=box86
 pkgname=${_pkgname}-git
-pkgver=v0.2.0.r117.gb3e984bd
+pkgver=v0.2.2.r258.g46114235
 pkgrel=1
 pkgdesc='Linux Userspace x86 Emulator with a twist'
 arch=('armv7h')
@@ -33,7 +33,7 @@ build() {
 package() {
     cd ${_pkgname}/build
     make DESTDIR=${pkgdir} install
-    install -Dm644 ../docs/LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+    install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
     # Install documentation
     install -d "${pkgdir}/usr/share/doc/${_pkgname}/"
