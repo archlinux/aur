@@ -2,7 +2,7 @@
 
 pkgname=darkman
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Framework for dark-mode and light-mode transitions on Linux desktop."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/whynothugo/darkman"
@@ -14,7 +14,7 @@ sha512sums=('SKIP')
 validpgpkeys=("13FF264E91839686966CA2AC388ADF1E2EEA7F1A")
 
 build() {
-  cd "$pkgname-v$pkgver"
+  cd "$pkgname"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-v$pkgver"
+  cd "$pkgname"
 
   make DESTDIR="$pkgdir/" PREFIX=/usr/ install
   # TODO: manpages
