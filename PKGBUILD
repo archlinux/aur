@@ -1,8 +1,8 @@
 # Maintainer: João Figueiredo <islandc0der@chaotic.cx>
 
 pkgname=fishnet
-pkgver=2.3.3
-pkgrel=3
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='Distributed Stockfish analysis for lichess.org'
 arch=($CARCH)
 url='https://github.com/niklasf/fishnet'
@@ -18,8 +18,8 @@ sha256sums=('SKIP'
 prepare(){
   cd $pkgname
   git submodule init
-  git config submodule.Stockfish.url $srcdir/Stockfish
-  git config submodule.Fairy-Stockfish.url $srcdir/Fairy-Stockfish
+  git config submodule.Stockfish.url "$srcdir/Stockfish"
+  git config submodule.Fairy-Stockfish.url "$srcdir/Fairy-Stockfish"
   git submodule update
 }
 
