@@ -1,0 +1,6 @@
+jupyterlab_execute_time-*.tar.gz
+pkg
+src
+jupyterlab-execute-time-*.pkg.tar.gz
+jupyterlab-execute-time-*.pkg.tar.zst
+*.log
