@@ -1,12 +1,22 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = xf86-input-libinput-no-hires-scroll
+	pkgdesc = Generic input driver for the X.Org server based on libinput with disabling high resolution scroll
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = http://xorg.freedesktop.org/
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	groups = xorg-drivers
+	license = custom:MIT
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-XINPUT_VERSION=24.1
+	makedepends = libxi
+	makedepends = libx11
+	makedepends = xorgproto
+	depends = libinput
+	conflicts = xorg-server<1.19.0
+	conflicts = X-ABI-XINPUT_VERSION<24
+	conflicts = X-ABI-XINPUT_VERSION>=25
+	conflicts = xf86-input-libinput
+	source = https://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-no-hires-scroll-1.2.0.tar.bz2
+	sha512sums = ebff9490d33fd7495df2e03203060a76b3274f0e638bc92f3d95257fac57cdb9dac308e90e54006fe9522b6de3b1f1c38fd5f0b0b75b7051e5422290f43de52d
 
-pkgname = yarxi
-
+pkgname = xf86-input-libinput-no-hires-scroll
