@@ -7,6 +7,7 @@ pkgbase = bluecherry-client
 	arch = i686
 	license = GPL
 	makedepends = git
+	makedepends = qt5-tools
 	depends = mpv
 	depends = ffmpeg
 	depends = sdl
