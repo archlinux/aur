@@ -1,8 +1,8 @@
 # Maintainer: lynix <lynix47@gmail.com>
 
 pkgname=linphone-desktop-appimage
-pkgver=4.3.0.beta.41
-_pkgver=4.3.0-beta.41+d7668288
+pkgver=4.3.0.beta.46
+_pkgver=4.3.0-beta.46+a6fb5271
 pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (AppImage version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("linphone-desktop=${pkgver}")
 conflicts=('linphone-desktop-all' 'linphone-desktop-git' 'linphone-desktop-all-git' 'linphone-git')
 source=("https://www.linphone.org/snapshots/AppImages/Linphone-${_pkgver}.AppImage"
         'linphone.sh')
-sha256sums=('13ce24981a03f1b19b7f119ab5aa7eee41111a1f31f3d266ecf831ec061c725b'
+sha256sums=('6a0f82b04ed2bd92f1285bd710974f5b02ba1afd32ef57b16b19858a1f4ac8ac'
             '1238a372faa4d6de8569b508c95ac39b7d21d3619660740b3ac4306642076bd2')
 options=(!strip)
 _image="$(basename "${source[0]}")"
