@@ -1,7 +1,7 @@
-From 396a4b3341fc44f1c41157a281e5f0c8008ccdeb Mon Sep 17 00:00:00 2001
+From 13ec95146006fe4c727a7f33e44ea619a9d383c9 Mon Sep 17 00:00:00 2001
 From: Takashi Iwai <tiwai@suse.de>
 Date: Mon, 9 Aug 2021 09:18:27 +0200
-Subject: [PATCH 5/8] ALSA: pcm: Check mmap capability of runtime dma buffer at
+Subject: [PATCH 4/7] ALSA: pcm: Check mmap capability of runtime dma buffer at
  first
 
 Currently we check only the substream->dma_buffer as the preset of the
