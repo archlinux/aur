@@ -1,0 +1,6 @@
+jupyterlab-language-pack-de-DE-*.tar.gz
+jupyterlab-language-pack-de-de-*.pkg.tar.gz
+jupyterlab-language-pack-de-de-*.pkg.tar.zst
+pkg
+src
+*.log
