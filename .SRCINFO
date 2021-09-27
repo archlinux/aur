@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-fast-gicp-git
 	pkgdesc = OpenMP boosted NDT and GICP algorithms with CUDA enabled
-	pkgver = r131.2fd580c
+	pkgver = r142.68b4364
 	pkgrel = 2
 	url = https://github.com/SMRT-AIST/fast_gicp
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = ros-noetic-fast-gicp-git
 	license = BSD-3-Clause License
 	makedepends = cmake
 	makedepends = ros-build-tools
+	makedepends = gcc10
 	depends = pcl
 	depends = cuda
 	depends = eigen
