@@ -11,7 +11,7 @@
 
 pkgname=ffmpeg-cuda
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
 arch=(x86_64)
@@ -105,10 +105,8 @@ source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   vmaf-model-path.patch
 )
-sha256sums=(
-  SKIP
-  8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
-)
+sha256sums=('SKIP'
+            '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d')
 
 pkgver() {
   cd ffmpeg
@@ -125,7 +123,7 @@ prepare() {
 build() {
   local _cflags='-I/opt/cuda/include'
   local _ldflags='-L/opt/cuda/lib64'
-  local _nvccflags='-gencode arch=compute_50,code=sm_50 -O2'
+  local _nvccflags='-gencode arch=compute_52,code=sm_52 -O2'
 
   cd ffmpeg
 
