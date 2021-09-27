@@ -1,6 +1,6 @@
 pkgbase = hd-idle-go
 	pkgdesc = Hard Disk Idle Spin-Down Utility - enhanced reimplementation of hd-idle
-	pkgver = 1.15
+	pkgver = 1.16
 	pkgrel = 1
 	url = https://github.com/adelolmo/hd-idle
 	install = hd-idle-go.install
@@ -12,7 +12,7 @@ pkgbase = hd-idle-go
 	conflicts = hd-idle
 	backup = etc/default/hd-idle
 	backup = etc/logrotate.d/hd-idle
-	source = https://github.com/adelolmo/hd-idle/archive/refs/tags/v1.15.tar.gz
-	md5sums = c54dc07ca9a5f6a19d4d41263def5530
+	source = https://github.com/adelolmo/hd-idle/archive/refs/tags/v1.16.tar.gz
+	md5sums = 9b01ecfcbee56b11b239850fcae666bb
 
 pkgname = hd-idle-go

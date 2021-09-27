@@ -1,7 +1,7 @@
 # Maintainer: Mariusz Libera <mariusz.libera@gmail.com>
 pkgname=hd-idle-go
 _pkgname=hd-idle
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc='Hard Disk Idle Spin-Down Utility - enhanced reimplementation of hd-idle'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('hd-idle')
 optdepends=('logrotate')
 makedepends=('go')
 source=("https://github.com/adelolmo/hd-idle/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('c54dc07ca9a5f6a19d4d41263def5530')
+md5sums=('9b01ecfcbee56b11b239850fcae666bb')
 
 prepare(){
   cd "$_pkgname-$pkgver"
