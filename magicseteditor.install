@@ -3,7 +3,7 @@ post_install()
 cat <<-EndOfMessage
 The fonts required for this package can't be put on the AUR due to licensing issues.
 In order to get them, download the binary release here:
-http://downloads.sourceforge.net/magicseteditor/mse-linux32-2011-02-05-full.tar.gz
+https://github.com/MagicSetEditorPacks/Basic-M15-Magic-Pack/archive/refs/heads/main.zip
 Copy the fonts into your /usr/share/fonts/TTF folder or wrap them up
 with some fancy PKGBUILD of your own.
 
