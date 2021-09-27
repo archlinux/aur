@@ -2,9 +2,9 @@
 
 pkgname=btop
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A monitor of system resourecs, bpytop ported to C++'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/aristocratos/$pkgname"
 license=(apache)
 depends=(gcc-libs)
