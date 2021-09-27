@@ -1,8 +1,8 @@
 pkgbase = rust-lolcat-git
 	pkgdesc = A rust implementation of lolcat
-	pkgver = r9.3acc554
+	pkgver = r33.4a3059c
 	pkgrel = 1
-	url = https://github.com/ur0/lolcat
+	url = https://github.com/magnus-ISU/lolcat-lolhelp
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,7 @@ pkgbase = rust-lolcat-git
 	makedepends = git
 	provides = lolcat
 	conflicts = lolcat
-	source = git+https://github.com/ur0/lolcat
+	source = git+https://github.com/magnus-ISU/lolcat-lolhelp
 	sha1sums = SKIP
 
 pkgname = rust-lolcat-git
-
