@@ -6,7 +6,7 @@ url='https://github.com/koide3/hdl_graph_slam'
 pkgname='ros-noetic-hdl-graph-slam-git'
 pkgver=r168.d93a8be
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD 2-Clause License')
 
 ros_makedepends=(ros-noetic-catkin)
@@ -47,7 +47,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepeare(){
+prepare(){
     cd "$pkgname"
     sed -i '5i#include <boost/optional.hpp>' apps/floor_detection_nodelet.cpp
 }
