@@ -1,7 +1,7 @@
 # Maintainer: Spacingbat3 <git@spacingbat3.anonaddy.com> (https://github.com/spacingbat3)
 pkgname=webcord-git
-pkgver=1.5.0.r6.f1bffa3
-pkgrel=2
+pkgver=2.0.0_beta2.r248.dd785a7
+pkgrel=1
 pkgdesc="A Discord client based on the Electron engine."
 arch=("any")
 
@@ -10,7 +10,7 @@ _author="SpacingBat3"
 
 url="https://github.com/${_author}/${_repo}"
 license=('MIT')
-makedepends=('npm' 'git' 'imagemagick' 'typescript')
+makedepends=('npm' 'git' 'imagemagick' 'typescript' 'jq')
 depends=('electron')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -29,7 +29,7 @@ _echo_times() {
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    printf "%s" "$(git describe --long --tags | sed 's~\([^-]*-\)g~r\1~;s~-~.~g;s~v~~g')"
+    printf "%s.r%s.%s" "$(jq -r .version "${srcdir}/${pkgname%-git}/package.json" | tr '-' '_')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 _make_sources_ready() {
@@ -39,7 +39,7 @@ _make_sources_ready() {
 
     _icons=("${srcdir}/${pkgname%-git}/sources/assets/icons/app.png")
     _terminal() {
-        printf "#!/bin/bash\nelectron /usr/lib/${pkgname%-git}.asar\nexit \$?">"$1"
+        echo -ne "#!/bin/bash\n\$(printf '%s\\\\n' /usr/bin/electron* | sort --reverse | head -n1) /usr/lib/${pkgname%-git}.asar\nexit \$?">"$1"
     }
     cd "${srcdir}/${pkgname%-git}"
 
@@ -58,10 +58,6 @@ _make_sources_ready() {
             rm -R "${_target}"
         fi
     done
-
-    # Move documentation files, and license outside sources
-    [[ -f LICENSE ]] && mv LICENSE ../COPYING
-    [[ -d docs ]] && mv docs ../docs
 
     # Temporarily move '.git' outside the sources (if exists)
     [[ -d .git ]] && mv .git ../git-data
@@ -112,13 +108,15 @@ _make_sources_ready() {
 }
 
 build() {
+	cd "${srcdir}/${pkgname%-git}"
     # TSC definitions – as of Electron, 'global' or "latest"
     #   fallback version will be used:
-    _types=('@types/node' '@types/source-map-support'
-            "electron@`{ electron -v | cut -c 2-; } || printf "latest"`")
+    _types=(
+    	$(jq .devDependencies "${srcdir}/${pkgname%-git}/package.json"| grep @types/ | tr -d '{}"' | sed s~:.*\~~g | tr -d ' ' | tr '\n' ' ')
+    	$(jq .devDependencies "${srcdir}/${pkgname%-git}/package.json" | grep @electron-forge/ | tr -d '{}"' | sed s~:.*\~~g | tr -d ' ' | tr '\n' ' ')
+        "electron@`{ "$(printf '%s\\\\n' /usr/bin/electron* | sort --reverse | head -n1)" -v | cut -c 2-; } || printf "latest"`"
+    )
     _remove=("${_types[@]}" 'electron') # electron@[VERSION] is ignored
-    cd "${srcdir}/${pkgname%-git}"
-
     # Install production dependencies only + some required types for 'tsc'
     _echo_times "Installing dependencies..."
     npm install --save-prod --only=prod "${_types[@]}"
@@ -135,7 +133,7 @@ package() {
     install -Dm755 "${pkgname%-git}.asar" "${pkgdir}/usr/lib/${pkgname%-git}.asar"
     install -Dm755 "${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 "${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-    install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname%-git}/COPYING"
+    install -Dm644 "${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/COPYING"
 
     # Application icons
 
@@ -146,7 +144,7 @@ package() {
     # Documentation
 
     install -dm755 "${pkgdir}/usr/share/docs"
-    cp -R "docs/" "${pkgdir}/usr/share/docs/${pkgname%-git}/"
+    cp -R "${pkgname%-git}/docs/" "${pkgdir}/usr/share/docs/${pkgname%-git}/"
     chmod 0644 "${pkgdir}/usr/share/docs/${pkgname%-git}/"
 
     # Make package valid for current major version only
