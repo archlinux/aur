@@ -14,10 +14,8 @@ pkgbase = yosys-symbiflow-plugins-git
 	source = git+https://github.com/SymbiFlow/yosys-symbiflow-plugins.git
 	source = 0001-Makefile-respect-DESTDIR.patch
 	source = 0002-Makefile-prepend-to-build-flags.patch
-	source = 0003-Revert-ci-use-yosys-from-conda.patch
 	sha256sums = SKIP
-	sha256sums = 965862ca2f8a2c45b55cca9be35865a2a45eaa68cc3a2c22f4357bf8a34a2870
-	sha256sums = 0b1948b0f708879beab04e75af88d0cc8d16e8241b7cc6153501baa1fa32e5ef
-	sha256sums = 63f761ca071556bf28f13a04370d8c5bc6775d10f7200f2f8b6af71eb262f978
+	sha256sums = 5c2da350d8326fb4cc7d255aa2dbcdab296648f0ef96c267d0c48e00f1a114f1
+	sha256sums = bc876f94e81121c79b871f747f86ad231d1f627ee7e51e40f7001fd8d0bd21ec
 
 pkgname = yosys-symbiflow-plugins-git

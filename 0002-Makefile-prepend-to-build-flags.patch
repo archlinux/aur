@@ -1,28 +1,28 @@
-From 42a32df4ebb941c98da070c031d3bd8125831387 Mon Sep 17 00:00:00 2001
+From c3a08bfeec98cc5abe61d0f30cb4d8bd2d338263 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Fri, 22 Jan 2021 21:03:19 +0100
-Subject: [PATCH 2/3] Makefile: prepend to build flags
+Subject: [PATCH 2/2] Makefile: prepend to build flags
 
 ---
  Makefile_plugin.common | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile_plugin.common b/Makefile_plugin.common
-index 940c29e..3c1f32b 100644
+index 661c47d..d05c375 100644
 --- a/Makefile_plugin.common
 +++ b/Makefile_plugin.common
-@@ -38,9 +38,9 @@
- # |-- example2-plugin
- # |-- ...
- CXX ?= $(shell yosys-config --cxx)
--CXXFLAGS ?= $(shell yosys-config --cxxflags) #-DSDC_DEBUG
--LDFLAGS ?= $(shell yosys-config --ldflags)
--LDLIBS ?= $(shell yosys-config --ldlibs)
-+CXXFLAGS := $(shell yosys-config --cxxflags) $(CXXFLAGS) #-DSDC_DEBUG
-+LDFLAGS := $(shell yosys-config --ldflags) $(LDFLAGS)
-+LDLIBS := $(shell yosys-config --ldlibs) $(LDLIBS)
- PLUGINS_DIR ?= $(DESTDIR)$(shell yosys-config --datdir)/plugins
- DATA_DIR ?= $(DESTDIR)$(shell yosys-config --datdir)
+@@ -48,9 +48,9 @@ $(error "Didn't find 'yosys-config' under '$(YOSYS_PATH)'")
+ endif
+ 
+ CXX ?= $(shell $(YOSYS_CONFIG) --cxx)
+-CXXFLAGS ?= $(shell $(YOSYS_CONFIG) --cxxflags) #-DSDC_DEBUG
+-LDFLAGS ?= $(shell $(YOSYS_CONFIG) --ldflags)
+-LDLIBS ?= $(shell $(YOSYS_CONFIG) --ldlibs)
++CXXFLAGS := $(shell $(YOSYS_CONFIG) --cxxflags) $(CXXFLAGS) #-DSDC_DEBUG
++LDFLAGS := $(shell $(YOSYS_CONFIG) --ldflags) $(LDFLAGS)
++LDLIBS := $(shell $(YOSYS_CONFIG) --ldlibs) $(LDLIBS)
+ PLUGINS_DIR ?= $(DESTDIR)$(shell $(YOSYS_CONFIG) --datdir)/plugins
+ DATA_DIR ?= $(DESTDIR)$(shell $(YOSYS_CONFIG) --datdir)
  
 -- 
 2.33.0
