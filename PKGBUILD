@@ -3,7 +3,7 @@
 
 pkgname='eclint'
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='EditorConfig linter'
 url='https://gitlab.com/greut/eclint'
 arch=('x86_64' 'i686')
