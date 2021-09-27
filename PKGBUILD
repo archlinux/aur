@@ -2,7 +2,7 @@
 # Maintainer: monosans
 # Based on wlroots-git PKGBUILD
 pkgname=wlroots-eglstreams-git
-pkgver=0.14.1.r5090.f23c7612
+pkgver=0.14.1.r5114.fef636e2
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library with EGLStreams support (git version)'
@@ -21,7 +21,6 @@ depends=(
 	xcb-util-renderutil
 	xcb-util-wm
 	seatd
-	systemd
 	xorg-xwayland)
 makedepends=(
 	git

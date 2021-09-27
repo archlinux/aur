@@ -1,6 +1,6 @@
 pkgbase = wlroots-eglstreams-git
 	pkgdesc = Modular Wayland compositor library with EGLStreams support (git version)
-	pkgver = 0.14.1.r5090.f23c7612
+	pkgver = 0.14.1.r5114.fef636e2
 	pkgrel = 1
 	url = https://github.com/danvd/wlroots-eglstreams
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = wlroots-eglstreams-git
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = seatd
-	depends = systemd
 	depends = xorg-xwayland
 	provides = libwlroots.so
 	provides = wlroots=0.14.1
