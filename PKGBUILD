@@ -2,7 +2,7 @@
 _pkgname=netease-cloud-music-unblock-enhanced
 pkgname=$_pkgname-git
 pkgver=r50.3fb606d
-pkgrel=1
+pkgrel=2
 pkgdesc='Revive unavailable songs for Netease Cloud Music (Refactored & Enhanced version)'
 arch=(x86_64)
 url=https://github.com/UnblockNeteaseMusic/server
@@ -13,7 +13,7 @@ depends=(nss nodejs netease-cloud-music)
 source=(git+https://github.com/UnblockNeteaseMusic/server
   netease-cloud-music-unblock-enhanced)
 sha512sums=(SKIP
-  227caf3ab5a3d2212df9f9606377cd46cdf44880430738252949096d69b643d2029246a89621eed18853e102d5f8c78d50d3f3ccd07198a10025f2600ffd1baf)
+  ce4d0bf8a0e4ef86c15b16d98be5281a88afcdb93b2657a21f45d69e6c51316dbf1b297df97da4bc07cd221646b772136b4292cbb2b71e8426399adafeff36b1)
 pkgver() {
   cd $_srcname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
