@@ -30,8 +30,10 @@ depends=(
 
 source=(
     $pkgname::git://github.com/koide3/odometry_saver.git
+    https://github.com/koide3/odometry_saver/pull/1.patch
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
 )
 
@@ -42,7 +44,7 @@ pkgver() {
 
 prepare(){
     cd "$pkgname"
-    sed -i '21d' src/odometry_saver.cpp
+    patch --forward --strip=1 --input="${srcdir}/1.patch"
 }
 
 build() {

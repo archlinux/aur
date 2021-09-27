@@ -19,6 +19,8 @@ pkgbase = ros-noetic-odometry-saver-git
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-ndt-omp-git
 	source = ros-noetic-odometry-saver-git::git://github.com/koide3/odometry_saver.git
+	source = https://github.com/koide3/odometry_saver/pull/1.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ros-noetic-odometry-saver-git
