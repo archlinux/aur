@@ -1,0 +1,15 @@
+pkgbase = patreon-dl
+	pkgdesc = A downloader for Patreon content.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/PrivateGER/patreon-dl
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = Unlicense
+	makedepends = go
+	depends = glibc
+	source = https://github.com/PrivateGER/patreon-dl/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = fa706a5902b9d9f3c86f1fbbfa3fad8bde4a0c15e2c0e32328e5ec6ee6a65990
+
+pkgname = patreon-dl
