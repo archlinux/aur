@@ -43,10 +43,11 @@ provides+=(spice-gtk)
 conflicts+=(spice-gtk)
 
 source+=("spice-extra-mouse-buttons.patch")
-sha256sums+=('8b8ed51d76f7170aea7d5d9af3b60ab17d43d4437b07979ac297589ef65ec05b')
+sha256sums+=('864a19a1b86e7472c39f7f0cb25da7ca65b5b12cfba941f4835d9cc64bebccd6')
 
 _pkgname=$pkgname
 pkgname+="-extra-mouse-buttons"
+pkgrel="$pkgrel.1"
 pkgdesc+=" (with support for extra mouse buttons)"
 eval "$(declare -f build | sed 's/$pkgname/$_pkgname/g')"
 
