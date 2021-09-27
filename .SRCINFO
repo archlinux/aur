@@ -1,5 +1,5 @@
 pkgbase = linux-beikeyun-p1
-	pkgver = 5.14.3
+	pkgver = 5.14.8
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -29,7 +29,7 @@ pkgbase = linux-beikeyun-p1
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.3.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.8.xz
 	md5sums = a082ef5748b813abca0649dab8be5f52
 	md5sums = b712c1d1b1de3091acca6f4fd8bca831
 	md5sums = 1300797c69bf7f6a26672011334c6a96
@@ -41,11 +41,11 @@ pkgbase = linux-beikeyun-p1
 	md5sums = 966cbe04ab5848bf6972411166adfee4
 	md5sums = 7a18066683f3351b2bbd2653db783f80
 	md5sums = 6dfa62f14b2a3390b1a4ca2e5cf5c9a2
-	md5sums = 6c45e0ecb314ced19f92f81b7d73b6d3
+	md5sums = f172ba3d699b8d6b7c00ec3d59a3ea2b
 	md5sums = 66e0ae63183426b28c0ec0c7e10b5e16
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 3dc88030a8f2f5a5f97266d99b149f77
-	md5sums = f824457274fe967ff517171f15a19d83
+	md5sums = 767e2bd13b4f1497f7500877792cbff2
 
 pkgname = linux-beikeyun-p1
 	pkgdesc = The Linux Kernel and modules - AArch64 kernel for Beikeyun P1
@@ -55,7 +55,7 @@ pkgname = linux-beikeyun-p1
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.14.3
+	provides = linux=5.14.8
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -63,5 +63,5 @@ pkgname = linux-beikeyun-p1
 
 pkgname = linux-beikeyun-p1-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for Beikeyun P1
-	provides = linux-headers=5.14.3
+	provides = linux-headers=5.14.8
 	conflicts = linux-headers
