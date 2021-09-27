@@ -120,13 +120,12 @@ prepare() {
   cd ffmpeg
   git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
-
-  sed -i 's/arch=compute_30,code=sm_30/arch=compute_50,code=sm_50/g' configure
 }
 
 build() {
   local _cflags='-I/opt/cuda/include'
   local _ldflags='-L/opt/cuda/lib64'
+  local _nvccflags='-gencode arch=compute_50,code=sm_50 -O2'
 
   cd ffmpeg
 
@@ -134,6 +133,7 @@ build() {
     --prefix=/usr \
     --extra-cflags="$_cflags" \
     --extra-ldflags="$_ldflags" \
+    --nvccflags="$_nvccflags" \
     --disable-debug \
     --disable-static \
     --disable-stripping \
