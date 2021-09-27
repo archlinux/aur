@@ -1,7 +1,7 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
 
 pkgname=keyboard-center
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
@@ -50,6 +50,7 @@ package() {
   
   install -D -m644 src/keyboard-center.service -t "$pkgdir"/usr/lib/systemd/user
   install -D -m644 linux_packaging/60-keyboard-center.rules -t "$pkgdir"/usr/lib/udev/rules.d
+  install -D -m644 linux_packaging/uinput-keyboard-center.conf "$pkgdir"/usr/lib/modules-load.d/"$pkgname".conf
   
   install -D -m644 linux_packaging/assets/keyboard-center.png -t "$pkgdir"/usr/share/icons/hicolor/512x512/apps
   install -D -m644 linux_packaging/assets/keyboard-center.desktop -t "$pkgdir"/usr/share/applications  
