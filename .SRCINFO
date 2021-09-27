@@ -1,0 +1,13 @@
+pkgbase = mlvd
+	pkgdesc = A Mullvad Wireguard client in POSIX shell
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.phire.cc/me/mlvd
+	arch = any
+	depends = jq
+	depends = curl
+	depends = wireguard-tools
+	source = https://git.phire.cc/me/mlvd/archive/0.1.tar.gz
+	md5sums = 6e889e0695570459c16590573b3d4251
+
+pkgname = mlvd
