@@ -1,0 +1,13 @@
+pkgbase = mqtt_cpp
+	pkgdesc = mqtt_cpp is a header only library.It supports MQTT v5
+	pkgver = 11.1.0
+	pkgrel = 1
+	url = https://github.com/redboltz/mqtt_cpp
+	arch = x86_64
+	license = BOOST
+	makedepends = cmake
+	depends = doxygen
+	source = mqtt_cpp-11.1.0.tar.gz::https://github.com/redboltz/mqtt_cpp/archive/refs/tags/v11.1.0.tar.gz
+	sha256sums = 5a44149dd90f6e0f62a45a4ed9dfa8d4171185a6047d5735186837bf264aabce
+
+pkgname = mqtt_cpp
