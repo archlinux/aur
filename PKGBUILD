@@ -3,8 +3,9 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-toml-git
-pkgver=20210921
+pkgver=r73.8f40e6d
 pkgrel=1
+epoch=1
 pkgdesc="Vim syntax for TOML"
 arch=('any')
 depends=('vim')
@@ -19,12 +20,12 @@ conflicts=('vim-toml')
 install=vimdoc.install
 
 pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
 
   msg 'Installing documentation...'
   install -Dm 644 README.md "$pkgdir/usr/share/doc/vim-toml/README.md"
