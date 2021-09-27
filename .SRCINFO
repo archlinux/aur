@@ -1,7 +1,7 @@
 pkgbase = anydesk-bin
 	pkgdesc = The Fast Remote Desktop Application
 	pkgver = 6.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://anydesk.com
 	arch = i686
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = anydesk-bin
 	depends = libxext
 	depends = libxfixes
 	depends = libxdamage
+	depends = libxkbfile
 	depends = gcc-libs
 	depends = lsb-release
 	depends = polkit

@@ -2,12 +2,12 @@
 pkgname=anydesk-bin
 pkgver=6.1.1
 _pkgver_i686="6.0.1"
-pkgrel=4
+pkgrel=5
 pkgdesc="The Fast Remote Desktop Application"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
 license=('custom')
-depends=('fakeroot' 'minizip' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs' 'lsb-release' 'polkit')
+depends=('fakeroot' 'minizip' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'libxkbfile' 'gcc-libs' 'lsb-release' 'polkit')
 optdepends=('libpulse: audio support' 'gnome-themes-extra: adwaita theme')
 makedepends=('patchelf')
 conflicts=('anydesk')
