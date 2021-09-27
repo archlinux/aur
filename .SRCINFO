@@ -1,0 +1,24 @@
+pkgbase = ros-noetic-odometry-saver-git
+	pkgdesc = The odometry_saver package
+	pkgver = r2.87197ad
+	pkgrel = 1
+	url = https://github.com/koide3/odometry_saver
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-pcl-ros
+	depends = ros-noetic-pcl-conversions
+	depends = ros-noetic-nav-msgs
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-ndt-omp-git
+	source = ros-noetic-odometry-saver-git::git://github.com/koide3/odometry_saver.git
+	sha256sums = SKIP
+
+pkgname = ros-noetic-odometry-saver-git
