@@ -1,6 +1,6 @@
 pkgbase = thorium-bin
 	pkgdesc = A cross platform desktop reading app, based on the Readium Desktop toolkit
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/edrlab/thorium-reader
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = thorium-bin
 	depends = xdg-utils
 	depends = libappindicator-gtk3
 	depends = libsecret
-	source = https://github.com/edrlab/thorium-reader/releases/download/v1.7.1/EDRLab.ThoriumReader_1.7.1_amd64.deb
-	source = https://github.com/edrlab/thorium-reader/raw/v1.7.1/LICENSE
-	sha512sums = a2f3b28704ebd459e82c346a2e7ac54e991ba5f8443f2522dc2ce63965a78b7b5f2e1d4f3cd0ae92524813eb3e59ba55216744b01225a1f6d37177d16b372b32
-	sha512sums = SKIP
+	source = thorium-bin.tar.gz::https://github.com/edrlab/thorium-reader/releases/download/v1.7.2/EDRLab.ThoriumReader_1.7.2_amd64.deb
+	source = https://github.com/edrlab/thorium-reader/raw/v1.7.2/LICENSE
+	sha512sums = a8ea5ed14886dc888fd14dfa94770312343b9ed984d005065fd46269ceb23cfec629084dd9b7f9d6644887801ee334576580a0f2fdf02deda66aba9baa399c0a
+	sha512sums = acb9c8cdd1225dd5e7874b5380cc597adf9cf32dfcebccfd18d13f36f525b56d9319734da28de5ec44a983197f91f2e80231211197b7201e4efe115972aae96a
 
 pkgname = thorium-bin
