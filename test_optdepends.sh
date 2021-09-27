@@ -2,6 +2,30 @@
 
 # Test if external packages for PETSC are installed
 
+# Fair attempt to find the directory of a header file
+find_inc () {
+    local INC;
+    INC="$(find_so "$1")";
+    # * Faster first
+    if [ -f "${INC}" ]; then
+        INC="${INC}";
+    elif [ -f "${INC}"/"$1" ]; then
+        # ** The header is inside INC (a directory) e.g.
+        #    /usr/include/scotch
+        #    /usr/include/scotch/scotch.h
+        INC="${INC}"/"$1"
+    elif [ -d "${INC}" ]; then
+        # ** INC is a directory, and the header is deep inside
+        #    (hopefully faster than `pacman')
+        INC="$(find "${INC}" -name "$1" -print -quit)";
+    elif [ ! "x$2" == "x" ]; then
+        # ** May be there is a package?
+        pacman -Qs "$2" 2>&1>/dev/null && \
+            INC="$(pacman -Qlq "$2" | grep "/$1\$" || printf "")";
+    fi;
+    dirname "${INC}"
+}
+
 # Find a shared object (library; .so extension)
 #   example: find_so libboost_mpi
 find_so () {
@@ -77,7 +101,8 @@ HYPRE_SO="$(find_so libHYPRE.so)"
 if [ -f "${HYPRE_SO}" ]; then
 	CONFOPTS="${CONFOPTS} --with-hypre=1"
 	CONFOPTS="${CONFOPTS} --with-hypre-lib=${HYPRE_SO}"
-	CONFOPTS="${CONFOPTS} --with-hypre-include=/usr/include"
+    HYPRE_INC="$(find_inc "HYPRE.h" "hypre")"
+	CONFOPTS="${CONFOPTS} --with-hypre-include=${HYPRE_INC}"
 fi
 
 # MED: Data Modelization and Exchanges (meshes)
@@ -196,23 +221,21 @@ if [ -f "$(find_so libscalapack.so)" ]; then
 fi
 
 # Scotch: Partitioning with sparse matrices
-# TODO: programatic way
-SCOTCH_DIR="/usr/include/scotch"
-if [ -d "${SCOTCH_DIR}" ]; then
-	# SCOTCH_LIBS="$(ldconfig -p | awk '/scotch/{printf("'"${SCOTCH_DIR}"'/%s,", $1)}')"
-	SCOTCH_LIBS="libesmumps.so,libptscotch.so"
-	SCOTCH_LIBS="${SCOTCH_LIBS},libptscotcherr.so,libscotch.so"
-	SCOTCH_LIBS="${SCOTCH_LIBS},libscotcherr.so"
-
-	# Include bzip2 if scotch was built with bzip2 support
-	if [ -f "$(find_so libbz2.so)" ]; then
-		SCOTCH_LIBS="${SCOTCH_LIBS},${SCOTCH_DIR}/libbz2.so"
-	fi
-    # Add [], remove trailing ,
-	SCOTCH_LIBS="[${SCOTCH_LIBS}]"
+# TODO: general (non-pacman) way
+PTSCOTCH_SO="$(find_so libptscotch.so)"
+if [ -f "${PTSCOTCH_SO}" ]; then
 	CONFOPTS="${CONFOPTS} --with-ptscotch=1"
-    CONFOPTS="${CONFOPTS} --with-ptscotch-lib=${SCOTCH_LIBS}"
-    CONFOPTS="${CONFOPTS} --with-ptscotch-include=${SCOTCH_DIR}"
+    SCOTCH_LIBS=$(pacman -Qlq scotch | grep '.so$'| tr '\n' ',')
+    # Check if libscotch was compiled with bz2
+    if [ ! -z "$(nm -D $(find_so libscotch.so) | grep bz)" ]; then
+        CONFOPTS="${CONFOPTS}$(find_so libbz2.so)"
+    else
+        # Remove trailing ,
+        SCOTCH_LIBS="${SCOTCH_LIBS%%,}"
+    fi;
+    CONFOPTS="${CONFOPTS} --with-ptscotch-lib=[${SCOTCH_LIBS}]"
+    CONFOPTS="${CONFOPTS} --with-ptscotch-include="
+    CONFOPTS="${CONFOPTS}$(find_inc ptscotch.h scotch)"
 fi
 
 # SuiteSparse: Sparse matrix library

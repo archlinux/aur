@@ -14,7 +14,7 @@ pkgbase = petsc-git
 	makedepends = git
 	makedepends = cython
 	makedepends = chrpath
-	makedepends = hypre
+	makedepends = hypre=2.18.2
 	depends = openmpi
 	depends = lapack
 	depends = fftw
@@ -22,7 +22,7 @@ pkgbase = petsc-git
 	depends = cython
 	depends = python-mpi4py
 	depends = python-numpy
-	depends = eigen
+	depends = eigen>=3
 	depends = openblas
 	options = !staticlibs
 	source = git+https://gitlab.com/petsc/petsc.git#branch=release
@@ -30,7 +30,7 @@ pkgbase = petsc-git
 	source = test_optdepends.sh
 	sha512sums = SKIP
 	sha512sums = b6a1d48aab1c2639a4c1cbd8b313ace253f1c36eedaa3de3508ffbd6060e1def99e2f516ed9bb509307f614b41791d09342e2c2280c0b2c25dda1092b0e569d2
-	sha512sums = 77b257ea28a9f109c48c8447ab2db4204f6dba715626f15e916ec8f54c18d01588aa4d760c30b9a58659eefddafc7b54319525f8d89a693fd5305144eba7fc28
+	sha512sums = a4e064c08730058d63120a22c12657a100e5330546d66c44bb85e5bf84df80a23a729b0266af3efce2c8148f0266ddca99eaf9c8ea88d323cebe1d0c18c45d09
 
 pkgname = petsc-git
 	optdepends = boost: Free peer-reviewed portable C++ source libraries

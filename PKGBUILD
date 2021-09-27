@@ -22,7 +22,7 @@ source=(git+${url}.git#branch=release
         test_optdepends.sh)
 sha512sums=('SKIP'
             'b6a1d48aab1c2639a4c1cbd8b313ace253f1c36eedaa3de3508ffbd6060e1def99e2f516ed9bb509307f614b41791d09342e2c2280c0b2c25dda1092b0e569d2'
-            '77b257ea28a9f109c48c8447ab2db4204f6dba715626f15e916ec8f54c18d01588aa4d760c30b9a58659eefddafc7b54319525f8d89a693fd5305144eba7fc28')
+            'a4e064c08730058d63120a22c12657a100e5330546d66c44bb85e5bf84df80a23a729b0266af3efce2c8148f0266ddca99eaf9c8ea88d323cebe1d0c18c45d09')
 
 _config=linux-c-opt
 _install_dir="/usr"
