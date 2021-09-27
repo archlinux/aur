@@ -1,6 +1,6 @@
 pkgbase = waffle-git
 	pkgdesc = Library for choosing window system and OpenGL API at runtime (git version)
-	pkgver = v1.7.0.r4.g909c808
+	pkgver = v1.7.0.r26.g0a1fb6f
 	pkgrel = 1
 	url = http://www.waffle-gl.org
 	arch = x86_64
@@ -13,15 +13,15 @@ pkgbase = waffle-git
 	makedepends = libxslt
 	makedepends = docbook-xsl
 	makedepends = cmake
-	makedepends = systemd
+	makedepends = libdrm
 	makedepends = wayland-protocols
 	depends = libx11
 	depends = libxcb
-	depends = libudev.so
 	depends = libgl
 	depends = libgles
 	optdepends = libegl: for gbm, surfaceless, x11_egl or wayland support
 	optdepends = mesa: for gbm support
+	optdepends = libdrm: for gbm support
 	optdepends = wayland: for wayland support
 	provides = waffle
 	conflicts = waffle
@@ -29,4 +29,3 @@ pkgbase = waffle-git
 	sha256sums = SKIP
 
 pkgname = waffle-git
-
