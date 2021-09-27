@@ -9,6 +9,8 @@ hardcoded their values:
 
     #define _GTK_BUTTON_PREV_MASK (1 << 15) /* button 9 */
     #define _GTK_BUTTON_NEXT_MASK (1 << 16) /* button 8 */
+
+Co-Authored-By: Joan Bruguera <joanbrugueram@gmail.com>
 ---
  src/channel-inputs.c | 12 ++++++++++++
  src/spice-widget.c   | 16 ++++++++++++++++
