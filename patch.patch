@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 27ce045..30116c5 100644
+index 27ce045..0e45f46 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -153,3 +153,7 @@ install(TARGETS
@@ -7,6 +7,6 @@ index 27ce045..30116c5 100644
    hdl_graph_slam_nodelet
    LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
 +
-+install(DIRECTORY include/${PROJECT_NAME}/
-+   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
++install(DIRECTORY include/
++   DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
 +)
