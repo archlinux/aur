@@ -1,7 +1,7 @@
 pkgbase = ssvnc-nojava
 	pkgdesc = SSL/SSH VNC viewer no java
 	pkgver = 1.0.29
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.karlrunge.com/x11vnc/ssvnc.html
 	arch = i686
 	arch = x86_64
@@ -28,4 +28,3 @@ pkgbase = ssvnc-nojava
 	md5sums = 7d35673003f4f25a046c48f803e76e65
 
 pkgname = ssvnc-nojava
-

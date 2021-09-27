@@ -5,7 +5,7 @@
 pkgname=ssvnc-nojava
 _pkgname=ssvnc
 pkgver=1.0.29
-pkgrel=9
+pkgrel=10
 pkgdesc="SSL/SSH VNC viewer no java"
 arch=('i686' 'x86_64')
 url="http://www.karlrunge.com/x11vnc/ssvnc.html"
@@ -33,6 +33,7 @@ build() {
   cd "$_pkgname-$pkgver"
   sed -i '/wr_tool/s/\$(PREFIX)\/\$(LIB)\/\([^/]*$\)/\/usr\/lib\/ssvnc\/\1/' Makefile
   make JSRC= config
+  sed -i 's/ar clq/ar cq/' vnc_unixsrc/libvncauth/Makefile
   make JSRC= all
 }
 
