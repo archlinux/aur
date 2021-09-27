@@ -1,4 +1,5 @@
-# Maintainer: Gleb Sinyavskiy <zhulik.gleb@gmail.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Gleb Sinyavskiy <zhulik.gleb@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
@@ -6,8 +7,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-cuda
-pkgver=4.2
-pkgrel=4
+pkgver=4.4
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
 arch=(x86_64)
@@ -28,13 +29,16 @@ depends=(
   libass.so
   libavc1394
   libbluray.so
+  libdav1d.so
   libdrm
   libfreetype.so
   libiec61883
+  libmfx
   libmodplug
-  libomxil-bellagio
   libpulse
+  librav1e.so
   libraw1394
+  librsvg-2.so
   libsoxr
   libssh
   libtheora
@@ -55,22 +59,32 @@ depends=(
   libxml2
   libxv
   libxvidcore.so
+  libzimg.so
   opencore-amr
   openjpeg2
   opus
   sdl2
   speex
+  srt
+  svt-av1
   v4l-utils
+  vmaf
   xz
   zlib
 )
 makedepends=(
+  amf-headers
+  avisynthplus
+  clang
   ffnvcodec-headers
   git
   ladspa
   nasm
 )
-optdepends=('ladspa: LADSPA filters')
+optdepends=(
+  'avisynthplus: AviSynthPlus support'
+  'ladspa: LADSPA filters'
+)
 provides=(
   libavcodec.so
   libavdevice.so
@@ -82,8 +96,30 @@ provides=(
   libswscale.so
   ffmpeg
 )
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver})
-sha256sums=('SKIP')
+conflicts=('ffmpeg')
+_tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
+source=(
+  git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
+  vmaf-model-path.patch
+)
+sha256sums=(
+  SKIP
+  8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
+)
+
+pkgver() {
+  cd ffmpeg
+
+  git describe --tags | sed 's/^n//'
+}
+
+prepare() {
+  cd ffmpeg
+  git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
+  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
+
+  sed -i 's/arch=compute_30,code=sm_30/arch=compute_50,code=sm_50/g' configure
+}
 
 build() {
   local _cflags='-I/opt/cuda/include'
@@ -92,19 +128,19 @@ build() {
   cd ffmpeg
 
   ./configure \
-    --prefix='/usr' \
+    --prefix=/usr \
     --extra-cflags="$_cflags" \
     --extra-ldflags="$_ldflags" \
     --disable-debug \
     --disable-static \
     --disable-stripping \
-    --enable-fontconfig \
+    --enable-amf \
+    --enable-avisynth \
     --enable-nonfree \
     --enable-cuda-nvcc \
-    --enable-cuvid \
     --enable-libnpp \
-    --enable-ffnvcodec \
-    --enable-libdrm \
+    --enable-lto \
+    --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
     --enable-gpl \
@@ -112,12 +148,14 @@ build() {
     --enable-libaom \
     --enable-libass \
     --enable-libbluray \
+    --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
     --enable-libiec61883 \
     --enable-libjack \
+    --enable-libmfx \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
@@ -125,12 +163,17 @@ build() {
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
+    --enable-librav1e \
+    --enable-librsvg \
     --enable-libsoxr \
     --enable-libspeex \
+    --enable-libsrt \
     --enable-libssh \
+    --enable-libsvtav1 \
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvidstab \
+    --enable-libvmaf \
     --enable-libvorbis \
     --enable-libvpx \
     --enable-libwebp \
@@ -139,9 +182,9 @@ build() {
     --enable-libxcb \
     --enable-libxml2 \
     --enable-libxvid \
+    --enable-libzimg \
     --enable-nvdec \
     --enable-nvenc \
-    --enable-omx \
     --enable-shared \
     --enable-version3
 
@@ -150,11 +193,7 @@ build() {
   make doc/ff{mpeg,play}.1
 }
 
-conflicts=("ffmpeg")
-
 package() {
   make DESTDIR="${pkgdir}" -C ffmpeg install install-man
   install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
 }
-
-# vim: ts=2 sw=2 et:

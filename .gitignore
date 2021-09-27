@@ -1,4 +1,8 @@
-*.pkg.tar.xz
-pkg/
-src/
-ffmpeg/
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!vmaf-model-path.patch
