@@ -1,28 +1,34 @@
-# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=python-laspy
-pkgdesc="A pythonic interface for .LAS LIDAR files matching specification 1.0-1.4"
+pkgdesc="Pythonic interface for .LAS LIDAR files"
 url="https://github.com/laspy/laspy"
-pkgver=1.7.0
-pkgrel=2
+pkgver=2.0.3
+_commit=4438f472de74e44df45309c84feb517f7538ed09
+pkgrel=1
 arch=('any')
-depends=('python' 'python-numpy')
-makedepends=('git' 'python-setuptools') # 'python-six')
 license=('custom')
-source=("https://github.com/laspy/laspy/archive/${pkgver}.tar.gz")
-sha512sums=('8331ef5eccda67f29b5c013974390ce1ccebf44f7bda3f3683a97c4a0340b7b2ec0d9c205c6077a7bb40ebb2576a49b97b2a7c46f2f0c384b6ada4386f6c6c0b')
+depends=('python-numpy')
+makedepends=('git' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
+source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
+sha256sums=('SKIP')
+validpgpkeys=('44B238524D21C5064D7081BD5022EF94BE848C51')
 
 build() {
-    cd "$srcdir/laspy-${pkgver}"
-    python setup.py build
+	cd "$pkgname-$pkgver"
+	python setup.py build
+	cd docs
+	PYTHONPATH=../ make man
 }
 
 package() {
-    cd "$srcdir/laspy-${pkgver}"
-    python setup.py install \
-        --prefix=/usr \
-        --root="$pkgdir" \
-        --optimize=1 \
-        --skip-build
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "$pkgname-$pkgver"
+	python setup.py install \
+		--prefix=/usr \
+		--root="$pkgdir" \
+		--optimize=1 \
+		--skip-build
+	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 docs/_build/man/laspy.1 -t "$pkgdir/usr/share/man/man1/"
 }
