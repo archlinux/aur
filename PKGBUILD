@@ -2,7 +2,7 @@
 # Contributor: bitwave <aur@oomlu.de>
 
 pkgname=python-boofuzz
-pkgver=0.1.6
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A fork and successor of the Sulley Fuzzing Framework"
 url="https://github.com/jtpereyda/boofuzz"
