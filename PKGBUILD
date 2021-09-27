@@ -2,7 +2,7 @@
 _release_type=alpha
 
 pkgname=makedeb-alpha
-pkgver=6.7.3
+pkgver=6.7.4
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release_type} release)"
 arch=('any')
@@ -50,6 +50,6 @@ package() {
                 -o "${pkgdir}/usr/share/man/man8/makedeb.8"
 
   SOURCE_DATE_EPOCH="$(git log -1 --pretty='%ct' man/pkgbuild.5.adoc)" \
-    asciidoctor -b manpage man/makedeb.8.adoc \
+    asciidoctor -b manpage man/pkgbuild.5.adoc \
                 -o "${pkgdir}/usr/share/man/man5/pkgbuild.5"
 }
