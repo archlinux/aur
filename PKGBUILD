@@ -4,7 +4,7 @@
 
 pkgname=river-git
 _pkgname=${pkgname%-*}
-pkgver=r658.e2e4cd2
+pkgver=r736.6616d32
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ url='https://github.com/ifreund/river'
 license=('GPL3')
 depends=(
 	'mesa>=21.1.2' 'wlroots>=0.14.0' 'wayland' 'wayland-protocols'
-	'libxkbcommon' 'libevdev' 'pixman' 'xorg-xwayland'
+	'libxkbcommon' 'libevdev' 'pixman' 'xorg-xwayland' 'polkit'
 )
 makedepends=('zig>=0.8.0' 'git' 'scdoc')
 provides=('river' 'riverctl' 'rivertile')
