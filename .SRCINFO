@@ -1,6 +1,6 @@
 pkgbase = zapier-platform-cli
 	pkgdesc = Gateway to creating custom applications on the Zapier platform
-	pkgver = 11.1.0
+	pkgver = 11.1.1
 	pkgrel = 1
 	url = https://platform.zapier.com/cli
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = zapier-platform-cli
 	depends = nodejs
 	optdepends = bash-completion: for tab completion
 	provides = zapier
-	noextract = zapier-platform-cli-11.1.0.tgz
-	source = https://registry.npmjs.org/zapier-platform-cli/-/zapier-platform-cli-11.1.0.tgz
-	b2sums = 2411b12b1d94fda9b1dff3e1419fc0edb279bf5e21a0ef890789a6cd12eecd7218348f54e580618f0bba8aeb079f5e7fd2872f9735ee6443621e2d57e523e89b
+	noextract = zapier-platform-cli-11.1.1.tgz
+	source = https://registry.npmjs.org/zapier-platform-cli/-/zapier-platform-cli-11.1.1.tgz
+	b2sums = 0ced9d6ee1e3e3c6ef2ce9486f63fb4be8069166a0de1c9b11d62b7fd20439b99c0c275f0ac27d6844f57c0863b59a28ebea9c3d20a8e5e0bd31532fa652153e
 
 pkgname = zapier-platform-cli

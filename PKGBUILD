@@ -2,7 +2,7 @@
 
 pkgname=zapier-platform-cli
 _pkgname="${pkgname%-platform-cli}"
-pkgver=11.1.0
+pkgver=11.1.1
 pkgrel=1
 pkgdesc='Gateway to creating custom applications on the Zapier platform'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('bash-completion: for tab completion')
 provides=("$_pkgname")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-b2sums=(2411b12b1d94fda9b1dff3e1419fc0edb279bf5e21a0ef890789a6cd12eecd7218348f54e580618f0bba8aeb079f5e7fd2872f9735ee6443621e2d57e523e89b)
+b2sums=(0ced9d6ee1e3e3c6ef2ce9486f63fb4be8069166a0de1c9b11d62b7fd20439b99c0c275f0ac27d6844f57c0863b59a28ebea9c3d20a8e5e0bd31532fa652153e)
 
 package() {
 	# https://wiki.archlinux.org/title/Node.js_package_guidelines
