@@ -4,7 +4,7 @@
 _name=google-cloud-bigquery
 
 pkgname=python-google-cloud-bigquery
-pkgver=2.26.0
+pkgver=2.27.0
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
 	'python-snappy: for fastparquet support'
 	'python-llvmlite: for fastparquet support')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('15ca1f9c8165b584c2d593620354cd3b17c007e87cfd1abd1eebd2c08eb5d109')
+sha256sums=('98dd424093c3e2fbc515b69227872c86cd2ccec54f45c3333b382de70cc5a545')
 
 build() {
 	cd "$_name-$pkgver"
@@ -38,7 +38,7 @@ build() {
 
 package() {
 	cd "$_name-$pkgver"
-	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-	install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
