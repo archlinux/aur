@@ -1,7 +1,7 @@
 From ddc5c530681bbadb8c56e915eb3ddeae4d711e79 Mon Sep 17 00:00:00 2001
 From: Kevin Pouget <kpouget@redhat.com>
 Date: Thu, 14 May 2020 16:19:55 +0200
-Subject: [PATCH] vdagentd/uinput: handle PREV and NEXT mouse buttons
+Subject: [PATCH] vdagentd/uinput: handle SIDE and EXTRA mouse buttons
 
 Co-Authored-By: Joan Bruguera <joanbrugueram@gmail.com>
 ---
@@ -25,8 +25,8 @@ index ff37e1e..8a14737 100644
          { .name = "left",   .mask =  VD_AGENT_LBUTTON_MASK, .btn = BTN_LEFT      },
          { .name = "middle", .mask =  VD_AGENT_MBUTTON_MASK, .btn = BTN_MIDDLE    },
          { .name = "right",  .mask =  VD_AGENT_RBUTTON_MASK, .btn = BTN_RIGHT     },
-+        { .name = "prev" ,  .mask =  VD_AGENT_SBUTTON_MASK, .btn = BTN_EXTRA     },
-+        { .name = "next" ,  .mask =  VD_AGENT_EBUTTON_MASK, .btn = BTN_SIDE      },
++        { .name = "side" ,  .mask =  VD_AGENT_SBUTTON_MASK, .btn = BTN_SIDE      },
++        { .name = "extra" , .mask =  VD_AGENT_EBUTTON_MASK, .btn = BTN_EXTRA     },
 +
      };
      static const struct button_s wheel[] = {
