@@ -1,8 +1,8 @@
 # Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
 
-_clientver=13
+_clientver=14
 pkgname=ovpn-dco-dkms
-pkgver=13_beta
+pkgver=14_beta
 pkgrel=1
 pkgdesc='Optional Data Channel Offload kernel module for OpenVPN 3'
 arch=('any')
