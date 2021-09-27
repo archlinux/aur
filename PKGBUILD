@@ -2,7 +2,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=oomd-git
-pkgver=20190207
+pkgver=v0.5.0.r6.g7ccc7035
 pkgrel=1
 pkgdesc='A userspace out-of-memory killer'
 arch=('x86_64')
@@ -16,6 +16,11 @@ source=(
     "oomd::git+https://github.com/facebookincubator/oomd.git"
 )
 
+pkgver() {
+  cd "oomd"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
     arch-meson oomd build
     ninja -C build
@@ -23,5 +28,5 @@ build() {
 
 package() {
     DESTDIR=$pkgdir ninja -C build install
-    install -Dm644 $srcdir/oomd/src/oomd/etc/desktop.json $pkgdir/etc/oomd/desktop.json.example
+    install -Dm644 "$srcdir"/oomd/src/oomd/etc/desktop.json "$pkgdir"/etc/oomd/desktop.json.example
 }

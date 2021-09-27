@@ -1,6 +1,6 @@
 pkgbase = oomd-git
 	pkgdesc = A userspace out-of-memory killer
-	pkgver = 20190207
+	pkgver = v0.5.0.r6.g7ccc7035
 	pkgrel = 1
 	url = https://github.com/facebookincubator/oomd
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = oomd-git
 	md5sums = SKIP
 
 pkgname = oomd-git
-
