@@ -1,7 +1,7 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=nxprayer
-pkgver=v0.1.1
+pkgver=.r38.eb9e684
 pkgrel=1
 epoch=1
 pkgdesc="Time of the next Islamic prayer in your status bar."
@@ -23,11 +23,12 @@ makedepends=(
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("git://github.com/AbdeltwabMF/nxprayer")
-md5sums=('SKIP')
+sha1sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname}"
-    printf "5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(awk '/^VERSION =/ {print $3}' config.mk)" \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

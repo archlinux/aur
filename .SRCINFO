@@ -18,6 +18,6 @@ pkgbase = nxprayer
 	provides = nxprayer
 	conflicts = nxprayer
 	source = git://github.com/AbdeltwabMF/nxprayer
-	md5sums = SKIP
+	sha1sums = SKIP
 
 pkgname = nxprayer
