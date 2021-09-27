@@ -3,6 +3,7 @@ From: Kevin Pouget <kpouget@redhat.com>
 Date: Thu, 14 May 2020 16:19:55 +0200
 Subject: [PATCH] vdagentd/uinput: handle PREV and NEXT mouse buttons
 
+Co-Authored-By: Joan Bruguera <joanbrugueram@gmail.com>
 ---
  src/vdagentd/uinput.c | 5 +++++
  1 file changed, 5 insertions(+)
