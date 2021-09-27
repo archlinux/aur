@@ -13,7 +13,7 @@ hardcoded their values:
 Co-Authored-By: Joan Bruguera <joanbrugueram@gmail.com>
 ---
  src/channel-inputs.c | 12 ++++++++++++
- src/spice-widget.c   | 16 ++++++++++++++++
+ src/spice-widget.c   | 12 ++++++++++++
  2 files changed, 28 insertions(+)
 
 diff --git a/src/channel-inputs.c b/src/channel-inputs.c
@@ -50,23 +50,19 @@ diff --git a/src/spice-widget.c b/src/spice-widget.c
 index 5cef966b..85d0f4db 100644
 --- a/src/spice-widget.c
 +++ b/src/spice-widget.c
-@@ -1997,6 +1997,10 @@ static int button_gdk_to_spice(guint gdk)
+@@ -1997,6 +1997,8 @@ static int button_gdk_to_spice(guint gdk)
          [ 3 ] = SPICE_MOUSE_BUTTON_RIGHT,
          [ 4 ] = SPICE_MOUSE_BUTTON_UP,
          [ 5 ] = SPICE_MOUSE_BUTTON_DOWN,
-+        [ 6 ] = 0,
-+        [ 7 ] = 0,
 +        [ 8 ] = SPICE_MOUSE_BUTTON_SIDE,
 +        [ 9 ] = SPICE_MOUSE_BUTTON_EXTRA,
      };
  
      if (gdk < SPICE_N_ELEMENTS(map)) {
-@@ -2011,6 +2015,10 @@ static int button_gdk_to_spice_mask(guint gdk)
+@@ -2011,6 +2015,8 @@ static int button_gdk_to_spice_mask(guint gdk)
          [1] = SPICE_MOUSE_BUTTON_MASK_LEFT,
          [2] = SPICE_MOUSE_BUTTON_MASK_MIDDLE,
          [3] = SPICE_MOUSE_BUTTON_MASK_RIGHT,
-+        [6] = 0,
-+        [7] = 0,
 +        [8] = SPICE_MOUSE_BUTTON_SIDE,
 +        [9] = SPICE_MOUSE_BUTTON_EXTRA,
      };
