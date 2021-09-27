@@ -63,8 +63,8 @@ index 5cef966b..85d0f4db 100644
          [1] = SPICE_MOUSE_BUTTON_MASK_LEFT,
          [2] = SPICE_MOUSE_BUTTON_MASK_MIDDLE,
          [3] = SPICE_MOUSE_BUTTON_MASK_RIGHT,
-+        [8] = SPICE_MOUSE_BUTTON_SIDE,
-+        [9] = SPICE_MOUSE_BUTTON_EXTRA,
++        [8] = SPICE_MOUSE_BUTTON_MASK_SIDE,
++        [9] = SPICE_MOUSE_BUTTON_MASK_EXTRA,
      };
  
      if (gdk < SPICE_N_ELEMENTS(map)) {
