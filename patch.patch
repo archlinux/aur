@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 27ce045..30116c5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -153,3 +153,7 @@ install(TARGETS
+   scan_matching_odometry_nodelet 
+   hdl_graph_slam_nodelet
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
++
++install(DIRECTORY include/${PROJECT_NAME}/
++   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
++)
