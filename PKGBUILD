@@ -3,7 +3,7 @@
 pkgname=kubectl-support-bundle-bin
 _pkgname="${pkgname%-bin}"
 _pkgname2="${_pkgname#kubectl-}"
-pkgver=0.13.8
+pkgver=0.13.14
 pkgrel=1
 pkgdesc='Kubectl plugin for post-installation troubleshooting and diagnostics (support bundles)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('kubectl')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${_pkgname2}_${pkgver}_${_goos}_${_goarch}.tar.gz::https://github.com/replicatedhq/troubleshoot/releases/download/v$pkgver/${_pkgname2}_${_goos}_${_goarch}.tar.gz")
-b2sums=(0dffddf7c7de7170426bbc47b712a9a3d8eb1912f7345390f6d3ad8bfb4963aa6f10cbc51b0b6197539c5707407c881fe1e9dc59e9b01c06661d767f4cf29195)
+b2sums=(418613d40334f3c5fe2b3c0c22a654d68b51eb4bf976f34b3335f47e1817f8a9cf855cda793a1654a79e6f477eaa19f9c850dee6a76545bcde27f7941462f795)
 
 package() {
 	install -Dm 755 "${_pkgname2}" "$pkgdir/usr/bin/kubectl-${_pkgname2/-/_}"
