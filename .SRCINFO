@@ -12,6 +12,7 @@ pkgbase = libayatana-common
 	makedepends = glib2
 	makedepends = vala
 	makedepends = gobject-introspection
+	makedepends = intltool
 	depends = dconf
 	source = https://github.com/AyatanaIndicators/libayatana-common/archive/0.9.4.tar.gz
 	md5sums = 322d65b615f0894cb3684895695801b3
