@@ -2,7 +2,7 @@
 # Contributor: lmartinez-mirror
 
 pkgname=bato
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Small program to send battery notifications"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MPL2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 depends=('libnotify')
 makedepends=('rust' 'cmake')
-sha256sums=('b926ab13fae370b53b76c0be08aa33277e637fda6cc159b7f26a75f898e2257e')
+sha256sums=('ca0d7f6cbfc7ac736a40672bb526922788b7e0dfdfc3c283cd85d32edf0040ce')
 
 build() {
   cd "$pkgname-$pkgver"
