@@ -1,6 +1,6 @@
 pkgbase = aretext
 	pkgdesc = [BETA] Minimalist text editor that never slows you down.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/aretext/aretext
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = aretext
 	provides = aretext
 	conflicts = aretext-bin
 	conflicts = aretext-git
-	source = https://github.com/aretext/aretext/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 9208aed94fbac9b0840847bbad6bec781f7880323382c6a2f2de785e6fe7da66
+	source = https://github.com/aretext/aretext/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = bce1d38d137f292bc89c1cedda1fcb87dfb4c35a7d3b5116c9128bcf09c64821
 
 pkgname = aretext
