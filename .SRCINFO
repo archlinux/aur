@@ -1,7 +1,7 @@
 pkgbase = pycharm-community-jre
 	pkgdesc = PyCharm Community Edition IDE for Python with bundled JRE
 	pkgver = 2021.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/pycharm/
 	arch = x86_64
 	license = APACHE

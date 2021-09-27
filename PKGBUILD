@@ -2,7 +2,7 @@
 pkgname=pycharm-community-jre
 _appname=pycharm-community
 pkgver=2021.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE"
 arch=(x86_64)
 url="https://www.jetbrains.com/pycharm/"
@@ -30,7 +30,7 @@ package() {
   # see https://bugs.archlinux.org/task/40934
   sed -i 's/lcd/on/' bin/*.vmoptions
 
-  rm -rf bin/fsnotifier{,-arm}
+  rm -rf bin/fsnotifier-arm
 
   install -dm 755 "${pkgdir}"/usr/share/{licenses,pixmaps,pycharm}
   cp -dr --no-preserve='ownership' bin jbr lib plugins "${pkgdir}"/usr/share/pycharm/
