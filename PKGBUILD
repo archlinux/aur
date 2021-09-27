@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: slact
 pkgname=tlpui-git
-pkgver=1.4.0.alpha1.r4.g4633e39
+pkgver=1.4.0.r1.g2148706
 pkgrel=1
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
@@ -29,7 +29,6 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
@@ -44,10 +43,4 @@ package() {
 
   install -Dm644 "${pkgname%-git}/icons/themeable/hicolor/scalable/apps/${pkgname%-git}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-
-  # Fix missing icon in About dialog
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir$site_packages/${pkgname%-git}/icons/themeable/hicolor/scalable/apps"
-  ln -s "/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg" \
-    "$pkgdir$site_packages/${pkgname%-git}/icons/themeable/hicolor/scalable/apps"
 }
