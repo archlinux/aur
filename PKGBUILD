@@ -1,35 +1,49 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-pycoin
-pkgver=0.80
+pkgver=0.91.20210515
 pkgrel=1
 pkgdesc="Utilities for Bitcoin and altcoin addresses and transaction manipulation"
-arch=('any')
-depends=('python')
-makedepends=('python-setuptools')
 url="https://github.com/richardkiss/pycoin"
+arch=('any')
 license=('MIT')
-options=(!emptydirs)
-source=(https://pypi.python.org/packages/6e/59/02788d66761804864da917e353f1e397714165ad78cee2cca9d37b780c08/pycoin-0.80.tar.gz)
-md5sums=('56025aac481c06867796cd83a07eb4eb')
-sha256sums=('a79a7771c3f6ca2e35667e80983987f0c799c5db01e58016c22a12e8484b2034')
-provides=('pycoin' 'python-pycoin')
+depends=('python')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'python-sphinx')
+checkdepends=('python-pytest')
+changelog=CHANGES
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pycoin/pycoin-$pkgver.tar.gz")
+sha256sums=('d2231a8d11b2524c26472d08cf1b76569849ab44507495d0510165ae0af4858e')
+
+prepare() {
+	cd "pycoin-$pkgver"
+	sed -i \
+		-e "/'block/s/block/pycoin-block/" \
+		-e "/'ku/s/ku/pycoin-ku/" \
+		-e "/'tx/s/tx/pycoin-tx/" \
+		-e "/'msg/s/msg/pycoin-msg/" \
+		-e "/'keychain/s/keychain/pycoin-keychain/" \
+		-e "/'b58/s/b58/pycoin-b58/" \
+		-e "/'coinc/s/coinc/pycoin-coinc/" \
+		setup.py
+}
 
 build() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
+	cd "pycoin-$pkgver"
+	python setup.py build
+	cd docs
+	make man
+}
 
-  msg2 'Building...'
-  python setup.py build
+check() {
+	cd "pycoin-$pkgver"
+	pytest
 }
 
 package() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg2 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
-
-  msg2 'Renaming binaries...'
-  for _bin in $(find "$pkgdir/usr/bin" -mindepth 1 -type f -printf '%f\n'); do
-    mv "$pkgdir/usr/bin/$_bin" "$pkgdir/usr/bin/pycoin-$_bin"
-  done
+	cd "pycoin-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md CREDITS -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm 644 docs/_build/man/pycoin.1 -t "$pkgdir/usr/share/man/man1/"
 }

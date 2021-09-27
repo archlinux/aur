@@ -1,0 +1,278 @@
+0.91.20210515
+-------------
+
+* add support for BIP49 ("ypub") and BIP88 ("zpub")
+* change how `override_network` is implemented
+
+0.90.20201031
+-------------
+
+* made sqlite3 optional
+
+Version 0.90.20200322
+---------------------
+
+* fix crasher due to openssl version on Mac OS
+* fix problem with blockcypher provider
+* add support for keywords sig_hash_types_to_try, signature_hints_for_public_pair to solver
+* add support for generating Digibyte addresses
+* update to modern LTC address
+* build with pyproject.toml
+
+Version 0.90.20190728
+---------------------
+
+* fix problem with recid > 1 (probably, hard to test)
+* fix problem on Windows
+* add Chaucha, STRAT
+* fix Dogecoin bip32 prefix
+* add documentation for pycoin.networks.Contract.Contract class
+
+Version 0.90.20190630
+---------------------
+
+* all API moved under pycoin.symbols.*.network
+* rewrite of ecdsa package
+* change how ScriptNullData works (arbitrary data now allowed after OP_RETURN)
+* first crack at documentation
+* added b58, coinc, keychain command-line tools
+* removed obsolete genwallet, spend, and bu tools
+* "netcode" renamed to "symbol"
+* many, many other changes, big and small
+
+Version 0.80
+------------
+
+* remove support for (now obsolete) blockr.io
+* change intbytes to use six-style names
+* add BlockchainInfoProvider.tx_for_tx_hash
+* add BECH32 segwit address support (including to ku)
+* add msg tool (to generate and verify signatures)
+* remove fetch_unspents tool (use tx -i)
+* remove cache_tx tool (use tx -C)
+* remove BlockHeader (functionality has been rolled into Block)
+
+Version 0.77
+------------
+
+* tx cmd will no longer use split pools unless an output is manually specified
+* more refactoring of vm classes
+* first crack at Sphinx documentation
+* fix https://github.com/richardkiss/pycoin/issues/224
+* fix https://github.com/richardkiss/pycoin/issues/225
+* fixed recipes
+
+Version 0.76
+------------
+
+* respin build to fixing a problem with "vm.py" being named "VM.py" in
+  the 0.75 tar.gz file on pypi
+
+Version 0.75
+------------
+
+* add tx --db option to include source transactions
+* add pycoin.contrib.who_signed module
+* use latest version of tests from bitcoind (script_tests.json, tx_invalid.json,
+  and tx_valid.json)
+* add CHECKSEQUENCEVERIFY working
+* add initial support for segregated witness ("segwit")
+* rename scripts module to cmds to eliminate confusion with bitcoin script module
+* remove obsolete commands genwallet, bitcoin_utils and spend
+* changed to more standard "M of N" for multisig
+* move networks.py to networks module
+* add network/registry.py to allow dynamic registration of non-bitcoin networks
+* move messages.py to messages module
+* add electrum key support to ku tool
+* add bloomfilter.py
+* add recipies for multisig
+
+Version 0.70
+------------
+
+* major overhaul of the VM and scripting system to make it more compatible with bitcoind
+  including added over 1000 tests from bitcoind
+* added a framework to trace transaction script
+* removed chain.com service provider, as they've disabled their API
+* removed biteasy service provider, as many transactions were not being returned properly
+  and there are many other good alternatives
+* deprecate PYCOIN_SERVICE_PROVIDERS in favor of PYCOIN_BTC_PROVIDERS
+* add Peter Gray's message signing code to pycoin/contrib
+* add experimental bitcoind_disk code to read blocks from bitcoind disk database
+* deprecate Tx.tx_from_hex (instead use Tx.from_hex)
+
+Version 0.61
+------------
+
+* fix a problem creating and parsing scripts with blobs of size >= 256
+
+Version 0.60
+------------
+
+* more tests
+* prototype support for using native OpenSSL methods to speed up some slow operations.
+  Set (and export) environment variable PYCOIN_NATIVE=openssl to activate.
+* moved intbytes to pycoin.intbytes
+* support signing pay-to-scripthash in tx utility
+* abolish support for negative numbers in BIP32 key paths
+* more networks
+* changed how Spendable streams to text and to dicts to put transaction hashes in the
+  more conventional order. ** WARNING **: if you have built databases of Spendable objects
+  using these methods, you will need to convert them
+* make spend.py script obsolete
+* first crack at Insight service, chain.so service, chain.com service
+* deprecate Tx.tx_from_hex in favor of Tx.from_hex
+* a zillion other minor fixes
+
+Version 0.52
+------------
+
+* more networks
+* moved some (untested) network code from pycoinnet
+* fix a bug in Key which affected ku, and add a unit test (thanks to Michael Perklin for the report)
+
+Version 0.51
+------------
+
+* add pycoin.blockchain (which was in github but not setup.py)
+
+
+Version 0.50
+------------
+
+* use tox for testing (see TESTING.txt for more info)
+* move blockchain utilities from pycoinnet to pycoin
+* completely rework how scripts are identified and solved in an easier-to-extend way
+* add fields to Spendable that will work better with wallets (coming soon)
+* add Tx.blanked_hash to assist in identifying transactions subject to malleability
+* can now sign M of N transactions
+* signing just one signature in an M of N transaction supported
+* VM improved so multisig validation now supported
+* pay-to-script validation now supported
+* pay-to-script signing now supported
+
+
+Version 0.42
+------------
+
+* switch TxOut.bitcoin_address to taking netcode, sorry for API thrash
+* get pay-to-script addresses recognized in existing transactions
+  * still can't create or sign them
+
+
+Version 0.41
+------------
+
+* fix version number in setup.py so this is actually the latest version sent by pypi
+* allow alternate networks when parsing WIFs
+* move to three or four letter netcodes, like BTC
+* add pycoin/key/validate.py for methods that validate addresses (including pay-to-script addresses)
+  NOTE: we can't yet create or parse transactions with pay-to-script addresses
+* get block script working
+* fix a few other bugs
+
+
+Version 0.40
+------------
+
+This is a pretty major overhaul... sorry for broken API!
+
+* added MANIFEST.in
+* initial support for Litecoin and Dogecoin addresses
+
+New Scripts:
+* ku (keys & BIP32 manipulation), replaces bu/bitcoin_utils and genwallet
+* tx (transaction manipulation), replaces spend
+* fetch_unspent command-line tool
+* cache_tx to add a transaction to local cache
+* block (to dump contents of a block)
+
+Keys:
+* added Key class with alt coin support
+* renamed Wallet.py to bip32.py
+
+Tx:
+* massive overhaul of Tx class
+* remove UnsignedTx class, folding functionality into Tx
+* partial signing supported by Tx
+* added Spendable class
+* Tx objects can now optionally be augmented with data about source coins ("unspents")
+  * if this data is set, many new methods can be called related to signing or verifying
+  * easy integration with TxDB class to set unspents
+* deterministic signing of TxIn according to RFC6979
+* limit S values in preparation for version 3 transactions
+* tx_utils helper to make it dead simple to create new, signed transactions
+  * create_tx and create_signed_tx
+
+Services:
+* new support for blockr.io and biteasy.com
+* services now integrated with environment variables:
+   * PYCOIN_SERVICE_PROVIDERS
+   * PYCOIN_CACHE_DIR
+* a new TxDB class
+   * looks like a dictionary
+   * transparently uses configured services
+   * caches fetched transactions
+
+
+Version 0.26
+------------
+
+* fixed Block.repr
+* more testnet support
+
+Version 0.25
+------------
+
+* improve display in satoshi_to_btc
+* add TxOut.bitcoin_address
+* allow UnsignedTx to be streamed and parsed
+
+Version 0.24
+------------
+
+* add some support for testnet
+* add support for ripemd160 in Google App Engine
+* add a BIP32 wallet subkey cache
+
+Version 0.23
+------------
+
+* fixed two bugs specific to Python 2.7 (thanks to Peter D. Gray)
+
+Version 0.22
+------------
+
+* now works with Python 3.2
+* added "bu" command-line utility
+* improvements to "spend" command-line utility
+* added some blockchain.info utilities
+* first crack at transaction fee conventions
+* rename public_pair_from_sec to sec_to_public_pair
+
+Version 0.20
+------------
+
+* transaction signing is much easier to use now
+* massive refactoring of script package
+
+Version 0.14
+------------
+
+* a few speed-ups
+* fix genwallet script
+
+Version 0.13
+------------
+
+* first crack at support for Python 2.7
+* rename ripemd160_sha256 to hash160
+* add a bunch of pydoc comments
+* first crack at genwallet.py utility (need a better name)
+* very preliminary crack at spend.py utility
+* reduce Tx database that's required to be passed to the "sign" method
+  to include bare minimum of data (the output script for a given hash/index)
+* change ":pub" keypath suffix to ".pub" (still not sure about this)
+* lots of refactoring, parameter renaming, moving things around
+  related to signing and verifying transactions. Better, but still
+  not perfect.
