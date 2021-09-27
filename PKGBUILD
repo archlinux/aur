@@ -2,7 +2,7 @@
 
 pkgname=steam-screensaver-fix
 pkgver=2.0.16
-pkgrel=2
+pkgrel=3
 pkgdesc='Fix for steam screensaving bug.'
 arch=('i686' 'x86_64')
 url='https://github.com/ValveSoftware/steam-for-linux/issues/5607'
@@ -23,7 +23,7 @@ sha256sums=(
 	'114c7ca82e6b7605c9e88bf569bd7f0d3ddad3f7260ac79c255f7f8f833a5379'
 	'1fdb424e1535aae8ae0acf045cc0b251f14563b7423f895abc6110b1da4c4ef1'
 	'a2f2935c0ae252a0e0fe924ebf4083b101689347f782c4a48637e41bdee849ef'
-	'0580e6f318ecaf32b7342bfcad3becbbe29e780f52555cb3a2af2ffcf5c7e693'
+	'cbed37a29051364311da8a08c01c173bde2e0d3c30fdaec9aa6d01c6018b24b5'
 	'c14b0f0a7a901d02de53ef7a511b7df7e87d670abb3181872a823d1ce57330f2'
 	'84573eca1c4006c35ed451d38cad0c7e41e31c819f35ccffffb2dfedfcee10ac')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6')
