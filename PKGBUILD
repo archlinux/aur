@@ -1,8 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=szyszka-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple but powerful batch file rename program"
 arch=('x86_64')
 url="https://github.com/qarmin/szyszka"
@@ -23,7 +23,7 @@ sha256sums=('a8bed96c4a8bd629c8e9d9ba88999089d0156bfd4462d31aeb86ce53db19cc2d'
 
 package() {
   install -Dvm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/szyszka"
-  install -Dvm 644 "szyszka-$pkgver.desktop" "$pkgdir/usr/share/applications/com.github.qarmin.szyszka.desktop "
+  install -Dvm 644 "szyszka-$pkgver.desktop" "$pkgdir/usr/share/applications/com.github.qarmin.szyszka.desktop"
   install -Dvm 644 "szyszka-$pkgver.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.qarmin.szyszka.svg"
   install -Dvm 644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dvm 644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"

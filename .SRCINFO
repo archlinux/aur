@@ -1,7 +1,7 @@
 pkgbase = szyszka-bin
 	pkgdesc = A simple but powerful batch file rename program
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qarmin/szyszka
 	arch = x86_64
 	license = MIT
