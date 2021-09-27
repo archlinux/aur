@@ -12,7 +12,7 @@
 # See, https://bugs.archlinux.org/task/31187
 _NUMAdisable=y
 # Enable fsync
-_fsync=
+_fsync=y
 #enable futex2
 _futex2=
 #enable winesync
@@ -25,14 +25,18 @@ _deadline_disable=y
 _kyber_disable=y
 ### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
 _2k_HZ_ticks=
-_1k_HZ_ticks=y
-_750_HZ_ticks=
-_mm_protect=
+_1k_HZ_ticks=
+_750_HZ_ticks=y
+_mm_protect=y
 _lrng_enable=
 ## Apply Kernel automatic Optimization
 _use_optimization=y
 ## Apply Kernel Optimization selecting
 _use_optimization_select=
+
+## compiling with LLVM/LTO
+_use_llvm_lto=
+
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
@@ -57,7 +61,7 @@ pkgbase=linux-cacule-rc
 _major=5.15
 #_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc2
+_rcver=rc3
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
@@ -74,19 +78,25 @@ _caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15"
 source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
         "config"
+        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_caculepatches}/v5.15/cacule-5.15.patch"
-#        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-#        "${_patchsource}/misc/5.15-rt.patch"
-#        "${_patchsource}/misc/0007-v5.15-fsync.patch"
-#        "${_patchsource}/misc/0003-glitched-cfs.patch"
+        "${_patchsource}/misc/0007-v5.15-fsync.patch"
+        "${_patchsource}/misc/0003-glitched-cfs.patch"
         "${_patchsource}/misc/more-uarches-for-kernel-5.15+.patch"
-##        "${_patchsource}/misc/0007-v5.15-winesync.patch"
-        "${_patchsource}/misc/perf.patch"
-#        "${_patchsource}/misc/0002-clear-patches.patch"
-#        "${_patchsource}/misc/0004-mm-set-8-megabytes-for-address_space-level-file-read.patch"
-#        "${_patchsource}/0001-bbr2.patch"
-	       "auto-cpu-optimization.sh"
+        "${_patchsource}/misc/le9ec-5.15-rc2.patch"
+        "${_patchsource}/misc/0002-clear-patches.patch"
+        "${_patchsource}/misc/amd/0006-amd-cppc.patch"
+        "${_patchsource}/misc/0001-zstd-upstream-patches.patch"
+        "${_patchsource}/misc/0002-init-Kconfig-enable-O3-for-all-arches.patch"
+        "${_patchsource}/0001-bbr2.patch"
+        "auto-cpu-optimization.sh"
       )
+if [ -n "$_use_llvm_lto" ]; then
+  BUILD_FLAGS=(
+        LLVM=1
+        LLVM_IAS=1
+      )
+fi
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
@@ -115,25 +125,17 @@ prepare() {
         echo "Setting config..."
         cp ../config .config
 
-        ### Microarchitecture Optimization (GCC/CLANG)
-              if [ -n "$_use_optimization" ]; then
-                sh "${srcdir}"/auto-cpu-optimization.sh
-              fi
-              if [ -n "$_use_optimization_select" ]; then
-                source "${startdir}"/configure
-                cpu_arch
-              fi
 
-             ### Enable protect file mappings under memory pressure
-            if [ -n "$_mm_protect" ]; then
-              echo "Enabling protect file mappings under memory pressure..."
-              scripts/config --enable CONFIG_UNEVICTABLE_FILE
-              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-              scripts/config --enable CONFIG_UNEVICTABLE_ANON
-              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
-              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
-            fi
+    ### Microarchitecture Optimization (GCC/CLANG)
+      if [ -n "$_use_optimization" ]; then
+       sh "${srcdir}"/auto-cpu-optimization.sh
+      fi
+
+      if [ -n "$_use_optimization_select" ]; then
+        source "${startdir}"/configure
+
+        cpu_arch
+      fi
 
               ### Enable Linux Random Number Generator
           	if [ -n "$_lrng_enable" ]; then
@@ -184,13 +186,6 @@ prepare() {
               echo "Enabling KBUILD_CFLAGS -O3..."
               scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
               scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-              echo "Enable PREEMPT"
-              scripts/config --disable CONFIG_PREEMPT_NONE
-              scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
-              scripts/config --enable CONFIG_PREEMPT
-              scripts/config --enable CONFIG_PREEMPT_COUNT
-              scripts/config --enable CONFIG_PREEMPTION
-              scripts/config --enable CONFIG_PREEMPT_DYNAMIC
 
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -266,7 +261,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-cacule-rc' 'pahole')
+    depends=('linux-cacule-rt-rc' 'pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -352,9 +347,17 @@ for _p in "${pkgname[@]}"; do
 done
 
 
-md5sums=('8f9b7869b6973284cddb631d4e7ca40c'
+md5sums=('f996cb6694304111742d60480aafd522'
          'aed2897ca8daff3174f1e34f739d21c2'
+         'cf26387aadf2a90428350ac246b070c9'
          '0783aae3228c2a709cbd7afc86717ebe'
+         '6236a665dd6c93c5de76c1c658c99910'
+         'd3ffe87474459e33c901f6141a047c95'
          'ff4b20b981d9ae0bdda68f012b03e756'
-         'b90a3e4c5b789444b98563fc092bac24'
+         'b5aca6a351809cd67c039ae547fc6ec4'
+         '31a83ad2d5c11e560c7bfdfd59659c84'
+         '430972ae1e936f99d8dc2a1f4fdaf774'
+         '74db4069a1c3985e5de43cf28f44e693'
+         'ceb9020f754c9a0c3f526b38abc714dd'
+         '422fe01f2e2b1ba1c2b9174fa1a75e40'
          '21c98f19e883879dd3336c1fa143fd31')
