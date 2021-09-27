@@ -1,8 +1,8 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=ghdl-yosys-plugin-git
-pkgver=r180.db40ae6
-pkgrel=1
+pkgver=r187.d7536e6
+pkgrel=2
 arch=('x86_64')
 pkgdesc='VHDL synthesis (based on ghdl and yosys)'
 url='https://github.com/ghdl/ghdl-yosys-plugin'
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=("${pkgname%%-git}")
 conflicts=("${pkgname%%-git}")
 makedepends=('git')
-depends=('ghdl-git' 'yosys-git')
+depends=('ghdl-git' 'yosys>0.9')
 
 source=("git://github.com/ghdl/ghdl-yosys-plugin.git")
 sha256sums=('SKIP')
