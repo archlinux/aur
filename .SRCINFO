@@ -1,0 +1,18 @@
+pkgbase = serioussamfusion-steam
+	pkgdesc = Serious Sam Fusion 2017 Linux-native with data via Steam
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://store.steampowered.com/app/564310/Serious_Sam_Fusion_2017_beta/
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	source = serioussamfusion.sh
+	source = serioussamfusion.desktop
+	source = serioussamfusion.png
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = 8a73032f555fbc542cdbcad75b4d122918a22c62405936a407a6adf2c27163f8
+	sha256sums = 33cc7df159d93822788a5b08e99f0177c4e0aca3ee9c94ca2966d72a7486b999
+	sha256sums = 6eae4389da60c96c04587a867edcc82f516c0231494488fe8c94e90325f3fd0a
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = serioussamfusion-steam

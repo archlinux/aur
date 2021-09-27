@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Serious Sam Fusion
+Comment=Serious Sam Fusion 2017 Linux-native
+Exec=/usr/bin/serioussamfusion
+Icon=serioussamfusion
+Terminal=false
+Type=Application
+Categories=Application;Game;
