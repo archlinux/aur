@@ -1,11 +1,13 @@
 post_install() {
     echo
-    echo "  To prevent conflicts with other emoji fonts, 75-twemoji.conf is not being automatically installed in /etc/fonts/conf.d/"
-    echo
-    echo "  If you don't use other emoji fonts, simply make a symlink:"
+    echo "  If you have other emoji fonts installed but want twemoji to always be used, make a symlink for twemojis font config: "
     echo "  sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf"
     echo
+    echo "  You do not need to do this if you are fine with some apps using a different emoji font."
+    echo
     echo "  If you do use other emoji fonts, copy 75-twemoji.conf to /etc/fonts/conf.d/ and remove corresponding aliases."
+    echo
+    echo "  To prevent conflicts with other emoji fonts, 75-twemoji.conf is not being automatically installed in /etc/fonts/conf.d/"
     echo
 }
 
