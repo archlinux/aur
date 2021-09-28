@@ -12,7 +12,7 @@ pkgbase = textpieces
 	depends = gtksourceview5
 	depends = libadwaita
 	depends = python
-	source = textpieces-2.1.2::https://github.com/liferooter/textpieces/archive/refs/tags/v2.1.2.tar.gz
+	source = textpieces-2.1.2.tar.gz::https://github.com/liferooter/textpieces/archive/refs/tags/v2.1.2.tar.gz
 	sha256sums = d29bf4bee9f34c07f9898f916c05c092c515038cd28de1fce4b4f80b698361ba
 
 pkgname = textpieces

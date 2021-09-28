@@ -17,7 +17,7 @@ makedepends=(
 	meson
 	vala
 )
-source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d29bf4bee9f34c07f9898f916c05c092c515038cd28de1fce4b4f80b698361ba')
 
 build() {
