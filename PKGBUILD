@@ -1,4 +1,5 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
+# Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
@@ -8,14 +9,13 @@
 pkgname=ffmpeg-shinobi
 _pkgname=ffmpeg
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='FFmpeg from the 4.3 release branch for use with Shinobi'
-arch=(x86_64)
+arch=(x86_64 aarch64 armv6h armv7h)
 url=https://ffmpeg.org/
 license=(GPL3)
 depends=(
   alsa-lib
-  aom
   bzip2
   fontconfig
   fribidi
@@ -31,10 +31,8 @@ depends=(
   libdrm
   libfreetype.so
   libiec61883
-  libmfx
   libmodplug
   libpulse
-  librav1e.so
   libraw1394
   libsoxr
   libssh
@@ -64,10 +62,10 @@ depends=(
   speex
   srt
   v4l-utils
-  vmaf
   xz
   zlib
 )
+
 makedepends=(
   amf-headers
   avisynthplus
@@ -77,12 +75,22 @@ makedepends=(
   ladspa
   nasm
 )
+
 optdepends=(
   'avisynthplus: AviSynthPlus support'
-  'intel-media-sdk: Intel QuickSync support'
   'ladspa: LADSPA filters'
-  'nvidia-utils: Nvidia NVDEC/NVENC support'
 )
+
+if [[ $CARCH = "x86_64" ]]; then
+  # building for Arch x86_64
+  depends+=(aom libmfx librav1e.so vmaf)
+  optdepends+=('intel-media-sdk: Intel QuickSync support'
+  'nvidia-utils: Nvidia NVDEC/NVENC support')
+else
+  # building for Arch ARM
+  depends+=(librsvg-2.so)
+  makedepends+=(ffnvcodec-headers)
+fi
 provides=(
   ffmpeg
   libavcodec.so
@@ -122,61 +130,62 @@ prepare() {
 build() {
   cd ffmpeg
 
-  ./configure \
-    --prefix=/usr \
-    --disable-debug \
-    --disable-static \
-    --disable-stripping \
-    --enable-amf \
-    --enable-avisynth \
-    --enable-cuda-llvm \
-    --enable-lto \
-    --enable-fontconfig \
-    --enable-gmp \
-    --enable-gnutls \
-    --enable-gpl \
-    --enable-ladspa \
-    --enable-libaom \
-    --enable-libass \
-    --enable-libbluray \
-    --enable-libdav1d \
-    --enable-libdrm \
-    --enable-libfreetype \
-    --enable-libfribidi \
-    --enable-libgsm \
-    --enable-libiec61883 \
-    --enable-libjack \
-    --enable-libmfx \
-    --enable-libmodplug \
-    --enable-libmp3lame \
-    --enable-libopencore_amrnb \
-    --enable-libopencore_amrwb \
-    --enable-libopenjpeg \
-    --enable-libopus \
-    --enable-libpulse \
-    --enable-librav1e \
-    --enable-libsoxr \
-    --enable-libspeex \
-    --enable-libsrt \
-    --enable-libssh \
-    --enable-libtheora \
-    --enable-libv4l2 \
-    --enable-libvidstab \
-    --enable-libvmaf \
-    --enable-libvorbis \
-    --enable-libvpx \
-    --enable-libwebp \
-    --enable-libx264 \
-    --enable-libx265 \
-    --enable-libxcb \
-    --enable-libxml2 \
-    --enable-libxvid \
-    --enable-libzimg \
-    --enable-nvdec \
-    --enable-nvenc \
-    --enable-shared \
+  _args=(
+    --prefix=/usr
+    --disable-debug
+    --disable-static
+    --disable-stripping
+    --enable-amf
+    --enable-avisynth
+    --enable-cuda-llvm
+    --enable-lto
+    --enable-fontconfig
+    --enable-gmp
+    --enable-gnutls
+    --enable-gpl
+    --enable-ladspa
+    --enable-libass
+    --enable-libbluray
+    --enable-libdav1d
+    --enable-libdrm
+    --enable-libfreetype
+    --enable-libfribidi
+    --enable-libgsm
+    --enable-libiec61883
+    --enable-libjack
+    --enable-libmodplug
+    --enable-libmp3lame
+    --enable-libopencore_amrnb
+    --enable-libopencore_amrwb
+    --enable-libopenjpeg
+    --enable-libopus
+    --enable-libpulse
+    --enable-libsoxr
+    --enable-libspeex
+    --enable-libsrt
+    --enable-libssh
+    --enable-libtheora
+    --enable-libv4l2
+    --enable-libvidstab
+    --enable-libvorbis
+    --enable-libvpx
+    --enable-libwebp
+    --enable-libx264
+    --enable-libx265
+    --enable-libxcb
+    --enable-libxml2
+    --enable-libxvid
+    --enable-libzimg
+    --enable-shared
     --enable-version3
+  )
 
+  [[ $CARCH == "x86_64" ]] && _args+=(--enable-libaom --enable-libmfx --enable-librav1e --enable-libvmaf --enable-nvdec --enable-nvenc)
+
+  [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && _args+=('--host-cflags="-fPIC"' --enable-librsvg)
+  [[ $CARCH == "armv6h" || $CARCH == 'arm' ]] && _args+=('--extra-libs="-latomic"' --enable-librsvg)
+
+  ./configure "${_args[@]}"
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
