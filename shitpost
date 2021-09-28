@@ -5,8 +5,8 @@
 # days later (I'm still pretty noob)...
 
 # Originally by Mykal Anderson
-# Patched by Declan Hoare 2016-12-02: use PNG instead of GIF for temp files to preserve quality
-# Modified by coolreader18 2021-03-01: fix some bugs and use a directory under /tmp for temporary files
+# Patched by Declan Hoare 2016-12-02:     use PNG instead of GIF for temp files to preserve quality
+# Modified by coolreader18 2021-03-01:    fix some bugs and use a directory under /tmp for temporary files
 # Modified by Magnus Anderson 2021-09-21: clean up the code
 
 # SHITPOST
