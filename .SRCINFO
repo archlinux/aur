@@ -1,6 +1,6 @@
 pkgbase = termusic
 	pkgdesc = Music Player TUI written in Rust
-	pkgver = 0.3.13
+	pkgver = 0.3.15
 	pkgrel = 1
 	url = https://github.com/tramhao/termusic
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = termusic
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = gst-plugins-ugly
-	source = termusic-0.3.13.tar.gz::https://github.com/tramhao/termusic/archive/v0.3.13.tar.gz
-	sha512sums = 0dce03a813ed935da6e256386cff8c4f501c6ace6f104e31f927723e1c4be85323fbdcbf2a486d415c447027e7ca129b043b9a9c85fa63b63f9ea3676848236c
+	depends = gst-libav
+	source = termusic-0.3.15.tar.gz::https://github.com/tramhao/termusic/archive/v0.3.15.tar.gz
+	sha512sums = 6e2f19dea91cbabb9594ffdea82057010d902d132afb76deabd7e1045d14d0e9aaf018d94e0655e3615f6bf0d38b3b4cedae9eb0b231098cc294d2cb29acd25a
 
 pkgname = termusic
