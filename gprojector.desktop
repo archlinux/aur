@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=3.0.0
+Version=3.0.1
 Name=G.Projector
 GenericName=Map Projection Explorer
 Comment=Interactive tool for exploring map projections
@@ -9,3 +9,4 @@ Icon=gprojector
 Terminal=false
 Type=Application
 Categories=Science;
+StartupWMClass=gov-nasa-giss-projector-GProjector

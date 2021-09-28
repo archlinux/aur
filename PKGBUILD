@@ -1,6 +1,6 @@
 # Maintainer: deserts <int8@foxmail.com>
 pkgname=gprojector
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Interactive tool for exploring map projections"
 arch=("any")
@@ -38,7 +38,7 @@ sha1sums=("${_sha1}"
           "6cbcd85a343a071f5713ac7646f269b88d8f0086"
           "e877f1f2a877fb7e146e32fe8684c61eba1ffd07"
           "52d228bc9e26c66521bf96c3468c22773786aeea"
-          "31c6bb7f7946ca55723d66d543cab625dc3c9709")
+          "a75de7cd0f4666d11a651fd7121a3a618ac7a875")
 
 prepare() {
     cd ${srcdir}/G.ProjectorJ
