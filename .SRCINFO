@@ -1,7 +1,7 @@
 pkgbase = calibre-web
 	pkgdesc = Web app for browsing, reading and downloading eBooks stored in a Calibre database
 	pkgver = 0.6.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janeczku/calibre-web
 	arch = any
 	license = GPL3
@@ -20,6 +20,7 @@ pkgbase = calibre-web
 	depends = python-unidecode
 	depends = python-blinker
 	depends = python-iso639
+	depends = python-lxml
 	provides = calibre-web
 	source = calibre-web-0.6.13.tar.gz::https://github.com/janeczku/calibre-web/archive/0.6.13.tar.gz
 	source = calibre-web.service

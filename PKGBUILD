@@ -2,7 +2,7 @@
 
 pkgname=calibre-web
 pkgver=0.6.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
 url="https://github.com/janeczku/calibre-web"
@@ -23,6 +23,7 @@ depends=(
   'python-unidecode'
   'python-blinker'
   'python-iso639'
+	'python-lxml'
 )
 provides=('calibre-web')
 source=(
