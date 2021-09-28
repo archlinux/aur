@@ -1,7 +1,7 @@
-# Maintainer: Lukasz Marianski <lmarianski at protonmail dot com>
+# Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 pkgname=powercord-electron-git
 _pkgname=${pkgname%-electron-*}
-pkgver=r1332.ea8c01ea
+pkgver=r1336.737d0913
 pkgrel=1
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=('any')
@@ -70,16 +70,16 @@ check() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-	
+
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 $srcdir/powercord.sh "$pkgdir/usr/bin/powercord" 
 
 	install -dm755 $pkgdir/usr/share/powercord
 
-	rm -rf test LICENSE README.md release.sh jsconfig.json
 	cp -r * $pkgdir/usr/share/powercord
+	rm -rf $pkgdir/usr/share/powercord/{test,LICENSE,README.md,release.sh,jsconfig.json}
 
-	chmod -R u+rwX,go+rX,go-w $pkgdir/usr/share/powercord
+	# chmod -R u+rwX,go+rX,go-w $pkgdir/usr/share/powercord
 
 	install -dm755 $pkgdir/usr/share/powercord/app
 
