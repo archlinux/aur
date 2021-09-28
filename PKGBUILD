@@ -6,7 +6,7 @@ pkgver=0.17
 pkgrel=1
 pkgdesc="Intel's Near Field Communication manager"
 arch=('i686' 'x86_64')
-url="https://01.org/linux-nfc/"
+url="https://github.com/linux-nfc/neard"
 license=('GPL2')
 depends=('dbus>=1.2' 'libnl' 'glib2>=2.28')
 makedepends=('automake' 'autoconf>=2.60' 'libtool' 'chrpath')
