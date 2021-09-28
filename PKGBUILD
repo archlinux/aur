@@ -2,12 +2,15 @@
 
 pkgname=krankerl
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A CLI helper to manage, package, and publish Nextcloud apps'
 arch=(x86_64)
 url="https://github.com/ChristophWurst/$pkgname"
 license=(GPL3)
-depends=(libcurl-gnutls)
+depends=(gcc-libs
+         glibc
+         libgit2
+         libgit2.so)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
