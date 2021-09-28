@@ -5,8 +5,8 @@ _pkgname="${_pkgorigname}"
 pkgname="${_pkgname}-git"
 pkgdesc="A CartoCSS map style processor that generates Mapnik XML and MapServer map files. Writte in go."
 epoch=1
-pkgver=0.0.0_dev+r573.20190806.bfc646d
-pkgrel=3
+pkgver=0.0.0_dev+r580.20210517.28e903c
+pkgrel=1
 arch=('u686' 'x86_64')
 license=('apache')
 url="http://github.com/omniscale/magnacarto"
@@ -39,7 +39,7 @@ prepare() {
   export GOPATH="${srcdir}/go"
   mkdir -p "${GOPATH}"
   msg2 "Fetching sources ..."
-  go get -v -d "github.com/omniscale/magnacarto"
+  GO111MODULE=off go get -v -d "github.com/omniscale/magnacarto"
 }
 
 pkgver() {
