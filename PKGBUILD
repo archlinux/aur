@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dnsmasq-git
-pkgver=2.86test5.r1.g767d9cb
+pkgver=2.87test2.r2.gcbbd56c
 pkgrel=1
 pkgdesc="Lightweight, easy to configure DNS forwarder and DHCP server"
 arch=('i686' 'x86_64')
 url="http://www.thekelleys.org.uk/dnsmasq/doc.html"
 license=('GPL')
-depends=('glibc' 'gmp' 'libidn2' 'libdbus' 'libnetfilter_conntrack' 'nettle')
+depends=('glibc' 'gmp' 'libdbus' 'libidn2' 'libnetfilter_conntrack' 'nettle')
 makedepends=('git')
 provides=('dnsmasq')
 conflicts=('dnsmasq')
@@ -20,13 +20,17 @@ sha256sums=('SKIP'
             'SKIP')
 
 
+_build_copts=" \
+  -DHAVE_CONNTRACK \
+  -DHAVE_DBUS \
+  -DHAVE_DNSSEC \
+  -DHAVE_LIBIDN2"
+
 pkgver() {
   cd "dnsmasq"
 
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-_build_copts="-DHAVE_DBUS -DHAVE_LIBIDN2 -DHAVE_CONNTRACK -DHAVE_DNSSEC"
 
 build() {
   cd "dnsmasq"

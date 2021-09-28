@@ -1,6 +1,6 @@
 pkgbase = dnsmasq-git
 	pkgdesc = Lightweight, easy to configure DNS forwarder and DHCP server
-	pkgver = 2.86test5.r1.g767d9cb
+	pkgver = 2.87test2.r2.gcbbd56c
 	pkgrel = 1
 	url = http://www.thekelleys.org.uk/dnsmasq/doc.html
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = dnsmasq-git
 	makedepends = git
 	depends = glibc
 	depends = gmp
-	depends = libidn2
 	depends = libdbus
+	depends = libidn2
 	depends = libnetfilter_conntrack
 	depends = nettle
 	provides = dnsmasq
