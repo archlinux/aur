@@ -1,7 +1,7 @@
 # Maintainer: Peter Smit <peter@smitmail.eu>
 
 pkgname=nova
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='A cli tool to find outdated Helm charts running in your Kubernetes cluster'
 arch=(x86_64)
