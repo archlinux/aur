@@ -1,6 +1,6 @@
 pkgbase = plex-sub-zero
 	pkgdesc = Subtitles for Plex, as good you would expect them to be
-	pkgver = 2.6.5.3223
+	pkgver = 2.6.5.3268
 	pkgrel = 3
 	url = https://github.com/pannal/Sub-Zero.bundle
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = plex-sub-zero
 	depends = python
 	depends = plex-media-server
 	options = !strip
-	source = https://github.com/pannal/Sub-Zero.bundle/archive/2.6.5.3223.tar.gz
-	md5sums = 95d0a3649a901ad23f69f9957c9086f0
+	source = https://github.com/pannal/Sub-Zero.bundle/archive/2.6.5.3268.tar.gz
+	sha256sums = a32faac6cfc1d81898002c81b71b93ee63f216cb4e56f8e5dd3147569260e62b
 
 pkgname = plex-sub-zero
-
