@@ -40,5 +40,4 @@ package() {
 	make DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -Dm644 "${pkgname}.1" "${pkgdir}/usr/local/share/man/man1/${pkgname}.1"
 }
