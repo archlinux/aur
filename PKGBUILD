@@ -10,11 +10,11 @@
 pkgname=snort
 _pkgname=snort3
 _openappid=19913
-pkgver=3.1.12.0
+pkgver=3.1.13.0
 pkgrel=1
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
-url='http://www.snort.org'
+url='https://www.snort.org/snort3'
 license=('GPL')
 depends=('flatbuffers' 'gperftools' 'hwloc' 'hyperscan' 'libdaq' 'libdnet' 'libmnl' 'libpcap' 'libunwind' 'luajit' 'lz4' 'openssl' 'pcre' 'pulledpork' 'xz' 'zlib')
 makedepends=('cmake' 'pkgconf')
@@ -61,7 +61,7 @@ package() {
 
 }
 
-sha256sums=('767c8987ddefbb6be18e340d1cefd15cc3de09fb37e5d4adf438cb12b56762b9'
+sha256sums=('297c9fb6598f473c8aad1c544a6a9b241a74c084074801c035fc0c5cc24680ec'
             'f0e1b47f4d41891c8657330128cafc1187a6f0da65306d897251fc8eba9fe49f'
             '9fa50b961c034a694d840036c5682b21bcfe55bf9faf17602878d7db719299da'
             '1be3b4e25138a3696be07929d455ca84bb4eddbee5f596ae636188d49309c7f6'
