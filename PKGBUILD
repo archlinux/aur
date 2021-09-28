@@ -2,7 +2,7 @@
 # Contributor: Filip <fila pruda com>
 
 pkgname=mp3directcut
-pkgver=2.32
+pkgver=2.33
 pkgrel=1
 pkgdesc="fast audio editor and recorder for mp3 with no need to decompress"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(http://ftp.elf.stuba.sk/pub/pc/sound/mp3dc${pkgver/.}.exe
         mp3directcut
         mp3directcut.desktop
         mp3dcicon.png)
-md5sums=('d907ee8d75a404b87e585bc192aff71c'
+md5sums=('8b28ae45fd4ac4719d92c267b8bb8f22'
          '31de44159649baddf5c7b6936b87133f'
          '910ada5caa9b0ea67a88bfc7ffe9c237'
          '81a5bbd5789094b4bf5822791826c162')
