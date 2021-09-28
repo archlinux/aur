@@ -1,13 +1,12 @@
 pkgbase = hatop
 	pkgdesc = an interactive ncurses client for the HAProxy unix socket
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/jhunt/hatop
 	arch = any
 	license = GPL3
 	depends = python
-	source = https://github.com/jhunt/hatop/archive/v0.8.0.tar.gz
-	sha512sums = 1776da58a12835434d7b8f59582bad44fb3bf9479f05fedb45f84bc73792b331dda63f989c8b202436801a30600283ec782380e16aa75abf7643ffa5da029718
+	source = https://github.com/jhunt/hatop/archive/v0.8.1.tar.gz
+	sha512sums = 25026ddd62ef43f02cfb3ef41a815adf232c8a4b3053e925dcea69696c207ffbf22966ce1177ef460071e683f5a4ec8d011d2bb2b0aa06f4a9b3e5932aae93b6
 
 pkgname = hatop
-
