@@ -1,0 +1,24 @@
+pkgbase = python-tcod
+	pkgdesc = High-performance Python port of libtcod
+	pkgver = 13.0.0
+	pkgrel = 1
+	url = https://github.com/libtcod/python-tcod
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-pytest-runner
+	makedepends = python-pycparser>=2.14
+	makedepends = python-sphinx
+	makedepends = sdl2>=2.0.5
+	depends = libtcod
+	depends = python-cffi
+	depends = python-numpy>=1.20.3
+	depends = python-typing_extensions
+	source = python-tcod-13.0.0::git+https://github.com/libtcod/python-tcod#tag=13.0.0?signed
+	source = libtcod::git+https://github.com/libtcod/libtcod#tag=1.18.1?signed
+	validpgpkeys = 9EF1E80F3817BC043097A7C15814977902B194CC
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-tcod
