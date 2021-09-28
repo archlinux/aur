@@ -1,12 +1,13 @@
 pkgbase = lib32-gnome-themes-extra
 	pkgdesc = Extra Themes for GNOME Applications (32-bit)
 	pkgver = 3.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-themes-extra
 	arch = x86_64
 	groups = gnome
 	license = LGPL2.1
 	makedepends = intltool
+	makedepends = wayland-protocols
 	makedepends = lib32-gtk2
 	makedepends = lib32-gtk3
 	makedepends = git
@@ -20,4 +21,3 @@ pkgbase = lib32-gnome-themes-extra
 	sha256sums = SKIP
 
 pkgname = lib32-gnome-themes-extra
-

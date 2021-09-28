@@ -1,15 +1,15 @@
-# Maintainer: Stelios Tsampas <loathingkernel @at gmail .dot com>
+# Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=lib32-gnome-themes-extra
 pkgver=3.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Extra Themes for GNOME Applications (32-bit)"
 url="https://gitlab.gnome.org/GNOME/gnome-themes-extra"
 arch=(x86_64)
 license=(LGPL2.1)
 depends=(cantarell-fonts ${pkgname#lib32-})
-makedepends=(intltool lib32-gtk2 lib32-gtk3 git)
+makedepends=(intltool wayland-protocols lib32-gtk2 lib32-gtk3 git)
 optdepends=('lib32-gtk-engines: HighContrast GTK2 theme')
 provides=("lib32-gnome-themes-standard=$pkgver")
 conflicts=(lib32-gnome-themes-standard)
