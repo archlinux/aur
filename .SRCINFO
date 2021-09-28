@@ -1,0 +1,15 @@
+pkgbase = crazy-space-taxi
+	pkgdesc = C64 Space Taxi meets Crazy Taxi. Blaze through the city. A game made by DoctorM64
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://doctorm64.itch.io/crazy-space-taxi
+	arch = x86_64
+	license = none
+	depends = glibc
+	depends = gcc-libs
+	source = crazy-space-taxi-1.0.zip::https://matix.li/d6d082e1963f
+	source = icon.png::https://cdn.discordapp.com/attachments/885758931803193344/892343567639527464/cstaxi.png
+	sha256sums = 7917d78921f6fc903bedbef86c0aca612b6d62cc7060da29270655aa6b80188e
+	sha256sums = 64d192ab0ed6f00cbd1e30ad5d391ed03ea6e5729335c705764a9aa1a3def444
+
+pkgname = crazy-space-taxi
