@@ -1,6 +1,6 @@
 pkgbase = solana-bin
 	pkgdesc = Solana CLI tools
-	pkgver = 1.6.25
+	pkgver = 1.6.27
 	pkgrel = 1
 	url = https://solana.com
 	arch = x86_64
@@ -9,7 +9,11 @@ pkgbase = solana-bin
 	depends = systemd-libs
 	provides = solana
 	conflicts = solana
-	source = solana-1.6.25.tar.bz2::https://github.com/solana-labs/solana/releases/download/v1.6.25/solana-release-x86_64-unknown-linux-gnu.tar.bz2
-	b2sums = d549c8955a739bf7514ca277fb246d0ca35656988065ffb73db1f61305d99033c9406b67d1c0056044a85c06d4f6953cad2fa424a93a511722aaa30dc0f60f56
+	source = solana-1.6.27.tar.bz2::https://github.com/solana-labs/solana/releases/download/v1.6.27/solana-release-x86_64-unknown-linux-gnu.tar.bz2
+	source = solana.sysusers
+	source = solana.tmpfiles
+	b2sums = d837c850e4e3e3d13663e13452992949e9ece29ffb7cd383bd9237202723ea9f0737bba2f62a61771abece9ed82376e3da664c387b1169372fa92c1874840ab8
+	b2sums = 8be1bc3e98d08e9c588e083cff3f1613f4516196d0f8aaa0b06b1fed07b3f4a7ca28031315275acaccedbd99ff657ac565d9be47384d342252767e7ff0d93677
+	b2sums = d54f607c859e70bd377bf386b4bcf90509854a01904816deb9a64a1fff466468bd03b4513fd622eaad9f2c4a03c0ed83bc7537a79911d9a1ebe7b9371f690655
 
 pkgname = solana-bin
