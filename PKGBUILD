@@ -3,8 +3,8 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr
-pkgver=5.4.0
-pkgrel=6
+pkgver=5.5.0
+pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
@@ -15,14 +15,11 @@ options=(!strip)
 
 source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/rr-debugger/${pkgname}/archive/${pkgver}.tar.gz
-	rr-2726.diff::https://patch-diff.githubusercontent.com/raw/rr-debugger/rr/pull/2726.diff
 )
-sha1sums=('b4716dd10b01ae4b8d35ae08f4f67fc46f0693d9'
-          '80abae19e4486df97e922dcc7a906b96a1e00bc3')
+sha1sums=('1957e0f62ecbd3e577d53545ee9f0b632632a5b0')
 
 prepare() {
 	cd $pkgname-$pkgver
-	patch -Np1 -i $srcdir/rr-2726.diff
 	mkdir -p build
 }
 
