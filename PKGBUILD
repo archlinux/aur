@@ -1,10 +1,7 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
-# Scene and source drag & drop with his fix is now added by default
-# No variable change needed anymore \o/
-
 pkgname=obs-studio-tytan652
-pkgver=27.1.0
+pkgver=27.1.1
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
