@@ -1,6 +1,6 @@
 pkgbase = esphomeyaml
 	pkgdesc = Solution for your ESP8266/ESP32 projects with Home Assistant
-	pkgver = 2021.9.1
+	pkgver = 2021.9.2
 	pkgrel = 1
 	url = https://github.com/esphome/ESPHome
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = esphomeyaml
 	depends = python-aioesphomeapi
 	optdepends = python-esphome-dashboard: esphome dashboard addition
 	replaces = esphomeyaml
-	source = https://github.com/esphome/ESPHome/archive/2021.9.1.tar.gz
-	sha256sums = abd27b48e6cc5d09da5391d813b82cffe014ec198e66b6b5881aafc86b52962d
+	source = https://github.com/esphome/ESPHome/archive/2021.9.2.tar.gz
+	sha256sums = 47f3aba9ccc08275a31fc4ed909f9480f6b77f063179a9555d527cc251720a76
 
 pkgname = esphome
