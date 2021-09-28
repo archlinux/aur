@@ -26,4 +26,4 @@ package() {
   install -Dm 755 "$srcdir"/nova-$pkgver/$pkgname "$pkgdir"/usr/bin/$pkgname
   install -Dm 755 "$srcdir"/nova-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums=('1afe4fe5ccec1d69437af7c272a54043')
+md5sums=('2fd43c45af80f34518afc0b8481c0e3b')
