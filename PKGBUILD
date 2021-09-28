@@ -31,13 +31,9 @@ pkgver() {
            "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-    cd "${pkgname}"
-    make clean install
-}
-
 package() {
     cd "${pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    make clean install
+		install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
