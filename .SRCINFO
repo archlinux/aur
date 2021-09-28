@@ -1,6 +1,6 @@
 pkgbase = yuzu
 	pkgdesc = Nintendo Switch emulator
-	pkgver = mainline.0.755
+	pkgver = mainline.0.763
 	pkgrel = 1
 	url = https://yuzu-emu.org/
 	arch = x86_64
@@ -30,8 +30,8 @@ pkgbase = yuzu
 	makedepends = xbyak>=5.995.r3
 	makedepends = zstd>=1.5
 	depends = qt5-webengine>=5.12
-	source = git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-755
-	source = gamedb-2021-09-21.json::https://api.yuzu-emu.org/gamedb/
+	source = git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-763
+	source = gamedb-2021-09-28.json::https://api.yuzu-emu.org/gamedb/
 	source = yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
 	source = citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git
 	source = unbundle-catch2.patch
