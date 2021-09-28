@@ -1,9 +1,9 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=prosody-mod-invites-register
-pkgver=2021.06.25
+pkgver=2021.09.09
 pkgrel=1
-_commit="06c9c9ef0a51"
+_commit="eee7ef8eb0a2"
 pkgdesc="Allow account registration using invite tokens"
 arch=('any')
 url="https://modules.prosody.im/mod_invites_register.html"
