@@ -1,10 +1,10 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=nxprayer
-pkgver=.r38.eb9e684
+pkgver=0.1.1
 pkgrel=1
 epoch=1
-pkgdesc="Time of the next Islamic prayer in your status bar."
+pkgdesc="Time of the next Islamic prayer for your status bar or scripts."
 arch=('x86_64' 'i686')
 url="https://github.com/AbdeltwabMF/nxprayer.git"
 license=('GPL-v3')
@@ -27,18 +27,22 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s.%s" "$(awk '/^VERSION =/ {print $3}' config.mk)" \
-           "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" \
+			"$(awk '/^VERSION =/ {print $3}' Makefile)" \
+			"$(git rev-list --count HEAD)" \
+			"$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd "${pkgname}"
-	make
+	make DESTDIR="$pkgdir"
 }
 
 package() {
 	cd "${pkgname}"
-	make clean install
+	make DESTDIR="$pkgdir" install
+
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "${pkgname}.1" "${pkgdir}/usr/local/share/man/man1/${pkgname}.1"
 }
