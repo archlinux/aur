@@ -21,7 +21,7 @@ depends=('zlib')
 makedepends=('binutils>=2.24' 'libmpc' 'doxygen')
 makedepends+=('cloog' 'texinfo')
 checkdepends=('dejagnu' 'inetutils')
-options=('!emptydirs' 'staticlibs' '!libtool')
+options=('!emptydirs' 'staticlibs' '!libtool' '!buildflags')
 source=(
   "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
   'gcc-4.9-fix-build-with-gcc-6.patch'
@@ -30,13 +30,18 @@ source=(
   '0001-gcc-4.8-SIGSEGV.patch'
   '0002-gcc-4.8-__res_state.patch'
 )
+md5sums=('80d2c2982a3392bb0b89673ff136e223'
+         '91f27a8002df38cf2ca971ca80feb9d7'
+         'f3c42a9cfa840a062897da0468102771'
+         '8f084394d4fe2ab274e630dc6a0a447c'
+         'a6f33d46ea4d02c1694d097e3da95e40'
+         'a86fb06dcff2bad4788fb03e4fde5e38')
 sha256sums=('22fb1e7e0f68a63cee631d85b20461d1ea6bda162f03096350e38c8d427ecf23'
             'd775a053fad367f5490111038fde7c875b4e842919d2d197f95b915e1ae562a9'
             '9f8c50a715a921d3d2c9d5809ac9592ca66f682b2cc496606ff6eb4de79d46b6'
             '5724ec27e31db32ed863871bc904f0f9cd7f41fe85f45269249ea0fa6ff2a576'
             'e993f694c175d913c7bb6dd867ab0cdd9d81374e89de9b85151aa022b61bf3ef'
             'a465907ce3989f2763ac022afedd8b0200c012499e24fa1748412cd1c28b11ea')
-PKGEXT='.pkg.tar.gz'
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
@@ -83,9 +88,6 @@ prepare() {
 
   echo "${pkgver}" > 'gcc/BASE-VER'
 
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
-
   # installing libiberty headers is broken
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=56780#c6
   sed -e 's#@target_header_dir@#libiberty#' -i 'libiberty/Makefile.in'
@@ -101,64 +103,48 @@ build() {
   if [ ! -s "${_basedir}/gcc-build/Makefile" ]; then
     cd "${_basedir}"
 
-    # Doesn't like FORTIFY_SOURCE
-    CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
-
-    # Doesn't like -fstack-protector-strong
-    CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
-    CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
-
-    # using -pipe causes spurious test-suite failures
-    # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-    CFLAGS="${CFLAGS/-pipe/}"
-    CXXFLAGS="${CXXFLAGS/-pipe/}"
-
-    # Flags from new compilers that old compilers don't recognize
-    CFLAGS="${CFLAGS/-fno-plt/}"
-    CXXFLAGS="${CXXFLAGS/-fno-plt/}"
-
-    CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
-    CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
-
     cd 'gcc-build'
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
-    ../configure \
-      --build="${CHOST}" \
-      --disable-libstdcxx-pch \
-      --disable-libunwind-exceptions \
-      --disable-multilib \
-      --disable-werror \
-      --enable-__cxa_atexit \
-      --enable-checking='release' \
-      --enable-clocale='gnu' \
-      --enable-cloog-backend='isl' \
-      --enable-gnu-unique-object \
-      --enable-gold \
-      --enable-languages='c,c++,fortran' \
-      --enable-ld='default' \
-      --enable-linker-build-id \
-      --enable-lto \
-      --enable-plugin \
-      --enable-shared \
-      --enable-threads='posix' \
-      --enable-version-specific-runtime-libs \
-      --infodir='/usr/share/info' \
-      --libdir='/usr/lib' \
-      --libexecdir='/usr/lib' \
-      --mandir='/usr/share/man' \
-      --program-suffix="-${_pkgver}" \
-      --with-bugurl='https://bugs.archlinux.org/' \
-      --with-plugin-ld='ld.gold' \
-      --with-ppl \
-      --with-system-zlib \
+    local _conf=(
+      --build="${CHOST}"
+      --disable-libstdcxx-pch
+      --disable-libunwind-exceptions
+      --disable-multilib
+      --disable-werror
+      --enable-__cxa_atexit
+      --enable-checking='release'
+      --enable-clocale='gnu'
+      --enable-cloog-backend='isl'
+      --enable-gnu-unique-object
+      --enable-gold
+      --enable-languages='c,c++,fortran'
+      --enable-ld='default'
+      --enable-linker-build-id
+      --enable-lto
+      --enable-plugin
+      --enable-shared
+      --enable-threads='posix'
+      --enable-version-specific-runtime-libs
+      --infodir='/usr/share/info'
+      --libdir='/usr/lib'
+      --libexecdir='/usr/lib'
+      --mandir='/usr/share/man'
+      --program-suffix="-${_pkgver}"
+      --with-bugurl='https://bugs.archlinux.org/'
+      --with-plugin-ld='ld.gold'
+      --with-ppl
+      --with-system-zlib
       --prefix='/usr'
-#      CXX='g++-4.9' CC='gcc-4.9'
+      #CXX='g++-4.9' CC='gcc-4.9'
+    )
+    ../configure "${_conf[@]}"
+
+    sed -e 's/^STAGE1_CXXFLAGS.*$/& -std=gnu++11/' -i 'Makefile'
   fi
 
   cd "${srcdir}/${_basedir}/gcc-build"
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   LD_PRELOAD='/usr/lib/libstdc++.so' \
-  nice make -j "${_nproc}"
+  nice make -s
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
