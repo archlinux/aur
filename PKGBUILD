@@ -1,7 +1,7 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=nxprayer
-pkgver=.r55.67bf12b
+pkgver=.r55.6af6d92
 pkgrel=1
 epoch=1
 pkgdesc="Time of the next Islamic prayer for your status bar or scripts."
@@ -44,5 +44,4 @@ package() {
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -Dm644 "${pkgname}.1" "${pkgdir}/usr/local/share/man/man1/${pkgname}.1"
 }
