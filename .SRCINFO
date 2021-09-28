@@ -1,7 +1,7 @@
 pkgbase = sdbus-cpp-nosystemd-git
 	pkgdesc = sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++. This package is without systemd dependencies; it will have it's own static libsystemd baked in.
-	pkgver = 0.8.3.33.r261.d20210622.e16ffb1
-	pkgrel = 4
+	pkgver = 0.8.3.43.r271.d20210923.a341754
+	pkgrel = 1
 	url = https://github.com/Kistler-Group/sdbus-cpp
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = sdbus-cpp-nosystemd-git
 	makedepends = meson
 	depends = expat
 	depends = libcap
-	provides = sdbus-cpp=0.8.3.33.r261.d20210622.e16ffb1
-	provides = sdbus-cpp-git=0.8.3.33.r261.d20210622.e16ffb1
-	provides = sdbus-cpp-nosystemd=0.8.3.33.r261.d20210622.e16ffb1
+	provides = sdbus-cpp=0.8.3.43.r271.d20210923.a341754
+	provides = sdbus-cpp-git=0.8.3.43.r271.d20210923.a341754
+	provides = sdbus-cpp-nosystemd=0.8.3.43.r271.d20210923.a341754
 	conflicts = sdbus-cpp
 	conflicts = sdbus-cpp-git
 	conflicts = sdbus-cpp-nosystemd
