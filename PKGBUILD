@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/phfaist/pylatexenc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=(bcb859affea00b5acb25aec780620170ab9d385c8f7dc266b7237ce9f47a59fd)
+sha256sums=('bcb859affea00b5acb25aec780620170ab9d385c8f7dc266b7237ce9f47a59fd')
 
 build() {
     cd "pylatexenc-${pkgver}"
