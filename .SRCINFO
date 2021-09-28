@@ -1,7 +1,7 @@
 pkgbase = alacritty-themes
-	pkgdesc = A cross-platform GPU-accelerated Terminal emulator.
+	pkgdesc = A utility for choosing and applying Alacritty terminal themes.
 	pkgver = 4.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rajasegar/alacritty-themes
 	install = alacritty-themes.install
 	arch = any

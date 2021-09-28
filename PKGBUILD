@@ -3,9 +3,9 @@
 
 pkgname=alacritty-themes
 pkgver=4.1.2
-pkgrel=2
+pkgrel=3
 
-pkgdesc="A cross-platform GPU-accelerated Terminal emulator."
+pkgdesc="A utility for choosing and applying Alacritty terminal themes."
 arch=(any)
 url="https://github.com/rajasegar/alacritty-themes"
 license=("MIT")
