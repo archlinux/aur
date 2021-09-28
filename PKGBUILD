@@ -1,9 +1,9 @@
 pkgname=libcamera-git
 _pkgname=libcamera
-pkgver=r2747.fb970d9c
+pkgver=r3070.e00149fc
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS'
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64' )
 url='http://libcamera.org/'
 makedepends=(
     "boost"
