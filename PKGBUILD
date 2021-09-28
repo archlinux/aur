@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
 
 pkgname=python-taichi
 _name=${pkgname#python-}
 _py=cp39
-pkgver=0.7.32
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Productive & portable programming language for high-performance, sparse & differentiable computing on CPUs & GPUs'
 url='https://github.com/taichi-dev/taichi'
@@ -31,7 +31,7 @@ optdepends=(
   'cuda')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-$_py-manylinux1_x86_64.whl")
-b2sums=('7c4efa1e4a48975ace862fe72d209bd655080c4aed749ec801782b4f198ab0c9272a1b381a4f0b416f3784f1b5335392aa90022a8c77a1f0a9ba5e76bb47a3c4')
+b2sums=('97b1bfeb4176f5b5b17e3c8c91f5589f7c76f21aa7ddcfadab913d59e135c9f2daa1823e402dfe6e20234f1d43ceebbd784f9d3657b226e95ac4af243f8db516')
 
 package() {
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-warn-script-location --no-deps ${_name//-/_}-$pkgver-$_py-$_py-manylinux1_x86_64.whl
