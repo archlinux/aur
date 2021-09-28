@@ -1,7 +1,7 @@
 diff --git a/meson.build b/meson.build
 index 8fa3ce61..5e4d32d1 100644
---- a/dxvk/meson.build
-+++ b/dxvk/meson.build
+--- a/meson.build
++++ b/meson.build
 @@ -103,7 +103,7 @@ else
  endif
  
@@ -13,8 +13,8 @@ index 8fa3ce61..5e4d32d1 100644
  
 diff --git a/src/dxvk/dxvk_context.cpp b/src/dxvk/dxvk_context.cpp
 index 797c4e20..bda90275 100644
---- a/dxvk/src/dxvk/dxvk_context.cpp
-+++ b/dxvk/src/dxvk/dxvk_context.cpp
+--- a/src/dxvk/dxvk_context.cpp
++++ b/src/dxvk/dxvk_context.cpp
 @@ -3837,7 +3837,9 @@ namespace dxvk {
        : DxvkContextFlag::GpDirtyStencilRef);
      
@@ -73,8 +73,8 @@ index 797c4e20..bda90275 100644
      const DxvkGraphicsPipelineShaders&  shaders) {
 diff --git a/src/dxvk/dxvk_context.h b/src/dxvk/dxvk_context.h
 index 2456b20a..d58f1021 100644
---- a/dxvk/src/dxvk/dxvk_context.h
-+++ b/dxvk/src/dxvk/dxvk_context.h
+--- a/src/dxvk/dxvk_context.h
++++ b/src/dxvk/dxvk_context.h
 @@ -1159,7 +1159,7 @@ namespace dxvk {
              VkDescriptorSet         set,
        const DxvkPipelineLayout*     layout);
@@ -95,8 +95,8 @@ index 2456b20a..d58f1021 100644
  
 diff --git a/src/dxvk/dxvk_graphics.cpp b/src/dxvk/dxvk_graphics.cpp
 index 192e340b..96826600 100644
---- a/dxvk/src/dxvk/dxvk_graphics.cpp
-+++ b/dxvk/src/dxvk/dxvk_graphics.cpp
+--- a/src/dxvk/dxvk_graphics.cpp
++++ b/src/dxvk/dxvk_graphics.cpp
 @@ -62,17 +62,21 @@ namespace dxvk {
  
    VkPipeline DxvkGraphicsPipeline::getPipelineHandle(
@@ -157,8 +157,8 @@ index 192e340b..96826600 100644
          return &instance;
 diff --git a/src/dxvk/dxvk_graphics.h b/src/dxvk/dxvk_graphics.h
 index 4194599d..c48ee3ed 100644
---- a/dxvk/src/dxvk/dxvk_graphics.h
-+++ b/dxvk/src/dxvk/dxvk_graphics.h
+--- a/src/dxvk/dxvk_graphics.h
++++ b/src/dxvk/dxvk_graphics.h
 @@ -185,11 +185,13 @@ namespace dxvk {
       * state. If necessary, a new pipeline will be created.
       * \param [in] state Pipeline state vector
@@ -213,8 +213,8 @@ index 4194599d..c48ee3ed 100644
        const DxvkGraphicsPipelineStateInfo& state) const;
 diff --git a/src/dxvk/dxvk_image.h b/src/dxvk/dxvk_image.h
 index 19b5d85f..3da24c49 100644
---- a/dxvk/src/dxvk/dxvk_image.h
-+++ b/dxvk/src/dxvk/dxvk_image.h
+--- a/src/dxvk/dxvk_image.h
++++ b/src/dxvk/dxvk_image.h
 @@ -465,6 +465,37 @@ namespace dxvk {
        return result;
      }
@@ -265,8 +265,8 @@ index 19b5d85f..3da24c49 100644
    };
 diff --git a/src/dxvk/dxvk_options.cpp b/src/dxvk/dxvk_options.cpp
 index 73dd69d1..c3da6bb5 100644
---- a/dxvk/src/dxvk/dxvk_options.cpp
-+++ b/dxvk/src/dxvk/dxvk_options.cpp
+--- a/src/dxvk/dxvk_options.cpp
++++ b/src/dxvk/dxvk_options.cpp
 @@ -10,6 +10,8 @@ namespace dxvk {
      useRawSsbo            = config.getOption<Tristate>("dxvk.useRawSsbo",             Tristate::Auto);
      useEarlyDiscard       = config.getOption<Tristate>("dxvk.useEarlyDiscard",        Tristate::Auto);
@@ -279,8 +279,8 @@ index 73dd69d1..c3da6bb5 100644
 \ No newline at end of file
 diff --git a/src/dxvk/dxvk_options.h b/src/dxvk/dxvk_options.h
 index 3c5dde91..52a7be04 100644
---- a/dxvk/src/dxvk/dxvk_options.h
-+++ b/dxvk/src/dxvk/dxvk_options.h
+--- a/src/dxvk/dxvk_options.h
++++ b/src/dxvk/dxvk_options.h
 @@ -21,6 +21,13 @@ namespace dxvk {
      /// when using the state cache
      int32_t numCompilerThreads;
@@ -299,7 +299,7 @@ diff --git a/src/dxvk/dxvk_pipecompiler.cpp b/src/dxvk/dxvk_pipecompiler.cpp
 new file mode 100644
 index 00000000..40218acd
 --- /dev/null
-+++ b/dxvk/src/dxvk/dxvk_pipecompiler.cpp
++++ b/src/dxvk/dxvk_pipecompiler.cpp
 @@ -0,0 +1,76 @@
 +#include "dxvk_device.h"
 +#include "dxvk_graphics.h"
@@ -381,7 +381,7 @@ diff --git a/src/dxvk/dxvk_pipecompiler.h b/src/dxvk/dxvk_pipecompiler.h
 new file mode 100644
 index 00000000..d7fcc2cf
 --- /dev/null
-+++ b/dxvk/src/dxvk/dxvk_pipecompiler.h
++++ b/src/dxvk/dxvk_pipecompiler.h
 @@ -0,0 +1,61 @@
 +#pragma once
 +
@@ -446,8 +446,8 @@ index 00000000..d7fcc2cf
 +}
 diff --git a/src/dxvk/dxvk_pipemanager.cpp b/src/dxvk/dxvk_pipemanager.cpp
 index 2e29202e..1e767381 100644
---- a/dxvk/src/dxvk/dxvk_pipemanager.cpp
-+++ b/dxvk/src/dxvk/dxvk_pipemanager.cpp
+--- a/src/dxvk/dxvk_pipemanager.cpp
++++ b/src/dxvk/dxvk_pipemanager.cpp
 @@ -9,7 +9,11 @@ namespace dxvk {
            DxvkRenderPassPool* passManager)
    : m_device    (device),
@@ -462,8 +462,8 @@ index 2e29202e..1e767381 100644
        m_stateCache = new DxvkStateCache(device, this, passManager);
 diff --git a/src/dxvk/dxvk_pipemanager.h b/src/dxvk/dxvk_pipemanager.h
 index 858928ca..4c12a4dc 100644
---- a/dxvk/src/dxvk/dxvk_pipemanager.h
-+++ b/dxvk/src/dxvk/dxvk_pipemanager.h
+--- a/src/dxvk/dxvk_pipemanager.h
++++ b/src/dxvk/dxvk_pipemanager.h
 @@ -6,6 +6,7 @@
  
  #include "dxvk_compute.h"
@@ -482,8 +482,8 @@ index 858928ca..4c12a4dc 100644
      std::atomic<uint32_t>     m_numGraphicsPipelines = { 0 };
 diff --git a/src/dxvk/meson.build b/src/dxvk/meson.build
 index 1dc113c3..003fb1a7 100644
---- a/dxvk/src/dxvk/meson.build
-+++ b/dxvk/src/dxvk/meson.build
+--- a/src/dxvk/meson.build
++++ b/src/dxvk/meson.build
 @@ -83,6 +83,7 @@ dxvk_src = files([
    'dxvk_openvr.cpp',
    'dxvk_options.cpp',
@@ -494,8 +494,8 @@ index 1dc113c3..003fb1a7 100644
    'dxvk_queue.cpp',
 diff --git a/dxvk.conf b/dxvk.conf
 index 9ca21a5e..abf0f2bf 100644
---- a/dxvk/dxvk.conf
-+++ b/dxvk/dxvk.conf
+--- a/dxvk.conf
++++ b/dxvk.conf
 @@ -214,6 +214,24 @@
  # dxvk.hud = 
  

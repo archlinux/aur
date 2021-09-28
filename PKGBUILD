@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.3.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 url="https://github.com/ValveSoftware/Proton"
@@ -106,25 +106,27 @@ source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-${_srctag}
     wine-valve::git+https://github.com/ValveSoftware/wine.git
     dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
-    dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
-    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
-    OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
-    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
-    Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     FAudio::git+https://github.com/FNA-XNA/FAudio.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
-    gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
+    gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
+    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
+    OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
+    dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
+    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
+    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
+    Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
+    wine-winevulkan_fsr.patch
+    wine-more_8x5_res.patch
+    dxvk-async.patch
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
-    dxvk-async.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -148,57 +150,77 @@ prepare() {
 
     [ ! -d build ] && mkdir build
     cd proton
-    for submodule in openvr OpenXR-SDK fonts/liberation-fonts FAudio vkd3d-proton dxvk-nvapi; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-        git submodule update "${submodule}"
-    done
 
-    for submodule in wine dxvk; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"-valve
-        git submodule update "${submodule}"
-    done
+    _submodules=(
+        wine-valve::wine
+        dxvk-valve::dxvk
+        openvr
+        liberation-fonts::fonts/liberation-fonts
+        FAudio
+        gstreamer
+        gst-plugins-base
+        gst-plugins-good
+        gst-orc
+        vkd3d-proton
+        OpenXR-SDK
+        dxvk-nvapi
+    )
 
-    for submodule in gstreamer gst-{plugins-{base,good},orc}; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-        git submodule update "${submodule}"
+    for submodule in "${_submodules[@]}"; do
+        git submodule init "${submodule#*::}"
+        git config submodule."${submodule#*::}".url "$srcdir"/"${submodule%::*}"
+        git submodule update "${submodule#*::}"
     done
 
     pushd vkd3d-proton
-    for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-        git submodule update "${submodule}"
-    done
-    pushd subprojects/dxil-spirv
-    git submodule init third_party/spirv-headers
-    git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
-    git submodule update third_party/spirv-headers
-    popd
+        for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
+            git submodule init "${submodule}"
+            git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
+            git submodule update "${submodule}"
+        done
+        pushd subprojects/dxil-spirv
+            git submodule init third_party/spirv-headers
+            git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
+            git submodule update third_party/spirv-headers
+        popd
     popd
 
     pushd dxvk-nvapi
-    for submodule in external/Vulkan-Headers; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-        git submodule update "${submodule}"
-    done
+        git submodule init external/Vulkan-Headers
+        git config submodule.external/Vulkan-Headers.url "$srcdir"/Vulkan-Headers
+        git submodule update external/Vulkan-Headers
     popd
 
-    patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
-    patch -p1 -i "$srcdir"/proton-disable_lock.patch
-    patch -p1 -i "$srcdir"/proton-user_compat_data.patch
+    pushd media-converter
+        export CARGO_HOME="${srcdir}"/build/.cargo
+        cargo update
+        cargo fetch --locked --target "i686-unknown-linux-gnu"
+        cargo fetch --locked --target "x86_64-unknown-linux-gnu"
+    popd
+
+    pushd wine
+        # Add FSR for fshack
+        patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
+        # Adds more 16:10 resolutions for use with FSR
+        patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+    popd
 
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk. If you don't know what it is,
     # and its implications, leave it as is. You have been warned.
     # I am not liable if anything happens to you by using it.
-#    patch -p1 -i "$srcdir"/dxvk-async.patch
+    pushd dxvk
+        patch -p1 -i "$srcdir"/dxvk-async.patch
+    popd
+
+    patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
+    patch -p1 -i "$srcdir"/proton-disable_lock.patch
+    patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 }
 
 build() {
+    source build_venv/bin/activate
+
     cd build
     ROOTLESS_CONTAINER="" \
     ../proton/configure.sh \
@@ -307,8 +329,10 @@ sha256sums=('SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             'eb67426ff60ed6395b70437e838883ee08b6189cad84faf036b1a4d7366a34e2'
-            '812b2b73bc7b6a88de480f6410970c2454866bb123c3baefd990679c9dd3ef98'
+            'b4e9c0c4959fcb3f7b7f25e35e5e0577dac5d54fe18e6edb15852a2a4196f2a2'
+            '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
+            'acdb652830d642829057a035ebc69481697078a734f57ac974ee5b54454470ff'
+            '8399d0684a9c732bf405a37f1f3cc779435f2c68a8d042382e9e0538576ab854'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-            '36aaba6847e4577df4a496d88c11b4b7049773f1f2b90aa4545093e16d5c6066'
 )

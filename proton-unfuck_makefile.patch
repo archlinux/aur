@@ -1,16 +1,16 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index c9f14bc..b5d8063 100644
+index d978a99..9502e3c 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
-@@ -60,7 +60,6 @@ ifeq ($(ENABLE_CCACHE),1)
+@@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
  	export CCACHE_DIR := $(if $(CCACHE_DIR),$(CCACHE_DIR),$(HOME)/.ccache)
- 	DOCKER_OPTS := -v $(CCACHE_DIR):$(CCACHE_DIR) $(CCACHE_ENV) -e CCACHE_DIR=$(CCACHE_DIR) $(DOCKER_OPTS)
+ 	DOCKER_OPTS := -v $(CCACHE_DIR):$(CCACHE_DIR)$(CONTAINER_MOUNT_OPTS) $(CCACHE_ENV) -e CCACHE_DIR=$(CCACHE_DIR) $(DOCKER_OPTS)
  else
 -	export CCACHE_DISABLE := 1
  	DOCKER_OPTS := $(CCACHE_ENV) -e CCACHE_DISABLE=1 $(DOCKER_OPTS)
  endif
  
-@@ -168,7 +167,8 @@ else
+@@ -171,7 +170,8 @@ else
  endif
  
  CROSSLDFLAGS   += -Wl,--file-alignment,4096
@@ -20,7 +20,7 @@ index c9f14bc..b5d8063 100644
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  DEBUG_FLAGS    := -gdwarf-2 -gstrict-dwarf
  COMMON_FLAGS    = $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS) $(SANITY_FLAGS) -ffile-prefix-map=$(CCACHE_BASEDIR)=.
-@@ -347,8 +347,8 @@ ALL_TARGETS += dist
+@@ -354,8 +354,8 @@ ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
  dist_prefix: wine gst_good
@@ -31,7 +31,7 @@ index c9f14bc..b5d8063 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -404,6 +404,9 @@ endif # ifeq ($(CONTAINER),)
+@@ -411,6 +411,9 @@ endif # ifeq ($(CONTAINER),)
  ##
  
  GST_COMMON_MESON_ARGS := \
@@ -41,7 +41,7 @@ index c9f14bc..b5d8063 100644
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -416,6 +419,7 @@ GST_COMMON_MESON_ARGS := \
+@@ -423,6 +426,7 @@ GST_COMMON_MESON_ARGS := \
  
  GST_ORC_MESON_ARGS := \
  	-Dorc-test=disabled \
@@ -49,7 +49,7 @@ index c9f14bc..b5d8063 100644
  	$(GST_COMMON_MESON_ARGS)
  
  $(eval $(call rules-source,gst_orc,$(SRCDIR)/gst-orc))
-@@ -432,6 +436,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -439,6 +443,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -59,7 +59,7 @@ index c9f14bc..b5d8063 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_DEPENDS = gst_orc
-@@ -470,6 +477,7 @@ GST_BASE_MESON_ARGS := \
+@@ -477,6 +484,7 @@ GST_BASE_MESON_ARGS := \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
  	-Dtools=disabled \
@@ -67,7 +67,7 @@ index c9f14bc..b5d8063 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_DEPENDS = gst_orc gstreamer
-@@ -531,6 +539,7 @@ GST_GOOD_MESON_ARGS := \
+@@ -538,6 +546,7 @@ GST_GOOD_MESON_ARGS := \
  	-Dximagesrc=disabled \
  	-Dy4m=disabled \
  	-Dtools=disabled \
@@ -75,7 +75,7 @@ index c9f14bc..b5d8063 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
-@@ -651,8 +660,14 @@ WINE_SOURCE_ARGS = \
+@@ -658,8 +667,14 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -90,7 +90,7 @@ index c9f14bc..b5d8063 100644
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -745,7 +760,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -778,7 +793,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
@@ -127,15 +127,17 @@ index 80eee67..ed255e1 100644
  endif
  endef
 diff --git a/make/rules-cargo.mk b/make/rules-cargo.mk
-index 5369fb4..3cbf8c2 100644
+index 5369fb4..21db917 100644
 --- a/make/rules-cargo.mk
 +++ b/make/rules-cargo.mk
-@@ -14,7 +14,7 @@ $(OBJ)/.$(1)-configure$(3):
+@@ -14,7 +14,9 @@ $(OBJ)/.$(1)-configure$(3):
  $(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
 -	cargo build --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
-+	cargo build --verbose --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
++	cargo update --offline --verbose
++	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
++	cargo build --locked --offline --verbose --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
  	touch $$@
  endif
  endef
