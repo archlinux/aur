@@ -2,7 +2,7 @@
 
 pkgname=gnucash-xbt-minimal
 _pkgname=gnucash
-pkgver=4.6
+pkgver=4.7
 pkgrel=1
 _sourcerel=
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin but without ofx/qfx import and aqbanking support"
@@ -23,7 +23,7 @@ provides=(gnucash)
 source=("https://github.com/Gnucash/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}${_sourcerel}.tar.bz2"
         "xbt.patch")
 
-sha256sums=('251b01dfb9f9c679db26926f934ca4d13c7092a485be04f60e2031d85a445733'
+sha256sums=('fc9ff34020cca560e5753d2b3bca2aab39d2adcf40836e18d0c935a7f7db2062'
             '8cf12425a9f66c69473d83582742244889dc0ffb854d3a502aca58bc649878d4')
 
 prepare() {
