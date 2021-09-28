@@ -1,9 +1,9 @@
 pkgname=rust-lolcat-git
-pkgver=r33.4a3059c
+pkgver=r35.bfbe248
 pkgrel=1
 pkgdesc="A rust implementation of lolcat"
 arch=('i686' 'x86_64')
-url='https://github.com/magnus-ISU/lolcat-lolhelp'
+url='https://github.com/ur0/lolcat'
 license=('MIT')
 provides=('lolcat')
 conflicts=('lolcat')
@@ -12,16 +12,16 @@ sha1sums=('SKIP')
 makedepends=('cargo' 'git')
 
 build() {
-	cd lolcat-lolhelp
+	cd lolcat
 	cargo build --release
 }
 
 pkgver() {
-	cd lolcat-lolhelp
+	cd lolcat
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd lolcat-lolhelp
+	cd lolcat
 	install -Dm755 "target/release/lolcat" "$pkgdir/usr/bin/lolcat"
 }
