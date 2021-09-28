@@ -1,6 +1,6 @@
 pkgbase = rustcat
 	pkgdesc = Rustcat - A Modern Port Listener & Reverse Shell
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 5
 	url = https://github.com/robiot/rustcat
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rustcat
 	conflicts = rustcat
 	conflicts = rustcat-bin
 	conflicts = rustcat-git
-	source = rc.tar.gz::https://github.com/robiot/rustcat/releases/download/v1.2.0/rustcat_1.2.0_amd64-linux.tar.gz
+	source = rc.tar.gz::https://github.com/robiot/rustcat/releases/download/v1.3.0/rustcat_1.3.0_amd64-linux.tar.gz
 	md5sums = SKIP
 
 pkgname = rustcat

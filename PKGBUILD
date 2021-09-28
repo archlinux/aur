@@ -2,7 +2,7 @@
 
 pkgname=rustcat
 _binname=rc
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=5
 pkgdesc="Rustcat - A Modern Port Listener & Reverse Shell"
 url="https://github.com/robiot/rustcat"
@@ -15,6 +15,5 @@ md5sums=('SKIP')
 
 package() {
     cd "${srcdir}"
-
     install -Dm 755 "./${_binname}" "$pkgdir/usr/bin/$_binname"
 }
