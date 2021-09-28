@@ -1,12 +1,13 @@
 pkgbase = python-pylatexenc
 	pkgdesc = Python library for encoding unicode to latex and for parsing LaTeX to generate unicode text
-	pkgver = 1.3
+	pkgver = 2.10
 	pkgrel = 1
 	url = https://github.com/phfaist/pylatexenc
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python
+	source = python-pylatexenc-v2.10.tar.gz::https://github.com/phfaist/pylatexenc/archive/refs/tags/v2.10.tar.gz
+	sha256sums = bcb859affea00b5acb25aec780620170ab9d385c8f7dc266b7237ce9f47a59fd
 
 pkgname = python-pylatexenc
-
