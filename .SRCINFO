@@ -1,6 +1,6 @@
 pkgbase = folly
 	pkgdesc = An open-source C++ library developed and used at Facebook
-	pkgver = 2021.09.20.00
+	pkgver = 2021.09.27.00
 	pkgrel = 1
 	url = https://github.com/facebook/folly
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = folly
 	depends = libaio
 	depends = liburing
 	depends = libunwind
-	source = https://github.com/facebook/folly/archive/v2021.09.20.00.tar.gz
-	sha256sums = 1e50c6734566935d306f0e5098f520aaaa68e68103935e301a26e993ab0eb8cb
+	source = https://github.com/facebook/folly/archive/v2021.09.27.00.tar.gz
+	sha256sums = b7582f69118c8aa4d0dd6280cdee51f5607377d04389dfecd422ccfff861d734
 
 pkgname = folly
