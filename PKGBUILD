@@ -25,6 +25,6 @@ package() {
 }
 
 check() {
-    cd "pylatexenc-${pkgver}"
-    python -m unittest test/test_*.py
+    cd "pylatexenc-${pkgver}/test"
+    python -m unittest test_*.py
 }
