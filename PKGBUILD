@@ -3,16 +3,16 @@
 pkgname=uksmd
 _repouser=post-factum
 _reponame=uksmd
-_rev=b6af35cb9a772f643fd1bd703f4d1f6c6c6d3b79
-pkgver=0.0.0.r5.${_rev:0:10}
-pkgrel=2
+_rev=4635f7dae065b96dc3708afc8191eaa6ae8620ed
+pkgver=0.0.0.r6.${_rev:0:10}
+pkgrel=1
 pkgdesc="Userspace KSM helper daemon"
 url="https://gitlab.com/post-factum/uksmd"
 license=(GPL3)
 arch=(x86_64)
 depends=(UKSMD-BUILTIN procps-ng libcap-ng)
 source=(${pkgname}-${pkgver}.tar.gz::https://gitlab.com/${_repouser}/${_reponame}/-/archive/${_rev}/${_reponame}-${_rev}.tar.gz)
-sha256sums=('434d34035ee2032668f9393e39af5a2fdc34dd0ff90b742d8e1d3af8df433198')
+sha256sums=('edcfbcf7692ee74b09c75b17b5c0558735d02e6977aee585be0a29c04476d36f')
 
 build() {
 	cd "${_reponame}-${_rev}"
