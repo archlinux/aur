@@ -12,7 +12,7 @@ pkgbase = aws-session-manager-plugin
 	backup = usr/sessionmanagerplugin/LICENSE
 	backup = usr/sessionmanagerplugin/seelog.xml
 	backup = usr/sessionmanagerplugin/VERSION
-	source_x86_64 = https://s3.amazonaws.com/session-manager-downloads/plugin/1.2.234.0/ubuntu_64bit/session-manager-plugin.deb
+	source_x86_64 = https://s3.amazonaws.com/session-manager-downloads/plugin/1.2.245.0/ubuntu_64bit/session-manager-plugin.deb
 	sha512sums_x86_64 = 200cd2b85f9c500a184c80f8006b859fbb2374bd333642afe2ec97cbc3a5135c546d189c40cdfa7b8d66d668ca10a96a3dc94ab57eeda7c8e6f5cc4928364c64
 
 pkgname = aws-session-manager-plugin

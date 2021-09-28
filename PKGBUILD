@@ -4,7 +4,7 @@
 
 pkgname=aws-session-manager-plugin
 pkgver=1.2.245.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AWS Session Manager Plugin for aws-cli."
 arch=('x86_64')
 url="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html"
