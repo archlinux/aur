@@ -2,7 +2,7 @@
 
 pkgname=postgresql-semver
 _pkgname=pg-semver
-pkgver=0.31.1
+pkgver=0.31.2
 pkgrel=1
 pkgdesc="Semantic version data type for PostgreSQL"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom:PostgreSQL')
 depends=('postgresql')
 makedepends=('postgresql-libs' 'clang' 'llvm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('dbe40846d6e643c1aa24514e51645170baf43547b906a0bfe2c9db16f706a339f0b30f5a91ebb4d242030ce84ee5024d4e785e47c99636085e0dedf0861ac1d3')
+b2sums=('ac1fcd66d62fa369fbeee04b490987737bb781dcf93e8c0b397ccefc336fe99e13fd281d85e3a33629084958d3e7936c3b7a8a32f5bb8c28304f7fe22092b51d')
 
 build() {
 	make -C "$_pkgname-$pkgver"
