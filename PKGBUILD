@@ -22,7 +22,7 @@ makedepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("git://github.com/AbdeltwabMF/nxprayer")
+source=("git+${url}")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -31,9 +31,17 @@ pkgver() {
            "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+	cd "${pkgname}"
+	make
+}
+
 package() {
-    cd "${pkgname}"
-    make clean install
-		install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	cd "${pkgname}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm755 ${pkgname} "${pkgdir}${HOME}/.local/bin/${pkgname}"
+	install -Dm755 lapi "${pkgdir}${HOME}/.local/bin/lapi"
+	install -Dm644 ex.json "${pkgdir}${HOME}/.config/${pkgname}/params.json"
+	install -Dm644 "${pkgname}.1" "${pkgdir}/usr/local/share/man/man1/${pkgname}.1"
 }

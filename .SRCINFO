@@ -17,7 +17,7 @@ pkgbase = nxprayer
 	depends = libnotify
 	provides = nxprayer
 	conflicts = nxprayer
-	source = git://github.com/AbdeltwabMF/nxprayer
+	source = git+https://github.com/AbdeltwabMF/nxprayer.git
 	sha1sums = SKIP
 
 pkgname = nxprayer
