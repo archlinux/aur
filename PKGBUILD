@@ -21,8 +21,8 @@ _zlib=1.2.3
 
 pkgbase=xen
 pkgname=("xen" "xen-docs")
-pkgver=4.15.0
-pkgrel=4
+pkgver=4.15.1
+pkgrel=1
 pkgdesc='Open-source type-1 or baremetal hypervisor'
 arch=('x86_64')
 url='https://xenproject.org/'
@@ -46,8 +46,6 @@ _source=(
 	"xen-ucode-extract.sh"
 	"xen-intel-ucode.hook"
 	"xen-amd-ucode.hook"
-	"no-ld-no-pie.patch"
-	"gcc-11.patch"
 )
 
 validpgpkeys=('23E3222C145F4475FA8060A783FE14C957E82BD9') # Xen.org Xen tree code signing (signatures on the xen hypervisor and tools) <pgp@xen.org>
@@ -56,12 +54,6 @@ validpgpkeys=('23E3222C145F4475FA8060A783FE14C957E82BD9') # Xen.org Xen tree cod
 # Follow the Xen securite mailing lists, and if a patch is applicable to our package
 # add the URL here.
 _patches=(
-	"aur-xsa379.patch"
-	"https://xenbits.xen.org/xsa/xsa380/xsa380-1.patch"
-	"https://xenbits.xen.org/xsa/xsa380/xsa380-2.patch"
-	"https://xenbits.xen.org/xsa/xsa382.patch"
-	"https://xenbits.xen.org/xsa/xsa383.patch"
-	"https://xenbits.xen.org/xsa/xsa384.patch"
 )
 
 
@@ -80,26 +72,18 @@ _stubdom_source=(
 
 # from cheap hack known as break_out_sums.sh
 _sha512sums=(
-        "93683b8a97387ca5f003c635a11d163e61c87dbdc9a03081f9155fe87b49f1dfa74ce243fcd5e04dc009353a36e2375b786f1ebde828b5951a094cd64197b4c7" # xen-4.15.0.tar.gz
-        "7ca2894ece626a116e03f0e3e2ddf36c7cf26b1db0eef410bb93acae32897042b087f670a416b13c5df8f1c8bd9d848ad075f1ce8a651b3341ec20b56daf21ae" # xen-4.15.0.tar.gz.sig
+        "8d3cbdf708f46477e32ee7cbd16a490c82efa855cecd84ee712b8680df4d69c987ba9ab00ff3851f627b98a8ebbc5dab71f92f142ed958ee2bc538bc792cd4b9" # xen-4.15.1.tar.gz
+        "SKIP" # xen-4.15.1.tar.gz.sig
         "1bbcbcd9fb8344a207409ec9f0064a45b726416f043f902ca587f5e4fa58497a759be4ffd584fa32318e960aa478864cc05ec026c444e8d27ca8e3248bd67420" # efi-xen.cfg
         "ccaa2ff82e4203b11e5dec9aeccac2e165721d8067e0094603ecaa7a70b78c9eb9e2287a32687883d26b6ceae6f8d2ad7636ddf949eb658637b3ceaa6999711b" # xen.conf
         "53ba61587cc2e84044e935531ed161e22c36d9e90b43cab7b8e63bcc531deeefacca301b5dff39ce89210f06f1d1e4f4f5cf49d658ed5d9038c707e3c95c66ef" # tmpfiles.conf
         "a9230ec6ef9636ac3f3e4b72b1747ee8c4648a8bf4bd8dc3650365e34f1f67474429dbdd24996907d277b0ff5f235574643e781cb3ff37da954e899ddadbe0d6" # xen-ucode-extract.sh
         "7a832de9b35f4b77ee80d33310b23886f4d48d1d42c3d6ef6f8e2b428bec7332a285336864b61cfa01d9a14c2023674015beb7527bd5849b069f2be88e6500cd" # xen-intel-ucode.hook
         "99921b94a29fa7988c7fb5c17da8e598e777c972d6cae8c8643c991e5ff911a25525345ea8913945313d5c49fecf9da8cc3b83d47ab03928341e917b304370a9" # xen-amd-ucode.hook
-        "72edbacdb2b3b4449448e1bf7a6b31b58234eed1abe010db6dcf4033158edf095b081bc6eb89cde3156432dd35c449e1954aeefb2c4bc785a5d3f93de7b0fa76" # no-ld-no-pie.patch
-        "68d468b0a811bd8882992a605d16ab1e0e95dd5e4644bdcf1287ffb0db046dddcbdf740df7d7f32665cbb50088e9e4a7c7d69fbfbf42e460ebdc097caccdd7b2" # gcc-11.patch
 )
 
 
 _patch_sums=(
-        "03d1250ae52098bc7ba46ec3cfb5d7bd699a3c5c66dbd231dcc6776fb2d71b3c0f801fb3f1e6cdc102cf06b2b73b86734f61b0fc8ab2d88a54c2371eba31828a" # aur-xsa379.patch
-        "9c65e5860aa4cea90224ebf9340d314ba1cf4f687fb5ccc8489dbc3465a03a467411639c00e31b6090f09813e0102a94a833a47da4427b673369b9e4b977b4bd" # xsa380-1.patch
-        "61a87c2baff2b84af14d53556c918a1ff4ca1a6189b05cd2fcf8a1366c5af5dc1dbf7168d8f79c821c0e6ee629d72145514087844f0469a5f96668171157b393" # xsa380-2.patch
-        "6c5e3388fcfb0dcae30d5f315bf95d263c82519d2cbf2a8a88d280b5b0b1c1ed4cce7a1a85fabbf57c785ad9dc23e8e5e4773c631c00e036aada604ff8e7fa03" # xsa382.patch
-        "d5106df26e6c4512d88ea6748c403117a2b61cb40f6d6c08a76f160352b79f94dd67cbb3419a33f2c6cfc7bbd644baed0498e366a6bf00d8031df728a47f36ea" # xsa383.patch
-        "fe14ee4e28001e28ab0c3c0eca56d00d4d6e95879eec1f81f780d783d3845a4dd1dcd38449b2b7085e9aad88f0b95c59eebb52d8b5cf868012ff410fe32b9870" # xsa384.patch
 )
 
 
@@ -160,9 +144,6 @@ _common_make_flags=(
 prepare() {
 
 	cd "${pkgbase}-${pkgver}"
-
-	patch -p1 < ../no-ld-no-pie.patch
-	patch -p1 < ../gcc-11.patch
 
 	if [ "${_build_stubdom}" == "true" ]; then
 
