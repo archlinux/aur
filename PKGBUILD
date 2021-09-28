@@ -73,10 +73,10 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.13
-_minor=19
+_major=5.14
+_minor=8
 _srcname=linux-${_major}
-_clr=${_major}.17-1074
+_clr=${_major}.8-1078
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -86,15 +86,15 @@ url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210818'
+_gcc_more_v='20210914'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  'pci-enable-overrides-for-missing-acs-capabilities.patch'
-  '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
+  "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/e2d48df5def86f498766b22e836a9c2f1bcb3809/linux-5.14.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
+  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/e2d48df5def86f498766b22e836a9c2f1bcb3809/linux-5.14.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -185,7 +185,7 @@ prepare() {
     # https://github.com/graysky2/kernel_compiler_patch
     # make sure to apply after olddefconfig to allow the next section
     echo "Patching to enable GCC optimization for other uarchs..."
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8-5.14.patch"
 
     if [ -n "$_subarch" ]; then
         # user wants a subarch so apply choice defined above interactively via 'yes'
@@ -351,13 +351,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
+sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            '6fadc31348a0c0bbce86b067811d1dadae307bbde5b712c688b3193d73f0fb71'
+            '3ad8bc71d6fe35982e75dd60744f775159bc7f2d89fe1458ffe2f6aed03b6bd9'
             'SKIP'
-            'd361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf'
-            '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
-            '34614e92ed29d11f5f6150ee8ed6c5ffe7f8f3d99a2fed6aebe40e513749c3ba')
+            'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611'
+            '1c7aee7bccb1d848887b0cef273518badb09021788b148db1c6168d4c761f1fd'
+            'ece72251dacc37d239a5bbf170629c155cee634c05febd8d654b110077d29f28')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
