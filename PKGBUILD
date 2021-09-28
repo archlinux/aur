@@ -38,10 +38,7 @@ build() {
 
 package() {
 	cd "${pkgname}"
+	make clean install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -Dm755 ${pkgname} "${pkgdir}${HOME}/.local/bin/${pkgname}"
-	install -Dm755 lapi "${pkgdir}${HOME}/.local/bin/lapi"
-	sudo install -Dm644 ex.json "${pkgdir}${HOME}/.config/${pkgname}/params.json"
-	sudo install -Dm644 "${pkgname}.1" "${pkgdir}/usr/local/share/man/man1/${pkgname}.1"
 }
