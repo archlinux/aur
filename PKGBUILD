@@ -1,15 +1,16 @@
 pkgname=scotch
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
 url="https://gitlab.inria.fr/scotch/scotch"
 license=("custom:CeCILL-C")
 depends=('zlib' 'openmpi' 'bzip2')
+makedepends=('gcc-fortran')
 provides=('ptscotch' 'ptscotch-openmpi' 'scotch_esmumps' 'scotch_ptesmumps')
 conflicts=('ptscotch-openmpi' 'scotch_esmumps' 'scotch_esmumps5')
 arch=('i686' 'x86_64')
 source=("https://gitlab.inria.fr/scotch/scotch/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('4fe537f608f0fe39ec78807f90203f9cca1181deb16bfa93b7d4cd440e01bbd1')
+sha256sums=('14daf151399fc67f83fd3ff2933854f5e8d2207c7d35dd66a05660bf0bbd583c')
 
 options=(!emptydirs)
 
@@ -55,8 +56,8 @@ build() {
 check() {
   cd "${srcdir}/${pkgname}-v${pkgver}/src"
  
-  make check LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
-  make ptcheck LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
+  make check FC=gfortran LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
+  make ptcheck FC=gfortran LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
 }
  
 package() {
