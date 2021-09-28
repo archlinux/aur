@@ -26,7 +26,7 @@ makedepends+=('lib32-glibc>=2.20' 'texinfo')
 checkdepends=('dejagnu' 'inetutils')
 provides=("gcc${_pkgver//\./}") # no version as it is completely contained in the name
 conflicts=("gcc${_pkgver//\./}")
-options=('!emptydirs' '!strip')
+options=('!emptydirs' '!strip' '!buildflags')
 source=(
   "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
   #ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
@@ -37,6 +37,13 @@ source=(
   '0001-gcc-4.9-SIGSEGV.patch'
   '0002-gcc-4.9-__res_state.patch'
 )
+md5sums=('87c24a4090c1577ba817ec6882602491'
+         'e039bfcfb6c2ab039b8ee69bf883e824'
+         'e34fca0540d840e5d0f6427e98c92252'
+         '91f27a8002df38cf2ca971ca80feb9d7'
+         '4a0dc704f1d92ceb4dd8608811241cec'
+         'e787a03f0c38434490515a5823eca0b8'
+         'c64d1e20274ff4fbfacdd11bef2e1273')
 sha256sums=('6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092'
             'f4b3dbee9712850006e44f0db2103441ab3d13b406f77996d1df19ee89d11fb4'
             '02500a4edd14875f94fe84cbeda4290425cb0c1c2474c6f75d75a303d64b4196'
@@ -44,8 +51,6 @@ sha256sums=('6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092'
             '44ea987c9ee1ab3234f20eca51f8d6c68910b579e63ec58ff7a0dde38093f6ba'
             'eb59578cbf32da94d7a11fabf83950c580f0f6fb58f893426d6a258b7e44351e'
             '9ce8a94aad61a26839687734b48f0628e610663cd0d5ad9edfc6e571cf294bac')
-
-PKGEXT='.pkg.tar.gz'
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
@@ -97,9 +102,6 @@ prepare() {
     false
   fi
 
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
-
   # remove -V and -qversion as their aren't supported in gcc7
   sed -e 's/ -V -qversion/ /g' -i $(grep --include='configure' -lrFe '-V -qversion')
 
@@ -114,67 +116,50 @@ build() {
   cd "${_basedir}/gcc-build"
 
   if [ ! -s 'Makefile' ]; then
-    # Doesn't like FORTIFY_SOURCE
-    CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
-
-    # Doesn't like -fstack-protector-strong
-    CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
-    CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
-
-    # using -pipe causes spurious test-suite failures
-    # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-    CFLAGS="${CFLAGS/-pipe/}"
-    CXXFLAGS="${CXXFLAGS/-pipe/}"
-
-    # Flags from new compilers that old compilers don't recognize
-    CFLAGS="${CFLAGS/-fno-plt/}"
-    CXXFLAGS="${CXXFLAGS/-fno-plt/}"
-
-    CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
-    CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
-
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
-    ../configure \
-      --build="${CHOST}" \
-      --disable-libssp \
-      --disable-libstdcxx-pch \
-      --disable-libunwind-exceptions \
-      --disable-libsanitizer \
-      --enable-multilib \
-      --disable-werror \
-      --enable-__cxa_atexit \
-      --enable-checking='release' \
-      --enable-clocale='gnu' \
-      --enable-cloog-backend='isl' \
-      --enable-gnu-unique-object \
-      --enable-install-libiberty \
-      --enable-languages='c,c++,fortran,go,lto,objc,obj-c++' \
-      --enable-linker-build-id \
-      --enable-lto \
-      --enable-plugin \
-      --enable-shared \
-      --enable-threads='posix' \
-      --enable-version-specific-runtime-libs \
-      --infodir='/usr/share/info' \
-      --libdir='/usr/lib' \
-      --libexecdir='/usr/lib' \
-      --mandir='/usr/share/man' \
-      --program-suffix="-${_pkgver}" \
-      --with-bugurl='https://bugs.archlinux.org/' \
-      --with-linker-hash-style='gnu' \
-      --with-system-zlib \
+    local _conf=(
+      --build="${CHOST}"
+      --disable-libssp
+      --disable-libstdcxx-pch
+      --disable-libunwind-exceptions
+      --disable-libsanitizer
+      --enable-multilib
+      --disable-werror
+      --enable-__cxa_atexit
+      --enable-checking='release'
+      --enable-clocale='gnu'
+      --enable-cloog-backend='isl'
+      --enable-gnu-unique-object
+      --enable-install-libiberty
+      --enable-languages='c,c++,fortran,go,lto,objc,obj-c++'
+      --enable-linker-build-id
+      --enable-lto
+      --enable-plugin
+      --enable-shared
+      --enable-threads='posix'
+      --enable-version-specific-runtime-libs
+      --infodir='/usr/share/info'
+      --libdir='/usr/lib'
+      --libexecdir='/usr/lib'
+      --mandir='/usr/share/man'
+      --program-suffix="-${_pkgver}"
+      --with-bugurl='https://bugs.archlinux.org/'
+      --with-linker-hash-style='gnu'
+      --with-system-zlib
       --prefix='/usr'
-#      CXX='g++-6.3' CC='gcc-6.3'
-
+      # CXX='g++-6.3' CC='gcc-6.3'
 # gcc-5.0 changes
 #      --with-default-libstdcxx-abi=c++98    - before gcc-5.0 c++ rebuild
 #      --enable-gnu-indirect-function
-#     --with-isl    - cloog no longer needed
+#      --with-isl    - cloog no longer needed
+    )
+    ../configure "${_conf[@]}"
+
+     sed -e 's/^STAGE1_CXXFLAGS.*$/& -std=gnu++11/' -i 'Makefile'
   fi
 
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   LD_PRELOAD='/usr/lib/libstdc++.so' \
-  nice make -j "${_nproc}"
+  nice make -s
 
   set +u; msg 'Compile complete'; set -u
 
