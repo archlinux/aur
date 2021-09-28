@@ -1,6 +1,6 @@
 # Maintainer: sioodmy <a.sokolowski06@gmail.com>
 pkgname=todo-bin
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Super fast and simple tasks organizer written in rust"
 url="https://github.com/sioodmy/todo"
@@ -20,5 +20,5 @@ package() {
 	install -Dm 644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('409c5fbe80b6edd6f8bf00ff6e58ebbc57a4371d0b7183e13886d61f72adbee3b4f98c8ee9f4864b14d454f581cd4b6f7b2004e6d771cc5e59b6f48f267400ff'
+sha512sums=('322597f26532c9cdea44995c86053a56731a0aa0f05f98d3771d2e2401ffffccee91a4be80ebb5efa3ad7818495973014442fc4368512eee3fa3ea0d6e649454'
 	'd361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686')
