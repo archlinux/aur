@@ -1,14 +1,15 @@
 pkgbase = myxer-bin
 	pkgdesc = A modern Volume Mixer for PulseAudio, built with you in mind.
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aurailus/Myxer
 	arch = x86_64
 	license = GPL3
 	depends = pulseaudio
 	provides = myxer
-	source = Myxer::https://github.com/Aurailus/Myxer/releases/latest/download/Myxer
+	source = Myxer::https://github.com/Aurailus/Myxer/releases/download/1.2.1/Myxer
+	source = https://raw.githubusercontent.com/VixenUtils/Myxer/1.2.1/Myxer.desktop
 	sha256sums = a8bc3a67e15a8761de94013a35cf83601a6b507065be2d49594e1f9ca383f36a
+	sha256sums = bad653aab271ac23ec98dc1c58a01e98a825f5a131ae579524a514d3d7e880e5
 
 pkgname = myxer-bin
-
