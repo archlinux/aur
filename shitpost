@@ -64,7 +64,7 @@ base=${image_file##*/}
 [[ -z "$output_file" ]] && output_file="shitpost-$base"
 
 # Create a temporary directory to hold the temporary files
-tmpdir=$(mktemp -d)
+tmpdir=$(mktemp -d /tmp/shitpost.XXXXXX)
 trap 'rm -rf "$tmpdir"' EXIT SIGINT
 
 # Upscale the image if it's too shitty. This is required to make the text readable as it's generated to fit the pixels of the original
