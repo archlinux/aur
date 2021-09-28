@@ -1,6 +1,6 @@
 pkgbase = assemblyline-bin
 	pkgdesc = An in-memory assembler for x86. (latest stable release)
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/0xAde1a1de/assemblyline.git
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = assemblyline-bin
 	makedepends = libtool
 	provides = libassemblyline
 	provides = asmline
-	source = https://github.com/0xADE1A1DE/AssemblyLine/releases/download/v1.0.3/assemblyline-1.0.3.tar.gz
-	md5sums = c6504af76da39905977b79ab4bce1ab0
-	sha1sums = f64faa8579d36afa97f0c889768c56c4c18446b8
-	sha256sums = 17bef5de8a208d673c0cbca3c3fa29735de20a9b39afb925aea8d90234334544
+	source = https://github.com/0xADE1A1DE/AssemblyLine/releases/download/v1.0.4/assemblyline-1.0.4.tar.gz
+	md5sums = 9150f5003859c0694212c41ffb6bae92
+	sha1sums = 11bc5fd04a40f1970404fa358fc351f47039a7b4
+	sha256sums = 00641ad2449d20b5f28e3cf9105d7467899909216fd094ca52f6f1ee22d4ced7
 
 pkgname = assemblyline-bin
