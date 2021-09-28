@@ -1,6 +1,6 @@
 pkgbase = taplo-lsp
 	pkgdesc = Language server for Taplo, a TOML toolkit
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://taplo.tamasfe.dev/lsp/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = taplo-lsp
 	makedepends = rust
 	depends = gcc-libs
 	depends = openssl
-	source = taplo-lsp-0.2.5.tar.gz::https://static.crates.io/crates/taplo-lsp/taplo-lsp-0.2.5.crate
-	source = https://raw.githubusercontent.com/tamasfe/taplo/master/LICENSE.md
-	b2sums = 8c237a08fd3883f9d87927f1b08ba606743d577e9198bab86e37593dc9c22467b99ee74c5f2598090c999158e6db31240bdcef99fa96b03985181ebef07a7315
+	source = taplo-lsp-0.2.6.tar.gz::https://static.crates.io/crates/taplo-lsp/taplo-lsp-0.2.6.crate
+	source = taplo-lsp-0.2.6-LICENSE.md::https://raw.githubusercontent.com/tamasfe/taplo/release-lsp-0.2.6/LICENSE.md
+	b2sums = fd9f0d851957df3b05f50c9366bfbf6c16c05b9585c8bf68256ea385779cdf0e70241f0195a8b3b4f1b8b94e84422bc23fc834cad5c54e10f9b961fdaf7b7aac
 	b2sums = 2b1282c2e1b54a67fd56894ae96a1447d954b52fecdf0730d8c3fe7a95ccf79245e738588a9bda7262eb0ef2507cdeded228346358894d4bbfc540ec90069964
 
 pkgname = taplo-lsp

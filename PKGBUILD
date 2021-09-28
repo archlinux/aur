@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=taplo-lsp
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Language server for Taplo, a TOML toolkit'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 source=("taplo-lsp-$pkgver.tar.gz::https://static.crates.io/crates/taplo-lsp/taplo-lsp-$pkgver.crate"
-        'https://raw.githubusercontent.com/tamasfe/taplo/master/LICENSE.md')
-b2sums=('8c237a08fd3883f9d87927f1b08ba606743d577e9198bab86e37593dc9c22467b99ee74c5f2598090c999158e6db31240bdcef99fa96b03985181ebef07a7315'
+        "taplo-lsp-$pkgver-LICENSE.md::https://raw.githubusercontent.com/tamasfe/taplo/release-lsp-$pkgver/LICENSE.md")
+b2sums=('fd9f0d851957df3b05f50c9366bfbf6c16c05b9585c8bf68256ea385779cdf0e70241f0195a8b3b4f1b8b94e84422bc23fc834cad5c54e10f9b961fdaf7b7aac'
         '2b1282c2e1b54a67fd56894ae96a1447d954b52fecdf0730d8c3fe7a95ccf79245e738588a9bda7262eb0ef2507cdeded228346358894d4bbfc540ec90069964')
 
 prepare() {
@@ -27,7 +27,8 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -Dt "$pkgdir"/usr/bin target/release/$pkgname
-  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname ../LICENSE.md
+  install -Dm644 ../taplo-lsp-$pkgver-LICENSE.md \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
 }
 
 # vim:set ts=2 sw=2 et:
