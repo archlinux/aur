@@ -1,5 +1,5 @@
 pkgbase = linux-system76-gaze16
-	pkgdesc = Oficial Arch Linux + system76 gaze16 touchpad and mic fix
+	pkgdesc = Official Arch Linux + system76 gaze16 touchpad and mic fix
 	pkgver = 5.14.8.arch1_gaze16
 	pkgrel = 1
 	url = https://github.com/archlinux/linux/commits/v5.14.8-arch1
@@ -34,7 +34,7 @@ pkgbase = linux-system76-gaze16
 	sha256sums = c3801e7a602660b53c4aeac79ec480a2d7311054b0fcc5fa24de7c9f71a4dc84
 
 pkgname = linux-system76-gaze16
-	pkgdesc = Oficial Arch Linux + system76 gaze16 touchpad and mic fix : kernel and modules
+	pkgdesc = Official Arch Linux + system76 gaze16 touchpad and mic fix : kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -46,5 +46,5 @@ pkgname = linux-system76-gaze16
 	replaces = wireguard-arch
 
 pkgname = linux-system76-gaze16-headers
-	pkgdesc = Oficial Arch Linux + system76 gaze16 touchpad and mic fix : headers and scripts for building modules
+	pkgdesc = Official Arch Linux + system76 gaze16 touchpad and mic fix : headers and scripts for building modules
 	depends = pahole
