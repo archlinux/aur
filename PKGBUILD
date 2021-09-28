@@ -6,13 +6,14 @@ pkgname="${_pkgname}-git"
 pkgdesc="A CartoCSS map style processor that generates Mapnik XML and MapServer map files. Writte in go."
 epoch=1
 pkgver=0.0.0_dev+r573.20190806.bfc646d
-pkgrel=2
+pkgrel=3
 arch=('u686' 'x86_64')
 license=('apache')
 url="http://github.com/omniscale/magnacarto"
 depends=(
 )
 makedepends=(
+  'boost'
   'git'
   'go>=1.6'
   'mapnik>=2.2' # For building magnacarto-mapnik.

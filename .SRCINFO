@@ -1,12 +1,13 @@
 pkgbase = magnacarto-git
 	pkgdesc = A CartoCSS map style processor that generates Mapnik XML and MapServer map files. Writte in go.
 	pkgver = 0.0.0_dev+r573.20190806.bfc646d
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://github.com/omniscale/magnacarto
 	arch = u686
 	arch = x86_64
 	license = apache
+	makedepends = boost
 	makedepends = git
 	makedepends = go>=1.6
 	makedepends = mapnik>=2.2
@@ -16,4 +17,3 @@ pkgbase = magnacarto-git
 	conflicts = magnacarto
 
 pkgname = magnacarto-git
-
