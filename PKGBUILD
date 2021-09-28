@@ -189,30 +189,30 @@ prepare() {
     done
 
     pushd vkd3d-proton
-    for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
-        git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-        git submodule update "${submodule}"
-    done
-    pushd subprojects/dxil-spirv
-    git submodule init third_party/spirv-headers
-    git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
-    git submodule update third_party/spirv-headers
-    popd
+        for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
+            git submodule init "${submodule}"
+            git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
+            git submodule update "${submodule}"
+        done
+        pushd subprojects/dxil-spirv
+            git submodule init third_party/spirv-headers
+            git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
+            git submodule update third_party/spirv-headers
+        popd
     popd
 
     pushd dxvk-nvapi
-    git submodule init external/Vulkan-Headers
-    git config submodule.external/Vulkan-Headers.url "$srcdir"/Vulkan-Headers
-    git submodule update external/Vulkan-Headers
+        git submodule init external/Vulkan-Headers
+        git config submodule.external/Vulkan-Headers.url "$srcdir"/Vulkan-Headers
+        git submodule update external/Vulkan-Headers
     popd
 
     patch -p1 -i "$srcdir"/proton-remove_broken_patch_segments.patch
     ./patches/protonprep.sh
 
     pushd wine
-    # Adds more 16:10 resolutions for use with FSR
-    patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+        # Adds more 16:10 resolutions for use with FSR
+        patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
@@ -221,6 +221,8 @@ prepare() {
 }
 
 build() {
+    source build_venv/bin/activate
+
     cd build
     ROOTLESS_CONTAINER="" \
     ../proton-ge-custom/configure.sh \
