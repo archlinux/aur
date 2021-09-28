@@ -5,7 +5,7 @@
 
 pkgname=antsword
 pkgver=2.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="AntSword is a cross-platform webshell management toolkit."
 arch=('any')
 url="https://www.yuque.com/antswordproject"
@@ -20,7 +20,7 @@ source=("https://github.com/AntSwordProject/$pkgname/archive/refs/tags/$pkgver.t
         "$pkgname.png"
         "$pkgname")
 sha256sums=("1667e636b68ffde32b5faa76a40797a6efc63c78693e545598a44028b6a25b5b"
-        "7a9d56dad4d5df8968aed7aec76c6c983a0f6141334ca07e1d5ae80f0829531e"
+        "e0fcdd7048910f3e8fbaa73996566e8781d161be196b1e68403d9ad2af6dc21d"
         "f3cff3ac504b8ff4bd48c9086e49ae978b6f13a3a60dc80b4dfca584c6995f69"
         "94894700d63d1c94f8e8d1fade1df936e1fee32d42f886ea32a6e6b29d40a866"
         "977973b5628e6b7e12891049a13f0437013effa5b4e7c2de0fe56b4878add72b")

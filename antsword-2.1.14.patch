@@ -2,7 +2,18 @@ This patch removes trivial and duplicate codes.
 diff '--color=auto' -u0 -r old/modules/config.js new/modules/config.js
 --- old/modules/config.js	2021-05-14 18:15:46.000000000 -0700
 +++ new/modules/config.js	2021-06-15 04:10:20.882275457 -0700
-@@ -90,4 +89,0 @@
+@@ -17,2 +16,0 @@
+-    // 旧数据存储目录
+-    let _oldPath = path.join(process.env.HOME || process.env.LOCALAPPPATH || process.cwd() || '.', '.antSword', 'shell.db');
+@@ -20 +18 @@
+-    this.basePath = path.join(process.env.AS_WORKDIR, 'antData')
++    this.basePath = path.join(process.env.HOME || process.env.LOCALAPPPATH || process.cwd() || '.', '.antSword');
+@@ -25,4 +22,0 @@
+-    // 旧数据搬迁
+-    if (fs.existsSync(_oldPath) && !fs.existsSync(this.dataPath)) {
+-      fs.writeFileSync(this.dataPath, fs.readFileSync(_oldPath))
+-    }
+@@ -90,4 +83,0 @@
 -  get urlblacklist() {
 -    return /(gov.cn|edu.cn)/
 -  }
