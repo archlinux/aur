@@ -3,7 +3,7 @@
 pkgbase='apache-arrow'
 pkgname=('apache-arrow' 'python-apache-arrow')
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Language-independent columnar memory format for flat and hierarchical data"
 arch=('x86_64')
 url='https://arrow.apache.org/'
@@ -113,10 +113,25 @@ package_apache-arrow() {
 
 package_python-apache-arrow() {
     pkgdesc="Language-independent columnar memory format for flat and hierarchical data (Python interface)"
-    depends=('python' 'arrow')
+    depends=('arrow' 'python' 'python-numpy')
     provides=('python-pyarrow')
     conflict=('python-pyarrow')
 
     cd "$srcdir/arrow-$pkgbase-$pkgver/python"
-    pip install --prefix "$pkgdir/usr" dist/*.whl
+    PIP_CONFIG_FILE=/dev/null pip install \
+        --ignore-installed \
+        --isolated \
+        --no-deps \
+        --root "$pkgdir" \
+        dist/pyarrow*.whl
+
+    find "$pkgdir/usr" -path '*/pyarrow*/tests*' -delete
+    find "$pkgdir/usr" -type f -iname '*.cc' -delete
+    find "$pkgdir/usr" -type f -iname '*.cpp' -delete
+    find "$pkgdir/usr" -type f -iname '*.h' -delete
+    find "$pkgdir/usr" -type f -iname '*.hpp' -delete
+    find "$pkgdir/usr" -type f -iname '*.pxd' -delete
+    find "$pkgdir/usr" -type f -iname '*.pxi' -delete
+    find "$pkgdir/usr" -type f -iname '*.pyx' -delete
+    find "$pkgdir/usr" -type d -empty -delete
 }
