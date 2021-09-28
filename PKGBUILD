@@ -4,9 +4,9 @@
 # No variable change needed anymore \o/
 
 pkgname=obs-studio-tytan652
-pkgver=27.0.1
-pkgrel=9
-pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, GNOME Wayland fix, Drag & Drop fix backported, V4L2 devices by paths and my bind interface."
+pkgver=27.1.0
+pkgrel=1
+pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
@@ -74,22 +74,6 @@ prepare() {
   git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
-
-  ## UI: Force Wayland usage under Wayland session (https://github.com/obsproject/obs-studio/commit/47df2467e915e4c471d283ed688a580054aef8bc)
-  git cherry-pick --no-commit 47df2467e915e4c471d283ed688a580054aef8bc
-
-  ## linux-capture: Lookup session handle without typechecks (https://github.com/obsproject/obs-studio/commit/ef0540c0d7df64b6cb148c80d566281a4ff3ba5c)
-  git cherry-pick --no-commit ef0540c0d7df64b6cb148c80d566281a4ff3ba5c
-
-  ## Add fixed drag & drop
-  # Revert 'UI: Disable drag/drop on Linux scenes/sources (for now)' (https://github.com/obsproject/obs-studio/commit/457adcedd319ca2317d7cd5300694d486e88af90)
-  git revert --no-commit 457adcedd319ca2317d7cd5300694d486e88af90
-
-  cd "$srcdir/obs-studio/plugins/obs-browser"
-  # browser-panel: Manually unset XdndProxy  (https://github.com/obsproject/obs-browser/commit/c5ba29f66b2eb8cf63d0fb6a90edd47b650f412a)
-  git cherry-pick --no-commit c5ba29f66b2eb8cf63d0fb6a90edd47b650f412a
-
-  cd "$srcdir/obs-studio"
 
   ## libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
   patch -Np1 < "$srcdir/python_fix.patch"
