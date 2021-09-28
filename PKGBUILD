@@ -3,7 +3,7 @@
 pkgbase='apache-arrow'
 pkgname=('apache-arrow' 'python-apache-arrow')
 pkgver=5.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Language-independent columnar memory format for flat and hierarchical data"
 arch=('x86_64')
 url='https://arrow.apache.org/'
@@ -102,7 +102,7 @@ build(){
 
 package_apache-arrow() {
     provides=('arrow' 'parquet-cpp')
-    conflict=('arrow' 'parquet-cpp')
+    conflicts=('arrow' 'parquet-cpp')
 
     cd "$srcdir/arrow-$pkgbase-$pkgver/cpp/build"
     mkdir -p "$pkgdir"
@@ -115,7 +115,7 @@ package_python-apache-arrow() {
     pkgdesc="Language-independent columnar memory format for flat and hierarchical data (Python interface)"
     depends=('arrow' 'python' 'python-numpy')
     provides=('python-pyarrow')
-    conflict=('python-pyarrow')
+    conflicts=('python-pyarrow')
 
     cd "$srcdir/arrow-$pkgbase-$pkgver/python"
     PIP_CONFIG_FILE=/dev/null pip install \
