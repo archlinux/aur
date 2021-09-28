@@ -1,40 +1,60 @@
-# MaintainerContribut: Michael Fitzmayer <mail@michael-fitzmayer.de>
+# Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+# Contributor: Michael Fitzmayer <mail@michael-fitzmayer.de>
 pkgname=openscenegraph-openmw-git
-pkgver=20200909
+epoch=1
+_pkgver=3.6.5
+pkgver=3.6.5.r16150.b02abe200
 pkgrel=1
-_gitname=osg
-pkgdesc="OpenSceneGraph with performance enhancements for OpenMW - git mirror"
-arch=('i686' 'x86_64')
+pkgdesc="Fork of OpenSceneGraph , with openmw-specific changes"
+arch=('x86_64')
 url="http://www.openscenegraph.org/"
-license=('GPL')
-depends=('giflib' 'jasper' 'librsvg' 'xine-lib' 'curl' 'pth')
-makedepends=('cmake' 'libvncserver' 'qt5-base' 'ffmpeg' 'mesa')
-optdepends=('libvncserver' 'gdal' 'openexr' 'poppler-glib' 'qt5-base' 'ffmpeg')
-provides=('openscenegraph-openmw-git' 'openscenegraph-git' 'openscenegraph' 'openthreads')
-conflicts=('openscenegraph' 'openscenegraph-svn' 'openscenegraph-git' 'openthreads')
-source=(git://github.com/OpenMW/osg.git)
+license=('custom:OSGPL')
+depends=('giflib' 'jasper' 'librsvg' 'curl' 'pth' 'libxrandr' 'libxinerama')
+makedepends=('git' 'cmake' 'qt5-base' 'mesa')
+optdepends=('qt5-base')
+provides=('openscenegraph')
+conflicts=('openscenegraph')
+source=('git+https://github.com/OpenMW/osg.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  git describe --long | sed 's/^OpenSceneGraph-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd osg
+    printf "%s.r%s.%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # a slightly adjusted version of the example in wiki usable when upstream doesn't provied useful tags
 }
 
 build() {
-  mkdir ${srcdir}/${_gitname}-build/
-  cd "${srcdir}/${_gitname}-build/"
-  cmake ../${_gitname} \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIBRARY_OUTPUT_PATH=/usr/lib \
-    -DCMAKE_BUILD_TYPE=Release
 
-  make || return 1
+    cmake \
+        -B _build \
+        -S "$srcdir"/osg \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D BUILD_OSG_PLUGINS_BY_DEFAULT=0 \
+        -D BUILD_OSG_PLUGIN_OSG=1 \
+        -D BUILD_OSG_PLUGIN_DDS=1 \
+        -D BUILD_OSG_PLUGIN_TGA=1 \
+        -D BUILD_OSG_PLUGIN_BMP=1 \
+        -D BUILD_OSG_PLUGIN_JPEG=1 \
+        -D BUILD_OSG_PLUGIN_PNG=1 \
+        -D BUILD_OSG_PLUGIN_FREETYPE=1 \
+        -D BUILD_OSG_DEPRECATED_SERIALIZERS=0 \
+        -D CMAKE_DISABLE_FIND_PACKAGE_DCMTK=1 \
+        -D CMAKE_DISABLE_FIND_PACKAGE_GDAL=1 \
+        -D CMAKE_DISABLE_FIND_PACKAGE_GTA=1 \
+        -D CMAKE_DISABLE_FIND_PACKAGE_Poppler-glib=1 \
+        -D CMAKE_DISABLE_FIND_PACKAGE_GStreamer=1 \
+        -D CMAKE_DISABLE_FIND_PACKAGE_SDL2=1 \
+        -D CMAKE_DISABLE_FIND_PACKAGE_SDL=1 \
+        -D CMAKE_DISABLE_FIND_PACKAGE_GtkGl=1 \
+        -D CMAKE_DISABLE_FIND_PACKAGE_FFmpeg=1 \
+        -Wno-dev
+
+    make -C _build
 }
 
 package(){
-  cd "${srcdir}/${_gitname}-build"
-  make DESTDIR="${pkgdir}/" install
-  install -D -m644 "${srcdir}/${_gitname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  [ -d "$pkgdir/usr/lib64" ] && mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" || true
+    make -C _build DESTDIR="${pkgdir}" install
+    install -Dm 644 $srcdir/osg/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
