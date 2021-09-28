@@ -1,6 +1,6 @@
 pkgbase = xdg-xmenu-git
 	pkgdesc = Small shell script to generate xdg desktop menu file for xmenu.
-	pkgver = r12.07a4193
+	pkgver = r21.3d19f4d
 	pkgrel = 1
 	url = https://github.com/OliverLew/xdg-xmenu
 	install = xdg-xmenu-git.install

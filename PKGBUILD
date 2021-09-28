@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Villavizar Trinidad <evillavizartrinidad@gmail.com>
 
 pkgname=xdg-xmenu-git
-pkgver=r12.07a4193
+pkgver=r21.3d19f4d
 pkgrel=1
 pkgdesc="Small shell script to generate xdg desktop menu file for xmenu."
 url="https://github.com/OliverLew/xdg-xmenu"
