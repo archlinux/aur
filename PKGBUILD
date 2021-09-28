@@ -1,6 +1,6 @@
 # Maintainer: Paul Stemmet <aur@luxolus.com>
 pkgname=consul-template-bin
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Template rendering, notifier, and supervisor for HashiCorp Consul and Vault data"
 arch=('x86_64' 'i686' 'aarch64')
@@ -16,9 +16,9 @@ source_x86_64=(${pkgname}-${pkgver}.zip::https://releases.hashicorp.com/consul-t
 source_i686=(${pkgname}-${pkgver}.zip::https://releases.hashicorp.com/consul-template/${pkgver}/consul-template_${pkgver}_linux_386.zip)
 source_aarch64=(${pkgname}-${pkgver}.zip::https://releases.hashicorp.com/consul-template/${pkgver}/consul-template_${pkgver}_linux_arm64.zip)
 sha256sums=(3e678bbc1818519df21741f41b9bc60fe13c1ae0f09b1b1f707e041130484268 6fb7f113a9c529bcbeaec00835d86e6c99502848766c4286e6bc48c7f8a0a347 91274ea60b8c8f8511427f9ff85a82d92c80755668bae11c2e3fd00dbf440a9c)
-sha256sums_x86_64=(0d319977885e0f44562cc5f78e225d8431499cc3a95cd1b3fe560df8556bf64a)
-sha256sums_i686=(3da343d29d7c4df3a92c8a639395cb74584a56b998632d066597078b0dd9cfc8)
-sha256sums_aarch64=(5442dd9ddbd83a1cf059a180681907d74ba7da9bde84c3264bdc7f975190329e)
+sha256sums_x86_64=(db340b7555105d004caf8fad10e1d53ee0bd2320572c4560387279e92490f807)
+sha256sums_i686=(0f2f1db2bac85a0ff7e0a3bc951b362f6bd97cf06d2fc0fecdba70a3881c1950)
+sha256sums_aarch64=(210ddabf1c02e0cc45ceaf0d0e0918a33704ea6c20fa9de8b5e3806e3dd35729)
 
 package() {
 

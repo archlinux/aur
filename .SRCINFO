@@ -1,6 +1,6 @@
 pkgbase = consul-template-bin
 	pkgdesc = Template rendering, notifier, and supervisor for HashiCorp Consul and Vault data
-	pkgver = 0.27.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://github.com/hashicorp/consul-template
 	changelog = CHANGELOG
@@ -20,11 +20,11 @@ pkgbase = consul-template-bin
 	sha256sums = 3e678bbc1818519df21741f41b9bc60fe13c1ae0f09b1b1f707e041130484268
 	sha256sums = 6fb7f113a9c529bcbeaec00835d86e6c99502848766c4286e6bc48c7f8a0a347
 	sha256sums = 91274ea60b8c8f8511427f9ff85a82d92c80755668bae11c2e3fd00dbf440a9c
-	source_x86_64 = consul-template-bin-0.27.0.zip::https://releases.hashicorp.com/consul-template/0.27.0/consul-template_0.27.0_linux_amd64.zip
-	sha256sums_x86_64 = 0d319977885e0f44562cc5f78e225d8431499cc3a95cd1b3fe560df8556bf64a
-	source_i686 = consul-template-bin-0.27.0.zip::https://releases.hashicorp.com/consul-template/0.27.0/consul-template_0.27.0_linux_386.zip
-	sha256sums_i686 = 3da343d29d7c4df3a92c8a639395cb74584a56b998632d066597078b0dd9cfc8
-	source_aarch64 = consul-template-bin-0.27.0.zip::https://releases.hashicorp.com/consul-template/0.27.0/consul-template_0.27.0_linux_arm64.zip
-	sha256sums_aarch64 = 5442dd9ddbd83a1cf059a180681907d74ba7da9bde84c3264bdc7f975190329e
+	source_x86_64 = consul-template-bin-0.27.1.zip::https://releases.hashicorp.com/consul-template/0.27.1/consul-template_0.27.1_linux_amd64.zip
+	sha256sums_x86_64 = db340b7555105d004caf8fad10e1d53ee0bd2320572c4560387279e92490f807
+	source_i686 = consul-template-bin-0.27.1.zip::https://releases.hashicorp.com/consul-template/0.27.1/consul-template_0.27.1_linux_386.zip
+	sha256sums_i686 = 0f2f1db2bac85a0ff7e0a3bc951b362f6bd97cf06d2fc0fecdba70a3881c1950
+	source_aarch64 = consul-template-bin-0.27.1.zip::https://releases.hashicorp.com/consul-template/0.27.1/consul-template_0.27.1_linux_arm64.zip
+	sha256sums_aarch64 = 210ddabf1c02e0cc45ceaf0d0e0918a33704ea6c20fa9de8b5e3806e3dd35729
 
 pkgname = consul-template-bin
