@@ -1,6 +1,6 @@
 pkgbase = randomgtk-git
 	pkgdesc = A randomization app for GNOME
-	pkgver = r65.ca3ed91
+	pkgver = r198.4f67b85
 	pkgrel = 1
 	url = https://codeberg.org/foreverxml/random
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = randomgtk-git
 	depends = glib2
 	depends = gtk4
 	depends = libadwaita
+	depends = gdk-pixbuf2
 	provides = randomgtk
 	conflicts = randomgtk
 	source = git+https://codeberg.org/foreverxml/random.git

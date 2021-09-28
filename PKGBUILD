@@ -2,13 +2,13 @@
 
 pkgname=randomgtk-git
 _pkgname=random
-pkgver=r65.ca3ed91
+pkgver=r198.4f67b85
 pkgrel=1
 pkgdesc="A randomization app for GNOME"
 arch=('x86_64')
 url="https://codeberg.org/foreverxml/random"
 license=('AGPL3')
-depends=('glib2' 'gtk4' 'libadwaita')
+depends=('glib2' 'gtk4' 'libadwaita' 'gdk-pixbuf2')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
