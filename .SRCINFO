@@ -1,12 +1,12 @@
 pkgbase = localbang
 	pkgdesc = Cross-platform, cross-browser, cross-search-engine duckduckgo-like bangs
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/jakob-kruse/localbang
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = localbang-0.3.2.tar.gz::https://static.crates.io/crates/localbang/localbang-0.3.2.crate
+	source = localbang-0.3.3.tar.gz::https://static.crates.io/crates/localbang/localbang-0.3.3.crate
 	sha256sums = 062ead8a2413571adb3658116b8b97425ad20c8d74ecfa2de108e768e94a1761
 
 pkgname = localbang

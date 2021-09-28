@@ -1,12 +1,12 @@
 # Maintainer: Jakob Kruse <contact@jakob-kruse.de>
 pkgname=localbang
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 license=("MIT")
 pkgdesc='Cross-platform, cross-browser, cross-search-engine duckduckgo-like bangs'
 url='https://github.com/jakob-kruse/localbang'
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('062ead8a2413571adb3658116b8b97425ad20c8d74ecfa2de108e768e94a1761')
+sha256sums=('d18e0fa2dc8a0488b28f9b4ec469277ca6c9daea33a6234b0c04bb0772277cf4')
 makedepends=(cargo)
 arch=('x86_64')
 build() {
