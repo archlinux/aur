@@ -1,13 +1,13 @@
 pkgbase = prosody-mod-register-apps
 	pkgdesc = Manage list of compatible client apps
-	pkgver = 2021.07.21
+	pkgver = 2021.09.08
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_register_apps.html
 	arch = any
 	license = MIT
 	makedepends = mercurial
 	depends = prosody
-	source = hg+https://hg.prosody.im/prosody-modules/#revision=635907a5d2c8
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=0b084f63fed0
 	sha1sums = SKIP
 
 pkgname = prosody-mod-register-apps
