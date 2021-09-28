@@ -1,8 +1,8 @@
 pkgbase = linux-system76-gaze16
 	pkgdesc = Oficial Arch Linux + system76 gaze16 touchpad and mic fix
-	pkgver = 5.14.7.arch1_gaze16
+	pkgver = 5.14.8.arch1_gaze16
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.14.7-arch1
+	url = https://github.com/archlinux/linux/commits/v5.14.8-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -14,13 +14,11 @@ pkgbase = linux-system76-gaze16
 	makedepends = tar
 	makedepends = xz
 	makedepends = xmlto
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.14.7-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.14.8-arch1
 	source = config
 	source = 0001-Add-System76-gaze16-audio-quirk.patch
 	source = 0002-pinctrl-Export-intel_pinctrl_probe.patch
@@ -50,6 +48,3 @@ pkgname = linux-system76-gaze16
 pkgname = linux-system76-gaze16-headers
 	pkgdesc = Oficial Arch Linux + system76 gaze16 touchpad and mic fix : headers and scripts for building modules
 	depends = pahole
-
-pkgname = linux-system76-gaze16-docs
-	pkgdesc = Oficial Arch Linux + system76 gaze16 touchpad and mic fix : documentation
