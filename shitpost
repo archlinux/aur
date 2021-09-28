@@ -65,7 +65,7 @@ base=${image_file##*/}
 
 # Create a temporary directory to hold the temporary files
 tmpdir=$(mktemp -d /tmp/shitpost.XXXXXX)
-trap 'rm -rf "$tmpdir"' EXIT SIGINT
+trap 'rm -rf "$tmpdir"' 0 1 2 3 6
 
 # Upscale the image if it's too shitty. This is required to make the text readable as it's generated to fit the pixels of the original
 convert -resize 1024x1024\< "$image_file" "$tmpdir"/shitpost-temp-resize.png

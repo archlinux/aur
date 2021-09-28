@@ -1,7 +1,7 @@
 # Maintainer: Baudouin Roullier <DISGUISE baudouin dot roullier at gmail dot com DISGUISE>
 # Originally by Mykal Anderson
 pkgname=('shitpost')
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="A tool to create memes using CLI"
 arch=('i686' 'x86_64')
