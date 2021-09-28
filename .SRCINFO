@@ -1,12 +1,13 @@
 pkgbase = python-node-semver
 	pkgdesc = python version of node-semver
 	pkgver = 0.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/podhmo/python-node-semver
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = https://github.com/podhmo/python-node-semver/archive/0.8.0.tar.gz
+	depends = python
+	source = python-node-semver.tar.gz::https://github.com/podhmo/python-node-semver/archive/0.8.0.tar.gz
 	sha512sums = ef6e7cac219a3170676d33af70b7f3d17798285ceea495345746489261987f0e41cfcd3d05ebc333477813404fd0b2028c037d71270fd01142d448bec672643b
 
 pkgname = python-node-semver
