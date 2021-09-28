@@ -3,15 +3,15 @@
 
 pkgname=python2-imutils
 _pkgname=imutils
-pkgver=0.4.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A series of convenience functions to make basic image processing asier with OpenCV"
 url="https://github.com/jrosebr1/imutils"
 depends=('python2' 'opencv')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/a0/cf/5f19a892b73c1992b83fbe747556984e68b2c04a3967ab52ef093d89f929/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('8ffda750ffbb0f250b7a893df1c2f5d7')
+source=("https://files.pythonhosted.org/packages/3f/d3/ecb4d108f6c1041d24842a345ee0123cd7f366ba75cf122601e856d42ba2/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('6769dc601bfea571d950b5f55ccb74f1')
 
 build() {
     cd $srcdir/${_pkgname}-${pkgver}
