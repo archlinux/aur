@@ -1,0 +1,13 @@
+pkgbase = i3bard-git
+	pkgdesc = async i3blocks clone that can synchronize multiple instances
+	pkgver = r16.1b9dfb4
+	pkgrel = 1
+	url = https://gitlab.com/chrooti/i3bard
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = i3bard::git+https://gitlab.com/chrooti/i3bard.git
+	sha256sums = SKIP
+
+pkgname = i3bard-git
