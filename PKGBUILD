@@ -6,7 +6,7 @@ pkgver=1.3.1.r64.g28bdc14
 pkgrel=1
 pkgdesc="Management utility to handle GPU switching for Optimus laptops (Git version)"
 arch=('any')
-url="https://github.com/mmdmine/optimus-manager"
+url="https://github.com/minusium/optimus-manager"
 license=('MIT')
 conflicts=("optimus-manager" "optimus-manager-git")
 provides=("optimus-manager=$pkgver")
@@ -27,7 +27,7 @@ backup=('etc/optimus-manager/xorg-integrated-gpu.conf'
         'etc/optimus-manager/nvidia-disable.sh'
 
         'var/lib/optimus-manager/persistent/startup_mode')
-source=("git+https://github.com/mmdmine/optimus-manager.git")
+source=("git+https://github.com/minusium/optimus-manager.git")
 sha256sums=('SKIP')
 
 pkgver() {
