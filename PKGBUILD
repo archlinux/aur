@@ -1,6 +1,6 @@
 # Maintainer: Brenek Harrison <brenekharrison @ gmail d0t com>
 pkgname=encodarr-controller
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Server software for encoding media files to a user-defined format."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MPL2")
 depends=("glibc" "mediainfo")
 makedepends=("go")
 source=("encodarr-$pkgver.tar.gz"::"https://github.com/BrenekH/encodarr/archive/$pkgver.tar.gz")
-sha256sums=('5342452554f0a0915ad19dc4dff2ac8ef28573bc655c8be2119a87efc3ff66ee')
+sha256sums=('d700d3d172310f2cb72e999eda03b370d2960ba935727c0838f791a6e27f949f')
 
 build() {
 	cd "encodarr-$pkgver/controller"
