@@ -4,27 +4,28 @@
 # Contributor: Ilkka Laukkanen <ilkka.s.laukkanen@gmail.com>
 
 pkgname=stgit
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Pushing/popping patches to/from a stack on top of Git, similar to Quilt"
 url="https://stacked-git.github.io/"
 arch=('any')
 license=('GPL2')
 depends=('python' 'git')
-makedepends=('xmlto' 'asciidoc')
+makedepends=('xmlto' 'asciidoc' 'python-setuptools')
 source=(
   "https://github.com/stacked-git/stgit/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('fc9674943c8e5534122ad96646078b4f07b7b69fc202b57eaa9b430ee13f0d9b')
+sha256sums=('44819a9809dba10ee9664f59f43fd40e5a338c99cb1181667b0a1e6428157e2b')
 
 build() {
   cd "${pkgname}-${pkgver}"
+  make build
   make doc
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --prefix=/usr
+  make prefix=/usr DESTDIR="${pkgdir}" install
 
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
@@ -34,9 +35,7 @@ package() {
   ln -s "/usr/share/stgit/completion/stgit.zsh" "${pkgdir}/usr/share/zsh/site-functions/_stg"
   ln -s "/usr/share/stgit/completion/stg.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/stg.fish"
 
-  for manpage in ./Documentation/*.1; do
-    install -D -m644 "${manpage}" "${pkgdir}/usr/share/man/man1/$(basename $manpage)"
-  done
+  make prefix=/usr DESTDIR="${pkgdir}" install-doc
 
   install -d "${pkgdir}/usr/share/emacs/site-lisp"
   install -D -m644 ./contrib/stgit.el "${pkgdir}/usr/share/emacs/site-lisp"
