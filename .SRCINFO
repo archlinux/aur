@@ -1,7 +1,7 @@
 pkgbase = apache-arrow
 	pkgdesc = Language-independent columnar memory format for flat and hierarchical data
 	pkgver = 5.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://arrow.apache.org/
 	arch = x86_64
 	license = Apache
@@ -36,6 +36,7 @@ pkgname = apache-arrow
 
 pkgname = python-apache-arrow
 	pkgdesc = Language-independent columnar memory format for flat and hierarchical data (Python interface)
-	depends = python
 	depends = arrow
+	depends = python
+	depends = python-numpy
 	provides = python-pyarrow
