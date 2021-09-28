@@ -3,6 +3,7 @@ Description=Powertop tunings
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 ExecStart=/usr/bin/powertop --auto-tune
 
 [Install]
