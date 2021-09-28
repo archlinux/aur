@@ -2,7 +2,7 @@
 
 _gemname=rubocop-ast
 pkgname=ruby-${_gemname}
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="RuboCop's AST extensions and NodePattern functionality"
 arch=(any)
@@ -13,7 +13,7 @@ url=https://github.com/rubocop/rubocop-ast
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/rubocop/${_gemname}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('afc5bcf386cbdbc81202ed92d88fa4f8bab2f03cfe8df92c6568798b51e51bac')
+sha256sums=('c5fc82bb5977762419e7235fbc15a2172ac964604605ee6b5ce09e27116d2d53')
 
 prepare() {
   cd $_gemname-$pkgver
