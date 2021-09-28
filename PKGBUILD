@@ -1,7 +1,7 @@
 # Maintainer: Andreas Bolka <a AT bolka DOT at>
 
 pkgname=visidata-git
-pkgver=2.1.g9c83fe4a
+pkgver=2.6.g666e3032
 pkgrel=1
 pkgdesc='A console spreadsheet tool for discovering and arranging data'
 arch=('any')
@@ -44,4 +44,6 @@ package() {
   cd "$srcdir/$pkgname"
   python setup.py -q install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE.gpl3 "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
+  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/${pkgname%-*}/CHANGELOG.md"
+  cp -R docs/* "$pkgdir/usr/share/doc/${pkgname%-*}/"
 }
