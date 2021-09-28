@@ -1,6 +1,6 @@
 pkgbase = curl-http3
 	pkgdesc = An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3
-	pkgver = 7.76.1
+	pkgver = 7.79.1
 	pkgrel = 1
 	url = https://curl.haxx.se
 	arch = x86_64
@@ -16,11 +16,10 @@ pkgbase = curl-http3
 	depends = libnghttp2
 	depends = libidn2
 	depends = libidn2.so
-	source = https://curl.haxx.se/download/curl-7.76.1.tar.gz
-	source = https://curl.haxx.se/download/curl-7.76.1.tar.gz.asc
+	source = https://curl.haxx.se/download/curl-7.79.1.tar.gz
+	source = https://curl.haxx.se/download/curl-7.79.1.tar.gz.asc
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
-	sha512sums = 43edacadbb823eb43008dd7d3b3851097cc40bc06ed6c701d7af2605a461ec556a9a15d1d71a8703cb2e0180aa3183995a67a072f4043ecc3a3972f25619722b
+	sha512sums = 0f9546285bef741f69d25f20bcd5b961d29fc88084d9f3ebe0c66a6674f4c69a531b41f8e3cc57474f528abdd90aa7981e653c339c5e8383353c36a82efaafc4
 	sha512sums = SKIP
 
 pkgname = curl-http3
-
