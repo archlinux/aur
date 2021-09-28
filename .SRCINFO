@@ -1,6 +1,6 @@
 pkgbase = ndless-sdk-git
 	pkgdesc = SDK for programs targeting Ndless on the TI-Nspire
-	pkgver = r503.79d2aa6
+	pkgver = r528.6d6fcd2
 	pkgrel = 1
 	url = https://github.com/ndless-nspire/Ndless
 	install = ndless-sdk-git.install
