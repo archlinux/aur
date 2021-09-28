@@ -1,0 +1,15 @@
+pkgbase = ksuid
+	pkgdesc = K-Sortable Globally Unique IDs
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/segmentio/ksuid
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = ksuid-1.0.4.tar.gz::https://github.com/segmentio/ksuid/archive/v1.0.4.tar.gz
+	sha512sums = 6b1ad1020ca44fb8d22792641368329c06a16c8a5bca2204a78aaa9c07af8df00e43bdc05a407d0eeec9c53f1b3245e9cb3314fba0a1cd7bfbf423b86aa7e66a
+	b2sums = 0963023910a3a47e007b40d3755a1ca3512821f381cd138d50e24543cb6182380eb0b589c7592205e473b4f06efa660fca7d82917b5e429de0970325bae6aad3
+
+pkgname = ksuid
