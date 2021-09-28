@@ -1,6 +1,6 @@
 pkgbase = nxprayer
 	pkgdesc = Time of the next Islamic prayer for your status bar or scripts.
-	pkgver = .r55.6af6d92
+	pkgver = 0.1.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AbdeltwabMF/nxprayer.git

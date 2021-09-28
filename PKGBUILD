@@ -1,7 +1,7 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=nxprayer
-pkgver=.r55.6af6d92
+pkgver=0.1.1
 pkgrel=1
 epoch=1
 pkgdesc="Time of the next Islamic prayer for your status bar or scripts."
@@ -27,10 +27,8 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s.%s" \
-			"$(awk '/^VERSION =/ {print $3}' config.mk)" \
-			"$(git rev-list --count HEAD)" \
-			"$(git rev-parse --short HEAD)"
+    printf "%s-%s" \
+			"$(awk '/^VERSION =/ {print $3}' config.mk)" "$(git rev-list --count HEAD)"
 }
 
 build() {
@@ -41,7 +39,6 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DESTDIR="$pkgdir" install
-
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
