@@ -31,6 +31,7 @@ _mq_deadline_disable=y
 
 ### Disable Kyber I/O scheduler
 _kyber_disable=y
+
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 _lru_enable=y
@@ -52,6 +53,15 @@ _use_auto_optimization=y
 
 ## Apply Kernel Optimization selecting
 _use_optimization_select=
+
+### Use LLVM with FULL-LTO
+_use_llvm_lto=
+
+## Enable CFI (booting seems to be broken at nvidia based systems)
+_use_cfi=
+
+## Enable PGO (patch is failing when cfi is also used)
+_use_pgo=
 
 
 # Only compile active modules to VASTLY reduce the number of modules built and
@@ -75,7 +85,7 @@ pkgbase=linux-cacule
 pkgname=('linux-cacule' 'linux-cacule-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.8
-pkgrel=2
+pkgrel=3
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -92,11 +102,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
 #        "${_patchsource}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/arch-patches-v8/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14.patch"
-        "${_patchsource}/misc/0004-folio-mm.patch"
-        "${_patchsource}/misc/amd/0011-amd-ptdma.patch"
+#        "${_patchsource}/misc/0004-folio-mm.patch"
+#        "${_patchsource}/misc/amd/0011-amd-ptdma.patch"
         "${_patchsource}/misc/amd/0006-amd-cppc.patch"
-        "${_patchsource}/misc/0007-string.patch"
-        "${_patchsource}/0001-Allow-polling-rate-to-be-set-for-all-usb-devices.patch"
+#        "${_patchsource}/misc/0007-string.patch"
+#        "${_patchsource}/0001-Allow-polling-rate-to-be-set-for-all-usb-devices.patch"
         "${_patchsource}/misc/zen-tweaks-cacule.patch"
         "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${_patchsource}/ll-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
@@ -107,12 +117,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
         "${_patchsource}/btrfs-patches-v4/0001-btrfs-patches.patch"
-        "${_patchsource}/fixes-miscellaneous-v4/0001-fixes-miscellaneous.patch"
+        "${_patchsource}/fixes-miscellaneous-v5/0001-fixes-miscellaneous.patch"
         "${_patchsource}/futex-zen-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
-  #      "${_patchsource}/lru-zen-patches-v3/0001-lru-zen-patches.patch"
-        "${_patchsource}/le9-patches-v4/0001-mm-vmscan-add-sysctl-knobs-for-protecting-the-workin.patch"
+        "${_patchsource}/lru-zen-patches-v3/0001-lru-zen-patches.patch"
+#        "${_patchsource}/le9-patches-v4/0001-mm-vmscan-add-sysctl-knobs-for-protecting-the-workin.patch"
 #        "${_patchsource}/misc/le9fa-5.14.patch"
         "${_patchsource}/pf-patches-v6/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
@@ -126,8 +136,25 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/0001-ksm.patch"
 	      "auto-cpu-optimization.sh"
         )
-BUILD_FLAGS=(
-            )
+
+  if [ -n "$_use_cfi" ]; then
+source+=("${_patchsource}/0002-clang-cfi.patch")
+  fi
+
+  if [ -n "$_use_pgo" ]; then
+source+=("${_patchsource}/0001-PGO.patch")
+  fi
+
+  if [ -n "$_use_llvm_lto" ]; then
+
+  BUILD_FLAGS=(
+  LLVM=1
+  LLVM_IAS=1
+  CC=clang
+  CXX=clang++
+
+                )
+  fi
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -158,9 +185,20 @@ prepare() {
           echo "Setting config..."
           cp ../config .config
 
+          if [ -n "$_use_cfi" ]; then
+            scripts/config --enable CONFIG_ARCH_SUPPORTS_CFI_CLANG
+            scripts/config --enable CONFIG_CFI_CLANG
+          fi
+
+          if [ -n "$_use_pgo" ]; then
+            scripts/config --enable CONFIG_ARCH_SUPPORTS_PGO_CLANG
+            scripts/config --enable DEBUG_FS
+            scripts/config --enable CONFIG_PGO_CLANG
+          fi
+
       ### Microarchitecture Optimization (GCC/CLANG)
             if [ -n "$_use_auto_optimization" ]; then
-              sh "${srcdir}"/auto-cpu-optimization.sh
+               "${srcdir}"/auto-cpu-optimization.sh
             fi
             if [ -n "$_use_optimization_select" ]; then
               source "${startdir}"/configure
@@ -182,7 +220,7 @@ prepare() {
               scripts/config --set-val CONFIG_HZ 1000
             fi
 
-            ### Optionally set tickrate to 760HZ
+            ### Optionally set tickrate to 750HZ
           if [ -n "$_750_HZ_ticks" ]; then
             echo "Setting tick rate to 750HZ..."
             scripts/config --disable CONFIG_HZ_300
@@ -354,8 +392,11 @@ prepare() {
               scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
               scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
               scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
+              ###   miscellaneous   ###
               scripts/config --enable CONFIG_ZEN_INTERACTIVE
               scripts/config --enable CONFIG_x86_AMD_PSTATE
+              scripts/config --enable CONFIG_LTO_NONE
+
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
     if [ -n "$_use_current" ]; then
@@ -523,14 +564,10 @@ package_linux-cacule-headers() {
 }
 
 md5sums=('ce6434b646ade20e292fb28c1aacde58'
-         '466239b4e940330f7d225a177916c0cb'
+         'c1d4b49a8699d4d527704758130d4f9b'
          'ef749be7f2048456ae738f93229bf354'
          '40a9380b2884f5d417791f06389ba57e'
-         'a804260e2f301ffe2a17d6e3625a9711'
-         'e2a4af58b9d784226792fdc71d2cabba'
          '430972ae1e936f99d8dc2a1f4fdaf774'
-         'd6e5581b4fade267a28deb8e73d236f5'
-         '2e2baa635eda7d6a66b5f7437c055a37'
          '9d7612159f8745044254077ce8a76df6'
          'f8e172e9ea554bbb1053eb122c3ace35'
          'af7328eb8c72c754e5bc8c7be1ca2f1c'
@@ -539,11 +576,11 @@ md5sums=('ce6434b646ade20e292fb28c1aacde58'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
          'da72ef09deade4f800510e470eaf2f77'
-         '6df5d4daa7aeb0fc5340a1bf42757096'
+         'c5a1e8c50dd049b2f1b44d43d6754235'
          '0849b25513dc47e3defa00f26f60eedb'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '366c90b64f9582c0733b8fb607a07594'
-         '623d8c6b2131a0bb9f2953b798c09bb5'
+         'd24fd0f81fbeed243b1b71fde7659548'
          'ccfbfe2efd7e51dbd67581a7d892230f'
          '28864f14bf33bad92e57bc48bc5c2c78'
          '381bc4f0ff885e9b67e5899476a30416'
