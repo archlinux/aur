@@ -1,0 +1,13 @@
+pkgbase = python-pyclip
+	pkgdesc = Cross-platform clipboard utilities supporting both binary and text data
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://pypi.org/project/${_pkgname}/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = pyclip-0.5.4.tar.gz::https://github.com/spyoungtech/pyclip/archive/refs/tags/v0.5.4.tar.gz
+	sha256sums = 18771cf7a98e076817fcbb87ba8e56767d23df8a42a7eee9dde4866a98f49890
+
+pkgname = python-pyclip
