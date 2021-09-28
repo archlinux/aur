@@ -2,7 +2,7 @@
 
 _appname=polkadot
 pkgname=${_appname}-bin
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="Binary builds of the Polkadot Node Implementation"
 arch=('x86_64')
@@ -19,8 +19,8 @@ source=(
 )
 
 sha256sums=(
-  "faf12992aa860e725ba7b9e06bb4d09a440b1ab1befbfc00a7cd4e81a2f76ac5"
-  "84e5644fcb60adc9f5ef6d6687f670347413dd265a11f736c58acaace6d878c4"
+  "0d576f4f216e46e9915fe0d829460e551c9d78fc85bedf2db9a3c09d41ecd0fa"
+  "d77ee806763b9f074d35d80bff90f612eee1d5223263c55e3fc75f2b61cd6142"
 )
 
 package(){
