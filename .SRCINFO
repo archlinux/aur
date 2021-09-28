@@ -1,7 +1,7 @@
 pkgbase = gnome-pass-search-provider-git
-	pkgdesc = Gnome Shell search provider for zx2c4/pass (passwordstore.org) that sends passwords to clipboard (or GPaste)
+	pkgdesc = Gnome Shell search provider for zx2c4/pass (passwordstore.org) and Bitwarden/Vaultwarden that sends passwords to clipboard (or GPaste)
 	pkgver = r9.bed2f59
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jle64/gnome-pass-search-provider
 	arch = any
 	license = GPL
@@ -17,4 +17,3 @@ pkgbase = gnome-pass-search-provider-git
 	md5sums = SKIP
 
 pkgname = gnome-pass-search-provider-git
-
