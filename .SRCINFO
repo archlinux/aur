@@ -35,6 +35,7 @@ pkgbase = gcc6-multilib
 	conflicts = gcc63-multilib
 	options = !emptydirs
 	options = !strip
+	options = !buildflags
 	source = http://www.netgull.com/gcc/releases/gcc-6.5.0/gcc-6.5.0.tar.xz
 	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.18.tar.bz2
 	source = libsanitizer.patch
@@ -53,4 +54,3 @@ pkgbase = gcc6-multilib
 	sha512sums = d35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23
 
 pkgname = gcc6-multilib
-

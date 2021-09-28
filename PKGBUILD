@@ -56,7 +56,7 @@ checkdepends=('dejagnu' 'inetutils')
 provides=("gcc${_pkgver%%.*}=${_pkgver}.${_pkgver2}") # no version as it is completely contained in the name
 conflicts=("gcc${_pkgver%%.*}")
 conflicts+=('gcc63-multilib') # temporary
-options=('!emptydirs' '!strip')
+options=('!emptydirs' '!strip' '!buildflags')
 source=(
   #"git+https://gcc.gnu.org/git/gcc.git#commit=${_commit}"
   #"gcc-${pkgver%%_*}.tgz::https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz"
@@ -180,9 +180,6 @@ prepare() {
     false
   fi
 
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
-
   # Arch uses python version 3 as default python (for gcc6-gcj).
   sed -e '1s+python+python2+' -i 'libjava/contrib/aot-compile.in'
 
@@ -221,56 +218,45 @@ build() {
       _languages+=',fortran,go,lto,objc,obj-c++'
     fi
 
-    # using -pipe causes spurious test-suite failures
-    # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-    CFLAGS="${CFLAGS/-pipe/}"
-    CXXFLAGS="${CXXFLAGS/-pipe/}"
-
-    # Flags from new compilers that old compilers don't recognize
-    CFLAGS="${CFLAGS/-fno-plt/}"
-    CXXFLAGS="${CXXFLAGS/-fno-plt/}"
-
-    CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
-    CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
-
-    ../configure "${_cfgopts[@]}" \
-      --build="${CHOST}" \
-      --disable-libstdcxx-pch \
-      --disable-libunwind-exceptions \
-      --enable-multilib \
-      --disable-werror \
-      --enable-__cxa_atexit \
-      --enable-checking='release' \
-      --enable-clocale='gnu' \
-      --enable-gnu-indirect-function \
-      --enable-gnu-unique-object \
-      --enable-install-libiberty \
-      --enable-languages="c,c++${_languages}" \
-      --enable-libmpx \
-      --enable-linker-build-id \
-      --enable-lto \
-      --enable-plugin \
-      --enable-shared \
-      --enable-threads='posix' \
-      --enable-version-specific-runtime-libs \
-      --infodir='/usr/share/info' \
-      --libdir='/usr/lib' \
-      --libexecdir='/usr/lib' \
-      --mandir='/usr/share/man' \
-      --program-suffix="-${_pkgver%%.*}" \
-      --with-bugurl='https://aur.archlinux.org/packages/gcc63-multilib/' \
-      --with-isl \
-      --with-linker-hash-style='gnu' \
-      --with-pkgversion='Arch' \
-      --with-system-zlib \
-      --with-tune='generic' \
+    local _conf=(
+      --build="${CHOST}"
+      --disable-libstdcxx-pch
+      --disable-libunwind-exceptions
+      --enable-multilib
+      --disable-werror
+      --enable-__cxa_atexit
+      --enable-checking='release'
+      --enable-clocale='gnu'
+      --enable-gnu-indirect-function
+      --enable-gnu-unique-object
+      --enable-install-libiberty
+      --enable-languages="c,c++${_languages}"
+      --enable-libmpx
+      --enable-linker-build-id
+      --enable-lto
+      --enable-plugin
+      --enable-shared
+      --enable-threads='posix'
+      --enable-version-specific-runtime-libs
+      --infodir='/usr/share/info'
+      --libdir='/usr/lib'
+      --libexecdir='/usr/lib'
+      --mandir='/usr/share/man'
+      --program-suffix="-${_pkgver%%.*}"
+      --with-bugurl='https://aur.archlinux.org/packages/gcc63-multilib/'
+      --with-isl
+      --with-linker-hash-style='gnu'
+      --with-pkgversion='Arch'
+      --with-system-zlib
+      --with-tune='generic'
       --prefix='/usr'
-#      CXX='g++-4.9' CC='gcc-4.9'
+      #CXX='g++-4.9' CC='gcc-4.9'
+    )
+    ../configure "${_cfgopts[@]}" "${_conf[@]}"
   fi
 
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  nice make -j "${_nproc}"
+  nice make -s
 
   set +u; msg 'Compile complete'; set -u
 
