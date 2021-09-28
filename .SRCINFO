@@ -1,0 +1,27 @@
+pkgbase = mkuki
+	pkgdesc = Build and sign a Unified Kernel Image
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Foxite/mkuki
+	changelog = CHANGELOG
+	arch = any
+	license = MIT
+	makedepends = perl
+	depends = binutils
+	depends = sed
+	depends = awk
+	depends = coreutils
+	depends = util-linux
+	optdepends = sbsigntools: for signing EFI images
+	source = mkuki-0.1.0.tar.gz::https://github.com/Foxite/mkuki/releases/download/v0.1.0/v0.1.0.tar.gz
+	source = mkuki-0.1.0.tar.gz.gpg::https://github.com/Foxite/mkuki/releases/download/v0.1.0/v0.1.0.tar.gz.gpg
+	source = LICENSE
+	validpgpkeys = EE05738A0F76012F5CF673DF60BD929EFA66E01F
+	md5sums = 2288302db03e8f002c7e31d53cd5b3ec
+	md5sums = cc4df7bd56fefab2125a56e1a75cfedf
+	md5sums = e4c03e95973ad812543b74a795f7aa7c
+	sha256sums = 719046c211b653b1d2597f6c9aa362ca2a2b191a1efa3ddf4f26d3e0f00d6daf
+	sha256sums = 5a0229f250a31029a1c8193baf05e13cd1e00cd5c20d29b629d3b6153b48b2b3
+	sha256sums = 69b5a05de839b9b2d2fe796dcdc4867a5dd6f9a459317b61df8b05160a86fb72
+
+pkgname = mkuki
