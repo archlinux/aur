@@ -6,7 +6,7 @@ _pkgvariant=nosystemd
 pkgname="${_pkgname}-${_pkgvariant}-git"
 _pkgver=latest
 pkgver=0.8.3.33.r261.d20210622.e16ffb1
-pkgrel=3
+pkgrel=4
 pkgdesc="sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++. This package is without systemd dependencies; it will have it's own static libsystemd baked in."
 url="https://github.com/Kistler-Group/sdbus-cpp"
 arch=('i686' 'x86_64')
@@ -19,6 +19,8 @@ makedepends=(
   'cmake'
   'doxygen'
   'git'
+  'gperf'
+  'meson'
 )
 provides=(
   "${_pkgname}=${pkgver}"
