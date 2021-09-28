@@ -10,7 +10,6 @@ arch=('x86_64')
 url='https://github.com/libtcod/python-tcod'
 license=('BSD')
 depends=(
-	'libtcod'
 	'python-cffi'
 	'python-numpy>=1.20.3'
 	'python-typing_extensions')

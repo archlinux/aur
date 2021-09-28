@@ -11,7 +11,6 @@ pkgbase = python-tcod
 	makedepends = python-pycparser>=2.14
 	makedepends = python-sphinx
 	makedepends = sdl2>=2.0.5
-	depends = libtcod
 	depends = python-cffi
 	depends = python-numpy>=1.20.3
 	depends = python-typing_extensions
