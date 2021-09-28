@@ -4,7 +4,7 @@
 
 pkgname=python-google-cloud-speech
 _name=google-cloud-speech
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='A google cloud speech api for python to convert audio to text.'
 url='https://github.com/googleapis/python-speech'
@@ -23,7 +23,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('b6b88b9601b38a2abe128c387776ef5e11af590a8e2cf5b10ddb267392accc869cf53b02716ad6bb09777a2bfeaadb8ee58b2e8a62d89002cfa2a52794008185')
+b2sums=('dd0c34ade50291832de1812f89b2ce42a33826693ca01f835450f47f1a5a1808adb4cc11c2cd7c46b4ceafd9d746747c3fdc78226eaabf44beabbdb1fcae7e89')
 
 build() {
   cd "$_name-$pkgver" || exit
