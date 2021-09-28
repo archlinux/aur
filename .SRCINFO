@@ -1,6 +1,6 @@
 pkgbase = prjtrellis-nightly
 	pkgdesc = Documenting the Lattice ECP5 bit-stream format.
-	pkgver = 1.0_532_g03e0070_20210927
+	pkgver = 1.0_532_g03e0070_20210928
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/prjtrellis
