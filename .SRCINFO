@@ -13,6 +13,8 @@ pkgbase = gcc5
 	depends = binutils
 	depends = libmpc
 	options = !emptydirs
+	options = !strip
+	options = !buildflags
 	source = http://gcc.gnu.org/pub/gcc/releases/gcc-5.5.0/gcc-5.5.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
 	source = glibc2.28-ustat.patch
@@ -27,4 +29,3 @@ pkgbase = gcc5
 	sha256sums = 95d619636a2bae64acc01fdbe18ad61b4b0483217ee00eac372f0b0bec073f32
 
 pkgname = gcc5
-

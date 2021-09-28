@@ -16,7 +16,7 @@ arch+=('i686')
 url='https://gcc.gnu.org/gcc-5/'
 license=('GPL' 'LGPL' 'FDL' 'custom')
 depends=('glibc' 'binutils' 'libmpc')
-options=('!emptydirs')
+options=('!emptydirs' '!strip' '!buildflags')
 source=(
   "http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
@@ -32,8 +32,6 @@ sha256sums=('530cea139d82fe542b358961130c69cfde8b3d14556370b65823d2f91f0ced87'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             '335839750f0cf15ce0f6099673daf164db674c6442b00efcbc46c4f195cfa29d'
             '95d619636a2bae64acc01fdbe18ad61b4b0483217ee00eac372f0b0bec073f32')
-
-PKGEXT='.pkg.tar.gz'
 
   _basedir="gcc-${pkgver}"
 
@@ -63,9 +61,6 @@ prepare() {
 
   echo "${pkgver}" > 'gcc/BASE-VER'
 
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
-
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
 
@@ -77,61 +72,49 @@ build() {
   cd "${_basedir}/gcc-build"
 
   if [ ! -s 'Makefile' ]; then
-    # using -pipe causes spurious test-suite failures
-    # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-    CFLAGS="${CFLAGS/-pipe/}"
-    CXXFLAGS="${CXXFLAGS/-pipe/}"
-
-    # Flags from new compilers that old compilers don't recognize
-    CFLAGS="${CFLAGS/-fno-plt/}"
-    CXXFLAGS="${CXXFLAGS/-fno-plt/}"
-
-    CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
-    CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
-
-    #CXXFLAGS+=" -std=c++14" # CXXFLAGS is ignored by later stages, can't put into CPPFLAGS which works in all stages. Used below.
-    CPPFLAGS+=" -O2 -Wno-implicit-fallthrough -Wno-expansion-to-defined -Wno-unused-result -Wno-cast-function-type -Wno-switch"
-
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
-    ../configure \
-      --build="${CHOST}" \
-      --disable-libssp \
-      --disable-libstdcxx-pch \
-      --disable-libunwind-exceptions \
-      --disable-multilib \
-      --disable-werror \
-      --enable-__cxa_atexit \
-      --enable-checking='release' \
-      --enable-clocale='gnu' \
-      --with-isl \
-      --enable-gnu-indirect-function \
-      --enable-gnu-unique-object \
-      --enable-languages='c,c++,fortran,lto' \
-      --enable-libmpx \
-      --enable-linker-build-id \
-      --enable-lto \
-      --enable-plugin \
-      --enable-shared \
-      --enable-threads='posix' \
-      --enable-version-specific-runtime-libs \
-      --infodir='/usr/share/info' \
-      --libdir='/usr/lib' \
-      --libexecdir='/usr/lib' \
-      --mandir='/usr/share/man' \
-      --program-suffix="-${_pkgver}" \
-      --with-bugurl='https://bugs.archlinux.org/' \
-      --with-linker-hash-style='gnu' \
-      --with-system-zlib \
-      --prefix='/usr' \
-      CXX='g++ -std=c++14'
-#      CXX='g++-6.3' CC='gcc-6.3'
+    local _conf=(
+      --build="${CHOST}"
+      --disable-libssp
+      --disable-libstdcxx-pch
+      --disable-libunwind-exceptions
+      --disable-multilib
+      --disable-werror
+      --enable-__cxa_atexit
+      --enable-checking='release'
+      --enable-clocale='gnu'
+      --with-isl
+      --enable-gnu-indirect-function
+      --enable-gnu-unique-object
+      --enable-languages='c,c++,fortran,lto'
+      --enable-libmpx
+      --enable-linker-build-id
+      --enable-lto
+      --enable-plugin
+      --enable-shared
+      --enable-threads='posix'
+      --enable-version-specific-runtime-libs
+      --infodir='/usr/share/info'
+      --libdir='/usr/lib'
+      --libexecdir='/usr/lib'
+      --mandir='/usr/share/man'
+      --program-suffix="-${_pkgver}"
+      --with-bugurl='https://bugs.archlinux.org/'
+      --with-linker-hash-style='gnu'
+      --with-system-zlib
+      --prefix='/usr'
+      #CXX='g++ -std=c++14'
+      #CXX='g++-6.3' CC='gcc-6.3'
+    )
+    ../configure "${_conf[@]}"
+
+    sed -e 's/^STAGE1_CXXFLAGS.*$/& -std=gnu++11/' -i 'Makefile'
   fi
 
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   # without LD_PRELOAD, the build fails for some people with:
   #    [Makefile:605: libstdc++.la] Error 139
   LD_PRELOAD='/usr/lib/libstdc++.so' \
-  nice make -s -j "${_nproc}"
+  nice make -s
   set +u
 }
 
