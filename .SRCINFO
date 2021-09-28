@@ -7,6 +7,6 @@ pkgbase = localbang
 	license = MIT
 	makedepends = cargo
 	source = localbang-0.3.2.tar.gz::https://static.crates.io/crates/localbang/localbang-0.3.2.crate
-	sha256sums = 649bcaaaac5de72e8bf44cbb283afcf1d840dec7a75d8eb2ea7837bb3bc2e25a
+	sha256sums = 062ead8a2413571adb3658116b8b97425ad20c8d74ecfa2de108e768e94a1761
 
 pkgname = localbang

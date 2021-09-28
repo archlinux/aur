@@ -6,7 +6,7 @@ license=("MIT")
 pkgdesc='Cross-platform, cross-browser, cross-search-engine duckduckgo-like bangs'
 url='https://github.com/jakob-kruse/localbang'
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('649bcaaaac5de72e8bf44cbb283afcf1d840dec7a75d8eb2ea7837bb3bc2e25a')
+sha256sums=('062ead8a2413571adb3658116b8b97425ad20c8d74ecfa2de108e768e94a1761')
 makedepends=(cargo)
 arch=('x86_64')
 build() {
