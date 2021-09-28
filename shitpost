@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# SHITPOST
+# Takes an image and adds some shitty text to it
+
 # someone on /r/linuxmasterrace asked what image programs were good for shitposts
 # it got me thinking that there should be a cli command just for that
 # days later (I'm still pretty noob)...
@@ -8,9 +11,6 @@
 # Patched by Declan Hoare 2016-12-02:     use PNG instead of GIF for temp files to preserve quality
 # Modified by coolreader18 2021-03-01:    fix some bugs and use a directory under /tmp for temporary files
 # Modified by Magnus Anderson 2021-09-21: clean up the code
-
-# SHITPOST
-# Takes an image and adds some shitty text to it
 
 #   DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 #            Version 2, December 2004
@@ -59,14 +59,9 @@ done
 shift $((OPTIND-1))
 [[ ! -z "$@" ]] && printf "Invalid argument(s): \"$@\"\nIgnored, continuing...\n"
 
-# Get some info on the file path etc
-path=${image_file%/*} 
-base=${image_file##*/}
-fext=${base##*.}
-pref=${base%.*}
-
 # Set the output file to shitpost-INPUT_FILE if none was given
-[[ -z "$output_file" ]] && output_file="shitpost-$pref.$fext"
+base=${image_file##*/}
+[[ -z "$output_file" ]] && output_file="shitpost-$base"
 
 # Create a temporary directory to hold the temporary files
 tmpdir=$(mktemp -d)
