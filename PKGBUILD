@@ -1,7 +1,8 @@
 # Maintainer: Terin Stock <terinjokes@gmail.com>
 
 pkgname=gojq
-pkgver=0.12.1
+pkgver=0.12.5
+_pkgrev=727b4b5
 pkgrel=1
 pkgdesc='Pure go implementation of jq'
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/itchyny/gojq/archive/v${pkgver}.tar.gz")
-sha256sums=('174681da4c54edde43c25c745f1a9d7d13864149af67a9f0773945e8485b1532')
+sha256sums=('69616c38cc9bcdef06d32692e1cc1f330980c523fc777b07a851a52b51fffdac')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
@@ -23,8 +24,8 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-  go build -o build ./cmd/gojq
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build -ldflags="-X github.com/itchyny/gojq/cli.revision=${_pkgrev}" ./cmd/gojq
 }
 
 check() {
