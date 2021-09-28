@@ -25,9 +25,6 @@
 usage() {
 	printf "Usage: shitpost [-t top -b bottom -o outfile] [-f] /path/to/file\n\t-f\tPath to image file (-f is implied)\n\t-t\tTop Text\n\t-b\tBottom Text\n\t-o\tOutput file name\n"
 }
-args() {
-
-}
 # Check if imagemagick (just convert checked, but others used) is installed and exit if missing
 command -v convert >/dev/null 2>&1 || { echo >&2 "I require ImageMagick but it's not installed.  Aborting."; exit 1; }
 
@@ -50,10 +47,24 @@ while getopts "h?t:b:f:o:" opt; do
 		;;
 	esac
 done
+shift $((OPTIND-1))
 
 # If `-f` not provided, use the first non-flag argument
-shift $((OPTIND-1))
 [[ -z "$image_file" ]] && image_file="$1" && shift 1
+OPTIND=1
+while getopts "h?t:b:f:o:" opt; do
+	case "$opt" in
+	t)  top_text="$OPTARG"    ;;
+	b)  bottom_text="$OPTARG" ;;
+	f)  image_file="$OPTARG"  ;;
+	o)  output_file="$OPTARG" ;;
+	h|\?)
+		usage
+		exit 0
+		;;
+	esac
+done
+shift $((OPTIND-1))
 
 # Ensure that an image file is provided and exists. Does not check that it actually contains image data
 [[ -z "$image_file" ]] && echo "You must specify an image file!" && usage && exit 1
