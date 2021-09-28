@@ -122,8 +122,8 @@ _local_qt_repo="${local_qt_repo}"
 _pkgvermajmin="6.2"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta3"
-pkgrel=5
+_dev_suffix="rc2"
+pkgrel=6
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -183,7 +183,7 @@ arch=("x86_64")
 url="http://www.chaos-reins.com/qpi/"
 license=("LGPL3" "GPL3")
 optdepends=('qtcreator: Integrated IDE development')
-makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja")
+makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja" "libc++" "pcre" "harfbuzz")
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
 _tmpfs_dir=/vortex/build
@@ -210,7 +210,6 @@ if $_uber_minimal; then
         -no-sql-mysql \
         -no-sql-psql \
         -no-tslib \
-        -no-feature-bearermanagement \
         -no-qml-debug \
         -no-ico \
         -no-glib \
@@ -220,11 +219,8 @@ fi
   # Too bleeding big
   # -developer-build \
 
-#-journald \
 _core_configure_options=" \
                  -separate-debug-info \
-                 -qt-harfbuzz \
-                 -qt-pcre \
                  -pkg-config \
                  -prefix ${_installprefix} \
                  -opengl ${_opengl_variant} \
@@ -340,6 +336,8 @@ fi
 if $_target_host; then
   local _configure_line="${_srcdir}/configure \
                  -platform linux-clang-libc++ \
+                 -xplatform linux-clang-libc++ \
+                 -linker lld \
                  ${_core_configure_options} \
                  ${_additional_configure_flags}"
 else
