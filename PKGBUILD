@@ -1,7 +1,7 @@
 # Maintainer: Bent Hillerkus <benthillerkus+aur@gmail.com>
 
-pkgrel=1
-pkgver=3.2
+pkgrel=0
+pkgver=3.3
 
 pkgname=jetuml
 _gitname=JetUML
@@ -19,7 +19,7 @@ makedepends=('gendesk')
 source=("https://github.com/prmr/$_gitname/releases/download/v$pkgver/$_jarname.jar"
         "$pkgname.png::https://raw.githubusercontent.com/prmr/$_gitname/v$pkgver/icons/$_iconname.png")
 noextract=("$_jarname.jar")
-md5sums=('cd05751b4c9aa9c94b87b9741fea2cd2'
+md5sums=('e79f44d3983cacd57d71003b7a551ff3'
          '3b8e71028b14563205716aeb592e0803')
 
 prepare() {

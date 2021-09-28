@@ -1,7 +1,7 @@
 pkgbase = jetuml
 	pkgdesc = A desktop application for fast UML diagramming
-	pkgver = 3.2
-	pkgrel = 1
+	pkgver = 3.3
+	pkgrel = 0
 	url = https://github.com/prmr/JetUML
 	changelog = CHANGELOG
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = jetuml
 	makedepends = gendesk
 	depends = java-runtime-openjdk=16
 	depends = java-openjfx
-	noextract = JetUML-3.2.jar
-	source = https://github.com/prmr/JetUML/releases/download/v3.2/JetUML-3.2.jar
-	source = jetuml.png::https://raw.githubusercontent.com/prmr/JetUML/v3.2/icons/jet.png
-	md5sums = cd05751b4c9aa9c94b87b9741fea2cd2
+	noextract = JetUML-3.3.jar
+	source = https://github.com/prmr/JetUML/releases/download/v3.3/JetUML-3.3.jar
+	source = jetuml.png::https://raw.githubusercontent.com/prmr/JetUML/v3.3/icons/jet.png
+	md5sums = e79f44d3983cacd57d71003b7a551ff3
 	md5sums = 3b8e71028b14563205716aeb592e0803
 
 pkgname = jetuml

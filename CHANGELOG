@@ -1,13 +1,10 @@
-### Usability Improvements
+# New Features and Improvements
+See the [User Guide](https://www.jetuml.org/docs/user-guide.html) for details.
 
-The middle labels of edges in class diagrams are now centered properly (#409)
-Fixed a bug that made labels shift when changing the selection (#402)
-The intersection between edges and rounded rectangles (state diagrams) and ellipses (use case diagrams) are computed precisely (#401)
-The labels of actor nodes are now centered in use case diagrams (#419)
-The webpage for the user guide is static and loads faster (#398)
+It is now possible to change the size of the text in diagrams (#426)
+Using the shortcut key combination Ctrl-Q inserts UML stereotype delimiters (#434)
+Field nodes in object diagrams have a tighter visual layout (#428)
 
-### Code Improvements
-
-General cleanup of the geometry code (#396)
-The constraint checking code for edge creation has been improved for run-time performance (#416)
-The design of the code that renders strings in diagrams has been improved (#413, #422)
+# Refactorings
+Node position is no longer stored as a property (#427)
+Enums are now used to define property values (#429)
