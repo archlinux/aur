@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=mold
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='Fast linker'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(AGPL3)
 depends=(mimalloc openssl zlib)
 makedepends=(clang cmake xxhash)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('b05d399eecaca37d98745382ba201f62e6042613290b1dec6f08bfc133172ccb91603898acb3f54e2985fe3d7334c954c389da498a1ccef6b65053815b8aeb46')
+sha512sums=('d3de30b371413e974728fba03958d6043026f59aead8371058a0b1dc672e2675e169a1def3afd3751058f529d6ec80ff78c773d2718c1d9f0bdea74d9f13bc2e')
 
 # TODO: The TBB version from system packages does not currently work.
 #       Re-add dep and SYSTEM_TBB=1 when possible to Make commands.
