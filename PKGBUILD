@@ -2,7 +2,7 @@
 # Contributor: Tmplt <tmplt@dragons.rocks>
 
 pkgname=katriawm
-pkgver=21.05
+pkgver=21.09
 pkgrel=1
 pkgdesc="non-reparenting, dynamic window manager for X11 with decorations"
 arch=("i686" "x86_64")

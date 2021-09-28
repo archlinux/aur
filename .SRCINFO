@@ -1,6 +1,6 @@
 pkgbase = katriawm
 	pkgdesc = non-reparenting, dynamic window manager for X11 with decorations
-	pkgver = 21.05
+	pkgver = 21.09
 	pkgrel = 1
 	url = https://www.uninformativ.de/git/katriawm/file/README.html
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = katriawm
 	depends = libx11
 	depends = libxft
 	depends = libxrandr
-	source = git+https://www.uninformativ.de/git/katriawm.git#tag=v21.05
+	source = git+https://www.uninformativ.de/git/katriawm.git#tag=v21.09
 	sha256sums = SKIP
 
 pkgname = katriawm
