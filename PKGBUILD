@@ -28,7 +28,7 @@ sha1sums=('SKIP')
 pkgver() {
     cd "${pkgname}"
     printf "%s.r%s.%s" \
-			"$(awk '/^VERSION =/ {print $3}' Makefile)" \
+			"$(awk '/^VERSION =/ {print $3}' config.mk)" \
 			"$(git rev-list --count HEAD)" \
 			"$(git rev-parse --short HEAD)"
 }
