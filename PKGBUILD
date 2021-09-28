@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=ttf-lxgw-wenkai
-pkgver=1.007
+pkgver=1.008
 pkgrel=1
 pkgdesc="An open-source Chinese font derived from Fontworks' Klee One."
 arch=('any')
@@ -15,6 +15,7 @@ _fontfiles=(
     'LXGWWenKaiMono-Bold.ttf'
     'LXGWWenKaiMono-Light.ttf'
     'LXGWWenKaiMono-Regular.ttf'
+    'LXGWWenKaiUI-Regular.ttf'
 )
 
 source=("${pkgname}-${pkgver}-${pkgrel}-LICENSE::${url}/raw/v${pkgver}/SIL_Open_Font_License_1.1.txt")
@@ -23,12 +24,13 @@ for _file in "${_fontfiles[@]}"; do
 done
 
 sha256sums=('e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602'
-            'f58614455590e6bdc8d1e8e2e163c454f5b96bb5e581e8eeab622e60407b72a9'
-            'f4e7360fb3f828eca103e9da5a8f38c3a1bef7ada279c0386c39a213af3b40a0'
-            'c6b0d8108208050b743c341df00fb3585009012362713ef9139d86d885d2fd98'
-            '17e697af2fd7050135ae793a8a62160ecc9afe3a928b1f260f3e1cee81b43b6c'
-            '75fd6dc590445aa16aeb43c112c9473528f37108262b24b2351bc2970ff829ed'
-            '85ee50588d379a141f26eaf38f1321e96762fd3e55d42cc025f641c2883051a2')
+            '9bb3791a1fbc2cc0687eb75340548e26add4c4d204a0da6e6ecc30d081994612'
+            '3668725965eec4a3045cb4c1e80b3c17afd53abb96271464ab2ffd4a29cd8595'
+            '25115b2395112df2af1849051e429a0e339a672be90f25d20e19b00ab5e8dfc4'
+            '33526cba92ee4a409ce0e2710fd7530225266f233750e78c64272c31b80558a6'
+            'f6f71a8e784a01dc891a01d2420b57ce29c96d45869ef4edb25bf11a94ae4d24'
+            '141fc1c8f1f41000a3d71133f0de86d597903f7ec139543be586106f01922f21'
+            'fe24045d51bf98dfa6c522c9ac50b172c10a7d0c2486411d43c2444152dd0e15')
 
 package() {
     for _file in "${_fontfiles[@]}"; do
