@@ -1,7 +1,7 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=nxprayer
-pkgver=0.1.1
+pkgver=.r55.6af6d92
 pkgrel=1
 epoch=1
 pkgdesc="Time of the next Islamic prayer for your status bar or scripts."
