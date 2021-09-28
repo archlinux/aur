@@ -9,7 +9,7 @@ post_upgrade() {
 	echo ""
 	echo "Notes for update 1.7.0:"
 	echo "Bookmarks file format has changed. Your existing bookmarks will be imported to the new format. The old bookmarks.txt file can be found in the config directory and is writable only by v1.6 and earlier versions."
-	echo" Saved UI state format has changed. Downgrading will reset window state, close all tabs, and clear the navigation cache."
+	echo "Saved UI state format has changed. Downgrading will reset window state, close all tabs, and clear the navigation cache."
 	echo ""
     fi
 }
