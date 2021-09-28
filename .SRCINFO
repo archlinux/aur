@@ -1,6 +1,6 @@
 pkgbase = google-cloud-sdk-datastore-emulator
 	pkgdesc = A google-cloud-sdk component that provides local emulation of a Datastore environment.
-	pkgver = 358.0.0
+	pkgver = 359.0.0
 	pkgrel = 1
 	url = https://cloud.google.com/sdk/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = google-cloud-sdk-datastore-emulator
 	depends = google-cloud-sdk
 	depends = java-runtime
 	options = !strip
-	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk-datastore-emulator_358.0.0.orig.tar.gz
-	sha256sums = eac4f8ad3e153fd10daff0485579dbf2329ac77561d71d4d5e68521f6dc0d0b2
+	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk-datastore-emulator_359.0.0.orig.tar.gz
+	sha256sums = 4821732040a40ddcedf445d562bd566f339098a2d800974f48e77cca1f4f2088
 
 pkgname = google-cloud-sdk-datastore-emulator
