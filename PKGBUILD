@@ -3,7 +3,7 @@
 pkgbase='apache-arrow'
 pkgname=('apache-arrow' 'python-apache-arrow')
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language-independent columnar memory format for flat and hierarchical data"
 arch=('x86_64')
 url='https://arrow.apache.org/'
@@ -11,8 +11,8 @@ license=('Apache')
 depends=(
 # General
     'boost-libs'
-    'jemalloc'
     'libutf8proc'
+    're2'
 # Data Serialisation
     'thrift'
     'rapidjson'
@@ -24,22 +24,33 @@ depends=(
     'zlib'
     'zstd'
 )
+
+# Arrow uses vendored jemalloc with custom prefix. There is no build system
+# generator like CMake for jemalloc. So, we will use both Make and Ninja. The
+# former is used during jemalloc building and the latter is used to speed up
+# compilation.
+#
+# Also, in order to save computations we are building PyArrow to wheel and then
+# install it to fake root.
 makedepends=(
     'boost'
+    'cmake'
     'cython'
     'gcc'
     'gcc-libs'
+    'make'
     'ninja'
     'python-numpy'
+    'python-pip'
     'python-setuptools-scm'
+    'python-wheel'
 )
-provides=('apache-arrow' 'apache-parquet')
 source=("https://github.com/apache/arrow/archive/$pkgbase-$pkgver.tar.gz")
 md5sums=('9caf5dbd36ef4972c3a591bcfeaf59c8')
 
 build(){
-    ARROW_HOME="$srcdir/arrow-$pkgbase-$pkgver/dist"
-    LD_LIBRARY_PATH="$ARROW_HOME/lib:$LD_LIBRARY_PATH"
+    export ARROW_HOME="$srcdir/arrow-$pkgbase-$pkgver/dist"
+    export LD_LIBRARY_PATH="$ARROW_HOME/lib:$LD_LIBRARY_PATH"
 
     cd "$srcdir/arrow-$pkgbase-$pkgver"
     mkdir -p cpp/build
@@ -86,10 +97,13 @@ build(){
 
     cd "$srcdir/arrow-$pkgbase-$pkgver"
     pushd python
-    python setup.py build_ext --with-parquet bdist_wheel
+    python setup.py build_ext --with-parquet --cmake-generator Ninja bdist_wheel
 }
 
-package_apache-arrow(){
+package_apache-arrow() {
+    provides=('arrow' 'parquet-cpp')
+    conflict=('arrow' 'parquet-cpp')
+
     cd "$srcdir/arrow-$pkgbase-$pkgver/cpp/build"
     mkdir -p "$pkgdir"
     cmake -DCMAKE_INSTALL_PREFIX=$pkgdir/usr ..
@@ -98,6 +112,11 @@ package_apache-arrow(){
 }
 
 package_python-apache-arrow() {
+    pkgdesc="Language-independent columnar memory format for flat and hierarchical data (Python interface)"
+    depends=('python' 'arrow')
+    provides=('python-pyarrow')
+    conflict=('python-pyarrow')
+
     cd "$srcdir/arrow-$pkgbase-$pkgver/python"
     pip install --prefix "$pkgdir/usr" dist/*.whl
 }
