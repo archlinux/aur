@@ -1,14 +1,17 @@
 pkgbase = anbox-modules-dkms
-	pkgdesc = Android kernel driver (binder/binderfs, ashmem) in DKMS format for Kernel 5.12 and above.
+	pkgdesc = Android kernel driver (binder/binderfs, ashmem) in DKMS format for Kernel 5.8 thru 5.12
 	pkgver = 5
-	pkgrel = 12
+	pkgrel = 12.1
+	url = https://github.com/choff/anbox-modules
 	arch = x86_64
 	arch = aarch64
 	arch = i386
-	license = Apache-2.0
+	license = GPL3
+	makedepends = git
 	depends = linux-headers
+	depends = dkms
 	provides = anbox-modules-dkms
-	source = git+https://github.com/choff/anbox-modules.git
+	source = anbox-modules::git+https://github.com/choff/anbox-modules.git#branch=master
 	sha256sums = SKIP
 
 pkgname = anbox-modules-dkms
