@@ -3,4 +3,4 @@ Description=Remove unused docker data
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/docker system prune -af --filter "until=720h"
+ExecStart=/usr/bin/docker system prune -af --filter "until=240h"

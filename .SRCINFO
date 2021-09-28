@@ -1,13 +1,13 @@
 pkgbase = docker-prune
-	pkgdesc = Remove unused docker data which has not been accessed in last 30 days
-	pkgver = 0.0.2
+	pkgdesc = Remove unused docker data which has not been accessed in last 10 days
+	pkgver = 0.1.0
 	pkgrel = 1
 	arch = any
 	license = GPL3
 	depends = docker
 	source = docker-prune.service
 	source = docker-prune.timer
-	sha256sums = af20f598964c792fc212de160a925a91abb6bb9c29def7f50d0d864639895559
+	sha256sums = 7e54df7cf6f2f131f0386ea1911e3bbadd67ff691caa542ec8a3fd4a1da8c905
 	sha256sums = e6bb8c0b0c980c30d7cca1e818c96c0d57f0bd72d219e1bd0af254a561cf8d7a
 
 pkgname = docker-prune
