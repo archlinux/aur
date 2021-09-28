@@ -148,6 +148,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "2-2-mt76-mt7921-fix-retrying-release-semaphore-without-end.patch"
         "1-2-Bluetooth-btusb-Add-Mediatek-MT7921-support-for-Foxconn.patch"
         "2-2-Bluetooth-btusb-Add-Mediatek-MT7921-support-for-IMC-Network.patch"
+        "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip.patch"
 
         # squashed s0ix enablement
         "9001-v5.14.8-s0ix-patch-2021-09-26.patch"
@@ -188,6 +189,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '1a8639167a1ee1b66f580c0c6f8304e6ef359a68cfa3eb869d9200a9f0234098'
             '236cdadf0b1472945c0d7570caeed7b95929aabed6872319c9d0969a819689e9'
             'cc2aa580d69801aa1afb0d72ecf094fe13c797363d3d5928c868d3a389910b7b'
+            '292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c'
             '9f65f64addd66df45d90184ac4ea25c735ceb2dfff1d6d22c73d9f01a3be262a')
 
 # apply UKSM patch; TODO: note to self: don't forget to update the sum here during major version changes
