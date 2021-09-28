@@ -23,7 +23,10 @@
 # 0. You just DO WHAT THE FUCK YOU WANT TO.
 
 usage() {
-    printf "Usage: shitpost -f /path/to/file [-t top -b bottom -o outfile]\n\t-f\tPath to image file - Mandatory!\n\t-t\tTop Text\n\t-b\tBottom Text\n\t-o\tOutput file name\n"
+	printf "Usage: shitpost [-t top -b bottom -o outfile] [-f] /path/to/file\n\t-f\tPath to image file (-f is implied)\n\t-t\tTop Text\n\t-b\tBottom Text\n\t-o\tOutput file name\n"
+}
+args() {
+
 }
 # Check if imagemagick (just convert checked, but others used) is installed and exit if missing
 command -v convert >/dev/null 2>&1 || { echo >&2 "I require ImageMagick but it's not installed.  Aborting."; exit 1; }
@@ -36,28 +39,27 @@ output_file=""
 # Get CLI args
 OPTIND=1
 while getopts "h?t:b:f:o:" opt; do
-    case "$opt" in
-    h|\?)
-        usage
-        exit 0
-        ;;
-    t)  top_text="$OPTARG"
-        ;;
-    b)  bottom_text="$OPTARG"
-        ;;
-    f)  image_file="$OPTARG"
-        ;;
-    o)  output_file="$OPTARG"
-        ;;
-    esac
+	case "$opt" in
+	t)  top_text="$OPTARG"    ;;
+	b)  bottom_text="$OPTARG" ;;
+	f)  image_file="$OPTARG"  ;;
+	o)  output_file="$OPTARG" ;;
+	h|\?)
+		usage
+		exit 0
+		;;
+	esac
 done
+
+# If `-f` not provided, use the first non-flag argument
+shift $((OPTIND-1))
+[[ -z "$image_file" ]] && image_file="$1" && shift 1
 
 # Ensure that an image file is provided and exists. Does not check that it actually contains image data
 [[ -z "$image_file" ]] && echo "You must specify an image file!" && usage && exit 1
 
 # Let the user know any options that were invalid that were not already handled by getopts.
-shift $((OPTIND-1))
-[[ ! -z "$@" ]] && printf "Invalid argument(s): \"$@\"\nIgnored, continuing...\n"
+[[ ! -z "$@" ]] && printf "Invalid argument(s): '$1'\nIgnored, continuing...\n"
 
 # Set the output file to shitpost-INPUT_FILE if none was given
 base=${image_file##*/}

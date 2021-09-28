@@ -1,6 +1,6 @@
 pkgbase = shitpost
 	pkgdesc = A tool to create memes using CLI
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://redd.it/5ezk1f
 	arch = i686
