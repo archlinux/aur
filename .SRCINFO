@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-sf-mono
 	pkgdesc = Monospaced variant of San Francisco. Sourced directly from Apple, patched with the Nerd Fonts Patcher
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom
@@ -16,7 +16,7 @@ pkgbase = nerd-fonts-sf-mono
 	source = font-patcher-2.1.0::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.1.0/font-patcher
 	source = allow-glyphdir.diff
 	source = svn+https://github.com/ryanoasis/nerd-fonts/tags/v2.1.0/src/glyphs
-	sha256sums = ec0518e310797d2f9cb924c18e3e7b661359f4fb653d1ad4315758ebcdb5ff11
+	sha256sums = 76c415e9aee0524087cc6a042113db6b38f1a19f2e286f807aa29756461370a9
 	sha256sums = 3377615be4271f8bdeef66e6f2f82ac3f3cfb7b5677abe7b8e189409da048859
 	sha256sums = 6fad8dead6215b1d8cedbbce3d1bc1fc7c1b0bb06ea70518334bd443a7ba543f
 	sha256sums = SKIP
