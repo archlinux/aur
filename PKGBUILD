@@ -4,8 +4,8 @@
 # deps: pyproject
 
 pkgname=trakt-scrobbler
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -42,7 +42,7 @@ source=(
     "trakts-man.md"
     "trakts.zsh"
 )
-sha256sums=('d623a1abf22ea653df89f4fcd8d217acfefe7a2202acc342f66afcde61fc6438'
+sha256sums=('27036439b91fbf7ae784f127d438ddedb1ca9951765a6e630b85bc5dfd299b2d'
             '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c'
             '6b6c3f55ab153a9dc749e67acd6e091b5d1e9e35c3b51af4d2f1c687e8c8fab8')
 
