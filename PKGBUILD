@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=python-utm
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Bidirectional UTM-WGS84 converter for python"
 arch=("any")
@@ -12,7 +12,7 @@ depends=('python')
 optdepends=('python-numpy')
 makedepends=()
 source=("https://github.com/Turbo87/utm/archive/v${pkgver}.tar.gz")
-sha256sums=('0e712a0dc2f85163d2f5cb2157827446dc37eeca7d00d9dba7ff2d2049b009ec')
+sha256sums=('1dd235fc40eaa59f6691d481563d8aad0504f388014248b744a53a5c075f567c')
 
 build() {
     cd "utm-${pkgver}"
