@@ -4,7 +4,7 @@
 # from: git
 
 pkgname=anbox-image-nocsd-gapps
-pkgver=r98.3da545f5
+pkgver=r99.4f746ecb
 pkgrel=1
 pkgdesc="Android image for running in Anbox, with no-csd patch, OpenGApps and Houdini"
 arch=('x86_64')
@@ -42,7 +42,7 @@ md5sums=('6c31bf493856f982da3d7d78b6e23b85'
          '2c96f31ead428ee2d1fbd2a65dd6962d'
          '9f0dd33e444d816ab62fe8e8514a0c0e'
          '0a59e1a43891f21a09fe06f18f0f5feb'
-         '31e4d5dbb8535c741e5d8b6a087d0a9a')
+         '6d28a89e642fdeeb7353ec1f7fdb7e4b')
 
 pkgver () {
   local _pkgver _sha __sha
