@@ -34,7 +34,6 @@ source=(
 
 sha256sums=(
     'SKIP'
-    'SKIP'
 )
 
 pkgver() {
