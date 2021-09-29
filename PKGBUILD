@@ -205,7 +205,7 @@ package_regolith-i3 () {
 }
 
 package_i3-snapshot () {
-    pkdesc="Save and restore window and workspace layout within an i3wm instance. Alternative to i3-save-tree from Regolith Linux"
+    pkdesc="Alternative to i3-save-tree from Regolith Linux"
     license=('BSD-3-Clause')
     arch=('x86_64')
     depends=('i3-wm' 'jsoncpp' 'libsigc++')
