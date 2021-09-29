@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu-bin
 	pkgdesc = Firefox-appmenu, binary version
-	pkgver = 92.0
+	pkgver = 92.0.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/firefox-appmenu/
 	arch = x86_64
@@ -23,16 +23,16 @@ pkgbase = firefox-appmenu-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=92.0
+	provides = firefox=92.0.1
 	conflicts = firefox
-	noextract = firefox-appmenu-92.0-1-x86_64.pkg.tar.xz
+	noextract = firefox-appmenu-92.0.1-1-x86_64.pkg.tar.xz
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-92.0-1-x86_64.pkg.tar.xz
-	source = https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-92.0-1-x86_64.pkg.tar.xz.sig
+	source = https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-92.0.1-1-x86_64.pkg.tar.xz
+	source = https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-92.0.1-1-x86_64.pkg.tar.xz.sig
 	validpgpkeys = 85F86E317555BECC1C2184BF2C45BA09ABC5D7DA
-	sha256sums = a0aea1d4d63675661e3a1b8eb91cc2180cb0afb32a4bdd6d27582547c40a3bca
+	sha256sums = d1ebb521316e22d244bdd9a454068b9bde5a576762fe3e72133ac3c7a9c5cc10
 	sha256sums = SKIP
 
 pkgname = firefox-appmenu-bin
