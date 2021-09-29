@@ -1,6 +1,6 @@
 # Maintainer: Richard Hillmann <richie at project0 dot de>
 pkgname=awsvpnclient
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="AWS VPN Client"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
   'awsvpnclient.desktop.patch'
 )
 sha512sums=(
-  '39f3dba1fd858ec07ae983818ad066bc93262fb08d34f50cc3e540a9c19759ff12d4506b3df01f21b866d39b90f102df0f53ad23001b4e2fa2248ac50caf3f7f'
+  '4d0dd6a83400d25245f07a31a76f11217738452a413c45fb36898b8de7284a8940bfbaec1bb918b767f74a1f30e3cdaec37befe0a6608b2b848936e35cd4642e'
   'SKIP'
 )
 depends=('xdg-utils' 'lsof')
