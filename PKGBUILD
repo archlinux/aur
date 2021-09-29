@@ -204,6 +204,8 @@ package() {
     rm -fr "${pkgdir}"/usr/lib/cmake/cmark
     rm -f "${pkgdir}"/usr/lib/pkgconfig/libcmark.pc
     rm -f "${pkgdir}"/usr/lib/libcmark*
+    rm -f "${pkgdir}"/usr/share/man/man1/cmark.1
+    rm -f "${pkgdir}"/usr/share/man/man3/cmark.3
 
     rm -f "${pkgdir}"/usr/bin/get_disto
     rm -f "${pkgdir}"/usr/bin/cwebp
