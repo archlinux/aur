@@ -1,13 +1,13 @@
 pkgbase = prosody-mod-e2e_policy
 	pkgdesc = This module was written to encourage usage of End-to-end encryption for chat and MUC messages.
-	pkgver = r2199.2582d09d2ec4
+	pkgver = 2018.11.30
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_e2e_policy.html
 	arch = any
 	license = MIT
 	makedepends = mercurial
 	depends = prosody
-	source = hg+https://hg.prosody.im/prosody-modules/
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=a76c420eca61
 	sha1sums = SKIP
 
 pkgname = prosody-mod-e2e_policy
