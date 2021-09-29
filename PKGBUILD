@@ -11,7 +11,7 @@ pkgdesc="Build system, infrastructure and foundation classes"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
 license=('custom:GPL2 with runtime exception')
-makedepends=('cmake' 'openmpi' 'tbb' 'texlive-latexextra' 'biber' 'doxygen' 'graphviz' 'python-sphinx' 'python-setuptools')
+makedepends=('cmake' 'openmpi' 'tbb' 'texlive-latexextra' 'biber' 'doxygen' 'graphviz' 'python-sphinx' 'python-setuptools' 'python-portalocker')
 optdepends=('vc: C++ Vectorization library'
   'texlive-latexextra: Type setting system'
   'doxygen: Generate the class documentation from C++ sources'
