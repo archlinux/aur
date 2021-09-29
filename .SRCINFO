@@ -1,19 +1,37 @@
 pkgbase = dune-functions
 	pkgdesc = Abstractions for functions and discrete function space bases
-	pkgver = 2.6.0
+	pkgver = 2.8.0
 	pkgrel = 1
-	url = https://dune-project.org/modules/dune-functions/index.html
-	arch = any
-	groups = dune
-	license = custom
-	makedepends = cmake
-	makedepends = dune-common=2.6.0
-	makedepends = dune-typetree
-	makedepends = dune-localfunctions
-	makedepends = dune-grid
-	makedepends = git
-	source = git+https://gitlab.dune-project.org/staging/dune-functions.git#tag=v2.6.0
-	md5sums = SKIP
+	url = https://dune-project.org/modules/dune-functions
+	arch = x86_64
+	license = LGPL3
+	license = custom:GPL2 with runtime exception
+	makedepends = dune-localfunctions>=2.8.0
+	makedepends = dune-grid>=2.8.0
+	makedepends = dune-istl>=2.8.0
+	makedepends = texlive-latexextra
+	makedepends = texlive-pictures
+	makedepends = biber
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python-setuptools
+	optdepends = doxygen: Generate the class documentation from C++ sources
+	optdepends = graphviz: Graph visualization software
+	source = https://dune-project.org/download/2.8.0/dune-functions-2.8.0.tar.gz
+	source = https://dune-project.org/download/2.8.0/dune-functions-2.8.0.tar.gz.asc
+	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
+	sha512sums = 67dbf0cb625dd2870e3e278bb2592e534c3d0c9aad6f0f350937c77b7a1f1e037077b51aad92232955a3697ecf664c7433ac7c21989b74e1544bf3714631f23f
+	sha512sums = SKIP
 
 pkgname = dune-functions
+	depends = dune-istl>=2.8.0
+	depends = dune-localfunctions>=2.8.0
+	depends = dune-typetree>=2.8.0
+	depends = dune-grid>=2.8.0
 
+pkgname = python-dune-functions
+	pkgdesc = Abstractions for functions and discrete function space bases (python bindings)
+	depends = dune-functions>=2.8.0
+	depends = python-dune-istl>=2.8.0
+	depends = python-dune-localfunctions>=2.8.0
+	depends = python-dune-grid>=2.8.0
