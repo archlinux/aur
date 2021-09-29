@@ -1,6 +1,6 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
-	pkgver = 2021.9.14
+	pkgver = 2021.9.28
 	pkgrel = 1
 	url = https://usebottles.com
 	arch = any
@@ -25,8 +25,8 @@ pkgbase = bottles
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = vulkan-icd-loader
 	optdepends = gamemode
-	source = bottles-2021.9.14-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2021.9.14-treviso.tar.gz
-	sha256sums = d66b9589164cd256064faefcb825d898c8e57099caddfca60267f67f93e65065
+	source = bottles-2021.9.28-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2021.9.28-treviso.tar.gz
+	sha256sums = 6a5bc4316aeaee3eb40e25ed2b827a86e68ae463b7d840b9b2d2e6986aae76ca
 
 pkgname = bottles
 
