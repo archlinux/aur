@@ -1,5 +1,5 @@
 pkgbase = prosody-mod-default-bookmarks
-	pkgdesc = This module allows you to add default bookmarks for users.
+	pkgdesc = allows to add default bookmarks for users
 	pkgver = 2018.08.18
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_default_bookmarks.html
