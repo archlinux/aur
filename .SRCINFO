@@ -1,0 +1,13 @@
+pkgbase = comics-downloader-git
+	pkgdesc = Tool to download comics and manga in pdf/epub/cbr/cbz from a website.
+	pkgver = r190.d166a3b
+	pkgrel = 1
+	url = https://github.com/Girbons/comics-downloader
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/Girbons/comics-downloader.git
+	sha256sums = SKIP
+
+pkgname = comics-downloader-git
