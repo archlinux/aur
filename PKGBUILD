@@ -200,6 +200,11 @@ package() {
     rm -f "${pkgdir}"/usr/lib/libjson11.a
     rm -f "${pkgdir}"/usr/lib/pkgconfig/json11.pc
 
+    rm -f "${pkgdir}"/usr/include/cmark*
+    rm -fr "${pkgdir}"/usr/lib/cmake/cmark
+    rm -f "${pkgdir}"/usr/lib/pkgconfig/libcmark.pc
+    rm -f "${pkgdir}"/usr/lib/libcmark*
+
     rm -f "${pkgdir}"/usr/bin/get_disto
     rm -f "${pkgdir}"/usr/bin/cwebp
     rm -f "${pkgdir}"/usr/bin/dwebp
