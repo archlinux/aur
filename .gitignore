@@ -1,0 +1,5 @@
+*.pkg.tar
+*.pkg.tar.zst
+pkg/
+src/
+kickoff/
