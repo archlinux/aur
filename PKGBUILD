@@ -13,7 +13,7 @@ true && pkgname=("linux-zen-git" "linux-zen-git-headers")
 arch=("x86_64")
 conflicts=("linux-zen")
 provides=("linux-zen")
-pkgrel=1
+pkgrel=2
 options=("!strip")
 source=("linux-zen.conf"
         "linux-zen.preset"
