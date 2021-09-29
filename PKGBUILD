@@ -21,8 +21,8 @@ pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen python-docutils ncurses readline
-             libsndfile alsa-lib dbus rtkit libpulse
+makedepends=(git meson doxygen python-docutils graphviz ncurses
+             readline libsndfile alsa-lib dbus rtkit libpulse
              webrtc-audio-processing libusb bluez-libs
              sbc libldac libfreeaptx libfdk-aac
              avahi
@@ -85,8 +85,8 @@ _ver=${pkgver:0:3}
 
 package_pipewire-full-git() {
   license+=(LGPL)
-  depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
-           libudev.so libasound.so libsystemd.so
+  depends=(rtkit libdbus-1.so libncursesw.so libreadline.so
+           libsndfile.so libudev.so libasound.so libsystemd.so
            libwebrtc_audio_processing.so libusb-1.0.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libfreeaptx.so libfdk-aac.so)
