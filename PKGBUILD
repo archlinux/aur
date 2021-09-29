@@ -233,8 +233,8 @@ package_linux-zen-git-headers() {
 		install -D -m644 "$file" "${pkgdir}/usr/src/linux-$_kernver/$file"
 	done
 
-	msg2 "Fixing permissions on scripts directory..."
-	chmod og-w -R "${pkgdir}/usr/src/linux-$_kernver/scripts"
+	#msg2 "Fixing permissions on scripts directory..."
+	#chmod og-w -R "${pkgdir}/usr/src/linux-$_kernver/scripts"
 
 	msg2 "Creating symlinks..."
 	mkdir -p "${pkgdir}/usr/lib/modules/$_kernver/"
