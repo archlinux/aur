@@ -1,11 +1,11 @@
-# Maintainer: HLFH <arch@dhautefeuille.eu>
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
-pkgname=searx-git
-pkgver=1.0.0+r200+g313a9847
+pkgname=searxng-git
+pkgver=1.0.0+r848+g919674d5
 pkgrel=1
-pkgdesc="A privacy-respecting, hackable metasearch engine (python(3) based)"
+pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
-url="https://asciimoo.github.io/searx/"
+url="https://searxng.github.io/searxng/"
 license=('AGPL')
 makedepends=('openssl')
 depends=(
@@ -22,42 +22,42 @@ depends=(
 	'python-h2'
         'python-pysocks'
         'python-langdetect')
-conflicts=('searx' )
-backup=('etc/searx/settings.yml' 'etc/uwsgi/vassals/searx.ini')
-source=(git+https://github.com/asciimoo/searx
-        'searx.ini'
-        'searx.sysusers')
+conflicts=('searx' 'searx-git')
+backup=('etc/searxng/settings.yml' 'etc/uwsgi/vassals/searxng.ini')
+source=(git+https://github.com/HLFH/searxng
+        'searxng.ini'
+        'searxng.sysusers')
 sha512sums=('SKIP'
-            '6e1e7771e747e2bcb9cbc3e5ec9735461b6d791c0c0412e06e7dd802c18625edd0916de32164bf780c18ef7b6a87f55ed1e917377b3adb2bf53c0344f34b49e8'
-            '6856e26451fe053d37c2ce4b9d5f3b35891dd8ec702c5256c02d04415124c57705abc497f12943948a85621bb0238d26c2c1f3a7bf42404a6ff1487c7655909e')
+            'ada53a1cdecfa87d4d1bbe056a5572a914a08bd7548947893452b4b08733756dfb2597c4c48430918a8dd60504c7bb145de5adf50c48e9c7cc52d8ac37d830ec'
+            'af9a4539f0b6949ec504068f28232553547804a49bb588a1fff75ad612196e3722c097f076bb3b4b1f1cf905d01f8915ed2af73d7e1b08bbdbad06dba41e8ea7')            
 
 pkgver() {
-  cd searx
+  cd searxng
   git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
 }
 
 prepare() {
-  cd "$srcdir/searx"
+  cd "$srcdir/searxng"
 
   # Allow newer versions of the dependencies
   sed -i "s|==|>=|g" requirements.txt
 
   # Generate a random secret key
-  sed -i -e "s/ultrasecretkey\" # change this!/`openssl rand -hex 32`\"/g" searx/settings.yml
+  sed -i -e "s/ultrasecretkey\" # change this!/`openssl rand -hex 32`\"/g" searxng/settings.yml
 }
 
 package() {
-  cd "$srcdir/searx"
+  cd "$srcdir/searxng"
   local _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
 
   python setup.py install --root="$pkgdir" --optimize=1
 
-  mv "${pkgdir}${_site_packages}"/{README.rst,requirements*,searx}
+  mv "${pkgdir}${_site_packages}"/{README.rst,requirements*,searxng}
 
-  mkdir -p "$pkgdir/etc/searx"
-  mv "${pkgdir}${_site_packages}/searx/settings.yml" $pkgdir/etc/searx/
-  ln -s /etc/searx/settings.yml "${pkgdir}${_site_packages}/searx/settings.yml"
+  mkdir -p "$pkgdir/etc/searxng"
+  mv "${pkgdir}${_site_packages}/searxng/settings.yml" $pkgdir/etc/searxng/
+  ln -s /etc/searxng/settings.yml "${pkgdir}${_site_packages}/searxng/settings.yml"
 
-  install -Dm644 "${srcdir}/searx.sysusers" "${pkgdir}/usr/lib/sysusers.d/searx.conf"
-  install -Dm644 "${srcdir}/searx.ini" "${pkgdir}/etc/uwsgi/vassals/searx.ini"
+  install -Dm644 "${srcdir}/searxng.sysusers" "${pkgdir}/usr/lib/sysusers.d/searxng.conf"
+  install -Dm644 "${srcdir}/searxng.ini" "${pkgdir}/etc/uwsgi/vassals/searxng.ini"
 }
