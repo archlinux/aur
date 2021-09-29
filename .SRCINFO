@@ -10,5 +10,8 @@ pkgbase = hash-id
 	license = GPL3
 	makedepends = rust
 	makedepends = cargo
+	makedepends = git
+	source = hash-id::git+https://github.com/tashima42/hash-id.git#tag=v0.1.0
+	sha512sums = SKIP
 
 pkgname = hash-id
