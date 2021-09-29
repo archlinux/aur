@@ -1,7 +1,7 @@
 pkgbase = sioyek-git
 	pkgdesc = PDF viewer for research papers and technical books.
 	pkgver = 0.31.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ahrm/sioyek
 	arch = any
 	license = GPL3

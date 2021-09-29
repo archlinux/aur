@@ -1,7 +1,7 @@
 # Maintainer: Philipp Kühn <p dot kuehn at posteo dot de>
 pkgname=sioyek-git
 pkgver=0.31.6
-pkgrel=3
+pkgrel=4
 pkgdesc="PDF viewer for research papers and technical books."
 arch=('any')
 license=('GPL3')
@@ -34,10 +34,7 @@ package() {
 
 	mkdir -p "$pkgdir/usr/share/sioyek"
 	mkdir -p "$pkgdir/etc/sioyek"
-	install -Dm644 -t "$pkgdir/usr/share/sioyek" build/keys_user.config build/prefs_user.config build/tutorial.pdf
+	install -Dm644 -t "$pkgdir/usr/share/sioyek" build/tutorial.pdf
 	install -Dm644 -t "$pkgdir/etc/sioyek" build/keys.config build/prefs.config
 	cp -r build/shaders "$pkgdir/usr/share/sioyek"
-
-	echo "Data files can be found in /usr/share/sioyek"
-	echo "Be sure to copy them to the according locations"
 }
