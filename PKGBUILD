@@ -1,7 +1,7 @@
 #Maintainer: Jernuh Zakalwe <jzakalwe1st@gmail.com>
 pkgname=evesetup
 pkgver=1747682
-pkgrel=12
+pkgrel=13
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 changelog=$pkgname.changelog
 arch=(x86_64)
@@ -49,7 +49,7 @@ source=("evelauncher.desktop"
         "eve-transl5.12-ru.tar.gz"
         "eve-transl5.12-zh.tar.gz"
         "https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run"
-        "https://github.com/doitsujin/dxvk/releases/download/v1.9/dxvk-1.9.tar.gz"
+        "https://github.com/doitsujin/dxvk/releases/download/v1.9.2/dxvk-1.9.2.tar.gz"
         "https://binaries.eveonline.com/evelauncher-${pkgver}.tar.gz")
 
 noextract=('eve-transl5.12-de.tar.gz'
@@ -92,9 +92,9 @@ package() {
         cp ${srcdir}/evesetup.shlib ${pkgdir}/opt/${pkgname}/lib
         cp ${srcdir}/evelauncher.lua ${pkgdir}/opt/${pkgname}/doc
         cp ${srcdir}/evelauncher.kwinrule ${pkgdir}/opt/${pkgname}/doc
-        cp -r ${srcdir}/dxvk-1.9/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
-        cp -r ${srcdir}/dxvk-1.9/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
-        echo "1.9" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
+        cp -r ${srcdir}/dxvk-1.9.2/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
+        cp -r ${srcdir}/dxvk-1.9.2/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
+        echo "1.9.2" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
         rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libicu*
@@ -147,5 +147,5 @@ sha256sums=('3faf7c07b571a80f05b46b44b832e1986bf45d2a84c2cba0fceda4d38a5a9259'
             '1a83a791b5a189823f71cdfb1e0c0e15139ff7f563bfb3eac70a5fa4ad9ebc22'
             '5ffd6578dfbb9bf1647fbae819e3ddae0722c2613779c122d86963123470359f'
             'ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2'
-            '433868f8783887192a04b788203d6b4effe3168be762dd60df1c1b564421a6ed'
+            '24bcee655767f4731b8d3883dd93ba4edc7f1e87421e15fab19499d57236b8e9'
             '98ccf4b9932d7fb74896461f764c61921592a73089e3fcb4063fe7836c6a0bca')
