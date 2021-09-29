@@ -14,7 +14,6 @@ pkgbase = python-extruct
 	depends = python-mf2py
 	depends = python-six
 	depends = python-w3lib
-	depends = python-w3lib
 	depends = python-html-text
 	depends = python-jstyleson
 	source = python-extruct-0.13.0.tar.gz::https://github.com/scrapinghub/extruct/archive/v0.13.0.tar.gz
