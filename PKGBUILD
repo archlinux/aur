@@ -1,5 +1,5 @@
 _cranname=RODBC
-_cranver=1.3-17
+_cranver=1.3-19
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
