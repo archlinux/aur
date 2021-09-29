@@ -1,7 +1,7 @@
 pkgbase = python-stack-data
 	pkgdesc = Python library that extracts data from stack frames and tracebacks
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/alexmojaki/stack_data
 	arch = any
 	license = MIT
@@ -9,8 +9,7 @@ pkgbase = python-stack-data
 	makedepends = python-pip
 	makedepends = git
 	depends = python
-	source = git+https://github.com/alexmojaki/stack_data.git#tag=v0.1.0
+	source = git+https://github.com/alexmojaki/stack_data.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = python-stack-data
-
