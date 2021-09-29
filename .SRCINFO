@@ -1,6 +1,6 @@
 pkgbase = rsyslog
 	pkgdesc = An enhanced multi-threaded syslogd with a focus on security and reliability
-	pkgver = 8.2008.0
+	pkgver = 8.2108.0
 	pkgrel = 1
 	url = http://www.rsyslog.com/
 	install = rsyslog.install
@@ -31,7 +31,7 @@ pkgbase = rsyslog
 	options = zipman
 	backup = etc/rsyslog.conf
 	backup = etc/logrotate.d/rsyslog
-	source = https://github.com/rsyslog/rsyslog/archive/v8.2008.0.tar.gz
+	source = https://github.com/rsyslog/rsyslog/archive/v8.2108.0.tar.gz
 	source = rsyslog.logrotate
 	source = rsyslog.conf
 	source = rsyslog.service
@@ -41,4 +41,3 @@ pkgbase = rsyslog
 	sha256sums = 81b9f9b78395405b679849143a6709911d00e9317928fdb2a2540f52965847c2
 
 pkgname = rsyslog
-
