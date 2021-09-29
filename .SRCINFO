@@ -1,6 +1,6 @@
 pkgbase = zivid-tools
 	pkgdesc = Defining the Future of 3D Machine Vision
-	pkgver = 2.4.1+55718627_1
+	pkgver = 2.4.2+1a2e8cfb_1
 	pkgrel = 1
 	url = https://www.zivid.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zivid-tools
 	license = custom
 	depends = zivid
 	options = !strip
-	source = https://www.zivid.com/hubfs/softwarefiles/releases/2.4.1+55718627-1/u18/zivid-tools_2.4.1+55718627-1_amd64.deb
-	sha256sums = e501df83ed250578b1d2822909619664f941b8429a4f56e1ae2cd98cf49d7f1a
+	source = https://www.zivid.com/hubfs/softwarefiles/releases/2.4.2+1a2e8cfb-1/u18/zivid-tools_2.4.2+1a2e8cfb-1_amd64.deb
+	sha256sums = defb806b9f33c5af6d372903dc4d2b59fd1a123a7b85bbab28cdc5705728c638
 
 pkgname = zivid-tools
