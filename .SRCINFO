@@ -122,6 +122,7 @@ pkgbase = regolith-de
 pkgname = regolith-i3
 	pkgdesc = Regolith's i3-gaps-based DE's underpinnings and gnome foundational dependencies
 	arch = x86_64
+	groups = regolith-de
 	license = MIT
 	depends = i3-gaps
 	depends = i3status
@@ -167,6 +168,7 @@ pkgname = regolith-i3
 
 pkgname = i3-snapshot
 	arch = x86_64
+	groups = regolith-de
 	license = BSD-3-Clause
 	depends = i3-wm
 	depends = jsoncpp
@@ -176,6 +178,7 @@ pkgname = i3-snapshot
 pkgname = regolith-i3xrocks
 	pkgdesc = Regolith's i3xrocks with associated widgets and config files
 	arch = x86_64
+	groups = regolith-de
 	license = GPLv3
 	depends = glibc
 	depends = accountsservice
@@ -187,6 +190,7 @@ pkgname = regolith-i3xrocks
 
 pkgname = regolith-styles
 	pkgdesc = Regolith's themes for i3, gdm, gtk, rofi, plymouth, etc.
+	groups = regolith-de
 	license = custom: GPLv3
 	depends = regolith-i3
 	depends = gtk3
@@ -205,12 +209,14 @@ pkgname = regolith-styles
 
 pkgname = regolith-st
 	pkgdesc = Regolith's fork of st - the simple terminal
+	groups = regolith-de
 	license = MIT
 	provides = st
 	conflicts = st
 
 pkgname = regolith-desktop-config
 	pkgdesc = Regolith DE's desktop settings and configuration files, for rofi, i3, lightdm, i3xrocks, etc. plus ubiquity-slideshow-regolith
+	groups = regolith-de
 	license = Custom
 	depends = rofi
 	depends = adobe-source-code-pro-fonts

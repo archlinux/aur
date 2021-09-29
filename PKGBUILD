@@ -193,6 +193,7 @@ package_regolith-i3 () {
 		'lightdm: Display Manager - Regolith LightDM theme included in regolith-desktop-config' )
     provides=('xrescat' 'regolith-gnome-flashback')
     conflicts=()
+    groups=('regolith-de')
 
     extract_deb "${srcdir}"/regolith-gnome-flashback_2.6.2-1_amd64.deb
     extract_deb "${srcdir}"/xrescat_1.2.1-1_amd64.deb
@@ -209,6 +210,7 @@ package_i3-snapshot () {
     arch=('x86_64')
     depends=('i3-wm' 'jsoncpp' 'libsigc++')
     provides=('i3-snapshot')
+    groups=('regolith-de')
 
     extract_deb "${srcdir}"/i3-snapshot_1.0.1-2hirsute_amd64.deb
 
@@ -222,6 +224,7 @@ package_regolith-i3xrocks () {
     depends=('glibc' 'accountsservice' 'alsa-utils' 'bc' 'ttf-font-awesome')
     conflicts=('i3xrocks')
     provides=('i3xrocks')
+    groups=('regolith-de')
 
     extract_deb "${srcdir}"/i3xrocks_1.3.5-1_amd64.deb
     extract_deb "${srcdir}"/i3xrocks-app-launcher_3.6.4-1_amd64.deb
@@ -252,6 +255,7 @@ package_regolith-styles () {
     depends=("regolith-i3" "gtk3" "ttf-jetbrains-mono" "ttf-ubuntu-font-family")
     conflicts=("paper-icon-theme" "nordic-theme-git" "gtk-theme-solarc-git" "gtk-theme-plano" "gtk-theme-plano-git")
     provides=("paper-icon-theme" "regolith-styles" "regolith-look" "gtk-theme-solarc" "gtk-theme-plano")
+    groups=('regolith-de')
 
     extract_deb "${srcdir}"/ayu-theme_0.2.2-1_amd64.deb
     extract_deb "${srcdir}"/cahuella_1.0.3-1_amd64.deb
@@ -290,6 +294,7 @@ package_regolith-desktop-config () {
 		'regolith-i3xrocks: For i3xrocks (i3blocks) support'
 	        'i3-gaps: For i3-gaps config support'
 		'picom: For compositing configuration')
+    groups=('regolith-de')
 
     extract_deb "${srcdir}"/regolith-compositor-picom-glx_1.1.3-1_amd64.deb
     extract_deb "${srcdir}"/regolith-default-settings_1.0.8-1hirsute_amd64.deb
@@ -317,10 +322,11 @@ package_regolith-desktop-config () {
 
 
 package_regolith-st () {
-	pkgdesc="Regolith's fork of st - the simple terminal"
-	license=("MIT")
-	provides=('st')
-	conflicts=('st')
+    pkgdesc="Regolith's fork of st - the simple terminal"
+    license=("MIT")
+    provides=('st')
+    conflicts=('st')
+    groups=('regolith-de')
 
 	extract_deb "${srcdir}"/regolith-st_0.8.2-1ubuntu20ppa5_amd64.deb
 }
