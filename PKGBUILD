@@ -1,5 +1,6 @@
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Lukas Böger <dev___AT___lboeger___DOT___de>
 pkgname=dune-typetree
 _tarver=2.8.0
 _tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
@@ -28,7 +29,6 @@ build() {
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
-    -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
     -DENABLE_HEADERCHECK=ON \
     -Wno-dev
