@@ -4,7 +4,7 @@
 
 pkgname=freetype2-ttmetrics
 _srcname=freetype
-pkgver=2.10.4
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Font rasterization library with TrueType metrics enabled"
 arch=(i686 x86_64)
@@ -25,7 +25,7 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pk
         freetype2.sh
         enable_truetype_like_size_metrics.patch
         fix_metrics_on_size_request.patch)
-sha1sums=('0181862673f7216ad2b5074f95fc131209e30b27'
+sha1sums=('f1635a1ed68ee467be33036d8881b7b89177663f'
           '46fd67e6a594f6c2c473b9321ba64913984ba42f'
           '4bf0c0749db09878b918cc404300f0d3e9091607'
           'af76172be8135e74391b7ad1b82c2124ae0ad86c'
