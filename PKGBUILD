@@ -3,7 +3,7 @@
 _name="pyrenamer"
 pkgname="python2-${_name}"
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for mass renaming files."
 provides=("${_name}")
 conflicts=("${_name}")
@@ -12,6 +12,7 @@ url="https://gitlab.com/patlefort/${_name}"
 license=('GPL2')
 depends=('python2' 'pygtk' 'python2-gconf')
 makedepends=()
+options=(!buildflags)
 _dir="${_name}-v${pkgver}"
 source=("https://gitlab.com/patlefort/${_name}/-/archive/v${pkgver}/${_dir}.tar.gz")
 sha256sums=('81f11fa7ab6f874407009327b683b5f9ef402deaddea357c6fbd6dc770cc4b81')
