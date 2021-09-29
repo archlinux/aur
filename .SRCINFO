@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ultimate-without-jbr
 	pkgdesc = Intellij Idea Ultimate Without Jbr
-	pkgver = 2021.2.1
+	pkgver = 2021.2.2
 	pkgrel = 1
 	url = https://www.jetbrains.com/idea/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = intellij-idea-ultimate-without-jbr
 	conflicts = intellij-idea-ultimate-edition
 	conflicts = intellij-idea-ultimate-edition-jre
 	options = !strip
-	source = ideaIU-2021.2.1-no-jbr.tar.gz::https://download.jetbrains.com/idea/ideaIU-2021.2.1-no-jbr.tar.gz
+	source = ideaIU-2021.2.2-no-jbr.tar.gz::https://download.jetbrains.com/idea/ideaIU-2021.2.2-no-jbr.tar.gz
 	source = intellij-idea-ultimate.desktop
-	sha256sums = 9cf405e13bb25768050779a6fd923021ba1cee7f559253ad6ecb0f985a52a788
+	sha256sums = 1529470e66928f59feb8812996a79c728a1abc1c2d7ee2f8560693c77a852f1b
 	sha256sums = a8a31e45e8abed10f71c3e948064fe7258dc9cb3d60d6f48de7b009b05625f88
 
 pkgname = intellij-idea-ultimate-without-jbr
