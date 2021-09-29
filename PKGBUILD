@@ -4,7 +4,7 @@
 
 _pkgname='quich'
 pkgname="${_pkgname}-git"
-pkgver=4.0.0.r1.gf932fc3
+pkgver=4.0.0.r3.ged2d2b7
 pkgrel=1
 pkgdesc='calculator for terminal with numerous features'
 arch=('x86_64')
@@ -26,7 +26,8 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -D -m755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -D -m644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -D -m644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -D -m644 'quich.1' -t "${pkgdir}/usr/share/man/man1"
 }
