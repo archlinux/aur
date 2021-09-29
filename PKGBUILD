@@ -1,6 +1,6 @@
 # Maintainer: Stefan Ott <stefan@ott.net>
 pkgname=trottinett
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 epoch=
 pkgdesc="A simple network interface manager"
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("trottinett-${pkgver}.tar.gz::https://code.ott.net/trottinett/downloads/trottinett-${pkgver}.tar.gz")
-sha256sums=("aaf34d3c4e2ebe8e04194c6e8d019893d82e68adab15f926d0b65f618c83863b")
+sha256sums=("7949c6574d41b05dc217b6787d17968264d4d73d313531b4f70b9311d5694bfd")
 noextract=()
 md5sums=()
 validpgpkeys=()
