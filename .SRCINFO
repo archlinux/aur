@@ -1,23 +1,24 @@
 pkgbase = dune-alugrid
-	pkgdesc = Unstructured simplicial and cube DUNE grids
-	pkgver = 2.6.0
+	pkgdesc = An adaptive, loadbalancing, unstructured implementation of the DUNE grid interface supporting either simplices or cubes
+	pkgver = 2.8.0
 	pkgrel = 1
-	url = https://gitlab.dune-project.org/extensions/dune-alugrid
-	arch = i686
+	url = https://www.dune-project.org/modules/dune-alugrid
 	arch = x86_64
-	groups = dune
 	license = GPL2
-	makedepends = git
-	makedepends = cmake
-	makedepends = dune-common
-	makedepends = dune-grid
-	makedepends = dune-geometry
-	makedepends = openmpi
-	makedepends = zlib
-	makedepends = metis
-	makedepends = parmetis
-	source = git+https://gitlab.dune-project.org/extensions/dune-alugrid.git#branch=releases/2.6
-	md5sums = SKIP
+	makedepends = dune-grid>=2.8.0
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python-setuptools
+	optdepends = doxygen: Generate the class documentation from C++ sources
+	optdepends = graphviz: Graph visualization software
+	source = https://gitlab.dune-project.org/extensions/dune-alugrid/-/archive/releases/2.8/dune-alugrid-releases-2.8.tar.gz
+	sha512sums = 9dd13a702d35ecf6a4022f70a54227892615a363e7a29b52f9f109c3f1397a6fcd0e43a46821bd92e211dab8c72d68dbe9fa18f30ff1b456e26c1ce1941f8ba8
 
 pkgname = dune-alugrid
+	depends = dune-grid>=2.8.0
+	depends = zoltan
 
+pkgname = python-dune-alugrid
+	pkgdesc = An adaptive, loadbalancing, unstructured implementation of the DUNE grid interface supporting either simplices or cubes (python bindings)
+	depends = dune-alugrid>=2.8.0
+	depends = python-dune-grid>=2.8.0
