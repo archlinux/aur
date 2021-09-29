@@ -32,13 +32,13 @@ pkgver() {
 }
 
 build() {
-	cd "${pkgname}"
-	make DESTDIR="${pkgdir}"
+	  cd "${pkgname}"
+	  make DESTDIR="${pkgdir}"
 }
 
 package() {
-	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	  cd "${pkgname}"
+	  make DESTDIR="${pkgdir}" install
+	  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
