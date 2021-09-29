@@ -1,0 +1,13 @@
+pkgbase = python-pyrdfa3
+	pkgdesc = Python distiller/parser library
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = https://github.com/RDFLib/pyrdfa3
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = python-pyrdfa3-3.5.2.tar.gz::https://github.com/RDFLib/pyrdfa3/archive/3.5.2.tar.gz
+	sha256sums = 2cf88994c9726eae043d24c2b6945ec2d0bf5c417e29dfd86cb5170884015905
+
+pkgname = python-pyrdfa3
