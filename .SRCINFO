@@ -91,10 +91,12 @@ pkgname = linux-xanmod-rog
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = linux-xanmod-g14
+	provides = linux-rog
 	conflicts = linux-xanmod-g14
 
 pkgname = linux-xanmod-rog-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Xanmod kernel
 	depends = pahole
 	provides = linux-xanmod-g14-headers
+	provides = linux-rog-headers
 	conflicts = linux-xanmod-g14-headers

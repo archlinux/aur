@@ -336,7 +336,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides+=(linux-xanmod-g14)
+  provides+=(linux-xanmod-g14 linux-rog)
   conflicts+=(linux-xanmod-g14)
 
   cd "linux-${_major}"
@@ -362,7 +362,7 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
-  provides+=(linux-xanmod-g14-headers)
+  provides+=(linux-xanmod-g14-headers linux-rog-headers)
   conflicts+=(linux-xanmod-g14-headers)
 
   cd "linux-${_major}"
