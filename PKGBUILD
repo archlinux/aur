@@ -159,7 +159,6 @@ build() {
         -DSKIA_DIR="$srcdir/skia" \
         -DSKIA_LIBRARY_DIR="$srcdir/skia/out/Clang" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_SHARED_CMARK=ON \
         -DUSE_SHARED_CURL=ON \
         -DUSE_SHARED_JPEGLIB=ON \
         -DUSE_SHARED_GIFLIB=ON \
