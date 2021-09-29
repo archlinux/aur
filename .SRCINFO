@@ -1,8 +1,8 @@
 pkgbase = emacs-hexrgb
 	pkgdesc = Bookmark+ mode, which enhances vanilla Emacs bookmarks in many ways
 	pkgver = 1019
-	pkgrel = 3
-	url = http://www.emacswiki.org/emacs/BookmarkPlus
+	pkgrel = 4
+	url = https://github.com/emacsmirror/hexrgb.git
 	arch = any
 	license = GPL3
 	makedepends = awk
