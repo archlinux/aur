@@ -18,6 +18,6 @@ tasks:
 - build: |
     cd aur-als
     makepkg
-- build: |
+- install: |
     cd aur-als
     makepkg --install --noconfirm
