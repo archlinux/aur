@@ -4,7 +4,7 @@
 pkgname=caj2pdf-git
 epoch=1
 pkgver=r151.651cc90
-pkgrel=1
+pkgrel=2
 provides=('caj2pdf')
 conflicts=('caj2pdf')
 pkgdesc='Convert CAJ (China Academic Journals) files to PDF.'
@@ -39,8 +39,8 @@ prepare() {
 
 build() {
     cd caj2pdf/lib
-    cc -Wall -fPIC --shared -o libjbigdec.so jbigdec.cc JBigDecode.cc
-    cc -Wall $(pkg-config --cflags jbig2dec) -fPIC -shared -o libjbig2codec.so decode_jbig2data_x.cc $(pkg-config --libs jbig2dec)
+    cc -fPIC --shared -o libjbigdec.so jbigdec.cc JBigDecode.cc $LDFLAGS $CPPFLAGS
+    cc $(pkg-config --cflags jbig2dec) -fPIC -shared -o libjbig2codec.so decode_jbig2data_x.cc $(pkg-config --libs jbig2dec) $LDFLAGS $CPPFLAGS
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = caj2pdf-git
 	pkgdesc = Convert CAJ (China Academic Journals) files to PDF.
 	pkgver = r151.651cc90
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/caj2pdf/caj2pdf
 	arch = x86_64
