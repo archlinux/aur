@@ -1,24 +1,42 @@
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-typetree
-pkgver=2.6.0
+_tarver=2.8.0
+_tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
+pkgver=${_tarver}
 pkgrel=1
-pkgdesc='A template library for statically typed object trees'
-groups=('dune')
-url='http://www.dune-project.org/pdelab'
-arch=('any')
-license=('custom')
-source=("git+https://gitlab.dune-project.org/staging/${pkgname}.git#tag=v${pkgver}")
-makedepends=('cmake' "dune-common>=2.6.0" 'git')
-md5sums=('SKIP')
-
-package() {
-	dunecontrol --only=${pkgname} make install DESTDIR="${pkgdir}"
-	install -m644 -D ${pkgname}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	find "${pkgdir}" -type d -empty -delete
-}
+pkgdesc="Template library for constructing and operating on statically typed trees of objects"
+arch=('x86_64')
+url="https://dune-project.org/modules/${pkgname}"
+license=('LGPL3' 'custom:GPL2 with runtime exception')
+depends=('dune-common>=2.8.0')
+makedepends=('doxygen' 'graphviz')
+optdepends=('doxygen: Generate the class documentation from C++ sources'
+  'graphviz: Graph visualization software')
+source=(https://dune-project.org/download/${_tar}{,.asc})
+sha512sums=('c759d703c7602524fb883e651286be3c06331ba8f641bc9df18e5cebfa6bb6ac811e41267271e8ea1ea6037bde169b0fdc00d55429e0692584df3a1aa4dcf13d' 'SKIP')
+validpgpkeys=('ABE52C516431013C5874107C3F71FE0770D47FFB') # Markus Blatt (applied mathematician and DUNE core developer) <markus@dr-blatt.de>
 
 build() {
-	CMAKE_FLAGS='-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -fPIC -DBUILD_SHARED_LIBS:BOOL=OFF' \
-		                dunecontrol configure --enabled-shared
-	    dunecontrol  make
-    }
+  cmake \
+    -S ${pkgname}-${_tarver} \
+    -B build-cmake \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_SHARED_LIBS=TRUE \
+    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_C_COMPILER=gcc \
+    -DCMAKE_CXX_COMPILER=g++ \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
+    -DENABLE_HEADERCHECK=ON \
+    -Wno-dev
+  cmake --build build-cmake --target all
+}
+
+package() {
+  DESTDIR="${pkgdir}" cmake --build build-cmake --target install
+  install -Dm644 ${pkgname}-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  find "${pkgdir}" -type d -empty -delete
+}
