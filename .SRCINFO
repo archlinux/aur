@@ -1,0 +1,27 @@
+pkgbase = python-neptune-client
+	pkgdesc = Neptune Client
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/neptune-ai/neptune-client
+	arch = x86_64
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-bravado
+	depends = python-click
+	depends = python-future
+	depends = python-oauthlib
+	depends = python-pandas
+	depends = python-pillow
+	depends = python-pyjwt
+	depends = python-requests
+	depends = python-requests-oauthlib
+	depends = python-six
+	depends = python-websocket-client
+	depends = python-gitpython
+	depends = python-boto3
+	depends = python-urllib3
+	depends = python-psutil
+	source = python-neptune-client-0.11.0.tar.gz::https://github.com/neptune-ai/neptune-client/archive/refs/tags/0.11.0.tar.gz
+	md5sums = 55d59cf443dc5c87240a73c30d0bcab7
+
+pkgname = python-neptune-client
