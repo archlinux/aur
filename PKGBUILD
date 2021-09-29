@@ -4,12 +4,15 @@ pkgname=nxprayer
 pkgver=0.1.1.r56.dab0ca0
 pkgrel=1
 epoch=1
-pkgdesc="Islamic prayer reminder for your status bar or/and scripts."
+pkgdesc="Islamic prayers reminder, for your status bar or/and scripts."
 arch=('x86_64')
 url="https://github.com/AbdeltwabMF/nxprayer.git"
 license=('GPL-v3')
 depends=(
     'jq'
+		'awk'
+		'sed'
+		'man.db'
     'gawk'
     'bash'
     'libnotify'
@@ -22,7 +25,7 @@ makedepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("git+${url}")
+source=("${pkgname}::${url}")
 sha1sums=('SKIP')
 
 pkgver() {
