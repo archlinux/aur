@@ -8,7 +8,7 @@ makedepends=('python-setuptools')
 depends=('python' 'python-lxml' 'python-click')
 license=('MIT')
 source=("pyaxmlparser-${pkgver}.tar.gz::https://github.com/appknox/pyaxmlparser/archive/v${pkgver}.tar.gz")
-md5sums=('36ebeb626f5212169116e2658584550d')
+md5sums=('77d5cdbb840ee3d816bf70d321f41f98')
 
 prepare() {
     sed -i "s#click==6.7#click#g" "$srcdir/pyaxmlparser-$pkgver/setup.py"

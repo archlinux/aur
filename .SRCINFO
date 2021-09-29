@@ -10,6 +10,6 @@ pkgbase = python-pyaxmlparser
 	depends = python-lxml
 	depends = python-click
 	source = pyaxmlparser-0.3.26.tar.gz::https://github.com/appknox/pyaxmlparser/archive/v0.3.26.tar.gz
-	md5sums = 36ebeb626f5212169116e2658584550d
+	md5sums = 77d5cdbb840ee3d816bf70d321f41f98
 
 pkgname = python-pyaxmlparser
