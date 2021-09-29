@@ -66,6 +66,8 @@ package_dune-common() {
   install -d ${pkgdir}/usr/share/doc/${pkgbase}/buildsystem
   mv build-cmake/doc/buildsystem/html/* ${pkgdir}/usr/share/doc/${pkgbase}/buildsystem
   install -Dm644 ${pkgbase}-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  cd "${pkgdir}"
+  rm -rf python
   find "${pkgdir}" -type d -empty -delete
 }
 
