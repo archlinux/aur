@@ -2,21 +2,18 @@
 # Contributor: Fanninger Thomas <thomas at fanninger dot at>
 
 pkgname=prosody-mod-default-bookmarks
-pkgver=r2199.2582d09d2ec4
+pkgver=2018.08.18
 pkgrel=1
+_commit="420ebea00cf3"
 pkgdesc="This module allows you to add default bookmarks for users."
 arch=('any')
 url="https://modules.prosody.im/mod_default_bookmarks.html"
 license=('MIT')
 depends=('prosody')
 makedepends=('mercurial')
-source=("hg+https://hg.prosody.im/prosody-modules/")
+source=("hg+https://hg.prosody.im/prosody-modules/"#revision=$_commit)
 sha1sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/prosody-modules/"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-}
 
 package() {
   cd "${srcdir}/prosody-modules/mod_default_bookmarks"
