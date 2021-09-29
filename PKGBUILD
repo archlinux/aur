@@ -2,7 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-akshare
-pkgver=1.1.17
+pkgver=1.1.51
 pkgrel=1
 pkgdesc="Financial data interface library"
 arch=('any')
@@ -16,7 +16,6 @@ depends=(
 	'python-pandas>=0.25'
 	'python-requests>=2.22.0'
 	'python-urllib3>=1.25.8'
-	'python-demjson'
 	'python-pillow>=6.2.1'
 	'python-pinyin>=0.35.0'
 	'python-websocket-client>=0.56.0'
@@ -30,7 +29,12 @@ depends=(
 	'python-pyminiracer>=0.6.0')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jindaxiang/akshare/archive/v$pkgver.tar.gz")
-sha256sums=('ab55b3f470fb1d8f2d6bbb90aacbaeaed394bee1020d6efb6a7b463cd883a0c8')
+sha256sums=('2c1be91a9468fb3b90de53a2768dc753bdf9d2ad7975aa89debf4f09bbb95838')
+
+prepare() {
+	cd "akshare-$pkgver"
+	sed -i "/find_packages/s/()/(exclude=('tests',))/" setup.py
+}
 
 build() {
 	cd "akshare-$pkgver"
@@ -39,6 +43,6 @@ build() {
 
 package() {
 	cd "akshare-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
