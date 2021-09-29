@@ -2,14 +2,13 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.9.1
+pkgver=5.10.0
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://github.com/${pkgname%%-cli}/${pkgname}"
 license=('BSD')
-depends=('python-colorclass'
-	 'python-requests' 
+depends=('python-requests' 
 	 'python-terminaltables' 
 	 'python-yaml')
 optdepends=('python-boto: Object Storage plugin')
@@ -19,7 +18,7 @@ replaces=('linode-cli-dev')
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-cli}/${pkgname}/archive/${pkgver}.tar.gz"
 	no-python2.patch)
-sha256sums=('f8b4124eeb30b64bd17c1a5be0a9c68948be93da6c2fc9fdd8c8eeb96f4283e5'
+sha256sums=('09d65ca675e715b0cd38492a2023695fcaffc95ee730e2f780745dace49340e6'
             '7a3f1e454ffac21db74ad1e1b8575f4246566fb25966b89a2e30fa8215dd8c13')
 
 prepare() {
