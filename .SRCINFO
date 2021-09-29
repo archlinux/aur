@@ -1,7 +1,7 @@
 pkgbase = ferdi-nightly-bin
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - nightly binary version
-	pkgver = 5.6.1.nightly.38
-	pkgrel = 5
+	pkgver = 5.6.3.nightly.16
+	pkgrel = 1
 	url = https://getferdi.com
 	arch = x86_64
 	license = Apache

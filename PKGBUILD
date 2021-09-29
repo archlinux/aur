@@ -2,8 +2,8 @@
 # Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
 
 pkgname=ferdi-nightly-bin
-pkgver=5.6.1.nightly.38
-pkgrel=5
+pkgver=5.6.3.nightly.16
+pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - nightly binary version'
 url='https://getferdi.com'
 license=('Apache')
@@ -14,11 +14,11 @@ provides=('ferdi')
 conflicts=('ferdi' 'ferdi-bin')
 source=(git+https://github.com/getferdi/nightlies.git)
 sha512sums=('SKIP')
-_github_api_uri=https://api.github.com/repos/getferdi/nightlies/releases
+_github_api_uri=https://api.github.com/repos/getferdi/ferdi/releases
 
 pkgver() {
   newest_nightly_version=$(curl --silent ${_github_api_uri} | jq -r '.[0].tag_name[1:]')
-  printf ${newest_nightly_version/-/.}
+  printf ${newest_nightly_version/-/.}'\n'
 }
 
 prepare() {
