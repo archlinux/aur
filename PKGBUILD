@@ -1,35 +1,44 @@
-# Maintainer:
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: bitwave
+
 pkgname=python-pycaption
 _name=${pkgname#python-}
-pkgver=1.0.1
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Python module to read/write popular video caption formats"
 arch=('any')
 url="https://github.com/pbs/pycaption"
 license=('Apache')
-depends=('python-beautifulsoup4' 'python-lxml' 'python-cssutils' 'python-future' 'python-six')
+depends=(
+	'python-beautifulsoup4>=4.8.1'
+	'python-beautifulsoup4<4.10'
+	'python-lxml>=4.6.3'
+	'python-lxml<4.7'
+	'python-cssutils>=2.0.0'
+	'python-cssutils<2.4')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('1000447d92903c2044838f899578c6b8a2e853e9bef4a179b48415e367ea5038')
+checkdepends=('python-pytest>=6.2.0' 'python-pytest-lazy-fixture=0.6.3')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pycaption/pycaption-$pkgver.tar.gz")
+sha256sums=('d225c8445a3fd766ea541429dea796de5e155ddcab1069f369e9e2502a5c070d')
 
 prepare() {
-	cd "$_name-$pkgver"
-
-	# relax requirement
-	sed -i 's/beautifulsoup4>=4.2.1,<4.5.0/beautifulsoup4>=4.2.1/g' setup.py
-
-	# enum34 is only needed for Python <3.4
-	sed -i '14d' setup.py
+	cd "pycaption-$pkgver"
+	sed -i "/packages=/s/()/(exclude=('tests*',))/" setup.py
+	sed -i '/recursive-include/d' MANIFEST.in
 }
 
 build() {
-	cd "$_name-$pkgver"
+	cd "pycaption-$pkgver"
 	python setup.py build
 }
 
+check() {
+	cd "pycaption-$pkgver"
+	pytest
+}
+
 package() {
-	cd "$_name-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "pycaption-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
