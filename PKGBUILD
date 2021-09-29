@@ -1,5 +1,5 @@
 pkgname="python-pyaxmlparser"
-pkgver=0.3.24
+pkgver=0.3.26
 pkgrel=2
 pkgdesc='Parser for Android XML file and get Application Name without using Androguard '
 arch=('any')
