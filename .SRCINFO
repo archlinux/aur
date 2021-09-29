@@ -1,11 +1,11 @@
 pkgbase = f35-backgrounds
 	pkgdesc = Desktop backgrounds of the Fedora 35 default theme for GNOME, KDE, Mate and Xfce desktops
-	pkgver = 35.0.0
+	pkgver = 35.0.1
 	pkgrel = 1
 	url = https://github.com/fedoradesign/backgrounds
 	arch = any
 	license = custom
-	source = https://github.com/fedoradesign/backgrounds/releases/download/v35.0.0/f35-backgrounds-35.0.0.tar.xz
-	b2sums = 1838a7776e8626f7ecf8997f5a1e89475ab009824d9b1793d4bee0ee2484220ba5c2cea2bbb1e5073db361b517e48b6f684297c7771daa9f2925ecaa18dbb2c2
+	source = https://github.com/fedoradesign/backgrounds/releases/download/v35.0.1/f35-backgrounds-35.0.1.tar.xz
+	b2sums = bb239f0d4f2c3352152005eb31a2173e7a8bb857323c843aef1d1549e8c31d6b6d35b25a83d7969f6ebd63fa0e934c2a2cad13952b83ccb76467c4ac451710ff
 
 pkgname = f35-backgrounds
