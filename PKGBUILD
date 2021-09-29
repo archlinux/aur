@@ -30,8 +30,8 @@ depends=(
 
 source=(
     $pkgname::git://github.com/koide3/odometry_saver.git
-    https://github.com/koide3/odometry_saver/pull/1.patch
 )
+
 sha256sums=(
     'SKIP'
     'SKIP'
@@ -40,11 +40,6 @@ sha256sums=(
 pkgver() {
     cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare(){
-    cd "$pkgname"
-    patch --forward --strip=1 --input="${srcdir}/1.patch"
 }
 
 build() {
