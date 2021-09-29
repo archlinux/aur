@@ -1,16 +1,17 @@
 pkgbase = wrench
 	pkgdesc = a CLI tool for Passbolt
 	pkgver = 0.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/liip/wrench
 	arch = any
 	license = GPL3
-	makedepends = python-pytest
-	makedepends = python-pytest-cov
-	makedepends = python-requests-mock
-	makedepends = python-faker
+	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-cov
+	checkdepends = python-requests-mock
+	checkdepends = python-faker
+	makedepends = python-setuptools
 	depends = python
-	depends = python-setuptools
 	depends = python-requests-gpgauthlib
 	depends = python-requests
 	depends = python-click
@@ -18,4 +19,3 @@ pkgbase = wrench
 	b2sums = df197493031219ac21a77ec3a70376f41fffa921dcc7cabb92c4e09bb2845c17522a971d539098bdbeb3cc55529c5348a3db6ec01a10c163f42afd074ef87de2
 
 pkgname = wrench
-
