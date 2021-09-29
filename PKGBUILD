@@ -1,4 +1,5 @@
-# Maintainer: Sergey Shatunov <me#prok.pw>
+# Maintainer: Nathaniel Clark <nathaniel.clark@misrule.us>
+# Contributor: Sergey Shatunov <me#prok.pw>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
@@ -12,7 +13,7 @@ pkgname=(exim-heavy
          exim-lookup-passwd
          exim-lookup-pgsql)
 pkgname=exim-heavy
-pkgver=4.94.2
+pkgver=4.95
 pkgrel=1
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -31,7 +32,7 @@ source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2"{,.asc}
         exim-submission.socket
         exim.sysusers
         exim.tmpfiles)
-sha512sums=('5302fe84146d360d40ba790a25d7ab76bfa3d171dfbd66fe12d34213c24131b981eb93a2efddb4d81731050df1bf0720fabe79816991b478902e46ef342936b7'
+sha512sums=('2ece1bf862553c747fda765698ae0d99ce1c37b6006576661580ec7671f6e25590d21fb2862058a276d8cc1862ecb703e8d72240e5395d8f00d67babbfc3dbbc'
             'SKIP'
             'a91c6a9e5b3ac9d143741dba01e11616812ba44c3a8c768c8232364026460f0b8fdeeb120a2f2b86742a6e3ebbfc9d6335b86d108b044e43108b4a6f0374c9ad'
             'd8e3b466e0bba8175cfe762058dec49018495a260aa5efd139f4ef435284c305958cbd7fc514e81042146368b749ae38f0bf276fc0b4b91918ef33126900aa81'
@@ -45,7 +46,8 @@ sha512sums=('5302fe84146d360d40ba790a25d7ab76bfa3d171dfbd66fe12d34213c24131b981e
             'f8a34fea0a65d0992732bc444bbb334d060de7d91d9cca6f00bc950ba289afa813783517dd3999437f89bc194290785805df7081606a65abb1db3fd3b3aa94ca')
 validpgpkeys=('C693A034E1ED6EE954CAE2DA13DAD99C7E41519C'  # Phil Pennock <pdp@exim.org>
               'ACBB4324393ADE3515DA2DDA4D1E900E14C1CC04'  # Phil Pennock <phil.pennock@spodhuis.org>
-              'E5CA331D44AB8E4C806FDBEE26101B62F69376CE'  # Heiko Schlittermann (Exim MTA Maintainer) <heiko@exim.org>
+              'E5CA331D44AB8E4C806FDBEE26101B62F69376CE'  # Heiko Schlittermann (Exim MTA Maintainer) <heiko@exim.org> (OLD)
+              'D0BFD6B9ECA5694A6F149DCEAF4CC676A6B6C142'  # Heiko Schlittermann (Exim MTA Maintainer) <heiko@exim.org> (NEW)
               'A986F3A6BD6377D8730958DEBCE58C8CE41F32DF') # Jeremy Harris <jgh@wizmail.org>
 
 prepare() {
@@ -135,3 +137,8 @@ package_exim-lookup-pgsql() {
   cd build-Linux-*
   install -Dm0755 lookups/pgsql.so "$pkgdir"/usr/lib/exim/lookups/pgsql.so
 }
+
+# Local Variables:
+# mode: sh
+# indent-tabs-mode: nil
+# End:
