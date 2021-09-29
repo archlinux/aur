@@ -13,13 +13,13 @@
 
 pkgname=gnupg-git
 pkgver=2.3.2.beta105_r9343.g25ae80b8e
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='https://www.gnupg.org/'
 license=(GPL)
 arch=($CARCH)
 # checkdepends=(openssh fig2dev)
-makedepends=(git libldap libusb-compat pcsclite)
+makedepends=(git libldap libusb-compat pcsclite fig2dev)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 depends=(npth libgpg-error libgcrypt libksba libassuan pinentry libbz2.so readline libreadline.so gnutls sqlite zlib)

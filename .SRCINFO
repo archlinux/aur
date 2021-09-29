@@ -1,7 +1,7 @@
 pkgbase = gnupg-git
 	pkgdesc = Complete and free implementation of the OpenPGP standard
 	pkgver = 2.3.2.beta105_r9343.g25ae80b8e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnupg.org/
 	install = gnupg-git.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = gnupg-git
 	makedepends = libldap
 	makedepends = libusb-compat
 	makedepends = pcsclite
+	makedepends = fig2dev
 	depends = npth
 	depends = libgpg-error
 	depends = libgcrypt
