@@ -1,0 +1,31 @@
+pkgbase = dune-geometry
+	pkgdesc = Geometry Transformations, Reference Elements and Quadrature Rules
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://dune-project.org/modules/dune-geometry
+	arch = x86_64
+	license = custom:GPL2 with runtime exception
+	makedepends = dune-common>=2.8.0
+	makedepends = texlive-latexextra
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = inkscape
+	makedepends = python-setuptools
+	optdepends = texlive-latexextra: Type setting system
+	optdepends = doxygen: Generate the class documentation from C++ sources
+	optdepends = graphviz: Graph visualization software
+	optdepends = inkscape: converts SVG images
+	optdepends = python-quadpy: for quadrature rules
+	source = https://dune-project.org/download/2.8.0/dune-geometry-2.8.0.tar.gz
+	source = https://dune-project.org/download/2.8.0/dune-geometry-2.8.0.tar.gz.asc
+	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
+	sha512sums = 9a531afeefb10dd9e7f2cf9fcb6b61bba01fae323c9e67c47cf387f45a25bae7f2f061d6ffe268bff14fbcbfe8e42c20a57b99794f77cfba5c52b1dea0e5c9e1
+	sha512sums = SKIP
+
+pkgname = dune-geometry
+	depends = dune-common>=2.8.0
+
+pkgname = python-dune-geometry
+	pkgdesc = Geometry Transformations, Reference Elements and Quadrature Rules (python bindings)
+	depends = dune-geometry>=2.8.0
+	depends = python-dune-common>=2.8.0
