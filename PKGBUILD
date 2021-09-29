@@ -1,6 +1,6 @@
 pkgname=briar-headless
 conflicts=('briar-headless-git')
-pkgver=1.2.20
+pkgver=1.3.8
 pkgrel=1
 pkgdesc='Briar REST API'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -35,7 +35,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin/"
   cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/bin/sh
-exec /usr/bin/java -jar '/usr/share/java/briar-headless.jar' "$@"
+exec /usr/bin/java -jar '/usr/share/java/briar-headless.jar' "\$@"
 EOF
   chmod +x "$pkgdir/usr/bin/$pkgname"
 
