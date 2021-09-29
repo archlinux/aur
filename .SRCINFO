@@ -1,6 +1,6 @@
 pkgbase = nxprayer
 	pkgdesc = Islamic prayers reminder, for your status bar or/and scripts.
-	pkgver = 0.1.1.r56.dab0ca0
+	pkgver = 0.1.1.r61.a29f84e
 	pkgrel = 1
 	url = https://github.com/AbdeltwabMF/nxprayer.git
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = nxprayer
 	depends = libnotify
 	provides = nxprayer
 	conflicts = nxprayer
-	source = nxprayer::https://github.com/AbdeltwabMF/nxprayer.git
+	source = git+https://github.com/AbdeltwabMF/nxprayer.git
 	sha1sums = SKIP
 
 pkgname = nxprayer

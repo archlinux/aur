@@ -1,7 +1,7 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=nxprayer
-pkgver=0.1.1.r56.dab0ca0
+pkgver=0.1.1.r61.a29f84e
 pkgrel=1
 pkgdesc="Islamic prayers reminder, for your status bar or/and scripts."
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}::${url}")
+source=("git+${url}")
 sha1sums=('SKIP')
 
 pkgver() {
