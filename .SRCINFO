@@ -1,31 +1,29 @@
 pkgbase = dune-pdelab
-	pkgdesc = Assembly for partial differential equations in DUNE
-	pkgver = 2.6.0
+	pkgdesc = New generalized discretization module for a wide range of discretization methods
+	pkgver = 2.7
 	pkgrel = 1
-	url = https://gitlab.dune-project.org/extensions/dune-pdelab
-	arch = i686
+	url = https://www.dune-project.org/modules/dune-pdelab
 	arch = x86_64
-	groups = dune
-	license = custom
-	makedepends = cmake
-	makedepends = gcc-fortran
-	makedepends = dune-common>=2.6.0
-	makedepends = dune-typetree
-	makedepends = dune-geometry
-	makedepends = dune-grid
-	makedepends = dune-istl
-	makedepends = dune-localfunctions
-	makedepends = dune-alugrid>=2.6.0
-	makedepends = dune-functions>=2.6.0
-	makedepends = openmpi
+	license = LGPL3
+	license = custom:GPL2 with runtime exception
+	makedepends = doxygen
+	makedepends = graphviz
 	makedepends = eigen
-	makedepends = superlu
-	makedepends = suitesparse
-	makedepends = alberta
-	makedepends = gmp
-	makedepends = git
-	source = git+https://gitlab.dune-project.org/pdelab/dune-pdelab.git#branch=releases/2.6
-	md5sums = SKIP
+	makedepends = petsc
+	depends = dune-functions>=2.7
+	depends = dune-alugrid>=2.7
+	depends = superlu
+	depends = arpackpp
+	depends = suitesparse
+	depends = zoltan
+	optdepends = texlive-core: Type setting system
+	optdepends = biber: A Unicode-capable BibTeX replacement for biblatex users
+	optdepends = doxygen: Generate the class documentation from C++ sources
+	optdepends = eigen: Lightweight C++ template library for vector and matrix math
+	optdepends = petsc: Portable, extensible toolkit for scientific computation
+	optdepends = dune-alugrid: for creation ALUGrid from gmsh file
+	optdepends = dune-multidomaingrid: for Multiple-Domain Grid Function Space test for Poisson
+	source = https://gitlab.dune-project.org/pdelab/dune-pdelab/-/archive/releases/2.7/dune-pdelab-releases-2.7.tar.gz
+	sha512sums = fa0e30bf247bb7d4ecf5843e94c65058f8a52f02f29c87f63d72791c657d75975d9e004ab67550e9719c030d15b4bd2d50b52150c09ae9f8651499269ce7fbdc
 
 pkgname = dune-pdelab
-
