@@ -7,7 +7,7 @@ arch=('any')
 license=('GPL2')
 depends=("python-urllib3" "python-beautifulsoup4" "python-dnspython")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hannob/snallygaster/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('e2fd53b52c5de56a76fe84414e965ff7')
+md5sums=('448dfcb9fa2cf177a037d40ffc1caa1b')
 
 package() {
     install -Dm755 "$srcdir/snallygaster-$pkgver/snallygaster" "$pkgdir/usr/bin/snallygaster"
