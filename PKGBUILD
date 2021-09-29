@@ -1,5 +1,5 @@
 pkgname=snallygaster
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Tool to scan for secret files on HTTP servers"
 url="https://github.com/hannob/snallygaster"
