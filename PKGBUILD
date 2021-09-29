@@ -3,7 +3,7 @@
 # Python package author: Philippe Faist <philippe.faist@bluewin.ch>
 pkgname=python-pylatexenc
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for encoding unicode to latex and for parsing LaTeX to generate unicode text"
 arch=(any)
 url="https://github.com/phfaist/pylatexenc"
