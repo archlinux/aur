@@ -17,7 +17,6 @@ md5sums=('73740eaa5477de79e4c33e68cec87763'
          'd2a25d5b510bcc796ef955f71884581e')
 
 prepare() {
-  rustup update stable
   rustup toolchain install 1.51.0
 }
 
