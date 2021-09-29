@@ -3,7 +3,7 @@
 pkgbase=linux-system76-gaze16
 pkgver=5.14.8.arch1_gaze16
 _pkgver=${pkgver%_*}
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Arch Linux + system76 gaze16 touchpad and mic fix'
 _srctag=v${_pkgver%.*}-${_pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
@@ -30,7 +30,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'f98065a286a6d2dbb0e226867a6417e344aaa44ef6eac967707e1f09671be445'
+            '32b4cb0d2b7bfc7a5e7a2cd2ac5860da0c28c8e3d94f554250471d7d3bb36925'
             'ef1f46b993d1c88d2e28b88c25e09269e92c127050afa403fca57c0eecec6afe'
             '1c8b8f8cd47819714a05055a75f06f3a9804478f4a80cbd80d3280839454fde1'
             'c3801e7a602660b53c4aeac79ec480a2d7311054b0fcc5fa24de7c9f71a4dc84')
