@@ -1,0 +1,24 @@
+pkgbase = codmw2-wine-steam
+	pkgdesc = Call of Duty: Modern Warfare 2 using WINE with data via Steam
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://store.steampowered.com/app/10180/Call_of_Duty_Modern_Warfare_2/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	makedepends = zip
+	depends = wine
+	source = codmw2.sh
+	source = codmw2.desktop
+	source = https://github.com/XLabsProject/iw4x-client/releases/download/v0.6.1/iw4x.dll
+	source = git+https://github.com/XLabsProject/iw4x-rawfiles.git
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = 4d36bd2dcd4afd39e113440391e2fb821b6de01f02c3f8a3c948c35b0f08e9c1
+	sha256sums = 0f80bbdc2a58a085e624b853bb8aa9efb78353cc432f8e19841421628e1ae9f6
+	sha256sums = aac196ca85ee1f79080ac236b82397b6a8c7bf70f152c273e6a0fa334e87373c
+	sha256sums = SKIP
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = codmw2-wine-steam

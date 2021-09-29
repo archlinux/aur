@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Call of Duty: Modern Warfare 2
+Comment=Call of Duty: Modern Warfare 2 Multiplayer WINE
+Exec=/usr/bin/codmw2
+Icon=codmw2
+Terminal=false
+Type=Application
+Categories=Application;Game;
