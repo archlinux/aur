@@ -1,34 +1,25 @@
 # Maintainer Yuqing Gu <sffred@qq.com>
 pkgname=jupyter-wolframengine_kernel
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Wolfram Language kernel for Jupyter notebooks"
 arch=('any')
 url="https://github.com/WolframResearch/WolframLanguageForJupyter"
 license=('MIT')
 install=jupyter-wolframengine_kernel.install
-
-depends=(
-  jupyter
-)
-makedepends=(
-  git
-)
+depends=(jupyter)
 # The wolframengine is listed as optional depends, but you must install
 # wolframscript in some way to install this package
-optdepends=(
-  wolframengine
-)
-
-options=("!strip")
+optdepends=(wolframengine)
+source=("git+https://github.com/WolframResearch/WolframLanguageForJupyter.git")
 
 prepare() {
-  if [ -d ${srcdir}/WolframLanguageForJupyter ]; then
-    msg2 "Repository exists, deleting"
-    rm -rf ${srcdir}/WolframLanguageForJupyter
-  fi
+#  if [ -d ${srcdir}/WolframLanguageForJupyter ]; then
+#    msg2 "Repository exists, deleting"
+#    rm -rf ${srcdir}/WolframLanguageForJupyter
+#  fi
   msg2 "Cloning repository"
-  git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
+#  git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
 }
 
 check() {
@@ -45,20 +36,16 @@ check() {
   else
     echo "wolframscript activated"
   fi
-  echo ${name} > ${srcdir}/WolframLanguageForJupyter/username.conf
+  echo ${name} > ${srcdir}/username.conf
 }
 
 package() {
-  msg2 "Removing unnecessary files"
-  rm -f ${srcdir}/WolframLanguageForJupyter/.gitignore
-  rm -rf ${srcdir}/WolframLanguageForJupyter/.git
-
   msg2 "Copying installer files"
   mkdir ${pkgdir}/opt 
   cp -r ${srcdir}/WolframLanguageForJupyter ${pkgdir}/opt/WolframLanguageForJupyter
 
-  msg2 "Copying license"
-  mkdir -p ${pkgdir}/usr/share/license/WolframLanguageForJupyter
-  cp ${srcdir}/WolframLanguageForJupyter/LICENSE ${pkgdir}/usr/share/license/WolframLanguageForJupyter/LICENSE
+  echo "Generating configure"
+  mkdir ${pkgdir}/etc
+  cp ${srcdir}/username.conf ${pkgdir}/etc/jupyter-wolframengine_kernel.conf
 }
 
