@@ -1,7 +1,7 @@
 pkgbase = clpm
-	pkgdesc = Common Lisp Package Manager
+	pkgdesc = Common Lisp Project Manager
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.common-lisp.net/clpm/clpm
 	arch = x86_64
 	arch = aarch64
