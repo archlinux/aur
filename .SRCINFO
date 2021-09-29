@@ -1,0 +1,13 @@
+pkgbase = hush-lightwalletd
+	pkgdesc = HUSH Lightwallet daemon for running SDL servers
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.hush.is/hush/lightwalletd
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	provides = lightwalletd
+	source = git+https://git.hush.is/hush/lightwalletd.git
+	sha256sums = SKIP
+
+pkgname = hush-lightwalletd
