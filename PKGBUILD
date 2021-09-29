@@ -1,7 +1,7 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname="python-cardano"
 _projname="cardano-python"
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='A comprehensive Python module for handling Cardano cryptocurrency and blockchain platform'
 license=('BSD')
@@ -10,7 +10,7 @@ url='https://github.com/emesik/cardano-python'
 makedepends=('python' 'python-distribute')
 depends=('python' 'python-requests')
 source=("https://github.com/emesik/${_projname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a514ef6543f31d2099ec76fbfdb89fce0a381431f0618c577095457ff9c4dca7')
+sha256sums=('89cd2a0a2126c6867af7223e3214d2de7ad33ae3185be84525a29c14c8ef54a9')
 
 build() {
   cd "${srcdir}/${_projname}-${pkgver}"
