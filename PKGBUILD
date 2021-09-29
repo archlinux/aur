@@ -85,9 +85,9 @@ pkgbase=linux-cacule-rdb
 pkgname=('linux-cacule-rdb' 'linux-cacule-rdb-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.8
-pkgrel=3
+pkgrel=4
 arch=(x86_64 x86_64_v3)
-pkgdesc='linux-cacule-rdb Kernel by Hamad Marri and with some other patchsets'
+pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patches'
 _gittag=v${pkgver%.*}-${pkgver##*.}
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/ptr1337/linux-cacule"
@@ -95,6 +95,9 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
+if [ -n "$_use_llvm_lto" ]; then
+makedepends+=(clang llvm lld python)
+fi
 _caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE"
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
@@ -103,9 +106,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/arch-patches-v8/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14.patch"
 #        "${_patchsource}/misc/0004-folio-mm.patch"
-#        "${_patchsource}/misc/amd/0011-amd-ptdma.patch"
         "${_patchsource}/misc/amd/0006-amd-cppc.patch"
-#        "${_patchsource}/misc/0007-string.patch"
 #        "${_patchsource}/0001-Allow-polling-rate-to-be-set-for-all-usb-devices.patch"
         "${_patchsource}/misc/zen-tweaks-cacule.patch"
         "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
@@ -394,8 +395,12 @@ prepare() {
               scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
               ###   miscellaneous   ###
               scripts/config --enable CONFIG_ZEN_INTERACTIVE
+              echo "Enable AMD PSTATE"
               scripts/config --enable CONFIG_x86_AMD_PSTATE
-              scripts/config --enable CONFIG_LTO_NONE
+              echo "Enable LLVM LTO"
+              if [ -n "$_use_llvm_lto" ]; then
+              scripts/config --disable CONFIG_LTO_NONE
+              fi
 
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -564,7 +569,7 @@ package_linux-cacule-rdb-headers() {
 }
 
 md5sums=('ce6434b646ade20e292fb28c1aacde58'
-         '560440fcaec1f4f62bde8d337d2b752e'
+         'e982364d1abb68de954be64c596f435c'
          'ef749be7f2048456ae738f93229bf354'
          '40a9380b2884f5d417791f06389ba57e'
          '430972ae1e936f99d8dc2a1f4fdaf774'

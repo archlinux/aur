@@ -1,7 +1,7 @@
 pkgbase = linux-cacule-rdb
-	pkgdesc = linux-cacule-rdb Kernel by Hamad Marri and with some other patchsets
+	pkgdesc = Linux-CacULE-RDB Kernel by Hamad Marri and with some other patches
 	pkgver = 5.14.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ptr1337/linux-cacule
 	arch = x86_64
 	arch = x86_64_v3
@@ -49,7 +49,7 @@ pkgbase = linux-cacule-rdb
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/0001-ksm.patch
 	source = auto-cpu-optimization.sh
 	md5sums = ce6434b646ade20e292fb28c1aacde58
-	md5sums = 560440fcaec1f4f62bde8d337d2b752e
+	md5sums = e982364d1abb68de954be64c596f435c
 	md5sums = ef749be7f2048456ae738f93229bf354
 	md5sums = 40a9380b2884f5d417791f06389ba57e
 	md5sums = 430972ae1e936f99d8dc2a1f4fdaf774
@@ -79,7 +79,7 @@ pkgbase = linux-cacule-rdb
 	md5sums = 21c98f19e883879dd3336c1fa143fd31
 
 pkgname = linux-cacule-rdb
-	pkgdesc = The linux-cacule-rdb Kernel by Hamad Marri and with some other patchsets and modules
+	pkgdesc = The Linux-CacULE-RDB Kernel by Hamad Marri and with some other patches and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -90,6 +90,6 @@ pkgname = linux-cacule-rdb
 	replaces = 
 
 pkgname = linux-cacule-rdb-headers
-	pkgdesc = Headers and scripts for building modules for the linux-cacule-rdb Kernel by Hamad Marri and with some other patchsets
+	pkgdesc = Headers and scripts for building modules for the Linux-CacULE-RDB Kernel by Hamad Marri and with some other patches
 	depends = linux-cacule=5.14.8
 	depends = pahole
