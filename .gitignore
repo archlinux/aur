@@ -1,5 +1,5 @@
-*.pkg.tar.xz
-*.pkg.tar.zst
-pkg/
-src/
-*.zip
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!nodejs-n.install

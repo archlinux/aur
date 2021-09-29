@@ -1,16 +1,13 @@
 pkgbase = nodejs-n
-	pkgdesc = Node version manager
-	pkgver = 7.0.0
+	pkgdesc = Node version management
+	pkgver = 7.4.1
 	pkgrel = 1
 	url = https://github.com/tj/n
 	install = nodejs-n.install
 	arch = any
 	license = MIT
 	depends = bash
-	source = https://github.com/tj/n/archive/v7.0.0.zip
-	source = LICENSE.md
-	md5sums = 8dfd6f54e9608e5e598b2ede1d9e3fa0
-	md5sums = 55761bbdb8c6dfe8c83a1f27122bdff1
+	source = https://github.com/tj/n/archive/v7.4.1/n-7.4.1.tar.gz
+	sha256sums = 68364cc0a3b84254ef61d8c1e86cfc17110984daceb22df4dca28cd40341b589
 
 pkgname = nodejs-n
-
