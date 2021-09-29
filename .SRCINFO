@@ -1,0 +1,13 @@
+pkgbase = python-html-text
+	pkgdesc = Python library to extract text from HTML
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/TeamHG-Memex/html-text
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-lxml
+	source = python-html-text-0.5.2.tar.gz::https://github.com/TeamHG-Memex/html-text/archive/0.5.2.tar.gz
+	sha256sums = c75a1da10d649f55162446de57f98374059a998071110a343815841286a442f9
+
+pkgname = python-html-text
