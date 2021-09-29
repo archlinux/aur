@@ -1,6 +1,6 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.35.r16.g535aca1b
+	pkgver = 0.3.37.r44.gd2f05733
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = pipewire-common-git
 	makedepends = doxygen
 	makedepends = python-docutils
 	makedepends = ncurses
+	makedepends = readline
 	makedepends = libsndfile
 	makedepends = alsa-lib
 	makedepends = dbus
