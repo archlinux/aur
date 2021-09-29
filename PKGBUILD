@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-nvfbc
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="OBS Studio source plugin for NVIDIA FBC API"
 arch=('x86_64')
