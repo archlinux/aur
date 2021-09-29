@@ -1,7 +1,7 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 # Contributor: jhass <me@jhass.eu>
 pkgname=luaunbound
-pkgver=0.5
+pkgver=1.0.0
 epoch=1
 pkgrel=1
 pkgdesc="drop-in replacement for Prosodys internal DNS library with a binding to libunbound"
@@ -13,7 +13,7 @@ makedepends=("mercurial" "unbound" "lua" "libxslt" "ccache")
 optdepends=("luajit: jit for lua")
 install=luaunbound.install
 source=("https://code.zash.se/dl/luaunbound/luaunbound-${pkgver}.tar.gz")
-sha512sums=('8bd76a5e17d21b704953f5e2963b9ac0b4d3c6b32fd3dec8313ccea708a7606c6f6cdf088be6395e51bcaf4b2ca589e402dfb8bafdca53b6eda6088c0d6592b5')
+sha512sums=('9fab77481e7c84409d9ceb79156d06cb9ac2b2d7df53349e0f1b6c118022c9b1c22481e9413efedda41cc9acb1640d3d30cc4e0f9b7ed7fd6ed2511192a69d3c')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
