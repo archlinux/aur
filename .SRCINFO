@@ -1,0 +1,13 @@
+pkgbase = python-jstyleson
+	pkgdesc = Library to parse JSON with js-style comments.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/jstyleson/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/j/jstyleson/jstyleson-0.0.2.tar.gz
+	sha256sums = 680003f3b15a2959e4e6a351f3b858e3c07dd3e073a0d54954e34d8ea5e1308e
+
+pkgname = python-jstyleson
