@@ -1,7 +1,7 @@
 pkgbase = linux-cacule
 	pkgdesc = Linux-CacULE Kernel by Hamad Marri and with some other patchsets
 	pkgver = 5.14.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ptr1337/linux-cacule
 	arch = x86_64
 	arch = x86_64_v3
@@ -49,7 +49,7 @@ pkgbase = linux-cacule
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/0001-ksm.patch
 	source = auto-cpu-optimization.sh
 	md5sums = ce6434b646ade20e292fb28c1aacde58
-	md5sums = c1d4b49a8699d4d527704758130d4f9b
+	md5sums = 6cfe7a16a5260cb75e5a4145991e0027
 	md5sums = ef749be7f2048456ae738f93229bf354
 	md5sums = 40a9380b2884f5d417791f06389ba57e
 	md5sums = 430972ae1e936f99d8dc2a1f4fdaf774

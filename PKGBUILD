@@ -34,6 +34,7 @@ _kyber_disable=y
 
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
+
 _lru_enable=y
 
 ### Enable Linux Random Number Generator
@@ -85,7 +86,7 @@ pkgbase=linux-cacule
 pkgname=('linux-cacule' 'linux-cacule-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.8
-pkgrel=3
+pkgrel=4
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -95,6 +96,9 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
+if [ -n "$_use_llvm_lto" ]; then
+makedepends+=(clang llvm lld python)
+fi
 _caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE"
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
@@ -103,10 +107,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/arch-patches-v8/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14.patch"
 #        "${_patchsource}/misc/0004-folio-mm.patch"
-#        "${_patchsource}/misc/amd/0011-amd-ptdma.patch"
         "${_patchsource}/misc/amd/0006-amd-cppc.patch"
-#        "${_patchsource}/misc/0007-string.patch"
-#        "${_patchsource}/0001-Allow-polling-rate-to-be-set-for-all-usb-devices.patch"
         "${_patchsource}/misc/zen-tweaks-cacule.patch"
         "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${_patchsource}/ll-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
@@ -394,9 +395,12 @@ prepare() {
               scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
               ###   miscellaneous   ###
               scripts/config --enable CONFIG_ZEN_INTERACTIVE
+              echo "Enable AMD PSTATE"
               scripts/config --enable CONFIG_x86_AMD_PSTATE
-              scripts/config --enable CONFIG_LTO_NONE
-
+              echo "Enable LLVM LTO"
+              if [ -n "$_use_llvm_lto" ]; then
+              scripts/config --disable CONFIG_LTO_NONE
+              fi
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
     if [ -n "$_use_current" ]; then
@@ -564,7 +568,7 @@ package_linux-cacule-headers() {
 }
 
 md5sums=('ce6434b646ade20e292fb28c1aacde58'
-         'c1d4b49a8699d4d527704758130d4f9b'
+         '6cfe7a16a5260cb75e5a4145991e0027'
          'ef749be7f2048456ae738f93229bf354'
          '40a9380b2884f5d417791f06389ba57e'
          '430972ae1e936f99d8dc2a1f4fdaf774'
