@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Call of Duty: Ghosts
+Comment=Call of Duty: Ghosts Multiplayer WINE
+Exec=/usr/bin/codghosts
+Icon=codghosts
+Terminal=false
+Type=Application
+Categories=Application;Game;

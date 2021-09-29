@@ -1,0 +1,21 @@
+pkgbase = codghosts-wine-steam
+	pkgdesc = Call of Duty: Ghosts using WINE with data via Steam
+	pkgver = 1.18
+	pkgrel = 1
+	url = https://store.steampowered.com/app/209160/Call_of_Duty_Ghosts/
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = wine
+	depends = winetricks
+	source = codghosts.sh
+	source = codghosts.desktop
+	source = https://github.com/XLabsProject/iw6x-client/releases/download/v2.0.2/iw6x-v2.0.2.zip
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = 1a93d386ae13d174e9be41fbe08e1d11db252a353e30df23338e17eb3ff8976f
+	sha256sums = 4994037527dda02cf2dcf70de80c2069a15ee5a309ef708fe23b2a0fa904399b
+	sha256sums = c1a151c025ef67acfbd32c802fa18e7461444c62e356b72dd893ac196c62ed17
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = codghosts-wine-steam
