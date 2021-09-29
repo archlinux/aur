@@ -2,7 +2,7 @@
 
 pkgname=keyboard-center
 pkgver=0.1.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
 url="https://github.com/zocker-160/keyboard-center"
@@ -16,8 +16,7 @@ depends=(
     'hidapi>=0.10'
     'libnotify>=0.7.9'
 )
-optdepends=('openrgb: RGB control for your keyboard'
-            'openrgb-bin: RGB control for your keyboard (binary version)')
+optdepends=('openrgb: RGB control for your keyboard')
 makedepends=('git')
 source=("$pkgname-$pkgver::git+https://github.com/zocker-160/keyboard-center.git#tag=$pkgver")
 sha256sums=('SKIP')
