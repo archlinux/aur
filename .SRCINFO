@@ -1,6 +1,6 @@
 pkgbase = voltdb
 	pkgdesc = An in-memory database with pre-compiled Java stored procedures (Community Edition)
-	pkgver = 8.4.11
+	pkgver = 10.0
 	pkgrel = 1
 	url = http://voltdb.com/
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = voltdb
 	license = AGPL3
 	makedepends = apache-ant
 	makedepends = python2-virtualenv
+	makedepends = cmake
 	depends = python2
 	depends = java-environment-openjdk=8
 	conflicts = voltdb-enterprise
-	source = https://github.com/voltdb/voltdb/archive/voltdb-8.4.11.tar.gz
-	md5sums = 85d200c015cd13c333fe23adc7aec99d
+	source = https://github.com/voltdb/voltdb/archive/voltdb-10.0.tar.gz
+	md5sums = 8f7439f4ac24d23da6134f68abfbaa6d
 
 pkgname = voltdb
-
