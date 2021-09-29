@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron12
-pkgver=12.1.2
-_commit=f86a8b21f507b5c7d55b06c2966c10b1c5bac3c2
+pkgver=12.2.0
+_commit=22373d0d18244fc1538e16b0be89a5c94a55d69d
 _chromiumver=89.0.4389.128
 _gcc_patchset=7
 pkgrel=1
