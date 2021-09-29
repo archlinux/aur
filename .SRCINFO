@@ -1,58 +1,19 @@
 pkgbase = dune-core
-	pkgdesc = Core modules of the DUNE framework
-	pkgver = 2.7.1
+	pkgdesc = Metapackage to install modules of DUNE Numerics.
+	pkgver = 2.8.0
 	pkgrel = 1
-	url = http://www.dune-project.org
-	arch = i686
-	arch = x86_64
-	groups = dune
-	license = custom
-	makedepends = cmake
-	makedepends = gcc-fortran
-	makedepends = openmpi
-	makedepends = gmp
-	makedepends = lapack
-	makedepends = boost
-	makedepends = superlu
-	makedepends = suitesparse
-	makedepends = parmetis
-	makedepends = psurface
-	makedepends = python
-	makedepends = bash
-	makedepends = libtirpc-compat
-	source = http://www.dune-project.org/download/2.7.1/dune-common-2.7.1.tar.gz
-	source = http://www.dune-project.org/download/2.7.1/dune-geometry-2.7.1.tar.gz
-	source = http://www.dune-project.org/download/2.7.1/dune-localfunctions-2.7.1.tar.gz
-	source = http://www.dune-project.org/download/2.7.1/dune-istl-2.7.1.tar.gz
-	source = http://www.dune-project.org/download/2.7.1/dune-grid-2.7.1.tar.gz
-	source = http://www.dune-project.org/download/2.7.1/dune-uggrid-2.7.1.tar.gz
-	md5sums = 8c789975f762066d5bffc02085ac3eda
-	md5sums = 57bfac1eb1b08b2e6601907664797609
-	md5sums = b3adbb0e960f2f27f3e6cb825ec5ac42
-	md5sums = 7ece14f349d76c9df10bf784c1bc686b
-	md5sums = c739c3dfce1d4d7f93bea58963e4681d
-	md5sums = 597cbd936908506bfd0392b1dd0edbe8
-
-pkgname = dune-common
-	pkgdesc = Basic classes used by all DUNE modules
-	depends = bash
-	depends = python
-
-pkgname = dune-geometry
-	pkgdesc = Reference elements with corresponding mappings and quadratures
-
-pkgname = dune-localfunctions
-	pkgdesc = Shape functions, interpolation operators on DUNE reference elemements
+	url = https://dune-project.org
 	arch = any
+	license = none
+	depends = dune-common
+	depends = dune-istl
+	depends = dune-geometry
+	depends = dune-localfunctions
+	depends = dune-grid
+	depends = dune-typetree
+	depends = dune-uggrid
+	depends = dune-functions
+	depends = dune-logging
+	depends = dune-alugrid
 
-pkgname = dune-istl
-	pkgdesc = Iterative solver template library
-	arch = any
-
-pkgname = dune-grid
-	pkgdesc = Nonconforming, hierarchically nested, multi-element-type, parallel grids
-	arch = any
-
-pkgname = dune-uggrid
-	pkgdesc = UG grid manager
-	arch = any
+pkgname = dune-core
