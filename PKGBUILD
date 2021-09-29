@@ -9,8 +9,8 @@ url="https://github.com/AbdeltwabMF/nxprayer.git"
 license=('GPL-v3')
 depends=(
     'jq'
-		'awk'
-		'sed'
+    'awk'
+    'sed'
     'gawk'
     'bash'
     'libnotify'
