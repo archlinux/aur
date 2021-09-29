@@ -1,22 +1,19 @@
-# Maintainer: Fanninger Thomas <thomas at fanninger dot at>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Fanninger Thomas <thomas at fanninger dot at>
 
 pkgname=prosody-mod-mam-archive
-pkgver=r2199.2582d09d2ec4
-pkgrel=2
+pkgver=2017.04.22
+pkgrel=1
+_commit="3e97dae28215"
 pkgdesc="XEP-0136: Message Archiving for Prosody"
 arch=('any')
 url="https://modules.prosody.im/mod_mam_archive.html"
 license=('MIT')
-depends=('prosody' 'prosody-mod-mam-hg')
-provides=('prosody-mod-mam-archive')
+depends=('prosody')
 makedepends=('mercurial')
-source=("hg+https://hg.prosody.im/prosody-modules/")
+source=("hg+https://hg.prosody.im/prosody-modules/"#revision=$_commit)
 sha1sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/prosody-modules/"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-}
 
 package() {
   cd "${srcdir}/prosody-modules/mod_mam_archive"
