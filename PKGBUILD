@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=uxplay
 _gitname=UxPlay
-pkgver=1.35.1
+pkgver=1.36
 pkgrel=1
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 conflicts=('uxplay')
 provides=('uxplay')
 source=("$_gitname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "uxplay.desktop")
-sha256sums=('d29ed97849600e8a91e7bd2a4d2fbb02311eddcd4d443612cf804687200fd530' '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
+sha256sums=('0e6dc8db1096a06b1da7020346364d97d0d77c2a0d69ff810ae6841a02cd6441' '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
 
 build() {
   cd "$srcdir/$_gitname-$pkgver"
