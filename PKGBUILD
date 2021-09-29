@@ -1,11 +1,12 @@
-# Maintainer: Fanninger Thomas <thomas at fanninger dot at>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Fanninger Thomas <thomas at fanninger dot at>
 
 pkgname=prosody-mod-default-bookmarks
 pkgver=r2199.2582d09d2ec4
 pkgrel=1
 pkgdesc="This module allows you to add default bookmarks for users."
 arch=('any')
-url="https://modules.prosody.im/mod_mam_muc.html"
+url="https://modules.prosody.im/mod_default_bookmarks.html"
 license=('MIT')
 depends=('prosody')
 makedepends=('mercurial')
