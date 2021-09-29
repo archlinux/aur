@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 92.0
+	pkgver = 92.0.1
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf.install
@@ -51,15 +51,17 @@ pkgbase = librewolf
 	options = !strip
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/92.0/source/firefox-92.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/92.0.1/source/firefox-92.0.1.source.tar.xz
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/common.git#tag=v92.0-1
-	source = git+https://gitlab.com/librewolf-community/settings.git#tag=1.6
-	sha256sums = 299a472373021cc9194449c9f4bb962d5f74ef05e8af0448c589761ea34fbc84
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk/0002-Bug-1731495-Don-t-typecheck-the-pipewire-session_han.patch
+	source = git+https://gitlab.com/librewolf-community/browser/common.git#tag=v92.0.1-1
+	source = git+https://gitlab.com/librewolf-community/settings.git#tag=2.0
+	sha256sums = 9096b22e162cd299080d5eef8f3627a71a594ceba2b89e3000f2c3e8ea603eb1
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
+	sha256sums = 8f313d96c845723f54996d660a201d747dfa8da791f19a827aba55cb81261e38
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_aarch64 = 92.0-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
+	source_aarch64 = 92.0.1-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
 	sha256sums_aarch64 = 2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9
 
 pkgname = librewolf

@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=92.0
+pkgver=92.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -24,17 +24,19 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 backup=('usr/lib/librewolf/librewolf.cfg'
         'usr/lib/librewolf/distribution/policies.json')
 options=(!emptydirs !makeflags !strip)
-_arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
+_arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
 _common_tag="v${pkgver}-${pkgrel}"
-_settings_tag='1.6'
+_settings_tag='2.0'
 install='librewolf.install'
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
+        "${_arch_git}/0002-Bug-1731495-Don-t-typecheck-the-pipewire-session_han.patch"
         "git+https://gitlab.com/${pkgname}-community/browser/common.git#tag=${_common_tag}"
         "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}")
 source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
-sha256sums=('299a472373021cc9194449c9f4bb962d5f74ef05e8af0448c589761ea34fbc84'
+sha256sums=('9096b22e162cd299080d5eef8f3627a71a594ceba2b89e3000f2c3e8ea603eb1'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
+            '8f313d96c845723f54996d660a201d747dfa8da791f19a827aba55cb81261e38'
             'SKIP'
             'SKIP')
 sha256sums_aarch64=('2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
@@ -42,6 +44,9 @@ sha256sums_aarch64=('2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e
 prepare() {
   mkdir -p mozbuild
   cd firefox-$pkgver
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1731495
+  patch -Np1 -i ${srcdir}/0002-Bug-1731495-Don-t-typecheck-the-pipewire-session_han.patch
 
   local _patches_dir="${srcdir}/common/patches"
 
@@ -314,4 +319,7 @@ END
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
+
+  # temporary workaround for older uBlock version until AMO issues are fixed by Mozilla
+  sed -e 's/ublock_origin-1.38.0/ublock_origin-1.37.2/' -i ${pkgdir}/usr/lib/${pkgname}/distribution/policies.json
 }
