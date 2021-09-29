@@ -19,6 +19,4 @@ package() {
   cd "${pkgname%-bin}-${pkgver}"
   make DESTDIR="$pkgdir/" install
 }
-md5sums=('9150f5003859c0694212c41ffb6bae92')
-sha1sums=('11bc5fd04a40f1970404fa358fc351f47039a7b4')
 sha256sums=('00641ad2449d20b5f28e3cf9105d7467899909216fd094ca52f6f1ee22d4ced7')
