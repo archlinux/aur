@@ -9,6 +9,7 @@ pkgbase = sioyek-git
 	depends = qt5-base
 	depends = qt5-3d
 	depends = harfbuzz
+	depends = gzip
 	provides = sioyek
 	source = sioyek-git::git+https://github.com/ahrm/sioyek
 	md5sums = SKIP

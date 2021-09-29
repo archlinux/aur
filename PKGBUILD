@@ -7,7 +7,7 @@ arch=('any')
 license=('GPL3')
 provides=('sioyek')
 url="https://github.com/ahrm/sioyek"
-depends=('qt5-base' 'qt5-3d' 'harfbuzz')
+depends=('qt5-base' 'qt5-3d' 'harfbuzz' 'gzip')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/ahrm/sioyek")
 md5sums=('SKIP')
@@ -33,8 +33,13 @@ package() {
 	install -Dm644 ./resources/${pkgname%-git}.desktop "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 
 	mkdir -p "$pkgdir/usr/share/sioyek"
-	mkdir -p "$pkgdir/etc/sioyek"
 	install -Dm644 -t "$pkgdir/usr/share/sioyek" build/tutorial.pdf
-	install -Dm644 -t "$pkgdir/etc/sioyek" build/keys.config build/prefs.config
 	cp -r build/shaders "$pkgdir/usr/share/sioyek"
+
+	mkdir -p "$pkgdir/etc/sioyek"
+	install -Dm644 -t "$pkgdir/etc/sioyek" build/keys.config build/prefs.config
+
+	mkdir -p "$pkgdir/usr/share/man/man1"
+	install -Dm644 -t "$pkgdir/usr/share/man/man1" resources/sioyek.1
+	gzip "$pkgdir/usr/share/man/man1/sioyek.1"
 }
