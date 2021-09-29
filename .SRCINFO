@@ -1,0 +1,28 @@
+pkgbase = dune-localfunctions
+	pkgdesc = Local Finite Elements
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://dune-project.org/modules/dune-localfunctions
+	arch = x86_64
+	license = custom:GPL2 with runtime exception
+	makedepends = dune-geometry>=2.8.0
+	makedepends = texlive-core
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python-setuptools
+	optdepends = texlive-core: Type setting system
+	optdepends = doxygen: Generate the class documentation from C++ sources
+	optdepends = graphviz: Graph visualization software
+	source = https://dune-project.org/download/2.8.0/dune-localfunctions-2.8.0.tar.gz
+	source = https://dune-project.org/download/2.8.0/dune-localfunctions-2.8.0.tar.gz.asc
+	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
+	sha512sums = 4faf58cc5d891d8cbd528ec0d337dc9b8b6c2c55189f8126c7a81ed323e3843193394a2b31b78fc56e80015356a195e25915855823408a7e985ebe17ab4c7b90
+	sha512sums = SKIP
+
+pkgname = dune-localfunctions
+	depends = dune-geometry>=2.8.0
+
+pkgname = python-dune-localfunctions
+	pkgdesc = Local Finite Elements (python bindings)
+	depends = dune-localfunctions>=2.8.0
+	depends = python-dune-common>=2.8.0
