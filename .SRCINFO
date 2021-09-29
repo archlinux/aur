@@ -1,18 +1,18 @@
 pkgbase = drawio-desktop
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 15.3.5
+	pkgver = 15.3.7
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio-desktop
-	arch = x86_64
+	arch = any
 	license = Apache
 	makedepends = yarn
 	makedepends = ant
 	makedepends = nodejs>=12
 	depends = electron12
 	depends = libnotify
-	source = drawio-15.3.5.tar.gz::https://github.com/jgraph/drawio/archive/v15.3.5.tar.gz
-	source = drawio-desktop-15.3.5.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v15.3.5.tar.gz
-	sha256sums = e75d8542312013b6479212f5c5bf1b11290a79cf2081d08c0c23efddf97329be
-	sha256sums = 5fbcfe6c876e2c31ca566552070b5e1d9726a8a3fdf369058fe1609fb12c7d6f
+	source = drawio-15.3.7.tar.gz::https://github.com/jgraph/drawio/archive/v15.3.7.tar.gz
+	source = drawio-desktop-15.3.7.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v15.3.7.tar.gz
+	sha512sums = ec4a803f2c2ebf1a3cc8317c87e9636e47f8f90122f438cf2b0d4ce33f54374c40d919346d79661c966780492be886761120a2d1cc63bd13105ffcef4eefbb77
+	sha512sums = 0e4758adcbd2f6dc898b9bac372508fcee6a7457e2ba8fb6a7546457efa398319fe54e97599cb6cc2231b56fb3fc5d198d35d1f96f39515eb503e37c8472e638
 
 pkgname = drawio-desktop
