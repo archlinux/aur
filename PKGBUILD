@@ -1,13 +1,13 @@
 # Maintainer: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>
 _pkgname=autopsy
 pkgname=${_pkgname}-bin
-pkgver=4.18.0
+pkgver=4.19.1
 pkgrel=1
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
 url='http://www.sleuthkit.org/autopsy/'
 license=('Apache-2.0')
-_skver=4.10.2
+_skver=4.11.0
 depends=(java-runtime=8 testdisk sleuthkit "sleuthkit-java=${_skver}" java8-openjfx)
 makedepends=()
 optdepends=('opencv: media files (64-bit)'
@@ -15,7 +15,7 @@ optdepends=('opencv: media files (64-bit)'
 source=(
 	https://github.com/sleuthkit/${_pkgname}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.zip
 	Autopsy.desktop)
-sha512sums=('9e9f1aa49585109b26606e71b7c45ecce691eeb85afebc28f3b84bfd64f09a235e05d9c04a47f296c1df959b5eb901f0d49fd66142b2c48a8963d6a0bb7bf1f3'
+sha512sums=('9e3f917a55b362ca7835e58454ca5048e59e51b653831b32002a260db90dbdd47449164511d3f8968aafa0b36173ab03de12a5efb7ea8b9feb3fb45b3fa6cf29'
             'd209bc1947eccaee7520243e8f8ce81daa71404e547a671eec7ca9e95572e305ae75db8058784631ac721c7612de405347be2b4d3124f324c06af9efb6dd82a7')
 
 prepare() {
