@@ -1,7 +1,7 @@
 # Maintainer: Stefan Ott <arch at desire dot ch>
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=tvnamer
-pkgver=3.0.2
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='Automatic TV episode file renamer'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Public domain')
 depends=('python3' 'python-tvdb_api')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbr/tvnamer/archive/${pkgver}.tar.gz")
-sha256sums=('7e18b50de3141a5b5d505f3003f2f20492008938c359017e2af529c4969ba15c')
+sha256sums=('a8e20d0dcbfe891e691131d80bcc692e645e47ba706f2f06fff33691911a6d05')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

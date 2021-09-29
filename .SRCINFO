@@ -1,6 +1,6 @@
 pkgbase = tvnamer
 	pkgdesc = Automatic TV episode file renamer
-	pkgver = 3.0.2
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/dbr/tvnamer
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = tvnamer
 	makedepends = python-setuptools
 	depends = python3
 	depends = python-tvdb_api
-	source = tvnamer-3.0.2.tar.gz::https://github.com/dbr/tvnamer/archive/3.0.2.tar.gz
-	sha256sums = 7e18b50de3141a5b5d505f3003f2f20492008938c359017e2af529c4969ba15c
+	source = tvnamer-3.0.4.tar.gz::https://github.com/dbr/tvnamer/archive/3.0.4.tar.gz
+	sha256sums = a8e20d0dcbfe891e691131d80bcc692e645e47ba706f2f06fff33691911a6d05
 
 pkgname = tvnamer
-
