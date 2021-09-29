@@ -3,9 +3,10 @@
 _appname=imgbrd-grabber
 pkgname="${_appname}-bin"
 pkgver=7.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial binary installer for ImgBrd Grabber"
 arch=("x86_64")
+depends=('qt5-multimedia' 'qt5-declarative' 'nodejs' 'qt5-networkauth' 'qt5-base' 'krb5')
 url="https://github.com/Bionus/imgbrd-grabber"
 license=("Apache-2.0 License")
 options=('!strip')

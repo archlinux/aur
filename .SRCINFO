@@ -1,10 +1,16 @@
 pkgbase = imgbrd-grabber-bin
 	pkgdesc = Unofficial binary installer for ImgBrd Grabber
 	pkgver = 7.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = x86_64
 	license = Apache-2.0 License
+	depends = qt5-multimedia
+	depends = qt5-declarative
+	depends = nodejs
+	depends = qt5-networkauth
+	depends = qt5-base
+	depends = krb5
 	conflicts = imgbrd-grabber-git
 	options = !strip
 	source = imgbrd-grabber.tar.gz::https://github.com/Bionus/imgbrd-grabber/releases/download/v7.6.2/Grabber_v7.6.2.tar.gz
