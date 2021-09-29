@@ -159,21 +159,14 @@ pkgname = regolith-i3
 	depends = gnome-session
 	depends = gnome-settings-daemon
 	depends = playerctl
+	depends = jsoncpp
 	optdepends = picom: For compositing/desktop effects - strongly recommended!
 	optdepends = unclutter-xfixes-git: For unclutter
 	optdepends = lightdm: Display Manager - Regolith LightDM theme included in regolith-desktop-config
 	provides = xrescat
 	provides = regolith-gnome-flashback
-	conflicts = 
-
-pkgname = i3-snapshot
-	arch = x86_64
-	groups = regolith-de
-	license = BSD-3-Clause
-	depends = i3-wm
-	depends = jsoncpp
-	depends = libsigc++
 	provides = i3-snapshot
+	conflicts = 
 
 pkgname = regolith-i3xrocks
 	pkgdesc = Regolith's i3xrocks with associated widgets and config files

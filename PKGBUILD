@@ -6,7 +6,6 @@
 
 pkgbase=regolith-de
 pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-gaps-wm i3-gaps-wm-dbg i3-snapshot i3xrocks gnome-flashback ubiquity-slideshow-regolith)
-	i3-snapshot
         regolith-i3xrocks # allll the i3xrocks shit
         regolith-styles # alll the styles shit
         regolith-st 
@@ -187,16 +186,18 @@ package_regolith-i3 () {
              'accountsservice' 'cups-pk-helper' 'libgtop' 'gnome-control-center' 'gnome-desktop' 
 	     'xorg-xwininfo' 'dbus' 'python-gobject' 'python-dbus' 'xorg-xprop' 'libev' 'pcre'
 	     'libconfig' 'xcb-util-image' 'xcb-util-renderutil' 'libsigc++' 'gnome-session'
-             'gnome-settings-daemon' 'playerctl')
+             'gnome-settings-daemon' 'playerctl' 'jsoncpp')
     optdepends=('picom: For compositing/desktop effects - strongly recommended!'
 		'unclutter-xfixes-git: For unclutter'
 		'lightdm: Display Manager - Regolith LightDM theme included in regolith-desktop-config' )
-    provides=('xrescat' 'regolith-gnome-flashback')
+    provides=('xrescat' 'regolith-gnome-flashback' 'i3-snapshot')
     conflicts=()
     groups=('regolith-de')
 
     extract_deb "${srcdir}"/regolith-gnome-flashback_2.6.2-1_amd64.deb
     extract_deb "${srcdir}"/xrescat_1.2.1-1_amd64.deb
+    extract_deb "${srcdir}"/i3-snapshot_1.0.1-2hirsute_amd64.deb
+
     
     # extra command
     patch "${pkgdir}"/usr/bin/regolith-session -i "${srcdir}"/flashback.patch
@@ -204,18 +205,6 @@ package_regolith-i3 () {
     move_copyright
 }
 
-package_i3-snapshot () {
-    pkdesc="Alternative to i3-save-tree from Regolith Linux"
-    license=('BSD-3-Clause')
-    arch=('x86_64')
-    depends=('i3-wm' 'jsoncpp' 'libsigc++')
-    provides=('i3-snapshot')
-    groups=('regolith-de')
-
-    extract_deb "${srcdir}"/i3-snapshot_1.0.1-2hirsute_amd64.deb
-
-    move_copyright
-}
 
 package_regolith-i3xrocks () {
     pkgdesc="Regolith's i3xrocks with associated widgets and config files"
