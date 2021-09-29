@@ -9,10 +9,13 @@ pkgbase = j2dx-git
 	license = GPL
 	makedepends = git
 	depends = python-uinput
+	depends = python-eventlet
+	depends = python-evdev
+	depends = python-socketio
+	depends = python-qrcode
 	provides = Joy2DroidX-server
 	conflicts = Joy2DroidX-server
 	source = git://github.com/OzymandiasTheGreat/Joy2DroidX-server
 	sha1sums = SKIP
 
 pkgname = j2dx-git
-
