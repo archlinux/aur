@@ -4,7 +4,7 @@ pkgbase = dune-uggrid
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-uggrid
 	arch = x86_64
-	license = GPL2
+	license = LGPL
 	makedepends = doxygen
 	makedepends = graphviz
 	depends = dune-common>=2.8.0
