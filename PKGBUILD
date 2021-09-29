@@ -2,13 +2,14 @@
 
 pkgname=python-pydeps
 _pkgname=pydeps
-pkgver=1.9.14
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="python module dependency visualization tool"
 arch=('any')
 url="https://github.com/thebjorn/pydeps"
 license=('BSD2')
 depends=('python-pyaml' 'python-stdlib-list')
+makedepends=('python-setuptools')
 source=("https://github.com/thebjorn/pydeps/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
@@ -22,4 +23,4 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('4b1bc5304e70fdb4a83965c61f723d7b814a0fa80cc50f11f1d1b2696bf225ecb8de747a5be90d329d480a645c255e76eba13abb453f1bba875add8e0ed2395d')
+sha512sums=('5e1367dc22d7fae1794d16be02971d996510eded88afa2114ab99f3e400ff2b08925795b8609f48cb730b7b93cc33fff195a9aad949e43649492a2e9f736a051')
