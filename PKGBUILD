@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="An adaptive, loadbalancing, unstructured implementation of the DUNE grid interface supporting either simplices or cubes"
 arch=('x86_64')
 url="https://www.dune-project.org/modules/${pkgbase}"
-license=('GPL2')
+license=('GPL')
 makedepends=('dune-grid>=2.8.0' 'doxygen' 'graphviz' 'python-setuptools') # 'dlmalloc' 'sionlib' 'parmetis'
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
@@ -23,7 +23,7 @@ build() {
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_C_COMPILER=gcc \
