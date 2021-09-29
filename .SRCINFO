@@ -1,5 +1,5 @@
 pkgbase = mpv-caca
-	pkgdesc = a free, open source, and cross-platform media player
+	pkgdesc = a free, open source, and cross-platform media player (libcaca support)
 	pkgver = 0.33.1
 	pkgrel = 4
 	epoch = 1

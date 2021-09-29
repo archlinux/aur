@@ -8,7 +8,7 @@ epoch=1
 _tag='4c9d3669a0f672e6754ac456acd324db570964d3' # git rev-parse v${pkgver}
 pkgver=0.33.1
 pkgrel=4
-pkgdesc='a free, open source, and cross-platform media player'
+pkgdesc='a free, open source, and cross-platform media player (libcaca support)'
 arch=('x86_64')
 # We link against libraries that are licensed GPLv3 explicitly, so our
 # package is GPLv3 only as well. (Is this still correct?)
