@@ -1,41 +1,35 @@
-# Maintainer: Jason Melton <jason.melton@gmail.com>
+# Maintainer: SanskritFritz (gmail)
+# Contributor: Jason Melton <jason.melton@gmail.com>
 # Contributor: Tiago Pierezan Camargo <tcamargo@gmail.com>
 # Contributor: Paul Bredbury <brebs@sent.com>
 # Contributor: Benjamin Dirks <asaru[at]wtnet[dot]de>
 
 pkgname=worldofpadman-beta
-pkgver=1.5.4
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Cartoon-style multiplayer first-person shooter"
-arch=(i686 x86_64)
+arch=('x86_64')
 url="http://www.worldofpadman.com/"
 license=('GPL' 'custom')
 depends=('curl' 'libogg' 'libvorbis' 'mesa' 'openal' 'sdl')
 makedepends=('unzip')
 conflicts=('worldofpadman')
-source=(
-	wop-1.5-unified.zip::http://sourceforge.net/projects/worldofpadman/files/v1.5/wop-1.5-unified.zip/download
-  wop-1.5.x-to-1.5.4-beta-patch.zip::http://sourceforge.net/projects/worldofpadman/files/v1.5/wop-1.5.x-to-1.5.4-beta-patch.zip
-    )
+source=('wop-161-beta-full-unified-zip::https://www.moddb.com/downloads/mirror/214409/119/3ad80876802e75e1c1ece98641f02b6b/?referer=https%3A%2F%2Fwww.moddb.com%2Fgames%2Fworld-of-padman%2Fdownloads%2Fwop-161-beta-full-unified-zip-windowslinuxmacos%2Fwidget'
+        'worldofpadman.desktop')
 
 _gamedir="/usr/share/$pkgname"
 
-build() {
+package() {
 
-  cd "$srcdir"
+	cd "$srcdir/worldofpadman-1-6-1"
 
-  ## Binaries
-  if [ "$CARCH" == i686 ] ; then
-      install -D -m755 wop.i386 "$pkgdir/$_gamedir/wop.bin" || return 1
-      install -D -m755 wopded.i386 "$pkgdir/$_gamedir/wopded.bin" || return 1
-  fi
- 
-  if [ "$CARCH" == x86_64 ]  ; then
-      install -D -m755 wop.x86_64 "$pkgdir/$_gamedir/wop.bin" || return 1
-      install -D -m755 wopded.x86_64 "$pkgdir/$_gamedir/wopded.bin" || return 1
-  fi
+	## Binaries
+	install -D -m755 wop-linux.x86_64 "$pkgdir/$_gamedir/wop.bin"
+	install -D -m755 wopded-linux.x86_64 "$pkgdir/$_gamedir/wopded.bin"
+	install -D -m755 renderer_opengl2_x86_64.so "$pkgdir/$_gamedir/renderer_opengl2_x86_64.so"
+	install -D -m755 renderer_opengl1_x86_64.so "$pkgdir/$_gamedir/renderer_opengl1_x86_64.so"
 
-  cat >wop.sh <<EOF
+	cat >wop.sh <<EOF
 #!/bin/bash
 cd $_gamedir && exec ./wop.bin "\$@"
 EOF
@@ -44,35 +38,14 @@ EOF
 cd $_gamedir && exec ./wopded.bin "\$@"
 EOF
 
-  install -D -m755 wop.sh "$pkgdir/usr/bin/wop" || return 1
-  install -D -m755 wopded.sh "$pkgdir/usr/bin/wopded" || return 1
+	install -D -m755 wop.sh "$pkgdir/usr/bin/wop"
+	install -D -m755 wopded.sh "$pkgdir/usr/bin/wopded"
   
-  # Data
-  # Using "read", so can handle filenames containing spaces
-  find wop -type f | while read _f ; do
-    install -D -m644 "$_f" "${pkgdir}/$_gamedir/$_f" || return 1
-  done
-  # Return from the function, since install's return just exits the loop
-  # See http://fvue.nl/wiki/Bash:_Error_handling
-  [ $? -gt 0 ] && return 1
-
-  # Desktop
-  #install -D -m644 ${srcdir}/wop.png            ${pkgdir}/usr/share/pixmaps/$pkgname.png || return 1
-  #install -D -m644 ${srcdir}/$pkgname.desktop   ${pkgdir}/usr/share/applications/$pkgname.desktop || return 1
-
-  # Docs
-  cd "$srcdir/XTRAS" || return 1
-  # Using "read", so can handle filenames containing spaces
-  find . -type f | while read _f ; do
-    install -D -m644 "$_f" "${pkgdir}/usr/share/doc/$pkgname/$_f" || return 1
-  done
-  # Return from the function, since install's return just exits the loop
-  # See http://fvue.nl/wiki/Bash:_Error_handling
-  [ $? -gt 0 ] && return 1
-
-  # License
-  install -D -m644 copyright_en.txt "${pkgdir}/usr/share/licenses/$pkgname/COPYING" || return 1
+	cp --recursive wop "$pkgdir/$_gamedir/wop"
+	cp --recursive XTRAS "$pkgdir/$_gamedir/XTRAS"
+	install -D -m755 XTRAS/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/worldofpadman.svg"
+	install -D -m755 "$srcdir/worldofpadman.desktop" "$pkgdir/usr/share/applications/worldofpadman.desktop"
 }
 
-md5sums=('8871affc2a36f23aa22044454c834923'
-         '9ff94e1b93ef8e3b4894f5872c535336')
+sha256sums=('c244134ff858602fb578cac1bb1f2303efca331f344f21663febed9d9b2db97b'
+            '8d99702ee5255f5ea253aaf12d78f5056e0814bcc727ba2350021fb81fbad60b')
