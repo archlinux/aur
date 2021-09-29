@@ -2,13 +2,13 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=41.0+1+g029f36fc9
+pkgver=41.0+12+gecd57b896
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
 url="https://wiki.gnome.org/Apps/Web"
 arch=('x86_64')
 license=('GPL')
-depends=(webkit2gtk gcr icu libdazzle libhandy libportal libarchive)
+depends=(webkit2gtk-unstable gcr icu libdazzle libhandy libportal libarchive)
 makedepends=(docbook-xml startup-notification lsb-release gobject-introspection
              yelp-tools git meson)
 checkdepends=(xorg-server-xvfb aspell hspell hunspell nuspell libvoikko)
