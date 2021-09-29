@@ -2,7 +2,7 @@
 
 _pkgname=apfsprogs
 pkgname=$_pkgname-git
-pkgver=r304.26f3461
+pkgver=r345.5efac5a
 pkgrel=1
 pkgdesc='Experimental APFS tools for linux'
 arch=(x86_64)
@@ -45,6 +45,6 @@ package() {
   cd $_pkgname
 
   for prog in "${_progs[@]}" ; do
-    make -C $prog install DESTDIR="$pkgdir" BINDIR=/usr/bin MANDIR=/usr/share/man8
+    make -C $prog install DESTDIR="$pkgdir" BINDIR=/usr/bin MANDIR=/usr/share/man/man8
   done
 }
