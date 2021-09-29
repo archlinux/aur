@@ -2,7 +2,7 @@
 
 pkgname=cling
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
@@ -73,6 +73,11 @@ package() {
 
     install -Dm644 "$srcdir/llvm/tools/cling/LICENSE.TXT" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # include CMake target import file so that other packages are able to use
+    # `find_package(Cling REQUIRED)`
+    install -Dm644 "$srcdir/build/lib/cmake/cling/ClingTargets.cmake" \
+        "$pkgdir/opt/cling/lib/cmake/cling"
 
     # omit man page for clang's scan-build
     rm -f "$pkgdir/opt/cling/share/man/man1/scan-build.1"
