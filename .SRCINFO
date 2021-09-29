@@ -1,5 +1,5 @@
 pkgbase = prosody-mod-e2e_policy
-	pkgdesc = This module was written to encourage usage of End-to-end encryption for chat and MUC messages.
+	pkgdesc = encourage usage of End-to-end encryption for chat and MUC messages
 	pkgver = 2018.11.30
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_e2e_policy.html
