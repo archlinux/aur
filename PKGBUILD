@@ -1,4 +1,5 @@
 # Maintainer: Alessandro Cerruti
+# Contributor: Alessandro Cerruti
 
 _pkgbase=i3bard
 pkgname=i3bard-git
@@ -21,6 +22,6 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgbase"
 
-  install -D i3bard "$pkgdir"/usr/bin/i3bard
-  install -D i3bard.service "$pkgdir"/usr/lib/systemd/user/i3bard.service
+  install -Dm755 i3bard "$pkgdir"/usr/bin/i3bard
+  install -Dm644 i3bard.service "$pkgdir"/usr/lib/systemd/user/i3bard.service
 }
