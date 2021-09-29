@@ -1,0 +1,21 @@
+pkgbase = python-bravado
+	pkgdesc = Python client library for Swagger 2.0 services
+	pkgver = 11.0.3
+	pkgrel = 1
+	url = https://github.com/Yelp/bravado
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-bravado-core
+	depends = python-msgpack
+	depends = python-dateutil
+	depends = python-yaml
+	depends = python-requests
+	depends = python-six
+	depends = python-simplejson
+	depends = python-monotonic
+	depends = python-typing_extensions
+	source = python-bravado-11.0.3.tar.gz::https://github.com/Yelp/bravado/archive/refs/tags/v11.0.3.tar.gz
+	md5sums = 8016436b66d75840c47746b9f88893dd
+
+pkgname = python-bravado
