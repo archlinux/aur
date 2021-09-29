@@ -1,0 +1,31 @@
+pkgbase = dune-grid
+	pkgdesc = Grid Interface and Implementations
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://dune-project.org/modules/dune-grid
+	arch = x86_64
+	license = custom:GPL2 with runtime exception
+	makedepends = dune-geometry>=2.8.0
+	makedepends = dune-uggrid>=2.8.0
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python-setuptools
+	optdepends = doxygen: Generate the class documentation from C++ sources
+	optdepends = graphviz: Graph visualization software
+	optdepends = parmetis: Parallel Graph Partitioning and Fill-reducing Matrix Ordering
+	optdepends = psurface: Piecewise linear bijections between triangulated surfaces
+	optdepends = gnuplot: for provides gnuplot output for 1D and 2D Grids
+	source = https://dune-project.org/download/2.8.0/dune-grid-2.8.0.tar.gz
+	source = https://dune-project.org/download/2.8.0/dune-grid-2.8.0.tar.gz.asc
+	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
+	sha512sums = 534c77e5e930a960486945f23d2bb991dd5509aa077192a100e9060966c6ecf4eb977716164a4ae0042b3a77d3713f1079e5ee74666bc4e52b0037bcaac3723e
+	sha512sums = SKIP
+
+pkgname = dune-grid
+	depends = dune-geometry>=2.8.0
+	depends = dune-uggrid>=2.8.0
+
+pkgname = python-dune-grid
+	pkgdesc = Grid Interface and Implementations (python bindings)
+	depends = dune-grid>=2.8.0
+	depends = python-dune-geometry>=2.8.0
