@@ -1,4 +1,4 @@
 *.pkg.tar.zst
-cntr
+cntr-bin-*
 pkg
 src
