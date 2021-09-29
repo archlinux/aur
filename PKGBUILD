@@ -2,18 +2,16 @@
 
 pkgname=system76-io-dkms-git
 pkgver=1.0.1.r1.g57c15ff
-pkgrel=2
-pkgdesc="This DKMS driver provides airplane mode, keyboard backlight, and fan support for System76 laptops"
+pkgrel=3
+pkgdesc="DKMS module for controlling System76 Io board"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-io-dkms"
 license=('GPL3')
 depends=('dkms')
 conflicts=(system76-io-dkms)
 provides=(system76-io-dkms)
-source=("${pkgname}::git+https://github.com/pop-os/system76-io-dkms"
-        'system76-io.conf')
-sha256sums=('SKIP'
-            'aac9100aba28a0a6716b6b2012858ce996a5f710e1f1e02628da1cff2ef2bdd2')
+source=("${pkgname}::git+https://github.com/pop-os/system76-io-dkms")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -37,5 +35,6 @@ package() {
     sed "s/#MODULE_VERSION#/${pkgver}/" "debian/system76-io-dkms.dkms" > "${install_dir}/dkms.conf"
 
     # Load the module at boot
-    install -Dm644 ${srcdir}/system76-io.conf ${pkgdir}/etc/modules-load.d/system76-io.conf
+    install -Dm644 "usr/share/initramfs-tools/modules.d/${pkgname%%-git}.conf" \
+        "${pkgdir}/usr/lib/modules-load.d/system76-io.conf"
 }
