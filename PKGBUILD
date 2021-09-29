@@ -12,6 +12,7 @@ depends=(jupyter)
 # wolframscript in some way to install this package
 optdepends=(wolframengine)
 source=("git+https://github.com/WolframResearch/WolframLanguageForJupyter.git")
+sha256sums=('SKIP')
 
 prepare() {
 #  if [ -d ${srcdir}/WolframLanguageForJupyter ]; then
