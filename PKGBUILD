@@ -2,7 +2,7 @@
 
 
 pkgname=astrodmx-capture
-pkgver=1.0.5
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=(!strip)
 install=$pkgname.install
 
 source=("https://www.astrodmx-capture.org.uk/sites/downloads/astrodmx/current/x86-64/astrodmx-capture_${pkgver}_x86-64-manual.tar.gz")
-sha256sums=("6887d53c2c6983253aa317837adc0d848dec180ae54a15cabb40ea5c37089a8b")
+sha256sums=("1f25520ce0faa5008280ffae7e38b8011b93c066fb44051c6ba922c00d16b8e5")
 
 _instdir="/usr/local/AstroDMx_Capture"
 _prefix="AstroDMx-${pkgver}-manual"
