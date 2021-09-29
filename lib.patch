@@ -1,0 +1,26 @@
+diff --git a/jbig2dec.py b/jbig2dec.py
+index f344101..c1b144b 100755
+--- a/jbig2dec.py
++++ b/jbig2dec.py
+@@ -24,7 +24,7 @@ if (arch[1] == 'WindowsPE'):
+     else:
+         libjbig2codec = cdll.LoadLibrary("./lib/bin/libjbig2codec-w32.dll")
+ else:
+-    libjbig2codec = cdll.LoadLibrary("./libjbig2codec.so")
++    libjbig2codec = cdll.LoadLibrary("/opt/caj2pdf-git/lib/libjbig2codec.so")
+ 
+ decode_jbig2data_c    = libjbig2codec.decode_jbig2data_c
+ 
+diff --git a/jbigdec.py b/jbigdec.py
+index 9d833b7..459458c 100755
+--- a/jbigdec.py
++++ b/jbigdec.py
+@@ -26,7 +26,7 @@ if (arch[1] == 'WindowsPE'):
+     else:
+         libjbigdec = cdll.LoadLibrary("./lib/bin/libjbigdec-w32.dll")
+ else:
+-    libjbigdec = cdll.LoadLibrary("./libjbigdec.so")
++    libjbigdec = cdll.LoadLibrary("/opt/caj2pdf-git/lib/libjbigdec.so")
+ 
+ #SaveJbigAsBmp = libjbigdec.SaveJbigAsBmp
+ #SaveJbigAsBmp.restype = None
