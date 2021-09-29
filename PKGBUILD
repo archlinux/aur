@@ -1,7 +1,7 @@
 # Maintainer: Emma Caldeira <kiito@tilde.team>
 
 pkgname=python-mariadb-connector
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="A Python DB API 2.0 compliant API for access to MariaDB and MySQL databases"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'mariadb-connector-c')
 makedepends=('python-setuptools')
 # https://downloads.mariadb.org/connector-python
 source=("https://downloads.mariadb.org/interstitial/connector-python-${pkgver}/mariadb-connector-python-${pkgver}.tar.gz")
-sha512sums=('6a832a29beb7d91a5b458e3870271f0027594c0e060a86055afa13e90c924f0e676cf00b2de37a778586ef241a533cbff3b594336dbc6c29bd4617d9fe60b8a0')
+sha512sums=('d011059b9f5af7f23a4d7ec5a8713b11f18e2291c89925c95805bd043d80600a1eec272fb3e29f428d0427e5d14e05b0f31ab11a8a42d5f4f62c6c05d8b1385f')
 
 build() {
 	cd "${srcdir}/mariadb-connector-python-${pkgver}"
