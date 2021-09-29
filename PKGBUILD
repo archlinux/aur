@@ -9,7 +9,7 @@ depends=("unixodbc")
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('4750da5e7fa9e22cad43381948d1556b')
+md5sums=('69e73da5b701eb710d25ceb592af9f4b')
 
 build() {
   cd "${srcdir}"
