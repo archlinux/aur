@@ -1,6 +1,6 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=spoofer
-pkgver=1.4.5
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="client software for the spoofer internet research project on ip spoofing, BCP38 compliance"
 url="https://www.caida.org/projects/spoofer/"
@@ -14,7 +14,7 @@ source=("https://www.caida.org/projects/spoofer/downloads/spoofer-${pkgver}.tar.
         "spoofer.service"
         "Spoofer.conf"
         "spoofer.install")
-sha1sums=('fd15de65d7b46ca3e1410dd4f37434ba0daa92c1'
+sha1sums=('7ed999013799a7dc4889d799c75f920f8a3be2fd'
           'fe2779dcfaf0e401f3fa8d7226e7fe97a7af5b66'
           'ecbb2e4ee11288ca682e68ce5f76da4de42d4117'
           '20feb9ceffbb30d45a30d2c5e1908e4dabe2b17c'

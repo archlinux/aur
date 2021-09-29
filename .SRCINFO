@@ -1,6 +1,6 @@
 pkgbase = spoofer
 	pkgdesc = client software for the spoofer internet research project on ip spoofing, BCP38 compliance
-	pkgver = 1.4.5
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://www.caida.org/projects/spoofer/
 	install = spoofer.install
@@ -12,16 +12,15 @@ pkgbase = spoofer
 	depends = qt5-base
 	optdepends = scamper: advanced traceroute tool
 	options = emptydirs
-	source = https://www.caida.org/projects/spoofer/downloads/spoofer-1.4.5.tar.gz
+	source = https://www.caida.org/projects/spoofer/downloads/spoofer-1.4.7.tar.gz
 	source = spoofer-gui.desktop
 	source = spoofer.service
 	source = Spoofer.conf
 	source = spoofer.install
-	sha1sums = fd15de65d7b46ca3e1410dd4f37434ba0daa92c1
+	sha1sums = 7ed999013799a7dc4889d799c75f920f8a3be2fd
 	sha1sums = fe2779dcfaf0e401f3fa8d7226e7fe97a7af5b66
 	sha1sums = ecbb2e4ee11288ca682e68ce5f76da4de42d4117
 	sha1sums = 20feb9ceffbb30d45a30d2c5e1908e4dabe2b17c
 	sha1sums = 01197fc6c9c8394934f1aa9891b9c5d124aa2b4e
 
 pkgname = spoofer
-
