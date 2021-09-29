@@ -16,7 +16,6 @@ pkgbase = aseprite-git
 	makedepends = harfbuzz-icu
 	makedepends = pixman
 	makedepends = libxi
-	depends = cmark
 	depends = curl
 	depends = libjpeg-turbo
 	depends = giflib
