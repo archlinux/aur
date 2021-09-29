@@ -18,3 +18,5 @@ tasks:
 - build: |
     cd aur-alire
     makepkg
+- install: |
+    makepkg --install --noconfirm
