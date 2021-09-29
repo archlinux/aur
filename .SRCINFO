@@ -16,6 +16,7 @@ pkgbase = dune-pdelab
 	depends = arpackpp
 	depends = suitesparse
 	depends = zoltan
+	depends = parmetis
 	optdepends = texlive-core: Type setting system
 	optdepends = biber: A Unicode-capable BibTeX replacement for biblatex users
 	optdepends = doxygen: Generate the class documentation from C++ sources
