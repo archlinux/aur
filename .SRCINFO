@@ -1,0 +1,21 @@
+pkgbase = codaw-wine-steam
+	pkgdesc = Call of Duty: Advanced Warfare using WINE with data via Steam
+	pkgver = 1.16
+	pkgrel = 1
+	url = https://store.steampowered.com/app/209650/Call_of_Duty_Advanced_Warfare__Gold_Edition/
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = wine
+	depends = winetricks
+	source = codaw.sh
+	source = codaw.desktop
+	source = https://github.com/XLabsProject/s1x-client/releases/download/v1.0.4/s1x-v1.0.4.zip
+	source = Goldberg_Lan_Steam_Emu_master--a24a9c26.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/1590301114/artifacts/download
+	sha256sums = 9f839f1cbf2bc36ca65f962dacc024692d7c3dbbc8a112920e513c9fa7133318
+	sha256sums = a696a2148946a4278bc40ee237d0a3cf702c785f27893f4ec145d18291e2dd77
+	sha256sums = 4808a884caddacdd0d53a6b075e649181485bb71e7263bd2556903f554fdcf85
+	sha256sums = 3bfe422a3daf85a02fe6458e4351a4f40f29f513ec8df2c838c7e197844e51cb
+
+pkgname = codaw-wine-steam

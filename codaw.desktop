@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Call of Duty: Advanced Warfare
+Comment=Call of Duty: Advanced Warfare Multiplayer WINE
+Exec=/usr/bin/codaw
+Icon=codaw
+Terminal=false
+Type=Application
+Categories=Application;Game;
