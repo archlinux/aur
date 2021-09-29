@@ -11,7 +11,7 @@ pkgdesc="Geometry Transformations, Reference Elements and Quadrature Rules"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
 license=('custom:GPL2 with runtime exception')
-makedepends=('dune-common>=2.8.0' 'texlive-latexextra' 'doxygen' 'graphviz' 'inkscape' 'python-setuptools')
+makedepends=('dune-common>=2.8.0' 'texlive-latexextra' 'doxygen' 'graphviz' 'gnu-free-fonts' 'inkscape' 'python-setuptools')
 optdepends=('texlive-latexextra: Type setting system'
   'doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
@@ -31,7 +31,7 @@ build() {
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_C_COMPILER=gcc \

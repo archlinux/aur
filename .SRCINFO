@@ -9,6 +9,7 @@ pkgbase = dune-geometry
 	makedepends = texlive-latexextra
 	makedepends = doxygen
 	makedepends = graphviz
+	makedepends = gnu-free-fonts
 	makedepends = inkscape
 	makedepends = python-setuptools
 	optdepends = texlive-latexextra: Type setting system
