@@ -4,7 +4,7 @@
 pkgbase='python-tinydb'
 pkgname=('python-tinydb')
 _module='tinydb'
-pkgver='4.5.1'
+pkgver='4.5.2'
 pkgrel=1
 pkgdesc="TinyDB is a tiny, document oriented database optimized for your happiness :)"
 url="https://github.com/msiemens/tinydb"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('b780bceac6e37573b10fbcab6bcebb6b8bd5d8a0024533b5a452d9ef83465783')
+sha256sums=('7d18b2d0217827c188f177cd23df60e5cd5316a717e836a8e21c8c2488262cf5')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
