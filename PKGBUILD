@@ -36,7 +36,7 @@ build() {
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_C_COMPILER=gcc \
@@ -63,5 +63,6 @@ package_python-dune-istl() {
   depends=('dune-istl>=2.8.0' 'python-dune-common>=2.8.0' 'arpack')
   pkgdesc+=" (python bindings)"
   cd "build-cmake/python"
+  export PYTHONHASHSEED=0
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
