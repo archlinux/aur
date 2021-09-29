@@ -1,7 +1,7 @@
 # Maintainer: Jat <chat@jat.email>
 
 pkgname=obs-multi-rtmp
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='Multiple RTMP outputs plugin'
 arch=('x86_64')
@@ -9,11 +9,11 @@ url='https://github.com/sorayuki/obs-multi-rtmp'
 license=('GPL')
 depends=('obs-studio')
 makedepends=('cmake')
-_obsver=26.1.1
+_obsver="$(obs -V | awk -F- '{print $2}' | xargs)"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "obs-studio-${_obsver}.tar.gz::https://github.com/obsproject/obs-studio/archive/${_obsver}.tar.gz")
-sha256sums=('9cbc8bac643e11367b88d8eba8ecd84945fa79a7b4d07a98c6f2c2c4d7bbb84f'
-            '19f55eac1c315a6101b024b44c858d1254e1a4a38d87d5e9c9a5274cc532a450')
+sha256sums=('aba3663d1c18a46a7298c7b0f7d18e4083766c7bb3ea17101b66a56ad44fa353'
+            'SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
