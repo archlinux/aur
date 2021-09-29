@@ -2,7 +2,7 @@
 
 _pkgname=obs-multi-rtmp
 pkgname=${_pkgname}-git
-pkgver=r62.4cb298e
+pkgver=r92.b8b110c
 pkgrel=1
 pkgdesc='Multiple RTMP outputs plugin'
 arch=('x86_64')
@@ -12,11 +12,11 @@ depends=('obs-studio')
 makedepends=('git' 'cmake')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-_obsver=26.1.1
+_obsver="$(obs -V | awk -F- '{print $2}' | xargs)"
 source=("git+${url}.git"
         "obs-studio-${_obsver}.tar.gz::https://github.com/obsproject/obs-studio/archive/${_obsver}.tar.gz")
 sha256sums=('SKIP'
-            '19F55EAC1C315A6101B024B44C858D1254E1A4A38D87D5E9C9A5274CC532A450')
+            'SKIP')
 
 pkgver() {
     cd ${srcdir}/${_pkgname}
