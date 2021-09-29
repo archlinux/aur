@@ -1,0 +1,14 @@
+pkgbase = jupyter-wolframengine_kernel
+	pkgdesc = Wolfram Language kernel for Jupyter notebooks
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/WolframResearch/WolframLanguageForJupyter
+	install = jupyter-wolframengine_kernel.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jupyter
+	optdepends = wolframengine
+	options = !strip
+
+pkgname = jupyter-wolframengine_kernel

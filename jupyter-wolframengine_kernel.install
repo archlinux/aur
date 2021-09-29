@@ -1,0 +1,13 @@
+post_install() {
+	name=`cat /opt/WolframLanguageForJupyter/username.conf`
+	echo "Fixing file permissions"
+	chown ${name}:${name} /opt/WolframLanguageForJupyter
+	echo "Running the jupyter kernel installer"
+	su - ${name} -c 'wolframscript -c /opt/WolframLanguageForJupyter/configure-jupyter.wls add'
+}
+
+pre_remove() {
+	name=`cat /opt/WolframLanguageForJupyter/username.conf`
+	echo "Running the jupyter kernel uninstaller"
+	su - ${name} -c 'wolframscript -c /opt/WolframLanguageForJupyter/configure-jupyter.wls remove'
+}
