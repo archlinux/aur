@@ -2,7 +2,7 @@
 
 pkgname=emacs-hexrgb
 pkgver=1019
-pkgrel=2
+pkgrel=3
 pkgdesc="Bookmark+ mode, which enhances vanilla Emacs bookmarks in many ways"
 url="http://www.emacswiki.org/emacs/BookmarkPlus"
 license=('GPL3')
@@ -13,7 +13,6 @@ source=("git+https://github.com/emacsmirror/hexrgb.git#commit=90e5f07f14bdb99666
 md5sums=('SKIP')
 
 pkgver() {
-  cd $srcdir
   awk '/Update #:/ {print $4}' hexrgb.el
 }
 
@@ -22,6 +21,5 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"
   install -Dm644 hexrgb.el{,c} -t "${pkgdir}"/usr/share/emacs/site-lisp/
 }
