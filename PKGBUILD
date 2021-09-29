@@ -27,17 +27,17 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.%s" "$(awk '/^VERSION =/ {print $3}' config.mk)" "$(git rev-list --count HEAD)"
+		printf "%s.r%s.%s" "$(awk '/^VERSION =/ {print $3}' config.mk)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}"
+	make DESTDIR="${pkgdir}/"
 }
 
 package() {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}/" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
