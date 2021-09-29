@@ -9,7 +9,7 @@ depends=("libxml2" "r")
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('8e17fe060cb714a4f4eca7b7659ff5ef')
+md5sums=('a67f6f1be012345d375042bedcb36b74')
 
 build() {
   cd "${srcdir}"

@@ -9,6 +9,6 @@ pkgbase = r-xml
 	depends = libxml2
 	depends = r
 	source = https://cran.r-project.org/src/contrib/XML_3.99-0.8.tar.gz
-	md5sums = 8e17fe060cb714a4f4eca7b7659ff5ef
+	md5sums = a67f6f1be012345d375042bedcb36b74
 
 pkgname = r-xml
