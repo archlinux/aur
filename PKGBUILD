@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=27.1.1
 pkgver=`echo "$_pkgver" | tr - _`
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only patches for dependencies compatibility"
 arch=("i686" "x86_64" "aarch64")
@@ -74,6 +74,9 @@ prepare() {
 
   ## libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
   patch -Np1 < "$srcdir/python_fix.patch"
+
+  ## Fixup for plugins that compile with C99 by default
+  sed -i 's/PTHREAD_MUTEX_RECURSIVE/PTHREAD_MUTEX_RECURSIVE_NP/g' libobs/util/threading.h
 }
 
 build() {
