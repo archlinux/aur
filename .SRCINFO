@@ -1,0 +1,14 @@
+pkgbase = python-neptune-pytorch-lightning
+	pkgdesc = Neptune.ai PyTorch Lightning integration library
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://github.com/neptune-ai/neptune-pytorch-lightning
+	arch = x86_64
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-pytorch-lightning
+	depends = python-neptune-client
+	source = python-neptune-pytorch-lightning-0.9.7.tar.gz::https://github.com/neptune-ai/neptune-pytorch-lightning/archive/refs/tags/0.9.7.tar.gz
+	md5sums = 0f6baab4148e247dea48db62013440b6
+
+pkgname = python-neptune-pytorch-lightning
