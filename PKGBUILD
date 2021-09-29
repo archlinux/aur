@@ -3,7 +3,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2.8.12
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ replaces=('jitsi-meet-electron')
 depends=('gtk3'
          'libxss'
          'nss')
-depends=('electron')
+depends=('electron13')
 makedepends=('coreutils'
              'git'
              'npm'
@@ -29,7 +29,7 @@ options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('7c9e6b362aa00a9267d8995f094006c5f4a979de4a6c09ae2311dcf68891427b'
+sha256sums=('19c3b48c94b1685c210ea745f8c749cea13a26430229d50b24e2c180d7c17dc7'
             'ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
@@ -55,7 +55,7 @@ prepare() {
   # target when calling electron-builder..
   patch -Np1 -i ${srcdir}/no_targets.patch
 
-  _electron_dist=/usr/lib/electron
+  _electron_dist=/usr/lib/electron13
   _electron_ver=$(cat ${_electron_dist}/version)
   sed -r 's#("electron": ").*"#\1'${_electron_ver}'"#' -i package.json
 
@@ -88,7 +88,7 @@ package() {
   cat << EOF > "$pkgdir"/usr/bin/$pkgname
 #!/bin/sh
 
-NODE_ENV=production ELECTRON_IS_DEV=false exec electron /opt/$pkgname/app.asar "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=false exec electron13 /opt/$pkgname/app.asar "\$@"
 EOF
 
   chmod +x "$pkgdir"/usr/bin/$pkgname
