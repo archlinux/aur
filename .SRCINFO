@@ -1,6 +1,6 @@
 pkgbase = apmpkg
 	pkgdesc = Un administrador de paquetes universal para linux como modelo: PKGBUILD
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Kedap/apmpkg
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = apmpkg
 	optdepends = snapd: for install dependencies
 	conflicts = apmpkg-git-dev
 	conflicts = apmpkg-dev
-	source = https://github.com/Kedap/apmpkg/archive/refs/tags/1.4.1.tar.gz
-	sha256sums = 448bffda17d7568088ed907791f118a602b79297877834f245d2054583d159ad
+	source = https://github.com/Kedap/apmpkg/archive/refs/tags/1.5.0.tar.gz
+	sha256sums = 6b4fb5048d29d08575c2b689fa8ccb7e895cd2338437598c0e3bdba3abb5c87c
 
 pkgname = apmpkg
