@@ -25,6 +25,11 @@ package() {
 }
 
 check() {
-    cd "pylatexenc-${pkgver}/test"
+    cd "pylatexenc-${pkgver}"
+    python -m venv venv
+    source venv/bin/activate
+    python setup.py install
+    cd test
     python -m unittest test_*.py
+    deactivate
 }
