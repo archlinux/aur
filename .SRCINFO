@@ -1,11 +1,12 @@
 pkgbase = gourmand
 	pkgdesc = A recipe manager for desktop that can import recipes
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GourmandRecipeManager/gourmand
 	arch = any
 	license = GPL
 	makedepends = python-pip
+	makedepends = gendesk
 	depends = python-gobject
 	depends = gtk3
 	depends = python-pyenchant
