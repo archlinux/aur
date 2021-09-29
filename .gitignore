@@ -1,0 +1,4 @@
+pkg
+src
+*.pkg.tar.*
+electron-netease-cloud-music
