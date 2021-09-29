@@ -1,0 +1,14 @@
+pkgbase = python-mf2py
+	pkgdesc = Python Microformats2 parser
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/mf2py/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/m/mf2py/mf2py-1.1.2.tar.gz
+	sha256sums = 84f1f8f2ff3f1deb1c30be497e7ccd805452996a662fd4a77f09e0105bede2c9
+
+pkgname = python-mf2py
