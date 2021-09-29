@@ -1,0 +1,5 @@
+src
+pkg
+system76-acpi-dkms-git
+*.pkg.tar.*
+tags
