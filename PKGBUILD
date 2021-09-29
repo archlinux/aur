@@ -3,7 +3,7 @@
 # Contributor: Bob Gregory <pathogenix@gmail.com>
 
 pkgname=libfastjson
-pkgver=0.99.8
+pkgver=0.99.9
 pkgrel=2
 pkgdesc="A performance-focused json library for C"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ url="https://github.com/rsyslog/libfastjson"
 license=('GPL')
 depends=()
 source=($pkgname-$pkgver.tar.gz::https://github.com/rsyslog/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('7e49057b26a5a9e3c6623e024f95f9fd9a14b571b9150aeb89d6d475fc3633e3')
+sha256sums=('881f954633aa76931e4c756ece0bda6fd8a673c6e66955a3db3b2bb9d6bbff72')
 
 build() {
   cd "$pkgname-$pkgver"
