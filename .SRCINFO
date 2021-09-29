@@ -1,6 +1,6 @@
 pkgbase = briar-headless-git
 	pkgdesc = Briar REST API
-	pkgver = 1.2.20.r15.gbebf3bbc3
+	pkgver = 1.3.8.r0.g807677532
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = briar-headless-git
 	sha256sums = SKIP
 
 pkgname = briar-headless-git
-
