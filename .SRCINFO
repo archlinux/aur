@@ -1,0 +1,21 @@
+pkgbase = caddy-webdav-git
+	pkgdesc = HTTP/2 Web Server with Automatic HTTPS and webdav plugin
+	pkgver = 20210927.059fc32f
+	pkgrel = 1
+	url = https://giteub.com/caddyserver/caddy
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = caddy
+	provides = caddy
+	conflicts = caddy
+	backup = etc/caddy/Caddyfile
+	source = caddy::git://github.com/caddyserver/caddy
+	source = Caddyfile
+	source = caddy.service
+	sha256sums = SKIP
+	sha256sums = bcec35e3a514dffed5aae314cded658dd5fbd534d30756941ad37298bf066ab8
+	sha256sums = 9bdd2741269a0ac2088f325ca7c08bfa01ddc707149e5027170bc8aeb83cf0aa
+
+pkgname = caddy-webdav-git

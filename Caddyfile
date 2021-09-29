@@ -1,0 +1,14 @@
+{
+	order webdav before file_server
+}
+
+localhost {
+	rewrite /dav /dav/
+	webdav /some/path/match/* {
+		root /path
+		prefix /some/path/match
+	}
+	root * /srv/http
+	file_server
+}
+
