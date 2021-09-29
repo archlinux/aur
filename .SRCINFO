@@ -1,6 +1,6 @@
 pkgbase = pylink
 	pkgdesc = Python interface for the SEGGER J-Link
-	pkgver = 0.10.1
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/Square/pylink
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pylink
 	depends = python-psutil
 	depends = python-setuptools
 	depends = python-six
-	source = https://github.com/square/pylink/archive/v0.10.1.tar.gz
-	sha512sums = c19795f9ef1b4716731883fd55b4b3640861a892bf4f5ad15a82552849299c6af16597e8aac6b36883effa6fcac9ed1be20ea75a582c4447da2680fbde495540
+	source = https://github.com/square/pylink/archive/v0.11.1.tar.gz
+	sha512sums = ac4280dc46f112678249c7241314a28da66ffb95bc1f1eda0f4881bf80db937a32d34bb2b0433fa998f26f0a8744d7e49d5850da7d062bb3077430e7b437fdce
 
 pkgname = pylink
