@@ -21,18 +21,21 @@ depends=('binutils' 'mpfr' 'cloog' 'zlib' 'elfutils')
 makedepends=('setconf')
 makedepends+=('gcc49')
 conflicts=("gcc${_pkgver//\./}-multilib")
-options=('staticlibs' '!libtool')
+options=('staticlibs' '!libtool' '!buildflags')
 source=(
   "http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
   'gcc-hash-style-both.patch'
   'gcc_pure64.patch'
   'siginfo_t_fix.patch'
 )
+md5sums=('295709feb4441b04e87dea3f1bab4281'
+         '6fd395bacbd7b6e47c7b74854b478363'
+         '4030ee1c08dd1e843c0225b772360e76'
+         'eba17a209cf9550b66a4af0527956565')
 sha256sums=('5ff75116b8f763fa0fb5621af80fc6fb3ea0f1b1a57520874982f03f26cd607f'
             'a600550d3d2b2fb8ee6a547c68c3a08a2af7579290b340c35ee5598c9bb305a5'
             '2d369cf93c6e15c3559c3560bce581e0ae5f1f34dc86bca013ac67ef1c1a9ff9'
             '4df866dcfd528835393d2b6897651158faf6d84852158fbf2e4ffc113ec7d201')
-PKGEXT='.pkg.tar.gz'
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
@@ -78,56 +81,40 @@ build() {
   if [ ! -s "${_basedir}/gcc-build/Makefile" ]; then
     cd "${_basedir}"
 
-    # Doesn't like FORTIFY_SOURCE
-    CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
-
-    # Doesn't like -fstack-protector-strong
-    CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
-    CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
-
-    # using -pipe causes spurious test-suite failures
-    # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-    CFLAGS="${CFLAGS/-pipe/}"
-    CXXFLAGS="${CXXFLAGS/-pipe/}"
-
-    # Flags from new compilers that old compilers don't recognize
-    CFLAGS="${CFLAGS/-fno-plt/}"
-    CXXFLAGS="${CXXFLAGS/-fno-plt/}"
-
-    CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
-    CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
-
     cd 'gcc-build'
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
-    ../configure \
-      --build="${CHOST}" \
-      --enable-libgomp \
-      --disable-libmudflap \
-      --disable-libssp \
-      --disable-libstdcxx-pch \
-      --disable-multilib \
-      --enable-__cxa_atexit \
-      --enable-clocale='gnu' \
-      --enable-languages='c,c++,fortran,objc,obj-c++' \
-      --enable-shared \
-      --enable-threads='posix' \
-      --enable-version-specific-runtime-libs \
-      --infodir='/usr/share/info' \
-      --libdir='/usr/lib' \
-      --libexecdir='/usr/lib' \
-      --mandir='/usr/share/man' \
-      --program-suffix="-${_pkgver}" \
-      --with-cloog \
-      --with-ppl \
-      --with-system-zlib \
-      --with-tune='generic' \
-      --prefix='/usr' \
+    local _conf=(
+      --build="${CHOST}"
+      --enable-libgomp
+      --disable-libmudflap
+      --disable-libssp
+      --disable-libstdcxx-pch
+      --disable-multilib
+      --enable-__cxa_atexit
+      --enable-clocale='gnu'
+      --enable-languages='c,c++,fortran,objc,obj-c++'
+      --enable-shared
+      --enable-threads='posix'
+      --enable-version-specific-runtime-libs
+      --infodir='/usr/share/info'
+      --libdir='/usr/lib'
+      --libexecdir='/usr/lib'
+      --mandir='/usr/share/man'
+      --program-suffix="-${_pkgver}"
+      --with-cloog
+      --with-ppl
+      --with-system-zlib
+      --with-tune='generic'
+      --prefix='/usr'
       CXX='g++-4.9' CC='gcc-4.9'
+    )
+    ../configure "${_conf[@]}"
+
+    sed -e 's/^STAGE1_CXXFLAGS.*$/& -std=gnu++11/' -i 'Makefile'
   fi
 
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  nice make -j "${_nproc}"
+  nice make -s
   set +u
 }
 
