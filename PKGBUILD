@@ -1,5 +1,5 @@
 _cranname=XML
-_cranver=3.99-0.7
+_cranver=3.99-0.8
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
