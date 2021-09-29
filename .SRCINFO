@@ -1,13 +1,18 @@
 pkgbase = python-fmpy
 	pkgdesc = Simulate Functional Mockup Units (FMUs) in Python
-	pkgver = 0.2.19
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/CATIA-Systems/FMPy
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	source = https://github.com/CATIA-Systems/FMPy/archive/v0.2.19.tar.gz
-	md5sums = cf07d9da29f1e1ae29e6dff84534362c
+	depends = python-numpy
+	depends = python-attrs
+	depends = python-lxml
+	depends = python-pytz
+	depends = python-msgpack
+	depends = python-lark-parser
+	source = https://github.com/CATIA-Systems/FMPy/archive/v0.3.1.tar.gz
+	md5sums = decb491d10b64469619e6f81b58e7758
 
 pkgname = python-fmpy
-
