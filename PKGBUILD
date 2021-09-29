@@ -1,4 +1,5 @@
-# Maintainer: Fanninger Thomas <thomas at fanninger dot at>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Fanninger Thomas <thomas at fanninger dot at>
 
 pkgname=prosody-mod-e2e_policy
 pkgver=r2199.2582d09d2ec4
@@ -7,8 +8,7 @@ pkgdesc="This module was written to encourage usage of End-to-end encryption for
 arch=('any')
 url="https://modules.prosody.im/mod_e2e_policy.html"
 license=('MIT')
-depends=('prosody' 'prosody-mod-mam-hg')
-provides=('prosody-mod-e2e_policy')
+depends=('prosody')
 makedepends=('mercurial')
 source=("hg+https://hg.prosody.im/prosody-modules/")
 sha1sums=('SKIP')
