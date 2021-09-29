@@ -14,7 +14,7 @@
 ## sccache for faster builds - https://github.com/brave/brave-browser/wiki/sccache-for-faster-builds
 ## Valid numbers between: 0 and 1
 ## Default is: 0 => not use sccache
-: "${USE_SCCACHE:-0}"
+: "${USE_SCCACHE:=0}"
 ##
 ## COMPONENT variable
 ## 0 -> build normal (with debug symbols)
@@ -22,10 +22,10 @@
 ## 2 -> static
 ## 3 -> debug
 ## 4 -> release with custom cflags and system libs
-: "${COMPONENT:-1}"
+: "${COMPONENT:=1}"
 
 pkgname=brave
-pkgver=1.29.79
+pkgver=1.30.87
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=(x86_64)
@@ -48,16 +48,13 @@ makedepends=(clang
              npm
              pipewire
              python
-             python-protobuf
-             python2)
+             python-protobuf)
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'sccache: For faster builds')
-_chromium_base_ver=93
-_patchset=6
-_patchset_name="chromium-$_chromium_base_ver-patchset-$_patchset"
+options=(!lto)
 _launcher_ver=8
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkgver"
         'chromium::git+https://github.com/chromium/chromium.git'
@@ -67,14 +64,14 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         brave-launcher
         brave-browser.desktop
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
-        "https://github.com/stha09/chromium-patches/releases/download/$_patchset_name/$_patchset_name.tar.xz"
         chromium-no-history.patch)
-_arch_revision=4b878998bab64f599eb2dd14e27e7fe42f69a1f2
-_patches=(extend-enable-accelerated-video-decode-flag.patch
-         linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
-         linux-sandbox-fix-fstatat-crash.patch
-         sql-make-VirtualCursor-standard-layout-type.patch
-         chromium-freetype-2.11.patch)
+_arch_revision=d1911c4fdd73fad51b38c5ff29e2457975312f1b
+_patches=(replace-blacklist-with-ignorelist.patch
+	add-a-TODO-about-a-missing-pnacl-flag.patch
+	use-ffile-compilation-dir.patch
+	sql-make-VirtualCursor-standard-layout-type.patch
+	unexpire-accelerated-video-decode-flag.patch
+	use-oauth2-client-switches-as-default.patch)
 for _patch in "${_patches[@]}"; do
   source+=("$_patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$_arch_revision/chromium/trunk/$_patch")
 done
@@ -86,51 +83,45 @@ sha256sums=('SKIP'
             'e4478c79e2eed500777117bb1d48f4be1866908dcda8d75003a5d055618dfdca'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'a44ffd9e25fcbd8b3cc778871890e4da6fe12600ad549c807e1d03f61f0cdf73'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
-            '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
-            '268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3'
-            '253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5'
+            'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
+            'd53da216538f2e741a6e048ed103964a91a98e9a3c10c27fdfa34d4692fdc455'
+            '921010cd8fab5f30be76c68b68c9b39fac9e21f4c4133bb709879592bbdf606e'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
-            '7ef689cd6b2f85f2b76b2a10ecede003cfa0c2da15acc998ecbc445f2c95ced6')
+            '2a97b26c3d6821b15ef4ef1369905c6fa3e9c8da4877eb9af4361452a425290b'
+            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [ffmpeg]=ffmpeg
-  [flac]=flac
-  [fontconfig]=fontconfig
-  [freetype]=freetype2
-  [harfbuzz-ng]=harfbuzz
-  [icu]=icu
-  [libdrm]=
-  [libjpeg]=libjpeg
-  [libpng]=libpng
+  #[ffmpeg]=ffmpeg
+  #[flac]=flac
+  #[fontconfig]=fontconfig
+  #[freetype]=freetype2
+  #[harfbuzz-ng]=harfbuzz
+  #[icu]=icu
+  #[libdrm]=
+  #[libjpeg]=libjpeg
+  #[libpng]=libpng
   #[libvpx]=libvpx
-  [libwebp]=libwebp
-  [libxml]=libxml2
-  [libxslt]=libxslt
-  [opus]=opus
-  [re2]=re2
-  [snappy]=snappy
-  [zlib]=minizip
+  #[libwebp]=libwebp
+  #[libxml]=libxml2
+  #[libxslt]=libxslt
+  #[opus]=opus
+  #[re2]=re2
+  #[snappy]=snappy
+  #[zlib]=minizip
 )
 _unwanted_bundled_libs=(
-	"$(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')"
+	$(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
 )
 
 # Add depends if user wants a release with custom cflags and system libs
 if [ "$COMPONENT" = "4" ]; then
-	#  echo "Build with system libs is disabled for now" && exit 1
-	brave_base_ver="$(echo "$pkgver" | cut -d . -f 1-2)"
-	brave_patchset="1"
-	brave_patchset_name="brave-$brave_base_ver-patches-$brave_patchset"
-	source+=("https://gitlab.com/hadogenes/brave-patches/-/archive/$brave_patchset_name/brave-patches-$brave_patchset_name.zip")
-	sha256sums+=("c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe")
 
 	depends+=('libpulse' 'pciutils')
-	depends+=("${_system_libs[@]}")
-	makedepends+=('lld' 'libva' 'pipewire' 'python2-xcb-proto')
+	depends+=(${_system_libs[@]})
+	makedepends+=('lld' 'libva' 'pipewire')
 else
 	makedepends+=('ncurses5-compat-libs')
 fi
@@ -141,12 +132,6 @@ _msg() {
 
 prepare() {
 	cd brave-browser
-
-	# Hack to prioritize python2 in PATH
-	mkdir -p "$srcdir/bin"
-	ln -sf /usr/bin/python2 "$srcdir/bin/python"
-	ln -sf /usr/bin/python2-config "$srcdir/bin/python-config"
-	export PATH="$srcdir/bin:$PATH"
 
 	_msg "Prepare the environment..."
 	npm install
@@ -162,6 +147,9 @@ prepare() {
 	cp -rT "$srcdir"/brave-core src/brave
 	cp -r "$srcdir"/depot_tools src/brave/vendor/
 	cp -rT "$srcdir"/adblock-rust src/components/adblock_rust_ffi
+
+	# checkout pgo profiles
+	sed -i 's/"checkout_pgo_profiles": "%False%"/"checkout_pgo_profiles": "%True%"/g' src/brave/build/commands/lib/util.js
 
 	_msg "Running \"npm run\""
 	if [ -d src/out/Release ]; then
@@ -179,45 +167,36 @@ prepare() {
 		third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
 		third_party/libxml/chromium/*.cc
 
-	# Upstream fixes
-	# patch -Np1 -i ../../extend-enable-accelerated-video-decode-flag.patch
-	patch -Np1 -i ../../linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
-	patch -Np1 -i ../../linux-sandbox-fix-fstatat-crash.patch
+	# Use the --oauth2-client-id= and --oauth2-client-secret= switches for
+	# setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
+	# runtime -- this allows signing into Chromium without baked-in values
+	patch -Np1 -i ../../use-oauth2-client-switches-as-default.patch
+
+	# https://crbug.com/1207478
+	patch -Np0 -i ../../unexpire-accelerated-video-decode-flag.patch
+
+	# Revert transition to -fsanitize-ignorelist (needs newer clang)
+	patch -Rp1 -i ../../replace-blacklist-with-ignorelist.patch
+
+	# Revert addition of -ffile-compilation-dir= (needs newer clang)
+	patch -Rp1 -i ../../add-a-TODO-about-a-missing-pnacl-flag.patch
+	patch -Rp1 -i ../../use-ffile-compilation-dir.patch
 
 	# https://chromium-review.googlesource.com/c/chromium/src/+/2862724
 	patch -Np1 -i ../../sql-make-VirtualCursor-standard-layout-type.patch
 
-	# Fix build with FreeType 2.11 (patch from Gentoo)
-	# patch -Np1 -i ../../chromium-freetype-2.11.patch
-
-	# Fixes for building with libstdc++ instead of libc++
-	patch -Np1 -i ../../patches/chromium-90-ruy-include.patch
-
 	# Hacky patching
 	sed -e 's/enable_distro_version_check = true/enable_distro_version_check = false/g' -i chrome/installer/linux/BUILD.gn
 
-	# Allow building against system libraries in official builds
+	# don't overwrite makepkg.conf RUSTFLAGS
+	sed -i 's/= args.rust_flags/+= args.rust_flags/g' brave/script/cargo.py
+
 	if [ "$COMPONENT" = "4" ]; then
+		_msg "Add patches for custom build"
+
+		# Allow building against system libraries in official builds
 		sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
 			tools/generate_shim_headers/generate_shim_headers.py
-
-		_msg "Add patches for custom build"
-		for _patch in "$srcdir/brave-patches-$brave_patchset_name"/*.patch; do
-			patch -Np1 -i "$_patch"
-		done
-
-		# Remove bundled libraries for which we will use the system copies; this
-		# *should* do what the remove_bundled_libraries.py script does, with the
-		# added benefit of not having to list all the remaining libraries
-		local _lib
-		for _lib in "${_unwanted_bundled_libs[@]}"; do
-		find "third_party/$_lib" -type f \
-		\! -path "third_party/$_lib/chromium/*" \
-		\! -path "third_party/$_lib/google/*" \
-		\! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
-		\! -regex '.*\.\(gn\|gni\|isolate\)' \
-		-delete
-		done
 
 		./build/linux/unbundle/replace_gn_files.py \
 		--system-libraries "${!_system_libs[@]}"
@@ -236,12 +215,6 @@ build() {
 	export CXX=clang++
 	export AR=llvm-ar
 	export NM=llvm-nm
-
-	# Hack to prioritize python2 in PATH
-	mkdir -p "$srcdir/bin"
-	ln -sf /usr/bin/python2 "$srcdir/bin/python"
-	ln -sf /usr/bin/python2-config "$srcdir/bin/python-config"
-	export PATH="$srcdir/bin:$PATH"
 
 	if [ "$USE_SCCACHE" -eq "1" ]; then
 		echo "sccache = /usr/bin/sccache" >> .npmrc
@@ -267,15 +240,24 @@ build() {
 		'host_toolchain="//build/toolchain/linux/unbundle:default"'
 		'clang_use_chrome_plugins=false'
 		'treat_warnings_as_errors=false'
-		'fieldtrial_testing_like_official_build=true'
+		'disable_fieldtrial_testing_config=true'
+		'blink_enable_generated_code_formatting=false'
+		'ffmpeg_branding="Chrome"'
 		'proprietary_codecs=true'
 		'rtc_use_pipewire=true'
 		'link_pulseaudio=true'
 		'use_gnome_keyring=false'
 		'use_sysroot=false'
-		'use_custom_libcxx=false'
+		'use_custom_libcxx=true'
+		'enable_hangout_services_extension=true'
+		'enable_widevine=true'
+		'enable_nacl=false'
+		'target_sysroot=/'
 		'use_vaapi=true'
 		'is_clang=true'
+		'is_official_build=true'
+		'use_lld=true'
+		'chrome_pgo_phase=2'
 		)
 
 		if [[ -n ${_system_libs[icu]+set} ]]; then
@@ -283,8 +265,13 @@ build() {
 		fi
 
 		if check_option strip y; then
-		_flags+=('symbol_level=0')
+		_flags+=('symbol_level=0'
+			'blink_symbol_level=0')
 		fi
+
+		# Filter known bad flags
+		CFLAGS=${CFLAGS/Ofast/O3}
+		CXXFLAGS=${CXXFLAGS/Ofast/O3}
 
 		# Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
 		CFLAGS+='   -Wno-builtin-macro-redefined'
@@ -296,7 +283,7 @@ build() {
 		CXXFLAGS+=' -Wno-unknown-warning-option'
 
 		npm_args+=(
-		"$(echo "${_flags[@]}" | tr ' ' '\n' | sed -e 's/=/:/' -e 's/^/--gn=/')"
+		$(echo ${_flags[@]} | tr ' ' '\n' | sed -e 's/=/:/' -e 's/^/--gn=/')
 		)
 	fi
 
@@ -339,7 +326,7 @@ package() {
 		v8_context_snapshot.bin \
 		libGLESv2.so \
 		libEGL.so \
-		crashpad_handler \
+		chrome_crashpad_handler \
 		"$pkgdir/usr/lib/$pkgname/"
 	cp -a --reflink=auto \
 		swiftshader/libGLESv2.so \
