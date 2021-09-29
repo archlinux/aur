@@ -4,7 +4,7 @@
 
 _gemname=fluentd
 pkgname=$_gemname
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='Data collector designed to scale and simplify log management'
 arch=('any')
@@ -38,12 +38,17 @@ source=(
 install="$pkgname.install"
 noextract=("$_gemname-$pkgver.gem")
 backup=('etc/fluent/fluentd.conf')
-b2sums=('a925ae4e0ffe4f7e3c73ddca44b988cbfe174e94ad12b99301a59dcc673e27bd343c4b1547089f3f83f862094b3793b61d3d3f071a1a3d9b54fe2dd4cd12af1c'
+b2sums=('86ede223b244cd715dc7852b829e863b1d87d88544e8cab9d9868e3b5a2c5d73ddda87226f8c204c02afcd798bc32751ee58c5b05bf3466ef97aff9b6702719e'
         '593511fb52e2d934e89bbdae7ac7687b29165a6d20a48bab223b91b2010c82811da0a79f9c51ee857b48f2fca06677ba0f9db43bb8990df723620fa3471045a9'
         '8957872f805a274a56ae9e63896033a5fe175bd4d71704e62aff18524b95bf2a611bb3a4bff3c93b6d977f209e415a7d38d806341e144919022226ab1f53247d'
         '78cf6da081b7f370bfe6b362e5f545cefcb770cc42eafd713de5befd8489c543a99e60112b09dc47b7867fdac8be91291cab68fc102f97834f248ce879782d6c')
 
 package() {
+  # systemd integration
+  install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install \
     --ignore-dependencies \
@@ -73,9 +78,4 @@ package() {
 
   # configuration
   install -vDm644 fluent.conf "$pkgdir/etc/fluent/fluentd.conf"
-
-  # systemd integration
-  install -vDm644 "$srcdir/systemd.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -vDm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -vDm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
