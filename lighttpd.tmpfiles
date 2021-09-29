@@ -1,0 +1,2 @@
+d /run/lighttpd 755 http http -
+d /var/cache/lighttpd 755 http http 10d
