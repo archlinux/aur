@@ -6,7 +6,7 @@
 
 pkgname=mailspring
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=('x86_64')
 license=('custom: GPL3 and (C) 2016-2019 Foundry 376, LLC.')
@@ -26,6 +26,6 @@ package() {
 	cd ${srcdir}
 
 	tar -xvf data.tar.xz -C ${pkgdir} --exclude='./control'
-
-	chmod -R go-w "${pkgdir}"/usr
+    chmod go-w "${pkgdir}"/usr "${pkgdir}"/usr/bin
+    chmod -R go-w "${pkgdir}"/usr/share
 }
