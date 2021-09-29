@@ -3,7 +3,7 @@
 
 pkgname=atari800-git
 _pkgname=atari800
-pkgver=r2761.6e19f656
+pkgver=r2794.4ef57600
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="An emulator of the Atari 800/800XL/130XE/5200 with various extensions - git"

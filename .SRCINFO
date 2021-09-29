@@ -1,6 +1,6 @@
 pkgbase = atari800-git
 	pkgdesc = An emulator of the Atari 800/800XL/130XE/5200 with various extensions - git
-	pkgver = r2761.6e19f656
+	pkgver = r2794.4ef57600
 	pkgrel = 1
 	url = https://atari800.github.io
 	arch = i686
