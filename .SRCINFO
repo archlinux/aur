@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-desktop
 	pkgdesc = Jitsi Meet desktop application
-	pkgver = 2.8.12
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = x86_64
@@ -13,15 +13,15 @@ pkgbase = jitsi-meet-desktop
 	makedepends = png++
 	makedepends = libxtst
 	makedepends = nvm
-	depends = electron
+	depends = electron13
 	conflicts = jitsi-meet-electron-bin
 	conflicts = jitsi-meet-electron
 	replaces = jitsi-meet-electron
 	options = !strip
-	source = jitsi-meet-desktop_2.8.12.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v2.8.12.tar.gz
+	source = jitsi-meet-desktop_2.9.0.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v2.9.0.tar.gz
 	source = no_targets.patch
 	source = jitsi-meet-desktop.desktop
-	sha256sums = 7c9e6b362aa00a9267d8995f094006c5f4a979de4a6c09ae2311dcf68891427b
+	sha256sums = 19c3b48c94b1685c210ea745f8c749cea13a26430229d50b24e2c180d7c17dc7
 	sha256sums = ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36
 	sha256sums = 36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4
 
