@@ -2,15 +2,15 @@
 
 pkgbase=python-macholib
 pkgname=('python-macholib' 'python2-macholib')
-pkgver=1.14
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="Mach-O header analysis and editing"
 arch=('any')
 url="https://bitbucket.org/ronaldoussoren/macholib/"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/0d/fe/61e8f6b569c8273a8f2dd73921738239e03a2acbfc55be09f8793261f269/macholib-$pkgver.tar.gz")
-sha512sums=('362b59634d30af2e2fbbeb7a7c9178aaae57c09c88ad2ae93097b9af64df75dd5c656a779c7616a915883dcea52cb6ebf17bf8c7232d40c0bbe9880b3d5ca009')
+source=("https://files.pythonhosted.org/packages/c2/c1/09a06315332fc6c46539a1df57195c21ba944517181f85f728559f1d0ecb/macholib-$pkgver.tar.gz")
+sha512sums=('ae0c3c3a14e15e412ff4ca3bb6a36a94ae3727494ed993fa623ebdcdfd7da2de1e4ef3484bc43aec780ae7bb95a6d32d1b26236813171bfa370029062a616d4f')
 
 prepare() {
   cd "$srcdir"
