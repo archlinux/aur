@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=python-lunr
 _pkgname=lunr
-pkgver=0.5.9
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A Python implementation of Lunr.js (for mkdocs)"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-nltk>=3.2.5' 'python-future>=0.16.0' 'python-tqdm' 'python-joblib' 'python-regex')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('5ee777b068e2234c4a9496ecbd0abe7aa5e8ad5fdc7b79a09876669252b71202')
+sha256sums=('2c6311d1df06e0990ad7cb5fed55470a90432cf90fe636fff5b63aeea99aca80')
 
 build() {
 	cd "${_pkgname}-$pkgver"

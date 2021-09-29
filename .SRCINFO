@@ -1,6 +1,6 @@
 pkgbase = python-lunr
 	pkgdesc = A Python implementation of Lunr.js (for mkdocs)
-	pkgver = 0.5.9
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/yeraydiazdiaz/lunr.py
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = python-lunr
 	depends = python-tqdm
 	depends = python-joblib
 	depends = python-regex
-	source = https://files.pythonhosted.org/packages/source/l/lunr/lunr-0.5.9.tar.gz
-	sha256sums = 5ee777b068e2234c4a9496ecbd0abe7aa5e8ad5fdc7b79a09876669252b71202
+	source = https://files.pythonhosted.org/packages/source/l/lunr/lunr-0.6.0.tar.gz
+	sha256sums = 2c6311d1df06e0990ad7cb5fed55470a90432cf90fe636fff5b63aeea99aca80
 
 pkgname = python-lunr
-
