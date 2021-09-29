@@ -10,7 +10,7 @@ url='https://github.com/OzymandiasTheGreat/Joy2DroidX-server'
 arch=('x86_64')
 license=('GPL')
 options=()
-depends=('python-uinput')
+depends=('python-uinput' 'python-eventlet' 'python-evdev' 'python-socketio' 'python-qrcode')
 makedepends=('git')
 optdepends=()
 install=j2dx.install
@@ -38,6 +38,8 @@ prepare() {
          "\n   sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])" \
          "\n   sys.exit(main())" > j2dx
     echo 'SUBSYSTEM=="misc", KERNEL=="uinput", MODE="0660", GROUP="uinput"' > 80-uinput.rules
+    cd Joy2DroidX-server
+    git apply ../../j2dx.patch
 }
 
 build() {

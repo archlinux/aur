@@ -1,0 +1,15 @@
+diff --git a/j2dx/__init__.py b/j2dx/__init__.py
+index 7f9b621..200bf69 100644
+--- a/j2dx/__init__.py
++++ b/j2dx/__init__.py
+@@ -10,10 +10,8 @@ from eventlet import wsgi, listen
+ if platform.system() == 'Linux':
+ 	try:
+ 		from .nix.device import X360Device, DS4Device
+-		from .nix.setup import setup
+ 	except ImportError:
+ 		from j2dx.nix.device import X360Device, DS4Device
+-		from j2dx.nix.setup import setup
+ else:
+ 	try:
+ 		from .win.device import X360Device, DS4Device
