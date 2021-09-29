@@ -15,12 +15,12 @@ optdepends=('postgresql-libs: PostgreSQL Database Support'
 backup=('etc/rsyslog.conf'
 	'etc/logrotate.d/rsyslog')
 options=('strip' 'zipman')
-source=("https://github.com/rsyslog/rsyslog/archive/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rsyslog/rsyslog/archive/v${pkgver}.tar.gz"
 	'rsyslog.logrotate'
 	'rsyslog.conf'
         'rsyslog.service')
 
-sha256sums=('bf000a5f6d95fec26b77a2133ac225da439b0cd7a64f190a569d5c42fdacf795'
+sha256sums=('7add281a1d7f0711603856a9e25394d3dea9f6033e7808ee5d66cd6320d6c9c5'
             '0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a'
             'bc7ea11a697c20cdaa6730cfa0b4465cef0fec0e3f6b39aeff8deae9756aafbb'
             '81b9f9b78395405b679849143a6709911d00e9317928fdb2a2540f52965847c2')
@@ -28,23 +28,22 @@ install=$pkgname.install
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
-  ./autogen.sh
-  ./configure --prefix=/usr \
-              --sbindir=/usr/bin \
-              --enable-mysql \
-              --enable-pgsql \
-              --enable-mail \
-              --enable-imfile \
-              --enable-snmp \
-              --enable-gnutls \
-              --enable-inet \
-              --enable-imjournal \
-              --enable-omjournal \
-              --enable-relp \
-              --enable-impstats \
-              --enable-imptcp \
-              --enable-omprog \
-              --with-systemdsystemunitdir=/usr/lib/systemd/system
+  ./autogen.sh --prefix=/usr \
+               --sbindir=/usr/bin \
+               --enable-mysql \
+               --enable-pgsql \
+               --enable-mail \
+               --enable-imfile \
+               --enable-snmp \
+               --enable-gnutls \
+               --enable-inet \
+               --enable-imjournal \
+               --enable-omjournal \
+               --enable-relp \
+               --enable-impstats \
+               --enable-imptcp \
+               --enable-omprog \
+               --with-systemdsystemunitdir=/usr/lib/systemd/system
 
   make
 }
