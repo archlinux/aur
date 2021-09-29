@@ -2,8 +2,8 @@
 # Contributor: Ben Silverman <bensilverman10 at gmail dot com>
 
 pkgname=alacritty-themes
-pkgver=4.1.2
-pkgrel=3
+pkgver=4.1.3
+pkgrel=1
 
 pkgdesc="A utility for choosing and applying Alacritty terminal themes."
 arch=(any)
@@ -15,11 +15,9 @@ makedepends=("npm" "jq")
 conflicts=("$pkgname")
 install="$pkgname.install"
 
-source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
-	"fixing_v4.1.2.patch")
+source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-b2sums=('aac71402d02519b7921c8172f0218ee161bd1b3fb6343e497eed22407abf34623b0781bbbdadd687eae2e3861bfaab4c9ff6f09790145966e8349ddd643723d5'
-	'SKIP')
+b2sums=('1ea099bd655f235114c3fe95adcdad778abdaa06a3b30a8214914a3f6de0196407f2132913c01b6b3b3a9c94d003e07e990500b7d737d46e9f47a650aa85417b')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
@@ -40,6 +38,4 @@ package() {
         mv "$tmppackage" "$pkgjson"
         chmod 644 "$pkgjson"
     done
-
-    patch $pkgdir/usr/lib/node_modules/alacritty-themes/src/helpers/index.js -i fixing_v4.1.2.patch    
 }
