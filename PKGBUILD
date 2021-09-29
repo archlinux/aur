@@ -1,43 +1,36 @@
-# Maintainer: Antonio Rojas 
+# Merged with official ABS kmix PKGBUILD by João, 2021/09/29 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Antonio Rojas 
 
 pkgname=kmix-git
-pkgver=r1972.9814a23
+pkgver=21.11.70_r2383.g0ef1805b
 pkgrel=1
 pkgdesc='KDE volume control program'
-arch=('i686' 'x86_64')
-url='http://kde.org/applications/multimedia/kmix/'
-license=('GPL')
-depends=('kdelibs4support' 'kcmutils' 'libcanberra')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
-conflicts=('kdemultimedia-kmix' 'kmix')
-provides=('kmix')
-source=("git://anongit.kde.org/kmix.git")
+url='https://apps.kde.org/kmix/'
+arch=($CARCH)
+license=(GPL LGPL FDL)
+depends=(knotifications-git kxmlgui-git solid-git kcompletion-git hicolor-icon-theme)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kde-applications-git kde-multimedia-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd kmix
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-  
-  cd kmix
-  sed -e 's|CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR}|CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_SOURCE_DIR}/cmake/modules|' -i CMakeLists.txt
-}
-
-build() { 
-  cd build
-  cmake ../kmix \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DKMIX_KF5_BUILD=ON \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+build() {
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
