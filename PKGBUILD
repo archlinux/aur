@@ -11,20 +11,13 @@ depends=(jupyter)
 # The wolframengine is listed as optional depends, but you must install
 # wolframscript in some way to install this package
 optdepends=(wolframengine)
+
+# The installer file is fetched through git but it's not a git packaege
 source=("git+https://github.com/WolframResearch/WolframLanguageForJupyter.git")
 sha256sums=('SKIP')
 
 prepare() {
-#  if [ -d ${srcdir}/WolframLanguageForJupyter ]; then
-#    msg2 "Repository exists, deleting"
-#    rm -rf ${srcdir}/WolframLanguageForJupyter
-#  fi
-  msg2 "Cloning repository"
-#  git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
-}
-
-check() {
-  echo "Login to your linux user that is used to activate WE. Username:"
+  echo -e "Login to your linux user that is used to activate WE.\nUsername: \c"
   read name
   if [ -z ${name} ]; then
     echo "Username cannot be empty"
@@ -35,13 +28,13 @@ check() {
     echo "No valid wolframscript installation is found"
     exit
   else
-    echo "wolframscript activated"
+    echo "wolframscript activation checked"
   fi
   echo ${name} > ${srcdir}/username.conf
 }
 
 package() {
-  msg2 "Copying installer files"
+  echo "Copying installer files"
   mkdir ${pkgdir}/opt 
   cp -r ${srcdir}/WolframLanguageForJupyter ${pkgdir}/opt/WolframLanguageForJupyter
 
