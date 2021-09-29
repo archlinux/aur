@@ -1,7 +1,7 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=ulist
-pkgver=0.10.5
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="A mailing list service that keeps it simple."
 arch=('x86_64')
 url="https://github.com/wansing/$pkgname"
@@ -11,7 +11,7 @@ makedepends=('go')
 optdepends=('sqlite')
 source=("$url/archive/v$pkgver.tar.gz")
 validpgpkeys=('F433936B030F7FB97F4084E4C7C21DFFE932EF9D')
-sha256sums=('1bcff94620c4297ae61cb1953a56c042a201ea428a4e0e97fd797a78c16d7e53')
+sha256sums=('7204410a4d0b55eb896d707aba8109fcdbd2dfe1b1b4e1a7f09e104e88da8f99')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -25,9 +25,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go generate
-  go generate github.com/wansing/ulist/internal/listdb/
-  go build -o build -ldflags "-X main.GitCommit=$pkgver"
+  go build -o build
 }
 
 check() {

@@ -1,15 +1,15 @@
 pkgbase = ulist
 	pkgdesc = A mailing list service that keeps it simple.
-	pkgver = 0.10.5
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/wansing/ulist
 	arch = x86_64
 	license = GPL
 	makedepends = go
+	depends = glibc
 	optdepends = sqlite
-	source = https://github.com/wansing/ulist/archive/v0.10.5.tar.gz
+	source = https://github.com/wansing/ulist/archive/v0.11.0.tar.gz
 	validpgpkeys = F433936B030F7FB97F4084E4C7C21DFFE932EF9D
-	sha256sums = 1bcff94620c4297ae61cb1953a56c042a201ea428a4e0e97fd797a78c16d7e53
+	sha256sums = 7204410a4d0b55eb896d707aba8109fcdbd2dfe1b1b4e1a7f09e104e88da8f99
 
 pkgname = ulist
-
