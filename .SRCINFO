@@ -1,6 +1,6 @@
 pkgbase = python-pyntcloud
 	pkgdesc = Python library for working with 3D point clouds
-	pkgver = 0.1.2
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/daavoo/pyntcloud
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = python-pyntcloud
 	optdepends = python-pyvista: plotting support
 	optdepends = ipython: plotting support
 	optdepends = python-numba: numba acceleration support
-	source = https://github.com/daavoo/pyntcloud/archive/v0.1.2.tar.gz
-	sha256sums = 728e4fbb376f608f37bc7594eddc2946d87adefb36f7c8cd10b26ce01a8abcd1
+	source = https://github.com/daavoo/pyntcloud/archive/v0.1.5.tar.gz
+	sha256sums = 3e9661c1527216b6642166bab33838b126abc3f4ebf6f4661d01da4c64195599
 
 pkgname = python-pyntcloud
-
