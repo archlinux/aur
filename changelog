@@ -1,3 +1,4 @@
 Maintainer: LeSnake04
-21.06.07-1 210815: First AUR release
-21.06.07-2 210830: Disabled integration dialog, only extracs needed files
+21.06.07-1 2021-08-15: First AUR release
+21.06.07-8 2021-08-30: Disabled integration dialog, only extracs needed files
+21.06.07-9 2021-09-29: Removed invalid Architectures
