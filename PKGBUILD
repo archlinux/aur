@@ -1,7 +1,7 @@
 # Maintainer Yuqing Gu <sffred@qq.com>
 pkgname=jupyter-wolframengine_kernel
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Wolfram Language kernel for Jupyter notebooks"
 arch=('any')
 url="https://github.com/WolframResearch/WolframLanguageForJupyter"
@@ -17,20 +17,24 @@ source=("git+https://github.com/WolframResearch/WolframLanguageForJupyter.git")
 sha256sums=('SKIP')
 
 prepare() {
-  echo -e "Login to your linux user that is used to activate WE.\nUsername: \c"
-  read name
-  if [ -z ${name} ]; then
-    echo "Username cannot be empty"
-    exit
-  fi
-  checkw=`su - ${name} -c 'wolframscript -c 1'`
-  if [ $checkw -ne 1 ]; then
-    echo "No valid wolframscript installation is found"
-    exit
+  if [ `wolframscript -c 1 2> /dev/null` ]; then
+    echo `whoami` > ${srcdir}/username.conf
   else
-    echo "wolframscript activation checked"
+    echo -e "Login to your linux user that is used to activate WE.\nUsername: \c"
+    read name
+    if [ -z ${name} ]; then
+      echo "Username cannot be empty"
+      exit
+    fi
+    checkw=`su - ${name} -c 'wolframscript -c 1'`
+    if [ $checkw -ne 1 ]; then
+      echo "No valid wolframscript installation is found"
+      exit
+    else
+      echo "wolframscript activation checked"
+    fi
+    echo ${name} > ${srcdir}/username.conf
   fi
-  echo ${name} > ${srcdir}/username.conf
 }
 
 package() {
