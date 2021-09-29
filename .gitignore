@@ -4,3 +4,4 @@ pkg
 src
 *.zip
 *.orig
+*.zst

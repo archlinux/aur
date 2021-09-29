@@ -2,13 +2,13 @@
 
 pkgname=nerd-fonts-fantasque-sans-mono
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font FantasqueSansMono from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
 license=('MIT')
 depends=('fontconfig')
-provides=('nerd-fonts-fantasque-sans-mono')
+provides=('nerd-fonts-fantasque-sans-mono' 'ttf-font-nerd')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 groups=("nerd-fonts")
 source=("${url}/releases/download/v$pkgver/FantasqueSansMono.zip"

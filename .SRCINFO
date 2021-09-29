@@ -1,13 +1,14 @@
 pkgbase = nerd-fonts-fantasque-sans-mono
 	pkgdesc = Patched font FantasqueSansMono from the nerd-fonts library
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
 	license = MIT
 	depends = fontconfig
 	provides = nerd-fonts-fantasque-sans-mono
+	provides = ttf-font-nerd
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete
 	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FantasqueSansMono.zip
@@ -16,4 +17,3 @@ pkgbase = nerd-fonts-fantasque-sans-mono
 	sha1sums = 92fdad3c8babc0473da5f03e41fb1151417ab386
 
 pkgname = nerd-fonts-fantasque-sans-mono
-
