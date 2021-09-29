@@ -1,7 +1,7 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=nxprayer
-pkgver=0.1.1
+pkgver=0.1.1.r56.dab0ca0
 pkgrel=1
 epoch=1
 pkgdesc="Islamic prayer reminder for your status bar or/and scripts."
@@ -32,12 +32,12 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}/"
+	make DESTDIR="${pkgdir}"
 }
 
 package() {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}/" install
+	make DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
