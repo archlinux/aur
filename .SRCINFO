@@ -12,7 +12,6 @@ pkgbase = nxprayer
 	depends = jq
 	depends = awk
 	depends = sed
-	depends = man.db
 	depends = gawk
 	depends = bash
 	depends = libnotify

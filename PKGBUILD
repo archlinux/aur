@@ -11,7 +11,6 @@ depends=(
     'jq'
 		'awk'
 		'sed'
-		'man.db'
     'gawk'
     'bash'
     'libnotify'
