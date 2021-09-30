@@ -1,7 +1,7 @@
 # Mantainer: Leonardo "drd" Idone <idone.leonardo@gmail.com>
 
 pkgname=alacritty-circadian
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Alacritty time/sun based theme switch daemon"
 arch=(any)

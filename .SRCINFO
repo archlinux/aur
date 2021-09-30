@@ -1,6 +1,6 @@
 pkgbase = alacritty-circadian
 	pkgdesc = Alacritty time/sun based theme switch daemon
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://github.com/Dr-Dd/alacritty-circadian
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = alacritty-circadian
 	depends = python-ruamel.yaml.clib
 	depends = python-astral
 	depends = python-tzlocal
-	source = https://github.com/Dr-Dd/alacritty-circadian/releases/download/v0.9.6/alacritty-circadian-0.9.6.tar.gz
+	source = https://github.com/Dr-Dd/alacritty-circadian/releases/download/v0.9.7/alacritty-circadian-0.9.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = alacritty-circadian
