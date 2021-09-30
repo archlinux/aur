@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-cacule
 	pkgdesc = Linux Xanmod. Branch with Cacule scheduler by Hamad Marri
-	pkgver = 5.14.8
+	pkgver = 5.14.9
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = linux-xanmod-cacule
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.14.8-xanmod1-cacule/patch-5.14.8-xanmod1-cacule.xz
+	source = https://github.com/xanmod/linux/releases/download/5.14.9-xanmod1-cacule/patch-5.14.9-xanmod1-cacule.xz
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2
 	sha256sums = SKIP
-	sha256sums = 567684e9ea28914a10520c7dfaeed7287ebd87abec60075f66061180f3e43e16
+	sha256sums = 7d009e564138ffeb053ccf9a0765f4320e017f2fe1813120b480215b1d122311
 	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
 
 pkgname = linux-xanmod-cacule
