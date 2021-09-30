@@ -25,8 +25,14 @@ prepare() {
   rm -fr VapourSynth.h VSHelper.h
 
   echo "all:
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o Clense.o Clense.cpp
 	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RGVS.o RGVS.cpp
-	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so RGVS.o" > Makefile
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RemoveGrain.o RemoveGrain.cpp
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o Repair.o Repair.cpp
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o VerticalCleaner.o VerticalCleaner.cpp
+
+
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so Clense.o RGVS.o RemoveGrain.o Repair.o VerticalCleaner.o" > Makefile
 }
 
 build() {
