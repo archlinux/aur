@@ -16,8 +16,6 @@ optdepends=('python-cplot: for SRGB1 coloring'
 source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('5548b35ca5613a1708342a812a3e126befbb3f396640a2d6f51ff6b3973169a6f7b9df0115fda23fe3bcf2ccc5d411be2fd271fab2cea135c9f1105b3c825e9d')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" build
@@ -31,6 +29,6 @@ check() {
 
 package() {
   cd "${_base}-${pkgver}"
-  python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
