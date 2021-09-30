@@ -1,8 +1,8 @@
 pkgbase = xfce4-docklike-plugin
 	pkgdesc = A modern, docklike, minimalist taskbar for XFCE
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://github.com/nsz32/docklike-plugin
+	url = https://gitlab.xfce.org/panel-plugins/xfce4-docklike-plugin
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -14,8 +14,10 @@ pkgbase = xfce4-docklike-plugin
 	depends = gtk3
 	depends = cairo
 	depends = glib2
+	depends = exo
 	conflicts = xfce4-docklike-plugin-git
-	source = https://github.com/davekeogh/xfce4-docklike-plugin/archive/v0.3.0.zip
+	conflicts = xfce4-docklike-plugin-ng-git
+	source = https://gitlab.xfce.org/panel-plugins/xfce4-docklike-plugin/-/archive/xfce4-docklike-plugin-0.4.0/xfce4-docklike-plugin-xfce4-docklike-plugin-0.4.0.tar.gz
 	sha512sums = SKIP
 
 pkgname = xfce4-docklike-plugin

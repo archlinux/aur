@@ -2,30 +2,35 @@
 # Contributer: nsz32 <nszabo2 at gmail dot com>
 
 pkgname="xfce4-docklike-plugin"
-pkgver="0.3.0"
+pkgver="0.4.0"
 pkgrel=1
 pkgdesc='A modern, docklike, minimalist taskbar for XFCE'
 arch=('i686' 'x86_64')
-url='https://github.com/nsz32/docklike-plugin'
+url='https://gitlab.xfce.org/panel-plugins/xfce4-docklike-plugin'
 license=('GPL3')
-depends=('xfce4-panel>=4.4' 'libwnck3' 'libxfce4ui' 'gtk3' 'cairo' 'glib2')
+depends=('xfce4-panel>=4.4' 'libwnck3' 'libxfce4ui' 'gtk3' 'cairo' 'glib2' "exo")
 makedepends=('xfce4-dev-tools' 'intltool')
-conflicts=("${pkgname}-git")
+conflicts=("${pkgname}-git" "${pkgname}-ng-git")
+dirname="xfce4-docklike-plugin-xfce4-docklike-plugin-${pkgver}"
 
-source=("https://github.com/davekeogh/xfce4-docklike-plugin/archive/v${pkgver}.zip")
+source=(
+	#"https://github.com/davekeogh/xfce4-docklike-plugin/archive/v${pkgver}.zip"
+	"${url}/-/archive/xfce4-docklike-plugin-${pkgver}/xfce4-docklike-plugin-xfce4-docklike-plugin-${pkgver}.tar.gz"
+)
+
 sha512sums=('SKIP')
 
 prepare() {
-	cd "${srcdir}/xfce4-docklike-plugin-${pkgver}"
+	cd "${srcdir}/${dirname}"
 	./autogen.sh
 }
 
 build() {
-	cd "${srcdir}/xfce4-docklike-plugin-${pkgver}"
+	cd "${srcdir}/${dirname}"
 	make
 }
 
 package() {
-	cd "${srcdir}/xfce4-docklike-plugin-${pkgver}"
+	cd "${srcdir}/${dirname}"
 	make DESTDIR="${pkgdir}" install
 }
