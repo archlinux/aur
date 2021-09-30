@@ -1,0 +1,15 @@
+pkgbase = python-pytest-curio
+	pkgdesc = Launch pytest with curio
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/johnnoone/pytest-curio
+	changelog = CHANGELOG.md
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-pytest
+	depends = python-curio
+	source = python-pytest-curio-1.0.1.tar.gz::https://github.com/johnnoone/pytest-curio/archive/v1.0.1.tar.gz
+	sha256sums = 59dd06b2c92e93a2a67326cd2448ddf452bfdb83000e2d76221a4a33a232295a
+
+pkgname = python-pytest-curio
