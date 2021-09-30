@@ -2,10 +2,10 @@
 
 pkgbase=linux-amd-znver2
 _srcname=linux
-gitver=v5.14.8
+gitver=v5.14.9
 patchver=20210914
 patchname=more-uarches-for-kernel-5.8-5.14.patch
-pkgver=5.14.v.8
+pkgver=5.14.v.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '86521f0dc28f9756e2c6581bfa6c27bd15f90bd5183edc62d3af428ae8c160e1'
+            'a4d0095cf95ebc8ba97dd86fd50b2788ee535a8bc71e0c6d0e7958f4481d6aba'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
@@ -175,8 +175,7 @@ _package-headers() {
   cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
 
-  # fix permissions on scripts dir
-  chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
+  # Make tmpdir for versions
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
 
   # add kernel files to headers
