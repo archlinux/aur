@@ -1,9 +1,10 @@
-# Maintainer: jtts
+# Maintainer: Taijian <taijian@posteo.de>
+# Contributor: jtts
 # Contributor: Christian METZLER <neroth@xeked.com>
 
 pkgname=gnome-shell-extension-openweather-git
-pkgver=r1048.401d68e
-pkgrel=2
+pkgver=r1098.d714eb1
+pkgrel=1
 pkgdesc="A simple extension for displaying weather informations from several cities in GNOME Shell."
 arch=(any)
 url="https://gitlab.com/jenslody/gnome-shell-extension-openweather"
@@ -17,7 +18,7 @@ conflicts=(gnome-shell-extension-weather-neroth-git
 	  gnome-shell-extension-weather-git
 	  gnome-shell-extension-yawe-git)
 install='gschemas.install'
-source=("$pkgname"::"git+https://gitlab.com/jenslody/gnome-shell-extension-openweather.git#branch=master")
+source=("$pkgname"::"git+https://gitlab.com/jenslody/gnome-shell-extension-openweather.git#branch=gnome40")
 sha256sums=('SKIP')
 
 pkgver() {

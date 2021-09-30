@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-openweather-git
 	pkgdesc = A simple extension for displaying weather informations from several cities in GNOME Shell.
-	pkgver = r1048.401d68e
-	pkgrel = 2
+	pkgver = r1098.d714eb1
+	pkgrel = 1
 	url = https://gitlab.com/jenslody/gnome-shell-extension-openweather
 	install = gschemas.install
 	arch = any
@@ -20,8 +20,7 @@ pkgbase = gnome-shell-extension-openweather-git
 	conflicts = gnome-shell-extension-weather-neroth-git
 	conflicts = gnome-shell-extension-weather-git
 	conflicts = gnome-shell-extension-yawe-git
-	source = gnome-shell-extension-openweather-git::git+https://gitlab.com/jenslody/gnome-shell-extension-openweather.git#branch=master
+	source = gnome-shell-extension-openweather-git::git+https://gitlab.com/jenslody/gnome-shell-extension-openweather.git#branch=gnome40
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-openweather-git
-
