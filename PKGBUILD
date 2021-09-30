@@ -39,6 +39,11 @@ if [ -z ${_compiler+x} ]; then
   _compiler=gcc
 fi
 
+# Compress modules with ZSTD (to save disk space)
+if [ -z ${_compress_modules+x} ]; then
+  _compress_modules=n
+fi
+
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
@@ -150,6 +155,11 @@ prepare() {
   if [ "$use_numa" = "n" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
+  fi
+
+  # Compress modules by default (following Arch's kernel)
+  if [ "$_compress_modules" = "y" ]; then
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   fi
 
   # Let's user choose microarchitecture optimization in GCC
