@@ -36,8 +36,11 @@ build() {
     mkdir -p build
     cd build
     cmake ".." -DCMAKE_INSTALL_PREFIX=/usr
-    make -j 4
-    make -j 4 translations
+    # For more build jobs:
+    # echo 'MAKEFLAGS="-j4"' >>/etc/makepkg.conf
+    # (or ~/.makepkg.conf)
+    make
+    make translations
 }
 
 package() {
