@@ -10,7 +10,7 @@ depends=('python' 'python-screeninfo' 'python-pyqt5')
 makedepends=('python-setuptools')
 backup=("etc/$pkgname/brightness.ini")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Lawrence-Chiappelli/screendimmer/archive/$pkgver.tar.gz")
-md5sums=('7fc20944ebc3e729c1ba774423cf3493')
+md5sums=('4c489a63f93d2e57f81d6f77704c32a3')
 
 build() {					
 	cd "$pkgname-$pkgver"	
@@ -26,4 +26,3 @@ package() {
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"			
 }
-md5sums=('4c489a63f93d2e57f81d6f77704c32a3')
