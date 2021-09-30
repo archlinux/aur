@@ -4,17 +4,18 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.1.3
+_qtver=6.2.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework - headless build, no QtGui or QtWidgets'
-depends=(sqlite double-conversion brotli libb2) # md4c - not supported yet
+depends=(sqlite double-conversion brotli libb2)
 makedepends=(cmake ninja mariadb-libs unixodbc postgresql xmlstarlet systemd)
 optdepends=('postgresql-libs: PostgreSQL driver'
             'mariadb-libs: MariaDB driver'
+            'md4c: C Markdown parser'
             'unixodbc: ODBC driver'
             'shared-mime-info: Freedesktop.org Shared MIME Info')
 groups=(qt6)
@@ -24,18 +25,21 @@ options=(!lto)
 _pkgfn="qtbase-everywhere-src-$_qtver"
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
         qt6-base-cflags.patch
-        qt6-base-nostrip.patch)
-sha256sums=('1e9abb2ea4daa0fd11f46fc871d9e896b916e1b7130fed74c83d66221bb4fe78'
+        qt6-base-nostrip.patch
+        qtbug-96392.patch::https://code.qt.io/cgit/qt/qtbase.git/patch/?id=5c7b3db32bf383afa00050370222f39e0f3083ca)
+sha256sums=('fdfff0716d093bcb6bcd53746ce1d3c9701a6bf3326d47813866d43949b47769'
             'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c'
-            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
+            '4c999415cf813591efa2e5bc5f692a4a7a822ad94837a01ef9c802f96c3ebd90')
 
 prepare() {
-  patch -d $_pkgfn -p1 -i ../qt6-base-cflags.patch # Use system CFLAGS
-  patch -d $_pkgfn -p1 -i ../qt6-base-nostrip.patch # Don't strip binaries with qmake
+  patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
+  patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
+  patch -d $_pkgfn -p1 < qtbug-96392.patch # https://bugreports.qt.io/browse/QTBUG-96392
 }
 
 build() {
-  cmake -G Ninja -B build -S "$_pkgfn" \
+  cmake -B build -S "$_pkgfn" -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DINSTALL_BINDIR=lib/qt6/bin \
     -DINSTALL_PUBLICBINDIR=usr/bin \

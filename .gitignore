@@ -1,5 +1,6 @@
 *~
 *.log
 *.tar.xz
+qtbug-96392.patch
 qtbase-everywhere-src-*.tar.xz
 qt6-base-headless-*.pkg.tar.*

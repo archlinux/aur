@@ -1,6 +1,6 @@
 pkgbase = qt6-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
-	pkgver = 6.1.3
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -22,16 +22,19 @@ pkgbase = qt6-base-headless
 	depends = libb2
 	optdepends = postgresql-libs: PostgreSQL driver
 	optdepends = mariadb-libs: MariaDB driver
+	optdepends = md4c: C Markdown parser
 	optdepends = unixodbc: ODBC driver
 	optdepends = shared-mime-info: Freedesktop.org Shared MIME Info
 	provides = qt6-base
 	conflicts = qt6-base
 	options = !lto
-	source = https://download.qt.io/official_releases/qt/6.1/6.1.3/submodules/qtbase-everywhere-src-6.1.3.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.0/submodules/qtbase-everywhere-src-6.2.0.tar.xz
 	source = qt6-base-cflags.patch
 	source = qt6-base-nostrip.patch
-	sha256sums = 1e9abb2ea4daa0fd11f46fc871d9e896b916e1b7130fed74c83d66221bb4fe78
+	source = qtbug-96392.patch::https://code.qt.io/cgit/qt/qtbase.git/patch/?id=5c7b3db32bf383afa00050370222f39e0f3083ca
+	sha256sums = fdfff0716d093bcb6bcd53746ce1d3c9701a6bf3326d47813866d43949b47769
 	sha256sums = cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c
 	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
+	sha256sums = 4c999415cf813591efa2e5bc5f692a4a7a822ad94837a01ef9c802f96c3ebd90
 
 pkgname = qt6-base-headless
