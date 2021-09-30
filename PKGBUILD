@@ -14,8 +14,6 @@ optdepends=('python-scipy: for SciPy optimization'
 source=(${url}/archive/${_base}-${pkgver}.tar.gz)
 sha512sums=('32d5cfb6142c102c604e4a8850a68fc13f03786052692ef6c93cec4f85e3ab680f82061f53420fbd2a4ef638a26d2a9ad1bba4690f9c127546dd27d42d2f938e')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_base}-${_base}-${pkgver}"
   python setup.py build
@@ -24,6 +22,6 @@ build() {
 package() {
   cd "${_base}-${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
