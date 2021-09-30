@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.14
-_minor=5
+_minor=9
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
@@ -92,7 +92,7 @@ makedepends=(
   'git'
 )
 options=('!strip')
-_gcc_more_v='20210818'
+_gcc_more_v='20210914'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -107,9 +107,9 @@ validpgpkeys=(
 )
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            '82327f7e35f83d2f7f02854fe862b63894777d1f43a5d9526b7f8dcbb64ba6cd'
-            'd361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf'
-            'f98065a286a6d2dbb0e226867a6417e344aaa44ef6eac967707e1f09671be445')
+            'ce444a50abc335294f6104e075ac2448ee1c677c076031f517dd98c877b4e076'
+            'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611'
+            '32b4cb0d2b7bfc7a5e7a2cd2ac5860da0c28c8e3d94f554250471d7d3bb36925')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -202,7 +202,7 @@ prepare() {
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
         echo "Patching to enable GCC optimization for other uarchs..."
-        patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
+        patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8-5.14.patch"
         fi
 
 		### Get kernel version
