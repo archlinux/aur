@@ -6,9 +6,10 @@ pkgdesc='compatibility layer for the docker-compose V1 CLI'
 arch=('x86_64')
 url='https://github.com/docker/compose-switch'
 license=('Apache')
+makedepends=('go')
+conflicts=('docker-compose<2' 'compose-switch-bin')
 source=("https://github.com/docker/compose-switch/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ab207defae7a6c2c2997221a634eac719bfa96da0fdbe71204ff2abedce89f80')
-makedepends=('go')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
