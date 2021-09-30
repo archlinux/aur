@@ -3,7 +3,7 @@ pkgname=pterodactyl-daemon-bin
 pkgname1=wings
 githuborg=pterodactyl
 pkgdesc="Open-source server control and management daemon for pterodactyl-panel ($pkgname1)."
-pkgver=1.4.5
+pkgver=1.5.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/$githuborg/$pkgname1"
@@ -15,11 +15,11 @@ options=(!strip)
 source_x86_64=("$pkgname1-$pkgver-x86_64::$url/releases/download/v$pkgver/wings_linux_amd64" "$pkgname1.service")
 source_aarch64=("$pkgname1-$pkgver-aarch64::$url/releases/download/v$pkgver/wings_linux_arm64" "$pkgname1.service")
 sha256sums_x86_64=(
-    '95cc085c7e215343f5ea6511a058babd905b675725dbd405a8a755dd725da11c'
+    '8dabebe643deffd270d6128bfaa5e3bdacba159edce89b9b7f220c8ab8674724'
     'SKIP'
 )
 sha256sums_aarch64=(
-    '4ad2f164ee4b4028310538cf6e341ed6c9907674f95fb3f23674224329c8576b'
+    '64baf964926961189fac5d40eff05831968dbef0a85c4a35e8d8868d4707b04c'
     'SKIP'
 )
 
