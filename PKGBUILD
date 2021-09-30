@@ -11,10 +11,8 @@ depends=(python-pytools gmsh)
 makedepends=(python-setuptools git)
 checkdepends=(python-pytest)
 source=("git+https://github.com/inducer/${_base}.git?signed#tag=v${pkgver}")
-validpgpkeys=("900A958D9A0ACA58B1468F2471AA298BCA171145") # Andreas Kloeckner
+validpgpkeys=('900A958D9A0ACA58B1468F2471AA298BCA171145') # Andreas Kloeckner
 sha512sums=('SKIP')
-
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
 build() {
   cd "${_base}"
@@ -29,6 +27,6 @@ check() {
 package() {
   cd "${_base}"
   export PYTHONHASHSEED=0
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
