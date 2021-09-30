@@ -1,13 +1,12 @@
 pkgbase = nodejs-docs
 	pkgdesc = Node.js API documentation.
-	pkgver = 16.1.0
+	pkgver = 16.10.0
 	pkgrel = 1
 	url = https://nodejs.org/en/docs/
 	arch = any
 	license = MIT
 	options = docs
-	source = https://nodejs.org/dist/v16.1.0/node-v16.1.0.tar.gz
-	sha256sums = cdc229fff0e18ff9ca29c057691ff29da7bee8b7107b72d8181bdb5c3eeaba00
+	source = https://nodejs.org/dist/v16.10.0/node-v16.10.0.tar.gz
+	sha256sums = 69b09bb0c4cd9add7eb501b1625a405b15d6ce53596e98b863c8d066e0b6b202
 
 pkgname = nodejs-docs
-
