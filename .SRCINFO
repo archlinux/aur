@@ -1,7 +1,7 @@
 pkgbase = todo-bin
 	pkgdesc = Super fast and simple tasks organizer written in rust
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sioodmy/todo
 	arch = x86_64
 	license = GPL

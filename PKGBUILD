@@ -1,7 +1,7 @@
 # Maintainer: sioodmy <a.sokolowski06@gmail.com>
 pkgname=todo-bin
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Super fast and simple tasks organizer written in rust"
 url="https://github.com/sioodmy/todo"
 license=('GPL')
