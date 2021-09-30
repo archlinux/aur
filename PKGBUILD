@@ -2,7 +2,7 @@
 
 pkgname=gnuradio-grnet-git
 _reponame=gr-grnet
-pkgver=r70.b020160
+pkgver=r71.e6dfd14
 pkgrel=1
 pkgdesc='GNURadio TCP/UDP source and sink blocks rewritten in C++/Boost (gr-grnet)'
 url='https://github.com/ghostop14/gr-grnet'
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'boost' 'swig')
 replaces=('gr-grnet')
 provides=('gnuradio-grnet')
 conflicts=('gnuradio-grnet')
-source=("git+https://github.com/ghostop14/gr-grnet/#branch=maint-3.8")
+source=("git+https://github.com/ghostop14/gr-grnet/#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
