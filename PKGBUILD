@@ -14,8 +14,6 @@ checkdepends=(python-pytest-cov)
 source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('9bc2983e8da9968a13a6f0f527f532f57f50e8d7cb03edf1256dd2f9eb028048c12d36c9236cbd9038b00ba1205238f9256a6cdc10f7b395308bbe077b77c387')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" build
@@ -29,6 +27,6 @@ check() {
 
 package() {
   cd "${_base}-${pkgver}"
-  python -c "from setuptools import setup; setup();" install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
