@@ -1,0 +1,32 @@
+[Unit]
+Description=TeslaMate
+After=network.target
+After=postgresql.service
+
+[Service]
+Type=simple
+# User=username
+# Group=groupname
+
+Restart=on-failure
+RestartSec=5
+
+Environment="HOME=/opt/teslamate"
+Environment="LANG=en_US.UTF-8"
+Environment="LC_CTYPE=en_US.UTF-8"
+# Environment="TZ=Europe/Berlin"
+Environment="PORT=4000"
+Environment="DATABASE_USER=teslamate"
+Environment="DATABASE_PASS=secret"
+Environment="DATABASE_NAME=teslamate"
+Environment="DATABASE_HOST=127.0.0.1"
+Environment="MQTT_HOST=127.0.0.1"
+
+WorkingDirectory=/opt/teslamate
+
+ExecStartPre=/usr/bin/teslamate eval "TeslaMate.Release.migrate"
+ExecStart=/usr/bin/teslamate start
+ExecStop=/usr/bin/teslamate stop
+
+[Install]
+WantedBy=multi-user.target
