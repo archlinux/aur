@@ -85,8 +85,8 @@ _use_current=
 pkgbase=linux-cacule
 pkgname=('linux-cacule' 'linux-cacule-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14.8
-pkgrel=4
+pkgver=5.14.9
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -127,7 +127,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
 #        "${_patchsource}/misc/le9fa-5.14.patch"
         "${_patchsource}/pf-patches-v6/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
-        "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
+        "${_patchsource}/zen-patches-v3/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches-v3/0001-zstd-upstream-patches.patch"
         "${_patchsource}/ntfs3-patches-v11/0001-ntfs3-patches.patch"
@@ -567,7 +567,7 @@ package_linux-cacule-headers() {
 
 }
 
-md5sums=('ce6434b646ade20e292fb28c1aacde58'
+md5sums=('9f4fe4d784f3c5dd34e9251f83202eba'
          '6cfe7a16a5260cb75e5a4145991e0027'
          'ef749be7f2048456ae738f93229bf354'
          '40a9380b2884f5d417791f06389ba57e'
@@ -587,7 +587,7 @@ md5sums=('ce6434b646ade20e292fb28c1aacde58'
          'd24fd0f81fbeed243b1b71fde7659548'
          'ccfbfe2efd7e51dbd67581a7d892230f'
          '28864f14bf33bad92e57bc48bc5c2c78'
-         '381bc4f0ff885e9b67e5899476a30416'
+         'cfef1423ad1e6aecad63f0d5eacaea37'
          '808981a36c81165953017e5e432c1fa1'
          '74db4069a1c3985e5de43cf28f44e693'
          '41a41f2a5ba649da97cdb2b499ddb818'
