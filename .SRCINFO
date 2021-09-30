@@ -1,7 +1,7 @@
 pkgbase = compose-switch
 	pkgdesc = compatibility layer for the docker-compose V1 CLI
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/docker/compose-switch
 	arch = x86_64
 	license = Apache

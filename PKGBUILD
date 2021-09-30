@@ -1,7 +1,7 @@
 # Maintainer: Radoslav Georgiev <rgeorgiev583@gmail.com>
 pkgname='compose-switch'
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='compatibility layer for the docker-compose V1 CLI'
 arch=('x86_64')
 url='https://github.com/docker/compose-switch'
@@ -16,5 +16,5 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    install -Dm755 bin/docker-compose "$pkgdir/usr/bin/docker-compose-v1"
+    install -Dm755 bin/docker-compose "$pkgdir/usr/bin/compose-switch"
 }
