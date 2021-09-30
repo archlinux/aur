@@ -10,5 +10,6 @@ pkgbase = regolith-full
 	depends = regolith-styles
 	depends = regolith-desktop-config
 	depends = regolith-st
+	depends = picom
 
 pkgname = regolith-full

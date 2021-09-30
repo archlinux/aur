@@ -13,4 +13,5 @@ depends=(
   'regolith-styles'
   'regolith-desktop-config'
   'regolith-st'
+  'picom'
 )
