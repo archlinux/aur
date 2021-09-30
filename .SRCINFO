@@ -1,7 +1,7 @@
 pkgbase = regolith-full
 	pkgdesc = Full Regolith Desktop Environment, for the full stock experience.
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/regolith-linux/regolith-desktop
 	arch = x86_64
 	license = custom: multiple
@@ -11,5 +11,6 @@ pkgbase = regolith-full
 	depends = regolith-desktop-config
 	depends = regolith-st
 	depends = picom
+	depends = remontoire-regolith
 
 pkgname = regolith-full
