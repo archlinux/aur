@@ -13,8 +13,6 @@ makedepends=(python-setuptools)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
 sha512sums=('e26cd66a02000f43a95f780b41871a27cfd567254a5bf3fa236755d6d1fa29dd69970103dfa5af300fef4ec31ecbcd45c098dd80c0e7b43079d62a5bc4a6c9e8')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_base}-${pkgver}"
   python setup.py build
@@ -28,5 +26,5 @@ build() {
 package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
