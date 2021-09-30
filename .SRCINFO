@@ -1,7 +1,7 @@
 pkgbase = yomichan-import-git
 	pkgdesc = External dictionary importer for Yomichan.
 	pkgver = r251.35175a5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FooSoft/yomichan-import
 	arch = i686
 	arch = pentium4

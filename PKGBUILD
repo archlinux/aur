@@ -2,7 +2,7 @@
 pkgname=yomichan-import-git
 _pkgname=yomichan-import
 pkgver=r251.35175a5
-pkgrel=1
+pkgrel=2
 pkgdesc="External dictionary importer for Yomichan."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FooSoft/yomichan-import"
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  install -Dm644 yomichan.png -t "${pkgdir}/usr/share/icons"
+  install -Dm644 yomichan.png -Dt "${pkgdir}/usr/lib/$_pkgname"
   install -Dm644 yomichan-import.desktop -t "${pkgdir}/usr/share/applications"
 
   cd "$srcdir/$_pkgname"
