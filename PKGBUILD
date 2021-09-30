@@ -2,7 +2,7 @@
 _target=mips64-elf
 pkgname=$_target-gdb
 pkgver=11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Debugger (${_target})"
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/gdb/'
@@ -30,7 +30,8 @@ build() {
               --with-python=/usr/bin/python3 \
               --with-guile=guile-2.0 \
               --with-sysroot=/usr/${_target} \
-              --enable-lto
+              --enable-lto \
+	      --disable-sim
   make
 }
 
