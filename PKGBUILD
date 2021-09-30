@@ -3,7 +3,7 @@
 _base=pep8
 pkgname=python-${_base}
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The final release of the pep8 package"
 arch=('any')
 url="https://github.com/PyCQA/pycodestyle"
@@ -22,6 +22,6 @@ build() {
 package() {
   cd "pycodestyle-${pkgver}"
   export PYTHONHASHSEED=0
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

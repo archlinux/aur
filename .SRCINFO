@@ -1,7 +1,7 @@
 pkgbase = python-pep8
 	pkgdesc = The final release of the pep8 package
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PyCQA/pycodestyle
 	arch = any
 	license = MIT
