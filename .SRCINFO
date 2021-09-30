@@ -1,6 +1,6 @@
-pkgbase = abootimg-git
-	pkgdesc = A tool to read/write/update android boot images
-	pkgver = r38.7e127fe
+pkgbase = abootimg
+	pkgdesc = A tool to read/write/update old android boot images
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/ggrandou/abootimg
 	arch = i686
@@ -12,10 +12,11 @@ pkgbase = abootimg-git
 	depends = util-linux
 	depends = cpio
 	provides = abootimg
-	source = git+https://github.com/ggrandou/abootimg.git
+	source = http://http.debian.net/debian/pool/main/a/abootimg/abootimg_0.6.orig.tar.gz
+	source = http://http.debian.net/debian/pool/main/a/abootimg/abootimg_0.6-1.diff.gz
 	source = no-initrd.patch
-	sha256sums = SKIP
-	sha256sums = 5fe9400e71f1ade170c1e0e99f343881edca2022300c7e7a1d34d776c22cc126
+	sha512sums = b96be8abe9bccfb7694c1d8f30b3a5dcc0e411b73fc78eb15f1488207032aa4737286be776b78e41bc14216e8d78ec768bbb2f91f0fe53192f08df8b6497d28f
+	sha512sums = 66884cf42c7c2121065cec6e974f3c6d301e058231b910db8e4816ed5274d7e6eb6045d1649b059c468e6760b16046ae7ef58756c810967e47e6214e0fc0612f
+	sha512sums = SKIP
 
-pkgname = abootimg-git
-
+pkgname = abootimg
