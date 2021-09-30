@@ -9,7 +9,7 @@ url="https://iridiumbrowser.de/"
 license=('BSD')
 provides=('iridium')
 conflicts=('iridium' 'chromium')
-depends=('ffmpeg' 'pipewire' 're2' 'harfbuzz-bin-2.9.1')
+depends=('ffmpeg' 'pipewire' 're2' 'harfbuzz-2.9.1')
 options=('!emptydirs' '!strip')
 makedepends=('patchelf')
 
