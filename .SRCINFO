@@ -1,12 +1,13 @@
 pkgbase = dapr-cli-git
 	pkgdesc = Command-line tools for Dapr.
-	pkgver = 351.60bb6c7
+	pkgver = 541.57bf146
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dapr/cli
 	install = dapr.install
 	arch = x86_64
 	license = MIT
+	checkdepends = gotestsum
 	makedepends = go>=1.1
 	provides = dapr-cli
 	conflicts = dapr-cli
@@ -14,4 +15,3 @@ pkgbase = dapr-cli-git
 	sha256sums = SKIP
 
 pkgname = dapr-cli-git
-

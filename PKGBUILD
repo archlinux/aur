@@ -1,6 +1,6 @@
 _pkgname="dapr-cli"
 pkgname="${_pkgname}-git"
-pkgver=351.60bb6c7
+pkgver=541.57bf146
 pkgrel=1
 epoch=1
 pkgdesc="Command-line tools for Dapr. "
@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/dapr/cli"
 license=('MIT')
 makedepends=('go>=1.1')
+checkdepends=('gotestsum')
 depends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
