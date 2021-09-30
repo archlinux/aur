@@ -21,7 +21,6 @@ source=("git+${url}.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
 export GIT_LFS_SKIP_SMUDGE=1
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
 prepare() {
   cd "${_base}"
@@ -45,6 +44,6 @@ build() {
 package() {
   cd "${_base}"
   export PYTHONHASHSEED=0
-  python -c "from setuptools import setup; setup();" install --root="$pkgdir" --optimize=1
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --root="$pkgdir" --optimize=1
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
