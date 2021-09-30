@@ -1,20 +1,38 @@
-# Maintainer: Martin Diehl <https://martin-diehl.net>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Martin Diehl <https://martin-diehl.net>
+
 pkgname=python-chaospy
-pkgver=3.2.10
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="Toolbox for performing uncertainty quantification"
 arch=('any')
 url="https://github.com/jonathf/chaospy"
 license=('BSD')
-depends=('python-scipy' 'python-numpoly')
-source=("https://github.com/jonathf/chaospy/archive/v${pkgver}.tar.gz")
-sha256sums=('713f6dea80e8a4d83e54032781883d2359e0a4844a309e06914a394e22a6bfa5')
+depends=('python-numpoly>=1.1.2' 'python-numpy' 'python-scipy')
+makedepends=('python-setuptools' 'python-dephell')
+checkdepends=('python-pytest' 'python-scikit-learn')
+changelog=CHANGELOG.rst
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c258aa2abb42e4914aa401a954aa840bd194229737b522b5d409486a7f6917d8')
+
+prepare() {
+	cd "chaospy-$pkgver"
+	dephell deps convert --from pyproject.toml --to setup.py
+}
+
+build() {
+	cd "chaospy-$pkgver"
+	python setup.py build
+}
+
+check() {
+	cd "chaospy-$pkgver"
+	pytest
+}
 
 package() {
-  cd "${srcdir}/chaospy-$pkgver"
-  python_dir=`python -c "from distutils import sysconfig; print(sysconfig.get_python_lib())"`
-  install -d "$pkgdir"/${python_dir}
-  cp -rv chaospy "$pkgdir"/${python_dir}
-  mkdir "$pkgdir"/${python_dir}/chaospy-${pkgver}.dist-info/
-  touch "$pkgdir"/${python_dir}/chaospy-${pkgver}.dist-info/METADATA
+	cd "chaospy-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }

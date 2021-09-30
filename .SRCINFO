@@ -1,14 +1,19 @@
 pkgbase = python-chaospy
-pkgdesc = Toolbox for performing uncertainty quantification
-pkgver = 3.2.10
-pkgrel = 1
-url = https://github.com/jonathf/chaospy
-arch = any
-license = BSD
-depends = python-scipy
-depends = python-numpoly
-source = https://github.com/jonathf/chaospy/archive/v3.2.10.tar.gz
-sha256sums = 713f6dea80e8a4d83e54032781883d2359e0a4844a309e06914a394e22a6bfa5
+	pkgdesc = Toolbox for performing uncertainty quantification
+	pkgver = 4.3.3
+	pkgrel = 1
+	url = https://github.com/jonathf/chaospy
+	changelog = CHANGELOG.rst
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-scikit-learn
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python-numpoly>=1.1.2
+	depends = python-numpy
+	depends = python-scipy
+	source = python-chaospy-4.3.3.tar.gz::https://github.com/jonathf/chaospy/archive/v4.3.3.tar.gz
+	sha256sums = c258aa2abb42e4914aa401a954aa840bd194229737b522b5d409486a7f6917d8
 
 pkgname = python-chaospy
-
