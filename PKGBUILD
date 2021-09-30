@@ -5,7 +5,7 @@
 
 _pkgname='decaf-emu'
 pkgname="${_pkgname}-git"
-pkgver=r5096.0cd56a2f
+pkgver=r5112.dd444a08
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Wii U emulator"
 arch=('x86_64')
@@ -16,12 +16,12 @@ makedepends=('cmake' 'c-ares' 'glslang' 'git' 'python' 'vulkan-validation-layers
 optdepends=('qt5-wayland: for Wayland support')
 source=("git+$url"
         "qtads::git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System"
-        "catch::git+https://github.com/catchorg/Catch2"
+        "catch::git+https://github.com/philsquared/Catch"
         "addrlib::git+https://github.com/decaf-emu/addrlib"
         "cereal::git+https://github.com/USCiLab/cereal"
-        "cnl::git+https://github.com/johnmcfarlane/cnl"
+        "cnl::git+https://github.com/decaf-emu/cnl"
         "cpp-peglib::git+https://github.com/yhirose/cpp-peglib"
-        "cpptoml::git+https://github.com/skystrife/cpptoml"
+        "cpptoml::git+https://github.com/decaf-emu/cpptoml"
         "excmd::git+https://github.com/exjam/excmd"
         "fmt::git+https://github.com/fmtlib/fmt"
         "glslang::git+https://github.com/KhronosGroup/glslang"
@@ -64,7 +64,7 @@ prepare() {
     for mod_url in ${source[@]:1}
     do
       mod_name=${mod_url%%:*}
-    echo $mod_name
+      echo $mod_name
       git config submodule.libraries/$mod_name.url $srcdir/$mod_name
     done
 

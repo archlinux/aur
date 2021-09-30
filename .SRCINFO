@@ -23,12 +23,12 @@ pkgbase = decaf-emu-git
 	optdepends = qt5-wayland: for Wayland support
 	source = git+https://github.com/decaf-emu/decaf-emu
 	source = qtads::git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System
-	source = catch::git+https://github.com/catchorg/Catch2
+	source = catch::git+https://github.com/philsquared/Catch
 	source = addrlib::git+https://github.com/decaf-emu/addrlib
 	source = cereal::git+https://github.com/USCiLab/cereal
-	source = cnl::git+https://github.com/johnmcfarlane/cnl
+	source = cnl::git+https://github.com/decaf-emu/cnl
 	source = cpp-peglib::git+https://github.com/yhirose/cpp-peglib
-	source = cpptoml::git+https://github.com/skystrife/cpptoml
+	source = cpptoml::git+https://github.com/decaf-emu/cpptoml
 	source = excmd::git+https://github.com/exjam/excmd
 	source = fmt::git+https://github.com/fmtlib/fmt
 	source = glslang::git+https://github.com/KhronosGroup/glslang
@@ -57,4 +57,3 @@ pkgbase = decaf-emu-git
 	md5sums = SKIP
 
 pkgname = decaf-emu-git
-
