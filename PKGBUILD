@@ -4,7 +4,7 @@
 
 pkgname=hollywood
 pkgver=1.21
-pkgrel=5
+pkgrel=6
 
 pkgdesc="Fill your console with Hollywood melodrama technobabble."
 
@@ -26,7 +26,6 @@ depends=(
 	'mlocate'
 	'man-db'
 	'moreutils'
-	'mplayer'
 	'openssh'
 	'tree'
 	'speedometer'
