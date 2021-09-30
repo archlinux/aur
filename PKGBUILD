@@ -4,13 +4,13 @@ _pkgbase=vala-panel-extras
 pkgbase=vala-panel-extras-git
 pkgname=('vala-panel-extras-battery-git' 'vala-panel-extras-volume-git' 'vala-panel-extras-xkb-git' 'vala-panel-extras-gtop-git' 'vala-panel-extras-weather-git' 'vala-panel-extras-common-git' 'vala-panel-extras-xkb-flags-git')
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple StatusNotifierItems for Indicator plugins"
 url="https://gitlab.com/vala-panel-project/vala-panel-extras"
 arch=('i686' 'x86_64')
 license=('GPL3')
 replaces=('vala-panel-extras-meta-git')
-makedepends=('meson' 'vala' 'gtk3>=3.12.0' 'libxkbcommon-x11>=0.5.0' 'libxcb>=1.10' 'alsa-lib>=1.0.26' 'libcanberra' 'libgweather>=3.12.0' 'libx11' 'libgtop')
+makedepends=('meson' 'vala' 'gtk3>=3.12.0' 'libxkbcommon-x11>=0.5.0' 'libxcb>=1.10' 'alsa-lib>=1.0.26' 'libcanberra' 'libgweather>=3.12.0' 'libx11' 'libgtop' 'git')
 source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git")
 sha256sums=('SKIP')
 

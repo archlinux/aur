@@ -1,7 +1,7 @@
 pkgbase = vala-panel-extras-git
 	pkgdesc = Simple StatusNotifierItems for Indicator plugins
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/vala-panel-project/vala-panel-extras
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = vala-panel-extras-git
 	makedepends = libgweather>=3.12.0
 	makedepends = libx11
 	makedepends = libgtop
+	makedepends = git
 	replaces = vala-panel-extras-meta-git
 	source = git+https://gitlab.com/vala-panel-project/vala-panel-extras.git
 	sha256sums = SKIP
