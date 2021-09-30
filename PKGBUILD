@@ -1,7 +1,7 @@
 # Maintainer: Thiago França da Silva <tfsthiagobr98@outlook.com>
 
 pkgname=powershell-preview-bin
-_pkgver=7.2.0-preview.9
+_pkgver=7.2.0-preview.10
 _version=7-preview
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -12,14 +12,28 @@ depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl' 'icu')
 provides=('powershell')
 options=(staticlibs !strip)
 install=powershell-preview.install
-sha256sums=('7A28A1D06C3790F9CB1B5FE7BF5DF1A72BF01F8DCAA9BED1C53656739D53C64C')
 source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.deb_amd64.deb")
+sha256sums=('28434376D4A14F42805578D49C08D85611DE8D2984B868C8317BCA2E68D33434')
+
+# omi fix (details here https://github.com/jborean93/omi/): not tested, feedback needed
+# comment the two lines above and uncomment these lines down here
+#source=(
+#  "https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.deb_amd64.deb"
+#  "https://github.com/jborean93/omi/releases/download/v2.2.1-pwsh/glibc-1.1.tar.gz"
+#)
+#sha256sums=('7a28a1d06c3790f9cb1b5fe7bf5df1a72bf01f8dcaa9bed1c53656739d53c64c'
+#            '28434376D4A14F42805578D49C08D85611DE8D2984B868C8317BCA2E68D33434')
 
 package() {
   bsdtar xf data.tar.gz
 
   mv usr "${pkgdir}"
   mv opt "${pkgdir}"
+
+  # also omi fix
+  #cp -f libmi.so ${pkgdir}/opt/microsoft/powershell/$_version/libmi.so
+  #cp -f libpsrpclient.so ${pkgdir}/opt/microsoft/powershell/$_version/libpsrpclient.so
+  #chmod 644 ${pkgdir}/opt/microsoft/powershell/$_version/libmi.so ${pkgdir}/opt/microsoft/powershell/$_version/libpsrpclient.so
 
   cd "${pkgdir}"
   cp -r usr/local/share usr

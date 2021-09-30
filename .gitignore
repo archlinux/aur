@@ -2,3 +2,4 @@ powershell*.pkg.*
 powershell*.deb
 pkg
 src
+*.tar.gz
