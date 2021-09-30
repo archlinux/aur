@@ -1,7 +1,7 @@
 pkgbase = obs-studio-browser
 	pkgdesc = Free and open source software for video recording and live streaming. Built with browser, vst plugins.
-	pkgver = 27.0.1
-	pkgrel = 7
+	pkgver = 27.1.1
+	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -39,20 +39,18 @@ pkgbase = obs-studio-browser
 	optdepends = python: Python scripting
 	optdepends = sndio: Sndio input client
 	optdepends = v4l2loopback-dkms: Virtual camera output
-	provides = obs-studio=27.0.1
+	provides = obs-studio=27.1.1
 	conflicts = obs-studio
 	conflicts = obs-linuxbrowser
-	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=27.0.1
+	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=27.1.1
 	source = git+https://github.com/Mixer/ftl-sdk.git
 	source = git+https://github.com/obsproject/obs-browser.git
 	source = git+https://github.com/obsproject/obs-vst.git
 	source = fix_python_binary_loading.patch
-	source = cef91.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 93ad704cef425073b417d1ed95e076f688a6e45cdf589472c65e437d77297303f31dd8f15c7d5e30f83276a6396b732dfb5a695db9c773911aaa0423c5262177
-	sha512sums = 20c348c9e2439ae2077357d8aee5d9f3d06701cc2eb60bcb24e43701df0c8f48ba4810c5e4c746889baf4ae8bdacfcacf2f279da903e6e1ed4814a950092678e
 
 pkgname = obs-studio-browser

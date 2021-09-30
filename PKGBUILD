@@ -5,8 +5,8 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=27.0.1
-pkgrel=7
+pkgver=27.1.1
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. Built with browser, vst plugins."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -32,14 +32,12 @@ source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "git+https://github.com/Mixer/ftl-sdk.git"
         "git+https://github.com/obsproject/obs-browser.git"
         "git+https://github.com/obsproject/obs-vst.git"
-        "fix_python_binary_loading.patch"
-        "cef91.patch")
+        "fix_python_binary_loading.patch")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '93ad704cef425073b417d1ed95e076f688a6e45cdf589472c65e437d77297303f31dd8f15c7d5e30f83276a6396b732dfb5a695db9c773911aaa0423c5262177'
-            '20c348c9e2439ae2077357d8aee5d9f3d06701cc2eb60bcb24e43701df0c8f48ba4810c5e4c746889baf4ae8bdacfcacf2f279da903e6e1ed4814a950092678e')
+            '93ad704cef425073b417d1ed95e076f688a6e45cdf589472c65e437d77297303f31dd8f15c7d5e30f83276a6396b732dfb5a695db9c773911aaa0423c5262177')
 
 prepare() {
     cd "$srcdir/$pkgname"
@@ -48,7 +46,6 @@ prepare() {
     git config submodule.plugins/obs-browser.url "$srcdir"/obs-browser
     git config submodule.plugins/obs-vst.url "$srcdir"/obs-vst
     git submodule update
-    patch -d "$srcdir/$pkgname/plugins/obs-browser" -Np1 < "$srcdir"/cef91.patch
 }
 
 build() {
