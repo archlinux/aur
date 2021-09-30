@@ -1,10 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_name=google-cloud-bigquery
-
 pkgname=python-google-cloud-bigquery
-pkgver=2.27.1
+pkgver=2.28.0
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
@@ -28,8 +26,9 @@ optdepends=(
 	'python-fastparquet: fastparquet support'
 	'python-snappy: fastparquet support'
 	'python-llvmlite: fastparquet support')
+changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/python-bigquery/archive/v$pkgver.tar.gz")
-sha256sums=('28a89a9830c8fca7d8cc96a497d69e96316b38f831cf506548fa9fb165fb5e7a')
+sha256sums=('66258a2caaa06cfbc8ff66cf6187df60b49f2e417e3f51da627be3736d8ecfe8')
 
 build() {
 	cd "python-bigquery-$pkgver"
@@ -41,7 +40,7 @@ build() {
 package() {
 	cd "python-bigquery-$pkgver"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
-	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm 644 docs/_build/google-cloud-bigquery.1 -t "$pkgdir/usr/share/man/man1/"
 }
