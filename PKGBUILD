@@ -3,7 +3,7 @@ _pkgname=spacecadetpinball
 pkgname=$_pkgname-git
 pkgdesc='Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux'
 pkgver=1.1.1.r25.ga281000
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 depends=('sdl2' 'sdl2_mixer')
 makedepends=('unrar' 'cmake')
@@ -30,9 +30,11 @@ pkgver() {
 }
 
 build() {
-  cmake -B "$pkgname/build" -S "$pkgname" \
+  # -DNDEBUG is required, otherwise you get: "Package contains reference to $srcdir"
+  # You can also change -DCMAKE_BUILD_TYPE to "Release" however this goes against Arch packaging guidelines
+  LDFLAGS="-DNDEBUG" CXXFLAGS="-DNDEBUG" cmake -B "$pkgname/build" -S "$pkgname" \
       -Wno-dev \
-      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_BUILD_TYPE=None \
       -DCMAKE_INSTALL_PREFIX=/usr
   make -C "$pkgname/build"
 }

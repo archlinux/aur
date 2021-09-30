@@ -1,7 +1,7 @@
 pkgbase = spacecadetpinball-git
 	pkgdesc = Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux
 	pkgver = 1.1.1.r25.ga281000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/k4zmu2a/SpaceCadetPinball
 	arch = x86_64
 	arch = i686
