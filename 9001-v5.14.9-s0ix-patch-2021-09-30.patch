@@ -1,11 +1,11 @@
-From 607ece118420432b0afbdedcecac8ef778570844 Mon Sep 17 00:00:00 2001
+From f2ec21c0b73d37ce252afc4d74072f80fe336edf Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Sun, 26 Sep 2021 10:33:54 -0700
-Subject: [PATCH] v5.14.8 s0ix patch 2021-09-26
+Date: Thu, 30 Sep 2021 04:11:49 -0700
+Subject: [PATCH] v5.14.9 s0ix patch 2021-09-30
 
 Squashed commit of the following:
 
-commit 86c163d2b8b39fc7e6596556679481721aa26c06
+commit 0c5d3b01b4d999992439ca9f749e202cc0cc8578
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -17,7 +17,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 741e5c16a38778ecf9d71eba250d0c377e1fd772
+commit bae72b8e72aac7590d2677830926d960e72edade
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -32,7 +32,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 4b8f41b5ba2d90e66c6e03ecf18ac2d18d543706
+commit 6e5d6b64bff6e2a863cae9b22c5f5a8f7f7462ff
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -45,7 +45,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 457b0e8f5cf2e63326f632bb483b69688fa8afe6
+commit fdf1b62b3ad1a54a041ebf49ba9b081deb8a6634
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -64,7 +64,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 265bef2092d3bfa40f2ce0e319cc18b286317b72
+commit 994c36c63556c54eaa3f02ea8b7e5b28fc1836cf
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -79,30 +79,7 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit cd383898f0a77915ba0fb662273c024507102f5a
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Thu Sep 9 11:19:43 2021 -0500
-
-    platform/x86: amd-pmc: Increase the response register timeout
-
-    There have been reports of approximately a 9% failure rate in SMU
-    communication timeouts with s0i3 entry on some OEM designs.  Currently
-    the design in amd-pmc is to try every 100us for up to 20ms.
-
-    However the GPU driver which also communicates with the SMU using a
-    mailbox register which the driver polls every 1us for up to 2000ms.
-    In the GPU driver this was increased by commit 055162645a40 ("drm/amd/pm:
-    increase time out value when sending msg to SMU")
-
-    Increase the maximum timeout used by amd-pmc to 2000ms to match this
-    behavior.
-
-    Cc: stable@kernel.org
-    Reported-by: Julian Sikorski <belegdol@gmail.com>
-    BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1629
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-
-commit 20f7369cd141e2038e6fdb5d72f4f7c328681208
+commit ffa37ed37e917dfa225598dcef8a86324784a4ff
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -115,7 +92,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 0446fe2418330c84c587fc4d003fc0eaa8544ee3
+commit b6c769a9687c626c8e068215035975b57fe954e8
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -128,7 +105,7 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit cc6d263edd23f00c1cfc46aca214f9db1fa2d109
+commit 1fef466dd8e750ea6c86803277226cfee04df5d5
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Wed Jul 21 18:10:28 2021 -0700
 
@@ -137,7 +114,7 @@ Date:   Wed Jul 21 18:10:28 2021 -0700
     patch this per Mario's request:
     https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
 
-commit ad644634a9f2e5890cdf78ed4eb31105f71f4b99
+commit 497175cc42db2ec66a9c17687c15eb8c45644c2c
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:33:01 2021 -0700
 
@@ -149,7 +126,7 @@ Date:   Tue Jul 20 23:33:01 2021 -0700
 
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 
-commit 6bafa8e255a98dcfa44cca9d0ea1ac4f89cc0fdb
+commit 07447fae7c12ba3d9c014cfbb69ebda8fe0b4239
 Author: Scott B <28817345+foundObjects@users.noreply.github.com>
 Date:   Tue Jul 20 23:31:31 2021 -0700
 
@@ -164,10 +141,10 @@ Date:   Tue Jul 20 23:31:31 2021 -0700
  drivers/acpi/processor_idle.c                 |  3 +-
  .../gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c    |  3 +
  .../gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c    |  3 +
- drivers/pinctrl/pinctrl-amd.c                 | 19 +++-
+ drivers/pinctrl/pinctrl-amd.c                 | 19 ++--
  drivers/pinctrl/pinctrl-amd.h                 |  1 +
- drivers/platform/x86/amd-pmc.c                | 92 +++++++++++++++++--
- 6 files changed, 109 insertions(+), 12 deletions(-)
+ drivers/platform/x86/amd-pmc.c                | 90 +++++++++++++++++--
+ 6 files changed, 108 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index 095c8aca141e..1b6529396371 100644
@@ -282,7 +259,7 @@ index 95e763424042..1d4317073654 100644
  
  /*  KERNCZ configuration*/
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index 3481479a2942..81b000241648 100644
+index d6a7c896ac86..81b000241648 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
 @@ -29,6 +29,10 @@
@@ -296,15 +273,6 @@ index 3481479a2942..81b000241648 100644
  /* Base address of SMU for mapping physical address to virtual address */
  #define AMD_PMC_SMU_INDEX_ADDRESS	0xB8
  #define AMD_PMC_SMU_INDEX_DATA		0xBC
-@@ -71,7 +75,7 @@
- #define AMD_CPU_ID_YC			0x14B5
- 
- #define PMC_MSG_DELAY_MIN_US		100
--#define RESPONSE_REGISTER_LOOP_MAX	200
-+#define RESPONSE_REGISTER_LOOP_MAX	20000
- 
- #define SOC_SUBSYSTEM_IP_MAX	12
- #define DELAY_MIN_US		2000
 @@ -110,6 +114,10 @@ struct amd_pmc_dev {
  	u32 base_addr;
  	u32 cpu_id;
