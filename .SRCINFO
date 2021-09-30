@@ -1,15 +1,14 @@
 pkgbase = slibtool-git
 	pkgdesc = Skinny libtool implementation, written in C
-	pkgver = 0.5.31+11.g9c11fae346
+	pkgver = 0.5.34
 	pkgrel = 1
 	url = http://git.midipix.org/cgit.cgi/slibtool
 	arch = x86_64
 	arch = i686
 	license = MIT
-	provides = slibtool=0.5.31
+	provides = slibtool=0.5.34
 	conflicts = slibtool
 	source = git://midipix.org/slibtool
 	sha256sums = SKIP
 
 pkgname = slibtool-git
-
