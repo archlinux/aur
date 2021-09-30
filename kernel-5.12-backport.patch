@@ -167,7 +167,7 @@
 
 --- a/ntfs_fs.h
 +++ b/ntfs_fs.h
-@@ -488,11 +488,11 @@
+@@ -486,11 +486,11 @@
  extern const struct file_operations ntfs_dir_operations;
  
  /* Globals from file.c */
@@ -181,7 +181,7 @@
  		  struct iattr *attr);
  int ntfs_file_open(struct inode *inode, struct file *file);
  int ntfs_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
-@@ -697,7 +697,7 @@
+@@ -695,7 +695,7 @@
  int ntfs_flush_inodes(struct super_block *sb, struct inode *i1,
  		      struct inode *i2);
  int inode_write_data(struct inode *inode, const void *data, size_t bytes);
@@ -190,7 +190,7 @@
  				struct inode *dir, struct dentry *dentry,
  				const struct cpu_str *uni, umode_t mode,
  				dev_t dev, const char *symname, u32 size,
-@@ -839,17 +839,17 @@
+@@ -837,17 +837,17 @@
  /* globals from xattr.c */
  #ifdef CONFIG_NTFS3_FS_POSIX_ACL
  struct posix_acl *ntfs_get_acl(struct inode *inode, int type);
@@ -227,7 +227,7 @@
  	if (opts->fmask)
  		seq_printf(m, ",fmask=%04o", ~opts->fs_fmask_inv);
  	if (opts->dmask)
-@@ -1403,7 +1403,7 @@
+@@ -1413,7 +1413,7 @@
  	.init_fs_context	= ntfs_init_fs_context,
  	.parameters		= ntfs_fs_parameters,
  	.kill_sb		= kill_block_super,
