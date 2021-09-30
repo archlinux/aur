@@ -41,6 +41,7 @@ source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-t
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-volume_3.6.4-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-weather_3.6.4-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-wifi_3.6.4-1_amd64.deb
+	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/m/moka-icon-theme/moka-icon-theme_5.4.523-201905300105~daily~ubuntu19.04.1_all.deb
         "${url2}"/nordic_1.6.5-1ubuntu1ppa1_all.deb
 	"${url2}"/paper-icon-theme_1.5.723-201905252133~daily~ubuntu19.04.1_all.deb
 	"${url2}"/plano-theme_3.36-1-1regolith1_all.deb
@@ -77,7 +78,15 @@ source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-t
 	http://launchpad.net/\~regolith-linux/+archive/ubuntu/release/+files/midnight-gtk-theme_1.1.0-1_all.deb
 	http://launchpad.net/\~regolith-linux/+archive/ubuntu/release/+files/regolith-look-solarized-light_2.9.7-1_amd64.deb
 	http://launchpad.net/\~regolith-linux/+archive/ubuntu/release/+files/i3xrocks-app-launcher_3.6.4-1_amd64.deb
-	https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files/regolith-look-midnight_2.9.7-1_amd64.deb)
+	https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files/regolith-look-midnight_2.9.7-1_amd64.deb
+	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/p/pop-icon-theme/pop-icon-theme_1.4.0~1565992228~18.04~2bac292_all.deb
+	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/p/pop-icon-theme/pop-icon-theme-extra_1.4.0~1565992228~18.04~2bac292_all.deb
+	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/q/qogir-icon-theme/qogir-icon-theme_1.0.0-1_all.deb
+	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/f/fonts-materialdesignicons-webfont/fonts-materialdesignicons-webfont_1.6.50-3regolith3_amd64.deb
+	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/g/gruvbox-gtk/gruvbox-gtk_1.0.1-1_amd64.deb
+        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/d/dracula-gtk/dracula-gtk_1.0.1-1_amd64.deb
+	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_4.1.4\~1560290633\~18.04\~f75e86a_all.deb)
+
 
 
 sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
@@ -99,6 +108,7 @@ sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
             dc605ad61d8657dd87c16b538ede4c011d00ceb9be53a96559aa181e2c302b68
             4bc7b0f3380d2dfc502d67c5a7083aa2c82d4d43a8c9efaebff847b533e66939
             32a5fcc332967f54e973a2ac8fcb17f7b2f91bffb0bf347694dc49560e3c2bc0
+	    ff2fc4ccaf083eeeb4fccabf027f673fe1654631d4885bd7bf740683ce5e2667
             05c66c372d378d2992ec59be553bd7de1cf0574d61313d84274f1e64bfe23d3b
             eea3b0004671455426336e21aa285dadb2d891d1d4917f2b3ebcbcc391fe6864
             04ca38cece64a64774744325194e1b2c040a700d01439b7feb1f04eec28d82cb
@@ -135,7 +145,14 @@ sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
 	    528e231adb021eba916a2d9a82c5f4937f1103027d0588941d577112a1163161
 	    5c4752152bdfbf2936d0f5affd96b8be8a0e2ca341f2393737fa03f6261f7ead
 	    3aba80c709377e53c4beabc0e14cb274cc96e57e2fbf6e1e467e834f0033cf05
-	    4311b12f301b27bf24aaafa49528d251144c2a1071f999c1dae1341aa66b3c1a)
+	    4311b12f301b27bf24aaafa49528d251144c2a1071f999c1dae1341aa66b3c1a
+	    3309a0e7c851c063deeb696aab1f71d4233995cff1d44a432dbdd1f72581cb6a
+	    fbe43d68d44e2dd18c87be59212a483dcdd305d44bafbb24c6ed7b4a7fa516ba
+	    33602d8faec796be87966383f741f62b60c06c08714b546845379ada7ed0b77e
+	    6b3cd883cc38098b25d5fa828751d0d9b5c40a754d92d1925c354f969707ed99
+	    6884a081345953c3e5aa2cf7c32253604eb9bf07b5ca4570cf41802d6ca762d6
+	    2f3d57a5445f46931b8184cdbea0aa52b5251b319f367ec188db00187c1c7e71
+	    eb44cac833c369dc0f3afe71e334a7bccaaef45836030b3c9ab3d9dc70500370)
 
 
 
@@ -241,8 +258,8 @@ package_regolith-i3xrocks () {
 package_regolith-styles () {
     pkgdesc="Regolith's themes for i3, gdm, gtk, rofi, plymouth, etc."
     license=('custom: GPLv3')
-    depends=("regolith-i3" "gtk3" "ttf-jetbrains-mono" "ttf-ubuntu-font-family")
-    conflicts=("paper-icon-theme" "nordic-theme-git" "gtk-theme-solarc-git" "gtk-theme-plano" "gtk-theme-plano-git")
+    depends=("regolith-i3" "gtk3" "ttf-iosevka-nerd" "ttf-jetbrains-mono" "adwaita-icon-theme" "otf-fira-mono" "ttf-ubuntu-font-family" "arc-icon-theme")
+    conflicts=("paper-icon-theme" "qogir-icon-theme" "moka-icon-theme-git" "nordic-theme-git" "gtk-theme-solarc-git" "gtk-theme-plano" "gtk-theme-plano-git")
     provides=("paper-icon-theme" "regolith-styles" "regolith-look" "gtk-theme-solarc" "gtk-theme-plano")
     groups=('regolith-de')
 
@@ -269,7 +286,17 @@ package_regolith-styles () {
     extract_deb "${srcdir}"/midnight-gtk-theme_1.1.0-1_all.deb
     extract_deb "${srcdir}"/regolith-look-solarized-light_2.9.7-1_amd64.deb
     extract_deb "${srcdir}"/regolith-look-midnight_2.9.7-1_amd64.deb
+    extract_deb "${srcdir}"/moka-icon-theme_5.4.523-201905300105\~daily\~ubuntu19.04.1_all.deb
+    extract_deb "${srcdir}"/pop-icon-theme_1.4.0~1565992228~18.04~2bac292_all.deb
+    extract_deb "${srcdir}"/pop-icon-theme-extra_1.4.0~1565992228~18.04~2bac292_all.deb
+    extract_deb "${srcdir}"/qogir-icon-theme_1.0.0-1_all.deb
+    extract_deb "${srcdir}"/fonts-materialdesignicons-webfont_1.6.50-3regolith3_amd64.deb
+    extract_deb "${srcdir}"/gruvbox-gtk_1.0.1-1_amd64.deb
+    extract_deb "${srcdir}"/dracula-gtk_1.0.1-1_amd64.deb
+    extract_deb "${srcdir}"/pop-gtk-theme_4.1.4\~1560290633\~18.04\~f75e86a_all.deb
+
     move_copyright
+
     cp "${pkgdir}"/etc/regolith/styles/ayu/typeface "${pkgdir}"/etc/regolith/styles/lascaille/typeface
     cp "${pkgdir}"/etc/regolith/styles/ayu/typeface "${pkgdir}"/etc/regolith/styles/cahuella/typeface
 }
