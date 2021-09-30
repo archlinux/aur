@@ -12,8 +12,6 @@ makedepends=(python-setuptools)
 source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('fe3b43f91071e5c47fcf3934871c34761d3c8214d4fd52ce820411b2672f95c0eca5858f124a1e0e633ade34c93de0e672e1479eb27ac2774d3f1a9aef9ed129')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" build
@@ -28,6 +26,6 @@ build() {
 package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
