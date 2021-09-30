@@ -11,10 +11,10 @@ post_install() {
     You have to insert those lines into your /etc/ssl/openssl.cnf
     before any [section]
 
-    # ---
-    openssl_conf=openssl_gost # Set GOST Configuration
-    .include openssl-gost.cnf
-    # ---
+# ---
+openssl_conf=openssl_gost # Set GOST Configuration
+.include gost.cnf
+# ---
 
   "
   fi
@@ -40,10 +40,10 @@ post_upgrade() {
       You have to insert those lines into your /etc/ssl/openssl.cnf
       before any [section]
 
-      # ---
-      openssl_conf=openssl_gost # Set GOST Configuration
-      .include openssl-gost.cnf
-      # ---
+# ---
+openssl_conf=openssl_gost # Set GOST Configuration
+.include gost.cnf
+# ---
 
     "
   fi
