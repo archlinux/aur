@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -45,19 +45,12 @@ include_directories(${TC_INC_PATH})
+@@ -45,21 +45,12 @@ include_directories(${TC_INC_PATH})
  include_directories(${VIDEO_CODEC_SDK_INCLUDE_DIR})
  
  #Bring all the stuff together
@@ -11,13 +11,15 @@
  
  if(GENERATE_PYTHON_BINDINGS)
 -	install(FILES $<TARGET_FILE:PyNvCodec>									DESTINATION bin)
--	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SampleDecode.py				DESTINATION bin)
+-	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SampleDecode.py				DESTINATION bin)	
 -	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SampleEncode.py				DESTINATION bin)
 -	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SampleDecodeSw.py				DESTINATION bin)
 -	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SampleDecodeMultiThread.py	DESTINATION bin)
 -	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SampleEncodeMultiThread.py	DESTINATION bin)
 -	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SampleDemuxDecode.py			DESTINATION bin)
 -	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SamplePyTorch.py				DESTINATION bin)
+-	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SampleTensorRTResnet.py		DESTINATION bin)
+-	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SampleTorchResnet.py			DESTINATION bin)	
 -	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Tests.py						DESTINATION bin)
 +	find_package(Python COMPONENTS Interpreter Development)
 +	install(FILES $<TARGET_FILE:PyNvCodec>									DESTINATION ${Python_SITEARCH}/PyNvCodec)
