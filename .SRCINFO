@@ -5,6 +5,7 @@ pkgbase = compose-switch
 	url = https://github.com/docker/compose-switch
 	arch = x86_64
 	license = Apache
+	makedepends = go
 	source = https://github.com/docker/compose-switch/archive/refs/tags/v1.0.2.tar.gz
 	sha256sums = ab207defae7a6c2c2997221a634eac719bfa96da0fdbe71204ff2abedce89f80
 
