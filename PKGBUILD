@@ -6,7 +6,7 @@ url='https://github.com/SMRT-AIST/interactive_slam'
 pkgname='ros-noetic-interactive-slam-git'
 pkgver=r80.b39352f
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('GPLv3')
 
 ros_makedepends=(ros-noetic-catkin)
@@ -14,11 +14,6 @@ makedepends=(
     cmake
     ros-build-tools
     ${ros_makedepends[@]}
-    g2o
-    openmp
-    pcl
-    glfw-x11
-    glm
 )
 
 ros_depends=(
@@ -30,6 +25,11 @@ ros_depends=(
 )
 depends=(
     ${ros_depends[@]}
+    g2o
+    openmp
+    pcl
+    glfw-x11
+    glm
 )
 
 imgui_hash=c077dd4872f435dd959feb024e5a9adb2c7df20c
