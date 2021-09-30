@@ -81,7 +81,6 @@ pkgbase = mpv-caca
 	provides = libmpv.so
 	provides = mpv
 	conflicts = mpv
-	replaces = mpv
 	options = !emptydirs
 	source = git+https://github.com/mpv-player/mpv.git#tag=4c9d3669a0f672e6754ac456acd324db570964d3?signed
 	validpgpkeys = 145077D82501AA20152CACCE8D769208D5E31419

@@ -29,7 +29,6 @@ makedepends=('git' 'python-docutils' 'ladspa' 'wayland-protocols'
              'ffnvcodec-headers' 'vulkan-headers' 'waf')
 optdepends=('youtube-dl: for video-sharing websites playback')
 provides=('libmpv.so' 'mpv')
-replaces=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
 validpgpkeys=('145077D82501AA20152CACCE8D769208D5E31419') # sfan5 <sfan5@live.de>
