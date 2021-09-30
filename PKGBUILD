@@ -3,20 +3,18 @@
 pkgname=envoyproxy-bin
 provides=(envoyproxy)
 conflicts=(envoyproxy)
-pkgver=1.18.3
+pkgver=1.19.1
 pkgrel=1
 pkgdesc="An open source edge and service proxy, designed for cloud-native applications"
 arch=('x86_64')
 url="https://envoyproxy.io"
 license=('Apache2')
 source=(
-  "https://dl.bintray.com/tetrate/getenvoy-deb/pool/stable/g/getenvoy-envoy/getenvoy-envoy_1.18.3.p0.g98c1c9e-1p77.gb76c773_amd64.deb"
+  "https://archive.tetratelabs.io/envoy/download/v1.19.1/envoy-v1.19.1-linux-amd64.tar.xz"
 )
-sha512sums=('34174fa9af7bc2dc5909aaec866d164dd5b6eaa1ce5eda1675bea31bd8dd62147f2339263f7bef8ac08e23c210420b4e1c734683a9863e433931ba25e0d687e0')
+sha512sums=('c52c000416c896be7026e9e8a26018a672be8985645a87e1993bdc9320b55a29ff528e4a847041404f8f8ad0da130fa2c978279270fa36e351e01d91f6cd1760')
 
 package() {
-  tar -xvf $srcdir/data.tar.xz -C "$pkgdir"
-  tar -xvf $srcdir/control.tar.gz -C "$pkgdir"
-  rm -r $pkgdir/usr/share
-  rm -r $pkgdir/control
+  install -d "$pkgdir/usr/bin"
+  install -m755 "$srcdir/envoy-v1.19.1-linux-amd64/bin/envoy" "$pkgdir/usr/bin/envoy"
 }
