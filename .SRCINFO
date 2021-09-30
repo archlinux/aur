@@ -1,12 +1,13 @@
 pkgbase = python-aispace2
 	pkgdesc = A Jupyter extension for the next-generation of AISpace
-	pkgver = 0.8.11
+	pkgver = 0.6.9
 	pkgrel = 1
 	url = https://aispace2.github.io/AISpace2/
 	arch = any
 	license = GPLv3
 	makedepends = python
 	makedepends = python-pip
-	depends = nodejs
+	depends = nodejs-lts-carbon
 
 pkgname = python-aispace2
+
