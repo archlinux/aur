@@ -1,7 +1,5 @@
-#!/bin/bash
-
 # Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
-
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=python-meshplex
 _name=${pkgname#python-}
 pkgver=0.16.5
@@ -40,6 +38,6 @@ build() {
 
 package() {
 	cd "$srcdir/$_name-$pkgver" || exit
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
