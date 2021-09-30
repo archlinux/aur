@@ -1,29 +1,26 @@
 pkgbase = souffle
 	pkgdesc = Soufflé is a translator of declarative Datalog programs into the C++ language
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/souffle-lang/souffle
 	arch = any
 	license = UPL
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = bison
-	makedepends = doxygen
+	makedepends = git
+	makedepends = cmake>=3.15
+	makedepends = bison>=3.0.4
 	makedepends = flex
-	makedepends = sqlite
-	makedepends = libtool
-	makedepends = jdk8-openjdk
-	makedepends = pkg-config
-	makedepends = python
+	makedepends = libffi
+	makedepends = ncurses
 	makedepends = zlib
-	depends = sqlite
-	depends = python
-	depends = zlib
+	makedepends = lsb-release
 	depends = mcpp
+	depends = gcc>=7
+	depends = openmp
+	depends = sqlite
+	optdepends = bash-completion
 	provides = souffle
 	conflicts = souffle-git
-	source = https://github.com/souffle-lang/souffle/archive/2.1.zip
-	md5sums = e5ac5a043ce1b1982f9e75a88b2cb697
+	source = souffle-2.1.tar.gz::https://github.com/souffle-lang/souffle/archive/2.1.tar.gz
+	md5sums = SKIP
 
 pkgname = souffle
-

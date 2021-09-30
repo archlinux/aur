@@ -1,37 +1,35 @@
-# Maintainer: Eric Schulte <eschulte@grammatech.com>
-#
-# Based off of the souffle-git pkgfile by
-# Sam Linnfer <littlelightlittlefire@gmail.com>
+# Maintainers: 
+# Eric Schulte <eschulte@grammatech.com>
+# Xiaowen Hu <xihu5895@uni.sydney.edu.au>
+
 pkgname=souffle
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Soufflé is a translator of declarative Datalog programs into the C++ language"
 arch=('any')
 url="https://github.com/souffle-lang/souffle"
 license=('UPL')
 groups=()
-depends=('sqlite' 'python' 'zlib' 'mcpp')
-makedepends=('autoconf' 'automake' 'bison' 'doxygen' 'flex' 'sqlite' 'libtool' 'jdk8-openjdk' 'pkg-config' 'python' 'zlib')
+depends=('mcpp' 'gcc>=7' 'openmp' 'sqlite')
+makedepends=('git' 'cmake>=3.15' 'bison>=3.0.4' 'flex' 'libffi' 'ncurses' 'zlib' 'lsb-release')
+optdepends=('bash-completion')
 provides=('souffle')
 conflicts=('souffle-git')
-backup=()
-options=()
-install=
-noextract=()
-source=("https://github.com/souffle-lang/souffle/archive/${pkgver}.zip")
-md5sums=('e5ac5a043ce1b1982f9e75a88b2cb697')
+source=(souffle-2.1.tar.gz::https://github.com/souffle-lang/souffle/archive/2.1.tar.gz)
+md5sums=('SKIP')
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    sed -i "s/git describe --tags --always/echo ${pkgver}/" configure.ac
-    sed -i '/AC_CONFIG_MACRO_DIR(/d' configure.ac
-    sh ./bootstrap
-    ./configure --prefix=/usr
-    # When necessary, fixup deprecated form in src/parser.yy and rebuild.
-    make -j $(nproc) || (bison --update src/parser.yy && make)
+	cd souffle-${pkgver}
+	cmake -S . -B ./build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DSOUFFLE_GIT=OFF \
+        -DSOUFFLE_VERSION=${pkgver} \
+        -DPACKAGE_VERSION=${pkgver} \
+
+    cmake --build ./build --parallel "$(nproc)"
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    make DESTDIR="$pkgdir/" install
+	cd souffle-${pkgver}/build
+	make DESTDIR="$pkgdir/" install
 }
