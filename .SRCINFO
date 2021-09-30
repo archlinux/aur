@@ -1,6 +1,6 @@
 pkgbase = koka-bin
 	pkgdesc = Koka: a function-oriented language with effect inference
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/koka-lang/koka
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = koka-bin
 	optdepends = nodejs
 	provides = koka
 	conflicts = koka
-	noextract = koka-v2.3.0-linux-x64.tar.gz
+	noextract = koka-v2.3.1-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/koka-lang/koka/releases/download/v2.3.0/koka-v2.3.0-linux-x64.tar.gz
-	sha256sums = c618c7b67d316eb9e4941e482699b4cc727f25fae0b7aaeb20453023f59c1d02
+	source = https://github.com/koka-lang/koka/releases/download/v2.3.1/koka-v2.3.1-linux-x64.tar.gz
+	sha256sums = f077910812f6d2b00980749409044c6a021c17cfe754c45d0ae92a0d591609c7
 
 pkgname = koka-bin
