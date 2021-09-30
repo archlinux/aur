@@ -1,6 +1,6 @@
 pkgbase = nwg-drawer
 	pkgdesc = Application drawer for sway and other wlroots-based compositors
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-drawer
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = nwg-drawer
 	provides = nwg-drawer
 	conflicts = nwg-drawer-git
 	conflicts = nwg-drawer-bin
-	source = nwg-drawer-0.2.0.tar.gz::https://github.com/nwg-piotr/nwg-drawer/archive/v0.2.0.tar.gz
-	md5sums = c2916a5d17b672a973d6c8718b8eb731
+	source = nwg-drawer-0.2.1.tar.gz::https://github.com/nwg-piotr/nwg-drawer/archive/v0.2.1.tar.gz
+	md5sums = 28467c0930e4c6ac39806ea10cfe835a
 
 pkgname = nwg-drawer
