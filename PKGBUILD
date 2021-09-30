@@ -8,7 +8,7 @@ pkgname=(
     'samsung-unified-driver'
 )
 pkgver=1.00.39
-pkgrel=4
+pkgrel=5
 
 pkgdesc='Unified Linux Driver for Samsung printers and scanners.'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ sha512sums=('fccda77af20b31c9b46117b013d0c40333adc87679057c2b1e513d9bae97fc7267e
 _arch=${CARCH/i686/i386}
 
 prepare(){
-    chmod -R u+w "$srcdir"
+    chmod -R u+w "$srcdir"/*
 }
 
 package_samsung-unified-driver()
