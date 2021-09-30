@@ -1,7 +1,7 @@
 pkgbase = openssl-gost-engine-git
 	pkgdesc = A reference implementation of the Russian GOST crypto algorithms for OpenSSL
 	pkgver = 1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/gost-engine/engine/
 	install = install.sh
 	arch = i686

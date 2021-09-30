@@ -1,8 +1,8 @@
 # Maintainer: Dimytch <aspamkiller from yandex point ru>
 
 pkgname=openssl-gost-engine-git
-pkgver=1
-pkgrel=0
+pkgver=1.507
+pkgrel=1
 pkgdesc="A reference implementation of the Russian GOST crypto algorithms for OpenSSL"
 arch=('i686' 'x86_64')
 url="https://github.com/gost-engine/engine/"
@@ -34,8 +34,8 @@ backup=(
 
 pkgver(){
   cd "$srcdir/engine"
-  git checkout openssl_1_1_1
-  echo "1.`git describe --always`"
+  git checkout openssl_1_1_1 >/dev/null 2>&1
+  echo "1.`git rev-list --count HEAD`"
 }
 prepare() {
   cd "$srcdir/engine"
