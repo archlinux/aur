@@ -1,0 +1,25 @@
+pkgbase = docker-compose1
+	pkgdesc = Fast, isolated development environments using Docker. 1.x branch
+	pkgver = 1.29.2
+	pkgrel = 1
+	url = https://github.com/docker/compose
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-cached-property
+	depends = python-docopt
+	depends = python-yaml
+	depends = python-requests
+	depends = python-texttable
+	depends = python-websocket-client
+	depends = python-distro
+	depends = python-docker
+	depends = python-dockerpty
+	depends = python-six
+	depends = python-jsonschema
+	depends = python-dotenv
+	depends = docker
+	source = docker-compose1-1.29.2.tar.gz::https://github.com/docker/compose/archive/1.29.2.tar.gz
+	sha512sums = 09f2ae2ae7a17ab5fb3e22580f7a80f1a8253f7ad9fc8f29aca432911bcde46ed22030ff3073cdd7eff3d55aaba17f56e628a178ec05c3a9b4f28495d6045111
+
+pkgname = docker-compose1
