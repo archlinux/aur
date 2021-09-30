@@ -48,9 +48,9 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.14
-_minor=8
+_minor=9
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -71,7 +71,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K210920v1"
+_bfq_rel="r2K210927v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -333,9 +333,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('7da2a72f30d394a66088015873c63ee47160048c5058c0662e334a967ca14ae3259832434775ded49c23d0f2f8123b1ea1bd925b2069c43fa0301d1af054c80f'
+sha512sums=('987ae9ceba83ba12e5e1962118831dbc47eaf26848cfd83b93db58f004dbc3c8d10d62a33cf449abddcfe996023dc705207c43a22aae665461eff9d7365bbc00'
             'SKIP'
-            '62d3e809cd7218e3e783b41a5abad0780db17b29f025ee1aca3610ebf058dec8371cb78696677a3913d3217052a5513887b3cc5b285e1942d9421ab4c09c4388'
+            'ba2b56bed0d3652ac4c3e035afb762a747ec32731c80d9d479fc8b2b41bc09c38267926e7fca7b5564587ff6fcd4aeaf7c75f0df3ac2c0eca2ddc2dd81ac8fde'
             'b1aef4f4e7350ce8132e019f76a2ac68bee8a46eb981598fbda11402e62a8bcdfd2f49e5b2cc5dcf2e96c88ad047af12d53abb9fda05c9f7acec37879e5240db'
             '99bb98c2d7b72250161a0f98d0b984a83b099f2ff0aa9c043da460b75096a5a9e83f330546f1fd6e2ad1f2c9ab92de77e9899f9c99ddb769853d2c943eaecba8'
             '63e861587d159ad43c8001b1d109b184873cd8880dc33430e73e010c41329a4e58b7236d02091ab9dde93aac9b1e55ac2e6903125bc9c14f0e5220c29a099ddf'
