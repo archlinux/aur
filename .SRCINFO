@@ -45,6 +45,7 @@ pkgname = petsc-git
 	optdepends = med>=4.0: Data Modelization and Exchanges (meshes)
 	optdepends = metis: Partitioning library (for meshes)
 	optdepends = mumps: Sparse solver library
+	optdepends = netcdf-openmpi: Management of array-data
 	optdepends = openblas: Linear algebra libraries
 	optdepends = opencl-headers: for opencl (GPU computing)
 	optdepends = opencl: GPU computing

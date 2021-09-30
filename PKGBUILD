@@ -150,6 +150,7 @@ package_petsc-git() {
     "med>=4.0: Data Modelization and Exchanges (meshes)"
     "metis: Partitioning library (for meshes)"
     "mumps: Sparse solver library"
+    "netcdf-openmpi: Management of array-data"
     "openblas: Linear algebra libraries"
     "opencl-headers: for opencl (GPU computing)"
     "opencl: GPU computing"
@@ -199,7 +200,7 @@ package_petsc-git() {
   # cd -
   _pythonpath="${pkgdir}"/`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
   install -dm 755 ${_pythonpath}
-  ln -s "${pkgdir}"/"${_install_dir}"/lib/petsc4py ${_pythonpath}
+  ln -s "${_install_dir}"/lib/petsc4py ${_pythonpath}
 }
 
 package_petsc-doc () {
