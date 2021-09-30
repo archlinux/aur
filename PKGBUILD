@@ -13,8 +13,6 @@ checkdepends=(python-pytest-codeblocks) #python-matplotlib
 source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('54aecba8c32cedc5517b99b931378a27e0aadcbca99698ff357707bbbd62d91358c728eb396064443c93a9e1bc4de166e4adce76f99bd63f4afc698d6e5b4bb7')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" build
@@ -29,7 +27,7 @@ check() {
 package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
   echo 'Important note: for the python-gmsh module to be available you need to add export PYTHONPATH="$PYTHONPATH:/usr/share/gmsh/api/python" in ~/.bashrc, ~/.zshrc, etc. :-)'
 }
