@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('custom')
 url='https://aws.amazon.com/vpn/'
 source=(
-  "https://d20adtppz83p9s.cloudfront.net/GTK/${pkgver}/awsvpnclient_amd64.deb"
+  "$pkgname-$pkgver.deb::https://d20adtppz83p9s.cloudfront.net/GTK/${pkgver}/awsvpnclient_amd64.deb"
   'awsvpnclient.desktop.patch'
 )
 sha512sums=(
