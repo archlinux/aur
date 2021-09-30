@@ -1,6 +1,7 @@
 # Maintainer: Andy Bao <contact at andybao dot me>
 _pkgname=spacecadetpinball
 pkgname=$_pkgname-git
+pkgdesc='Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux'
 pkgver=1.1.1.r25.ga281000
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
