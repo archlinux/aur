@@ -1,19 +1,36 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
-pkgname='python-pygeno'
-pkgver=1.3.1
+pkgname=python-pygeno
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A Python package for precision medicine and proteogenomics."
+pkgdesc='Personalized genomics and proteomics'
 arch=('any')
-url="https://github.com/tariqdaouda/pyGeno"
-license=('Apache2')
-depends=('python' 'python-radadb')
+url="https://github.com/tariqdaouda/pygeno"
+license=('Apache')
+depends=('python-rabadb')
 makedepends=('python-setuptools')
-options=(!emptydirs)
-source=("https://github.com/tariqdaouda/pyGeno/archive/${pkgver}.tar.gz")
-md5sums=('4a92d0381abfa708762d9eb586019caf')
+changelog=
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pyGeno/pyGeno-$pkgver.tar.gz")
+sha256sums=('0f8818d911c543f9d5df7056799640f3bc64e05a6a8dedecc7f322ce1ec95560')
+
+prepare() {
+	cd "pyGeno-$pkgver"
+	sed -i '/sample=sample/s/sample/pygeno-sample/' setup.py
+}
+
+build() {
+	cd "pyGeno-$pkgver"
+	python setup.py build
+}
+
+check() {
+	cd "pyGeno-$pkgver"
+	python setup.py test
+}
 
 package() {
-  cd "${srcdir}/pyGeno-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+	cd "pyGeno-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
