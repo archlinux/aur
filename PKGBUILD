@@ -1,13 +1,13 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=khronos-git
-pkgver=3.5.5.r5.gd6154bc
-pkgrel=2
+pkgver=3.6.0.r0.gb36904f
+pkgrel=1
 pkgdesc="Track each task's time in a simple inobtrusive way"
 arch=('any')
 url="https://github.com/lainsce/khronos"
 license=('GPL3')
-depends=('gtk4' 'json-glib' 'libadwaita' 'libhandy' 'libgee')
+depends=('gtk4' 'json-glib' 'libadwaita' 'libgee')
 makedepends=('git' 'meson' 'gobject-introspection' 'ninja' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
