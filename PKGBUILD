@@ -145,28 +145,22 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for the slimmed down linux kernel."
 
-read -p "installing ${pkgdir}/usr/lib/modules/${_kernver}"
+  msg2 "installing modfiles"
+
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-read -p "switching to ${_srcname}"
   cd "${_srcname}"
 
-read -p "installing Makefile to ${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
-
-read -p "Installing kernel/Makefile to {pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
   install -D -m644 kernel/Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
-
-read -p "installing .config to ${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
   install -D -m644 .config \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
 
-read -p "making dir ${pkgdir}/usr/lib/modules/${_kernver}/build/include"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
-read -p "looping $(ls include/) for including in ${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
+  msg2 "looping mods for including in build"
   for i in $(ls include/); do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
@@ -184,8 +178,9 @@ read -p "looping $(ls include/) for including in ${pkgdir}/usr/lib/modules/${_ke
   # fix permissions on scripts dir
   msg2 "fix perms on scripts dir"
   chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
+  echo makedir tmp_versions
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
-
+  echo makedir buildarchkernel
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
 
   # add kernel files to headers
