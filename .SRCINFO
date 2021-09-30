@@ -1,7 +1,7 @@
 pkgbase = obs-nvfbc
 	pkgdesc = OBS Studio source plugin for NVIDIA FBC API
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/fzwoch/obs-nvfbc
 	arch = x86_64
 	license = GPL2
