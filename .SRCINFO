@@ -1,15 +1,14 @@
 pkgbase = cargo-lock
-	pkgdesc = Cargo subcommand to analyze Cargo.toml packages and translate Cargo.lock files
-	pkgver = 6.0.0
+	pkgdesc = Self-contained Cargo.lock parser
+	pkgver = 7.0.1
 	pkgrel = 1
-	url = https://github.com/RustSec/cargo-lock
+	url = https://github.com/rustsec/rustsec/tree/main/cargo-lock
 	arch = x86_64
 	license = MIT
 	license = APACHE
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://github.com/RustSec/cargo-lock/archive/v6.0.0/cargo-lock-6.0.0.tar.gz
-	sha256sums = aadeb034d5d88408eea3d165609519dae0ab2e8aa8499326681e33718299dd79
+	source = https://github.com/rustsec/rustsec/archive/cargo-lock/v7.0.1/cargo-lock-7.0.1.tar.gz
+	sha256sums = 895f5ff7507553db147533caecfd4de8e0afb2393aa4621298b358d1af44addd
 
 pkgname = cargo-lock
-
