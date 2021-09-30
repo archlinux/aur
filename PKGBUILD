@@ -3,7 +3,7 @@
 # Based off of the souffle-git pkgfile by
 # Sam Linnfer <littlelightlittlefire@gmail.com>
 pkgname=souffle
-pkgver=2.0.2
+pkgver=2.1
 pkgrel=1
 pkgdesc="Soufflé is a translator of declarative Datalog programs into the C++ language"
 arch=('any')
