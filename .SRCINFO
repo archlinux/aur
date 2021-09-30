@@ -1,0 +1,23 @@
+pkgbase = python-pynng
+	pkgdesc = Python bindings for Nanomsg Next Generation
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/codypiersall/pynng
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-curio
+	checkdepends = python-pytest-trio
+	checkdepends = python-curio
+	checkdepends = python-trio
+	checkdepends = python-mbed-host-tests
+	makedepends = cmake
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-pytest-runner
+	depends = python-sniffio
+	depends = python-cffi
+	source = python-pynng-0.7.1.tar.gz::https://github.com/codypiersall/pynng/archive/v0.7.1.tar.gz
+	sha256sums = 752bb38a0d00d9dc52f361479c44018d2ed508dd9841a595314a45d660b95570
+
+pkgname = python-pynng
