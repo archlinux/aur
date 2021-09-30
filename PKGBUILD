@@ -1,7 +1,7 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname=github-markdown-toc
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=2
 pkgdesc='Easy TOC creation for GitHub README.md'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('bash')
 checkdepends=('bash-bats')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ekalinin/github-markdown-toc/archive/$pkgver.tar.gz")
-sha1sums=('ba1115206e62538259c41382864f7994abbc7fdf')
+sha1sums=('542ed20d217bfd55ad41dd30e07c39ba1bc856c7')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
