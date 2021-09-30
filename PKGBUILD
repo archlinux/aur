@@ -6,7 +6,7 @@ url='https://github.com/koide3/hdl_graph_slam'
 pkgname='ros-noetic-hdl-graph-slam-git'
 pkgver=r168.d93a8be
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD 2-Clause License')
 
 ros_makedepends=(ros-noetic-catkin)
@@ -14,8 +14,6 @@ makedepends=(
     cmake
     ros-build-tools
     ${ros_makedepends[@]}
-    g2o
-    openmp
 )
 
 
@@ -33,6 +31,8 @@ ros_depends=(
 )
 depends=(
     ${ros_depends[@]}
+    g2o
+    openmp
 )
 
 source=(
