@@ -1,7 +1,7 @@
 # Contributor: Mateusz Galazyn <carbolymer at gmail.com>
 
 pkgrel=1
-pkgver=r586.b1edcf3
+pkgver=r588.de7d2b1
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
 url="https://github.com/zimfw/zimfw"
@@ -68,7 +68,7 @@ package() {
   find ${ZIM_HOME} -iname "*.old" -type f -exec rm -f \{\} \;
   # files will be recompiled during installation, when zsh will be executed as root
   find ${ZIM_HOME} -iname "*.zwc" -type f -exec rm -f \{\} \;
-  chmod -R u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
+  find "${ZIM_HOME}" ! -type l -execdir chmod u+rX,g+rX,o+rX {} \;
 }
 
 
