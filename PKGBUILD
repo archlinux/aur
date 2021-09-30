@@ -2,7 +2,7 @@
 # Contributor: hexchain <i at hexchain dot org>
 
 pkgname=yaml-language-server
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc='YAML Language Server'
 url=https://github.com/redhat-developer/yaml-language-server
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('jq' 'yarn')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('10cd832032dc3644d31f7e5b927360904ea337b371b086187b98772fa351ca8bd0de22a53d49419d2a5a60bb0c34cb221aa0a9bb1908b9700e234e9d9cb0967f')
+b2sums=('842c59567ddb976f6a88388339b8b446bf6f6e8c8371d32fa623c588e8cfd2521e55c13db945a74cfcf7c1d499ede3226a0a1157efd16deb7a7cb9991498b27f')
 
 build() {
   cd $pkgname-$pkgver
