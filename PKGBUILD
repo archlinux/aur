@@ -9,9 +9,10 @@ pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-gaps-wm i3-
         regolith-i3xrocks # allll the i3xrocks shit
         regolith-styles # alll the styles shit
         regolith-st 
-        regolith-desktop-config)
-pkgver=1.5.3
-pkgrel=1
+        regolith-desktop-config
+	remontoire-regolith)
+pkgver=1.6
+pkgrel=2
 arch=('x86_64')
 url=https://github.com/regolith-linux/regolith-desktop
 url2=https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files
@@ -20,7 +21,7 @@ url4=http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/
 url5=https://launchpad.net/~regolith-linux/+archive/ubuntu/stable/+files
 license=('custom: multiple')
 groups=('regolith-de')
-makedepends=('wget')
+makedepends=('wget' 'python' 'meson' 'ninja' 'gtk3' 'git')
 
 source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-theme/ayu-theme_0.2.2-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/c/cahuella/cahuella_1.0.3-1_amd64.deb
@@ -85,8 +86,8 @@ source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-t
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/f/fonts-materialdesignicons-webfont/fonts-materialdesignicons-webfont_1.6.50-3regolith3_amd64.deb
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/g/gruvbox-gtk/gruvbox-gtk_1.0.1-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/d/dracula-gtk/dracula-gtk_1.0.1-1_amd64.deb
-	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_4.1.4\~1560290633\~18.04\~f75e86a_all.deb)
-
+	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_4.1.4\~1560290633\~18.04\~f75e86a_all.deb
+        git+https://github.com/regolith-linux/remontoire.git)
 
 
 sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
@@ -152,7 +153,8 @@ sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
 	    6b3cd883cc38098b25d5fa828751d0d9b5c40a754d92d1925c354f969707ed99
 	    6884a081345953c3e5aa2cf7c32253604eb9bf07b5ca4570cf41802d6ca762d6
 	    2f3d57a5445f46931b8184cdbea0aa52b5251b319f367ec188db00187c1c7e71
-	    eb44cac833c369dc0f3afe71e334a7bccaaef45836030b3c9ab3d9dc70500370)
+	    eb44cac833c369dc0f3afe71e334a7bccaaef45836030b3c9ab3d9dc70500370
+	    SKIP)
 
 
 
@@ -345,4 +347,19 @@ package_regolith-st () {
     groups=('regolith-de')
 
 	extract_deb "${srcdir}"/regolith-st_0.8.2-1ubuntu20ppa5_amd64.deb
+}
+
+
+package_remontoire-regolith () {
+    pkgdesc="Keybinding viewer for i3 and other programs"
+    license=('GPL3')
+    provides=('remontoire')
+    conflicts=('remontoire-git')
+    depends=('gtk-update-icon-cache' 'desktop-file-utils' 'glib2' 'json-glib' 'gtk3' 'libgee')
+
+	cd "${srcdir}"
+	meson --prefix /usr --buildtype=plain remontoire build
+	cd "${srcdir}"/build
+	ninja
+	DESTDIR="${pkgdir}" ninja install
 }
