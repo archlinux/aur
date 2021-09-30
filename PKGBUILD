@@ -54,10 +54,6 @@ pkgver() {
 prepare(){
     mv -n imgui-$imgui_hash/* "$pkgname/thirdparty/imgui"
     mv -n portable-file-dialogs-$portable_hash/* "$pkgname/thirdparty/portable-file-dialogs"
-    cd $pkgname
-    patch --forward --strip=1 --input="${srcdir}/50.patch"
-    patch --forward --strip=1 --input="${srcdir}/51.patch"
-    patch --forward --strip=1 --input="${srcdir}/52.patch"
 }
 
 build() {
