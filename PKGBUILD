@@ -1,6 +1,6 @@
 # Maintainer: Lawrence Chiappelli <lawrence chip at proton mail dot com>
 pkgname='screendimmer'
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A tray application to dim your monitor brightness."
 arch=(x86_64)
