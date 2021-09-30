@@ -145,59 +145,78 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for the slimmed down linux kernel."
 
+read -p "installing ${pkgdir}/usr/lib/modules/${_kernver}"
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
+read -p "switching to ${_srcname}"
   cd "${_srcname}"
+
+read -p "installing Makefile to ${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
+
+read -p "Installing kernel/Makefile to {pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
   install -D -m644 kernel/Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
+
+read -p "installing .config to ${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
   install -D -m644 .config \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
 
+read -p "making dir ${pkgdir}/usr/lib/modules/${_kernver}/build/include"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
+read -p "looping $(ls include/) for including in ${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   for i in $(ls include/); do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
   # copy arch includes for external modules
+  msg2 "copy arch includes"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86"
   cp -a arch/x86/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86/"
 
   # copy files necessary for later builds, like nvidia and vmware
+  msg2 "copy files for later builds"
   cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   # fix permissions on scripts dir
+  msg2 "fix perms on scripts dir"
   chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
 
   # add kernel files to headers
+  msg2 "add kernel files to headers"
   cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
   # add dm headers
+  msg2 "add dm headers"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
   cp drivers/md/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
 
   # add inotify.h
+  msg2 "add inotify.h"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux"
   cp include/linux/inotify.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux/"
 
   # copy in Kconfig files
+  msg2 "copy in Kconfig files"
   for i in $(find . -name "Kconfig*"); do
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
 
   # Fix file conflicts with -doc package
+  msg2 "Fix file conflicts with doc package"
   rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
   rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/Kconfig"
 
   # Add objtool for CONFIG_STACK_VALIDATION
+  msg2 "add objtool for stack validation"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
   cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
 
@@ -205,6 +224,7 @@ _package-headers() {
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
 
   # strip scripts directory
+  msg2 "strip scripts directory"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
     case "$(file -bi "${binary}")" in
       *application/x-sharedlib*) # Libraries (.so)
@@ -217,6 +237,7 @@ _package-headers() {
   done
 
   # remove unneeded architectures
+  msg2 "remove folly archs"
   while read modarch; do
    rm -rf $modarch
   done <<< $(find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/ -maxdepth 1 -mindepth 1 -type d | grep -v /x86$)
