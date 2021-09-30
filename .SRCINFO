@@ -1,6 +1,6 @@
 pkgbase = visidata
 	pkgdesc = Terminal spreadsheet multitool for discovering and arranging data
-	pkgver = 2.6
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://www.visidata.org
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = visidata
 	optdepends = python-wcwidth: tabulate saver with unicode support
 	optdepends = python-xlrd: xls support
 	optdepends = python-pyaml: yaml/yml support
-	source = https://files.pythonhosted.org/packages/source/v/visidata/visidata-2.6.tar.gz
-	sha256sums = a77624d74fff12344047e8b5f4b6721dc5ee531a7fbbdac572f20ce3a12dca7d
+	source = https://files.pythonhosted.org/packages/source/v/visidata/visidata-2.6.1.tar.gz
+	sha256sums = 3e2880cc1fb77a0f181b094864eedd53e051890cea991081260fdb97ef805216
 
 pkgname = visidata
