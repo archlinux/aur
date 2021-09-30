@@ -1,21 +1,20 @@
 pkgbase = input-wacom-dkms
 	pkgdesc = Latest Kernel modules form Wacom tablets (DKMS). Useful if your wacom tablet is not supported upstream yet.
-	pkgver = 0.47.0
-	pkgrel = 2
+	pkgver = 0.48.0
+	pkgrel = 1
 	url = https://github.com/linuxwacom/input-wacom/wiki/Installing-input-wacom-from-source
 	install = input-wacom-dkms.install
 	arch = any
 	license = GPL2
 	depends = dkms
 	optdepends = xf86-input-wacom: for actually using a Wacom tablet
-	source = https://github.com/linuxwacom/input-wacom/releases/download/input-wacom-0.47.0/input-wacom-0.47.0.tar.bz2
+	source = https://github.com/linuxwacom/input-wacom/releases/download/input-wacom-0.48.0/input-wacom-0.48.0.tar.bz2
 	source = dkms.conf
 	source = blacklist-input-wacom-dkms.conf
 	source = move-modules
-	md5sums = ab22b07090be0aad916a4af821fc904e
-	md5sums = 47a35ead612b601d657adc1d5b98e101
+	md5sums = 9653e464b25339cfedcc681af3b50a05
+	md5sums = 6e91f37dad8ccced212ea69474842ad3
 	md5sums = da99119208e69b9a611b1809e1f241f8
 	md5sums = 8a851dede08da29c2810fb58e8b69910
 
 pkgname = input-wacom-dkms
-
