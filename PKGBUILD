@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=easy
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='nice and ionice as a single utility'
 arch=(x86_64)
 url='https://github.com/xyproto/easy'
 license=(GPL2)
 makedepends=(git go)
-source=("git+$url#commit=4262c9f46b7f3f48751df30acda3438bbc2b7c91") # tag: v1.3.0
-sha256sums=('SKIP')
+source=("git+$url#commit=31651e37b1ae2dcc5115bd93e47ad6f0d55bde33") # tag: v1.4.0
+b2sums=(SKIP)
 
 build() {
   cd $pkgname
