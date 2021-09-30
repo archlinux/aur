@@ -3,8 +3,8 @@
 # Contributer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=java-openjfx-ea-bin
-_majorver=17
-_buildver=11
+_majorver=18
+_buildver=3
 pkgver=${_majorver}rc${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
@@ -17,9 +17,9 @@ conflicts=("java${_majorver}-openjfx")
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}-javadoc.zip")
-sha256sums=('85cbbc3cc28f9933a0c7833e092b064a8b5cc8e34c17ce68683bb4514b132bf1'
-            '07b25566f4b703ab33340866eeda7629924be5b947a39a024b623d4eb9955b3f'
-            '60e488eb5df89704ac7937577c1c03228f037fd0bb6cb2e144681f224205021f')
+sha256sums=('08c1ed69e6e8dffc2b312edb12184e544839b1db55556bcb30c3880b4e3700ec'
+            '75262d9d8e11f623c88262434b61e365d9fcd2a711b41a4acb077b6140bbcb33'
+            '5f5c706704e6f97a4af5b57f50af8ef1792ccc7c2baf8f6df7478508df0aff91')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
@@ -27,7 +27,7 @@ package() {
     # Install
     install -d "${pkgdir}/${_jvmdir}"
     cp -a "javafx-sdk-${_majorver}/lib" "${pkgdir}/${_jvmdir}/"
-    mv "${pkgdir}/${_jvmdir}/lib/src.zip" "${pkgdir}/${_jvmdir}/lib/javafx-src.zip"
+    install -Dm 644 "javafx-sdk-${_majorver}/src.zip" "${pkgdir}/${_jvmdir}/lib/javafx-src.zip"
     # Legal
     install -d "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk"
     cp -a "javafx-sdk-${_majorver}/legal" "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk/"

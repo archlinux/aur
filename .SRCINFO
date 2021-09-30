@@ -1,6 +1,6 @@
 pkgbase = java-openjfx-ea-bin
-	pkgdesc = Java OpenJFX 17 Early-Access Build.
-	pkgver = 17rc11
+	pkgdesc = Java OpenJFX 18 Early-Access Build.
+	pkgver = 18rc3
 	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
@@ -11,14 +11,13 @@ pkgbase = java-openjfx-ea-bin
 	depends = webkit2gtk
 	depends = ffmpeg
 	depends = qt5-base
-	provides = java-openjfx=17
-	conflicts = java17-openjfx
-	source = https://download2.gluonhq.com/openjfx/17/openjfx-17-ea+11_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/17/openjfx-17-ea+11_linux-x64_bin-jmods.zip
-	source = https://download2.gluonhq.com/openjfx/17/openjfx-17-ea+11-javadoc.zip
-	sha256sums = 85cbbc3cc28f9933a0c7833e092b064a8b5cc8e34c17ce68683bb4514b132bf1
-	sha256sums = 07b25566f4b703ab33340866eeda7629924be5b947a39a024b623d4eb9955b3f
-	sha256sums = 60e488eb5df89704ac7937577c1c03228f037fd0bb6cb2e144681f224205021f
+	provides = java-openjfx=18
+	conflicts = java18-openjfx
+	source = https://download2.gluonhq.com/openjfx/18/openjfx-18-ea+3_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/18/openjfx-18-ea+3_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/18/openjfx-18-ea+3-javadoc.zip
+	sha256sums = 08c1ed69e6e8dffc2b312edb12184e544839b1db55556bcb30c3880b4e3700ec
+	sha256sums = 75262d9d8e11f623c88262434b61e365d9fcd2a711b41a4acb077b6140bbcb33
+	sha256sums = 5f5c706704e6f97a4af5b57f50af8ef1792ccc7c2baf8f6df7478508df0aff91
 
 pkgname = java-openjfx-ea-bin
-
