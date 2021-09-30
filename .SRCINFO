@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-interactive-slam-git
 	pkgdesc = open source 3D LIDAR-based mapping framework
 	pkgver = r80.b39352f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SMRT-AIST/interactive_slam
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = ros-noetic-interactive-slam-git
 	depends = pcl
 	depends = glfw-x11
 	depends = glm
+	depends = kdialog
 	source = ros-noetic-interactive-slam-git::git://github.com/koide3/interactive_slam.git
 	source = imgui::https://github.com/ocornut/imgui/archive/c077dd4872f435dd959feb024e5a9adb2c7df20c.tar.gz
 	source = portable-file-dialogs::https://github.com/samhocevar/portable-file-dialogs/archive/.tar.gz
