@@ -3,7 +3,7 @@ _target=mips64-ultra-elf
 pkgname=${_target}-gdb
 _gdbver=11.1
 pkgver=11.1_r153.b5056b4
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Debugger (${_target})"
 arch=('x86_64')
 license=('GPL3')
@@ -43,7 +43,8 @@ build() {
     --with-sysroot=/usr/${_target}/n64-sysroot/ \
     --with-newlib \
     --enable-multilib \
-    --disable-nls
+    --disable-nls \
+    --disable-sim 
   make
 }
 
