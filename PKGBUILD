@@ -17,5 +17,5 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    install -Dm755 bin/docker-compose "$pkgdir/usr/bin/compose-switch"
+    install -Dm755 bin/docker-compose "$pkgdir/usr/bin/docker-compose"
 }
