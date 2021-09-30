@@ -13,12 +13,8 @@ url="https://bitbucket.org/fenics-project/${_base}"
 license=('LGPL3')
 groups=('fenics')
 conflicts=('dolfin-git')
-depends=('cppunit'
-				 'eigen'
-				 'gl2ps'
-				 'python-ffc=2019.1.0'
-				 'petsc'
-				 'suitesparse')
+depends=('boost' 'cppunit' 'eigen' 'gl2ps' 'petsc'
+         'python-ffc=2019.1.0' 'suitesparse')
 optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning'
             'slepc: eigenvalue problem solvers'
             'hdf5<=1.12.0-1: for reading/writing hdf5 files')
@@ -37,7 +33,7 @@ prepare() {
     patch --forward --strip=0 --input="${srcdir}/hdf5.patch"
     patch --forward --strip=1 --input="${srcdir}/endian.patch"
 }
-     
+
 build() {
 	cd ${srcdir}/${_base}-${pkgver}
 	[ -d build ] && rm -rf build
