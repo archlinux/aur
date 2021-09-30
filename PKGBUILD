@@ -13,8 +13,8 @@ license=('LGPL3')
 groups=('fenics')
 conflicts=('python-dolfin-git')
 depends=('dolfin=2019.1.0.post0'
-				 'python-pkgconfig'
-				 'python-ply')
+		 'python-pkgconfig'
+		 'python-ply')
 optdepends=('python-mpi4py: MPI library for python'
             'petsc4py: interface with PETSc from python'
             'slepc4py: interface with SLEPc from python'
@@ -26,16 +26,16 @@ sha256sums=('61abdcdb13684ba2a3ba4afb7ea6c7907aa0896a46439d3af7e8848483d4392f')
 export MAKEFLAGS="-j1"
 
 build() {
-  [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
-  [ -n "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
+    [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
+    [ -n "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
 
 	cd ${srcdir}/${_base}-${pkgver}/python
-  python setup.py build
+    python setup.py build
 }
 
 package() {
 	cd ${srcdir}/${_base}-${pkgver}/python
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 # vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
