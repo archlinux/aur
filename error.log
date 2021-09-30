@@ -1,0 +1,23 @@
+make  all-recursive
+make[1]: Entering directory '/home/user/Projects/aur/gdome2/src/gdome2-0.8.1'
+Making all in libgdome
+make[2]: Entering directory '/home/user/Projects/aur/gdome2/src/gdome2-0.8.1/libgdome'
+Making all in gdomecore
+make[3]: Entering directory '/home/user/Projects/aur/gdome2/src/gdome2-0.8.1/libgdome/gdomecore'
+/bin/sh ../../libtool --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I../../libgdome -I../../libgdome/gdomecore -I../../libgdome/events -I../../libgdome/xpath -I/usr/include/libxml2 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include  -Wall -ansi   -D_FORTIFY_SOURCE=2  -march=nehalem -mtune=nehalem -O3 -pipe -fno-plt -g -fdebug-prefix-map=/home/user/Projects/aur/gdome2/src=/usr/src/debug -c gdome-xml-documentt.c
+rm -f .libs/gdome-xml-documentt.lo
+gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I../../libgdome -I../../libgdome/gdomecore -I../../libgdome/events -I../../libgdome/xpath -I/usr/include/libxml2 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -Wall -ansi -D_FORTIFY_SOURCE=2 -march=nehalem -mtune=nehalem -O3 -pipe -fno-plt -g -fdebug-prefix-map=/home/user/Projects/aur/gdome2/src=/usr/src/debug -c gdome-xml-documentt.c   -fPIC -DPIC -o .libs/gdome-xml-documentt.lo
+gdome-xml-documentt.c: In function 'gdome_xml_dt_internalSubset':
+gdome-xml-documentt.c:345:42: error: invalid use of incomplete typedef 'xmlBuf' {aka 'struct _xmlBuf'}
+  345 |         ret = g_strndup (out_buff->buffer->content, out_buff->buffer->use);
+      |                                          ^~
+gdome-xml-documentt.c:345:69: error: invalid use of incomplete typedef 'xmlBuf' {aka 'struct _xmlBuf'}
+  345 |         ret = g_strndup (out_buff->buffer->content, out_buff->buffer->use);
+      |                                                                     ^~
+make[3]: *** [Makefile:243: gdome-xml-documentt.lo] Error 1
+make[3]: Leaving directory '/home/user/Projects/aur/gdome2/src/gdome2-0.8.1/libgdome/gdomecore'
+make[2]: *** [Makefile:296: all-recursive] Error 1
+make[2]: Leaving directory '/home/user/Projects/aur/gdome2/src/gdome2-0.8.1/libgdome'
+make[1]: *** [Makefile:338: all-recursive] Error 1
+make[1]: Leaving directory '/home/user/Projects/aur/gdome2/src/gdome2-0.8.1'
+make: *** [Makefile:482: all-recursive-am] Error 2
