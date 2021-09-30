@@ -15,8 +15,6 @@ optdepends=('python-matplotlib: for Matplotlib rendering in 2d')
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('34556fe9de8aaca40cd016ba23f48da7f1570db7e01f2e3701aa18ceb05c5e308bba3be84145a2a592a2b5871f70ce57987a85fa363791990246bc48bf30f412')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" build
@@ -31,6 +29,6 @@ check() {
 package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
