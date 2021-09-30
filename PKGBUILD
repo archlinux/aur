@@ -2,7 +2,7 @@
 
 pkgname=ko-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Simple and fast container image builder for Go applications'
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=(
 	"$_pkgname-git"
 )
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_${_goos}_${arch}.tar.gz")
-b2sums=(3f40e944a83adf0eff37e5bf51755eeb9d9cb02f4120db0a8482b2e22474c5d816c01e95529010f512241396a7278d0e54dd212f912b8529353fdaad0ead25f3)
+b2sums=(68cd94803ec9f8e6b4372f1cace10bfeaba38fdc8076fd74878cb1545dfe3a2720e0d08c60f0d1a7772197dc1466ac0ba3a981d048be47cd9cccde29c5af9fc1)
 
 package() {
 	install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin"
