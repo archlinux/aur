@@ -6,7 +6,7 @@ url='https://github.com/SMRT-AIST/interactive_slam'
 pkgname='ros-noetic-interactive-slam-git'
 pkgver=r80.b39352f
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('GPLv3')
 
 ros_makedepends=(ros-noetic-catkin)
@@ -38,15 +38,9 @@ portable_hash=ece1202552b887bb2dc72d0364f5b2069639e53c
 source=(
     $pkgname::git://github.com/koide3/interactive_slam.git
     imgui::https://github.com/ocornut/imgui/archive/$imgui_hash.tar.gz
-    portable-file-dialogs::https://github.com/samhocevar/portable-file-dialogs/archive/$portable_hsh.tar.gz
-    https://github.com/SMRT-AIST/interactive_slam/pull/50.patch
-    https://github.com/SMRT-AIST/interactive_slam/pull/51.patch
-    https://github.com/SMRT-AIST/interactive_slam/pull/52.patch
+    portable-file-dialogs::https://github.com/samhocevar/portable-file-dialogs/archive/$portable_hash.tar.gz
 )
 sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
