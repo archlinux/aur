@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.32.0.r796.g790647314c
+pkgver=0.33.1.r346.g38b55c862f
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -85,10 +85,11 @@ build() {
         '--enable-sdl2'
         '--enable-sdl2-gamepad'
         '--enable-libavdevice'
-        '--disable-ffmpeg-strict-abi'
+        '--enable-ffmpeg-strict-abi'
         '--lua=52arch'
         
         '--enable-sdl2-audio'
+        '--disable-oss-audio'
         '--enable-pulse'
         '--enable-jack'
         '--enable-openal'
