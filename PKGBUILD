@@ -2,12 +2,12 @@
 
 _plug=descale
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6.1.g7ea0ca1
+pkgver=r7.0.gb249650
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git'
-license=('custom:WTFPL')
+license=('MIT')
 depends=('vapoursynth')
 makedepends=('git'
              'meson'
@@ -46,5 +46,5 @@ package() {
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
