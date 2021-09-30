@@ -14,9 +14,9 @@ groups=('fenics')
 conflicts=('python-ffc-git')
 depends=('python-dijitso=2019.1.0'
          'python-fiat=2019.1.0'
-				 'python-ufl=2019.1.0'
-				 'pybind11'
-				 'python-setuptools')
+		 'python-ufl=2019.1.0'
+		 'pybind11'
+		 'python-setuptools')
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
 sha256sums=('4ff821a234869d8b9aaf8c5d7f617d42f9c134a2529e76c9519b681dff35affd')
@@ -28,7 +28,7 @@ build() {
 
 package() {
 	cd ${srcdir}/${_base}-${pkgver}
-	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 # vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
