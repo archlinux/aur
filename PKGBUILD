@@ -10,7 +10,7 @@ pkgdesc="New generalized discretization module for a wide range of discretizatio
 arch=('x86_64')
 url="https://www.dune-project.org/modules/${pkgname}"
 license=('LGPL3' 'custom:GPL2 with runtime exception')
-depends=('dune-functions>=2.7' 'dune-alugrid>=2.7' 'superlu' 'arpackpp' 'suitesparse' 'zoltan' 'parmetis')
+depends=('dune-functions>=2.7' 'dune-alugrid>=2.7' 'superlu' 'arpackpp' 'suitesparse' 'dune-alugrid>=2.8.0' 'parmetis' 'scotch')
 makedepends=('doxygen' 'graphviz' 'eigen' 'petsc')
 optdepends=(
   'texlive-core: Type setting system'

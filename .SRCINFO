@@ -15,8 +15,9 @@ pkgbase = dune-pdelab
 	depends = superlu
 	depends = arpackpp
 	depends = suitesparse
-	depends = zoltan
+	depends = dune-alugrid>=2.8.0
 	depends = parmetis
+	depends = scotch
 	optdepends = texlive-core: Type setting system
 	optdepends = biber: A Unicode-capable BibTeX replacement for biblatex users
 	optdepends = doxygen: Generate the class documentation from C++ sources
