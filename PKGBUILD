@@ -3,9 +3,9 @@
 _base=requests-cache
 pkgname=python-${_base}-git
 _pkgname=${pkgname%-git}
-_gitcommit=4f13fb21bec27d1a89f585bfa544411844594cb6
+_gitcommit=80d1b5c5aadbce0f04cf6a2cc765c07c21c6ba16
 pkgdesc="Transparent persistent cache for http://python-requests.org library (git version)"
-pkgver=0.8.r1.4f13fb2
+pkgver=0.8.r1.80d1b5c
 pkgrel=1
 arch=('any')
 url="https://github.com/reclosedev/${_base}"
@@ -21,8 +21,6 @@ source=("git+${url}#commit=${_gitcommit}")
 sha512sums=('SKIP')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
 pkgver() {
   cd "${_base}"
@@ -42,6 +40,6 @@ check() {
 package() {
   cd "${_base}"
   export PYTHONHASHSEED=0
-  python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
