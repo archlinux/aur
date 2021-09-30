@@ -1,6 +1,6 @@
 pkgbase = nekojishi
 	pkgdesc = A free furry/kemono visual novel
-	pkgver = 1.05
+	pkgver = 1.06
 	pkgrel = 1
 	url = https://nekojishi.tw/en-index.html
 	install = nekojishi.install
@@ -8,14 +8,13 @@ pkgbase = nekojishi
 	license = custom:freeware
 	depends = sh
 	options = !strip
-	source = Nekojishi_Standard1.05-linux.tar.bz2::https://cloud.videah.xyz/s/NSRmrfLMHL9qYpq/download
+	source = Nekojishi_Standard1.06-linux.tar.bz2::https://uwueviee.live/Nekojishi-pc(1.06).zip
 	source = nekojishi.sh
 	source = nekojishi.desktop
 	source = nekojishi.png
-	md5sums = 8a666e1edd3065317e976a5f59a0314e
+	md5sums = b125910425eca690200b95339eb7af3c
 	md5sums = 049aca1f2158f12f3923e0da7a32bb60
 	md5sums = 852ba4bfcaff46021157f49529099720
 	md5sums = 9c553c00bdb9f1e97504b9f53fe678db
 
 pkgname = nekojishi
-
