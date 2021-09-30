@@ -1,6 +1,6 @@
 pkgbase = decaf-emu-git
 	pkgdesc = An experimental open-source Nintendo Wii U emulator
-	pkgver = r5096.0cd56a2f
+	pkgver = r5112.dd444a08
 	pkgrel = 1
 	url = https://github.com/decaf-emu/decaf-emu
 	arch = x86_64
