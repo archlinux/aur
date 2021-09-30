@@ -1,16 +1,17 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=14.0.1
+pkgver=14.0.2
+_commit=086aea1ad8a78d28be05d6813ff52fb8e2d1d868
+_chromiumver=93.0.4577.82
+_gcc_patchset=6
+
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
   pkgname="electron${_major_ver}"
 else
   pkgname=electron
 fi
-_commit=735a01edce5be78d43a5a106a02d4398bbe78273
-_chromiumver=93.0.4577.63
-_gcc_patchset=6
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
