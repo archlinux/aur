@@ -28,9 +28,6 @@ check() {
 package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
-  cd "${pkgdir}/$(python -c "import site; print(site.getsitepackages()[0])")/${_base}"
-  rm -r "__pycache__"
-  cd "${srcdir}/${_base}-${pkgver}"
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
