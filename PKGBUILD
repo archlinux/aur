@@ -2,7 +2,7 @@
 # Contributor: carlosal1015
 
 pkgname=betterbib
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Update BibTeX files with info from online resources"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python>=3.8' 'python-appdirs' 'python-latexcodec' 'python-pybtex>=0.19
          'python-pyenchant' 'python-requests' 'python-requests-cache' 'python-rich'
          'python-setuptools' 'python-unidecode' 'aspell-en' 'hspell' 'libvoikko'
          'nuspell')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nschloe/betterbib/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('113fe46d1735fa1c34e6c422b17893f2285b3dc15b1d80fd47850f960754a116')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nschloe/betterbib/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('508b1a07144bb2c2e3b948906dcfd18e4afe2edc4df3bd94b2c8cca3b666d397')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
