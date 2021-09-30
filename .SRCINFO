@@ -1,0 +1,19 @@
+pkgbase = subtube-wayland-git
+	pkgdesc = youtube viewer made of mpv/youtube-dl and sxiv
+	pkgver = 1
+	pkgrel = 2
+	url = https://github.com/nagy135/subtube
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = sxiv
+	depends = mpv
+	depends = youtube-dl
+	depends = xob
+	optdepends = dunst: notification daemon
+	provides = subtube
+	source = subtube-git::git://github.com/nagy135/subtube.git#branch=wayland
+	md5sums = SKIP
+
+pkgname = subtube-wayland-git
+
