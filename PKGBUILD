@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc='Official Go implementation of the Livepeer protocol'
 arch=('i686' 'x86_64')
 url='https://github.com/livepeer/go-livepeer'
+license=('MIT')
 source=('git+git://github.com/livepeer/go-livepeer')
 depends=('base-devel' 'clang' 'gnutls' 'git' 'curl')
 makedepends=('go')

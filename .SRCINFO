@@ -5,6 +5,7 @@ pkgbase = go-livepeer-git
 	url = https://github.com/livepeer/go-livepeer
 	arch = i686
 	arch = x86_64
+	license = MIT
 	makedepends = go
 	depends = base-devel
 	depends = clang
