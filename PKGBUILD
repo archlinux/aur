@@ -28,6 +28,6 @@ check() {
 
 package() {
 	cd "$_name-$pkgver"
-	python -c "from setuptools import setup; setup();" install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
+	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 }
