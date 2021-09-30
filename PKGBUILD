@@ -2,10 +2,10 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.14.8
+gitver=v5.14.9
 patchver=20210914
 patchname=more-uarches-for-kernel-5.8-5.14.patch
-pkgver=5.14.v.8
+pkgver=5.14.v.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '4dab843bf2ec7170bd41a9d6b437349d8fe2a5b38727aa63f757586b3ef68bbe'
+            '7402a3a3f31d4cfe67a0bf163b6fccc4476bc6b5d32b16505c1648d05c96af02'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
@@ -175,13 +175,11 @@ _package-headers() {
   cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
 
-  # fix permissions on scripts dir
-  chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
+  # Make tmpdir for versions
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
 
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
-
   # add kernel files to headers
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
   cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
