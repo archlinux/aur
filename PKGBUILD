@@ -1,43 +1,31 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
-_name=rabaDB
-pkgbase='python-rabadb'
-pkgname=('python-rabadb' 'python2-rabadb')
-pkgver=1.0.5
-pkgrel=2
-pkgdesc="Lightweight uncomplicated schemaless ORM on top of sqlite3 for Python"
+pkgname=python-rabadb
+pkgver=2.0
+pkgrel=1
+pkgdesc="Lightweight uncomplicated schemaless ORM on top of sqlite3"
 arch=('any')
-url=https://pypi.python.org/pypi/"${_name}"
+url='https://github.com/tariqdaouda/rabadb'
 license=('Apache')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/11/10/e8397c370efd954209089319b3d842a1689499a5b5c20812e5094d32b83f/rabaDB-1.0.5.tar.gz)
-sha256sums=('e447a93b6bf22479766ee73533416a30cd6859644854e50c3030285a3d009498')
+depends=('python')
+makedepends=('python-setuptools')
+changelog=CHANGELOG.rst
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/r/rabaDB/rabaDB-$pkgver.tar.gz")
+sha256sums=('cab1eeaaa202006749877cf4608dcb2a0b2e45843306ea860e957304cd861b42')
 
 prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
+	cd "rabaDB-$pkgver"
+	sed -i '/sample=sample/s/sample/rabaDB-sample/' setup.py
 }
 
 build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
-}
-
-package_python2-rabadb() {
-  depends=('python2')
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+	cd "rabaDB-$pkgver"
+	python setup.py build
 }
 
 package_python-rabadb() {
-  depends=('python')
-
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+	cd "rabaDB-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
