@@ -2,15 +2,17 @@
 
 pkgname=hyprspace-git
 pkgver=v0.1.6.r7.c81dcf2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lightweight VPN Built on top of Libp2p for Truly Distributed Networks"
 arch=('any')
 url="https://github.com/hyprspace/hyprspace"
 license=('Apache')
 depends=('go')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/hyprspace/hyprspace")
-sha1sums=('SKIP')
+source=('hyprspace@.service'
+        "$pkgname::git+https://github.com/hyprspace/hyprspace")
+sha1sums=('5bb28108bcddb56d5e3d031bd459ff4de9336b98'
+          'SKIP')
 
 pkgver() {
     cd "$pkgname"
@@ -47,6 +49,6 @@ package() {
   cd "$pkgname"
 
   install -Dm755 "build/hyprspace" "$pkgdir/usr/bin/hyprspace"
-  install -Dm644 "examples/systemd/hyprspace@.service" "$pkgdir/usr/lib/systemd/system/hyprspace@.service"
+  install -Dm644 "$srcdir/hyprspace@.service" "$pkgdir/usr/lib/systemd/system/hyprspace@.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
