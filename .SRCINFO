@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-g41fun-git
 	pkgdesc = Plugin for Vapoursynth: g41fun (GIT version)
-	pkgver = v0.5.alpha.0.g6074ced
+	pkgver = r13.c395f09
 	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-g41fun
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = vapoursynth-plugin-g41fun-git
 	depends = vapoursynth-plugin-vcmod
 	provides = vapoursynth-plugin-g41fun
 	conflicts = vapoursynth-plugin-g41fun
-	source = g41fun::git+https://github.com/groucho86/G41Fun.git
+	source = g41fun::git+https://github.com/Vapoursynth-Plugins-Gitify/G41Fun.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-g41fun-git
-

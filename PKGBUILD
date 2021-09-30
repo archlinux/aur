@@ -2,7 +2,7 @@
 
 _plug=g41fun
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.5.alpha.0.g6074ced
+pkgver=r13.c395f09
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -18,14 +18,15 @@ depends=('vapoursynth-plugin-havsfunc-git'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/groucho86/G41Fun.git")
+source=("${_plug}::git+https://github.com/Vapoursynth-Plugins-Gitify/G41Fun.git")
 sha256sums=('SKIP')
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+#   echo "$(git describe --long --tags | tr - .)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package(){
