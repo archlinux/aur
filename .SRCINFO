@@ -1,6 +1,6 @@
 pkgbase = ignition-math
 	pkgdesc = Math classes and functions for robot applications
-	pkgver = 6.8.0
+	pkgver = 6.9.0
 	pkgrel = 1
 	url = https://ignitionrobotics.org/libs/math
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = ignition-math
 	makedepends = ignition-cmake>=2
 	depends = gcc-libs
 	optdepends = eigen
-	source = ignition-math-6.8.0.tar.gz::https://github.com/ignitionrobotics/ign-math/archive/ignition-math6_6.8.0.tar.gz
-	sha256sums = 07c4fa9eeaa51fe2b4ee2855ea69bb16571d7e6c315b8b0726fc4383b64303a1
+	source = ignition-math-6.9.0.tar.gz::https://github.com/ignitionrobotics/ign-math/archive/ignition-math6_6.9.0.tar.gz
+	sha256sums = 80b7788c02df5a28333780d1049d5a84059fd969365cefd5476021c355916b3b
 
 pkgname = ignition-math
-
