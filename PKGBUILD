@@ -177,10 +177,10 @@ _package-headers() {
 
   # fix permissions on scripts dir
   msg2 "fix perms on scripts dir"
-  chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
-  echo makedir tmp_versions
+  #chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
+  echo "makedir tmp_versions"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
-  echo makedir buildarchkernel
+  echo "makedir buildarchkernel"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
 
   # add kernel files to headers
