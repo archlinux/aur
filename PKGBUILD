@@ -1,8 +1,9 @@
-# Maintainer: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
 _backend=openmpi
 pkgname=charm++-${_backend}
-pkgver=6.9.0
-pkgrel=3
+pkgver=6.10.2
+pkgrel=1
 pkgdesc="Adaptive Message Passing Interface, OpenMPI backend"
 arch=('x86_64')
 license=('custom:Charm++/Converse License')
@@ -10,13 +11,14 @@ url="http://charm.cs.uiuc.edu/research/ampi/"
 depends=('openmpi')
 makedepends=('gcc-fortran')
 source=("http://charm.cs.illinois.edu/distrib/charm-${pkgver}.tar.gz")
-sha512sums=('894d154b7d8a8757e76838d97b0fd969fd4fa874956c80af7ea0766687272bbbe7df342b7e5d77e460ea883185de8b0f8f9926548e6ef4b9b8ed00e3caef94d2')
+sha512sums=('0c452636ca753387c17c077f994194fea93043673d0db5ff12671184fd2a937167bddcd882ad84b4719e295415aabe9040c28dcc4c215e0b3aaeb8101efbb8cb')
+
 build() {
-  cd charm-${pkgver}
-  ./build charm++ mpi-linux-x86_64 --with-production
+  cd "charm-v${pkgver}"
+  ./build charm++ mpi-linux-$CARCH --with-production
 }
 
 package() {
-  cd charm-$pkgver
+  cd "charm-v${pkgver}"
   make -C tmp install DESTDIR="${pkgdir}/opt/${pkgname}"
 }
