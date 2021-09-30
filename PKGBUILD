@@ -4,6 +4,7 @@ pkgname=go-livepeer-git
 _pkgname=go-livepeer
 pkgver=v0.5.21.r0.g6ea2cf41
 pkgrel=1
+pkgdesc='Official Go implementation of the Livepeer protocol'
 arch=('i686' 'x86_64')
 url='https://github.com/livepeer/go-livepeer'
 source=('git+git://github.com/livepeer/go-livepeer')
