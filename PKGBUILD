@@ -1,14 +1,14 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=hackrf-git
-pkgver=v2018.01.1.r398.g43e6f99
+pkgver=v2021.03.1.r38.gac0983fa
 pkgrel=1
 pkgdesc="Driver for HackRF, allowing general purpose software defined radio (SDR)."
 arch=('i686' 'x86_64')
 url="https://github.com/mossmann/hackrf"
 license=('GPL2')
 depends=('libusb' 'fftw')
-makedepends=('cmake' 'dfu-util')
+makedepends=('cmake' 'dfu-util' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib')
 conflicts=('hackrf')
 provides=('hackrf')
 source=("$pkgname::git+https://github.com/mossmann/hackrf" 'hackrf.conf')
@@ -36,8 +36,6 @@ build() {
 	mkdir -p host/build
 	pushd host/build
 	cmake .. \
-		-DCMAKE_C_FLAGS="-Os -g -Wall -Wextra -fno-common" \
-		-DCMAKE_CXX_FLAGS="-Os -g -Wall -Wextra -fno-common" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_VERBOSE_MAKEFILE=OFF
 	make
@@ -56,10 +54,10 @@ build() {
 		pushd "build-${board,,}"
 
 		cmake .. \
-			-DCMAKE_C_FLAGS="-Os -g -Wall -Wextra -fno-common" \
-			-DCMAKE_CXX_FLAGS="-Os -g -Wall -Wextra -fno-common" \
 			-DCMAKE_INSTALL_PREFIX=/usr \
 			-DCMAKE_VERBOSE_MAKEFILE=OFF \
+			-DCMAKE_C_FLAGS="-Os -g -Wall -Wextra -fno-common" \
+			-DCMAKE_CXX_FLAGS="-Os -g -Wall -Wextra -fno-common" \
 			-DBOARD="${board}"
 		make
 
