@@ -1,6 +1,6 @@
 pkgbase = go-for-it
 	pkgdesc = A stylish to-do list with built-in productivity timer.
-	pkgver = 1.9.3
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://github.com/JMoerman/Go-For-It
 	install = go-for-it.install
@@ -14,7 +14,7 @@ pkgbase = go-for-it
 	optdepends = libpeas: plugin support
 	optdepends = libappindicator-gtk3: Ayatana appindicator plugin support
 	conflicts = go-for-it-git
-	source = go-for-it-1.9.3.tar.gz::https://github.com/JMoerman/Go-For-It/archive/1.9.3.tar.gz
-	sha256sums = 7b608f7781400703db3757d572d5004ce8eb0318e499aabbc8fe3e2a5f12c555
+	source = go-for-it-1.9.4.tar.gz::https://github.com/JMoerman/Go-For-It/archive/1.9.4.tar.gz
+	sha256sums = 2060875838a09c784b3e22b750325bc77a91c5cf0c0da7bc38f1939e04d2a30a
 
 pkgname = go-for-it
