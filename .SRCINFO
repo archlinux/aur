@@ -12,6 +12,8 @@ pkgbase = go-livepeer-git
 	depends = gnutls
 	depends = git
 	depends = curl
+	provides = go-livepeer-git
+	conflicts = go-livepeer-bin
 	source = git+git://github.com/livepeer/go-livepeer
 	sha1sums = SKIP
 

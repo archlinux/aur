@@ -10,6 +10,8 @@ url='https://github.com/livepeer/go-livepeer'
 license=('MIT')
 source=('git+git://github.com/livepeer/go-livepeer')
 depends=('base-devel' 'clang' 'gnutls' 'git' 'curl')
+conflicts=('go-livepeer-bin')
+provides=('go-livepeer-git')
 makedepends=('go')
 sha1sums=('SKIP')
 
