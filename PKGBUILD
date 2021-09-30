@@ -13,7 +13,7 @@ license=('LGPL3')
 groups=('fenics')
 conflicts=('python-dijitso-git')
 depends=('python-numpy')
-optdepends=('mpi4py: for running tests with MPI')
+optdepends=('python-mpi4py: for running tests with MPI')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
@@ -26,7 +26,7 @@ build() {
 
 package() {
 	cd ${srcdir}/${_base}-${pkgver}
-	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 # vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
