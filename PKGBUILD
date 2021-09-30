@@ -24,7 +24,7 @@ build() {
 
 package() {
 	cd ${srcdir}/${_base}-${pkgver}
- 	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+ 	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 # vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
