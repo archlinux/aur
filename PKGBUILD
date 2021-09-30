@@ -6,7 +6,7 @@
 
 pkgname=obs-studio-browser
 pkgver=27.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. Built with browser, vst plugins."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -39,7 +39,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             '93ad704cef425073b417d1ed95e076f688a6e45cdf589472c65e437d77297303f31dd8f15c7d5e30f83276a6396b732dfb5a695db9c773911aaa0423c5262177'
-            '27b816c79545e6039445e1487a258c1233f5d43df3178fd274a9ede607138fc6dbb58a21ec78431bc5774d18153f9c6a08f61649b9b1a6a628ce358d5cf12093')
+            'b9e590190558648b34c0918f3e763c226aebfba543b547f0c7897dcaa2af23a9bc11493b6bc50dd23619b3992338e75ab4bed29e7b6e02f7e462ffbfb4905c38')
 
 prepare() {
     cd "$srcdir/$pkgname"
