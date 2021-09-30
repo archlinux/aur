@@ -13,8 +13,6 @@ optdepends=('python-mystic: for mystic models')
 source=(${url}/archive/${_base}-${pkgver}.tar.gz)
 sha512sums=('595fa2bdfb1847a397407281944f67c7489d6fb944762808c945bd7330fe1cab8c2a192414479e7728971bc96690579703c2fc2c4a73fb831359cba4d46b0b58')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_base}-${_base}-${pkgver}"
   python setup.py build
@@ -23,6 +21,6 @@ build() {
 package() {
   cd "${_base}-${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
