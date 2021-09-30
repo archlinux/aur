@@ -2,7 +2,7 @@
 
 pkgname='gourmand'
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A recipe manager for desktop that can import recipes"
 arch=('any')
 url="https://github.com/GourmandRecipeManager/gourmand"
@@ -18,6 +18,9 @@ optdepends=(
   'python-ebooklib: EPub export plugin'
   'python-reportlab: Printing & PDF export plugin'
   'python-gtkspellcheck: Spell checking plugin'
+  'nuspell: Spell checking'
+  'hspell: Spell checking for Hebrew'
+  'libvoikko: Spell checking for Finnish language'
   )
 conflicts=('gourmet')
 source=("$pkgname-$pkgver-py3-none-any.whl::$url/releases/download/$pkgver/$pkgname-$pkgver-py3-none-any.whl")
