@@ -1,6 +1,6 @@
 pkgbase = petsc-git
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.15.4.39.g3348d10f62a
+	pkgver = 3.15.5
 	pkgrel = 1
 	url = https://gitlab.com/petsc/petsc
 	arch = i686
@@ -26,11 +26,13 @@ pkgbase = petsc-git
 	depends = openblas
 	options = !staticlibs
 	source = git+https://gitlab.com/petsc/petsc.git#branch=release
-	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-3.15.4.tar.gz
+	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-3.15.5.tar.gz
 	source = test_optdepends.sh
+	source = so.diff
 	sha512sums = SKIP
-	sha512sums = b6a1d48aab1c2639a4c1cbd8b313ace253f1c36eedaa3de3508ffbd6060e1def99e2f516ed9bb509307f614b41791d09342e2c2280c0b2c25dda1092b0e569d2
-	sha512sums = a4e064c08730058d63120a22c12657a100e5330546d66c44bb85e5bf84df80a23a729b0266af3efce2c8148f0266ddca99eaf9c8ea88d323cebe1d0c18c45d09
+	sha512sums = d6be4488cb5dad9f7928e0966b875f83d4b84a0fd8553fcc9912aed1b7f1fcd3922ec282c30dc8cb0b424e8375b437fe50ce84b76c9c8a28c51efd954f6ed001
+	sha512sums = e45df388b373b5f8c86567f32f0d79ae275a855a7fd3b4bb9c03d6875351633d4064de701644a4aa2f9eff90d63806f714230298149868b2f6d92a4f21e20cb8
+	sha512sums = e79a4a070df882d8cbf302c1b8732fc2fea907cd5bc5c429e4ff4919e45ffef1a0b7abe578c5942bf44bbb34bcabed70029f4f6403fee23b7da3ca7cce29edb4
 
 pkgname = petsc-git
 	optdepends = boost: Free peer-reviewed portable C++ source libraries
@@ -47,14 +49,14 @@ pkgname = petsc-git
 	optdepends = opencl-headers: for opencl (GPU computing)
 	optdepends = opencl: GPU computing
 	optdepends = openmp: Parallel distributed tasks
-	optdepends = png
+	optdepends = libpng
 	optdepends = scalapack: Parallel memory linear algebra
 	optdepends = scotch: Partitioning with sparse matrices
 	optdepends = suitesparse: Sparse matrix library
 	optdepends = superlu: Subroutines for sparsse linear systems
-	optdepends = yaml: configuration files
-	provides = petsc=3.15.4
-	provides = petsc4py=3.15.4
+	optdepends = libyaml: configuration files
+	provides = petsc=3.15.5
+	provides = petsc4py=3.15.5
 	conflicts = petsc
 
 pkgname = petsc-doc

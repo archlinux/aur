@@ -5,7 +5,7 @@
 
 _base=petsc
 pkgname=("${_base}"-git "${_base}"-doc)
-pkgver=3.15.4.39.g3348d10f62a
+pkgver=3.15.5
 pkgrel=1
 _mainver="${pkgver:0:6}"
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -19,10 +19,12 @@ makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
              'git' 'cython' 'chrpath' "hypre=2.18.2")
 source=(git+${url}.git#branch=release
         https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
-        test_optdepends.sh)
+        test_optdepends.sh
+        so.diff)
 sha512sums=('SKIP'
-            'b6a1d48aab1c2639a4c1cbd8b313ace253f1c36eedaa3de3508ffbd6060e1def99e2f516ed9bb509307f614b41791d09342e2c2280c0b2c25dda1092b0e569d2'
-            'a4e064c08730058d63120a22c12657a100e5330546d66c44bb85e5bf84df80a23a729b0266af3efce2c8148f0266ddca99eaf9c8ea88d323cebe1d0c18c45d09')
+            'd6be4488cb5dad9f7928e0966b875f83d4b84a0fd8553fcc9912aed1b7f1fcd3922ec282c30dc8cb0b424e8375b437fe50ce84b76c9c8a28c51efd954f6ed001'
+            'e45df388b373b5f8c86567f32f0d79ae275a855a7fd3b4bb9c03d6875351633d4064de701644a4aa2f9eff90d63806f714230298149868b2f6d92a4f21e20cb8'
+            'e79a4a070df882d8cbf302c1b8732fc2fea907cd5bc5c429e4ff4919e45ffef1a0b7abe578c5942bf44bbb34bcabed70029f4f6403fee23b7da3ca7cce29edb4')
 
 _config=linux-c-opt
 _install_dir="/usr"
@@ -88,6 +90,10 @@ export OMPI_MCA_mpi_oversubscribe=0
 unset PETSC_DIR
 export PETSC_ARCH=${_config}
 
+prepare() {
+  patch -p1 -d "${srcdir}"/"${_base}" -i "${srcdir}"/so.diff
+}
+
 pkgver() {
   cd "${srcdir}"/"${_base}"
   git describe --tags --match '*.*' | tr '-' '.' | sed 's-^v--'
@@ -148,12 +154,12 @@ package_petsc-git() {
     "opencl-headers: for opencl (GPU computing)"
     "opencl: GPU computing"
     "openmp: Parallel distributed tasks"
-    "png"
+    "libpng"
     "scalapack: Parallel memory linear algebra"
     "scotch: Partitioning with sparse matrices"
     "suitesparse: Sparse matrix library"
     "superlu: Subroutines for sparsse linear systems"
-    "yaml: configuration files")
+    "libyaml: configuration files")
   provides=(${_base}="${_mainver}" petsc4py="${_mainver}")
   conflicts=(${_base})
 

@@ -228,7 +228,7 @@ if [ -f "${PTSCOTCH_SO}" ]; then
     SCOTCH_LIBS=$(pacman -Qlq scotch | grep '.so$'| tr '\n' ',')
     # Check if libscotch was compiled with bz2
     if [ ! -z "$(nm -D $(find_so libscotch.so) | grep bz)" ]; then
-        CONFOPTS="${CONFOPTS}$(find_so libbz2.so)"
+        SCOTCH_LIBS="${SCOTCH_LIBS}$(find_so libbz2.so)"
     else
         # Remove trailing ,
         SCOTCH_LIBS="${SCOTCH_LIBS%%,}"

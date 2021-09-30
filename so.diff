@@ -1,0 +1,13 @@
+diff --git a/config/BuildSystem/config/libraries.py b/config/BuildSystem/config/libraries.py
+index 0d93f57fc0..d94932899f 100644
+--- a/config/BuildSystem/config/libraries.py
++++ b/config/BuildSystem/config/libraries.py
+@@ -133,7 +133,7 @@ class Configure(config.base.Configure):
+       # remove duplicate -L, -Wl,-rpath options - and only consecutive -l options
+       if j in newldflags and any([j.startswith(flg) for flg in dupflags]): continue
+       if newlibs and j == newlibs[-1]: continue
+-      if j.startswith('-l') or j.endswith('.lib') or j.endswith('.a') or j.endswith('.o') or j == '-Wl,-Bstatic' or j == '-Wl,-Bdynamic' or j == '-Wl,--start-group' or j == '-Wl,--end-group':
++      if j.startswith('-l') or j.endswith('.lib') or j.endswith('.a') or j.endswith('.so') or j.endswith('.o') or j == '-Wl,-Bstatic' or j == '-Wl,-Bdynamic' or j == '-Wl,--start-group' or j == '-Wl,--end-group':
+         newlibs.append(j)
+       else:
+         newldflags.append(j)
