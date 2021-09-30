@@ -1,18 +1,15 @@
 pkgbase = htpdate
 	pkgdesc = A client for time synchronisation
-	pkgver = 1.2.2
-	pkgrel = 3
-	url = http://www.vervest.org/htp/
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://github.com/angeloc/htpdate
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = glibc
-	source = http://www.vervest.org/htp/archive/c/htpdate-1.2.2.tar.xz
+	source = htpdate-1.2.6.tar.gz::https://github.com/angeloc/htpdate/archive/v1.2.6.tar.gz
 	source = htpdate.service
-	source = 100-pidfile.patch
-	md5sums = aad8c33933648532ac8716c809b15be1
-	md5sums = d00fce722a88150cffb1b322e6cc8869
-	md5sums = f4612bb44274ed571117724a49abb3c1
+	sha256sums = d2cff522b8f53b00769dcca77d8025b19238ed35d702a4739dc05e387f718909
+	sha256sums = 2f12bdf0745fbf7c52f465e78b47635fbdc6fa372e63fb94a6063a5f67ff8c8b
 
 pkgname = htpdate
-
