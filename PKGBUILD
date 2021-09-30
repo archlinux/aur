@@ -32,10 +32,10 @@ backup=(
   'etc/ssl/gost.cnf'
 )
 
-pkgrel(){
+pkgver(){
   cd "$srcdir/engine"
   git checkout openssl_1_1_1
-  echo "`git describe --always`"
+  echo "1.`git describe --always`"
 }
 prepare() {
   cd "$srcdir/engine"
