@@ -5,7 +5,7 @@ Requires=network.target
 [Service]
 Type=simple
 EnvironmentFile=/etc/conf.d/cardano-node
-ExecStart=cardano-node run \
+ExecStart=cardano-node run +RTS -N -RTS \
     --database-path $DB_PATH \
     --socket-path $SOCKET_PATH \
     --host-addr $BIND_IPV4 \
