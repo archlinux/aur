@@ -1,11 +1,11 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 _static_wlroots=1
-_static_liftoff=0
+_static_liftoff=1
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.9.2.r1.g14c4b70
+pkgver=3.9.2.r5.ga5a31d4
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
