@@ -1,15 +1,18 @@
 pkgbase = python-normality
-	pkgdesc = Micro-library to normalize text strings
-	pkgver = 2.0.0
+	pkgdesc = Micro-library for normalizing text strings
+	pkgver = 2.2.3
 	pkgrel = 1
-	url = http://github.com/pudo/normality
+	url = https://github.com/pudo/normality
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pyicu>=1.9.3
 	makedepends = python-setuptools
-	depends = python
-	source = https://files.pythonhosted.org/packages/source/n/normality/normality-2.0.0.tar.gz
-	sha256sums = 7998d4b7fcc339e342611377a6b5aaf74107b01e353c505978479a88bd9b9f3c
+	depends = python-banal>=1.0.1
+	depends = python-text-unidecode
+	depends = python-chardet
+	optdepends = python-pyicu>=1.9.3: greatly improves text transliteration compared to python-text-unidecode
+	source = python-normality-2.2.3.tar.gz::https://github.com/pudo/normality/archive/2.2.3.tar.gz
+	sha256sums = 98bdc235cb069c18ec087f0866a2a82e3c8b992140f1fe3db95db9d202633fb3
 
 pkgname = python-normality
-	depends = python
-
