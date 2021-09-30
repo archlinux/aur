@@ -44,7 +44,7 @@ build() {
     --with-newlib \
     --enable-multilib \
     --disable-nls \
-    --disable-sim 
+    --disable-sim
   make
 }
 
