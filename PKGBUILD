@@ -2,7 +2,7 @@
 # Contributor: Claudio d'Angelis <claudiodangelis at gmail dot com>
 pkgname=postman-bin
 pkgver=9.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
 conflicts=('postman')
@@ -19,9 +19,7 @@ sha256sums=('b3c104d82c8daa46430963c58f3038b875048c5848e31af6b12b4f25a3f74681'
             '74b2d8570658e207e31f729e7f4768952252383aee7c695218d077bd0ef13245')
 package() {
 	install -dm755 "${pkgdir}/opt/"
-	chmod -R 755 "Postman"
 	cp -r "Postman" "${pkgdir}/opt/postman"
-	chmod -R 755 "${pkgdir}/opt/postman"
   	install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/postman/Postman" "${pkgdir}/usr/bin/postman"
     # Desktop file
