@@ -13,8 +13,6 @@ checkdepends=(python-pytest python-networkx)
 source=(https://github.com/${_base}/${_base//-science/}/archive/v${pkgver}.tar.gz)
 sha512sums=('64b0ac7f8bc80068157885030c54168c6987a09b93ce95a1c33a8fb7807ce262fb269c88d20f5f31c39761a66b50c1a853893fd8ee8b7d5f12f496d7c6e2d6f2')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_base//-science/}-${pkgver}"
   python setup.py build
@@ -29,6 +27,6 @@ check() {
 package() {
   cd "${_base//-science/}-${pkgver}"
   export PYTHONHASHSEED=0
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
