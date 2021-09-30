@@ -1,0 +1,13 @@
+pkgbase = hyprspace-git
+	pkgdesc = A Lightweight VPN Built on top of Libp2p for Truly Distributed Networks
+	pkgver = v0.1.6.r7.c81dcf2
+	pkgrel = 1
+	url = https://github.com/hyprspace/hyprspace
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = go
+	source = hyprspace-git::git+https://github.com/hyprspace/hyprspace
+	sha1sums = SKIP
+
+pkgname = hyprspace-git
