@@ -17,6 +17,7 @@ makedepends=(
 	'binutils'
 	'coreutils'
 	'curl'
+	'dbus'
 	'gcc'
 	'git'
 	'make'
