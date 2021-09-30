@@ -2,7 +2,7 @@
 # Python package author: AISpace2 <info@aispace.org>
 pkgname=python-aispace2
 pkgver=0.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jupyter extension for the next-generation of AISpace"
 arch=(any)
 url="https://aispace2.github.io/AISpace2/"
@@ -10,7 +10,7 @@ license=('GPLv3')
 depends=("nodejs")
 makedepends=("python" "python-pip")
 build() {
-  pip install --no-deps --target="aispace2" aispace2==0.6.9
+  pip install --no-deps --target="aispace2" aispace2=="${pkgver}"
 }
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
