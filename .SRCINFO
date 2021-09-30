@@ -1,0 +1,17 @@
+pkgbase = clockd
+	pkgdesc = Provides centralized place for handling time.
+	pkgver = 0.0.43
+	pkgrel = 1
+	url = https://github.com/maemo-leste/clockd
+	arch = any
+	groups = maemo
+	license = LGPL2
+	makedepends = glib2
+	makedepends = dbus-glib
+	makedepends = gconf
+	makedepends = cityinfo
+	makedepends = git
+	source = git+https://github.com/maemo-leste/clockd.git#tag=0.0.43
+	sha256sums = SKIP
+
+pkgname = clockd
