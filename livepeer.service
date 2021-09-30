@@ -1,0 +1,32 @@
+[Unit]
+Description=Start the Go-Livepeer service
+After=network.target
+Wants=network-online.target
+# See https://www.cyberciti.biz/faq/linux-hide-processes-from-other-users/
+
+[Service]
+Restart=always
+Type=simple
+
+ExecStart=/usr/bin/livepeer -network mainnet -orchestrator -transcoder \
+	-maxSessions $sesh -cliAddr $cliadr -nvidia all -ethAcctAddr $ethaddr \
+	-ethPassword $ethpass -ethUrl $ethurl -pricePerUnit $unitprice \
+	-serviceAddr $serviceaddr -maxGasPrice $maxgas -reward=$rew -monitor=$mon
+
+
+# Update the ENV VARS below with your information
+# Then run: sudo systemctl daemon-reload && sudo systemctl enable --now
+
+Environment='ethaddr=0x1a00000000000000000000000000000000000000'
+Environment='ethurl=https://mainnet.infura.io/v3/00000000000011111111110000000000'
+Environment='unitprice=800'
+Environment='serviceaddr=my.livepeer.node:8935'
+Environment='ethpass=mywalletpassword'
+Environment='maxgas=40000000000'
+Environment='sesh=6'
+Environment='cliadr=10.10.10.1:7935'
+Environment='rew=false'
+Environment='mon=false'
+
+[Install]
+WantedBy=multi-user.target 
