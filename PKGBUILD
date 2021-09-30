@@ -1,15 +1,15 @@
 # Maintainer: Jan Waś <janek.jan at gmail com>
 
 pkgname=jp
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Command line interface to JMESPath'
 arch=('x86_64')
 url='http://jmespath.org'
 license=('Apache')
-makedepends=('go')
+makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
-source=('jp::git+https://github.com/jmespath/jp#tag=0.1.3')
+source=('jp::git+https://github.com/jmespath/jp#tag=0.2.0')
 sha512sums=('SKIP')
 
 build() {
