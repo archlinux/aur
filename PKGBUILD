@@ -2,9 +2,9 @@
 
 _pkgname=ImHex-Patterns
 pkgname=${_pkgname,,}-git
-pkgver=r8.2f41f6e
+pkgver=r20.4eff846
 pkgrel=1
-pkgdesc='Hex patterns, include patterns and magic files for the use with the ImHex Hex Editor'
+pkgdesc='Hex patterns, include patterns and other files for the use with the ImHex Hex Editor'
 url='https://github.com/WerWolv/ImHex-Patterns'
 license=('GPL2')
 arch=('any')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm0644 -t "${pkgdir}/usr/share/imhex/patterns" \
-    "${pkgname}/patterns"/* \
-    "${pkgname}/includes"/*
+  install -dm0755 "$pkgdir/usr/share/imhex"
+  cp -r -t "$pkgdir/usr/share/imhex" \
+    "$pkgname"/{constants,includes,magic,patterns,tips,yara}
 }

@@ -1,6 +1,6 @@
 pkgbase = imhex-patterns-git
-	pkgdesc = Hex patterns, include patterns and magic files for the use with the ImHex Hex Editor
-	pkgver = r8.2f41f6e
+	pkgdesc = Hex patterns, include patterns and other files for the use with the ImHex Hex Editor
+	pkgver = r20.4eff846
 	pkgrel = 1
 	url = https://github.com/WerWolv/ImHex-Patterns
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = imhex-patterns-git
 	b2sums = SKIP
 
 pkgname = imhex-patterns-git
-
