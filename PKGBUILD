@@ -40,6 +40,6 @@ build() {
 package() {
   cd "${_base}"
   export PYTHONHASHSEED=0
-  python -c "from setuptools import setup; setup();" install --root="$pkgdir" --optimize=1
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --root="$pkgdir" --optimize=1
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
