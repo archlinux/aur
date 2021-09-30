@@ -1,20 +1,19 @@
-# Maintainer: Martin Rys <rys.pw/#contact_me>
-# Previous Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
+# Maintainer: Martin Rys <rys.pw/contact>
 
 pkgname=haste-server-git
 _gitname=haste-server
 pkgver=r384.5d2965f
-pkgrel=2
+pkgrel=3
 pkgdesc="Prettiest, easiest to use pastebin ever made"
 arch=('any')
-url="https://github.com/seejohnrun/haste-server"
+url="https://github.com/toptal/haste-server"
 license=('MIT')
 depends=('nodejs')
 makedepends=('git' 'npm')
 provides=('haste-server')
 conflicts=('haste-server')
 options=(!emptydirs)
-source=('git://github.com/seejohnrun/haste-server.git')
+source=('git://github.com/toptal/haste-server.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -34,7 +33,7 @@ prepare() {
 	# Unable to run haste from /usr/bin, so removing it
 	sed -i '32,34d' package.json
 
-	# Fix error with npm5 issue
+	# Pack the current folder
 	npm pack
 }
 
@@ -42,4 +41,8 @@ package() {
 	cd "${srcdir}/${_gitname}"
 	install -Dm644 "../../${_gitname}.service" -t "${pkgdir}/usr/lib/systemd/system"
 	npm install --cache ../cache -g --prefix "${pkgdir}/usr" *.tgz
+
+	# npm gives ownership of ALL FILES to build user
+	# https://bugs.archlinux.org/task/63396
+	chown -R root:root "${pkgdir}"
 }
