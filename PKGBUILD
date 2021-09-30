@@ -202,7 +202,7 @@ _package-headers() {
   cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   # fix permissions on scripts dir
-  chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
+  chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" || :
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
@@ -246,7 +246,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
   cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
 
-  chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  chown -R root:root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
 
   # strip scripts directory
