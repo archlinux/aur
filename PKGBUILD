@@ -1,6 +1,6 @@
 # Maintainer: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=1.2.31
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system."
 arch=('x86_64')
@@ -10,9 +10,9 @@ _pkgname="$pkgname-${pkgver}-linux.AppImage"
 provides=("siyuan")
 conflicts=("siyuan")
 options=("!strip")
-source=("https://b3logfile.com/siyuan/releases/$pkgname-$pkgver-linux.AppImage")
+source=("https://download.fastgit.org/siyuan-note/siyuan/releases/download/v$pkgver/$pkgname-$pkgver-linux.AppImage")
 noextract=(${_pkgname})
-md5sums=('fcf915f7a260b4a0a4e1ffab006301e4')
+md5sums=('182792969dbb77b721e127f818d2be85')
 _installdir=/opt/appimages
 _installname=siyuan
 
