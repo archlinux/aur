@@ -41,7 +41,8 @@ build()
 		-DKICAD_USE_OCC=ON \
 		-DKICAD_SCRIPTING_WXPYTHON=ON \
 		-DKICAD_DATA=/usr/share/kicad-nightly \
-		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
+		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+		-Wno-dev
 	ninja
 }
 
