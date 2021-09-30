@@ -1,6 +1,6 @@
 # Maintainer: Hinaloe <hina@hinaloe.net>
 pkgname=octopass
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Management linux user and authentication with team or collaborator on Github."
 arch=('i686' 'x86_64')
@@ -17,17 +17,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/linyows/octopass/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
-     "0001-fpath-buffer-extend.patch")
+source=("https://github.com/linyows/octopass/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('6d343956daeb01ec3a5f8dd7b340db60'
-         'e28cd7b72556bf5cfbe3e505d43cb9d9')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  patch -Np1 < ../0001-fpath-buffer-extend.patch
-}
+md5sums=('a53e8da7f77216a06bc67179d45b3ba6')
 
 build() {
   cd "$pkgname-$pkgver"

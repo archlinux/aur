@@ -1,6 +1,6 @@
 pkgbase = octopass
 	pkgdesc = Management linux user and authentication with team or collaborator on Github.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = http://linyo.ws/octopass
 	arch = i686
@@ -9,10 +9,7 @@ pkgbase = octopass
 	depends = glibc
 	depends = curl
 	depends = jansson
-	source = https://github.com/linyows/octopass/releases/download/v0.7.0/octopass-0.7.0.tar.gz
-	source = 0001-fpath-buffer-extend.patch
-	md5sums = 6d343956daeb01ec3a5f8dd7b340db60
-	md5sums = e28cd7b72556bf5cfbe3e505d43cb9d9
+	source = https://github.com/linyows/octopass/releases/download/v0.7.1/octopass-0.7.1.tar.gz
+	md5sums = a53e8da7f77216a06bc67179d45b3ba6
 
 pkgname = octopass
-
