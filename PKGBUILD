@@ -76,5 +76,5 @@ package_python-dune-common() {
   pkgdesc+=" (python bindings)"
   cd "build-cmake/python"
   export PYTHONHASHSEED=0
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
