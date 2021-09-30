@@ -44,7 +44,6 @@ package() {
   _folder=$(ls "${srcdir}" | grep "[Ww]hats[-]*[Aa]pp-linux-")
   _binary=$(ls "${srcdir}/${_folder}" | grep "[Ww]hats[-]*[Aa]pp")
 
-  sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
   cp -rL "${srcdir}/${_folder}" "${pkgdir}/opt/${pkgname}"
   ln -s "/opt/${pkgname}/${_binary}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
