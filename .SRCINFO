@@ -5,6 +5,8 @@ pkgbase = compose-switch-bin
 	url = https://github.com/docker/compose-switch
 	arch = x86_64
 	license = Apache
+	conflicts = docker-compose<2
+	conflicts = compose-switch
 	source = https://github.com/docker/compose-switch/releases/download/v1.0.2/docker-compose-linux-amd64
 	sha256sums = 71bece7c8a0439523ee77fd3b37f6d17fb24f9d368edc69b6cb02675698984b7
 
