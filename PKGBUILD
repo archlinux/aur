@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.4.149
-pkgver=5.4.v.149
+gitver=v5.4.150
+pkgver=5.4.v.150
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,13 +23,13 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '90586bd78f7a3b7d2a0b7e10888665b816085db966f52674624163185298d4f1'
+            '6d856f0e979425b5a2438fcb392646dee4cdfdce716ce9ce51c851179cf9164e'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch file
-            '63eb599f217729e42dbb0840247412b16b2bd5365725d2488a0256295f71ccda'
+            '09ea06911535871042973be08d65b923508eb38859a50a10ed68d88ff482395d'
 )
 
 _kernelname=${pkgbase#linux}
@@ -174,8 +174,7 @@ _package-headers() {
   cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
 
-  # fix permissions on scripts dir
-  chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
+  # Make tmpdir for versions
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
 
   # add kernel files to headers
