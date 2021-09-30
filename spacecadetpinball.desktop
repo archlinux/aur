@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.4
+Type=Application
+Name=SpaceCadetPinball
+Comment=Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux
+Icon=/usr/lib/spacecadetpinball/icon.ico
+TryExec=spacecadetpinball
+Exec=spacecadetpinball
+Categories=Game;
+

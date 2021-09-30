@@ -1,0 +1,25 @@
+pkgbase = spacecadetpinball-git
+	pkgver = 1.1.1.r25.ga281000
+	pkgrel = 1
+	url = https://github.com/k4zmu2a/SpaceCadetPinball
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = MIT
+	license = proprietary
+	makedepends = unrar
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_mixer
+	noextract = Space_Cadet.rar
+	source = https://archive.org/download/SpaceCadet_Plus95/Space_Cadet.rar
+	source = spacecadetpinball-git::git+https://github.com/k4zmu2a/SpaceCadetPinball
+	source = spacecadetpinball.desktop
+	sha256sums = 3cc5dfd914c2ac41b03f006c7ccbb59d6f9e4c32ecfd1906e718c8e47f130f4a
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = spacecadetpinball-git
