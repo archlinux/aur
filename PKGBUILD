@@ -14,8 +14,6 @@ checkdepends=(python-pytest python-perfplot) # python-pytest-cov
 source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('08d1546b60803230002c1cfbb0ee2dca5e7abd59a304c339a577d4340eff2b56c8fc64ac2b46f4f5a11f8a4f4df190f6cfbb792fca6ec3a8222649f937d4e9a7')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_base}-${pkgver}"
   python setup.py build
@@ -30,6 +28,6 @@ check() {
 package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
