@@ -39,7 +39,7 @@ fi
 
 # Add hdf5 support
 if [[ "$(h5stat -V)" ]]; then
-	CONFOPTS="${CONFOPTS} --with-hdf5=1"
+	CONFOPTS="${CONFOPTS} --with-hdf5=1 --download-hdf5-fortran-bindings=1"
 fi
 
 # Add scalapack support

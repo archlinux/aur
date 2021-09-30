@@ -35,7 +35,7 @@ install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
 sha256sums=('5aaad7deea127a4790c8aa95c42fd9451ab10b5d6c68b226b92d4853002f438d'
-            '92b543fdaebd59611d48d0c7c9aa2d44a35b2486840d58c58ab5e3915a456a44')
+            'c6c97507b9970529b0f22fe61eb290101c2ab0aad2d8bf42f44eb8ba90bd42d3')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch=arch-${_config}
