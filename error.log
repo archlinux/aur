@@ -1,0 +1,5 @@
+/bin/sh ../../../libtool --tag=CXX --mode=link g++  -march=corei7 -mtune=corei7 -O3 -pipe -fno-plt -g -fdebug-prefix-map=/home/user/Projects/aur/gmetadom/src=/usr/src/debug  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -o test  main.o -lgdome -lglib-2.0 -lxml2  ../../../src/gdome_cpp_smart/.libs/libgmetadom_gdome_cpp_smart.a ../../../src/gdome_cpp_smart/libgmetadom_gdome_cpp_smart.la -lstdc++
+g++ -march=corei7 -mtune=corei7 -O3 -pipe -fno-plt -g -fdebug-prefix-map=/home/user/Projects/aur/gmetadom/src=/usr/src/debug -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z -Wl,relro -Wl,-z -Wl,now -o .libs/test main.o  -lgdome -lglib-2.0 -lxml2 ../../../src/gdome_cpp_smart/.libs/libgmetadom_gdome_cpp_smart.a ../../../src/gdome_cpp_smart/.libs/libgmetadom_gdome_cpp_smart.so -lstdc++
+/usr/bin/ld: /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../lib/libgdome.so: undefined reference to symbol 'g_return_if_fail_warning'
+/usr/bin/ld: /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../lib/libglib-2.0.so: error adding symbols: DSO missing from command line
+collect2: error: ld returned 1 exit status
