@@ -14,8 +14,6 @@ checkdepends=(python-pytest)
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('602c74c7fcbfde0c5042fdbc611e8f96d5656f05eebf47aceb7169e39d3d0fea46194ea4307ddf3a6a71138c977224c382e0349f408cab1da50796f7f1b68c38')
 
-export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
-
 build() {
   cd "${_name}-${pkgver}"
   python setup.py build
@@ -29,6 +27,6 @@ check() {
 package() {
   cd "${_name}-${pkgver}"
   export PYTHONHASHSEED=0
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
