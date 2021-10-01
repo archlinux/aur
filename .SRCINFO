@@ -1,6 +1,6 @@
 pkgbase = screendimmer
 	pkgdesc = A tray application to dim your monitor brightness.
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/Lawrence-Chiappelli/screendimmer.git
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = screendimmer
 	depends = python-screeninfo
 	depends = python-pyqt5
 	backup = etc/screendimmer/brightness.ini
-	source = screendimmer-0.4.0.tar.gz::https://github.com/Lawrence-Chiappelli/screendimmer/archive/0.4.0.tar.gz
-	md5sums = 4c489a63f93d2e57f81d6f77704c32a3
+	source = screendimmer-0.4.2.tar.gz::https://github.com/Lawrence-Chiappelli/screendimmer/archive/0.4.2.tar.gz
+	md5sums = 076bc845e986ed2b21afb83673a48582
 
 pkgname = screendimmer
