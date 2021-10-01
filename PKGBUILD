@@ -17,7 +17,7 @@ pkgname=(
 	$_basename-server
 	$_basename-unixd-clients
 )
-pkgver=1.1.0_alpha.5
+pkgver=1.1.0_alpha.6
 _realver=${pkgver/_/-}
 pkgrel=1
 pkgdesc='A identity management service and clients.'
@@ -26,7 +26,7 @@ source=("$_basename-$pkgver.tar.gz::https://github.com/$_basename/$_basename/arc
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
 makedepends=(cargo)
-sha256sums=('3988b148e78d46119ea868e5092f9375cef3bb03957829661ea733e68ee8c860')
+sha256sums=('7933af90efc70f55e12a2a2387ed986386f6a1a92e038feb380c7d7fcdebd160')
 
 
 build () {
