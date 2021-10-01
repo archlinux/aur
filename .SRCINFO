@@ -17,6 +17,7 @@ pkgbase = vignette-git
 	depends = dotnet-runtime>=5
 	depends = ffmpeg
 	depends = libgl
+	depends = libgeotiff
 	source = vignette-git::git+https://github.com/vignette-project/vignette.git
 	source = vignette-git.sh
 	source = vignette-git.png
