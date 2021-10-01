@@ -72,4 +72,6 @@ package() {
 		msg2 "Removing libdepend to ditch lib32 dependencies"
 		rm "${pkgdir}/opt/teamviewer/tv_bin/script/libdepend"
 	fi
+	# Uncomment to use system's native libraries. This can save around 150MiB of disk space
+	#rm -rf "${pkgdir}"/opt/teamviewer/tv_bin/RTlib
 }
