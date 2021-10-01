@@ -1,7 +1,7 @@
 pkgbase = jtdx
 	pkgdesc = For amateur radio communication using very weak signals. Forked from WSJT-X.
 	pkgver = 2.2.156
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jtdx-project/jtdx
 	arch = x86_64
 	license = GPL3
@@ -17,6 +17,7 @@ pkgbase = jtdx
 	depends = hamlib
 	depends = qt5-serialport
 	depends = qt5-multimedia
+	depends = qt5-websockets
 	source = jtdx-156_corrected.tar.gz::https://github.com/jtdx-project/jtdx/archive/156_corrected.tar.gz
 	md5sums = 9c611338694c5f72ca3ab2898dae7f4e
 	sha1sums = 8c18fd61d7eead992ecc7a7bc3fb72a06485929e
