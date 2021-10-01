@@ -1,0 +1,12 @@
+pkgbase = i3-keylist
+	pkgdesc = simple script to display i3 key list
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/s-n-g/i3-keylist.git
+	arch = any
+	license = GPL
+	depends = python-gobject
+	source = i3-keylist::git+https://github.com/s-n-g/i3-keylist.git
+	sha256sums = SKIP
+
+pkgname = i3-keylist
