@@ -1,0 +1,25 @@
+pkgbase = qtforkawesome-git
+	pkgdesc = Library that bundles ForkAwesome for use within Qt applications
+	pkgver = 18.da639c8
+	pkgrel = 1
+	url = https://github.com/Martchus/qtforkawesome
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = perl-yaml-libyaml
+	makedepends = qtutilities-git
+	depends = qt5-base
+	depends = mesa
+	optdepends = qtforkawesome-doc: API documentation
+	source = qtforkawesome::git+https://github.com/Martchus/qtforkawesome.git
+	source = Fork-Awesome-1.2.0::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = SKIP
+	sha256sums = 23fba5f191f204e0414c547bf4c9b10fd7ca42c151260e8f64698449a75fbdb3
+
+pkgname = qtforkawesome-git
