@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_srctag=6.3-6c
+_srctag=6.3-7
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.3.0
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 url="https://github.com/ValveSoftware/Proton"
