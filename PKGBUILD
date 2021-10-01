@@ -8,8 +8,8 @@
 
 _pkgname=rxvt-unicode
 pkgname=${_pkgname}-better-wheel-scrolling-unicode3
-pkgver=9.22
-pkgrel=5
+pkgver=9.26
+pkgrel=1
 pkgdesc="Same like rxvt-unicode-better-wheel-scrolling + enabled frills+unicode3 to support (vim) powerline/airline (http://powerline.readthedocs.io/en/master/troubleshooting.html#urxvt-unicode3-and-frills)"
 arch=('i686' 'x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
@@ -22,11 +22,11 @@ conflicts=($_pkgname ${_pkgname}-better-wheel-scrolling)
 source=(http://dist.schmorp.de/rxvt-unicode/${_pkgname}-${pkgver}.tar.bz2 \
         ${_pkgname}.desktop
         clear.patch secondaryWheel.patch)
-md5sums=('93782dec27494eb079467dacf6e48185'
+md5sums=('18dd0b15e7f67478bf0a88b0fc5e8cd4'
          'af8e6ad4cd2d33c26f8df6a838685332'
          'edeed8f00d5917bc002b2e10ba7e900c'
          'c73b3a470a02da0bf19ad6e9b83d0696')
-sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
+sha1sums=('d325d8cdea6bcb8e0b8b219b8451bf5c690b6c62'
           '9a31b46324c0be44fb97be0828e1ead2311b3f9f'
           'fc77f75bd2d51baa4abef81983dab044d7f498ce'
           'e50503f786deb6d6c2b6b8bcf486bf509c14af71')
