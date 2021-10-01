@@ -1,17 +1,18 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=perfplot
 pkgname=python-${_base}
 pkgdesc="Performance plots for Python code"
-pkgver=0.9.10
-pkgrel=2
+pkgver=0.9.11
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-dufte python-rich)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-codeblocks)
-source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('bfceecc651235be976294ffba0f4a49d2924d5fddf04e4563b80837f6965e9169f5eb907f3757fdbb607a61edcc221eaa7518792642afca3e86764ba08ab55d8')
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('508468f434807cce9206c78d25fc757392942b1de259b896e0bbba9965273ff4124df8bf96f3d7a14f0a718120aac87627b8eccfa7cc8073e2045574308acde3')
 
 build() {
   cd "${_base}-${pkgver}"
