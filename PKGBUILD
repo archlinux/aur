@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-ctc-segmentation-git
-pkgver=1.6.7.r46
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='Determine and align utterance segments within audio files using CTC'
 arch=('any')
@@ -19,7 +19,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python setup.py --version)"
 }
 
 
