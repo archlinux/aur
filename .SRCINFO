@@ -1,0 +1,12 @@
+pkgbase = logg
+	pkgdesc = Easy and fast logging library
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ern123/logg
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	source = logg-0.4.0.tar.gz::https://github.com/ern123/logg/archive/v0.4.0.tar.gz
+	md5sums = 819c676be61e3ff04a87171d5ad29a25
+
+pkgname = logg
