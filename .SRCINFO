@@ -1,0 +1,15 @@
+pkgbase = myrowing-git
+	pkgdesc = Analyze your rowing training data
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/myrowing/myrowing
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = pwgen
+	provides = myrowing
+	source = git+https://gitlab.com/myrowing/myrowing.git
+	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
+	md5sums = SKIP
+
+pkgname = myrowing-git
