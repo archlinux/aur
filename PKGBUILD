@@ -2,7 +2,7 @@
 # Contributor: Thiago Almeida <echo "dGhpYWdvYWxtZWlkYXNhQGdtYWlsLmNvbQo=" | base64 -d>
 
 pkgname=cloud-nuke
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="An AWS account cleaning tool"
 url="https://github.com/gruntwork-io/cloud-nuke"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4b2f5bbdfe4f483b8a6998c08bbbdc3d03ce4afeea5c85bb3b1aa51cd9eefc32')
+sha256sums=('65c19fafd832110cf79d0c16ef4df0a9f6628b5824e7b5c39f2bac32cd53f9b6')
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -24,16 +24,11 @@ build() {
 	go build
 }
 
-# check() {
-# 	export CGO_CPPFLAGS="${CPPFLAGS}"
-# 	export CGO_CFLAGS="${CFLAGS}"
-# 	export CGO_CXXFLAGS="${CXXFLAGS}"
-# 	export CGO_LDFLAGS="${LDFLAGS}"
-# 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-#
-# 	cd "$pkgname-$pkgver"
-# 	go test ./...
-# }
+check() {
+	cd "$pkgname-$pkgver"
+	## do not test aws, this requires an actual account
+	go test ./commands ./config ./logging ./util
+}
 
 package() {
 	cd "$pkgname-$pkgver"
