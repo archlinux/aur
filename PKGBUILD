@@ -21,7 +21,7 @@ url4=http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/
 url5=https://launchpad.net/~regolith-linux/+archive/ubuntu/stable/+files
 license=('custom: multiple')
 groups=('regolith-de')
-makedepends=('wget' 'python' 'meson' 'ninja' 'gtk3' 'git')
+makedepends=('wget' 'python' 'meson' 'ninja' 'gtk3' 'git' 'vala')
 
 source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-theme/ayu-theme_0.2.2-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/c/cahuella/cahuella_1.0.3-1_amd64.deb

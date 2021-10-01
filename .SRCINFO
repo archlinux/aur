@@ -11,6 +11,7 @@ pkgbase = regolith-de
 	makedepends = ninja
 	makedepends = gtk3
 	makedepends = git
+	makedepends = vala
 	source = http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-theme/ayu-theme_0.2.2-1_amd64.deb
 	source = http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/c/cahuella/cahuella_1.0.3-1_amd64.deb
 	source = https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files/i3-snapshot_1.0.1-2hirsute_amd64.deb
