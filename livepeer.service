@@ -1,5 +1,5 @@
 [Unit]
-Description=Start the Go-Livepeer Orchestrator and Transcoder service, edit /etc/go-livepeer/environment
+Description=Go-Livepeer Orchestrator and Transcoder service, edit /etc/go-livepeer/environment
 After=network.target
 Wants=network-online.target
 # See https://www.cyberciti.biz/faq/linux-hide-processes-from-other-users/

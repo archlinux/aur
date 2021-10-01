@@ -16,8 +16,8 @@ source=("https://github.com/livepeer/${_pkgname}/releases/download/v${pkgver}/li
   "livepeer.service")
 sha256sums=('aa966e0af5599faf04d1c9334da36f59e3f6007ca23fc0f21c7c2379b998f0e4'
             'c4de4cf3034bc69b6832f22ea3e18957639e41f2ad7d4cfed6919f6e0dbf99ba'
-            'ede8f791bb2d010153a5e41fbd5cb2e55324131431e6e8b183a1b55eacef1cea'
-            'de73790ef396e3e1698e1cc5ee801406fb7120b55d73ece394ad11ce7c8d6a56')
+            '723b9b7d821a6ec6194e89b6e4b972c99df534ba139f7fc29843e2fcc12771de'
+            'f7af239c0ff3ec8cd7d69d75f8e3073e42dce2a87ffda1cc6a21ce3e0b97859c')
 package() {
   install -Dm 644 "${srcdir}/environment" -t "${pkgdir}/etc/${_pkgname}"
   install -Dm 644 "${srcdir}/livepeer.service" -t "${pkgdir}/usr/lib/systemd/system"
