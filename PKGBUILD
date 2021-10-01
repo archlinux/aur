@@ -20,6 +20,7 @@ _commit=2376585a0612c8ea65703cc32f6fb5c4578fbe38  # tags/1.24.0^0
 source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=$_commit")
 sha256sums=('SKIP')
 conflicts=(network-manager-applet)
+replaces=(network-manager-applet)
 
 pkgver() {
   cd network-manager-applet
