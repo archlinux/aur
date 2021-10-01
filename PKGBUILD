@@ -7,6 +7,7 @@ pkgdesc="PNP utils"
 arch=('i686' 'x86_64')
 url='http://git.debian.org/?p=collab-maint/pnputils.git'
 license=('GPL')
+makedepends=('git')
 source=('git+https://gitlab.com/swiftgeek/pnputils.git')
 md5sums=('SKIP')
 conflicts=('pnputils')
