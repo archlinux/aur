@@ -1,0 +1,11 @@
+ethaddr=0x1a00000000000000000000000000000000000000
+ethurl=https://mainnet.infura.io/v3/00000000000011111111110000000000
+ethpass=mywalletpassword
+maxgas=40000000000
+unitprice=800
+serviceaddr=my.livepeer.node:8935
+sesh=6
+cliaddr=192.168.10.1:7935
+rew=false
+mon=false
+nvd=all

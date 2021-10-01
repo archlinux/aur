@@ -7,8 +7,12 @@ pkgbase = go-livepeer-bin
 	license = MIT
 	conflicts = go-livepeer-git
 	source = https://github.com/livepeer/go-livepeer/releases/download/v0.5.21/livepeer-linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/livepeer/go-livepeer/master/LICENSE
+	source = environment
 	source = livepeer.service
 	sha256sums = aa966e0af5599faf04d1c9334da36f59e3f6007ca23fc0f21c7c2379b998f0e4
-	sha256sums = 19f2c69e7f84e32236fe7f46a9b969cbe2f936651a1a50b818279fdd7299da3b
+	sha256sums = c4de4cf3034bc69b6832f22ea3e18957639e41f2ad7d4cfed6919f6e0dbf99ba
+	sha256sums = 90a56f615aac23a719ce7c7c09446e0bf712ad5598eb27699075d378eba8a2a9
+	sha256sums = 4cd1a524d4024d6edd5d1b0c6b1e7fc9f2183d7ccedab195a4203e6dd1c31670
 
 pkgname = go-livepeer-bin
