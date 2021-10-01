@@ -8,7 +8,8 @@ pkgdesc='Official Go binaries of the Livepeer protocol'
 arch=('x86_64')
 url='https://github.com/livepeer/go-livepeer'
 license=('MIT')
-conflicts=('go-livepeer-git')
+conflicts=('go-livepeer')
+provides=('go-livepeer' 'go-livepeer-bin')
 source=("https://github.com/livepeer/${_pkgname}/releases/download/v${pkgver}/livepeer-linux-amd64.tar.gz"
   "https://raw.githubusercontent.com/livepeer/go-livepeer/master/LICENSE"
   "environment"
