@@ -1,7 +1,8 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=slack-electron
-pkgver=4.19.2
+pkgver=4.20.0
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, using the system Electron package"
 arch=('x86_64')
@@ -9,11 +10,11 @@ url="https://slack.com/downloads"
 license=('custom:proprietary')
 depends=('electron')
 optdepends=('libappindicator-gtk3: for notification indicator in the status bar on GNOME')
-provides=("slack" "slack-desktop")
+provides=("slack-desktop")
 conflicts=("slack-desktop")
-source=("https://downloads.slack-edge.com/linux_releases/slack-desktop-$pkgver-amd64.deb"
+source=("https://downloads.slack-edge.com/releases/linux/$pkgver/prod/x64/slack-desktop-$pkgver-amd64.deb"
         'slack.sh')
-sha256sums=('aa2ce20f6f724e28ee8b9ceed555902f4ce822ea1bce01bc600706caf3add70a'
+sha256sums=('b08207389246837536ea769425d458411c08dc6802ffaae9249092e387461ce5'
             '4db11d083626a561129ca40e9cce7cc613c42223f138bb0136c62064c57471fd')
 
 prepare() {
@@ -30,7 +31,7 @@ package() {
 	install -Dm755 "slack.sh" "$pkgdir/usr/bin/slack"
 
 	install -dm755 "$pkgdir/usr/lib/slack/"
-	cp -dr --no-preserve=ownership usr/lib/slack/resources/* "$pkgdir/usr/lib/slack/"
+	cp -a --no-preserve=ownership usr/lib/slack/resources/* "$pkgdir/usr/lib/slack/"
 
 	install -Dm644 "usr/share/applications/slack.desktop" -t "$pkgdir/usr/share/applications"
 	install -Dm644 "usr/share/pixmaps/slack.png" -t "$pkgdir/usr/share/pixmaps"
