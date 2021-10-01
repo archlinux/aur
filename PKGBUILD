@@ -8,7 +8,7 @@ pkgdesc="Alternative Google Play (with GUI) client to download Android APK files
 url="https://raccoon.onyxbits.de/"
 license=('Apache')
 depends=('java-environment')
-makedepends=("gradle")
+#makedepends=("gradle")
 install=raccoon.install
 source=('raccoon.desktop'
         'https://github.com/onyxbits/Raccoon/raw/master/artwork/icon.svg'
@@ -22,6 +22,7 @@ sha512sums=('99ae7ab9aa77f6de0779c9179e16dbccd36362adc710cd5d7289c473b6aff62d39a
 
 prepare() {
     sed -i "s/targetCompatibility = 1.7//g" "$srcdir/raccoon4-$pkgver"/build.gradle
+    sed -i "s/gradleVersion = \"6.8.2\"/gradleVersion = \"7.2\"/g" "$srcdir/raccoon4-$pkgver"/build.gradle
 }
 
 build() {
