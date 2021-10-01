@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots-git
-pkgver=0.6.1.r7.b61663a
+pkgver=0.6.1.r10.a602d4f
 pkgrel=2
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
@@ -37,5 +37,5 @@ prepare() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    INSTALL_ROOT=$pkgdir/usr ./scripts/install
+    PREFIX=$pkgdir/usr ./scripts/install
 }
