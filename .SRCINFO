@@ -1,14 +1,14 @@
 pkgbase = nodejs-zone-mta
 	pkgdesc = Modern outbound MTA cross platform and extendable server application
-	pkgver = 3.2.2
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://github.com/zone-eu/zone-mta
 	arch = any
 	license = custom:EUPL
 	makedepends = npm
 	depends = nodejs
-	noextract = zone-mta-3.2.2.tgz
-	source = https://registry.npmjs.org/zone-mta/-/zone-mta-3.2.2.tgz
-	sha256sums = c9225fe066e5a4fbeda826784f46193e9897b963b0f0fad647fd955b6459125c
+	noextract = zone-mta-3.2.4.tgz
+	source = https://registry.npmjs.org/zone-mta/-/zone-mta-3.2.4.tgz
+	sha256sums = 1e6e4246583f2594edeba3ddb365f064a8f5056d878afd248f1d1be335cbbb86
 
 pkgname = nodejs-zone-mta
