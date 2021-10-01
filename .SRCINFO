@@ -1,6 +1,6 @@
 pkgbase = chad_launcher-bin
 	pkgdesc = GNU/LINUX GAMING UNLEASHED!
-	pkgver = 0.3.release1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/Gnurur/chad_launcher
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = chad_launcher-bin
 	depends = gtk3
 	depends = libappindicator-gtk3
 	depends = libvips
-	source = chad_launcher-bin-0.3.release1.zip::https://gitlab.com/Gnurur/chad_launcher/-/jobs/artifacts/0.3/download?job=tauri:build
-	md5sums = SKIP
+	source = chad_launcher-bin-0.4.0.zip::https://gitlab.com/Gnurur/chad_launcher/-/jobs/artifacts/0.4.0/download?job=tauri:build
+	md5sums = 28467e44a55547d370c0ae4dbe395a27
 
 pkgname = chad_launcher-bin
