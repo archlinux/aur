@@ -1,8 +1,11 @@
+# Maintainer: danieltetraquark
+
 pkgname=pishrink-git
 _name=pishrink
-pkgver=r63.95f4839
+pkgver=r124.43f1a88
 pkgrel=1
 pkgdesc="Make your pi images smaller!"
+makedepends=('git')
 depends=()
 license=('MIT')
 arch=('any')
