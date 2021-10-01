@@ -1,5 +1,5 @@
 [Unit]
-Description=Go-Livepeer Orchestrator and Transcoder service, edit /etc/go-livepeer/environment
+Description=Go-Livepeer Orchestrator and Transcoder service
 After=network.target
 Wants=network-online.target
 
