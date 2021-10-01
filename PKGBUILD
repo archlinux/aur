@@ -4,7 +4,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-dynamic-buffering
-pkgver=40.4
+pkgver=40.5
 pkgrel=1
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -14,13 +14,13 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
          xorg-xwayland graphene libxkbfile)
-makedepends=(gobject-introspection git egl-wayland meson xorg-server)
+makedepends=(gobject-introspection git egl-wayland meson xorg-server
+             wayland-protocols)
 checkdepends=(xorg-server-xvfb pipewire-media-session)
 provides=(mutter libmutter-8.so)
 conflicts=(mutter)
 groups=(gnome)
-install=mutter.install
-_commit=2bfef7dbdc6f432a5433c93c1fcdbf00099367c8  # tags/40.4^0
+_commit=2b2b3ab8502a5bcc2436e169279d2421f6f1a605  # tags/40.5^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch')
 sha256sums=('SKIP'
