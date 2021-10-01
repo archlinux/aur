@@ -1,0 +1,15 @@
+pkgbase = blacksun-vst
+	pkgdesc = An Extremely Versatile Amp (VST Plugin)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://audioassault.mx/products/blacksun
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+
+pkgname = blacksun-vst
