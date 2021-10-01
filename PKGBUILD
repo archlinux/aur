@@ -1,30 +1,35 @@
-#Maintainer: Harley Wiltzer <harleyw@hotmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Harley Wiltzer <harleyw@hotmail.com>
 
-pkgname='python-omegaconf'
-pkgver='2.0.0'
+pkgname=python-omegaconf
+pkgver=2.1.1
 pkgrel=1
-epoch=
-pkgdesc='Flexible Python configuration system. The last one you will ever need.'
+pkgdesc='Flexible Python configuration system'
 arch=('any')
 url='https://github.com/omry/omegaconf'
-license=('custom')
-depends=('python>=3.6'
-         'python-pyaml>=5.1'
-         'python-typing_extensions'
-         'python-pip'
-         'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-mock')
-provides=("$pkgname=$pkgver")
-source=("$pkgname-$pkgver::https://github.com/omry/omegaconf/archive/$pkgver.tar.gz")
-md5sums=('2d3db08dff23b499dbe7fde4e402a9ed')
+license=('BSD')
+depends=('python-antlr4' 'python-pyaml>=5.1.0')
+makedepends=('python-setuptools' 'java-runtime' 'python-pytest-runner' 'python-sphinx')
+checkdepends=('python-pytest-mock')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('1c090255e303cd72af546fd6a433722edcd5ff30edf915405e6f56d28fb02b36')
+
+build() {
+	cd "omegaconf-$pkgver"
+	python setup.py build
+	cd docs
+	PYTHONPATH=../ make man
+}
 
 check() {
-  cd "omegaconf-$pkgver"
-  python setup.py test
+	cd "omegaconf-$pkgver"
+	python setup.py pytest
 }
 
 package() {
-  cd "omegaconf-$pkgver"
-  python setup.py install --root="$pkgdir"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "omegaconf-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 LICENSE DISCLAIMER -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm 644 docs/build/man/omegaconf.1 -t "$pkgdir/usr/share/man/man1/"
 }
