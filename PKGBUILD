@@ -2,7 +2,7 @@
 # Maintainer: Fernando Fernandez <fernando@softwareperonista.com.ar>
 
 pkgname=simple-droidcam-client
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A simple droidcam client'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://gitlab.com/tarmaciltur/simple-droidcam-client'
 depends=('v4l2loopback-dkms' 'ffmpeg' 'android-udev' 'gtk4')
 makedepends=('meson' 'vala')
 source=("https://gitlab.com/tarmaciltur/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b6ac2709d1baa8042510aff7f9742ef99d39915edbc4ded5f8890b1f66e452c1')
+sha256sums=('a92c592272c3fad312e4fe759d04d8b6ed1306047832175a5b951d739034ba07')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -20,12 +20,6 @@ build() {
 
   ninja -C build
 }
-
-#check () {
-#  cd ${pkgname}-${pkgver}
-
-#  ninja -C build test
-#}
 
 package() {
   cd ${pkgname}-${pkgver}
