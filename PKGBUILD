@@ -4,27 +4,28 @@
 
 pkgname=pyocd-git
 _pkgname=pyOCD
-pkgver=v0.31.0.r1.ga064d8fb
+pkgver=v0.32.0.r4.g37c44ea1
 pkgrel=1
 pkgdesc="Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP"
 arch=('any')
 url="https://github.com/pyocd/pyOCD"
 license=('Apache')
-depends=('python'
+depends=('python-capstone'
          'python-cmsis-pack-manager'
          'python-colorama'
          'python-intelhex'
          'python-intervaltree'
          'python-naturalsort'
          'python-prettytable'
-         'python-pyaml'
          'python-pyelftools'
-         'python-pyusb'
-         'python-setuptools'
-         'python-six'
          'pylink'
+         'pyocd-pemicro'
+         'python-pyusb'
+         'python-pyaml'
+         'python-six'
          )
-makedepends=("git")
+makedepends=('git'
+             'python-setuptools')
 provides=('pyocd')
 conflicts=('pyocd')
 source=("git+${url}")
