@@ -25,12 +25,12 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-1}
 _reponame=syncthingtray
 pkgname=syncthingtray-git
 _name=${pkgname%-git}
-pkgver=1062.303cea3
-pkgrel=1
+pkgver=1117.1d239cc
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=('GPL')
-depends=('qtutilities-git' 'boost-libs' 'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
+depends=('qtutilities-git' 'qtforkawesome-git' 'boost-libs' 'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
@@ -70,6 +70,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -DCONFIGURATION_NAME:STRING='git' \
     -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
+    -DQT_FORK_AWESOME_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DLIB_SYNCTHING_CONNECTOR_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DSYNCTHINGFILEITEMACTION_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DLIB_SYNCTHING_MODEL_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
@@ -88,7 +89,7 @@ build() {
 
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  SYNCTHING_PORT=$(ephemeral_port) SYNCTHING_TEST_TIMEOUT_FACTOR=3 ninja check
+  QT_QPA_PLATFORM=offscreen SYNCTHING_PORT=$(ephemeral_port) SYNCTHING_TEST_TIMEOUT_FACTOR=3 ninja check
 }
 
 package() {
