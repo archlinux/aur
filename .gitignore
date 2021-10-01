@@ -5,3 +5,4 @@ npm_cache
 *.tar.gz
 *.pkg.tar.xz
 *.pkg.tar.zst
+*.sh

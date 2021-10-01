@@ -1,8 +1,10 @@
 # Maintainer: remanifest
 # Previous Maintainer: Cole Gerdemann <aur@corvettecole.com>
+# Previous Maintainer: Emanuele 'Lele aka eldios' Calo' <emanuele.lele.calo@gmail.com>
+# Previous Maintainer: Rocka <i at Rocka dot me>
 
 pkgname=p3x-onenote
-pkgver=2021.10.130
+pkgver=v2021.10.133
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote"
 arch=('any')
@@ -14,11 +16,11 @@ license=('MIT')
 depends=('electron')
 makedepends=('npm')
 
-source=("$projecthost/$developer/$repo/$tarballpath/v${pkgver//_/-}.tar.gz"
+source=("$projecthost/$developer/$repo/$tarballpath/${pkgver//_/-}.tar.gz"
         "p3x-$repo.sh"
         "p3x-$repo.desktop")
 
-sha256sums=('cb013c78a275f824a7e68504dc23ef35bf99ba653b523b8b21f962aae2809e4b'
+sha256sums=('6c66b35b600bd52ac329667224b5f71808e58bc69a9580f9b8306a05656cc0bd'
             '97aca184d656b8021ce43d524d9de91f014c838372356844c845a531f8ab2b9f'
             '9bbb2f84f401a4da62ffe7f533aa0b149921f3f88fec7f470c4d4b5fcf63f331')
 
