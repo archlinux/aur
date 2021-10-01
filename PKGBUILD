@@ -3,20 +3,21 @@
 
 pkgname=git-secret
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A bash-tool to store your private data inside a git repository'
 arch=('any')
 url='https://github.com/sobolevn/git-secret/'
 license=('MIT')
 depends=('git' 'gnupg')
 source=("LICENSE::https://raw.githubusercontent.com/sobolevn/git-secret/v${pkgver}/LICENSE.md"
-        "${pkgname}-${pkgver}::https://github.com/sobolevn/git-secret/archive/v${pkgver}.tar.gz")
+        "${pkgname}-${pkgver}.tar.gz::https://github.com/sobolevn/git-secret/archive/v${pkgver}.tar.gz")
 sha256sums=('bc950a06cb1ba74afe4815dadb2f9e4639542de2894c6838924676981672d483'
             'ae17bfda88eb77e8f07c5f16d833792a3a14adc9c5d2bbc840f28538c62f08ba')
 
 build() {
     cd "$srcdir/git-secret-${pkgver}"
-    make clean build
+    make clean
+    make build
 }
 
 package() {
