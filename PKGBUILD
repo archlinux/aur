@@ -41,8 +41,9 @@ prepare() {
   sed -e 's|^autoconf|autoconf-2.13|g' \
         -i autogen.sh
 
-  sed '35s|^|#|g' \
-    -i configure.ac
+  sed -e 's|2.62|2.70|g' \
+      -e '35s|^|#|g' \
+      -i configure.ac
 
   ./autogen.sh
 }
