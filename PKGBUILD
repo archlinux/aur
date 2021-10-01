@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=qimgv-light
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Qt6 image viewer (without any optional features)'
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-light}")
 optdepends=('kimageformats: support for more image formats'
             'qtraw: raw images support')
 source=("${pkgname%-light}"-"${pkgver}".tar.gz::"${url}"/archive/refs/tags/v"${pkgver}".tar.gz)
-sha256sums=('6d794a11f7e2f8ca0453c6e778a214005e81b69cef50a0198e9eaf949eda4f06')
+sha256sums=('ace75077c5b6f3cb2b0d40b24482b3778728d98dce75ed8186c7ae4282e57634')
 
 build() {
     cmake -B build -S "${pkgname%-light}"-"${pkgver}" \

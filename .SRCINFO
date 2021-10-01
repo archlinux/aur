@@ -1,6 +1,6 @@
 pkgbase = qimgv-light
 	pkgdesc = Qt6 image viewer (without any optional features)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/easymodo/qimgv
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = qimgv-light
 	optdepends = qtraw: raw images support
 	provides = qimgv
 	conflicts = qimgv
-	source = qimgv-1.0.1.tar.gz::https://github.com/easymodo/qimgv/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 6d794a11f7e2f8ca0453c6e778a214005e81b69cef50a0198e9eaf949eda4f06
+	source = qimgv-1.0.2.tar.gz::https://github.com/easymodo/qimgv/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = ace75077c5b6f3cb2b0d40b24482b3778728d98dce75ed8186c7ae4282e57634
 
 pkgname = qimgv-light
