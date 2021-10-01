@@ -1,0 +1,6 @@
+*.tar.gz
+*.zst
+pkg/
+src/
+*.log
+modmanager/
