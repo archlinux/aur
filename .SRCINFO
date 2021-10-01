@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openmp
 	pkgdesc = LLVM OpenMP Runtime Library (mingw-w64)
-	pkgver = 12.0.1
+	pkgver = 13.0.0
 	pkgrel = 1
 	url = https://openmp.llvm.org/
 	arch = any
@@ -11,11 +11,11 @@ pkgbase = mingw-w64-openmp
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/openmp-12.0.1.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/openmp-12.0.1.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/openmp-13.0.0.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/openmp-13.0.0.src.tar.xz.sig
 	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
-	sha256sums = 60fe79440eaa9ebf583a6ea7f81501310388c02754dbe7dc210776014d06b091
+	sha256sums = 4930ae7a1829a53b698255c2c6b6ee977cc364b37450c14ee458793c0d5e493c
 	sha256sums = SKIP
 
 pkgname = mingw-w64-openmp

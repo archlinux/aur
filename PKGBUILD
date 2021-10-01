@@ -2,7 +2,7 @@
 
 _pkgname=openmp
 pkgname=mingw-w64-${_pkgname}
-pkgver=12.0.1
+pkgver=13.0.0
 pkgrel=1
 pkgdesc='LLVM OpenMP Runtime Library (mingw-w64)'
 url='https://openmp.llvm.org/'
@@ -16,7 +16,7 @@ source=(
 	"https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/$_pkgname-$pkgver.src.tar.xz"{,.sig}
 )
 sha256sums=(
-	'60fe79440eaa9ebf583a6ea7f81501310388c02754dbe7dc210776014d06b091'
+	'4930ae7a1829a53b698255c2c6b6ee977cc364b37450c14ee458793c0d5e493c'
 	'SKIP'
 )
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
@@ -35,7 +35,7 @@ prepare() {
 build() {
 	for _arch in ${_architectures}; do
 		winflag=
-		[[ "${_arch}" == "x86_64-w64-mingw32" ]] && winflag='-win64'
+		[[ "${_arch}" == 'x86_64-w64-mingw32' ]] && winflag='-win64'
 		
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=OFF
 		#sed -i -r 's/x86_64-w64-mingw32-uasm (.+) (\S+)z_Windows_NT-586_asm\.asm$/x86_64-w64-mingw32-uasm \1 Z:\2z_Windows_NT-586_asm\.asm/' "build-${_arch}/runtime/src/CMakeFiles/omp.dir/build.make"
