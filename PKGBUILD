@@ -1,4 +1,16 @@
-# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: pancho horrillo <pancho at pancho dot name>
+# Maintainer of emacs27-git: Jack Random <https://aur.archlinux.org/account/jackrandom/>
+# Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+
+################################################################################
+# The difference between this PKGBUILD and the one from `emacs-git` is that:
+# - this one builds emacs from `emacs-28` release branch.
+# - Just-in-time ahead-of-time compilation is enabled by default.
+# - make uses as many cores as are available, for shorter build times.
+#
+# `Starting the Emacs 28 release cycle` announcement on emacs-devel:
+# https://lists.gnu.org/archive/html/emacs-devel/2021-09/msg02290.html
+################################################################################
 
 ################################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
@@ -25,11 +37,11 @@ CLANG=            # Use clang.
 GOLD=             # Use the gold linker.
 LTO="YES"         # Enable link-time optimization. Read emacs's INSTALL before
                   # attempting to use it with clang.
-JIT=              # Enable native just-in-time compilation. libgccjit is in AUR.
+JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
                   # This compiles only performance critical elisp files.
                   # To compile all elisp on demand, set
                   # comp-deferred-compilation non-nil
-AOT=              # Precompile all included elisp. It takes a long time.
+AOT="YES"         # Precompile all included elisp. It takes a long time.
                   # You still need to enable on-demand compilation
                   # for your own packages.
 CLI=              # CLI only binary.
@@ -55,11 +67,11 @@ NOGZ="YES"        # Don't compress .el files.
 
 ################################################################################
 if [[ $CLI == "YES" ]] ; then
-  pkgname="emacs-nox-git"
+  pkgname="emacs28-nox-git"
 else
-pkgname="emacs-git"
+pkgname="emacs28-git"
 fi
-pkgver=28.0.50.148607
+pkgver=28.0.60.150525
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -68,12 +80,12 @@ license=('GPL3')
 depends_nox=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'gpm')
 depends=("${depends_nox[@]}" 'm17n-lib' 'libotf' 'harfbuzz')
 makedepends=('git')
-provides=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
-conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
-replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
-#source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+provides=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
+conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq' 'emacs-nox')
+replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq' 'emacs-nox')
+#source=("emacs28-git::git://git.savannah.gnu.org/emacs.git#branch=emacs-28")
 # If Savannah fails for reasons, use Github's mirror
-source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
+source=("emacs28-git::git://github.com/emacs-mirror/emacs.git#branch=emacs-28")
 options=(!strip)
 install="$pkgname".install
 b2sums=('SKIP')
@@ -170,7 +182,7 @@ fi
 
 ################################################################################
 pkgver() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs28-git"
 
   printf "%s.%s" \
     "$(grep AC_INIT configure.ac | \
@@ -181,19 +193,19 @@ pkgver() {
 # There is no need to run autogen.sh after first checkout.
 # Doing so, breaks incremental compilation.
 prepare() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs28-git"
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
 }
 
 if [[ $CHECK == "YES" ]]; then
 check() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs28-git"
   make check
 }
 fi
 
 build() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs28-git"
 
   local _conf=(
     --prefix=/usr
@@ -276,13 +288,13 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   # are reusing your src directory!
   #
   if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
-    make NATIVE_FULL_AOT=1
+    make -j $(nproc) NATIVE_FULL_AOT=1
   else
     make
   fi
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
-  #cd "$srcdir/emacs-git/lisp"
+  #cd "$srcdir/emacs28-git/lisp"
   #make autoloads
   #cd ../
 
@@ -297,7 +309,7 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
 }
 
 package() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs28-git"
 
   make DESTDIR="$pkgdir/" install
 
