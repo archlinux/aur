@@ -1,23 +1,22 @@
 pkgbase = openssl-weak-ciphers
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with weak ciphers enabled)
-	pkgver = 1.1.1.k
+	pkgver = 1.1.1.l
 	pkgrel = 1
 	url = https://www.openssl.org
 	arch = x86_64
 	license = custom:BSD
 	depends = perl
 	optdepends = ca-certificates
-	provides = openssl=1.1.1.k
+	provides = openssl=1.1.1.l
 	conflicts = openssl
 	backup = etc/ssl/openssl.cnf
-	source = https://www.openssl.org/source/openssl-1.1.1k.tar.gz
-	source = https://www.openssl.org/source/openssl-1.1.1k.tar.gz.asc
+	source = https://www.openssl.org/source/openssl-1.1.1l.tar.gz
+	source = https://www.openssl.org/source/openssl-1.1.1l.tar.gz.asc
 	source = ca-dir.patch
 	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
 	validpgpkeys = 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
-	sha256sums = 892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5
+	sha256sums = 0b7a3e5e59c34827fe0c3a74b7ec8baef302b98fa80088d7f9153aa16fa76bd1
 	sha256sums = SKIP
 	sha256sums = 0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e
 
 pkgname = openssl-weak-ciphers
-
