@@ -4,45 +4,32 @@
 # Contributor: Clement Guerin <geecko.dev@free.fr>
 # Contributor: Thiago Kenji Okada <thiago.mast3r@gmail.com>
 
-pkgname=ppsspp
+pkgbase=ppsspp
+pkgname=(
+  ppsspp
+  ppsspp-assets
+)
 pkgver=1.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
 license=(GPL2)
-depends=(
-  glew
-  glibc
-  hicolor-icon-theme
-  libgl
-  libzip
-  qt5-base
-  qt5-multimedia
-  sdl2
-  snappy
-  zlib
-)
 makedepends=(
   clang
   cmake
   git
+  glew
   libglvnd
+  libzip
   ninja
   python
+  qt5-base
+  qt5-multimedia
   qt5-tools
-)
-provides=(
-  ppsspp-headless
-  ppsspp-qt
-)
-conflicts=(
-  ppsspp-headless
-  ppsspp-qt
-)
-replaces=(
-  ppsspp-headless
-  ppsspp-qt
+  sdl2
+  snappy
+  zlib
 )
 _tag=f7ace3b8ee33e97e156f3b07f416301e885472c5
 source=(
@@ -59,22 +46,21 @@ source=(
   ppsspp-sdl.desktop
   ppsspp-qt.desktop
 )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '47977bbdc36cd9eebe74b204e69aa8c0eb39b1ec66d89e7b90b1c216e5778d8d'
-            '7df9274e8f404a8009042a529729ca43332c264cff032f32b2ce1bf5adf04042')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'c6bcdfedee866dfdcc82a8c333c31ff73ed0beec65b63acec8bc8186383c0bc9f0912f21bb9715b665e8dc1793b1a85599761f9037856fa54ad8aa3bfdbfd468'
+        '328e2ba47b78d242b0ec6ba6bfa039c77a36d1ef7246e5c2c2432d8e976e9360baf505eb05f48408ede1a30545cbbb7f875bf5ebd0252cef35523d449b8254a0')
 
 pkgver() {
   cd ppsspp
-
   git describe --tags | sed 's/^v//'
 }
 
@@ -125,16 +111,34 @@ build() {
   cmake --build build-qt
 }
 
-package() {
+package_ppsspp() {
+  depends=(
+    glew
+    glibc
+    hicolor-icon-theme
+    libgl
+    libzip
+    ppsspp-assets
+    qt5-base
+    qt5-multimedia
+    sdl2
+    snappy
+    zlib
+  )
+
   install -Dm 755 build-sdl/PPSSPPSDL -t "${pkgdir}"/usr/bin/
   install -Dm 755 build-sdl/PPSSPPHeadless -t "${pkgdir}"/usr/bin/
   install -Dm 755 build-qt/PPSSPPQt -t "${pkgdir}"/usr/bin/
-  install -dm 755 "${pkgdir}"/usr/share/{icons,ppsspp}
-  cp -dr --no-preserve=ownership build-sdl/assets "${pkgdir}"/usr/share/ppsspp/
+  install -dm 755 "${pkgdir}"/usr/share/icons
   cp -dr --no-preserve=ownership ppsspp/icons/hicolor "${pkgdir}"/usr/share/icons/
   install -Dm 644 ppsspp/icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
   install -Dm 644 ppsspp-sdl.desktop -t "${pkgdir}"/usr/share/applications/
   install -Dm 644 ppsspp-qt.desktop -t "${pkgdir}"/usr/share/applications/
+}
+
+package_ppsspp-assets() {
+  install -dm 755 "${pkgdir}"/usr/share/ppsspp
+  cp -dr --no-preserve=ownership build-sdl/assets "${pkgdir}"/usr/share/ppsspp/
 }
 
 # vim: ts=2 sw=2 et:
