@@ -3,7 +3,7 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
@@ -45,16 +45,11 @@ checkdepends=('python-pytest-remotedata'
               'python-pypdf2'
               'python-crds')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv"
-        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt")
-md5sums=('d345ec290b6f183c7267d874f8ab7495'
-         'acaf7d8bcf0f6244042bba0df3d03679'
-         'SKIP')
+        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv")
+md5sums=('c64ede548c342166dbad3f1e38b5e178'
+         'acaf7d8bcf0f6244042bba0df3d03679')
 
 prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    ln -rs ${srcdir}/LICENSE.txt .
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
@@ -67,6 +62,7 @@ build() {
 }
 
 check() {
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
     cd ${srcdir}/${_pyname}-${pkgver}/build/lib.linux-${CARCH}-${_pyver}
 
     ln -rs ${srcdir}/ACSWFC3ListDefault50.csv tests/hap
@@ -80,19 +76,19 @@ package_python-drizzlepac() {
              'python-requests'
              'python-scikit-learn>=0.20'
              'python-spherical_geometry>=1.2.17'
-             'python-stsci.tools>=3.6'
-             'python-stsci.image>=2.3.0'
+             'python-stsci.tools>=4.0'
+             'python-stsci.image>=2.3.4'
              'python-stsci.imagestats'
-             'python-stsci.skypac>=1.0'
+             'python-stsci.skypac>=1.0.7'
              'python-stsci.stimage'
              'python-stwcs>=1.5.3'
-             'python-tweakwcs>=0.6.3'
+             'python-tweakwcs>=0.7.2'
              'python-stregion'
              'python-fitsblender'
              'python-acstools'
              'python-nictools')
     optdepends=('python-astroquery>=0.4: HAP-pipeline specific'
-                'python-photutils>=0.7: HAP-pipeline specific'
+                'python-photutils>=1.0.0: HAP-pipeline specific'
                 'python-bokeh: HAP-pipeline specific'
                 'python-pandas: HAP-pipeline specific'
                 'python-pypdf2: HAP-pipeline specific'
@@ -100,8 +96,9 @@ package_python-drizzlepac() {
                 'python-yaml: HAP-pipeline specific'
                 'python-pysynphot'
                 'python-lxml: HAP-pipeline specific'
-                'python-scikit-image>=0.14.2'
+                'python-scikit-image'
                 'python-drizzlepac-doc: Documentation for DrizzlePac')
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt

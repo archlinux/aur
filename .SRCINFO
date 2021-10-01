@@ -1,6 +1,6 @@
 pkgbase = python-drizzlepac
 	pkgdesc = AstroDrizzle for HST images
-	pkgver = 3.2.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = http://www.stsci.edu/scientific-community/software/drizzlepac.html
 	arch = i686
@@ -26,12 +26,10 @@ pkgbase = python-drizzlepac
 	makedepends = python-setuptools
 	makedepends = python-relic
 	makedepends = python-astropy
-	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.2.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.3.0.tar.gz
 	source = https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv
-	source = https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt
-	md5sums = d345ec290b6f183c7267d874f8ab7495
+	md5sums = c64ede548c342166dbad3f1e38b5e178
 	md5sums = acaf7d8bcf0f6244042bba0df3d03679
-	md5sums = SKIP
 
 pkgname = python-drizzlepac
 	depends = python>=3.7
@@ -40,19 +38,19 @@ pkgname = python-drizzlepac
 	depends = python-requests
 	depends = python-scikit-learn>=0.20
 	depends = python-spherical_geometry>=1.2.17
-	depends = python-stsci.tools>=3.6
-	depends = python-stsci.image>=2.3.0
+	depends = python-stsci.tools>=4.0
+	depends = python-stsci.image>=2.3.4
 	depends = python-stsci.imagestats
-	depends = python-stsci.skypac>=1.0
+	depends = python-stsci.skypac>=1.0.7
 	depends = python-stsci.stimage
 	depends = python-stwcs>=1.5.3
-	depends = python-tweakwcs>=0.6.3
+	depends = python-tweakwcs>=0.7.2
 	depends = python-stregion
 	depends = python-fitsblender
 	depends = python-acstools
 	depends = python-nictools
 	optdepends = python-astroquery>=0.4: HAP-pipeline specific
-	optdepends = python-photutils>=0.7: HAP-pipeline specific
+	optdepends = python-photutils>=1.0.0: HAP-pipeline specific
 	optdepends = python-bokeh: HAP-pipeline specific
 	optdepends = python-pandas: HAP-pipeline specific
 	optdepends = python-pypdf2: HAP-pipeline specific
@@ -60,6 +58,5 @@ pkgname = python-drizzlepac
 	optdepends = python-yaml: HAP-pipeline specific
 	optdepends = python-pysynphot
 	optdepends = python-lxml: HAP-pipeline specific
-	optdepends = python-scikit-image>=0.14.2
+	optdepends = python-scikit-image
 	optdepends = python-drizzlepac-doc: Documentation for DrizzlePac
-
