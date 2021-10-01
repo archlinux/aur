@@ -1,15 +1,17 @@
 pkgbase = motsognir
 	pkgdesc = A robust, reliable and easy to install gopher server.
-	pkgver = 1.0.12
-	pkgrel = 2
+	pkgver = 1.0.13
+	pkgrel = 1
 	url = http://motsognir.sourceforge.net/
-	arch = x86_64
+	arch = any
 	license = GPL3
+	depends = glibc
 	optdepends = php: php scripting support
-	source = https://downloads.sourceforge.net/project/motsognir/v1.0.12/motsognir-1.0.12.tar.xz
+	source = https://downloads.sourceforge.net/project/motsognir/v1.0.13/motsognir-1.0.13.tar.xz
 	source = motsognir.service
-	sha256sums = b9d67df7bde3151d66000a9605cac2f15cca888e7cd174ae384d0835b4c54de5
+	source = motsognir.sysusers
+	sha256sums = d6903cc0ae31b8d3b95b6e42625c7298d6519074a195cedd2773c8d75c59af40
 	sha256sums = 8b8f6257f8da3bb9ce9ecd452536f05809e66abd82154fc18a45e6807c702306
+	sha256sums = da686191e429ef51349af720203a101d5397204c189a3d222621a82455661bde
 
 pkgname = motsognir
-
