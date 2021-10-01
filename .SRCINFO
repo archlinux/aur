@@ -1,14 +1,18 @@
 pkgbase = python-persist-queue
-	pkgdesc = A thread-safe disk based persistent queue in Python.
-	pkgver = 0.5.0
-	pkgrel = 2
-	url = http://github.com/peter-wangxu/persist-queue
+	pkgdesc = Thread-safe disk-based persistent queue
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/peter-wangxu/persist-queue
 	arch = any
 	license = BSD
+	checkdepends = python-nose2
+	checkdepends = python-msgpack>=0.5.6
+	checkdepends = python-mock>=2.0.0
+	checkdepends = python-eventlet>=0.19.0
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/persist-queue/persist-queue-0.5.0.tar.gz
-	md5sums = 3644ef1a990c29ced4e62b5c4672126a
+	optdepends = python-msgpack>=0.5.6
+	source = python-persist-queue-0.7.0.tar.gz::https://github.com/peter-wangxu/persist-queue/archive/v0.7.0.tar.gz
+	sha256sums = 720d47b022f4f4811ab67f9db665cc1fe1e83455cfd1fe26b13478f04a7c24f6
 
 pkgname = python-persist-queue
-
