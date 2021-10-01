@@ -1,0 +1,13 @@
+pkgbase = holochain-launcher
+	pkgdesc = A cross-platform executable that launches a local Holochain conductor, and installs and opens apps
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/holochain/launcher/releases
+	arch = x86_64
+	license = custom:CAL
+	depends = libappindicator-gtk3
+	noextract = holochain-launcher_0.2.2_amd64.deb
+	source = https://github.com/holochain/launcher/releases/download/v0.2.2/holochain-launcher_0.2.2_amd64.deb
+	sha256sums = d59d09cad56f493edfc3fcc09a744f8a36f804a13873555f27055e7d9026ec04
+
+pkgname = holochain-launcher
