@@ -4,7 +4,7 @@
 
 pkgname='mycorrhiza'
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('x86_64')
 url="https://github.com/bouncepaw/$pkgname"
@@ -13,7 +13,7 @@ depends=('git')
 makedepends=('go')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 provides=('mycorrhiza')
-conflicts=('mycorrhiza' 'mycorrhiza-git')
+conflicts=('mycorrhiza' 'mycorrhiza-bin')
 md5sums=(
   '9e7050204ec27b96b8f156f2b6436265'
 )
