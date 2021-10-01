@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text astrofox-1.2.0/src/main/environment.js astrofox-1.2.0-new/src/main/environment.js
+--- astrofox-1.2.0/src/main/environment.js	2021-10-01 10:14:16.783008762 +0800
++++ astrofox-1.2.0-new/src/main/environment.js	2021-10-01 10:18:12.454535323 +0800
+@@ -13,7 +13,7 @@
+ export const USER_DATA_PATH = app.getPath('userData');
+ export const PLUGIN_PATH = path.join(APP_PATH, '..', 'plugins');
+ export const TEMP_PATH = path.join(app.getPath('temp'), APP_NAME);
+-export const FFMPEG_BINARY = path.join(APP_PATH, '..', 'bin', IS_WINDOWS ? 'ffmpeg.exe' : 'ffmpeg');
++export const FFMPEG_BINARY = '/usr/bin/ffmpeg';
+ export const APP_CONFIG_FILE = path.join(
+   USER_DATA_PATH,
+   process.env.NODE_ENV === 'production' ? 'app.config' : 'app.dev.config',

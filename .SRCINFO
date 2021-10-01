@@ -1,15 +1,18 @@
 pkgbase = astrofox
 	pkgdesc = A motion graphics program that lets turn audio into amazing videos
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://astrofox.io
 	arch = any
 	license = MIT
 	makedepends = yarn
 	makedepends = asar
+	makedepends = sed
 	depends = electron
+	depends = ffmpeg
 	source = astrofox-1.2.0.tar.gz::https://github.com/astrofox-io/astrofox/archive/refs/tags/v1.2.0.tar.gz
+	source = astrofox.patch
 	sha512sums = 51c8dfe5c8922484ffba1f64bcbe383388cc9989d8ea9e03500ae41340525820538b40dcfde7e7961ed5704e3d89bc67ea146ac15cbe033bc5a9e63804cdf44e
+	sha512sums = 1f163238d4f3a72b7d4364ab7532a551164320f73e8562f248f0dff280007ceb0bdde8dc04eabd885157611ccf6c708a03b0f22181ec1cd82c0f7be76aa7c1cc
 
 pkgname = astrofox
-
