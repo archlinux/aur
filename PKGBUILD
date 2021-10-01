@@ -76,9 +76,7 @@ package_kanidm-server-git () {
   conflicts=("$_basename-server-bin")
   provides=("$_basename-server")
   pkgdesc='kanidm server for idendity management, supports RADIUS, ssh key management.'
-  backup=(
-    "etc/kanidm/server.toml"
-  )
+  backup=("etc/kanidm/server.toml")
 
   cd "$pkgbase"
 
@@ -103,9 +101,7 @@ package_kanidm-unixd-clients-git () {
   conflicts=("$_basename-unixd-clients-bin")
   provides=("$_basename-unixd-clients")
   pkgdesc='kanidm localhost resolver to resolve posix identities to a kanidm instance.'
-  backup=(
-    "etc/kanidm/unixd"
-  )
+  backup=("etc/kanidm/unixd")
 
   cd "$pkgbase"
 
