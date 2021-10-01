@@ -1,6 +1,6 @@
 pkgbase = creators-tf-launcher-bin
 	pkgdesc = The community launcher from the Creators.TF project for Team Fortress 2
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/CreatorsTF/Creators.TF-Community-Launcher
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = creators-tf-launcher-bin
 	depends = re2
 	depends = snappy
 	conflicts = creators-tf-launcher
-	source = https://github.com/ampersoftware/Creators.TF-Community-Launcher/releases/download/0.2.8/creators-tf-launcher_0.2.8_amd64.deb
-	sha512sums = 35d171778e71b205ff30c78b9389a97a0cacae6010aaf697c685e018d8397a806eeac555a48b8a1e051bf9cab1a65dd8df2a2d4a0df5984e075205b77ed0578d
+	source = https://github.com/ampersoftware/Creators.TF-Community-Launcher/releases/download/0.2.9/creators-tf-launcher_0.2.9_amd64.deb
+	sha512sums = 80f68b45170770e1afffbde1ef9b5be584bbf28711d3bbc417241b409f4481d2789c96fb67d2977b09feec72a4dad0958cd3d2a4cd74a21d1b6fceb812188971
 
 pkgname = creators-tf-launcher-bin
