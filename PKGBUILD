@@ -3,7 +3,7 @@
 
 pkgname=perl-latexml
 _realname=LaTeXML
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="LaTeX to XML converter"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('perl-pod-parser' 'perl-parse-recdescent' 'perl-text-unidecode'
 	 'perl-libwww' 'perl-io-string' 'perl-archive-zip')
 options=('!emptydirs')
 source=("http://dlmf.nist.gov/$_realname/releases/$_realname-$pkgver.tar.gz")
-sha512sums=('20940710b49308a6bc3b7cc4653651a9e746126e8905d44aaf67d5b18ca5b80031a921d9da1c878f9eae059c015278eb3e4c98a130529e861a5ff0d4673d5532')
+sha512sums=('6025e524515a40a3d1678cb679924ca3dd33a8063a7552e33ff1d00941ff71f28eb6d1d04de890dd51077eb3716890a6294b9a19696e6d514fc05d24cb7ed06d')
 
 build() {
   cd ${_realname}-$pkgver
