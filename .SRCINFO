@@ -3,6 +3,7 @@ pkgbase = go-livepeer-bin
 	pkgver = 0.5.21
 	pkgrel = 1
 	url = https://github.com/livepeer/go-livepeer
+	install = go-livepeer.install
 	arch = x86_64
 	license = MIT
 	provides = go-livepeer
