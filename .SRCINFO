@@ -1,7 +1,7 @@
 pkgbase = foot-git
 	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
-	pkgver = 1.9.0
-	pkgrel = 5
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	arch = aarch64
