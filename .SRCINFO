@@ -1,6 +1,6 @@
 pkgbase = btdu
 	pkgdesc = sampling disk usage profiler for btrfs
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/CyberShadow/btdu
 	arch = i686
@@ -10,14 +10,15 @@ pkgbase = btdu
 	makedepends = dub
 	makedepends = dtools
 	depends = ncurses
-	source = btdu-0.2.1.tar.gz::https://github.com/CyberShadow/btdu/archive/v0.2.1.tar.gz
-	source = ae-0.0.2833.tar.gz::https://github.com/CyberShadow/ae/archive/v0.0.2833.tar.gz
-	source = d-btrfs-0.0.11.tar.gz::https://github.com/CyberShadow/d-btrfs/archive/v0.0.11.tar.gz
+	source = btdu-0.3.0.tar.gz::https://github.com/CyberShadow/btdu/archive/v0.3.0.tar.gz
+	source = ae-0.0.3100.tar.gz::https://github.com/CyberShadow/ae/archive/v0.0.3100.tar.gz
+	source = d-btrfs-0.0.12.tar.gz::https://github.com/CyberShadow/d-btrfs/archive/v0.0.12.tar.gz
 	source = ncurses-0.0.149.tar.gz::https://github.com/D-Programming-Deimos/ncurses/archive/v0.0.149.tar.gz
-	sha256sums = 501f2b6d337db8fdc4d91d9e447691c17d4382c26a79974a4d155ed30e7caab0
-	sha256sums = 97f129484f7ff431d0be3430ab62d32955c17cc43e6993de4a628ea4b8574c23
-	sha256sums = 061df12548e09535e897031ce7de3854d287be0afcced9f59df972d9a08afe61
+	source = emsi_containers-0.9.0.tar.gz::https://github.com/dlang-community/containers/archive/v0.9.0.tar.gz
+	sha256sums = 6019f20862ac5ed84d115ffcc5305d000714ac2324d81671a4961efc79edc9f2
+	sha256sums = 86fa09ef6c1be4cbe8ad1c85729054e5d691b41ff57c7980d99937ec0f45b950
+	sha256sums = cf2b1fa3e94a0aa239d465adbac239514838835283521d632f571948aa517f92
 	sha256sums = 2c8497f5dd93f9d3a05ca7ed57c4fcaee1e988fd25a24de106917ddf72f34646
+	sha256sums = 5e256b84bbdbd2bd625cba0472ea27a1fde6d673d37a85fe971a20d52874acaa
 
 pkgname = btdu
-
