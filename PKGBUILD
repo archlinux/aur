@@ -3,7 +3,7 @@
 # Contributor: heavysink <winstonwu91 at gmail>
 
 pkgname=proton
-_pkgver=6.3-6
+_pkgver=6.3-7
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
@@ -22,7 +22,7 @@ source=(
 	"wined3d-interop.h"
 )
 sha512sums=(
-  'b205ac2dc28e9f468be3ff1a726a788f84b8f1dae0df2f4b18e5c31b5c32ae4d7a10f1b8002f5ae80b3200e66b99a39c15d97ffe25a33ca537e1915313dca617'
+	'fa7b411d3729530184d36c8756401a4bf063e6d9df919425936c7427a8964bc562f1bdbefcf1dc1a3e8fcf77760b893d69ed5cb5c7d4bba4916108de868c98f4'
 	'f2caacca6bd55030331de7d017d85772b09e5ad9e5fdbfc6343f303ac5447595660fd3f83ba2a177ef321d9b54335245bac548ca804e6e3e9346690f29d55ad0'
 )
 
@@ -37,7 +37,7 @@ build() {
 	export CXXFLAGS="$CXXFLAGS -Wno-attributes"
 	export WINEMAKEFLAGS="--nosource-fix --nolower-include --nodlls --nomsvcrt --dll -ldl"
 	export WINEMAKEFLAGS32="$WINEMAKEFLAGS --wine32"
-  export LDFLAGS="$LDFLAGS -L/usr/lib32/wine -lntdll.dll"
+	export LDFLAGS="$LDFLAGS -L/usr/lib32/wine -lntdll.dll"
 
 	# The build script provided has so much cruft that it's easier to make everything manually
 	mkdir -p build/lsteamclient.win32
@@ -46,7 +46,7 @@ build() {
 	winemaker $WINEMAKEFLAGS32 -DSTEAM_API_EXPORTS .
 	make
 	cd ../..
-	
+
 	mkdir -p build/lsteamclient.win64
 	cp -a lsteamclient/* build/lsteamclient.win64
 	cd build/lsteamclient.win64
@@ -76,7 +76,7 @@ build() {
 
 package() {
 	cd "Proton-$pkgname-$_pkgver"
-	
+
 	install -d -m755 $pkgdir/usr/share/licenses/$pkgname
 	install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -m644 LICENSE.proton $pkgdir/usr/share/licenses/$pkgname/LICENSE.proton
