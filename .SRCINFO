@@ -1,7 +1,7 @@
 pkgbase = python-url-normalize
 	pkgdesc = URL normalization for Python
 	pkgver = 1.4.3
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/niksite/url-normalize
 	arch = any
 	license = MIT

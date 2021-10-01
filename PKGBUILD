@@ -4,7 +4,7 @@ _base=url-normalize
 pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
 pkgver=1.4.3
-pkgrel=9
+pkgrel=10
 arch=('any')
 url="https://github.com/niksite/${_base}"
 license=(MIT)
@@ -29,5 +29,4 @@ package() {
   export PYTHONHASHSEED=0
   python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  rm -r "${pkgdir}$(python -c "import site; print(site.getsitepackages()[0])")/${_base//-/_}/__pycache__"
 }
