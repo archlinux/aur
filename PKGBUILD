@@ -3,9 +3,8 @@
 _base=requests-cache
 pkgname=python-${_base}-git
 _pkgname=${pkgname%-git}
-_gitcommit=80d1b5c5aadbce0f04cf6a2cc765c07c21c6ba16
 pkgdesc="Transparent persistent cache for http://python-requests.org library (git version)"
-pkgver=0.8.r1.80d1b5c
+pkgver=0.8.1.r20.g217397b
 pkgrel=1
 arch=('any')
 url="https://github.com/reclosedev/${_base}"
@@ -17,14 +16,14 @@ optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
   'python-pymongo: Cache backend for MongoDB database') # python-botocore python-yaml python-sphinx-furo python-linkify-it-py python-myst-parser
 checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator)
 # python-pymongo python-redis redis python-boto3
-source=("git+${url}#commit=${_gitcommit}")
+source=("git+${url}")
 sha512sums=('SKIP')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 
 pkgver() {
   cd "${_base}"
-  printf "0.8.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

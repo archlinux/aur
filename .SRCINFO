@@ -1,6 +1,6 @@
 pkgbase = python-requests-cache-git
 	pkgdesc = Transparent persistent cache for http://python-requests.org library (git version)
-	pkgver = 0.8.r1.80d1b5c
+	pkgver = 0.8.1.r20.g217397b
 	pkgrel = 1
 	url = https://github.com/reclosedev/requests-cache
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-requests-cache-git
 	optdepends = python-pymongo: Cache backend for MongoDB database
 	provides = python-requests-cache
 	conflicts = python-requests-cache
-	source = git+https://github.com/reclosedev/requests-cache#commit=80d1b5c5aadbce0f04cf6a2cc765c07c21c6ba16
+	source = git+https://github.com/reclosedev/requests-cache
 	sha512sums = SKIP
 
 pkgname = python-requests-cache-git
