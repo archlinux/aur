@@ -1,0 +1,102 @@
+diff --git a/src/multichain/multichain-cli.cpp b/src/multichain/multichain-cli.cpp
+index af89ed4..2d76e63 100644
+--- a/src/multichain/multichain-cli.cpp
++++ b/src/multichain/multichain-cli.cpp
+@@ -225,7 +225,7 @@ Object CallRPC(const string& strMethod, const Array& params)
+     // Connect to localhost
+     bool fUseSSL = GetBoolArg("-rpcssl", false);
+     asio::io_service io_service;
+-    ssl::context context(io_service, ssl::context::sslv23);
++    ssl::context context(ssl::context::sslv23);
+     context.set_options(ssl::context::no_sslv2 | ssl::context::no_sslv3);
+     asio::ssl::stream<asio::ip::tcp::socket> sslStream(io_service, context);
+     SSLIOStreamDevice<asio::ip::tcp> d(sslStream, fUseSSL);
+diff --git a/src/rpc/rpcasio.h b/src/rpc/rpcasio.h
+index 05055f3..f0552b8 100644
+--- a/src/rpc/rpcasio.h
++++ b/src/rpc/rpcasio.h
+@@ -49,7 +49,7 @@ public:
+     bool connect(const std::string& server, const std::string& port)
+     {
+         using namespace boost::asio::ip;
+-        tcp::resolver resolver(stream.get_io_service());
++        tcp::resolver resolver(stream.get_executor());
+         tcp::resolver::iterator endpoint_iterator;
+ #if BOOST_VERSION >= 104300
+         try {
+diff --git a/src/rpc/rpcserver.cpp b/src/rpc/rpcserver.cpp
+index 7c578b4..e3a619c 100644
+--- a/src/rpc/rpcserver.cpp
++++ b/src/rpc/rpcserver.cpp
+@@ -712,8 +712,8 @@ private:
+ void ServiceConnection(AcceptedConnection *conn);
+ 
+ //! Forward declaration required for RPCListen
+-template <typename Protocol, typename SocketAcceptorService>
+-static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol, SocketAcceptorService> > acceptor,
++template <typename Protocol>
++static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol> > acceptor,
+                              ssl::context& context,
+                              bool fUseSSL,
+                              boost::shared_ptr< AcceptedConnection > conn,
+@@ -722,18 +722,20 @@ static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol,
+ /**
+  * Sets up I/O resources to accept and handle a new connection.
+  */
+-template <typename Protocol, typename SocketAcceptorService>
+-static void RPCListen(boost::shared_ptr< basic_socket_acceptor<Protocol, SocketAcceptorService> > acceptor,
++template <typename Protocol>
++static void RPCListen(boost::shared_ptr< basic_socket_acceptor<Protocol> > acceptor,
+                    ssl::context& context,
+                    const bool fUseSSL,uint32_t flags)
+ {
+     // Accept connection
+-    boost::shared_ptr< AcceptedConnectionImpl<Protocol> > conn(new AcceptedConnectionImpl<Protocol>(acceptor->get_io_service(), context, fUseSSL, flags));
++    // HACK: This is ugly and risky, should use Executor in template somehow..
++    boost::asio::io_context& svc = static_cast<boost::asio::io_context&>(acceptor->get_executor().context());
++    boost::shared_ptr< AcceptedConnectionImpl<Protocol> > conn(new AcceptedConnectionImpl<Protocol>(svc, context, fUseSSL, flags));
+ 
+     acceptor->async_accept(
+             conn->sslStream.lowest_layer(),
+             conn->peer,
+-            boost::bind(&RPCAcceptHandler<Protocol, SocketAcceptorService>,
++            boost::bind(&RPCAcceptHandler<Protocol>,
+                 acceptor,
+                 boost::ref(context),
+                 fUseSSL,
+@@ -745,8 +747,8 @@ static void RPCListen(boost::shared_ptr< basic_socket_acceptor<Protocol, SocketA
+ /**
+  * Accept and handle incoming connection.
+  */
+-template <typename Protocol, typename SocketAcceptorService>
+-static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol, SocketAcceptorService> > acceptor,
++template <typename Protocol>
++static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol> > acceptor,
+                              ssl::context& context,
+                              const bool fUseSSL,
+                              boost::shared_ptr< AcceptedConnection > conn,
+@@ -863,11 +865,11 @@ void StartRPCThreads(string& strError)
+ 
+     assert(rpc_io_service == NULL);
+     rpc_io_service = new asio::io_service();
+-    rpc_ssl_context = new ssl::context(*rpc_io_service, ssl::context::sslv23);
++    rpc_ssl_context = new ssl::context(ssl::context::sslv23);
+ 
+     assert(hc_io_service == NULL);
+     hc_io_service = new asio::io_service();
+-    hc_ssl_context = new ssl::context(*hc_io_service, ssl::context::sslv23);
++    hc_ssl_context = new ssl::context(ssl::context::sslv23);
+ 
+     const bool fUseSSL = GetBoolArg("-rpcssl", false);
+ 
+@@ -903,8 +905,8 @@ void StartRPCThreads(string& strError)
+         }
+ 
+         string strCiphers = GetArg("-rpcsslciphers", "TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH");
+-        SSL_CTX_set_cipher_list(rpc_ssl_context->impl(), strCiphers.c_str());
+-        SSL_CTX_set_cipher_list(hc_ssl_context->impl(), strCiphers.c_str());
++        SSL_CTX_set_cipher_list(rpc_ssl_context->native_handle(), strCiphers.c_str());
++        SSL_CTX_set_cipher_list(hc_ssl_context->native_handle(), strCiphers.c_str());
+     }
+ 
+     std::vector<ip::tcp::endpoint> vEndpoints;
