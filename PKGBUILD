@@ -3,7 +3,7 @@
 
 _gemname=excon
 pkgname=ruby-$_gemname
-pkgver=0.85.0
+pkgver=0.86.0
 pkgrel=1
 pkgdesc="EXtended http(s) CONnections"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('rubygems' 'ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('32fc255f74f9bf8ce921a2ae0e9c02269acc79f6a561f9c94d9c6d062e185bc179398fea22651f7a65336194ff8480af5d50ca6e5e6cc08a063c0e9f4653e137')
+b2sums=('25f873315d218fe371ef4db52f0480db2cc1a0a31cf4c0a87b61a34ee2025a1adedf011f40dbc547697100b268556d5d90f7a21f3965e1b0ae1e2dedd6abcd23')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -27,11 +27,11 @@ package() {
     --bindir "$pkgdir/usr/bin" \
     "$_gemname-$pkgver.gem"
 
-  # delete cache
+  # delete unnecessary files & folders
   cd "$pkgdir/$_gemdir"
   rm -vrf cache
-
   cd "gems/$_gemname-$pkgver"
+  rm -vrf "$_gemname.gemspec"
 
   # move documentation
   install -vd "$pkgdir/usr/share/doc/$pkgname"
@@ -41,4 +41,14 @@ package() {
   # move license
   install -vd "$pkgdir/usr/share/licenses/$pkgname"
   mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+
+  # generate reproducible documentation
+  install -vd "$pkgdir/$_gemdir/doc/$_gemname-$pkgver"
+  cd "$pkgdir/$_gemdir/gems/$_gemname-$pkgver"
+  rdoc \
+    --format ri \
+    --output "$pkgdir$_gemdir/doc/$_gemname-$pkgver/ri" \
+    ./lib
+  # delete unnecessary rdoc metadata file
+  rm -f "$pkgdir$_gemdir/doc/$_gemname-$pkgver/ri/created.rid"
 }
