@@ -16,6 +16,7 @@ pkgbase = network-manager-applet-nolibappindicator
 	makedepends = libnma
 	makedepends = libgudev
 	conflicts = network-manager-applet
+	replaces = network-manager-applet
 	source = git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=2376585a0612c8ea65703cc32f6fb5c4578fbe38
 	sha256sums = SKIP
 
