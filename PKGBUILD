@@ -7,7 +7,7 @@ pkgdesc='The open source VTuber software toolkit. ❤'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/vignette-project/vignette'
 license=('Non-Profit OSL')
-depends=('dotnet-runtime>=5' 'ffmpeg' 'libgl')
+depends=('dotnet-runtime>=5' 'ffmpeg' 'libgl', 'libgeotiff')
 makedepends=('git' 'dotnet-sdk>=5' 'dotnet-targeting-pack>=5' 'netstandard-targeting-pack>=5')
 #provides=("${pkgname%-git}")
 #conflicts=("${pkgname%-git}")
