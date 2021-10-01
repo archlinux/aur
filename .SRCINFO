@@ -1,16 +1,16 @@
 pkgbase = postgres-decoderbufs
 	pkgdesc = A PostgreSQL logical decoder output plugin to deliver data as Protocol Buffers, adapted for Debezium
-	pkgver = 1.3.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/debezium/postgres-decoderbufs
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
+	makedepends = clang
+	makedepends = llvm
 	makedepends = postgresql
 	depends = protobuf-c
-	source = https://github.com/debezium/postgres-decoderbufs/archive/v.1.3.1.Final.tar.gz
-	sha256sums = 9b5001fbeee5dccd97ea6841a1ca1a13fb7ae21d39392019dae1e232e364a262
+	source = https://github.com/debezium/postgres-decoderbufs/archive/v1.7.0.Final.tar.gz
+	sha256sums = a8b19c620e953b86d110783923d8fa2e223722537610846eebdc8df204c18023
 
 pkgname = postgres-decoderbufs
-
