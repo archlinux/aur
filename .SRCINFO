@@ -1,0 +1,14 @@
+pkgbase = govarnam-git
+	pkgdesc = Transliteration and reverse transliteration for Indian languages
+	pkgver = 1.6.0.r8.g35460dc
+	pkgrel = 1
+	url = https://varnamproject.github.io/
+	arch = x86_64
+	license = AGPL
+	makedepends = go
+	provides = govarnam
+	provides = varnamcli
+	source = govarnam-git::git+https://github.com/varnamproject/govarnam.git
+	sha256sums = SKIP
+
+pkgname = govarnam-git
