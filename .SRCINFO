@@ -1,22 +1,19 @@
 pkgbase = python-pypinfo
-	pkgdesc = View PyPI download statistics with ease.
-	pkgver = 16.0.0
+	pkgdesc = View PyPI download statistics with ease
+	pkgver = 19.0.0
 	pkgrel = 1
 	url = https://github.com/ofek/pypinfo
 	arch = any
 	license = MIT
-	makedepends = python
 	makedepends = python-setuptools
-	depends = python>=3.5
+	depends = python>=3.6
 	depends = python-appdirs
 	depends = python-binary
 	depends = python-click
 	depends = python-google-cloud-bigquery>=0.29.0
-	depends = python-tinydb
-	depends = python-tinyrecord
-	options = !emptydirs
-	source = https://github.com/ofek/pypinfo/archive/16.0.0.tar.gz
-	sha256sums = 87c4d5e007a57db51fbd5522a74531bab9b2593fba0cb2063e1f079226d5666c
+	depends = python-tinydb>=4
+	depends = python-tinyrecord>=0.2.0
+	source = python-pypinfo-19.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pypinfo/pypinfo-19.0.0.tar.gz
+	sha256sums = d2e85268c5e8b21b092b929cd7812788496166835975e3fe49d16271d3fabf6a
 
 pkgname = python-pypinfo
-
