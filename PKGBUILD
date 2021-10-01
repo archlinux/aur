@@ -19,7 +19,6 @@ makedepends=(
 provides=(myrowing)
  
 build() {
-  ls -al  
   cd "${_pkgname}"
   make
 } 
