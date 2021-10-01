@@ -4,7 +4,7 @@ _base=url-normalize
 pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
 pkgver=1.4.3
-pkgrel=7
+pkgrel=8
 arch=('any')
 url="https://github.com/niksite/${_base}"
 license=(MIT)
@@ -21,9 +21,7 @@ build() {
 
 check() {
   cd "${_base}-${pkgver}"
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  python -m install --optimize=1 --destdir=temp dist/*.whl
-  PATH="${PWD}/temp/usr/bin:${PATH}" PYTHONPATH="${PWD}/temp/${site_packages}" pytest tests
+  pytest tests
 }
 
 package() {
