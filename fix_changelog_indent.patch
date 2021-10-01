@@ -1,0 +1,11 @@
+--- a/CHANGELOG.rst	2021-09-29 01:54:56.000000000 +0800
++++ b/CHANGELOG.rst	2021-09-30 22:13:41.320003190 +0800
+@@ -33,7 +33,7 @@
+   if the catalogs contain no rows of sources and measurements.
+   - point source catalog will be generated using TinyTim PSF-based detection
+   - extended source (segment) catalog will only have sources larger
+-    than the PSF kernel deblended.
++  than the PSF kernel deblended.
+   - catalog columns will closely resemble the Hubble Legacy Archive (HLA) catalogs columns
+ - Grism/Prism exposures do not get aligned, but instead get the WCS correction from direct images
+ - Added logic to handle visits where there are only Grism/Prism exposures with no direct images

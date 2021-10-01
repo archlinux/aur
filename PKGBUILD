@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=drizzlepac
 pkgname=python-${_pyname}-doc
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Documentation for DrizzlePac"
 arch=('i686' 'x86_64')
@@ -19,22 +19,23 @@ makedepends=("python-${_pyname}=${pkgver}"
              'python-ci_watson'
              'texlive-latexextra'
              'python-bokeh'
+             'python-scikit-image'
              'python-pypdf2')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz"
-        'fix_changelog_title.patch')
+        'fix_changelog_title-3.3.0.patch'
+        'fix_changelog_indent.patch')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-#        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt"
-#        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/CHANGELOG.rst")
-md5sums=('c90538216734012162f3f6a854a55bdb'
-         '248fa756065bb5cf939c1180cb58d1e7')
+md5sums=('d75d47674b39894b6387de7671e8a9bc'
+         'cc5c4f5b71429895ac093c39e66af232'
+         'd466b6dc479df8144ce13dacf5081d44')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
+    patch -Np1 -i "${srcdir}/fix_changelog_title-3.3.0.patch"
+    patch -Np1 -i "${srcdir}/fix_changelog_indent.patch"
+#   sed -i 's/stylesheet/css_file/' doc/source/conf.py
     mv ${_pyname} _${_pyname}
-    patch -Np1 -i "${srcdir}/fix_changelog_title.patch"
-    sed -i 's/stylesheet/css_file/' doc/source/conf.py
-#   ln -rs ${srcdir}/{LICENSE.txt,ANGELOG.rst} .
 }
 
 build() {

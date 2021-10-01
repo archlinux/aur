@@ -1,0 +1,22 @@
+--- a/CHANGELOG.rst	2021-09-29 01:54:56.000000000 +0800
++++ b/CHANGELOG.rst	2021-10-01 13:12:15.593333526 +0800
+@@ -16,7 +16,7 @@
+ of the list).
+ 
+ 3.3.0 (28-Sep-2021)
+-==================
++===================
+ This version includes all the functionality needed to generate
+ source catalogs, both point source and extended (segment) source
+ catalogs, during single-visit mosaic (SVM) processing.  In fact,
+--- a/drizzlepac/haputils/astroquery_utils.py	2021-09-29 01:54:56.000000000 +0800
++++ b/drizzlepac/haputils/astroquery_utils.py	2021-10-01 16:03:12.850000575 +0800
+@@ -28,7 +28,7 @@
+     the specified suffixes.
+ 
+     Parameters
+-    -----------
++    ----------
+     obsid : string or list of strings
+         ID or list of IDs for observations to be retrieved from the MAST archive.
+         Only the IPPSSOOT (rootname) of exposure or ASN needs to be provided; eg.,

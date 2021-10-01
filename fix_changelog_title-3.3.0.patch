@@ -1,0 +1,11 @@
+--- a/CHANGELOG.rst	2021-09-29 01:54:56.000000000 +0800
++++ b/CHANGELOG.rst	2021-10-01 13:12:15.593333526 +0800
+@@ -16,7 +16,7 @@
+ of the list).
+ 
+ 3.3.0 (28-Sep-2021)
+-==================
++===================
+ This version includes all the functionality needed to generate
+ source catalogs, both point source and extended (segment) source
+ catalogs, during single-visit mosaic (SVM) processing.  In fact,
