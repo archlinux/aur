@@ -8,6 +8,7 @@ pkgbase = go-livepeer-bin
 	provides = go-livepeer
 	provides = go-livepeer-bin
 	conflicts = go-livepeer
+	backup = etc/go-livepeer/environment
 	source = https://github.com/livepeer/go-livepeer/releases/download/v0.5.21/livepeer-linux-amd64.tar.gz
 	source = https://raw.githubusercontent.com/livepeer/go-livepeer/master/LICENSE
 	source = environment
@@ -15,6 +16,6 @@ pkgbase = go-livepeer-bin
 	sha256sums = aa966e0af5599faf04d1c9334da36f59e3f6007ca23fc0f21c7c2379b998f0e4
 	sha256sums = c4de4cf3034bc69b6832f22ea3e18957639e41f2ad7d4cfed6919f6e0dbf99ba
 	sha256sums = dfe28d5e3ff4cdd384f873ab767ca40a49aad7e282a42898469b20c4b5167d56
-	sha256sums = f7af239c0ff3ec8cd7d69d75f8e3073e42dce2a87ffda1cc6a21ce3e0b97859c
+	sha256sums = 09f42fd378e629b220d68905b492536276f7980274a0930d92e9d63b0b5a27b2
 
 pkgname = go-livepeer-bin

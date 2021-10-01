@@ -11,9 +11,9 @@ Type=simple
 EnvironmentFile=/etc/go-livepeer/environment
 
 ExecStart=/usr/bin/livepeer -network mainnet -orchestrator -transcoder \
-	-maxSessions $sesh -cliAddr $cliaddr -nvidia $nvd -ethAcctAddr $ethaddr \
+	-maxSessions $sessions -cliAddr $cliaddr -nvidia $nvidia -ethAcctAddr $ethaddr \
 	-ethPassword $ethpass -ethUrl $ethurl -pricePerUnit $unitprice \
-	-serviceAddr $serviceaddr -maxGasPrice $maxgas -reward=$rew -monitor=$mon
+	-serviceAddr $serviceaddr -maxGasPrice $maxgas -reward=$reward -monitor=$monitor
 
 [Install]
 WantedBy=multi-user.target
