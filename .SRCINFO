@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-better-wheel-scrolling-unicode3
 	pkgdesc = Same like rxvt-unicode-better-wheel-scrolling + enabled frills+unicode3 to support (vim) powerline/airline (http://powerline.readthedocs.io/en/master/troubleshooting.html#urxvt-unicode3-and-frills)
-	pkgver = 9.22
-	pkgrel = 5
+	pkgver = 9.26
+	pkgrel = 1
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
