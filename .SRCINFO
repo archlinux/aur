@@ -1,6 +1,6 @@
 pkgbase = p3x-onenote
 	pkgdesc = Linux Electron Onenote - A Linux compatible version of OneNote
-	pkgver = v2021.10.133
+	pkgver = 2021.10.133
 	pkgrel = 1
 	arch = any
 	license = MIT
