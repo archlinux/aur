@@ -1,12 +1,13 @@
 pkgbase = p2pool-git
 	pkgdesc = Decentralized pool for Monero mining
-	pkgver = master
+	pkgver = 1.0.r16.g2a3cd13
 	pkgrel = 1
 	url = https://github.com/SChernykh/p2pool
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = GPL
+	arch = i686
+	license = GPL3
 	makedepends = cmake
 	makedepends = git
 	depends = libuv
@@ -15,7 +16,7 @@ pkgbase = p2pool-git
 	depends = libpgm
 	provides = p2pool
 	conflicts = p2pool
-	source = p2pool-git::git+https://github.com/SChernykh/p2pool.git
+	source = p2pool::git+https://github.com/SChernykh/p2pool.git
 	sha256sums = SKIP
 
 pkgname = p2pool-git
