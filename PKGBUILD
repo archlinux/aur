@@ -3,7 +3,7 @@
 
 pkgname=opensnitch
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
@@ -55,8 +55,8 @@ build() {
 
     export PATH="${GOPATH}/bin:${PATH}"
 
-    go install github.com/golang/protobuf/protoc-gen-go
-    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
+    go install github.com/golang/protobuf/protoc-gen-go@latest
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
     echo "$(whereis protoc-gen-go)"
     echo "$(whereis protoc-gen-go-grpc)"
