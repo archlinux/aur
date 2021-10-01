@@ -4,7 +4,7 @@
 
 pkgname=river-git
 _pkgname=${pkgname%-*}
-pkgver=r736.6616d32
+pkgver=r738.e6bb373
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('zig>=0.8.0' 'git' 'scdoc')
 provides=('river' 'riverctl' 'rivertile')
-conflicts=('river')
+conflicts=('river' 'river-noxwayland-git')
 source=(
 	"git+$url"
 	'git+https://github.com/ifreund/zig-pixman.git'

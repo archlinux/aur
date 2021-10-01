@@ -1,6 +1,6 @@
 pkgbase = river-git
 	pkgdesc = A dynamic tiling wayland compositor.
-	pkgver = r736.6616d32
+	pkgver = r738.e6bb373
 	pkgrel = 1
 	url = https://github.com/ifreund/river
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = river-git
 	provides = riverctl
 	provides = rivertile
 	conflicts = river
+	conflicts = river-noxwayland-git
 	source = git+https://github.com/ifreund/river
 	source = git+https://github.com/ifreund/zig-pixman.git
 	source = git+https://github.com/ifreund/zig-wayland.git
