@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=CCExtractor flutter GUI
+GenericName=CCExtractor
+Comment=A fast closed captions extractor for MPEG files GUI
+Exec=/usr/bin/ccxgui %U
+TryExec=/usr/bin/ccxgui
+Icon=ccx
+Terminal=false
+Type=Application
+Categories=AudioVideo;
+MimeType=video/x-ms-asf;video/x-ms-asf-plugin;video/x-ms-asx;video/x-ms-wm;video/mp2t;video/mpeg;video/mpeg-system;video/x-mpeg;video/x-mpeg2;video/x-mpeg-system;video/avi;video/x-avivideo/mp4;video/mp4v-es;video/x-m4v;
+Keywords=Video

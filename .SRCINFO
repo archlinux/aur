@@ -1,0 +1,17 @@
+pkgbase = ccextractor-gui-bin
+	pkgdesc = CCExtractor flutter GUI (binary).
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://ccextractor.org/public/general/flutter_gui/
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = ccextractor
+	conflicts = ccextractor-gui
+	replaces = ccextractor-gui
+	source = https://github.com/CCExtractor/ccextractorfluttergui/releases/download/v0.5.1/linux.zip
+	source = ccextractor-gui.desktop
+	sha512sums = 13510c31302d81e7aed760b2aa404af31c1b2f259e6c949b2db711cd609f31d8b2a4a59f1b2208037a6a18781a2e33214dceed44652bc99905375ce9e4990dcd
+	sha512sums = f068beb0b6e76897c3bad91d3621e05cf266a23e891f03c4613b69bfc9c3b932121989ce47459f326e437fddcac1e891a9b53fd8ad2f20f9fbc13afe859dcc91
+
+pkgname = ccextractor-gui-bin
