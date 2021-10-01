@@ -1,0 +1,17 @@
+pkgbase = cargo-about-git
+	pkgdesc = Cargo plugin to generate list of all licenses for a crate (git)
+	pkgver = 0.3.0.r4.g35f3c73
+	pkgrel = 1
+	url = https://github.com/EmbarkStudios/cargo-about
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	provides = cargo-about
+	conflicts = cargo-about
+	source = git+https://github.com/EmbarkStudios/cargo-about
+	sha512sums = SKIP
+
+pkgname = cargo-about-git
