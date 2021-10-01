@@ -1,6 +1,6 @@
 pkgbase = ustreamer
 	pkgdesc = Lightweight and fast MJPG-HTTP streamer
-	pkgver = 3.23
+	pkgver = 4.6
 	pkgrel = 1
 	url = https://github.com/pikvm/ustreamer
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = ustreamer
 	depends = libbsd
 	depends = libgpiod
 	depends = python
-	source = ustreamer::git+https://github.com/pikvm/ustreamer#commit=v3.23
+	source = ustreamer::git+https://github.com/pikvm/ustreamer#commit=v4.6
 	md5sums = SKIP
 
 pkgname = ustreamer
-

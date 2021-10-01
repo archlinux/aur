@@ -3,7 +3,7 @@
 
 
 pkgname=ustreamer
-pkgver=3.23
+pkgver=4.6
 pkgrel=1
 pkgdesc="Lightweight and fast MJPG-HTTP streamer"
 url="https://github.com/pikvm/ustreamer"
@@ -25,6 +25,11 @@ if [ -e /opt/vc/include/IL/OMX_Core.h ]; then
 	depends+=(raspberrypi-firmware)
 	makedepends+=(raspberrypi-firmware)
 	_options="$_options WITH_OMX=1"
+fi
+if [ -e /usr/include/janus/plugins/plugin.h ];then
+	depends+=(janus-gateway-pikvm)
+	makedepends+=(janus-gateway-pikvm)
+	_options="$_options WITH_JANUS=1"
 fi
 
 
