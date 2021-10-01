@@ -4,7 +4,7 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=lib32-jansson
-pkgver=2.13.1
+pkgver=2.14
 pkgrel=1
 pkgdesc='C library for encoding, decoding and manipulating JSON data'
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(
   lib32-glibc
 )
 makedepends=(git)
-_tag=e9ebfa7e77a6bee77df44e096b100e7131044059
+_tag=684e18c927e89615c2d501737e90018f4930d6c5
 source=(git+https://github.com/akheron/jansson.git#tag=${_tag})
 sha256sums=(SKIP)
 
