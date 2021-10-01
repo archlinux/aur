@@ -1,0 +1,21 @@
+pkgbase = python-octodns
+	pkgdesc = Tools for managing DNS across multiple providers
+	pkgver = 0.9.13
+	pkgrel = 1
+	url = https://github.com/octodns/octodns
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dnspython
+	depends = python-yaml
+	depends = python-requests
+	depends = python-natsort
+	depends = python-pycountry
+	depends = python-pycountry-convert
+	depends = python-dateutil
+	depends = python-fqdn
+	source = https://github.com/octodns/octodns/archive/refs/tags/v0.9.13.tar.gz
+	md5sums = 1530ff647daf79792e4cd94763c56cb3
+
+pkgname = python-octodns
