@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Gerard Ribugent <ribugent@gmail.com>
 pkgname=jenv
 pkgver=0.5.4
 pkgrel=1
