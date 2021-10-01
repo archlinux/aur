@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-vulkan-tools
 	pkgdesc = Vulkan Utilities and Tools (mingw-w64)
-	pkgver = 1.2.191
+	pkgver = 1.2.194
 	pkgrel = 1
 	url = https://www.khronos.org/vulkan/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = mingw-w64-vulkan-tools
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.2.191.tar.gz
-	sha256sums = 7d013cd45cbd23929780c43242662f891a266853b629fdb371afd2ee4109eef6
+	source = https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.2.194.tar.gz
+	sha256sums = bf7eea7c4eecaa705666c926273fc43ebf2f9661e69321d0f4b02f95c1f6dd3e
 
 pkgname = mingw-w64-vulkan-tools
