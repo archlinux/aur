@@ -1,9 +1,27 @@
-From f2ec21c0b73d37ce252afc4d74072f80fe336edf Mon Sep 17 00:00:00 2001
+From 6b1881a52169644ae314fa082a2c4daa152c46b3 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Thu, 30 Sep 2021 04:11:49 -0700
-Subject: [PATCH] v5.14.9 s0ix patch 2021-09-30
+Date: Fri, 1 Oct 2021 08:26:54 -0700
+Subject: [PATCH] v5.14.9 s0ix patch 2021-10-01
 
 Squashed commit of the following:
+
+commit 9d22c6f69dce036dab2a4d17911bc2ce84df9537
+Author: Lijo Lazar <lijo.lazar@amd.com>
+Date:   Fri Oct 1 18:16:25 2021 +0800
+
+    drm/amdgpu: During s0ix don't wait to signal GFXOFF
+
+    In the rare event when GFX IP suspend coincides with a s0ix entry, don't
+    schedule a delayed work, instead signal PMFW immediately to allow GFXOFF
+    entry. GFXOFF is a prerequisite for s0ix entry. PMFW needs to be
+    signaled about GFXOFF status before amd-pmc module passes OS HINT
+    to PMFW telling that everything is ready for a safe s0ix entry.
+
+    Bug: https://gitlab.freedesktop.org/drm/amd/-/issues/1712
+
+    Signed-off-by: Lijo Lazar <lijo.lazar@amd.com>
+    Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
+    Reviewed-by: Mario Limonciello <mario.limonciell@amd.com>
 
 commit 0c5d3b01b4d999992439ca9f749e202cc0cc8578
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
@@ -139,12 +157,13 @@ Date:   Tue Jul 20 23:31:31 2021 -0700
     Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 ---
  drivers/acpi/processor_idle.c                 |  3 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c       | 14 ++-
  .../gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c    |  3 +
  .../gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c    |  3 +
  drivers/pinctrl/pinctrl-amd.c                 | 19 ++--
  drivers/pinctrl/pinctrl-amd.h                 |  1 +
  drivers/platform/x86/amd-pmc.c                | 90 +++++++++++++++++--
- 6 files changed, 108 insertions(+), 11 deletions(-)
+ 7 files changed, 120 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index 095c8aca141e..1b6529396371 100644
@@ -160,6 +179,45 @@ index 095c8aca141e..1b6529396371 100644
  			state->enter_dead = acpi_idle_play_dead;
  			drv->safe_state_index = count;
  		}
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
+index b4ced45301be..1795d448c700 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
+@@ -31,6 +31,8 @@
+ /* delay 0.1 second to enable gfx off feature */
+ #define GFX_OFF_DELAY_ENABLE         msecs_to_jiffies(100)
+ 
++#define GFX_OFF_NO_DELAY 0
++
+ /*
+  * GPU GFX IP block helpers function.
+  */
+@@ -558,6 +560,8 @@ int amdgpu_gfx_enable_kcq(struct amdgpu_device *adev)
+ 
+ void amdgpu_gfx_off_ctrl(struct amdgpu_device *adev, bool enable)
+ {
++	unsigned long delay = GFX_OFF_DELAY_ENABLE;
++
+ 	if (!(adev->pm.pp_feature & PP_GFXOFF_MASK))
+ 		return;
+ 
+@@ -573,8 +577,14 @@ void amdgpu_gfx_off_ctrl(struct amdgpu_device *adev, bool enable)
+ 
+ 		adev->gfx.gfx_off_req_count--;
+ 
+-		if (adev->gfx.gfx_off_req_count == 0 && !adev->gfx.gfx_off_state)
+-			schedule_delayed_work(&adev->gfx.gfx_off_delay_work, GFX_OFF_DELAY_ENABLE);
++		if (adev->gfx.gfx_off_req_count == 0 &&
++		    !adev->gfx.gfx_off_state) {
++			/* If going to s2idle, no need to wait */
++			if (adev->in_s0ix)
++				delay = GFX_OFF_NO_DELAY;
++			schedule_delayed_work(&adev->gfx.gfx_off_delay_work,
++					      delay);
++		}
+ 	} else {
+ 		if (adev->gfx.gfx_off_req_count == 0) {
+ 			cancel_delayed_work_sync(&adev->gfx.gfx_off_delay_work);
 diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c b/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
 index 0a5d46ac9ccd..626d7c2bdf66 100644
 --- a/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
