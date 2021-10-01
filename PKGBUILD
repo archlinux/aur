@@ -2,8 +2,8 @@
 # Contributor: Echizen Ryoma <echizenryoma.zhang@gmail.com>
 
 pkgname=opensnitch
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
@@ -16,11 +16,13 @@ depends=(
     'python-pyinotify'
     'python-slugify'
     'python-pyqt5'
-    'abseil-cpp')
+    'abseil-cpp'
+)
 makedepends=(
     'go'
     'python-grpcio-tools'
-    'python-setuptools')
+    'python-setuptools'
+)
 optdepends=(
     'logrotate: for logfile rotation support'
     'hicolor-icon-theme: for gui'
@@ -29,8 +31,12 @@ backup=(
     'etc/opensnitchd/default-config.json'
     'etc/opensnitchd/system-fw.json'
 )
-source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('35d9811f9b8c3dc073231dfe20c21151280fdb90a0bc355617b5a2f2109e7f9590579f73ceed944447004bc0e8609c78c90bb0b21b95bb339cf4acbb8aca0fa7')
+source=(
+    "$url/archive/v$pkgver.tar.gz"
+)
+sha512sums=(
+    '58bc7eecdf129d219f2b4f16fccfd4788af02480f89e4042577a032114ddba176bc53ca299e60057ddd45b946de3cd89a5d21e3dad120aeedff0f62ce2b278a5'
+)
 
 prepare() {
     cd "$srcdir/opensnitch-$pkgver"
@@ -39,7 +45,7 @@ prepare() {
 
 build() {
     cd "$srcdir/opensnitch-$pkgver"
-    
+
     export GOPATH="$srcdir/gopath"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -48,10 +54,10 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=mod"
 
     export PATH="${GOPATH}/bin:${PATH}"
-    
+
     go install github.com/golang/protobuf/protoc-gen-go
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
-    
+
     echo "$(whereis protoc-gen-go)"
     echo "$(whereis protoc-gen-go-grpc)"
 
