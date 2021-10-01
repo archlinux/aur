@@ -29,6 +29,5 @@ package() {
   export PYTHONHASHSEED=0
   python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  cd "${pkgdir}"
-  rm -r "$(python -c "import site; print(site.getsitepackages()[0])")/${_base//-/_}/__pycache__"
+  rm -r "${pkgdir}/$(python -c "import site; print(site.getsitepackages()[0])")/${_base//-/_}/__pycache__"
 }
