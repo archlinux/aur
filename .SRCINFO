@@ -1,7 +1,7 @@
 pkgbase = multichain-alpha
 	pkgdesc = MultiChain open source platform for private blockchains - version 4 alpha
 	pkgver = 2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/MultiChain/multichain
 	arch = x86_64
 	license = GPLv3
@@ -11,8 +11,7 @@ pkgbase = multichain-alpha
 	provides = multichain-alpha
 	source = https://github.com/MultiChain/multichain/archive/2.0-release.tar.gz
 	source = multichain-boost-openssl.patch
-	md5sums = 1c7f36172ffc0a48cf4c4f8740c2efa9
-	md5sums = f3655179f4b1778afb367801aca87ae0
+	sha256sums = 6bb8d2aafa64febae40ddc610ef57ea628840ae982acfb05e3a1d2c085ff7111
+	sha256sums = 3837109b8654bd498ed6ddb9a43032cd8fa6343ac9fa4cb9506a0d8ea4953bc7
 
 pkgname = multichain-alpha
-
