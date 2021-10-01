@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Helvum
-GenericName=Helvum
-Comment=PipeWire Patchbay
-Exec=helvum
-Terminal=false
-Type=Application
-Categories=AudioVideo;

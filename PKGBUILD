@@ -2,19 +2,17 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=helvum
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='GTK-based patchbay for pipewire, inspired by the JACK tool catia'
 arch=('x86_64')
 url='https://gitlab.freedesktop.org/ryuukyu/helvum'
 license=('GPL3')
 depends=('gtk4' 'pipewire')
-makedepends=('rust' 'clang' 'semver')
+makedepends=('rust' 'clang' 'semver' 'meson')
 conflicts=('helvum-git')
-source=("https://gitlab.freedesktop.org/ryuukyu/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-    "${pkgname}.desktop")
-sha512sums=('32f79d1df8cab164c16745744ade36dccd03e4ea51ae62231c56c575eea4b8d82d4263928e70c158d8547765d3fafc4fb817cdffc120a8a46fd6e9e313bacba1'
-    '0a76aa3b7c98d08ded9d4c7a2254faa0b83a2f2339db81b995819b0f0e4721cf79df17473ca22a4d8aab161b162e70f7e63b728e603c6b9cb09f2f361aa8e537')
+source=("https://gitlab.freedesktop.org/ryuukyu/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('6a8bafb6302d2638e76d22f348bba1ca222857d5dde42f178853151bf50161574e1a534d7194decab4677651d152ac38dcefa3cfde28ea8630ca0360c3b88868')
 
 # This package needs at least rust 1.51 to build correctly: https://gitlab.freedesktop.org/ryuukyu/helvum/-/issues/4
 # No proper solution to handle this was implemented in rust so far: https://rust-lang.github.io/rfcs/2495-min-rust-version.html
@@ -27,24 +25,17 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
+  arch-meson "${pkgname}-${pkgver}" build
+  meson compile -C build
 }
 
 package() {
-  # Installs desktop entry
-  install -dm755 "${pkgdir}/usr/share/applications"
-  install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-  # Changes path
-  cd "${pkgname}-${pkgver}"
+  meson install -C build --destdir "${pkgdir}"
 
   # Installs license
+  cd "${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Installs binary
-  install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:
