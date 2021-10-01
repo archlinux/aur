@@ -17,6 +17,8 @@ source=('dump978::git+git://github.com/flightaware/dump978'
         'dump978.default'
         'dump978.sysusers'
 	'dump978.service')
+provides=("dump978=${pkgver}" "dump978-fa=${pkgver}")
+conflicts=('dump978' 'dump978-fa')
 
 sha256sums=('SKIP'
             '95b98905c6dc330392244aee324c13900392a09088d3075b69fb08df150f6930'
