@@ -51,7 +51,7 @@ _major=5.14
 _minor=9
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,12 +72,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0007-Revert-block-bfq-honor-already-setup-queue-merges.patch"
          # the main kernel config files
         'config')
 
@@ -320,12 +321,13 @@ sha512sums=('987ae9ceba83ba12e5e1962118831dbc47eaf26848cfd83b93db58f004dbc3c8d10
             'SKIP'
             '966bac05a1f495cea22b494f7c98adcca56b0e0c1971c8627efe97504c3eba980d2874b15a57503ecaac6481bcc504ab859e0b8489ff9fe8e3d87049fd915d36'
             'b1aef4f4e7350ce8132e019f76a2ac68bee8a46eb981598fbda11402e62a8bcdfd2f49e5b2cc5dcf2e96c88ad047af12d53abb9fda05c9f7acec37879e5240db'
-            '99bb98c2d7b72250161a0f98d0b984a83b099f2ff0aa9c043da460b75096a5a9e83f330546f1fd6e2ad1f2c9ab92de77e9899f9c99ddb769853d2c943eaecba8'
-            '63e861587d159ad43c8001b1d109b184873cd8880dc33430e73e010c41329a4e58b7236d02091ab9dde93aac9b1e55ac2e6903125bc9c14f0e5220c29a099ddf'
-            '851107e0a6d6df8800fd14fa63c7cc0975b7e66d6857bcb7588e21cdf5ee7384a610781ef662613c65687401e60f0b827b4badd4b4383ae4522518dc6164fcad'
-            '7d17683ed8af2b569023b985ce98478e16c0a1f6e22318adc23533533c17ff19286395e87d00bc526e1eb0087bbbd5f757b4fa8d0d646d6945161eb8e48c296a'
-            '0140a68463202b9607c8ab97f5ac15cf076fe8bd09004414cda41904d1db58adcadf71b0617493f977453ed9878fd79245b4876f0bcf3e2945069f288febd664'
-            '904983b1919f60a59afa3144901cc528f50246d1dc56a888df01cf7dc77c28b7ec924b09f92cd53f59a33d1b065510deae6029ccfd9605618ed5b429b7052db2'
+            'bae589fa3f608c63ed20e691332824f810de528139d64a98d69372014c00dfbe6d6f223f9a5584e077861bc8144bbd5caffa02e19f0c8fa65c36b1711002889b'
+            'fa2476226dbb24fc3292a0f9d091d3c47f76bc65ccb9abc8a4dcd5b460d0586b269ce3cbcf44cb30480e228c883a113986f8b22f5203844ff38ba2a318fcf34e'
+            '18c738fd6bb9cd9be3050b3a229533bc645d910745acc551b72c3f4cd363de914db2a3f4688cee88d87fffdd76b8ca8b2def2848ceffee9f8eda7ee02d4214e3'
+            'ed21fc6fad465126a9a1a02696af04130208e45eb8501704f60987578ffb02f81854408e183d1fb442ff472c98e22c79933e9608ef79bdf38e29ec714d247e1f'
+            'a1414aaccb2fda6e876945388281d89526df26490f81c16a56663998216f5b235e35defdd61525638b0e87b0ac8eaf2839d089fd6ea85e1d93d485b48ec27a5d'
+            'e70880c7047d6f17745b7fd6ccf4e7f97cdd629529ab28e2045263913de49bbe0b9db61157444990f287720c736778e4192a48b8b492a91ea222896d67e68585'
+            '3a1314c3d9de1242e2f2e56019d476d114bbab13b8d46e85d9cfaacfa7c09c46b0d3ed2c3e03ca94961a5be8b28def4369c0424131c77fcef5dca43254a6f129'
             '5182032a24ceb3bc918ebd63dde66ce0d61d84184a1407c4c807971a0c08a2ee82042d73ce7bb8b2f1f3d82b3829cbc457b76ec12da4ec800e557313025d3e08')
 
 validpgpkeys=(
