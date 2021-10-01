@@ -5,7 +5,7 @@ _base='opensnitch'
 _url="https://github.com/$_author/$_base"
 _kver='5.8'
 pkgname="$_base-ebpf-module"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="eBPF process monitor module for $_base"
 arch=('any')
@@ -15,7 +15,7 @@ depends=("$_base=$pkgver")
 makedepends=('clang' 'llvm' 'bc' 'rsync')
 source=("$pkgname-${pkgver}_$_base-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz"
 		"$pkgname-${pkgver}_linux-$_kver.tar.gz::https://github.com/torvalds/linux/archive/v$_kver.tar.gz")
-b2sums=('cce63863957e01cedb4e202412e0806f21f39a8c22fca3cda5ef21a97a024a56cee88ae0b9e517277d0d4fae56e122600fa7fb1be860e6803c172feb68dba666'
+b2sums=('f04866a41306f92539a6763bd03994d8a0fa414276a9ad529b09098451e1fd295f8093246a5782add25540380c1d4bdb950a216ec5faef7d024400812638d2df'
 		'71bdb39b5477d244cfc735e98387f74bffd7d35f32faf7db6097d2d51d5ee9af644c1ad6a9d1a8f58713689e66ca8f881e0728031a0903e2ef5f82b209e516da')
 
 #pkgver() {
