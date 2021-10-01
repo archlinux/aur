@@ -1,0 +1,16 @@
+pkgbase = ipmt-git
+	pkgdesc = Internet protocols measurement tools
+	pkgver = r98.27a5853
+	pkgrel = 1
+	url = https://gricad-gitlab.univ-grenoble-alpes.fr/Drakkar-LIG/ipmt/
+	arch = x86_64
+	license = custom:CeCILL2
+	checkdepends = net-tools
+	makedepends = git
+	depends = glibc
+	provides = ipmt
+	conflicts = ipmt
+	source = ipmt::git+https://gricad-gitlab.univ-grenoble-alpes.fr/Drakkar-LIG/ipmt.git/#branch=master
+	md5sums = SKIP
+
+pkgname = ipmt-git
