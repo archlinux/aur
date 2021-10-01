@@ -1,0 +1,15 @@
+pkgbase = perimeter81
+	pkgdesc = Perimeter81 agent application
+	pkgver = latest
+	pkgrel = 1
+	url = https://support.perimeter81.com/docs/downloading-the-agent
+	arch = x86_64
+	license = custom:LICENSE
+	depends = systemd
+	options = !strip
+	source = https://static.perimeter81.com/agents/linux/snapshot/latest/Perimeter81.deb
+	source = perimeter81helper.service
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = perimeter81

@@ -1,0 +1,331 @@
+# Copied from https://www.perimeter81.com/legal/terms
+
+Terms of Service
+1. Terms Of Service
+
+These Terms of Service (as defined below) are a legally binding agreement between Perimeter 81 and you.
+The term “Perimeter 81”, “us“, “we” or “our“, refers to Perimeter 81 Ltd., the owner of the Service (as defined below), Perimeter 81 LLC or any subsidiary or affiliate of Perimeter 81 Ltd. as identified on the invoice provided to you upon purchase of a Subscription Plan. The term “you” refers to the User (as defined below).
+These Terms of Service govern your access to the Site and use of the Service and the features contained therein, whether through personal computers, mobile devices and any other devices which are supported by our Service, as set out in our support segment on our Site.
+
+These Terms of Service are void where prohibited by law, and the right to access to the Site and use the Service is revoked in such jurisdictions.
+
+If you are using our Service through our App (as defined below), then, in the event (i) of any inconsistency or contradiction between this Terms of Service and the terms of use and/or the usage rules of the application store from which the App was downloaded, or in the event that (ii) these Terms of Service are found to be less restrictive than the terms of use and/or usage rules (as the case may be) of such application store, or that (iii) these Terms of Service will not be enforceable in their entirety for any reason (but without derogating from “Severability” in Section 23 below), then the terms and/or usage rules (as the case may be) of the applicable application store, shall prevail.
+1.1 Accepting the Terms of Service
+
+These Terms of Service are effective as of the date you access to the Site or use the Service, and such access or use indicates your acceptance of all of the terms and conditions of these Terms of Service.
+
+If you are an individual entering into these Terms of Service on behalf of a company or other legal entity, you represent that you have the authority to bind such company or other legal entity to these terms and conditions, in which case the terms “you” or “your” shall refer to such entity. If you do not have such authority, or if you do not agree with these terms and conditions, you may not access the Site or use the Services.
+
+We thought you might be most interested in the following topics, so we gathered some useful shortcuts:
+
+    Acceptable Use – you may use our Service for legal purposes only. Use of the Service for any unlawful purposes or for promotion of illegal activities is strictly prohibited. For more information press here.
+    Subscription Plans, Cancellation Policy and Refunds.
+    Collection of Information – we are very transparent regarding the information we collect and the use thereof. For more information press here.
+    Uptime and SLA – as with any other service, the Service may be subject to unavailability for a variety of factors beyond our control. For more information press here . Notwithstanding the above, we advise you to fully read these Terms of Service.
+
+1.2 Definitions
+
+For the purposes hereof:
+
+    “App” means Perimeter 81’s proprietary application known as “Perimeter 81”, for the provision of the Service, web app used for management and audit control, as available for downloading from our Site (for use on your personal computer and/or any other devices which are supported by our Service as above) or at Google Play and App Store (for use on your mobile devices).
+    “Comments” means comments, ratings and/or reviews written and posted on the Site by you or any other User, regarding the Service or otherwise.
+    “Content” means all of your data, information, text, pictures, and other content, that are uploaded, routed or transmitted through the use of the Service.
+    “Features” means any features of the Service.
+    “Servers Locations” mean Perimeter 81’s servers and/or its third party contractors’ servers.
+    “Service” means Perimeter 81’s secure network as a service which is a method used to add security and privacy to companies networks through the cloud as a service.
+    “Site” means Perimeter 81’s internet site for the provision of the Service, found at https://www.perimeter81.com/.
+    “Software” means Perimeter 81’s proprietary and generic software (in object code only) known as  Secure Network as a Service and related documentation (except for source code), used for the provision of the Service.
+    “Terms of Service” means these Terms of Service and Perimeter 81’s Privacy Policy.
+    “User” means any person accessing the Site, or using the Service.
+    “Subscription Plan” means the subscription plan entered between Perimeter 81 and yourself for the provision of the Service. 
+    “Billing Cycle” means the period between the beginning of the Subscription Plan and the last day of the last month of the Subscription Plan.
+    “Term” means the period of time between the payment for the Subscription Plan and the next Billing Cycle.
+    “Tenant” means the dedicated workspace for you including the management portal, user applications portal, and the authentication screen.
+
+Description of Service, Plans, Cancelation and Refunds
+2. License to Use
+
+    2.1 This license, granted to you by PERIMETER 81, is limited to a non-exclusive, revocable, non-transferable, non-sublicensable and worldwide license to (i) access the Site and (ii) use the Service solely for your personal, non-commercial, receipt and use of the Service as provided by PERIMETER 81, in the manner permitted by these Terms of Service, (i) on your enterprise computers, (ii) on any mobile phone or other mobile device operated by Android™, as set forth in the Google Play Terms of Services, (iii) on any iPhone or any other Apple supported device as permitted by the Usage Rules of Apple Inc. (“Apple”) as set forth in the App Store Terms of Service (the Google Play Terms of Services and the App Store Terms of Service are each referred to herein as the “Usage Rules”) and/or (iv) any other devices which are supported by our Service, as set out in our support segment on our Site.
+    2.2 You may not use the App and/or the Service and may not accept these Terms of Service if you are using a mobile phone or other mobile device operated by Android™ or if you are using an iPhone or any other Apple supported device, in each case where the restrictions on installing other apps not approved by Google or by Apple (as the case may be) have been bypassed (known as ‘Jailbreaking’ or ‘Rooting’).
+
+3. Upgrades
+
+These Terms of Service will govern any upgrades provided by PERIMETER 81 that replace and/or supplement the original App, unless such upgrade is accompanied by a separate license in which case the terms of that license will govern.
+From time to time, an upgrade to the latest version of the App may be required in order to make use of the Service or to take advantage of new features of the Service. Some upgrades may be mandatory upgrades in order to address new and/or emerging security threats or critical bugs identified in the App or Service. You are required to immediately upgrade the App when new releases are made available. You hereby acknowledge that having an outdated version of the App may result in your exposure to security vulnerabilities and/or other adverse events.
+4.The Service
+
+Perimeter 81 is a fully cloud-based secure network as a service platform. We call it a “platform” because the solution allows each business to build its own network architecture and create custom configurations access and security policies.
+4.1 Your Perimeter 81 Tenant:
+
+In order to use our Service, you are required to open a Tenant. In order to do that you must complete the registration process by providing us with current, complete and accurate information as prompted by the applicable registration form.
+
+You are solely responsible for maintaining the confidentiality of your password and account. Furthermore, you are entirely responsible for any and all activities that occur under your account. Your Tenant users are also solely responsible for maintaining the confidentiality of their passwords and accounts. 
+
+You agree to notify Perimeter 81 immediately of any unauthorized use of your account or any other breach of security. Perimeter 81 will not be liable for any loss that you may incur as a result of someone else using your password or account, either with or without your knowledge. However, you could be held liable for losses incurred by Perimeter 81 or another party due to someone else using your account or password. You may not use anyone else’s Tenant without the permission of the Tenant holder (“Administrator”). You are exclusively responsible for any and all activities that occur under your Tenant.
+4.2 Configuration and Integration:
+
+Perimeter 81 may integrate into existing networks and/or on-premise resources and/or cloud resources and/or SaaS applications and/or Firewalls and/or Identity Providers and/or other network components and/or authentication components and/or physical or virtual servers. Perimeter 81 will provide assistance and consulting in connecting the Service to the resources’ network gateways, however, Perimeter 81 will not be responsible for the internal network routing and/or Firewall rules and/or Security configurations and/or any other internal configuration required to route network traffic from/to the Service.
+
+Perimeter 81 will not be held responsible for networking and/or security configurations done within your resources and/or networks and such configurations will be your sole responsibility.
+4.3 Subscription Plan:
+
+Perimeter 81 offers several Subscription Plans for the provision of the Service, on a monthly or yearly basis (the “Subscription Plan”). The price for each respective Subscription Plan is based on the length and features of such Subscription Plan (the “Price”). The Subscription Plans and the applicable Price thereof are subject to change from time to time by Perimeter 81, without liability to Perimeter 81 or any prior notice required. Any additional and/or future services may not be included in the Price, at Perimeter 81’s sole discretion.
+
+The Subscription Plan Term will begin at the moment of cleared payment and end at the end of the Billing Cycle of the Subscription Plan. Any reversal of payment will result in the immediate termination of the Subscription Plan Term and void any credits and/or discounts and/or any commitments provided by Perimeter 81.
+4.4 Means of Payment:
+
+Once you shall choose your Subscription Plan as above, and in consideration thereof, you shall be required to choose a method for payment from any of several third-parties payment processors that are external to our Site (such as payment via credit card, ACH, or others) (the “Third Party Payment Processors”). All payments are recurring (i.e., shall be automatically renewed at the end of the Billing Cycle of your Subscription Plan). You shall be solely liable for any fees, commissions, or rates of the Third-Party Payment Processors of your choosing.
+4.5 Tax
+
+It is your responsibility to determine what, if any, taxes apply to the payments you make, and it is your responsibility to collect, report and remit the correct tax to the appropriate tax authority. Perimeter 81 is not responsible for determining whether taxes apply to your transaction, or for collecting, reporting, or remitting any taxes arising from any transaction. Sales tax, Value Added Tax and other taxes may be added to your Subscription Plan payments to the extent applicable (as determined by Perimeter 81).
+
+In the event that you are required to deduct or withhold taxes of any kind from payments you make pursuant to a Subscription Plan, such withheld amount shall be grossed up and incurred solely by you, and the amount paid by you to the Company on account of your Subscription Plan shall equal the amount which would have been received by the Company had such payment been made free of such tax deduction or withholding.
+4.6 Term
+
+Automatic Renewal. Your Subscription Plan will automatically be renewed for successive terms on the applicable Billing Cycle (monthly or annual), unless you cancel your Subscription Plan by following the Subscription Cancellation Process within your Tenant in advance of the renewal date (“Cancellation”). 
+
+Perimeter 81 may from time to time, increase fees or cancel offered Subscription Plans to enter into effect upon the subsequent billing cycle, in such event Perimeter 81 will provide you at least 30 days’ written notice of such price increase and offer you the option to cancel the Subscription Plan prior to such billing cycle.
+
+Billing Cycles start at the beginning of the month and end at the last day of the last month of your Subscription Plan. If you purchased a Subscription Plan in the middle of the month, you will be charged for a prorated amount for the first cycle on the day of the purchase. 
+
+Co-Term. Should you elect to purchase the right to use additional features or add additional Users for an existing Subscription Plan (an “Additional Order”) during the term of such Subscription Plan, the initial term of such Additional Order shall be pro-rated to concur with the existing Subscription Plan so that the renewal or expiry of the Subscription Plan and the Additional Order shall take effect on the same date. Applicable fees shall be pro-rated in accordance with the remaining term of the existing Subscription Plan. 
+4.7 Cancellation; Refund; Policy;
+
+If you are a new user and have canceled your Subscription Plan by following the Cancellation process within the first thirty (30) days following the first invoice for the Service, you shall be entitled to receive a full refund following such cancellation by contacting us at support@Perimeter81.com. Otherwise, all payments made according to this Terms of Service are final and Perimeter 81 will not reimburse or refund any payments for any reason. Should your Tenant be hacked, you will not be refunded for any losses, even if the loss of control results in the deletion of your Tenant. If you are using our Service through our App, any refunds are also subject to the Usage Rules of the applicable store from which you have purchased our App (i.e., Google Play or App store, as the case may be).
+Should you, by any means or way, revoke or cancel any of your payments to Perimeter 81, Perimeter 81 shall be allowed to supply the third-party clearing or payment service any information about such transaction; including, but not only, your email address, your IP address and activity pursuant to such denied transaction.
+
+You hereby commit to paying in full any unpaid invoices that were issued prior to the Subscription Plan Cancellation. Canceling your Subscription Plan will not void any outstanding payments for the Subscription Period. 
+
+In case you and/or your Users are using our Service through our App, you may opt-out of the Service at any time, by uninstalling our App from your device/s. However, please note that opting-out shall not automatically cancel your Subscription Plan (and/or entitle you to receive a refund), and the Services would still be available for use by you and/or your Users until the end of your Subscription Plan.
+4.8 The Service – General Provisions
+
+    You expressly acknowledge and agree that use of the Service, and any consequences thereof, are at your sole risk, responsibility and liability.
+    The Service that Perimeter 81 provides, including, but not limited to, the Features thereof, may change from time to time without prior notice.
+    Your right to use the Service shall terminate upon expiration of your Subscription Plan Term (e.g., in the event you have chosen a yearly Subscription Plan, your right to use the Service shall terminate upon the end of such year) or upon your cancelation of any of your payments to Perimeter 81. In addition, Perimeter 81 may stop (permanently or temporarily) providing the Service (or any Features within the Service) to you or to Users generally, at Perimeter 81’s sole discretion at any time, and without liability to Perimeter 81 or notice.
+    If Perimeter 81 permanently stops providing the Service to you, then these Terms of Service shall be terminated (except for provisions which by their nature are intended to survive termination).
+    Perimeter 81 also retains the right to create limits on use to you or to Users generally, at Perimeter 81’s sole discretion at any time, and without liability to Perimeter 81 or notice.
+
+    Access to our Site is permitted on a temporary basis, and we reserve the right to withdraw or amend the services we provide on our Site without notice. We will not be liable if for any reason our Site is unavailable at any time, for any period of time and/or at any location worldwide. From time to time, we may restrict access to some parts of our Site, or our entire Site, to Users who have registered with us. You are responsible for making all arrangements necessary for you to have access to our Site. You are also responsible for ensuring that all persons who access our Site through your internet connection are aware of these terms, and that they comply with them.
+    We aim to update our Site regularly, and may change the content thereof at any time. If the need arises, we may suspend access to our Site, or close it indefinitely. Any of the content on our Site may be out of date at any given time, and we are under no obligation to update such content.
+
+5. Comments; Content
+
+While accessing our Site you may post Comments, provided such Comments shall comply with the provisions of this Section 5 and of Section 8.1 below.
+
+    All Comments posted on the Site are the sole responsibility of the person or entity who originated, created and/or posted such Comments. Perimeter 81 has the right, but not the obligation, to monitor the Comments, at its sole discretion, however, we cannot and do not take any responsibility for such Comments.
+    By accessing our Site, you acknowledge and agree that Perimeter 81 is not responsible for examining or evaluating the Comments, accuracy, completeness, timeliness, validity, intellectual property compliance, legality, appropriateness, decency, truthfulness, integrity, quality or reliability, or any other aspect of the Comments.
+    Perimeter 81 does not warrant or endorse, does not assume and will not have any liability or responsibility to you or any other person for any Comments.
+    You agree and acknowledge that you are entirely responsible for all Comments you post, or otherwise make available on the Site.
+    You agree and acknowledge that any use or reliance on any Comments is at your own risk.
+    You understand and agree that in viewing the Site, you may be exposed to Comments that might be factually inaccurate, and/or may include content which may be deemed offensive, indecent, or otherwise objectionable to you, and which may or may not be identified as having explicit language, and you hereby waive any legal or equitable rights or remedies you have or may have against us with respect to any such content.
+    The Comments you post on the Site and the sharing of such Comments are done at your own risk. Any Comments posted by you to the Site may be saved, copied, republished or otherwise used by any person accessing the Site, and we cannot control the use of the Comments by any such person.
+    You understand and acknowledge that, even after removal by you, copies of any Comments posted on the Site by you may be used or otherwise utilized if other persons who have access to the Site have copied or stored such Comments.
+    Perimeter 81 does not warrant against deletion of any Comments, or the failure to post any Comments on the Site.
+    You retain your (or your licensors’) rights to any Comments you post on the Site. You hereby grant to us a non-exclusive, irrevocable, perpetual, transferable, sub-licensable, fully paid up, royalty-free, worldwide license to use, copy, reproduce, process, adapt, modify, publish and display such Comments on the Site.
+    In addition, you hereby grant to any viewers of the Site, a non-exclusive, irrevocable, perpetual, transferable, sub-licensable, fully paid up, royalty-free, worldwide license to access your Comments through the Site, and to use, reproduce, distribute, such Comments to the extent permitted by the functionality of the Site and under these Terms of Service.
+    You represent and warrant that you have all the rights, power and authority necessary to grant the rights granted herein to us and to other viewers of the Site with respect to any Comments that were posted by you to the Site.
+
+Perimeter 81 has no direct visibility to the Content transmitted by you while through the Service. Therefore, Perimeter 81 will make no effort to validate any of the Content for correctness or usability. Perimeter 81 reserves the right to reject the Content if it is not “server-ready”. Perimeter 81 will notify you of its refusal of the Content and afford you the opportunity to modify the Content to satisfy Perimeter 81’s requirements for the Service.
+
+You have the sole and exclusive ownership of the Content, including all intellectual property rights related thereto. You hereby grant to Perimeter 81, during the term of these Terms of Service, a non-exclusive, worldwide, fully paid up and royalty-free license to use, copy, store and display the Content solely to the extent necessary to provide the Service to you.
+
+You hereby represent and warrant that: (a) your use of the Service shall at all times comply with the terms of these Terms of Service; (b) during the term of these Terms of Service, and at all times during your use of the Service, you shall comply with all applicable laws, rules and regulations; and (d) you shall not use the facilities or capabilities of the Service to conduct any illegal activity, solicit the performance of any illegal activity, or engage in any other activity which infringes upon the rights of Perimeter 81 or any third party. If you breach any of the warranties contained in this Section 5, Perimeter 81 may, in addition to any other rights it may have in law or equity, exercise its right to terminate these Terms of Service.
+6. External Sites
+
+The Site may enable access to certain third-party websites. In addition, you may access to third party websites while using the Service (“External Sites”).
+
+    The use of and access to External Sites may require Internet access and additional terms of service, which you accept.
+    You understand that by using and/or accessing any of the External Sites, you may encounter content that may be deemed offensive, indecent, or objectionable, and which may or may not be identified as having explicit language, and that the results of any search or entering of a particular URL may automatically and unintentionally generate links or references to such offensive, indecent or objectionable material.
+    You understand and agree that by using and/or accessing any External Sites, you may be exposed to content that might be factually inaccurate, and/or may be deemed offensive, indecent, or otherwise objectionable to you, and which may or may not be identified as having explicit language, and you hereby waive any legal or equitable rights or remedies you have or may have against us with respect to any such content.
+    Nevertheless, if you decide to leave our Site and access such third-party External Sites, you do so at your own risk, and you should be aware that these Terms of Service and our Privacy Policy no longer apply. You should review the applicable terms and policies, including privacy and data gathering practices, of any site to which you navigate from our Site.
+    By using and/or accessing the External Sites, you acknowledge and agree that we are not responsible for examining or evaluating the content, accuracy, completeness, timeliness, validity, copyright compliance, legality, decency, quality or any other aspect of the External Sites, and that we shall not have any liability or responsibility to you or any other person with regard to any content in the External Sites, including (but not limited to) content that may be found to be offensive, indecent, or objectionable.
+    We do not warrant or endorse any advertising, products or other materials on or available from such External Sites and are not liable for any loss or damage which may be incurred by you as a result of any reliance placed by you on the completeness, accuracy or existence of any advertising, products or other materials on, or available from, such External Sites, nor for any services, or products that you access, download, receive or buy while using the Service.
+    In addition, External Sites that may be accessed from the Site and/or while using the Service are not necessarily available in all languages or in all countries.
+    We make no representation that such External Sites are appropriate or available for use in any particular location. To the extent you chose to access such External Sites, you do so at your own initiative and are responsible for compliance with any applicable laws, including but not limited to applicable local laws.
+    The External Sites are not under the control of PERIMETER 81 and, as such, PERIMETER 81 is not liable for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any External Site. We may, but do not have any obligation to, block information, transmissions or access to certain information, services, products or domains to protect the Service, our network, the public or our Users.
+    You may post on the Site links to External Sites as part of a Comment, provided (a) that you do not remove or obscure the copyright notice or other notices on such External Sites, (b) that you do not deep-link to any of the External Sites (i.e., include a link to any web page other than to the home page of such External Sites) for any purpose, (c) the External Site to which you provide links from the Site does not engage in illegal or pornographic activities and are in compliance with all the provisions in these Terms of Service regarding Comments and use of the Site.
+    We reserve the right, at any time and from time to time, without liability to us or notice, to change, suspend, disable, or remove, External Sites you posted or your access to any External Sites, and/or to impose limits on your use of, or access to, certain External Sites.
+
+Special caution relating to location data
+
+Location data provided, whether by any External Sites or as an integral part of the Site, is for basic navigational purposes only and is not intended to be relied upon in situations where precise location information is needed or where erroneous, inaccurate or incomplete location data may lead to death, personal injury, property or environmental damage. Use of real-time route guidance is at your sole risk. Location data may not be accurate. Neither we, nor any of our licensors’, guarantee the availability, accuracy, completeness, reliability, or timeliness of location data displayed by any External Site or as an integral part of the Site.
+7. Privacy
+
+    We do not disclose personally-identifying information to third parties except in accordance with our Privacy Policy. For more information press here.
+    PERIMETER 81 SHALL USE REASONABLE EFFORTS TO PROTECT INFORMATION SUBMITTED BY YOU IN CONNECTION WITH THE SERVICE, BUT YOU HEREBY ACKNOWLEDGE AND AGREE THAT YOUR SUBMISSION OF SUCH INFORMATION IS AT YOUR SOLE RISK, AND PERIMETER 81 HEREBY DISCLAIMS ANY AND ALL LIABILITY FOR ANY DISCLOSURE, LOSS OR LIABILITY RELATING TO SUCH INFORMATION IN ANY WAY.
+
+8. Restrictions on Use
+8.1 Restrictions on Use of the Site:
+
+You may not do any of the following while viewing or accessing the Site:
+
+    Use the Site otherwise than in compliance with these Terms of Service and all applicable local, state, federal, and national, laws, statutes, ordinances, rules and regulations;
+    Facilitate or encourage any violations of these Terms of Service;
+    Except as otherwise provided in these Terms of Service, copy, reproduce, print, download or save a copy, republish, display, perform, advertise, distribute, transmit, broadcast, decompile, reverse engineer, disassemble, attempt to derive the source code of, adapt, modify, create derivative works from, sell, rent, lease, loan or otherwise make available or exploit in any form or by any means all or any portion of the Site, for any purpose.
+    You may, however, print a copy of individual screens appearing as part of the Site solely for your personal, internal, non-commercial, or non-profit use or records, provided that any marks, logos, copyright notices, or other legends that appear on the copied screens remain on, and are not removed from the printed or stored images of any such screens;
+    Use an anonymizing proxy; use any robot, spider, other automatic devices, or manual process to monitor or copy our Site without our prior written permission;
+    Remove or alter any patent numbers, copyright notices, trademark notices or other proprietary notices or identifying marks, symbols or legends included in the Site;
+    Use the Site for generating and/or sending any unauthorized commercial communications (such as spam) or any contest, giveaway or sweepstakes, or any other type of promotion;
+    Use the Site to generate and/or distribute any Comment which is harmful, threatening, tortuous, abusive, causes harassment, defamatory, vulgar, obscene, libelous, hateful, is otherwise unlawful, false, inaccurate, misleading, malicious, or discriminatory or which harms minors in any way;
+    Use the Site to generate and/or distribute any Comment which is not “child-proof”;
+    Use the Site to generate and/or distribute any Comment which is directed at minors under the age of 18;
+    Use the Site to generate and/or distribute any Comment which contains, advertises or promotes reference (directly or by way of implication) to content that contains sexual content (including, but not limited to, nudity, graphic sex acts, or sexually explicit material), pornography, dating, or any other mature content of any kind. If PERIMETER 81 becomes aware of content with child pornography, we will report it to the appropriate authorities;
+    Use the Site to generate and/or distribute any Comment which contains, advertises or promotes reference (directly or by way of implication) to content that contains sexual content (including, but not limited to, nudity, graphic sex acts, or sexually explicit material), pornography, dating, or any other mature content of any kind. If PERIMETER 81 becomes aware of content with child pornography, we will report it to the appropriate authorities;
+    Use the Site to generate and/or distribute any Comment which Advertises, promotes or includes reference (directly or by way of implication) to violence of any kind (including, but not limited to, depictions of gratuitous violence); to alcohol, drugs or tobacco; to gambling of any kind; and/or to weapons of any kind;
+    Use the Site to generate and/or distribute any Comment which infringes or violates any patent, trademark, trade secret, copyright or other proprietary rights of any third party or violates any laws, contributes to or encourages infringing or otherwise unlawful conduct;
+    Use the Site for posting third-party copyrighted material, or material that is subject to other third-party proprietary rights, unless you have a formal license or permission from the rightful owner of the material or if you are otherwise legally entitled to post and/or send the material in question;
+    Use the Site to post any Comment which you do not have a right to make available under any law or under contractual or fiduciary relationships (such as inside information, proprietary and confidential information learned or disclosed as part of employment relationships or under nondisclosure agreements), and/or which it would be unlawful for us to use or possess in connection with the operation of the Site;
+    Use the Site for any unlawful purposes or for promotion of illegal activities (including, without limitation, provide material support or resources (or to conceal or disguise the nature, location, source, or ownership of material support or resources) to any organization(s) designated by applicable law as a terrorist organization);
+    Use the Site for sending other people’s private and confidential information, such as credit card numbers, street address or Social Security/National Identity numbers, without their express authorization and permission;
+    Use the Site for interfering with, or disrupting (or attempting to do so), the access of any person, host or network, including, without limitation, by uploading and/or sending software viruses or any other computer code, files or programs designed to interrupt, destroy or limit the functionality of any computer software or hardware; overloading, flooding, spamming, mail-bombing the Site; or by scripting the creation of Comments in such a manner as to interfere with or create an undue burden on the Site;
+    Do anything that could disable, overburden, or impair the proper working of the Site; and/or
+    Collect or store personal data about other Users in connection with the prohibited conduct and activities set forth in this Section 8.1 above.
+
+8.2 Restrictions on Use of the Service:
+
+Perimeter 81 is not a service to be used for criminal acts. It is a cyber security service. You may not do any of the following while accessing or using the Service:
+
+    Use the Service otherwise than in compliance with these Terms of Service and all applicable local, state, federal, and national, laws, statutes, ordinances, rules and regulations. You hereby agree not to violate any such applicable laws, statutes, ordinances, rules and regulations. It is your responsibility to know and comprehend any and all relevant laws related to any jurisdiction or venue that concerns you and your actions;
+    Facilitate or encourage any violations of these Terms of Service;
+    Use the Service for generating and/or sending any unauthorized or unsolicited content or commercial communications (such as spam);
+    Use the Service to generate and/or distribute any content which is, harmful, threatening, tortuous, abusive, causes harassment, defamatory, obscene, libelous, hateful, is otherwise unlawful, malicious, or discriminatory or which harms minors in any way, or otherwise objectionable material of any kind, including, but not limited to, any material which encourages conduct that may constitute a criminal offense, give rise to liability or otherwise violate any applicable local, national or international law;
+    Use the Service to generate, distribute and/or receive any illegal content, including, but not limited to, child pornography, whether via email, peer-to-peer file sharing, or any other electronic communication channel;
+    Use the Service to upload, download, post, reproduce, generate and/or distribute any content which infringes or violates any patent, trademark, trade secret, copyright or other proprietary rights of any third party or violates any laws, contributes to or encourages infringing or otherwise unlawful conduct, unless you have a formal license or permission from the rightful owner of the material or if you are otherwise legally entitled to post and/or send the material in question;
+    Use the Service for any unlawful purposes or for promotion of illegal activities (including, without limitation, provide material support or resources (or to conceal or disguise the nature, location, source, or ownership of material support or resources) to any organization(s) designated by applicable law as a terrorist organization);
+    Use the Site for sending other people’s private and confidential information, such as credit card numbers, street address or Social Security/National Identity numbers, without their express authorization and permission;
+    Use the Service for interfering with, or disrupting (or attempting to do so), the access of any person, host or network, including, without limitation, by uploading and/or sending software viruses or any other computer code, files or programs designed to interrupt, destroy or limit the functionality of any computer software or hardware;
+    Attempting to access, probe, or connect to computing devices without proper authorization (i.e., any form of “hacking”).
+    Do anything that could disable, overburden, or impair the use or enjoyment of the Service by any other User.
+    Use any torrent while using the Service and/or use the Service to generate, distribute and/or receive any torrent files.
+    Use the Service for any purpose other than lawful purposes.
+
+8.3 You are solely responsible and liable for, and PERIMETER 81 has no responsibility to you or to any third party for, any breach of your obligations under these Terms of Service and for the consequences (including any loss or damage which PERIMETER 81 may suffer) of any such breach.
+
+8.4 WE RESERVE THE RIGHT AT ALL TIMES (BUT WILL NOT HAVE AN OBLIGATION) TO REMOVE OR REFUSE TO DISTRIBUTE ANY REVIEW ON THE SITE AND/OR TO TERMINATE YOUR PERIMETER 81 ACCOUNT, AT ANY TIME, WITHOUT NOTICE AND AT OUR SOLE DISCRETION.
+
+8.5. Any use, or attempted use, of the Site and/or Service contrary to these Terms of Service is a violation of our rights. If you breach these Terms of Service, you may be subject to prosecution and damages.
+Further Terms
+9. No Warranty
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SITE AND THE SERVICE ARE PROVIDED “AS IS” AND “AS AVAILABLE”, WITH ALL FAULTS AND WITHOUT WARRANTY OF ANY KIND, AND PERIMETER 81 HEREBY DISCLAIMS ALL WARRANTIES AND CONDITIONS WITH RESPECT TO THE SITE, THE SERVICE AND/OR THE FEATURES, EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, ANY WARRANTIES OF COMPLETENESS, ACCURACY, AVAILABILITY, TIMELINESS, USEFULNESS, SECURITY, RELIABILITY OR NON-INFRINGEMENT OF THIRD PARTY RIGHTS, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, OF SATISFACTORY QUALITY, OR OF FITNESS FOR A PARTICULAR PURPOSE.
+
+PERIMETER 81 does not warrant against interference with your enjoyment of the Site, Service and/or Features, that the Site, Service and/or Features will meet your requirements, that the operation of the Site, Service and/or the Features will be uninterrupted or error-free, that defects in the Site, Service and/or the Features will be corrected, that the Site, Service and/or the Features will be free from corruption, attack, viruses, interference, hacking, or other security intrusions.
+
+The Service may be subject to unavailability for a variety of factors beyond our control, including, but not limited to, emergencies, third party service failures, transmission, equipment or network problems or limitations, interference or signal strength, and may be interrupted, refused, limited or curtailed. The accuracy and timeliness of data received while using the Service is not guaranteed and delays or omissions may occur. We are not responsible for data, messages or pages lost, not delivered, delayed or misdirected due to interruptions or performance issues with the Service or communications services or networks. We may impose usage or service limits, suspend services, or block certain kinds of usage in our sole discretion to protect Users or the Service.
+
+The Service may be subject to unavailability for a variety of factors beyond our control, including, but not limited to, emergencies, third party service failures, transmission, equipment or network problems or limitations, interference or signal strength, and may be interrupted, refused, limited or curtailed. The accuracy and timeliness of data received while using the Service is not guaranteed and delays or omissions may occur. We are not responsible for data, messages or pages lost, not delivered, delayed or misdirected due to interruptions or performance issues with the Service or communications services or networks. We may impose usage or service limits, suspend services, or block certain kinds of usage in our sole discretion to protect Users or the Service.
+
+We reserve our right to investigate matters we consider to be violations of these Terms of Service. We may, but are not obligated to, in our sole discretion, and without notice, remove, block, filter or restrict by any means any materials or information that we consider to be actual or potential violations of the restrictions set forth in these Terms of Service, and any other activities that may subject PERIMETER 81 or its customers to liability. PERIMETER 81 disclaims any and all liability in this respect.
+
+No advice or information, whether oral or written, obtained by you from us through the Site or otherwise shall create any warranty, representation or guarantee not expressly stated in these Terms of Service.
+
+Some jurisdictions do not allow the exclusion of implied warranties or limitations on applicable statutory rights of a consumer, so the above exclusion and limitations may not apply to you.
+10. Limitation of Liability
+
+TO THE EXTENT NOT PROHIBITED BY APPLICABLE LAW, IN NO EVENT SHALL PERIMETER 81, ITS DIRECTORS, OFFICERS, EMPLOYEES, LICENSORS AND/OR AGENTS, BE LIABLE FOR (A) ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE, EXEMPLARY, OR CONSEQUENTIAL DAMAGES WHATSOEVER, (B) LOSS OF REVENUES, LOSS OF PROFITS, LOSS OF DATA, LOSS OF USE, LOSS OF GOODWILL, BUSINESS INTERRUPTION; OR ANY OTHER LOSS, INJURY, CLAIM, LIABILITY, OR DAMAGE OF ANY KIND RESULTING IN ANY WAY FROM (I) YOUR ACCESS TO OR USE, INABILITY TO USE, OR RELIANCE ON THE SITE, THE SERVICE, THE FEATURES, ANY EXTERNAL SITE, AND/OR ANY REVIEW (II) ANY ERRORS, OMISSIONS OR OTHER INACCURACIES IN ANY CONTENT INCLUDED IN THE SITE WHICH IS FALSE OR WHICH CONSTITUTES PASSING-OFF, (III) YOUR INTERACTION ON THE SITE AND/OR THROUGH THE SERVICE AND ANY STATEMENTS OR CONDUCT OF ANY THIRD PARTY, (IV) OR ANY OTHER MATTER RELATING TO THE SITE, THE SERVICE AND/OR THE FEATURES, REGARDLESS OF THE THEORY OF LIABILITY (WHETHER BASED ON CONTRACT, TORT OR OTHERWISE), EVEN IF PERIMETER 81 HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES AND EVEN IF A REMEDY SET FORTH HEREIN FAILS OF ITS ESSENTIAL PURPOSE, AND/OR (C) FOR ANY THIRD PARTY CLAIMS AGAINST YOU.
+
+IN ADDITION, ALL RESPONSIBILITY OR LIABILITY OF PERIMETER 81, ITS DIRECTORS, OFFICERS, EMPLOYEES, LICENSORS AND/OR AGENTS FOR ANY DAMAGES CAUSED BY VIRUSES OR OTHER HARMFUL COMPONENTS IS HEREBY DISCLAIMED.
+
+IN NO EVENT SHALL THE TOTAL LIABILITY OF PERIMETER 81, ITS DIRECTORS, OFFICERS, EMPLOYEES AND/OR AGENTS, TO YOU AND/OR TO ANY THIRD PARTY, FOR ALL DAMAGES (OTHER THAN AS MAY BE REQUIRED BY APPLICABLE LAW IN CASES INVOLVING PERSONAL INJURY) EXCEED THE AMOUNT OF FIFTY U.S. DOLLARS (U.S. $50.00).
+
+Any cause of action by you with respect to the Site and/or Service, must be instituted within one (1) year after the cause of action arose.
+
+You are solely responsible for paying all fees and charges of any third-party vendors whose sites, products or services you access, buy or use via the Service. If you choose to use the Service to access websites, services or content, and/or purchase products from third parties, your personal information may be available to the third-party provider. How third parties handle and use your personal information related to their sites and services is governed by their security, privacy and other policies (if any) and not ours. We have no responsibility for third party provider policies, and/or for their or your compliance with such policies. Some jurisdictions do not allow the exclusion or limitation of liability for personal injury, or of incidental or consequential damages, so the limitations above may not apply to you.
+11. Indemnity
+
+You shall indemnify and hold PERIMETER 81 and its directors, officers, employees, agents, partners and licensors, harmless from and against all damages, losses, and expenses of any kind (including reasonable legal fees and costs), related to any demand or claim brought against PERIMETER 81 by any Users and/or any other third party, due to or arising out of any content you post on the Site and/or through the use of the Service, your use of the Site and/or the Service, your violation of these Terms of Service, and/or your violation of any rights of another party.
+12. Ownership
+
+You hereby acknowledge that the Site as a whole constitutes an original work of authorship of Perimeter 81, and that all rights, ownership, title and interest in and to the Site, including, but not limited to, the compilation, collection, selection, assembling, organization, coordination and arrangement of the content (whether or not such content is protected by copyright, or by any other intellectual property rights) within the Site, and the related instructions, databases and technology embedded therein or upon which it is based, and the related patent rights, copyrights, trade secrets, trademarks and all other related intellectual property rights (but excluding your Comments) – are and shall remain the sole and exclusive property of SSL (and/or by its licensors), who reserve all their rights in law.
+
+The Site and the Service contain proprietary information and material and trade secrets that are owned by Perimeter 81, and are protected by applicable intellectual property and other laws, including but not limited to copyright.
+
+You may use the Site and the Service only in accordance with and subject to these Terms of Service.
+With the exception of content posted on the Site by you, you are not granted any right and/or license, or ownership including any copyright, trademark and other intellectual property rights to the Site or to any content appearing on the Site, other than as explicitly set forth in these Terms of Service.
+Any third party trade or service marks present on content are trade or service marks of their respective owners. Such content may not be downloaded, copied, reproduced, distributed, transmitted, broadcast, displayed, sold, licensed, or otherwise exploited for any other purpose whatsoever except as permitted in these Terms of Service.
+
+THE USE OF THE SITE OR ANY PART OF THE SERVICE, EXCEPT FOR USE OF THE SITE AND SERVICE AS PERMITTED IN THESE TERMS OF SERVICE, IS STRICTLY PROHIBITED AND INFRINGES ON THE INTELLECTUAL PROPERTY RIGHTS OF PERIMETER 81 AND/OR OF OTHERS, AND MAY SUBJECT YOU TO CIVIL AND CRIMINAL PENALTIES, INCLUDING POSSIBLE MONETARY DAMAGES FOR COPYRIGHT INFRINGEMENT.
+
+You agree that ‘Perimeter 81’ trademarks, trade names, service marks, graphics, logos and other brand features used in connection with the Site and Service, are trademarks or registered trademarks of Perimeter 81 (collectively, the “Perimeter 81 Marks”). Nothing in these Terms of Service gives you a right to use or display the Perimeter 81 Marks in any manner.
+
+Perimeter 81 reserves all rights not expressly granted to you under these Terms of Service.
+
+All right, title, and interest in and to the Software, including (but not limited to) all intellectual property rights therein, are and shall remain the sole and exclusive property of Perimeter 81. You are granted no title or ownership rights in or to the Software.
+
+Without derogating from the above, Perimeter 81, reserves all proprietary rights in and to (i) all designs, engineering details and other data pertaining to the Software, (ii) all original works, computer programs, discoveries, inventions, patents, know-how, and techniques arising out of, and/or products developed as a result of, the Service. The Software contains trade secrets of Perimeter 81, including, without limitation, the source code version and the specific design of the Software.
+
+You may use the Software only in accordance with and subject to the terms and conditions of Section 2 above. All rights not expressly granted to you in these Terms of Service are retained by Perimeter 81.
+
+You shall be responsible for ensuring that any Users accessing the Service, shall use the Service strictly in accordance with these Terms of Service. Any use of Service by a User contrary to the provisions of these Terms of Service, shall be deemed as a material breach by you of these Terms of Service. In addition, during the term of these Terms of Service, you shall maintain and shall procure that the Users accessing the Service shall comply with appropriate security measures and access procedures, in order to ensure that the Service is accessed only by the Users and that Perimeter 81’s intellectual property rights and other rights under these Terms of Service are not compromised in any way.
+
+You shall not adopt, use or register any trade names or symbols that are identical, or confusingly similar, to any trademarks or trade names used by Perimeter 81.
+
+You shall promptly notify Perimeter 81 in writing of any infringement or other violation of Perimeter 81’s intellectual property rights to which you become aware.
+
+Perimeter 81 shall have the sole and exclusive right to protect and defend Perimeter 81’s intellectual property rights, at its sole cost and expense. You shall reasonably cooperate with Perimeter 81, at Perimeter 81’s expense, in the defense and protection of such intellectual property rights.
+13.Acknowledgments
+
+Any logos, artwork and trademarks associated with each Third-Party Payment Processor is/are the property of such applicable Third-Party Payment Processor. Google Play™, Android™ and any logos, artwork and trademarks associated therewith is/are the property of Google Inc. (“Google”). Apple™, App Store™, iPhone™ and any logos, artwork and trademarks associated therewith is/are the property of Apple Inc.
+
+User expressly acknowledges and agrees that Google, and each member of the group of companies of which Google is the parent, shall be third-party beneficiaries to these Terms of Service. Google and such other companies shall be entitled to directly enforce, and rely upon, any provision of these Terms of Service that confers a benefit on (or rights in favor of) them.
+
+You expressly acknowledge and agree that: (i) these Terms of Service are made between you and Perimeter 81, and not with Apple; (ii) Perimeter 81, and not Apple, is solely responsible for the App and the Services; (iii) Perimeter 81 alone shall be responsible for providing any maintenance and support services with respect to the App, if any and as specified in these Terms of Service, or as required under applicable law, and Apple will not have any obligation whatsoever to furnish any maintenance and support services with respect to the App or the Services; (iv) Perimeter 81 shall be solely responsible for any warranties with respect to the App and the Services, whether express or implied by law, to the extent not effectively disclaimed; (v) in the event of any failure of the App to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price (if any) for the App to you; (vi) to the maximum extent allowed by applicable law, except as described in clause (v) above, Apple will not have any other warranty obligation whatsoever with respect to the App or the Services, and any other claims, losses, liabilities, damages, costs or expenses attributable to any failure to conform to any warranty will be Perimeter 81’s sole responsibility; (vii) Perimeter 81, not Apple, is responsible for addressing any claim by you or any third-party relating to the App or your possession and/or use of the App, including, but not limited to (a) product liability claims, (b) any claim that the App fails to conform to any applicable legal or regulatory requirement, and (c) claims arising under consumer protection or similar legislation; (viii) in the event of any third-party claim that the App or your possession and use of the App infringes such third-party’s intellectual property rights, Perimeter 81, not Apple, will be solely responsible for the investigation, defense, settlement and discharge of any such intellectual property infringement claim, (xi) you have had the opportunity to review Apple’s Usage Rules; (xii) Apple, and Apple’s subsidiaries, are third party beneficiaries of these Terms of Service, and that, upon the your acceptance of the terms and conditions of these Terms of Service, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms of Service against the you as a third party beneficiary thereof.
+14. Customer Testimonials
+
+You acknowledge that we may use your trade names, trademarks, service marks, logos, domain names, testimonials and other distinctive brand features in presentations, marketing materials, customer lists, financial reports and website listings (including links to your website) for the purpose of advertising or publicizing your use of the Software.
+15. Copyright Policy
+
+We will respond to notices of alleged copyright infringement that comply with applicable law and are properly provided to us. If you believe that your post has been copied in a way that constitutes copyright infringement, please provide us with the following information: (i) identification of the copyrighted work claimed to have been infringed; (ii) identification of the material that is claimed to be infringing or to be the subject of infringing activity and that is to be removed or access to which is to be disabled, and information reasonably sufficient to permit us to locate the material; (iii) your contact information, including your address, telephone number, and an email address; (iv) your statement that you have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law; and (v) a statement that the information in the notification is accurate, and, under penalty of perjury, that you are authorized to act on behalf of the copyright owner, and (vi) a physical or electronic signature of the copyright owner or a person authorized to act on their behalf.
+
+We reserve the right to remove content alleged to be infringing without prior notice and at our sole discretion.
+If you believe that any content infringes upon your intellectual property rights, you should notify us as set out in Section 21 below.
+16. Termination
+
+These Terms of Service shall be effective until terminated by you or by Perimeter 81.
+Without derogating from Perimeter 81’s right to terminate these Terms of Service as set out in Sections 4.8 and 8.4 above, Perimeter 81, at its sole discretion, without notice to you, may terminate these Terms of Service if you fail to comply with any of the provisions of these Terms of Service, without prejudice to the right of Perimeter 81 to be indemnified for its damages and any other right and remedy.
+In all such cases, these Terms of Service shall terminate, but the provisions which by their nature would continue beyond termination (including, without limitation, the provisions of Sections 1, 5, 6, 9, 10, 11 through and including 23, shall survive such termination for any reason and shall continue to apply.
+Upon termination of these Terms of Service, you shall cease all access to the Site and all use of the Service.
+17. Unsolicited Idea Submission Policy
+
+You agree that any remarks, ideas, feedback, comments, suggestions, or any other information that you may provide to Perimeter 81 (collectively, a “Submission”), whether through a Review or otherwise, is entirely voluntary, and that Perimeter 81 will be free to use any such feedback, comments or suggestions as Perimeter 81 will see fit, without any obligation or compensation to you or any other person sending the Submission. Perimeter 81 will have exclusive ownership of all present and future existing rights to the Submission of every kind and nature everywhere, and you hereby irrevocably assign to Perimeter 81 all rights therein. Perimeter 81 will not be required to treat any Submission as confidential. You acknowledge that you are responsible for whatever material you submit, and will have full responsibility for the Submission, including its legality, reliability, appropriateness, originality, and copyright.
+18. Unlawful Activity
+
+We reserve the right to investigate complaints or reported violations of these Terms of Service and to take any action we deem appropriate, including but not limited to reporting any suspected unlawful activity to law enforcement officials, regulators, or other third parties and disclosing any information necessary or appropriate to such persons or entities relating to your profile, email addresses, usage history, posted materials, IP addresses and traffic information.
+19.Export Regulations
+
+You may not use or otherwise export or re-export the Site and/or Service except as authorized by United States law and the laws of the jurisdiction in which the Site and/or Service were obtained. In particular, but without limitation, the Site and/or Service may not be exported or re-exported (a) into any U.S. embargoed countries or (b) to anyone on the U.S. Treasury Department’s list of Specially Designated Nationals or the U.S. Department of Commerce Denied Person’s List or Entity List.
+
+By using the Site and/or Service, you represent and warrant that (i) you are not located in any country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a “terrorist supporting” country; and that (ii) you are not listed on any U.S. Government list of prohibited or restricted parties. You also agree that you will not use the Site and/or Service for any purposes prohibited by United States law, including, without limitation, the development, design, manufacture or production of nuclear, chemical or biological weapons.
+20. Governing Law and Jurisdiction
+
+These Terms of Service shall be governed and construed in accordance with the laws of the State of Israel, without reference to its conflicts of laws principles. The United Nations Convention on Contracts for the International Sale of Goods will not apply to these Terms of Service. Your use of the Site and/or Service may also be subject to other local, state, national, or international laws.
+
+Both parties hereby irrevocably submit to the exclusive jurisdiction of the competent courts in Tel-Aviv, Israel, to resolve any dispute arising out of or pursuant to these Terms of Service, and you hereby consent to the exclusive jurisdiction of and venue in such courts and waive any objection as to inconvenient forum. Notwithstanding the above, you agree that PERIMETER 81 shall be allowed to apply for injunctive remedies in any jurisdiction.
+21. Address and Notices
+
+Perimeter 81’s corporate offices are located at Perimeter 81 LTD, 28 HaArbaa St., Tel Aviv, Israel.
+Any questions, complaints, claims or other communication to Perimeter 81 concerning the Service should be directed to: support@perimeter81.com.
+We may send you notices with respect to the Site and/or Service by email, regular mail, postings on the Site, or by any other means reasonably designed to give you such notice.
+All communications between Perimeter 81 and you shall be in the English language only.
+22. Confidentiality
+
+You agree to hold in confidence our Confidential Information, and to refrain from copying, distributing, disseminating or otherwise disclosing such Confidential Information to anyone, other than to your employees, if and to the extent that such employees have a need to know such Confidential Information.
+You undertake not to use the Confidential Information for any purposes other than for the Service, and not to sell, grant, make available to, or otherwise allow the use of the Confidential Information by any third party, directly or indirectly, except as expressly permitted herein.
+
+All Confidential Information shall be and remain the property of PERIMETER 81. Disclosure of the Confidential Information to you shall not be construed as granting any right, title, or license, whether express or implied, with respect to the Confidential Information or to its related intellectual property (including, but not limited to, improvements, modifications and/or derivatives related to the Confidential Information), other than the right to use the Confidential Information strictly in accordance with the provisions of these Terms of Service.
+
+The Confidential Information is provided on an “as is” basis, with no warranty of whatsoever kind. Without derogating from the above, we make no warranties, whether express or implied, regarding the accuracy and/or completeness of the Confidential Information disclosed hereunder. For the purposes hereof, Confidential Information” means information, in whatever form disclosed, provided by or on behalf of Safer to you, or to which you otherwise gain access, in the course of or incidental to the Services, and that should reasonably be understood you because of legends or other markings, the circumstances of disclosure or the nature of the information itself, to be proprietary and confidential to Safer or a third party.
+23. Miscellaneous
+
+    23.1 Headings and Interpretation. The headings of the Sections in these Terms of Service are for reference only and shall not be considered in the interpretation hereof. In these Terms of Service, unless the context otherwise requires or expressly stated otherwise: singular terms include the plural and vice versa; the use of any gender shall be applicable to both genders; the words “include” and “including” will not be construed as terms of limitation; the words “day”, “month” and “year” mean respectively, calendar day, calendar month and calendar year. References to any legislation or regulations include references to any amendments or re-enactments thereof from time to time. Any translation of these Terms of Service is provided solely for your convenience and is not intended to modify these Terms of Service. In the event of a conflict between the English version of these Terms of Service and a version in a language other than English, the English version shall apply.
+    23.2 Entire Agreement. These Terms of Service, together with Perimeter 81’s Privacy Policy, contain the complete agreement between the parties and supersedes any prior understandings, agreements or representations by or among the parties, which relate to the subject matter of these Terms of Service.
+    23.3 Amendments. Perimeter 81 reserves the right, at any time and from time to time, without liability to Perimeter 81 or notice to you, to change any of the provisions of these Terms of Service. Any such changes will be effective immediately and incorporated into these Terms of Service by this reference. Your continued use of the Service will be deemed to constitute your acceptance of any and all such changes.
+    23.4 Severability. In the event that any provision of these Terms of Service is held by a competent court to be invalid or unenforceable, that provision shall be construed, limited, modified or deleted, to the extent necessary to eliminate any invalidity or unenforceability, and the remaining provisions of these Terms of Service remain in full force and effect.
+    23.5 Waiver. No waiver on the part of Perimeter 81 of any right under these Terms of Service shall be effective unless in writing and signed by Perimeter 81’s duly authorized representative. No waiver on the part of Perimeter 81 of any past or present right arising from any breach or failure to perform shall be deemed to be a waiver of any future right arising under these Terms of Service.
+    23.6 No Partnership. Nothing contained in these Terms of Service shall be construed as creating a partnership, joint venture, agency or other similar relationship between Perimeter 81 and you, nor as granting you the right, power, or authority (express or implied) to bind or otherwise create any duty or obligation for Perimeter 81.
+    23.7 Assignment. You may not assign, subcontract or otherwise transfer any of its rights and/or obligations under these Terms of Service without prior written approval by Perimeter 81, and any purported assignment or transfer without Perimeter 81’s consent shall be null and void. Perimeter 81 may assign and/or subcontract some or all of these Terms of Service to any third-party in connection with a merger, acquisition, sale of assets, by operation of law, or otherwise. These Terms of Service shall be binding upon, and shall inure to the benefit of, the parties hereto and their respective successors and permitted assigns.
+    23.8 No Third Party Beneficiaries. These Terms of Service does not create any obligation of a party to any third parties, nor shall it be deemed to create any rights or causes of action on behalf of any third parties, except as set forth in Section 13 above.
+
+*      *      *
+
+Last updated: January 12, 2021

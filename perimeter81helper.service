@@ -1,0 +1,11 @@
+[Unit]
+Description=Perimeter81 helper service
+
+[Service]
+WorkingDirectory=/opt/Perimeter81
+ExecStart=/opt/Perimeter81/artifacts/daemon -f "artifacts/daemon" -l "/var/log/perimeter81helper.log" -e "/var/log/perimeter81helper-error.log" --env "/opt/Perimeter81/artifacts"
+Restart=always
+SyslogIdentifier=perimeter81helper
+
+[Install]
+WantedBy=multi-user.target
