@@ -3,7 +3,7 @@
 # Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=papirus-folders
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Change Papirus icon theme folder colors'
 arch=('any')
@@ -12,17 +12,14 @@ license=('MIT')
 depends=('papirus-icon-theme')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.hook")
-sha256sums=('0e41e34c637b7bfad716fa06c1df35833968b220e47e3b73ba34918907ac3009'
+sha256sums=('3abff1eab54abe4ad0191013d0ccb85a79968fbf594b6732fad0205771f94639'
             '5c48cde4ad155e357857f56ec2ce4d26d3e3fdd12b141e349640775481539ed9')
 
 build() {
-
   make -C "${pkgname}-${pkgver}"
-
 }
 
 package() {
-
   make DESTDIR="${pkgdir}" -C "${pkgname}-${pkgver}" install
 
   install -Dm644 "${pkgname}.hook" \
@@ -31,5 +28,4 @@ package() {
     -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 "${pkgname}-${pkgver}/LICENSE" \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
 }
