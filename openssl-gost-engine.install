@@ -60,6 +60,12 @@ openssl_conf=openssl_gost # Set GOST Configuration
 #}
 
 ## arg 1:  the old package version
-#post_remove() {
-  # do something here
-#}
+post_remove() {
+  if [ "`grep openssl_gost /etc/ssl/openssl.cnf`" ]; then
+    echo "
+
+      Do not forget to modify your /etc/ssl/openssl.cnf
+
+    "
+  fi
+}
