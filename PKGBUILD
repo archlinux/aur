@@ -1,10 +1,10 @@
-# Maintainer: jyantis <yantis@yantis.net>
+# Contributor: jyantis <yantis@yantis.net>
 
 pkgname=pywallet-git
-pkgver=v1.2.1.r57.gb52c955
+pkgver=v1.2.1.r77.gc88faf8
 _gitname=pywallet
 _binname=pywallet
-pkgrel=2
+pkgrel=1
 pkgdesc='Bitcoin wallet tool written in Python 2. Lots of features including exporting with balances to JSON and some great wallet recovery tools'
 arch=('any')
 url='https://github.com/jackjack-jj/pywallet'
@@ -14,11 +14,9 @@ depends=('python2'
          'python2-bsddb'
          'python2-ecdsa')
 source=('git://github.com/jackjack-jj/pywallet.git'
-        'https://help.github.com/articles/github-terms-of-service'
-        'pywallet.patch')
+        'https://help.github.com/articles/github-terms-of-service')
 sha256sums=('SKIP'
-            'SKIP'
-            'e2c5a63535b0dc6d8ba8e646e21fc178eb520ff4b491e339a1bab9e669da1c5e')
+            'SKIP')
 makedepends=('git')
 conflicts=('pywallet')
 
@@ -39,8 +37,6 @@ pkgver() {
 
 build() {
 
-  # Patch crashing out due to exceptions on finding non bitcoin private keys
-  patch ${_gitname}/pywallet.py < pywallet.patch
 
   # Patch #!/usr/bin/env python to #!/usr/bin/env python2 if needed
   if ! grep "env python2"  "${_gitname}/pywallet.py"; then
