@@ -1,6 +1,6 @@
 # Maintainer: John Morris <2e0byo@gmail.com>
 pkgname=serial-studio-git
-pkgver=1.0.20.r4.93482e8
+pkgver=1.0.23.r131.4a01aca
 pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=('x86_64')
@@ -8,9 +8,11 @@ url="https://github.com/Serial-Studio/Serial-Studio"
 license=('MIT')
 groups=()
 depends=(
-    "qt5-charts"
-    "qt5-serialport"
-    "qt5-quickcontrols2"
+    "qt6-serialport"
+    "qt6-quickcontrols2"
+    "qt6-5compat"
+    "qt6-base"
+    "qt6-svg"
     )
 makedepends=("git")
 provides=("${pkgname%-git}")
@@ -37,7 +39,7 @@ prepare() {
 
 build() {
 	  cd "$srcdir/${pkgname%-git}"
-    qmake
+    /usr/lib/qt6/bin/qmake
     make -j$(nproc)
 }
 
