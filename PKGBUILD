@@ -39,5 +39,5 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver/src"
-	make DESTDIR="$pkgdir/" install
+	INSTALL_ROOT="$pkgdir" make DESTDIR="$pkgdir/" install
 }
