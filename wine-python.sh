@@ -11,4 +11,6 @@ else
   export PYTHONPATH="${PYTHONPATH};/usr/@TRIPLE@/lib/python@PYVER@"
 fi
 
-@TRIPLE@-wine /usr/@TRIPLE@/bin/python@PYVER@.exe "$@"
+# https://bugs.winehq.org/show_bug.cgi?id=51813
+set -o pipefail
+@TRIPLE@-wine /usr/@TRIPLE@/bin/python@PYVER@.exe "$@" | tee
