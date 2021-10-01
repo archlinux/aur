@@ -11,6 +11,8 @@ url="https://github.com/TanerH/dump978"
 license=('GPL2')
 makedepends=('git')
 source=('dump978::git+git://github.com/TanerH/dump978')
+provides=("uat2tools")
+conflicts=("uat2tools")
 sha256sums=('SKIP')
 
 pkgver() {

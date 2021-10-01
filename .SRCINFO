@@ -10,8 +10,9 @@ pkgbase = uat2tools-git
 	arch = aarch64
 	license = GPL2
 	makedepends = git
+	provides = uat2tools
+	conflicts = uat2tools
 	source = dump978::git+git://github.com/TanerH/dump978
 	sha256sums = SKIP
 
 pkgname = uat2tools-git
-
