@@ -1,0 +1,20 @@
+pkgbase = partfs-git
+	pkgdesc = FUSE-based file system for accessing partitions on a disk
+	pkgver = v0.1.0.r0.g125ad57
+	pkgrel = 1
+	url = https://github.com/braincorp/partfs
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = util-linux
+	depends = fuse
+	depends = util-linux-libs
+	provides = partfs
+	conflicts = partfs
+	source = git+https://github.com/braincorp/partfs.git
+	md5sums = SKIP
+
+pkgname = partfs-git
