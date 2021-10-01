@@ -1,6 +1,6 @@
 pkgbase = python-k2-git
 	pkgdesc = FSA/FST algorithms, differentiable, with PyTorch compatibility
-	pkgver = 1.6
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/k2-fsa/k2
 	arch = any
