@@ -6,7 +6,7 @@ pkgdesc="StormLib MPQ archiving utility. Designed for full manipulating with Bli
 arch=('i686' 'x86_64')
 url="https://launchpad.net/smpq"
 license=('GPL3')
-depends=('stormlib')
+depends=('bzip2' 'stormlib' 'zlib')
 makedepends=('cmake')
 source=("https://launchpad.net/smpq/trunk/${pkgver}/+download/smpq_${pkgver}.orig.tar.gz"
   fix-smpq-compilation.patch
