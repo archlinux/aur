@@ -1,0 +1,15 @@
+pkgbase = python-pypemicro-git
+	pkgdesc = Python PEMicro debug probes support
+	pkgver = v0.1.3.r11.gfb27759
+	pkgrel = 1
+	url = https://github.com/nxpmicro/pypemicro
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	provides = python-pypemicro
+	conflicts = python-pypemicro
+	source = git+https://github.com/nxpmicro/pypemicro
+	sha512sums = SKIP
+
+pkgname = python-pypemicro-git
