@@ -6,7 +6,7 @@ pkgname=(
   'sqlboiler-psql'
   # TODO: add mysql split package
 )
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="Generate a Go ORM tailored to your database schema"
 arch=('x86_64')
@@ -15,8 +15,8 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('af8ec2c560298ab6e6850ac6c2f6f713728c4fbf9f9783948f49a1b040651201ee30b9262761d1d85c4ff6d990db583e90f688edaeec9b5aaa1017c7fb0c7b3f')
-b2sums=('3b1bd9e18e99702831d4efa3f9ed943839d4bad57930cfe7c9a9452ceddb681ea7c54709b77d97a8e2fc113ff180eb6679b77b184c6908931613cda0473a9559')
+sha512sums=('84064a3c5fa30a2d2837fd8734598ab7645a54a0fac07de8b468f421ba7c40879228777c06faf8700f62f92cc462b308a0d911a9850033fb60fba511e553087a')
+b2sums=('55be4e4d20a939a95cc1266698881d103a96305de87506b0cff1296ebc046bf068c86ad9e803dd0094677ca56a0de8f1143fc4fdd33d8e2b6da5661803be0d1d')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -65,7 +65,7 @@ package_sqlboiler() {
 }
 
 package_sqlboiler-psql() {
-  desc=('PostgreSQL driver for SQLBoiler')
+  pkgdesc='PostgreSQL driver for SQLBoiler'
   depends=('sqlboiler' 'postgresql-libs')
   cd "$pkgbase-$pkgver"
 
