@@ -1,7 +1,7 @@
 pkgbase = github-desktop-bin
 	pkgdesc = GUI for managing Git and GitHub.
 	pkgver = 2.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.github.com
 	arch = x86_64
 	license = MIT
@@ -16,9 +16,9 @@ pkgbase = github-desktop-bin
 	optdepends = hub: CLI interface for GitHub.
 	provides = github-desktop
 	conflicts = github-desktop
-	source = https://github.com/shiftkey/desktop/releases/download/release-2.9.3-linux1/GitHubDesktop-linux-2.9.3-linux1.deb
+	source = https://github.com/shiftkey/desktop/releases/download/release-2.9.3-linux2/GitHubDesktop-linux-2.9.3-linux2.deb
 	source = github-desktop.desktop
-	sha256sums = 7b75c38d543955cb12fcc1b136c0ecda1efb8e8640cfc98d9fe4b0aea894011d
+	sha256sums = f30bb8163344f8829c63b4d6a142f6a3e771a1ef050f9e2d6a13b002df5f0058
 	sha256sums = 932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c
 
 pkgname = github-desktop-bin
