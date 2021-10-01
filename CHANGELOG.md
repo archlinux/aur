@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.9.1](#1-9-1)
 * [1.9.0](#1-9-0)
 * [1.8.2](#1-8-2)
 * [1.8.1](#1-8-1)
@@ -27,6 +28,53 @@
 * [1.2.2](#1-2-2)
 * [1.2.1](#1-2-1)
 * [1.2.0](#1-2-0)
+
+
+## 1.9.1
+
+### Added
+
+* Warn when it appears the primary font is not monospaced. Can be
+  disabled by setting `[tweak].font-monospace-warn=no`
+  (https://codeberg.org/dnkl/foot/issues/704).
+* PGO build scripts, in the `pgo` directory. See INSTALL.md -
+  _Performance optimized, PGO_, for details
+  (https://codeberg.org/dnkl/foot/issues/701).
+* Braille characters (U+2800 - U+28FF) are now rendered by foot
+  itself (https://codeberg.org/dnkl/foot/issues/702).
+* `-e` command-line option. This option is simply ignored, to appease
+  program launchers that blindly pass `-e` to any terminal emulator
+  (https://codeberg.org/dnkl/foot/issues/184).
+
+
+### Changed
+
+* `-Ddefault-terminfo` is now also applied to the generated terminfo
+  definitions when `-Dterminfo=enabled`.
+* `-Dcustom-terminfo-install-location` no longer accepts `no` as a
+  special value, to disable exporting `TERMINFO`. To achieve the same
+  result, simply don’t set it at all. If it _is_ set, `TERMINFO` is
+  still exported, like before.
+* The default install location for the terminfo definitions have been
+  changed back to `${datadir}/terminfo`.
+* `dpi-aware=auto`: fonts are now scaled using the monitor’s DPI only
+  when **all** monitors have a scaling factor of one
+  (https://codeberg.org/dnkl/foot/issues/714).
+
+
+### Fixed
+
+* Added workaround for GNOME bug where multiple button press events
+  (for the same button) is sent to the CSDs without any release or
+  leave events in between (https://codeberg.org/dnkl/foot/issues/709).
+* Line-wise selection not taking soft line-wrapping into account
+  (https://codeberg.org/dnkl/foot/issues/726).
+
+
+### Contributors
+
+* [craigbarnes](https://codeberg.org/craigbarnes)
+* Arnavion
 
 
 ## 1.9.0
@@ -65,6 +113,8 @@
   now translated to pixel values using the monitor’s scaling factor
   when `dpi-aware=no`, or `dpi-aware=auto` and the scaling factor is
   larger than 1 (https://codeberg.org/dnkl/foot/issues/680).
+* Spawning a new terminal with a working directory that does not exist
+  is no longer a fatal error.
 
 
 ### Removed
