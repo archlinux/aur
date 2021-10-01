@@ -1,0 +1,35 @@
+pkgbase = river-noxwayland-git
+	pkgdesc = A dynamic tiling wayland compositor.
+	pkgver = r738.e6bb373
+	pkgrel = 1
+	url = https://github.com/ifreund/river
+	arch = x86_64
+	license = GPL3
+	makedepends = zig>=0.8.0
+	makedepends = git
+	makedepends = scdoc
+	depends = mesa>=21.1.2
+	depends = wlroots>=0.14.0
+	depends = wayland
+	depends = wayland-protocols
+	depends = libxkbcommon
+	depends = libevdev
+	depends = pixman
+	depends = polkit
+	provides = river
+	provides = riverctl
+	provides = rivertile
+	conflicts = river
+	conflicts = river-git
+	source = git+https://github.com/ifreund/river
+	source = git+https://github.com/ifreund/zig-pixman.git
+	source = git+https://github.com/ifreund/zig-wayland.git
+	source = git+https://github.com/swaywm/zig-wlroots.git
+	source = git+https://github.com/ifreund/zig-xkbcommon.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = river-noxwayland-git
