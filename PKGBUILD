@@ -3,12 +3,12 @@
 
 pkgname=neatvnc-git
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="VNC server library that's intended to be fast and neat"
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://github.com/any1/neatvnc
 license=(custom:ISC)
-depends=(libuv libxkbcommon pixman aml-git gnutls libjpeg-turbo)
+depends=(libglvnd libxkbcommon pixman aml-git gnutls libjpeg-turbo)
 makedepends=(git meson ninja libdrm)
 source=("git+$url")
 sha512sums=('SKIP')
