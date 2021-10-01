@@ -19,7 +19,7 @@ noextract=("python-${pkgver}-embed-win32.zip"
 sha256sums=('010cef379e1096cebf667e8f2c92a72dc455c927c7f7b8ca8e029975d81946bf'
             '18627a097adf47829a847053febac5532376075243e233bd9ec61d6ea09dee1f'
             '39b018bc7d8a165e59aa827d9ae45c45901739b0bbb13721e4f973f3521c166a'
-            '86e768f17994ce586d646b4ace95f819943dfe6a0fb1afa40de4188e975d5db8')
+            'a76a4715e87d3ed4aca6babc8715de8de94513dae4c683c1681551c43698b5ae')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
