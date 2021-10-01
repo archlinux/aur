@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
-	pkgver = 94.0.4606.61
+	pkgver = 94.0.4606.71
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -46,9 +46,9 @@ pkgbase = chromium-no-extras
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=94.0.4606.61
+	provides = chromium=94.0.4606.71
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-94.0.4606.61.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-94.0.4606.71.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-94-patchset-3/chromium-94-patchset-3.tar.xz
 	source = replace-blacklist-with-ignorelist.patch
@@ -59,7 +59,7 @@ pkgbase = chromium-no-extras
 	source = chromium-94-ffmpeg-roll.patch
 	source = unexpire-accelerated-video-decode-flag.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = 6446db535c02c461c7e5c8d294a0300db03abba791f97f0c70bc52255aedb9bf
+	sha256sums = cabbba2e608c5ec110850b14ee5fead2608c44447a52edb80e2ba8261be3dc5b
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 22692bddaf2761c6ddf9ff0bc4722972bca4d4c5b2fd3e5dbdac7eb60d914320
 	sha256sums = d3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35
