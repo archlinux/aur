@@ -23,10 +23,11 @@ backup=("etc/photoprism/options.yml")
 options=()
 install=
 changelog=
-source=("https://github.com/photoprism/photoprism/archive/$pkgver-$commit.tar.gz" "https://dl.photoprism.org/tensorflow/nasnet.zip" "https://dl.photoprism.org/tensorflow/nsfw.zip" "photoprism.service" "photoprism.sysusers" "options.yml")
+source=("https://github.com/photoprism/photoprism/archive/$pkgver-$commit.tar.gz" "https://dl.photoprism.org/tensorflow/nasnet.zip" "https://dl.photoprism.org/tensorflow/facenet.zip" "https://dl.photoprism.org/tensorflow/nsfw.zip" "photoprism.service" "photoprism.sysusers" "options.yml")
 noextract=()
 sha256sums=('46ed86ef05aaee0f0139ecc8db29393477057649c5396c9515831aa2f2fc4fa7'
             'a0e1ad8d5a5a0ff9efc4b3ed89898bf008563ee36cacd0c804a384f8fc661588'
+            'bf9ae0945d2ac53ac3db27082162d2b9dda5ba2c564c0e4c4f539f31f8b670af'
             'eb5e5d22e37961c3192a4757efff883f77bc989c0efceabb1395e0959d966f14'
             'SKIP'
             'SKIP'
@@ -55,7 +56,7 @@ package() {
 
 	mkdir -p "$pkgdir/var/lib/photoprism/assets/"
 
-	cp -r "${srcdir}/nasnet" "${srcdir}/nsfw" "$pkgdir/var/lib/photoprism/assets/"
+	cp -r "${srcdir}/nasnet" "${srcdir}/facenet" "${srcdir}/nsfw" "$pkgdir/var/lib/photoprism/assets/"
 
 	cd "$pkgname"-"$pkgver"-"$commit"
 
