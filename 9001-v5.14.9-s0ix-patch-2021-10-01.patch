@@ -1,11 +1,11 @@
-From 6b1881a52169644ae314fa082a2c4daa152c46b3 Mon Sep 17 00:00:00 2001
+From 20f320ede46f498a93c0cfbc7b62a006b27006bb Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Fri, 1 Oct 2021 08:26:54 -0700
+Date: Fri, 1 Oct 2021 12:33:36 -0700
 Subject: [PATCH] v5.14.9 s0ix patch 2021-10-01
 
 Squashed commit of the following:
 
-commit 9d22c6f69dce036dab2a4d17911bc2ce84df9537
+commit 56bfc72744803a7f82d88f8c19c40f2e93cde3ad
 Author: Lijo Lazar <lijo.lazar@amd.com>
 Date:   Fri Oct 1 18:16:25 2021 +0800
 
@@ -23,7 +23,26 @@ Date:   Fri Oct 1 18:16:25 2021 +0800
     Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciell@amd.com>
 
-commit 0c5d3b01b4d999992439ca9f749e202cc0cc8578
+commit 8465b898b1c71c6b308746af52b13d49ee37d668
+Author: Hans de Goede <hdegoede@redhat.com>
+Date:   Tue Sep 28 16:21:22 2021 +0200
+
+    platform/x86: amd-pmc: Fix compilation when CONFIG_DEBUGFS is disabled
+
+    The amd_pmc_get_smu_version() and amd_pmc_idlemask_read() functions are
+    used in the probe / suspend/resume code, so they are also used when
+    CONFIG_DEBUGFS is disabled, move them outside of the #ifdef CONFIG_DEBUGFS
+    block.
+
+    Note this purely moves the code to above the #ifdef CONFIG_DEBUGFS,
+    the code is completely unchanged.
+
+    Cc: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Cc: Sanket Goswami <Sanket.Goswami@amd.com>
+    Reported-by: Nathan Chancellor <nathan@kernel.org>
+    Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+
+commit 754e8ad1275241ff650df196f6135bee72d9dc0d
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -35,7 +54,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit bae72b8e72aac7590d2677830926d960e72edade
+commit 460a4441aebbca88a4c58811950d725acd39f786
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -50,7 +69,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 6e5d6b64bff6e2a863cae9b22c5f5a8f7f7462ff
+commit 495fbce51edc0e067c0d93e39e44e8116e88d767
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -63,7 +82,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit fdf1b62b3ad1a54a041ebf49ba9b081deb8a6634
+commit fe1f3e1032a61e722f326c196abd9448035e7077
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -82,7 +101,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 994c36c63556c54eaa3f02ea8b7e5b28fc1836cf
+commit 3502100b6e5c119aef49660b4d9e3d58a7f97224
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -97,7 +116,7 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit ffa37ed37e917dfa225598dcef8a86324784a4ff
+commit edf93040393f366b1592479d1e1dc661303d1aa3
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -110,7 +129,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit b6c769a9687c626c8e068215035975b57fe954e8
+commit b7b15bacfddd91f25205828322a3ef53c60ea261
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -122,48 +141,13 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
     Hence added enable/disable irq_wake to handle wake-up interrupt.
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
-
-commit 1fef466dd8e750ea6c86803277226cfee04df5d5
-Author: Scott B <28817345+foundObjects@users.noreply.github.com>
-Date:   Wed Jul 21 18:10:28 2021 -0700
-
-    DEBUG: amd-pmc smu register dump for diagnostics
-
-    patch this per Mario's request:
-    https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
-
-commit 497175cc42db2ec66a9c17687c15eb8c45644c2c
-Author: Scott B <28817345+foundObjects@users.noreply.github.com>
-Date:   Tue Jul 20 23:33:01 2021 -0700
-
-    drm/amd/pm: Add information about SMU12 firmware version
-
-    hacky manual import of: https://lists.freedesktop.org/archives/amd-gfx/2021-July/066835.html
-
-    This information is useful for root causing issues with S0ix.
-
-    Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
-
-commit 07447fae7c12ba3d9c014cfbb69ebda8fe0b4239
-Author: Scott B <28817345+foundObjects@users.noreply.github.com>
-Date:   Tue Jul 20 23:31:31 2021 -0700
-
-    drm/amd/pm: Add information about SMU11 firmware version
-
-    hacky manual import of: https://lists.freedesktop.org/archives/amd-gfx/2021-July/066834.html
-
-    This information is useful for root causing issues with S0ix.
-
-    Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
 ---
- drivers/acpi/processor_idle.c                 |  3 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c       | 14 ++-
- .../gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c    |  3 +
- .../gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c    |  3 +
- drivers/pinctrl/pinctrl-amd.c                 | 19 ++--
- drivers/pinctrl/pinctrl-amd.h                 |  1 +
- drivers/platform/x86/amd-pmc.c                | 90 +++++++++++++++++--
- 7 files changed, 120 insertions(+), 13 deletions(-)
+ drivers/acpi/processor_idle.c           |  3 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c | 14 +++-
+ drivers/pinctrl/pinctrl-amd.c           | 19 ++++--
+ drivers/pinctrl/pinctrl-amd.h           |  1 +
+ drivers/platform/x86/amd-pmc.c          | 89 +++++++++++++++++++++++--
+ 5 files changed, 113 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index 095c8aca141e..1b6529396371 100644
@@ -218,34 +202,6 @@ index b4ced45301be..1795d448c700 100644
  	} else {
  		if (adev->gfx.gfx_off_req_count == 0) {
  			cancel_delayed_work_sync(&adev->gfx.gfx_off_delay_work);
-diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c b/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
-index 0a5d46ac9ccd..626d7c2bdf66 100644
---- a/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
-+++ b/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
-@@ -272,6 +272,9 @@ int smu_v11_0_check_fw_version(struct smu_context *smu)
- 		break;
- 	}
- 
-+	dev_info(smu->adev->dev, "smu fw reported version = 0x%08x (%d.%d.%d)\n",
-+			 smu_version, smu_major, smu_minor, smu_debug);
-+
- 	/*
- 	 * 1. if_version mismatch is not critical as our fw is designed
- 	 * to be backward compatible.
-diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c b/drivers/gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c
-index d60b8c5e8715..00ebc381a605 100644
---- a/drivers/gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c
-+++ b/drivers/gpu/drm/amd/pm/swsmu/smu12/smu_v12_0.c
-@@ -88,6 +88,9 @@ int smu_v12_0_check_fw_version(struct smu_context *smu)
- 	if (smu->is_apu)
- 		adev->pm.fw_version = smu_version;
- 
-+	dev_info(smu->adev->dev, "smu fw reported version = 0x%08x (%d.%d.%d)\n",
-+			 smu_version, smu_major, smu_minor, smu_debug);
-+
- 	/*
- 	 * 1. if_version mismatch is not critical as our fw is designed
- 	 * to be backward compatible.
 diff --git a/drivers/pinctrl/pinctrl-amd.c b/drivers/pinctrl/pinctrl-amd.c
 index 5b764740b829..d19974aceb2e 100644
 --- a/drivers/pinctrl/pinctrl-amd.c
@@ -317,7 +273,7 @@ index 95e763424042..1d4317073654 100644
  
  /*  KERNCZ configuration*/
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index d6a7c896ac86..81b000241648 100644
+index d6a7c896ac86..548432a2ea65 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
 @@ -29,6 +29,10 @@
@@ -351,23 +307,9 @@ index d6a7c896ac86..81b000241648 100644
  	u32 timein_s0i2;
  	u64 timeentering_s0i3_lastcapture;
  	u64 timeentering_s0i3_totaltime;
-@@ -162,9 +170,12 @@ static int smu_fw_info_show(struct seq_file *s, void *unused)
- 	seq_puts(s, "\n=== SMU Statistics ===\n");
- 	seq_printf(s, "Table Version: %d\n", table.table_version);
- 	seq_printf(s, "Hint Count: %d\n", table.hint_count);
--	seq_printf(s, "S0i3 Cycle Count: %d\n", table.s0i3_cyclecount);
-+	seq_printf(s, "Last S0i3 Status: %s\n", table.s0i3_last_entry_status ? "Success" :
-+		   "Unknown/Fail");
- 	seq_printf(s, "Time (in us) to S0i3: %lld\n", table.timeentering_s0i3_lastcapture);
- 	seq_printf(s, "Time (in us) in S0i3: %lld\n", table.timein_s0i3_lastcapture);
-+	seq_printf(s, "Time (in us) to resume from S0i3: %lld\n",
-+		   table.timeto_resume_to_os_lastcapture);
- 
- 	seq_puts(s, "\n=== Active time (in us) ===\n");
- 	for (idx = 0 ; idx < SOC_SUBSYSTEM_IP_MAX ; idx++) {
-@@ -201,6 +212,66 @@ static int s0ix_stats_show(struct seq_file *s, void *unused)
- }
- DEFINE_SHOW_ATTRIBUTE(s0ix_stats);
+@@ -147,6 +155,49 @@ struct smu_metrics {
+ 	u64 timecondition_notmet_totaltime[SOC_SUBSYSTEM_IP_MAX];
+ } __packed;
  
 +static int amd_pmc_get_smu_version(struct amd_pmc_dev *dev)
 +{
@@ -412,6 +354,27 @@ index d6a7c896ac86..81b000241648 100644
 +	return 0;
 +}
 +
+ #ifdef CONFIG_DEBUG_FS
+ static int smu_fw_info_show(struct seq_file *s, void *unused)
+ {
+@@ -162,9 +213,12 @@ static int smu_fw_info_show(struct seq_file *s, void *unused)
+ 	seq_puts(s, "\n=== SMU Statistics ===\n");
+ 	seq_printf(s, "Table Version: %d\n", table.table_version);
+ 	seq_printf(s, "Hint Count: %d\n", table.hint_count);
+-	seq_printf(s, "S0i3 Cycle Count: %d\n", table.s0i3_cyclecount);
++	seq_printf(s, "Last S0i3 Status: %s\n", table.s0i3_last_entry_status ? "Success" :
++		   "Unknown/Fail");
+ 	seq_printf(s, "Time (in us) to S0i3: %lld\n", table.timeentering_s0i3_lastcapture);
+ 	seq_printf(s, "Time (in us) in S0i3: %lld\n", table.timein_s0i3_lastcapture);
++	seq_printf(s, "Time (in us) to resume from S0i3: %lld\n",
++		   table.timeto_resume_to_os_lastcapture);
+ 
+ 	seq_puts(s, "\n=== Active time (in us) ===\n");
+ 	for (idx = 0 ; idx < SOC_SUBSYSTEM_IP_MAX ; idx++) {
+@@ -201,6 +255,23 @@ static int s0ix_stats_show(struct seq_file *s, void *unused)
+ }
+ DEFINE_SHOW_ATTRIBUTE(s0ix_stats);
+ 
 +static int amd_pmc_idlemask_show(struct seq_file *s, void *unused)
 +{
 +	struct amd_pmc_dev *dev = s->private;
@@ -441,15 +404,7 @@ index d6a7c896ac86..81b000241648 100644
  }
  #else
  static inline void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
-@@ -270,6 +343,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
- 	u32 val;
- 
- 	mutex_lock(&dev->lock);
-+	amd_pmc_dump_registers(dev);
- 	/* Wait until we get a valid response */
- 	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
- 				val, val != 0, PMC_MSG_DELAY_MIN_US,
-@@ -349,6 +423,8 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
+@@ -349,6 +422,8 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
  	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_RESET, 0);
  	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_START, 0);
  
@@ -458,7 +413,7 @@ index d6a7c896ac86..81b000241648 100644
  	msg = amd_pmc_get_os_hint(pdev);
  	rc = amd_pmc_send_cmd(pdev, 1, NULL, msg, 0);
  	if (rc)
-@@ -363,14 +439,17 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
+@@ -363,14 +438,17 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
  	int rc;
  	u8 msg;
  
@@ -479,7 +434,7 @@ index d6a7c896ac86..81b000241648 100644
  	return 0;
  }
  
-@@ -457,6 +536,7 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -457,6 +535,7 @@ static int amd_pmc_probe(struct platform_device *pdev)
  	if (err)
  		dev_err(dev->dev, "SMU debugging info not supported on this platform\n");
  

@@ -83,7 +83,7 @@ pkgbase = linux-xanmod-rog
 	sha256sums = 236cdadf0b1472945c0d7570caeed7b95929aabed6872319c9d0969a819689e9
 	sha256sums = cc2aa580d69801aa1afb0d72ecf094fe13c797363d3d5928c868d3a389910b7b
 	sha256sums = 292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c
-	sha256sums = dd5b0df91e7c17e26af4839b3a23ba5e8850d329aeb28137ec6468502418f2bd
+	sha256sums = 5ceec5471d28c83f07abbc9b88dbc9651fc78df43765cc5dbc99045d58c90372
 
 pkgname = linux-xanmod-rog
 	pkgdesc = The Linux kernel and modules with Xanmod and ASUS ROG laptop patches (Zephyrus G14, G15, etc)

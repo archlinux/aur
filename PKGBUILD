@@ -190,7 +190,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '236cdadf0b1472945c0d7570caeed7b95929aabed6872319c9d0969a819689e9'
             'cc2aa580d69801aa1afb0d72ecf094fe13c797363d3d5928c868d3a389910b7b'
             '292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c'
-            'dd5b0df91e7c17e26af4839b3a23ba5e8850d329aeb28137ec6468502418f2bd')
+            '5ceec5471d28c83f07abbc9b88dbc9651fc78df43765cc5dbc99045d58c90372')
 
 # apply UKSM patch; TODO: note to self: don't forget to update the sum here during major version changes
 #
