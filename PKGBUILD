@@ -11,7 +11,7 @@ pkgname=('pipewire-git'
          'alsa-card-profiles-git'
          'pipewire-zeroconf-git'
          )
-pkgver=0.3.33.14.g33d8f14e4
+pkgver=0.3.38.15.gb418b876e
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -21,8 +21,6 @@ makedepends=('git'
              'meson'
              'doxygen'
              'graphviz'
-             'xmltoman'
-             'valgrind'
              'libpulse'
              'alsa-lib'
              'sbc'
@@ -40,9 +38,12 @@ makedepends=('git'
              'vulkan-headers'
              'avahi'
              'webrtc-audio-processing'
+             'python-docutils'
 #              'roc-git'
              )
-checkdepends=('desktop-file-utils')
+checkdepends=('desktop-file-utils'
+              'valgrind'
+              )
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
 sha256sums=('SKIP')
 
@@ -53,15 +54,19 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  # silence warning about limit of DOT nodes
+  echo 'DOT_GRAPH_MAX_NODES = 100' >> pipewire/doc/Doxyfile.in
 }
 
 build() {
   cd "${srcdir}/build"
 
+  DOT_GRAPH_MAX_NODES=100
+
   arch-meson ../pipewire \
     -D udevrulesdir=/usr/lib/udev/rules.d \
     -D docs=enabled \
-    -D jack=disabled \
     -D gstreamer=disabled \
     -D gstreamer-device-provider=disabled \
     -D roc=disabled \
@@ -118,9 +123,7 @@ package_pipewire-git() {
             "libpipewire-${pkgver:0:3}.so"
             )
   conflicts=('pipewire')
-  backup=(etc/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
-          usr/share/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
-          )
+  backup=(usr/share/pipewire/{pipewire{,-pulse},client{,-rt}}.conf)
   install=pipewire-git.install
 
   DESTDIR="${pkgdir}" meson install -C build
@@ -137,6 +140,7 @@ package_pipewire-git() {
   _pick pms usr/share/pipewire/media-session.d/*.conf
 
   _pick jack usr/bin/pw-jack usr/lib/libjack* usr/lib/pkgconfig/jack.pc
+  _pick jack usr/lib/spa-0.2/jack/libspa-jack.so
   _pick jack usr/include/jack
   _pick jack usr/share/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/share/man/man1/pw-jack.1
@@ -172,14 +176,16 @@ package_pipewire-jack-git() {
   depends=("pipewire-media-session-git=${pkgver}"
            "libpipewire-${pkgver:0:3}.so"
            )
-  backup=('etc/pipewire/jack.conf')
+  backup=('usr/share/pipewire/jack.conf')
   provides=('pipewire-jack'
+            'jack2'
             'jack'
             'libjack.so'
             'libjackserver.so'
+            'libjacknet.so'
             )
   conflicts=('pipewire-jack'
-            'jack'
+            'jack2'
             )
 
   mv jack/* "${pkgdir}"
@@ -250,10 +256,8 @@ package_pipewire-media-session-git() {
            )
   provides=('pipewire-media-session')
   conflicts=('pipewire-media-session')
-  backup=('etc/pipewire/media-session.d/media-session.conf'
-          etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf
-          'usr/share/pipewire/media-session.d/media-session.conf'
-          usr/share/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf
+  backup=('usr/share/pipewire/media-session.d/media-session.conf'
+           usr/share/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf
           )
   install=pipewire-media-session.install
 
