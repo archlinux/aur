@@ -1,6 +1,6 @@
 pkgbase = mutter-rounded
 	pkgdesc = A window manager for GNOME, with rounded corners patch
-	pkgver = 40.4
+	pkgver = 40.5
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	install = mutter.install
@@ -14,6 +14,7 @@ pkgbase = mutter-rounded
 	makedepends = egl-wayland
 	makedepends = meson
 	makedepends = xorg-server
+	makedepends = wayland-protocols
 	depends = dconf
 	depends = gobject-introspection-runtime
 	depends = gsettings-desktop-schemas
@@ -34,8 +35,8 @@ pkgbase = mutter-rounded
 	provides = mutter
 	provides = libmutter-8.so
 	conflicts = mutter
-	source = mutter-rounded::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=2bfef7dbdc6f432a5433c93c1fcdbf00099367c8
-	source = rounded_corners_40.4.patch
+	source = mutter-rounded::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=2b2b3ab8502a5bcc2436e169279d2421f6f1a605
+	source = rounded_corners_40.5.patch
 	source = meta_clip_effect.c
 	source = meta_clip_effect.h
 	source = mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/100ce7589dd614832b8d500f3602ebe9/main.js
