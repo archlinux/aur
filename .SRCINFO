@@ -1,0 +1,14 @@
+pkgbase = python-fqdn
+	pkgdesc = RFC-compliant FQDN validation and manipulation for Python
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/ypcrts/fqdn
+	arch = any
+	license = MPL2
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cached-property
+	source = https://github.com/ypcrts/fqdn/archive/refs/tags/v1.5.1.tar.gz
+	md5sums = 805d8be04461dd9f48eb7011d00c3b76
+
+pkgname = python-fqdn
