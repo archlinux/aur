@@ -1,6 +1,6 @@
 pkgbase = liblsl
 	pkgdesc = C++ lsl library for multi-modal time-synched data transmission over the local network (stable release)
-	pkgver = 1.15.0
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/sccn/liblsl/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = liblsl
 	depends = gcc-libs
 	provides = liblsl
 	conflicts = liblsl-git
-	source = liblsl-1.15.0::git+ssh://git@github.com/sccn/liblsl.git#tag=v1.15.0
+	source = liblsl-1.15.2::git+ssh://git@github.com/sccn/liblsl.git#tag=v1.15.2
 	md5sums = SKIP
 
 pkgname = liblsl
