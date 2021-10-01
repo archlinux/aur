@@ -1,14 +1,14 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Morten Linderud <morten@linderud.pw> 
 pkgname=nerd-fonts-git
-pkgver=2.1.0.r139.gbc4416e1
+pkgver=2.1.0.r150.g38f76ec6
 pkgrel=1
 pkgdesc="Iconic font aggregator, collection, and patcher: 34 patched fonts (77k+ variations). Includes popular glyph collections such as Font Awesome & fonts such as Hack"
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
 makedepends=('git')
-conflicts=('nerd-fonts')
+conflicts=('nerd-fonts' 'ttf-iosevka-nerd')
 provides=('nerd-fonts')
 source=('git+https://github.com/ryanoasis/nerd-fonts.git')
 sha256sums=('SKIP')
