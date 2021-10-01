@@ -14,11 +14,11 @@ depends=('wxbase-light'
          'libpng'
          'boost-libs'
          )
-makedepends=('boost'
-             'autoconf2.13')
+makedepends=('boost')
 conflicts=('amule')
 optdepends=('kamule: AmuleGUI for KDE')
 source=("aMule-SVN-${pkgver}.tar.bz2::http://repo.or.cz/w/amule.git/snapshot/${_pkgcomm}.tar.gz"
+        'https://patch-diff.githubusercontent.com/raw/amule-project/amule/pull/298.diff'
         'amuled.service'
         'amuled@.service'
         'amuleweb.service'
@@ -26,6 +26,7 @@ source=("aMule-SVN-${pkgver}.tar.bz2::http://repo.or.cz/w/amule.git/snapshot/${_
         'amule.tmpfiles'
         )
 sha256sums=('f1371c1915fd01214a80d9aae3c414ecafc2fb40bbdeb1553c541133ce041dc2'
+            '548ad7468888c49ecbbaf47ac745e38ed24c70967d12d5592f6b3d59fbdf01b1'
             '339d59211bd914dfa43c6c54b68e2715f9648de3220d712c01c004eda19a5b7a'
             '52824abdd4724db7c8c4bfc05779849c06de04b4795b3d77c98de1baa3a0babc'
             'f50c46605d3ae977913f4dcf0c7405e0bdc84322d1fc877ae851706f0e1ae5fd'
@@ -38,12 +39,8 @@ prepare() {
   mkdir -p build
 
   cd "amule-${_pkgcomm}"
-  sed -e 's|^autoconf|autoconf-2.13|g' \
-        -i autogen.sh
 
-  sed -e 's|2.62|2.70|g' \
-      -e '35s|^|#|g' \
-      -i configure.ac
+  patch -p1 -i "${srcdir}/298.diff"
 
   ./autogen.sh
 }
