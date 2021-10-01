@@ -2,12 +2,10 @@
 Description=Go-Livepeer Orchestrator and Transcoder service, edit /etc/go-livepeer/environment
 After=network.target
 Wants=network-online.target
-# See https://www.cyberciti.biz/faq/linux-hide-processes-from-other-users/
 
 [Service]
 Restart=always
 Type=simple
-# Before first start, you must edit the environment file with your own orchestrator's info
 EnvironmentFile=/etc/go-livepeer/environment
 
 ExecStart=/usr/bin/livepeer -network mainnet -orchestrator -transcoder \

@@ -1,6 +1,3 @@
-# Update these values with your own and then run: sudo systemctl daemon-reload && sudo systemctl enable --now
-# Support may be found at Livepeer's official community channels on Discourse & Discord: https://discord.gguaPhtyrWsF https://forum.livepeer.org
-
 ethaddr=0x1a00000000000000000000000000000000000000
 ethurl=https://mainnet.infura.io/v3/00000000000011111111110000000000
 ethpass=mywalletpassword
