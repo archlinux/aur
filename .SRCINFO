@@ -1,0 +1,12 @@
+pkgbase = dagtoc
+	pkgdesc = A cli-tool for operating TOC of pdf
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TD-Sky/dagtoc
+	arch = any
+	license = GPL3
+	depends = python-pip
+	source = dagtoc-1.0.0.tar.gz::https://github.com/TD-Sky/dagtoc/releases/download/v1.0.0/dagtoc-1.0.0.tar.gz
+	sha256sums = bf31a37275f2d47c3b8a03856e6da8907c390f713c4e4f4009f87e9701bca4ff
+
+pkgname = dagtoc
