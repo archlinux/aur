@@ -2,7 +2,7 @@
 
 _pkgbase=ccextractorfluttergui
 pkgname=ccextractor-gui
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="CCExtractor flutter GUI (from sources)."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
         https://github.com/CCExtractor/${_pkgbase}/archive/refs/tags/v$pkgver.tar.gz
         ccextractor-gui.desktop
 )
-sha512sums=('de3bfb5f250b3d8cd3f5c9c9a61eeb11fdce7de5d6f084fb62253fddfcabbecc9894c67378ac83d0b98045ae87745e364041021978d1a37fa78ba255b9905b6e'
+sha512sums=('36ebc29eb05b4bcf70c7af3f72a00ba8fd333b702f6af94b17aea33bdfd5a4e7c8071d619f52ca7c8a447a34fc7bd1069926ce32631cb0c13aadd11bc3d34a1f'
             'f068beb0b6e76897c3bad91d3621e05cf266a23e891f03c4613b69bfc9c3b932121989ce47459f326e437fddcac1e891a9b53fd8ad2f20f9fbc13afe859dcc91')
 
 prepare() {
