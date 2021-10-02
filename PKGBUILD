@@ -1,4 +1,4 @@
-# Maintainer: Wojciech Kepka <wojtek.kepka@protonmail.com>
+# Maintainer: Wojciech Kepka <wojciech@wkepka.dev>
 pkgname=epick
 pkgver=0.3.0
 pkgrel=1
