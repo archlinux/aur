@@ -4,14 +4,14 @@
 
 _pkgname='python-binance'
 pkgname="$_pkgname-git"
-pkgver=1.0.10.r54.ga6f3048
+pkgver=1.0.15.r0.gd76df56
 pkgrel=1
 pkgdesc="simple python interface to binance.com's web API"
 arch=('any')
 url='https://github.com/sammchardy/python-binance'
 license=('MIT')
 depends=('python' 'python-aiohttp' 'python-dateparser'
-         'python-requests' 'python-ujson' 'python-websockets')
+         'python-requests' 'python-ujson' 'python-websockets=9.1')
 makedepends=('git' 'python-setuptools')
 source=('git+https://github.com/sammchardy/python-binance.git')
 md5sums=('SKIP')
