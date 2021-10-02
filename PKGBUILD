@@ -1,6 +1,6 @@
 # Maintainer: Daniel R. Güell <daniel@drguell.es>
 pkgname=masskulator
-pkgver=v0.1.6
+pkgver=v0.1.7
 pkgrel=1
 epoch=
 pkgdesc="A simple  application to plot a chart with weight evolution."
