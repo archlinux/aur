@@ -2,7 +2,6 @@
 
 pkgname=sunamu-git
 _pkgname=sunamu
-_pkgver=v1.1.0
 pkgver=r54.86fb6f3be9
 pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way! (Development version)"
