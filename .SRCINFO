@@ -1,6 +1,6 @@
 pkgbase = sunamu-bin
 	pkgdesc = Show your currently playing song in a stylish way! (Binary version)
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/AryToNeX/Sunamu
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = sunamu-bin
 	depends = libappindicator-gtk3
 	conflicts = sunamu
 	conflicts = sunamu-git
-	noextract = sunamu-1.1.0.pacman
+	noextract = sunamu-1.1.1.pacman
 	options = !strip
-	source = https://github.com/AryToNeX/Sunamu/releases/download/v1.1.0/sunamu-1.1.0.pacman
-	md5sums = f0fa60bff63af1de33968e6dbe78b477
+	source = https://github.com/AryToNeX/Sunamu/releases/download/v1.1.1/sunamu-1.1.1.pacman
+	sha256sums = b391bc2500931c50d303b24c756133364424c05a50cd22c79f8ae9e891d58fbe
 
 pkgname = sunamu-bin
