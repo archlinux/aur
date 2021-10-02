@@ -1,12 +1,13 @@
 pkgbase = python2-pandas
 	pkgdesc = R-like data analysis library for Python (final Python 2.x version).
 	pkgver = 0.24.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pandas.pydata.org
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cython2
+	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-numpy
 	depends = python2-dateutil
@@ -15,10 +16,7 @@ pkgbase = python2-pandas
 	optdepends = python2-scipy: for miscellaneous statistical functions
 	optdepends = python2-pytables: for HDF5-based storage
 	optdepends = python2-matplotlib: for plotting
-	optdepends = scikits-statsmodels: for parts of pandas.stats
 	optdepends = python2-openpyxl>=1.6.1: for Excel I/O
-	optdepends = python2-xlrd: for Excel I/O
-	optdepends = python2-xlwt: for Excel I/O
 	optdepends = python2-boto: for Amazon S3 access
 	optdepends = python2-beautifulsoup4: for read_html function
 	optdepends = python2-html5lib: for read_html function
@@ -27,4 +25,3 @@ pkgbase = python2-pandas
 	md5sums = 6640de14a934a701129b635c6d75801d
 
 pkgname = python2-pandas
-
