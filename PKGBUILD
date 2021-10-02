@@ -3,7 +3,7 @@
 # Original Maintainer: raininja <dandenkijin@gmail.com>
 pkgname=slimjet
 pkgver=32.0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
 url="http://www.slimjet.com"
@@ -25,9 +25,6 @@ prepare() {
 
 package() {
     cp --parents -a {opt,usr/bin,usr/share} "${pkgdir}"
-
-    # fix permissions
-    chmod -R go-w "${pkgdir}"
 
     # install license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
