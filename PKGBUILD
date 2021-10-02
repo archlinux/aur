@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=kube-fzf
-pkgver=1.5.0
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='Command-line fuzzy searching of Kubernetes pods'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://github.com/thecasualcoder/kube-fzf'
 license=(MIT)
 depends=('kubectl' 'fzf')
 source=("$pkgname-$pkgver::https://github.com/thecasualcoder/kube-fzf/archive/v$pkgver.tar.gz")
-sha512sums=('36fcc9be40a3666581fe06ebf6ce5ea99732d801cf6e632253ff4ac02025909a34612a920fcb6d0960da80a4ff443cc53a0fb84f16d00d534f43149785ecc182')
+sha512sums=('489007b5b516973295d63d405ee90901264fae73bdfbdc6b684b49566436d2267fb38d24e51053677b57307bfb6123b55584c169b9547de956430813693a859d')
 
 package() {
   install -Dm 755 "$srcdir/$pkgname-$pkgver/findpod" "$pkgdir/usr/bin/findpod"
