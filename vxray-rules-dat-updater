@@ -19,6 +19,7 @@ download_files() {
   sha256sum --check "geosite.dat.sha256sum"
 
   rm -v "geosite.dat.sha256sum" "geoip.dat.sha256sum"
+  cp -f /var/lib/vxray-rules-dat/geoip.dat /usr/share/xray/geoip.dat && cp -f /var/lib/vxray-rules-dat/geoip.dat /usr/share/v2ray/geoip.dat && cp -f /var/lib/vxray-rules-dat/geosite.dat /usr/share/xray/geosite.dat && cp -f /var/lib/vxray-rules-dat/geosite.dat /usr/share/v2ray/geosite.dat
 }
 
 case "${1}" in
