@@ -1,0 +1,27 @@
+pkgbase = mingw-w64-qt6-sensors
+	pkgdesc = Provides access to sensor hardware and motion gesture recognition (mingw-w64)
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = mingw-w64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-qt6-declarative
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = mingw-w64-vulkan-icd-loader
+	makedepends = qt6-declarative
+	makedepends = ninja
+	depends = mingw-w64-qt6-connectivity
+	optdepends = mingw-w64-qt6-declarative: QML bindings
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.0/submodules/qtsensors-everywhere-src-6.2.0.tar.xz
+	sha256sums = 1a3ea1253408c91046ae1e775e28b1fe7acfbb7ee18952605379d35bb1e93678
+
+pkgname = mingw-w64-qt6-sensors
