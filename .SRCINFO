@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-removegrain-git
+	pkgdesc = Plugin for Vapoursynth: removegrain (GIT version)
+	pkgver = R1.4.gea3d156
+	pkgrel = 1
+	url = https://github.com/vapoursynth/vs-removegrain
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	provides = vapoursynth-plugin-removegrain
+	conflicts = vapoursynth-plugin-removegrain
+	source = removegrain::git+https://github.com/vapoursynth/vs-removegrain.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-removegrain-git
+
