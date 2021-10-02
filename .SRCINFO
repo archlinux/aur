@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-vivtc-git
+	pkgdesc = Plugin for Vapoursynth: vivtc (GIT version)
+	pkgver = R1.2.ged56d96
+	pkgrel = 1
+	url = https://github.com/vapoursynth/vivtc
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	provides = vapoursynth-plugin-vivtc
+	conflicts = vapoursynth-plugin-vivtc
+	source = vivtc::git+https://github.com/vapoursynth/vivtc.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vivtc-git
+
