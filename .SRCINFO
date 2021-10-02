@@ -9,6 +9,6 @@ pkgbase = gnome-shell-extension-nightthemeswitcher
 	makedepends = glib2
 	depends = gnome-shell>=1:41
 	source = https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/archive/52/nightthemeswitcher-gnome-shell-extension-52.tar.gz
-	sha512sums = 5eda9a372e8adc757a37012a3c6c7d5223cec7bd9cde6f07e15c0d2a6da43167
+	sha512sums = fbcc5ef43333128bc8b3b02c5e6b8ee349d73c9b8746c3371d9e82b758869803e3d5b82af30478d8814ff44a50af4ebfc7ddee1682a5c640fcf16beb42e4fff3
 
 pkgname = gnome-shell-extension-nightthemeswitcher
