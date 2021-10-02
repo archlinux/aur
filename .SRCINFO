@@ -1,6 +1,6 @@
 pkgbase = pass-tessen
 	pkgdesc = A fuzzy data selection and copying interface for pass
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/ayushnix/pass-tessen
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pass-tessen
 	optdepends = wl-clipboard-rs: to copy text in wayland
 	optdepends = xclip: to copy text in xorg
 	conflicts = pass-tessen-git
-	source = pass-tessen-1.5.2.tar.gz::https://github.com/ayushnix/pass-tessen/archive/refs/tags/v1.5.2.tar.gz
-	sha256sums = d6afdc2b8acf4bb812a05f7770ea7e1ae1e39b4c41336a54eb0b22b14fadfc0a
+	source = pass-tessen-1.5.3.tar.gz::https://github.com/ayushnix/pass-tessen/archive/refs/tags/v1.5.3.tar.gz
+	sha256sums = 67a7b17d7a3099c0660f54a638238b8250d5fdef319ba10f5a147fc7cd39f600
 
 pkgname = pass-tessen
