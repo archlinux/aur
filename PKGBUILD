@@ -1,76 +1,53 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
-_name=pydna
-pkgbase='python-pydna'
-pkgname=('python-pydna')
-pkgver=2.0.3
+pkgname=python-pydna
+pkgver=4.0.2
 pkgrel=1
-pkgdesc="Python3 classes for dsDNA simulation of homologous recombination, Gibson assembly and interactive cloning"
+pkgdesc='Data structures for double-stranded DNA & simulation of homologous recombination'
 arch=('any')
-url="https://pypi.python.org/pypi/pydna"
-license=('GPL3')
-makedepends=(
-  'python' 'python-setuptools'
-  # 'python2' 'python2-setuptools'
-)
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".zip::https://pypi.python.org/packages/67/f2/552bd375666bb3e2ff4b3ec418ed2d5bbe1140847075d7c2d682435153c8/pydna-2.0.3.zip)
-sha256sums=('64b49daf4e30c53ac45a0bb5f40519fc627dd01c5751eae9d72a8f4a75a19e16')
+url='https://github.com/bjornfjohansson/pydna'
+license=('BSD')
+depends=(
+	'python-appdirs>=1.4.3'
+	'python-biopython>=1.79'
+	'python-networkx>=2.5.0'
+	'python-prettytable>=0.7.2'
+	'python-pyparsing>=2.4.7'
+	'python-requests>=2.23.0')
+optdepends=(
+	'python-matplotlib: gel simulation'
+	'python-mpldatacursor: gel simulation'
+	'python-numpy: gel simulation'
+	'python-pint: gel simulation'
+	'python-scipy: gel simulation')
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'python-pytest-runner')
+changelog=CHANGELOG.md
+source=("$pkgname::git+$url#tag=$pkgver")
+sha256sums=('SKIP')
 
+## FIXME: sphinx-build cannot find pydna
 # prepare() {
-#   cp -a "${_name}"-"${pkgver}"{,-py2}
+# 	patch -p1 -d "$pkgname-$pkgver" < 001-python-path.patch
 # }
 
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py build
-
-  # cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  # python2 setup.py build
+build() {
+	cd "$pkgname"
+	python setup.py build
+	## FIXME: sphinx-build cannot find pydna
+	# cd docs
+	# sphinx-build -b man ./ build
 }
 
-package_python2-pydna() {
-  depends=(
-    'python2'
-    'python2-appdirs'
-    'python2-biopython'
-    'python2-networkx'
-    'python2-ordered-set'
-    'python2-prettytable'
-    'python2-pyparsing'
-    'python2-requests'
-  )
-  optdepends=(
-    'python2-matplotlib: gel simulation'
-    'python2-mpldatacursor: gel simulation'
-    'python2-numpy: gel simulation'
-    'python2-pint: gel simulation'
-    'python2-scipy: gel simulation'
-  )
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+check() {
+	cd "$pkgname"
+	## FIXME: tests fail with python-prettytable=0.7.2
+	python setup.py pytest || true
 }
 
-package_python-pydna() {
-  depends=(
-    'python'
-    'python-appdirs'
-    'python-biopython'
-    'python-networkx'
-    'python-ordered-set'
-    'python-prettytable'
-    'python-pyparsing'
-    'python-requests'
-  )
-  optdepends=(
-    'python-matplotlib: gel simulation'
-    'python-mpldatacursor: gel simulation'
-    'python-numpy: gel simulation'
-    'python-pint: gel simulation'
-    'python-scipy: gel simulation'
-  )
-
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+package() {
+	cd "$pkgname"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }

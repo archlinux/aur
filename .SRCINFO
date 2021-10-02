@@ -1,28 +1,27 @@
 pkgbase = python-pydna
-	pkgdesc = Python3 classes for dsDNA simulation of homologous recombination, Gibson assembly and interactive cloning
-	pkgver = 2.0.3
+	pkgdesc = Data structures for double-stranded DNA & simulation of homologous recombination
+	pkgver = 4.0.2
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/pydna
+	url = https://github.com/bjornfjohansson/pydna
+	changelog = CHANGELOG.md
 	arch = any
-	license = GPL3
-	makedepends = python
+	license = BSD
+	makedepends = git
 	makedepends = python-setuptools
-	options = !emptydirs
-	source = python-pydna-2.0.3.zip::https://pypi.python.org/packages/67/f2/552bd375666bb3e2ff4b3ec418ed2d5bbe1140847075d7c2d682435153c8/pydna-2.0.3.zip
-	sha256sums = 64b49daf4e30c53ac45a0bb5f40519fc627dd01c5751eae9d72a8f4a75a19e16
-
-pkgname = python-pydna
-	depends = python
-	depends = python-appdirs
-	depends = python-biopython
-	depends = python-networkx
-	depends = python-ordered-set
-	depends = python-prettytable
-	depends = python-pyparsing
-	depends = python-requests
+	makedepends = python-setuptools-scm
+	makedepends = python-pytest-runner
+	depends = python-appdirs>=1.4.3
+	depends = python-biopython>=1.79
+	depends = python-networkx>=2.5.0
+	depends = python-prettytable>=0.7.2
+	depends = python-pyparsing>=2.4.7
+	depends = python-requests>=2.23.0
 	optdepends = python-matplotlib: gel simulation
 	optdepends = python-mpldatacursor: gel simulation
 	optdepends = python-numpy: gel simulation
 	optdepends = python-pint: gel simulation
 	optdepends = python-scipy: gel simulation
+	source = python-pydna::git+https://github.com/bjornfjohansson/pydna#tag=4.0.2
+	sha256sums = SKIP
 
+pkgname = python-pydna
