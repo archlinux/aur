@@ -1,12 +1,11 @@
 pkgbase = nonicons-font
 	pkgdesc = A set of SVG icons representing programming languages, designing & development tools.
-	pkgver = r42.8633191
-	pkgrel = 3
+	pkgver = r47.0135a2f
+	pkgrel = 1
 	url = https://github.com/yamatsum/nonicons
 	arch = any
 	license = unknown
-	source = nonicons-r42.8633191.ttf::https://github.com/yamatsum/nonicons/raw/master/dist/nonicons.ttf
-	sha512sums = ef3203ed4f5a1fc25e9216684293456e1ee48d51b7098521049369bed85604672a6f6cf12f94367efbf5afedddcb2dfc70e44268e36de37cbef5f12b11cacdb8
+	source = nonicons-r47.0135a2f.ttf::https://github.com/yamatsum/nonicons/raw/master/dist/nonicons.ttf
+	sha512sums = 58d933ea14775fcc5ee8e142e287cc2054a33d05e719e10a7edf00f01388948e302dfd055d955f63d4a871af376858f403b666cac540c7cb4874907582b8763c
 
 pkgname = nonicons-font
-
