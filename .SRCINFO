@@ -5,6 +5,7 @@ pkgbase = compose-switch-bin
 	url = https://github.com/docker/compose-switch
 	arch = x86_64
 	license = Apache
+	depends = docker-compose>=2
 	conflicts = docker-compose<2
 	conflicts = compose-switch
 	source = https://github.com/docker/compose-switch/releases/download/v1.0.2/docker-compose-linux-amd64
