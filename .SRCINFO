@@ -1,6 +1,6 @@
 pkgbase = gegl-git
 	pkgdesc = Graph based image processing framework
-	pkgver = 0.4.29.r10121.663009f56
+	pkgver = 0.4.32.r10327.47a321f29
 	pkgrel = 1
 	url = https://www.gegl.org
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = gegl-git
 	makedepends = python-gobject
 	makedepends = suitesparse
 	makedepends = gobject-introspection
-	depends = babl>=0.1.84
+	depends = babl>=0.1.78
 	depends = libspiro
 	depends = json-glib
 	depends = sdl2
@@ -42,11 +42,10 @@ pkgbase = gegl-git
 	optdepends = libgexiv2: for image metadata
 	optdepends = lensfun: for lens distortion
 	optdepends = libnsgif: gif plugin
-	provides = gegl=0.4.29
+	provides = gegl=0.4.32
 	conflicts = gegl
 	options = !libtool
 	source = git+https://gitlab.gnome.org/GNOME/gegl.git
 	sha512sums = SKIP
 
 pkgname = gegl-git
-

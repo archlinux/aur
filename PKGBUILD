@@ -9,13 +9,13 @@
 
 _pkgname=gegl
 pkgname="${_pkgname}-git"
-pkgver=0.4.29.r10121.663009f56
+pkgver=0.4.32.r10327.47a321f29
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
 url="https://www.gegl.org"
 license=('GPL3' 'LGPL3')
-depends=('babl>=0.1.84' 'libspiro' 'json-glib' 'sdl2') #'mrg'
+depends=('babl>=0.1.78' 'libspiro' 'json-glib' 'sdl2') #'mrg'
 makedepends=('git' 'meson' 'intltool' 'python' 'ruby' 'luajit'
              'libraw' 'openexr' 'ffmpeg' 'librsvg' 'jasper'
              'libtiff' 'libnsgif' 'exiv2' 'libgexiv2' 'lensfun'
