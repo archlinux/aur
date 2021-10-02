@@ -1,6 +1,6 @@
 pkgbase = doppler-cli
-	pkgdesc = CLI utility for Doppler, environment and secrets manager.
-	pkgver = 3.32.0
+	pkgdesc = CLI utility for Doppler, environment and secrets manager
+	pkgver = 3.33.0
 	pkgrel = 1
 	url = https://doppler.com
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = doppler-cli
 	arch = aarch64
 	license = Apache
 	makedepends = go
-	source = doppler-cli-3.32.0.tar.gz::https://github.com/dopplerhq/cli/archive/3.32.0.tar.gz
-	sha256sums = 2f9912096dd6f9dfb427b4a9d26de207a57a1a2e611a1afbc86824499410b778
+	depends = glibc
+	source = doppler-cli-3.33.0.tar.gz::https://github.com/dopplerhq/cli/archive/3.33.0.tar.gz
+	sha256sums = be7c252bcfdfe2f1a67e656446436ea800ef84c02a3c1de10793e2c4f0908232
 
 pkgname = doppler-cli

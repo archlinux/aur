@@ -2,20 +2,21 @@
 # Contributor: Gregory G Danielson III <gregdan3@protonmail.com>
 
 pkgname=doppler-cli
-pkgver=3.32.0
+pkgver=3.33.0
 pkgrel=1
-pkgdesc="CLI utility for Doppler, environment and secrets manager."
+pkgdesc="CLI utility for Doppler, environment and secrets manager"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('Apache')
 url='https://doppler.com'
+depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dopplerhq/cli/archive/$pkgver.tar.gz")
-sha256sums=('2f9912096dd6f9dfb427b4a9d26de207a57a1a2e611a1afbc86824499410b778')
+sha256sums=('be7c252bcfdfe2f1a67e656446436ea800ef84c02a3c1de10793e2c4f0908232')
 
 prepare() {
 	mkdir -p "cli-$pkgver/build"
 	## remove self-update functionality
-	sed -i '/rootCmd.AddCommand/d' pkg/cmd/update.go
+	sed -i '/rootCmd.AddCommand/d' "cli-$pkgver/pkg/cmd/update.go"
 }
 
 build() {
