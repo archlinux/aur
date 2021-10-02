@@ -1,53 +1,58 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
-_name=serializable
-pkgbase='python-serializable'
+pkgbase=python-serializable
 pkgname=('python-serializable' 'python2-serializable')
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Base class with serialization helpers for user-defined Python objects"
 arch=('any')
 url="https://pypi.python.org/pypi/serializable"
 license=('Apache')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/1a/8c/140c24214f503366c80cf9d42c474df2696ea5291bdd318c24d014a859db/serializable-0.1.1.tar.gz)
-sha256sums=('87f9fadbd0fba5c7951858d16ae9109afa4c96fd486e663419f3051f352a22d9')
+makedepends=('python-setuptools' 'python2-setuptools')
+checkdepends=(
+	'python-nose'
+	'python-simplejson'
+	'python-typechecks'
+
+	'python2-nose'
+	'python2-simplejson'
+	'python2-typechecks')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/serializable/serializable-$pkgver.tar.gz")
+sha256sums=('ec604e5df0c1236c06d190043a407495c4412dd6b6fd3b45a8514518173ed961')
 
 prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
+	cp -a "serializable-$pkgver"{,-py2}
 }
 
 build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py build
+	pushd "serializable-$pkgver"
+	python setup.py build
+	popd
 
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
+	pushd "serializable-$pkgver-py2"
+	python2 setup.py build
+}
+
+check() {
+	pushd "serializable-$pkgver"
+	python setup.py nosetests
+	popd
+
+	pushd "serializable-$pkgver-py2"
+	python2 setup.py nosetests
 }
 
 package_python2-serializable() {
-  depends=(
-    'python2'
-    'python2-simplejson'
-    'python2-six'
-    'python2-typechecks'
-  )
+	depends=('python2-simplejson' 'python2-six>=1.9.0' 'python2-typechecks>=0.0.2')
 
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+	cd "serializable-$pkgver-py2"
+	PYTHONHASHSEED=0 python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 package_python-serializable() {
-  depends=(
-    'python'
-    'python-simplejson'
-    'python-six'
-    'python-typechecks'
-  )
+	depends=('python-simplejson' 'python-six>=1.9.0' 'python-typechecks>=0.0.2')
 
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+	cd "serializable-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }

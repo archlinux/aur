@@ -1,27 +1,27 @@
 pkgbase = python-serializable
 	pkgdesc = Base class with serialization helpers for user-defined Python objects
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/serializable
 	arch = any
 	license = Apache
-	makedepends = python
+	checkdepends = python-nose
+	checkdepends = python-simplejson
+	checkdepends = python-typechecks
+	checkdepends = python2-nose
+	checkdepends = python2-simplejson
+	checkdepends = python2-typechecks
 	makedepends = python-setuptools
-	makedepends = python2
 	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-serializable-0.1.1.tar.gz::https://pypi.python.org/packages/1a/8c/140c24214f503366c80cf9d42c474df2696ea5291bdd318c24d014a859db/serializable-0.1.1.tar.gz
-	sha256sums = 87f9fadbd0fba5c7951858d16ae9109afa4c96fd486e663419f3051f352a22d9
+	source = python-serializable-0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/s/serializable/serializable-0.2.1.tar.gz
+	sha256sums = ec604e5df0c1236c06d190043a407495c4412dd6b6fd3b45a8514518173ed961
 
 pkgname = python-serializable
-	depends = python
 	depends = python-simplejson
-	depends = python-six
-	depends = python-typechecks
+	depends = python-six>=1.9.0
+	depends = python-typechecks>=0.0.2
 
 pkgname = python2-serializable
-	depends = python2
 	depends = python2-simplejson
-	depends = python2-six
-	depends = python2-typechecks
-
+	depends = python2-six>=1.9.0
+	depends = python2-typechecks>=0.0.2
