@@ -1,0 +1,16 @@
+pkgbase = perl-feed-find
+	pkgdesc = Perl interface for libcurl
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://metacpan.org/pod/Feed::Find
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-test-lwp-useragent
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/Feed-Find-0.11.tar.gz
+	sha256sums = 0c1f101fbd13546ae6da376063053e602f912d5a3b2c4f0a262d569365f3d595
+
+pkgname = perl-feed-find
