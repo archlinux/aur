@@ -1,7 +1,7 @@
 # Maintainer: davedatum <ask at davedatum dot com>
 
 pkgname=imagine-git
-pkgver=0.5.1.r0.g20d46c3
+pkgver=0.6.1.r3.gfbc237e
 pkgrel=1
 pkgdesc="PNG/JPEG optimization app"
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 install=${pkgname}.install
 options=(!strip)
-source=("${pkgname}::git+$url.git#tag=v0.5.1"
+source=("${pkgname}::git+$url.git#tag=v0.6.1"
 		"${pkgname}.sh"
 		"${pkgname}.desktop"
 		"${pkgname}.install")
