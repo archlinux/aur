@@ -1,6 +1,6 @@
 pkgbase = authelia-git
 	pkgdesc = The Cloud ready multi-factor authentication portal for your Apps.
-	pkgver = 4.31.0.r27.g0351546c
+	pkgver = 4.31.0.r28.ga32d0301
 	pkgrel = 1
 	url = https://github.com/authelia/authelia
 	arch = x86_64
