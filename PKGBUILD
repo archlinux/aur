@@ -10,15 +10,15 @@
 
 pkgname=keepassxc-git
 _gitname=keepassxc
-pkgver=2.6.3.r144.g724f691e
-pkgrel=3
+pkgver=2.6.3.r241.g2514c1d5
+pkgrel=1
 pkgdesc="Cross-platform community-driven port of KeePass Password Safe"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassxc"
 license=('GPL2')
 depends=('qt5-base' 'qt5-x11extras' 'qt5-translations' 'qt5-imageformats'
          'libxtst' 'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils'
-         'yubikey-personalization' 'qt5-svg' 'qrencode' 'quazip'
+         'libusb' 'pcsclite' 'qt5-svg' 'qrencode' 'quazip'
          'zlib' 'botan')
 makedepends=('git' 'intltool' 'cmake' 'qt5-tools' 'asciidoctor')
 checkdepends=('xorg-server-xvfb' 'xclip')
