@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-ocr-git
+	pkgdesc = Plugin for Vapoursynth: ocr (GIT version)
+	pkgver = R1.2.gb5dd774
+	pkgrel = 1
+	url = https://github.com/vapoursynth/subtext
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	depends = tesseract
+	provides = vapoursynth-plugin-ocr
+	conflicts = vapoursynth-plugin-ocr
+	source = ocr::git+https://github.com/vapoursynth/vs-ocr.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-ocr-git
