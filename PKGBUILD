@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <mzz@tuta.io>
 
 pkgname=v2raya-git
-pkgver=20210827.r870.ee7205f
+pkgver=20211002.r1016.0236aff
 pkgrel=1
 install=.INSTALL
 pkgdesc="v2rayA nightly version"
@@ -34,7 +34,7 @@ build() {
 
     cd "$srcdir/$pkgname/service"
     export GO111MODULE=on
-    export GOPROXY=https://goproxy.io
+    export GOPROXY=https://mirrors.aliyun.com/goproxy/
     go build -ldflags '-X github.com/v2rayA/v2rayA/conf.Version=unstable-'"$(pkgver)"' -s -w' -o v2raya
 }
 
