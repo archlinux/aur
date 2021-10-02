@@ -19,7 +19,7 @@
         "pkgver=(?<currentValue>.*?)\n"
       ],
       "depNameTemplate": "puppetlabs/puppet-editor-services",
-      "datasourceTemplate": "gitlab-tags"
+      "datasourceTemplate": "github-tags"
     }
   ]
 }
