@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-quick3d-static
 	pkgdesc = Qt module and API for defining 3D content in Qt Quick (mingw-w64)
-	pkgver = 6.1.3
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = mingw-w64-qt6-quick3d-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.1/6.1.3/submodules/qtquick3d-everywhere-src-6.1.3.tar.xz
-	sha256sums = 91dbdda78204cb27c100ed3a4eed9f3b18466c4349b1f164191a646348410ca6
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.0/submodules/qtquick3d-everywhere-src-6.2.0.tar.xz
+	sha256sums = e8f8163237468e158ace7737d60a0a722209ffda444c57c786fc53db1af851e1
 
 pkgname = mingw-w64-qt6-quick3d-static
