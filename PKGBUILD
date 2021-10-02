@@ -2,7 +2,7 @@
 
 pkgname=mopidy-internetarchive
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Mopidy extension for playing audio from the Internet Archive"
 
 arch=('any')
@@ -12,7 +12,7 @@ depends=('mopidy>=3.0' 'python-pykka' 'python-requests' 'python-cachetools' 'pyt
 makedepends=('python' 'python-setuptools')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tkem/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('ce5095e98475ed0cbbb1a9c52d9f429a')
+sha256sums=('381704f63e6fe3d3f4faee8240ac5bf44ad3a35a2b4f4d4d02a5a7e2ab5bb348')
 
 package() {
     cd "${pkgname}-${pkgver}"
