@@ -11,7 +11,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 pkgname=gimp-develop-git
 _pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=2.99.5.r184.1e76829989
+pkgver=2.99.7.r462.d33c45fb47
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ depends=(
 	'openexr>=1.6.1'
 	'mypaint-brushes1>=1.3.0'
 	'babl>=0.1.74'
-	'gegl>=0.4.30'
+	'gegl>=0.4.32'
 	'cairo>=1.14.0'
 	'appstream-glib>=0.7.7'
 	'gobject-introspection>=1.32.0'
