@@ -86,7 +86,7 @@ pkgbase=linux-cacule
 pkgname=('linux-cacule' 'linux-cacule-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.9
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -104,7 +104,7 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
         "config"
 #        "${_patchsource}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/arch-patches-v8/0001-arch-patches.patch"
+        "${_patchsource}/arch-patches-v9/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14.patch"
 #        "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/amd/0006-amd-cppc.patch"
@@ -117,7 +117,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
-        "${_patchsource}/btrfs-patches-v4/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v5/0001-btrfs-patches.patch"
         "${_patchsource}/fixes-miscellaneous-v5/0001-fixes-miscellaneous.patch"
         "${_patchsource}/futex-zen-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
@@ -125,12 +125,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/lru-zen-patches-v3/0001-lru-zen-patches.patch"
 #        "${_patchsource}/le9-patches-v4/0001-mm-vmscan-add-sysctl-knobs-for-protecting-the-workin.patch"
 #        "${_patchsource}/misc/le9fa-5.14.patch"
-        "${_patchsource}/pf-patches-v6/0001-pf-patches.patch"
+        "${_patchsource}/pf-patches-v7/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
         "${_patchsource}/zen-patches-v3/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches-v3/0001-zstd-upstream-patches.patch"
-        "${_patchsource}/ntfs3-patches-v11/0001-ntfs3-patches.patch"
+        "${_patchsource}/ntfs3-patches-v12/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
         "${_patchsource}/0001-v4l2loopback.patch"
@@ -569,7 +569,7 @@ package_linux-cacule-headers() {
 
 md5sums=('9f4fe4d784f3c5dd34e9251f83202eba'
          '6cfe7a16a5260cb75e5a4145991e0027'
-         'ef749be7f2048456ae738f93229bf354'
+         '8542cc6a9b34330f0cb82bdfca0a106d'
          '40a9380b2884f5d417791f06389ba57e'
          '430972ae1e936f99d8dc2a1f4fdaf774'
          '9d7612159f8745044254077ce8a76df6'
@@ -579,18 +579,18 @@ md5sums=('9f4fe4d784f3c5dd34e9251f83202eba'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
-         'da72ef09deade4f800510e470eaf2f77'
+         '2c4d1d4e79d228af39f84ed4caea2f09'
          'c5a1e8c50dd049b2f1b44d43d6754235'
          '0849b25513dc47e3defa00f26f60eedb'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '366c90b64f9582c0733b8fb607a07594'
          'd24fd0f81fbeed243b1b71fde7659548'
-         'ccfbfe2efd7e51dbd67581a7d892230f'
+         '251d3ca43d625a38db441fb76742e56a'
          '28864f14bf33bad92e57bc48bc5c2c78'
          'cfef1423ad1e6aecad63f0d5eacaea37'
          '808981a36c81165953017e5e432c1fa1'
          '74db4069a1c3985e5de43cf28f44e693'
-         '41a41f2a5ba649da97cdb2b499ddb818'
+         '4b65874d11375bd5084ff1998be17166'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
