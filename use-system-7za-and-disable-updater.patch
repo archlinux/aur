@@ -1,8 +1,8 @@
-diff --git i/src/app/desktop/utils/index.js w/src/app/desktop/utils/index.js
-index 57399c69..3447920f 100644
---- i/src/app/desktop/utils/index.js
-+++ w/src/app/desktop/utils/index.js
-@@ -5,7 +5,6 @@
+diff --git a/src/app/desktop/utils/index.js b/src/app/desktop/utils/index.js
+index a075ac72..1058cfdb 100644
+--- a/src/app/desktop/utils/index.js
++++ b/src/app/desktop/utils/index.js
+@@ -5,7 +5,6 @@ import { extractFull } from 'node-7z';
  import jimp from 'jimp/es';
  import makeDir from 'make-dir';
  import { promisify } from 'util';
@@ -10,13 +10,14 @@ index 57399c69..3447920f 100644
  import path from 'path';
  import crypto from 'crypto';
  import { exec, spawn } from 'child_process';
-@@ -314,25 +313,7 @@
+@@ -314,26 +313,7 @@ export const isLatestJavaDownloaded = async (
  };
  
  export const get7zPath = async () => {
 -  // Get userData from ipc because we can't always get this from redux
 -  let baseDir = await ipcRenderer.invoke('getExecutablePath');
--  if (process.env.NODE_ENV === 'development') {
+-  const isDev = process.env.NODE_ENV === 'development';
+-  if (isDev) {
 -    baseDir = path.resolve(baseDir, '../../');
 -    if (process.platform === 'win32') {
 -      baseDir = path.join(baseDir, '7zip-bin/win/x64');
@@ -30,17 +31,18 @@ index 57399c69..3447920f 100644
 -    return path.join(baseDir, '7za');
 -  }
 -  if (process.platform === 'darwin') {
--    return path.resolve(baseDir, '../', '7za');
+-    return path.resolve(baseDir, isDev ? '' : '../', '7za');
 -  }
 -  return path.join(baseDir, '7za.exe');
 +  return '/usr/bin/7za';
  };
  
  get7zPath();
-diff --git i/public/electron.js w/public/electron.js
-index d9d436fd..45801af6 100644
---- i/public/electron.js
-+++ w/public/electron.js
+
+diff --git a/public/electron.js b/public/electron.js
+index 4d1a2e6d..0314e7fc 100644
+--- a/public/electron.js
++++ b/public/electron.js
 @@ -12,7 +12,6 @@ const {
  } = require('electron');
  const path = require('path');
@@ -49,12 +51,12 @@ index d9d436fd..45801af6 100644
  const log = require('electron-log');
  const fss = require('fs');
  const { promisify } = require('util');
-@@ -199,40 +199,9 @@
+@@ -200,40 +199,9 @@ if (
  log.log(process.env.REACT_APP_RELEASE_TYPE, app.getVersion());
  
  const get7zPath = async () => {
 -  let baseDir = path.dirname(app.getPath('exe'));
--  if (process.env.NODE_ENV === 'development') {
+-  if (isDev) {
 -    baseDir = path.resolve(baseDir, '../../');
 -    if (process.platform === 'win32') {
 -      baseDir = path.join(baseDir, '7zip-bin/win/x64');
@@ -68,7 +70,7 @@ index d9d436fd..45801af6 100644
 -    return path.join(baseDir, '7za');
 -  }
 -  if (process.platform === 'darwin') {
--    return path.resolve(baseDir, '../', '7za');
+-    return path.resolve(baseDir, isDev ? '' : '../', '7za');
 -  }
 -  return path.join(baseDir, '7za.exe');
 +  return '/usr/bin/7za';
@@ -91,7 +93,7 @@ index d9d436fd..45801af6 100644
  function createWindow() {
    mainWindow = new BrowserWindow({
      width: 1100,
-@@ -617,79 +595,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
+@@ -633,79 +601,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
      });
    });
  });
