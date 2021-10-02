@@ -1,0 +1,13 @@
+pkgbase = worm-git
+	pkgdesc = A floating, tag-based window manager written in Rust
+	pkgver = 0.1.0.10.g7146eca
+	pkgrel = 1
+	url = https://github.com/codic12/worm
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = xorg-server
+	source = worm::git+https://github.com/codic12/worm.git
+	sha256sums = SKIP
+
+pkgname = worm-git
