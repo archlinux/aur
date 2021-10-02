@@ -2,7 +2,7 @@
 
 pkgname=randomgtk
 _pkgname=random
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc="A randomization app for GNOME"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glib2' 'gtk4' 'libadwaita' 'gdk-pixbuf2')
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('69630d5b741eacdcbfcdfe1bc912ea86e566bd8ef828363ef64442cde48fdadbd9c01cd73de5b091c8437021d9cf7d06ddebe294f6f15dc6653416e197f1ee58')
+sha512sums=('13a90933962c92b30c716c204b80e79009f0501ba37968f0e9c4125334bb28f8e409964c5b23191358fb47bb2ea533e10c42c38f927fe3ad4728c97258ee2820')
 
 build() {
   arch-meson "$_pkgname" build
