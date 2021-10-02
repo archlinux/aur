@@ -1,11 +1,11 @@
 pkgname=key-mapper-git
-pkgver=0.4.0
-pkgrel=2
+pkgver=r612.7fe5121
+pkgrel=1
 pkgdesc="A tool to change and program the mapping of your input device buttons."
 arch=('any')
 url="https://github.com/sezanzeb/key-mapper/"
 license=('GPL3')
-depends=('python-gobject' 'python-pydbus' 'python-evdev')
+depends=('python-gobject' 'python-pydbus' 'python-evdev' 'gtk3')
 makedepends=('git' 'fakeroot' 'python-setuptools')
 provides=('key-mapper')
 conflicts=('key-mapper')
@@ -16,7 +16,10 @@ _gitname="key-mapper"
 
 pkgver() {
 	cd "$srcdir"/"$_gitname"
-	git describe --tags | sed 's/-/+/g'
+	( set -o pipefail
+	  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 build() {
