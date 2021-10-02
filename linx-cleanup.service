@@ -1,0 +1,18 @@
+[Unit]
+Description=Expired files cleanup for linx-server
+Documentation=https://github.com/ZizzyDizzyMC/linx-server/tree/master/linx-cleanup
+After=linx-server.service
+
+[Service]
+User=linx
+WorkingDirectory=/var/lib/linx-server
+ExecStart=/usr/bin/linx-cleanup
+
+ProtectSystem=full
+PrivateTmp=true
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true

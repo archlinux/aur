@@ -1,0 +1,8 @@
+[Unit]
+Description=Hourly Expired files cleanup for linx-server
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target

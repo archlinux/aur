@@ -1,0 +1,24 @@
+[Unit]
+Description=Self-hosted file/code/media sharing website.
+Documentation=https://github.com/ZizzyDizzyMC/linx-server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=linx
+ExecStart=/usr/bin/linx-server -config /etc/linx-server.conf
+StateDirectory=linx-server
+WorkingDirectory=/var/lib/linx-server
+
+ProtectSystem=full
+PrivateTmp=true
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target
+Also=linx-cleanup.timer

@@ -1,0 +1,27 @@
+pkgbase = linx-server-git
+	pkgdesc = Self-hosted file/code/media sharing website.
+	pkgver = 2.3.8.r107.g084ac23
+	pkgrel = 1
+	url = https://github.com/ZizzyDizzyMC/linx-server
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = go.rice
+	makedepends = git
+	provides = linx-server
+	conflicts = linx-server
+	backup = etc/linx-server.conf
+	source = git+https://github.com/ZizzyDizzyMC/linx-server.git
+	source = linx-server.service
+	source = linx-server.sysusers
+	source = linx-server.tmpfiles
+	source = linx-cleanup.service
+	source = linx-cleanup.timer
+	sha256sums = SKIP
+	sha256sums = ab63305177fa75a348e6b69d0109510d9294e3987cc410a4e865354cd17296ed
+	sha256sums = 9286814c8958d152727ad72eaa6c547c26749d8c028b31f352602956354672b7
+	sha256sums = 37aa12795f2e2481d3d2092001c813351552d70c27451cfa8e07a20d8be230b3
+	sha256sums = b891ce7334903fdcb7d6a5b575cd9316b5d6525a2b1f2cbb985cc63c3830313f
+	sha256sums = 04779bd3a81b49417f95558542135548e836cf5eb36bd14952fb58f95920b1f4
+
+pkgname = linx-server-git
