@@ -20,7 +20,7 @@ pkgbase = friture
 	depends = python-rtmixer
 	depends = python-sounddevice
 	optdepends = jack: for JACK I/O support
-	source = https://github.com/tlecomte/friture/archive/v0.48.tar.gz
-	sha256sums = 8e3e4c6a2911712d4302dc24f30b5db6975e7d7a3e036905b3a3831c9ddb2f3a
+	source = https://github.com/tlecomte/friture/archive/ea7210dae883edf17de8fec82f9428b18ee138b6.tar.gz
+	sha256sums = c4b2a9db8cb460c19a94e754594ea1807d629ef8d20a00c5df0d422f3fb1961d
 
 pkgname = friture
