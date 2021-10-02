@@ -1,6 +1,6 @@
 pkgbase = r-progressr
 	pkgdesc = An Inclusive, Unifying API for Progress Updates
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=progressr
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-progressr
 	optdepends = r-shiny
 	optdepends = r-commonmark
 	optdepends = r-base64enc
-	source = https://cran.r-project.org/src/contrib/progressr_0.8.0.tar.gz
-	sha256sums = 8224d397cea450d97a08ed94ecc76f6e46fd46faa89882834e71b654ba07f7d4
+	source = https://cran.r-project.org/src/contrib/progressr_0.9.0.tar.gz
+	sha256sums = cfe70f8423041ea5b5a2a39122c166462e58b1bba84df935858a7b86362b530f
 
 pkgname = r-progressr
