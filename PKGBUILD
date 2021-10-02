@@ -2,7 +2,7 @@
 # Contributor: Lucki
 
 pkgname="asf"
-pkgver="5.1.3.6"
+pkgver="5.1.4.0"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -15,15 +15,20 @@ changelog=changelog
 backup=('var/lib/asf/config/ASF.json' 'usr/lib/asf/NLog.config')
 install=install
 source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgver}"
-        "service"
-        "service.user"
+        "service.patch"
+        "asf.env"
         "ASF.json"
         "NLog.config")
 sha256sums=('SKIP'
-            'ba1ff85e55e56d71dbdd0d898244ff7725bced8625f29c5389e28525e6cdb987'
-            'b627c8d4b3ba7f194a44749bd401b33bae601b9570da98e457737a6f9cfa408f'
+            '18b8b32774df8b9cfc4e75f003a29119b2fbccf6c582afa7c404485222c5b818'
+            'ec82f54a9b362e2305a775eb1473522636ab724f18d846828410c39344801db4'
             'c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332'
             'c6d8dff9306532babf5100629ea48a5322561823a4c7416f02dacbbee5ab30da')
+
+prepare() {
+    cd ${srcdir}/asf/ArchiSteamFarm/overlay/linux
+    patch --forward --input="${srcdir}/service.patch"
+}
 
 build() {
     cd asf
@@ -44,8 +49,8 @@ package() {
     install -D -m644 "${srcdir}/ASF.json" "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
     install -D -m644 "${srcdir}/NLog.config" "${pkgdir}/usr/lib/${pkgname}/NLog.config"
 
-    install -D -m644 "${srcdir}/service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -D -m644 "${srcdir}/service.user" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+    install -D -m644 "${srcdir}/asf.env" "${pkgdir}/etc/asf/asf"
+    install -D -m644 "${srcdir}/asf/ArchiSteamFarm/overlay/linux/ArchiSteamFarm@.service" "${pkgdir}/usr/lib/systemd/system/ArchiSteamFarm@.service"
 
     # Setup system user and group
     echo 'u asf - "ArchiSteamFarm" /var/lib/asf' |

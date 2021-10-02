@@ -1,3 +1,18 @@
+2021-10-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.1.4.0-1:
+    Added ArchiSteamFarm@.service service file declarations for systemd to generic, generic-netf and linux variants. Since their exact usage is not documented on the wiki yet, they're in the preview state for the brave sunglasses.
+    Added --service command-line argument which forces Headless: true, used mainly for service files mentioned above.
+    Fixed ASF wrongly responding with "unknown command" when it should respond with "access denied" instead.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    pkg: adopted upstream service file
+  * 5.1.3.9:
+    Fixed regression affecting generic-netf builds introduced in version 5.1.2.0 that broke automatic update capability. Existing generic-netf users are advised to update their ASFs manually to this (or newer) release in order to fix the problem. This bug does not affect any other setups, it's exclusive to generic-netf variant.
+  * 5.1.3.8:
+    Failed attempt at fixing generic-netf update capability
+  * 5.1.3.7:
+    Fixed regression that caused excessive delay during program shutdown on Windows machines.
 2021-09-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.1.3.6-1:
     We've reverted our change introduced as part of V5.1.3.2 in which the builds are built on the corresponding OSes due to issue dotnet/msbuild#3897 which caused missing Chinese translation (among some other) on non-Windows builds of ASF. Fortunately, this doesn't affect the chmod +x improvement which stays with us as part of this feature release (ref: #2411).

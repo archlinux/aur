@@ -1,0 +1,20 @@
+--- ArchiSteamFarm@.service	2021-10-02 09:33:14.377920543 +0200
++++ ArchiSteamFarm@.service	2021-10-02 09:43:34.302219120 +0200
+@@ -3,7 +3,7 @@
+ 
+ [Service]
+ EnvironmentFile=-/etc/asf/%i
+-ExecStart=/home/%i/ArchiSteamFarm/ArchiSteamFarm --no-restart --process-required --service --system-required
++ExecStart=/usr/bin/dotnet /usr/lib/asf/ArchiSteamFarm.dll --no-restart --process-required --service --system-required
+ Restart=on-success
+ RestartSec=5s
+ SyslogIdentifier=asf-%i
+@@ -22,7 +22,7 @@
+ ProtectKernelModules=yes
+ ProtectKernelTunables=yes
+ ProtectSystem=full
+-ReadWritePaths=/home/%i/ArchiSteamFarm /tmp/ASF
++ReadWritePaths=%h /tmp/ASF
+ RemoveIPC=yes
+ RestrictAddressFamilies=AF_INET AF_INET6
+ RestrictNamespaces=yes

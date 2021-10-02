@@ -1,3 +1,12 @@
 post_install() {
-    echo "# configuration is done in /var/lib/asf/config or ~/.config/asf depending on the service file used."
+  printf "\tBy default, configuration is done in /var/lib/asf/config\n"
+}
+
+post_upgrade() {
+  if (( $(vercmp "$2" '5.1.4.0-1') < 0)); then
+    printf "\tThe service files are replaced by ArchiSteamFarm@.service\n \
+      \tIt uses an environment file in /etc/asf to point to the right folder.\n \
+      \tFor a smooth migration, use:\n \
+      \t# systemctl enable --now ArchiSteamFarm@asf.service\n"
+  fi
 }
