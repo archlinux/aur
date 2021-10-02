@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.3.7.2
-pkgrel=2
+pkgver=2.3.8.0
+pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
 license=('BSD-3-Clause')
@@ -28,14 +28,14 @@ depends=(
 )
 makedepends=('mingw-w64-cmake' 'mingw-w64-robin-map' 'mingw-w64-wine')
 #checkdepends=('mingw-w64-wine' 'python')
-arch=("any")
+arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-	'829c05d17610f1156c2a777310f4709b81f3a302fd11e3999ea4a865a5b4a5d3'
+	'0b0495e7c2c5213b1c68e9fd4e89e153355b0f61b244d77c50e7999219b07f44'
 )
 
 _srcdir="oiio-${pkgver}"
