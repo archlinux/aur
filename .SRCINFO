@@ -1,6 +1,6 @@
 pkgbase = r-tibble
 	pkgdesc = Simple Data Frames
-	pkgver = 3.1.4
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tibble
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = r-tibble
 	depends = r>=3.1.0
 	depends = r-ellipsis>=0.3.2
 	depends = r-fansi>=0.4.0
-	depends = r-lifecycle>=0.2.0
+	depends = r-lifecycle>=1.0.0
 	depends = r-magrittr
 	depends = r-pillar>=1.6.2
 	depends = r-pkgconfig
@@ -38,7 +38,7 @@ pkgbase = r-tibble
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/tibble_3.1.4.tar.gz
-	sha256sums = 73870e0771ada3ccae4e79c920f84b4b4dd60702999b5c7a8818c0aba078177f
+	source = https://cran.r-project.org/src/contrib/tibble_3.1.5.tar.gz
+	sha256sums = da6387ba683a67cd7fc2a111f6b62468e480a8078bc1867d433a40c5460edbe7
 
 pkgname = r-tibble
