@@ -1,4 +1,4 @@
-From eebff1217e3027957452aee75dedb50b5cafa5f6 Mon Sep 17 00:00:00 2001
+From 44cca85927e640bc145f15832e774a25647f5800 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 4/8] Fix transitive dependencies (of static libraries)
@@ -59,7 +59,7 @@ index bdbcab9eb3..06e9af49f6 100644
 +    set_property(TARGET dbus-1 PROPERTY INTERFACE_LINK_LIBRARIES "${DBUS1_DEPENDENCIES}")
  endif()
 diff --git a/cmake/FindWrapOpenSSL.cmake b/cmake/FindWrapOpenSSL.cmake
-index a09aa99518..ff13e1e931 100644
+index 486686d338..1110116013 100644
 --- a/cmake/FindWrapOpenSSL.cmake
 +++ b/cmake/FindWrapOpenSSL.cmake
 @@ -11,7 +11,7 @@ set(WrapOpenSSL_FOUND OFF)
@@ -120,7 +120,7 @@ index 372a064ff4..a363bfd31b 100644
  unset(__png_target_name)
  unset(__png_found)
 diff --git a/src/plugins/sqldrivers/psql/CMakeLists.txt b/src/plugins/sqldrivers/psql/CMakeLists.txt
-index b151932da7..7e6b38acd1 100644
+index 8ed84c9028..807dc34cf7 100644
 --- a/src/plugins/sqldrivers/psql/CMakeLists.txt
 +++ b/src/plugins/sqldrivers/psql/CMakeLists.txt
 @@ -16,7 +16,7 @@ qt_internal_add_plugin(QPSQLDriverPlugin
@@ -133,5 +133,5 @@ index b151932da7..7e6b38acd1 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.32.0
+2.33.0
 

@@ -1,4 +1,4 @@
-From 5d5b78e1c4d3554031c85b4feb6f48c3e168ee64 Mon Sep 17 00:00:00 2001
+From a6d240cbda91d45efab6b2679fc28be54c1a5dff Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 2 Nov 2020 13:47:45 +0100
 Subject: [PATCH 5/8] Fix libjpeg workaround for conflict with rpcndr.h
@@ -9,29 +9,21 @@ included before jmorecfg.h.
 
 Change-Id: I011b7735485689c9797cffe2646c8c3d15d0645e
 ---
- src/plugins/imageformats/jpeg/qjpeghandler.cpp | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+ src/plugins/imageformats/jpeg/qjpeghandler.cpp | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/src/plugins/imageformats/jpeg/qjpeghandler.cpp b/src/plugins/imageformats/jpeg/qjpeghandler.cpp
-index beef18f260..72708145f4 100644
+index a17afc0f69..72708145f4 100644
 --- a/src/plugins/imageformats/jpeg/qjpeghandler.cpp
 +++ b/src/plugins/imageformats/jpeg/qjpeghandler.cpp
-@@ -61,14 +61,8 @@
- 
+@@ -62,6 +62,7 @@
  // including jpeglib.h seems to be a little messy
  extern "C" {
--// jpeglib.h->jmorecfg.h tries to typedef int boolean; but this conflicts with
--// some Windows headers that may or may not have been included
--#ifdef HAVE_BOOLEAN
--#  undef HAVE_BOOLEAN
--#endif
--#define boolean jboolean
--
  #define XMD_H           // shut JPEGlib up
 +#include <jconfig.h>    // ensure jconfig.h is included before jmorecfg.h
  #include <jpeglib.h>
  #ifdef const
  #  undef const          // remove crazy C hackery in jconfig.h
 -- 
-2.32.0
+2.33.0
 
