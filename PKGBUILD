@@ -11,6 +11,7 @@ license=("unknown")
 depends=("glibc" "dbus")
 arch=('x86_64')
 provides=('warp-cli' 'warp-diag' 'warp-svc')
+conflicts=('cloudflare-warp')
 
 # in ubuntu: apt-get --print-uris install cloudflare-warp
 source=("http://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2021_8_1_1_amd64_7c41aefd34_amd64.deb")
