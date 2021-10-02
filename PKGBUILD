@@ -2,8 +2,8 @@
 
 _pkgname=aliyunpan
 pkgname=${_pkgname}-cli
-pkgver=2.7.14
-pkgrel=2
+pkgver=2.7.15
+pkgrel=1
 pkgdesc="Aliyunpan CLI"
 arch=('any')
 url="https://github.com/wxy1343/aliyunpan"
@@ -11,7 +11,7 @@ license=("GPL-3.0")
 makedepends=('python-setuptools')
 depends=('python-click-aliases'
          'python-requests'
-         'python-pyexecjs'
+         'python-simplejson'
          'python-rsa'
          'python-colorama'
          'python-flask'
@@ -26,9 +26,9 @@ provides=('aliyunpan')
 source=(${_pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
         dlnap-master.tar::"https://github.com/cherezov/dlnap/archive/master.tar.gz"
         "0001-upgrade-requirements.patch")
-sha256sums=('d5b86bf040781c9e6981cba07ef1daab4d8f7ff4d6e17d910018a48a4f5fa7da'
+sha256sums=('6ff5aff31f52bc3661edcefdfd7c481376d9ab891aa127645a5af914f1c3179e'
             'SKIP'
-            '8b110fda7c0e9dd6a66df51bd3a5a687148cce547de54e8e8ff7c06e6f0e5573')
+            'b3cf59b6093121f258d93e32e1e0b70daacb3617366a160b042916ca852834ca')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"

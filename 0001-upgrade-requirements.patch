@@ -1,4 +1,4 @@
-From a19eff5283ee837c43f8c41c09322c463520c3b0 Mon Sep 17 00:00:00 2001
+From 01c7f89760c6dff3fb3edc9f5a5eb217eac4893b Mon Sep 17 00:00:00 2001
 From: atomlong <atom.long@hotmail.com>
 Date: Sun, 19 Sep 2021 14:13:09 +0800
 Subject: [PATCH] upgrade requirements
@@ -8,7 +8,7 @@ Subject: [PATCH] upgrade requirements
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/requirements.txt b/requirements.txt
-index 99f92d6..6fdbfd5 100644
+index 2be93f7..a67eaf6 100644
 --- a/requirements.txt
 +++ b/requirements.txt
 @@ -1,14 +1,14 @@
@@ -28,9 +28,9 @@ index 99f92d6..6fdbfd5 100644
  windows-curses;platform_system=="Windows"
 -pyperclip~=1.8.1
 +pyperclip~=1.8.2
- aria2p
+ aria2p~=0.10.4
  Flask
- PyExecJS
+ simplejson~=3.17.3
 \ No newline at end of file
 -- 
 2.33.0.windows.2
