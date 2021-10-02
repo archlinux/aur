@@ -1,8 +1,8 @@
 # Maintainer: Sakamoto Shizue <supremeep at yandex dot ru>
 pkgname=cptest
-pkgver=2.0.1
-pkgrel=3
-pkgdesc="A tool for competitve programming. Feed programs fixed inputs, compare their outputs against expected ones."
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="Speed up testing your code during competitive programming rounds and outside of them NOW!"
 arch=('x86_64')
 url="https://github.com/kuredoro/cptest"
 license=('BSD')
@@ -11,18 +11,13 @@ makedepends=(
   'git'
   'go'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kuredoro/cptest/archive/v${pkgver}.tar.gz")
-sha256sums=('544d3e0d3ec3a49f14414af0a4e6ac2e9f86d9a2ed94e44d3fbc1095286d5b66')
-
-# With pacman 6 arriving a rebuild of yay will be necessary, if you upgrade pacman without upgrading yay at the same time, yay will not run after.
-# I'm bumping the pkgrel so it shows up on the upgrade list (and will do so when pacman transitions from staging->core)
-# In case you end up with a non-functioning yay after the upgrade follow the
-# instructions on the github page
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kuredoro/cptest/archive/cli${pkgver}.tar.gz")
+sha256sums=('6293a28614b58554ac2cc76c7d646a126439edb363e512e9eb9919af0a4e7859')
 
 build() {
   export GOPATH="$srcdir"/gopath
 
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-cli$pkgver"
   mkdir -p build
   go build -o build/cptest ./cmd/cptest
 
@@ -32,7 +27,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-cli$pkgver"
   mkdir -p $pkgdir/usr/bin
   mv ./build/cptest $pkgdir/usr/bin
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

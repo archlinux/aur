@@ -1,13 +1,13 @@
 pkgbase = cptest
-	pkgdesc = A tool for competitve programming. Feed programs fixed inputs, compare their outputs against expected ones.
-	pkgver = 2.0.1
-	pkgrel = 3
+	pkgdesc = Speed up testing your code during competitive programming rounds and outside of them NOW!
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/kuredoro/cptest
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = go
-	source = cptest-2.0.1.tar.gz::https://github.com/kuredoro/cptest/archive/v2.0.1.tar.gz
-	sha256sums = 544d3e0d3ec3a49f14414af0a4e6ac2e9f86d9a2ed94e44d3fbc1095286d5b66
+	source = cptest-2.1.0.tar.gz::https://github.com/kuredoro/cptest/archive/cli2.1.0.tar.gz
+	sha256sums = 6293a28614b58554ac2cc76c7d646a126439edb363e512e9eb9919af0a4e7859
 
 pkgname = cptest
