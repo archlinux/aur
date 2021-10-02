@@ -2,7 +2,7 @@ pkgbase = lyrebird
 	pkgdesc = Simple and powerful voice changer for Linux, written in GTK 3
 	pkgver = 1.1.0
 	pkgrel = 2
-	url = https://github.com/chxrlt/lyrebird
+	url = https://github.com/lyrebird-voice-changer/lyrebird
 	arch = any
 	license = MIT
 	depends = python>=3.7
@@ -14,10 +14,9 @@ pkgbase = lyrebird
 	depends = pulseaudio
 	provides = lyrebird
 	conflicts = lyrebird
-	source = https://github.com/chxrlt/lyrebird/archive/v1.1.0.tar.gz
+	source = https://github.com/lyrebird-voice-changer/lyrebird/archive/v1.1.0.tar.gz
 	source = lyrebird.desktop
-  sha256sums = 5a9de231bf2f75c83af29349bc1c52d366c489be0b69c3cb0ddcbfffcf75de34
-  sha256sums = 720e247b83802fceef0100f722b2d48b81eb288739872278474b285d850c6e9c
+	sha256sums = 5a9de231bf2f75c83af29349bc1c52d366c489be0b69c3cb0ddcbfffcf75de34
+	sha256sums = 720e247b83802fceef0100f722b2d48b81eb288739872278474b285d850c6e9c
 
 pkgname = lyrebird
-
