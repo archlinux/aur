@@ -8,6 +8,7 @@ After=network-online.target
 User=linx
 ExecStart=/usr/bin/linx-server -config /etc/linx-server.conf
 StateDirectory=linx-server
+StateDirectoryMode=0750
 WorkingDirectory=/var/lib/linx-server
 
 ProtectSystem=full

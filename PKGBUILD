@@ -16,7 +16,7 @@ source=("git+https://github.com/ZizzyDizzyMC/linx-server.git"
         linx-server.{service,sysusers,tmpfiles}
         linx-cleanup.{service,timer})
 sha256sums=('SKIP'
-            'ab63305177fa75a348e6b69d0109510d9294e3987cc410a4e865354cd17296ed'
+            '7a368d45d94141b1b37b726616d12c67eec166f10d70519de10665f31fc8ddca'
             '9286814c8958d152727ad72eaa6c547c26749d8c028b31f352602956354672b7'
             '37aa12795f2e2481d3d2092001c813351552d70c27451cfa8e07a20d8be230b3'
             'b891ce7334903fdcb7d6a5b575cd9316b5d6525a2b1f2cbb985cc63c3830313f'
