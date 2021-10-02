@@ -1,29 +1,31 @@
 # Maintainer: robertfoster
 
 pkgname=termistor-git
-pkgver=43.0fe1765
+pkgver=50.bc0843f
 pkgrel=1
 pkgdesc="A drop-down terminal for Wayland"
 arch=('i686' 'x86_64')
 url="https://github.com/giucam/termistor"
 license=('GPL3')
-depends=(wayland libxkbcommon)
+depends=('wayland' 'libxkbcommon')
 makedepends=('git')
-source=('termistor::git+https://github.com/giucam/termistor.git')
+provides=("${pkgname%%-git}")
+conflicts=("${pkgname%%-git}")
+source=("${pkgname%%-git}::git+${url}")
 
 build() {
-  cd termistor
+  cd "${srcdir}/${pkgname%%-git}"
   cmake .
   make
 }
 
 package(){
-  cd termistor
+  cd "${srcdir}/${pkgname%%-git}"
   make DESTDIR=$pkgdir install
 }
 
 pkgver() {
-  cd termistor
+  cd "${srcdir}/${pkgname%%-git}"
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
