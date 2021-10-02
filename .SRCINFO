@@ -1,6 +1,6 @@
 pkgbase = r-cpp11
 	pkgdesc = A C++11 Interface for R's C Interface
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=cpp11
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-cpp11
 	optdepends = r-tibble
 	optdepends = r-vctrs
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/cpp11_0.3.1.tar.gz
-	sha256sums = 478d421b07c5cb022dafb2ad1fcec474e8afec5f6f983258505ac5d54f015af0
+	source = https://cran.r-project.org/src/contrib/cpp11_0.4.0.tar.gz
+	sha256sums = 1768fd07dc30dfbbf8f3fb1a1183947cb7e1dfd909165c4d612a63c163a41e87
 
 pkgname = r-cpp11
