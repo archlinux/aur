@@ -38,8 +38,8 @@ AccessPointName=apn
 # Enable/Disable roaming (default: no)
 #Roaming=yes
 
-# Amount of seconds, we will wait until initialisation of the modem will be interrupted (default: 5)
-#TimeoutModem=10
+# Amount of seconds, we will wait until initialisation of the modem will be interrupted (default: 15)
+#TimeoutModem=5
 
 # Amount of seconds, we will wait for the connection is established (default: 30)
 #TimeoutConnect=35
