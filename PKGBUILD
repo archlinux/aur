@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 # Maintainer: Harry Stanton <h@harry.city>
 pkgname=lyrebird
 pkgver=1.1.0
