@@ -1,17 +1,16 @@
 pkgbase = cork-rs-bin
 	pkgdesc = A command-line calculator for hex-lovers
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/reddocmd/cork
 	arch = x86_64
 	license = GPL
 	depends = gcc-libs
 	provides = cork-rs
 	conflicts = cork-rs
-	source = cork-rs-bin-0.1.2::https://github.com/reddocmd/cork/releases/download/v0.1.2/cork
-	source = README-0.1.2.md::https://raw.githubusercontent.com/reddocmd/cork/v0.1.2/README.md
-	sha256sums = c1f2404b3b6e31f07feeba057af90de186e589077f64ac5d913ec5642c7ab8ea
-	sha256sums = 763472db689d0c8084a6275b3ad3e1a631ffe67e74c4cfb5919925582e64ba06
+	source = cork-rs-bin-0.2.0::https://github.com/reddocmd/cork/releases/download/v0.2.0/cork
+	source = README-0.2.0.md::https://raw.githubusercontent.com/reddocmd/cork/v0.2.0/README.md
+	sha256sums = 60a4ce2021ea32ee0c0649b136d17769ffeedb90f57fccf25e23f01f04d9b360
+	sha256sums = cf19d9ec490b2591bbd084c29459af31c6a06a696fecf60630fdf4c097a648c9
 
 pkgname = cork-rs-bin
-

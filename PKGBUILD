@@ -1,9 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=cork-rs-bin
 _name=cork
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A command-line calculator for hex-lovers"
 arch=('x86_64')
 url="https://github.com/reddocmd/cork"
@@ -13,11 +13,10 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_name"
         "README-$pkgver.md::https://raw.githubusercontent.com/reddocmd/$_name/v$pkgver/README.md")
-sha256sums=('c1f2404b3b6e31f07feeba057af90de186e589077f64ac5d913ec5642c7ab8ea'
-            '763472db689d0c8084a6275b3ad3e1a631ffe67e74c4cfb5919925582e64ba06')
+sha256sums=('60a4ce2021ea32ee0c0649b136d17769ffeedb90f57fccf25e23f01f04d9b360'
+            'cf19d9ec490b2591bbd084c29459af31c6a06a696fecf60630fdf4c097a648c9')
 
 package() {
-  install -Dvm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_name"
-  install -Dvm 644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_name"
+  install -Dm 644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-
