@@ -1,4 +1,4 @@
-# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 pkgname=cpuminer-opt
 pkgver=3.18.0
