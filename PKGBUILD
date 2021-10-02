@@ -36,8 +36,8 @@ build() {
 
     cd "$_srcname"
     mkdir bin
+    rice embed-go
     go build -o bin/linx-server
-    rice append --exec bin/linx-server
 
     for cmd in linx-{cleanup,genkey}
     do
