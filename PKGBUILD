@@ -26,12 +26,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  
+
   # use system electron version
   # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
   electronDist="/usr/lib/electron"
   electronVer=$(sed s/^v// /usr/lib/electron/version)
-  sed -i "/    \"electron\": /d" ./package.json
   yarn install
   yarn build:dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
