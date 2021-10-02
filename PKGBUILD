@@ -2,7 +2,7 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-fbneo
 pkgname=$_pkgname-git
-pkgver=1.0.0.02.r552.g32159dc27
+pkgver=1.0.0.02.r901.g9278b650f
 pkgrel=1
 epoch=1
 pkgdesc="FinalBurn Neo multi-arcade core"
@@ -12,7 +12,6 @@ license=('custom')
 groups=('libretro')
 depends=('gcc-libs' 'libretro-core-info')
 makedepends=('git')
-makedepends_x86_64=('gcc10')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=('libretro-fbalpha-git')
@@ -28,7 +27,7 @@ build() {
 	cd $_pkgname/src/burner/libretro
 	make generate-files
 	if [[ $CARCH == x86_64 ]]; then
-		CC=gcc-10 CXX=g++-10 make USE_X64_DRC=1
+		make USE_X64_DRC=1
 	else
 		make
 	fi
