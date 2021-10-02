@@ -1,12 +1,12 @@
 pkgbase = microcom
 	pkgdesc = terminal emulator
-	pkgver = 2017.03.0
+	pkgver = 2019.01.0
 	pkgrel = 1
-	url = http://git.pengutronix.de/?p=tools/microcom.git
+	url = https://github.com/pengutronix/microcom
 	arch = x86_64
 	license = GPL
-	source = git://git.pengutronix.de/git/tools/microcom.git#tag=v2017.03.0
-	md5sums = SKIP
+	depends = readline
+	source = https://github.com/pengutronix/microcom/archive/refs/tags/v2019.01.0.tar.gz
+	sha256sums = f455a53f20c089428cdf4f6e84556f6b0d4b84d8793829ac073ef5b82c1b122f
 
 pkgname = microcom
-
