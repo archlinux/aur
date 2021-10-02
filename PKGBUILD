@@ -4,7 +4,7 @@
 
 pkgname=mopidy-alsamixer
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Mopidy extension for ALSA volume control"
 arch=('any')
 url="http://www.mopidy.com"
@@ -14,7 +14,7 @@ depends=('mopidy>=3.0'
          'python-pykka')
 makedepends=('python3' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('f934c04425a0825b221acb96cdfdaeb2')
+sha256sum=('f934c04425a0825b221acb96cdfdaeb2')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -22,3 +22,4 @@ package() {
 }
 
 # vim:set ts=4 sw=4 et:
+sha256sums=('2dcf0e2ab5ea9d91d7bf03ffb6da7a136353f4385913d5f500fdb8f05ec46fff')
