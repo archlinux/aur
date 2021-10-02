@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-activeqt-static
-_qtver=6.1.3
+_qtver=6.2.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -20,9 +20,9 @@ _pkgfqn="qtactiveqt-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch'
         '0002-Build-tools-for-the-target-platform.patch')
-sha256sums=('bb35cab37e12fd053d84a204998795bdce02a2e353fbc5da452638dd1e13ddf4'
-            '61baa4f0e3e713af36df7b73a78ade58bd1e2b64864be68c0a8ec231f6cec58b'
-            '7f5309d5b3fe4a0590a42582500dd6585c3f43b664f6aea1b3e71ab5d3080328')
+sha256sums=('ed991638e27e2e8eac487c2002845827097d1e66397100eea2061d8ad790ded2'
+            'a5b8d3518ab40bee6ecab2ff09b69b836f24fa22f402fdd000a9d5bfdb1e8b3f'
+            '492770fe044c7907e2b34728e729667fd0a826975a1b864d59bcc60fae94f77c')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

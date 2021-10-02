@@ -1,4 +1,4 @@
-From 473bd2989f49e7f6d5b32a0c45eab3b3bfee923d Mon Sep 17 00:00:00 2001
+From b0388c698bbd0aa7d1ac76dc4f67065e34761f57 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 7 May 2021 16:10:47 +0200
 Subject: [PATCH 2/2] Build tools for the target platform
@@ -13,7 +13,7 @@ executed using WINE.
  3 files changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/src/tools/idc/CMakeLists.txt b/src/tools/idc/CMakeLists.txt
-index d21b9f0..d401e45 100644
+index 19784db..d401e45 100644
 --- a/src/tools/idc/CMakeLists.txt
 +++ b/src/tools/idc/CMakeLists.txt
 @@ -5,12 +5,13 @@
@@ -24,7 +24,7 @@ index d21b9f0..d401e45 100644
 +qt_internal_add_app(${target_name} # special case
  #    BOOTSTRAP # special case
      TARGET_DESCRIPTION "Active Qt Interface Description Compiler"
--    TOOLS_TARGET AxContainer # special case
+-    TOOLS_TARGET AxServer # special case
      SOURCES
          main.cpp
 +    PUBLIC_LIBRARIES
