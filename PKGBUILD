@@ -2,7 +2,7 @@
 
 pkgname=steinberg-asio-sdk
 pkgver=2.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Steinberg's ASIO SDK"
 url="https://www.steinberg.net/en/company/developers.html"
 arch=('any')
@@ -17,6 +17,6 @@ package() {
 	cd "${srcdir}/${_release}"
 
 	install -d -m755 -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -D -m644 "Steinberg ASIO Licensing Agreement.pdf" "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -D -m644 Steinberg*Licensing*Agreement*.pdf "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -D -m644 common/asio.h "${pkgdir}/usr/include/${pkgname%%-sdk}/asio.h"
 }
