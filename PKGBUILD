@@ -2,7 +2,7 @@
 
 pkgname=nvidia-vpf-git
 pkgver=r232.gfad2753
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA Video Processing Framework (git version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/VideoProcessingFramework/'
@@ -14,7 +14,7 @@ conflicts=('nvidia-vpf')
 source=('git+https://github.com/NVIDIA/VideoProcessingFramework.git'
         '010-nvidia-vpf-git-fix-install.patch')
 sha256sums=('SKIP'
-            '3c9837c8ac2f817178d242f01bb54fa2ff07a9727b66f9e49db22fda2d449322')
+            '936877264de8fff8d4c9afdf1e19907f2bd32211fb900a0371cde745ed986765')
 
 prepare() {
     patch -d VideoProcessingFramework -Np1 -i "${srcdir}/010-nvidia-vpf-git-fix-install.patch"

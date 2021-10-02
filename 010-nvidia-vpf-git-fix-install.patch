@@ -22,7 +22,7 @@
 -	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/SampleTorchResnet.py			DESTINATION bin)	
 -	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Tests.py						DESTINATION bin)
 +	find_package(Python COMPONENTS Interpreter Development)
-+	install(FILES $<TARGET_FILE:PyNvCodec>									DESTINATION ${Python_SITEARCH}/PyNvCodec)
++	install(FILES $<TARGET_FILE:PyNvCodec>									DESTINATION ${Python_SITEARCH})
  endif(GENERATE_PYTHON_BINDINGS)
  
  if(GENERATE_PYTORCH_EXTENSION)
