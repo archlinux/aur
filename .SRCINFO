@@ -6,6 +6,7 @@ pkgbase = compose-switch
 	arch = x86_64
 	license = Apache
 	makedepends = go
+	depends = docker-compose>=2
 	conflicts = docker-compose<2
 	conflicts = compose-switch-bin
 	source = https://github.com/docker/compose-switch/archive/refs/tags/v1.0.2.tar.gz

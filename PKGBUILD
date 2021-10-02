@@ -6,6 +6,7 @@ pkgdesc='compatibility layer for the docker-compose V1 CLI'
 arch=('x86_64')
 url='https://github.com/docker/compose-switch'
 license=('Apache')
+depends=('docker-compose>=2')
 makedepends=('go')
 conflicts=('docker-compose<2' 'compose-switch-bin')
 source=("https://github.com/docker/compose-switch/archive/refs/tags/v${pkgver}.tar.gz")
