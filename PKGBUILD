@@ -3,7 +3,7 @@
 # Contributor: Florian Wittmann
 
 pkgname=python-dataproperty
-pkgver=0.54.0
+pkgver=0.54.1
 pkgrel=1
 pkgdesc='Extract properties from data'
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=(
   'python-pytz')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/D/DataProperty/DataProperty-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/D/DataProperty/DataProperty-$pkgver.tar.gz.asc")
-sha256sums=('42b6efd1d121224938c632941d1bb862280eeb8c0c0a2ef93137e4a2bbc1cb36'
+sha256sums=('84cf8b9c46ff6067385ef8a8a6c3920d437c82b87bf0d106f875b44f8371d20a'
             'SKIP')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
