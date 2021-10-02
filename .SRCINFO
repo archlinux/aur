@@ -1,7 +1,7 @@
 pkgbase = scrnsvr
 	pkgdesc = Yet Another X Screensaver/locker
 	pkgver = 1.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/koraynilay/scrnsvr
 	install = scrnsvr.install
 	arch = x86_64
