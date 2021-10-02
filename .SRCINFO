@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ce-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (community version)
-	pkgver = 2021.3.213.3714.440
+	pkgver = 2021.3.213.4293.20
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/nextversion
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = intellij-idea-ce-eap
 	depends = libxtst
 	depends = libdbusmenu-glib
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIC-213.3714.440.tar.gz
-	sha256sums = 01a22aaacfd964d18b3b0a9866950078cf6cb8d275c528fdc6d20b01801b6d81
+	source = https://download.jetbrains.com/idea/ideaIC-213.4293.20.tar.gz
+	sha256sums = ad11c0613f59aba29b20aa494f0d4437ab3b7ad8bf91b874f058d80afdf34ecb
 
 pkgname = intellij-idea-ce-eap
