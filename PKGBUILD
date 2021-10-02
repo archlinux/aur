@@ -2,7 +2,7 @@
 
 pkgname=cemu
 pkgver=1.25.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin"
 arch=(x86_64)
 url="https://cemu.info/"
@@ -27,7 +27,7 @@ install=${pkgname}.install
 md5sums=('4a5add39abfee819f76e4eceef4971b7'
          '54d70005a8975812ab54fcfef53f7bde'
          'd28b56c58a35842488a476067d525a61'
-         '92027da85ec5b6865b1115f81719a5b4'
+         '64a5300eb3cb24c0c143cdb0a7a3c5f8'
          '266d9f45c6c75a1a7d5d80da0e97857e'
          '336a0bc0e44eede4ddf613a0eebf3bb9')
 
