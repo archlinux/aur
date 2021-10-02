@@ -5,7 +5,7 @@ pkgver=5.14.9.arch1
 pkgrel=3
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
-url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
+url="https://gitlab.com/dragonn/linux-g14.git"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -101,7 +101,9 @@ sha256sums=('SKIP'
             '32bbcde83406810f41c9ed61206a7596eb43707a912ec9d870fd94f160d247c1'
             'e2d312ea95d18e91801d131a2b5d03cf2175d3088cac6f84a19410078a5b6b14'
             '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
-            '9d799be6d01a7438ca9999a10137be8fd95348610545c135c6dc9ce2b5afbe29'
+            '1e547bddf80d201f77da1d876cd280e4d40b377bbd8ebc218f0ba57cd959ff76'
+            '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
+            'e9e4b03b836e1a86a2a5dc70b0d5512348eb19742f83bee794a3ab7d91bd41cf'
             'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
             '9f6b8c3ea6e1c285e0a7efda4d743dbae343bc6ee7ad599a4ab7d380c750bc83'
             '4bfbff4eba07fc9de2ce78097a4a269509468ba0e24c15a82905cd94e093ad55'
@@ -116,8 +118,8 @@ sha256sums=('SKIP'
             '1770fec49335bc93194e9e55ced49e1cb67f2df4bf6948e80712a0b2ba50fa49'
             '6da4010f86a74125969fd3dbc953da7b45209d33ff3d216474c3399e82e893ff'
             'eb391b6d1ebf7ef99ece00b23609b94180a1f3c0149bcf05f6bbeb74d0b724c7'
-            'e88c856444a306b06e82c90677ef797d09bef46957926d046c1cbb4218fb8f52'
-            '9f65f64addd66df45d90184ac4ea25c735ceb2dfff1d6d22c73d9f01a3be262a'
+            'f7afab5f2d872dbb66774a189ed462750985aed0df1d81b3a49db9809e8557b6'
+            'dd5b0df91e7c17e26af4839b3a23ba5e8850d329aeb28137ec6468502418f2bd'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             'ee8794a551e33226900654d5c806183bf3b9b2e06f64fdc322987215d233d399'
