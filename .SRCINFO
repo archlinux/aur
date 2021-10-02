@@ -1,6 +1,6 @@
 pkgbase = gimp-git
 	pkgdesc = GNU Image Manipulation Program
-	pkgver = 2.99.5.r271.b1e16dbf67
+	pkgver = 2.99.7.r462.d33c45fb47
 	pkgrel = 1
 	epoch = 2
 	url = https://www.gimp.org
@@ -45,7 +45,7 @@ pkgbase = gimp-git
 	depends = openexr>=1.6.1
 	depends = mypaint-brushes1>=1.3.0
 	depends = babl>=0.1.74
-	depends = gegl>=0.4.30
+	depends = gegl>=0.4.32
 	depends = cairo>=1.14.0
 	depends = appstream-glib>=0.7.7
 	depends = gobject-introspection>=1.32.0
@@ -71,4 +71,3 @@ pkgbase = gimp-git
 	sha512sums = 6f33d57f242fa8ce04b65e06a712bd54677306a45b22cb853fbe348089cd4673bd4ed91073074fe067166fe8951c370f8bbbc386783e3ed5170d52e9062666fe
 
 pkgname = gimp-git
-
