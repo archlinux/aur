@@ -1,6 +1,6 @@
 % layout 'mingw-w64-qt6-module', has_binaries => 1;
 \
-_qtver=6.1.3
+_qtver=6.2.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -8,5 +8,8 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
 depends=(<%== qt6deps qw(base) %>)
-makedepends=('mingw-w64-cmake<%== $static_suffix %>' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'ninja' 'python')
+makedepends=('mingw-w64-cmake<%== $static_suffix %>' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'python')
 optdepends=('qt6-declarative: development tools')
+conflicts=(<%== qt6deps qw(quickcontrols2) %>)
+provides=(<%== qt6deps qw(quickcontrols2) %>)
+replaces=(<%== qt6deps qw(quickcontrols2) %>)
