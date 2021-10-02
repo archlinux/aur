@@ -20,6 +20,7 @@ depends=(chromaprint
 	 vlc)
 makedepends=(cmake
              boost
+	     git
              qt5-tools)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
