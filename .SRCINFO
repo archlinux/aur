@@ -1,14 +1,15 @@
 pkgbase = grc-rs
 	pkgdesc = Generic Colouriser (grc) ported to Rust
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/larsch/grc-rs
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = make
 	depends = grc
-	source = https://github.com/larsch/grc-rs/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 583c372966dfbabc41dd23569b0e301e2ae8ac5016b56667176cfceaad2dceb6
+	source = https://github.com/larsch/grc-rs/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 62b0b52d8910e5d7b41349390523c1ad59ef7f980002971907e0e3849b68c12f
 
 pkgname = grc-rs
