@@ -1,11 +1,14 @@
 pkgbase = python-pytablewriter
 	pkgdesc = Python library to write a table in various formats
-	pkgver = 0.63.0
+	pkgver = 0.64.0
 	pkgrel = 1
 	url = https://github.com/thombashi/pytablewriter
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	depends = python>=3.6
 	depends = python-dataproperty>=0.52.0
 	depends = python-dataproperty<2
@@ -19,10 +22,8 @@ pkgbase = python-pytablewriter
 	depends = python-tcolorpy<1
 	depends = python-typepy>=1.2.0
 	depends = python-typepy<2
-	source = python-pytablewriter-0.63.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pytablewriter/pytablewriter-0.63.0.tar.gz
-	source = python-pytablewriter-0.63.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytablewriter/pytablewriter-0.63.0.tar.gz.asc
+	source = python-pytablewriter::git+https://github.com/thombashi/pytablewriter#tag=v0.64.0?signed
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
-	sha256sums = af480d27cb16cd6a6e1fb19746988fd40b772af80e0d1f99802da017b9e51e1d
 	sha256sums = SKIP
 
 pkgname = python-pytablewriter

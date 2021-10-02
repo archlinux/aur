@@ -3,7 +3,7 @@
 # Contributor: xantares
 
 pkgname=python-pytablewriter
-pkgver=0.63.0
+pkgver=0.64.0
 pkgrel=1
 pkgdesc='Python library to write a table in various formats'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
   'python-tcolorpy<1'
   'python-typepy>=1.2.0'
   'python-typepy<2')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
 # checkdepends=(
 #   'python-idna'
 #   'python-pytablereader>=0.29'
@@ -31,27 +31,28 @@ makedepends=('python-setuptools')
 #   'python-pytest-runner'
 #   'python-sqliteschema'
 #   'python-tablib')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pytablewriter/pytablewriter-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytablewriter/pytablewriter-$pkgver.tar.gz.asc")
-sha256sums=('af480d27cb16cd6a6e1fb19746988fd40b772af80e0d1f99802da017b9e51e1d'
-            'SKIP')
+source=("$pkgname::git+$url#tag=v$pkgver?signed")
+sha256sums=('SKIP')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
-  cd "pytablewriter-$pkgver"
+  cd "$pkgname"
   python setup.py build
+  cd docs
+  PYTHONPATH=../ make man
 }
 
 # check() {
-#   cd "pytablewriter-$pkgver"
+#   cd "$pkgname"
 #   python setup.py pytest
 # }
 
 package() {
-  cd "pytablewriter-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$pkgname"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 docs/_build/man/pytablewriter.1 -t "$pkgdir/usr/share/man/man1/"
 }
 
 # vim: ts=2 sw=2 et:
