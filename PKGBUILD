@@ -5,32 +5,20 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-virtualkeyboard
-_qtver=6.1.2
+_qtver=6.2.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Virtual keyboard framework (android)'
-depends=('android-aarch64-qt6-quickcontrols2' 'android-aarch64-qt6-svg')
-makedepends=('android-cmake' 'qt6-declarative' 'ninja' 'java-environment-openjdk=8')
+depends=('android-aarch64-qt6-declarative' 'android-aarch64-qt6-svg')
+makedepends=('android-cmake' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'java-environment-openjdk=8')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtvirtualkeyboard-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-linking-against-imm32-with-mingw-w64.patch')
-sha256sums=('25cbdf595f5c82d8bc8aea4c95c5adfc08555d540451afac4a1bc0194db3eae0'
-            '8d643061931023d8f307b09d4522eb3aea18c7f5964373cde6dbf6e499d93eed')
-
-prepare () {
-  cd $_pkgfqn
-
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    msg2 "Applying patch $patch"
-    patch -p1 -i "$patch"
-  done
-}
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('1055e7fe1dfaecbfd4b69f40ec1135fda1980e6e21adbe757a8a4affbfb9bcee')
 
 build() {
   source android-env ${_android_arch}

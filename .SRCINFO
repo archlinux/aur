@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-virtualkeyboard
 	pkgdesc = Virtual keyboard framework (android)
-	pkgver = 6.1.2
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -11,17 +11,16 @@ pkgbase = android-aarch64-qt6-virtualkeyboard
 	license = custom
 	makedepends = android-cmake
 	makedepends = qt6-declarative
+	makedepends = qt6-shadertools
 	makedepends = ninja
 	makedepends = java-environment-openjdk=8
-	depends = android-aarch64-qt6-quickcontrols2
+	depends = android-aarch64-qt6-declarative
 	depends = android-aarch64-qt6-svg
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.1/6.1.2/submodules/qtvirtualkeyboard-everywhere-src-6.1.2.tar.xz
-	source = 0001-Fix-linking-against-imm32-with-mingw-w64.patch
-	sha256sums = 25cbdf595f5c82d8bc8aea4c95c5adfc08555d540451afac4a1bc0194db3eae0
-	sha256sums = 8d643061931023d8f307b09d4522eb3aea18c7f5964373cde6dbf6e499d93eed
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.0/submodules/qtvirtualkeyboard-everywhere-src-6.2.0.tar.xz
+	sha256sums = 1055e7fe1dfaecbfd4b69f40ec1135fda1980e6e21adbe757a8a4affbfb9bcee
 
 pkgname = android-aarch64-qt6-virtualkeyboard
