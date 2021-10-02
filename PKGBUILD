@@ -1,19 +1,19 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: davedatum <ask at davedatum dot com>
 
 pkgname=heimer
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
-pkgdesc="A simple cross-platform mind map, diagram, and note-taking tool written in Qt"
+pkgdesc="Cross-platform mind map, diagram, and note-taking tool written in Qt"
 arch=("x86_64")
 url='https://github.com/juzzlin/heimer'
 license=('GPL3')
 depends=('gcc-libs' 'hicolor-icon-theme' 'qt5-svg')
 makedepends=('cmake' 'qt5-tools')
 changelog=CHANGELOG
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha256sums=('2d484facf1e3f8082145f94a30a65db661260aeec951c789647be0a895087dcb')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('c1a59dd77ed2edfcd24ed46eb4828464f6563d3aac102878e2f2541e96481e3c')
 
 build() {
   cmake \

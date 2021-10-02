@@ -7,6 +7,25 @@ Bug fixes:
 
 Other:
 
+2.7.0
+=====
+
+New features:
+
+* Add Chinese translation
+
+* Add Spanish translation
+
+* Fix GitHub Issue #129: Add search field
+
+Bug fixes:
+
+* Fix editor scene getting broken when a file cannot be opened
+
+Other:
+
+* Limit application window startup size
+
 2.6.0
 =====
 
