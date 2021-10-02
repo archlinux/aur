@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-shadertools-static
-	pkgdesc = Experimental module providing APIs and a host tool to host tool to perform graphics and compute shader conditioning for the upcoming Qt graphics abstraction layer (mingw-w64)
-	pkgver = 6.1.3
+	pkgdesc = APIs and tools in this module provide the producer functionality for the shader pipeline that allows Qt Quick to operate on Vulkan, Metal, and Direct3D, in addition to OpenGL (mingw-w64)
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = mingw-w64-qt6-shadertools-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.1/6.1.3/submodules/qtshadertools-everywhere-src-6.1.3.tar.xz
-	sha256sums = a2b2073f825432e81f5011f966c9e0f03a4c57024f15c3c2829a97de5f47b3b2
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.0/submodules/qtshadertools-everywhere-src-6.2.0.tar.xz
+	sha256sums = 5f66d43610a3a6739fc360d836a2c045135107c0ecd40eb3ed18ce5f3dd79c42
 
 pkgname = mingw-w64-qt6-shadertools-static

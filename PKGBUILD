@@ -4,13 +4,13 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-shadertools-static
-_qtver=6.1.3
+_qtver=6.2.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
-pkgdesc='Experimental module providing APIs and a host tool to host tool to perform graphics and compute shader conditioning for the upcoming Qt graphics abstraction layer (mingw-w64)'
+pkgdesc='APIs and tools in this module provide the producer functionality for the shader pipeline that allows Qt Quick to operate on Vulkan, Metal, and Direct3D, in addition to OpenGL (mingw-w64)'
 depends=('mingw-w64-qt6-base-static')
 makedepends=('mingw-w64-cmake-static' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-shadertools' 'ninja')
 optdepends=('qt6-shadertools: development tools')
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtshadertools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a2b2073f825432e81f5011f966c9e0f03a4c57024f15c3c2829a97de5f47b3b2')
+sha256sums=('5f66d43610a3a6739fc360d836a2c045135107c0ecd40eb3ed18ce5f3dd79c42')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
