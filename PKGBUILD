@@ -1,4 +1,4 @@
-# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: 0x9fff00 <0x9fff00+git@protonmail.ch>
 # Contributor: Sergiy Kukunin <sergey.kukunin@gmail.com>
 
 pkgname=cpuminer-multi
