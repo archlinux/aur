@@ -2,7 +2,7 @@
 
 pkgname=librespot-git
 _pkgname=librespot
-pkgver=1357.68bec41
+pkgver=1381.8d70fd9
 pkgrel=1
 epoch=1
 pkgdesc="Open Source Spotify client library"
@@ -16,29 +16,32 @@ conflicts=('librespot')
 source=('git+https://github.com/librespot-org/librespot')
 sha256sums=('SKIP')
 
-pkgver()
-{
+pkgver() {
     cd "$_pkgname"
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-build()
-{
+build() {
     cd "$_pkgname"
     cargo build \
-        --no-default-features \
-        --features alsa-backend \
+        --frozen \
+        --all-features \
         --release
 }
 
-package()
-{
-    install -D -m 755 "$_pkgname"/target/release/librespot \
-        "$pkgdir"/usr/bin/librespot
-    install -D -m 644 "$_pkgname"/contrib/librespot.service \
+package() {
+    cd "$_pkgname"
+    cargo install \
+        --no-track \
+        --locked \
+        --all-features \
+        --root "$pkgdir/usr" \
+        --path .
+
+    install -D -m 644 contrib/librespot.service \
         "$pkgdir"/usr/lib/systemd/system/librespot.service
-    install -D -m 644 "$_pkgname"/contrib/librespot.user.service \
+    install -D -m 644 contrib/librespot.user.service \
         "$pkgdir"/usr/lib/systemd/user/librespot.service
-    install -D -m 644 "$_pkgname"/LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m 644 LICENSE \
+        "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
