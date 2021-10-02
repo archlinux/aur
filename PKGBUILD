@@ -1,25 +1,26 @@
 # Maintainer: Pedro Tashima <pedrotashima42@gmail.com>
-_pkgname=hash-id
-pkgname=${_pkgname}
+# Contributor: Matt Boulanger <mattboulanger@fastmail.com>
+
+pkgname=hash-id
 pkgver=0.1.0
 pkgrel=1
-makedepends=('rust' 'cargo' 'git')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=("i686" "x86_64" "armv6h" "armv7h")
 pkgdesc="Hash Identifying tool"
-license=('GPL3')
-url="https://github.com/tashima42/hash-id/"
-source=("${_pkgname}::git+https://github.com/tashima42/${_pkgname}.git#tag=v${pkgver}")
-sha512sums=('SKIP')
+url="https://github.com/tashima42/hash-id"
+makedepends=("cargo" "git")
+license=("GPL3")
+source=("${pkgname}::git+https://github.com/tashima42/${pkgname}.git#tag=v${pkgver}")
+sha512sums=("SKIP")
 
 build() {
-    cd "$_pkgname"
-
+    cd "${srcdir}/${pkgname}/"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --release --locked
 }
 
 package() {
-    cd "$_pkgname"
-
-    install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    cd "${srcdir}/${pkgname}/"
+    install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
