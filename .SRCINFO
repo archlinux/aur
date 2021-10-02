@@ -1,6 +1,6 @@
 pkgbase = olive-git
 	pkgdesc = Free non-linear video editor
-	pkgver = continuous.r1181.g16aac5ba2
+	pkgver = continuous.r1315.g251b4d537
 	pkgrel = 1
 	url = https://www.olivevideoeditor.org/
 	arch = pentium4
@@ -14,7 +14,8 @@ pkgbase = olive-git
 	depends = ffmpeg
 	depends = openimageio
 	depends = opentimelineio-git
-	depends = qt5-multimedia
+	depends = portaudio
+	depends = qt5-base
 	provides = olive
 	conflicts = olive
 	source = git+https://github.com/olive-editor/olive.git

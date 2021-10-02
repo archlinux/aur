@@ -2,13 +2,13 @@
 
 pkgname=olive-git
 _pkgname=${pkgname%-*}
-pkgver=continuous.r1181.g16aac5ba2
+pkgver=continuous.r1315.g251b4d537
 pkgrel=1
 arch=('pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-depends=('ffmpeg' 'openimageio' 'opentimelineio-git' 'qt5-multimedia')
+depends=('ffmpeg' 'openimageio' 'opentimelineio-git' 'portaudio' 'qt5-base')
 makedepends=('cmake' 'git' 'ninja' 'qt5-svg' 'qt5-tools')
 
 # Temporarily, the "olive-git" package is incompatible
