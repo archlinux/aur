@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=libcoin
-_cranver=1.0-8
+_cranver=1.0-9
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL2)
 depends=('r>=3.4.0' r-mvtnorm)
 optdepends=(r-coin)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('140e59f3d4443795a840023eaabfb83f124f5d47428355801a7fe5f649b6ef47')
+sha256sums=('2d7dd0b7c6dfc20472430570419ea36a714da7bbafd336da1fb53c5c6463d9eb')
 
 build() {
   cd "${srcdir}"
