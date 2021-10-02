@@ -1,27 +1,30 @@
 pkgbase = python-sercol
-	pkgdesc = Rich collection class with grouping and filtering helpers in Python
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgdesc = Rich collection class with grouping and filtering helpers
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/sercol
 	arch = any
 	license = Apache
-	makedepends = python
+	checkdepends = python-nose
+	checkdepends = python-serializable
+	checkdepends = python-simplejson
+	checkdepends = python-pandas
+	checkdepends = python2-nose
+	checkdepends = python2-serializable
+	checkdepends = python2-simplejson
+	checkdepends = python2-pandas
+	checkdepends = python2-pytz
 	makedepends = python-setuptools
-	makedepends = python2
 	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-sercol-0.1.0.tar.gz::https://pypi.python.org/packages/ca/6a/2e99f1b7e37f3506bfa50894ad934249d1e2c6a97e6d01d49a2fc02fd805/sercol-0.1.0.tar.gz
-	sha256sums = 8579bc0031d78a4e0b8d77abcbd22c76fe4b56160f1d344717eca67b22ff9412
+	source = python-sercol-0.1.4.tar.gz::https://files.pythonhosted.org/packages/source/s/sercol/sercol-0.1.4.tar.gz
+	sha256sums = eab962cf60bccb3c500b0eac7f51e865efefc4203d0323da3c4d5414e0b4e577
 
 pkgname = python-sercol
-	depends = python
 	depends = python-serializable
 	depends = python-simplejson
 	depends = python-pandas
 
 pkgname = python2-sercol
-	depends = python2
 	depends = python2-serializable
 	depends = python2-simplejson
 	depends = python2-pandas
-
