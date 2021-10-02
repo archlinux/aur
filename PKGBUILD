@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="Color picker for creating harmonic color palettes"
 arch=('x86_64')
-url="https://github.com/wojciechkepka/epick"
+url="https://github.com/vv9k/epick"
 license=('GPLv3')
 depends=()
 makedepends=('cargo' 'rust')
@@ -22,7 +22,6 @@ build() {
 package() {
     cd $pkgname-$pkgver
     install -Dm755 "target/release/epick" "$pkgdir/usr/bin/epick"
-
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
