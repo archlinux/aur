@@ -1,12 +1,13 @@
 pkgbase = solvespace-git
 	pkgdesc = Parametric 2d/3d CAD
-	pkgver = r1635.942bf3f
+	pkgver = r1792.bb193890
 	pkgrel = 1
 	url = https://solvespace.com
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
+	makedepends = openmp
 	depends = gtkmm3
 	depends = libspnav
 	provides = solvespace
@@ -31,4 +32,3 @@ pkgbase = solvespace-git
 	sha256sums = SKIP
 
 pkgname = solvespace-git
-

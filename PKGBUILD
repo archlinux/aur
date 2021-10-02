@@ -3,7 +3,7 @@
 
 _pkgname='solvespace'
 pkgname="${_pkgname}-git"
-pkgver=r1635.942bf3f
+pkgver=r1792.bb193890
 pkgrel=1
 pkgdesc='Parametric 2d/3d CAD'
 arch=('x86_64')
@@ -11,7 +11,8 @@ url='https://solvespace.com'
 _url_source='https://github.com/solvespace/solvespace'
 license=('GPL3')
 depends=('gtkmm3' 'libspnav')
-makedepends=('cmake' 'git')
+# omp.h is in the LLVM runtime package, the library is in gcc-libs
+makedepends=('cmake' 'git' 'openmp')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${_url_source}.git"
@@ -59,6 +60,7 @@ build() {
   cmake -B 'build' -S "${_pkgname}" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DENABLE_OPENMP=ON \
     -Wno-dev
   make -C 'build'
 }
