@@ -1,0 +1,23 @@
+diff --git a/setup.py b/setup.py
+index ddb6746..a73592b 100755
+--- a/setup.py
++++ b/setup.py
+@@ -94,8 +94,7 @@ package_data = {
+     'pyfr.solvers.euler.kernels.bcs': ['*.mako'],
+     'pyfr.solvers.euler.kernels.rsolvers': ['*.mako'],
+     'pyfr.solvers.navstokes.kernels': ['*.mako'],
+-    'pyfr.solvers.navstokes.kernels.bcs': ['*.mako'],
+-    'pyfr.tests': ['*.npz']
++    'pyfr.solvers.navstokes.kernels.bcs': ['*.mako']
+ }
+ 
+ # Additional data
+@@ -150,7 +149,7 @@ setup(name='pyfr',
+       url='http://www.pyfr.org/',
+       license='BSD',
+       keywords='Math',
+-      packages=['pyfr'] + modules + tests,
++      packages=['pyfr'] + modules,
+       package_data=package_data,
+       data_files=data_files,
+       entry_points={'console_scripts': console_scripts},

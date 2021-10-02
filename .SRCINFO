@@ -1,18 +1,20 @@
 pkgbase = python-pyfr
-	pkgdesc = Python based framework for solving advection-diffusion type problems on streaming architectures
-	pkgver = 1.9.0
+	pkgdesc = Framework for solving advection-diffusion type problems on streaming architectures
+	pkgver = 1.12.2
 	pkgrel = 1
-	url = http://www.pyfr.org/
-	arch = i686
+	url = https://github.com/pyfr/pyfr
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-appdirs>=1.4.0
 	depends = python-gimmik>=2.0
 	depends = python-h5py-openmpi>=2.6
-	depends = python-numpy>=1.8
+	depends = python-numpy>=1.20
 	depends = python-pytools>=2016.2.1
 	depends = python-mako>=1.0.0
-	depends = python-mpi4py>=2.0
+	depends = python-mpi4py>=3.0
 	optdepends = metis>=5.0: needed for running PyFR in parallel
 	optdepends = scotch>=6.0: needed for running PyFR in parallel
 	optdepends = python-pymic: needed for Xeon Phi MIC backend
@@ -23,8 +25,10 @@ pkgbase = python-pyfr
 	optdepends = cblas: needed for OpenMP backend
 	optdepends = openblas: alternative blas for OpenMP backend
 	optdepends = cgns>=3.3: for importing CGNS meshes
-	source = python-pyfr-1.9.0.tar.gz:https://github.com/PyFR/PyFR/archive/v1.9.0.tar.gz
-	sha256sums = a99d9dfbe3f8a9ba057e881b1b4d5dd7119235485d7a043381b93334bfb5ab66
+	source = python-pyfr::git+https://github.com/pyfr/pyfr#commit=fb710d27b9627a27d4b3946246548414a9d18e4a?signed
+	source = 001-remove-tests.patch
+	validpgpkeys = AEEA6F51A3521732B684C1049E70614148A0FA1F
+	sha256sums = SKIP
+	sha256sums = 97d817a571eed6f659b9970acf45edd3c9d12d8370d0fe3d998f10cec710b10b
 
 pkgname = python-pyfr
-
