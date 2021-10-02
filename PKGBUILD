@@ -1,7 +1,7 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=digilent.adept.runtime
-pkgver=2.21.2
+pkgver=2.21.3
 pkgrel=1
 pkgdesc="The Adept Runtime consists of the shared libraries, firmware images, and configuration files necessary to communicate with Digilent's devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,10 +14,10 @@ source_armv6h=("https://digilent.s3.amazonaws.com/Software/Adept2+Runtime/${pkgv
 source_armv7h=($source_armv6h)
 source_i686=("https://digilent.s3.amazonaws.com/Software/Adept2+Runtime/${pkgver}/${pkgname}_${pkgver}-i386.deb")
 source_x86_64=("https://digilent.s3.amazonaws.com/Software/Adept2+Runtime/${pkgver}/${pkgname}_${pkgver}-amd64.deb")
-sha256sums_armv6h=('0f824191680a6607e3830316383b24b8fda28d305086f527d7dda2bdb1e73769')
+sha256sums_armv6h=('0be9b03500f0e746829a54fceac3b10cca0d0d3c24563c7debcadd15e2d8a73b')
 sha256sums_armv7h=($sha256sums_armv6h)
-sha256sums_i686=('d889fbb2d3a8c281452b0276f1d779b12093b4ab7a120abdeea6a1bf5517f521')
-sha256sums_x86_64=('81aeadaf5e74584b73121a5dd2a5a4c6cf5ecb99ad75ce00e0a95e5ed228db07')
+sha256sums_i686=('220a12dda8df2946b2831245d84d3f75037ea92c55a37d6de19b97a73f697b74')
+sha256sums_x86_64=('dec2e35b202295c2a21c61d881e3030c7b62d9bb35ab8f4bd75056ebc617c389')
 
 package() {
   # Extract
