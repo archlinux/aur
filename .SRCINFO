@@ -1,6 +1,6 @@
 pkgbase = r-metr
 	pkgdesc = Tools for Easier Analysis of Meteorological Fields
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=metR
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = r-metr
 	optdepends = r-kriging
 	optdepends = r-raster
 	optdepends = r-rgdal
-	source = https://cran.r-project.org/src/contrib/metR_0.10.0.tar.gz
-	sha256sums = 8cc67d045a4328f85abeb4bd0cb4749b5d25d9d668d74be7ef2af22e98d0f33f
+	source = https://cran.r-project.org/src/contrib/metR_0.11.0.tar.gz
+	sha256sums = dc896d235cc83045ab93af8103bd11c45293a4cd94db2781677bfd3c194d5925
 
 pkgname = r-metr
