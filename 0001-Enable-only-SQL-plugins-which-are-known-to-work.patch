@@ -1,4 +1,4 @@
-From f496993f0f1097c99afcbd115aa46ffa6b7fbe6c Mon Sep 17 00:00:00 2001
+From cc1332ada9491a2d666b2d53f9d0fcb3f14f3cdd Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 9 Jun 2021 17:25:27 +0200
 Subject: [PATCH] Enable only SQL plugins which are known to work
@@ -9,10 +9,10 @@ Change-Id: I0abc44db77cecbd323edc936529fb557e1664de8
  1 file changed, 8 insertions(+)
 
 diff --git a/src/assistant/assistant/CMakeLists.txt b/src/assistant/assistant/CMakeLists.txt
-index eb5a04a0a..5b28ae65b 100644
+index 69470c509..dbf68570d 100644
 --- a/src/assistant/assistant/CMakeLists.txt
 +++ b/src/assistant/assistant/CMakeLists.txt
-@@ -173,6 +173,14 @@ qt_internal_extend_target(assistant CONDITION UNIX
+@@ -164,6 +164,14 @@ qt_internal_extend_target(assistant CONDITION UNIX
          stdinlistener.cpp stdinlistener.h
  )
  
