@@ -4,12 +4,12 @@
 _pkgbase='worm'
 pkgname='worm-git'
 pkgdesc="A floating, tag-based window manager written in Rust"
-pkgver=0.1.0.10.g7146eca
+pkgver=0.1.0.11.g4b80340
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/codic12/worm"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 depends=('xorg-server')
 source=("$_pkgbase::git+$url.git")
 sha256sums=('SKIP')

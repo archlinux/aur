@@ -6,6 +6,7 @@ pkgbase = worm-git
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = git
 	depends = xorg-server
 	source = worm::git+https://github.com/codic12/worm.git
 	sha256sums = SKIP
