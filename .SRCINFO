@@ -8,6 +8,7 @@ pkgbase = lib32-libinput
 	makedepends = gcc-multilib
 	makedepends = lib32-gtk3
 	makedepends = meson
+	makedepends = wayland-protocols
 	depends = lib32-mtdev
 	depends = lib32-systemd
 	depends = lib32-libevdev
