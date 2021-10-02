@@ -1,4 +1,4 @@
-From 4f351792812f2ad38743702ccffa6ccc7e5114da Mon Sep 17 00:00:00 2001
+From a8f1c4b28f9f4d3b9dbebcacfa9ad3047332016f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
 Subject: [PATCH 8/8] Fix crashes in rasterization code using setjmp
@@ -28,10 +28,10 @@ Change-Id: I01937d13569dd01ab4cb1f608020544c93bc343c
  rename src/gui/painting/{qgrayraster.c => qgrayraster.cpp} (98%)
 
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index bb21d1b976..6a14076d55 100644
+index 905afd4038..e4c23c4714 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
-@@ -166,7 +166,7 @@ qt_internal_add_module(Gui
+@@ -165,7 +165,7 @@ qt_internal_add_module(Gui
          painting/qdrawingprimitive_sse2_p.h
          painting/qemulationpaintengine.cpp painting/qemulationpaintengine_p.h
          painting/qfixed_p.h
@@ -40,13 +40,13 @@ index bb21d1b976..6a14076d55 100644
          painting/qicc.cpp painting/qicc_p.h
          painting/qimagescale.cpp
          painting/qmemrotate.cpp painting/qmemrotate_p.h
-@@ -281,6 +281,11 @@ qt_internal_add_module(Gui
+@@ -279,6 +279,11 @@ qt_internal_add_module(Gui
          "kernel/qt_gui_pch.h"
  )
  
 +# enable exceptions for painting/qgrayraster.cpp
 +set_source_files_properties("painting/qgrayraster.cpp"
-+    PROPERTIES COMPILE_FLAGS "-fexceptions"
++    PROPERTIES COMPILE_FLAGS "-fexceptions" DISABLE_PRECOMPILE_HEADERS ON SKIP_PRECOMPILE_HEADERS ON
 +)
 +
  # Resources:
