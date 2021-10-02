@@ -5,6 +5,7 @@ pkgbase = lefthook
 	url = https://github.com/evilmartians/lefthook
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = rsync
