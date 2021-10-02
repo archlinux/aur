@@ -1,12 +1,12 @@
 pkgbase = foot-terminfo
 	pkgdesc = Terminfo files for the foot terminal emulator
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/foot
 	arch = any
 	license = mit
 	makedepends = ncurses
-	source = foot-1.9.1.tar.gz::https://codeberg.org/dnkl/foot/archive/1.9.1.tar.gz
-	sha256sums = 1277cfb6c88fbf299d115446cfa2a33cd6ddf88225989c84e6579024675edb97
+	source = foot-1.9.2.tar.gz::https://codeberg.org/dnkl/foot/archive/1.9.2.tar.gz
+	sha256sums = 5859d8d7293da4c7c52f45a9756fc7989edc364057e8b86b4e1fbea7bc2b4009
 
 pkgname = foot-terminfo
