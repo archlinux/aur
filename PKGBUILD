@@ -12,10 +12,10 @@ depends=("glibc" "dbus")
 arch=('x86_64')
 provides=('warp-cli' 'warp-diag' 'warp-svc')
 
-# https://pkg.cloudflareclient.com/packages/cloudflare-warp
-source=("https://pkg.cloudflareclient.com/uploads/cloudflare_warp_2021_8_1_1_amd64_a8f66bae8a.deb")
+# in ubuntu: apt-get --print-uris install cloudflare-warp
+source=("http://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2021_8_1_1_amd64_7c41aefd34_amd64.deb")
 
-sha256sums=('4a4937bc3fceb5fa69332d6cbfd42496959d99053bf3d7661dcf6fbee1f85341')
+md5sums=('c58241c0eab1f12128f9be4087655b89')
 install=$pkgname.install
 
 package() {
