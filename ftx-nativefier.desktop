@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=FTX
+Comment=FTX desktop built with nativefier (electron)
+Exec=ftx-nativefier
+Icon=ftx-nativefier
+Encoding=UTF-8
+StartupWMClass=ftx-nativefier-d40211
+Terminal=false
+StartupNotify=true
+Type=Application
+#Categories=Network;Chat;InstantMessaging;Application;

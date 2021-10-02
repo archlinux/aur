@@ -1,0 +1,22 @@
+pkgbase = ftx-nativefier
+	pkgdesc = FTX Client built with nodejs-nativefier (electron)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://ftx.com/
+	arch = arm64
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = ftx-nativefier.desktop
+	source = ftx-nativefier.png
+	sha256sums = 51663e0c44c84c8480106d689b62d6787aa0472ac2a1ad847b61a43a760fa4e2
+	sha256sums = 350f936af537c6abe6750e2d836ea3f67d3a11d4754ea7f676df3a9ce81570ad
+
+pkgname = ftx-nativefier
