@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-nightthemeswitcher
 _pkgname=nightthemeswitcher-gnome-shell-extension
 pkgver=52
-pkgrel=3
+pkgrel=4
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
