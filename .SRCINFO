@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-declarative
 	pkgdesc = Classes for QML and JavaScript languages (android)
-	pkgver = 6.1.2
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -11,18 +11,22 @@ pkgbase = android-aarch64-qt6-declarative
 	license = custom
 	makedepends = android-cmake
 	makedepends = qt6-declarative
+	makedepends = qt6-shadertools
 	makedepends = ninja
 	makedepends = python
 	makedepends = java-environment-openjdk=8
 	depends = android-aarch64-qt6-base
 	optdepends = qt6-declarative: development tools
+	provides = android-aarch64-qt6-quickcontrols2
+	conflicts = android-aarch64-qt6-quickcontrols2
+	replaces = android-aarch64-qt6-quickcontrols2
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.1/6.1.2/submodules/qtdeclarative-everywhere-src-6.1.2.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.0/submodules/qtdeclarative-everywhere-src-6.2.0.tar.xz
 	source = 0001-Exclude-qmltime-when-cross-compiling.patch
-	sha256sums = 4ecb982c08ca020192ffccd1af3c1e0be131324442bb4d9f77665cbc5ffa18fc
-	sha256sums = 934e38289a35ea20ff359a44b433640458b3c3932d63ffc27aa3dc1de9012815
+	sha256sums = 46737feceb9e54d63ad0c87a08d33f08ca58f4b8920ccefad8f1ebd64f0d1270
+	sha256sums = d2510025ff4140248403c0ea4c6bc6de88b15b3808a3016651e69bd52d14e5aa
 
 pkgname = android-aarch64-qt6-declarative
