@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-declarative-static
-_qtver=6.1.3
+_qtver=6.2.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -12,15 +12,18 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
 depends=('mingw-w64-qt6-base-static')
-makedepends=('mingw-w64-cmake-static' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'ninja' 'python')
+makedepends=('mingw-w64-cmake-static' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'python')
 optdepends=('qt6-declarative: development tools')
+conflicts=('mingw-w64-qt6-quickcontrols2-static')
+provides=('mingw-w64-qt6-quickcontrols2-static')
+replaces=('mingw-w64-qt6-quickcontrols2-static')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtdeclarative-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Exclude-qmltime-when-cross-compiling.patch')
-sha256sums=('3e49a36135e799262226d3365016c61c09bacb07fb96438226e753716a3ff743'
-            '98be8fd1d4c74b9a137b585bc9cb556873bed9104d00010395a2f73997bbaab6')
+sha256sums=('46737feceb9e54d63ad0c87a08d33f08ca58f4b8920ccefad8f1ebd64f0d1270'
+            'd2510025ff4140248403c0ea4c6bc6de88b15b3808a3016651e69bd52d14e5aa')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
