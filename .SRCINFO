@@ -1,6 +1,6 @@
 pkgbase = r-caret
 	pkgdesc = Classification and Regression Training
-	pkgver = 6.0.88
+	pkgver = 6.0.89
 	pkgrel = 1
 	url = https://cran.r-project.org/package=caret
 	arch = i686
@@ -9,42 +9,43 @@ pkgbase = r-caret
 	license = GPL3
 	depends = r>=3.2.0
 	depends = r-ggplot2
+	depends = r-e1071
 	depends = r-foreach
-	depends = r-plyr
 	depends = r-modelmetrics>=1.2.2.2
-	depends = r-reshape2
-	depends = r-recipes>=0.1.10
-	depends = r-withr>=2.0.0
+	depends = r-plyr
 	depends = r-proc
+	depends = r-recipes>=0.1.10
+	depends = r-reshape2
+	depends = r-withr>=2.0.0
 	optdepends = r-bradleyterry2
-	optdepends = r-e1071
+	optdepends = r-covr
+	optdepends = r-cubist
+	optdepends = r-dplyr
 	optdepends = r-earth
+	optdepends = r-ellipse
 	optdepends = r-fastica
 	optdepends = r-gam
 	optdepends = r-ipred
 	optdepends = r-kernlab
+	optdepends = r-klar
 	optdepends = r-knitr
-	optdepends = r-klaR
-	optdepends = r-ellipse
 	optdepends = r-mda
 	optdepends = r-mlbench
 	optdepends = r-mlmetrics
+	optdepends = r-pamr
 	optdepends = r-party
 	optdepends = r-pls
 	optdepends = r-proxy
 	optdepends = r-randomforest
 	optdepends = r-rann
+	optdepends = r-rmarkdown
+	optdepends = r-rpart
 	optdepends = r-spls
 	optdepends = r-subselect
-	optdepends = r-pamr
 	optdepends = r-superpc
-	optdepends = r-cubist
 	optdepends = r-testthat
-	optdepends = r-rpart
-	optdepends = r-dplyr
-	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/caret_6.0-88.tar.gz
-	sha256sums = fa10d1600b3cce51ee8c64a39281f685eb843120b15e0dd0954623aea1f78c9c
+	optdepends = r-themis
+	source = https://cran.r-project.org/src/contrib/caret_6.0-89.tar.gz
+	sha256sums = 043b602360a6434f6e61e13ea8483f894f818d9f6e52d4a721e2ed5007612221
 
 pkgname = r-caret
-
