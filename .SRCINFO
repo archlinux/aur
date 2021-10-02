@@ -17,6 +17,7 @@ pkgbase = vkmark-git
 	depends = mesa
 	depends = assimp
 	depends = xcb-util-wm
+	depends = wayland
 	source = git+https://github.com/vkmark/vkmark.git
 	sha1sums = SKIP
 
