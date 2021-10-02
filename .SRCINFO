@@ -1,6 +1,6 @@
 pkgbase = fluffychat-web
 	pkgdesc = Chat with your friends
-	pkgver = 0.41.0
+	pkgver = 0.41.2
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = fluffychat-web
 	conflicts = fluffychat-web
 	backup = etc/webapps/fluffychat/config.json
 	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.5.1-stable.tar.xz
-	source = fluffychat-v0.41.0.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v0.41.0/fluffychat-v0.41.0.tar.gz
+	source = fluffychat-v0.41.2.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v0.41.2/fluffychat-v0.41.2.tar.gz
 	sha256sums = 6267b686d8d1c9297265a8eb3788fa234a4fa9a125e56f58ba8965ade2f9cc8b
-	sha256sums = 58a21346b6f7136c76c6b9a6be4b8ec3edd6b2cd5db60f6fb40a0b953a6ece9b
+	sha256sums = 502c5dcfd72cbaa1718494993a19d414c8a80ea43cf9570e95fa3a450aafaef8
 
 pkgname = fluffychat-web
