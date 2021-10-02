@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.14.6.arch1
-pkgrel=1
+pkgver=5.14.9.arch1
+pkgrel=3
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -39,7 +39,8 @@ source=(
   "sys-kernel_arch-sources-g14_files-0044-claymore.patch"
   "sys-kernel_arch-sources-g14_files-0045-v5-asus-wmi-Add-support-for-platform_profile.patch"
   "sys-kernel_arch-sources-g14_files-0046-fan-curvers.patch"
-
+  "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
+  "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
 
   # k10temp support for Zen3 APUs
   #"sys-kernel_arch-sources-g14_files-8001-x86-amd_nb-Add-AMD-family-19h-model-50h-PCI-ids.patch"
@@ -61,11 +62,12 @@ source=(
   "sys-kernel_arch-sources-g14_files-8021-mt76-mt7921-fix-the-inconsistent-state-between-bind-and-unbind.patch"
   "sys-kernel_arch-sources-g14_files-8022-mt76-mt7921-report-HE-MU-radiotap.patch"
   "sys-kernel_arch-sources-g14_files-8023-v2-mt76-mt7921-fix-kernel-warning-from-cfg80211_calculate_bitrate.patch"
+  "sys-kernel_arch-sources-g14_files-8024-mediatek-more-bt-patches.patch"
   
   #"sys-kernel_arch-sources-g14_files-8024-mediatek-19-09-2021-squashed.patch"
 
   # squashed s0ix enablement through 2021-09-03
-  "sys-kernel_arch-sources-g14_files-9001-v5.14.6-s0ix-patch-2021-09-18.patch"
+  "sys-kernel_arch-sources-g14_files-9001-v5.14.9-s0ix-patch-2021-10-01.patch"
   #"sys-kernel_arch-sources-g14_files-9002-amd-pmc-delay-test.patch"
   # a small amd_pmc SMU debugging patch per Mario Limonciello @AMD
   #"sys-kernel_arch-sources-g14_files-9002-amd-pmc-smu-register-dump-for-diagnostics.patch"
@@ -79,7 +81,7 @@ source=(
 
   "sys-kernel_arch-sources-g14_files-9008-fix-cpu-hotplug.patch"
   "sys-kernel_arch-sources-g14_files-9009-amd-pstate-sqashed.patch"
-  #"sys-kernel_arch-sources-g14_files-9010-amd-apci-allow-c3.patch"
+  "sys-kernel_arch-sources-g14_files-9010-ACPI-PM-s2idle-Don-t-report-missing-devices-as-faili.patch"
 )
 
 validpgpkeys=(
@@ -114,13 +116,15 @@ sha256sums=('SKIP'
             '1770fec49335bc93194e9e55ced49e1cb67f2df4bf6948e80712a0b2ba50fa49'
             '6da4010f86a74125969fd3dbc953da7b45209d33ff3d216474c3399e82e893ff'
             'eb391b6d1ebf7ef99ece00b23609b94180a1f3c0149bcf05f6bbeb74d0b724c7'
-            '526052481abf77ab25ae1b27567e459bb9d18bd4928ed904a1bc4bbd97833f0c'
+            'e88c856444a306b06e82c90677ef797d09bef46957926d046c1cbb4218fb8f52'
+            '9f65f64addd66df45d90184ac4ea25c735ceb2dfff1d6d22c73d9f01a3be262a'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             'ee8794a551e33226900654d5c806183bf3b9b2e06f64fdc322987215d233d399'
             '2d854fc70297bb52bbc27dbf35ca019800530e40565be9740704d7f81bc4c763'
             '1cec0be41732a23c709e66d4a67e71bc5a75c77a3e4b73faafb5d7bfd3fafc0f'
-            'e62cbe1cb1577b1d80095fbb566d0516592e6174e7740e61a340164aff9bf2ec')
+            '9025ca0788fbacea25200e6ac17036960000424843f544cdd781052231da7903'
+            'e7bd53abc9fddc66790a2e63637b4e2b54ed541f41a2f0fb3aca91ea64ff90dc')
 
 # notable microarch levels:
 #
@@ -218,6 +222,14 @@ prepare() {
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
+
+  scripts/config --enable CONFIG_CMDLINE_BOOL \
+               --set-str CONFIG_CMDLINE "pm_debug_messages amd_pmc.dyndbg=+p acpi.dyndbg=file drivers/acpi/x86/s2idle.c +p" \
+               --disable CMDLINE_OVERRIDE
+
+  scripts/config --enable CONFIG_PINCTRL_AMD
+  scripts/config --module CONFIG_X86_AMD_PSTATE
+  scripts/config --module CONFIG_AMD_PMC
 }
 
 build() {
@@ -230,7 +242,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux-rog)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
@@ -254,6 +266,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  provides=(linux-rog linux-rog-headers)
   depends=(pahole)
 
   cd $_srcname
