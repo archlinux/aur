@@ -1,7 +1,7 @@
 _pkgname=sway-dynamic-names
 pkgname=$_pkgname-git
 pkgrel=1
-pkgver=1.2.1.r0.gab2022f
+pkgver=1.2.1.r1.g0851571
 pkgdesc="Dynamically update the name of each Sway WM workspace using font-awesome icons"
 url="https://github.com/j-waters/sway-dynamic-names"
 depends=('python-click'
