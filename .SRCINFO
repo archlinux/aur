@@ -1,13 +1,13 @@
 pkgbase = puppet-editor-services
 	pkgdesc = Language server implementation for puppet
 	pkgver = 1.2.0
-	pkgrel = 1
-	url = https://github.com/lingua-pupuli/puppet-editor-services
+	pkgrel = 2
+	url = https://github.com/puppetlabs/puppet-editor-services
 	arch = any
 	license = Apache
 	depends = ruby
 	depends = puppet
-	source = https://github.com/lingua-pupuli/puppet-editor-services/archive/1.2.0.tar.gz
+	source = https://github.com/puppetlabs/puppet-editor-services/archive/1.2.0.tar.gz
 	source = puppet-languageserver
 	source = puppet-debugserver
 	sha256sums = 073fbcd5ef1e86d287a348b51acd569d8e1d527bcb1ae5db03af5ac47305e482

@@ -2,13 +2,13 @@
 
 pkgname=puppet-editor-services
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server implementation for puppet"
 arch=('any')
-url="https://github.com/lingua-pupuli/puppet-editor-services"
+url="https://github.com/puppetlabs/puppet-editor-services"
 license=('Apache')
 depends=('ruby' 'puppet')
-source=(https://github.com/lingua-pupuli/puppet-editor-services/archive/${pkgver}.tar.gz
+source=(https://github.com/puppetlabs/puppet-editor-services/archive/${pkgver}.tar.gz
         puppet-languageserver
         puppet-debugserver)
 sha256sums=('073fbcd5ef1e86d287a348b51acd569d8e1d527bcb1ae5db03af5ac47305e482'
