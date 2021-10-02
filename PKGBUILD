@@ -4,12 +4,12 @@
 pkgname='python-rq'
 pkgver=1.10.0
 _ver="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple job queues for Python"
 arch=('any')
 license=('BSD')
 url="https://github.com/rq/rq"
-makedepends=('python')
+makedepends=('python-setuptools')
 depends=('python' 'python-click' 'python-redis')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${_ver}.tar.gz")
 sha256sums=('cc86804d245ac2978391fb0a7030b0b107d6a5acc1eb5ceb8224149123492f58')
