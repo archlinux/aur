@@ -1,8 +1,8 @@
 # Maintainer: Mauro Santos <registo.mailling@gmail.com>
 
 pkgname=sedutil
-pkgver=1.15.1
-pkgrel=2
+pkgver=1.20.0
+pkgrel=1
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Drive-Trust-Alliance/${
         'linuxpba.hook'
         'linuxpba.install'
         'getpasswd.c')
-sha256sums=('9259466b4f73af276153c5245834a56f48f8721ea7263611b5d5e8326bc43d9e'
+sha256sums=('88016b93cbbef98fa6f5c4e6f58e6c871662b6a7f1fc8dc788c8599fa37a44f3'
             '40d785c16a28a5a8a43050d1731174482ee24459be215d2e4e27ffba3b2e28b2'
             'ee3171da9eeab5170815713280588db99118a5fba73eea6373f8555451ab1e5c'
             'b860d4d6fcc14a61d110c1d805d919fdfcf0fffaa8f0175b5ecddf60051f7941'
