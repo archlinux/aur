@@ -1,8 +1,8 @@
 # Maintainer: Robiot <robiot#5485>
 
 pkgname=rustcat
-_binname=rc
-pkgver=1.3.0
+_binname=rcat
+pkgver=2.0.0
 pkgrel=5
 pkgdesc="Rustcat - A Modern Port Listener & Reverse Shell"
 url="https://github.com/robiot/rustcat"
