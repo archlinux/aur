@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-subtext-git
+	pkgdesc = Plugin for Vapoursynth: subtext (GIT version)
+	pkgver = R2.2.g8ae5ba2
+	pkgrel = 1
+	url = https://github.com/vapoursynth/subtext
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	provides = vapoursynth-plugin-subtext
+	conflicts = vapoursynth-plugin-subtext
+	source = subtext::git+https://github.com/vapoursynth/subtext.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-subtext-git
+
