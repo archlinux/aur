@@ -1,0 +1,15 @@
+pkgbase = yahpt-git
+	pkgdesc = Yet Another HF Propagation Tool
+	pkgver = 20211002
+	pkgrel = 1
+	url = https://gitlab.com/f4iey/yahpt.git
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-requests
+	depends = python-gobject
+	depends = python-pillow
+	source = yahpt-git::git+https://gitlab.com/f4iey/yahpt.git
+	sha256sums = SKIP
+
+pkgname = yahpt-git
