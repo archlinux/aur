@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Cloudflare Warp Client"
 
 url="https://developers.cloudflare.com/warp-client/"
-license=("custom")
+license=("unknown")
 
 depends=("glibc")
 arch=('x86_64')
