@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=(
 	'git'
-	'base-devel'
+	'sed'
 	'python3'
 )
 provides=("${pkgname}")
