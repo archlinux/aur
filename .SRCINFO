@@ -1,6 +1,6 @@
 pkgbase = foot-terminfo-git
 	pkgdesc = Terminfo files for the foot terminal emulator
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/foot
 	arch = any
