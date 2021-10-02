@@ -7,7 +7,7 @@ url='https://github.com/vkmark/vkmark'
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
 depends=('vulkan-icd-loader' 'libpng' 'mesa' 'assimp' 'xcb-util-wm')
-makedepends=('git' 'vulkan-headers' 'meson' 'ninja' 'glm' 'vulkan-hpp')
+makedepends=('git' 'vulkan-headers' 'meson' 'ninja' 'glm' 'wayland-protocols')
 source=('git+https://github.com/vkmark/vkmark.git')
 sha1sums=('SKIP')
 
