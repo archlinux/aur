@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=zafiro-icon-theme-git
-pkgver=1.1.r32.gfa6f434
+pkgver=1.2.r1.g167d614
 pkgrel=1
 pkgdesc="Icon pack flat with light colors"
 arch=('any')
@@ -26,4 +26,7 @@ package() {
 	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/share/icons/Zafiro"
+
+    # fix icon cache rebuilding
+    find -L "${pkgdir}/usr/share/icons/Zafiro" -type f -name "* *" -delete
 }
