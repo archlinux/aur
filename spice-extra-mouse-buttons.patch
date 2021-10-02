@@ -6,7 +6,7 @@ Subject: [PATCH] Capture and forward mouse buttons 8 and 9
 Co-Authored-By: Joan Bruguera <joanbrugueram@gmail.com>
 ---
  src/channel-inputs.c | 12 ++++++++++++
- src/spice-widget.c   | 10 ++++++++++
+ src/spice-widget.c   | 12 ++++++++++++
  2 files changed, 28 insertions(+)
 
 diff --git a/src/channel-inputs.c b/src/channel-inputs.c
@@ -56,12 +56,12 @@ index 5cef966b..85d0f4db 100644
          [1] = SPICE_MOUSE_BUTTON_MASK_LEFT,
          [2] = SPICE_MOUSE_BUTTON_MASK_MIDDLE,
          [3] = SPICE_MOUSE_BUTTON_MASK_RIGHT,
-+        [8] = 0, /* See below: GDK does not define masks for SIDE/EXTRA buttons */
-+        [9] = 0, /* Ditto */
++        [8] = SPICE_MOUSE_BUTTON_MASK_SIDE,
++        [9] = SPICE_MOUSE_BUTTON_MASK_EXTRA,
      };
  
      if (gdk < SPICE_N_ELEMENTS(map)) {
-@@ -2029,6 +2037,12 @@ static int button_mask_gdk_to_spice(int gdk)
+@@ -2029,6 +2037,14 @@ static int button_mask_gdk_to_spice(int gdk)
          spice |= SPICE_MOUSE_BUTTON_MASK_MIDDLE;
      if (gdk & GDK_BUTTON3_MASK)
          spice |= SPICE_MOUSE_BUTTON_MASK_RIGHT;
@@ -70,7 +70,9 @@ index 5cef966b..85d0f4db 100644
 +       https://gitlab.gnome.org/GNOME/gtk/-/blob/4fff68355a22027791258b900f1f39ca1226b669/gdk/x11/gdkdevice-xi2.c#L639
 +       For Wayland, masks of (1 << 15) and (1 << 16) respectively are set:
 +       https://gitlab.gnome.org/GNOME/gtk/-/blob/4fff68355a22027791258b900f1f39ca1226b669/gdk/wayland/gdkdevice-wayland.c#L1703
-+       While the situation is unclear, completely ignore the mask for SIDE and EXTRA events */
++       While the situation is unclear, completely ignore the GTK mask for SIDE and EXTRA events.
++       Also, note that callers of this function already set/unset the mask based on the button
++       code, so not setting the mask here shouldn't have a noticeable impact anyway */
      return spice;
  }
  
