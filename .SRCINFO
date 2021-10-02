@@ -1,0 +1,13 @@
+pkgbase = python-isosurfaces
+	pkgdesc = Construct isolines/isosurfaces of a 2D/3D scalar field defined by a function.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jared-hughes/isosurfaces
+	arch = any
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	source = https://github.com/jared-hughes/isosurfaces/archive/refs/tags/v0.1.0.tar.gz
+	sha512sums = 0331d626dae0f1fd71ce9d9a559aa27d223ebf58c04564dd98b747cb81e6ee259696495c6deb7c6b47cd812647b505c3101486ee704bd9b69656396a6aac23a5
+
+pkgname = python-isosurfaces
