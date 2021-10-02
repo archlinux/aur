@@ -1,6 +1,6 @@
 pkgbase = opencl-headers-git
 	pkgdesc = OpenCL (Open Computing Language) header files. (GIT Version)
-	pkgver = 2020.12.18.16.geea2ab6
+	pkgver = 2021.06.30.3.g835558e
 	pkgrel = 1
 	url = https://www.khronos.org/registry/cl/
 	arch = any
@@ -8,14 +8,12 @@ pkgbase = opencl-headers-git
 	makedepends = git
 	makedepends = python
 	makedepends = cmake
+	makedepends = ruby
+	makedepends = doxygen
 	provides = opencl-headers
 	conflicts = opencl-headers
 	source = git+https://github.com/KhronosGroup/OpenCL-Headers.git
-	source = git+https://github.com/KhronosGroup/OpenCL-CLHPP.git
-	source = git+https://github.com/ThrowTheSwitch/CMock.git
-	source = git+https://github.com/ThrowTheSwitch/Unity.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-Headers/pull/178.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
 

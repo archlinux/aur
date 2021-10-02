@@ -1,5 +1,5 @@
 pkgname=opencl-headers-git
-pkgver=2020.12.18.16.geea2ab6
+pkgver=2021.06.30.3.g835558e
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
@@ -8,17 +8,15 @@ license=('apache')
 makedepends=('git'
              'python'
              'cmake'
+             'ruby'
+             'doxygen'
              )
 provides=('opencl-headers')
 conflicts=('opencl-headers')
 source=('git+https://github.com/KhronosGroup/OpenCL-Headers.git'
-        'git+https://github.com/KhronosGroup/OpenCL-CLHPP.git'
-        'git+https://github.com/ThrowTheSwitch/CMock.git'
-        'git+https://github.com/ThrowTheSwitch/Unity.git'
+        'https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-Headers/pull/178.diff'
         )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             )
 
@@ -28,39 +26,31 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build-ocl-headers build-ocl-hpp
+  mkdir -p build
 
-  cd OpenCL-CLHPP
-  git config submodule.external/CMock.url "${srcdir}/CMock"
-  git config submodule.external/Unity.url "${srcdir}/Unity"
+  patch -d OpenCL-Headers -p1 -i "${srcdir}/178.diff"
 
-  git submodule update --init external/CMock external/Unity
+  # fix .cmake path
+  sed 's|cmake/OpenCLHeaders|OpenCLHeaders/cmake|g' -i OpenCL-Headers/CMakeLists.txt
 }
 
 build() {
-  cd "${srcdir}/build-ocl-headers"
+  cd "${srcdir}/build"
 
   cmake ../OpenCL-Headers \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-
-  make
-
-  cd "${srcdir}/build-ocl-hpp"
-
-  cmake ../OpenCL-CLHPP \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_EXAMPLES=OFF \
-    -DBUILD_TESTS=OFF
+    -DBUILD_TESTING=ON
 
   make
 }
 
+check() {
+  (cd build; ctest --output-on-failure)
+}
+
 package() {
+  make -C build DESTDIR="${pkgdir}" install
 
-  make -C build-ocl-headers DESTDIR="${pkgdir}" install
-  make -C build-ocl-hpp DESTDIR="${pkgdir}" install
-
-  install -D -m644 OpenCL-Headers/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 OpenCL-Headers/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
