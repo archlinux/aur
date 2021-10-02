@@ -3,7 +3,7 @@
 pkgname=sunamu
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="Show your currently playing song in a stylish way! (Development version)"
+pkgdesc="Show your currently playing song in a stylish way!"
 url="https://github.com/AryToNeX/Sunamu"
 license=('MPL-2.0')
 arch=('x86_64')
