@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=svgo
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='Tool for optimizing SVG files'
 arch=(any)
@@ -20,4 +20,4 @@ package() {
   chown -R root:root "${pkgdir}"
 }
 
-sha256sums=('c3ecf714f65eb1afe58c519f81a770c2080eadba47ac008dc8612e912118b77d')
+sha256sums=('06bf86db86c491f6dea022ed76462727a9f83ed7aea1ea9e29f786a377fd2dd3')
