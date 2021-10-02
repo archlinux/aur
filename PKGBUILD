@@ -16,7 +16,8 @@ depends=(chromaprint
          libcdio
          libgpod
          libmtp
-         fftw)
+         fftw
+	 vlc)
 makedepends=(cmake
              boost
              qt5-tools)

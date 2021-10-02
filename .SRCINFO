@@ -18,6 +18,7 @@ pkgbase = strawberry-qt5-git
 	depends = libgpod
 	depends = libmtp
 	depends = fftw
+	depends = vlc
 	optdepends = gst-libav: additional codecs
 	optdepends = gst-plugins-bad: additional codecs
 	optdepends = gst-plugins-ugly: additional codecs
