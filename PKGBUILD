@@ -3,7 +3,7 @@
 _corpname=glaxnimate
 _pkgname='glaxnimate'
 pkgname="$_pkgname-git"
-pkgver=0.4.5_2_g1e47f885
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Simple vector animation program."
 url="https://glaxnimate.mattbas.org/"
