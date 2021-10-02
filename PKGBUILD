@@ -12,7 +12,7 @@ pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for
 arch=('any')
 license=('EUPL-1.1')
 url="https://github.com/pi-hole/pi-hole"
-depends=('pi-hole-ftl>=5.0' 'bc' 'perl' 'net-tools' 'iproute2' 'logrotate' 'bind-tools' 'sudo' 'lsof')
+depends=('pi-hole-ftl>=5.0' 'bc' 'perl' 'net-tools' 'inetutils' 'iproute2' 'logrotate' 'bind-tools' 'sudo' 'lsof')
 optdepends=(
 'lighttpd: a secure, fast, compliant and very flexible web-server'
 'php-cgi: CGI and FCGI SAPI for PHP needed only for lighttpd'
