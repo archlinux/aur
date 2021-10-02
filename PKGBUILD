@@ -1,18 +1,18 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gnome-shell-extension-nightthemeswitcher
 _pkgname=nightthemeswitcher-gnome-shell-extension
 pkgver=52
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
 license=('GPL3')
 groups=('gnome-shell-extensions')
-depends=('gnome-shell>=41')
+depends=('gnome-shell>=1:41')
 makedepends=('glib2')
 source=("https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/archive/52/nightthemeswitcher-gnome-shell-extension-52.tar.gz")
-sha256sums=('5eda9a372e8adc757a37012a3c6c7d5223cec7bd9cde6f07e15c0d2a6da43167')
+sha512sums=('5eda9a372e8adc757a37012a3c6c7d5223cec7bd9cde6f07e15c0d2a6da43167')
 
 build() {
   cd "${srcdir}/nightthemeswitcher-gnome-shell-extension-52"
