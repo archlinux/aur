@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=readr
-_cranver=2.0.1
+_cranver=2.0.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.1' r-cli r-clipr r-crayon 'r-hms>=0.4.1' r-rlang r-r6 r-tibble 'r-vroom>=1.5.4' 'r-lifecycle>=0.2.0' r-cpp11 'r-tzdb>=0.1.1')
 optdepends=(r-covr r-curl r-dplyr r-knitr r-rmarkdown r-spelling r-stringi r-testthat r-withr r-xml2)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('d9ddac1fac979ddb4b6ea26ee80625e0a306d8adf6858a757b3dc239fd984532')
+sha256sums=('98b05ed751dda2bcf7a29d070ce3d3e8475e0138a3e3ec68941dc45218db7615')
 
 build() {
   cd "${srcdir}"
