@@ -1,7 +1,7 @@
 pkgbase = twitch-dl-git
 	pkgdesc = Twitch video downloader that use multiple concurrent connections
 	pkgver = 1.16.1.r5.gdd1f4e0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ihabunek/twitch-dl
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = twitch-dl-git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-m3u8
+	depends = python-requests
 	depends = ffmpeg
 	provides = twitch-dl
 	provides = twitch-dl-bin
