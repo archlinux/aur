@@ -2,7 +2,7 @@
 
 pkgname=swapspace
 pkgver=1.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic swap manager"
 arch=('i686' 'x86_64')
 url="https://github.com/Tookmund/Swapspace"
@@ -24,7 +24,7 @@ prepare() {
     fi
   done
 
-  autoreconf
+  autoreconf -fi
 }
 
 build() {

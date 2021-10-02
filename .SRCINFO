@@ -1,7 +1,7 @@
 pkgbase = swapspace
 	pkgdesc = A dynamic swap manager
 	pkgver = 1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tookmund/Swapspace
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = swapspace
 	b2sums = 42690e95a18851248453542ed9d5612a786efd7803a50ef4893d2034727d5e62be7e3d945a63031de5fcaf54bceab89525de464cc5c4a137f23eb713545acfc1
 
 pkgname = swapspace
-
