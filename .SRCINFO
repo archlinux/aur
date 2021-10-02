@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-scxml
 	pkgdesc = Static and runtime integration of SCXML models into Qt6 code (android)
-	pkgver = 6.1.2
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = android-aarch64-qt6-scxml
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.1/6.1.2/submodules/qtscxml-everywhere-src-6.1.2.tar.xz
-	sha256sums = b193863cda65c8c805e061b4c0d12a23b573c7de59c0486b560e886ba8c50672
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.0/submodules/qtscxml-everywhere-src-6.2.0.tar.xz
+	sha256sums = 90d4af011a17f04a003cbd453c7e0720787e6cdacb8dfce7167179c2cd7dc839
 
 pkgname = android-aarch64-qt6-scxml
