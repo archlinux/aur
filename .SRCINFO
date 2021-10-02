@@ -1,14 +1,14 @@
 pkgbase = epick
 	pkgdesc = Color picker for creating harmonic color palettes
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://github.com/wojciechkepka/epick
+	url = https://github.com/vv9k/epick
 	arch = x86_64
 	license = GPLv3
 	makedepends = cargo
 	makedepends = rust
 	provides = epick
-	source = https://github.com/wojciechkepka/epick/archive/refs/tags/0.3.0.tar.gz
+	source = https://github.com/vv9k/epick/archive/refs/tags/0.4.0.tar.gz
 	sha1sums = SKIP
 
 pkgname = epick
