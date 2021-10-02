@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=TH.data
-_cranver=1.0-10
+_cranver=1.1-0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -9,10 +9,10 @@ pkgdesc="TH's Data Archive"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
-depends=('r>=2.10.0')
-optdepends=(r-dplyr r-gdata r-plyr)
+depends=('r>=3.5.0')
+optdepends=(r-dplyr r-gdata r-plyr r-trtf r-tram r-rms r-coin r-atr r-multcomp r-gridextra r-vcd r-colorspace r-knitr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('a576f66c83cb2618a4cd06406a8f3104')
+sha256sums=('21b37e251da5635ae91668f64b4c6f6a7ccedbe1f01af769d30fb532af83113e')
 
 build() {
   cd "${srcdir}"
