@@ -20,7 +20,7 @@ makedepends=(binutils libmpc doxygen python)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
+        https://mirror.sobukus.de/files/src/isl/isl-${_islver}.tar.bz2)
 validpgpkeys=(13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
 sha512sums=('92f599680e6b7fbce88bcdda810f468777d541e5fddfbb287f7977d51093de2a5178bd0e6a08dfe37090ea10a0508a43ccd00220041abbbec33f1179bfc174d8'
