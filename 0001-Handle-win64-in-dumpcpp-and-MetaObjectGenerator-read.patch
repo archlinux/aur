@@ -1,4 +1,4 @@
-From 8229db183bed3b4ac8976f8ace978a3c77683bc0 Mon Sep 17 00:00:00 2001
+From 6bc100ab085078adedd616c0520b855a420d6498 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 17:21:08 +0200
 Subject: [PATCH 1/2] Handle win64 in dumpcpp and
@@ -26,7 +26,7 @@ index 4944c3b..f92d18b 100644
                      break;
              }
 diff --git a/tools/dumpcpp/main.cpp b/tools/dumpcpp/main.cpp
-index 092a3c0..c597942 100644
+index 60e5c94..b2ea4eb 100644
 --- a/tools/dumpcpp/main.cpp
 +++ b/tools/dumpcpp/main.cpp
 @@ -1090,6 +1090,10 @@ int main(int argc, char **argv)
