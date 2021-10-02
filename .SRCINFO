@@ -1,7 +1,7 @@
 pkgbase = iotop-c
 	pkgdesc = simple top-like I/O monitor (implemented in C)
 	pkgver = 1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tomas-M/iotop
 	arch = any
 	license = GPL2
