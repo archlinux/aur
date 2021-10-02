@@ -1,0 +1,12 @@
+pkgbase = hammer-dongers
+	pkgdesc = Up to 4 player party game with destroyable terrain!
+	pkgver = 0.55
+	pkgrel = 1
+	url = https://cravecraw.itch.io/hammer-dongers
+	arch = x86_64
+	license = nonfree
+	makedepends = unzip
+	makedepends = curl
+	makedepends = gendesk
+
+pkgname = hammer-dongers
