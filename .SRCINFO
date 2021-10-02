@@ -1,0 +1,19 @@
+pkgbase = prometheus-smartctl-exporter
+	pkgdesc = Prometheus exporter for S.M.A.R.T. metrics using smartctl
+	pkgver = 0.6.r17.ge27581d
+	pkgrel = 1
+	url = https://github.com/Sheridan/smartctl_exporter
+	arch = x86_64
+	license = LGPL3
+	makedepends = go
+	makedepends = git
+	depends = smartmontools
+	backup = etc/smartctl_exporter.yaml
+	source = git+https://github.com/Sheridan/smartctl_exporter.git
+	source = smartctl_exporter_return_cached_value.patch::https://github.com/antifuchs/smartctl_exporter/commit/f2129f945a0e484890030b1fed765fb9381b5f03.patch
+	source = prometheus-smartctl-exporter.service
+	b2sums = SKIP
+	b2sums = 7d38507204f94496cdd8c114ce8af24dffa20a835a12dc3d910ab23dcc986dc895a63276a7ed8f467391e4b7490a1b3ebc9df44d804f61a034b95ab63cb43431
+	b2sums = 3a3a904ecb0d03904f5327a43abfa4d4078178e7477960ad7a4fd699e77006cd705503e22492d21a7cec570b9fccfaebf4ba2028467f1d1396982740c75c644d
+
+pkgname = prometheus-smartctl-exporter

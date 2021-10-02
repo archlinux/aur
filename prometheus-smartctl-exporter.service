@@ -1,0 +1,43 @@
+[Unit]
+Description=Prometheus exporter for S.M.A.R.T. metrics using smartctl
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/prometheus-smartctl-exporter
+User=root
+Group=root
+Restart=on-failure
+
+NoNewPrivileges=true
+LimitNOFILE=1048576
+UMask=0077
+
+ProtectSystem=strict
+ProtectHome=true
+#PrivateUsers=yes       # this breaks smartctl
+PrivateTmp=true
+#PrivateDevices=true    # this is actually needed to access the GPUs
+ProtectHostname=true
+#ProtectClock=true      # this is actually needed - no idea why...
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+CapabilityBoundingSet=CAP_SYS_ADMIN CAP_SYS_RAWIO CAP_MKNOD
+AmbientCapabilities=
+
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
