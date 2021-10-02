@@ -1,6 +1,6 @@
 pkgbase = tandem-chat
 	pkgdesc = Tandem Chat - a virtual office for remote teams
-	pkgver = 1.8.818
+	pkgver = 2.0.1001
 	pkgrel = 1
 	url = https://tandem.chat/
 	install = tandem-chat.install
@@ -14,7 +14,7 @@ pkgbase = tandem-chat
 	depends = xdg-utils
 	options = !emptydirs
 	options = !strip
-	source_x86_64 = https://downloads.tandem.chat/linux/rpm/x64
+	source_x86_64 = tandem-chat-2.0.1001::https://downloads.tandem.chat/linux/rpm/x64
 	sha512sums_x86_64 = SKIP
 
 pkgname = tandem-chat

@@ -2,7 +2,7 @@
 # Maintainer: rafaeldelboni <rafael@delboni.cc>
 
 pkgname=tandem-chat
-pkgver=1.8.818
+pkgver=2.0.1001
 pkgrel=1
 pkgdesc='Tandem Chat - a virtual office for remote teams'
 arch=('x86_64')
