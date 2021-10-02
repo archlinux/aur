@@ -1,7 +1,4 @@
 post_install() {
-  # Setup install location in config file.
-  sed -i 's/BINDIFF_DIR/\/opt\/bindiff\//' /etc/opt/bindiff/bindiff.xml
-
   # Add application launcher to desktop DB
   update-desktop-database -q
 }

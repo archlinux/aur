@@ -1,20 +1,19 @@
 pkgbase = bindiff
 	pkgdesc = A comparison tool for binary files that assists vulnerability researchers and engineers to quickly find differences and similarities in disassembled code.
-	pkgver = 6
+	pkgver = 7
 	pkgrel = 1
 	url = https://www.zynamics.com/bindiff.html
 	install = bindiff.install
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils
-	depends = java-runtime>=8
+	depends = java-runtime>=11
 	options = !strip
-	backup = etc/opt/bindiff/bindiff.xml
-	source = https://storage.googleapis.com/bindiff-releases/bindiff_6_amd64.deb
-	source = https://storage.googleapis.com/bindiff-releases/bindiff_6_amd64.deb.asc
+	backup = etc/opt/bindiff/bindiff.json
+	source = https://storage.googleapis.com/bindiff-releases/bindiff_7_amd64.deb
+	source = https://storage.googleapis.com/bindiff-releases/bindiff_7_amd64.deb.asc
 	validpgpkeys = EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796
-	sha256sums = f84dacaccfeb7d2ba34cfac711457be7f3a3c963470ed7b639615f9142ffde8d
+	sha256sums = cb9216518acb9cc4be6b5e538bafe86470bdbed233477440804a29dd06f32f4f
 	sha256sums = SKIP
 
 pkgname = bindiff
-
