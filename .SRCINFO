@@ -1,0 +1,15 @@
+pkgbase = ddns-cloudflare-powershell-git
+	pkgdesc = A simple Powershell script for DDNS with Cloudflare API
+	pkgver = r8.4caef0a
+	pkgrel = 1
+	url = https://github.com/database64128/ddns-cloudflare-powershell
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = powershell
+	provides = ddns-cloudflare-powershell
+	conflicts = ddns-cloudflare-powershell
+	source = ddns-cloudflare-powershell-git::git+https://github.com/database64128/ddns-cloudflare-powershell.git
+	b2sums = SKIP
+
+pkgname = ddns-cloudflare-powershell-git

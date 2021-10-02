@@ -1,0 +1,5 @@
+pkg/
+src/
+ddns-cloudflare-powershell-git/
+
+*.tar.zst
