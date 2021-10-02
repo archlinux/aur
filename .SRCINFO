@@ -1,6 +1,6 @@
 pkgbase = r-desc
 	pkgdesc = Manipulate DESCRIPTION Files
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=desc
 	arch = any
@@ -15,8 +15,7 @@ pkgbase = r-desc
 	optdepends = r-withr
 	optdepends = r-spelling
 	optdepends = r-gh
-	source = https://cran.r-project.org/src/contrib/desc_1.3.0.tar.gz
-	sha256sums = be80e448daf804e339a028288afa5be3d0f5b897f611ccd87de1243a94df84eb
+	source = https://cran.r-project.org/src/contrib/desc_1.4.0.tar.gz
+	sha256sums = 8220e4c706449b8121b822e70b1414f391ef419aed574836a234c63b83e5d649
 
 pkgname = r-desc
-
