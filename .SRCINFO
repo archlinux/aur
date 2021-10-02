@@ -1,6 +1,6 @@
 pkgbase = r-shiny
 	pkgdesc = Web Application Framework for R
-	pkgver = 1.6.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shiny
 	arch = any
@@ -10,19 +10,19 @@ pkgbase = r-shiny
 	depends = r-mime>=0.3
 	depends = r-jsonlite>=0.9.16
 	depends = r-xtable
-	depends = r-digest>=0.6.25
-	depends = r-htmltools>=0.5.0.9001
+	depends = r-fontawesome>=0.2.1
+	depends = r-htmltools>=0.5.2
 	depends = r-r6>=2.0
 	depends = r-sourcetools
 	depends = r-later>=1.0.0
 	depends = r-promises>=1.1.0
 	depends = r-crayon
-	depends = r-rlang>=0.4.9
-	depends = r-fastmap>=1.0.0
+	depends = r-rlang>=0.4.10
+	depends = r-fastmap>=1.1.0
 	depends = r-withr
 	depends = r-commonmark>=1.7
 	depends = r-glue>=1.3.2
-	depends = r-bslib>=0.2.2.9002
+	depends = r-bslib>=0.3.0
 	depends = r-cachem
 	depends = r-ellipsis
 	depends = r-lifecycle>=0.2.0
@@ -41,8 +41,7 @@ pkgbase = r-shiny
 	optdepends = r-ragg
 	optdepends = r-showtext
 	optdepends = r-sass
-	source = https://cran.r-project.org/src/contrib/shiny_1.6.0.tar.gz
-	sha256sums = 8bd7d76d67d610aabdcc1df7c8f6d0f18dd695ace16af29b60982541d784bb99
+	source = https://cran.r-project.org/src/contrib/shiny_1.7.1.tar.gz
+	sha256sums = c03b2056fb41430352c7c0e812bcc8632e6ec4caef077d2f7633512d91721d00
 
 pkgname = r-shiny
-
