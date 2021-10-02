@@ -3,7 +3,7 @@
 _lang=de
 pkgname=ting-${_lang}
 pkgver=9.3.6
-pkgrel=2
+pkgrel=3
 _llang=German
 pkgdesc="Daily ${_llang} Listening software from eusoft"
 arch=('x86_64')
@@ -31,14 +31,14 @@ package() {
     cd $srcdir/build
     
     mv usr/ ${pkgdir}/usr
-    mkdir -p ${pkgdir}/usr/share/eusoft-${pkgname}
-    mv  ${pkgname}.asar ${pkgdir}/usr/share/eusoft-${pkgname}/${pkgname}.asar
+    mkdir -p ${pkgdir}/usr/share/eusoft/${pkgname}
+    mv  ${pkgname}.asar ${pkgdir}/usr/share/eusoft/${pkgname}/${pkgname}.asar
     sed -i "3c Exec=${pkgname} %U" ${pkgdir}/usr/share/applications/ting_${_lang}.desktop
     
     # link executable
     mkdir -p ${pkgdir}/usr/bin/
     echo """#!/usr/bin/bash
-electron7 /usr/share/eusoft-${pkgname}/${pkgname}.asar
+electron7 /usr/share/eusoft/${pkgname}/${pkgname}.asar
 """> ${pkgdir}/usr/bin/${pkgname}
     chmod a+x ${pkgdir}/usr/bin/${pkgname}
 

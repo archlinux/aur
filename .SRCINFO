@@ -1,7 +1,7 @@
 pkgbase = ting-de
 	pkgdesc = Daily German Listening software from eusoft
 	pkgver = 9.3.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.eudic.net/v4/de/app/ting
 	arch = x86_64
 	license = unknown
@@ -10,4 +10,3 @@ pkgbase = ting-de
 	sha512sums = f09674efa9f29c4f8c3cee6f1a43b3037809e53f93f11cb5ff37abb853f1812908d98118480902e1e2a103babf1199050975185e1058ba90b4090ed101831625
 
 pkgname = ting-de
-
