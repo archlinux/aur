@@ -2,7 +2,7 @@ pkgbase = vapoursynth-plugin-misc-git
 	pkgdesc = Plugin for Vapoursynth: misc (GIT version)
 	pkgver = R1.2.ged56d96
 	pkgrel = 1
-	url = https://github.com/vapoursynth/misc
+	url = https://github.com/vapoursynth/vs-miscfilters-obsolete
 	arch = any
 	license = MIT
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = vapoursynth-plugin-misc-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-misc
 	conflicts = vapoursynth-plugin-misc
-	source = misc::git+https://github.com/vapoursynth/misc.git
+	source = misc::git+https://github.com/vapoursynth/vs-miscfilters-obsolete.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-misc-git
