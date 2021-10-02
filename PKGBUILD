@@ -1,43 +1,51 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
-_name=typechecks
-pkgbase='python-typechecks'
+pkgbase=python-typechecks
 pkgname=('python-typechecks' 'python2-typechecks')
-pkgver=0.0.2
-pkgrel=2
-pkgdesc="Helper functions for runtime type checking in Python"
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Helper functions for runtime type checking"
 arch=('any')
 url="https://pypi.python.org/pypi/typechecks"
 license=('Apache')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/60/8e/ca9aac318aeb8e909b4435881c79a633ed40e4efa6fbb3c32c393b5da512/typechecks-0.0.2.tar.gz)
-sha256sums=('1473dfecd9ceebb3608df3515cadd09bf87ca8385ae66839943bd373a6b9da36')
+makedepends=('python-setuptools' 'python2-setuptools')
+checkdepends=('python-nose' 'python2-nose')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/typechecks/typechecks-$pkgver.tar.gz")
+sha256sums=('7d801a6018f60d2a10aa3debc3af65f590c96c455de67159f39b9b183107c83b')
 
 prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
+	cp -a "typechecks-$pkgver"{,-py2}
 }
 
 build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py build
+	pushd "typechecks-$pkgver"
+	python setup.py build
+	popd
 
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
+	pushd "typechecks-$pkgver-py2"
+	python2 setup.py build
+}
+
+check() {
+	pushd "typechecks-$pkgver"
+	python setup.py nosetests
+	popd
+
+	pushd "typechecks-$pkgver-py2"
+	python2 setup.py nosetests
 }
 
 package_python2-typechecks() {
-  depends=('python2')
+	depends=('python2')
 
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+	cd "typechecks-$pkgver-py2"
+	PYTHONHASHSEED=0 python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 package_python-typechecks() {
-  depends=('python')
+	depends=('python')
 
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+	cd "typechecks-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }

@@ -1,21 +1,19 @@
 pkgbase = python-typechecks
-	pkgdesc = Helper functions for runtime type checking in Python
-	pkgver = 0.0.2
-	pkgrel = 2
+	pkgdesc = Helper functions for runtime type checking
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/typechecks
 	arch = any
 	license = Apache
-	makedepends = python
+	checkdepends = python-nose
+	checkdepends = python2-nose
 	makedepends = python-setuptools
-	makedepends = python2
 	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-typechecks-0.0.2.tar.gz::https://pypi.python.org/packages/60/8e/ca9aac318aeb8e909b4435881c79a633ed40e4efa6fbb3c32c393b5da512/typechecks-0.0.2.tar.gz
-	sha256sums = 1473dfecd9ceebb3608df3515cadd09bf87ca8385ae66839943bd373a6b9da36
+	source = python-typechecks-0.1.0.tar.gz::https://files.pythonhosted.org/packages/source/t/typechecks/typechecks-0.1.0.tar.gz
+	sha256sums = 7d801a6018f60d2a10aa3debc3af65f590c96c455de67159f39b9b183107c83b
 
 pkgname = python-typechecks
 	depends = python
 
 pkgname = python2-typechecks
 	depends = python2
-
