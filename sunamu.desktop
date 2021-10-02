@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Sunamu
+Comment=Show your currently playing song in a stylish way!
+Exec=sunamu %U
+GenericName=Media controller
+Icon=sunamu
+MimeType=
+StartupNotify=true
+StartupWMClass=sunamu
+Categories=Multimedia;
