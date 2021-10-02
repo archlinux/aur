@@ -1,7 +1,7 @@
-From cfd3291fa2a77bf1029646da5945d83d1021609a Mon Sep 17 00:00:00 2001
+From b9e2eae999333fc1ad9ddf4cf0e36a0eaee239e2 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 29 Aug 2021 13:21:23 +1200
-Subject: [PATCH v14 1/1] asus-wmi: Add support for custom fan curves
+Subject: [PATCH v15] asus-wmi: Add support for custom fan curves
 
 Add support for custom fan curves found on some ASUS ROG laptops.
 
@@ -28,12 +28,12 @@ Notes:
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- drivers/platform/x86/asus-wmi.c            | 611 ++++++++++++++++++++-
+ drivers/platform/x86/asus-wmi.c            | 608 ++++++++++++++++++++-
  include/linux/platform_data/x86/asus-wmi.h |   2 +
- 2 files changed, 605 insertions(+), 8 deletions(-)
+ 2 files changed, 602 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index e14fb5fa7324..7569f34bac3e 100644
+index e14fb5fa7324..8b0ed1969d86 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -106,8 +106,17 @@ module_param(fnlock_default, bool, 0444);
@@ -64,27 +64,20 @@ index e14fb5fa7324..7569f34bac3e 100644
  	u32 arg5;
  } __packed;
  
-@@ -173,6 +183,19 @@ enum fan_type {
+@@ -173,6 +183,12 @@ enum fan_type {
  	FAN_TYPE_SPEC83,	/* starting in Spec 8.3, use CPU_FAN_CTRL */
  };
  
-+/*
-+ * The related ACPI method for testing availability also returns the factory
-+ * default fan curves. We save them here so that a user can reset custom
-+ * settings if required.
-+ */
 +struct fan_curve_data {
 +	bool enabled;
 +	u8 temps[FAN_CURVE_POINTS];
 +	u8 percents[FAN_CURVE_POINTS];
-+	u8 default_temps[FAN_CURVE_POINTS];
-+	u8 default_percents[FAN_CURVE_POINTS];
 +};
 +
  struct asus_wmi {
  	int dsts_id;
  	int spec;
-@@ -220,6 +243,10 @@ struct asus_wmi {
+@@ -220,6 +236,10 @@ struct asus_wmi {
  	bool throttle_thermal_policy_available;
  	u8 throttle_thermal_policy_mode;
  
@@ -95,7 +88,7 @@ index e14fb5fa7324..7569f34bac3e 100644
  	struct platform_profile_handler platform_profile_handler;
  	bool platform_profile_support;
  
-@@ -285,6 +312,103 @@ int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1, u32 *retval)
+@@ -285,6 +305,103 @@ int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1, u32 *retval)
  }
  EXPORT_SYMBOL_GPL(asus_wmi_evaluate_method);
  
@@ -199,7 +192,7 @@ index e14fb5fa7324..7569f34bac3e 100644
  static int asus_wmi_evaluate_method_agfn(const struct acpi_buffer args)
  {
  	struct acpi_buffer input;
-@@ -1806,6 +1930,13 @@ static ssize_t pwm1_enable_store(struct device *dev,
+@@ -1806,6 +1923,13 @@ static ssize_t pwm1_enable_store(struct device *dev,
  	}
  
  	asus->fan_pwm_mode = state;
@@ -213,7 +206,7 @@ index e14fb5fa7324..7569f34bac3e 100644
  	return count;
  }
  
-@@ -1953,9 +2084,9 @@ static int fan_boost_mode_check_present(struct asus_wmi *asus)
+@@ -1953,9 +2077,9 @@ static int fan_boost_mode_check_present(struct asus_wmi *asus)
  
  static int fan_boost_mode_write(struct asus_wmi *asus)
  {
@@ -225,7 +218,7 @@ index e14fb5fa7324..7569f34bac3e 100644
  
  	value = asus->fan_boost_mode;
  
-@@ -2013,10 +2144,10 @@ static ssize_t fan_boost_mode_store(struct device *dev,
+@@ -2013,10 +2137,10 @@ static ssize_t fan_boost_mode_store(struct device *dev,
  				    struct device_attribute *attr,
  				    const char *buf, size_t count)
  {
@@ -238,11 +231,11 @@ index e14fb5fa7324..7569f34bac3e 100644
  
  	result = kstrtou8(buf, 10, &new_mode);
  	if (result < 0) {
-@@ -2043,6 +2174,458 @@ static ssize_t fan_boost_mode_store(struct device *dev,
+@@ -2043,6 +2167,462 @@ static ssize_t fan_boost_mode_store(struct device *dev,
  // Fan boost mode: 0 - normal, 1 - overboost, 2 - silent
  static DEVICE_ATTR_RW(fan_boost_mode);
  
-+/* Custom fan curves per-profile **********************************************/
++/* Custom fan curves *********************************************************/
 +
 +static void fan_curve_copy_from_buf(struct fan_curve_data *data, u8 *buf)
 +{
@@ -250,13 +243,10 @@ index e14fb5fa7324..7569f34bac3e 100644
 +
 +	for (i = 0; i < FAN_CURVE_POINTS; i++) {
 +		data->temps[i] = buf[i];
-+		data->default_temps[i] = buf[i];
 +	}
 +
 +	for (i = 0; i < FAN_CURVE_POINTS; i++) {
 +		data->percents[i] =
-+			255 * buf[i + FAN_CURVE_POINTS] / 100;
-+		data->default_percents[i] =
 +			255 * buf[i + FAN_CURVE_POINTS] / 100;
 +	}
 +}
@@ -291,9 +281,7 @@ index e14fb5fa7324..7569f34bac3e 100644
 +	return 0;
 +}
 +
-+/*
-+ * Check if capability exists, and populate defaults.
-+ */
++/* Check if capability exists, and populate defaults */
 +static int fan_curve_check_present(struct asus_wmi *asus, bool *available,
 +				   u32 fan_dev)
 +{
@@ -312,27 +300,35 @@ index e14fb5fa7324..7569f34bac3e 100644
 +	return 0;
 +}
 +
-+static struct fan_curve_data *fan_curve_data_select(struct asus_wmi *asus,
++/* Determine which fan the attribute is for if SENSOR_ATTR */
++static struct fan_curve_data *fan_curve_attr_select(struct asus_wmi *asus,
++					      struct device_attribute *attr)
++{
++	int index = to_sensor_dev_attr(attr)->index;
++
++	return &asus->custom_fan_curves[index & FAN_CURVE_DEV_GPU];
++}
++
++/* Determine which fan the attribute is for if SENSOR_ATTR_2 */
++static struct fan_curve_data *fan_curve_attr_2_select(struct asus_wmi *asus,
 +					    struct device_attribute *attr)
 +{
-+	/* Determine which fan the attribute is for */
 +	int nr = to_sensor_dev_attr_2(attr)->nr;
-+	int fan = nr & FAN_CURVE_DEV_GPU;
 +
-+	return &asus->custom_fan_curves[fan];
++	return &asus->custom_fan_curves[nr & FAN_CURVE_DEV_GPU];
 +}
 +
 +static ssize_t fan_curve_show(struct device *dev,
 +			      struct device_attribute *attr, char *buf)
 +{
++	struct sensor_device_attribute_2 *dev_attr = to_sensor_dev_attr_2(attr);
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
-+	/* Determine if temperature or pwm */
-+	int nr = to_sensor_dev_attr_2(attr)->nr;
 +	struct fan_curve_data *data;
-+	int value, index;
++	int value, index, nr;
 +
-+	data = fan_curve_data_select(asus, attr);
-+	index = to_sensor_dev_attr_2(attr)->index;
++	data = fan_curve_attr_2_select(asus, attr);
++	index = dev_attr->index;
++	nr = dev_attr->nr;
 +
 +	if (nr & FAN_CURVE_PWM_MASK)
 +		value = data->percents[index];
@@ -348,7 +344,7 @@ index e14fb5fa7324..7569f34bac3e 100644
 +static int fan_curve_write(struct asus_wmi *asus,
 +			   struct device_attribute *attr, u32 fan_dev)
 +{
-+	struct fan_curve_data *data = fan_curve_data_select(asus, attr);
++	struct fan_curve_data *data = fan_curve_attr_2_select(asus, attr);
 +	u32 arg1 = 0, arg2 = 0, arg3 = 0, arg4 = 0;
 +	u8 *percents = data->percents;
 +	u8 *temps = data->temps;
@@ -395,16 +391,16 @@ index e14fb5fa7324..7569f34bac3e 100644
 +			       struct device_attribute *attr, const char *buf,
 +			       size_t count)
 +{
++	struct sensor_device_attribute_2 *dev_attr = to_sensor_dev_attr_2(attr);
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
 +	struct fan_curve_data *data;
 +	u8 value;
 +	int err;
 +
-+	int index = to_sensor_dev_attr_2(attr)->index;
-+	int nr = to_sensor_dev_attr_2(attr)->nr;
-+	int pwm = nr & FAN_CURVE_PWM_MASK;
++	int pwm = dev_attr->nr & FAN_CURVE_PWM_MASK;
++	int index = dev_attr->index;
 +
-+	data = fan_curve_data_select(asus, attr);
++	data = fan_curve_attr_2_select(asus, attr);
 +
 +	err = kstrtou8(buf, 10, &value);
 +	if (err < 0)
@@ -430,8 +426,10 @@ index e14fb5fa7324..7569f34bac3e 100644
 +				     struct device_attribute *attr, char *buf)
 +{
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
-+	struct fan_curve_data *data = fan_curve_data_select(asus, attr);
++	struct fan_curve_data *data;
 +	int out = 2;
++
++	data = fan_curve_attr_select(asus, attr);
 +
 +	if (data->enabled)
 +		out = 1;
@@ -461,10 +459,9 @@ index e14fb5fa7324..7569f34bac3e 100644
 +{
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
 +	struct fan_curve_data *data;
-+	int value;
-+	int err;
++	int value, err;
 +
-+	data = fan_curve_data_select(asus, attr);
++	data = fan_curve_attr_select(asus, attr);
 +
 +	err = kstrtoint(buf, 10, &value);
 +	if (err < 0)
@@ -697,7 +694,7 @@ index e14fb5fa7324..7569f34bac3e 100644
  /* Throttle thermal policy ****************************************************/
  
  static int throttle_thermal_policy_check_present(struct asus_wmi *asus)
-@@ -2053,8 +2636,8 @@ static int throttle_thermal_policy_check_present(struct asus_wmi *asus)
+@@ -2053,8 +2633,8 @@ static int throttle_thermal_policy_check_present(struct asus_wmi *asus)
  	asus->throttle_thermal_policy_available = false;
  
  	err = asus_wmi_get_devstate(asus,
@@ -708,7 +705,7 @@ index e14fb5fa7324..7569f34bac3e 100644
  	if (err) {
  		if (err == -ENODEV)
  			return 0;
-@@ -2092,6 +2675,12 @@ static int throttle_thermal_policy_write(struct asus_wmi *asus)
+@@ -2092,6 +2672,12 @@ static int throttle_thermal_policy_write(struct asus_wmi *asus)
  		return -EIO;
  	}
  
@@ -721,7 +718,7 @@ index e14fb5fa7324..7569f34bac3e 100644
  	return 0;
  }
  
-@@ -2901,7 +3490,7 @@ static int show_call(struct seq_file *m, void *data)
+@@ -2901,7 +3487,7 @@ static int show_call(struct seq_file *m, void *data)
  	if (ACPI_FAILURE(status))
  		return -EIO;
  
@@ -730,7 +727,7 @@ index e14fb5fa7324..7569f34bac3e 100644
  	if (obj && obj->type == ACPI_TYPE_INTEGER)
  		seq_printf(m, "%#x(%#x, %#x) = %#x\n", asus->debug.method_id,
  			   asus->debug.dev_id, asus->debug.ctrl_param,
-@@ -3035,6 +3624,10 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -3035,6 +3621,10 @@ static int asus_wmi_add(struct platform_device *pdev)
  	if (err)
  		goto fail_hwmon;
  
@@ -741,7 +738,7 @@ index e14fb5fa7324..7569f34bac3e 100644
  	err = asus_wmi_led_init(asus);
  	if (err)
  		goto fail_leds;
-@@ -3106,6 +3699,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -3106,6 +3696,7 @@ static int asus_wmi_add(struct platform_device *pdev)
  	asus_wmi_sysfs_exit(asus->platform_device);
  fail_sysfs:
  fail_throttle_thermal_policy:
@@ -749,7 +746,7 @@ index e14fb5fa7324..7569f34bac3e 100644
  fail_platform_profile_setup:
  	if (asus->platform_profile_support)
  		platform_profile_remove();
-@@ -3131,6 +3725,7 @@ static int asus_wmi_remove(struct platform_device *device)
+@@ -3131,6 +3722,7 @@ static int asus_wmi_remove(struct platform_device *device)
  	asus_wmi_debugfs_exit(asus);
  	asus_wmi_sysfs_exit(asus->platform_device);
  	asus_fan_set_auto(asus);

@@ -127,7 +127,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "HID-asus-Prevent-Claymore-sending-suspend-event.patch"                         # "
         "HID-asus-Reduce-object-size-by-consolidating-calls.patch"                      # awaiting ack
         "v5-asus-wmi-Add-support-for-platform_profile.patch"                            # landing in 5.15
-        "v14-asus-wmi-Add-support-for-custom-fan-curves.patch"                          # pending
+        "v15-asus-wmi-Add-support-for-custom-fan-curves.patch"                          # pending
 
         # mediatek mt7921 bt/wifi patches
         #"Bluetooth-btusb-Fixed-too-many-in-token-issue-for-Me.patch"
@@ -175,7 +175,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'ec317cc2c2c8c1186c4f553fdd010adc013c37600a499802473653fd8e7564df'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
-            '9d799be6d01a7438ca9999a10137be8fd95348610545c135c6dc9ce2b5afbe29'
+            '1e547bddf80d201f77da1d876cd280e4d40b377bbd8ebc218f0ba57cd959ff76'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
             '9f6b8c3ea6e1c285e0a7efda4d743dbae343bc6ee7ad599a4ab7d380c750bc83'
