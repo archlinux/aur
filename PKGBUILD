@@ -3,7 +3,7 @@
 _corpname=python-glaxnimate
 _pkgname='glaxnimate'
 pkgname=python-glaxnimate
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Python bindings for Glaxnimate."
 url="https://glaxnimate.mattbas.org/"
@@ -36,7 +36,6 @@ build() {
 	cd build
 	cmake ".." -DCMAKE_INSTALL_PREFIX=/usr
 	make glaxnimate_python
-#	make translations
 }
 
 package() {

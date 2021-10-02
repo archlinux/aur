@@ -1,6 +1,6 @@
 pkgbase = python-glaxnimate
 	pkgdesc = Python bindings for Glaxnimate.
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://glaxnimate.mattbas.org/
 	arch = x86_64
