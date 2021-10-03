@@ -18,7 +18,7 @@ optdepends=('python2-feedparser: RSS support'
             'python2-gnomekeyring: store passwords in gnome-keyring'
             'gstreamer0.10-python: play sounds')
 
-source=(https://github.com/chuchiperriman/$_pkgname/archive/$pkgver.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/chuchiperriman/$_pkgname/archive/$pkgver.tar.gz")
 md5sums=('470a67a55e00bb6785bf717c58c937f8')
 
 prepare() {

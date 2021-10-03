@@ -13,7 +13,7 @@ pkgbase = cloudsn
 	optdepends = python2-feedparser: RSS support
 	optdepends = python2-gnomekeyring: store passwords in gnome-keyring
 	optdepends = gstreamer0.10-python: play sounds
-	source = https://github.com/chuchiperriman/cloud-services-notifications/archive/0.10.2.tar.gz
+	source = cloudsn-0.10.2.tar.gz::https://github.com/chuchiperriman/cloud-services-notifications/archive/0.10.2.tar.gz
 	md5sums = 470a67a55e00bb6785bf717c58c937f8
 
 pkgname = cloudsn
