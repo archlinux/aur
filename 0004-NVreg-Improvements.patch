@@ -1,7 +1,7 @@
-From a9888e2dca89f6fa8b01287e4503a68f29f65e92 Mon Sep 17 00:00:00 2001
+From becb71f3e815df0df1d2895bd3ad300269a695a4 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <cabopust@yandex.ru>
-Date: Sun, 3 Oct 2021 11:41:14 +0300
-Subject: [PATCH] NVreg Improvements v2
+Date: Tue, 4 May 2021 14:56:48 +0300
+Subject: [PATCH] NVreg Improvements
 
 This patch edits the default values of the NVIDIA kernel module
 parameters, and makes the following changes:
@@ -27,41 +27,17 @@ Note: It is possible to use more video memory (?)
 NVreg_EnableStreamMemOPs=1 (Default 0) - Activates the support for
 CUDA Stream Memory Operations in user-mode applications.
 
-NVreg_PreserveVideoMemoryAllocations=1 (Default 0) - Prompts the NVIDIA kernel module to save
-and restore all video memory allocations during all system power management cycles,
-i.e. suspend/resume and hibernate/resume.
-This helps prevent applications from freezing or rendering errors after resume.
-
-NVreg_DynamicPowerManagement=Ox02 (Default 0x03) - Enables dynamic power management
-where the NVIDIA GPU can completely shut down when it is not assigned tasks,
-resulting in better power savings.
-This feature works only on laptops with Turing or higher, Intel Coffeelake processors, and Linux 4.18+ kernel.
-In other cases this option has no effect.
-You can check if your hardware supports this feature with the following command:
-
-$ cat /proc/driver/nvidia/gpus/0000:01:00.0/power
-
-Read more about it: https://download.nvidia.com/XFree86/Linux-x86_64/470.74/README/dynamicpowermanagement.html
-
-NVreg_EnableS0ixPowerManagement=1 (Default 0) - Enables putting the GPU video memory into self-updating mode
-during s2idle system suspend. This feature is only supported on platforms with S0ix-based power management,
-which can be verified via the following command:
-
-$ grep 'Video Memory Self Refresh' /proc/driver/nvidia/gpus/0000\:01\:00.0/power
-
-
 If you want to learn more about the NVIDIA driver module parameters,
 you can go to the Gentoo Wiki page or view the source code of the nv-reg.h file.
-
 ---
- kernel/nvidia/nv-reg.h | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ kernel/nvidia/nv-reg.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/kernel/nvidia/nv-reg.h b/kernel/nvidia/nv-reg.h
-index 1ee7473..4482519 100644
+index 1ee7473..7ea5acf 100644
 --- a/kernel/nvidia/nv-reg.h
 +++ b/kernel/nvidia/nv-reg.h
-@@ -774,20 +774,20 @@ NV_DEFINE_REG_ENTRY_GLOBAL(__NV_MODIFY_DEVICE_FILES, 1);
+@@ -774,13 +774,13 @@ NV_DEFINE_REG_ENTRY_GLOBAL(__NV_MODIFY_DEVICE_FILES, 1);
  NV_DEFINE_REG_ENTRY(__NV_DEVICE_FILE_UID, 0);
  NV_DEFINE_REG_ENTRY(__NV_DEVICE_FILE_GID, 0);
  NV_DEFINE_REG_ENTRY(__NV_DEVICE_FILE_MODE, 0666);
@@ -77,18 +53,8 @@ index 1ee7473..4482519 100644
 -NV_DEFINE_REG_ENTRY(__NV_ENABLE_STREAM_MEMOPS, 0);
 +NV_DEFINE_REG_ENTRY(__NV_ENABLE_STREAM_MEMOPS, 1);
  NV_DEFINE_REG_ENTRY(__NV_RM_PROFILING_ADMIN_ONLY_PARAMETER, 1);
--NV_DEFINE_REG_ENTRY(__NV_PRESERVE_VIDEO_MEMORY_ALLOCATIONS, 0);
-+NV_DEFINE_REG_ENTRY(__NV_PRESERVE_VIDEO_MEMORY_ALLOCATIONS, 1);
- 
--NV_DEFINE_REG_ENTRY(__NV_ENABLE_S0IX_POWER_MANAGEMENT, 0);
-+NV_DEFINE_REG_ENTRY(__NV_ENABLE_S0IX_POWER_MANAGEMENT, 1);
- NV_DEFINE_REG_ENTRY(__NV_S0IX_POWER_MANAGEMENT_VIDEO_MEMORY_THRESHOLD, 256);
- 
--NV_DEFINE_REG_ENTRY(__NV_DYNAMIC_POWER_MANAGEMENT, 3);
-+NV_DEFINE_REG_ENTRY(__NV_DYNAMIC_POWER_MANAGEMENT, 2);
- NV_DEFINE_REG_ENTRY(__NV_DYNAMIC_POWER_MANAGEMENT_VIDEO_MEMORY_THRESHOLD, 200);
- NV_DEFINE_REG_ENTRY(__NV_ENABLE_GPU_FIRMWARE, NV_REG_ENABLE_GPU_FIRMWARE_DEFAULT_VALUE);
+ NV_DEFINE_REG_ENTRY(__NV_PRESERVE_VIDEO_MEMORY_ALLOCATIONS, 0);
  
 -- 
-2.33.0
+2.31.1
 
