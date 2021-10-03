@@ -1,14 +1,14 @@
 pkgbase = example-robot-data
 	pkgdesc = Set of robot URDFs for benchmarking and developed examples.
-	pkgver = 3.10.0
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://github.com/gepetto/example-robot-data
 	arch = any
 	license = BSD
 	makedepends = cmake
 	depends = pinocchio
-	source = https://github.com/gepetto/example-robot-data/releases/download/v3.10.0/example-robot-data-3.10.0.tar.gz
-	source = https://github.com/gepetto/example-robot-data/releases/download/v3.10.0/example-robot-data-3.10.0.tar.gz.sig
+	source = https://github.com/gepetto/example-robot-data/releases/download/v3.11.0/example-robot-data-3.11.0.tar.gz
+	source = https://github.com/gepetto/example-robot-data/releases/download/v3.11.0/example-robot-data-3.11.0.tar.gz.sig
 	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
 	sha256sums = SKIP
 	sha256sums = SKIP
