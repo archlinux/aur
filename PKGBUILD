@@ -73,7 +73,7 @@ pkgname="emacs28-git"
 fi
 pkgver=28.0.60.150525
 pkgrel=1
-pkgdesc="GNU Emacs. Development master branch."
+pkgdesc="GNU Emacs. emacs-28 release branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
