@@ -9,7 +9,7 @@ url="https://github.com/AryToNeX/Sunamu"
 license=("MPL-2.0")
 arch=("x86_64")
 conflicts=(sunamu sunamu-bin)
-makedepends=("git" "npm" "node-gyp")
+makedepends=("git" "npm" "yarn" "node-gyp")
 depends=("electron")
 
 source=("${_pkgname}::git+https://github.com/AryToNeX/Sunamu"
