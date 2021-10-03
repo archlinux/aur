@@ -1,7 +1,7 @@
 # Maintainer: Cody Schafer <aur at codyps.com>
 
 _hkgname=bustle
-pkgname=haskell-$_hkgname
+pkgname=$_hkgname
 pkgver=0.8.0
 pkgrel=1
 pkgdesc="Draw sequence diagrams of D-Bus traffic"
