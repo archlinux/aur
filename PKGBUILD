@@ -3,9 +3,9 @@
 # Contributor: Martin Harvan <martinhrvn@gmail.com>
 
 _hkgname=gio
-pkgname=haskell-${_hkgname}
-pkgver=0.13.5.0
-pkgrel=3
+pkgname=haskell-$_hkgname
+pkgver=0.13.8.1
+pkgrel=1
 pkgdesc="Binding to the GIO."
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('LGPL-2.1')
@@ -20,8 +20,8 @@ depends=('ghc'
     'glib2'
 )
 options=(!emptydirs)
-source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-md5sums=('2315c7bbb3540b5988ff610b484674e8')
+source=(https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz)
+sha384sums=('6fc16a3bc9fa85d7e044546ea5e1cef049d6109606e71d897a81cd7f547cea7e0b250e29289b27d04799daf8dc45893d')
 
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
@@ -36,19 +36,7 @@ build() {
     sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
-_update_deps() {
-    _ver=`pacman -Q $1 | cut -f2 -d\  | cut -f1 -d-`
-    for i in `seq 0 $(expr ${#depends[@]} - 1)`; do
-        if [ ${depends[$i]} == $1 ]; then
-            depends[$i]="$1=${_ver}"
-        fi
-    done
-}
-
 package() {
-    _update_deps ghc
-    _update_deps haskell-mtl
-
     cd "${srcdir}/${_hkgname}-${pkgver}"
     install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
     install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
