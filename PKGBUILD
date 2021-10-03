@@ -1,7 +1,7 @@
 # Maintainer: Clansty <i@gao4.pw>
 
 pkgname=yesplaymusic-electron
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A third party music application for Netease Music. Using the system electron"
 arch=("any")
@@ -33,7 +33,7 @@ source=(
     yesplaymusic.desktop
     yesplaymusic
 )
-md5sums=('84a7b9991c998390d8e676182d7f18e0'
+md5sums=('1a5c742fbd67b8bd6f832bcfde1c54f5'
          'ade11d60b069c369b57b5d1e09066519'
          '426a2f7143ad4d0f5d060ba01e349518')
 
