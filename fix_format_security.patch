@@ -1,0 +1,66 @@
+--- generated_cpp_56/com_trolltech_qt_core/com_trolltech_qt_core1.h.orig	2021-10-03 11:51:41.584971162 +0200
++++ generated_cpp_56/com_trolltech_qt_core/com_trolltech_qt_core1.h	2021-10-03 11:51:41.584971162 +0200
+@@ -1036,12 +1036,6 @@
+ QMessageLogger* new_QMessageLogger(const char*  file, int  line, const char*  function);
+ QMessageLogger* new_QMessageLogger(const char*  file, int  line, const char*  function, const char*  category);
+ void delete_QMessageLogger(QMessageLogger* obj) { delete obj; } 
+-   void critical(QMessageLogger* theWrappedObject, const char*  msg) const;
+-   void debug(QMessageLogger* theWrappedObject, const char*  msg) const;
+-   void fatal(QMessageLogger* theWrappedObject, const char*  msg) const;
+-   void info(QMessageLogger* theWrappedObject, const char*  msg) const;
+-   void noDebug(QMessageLogger* theWrappedObject, const char*  arg__1) const;
+-   void warning(QMessageLogger* theWrappedObject, const char*  msg) const;
+ };
+ 
+ 
+@@ -1383,5 +1377,3 @@
+    bool  tryLock(QMutex* theWrappedObject, int  timeout = 0);
+    void unlock(QMutex* theWrappedObject);
+ };
+-
+-
+--- generated_cpp_56/com_trolltech_qt_core/com_trolltech_qt_core1.cpp.orig	2021-10-03 11:51:41.584971162 +0200
++++ generated_cpp_56/com_trolltech_qt_core/com_trolltech_qt_core1.cpp	2021-10-03 11:51:41.581637844 +0200
+@@ -4949,36 +4949,6 @@
+ { 
+ return new QMessageLogger(file, line, function, category); }
+ 
+-void PythonQtWrapper_QMessageLogger::critical(QMessageLogger* theWrappedObject, const char*  msg) const
+-{
+-  ( theWrappedObject->critical(msg));
+-}
+-
+-void PythonQtWrapper_QMessageLogger::debug(QMessageLogger* theWrappedObject, const char*  msg) const
+-{
+-  ( theWrappedObject->debug(msg));
+-}
+-
+-void PythonQtWrapper_QMessageLogger::fatal(QMessageLogger* theWrappedObject, const char*  msg) const
+-{
+-  ( theWrappedObject->fatal(msg));
+-}
+-
+-void PythonQtWrapper_QMessageLogger::info(QMessageLogger* theWrappedObject, const char*  msg) const
+-{
+-  ( theWrappedObject->info(msg));
+-}
+-
+-void PythonQtWrapper_QMessageLogger::noDebug(QMessageLogger* theWrappedObject, const char*  arg__1) const
+-{
+-  ( theWrappedObject->noDebug(arg__1));
+-}
+-
+-void PythonQtWrapper_QMessageLogger::warning(QMessageLogger* theWrappedObject, const char*  msg) const
+-{
+-  ( theWrappedObject->warning(msg));
+-}
+-
+ 
+ 
+ QMetaClassInfo* PythonQtWrapper_QMetaClassInfo::new_QMetaClassInfo()
+@@ -6095,5 +6065,3 @@
+ {
+   ( theWrappedObject->unlock());
+ }
+-
+-
