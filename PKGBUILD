@@ -52,7 +52,6 @@ package() {
 
     cd ..
     install -dm750 "$pkgdir"/var/lib/linx-server
-    install -dm755 "$pkgdir"/var/lib/linx-server/{files,meta}
     install -Dt "$pkgdir/usr/lib/systemd/system" -m644 linx-server.service linx-cleanup.{service,timer}
     install -Dm644 linx-server.sysusers "$pkgdir/usr/lib/sysusers.d/linx-server.conf"
     install -Dm644 linx-server.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/linx-server.conf"
