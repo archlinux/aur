@@ -1,0 +1,12 @@
+pkgbase = pypropack
+	pkgdesc = A python wrapper for the PROPACK library
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jakevdp/pypropack
+	arch = any
+	license = BSD
+	depends = python
+	source = git+https://github.com/jakevdp/pypropack
+	sha512sums = SKIP
+
+pkgname = pypropack
