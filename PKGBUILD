@@ -3,22 +3,22 @@
 # Contributor: Denis Zheleztsov <difrex.punk@gmail.com>
 
 pkgname=wlr-randr-git
-pkgver=0.1.0.r0.g988a802
-pkgrel=2
-pkgdesc="A xrandr clone for wlroots compositors (latest git version)"
+pkgver=v0.2.0+1+gfb31752
+pkgrel=1
+pkgdesc="Utility to manage outputs of a Wayland compositor (latest git version)"
 arch=('x86_64')
 url="https://github.com/emersion/wlr-randr"
 license=('MIT')
 depends=("wayland")
-makedepends=("git" "meson" "ninja")
+makedepends=("git" "meson")
 provides=("wlr-randr")
 conflicts=("wlr-randr")
-source=("$pkgname::git+https://github.com/emersion/wlr-randr.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://git.sr.ht/~emersion/wlr-randr")
+sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,18 +1,16 @@
 pkgbase = wlr-randr-git
-	pkgdesc = A xrandr clone for wlroots compositors (latest git version)
-	pkgver = 0.1.0.r0.g988a802
-	pkgrel = 2
+	pkgdesc = Utility to manage outputs of a Wayland compositor (latest git version)
+	pkgver = v0.2.0+1+gfb31752
+	pkgrel = 1
 	url = https://github.com/emersion/wlr-randr
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = meson
-	makedepends = ninja
 	depends = wayland
 	provides = wlr-randr
 	conflicts = wlr-randr
-	source = wlr-randr-git::git+https://github.com/emersion/wlr-randr.git
-	sha256sums = SKIP
+	source = wlr-randr-git::git+https://git.sr.ht/~emersion/wlr-randr
+	sha512sums = SKIP
 
 pkgname = wlr-randr-git
-
