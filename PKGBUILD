@@ -3,17 +3,18 @@
 _pkgname=libcwtch-go
 pkgname=$_pkgname-git
 
-pkgver=1.2.1.r0.gf6fec40
+pkgver=1.3.1.r0.gfcc9d71
 pkgrel=1
 
 pkgdesc="C bindings for the Go Cwtch library"
 provides=('libcwtch-go')
-conflicts=('libcwtch-go' 'libcwtch-go-bin')
+conflicts=('libcwtch-go')
+depends=('tor')
+makedepends=('go' 'git')
 # Likely works on others, please report your success
 arch=('x86_64')
 url='https://cwtch.im'
 license=('MIT')
-makedepends=('git')
 source=("git+https://git.openprivacy.ca/cwtch.im/libcwtch-go.git")
 sha512sums=('SKIP')
 
