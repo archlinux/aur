@@ -2,12 +2,13 @@
 
 pkgname=mtsedit-git
 pkgdesc="Simple editor for MineTest Schematic files"
-pkgver=62.fe8d9dd
+pkgver=64.19444bc
 pkgrel=1
 arch=(x86_64)
 url="https://gitlab.com/bztsrc/mtsedit"
 license=(MIT)
 provides=(mtsedit)
+makedepends=(git)
 depends=(sdl2 hicolor-icon-theme)
 source=(git+https://gitlab.com/bztsrc/mtsedit.git/)
 sha1sums=('SKIP')
@@ -22,10 +23,8 @@ build(){
 }
 
 package(){
-	cd mtsedit
-	mkdir -p "${pkgdir}/usr/local/bin" "${pkgdir}/usr/local/share/mtsedit" "${pkgdir}/usr/local/share/applications" "${pkgdir}/usr/local/share/icons/hicolor/32x32/apps"
-	install -m 755 src/mtsedit "${pkgdir}/usr/local/bin" 
-	cp -r data/* "${pkgdir}/usr/local/share/mtsedit" 
-	cp etc/mtsedit.desktop "${pkgdir}/usr/local/share/applications"
-	cp etc/mtsedit.png "${pkgdir}/usr/local/share/icons/hicolor/32x32/apps"
+	mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/share/mtsedit" "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/icons/hicolor/32x32/apps"  "${pkgdir}/usr/share/licenses/mtsedit-git"
+	make -C mtsedit/src DESTDIR="${pkgdir}/" install
+	cp mtsedit/LICENSE "${pkgdir}/usr/share/licenses/mtsedit-git"
+	chown root:root "${pkgdir}/usr/bin/mtsedit"
 }

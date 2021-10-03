@@ -1,10 +1,11 @@
 pkgbase = mtsedit-git
 	pkgdesc = Simple editor for MineTest Schematic files
-	pkgver = 62.fe8d9dd
+	pkgver = 64.19444bc
 	pkgrel = 1
 	url = https://gitlab.com/bztsrc/mtsedit
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = sdl2
 	depends = hicolor-icon-theme
 	provides = mtsedit
@@ -12,4 +13,3 @@ pkgbase = mtsedit-git
 	sha1sums = SKIP
 
 pkgname = mtsedit-git
-
