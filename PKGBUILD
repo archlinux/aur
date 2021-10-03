@@ -1,5 +1,5 @@
 # Maintainer: silverhikari
-# Maintainer: Armageddos <shadowkyogre@aim.com>
+# Maintainer: Sapphira Armageddos <shadowkyogre@aim.com>
 pkgname=mse-mtg-m15
 pkgver=2.1.2
 pkgrel=1
