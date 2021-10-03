@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Icon=wine
+Name=Boxedwine
+Exec=boxedwine
+Terminal=false
+Hidden=false
+Categories=Utility
+Comment=Run Windows applications
