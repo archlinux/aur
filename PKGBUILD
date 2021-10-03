@@ -5,8 +5,8 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy
 pkgname=('etlegacy' 'etlegacy-mod')
-pkgver=2.77.1
-_binaryversion=254
+pkgver=2.78.0
+_binaryversion=316
 pkgrel=1
 arch=('x86_64')
 url="http://www.etlegacy.com/"
@@ -15,8 +15,8 @@ makedepends=('cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libj
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/etlegacy/$_pkgbase/archive/v$pkgver.tar.gz"
         "${_pkgbase}-${pkgver}-${arch}-binary.tar.gz::http://www.etlegacy.com/download/file/${_binaryversion}")
 #noextract=("etl_bin_v$pkgver.pk3" "pak3_v$pkgver.pk3")
-sha256sums=('730a8a52435884b922d8c280fcdeace648902399798c7a973da72fbc4163ebe2'
-            'b9c4ba1dc594c43d860b0f6598bbe24ea0f885181ef931d30192e30b74ea7567')
+sha256sums=('14acf392bb4f0a627842792f96684755d2df6c0c083e61938d2eb8f873652d7b'
+            '290b4224afd1fdf4507c42513bbcacac6536830b1cee5362bf1b062b944d9dcf')
 
 build() {
     cd "$_pkgbase-$pkgver"
@@ -33,7 +33,6 @@ build() {
         -DBUILD_CLIENT=1 \
         -DBUILD_MOD=0 \
         -DBUILD_MOD_PK3=0 \
-        -DBUILD_PAK3_PK3=0 \
         -DBUNDLED_LIBS=0 \
         -DFEATURE_AUTOUPDATE=0 \
         -DINSTALL_OMNIBOT=0
@@ -67,12 +66,13 @@ package_etlegacy() {
 
     # doc
     mkdir -p $pkgdir/usr/share/doc/$_pkgbase
-    mv $pkgdir/usr/lib/$_pkgbase/INSTALL.txt $pkgdir/usr/share/doc/$_pkgbase/
+    install -m 644 VERSION.txt $pkgdir/usr/share/doc/$_pkgbase/
+    install -m 644 *.md $pkgdir/usr/share/doc/$_pkgbase/
     install -m 644 docs/game/anticheat.html $pkgdir/usr/share/doc/$_pkgbase/
 
     # license
     mkdir -p $pkgdir/usr/share/licenses/$_pkgbase
-    mv $pkgdir/usr/lib/$_pkgbase/COPYING.txt $pkgdir/usr/share/licenses/$_pkgbase/
+    install -m 644 COPYING.txt $pkgdir/usr/share/licenses/$_pkgbase/LICENSE
 
     # systemd
     mkdir -p $pkgdir/etc/xdg/$_pkgbase/etmain
@@ -97,8 +97,8 @@ package_etlegacy-mod() {
 
     # mod
     mkdir -p $pkgdir/usr/lib/$_pkgbase/legacy
-    install -m 644 $srcdir/etlegacy-v$pkgver-x86_64/legacy/legacy_v$pkgver.pk3 $pkgdir/usr/lib/$_pkgbase/legacy
-    install -m 644 $srcdir/etlegacy-v$pkgver-x86_64/legacy/qagame.mp.x86_64.so $pkgdir/usr/lib/$_pkgbase/legacy
+    install -m 644 $srcdir/etlegacy-v$pkgver-${arch}/legacy/legacy_v$pkgver.pk3 $pkgdir/usr/lib/$_pkgbase/legacy
+    install -m 644 $srcdir/etlegacy-v$pkgver-${arch}/legacy/qagame.mp.x86_64.so $pkgdir/usr/lib/$_pkgbase/legacy
 
     # geoip
     ln -s /usr/share/GeoIP/GeoIP.dat $pkgdir/usr/lib/$_pkgbase/legacy
