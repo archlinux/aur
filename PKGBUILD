@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r1057.5873965
+pkgver=r1098.37bf8c3
 pkgrel=1
 pkgdesc="Plugin for Avisynth/Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('git'
              'l-smash'
              'ffmpeg'
              )
-source=("${_plug}::git+https://github.com/HolyWu/L-SMASH-Works.git")
+source=("${_plug}::git+https://github.com/AmusementClub/L-SMASH-Works.git")
 sha256sums=('SKIP')
 
 pkgver() {
