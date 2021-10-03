@@ -1,0 +1,19 @@
+[Unit]
+Description=Logitech Media Server Daemon
+After=network.target
+
+[Service]
+User=logitechms
+Group=logitechms
+WorkingDirectory=/opt/logitechmediaserver
+RuntimeDirectory=logitechmediaserver
+PIDFile=${RUNTIME_DIRECTORY}/slimserver.pid
+ExecStart=/opt/logitechmediaserver/slimserver.pl \
+        --prefsdir /opt/logitechmediaserver/prefs \
+        --cachedir /opt/logitechmediaserver/cache \
+        --logdir /opt/logitechmediaserver/Logs \
+        --pidfile ${RUNTIME_DIRECTORY}/slimserver.pid \
+        --noimage --novideo
+
+[Install]
+WantedBy=multi-user.target
