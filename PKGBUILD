@@ -68,33 +68,45 @@ _powermizer_scheme=
 _override_max_perf=
 
 pkgbase=nvidia-dkms-performance
-pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance
-	 lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
+if [ $CARCH != 'aarch64' ]; then
+        pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance
+	lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
+else
+	pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance)
+fi
 pkgver=470.74
-pkgrel=1
-arch=('x86_64')
+pkgrel=2
+arch=('x86_64' 'aarch64')
 url='https://www.nvidia.com/'
 license=('custom')
-options=(!strip)
+options=(!strip !lto)
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
-source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
-        'nvidia-drm-outputclass.conf'
-        'nvidia-utils.sysusers'
-        'nvidia.hook'
-        '0001-nvidia-dkms-conf.patch'
-        '0002-linux-rt.patch'
-        '0003-nvidia-drm-modeset.patch'
-        '0004-NVreg-Improvements.patch'
-        '0005-nvidia-settings-paths.patch')
-sha256sums=('33e513dee329f2a9b106882979f1747eccb64eb698952c12cd030987cecadf6a'
-            'ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae'
-            'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
-            'a885c208a4cda620797eae6ffca412c7a3c44fa11624fa1fee5b04c29fcf9cc4'
-            '6ef8cde2a5c1a5eadaefc0b4fb9005ab433ac10b0452a015b9d93e345156665e'
-            '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
-            '898fe80847fb2974e1d16b380c16569ddb3ab24c6974bbeb72d68e8e13902311'
-            '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
+_sources=('nvidia-drm-outputclass.conf'
+          'nvidia-utils.sysusers'
+          'nvidia.hook'
+          '60-nvidia.rules'
+          '0001-nvidia-dkms-conf.patch'
+          '0002-linux-rt.patch'
+          '0003-nvidia-drm-modeset.patch'
+          '0004-NVreg-Improvements-v2.patch'
+          '0005-nvidia-settings-paths.patch')
+_sources_sums=('ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae'
+               'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
+               '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
+               '60237cc4b1fc7d3c7ca59155a3079af1923ba2490995c0208597b959ba168cfd'
+               'c18d3511c4169e7a20ad8b792161956fbd28fad9b3a15f7fb6846e37d74cbb24'
+               '6ef8cde2a5c1a5eadaefc0b4fb9005ab433ac10b0452a015b9d93e345156665e'
+               '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
+               '0c551b9358703e0ce7e1ce8bd47673ed5f964a6e4e200636c558ce73f2f3b792'
+               '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
+source_x86_64=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
+               ${_sources[@]})
+source_aarch64=("https://us.download.nvidia.com/XFree86/${CARCH}/${pkgver}/${_pkg}.run"
+                ${_sources[@]})
+sha256sums_x86_64=('33e513dee329f2a9b106882979f1747eccb64eb698952c12cd030987cecadf6a'
+                   ${_sources_sums[@]})
+sha256sums_aarch64=('d5bb2101574aeb0937f5039ff2297241684a9069e51ee54b0f0839fdef542226'
+	            ${_sources_sums[@]})
 
 create_links() {
     _orig_dir="$(pwd)"
@@ -133,7 +145,7 @@ prepare() {
    
     # Patching kernel modules
     local src
-    for src in "${source[@]}"; do
+    for src in "${_sources[@]}"; do
         src="${src%%::*}"
         src="${src##*/}"
         [[ $src = *.patch ]] || continue
@@ -141,52 +153,69 @@ prepare() {
     patch -Np1 < "../$src"
     done
 
-    if [ ! -z $_nvidia_patch ]; then
-        # NVENC
-        sed -i 's/\xe8\xc5\x20\xff\xff\x85\xc0\x41\x89\xc4/\xe8\xc5\x20\xff\xff\x29\xc0\x41\x89\xc4/g' \
-		"${srcdir}/${_pkg}/libnvidia-encode.so.${pkgver}"
-        # NvFBC
-        sed -i 's/\x83\xfe\x01\x73\x08\x48/\x83\xfe\x00\x72\x08\x48/' \
-		"${srcdir}/${_pkg}/libnvidia-fbc.so.${pkgver}"
+    if [[ $CARCH != 'aarch64' ]]; then
+        if [ ! -z $_nvidia_patch ]; then
+            # NVENC
+            sed -i 's/\xe8\xc5\x20\xff\xff\x85\xc0\x41\x89\xc4/\xe8\xc5\x20\xff\xff\x29\xc0\x41\x89\xc4/g' \
+		   "${srcdir}/${_pkg}/libnvidia-encode.so.${pkgver}"
+            # NvFBC
+            sed -i 's/\x83\xfe\x01\x73\x08\x48/\x83\xfe\x00\x72\x08\x48/' \
+		   "${srcdir}/${_pkg}/libnvidia-fbc.so.${pkgver}"
+        fi
     fi
 
     if [ ! -z $_powermizer_scheme ] && [ -z $_override_max_perf ]; then
-        echo "You have chosen a PowerMizer scheme: $_powermizer_scheme"
+        echo "You have selected the powermizer scheme: $_powermizer_scheme"
+        echo "If you don't like it in time you can change it with the Xorg "RegistryDwords" option (in the bit value)"
+        echo "or rebuild it with the new value."
         if [ "$_powermizer_scheme" = "1" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' kernel/nvidia/nv-reg.h
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' \
+		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "2" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' kernel/nvidia/nv-reg.h
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' \
+		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "3" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322;PowerMizerDefaultAC=0x1"/' kernel/nvidia/nv-reg.h
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322;PowerMizerDefaultAC=0x1"/' \
+		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "4" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault0x3;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' kernel/nvidia/nv-reg.h
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault0x3;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' \
+		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "5" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3333;PowerMizerDefault0x3;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' kernel/nvidia/nv-reg.h
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3333;PowerMizerDefault0x3;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' \
+		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "6" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x1"/' kernel/nvidia/nv-reg.h
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x1"/' \
+		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "7" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322"/' kernel/nvidia/nv-reg.h
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322"/' \
+		    kernel/nvidia/nv-reg.h
         else 
-            echo "An incorrect PowerMizer scheme has been selected."
+            echo "You have selected the wrong powermizer scheme, please reread the option description in PKGBUILD."
         fi
     fi
 
     if [ ! -z $_override_max_perf ] && [ -z $_powermizer_scheme ]; then
-        echo "You have chosen a Override Max Perf level: $_override_max_perf"
+        echo "You have selected the forced performance level: $_override_max_perf"
+        echo "If you don't like it in time you can change it with the Xorg "OverrideMaxPerf" option (in the bit value)"
+        echo "or rebuild it with the new value."
         if [ "$_override_max_perf" = "1" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x1"/' kernel/nvidia/nv-reg.h
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x1"/' \
+		    kernel/nvidia/nv-reg.h
         elif [ "$_override_max_perf" = "2" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x2"/' kernel/nvidia/nv-reg.h
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x2"/' \
+		    kernel/nvidia/nv-reg.h
         elif [ "$_override_max_perf" = "3" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x3"/' kernel/nvidia/nv-reg.h
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x3"/' \
+		    kernel/nvidia/nv-reg.h
         else
-            echo "An incorrect Override Max Perf level has been selected."
+            echo "You selected the wrong value for the performance level forcing. Please reread the option description in PKGBUILD."
         fi
     fi
 }
 
 package_nvidia-dkms-performance() {
     pkgdesc='NVIDIA driver sources for linux with some optimizations'
+    arch=('x86_64' 'aarch64')
     depends=('dkms' "nvidia-utils-performance=${pkgver}" 'libglvnd')
     provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" 
               "nvidia-dkms-performance=${pkgver}" 'NVIDIA-MODULE')
@@ -215,7 +244,12 @@ package_nvidia-dkms-performance() {
 
 package_nvidia-settings-performance() {
     pkgdesc='Tool for configuring the NVIDIA graphics driver'
-    depends=("nvidia-utils-performance>=${pkgver}" 'gtk3')
+    arch=('x86_64' 'aarch64')
+    if [ $CARCH != 'aarch64' ]; then
+        depends=("nvidia-utils-performance>=${pkgver}" 'gtk3')
+    else
+        depends=("nvidia-utils-performance>=${pkgver}" 'gtk2')
+    fi
     provides=("nvidia-settings=${pkgver}" "nvidia-settings-performance=${pkgver}")
     conflicts=('nvidia-settings')
     cd "${_pkg}"
@@ -225,8 +259,12 @@ package_nvidia-settings-performance() {
     install -D -m644 nvidia-settings.png -t "${pkgdir}/usr/share/pixmaps"
     install -D -m644 nvidia-settings.desktop -t "${pkgdir}/usr/share/applications"
 
-    # GTK 3 interface. GTK 2 has been removed and will not be supported.
-    install -D -m755 "libnvidia-gtk3.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    if [ $CARCH != 'aarch64' ]; then
+        # GTK 3 interface. GTK 2 has been removed and will not be supported.
+        install -D -m755 "libnvidia-gtk3.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    else
+        install -D -m755 "libnvidia-gtk2.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    fi
     
     # LICENSE
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -234,6 +272,7 @@ package_nvidia-settings-performance() {
 
 package_opencl-nvidia-performance() {
     pkgdesc='OpenCL implemention for NVIDIA'
+    arch=('x86_64' 'aarch64')
     depends=('zlib' "nvidia-utils-performance>=${pkgver}")
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     provides=("opencl-nvidia=${pkgver}" 'opencl-driver')
@@ -242,7 +281,10 @@ package_opencl-nvidia-performance() {
     
     # OpenCL
     install -D -m644 nvidia.icd "${pkgdir}/etc/OpenCL/vendors/nvidia.icd"
-    install -D -m755 "libnvidia-compiler.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    # The NVIDIA driver for ARM does not support some libraries.
+    if [ $CARCH != 'aarch64' ]; then
+        install -D -m755 "libnvidia-compiler.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    fi
     install -D -m755 "libnvidia-opencl.so.${pkgver}"   -t "${pkgdir}/usr/lib"
     
     create_links
@@ -253,10 +295,12 @@ package_opencl-nvidia-performance() {
 
 package_nvidia-utils-performance() {
     pkgdesc='NVIDIA drivers utilities and libraries'
+    arch=('x86_64' 'aarch64')
     depends=('xorg-server' 'libglvnd')
     optdepends=('nvidia-settings-performance: configuration tool'
                 'xorg-server-devel: for nvidia-xconfig'
                 'egl-wayland: for Wayland support'
+		'prime-run: abbreviation for environment variables'
                 'opencl-nvidia-performance: for OpenCL support')
     provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' "nvidia-libgl=${pkgver}"
               "nvidia-libgl-performance=${pkgver}")
@@ -268,8 +312,10 @@ package_nvidia-utils-performance() {
     # X driver
     install -D -m755 nvidia_drv.so -t "${pkgdir}/usr/lib/xorg/modules/drivers"
     
-    # firmware
-    install -D -m644 firmware/gsp.bin -t "${pkgdir}/usr/lib/firmware/nvidia/${pkgver}"
+    if [ $CARCH != 'aarch64' ]; then
+        # firmware
+        install -D -m644 firmware/gsp.bin -t "${pkgdir}/usr/lib/firmware/nvidia/${pkgver}"
+    fi
     
     # GLX extension module for X
     install -D -m755 "libglxserver_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/nvidia/xorg"
@@ -291,8 +337,10 @@ package_nvidia-utils-performance() {
     install -D -m755 "libnvidia-glsi.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # misc
-    install -D -m755 "libnvidia-ifr.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    install -D -m755 "libnvidia-fbc.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    if [ $CARCH != 'aarch64' ]; then
+        install -D -m755 "libnvidia-ifr.so.${pkgver}" -t "${pkgdir}/usr/lib"
+        install -D -m755 "libnvidia-fbc.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    fi
     install -D -m755 "libnvidia-encode.so.${pkgver}" -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-cfg.so.${pkgver}" -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-ml.so.${pkgver}" -t "${pkgdir}/usr/lib"
@@ -324,15 +372,18 @@ package_nvidia-utils-performance() {
     # Optical flow
     install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
-    # NGX
-    install -D -m755 "libnvidia-ngx.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    if [ $CARCH != 'aarch64' ]; then
+        # NGX
+        install -D -m755 "libnvidia-ngx.so.${pkgver}" -t "${pkgdir}/usr/lib"
+        install -D -m755 nvidia-ngx-updater -t "${pkgdir}/usr/bin"
 
-    # wine nvngx lib
-    install -D -m755 "_nvngx.dll" -t "${pkgdir}/usr/lib/nvidia/wine"
-    install -D -m755 "nvngx.dll" -t "${pkgdir}/usr/lib/nvidia/wine"
+        # wine nvngx lib
+        install -D -m755 "_nvngx.dll" -t "${pkgdir}/usr/lib/nvidia/wine"
+        install -D -m755 "nvngx.dll" -t "${pkgdir}/usr/lib/nvidia/wine"
+    fi
 
-    # nvvm
-    install -D -m755 "libnvidia-nvvm.so.4.0.0" -t "${pkgdir}/usr/lib"
+    # NVVM Compiler (JIT link-time-optimization for CUDA)
+    install -D -m755 libnvidia-nvvm.so.*.*.* -t "${pkgdir}/usr/lib"
     
     # DEBUG
     install -D -m755 nvidia-debugdump -t "${pkgdir}/usr/bin"
@@ -384,12 +435,16 @@ package_nvidia-utils-performance() {
     install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
     
     install -D -m644 "${srcdir}/nvidia-utils.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+
+    # udev rules for node presence and runtime PM
+    # Fixes https://github.com/HansKristian-Work/vkd3d-proton/issues/711
+    install -D -m644 "${srcdir}"/60-nvidia.rules "${pkgdir}/usr/lib/udev/rules.d/60-nvidia.rules"
     
     create_links
 }
 
 package_lib32-opencl-nvidia-performance() {
-    pkgdesc='OpenCL implemention for NVIDIA (Multilib)'
+    pkgdesc='OpenCL implemention for NVIDIA (32 bit)'
     depends=('lib32-zlib' 'lib32-gcc-libs' "lib32-nvidia-utils-performance>=${pkgver}")
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     provides=("lib32-opencl-nvidia=${pkgver}" 'lib32-opencl-driver')
@@ -407,7 +462,7 @@ package_lib32-opencl-nvidia-performance() {
 }
 
 package_lib32-nvidia-utils-performance() {
-    pkgdesc='NVIDIA drivers utilities and libraries'
+    pkgdesc='NVIDIA drivers utilities and libraries (32 bit)'
     depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' "nvidia-utils-performance>=${pkgver}")
     optdepends=('lib32-opencl-nvidia-performance: for OpenCL support')
     provides=("lib32-nvidia-utils=${pkgver}" 'lib32-vulkan-driver' 'lib32-opengl-driver'
