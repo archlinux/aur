@@ -17,9 +17,6 @@ _futex2=y
 #enable winesync
 _winesync=y
 
-### Set performance governor as default
-_per_gov=y
-
 ### Running with a 2000 HZ, 1000HZ, 750Hz or  500HZ tick rate
 _2k_HZ_ticks=
 _1k_HZ_ticks=
@@ -33,7 +30,7 @@ _mq_deadline_disable=y
 _kyber_disable=y
 
 ### Enable protect file mappings under memory pressure
-_mm_protect=y
+#_mm_protect=y
 _lru_enable=y
 
 ### Enable Linux Random Number Generator
@@ -85,7 +82,7 @@ pkgbase=linux-cacule-rdb
 pkgname=('linux-cacule-rdb' 'linux-cacule-rdb-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.9
-pkgrel=2
+pkgrel=3
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patches'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -105,9 +102,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
 #        "${_patchsource}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/arch-patches-v9/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14-full.patch"
-#        "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/amd/0006-amd-cppc.patch"
-#        "${_patchsource}/0001-Allow-polling-rate-to-be-set-for-all-usb-devices.patch"
         "${_patchsource}/misc/zen-tweaks-cacule.patch"
         "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${_patchsource}/ll-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
@@ -117,14 +112,14 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
-        "${_patchsource}/btrfs-patches-v4/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v5/0001-btrfs-patches.patch"
+        "${_patchsource}/hwmon-patches/0001-hwmon-patches.patch"
         "${_patchsource}/fixes-miscellaneous-v5/0001-fixes-miscellaneous.patch"
         "${_patchsource}/futex-zen-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
+        "${_patchsource}/futex2-zen-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
         "${_patchsource}/lru-zen-patches-v3/0001-lru-zen-patches.patch"
-#        "${_patchsource}/le9-patches-v4/0001-mm-vmscan-add-sysctl-knobs-for-protecting-the-workin.patch"
-#        "${_patchsource}/misc/le9fa-5.14.patch"
         "${_patchsource}/pf-patches-v7/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
         "${_patchsource}/zen-patches-v3/0001-zen-patches.patch"
@@ -259,17 +254,6 @@ prepare() {
               echo "Enable winesync support"
               scripts/config --module CONFIG_WINESYNC
             fi
-        ### Set performance governor
-            if [ -n "$_per_gov" ]; then
-              echo "Setting performance governor..."
-              scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
-              scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
-              echo "Disabling uneeded governors..."
-              scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
-              scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
-              scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
-              scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
-            fi
 
             ### Disable MQ-Deadline I/O scheduler
         	   if [ -n "$_mq_deadline_disable" ]; then
@@ -284,15 +268,15 @@ prepare() {
         	   fi
 
             ### Enable protect file mappings under memory pressure
-            if [ -n "$_mm_protect" ]; then
-              echo "Enabling protect file mappings under memory pressure..."
-              scripts/config --enable CONFIG_UNEVICTABLE_FILE
-              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-              scripts/config --enable CONFIG_UNEVICTABLE_ANON
-              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
-              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
-            fi
+#            if [ -n "$_mm_protect" ]; then
+#              echo "Enabling protect file mappings under memory pressure..."
+#              scripts/config --enable CONFIG_UNEVICTABLE_FILE
+#              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+#              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+#              scripts/config --enable CONFIG_UNEVICTABLE_ANON
+#              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
+#              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
+#            fi
 
             ### Enable multigenerational LRU
             if [ -n "$_lru_enable" ]; then
@@ -358,45 +342,6 @@ prepare() {
           		scripts/config --disable CONFIG_LRNG_TESTING_MENU
           		scripts/config --disable CONFIG_LRNG_SELFTEST
           	fi
-
-              echo "Enable Anbox"
-              scripts/config --module  CONFIG_ASHMEM
-              scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
-              scripts/config --enable  CONFIG_ANDROID
-              scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
-              scripts/config --enable  CONFIG_ANDROID_BINDERFS
-              scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
-              echo "Disabling TCP_CONG_CUBIC..."
-              scripts/config --module CONFIG_TCP_CONG_CUBIC
-              scripts/config --disable CONFIG_DEFAULT_CUBIC
-              echo "Enabling TCP_CONG_BBR2..."
-              scripts/config --enable CONFIG_TCP_CONG_BBR2
-              scripts/config --enable CONFIG_DEFAULT_BBR2
-              scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
-              echo "Enable VHBA-Module"
-              scripts/config --module CONFIG_VHBA
-              ### Enabling ZSTD COMPRESSION ##
-              echo "Set module compression to ZSTD"
-              scripts/config --enable CONFIG_MODULE_COMPRESS
-              scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
-              scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-              scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-              scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
-              echo "Enabling KBUILD_CFLAGS -O3..."
-              scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-              scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-              echo "Enable NTFS3"
-              scripts/config --module CONFIG_NTFS_FS
-              scripts/config --enable CONFIG_NTFS_RW
-              scripts/config --enable CONFIG_NTFS_DEBUG
-              scripts/config --module CONFIG_NTFS3_FS
-              scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
-              scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
-              scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-              ###   miscellaneous   ###
-              scripts/config --enable CONFIG_ZEN_INTERACTIVE
-              echo "Enable AMD PSTATE"
-              scripts/config --enable CONFIG_x86_AMD_PSTATE
               echo "Enable LLVM LTO"
               if [ -n "$_use_llvm_lto" ]; then
               scripts/config --disable CONFIG_LTO_NONE
@@ -569,7 +514,7 @@ package_linux-cacule-rdb-headers() {
 }
 
 md5sums=('9f4fe4d784f3c5dd34e9251f83202eba'
-         'e982364d1abb68de954be64c596f435c'
+         '61f83d59085cf5ad6628ae94dc8204ef'
          '8542cc6a9b34330f0cb82bdfca0a106d'
          '024a0126cfcd18e000a2241f35c4d69e'
          '430972ae1e936f99d8dc2a1f4fdaf774'
@@ -580,9 +525,11 @@ md5sums=('9f4fe4d784f3c5dd34e9251f83202eba'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
-         'da72ef09deade4f800510e470eaf2f77'
+         '2c4d1d4e79d228af39f84ed4caea2f09'
+         'bad682a72d2549f409caea361fb0456f'
          'c5a1e8c50dd049b2f1b44d43d6754235'
          '0849b25513dc47e3defa00f26f60eedb'
+         '2891eb036469d04995d9b21a5e389d8a'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '366c90b64f9582c0733b8fb607a07594'
          'd24fd0f81fbeed243b1b71fde7659548'
