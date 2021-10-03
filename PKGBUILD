@@ -1,4 +1,4 @@
-# Maintainer: Jan Pacner <dumblob@gmail.com>
+# Maintainer: dumblob@gmail.com
 
 _basename=mygtkmenui
 pkgname=${_basename}-git
@@ -12,6 +12,7 @@ source=("$_basename::git+https://github.com/dumblob/mygtkmenui")
 sha256sums=('SKIP')
 depends=('gtk3')
 #depends=('gtk2>=2.4')
+makedepends=( 'git' )
 
 build() {
   cd "$_basename"
