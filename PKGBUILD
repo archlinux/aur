@@ -1,7 +1,7 @@
 # Maintainer: Egor Tensin <Egor.Tensin@gmail.com>
 pkgname=linux-status
-pkgver=1.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Simple Linux status web page'
 arch=(any)
 url='https://github.com/egor-tensin/linux-status'
