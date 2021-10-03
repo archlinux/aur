@@ -1,6 +1,6 @@
 pkgbase = worm-git
 	pkgdesc = A floating, tag-based window manager written in Rust
-	pkgver = 0.1.0.10.g7146eca
+	pkgver = 0.1.0.23.g1e61b62
 	pkgrel = 1
 	url = https://github.com/codic12/worm
 	arch = x86_64
