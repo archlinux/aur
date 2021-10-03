@@ -1,7 +1,7 @@
 # Maintainer: davedatum <ask at davedatum dot com>
 
 pkgname=rats-search-git
-pkgver=1.4.2.r0.gdb7e27a
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client."
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("git" "npm" "imagemagick")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 install=${pkgname}.install
-source=("${pkgname}::git+$url.git#tag=v1.4.2"
+source=("${pkgname}::git+$url.git#tag=v1.8.1"
 		"${pkgname}.sh"
 		"${pkgname}.desktop"
 		"${pkgname}.install")
