@@ -1,13 +1,12 @@
 pkgbase = scsiadd
 	pkgdesc = Command-line tool for hot add and hot remove SCSI devices from your Linux
 	pkgver = 1.97
-	pkgrel = 3
+	pkgrel = 4
 	url = http://llg.cubic.org/tools/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = http://llg.cubic.org/tools/scsiadd-1.97.tar.gz
+	source = https://llg.cubic.org/tools/scsiadd-1.97.tar.gz
 	md5sums = 15d3a73411540a40cb1f6d5a97749991
 
 pkgname = scsiadd
-
