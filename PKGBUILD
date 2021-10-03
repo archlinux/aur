@@ -2,7 +2,7 @@
 
 _pkgname=cwtch-ui
 pkgname=cwtch
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('cwtch-bin' 'cwtch-git')
 depends=('libcwtch-go')
 makedepends=('flutter-dev' 'ninja')
 source=("${_pkgname}-v${pkgver}.tar.gz::https://git.openprivacy.ca/cwtch.im/cwtch-ui/archive/v${pkgver}.tar.gz")
-sha512sums=('f5116a14bc66bf12c1b8887bcfc86ea0f7f7a27778d2f91e326ab2846a5fb27905f2d219e55ac3a8e6aa3bd5c146da5ff87fea35d4a2257c2a08442e5058b1db')
+sha512sums=('d5bc59ff2595d9eb3b5dfe0fd7c042cce0f968318763991cca149aa0011894f54bee90eacc74060a73bd1a8626ac37c9697971b4921801abc91a7dff903dc491')
 
 build() {
     cd "$srcdir/$_pkgname"
