@@ -16,7 +16,7 @@ pkgbase = fancon
 	depends = grpc
 	depends = boost-libs
 	conflicts = fancon-git
-	source = https://github.com/hbriese/fancon/archive/v0.23.7.tar.gz
-    sha512sums = a4fc9962e8af43bc67681ecb58db2a0372774120e963be477f88a4618773ac46ed24f79dcb2e3ece3119d70711d63a303a166e67a7fa213858fae831081dff56
+	source = https://github.com/hbriese/fancon/archive/refs/tags/0.23.7.tar.gz
+	sha512sums = a4fc9962e8af43bc67681ecb58db2a0372774120e963be477f88a4618773ac46ed24f79dcb2e3ece3119d70711d63a303a166e67a7fa213858fae831081dff56
 
 pkgname = fancon
