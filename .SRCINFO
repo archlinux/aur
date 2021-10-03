@@ -9,7 +9,7 @@ pkgbase = ssldump
 	depends = libnet
 	depends = libpcap
 	depends = openssl
-	source = https://github.com/adulau/ssldump/archive/refs/tags/v1.4.tar.gz
+	source = ssldump-1.4.tar.gz::https://github.com/adulau/ssldump/archive/refs/tags/v1.4.tar.gz
 	sha256sums = bbe22b9a15bd4711e3786a8719b153e284ac05b5dd7ca5df7be302bf00013648
 
 pkgname = ssldump
