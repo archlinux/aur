@@ -2,4 +2,5 @@
 /src/
 /tremulous/
 
-tremulous-git-*.pkg.tar*
+tremulous-*.pkg.tar*
+tremulous-*.zip
