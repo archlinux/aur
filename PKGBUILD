@@ -1,6 +1,6 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail.com>
 pkgname=python-randfacts
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Python module used to generate random facts"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('e61d8b7e468368073064576a9c914ecb0b40ba2b9badf474f040741ff365d12e708e6eb5edfbf02bfd80a96d730c069979032a2e3d59c0502596c176f81f16ca')
+sha512sums=('195e2aa88ff2c93b8cadeeb35c1190994f84622fa7e612194fe95b853a022032550982592dec2141dedde320eb9e19988831aba4c985a74ea23ba008c849dd6e')
 
 build() {
 	cd "$srcdir/${_name}-$pkgver"
