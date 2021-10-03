@@ -1,0 +1,15 @@
+pkgbase = mse-mtg-m15
+	pkgdesc = magic set editor: m15 templates for magic the gathering
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/silverhikari/magic-set-templates-aur
+	arch = any
+	license = freeware
+	depends = zstd
+	depends = svn
+	depends = mse-mtg
+	noextract = mse-mtg-m15
+	source = mse-mtg-m15-2.1.2::svn+https://github.com/silverhikari/magic-set-templates-aur/trunk/mse-mtg-m15/2.1.2/
+	md5sums = SKIP
+
+pkgname = mse-mtg-m15
