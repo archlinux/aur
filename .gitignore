@@ -1,0 +1,5 @@
+/LICENSE
+/pkg/
+/src/
+/trino-cli-bin-*.pkg.tar.zst
+/trino-cli-*-executable.jar
