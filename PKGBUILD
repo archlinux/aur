@@ -2,11 +2,11 @@
 
 _plug=nnedi3_resample
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=13.0983895
-pkgrel=3
+pkgver=19.7d446bf
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url='https://github.com/mawen1250/VapourSynth-script'
+url='https://github.com/AmusementClub/VapourSynth-script'
 license=('GPL')
 depends=('vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-mvsfunc-git'
@@ -15,7 +15,7 @@ depends=('vapoursynth-plugin-fmtconv-git'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/mawen1250/VapourSynth-script.git")
+source=("${_plug}::git+https://github.com/AmusementClub/VapourSynth-script.git")
 sha256sums=('SKIP')
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
