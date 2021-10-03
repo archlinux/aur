@@ -1,59 +1,31 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
-_name=notifiers
-pkgbase='python-notifiers'
-pkgname=('python-notifiers' 'python2-notifiers')
-pkgver=0.7.2
+pkgname=python-notifiers
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Python logging library for easily sending notifications"
 arch=('any')
-url="https://pypi.python.org/pypi/notifiers"
+url='https://github.com/liiight/notifiers'
 license=('MIT')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
-sha256sums=('671a00844ac54317b11b3501bde47fdb1d9be52d37f78abd245aa0f00ebfdf9a')
-
-prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
-
-  # README.MD is not packaged in the 'tar.gz' so strike reading it.
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  sed -i -e '6 {s/^/#/}' -e '7 {s/.*/long_description=""/}' setup.py
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  sed -i -e '6 {s/^/#/}' -e '7 {s/.*/long_description=""/}' setup.py
-}
+depends=('python-click' 'python-jsonschema' 'python-rfc3987' 'python-requests')
+makedepends=('python-setuptools')
+checkdepends=('python-pytest-runner' 'python-retry' 'python-hypothesis')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('eeb410c8b3968785595977c1edbdd5a68205471b1318a578f2b205fbb8794682')
 
 build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-
-  python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
+	cd "notifiers-$pkgver"
+	python setup.py build
 }
 
-package_python2-notifiers() {
-  depends=(
-    'python2'
-    'python2-click'
-    'python2-requests')
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+check() {
+	cd "notifiers-$pkgver"
+	python setup.py pytest
 }
 
-package_python-notifiers() {
-  depends=(
-    'python'
-    'python-click'
-    'python-requests')
-
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+package () {
+	cd "notifiers-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
