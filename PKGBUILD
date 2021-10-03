@@ -1,18 +1,19 @@
+#Maintainer: René Wagner <rwa at clttr dot info>
 #Contributor: smrqdt <smrqdt@posteo.de>
 #Contributor: onny <onny@project-insanity.org>
-#Maintainer: Dominik Heidler <dominik@heidler.eu>
+#Contributor: Dominik Heidler <dominik@heidler.eu>
 
 pkgname=openecardapp
-pkgver=1.4.1
-pkgrel=4
+pkgver=1.4.5
+pkgrel=1
 pkgdesc="An open source alternative of the AusweisApp"
 arch=('any')
 url="https://www.openecard.org"
 license=("GPL3")
 depends=('java-runtime' 'pcsclite')
-source=("https://github.com/ecsec/open-ecard/releases/download/${pkgver}/open-ecard-app_${pkgver}_amd64.deb")
+source=("https://github.com/ecsec/open-ecard/releases/download/${pkgver}/open-ecard-app_${pkgver}-1_amd64.deb")
 install="openecardapp.install"
-sha256sums=('f83833a1242bb1b46e433aacbf3124da4019be74a781cb9c12187dfe77697664')
+sha256sums=('435de73c6497eaea1771b6ae32c7c366c39cbcbe008e929a59f69ae15b119a39')
 
 prepare() {
 	cd "$srcdir"
