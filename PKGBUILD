@@ -1,7 +1,7 @@
-# Maintainer: buckket <felix@buckket.org>
+# Maintainer: Sebastian Zwierzchowski <seba@angrysoft.ovh>
 
 pkgname=zigbee2mqtt
-pkgver=1.21.1
+pkgver=1.21.2
 pkgrel=1
 pkgdesc='A Zigbee to MQTT bridge'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -45,8 +45,7 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
-
-sha256sums=('c1745be4181d7258cd5387e062e62b439c23ce1b65fe85d31c1f178733eaed64'
+sha256sums=('0709ed078132012afe17c0913bd282050c330e86767bbf11af3aebf9685225d4'
             'ba2fe8f428b3db56fdee622b3db0d9265e34275218cfbae9866be2000fde9df4'
             '3a86716e9036e97d885e9b5f37c7f87d9c2872435e4acf9fc4c9157264cf387b'
             '8f0fbe06c8d6e8fdf37feb31f244930025d76785451f9049fd90fe6e23c259f6')
