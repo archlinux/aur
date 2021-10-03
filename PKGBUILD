@@ -1,7 +1,7 @@
 # Maintainer: Takumi <takuoh@tutanota.com>
 pkgname=fzpac-git
 _pkgname=fzpac
-pkgver=r169.475d20d
+pkgver=r190.4f06f47
 pkgrel=1
 pkgdesc="Arch Linux (pacman) package finder with fzf "
 arch=("any")
