@@ -1,0 +1,55 @@
+pkgbase = jdk16-adoptopenjdk
+	pkgdesc = OpenJDK Java 16 development kit (AdoptOpenJDK build)
+	pkgver = 16.0.2.u7
+	pkgrel = 1
+	url = https://adoptopenjdk.net/
+	install = install_jdk16-adoptopenjdk.sh
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = desktop-file-utils
+	depends = libxrender
+	depends = libxtst
+	depends = alsa-lib
+	optdepends = gtk2: for the Gtk+ 2 look and feel
+	optdepends = gtk3: for the Gtk+ 3 look and feel
+	provides = java-runtime-headless=16
+	provides = java-runtime-headless-openjdk=16
+	provides = jre16-openjdk-headless=16.0.2.u7
+	provides = jre-openjdk-headless=16.0.2.u7
+	provides = java-runtime=16
+	provides = java-runtime-openjdk=16
+	provides = jre16-openjdk=16.0.2.u7
+	provides = jre-openjdk=16.0.2.u7
+	provides = java-environment=16
+	provides = java-environment-openjdk=16
+	provides = jdk16-openjdk=16.0.2.u7
+	provides = jdk-openjdk=16.0.2.u7
+	provides = openjdk16-src=16.0.2.u7
+	provides = openjdk-src=16.0.2.u7
+	backup = etc/jdk16-adoptopenjdk/logging.properties
+	backup = etc/jdk16-adoptopenjdk/management/jmxremote.access
+	backup = etc/jdk16-adoptopenjdk/management/jmxremote.password.template
+	backup = etc/jdk16-adoptopenjdk/management/management.properties
+	backup = etc/jdk16-adoptopenjdk/net.properties
+	backup = etc/jdk16-adoptopenjdk/sdp/sdp.conf.template
+	backup = etc/jdk16-adoptopenjdk/security/java.policy
+	backup = etc/jdk16-adoptopenjdk/security/java.security
+	backup = etc/jdk16-adoptopenjdk/security/policy/limited/default_local.policy
+	backup = etc/jdk16-adoptopenjdk/security/policy/limited/default_US_export.policy
+	backup = etc/jdk16-adoptopenjdk/security/policy/limited/exempt_local.policy
+	backup = etc/jdk16-adoptopenjdk/security/policy/README.txt
+	backup = etc/jdk16-adoptopenjdk/security/policy/unlimited/default_local.policy
+	backup = etc/jdk16-adoptopenjdk/security/policy/unlimited/default_US_export.policy
+	backup = etc/jdk16-adoptopenjdk/sound.properties
+	source = https://github.com/adoptium/temurin16-binaries/releases/download/jdk-16.0.2%2B7/OpenJDK16U-jdk_x64_linux_hotspot_16.0.2_7.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = 323d6d7474a359a28eff7ddd0df8e65bd61554a8ed12ef42fd9365349e573c2c
+	sha256sums = e931a0070e4a69dd4b37789c28057c1b956e9830fbedc0efe38aa9988a02b444
+	sha256sums = bb86dc8ef9ad1bac2045b575e84fb6696d70104dd610d8a5507b068d1f96cc58
+	sha256sums = 31122fb2dc414968d7cea452e5abc90c32813cce8db2f83023d19fe04b40f6d5
+
+pkgname = jdk16-adoptopenjdk

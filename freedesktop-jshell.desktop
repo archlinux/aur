@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=AdoptOpenJDK Java 16 Shell
+Comment=AdoptOpenJDK Java 16 Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/java-16-adoptopenjdk/bin/jshell
+Terminal=true
+Type=Application
+Categories=Application;System;
