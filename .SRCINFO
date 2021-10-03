@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-assrender-git
+	pkgdesc = Plugin for Vapoursynth: assrender (GIT version)
+	pkgver = 0.36.1.ga9090c7
+	pkgrel = 1
+	url = https://github.com/AmusementClub/assrender.git
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = vapoursynth
+	depends = libass
+	provides = vapoursynth-plugin-assrender
+	conflicts = vapoursynth-plugin-assrender
+	source = assrender::git+https://github.com/AmusementClub/assrender.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-assrender-git
