@@ -2,8 +2,8 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-bin
-pkgver=21.0905a
-gamefilesver=18.0328
+pkgver=21.0930a
+_gamefilesver=18.0328
 pkgrel=1
 pkgdesc="Rewrite of Re-Volt, popular R/C car racing game from 1999."
 url='https://rvgl.re-volt.io'
@@ -19,7 +19,7 @@ optdepends=('rvgl-dcpack: dreamcast content pack'
             'fluidsynth: for SoundFont 2 support')
 makedepends=('git')
 groups=('rvgl-basic' 'rvgl-original' 'rvgl-community')
-source=("rvgl_game_files"::git+https://gitlab.com/re-volt/game_files.git#tag=${gamefilesver}
+source=("rvgl_game_files"::git+https://gitlab.com/re-volt/game_files.git#tag=${_gamefilesver}
         "rvgl_assets"::git+https://gitlab.com/re-volt/rvgl-assets.git#tag=${pkgver}
         "rvgl_platform"::git+https://gitlab.com/re-volt/rvgl-platform.git#tag=${pkgver}
         "RVGL.desktop")
