@@ -1,13 +1,13 @@
 # Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=linode-cli-git
-pkgver=5.5.0.r0.b212eef
-pkgrel=2
+pkgver=5.10.0.r0.abda241
+pkgrel=1
 pkgdesc="The Linode Command Line Interface (development version)"
 arch=('any')
 url="https://github.com/linode/linode-cli"
 license=('BSD')
-depends=('python-colorclass' 'python-terminaltables' 'python-requests' 'python-yaml')
+depends=('python-terminaltables' 'python-requests' 'python-yaml')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-boto: for obj plugin')
 provides=(${pkgname%-git})
@@ -32,7 +32,7 @@ build() {
 package() {
 	cd "${pkgname%-git}"
 	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-	install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm755 "${pkgdir}/etc/bash_completion.d/linode-cli.sh" "${pkgdir}/usr/share/bash-completion/completions/linode-cli"
+	install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -vDm755 "${pkgdir}/etc/bash_completion.d/linode-cli.sh" "${pkgdir}/usr/share/bash-completion/completions/linode-cli"
 	rm -rv "${pkgdir}/etc/"
 }
