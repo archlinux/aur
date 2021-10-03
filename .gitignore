@@ -1,3 +1,5 @@
 /pkg/
 /src/
 /interception-k2k-git/
+
+interception-k2k-git*.pkg.tar*
