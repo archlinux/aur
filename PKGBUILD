@@ -22,6 +22,7 @@ _kyber_disable=y
 ### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
 _2k_HZ_ticks=
 _1k_HZ_ticks=y
+_750_HZ_ticks=
 _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
@@ -48,20 +49,20 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=61
+_minor=70
 _srcname=linux-${_major}
 pkgbase=linux-cacule-lts
 pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux-CacULE Kernel LTS 5.10 by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
-url="https://github.com/hamadmarri/cacule-cpu-scheduler"
+url="https://github.com/ptr1337/linux-cacule"
 license=('GPL2')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 options=('!strip')
-_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.10"
-_caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE"
+_patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.10"
+_caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE"
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
@@ -71,17 +72,20 @@ source=(
   "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
   "${_patchsource}/futex-trunk-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-trunk-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/zen-patches/0001-zen-patches.patch"
+#  "${_patchsource}/zen-patches/0001-zen-patches.patch"
+  "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+  "${_patchsource}/ll-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
+  "${_patchsource}/ll-patches/0004-mm-set-8-megabytes-for-address_space-level-file-read.patch"
   "${_patchsource}/lqx-patches-v4/0001-lqx-patches.patch"
- # "${_patchsource}/fixes-miscellaneous-v11/0001-fixes-miscellaneous.patch"
+#  "${_patchsource}/fixes-miscellaneous-v11/0001-fixes-miscellaneous.patch"
   "${_patchsource}/bbr2-patches-v3/0001-bbr2-5.10-introduce-BBRv2.patch"
   "${_patchsource}/android-patches/0001-android-patches.patch"
   "${_patchsource}/pf-patches-v11/0001-pf-patches.patch"
   "${_patchsource}/le9db_patches/le9db1-5.10.patch"
-  "${_patchsource}/ntfs3-patches-v7/0001-ntfs3-patches.patch"
+#  "${_patchsource}/ntfs3-patches-v7/0001-ntfs3-patches.patch"
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
-  "${_patchsource}/ksm-patches/0001-ksm-patches.patch"
-  "${_patchsource}/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch"
+#  "${_patchsource}/ksm-patches/0001-ksm-patches.patch"
+#  "${_patchsource}/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -133,6 +137,14 @@ prepare() {
           scripts/config --enable CONFIG_HZ_1000
           scripts/config --set-val CONFIG_HZ 1000
   	     fi
+
+         ### Optionally set tickrate to 500HZ
+           if [ -n "$_750_HZ_ticks" ]; then
+             echo "Setting tick rate to 500HZ..."
+             scripts/config --disable CONFIG_HZ_300
+             scripts/config --enable CONFIG_HZ_750
+             scripts/config --set-val CONFIG_HZ 750
+           fi
 
       ### Optionally set tickrate to 500HZ
         if [ -n "$_500_HZ_ticks" ]; then
@@ -403,20 +415,19 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('753adc474bf799d569dec4f165ed92c3'
-         '68ad57545f86a06590332537362dd7f3'
-         '7d8c2aaaed142867c014f44b439f8694'
+         '6b79fd5a7ad2368d4cb303b632517b63'
+         'f0040e2cde2c56ea1d34c5514d5046a5'
          '74798df2eba8d58326c73606b03786b7'
          '41f27359b0c2f1ffc810b4a7667d98b4'
          '1ddeca3dfe8d2dfbf722a6e19ab500cd'
          '6c1ebf661101e7cecb82b93ea09725ce'
          '0fabe82284ef611e30d9d4e1e5529215'
-         '33d41d27d87a9cd6f4c93052d5b9bff3'
+         'd37129cccaeda16862b57841a96b853f'
+         'f30e9fbc725c211b802e3f9fc1ab14a8'
+         '05b715c84f562cb65bf90e7b6c0397a8'
          'db72f9fe09be3f11db7e1e268a5ac3eb'
          '45704a71e1cb971e337700c52da739f0'
          'f2ffcac0e7673f862c98c6c258ddd3ca'
          'f912dd337230972d950afd420bbc2c69'
          '8ffe3243a9df5928d0e03e1aa1b60d9a'
-         '3c3909f11d89c35d4109c5e9f88aa5e5'
-         '0575ffbb96ab5e5b1b2e378667e276ca'
-         '3ad540c659e5653032cf33beca21ab0b'
-         '54aaa8d59dafa118d82652f31bdba605')
+         '0575ffbb96ab5e5b1b2e378667e276ca')
