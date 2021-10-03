@@ -15,7 +15,6 @@ makedepends=('git'
              'cmake'
              'avisynthplus'
              'vapoursynth'
-             'tbb'
              'cuda'
              )
 source=("${_plug}::git+https://github.com/AmusementClub/VapourSynth-EEDI2CUDA.git"
@@ -42,7 +41,9 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_AVISYNTHPLUS_BINDING=OFF \
-    -DCMAKE_CUDA_FLAGS_RELEASE="-O2 -DNDEBUG -I${srcdir}/sync/include"
+    -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+    -DBoost_INCLUDE_DIRS="${srcdir}/sync/include" \
+    -DCMAKE_CUDA_FLAGS_RELEASE="-O2 -DNDEBUG $(pkg-config --cflags vapoursynth)"
 
   make
 
@@ -52,7 +53,9 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_VAPOURSYNTH_API3_BINDING=OFF \
     -DENABLE_VAPOURSYNTH_API4_BINDING=OFF \
-    -DCMAKE_CUDA_FLAGS_RELEASE="-O2 -DNDEBUG -I${srcdir}/sync/include"
+    -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+    -DBoost_INCLUDE_DIRS="${srcdir}/sync/include" \
+    -DCMAKE_CUDA_FLAGS_RELEASE="-O2 -DNDEBUG $(pkg-config --cflags avisynth)"
 
   make
 }

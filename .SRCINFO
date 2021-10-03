@@ -9,7 +9,6 @@ pkgbase = foosynth-plugin-eedi2cuda-git
 	makedepends = cmake
 	makedepends = avisynthplus
 	makedepends = vapoursynth
-	makedepends = tbb
 	makedepends = cuda
 	source = eedi2cuda::git+https://github.com/AmusementClub/VapourSynth-EEDI2CUDA.git
 	source = git+https://github.com/boostorg/sync.git
