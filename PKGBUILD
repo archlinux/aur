@@ -2,7 +2,7 @@
 
 _plug=vcm
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2021.09.11.10.g9d31a83
+pkgver=2021.09.11.12.g8144cd8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GITversion)"
 arch=('x86_64')
@@ -52,8 +52,6 @@ prepare(){
       -e '/VSHelper/c#include <VSHelper.h>' \
       -i *.cpp \
       -i *.h
-
-      sed '87itypedef int errno_t;' -i FQCorrelation.cpp
 
   sed 's|#||g' -i meson.build
 }

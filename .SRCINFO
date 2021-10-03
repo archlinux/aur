@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vcm-git
 	pkgdesc = Plugin for Vapoursynth: vcm (GITversion)
-	pkgver = 2021.09.11.10.g9d31a83
+	pkgver = 2021.09.11.12.g8144cd8
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=172594
 	arch = x86_64
