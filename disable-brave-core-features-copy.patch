@@ -1,0 +1,1110 @@
+diff --git a/browser/brave_wallet/BUILD.gn b/browser/brave_wallet/BUILD.gn
+index 65aaaf0819..e374bac82a 100644
+--- a/browser/brave_wallet/BUILD.gn
++++ b/browser/brave_wallet/BUILD.gn
+@@ -1,7 +1,7 @@
+ import("//brave/components/brave_wallet/common/buildflags/buildflags.gni")
+ import("//extensions/buildflags/buildflags.gni")
+
+-assert(brave_wallet_enabled)
++#assert(brave_wallet_enabled)
+
+ source_set("brave_wallet") {
+   check_includes = false
+diff --git a/browser/ethereum_remote_client/BUILD.gn b/browser/ethereum_remote_client/BUILD.gn
+index 5684e60a00..218ec12eba 100644
+--- a/browser/ethereum_remote_client/BUILD.gn
++++ b/browser/ethereum_remote_client/BUILD.gn
+@@ -6,9 +6,9 @@ import("//build/config/features.gni")
+ import("//extensions/buildflags/buildflags.gni")
+
+ # ethereum_remote_client_enabled requires brave_wallet_enabled
+-assert(brave_wallet_enabled)
++#assert(brave_wallet_enabled)
+
+-assert(ethereum_remote_client_enabled)
++#assert(ethereum_remote_client_enabled)
+
+ source_set("ethereum_remote_client") {
+   configs += [ ":infura_config" ]
+diff --git a/browser/ethereum_remote_client/buildflags/buildflags.gni b/browser/ethereum_remote_client/buildflags/buildflags.gni
+index 253a07ec0a..a85a97d62f 100644
+--- a/browser/ethereum_remote_client/buildflags/buildflags.gni
++++ b/browser/ethereum_remote_client/buildflags/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  ethereum_remote_client_enabled = !is_ios && !is_android
++  ethereum_remote_client_enabled = false
+ }
+diff --git a/browser/extensions/brave_component_loader.cc b/browser/extensions/brave_component_loader.cc
+index 0178a8efee..e13fd10e46 100644
+--- a/browser/extensions/brave_component_loader.cc
++++ b/browser/extensions/brave_component_loader.cc
+@@ -9,16 +9,19 @@
+
+ #include "base/bind.h"
+ #include "base/command_line.h"
+-#include "bat/ads/pref_names.h"
+ #include "brave/browser/component_updater/brave_component_installer.h"
+ #include "brave/common/brave_switches.h"
+ #include "brave/common/pref_names.h"
+-#include "brave/components/brave_ads/common/pref_names.h"
+ #include "brave/components/brave_component_updater/browser/brave_on_demand_updater.h"
+ #include "brave/components/brave_extension/grit/brave_extension.h"
+ #include "brave/components/brave_rewards/browser/buildflags/buildflags.h"
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
++#error "\"brave_rewards\" is enabled"
++#include "bat/ads/pref_names.h"
++#include "brave/components/brave_ads/common/pref_names.h"
+ #include "brave/components/brave_rewards/common/pref_names.h"
+ #include "brave/components/brave_rewards/resources/extension/grit/brave_rewards_extension_resources.h"
++#endif
+ #include "brave/components/brave_webtorrent/grit/brave_webtorrent_resources.h"
+ #include "chrome/browser/browser_process.h"
+ #include "chrome/browser/extensions/extension_service.h"
+diff --git a/browser/profiles/brave_profile_manager.cc b/browser/profiles/brave_profile_manager.cc
+index 6bfb3a813c..bc849ad0ec 100644
+--- a/browser/profiles/brave_profile_manager.cc
++++ b/browser/profiles/brave_profile_manager.cc
+@@ -11,8 +11,11 @@
+ #include <vector>
+
+ #include "base/metrics/histogram_macros.h"
++#include "brave/components/brave_rewards/browser/buildflags/buildflags.h"
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+ #include "brave/browser/brave_ads/ads_service_factory.h"
+ #include "brave/browser/brave_rewards/rewards_service_factory.h"
++#endif
+ #include "brave/browser/profiles/profile_util.h"
+ #include "brave/common/pref_names.h"
+ #include "brave/components/content_settings/core/browser/brave_content_settings_pref_provider.h"
+@@ -95,8 +98,10 @@ void BraveProfileManager::DoFinalInitForServices(Profile* profile,
+   ProfileManager::DoFinalInitForServices(profile, go_off_the_record);
+   if (!do_final_services_init_)
+     return;
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   brave_ads::AdsServiceFactory::GetForProfile(profile);
+   brave_rewards::RewardsServiceFactory::GetForProfile(profile);
++#endif
+ #if BUILDFLAG(IPFS_ENABLED)
+   ipfs::IpfsServiceFactory::GetForContext(profile);
+ #endif
+diff --git a/browser/ui/views/brave_actions/brave_actions_container.cc b/browser/ui/views/brave_actions/brave_actions_container.cc
+index fe3f853d5a..06af6bc7b1 100644
+--- a/browser/ui/views/brave_actions/brave_actions_container.cc
++++ b/browser/ui/views/brave_actions/brave_actions_container.cc
+@@ -11,17 +11,14 @@
+
+ #include "base/command_line.h"
+ #include "base/one_shot_event.h"
+-#include "brave/browser/brave_rewards/rewards_service_factory.h"
+ #include "brave/browser/extensions/brave_component_loader.h"
+ #include "brave/browser/profiles/profile_util.h"
+ #include "brave/browser/ui/brave_actions/brave_action_view_controller.h"
+ #include "brave/browser/ui/views/brave_actions/brave_action_view.h"
+-#include "brave/browser/ui/views/brave_actions/brave_rewards_action_stub_view.h"
+ #include "brave/browser/ui/views/rounded_separator.h"
+ #include "brave/common/brave_switches.h"
+ #include "brave/common/pref_names.h"
+ #include "brave/components/brave_rewards/browser/buildflags/buildflags.h"
+-#include "brave/components/brave_rewards/common/pref_names.h"
+ #include "chrome/browser/extensions/extension_service.h"
+ #include "chrome/browser/profiles/profile.h"
+ #include "chrome/browser/ui/browser.h"
+@@ -41,6 +38,12 @@
+ #include "ui/views/layout/grid_layout.h"
+ #include "ui/views/view.h"
+
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
++#include "brave/browser/brave_rewards/rewards_service_factory.h"
++#include "brave/browser/ui/views/brave_actions/brave_rewards_action_stub_view.h"
++#include "brave/components/brave_rewards/common/pref_names.h"
++#endif
++
+ class BraveActionsContainer::EmptyExtensionsContainer
+     : public ExtensionsContainer {
+  public:
+@@ -117,8 +120,10 @@ BraveActionsContainer::BraveActionsContainer(Browser* browser, Profile* profile)
+           extensions::ExtensionActionManager::Get(profile)),
+       brave_action_api_(extensions::BraveActionAPI::Get(browser)),
+       empty_extensions_container_(new EmptyExtensionsContainer),
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+       rewards_service_(
+           brave_rewards::RewardsServiceFactory::GetForProfile(profile)),
++#endif
+       weak_ptr_factory_(this) {
+   // Handle when the extension system is ready
+   extension_system_->ready().Post(
+@@ -157,6 +162,7 @@ void BraveActionsContainer::Init() {
+   AddChildViewAt(brave_button_separator_, 0);
+   // Populate actions
+   actions_[brave_extension_id].position_ = 1;
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   actions_[brave_rewards_extension_id].position_ = ACTION_ANY_POSITION;
+
+   // React to Brave Rewards preferences changes.
+@@ -165,6 +171,7 @@ void BraveActionsContainer::Init() {
+       base::BindRepeating(
+           &BraveActionsContainer::OnBraveRewardsPreferencesChanged,
+           base::Unretained(this)));
++#endif
+ }
+
+ bool BraveActionsContainer::IsContainerAction(const std::string& id) const {
+@@ -174,12 +181,15 @@ bool BraveActionsContainer::IsContainerAction(const std::string& id) const {
+ bool BraveActionsContainer::ShouldAddAction(const std::string& id) const {
+   if (!IsContainerAction(id))
+     return false;
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   if (id == brave_rewards_extension_id)
+     return ShouldAddBraveRewardsAction();
++#endif
+   return true;
+ }
+
+ bool BraveActionsContainer::ShouldAddBraveRewardsAction() const {
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   const base::CommandLine& command_line =
+       *base::CommandLine::ForCurrentProcess();
+   if (command_line.HasSwitch(switches::kDisableBraveRewardsExtension)) {
+@@ -192,6 +202,9 @@ bool BraveActionsContainer::ShouldAddBraveRewardsAction() const {
+
+   const PrefService* prefs = browser_->profile()->GetPrefs();
+   return !prefs->GetBoolean(brave_rewards::prefs::kHideButton);
++#else
++  return false;
++#endif
+ }
+
+ void BraveActionsContainer::AddAction(const extensions::Extension* extension) {
+@@ -215,16 +228,19 @@ void BraveActionsContainer::AddAction(const extensions::Extension* extension) {
+     actions_[id].view_ = std::make_unique<BraveActionView>(
+         actions_[id].view_controller_.get(), this);
+     AttachAction(actions_[id]);
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+     // Handle if we are in a continuing pressed state for this extension.
+     if (is_rewards_pressed_ && id == brave_rewards_extension_id) {
+       is_rewards_pressed_ = false;
+       actions_[id].view_controller_->ExecuteAction(
+           true, ToolbarActionViewController::InvocationSource::kToolbarButton);
+     }
++#endif
+   }
+ }
+
+ void BraveActionsContainer::AddActionStubForRewards() {
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   const std::string id = brave_rewards_extension_id;
+   if (!ShouldAddAction(id)) {
+     return;
+@@ -232,7 +248,6 @@ void BraveActionsContainer::AddActionStubForRewards() {
+   if (actions_[id].view_) {
+     return;
+   }
+-#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   actions_[id].view_ = std::make_unique<BraveRewardsActionStubView>(
+       browser_->profile(), this);
+   AttachAction(actions_[id]);
+@@ -443,5 +458,7 @@ void BraveActionsContainer::ChildPreferredSizeChanged(views::View* child) {
+
+ // Brave Rewards preferences change observers callback
+ void BraveActionsContainer::OnBraveRewardsPreferencesChanged() {
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   ShowAction(brave_rewards_extension_id, ShouldAddBraveRewardsAction());
++#endif
+ }
+diff --git a/browser/ui/views/brave_actions/brave_actions_container.h b/browser/ui/views/brave_actions/brave_actions_container.h
+index d2ea59aad8..3aa7f230e7 100644
+--- a/browser/ui/views/brave_actions/brave_actions_container.h
++++ b/browser/ui/views/brave_actions/brave_actions_container.h
+@@ -13,7 +13,6 @@
+ #include "base/scoped_observation.h"
+ #include "brave/browser/extensions/api/brave_action_api.h"
+ #include "brave/components/brave_rewards/browser/buildflags/buildflags.h"
+-#include "brave/components/brave_rewards/browser/rewards_service.h"
+ #include "chrome/browser/extensions/api/extension_action/extension_action_api.h"
+ #include "chrome/browser/ui/browser.h"
+ #include "chrome/browser/ui/toolbar/toolbar_action_view_controller.h"
+@@ -27,6 +26,7 @@
+
+ #if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+ #include "brave/browser/ui/views/brave_actions/brave_rewards_action_stub_view.h"
++#include "brave/components/brave_rewards/browser/rewards_service.h"
+ #endif
+
+ class BraveActionViewController;
+@@ -48,10 +48,10 @@ class BraveActionsContainer : public views::View,
+                               public extensions::BraveActionAPI::Observer,
+                               public extensions::ExtensionActionAPI::Observer,
+                               public extensions::ExtensionRegistryObserver,
+-                              public ToolbarActionView::Delegate,
+ #if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+-                              public BraveRewardsActionStubView::Delegate
++                              public BraveRewardsActionStubView::Delegate,
+ #endif
++                              public ToolbarActionView::Delegate
+                               {
+  public:
+   BraveActionsContainer(Browser* browser, Profile* profile);
+@@ -187,7 +187,9 @@ class BraveActionsContainer : public views::View,
+
+   std::unique_ptr<EmptyExtensionsContainer> empty_extensions_container_;
+
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   brave_rewards::RewardsService* rewards_service_;
++#endif
+
+   base::WeakPtrFactory<BraveActionsContainer> weak_ptr_factory_;
+
+diff --git a/browser/ui/views/frame/brave_browser_view.cc b/browser/ui/views/frame/brave_browser_view.cc
+index 9eb22dfceb..b0b3f1c141 100644
+--- a/browser/ui/views/frame/brave_browser_view.cc
++++ b/browser/ui/views/frame/brave_browser_view.cc
+@@ -268,13 +268,11 @@ speedreader::SpeedreaderBubbleView* BraveBrowserView::ShowSpeedreaderBubble(
+ #endif
+ }
+
+-WalletButton* BraveBrowserView::GetWalletButton() {
+ #if BUILDFLAG(BRAVE_WALLET_ENABLED)
++WalletButton* BraveBrowserView::GetWalletButton() {
+   return static_cast<BraveToolbarView*>(toolbar())->wallet_button();
+-#else
+-  return nullptr;
+-#endif
+ }
++#endif
+
+ views::View* BraveBrowserView::GetWalletButtonAnchorView() {
+ #if BUILDFLAG(BRAVE_WALLET_ENABLED)
+@@ -287,13 +285,17 @@ views::View* BraveBrowserView::GetWalletButtonAnchorView() {
+ }
+
+ void BraveBrowserView::CreateWalletBubble() {
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   DCHECK(GetWalletButton());
+   GetWalletButton()->ShowWalletBubble();
++#endif
+ }
+
+ void BraveBrowserView::CloseWalletBubble() {
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   if (GetWalletButton())
+     GetWalletButton()->CloseWalletBubble();
++#endif
+ }
+
+ void BraveBrowserView::OnTabStripModelChanged(
+diff --git a/browser/ui/views/frame/brave_browser_view.h b/browser/ui/views/frame/brave_browser_view.h
+index 2a04402aa6..7c98542eb7 100644
+--- a/browser/ui/views/frame/brave_browser_view.h
++++ b/browser/ui/views/frame/brave_browser_view.h
+@@ -11,6 +11,7 @@
+
+ #include "brave/browser/ui/tabs/brave_tab_strip_model.h"
+ #include "brave/components/sidebar/buildflags/buildflags.h"
++#include "brave/components/brave_wallet/common/buildflags/buildflags.h"
+ #include "chrome/browser/ui/views/frame/browser_view.h"
+
+ #if BUILDFLAG(ENABLE_SIDEBAR)
+@@ -27,7 +28,9 @@ namespace content {
+ class WebContents;
+ }  // namespace content
+
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+ class WalletButton;
++#endif
+
+ class BraveBrowserView : public BrowserView {
+  public:
+@@ -48,7 +51,9 @@ class BraveBrowserView : public BrowserView {
+       bool is_enabled) override;
+   void CreateWalletBubble();
+   void CloseWalletBubble();
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   WalletButton* GetWalletButton();
++#endif
+   views::View* GetWalletButtonAnchorView();
+   void StartTabCycling() override;
+
+diff --git a/browser/ui/views/toolbar/brave_toolbar_view.cc b/browser/ui/views/toolbar/brave_toolbar_view.cc
+index 2d897e48a2..445ecdfd68 100644
+--- a/browser/ui/views/toolbar/brave_toolbar_view.cc
++++ b/browser/ui/views/toolbar/brave_toolbar_view.cc
+@@ -185,8 +185,10 @@ void BraveToolbarView::OnThemeChanged() {
+
+   if (display_mode_ == DisplayMode::NORMAL && bookmark_)
+     bookmark_->UpdateImageAndText();
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   if (display_mode_ == DisplayMode::NORMAL && wallet_)
+     wallet_->UpdateImageAndText();
++#endif
+ }
+
+ void BraveToolbarView::OnProfileAdded(const base::FilePath& profile_path) {
+@@ -202,8 +204,10 @@ void BraveToolbarView::LoadImages() {
+   ToolbarView::LoadImages();
+   if (bookmark_)
+     bookmark_->UpdateImageAndText();
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   if (wallet_)
+     wallet_->UpdateImageAndText();
++#endif
+ }
+
+ void BraveToolbarView::Update(content::WebContents* tab) {
+diff --git a/browser/ui/views/toolbar/brave_toolbar_view.h b/browser/ui/views/toolbar/brave_toolbar_view.h
+index 16e6f810c5..082d34314a 100644
+--- a/browser/ui/views/toolbar/brave_toolbar_view.h
++++ b/browser/ui/views/toolbar/brave_toolbar_view.h
+@@ -10,9 +10,12 @@
+ #include "chrome/browser/profiles/profile_attributes_storage.h"
+ #include "chrome/browser/ui/views/toolbar/toolbar_view.h"
+ #include "components/prefs/pref_member.h"
++#include "brave/components/brave_wallet/common/buildflags/buildflags.h"
+
+ class BookmarkButton;
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+ class WalletButton;
++#endif
+
+ class BraveToolbarView : public ToolbarView,
+                          public ProfileAttributesStorage::Observer {
+@@ -21,7 +24,9 @@ class BraveToolbarView : public ToolbarView,
+   ~BraveToolbarView() override;
+
+   BookmarkButton* bookmark_button() const { return bookmark_; }
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   WalletButton* wallet_button() const { return wallet_; }
++#endif
+   void Init() override;
+   void Layout() override;
+   void Update(content::WebContents* tab) override;
+@@ -46,7 +51,9 @@ class BraveToolbarView : public ToolbarView,
+   // Tracks the preference to determine whether bookmark editing is allowed.
+   BooleanPrefMember edit_bookmarks_enabled_;
+
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   WalletButton* wallet_ = nullptr;
++#endif
+
+   BooleanPrefMember location_bar_is_wide_;
+   // Whether this toolbar has been initialized.
+diff --git a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
+index 3461e852d8..d397f793c0 100644
+--- a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
++++ b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
+@@ -13,13 +13,18 @@
+ #include "base/memory/weak_ptr.h"
+ #include "base/metrics/histogram_macros.h"
+ #include "base/values.h"
++#include "brave/components/brave_ads/browser/buildflags/buildflags.h"
++#include "brave/components/p3a/buildflags.h"
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+ #include "brave/browser/brave_ads/ads_service_factory.h"
++#include "brave/components/brave_ads/browser/ads_service.h"
++#include "brave/components/services/bat_ads/public/interfaces/bat_ads.mojom.h"
++#endif
+ #include "brave/browser/ntp_background_images/view_counter_service_factory.h"
+ #include "brave/browser/profiles/profile_util.h"
+ #include "brave/browser/search_engines/search_engine_provider_util.h"
+ #include "brave/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
+ #include "brave/common/pref_names.h"
+-#include "brave/components/brave_ads/browser/ads_service.h"
+ #include "brave/components/brave_perf_predictor/browser/buildflags.h"
+ #include "brave/components/crypto_dot_com/browser/buildflags/buildflags.h"
+ #include "brave/components/ftx/browser/buildflags/buildflags.h"
+@@ -28,7 +33,6 @@
+ #include "brave/components/ntp_background_images/browser/view_counter_service.h"
+ #include "brave/components/ntp_background_images/common/pref_names.h"
+ #include "brave/components/p3a/brave_p3a_utils.h"
+-#include "brave/components/services/bat_ads/public/interfaces/bat_ads.mojom.h"
+ #include "brave/components/weekly_storage/weekly_storage.h"
+ #include "chrome/browser/browser_process.h"
+ #include "chrome/browser/profiles/profile.h"
+@@ -40,7 +44,9 @@
+
+ using ntp_background_images::features::kBraveNTPBrandedWallpaper;
+ using ntp_background_images::prefs::kNewTabPageShowBackgroundImage;
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+ using ntp_background_images::prefs::kNewTabPageShowSponsoredImagesBackgroundImage;  // NOLINT
++#endif
+ using ntp_background_images::prefs::kBrandedWallpaperNotificationDismissed;
+ using ntp_background_images::ViewCounterServiceFactory;
+
+@@ -89,15 +95,19 @@ base::DictionaryValue GetPreferencesDictionary(PrefService* prefs) {
+   base::DictionaryValue pref_data;
+   pref_data.SetBoolean("showBackgroundImage",
+                        prefs->GetBoolean(kNewTabPageShowBackgroundImage));
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   pref_data.SetBoolean(
+       "brandedWallpaperOptIn",
+       prefs->GetBoolean(kNewTabPageShowSponsoredImagesBackgroundImage));
++#endif
+   pref_data.SetBoolean("showClock", prefs->GetBoolean(kNewTabPageShowClock));
+   pref_data.SetString("clockFormat", prefs->GetString(kNewTabPageClockFormat));
+   pref_data.SetBoolean("showStats", prefs->GetBoolean(kNewTabPageShowStats));
+   pref_data.SetBoolean("showToday", prefs->GetBoolean(kNewTabPageShowToday));
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   pref_data.SetBoolean("showRewards",
+                        prefs->GetBoolean(kNewTabPageShowRewards));
++#endif
+   pref_data.SetBoolean(
+       "isBrandedWallpaperNotificationDismissed",
+       prefs->GetBoolean(kBrandedWallpaperNotificationDismissed));
+@@ -140,6 +150,7 @@ base::DictionaryValue GetTorPropertiesDictionary(bool connected,
+ // TODO(petemill): Move p3a to own NTP component so it can
+ // be used by other platforms.
+
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+ enum class NTPCustomizeUsage {
+   kNeverOpened,
+   kOpened,
+@@ -151,22 +162,28 @@ const char kNTPCustomizeUsageStatus[] =
+     "brave.new_tab_page.customize_p3a_usage";
+
+ }  // namespace
++#endif
+
+ // static
+ void BraveNewTabMessageHandler::RegisterLocalStatePrefs(
+     PrefRegistrySimple* local_state) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   local_state->RegisterIntegerPref(kNTPCustomizeUsageStatus, -1);
++#endif
+ }
+
+ void BraveNewTabMessageHandler::RecordInitialP3AValues(
+     PrefService* local_state) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   brave::RecordValueIfGreater<NTPCustomizeUsage>(
+       NTPCustomizeUsage::kNeverOpened, "Brave.NTP.CustomizeUsageStatus",
+       kNTPCustomizeUsageStatus, local_state);
++#endif
+ }
+
+ BraveNewTabMessageHandler* BraveNewTabMessageHandler::Create(
+       content::WebUIDataSource* source, Profile* profile) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   //
+   // Initial Values
+   // Should only contain data that is static
+@@ -186,6 +203,7 @@ BraveNewTabMessageHandler* BraveNewTabMessageHandler::Create(
+       "featureFlagBraveNTPSponsoredImagesWallpaper",
+       base::FeatureList::IsEnabled(kBraveNTPBrandedWallpaper) &&
+       is_ads_supported_locale_);
++#endif
+   // Private Tab info
+   if (IsPrivateNewTab(profile)) {
+     source->AddBoolean(
+@@ -243,6 +261,7 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+       "saveNewTabPagePref",
+       base::BindRepeating(&BraveNewTabMessageHandler::HandleSaveNewTabPagePref,
+                           base::Unretained(this)));
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   web_ui()->RegisterMessageCallback(
+       "registerNewTabPageView",
+       base::BindRepeating(
+@@ -267,14 +286,16 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+       base::BindRepeating(
+           &BraveNewTabMessageHandler::HandleTodayInteractionBegin,
+           base::Unretained(this)));
+-  web_ui()->RegisterMessageCallback(
+-      "todayOnCardVisit",
+-      base::BindRepeating(&BraveNewTabMessageHandler::HandleTodayOnCardVisit,
+-                          base::Unretained(this)));
+   web_ui()->RegisterMessageCallback(
+       "todayOnCardViews",
+       base::BindRepeating(&BraveNewTabMessageHandler::HandleTodayOnCardViews,
+                           base::Unretained(this)));
++#endif
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
++  web_ui()->RegisterMessageCallback(
++      "todayOnCardVisit",
++      base::BindRepeating(&BraveNewTabMessageHandler::HandleTodayOnCardVisit,
++                          base::Unretained(this)));
+   web_ui()->RegisterMessageCallback(
+       "todayOnPromotedCardView",
+       base::BindRepeating(
+@@ -289,11 +310,15 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+       base::BindRepeating(
+           &BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit,
+           base::Unretained(this)));
++#endif
++
++#if BUILDFLAG(BRAVE_ADS_ENABLED) || BUILDFLAG(BRAVE_P3A_ENABLED)
+   web_ui()->RegisterMessageCallback(
+       "todayOnDisplayAdView",
+       base::BindRepeating(
+           &BraveNewTabMessageHandler::HandleTodayOnDisplayAdView,
+           base::Unretained(this)));
++#endif
+ }
+
+ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+@@ -345,10 +370,12 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+       kNewTabPageShowBackgroundImage,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+                           base::Unretained(this)));
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   pref_change_registrar_.Add(
+       kNewTabPageShowSponsoredImagesBackgroundImage,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+                           base::Unretained(this)));
++#endif
+   pref_change_registrar_.Add(
+       kNewTabPageShowClock,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+@@ -365,10 +392,12 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+       kNewTabPageShowToday,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+                           base::Unretained(this)));
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   pref_change_registrar_.Add(
+       kNewTabPageShowRewards,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+                           base::Unretained(this)));
++#endif
+   pref_change_registrar_.Add(
+       kBrandedWallpaperNotificationDismissed,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+@@ -463,9 +492,11 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+     LOG(ERROR) << "Invalid input";
+     return;
+   }
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   brave::RecordValueIfGreater<NTPCustomizeUsage>(
+       NTPCustomizeUsage::kOpenedAndEdited, "Brave.NTP.CustomizeUsageStatus",
+       kNTPCustomizeUsageStatus, g_browser_process->local_state());
++#endif
+   PrefService* prefs = profile_->GetPrefs();
+   // Collect args
+   std::string settingsKeyInput = args->GetList()[0].GetString();
+@@ -493,10 +524,12 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+   const auto settingsValueBool = settingsValue.GetBool();
+   if (settingsKeyInput == "showBackgroundImage") {
+     settingsKey = kNewTabPageShowBackgroundImage;
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   } else if (settingsKeyInput == "brandedWallpaperOptIn") {
+     // TODO(simonhong): I think above |brandedWallpaperOptIn| should be changed
+     // to |sponsoredImagesWallpaperOptIn|.
+     settingsKey = kNewTabPageShowSponsoredImagesBackgroundImage;
++#endif
+   } else if (settingsKeyInput == "showClock") {
+     settingsKey = kNewTabPageShowClock;
+   } else if (settingsKeyInput == "showStats") {
+@@ -505,8 +538,10 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+     settingsKey = kNewTabPageShowToday;
+   } else if (settingsKeyInput == "isBraveTodayOptedIn") {
+     settingsKey = kBraveTodayOptedIn;
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   } else if (settingsKeyInput == "showRewards") {
+     settingsKey = kNewTabPageShowRewards;
++#endif
+   } else if (settingsKeyInput == "isBrandedWallpaperNotificationDismissed") {
+     settingsKey = kBrandedWallpaperNotificationDismissed;
+   } else if (settingsKeyInput == "hideAllWidgets") {
+@@ -531,24 +566,29 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+   }
+   prefs->SetBoolean(settingsKey, settingsValueBool);
+
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   // P3A can only be recorded after profile is updated
+   if (settingsKeyInput == "showBackgroundImage" ||
+       settingsKeyInput == "brandedWallpaperOptIn") {
+     brave::RecordSponsoredImagesEnabledP3A(profile_);
+   }
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleRegisterNewTabPageView(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   AllowJavascript();
+
+   // Decrement original value only if there's actual branded content
+   if (auto* service = ViewCounterServiceFactory::GetForProfile(profile_))
+     service->RegisterPageView();
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleBrandedWallpaperLogoClicked(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   AllowJavascript();
+   if (args->GetSize() != 1) {
+     LOG(ERROR) << "Invalid input";
+@@ -572,10 +612,12 @@ void BraveNewTabMessageHandler::HandleBrandedWallpaperLogoClicked(
+         destination_url ? *destination_url : "",
+         wallpaper_id ? *wallpaper_id : "");
+   }
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleGetBrandedWallpaperData(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   AllowJavascript();
+
+   auto* service = ViewCounterServiceFactory::GetForProfile(profile_);
+@@ -590,18 +632,22 @@ void BraveNewTabMessageHandler::HandleGetBrandedWallpaperData(
+   }
+
+   ResolveJavascriptCallback(args->GetList()[0], std::move(data));
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleCustomizeClicked(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   AllowJavascript();
+   brave::RecordValueIfGreater<NTPCustomizeUsage>(
+       NTPCustomizeUsage::kOpened, "Brave.NTP.CustomizeUsageStatus",
+       kNTPCustomizeUsageStatus, g_browser_process->local_state());
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayInteractionBegin(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   AllowJavascript();
+   // Track if user has ever scrolled to Brave Today.
+   UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.HasEverInteracted", 1, 1);
+@@ -618,10 +664,12 @@ void BraveNewTabMessageHandler::HandleTodayInteractionBegin(
+   int answer = it_count - kSessionCountBuckets;
+   UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklySessionCount", answer,
+                              base::size(kSessionCountBuckets) + 1);
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayOnCardVisit(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   // Argument should be how many cards visited in this session.
+   // We need the front-end to give us this since this class
+   // will be destroyed and re-created when the user navigates "back",
+@@ -655,10 +703,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardVisit(
+         item_id, creative_instance_id,
+         ads::mojom::BraveAdsPromotedContentAdEventType::kClicked);
+   }
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayOnCardViews(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   // Argument should be how many cards viewed in this session.
+   int cards_viewed_total = args->GetList()[0].GetInt();
+   // Track how many Brave Today cards have been viewed per session
+@@ -675,10 +725,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardViews(
+   int answer = it_count - kBuckets;
+   UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklyMaxCardViewsCount", answer,
+                              base::size(kBuckets) + 1);
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayOnPromotedCardView(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   // Argument should be how many cards viewed in this session.
+   std::string creative_instance_id = args->GetList()[0].GetString();
+   std::string item_id = args->GetList()[1].GetString();
+@@ -688,10 +740,12 @@ void BraveNewTabMessageHandler::HandleTodayOnPromotedCardView(
+         item_id, creative_instance_id,
+         ads::mojom::BraveAdsPromotedContentAdEventType::kViewed);
+   }
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayGetDisplayAd(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   AllowJavascript();
+   std::string callback_id;
+   args->GetString(0, &callback_id);
+@@ -719,10 +773,12 @@ void BraveNewTabMessageHandler::HandleTodayGetDisplayAd(
+       },
+       weak_ptr_factory_.GetWeakPtr(), callback_id);
+   ads_service_->GetInlineContentAd("900x750", std::move(on_ad_received));
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   // Collect params
+   std::string item_id;
+   std::string creative_instance_id;
+@@ -749,10 +805,12 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit(
+   ads_service_->OnInlineContentAdEvent(
+       item_id, creative_instance_id,
+       ads::mojom::BraveAdsInlineContentAdEventType::kClicked);
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   // Collect params
+   std::string item_id;
+   std::string creative_instance_id;
+@@ -780,6 +838,8 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
+   ads_service_->OnInlineContentAdEvent(
+       item_id, creative_instance_id,
+       ads::mojom::BraveAdsInlineContentAdEventType::kViewed);
++#endif
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   // Let p3a know an ad was viewed
+   WeeklyStorage storage(profile_->GetPrefs(), kBraveTodayWeeklyCardViewsCount);
+   storage.AddDelta(1u);
+@@ -790,6 +850,7 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
+   int answer = it_count - kBuckets;
+   UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklyDisplayAdsViewedCount", answer,
+                              base::size(kBuckets) + 1);
++#endif
+ }
+
+ void BraveNewTabMessageHandler::OnPrivatePropertiesChanged() {
+diff --git a/common/extensions/api/BUILD.gn b/common/extensions/api/BUILD.gn
+index 9cc06b14b4..88371839eb 100644
+--- a/common/extensions/api/BUILD.gn
++++ b/common/extensions/api/BUILD.gn
+@@ -69,13 +69,13 @@ json_features("behavior_features") {
+ }
+
+ brave_extensions_api_schema_sources = [
+-  "brave_rewards.json",
++  #"brave_rewards.json",
+   "brave_shields.json",
+   "brave_talk.json",
+   "brave_theme.json",
+   "brave_today.json",
+   "greaselion.json",
+-  "rewards_notifications.json",
++  #"rewards_notifications.json",
+ ]
+
+ if (ipfs_enabled) {
+diff --git a/common/extensions/api/_api_features.json b/common/extensions/api/_api_features.json
+index 50f35664df..0fb7894d19 100644
+--- a/common/extensions/api/_api_features.json
++++ b/common/extensions/api/_api_features.json
+@@ -55,9 +55,7 @@
+     "matches": [
+       "chrome://bookmarks/*",
+       "chrome://read-later.top-chrome/*",
+-      "chrome://tab-strip/*",
+-      "chrome://wallet-panel.top-chrome/*",
+-      "chrome://wallet/*"
++      "chrome://tab-strip/*"
+     ]
+   }, {
+     "channel": "stable",
+@@ -92,38 +90,11 @@
+     "contexts": ["blessed_extension"],
+     "allowlist": ["3D9518A72EB02667A773B69DBA9E72E0F4A37423", "780BF954C0F7C586EA9662D4F967771F49CC2114", "FF32507DC3DB5DFFD1D6733187C84D4B74713D63"]
+   },
+-  "braveRewards": [
+-    {
+-      "channel": "stable",
+-      "dependencies": [],
+-      "contexts": ["blessed_extension"],
+-      "allowlist": [
+-        "46E9817CBF915C0D1F6BCCF916C42CC666FF1D64"
+-      ]
+-    },
+-    {
+-      "channel": "stable",
+-      "contexts": ["webui"],
+-      "matches": [
+-        "chrome://newtab/*"
+-      ]
+-    }
+-  ],
+-  "rewardsNotifications": {
+-    "channel": "stable",
+-    "dependencies": [],
+-    "contexts": ["blessed_extension"],
+-    "allowlist": [
+-      "46E9817CBF915C0D1F6BCCF916C42CC666FF1D64"
+-    ]
+-  },
+   "braveTheme": [{
+     "channel": "stable",
+     "contexts": ["blessed_extension"],
+     "allowlist": [
+-      "A321D47A2B4CA86898167A55CA8B2E02385EA7CD",  // braveShields
+-      "46E9817CBF915C0D1F6BCCF916C42CC666FF1D64",  // braveRewards
+-      "21070F3D60711361C1210B870439BE49B5D995F4"   // braveWallet
++      "A321D47A2B4CA86898167A55CA8B2E02385EA7CD"  // braveShields
+     ]
+   }, {
+     "channel": "stable",
+@@ -132,17 +103,14 @@
+       "chrome://welcome/*",
+       "chrome://settings/*",
+       "chrome://newtab/*",
+-      "chrome://webcompat/*",
+-      "chrome://wallet/*",
+-      "chrome://wallet-panel.top-chrome/*"
++      "chrome://webcompat/*"
+     ]
+   }],
+   "greaselion": [{
+     "channel": "stable",
+     "contexts": ["blessed_extension"],
+     "allowlist": [
+-      "A321D47A2B4CA86898167A55CA8B2E02385EA7CD",  // braveShields
+-      "46E9817CBF915C0D1F6BCCF916C42CC666FF1D64"   // braveRewards
++      "A321D47A2B4CA86898167A55CA8B2E02385EA7CD"  // braveShields
+     ]
+   }, {
+     "channel": "stable",
+diff --git a/components/binance/browser/BUILD.gn b/components/binance/browser/BUILD.gn
+index b92999291c..0824ba470a 100644
+--- a/components/binance/browser/BUILD.gn
++++ b/components/binance/browser/BUILD.gn
+@@ -1,7 +1,7 @@
+ import("//brave/build/config.gni")
+ import("//brave/components/binance/browser/buildflags/buildflags.gni")
+
+-assert(binance_enabled)
++#assert(binance_enabled)
+
+ declare_args() {
+   binance_client_id = ""
+diff --git a/components/binance/browser/buildflags/buildflags.gni b/components/binance/browser/buildflags/buildflags.gni
+index d4bc81a781..7b26be808b 100644
+--- a/components/binance/browser/buildflags/buildflags.gni
++++ b/components/binance/browser/buildflags/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  binance_enabled = is_mac || is_linux || is_win || is_android
++  binance_enabled = false
+ }
+diff --git a/components/brave_ads/browser/BUILD.gn b/components/brave_ads/browser/BUILD.gn
+index 32215aeb3e..ded02b8f67 100644
+--- a/components/brave_ads/browser/BUILD.gn
++++ b/components/brave_ads/browser/BUILD.gn
+@@ -11,9 +11,6 @@ static_library("browser") {
+   ]
+
+   sources = [
+-    "ads_service.cc",
+-    "ads_service.h",
+-    "ads_service_observer.h",
+   ]
+
+   deps = [
+@@ -39,6 +36,9 @@ static_library("browser") {
+
+   if (brave_ads_enabled) {
+     sources += [
++      "ads_service.cc",
++      "ads_service.h",
++      "ads_service_observer.h",
+       "ads_p2a.cc",
+       "ads_p2a.h",
+       "ads_service_impl.cc",
+diff --git a/components/brave_referrals/buildflags/buildflags.gni b/components/brave_referrals/buildflags/buildflags.gni
+index 3848636402..a500258d00 100755
+--- a/components/brave_referrals/buildflags/buildflags.gni
++++ b/components/brave_referrals/buildflags/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  enable_brave_referrals = is_mac || is_linux || is_win || is_android
++  enable_brave_referrals = false
+ }
+diff --git a/components/brave_referrals/common/BUILD.gn b/components/brave_referrals/common/BUILD.gn
+index a5ab8b51cc..0c06a94812 100644
+--- a/components/brave_referrals/common/BUILD.gn
++++ b/components/brave_referrals/common/BUILD.gn
+@@ -1,6 +1,6 @@
+ import("//brave/components/brave_referrals/buildflags/buildflags.gni")
+
+-assert(enable_brave_referrals)
++#assert(enable_brave_referrals)
+
+ static_library("common") {
+   sources = [
+diff --git a/components/brave_rewards/browser/BUILD.gn b/components/brave_rewards/browser/BUILD.gn
+index 7d3627f98a..988e4e1742 100644
+--- a/components/brave_rewards/browser/BUILD.gn
++++ b/components/brave_rewards/browser/BUILD.gn
+@@ -9,21 +9,9 @@ static_library("browser") {
+   public_deps = [ "buildflags" ]
+
+   sources = [
+-    "android_util.cc",
+-    "android_util.h",
+     "diagnostic_log.cc",
+     "diagnostic_log.h",
+     "logging.h",
+-    "rewards_notification_service.cc",
+-    "rewards_notification_service.h",
+-    "rewards_notification_service_observer.h",
+-    "rewards_p3a.cc",
+-    "rewards_p3a.h",
+-    "rewards_protocol_handler.cc",
+-    "rewards_protocol_handler.h",
+-    "rewards_service.cc",
+-    "rewards_service.h",
+-    "rewards_service_observer.h",
+     "static_values.h",
+     "switches.cc",
+     "switches.h",
+@@ -56,6 +44,16 @@ static_library("browser") {
+     sources += [
+       "net/network_delegate_helper.cc",
+       "net/network_delegate_helper.h",
++      "rewards_notification_service.cc",
++      "rewards_notification_service.h",
++      "rewards_notification_service_observer.h",
++      "rewards_p3a.cc",
++      "rewards_p3a.h",
++      "rewards_protocol_handler.cc",
++      "rewards_protocol_handler.h",
++      "rewards_service.cc",
++      "rewards_service.h",
++      "rewards_service_observer.h",
+       "rewards_notification_service_impl.cc",
+       "rewards_notification_service_impl.h",
+       "rewards_service_impl.cc",
+@@ -82,6 +80,11 @@ static_library("browser") {
+     public_deps += [ "//brave/vendor/bat-native-ledger:headers" ]
+
+     if (is_android) {
++      sources += [
++        "android_util.cc",
++        "android_util.h",
++      ]
++
+       deps += [ "//brave/components/safetynet:android" ]
+     }
+   }
+diff --git a/components/brave_rewards/browser/buildflags/buildflags.gni b/components/brave_rewards/browser/buildflags/buildflags.gni
+index 18ad294e50..1a031adbee 100644
+--- a/components/brave_rewards/browser/buildflags/buildflags.gni
++++ b/components/brave_rewards/browser/buildflags/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  brave_rewards_enabled = is_mac || is_linux || is_win || is_android
++  brave_rewards_enabled = false
+ }
+diff --git a/components/brave_rewards/common/buildflags/buildflags.gni b/components/brave_rewards/common/buildflags/buildflags.gni
+index 6757bf525b..df05beeae3 100644
+--- a/components/brave_rewards/common/buildflags/buildflags.gni
++++ b/components/brave_rewards/common/buildflags/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  enable_gemini_wallet = is_mac || is_linux || is_win
++  enable_gemini_wallet = false
+ }
+diff --git a/components/brave_sync/buildflags/buildflags.gni b/components/brave_sync/buildflags/buildflags.gni
+index debaffcbdb..aa59fa8172 100755
+--- a/components/brave_sync/buildflags/buildflags.gni
++++ b/components/brave_sync/buildflags/buildflags.gni
+@@ -1,5 +1,5 @@
+ import("//brave/build/config.gni")
+
+ declare_args() {
+-  enable_brave_sync = true
++  enable_brave_sync = false
+ }
+diff --git a/components/brave_vpn/buildflags/buildflags.gni b/components/brave_vpn/buildflags/buildflags.gni
+index e8cbfc9d11..cdf09ce640 100644
+--- a/components/brave_vpn/buildflags/buildflags.gni
++++ b/components/brave_vpn/buildflags/buildflags.gni
+@@ -5,5 +5,5 @@
+
+ declare_args() {
+   # On macOS, vpn is not available w/o signing.
+-  enable_brave_vpn = is_win || is_android || (is_mac && is_official_build)
++  enable_brave_vpn = false
+ }
+diff --git a/components/brave_wallet/browser/BUILD.gn b/components/brave_wallet/browser/BUILD.gn
+index 46aefe06c7..8380deaf3f 100644
+--- a/components/brave_wallet/browser/BUILD.gn
++++ b/components/brave_wallet/browser/BUILD.gn
+@@ -3,7 +3,7 @@ import("//brave/components/brave_wallet/browser/config.gni")
+ import("//brave/components/brave_wallet/common/buildflags/buildflags.gni")
+ import("//build/config/features.gni")
+
+-assert(brave_wallet_enabled)
++#assert(brave_wallet_enabled)
+
+ static_library("browser") {
+   configs += [ ":infura_config" ]
+diff --git a/components/brave_wallet/common/buildflags/buildflags.gni b/components/brave_wallet/common/buildflags/buildflags.gni
+index 213b51ca3b..a38ea6b9bd 100644
+--- a/components/brave_wallet/common/buildflags/buildflags.gni
++++ b/components/brave_wallet/common/buildflags/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  brave_wallet_enabled = true
++  brave_wallet_enabled = false
+ }
+diff --git a/components/crypto_dot_com/browser/BUILD.gn b/components/crypto_dot_com/browser/BUILD.gn
+index b3dfda45b8..c730727146 100644
+--- a/components/crypto_dot_com/browser/BUILD.gn
++++ b/components/crypto_dot_com/browser/BUILD.gn
+@@ -1,7 +1,7 @@
+ import("//brave/build/config.gni")
+ import("//brave/components/crypto_dot_com/browser/buildflags/buildflags.gni")
+
+-assert(crypto_dot_com_enabled)
++#assert(crypto_dot_com_enabled)
+
+ static_library("browser") {
+   public_deps = [ "buildflags" ]
+diff --git a/components/crypto_dot_com/browser/buildflags/buildflags.gni b/components/crypto_dot_com/browser/buildflags/buildflags.gni
+index e0ebbbfed9..b23ccdb085 100644
+--- a/components/crypto_dot_com/browser/buildflags/buildflags.gni
++++ b/components/crypto_dot_com/browser/buildflags/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  crypto_dot_com_enabled = is_mac || is_linux || is_win
++  crypto_dot_com_enabled = false
+ }
+diff --git a/components/crypto_dot_com/common/BUILD.gn b/components/crypto_dot_com/common/BUILD.gn
+index 1a7abd96d0..a15c3f074c 100644
+--- a/components/crypto_dot_com/common/BUILD.gn
++++ b/components/crypto_dot_com/common/BUILD.gn
+@@ -1,6 +1,6 @@
+ import("//brave/components/crypto_dot_com/browser/buildflags/buildflags.gni")
+
+-assert(crypto_dot_com_enabled)
++#assert(crypto_dot_com_enabled)
+
+ source_set("common") {
+     sources = [
+diff --git a/components/gemini/browser/BUILD.gn b/components/gemini/browser/BUILD.gn
+index 206bb428d3..9f50d936bb 100644
+--- a/components/gemini/browser/BUILD.gn
++++ b/components/gemini/browser/BUILD.gn
+@@ -1,7 +1,7 @@
+ import("//brave/build/config.gni")
+ import("//brave/components/gemini/browser/buildflags/buildflags.gni")
+
+-assert(gemini_enabled)
++#assert(gemini_enabled)
+
+ declare_args() {
+   gemini_client_id = ""
+diff --git a/components/gemini/browser/buildflags/buildflags.gni b/components/gemini/browser/buildflags/buildflags.gni
+index 891f918523..49635f5c4b 100644
+--- a/components/gemini/browser/buildflags/buildflags.gni
++++ b/components/gemini/browser/buildflags/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  gemini_enabled = is_mac || is_linux || is_win
++  gemini_enabled = false
+ }
+diff --git a/components/p3a/buildflags.gni b/components/p3a/buildflags.gni
+index b8fca0c6da..d60687346f 100644
+--- a/components/p3a/buildflags.gni
++++ b/components/p3a/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  brave_p3a_enabled = true
++  brave_p3a_enabled = false
+ }

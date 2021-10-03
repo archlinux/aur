@@ -34,7 +34,7 @@ if [ -z ${USE_NOCONFIRM+x} ]; then
 fi
 
 pkgname=unbrave-git
-pkgver=r4767.815be6db
+pkgver=r5012.10d458c3
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -47,10 +47,10 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'sccache: For faster builds')
-chromium_base_ver="93"
-patchset="5"
+chromium_base_ver="95"
+patchset="2"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
-_launcher_ver=7
+_launcher_ver=8
 source=("brave-browser::git+https://github.com/brave/brave-browser.git"
         "chromium::git+https://github.com/chromium/chromium.git"
         "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
@@ -78,10 +78,10 @@ sha256sums=('SKIP'
             'SKIP'
             'e4478c79e2eed500777117bb1d48f4be1866908dcda8d75003a5d055618dfdca'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
-            '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
-            '60cc98f2d96c6b9c01fa004cfa1e7cf912460dd01f3e6440e067b3098f2ccf72'
+            '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
+            '5796f54f53794dd859da43c60db97f76a941be334bc7365b9058582e192bda52'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
-            'fe6dc238d3219b3acf779d3162793ce1e64092e83d01080df56a93959208559c'
+            '826005264d5d9b667bdcea0d12300815ac9db40016c6da89e7b0094a6234a133'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
