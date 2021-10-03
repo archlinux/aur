@@ -1,6 +1,6 @@
 pkgbase = python-pydrive2
 	pkgdesc = Google Drive API made easy. Maintained fork of PyDrive.
-	pkgver = 1.8.2
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/iterative/PyDrive2
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = python-pydrive2
 	depends = python-oauth2client
 	depends = python-pyaml
 	depends = python-pyopenssl
-	source = PyDrive2-1.8.2.tar.gz::https://github.com/iterative/PyDrive2/archive/refs/tags/1.8.2.tar.gz
-	sha256sums = 6d8ca3084e4f2269d9eac9d94ad89949f8c1f7bd59f73d587d1b1ac9f29eb90e
+	source = PyDrive2-1.9.1.tar.gz::https://github.com/iterative/PyDrive2/archive/refs/tags/1.9.1.tar.gz
+	sha256sums = 4f4f61b59ca63c3840b93a753b352fc4fdcdb5a3aa7a130279c27752131db6d1
 
 pkgname = python-pydrive2
-
