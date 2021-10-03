@@ -1,19 +1,18 @@
 # Maintainer: Yamada Hayao <hayao@fascode.net>
 
-pkgname=win11-icon-theme-git
-_pkgname=win11-icon-theme
-_gitname=win11-icon-theme
-pkgver=r88.2293237
+pkgname=win11-gtk-theme-git
+_pkgname=win11-gtk-theme
+_gitname=windows11-GTKtheme
+pkgver=r10.62225c3
 pkgrel=1
-pkgdesc="A colorful Design icon theme for linux desktops"
+pkgdesc="GTK theme like Windows 11"
 arch=('any')
-url='https://github.com/yeyushengfan258/win11-icon-theme'
+url='https://github.com/zayronxio/windows11-GTKtheme'
 license=('GPL')
-depends=('gtk-update-icon-cache')
+depends=()
 optdepends=()
 source=("git+${url}.git")
 md5sums=('SKIP')
-conflicts=('win11-icon-theme')
 
 pkgver() {
     cd "${_gitname}"
@@ -21,6 +20,6 @@ pkgver() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/usr/share/icons"
-    "${srcdir}/${_gitname}/install.sh" -a -d "${pkgdir}/usr/share/icons"
+    install -dm755 "${pkgdir}/usr/share/themes"
+    cp -r "${srcdir}/${_gitname}" "${pkgdir}/usr/share/themes"
 }

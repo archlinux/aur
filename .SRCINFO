@@ -1,13 +1,11 @@
-pkgbase = win11-icon-theme-git
-	pkgdesc = A colorful Design icon theme for linux desktops
+pkgbase = win11-gtk-theme-git
+	pkgdesc = GTK theme like Windows 11
 	pkgver = r88.2293237
 	pkgrel = 1
-	url = https://github.com/yeyushengfan258/win11-icon-theme
+	url = https://github.com/zayronxio/windows11-GTKtheme
 	arch = any
 	license = GPL
-	depends = gtk-update-icon-cache
-	conflicts = win11-icon-theme
-	source = git+https://github.com/yeyushengfan258/win11-icon-theme.git
+	source = git+https://github.com/zayronxio/windows11-GTKtheme.git
 	md5sums = SKIP
 
-pkgname = win11-icon-theme-git
+pkgname = win11-gtk-theme-git
