@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-topic-tools
 	pkgdesc = ROS - Tools for directing, throttling, selecting, and otherwise messing with ROS topics at a meta level.
-	pkgver = 1.15.11
+	pkgver = 1.15.13
 	pkgrel = 1
 	url = https://wiki.ros.org/topic_tools
 	arch = i686
@@ -27,8 +27,7 @@ pkgbase = ros-noetic-topic-tools
 	depends = ros-noetic-rosconsole
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-message-runtime
-	source = ros-noetic-topic-tools-1.15.11.tar.gz::https://github.com/ros/ros_comm/archive/1.15.11.tar.gz
-	sha256sums = 7187dd3ab2783e5041c2ef71079cf2b6f9ed06c88c7e3c6efd7684ca5475b5bd
+	source = ros-noetic-topic-tools-1.15.13.tar.gz::https://github.com/ros/ros_comm/archive/1.15.13.tar.gz
+	sha256sums = b676d6e688fe5ad78a9da9205477cc92ea6d54301f71caade1f27804d2d55000
 
 pkgname = ros-noetic-topic-tools
-
