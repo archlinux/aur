@@ -6,7 +6,7 @@
 ### Info ###
 pkgname=ukbprep-bin
 _pkgname=${pkgname%-bin}
-pkgver=20210604
+pkgver=20211003
 pkgrel=1
 pkgdesc='UK Biobank file handlers'
 arch=(x86_64)
@@ -30,7 +30,7 @@ noextract=(
     ukblink_linkset-${pkgver}.tar
 )
 md5sums=(
-    'cb8d718c711ca53f66a55583c9354a80'
+    '420c5da64be38d32735c9bfb75098a21'
     '9530c628fa41c9e3fe7441ac63d9ab84'
     '06b5b39ab608a093b1dd264e27280316'
     '3499b767a6809f96f446d6db28665115'
