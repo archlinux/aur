@@ -25,3 +25,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	sudo make install
 }
+md5sums=('44f6dd777bc5d631220650da6f2cf6f0')
