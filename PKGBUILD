@@ -5,7 +5,7 @@
 
 # Maintainer: Evan Oicle <oicleevan@protonmail.com>
 pkgname=the-deeps
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A C++ text-based adventure game."
 arch=('any')
