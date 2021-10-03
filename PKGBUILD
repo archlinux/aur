@@ -1,12 +1,11 @@
 # Maintainer: riey <creeper844@gmail.com>
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
+
 pkgname=kime
-pkgver=2.5.5
-pkgrel=2
+pkgver=2.5.6
+pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
-conflicts=('kime')
-provides=('kime')
 optdepends=('gtk2: gtk2 support'
             'gtk3: gtk3 support'
             'gtk4: gtk4 support'
@@ -18,10 +17,11 @@ license=('GPL3')
 source=(
     ${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
 )
-md5sums=('dea5c3079478d5ec33f272b372751a88')
+sha256sums=('e96ef7427b8ad64434c12e4e7c2c968e62f8efb98682a5887c72ba235ac3df3e')
 
 build() {
     cd "${pkgname}-${pkgver}"
+
     # Clean cache
     rm -rf build || true
     scripts/build.sh -ar
