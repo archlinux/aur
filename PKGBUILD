@@ -2,12 +2,12 @@
 
 pkgname=timescaledb-toolkit
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PostgreSQL extension for TimescaleDB analytics"
 arch=('x86_64')
 url="https://github.com/timescale/timescaledb-toolkit"
 license=('custom:Timescale')
-depends=('gcc-libs' 'postgresql' 'timescaledb')
+depends=('gcc-libs' 'postgresql<14' 'timescaledb')
 makedepends=('rust' 'clang' 'llvm')
 # last commit to license - used to pin license version
 _license_commit='490e9405874d284735e27e3f9f63a2f6dd31a08f'

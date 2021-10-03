@@ -1,7 +1,7 @@
 pkgbase = timescaledb-toolkit
 	pkgdesc = PostgreSQL extension for TimescaleDB analytics
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/timescale/timescaledb-toolkit
 	arch = x86_64
 	license = custom:Timescale
@@ -9,7 +9,7 @@ pkgbase = timescaledb-toolkit
 	makedepends = clang
 	makedepends = llvm
 	depends = gcc-libs
-	depends = postgresql
+	depends = postgresql<14
 	depends = timescaledb
 	source = timescaledb-toolkit-1.2.0.tar.gz::https://github.com/timescale/timescaledb-toolkit/archive/1.2.0.tar.gz
 	source = LICENSE-TIMESCALE-490e9405874d284735e27e3f9f63a2f6dd31a08f::https://raw.githubusercontent.com/timescale/timescaledb/490e9405874d284735e27e3f9f63a2f6dd31a08f/tsl/LICENSE-TIMESCALE
