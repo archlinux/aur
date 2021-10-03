@@ -2,7 +2,7 @@
 _pkgname=lightning-terminal
 __pkgname=lit
 pkgname=${_pkgname}-bin
-pkgver=0.5.0_alpha
+pkgver=0.5.1_alpha
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity."
@@ -15,18 +15,19 @@ license=("MIT")
 optdepends=("frcli" "lncli" "lnd" "loop" "pool")
 provides=("${__pkgname}d")
 
-developer=roasbeef
-# developer=guggero
+developer=""
+# developer=-roasbeef
+# developer=-guggero
 source=(
 ${_pkgname}-${_arch}-v${_pkgver}.tar.gz::"${url}/releases/download/v${_pkgver}/${_pkgname}-${_arch}-v${_pkgver}.tar.gz"
-manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-${developer}-v${_pkgver}.sig"
+manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest${developer}-v${_pkgver}.sig"
 manifest-v${_pkgver}.txt::"${url}/releases/download/v${_pkgver}/manifest-v${_pkgver}.txt"
 )
 
 
-sha256sums=('a6b88a46248ad1aae73cee9a863ddffbe16b207f2a42b8a76e621997c4c0c8a0'
+sha256sums=('9faf4eb6d7f32d8fb0dbf01f914e784154749ceedeb142d674efda38b50b80ad'
             'SKIP'
-            '0927a013c312214eb9ef482810428a8c32a3dfbf5cc2ca3d0be7c453d7aee23e')
+            '073e609d910e44c30f6e2e2be81feee09649fc53a191ee6ea48cf37ae81903e3')
 
 # LND provides manifest signatures from several developers
 # To wit; guggero and roasbeef
