@@ -1,12 +1,12 @@
 pkgbase = peekprof
 	pkgdesc = Profiling tool used to generate profiles and peek at an application system resources usage
-	pkgver = 0.6.0_2
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/exapsy/peekprof
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = peekprof-0.6.0.tar.gz::https://github.com/exapsy/peekprof/archive/refs/tags/v0.6.0.tar.gz
+	source = peekprof-0.6.1.tar.gz::https://github.com/exapsy/peekprof/archive/refs/tags/v0.6.1.tar.gz
 	sha1sums = SKIP
 
 pkgname = peekprof
