@@ -1,0 +1,12 @@
+[Unit]
+Description=Backend of the Musikverein Leopoldsdorf
+After=network.target
+
+[Service]
+Type=simple
+User=barrel
+WorkingDirectory=/usr/share/barrel
+ExecStart=/usr/bin/java -jar /usr/share/barrel/barrel.jar --spring.config.location=file:/etc/barrel/barrel.yml
+
+[Install]
+WantedBy=multi-user.target

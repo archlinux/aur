@@ -1,0 +1,18 @@
+pkgbase = barrel-git
+	pkgdesc = backend of the Musikverein Leopoldsdorf
+	pkgver = 1788686b
+	pkgrel = 1
+	url = https://github.com/mvl-at/barrel
+	arch = any
+	license = GPL2
+	depends = java-runtime>=16
+	provides = barrel
+	backup = etc/barrel/barrel.yml
+	source = git+http://github.com/mvl-at/barrel.git
+	source = barrel.service
+	source = barrel.sysusers
+	sha256sums = SKIP
+	sha256sums = 042b1ff348dfdd705d1dfe9bfb68011e2f039509cb7991526c5da5111c772fc9
+	sha256sums = 668449908de123446e539b2caefe12486af14b906cffb1bd0799eaecabca11c0
+
+pkgname = barrel-git
