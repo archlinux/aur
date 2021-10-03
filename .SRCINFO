@@ -18,7 +18,7 @@ pkgbase = autofdo-git
 	optdepends = llvm: for LLVM support
 	provides = autofdo=0.1
 	conflicts = autofdo
-	source = autofdo::git+https://github.com/google/autofdo
+	source = autofdo::git+https://github.com/google/autofdo#branch=master
 	source = abseil-cpp::git+https://github.com/abseil/abseil-cpp
 	source = perf_data_converter::git+https://github.com/google/perf_data_converter
 	source = glog::git+https://github.com/google/glog

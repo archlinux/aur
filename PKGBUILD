@@ -3,6 +3,8 @@
 # Contributor : Stephen Zhang <zsrkmyn at gmail dot com>
 # Contributor : Maël Kerbiriou <m431.kerbiriou@gmail.com>
 
+_fragment="${FRAGMENT:-#branch=master}"
+
 _pkgname=autofdo
 pkgname=$_pkgname-git
 pkgver=0.1.r174.g963a8c1
@@ -17,7 +19,7 @@ makedepends=('clang' 'cmake' 'git' 'llvm11' 'ninja' 'python')
 optdepends=('llvm: for LLVM support')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
-source=("$_pkgname::git+$url"
+source=("${_pkgname}::git+${url}${_fragment}"
         "abseil-cpp::git+https://github.com/abseil/abseil-cpp"
         "perf_data_converter::git+https://github.com/google/perf_data_converter"
         "glog::git+https://github.com/google/glog"
