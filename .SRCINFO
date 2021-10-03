@@ -1,6 +1,6 @@
 pkgbase = standard
 	pkgdesc = JavaScript style guide, linter, and formatter
-	pkgver = 16.0.3
+	pkgver = 16.0.4
 	pkgrel = 1
 	url = https://standardjs.com
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = standard
 	makedepends = npm
 	depends = nodejs
 	replaces = nodejs-standard
-	noextract = standard-16.0.3.tar.gz
-	source = standard-16.0.3.tar.gz::https://registry.npmjs.org/standard/-/standard-16.0.3.tgz
-	b2sums = 65f7ea268608abc77172a4149bc6b39059f0a05c17ee2fa53136bde1ea2ca884491ad0db0e1a9779493f90e1ab8a974cca7b6aa93eded65c926ac0d020e76ad4
+	noextract = standard-16.0.4.tar.gz
+	source = standard-16.0.4.tar.gz::https://registry.npmjs.org/standard/-/standard-16.0.4.tgz
+	sha512sums = d80188f3be11342956e3151d33e6e0d4b45756560bcd33449079931b99a1ca7e393a16e0c00fbace7a3090e198cbe58c6f91d1c842efb4dcb7f6471d31031c61
+	b2sums = 6eb93b00d7f0c08ea001d1798a8d94f592a05d7a4f41a93685276fefc70a43307f4f559a53aa2bc38fc5773663e0c60d9286109184cc2c7b4f92fe2f96765d2b
 
 pkgname = standard
