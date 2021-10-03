@@ -1,0 +1,16 @@
+pkgbase = ppds-meta
+	pkgdesc = Collection of foomatic and gutenprints ppds files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/ppds-meta
+	arch = any
+	license = GPL
+	depends = foomatic-db-engine
+	depends = foomatic-db
+	depends = foomatic-db-ppds
+	depends = foomatic-db-nonfree
+	depends = foomatic-db-nonfree-ppds
+	depends = gutenprint
+	depends = foomatic-db-gutenprint-ppds
+
+pkgname = ppds-meta
