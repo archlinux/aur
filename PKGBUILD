@@ -7,7 +7,7 @@
 pkgname=the-deeps
 pkgver=1.2.1
 pkgrel=1
-pkgdesc="A C++ text-based adventure game."
+pkgdesc="A text-based adventure game written in C++."
 arch=('any')
 url="https://github.com/oicleevan/the-deeps"
 license=('MIT')
