@@ -42,6 +42,6 @@ build() {
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
 
-  install -Dm644 "${_plug}/README.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${pkgname}/README.rst"
+  install -Dm644 "${_plug}/README.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.rst"
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
