@@ -1,6 +1,6 @@
 pkgbase = sftpgo-git
 	pkgdesc = Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP
-	pkgver = r964.1b4a1fb
+	pkgver = r965.ea01c3a
 	pkgrel = 1
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo-git.install
@@ -24,7 +24,7 @@ pkgbase = sftpgo-git
 	source = sftpgo.json
 	source = sftpgo.sysusers
 	sha256sums = SKIP
-	sha256sums = 879500eab662f58ec7b91815d48abf7dbef4cef3ad367be657176af65cef02a7
+	sha256sums = 25e168055b3d485d32f3b39149f5137b62a74ef733ff090a83c64c2df6b87d4b
 	sha256sums = 44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8
 
 pkgname = sftpgo-git
