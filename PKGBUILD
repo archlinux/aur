@@ -3,7 +3,7 @@
 # Contributor: Denis Zheleztsov <difrex.punk@gmail.com>
 
 pkgname=wlr-randr-git
-pkgver=v0.2.0+1+gfb31752
+pkgver=0.2.0+1+gfb31752
 pkgrel=1
 pkgdesc="Utility to manage outputs of a Wayland compositor (latest git version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/-/+/g;s/^v//'
 }
 
 build() {
