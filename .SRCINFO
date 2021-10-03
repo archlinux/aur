@@ -1,0 +1,15 @@
+pkgbase = askgit-bin
+	pkgdesc = Query git repositories with SQL. Generate reports, perform status checks, analyze codebases.
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/askgitdev/askgit
+	arch = x86_64
+	license = MIT
+	depends = pcre
+	depends = openssl
+	source = askgit-0.4.7.tar.gz::https://github.com/askgitdev/askgit/releases/download/v0.4.7/askgit-linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/askgitdev/askgit/main/LICENSE
+	sha256sums = b2427ad27ebce4857f46477908d26ca89384990d65321a8cc6a4da2b6f250f53
+	sha256sums = 526fbd13526ae2cc7eade7fc3360c8675f1ce31225fd4057b031f9ff2cfc6434
+
+pkgname = askgit-bin
