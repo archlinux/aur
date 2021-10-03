@@ -1,7 +1,7 @@
-pkgbase = tremulous
-	pkgdesc = Free team based FPS/RTS hybrid built on the ioq3 engine. Includes community updates
-	pkgver = 1.1.0
-	pkgrel = 13
+pkgbase = tremulous-git
+	pkgdesc = Team based FPS/RTS hybrid built on the open ioq3 engine.
+	pkgver = 1.2.0.r3127.c862a534
+	pkgrel = 1
 	url = http://tremulous.net
 	arch = x86_64
 	arch = i686
@@ -14,29 +14,24 @@ pkgbase = tremulous
 	depends = tremulous-data=1.1.0
 	depends = freetype2
 	depends = glu
-	provides = tremulous-updated=1.1.0-13
+	provides = tremulous-updated=1.2.0-1
 	conflicts = tremulous-updated
 	replaces = trem-backport
 	replaces = tremulous-updated
 	backup = etc/tremdedrc
-	source = git://github.com/jkent/tremulous-mgclient.git
-	source = git://github.com/jkent/tremulous-mgtremded.git
-	source = game.qvm.bz2
-	source = lakitu7_qvm.txt
+	source = git://github.com/darklegion/tremulous.git
+	source = autogen.cfg
 	source = tremdedrc
-	source = tremulous.desktop
 	source = tremded.sh
 	source = tremulous.sh
+	source = tremulous.desktop
 	source = tremulous.xpm
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = bbb59bd459fced70ab7e152c84c6fe1c
-	md5sums = a0b8970b33a27798c125f9152049013c
-	md5sums = f0056120d0192a0d4d591d1114439c52
-	md5sums = aef37632a2edcf74a53503a49530bad2
-	md5sums = c6db2ed86ce31380b233d88e26280643
-	md5sums = 8fba8bee98f51fe2ebdd076b83e00bc3
-	md5sums = 7e3a881608f1c7c0ccece1e07fcf92d8
+	sha256sums = SKIP
+	sha256sums = 6a41333f4b2a4937b91cd26bc257575ee55c1f1c8dae1324c880c4fad32c6c0f
+	sha256sums = 7393025b937812220a0e6a3e16112ae3a7f1297ad4fcdebd3d944676ca26697c
+	sha256sums = fb308390bf62c651cf83c496d58cdcd53dcb548ec2b1d7c8c3433d329fa2fd70
+	sha256sums = d50043ef0f2aabf0aa2a17114f1987b4e78898d5b13e75a3338418850c78c7e5
+	sha256sums = 9af436e7f004abeb043276de6948d6142a8a4cfb554993b7aa8d9e09e41acafa
+	sha256sums = 0770cc5e153b25e00d42077e3f0e7f813264f1db468efca2a26083a5d38301d1
 
-pkgname = tremulous
-
+pkgname = tremulous-git

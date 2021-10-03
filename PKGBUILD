@@ -1,76 +1,66 @@
-# Contributor: Daenyth <Daenyth+arch [AT] gmail [dot] com>
-pkgname=tremulous
-pkgver=1.1.0
-pkgrel=13
-pkgdesc='Free team based FPS/RTS hybrid built on the ioq3 engine. Includes community updates'
+origname=tremulous
+pkgname="${origname}-git"
+origver=1.2.0
+pkgver=1.2.0.r3127.c862a534
+pkgrel=1
+pkgdesc='Team based FPS/RTS hybrid built on the open ioq3 engine.'
 url='http://tremulous.net'
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('sdl' 'openal' 'libgl' "tremulous-data=$pkgver" "freetype2" 'glu')
+depends=('sdl' 'openal' 'libgl' "tremulous-data=1.1.0" "freetype2" 'glu')
 makedepends=('git' 'mesa')
-provides=("tremulous-updated=$pkgver-$pkgrel")
+provides=("tremulous-updated=${origver}-${pkgrel}")
 conflicts=('tremulous-updated')
 replaces=('trem-backport' 'tremulous-updated')
-source=(git://github.com/jkent/tremulous-mgclient.git
-        git://github.com/jkent/tremulous-mgtremded.git
-        game.qvm.bz2
-        lakitu7_qvm.txt
+source=(git://github.com/darklegion/tremulous.git
+        autogen.cfg
         tremdedrc
-        tremulous.desktop
         tremded.sh
         tremulous.sh
+        tremulous.desktop
         tremulous.xpm)
 backup=('etc/tremdedrc')
 
-md5sums=('SKIP'
-         'SKIP'
-         'bbb59bd459fced70ab7e152c84c6fe1c'
-         'a0b8970b33a27798c125f9152049013c'
-         'f0056120d0192a0d4d591d1114439c52'
-         'aef37632a2edcf74a53503a49530bad2'
-         'c6db2ed86ce31380b233d88e26280643'
-         '8fba8bee98f51fe2ebdd076b83e00bc3'
-         '7e3a881608f1c7c0ccece1e07fcf92d8')
-        
-         
-_arch=${CARCH/i686/x86}        
+_arch="${CARCH/i686/x86}"
+
+pkgver() {
+  cd "${srcdir}/${origname}"
+  echo "${origver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 build() {
- 
   sed -i "s/EXT_REPLACE/${_arch}/" "${srcdir}/tremulous.sh"
   sed -i "s/EXT_REPLACE/${_arch}/" "${srcdir}/tremded.sh"
-  
-  # Build the server
-  cd "${srcdir}/tremulous-mgtremded"
+
+  cd "${srcdir}/${origname}"
   make release
-  
-  # Build the client
-  cd "${srcdir}/tremulous-mgclient"
-  sed -i '/CC=gcc-4.6/d' Makefile
-  
-  #version: without -LUA
-  sed -i 's/M-LUA/M/' Makefile
-
-  make USE_LUA=0 USE_FREETYPE=0
-
 }
 
 package() {
-  cd "${srcdir}/tremulous-mgtremded"
-  install -D -m755 build/release-linux-${_arch}/tremded.${_arch}  "${pkgdir}/opt/tremulous/tremded.${_arch}"
-  install -D -m644 "${srcdir}/tremdedrc"                          "${pkgdir}/etc/tremdedrc"
-  install -D -m644 "${srcdir}/game.qvm"                           "${pkgdir}/opt/tremulous/game.qvm"
-  install -D -m755 "${srcdir}/tremded.sh"                         "${pkgdir}/usr/bin/tremded"
+  cd "${srcdir}/${origname}"
+  install -D -m644 "${srcdir}/autogen.cfg"  "${pkgdir}/opt/tremulous/autogen.cfg"
+  install -D -m644 "${srcdir}/tremdedrc"    "${pkgdir}/etc/tremdedrc"
+  install -D -m755 "${srcdir}/tremded.sh"   "${pkgdir}/usr/bin/tremded"
+  install -D -m755 "${srcdir}/tremulous.sh" "${pkgdir}/usr/bin/tremulous"
 
-  cd "${srcdir}/tremulous-mgclient"
-  install -Dm755 "build/release-linux-${_arch}/tremulous.${_arch}"  "${pkgdir}/opt/tremulous/tremulous.${_arch}"
-  install -D -m755 "${srcdir}/tremulous.sh"               	        "${pkgdir}/usr/bin/tremulous"
-
-  # Install the documentation
-  install -Dm644 "${srcdir}/tremulous-mgclient/docs/mg-client-manual.txt" "$pkgdir/usr/share/tremulous/mg-client-manual.txt"
-  install -Dm644 "${srcdir}/lakitu7_qvm.txt"     "$pkgdir/usr/share/tremulous/lakitu7_qvm.txt"
+  install -D -m755 "build/release-linux-${_arch}/tremded.${_arch}" \
+    "${pkgdir}/opt/tremulous/tremded.${_arch}"
+  install -D -m755 "build/release-linux-${_arch}/tremulous.${_arch}" \
+    "${pkgdir}/opt/tremulous/tremulous.${_arch}"
+  install -D -m755 "build/release-linux-${_arch}/renderer_opengl1_${_arch}.so" \
+    "${pkgdir}/opt/tremulous/renderer_opengl1_${_arch}.so"
+  install -D -m755 "build/release-linux-${_arch}/renderer_opengl2_${_arch}.so" \
+    "${pkgdir}/opt/tremulous/renderer_opengl2_${_arch}.so"
 
   # Install the .desktop and icon files
   install -D -m644 "${srcdir}/tremulous.xpm"     "${pkgdir}/usr/share/pixmaps/tremulous.xpm"
   install -D -m644 "${srcdir}/tremulous.desktop" "${pkgdir}/usr/share/applications/tremulous.desktop"
 }
+
+sha256sums=('SKIP'
+            '6a41333f4b2a4937b91cd26bc257575ee55c1f1c8dae1324c880c4fad32c6c0f'
+            '7393025b937812220a0e6a3e16112ae3a7f1297ad4fcdebd3d944676ca26697c'
+            'fb308390bf62c651cf83c496d58cdcd53dcb548ec2b1d7c8c3433d329fa2fd70'
+            'd50043ef0f2aabf0aa2a17114f1987b4e78898d5b13e75a3338418850c78c7e5'
+            '9af436e7f004abeb043276de6948d6142a8a4cfb554993b7aa8d9e09e41acafa'
+            '0770cc5e153b25e00d42077e3f0e7f813264f1db468efca2a26083a5d38301d1')
