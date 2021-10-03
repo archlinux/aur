@@ -1,0 +1,29 @@
+pkgbase = qhotkey-git
+	pkgdesc = Library for creating global shortcut/hotkey for desktop Qt6 applications (git version)
+	pkgver = 1.4.2.r6.g7f5840f
+	pkgrel = 1
+	url = https://github.com/Skycoder42/QHotkey/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = libx11
+	makedepends = qt5-base
+	makedepends = qt5-x11extras
+	makedepends = qt6-base
+	source = git+https://github.com/Skycoder42/QHotkey.git
+	sha256sums = SKIP
+
+pkgname = qhotkey-qt6-git
+	depends = libx11
+	depends = qt6-base
+	provides = qhotkey-qt6
+	conflicts = qhotkey-qt6
+
+pkgname = qhotkey-qt5-git
+	pkgdesc = Library for creating global shortcut/hotkey for desktop Qt5 applications (git version)
+	depends = libx11
+	depends = qt5-base
+	depends = qt5-x11extras
+	provides = qhotkey-qt5
+	conflicts = qhotkey-qt5
