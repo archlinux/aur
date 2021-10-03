@@ -40,7 +40,7 @@ pkgbase = emacs28-git
 	replaces = emacs-seq
 	replaces = emacs-nox
 	options = !strip
-	source = emacs-git::git://github.com/emacs-mirror/emacs.git#branch=emacs-28
+	source = emacs28-git::git://github.com/emacs-mirror/emacs.git#branch=emacs-28
 	b2sums = SKIP
 
 pkgname = emacs28-git
