@@ -75,7 +75,7 @@ else
 	pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance)
 fi
 pkgver=470.74
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -99,9 +99,9 @@ _sources_sums=('ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae
                '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
                '0c551b9358703e0ce7e1ce8bd47673ed5f964a6e4e200636c558ce73f2f3b792'
                '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
-source_x86_64=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
+source_x86_64=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
                ${_sources[@]})
-source_aarch64=("https://us.download.nvidia.com/XFree86/${CARCH}/${pkgver}/${_pkg}.run"
+source_aarch64=("https://us.download.nvidia.com/XFree86/aarch64/${pkgver}/${_pkg}.run"
                 ${_sources[@]})
 sha256sums_x86_64=('33e513dee329f2a9b106882979f1747eccb64eb698952c12cd030987cecadf6a'
                    ${_sources_sums[@]})

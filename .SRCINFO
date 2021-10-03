@@ -1,6 +1,6 @@
 pkgbase = nvidia-dkms-performance
 	pkgver = 470.74
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nvidia.com/
 	arch = x86_64
 	arch = aarch64
@@ -27,7 +27,7 @@ pkgbase = nvidia-dkms-performance
 	sha256sums_x86_64 = 7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b
 	sha256sums_x86_64 = 0c551b9358703e0ce7e1ce8bd47673ed5f964a6e4e200636c558ce73f2f3b792
 	sha256sums_x86_64 = 6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017
-	source_aarch64 = https://us.download.nvidia.com/XFree86/x86_64/470.74/NVIDIA-Linux-x86_64-470.74.run
+	source_aarch64 = https://us.download.nvidia.com/XFree86/aarch64/470.74/NVIDIA-Linux-x86_64-470.74.run
 	source_aarch64 = nvidia-drm-outputclass.conf
 	source_aarch64 = nvidia-utils.sysusers
 	source_aarch64 = nvidia.hook
