@@ -1,10 +1,11 @@
 pkgbase = makedeb-alpha
 	pkgdesc = The modern packaging tool for Debian archives (alpha release)
-	pkgver = 6.7.7
+	pkgver = 6.7.8
 	pkgrel = 1
 	url = https://github.com/makedeb/makedeb
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = tar
 	depends = binutils
 	depends = lsb-release
@@ -13,7 +14,7 @@ pkgbase = makedeb-alpha
 	depends = makedeb-makepkg-alpha
 	conflicts = makedeb
 	conflicts = makedeb-beta
-	source = git+https://github.com/makedeb/makedeb/#tag=v6.7.7-alpha
+	source = git+https://github.com/makedeb/makedeb/#tag=v6.7.8-alpha
 	sha256sums = SKIP
 
 pkgname = makedeb-alpha
