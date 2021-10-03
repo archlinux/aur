@@ -2,14 +2,16 @@
 
 pkgname=pgroonga
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/pgroonga/pgroonga"
 license=('custom:PostgreSQL')
-source=("http://packages.groonga.org/source/pgroonga/$pkgname-$pkgver.tar.gz")
+source=("http://packages.groonga.org/source/pgroonga/$pkgname-$pkgver.tar.gz"
+        "http://packages.groonga.org/source/pgroonga/$pkgname-$pkgver.tar.gz.asc")
 depends=('groonga')
 makedepends=('postgresql' 'clang' 'llvm')
+validpgpkeys=(2701F317CFCCCB975CADE9C2624CF77434839225)
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
@@ -35,5 +37,7 @@ package() {
         # Remove needless dotfiles
         rm -rf "$pkgdir/.*"
 }
-sha1sums=('acc67973eb9b0ce15519cc4fe3cdb09be1be4534')
-sha256sums=('832c8a0ab4735f207f528abfbac9e686bca09df6190bd9fc96a2e0af1714206c')
+sha1sums=('acc67973eb9b0ce15519cc4fe3cdb09be1be4534'
+          'SKIP')
+sha256sums=('832c8a0ab4735f207f528abfbac9e686bca09df6190bd9fc96a2e0af1714206c'
+            'SKIP')
