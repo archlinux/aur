@@ -1,0 +1,18 @@
+pkgbase = netstick-git
+	pkgdesc = Realtime Client/Server app for Linux allowing joystick (and other HID) data to be transferred over a local network
+	pkgver = r11.274d510
+	pkgrel = 1
+	url = https://github.com/moslevin/netstick
+	arch = any
+	license = BSD
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	makedepends = cmake
+	provides = netstick
+	conflicts = netstick
+	options = !strip
+	source = netstick-git::git+https://github.com/moslevin/netstick.git
+	sha512sums = SKIP
+
+pkgname = netstick-git
