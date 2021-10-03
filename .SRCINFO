@@ -1,6 +1,6 @@
 pkgbase = peekprof
 	pkgdesc = Profiling tool used to generate profiles and peek at an application system resources usage
-	pkgver = 0.6.0_1
+	pkgver = 0.6.0_2
 	pkgrel = 1
 	url = https://github.com/exapsy/peekprof
 	arch = x86_64
