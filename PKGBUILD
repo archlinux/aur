@@ -1,45 +1,42 @@
-# Maintainer: Shaleen Jain <shaleen(at)jain(dot)sh>
-
-_pkgname=system76
-_pkgbase=system76-dkms
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Shaleen Jain <shaleen(at)jain(dot)sh>
 pkgname=system76-dkms-git
-pkgver=85
+pkgver=1.0.13.r0.g68bd479
 pkgrel=1
-pkgdesc="The system76 driver kernel module (DKMS)"
-arch=('i686' 'x86_64')
+pkgdesc="On newer System76 laptops, this driver controls some of the hotkeys and allows for custom fan control."
+arch=('x86_64')
 url="https://github.com/pop-os/system76-dkms"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
-conflicts=("${_pkgbase}")
-provides=("${_pkgbase}")
-source=("system76::git+https://github.com/pop-os/system76-dkms.git#branch=master"
-        'dkms.conf'
-        'system76.conf')
-md5sums=('SKIP'
-         '654623daac5a4c9d69883d7b2b5ddac8'
-         '1e988cc5cf05cec741f78fe90f2054d7')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/pop-os/system76-dkms.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-  git rev-list --count HEAD
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  local install_dir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+  local install_dir="$pkgdir/usr/src/system76-${pkgver//.r*/}"
 
-  # Copy dkms.conf
-  install -Dm644 dkms.conf ${install_dir}/dkms.conf
+  cd "$srcdir/${pkgname%-git}"
 
-  # Set name and version
-  sed -e "s/@_PKGBASE@/${_pkgname}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "${install_dir}"/dkms.conf
+  # Install source files
+  for file in {Makefile,*.c,*.h}; do
+    [ -f "$file" ] || continue
+    install -Dm644 -t "$install_dir/" "$file"
+  done
 
-  # Copy sources (including Makefile)
-  cp ${_pkgname}/*.c      ${install_dir}/
-  cp ${_pkgname}/Makefile ${install_dir}/Makefile
+  # Install udev hwdb files
+  install -Dm644 lib/udev/hwdb.d/*.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d/"
+
+  # Edit and install dkms configuration
+  sed "s/#MODULE_VERSION#/${pkgver//.r*/}/" "debian/${pkgname%-git}.dkms" > "$install_dir/dkms.conf"
 
   # Load the module at boot
-  install -Dm644 system76.conf ${pkgdir}/etc/modules-load.d/system76.conf
+  install -Dm644 "usr/share/initramfs-tools/modules.d/${pkgname%-git}.conf" \
+    "$pkgdir/etc/modules-load.d/system76.conf"
 }
