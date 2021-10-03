@@ -2,7 +2,7 @@
 
 _plug=muvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.3.0.54.g5b5f245
+pkgver=v0.3.0.108.g8221fbc
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -38,12 +38,13 @@ package(){
   cd "${_plug}"
 
   _scripts=("${_plug}.py"
-            "Collections/${_plug}_numpy.py"
-            "Collections/${_plug}_misc.py"
-            "Collections/net_interp.py"
-            'Collections/resize.py'
+            "muvs.py"
             'Collections/LUM.py'
             'Collections/SuperRes.py'
+            "Collections/${_plug}_misc.py"
+            "Collections/${_plug}_numpy.py"
+            "Collections/net_interp.py"
+            'Collections/resize.py'
             )
 
   for i in "${_scripts[@]}"; do
@@ -53,6 +54,8 @@ package(){
   done
 
   (cd Collections; for i in $(find examples -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/${i}"; done)
+
+  install -Dm644 Collections/descale_verifyer.vpy "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/test/descale_verifyer.vpy"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }

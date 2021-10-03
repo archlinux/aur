@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-muvsfunc-git
 	pkgdesc = Plugin for Vapoursynth: muvsfunc (GIT version)
-	pkgver = v0.3.0.54.g5b5f245
+	pkgver = v0.3.0.108.g8221fbc
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=171956
 	arch = any
@@ -22,4 +22,3 @@ pkgbase = vapoursynth-plugin-muvsfunc-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-muvsfunc-git
-
