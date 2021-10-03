@@ -1,0 +1,9 @@
+pkgbase = fakesystemd-libs
+	pkgdesc = Empty package to simulate libsystemd
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	provides = libsystemd
+
+pkgname = fakesystemd-libs
