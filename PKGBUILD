@@ -2,7 +2,7 @@
 pkgname='python-sismic'
 _module='sismic'
 pkgver='1.6.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive Statechart Model Interpreter and Checker"
 url="https://github.com/AlexandreDecan/sismic/"
 depends=('python' 'python-schema' 'python-behave' 'python-ruamel-yaml')
@@ -18,18 +18,15 @@ build() {
   cd "${srcdir}/${_module}-${pkgver}"
   python setup.py build
   cd docs
-  make man
+  PYTHONPATH="${srcdir}/${_module}-${pkgver}" make man
 }
 
 check() {
   cd "${srcdir}/${_module}-${pkgver}"
   coverage run --source sismic -m pytest tests
 
-  cd docs
-  make doctest
-
-  cd examples/microwave/
-  python -m unittest
+  cd docs/examples/microwave/
+  PYTHONPATH="${srcdir}/${_module}-${pkgver}" python -m unittest
 }
 
 package() {

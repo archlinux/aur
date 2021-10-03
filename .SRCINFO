@@ -1,7 +1,7 @@
 pkgbase = python-sismic
 	pkgdesc = Interactive Statechart Model Interpreter and Checker
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlexandreDecan/sismic/
 	arch = any
 	license = LGPL3
