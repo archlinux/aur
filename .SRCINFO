@@ -1,7 +1,7 @@
 pkgbase = wide-dhcpv6
 	pkgdesc = An open source implementation of DHCPv6 developed by KAME project (with Debian patches)
 	pkgver = 20080615
-	pkgrel = 15
+	pkgrel = 16
 	url = http://wide-dhcpv6.sourceforge.net/
 	install = dhcp6c.install
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = wide-dhcpv6
 	options = emptydirs
 	backup = etc/wide-dhcpv6/dhcp6c.conf
 	backup = etc/conf.d/startpd.conf
-	source = http://downloads.sourceforge.net/project/wide-dhcpv6/wide-dhcpv6/wide-dhcpv6-20080615/wide-dhcpv6-20080615.tar.gz
-	source = http://ftp.debian.org/debian/pool/main/w/wide-dhcpv6/wide-dhcpv6_20080615-22.debian.tar.xz
+	source = https://downloads.sourceforge.net/project/wide-dhcpv6/wide-dhcpv6/wide-dhcpv6-20080615/wide-dhcpv6-20080615.tar.gz
+	source = https://ftp.debian.org/debian/pool/main/w/wide-dhcpv6/wide-dhcpv6_20080615-22.debian.tar.xz
 	source = 0000-noyywrap-option.patch
 	source = 0002-Fix-makefile.patch
 	source = dhcp6c.service
@@ -28,4 +28,3 @@ pkgbase = wide-dhcpv6
 	md5sums = 54866e3bdd4093efe89a2fc245e7f5ab
 
 pkgname = wide-dhcpv6
-

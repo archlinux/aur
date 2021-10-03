@@ -1,22 +1,22 @@
-# Maintainer: Spyros Stathopoulos <foucault.online@gmail.com>
+# Maintainer: Spyros Stathopoulos <spystath@gmail.com>
 pkgname=wide-dhcpv6
 pkgver=20080615
-pkgrel=15
-pkgdesc="An open source implementation of DHCPv6 developed by KAME project (with Debian patches)"
+pkgrel=16
+pkgdesc='An open source implementation of DHCPv6 developed by KAME project (with Debian patches)'
 arch=('i686' 'x86_64')
 url="http://wide-dhcpv6.sourceforge.net/"
 license=('custom')
 backup=('etc/wide-dhcpv6/dhcp6c.conf' 'etc/conf.d/startpd.conf')
 options=('emptydirs')
 
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "http://ftp.debian.org/debian/pool/main/w/${pkgname}/${pkgname}_${pkgver}-22.debian.tar.xz"
-	"0000-noyywrap-option.patch"
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "https://ftp.debian.org/debian/pool/main/w/${pkgname}/${pkgname}_${pkgver}-22.debian.tar.xz"
+        "0000-noyywrap-option.patch"
         "0002-Fix-makefile.patch"
         "dhcp6c.service"
-	"dhcp6c@.service"
-	"startpd.conf"
-	"dhcp6c.conf")
+        "dhcp6c@.service"
+        "startpd.conf"
+        "dhcp6c.conf")
 
 install="dhcp6c.install"
 
@@ -30,48 +30,47 @@ md5sums=('1011e165850fe40d3e332dad2bfd30b3'
          '54866e3bdd4093efe89a2fc245e7f5ab')
 
 prepare() {
-	cd ${srcdir}
-	cp debian/patches/*patch ${srcdir}
-	# this is included in the new 0002 patch, so rm it
-	rm "0002-Don-t-strip-binaries.patch"
-	cd ${srcdir}/$pkgname-$pkgver
-	for i in ../*patch ; do
-		patch -p1 < ${i};
-	done
+  cd ${srcdir}
+  cp debian/patches/*patch ${srcdir}
+  # this is included in the new 0002 patch, so rm it
+  rm "0002-Don-t-strip-binaries.patch"
+  cd ${srcdir}/$pkgname-$pkgver
+  for i in ../*patch ; do
+    patch -p1 < ${i};
+  done
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	pwd
-	./configure --prefix=/usr \
-	        --mandir=/usr/share/man \
-		--with-localdbdir=/var/lib/dhcpv6 \
-		--sysconfdir=/etc/wide-dhcpv6 \
-		--sbindir=/usr/bin
-	# -j > 1 breaks build dependencies
-	make -j1
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure --prefix=/usr \
+    --mandir=/usr/share/man \
+    --with-localdbdir=/var/lib/dhcpv6 \
+    --sysconfdir=/etc/wide-dhcpv6 \
+    --sbindir=/usr/bin
+  # -j > 1 breaks build dependencies
+  make -j1
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	mkdir -p "${pkgdir}/var/lib/dhcpv6"
-	mkdir -p "${pkgdir}/usr/share/man"
-	mkdir -p "${pkgdir}/usr/share/man/man5"
-	mkdir -p "${pkgdir}/usr/share/man/man8"
-	#install -D -m644 ${srcdir}/${pkgname}-${pkgver}/dhcp6c.conf.sample \
-	#        ${pkgdir}/etc/wide-dhcpv6/dhcp6c.conf
-	install -D -m644 ${srcdir}/dhcp6c.conf \
-		${pkgdir}/etc/wide-dhcpv6/dhcp6c.conf
-	install -D -m644 ${srcdir}/${pkgname}-${pkgver}/dhcp6s.conf.sample \
-		${pkgdir}/etc/wide-dhcpv6/dhcp6s.conf
-	install -D -m644 ${srcdir}/dhcp6c.service \
-		${pkgdir}/usr/lib/systemd/system/dhcp6c.service
-	install -D -m644 ${srcdir}/dhcp6c@.service \
-		${pkgdir}/usr/lib/systemd/system/dhcp6c@.service
-	install -D -m644 ${srcdir}/${pkgname}-${pkgver}/COPYRIGHT \
-		${pkgdir}/usr/share/licenses/wide-dhcpv6/LICENSE
-	install -D -m644 ${srcdir}/startpd.conf \
-		${pkgdir}/etc/conf.d/startpd.conf
-	make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgname-$pkgver"
+  mkdir -p "${pkgdir}/var/lib/dhcpv6"
+  mkdir -p "${pkgdir}/usr/share/man"
+  mkdir -p "${pkgdir}/usr/share/man/man5"
+  mkdir -p "${pkgdir}/usr/share/man/man8"
+  #install -D -m644 ${srcdir}/${pkgname}-${pkgver}/dhcp6c.conf.sample \
+  #        ${pkgdir}/etc/wide-dhcpv6/dhcp6c.conf
+  install -D -m644 ${srcdir}/dhcp6c.conf \
+    ${pkgdir}/etc/wide-dhcpv6/dhcp6c.conf
+  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/dhcp6s.conf.sample \
+    ${pkgdir}/etc/wide-dhcpv6/dhcp6s.conf
+  install -D -m644 ${srcdir}/dhcp6c.service \
+    ${pkgdir}/usr/lib/systemd/system/dhcp6c.service
+  install -D -m644 ${srcdir}/dhcp6c@.service \
+    ${pkgdir}/usr/lib/systemd/system/dhcp6c@.service
+  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/COPYRIGHT \
+    ${pkgdir}/usr/share/licenses/wide-dhcpv6/LICENSE
+  install -D -m644 ${srcdir}/startpd.conf \
+    ${pkgdir}/etc/conf.d/startpd.conf
+  make DESTDIR="$pkgdir/" install
 }
 
