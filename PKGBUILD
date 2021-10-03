@@ -4,7 +4,7 @@ pkgbase=avisynthplus-git
 pkgname=('avisynthplus-git'
          'avisynthplus-docs-git'
          )
-pkgver=v3.5.1.2.g43b94daf
+pkgver=v3.7.0.69.gc54a3272
 pkgrel=1
 pkgdesc='Avisynth+. (GIT Version)'
 arch=('x86_64')
@@ -13,9 +13,14 @@ license=('GPL')
 makedepends=('git'
              'cmake'
              'python-sphinx'
+             'devil'
              )
-source=('avisynthplus::git+https://github.com/AviSynth/AviSynthPlus.git')
-sha256sums=('SKIP')
+source=('avisynthplus::git+https://github.com/AviSynth/AviSynthPlus.git'
+        'https://patch-diff.githubusercontent.com/raw/AviSynth/AviSynthPlus/pull/227.diff'
+        )
+sha256sums=('SKIP'
+            'SKIP'
+            )
 
 pkgver() {
   cd avisynthplus
@@ -25,13 +30,15 @@ pkgver() {
 prepare() {
   mkdir -p build
 
+  patch -d avisynthplus -p1 -i "${srcdir}/227.diff"
+
   mkdir -p avisynthplus/distrib/docs/english/source/_static
 }
 
 build() {
   cd build
   cmake ../avisynthplus \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
   make
@@ -40,7 +47,7 @@ build() {
 }
 
 package_avisynthplus-git() {
-  depends=('gcc-libs')
+  depends=('devil')
   provides=('avisynthplus')
   conflicts=('avisynthplus')
 
