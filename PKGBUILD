@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=timetrace
-pkgver=0.13.0
-pkgrel=3
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="A simple time-tracking CLI tool"
 arch=('x86_64')
 url="https://github.com/dominikbraun/timetrace"
@@ -13,7 +13,7 @@ optdepends=('bash-completion: built-in completions')
 install="$pkgname.install"
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1edd3a51782242a60503476e9f9e10215f3b90992a35e9deec1d578ec41ead5d')
+sha256sums=('bdfe2c2e93d729f1e933d4b78ed4e17378a7f627e6f7bddd3ad9285036ad03e6')
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
