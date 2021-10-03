@@ -1,8 +1,9 @@
 # Maintainer: riey <creeper844@gmail.com>
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
+
 pkgname=kime-bin
-pkgver=2.5.5
-pkgrel=2
+pkgver=2.5.6
+pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 # official binary have kime-window
@@ -23,8 +24,10 @@ source=(
     ${pkgname}-${pkgver}.tar.gz::"https://github.com/Riey/kime/archive/refs/tags/v${pkgver}.tar.gz"
     ${pkgname}-${pkgver}-bin.tar.zst::"https://github.com/Riey/kime/releases/download/v${pkgver}/kime-v${pkgver}.tar.zst"
 )
-md5sums=('dea5c3079478d5ec33f272b372751a88'
-         'a246bcbb2e93af0c41e6fae29a1298e4')
+
+sha256sums=('e96ef7427b8ad64434c12e4e7c2c968e62f8efb98682a5887c72ba235ac3df3e'
+         '83f8681f18bd291ea53166a4aaf285e42299797f45a0819d9a4d19dbac8f6211')
+
  
 build() {
     cd "kime-${pkgver}"
