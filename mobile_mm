@@ -1,11 +1,6 @@
 # Contributed by Max Bülte <ff0x@this-is-fine.io>
-# Version: 0.1.1
+# Version: 0.1.3
 # shellcheck disable=SC2148,SC2016,SC1091,SC2034
-
-# KNOWN BUGS:
-# - After suspend/hibernate the mobile broadband connection is not going to reconnect automatically (that's probably ok)
-#   and sometimes, the modem is PUK-locked afterwards. The netctl connection is still show as active.
-#   To fix this issue just run 'netctl restart <profile>'. This will also unlock the modem if required.
 
 . "$SUBR_DIR/ip"
 . "$SUBR_DIR/rfkill"
@@ -16,40 +11,75 @@ function check_deps() {
   local _prog="$1"
 
   if ! command -v "$_prog" >/dev/null 2>&1; then
-    report_error "'$_prog' not found. Check required dependencies."
+    report_error "'$_prog' not found! Check required dependencies."
     return 1
   fi
+}
+
+function configure_interface() {
+  local _bearer="$1"
+  local _interface_address _interface_prefix _interface_gateway _interface_dns
+
+  if [[ -n "$IP" ]] && [[ "$IP" != 'no' ]]; then
+    if [[ "$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".method')" == "static" ]]; then
+      _interface_address="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".address')"
+      _interface_prefix="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null  | jq -r '.[]."ipv4-config".prefix')"
+      _interface_gateway="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".gateway')"
+      _interface_dns="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null     | jq -r '.[]."ipv4-config".dns[0]')"
+
+      Address=("${_interface_address}/${_interface_prefix}")
+      Gateway="$_interface_gateway"
+    elif [[ "$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".method')" == "dhcp" ]]; then
+      IP="dhcp"
+    fi
+  fi
+
+  if [[ -n "$IP6" ]] && [[ "$IP6" != 'no' ]]; then
+    if [[ "$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".method')" == "static" ]]; then
+      _interface_address="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".address')"
+      _interface_prefix="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null  | jq -r '.[]."ipv6-config".prefix')"
+      _interface_gateway="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".gateway')"
+      _interface_dns="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null     | jq -r '.[]."ipv6-config".dns[0]')"
+
+      Address6=("${_interface_address}/${_interface_prefix}")
+      Gateway6="$_interface_gateway"
+    elif [[ "$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".method')" == "dhcp" ]]; then
+      IP6="dhcp"
+    fi
+  fi
+
+  [[ "${UsePeerDNS:-true}" == 'true' ]] && DNS=("$_interface_dns")
 }
 
 function mobile_mm_up {
   local _mmcli_args=()
 
-  if ! is_interface "$Interface"; then
-    report_debug "Interface '$Interface' does not exist. Is this a problem?"
-  fi
-
-  if [[ $RFKill ]]; then
+  if [[ -n "$RFKill" ]]; then
+    report_debug "Unblocking device: '$RFKill'."
     rf_enable "$Interface" "$RFKill" || return 1
   fi
 
-  if [[ -z $AccessPointName ]]; then
-    report_error "Option 'AccessPointName' is required"
-    return 1
-  else
+  if [[ -n "$AccessPointName" ]]; then
     _mmcli_args+=("apn=${AccessPointName}")
+  else
+    report_error "Option 'AccessPointName' is required!"
+    return 1
   fi
 
-  [[ $Pin ]] && _mmcli_args+=("pin=${Pin}")
+  if [[ -n "$Pin" ]]; then
+    _mmcli_args+=("pin=${Pin}")
+  fi
 
   local _ip_type="ipv4"
-  if [[ $IP6 ]] && [[ ! "$IP6" =~ (dhcp|no) ]]; then
-    report_notice "Currently only the following options are supported for 'IP6' ('dhcp', 'no'). Continueing with disabled IPv6"
-    IP6="no"
+  if [[ -n "$IP6" ]] && [[ "$IP6" != 'no' ]]; then
+    _ip_type="ipv4v6"
+
+    # FIXME:
+    report_notice "IPv6 is currently untested. Good luck!"
   fi
-  [[ "$IP6" == 'dhcp' ]] && _ip_type="ipv4v6"
   _mmcli_args+=("ip-type=${_ip_type}")
 
-  if [[ $User ]] && [[ $Password ]]; then
+  if [[ -n "$User" ]] && [[ -n "$Password" ]]; then
     _mmcli_args+=("user=${User}")
     _mmcli_args+=("password=${Password}")
   fi
@@ -64,37 +94,32 @@ function mobile_mm_up {
   _connect_args=$(printf ",%s" "${_mmcli_args[@]}")
   _connect_args=${_connect_args:1}
 
-  if [[ $Mode ]] && [[ ! "$Mode" =~ ^(ANY|2G|3G|4G)$ ]]; then
-    report_notice "Mode must be one of (ANY, 2G, 3G, 4G). Selecting 4G as preferred mode"
+  if [[ -z "$Mode" ]]; then
     Mode="4G"
-  else
-    Mode="4G"
+  elif [[ ! "$Mode" =~ ^(ANY|2G|3G|4G)$ ]]; then
+    report_error "Mode must be one of (ANY, 2G, 3G, 4G)!"
+    return 1
   fi
 
-  report_debug "Full connect string: mmcli -m $MODEM --set-allowed-modes=ANY --set-preferred-mode=${Mode} --simple-connect=$_connect_args"
+  report_debug "Full connection string: mmcli -m ${MODEM} --set-allowed-modes=ANY --set-preferred-mode=${Mode} --simple-connect=$_connect_args"
 
   # Trying to establish the broadband connection until the modem got its bearer (and the bearer_interface) or the timeout is reached
-  local _bearer _bearer_interface
-  TIMEOUT_CONNECT=${TimeoutConnect:-30}
-  _bearer=''; _bearer_interface=''
+  mmcli -m "$MODEM" --set-allowed-modes=ANY --set-preferred-mode="${Mode}" --simple-connect="$_connect_args"
 
-  until [[ -n "$_bearer_interface" ]] || [ "$TIMEOUT_CONNECT" -eq 0 ]; do
-    mmcli -m "$MODEM" --set-allowed-modes=ANY --set-preferred-mode="${Mode}" --simple-connect="$_connect_args"
+  local _bearer='' _bearer_interface=''
+  TIMEOUT_CONNECT=${TimeoutConnect:-25}
+  until [[ -n "$_bearer" ]] || [[ "$TIMEOUT_CONNECT" -eq 0 ]]; do
+    _bearer="$(mmcli -J -m "$MODEM" 2>/dev/null | jq -r '.[].generic.bearers[0]' 2>/dev/null)"
+    _bearer="${_bearer##--}"
+    sleep 1
+    ((TIMEOUT_CONNECT--))
 
-    if [[ -n "$_bearer" ]]; then
-      report_debug "Bearer found on modem"
-
-      until mmcli -J -m "$MODEM" 2>/dev/null | jq -r '.[].generic.bearers[0]' 2>/dev/null || [ "$TIMEOUT_MODEM" -eq 0 ]; do
-        sleep 1
-        ((TIMEOUT_CONNECT--))
-      done
-
+    until [[ -n "$_bearer_interface" ]] || [[ "$TIMEOUT_CONNECT" -eq 0 ]]; do
       _bearer_interface="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[].status.interface' 2>/dev/null)"
-    else
+      _bearer_interface="${_bearer_interface##--}"
       sleep 1
-      _bearer="$(mmcli -J -m "$MODEM" 2>/dev/null | jq -r '.[].generic.bearers[0]' 2>/dev/null)"
       ((TIMEOUT_CONNECT--))
-    fi
+    done
   done
 
   if [[ -z "$_bearer" ]]; then
@@ -105,13 +130,13 @@ function mobile_mm_up {
   if [[ -z "$_bearer_interface" ]]; then
     report_error "No bearer interface found. Consider increasing \$TimeoutConnect a bit."
     return 1
+  elif [[ "$_bearer_interface" != "$Interface" ]]; then
+    report_error "Network interface used by the bearer is not the same as provided by your connection profile. Please update the profile using the right bearer interface: '$_bearer_interface'"
+    return 1
   fi
 
-  report_debug "Interface found on modem bearer"
-
-  if [[ "$_bearer_interface" != "$Interface" ]]; then
-    report_notice "Network interface used by the bearer is not the same as provided by your connection profile. Please update the profile using the right bearer interface: '$_bearer_interface'"
-    Interface=$_bearer_interface
+  if [[ -n "$_bearer" ]] && [[ -n "$_bearer_interface" ]]; then
+    report_debug "Bearer '$_bearer' found on interface '$_bearer_interface'."
   fi
 
   # Disable IPv6 before bringing the interface up to prevent SLAAC
@@ -126,45 +151,13 @@ function mobile_mm_up {
 
   # Some cards are plain slow to come up. Don't fail immediately.
   if ! timeout_wait "${TimeoutCarrier:-5}" '(( $(< "/sys/class/net/$Interface/carrier") ))'; then
-    report_error "No connection found on interface '$Interface' (timeout)"
+    report_error "No connection found on interface '$Interface' (timeout)!"
     bring_interface_down "$Interface"
     return 1
   fi
 
-  local _interface_address _interface_prefix _interface_gateway _interface_dns
-
-  # Configuring IPv4
-  if [[ "$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".method')" == "static" ]]; then
-    IP="static"
-    _interface_address="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".address')"
-    _interface_prefix="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".prefix')"
-    _interface_gateway="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".gateway')"
-    _interface_dns="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".dns[0]')"
-
-    Address=("${_interface_address}/${_interface_prefix}")
-    Gateway="$_interface_gateway"
-    [[ "${UsePeerDNS:-true}" == 'true' ]] && DNS=("$_interface_dns")
-  elif [[ "$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".method')" == "dhcp" ]]; then
-    IP="dhcp"
-  fi
-
-  # FIXME: IPv6 Support (requires testing)
-  # Configuring IPv6
-  if [[ "$IP6" == 'dhcp' ]]; then
-    if [[ "$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".method')" == "static" ]]; then
-      IP="static"
-      _interface_address="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".address')"
-      _interface_prefix="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".prefix')"
-      _interface_gateway="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".gateway')"
-      _interface_dns="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".dns[0]')"
-
-      Address=("${_interface_address}/${_interface_prefix}")
-      Gateway="$_interface_gateway"
-      [[ "${UsePeerDNS:-true}" == 'true' ]] && DNS=("$_interface_dns")
-    elif [[ "$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".method')" == "dhcp" ]]; then
-      IP6="dhcp"
-    fi
-  fi
+  # Getting interface configuration
+  configure_interface "$_bearer"
 
   if ! ip_set; then
     bring_interface_down "$Interface"
@@ -173,37 +166,17 @@ function mobile_mm_up {
 }
 
 function mobile_mm_down {
-  local _bearer _bearer_interface
+  local _bearer
   _bearer="$(mmcli -J -m "$MODEM" 2>/dev/null | jq -r '.[].generic.bearers[0]' 2>/dev/null)"
-  _bearer_interface="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[].status.interface')"
 
-  if [[ "$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".method')" == "static" ]]; then
-    _interface_address="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".address')"
-    _interface_prefix="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".prefix')"
-    _interface_gateway="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".gateway')"
-    _interface_dns="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv4-config".dns[0]')"
-
-    Address=("${_interface_address}/${_interface_prefix}")
-    Gateway="$_interface_gateway"
-    [[ "${UsePeerDNS:-true}" == 'true' ]] && DNS=("$_interface_dns")
-  fi
-
-  if [[ "$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".method')" == "static" ]]; then
-    _interface_address="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".address')"
-    _interface_prefix="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".prefix')"
-    _interface_gateway="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".gateway')"
-    _interface_dns="$(mmcli -J -m "$MODEM" -b "$_bearer" 2>/dev/null | jq -r '.[]."ipv6-config".dns[0]')"
-
-    Address=("${_interface_address}/${_interface_prefix}")
-    Gateway="$_interface_gateway"
-    [[ "${UsePeerDNS:-true}" == 'true' ]] && DNS=("$_interface_dns")
-  fi
+  # Getting interface configuration
+  configure_interface "$_bearer"
 
   mmcli -m "$MODEM" --simple-disconnect 2>/dev/null
   ip_unset
   interface_delete "$Interface"
 
-  if [[ $RFKill ]]; then
+  if [[ -n $RFKill ]]; then
     rf_disable "$Interface" "$RFKill"
   fi
 }
@@ -222,22 +195,23 @@ if [[ -z "$MODEM" ]]; then
   if ! systemctl is-active ModemManager.service &>/dev/null; then
     report_notice "ModemManager service not running, trying to start it.."
     systemctl start ModemManager.service
-
-    # Wait until ModemManager has initialised the modem
-    report_debug "Sleeping until modem is available.."
-    TIMEOUT_MODEM=${TimeoutModem:-15}
-    until [[ "$(mmcli -J -L 2>/dev/null | jq -r '.[][0]' 2>/dev/null)" =~ ^/org/freedesktop/ModemManager[0-9]+/Modem/[0-9]+$ ]] || [ "$TIMEOUT_MODEM" -eq 0 ]; do
-      sleep 1
-      ((TIMEOUT_MODEM--))
-    done
-
-    # Finally get the modem path
-    MODEM="$(mmcli -J -L 2>/dev/null | jq -r '.[][0]' 2>/dev/null)"
   fi
+
+  # Wait until ModemManager has initialised the modem
+  report_debug "Sleeping until modem is available.."
+  TIMEOUT_MODEM=${TimeoutModem:-15}
+  until [[ "$(mmcli -J -L 2>/dev/null | jq -r '.[][0]' 2>/dev/null)" =~ ^/org/freedesktop/ModemManager[0-9]+/Modem/[0-9]+$ ]] \
+    || [[ "$TIMEOUT_MODEM" -eq 0 ]]; do
+    sleep 1
+    ((TIMEOUT_MODEM--))
+  done
+
+  # Finally get the modem path
+  MODEM="$(mmcli -J -L 2>/dev/null | jq -r '.[][0]' 2>/dev/null)"
 fi
 
 MODEM_ID="$(mmcli -J -L 2>/dev/null | jq -r '.[][0] | [splits("/")] | (.[5] | tonumber)' 2>/dev/null)"
-if [[ -z "$MODEM_ID" ]] || [[ ! "$MODEM_ID" =~ ^[0-9]+$ ]]; then
+if [[ ! "$MODEM_ID" =~ ^[0-9]+$ ]]; then
   report_error "No modem found! Please ensure that ModemManager is capable of finding your modem."
   exit 1
 fi
@@ -252,13 +226,13 @@ if [[ "$MODEM_STATUS" == 'locked' ]]; then
   SIM="$(mmcli -J -m "$MODEM" 2>/dev/null | jq -r '.[].generic.sim')"
 
   if [[ -n "$SIM" ]]; then
-    if [[ $Puk ]]; then
-      report_notice "Trying to unlock using the PUK.."
-      mmcli -m "$MODEM" -i "$SIM" --puk="${Pin}" >/dev/null 2>&1
+    if [[ -n "$Puk" ]]; then
+      report_notice "Trying to unlock using PUK.."
+      mmcli -m "$MODEM" -i "$SIM" --puk="${Pin}" >/dev/null 2>&1 || true
     fi
 
-    if [[ $Pin ]]; then
-      report_notice "Trying to unlock using the PIN.."
+    if [[ -n "$Pin" ]]; then
+      report_notice "Trying to unlock using PIN.."
       mmcli -m "$MODEM" -i "$SIM" --pin="${Pin}" >/dev/null 2>&1
     fi
 

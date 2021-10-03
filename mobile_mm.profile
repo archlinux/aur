@@ -1,14 +1,16 @@
 Description='Example of a mobile broadband connection profile'
 Connection=mobile_mm
 
+IP=static
+
+# IPv6 is currently not supported (default: no)
+IP6=no
+
 # The Wireless WAN interface provided by the modem
 Interface=wwp0s20u4
 
 # Block/unblock your radio
 #RFKill=tpacpi_wwan_sw
-
-# IPv6 currently only supports 'dhcp' (default: no)
-#IP6=no
 
 # Use the default route provided by the peer (default: true)
 #DefaultRoute=false
@@ -41,8 +43,8 @@ AccessPointName=apn
 # Amount of seconds, we will wait until initialisation of the modem will be interrupted (default: 15)
 #TimeoutModem=5
 
-# Amount of seconds, we will wait for the connection is established (default: 30)
-#TimeoutConnect=35
+# Amount of seconds, we will wait for the connection is established (default: 25)
+#TimeoutConnect=30
 
 # Preferred mode can be one of {ANY, 2G, 3G, 4G} (default: 4G)
 #Mode=4G
