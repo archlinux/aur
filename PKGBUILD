@@ -14,7 +14,6 @@ depends=('python-requests' 'python-six')
 makedepends=('python-setuptools')
 conflicts=("$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/plamere/spotipy/archive/$pkgver.tar.gz")
-sha512sums=('fbaecd1a2cab3ef458d30de46cb89462021dfc3cfc85516d8bfe509af016a0b19af2f8de4f5cae36188b1ce1f5718c75edff0e71af2a87f4d720ee99d4541a6a')
 
 build() {
   cd spotipy-$pkgver
@@ -26,3 +25,5 @@ package() {
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
   install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+sha256sums=('36c94b4b3beaa7979721272d84837ee4df3adb8ca6d32c5675b91b3823b4df12')
