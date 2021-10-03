@@ -1,0 +1,11 @@
+pkgbase = libbtui-devel
+	pkgdesc = header files for libbtui
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = libbtui
+	source = https://gitlab.sokoll.com/moritz/btui-c/-/archive/main/btui-c-main.tar.gz
+	sha256sums = 1379f36a40823afa278f7917aca947853175db422b5c2b921bc86077c5e751c7
+
+pkgname = libbtui-devel
