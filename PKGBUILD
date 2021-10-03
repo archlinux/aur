@@ -4,7 +4,7 @@ pkgdesc="ROS - A Python and C++ implementation of the LZ4 streaming format."
 url='https://wiki.ros.org/roslz4'
 
 pkgname='ros-noetic-roslz4'
-pkgver='1.15.11'
+pkgver='1.15.13'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -31,7 +31,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/utilities/roslz4"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('7187dd3ab2783e5041c2ef71079cf2b6f9ed06c88c7e3c6efd7684ca5475b5bd')
+sha256sums=('b676d6e688fe5ad78a9da9205477cc92ea6d54301f71caade1f27804d2d55000')
 
 build() {
 	# Use ROS environment variables.
