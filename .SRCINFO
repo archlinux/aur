@@ -1,7 +1,7 @@
 pkgbase = kinect-audio-setup
 	pkgdesc = Tools to download and apply USB Audio Class firmware for Kinect and use it as microphone
 	pkgver = 0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.ao2.it/kinect-audio-setup.git
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = kinect-audio-setup
 	makedepends = make
 	makedepends = gcc
 	makedepends = p7zip>=9.20
+	depends = libusb
+	depends = systemd-libs
 	source = git+https://git.ao2.it/kinect-audio-setup.git#tag=v0.5
 	source = http://download.microsoft.com/download/F/9/9/F99791F2-D5BE-478A-B77A-830AD14950C3/KinectSDK-v1.0-beta2-x86.msi
 	source = LICENSE
@@ -18,4 +20,3 @@ pkgbase = kinect-audio-setup
 	sha256sums = d23efd383bc03aa8cdeac33be24a9c915f05ad92d20f4070e7160bdcff7f4a8c
 
 pkgname = kinect-audio-setup
-

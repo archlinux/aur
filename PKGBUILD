@@ -1,11 +1,12 @@
 # Maintainer: Mikołaj "D1SoveR" Banasik <d1sover@gmail.com>
 pkgname='kinect-audio-setup'
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Tools to download and apply USB Audio Class firmware for Kinect and use it as microphone'
 arch=('x86_64' 'i686')
 url='https://git.ao2.it/kinect-audio-setup.git'
 license=('WTFPL' 'BSD')
+depends=('libusb' 'systemd-libs')
 makedepends=('make' 'gcc' 'p7zip>=9.20')
 
 source=("git+${url}#tag=v${pkgver}"
