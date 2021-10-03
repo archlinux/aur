@@ -1,16 +1,13 @@
 pkgbase = grpcurl
 	pkgdesc = Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers
-	pkgver = 1.8.0
-	pkgrel = 2
+	pkgver = 1.8.2
+	pkgrel = 1
 	url = https://github.com/fullstorydev/grpcurl
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	conflicts = grpcurl-bin
-	source = grpcurl-1.8.0.tar.gz::https://github.com/fullstorydev/grpcurl/archive/v1.8.0.tar.gz
-	source = file://0001-use-latest-version-of-protoreflect-212.patch
-	md5sums = 6b8efb66f4281e3a09221dfa5d9b2fc3
-	md5sums = 8b6c6b82b43bb22145ffc746e747e6b7
+	source = grpcurl-1.8.2.tar.gz::https://github.com/fullstorydev/grpcurl/archive/v1.8.2.tar.gz
+	sha384sums = 1086ea3a60d644d98153d68bcc9ee94c87ba2914fe78e8d84323383f33814ca858f3496c0b513a4093affa930c9bbd32
 
 pkgname = grpcurl
-
