@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-xacro
 	pkgdesc = ROS - Xacro (XML Macros) Xacro is an XML macro language.
-	pkgver = 1.14.8
+	pkgver = 1.14.9
 	pkgrel = 1
 	url = https://wiki.ros.org/xacro
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ros-noetic-xacro
 	makedepends = ros-noetic-roslint
 	makedepends = ros-noetic-catkin
 	depends = ros-noetic-roslaunch
-	source = ros-noetic-xacro-1.14.8.tar.gz::https://github.com/ros/xacro/archive/1.14.8.tar.gz
-	sha256sums = cacae66f2869c3de26d0ea294e2d6db44130a8339432d36789847a6dc9623927
+	source = ros-noetic-xacro-1.14.9.tar.gz::https://github.com/ros/xacro/archive/1.14.9.tar.gz
+	sha256sums = a1174d70c66b2aa0436e70605632cb48e738a8d8a0f920a031678031b52f5cf6
 
 pkgname = ros-noetic-xacro
