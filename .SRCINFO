@@ -1,14 +1,14 @@
 pkgbase = python-mt940
-	pkgdesc = A module to parse MT940 files
-	pkgver = 0.4
+	pkgdesc = Module to parse MT940 files
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/mt940
+	changelog = CHANGELOG
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	source = python-mt940-0.4.tar.gz::https://pypi.python.org/packages/ea/ab/a66a9e8422901f8bdd227f34a9d6ecd49ab81dd3defe1080e18204762df8/mt940-0.4.tar.gz
-	md5sums = 31d8b0136d9f4891c91e3af0f4eb9002
-	sha512sums = 3aca8529fcae904bd69dc667a30ab9e978226d5b823edb6acb72d1c79a4ca4278470195843b055ed66b94f3333e123ea6945b8aa6b66934a5c92cfa241cad9bb
+	depends = python
+	source = python-mt940-0.6.0.tar.gz::https://files.pythonhosted.org/packages/source/m/mt940/mt940-0.6.0.tar.gz
+	sha512sums = b13f2006181f8636f1b7ca555fb5650c62dcb76a942c837ef710599e69916d39c8d8d6e1f6781b1f40920bb9d5c7222e7272f19a68dee5f280db27e092eb896e
 
 pkgname = python-mt940
-

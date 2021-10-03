@@ -1,0 +1,23 @@
+Version 0.6.0 - 2021-09-18
+* Remove support for Python older than 3.5
+* Add support for Python 3.9
+
+Version 0.5.0 - 2020-03-29
+* Add support for Python 3.5, 3.6, 3.7, 3.8
+* Do not fail on optional balances
+
+Version 0.4 - 2017-07-05
+* Allow to use file-like object
+* Allow to define file encoding
+
+Version 0.3 - 2016-01-27
+* Add support for RegioBank description format
+* Set a default description after setting a statement
+
+Version 0.2 - 2015-04-29
+* Add Statement description
+* Renamed properties of Transaction to follow the norm
+* Add support for ING specific description format
+
+Version 0.1 - 2014-06-25
+* Initial release
