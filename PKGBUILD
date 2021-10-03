@@ -1,7 +1,7 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-git' 'libdragon-tools-git')
-pkgver=r296.b627161
+pkgver=r314.2d20f7f
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
 arch=('x86_64')
@@ -38,7 +38,7 @@ package_libdragon-git(){
   chmod 755 "${pkgdir}/etc/profile.d/libdragon.sh"
 
   mkdir -p "${pkgdir}/usr/mips64-elf/"{include,lib} "${pkgdir}/usr/include"
-  make INSTALLDIR="${pkgdir}/usr" install
+  make INSTALLDIR="${pkgdir}/usr" PREFIX="${pkgdir}/usr" install
 
   # strip it manually
   find "${pkgdir}/usr/mips64-elf/lib" -type f -exec /usr/bin/mips64-elf-strip --strip-unneeded {} \; 2>/dev/null || true
