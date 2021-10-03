@@ -1,6 +1,6 @@
 pkgbase = gemgen
 	pkgdesc = A Markdown to Gemtext generator
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 2
 	url = https://sr.ht/~kota/gemgen/
 	arch = x86_64
@@ -11,9 +11,8 @@ pkgbase = gemgen
 	license = GPL3
 	makedepends = go
 	makedepends = scdoc
-	makedepends = make
-	makedepends = sed
-	source = gemgen-0.2.0.tar.gz::https://git.sr.ht/~kota/gemgen/archive/v0.2.0.tar.gz
-	sha256sums = 9deeaeba81cac61caa7992392cee409a18219d35d86c4c958a67d54fdef99ba4
+	depends = glibc
+	source = gemgen-0.3.0.tar.gz::https://git.sr.ht/~kota/gemgen/archive/v0.3.0.tar.gz
+	sha256sums = d61b77927b51fde4f74ac764dbd56e32fbb7294974e9edddb947b72d36a9cb0b
 
 pkgname = gemgen
