@@ -1,0 +1,14 @@
+pkgbase = vampy
+	pkgdesc = Wrapper plugin that enables you to use Python Vamp in any Vamp host.
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://code.soundsoftware.ac.uk/projects/pyin
+	arch = any
+	license = GPL
+	depends = vamp-plugin-sdk
+	depends = python
+	depends = python2
+	source = git+https://gitlab.com/tallero/vampy
+	md5sums = SKIP
+
+pkgname = vampy
