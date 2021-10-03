@@ -1,0 +1,24 @@
+pkgbase = haskell-bustle
+	pkgdesc = Draw sequence diagrams of D-Bus traffic
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/bustle/bustle#readme
+	arch = x86_64
+	license = custom: LGPL_2_1_or_later
+	makedepends = ghc
+	makedepends = haskell-hunit
+	makedepends = haskell-quickcheck
+	makedepends = haskell-test-framework
+	makedepends = haskell-test-framework-hunit
+	depends = ghc-libs
+	depends = haskell-cairo
+	depends = haskell-gio
+	depends = haskell-glib
+	depends = haskell-gtk
+	depends = haskell-pango
+	depends = glib2
+	depends = libpcap
+	source = https://hackage.haskell.org/packages/archive/bustle/0.8.0/bustle-0.8.0.tar.gz
+	sha256sums = 2fb3e9d9a97db3cd9a3ce763e86947b642bd7733b46206177a1677f08726573c
+
+pkgname = haskell-bustle
