@@ -13,6 +13,7 @@ pkgbase = wired
 	depends = pango
 	depends = glib2
 	depends = libx11
+	depends = libxss
 	provides = wired
 	conflicts = wired
 	source = wired-0.9.3.tar.gz::https://github.com/Toqozz/wired-notify/archive/0.9.3.tar.gz
