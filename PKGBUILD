@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/oicleevan/the-deeps"
 license=('MIT')
 source=("https://github.com/oicleevan/$pkgname/archive/refs/tags/$pkgver.zip")
-sha1sums=('8e236600c6e1d0dea83da0a07d64f329a09a4215')
+sha1sums=(SKIP)
 
 build() {
 	cd "$pkgname-$pkgver/src/libeo"
