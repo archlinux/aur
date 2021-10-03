@@ -1,7 +1,7 @@
 # Maintainer: cubercsl <2014cais01 at gmail dot com>
 
 pkgname=rime-flypy
-pkgver=10.8.1
+pkgver=10.8.2
 pkgrel=1
 pkgdesc="小鹤音形 rime 挂接文件"
 arch=('any')
@@ -16,7 +16,7 @@ backup=('usr/share/rime-data/flypy_sys.txt'
         'usr/share/rime-data/flypy_user.txt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v$pkgver.tar.gz"
         "$pkgname.install")
-sha256sums=('52342da649db4628b2363550dace9d3869b66f96a05c2c70f374f9c2ec8df875'
+sha256sums=('d1432250e510da6bb7c8edffe47c415a307aa3afff230b3b7cc86992fbfa86b9'
             '07487dba48d81c42c647fae3449c0a52fdcee9edc890c65961122b5304b824eb')
 install="$pkgname.install"
 
