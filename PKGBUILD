@@ -1,38 +1,57 @@
-# Maintainer: hexchain <i@hexchain.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: hexchain <i@hexchain.org>
 
-_pkgname=json_delta
 pkgbase=python-json-delta
-pkgname=(python-json-delta python2-json-delta)
-license=("BSD")
-pkgver=2.0
+_name=json_delta
+pkgname=('python-json-delta' 'python2-json-delta')
+pkgver=2.0.2
 pkgrel=1
-pkgdesc="A diff/patch pair for JSON-serialized data structures"
-url="https://pypi.python.org/pypi/json-delta/"
-source=("https://pypi.python.org/packages/d4/82/b61f5ba5f4e09531a80b1a50c251be01f8bdb4997f9fbad077b7572d5ea0/json_delta-2.0.tar.gz")
+pkgdesc="Diff/patch pair for JSON-serialized data structures"
+license=('BSD')
 arch=("any")
+url="https://pypi.python.org/pypi/json-delta/"
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('95ea3ff9908fc7d634c27ffec11db8fd8d935aa3e895d7302915d394b10e0321')
+
+prepare() {
+	cp -a "$_name-$pkgver"{,-py2}
+}
 
 build() {
-    cd "$srcdir"
-    cp -r "$_pkgname-$pkgver" "$_pkgname-$pkgver-py2"
+	cd "$srcdir/$_name-$pkgver"
+	python setup.py build
+
+	cd "$srcdir/$_name-$pkgver-py2"
+	python2 setup.py build
+}
+
+check() {
+	cd "$srcdir/$_name-$pkgver"
+	python setup.py test
+
+	cd "$srcdir/$_name-$pkgver-py2"
+	python2 setup.py test
 }
 
 package_python-json-delta() {
-    depends=("python")
-    cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --prefix=/usr --root="$pkgdir" -O1
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	depends=('python')
+
+	cd "$_name-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 package_python2-json-delta() {
-    depends=("python2")
-    cd "$srcdir/$_pkgname-$pkgver-py2"
-    python2 setup.py install --prefix=/usr --root="$pkgdir" -O1
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	depends=('python2')
 
-    cd "$pkgdir/usr/bin"
-    for f in *; do
-        mv "$f" "${f}2"
-    done
+	cd "$_name-$pkgver-py2"
+	PYTHONHASHSEED=0 python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+	cd "$pkgdir/usr/bin"
+	for f in *; do
+		mv "$f" "${f}2"
+	done
 }
 
-sha256sums=('462a73672f7527517d863930bb442ed1986c35dfb6960e0fb1cb84393deea652')
