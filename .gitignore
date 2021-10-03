@@ -1,0 +1,5 @@
+/LICENSE
+/pkg/
+/src/
+/usql-bin-*.pkg.tar.zst
+/usql-bin-*.tar.bz2
