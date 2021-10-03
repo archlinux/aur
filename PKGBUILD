@@ -7,10 +7,10 @@
 pkgname=coreutils-hybrid
 _pkgname=coreutils
 __pkgname=uutils-coreutils
-pkgver=8.32_0.0.7
-_pkgver=8.32
+pkgver=9.0_0.0.7
+_pkgver=9.0
 __pkgver=0.0.7
-pkgrel=2
+pkgrel=1
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -21,11 +21,26 @@ conflicts=('coreutils')
 provides=('coreutils')
 makedepends=('rust' 'cargo' 'python-sphinx')
 source=("https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$_pkgver.tar.xz"{,.sig}
-        "$__pkgname-$__pkgver.tar.gz::$_url/archive/$__pkgver.tar.gz")
+        "$__pkgname-$__pkgver.tar.gz::$_url/archive/$__pkgver.tar.gz"
+        "01-fix-fs72253.patch")
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
-sha512sums=('1c8f3584efd61b4b02e7ac5db8e103b63cfb2063432caaf1e64cb2dcc56d8c657d1133bbf10bd41468d6a1f31142e6caa81d16ae68fa3e6e84075c253613a145'
+sha512sums=('9be08212891dbf48e5b22e7689dc27dac50df4631ebf29313470b72b7921f0b2aa5242917d05587785358495ca56e3b21f5b3ca81043d53cab92354da6c53a03'
             'SKIP'
-            'b9f14f02dd485b5816bdbad2210f7436aff599f84f7c6f42827ef1050969dbdf8e112f7866a80c736a9b3114ab5b6d923df5537ce5e38f57ba8167179fd39041')
+            'b9f14f02dd485b5816bdbad2210f7436aff599f84f7c6f42827ef1050969dbdf8e112f7866a80c736a9b3114ab5b6d923df5537ce5e38f57ba8167179fd39041'
+            '10313ecc918de8ee007c3bc9a57a96372a537b7b1653577daa5609f1026bcc7e6ef4907b75243b37cef305c5c9b45eb446e49649059f667009a2b1fdf6ef3dc3')
+
+prepare() {
+  cd $_pkgname-$_pkgver
+  # apply patch from the source array (should be a pacman feature)
+  local filename
+  for filename in "${source[@]}"; do
+    if [[ "$filename" =~ \.patch$ ]]; then
+      echo "Applying patch ${filename##*/}"
+      patch -p1 -N -i "$srcdir/${filename##*/}"
+    fi
+  done
+  :
+}
 
 build() {
   # Build GNU coreutils without the stable uutils programs counterparts leaving out: stat, touch, realpath (genfstab broken), ln (no -s option)
