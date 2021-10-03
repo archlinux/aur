@@ -1,6 +1,6 @@
 pkgbase = releng-tool
 	pkgdesc = Tool to assist in the release engineering of a project
-	pkgver = 0.9.0.dev0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://releng.io/
 	arch = any
@@ -14,16 +14,16 @@ pkgbase = releng-tool
 	optdepends = bzr: supporting for Bazaar cloning
 	optdepends = cmake: support for CMake package management
 	optdepends = cvs: supporting for CVS checkouts
-	optdepends = dropbear-scp: support for secure-copy fetching of sources
 	optdepends = fish: shell completion for fish
 	optdepends = git: support for Git cloning
 	optdepends = gnupg: support for GPG verification of downloaded packages
 	optdepends = make: support for building make-dependent packages
 	optdepends = mercurial: support for Mercurial cloning
+	optdepends = openssh: support for secure-copy fetching of sources
 	optdepends = patch: support for patching package sources
 	optdepends = subversion: supporting for Subversion checkouts
 	optdepends = zsh-completions: shell completion for zsh
-	source = releng-tool-0.9.0.dev0::git+https://github.com/releng-tool/releng-tool.git#commit=3d86ec264a219e66c4226d4d23f7762c37ff8e1d
+	source = releng-tool-0.9.0::git+https://github.com/releng-tool/releng-tool.git#tag=v0.9
 	sha512sums = SKIP
 
 pkgname = releng-tool

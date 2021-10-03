@@ -2,8 +2,8 @@
 
 pkgbase=releng-tool
 pkgname=(releng-tool python2-releng-tool)
-pkgver=0.9.0.dev0
-_pkgtarget=commit=3d86ec264a219e66c4226d4d23f7762c37ff8e1d # tmp: tag=v$pkgver
+pkgver=0.9.0
+_pkgtarget=tag=v0.9
 pkgrel=1
 pkgdesc='Tool to assist in the release engineering of a project'
 url=https://releng.io/
