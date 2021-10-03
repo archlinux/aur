@@ -1,0 +1,14 @@
+pkgbase = custom-adwaita-folder-icons-git
+	pkgdesc = Custom Adwaita folder icons to help organize directories
+	pkgver = r26.a187dd4
+	pkgrel = 1
+	url = https://github.com/CleoMenezes/Custom-Adwaita-Folder-Icons
+	arch = any
+	license = unknown
+	makedepends = git
+	provides = custom-adwaita-folder-icons
+	conflicts = custom-adwaita-folder-icons
+	source = icons::git+https://github.com/CleoMenezes/Custom-Adwaita-Folder-Icons.git
+	md5sums = SKIP
+
+pkgname = custom-adwaita-folder-icons-git
