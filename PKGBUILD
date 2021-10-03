@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=91.0.2
+pkgver=92.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ depends=('libxt' 'mime-types'
          # system harfbuzz
          'harfbuzz'
          # system graphite
-         'graphite-mozilla'
+         'graphite'
          # system webp
          'libwebp'
          # system libevent
@@ -52,7 +52,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=8bdd012e04c6e6c3f01d937faf16f3474685b9cb
+_patchrev=a0c9416afc032611d6171e58cf711d3cb86c705f
 options=('!emptydirs')
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -76,10 +76,12 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         # end
 	add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch
-        2000_system_harfbuzz_support.patch
-        2001_system_graphite2_support.patch
+        # use system harfbuzz
+        0004-bmo-847568-Support-system-harfbuzz.patch
+        # use system graphite2
+        0005-bmo-847568-Support-system-graphite2.patch
         # use sytem av1
-        7002_system_av1_support.patch
+        0006-bmo-1559213-Support-system-av1.patch
         # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
         0001-Use-remoting-name-for-GDK-application-names.patch
         # reenable system sqlite
@@ -141,10 +143,13 @@ prepare() {
   
   # Add globalmenu support
   patch -Np1 -i "$srcdir/unity-menubar.patch"
-  
-  patch -Np1 -i "$srcdir"/2000_system_harfbuzz_support.patch
-  patch -Np1 -i "$srcdir"/2001_system_graphite2_support.patch
-  patch -Np1 -i "$srcdir"/7002_system_av1_support.patch
+
+  # use system harfbuzz
+  patch -Np1 -i "$srcdir"/0004-bmo-847568-Support-system-harfbuzz.patch
+  # use system graphite2
+  patch -Np1 -i "$srcdir"/0005-bmo-847568-Support-system-graphite2.patch
+  # use sytem av1
+  patch -Np1 -i "$srcdir"/0006-bmo-1559213-Support-system-av1.patch
 
   # Fix MOZILLA#1530052
   patch -Np1 -i "$srcdir"/0001-Use-remoting-name-for-GDK-application-names.patch
@@ -275,22 +280,22 @@ md5sums=('SKIP'
          '4c23d9c0a691d70919beb1dafbbecbd3'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'c0f68250d27f208efcdee710207cd3e4'
-         '43c65f6513fbc28aaa8238ad3bdb4e26'
+         '9fbe0e41f2d08f9b7509c4afc77e02ee'
          '14ada9ebd479223d5f95a615caa50bcd'
          '0a5733b7a457a2786c2dd27626a1bf88'
-         '0d7f0fe667c3e9e54f95fa51e9560eed'
+         '9ad2dc49bf1cf74f70df2917d673c888'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
-         '6a1ed12b8dbac57722436a2987e3ea33'
-         '791db11feed7c4130b5af80b85ebcfbb'
-         '967b311e1a5c988a257b51d97633fba4'
+         '33f9a50bb1c0152c8f73afad90caf673'
+         '10039de04111c320b075d1db592658b7'
+         '32749b8718999bcba34a508189046b5c'
          'e7994b3b78b780ebe610ba3d87247e40'
          '00abc3976f028f8fe07111b9e687b574'
          'c7b492df4fbf42ffe8aea4c0afb89921'
          '04d226e7e748141d447ea28535890631'
          'c2ccbfca8c29fb6d960206af335c1d8e'
-         'b21033ca08953e7ce8304a208869eed1'
+         '5898cf09e6abd4c0e8b526a61b2d63b3'
          'd928ecb61da7628d4e7981ebf7e4c879'
          '5cf84ebbd3c787b56198c32a91b4df16'
          'f49ac3b9f5146e33ce587e6b23eb1a86'
-         'eb9fd90a3b18bfeebbed7e0e6056079c')
+         '2cf74781f6b742d6b7e6f7251f49311a')

@@ -1,18 +1,29 @@
-# HG changeset patch
-# Parent  df5c5a8c44bbf84528429a29aa78de4488884713
+From 1a2fe72403851b69e4e6dd04abc618ffab38fb2f Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Mon, 6 Apr 2020 19:34:44 +0200
+Subject: [PATCH 05/34] bmo#847568: Support system graphite2
+
 Allow building against system-wide graphite2.
 
-https://bugzilla.mozilla.org/show_bug.cgi?id=847568
+Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=847568
+Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+---
+ config/system-headers.mozbuild     |  6 ++++++
+ gfx/graphite2/geckoextra/moz.build | 21 +++++++++++++++++++++
+ gfx/graphite2/moz-gr-update.sh     |  7 ++++++-
+ gfx/moz.build                      |  6 +++++-
+ gfx/thebes/moz.build               |  5 ++++-
+ old-configure.in                   | 21 +++++++++++++++++++++
+ toolkit/library/moz.build          |  3 +++
+ toolkit/moz.configure              | 13 +++++++++++++
+ 8 files changed, 79 insertions(+), 3 deletions(-)
+ create mode 100644 gfx/graphite2/geckoextra/moz.build
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
+index a2977231ee..e97a65307f 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1234,16 +1234,22 @@ if CONFIG['OS_TARGET'] == 'Android':
- 
- if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
-     system_headers += [
- 	'harfbuzz/hb-glib.h',
- 	'harfbuzz/hb-ot.h',
+@@ -1242,6 +1242,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
  	'harfbuzz/hb.h',
      ]
  
@@ -25,13 +36,9 @@ diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
  if CONFIG['MOZ_JACK']:
      system_headers += [
          'jack/jack.h',
-         'jack/statistics.h',
-     ]
- 
- if CONFIG['MOZ_SYSTEM_JPEG']:
-     system_headers += [
 diff --git a/gfx/graphite2/geckoextra/moz.build b/gfx/graphite2/geckoextra/moz.build
 new file mode 100644
+index 0000000000..24e8d7a032
 --- /dev/null
 +++ b/gfx/graphite2/geckoextra/moz.build
 @@ -0,0 +1,21 @@
@@ -57,9 +64,10 @@ new file mode 100644
 +
 +FINAL_LIBRARY = 'gkmedias'
 diff --git a/gfx/graphite2/moz-gr-update.sh b/gfx/graphite2/moz-gr-update.sh
+index b91d9c161c..a97e6eb203 100755
 --- a/gfx/graphite2/moz-gr-update.sh
 +++ b/gfx/graphite2/moz-gr-update.sh
-@@ -1,11 +1,12 @@
+@@ -1,6 +1,7 @@
  #!/bin/bash
  
  # Script used to update the Graphite2 library in the mozilla source tree
@@ -67,17 +75,7 @@ diff --git a/gfx/graphite2/moz-gr-update.sh b/gfx/graphite2/moz-gr-update.sh
  
  # This script lives in gfx/graphite2, along with the library source,
  # but must be run from the top level of the mozilla-central tree.
- 
- # Run as
- #
- #    ./gfx/graphite2/moz-gr-update.sh RELEASE
- #
-@@ -32,22 +33,26 @@ echo "This directory contains the Graphi
- echo "$TARBALL" >> gfx/graphite2/README.mozilla
- echo ""
- echo "See" $0 "for update procedure." >> gfx/graphite2/README.mozilla
- 
- # fix up includes because of bug 721839 (cstdio) and bug 803066 (Windows.h)
+@@ -37,12 +38,16 @@ echo "See" $0 "for update procedure." >> gfx/graphite2/README.mozilla
  #find gfx/graphite2/ -name "*.cpp" -exec perl -p -i -e "s/<cstdio>/<stdio.h>/;s/Windows.h/windows.h/;" {} \;
  #find gfx/graphite2/ -name "*.h" -exec perl -p -i -e "s/<cstdio>/<stdio.h>/;s/Windows.h/windows.h/;" {} \;
  
@@ -95,27 +93,23 @@ diff --git a/gfx/graphite2/moz-gr-update.sh b/gfx/graphite2/moz-gr-update.sh
  
  echo
  echo If gfx/graphite2/src/files.mk has changed, please make corresponding
- echo changes to gfx/graphite2/src/moz.build
- echo
- 
- echo
- echo Now use hg commands to create a patch for the mozilla tree.
 diff --git a/gfx/moz.build b/gfx/moz.build
+index 8222b72333..16a2b401db 100644
 --- a/gfx/moz.build
 +++ b/gfx/moz.build
-@@ -13,6 +13,11 @@
- if CONFIG["MOZ_TREE_CAIRO"]:
-     DIRS += ["cairo"]
+@@ -10,6 +10,11 @@ with Files("**"):
+ with Files("wr/**"):
+     BUG_COMPONENT = ("Core", "Graphics: WebRender")
  
-+if CONFIG['MOZ_SYSTEM_GRAPHITE2']:
-+    DIRS += ['graphite2/geckoextra']
++if CONFIG["MOZ_SYSTEM_GRAPHITE2"]:
++    DIRS += ["graphite2/geckoextra"]
 +else:
-+    DIRS += ['graphite2/src' ]
++    DIRS += ["graphite2/src"]
 +
- if not CONFIG['MOZ_SYSTEM_HARFBUZZ']:
-     DIRS += ['harfbuzz/src']
+ if not CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
+     DIRS += ["harfbuzz/src"]
  
-@@ -24,7 +29,6 @@
+@@ -22,7 +27,6 @@ DIRS += [
      "qcms",
      "gl",
      "layers",
@@ -124,32 +118,30 @@ diff --git a/gfx/moz.build b/gfx/moz.build
      "thebes",
      "ipc",
 diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
+index e1cbefb604..4e5d693394 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -287,7 +287,10 @@
+@@ -288,7 +288,10 @@ if CONFIG["MOZ_WAYLAND"]:
  
  LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
  
 -DEFINES["GRAPHITE2_STATIC"] = True
-+if CONFIG['MOZ_SYSTEM_GRAPHITE2']:
-+    CXXFLAGS += CONFIG['MOZ_GRAPHITE2_CFLAGS']
++if CONFIG["MOZ_SYSTEM_GRAPHITE2"]:
++    CXXFLAGS += CONFIG["MOZ_GRAPHITE2_CFLAGS"]
 +else:
 +    DEFINES["GRAPHITE2_STATIC"] = True
  
- if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
-     CXXFLAGS += CONFIG['MOZ_HARFBUZZ_CFLAGS']
+ if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
+     CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
 diff --git a/old-configure.in b/old-configure.in
+index 78c358a3b1..2a9b8ad1d7 100644
 --- a/old-configure.in
 +++ b/old-configure.in
-@@ -2528,16 +2528,37 @@ if test "$USE_FC_FREETYPE"; then
-         CPPFLAGS="$CPPFLAGS $FT2_CFLAGS $XCFLAGS"
-         MOZ_CHECK_HEADERS([fontconfig/fcfreetype.h], ,
-             [AC_MSG_ERROR(Can't find header fontconfig/fcfreetype.h.)], [#include <fontconfig/fontconfig.h>])
-         CPPFLAGS="$_SAVE_CPPFLAGS"
+@@ -2205,6 +2205,27 @@ if test "$USE_FC_FREETYPE"; then
      fi
  fi
  
- dnl ========================================================
++dnl ========================================================
 +dnl Check for graphite2
 +dnl ========================================================
 +if test -n "$MOZ_SYSTEM_GRAPHITE2"; then
@@ -170,39 +162,34 @@ diff --git a/old-configure.in b/old-configure.in
 +    CFLAGS=$_SAVE_CFLAGS
 +fi
 +
-+dnl ========================================================
+ dnl ========================================================
  dnl Check if we need the 32-bit Linux SSE2 error dialog
  dnl ========================================================
- 
- AC_SUBST(MOZ_LINUX_32_SSE2_STARTUP_ERROR)
- 
- dnl ========================================================
- dnl Check for pixman and cairo
- dnl ========================================================
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
+index 4b7194e9e2..077f3f2556 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
-@@ -238,6 +238,9 @@
- OS_LIBS += CONFIG["MOZ_CAIRO_OSLIBS"]
- OS_LIBS += CONFIG["MOZ_WEBRTC_X11_LIBS"]
+@@ -242,6 +242,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+         "-lgvr",
+     ]
  
-+if CONFIG['MOZ_SYSTEM_GRAPHITE2']:
-+    OS_LIBS += CONFIG['MOZ_GRAPHITE2_LIBS']
++if CONFIG["MOZ_SYSTEM_GRAPHITE2"]:
++    OS_LIBS += CONFIG["MOZ_GRAPHITE2_LIBS"]
 +
- if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
-     OS_LIBS += CONFIG['MOZ_HARFBUZZ_LIBS']
+ if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
+     OS_LIBS += CONFIG["MOZ_HARFBUZZ_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
+index 39944c4aa1..ed1244266c 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -475,6 +475,21 @@
-     "_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True)
+@@ -460,6 +460,19 @@ add_old_configure_assignment(
  )
+ set_define("MOZ_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True))
  
 +# Graphite2
 +# ==============================================================
-+option('--with-system-graphite2',
-+       help="Use system graphite2 (located with pkgconfig)")
++option('--with-system-graphite2', help="Use system graphite2 (located with pkgconfig)")
 +
 +@depends('--with-system-graphite2')
 +def check_for_graphite2(value):
@@ -213,9 +200,9 @@ diff --git a/toolkit/moz.configure b/toolkit/moz.configure
 +
 +set_config('MOZ_SYSTEM_GRAPHITE2', depends_if(system_graphite2)(lambda _: True))
 +
-+
  # HarfBuzz
  # ==============================================================
- option('--with-system-harfbuzz',
+ option('--with-system-harfbuzz', help="Use system harfbuzz (located with pkgconfig)")
+-- 
+2.33.0
 
- 

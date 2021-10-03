@@ -1,7 +1,7 @@
-From 9b403dc8840d1f16ace76a9410fe003434a96e1b Mon Sep 17 00:00:00 2001
+From df1845c40a704c7095cbab1da965605e7cf8d33d Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Thu, 2 Jul 2020 18:05:03 +0200
-Subject: [PATCH 25/37] Fix building with PGO when using GCC
+Subject: [PATCH 25/35] Fix building with PGO when using GCC
 
 Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
 ---
@@ -13,22 +13,16 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
 index 30b8b27fc4..95852d7c21 100644
 --- a/build/moz.configure/lto-pgo.configure
 +++ b/build/moz.configure/lto-pgo.configure
-@@ -84,12 +84,13 @@
- @imports(_from="__builtin__", _import="min")
+@@ -85,7 +85,7 @@
  def pgo_flags(compiler, profdata, target_is_windows):
      if compiler.type == "gcc":
-+        profile_use = "-fprofile-use"
          return namespace(
-             gen_cflags=["-fprofile-generate"],
+-            gen_cflags=["-fprofile-generate"],
++            gen_cflags=["-fprofile-generate", "-DMOZ_PROFILE_INSTRUMENTATION"],
              gen_ldflags=["-fprofile-generate"],
--            use_cflags=["-fprofile-use", "-fprofile-correction", "-Wcoverage-mismatch"],
--            use_ldflags=["-fprofile-use"],
-+            use_cflags=[profile_use, "-fprofile-correction", "-Wcoverage-mismatch"],
-+            use_ldflags=[profile_use],
-         )
- 
-     if compiler.type in ("clang-cl", "clang"):
-     
+             use_cflags=["-fprofile-use", "-fprofile-correction", "-Wcoverage-mismatch"],
+             use_ldflags=["-fprofile-use"],
+
 diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
 index 7f3de106ab..89289a7756 100755
 --- a/build/pgo/profileserver.py
@@ -81,5 +75,5 @@ index 7f3de106ab..89289a7756 100755
          if llvm_profdata:
              profraw_files = glob.glob("*.profraw")
 -- 
-2.31.1
+2.32.0
 
