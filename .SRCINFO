@@ -1,0 +1,13 @@
+pkgbase = mse-mtg-new
+	pkgdesc = templates for modern magic for magic set editor
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/silverhikari/magic-set-templates-aur
+	arch = any
+	license = freeware
+	depends = zstd
+	depends = mse-mtg
+	source = https://github.com/silverhikari/magic-set-templates-aur/raw/main/mse-mtg-new/2.1.2/mtg-new.tar.zst
+	md5sums = SKIP
+
+pkgname = mse-mtg-new
