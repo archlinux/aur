@@ -2,7 +2,7 @@
 
 _plug=remapframes
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.6.g0232654
+pkgver=v1.1.0.g4676f0d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -42,6 +42,6 @@ build() {
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
 
-  install -Dm644 "${_plug}/README.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${pkgname}/README.rst"
+  install -Dm644 "${_plug}/README.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.rst"
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
