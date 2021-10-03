@@ -1,6 +1,6 @@
 pkgbase = glaxnimate
 	pkgdesc = Simple vector animation program.
-	pkgver = 0.4.6
+	pkgver = 0.4.6_4_gf861274e
 	pkgrel = 1
 	url = https://glaxnimate.mattbas.org/
 	arch = x86_64
