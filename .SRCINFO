@@ -1,0 +1,29 @@
+pkgbase = foosynth-plugin-eedi2cuda-git
+	pkgdesc = Plugin for Vapoursynth/Avisynth: eedi2cuda (Dual interface for Vapoursynth/Avisynth) (GIT version)
+	pkgver = 1.10.g3f4e137
+	pkgrel = 1
+	url = https://github.com/AmusementClub/VapourSynth-EEDI2CUDA.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = avisynthplus
+	makedepends = vapoursynth
+	makedepends = tbb
+	makedepends = cuda
+	source = eedi2cuda::git+https://github.com/AmusementClub/VapourSynth-EEDI2CUDA.git
+	source = git+https://github.com/boostorg/sync.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-eedi2cuda-git
+	pkgdesc = Plugin for Avisynth: eedi2cuda (GIT version)
+	depends = avisynthplus
+	provides = avisynth-plugin-eedi2cuda
+	conflicts = avisynth-plugin-eedi2cuda
+
+pkgname = vapoursynth-plugin-eedi2cuda-git
+	pkgdesc = Plugin for Vapoursynth: eedi2cuda (GIT version)
+	depends = vapoursynth
+	provides = vapoursynth-plugin-eedi2cuda
+	conflicts = vapoursynth-plugin-eedi2cuda
