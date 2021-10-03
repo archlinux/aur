@@ -1,14 +1,14 @@
-# Contributor: Spyros Stathopoulos <foucault.online@gmail.com>
+# Maintainer: Spyros Stathopoulos <spystath@gmail.com>
 pkgname=tktable
 _pkgnameactual=Tktable
 pkgver=2.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A full-featured 2D table widget for Tk."
-arch=('i686' 'x86_64') 
+arch=('i686' 'x86_64')
 url="http://tktable.sourceforge.net/"
 license=('custom')
 depends=('tcl' 'tk')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/${_pkgnameactual}${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/${_pkgnameactual}${pkgver}.tar.gz")
 md5sums=('ecdd96b39ad49b820bf084eb1c786f66')
 
 build() {
