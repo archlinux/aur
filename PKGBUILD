@@ -1,5 +1,5 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
-# Co-Maintainer: Joaquín Rufo Gutierrez<joaquinito2051@gmail.com>
+# Co-Maintainer: Joaquín Rufo Gutierrez <joaquinito2051@gmail.com>
 pkgname=jackett-bin
 pkgver=0.18.891
 pkgrel=1
