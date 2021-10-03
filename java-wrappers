@@ -1,0 +1,34 @@
+#!/bin/bash
+
+for jvm in /usr/lib/jvm/*; do
+    # must be a directory and not a symlink
+    if ! [ -d "$jvm" ] || [ -L "$jvm" ]; then
+    continue
+    fi
+    wname="$(basename "$jvm")"
+    wpath="/usr/bin/$wname"
+    echo "+ $wpath"
+    cat <<EOF >"$wpath"
+#!/bin/bash
+# set -o xtrace
+# Try to convert absolute paths
+cmd="\$(command -v "\$1")"
+if [[ "\$(file "\$cmd")" =~ ASCII\\ text ]]; then
+    echo 'Converting absolute paths...'
+    tmp="/tmp/jwrap_\$(tr '/' '%' <<<"\$cmd")"
+    touch "\$tmp"
+    chmod +x "\$tmp"
+    sed -E 's/\/usr\/bin\/(java\w*)/\1/g' "\$cmd" >"\$tmp"
+    if [[ "\$(md5sum "\$cmd")" == "\$(md5sum "\$tmp")" ]]; then
+        echo 'No conversion needed.'
+    else
+        set "\$tmp" "\${@:2}"
+        echo "Converted in \$tmp"
+    fi
+    echo
+fi
+
+env PATH="$jvm/bin:\$PATH" JAVA_HOME="$jvm" "\$@"
+EOF
+    chmod +x "$wpath"
+done

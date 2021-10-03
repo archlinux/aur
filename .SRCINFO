@@ -1,0 +1,15 @@
+pkgbase = java-wrappers
+	pkgdesc = Create a launch wrapper for each installed Java version
+	pkgver = 1.0
+	pkgrel = 1
+	install = pkg.install
+	arch = any
+	license = GPL
+	depends = bash
+	depends = file
+	source = java-wrappers.hook
+	source = java-wrappers
+	md5sums = a24bf225b693b152590da95dcc62115f
+	md5sums = ec3d6dca00ffc7744f3cfce53a6e4a39
+
+pkgname = java-wrappers
