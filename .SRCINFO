@@ -1,15 +1,13 @@
-pkgbase = inverse-icon-theme-git
+pkgbase = win11-icon-theme-git
 	pkgdesc = A colorful Design icon theme for linux desktops
-	pkgver = r39.f320885d
+	pkgver = r88.2293237
 	pkgrel = 1
-	url = https://github.com/yeyushengfan258/Inverse-icon-theme
+	url = https://github.com/yeyushengfan258/win11-icon-theme
 	arch = any
 	license = GPL
 	depends = gtk-update-icon-cache
-	conflicts = inverse-icon-theme
-	conflicts = inverse-icon-theme-blue-git
-	source = git+https://github.com/yeyushengfan258/Inverse-icon-theme.git
+	conflicts = win11-icon-theme
+	source = git+https://github.com/yeyushengfan258/win11-icon-theme.git
 	md5sums = SKIP
 
-pkgname = inverse-icon-theme-git
-
+pkgname = win11-icon-theme-git

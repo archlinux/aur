@@ -1,4 +1,5 @@
-*.tar.*
-pkg
-src
-Inverse-icon-theme/
+*
+
+!.SRCINFO
+!PKGBUILD
+!.gitignore

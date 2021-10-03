@@ -1,30 +1,26 @@
 # Maintainer: Yamada Hayao <hayao@fascode.net>
 
-pkgname=inverse-icon-theme-git
-_pkgname=inverse-icon-theme
-_gitname=Inverse-icon-theme
-pkgver=r39.f320885d
+pkgname=win11-icon-theme-git
+_pkgname=win11-icon-theme
+_gitname=win11-icon-theme
+pkgver=r88.2293237
 pkgrel=1
 pkgdesc="A colorful Design icon theme for linux desktops"
 arch=('any')
-url='https://github.com/yeyushengfan258/Inverse-icon-theme'
+url='https://github.com/yeyushengfan258/win11-icon-theme'
 license=('GPL')
 depends=('gtk-update-icon-cache')
 optdepends=()
 source=("git+${url}.git")
 md5sums=('SKIP')
-conflicts=('inverse-icon-theme' 'inverse-icon-theme-blue-git')
+conflicts=('win11-icon-theme')
 
 pkgver() {
-  cd "${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_gitname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    mkdir -p "${pkgdir}"
-    cp -r * "${pkgdir}"
-    cd "${pkgdir}"
-    mkdir -p "${pkgdir}/usr/share/icons"
-    ${_gitname}/install.sh -a -d "${pkgdir}/usr/share/icons"
-    rm -rf "${pkgdir}/${_gitname}"
+    install -dm755 "${pkgdir}/usr/share/icons"
+    "${srcdir}/${_gitname}/install.sh" -a -d "${pkgdir}/usr/share/icons"
 }
