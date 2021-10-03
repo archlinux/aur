@@ -1,7 +1,7 @@
 pkgbase = tsid
 	pkgdesc = Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stack-of-tasks/tsid
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = tsid
 	optdepends = doxygen
 	source = https://github.com/stack-of-tasks/tsid/releases/download/v1.6.0/tsid-1.6.0.tar.gz
 	source = https://github.com/stack-of-tasks/tsid/releases/download/v1.6.0/tsid-1.6.0.tar.gz.sig
+	source = https://github.com/stack-of-tasks/tsid/pull/144.patch
 	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 00a94c78a44c985d8327813ca3bbf373d251445fe3a8ad35dc9dd02a1b4e48e5
 
 pkgname = tsid
 
