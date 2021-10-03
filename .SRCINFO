@@ -1,6 +1,6 @@
 pkgbase = autofdo-git
 	pkgdesc = a tool to convert perf.data profile to AutoFDO profile that can be used by GCC and LLVM
-	pkgver = 0.1.r169.g188db28
+	pkgver = 0.1.r174.g963a8c1
 	pkgrel = 1
 	url = https://github.com/google/autofdo
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = autofdo-git
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
-	makedepends = llvm
+	makedepends = llvm11
 	makedepends = ninja
 	makedepends = python
 	depends = google-glog

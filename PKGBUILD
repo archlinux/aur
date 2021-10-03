@@ -5,7 +5,7 @@
 
 _pkgname=autofdo
 pkgname=$_pkgname-git
-pkgver=0.1.r169.g188db28
+pkgver=0.1.r174.g963a8c1
 pkgrel=1
 pkgdesc="a tool to convert perf.data profile to AutoFDO profile that can be used by GCC and LLVM"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/google/autofdo"
 license=('Apache')
 depends=('google-glog' 'protobuf') # common dependencies
 depends+=('libelf' 'openssl')      # required by GCC variant
-makedepends=('clang' 'cmake' 'git' 'llvm' 'ninja' 'python')
+makedepends=('clang' 'cmake' 'git' 'llvm11' 'ninja' 'python')
 optdepends=('llvm: for LLVM support')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
