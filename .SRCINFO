@@ -1,26 +1,12 @@
 pkgbase = mse-mtg
-	pkgdesc = Magic: the Gathering templates for Magic Set Editor.
-	pkgver = 2.0.0
-	pkgrel = 10
-	url = http://magicseteditor.sourceforge.net
+	pkgdesc = magic set editor base magic templates
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/silverhikari/magic-set-templates-aur
 	arch = any
 	license = freeware
 	depends = magicseteditor
-	conflicts = mse-mtg-phyrexian
-	conflicts = magicseteditor-mtg-base
-	source = https://downloads.sourceforge.net/project/msetemps/Magic%20-%20Recently%20Printed%20Styles.mse-installer
-	source = https://downloads.sourceforge.net/project/msetemps/Magic%20-%20Tarkir%20Update.mse-installer
-	sha256sums = a0a2c7821965134180fe096ed76ef56c5b7d14ecb2f003a919c2b3b3cd0ce0d3
-	sha256sums = e4e1d55fe5e8d884f7f676676b9fa1338bbcaf54e9fe0dac9502e49826f21c6f
+	source = https://github.com/silverhikari/magic-set-templates-aur/raw/main/2.1.2-mse-mtg.tar.gz
+	md5sums = SKIP
 
 pkgname = mse-mtg
-	pkgdesc = Magic: the Gathering base game and symbol fonts for Magic Set Editor.
-
-pkgname = mse-mtg-new
-	pkgdesc = Magic: the Gathering Modern templates for Magic Set Editor.
-	depends = mse-mtg
-
-pkgname = mse-mtg-m15
-	pkgdesc = Magic: the Gathering M15 templates for Magic Set Editor.
-	depends = mse-mtg
-
