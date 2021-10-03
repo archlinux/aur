@@ -6,6 +6,6 @@ pkgbase = the-deeps
 	arch = any
 	license = MIT
 	source = https://github.com/oicleevan/the-deeps/archive/refs/tags/1.2.1.zip
-	md5sums = 44f6dd777bc5d631220650da6f2cf6f0
+	sha1sums = 8e236600c6e1d0dea83da0a07d64f329a09a4215
 
 pkgname = the-deeps

@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/oicleevan/the-deeps"
 license=('MIT')
 source=("https://github.com/oicleevan/$pkgname/archive/refs/tags/$pkgver.zip")
-md5sums=('44f6dd777bc5d631220650da6f2cf6f0')
+sha1sums=('8e236600c6e1d0dea83da0a07d64f329a09a4215')
 
 build() {
 	cd "$pkgname-$pkgver/src/libeo"
@@ -25,4 +25,3 @@ package() {
 	cd "$pkgname-$pkgver"
 	sudo make install
 }
-md5sums=('44f6dd777bc5d631220650da6f2cf6f0')
