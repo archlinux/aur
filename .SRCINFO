@@ -1,0 +1,11 @@
+pkgbase = the-deeps
+	pkgdesc = A C++ text-based adventure game.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/oicleevan/the-deeps
+	arch = any
+	license = MIT
+	source = https://github.com/oicleevan/the-deeps/archive/refs/tags/1.2.zip
+	md5sums = 1b063eab21d8b355a98b956737259162
+
+pkgname = the-deeps
