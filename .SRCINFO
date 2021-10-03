@@ -1,0 +1,14 @@
+pkgbase = python-kucoin-git
+	pkgdesc = Unofficial Python wrapper for KuCoin's API
+	pkgver = 2.1.1.r14.gd7ba653
+	pkgrel = 1
+	url = https://github.com/sammchardy/python-kucoin
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-requests
+	source = git+https://github.com/sammchardy/python-kucoin.git
+	md5sums = SKIP
+
+pkgname = python-kucoin-git
