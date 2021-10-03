@@ -2,7 +2,7 @@
 
 pkgname=torchvision
 pkgdesc='datasets, transforms, and models specific to computer vision (C++ library only)'
-pkgver=0.6.1
+pkgver=0.10.1
 pkgrel=1
 license=("BSD")
 url='https://github.com/pytorch/vision'
@@ -12,7 +12,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/pytorch/vision/archive/v$pkgver.tar.gz"
 )
 
-sha512sums=('428235ae9412d176dc62eb42ed926caa5199bab448e7798fa240d69c1337e1ca5423c45a34bd6f4527e7ccafb927f53743311f8701dcee5f168bacc60f1d6750')
+sha512sums=('ad254d855259ff6ca9140f8dc85061e7223c21fbdf383483b16ee73576c22bb35bd558de4cfb048926d31b74a71dcfe806805d2f8c48757f1fdb6bedd8237cf9')
 
 depends=(
 	python
