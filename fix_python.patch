@@ -1,0 +1,22 @@
+--- build/python.prf.old	2021-10-03 11:10:47.378144948 +0200
++++ build/python.prf	2021-10-03 11:15:27.141372267 +0200
+@@ -2,7 +2,7 @@
+ 
+ # Change this variable to your python version (2.6, 2.7, 3.3, ...)
+ win32:PYTHON_VERSION=27
+-unix:PYTHON_VERSION=2.7
++unix:PYTHON_VERSION=3.9
+ 
+ macx {
+   # for macx you need to have the Python development kit installed as framework
+@@ -36,6 +36,8 @@
+   # on linux, python-config is used to autodetect Python.
+   # make sure that you have installed a matching python-dev package.
+   
+-  unix:LIBS += $$system(python$${PYTHON_VERSION}-config --libs)
+-  unix:QMAKE_CXXFLAGS += $$system(python$${PYTHON_VERSION}-config --includes)
++  system(/usr/bin/python3.9-config --embed --libs 2>/dev/null) {
++    unix:LIBS += $$system(/usr/bin/python3.9-config --embed --libs)
++  } else: unix:LIBS += $$system(/usr/bin/python3.9-config --libs)
++  unix:QMAKE_CXXFLAGS += $$system(/usr/bin/python3.9-config --includes)
+ }
