@@ -3,14 +3,16 @@
 pkgname=('groonga' 'groonga-doc')
 pkgver=11.0.7
 pkgbase=groonga
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://groonga.org/"
 license=('LGPL2.1')
 source=("http://packages.groonga.org/source/groonga/$pkgbase-$pkgver.tar.gz"
+        "http://packages.groonga.org/source/groonga/$pkgbase-$pkgver.tar.gz.asc"
         "groonga-httpd.service")
 makedepends=('glib2' 'libedit' 'zeromq' 'autoconf-archive'
             'libevent' 'mecab' 'mecab-ipadic' 'msgpack-c' 'ruby' 'snowball-c-git')
+validpgpkeys=(2701F317CFCCCB975CADE9C2624CF77434839225)
 
 build() {
     # TODO: Enable to build arrow on AArch64/armv7h
@@ -61,6 +63,8 @@ package_groonga() {
     install -Dm644 ../groonga-httpd.service "$pkgdir"/usr/lib/systemd/system/groonga-httpd.service
 }
 sha1sums=('b377ab68df31ee532d05efb111fddcadc33dc3be'
+          'SKIP'
           '56b68b5ebfc6785f08ce101b263d6f56acd74d8a')
 sha256sums=('296aa2924d54a8a9cf9e1a82a201c352c30c84fea3f8652a49d0e2cc94ffee60'
+            'SKIP'
             '4d3f91b40b37ab473b716c6c303c1e58ca7b3f777439fc4c055be80d04ffa65b')
