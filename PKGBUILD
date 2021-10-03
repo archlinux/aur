@@ -3,7 +3,7 @@
 
 pkgname=python-rq-scheduler
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Small package that adds job scheduling capabilities to RQ"
 arch=('any')
 license=('MIT')
@@ -16,6 +16,11 @@ sha256sums=('746a3496f4091df24fd749f2000d2aa0ba9b7ebd2652e5483c497faa82550d0f')
 build() {
 	cd "rq-scheduler-$pkgver"
 	python setup.py build
+}
+
+check() {
+	cd "rq-scheduler-$pkgver"
+	python -m unittest run_tests.py
 }
 
 package() {
