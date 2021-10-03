@@ -27,6 +27,6 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
   # install -Dm644 exports/completion.bash "$pkgdir/usr/share/bash-completion/completions/peekprof"
   # install -Dm644 exports/completion.fish "$pkgdir/usr/share/fish/completions/peekprof.fish"
-  install -Dm644 exports/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_peekprof"
+  install -Dm644 ./completions/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_peekprof"
 }
 
