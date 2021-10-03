@@ -16,6 +16,10 @@ conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-math/archive/${pkgname}6_${pkgver}.tar.gz")
 sha256sums=('d1dbd50a1e0d8d7b1263e86f20666a2f4f0000ed8ec7b3f34ec7ced2863924f5')
 
+depends=(
+  swig
+)
+
 _dir="ign-math-${pkgname}6_${pkgver}"
 
 build() {
