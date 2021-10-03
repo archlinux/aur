@@ -1,6 +1,6 @@
 pkgbase = linux-status
 	pkgdesc = Simple Linux status web page
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/egor-tensin/linux-status
 	install = linux-status.install
@@ -9,7 +9,7 @@ pkgbase = linux-status
 	depends = procps-ng
 	depends = python
 	depends = systemd
-	source = linux-status-1.0.1.tar.gz::https://github.com/egor-tensin/linux-status/archive/v1.0.1.tar.gz
+	source = linux-status-1.1.0.tar.gz::https://github.com/egor-tensin/linux-status/archive/v1.1.0.tar.gz
 	md5sums = SKIP
 
 pkgname = linux-status
