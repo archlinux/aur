@@ -1,0 +1,12 @@
+pkgbase = postgresql-topn
+	pkgdesc = PostgreSQL extension that returns the top values in a database according to some criteria
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/citusdata/postgresql-topn
+	arch = x86_64
+	license = AGPL3
+	depends = postgresql
+	source = https://github.com/citusdata/postgresql-topn/archive/refs/tags/v2.4.0.tar.gz
+	sha512sums = b1a3e0838db2b99ba056ccc3a6318f7505c5818fa8615dc3c01fc15a9f73aedd1759c5aaf0e0a2b2e77145e41e87cfa94566e398fb7cd23758a8af7a3ba153e8
+
+pkgname = postgresql-topn
