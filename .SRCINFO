@@ -1,10 +1,11 @@
 pkgbase = python-cli_helpers
 	pkgdesc = Python helpers for common CLI tasks.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dbcli/cli_helpers
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	depends = python
 	depends = python-backports.csv
 	depends = python-terminaltables
