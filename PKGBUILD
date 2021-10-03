@@ -2,8 +2,8 @@
 
 _plug=mvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v9.r48.413e23f
-pkgrel=2
+pkgver=v10.r63.03a9e58
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=172564'
@@ -14,7 +14,7 @@ depends=('vapoursynth-plugin-fmtconv-git'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/mvsfunc.git")
+source=("${_plug}::git+https://github.com/AmusementClub/mvsfunc.git")
 sha256sums=('SKIP')
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
