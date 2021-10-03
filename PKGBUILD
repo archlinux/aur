@@ -2,13 +2,13 @@
 pkgname=tcltrf
 _pkgnameactual=trf
 pkgver=2.1.4
-pkgrel=2
-pkgdesc="Trf is an extension library to the script language Tcl, as created by John Ousterhout."
-arch=('i686' 'x86_64') 
-url="http://tcltrf.sourceforge.net/"
+pkgrel=3
+pkgdesc='Trf is an extension library to the script language Tcl, as created by John Ousterhout.'
+arch=('i686' 'x86_64')
+url="https://tcltrf.sourceforge.net/"
 license=('custom')
 depends=('tcl')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/${_pkgnameactual}${pkgver}.tar.bz2")
+source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/${_pkgnameactual}${pkgver}.tar.bz2")
 md5sums=('624dc7b112886fd006664ac377da2391')
 
 build() {
