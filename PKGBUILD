@@ -1,13 +1,13 @@
 # Maintainer: Giuseppe Calà <gcala at mailbox dot org>
 
 pkgname=kdeltachat-git
-pkgver=r176.40092aa
+pkgver=r177.2936a85
 pkgrel=1
 pkgdesc="KDeltaChat is a Delta Chat client using Kirigami framework"
 arch=(x86_64 aarch64)
 url="https://git.sr.ht/~link2xt/kdeltachat"
 license=(GPL3)
-depends=('kirigami2' 'libdeltachat-git')
+depends=('kirigami2' 'libdeltachat-git' 'qt5-quickcontrols' 'extra-cmake-modules' 'qt5-imageformats' 'qt5-webengine' 'qt5-multimedia' 'qt5ct')
 makedepends=('git')
 provides=('kdeltachat')
 conflicts=('kdeltachat')
