@@ -7,7 +7,7 @@ _gamefilesver=18.0328
 pkgrel=1
 pkgdesc="Rewrite of Re-Volt, popular R/C car racing game from 1999."
 url='https://rvgl.re-volt.io'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('custom')
 depends=('sdl2' 'sdl2_image' 'openal' 'enet' 'libunistring')
 optdepends=('rvgl-dcpack: dreamcast content pack'
@@ -27,6 +27,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '4313552a067486339319e6e4b13386040183e196d7b6e26a1fec56a711e4721d')
+
+_binsuffix='none'
+[ "$CARCH" = 'i686' ] && _binsuffix='32'
+[ "$CARCH" = 'x86_64' ] && _binsuffix='64'
+[ "$CARCH" = 'armv7h' ] && _binsuffix='armhf'
+[ "$CARCH" = 'aarch64' ] && _binsuffix='arm64'
 
 package() {
     # Core game files
@@ -49,9 +55,9 @@ package() {
 
     # Platform binaries
     cd "$srcdir/rvgl_platform/linux"
-    install -Dm755 rvgl.64 "$pkgdir/opt/rvgl/rvgl"
+    install -Dm755 "rvgl.$_binsuffix" "$pkgdir/opt/rvgl/rvgl"
 
     # Launcher
     cd "$srcdir"
-    install -Dm755 RVGL.desktop "$pkgdir/usr/share/applications/RVGL.desktop"
+    install -Dm755 "RVGL.desktop" "$pkgdir/usr/share/applications/RVGL.desktop"
 }
