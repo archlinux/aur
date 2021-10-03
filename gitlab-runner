@@ -1,0 +1,11 @@
+#!/usr/bin/openrc-run
+
+description="GitLab Runner"
+
+depend() {
+    need net
+}
+
+supervisor=supervise-daemon
+command="/usr/bin/gitlab-runner"
+command_args="run --working-directory /var/lib/gitlab-runner --config /etc/gitlab-runner/config.toml --service gitlab-runner --user gitlab-runner"
