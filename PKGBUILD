@@ -13,7 +13,7 @@ source=(
   cemu.sh
   cemu.xpm
   cemu.desktop
-  https://cemu.info/releases/cemu_${pkgver}.zip
+  cemu_${pkgver}-${pkgrel}.zip::https://cemu.info/releases/cemu_${pkgver}.zip
   https://files.sshnuke.net/cemuhook_${_cemuhookver}.zip
   https://web.archive.org/web/20180907210517if_/https://files.sshnuke.net/sharedFonts.7z
 )
