@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libhandy-glade-catalog-disabled-git
-pkgver=1.2.2.r24.g2a55315
+pkgver=1.4.0.r24.g00a7d9a
 pkgrel=1
 pkgdesc='Library full of GTK+ widgets for mobile phones'
 url='https://gitlab.gnome.org/GNOME/libhandy'
