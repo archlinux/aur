@@ -4,15 +4,15 @@
 pkgname=vivaldi-snapshot-ffmpeg-codecs
 pkgver=93.0.4577.69
 _vivaldi_major_version=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('x86_64')
 url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
-  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python' 'python2'
-  'xdg-utils' 'gn' 'libva' 'nodejs'
+  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python' 'xdg-utils' 'gn'
+  'libva' 'nodejs'
 )
 options=('!strip')
 source=(
