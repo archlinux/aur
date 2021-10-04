@@ -1,0 +1,13 @@
+pkgbase = python2-decorator
+	pkgdesc = Decorators for Humans
+	pkgver = 4.4.2
+	pkgrel = 1
+	url = https://github.com/micheles/decorator
+	arch = any
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-decorator
+	source = https://files.pythonhosted.org/packages/source/d/decorator/decorator-4.4.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = python2-decorator
