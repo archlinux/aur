@@ -8,7 +8,7 @@
 
 pkgname=swi-prolog-devel
 pkgver=8.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
 url='https://www.swi-prolog.org/'
@@ -24,6 +24,7 @@ optdepends=('unixodbc:     for using the odbc4pl library'
             'jdk-openjdk:  for using Prolog from Java'
             'java-runtime: for using Prolog from Java')
 source=("https://www.swi-prolog.org/download/stable/src/swipl-$pkgver.tar.gz")
+sha256sums=('bff0396f827af3d3351eed0582a99cbcd0a66d14a2f5bbf4aeef22332714709f')
 
 provides=('swi-prolog')
 conflicts=('swi-prolog')
