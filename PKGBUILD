@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kooha
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple screen recorder for GNOME"
 arch=('x86_64')
 url="https://apps.gnome.org/app/io.github.seadve.Kooha"
 license=('GPL3')
-depends=('gst-plugin-pipewire' 'gstreamer' 'gtk4' 'libadwaita-git' 'python-gobject'
+depends=('gst-plugin-pipewire' 'gstreamer' 'gtk4' 'libadwaita' 'python-gobject'
          'xdg-desktop-portal')
 makedepends=('cargo' 'meson')
 checkdepends=('appstream-glib')
