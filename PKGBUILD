@@ -1,10 +1,10 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 pkgname=av1an-git
-pkgver=1.12.r953.gbf1b6e9
+pkgver=1.12.r1007.g657810d
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/master-of-zen/Av1an'
 license=('GPL3')
 makedepends=('git' 'cargo' 'nasm')
@@ -27,14 +27,14 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cd "Av1an"
-  RUSTUP_TOOLCHAIN=stable cargo build --release --all-features --target-dir=target --locked
+prepare() {
+    cd "Av1an"
+    cargo fetch --locked --target "x86_64-unknown-linux-gnu"
 }
 
-check() {
+build() {
   cd "Av1an"
-  RUSTUP_TOOLCHAIN=stable cargo test --locked --target-dir=target
+  RUSTUP_TOOLCHAIN=stable cargo build --release --target-dir=target --frozen --no-default-features
 }
 
 package() {
