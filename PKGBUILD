@@ -1,4 +1,5 @@
-# Maintainer:  Alexander Minges <alexander.minges@gmail.com>
+# Maintainer:  Johannes Löthberg <johannes@kyriasis.com>
+# Contributor: Alexander Minges <alexander.minges@gmail.com>
 # Contributor: TDY <tdy@archlinux.info>
 # Contributor: Andrzej Wąsowski <wasowski@data.pl>
 # Contributor: Roberto Alsina <ralsina@kde.org>
@@ -6,28 +7,32 @@
 # Contributor: Vo Van Hong Ngoc <vhngoc@ubuntu-vn.org>
 
 pkgname=rawdog
-pkgver=2.21
-pkgrel=1
+pkgver=2.23
+pkgrel=2
+
 pkgdesc="RSS Aggregator Without Delusions Of Grandeur"
+url="https://offog.org/code/rawdog.html"
 arch=('any')
-url="http://offog.org/code/rawdog.html"
 license=('GPL' 'LGPL')
+
 depends=('python2-feedparser')
-optdepends=('python2-tidylib: cleaner html output')
-install=$pkgname.install
-source=(http://offog.org/files/$pkgname-$pkgver.tar.gz)
-sha256sums=('6000c14285e4bb65b606a5315f6423daa0ac6db4fd4124b4a112fa0bce3abf38')
+
+install=rawdog.install
+
+source=("https://offog.org/files/rawdog-$pkgver.tar.gz")
+
+sha1sums=('171520c909fae81ac8ec0e063e7ca36593aae372')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py build
+	cd rawdog-"$pkgver"
+
+	python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-  install -Dm644 config "$pkgdir/usr/share/$pkgname/config"
-  install -Dm644 style.css "$pkgdir/usr/share/$pkgname/style.css"
-}
+	cd rawdog-"$pkgver"
 
-# vim:set ts=2 sw=2 et:
+	python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+	install -Dm644 config "$pkgdir/usr/share/$pkgname/config"
+	install -Dm644 style.css "$pkgdir/usr/share/$pkgname/style.css"
+}

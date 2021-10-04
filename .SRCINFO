@@ -1,16 +1,14 @@
 pkgbase = rawdog
 	pkgdesc = RSS Aggregator Without Delusions Of Grandeur
-	pkgver = 2.21
-	pkgrel = 1
-	url = http://offog.org/code/rawdog.html
+	pkgver = 2.23
+	pkgrel = 2
+	url = https://offog.org/code/rawdog.html
 	install = rawdog.install
 	arch = any
 	license = GPL
 	license = LGPL
 	depends = python2-feedparser
-	optdepends = python2-tidylib: cleaner html output
-	source = http://offog.org/files/rawdog-2.21.tar.gz
-	sha256sums = 6000c14285e4bb65b606a5315f6423daa0ac6db4fd4124b4a112fa0bce3abf38
+	source = https://offog.org/files/rawdog-2.23.tar.gz
+	sha1sums = 171520c909fae81ac8ec0e063e7ca36593aae372
 
 pkgname = rawdog
-

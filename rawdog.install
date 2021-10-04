@@ -1,11 +1,10 @@
 post_install() {
-  echo "==> rawdog files are located in /usr/share/rawdog"
-  echo "  -> copy config and styles.css to ~/.rawdog"
-  echo "  -> move styles.css if you change the html output location in config"
+	printf "%s\n%s\n%s\n" \
+		"==> rawdog files are located in /usr/share/rawdog" \
+		" -> copy config and styles.css to ~/.rawdog" \
+		" -> move styles.css if you change the html output location in config"
 }
 
 post_upgrade() {
-  post_install $1
+	post_install $1
 }
-
-# vim:set ts=2 sw=2 et:
