@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-tytan652
-pkgver=27.1.1
-pkgrel=4
+pkgver=27.1.2
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
