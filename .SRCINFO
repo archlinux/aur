@@ -1,37 +1,26 @@
 pkgbase = av1an
 	pkgdesc = A cross-platform all-in-one tool for streamlining AV1 encoding
-	pkgver = 6.1.post3
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/master-of-zen/Av1an
-	arch = any
+	arch = x86_64
 	license = GPL3
-	makedepends = python-setuptools
-	depends = python>=3.6.0
-	depends = python-numpy
-	depends = python-scenedetect
-	depends = opencv
-	depends = python-tqdm
-	depends = python-psutil
-	depends = python-scipy
-	depends = python-matplotlib
+	makedepends = cargo
+	makedepends = nasm
 	depends = ffmpeg
 	depends = aom
-	depends = hdf5
+	depends = vapoursynth
 	optdepends = svt-av1: SVT-AV1 encoder support
 	optdepends = rav1e: rav1e encoder support
 	optdepends = libvpx: vpx encoder support
 	optdepends = svt-vp9: SVT-VP9 encoder support
 	optdepends = vmaf: VMAF calculation support
-	optdepends = x265: x265 encoder support
-	optdepends = x264: x264 encoder support
-	optdepends = vapoursynth: Vapoursynth support
 	optdepends = mkvtoolnix-cli: mkvmerge support
 	optdepends = ffms2
 	optdepends = vapoursynth-plugin-lsmashsource
 	provides = python-av1an
 	conflicts = python-av1an
-	source = av1an-6.1.post3.tar.gz::https://files.pythonhosted.org/packages/source/A/Av1an/Av1an-6.1.post3.tar.gz
-	sha256sums = ab06a4383a77ecb3bdef4b1d3604c9031943d6653fa5da28ccda23071eff9b4f
+	source = av1an-0.1.0.tar.gz::https://static.crates.io/crates/av1an/av1an-0.1.0.crate
+	sha256sums = 48b94bb6124015eff42f3f19f02c55b5371a5f50394cf690ef4fe76755289835
 
 pkgname = av1an
-
