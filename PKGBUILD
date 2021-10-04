@@ -2,8 +2,8 @@
 
 pkgname=modoboa
 pkgver=1.17.0
-pkgrel=2
-pkgdesc="Modoboa is a django mail hosting and management platform"
+pkgrel=3
+pkgdesc="Mail hosting made simple"
 arch=(any)
 url="https://modoboa.org/en/"
 license=('MIT')
@@ -15,15 +15,9 @@ depends=('python-django' 'python-dj-database-url' 'python-pip' 'python-requests'
 optdepends=('python-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python-mysql-connector' 'python-psycopg2' 'gunicorn' 'python-vex')
 provides=('modoboa')
 conflicts=('modoboa-git')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        'python2.patch')
-sha512sums=('e7fc609605a0a6503a47656bc9ca564c83bc46f44acfc793b01e926053b2b0fa585cedfd9c5bb1f654cf02534e7d006bec66076daf696372fde203f9a9d74e20'
-            'a70429bd59ccf77384feff700df95facd9f7b674d0378d872233136a6ba5c61acdc6614b35493eecdfc01ae0fede12171aa143e493a45441aa87667e93903cfb')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('e7fc609605a0a6503a47656bc9ca564c83bc46f44acfc793b01e926053b2b0fa585cedfd9c5bb1f654cf02534e7d006bec66076daf696372fde203f9a9d74e20')
 
-prepare() {
-  cd "$srcdir"
-  patch -p0 -i "$srcdir/python2.patch"
- }
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1

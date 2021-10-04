@@ -1,7 +1,7 @@
 pkgbase = modoboa
-	pkgdesc = Modoboa is a django mail hosting and management platform
+	pkgdesc = Mail hosting made simple
 	pkgver = 1.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://modoboa.org/en/
 	arch = any
 	license = MIT
@@ -33,8 +33,6 @@ pkgbase = modoboa
 	provides = modoboa
 	conflicts = modoboa-git
 	source = https://files.pythonhosted.org/packages/source/m/modoboa/modoboa-1.17.0.tar.gz
-	source = python2.patch
 	sha512sums = e7fc609605a0a6503a47656bc9ca564c83bc46f44acfc793b01e926053b2b0fa585cedfd9c5bb1f654cf02534e7d006bec66076daf696372fde203f9a9d74e20
-	sha512sums = a70429bd59ccf77384feff700df95facd9f7b674d0378d872233136a6ba5c61acdc6614b35493eecdfc01ae0fede12171aa143e493a45441aa87667e93903cfb
 
 pkgname = modoboa
