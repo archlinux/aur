@@ -34,7 +34,7 @@ build() {
         --tray \
         "${url}"
 }
-# MSOutlook-linux-x64
+
 package() {
     install -dm755 "${pkgdir}/"{opt,usr/{bin,share/{applications,licenses/${pkgname}}}}
 
