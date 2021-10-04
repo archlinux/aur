@@ -5,6 +5,7 @@ pkgbase = perl-file-loadlines
 	url = https://metacpan.org/release/File-LoadLines
 	arch = any
 	license = PerlArtistic
+	depends = perl-text-exception
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/J/JV/JV/File-LoadLines-1.021.tar.gz
 	sha512sums = b7b6f3676df537422e038377ea76f0b7c42270d543975903cdfbcc9e1fe6701b3a132432800d242a5127ff3899de02c0bad40eb25cb5142a468679f92719d6c7
