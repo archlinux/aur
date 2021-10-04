@@ -1,0 +1,12 @@
+pkgbase = veikk-tablet-bin
+	pkgdesc = Veikk tablet driver retrieved from official veikk website
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.veikk.com
+	arch = x86_64
+	license = GPLv3
+	provides = veikk-tablet-bin
+	source = vktablet-1.0.2-1.x86_64.rpm::https://www.veikk.com/comp/xcompanyFile/download.do?fid=86&appId=24&id=41
+	md5sums = SKIP
+
+pkgname = veikk-tablet-bin
