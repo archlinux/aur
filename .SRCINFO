@@ -1,15 +1,17 @@
 pkgbase = python-pex
 	pkgdesc = a tool for generating executable Python environments
-	pkgver = 2.1.17
+	pkgver = 2.1.50
 	pkgrel = 1
 	url = https://github.com/pantsbuild/pex
+	changelog = CHANGES.rst
 	arch = any
-	license = Apache 2.0
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-dephell
 	depends = python
-	depends = python-setuptools
-	depends = python-wheel
-	source = https://pypi.python.org/packages/source/p/pex/pex-2.1.17.tar.gz
-	md5sums = 474c6726fdbbfe5368072199ad4e33fe
+	source = python-pex::git+https://github.com/pantsbuild/pex#tag=v2.1.50?signed
+	validpgpkeys = A1FE765B15233EAD18FA6ABB93E55CB567B5C626
+	sha256sums = SKIP
 
 pkgname = python-pex
-
