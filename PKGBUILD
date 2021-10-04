@@ -2,18 +2,17 @@
 
 pkgname=modoboa
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modoboa is a django mail hosting and management platform"
 arch=(any)
 url="https://modoboa.org/en/"
 license=('MIT')
-makedepends=('python' 'python-rrdtool' 'python-lxml' 'python-setuptools' 'zlib')
+makedepends=('python' 'rrdtool' 'python-lxml' 'python-setuptools' 'zlib')
 depends=('python-django' 'python-dj-database-url' 'python-pip' 'python-requests' 'python-crypto'
-         'python-sievelib' 'python-chardet' 'python-argparse' 'python-django-reversion'
+         'python-chardet' 'python-argparse' 'python-django-reversion'
          'python-passlib' 'python-django-versionfield2' 'python-factory_boy'
          'python-django-xforwardedfor-middleware')
-optdepends=('python-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python-mysql-connector' 'python-psycopg2' 'python-aspw'
-			     'python-gunicorn' 'python-vex')
+optdepends=('python-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python-mysql-connector' 'python-psycopg2' 'gunicorn' 'python-vex')
 provides=('modoboa')
 conflicts=('modoboa-git')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
