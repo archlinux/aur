@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
 	cd easea
-	patch --strip=1 --input=final.patch
+	patch --forward --strip=1 --input="${srcdir}/final.patch"
 	mkdir -p build
 }
 
