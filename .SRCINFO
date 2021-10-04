@@ -1,15 +1,14 @@
 pkgbase = osysinfo
 	pkgdesc = A basic CLI tool to see your system details
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/ottop/osysinfo
-	arch = x86_64
-	license = GPL
-	makedepends = python-fire
-	makedepends = python-distro
-	makedepends = python-psutil
-	source_x86_64 = https://github.com/ottop/osysinfo/archive/refs/tags/1.0.tar.gz
-	sha256sums_x86_64 = 4f431460bb2ef5543474d742b576882e8217d5d5ad7d2f346249abcc53aee70a
+	arch = any
+	license = GPL3
+	depends = python-fire
+	depends = python-distro
+	depends = python-psutil
+	source = https://github.com/ottop/osysinfo/archive/refs/tags/1.1.tar.gz
+	sha256sums = 7ebe5f1e90ccc3ede263b2006a229cc3df4e8cee333409f49cbf1affe2f8f6b1
 
 pkgname = osysinfo
-

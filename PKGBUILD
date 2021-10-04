@@ -1,18 +1,19 @@
 # Maintainer: Borislav Borisov <borislav.borisov@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=osysinfo
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A basic CLI tool to see your system details"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/ottop/osysinfo"
-license=('GPL')
-makedepends=('python-fire' 'python-distro' 'python-psutil')
-source_x86_64=('https://github.com/ottop/osysinfo/archive/refs/tags/1.0.tar.gz')
-sha256sums_x86_64=('4f431460bb2ef5543474d742b576882e8217d5d5ad7d2f346249abcc53aee70a')
+license=('GPL3')
+depends=('python-fire' 'python-distro' 'python-psutil')
+source=('https://github.com/ottop/osysinfo/archive/refs/tags/1.1.tar.gz')
+sha256sums=('7ebe5f1e90ccc3ede263b2006a229cc3df4e8cee333409f49cbf1affe2f8f6b1')
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	cd "$pkgname-$pkgver"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
