@@ -14,8 +14,8 @@ makedepends=('git'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/vapoursynth/vs-miscfilters-obsolete.git")
-sha256sums=('SKIP')
+source=("${_plug}::git+https://github.com/vapoursynth/vs-miscfilters-obsolete.git" 'https://raw.githubusercontent.com/vapoursynth/vapoursynth/R56/src/core/filtershared.h')
+sha256sums=('SKIP' '4e80389d055b636d29b8cc9ad9916547f2aab206b2535b59c1d571da1e52be71')
 
 pkgver() {
   cd "${_plug}"
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   mkdir -p build
   mkdir -p include
-  curl -o "include/filtershared.h" https://raw.githubusercontent.com/vapoursynth/vapoursynth/R56/src/core/filtershared.h
+  cp filtershared.h "include/filtershared.h"
 }
 
 build() {
