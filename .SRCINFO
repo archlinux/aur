@@ -1,6 +1,6 @@
 pkgbase = python-exchangelib
 	pkgdesc = Client for Microsoft Exchange Web Services (EWS)
-	pkgver = 4.5.0
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://github.com/ecederstrand/exchangelib
 	arch = any
@@ -19,9 +19,9 @@ pkgbase = python-exchangelib
 	depends = python-pytz
 	depends = python-future
 	depends = python-tzlocal
-	source = python-exchangelib-4.5.0.tar.gz::https://github.com/ecederstrand/exchangelib/archive/refs/tags/v4.5.0.tar.gz
+	source = python-exchangelib-4.5.2.tar.gz::https://github.com/ecederstrand/exchangelib/archive/refs/tags/v4.5.2.tar.gz
 	source = LICENSE
-	sha256sums = ec69861640e3b007eafc30213beef9d93e4bdfcd33d961e45ba6dc8e76d8204e
+	sha256sums = 78ca017c95d58ebffa21bb6075b98f1704ec0fc3b0bd9277938cbd7dd60e34d4
 	sha256sums = 650d8ac6b0ab9a2c946b021bf12933cad611b6397d0eaff31beb28f6a243afa9
 
 pkgname = python-exchangelib
