@@ -1,6 +1,6 @@
 pkgbase = transmission-sequential
 	pkgver = 3.00
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.transmissionbt.com/
 	arch = i686
 	arch = x86_64
@@ -20,10 +20,12 @@ pkgbase = transmission-sequential
 	conflicts = transmission-cli
 	source = https://github.com/Mikayex/transmission/archive/3.00-seq1.tar.gz
 	source = https://github.com/transmission/transmission-releases/raw/master/transmission-3.00.tar.xz
+	source = transmission_autoconf.patch
 	source = transmission-sequential-cli.sysusers
 	source = transmission-sequential-cli.tmpfiles
 	sha256sums = fc74e0d7879cc79e43d85ae374233bb4530ab14d6cddafe593a81a95005b4258
 	sha256sums = 9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2
+	sha256sums = 1c01a2977a58b9199d2564b5441986b7ef5b0e9b1cb6dc52ce7c64bf6a9ad251
 	sha256sums = 641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2
 	sha256sums = 1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451
 
@@ -55,4 +57,3 @@ pkgname = transmission-sequential-qt
 	optdepends = transmission-sequential-cli: daemon and web support
 	provides = transmission-qt
 	conflicts = transmission-qt
-

@@ -1,0 +1,46 @@
+diff --git a/configure.ac b/configure.ac
+index fd1132fda..2a5dc8c65 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -10,6 +10,8 @@ AC_INIT([transmission],[user_agent_prefix],[https://github.com/transmission/tran
+ AC_SUBST(USERAGENT_PREFIX,[user_agent_prefix])
+ AC_SUBST(PEERID_PREFIX,[peer_id_prefix])
+ 
++IT_PROG_INTLTOOL
++
+ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+ 
+ AC_CONFIG_MACRO_DIR([m4])
+@@ -553,19 +555,19 @@ dnl a problem and the old version was working fine for you,
+ dnl it should be safe to re-edit 0.40 back down to 0.23
+ 
+ use_nls=no
+-if test "x$enable_nls" = "xyes" ; then
+-    use_nls=yes
+-    m4_ifdef([IT_PROG_INTLTOOL],
+-             [IT_PROG_INTLTOOL([0.35.0],[no-xml])],
+-             [AC_MSG_ERROR("--enable-nls requires intltool to be installed.")])
+-    AC_CHECK_HEADERS([libintl.h])
+-    GETTEXT_PACKAGE=transmission-gtk
+-    AC_SUBST(GETTEXT_PACKAGE)
+-    AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["$GETTEXT_PACKAGE"],[Gettext package])
+-    AM_GLIB_GNU_GETTEXT
+-    transmissionlocaledir='${prefix}/${DATADIRNAME}/locale'
+-    AC_SUBST(transmissionlocaledir)
+-fi
++#if test "x$enable_nls" = "xyes" ; then
++#    use_nls=yes
++#    m4_ifdef([IT_PROG_INTLTOOL],
++#             [IT_PROG_INTLTOOL([0.35.0],[no-xml])],
++#             [AC_MSG_ERROR("--enable-nls requires intltool to be installed.")])
++#    AC_CHECK_HEADERS([libintl.h])
++#    GETTEXT_PACKAGE=transmission-gtk
++#    AC_SUBST(GETTEXT_PACKAGE)
++#    AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["$GETTEXT_PACKAGE"],[Gettext package])
++#    AM_GLIB_GNU_GETTEXT
++#    transmissionlocaledir='${prefix}/${DATADIRNAME}/locale'
++#    AC_SUBST(transmissionlocaledir)
++#fi
+ AC_SUBST(INTLLIBS)
+ 
+ 

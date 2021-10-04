@@ -5,7 +5,7 @@
 pkgbase=transmission-sequential
 pkgname=(transmission-sequential-cli transmission-sequential-gtk transmission-sequential-qt)
 pkgver=3.00
-pkgrel=2
+pkgrel=3
 _seqpatch=1
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
@@ -15,10 +15,12 @@ provides=(transmission-cli)
 conflicts=(transmission-cli)
 source=(https://github.com/Mikayex/transmission/archive/${pkgver}-seq${_seqpatch}.tar.gz
         https://github.com/transmission/transmission-releases/raw/master/transmission-${pkgver}.tar.xz
+        transmission_autoconf.patch
         transmission-sequential-cli.sysusers
         transmission-sequential-cli.tmpfiles)
 sha256sums=('fc74e0d7879cc79e43d85ae374233bb4530ab14d6cddafe593a81a95005b4258'
             '9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
+            '1c01a2977a58b9199d2564b5441986b7ef5b0e9b1cb6dc52ce7c64bf6a9ad251'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
             '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
@@ -28,6 +30,7 @@ prepare() {
 
   cd transmission-$pkgver-seq${_seqpatch}
 
+  patch -p1 -i "$srcdir/transmission_autoconf.patch"
   rm -f m4/glib-gettext.m4
   AUTOGEN_SUBDIR_MODE=1 ./autogen.sh
 
