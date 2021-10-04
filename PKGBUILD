@@ -3,7 +3,7 @@
 
 pkgname=python-skia-pathops
 _pkgname=${pkgname#python-}
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Python bindings for the Skia library’s Path Ops (wheel)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 _py=cp39
 _wheel="${_pkgname/-/_}-$pkgver-$_py-$_py-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/$_wheel")
-sha256sums=('f88a25860935c43bedb9748645c04d6189fb14cf79316a23bc65577e9764b3c8')
+sha256sums=('347e2db4646162fe77ea8f9cce16d8e6cd6280dc9ccf48d9297210b62b5d7bdc')
 
 # If anybody wants to mess around with the Chromium tree and figure out how to
 # build skia from source on Arch I'm open to patches, but even after mucking
