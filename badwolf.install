@@ -4,6 +4,6 @@ post_install() {
 }
 
 post_upgrade() {
-  echo "-- Badwolf 1.1.0 changelog: https://hacktivis.me/releases/badwolf-1.1.0.txt --"
+  echo "-- Badwolf 1.2.0 changelog: https://hacktivis.me/releases/badwolf-1.2.0.txt --"
   /bin/true
 }
