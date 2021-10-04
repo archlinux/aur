@@ -3,15 +3,15 @@
 
 pkgname=opera-beta-ffmpeg-codecs
 pkgver=94.0.4606.54
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for opera-beta"
 arch=('x86_64')
 url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
-  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python' 'python2'
-  'xdg-utils' 'gn' 'libva' 'nodejs'
+  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python' 'xdg-utils' 'gn'
+  'libva' 'nodejs'
 )
 options=('!strip')
 source=(
