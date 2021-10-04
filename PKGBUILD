@@ -1,14 +1,14 @@
 # Maintainer: <user11681 at gmail dot com>
 pkgname=fabric-installer
-pkgver=0.7.4
-pkgrel=4
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='installer for the Minecraft mod loader Fabric'
 arch=('any')
 url='https://fabricmc.net'
 license=('Apache-2.0')
 depends=('java-environment>=8')
 source=("https://maven.fabricmc.net/net/fabricmc/fabric-installer/${pkgver}/fabric-installer-${pkgver}.jar")
-sha256sums=('192d60fb544a45edca589a4f73d9d3df93a7f7b68a407c0403e9e1802faf7668')
+sha256sums=('9ff97d46e058fb036a9aa1e93882f48fe503d4a16438cc75370aa31813903f0d')
 
 package() {
     _filename="${pkgname}-${pkgver}.jar"
