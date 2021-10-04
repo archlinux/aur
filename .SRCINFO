@@ -1,6 +1,6 @@
 pkgbase = cutefish-kwin-plugins-git
 	pkgdesc = CutefishOS KWin Plugins
-	pkgver = 0.4.r0.gc4dee7c
+	pkgver = 0.4.r15.gfab9898
 	pkgrel = 1
 	url = https://github.com/cutefishos/kwin-plugins
 	arch = x86_64
