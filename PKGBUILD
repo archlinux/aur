@@ -44,8 +44,8 @@ package_python-casa-formats-io() {
 }
 
 package_python-casa-formats-io-doc() {
-    arch=('any')
     pkgdesc="Documentation for CASA Formats I/O"
+    arch=('any')
     cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
