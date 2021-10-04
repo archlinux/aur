@@ -1,4 +1,5 @@
-# Maintainer: Alex Kubica <alexkubicail@gmail.com>
+# Maintainer: David Rosenstrauch <darose@darose.net>
+# Contributor: Alex Kubica <alexkubicail@gmail.com>
 # Contributor: Faule Socke <github@socker.lepus.uberspace.de>
 # Contributor: Jakub Klinkovský <kuba.klinkovsky@gmail.com>
 # Contributor: Adlai Chandrasekhar <munchking@gmail.com>
@@ -7,18 +8,18 @@
 
 pkgname=cdm-git
 _pkgname="cdm"
-pkgver=r144.719b4a5
-pkgrel=2
+pkgver=r170.594d94f
+pkgrel=1
 pkgdesc="The Console Display Manager"
 arch=('any')
-url="https://github.com/ghost1227/cdm"
+url="https://github.com/evertiro/cdm"
 license=('GPL')
 makedepends=('git')
 depends=('dialog' 'xorg-xinit' 'xorg-xdpyinfo' 'kbd')
 provides=('cdm')
 conflicts=('cdm')
 backup=('etc/cdmrc')
-source=('git://github.com/ghost1227/cdm.git')
+source=('git://github.com/evertiro/cdm.git')
 md5sums=('SKIP')
 epoch=1
 
