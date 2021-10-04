@@ -1,6 +1,6 @@
 pkgbase = cutefish-terminal-git
 	pkgdesc = A terminal emulator for Cutefish
-	pkgver = 0.4.r0.g7d8a60a
+	pkgver = 0.4.r59.g7d78596
 	pkgrel = 1
 	url = https://github.com/cutefishos/terminal
 	arch = x86_64
