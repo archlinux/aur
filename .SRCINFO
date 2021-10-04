@@ -1,15 +1,15 @@
 pkgbase = mse-extrafoils
 	pkgdesc = Various extra foils for MSE.
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = http://msetemps.sourceforge.net/phpBB3/viewtopic.php?&t=144
 	arch = any
 	groups = mse-addons
 	groups = mse-addons-foils
 	license = GPL
 	depends = magicseteditor
-	source = https://downloads.sourceforge.net/msetemps/Magic%20-%20Overlays.mse-installer
-	sha256sums = 9290cec200846ad9133336a95acb97b5965a024fef9243b47001ba6a8626a09d
+	source = https://github.com/silverhikari/magic-set-templates-aur/raw/main/2.1.2-extrafoils.tar.gz
+	sha256sums = 2be5caca81465965cac576375e444a1174c1a116d5e3f5f2c8bb084b72e5b163
 
 pkgname = mse-extrafoils-clights
 	pkgdesc = Various extra foils for MSE. This one is the Christmas Lights object gradient by Art_Freak.
@@ -49,3 +49,11 @@ pkgname = mse-extrafoils-ribbon
 pkgname = mse-extrafoils-ripples
 	pkgdesc = Various extra foils for MSE. This one is the ripples foil gradient.
 
+pkgname = mse-extrafoils-holes
+	pkgdesc = Various extra foils for MSE. This one is the holes foil gradient.
+
+pkgname = mse-extrafoils-normal
+	pkgdesc = Various extra foils for MSE. This one is the normal foil gradient.
+
+pkgname = mse-extrafoils-oldfeed
+	pkgdesc = Various extra foils for MSE. This one is the oldfeed foil gradient.

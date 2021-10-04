@@ -1,16 +1,17 @@
-# Contributor: Sapphira Armageddos <shadowkyogre.public@gmail.com>
+# Maintainer: Sapphira Armageddos <shadowkyogre.public@gmail.com>
+# Maintainer: silverhikari
 pkgbase=mse-extrafoils
-pkgname=("${pkgbase}-clights" "${pkgbase}-fire" "${pkgbase}-fracture" "${pkgbase}-ghost" "${pkgbase}-insanity" "${pkgbase}-jss"  "${pkgbase}-oil" "${pkgbase}-old" "${pkgbase}-parallel" "${pkgbase}-polishedstone" "${pkgbase}-ribbon" "${pkgbase}-ripples")
-pkgver=2.0.0
-pkgrel=3
+pkgname=("${pkgbase}-clights" "${pkgbase}-fire" "${pkgbase}-fracture" "${pkgbase}-ghost" "${pkgbase}-insanity" "${pkgbase}-jss"  "${pkgbase}-oil" "${pkgbase}-old" "${pkgbase}-parallel" "${pkgbase}-polishedstone" "${pkgbase}-ribbon" "${pkgbase}-ripples" "${pkgbase}-holes" "${pkgbase}-normal" "${pkgbase}-oldfeed")
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="Various extra foils for MSE."
 arch=(any)
 url="http://msetemps.sourceforge.net/phpBB3/viewtopic.php?&t=144"
 license=('GPL')
 depends=('magicseteditor')
 groups=('mse-addons' 'mse-addons-foils')
-source=('https://downloads.sourceforge.net/msetemps/Magic%20-%20Overlays.mse-installer')
-sha256sums=('9290cec200846ad9133336a95acb97b5965a024fef9243b47001ba6a8626a09d')
+source=('https://github.com/silverhikari/magic-set-templates-aur/raw/main/2.1.2-extrafoils.tar.gz')
+sha256sums=('2be5caca81465965cac576375e444a1174c1a116d5e3f5f2c8bb084b72e5b163')
 
 _package-clights() {
 	pkgdesc="${pkgdesc} This one is the Christmas Lights object gradient by Art_Freak."
@@ -94,6 +95,30 @@ _package-ribbon() {
 
 _package-ripples() {
 	pkgdesc="${pkgdesc} This one is the ripples foil gradient."
+
+	cd "$srcdir"
+	mkdir -p "$pkgdir/usr/share/magicseteditor/data"
+	cp -r "magic-overlay-foil-${pkgname#${pkgbase}-}.mse-include" "$pkgdir/usr/share/magicseteditor/data"
+}
+
+_package-normal() {
+	pkgdesc="${pkgdesc} This one is the normal foil gradient."
+
+	cd "$srcdir"
+	mkdir -p "$pkgdir/usr/share/magicseteditor/data"
+	cp -r "magic-overlay-foil-${pkgname#${pkgbase}-}.mse-include" "$pkgdir/usr/share/magicseteditor/data"
+}
+
+_package-holes() {
+	pkgdesc="${pkgdesc} This one is the holes foil gradient."
+
+	cd "$srcdir"
+	mkdir -p "$pkgdir/usr/share/magicseteditor/data"
+	cp -r "magic-overlay-foil-${pkgname#${pkgbase}-}.mse-include" "$pkgdir/usr/share/magicseteditor/data"
+}
+
+_package-oldfeed() {
+	pkgdesc="${pkgdesc} This one is the oldfeed foil gradient."
 
 	cd "$srcdir"
 	mkdir -p "$pkgdir/usr/share/magicseteditor/data"
