@@ -28,7 +28,7 @@ _2k_HZ_ticks=
 _1k_HZ_ticks=
 _750_HZ_ticks=y
 _mm_protect=y
-_lrng_enable=
+_lrng_enable=y
 ## Apply Kernel automatic Optimization
 _use_optimization=y
 ## Apply Kernel Optimization selecting
@@ -37,7 +37,7 @@ _use_optimization_select=
 ## compiling with LLVM/LTO
 _use_llvm_lto=
 
-# Compile ONLY used modules to VASTLYreduce the number of modules built
+# Comfpile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
@@ -61,7 +61,7 @@ pkgbase=linux-cacule-rc
 _major=5.15
 #_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc3
+_rcver=rc4
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
@@ -78,19 +78,22 @@ _caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15"
 source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
         "config"
-        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_caculepatches}/v5.15/cacule-5.15.patch"
+#        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_caculepatches}/v5.15/cacule-5.15-full.patch"
         "${_patchsource}/misc/0007-v5.15-fsync.patch"
         "${_patchsource}/misc/0003-glitched-cfs.patch"
         "${_patchsource}/misc/more-uarches-for-kernel-5.15+.patch"
-        "${_patchsource}/misc/le9ec-5.15-rc2.patch"
+#        "${_patchsource}/misc/le9ec-5.15-rc2.patch"
         "${_patchsource}/misc/0002-clear-patches.patch"
         "${_patchsource}/misc/amd/0006-amd-cppc.patch"
-        "${_patchsource}/misc/0001-zstd-upstream-patches.patch"
         "${_patchsource}/misc/0002-init-Kconfig-enable-O3-for-all-arches.patch"
+        "${_patchsource}/0001-mm.patch"
+        "${_patchsource}/0001-misc.patch"
+        "${_patchsource}/0001-lrng.patch"
+        "${_patchsource}/0001-zstd.patch"
         "${_patchsource}/0001-bbr2.patch"
         "auto-cpu-optimization.sh"
-      )
+        )
 if [ -n "$_use_llvm_lto" ]; then
   BUILD_FLAGS=(
         LLVM=1
@@ -128,7 +131,7 @@ prepare() {
 
     ### Microarchitecture Optimization (GCC/CLANG)
       if [ -n "$_use_optimization" ]; then
-       sh "${srcdir}"/auto-cpu-optimization.sh
+       "${srcdir}"/auto-cpu-optimization.sh
       fi
 
       if [ -n "$_use_optimization_select" ]; then
@@ -167,6 +170,17 @@ prepare() {
           		scripts/config --disable CONFIG_LRNG_TESTING_MENU
           		scripts/config --disable CONFIG_LRNG_SELFTEST
           	fi
+
+            ### Enable protect file mappings under memory pressure
+                  if [ -n "$_mm_protect" ]; then
+                    echo "Enabling protect file mappings under memory pressure..."
+                    scripts/config --enable CONFIG_UNEVICTABLE_FILE
+                    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+                    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+                    scripts/config --enable CONFIG_UNEVICTABLE_ANON
+                    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
+                    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
+                  fi
               echo "Disabling TCP_CONG_CUBIC..."
               scripts/config --module CONFIG_TCP_CONG_CUBIC
               scripts/config --disable CONFIG_DEFAULT_CUBIC
@@ -261,7 +275,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-cacule-rt-rc' 'pahole')
+    depends=('linux-cacule-rc' 'pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -347,17 +361,18 @@ for _p in "${pkgname[@]}"; do
 done
 
 
-md5sums=('f996cb6694304111742d60480aafd522'
-         'aed2897ca8daff3174f1e34f739d21c2'
-         'cf26387aadf2a90428350ac246b070c9'
-         '0783aae3228c2a709cbd7afc86717ebe'
+md5sums=('00dd752ba53fed55793f07864cbedac8'
+         '02eb64232420f2d2159380eb7c5c39de'
+         '0d27a2f6ac0b39eb8a441d9b879bcf55'
          '6236a665dd6c93c5de76c1c658c99910'
          'd3ffe87474459e33c901f6141a047c95'
          'ff4b20b981d9ae0bdda68f012b03e756'
-         'b5aca6a351809cd67c039ae547fc6ec4'
          '31a83ad2d5c11e560c7bfdfd59659c84'
          '430972ae1e936f99d8dc2a1f4fdaf774'
-         '74db4069a1c3985e5de43cf28f44e693'
          'ceb9020f754c9a0c3f526b38abc714dd'
+         'e422617aff583cec11129e0f185e9549'
+         'db32c669e1d4dec440341815fc81a108'
+         '80fe84d2b357c2a66b467d2c66bd09fb'
+         '52d324bcca2b2c41c739e257d5c6fd6e'
          '422fe01f2e2b1ba1c2b9174fa1a75e40'
          '21c98f19e883879dd3336c1fa143fd31')
