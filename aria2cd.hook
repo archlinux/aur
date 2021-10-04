@@ -5,6 +5,6 @@ Type = Package
 Target = aria2cd
 
 [Action]
-Description = Warning user about manyally operations...
+Description = Warning user about manually operations...
 When = PostTransaction
 Exec = /usr/share/libalpm/scripts/notify-user
