@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Outlook
+Comment=Outlook desktop built with nativefier (electron)
+Exec=ms-outlook-nativefier
+Icon=ms-outlook-nativefier
+Encoding=UTF-8
+StartupWMClass=ms-outlook-nativefier-j3230
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;

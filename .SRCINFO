@@ -1,0 +1,22 @@
+pkgbase = ms-outlook-nativefier
+	pkgdesc = Outlook desktop built with nativefier (electron)
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://outlook.office365.com/mail/inbox
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = ms-outlook-nativefier.png
+	source = ms-outlook-nativefier.desktop
+	sha256sums = ccd090788c82216916f2d5674c8db74473c9b3a82d3d0511ddf3dbde445ca43b
+	sha256sums = f4186e7f6c5b41f19a54a65bca28e52321908f9feb8bf120785df89be9e89f84
+
+pkgname = ms-outlook-nativefier
