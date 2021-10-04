@@ -9,7 +9,6 @@ pkgbase = bsptab-git
 	depends = bspwm
 	depends = tabbed
 	depends = bash
-	depends = coreutils
 	depends = awk
 	depends = xorg-xwininfo
 	depends = xorg-xprop
