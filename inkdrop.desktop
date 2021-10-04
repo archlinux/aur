@@ -1,9 +1,10 @@
 [Desktop Entry]
-Name=Inkdrop
-Comment=The Notebook App for Hackers
+Name=inkdrop
+Comment=The Note-taking App with Robust Markdown Editor
 GenericName=inkdrop
 Exec=inkdrop %U
 Icon=inkdrop
 Type=Application
 StartupNotify=true
 Categories=GNOME;GTK;Utility;
+MimeType=x-scheme-handler/inkdrop;
