@@ -1,5 +1,5 @@
 pkgbase = etlegacy32
-	pkgver = 2.77.1
+	pkgver = 2.78.0
 	pkgrel = 1
 	url = http://www.etlegacy.com/
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = etlegacy32
 	license = custom
 	makedepends = cmake
 	makedepends = zip
-	source = https://github.com/etlegacy/etlegacy/archive/v2.77.1.tar.gz
-	source = https://www.etlegacy.com/download/file/257
-	sha256sums = 730a8a52435884b922d8c280fcdeace648902399798c7a973da72fbc4163ebe2
-	sha256sums = 5b988cb5f708e55d4ef7eee151352b82b56855d78ce50498f4b47c44e07550b1
+	source = https://github.com/etlegacy/etlegacy/archive/v2.78.0.tar.gz
+	source = https://www.etlegacy.com/download/file/318
+	sha256sums = 14acf392bb4f0a627842792f96684755d2df6c0c083e61938d2eb8f873652d7b
+	sha256sums = e6540d8fd9ab086242b1d4d232b04904de6c9284d4a3d6998db12d6f3a1255fc
 	makedepends_i686 = alsa-lib
 	makedepends_i686 = curl
 	makedepends_i686 = freetype2
@@ -84,4 +84,3 @@ pkgname = etlegacy32-mod
 	optdepends = geoip-database: GeoLite country geolocation database
 	provides = etlegacy-mod
 	conflicts = etlegacy-mod
-
