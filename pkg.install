@@ -2,14 +2,14 @@
 
 ## arg 1:  the new package version
 post_install() {
-    /usr/share/libalpm/scripts/java-wrappers
+    /usr/lib/libalpm/scripts/java-wrappers
 }
 
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-    /usr/share/libalpm/scripts/java-wrappers
+    /usr/lib/libalpm/scripts/java-wrappers
 }
 
 ## arg 1:  the old package version
