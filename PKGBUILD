@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reposurgeon
-pkgver=4.28
+pkgver=4.29
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('bitkeeper'
             'src'
             'subversion')
 source=("https://gitlab.com/esr/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('1a3918777b489c66a1ece74bd33850db3621685d8b8f6f462ce4c2af065b532c62432fefcbb997a3fcebbff4b1119714b5791b844ac6defe851054932867a3e9')
+b2sums=('373839b50b824aae04a1d2a93eb486fb2a2174a728c96943d7a2d3270ef754678bff2192d34c2885a945f8b03cbf7f006bfbd13cafd3a5ed1acda0050caacb22')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -41,6 +41,12 @@ build() {
   else
     make -j1
   fi
+}
+
+check() {
+  cd "$pkgbase-$pkgver"
+
+  make test
 }
 
 package_reposurgeon() {
