@@ -3,7 +3,7 @@
 # Contributor: Tomasz Paś <kierek93@gmail.com>
 _pkgname=libretro-melonds
 pkgname=$_pkgname-git
-pkgver=r1802.657c729
+pkgver=r1977.e362d5c0
 pkgrel=1
 epoch=1
 pkgdesc='Nintendo DS core'
@@ -12,11 +12,11 @@ url="https://github.com/libretro/melonDS"
 license=('GPL3')
 groups=('libretro')
 depends=('libgl' 'libretro-core-info')
-makedepends=('gcc10' 'git' 'libglvnd')
+makedepends=('git' 'libglvnd')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
@@ -25,8 +25,8 @@ pkgver() {
 
 build() {
 	# https://github.com/Arisotura/melonDS/issues/1103
-	# https://github.com/libretro/melonDS/issues/110
-	CFLAGS="$CFLAGS -Wa,--noexecstack" CC=gcc-10 CXX=g++-10 make -C $_pkgname
+	# export CFLAGS="$CFLAGS -Wa,--noexecstack"
+	make -C $_pkgname
 }
 
 package() {
