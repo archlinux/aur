@@ -1,0 +1,12 @@
+pkgbase = ordered-map
+	pkgdesc = C++ hash map and hash set which preserve the order of insertion
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Tessil/ordered-map
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	source = ordered-map-1.0.0.tar.gz::https://github.com/Tessil/ordered-map/archive/v1.0.0.tar.gz
+	sha256sums = 49cd436b8bdacb01d5f4afd7aab0c0d6fa57433dfc29d65f08a5f1ed1e2af26b
+
+pkgname = ordered-map
