@@ -2,9 +2,9 @@
 # Maintainer: Maksym Sheremet <msheremet at sheremets dot com>
 
 pkgname=upwork
-pkgver=5.6.8.0
+pkgver=5.6.9.3
 _rawver=${pkgver//./_}
-_hashver='836f43f6f6be4149'
+_hashver='10c2eb9781db4d7f'
 _pkgupname='Upwork'
 pkgrel=1
 pkgdesc='Desktop Application'
@@ -16,7 +16,7 @@ depends=(alsa-lib gtk3 libjpeg-turbo nss)
 source=(https://upwork-usw2-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb
 	LICENSE
 	upwork)
-sha256sums=('b3a52f773d633837882dc107b206006325722ca5d5d5a1e8bdf5453f872e1b6f'
+sha256sums=('0b884aa6992d438cee09f58673780218a00a823e03c114b0c753947020c0a327'
             '793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38'
             '53bbbd18d7dbbcc27a1405ce9745d95f08be64a234b8fb3312cc2e6ef70e3e9b')
 
