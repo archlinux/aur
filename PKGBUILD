@@ -4,12 +4,12 @@ pkgname=xbps-static-bin
 _pkgname_=xbps
 pkgver=0.59_5
 _pkgver_=0.59
-pkgrel=1
+pkgrel=2
 pkgdesc='The X Binary Package System (XBPS) -- Static Binaries'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/void-linux/xbps"
 license=('custom: BSD-2-Clause' 'custom: BSD')
-provides=('xbps-static' 'xbps' 'xbps-git')
+provides=('xbps-static' 'xbps')
 conflicts=('xbps-static' 'xbps' 'xbps-git')
 
 _mirror_='https://alpha.de.repo.voidlinux.org'
