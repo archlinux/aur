@@ -1,11 +1,12 @@
 pkgname=tlstunnel
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A TLS reverse proxy'
 arch=('x86_64')
 url="https://sr.ht/~emersion/tlstunnel"
 license=('MIT')
 makedepends=('go' 'scdoc')
+conflicts=('tlstunnel-git')
 source=(
   "https://git.sr.ht/~emersion/tlstunnel/refs/download/v$pkgver/tlstunnel-$pkgver.tar.gz"
   "https://git.sr.ht/~emersion/tlstunnel/refs/download/v$pkgver/tlstunnel-$pkgver.tar.gz.sig"

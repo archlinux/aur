@@ -1,12 +1,13 @@
 pkgbase = tlstunnel
 	pkgdesc = A TLS reverse proxy
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~emersion/tlstunnel
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = scdoc
+	conflicts = tlstunnel-git
 	backup = etc/tlstunnel/config
 	source = https://git.sr.ht/~emersion/tlstunnel/refs/download/v0.1.2/tlstunnel-0.1.2.tar.gz
 	source = https://git.sr.ht/~emersion/tlstunnel/refs/download/v0.1.2/tlstunnel-0.1.2.tar.gz.sig
