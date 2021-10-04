@@ -1,13 +1,13 @@
 # Maintainer: Konstantin Unruh <freaxmate@protonmail.com>
 pkgname=mate-layouts
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple panel layout switching application for the MATE Desktop"
 arch=('any')
 url="https://github.com/FreaxMATE/$pkgname"
 license=('GPL3')
 depends=('gtk3' 'libnotify' 'mate-applets' 'python-configobj' 'python-gobject' 'python-psutil' 'python-setproctitle' 'python-distro')
-makedepends=('python-distutils-extra' 'python-setuptools')
+makedepends=('meson' 'python-distutils-extra' 'python-setuptools')
 optdepends=('brisk-menu: for Manjaro panel layout'
             'mate-applet-dock: for Mutiny panel layout'
             'mate-menu: to enable advanced menu'

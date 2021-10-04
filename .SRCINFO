@@ -1,10 +1,11 @@
 pkgbase = mate-layouts
 	pkgdesc = a simple panel layout switching application for the MATE Desktop
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FreaxMATE/mate-layouts
 	arch = any
 	license = GPL3
+	makedepends = meson
 	makedepends = python-distutils-extra
 	makedepends = python-setuptools
 	depends = gtk3
