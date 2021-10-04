@@ -6,7 +6,7 @@
 
 pkgname=v8-3.14
 pkgver=3.14.5
-pkgrel=6
+pkgrel=7
 pkgdesc='A fast and modern javascript engine (old 3.14 version required R package 'V8')'
 arch=('i686' 'x86_64')
 url='http://code.google.com/p/v8'
@@ -93,7 +93,7 @@ build() {
 
    # keep old ABI to prevent symbol changes due to GCC5 transition
    # https://wiki.debian.org/GCC5
-   export CXXFLAGS="${CXXFLAGS} -fno-delete-null-pointer-checks -std=c++98 -Wno-class-memaccess -Wno-cast-function-type -Wno-error=stringop-truncation -Wno-error=array-bounds -Wno-error=stringop-overflow"
+   export CXXFLAGS="${CXXFLAGS} -fno-delete-null-pointer-checks -std=c++98 -Wno-class-memaccess -Wno-cast-function-type -Wno-error=stringop-truncation -Wno-error=array-bounds -Wno-error=stringop-overflow -Wno-error=misleading-indentation -Wno-error=nonnull -Wno-error=mismatched-new-delete"
 
    export GYPFLAGS="-Dhost_arch=$ARCH -DOS=linux"
 
