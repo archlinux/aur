@@ -3,17 +3,22 @@ pkgbase=python-pydata-sphinx-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.6.3
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Bootstrap-based Sphinx theme from the PyData community"
 arch=('any')
 url="https://pydata-sphinx-theme.readthedocs.io"
 license=('BSD')
 makedepends=('python-setuptools')
-checkdepends=('python-sphinx' 'python-beautifulsoup4' 'python-docutils')
+#checkdepends=('python-sphinx' 'python-beautifulsoup4' 'python-docutils')
+checkdepends=('python-pytest' 'python-sphinx' 'python-beautifulsoup4' 'python-pytest-regressions')
 #'python-sphinx' 'python-sphinx-bootstrap-theme')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('809213d8e61c2661a89dc8adc88a081e')
+md5sums=('89a4b5f28e2a150c4aa2e1f5f85d0b29')
+
+prepare() {
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -26,8 +31,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py test || warning "Tests failed"
-#   pytest
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+#   python setup.py test || warning "Tests failed"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname//-/_}*egg-info \
+        build/lib/${_pyname//-/_}-${pkgver}-py${_pyver}.egg-info
+    PYTHONPATH="build/lib" pytest
 }
 
 package_python-pydata-sphinx-theme() {
