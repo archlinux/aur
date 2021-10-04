@@ -1,6 +1,6 @@
 pkgbase = cutefish-calculator-git
 	pkgdesc = CutefishOS Calculator
-	pkgver = 0.4.r0.gcc40ade
+	pkgver = 0.4.r3.g8d75e4f
 	pkgrel = 1
 	url = https://github.com/cutefishos/calculator
 	arch = x86_64
