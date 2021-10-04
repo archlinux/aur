@@ -1,0 +1,16 @@
+pkgbase = tabbed-flexipatch-git
+	pkgdesc = Simple generic tabbed fronted to xembed aware applications (flexipatch version)
+	pkgver = r9.73bc3d6
+	pkgrel = 1
+	url = https://github.com/bakkeby/tabbed-flexipatch
+	arch = i686
+	arch = x86_64
+	license = MIT/X
+	makedepends = git
+	depends = libxft
+	provides = tabbed
+	conflicts = tabbed
+	source = tabbed-flexipatch::git+https://github.com/bakkeby/tabbed-flexipatch.git
+	md5sums = SKIP
+
+pkgname = tabbed-flexipatch-git
