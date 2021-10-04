@@ -2,7 +2,7 @@
 
 pkgname=badwolf
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalist and privacy-oriented WebKitGTK+ browser."
 url="https://hacktivis.me/projects/badwolf"
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,7 +20,7 @@ build() {
 }
 
 package() {
-  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
   cd "$pkgname-$pkgver"
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir/" install
 }
