@@ -6,7 +6,7 @@
 
 pkgdesc='A simple VTE-based terminal'
 pkgname=termite
-pkgver=16.0
+pkgver=16.1
 pkgrel=1
 url=https://github.com/aperezdc/termite
 license=(LGPL)
@@ -16,7 +16,7 @@ arch=(x86_64)
 backup=(etc/xdg/termite/config)
 validpgpkeys=(5AA3BC334FD7E3369E7C77B291C559DBE4C9123B)
 source=("${url}/releases/download/v${pkgver}/termite-${pkgver}.tar.xz"{,.asc})
-sha256sums=('426f4633d1ded371599278555167c8cafb87236bb021d9ea45025179b29d186e'
+sha256sums=('16feb97ace7d5777675fa2c6cae6c9f4a1feb49d59a80b293fc81e369e8b3a6d'
             'SKIP')
 
 build () {
