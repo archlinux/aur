@@ -12,7 +12,7 @@ pkgname=(python-ipalib
          freeipa-client-common
          freeipa-client)
 pkgver=4.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -243,7 +243,7 @@ package_freeipa-client() {
              'authselect'
              'curl>=7.21.7'
              'yp-tools'
-             'xmlrpc-c>=1.27.4'
+             'libxmlrpc>=1.27.4'
              'sssd>=1.14.0'
              'certmonger>=0.78'
              'nss'

@@ -1,7 +1,7 @@
 pkgbase = freeipa
 	pkgdesc = The Identity, Policy and Audit system
 	pkgver = 4.9.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freeipa.org/
 	arch = i686
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = freeipa
 pkgname = python-ipalib
 	pkgdesc = Python libraries used by IPA
 	arch = any
-	depends = freeipa-common=4.9.6-2
+	depends = freeipa-common=4.9.6-3
 	depends = python-gssapi>=1.2.0
 	depends = gnupg
 	depends = keyutils
@@ -61,15 +61,15 @@ pkgname = python-ipalib
 	depends = python-dnspython>=1.15
 	depends = python-netifaces>=0.10.4
 	depends = python-pyusb
-	provides = python-ipapython=4.9.6-2
-	provides = python-ipaplatform=4.9.6-2
+	provides = python-ipapython=4.9.6-3
+	provides = python-ipaplatform=4.9.6-3
 
 pkgname = python-ipaclient
 	pkgdesc = Python libraries used by IPA client
 	arch = any
-	depends = freeipa-client-common=4.9.6-2
-	depends = freeipa-common=4.9.6-2
-	depends = python-ipalib=4.9.6-2
+	depends = freeipa-client-common=4.9.6-3
+	depends = freeipa-common=4.9.6-3
+	depends = python-ipalib=4.9.6-3
 	depends = python-dnspython>=1.15
 	depends = python-jinja
 	optdepends = oddjob: mkhomedir support
@@ -87,9 +87,9 @@ pkgname = freeipa-client-common
 pkgname = freeipa-client
 	pkgdesc = IPA authentication for use on clients
 	install = freeipa-client.install
-	depends = freeipa-client-common=4.9.6-2
-	depends = freeipa-common=4.9.6-2
-	depends = python-ipaclient=4.9.6-2
+	depends = freeipa-client-common=4.9.6-3
+	depends = freeipa-common=4.9.6-3
+	depends = python-ipaclient=4.9.6-3
 	depends = python-augeas
 	depends = cyrus-sasl-gssapi
 	depends = ntp
@@ -97,7 +97,7 @@ pkgname = freeipa-client
 	depends = authselect
 	depends = curl>=7.21.7
 	depends = yp-tools
-	depends = xmlrpc-c>=1.27.4
+	depends = libxmlrpc>=1.27.4
 	depends = sssd>=1.14.0
 	depends = certmonger>=0.78
 	depends = nss
