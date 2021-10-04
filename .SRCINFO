@@ -1,20 +1,20 @@
 pkgbase = superslicer-prerelease-bin
 	pkgdesc = G-code generator for 3D printers (Creality, RepRap, Makerbot, Ultimaker etc.) (binary AppImage)
-	pkgver = 2.3.56.8
+	pkgver = 2.3.57.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/supermerill/SuperSlicer
 	arch = x86_64
 	license = AGPL3
 	depends = zlib
-	provides = superslicer=1:2.3.56.8
+	provides = superslicer=1:2.3.57.0
 	conflicts = superslicer
 	conflicts = superslicer-git
 	conflicts = superslicer-prerelease
 	replaces = slic3r++
-	noextract = SuperSlicer-ubuntu_18.04-2.3.56.8.AppImage
+	noextract = SuperSlicer-ubuntu_18.04-2.3.57.0.AppImage
 	options = !strip
-	source = https://github.com/supermerill/SuperSlicer/releases/download/2.3.56.8/SuperSlicer-ubuntu_18.04-2.3.56.8.AppImage
-	sha256sums = 6f437ee77362867a34ae53ac1fea822283ba2cb6beda3f325fff2981e8cb3638
+	source = https://github.com/supermerill/SuperSlicer/releases/download/2.3.57.0/SuperSlicer-ubuntu_18.04-2.3.57.0.AppImage
+	sha256sums = ec2ce56c2ade916e314f6d203875492b0c3c0e655f5944ac453fd2ba579d01eb
 
 pkgname = superslicer-prerelease-bin
