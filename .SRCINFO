@@ -5,7 +5,7 @@ pkgbase = rusko-server
 	url = https://github.com/aalhitennf/rusko-server
 	arch = x86_64
 	license = GPL3
-	depends = xdtotool
+	depends = xdotool
 
 pkgname = rusko-server
 
