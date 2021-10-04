@@ -22,11 +22,13 @@ build() {
 
     nativefier \
         --name "MS Outlook" \
+        --internal-urls '.*?(outlook.live.com|outlook.office365.com).*?' \
+        --file-download-options '{"saveAs": true}' \
         --icon "${pkgname}.png" \
         --width "512px" \
         --height "512px" \
         --user-agent "safari" \
-        --browserwindow-options '{ "webPreferences": { "spellcheck": false } }' \
+        --browserwindow-options '{"webPreferences": { "spellcheck": false, "webviewTag": true, "nodeIntegration": true, "nodeIntegrationInSubFrames": true, "nativeWindowOpen": true } }' \
         --verbose \
         --single-instance \
         --tray \
