@@ -6,7 +6,7 @@
 
 pkgname=coursera-dl-git
 _gitname=${pkgname/-git/}
-pkgver=0.9.0.r0.g154ef8d
+pkgver=0.11.5.r11.g10ba6b8
 pkgrel=1
 pkgdesc="Script for downloading Coursera.org videos and naming them"
 arch=('any')
@@ -16,11 +16,15 @@ depends=('python' 'python-pyasn1' 'python-html5lib' 'python-beautifulsoup4' 'pyt
 makedepends=('git' 'pandoc')
 provides=('coursera-dl')
 conflicts=('coursera-dl')
-source=("git://github.com/coursera-dl/$_gitname.git")
+source=("git+https://github.com/coursera-dl/$_gitname.git")
 sha256sums=('SKIP')
 
 prepare() {
   export LC_CTYPE="en_US.UTF-8"
+  cd "$_gitname"
+
+  # https://github.com/coursera-dl/coursera-dl/pull/789
+  git show c8796e567698be166cb15f54e095140c1a9b567e | git apply -
 }
 
 pkgver() {
