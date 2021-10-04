@@ -17,7 +17,7 @@ build() {
 
 package() {
   install -d "$pkgdir/usr/share/dictionaries/"
-  java -jar "$srcdir/dict-tools.jar" install  --destinationPath "$pkgdir/usr/share/dictionaries" --dictRepoIndexUrl https://raw.githubusercontent.com/sanskrit-coders/stardict-dictionary-updater/master/dictionaryIndices.md --overwrite true
+  java -jar "$srcdir/dict-tools.jar" install  --destinationPath "$pkgdir/usr/share/dictionaries" --dictRepoIndexUrl https://raw.githubusercontent.com/indic-dict/stardict-index/master/dictionaryIndices.md --overwrite true
 }
 
 depends=(
