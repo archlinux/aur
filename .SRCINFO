@@ -1,6 +1,6 @@
 pkgbase = singularity-git
 	pkgdesc = Strategy game - simulation of true AI, git version
-	pkgver = r1887.c91df89
+	pkgver = r1964.a8510bd
 	pkgrel = 1
 	url = http://emhsoft.com/singularity/index.html
 	arch = any
@@ -18,4 +18,3 @@ pkgbase = singularity-git
 	md5sums = SKIP
 
 pkgname = singularity-git
-
