@@ -1,7 +1,7 @@
 pkgbase = rr-bin
-	pkgdesc = Binary record and Replay framework: lightweight recording and deterministic debugging
-	pkgver = 5.4.0
-	pkgrel = 2
+	pkgdesc = Binary record and replay framework: lightweight recording and deterministic debugging
+	pkgver = 5.5.0
+	pkgrel = 1
 	url = http://rr-project.org/
 	arch = x86_64
 	license = custom
@@ -9,9 +9,9 @@ pkgbase = rr-bin
 	provides = rr
 	conflicts = rr
 	conflicts = rr-git
-	source = https://github.com/mozilla/rr/releases/download/5.4.0/rr-5.4.0-Linux-x86_64.tar.gz
-	source = https://raw.githubusercontent.com/mozilla/rr/5.4.0/LICENSE
-	sha256sums = ad6f865ac64b1b62c23e4c13e9310b58c1538ed7fce2b401c15814f7508b1517
+	source = https://github.com/rr-debugger/rr/releases/download/5.5.0/rr-5.5.0-Linux-x86_64.tar.gz
+	source = https://raw.githubusercontent.com/rr-debugger/rr/5.5.0/LICENSE
+	sha256sums = a76cda2b90b8e621c82e7779bb1a345e189291b3cff2c9d52681bb2ab07e4117
 	sha256sums = fa03106ff7c9018337f1b489bdec8763a1a19b857466055f77637a0af7181f32
 
 pkgname = rr-bin
