@@ -1,0 +1,8 @@
+# Sources
+/src/
+*.patch
+*.tar.gz
+*.sig
+# Package
+/pkg/
+*.pkg.*
