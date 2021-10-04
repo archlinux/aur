@@ -1,24 +1,28 @@
 pkgbase = python-objection
-	pkgdesc = runtime mobile exploration
-	pkgver = 1.9.6
+	pkgdesc = Runtime mobile exploration
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/sensepost/objection
-	arch = x86_64
+	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	makedepends = git
 	makedepends = npm
-	depends = python
-	depends = python-flask
+	makedepends = python-setuptools
 	depends = python-click
-	depends = python-frida
-	depends = python-frida-tools
-	depends = python-tabulate
-	depends = python-prompt_toolkit
 	depends = python-delegator
-	depends = nodejs
+	depends = python-flask
+	depends = python-frida>=14.0.0
+	depends = python-frida-tools>=6.0.0
+	depends = python-prompt_toolkit>=3.0.3
+	depends = python-prompt_toolkit<4.0.0
+	depends = python-pygments
+	depends = python-requests
+	depends = python-semver>=2
+	depends = python-semver<3
+	depends = python-tabulate
 	depends = litecli
-	source = https://github.com/sensepost/objection/archive/1.9.6.tar.gz
-	sha256sums = 216bd3f9bd4b24706be0e6160994f6370e331fe68c3beda7d01235c12a33ee18
+	source = python-objection::git+https://github.com/sensepost/objection#commit=e7eb1d9b769edf6a98870c75a6d2a6123b7346fd?signed
+	validpgpkeys = 0087A89D911FACE7A2AC31B5AE1F25096C0CB06B
+	sha256sums = SKIP
 
 pkgname = python-objection
-
