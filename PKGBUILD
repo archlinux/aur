@@ -2,7 +2,7 @@
 pkgbase=python-myst-nb
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Parse and execute ipynb files in Sphinx"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 #'python-sphinx')
 #checkdepends=('jupyter-nbconvert' 'python-yaml' 'python-sphinx-togglebutton' 'python-myst-parser')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('eca38ccee76befe0e58354b5fdcdbe22')
+md5sums=('4549f906c318bef20f95c500e7ee4976')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
