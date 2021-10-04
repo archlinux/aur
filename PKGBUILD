@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=mousai
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple application for identifying songs"
 arch=('x86_64')
 url="https://github.com/SeaDve/Mousai"
 license=('GPL3')
-depends=('gstreamer' 'gtk4' 'libadwaita-git' 'python-gobject' 'python-requests')
+depends=('gstreamer' 'gtk4' 'libadwaita' 'python-gobject' 'python-requests')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
