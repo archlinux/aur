@@ -2,7 +2,7 @@
 # Maintainer: Sapphira Armageddos <shadowkyogre@aim.com>
 pkgname=mse-mtg-m15
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="magic set editor: m15 templates for magic the gathering"
 arch=(any)
 url="https://github.com/silverhikari/magic-set-templates-aur"

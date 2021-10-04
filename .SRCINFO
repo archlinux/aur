@@ -1,7 +1,7 @@
 pkgbase = mse-mtg-m15
 	pkgdesc = magic set editor: m15 templates for magic the gathering
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/silverhikari/magic-set-templates-aur
 	arch = any
 	license = freeware
