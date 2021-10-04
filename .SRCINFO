@@ -1,10 +1,11 @@
 pkgbase = libreoffice-style-yaru-fullcolor
 	pkgdesc = A fullcolor icon pack for Libreoffice of the awesome Yaru theme.
 	pkgver = 2021.09.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ubuntu/libreoffice-style-yaru-fullcolor
 	arch = any
 	license = LGPL3
+	makedepends = zip
 	depends = libreoffice
 	source = https://github.com/ubuntu/libreoffice-style-yaru-fullcolor/archive/refs/tags/2021-09-01.tar.gz
 	sha512sums = 4007fe4f962aa948f382c0bdf004955bddd9c618998837141b82edc3349c0461ed2f518df12e49000e84963241626e6f3c68cb98bf014c13c7e7cc090909d50e
