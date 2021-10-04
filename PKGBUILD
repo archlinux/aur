@@ -4,7 +4,7 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot-headless
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc='An advanced, feature packed, multi-platform 2D and 3D game engine'
 url='http://www.godotengine.org'
@@ -23,7 +23,7 @@ fi
 source=(
   "https://github.com/godotengine/godot/archive/${pkgver}-stable.tar.gz"
 )
-sha256sums=('3f11176764b52df1b48cc33c768b9d7d6bb26c1d85a43e2bc70cd7507de33c94')
+sha256sums=('4e3a4baa60b196db1d0109cfd6c32f0f1126d0ead466ae8bd1f16557ea6b9bf0')
 
 build() {
   cd "${srcdir}"/godot-${pkgver}-stable
