@@ -1,6 +1,6 @@
 pkgbase = nlnetlabs-krill
 	pkgdesc = RPKI certificate authority and publication server
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://nlnetlabs.nl/projects/rpki/about/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = nlnetlabs-krill
 	makedepends = rust
 	depends = gcc-libs
 	depends = openssl
-	source = nlnetlabs-krill-0.9.1-src.tar.gz::https://github.com/NLnetLabs/krill/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 2b690023cf03e168c8d044aec73471383963ad3497560500d524a6128b441122
+	source = nlnetlabs-krill-0.9.2-src.tar.gz::https://github.com/NLnetLabs/krill/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = d479a753fa06129420d02aa58c5f465a6492c37ef9c59e5e57f585f5ef1610d1
 
 pkgname = nlnetlabs-krill
