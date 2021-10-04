@@ -1,14 +1,13 @@
 pkgbase = python-mglib
 	pkgdesc = Python Package containing modules shared across all Papermerge Project project
-	pkgver = 1.2.8
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/papermerge/mglib
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
-	source = python-mglib-1.2.8.src.tar.gz::https://github.com/papermerge/mglib/archive/v1.2.8.tar.gz
-	sha512sums = edfdc8d7ef861a055cfeba574e15d024053e8d6da2fc0e9696df0055bb91eb90be255b1570dd6d67697b9bfd1f205baf53e53d51a54c68354c44aed7eea2557f
+	source = python-mglib-1.3.1.src.tar.gz::https://github.com/papermerge/mglib/archive/v1.3.1.tar.gz
+	sha256sums = 18c81f63a4d9709f2a3c29afa48a83ac91f5eea2f13f0535d58445cd738be6f0
 
 pkgname = python-mglib
-

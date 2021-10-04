@@ -4,7 +4,7 @@
 
 pkgname=python-mglib
 _pkgname=mglib
-pkgver=1.2.8
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Python Package containing modules shared across all Papermerge Project project"
 arch=('any')
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/papermerge/mglib/archive/v$pkgver.tar.gz")
-sha512sums=('edfdc8d7ef861a055cfeba574e15d024053e8d6da2fc0e9696df0055bb91eb90be255b1570dd6d67697b9bfd1f205baf53e53d51a54c68354c44aed7eea2557f')
+sha256sums=('18c81f63a4d9709f2a3c29afa48a83ac91f5eea2f13f0535d58445cd738be6f0')
 
 build() {
   cd "$_pkgname-$pkgver" || exit
