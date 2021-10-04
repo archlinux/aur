@@ -12,7 +12,8 @@ makedepends=(make gcc)
 provides=(easena)
 conflicts=(easea)
 source=("git+https://github.com/EASEA/easea" final.patch)
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'e1d4ee16c41713dce4fc9562816710e0f0782fc296cadb9755cf88ac8dc3549b')
 
 #credits to tenacity PKGBUILD
 pkgver() {
