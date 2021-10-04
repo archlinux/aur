@@ -1,7 +1,7 @@
 # Maintainer: Setpill
 pkgname=lnd-bin
 _pkgname=lnd
-pkgver=0.13.1_beta
+pkgver=0.13.3_beta
 _pkgver="${pkgver//_/-}"
 __pkgver="${_pkgver//\./\\\.}"
 pkgrel=1
@@ -15,32 +15,32 @@ source=(
     "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/$_pkgname-linux-amd64-v$_pkgver.tar.gz"
     #"$_pkgname-manifest-bitconner-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-bitconner-v$_pkgver.sig"
     #"$_pkgname-manifest-bitconner-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
-    "$_pkgname-manifest-carlakirkcohen-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-carlakirkcohen-v$_pkgver.sig"
-    "$_pkgname-manifest-carlakirkcohen-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
-    "$_pkgname-manifest-eugene_-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-eugene_-v$_pkgver.sig"
-    "$_pkgname-manifest-eugene_-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
+    #"$_pkgname-manifest-carlakirkcohen-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-carlakirkcohen-v$_pkgver.sig"
+    #"$_pkgname-manifest-carlakirkcohen-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
+    #"$_pkgname-manifest-eugene_-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-eugene_-v$_pkgver.sig"
+    #"$_pkgname-manifest-eugene_-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
     "$_pkgname-manifest-guggero-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-guggero-v$_pkgver.sig"
     "$_pkgname-manifest-guggero-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
     "$_pkgname-manifest-roasbeef-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-roasbeef-v$_pkgver.sig"
     "$_pkgname-manifest-roasbeef-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
-    "$_pkgname-manifest-wpaulino-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-wpaulino-v$_pkgver.sig"
-    "$_pkgname-manifest-wpaulino-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
+    #"$_pkgname-manifest-wpaulino-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-wpaulino-v$_pkgver.sig"
+    #"$_pkgname-manifest-wpaulino-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
     "$_pkgname-LICENSE-v$_pkgver::https://raw.githubusercontent.com/lightningnetwork/$_pkgname/v$_pkgver/LICENSE"
 )
 sha512sums=(
-    'a2807cce1a12b6aeffa06f6e59f3588c46586df9e8ef073f6761cc9321d658258bd3a0a34f347ed433069795103ea36a9b480994e95a220468bf3727664a1951'
+    '4a524e71c9bad360423006e5ba707c4384825381551c17fde18cddea74fe3c35dc63c576ba66f3cbe42db0779c3c2c0527de7259c378c200552c372716fb3f3b'
+    #'SKIP'
+    #'SKIP'
+    #'SKIP'
+    #'SKIP'
     #'SKIP'
     #'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
+    #'SKIP'
+    #'SKIP'
     '9837c5d097a2838cf6dc992cc25b9e94946e401131e13e66a699077c3e2de1b89fb1de71027d46d7230464ebbad3ae8df118d459961b28995677d56fded451ca'
 )
 
