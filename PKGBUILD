@@ -2,11 +2,11 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=20.10.8
+pkgver=20.10.9
 
 # must use commit sha as currently not tagged with 20.10+ versions
 _packaging_version=1c1cb918d8cf84f321bab7cb9739c221fe4f3ed7
-_buildx_version=v0.6.1
+_buildx_version=v0.6.3
 
 pkgrel=2
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
@@ -31,10 +31,10 @@ source=(
   "https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/udev/80-docker.rules"
   "docker.sysusers"
 )
-sha256sums=('7ea11ecb100fdc085dbfd9ab1ff380e7f99733c890ed815510a5952e5d6dd7e0'
-            '3d6ea2a389f47b173161a6a7e788cee14fee5d0ce7f4d16477f63ed4e5ab04ef'
-            'f9c60f454909346e405562b8acc3456bf1e3f7a6f3e3a1d26a4addb159b5b970'
-            'de31f5dc997c31d7eb891f64493dcf3fddaada8fb95981a5f4c1e598a392c3ce'
+sha256sums=('caf74e54b58c0b38bb4d96c8f87665f29b684371c9a325562a3904b8c389995e'
+            '5c14e2e105cc5355e34f7173792f12d9c26aa4aac38f4b24f7cde7f9b0bfbe73'
+            '07d6697fc25b7b5686f8f924388da8bc60a47d6ad4526318b9fe3a9b1d2619e2'
+            '8dbc69a27afbc668e5d9fcda0e6d8334c1716e0ea6bd4d22ba3a32a53c3c834b'
             'caf98bf39fb8621fb955476567a38b8a6b35bab2dccd8a29a16da23d4bb99450'
             'ed2ebb93d4bb3a30b5ad214d2ea5d467e714928d4fbf077e2a77dce758c0fa60'
             '3b1bd816a4a029ac048be7703a72a69ff44c531ead443d573e04f29d812594f1'
