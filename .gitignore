@@ -1,0 +1,5 @@
+/*.patch
+/pkg/
+/src/
+git-autofixup-*.tar.gz
+git-autofixup-*.tar.xz
