@@ -10,10 +10,8 @@ pkgbase = apfsprogs-git
 	provides = apfsprogs=r345.5efac5a
 	conflicts = apfsprogs
 	source = git+https://github.com/eafer/apfsprogs
-	source = add-ldflags.patch
 	source = destdir.patch
 	sha256sums = SKIP
-	sha256sums = 30c173d08a6ceeb40ba09f267f3bbacc1486fa51e155fef17456da03bd35d741
 	sha256sums = 65c7af8a2538536bcf9e62b152893849b2cd1092040f5bc6ec2a33040027f8ac
 
 pkgname = apfsprogs-git
