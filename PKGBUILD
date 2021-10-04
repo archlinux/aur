@@ -1,28 +1,36 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='cleanpy'
-pkgver=0.1.0
-pkgrel=2
+pkgname=cleanpy
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='CLI tool to remove caches and temporary files related to Python'
 arch=('any')
 url='https://github.com/thombashi/cleanpy'
-_url_pypi='https://pypi.org/project/cleanpy'
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d0a6291bffb2b92f10d3c605a51fba995b4155875206626df060eac30cdb7ff9')
+makedepends=('git' 'python-setuptools')
+# checkdepends=('python-pytest-runner' 'python-subprocrunner')
+source=("$pkgname::git+$url#tag=v$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname"
   python setup.py build
 }
 
+## WONTFIX: tests require an existing installation of cleanpy
+# check() {
+#   cd "$pkgname"
+#   python setup.py pytest
+# }
+
 package() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "$pkgname"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
