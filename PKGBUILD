@@ -21,29 +21,29 @@ backup=(etc/qogir-gtk-theme/options.txt)
 conflicts=('qogir-gtk-themes-git')
 options=('!strip')
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
-	"options.txt"
+    "$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
+    "options.txt"
 )
 sha256sums=('8eaa45957cc99088ba8ee566b074e9a12fbc74a7cbc4728bd9efc423839e5604'
             'd8d2c44bf9d91d7d6e993f102baf579dd77f1deacfa47ddeed28c5030df0ff1f')
 
 build() {
-	if [ -f /etc/qogir-gtk-theme/options.txt ]; then
-		INSTALL_OPTS="$(/usr/bin/grep --max-count=1 --line-regexp '[^#\s*].*' /etc/qogir-gtk-theme/options.txt)"
-		if [ $? = 0 ]; then
-			export INSTALL_OPTS
-			return 0
-		fi
-	fi
+    if [ -f /etc/qogir-gtk-theme/options.txt ]; then
+        INSTALL_OPTS="$(/usr/bin/grep --max-count=1 --line-regexp '[^#\s*].*' /etc/qogir-gtk-theme/options.txt)"
+        if [ $? = 0 ]; then
+            export INSTALL_OPTS
+            return 0
+        fi
+    fi
 }
 
 package() {
-	cd "$_pkgname-$_pkgver"
-	install -dm755 "$pkgdir/usr/share/themes"
-	install -D --mode=644 "$srcdir/options.txt" --target-directory="$pkgdir/etc/qogir-gtk-theme/"
-	if [ -z "$INSTALL_OPTS" ]; then
-		./install.sh -d "$pkgdir/usr/share/themes"
-	else
-		./install.sh ${INSTALL_OPTS} -d "$pkgdir/usr/share/themes"
-	fi
+    cd "$_pkgname-$_pkgver"
+    install -dm755 "$pkgdir/usr/share/themes"
+    install -D --mode=644 "$srcdir/options.txt" --target-directory="$pkgdir/etc/qogir-gtk-theme/"
+    if [ -z "$INSTALL_OPTS" ]; then
+        ./install.sh -d "$pkgdir/usr/share/themes"
+    else
+        ./install.sh ${INSTALL_OPTS} -d "$pkgdir/usr/share/themes"
+    fi
 }
