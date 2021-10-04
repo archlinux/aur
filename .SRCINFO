@@ -1,6 +1,6 @@
 pkgbase = cutefish-screenlocker-git
 	pkgdesc = CutefishOS system screen locker
-	pkgver = 0.4.r0.gb4ac915
+	pkgver = 0.4.r26.gd3c267c
 	pkgrel = 1
 	url = https://github.com/cutefishos/screenlocker
 	arch = x86_64

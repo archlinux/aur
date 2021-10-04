@@ -2,7 +2,7 @@
 
 pkgname=cutefish-screenlocker-git
 _pkgname=cutefish-screenlocker
-pkgver=0.4.r0.gb4ac915
+pkgver=0.4.r26.gd3c267c
 pkgrel=1
 pkgdesc="CutefishOS system screen locker"
 arch=('x86_64')
