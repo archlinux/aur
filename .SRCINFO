@@ -1,6 +1,6 @@
 pkgbase = pass-coffin
 	pkgdesc = A password store extension that hides data inside a GPG coffin
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ayushnix/pass-coffin
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pass-coffin
 	depends = pass
 	depends = tar
 	conflicts = pass-coffin-git
-	source = pass-coffin-1.0.tar.gz::https://github.com/ayushnix/pass-coffin/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 2b2c3e88f900085a86a483a16fd0472f087c571fd2d778ac9a4513e1398a7d53
+	source = pass-coffin-1.0.1.tar.gz::https://github.com/ayushnix/pass-coffin/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 405b1137dc1350924828751c0369f25b19cb07d476538f903ab41ce7c0b39822
 
 pkgname = pass-coffin
