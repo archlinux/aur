@@ -1,6 +1,6 @@
 pkgbase = cutefish-icons-git
 	pkgdesc = System default icon theme of CutefishOS
-	pkgver = 0.3.r2.gf49004ea
+	pkgver = 0.3.r7.g97db9f61
 	pkgrel = 1
 	url = https://github.com/cutefishos/icons
 	arch = any
