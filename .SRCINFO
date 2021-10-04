@@ -1,14 +1,14 @@
 pkgbase = fontbase
 	pkgdesc = FontBase is the font manager of the new generation, built by designers, for designers.
-	pkgver = 2.16.0
-	pkgrel = 2
+	pkgver = 2.16.8
+	pkgrel = 1
 	url = https://fontba.se/
 	arch = x86_64
 	arch = i686
 	license = custom:FontBase
 	makedepends = p7zip
 	depends = electron
-	source = fontbase-2.16.0.AppImage::https://releases.fontba.se/linux/FontBase-2.16.0.AppImage
-	md5sums = 10b5f8e86ec67c27f9666eaee5f723e9
+	source = fontbase-2.16.8.AppImage::https://releases.fontba.se/linux/FontBase-2.16.8.AppImage
+	md5sums = 6fd5ab1a47c86fc4bd292bc449c6ba9f
 
 pkgname = fontbase
