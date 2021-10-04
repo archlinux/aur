@@ -1,4 +1,4 @@
-# Maintainer: Takumi <takuoh@tutanota.com>
+# Maintainer: Takumi <takuoh qt tutanota d0t com> # please replace q to a , 0 to o
 pkgname=ttf-firge
 pkgver=0.2.0
 pkgrel=3
