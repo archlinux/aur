@@ -3,10 +3,10 @@
 _pkgname=pyclip
 pkgname=python-${_pkgname}
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform clipboard utilities supporting both binary and text data'
 url="https://pypi.org/project/${_pkgname}/"
-depends=(python)
+depends=(python xclip)
 makedepends=(python-setuptools)
 license=(Apache)
 arch=(any)
