@@ -2,7 +2,7 @@
 
 pkgname=cutefish-wallpapers-git
 _pkgname=cutefish-wallpapers
-pkgver=0.4.r0.g36befd9
+pkgver=0.4.r4.g9acd305
 pkgrel=1
 pkgdesc="CutefishOS's system wallpaper"
 arch=('any')
