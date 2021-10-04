@@ -11,7 +11,7 @@ url="https://tonelib.net/gfx-overview/"
 depends=('gtk3' 'glib2' 'desktop-file-utils' 'alsa-lib' 'harfbuzz' 'fribidi' 'pango' 'freetype2')
 optdepends=('jack: JACK output')
 source=("https://www.tonelib.net/download/${filename}")
-sha256sums=('4b3abb3fc85533a59946eb6d9ab386e2b37b56ce8c41b7b4e267bc67880ff521')
+sha256sums=('05c6d7d1dcfde01e268fa41e42c9ee666c1701a5c7fb22639eb50f804615aa45')
 
 package () {
     tar xf data.tar.xz -C "${pkgdir}"
