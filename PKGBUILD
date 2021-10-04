@@ -1,6 +1,6 @@
 # Maintainer: Dimitris Karnikis <dkarnikis@gmail.com>
 
-pkgname="pash"
+pkgname="pash-shell"
 pkgver=04
 pkgrel='0'
 packager="Dimitris Karnikis"

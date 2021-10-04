@@ -1,4 +1,4 @@
-pkgbase = pash
+pkgbase = pash-shell
 	pkgdesc = PaSh: Light-touch Data-Parallel Shell Processing
 	pkgver = 04
 	pkgrel = 0
@@ -22,4 +22,4 @@ pkgbase = pash
 	source = git+https://github.com/binpash/pash.git
 	sha256sums = SKIP
 
-pkgname = pash
+pkgname = pash-shell
