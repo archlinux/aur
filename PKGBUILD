@@ -1,6 +1,6 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-mbedtls
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A free cryptographic library for Python that uses mbed TLS for back end."
 arch=(any)
@@ -9,7 +9,7 @@ license=('Apache')
 makedepends=('python-setuptools'
              'mbedtls')
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('21e4ae674e3830d1c03f801323aa3849c1bdf0760beb0c3b90e2adb98e18f708')
+sha256sums=('568caa2f07bcdaa1efdab124a52df1cc4d22849423c4753667389158dc08c577')
 
 package() {
     cd ${srcdir}/${pkgname}-${pkgver}
