@@ -9,7 +9,7 @@
 pkgname=ffmpeg-shinobi
 _pkgname=ffmpeg
 pkgver=4.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='FFmpeg from the 4.3 release branch for use with Shinobi'
 arch=(x86_64 aarch64 armv6h armv7h)
 url=https://ffmpeg.org/
@@ -180,10 +180,13 @@ build() {
     --enable-version3
   )
 
-  [[ $CARCH == "x86_64" ]] && _args+=(--enable-libaom --enable-libmfx --enable-librav1e --enable-libvmaf --enable-nvdec --enable-nvenc)
-
-  [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && _args+=('--host-cflags="-fPIC"' --enable-librsvg)
-  [[ $CARCH == "armv6h" || $CARCH == 'arm' ]] && _args+=('--extra-libs="-latomic"' --enable-librsvg)
+  if [[ $CARCH == "x86_64" ]]; then
+    _args+=(--enable-libaom --enable-libmfx --enable-librav1e --enable-libvmaf --enable-nvdec --enable-nvenc)
+  elif [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]]; then
+    _args+=('--host-cflags="-fPIC"' --enable-librsvg)
+  elif [[ $CARCH == "armv6h" || $CARCH == "arm" ]]; then
+    _args+=('--extra-libs="-latomic"' --enable-librsvg)
+  fi
 
   ./configure "${_args[@]}"
   make
