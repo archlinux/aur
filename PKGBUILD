@@ -2,7 +2,7 @@
 
 _pkgname=bsptab
 pkgname=$_pkgname-git
-pkgver=r10.ae0bf1b
+pkgver=r12.668abaf
 pkgrel=1
 pkgdesc='Suckless'"'"' tabbed integration into bspwm'
 arch=('any')
