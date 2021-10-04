@@ -1,15 +1,20 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gnome-text-editor-git
-pkgver=3.39.92.r43.gb506ba1
+pkgver=41.0.r40.g3ebc6e8
 pkgrel=1
-pkgdesc="Simple text editor that focuses on session management"
-url="https://gitlab.gnome.org/chergert/gnome-text-editor"
-license=("GPL3")
-arch=(i686 x86_64 armv7h aarch64)
+pkgdesc='Simple text editor that focuses on session management'
+url='https://gitlab.gnome.org/GNOME/gnome-text-editor'
+license=('GPL3')
+arch=(x86_64 aarch64)
 provides=(gnome-text-editor)
 conflicts=(gnome-text-editor)
-depends=(gtksourceview5 libadwaita)
+depends=(
+	enchant
+	'glib2>=2.70.0'
+	gtksourceview5
+	libadwaita
+)
 makedepends=(git meson)
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -24,9 +29,9 @@ build() {
 	meson compile -C build
 }
 
-check() {
-	meson test -C build --print-errorlogs
-}
+# check() {
+# 	meson test -C build --print-errorlogs
+# }
 
 package() {
 	DESTDIR="${pkgdir}" meson install -C build
