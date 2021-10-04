@@ -1,4 +1,4 @@
-# Maintainer: Jonas Baumgardt <linuxus@mail.de>
+# Maintainer: bmgtjonas <linuxus@mail.de>
 pkgname='gqthres'
 pkgver=1.0
 pkgrel=1
