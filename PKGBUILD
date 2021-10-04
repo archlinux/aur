@@ -4,21 +4,21 @@
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
 _pkgname=libretro-mupen64plus-next
 pkgname=$_pkgname-git
-pkgver=r402.86dc2b78
+pkgver=r411.26e306ac
 pkgrel=1
 pkgdesc="Nintendo 64 core"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/libretro/mupen64plus-libretro-nx"
 license=('GPL2')
 groups=('libretro')
-depends=('libgl' 'libpng' 'libretro-core-info' 'minizip' 'xxhash' 'zlib')
-makedepends=('git' 'libglvnd' 'nasm')
+depends=('libgl' 'libpng' 'libretro-core-info')
+makedepends=('git' 'libglvnd' 'minizip' 'nasm' 'xxhash' 'zlib')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=('libretro-mupen64plus-nx-git')
 options=('!lto') # https://github.com/libretro/mupen64plus-libretro-nx/issues/359
 source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
