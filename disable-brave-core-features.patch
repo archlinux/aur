@@ -1,5 +1,5 @@
 diff --git a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
-index b406a23eca..9d9234dd80 100644
+index b406a23eca..6149632131 100644
 --- a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
 +++ b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
 @@ -16,13 +16,17 @@
@@ -29,11 +29,12 @@ index b406a23eca..9d9234dd80 100644
  enum class NTPCustomizeUsage {
    kNeverOpened,
    kOpened,
-@@ -149,18 +154,23 @@ const char kNTPCustomizeUsageStatus[] =
+@@ -148,19 +153,24 @@ enum class NTPCustomizeUsage {
+ const char kNTPCustomizeUsageStatus[] =
      "brave.new_tab_page.customize_p3a_usage";
 
- }  // namespace
 +#endif
+ }  // namespace
 
  // static
  void BraveNewTabMessageHandler::RegisterLocalStatePrefs(
