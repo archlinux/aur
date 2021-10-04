@@ -1,6 +1,6 @@
 pkgbase = openmpt
 	pkgdesc = Open-source audio module tracker
-	pkgver = 1.29.12.00
+	pkgver = 1.29.13.00
 	pkgrel = 1
 	url = https://openmpt.org/
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = openmpt
 	depends = wine
 	optdepends = bash-completion: tab completion support
 	optdepends = ccache: for Wine native host support
-	source_i686 = https://download.openmpt.org/archive/openmpt/1.29/OpenMPT-1.29.12.00-portable.zip
-	sha256sums_i686 = 8c23a4be5d782f810646628c870bad02e4c39526109443f0086afe14d0d4f31e
-	source_x86_64 = https://download.openmpt.org/archive/openmpt/1.29/OpenMPT-1.29.12.00-portable-x64.zip
-	sha256sums_x86_64 = c0789e17c7412c2a7c6b1a95c9db453c33c35e9dd49aa21cd3ac2d6216758c99
+	source_i686 = https://download.openmpt.org/archive/openmpt/1.29/OpenMPT-1.29.13.00-portable.zip
+	sha256sums_i686 = cbeff94a20f77abb5b7c4508963615147fd8de9202af63e50e8bd54457b80e71
+	source_x86_64 = https://download.openmpt.org/archive/openmpt/1.29/OpenMPT-1.29.13.00-portable-x64.zip
+	sha256sums_x86_64 = 01d8eb764aa174f2baad996155dab6a4e188ca84bc42ed9f05044ca7905933f9
 
 pkgname = openmpt
