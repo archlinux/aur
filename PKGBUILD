@@ -3,7 +3,7 @@
 
 pkgname='stratisd'
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
 url='https://stratis-storage.github.io/'
@@ -49,6 +49,7 @@ build() {
 check() {
   cd "${pkgname}-${pkgver}"
 
+  export LIBEXECDIR=/usr/lib
   make test
 }
 
