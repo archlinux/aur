@@ -5,7 +5,7 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy32
 pkgname=('etlegacy32' 'etlegacy32-mod')
-pkgver=2.77.1
+pkgver=2.78.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
@@ -14,9 +14,9 @@ makedepends=('cmake' 'zip')
 makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2' 'minizip' 'openal' 'libtheora' 'sqlite')
 makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-sdl2' 'lib32-minizip' 'lib32-openal' 'lib32-libtheora' 'lib32-sqlite')
 source=("https://github.com/etlegacy/etlegacy/archive/v$pkgver.tar.gz"
-        "https://www.etlegacy.com/download/file/257")
-sha256sums=('730a8a52435884b922d8c280fcdeace648902399798c7a973da72fbc4163ebe2'
-            '5b988cb5f708e55d4ef7eee151352b82b56855d78ce50498f4b47c44e07550b1')
+        "https://www.etlegacy.com/download/file/318")
+sha256sums=('14acf392bb4f0a627842792f96684755d2df6c0c083e61938d2eb8f873652d7b'
+            'e6540d8fd9ab086242b1d4d232b04904de6c9284d4a3d6998db12d6f3a1255fc')
 
 build() {
     cd "$_pkgbase-$pkgver"
@@ -79,12 +79,10 @@ package_etlegacy32() {
 
     # doc
     mkdir -p $pkgdir/usr/share/doc/$_pkgbase
-    mv $pkgdir/usr/lib/$_pkgbase/INSTALL.txt $pkgdir/usr/share/doc/$_pkgbase/
     install -m 644 docs/game/anticheat.html $pkgdir/usr/share/doc/$_pkgbase/
 
     # license
     mkdir -p $pkgdir/usr/share/licenses/$_pkgbase
-    mv $pkgdir/usr/lib/$_pkgbase/COPYING.txt $pkgdir/usr/share/licenses/$_pkgbase/
 
     # systemd
     mkdir -p $pkgdir/etc/xdg/$_pkgbase/etmain
