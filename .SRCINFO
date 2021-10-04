@@ -1,0 +1,12 @@
+pkgbase = array-hash
+	pkgdesc = C++ implementation of a fast and memory efficient hash map and hash set specialized for strings
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/Tessil/array-hash
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	source = array-hash-0.7.1.tar.gz::https://github.com/Tessil/array-hash/archive/v0.7.1.tar.gz
+	sha256sums = 086b4e8adf8c132f2667e5eb6ce21b8707681f5cf95eda8c71d0085126ce5a4b
+
+pkgname = array-hash
