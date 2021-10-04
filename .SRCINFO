@@ -1,13 +1,12 @@
 pkgbase = helvum
 	pkgdesc = GTK-based patchbay for pipewire, inspired by the JACK tool catia
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/ryuukyu/helvum
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	makedepends = clang
-	makedepends = semver
 	makedepends = meson
 	depends = gtk4
 	depends = pipewire
