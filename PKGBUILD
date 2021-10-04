@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=6.15_r388.527e19e
+pkgver=6.18.307_r86.ffafdb4
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -32,6 +32,7 @@ optdepends=(
 	'rsync: optional for backing up steamuser files from proton games'
 	'openssl: optional for generating a random hex string for Non-Steam games'
 	'imagemagick: optional to scale a custom installed game header picture and for converting game icons'
+	'p7zip: optional for extracting SpecialK archives'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
