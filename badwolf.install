@@ -1,9 +1,0 @@
-post_install() {
-  echo "-- If you want to modify config.h (which has some GUI and WebKit parameters), you can do so by accessing the build directory (directory location varies depending on how you built it, e.g with makepkg or yay). --"
-  /bin/true
-}
-
-post_upgrade() {
-  echo "-- Badwolf 1.2.0 changelog: https://hacktivis.me/releases/badwolf-1.2.0.txt --"
-  /bin/true
-}

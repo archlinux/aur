@@ -1,0 +1,54 @@
+Badwolf 1.2.0 release! — 2021-10-02
+
+Highlights
+==========
+
+Additions
+---------
+- Middle clicking on a tab now closes it
+- Translations: Vietnamese
+
+Changes
+-------
+- This release introduces a ./configure script, it isn't autotools-like,
+  it takes environment variables as configuration overrides and writes
+  the results to config.mk
+- Drop usage of libsoup URI parser in favor of GLib's GUri
+
+Fixes
+-----
+- webkit2gtk-4.1 (WebKit GTK+3.0 port with libsoup3) compatibility
+- WebKitGTK 2.34.0+, requiring GApplication initialization
+- Manpage: Some tags were off, apparently leading to broken formatting
+- crashes: download stop icon, about dialog
+
+Commits
+=======
+
+Haelwenn (lanodan) Monnier (19):
+      downloads: Destroy stop_icon only in downloadCb_finished
+      badwolf.1: Fix extension path
+      about-dialog: Auto-switch, use gtk_window_close
+      Makefile: Add EXTRA_CFLAGS
+      badwolf.1: Add tip to list dictionairies in enchant
+      Makefile: Force some cflags, bump _XOPEN_SOURCE to 700
+      README.md: FreeNode → GeekNode
+      badwolf.h: Add WEBKIT_CHECK_VERSION
+      Change buildsystem to use a ./configure script
+      Initialize a GApplication
+      Switch from libsoup-2.4 to glib's GUri
+      Hook and fixup Vietnamese translation
+      badwolf.1: Fix problems seen with mandoc -Tlint
+      Make: Add manpage linting
+      badwolf.1: Add more details in the FILES section
+      badwolf.1: Fix gtk-doc css-properties URL
+      configure: Fix test case in is_ok
+      Bump to 1.2.0
+      Merge branch 'release-1.2' into missy for 1.2.0
+
+Ngô Ngọc Đức Huy (1):
+      Add Vietnamese translation
+
+striker.sh (1):
+      Close tab when releasing middle mouse click
+

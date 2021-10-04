@@ -1,18 +1,16 @@
 pkgbase = badwolf
-	pkgdesc = A minimalist and privacy-oriented WebKit browser.
+	pkgdesc = A minimalist and privacy-oriented WebKitGTK+ browser.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hacktivis.me/projects/badwolf
-	install = badwolf.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = BSD
 	depends = webkit2gtk
 	source = https://hacktivis.me/releases/badwolf-1.2.0.tar.gz
-	source = LICENSE
 	sha512sums = ccf0eb25630438ba783ae7e6d30b0c516290966199bbe36f76b22f2091c3a2940676ee0fb0a5cf46a9cb258e7979084d6f34662f7252c1b37ec0cee7c9958fb0
-	sha512sums = 9a3b68429fc2267d596e08671330cc81f6d00ac7217a7a3991ebb583823a13e323108b514f5ec672c0982844ec581d9fed28dfede8fd92976b41d46b2924e140
+	changelog = changelog
 
 pkgname = badwolf
 
