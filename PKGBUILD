@@ -1,9 +1,9 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Jason Kercher <jkercher43 a gmail>
 # Contributor: Peter Ivanov <ivanovp@gmail.com>
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc
-pkgver=2.8.0
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ url="http://linuxcnc.org"
 depends=('bc'
          'bwidget'
          'libxaw'
+	 'boost-python2'
          'python2-imaging'
          'python2-yapps2'
          'tkimg'
@@ -23,9 +24,10 @@ depends=('bc'
          'psmisc')
 makedepends=('intltool')
 conflicts=('linuxcnc-git' 'linuxcnc-bin')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LinuxCNC/linuxcnc/archive/v${pkgver}.tar.gz"
+
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LinuxCNC/linuxcnc/archive/refs/tags/v${pkgver}.tar.gz"
         'libtirpc.patch')
-sha256sums=('27588f90df3f23c94e058b560f6d8f815f6a00b411f71ed8e25d40d1171b1afc'
+sha256sums=('af65cd2d9497bba6fc851c68ed0eed5a55b514959ac93e0957fca13cc1586845'
             'bc95bafd67fad1c1d3722261bc586cdc612ec9e1597fadb95fa825c10550ac2c')
 
 prepare() {
