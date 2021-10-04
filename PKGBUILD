@@ -23,7 +23,7 @@ optdepends=('unixodbc:     for using the odbc4pl library'
             'libxft:       for using the pl2xpce library'
             'jdk-openjdk:  for using Prolog from Java'
             'java-runtime: for using Prolog from Java')
-source=("https://www.swi-prolog.org/download/devel/src/swipl-$pkgver.tar.gz")
+source=("https://www.swi-prolog.org/download/stable/src/swipl-$pkgver.tar.gz")
 
 provides=('swi-prolog')
 conflicts=('swi-prolog')

@@ -31,6 +31,6 @@ pkgbase = swi-prolog-devel
 	optdepends = java-runtime: for using Prolog from Java
 	provides = swi-prolog
 	conflicts = swi-prolog
-	source = https://www.swi-prolog.org/download/devel/src/swipl-8.4.0.tar.gz
+	source = https://www.swi-prolog.org/download/stable/src/swipl-8.4.0.tar.gz
 
 pkgname = swi-prolog-devel
