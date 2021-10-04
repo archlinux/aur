@@ -1,4 +1,4 @@
-pkgbase = pkgbase
+pkgbase = rusko-server
 	pkgdesc = Remote server for controlling your pc with mobile
 	pkgver = 0.1.1
 	pkgrel = 1
