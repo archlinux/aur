@@ -1,4 +1,4 @@
-# Maintainer: Takumi <takuoh@tutanota.com>
+# Maintainer: Takumi <takuoh qt tutanota d0t com> # please replace q to a , 0 to o
 pkgname=ttf-hackgen-nerd
 pkgver=2.5.1
 pkgrel=1
