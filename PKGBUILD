@@ -1,33 +1,37 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=omphalos
-pkgver=0.99.13
+pkgver=0.99.14
 pkgrel=1
 pkgdesc="Network enumeration and domination"
 url="https://nick-black.com/dankwiki/index.php/Omphalos"
 license=('GPL3')
 arch=('x86_64')
 depends=('libpciaccess' 'libpcap' 'zlib' 'wireless_tools' 'sysfsutils'
-         'notcurses>=2.0.1')
-makedepends=('docbook-xsl' 'autoconf-archive' 'libxslt' 'autoconf')
+         'notcurses>=2.4.4')
+makedepends=('docbook-xsl' 'cmake' 'libxslt' 'ninja')
 source=("https://github.com/dankamongmen/omphalos/archive/v${pkgver}.tar.gz")
 
+prepare() {
+  mkdir -p "${pkgname}-${pkgver}/build"
+  cd "${pkgname}-${pkgver}/build"
+  cmake .. -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=RelWithDebInfo
+}
+
 build() {
-  cd "$pkgname-$pkgver"
-  autoreconf -fis
-  ./configure --prefix=/usr --with-ncurses
-  make
+  cd "${pkgname}-${pkgver}/build"
+  ninja
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  make check
+  cd "${pkgname}-${pkgver}/build"
+  ninja test
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-  install -m 0644 -D -t "$pkgdir/usr/share/omphalos" ieee-oui.txt
+  cd "${pkgname}-${pkgver}/build"
+  DESTDIR="$pkgdir" ninja install
+  install -m 0644 -D -t "$pkgdir/usr/share/omphalos" ../ieee-oui.txt
 }
 
-sha256sums=('5e29377543992389df66eb427fca373d519eb8843786403acfa3c0c8c180cf8d')
+sha256sums=('65fd63d62bf9f047bb9898fd114ebc1b9e02842f1297c702fe5da1314bba3714')
