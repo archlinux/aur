@@ -1,0 +1,21 @@
+pkgbase = cutefish-videoplayer-git
+	pkgdesc = An open source video player built with Qt/QML and libmpv
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/cutefishos/videoplayer
+	arch = x86_64
+	groups = cutefish-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = fishui-git
+	depends = libcutefish-git
+	depends = mpv
+	depends = qt5-quickcontrols2
+	provides = cutefish-videoplayer
+	conflicts = cutefish-videoplayer
+	source = git+https://github.com/cutefishos/videoplayer.git
+	sha512sums = SKIP
+
+pkgname = cutefish-videoplayer-git
