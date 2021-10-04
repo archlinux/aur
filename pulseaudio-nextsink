@@ -1,0 +1,30 @@
+#!/bin/bash
+# Iterates through the list of available sinks from pactl
+# Made to be used with a hotkey to quickly swap between outputs. Therefore takes no inputs.
+
+default_sink_line=$(pactl list short sinks | grep $(pactl get-default-sink))
+default_sink_arr=( $default_sink_line )
+default_sink_num=${default_sink_arr[0]} # The number of the currently default sink. Not using the whole line because they can change frequently
+
+readarray -t sink_names <<<"$(pactl list short sinks)"
+last_sink_active=false
+for sink_name in "${sink_names[@]}"
+do
+	sink_arr=( $sink_name )
+	sink_num=${sink_arr[0]}
+	if [ "$last_sink_active" = true ]; then
+		pactl set-default-sink $sink_num
+		echo "Set pulse default sink to number $sink_num"
+		exit 0
+	fi
+	if [ "$default_sink_num" = "$sink_num" ]; then
+		last_sink_active=true
+	fi
+done
+# If never got to 1 past the currently active sink in the loop, sets sink to first in the list
+first_sink=${sink_names[0]}
+first_sink_arr=( $first_sink )
+first_sink_num=${first_sink_arr[0]}
+pactl set-default-sink $first_sink_num
+echo "Set pulse default sink to number $first_sink_num"
+exit 0
