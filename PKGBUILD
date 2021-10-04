@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-git
-pkgver=R3.1.gf38042a
+pkgver=R19.mod.3.14.g5d5244f
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
 arch=('x86_64')
@@ -11,13 +11,13 @@ license=('CCPL'
          'MIT'
          'LGPL'
          )
-depends=('qt5-websockets'
-         'vapoursynth'
-         )
-makedepends=('git')
+depends=('qt5-websockets')
+makedepends=('git'
+             'qt5-tools'
+             )
 provides=('vapoursynth-editor')
 conflicts=('vapoursynth-editor')
-source=('vapoursynth-editor::git+https://bitbucket.org/gundamftw/vapoursynth-editor-2'
+source=('vapoursynth-editor::git+https://github.com/YomikoR/VapourSynth-Editor.git'
         'vsedit.desktop'
         'vsedit_server_watch.desktop'
         )
@@ -28,16 +28,13 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd vapoursynth-editor
-  echo "$(git describe --long --tags | tr - .)"
-}
-
-prepare() {
-  cd vapoursynth-editor/pro
-  qmake-qt5
+  echo "$(git describe --long --tags | tr - . | tr r R)"
 }
 
 build() {
   cd vapoursynth-editor/pro
+  qmake-qt5
+
   make
 }
 
