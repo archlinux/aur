@@ -1,6 +1,6 @@
 pkgbase = cutefish-filemanager-git
 	pkgdesc = Cutefish File Manager, simple to use, beautiful, and retain the classic PC interactive design
-	pkgver = 0.4.r0.g152a537
+	pkgver = 0.4.r57.gace426f
 	pkgrel = 1
 	url = https://github.com/cutefishos/filemanager
 	arch = x86_64
