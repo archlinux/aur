@@ -1,15 +1,14 @@
 pkgbase = mse-ygo
 	pkgdesc = YugiOh template for Magic Set Editor.
-	pkgver = 2.0.0
-	pkgrel = 8
-	url = http://magicseteditor.sourceforge.net
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/silverhikari/magic-set-templates-aur
 	arch = any
 	license = freeware
 	depends = magicseteditor
-	provides = mse-ygo-xyz
-	conflicts = mse-ygo-xyz
-	source = https://downloads.sourceforge.net/msetemps/Yu-Gi-Oh%20-%20Printed.mse-installer
-	sha256sums = cb2953c6ee9fef765b7eda25fb691bcd827aaab7009b2ebfb800060889d88636
+	depends = svn
+	depends = zstd
+	source = mse-ygo-2.1.2::svn+https://github.com/silverhikari/magic-set-templates-aur/trunk/mse-ygo/2.1.2/
+	sha256sums = SKIP
 
 pkgname = mse-ygo
-
