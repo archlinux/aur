@@ -1,0 +1,23 @@
+pkgbase = bsptab-git
+	pkgdesc = Suckless' tabbed integration into bspwm
+	pkgver = r10.ae0bf1b
+	pkgrel = 1
+	url = https://github.com/albertored11/bsptab
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bspwm
+	depends = tabbed
+	depends = bash
+	depends = coreutils
+	depends = awk
+	depends = xorg-xwininfo
+	depends = xorg-xprop
+	depends = xorg-xwininfo
+	depends = xdotool
+	provides = bsptab
+	conflicts = bsptab
+	source = bsptab::git+https://github.com/albertored11/bsptab.git
+	md5sums = SKIP
+
+pkgname = bsptab-git
