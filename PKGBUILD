@@ -3,7 +3,7 @@
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
 pkgver=0.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=(x86_64)
 url=https://rpcs3.net
@@ -13,7 +13,6 @@ makedepends=(cmake git libglvnd python vulkan-validation-layers)
 options=(!emptydirs)
 source=(
     git+https://github.com/RPCS3/rpcs3.git#tag=v${pkgver}
-    rpcs3-cereal::git+https://github.com/RPCS3/cereal.git
     rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git
     rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror.git
     rpcs3-yaml-cpp::git+https://github.com/RPCS3/yaml-cpp.git
@@ -26,21 +25,10 @@ source=(
     git+https://github.com/asmjit/asmjit.git
     git+https://github.com/libusb/libusb.git
     git+https://github.com/wolfSSL/wolfssl.git
-    git+https://github.com/tcbrindle/span.git
     git+https://github.com/zeux/pugixml.git
-    git+https://github.com/madler/zlib.git
-    git+https://github.com/curl/curl.git
-    git+https://github.com/glennrp/libpng.git
-    git+https://github.com/RPCS3/ffmpeg-core.git
 )
 
 md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -57,27 +45,22 @@ md5sums=('SKIP'
 
 prepare() {
     cd "$pkgname"
-    git submodule init
-    git config submodule."rpcs3-ffmpeg".url ../ffmpeg-core
-    git config submodule."3rdparty/cereal".url ../rpcs3-cereal
-    git config submodule."3rdparty/hidapi".url ../rpcs3-hidapi
-    git config submodule."llvm".url ../rpcs3-llvm
-    git config submodule."3rdparty/yaml-cpp".url ../rpcs3-yaml-cpp
-    git config submodule."3rdparty/xxHash".url ../xxHash
-    git config submodule."3rdparty/FAudio".url ../FAudio
-    git config submodule."3rdparty/flatbuffers".url ../flatbuffers
-    git config submodule."3rdparty/glslang".url ../glslang
-    git config submodule."3rdparty/SPIRV-Headers".url ../SPIRV-Headers
-    git config submodule."3rdparty/SPIRV-Tools".url ../SPIRV-Tools
-    git config submodule."asmjit".url ../asmjit
-    git config submodule."3rdparty/libusb".url ../libusb
-    git config submodule."3rdparty/wolfssl".url ../wolfssl
-    git config submodule."3rdparty/span".url ../span
-    git config submodule."3rdparty/pugixml".url ../pugixml
-    git config submodule."3rdparty/zlib".url ../zlib
-    git config submodule."3rdparty/curl".url ../curl
-    git config submodule."3rdparty/libpng".url ../libpng
-    git submodule update
+    git submodule init llvm 3rdparty/{asmjit/asmjit,hidapi/hidapi,yaml-cpp/yaml-cpp,xxHash,FAudio,flatbuffers,glslang/glslang,SPIRV/SPIRV-{Headers,Tools},libusb/libusb,wolfssl,pugixml}
+    echo $_args | xargs -n 1 -- git submodule init
+    git config submodule."3rdparty/hidapi".url "$srcdir"/rpcs3-hidapi
+    git config submodule."llvm".url "$srcdir"/rpcs3-llvm
+    git config submodule."3rdparty/yaml-cpp".url "$srcdir"/rpcs3-yaml-cpp
+    git config submodule."3rdparty/xxHash".url "$srcdir"/xxHash
+    git config submodule."3rdparty/FAudio".url "$srcdir"/FAudio
+    git config submodule."3rdparty/flatbuffers".url "$srcdir"/flatbuffers
+    git config submodule."3rdparty/glslang".url "$srcdir"/glslang
+    git config submodule."3rdparty/SPIRV-Headers".url "$srcdir"/SPIRV-Headers
+    git config submodule."3rdparty/SPIRV-Tools".url "$srcdir"/SPIRV-Tools
+    git config submodule."asmjit".url "$srcdir"/asmjit
+    git config submodule."3rdparty/libusb".url "$srcdir"/libusb
+    git config submodule."3rdparty/wolfssl".url "$srcdir"/wolfssl
+    git config submodule."3rdparty/pugixml".url "$srcdir"/pugixml
+    git submodule update llvm 3rdparty/{asmjit/asmjit,hidapi/hidapi,yaml-cpp/yaml-cpp,xxHash,FAudio,flatbuffers,glslang/glslang,SPIRV/SPIRV-{Headers,Tools},libusb/libusb,wolfssl,pugixml}
 }
 
 build() {
