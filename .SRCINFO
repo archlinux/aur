@@ -1,7 +1,7 @@
 pkgbase = growlight
 	pkgdesc = Disk manipulation and system preparation tool
 	pkgver = 1.2.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nick-black.com/dankwiki/index.php/Growlight
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = growlight
 	depends = libatasmart
 	depends = libpciaccess
 	depends = pciutils
-	depends = notcurses>=2.2.1
+	depends = notcurses>=2.4.4
 	optdepends = jfsutils: JFS manipulation
 	optdepends = xfsprogs: XFS manipulation
 	optdepends = mdadm: Linux MDRAID manipulation
