@@ -3,7 +3,7 @@
 
 pkgname=osysinfo
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A basic CLI tool to see your system details"
 arch=('any')
 url="https://github.com/ottop/osysinfo"
@@ -14,6 +14,7 @@ sha256sums=('7ebe5f1e90ccc3ede263b2006a229cc3df4e8cee333409f49cbf1affe2f8f6b1')
 
 package() {
 	cd "$pkgname-$pkgver"
+	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
