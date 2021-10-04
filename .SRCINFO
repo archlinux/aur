@@ -1,7 +1,7 @@
 pkgbase = fzpac-git
 	pkgdesc = Arch Linux (pacman) package finder with fzf
 	pkgver = r190.4f06f47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sheepla/fzpac
 	install = fzpac-git.install
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = fzpac-git
 	depends = pacman
 	optdepends = bash-completion: completion support for bash
 	optdepends = zsh-completions: completion support for zsh
-	provides = fzpac
 	source = git+https://github.com/sheepla/fzpac
 	sha256sums = SKIP
 

@@ -2,7 +2,7 @@
 pkgname=fzpac-git
 _pkgname=fzpac
 pkgver=r190.4f06f47
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux (pacman) package finder with fzf "
 arch=("any")
 url="https://github.com/sheepla/fzpac"
@@ -13,7 +13,6 @@ optdepends=('bash-completion: completion support for bash'
 source=("git+$url")
 sha256sums=('SKIP')
 install=$pkgname.install
-provides=('fzpac')
 
 pkgver() {
 	cd "$_pkgname"
