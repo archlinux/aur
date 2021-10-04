@@ -1,30 +1,23 @@
 pkgbase = python-spectral-cube
 	pkgdesc = Library for reading and analyzing astrophysical spectral data cubes
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = http://spectral-cube.readthedocs.io
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
-	checkdepends = python-pytest-astropy-header
-	checkdepends = python-joblib
-	checkdepends = python-reproject
-	checkdepends = python-bottleneck
 	makedepends = python-setuptools
 	makedepends = python-sphinx-astropy
 	makedepends = python-astropy
 	makedepends = python-dask
 	makedepends = python-toolz
 	makedepends = python-radio_beam
-	source = https://files.pythonhosted.org/packages/source/s/spectral-cube/spectral-cube-0.5.0.tar.gz
-	source = fix_doc_version.patch
-	md5sums = fd3f45419a4b029887f3187929a321ec
-	md5sums = 0c7fdbb48c8e090e6b29b4d03e6af0bb
+	makedepends = python-casa-formats-io
+	source = https://files.pythonhosted.org/packages/source/s/spectral-cube/spectral-cube-0.6.0.tar.gz
+	md5sums = 3bde90bb005a31a4e138ca84f30ec367
 
 pkgname = python-spectral-cube
-	depends = python
 	depends = python-numpy>=1.8
-	depends = python-astropy>=1.0
+	depends = python-astropy>=4.0
 	depends = python-radio_beam
 	depends = python-joblib
 	depends = python-dask
@@ -32,10 +25,11 @@ pkgname = python-spectral-cube
 	depends = python-six
 	depends = python-fsspec
 	depends = python-zarr
+	depends = python-casa-formats-io
+	optdepends = python-scipy: Used for subcube creation
 	optdepends = python-bottleneck: Speeds up median and percentile operations on cubes with missing data
 	optdepends = python-regions>=0.3: Serialises/Deserialises DS9/CRTF region files and handles them. Used when extracting a subcube from region
 	optdepends = python-spectral-cube-doc: Documentation for spectral-cube
 
 pkgname = python-spectral-cube-doc
 	pkgdesc = Documentation for Python Radio Beam module
-
