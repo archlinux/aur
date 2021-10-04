@@ -1,4 +1,4 @@
-# Maintainer: Takumi <takuoh@tutanota.com>
+# Maintainer: Takumi <takuoh qt tutanota d0t com> # please replace q to a , 0 to o
 pkgname=mpris-rp-git
 _pkgname=mpris-rp
 pkgver=r16.7fb6525
