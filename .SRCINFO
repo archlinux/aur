@@ -1,0 +1,25 @@
+pkgbase = pash
+	pkgdesc = PaSh: Light-touch Data-Parallel Shell Processing
+	pkgver = 04
+	pkgrel = 0
+	url = https://binpa.sh/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libtool
+	makedepends = m4
+	makedepends = automake
+	makedepends = curl
+	makedepends = pkg-config
+	makedepends = python-pip
+	makedepends = libffi
+	makedepends = make
+	makedepends = autoconf
+	makedepends = gcc
+	makedepends = sudo
+	makedepends = inetutils
+	makedepends = bc
+	source = git+https://github.com/binpash/pash.git
+	sha256sums = SKIP
+
+pkgname = pash
