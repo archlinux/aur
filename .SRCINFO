@@ -1,0 +1,20 @@
+pkgbase = cutefish-screenshot-git
+	pkgdesc = Screenshot tool for CutefishOS
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/cutefishos/screenshot
+	arch = x86_64
+	groups = cutefish-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-base
+	makedepends = qt5-quickcontrols2
+	makedepends = git
+	depends = fishui-git
+	depends = libcutefish-git
+	provides = cutefish-screenshot
+	conflicts = cutefish-screenshot
+	source = git+https://github.com/cutefishos/screenshot.git
+	sha512sums = SKIP
+
+pkgname = cutefish-screenshot-git
