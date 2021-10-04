@@ -1,8 +1,8 @@
-pkgbase = faustus-dkms-git
-	pkgdesc = Experimental unofficial Linux platform driver module for ASUS TUF Gaming series laptops.
+pkgbase = faustus-hyperkvm-dkms-git
+	pkgdesc = Experimental unofficial Linux platform driver module for ASUS TUF Gaming series laptops. HyperKVM form
 	pkgver = 0.2
 	pkgrel = 2
-	url = https://github.com/hackbnw/faustus
+	url = https://github.com/Hyper-KVM/faustus
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -10,10 +10,11 @@ pkgbase = faustus-dkms-git
 	optdepends = linux-headers
 	optdepends = linux-lts-headers
 	optdepends = linux-zen-headers
+	provides = faustus
+	provides = faustus-dkms
 	conflicts = faustus
 	conflicts = faustus-dkms
-	source = git+https://github.com/hackbnw/faustus.git
+	source = git+https://github.com/Hyper-KVM/faustus.git
 	sha256sums = SKIP
 
-pkgname = faustus-dkms-git
-
+pkgname = faustus-hyperkvm-dkms-git
