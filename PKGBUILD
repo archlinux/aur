@@ -12,14 +12,14 @@ pkgname=(python-ipalib
          freeipa-client-common
          freeipa-client)
 pkgver=4.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
 license=('GPL3')
 makedepends=('openldap'
              'krb5>=1.15.1'
-             'xmlrpc-c>=1.27.4'
+             'libxmlrpc>=1.27.4'
              'popt'
              'gettext'
              'python'
@@ -34,17 +34,16 @@ makedepends=('openldap'
              'python-pyasn1-modules')
 options=(emptydirs)
 validpgpkeys=('0E63D716D76AC080A4A33513F40800B6298EB963')
-source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
-        "https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz.asc"
+source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"{,.asc}
         platform.patch
         freeipa-client-update-sshd_config
         freeipa-client-update-sshd_config.hook
         nis-domainname.service
         ipaplatform.tar.gz)
 sha256sums=('f211167513704c567f9e36fad16c0eba2961e3596d03f079d85a18bc9c644dc4'
-            'b5cfc539e0df29bae52f8fddfb43a7d8d29e5cbdceff4417c897416a3afdea51'
+            'SKIP'
             '4b3629f2733182f68b3d28c28f782773103b814c486cf4fdb15336163b08c82e'
-            '9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d'
+            '09894b521258983da988b6d78ed8d5370669ffb7d6a6e3cfbf0c0b8eda67f11b'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d'
             '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
             '7e20412c9347106485adee06b5fcee174c67eb5a30b6730452e300dfc44faa5e')

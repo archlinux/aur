@@ -27,7 +27,7 @@ if [ -f '/etc/ssh/sshd_config' -a $restore -ge 2 ]; then
             ' /etc/ssh/sshd_config.ipanew
         fi
 
-        mv -Z/etc/ssh/sshd_config.ipanew /etc/ssh/sshd_config
+        mv -Z /etc/ssh/sshd_config.ipanew /etc/ssh/sshd_config
         chmod 644 /etc/ssh/sshd_config
 
         /bin/systemctl condrestart sshd.service 2>&1 || :
