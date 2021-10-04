@@ -1,21 +1,29 @@
-# Maintainer: Hugo Rodrigues <me@hugorodrigues.net>
-_pipname=odoorpc
-pkgname=python-${_pipname}
-pkgver=0.6.0
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Hugo Rodrigues <me@hugorodrigues.net>
+
+pkgname=python-odoorpc
+_name=OdooRPC
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="Python module providing an easy way to pilot your Odoo servers through RPC."
-arch=("any")
-url="https://github.com/OCA/odoorpc"
-license=("LGPL3")
-depends=("python")
-makedepends=("python-pip")
+pkgdesc='Python module providing an easy way to pilot your Odoo servers through RPC.'
+arch=('any')
+url='https://github.com/OCA/odoorpc'
+license=('LGPL3')
+depends=('python')
+makedepends=('python-setuptools' 'python-sphinx')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('e90b6315805070fadbe6ced5c3891558216a02a475f0d8882700d219c3f34188')
 
 build() {
-  pip install --no-deps --target="${_pipname}" ${_pipname}==${pkgver}
+	cd "$_name-$pkgver"
+	python setup.py build
+
+	cd doc
+	PYTHONPATH=../ make man
 }
 
 package() {
-  mkdir -p $pkgdir/usr/lib/python3.6/site-packages/
-  cp -r $srcdir/${_pipname}/* $pkgdir/usr/lib/python3.6/site-packages/
+	cd "$_name-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 doc/build/man/odoorpc.1 -t "$pkgdir/usr/share/man/man1/"
 }
-
