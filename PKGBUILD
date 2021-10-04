@@ -7,7 +7,7 @@
 # If you want to help improve or maintain this package please let me know!
 
 pkgname=shadered
-pkgver=1.5
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
@@ -16,7 +16,7 @@ license=("MIT")
 depends=(gtk3 sdl2 sfml assimp glew glm spirv-headers)
 makedepends=(git cmake python)
 
-source=("git+https://github.com/dfranx/SHADERed.git#tag=v1.5"
+source=("git+https://github.com/dfranx/SHADERed.git#tag=v$pkgver"
         "git+https://github.com/dfranx/ImGuiColorTextEdit"
         "git+https://github.com/dfranx/SPIRV-VM.git"
         "git+https://github.com/dfranx/ShaderExpressionParser"
