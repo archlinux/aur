@@ -3,7 +3,7 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=3.2.0.dev1.r5644.b2b9303c
+pkgver=3.2.0.dev1.r5746.6bc97e2e
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -12,7 +12,9 @@ license=('GPL3')
 depends=('python-gobject' 'gtk3')
 makedepends=('appstream' 'git' 'python-setuptools')
 optdepends=('gspell: for spell checking in chat'
-            'libappindicator-gtk3: for tray icon')
+            'libappindicator-gtk3: option for tray icon'
+            'libayatana-appindicator: option for tray icon'
+            'gtk4: test the GTK4 version')
 checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest-xvfb')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
 conflicts=("${pkgname%-git}" 'nicotine+' 'nicotine')
