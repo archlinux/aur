@@ -2,14 +2,14 @@
 
 
 pkgname=apidb-core
-pkgver=5.13.4
+pkgver=5.13.7
 pkgrel=1
 pkgdesc="API Generator for Database acces."
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/azaeldevel/apidb"
 depends=('octetos-db-abstract' 'libxml2' 'boost' 'bison' 'flex' 'libtar' 'librsvg' 'cmake' 'cunit')
-md5sums=('635d36bde44f97b1e0694b69d494bdf9')
+md5sums=('75b5729a84d2b87ea788e467c757846b')
 source=(https://github.com/azaeldevel/apidb/archive/${pkgver}-beta.tar.gz)
 conflicts=('apidb')
 
@@ -17,7 +17,7 @@ build() {
     cd apidb-${pkgver}-beta
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DAPIDB_VERSION_STAGE=alpha -DPLATFORM=LINUX_ARCH -DAPIDBBUILD=CORE -DAPIDBINSTALL=CORE ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DAPIDB_VERSION_STAGE=beta -DPLATFORM=LINUX_ARCH -DAPIDBBUILD=CORE -DAPIDBINSTALL=CORE ..
     make
 }
 
