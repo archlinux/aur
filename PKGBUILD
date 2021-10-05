@@ -2,7 +2,7 @@
 pkgname=svp
 pkgver=4.5.210
 _pkgver=${pkgver}-1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
