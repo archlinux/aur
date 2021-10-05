@@ -24,10 +24,14 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  rm -fr "${_plug}/Frfun7/"{avs*,avi*}
 }
 
 build() {
   cd build
+
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)"
 
   cmake "../${_plug}" \
    -DCMAKE_BUILD_TYPE=Release \
