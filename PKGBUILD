@@ -2,7 +2,7 @@
 
 _plug=d2vsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.1.7.g99b10e3
+pkgver=v1.2.12.g5ddeb06
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('vapoursynth'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/dwbuiten/${_plug}.git")
+source=("${_plug}::git+https://github.com/dwbuiten/${_plug}.git#branch=newffmpeg")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,10 +28,11 @@ prepare() {
   mkdir -p build
 
   cd "${_plug}"
-  ./autogen.sh
 }
 
 build() {
+  (cd "${_plug}"; ./autogen.sh)
+
   cd build
   ../"${_plug}"/configure \
     --prefix=/usr \
