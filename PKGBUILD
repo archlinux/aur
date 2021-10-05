@@ -1,7 +1,7 @@
 # Maintainer: Asthowen <contact@asthowen.fr>
 
 pkgname='python-mangasorigines'
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="An API wrapper for MangasOrigines written in Python."
 arch=('any')
