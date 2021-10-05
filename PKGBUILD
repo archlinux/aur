@@ -2,7 +2,7 @@
 
 _pkgname=bsptab
 pkgname=$_pkgname-git
-pkgver=r12.668abaf
+pkgver=0.1.r0.g37c3235
 pkgrel=1
 pkgdesc='Suckless'"'"' tabbed integration into bspwm'
 arch=('any')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd $_pkgname
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

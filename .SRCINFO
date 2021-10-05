@@ -1,6 +1,6 @@
 pkgbase = bsptab-git
 	pkgdesc = Suckless' tabbed integration into bspwm
-	pkgver = r12.668abaf
+	pkgver = 0.1.r0.g37c3235
 	pkgrel = 1
 	url = https://github.com/albertored11/bsptab
 	arch = any
