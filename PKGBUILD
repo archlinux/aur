@@ -3,8 +3,9 @@
 
 _pkgname='atto'
 pkgname="${_pkgname}-bin"
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+_release=1.3.0
+pkgrel=1
 pkgdesc='A tiny Nano wallet, focused on ease of use through simplicity'
 arch=('x86_64')
 url='https://github.com/codesoap/atto'
@@ -13,32 +14,32 @@ license=('MIT')
 provides=('atto')
 conflicts=('atto')
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/atto_${pkgver}_Linux_amd64.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/releases/download/v$_release/atto_${pkgver}_Linux_amd64.tar.gz"
   "LICENSE::$_rawurl/master/LICENSE"
   "README.md::$_rawurl/master/README.md"
 )
 md5sums=(
-  '681e64a35a4b75fbc9b218fbca15bf15'
+  '42ddb0132fa20f4249889402bc10fb7b'
   'SKIP'
   'SKIP'
 )
 sha1sums=(
-  '8df095aa8d05ea80c2d73bf0693ca4d616e71c89'
+  'db76ad30de4edf296d1d47c130bfcc8f0c640bf8'
   'SKIP'
   'SKIP'
 )
 sha256sums=(
-  '59e0e997638719e70baf9184eb91ccb22ee0a87d83307f0f596e1353dbcc6f9e'
+  '79dd0e2ed8d6cd5c85fea83b015f2416f1267baf0d97f58e7890749968e867f7'
   'SKIP'
   'SKIP'
 )
 sha512sums=(
-  '7b7447852b978185610ec4b6a09d58212c8286db85f0bfca2c312c3463a8972ab9b527dbefc9b615c806325f3532a06ff4d7234d78573629366b4404d1c8d421'
+  'aebff41fa26881d12f3a5c7d95c1f0bd5a83f183388440ad66f407c4e58dd3643b0d0a7544afe03deedcd770f6c6b4470085f128fdc0414e0a045dbca07b9d02'
   'SKIP'
   'SKIP'
 )
 b2sums=(
-  'b0a6e90b8e2fbdc6d1e7cb4e418bdec40c63731ce7fd5212a8e53eaa2131f1868b264ec7e27a0b85b05557e52468373bf704023eb1100507ef1fda5a4ca160f7'
+  '4b8db1762eda6c48c5ffdd4316265af6a823ff90237f4a45b8e315f128394ae1d77454e0fb848ce12403a6790963e53fab7b3a0c7b5824206fdbb8ecdf5dd49a'
   'SKIP'
   'SKIP'
 )
