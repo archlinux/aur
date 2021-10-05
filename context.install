@@ -1,0 +1,6 @@
+post_install() {
+  _contextshare=/usr/share/context
+  echo "Add the following to your shell rc file:
+    export TEXMF=${_contextshare}"
+  export TEXMF=${_contextshare}
+}
