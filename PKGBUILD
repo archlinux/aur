@@ -1,6 +1,6 @@
 # Maintainer: replicadse <aw@voidpointergroup.com>
 pkgname=senile
-pkgver=0.1.25
+pkgver=0.1.26
 pkgrel=1
 epoch=
 pkgdesc='collecting ToDo statements from files/directories as JSON format'
