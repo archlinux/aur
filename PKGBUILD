@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=xplr-git
-pkgver=0.14.3.r0.g32a32e9
+pkgver=0.15.0.r4.gac1b407
 pkgrel=1
 pkgdesc="A hackable, minimal, fast TUI file explorer (git)"
 arch=('x86_64')
@@ -20,14 +20,20 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --locked --release
+  cargo build --frozen --release
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --locked --release
+  cargo build --frozen
+  cargo test --frozen
 }
 
 package() {
