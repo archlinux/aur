@@ -1,0 +1,10 @@
+*
+**/*
+
+!/conduit.service
+!/conduit.sysusers
+!/conduit.tmpfiles
+!/conduit.toml
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore

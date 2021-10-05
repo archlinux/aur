@@ -1,0 +1,31 @@
+# This unit is fairly hardened, change if needed
+
+[Unit]
+Description=Simple, fast and reliable chat server powered by matrix
+After=syslog.target network.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/conduit-matrix
+ExecReload=/bin/kill -HUP ${MAINPID}
+KillSignal=SIGINT
+TimeoutSec=60
+Restart=on-failure
+WatchdogSec=1m
+LimitNOFILE=32768
+
+# Hardening
+User=conduit
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectSystem=full
+ReadOnlyDirectories=/
+ReadWriteDirectories=-/var/lib/matrix-conduit
+ReadWriteDirectories=-/var/log/matrix-conduit
+Environment="CONDUIT_CONFIG=/etc/matrix-conduit/conduit.toml" 'RUST_LOG=info' 'RUST_BACKTRACE=1'
+NoNewPrivileges=yes
+CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_NET_BIND_SERVICE CAP_DAC_READ_SEARCH
+
+[Install]
+WantedBy=multi-user.target

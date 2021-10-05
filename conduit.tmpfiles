@@ -1,0 +1,3 @@
+# Type Path                               Mode User    Group   Age Argument
+d      /var/lib/matrix-conduit            0700 conduit conduit -   -
+d      /var/lib/matrix-conduit/conduit_db 0700 conduit conduit -   -
