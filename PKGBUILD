@@ -1,7 +1,7 @@
 # Maintainer: Martin Thierer <thierer@web.de>
 
 pkgname=cc1541-git
-pkgver=3.2.r25.gb613ed8
+pkgver=3.3.r1.g26ce560
 pkgrel=1
 pkgdesc='Tool for creating .d64 images with custom sector interleaving etc.'
 url='https://bitbucket.org/PTV_Claus/cc1541/src/master/'
@@ -28,7 +28,6 @@ check() {
   cd "${srcdir}/${pkgname}"
 
   make check
-  ./test_cc1541 ./cc1541
 }
 
 package() {

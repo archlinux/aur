@@ -1,6 +1,6 @@
 pkgbase = cc1541-git
 	pkgdesc = Tool for creating .d64 images with custom sector interleaving etc.
-	pkgver = 3.2.r25.gb613ed8
+	pkgver = 3.3.r1.g26ce560
 	pkgrel = 1
 	url = https://bitbucket.org/PTV_Claus/cc1541/src/master/
 	arch = x86_64
