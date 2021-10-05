@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lorien
+Comment=Infinite canvas drawing/whiteboarding app
+Exec=lorien
+Icon=/usr/share/pixmaps/lorien.png
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Graphics;Office
