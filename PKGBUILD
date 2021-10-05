@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.19.r909.gc401e3efe3
+pkgver=0.20.0.r1693.g8bb582f23f
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -59,7 +59,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd FreeCAD
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  read -d$'/n' -r major minor patch < <(grep -Po "set\(PACKAGE_VERSION_(MAJOR|MINOR|PATCH) \"\K[0-9]*" CMakeLists.txt) || true
+  count=$(git rev-list --count $(git tag --sort=-creatordate|head -1)..HEAD)
+  hash=$(git rev-parse --short HEAD)
+  printf "%d.%d.%d.r%d.g%s" "$major" "$minor" "$patch" "$count" "$hash"
 }
 
 prepare() {
