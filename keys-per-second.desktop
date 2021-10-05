@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Keys Per Second
+Exec=/opt/KeysPerSecond/kps.sh %u
+Terminal=false
+Type=Application
+Icon=/opt/KeysPerSecond/kps.ico
+StartupWMClass=KeysPerSecond
+GenericName=Keys Per Second
+Comment=A keys-per-second meter & counter. Written for osu! but should work for other rhythm games too.
+Categories=Utility;
