@@ -34,6 +34,8 @@ diff --unified --recursive --text easea.ok/compiler/Easea.h easea/compiler/Easea
 +
  
  #endif
+
+diff --unified --recursive --text easea.ok/compiler/EaseaLex.l easea/compiler/EaseaLex.l
 --- easea.ok/compiler/EaseaLex.l	2021-10-04 19:49:25.576925333 +0200
 +++ easea/compiler/EaseaLex.l	2021-10-05 16:21:00.321604976 +0200
 @@ -2475,33 +2475,6 @@
@@ -69,37 +71,15 @@ diff --unified --recursive --text easea.ok/compiler/Easea.h easea/compiler/Easea
 -
  /////////////////////////////////////////////////////////////////////////////
  // EASEALexer commands
- diff --unified --recursive --text easea/compiler/EaseaSym.cpp easea.ok/compiler/EaseaSym.cpp
---- easea/compiler/EaseaSym.cpp	2021-10-05 16:48:00.538024802 +0200
-+++ easea.ok/compiler/EaseaSym.cpp	2021-10-04 19:49:25.576925333 +0200
-@@ -42,6 +42,19 @@
+ 
+
+diff --unified --recursive --text easea.ok/compiler/EaseaSym.cpp easea/compiler/EaseaSym.cpp
+--- easea.ok/compiler/EaseaSym.cpp	2021-10-04 19:49:25.576925333 +0200
++++ easea/compiler/EaseaSym.cpp	2021-10-05 16:48:00.538024802 +0200
+@@ -42,19 +42,6 @@
  //   else pHead=new CListItem<T>(pCurrent,NewObject);
  //   }
  
-+template <class T> CListItem<T> *CLList<T>::walkToNextItem()
-+{
-+	if (pNextItem==NULL) return NULL;
-+	if (pNextItem==pHead)
-+	{
-+		pNextItem=pHead->pNext;
-+		return pHead;
-+	}
-+	pCurrentObject=pNextItem;
-+	pNextItem=pNextItem->pNext;
-+	return pCurrentObject;
-+}
-+
- /////////////////////////////////////////////////////////////////////////////
- // symbol construction/destruction
- 
-diff --unified --recursive --text easea/compiler/EaseaSym.h easea.ok/compiler/EaseaSym.h
---- easea/compiler/EaseaSym.h	2021-10-05 16:47:57.061354350 +0200
-+++ easea.ok/compiler/EaseaSym.h	2021-10-04 19:49:25.576925333 +0200
-@@ -67,21 +67,6 @@
-   CListItem<T> *remove(T *p);
-   };
- 
--/* Need to be defined in Header !! */
 -template <class T> CListItem<T> *CLList<T>::walkToNextItem()
 -{
 -	if (pNextItem==NULL) return NULL;
@@ -113,7 +93,31 @@ diff --unified --recursive --text easea/compiler/EaseaSym.h easea.ok/compiler/Ea
 -	return pCurrentObject;
 -}
 -
--
+ /////////////////////////////////////////////////////////////////////////////
+ // symbol construction/destruction
+ 
+diff --unified --recursive --text easea.ok/compiler/EaseaSym.h easea/compiler/EaseaSym.h
+--- easea.ok/compiler/EaseaSym.h	2021-10-04 19:49:25.576925333 +0200
++++ easea/compiler/EaseaSym.h	2021-10-05 16:47:57.061354350 +0200
+@@ -67,6 +67,21 @@
+   CListItem<T> *remove(T *p);
+   };
+ 
++/* Need to be defined in Header !! */
++template <class T> CListItem<T> *CLList<T>::walkToNextItem()
++{
++	if (pNextItem==NULL) return NULL;
++	if (pNextItem==pHead)
++	{
++		pNextItem=pHead->pNext;
++		return pHead;
++	}
++	pCurrentObject=pNextItem;
++	pNextItem=pNextItem->pNext;
++	return pCurrentObject;
++}
++
++
   /////////////////////////////////////////////////////////////////////////////
  // Symbol
  
