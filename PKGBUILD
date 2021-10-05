@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-osc-placement
-pkgver=2.2.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='OpenStackClient plugin for the Placement service'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-pbr' 'python-six' 'python-keystoneauth1'
 checkdepends=('python-oslotest' 'python-openstackclient' 'python-stestr'
               'python-wsgi-intercept')
 source=("https://github.com/openstack/osc-placement/archive/$pkgver.tar.gz")
-sha512sums=('064bd64e3359faa0ea0b8f1869cad1e5975b8c15164668db924df80f5fa67ff843adef868bd3afef0f6ee9f32c0efd4937b12a5464d4a37424c68324a6d3ab2a')
+sha512sums=('7769fca24e7c58a3b7310dad100a68455173326338e3258941120d35e18b3f7036afd955c8b8112a060af56bf82dd9db7c8a32728c3e093026117ff7f7c73e7a')
 
 export PBR_VERSION=$pkgver
 
