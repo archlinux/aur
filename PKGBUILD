@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('python' 'python-click>=7.1' 'python-cryptography' 'python-ecdsa'
          'python-fido2>=0.9.1' 'python-intelhex' 'python-pyserial' 'python-pyusb'
          'python-requests')
-makedepends=('fakeroot' 'git' 'python-dephell' 'python-setuptools')
+makedepends=('git' 'python-dephell' 'python-setuptools')
 provides=(${pkgname/-git})
 conflicts=(${pkgname/-git})
 source=("git+$url.git")
@@ -34,5 +34,9 @@ build() {
 package() {
   cd ${pkgname/-git}
   python setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm644 -t "$pkgdir"/usr/lib/python3.9/site-packages/solo solo/VERSION
+
+  local _purelib=$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')
+  install -Dm644 -t "$pkgdir$_purelib"/solo solo/VERSION
+
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE-MIT
 }

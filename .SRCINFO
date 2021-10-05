@@ -6,7 +6,6 @@ pkgbase = solo-python-git
 	arch = any
 	license = Apache
 	license = MIT
-	makedepends = fakeroot
 	makedepends = git
 	makedepends = python-dephell
 	makedepends = python-setuptools
