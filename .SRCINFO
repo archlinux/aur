@@ -1,6 +1,6 @@
 pkgbase = mesasdk
 	pkgdesc = Software development kit for use with the MESA stellar evolution code
-	pkgver = 20.3.2
+	pkgver = 21.4.1
 	pkgrel = 1
 	epoch = 1
 	url = http://www.astro.wisc.edu/~townsend/static.php?ref=mesasdk
@@ -16,8 +16,7 @@ pkgbase = mesasdk
 	provides = mesasdk
 	options = staticlibs
 	options = !strip
-	source = http://www.astro.wisc.edu/~townsend/resource/download/mesasdk/mesasdk-x86_64-linux-20.3.2.tar.gz
-	sha1sums = e49067a6a2cc7a6ee53009ee5004f486c140b6bd
+	source = http://www.astro.wisc.edu/~townsend/resource/download/mesasdk/mesasdk-x86_64-linux-21.4.1.tar.gz
+	sha1sums = 8cc8d2a49df3ffabfd86a23729f96a15f3e48d77
 
 pkgname = mesasdk
-
