@@ -45,6 +45,20 @@
 		#clock-cells = <0>;
 	};
 
+	sdio_pwrseq: sdio-pwrseq {
+		compatible = "mmc-pwrseq-simple";
+		pinctrl-names = "default";
+		pinctrl-0 = <&wifi_enable_h>;
+
+		/*
+		 * On the module itself this is one of these (depending
+		 * on the actual card populated):
+		 * - SDIO_RESET_L_WL_REG_ON
+		 * - PDN (power down when low)
+		 */
+		reset-gpios = <&gpio1 18 GPIO_ACTIVE_LOW>;
+	};
+
 	vcc_sys_5v: vcc-sys-5v-regulator {
 		compatible = "regulator-fixed";
 		regulator-name = "vcc_sys_5v";
@@ -121,6 +135,15 @@
 			regulator-always-on;
 		};
 	};
+
+	wireless-wlan {
+		compatible = "wlan-platdata";
+		rockchip,grf = <&grf>;
+		wifi_chip_type = "rtl8723bs";
+		sdio_vref = <1800>;
+		WIFI,host_wake_irq = <&gpio1 19 GPIO_ACTIVE_HIGH>;
+		status = "okay";
+	};
 };
 
 &analog_sound {
@@ -166,6 +189,19 @@
 	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
 	vmmc-supply = <&vccio_3v3_reg>;
 	vqmmc-supply = <&vccio_1v8_reg>;
+	status = "okay";
+};
+
+&sdio {
+	bus-width = <4>;
+	cap-sd-highspeed;
+	cap-sdio-irq;
+	keep-power-in-suspend;
+	max-frequency = <150000000>;
+	mmc-pwrseq = <&sdio_pwrseq>;
+	non-removable;
+	pinctrl-names = "default";
+	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
 	status = "okay";
 };
 
@@ -270,6 +306,13 @@
 };
 
 &pinctrl {
+
+	sdio-pwrseq {
+		wifi_enable_h: wifi-enable-h {
+		rockchip,pins =
+			<1 18 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+	};
 
 	usb2 {
 		usb20_host_drv: usb20-host-drv {
