@@ -1,6 +1,6 @@
 pkgbase = mdbtools-beta
 	pkgdesc = Utilities for viewing data and exporting schema from Microsoft Access database files
-	pkgver = 1.0.0_beta6
+	pkgver = 1.0.0_beta7
 	pkgrel = 1
 	url = https://github.com/mdbtools/mdbtools
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = mdbtools-beta
 	depends = unixodbc
 	depends = glib2
 	optdepends = gmdb2: graphical viewer for MDB files
-	provides = mdbtools=1.0.0_beta6
+	provides = mdbtools=1.0.0_beta7
 	conflicts = mdbtools
-	source = mdbtools-1.0.0-beta6.tar.gz::https://github.com/mdbtools/mdbtools/archive/v1.0.0-beta6.tar.gz
-	md5sums = 32c930d8cd5f9bb0fecbda0ad180956f
+	source = mdbtools-1.0.0-beta7.tar.gz::https://github.com/mdbtools/mdbtools/archive/v1.0.0-beta7.tar.gz
+	md5sums = 51b971e3b79ca5cf22d87ac3587bccd9
 
 pkgname = mdbtools-beta
