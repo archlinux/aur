@@ -38,4 +38,6 @@ build() {
 
 package(){
   make -C build DESTDIR="${pkgdir}" install
+
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avistnth/plugins/${_plug}/README.md"
 }
