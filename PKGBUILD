@@ -1,13 +1,13 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname="sqlfluff"
-pkgver="0.6.6"
+pkgver="0.6.7"
 pkgrel=1
 pkgdesc="A SQL linter and auto-formatter for Humans"
 arch=("any")
 url="https://github.com/sqlfluff/${pkgname}"
 source=("https://github.com/sqlfluff/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("1aca9edb4891f5ae836b8f1f1da025569341744dc89323f881f3c9c5a83780cc")
+sha256sums=("cef786aef2f943eb502a870e93b804aa59aecffabc467a93abc07d01a361915b")
 license=("MIT")
 depends=("python"
 	 "python-click"
