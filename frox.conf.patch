@@ -24,8 +24,8 @@
  #
 -# User nobody
 -# Group nogroup
-+User daemon
-+Group daemon
++User frox
++Group frox
  
  # This is frox's working directory - it must be specified. Temporary
  # files and sockets will be created here. If you are using local

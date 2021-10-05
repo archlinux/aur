@@ -1,20 +1,24 @@
 pkgbase = frox
 	pkgdesc = A transparent ftp proxy that optionally supports caching
 	pkgver = 0.7.18
-	pkgrel = 5
+	pkgrel = 6
 	url = http://frox.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	depends = openssl
 	backup = etc/frox.conf
-	source = http://downloads.sourceforge.net/frox/frox-0.7.18.tar.gz
+	source = https://downloads.sourceforge.net/frox/frox-0.7.18.tar.gz
 	source = frox.service
+	source = frox.sysusers
+	source = frox.tmpfiles
 	source = frox-0.7.18-clientdata_socket.patch
 	source = frox.conf.patch
-	md5sums = d4ba3a22db472922c71b0e63ca64b10b
-	md5sums = 022f05592f19e05895fa36541fb9b514
-	md5sums = 4f69c821c75d870837baa7f4d0af75a7
-	md5sums = 774646b5c80f1b22be6c3f48e130c5df
+	sha256sums = 7586b96cc044df75013ddb31d084340c2fab5d92794a47c916ea90ef23ace3c4
+	sha256sums = 617a1b5fe9fd52993ed66a4ac79b5eb42467226434feff6568a993001f004e57
+	sha256sums = c7ee34198f1918e2f01ebdeb9043c92c1f1aa243714bf2883220814e18b865ee
+	sha256sums = d6c96f3dd6c4ef7dc084f68449d49b02045057e0dca93b51f42aa2a967622e85
+	sha256sums = 59a64dc276428656d558ac80a5cd552699182845a29cbafd6563e39c6afc7a0d
+	sha256sums = 7154ce74d8131aa0e78a893b3899f091225a433e4b77836661ec549e9fbdf7fd
 
 pkgname = frox
-
