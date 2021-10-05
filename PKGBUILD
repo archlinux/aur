@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 pkgname=python-eduvpn-client
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux client and Python client API for eduVPN"
 arch=('any')
 url="https://github.com/eduvpn/python-eduvpn-client"
@@ -13,10 +13,10 @@ sha256sums=('84753fe0cb407824138d97b412cb057c382128fe90111586bb2afbc4f505a05b')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    python setup.py build
+    /usr/bin/python setup.py build
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
-    PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    PYTHONHASHSEED=0 /usr/bin/python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
