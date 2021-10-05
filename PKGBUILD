@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=13.0.0_r391942.833bdbe93cd6
+pkgver=14.0.0_r400862.c6c13c58eebd
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -108,7 +108,7 @@ package_llvm-minimal-git() {
     popd
 
     # The runtime libraries go into a separate package
-    mv -f "$pkgdir"/usr/lib/lib{LLVM-*.so,LTO.so.*,Remarks.so.*} "$srcdir"
+    mv -f "$pkgdir"/usr/lib/lib{LLVM-*.so,LTO.so.*,Remarks.so.*,clang-cpp.so.*} "$srcdir"
 
     # Remove files which conflict with llvm-libs
     rm "$pkgdir"/usr/lib/{LLVMgold,lib{LLVM,LTO}}.so
@@ -146,7 +146,7 @@ package_llvm-libs-minimal-git() {
 
   install -d "$pkgdir/usr/lib"
   cp -P \
-    "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
+    "$srcdir"/lib{LLVM,LTO,Remarks,clang-cpp}*.so* \
     "$pkgdir"/usr/lib/
 
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
