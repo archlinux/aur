@@ -1,0 +1,27 @@
+pkgbase = qv2ray-v3
+	pkgdesc = A cross platform connection manager for V2Ray and other backends.
+	pkgver = 3.0.0rc1
+	pkgrel = 1
+	url = https://github.com/Shadowsocks-NET/Qv2ray
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = grpc-cli
+	makedepends = make
+	makedepends = ninja
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
+	makedepends = which
+	depends = grpc
+	depends = hicolor-icon-theme
+	depends = qt6-svg
+	optdepends = qt6-wayland: Wayland support (experimental)
+	optdepends = v2ray: use packaged v2ray
+	provides = qv2ray
+	conflicts = qv2ray
+	source = qv2ray-v3::git+https://github.com/Shadowsocks-NET/Qv2ray.git#tag=v3.0.0-rc1
+	sha512sums = SKIP
+
+pkgname = qv2ray-v3

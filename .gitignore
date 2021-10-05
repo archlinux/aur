@@ -1,0 +1,5 @@
+qv2ray-v3/
+src/
+pkg/
+*.tar*
+*.log
