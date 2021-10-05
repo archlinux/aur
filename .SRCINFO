@@ -22,6 +22,6 @@ pkgbase = easena-git
 	source = link.patch
 	sha256sums = SKIP
 	sha256sums = e1d4ee16c41713dce4fc9562816710e0f0782fc296cadb9755cf88ac8dc3549b
-	sha256sums = 253874c2b1508657cb7e605094c8b1ebc273d3f97fc5624312d597a6aeb2ec1b
+	sha256sums = 1afbd44578f11754f0d70d7808626381f3a7691cc0ae26d435294b17e43e4e6f
 
 pkgname = easena-git

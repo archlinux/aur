@@ -34,3 +34,39 @@ diff --unified --recursive --text easea.ok/compiler/Easea.h easea/compiler/Easea
 +
  
  #endif
+--- easea.ok/compiler/EaseaLex.l	2021-10-04 19:49:25.576925333 +0200
++++ easea/compiler/EaseaLex.l	2021-10-05 16:21:00.321604976 +0200
+@@ -2475,33 +2475,6 @@
+ 
+ %%
+ 		       /////////////////////////////////////////////////////////////////////////////
+-
+-inline char  mytolower(char c) {
+-  return ((c>=65)&&(c<=90)) ? c+=32:c;
+-}
+-
+-inline int mystricmp(const char *string1, const char *string2){
+-  int i;
+-  for (i=0; string1[i]&&string2[i];i++){
+-    if (mytolower(string1[i])<mytolower(string2[i])) return -(i+1);
+-    if (mytolower(string1[i])>mytolower(string2[i])) return i+1;
+-  }
+-  if (string2[i]) return  -(i+1);
+-  if (string1[i]) return  i+1;
+-  return 0;
+-}                                  
+-
+-inline int isLetter(char c){ 
+-  if (((c>=65)&&(c<=90))||((c>=97)&&(c<=122))) return 1;
+-  if ((c==45)||(c==46)||(c==95)) return 1;
+-  return 0;
+-}
+-
+-inline int isFigure(char c){ 
+-  if ((c>=48)&&(c<=57)) return 1;
+-  return 0;
+-}
+-
+ /////////////////////////////////////////////////////////////////////////////
+ // EASEALexer commands
+ 

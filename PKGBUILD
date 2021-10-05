@@ -14,7 +14,7 @@ conflicts=(easea)
 source=("git+https://github.com/EASEA/easea" final.patch link.patch)
 sha256sums=('SKIP'
             'e1d4ee16c41713dce4fc9562816710e0f0782fc296cadb9755cf88ac8dc3549b'
-            '253874c2b1508657cb7e605094c8b1ebc273d3f97fc5624312d597a6aeb2ec1b')
+            '1afbd44578f11754f0d70d7808626381f3a7691cc0ae26d435294b17e43e4e6f')
 
 #credits to tenacity PKGBUILD
 pkgver() {
