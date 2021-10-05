@@ -1,0 +1,15 @@
+pkgbase = easywatch
+	pkgdesc = A simple and easy to use tool to run command when files change
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sr.ht/~cdrozak/easywatch/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	provides = easywatch=1.0.0
+	source = easywatch.tar.gz::https://git.sr.ht/~cdrozak/easywatch/archive/v1.0.0.tar.gz
+	md5sums = dc3d572a7096850a7e6fea0ca7a98eeb
+
+pkgname = easywatch
