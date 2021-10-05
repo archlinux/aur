@@ -16,14 +16,15 @@ backup=()
 options=()
 install=
 
-source=("https://github.com/RoanH/KeysPerSecond/releases/download/v${pkgver}/KeysPerSecond-v${pkgver}.jar"
-        "https://raw.githubusercontent.com/RoanH/KeysPerSecond/master/README.md"
-        "https://raw.githubusercontent.com/RoanH/KeysPerSecond/master/LICENSE"
-        "https://raw.githubusercontent.com/RoanH/KeysPerSecond/master/CHANGELOG.md"
-        "kps.ico" "kps.sh" "keys-per-second.desktop")
+source=('https://github.com/RoanH/KeysPerSecond/releases/download/v${pkgver}/KeysPerSecond-v${pkgver}.jar'
+        'https://raw.githubusercontent.com/RoanH/KeysPerSecond/master/README.md'
+        'https://raw.githubusercontent.com/RoanH/KeysPerSecond/master/LICENSE'
+        'https://raw.githubusercontent.com/RoanH/KeysPerSecond/master/CHANGELOG.md'
+        'https://raw.githubusercontent.com/RoanH/KeysPerSecond/master/KeysPerSecond/kps.ico'
+        'kps.sh' 'keys-per-second.desktop')
 
-noextract=("KeysPerSecond-v${pkgver}.jar" "README.md" "LICENSE" "CHANGELOG.md"
-           "kps.ico" "kps.sh" "keys-per-second.desktop")
+noextract=("KeysPerSecond-v${pkgver}.jar" 'README.md' 'LICENSE' 'CHANGELOG.md'
+           'kps.ico' 'kps.sh' 'keys-per-second.desktop')
 
 sha256sums=('97cd3d8d3ad8b6baf9a17e332f1385004dff721c9b3a844f588e432cdd19b3f5'
             '40cfd8bfe87a7dea4b48d5179ce1f3a162c7f3374a3f2aab8cd11c9dde004684'
@@ -35,22 +36,22 @@ sha256sums=('97cd3d8d3ad8b6baf9a17e332f1385004dff721c9b3a844f588e432cdd19b3f5'
 
 
 pkgver() {
-  printf $(curl --silent "https://api.github.com/repos/RoanH/KeysPerSecond/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")' | tr -d v)
+  printf $(curl --silent 'https://api.github.com/repos/RoanH/KeysPerSecond/releases/latest' | grep -Po '"tag_name": "\K.*?(?=")' | tr -d v)
 }
 
 
 package() {
   # Copy required files to the KPS directory
-  mkdir -p ${pkgdir}/opt/KeysPerSecond                                            # Create KPS dir
-  cp kps.ico ${pkgdir}/opt/KeysPerSecond                                          # Copy the icon
-  cp KeysPerSecond-v${pkgver}.jar ${pkgdir}/opt/KeysPerSecond/KeysPerSecond.jar   # Copy the jar file
+  mkdir -p "${pkgdir}/opt/KeysPerSecond"                                              # Create KPS dir
+  cp kps.ico "${pkgdir}/opt/KeysPerSecond"                                            # Copy the icon
+  cp "KeysPerSecond-v${pkgver}.jar" "${pkgdir}/opt/KeysPerSecond/KeysPerSecond.jar"   # Copy the jar file
 
   # Install the .desktop entry and the shell script 
-  install -Dm644 keys-per-second.desktop ${pkgdir}/usr/share/applications/keys-per-second.desktop
-  install -Dm777 kps.sh ${pkgdir}/opt/KeysPerSecond/kps.sh
+  install -Dm644 keys-per-second.desktop "${pkgdir}/usr/share/applications/keys-per-second.desktop"
+  install -Dm777 kps.sh "${pkgdir}/opt/KeysPerSecond/kps.sh"
 
   # install the README, LICENSE and CHANGELOG docs
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
-  install -Dm644 CHANGELOG.md ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
