@@ -1,34 +1,32 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=gmenu
-pkgver=0.2.6
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="desktop application launcher"
-_url="https://gitlab.com/tslocum/gmenu"
-url="${_url}.git"
+url="https://code.rocketnine.space/tslocum/gmenu"
 license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('go')
 depends=('gtk3')
-source=("$pkgname-$pkgver.tar.gz::$_url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('901f3b6f60f1aa1ccf7af4ea06fa899f152d7805f6799f73d1280993072988db')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('d052a6d209c4521d670a97eb3af813b3f7c18fc4a07154d2f8b387da7d6ff9f7')
 
-prepare(){
-  cd "$pkgname-v$pkgver"
-  mkdir -p build
-}
 
 build() {
-  cd "$pkgname-v$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o build ./cmd/...
+  cd "$pkgname"
+  mkdir -p "build"
+
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -o build ./cmd/...
 }
 
 package() {
-  install -Dm755 "$pkgname-v$pkgver/build/gmenu" "$pkgdir/usr/bin/gmenu"
-  install -Dm755 "$pkgname-v$pkgver/build/gtkmenu" "$pkgdir/usr/bin/gtkmenu"
-  install -Dm644 "$pkgname-v$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$pkgname/build/gmenu" "$pkgdir/usr/bin/gmenu"
+  install -Dm755 "$pkgname/build/gtkmenu" "$pkgdir/usr/bin/gtkmenu"
+  install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
