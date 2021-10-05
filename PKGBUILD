@@ -4,7 +4,9 @@
 
 ################################################################################
 # The difference between this PKGBUILD and the one from `emacs-git` is that:
-# - this one builds emacs from official emacs repo's feature/pgtk branch
+# - this one builds emacs from flatwhatson's `pgtk-nativecomp` branch, which
+#   contains an up-to-date merge of masm11 and fejfighter's pgtk work with
+#   the feature/native-comp branch from the official emacs repo
 # - the pure-GTK3 rendering backend is enabled
 # - the xwidgets webkit2gtk support is enabled
 # - the native Elisp compiler is enabled
@@ -87,9 +89,15 @@ makedepends=('git')
 provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
 replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
+<<<<<<< HEAD
 ## use emacs's savannah repo if you have network issues
 source=("emacs-git::git://github.com/emacs-mirror/emacs.git#branch=feature/pgtk")
 ## source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk")
+=======
+## use github repo if you have network issues
+## source=("emacs-git::git://github.com/emacs-mirror/emacs.git#branch=feature/pgtk")
+source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk")
+>>>>>>> parent of d483fa4 (update description, use github mirror repo as default)
 md5sums=('SKIP')
 ################################################################################
 
