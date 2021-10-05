@@ -1,6 +1,6 @@
 pkgbase = cine-encoder
 	pkgdesc = Cine Encoder 2021
-	pkgver = 3.4
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://github.com/CineEncoder/cine-encoder.git
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cine-encoder
 	depends = mkvtoolnix-cli>=49.0
 	depends = ffmpeg>=4.2
 	depends = libmediainfo>=20.03
-	source = https://github.com/CineEncoder/cine-encoder/archive/3.4.tar.gz
-	md5sums = 817d8716be46efe3a2a9109524f701a8
+	source = https://github.com/CineEncoder/cine-encoder/archive/3.5.1.tar.gz
+	md5sums = d234d42eda03aa6857a1030b0d8026ca
 
 pkgname = cine-encoder
