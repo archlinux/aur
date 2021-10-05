@@ -4,8 +4,8 @@
 
 _pkgname=obs-studio
 pkgname=obs-studio-ftl
-pkgver=27.0.1
-pkgrel=2
+pkgver=27.1.3
+pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording (with FTL protocol support)"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -23,15 +23,12 @@ optdepends=('libfdk-aac: FDK AAC codec support'
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=($_pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
-        linux-capture_pipewire.patch::https://github.com/obsproject/obs-studio/commit/ef0540c0d7df64b6cb148c80d566281a4ff3ba5c.patch
 	fix_python_binary_loading.patch)
-md5sums=('48b51f558858f512928efda0f3aee1a1'
-         'ff855407700e3c8e9b956c562528a306'
+md5sums=('fc9df69561e3f1b140f7234b440a02bf'
          '051b90f05e26bff99236b8fb1ad377d1')
 
 prepare() {
   cd $_pkgname-$pkgver
-  patch -Np1 < "$srcdir"/linux-capture_pipewire.patch
   patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
 }
 
