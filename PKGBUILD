@@ -12,7 +12,7 @@
 
 pkgname=mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=21.3.0_devel.144808.b1eb0887922
+pkgver=21.3.0_devel.145800.d2543658ef6
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -21,8 +21,7 @@ makedepends=('git' 'python-mako' 'xorgproto'
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'llvm-libs-minimal-git')
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
-optdepends=('opengl-man-pages: for the OpenGL API man pages'
-                        'llvm-minimal-git: opencl')
+optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'vulkan-driver' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver'  'vulkan-swrast' 'mesa-vdpau')
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
