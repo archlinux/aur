@@ -1,0 +1,19 @@
+pkgbase = python-spyse
+	pkgdesc = Python wrapper for spyse.com API
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://github.com/spyse-com/spyse-python
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-dataclasses
+	depends = python-dataclasses-json
+	depends = python-responses
+	depends = python-limiter
+	source = spyse-2.2.3.tgz::https://github.com/spyse-com/spyse-python/archive/refs/tags/v2.2.3.tar.gz
+	sha256sums = cfceb8b2bd94a18f99f212bf6e8be6971687af5e9f8d8c57d36491022e1623f0
+
+pkgname = python-spyse
