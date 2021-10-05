@@ -6,19 +6,20 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.40.3
+pkgver=3.42.0
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686'
       'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
-depends=('vte3-notification>=0.64.0'
+depends=('vte3-notification>=0.66.0'
          'gsettings-desktop-schemas')
 makedepends=('git'
              'docbook-xsl'
              'libnautilus-extension'
              'gnome-shell'
+             'meson'
              'yelp-tools')
 optdepends=('gconf: for gnome-terminal-migration'
             'libnautilus-extension: for "Open Terminal Here" in GNOME Files')
@@ -30,7 +31,7 @@ groups=('gnome')
 # Fedora patches: https://src.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 _frepourl='https://src.fedoraproject.org/rpms/gnome-terminal'
 _frepobranch='rawhide'
-_fcommit='c250c057f989f20522b585643541241ac821bdc9'
+_fcommit='d57e059e5015e873e08f58d149efae1dc95ca35c'
 _fpatchfile100='gnome-terminal-cntr-ntfy-autottl-ts.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
 
@@ -39,39 +40,27 @@ source=(
 	"${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
 	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
 )
-sha256sums=('cbe9aa3f948116fa3b521754fceb43173ab844cb0ac81145e05d0cab0f8b1a22'
-            'ecddc88378946a22e71fa1957d74fa6083e70cba512d4a3cbcce34a3289198af'
+sha256sums=('b50e9e5664230e6ca290bcf38812a5b65e0baac66a486ee210894cf675f72e0b'
+            'fbc3c1b818ec4c7d23278e266b6a2e65f0d21930cf9eedb928d593d381456e4c'
             'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9')
 
 prepare () {
     cd "${_pkgname}-${pkgver}"
 
     patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
-
-    NOCONFIGURE=1 autoreconf -fvi
 }
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-    ./configure --prefix=/usr \
-                --sysconfdir=/etc \
-                --localstatedir=/var \
-                --libexecdir=/usr/lib/${_pkgname} \
-                --disable-silent-rules \
-                --disable-static \
-                --with-nautilus-extension
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    make
-}
-
-check() {
-    cd "${_pkgname}-${pkgver}"
-    make check
+    arch-meson gnome-terminal-${pkgver} build \
+        -D b_lto=false \
+        -D docs=true \
+        -Dnautilus_extension=true \
+        -Dsearch_provider=true
+    meson compile -C build
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" meson install -C build
 
     install -Dm644 "../${_fgsoverridefile}-${_fcommit}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${_fgsoverridefile}"

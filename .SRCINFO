@@ -1,6 +1,6 @@
 pkgbase = gnome-terminal-fedora
 	pkgdesc = The GNOME Terminal Emulator with Fedora patches
-	pkgver = 3.40.3
+	pkgver = 3.42.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = i686
@@ -16,14 +16,14 @@ pkgbase = gnome-terminal-fedora
 	makedepends = yelp-tools
 	optdepends = gconf: for gnome-terminal-migration
 	optdepends = libnautilus-extension: for "Open Terminal Here" in GNOME Files
-	provides = gnome-terminal=3.40.3
+	provides = gnome-terminal=3.42.0
 	conflicts = gnome-terminal
 	options = !emptydirs
-	source = https://download.gnome.org/sources/gnome-terminal/3.40/gnome-terminal-3.40.3.tar.xz
-	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-c250c057f989f20522b585643541241ac821bdc9::https://src.fedoraproject.org/rpms/gnome-terminal/raw/c250c057f989f20522b585643541241ac821bdc9/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
-	source = org.gnome.Terminal.gschema.override-c250c057f989f20522b585643541241ac821bdc9::https://src.fedoraproject.org/rpms/gnome-terminal/raw/c250c057f989f20522b585643541241ac821bdc9/f/org.gnome.Terminal.gschema.override
-	sha256sums = cbe9aa3f948116fa3b521754fceb43173ab844cb0ac81145e05d0cab0f8b1a22
-	sha256sums = ecddc88378946a22e71fa1957d74fa6083e70cba512d4a3cbcce34a3289198af
+	source = https://download.gnome.org/sources/gnome-terminal/3.40/gnome-terminal-3.42.0.tar.xz
+	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-d57e059e5015e873e08f58d149efae1dc95ca35c::https://src.fedoraproject.org/rpms/gnome-terminal/raw/d57e059e5015e873e08f58d149efae1dc95ca35c/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
+	source = org.gnome.Terminal.gschema.override-d57e059e5015e873e08f58d149efae1dc95ca35c::https://src.fedoraproject.org/rpms/gnome-terminal/raw/d57e059e5015e873e08f58d149efae1dc95ca35c/f/org.gnome.Terminal.gschema.override
+	sha256sums = b50e9e5664230e6ca290bcf38812a5b65e0baac66a486ee210894cf675f72e0b
+	sha256sums = fbc3c1b818ec4c7d23278e266b6a2e65f0d21930cf9eedb928d593d381456e4c
 	sha256sums = a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9
 
 pkgname = gnome-terminal-fedora
