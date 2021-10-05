@@ -6,7 +6,7 @@ _I18N_EREGEX='.*'
 _pkgname=collabora-online-server-nodocker
 
 # taking version of loolwsd:
-pkgver=6.4.8
+pkgver=6.4.11
 pkgrel=1
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"

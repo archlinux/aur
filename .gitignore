@@ -3,4 +3,4 @@ Packages
 *.deb
 /src/
 /pkg/
-/*.tar.xz
+/*pkg.tar.*
