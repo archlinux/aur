@@ -1,0 +1,15 @@
+pkgbase = penelope-git
+	pkgdesc = Penelope shell handler
+	pkgver = 0.8.r7.b6fda51
+	pkgrel = 1
+	url = https://github.com/brightio/penelope
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	provides = penelope
+	conflicts = penelope
+	source = git+https://github.com/brightio/penelope.git
+	sha256sums = SKIP
+
+pkgname = penelope-git
