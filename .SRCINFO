@@ -1,6 +1,6 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org - Beta
-	pkgver = 93.0b1
+	pkgver = 94.0b1
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	arch = i686
@@ -43,20 +43,19 @@ pkgbase = firefox-beta
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=93.0b1
+	provides = firefox=94.0b1
 	conflicts = firefox-beta-bin
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = http://archive.mozilla.org/pub/firefox/releases/93.0b1/source/firefox-93.0b1.source.tar.xz
-	source = http://archive.mozilla.org/pub/firefox/releases/93.0b1/source/firefox-93.0b1.source.tar.xz.asc
+	source = http://archive.mozilla.org/pub/firefox/releases/94.0b1/source/firefox-94.0b1.source.tar.xz
+	source = http://archive.mozilla.org/pub/firefox/releases/94.0b1/source/firefox-94.0b1.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = firefox-beta.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = f97be619debd307085d0b941441f579d3f5ae49471a362f87fab97cc7819eca1
+	sha256sums = f0f1542aa93b48b32d7f321c01e10b4f6b1b9693680b2f515ace69d832a9c975
 	sha256sums = SKIP
-	sha256sums = 1b6814e85f13dcf069482ad1acfc1a099661922c85e3344aa4ee059288506ccc
+	sha256sums = bb9769a8fe720abea2bba5b895c70c4fba0d44bb553399d83350268edf85cdeb
 	sha256sums = 54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1
 
 pkgname = firefox-beta
-
