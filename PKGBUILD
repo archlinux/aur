@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='xmrig'
-pkgver='6.15.1'
+pkgver='6.15.2'
 pkgrel='1'
 pkgdesc='High Perf CryptoNote CPU and GPU (OpenCL, CUDA) miner.'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ source=("${pkgname}.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
-            '4191299f9556556401fe3a1008e11784146ba53fdbbff6ad74ae19c4dd03d2b8')
+            '27a6c34ee1bec60f8c49a5e2b97223971f579a26a4632fb64c4a4556b3bb04ae')
 prepare() {
   cd "${pkgname}-${pkgver}"
   mkdir build
