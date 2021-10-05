@@ -1,6 +1,6 @@
 pkgbase = termite-aperezdc-git
 	pkgdesc = A simple VTE-based terminal
-	pkgver = 16.0
+	pkgver = r898.g9ba8d0b
 	pkgrel = 1
 	url = https://github.com/aperezdc/termite.git
 	arch = x86_64
