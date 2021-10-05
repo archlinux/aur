@@ -24,10 +24,14 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  rm -fr "${_plug}/src/include"
 }
 
 build() {
   cd build
+
+  CFLAGS+=" $(pkg-config --cflags avisynth)"
 
   cmake "../${_plug}" \
    -DCMAKE_BUILD_TYPE=Release \
