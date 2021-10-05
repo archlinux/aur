@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher-git' 'pop-launcher-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.0.0.r1.gbbd513a
-pkgrel=3
-arch=('x86_64')
+pkgver=1.0.1.r2.g5eb5b22
+pkgrel=1
+arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('GPL3')
 depends=('fd' 'gtk3' 'libqalculate')
@@ -20,7 +20,6 @@ prepare() {
   cd "$srcdir/launcher"
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
-
 
 build() {
   cd "$srcdir/launcher"
