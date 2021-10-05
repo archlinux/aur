@@ -1,6 +1,6 @@
 pkgbase = greetd-tuigreet-git
 	pkgdesc = A console UI greeter for greetd
-	pkgver = 0.6.1.r94.686c57c
+	pkgver = 0.7.1.r114.f8905cf
 	pkgrel = 1
 	url = https://github.com/apognu/tuigreet
 	arch = x86_64
@@ -16,3 +16,4 @@ pkgbase = greetd-tuigreet-git
 	sha256sums = 8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3
 
 pkgname = greetd-tuigreet-git
+	depends = gcc-libs
