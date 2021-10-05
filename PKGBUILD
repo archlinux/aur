@@ -17,8 +17,6 @@ sha512sums_x86_64=('ac7f947f88b0fc575539009881f0ba2a93fdc176611626eb019fec1b8315
 
 package(){
 
-    mkdir "${pkgdir}"
-
 	# Extract package data
 	tar xf data.tar.bz2 -C "${pkgdir}"
 
