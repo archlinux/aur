@@ -55,6 +55,8 @@ package() {
 
 	# License
 	install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome-$_channel/eula_text.html
+	install -Dm644 "$pkgdir"/opt/google/chrome-$_channel/WidevineCdm/LICENSE \
+		"$pkgdir"/usr/share/licenses/google-chrome-$_channel/WidevineCdm-LICENSE.txt
 
 	echo "  -> Fixing Chrome desktop entry..."
 	sed -i \
