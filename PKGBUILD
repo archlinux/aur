@@ -1,8 +1,8 @@
 # Maintainer: BrainDamage
 
 pkgname=python-libdecsync
-pkgver=1.7.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="python3 wrapper around libdecsync"
 arch=('x86_64')
 url="https://github.com/39aldo39/libdecsync-bindings-python3"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python' 'libdecsync')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9e6ebbbaa6689ce8a4384b9a15d8256b0684f6cbbc9b2efd2b01a299ad4e4bb8')
+sha256sums=('c093f6e6b183b1b76f8a43b602b94fd95352823d5ce97512d4c95a081fcc5af3')
 
 _dirname="libdecsync-bindings-python3-${pkgver}"
 

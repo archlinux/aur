@@ -1,15 +1,14 @@
 pkgbase = python-libdecsync
 	pkgdesc = python3 wrapper around libdecsync
-	pkgver = 1.7.1
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/39aldo39/libdecsync-bindings-python3
 	arch = x86_64
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
 	depends = libdecsync
-	source = python-libdecsync-1.7.1::https://github.com/39aldo39/libdecsync-bindings-python3/archive/v1.7.1.tar.gz
-	sha256sums = 9e6ebbbaa6689ce8a4384b9a15d8256b0684f6cbbc9b2efd2b01a299ad4e4bb8
+	source = python-libdecsync-2.1.0::https://github.com/39aldo39/libdecsync-bindings-python3/archive/v2.1.0.tar.gz
+	sha256sums = c093f6e6b183b1b76f8a43b602b94fd95352823d5ce97512d4c95a081fcc5af3
 
 pkgname = python-libdecsync
-
