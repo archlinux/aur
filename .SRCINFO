@@ -1,16 +1,20 @@
 pkgbase = makedeb-beta
-	pkgdesc = Create Debian archives from PKGBUILDs (beta release)
-	pkgver = 6.3.12
+	pkgdesc = The modern packaging tool for Debian archives (beta release)
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/makedeb/makedeb
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = tar
 	depends = binutils
+	depends = lsb-release
+	depends = dpkg
+	depends = asciidoctor
 	depends = makedeb-makepkg-beta
 	conflicts = makedeb
 	conflicts = makedeb-alpha
-	source = https://github.com/makedeb/makedeb/archive/refs/tags/v6.3.12-beta.tar.gz
+	source = git+https://github.com/makedeb/makedeb/#tag=v7.1.0-beta
 	sha256sums = SKIP
 
 pkgname = makedeb-beta
