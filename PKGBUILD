@@ -24,12 +24,12 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-1}
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=('GPL')
-depends=('qtutilities' 'boost-libs' 'qt5-svg' 'boost-libs' 'openssl' 'desktop-file-utils' 'xdg-utils')
+depends=('qtutilities' 'qtforkawesome' 'boost-libs' 'qt5-svg' 'boost-libs' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
@@ -43,7 +43,7 @@ checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('de8a41cd868a485c01406a930d4b5967976247cb1354d523ab7eb761d8352c49')
+sha256sums=('aff7571bf0dde7a29c41bb2abd3d07e0bd601a9d4cf8e8938d2ed26032fb58cd')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
