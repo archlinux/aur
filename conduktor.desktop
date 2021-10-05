@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Conduktor
+Comment=Kafka Desktop Client
+Exec=conduktor
+Terminal=false
+Type=Application
+Categories=Development;
