@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=go-yq
-pkgver=4.13.2
+pkgver=4.13.3
 pkgrel=1
 pkgdesc="portable command-line YAML processor"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 conflicts=(yq)
 source=(https://github.com/mikefarah/yq/archive/v${pkgver}/yq-${pkgver}.tar.gz)
-sha256sums=('7a7275b9c67cfcb9de9dd94496510861319590f82fa42340777ab92999e6adb9')
+sha256sums=('4b1f9e204375abf7c3d6c9f66d0c2bf5a64d00f6fdc8b2828168394431a1a2f7')
 
 prepare() {
   cd yq-$pkgver
