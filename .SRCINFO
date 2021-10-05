@@ -1,6 +1,6 @@
 pkgbase = python-saharaclient
 	pkgdesc = Python client library for Sahara
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = http://docs.openstack.org/python-saharaclient/
 	arch = any
@@ -21,8 +21,7 @@ pkgbase = python-saharaclient
 	depends = python-openstackclient
 	depends = python-requests
 	depends = python-six
-	source = https://github.com/openstack/python-saharaclient/archive/3.3.0.tar.gz
-	sha512sums = d62d684bfadc96758c2e0a85c188adb646f5022dac53e7797ebe6cdf2f27665a13dbb87e26f528eaa1299abe1f11b73de5ad5118e5fa10f9fe20193f31042933
+	source = https://github.com/openstack/python-saharaclient/archive/3.4.0.tar.gz
+	sha512sums = e2d354aaecb82c017df0fb51135249e96f8e9bc4d88cbdfc2c4852397178fa83091df70abb7a5a6ce2788848d302304ee0898cc41c985cd690f150a15b3a6731
 
 pkgname = python-saharaclient
-
