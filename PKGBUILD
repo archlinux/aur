@@ -1,5 +1,5 @@
 pkgname="paths-bookmarks-git"
-pkgver=r41.67aaeab
+pkgver=r42.3adc788
 pkgrel=1
 pkgdesc="Save often used directories under a short name"
 arch=("x86_64")
