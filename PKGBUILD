@@ -4,6 +4,7 @@ pkgname=ms-office-electron-bin
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="An Unofficial Microsoft Office Online Desktop Client. Free of Cost."
+pkgdir="/opt/MS Office - Electron/"
 arch=('x86_64')
 url="https://github.com/agam778/MS-Office-Electron#readme"
 license=('MIT')
@@ -15,6 +16,8 @@ source_x86_64=("https://github.com/agam778/MS-Office-Electron/releases/download/
 sha512sums_x86_64=('ac7f947f88b0fc575539009881f0ba2a93fdc176611626eb019fec1b83158960b6a341c3d47e4fda8f5d6b405627a2a3108d702c012823e9a8c35ebd3b1da182')
 
 package(){
+
+    mkdir "${pkgdir}"
 
 	# Extract package data
 	tar xf data.tar.bz2 -C "${pkgdir}"
