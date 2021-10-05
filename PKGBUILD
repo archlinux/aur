@@ -2,7 +2,7 @@
 # Co-Maintainer: dccafe
 
 pkgname=ldap-account-manager
-pkgver=7.6
+pkgver=7.7
 pkgrel=1
 pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://sourceforge.net/projects/lam/file
 #        "fix-htmldir-and-docdir.patch"
         "apache.example.conf"
         "nginx.example.conf")
-sha256sums=('b136ae22af39728007431eb11a48df698c4d66f80d7c20cb167104a3a758fd29'
+sha256sums=('3fc46dfdf5a6eb57d4e11c54c705d53b416719958a86d8e462a38f04199b888f'
             '229b281a85770f82f449e1e77ebd26b7583b5bc1266b234c653f2778067b1f34'
             'c1a95b12bf047afa2c6d268b66e54a6572c5c3eef46f4726920e09789b672b3e')
 
