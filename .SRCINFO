@@ -1,14 +1,14 @@
 pkgbase = python-runtype
 	pkgdesc = Python utilities for run-time type validation and multiple dispatch
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erezsh/runtype
 	arch = any
 	license = MIT
 	makedepends = python-sphinx
 	makedepends = python-recommonmark
 	makedepends = python-sphinx-markdown-tables
-	depends = python>=3.6
+	depends = python
 	source = https://github.com/erezsh/runtype/archive/refs/tags/0.2.2.tar.gz
 	md5sums = d94a4343c3a685f360c30572efb2c8b7
 	sha1sums = 622ddf3902e666a8148213e3734fb01869d91c39
