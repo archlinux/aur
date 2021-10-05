@@ -1,0 +1,189 @@
+pre_install() {
+	#打包的时候替换
+	PAK_ARCH="amd64"
+	#错误输出位置
+	ERR_OUT=/tmp/EasyConnectSDU.install.error
+
+	#清空之前可能存在的错误日志信息
+	if [ -f $ERR_OUT ]
+	then
+		echo > $ERR_OUT
+	fi
+	uname -a | grep x86_64 > /dev/null
+	if [ $? -eq 0 ]
+	then
+		if [ $PAK_ARCH = "i386" ]
+		then
+			echo "deb pkg is 32bit, os is 64bit, can't install..."
+			echo "deb pkg is 32bit, os is 64bit, can't install..." >>$ERR_OUT
+			exit -1
+		fi
+	else
+		if [ $PAK_ARCH = "amd64" ]
+		then
+			echo "deb pkg is 64bit, os is 32bit, can't install..."
+			echo "deb pkg is 64bit, os is 32bit, can't install..." >>$ERR_OUT
+			exit -1
+		fi
+	fi
+
+}
+
+post_install() {
+
+	#######################################################################
+	#宏定义
+	EasyConnectDir=/usr/share/sangfor/EasyConnect
+	ResourcesDir=${EasyConnectDir}/resources
+
+	ECAGENT_IMPORT_CA=${ResourcesDir}"/usr/bin/ECAgent --install-import-cert"
+	#######################################################################
+
+	###################
+	#添加系统服务
+	###################
+	system_add_service()
+	{
+	    systemctl enable EasyMonitor
+	    systemctl start EasyMonitor
+	}
+	add_service()
+	{
+		#导入证书
+		${ECAGENT_IMPORT_CA}  >  /dev/null 2>&1
+
+	    system_add_service
+	}
+	#更改文件权限
+	change_authority(){
+
+	    #文件权限处理
+	    chmod +x ${EasyConnectDir}/EasyConnect
+	    #保证logs文件夹存在
+	    mkdir -p ${ResourcesDir}/logs
+	    chmod 755 ${ResourcesDir}/logs
+	    ###CSClient创建的域套接字的句柄在这个地方，要加写权限,可以考录换个目录
+	    chmod 755 ${ResourcesDir}/conf -R
+	    chmod +x ${ResourcesDir}/shell/*
+
+	    #更改所有者
+	    chown root:root ${ResourcesDir}/bin/ECAgent
+	    chown root:root ${ResourcesDir}/bin/svpnservice
+	    chown root:root ${ResourcesDir}/bin/CSClient
+	    #添加s权限
+	    chmod +s ${ResourcesDir}/bin/ECAgent
+	    chmod +s ${ResourcesDir}/bin/svpnservice
+	    chmod +s ${ResourcesDir}/bin/CSClient
+	}
+	#手动启动EasyMonitor,这里处理可能有不妥之处，需要修改
+	#${ResourcesDir}/bin/EasyMonitor
+
+	change_authority
+	add_service
+	exit 0
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	#EasyMonitor位置
+	EASYMONITOR="/usr/share/sangfor/EasyConnect/resources/bin/EasyMonitor"
+
+
+	###################
+	#删除系统服务
+	###################
+	system_del_service()
+	{
+	    systemctl stop EasyMonitor
+	    systemctl disable EasyMonitor
+	}
+
+	del_service()
+	{
+	    system_del_service
+	}
+
+	#杀死可能存在的EC进程
+	kill_programe()
+	{
+
+	    #停止所有相关进程
+	    pidof EasyMonitor
+	    if [ $? -eq 0 ];then
+	        killall  EasyMonitor
+	    fi
+	    pidof EasyMonitor
+	    if [ $? -eq 0 ];then
+	        killall  -9 EasyMonitor
+	    fi
+
+	    pidof ECAgent
+	    if [ $? -eq 0 ];then
+	        killall ECAgent
+	    fi
+	    pidof ECAgent
+	    if [ $? -eq 0 ];then
+	        killall -9 ECAgent
+	    fi
+
+	    pidof EasyConnect
+	    if [ $? -eq 0 ];then
+	        killall EasyConnect
+	    fi
+	    pidof EasyConnect
+	    if [ $? -eq 0 ];then
+	        killall -9 EasyConnect
+	    fi
+
+	    pidof CSClient
+	    if [ $? -eq 0 ];then
+	        killall CSClient
+	    fi
+	    pidof CSClient
+	    if [ $? -eq 0 ];then
+	        killall -9 CSClient
+	    fi
+
+	    pidof svpnservice
+	    if [ $? -eq 0 ];then
+	        killall svpnservice 
+	    fi
+	    pidof svpnservice
+	    if [ $? -eq 0 ];then
+	        killall -9 svpnservice
+	    fi
+
+
+	}
+
+	#恢复之前修改的所有相关的配置信息
+	recover_ec()
+	{
+	    #调用EasyMonitor
+	    ${EASYMONITOR} -a -r   >  /dev/null 2>&1
+	}
+
+
+	#停止服务
+	del_service
+	#杀死相关进程
+	kill_programe
+	#恢复配置
+	recover_ec
+
+	echo "rm pkg before..."
+	exit 0
+}
+
+post_remove() {
+	rm -rf /usr/share/sangfor/EasyConnect
+    exit 0
+}
