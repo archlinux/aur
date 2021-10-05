@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-reno
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='OpenStack RElease NOtes manager'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-pbr' 'python-yaml' 'python-dulwich')
 checkdepends=('python-docutils' 'python-stestr' 'python-testscenarios'
               'python-testtools' 'python-sphinx')
 source=("https://github.com/openstack/reno/archive/$pkgver.tar.gz")
-sha512sums=('6d1a123d39c7c4dcc62f32a8d9f8693ce2f9734f825652c69f2aaf5927fb9731929d1624be1206d4c213800c2745d3db3a26a3f6d6a542f4c0a9528bd2b06ac2')
+sha512sums=('950a8adf59cebf31c7c8fc39931e1e447d9d9351c1c8d491f1803625024ab05bf35c7582e8b427dfca92889064b065a3551523cc05a7a3fb3bf7a14d02f7548c')
 
 export PBR_VERSION=$pkgver
 

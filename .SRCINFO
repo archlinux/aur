@@ -1,6 +1,6 @@
 pkgbase = python-reno
 	pkgdesc = OpenStack RElease NOtes manager
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://docs.openstack.org/reno/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-reno
 	depends = python-pbr
 	depends = python-yaml
 	depends = python-dulwich
-	source = https://github.com/openstack/reno/archive/3.3.0.tar.gz
-	sha512sums = 6d1a123d39c7c4dcc62f32a8d9f8693ce2f9734f825652c69f2aaf5927fb9731929d1624be1206d4c213800c2745d3db3a26a3f6d6a542f4c0a9528bd2b06ac2
+	source = https://github.com/openstack/reno/archive/3.4.0.tar.gz
+	sha512sums = 950a8adf59cebf31c7c8fc39931e1e447d9d9351c1c8d491f1803625024ab05bf35c7582e8b427dfca92889064b065a3551523cc05a7a3fb3bf7a14d02f7548c
 
 pkgname = python-reno
