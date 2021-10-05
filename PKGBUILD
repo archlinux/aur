@@ -2,7 +2,7 @@
 
 pkgname=librespot-git
 _pkgname=librespot
-pkgver=1381.8d70fd9
+pkgver=1383.095536f
 pkgrel=1
 epoch=1
 pkgdesc="Open Source Spotify client library"
@@ -19,6 +19,13 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$_pkgname"
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+    cd "$_pkgname"
+    cargo fetch \
+        --locked \
+        --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
