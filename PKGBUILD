@@ -12,10 +12,10 @@ makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest' 'python2-pytest' 'git')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('5f8124328c523f01a27e3883ee8b5d84')
-_pyver=$(python -V | cut -c 8-10)
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {

@@ -19,4 +19,3 @@ pkgname = python-relic
 
 pkgname = python2-relic
 	depends = python2
-
