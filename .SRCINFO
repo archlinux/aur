@@ -1,0 +1,16 @@
+pkgbase = python-mangasorigines
+	pkgdesc = An API wrapper for MangasOrigines written in Python.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/Asthowen/MangasOrigines/
+	arch = any
+	license = GNUv3
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-aiohttp
+	depends = python-aiofiles
+	depends = python-beautifulsoup4
+	source = https://pypi.io/packages/source/M/MangasOrigines/MangasOrigines-0.0.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-mangasorigines
