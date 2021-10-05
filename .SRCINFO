@@ -1,21 +1,27 @@
 pkgbase = python-pgmpy
-	pkgdesc = A library for Probabilistic Graphical Models
-	pkgver = 0.1.12
+	pkgdesc = Probabilistic Graphical Model library
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://github.com/pgmpy/pgmpy
+	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-nbsphinx
+	makedepends = python-sphinx_rtd_theme
+	depends = python>=3.7
+	depends = python-joblib
 	depends = python-networkx
+	depends = python-numpy
 	depends = python-pandas
+	depends = python-pyparsing
+	depends = python-scipy
 	depends = python-scikit-learn
-	depends = python-pyparsing
 	depends = python-statsmodels
-	depends = python-tqdm
-	depends = python-pyparsing
 	depends = python-pytorch
-	source = https://pypi.io/packages/source/p/pgmpy/pgmpy-0.1.12.tar.gz
-	sha256sums = ff5b8b8ef3c22642a499d6b1633035800185de4628fb380f9fb78db08f71b7e4
+	depends = python-tqdm
+	source = python-pgmpy-0.1.16.tar.gz::https://github.com/pgmpy/pgmpy/archive/v0.1.16.tar.gz
+	sha256sums = 4bd3b82a65a406e24f82ecffa5eda6ab8133220272a7e5471a134fcb0ec33ee5
 
 pkgname = python-pgmpy
-
