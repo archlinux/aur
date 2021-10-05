@@ -1,7 +1,7 @@
 pkgbase = iscan-for-epson-v500-photo
-	pkgdesc = iscan (from Epson) with the plugin for scanner Epson V500 Photo, also called GT-X770 - iscan[community] is out-of-date and buggy
+	pkgdesc = All-in-one package from Epson : iscan + iscan-data + plugin for scanner Epson V500 Photo (also called GT-X770) - iscan[community] is out-of-date and buggy
 	pkgver = 2.30.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://support.epson.net/linux/en/iscan.php?model=gt-x770&version=2.30.4
 	install = iscan-for-epson-v500-photo.install
 	arch = x86_64
@@ -14,9 +14,6 @@ pkgbase = iscan-for-epson-v500-photo
 	provides = iscan
 	provides = iscan-data
 	provides = iscan-plugin-epson-v500-photo
-	conflicts = iscan
-	conflicts = iscan-data
-	conflicts = iscan-plugin-epson-v500-photo
 	source = https://download2.ebz.epson.net/iscan/plugin/gt-x770/deb/x64/iscan-gt-x770-bundle-2.30.4.x64.deb.tar.gz
 	md5sums = 2990ce5c70862b28415aa9132083cc6f
 

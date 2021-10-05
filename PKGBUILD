@@ -2,16 +2,15 @@
 
 pkgname=iscan-for-epson-v500-photo
 pkgver=2.30.4
-pkgrel=3
+pkgrel=4
 pkgname_plugin=iscan-plugin-gt-x770
 pkgver_plugin=2.1.3-1
 pkgver_iscan_data=1.39.2-1
 
-pkgdesc="iscan (from Epson) with the plugin for scanner Epson V500 Photo, also called GT-X770 - iscan[community] is out-of-date and buggy"
+pkgdesc="All-in-one package from Epson : iscan + iscan-data + plugin for scanner Epson V500 Photo (also called GT-X770) - iscan[community] is out-of-date and buggy"
 arch=('x86_64')
 url="https://support.epson.net/linux/en/iscan.php?model=gt-x770&version=${pkgver}"
 license=('custom:EPSON')
-conflicts=('iscan' 'iscan-data' 'iscan-plugin-epson-v500-photo')
 provides=('iscan' 'iscan-data' 'iscan-plugin-epson-v500-photo')
 depends=('libjpeg6' 'libpng12')
 makedepends=('binutils' 'tar' 'deb2targz')
