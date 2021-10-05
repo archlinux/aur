@@ -1,24 +1,29 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=pacman-mirrorup
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A service to retrieve the best and latest Pacman mirror list based on user's geography"
 arch=('x86_64')
 url="https://github.com/bpetlert/pacman-mirrorup"
 license=('MIT')
 depends=('systemd')
-makedepends=('rust' 'cargo')
+makedepends=(cargo)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8736ca83f10f871c33916a15839769d9f4388af7ecb3debd05a17b1aed104f8b')
+sha256sums=('e0637a620adbe67a2a40911920e8f125a908805dd3bbb0641aa246085bc87aaf')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
-
-  # Ignore target-dir in ~/.cargo/config.toml, reset it to default: "target".
-  cargo build --release --locked --target-dir=target
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build  --frozen --release
 }
 
 package() {
