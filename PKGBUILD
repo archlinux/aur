@@ -1,13 +1,13 @@
 # Maintainer: Vinny Meller (vinnymeller@gmail.com)
 pkgname="pulseaudio-nextsink"
 pkgver="2.0.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Swaps audio sink to the next in the list via pactl"
 arch=("x86_64")
 url="https://www.github.com/vinnymeller/pulseaudio-nextsink"
 depends=('pulseaudio' 'bash')
 source=("pulseaudio-nextsink")
-sha512sums=("6aa6ea6ee52ab2e80a18446c7999b0866a6b6c4a55c91c84287c042e07313c7b408e1fac74385409281a215a258f2b72b66773b2ad5765b7b15bc087dcf75eda")
+sha512sums=("5d9bd183ecc7da0c258870c683071e799c245ba92a2b1a33510fe0c9a4eaa50a12d928f672e3345c801f430ed98a7094a12c3fe16d47352245b51e91e00b84fe")
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"

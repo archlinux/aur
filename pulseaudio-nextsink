@@ -15,6 +15,8 @@ function change_sink_inputs_to_default_sink_num {
 }
 
 
+# Get current default sink. Iterate through list to find the one that comes next
+# 	Set the 1st sink in the list to default after loop ends without exiting
 default_sink_line=$(pactl list short sinks | grep $(pactl get-default-sink))
 default_sink_arr=( $default_sink_line )
 default_sink_num=${default_sink_arr[0]} # The number of the currently default sink. Not using the whole line because they can change frequently
