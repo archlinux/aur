@@ -3,7 +3,7 @@
 
 pkgname=terminalpp-git
 pkgver=0.8.4.r2.gca8811d
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist, fast, cross-platform terminal emulator"
 arch=('x86_64')
 url="https://terminalpp.com"
