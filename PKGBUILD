@@ -8,7 +8,7 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
 _rev=r01
-_sdkint=30
+_sdkint=31
 pkgname="android-sources"
 pkgver="${_sdkint}_${_rev}"
 pkgrel=1
@@ -20,8 +20,8 @@ conflicts=("android-sources-${_sdkint}")
 options=('!strip')
 source=("https://dl.google.com/android/repository/sources-${_sdkint}_${_rev}.zip"
         "package.xml")
-sha256sums=('e5def304f05910fc672aacdb27c44a5b98a124b217694f71c551adce70ac7d05'
-            '379578ca0649d5ab81c10d26ba1036257230500d7854ce122401acf80574a03d')
+sha256sums=('d9d12f4f7638097d7b1d5e469af7eb0b172513b45b00b609dddfd53a9bef93ad'
+            '0778ffcac664e119151b37764670a796db1f62595af5b534cbdbfe2595950f4b')
 
 
 package() {
