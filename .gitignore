@@ -1,5 +1,5 @@
 /*.pkg.tar
 /src
 /pkg
-coursier
+coursier-*
 builder-*
