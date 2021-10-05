@@ -6,6 +6,7 @@ pkgbase = obs-plugin-input-overlay-bin
 	arch = x86_64
 	groups = obs-plugins
 	license = GPL
+	makedepends = unzip
 	depends = obs-studio>=19.0.3
 	depends = libuiohook
 	provides = obs-input-overlay
@@ -14,4 +15,3 @@ pkgbase = obs-plugin-input-overlay-bin
 	sha256sums = cdd1ccdd0580770ec3836b26c7d7f2ac0324ed2ddfdb4008ada0bc9ad8464358
 
 pkgname = obs-plugin-input-overlay-bin
-

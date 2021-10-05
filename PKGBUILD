@@ -11,6 +11,7 @@ license=("GPL")
 provides=("obs-input-overlay")
 conflicts=("obs-input-overlay")
 depends=("obs-studio>=19.0.3" "libuiohook")
+makedepends=("unzip")
 source=("https://github.com/univrsal/input-overlay/releases/download/v${pkgver}/input-overlay.v${pkgver}b.linux64.zip")
 sha256sums=('cdd1ccdd0580770ec3836b26c7d7f2ac0324ed2ddfdb4008ada0bc9ad8464358')
 
