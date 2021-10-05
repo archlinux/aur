@@ -1,6 +1,6 @@
 pkgbase = pycharm-edu
 	pkgdesc = A Professional Tool to Learn and Teach Programming with Python
-	pkgver = 2021.2.1
+	pkgver = 2021.2.2
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm-edu/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = pycharm-edu
 	optdepends = python2: Support for Python 2 language
 	provides = pycharm-edu
 	options = !strip
-	source = https://download.jetbrains.com/python/pycharm-edu-2021.2.1.tar.gz
+	source = https://download.jetbrains.com/python/pycharm-edu-2021.2.2.tar.gz
 	source = pycharm-edu.desktop
-	sha256sums = 90038ea6db76fe3832a87ba3df492a57bb7504cd42e24c4881a81308f0be4627
+	sha256sums = b3ef6ad7d771d6df0a1f0d9c61d6da1e6cca313a6379001103f0c46b760ecb9f
 	sha256sums = bb47c5ebe079539aed256aea205fdc91a425937744e6d84df65a85cdbd51ab59
 
 pkgname = pycharm-edu
