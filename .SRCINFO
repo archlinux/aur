@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-tnlmeans-git
+	pkgdesc = Plugin for Avisynth: tnlmeans (GIT version)
+	pkgver = v1.1.0.gd2cb464
+	pkgrel = 1
+	url = https://github.com/pinterf/TNLMeans
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-tnlmeans
+	conflicts = avisynth-plugin-tnlmeans
+	source = tnlmeans::git+https://github.com/pinterf/TNLMeans.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-tnlmeans-git
