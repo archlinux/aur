@@ -1,11 +1,11 @@
 pkgbase = sline
 	pkgdesc = Simple line-editing and command history library.
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://sr.ht/~arivigo/sline/
 	arch = x86_64
 	license = MIT
-	source = sline-0.6.0.tar.gz::https://git.sr.ht/~arivigo/sline/archive/0.6.0.tar.gz
-	sha512sums = 2bdecb03a921484bb2cf47a4893a53d2b273a93ac7560c7d7e80fae0c36aea1338c8d75b415d0099e0eb13730793a394316da27d6b882c9439d1e86368dff2d1
+	source = sline-0.6.2.tar.gz::https://git.sr.ht/~arivigo/sline/archive/0.6.2.tar.gz
+	sha512sums = bd98dc04b4ff3084068763f62f676b79b1693edffc9415fa2f16345d7ba35e137a3eac5ffda7e841d3836880a22b702565df453218a9ea0f5eb6b8a96179bc31
 
 pkgname = sline
