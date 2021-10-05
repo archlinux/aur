@@ -1,0 +1,25 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Link to the binary
+	ln -sf '/opt/MS Office - Electron/MS Office - Electron' '/usr/bin/MS Office - Electron'
+
+	# SUID chrome-sandbox for Electron 5+
+	chmod 4755 '/opt/MS Office - Electron/chrome-sandbox' || true
+
+	update-mime-database /usr/share/mime || true
+	update-desktop-database /usr/share/applications || true
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Delete the link to the binary
+	rm -f '/usr/bin/MS Office - Electron'
+	update-desktop-database -q
+}
