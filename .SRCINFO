@@ -1,6 +1,6 @@
 pkgbase = thunderbird-bin
 	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version
-	pkgver = 91.1.2
+	pkgver = 91.2.0
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-bin.install
@@ -17,24 +17,24 @@ pkgbase = thunderbird-bin
 	optdepends = hunspell: Spell checking
 	optdepends = hyphen: Hyphenation
 	optdepends = libcanberra: Sound support
-	provides = thunderbird=91.1.2
+	provides = thunderbird=91.2.0
 	conflicts = thunderbird
 	source = thunderbird-bin.desktop
 	source = vendor.js
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737
 	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
-	source_x86_64 = https://archive.mozilla.org/pub/thunderbird/releases/91.1.2/linux-x86_64/en-US/thunderbird-91.1.2.tar.bz2
-	source_x86_64 = https://archive.mozilla.org/pub/thunderbird/releases/91.1.2/linux-x86_64/en-US/thunderbird-91.1.2.tar.bz2.asc
-	sha512sums_x86_64 = 7b77879a0d9769ffa092c88f6d8110dbdc5d0ec968a867a8d7ebababebd0d81c34e69bf6d1f9eca1ad95f7e968f69df961019172b7922396296d7dc7c5c7179f
+	source_x86_64 = https://archive.mozilla.org/pub/thunderbird/candidates/91.2.0-candidates/build1/linux-x86_64/en-US/thunderbird-91.2.0.tar.bz2
+	source_x86_64 = https://archive.mozilla.org/pub/thunderbird/candidates/91.2.0-candidates/build1/linux-x86_64/en-US/thunderbird-91.2.0.tar.bz2.asc
+	sha512sums_x86_64 = a1000ed6f06ef4728e703ff344aac3beae57c3df53653c001747b92d21c69ab9f91b6d8014249e20bd0382ac612acb4997dcabeb6786553ff3f1455690e8991c
 	sha512sums_x86_64 = SKIP
-	source_pentium4 = https://archive.mozilla.org/pub/thunderbird/releases/91.1.2/linux-i686/en-US/thunderbird-91.1.2.tar.bz2
-	source_pentium4 = https://archive.mozilla.org/pub/thunderbird/releases/91.1.2/linux-i686/en-US/thunderbird-91.1.2.tar.bz2.asc
-	sha512sums_pentium4 = 7b77879a0d9769ffa092c88f6d8110dbdc5d0ec968a867a8d7ebababebd0d81c34e69bf6d1f9eca1ad95f7e968f69df961019172b7922396296d7dc7c5c7179f
+	source_pentium4 = https://archive.mozilla.org/pub/thunderbird/candidates/91.2.0-candidates/build1/linux-i686/en-US/thunderbird-91.2.0.tar.bz2
+	source_pentium4 = https://archive.mozilla.org/pub/thunderbird/candidates/91.2.0-candidates/build1/linux-i686/en-US/thunderbird-91.2.0.tar.bz2.asc
+	sha512sums_pentium4 = a1000ed6f06ef4728e703ff344aac3beae57c3df53653c001747b92d21c69ab9f91b6d8014249e20bd0382ac612acb4997dcabeb6786553ff3f1455690e8991c
 	sha512sums_pentium4 = SKIP
-	source_i686 = https://archive.mozilla.org/pub/thunderbird/releases/91.1.2/linux-i686/en-US/thunderbird-91.1.2.tar.bz2
-	source_i686 = https://archive.mozilla.org/pub/thunderbird/releases/91.1.2/linux-i686/en-US/thunderbird-91.1.2.tar.bz2.asc
-	sha512sums_i686 = 7b77879a0d9769ffa092c88f6d8110dbdc5d0ec968a867a8d7ebababebd0d81c34e69bf6d1f9eca1ad95f7e968f69df961019172b7922396296d7dc7c5c7179f
+	source_i686 = https://archive.mozilla.org/pub/thunderbird/candidates/91.2.0-candidates/build1/linux-i686/en-US/thunderbird-91.2.0.tar.bz2
+	source_i686 = https://archive.mozilla.org/pub/thunderbird/candidates/91.2.0-candidates/build1/linux-i686/en-US/thunderbird-91.2.0.tar.bz2.asc
+	sha512sums_i686 = a1000ed6f06ef4728e703ff344aac3beae57c3df53653c001747b92d21c69ab9f91b6d8014249e20bd0382ac612acb4997dcabeb6786553ff3f1455690e8991c
 	sha512sums_i686 = SKIP
 
 pkgname = thunderbird-bin
