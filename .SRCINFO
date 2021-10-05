@@ -1,0 +1,32 @@
+pkgbase = bluej-fri
+	pkgdesc = A custom version of the BlueJ Development Enviroment made for the University of Žilina
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://github.com/infjava/BlueJFRI
+	arch = any
+	license = GPL2
+	depends = gtk2
+	depends = archlinux-java-run
+	depends = java-runtime=11
+	depends = java-environment=11
+	depends = java11-openjfx
+	provides = bluej=${pkgver}
+	conflicts = bluej
+	noextract = BlueJ-linux-422.deb
+	noextract = checkstyle-extension-5.4-0.jar
+	source = https://www.bluej.org/download/files/BlueJ-linux-422.deb
+	source = https://downloads.sourceforge.net/project/bluejcheckstyle/bluejcheckstyle/5.4-0/checkstyle-extension-5.4-0.jar
+	source = BlueJFRI::git+https://github.com/infjava/BlueJFRI
+	source = bluej
+	source = bluej.desktop
+	source = default_checks.patch
+	source = bluej.xml
+	sha256sums = 5c2241f2208e98fcf9aad7c7a282bcf16e6fd543faa5fdb0b99b34d1023113c3
+	sha256sums = 48a36cba5b981385baa8dfb3034549b65e30e6f7261aae158c6d37c9bf590a02
+	sha256sums = SKIP
+	sha256sums = c1bdaad64fcf45b1efac00e010d5f750c417d64896cde80b9b7c5745277422b8
+	sha256sums = 47fa6f755cd0ec1b575b7029820f8fa8d7abb7413fa4709d053f120925edcc5f
+	sha256sums = 5a0e105134c36f1aa97e36462d734b7c05ba1db5efa2b372d38f23f1c6ac3a6f
+	sha256sums = ca12278b71e4bd84875f10d24b74d1d24c51573825d796331d8a20794ce60c08
+
+pkgname = bluej-fri
