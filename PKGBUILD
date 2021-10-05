@@ -2,9 +2,8 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python310
-pkgver=3.10.0rc2
-pkgrel=3
-_pyver=3.10.0
+pkgver=3.10.0
+pkgrel=1
 _pybasever=3.10
 _pymajver=3
 pkgdesc="Major release 3.10 of the Python high-level programming language"
