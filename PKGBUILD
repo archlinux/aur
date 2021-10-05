@@ -4,7 +4,7 @@
 
 pkgname=portainer-bin
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A lightweight docker management UI"
 arch=('armv6h' 'armv7h' 'aarch64' 'x86_64')
