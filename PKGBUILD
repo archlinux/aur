@@ -7,7 +7,7 @@ _reponame=qtutilities
 _cfg=qt6
 pkgname=qtutilities-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=6.5.0
+pkgver=6.5.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models (using Qt 6)'
@@ -17,7 +17,7 @@ makedepends=('cmake' 'ninja' 'qt6-tools' 'clang' 'mesa')
 optdepends=("$_name-doc: API documentation")
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('8b5b05b274655a33ff8da3af9f1d827a69dc23590bbe138318774524d80a6b9d')
+sha256sums=('a0bb997e9ea8b53c4ba7ae40affd945d015c757f43d7a313b575a8a425bea180')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
