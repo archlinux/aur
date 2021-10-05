@@ -1,15 +1,15 @@
 pkgbase = edfbrowser
 	pkgdesc = A free, opensource, multiplatform, universal viewer and toolbox intended for, but not limited to, timeseries storage files like EEG, EMG, ECG, BioImpedance, etc.
-	pkgver = 1.85
+	pkgver = 1.86
 	pkgrel = 1
 	url = http://www.teuniz.net/edfbrowser/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt5-base
-	source = https://www.teuniz.net/edfbrowser/edfbrowser_185_source.tar.gz
+	source = https://www.teuniz.net/edfbrowser/edfbrowser_186_source.tar.gz
 	source = edfbrowser.desktop
-	sha1sums = cf2004b98b6e957d8811d3169fdb7647f2d9a46e
+	sha1sums = 57f159f1eef12ec094b4fb3b7467d023b79e5031
 	sha1sums = 3076f5b8ab0313edb7b20ca13214382914725f52
 
 pkgname = edfbrowser
