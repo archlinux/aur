@@ -1,6 +1,6 @@
 pkgbase = composer1
 	pkgdesc = Dependency Manager for PHP, version 1
-	pkgver = 1.10.22
+	pkgver = 1.10.23
 	pkgrel = 1
 	url = https://getcomposer.org/
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = composer1
 	makedepends = git
 	makedepends = unzip
 	depends = php
-	source = composer1::git+https://github.com/composer/composer.git#tag=1.10.22
-	source = composer1-1.10.22.phar::https://getcomposer.org/download/1.10.22/composer.phar
+	source = composer1::git+https://github.com/composer/composer.git#tag=1.10.23
+	source = composer1-1.10.23.phar::https://getcomposer.org/download/1.10.23/composer.phar
 	sha256sums = SKIP
-	sha256sums = 6127ae192d3b56cd6758c7c72fe2ac6868ecc835dae1451a004aca10ab1e0700
+	sha256sums = 2fc3ae370a979602a3bc2c950a38db02e51b4ca2072f7b8e15a518b443b835e7
 
 pkgname = composer1
-
