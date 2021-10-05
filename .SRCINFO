@@ -1,10 +1,11 @@
 pkgbase = binocle
 	pkgdesc = a graphical tool to visualize binary data
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sharkdp/binocle
 	arch = x86_64
 	license = Apache-2.0
+	license = MIT
 	source = https://github.com/sharkdp/binocle/releases/download/v0.1.1/binocle-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = e1e075675c8669272141bd7e0f6ffba61996754481ee5d0fcebeb29496d06c4e
 
