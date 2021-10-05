@@ -1,6 +1,6 @@
 # Maintainer: Vinny Meller (vinnymeller@gmail.com)
 pkgname="pulseaudio-nextsink"
-pkgver="1.0.0"
+pkgver="2.0.0"
 pkgrel="1"
 pkgdesc="Swaps audio sink to the next in the list via pactl"
 arch=("x86_64")

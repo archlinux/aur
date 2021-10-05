@@ -2,6 +2,19 @@
 # Iterates through the list of available sinks from pactl
 # Made to be used with a hotkey to quickly swap between outputs. Therefore takes no inputs.
 
+# Function takes the sink that we are making default and moves all inputs to that sink
+function change_sink_inputs_to_default_sink_num {
+	readarray -t all_sink_inputs <<<"$(pacmd list-sink-inputs | grep index:)"
+	for sink_input in "${all_sink_inputs[@]}"
+	do
+		sink_input_arr=( $sink_input )
+		index_num=${sink_input_arr[1]}  # index 0 of the array should be "index:" and next the number we want
+		pactl move-sink-input $index_num $1  
+		echo "Moved sink input $index_num to sink $1"
+	done
+}
+
+
 default_sink_line=$(pactl list short sinks | grep $(pactl get-default-sink))
 default_sink_arr=( $default_sink_line )
 default_sink_num=${default_sink_arr[0]} # The number of the currently default sink. Not using the whole line because they can change frequently
@@ -15,6 +28,7 @@ do
 	if [ "$last_sink_active" = true ]; then
 		pactl set-default-sink $sink_num
 		echo "Set pulse default sink to number $sink_num"
+		change_sink_inputs_to_default_sink_num "$sink_num"	
 		exit 0
 	fi
 	if [ "$default_sink_num" = "$sink_num" ]; then
@@ -27,4 +41,5 @@ first_sink_arr=( $first_sink )
 first_sink_num=${first_sink_arr[0]}
 pactl set-default-sink $first_sink_num
 echo "Set pulse default sink to number $first_sink_num"
+change_sink_inputs_to_default_sink_num "$first_sink_num"
 exit 0
