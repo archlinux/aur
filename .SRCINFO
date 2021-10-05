@@ -1,0 +1,20 @@
+pkgbase = termite-aperezdc-git
+	pkgdesc = A simple VTE-based terminal
+	pkgver = 16.0
+	pkgrel = 1
+	url = https://github.com/aperezdc/termite.git
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+    makedepends = gperf
+	makedepends = meson>=0.58
+	makedepends = ninja
+	depends = gtk3
+	depends = pcre2
+	depends = gnutls
+	depends = vte-common
+    provides = termite
+	source = termite::git+https://github.com/aperezdc/termite.git
+	sha256sums = SKIP
+
+pkgname = termite-aperezdc-git
