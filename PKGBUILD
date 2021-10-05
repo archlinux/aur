@@ -9,8 +9,8 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt' 'tensorrt-doc')
-pkgver=8.0.1.6
-_tensorrt_tag=8.0.1
+pkgver=8.0.3.4
+_tensorrt_tag=21.10
 _cudaver=11.3
 _cudnnver=8.2
 _protobuf_ver=3.17.3
@@ -37,7 +37,7 @@ source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_
         '020-tensorrt-fix-cub-deprecation-huge-warnings.patch'
         '030-tensorrt-fix-python.patch')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('def6a5ee50bed25a68a9c9e22ec671a8f29ee5414bde47c5767bd279e5596f88'
+sha256sums=('3177435024ff4aa5a6dba8c1ed06ab11cc0e1bf3bb712dfa63a43422f41313f3'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -47,7 +47,7 @@ sha256sums=('def6a5ee50bed25a68a9c9e22ec671a8f29ee5414bde47c5767bd279e5596f88'
             'SKIP'
             '51cec99f108b83422b7af1170afd7aeb2dd77d2bcbb7b6bad1f92509e9ccf8cb'
             'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
-            'ecde4147042e67a5162082806f15691781bd307f93f7f8a742ac44bf44db7342'
+            '053fdce602aa588a576964978c0d1e777fc8ce2ef6b76165a70f0b025e6c3dec'
             'c12d9148b7d6fc436387e7eb7b16a0066358f69e32bbee8cc9ac066b1faa902a')
 
 prepare() {

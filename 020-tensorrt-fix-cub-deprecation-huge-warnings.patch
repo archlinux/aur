@@ -1,6 +1,6 @@
 --- a/plugin/CMakeLists.txt
 +++ b/plugin/CMakeLists.txt
-@@ -122,7 +122,7 @@ set_target_properties(${SHARED_TARGET} PROPERTIES DEBUG_POSTFIX ${TRT_DEBUG_POST
+@@ -123,7 +123,7 @@ set_target_properties(${SHARED_TARGET} PROPERTIES DEBUG_POSTFIX ${TRT_DEBUG_POST
  
  set_target_properties(${SHARED_TARGET} PROPERTIES VERSION ${TRT_VERSION} SOVERSION ${TRT_SOVERSION} )
  
@@ -9,7 +9,7 @@
  
  target_link_libraries(${SHARED_TARGET}
      ${CUBLAS_LIB}
-@@ -162,7 +162,7 @@ set_target_properties(${STATIC_TARGET} PROPERTIES DEBUG_POSTFIX ${TRT_DEBUG_POST
+@@ -163,7 +163,7 @@ set_target_properties(${STATIC_TARGET} PROPERTIES DEBUG_POSTFIX ${TRT_DEBUG_POST
  
  set_target_properties(${STATIC_TARGET} PROPERTIES VERSION ${TRT_VERSION} SOVERSION ${TRT_SOVERSION} )
  
