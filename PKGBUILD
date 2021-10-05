@@ -1,19 +1,18 @@
-# Maintainer: xerus <27f at pm dot me>
+# Maintainer: xerus <27jf at pm dot me>
 _pkgname=chordpro
 pkgname="${_pkgname}-dev-git"
-pkgver=5.980.r48.g6066ede
+pkgver=5.980.r138.g7261f0a
 pkgrel=1
 pkgdesc='Reference implementation of the ChordPro standard for musical lead sheets, development branch'
 arch=('any')
 url="https://github.com/ChordPro/chordpro/tree/dev"
 license=('Artistic2.0')
 provides=("$_pkgname")
-conflicts=("$_pkgname-git")
-optdepends=(perl-text-layout)
-depends=(git perl-app-packager perl-string-interpolate-named perl-font-ttf perl-image-info perl-io-string perl-json-pp perl-pdf-api2 perl-file-loadlines perl-pod-parser)
+optdepends=()
+depends=(git perl-app-packager perl-string-interpolate-named perl-font-ttf perl-image-info perl-io-string perl-json-pp perl-pdf-api2 perl-file-loadlines perl-pod-parser perl-text-layout)
 options=('!emptydirs' purge)
 source=("git+https://github.com/ChordPro/chordpro.git#branch=dev")
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
   cd "$_pkgname"
