@@ -1,10 +1,11 @@
 pkgbase = ohmysvg
 	pkgdesc = SVG optimizer
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonnyp/OhMySVG/
 	arch = any
 	license = GPL3
+	makedepends = meson
 	depends = gjs
 	depends = hicolor-icon-theme
 	source = ohmysvg-1.0.0.tar.gz::https://github.com/sonnyp/OhMySVG//archive/refs/tags/v1.0.0.tar.gz
