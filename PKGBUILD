@@ -17,7 +17,6 @@ arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
-replaces=("linux-beikeyun-p1", "linux-a5x-max")
 options=('!strip')
 source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "rk3328-beikeyun-p1.dts"
