@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-assrender-git
+	pkgdesc = Plugin for Avisynth: assrender (GIT version)
+	pkgver = 0.35.0.g9c0e536
+	pkgrel = 1
+	url = https://github.com/pinterf/assrender
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-assrender
+	conflicts = avisynth-plugin-assrender
+	source = assrender::git+https://github.com/pinterf/assrender.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-assrender-git
