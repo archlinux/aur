@@ -1,10 +1,12 @@
 pkgbase = durt-bin
 	pkgdesc = Command line tool for calculating the size of files and directories
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cauebs/durt
 	arch = x86_64
 	license = GPL-3.0
+	provides = durt
+	conflicts = durt
 	source = durt-bin-1.0.2.tar.gz::https://github.com/cauebs/durt/releases/download/v1.0.2/durt-x86_64-unknown-linux-gnu.tar.gz
 	sha512sums = 50af802a0b2433ac70f95fc505c72774ae3b4215980b780107c15f68d767e37643c9e2bf24da15a5e3d4dbab339433443ca0ffd45b585363115e373254ae2c0d
 

@@ -1,8 +1,10 @@
 # Maintainer: Cauê Baasch de Souza <cauebs@pm.me>
 pkgname=durt-bin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for calculating the size of files and directories"
+provides=('durt')
+conflicts=('durt')
 arch=('x86_64')
 url="https://github.com/cauebs/durt"
 license=('GPL-3.0')
