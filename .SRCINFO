@@ -1,18 +1,18 @@
 pkgbase = aliyunpan-liupan1890
 	pkgdesc = 阿里云盘小白羊版 阿里云盘PC版
-	pkgver = 2.8.30
-	pkgrel = 2
+	pkgver = 2.9.24
+	pkgrel = 1
 	url = https://github.com/liupan1890/aliyunpan
 	arch = x86_64
 	license = None
-	depends = electron
+	depends = electron12
 	depends = aria2
 	optdepends = mpv: media preview support
 	options = !strip
-	source = https://store.deepinos.org.cn/store/network/liupan1890.github.aliyunpan/liupan1890.github.aliyunpan_2.8.30_all.deb
+	source = https://github.com/liupan1890/aliyunpan/releases/download/v2.9.24/Linux.v2.9.24.zip
 	source = aliyunpan-liupan1890.svg
 	source = aliyunpan-liupan1890.desktop
-	md5sums = 7638f785e64eb7995d2a56d5e2033742
+	md5sums = cc1e701f3779e6b3eb157e5a678e3846
 	md5sums = cfea225b67778e82b289f99e57b28c6f
 	md5sums = 79cf6842090d1b323ccb3582928c8f56
 
