@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('firmware-manager-git' 'libfirmware-manager-git')
 pkgbase=firmware-manager-git
-pkgver=0.1.2.r31.g1b7d0cc
+pkgver=0.1.2.r32.g0bbeb12
 pkgrel=1
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL3')
 depends=('dbus' 'gtk3' 'libgudev' 'openssl')
