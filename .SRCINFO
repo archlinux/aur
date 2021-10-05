@@ -7,6 +7,6 @@ pkgbase = pulseaudio-nextsink
 	depends = pulseaudio
 	depends = bash
 	source = pulseaudio-nextsink
-	sha512sums = 28840b89153bd72f9a0d1376c2165d782830f4a9817ce89d107850e76d29048f9b92436dca78829c36a535d3d31292312839e15ef087ef697da0d84517484210
+	sha512sums = 6aa6ea6ee52ab2e80a18446c7999b0866a6b6c4a55c91c84287c042e07313c7b408e1fac74385409281a215a258f2b72b66773b2ad5765b7b15bc087dcf75eda
 
 pkgname = pulseaudio-nextsink
