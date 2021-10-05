@@ -15,7 +15,6 @@ pkgbase = python-shade
 	checkdepends = python-stestr
 	checkdepends = python-oslotest
 	depends = python-pbr
-	depends = python2-decorator
 	depends = python-jmespath
 	depends = python-jsonpatch
 	depends = python-os-client-config
@@ -34,4 +33,3 @@ pkgbase = python-shade
 	sha512sums = dda29a5cbe41a2dc1641accdca66d80fd2afb58855ae3a9d99fb11a5b3407fa3afe7b5a8dc04150526050ff968f117202150330133a894553a51844a375f8c1f
 
 pkgname = python-shade
-

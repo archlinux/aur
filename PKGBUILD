@@ -1,13 +1,13 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-shade
-pkgver='1.33.0'
-pkgrel='1'
+pkgver=1.33.0
+pkgrel=1
 pkgdesc='Simple client library for interacting with OpenStack clouds'
 arch=('any')
 url='http://docs.openstack.org/shade/'
 license=('Apache')
-depends=('python-pbr' 'python2-decorator' 'python-jmespath'
+depends=('python-pbr' 'python-jmespath'
          'python-jsonpatch' 'python-os-client-config'
          'python-requestsexceptions' 'python-six' 'python-keystoneauth1'
          'python-netifaces' 'python-novaclient' 'python-keystoneclient'
