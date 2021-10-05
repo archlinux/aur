@@ -7,12 +7,13 @@ pkgbase = perl-math-gmpz
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-warn
+	makedepends = perl>=5.10.1
+	makedepends = gmp>=6.1.0
 	depends = perl>=5.10.1
 	depends = gmp>=6.1.0
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPz-0.51.tar.gz
-	md5sums = d30ccdf27a584ec2662bcfe8a4a92667
 	sha512sums = 5a93c406934b18426905426855aa4398da80a67e160572345760143ef99e8ddd4b022abe2abc9a52b27f33bee78b7574c26b2327b69bd91a4cb289d4272e04eb
 
 pkgname = perl-math-gmpz
-

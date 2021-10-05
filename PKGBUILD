@@ -9,10 +9,10 @@ arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.10.1' 'gmp>=6.1.0')
-makedepends=()
+makedepends=('perl>=5.10.1' 'gmp>=6.1.0')
+checkdepends=('perl-test-warn')
 url='https://metacpan.org/release/Math-GMPz'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPz-$pkgver.tar.gz")
-md5sums=('d30ccdf27a584ec2662bcfe8a4a92667')
 sha512sums=('5a93c406934b18426905426855aa4398da80a67e160572345760143ef99e8ddd4b022abe2abc9a52b27f33bee78b7574c26b2327b69bd91a4cb289d4272e04eb')
 _distdir="Math-GMPz-$pkgver"
 
