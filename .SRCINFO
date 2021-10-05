@@ -1,0 +1,15 @@
+pkgbase = cliphist-bin
+	pkgdesc = clipboard history “manager” for wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sentriz/cliphist
+	arch = x86_64
+	license = GPL3
+	depends = go
+	depends = wl-clipboard
+	optdepends = xdg-utils: for image mime inferance
+	provides = cliphist
+	source = https://github.com/sentriz/cliphist/releases/download/v0.1.0/v0.1.0-linux-amd64
+	sha256sums = 624c07319357d422c60a4646feaa680513196306aa002ab7d5f20839ad5294fb
+
+pkgname = cliphist-bin
