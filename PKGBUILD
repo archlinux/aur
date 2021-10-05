@@ -11,7 +11,7 @@ url='http://gcc.gnu.org'
 license=('GPL' 'LGPL')
 depends=('lib32-gcc-libs')
 makedepends=('gcc-multilib' 'binutils' 'bash')
-options=('!makeflags')
+options=('!buildflags')
 source=(
   "https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-"{core,g++}"-${pkgver}.tar.bz2"
   'gcc-3.4.3-no_multilib_amd64.patch'
@@ -79,8 +79,6 @@ build(){
     local _copts=(
       #--build='i686-pc-linux-gnu'
       #--host='i686-pc-linux-gnu'
-    )
-    ../gcc-${pkgver}/configure "${_copts[@]}" \
       --enable-__cxa_atexit \
       --enable-languages='c++' \
       --enable-multilib \
@@ -88,25 +86,27 @@ build(){
       --enable-threads='posix' \
       --libdir='/usr/lib32' \
       --prefix='/usr'
+    )
+    ../gcc-${pkgver}/configure "${_copts[@]}"
   fi
   local _mflags=()
-  local _nproc="$(nproc)"
-  if [ "${_nproc}" -gt 8 ]; then
-    _nproc=8
-  fi
   if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
+    local _nproc="$(nproc)"
+    if [ "${_nproc}" -gt 8 ]; then
+      _nproc=8
+    fi
     _mflags+=('-j' "${_nproc}")
   fi
   # We build the full multilib libstdc++5 here, no idea how to restrict
   # the build process to the 32 bit version only.
-  nice make all-target-libstdc++-v3 BOOT_CFLAGS="${CFLAGS}" STAGE1_CFLAGS="-O" "${_mflags[@]}"
+  nice make 'all-target-libstdc++-v3' BOOT_CFLAGS="${CFLAGS}" STAGE1_CFLAGS='-O' "${_mflags[@]}"
   set +u
 }
 
 package() {
   set -u
   cd 'gcc-build'
-  make DESTDIR="${pkgdir}" install-target-libstdc++-v3
+  make DESTDIR="${pkgdir}" 'install-target-libstdc++-v3'
 
   # Only install the lib32 files
   rm -rf "${pkgdir}/usr"/{include,share,lib}
