@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!path-fix.patch
+!qtscrcpy.desktop
+!qtscrcpy.sh
