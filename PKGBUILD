@@ -1,4 +1,4 @@
-# Maintainer: xeruf <27f at pm dot me>
+# Maintainer: xerus <27jf at pm dot me>
 _pkgname=chordpro
 pkgname="${_pkgname}-git"
 pkgver=5.982.r6.gaf467dc
@@ -8,11 +8,11 @@ arch=('any')
 url="https://github.com/ChordPro/${_pkgname}"
 license=('Artistic2.0')
 provides=("${_pkgname}")
-optdepends=(perl-text-layout)
-depends=(git perl-string-interpolate-named perl-font-ttf perl-image-info perl-io-string perl-json-pp perl-pdf-api2 perl-app-packager perl-file-loadlines perl-pod-parser)
+optdepends=()
+depends=(git perl-app-packager perl-string-interpolate-named perl-font-ttf perl-image-info perl-io-string perl-json-pp perl-pdf-api2 perl-file-loadlines perl-pod-parser perl-text-layout)
 options=('!emptydirs' purge)
 source=("git+${url}.git")
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
   cd "$_pkgname"
