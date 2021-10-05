@@ -1,22 +1,19 @@
 pkgbase = ocaml-menhir-compcert
 	pkgdesc = Latest version of Menhir that can build the latest CompCert release.
-	pkgver = 20200211
+	pkgver = 20210419
 	pkgrel = 1
 	url = http://cristal.inria.fr/~fpottier/menhir/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	license = QPL
-	makedepends = ocamlbuild
-	makedepends = ocaml-findlib
-	makedepends = dune
-	depends = ocaml>=4.02
-	provides = ocaml-menhir=20200211
+	license = custom:QPL
+	makedepends = dune>=2.0
+	depends = ocaml>=4.02.3
+	provides = ocaml-menhir=20210419
 	conflicts = ocaml-menhir
 	options = !strip
 	options = !makeflags
-	source = https://gitlab.inria.fr/fpottier/menhir/-/archive/20200211/menhir-20200211.tar.gz
-	sha256sums = 00f677401a92d91568a4faffb4977ab71a32a265de59e35419ad5b705d4a532d
+	source = https://gitlab.inria.fr/fpottier/menhir/-/archive/20210419/menhir-20210419.tar.gz
+	sha256sums = 6b75a92276f1cdc8f1ea5030adad344a10bfce9077de274f621f5ef2c3428920
 
 pkgname = ocaml-menhir-compcert
-
