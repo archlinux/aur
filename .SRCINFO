@@ -1,12 +1,12 @@
 pkgbase = mtplvcap-bin
 	pkgdesc = mtplvcap relays the Live View of Nikon cameras via WebSocket
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/puhitaku/mtplvcap
 	arch = x86_64
 	license = BSD
 	provides = mtplvcap
-	source = https://github.com/puhitaku/mtplvcap/releases/download/v1.4.1/mtplvcap_linux_amd64.zip
-	sha256sums = 800ff2fda18632753e8efec285e63caa8a0cb4ed00a8252362c0463b5e876e21
+	source = https://github.com/puhitaku/mtplvcap/releases/download/v1.4.2/mtplvcap_linux_amd64.zip
+	sha256sums = ef8794a9c8b48adeb5753448c71cfd3d542fbf7a94d8f1a3af7d9ad24338ff65
 
 pkgname = mtplvcap-bin
