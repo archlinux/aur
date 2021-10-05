@@ -4,8 +4,8 @@
 
 _name=mozjpeg
 pkgname=lib32-mozjpeg-git
-pkgver=v4.0.3.r197.g512a7c3a
-pkgrel=1
+pkgver=4.0.3.r197.g512a7c3a
+pkgrel=2
 pkgdesc="Improved JPEG encoder (32-bit)"
 url="https://github.com/mozilla/mozjpeg"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd mozjpeg
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
