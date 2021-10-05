@@ -3,7 +3,7 @@
 pkgname=librespot-git
 _pkgname=librespot
 pkgver=1383.095536f
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Open Source Spotify client library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -32,7 +32,6 @@ build() {
     cd "$_pkgname"
     cargo build \
         --frozen \
-        --all-features \
         --release
 }
 
@@ -41,7 +40,6 @@ package() {
     cargo install \
         --no-track \
         --locked \
-        --all-features \
         --root "$pkgdir/usr" \
         --path .
 
