@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn
-_tag='0071e180470e6d3a830da7b96df4ea8e510d2987' # git rev-parse v${pkgver}
-pkgver=2.5.3
+_tag='f2321d0255afe2b8d1f2bc4ebea498fb4d16415b' # git rev-parse v${pkgver}
+pkgver=2.5.4
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
