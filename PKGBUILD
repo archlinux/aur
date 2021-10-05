@@ -10,9 +10,9 @@ pkgdesc="Major release 3.9 of the Python high-level programming language"
 arch=('i686' 'x86_64')
 license=('custom')
 url="https://www.python.org/"
-depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
-makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
-optdepends=('tk: for tkinter' 'sqlite')
+depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
+makedepends=('bluez-libs' 'mpdecimal' 'gdb')
+optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(
     https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
     mpdecimal-2.5.1.patch
@@ -20,6 +20,10 @@ source=(
 sha256sums=(
     '397920af33efc5b97f2e0b57e91923512ef89fc5b3c1d21dbfc8c4828ce0108a'
     '8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c'
+)
+validpgpkeys=(
+    '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
+    'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
 )
 provides=('python')
 
@@ -41,25 +45,31 @@ prepare() {
 
 build() {
   cd "${srcdir}/Python-${pkgver}"
+  CFLAGS="${CFLAGS} -fno-semantic-interposition"
 
-  CFLAGS=-DOPENSSL_NO_SSL2 ./configure --prefix=/usr \
+  ./configure --prefix=/usr \
               --enable-shared \
-              --with-threads \
               --with-computed-gotos \
+              --with-lto \
               --enable-ipv6 \
               --with-system-expat \
               --with-dbmliborder=gdbm:ndbm \
+              --with-system-ffi \
               --with-system-libmpdec \
               --enable-loadable-sqlite-extensions \
-              --without-ensurepip
+              --without-ensurepip \
+              --with-tzpath=/usr/share/zoneinfo
 
-  make
+  make EXTRA_CFLAGS="$CFLAGS"
 }
 
 package() {
   cd "${srcdir}/Python-${pkgver}"
   # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
   make DESTDIR="${pkgdir}" altinstall maninstall
+
+  # Split tests
+  rm -r "$pkgdir"/usr/lib/python*/{test,ctypes/test,distutils/tests,idlelib/idle_test,lib2to3/tests,sqlite3/test,tkinter/test,unittest/test}
 
   # Avoid conflicts with the main 'python' package.
   rm -f "${pkgdir}/usr/lib/libpython${_pymajver}.so"
