@@ -4,7 +4,7 @@
 
 pkgname=kdeconnect
 pkgver=21.08.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://kdeconnect.kde.org/'
 arch=(x86_64)
@@ -13,12 +13,18 @@ groups=(kde-applications kde-network)
 depends=(kcmutils kwayland libfakekey qca-qt5 kpeoplevcard pulseaudio-qt qqc2-desktop-style hicolor-icon-theme)
 makedepends=(extra-cmake-modules kdoctools)
 optdepends=('sshfs: remote filesystem browser' 'python-nautilus: Nautilus integration' 'qt5-tools: for some runcommand plugin actions')
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig}
+        kdeconnect-openssh-8.8.patch)
 sha256sums=('6330f74b432ecead1f99f8c74dcc24fd97672ca7009267569ff3bceeb3fedc06'
-            'SKIP')
+            'SKIP'
+            'e5cb803e7b21f31fd40639fa74e6f6aaaa7e136053a79f3b88f2bbb36bb58a4f')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+prepare() {
+  patch -d $pkgname-kde-$pkgver -p1 < kdeconnect-openssh-8.8.patch # Fix file browsing with openssh 8.8
+}
 
 build() {
   cmake -B build -S $pkgname-kde-$pkgver \
