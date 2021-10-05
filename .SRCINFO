@@ -1,0 +1,27 @@
+pkgbase = grub-efi-arm64
+	pkgdesc = GNU GRand Unified Bootloader (2) - arm64 EFI boot support
+	pkgver = 2.06
+	pkgrel = 2
+	epoch = 2
+	url = https://www.gnu.org/software/grub/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = rsync
+	makedepends = xz
+	makedepends = freetype2
+	makedepends = bdf-unifont
+	makedepends = python
+	makedepends = autogen
+	makedepends = gettext
+	makedepends = aarch64-linux-gnu-gcc
+	options = !makeflags
+	source = git+https://git.savannah.gnu.org/git/grub.git#tag=53c5000739db114c229fe69ec3d4b76b92441098?signed
+	source = git+https://git.savannah.gnu.org/git/gnulib.git#commit=be584c56eb1311606e5ea1a36363b97bddb6eed3
+	validpgpkeys = E53D497F3FA42AD8C9B4D1E835A93B74E82E4209
+	validpgpkeys = BE5C23209ACDDACEB20DB0A28C8189F1988C2166
+	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = grub-efi-arm64
