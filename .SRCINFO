@@ -1,6 +1,6 @@
 pkgbase = nsis
 	pkgdesc = A professional open source system to create Windows installers
-	pkgver = 3.07
+	pkgver = 3.08
 	pkgrel = 1
 	url = http://nsis.sourceforge.net
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nsis
 	makedepends = mingw-w64-zlib
 	depends = gcc-libs
 	options = !strip
-	source = http://downloads.sourceforge.net/project/nsis/NSIS%203/3.07/nsis-3.07-src.tar.bz2
-	sha256sums = 4dfad3388589985b4cd91d20e18e1458aa31e7d139b5b8adf25c3a9c1015efba
+	source = http://downloads.sourceforge.net/project/nsis/NSIS%203/3.08/nsis-3.08-src.tar.bz2
+	sha256sums = a85270ad5386182abecb2470e3d7e9bec9fe4efd95210b13551cb386830d1e87
 
 pkgname = nsis
