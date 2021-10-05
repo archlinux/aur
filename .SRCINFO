@@ -1,6 +1,6 @@
 pkgbase = terminalpp-git
 	pkgdesc = Minimalist, fast, cross-platform terminal emulator
-	pkgver = v0.8.4.r2.gca8811d
+	pkgver = 0.8.4.r2.gca8811d
 	pkgrel = 1
 	url = https://terminalpp.com
 	arch = x86_64

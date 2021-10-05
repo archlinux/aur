@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=terminalpp-git
-pkgver=v0.8.4.r2.gca8811d
+pkgver=0.8.4.r2.gca8811d
 pkgrel=1
 pkgdesc="Minimalist, fast, cross-platform terminal emulator"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd terminalpp
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
