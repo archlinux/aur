@@ -2,7 +2,7 @@
 
 pkgname=python-undertime
 _name=${pkgname#python-}
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="pick a meeting time"
 url="https://gitlab.com/anarcat/undertime"
@@ -11,7 +11,7 @@ makedepends=('python-pip')
 license=('AGPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name/-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('fd23e8cae88600d1f62fe6ded9380a3eb8827f8c3cff81fb82ba99e64ad726cb')
+sha256sums=('c15e06989509dbca1f590e281408c9237d2b8bb19cf11f52c88b578ba494feea')
 
 package() {
     cd "${srcdir}/"
