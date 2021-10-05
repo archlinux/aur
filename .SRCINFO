@@ -1,4 +1,5 @@
 pkgbase = paths-bookmarks-git
+	pkgdesc = Save often used directories under a short name
 	pkgver = r33.06c1f54
 	pkgrel = 1
 	url = https://github.com/sproott/pat.hs
