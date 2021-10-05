@@ -4,10 +4,10 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.4.1103.r898
+pkgver=1.4.1717.r1474
 _gwtver=2.8.2
 _ginver=2.1.2
-_nodever=10.19.0
+_nodever=14.17.5
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ source=("git+https://github.com/rstudio/rstudio.git"
 sha256sums=('SKIP'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
-            '36d90bc58f0418f31dceda5b18eb260019fcc91e59b0820ffa66700772a8804b'
+            'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980')
 noextract=("gin-${_ginver}.zip")
