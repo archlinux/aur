@@ -22,7 +22,7 @@ prepare() {
 
     patch -Np1 -i "${srcdir}/use_system_xpa.patch"
     patch -Np1 -i "${srcdir}/add-tests-subdir-to-copy.patch"
-    export _pyver=$(python -V | cut -c 8-10)
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {

@@ -33,4 +33,3 @@ pkgname = python-imexam
 
 pkgname = python-imexam-doc
 	pkgdesc = Documentation for Python imexam module
-
