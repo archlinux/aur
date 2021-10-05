@@ -2,8 +2,8 @@
 
 pkgname=vramfs-git
 _pkgbase=vramfs
-pkgver=92.6e11407
-pkgrel=3
+pkgver=95.4b96c88
+pkgrel=1
 pkgdesc="VRAM based file system for Linux"
 arch=('x86_64')
 url="https://github.com/Overv/vramfs"

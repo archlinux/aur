@@ -1,7 +1,7 @@
 pkgbase = vramfs-git
 	pkgdesc = VRAM based file system for Linux
-	pkgver = 92.6e11407
-	pkgrel = 3
+	pkgver = 95.4b96c88
+	pkgrel = 1
 	url = https://github.com/Overv/vramfs
 	arch = x86_64
 	license = MIT
@@ -16,4 +16,3 @@ pkgbase = vramfs-git
 	md5sums = SKIP
 
 pkgname = vramfs-git
-
