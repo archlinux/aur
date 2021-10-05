@@ -1,7 +1,7 @@
 pkgbase = vkmark-git
 	pkgdesc = Vulkan benchmark
 	pkgver = r127.53abc4f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vkmark/vkmark
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = vkmark-git
 	makedepends = wayland-protocols
 	depends = vulkan-icd-loader
 	depends = assimp
-	depends = xcb-util-wm
-	depends = wayland
+	optdepends = xcb-util-wm: for X11 support
+	optdepends = wayland: for Wayland support
 	source = git+https://github.com/vkmark/vkmark.git
 	sha1sums = SKIP
 
