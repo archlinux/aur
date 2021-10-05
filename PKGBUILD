@@ -28,6 +28,7 @@ build() {
 package() {
   cd "$_name-$pkgver"
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
+  install -Dm644 README.md -t"$pkgdir/usr/share/doc/$pkgname/"
 }
 
 
