@@ -1,7 +1,7 @@
 pkgbase = python-onnxruntime
 	pkgdesc = Cross-platform, high performance scoring engine for ML models
-	pkgver = 1.9.0
-	pkgrel = 2
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
 	license = MIT
@@ -38,7 +38,7 @@ pkgbase = python-onnxruntime
 	depends = python-protobuf
 	depends = openmpi
 	options = !lto
-	source = git+https://github.com/microsoft/onnxruntime#tag=v1.9.0
+	source = git+https://github.com/microsoft/onnxruntime#tag=v1.9.1
 	source = git+https://github.com/onnx/onnx.git
 	source = git+https://github.com/dcleblanc/SafeInt.git
 	source = git+https://github.com/martinmoene/optional-lite.git
@@ -72,5 +72,5 @@ pkgname = python-onnxruntime-cuda
 	depends = cuda
 	depends = cudnn
 	depends = nccl
-	provides = python-onnxruntime=1.9.0
+	provides = python-onnxruntime=1.9.1
 	conflicts = python-onnxruntime
