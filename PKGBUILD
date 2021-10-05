@@ -23,7 +23,7 @@ package() {
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	# Put the installation path on the script
-	sed -r "35s;.*;INSTALL_PATH=/opt/${_pkgname};" -i pokemonsay.sh
+	sed -r "37s;.*;INSTALL_PATH=/opt/${_pkgname};" -i pokemonsay.sh
 
 	# Change the pokemonthink to use the pokemonsay in the path
 	sed -r "7s;.*;pokemonsay --think \$@;" -i pokemonthink.sh
