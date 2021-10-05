@@ -1,6 +1,6 @@
 pkgbase = oh-my-zsh-git
 	pkgdesc = A community-driven framework for managing your zsh configuration. Includes 180+ optional plugins and over 120 themes to spice up your morning, and an auto-update tool so that makes it easy to keep up with the latest updates from the community
-	pkgver = r5620.31eca46ee
+	pkgver = r6192.be4a95297
 	pkgrel = 1
 	url = https://github.com/ohmyzsh/ohmyzsh
 	install = oh-my-zsh-git.install
@@ -16,7 +16,6 @@ pkgbase = oh-my-zsh-git
 	source = oh-my-zsh-git::git+https://github.com/ohmyzsh/ohmyzsh.git
 	source = 0001-zshrc.patch
 	sha256sums = SKIP
-	sha256sums = 9b77769319944f394a36f07b9abb296d24fe643c03b8eead74e10b7da52002b1
+	sha256sums = c8a559712110031585410328fdd3fffa2d16511b72caf5d46698b0f7d56cbcb7
 
 pkgname = oh-my-zsh-git
-
