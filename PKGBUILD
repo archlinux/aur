@@ -79,7 +79,7 @@ PROFILING=        # Enable gprof profiling support.
 ################################################################################
 pkgname="emacs-native-comp-git-enhanced"
 pkgver=28.0.50.148556
-pkgrel=1
+pkgrel=0
 pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined."
 arch=('x86_64' )
 url="http://www.gnu.org/software/emacs/"
@@ -90,7 +90,7 @@ provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
 replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
 ## use emacs's savannah repo if you have network issues
-source=("emacs-git::git://git@github.com:flatwhatson/emacs.git#branch=pgtk-nativecomp")
+source=("emacs-git::git://github.com:flatwhatson/emacs.git#branch=pgtk-nativecomp")
 ## source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk")
 md5sums=('SKIP')
 ################################################################################
