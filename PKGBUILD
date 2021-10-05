@@ -2,15 +2,13 @@
 
 pkgname="conduktor"
 pkgver=2.17.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Kafka Desktop Client"
 url="https://www.conduktor.io"
 license=("Commercial")
 arch=("any")
 depends=("bash")
-optdepends=("java-runtime=8: to use java 8"
-            "java-runtime=10: to use java 10"
-            "java-runtime=11: to use java 11")
+optdepends=("java-runtime>=11: at least Java 11")
 source=("https://github.com/conduktor/builds/releases/download/v${pkgver}/Conduktor-linux-${pkgver}.zip"
         "conduktor.desktop")
 sha256sums=('56b9b65bac220d8ae654fad0d68a72c2b5cb893ca9b4c7b88d8ae4b529982c8a'
