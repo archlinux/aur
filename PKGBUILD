@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=openhardwaremonitor-git
-pkgver=0.9.5.r0.g5bd6bf0
+pkgver=0.9.6.r0.g09c1689
 pkgrel=1
 pkgdesc="An open source program that monitors temperature sensors, fan speeds, voltages, load and clock speeds of a computer."
 arch=('any')
@@ -29,7 +29,6 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
@@ -39,7 +38,9 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	msbuild OpenHardwareMonitor.sln /p:Configuration=Release "/p:Platform=Any CPU"
+    msg2 "If you are having issues building, please see this post:"
+    msg2 "https://aur.archlinux.org/packages/openhardwaremonitor-git/#pinned-829861"
+	msbuild -m OpenHardwareMonitor.sln /p:Configuration=Release "/p:Platform=Any CPU"
 }
 
 package() {
