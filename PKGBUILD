@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r19501.f81aa7a17
+pkgver=r19741.dc97cc133
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -47,7 +47,6 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
         'git+https://github.com/ReinUsesLisp/sirit'
         'git+https://github.com/yuzu-emu/mbedtls'
-        'git+https://github.com/nih-at/libzip.git'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/xiph/opus.git'
         'git+https://git.ffmpeg.org/ffmpeg.git'
@@ -74,7 +73,6 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -85,7 +83,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in externals/{inih/inih,cubeb,dynarmic,soundtouch,libressl,libusb/libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,libzip/libzip,xbyak,opus/opus,ffmpeg,SDL,cpp-httplib}; do
+    for submodule in externals/{inih/inih,cubeb,dynarmic,soundtouch,libressl,libusb/libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus/opus,ffmpeg,SDL,cpp-httplib}; do
         git submodule init ${submodule}
         git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
         git submodule update
@@ -118,9 +116,10 @@ build() {
     cmake .. \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release \
-      -DENABLE_QT_TRANSLATION=ON \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
+      -DYUZU_USE_EXTERNAL_SDL2=OFF \
       -DUSE_DISCORD_PRESENCE=ON \
+      -DENABLE_QT_TRANSLATION=ON \
       -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON
     make
 }
