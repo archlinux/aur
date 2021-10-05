@@ -9,6 +9,8 @@ pkgbase = blightmud-git
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	depends = openssl
+	depends = alsa-lib
 	provides = blightmud
 	conflicts = blightmud
 	source = blightmud-git::git+https://github.com/blightmud/blightmud.git#branch=dev
