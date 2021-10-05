@@ -1,0 +1,131 @@
+diff --git a/Makefile.am b/Makefile.am
+index 7ac3d6ac..59ba9187 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -16,6 +16,9 @@ AM_CPPFLAGS += @XOPEN_DEFINES@ -DTMUX_CONF="\"$(sysconfdir)/tmux.conf\""
+ # Additional object files.
+ LDADD = $(LIBOBJS)
+ 
++# Add math for sixel
++AM_LDFLAGS = -lm
++
+ # Set flags for gcc.
+ if IS_GCC
+ AM_CFLAGS += -std=gnu99 -O2
+diff --git a/configure.ac b/configure.ac
+index 5fba1eaf..0712c265 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,7 +1,8 @@
+ # configure.ac
+ 
+-AC_INIT([tmux], next-3.1)
+-AC_PREREQ([2.60])
++AC_INIT([tmux],[next-3.1])
++AC_PREREQ([2.71])
++AC_CONFIG_FILES([Makefile])
+ 
+ AC_CONFIG_AUX_DIR(etc)
+ AC_CONFIG_LIBOBJ_DIR(compat)
+@@ -23,8 +24,6 @@ SAVED_LDFLAGS="$LDFLAGS"
+ 
+ # Set up the compiler in two different ways and say yes we may want to install.
+ AC_PROG_CC
+-AM_PROG_CC_C_O
+-AC_PROG_CC_C99
+ AC_PROG_CPP
+ AC_PROG_EGREP
+ AC_PROG_INSTALL
+@@ -39,14 +38,14 @@ test "$sysconfdir" = '${prefix}/etc' && sysconfdir=/etc
+ case "x$VERSION" in xnext*) enable_debug=yes;; esac
+ AC_ARG_ENABLE(
+ 	debug,
+-	AC_HELP_STRING(--enable-debug, enable debug build flags),
++	AS_HELP_STRING(--enable-debug, enable debug build flags),
+ )
+ AM_CONDITIONAL(IS_DEBUG, test "x$enable_debug" = xyes)
+ 
+ # Is this a static build?
+ AC_ARG_ENABLE(
+ 	static,
+-	AC_HELP_STRING(--enable-static, create a static build)
++	AS_HELP_STRING(--enable-static, create a static build)
+ )
+ if test "x$enable_static" = xyes; then
+ 	test "x$PKG_CONFIG" != x && PKG_CONFIG="$PKG_CONFIG --static"
+@@ -228,7 +227,7 @@ fi
+ # Look for utempter.
+ AC_ARG_ENABLE(
+ 	utempter,
+-	AC_HELP_STRING(--enable-utempter, use utempter if it is installed)
++	AS_HELP_STRING(--enable-utempter, use utempter if it is installed)
+ )
+ if test "x$enable_utempter" = xyes; then
+ 	AC_CHECK_HEADER(utempter.h, enable_utempter=yes, enable_utempter=no)
+@@ -250,7 +249,7 @@ fi
+ # Look for utf8proc.
+ AC_ARG_ENABLE(
+ 	utf8proc,
+-	AC_HELP_STRING(--enable-utf8proc, use utf8proc if it is installed)
++	AS_HELP_STRING(--enable-utf8proc, use utf8proc if it is installed)
+ )
+ if test "x$enable_utf8proc" = xyes; then
+ 	AC_CHECK_HEADER(utf8proc.h, enable_utf8proc=yes, enable_utf8proc=no)
+@@ -272,32 +271,24 @@ AM_CONDITIONAL(HAVE_UTF8PROC, [test "x$enable_utf8proc" = xyes])
+ 
+ # Check for b64_ntop. If we have b64_ntop, we assume b64_pton as well.
+ AC_MSG_CHECKING(for b64_ntop)
+-AC_TRY_LINK(
+-	[
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+ 		#include <sys/types.h>
+ 		#include <netinet/in.h>
+ 		#include <resolv.h>
+-	],
+-	[b64_ntop(NULL, 0, NULL, 0);],
+-	found_b64_ntop=yes,
+-	found_b64_ntop=no
+-)
++	]], [[b64_ntop(NULL, 0, NULL, 0);]])],[found_b64_ntop=yes],[found_b64_ntop=no
++])
+ if test "x$found_b64_ntop" = xno; then
+ 	AC_MSG_RESULT(no)
+ 
+ 	AC_MSG_CHECKING(for b64_ntop with -lresolv)
+ 	OLD_LIBS="$LIBS"
+ 	LIBS="$LIBS -lresolv"
+-	AC_TRY_LINK(
+-		[
++	AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+ 			#include <sys/types.h>
+ 			#include <netinet/in.h>
+ 			#include <resolv.h>
+-		],
+-		[b64_ntop(NULL, 0, NULL, 0);],
+-		found_b64_ntop=yes,
+-		found_b64_ntop=no
+-	)
++		]], [[b64_ntop(NULL, 0, NULL, 0);]])],[found_b64_ntop=yes],[found_b64_ntop=no
++	])
+ 	if test "x$found_b64_ntop" = xno; then
+ 		LIBS="$OLD_LIBS"
+ 		AC_MSG_RESULT(no)
+@@ -652,4 +643,4 @@ AC_SUBST(AM_LDFLAGS)
+ LDFLAGS="$SAVED_LDFLAGS"
+ 
+ # autoconf should create a Makefile.
+-AC_OUTPUT(Makefile)
++AC_OUTPUT
+diff --git a/tmux.c b/tmux.c
+index 244e2d35..a26cb4d1 100644
+--- a/tmux.c
++++ b/tmux.c
+@@ -141,7 +141,7 @@ make_label(const char *label, char **cause)
+ #if __MSYS__ || __CYGWIN__ || _WIN32 || _WIN64
+         if (sb.st_uid != uid) {
+ #else
+-        if (sb.st_uid != uid || (sb.st_mode & PERMS) != 0) {
++        if (sb.st_uid != uid || (sb.st_mode & ACCESSPERMS) != 0) {
+ #endif
+ 		errno = EACCES;
+ 		goto fail;

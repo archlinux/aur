@@ -1,15 +1,11 @@
-# Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
-# Contributor: Dmitry Korzhevin <dkorzhevin AT gmail DOT com>
-# Contributor: C.Coutinho <kikijump[at]gmail[dot]com>
-# Contributor: Grigorios Bouzakis <grbzks[at]gmail[dot]com>
-# Contributor: TDY <tdy@gmx.com>
+# Maintainer:  Guillaume Binet <gbin@gootz.net>
 
-pkgname=tmux-git
-_gitname=tmux
-pkgver=8107_3.0a.r184.g745233d6
-pkgrel=2
-pkgdesc="A terminal multiplexer"
-url="https://github.com/tmux/tmux/wiki"
+pkgname=sixel-tmux-git
+_gitname=sixel-tmux
+pkgver=8050_2.0.r3043.gbc340a30
+pkgrel=1
+pkgdesc="A terminal multiplexer that display graphics one way or another!"
+url="https://github.com/csdvrx/sixel-tmux.git"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('ncurses' 'libevent')
@@ -18,10 +14,12 @@ optdepends=('libutempter: Record user sessions to utmp and wtmp files [add to de
 #depends+=('libutempter') && _addconfigureflags="--enable-utempter"
 provides=('tmux')
 conflicts=('tmux')
-source=('git+https://github.com/tmux/tmux.git'
-        'LICENSE')
+source=('git+https://github.com/csdvrx/sixel-tmux.git'
+        'LICENSE'
+        'ac-271.patch')
 md5sums=('SKIP'
-         '71601bc37fa44e4395580b321963018e')
+         '71601bc37fa44e4395580b321963018e'
+         '6963a00dc940ec8c7f45e0770fa7e63e')
 
 pkgver() {
   cd ${_gitname}
@@ -33,6 +31,7 @@ pkgver() {
 
 prepare() {
   cd ${_gitname}
+  patch --forward --strip=1 --input="${srcdir}/ac-271.patch"
   ./autogen.sh
 }
 
