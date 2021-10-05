@@ -1,5 +1,5 @@
 pkgname=fheroes2
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Free remake of Heroes of Might and Magic II game engine"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,7 +15,7 @@ source=(
   $pkgname-$pkgver.tar.gz::https://github.com/ihhub/$pkgname/archive/$pkgver.tar.gz
 )
 md5sums=(
-  '75e26d10199bed15b9e7d02014f58df2'
+  '02e3d3ea25ab8954e1deb90d2823db06'
 )
 
 build() {
@@ -33,7 +33,7 @@ package() {
   install -Dm644 "script/packaging/common/fheroes2.desktop" "$pkgdir/usr/share/applications/fheroes2.desktop"
   install -dm755 "$pkgdir/usr/share/fheroes2/files/lang"
   install -Dm644 files/lang/*.mo "$pkgdir/usr/share/fheroes2/files/lang"
-  install -Dm755 "script/demo/demo_unix.sh" "$pkgdir/usr/share/fheroes2/demo_unix.sh"
+  install -Dm755 "script/demo/download_demo_version.sh" "$pkgdir/usr/share/fheroes2/download_demo_version.sh"
   install -Dm644 "fheroes2.key" "$pkgdir/usr/share/fheroes2/fheroes2.key"
   install -dm755 "$pkgdir/usr/share/fheroes2/data"
   install -dm755 "$pkgdir/usr/share/fheroes2/maps"
