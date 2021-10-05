@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-frfun7-git
+	pkgdesc = Plugin for Avisynth: frfun7 (GIT version)
+	pkgver = 0.7.0.gc2b478b
+	pkgrel = 1
+	url = https://github.com/pinterf/Frfun7
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-frfun7
+	conflicts = avisynth-plugin-frfun7
+	source = frfun7::git+https://github.com/pinterf/Frfun7.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-frfun7-git
