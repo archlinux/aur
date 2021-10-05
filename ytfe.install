@@ -1,0 +1,6 @@
+function post_install(){
+	echo "The EDL preloader script is located under /usr/bin/edl-preloader, if you need it!"
+}
+function post_upgrade(){
+	echo "The EDL preloader script is located under /usr/bin/edl-preloader, if you need it!"
+}
