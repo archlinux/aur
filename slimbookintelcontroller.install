@@ -1,0 +1,7 @@
+post_install() {
+  python /usr/share/slimbookintelcontroller/src/configuration/check_config.py
+}
+
+post_upgrade() {
+  post_install
+}
