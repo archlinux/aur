@@ -16,6 +16,6 @@ pkgbase = python-binance-git
 	provides = python-binance
 	conflicts = python-binance
 	source = git+https://github.com/sammchardy/python-binance.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = python-binance-git
