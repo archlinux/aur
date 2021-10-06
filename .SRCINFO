@@ -1,6 +1,6 @@
 pkgbase = openms
 	pkgdesc = C++ library and tools for LC/MS data management and analyses
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = http://www.openms.de
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = openms
 	makedepends = make
 	makedepends = patch
 	depends = boost
+	depends = coin-or-mp
 	depends = eigen
 	depends = glpk
 	depends = hdf5
@@ -21,14 +22,15 @@ pkgbase = openms
 	depends = qt5-svg
 	depends = sqlite
 	depends = xerces-c
-	source = https://abibuilder.informatik.uni-tuebingen.de/archive/openms/OpenMSInstaller/release/2.6.0/OpenMS-2.6.0-src.tar.gz
+	source = https://abibuilder.informatik.uni-tuebingen.de/archive/openms/OpenMSInstaller/release/2.7.0/OpenMS-2.7.0-src.tar.gz
 	source = OpenMS-TOPPView.desktop
 	source = OpenMS-TOPPAS.desktop
 	source = OpenMS.sh
-	sha256sums = 55f30d09cba420009587e50d70812a4775d012151df8c600c7c39e59079bc10b
+	source = cstddef.patch
+	sha256sums = 62bce6215bc88ca7d1f1b7abf15cea4061bdcfa10dbb1e652b1d8c2ff9b3f081
 	sha256sums = 4f93d5c22a8267e4fbde6883ecc34a00abfc2ee5eafb46f6d81256ad8a33cdac
 	sha256sums = 9b33c6c91d931802e88af89ade4beb6c8d05484d57d1ad804888511b7a8b00a0
 	sha256sums = 2cf69cb56959f101614129d2a87dc078daca904e1701ed674d399afed1ff306d
+	sha256sums = 75c05e06381237fe451abdd8802604d9d67c5dd00fb6f5a744afe4b84dfd0e41
 
 pkgname = openms
-

@@ -2,23 +2,25 @@
 # Contributor: saxonbeta <saxonbeta at gmail dot com>
 pkgname=openms
 _pkgname=OpenMS
-pkgver=2.6.0
-_pkgver=2.6
+pkgver=2.7.0
+_pkgver=2.7
 pkgrel=1
 pkgdesc="C++ library and tools for LC/MS data management and analyses"
 arch=('i686' 'x86_64')
 url="http://www.openms.de"
 license=('BSD')
-depends=('boost' 'eigen' 'glpk' 'hdf5' 'qt5-base' 'qt5-svg' 'sqlite' 'xerces-c')
+depends=('boost' 'coin-or-mp' 'eigen' 'glpk' 'hdf5' 'qt5-base' 'qt5-svg' 'sqlite' 'xerces-c')
 makedepends=('autoconf' 'automake' 'cmake' 'fakeroot' 'gcc' 'make' 'patch')
 source=("https://abibuilder.informatik.uni-tuebingen.de/archive/openms/OpenMSInstaller/release/${pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
         "OpenMS-TOPPView.desktop"
         "OpenMS-TOPPAS.desktop"
-        "OpenMS.sh")
-sha256sums=('55f30d09cba420009587e50d70812a4775d012151df8c600c7c39e59079bc10b'
+        "OpenMS.sh"
+        "cstddef.patch")
+sha256sums=('62bce6215bc88ca7d1f1b7abf15cea4061bdcfa10dbb1e652b1d8c2ff9b3f081'
             '4f93d5c22a8267e4fbde6883ecc34a00abfc2ee5eafb46f6d81256ad8a33cdac'
             '9b33c6c91d931802e88af89ade4beb6c8d05484d57d1ad804888511b7a8b00a0'
-            '2cf69cb56959f101614129d2a87dc078daca904e1701ed674d399afed1ff306d')
+            '2cf69cb56959f101614129d2a87dc078daca904e1701ed674d399afed1ff306d'
+            '75c05e06381237fe451abdd8802604d9d67c5dd00fb6f5a744afe4b84dfd0e41')
 
 # Variables 
 _prefix="${_pkgname}-${pkgver}"
@@ -56,6 +58,11 @@ _build_openms() {
   make $@
 }
 
+prepare() {
+  cd "${srcdir}"
+  patch --strip=1 < cstddef.patch
+}
+
 build() {
 
   # Variables
@@ -65,7 +72,7 @@ build() {
   # Note: We also build SQLITE, since AUR offers sqlite2. If this is installed,
   # the build process might erroneously link against sqlite2, which will then
   # break the build
-  _build_contrib SQLITE SEQAN LIBSVM COINOR KISSFFT WILDMAGIC
+  _build_contrib SQLITE LIBSVM KISSFFT WILDMAGIC
 
   # Build OpenMS
   _build_openms OpenMS TOPP UTILS GUI
@@ -80,3 +87,4 @@ package() {
   $INSTALL "${srcdir}/OpenMS-TOPPAS.desktop" "${pkgdir}/usr/share/applications/OpenMS-TOPPAS.desktop"
   $INSTALL "${srcdir}/OpenMS.sh" "${pkgdir}/etc/profile.d/OpenMS.sh"
 }
+

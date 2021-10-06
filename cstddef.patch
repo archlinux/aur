@@ -1,0 +1,11 @@
+diff --unified --recursive --text package.orig/OpenMS-2.7.0/src/openms/include/OpenMS/DATASTRUCTURES/ParamValue.h package.new/OpenMS-2.7.0/src/openms/include/OpenMS/DATASTRUCTURES/ParamValue.h
+--- package.orig/OpenMS-2.7.0/src/openms/include/OpenMS/DATASTRUCTURES/ParamValue.h	2021-09-13 23:50:44.000000000 +0200
++++ package.new/OpenMS-2.7.0/src/openms/include/OpenMS/DATASTRUCTURES/ParamValue.h	2021-10-03 12:57:22.413618008 +0200
+@@ -37,6 +37,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstddef>
+ 
+ namespace OpenMS
+ {
