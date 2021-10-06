@@ -20,6 +20,8 @@ pkgbase = betterbib
 	depends = libvoikko
 	depends = nuspell
 	source = betterbib-4.0.1.tar.gz::https://github.com/nschloe/betterbib/archive/refs/tags/v4.0.1.tar.gz
+	source = abbrev.jabref.org-2021-09.tar.gz::https://github.com/JabRef/abbrv.jabref.org/archive/refs/tags/2021-09.tar.gz
 	sha256sums = 508b1a07144bb2c2e3b948906dcfd18e4afe2edc4df3bd94b2c8cca3b666d397
+	sha256sums = 77617e9d59da089d39235d1c69e390bb4d98780c42579ba5c368be3d3e3daaa3
 
 pkgname = betterbib
