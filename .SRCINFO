@@ -1,6 +1,6 @@
 pkgbase = syncthingtray-lite
 	pkgdesc = Tray application for Syncthing - without the KDE integrations
-	pkgver = 1.1.7
+	pkgver = 1.1.11
 	pkgrel = 1
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
@@ -13,15 +13,17 @@ pkgbase = syncthingtray-lite
 	makedepends = ninja
 	makedepends = qt5-tools
 	makedepends = mesa
+	makedepends = boost
 	depends = qtutilities
 	depends = qt5-svg
 	depends = openssl
 	depends = desktop-file-utils
 	depends = xdg-utils
+	depends = qtforkawesome
 	depends = qt5-webengine
 	conflicts = syncthingtray
 	conflicts = syncthingtray-git
-	source = syncthingtray-lite-1.1.7.tar.gz::https://github.com/Martchus/syncthingtray/archive/v1.1.7.tar.gz
-	sha256sums = bd540efd58c3760db8953c230ab9558746700272da59dc9075a66b05b0a50c50
+	source = syncthingtray-lite-1.1.11.tar.gz::https://github.com/Martchus/syncthingtray/archive/v1.1.11.tar.gz
+	sha256sums = aff7571bf0dde7a29c41bb2abd3d07e0bd601a9d4cf8e8938d2ed26032fb58cd
 
 pkgname = syncthingtray-lite
