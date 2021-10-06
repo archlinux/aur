@@ -3,7 +3,7 @@
 _branch=dev
 _pkgname=espanso
 pkgname=${_pkgname}-git
-pkgver=r503.d2a119e
+pkgver=r1058.8f291f4
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
@@ -29,7 +29,7 @@ prepare() {
     cd "$_pkgname"
 
     # don't change the original service file, as it will be embedded in the binary
-    cp "src/res/linux/systemd.service" "systemd.service"
+    cp "espanso/src/res/linux/systemd.service" "systemd.service"
     sed -i "s|{{{espanso_path}}}|/usr/bin/espanso|g" "systemd.service"
 }
 
