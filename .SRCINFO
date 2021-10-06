@@ -8,6 +8,7 @@ pkgbase = unrar-free
 	arch = x86_64
 	license = GPL
 	depends = glibc
+	depends = libarchive
 	source = https://gitlab.com/bgermann/unrar-free/-/archive/0.1.0/unrar-free-0.1.0.tar.gz
 	sha256sums = ff3e4681a76ea3683a68e98536839fec8756f0f69d768035fb776e7406321f34
 
