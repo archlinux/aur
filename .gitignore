@@ -1,0 +1,4 @@
+/.vscode
+/pkg
+/src
+*.tar.*

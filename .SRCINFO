@@ -1,0 +1,16 @@
+pkgbase = aws-credential-1password
+	pkgdesc = AWS credential helper using 1Password for storage
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/claui/aws-credential-1password
+	arch = any
+	license = Apache
+	depends = 1password-cli
+	depends = jq
+	optdepends = aws-cli: Client that uses this helper
+	noextract = aws-credential-1password-0.1.tar.gz
+	options = !strip
+	source = aws-credential-1password-0.1.tar.gz::https://github.com/claui/aws-credential-1password/archive/refs/tags/v0.1.tar.gz
+	sha512sums = 8b3456f1bc473816dcb281a9b00d48effece992ea18f5b0939c087067b6e7745f354b138736e9bd7868eda8953909c0cf9867f669dd73a0f056f6d89138fbf08
+
+pkgname = aws-credential-1password

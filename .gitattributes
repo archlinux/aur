@@ -1,0 +1,20 @@
+# CAUTION:
+# Always run the following command after adding/editing an
+# `eol` entry:
+#
+#   git add --renormalize FILES_WITH_AFFECTED_EXTENSION
+#
+# This keeps existing files consistent with the new setting.
+#
+# Example:
+#
+#   git add --renormalize '*.foo' '*.bar'
+
+.editorconfig   text eol=lf
+.gitattributes  text eol=lf
+
+# LF required for interactive patching as of Git 2.17.1
+*.diff          text eol=lf
+*.patch         text eol=lf
+
+PKGBUILD        text eol=lf
