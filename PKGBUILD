@@ -6,8 +6,8 @@ _name='mpris-indicator-button'
 _uuid='mprisindicatorbutton@JasonLG1979.github.io'
 _pk=1379
 _gnome_shell_version=3.38
-_version=18
-_version_tag=23528
+_version=19
+_version_tag=26789
 
 pkgname="gnome-shell-extension-$_name"
 pkgver=$_version
@@ -18,7 +18,7 @@ url="$_gnome_site/extension/$_pk/$_name/"
 license=('GPL3')
 depends=("gnome-shell>=$_gnome_shell_version")
 source=("$pkgname.zip::$_gnome_site/download-extension/$_uuid.shell-extension.zip?version_tag=$_version_tag")
-sha256sums=('6368f4a6514b35661410bdfa89279d7da41c2d4134429b84c14fb7ca192359d2')
+sha256sums=('d7aa938244e94201d5e81a9afd9a565e9226adc4ce17fb1b6928d81daef5ed9b')
 
 package() {
     local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
