@@ -2,7 +2,7 @@
 
 pkgname=php-pcov
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Code coverage driver'
 arch=('x86_64')
 url='https://pecl.php.net/package/pcov'
@@ -14,7 +14,7 @@ source=("https://pecl.php.net/get/pcov-${pkgver}.tgz"
         'https://raw.githubusercontent.com/php/php-src/php-8.0.0/run-tests.php')
 sha256sums=('201cf12c5531c2f99434d29a3d9fa7ddc12f0bf48c17901f1e9fdfdf69795160'
             'f3ef921748a263be6806b5dd83eeca7c686e0a4b6334fad19ab4e40d384f5d0a'
-            '3c8b1c7eee9da4c9dea9de040a2b2ddcd8e48546af6322628c617c17e5edc0ff')
+            '618fbf07b81b94638f49202aa76e89fe93030398f1f2fe2f0fb53bce3265439e')
 
 build() {
   cd "${srcdir}/pcov-${pkgver}/"
