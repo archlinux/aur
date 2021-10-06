@@ -62,7 +62,6 @@ package() {
     install -m644 python${_pybasever}.zip "$pkgdir"/usr/${_arch}/bin/
     install -d "$pkgdir"/usr/bin
     install -m755 ${_arch}-python${_pybasever}-bin "$pkgdir"/usr/bin
-    pushd "$pkgdir"/usr/${_arch}/bin/
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
 }
