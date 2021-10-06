@@ -1,4 +1,5 @@
 # Maintainer: Caleb Maclennana <caleb@alerque.com>
+# Contributor: Monarc <warcraft99@web.de>
 # Contributor: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Jacek Szafarkiewicz <szafar@linux.pl>
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
@@ -55,6 +56,9 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'sccache: For faster builds')
 options=(!lto)
+_chromium_base_ver=94
+_patchset=3
+_patchset_name="chromium-$_chromium_base_ver-patchset-$_patchset"
 _launcher_ver=8
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkgver"
         'chromium::git+https://github.com/chromium/chromium.git'
@@ -64,14 +68,17 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         brave-launcher
         brave-browser.desktop
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
+        "https://github.com/stha09/chromium-patches/releases/download/$_patchset_name/$_patchset_name.tar.xz"
         chromium-no-history.patch)
 _arch_revision=d1911c4fdd73fad51b38c5ff29e2457975312f1b
 _patches=(replace-blacklist-with-ignorelist.patch
-	add-a-TODO-about-a-missing-pnacl-flag.patch
-	use-ffile-compilation-dir.patch
-	sql-make-VirtualCursor-standard-layout-type.patch
-	unexpire-accelerated-video-decode-flag.patch
-	use-oauth2-client-switches-as-default.patch)
+          add-a-TODO-about-a-missing-pnacl-flag.patch
+          use-ffile-compilation-dir.patch
+          sql-make-VirtualCursor-standard-layout-type.patch
+          chromium-93-ffmpeg-4.4.patch
+          chromium-94-ffmpeg-roll.patch
+          unexpire-accelerated-video-decode-flag.patch
+          use-oauth2-client-switches-as-default.patch)
 for _patch in "${_patches[@]}"; do
   source+=("$_patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$_arch_revision/chromium/trunk/$_patch")
 done
@@ -83,44 +90,53 @@ sha256sums=('SKIP'
             'e4478c79e2eed500777117bb1d48f4be1866908dcda8d75003a5d055618dfdca'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
+            '22692bddaf2761c6ddf9ff0bc4722972bca4d4c5b2fd3e5dbdac7eb60d914320'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
             'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
             'd53da216538f2e741a6e048ed103964a91a98e9a3c10c27fdfa34d4692fdc455'
             '921010cd8fab5f30be76c68b68c9b39fac9e21f4c4133bb709879592bbdf606e'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
+            '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
+            '56acb6e743d2ab1ed9f3eb01700ade02521769978d03ac43226dec94659b3ace'
             '2a97b26c3d6821b15ef4ef1369905c6fa3e9c8da4877eb9af4361452a425290b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  #[ffmpeg]=ffmpeg
-  #[flac]=flac
-  #[fontconfig]=fontconfig
-  #[freetype]=freetype2
-  #[harfbuzz-ng]=harfbuzz
-  #[icu]=icu
-  #[libdrm]=
-  #[libjpeg]=libjpeg
-  #[libpng]=libpng
+  [ffmpeg]=ffmpeg
+  [flac]=flac
+  [fontconfig]=fontconfig
+  [freetype]=freetype2
+  [harfbuzz-ng]=harfbuzz
+  [icu]=icu
+  [libdrm]=
+  [libjpeg]=libjpeg
+  [libpng]=libpng
   #[libvpx]=libvpx
-  #[libwebp]=libwebp
-  #[libxml]=libxml2
-  #[libxslt]=libxslt
-  #[opus]=opus
-  #[re2]=re2
-  #[snappy]=snappy
-  #[zlib]=minizip
+  [libwebp]=libwebp
+  [libxml]=libxml2
+  [libxslt]=libxslt
+  [opus]=opus
+  [re2]=re2
+  [snappy]=snappy
+  [zlib]=minizip
 )
 _unwanted_bundled_libs=(
-	$(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
+	"$(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')"
 )
 
 # Add depends if user wants a release with custom cflags and system libs
 if [ "$COMPONENT" = "4" ]; then
+	#  echo "Build with system libs is disabled for now" && exit 1
+	brave_base_ver="$(echo "$pkgver" | cut -d . -f 1-2)"
+	brave_patchset="1"
+	brave_patchset_name="brave-$brave_base_ver-patches-$brave_patchset"
+	source+=("https://gitlab.com/hadogenes/brave-patches/-/archive/$brave_patchset_name/brave-patches-$brave_patchset_name.zip")
+	sha256sums+=("c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe")
 
 	depends+=('libpulse' 'pciutils')
-	depends+=(${_system_libs[@]})
+	depends+=("${_system_libs[@]}")
 	makedepends+=('lld' 'libva' 'pipewire')
 else
 	makedepends+=('ncurses5-compat-libs')
@@ -172,6 +188,16 @@ prepare() {
 	# runtime -- this allows signing into Chromium without baked-in values
 	patch -Np1 -i ../../use-oauth2-client-switches-as-default.patch
 
+	# Fix build with older ffmpeg
+	patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
+
+	# Revert change to custom function av_stream_get_first_dts; will need to
+	# switch to bundled ffmpeg when we're no longer using ffmpeg 4.4 in Arch
+	# Upstream commit that made first_dts internal causing Chromium to add a
+	# custom function: https://github.com/FFmpeg/FFmpeg/commit/591b88e6787c4
+	# https://crbug.com/1251779
+	patch -Rp1 -i ../chromium-94-ffmpeg-roll.patch
+
 	# https://crbug.com/1207478
 	patch -Np0 -i ../../unexpire-accelerated-video-decode-flag.patch
 
@@ -185,6 +211,16 @@ prepare() {
 	# https://chromium-review.googlesource.com/c/chromium/src/+/2862724
 	patch -Np1 -i ../../sql-make-VirtualCursor-standard-layout-type.patch
 
+    # Fixes for building with libstdc++ instead of libc++
+    patch -Np1 -i ../patches/chromium-90-ruy-include.patch
+    patch -Np1 -i ../patches/chromium-94-CustomSpaces-include.patch
+
+    # Link to system tools required by the build
+    mkdir -p third_party/node/linux/node-linux-x64/bin
+    ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+    ln -s /usr/bin/java third_party/jdk/current/bin/
+
+
 	# Hacky patching
 	sed -e 's/enable_distro_version_check = true/enable_distro_version_check = false/g' -i chrome/installer/linux/BUILD.gn
 
@@ -197,6 +233,19 @@ prepare() {
 		# Allow building against system libraries in official builds
 		sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
 			tools/generate_shim_headers/generate_shim_headers.py
+
+		# Remove bundled libraries for which we will use the system copies; this
+		# *should* do what the remove_bundled_libraries.py script does, with the
+		# added benefit of not having to list all the remaining libraries
+		local _lib
+		for _lib in "${_unwanted_bundled_libs[@]}"; do
+		find "third_party/$_lib" -type f \
+		\! -path "third_party/$_lib/chromium/*" \
+		\! -path "third_party/$_lib/google/*" \
+		\! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
+		\! -regex '.*\.\(gn\|gni\|isolate\)' \
+		-delete
+		done
 
 		./build/linux/unbundle/replace_gn_files.py \
 		--system-libraries "${!_system_libs[@]}"
@@ -239,6 +288,7 @@ build() {
 		'custom_toolchain="//build/toolchain/linux/unbundle:default"'
 		'host_toolchain="//build/toolchain/linux/unbundle:default"'
 		'clang_use_chrome_plugins=false'
+		'is_official_build=true' # implies is_cfi=true on x86_64
 		'treat_warnings_as_errors=false'
 		'disable_fieldtrial_testing_config=true'
 		'blink_enable_generated_code_formatting=false'
@@ -248,14 +298,13 @@ build() {
 		'link_pulseaudio=true'
 		'use_gnome_keyring=false'
 		'use_sysroot=false'
-		'use_custom_libcxx=true'
+		'use_custom_libcxx=false'
 		'enable_hangout_services_extension=true'
 		'enable_widevine=true'
 		'enable_nacl=false'
 		'target_sysroot=/'
 		'use_vaapi=true'
 		'is_clang=true'
-		'is_official_build=true'
 		'use_lld=true'
 		'chrome_pgo_phase=2'
 		)
@@ -266,7 +315,7 @@ build() {
 
 		if check_option strip y; then
 		_flags+=('symbol_level=0'
-			'blink_symbol_level=0')
+		         'blink_symbol_level=0')
 		fi
 
 		# Filter known bad flags
@@ -283,7 +332,7 @@ build() {
 		CXXFLAGS+=' -Wno-unknown-warning-option'
 
 		npm_args+=(
-		$(echo ${_flags[@]} | tr ' ' '\n' | sed -e 's/=/:/' -e 's/^/--gn=/')
+		"$(echo "${_flags[@]}" | tr ' ' '\n' | sed -e 's/=/:/' -e 's/^/--gn=/')"
 		)
 	fi
 
