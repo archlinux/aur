@@ -1,0 +1,23 @@
+pkgbase = albert-bin
+	pkgdesc = A sophisticated standalone keyboard launcher. Binary version.
+	pkgver = 0.17.2
+	pkgrel = 0
+	url = https://github.com/albertlauncher
+	arch = x86_64
+	license = GPL
+	depends = qt5-charts
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = qt5-svg
+	depends = qt5-x11extras
+	optdepends = muparser: Calculator plugin
+	optdepends = python: Python extension
+	optdepends = virtualbox: VirtualBox plugin
+	provides = albert
+	conflicts = albert
+	conflicts = albert-git
+	conflicts = albert-minimal
+	source = https://download.opensuse.org/repositories/home:/manuelschneid3r/Arch/x86_64/albert-0.17.2-0-x86_64.pkg.tar.zst
+	sha512sums = SKIP
+
+pkgname = albert-bin
