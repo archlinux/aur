@@ -2,7 +2,7 @@
 
 _plug=masktools2
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=2.2.26.4.gbb9795d
+pkgver=2.2.28.2.g46ee710
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -24,13 +24,17 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  rm -fr "${_plug}/include"
 }
 
 build() {
   cd build
 
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)"
+
   cmake "../${_plug}" \
-   -DCMAKE_BUILD_TYPE=None \
+   -DCMAKE_BUILD_TYPE=Release \
    -DCMAKE_INSTALL_PREFIX=/usr \
 
   make
