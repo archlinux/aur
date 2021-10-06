@@ -44,4 +44,5 @@ package(){
   make -C build DESTDIR="${pkgdir}" install
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/${_plug}/README.md"
+  install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
