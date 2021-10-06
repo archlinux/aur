@@ -1,24 +1,23 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
-# Contributor: Chris Mann <cshclm at gmail dot com>
-
 pkgname=unrar-free
-pkgver=20140707
+pkgver=0.0.2
 pkgrel=1
+epoch=1
 pkgdesc="Free utility to extract files from RAR archives."
-url="http://gna.org/projects/unrar/"
+url="https://gitlab.com/bgermann/unrar-free"
 arch=('i686' 'x86_64')
 depends=("glibc")
-license=('GPL')
-source=('http://http.debian.net/debian/pool/main/u/unrar-free/unrar-free_0.0.1+cvs20140707.orig.tar.gz')
-sha256sums=('30ba9f9f62abf7f14b7d516864d60fca43d48a93090179685780dd318dd2dba3')
+license=('GPL', 'custom:Info-ZIP')
+source=("https://gitlab.com/bgermann/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('47120c037060fa809b88a12657464a9e66a5dd6d17b550e6c5ecaa84a2026a01')
 
 build() {
-  cd "${srcdir}/unrar-0.0.1"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  autoreconf -i
   ./configure --prefix=/usr --program-suffix=-free
   make
 }
 
 package() {
-  cd "${srcdir}/unrar-0.0.1"
+  cd "${srcdir}/$pkgname-$pkgver"
   make DESTDIR="${pkgdir}" install
 }
