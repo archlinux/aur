@@ -4,23 +4,35 @@ pkgname=ms-office-electron-bin
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="An Unofficial Microsoft Office Online Desktop Client. Free of Cost."
-pkgdir="/opt/MS Office - Electron/"
 arch=('x86_64')
-url="https://github.com/agam778/MS-Office-Electron#readme"
+url="https://github.com/agam778/MS-Office-Electron"
 license=('MIT')
-groups=('')
 depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'util-linux-libs' 'xdg-utils')
-options=('!strip' '!emptydirs')
-install=$pkgname.install
-source_x86_64=("https://github.com/agam778/MS-Office-Electron/releases/download/v0.3.0/MS-Office-Electron-Setup-0.3.0-x86_64.deb")
-sha512sums_x86_64=('ac7f947f88b0fc575539009881f0ba2a93fdc176611626eb019fec1b83158960b6a341c3d47e4fda8f5d6b405627a2a3108d702c012823e9a8c35ebd3b1da182')
+makedepends=('git' 'yarn')
+provides=("${pkgname%-git}" 'ms-office-electron')
+conflicts=("${pkgname%-git}" 'ms-office-electron')
+source=("${pkgname%-git}::git+https://github.com/agam778/MS-Office-Electron.git")
+sha256sums=('SKIP')
 
-package(){
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    git describe --long --tags | sed 's/^v.conscious.club\///;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-    echo "  -> Extracting the data.tar.bz2..."
-	# Extract package data
-	bsdtar xf data.tar.bz2 -C "$pkgdir/"
+build() {
+    cd "$srcdir/${pkgname%-git}"
+    export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+    yarn install
+    yarn electron-builder -l pacman
+}
 
-	install -D -m644 "/opt/MS Office - Electron/license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() {
+    cd "$srcdir/${pkgname%-git}"
+    bsdtar -xf dist/ms-office-electron-*.pacman -C "$pkgdir"
 
+    install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+
+    ln -sf '/opt/MS Office - Electron/MS Office - Electron' 'MS Office - Electron'
+
+    rm "$pkgdir"/.[^.]*
 }
