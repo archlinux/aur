@@ -2,10 +2,10 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=5.14.1.r16.gc1331bd03a64
+pkgver=5.15.rc4.r117.gbc0de77d9b2b
 pkgrel=1
 pkgdesc="Linux pf-kernel (git version)"
-_kernel_rel=5.14
+_kernel_rel=5.15
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 url=https://pf.natalenko.name/
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'd9a31f9ee029474de1064a78a3da31860cc1dbe000595e23776410188752ab26')
+            '29acc99bd10b9124b318a8804abf52039a5f489fa970d98efa7366bee428d1c5')
 
 pkgver() {
   cd "${_srcname}"
