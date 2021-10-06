@@ -1,0 +1,14 @@
+pkgbase = python2-sphinxcontrib-devhelp
+	pkgdesc = Sphinx extension which outputs Devhelp document
+	pkgver = 1.0.2
+	pkgrel = 6
+	url = https://github.com/sphinx-doc/sphinxcontrib-devhelp
+	arch = any
+	license = BSD
+	checkdepends = python2-pytest
+	checkdepends = python2-sphinx
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-devhelp/sphinxcontrib-devhelp-1.0.2.tar.gz
+	sha256sums = ff7f1afa7b9642e7060379360a67e9c41e8f3121f2ce9164266f61b9f4b338e4
+
+pkgname = python2-sphinxcontrib-devhelp
