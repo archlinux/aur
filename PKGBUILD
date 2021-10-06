@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=mcexplore
-pkgver=1.7
+pkgver=2.107.g1a5770a+1
 pkgrel=1
 pkgdesc="Use a minecraft server to generate a square of land."
 arch=(any)
