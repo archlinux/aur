@@ -1,41 +1,43 @@
-# Maintainer: berberman <hatsue@typed.icu>
+# Maintainer: Mateusz Galazyn <carbolymer at gmail.com>
 
-pkgname=haskell-language-server-bin
-pkgver=1.2.0
+pkgname=haskell-language-server-static
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Successor of ghcide & haskell-ide-engine. One IDE to rule them all."
 arch=('x86_64')
-url="https://github.com/haskell/${pkgname%-bin}"
+url="https://github.com/haskell/${pkgname%-static}"
 license=('Apache')
 depends=()
 provides=('haskell-language-server')
 conflicts=('haskell-language-server' 'haskell-language-server-git')
 source=()
-sha256sums=('a9d7ebf8c175353931f8fde79f1298f9012341814231059a8b0fee4a68084c5a'
-            '7e2d52983d6e2f365ba4706fec16689f58d86802afb580c0a0d124faea156fe3'
-            'c67fa2e8f40d47d071e6eafc30f6b616052eb65617f477b0d2938162b984e71a'
-            '1c2ac87ad1ecda53561ae07548897bb217cbd16bf06e2247a5b344edefdaa043'
-            'a2917fd83cb78f516d6077331b2e2738ce8b764757f853fcc37da217db8296ce'
-            'c9146e5abfc7a8a1aba05feae2b4ef15432ef0b085ae82b2186d0b2ce2b1f8b9'
-            'd48c64314ee7168e60ad326db12e1050fb975f2d1f7177cba862d25919b9a3dc'
-            '1ef7cba3d5f02765329bfa14df50b41085946c4c61dbb1d1f350c899f5bd7073'
-            'd5875ee656c272fa4d0d80da9a8d3c9ca36b4d1816892d075f091ce477ae1b0d'
-            'e19a3830268a7b34617bc9b935ebf8e2f50fb6628ee0f8317b83bafdb37b29ec')
-_prefix="${pkgname%-bin}-Linux"
-_ghc_versions=('8.6.4' '8.6.5' '8.8.2' '8.8.3' '8.8.4' '8.10.2' '8.10.3' '8.10.4' '8.10.5')
+sha256sums=('6fdea95ac096b904d42f664c3bb04a9ecf2e31790bf2c2e1bb8bc83391109809'
+            '9d8cb0e80ecec73fc1b5bfa33b6dadce0911aff2149fa2d9955b9a15c8708e6e'
+            '6b209a74128558335efefe36c37655575bd5f361862441b9548e49e56158052d'
+            '2aa74d4b9742466b559f50d6a56533113403b1eb10b80253944ae8757b4c5c48'
+            '23b27e7ed5b0d483c84cdfeb145adfa58d4c96179c6901a09dc554596ca8be88'
+            'ab56d0a153d7ab7014004f46bf906e232ca5a66481bfd4afbce4229a61527652'
+            '132c37e79bb47d1577901cad56a3473ed3974d30329171d1fa181cf05e7f723b'
+            '43fcc00758783888690181de2a703712afd07ed241c9341d8967036512d3f790'
+            '690f4594bd127d0174403ab3b167d1f4c1d54d19e4a0e02e4ff4fdf3bd6d9339'
+            'fc36239db64328f3157595656cfad3a62dcf8aec550046acb07c6e12e6902264'
+            'd3bc7177f3caea60ce3c1d73180bbdc84bf549518fc4b68648e6773fe1741d1b'
+            'f29736098fee79cce5a72432410994fdf1a4b80af048e12d4652e02cf86d5560')
+_prefix="${pkgname%-static}-Linux"
+_ghc_versions=('8.6.4' '8.6.5' '8.8.3' '8.8.4' '8.10.2' '8.10.3' '8.10.4' '8.10.5' '8.10.6' '8.10.7' '9.0.1')
 
 for ver in ${_ghc_versions[@]}; do
   source+=("${_prefix}-${ver}-${pkgver}.gz::${url}/releases/download/${pkgver}/${_prefix}-${ver}.gz")
 done
 
 # Wrapper is independent from ghc version
-source+=("${pkgname%-bin}-wrapper-Linux-${pkgver}.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-wrapper-Linux.gz")
+source+=("${pkgname%-static}-wrapper-Linux-${pkgver}.gz::${url}/releases/download/${pkgver}/${pkgname%-static}-wrapper-Linux.gz")
 
 package() {
   cd "${srcdir}"
   for ver in ${_ghc_versions[@]}; do
-    install -Dm755 "${_prefix}-${ver}-${pkgver}" "${pkgdir}/usr/bin/"${pkgname%-bin}-${ver}""
+    install -Dm755 "${_prefix}-${ver}-${pkgver}" "${pkgdir}/usr/bin/"${pkgname%-static}-${ver}""
   done
-  install -Dm755 "${pkgname%-bin}-wrapper-Linux-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}-wrapper"
+  install -Dm755 "${pkgname%-static}-wrapper-Linux-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-static}-wrapper"
 }
  
