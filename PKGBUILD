@@ -3,7 +3,7 @@
 pkgname=cubbit
 pkgdesc='Cubbit desktop-sync application'
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.cubbit.io/'
 license=('custom')
@@ -39,6 +39,7 @@ package() {
   install -Dm644 "$srcdir"/squashfs-root/locales/* -t "$pkgdir"/usr/share/cubbit/locales/
   install -Dm644 "$srcdir"/squashfs-root/resources/app-update.yml -t "$pkgdir"/usr/share/cubbit/resources
   install -Dm644 "$srcdir"/squashfs-root/resources/app.asar -t "$pkgdir"/usr/share/cubbit/resources
+  install -Dm644 "$srcdir"/squashfs-root/resources/app.asar.unpacked/sql/migrations/* -t "$pkgdir"/usr/share/cubbit/resources/app.asar.unpacked/sql/migrations/
   install -Dm644 "$srcdir"/squashfs-root/swiftshader/* -t "$pkgdir"/usr/share/cubbit/swiftshader/
   
   install -d "$pkgdir"/usr/bin

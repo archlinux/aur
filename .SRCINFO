@@ -1,7 +1,7 @@
 pkgbase = cubbit
 	pkgdesc = Cubbit desktop-sync application
 	pkgver = 9.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cubbit.io/
 	arch = x86_64
 	license = custom
