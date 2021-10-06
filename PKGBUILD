@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-pt-pt
-pkgver=2.53.8.1
+pkgver=2.53.9.1
 pkgrel=1
 _lang=pt-PT
 pkgdesc="Portuguese (Portugal) language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('a5ea4669a4de90656ce7c469ac4f8d1eacece56fd28f2164df28a91033139be63ab5a31662fdab5b205c3c4078f371352c91d801c4dc19027466e4f924c72023')
+sha512sums=('645b199893b049b5e556d4ddd81b804c9508bc1baaba684ce3a5857b1c5ebacd129c1cca284ffc4ac66e58e9d290b0b72460c29d0f6b285a3a6cb89b47404534')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
