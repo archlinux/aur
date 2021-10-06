@@ -12,15 +12,15 @@ depends=('python' 'python-aiohttp' 'python-dateparser'
 makedepends=('python-setuptools')
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sammchardy/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('38ebb268a94b2c5073a84995474bbb662e17258fa0d5e9ec82c2d57a3b2f01f0')
+sha512sums=('2b059b763a380e9fe2529a6a9621acbbd180594ea54f1310ba0a8e266373ce1b13a9138bddd8232a77f1265216e0c3d5cb45e4a0c13840929a4e99c41a83829a')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd $pkgname-$pkgver
     python setup.py build
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd $pkgname-$pkgver
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }

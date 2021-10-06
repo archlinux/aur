@@ -14,6 +14,6 @@ pkgbase = python-binance
 	depends = python-websockets=9.1
 	provides = python-binance
 	source = python-binance-1.0.15.tar.gz::https://github.com/sammchardy/python-binance/archive/v1.0.15.tar.gz
-	sha256sums = 38ebb268a94b2c5073a84995474bbb662e17258fa0d5e9ec82c2d57a3b2f01f0
+	sha512sums = 2b059b763a380e9fe2529a6a9621acbbd180594ea54f1310ba0a8e266373ce1b13a9138bddd8232a77f1265216e0c3d5cb45e4a0c13840929a4e99c41a83829a
 
 pkgname = python-binance
