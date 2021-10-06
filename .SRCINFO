@@ -1,6 +1,6 @@
 pkgbase = youtube-music-uploader
 	pkgdesc = YouTube music uploader.
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/jaymoulin/youtube-music-uploader
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = youtube-music-uploader
 	depends = python-requests
 	depends = python-watchdog
 	depends = python-ytmusicapi
-	source = https://github.com/jaymoulin/youtube-music-uploader/archive/refs/tags/1.1.0.tar.gz
-	sha256sums = 0836a945a1eaf558c01b57efbdb5b2a1afefef746e00832bddb0819eae622dbe
+	source = https://github.com/jaymoulin/youtube-music-uploader/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = ee94897c61443a9d6b1297ee5b60a9666d756c5c34d0ca2bc56525b606a503f8
 
 pkgname = youtube-music-uploader
-
