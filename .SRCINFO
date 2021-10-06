@@ -22,7 +22,7 @@ pkgbase = mingw-w64-qtforkawesome
 	options = !emptydirs
 	source = qtforkawesome-0.0.1.tar.gz::https://github.com/Martchus/qtforkawesome/archive/v0.0.1.tar.gz
 	source = Fork-Awesome-1.2.0::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/1.2.0.tar.gz
-	sha256sums = 683d8b730a033aec33177128f606f2fdc769df7a393e559be1855c74f7ee174d
+	sha256sums = d36634675424cc41536de22a9b64b3daaae2f18cd6a976a731a90926c761de12
 	sha256sums = 23fba5f191f204e0414c547bf4c9b10fd7ca42c151260e8f64698449a75fbdb3
 
 pkgname = mingw-w64-qtforkawesome
