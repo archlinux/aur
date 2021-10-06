@@ -7,7 +7,7 @@ pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://slimbook.es"
 license=('GPL3')
-depends=('cron' 'dmidecode' 'gtk3' 'libnotify' 'python-dbus' 'python-cairo'
+depends=('cron' 'dbus-python' 'dmidecode' 'gtk3' 'libnotify' 'python-cairo'
          'python-gobject' 'python-pillow' 'tlp<=1.3.1' 'tlp-rdw<=1.3.1' 'xorg-xdpyinfo')
 optdepends=('nvidia-prime: for hybrid graphics switching'
             'libappindicator-gtk3: tray icon'
