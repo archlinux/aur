@@ -1,6 +1,6 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 pkgname=script-communicator
-pkgver=5.15
+pkgver=5.16
 _pkgver=0${pkgver/./_}
 pkgrel=1
 pkgdesc="A Qt5-based scriptable terminal with Serial/TCP/UDP/SPI/CAN support"
@@ -12,7 +12,7 @@ makedepends=('qt5-tools')
 
 source=("https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_${_pkgver}.zip"
         "$pkgname.desktop")
-sha256sums=('1ae3ea17cb8ea8b12b736ed1f35ee8fd4fcdd7f87de77795c11f50de5efa32b4'
+sha256sums=('ce7519836bc6995d707fa837d6f0d8ea3722a6bcf2838b3f2d82b8c837bb90e7'
             'b77a9dc91f2b4613acee84f0e50f21279c04110f4a7dc46cc0a3d4b2ca0b6cac')
 
 

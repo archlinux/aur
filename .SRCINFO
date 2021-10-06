@@ -1,6 +1,6 @@
 pkgbase = script-communicator
 	pkgdesc = A Qt5-based scriptable terminal with Serial/TCP/UDP/SPI/CAN support
-	pkgver = 5.15
+	pkgver = 5.16
 	pkgrel = 1
 	url = http://sourceforge.net/projects/scriptcommunicator/
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = script-communicator
 	depends = qt5-script
 	depends = qt5-serialport
 	depends = qt5-multimedia
-	source = https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_05_15.zip
+	source = https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_05_16.zip
 	source = script-communicator.desktop
-	sha256sums = 1ae3ea17cb8ea8b12b736ed1f35ee8fd4fcdd7f87de77795c11f50de5efa32b4
+	sha256sums = ce7519836bc6995d707fa837d6f0d8ea3722a6bcf2838b3f2d82b8c837bb90e7
 	sha256sums = b77a9dc91f2b4613acee84f0e50f21279c04110f4a7dc46cc0a3d4b2ca0b6cac
 
 pkgname = script-communicator
