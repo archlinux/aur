@@ -1,7 +1,7 @@
 pkgbase = vifmimg-git
 	pkgdesc = Image previews using Überzug for vifm
 	pkgver = r36.afe4f15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cirala/vifmimg
 	arch = x86_64
 	license = GPL3

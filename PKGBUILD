@@ -1,6 +1,6 @@
 # Maintainer: Mykyta Poturai <mykyta.poturai@tutanota.com>
 pkgname=vifmimg-git
-pkgrel=1
+pkgrel=2
 pkgver=r36.afe4f15
 pkgdesc="Image previews using Überzug for vifm"
 arch=(x86_64)
