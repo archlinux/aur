@@ -1,0 +1,30 @@
+--- src/parser/PngParser.cc.orig	2021-10-06 22:49:53.369697387 +0200
++++ src/parser/PngParser.cc	2021-10-06 22:51:06.073959192 +0200
+@@ -68,6 +68,7 @@
+   } catch (runtime_error &ex) {
+     return false;
+   }
++  return true;
+ }
+ 
+ void PngParser::initializeImage()
+--- src/parser/JpegParser.cc.orig	2006-11-17 08:11:08.000000000 +0100
++++ src/parser/JpegParser.cc	2021-10-06 22:51:11.387360545 +0200
+@@ -64,6 +64,7 @@
+   } catch (runtime_error &ex) {
+     return false;
+   }
++  return true;
+ }
+ 
+ void JpegParser::tokenizeMarker(const string &base_token,
+--- src/parser/GifParser.cc.orig	2021-10-06 22:49:53.373030763 +0200
++++ src/parser/GifParser.cc	2021-10-06 22:51:18.017445447 +0200
+@@ -94,6 +94,7 @@
+   } catch (runtime_error &ex) {
+     return false;
+   }
++  return true;
+ }
+ 
+ void GifParser::openImage()
