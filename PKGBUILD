@@ -2,8 +2,8 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=themix-full-git
-pkgver=1.13.3
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 pkgdesc="Themix: GUI for generating different color variations
 of Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -15,7 +15,8 @@ url="https://github.com/themix-project/oomox"
 license=('GPL3')
 source=(
 )
-
+md5sums=(
+)
 depends=(
 	'themix-gui-git'
 
