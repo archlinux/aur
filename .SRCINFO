@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-yamc-git
+	pkgdesc = C++ mutex (mutual exclusion primitive for multi-threading) collections. This is header-only, cross-platform, no external dependency C++11 library. (mingw-w64)
+	pkgver = r223.4e015a7
+	pkgrel = 1
+	url = https://github.com/yohhoy/yamc
+	arch = any
+	license = MIT
+	checkdepends = mingw-w64-gtest
+	checkdepends = mingw-w64-wine
+	makedepends = mingw-w64-cmake
+	makedepends = git
+	provides = mingw-w64-yamc
+	conflicts = mingw-w64-yamc
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/yohhoy/yamc.git
+	source = test-fix.patch
+	sha256sums = SKIP
+	sha256sums = 9e1582918e7ca6ece1ee4faba15403f649b51ab65a66453b3c643ad03dca1d76
+
+pkgname = mingw-w64-yamc-git

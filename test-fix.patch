@@ -1,0 +1,49 @@
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index f711c16..e157f36 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -10,23 +10,7 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
+ find_package(Threads)
+ 
+ # Google Test
+-if(MSVC)
+-  set(GTEST_DEBUG_POSTFIX d)
+-  set(GTEST_FORCE_SHARED_CRT ON)
+-endif()
+-include(ExternalProject)
+-set(EXTERNAL_INSTALL_LOCATION ${CMAKE_BINARY_DIR}/external)
+-ExternalProject_Add(googletest
+-  GIT_REPOSITORY https://github.com/google/googletest
+-  GIT_TAG release-1.11.0
+-  CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTERNAL_INSTALL_LOCATION}
+-             -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
+-             -DCMAKE_CXX_STANDARD_REQUIRED=${CMAKE_CXX_STANDARD_REQUIRED}
+-             -Dgtest_force_shared_crt=${GTEST_FORCE_SHARED_CRT}
+-)
+-
+-include_directories(${EXTERNAL_INSTALL_LOCATION}/include)
+-link_directories(${EXTERNAL_INSTALL_LOCATION}/lib)
++find_package(gtest)
+ 
+ # dump type information
+ add_executable(dump_sizeof dump_typeinfo.cpp)
+@@ -41,17 +25,16 @@ target_link_libraries(perf_rwlock Threads::Threads)
+ # Unit tests
+ add_executable(compile_test compile_test.cpp)
+ target_link_libraries(compile_test Threads::Threads)
+-add_test(compile compile_test)
++add_test(NAME compile COMMAND compile_test)
+ 
+ macro (do_test name srcfile)
+   set(testname ${name}_test)
+   add_executable(${testname} ${srcfile}.cpp)
+-  add_dependencies(${testname} googletest)
+   target_link_libraries(${testname}
+     Threads::Threads
+     debug gtest${GTEST_DEBUG_POSTFIX} optimized gtest
+     debug gtest_main${GTEST_DEBUG_POSTFIX} optimized gtest_main)
+-  add_test(${name} ${testname})
++  add_test(NAME ${name} COMMAND ${testname})
+ endmacro (do_test)
+ 
+ do_test(basic basic_test)
