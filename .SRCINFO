@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-removegrainhd-git
+	pkgdesc = Plugin for Avisynth: removegrainhd (GIT version)
+	pkgver = v0.7.7.g7444ef7
+	pkgrel = 1
+	url = https://github.com/pinterf/RemoveGrainHD
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-removegrainhd
+	conflicts = avisynth-plugin-removegrainhd
+	source = removegrainhd::git+https://github.com/pinterf/RemoveGrainHD.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-removegrainhd-git
