@@ -3,12 +3,12 @@
 
 pkgname=spamprobe
 pkgver=1.4d
-pkgrel=10
+pkgrel=9
 pkgdesc="Fast, intelligent, automatic spam detector using Paul Graham style Bayesian analysis of word counts in spam and non-spam emails"
 arch=(i686 x86_64)
 url="http://spamprobe.sourceforge.net/"
 license=('custom:QPL')
-depends=(db giflib libpng)
+depends=(db giflib libjpeg libpng)
 source=(http://downloads.sourceforge.net/spamprobe/$pkgname-$pkgver.tar.gz
 	spamprobe-db5.patch spamprobe-gcc43.patch spamprobe-png.patch
 	spamprobe-template.patch spamprobe-giflib.patch
@@ -29,7 +29,8 @@ build() {
   patch -p0 -i $srcdir/spamprobe-template.patch
   patch -p0 -i $srcdir/spamprobe-giflib.patch
   patch -p0 -i $srcdir/spamprobe-lrucache.patch
-  ./configure --prefix=/usr --mandir=/usr/share/man --without-jpeg
+  CXXFLAGS+=" -O0"
+  ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
