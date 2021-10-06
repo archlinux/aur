@@ -3,13 +3,13 @@
 _pkgname=dbus-python
 pkgname=${_pkgname}2
 pkgver=1.2.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 2.7 bindings for DBUS"
 url="https://www.freedesktop.org/wiki/Software/DBusBindings"
 arch=(x86_64)
 license=('GPL' 'LGPL')
 depends=('dbus' 'glib2')
-makedepends=('python2' 'autoconf-archive' 'python-sphinx_rtd_theme' 'python2-sphinx')
+makedepends=('python2' 'autoconf-archive' 'python2-sphinx_rtd_theme' 'python2-sphinx')
 source=(https://dbus.freedesktop.org/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.gz{,.asc})
 sha256sums=('92bdd1e68b45596c833307a5ff4b217ee6929a1502f5341bae28fd120acf7260'
             'SKIP')
