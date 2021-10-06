@@ -23,11 +23,11 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    bsdtar -xf release/ms-office-electron-*.pacman -C "$pkgdir"
+    bsdtar -xf release/MS-Office-Electron-*.pacman -C "$pkgdir"
 
     install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
-    ln -sf '/opt/MS Office - Electron/MS Office - Electron' '/usr/bin/MS Office - Electron'
+    ln -sf "/opt/MS Office - Electron/MS Office - Electron" "/usr/bin/MS Office - Electron"
 
     rm "$pkgdir"/.[^.]*
 }
