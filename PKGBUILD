@@ -1,7 +1,7 @@
 # Maintainer: Edwin Löffler edwin.frank.loeffler@gmail.com
 
 pkgname=todolist
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A simple command line tool written in python to manage a to-do list"
 arch=("any")
