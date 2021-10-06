@@ -1,6 +1,6 @@
 pkgbase = fileformat
 	pkgdesc = Tool for recognizing file formats.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://gitlab.com/os-18/fileformat
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = fileformat
 	makedepends = amalthea-ldc2
 	depends = amalthea-ldc2
 	depends = glib2
-	source = fileformat-0.3.1.tar.gz::https://gitlab.com/os-18/fileformat/-/archive/v0.3.1/fileformat-v0.3.1.tar.gz
-	sha256sums = 99df57f41b0949bdbd5b01fdbf20999145d0237091e4aa855352aff005bd9251
+	source = fileformat-0.3.2.tar.gz::https://gitlab.com/os-18/fileformat/-/archive/v0.3.2/fileformat-v0.3.2.tar.gz
+	sha256sums = 9d1acebf4267e05ed04532d76424b6fcb91467f81f613cca324410c8f913a59b
 
 pkgname = fileformat
