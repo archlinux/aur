@@ -1,5 +1,5 @@
 pkgbase = nxprayer
-	pkgdesc = Islamic prayers reminder, for your status bar or/and scripts.
+	pkgdesc = Islamic prayers reminder, for your status bar and/or scripts.
 	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/AbdeltwabMF/nxprayer.git
@@ -8,6 +8,8 @@ pkgbase = nxprayer
 	makedepends = git
 	makedepends = sed
 	makedepends = gawk
+	makedepends = gcc
+	makedepends = make
 	makedepends = python3
 	depends = jq
 	depends = bash

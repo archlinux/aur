@@ -3,7 +3,7 @@
 pkgname=nxprayer
 pkgver=0.1.5
 pkgrel=1
-pkgdesc="Islamic prayers reminder, for your status bar or/and scripts."
+pkgdesc="Islamic prayers reminder, for your status bar and/or scripts."
 arch=('x86_64')
 url="https://github.com/AbdeltwabMF/nxprayer.git"
 license=('GPL-v3')
@@ -16,6 +16,8 @@ makedepends=(
 	'git'
 	'sed'
 	'gawk'
+	'gcc'
+	'make'
 	'python3'
 )
 provides=("${pkgname}")
