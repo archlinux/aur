@@ -2,15 +2,15 @@
 
 pkgname=cubbit
 pkgdesc='Cubbit desktop-sync application'
-pkgver=9.0.1
-pkgrel=2
+pkgver=9.0.3
+pkgrel=1
 arch=('x86_64')
 url='https://www.cubbit.io/'
 license=('custom')
 depends=('gtk2' 'hicolor-icon-theme' 'libxss' 'libxtst')
 options=('!strip')
 source=("https://get.cubbit.io/desktop/linux/Cubbit-${pkgver}.AppImage")
-sha256sums=('04875a10db43e347eb9a59f5d89dac22c7491b06a7ae05b95edca5d063199b1c')
+sha256sums=('7318d98b25b2ee31a0cd283492cb8ad6193769b04ffc95e2d938571b020ab4ac')
 
 prepare() {
   chmod +x Cubbit-${pkgver}.AppImage
