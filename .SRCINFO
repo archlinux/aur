@@ -1,6 +1,6 @@
 pkgbase = python-xdoctest
 	pkgdesc = A rewrite of Python's doctest module
-	pkgver = 0.15.9
+	pkgver = 0.15.10
 	pkgrel = 1
 	url = https://github.com/Erotemic/xdoctest
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-xdoctest
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
-	source = python-xdoctest-0.15.9.tar.gz::https://github.com/Erotemic/xdoctest/archive/0.15.9.tar.gz
-	sha512sums = 6a49fbe7f2535ab86ac7047406fbcc9f7e98c964664a95a115c3d945ba8157e4e70ab8c31edae6faee932cfd5e90201d883d9b4b10e2cea9cdc8ff14b5d52d54
-	b2sums = 9980752ad5742a7c4a73418a3ace408c38a6bef6cd43ee5cd1893d6cb195a7c387c5062735b2c903725898ea670e3e6d8e683d4341dcf2dc9e17a2c723107910
+	source = python-xdoctest-0.15.10.tar.gz::https://github.com/Erotemic/xdoctest/archive/v0.15.10.tar.gz
+	sha512sums = 18c1a2774ae9331582610e3459a02f4e4de838218e7250af071570b2318f4c14330084b9fb903d88651fc40a4ba12b686ee6f2ca165edd8155e908ae4992a840
+	b2sums = 4836b773c3cf664c825433199b13ab7d3fe2c68538517bf5594797ad3f2f894d0132034fdafbc4502a00ec7393c19473fafe15fcf0257e3565592dc9907e3d71
 
 pkgname = python-xdoctest
