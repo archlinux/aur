@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=mcexplore-git
-pkgver=1.7.r38.g89dc312
+pkgver=2.107.g1a5770a+1
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
