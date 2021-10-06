@@ -11,7 +11,7 @@ depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libapp
 makedepends=('git' 'yarn')
 provides=("${pkgname%-git}" 'ms-office-electron')
 conflicts=("${pkgname%-git}" 'ms-office-electron')
-source=("${pkgname%-git}::git+https://github.com/agam778/MS-Office-Electron.git")
+source=("${pkgname%-git}::git+https://github.com/agam778/ms-office-electron-aur.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,7 +32,7 @@ package() {
 
     install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
-    ln -sf '/opt/MS Office - Electron/MS Office - Electron' 'MS Office - Electron'
+    ln -sf '/opt/MS Office - Electron/MS Office - Electron' '/usr/bin/MS Office - Electron'
 
     rm "$pkgdir"/.[^.]*
 }
