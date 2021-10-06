@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-go-git
 	pkgdesc = Golang grammar for tree-sitter
-	pkgver = 0.19.1.r6.geb306e6
-	pkgrel = 2
+	pkgver = 0.19.1.r0.g7f6bfd0
+	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-go
 	arch = x86_64
 	groups = tree-sitter-grammars
