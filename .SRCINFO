@@ -1,5 +1,5 @@
 pkgbase = poppler-lcd
-	pkgver = 21.08.0
+	pkgver = 21.10.0
 	pkgrel = 1
 	url = https://github.com/jonathanffon/poppler-lcd-patch
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = poppler-lcd
 	makedepends = python
 	makedepends = boost
 	options = !emptydirs
-	source = https://poppler.freedesktop.org/poppler-21.08.0.tar.xz
+	source = https://poppler.freedesktop.org/poppler-21.10.0.tar.xz
 	source = git+https://github.com/jonathanffon/poppler-lcd-patch#commit=e72e61af5098882f16cfc0bbe187ba497d6ccaa1
-	sha256sums = e9cf5dc5964bce4bb0264d1c4f8122706c910588b421cfc30abc97d6b23e602d
+	sha256sums = 964b5b16290fbec3fae57c2a5bcdea49bb0736bd750c3a3711c47995c9efc394
 	sha256sums = SKIP
 
 pkgname = poppler-lcd
@@ -43,14 +43,14 @@ pkgname = poppler-lcd
 	optdepends = poppler-data: encoding data to display PDF documents containing CJK characters
 	provides = libpoppler.so
 	provides = libpoppler-cpp.so
-	provides = poppler=21.08.0
+	provides = poppler=21.10.0
 	conflicts = poppler
-	conflicts = poppler-qt3<21.08.0
-	conflicts = poppler-qt4<21.08.0
+	conflicts = poppler-qt3<21.10.0
+	conflicts = poppler-qt4<21.10.0
 
 pkgname = poppler-glib-lcd
 	pkgdesc = Poppler glib bindings with subpixel patch on LCD display
-	depends = poppler-lcd=21.08.0
+	depends = poppler-lcd=21.10.0
 	depends = glib2
 	provides = libpoppler-glib.so
 	provides = poppler-glib
@@ -58,7 +58,7 @@ pkgname = poppler-glib-lcd
 
 pkgname = poppler-qt5-lcd
 	pkgdesc = Poppler Qt5 bindings with subpixel patch on LCD display
-	depends = poppler-lcd=21.08.0
+	depends = poppler-lcd=21.10.0
 	depends = qt5-base
 	provides = libpoppler-qt5.so
 	provides = poppler-qt5
@@ -66,7 +66,7 @@ pkgname = poppler-qt5-lcd
 
 pkgname = poppler-qt6-lcd
 	pkgdesc = Poppler Qt6 bindings with subpixel patch on LCD display
-	depends = poppler-lcd=21.08.0
+	depends = poppler-lcd=21.10.0
 	depends = qt6-base
 	provides = libpoppler-qt6.so
 	provides = poppler-qt6
