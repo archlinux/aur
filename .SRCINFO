@@ -1,0 +1,14 @@
+pkgbase = python2-sphinxcontrib-jsmath
+	pkgdesc = Sphinx extension which renders display math in HTML via JavaScript
+	pkgver = 1.0.1
+	pkgrel = 9
+	url = https://github.com/sphinx-doc/sphinxcontrib-jsmath
+	arch = any
+	license = BSD
+	checkdepends = python2-pytest
+	checkdepends = python2-sphinx
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-jsmath/sphinxcontrib-jsmath-1.0.1.tar.gz
+	sha256sums = a9925e4a4587247ed2191a22df5f6970656cb8ca2bd6284309578f2153e0c4b8
+
+pkgname = python2-sphinxcontrib-jsmath
