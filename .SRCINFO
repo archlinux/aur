@@ -1,13 +1,15 @@
 pkgbase = amqp-qtools-git
 	pkgdesc = Command-line tools for sending and receiving AMQP 1.0 messages
 	pkgver = 0.5.0.6f42dfd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ssorj/qtools
 	arch = any
 	license = APACHE
 	makedepends = git
 	depends = python3
 	depends = qpid-proton
+	provides = amqp-qtools
+	conflicts = amqp-qtools
 	source = qtools::git+https://github.com/ssorj/qtools.git
 	sha256sums = SKIP
 
