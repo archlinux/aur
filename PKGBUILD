@@ -33,3 +33,4 @@ package() {
 
     sudo rm "$pkgdir"/.[^.]*
 }
+
