@@ -14,11 +14,6 @@ conflicts=("${pkgname%-git}" 'ms-office-electron')
 source=("${pkgname%-git}::git+https://github.com/agam778/MS-Office-Electron.git")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags
-}
-
 build() {
     cd "$srcdir/${pkgname%-git}/MS-Office-Electron-Linux/"
     export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
