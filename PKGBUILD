@@ -12,8 +12,8 @@ license=('BSD')
 
 provides=("tsuru=${pkgver}")
 
-source_arm6h=("tsuru-client.tar.gz::${url}/releases/download/${pkgver}/tsuru_${pkgver}_linux_arm64.tar.gz")
-sha256sums_arm6h=('cb915eb60aef91a1e3cab8f2c27054181e98ba8068ff06a7a0482a4b774de27c')
+source_armv6h=("tsuru-client.tar.gz::${url}/releases/download/${pkgver}/tsuru_${pkgver}_linux_arm64.tar.gz")
+sha256sums_armv6h=('cb915eb60aef91a1e3cab8f2c27054181e98ba8068ff06a7a0482a4b774de27c')
 
 source_i686=("tsuru-client.tar.gz::${url}/releases/download/${pkgver}/tsuru_${pkgver}_linux_386.tar.gz")
 sha256sums_i686=('f5882c20472cdeae0de14b4f381b7ed06dd23eb650e762aa68feb1f860c6fcb6')
