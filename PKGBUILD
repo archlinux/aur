@@ -16,5 +16,5 @@ package() {
     mkdir -p "${pkgdir}"/usr/share/todolist
 
     install -Dm 755 "${srcdir}"/todolist/todolist "${pkgdir}"/usr/bin
-    install -Dm 755 "${srcdir}"/todolist/todolist.py "${pkgdir}"/usr/share/todolist-git
+    install -Dm 755 "${srcdir}"/todolist/todolist.py "${pkgdir}"/usr/share/todolist
 }
