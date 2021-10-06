@@ -1,0 +1,6 @@
+post_install(){
+    echo "make sure to install data files with 'flashpoint-install-data-files install'" 
+}
+post_upgrade(){
+    echo "make sure to install data files with 'flashpoint-install-data-files install'" 
+}

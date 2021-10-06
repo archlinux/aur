@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!.SRCINFO
+!flashpoint-install-data-files.sh
+!flashpoint-launcher-bin.install
+!PKGBUILD
