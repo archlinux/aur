@@ -1,12 +1,10 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=mcexplore-git
-pkgver=2.107.g1a5770a+1
+pkgver=2.109.g8c2207f+1
 pkgver() {
   cd "$srcdir/$pkgname"
-  if ! git describe --tags 2>/dev/null; then
-    echo "0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-  fi | sed 's/-/.r/; s/-/./g'
+  ./mcexplore.py --version | awk '{print $NF}'
 }
 pkgrel=1
 pkgdesc="Use a minecraft server to generate a square of land."
