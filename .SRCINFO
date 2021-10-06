@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-misc-git
 	pkgdesc = Plugin for Vapoursynth: misc (GIT version)
 	pkgver = R2.0.gd945b6b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vapoursynth/vs-miscfilters-obsolete
 	arch = any
 	license = MIT
