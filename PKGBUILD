@@ -23,7 +23,7 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    bsdtar -xf release/MS-Office-Electron-*.pacman -C "$pkgdir"
+    bsdtar -xf release/*.pacman -C "$pkgdir"
 
     install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
