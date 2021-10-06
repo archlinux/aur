@@ -1,19 +1,19 @@
 pkgname=unrar-free
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 epoch=1
 pkgdesc="Free utility to extract files from RAR archives."
 url="https://gitlab.com/bgermann/unrar-free"
 arch=('i686' 'x86_64')
-depends=("glibc")
-license=('GPL', 'custom:Info-ZIP')
+depends=("glibc", "libarchive")
+license=('GPL')
 source=("https://gitlab.com/bgermann/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('47120c037060fa809b88a12657464a9e66a5dd6d17b550e6c5ecaa84a2026a01')
+sha256sums=('ff3e4681a76ea3683a68e98536839fec8756f0f69d768035fb776e7406321f34')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   autoreconf -i
-  ./configure --prefix=/usr --program-suffix=-free
+  ./configure CFLAGS='-Wno-format-security' --prefix=/usr
   make
 }
 
