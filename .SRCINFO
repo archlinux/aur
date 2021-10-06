@@ -1,6 +1,6 @@
 pkgbase = port
 	pkgdesc = A ship runner and manager for Urbit OS
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/urbit/port
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = port
 	depends = yarn
 	depends = zip
 	conflicts = port-bin
-	source = git+https://github.com/urbit/port.git#tag=v1.3.0
+	source = git+https://github.com/urbit/port.git#tag=v1.4.0
 	sha512sums = SKIP
 
 pkgname = port
