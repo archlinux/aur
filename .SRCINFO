@@ -25,4 +25,4 @@ pkgbase = ms-office-electron-git
 	source = ms-office-electron-bin::git+https://github.com/agam778/MS-Office-Electron.git
 	sha256sums = SKIP
 
-pkgname = ms-office-electron-bin
+pkgname = ms-office-electron-git
