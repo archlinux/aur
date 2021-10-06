@@ -1,7 +1,7 @@
 pkgbase = guapow
 	pkgdesc = On-demand and auto performance optimizer for Linux applications
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinifmor/guapow
 	arch = any
 	license = zlib/libpng
