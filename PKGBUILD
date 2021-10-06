@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=svu
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Semantic Version Util'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5e23e851651146921ad0855615e587ec58d324054f3aae4991ed709f12fa59c1')
+sha256sums=('d5eba8f1b7bd57f1231e706f674c07bc69713f9190b2d2474c7e0a075842f802')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -24,7 +24,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  go test -v -short ./...
+  go test -v -short .
 }
 
 package() {
