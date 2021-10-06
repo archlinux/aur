@@ -29,7 +29,7 @@ package() {
 
     install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
-    ln -sf "/opt/MS Office - Electron/MS Office - Electron" "/usr/bin/MS Office - Electron"
+    sudo ln -sf "/opt/MS Office - Electron/MS Office - Electron" "/usr/bin/MS Office - Electron"
 
-    rm "$pkgdir"/.[^.]*
+    sudo rm "$pkgdir"/.[^.]*
 }
