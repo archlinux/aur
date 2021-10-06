@@ -1,0 +1,16 @@
+pkgbase = python2-sphinx_rtd_theme
+	pkgdesc = Read the Docs theme for Sphinx
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/readthedocs/sphinx_rtd_theme
+	arch = any
+	license = MIT
+	makedepends = nodejs-lts-fermium
+	makedepends = npm
+	makedepends = python2-setuptools
+	makedepends = python2
+	depends = python2-sphinx
+	source = https://github.com/readthedocs/sphinx_rtd_theme/archive/1.0.0/sphinx_rtd_theme-1.0.0.tar.gz
+	b2sums = c70740d1f6b6afddd2b32b756e1f6940846459038d6ea0f03b218cfeb07e0974f4d186f9993eeddda58115d0b2a607e61b28081576b9f953d855f3cc3d51d836
+
+pkgname = python2-sphinx_rtd_theme
