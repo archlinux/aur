@@ -1,29 +1,37 @@
 post_install() {
-    python3 -OO -m py_compile /usr/share/slimbookbattery/preferences.py
-    python3 -OO -m py_compile /usr/share/slimbookbattery/slimbookbattery
-    python3 -OO -m py_compile /usr/share/slimbookbattery/slimbookbattery-changemode.py
-    python3 -OO -m py_compile /usr/share/slimbookbattery/slimbookbattery-report.py
+  if python /usr/share/slimbookbattery/src/check_config.py; then
+    echo 'Configuration OK'
+  fi
 
-    rm /usr/share/slimbookbattery/preferences.py
-    rm /usr/share/slimbookbattery/slimbookbattery
-    rm /usr/share/slimbookbattery/slimbookbattery-changemode.py
-    rm /usr/share/slimbookbattery/slimbookbattery-report.py
+  if chmod -R 766 /home/*/.config/slimbookbattery; then
+    echo 'Read/Write permissions given to config files.'
+  fi
 
-    cp /usr/share/slimbookbattery/__pycache__/preferences.cpython-*.pyc /usr/share/slimbookbattery/preferences.pyc
-    cp /usr/share/slimbookbattery/__pycache__/slimbookbatterycpython-*.pyc /usr/share/slimbookbattery/slimbookbattery
-    cp /usr/share/slimbookbattery/__pycache__/slimbookbattery-changemode.cpython-*.pyc /usr/share/slimbookbattery/slimbookbattery-changemode.pyc
-    cp /usr/share/slimbookbattery/__pycache__/slimbookbattery-report.cpython-*.pyc /usr/share/slimbookbattery/slimbookbattery-report.pyc
+  if chmod -R 755 /usr/share/slimbookbattery/src/*.sh; then
+    echo 'Exec permissions given.'
+  fi
 
-    rm /usr/share/slimbookbattery/__pycache__/*
-    rmdir /usr/share/slimbookbattery/__pycache__
+  if chmod -R 755 /usr/share/slimbookbattery/src/*.py; then
+    echo 'Exec permissions given to src.'
+  fi
 
-    chmod +x /usr/share/slimbookbattery/bin/*
+  # Enabling tlp.service
+  if sudo systemctl enable tlp.service; then
+    echo 'Tlp service enabled'
+  fi
+
+  echo 'Checking users autostart files'
+  for user in $(ls /home); do
+    echo
+    echo $user
+
+    if test -f /home/$user/.config/autostart/slimbookbattery-autostart.desktop; then
+      echo "Restoring /home/$user/.config/autostart/slimbookbattery-autostart.desktop"
+      cp /usr/share/slimbookbattery/src/slimbookbattery-autostart.desktop /home/$user/.config/autostart/slimbookbattery-autostart.desktop
+    fi
+  done
 }
 
 post_upgrade() {
     post_install
-}
-
-post_remove() {
-    rm -rf /usr/share/slimbookbattery
 }
