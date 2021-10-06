@@ -1,21 +1,21 @@
 # Maintainer: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 
 pkgname="postybirb"
-pkgver=2.3.36
+pkgver=2.3.37
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 url="https://www.postybirb.com"
 arch=('x86_64')
 license=('BSD')
-depends=('electron7')
+depends=('electron12')
 makedepends=('npm' 'nvm' 'python2')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/mvdicarlo/postybirb//archive/v${pkgver}.tar.gz"
         "${pkgname%}.desktop"
         "${pkgname%}.sh"
         "buildOptimizer.patch")
-sha512sums=('edd8bce2e3e4caf26af37316d10b24891c32a31cd32c57cba95de0e1ad7e55b70be5a007ce85a443de23c85742170f8fec5932cdea6448c599ac3cbeffd8654b'
+sha512sums=('25790467902888fa43929db96b682f1ee44ee2b3af030cc98d70eae2440668fcc4f6241a7d8fb1703a22db628d962474dba939f9f5c836f357af8f351f32e505'
             '313afe3d7f1ea7da37cfff24d3976fbc926739d76d03114dd7d237ff91221ccc5ab28fcb3d3ab14b31235bd0de20e07b39ba1f42caba7f22ae3a2278e75384fd'
-            'a522c36c98a63a90d45bac44294f4efa6b420d0c6411de32177f35849ab416c2dfd1470c71441e017ecb514903f44cbb2e28b22ac75efa05141627836385057d'
+            '60401f5c094cab8d41475da350178e969a86d940c3d132999277cee84d78203d0e23e109fb0886daa831387bb3ec6db9f0e1af940db61e3b9079304d703fa48c'
             'b4d3f076bb676bd7ac874177d6b06bae54d647c1c540dc800d20c05e90dbb537f1f406ae299e0c682b305485c343a7149fbcfbac04d5b1425e5d3e1e13e175e6')
 
 prepare() {
@@ -34,11 +34,11 @@ build() {
 	
 	#use system electron version
 	#see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-	electronDist=$(dirname $(realpath $(which electron7)))
-    electronVer=$(electron7 --version | tail -c +2)
+	electronDist=/usr/lib/electron12/
+    electronVer=$(electron12 --version | tail -c +2)
     
 	cd "$srcdir/${pkgname}-${pkgver}/electron"
-	export npm_config_target=$(tail /usr/lib/electron7/version)
+	export npm_config_target=${electronVer}
     export npm_config_arch=x64
     export npm_config_target_arch=x64
     export npm_config_disturl=https://atom.io/download/electron

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec electron7 /usr/lib/postybirb/app.asar "$@"
+exec electron12 /usr/lib/postybirb/app.asar "$@"
