@@ -1,7 +1,7 @@
 pkgname="paths-bookmarks-git"
 pkgver=r43.ccf6bed
 pkgrel=1
-pkgdesc="Save often used directories under a short name"
+pkgdesc="Save often used directories like bookmarks"
 arch=("x86_64")
 url="https://github.com/sproott/pat.hs"
 license=("MIT")
