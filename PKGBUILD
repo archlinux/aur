@@ -50,12 +50,12 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/Python-${pkgver}/build-${_arch}"
     install -d "$pkgdir"/usr/${_arch}/lib
-    install -m644 libpython*.a "$pkgdir"/usr/${_arch}/lib
+    install -m644 libpython${_pybasever}*.a "$pkgdir"/usr/${_arch}/lib
     install -d "$pkgdir"/usr/${_arch}/bin
     install -d "$pkgdir"/usr/${_arch}/include/python${_pybasever}
     cp -r ../Include/* "$pkgdir"/usr/${_arch}/include/python${_pybasever}
     install -m644 ../PC/pyconfig.h "$pkgdir"/usr/${_arch}/include/python${_pybasever}
-    install -m755 python*.dll "$pkgdir"/usr/${_arch}/bin
+    install -m755 python${_pybasever}.dll "$pkgdir"/usr/${_arch}/bin
     install -d "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m644 *.pyd "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m755 python.exe "$pkgdir"/usr/${_arch}/bin/python${_pybasever}.exe
