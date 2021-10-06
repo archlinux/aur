@@ -2,16 +2,16 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r306.g0debc57
+pkgver=0.3.7.r484.g47a65ca
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD')
 makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
-             'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'zlib' 'libgl'
-             'freeglut' 'gtest' 'gmock'  'python' 'asciidoc' 'doxygen'
-             'graphviz' 'java-environment' 'highway' 'xdg-utils')
+             'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'gtest'
+             'gmock' 'java-environment' 'python' 'asciidoc' 'doxygen'
+             'graphviz' 'xdg-utils' 'highway')
 source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/lvandeve/lodepng.git'
@@ -54,14 +54,13 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
+        -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
         -DJPEGXL_ENABLE_PLUGINS:BOOL='true' \
         -DJPEGXL_ENABLE_VIEWERS:BOOL='false' \
-        -DJPEGXL_ENABLE_GIMP_SAVING:BOOL='ON' \
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
-        -DJPEGXL_WARNINGS_AS_ERRORS:BOOL='false' \
         -Wno-dev
     make -C build all doc
 }
@@ -75,12 +74,12 @@ package_libjxl-git() {
     optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
                 'giflib: for CLI tools'
                 'gimp: for gimp plugin'
-                'gperftools: for CLI tools and gimp plugin'
+                'gperftools: for CLI tools'
                 'java-runtime: for JNI bindings'
                 'libjpeg-turbo: for CLI tools'
                 'libpng: for CLI tools'
                 'openexr: for CLI tools')
-    provides=('libjxl' 'libjpeg-xl-git' 'libjxl.so' 'libjxl_jni.so' 'libjxl_threads.so')
+    provides=('libjxl' 'libjpeg-xl-git' 'libjxl.so' 'libjxl_threads.so')
     conflicts=('libjxl' 'libjpeg-xl-git')
     replaces=('libjpeg-xl-git')
     
