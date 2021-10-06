@@ -1,0 +1,17 @@
+pkgbase = python-jinja_pluralize-git
+	pkgdesc = Jinja2 pluralize filters
+	pkgver = r34.e947704
+	pkgrel = 1
+	url = https://github.com/audreyfeldroy/jinja2_pluralize
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-inflect
+	depends = python-jinja
+	provides = python-jinja_pluralize
+	conflicts = python-jinja_pluralize
+	source = python-jinja_pluralize::git+https://github.com/audreyfeldroy/jinja2_pluralize.git
+	md5sums = SKIP
+
+pkgname = python-jinja_pluralize-git
