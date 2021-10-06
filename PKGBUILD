@@ -1,8 +1,8 @@
 # Maintainer: Vinícius Moreira <vinicius_fmoreira@hotmail.com>
 
 pkgname=guapow
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="On-demand and auto performance optimizer for Linux applications"
 arch=('any')
 url="https://github.com/vinifmor/guapow"
@@ -11,12 +11,12 @@ depends=('python' 'python-aiofiles' 'python-aiohttp' 'python-pycryptodome' 'syst
 optdepends=('unclutter: required for hiding the mouse cursor')
 makedepends=('git' 'python' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('15de982783170155b81d4d173a9238e543d336f9f94aa06c17efab654a0bc9fc3f36166a2d3c27a119e2cc7f0d4c2f10a4d9bd7102523581b04c6a34811d531e')
+sha512sums=('e226682a6f41ae9f5a2ec1303d345a39214453f8d42573c2949692519116aeb07418ba14dddb085cd205434071a7d6870c9bc58ae887c84246f37b970fc8fdd2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python3 setup.py build
-  # python3 setup.py test || return 1
+  python3 setup.py test || return 1
 }
 
 package() {
