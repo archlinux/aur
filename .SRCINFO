@@ -1,7 +1,7 @@
 pkgbase = asf
 	pkgdesc = Steam cards farmer.
 	pkgver = 5.1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	install = install
 	changelog = changelog

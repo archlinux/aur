@@ -1,3 +1,6 @@
+2021-10-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.1.4.0-2:
+    pkg: create /tmp/ASF on bootup since asf expects this folder to exists (Failed to set up mount namespacing)
 2021-10-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.1.4.0-1:
     Added ArchiSteamFarm@.service service file declarations for systemd to generic, generic-netf and linux variants. Since their exact usage is not documented on the wiki yet, they're in the preview state for the brave sunglasses.

@@ -3,7 +3,7 @@
 
 pkgname="asf"
 pkgver="5.1.4.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
@@ -55,6 +55,7 @@ package() {
     # Setup system user and group
     echo 'u asf - "ArchiSteamFarm" /var/lib/asf' |
       install -Dm644 /dev/stdin "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
-    echo 'd /var/lib/asf 0755 asf asf -' |
+    echo -e 'd /var/lib/asf 0755 asf asf -\n
+             d /tmp/ASF 0777 asf asf -' |
       install -Dm644 /dev/stdin "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
 }
