@@ -1,14 +1,14 @@
 pkgbase = dbus-python2
 	pkgdesc = Python 2.7 bindings for DBUS
 	pkgver = 1.2.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/DBusBindings
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	makedepends = python2
 	makedepends = autoconf-archive
-	makedepends = python-sphinx_rtd_theme
+	makedepends = python2-sphinx_rtd_theme
 	makedepends = python2-sphinx
 	depends = dbus
 	depends = glib2
