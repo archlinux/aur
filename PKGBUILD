@@ -3,7 +3,7 @@
 
 pkgname=atto
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tiny Nano wallet, focused on ease of use through simplicity'
 arch=('x86_64')
 url='https://github.com/codesoap/atto'
@@ -42,14 +42,16 @@ build() {
   export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
 
   go build ./cmd/atto
+  go build ./cmd/atto-safesign
 }
 
 package() {
   cd "$pkgname-$pkgver" || exit 1
 
-  install -Dm0755 atto      "$pkgdir/usr/bin/atto"
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0755 atto          "$pkgdir/usr/bin/atto"
+  install -Dm0755 atto-safesign "$pkgdir/usr/bin/atto-safesign"
+  install -Dm0644 README.md     "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 LICENSE       "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # eof
