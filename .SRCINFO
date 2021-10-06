@@ -1,8 +1,9 @@
 pkgbase = python-supersmoother
 	pkgdesc = Python implementation of Friedman's Supersmoother
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jakevdp/supersmoother
+	changelog = CHANGES.md
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
