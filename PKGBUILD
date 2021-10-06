@@ -59,7 +59,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-git"
 fi
-pkgver=28.0.50.148607
+pkgver=29.0.50.150704
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -75,7 +75,7 @@ replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
 # If Savannah fails for reasons, use Github's mirror
 source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
 options=(!strip)
-install="$pkgname".install
+install=emacs-git.install
 b2sums=('SKIP')
 ################################################################################
 
