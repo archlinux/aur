@@ -1,0 +1,19 @@
+pkgbase = arm-none-eabi-yiolibc
+	pkgdesc = Yio Input Output C Library that aims in type-safe printf replacement
+	pkgver = v0.2.4
+	pkgrel = 1
+	url = https://gitlab.com/kamcuk/yio/
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = m4
+	makedepends = arm-none-eabi-gcc
+	makedepends = arm-none-eabi-newlib
+	makedepends = git
+	provides = arm-none-eabi-yiolibc
+	options = !emptydirs
+	options = !strip
+	source = git+https://gitlab.com/kamcuk/yio#tag=v0.2.4
+	md5sums = SKIP
+
+pkgname = arm-none-eabi-yiolibc
