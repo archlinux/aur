@@ -1,0 +1,12 @@
+pkgbase = todolist
+	pkgdesc = A simple command line tool written in python to manage a to-do list
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/edwloef/todolist
+	arch = any
+	license = MIT
+	depends = python
+	source = git://github.com/edwloef/todolist
+	sha1sums = SKIP
+
+pkgname = todolist
