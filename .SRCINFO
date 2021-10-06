@@ -1,6 +1,6 @@
 pkgbase = emacs28-git
 	pkgdesc = GNU Emacs. emacs-28 release branch.
-	pkgver = 28.0.60.150525
+	pkgver = 28.0.60.150631
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs28-git.install
