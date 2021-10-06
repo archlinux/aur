@@ -1,8 +1,8 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-zen
-_pkgver=5.14.8.zen1
-_kernver=5.14.8
-_zenver=zen1
+_pkgver=5.14.9.zen2
+_kernver=5.14.9
+_zenver=zen2
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_kernver}-${_zenver}-${_pkgrel}-zen"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux ZEN kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/zen-kernel/zen-kernel/commits/v5.14.8-zen1"
+url="https://github.com/zen-kernel/zen-kernel/commits/v5.14.9-zen2"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('94ffa1ec7baa4e22be0da9266b11a7ed7b149006bf33cee978556b4b6b3cd116'
-            'e3baadcbc8cbbb61c2f30569bbd35f7a6745b9b6e2fa2d0ad7736775db0f0343'
-            '0d527ad027db507206e293d408b89cbabb570a306617ed397e6f29970ad77132')
+sha256sums=('73a318155932b15334a9b8e2b96cbd0d8d17e020c885e05fa209f77306c70a78'
+            '6dddb8cf69b480ea804710864f4c9593fb7734a558c98a0e23b936d70db264e7'
+            'a519c847bf326dd339884321738aaf59f392eb3848473a5b1e561a6da37e7a99')
 
 package_linux-zen-versioned-bin() {
   pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-zen-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.14.8.zen1-1-zen-bin() {
+package_linux5.14.9.zen2-1-zen-bin() {
   pkgdesc="The Linux ZEN kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -80,7 +80,7 @@ package_linux5.14.8.zen1-1-zen-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.14.8.zen1-1-zen-headers-bin() {
+package_linux5.14.9.zen2-1-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -89,7 +89,7 @@ package_linux5.14.8.zen1-1-zen-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.14.8.zen1-1-zen-docs-bin() {
+package_linux5.14.9.zen2-1-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
