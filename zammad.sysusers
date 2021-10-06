@@ -1,0 +1,3 @@
+u zammad - "Zammad user" /var/lib/zammad /bin/bash
+g rvm -
+m zammad rvm

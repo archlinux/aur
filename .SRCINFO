@@ -1,0 +1,26 @@
+pkgbase = zammad
+	pkgdesc = Zammad is a web-based, open source user support/ticketing solution.
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://zammad.org
+	arch = any
+	license = AGPL
+	depends = imlib2
+	depends = elasticsearch
+	depends = rvm
+	depends = shared-mime-info
+	optdepends = postgresql
+	optdepends = nginx
+	options = !strip
+	source = https://ftp.zammad.com/zammad-4.1.0.tar.bz2
+	source = zammad.sysusers
+	source = zammad.tmpfiles
+	source = zammad.bashrc
+	source = zammad.bash_profile
+	sha256sums = 382baa445e194b00279e91c0b95b4ac88f240c7460a308024953d336751ad770
+	sha256sums = 071372d0657764b2aaaf78f11e9c072b93e38d833ef8c9302eded9bde57e44a0
+	sha256sums = 9f7c0197d1693ac364417e1cefeb4afd1692835c5dbf2240885cced783f01af8
+	sha256sums = 721ab19a61ecc15c5cec7ed57604a0753e943407827b0961e3dbae05a3138b11
+	sha256sums = dab632f2e9fdf9bbf6964c556e2bbe69708f7b8b69b27d6c17a82fc82bc514b2
+
+pkgname = zammad
