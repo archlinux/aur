@@ -1,7 +1,7 @@
 pkgbase = git-gone
 	pkgdesc = Prune stale local Git branches
 	pkgver = 0.3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lunaryorn/git-gone
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = git-gone
 	sha512sums = 81988915cafe388bc969035a9b5cc52138b4571622d9a5a418238962e89a73db60dea3151db7a8ce2b105854e50fd15de728661d356a1507028324462ae648e3
 
 pkgname = git-gone
-
