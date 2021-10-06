@@ -1602,3 +1602,96 @@ Mon May 18 09:09:10 2020 +0200
     (user templates' bugfix)
      2020-04-11 5a736294 actionless chore(plugins: base16): update submodule
     (allow user templates under ~/.config/oomox/base16/templates)
+
+
+Wed Oct 6 22:25:36 2021 +0200
+-------------------------------------------------
+1.14            Release 1.14
+    
+    Most important changes:
+     2021-09-10 4a793b11 actionless feat: add 'About' dialog
+     2021-09-09 36ab32ef actionless refactor: move export_xresources functionality into separate plugin
+     2021-09-09 986d576b actionless feat(terminal): support setting custom terminal cursor color
+     2021-09-10 7980e53b actionless feat(about, plugin_api): allow plugins to define extra fields to show them in About window
+     2021-09-09 036bd958 actionless feat(plugin_api, main): allow import and export plugins to have their custom shortcuts
+    
+    Other notable changes:
+     2021-10-06 df500cd5 actionless chore(plugins: base16; packaging: arch): update submodule (update for themix-gui 1.14, sync base16 mirror, release 1.2)
+     2021-10-06 c005e7f7 actionless chore(plugins: oomoxify; packaging: arch): update submodule (release 1.2.5, more visual improvements for new spotify release)
+     2021-10-06 cdb5337e actionless chore(plugins: theme_oomox; packaging: arch): update submodule (small updates here and there)
+     2021-09-26 86669203 actionless refactor: make plugin_loader and theme_model lazy load instead of loading on module import
+     2021-09-26 aa5884d0 actionless chore: remove leftovers of python 3.5 support code
+     2021-09-25 386d7106 actionless chore(plugins: oomox, oomoxify): update submodules (newer spotify and gnome versions)
+     2021-09-25 f6a1f422 actionless feat(main: do_startup): prevent creating duplicated hotkeys
+     2021-09-09 bf28a236 actionless refactor(export_common): define colorscheme and theme_name in top-level ExportDialog class
+     2021-09-08 d80e8d97 csts chore(colors): create DarkOnesk30 (#396)
+     2021-09-01 2f2e049a Zia chore(colors: Contributed): add shichirou (#395)
+     2021-07-22 a3034ebe Raunak Tripathi chore(colors: Contributed): add Bluloco-dark (#388)
+     2021-05-12 cdafcea4 actionless chore(plugins: materia): update submodule (change_color.sh, fixes #379)
+     2021-05-12 6c9d28c7 actionless feat(plugins: suru*, materia, oomox): allow ~ in export path
+     2021-05-10 23bdce18 Patrick Collins fix(packaging: arch): cd out of pkg_tmp_dir before deleting it (#380)
+     2021-05-03 63b6debb actionless chore(plugins: theme_oomox; packaging: arch): update submodule (qt6ct theme)
+     2021-04-17 26004420 actionless chore(plugins: icons_numix; packaging: arch): update submodule (upstream release '21.04.14')
+     2021-04-17 02f4a828 actionless chore(plugins: oomoxify): update submodule (style 'already added' dialog)
+     2021-04-05 1c042d1d actionless doc(readme): remove ubuntu since no one wants to maintain in
+     2021-04-02 81a91f28 actionless chore(plugins: oomoxify; packaging: arch): update submodule (release 1.2.4, more visual improvements for new spotify release)
+     2021-04-01 4a57d69e Raunak Tripathi chore(colors: Contributed): add Cobalt2 (#374)
+     2021-03-24 038f5e62 csts feat(colors): add  DarkOnesk29 (#372)
+     2021-03-24 d7473a86 csts feat(colors): add  DarkOnesk28 (#371)
+     2021-03-24 54d7d5cc csts feat(colors): add DarkOnesk27 (#370)
+     2021-03-09 1e5b19fe Laurent Tréguier doc(readme): remove Copr instructions (#368) (Closes #363)
+     2021-03-08 bbfca918 csts feat(colors): add  DarkOnesk26 (#365)
+     2021-03-08 e582ccfb csts feat(colors): add  DarkOnesk25 (#364)
+     2021-03-08 dc6ff676 csts feat(colors): add  DarkOnesk24 (#362)
+     2021-03-08 fd4d1625 csts feat(colors): add  DarkOnesk23 (#361)
+     2021-03-08 64be21de csts feat(colors): add  DarkOnesk22 (#360)
+     2021-03-08 458dc26b csts feat(colors): add  DarkOnesk21 (#359)
+     2021-03-08 967732ad csts feat(colors): add  DarkOnesk20 (#358)
+     2021-03-08 a90e57be csts feat(colors): add DarkOnesk19 (#357)
+     2021-03-08 02142f8d csts feat(colors): add DarkOnesk18 (#356)
+     2021-03-08 6a353a1a David Keogh fix(terminal): add utf-8 hint (#366)
+     2021-01-18 5cd98638 freddii style: fix wrong spelled words (#352)
+     2021-01-14 6355dfca Antoine Bertin fix(packaging: arch): add missing python-cairo dependency on Arch (#350)
+     2020-12-15 e9e1a980 actionless chore(travis): Python 3.5 reached the end of its life on September 13th, 2020. Please upgrade your Python as Python 3.5 is no longer maintained.
+     2020-12-15 95b238c9 actionless chore(plugins: icons: papirus): update submodule (v20201201 + 45 commits)
+     2020-10-10 385eac18 actionless chore(makefile; packaging: ubuntu): remove 'arc' theme from default 'make install' target; but still include it into ubuntu and flatpak releases
+     2020-10-10 2c38d69c actionless doc(readme): remove mention about arc theme
+     2020-10-09 d27b00f9 actionless refactor(colors: retro: uzi): totally rework the theme (but include old version as well)
+     2020-10-07 e7235f5d actionless fix/feat(preset_list): when theme was removed or moved to different dir, move focus correctly its new position in the list
+     2020-10-07 9c4d511e actionless fix(preset_list): correctly expand long tree paths
+     2020-10-01 11a8cd65 actionless chore(plugins: icons: numix): update submodule (tag: 20.06.07 + 8 commits)
+     2020-09-30 28a426c5 alaviss feat(main: import): add support for file chooser portals (#339)
+     2020-09-27 dcbb6b1a actionless chore(packaging: arch: materia): use inkscape instead of resvg by default, see https://github.com/nana-4/materia-theme/issues/523
+     2020-09-27 d9724333 actionless feat(ui, terminal; plugins: import_image): show UI overlay for long operations instead of just freezing UI itself
+     2020-09-25 2a546e63 csts feat(colors): create DarkOnesk17 (#334)
+     2020-09-20 70e9bef4 actionless feat(colors_list: listbox row): add description field (fixes #206)
+     2020-09-20 7111931e actionless feat(colors_list: oomox_listbox): add separators between listbox rows (re: #190)
+     2020-09-20 1c228ad3 actionless feat(theme_model): extract Theme Style into a separate section (re: #190)
+     2020-09-20 7794d214 actionless feat(colors_list: oomox_listboxrow): make them non activatable (re: #190)
+     2020-09-20 5a1d5bd0 actionless feat(main: init): add separator between theme options and theme preview (re: #190)
+     2020-09-10 ea977ad9 csts feat(colors): create DarkOnesk16 (#333)
+     2020-09-03 537c9945 actionless chore(colors): update some themes which are using tempus terminal templates
+     2020-09-03 3c42bd5b actionless chore(terminal templates: tempus): sync with the latest upstream
+     2020-08-24 f42d5fd7 csts feat(colors): add DarkOnesk15 (#332)
+     2020-08-22 40536343 csts feat(colors): add DarkOnesk14 (#330)
+     2020-08-20 ec84e337 actionless feat(preset list): allow subdirs everywhere
+     2020-08-20 4fc3d90a csts feat(colors): add DarkOnesk13 (#329)
+     2020-08-13 b72e548e csts colors: Create DarkOnesk12 (#328)
+     2020-08-13 986d1124 csts colors: Create DarkOnesk11 (#327)
+     2020-08-13 5d96dbb9 csts colors: Create DarkOnesk10 (#326)
+     2020-08-13 b92842d9 csts colors: Create DarkOnesk9 (#325)
+     2020-08-13 23736828 csts colors: Create DarkOnesk8 (#324)
+     2020-08-13 adc38c71 csts colors: Create DarkOnesk7 (#323)
+     2020-08-05 f8aea072 actionless fix(color list): allow showing 'Edit Generated Theme' label for import plugins
+     2020-08-05 a626621d actionless fix(color list): hide empty sections when hiding all the theme values
+     2020-08-05 1df00a2d actionless fix(color list): hide empty sections; don't reset error messages on each section
+     2020-08-03 f1c8232f actionless feat(colors/options list, theme model): split into sections
+     2020-07-13 b7259e7a actionless fix(packaging: arch: pkgbuild): update description
+     2020-06-23 7fbd2a12 csts Create DarkOnesk6 (#317)
+     2020-06-23 ce513f68 csts chore(colors: contributed): Create DarkOnesk5 (#316)
+     2020-06-22 ebf84d35 csts Create DarkOnesk6
+     2020-06-16 582b6eaa csts feat(colors): Create DarkOnesk4 (#315)
+     2020-06-16 a9a6b9cf csts feat(colors): Create DarkOnesk3 (#314)
+     2020-06-16 bd515fb1 csts feat(colors): Create DarkOnesk2 (#313)
+     2020-06-16 485b9f87 csts feat(colors): Create DarkOnesk1 (#312)
+     2020-05-29 e1fa9794 actionless chore: extract xresources-import related functionality to a separate plugin
