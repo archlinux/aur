@@ -1,17 +1,17 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=or-tools
-pkgver=9.0
-pkgrel=3
+pkgver=9.1
+pkgrel=1
 pkgdesc="Google's Operations Research tools."
 arch=('x86_64')
 url="https://github.com/google/or-tools"
 license=('Apache')
 depends=('coin-or-cbc' 'protobuf')
 # abseil fixed version since it breaks stuff
-makedepends=('cmake' 'pkgconf' 'git' 'abseil-cpp=20210324.1')
+makedepends=('cmake' 'pkgconf' 'git' 'abseil-cpp=20210324.2')
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha256sums=('fa7700b614ea2a5b2b6e37b76874bd2c3f04a80f03cbbf7871a2d2d5cd3a6091')
+sha256sums=('b51ca3b08f768de5a0c1029f7127264640e50d9c7b83383a175109ef213bd307')
 
 prepare() {
     cd "$pkgname-$pkgver"
