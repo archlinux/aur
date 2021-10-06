@@ -1,5 +1,5 @@
 pkgname="paths-bookmarks-git"
-pkgver=r43.ccf6bed
+pkgver=r44.f7e176a
 pkgrel=1
 pkgdesc="Save often used directories like bookmarks"
 arch=("x86_64")
@@ -26,7 +26,7 @@ package() {
   cd "${srcdir}/${pkgname}"
 
   # Install binary
-  install -Dm755 "bin/paths-exe" "${pkgdir}/usr/share/paths/paths-exe"
+  install -Dm755 "bin/paths" "${pkgdir}/usr/share/paths/paths"
   install -Dm755 "paths.sh" "${pkgdir}/usr/share/paths/paths.sh"
 
   # Install bash and zsh completions
