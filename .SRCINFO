@@ -1,13 +1,13 @@
 pkgbase = python-supersmoother
 	pkgdesc = Python implementation of Friedman's Supersmoother
-	pkgver = 0.3.2
+	pkgver = 0.4
 	pkgrel = 1
-	url = http://github.com/jakevdp/supersmoother
+	url = https://github.com/jakevdp/supersmoother
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	depends = python-numpy
-	source = https://pypi.python.org/packages/source/s/supersmoother/supersmoother-0.3.2.tar.gz
-	md5sums = 3de93a5ee64a9fba8db561fc90118f2e
+	source = python-supersmoother-0.4.tar.gz::https://github.com/jakevdp/supersmoother/archive/v0.4.tar.gz
+	sha256sums = 439ddf5e19e134dc65af46a2c1701aea3702026d717776def35dc5fce972cb0b
 
 pkgname = python-supersmoother
-

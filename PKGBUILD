@@ -1,24 +1,30 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 
-_pyname=supersmoother
-pkgname=python-$_pyname
-pkgver=0.3.2
+pkgname=python-supersmoother
+pkgver=0.4
 pkgrel=1
 pkgdesc="Python implementation of Friedman's Supersmoother"
-url="http://github.com/jakevdp/supersmoother"
-depends=('python-numpy')
+url="https://github.com/jakevdp/supersmoother"
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('3de93a5ee64a9fba8db561fc90118f2e')
+depends=('python-numpy')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('439ddf5e19e134dc65af46a2c1701aea3702026d717776def35dc5fce972cb0b')
+
+prepare() {
+	cd "supersmoother-$pkgver"
+	sed -i '/supersmoother.tests/d' setup.py
+}
 
 build() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py build
+	cd "supersmoother-$pkgver"
+	python setup.py build
 }
 
 package() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "supersmoother-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
