@@ -6,7 +6,7 @@ pkgdesc="Application for the performance management of Intel processors"
 arch=('any')
 url="https://slimbook.es"
 license=('GPL2')
-depends=('gtk3' 'intel-undervolt' 'libnotify' 'pciutils' 'python-dbus' 'python-gobject'
+depends=('dbus-python' 'gtk3' 'intel-undervolt' 'libnotify' 'pciutils' 'python-gobject'
          'python-pillow' 'systemd-libs')
 optdepends=('libappindicator-gtk3: tray icon')
 install="$pkgname.install"
