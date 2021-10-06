@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/pinterf/RemoveGrainHD'
-license=('MIT')
+license=('GPL')
 depends=('avisynthplus')
 makedepends=('git'
              'cmake'
