@@ -1,0 +1,160 @@
+0.8.7  - Dec 23, 2011
+    First public release (alpha)
+
+0.8.8  - Jan 2012
+    introduced warn=boolean to Rally instantiation
+    removed inflate=boolean in Rally instantiation
+
+0.8.9  - Jan 2012
+    putative fix for proxy support
+
+0.8.10 - Feb 2012
+    better fix for proxy support
+
+0.8.11 - Mar 24, 2012 
+    better support for default workspace/project when user profile doesn't specify
+       a default
+    fixed assignment of ref value in _createShellArtifact (_ref no longer has the .js on end...)
+
+0.8.12 - Mar 26, 2012
+    fixed fatal premature exercise of iterator on response in context check, defer to _getDefaults
+
+0.9.1 - July 9, 2012
+    Upped default WSAPI version in config.py to 1.30
+    All entities that are subclasses of WorkspaceDomainObject now have a details method
+    that show the attribute values in an easy to read multiline format.
+    Dropped attempted discrimination of server value to determine if it is a name or an IPv4 address    No longer look for http_proxy in environment, only https_proxy.
+    Introduced convenience methods dealing with attachments
+
+0.9.2 - October 1, 2012 
+    Fixed getProject method to take an optional name parm.
+    Added HTTP header item in config.py to set Content-Type to 'application/json'
+    Added keyword arg to restapi.Rally __init__ method to
+    allow specifying a verify_ssl_cert=True/False value to requests.session creation,
+      This results is passing on the the requests.session call a verify flag that it
+      uses to determine whether or not checking the SSL certificate is desired.
+      Modified the details method in entity.py to be more resilient by bypassing 
+      attributes that an item might have but doesn't have as a query fetch spec 
+      didn't include all potential attributes.
+    Fixed addAttachment to specify Attachment size as size of original attachment file
+    rather than the size of the base64 encoding result.
+
+0.9.3 - October 7, 2012
+    Fixed Pinger class to use correct ping options on Linux and Windows platforms.
+    Updated exception catching and raising to use Python 2.6/2.7 compliant syntax.
+
+0.9.4 - October 2013
+    Upped default WSAPI version to 1.43.
+    Tested against requests 2.0.0 which now support https via proxy.
+    Updated pyral.restapi.Rally to accommodate requests versions 0.x, 1.x and 2.x.
+    Fixed construction of multi-condition queries and broke out query construction into a separate code file.
+    Support for Rally dyna-types (PortfolioItem/<subtype> where subtype is one of Theme, Initiative or Feature.
+    Added UserIterationCapacity, Fixed the *CumulativeFlowData entity names.
+    Added internal facility to accept Rally reference identifiers in a list form and convert them
+    to a list of dicts with each dict containing a key-value pair for '_ref' and associated value.
+    Added a details method for any WorkspaceDomain derived entity instance.
+
+1.0.0 - May 2014
+    Upped default WSAPI version to v2.0 and stated in docs that prior WSAPI versions (1.x) were no longer supported.
+
+1.0.1 - June 2014
+    Patch to address flaw in WSAPI v2.0 projects collection endpoint having a mismatch between TotalResultCount and
+    actual information about projects.    
+
+1.1.0 - August 2014
+    Introduction of support for Rally API Key, along with rallyWorkset convenience method to superced rallySettings. 
+    Defects fixed related to internalizing environment in rallySettings (and rallyWorkset) 
+      and in getting allowed values for Rally types.
+
+1.1.1 - March 2015
+    Fixed return value for updating a PortfolioItem sub-type instance.
+    Added the Milestone entity to the list of instantiable entities.
+    Added ability to query RecycleBin entries.
+    Added basic search method to Rally instance.
+
+1.1.2 - February 2016
+    internal release only
+    minor style mods for Pinger
+    fixed handling of proxy value under some edge conditions
+    exploratory support for Python 3.5
+
+1.2.0 - Oct 2016
+    support for Python 3.5
+    allow instantiation option to bypass use of Pinger
+    changed header to reflect change of company name to CA Technologies
+    added ranking convenience methods
+    modified handling of attribute allowedValues for better create/update performance
+    allow instantiation option to work with only one workspace for better performance for Subscriptions with large number of Workspaces
+    fix addAttachment handling to allow binary files and increase size limit to 50MB.
+
+1.2.1 - Oct 2016
+    Added mention that the six package is required.
+    Fixed context setup for proper handling when a user has no default workspace/project settings.
+    Corrected handling of allowedValues for attributes when the single allowedValue is a boolean value.
+    Added an allowedValues.py example script.
+
+1.2.2 - Nov 2016
+    Allow for disambiguating Project amongst name duplications by means of using fully qualified path.
+    Incorporated suggestion on preserving case name of custom PortfolioItem sub-item.
+    Fixed discrepancy of docs versus code on default pagesize, now is actually 200 everywhere.
+    Fix location of download package in GitHub repo.
+
+1.2.3 - Dec 2016
+    Fixed restapi.py Rally.getAllowedValues method to accommodate custom fields
+    Allow attribute payload for put and post to have a list of pyral.Entity instances
+    as values for an attribute that is of type COLLECTION.
+
+1.2.4 - Mar 2017
+    Fixed handling of projectScopeUp and projectScopeDown keyword arguments in Rally.get operation.
+    Fixed Peristable's __getattr__ method to more properly handle getting the salient item
+    out of a response to a getResourceByOID request when the item retrieved is a PortfolioItem sub-type.
+    Fixed defect in SchemaItemAttribute where self._allowed_values_resolved was not always set.
+    Fixed defect in RallyRestResponse in __repr__ method where on a response that has no qualifying items
+    an attempt is made to get the Results out of the returned response without going through the QueryResult key.
+
+1.3.0 - Apr 2017
+    Introduced automatic multi-threading for Rally.get operation to speed up retrieval of large
+    result sets.  Implemented step two of the Pinger deprecation plan, ping=False is the new default.
+    Increased default page size to 500.  Maximum useful page size limit is 2000 but 1000 seems
+    to be the sweet spot for multithreading requests.
+    Fixed Rally.getAllUsers so that non subscription admin accounts can see the user list.
+    Updated recommendation for version of requests package.
+
+1.3.1 - Apr 2017
+    Adjusted getAllowedValues so that custom fields with an allowedValues endpoint get resolved.
+    Disqualifed a group of standard attributes whose allowedValue is of type COLLECTION when retrieving 
+    allowed values in SchemaItem.complete(). This is primarily relevant only to attributes defined as
+    Drop Down List or Multi Value Drop Down List. 
+    Fixed mechanism of supplying headers dict to Rally instantiation so that the X-RallyIntegration*
+    headers get overwritten with supplied headers (for name, vendor, version) to better identify the 
+    origin of the integration.
+    Updated official name to reference Agile Central in setup.py, mention threads keyword arg in the
+    get method in the the interface.rst file.
+    
+1.3.2 - Aug 2017
+    Allow for initial connection using a workspace name containing chars that need to be urlencoded.
+
+1.4.2 - Aug 2018
+
+1.5.0 - Feb 2021
+    Dropped all support for Python 2.7 constructs.
+    Validated support for Python 3.7 and 3.8.
+    Updated/fixed some doc verbiage.
+    Fixed retrieval of attachments.
+    Fixed return value of call to create an instance of a PortfolioItem custom sub-type.
+    Fixed defect in returning correct number of items when the start index is specified as an integer.
+    Fixed defect where a feature item could not be added to a Milestones collection
+    Fixed defect in query construction (and results) when a target attribute value contains a '&' character.
+
+
+1.5.1 - Jul 2021
+    Fixed query builder to accommodate subset criteria (in | !in) and range criteria (between | !between).
+    Dropped mention of Python 3.5 as a supported version in PKG-INFO.
+    Added mention of Python 3.9 as a supported version in PKG-INFO.
+    Excised all mentions of AgileCentral in the docs, replaced by 'Rally'.
+
+1.5.2 - Jul 2021
+    Fixed query builder so that multi-condition queries thet include subset or range conditions 
+    are constructed correctly.
+    Dropped all code related to ping functionality.
+
