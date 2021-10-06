@@ -1,7 +1,7 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=nxprayer
-pkgver=0.1.5
+pkgver=0.1.5.r107.e85653c
 pkgrel=1
 pkgdesc="Islamic prayers reminder, for your status bar and/or scripts."
 arch=('x86_64')
