@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-typescript-git
 	pkgdesc = TypeScript and TSX grammar for tree-sitter
-	pkgver = 0.16.3.r34.g28e757a
-	pkgrel = 2
+	pkgver = 0.20.0.r0.gef6ee5b
+	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-typescript
 	arch = x86_64
 	groups = tree-sitter-grammars
