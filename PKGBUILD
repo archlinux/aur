@@ -11,6 +11,7 @@ optdepends=("ffmpegthumbnailer: for video previews"
 	    "imagemagick: for .ico previews"
             "poppler: for pdf previews"
             "gnome-epub-thumbnailer: for epub previews"
+            "djvulibre: for djvu previews"
 	    "fontpreview-git: for font previews")
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 source=("git+${url}.git#branch=master")

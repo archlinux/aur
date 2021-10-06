@@ -12,9 +12,9 @@ pkgbase = vifmimg-git
 	optdepends = imagemagick: for .ico previews
 	optdepends = poppler: for pdf previews
 	optdepends = gnome-epub-thumbnailer: for epub previews
+	optdepends = djvulibre: for djvu previews
 	optdepends = fontpreview-git: for font previews
 	source = git+https://github.com/cirala/vifmimg.git#branch=master
 	md5sums = SKIP
 
 pkgname = vifmimg-git
-
