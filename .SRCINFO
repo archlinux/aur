@@ -1,0 +1,12 @@
+pkgbase = naml-bin
+	pkgdesc = Not another markup language. Framework for replacing Kubernetes YAML with Go.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/kris-nova/naml
+	arch = x86_64
+	license = Apache
+	options = !strip
+	source = https://github.com/kris-nova/naml/releases/download/v0.3.1/naml-linux-amd64
+	sha256sums = ed5aada513f1b28d218fce27fc6e9b44cae997618eb6aa009766b2878704031c
+
+pkgname = naml-bin
