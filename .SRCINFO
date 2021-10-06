@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-debandshit-git
+	pkgdesc = Plugin for Vapoursynth: debandshit (GIT version)
+	pkgver = r50
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/vs-debandshit
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = vapoursynth-plugin-vsutil-git
+	provides = vapoursynth-plugin-debandshit
+	conflicts = vapoursynth-plugin-debandshit
+	source = debandshit::git+https://github.com/Irrational-Encoding-Wizardry/vs-debandshit.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-debandshit-git
