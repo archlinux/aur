@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-combolution3d-git
+	pkgdesc = Plugin for Avisynth: combolution3d (GIT version)
+	pkgver = v1.2.0.g0547ba6
+	pkgrel = 1
+	url = https://github.com/pinterf/Convolution3D
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-combolution3d
+	conflicts = avisynth-plugin-combolution3d
+	source = combolution3d::git+https://github.com/pinterf/Convolution3D.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-combolution3d-git
