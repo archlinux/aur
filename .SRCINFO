@@ -1,4 +1,4 @@
-pkgbase = wxgtk-dev-opt
+pkgbase = wxgtk-dev-314-opt
 	pkgver = 3.1.4
 	pkgrel = 1
 	url = https://wxwidgets.org
@@ -14,29 +14,28 @@ pkgbase = wxgtk-dev-opt
 	sha1sums = f8c77e6336b5f6414b07e27baa489fb8abc620c4
 	sha256sums = 3ca3a19a14b407d0cdda507a7930c2e84ae1c8e74f946e0144d2fa7d881f1a94
 
-pkgname = wxgtk2-dev-opt
+pkgname = wxgtk2-dev-314-opt
 	pkgdesc = GTK+2 implementation of wxWidgets API for GUI (/opt)
 	depends = gtk2
 	depends = libgl
 	depends = gst-plugins-base-libs
 	depends = libsm
 	depends = libxxf86vm
-	depends = wxgtk-common-dev-opt
+	depends = wxgtk-common-dev-314-opt
 	depends = libnotify
 
-pkgname = wxgtk3-dev-opt
+pkgname = wxgtk3-dev-314-opt
 	pkgdesc = GTK+3 implementation of wxWidgets API for GUI (/opt)
 	depends = gtk3
 	depends = gst-plugins-base-libs
 	depends = libsm
 	depends = libxxf86vm
-	depends = wxgtk-common-dev-opt
+	depends = wxgtk-common-dev-314-opt
 	depends = libnotify
 	optdepends = webkit2gtk: for webview support
 
-pkgname = wxgtk-common-dev-opt
+pkgname = wxgtk-common-dev-314-opt
 	pkgdesc = Common libraries and headers for wxgtk2 and wxgtk3 (/opt)
 	depends = zlib
 	depends = gcc-libs
 	depends = expat
-
