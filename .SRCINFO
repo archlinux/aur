@@ -1,6 +1,6 @@
 pkgbase = argon-git
 	pkgdesc = the noble lightweight GUI package manager + update notifier (with full AUR support)
-	pkgver = v2.0.4+2+g8cf099e
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/14mRh4X0r/arch-argon
 	arch = any
@@ -21,4 +21,3 @@ pkgbase = argon-git
 	sha512sums = SKIP
 
 pkgname = argon-git
-

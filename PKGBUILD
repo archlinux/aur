@@ -2,7 +2,7 @@
 # Contributor: Willem Mulder <14mRh4X0r@gmail.com>
 
 pkgname=argon-git
-pkgver=v2.0.4+2+g8cf099e
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="the noble lightweight GUI package manager + update notifier (with full AUR support)"
 url="https://github.com/14mRh4X0r/arch-argon"
@@ -17,7 +17,7 @@ conflicts=('argon')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/-/+/g' | sed 's/v//'
 }
 
 package() {
