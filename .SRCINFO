@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-medianblur2-git
+	pkgdesc = Plugin for Avisynth: medianblur2 (GIT version)
+	pkgver = 1.1.7.ge45ab28
+	pkgrel = 1
+	url = https://github.com/pinterf/MedianBlur2
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-medianblur2
+	conflicts = avisynth-plugin-medianblur2
+	source = medianblur2::git+https://github.com/pinterf/MedianBlur2.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-medianblur2-git
