@@ -13,8 +13,6 @@ pkgbase = seaweedfs
 	makedepends = git
 	makedepends = go
 	source = seaweedfs-2.70.tar.gz::https://github.com/chrislusf/seaweedfs/archive/2.70.tar.gz
-	source = ldflags.patch
 	sha256sums = 3f7d3d4503aaae456f644bfea1250146fcb4d86d0b3ea3b6beb7cad6da9aada6
-	sha256sums = 64db3c34767099aab8ec385c0b6796a2745ed66fa35159df0e8108da31e710db
 
 pkgname = seaweedfs

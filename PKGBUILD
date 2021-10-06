@@ -9,15 +9,12 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
 url="https://github.com/chrislusf/seaweedfs"
 license=('APACHE')
 makedepends=('git' 'go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        ldflags.patch)
-sha256sums=('3f7d3d4503aaae456f644bfea1250146fcb4d86d0b3ea3b6beb7cad6da9aada6'
-            '64db3c34767099aab8ec385c0b6796a2745ed66fa35159df0e8108da31e710db')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('3f7d3d4503aaae456f644bfea1250146fcb4d86d0b3ea3b6beb7cad6da9aada6')
+_shortcommit=cee4d20
 
 prepare() {
   cd $pkgname-$pkgver
-
-  patch -Np1 -i ../ldflags.patch
 
   export GOPATH="${SRCDEST:-$srcdir}"
   go mod vendor
@@ -29,10 +26,16 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
+  export GOPATH="${SRCDEST:-$srcdir}"
 
-  cd $pkgname-$pkgver
-  make GOPATH="${SRCDEST:-$srcdir}"
+  cd $pkgname-$pkgver/weed
+  go build -v $GO_FLAGS -ldflags "-X github.com/chrislusf/seaweedfs/weed/util.COMMIT=$_shortcommit -extldflags $LDFLAGS"
 }
+
+#check() {
+#  cd $pkgname-$pkgver/weed
+#  go test -v
+#}
 
 package() {
   cd $pkgname-$pkgver
