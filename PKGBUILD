@@ -156,7 +156,7 @@ prepare() {
             sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault=0x3;PowerMizerDefaultAC=0x1"/' \
 		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "2" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1; PerfLevelSrc=0x2233; PowerMizerDefault=0x3"/' \
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1; PerfLevelSrc=0x2233;PowerMizerDefault=0x3"/' \
 		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "3" ]; then
             sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3"/' \
