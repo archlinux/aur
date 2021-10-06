@@ -11,16 +11,16 @@ depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libapp
 makedepends=('git' 'yarn')
 provides=("${pkgname%-git}" 'ms-office-electron')
 conflicts=("${pkgname%-git}" 'ms-office-electron')
-source=("${pkgname%-git}::git+https://github.com/agam778/ms-office-electron-aur.git")
+source=("${pkgname%-git}::git+https://github.com/agam778/MS-Office-Electron.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v.conscious.club\///;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}/MS-Office-Electron-Linux/"
     export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
     yarn install
     yarn electron-builder -l pacman
@@ -28,7 +28,7 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    bsdtar -xf dist/ms-office-electron-*.pacman -C "$pkgdir"
+    bsdtar -xf release/ms-office-electron-*.pacman -C "$pkgdir"
 
     install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
