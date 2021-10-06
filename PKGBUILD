@@ -1,3 +1,6 @@
+# Maintainer: Oliver Kahrmann (founderio) <oliver.kahrmann@gmail.com>
+# Contributor: Cork (AUR)
+
 pkgname=pywinery
 pkgver=0.3.3
 pkgrel=2
