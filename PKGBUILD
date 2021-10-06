@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev at mail.ru>
 pkgname=crux-toolkit-bin
-pkgver=4.0.6818dcc
+pkgver=4.0.ad795d6
 pkgrel=1
 pkgdesc="A mass spectrometry analysis toolkit"
 arch=('x86_64' 'i686')
@@ -12,8 +12,8 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}-git")
 source_x86_64=("https://noble.gs.washington.edu/crux-downloads/daily/crux-${pkgver}.Linux.${CARCH}.zip")
 source_i686=("https://noble.gs.washington.edu/crux-downloads/daily/crux-${pkgver}.Linux.${CARCH}.zip")
-sha256sums_x86_64=('7b0190bff4acac1343d7ec71fab34c1fe831cc814d50472e6278954af9b4061f')
-sha256sums_i686=('81611edd1c711e96bbc5360d258ca0556e73f8dcb085fe0a0cb08fc56f9c0113')
+sha256sums_x86_64=('1e02afd2992373dde49e0dc03f1b0c2ea8819d402ade7c5c578871c3cfc5c2df')
+sha256sums_i686=('4185450c8c77f3e27a5f98d3b5b911bf2331d86af9bc62e94e0dd6b2d73419ff')
 
 package() {
     install -D -t "${pkgdir}/usr/bin" "crux-4.0.Linux.${CARCH}/bin/crux" 
