@@ -15,6 +15,9 @@ package() {
     mkdir -p "${pkgdir}"/usr/bin
     mkdir -p "${pkgdir}"/usr/share/todolist
 
+    rm "${pkgdir}"/usr/bin/todolist
+    rm "${pkgdir}"/usr/share/todolist
+
     install -Dm 755 "${srcdir}"/todolist/todolist "${pkgdir}"/usr/bin
     install -Dm 755 "${srcdir}"/todolist/todolist.py "${pkgdir}"/usr/share/todolist
 }
