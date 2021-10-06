@@ -2,12 +2,12 @@
 # Maintainer: Stephen Martin <hwkiller@gmail.com>
 # Contributor: Conor Anderson <conor@conr.ca>
 
-pkgname=rstudio-desktop-git
-_gitname=rstudio
-pkgver=1.4.1717.r1474
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=14.17.5
+_gitname=rstudio
+pkgname=rstudio-desktop-git
+pkgver=1.4.1717.r1480
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
@@ -23,9 +23,9 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview')
 source=("git+https://github.com/rstudio/rstudio.git"
         "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-${_ginver}.zip"
         "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
-	"https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
-	"qt.conf"
-	"cran_multithread.patch")
+        "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
+        "qt.conf"
+        "cran_multithread.patch")
 sha256sums=('SKIP'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
@@ -54,7 +54,7 @@ prepare() {
     cd "${srcdir}/${_gitname}/dependencies/common"
     _pandocver=$(grep -oP "(?<=PANDOC_VERSION=\").*(?=\"$)" install-pandoc)
     install -d pandoc/${_pandocver}
- 
+
     ln -sfT /usr/share/myspell/dicts dictionaries
     ln -sfT /usr/share/mathjax2 mathjax-27
     ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
@@ -76,11 +76,15 @@ prepare() {
 
 build() {
     msg "Downloading and installing R packages..."
-    bash "${srcdir}/${_gitname}"/dependencies/common/install-packages
+    bash "${srcdir}/${_gitname}/dependencies/common/install-packages"
 
     export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}
+    export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=${srcdir}"
+    export BUILD_ID="local"
+    export PACKAGE_OS="Arch Linux"
 
-    cmake -S "${srcdir}/${_gitname}" -B build \
+    cmake -S "${srcdir}/${_gitname}" \
+          -B build \
           -DRSTUDIO_TARGET=Desktop \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
@@ -90,7 +94,6 @@ build() {
           -DBoost_NO_BOOST_CMAKE=ON \
           -DRSTUDIO_USE_SYSTEM_SOCI=yes \
           -DRSTUDIO_BUNDLE_QT=FALSE
-#   make -C build
 }
 
 package() {
@@ -102,7 +105,7 @@ package() {
 
     # Symlink main binary
     install -d "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/rstudio/bin/rstudio" "${pkgdir}/usr/bin/rstudio"
+    ln -sfT "/usr/lib/rstudio/bin/rstudio" "${pkgdir}/usr/bin/rstudio"
 
     # BUGFIX: qt5-webengine isn't init'ing properly. Likely an Rstudio bug.
     install -Dm 644 "${srcdir}/qt.conf" "${pkgdir}/usr/lib/qt/libexec/qt.conf"
