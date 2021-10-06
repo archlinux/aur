@@ -13,9 +13,10 @@ license=('MIT')
 depends=('python' 'python-aiohttp' 'python-dateparser'
          'python-requests' 'python-ujson' 'python-websockets=9.1')
 makedepends=('git' 'python-setuptools')
+checkdepends=('python-pytest' 'python-requests-mock')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/sammchardy/$_pkgname.git")
+source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -26,6 +27,11 @@ pkgver() {
 build() {
     cd $_pkgname
     python setup.py build
+}
+
+check() {
+    cd $_pkgname
+    pytest
 }
 
 package() {
