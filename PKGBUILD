@@ -59,7 +59,7 @@ else
 	pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance)
 fi
 pkgver=470.74
-pkgrel=5
+pkgrel=6
 arch=('x86_64' 'aarch64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -209,6 +209,10 @@ package_nvidia-dkms-performance() {
     # when control over it goes to the open-source driver.
     install -D -m644 <(printf '%s\n%s\n' 'blacklist nouveau' 'options nouveau modeset=0') \
         "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+
+    # fixes nvidia_uvm
+    install -D -m644 <(printf '%s' 'nvidia-uvm') \
+        "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 
     # LICENSE
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
