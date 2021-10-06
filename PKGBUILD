@@ -1,8 +1,7 @@
 # Maintainer: Austin Haedicke <austin.haedicke@gamil.com>
-# https://github.com/savagezen/pkgbuild/tree/master/dnd-tools
 
 pkgname=dnd-tools
-pkgver=98954f0
+pkgver=baefb9e
 pkgrel=1
 pkgdesc='Interactive CLI tools for Dungeons and Dragons 5e'
 depends=('python')
