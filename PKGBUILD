@@ -2,7 +2,7 @@
 # Contributor: carlosal1015
 
 pkgname=betterbib
-pkgver=4.0.1
+pkgver=4.0.2
 _abbrvver=2021-09
 pkgrel=1
 pkgdesc="Update BibTeX files with info from online resources"
@@ -15,7 +15,7 @@ depends=('python>=3.8' 'python-appdirs' 'python-latexcodec' 'python-pybtex>=0.19
          'nuspell')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nschloe/betterbib/archive/refs/tags/v$pkgver.tar.gz"
         "abbrev.jabref.org-$_abbrvver.tar.gz::https://github.com/JabRef/abbrv.jabref.org/archive/refs/tags/$_abbrvver.tar.gz")
-sha256sums=('508b1a07144bb2c2e3b948906dcfd18e4afe2edc4df3bd94b2c8cca3b666d397'
+sha256sums=('c6e95fc26e90273280b269e9dbb093f1b80d2f5066d6dfc21d636a8022d6dafa'
             '77617e9d59da089d39235d1c69e390bb4d98780c42579ba5c368be3d3e3daaa3')
 
 build() {

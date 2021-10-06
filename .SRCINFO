@@ -1,6 +1,6 @@
 pkgbase = betterbib
 	pkgdesc = Update BibTeX files with info from online resources
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/nschloe/betterbib
 	arch = any
@@ -19,9 +19,9 @@ pkgbase = betterbib
 	depends = hspell
 	depends = libvoikko
 	depends = nuspell
-	source = betterbib-4.0.1.tar.gz::https://github.com/nschloe/betterbib/archive/refs/tags/v4.0.1.tar.gz
+	source = betterbib-4.0.2.tar.gz::https://github.com/nschloe/betterbib/archive/refs/tags/v4.0.2.tar.gz
 	source = abbrev.jabref.org-2021-09.tar.gz::https://github.com/JabRef/abbrv.jabref.org/archive/refs/tags/2021-09.tar.gz
-	sha256sums = 508b1a07144bb2c2e3b948906dcfd18e4afe2edc4df3bd94b2c8cca3b666d397
+	sha256sums = c6e95fc26e90273280b269e9dbb093f1b80d2f5066d6dfc21d636a8022d6dafa
 	sha256sums = 77617e9d59da089d39235d1c69e390bb4d98780c42579ba5c368be3d3e3daaa3
 
 pkgname = betterbib
