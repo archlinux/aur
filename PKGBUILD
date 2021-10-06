@@ -2,7 +2,7 @@
 
 _plug=removedirt
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=v0.9.2.26.g2952af0
+pkgver=v0.9.3.0.g46007dc
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -24,13 +24,17 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  rm -fr "${_plug}/RemoveDirt/"{avs*,avi*}
 }
 
 build() {
   cd build
 
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)"
+
   cmake "../${_plug}" \
-   -DCMAKE_BUILD_TYPE=None \
+   -DCMAKE_BUILD_TYPE=Release \
    -DCMAKE_INSTALL_PREFIX=/usr \
 
   make
