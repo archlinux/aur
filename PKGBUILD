@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-compiz-alike-windows-effect-git
-pkgver=r46.c9d89bf
+pkgver=r47.0fd213d
 pkgrel=1
 pkgdesc="Wobbly windows effect inspired by the Compiz ones"
 arch=('any')

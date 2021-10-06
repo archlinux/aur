@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-compiz-alike-windows-effect-git
 	pkgdesc = Wobbly windows effect inspired by the Compiz ones
-	pkgver = r46.c9d89bf
+	pkgver = r47.0fd213d
 	pkgrel = 1
 	url = https://github.com/hermes83/compiz-alike-windows-effect
 	install = compiz-alike.install
@@ -16,4 +16,3 @@ pkgbase = gnome-shell-extension-compiz-alike-windows-effect-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-compiz-alike-windows-effect-git
-
