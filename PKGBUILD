@@ -22,7 +22,9 @@ build() {
 }
 
 package() {
+    ls
     cd "$srcdir/${pkgname%-git}"
+    ls
     bsdtar -xf release/*.pacman -C "$pkgdir"
 
     install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
