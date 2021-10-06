@@ -4,8 +4,8 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname=buildozer-bin
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64')
 license=('Apache')
@@ -14,7 +14,7 @@ source=(
   "${pkgname%-bin}-${pkgver}::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-amd64"
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/bazelbuild/buildtools/${pkgver}/LICENSE"
 )
-sha256sums=('082aea1df38fe30ce41d955a2cbf309cae8ec386507e0c10cc16f0d9a93e151f'
+sha256sums=('bbb0a21c1b05790558b418fa9ac5694c7e0d9a4502e3c7e3002e4566ad9125ce'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
