@@ -1,11 +1,12 @@
 pkgbase = avs2yuv-git
 	pkgdesc = A simple tool that can execute avisynth scripts. (GIT version)
-	pkgver = r20.7aa19f9
+	pkgver = 0.30.6.g631e97c
 	pkgrel = 1
 	url = https://github.com/DJATOM/avs2yuv
 	arch = x86_64
-	license = LGPL
+	license = GPL
 	makedepends = git
+	makedepends = cmake
 	depends = avisynthplus
 	provides = avs2yuv
 	conflicts = av2yuv
@@ -13,4 +14,3 @@ pkgbase = avs2yuv-git
 	sha256sums = SKIP
 
 pkgname = avs2yuv-git
-
