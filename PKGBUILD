@@ -2,16 +2,16 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='reco'
-pkgver=2.4.6
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Record talks to remember the contents later'
 arch=('x86_64')
 url='https://github.com/ryonakano/reco'
 license=('GPL3')
 depends=('granite' 'gstreamer')
-makedepends=('meson' 'vala')
+makedepends=('meson' 'vala' 'libhandy')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('100c4388e5a2366fc2158e47437166d1c8cab79d2ff133ceb4bb2ad037b46450')
+sha256sums=('8fa57f2d0cacbae40ad7346673a07963d4429050f55776c2b936afc7afb09af3')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" build

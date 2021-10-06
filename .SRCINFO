@@ -1,15 +1,16 @@
 pkgbase = reco
 	pkgdesc = Record talks to remember the contents later
-	pkgver = 2.4.6
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/ryonakano/reco
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
+	makedepends = libhandy
 	depends = granite
 	depends = gstreamer
-	source = reco-2.4.6.tar.gz::https://github.com/ryonakano/reco/archive/2.4.6.tar.gz
-	sha256sums = 100c4388e5a2366fc2158e47437166d1c8cab79d2ff133ceb4bb2ad037b46450
+	source = reco-3.0.0.tar.gz::https://github.com/ryonakano/reco/archive/3.0.0.tar.gz
+	sha256sums = 8fa57f2d0cacbae40ad7346673a07963d4429050f55776c2b936afc7afb09af3
 
 pkgname = reco
