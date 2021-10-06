@@ -1,0 +1,13 @@
+diff --color --unified --recursive --text 0.3/pywinery/__init__.py 0.3-new/pywinery/__init__.py
+--- 0.3/pywinery/__init__.py	2016-10-31 10:37:34.000000000 +0100
++++ 0.3-new/pywinery/__init__.py	2021-10-06 13:51:55.684382913 +0200
+@@ -37,6 +37,9 @@
+ import math
+ import shutil
+ 
++import gi
++gi.require_version('Gtk', '3.0')
++
+ from gi.repository import Gtk, Gdk, GLib, Gio, GdkPixbuf, GObject
+ 
+ py3k = sys.version > '3'
