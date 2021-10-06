@@ -1,0 +1,25 @@
+pkgbase = foosynth-plugin-knlmeanscl-git
+	pkgdesc = Plugin for Vapoursynth: knlmeanscl (GIT version)
+	pkgver = 1.1.1.r571.c4af339
+	pkgrel = 1
+	url = https://forum.doom9.org/showthread.php?t=171379
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = opencl-headers
+	makedepends = meson
+	makedepends = boost
+	makedepends = vapoursynth
+	makedepends = avisynthplus
+	depends = opencl-icd-loader
+	provides = vapoursynth-plugin-knlmeanscl
+	conflicts = vapoursynth-plugin-knlmeanscl
+	source = knlmeanscl::git+https://github.com/pinterf/KNLMeansCL
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-knlmeanscl-git
+	pkgdesc = Plugin for Avisynth: knlmeanscl (GIT version)
+	depends = opencl-icd-loader
+	depends = avisynthplus
+	provides = avisynth-plugin-knlmeanscl
+	conflicts = avisynth-plugin-knlmeanscl
