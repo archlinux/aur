@@ -25,7 +25,7 @@ package() {
     ls
     cd "$srcdir/${pkgname%-git}"
     ls
-    bsdtar -xf "$srcdir/${pkgname%-git}/MS-Office-Electron-Linux/release/*.pacman" -C "$pkgdir"
+    bsdtar -xf "$srcdir/${pkgname%-git}/MS-Office-Electron-Linux/release/MS-Office-Electron-Setup-0.3.0-x86_64.pacman" -C "$pkgdir"
 
     install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
