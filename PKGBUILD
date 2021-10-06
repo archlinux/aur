@@ -74,9 +74,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=208
+_minor=209
 _srcname=linux-${_major}
-_clr=${_major}.207-220
+_clr=${_major}.208-221
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -86,7 +86,7 @@ url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210818'
+_gcc_more_v='20210914'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -345,9 +345,9 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '7bdc388bb0ad87d959ee16b2ab4e25a374888e1cadeec1d81059b27a12ac6f91'
+            'f7cb37a31dc650d7313e0fc59dd2d8a5f041070e74bf7ac2e0feb06fa0e2af98'
             'SKIP'
-            'd361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf')
+            'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
