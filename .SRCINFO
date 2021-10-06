@@ -1,0 +1,17 @@
+pkgbase = pop-to-8bit
+	pkgdesc = Python library for music and audio analysis
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/tallero/pop-to-8bit
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python-librosa
+	depends = pypropack
+	depends = vamp-pyin-f0-plugin
+	depends = vampy
+	depends = vampy-host
+	source = git+https://github.com/tallero/pop-to-8bit#branch=setuptools
+	md5sums = SKIP
+
+pkgname = pop-to-8bit
