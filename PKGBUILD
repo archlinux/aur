@@ -2,8 +2,8 @@
 
 pkgname=flashpoint-data-files-installer
 pkgver=10
-pkgrel=1
-pkgdesc="Launcher for BlueMaxima's Flashpoint with script to install data files"
+pkgrel=2
+pkgdesc="script to install BlueMaxima's Flashpoint data files"
 arch=('x86_64')
 url="https://github.com/FlashpointProject/launcher"
 license=('GPL3')
