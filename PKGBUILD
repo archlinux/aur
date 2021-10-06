@@ -37,5 +37,5 @@ build() {
 }
 
 package(){
-  make -C build PREFIX="${pkgdir}/usr" install
+  install -Dm755 build/avs2yuv "${pkgdir}/usr/bin/avs2yuv"
 }
