@@ -1,7 +1,7 @@
 pkgbase = spamprobe
 	pkgdesc = Fast, intelligent, automatic spam detector using Paul Graham style Bayesian analysis of word counts in spam and non-spam emails
 	pkgver = 1.4d
-	pkgrel = 8
+	pkgrel = 9
 	url = http://spamprobe.sourceforge.net/
 	arch = i686
 	arch = x86_64
