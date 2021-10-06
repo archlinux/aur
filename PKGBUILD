@@ -6,48 +6,33 @@
 # Integration of the nvidia-patch from keylase.
 #
 # This patch removes restriction on maximum number of simultaneous NVENC video encoding sessions imposed by Nvidia to consumer-grade GPUs.
-# You can read more about it here: https://github.com/keylase/nvidia-patch 
+# You can read more about it here: https://github.com/keylase/nvidia-patch
 #
 # WARNING: In extreme cases, this can damage the NVENC and NvFBC libraries.
 _nvidia_patch=
 
-# This parameter sets the default configuration of NVIDIA PowerMizer (schema).
+# This setting has a setting option for NVIDIA PowerMizer power management technology, and it is used by default even if you have not configured it.
 #
-# First of all, the NVIDIA driver has two GPU clock frequency management strategies: 
-# Adaptive clock management strategy (0x22) and static clock management strategy (0x33). 
+# This technology supports two modes of frequency management: Adaptive Strategy and Static Strategy.
+# Adaptive frequency management is used by default by the driver, and implies that if the GPU is not tasked, it is in power saving mode.
+# If the GPU power becomes necessary, then it increases it to the required level.
+# In other words, it jumps between performance levels. Within this technology, there are three levels (also called modes):
+# 1 (0x1 bit) - Maximum performance
+# 2 (0x2 bit) - Balance between performance and power saving
+# 3 (0x3 bit) - Powersaving
+# You can fix the frequencies at a certain performance level only with a static strategy.
+# Now that we have the theory sorted out, you can choose what you want depending on your configuration:
 #
-# When using the adaptive strategy, the clock frequency is adjusted according 
-# to the requirements of the task that the GPU has to perform,
-# and it will switch between performance levels accordingly. 
-# This strikes a balance between performance when needed and powersaving.
-# Static strategy implies a clear locking of the clock frequency at a certain performance level. 
+# Possible values:
+# 1 - Static strategy with maximum performance for AC operation and maximum power savings for the battery
+# 2 - Static strategy with maximum performance for AC operation, but an adaptive strategy for battery operation.
+# 3 - Adaptive strategy for AC operation, but static strategy with maximum power saving for the battery.
+# 4 - Adaptive strategy for all (This is the default, right?
 #
-# There are also three levels of performance:
-# 2. Maximum performance.
-# 1. Balance (between performance and powersaving).
-# 0. Powersaving.
-#
-# All of the above characteristics depend on the power source.
-# That is, different performance levels and default frequency clock management strategy
-# сan be set for battery power source and for AC power source.
-#
-# Now that we've worked out how it works, you can choose the power scheme you want:
-#
-# Available power schemes:
-# Value                                        AC power source | Battery 
-# -------------------------------------------------------------|-------------------------------------------------------------
-# 1 - Static clock frequency, Maximum performance              | Adaptive clock frequency, preferably powersaving
-# 2 - Static clock frequency, Maximum performance              | Static strategy, maximum powersavings
-# 3 - Static clock frequency  Maximum performance              | Adaptive clock frequency
-# 4 - Adaptive clock frequency, preferably maximum performance | Static strategy, maximum powersavings
-# 5 - Adaptive clock frequency, preferably maximum performance | Adaptive clock frequency, preferably powersaving
-# 6 - Adaptive clock frequency                                 | Static strategy, maximum powersavings
-# 7 - Static clock frequency                                   | Adaptive clock frequency
-#
-# Note: Setting up the PowerMizer circuitry is not overclocking the GPU and assumes safe use for your hardware. 
+# Note: Setting up the PowerMizer circuitry is not overclocking the GPU and assumes safe use for your hardware.
 # However, you can reassign the behavior of the power scheme through the Xorg option "RegistryDwords".
 #
-# Read more about NVIDIA PowerMizer settings here: https://wins911.blogspot.com/2012/06/etcx11xorg.html 
+# Refrences: https://wins911.blogspot.com/2012/06/etcx11xorg.html 
 _powermizer_scheme=
 
 # Enforces applying a certain performance level
@@ -56,15 +41,14 @@ _powermizer_scheme=
 # controlling GPU fan speed via nvidia-settings.
 #
 # Possible values:
-# 1 - Force maximum powersaving
-# 2 - Force a balance between performance and powersaving
-# 3 - Force Max Performnace (recommended)
+# 1 - Force a balance between performance and powersaving
+# 2 - Force max performnace (recommended)
 #
 # These settings apply to all power sources,
 # and cannot be configured for each one individually
 # as _powermizer_scheme does.
 #
-# WARNING: WORKS ONLY FOR LAPTOPS (NVIDIA PRIME)!
+# Warning: Works only for laptops.
 _override_max_perf=
 
 pkgbase=nvidia-dkms-performance
@@ -75,7 +59,7 @@ else
 	pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance)
 fi
 pkgver=470.74
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'aarch64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -169,27 +153,18 @@ prepare() {
         echo "If you don't like it in time you can change it with the Xorg "RegistryDwords" option (in the bit value)"
         echo "or rebuild it with the new value."
         if [ "$_powermizer_scheme" = "1" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' \
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault=0x3;PowerMizerDefaultAC=0x1"/' \
 		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "2" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' \
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1; PerfLevelSrc=0x2233; PowerMizerDefault=0x3"/' \
 		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "3" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322;PowerMizerDefaultAC=0x1"/' \
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3"/' \
 		    kernel/nvidia/nv-reg.h
         elif [ "$_powermizer_scheme" = "4" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault0x3;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' \
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3333"/' \
 		    kernel/nvidia/nv-reg.h
-        elif [ "$_powermizer_scheme" = "5" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3333;PowerMizerDefault0x3;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' \
-		    kernel/nvidia/nv-reg.h
-        elif [ "$_powermizer_scheme" = "6" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x1"/' \
-		    kernel/nvidia/nv-reg.h
-        elif [ "$_powermizer_scheme" = "7" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322"/' \
-		    kernel/nvidia/nv-reg.h
-        else 
+	else
             echo "You have selected the wrong powermizer scheme, please reread the option description in PKGBUILD."
         fi
     fi
@@ -199,12 +174,9 @@ prepare() {
         echo "If you don't like it in time you can change it with the Xorg "OverrideMaxPerf" option (in the bit value)"
         echo "or rebuild it with the new value."
         if [ "$_override_max_perf" = "1" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x1"/' \
-		    kernel/nvidia/nv-reg.h
-        elif [ "$_override_max_perf" = "2" ]; then
             sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x2"/' \
 		    kernel/nvidia/nv-reg.h
-        elif [ "$_override_max_perf" = "3" ]; then
+        elif [ "$_override_max_perf" = "2" ]; then
             sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x3"/' \
 		    kernel/nvidia/nv-reg.h
         else
