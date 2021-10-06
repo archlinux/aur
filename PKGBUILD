@@ -2,8 +2,8 @@
 
 pkgname=flashpoint-launcher-bin
 pkgver=10.1.1
-pkgrel=1
-pkgdesc="Launcher for BlueMaxima's Flashpoint with script to install data files"
+pkgrel=2
+pkgdesc="Launcher for BlueMaxima's Flashpoint"
 arch=('x86_64')
 url="https://github.com/FlashpointProject/launcher"
 license=('MIT')
