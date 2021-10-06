@@ -1,6 +1,6 @@
 pkgbase = avisynth-plugin-tivtc-git
 	pkgdesc = Plugin for Avisynth: tivtc (GIT version)
-	pkgver = v1.0.25.11.gaf18f2c
+	pkgver = v1.0.26.16.g9c47880
 	pkgrel = 1
 	url = https://github.com/pinterf/TIVTC
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = avisynth-plugin-tivtc-git
 	sha256sums = SKIP
 
 pkgname = avisynth-plugin-tivtc-git
-

@@ -2,7 +2,7 @@
 
 _plug=tivtc
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=v1.0.25.11.gaf18f2c
+pkgver=v1.0.26.16.g9c47880
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -25,14 +25,16 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  rm -fr "${_plug}/include/"{avs*,avi*}
+  rm -fr "${_plug}/src/include/"{avs*,avi*}
 }
 
 build() {
   cd build
 
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)"
+
   cmake "../${_plug}/src" \
-   -DCMAKE_BUILD_TYPE=None \
+   -DCMAKE_BUILD_TYPE=Release \
    -DCMAKE_INSTALL_PREFIX=/usr \
 
   make
@@ -51,5 +53,10 @@ package(){
 
   for i in "${_plug}/Doc_TIVTC/"*.txt; do
     install -Dm644 "${i}" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/TIVTC/$(basename "${i}")"
+  done
+
+  cd "${_plug}/examples/"
+  find . -type f -print0 | while read -d $'\0' i; do
+    install -Dm644 "${i}" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/examples/${i}"
   done
 }
