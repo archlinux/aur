@@ -44,4 +44,5 @@ package(){
   make -C build DESTDIR="${pkgdir}" install
 
   install -Dm644 "${_plug}/Documentation/TNLMeans - Read Me.txt" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/TNLMeans_-_ReadMe.txt"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/${_plug}/README.md"
 }
