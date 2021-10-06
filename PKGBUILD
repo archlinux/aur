@@ -5,7 +5,7 @@
 _pkgname=freetype2
 _pkgbasename=${_pkgname}-v35
 pkgname=lib32-${_pkgbasename}
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="TrueType font rendering library with v35 bytecode interpreter only"
 arch=(i686 x86_64)
@@ -17,17 +17,20 @@ depends=('lib32-zlib' 'lib32-bzip2' 'lib32-libpng' 'lib32-harfbuzz' $_pkgbasenam
 makedepends=('gcc-multilib')
 provides=('libfreetype.so' lib32-${_pkgname}=${pkgver})
 conflicts=(lib32-${_pkgname})
-source=(https://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2
-        0001-Enable-table-validation-modules.patch
-        0002-Enable-subpixel-rendering.patch
-        0003-Enable-v35-subpixel-hinting.patch
-        0004-Enable-long-PCF-family-names.patch
+source=(
+  https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz
+  0001-Enable-table-validation-modules.patch
+  0002-Enable-subpixel-rendering.patch
+  0003-Enable-v35-subpixel-hinting.patch
+  0004-Enable-long-PCF-family-names.patch
+  0006-Return_FT_Err_Ok_while_trying_to_render_bitmap.patch
+  0007-Restore_quiet_no-op_rendering_of_bitmap_glyphs.patch
+  0008-sfnt-Add-API-for-retrieving-a-COLR-v1-ClipBox-table.patch
+  0009-src-sfnt-ttcolr.c-tt_face_get_color_glyph_clipbox-Mi.patch
+  0010-sfnt-Add-missing-blend-mode-plus-to-COLR-v1.patch
 )
-sha1sums=('f6abf03e0e3189a0de883981c57d3861b5d314f5'
-          '46fd67e6a594f6c2c473b9321ba64913984ba42f'
-          '57b1671593684712a555ac5a42bf22f2b85dbe1b'
-          '8b7911d96f9854ee139b82a88c1ba634e11873ec'
-          'af76172be8135e74391b7ad1b82c2124ae0ad86c'
+sha256sums=('8bee39bd3968c4804b70614a0a3ad597299ad0e824bc8aad5ce8aaf48067bde7'
+ SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
 )
 
 prepare() {
@@ -36,6 +39,11 @@ prepare() {
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-v35-subpixel-hinting.patch
   patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
+  patch -Np1 -i ../0006-Return_FT_Err_Ok_while_trying_to_render_bitmap.patch
+  patch -Np1 -i ../0007-Restore_quiet_no-op_rendering_of_bitmap_glyphs.patch
+  patch -Np1 -i ../0008-sfnt-Add-API-for-retrieving-a-COLR-v1-ClipBox-table.patch
+  patch -Np1 -i ../0009-src-sfnt-ttcolr.c-tt_face_get_color_glyph_clipbox-Mi.patch
+  patch -Np1 -i ../0010-sfnt-Add-missing-blend-mode-plus-to-COLR-v1.patch
 }
 
 build() {
