@@ -1,0 +1,16 @@
+pkgbase = python2-sphinxcontrib-htmlhelp
+	pkgdesc = Sphinx extension which renders HTML help files
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/sphinx-doc/sphinxcontrib-htmlhelp
+	arch = any
+	license = BSD
+	checkdepends = python2-html5lib
+	checkdepends = python2-pytest
+	checkdepends = python2-sphinx
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-htmlhelp/sphinxcontrib-htmlhelp-2.0.0.tar.gz
+	sha256sums = f5f8bb2d0d629f398bf47d0d69c07bc13b65f75a81ad9e2f71a63d4b7a2f6db2
+	b2sums = 09b0d9bcec57140278c4476fa0bbc40d359fc167d8ea891a1585fbdeafe6eb0b52442dbbc8d1d5b6edb3953b04fc29a71f6f74e58a281ebb0d79e5a30cb02749
+
+pkgname = python2-sphinxcontrib-htmlhelp
