@@ -1,16 +1,16 @@
 # Maintainer: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=whitebox-tools
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="WhiteboxTools is an advanced geospatial data analysis platform developed by Prof. John Lindsay"
 arch=(i686 x86_64)
-url="https://jblindsay.github.io/ghrg/WhiteboxTools/index.html"
+url="https://www.whiteboxgeo.com/"
 license=('MIT')
 makedepends=('rust')
 depends=('python')
-source=("https://github.com/jblindsay/whitebox-tools/archive/${pkgver}.tar.gz")
-sha256sums=('1c5b4d46beb78af961185407f9572976a44c141d884836973a1aee18a1ed0532')
+source=("https://github.com/jblindsay/whitebox-tools/archive/v${pkgver}.tar.gz")
+sha256sums=('18705fc948bdb2f96cd816e5a72d36b9cc460aa8c910383d23fdbd61641aab60')
 
 
 build() {
