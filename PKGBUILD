@@ -6,17 +6,16 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Syncing dotfiles and more"
 arch=("x86_64")
 url="https://github.com/blurgyy/dt"
 license=('MIT OR Apache 2.0')
 groups=()
-depends=(cargo)
+depends=()
 makedepends=(
     curl
-    rustup
 )
 checkdepends=()
 optdepends=()
