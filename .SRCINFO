@@ -1,15 +1,14 @@
 pkgbase = memoize
 	pkgdesc = Cache executable calls
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://github.com/aureooms/memoize
+	url = https://github.com/make-github-pseudonymous-again/memoize
 	arch = any
 	license = AGPL-3.0
 	makedepends = git
 	depends = bash
 	depends = coreutils
-	source = https://github.com/aureooms/memoize/archive/v2.0.0.tar.gz
+	source = https://github.com/make-github-pseudonymous-again/memoize/archive/v3.0.0.tar.gz
 	md5sums = SKIP
 
 pkgname = memoize
-
