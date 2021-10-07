@@ -1,7 +1,7 @@
-From 8fd158422ec884ce87739a553abeaf4132f4d389 Mon Sep 17 00:00:00 2001
+From cba07950813e8658f7ab1374a3e06ace41a8f10c Mon Sep 17 00:00:00 2001
 From: Wai Paulo Valerio Wang <waicool20@gmail.com>
 Date: Thu, 8 Jul 2021 04:00:59 +0800
-Subject: [PATCH 2/7] Bluetooth: btusb: Add support for IMC Networks Mediatek
+Subject: [PATCH 2/8] Bluetooth: btusb: Add support for IMC Networks Mediatek
  Chip
 
 This add supports for IMC Networks Wireless_Device Media Chip

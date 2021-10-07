@@ -1,7 +1,7 @@
-From 01bbd8128edd952f216bf5232c4ccdfa212245cc Mon Sep 17 00:00:00 2001
+From 532ae50368d595e6641fcd4b50b9553c5be15cbb Mon Sep 17 00:00:00 2001
 From: Aaron Ma <aaron.ma@canonical.com>
 Date: Fri, 23 Jul 2021 01:17:18 +0800
-Subject: [PATCH 3/7] Bluetooth: btusb: Add support for Foxconn Mediatek Chip
+Subject: [PATCH 3/8] Bluetooth: btusb: Add support for Foxconn Mediatek Chip
 
 Add support for another Foxconn / Hon Hai device with MT7921 chip.
 
