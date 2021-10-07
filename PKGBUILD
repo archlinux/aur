@@ -1,13 +1,15 @@
 # Maintainer: amiga23 <t.scheller@email.de>
+# Contributor: FabioLolix <fabio.loli@disroot.org>
 # Contributor: duxet <duxetlg@gmail.com>
 pkgname=k3s-1.21-bin
-pkgver=1.21.5+k3s1
+pkgver=1.21.5+k3s2
 pkgrel=1
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
 license=('Apache')
 arch=('x86_64' 'armv7h' 'aarch64')
-conflicts=('k3s-git' 'k3s-bin' 'k3s-1.17-bin' 'k3s-1.18-bin' 'k3s-1.19-bin' 'k3s-1.20-bin' 'k3s-1.22-bin' 'k3s-1.23-bin')
+provides=('k3s')
+conflicts=('k3s')
 
 backup=("etc/systemd/system/k3s.service.env")
 
@@ -28,12 +30,13 @@ source_armv7h=(
 source_aarch64=(
   "k3s-${pkgver}-aarch64::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s-arm64"
 )
-sha256sums=('f4ae496b69b3dd376a28298df50297728a47761b041be522adf2537aa8a8c3d8'
-            '667199fa6b811dde3aef3e626e2695a566ad64c9a03d19d0c94a1f104a7612d0'
+sha256sums=('4f613d87b6fca9b2f2d15700f448538b5537b846405451a1fdc060727445c529'
+            'cde96553e9609791cd9fe1ff33482e33c4cfec22761f7766f5c278a9ce2ec679'
             'a09747c9541cd22df97adcabc44c09d97a4305a9d976e9bf8191849cb1ce30b6')
-sha256sums_x86_64=('e75ad28942d7e2db228fd71fdc3b37977e64aa059dbc09cc419e5b0459db471e')
-sha256sums_armv7h=('bf11dcc1692072932f823010fbbd30a4c66f3e45540e759a2ede29dcbfeca1ab')
-sha256sums_aarch64=('4eae388302e79f443e5478214fa86684d34e0b8d5f36a1849b6e8bcd40229279')
+sha256sums_x86_64=('315ea5964db9493b8fa670512fa9ba809f653b8ac7c1c23695bed6b9ae9c6c54')
+sha256sums_armv7h=('56bb8a4a5e95ec937db072104d6d3452a05135170e4b34d7728a49ee2a80bd97')
+sha256sums_aarch64=('889e4ffe72ee2c89eb707487df1091a1f04a4ea5d2070074e64403e9c7b6931f')
+
 
 package() {
   install -Dm 755 $srcdir/k3s-${pkgver}-${CARCH} $pkgdir/usr/bin/k3s
@@ -44,5 +47,5 @@ package() {
   install -m 644 $srcdir/k3s.service $pkgdir/usr/lib/systemd/system/k3s.service
   install -m 400 $srcdir/k3s.service.env $pkgdir/etc/systemd/system/k3s.service.env
 
-  install -m 700 $srcdir/k3s-killall.sh $pkgdir/usr/bin/k3s-killall.sh
+  install -m 700 $srcdir/k3s-killall.sh $pkgdir/usr/bin/k3s-killall
 }
