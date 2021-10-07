@@ -1,6 +1,6 @@
 pkgbase = sdn-git
 	pkgdesc = Directory navigator
-	pkgver = r136.df046bb
+	pkgver = r163.536aa57
 	pkgrel = 1
 	url = https://git.janouch.name/p/sdn
 	arch = i686
@@ -18,4 +18,3 @@ pkgbase = sdn-git
 	md5sums = SKIP
 
 pkgname = sdn-git
-

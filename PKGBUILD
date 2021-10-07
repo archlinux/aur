@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=sdn-git
 _pkgname=sdn
-pkgver=r136.df046bb
+pkgver=r163.536aa57
 pkgrel=1
 pkgdesc="Directory navigator"
 url="https://git.janouch.name/p/sdn"
@@ -27,7 +27,7 @@ build() {
   rm -rf "$srcdir/$_pkgname-build"
   mkdir "$srcdir/$_pkgname-build"
   cd "$srcdir/$_pkgname-build"
-  cmake "$srcdir/$_pkgname" -DCMAKE_BUILD_TYPE=Release \
+  cmake "$srcdir/$_pkgname" -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
