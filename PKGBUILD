@@ -1,24 +1,30 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 
-_pyname=logging_tree
-pkgname=python-$_pyname
-pkgver=1.7
+pkgname=python-logging_tree
+pkgver=1.9
 pkgrel=1
 pkgdesc='Introspect and display the logger tree inside "logging"'
-url="http://pypi.python.org/pypi/$_pyname/"
-depends=('python')
+url='https://github.com/brandon-rhodes/logging_tree'
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('21d8a0408402022af416dee0e1101a67')
+depends=('python')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('3e15b37911efcdbc7195199aa20a463fd37a7385251a90600b5df1eb28569c35')
 
 build() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py build
+	cd "logging_tree-$pkgver"
+	python setup.py build
+}
+
+check() {
+	cd "logging_tree-$pkgver"
+	python -m unittest discover logging_tree
 }
 
 package() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -D -m644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "logging_tree-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
