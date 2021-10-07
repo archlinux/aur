@@ -48,9 +48,9 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.14
-_minor=9
+_minor=10
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -81,13 +81,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0007-Revert-block-bfq-honor-already-setup-queue-merges.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch"
          # the main kernel config files
         'config')
 
@@ -334,17 +333,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('987ae9ceba83ba12e5e1962118831dbc47eaf26848cfd83b93db58f004dbc3c8d10d62a33cf449abddcfe996023dc705207c43a22aae665461eff9d7365bbc00'
+sha512sums=('3194f505ca347705e8f782df1a2d0c9614b20524c5f0560d02ca32860b1e8902107fb6eaa80ed4e50bf1f1c909993452d5747b27abbea3efdd7037c40a7f9e76'
             'SKIP'
             'ba2b56bed0d3652ac4c3e035afb762a747ec32731c80d9d479fc8b2b41bc09c38267926e7fca7b5564587ff6fcd4aeaf7c75f0df3ac2c0eca2ddc2dd81ac8fde'
             'b1aef4f4e7350ce8132e019f76a2ac68bee8a46eb981598fbda11402e62a8bcdfd2f49e5b2cc5dcf2e96c88ad047af12d53abb9fda05c9f7acec37879e5240db'
-            'bae589fa3f608c63ed20e691332824f810de528139d64a98d69372014c00dfbe6d6f223f9a5584e077861bc8144bbd5caffa02e19f0c8fa65c36b1711002889b'
-            'fa2476226dbb24fc3292a0f9d091d3c47f76bc65ccb9abc8a4dcd5b460d0586b269ce3cbcf44cb30480e228c883a113986f8b22f5203844ff38ba2a318fcf34e'
-            '18c738fd6bb9cd9be3050b3a229533bc645d910745acc551b72c3f4cd363de914db2a3f4688cee88d87fffdd76b8ca8b2def2848ceffee9f8eda7ee02d4214e3'
-            'ed21fc6fad465126a9a1a02696af04130208e45eb8501704f60987578ffb02f81854408e183d1fb442ff472c98e22c79933e9608ef79bdf38e29ec714d247e1f'
-            'a1414aaccb2fda6e876945388281d89526df26490f81c16a56663998216f5b235e35defdd61525638b0e87b0ac8eaf2839d089fd6ea85e1d93d485b48ec27a5d'
-            'e70880c7047d6f17745b7fd6ccf4e7f97cdd629529ab28e2045263913de49bbe0b9db61157444990f287720c736778e4192a48b8b492a91ea222896d67e68585'
-            '3a1314c3d9de1242e2f2e56019d476d114bbab13b8d46e85d9cfaacfa7c09c46b0d3ed2c3e03ca94961a5be8b28def4369c0424131c77fcef5dca43254a6f129'
+            '2687c4b94c7756470c3fa9c4a8b0ec7214357a8f5915d2c322334193ac587a716602956c72c53732ee1276b20800906bff5dfbcc4e0efe8d621db402bfe2cc7b'
+            'dae6502ae31ece3976f70fee93b734236d545fb0fe004870c7a98f9d6245004c762185af6a50bbb3bf445562e2decab868137742e7800e460c5443ff26b05d26'
+            '6ea54d7010b110e1a95baac262e9487783f7f35a2109a56e846ec7bebcb204616fc7437d4a871e974f73329b1107d710c88f85c1c53ef00f0343f8e65b7a2aa5'
+            '5621749441cc38040fe103c02459193118822deb550b82a8ae8ab1a22a7cec9d238eb530d0a56f1a11110ff475f3f5ea7f30d567d12728f4c2a2ffff1d73d5ea'
+            '954e2144ac5883024eb096e3e64f1517cd6e8ba846ea43719f2fcca583d2e56263dc4c6ac68fcebceb914e30b16ef71bf056d31d0201c4db74ff477d2e86bbf2'
+            '97097ce096483ea9f04e3013317e7d63d6d0a013239e667b0d30b8657db12bab3b2f68beb18134b169807507fba27d2bf5ee22258a90d26bb96d48b3184053aa'
             'f6fd65e153f08b096a91c8f632439daa33cb724a85022ddc9467736b4b7408dd828b8eed411c82b4aa770829614a7ce8928f2cd6adfe8f613cc372721d452c3b')
 
 validpgpkeys=(
