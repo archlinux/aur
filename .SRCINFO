@@ -1,0 +1,27 @@
+pkgbase = forkgram-bin
+	pkgdesc = Forkgram is the fork of the official Telegram Desktop application - Static binary
+	pkgver = 3.1.7
+	pkgrel = 1
+	url = https://github.com/Forkgram/tdesktop
+	install = forkgram-bin.install
+	arch = x86_64
+	license = GPL3
+	makedepends = chrpath
+	depends = desktop-file-utils
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libdbus
+	depends = libx11
+	optdepends = libappindicator-gtk2: to hide Telegram in the tray bar in GTK2-based desktop environment
+	optdepends = libappindicator-gtk3: to hide Telegram in the tray bar in GTK3-based desktop environment
+	optdepends = xdg-utils: for automatic opening of URLs, files and directories in proper applications
+	source = https://github.com/Forkgram/tdesktop/releases/download/v3.1.7/Telegram.tar.xz
+	source = forkgram-bin.desktop
+	source = tg.protocol
+	source = forkgram.png::https://user-images.githubusercontent.com/4051126/43634235-402a8b74-9714-11e8-85c0-8ceb0844a3b0.png
+	sha256sums = 1958cf1bd52357804e9415a3772fecd5657607072e7d5b0497721450ed25ef1a
+	sha256sums = d120aa0e034fe8d8edf6f91ce81ab9bbf2ce8b2760df75fb9a5416860135700f
+	sha256sums = 9fd7d8ce9c4246ed414ddf15c2a19f6df1a749c1e6cb23ac1aac2fc0e6152fe7
+	sha256sums = a82426db2c86b32ea38d274d98ed741f51f7488643061fdf7749966208095f8b
+
+pkgname = forkgram-bin

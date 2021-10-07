@@ -1,0 +1,10 @@
+post_install() {
+	echo "Forkgram will store the configs and cache in:"
+	echo "$XDG_DATA_HOME/TelegramDesktop"
+}
+
+post_remove() {
+	post_install
+	echo "Also, you can remove old data from a terminal doing:"
+	echo "rm -r $XDG_DATA_HOME/TelegramDesktop"
+}
