@@ -7,7 +7,7 @@
 pkgname=openafs-modules-dkms
 _srcname=openafs
 pkgver=1.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -17,12 +17,19 @@ provides=("openafs-modules=$pkgver")
 conflicts=('openafs-features-libafs' 'openafs-modules' 'openafs<1.6.6-2')
 options=(!emptydirs)
 source=("http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2"
-        "dkms.conf")
+        "dkms.conf"
+        "0001-LINUX-5.14-explicitly-set-set_page_dirty-to-default.patch")
 sha256sums=('daa8ef86a7727facfcde3bc97a6ad143129c1c25ee35f3347080ec7e9d284da0'
-            '5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0')
+            '5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0'
+            '0e348a09c9c8e5f2989e4e1773e2845898094c29b5bc3b3dbc5adc27c5e35446')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
+
+  # Fix compatibility with Linux 5.14
+  # Fixes https://bugs.archlinux.org/task/72340
+  # Source: https://gerrit.openafs.org/#/c/14826/1
+  patch -p1 < "${srcdir}"/0001-LINUX-5.14-explicitly-set-set_page_dirty-to-default.patch
 
   # Only needed when changes to configure were made
   # ./regen.sh -q

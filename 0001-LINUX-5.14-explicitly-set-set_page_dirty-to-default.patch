@@ -1,0 +1,61 @@
+From e2efcfb1c34a8f139af3cde474c91b55513d70b8 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 7 Oct 2021 11:15:58 -0600
+Subject: [PATCH] LINUX 5.14: explicitly set set_page_dirty to default
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Linux 5.14 commit: 'mm: require ->set_page_dirty to be explicitly wired
+up' (0af573780b0b13) removed calling __set_page_dirty_buffers when the
+address_space_operations structure member set_page_dirty was NULL.
+
+A kernel RIP error can occur when the set_page_dirty operation is
+requested. (Reproducible by running 'iozone -B -a')
+
+Update the definition for afs_file_aops to explicitly set the
+'set_page_dirty' member to '__set_page_dirty_buffers'.
+
+There are no functional changes, since this commit is using the same
+function that the Linux kernel was using if set_page_dirty had been
+NULL.
+
+Problem originally reported by "Andrej Filipcic"
+<andrej.filipcic@ijs.si> in the openafs-info mailing list.  The Linux
+5.14 commit causing the openafs failure was identified by "Michael Laß"
+<lass@mail.upb.de> also on in the openafs-info mailing list.
+
+Note: The declaration for the function '__set_page_dirty_buffers' was
+moved from linux/mm.h into linux/buffer_head.h in Linux 2.6.19.  Since
+this is close to the minimum supported Linux version 2.6.18, we are not
+introducing an additional autoconf test to determine which header file
+the declaration for __set_page_dirty_buffers resides in.
+
+Change-Id: I8f2a00e374635ab1aa69d6eaef8cf97bb449d089
+---
+ src/afs/LINUX/osi_vnodeops.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index f4bedae0f..00103a538 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -26,6 +26,7 @@
+ #include "afsincludes.h"
+ #include "afs/afs_stats.h"
+ #include <linux/mm.h>
++#include <linux/buffer_head.h>
+ #ifdef HAVE_MM_INLINE_H
+ #include <linux/mm_inline.h>
+ #endif
+@@ -3287,6 +3288,7 @@ static struct address_space_operations afs_file_aops = {
+   .readpage =		afs_linux_readpage,
+   .readpages = 		afs_linux_readpages,
+   .writepage =		afs_linux_writepage,
++  .set_page_dirty =	__set_page_dirty_buffers,
+ #if defined (STRUCT_ADDRESS_SPACE_OPERATIONS_HAS_WRITE_BEGIN)
+   .write_begin =        afs_linux_write_begin,
+   .write_end =          afs_linux_write_end,
+-- 
+2.33.0
+
