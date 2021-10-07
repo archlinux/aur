@@ -2,7 +2,7 @@
 
 pkgname=funkwhale
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
 arch=(any)
 url="https://funkwhale.audio/"
@@ -124,10 +124,7 @@ package() {
   install -Dm644 apache-funkwhale.conf "$pkgdir"/etc/webapps/${pkgname}/.
   install -Dm644 env-template "$pkgdir"/etc/webapps/${pkgname}/env.template
 
-  install -Dm644 funkwhale.service "$pkgdir/usr/lib/systemd/system/funkwhale.service"
-  install -Dm644 funkwhale-beat.service "$pkgdir/usr/lib/systemd/system/funkwhale-beat.service"
-  install -Dm644 funkwhale-worker.service "$pkgdir/usr/lib/systemd/system/funkwhale-worker.service"
-  install -Dm644 funkwhale-server.service "$pkgdir/usr/lib/systemd/system/funkwhale-server.service"
+  install -Dm644 funkwhale{,-beat,-worker,-server}.service -t "$pkgdir/usr/lib/systemd/system/"
 
   echo -e 'u funkwhale - "Funkwhale music server" /srv/funkwhale\nm funkwhale http' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
