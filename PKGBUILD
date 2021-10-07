@@ -1,13 +1,15 @@
 # Maintainer: amiga23 <t.scheller@email.de>
+# Contributor: FabioLolix <fabio.loli@disroot.org>
 # Contributor: duxet <duxetlg@gmail.com>
 pkgname=k3s-1.19-bin
-pkgver=1.19.15+k3s1
+pkgver=1.19.15+k3s2
 pkgrel=1
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
 license=('Apache')
 arch=('x86_64' 'armv7h' 'aarch64')
-conflicts=('k3s-git' 'k3s-bin' 'k3s-1.17-bin' 'k3s-1.18-bin' 'k3s-1.20-bin' 'k3s-1.21-bin' 'k3s-1.22-bin' 'k3s-1.23-bin')
+provides=('k3s')
+conflicts=('k3s')
 
 backup=("etc/systemd/system/k3s.service.env")
 
@@ -28,12 +30,12 @@ source_armv7h=(
 source_aarch64=(
   "k3s-${pkgver}-aarch64::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s-arm64"
 )
-sha256sums=('f4ae496b69b3dd376a28298df50297728a47761b041be522adf2537aa8a8c3d8'
-            '667199fa6b811dde3aef3e626e2695a566ad64c9a03d19d0c94a1f104a7612d0'
+sha256sums=('4f613d87b6fca9b2f2d15700f448538b5537b846405451a1fdc060727445c529'
+            'cde96553e9609791cd9fe1ff33482e33c4cfec22761f7766f5c278a9ce2ec679'
             'a09747c9541cd22df97adcabc44c09d97a4305a9d976e9bf8191849cb1ce30b6')
-sha256sums_x86_64=('2cff7a88fb826a2b6412b896065c3bed5fd3d3b724396b871f6bd570deb3fe52')
-sha256sums_armv7h=('06999ce1be927ae0106545ea23c8bcd353a1a4d76a161625880dc629f5d8cf4f')
-sha256sums_aarch64=('46ca6ddaff9ab9b82fdc7081366f94fbbcf37a400301e5cb4c74c40716a01f8c')
+sha256sums_x86_64=('44e831410fc3141065eb18ca00534e64876ed3e2de074d9c4f0b2fd8d6323201')
+sha256sums_armv7h=('d3250017ac051b9aa3e03a6dd80f2a2696502e4385eb14df9f0964ac8905eaa4')
+sha256sums_aarch64=('d7a69bd4d97e51f87aa007d135ee421d12be9ec9712590ee7a6f0e6acdce0033')
 
 
 package() {
@@ -45,5 +47,5 @@ package() {
   install -m 644 $srcdir/k3s.service $pkgdir/usr/lib/systemd/system/k3s.service
   install -m 400 $srcdir/k3s.service.env $pkgdir/etc/systemd/system/k3s.service.env
 
-  install -m 700 $srcdir/k3s-killall.sh $pkgdir/usr/bin/k3s-killall.sh
+  install -m 700 $srcdir/k3s-killall.sh $pkgdir/usr/bin/k3s-killall
 }

@@ -5,10 +5,11 @@ After=network-online.target
 
 [Service]
 Type=notify
+Environment="K3S_ARGS=server"
 EnvironmentFile=/etc/systemd/system/k3s.service.env
 ExecStartPre=-/sbin/modprobe br_netfilter
 ExecStartPre=-/sbin/modprobe overlay
-ExecStart=/usr/bin/k3s server
+ExecStart=/usr/bin/k3s $K3S_ARGS
 KillMode=process
 Delegate=yes
 LimitNOFILE=infinity
