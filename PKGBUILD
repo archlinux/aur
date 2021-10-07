@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=nncmpp-git
 _pkgname=nncmpp
-pkgver=v1.0.0.r0.g0335443
+pkgver=v1.0.0.r13.g2675986
 pkgrel=1
 pkgdesc="MPD client"
 url="https://git.janouch.name/p/nncmpp"
@@ -33,7 +33,7 @@ build() {
   rm -rf "$srcdir/$_pkgname-build"
   mkdir "$srcdir/$_pkgname-build"
   cd "$srcdir/$_pkgname-build"
-  cmake "$srcdir/$_pkgname" -DCMAKE_BUILD_TYPE=Release \
+  cmake "$srcdir/$_pkgname" -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }

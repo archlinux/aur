@@ -1,6 +1,6 @@
 pkgbase = nncmpp-git
 	pkgdesc = MPD client
-	pkgver = v1.0.0.r0.g0335443
+	pkgver = v1.0.0.r13.g2675986
 	pkgrel = 1
 	url = https://git.janouch.name/p/nncmpp
 	arch = i686
@@ -21,4 +21,3 @@ pkgbase = nncmpp-git
 	md5sums = SKIP
 
 pkgname = nncmpp-git
-
