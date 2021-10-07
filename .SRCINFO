@@ -1,18 +1,17 @@
 pkgbase = nyrna
-	pkgdesc = Simple program to pause games & applications
-	pkgver = 1.3
+	pkgdesc = Suspend games and applications at any time and resume whenever you wish
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Merrit/nyrna
 	arch = x86_64
-	license = GPL3 or any later version
-	makedepends = go
-	makedepends = gcc
-	makedepends = libxkbcommon-x11
+	license = GPL3
+	makedepends = flutter
 	depends = gtk3
 	depends = libappindicator-gtk3
 	depends = zenity
-	source = nyrna-1.3.tar.gz::https://github.com/Merrit/nyrna/archive/v1.3.tar.gz
-	sha256sums = 7137706aaf09cc49acf8b5971e614871cd7d370748c415fd542c68cb1f2b1b26
+	depends = wmctrl
+	depends = xdotool
+	source = nyrna-2.2.0.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 88a288a56a60c5a9262da330fff44ba6f09e3a5801105f247a96f4b3345850eb
 
 pkgname = nyrna
-

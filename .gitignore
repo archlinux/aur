@@ -1,5 +1,8 @@
 # KDE's Dolphin
 .directory
 
-nyrna*.tar.gz
+nyrna*.tar.*
 README
+
+pkg
+src

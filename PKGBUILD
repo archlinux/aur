@@ -1,37 +1,37 @@
-# Maintainer: Kristen McWilliam <merritt_public at outlook dot com>
+# Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
+
 pkgname=nyrna
-pkgver=1.3
+pkgver=2.2.0
 pkgrel=1
-pkgdesc='Simple program to pause games & applications'
+pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
-license=('GPL3 or any later version')
-depends=('gtk3' 'libappindicator-gtk3' 'zenity')
-makedepends=('go' 'gcc' 'libxkbcommon-x11')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/v$pkgver.tar.gz")
-sha256sums=('7137706aaf09cc49acf8b5971e614871cd7d370748c415fd542c68cb1f2b1b26')
+license=('GPL3')
+depends=('wmctrl' 'xdotool')
+makedepends=('flutter')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('88a288a56a60c5a9262da330fff44ba6f09e3a5801105f247a96f4b3345850eb')
 
 prepare(){
   cd "$pkgname-$pkgver"
+  flutter clean
+  flutter pub get
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build
-}
-
-check() {
-  cd "$pkgname-$pkgver"
+  flutter build linux
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 "$srcdir/$pkgname-$pkgver/packaging/PKGBUILD/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/packaging/PKGBUILD/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  cp -r "${srcdir}/${pkgname}-${pkgver}/build/linux/x64/release/bundle/data" "${pkgdir}/opt/${pkgname}"
+  cp -r "${srcdir}/${pkgname}-${pkgver}/build/linux/x64/release/bundle/lib" "${pkgdir}/opt/${pkgname}"
+  cp "${srcdir}/${pkgname}-${pkgver}/build/linux/x64/release/bundle/${pkgname}" "${pkgdir}/opt/${pkgname}"
+
+  mkdir -p "${pkgdir}/usr/bin/"
+  ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packaging/linux/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icons/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
