@@ -1,19 +1,27 @@
-_pkgname=trueskill
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=python-trueskill
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="The video game rating system"
 arch=('any')
-url="http://trueskill.org/"
+url="https://trueskill.org/"
 license=('BSD')
-depends=('python')
-options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/t/trueskill/trueskill-${pkgver}.tar.gz")
-md5sums=('fa3e3e51cdaa198225940bc6f8b3e545')
+depends=('python-six')
+makedepends=('python-setuptools')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sublee/trueskill/archive/v$pkgver.tar.gz")
+sha256sums=('633459b2cc5765bf49c2202dea1ac0e7d51bb5a9a5fa093c4a5969ef23a3bd50')
+
+build() {
+  cd "trueskill-$pkgver"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "trueskill-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
