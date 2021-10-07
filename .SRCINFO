@@ -4,7 +4,7 @@ pkgbase = dgnvindex-bin
 	pkgrel = 1
 	url = http://rationalqm.us/dgdecnv/dgdecnv.html
 	arch = x86_64
-	license = custom::Donald A. Graft
+	license = custom:Donald A. Graft
 	source = http://rationalqm.us/dgdecnv/binaries/dgdecnv_linux_231.zip
 	sha256sums = b867550f31a2f50db48b1e69e6d37c5ccb04deac4e7216c0a634962c4b3c0971
 

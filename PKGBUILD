@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="AVC/HEVC/MPG/VC1 Decoder and Frame Server"
 arch=('x86_64')
 url='http://rationalqm.us/dgdecnv/dgdecnv.html'
-license=('custom::Donald A. Graft')
+license=('custom:Donald A. Graft')
 source=("http://rationalqm.us/dgdecnv/binaries/dgdecnv_linux_${pkgver/./}.zip")
 sha256sums=('b867550f31a2f50db48b1e69e6d37c5ccb04deac4e7216c0a634962c4b3c0971')
 
