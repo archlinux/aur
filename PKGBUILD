@@ -1,8 +1,8 @@
 # Maintainer: Dino Hensen <dino.hensen@gmail.com>
 
 pkgname=nosql-workbench
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="NoSQL Workbench for Amazon DynamoDB"
 arch=('x86_64')
 url="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html"
@@ -13,10 +13,12 @@ source_x86_64=("${pkgname}-${pkgver}.AppImage::https://s3.amazonaws.com/nosql-wo
 "nosql-workbench.png"
 )
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha512sums_x86_64=('46b73476204932ac8197ad63d7f0fe860ca2e95d3c5217414f8dcba77fa50961b86d3f0b8b0e11979184cbfde6dc63495696d1d2dd9d3b58ca08bb37fc451df7'
+sha512sums_x86_64=('61a7b99c8be23c438202198216196b036f12eebec0ac70cc39fafd5d18b1185554fa4e6bfb362a1730ec21b9db1a92f79c189f86eb93b2ba660a4211d7c9ceca'
 'SKIP'
 'SKIP'
 )
+# https://docs.appimage.org/user-guide/troubleshooting/fuse.html#setting-up-fuse-on-arch-linux
+depends=('fuse')
 makedepends=('gendesk')
 
 prepare() {
