@@ -5,9 +5,8 @@
 # Contributor: Bram Schoenmakers <me@bramschoenmakers.nl>
 
 pkgname="closure-compiler"
-pkgver="v20210907"
-pkgrel="2"
-epoch="1"
+pkgver="v20211006"
+pkgrel="1"
 pkgdesc="A JavaScript checker and optimizer"
 url="https://github.com/google/closure-compiler"
 license=("Apache")
@@ -23,11 +22,12 @@ source=(
 
 noextract=("$pkgname-$pkgver.jar")
 
-sha512sums=(
-    "b7051704edccbf221054471ed3690b617d9e32b3d4ba25d702f03b664b5f4a5e2dbec05741831e1027dda593fa4a8c28ddc82cea926c946f659db77b3f327973"
+sha256sums=(
+    "c3bfa9effd2dc7d34b4983cc7c614dbe951daf18f965b2cb72de7a277b4cb8fa"
     "SKIP"
     "SKIP"
-    "209f7dfca8a3512580f7726edb02e9834dd35b6fd013fffed55c1f1b45555c3445c5251585c2da2dc4c8ca4ba36478a2f737e3e66d786748d7d5d91865705762")
+    "3935fadb64cfff482029143a270ba8f952436bd6a6ab0e26151fe0785ce6265d"
+)
 
 package() {
 	cd "$srcdir"
