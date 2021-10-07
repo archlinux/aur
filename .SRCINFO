@@ -1,8 +1,8 @@
 pkgbase = linux-system76-gaze16
 	pkgdesc = Official Arch Linux + system76 gaze16 touchpad and mic fix
-	pkgver = 5.14.8.arch1_gaze16
-	pkgrel = 2
-	url = https://github.com/archlinux/linux/commits/v5.14.8-arch1
+	pkgver = 5.14.9.arch2_gaze16
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v5.14.9-arch2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -18,7 +18,7 @@ pkgbase = linux-system76-gaze16
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.14.8-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.14.9-arch2
 	source = config
 	source = 0001-Add-System76-gaze16-audio-quirk.patch
 	source = 0002-pinctrl-Export-intel_pinctrl_probe.patch
@@ -28,7 +28,7 @@ pkgbase = linux-system76-gaze16
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = f98065a286a6d2dbb0e226867a6417e344aaa44ef6eac967707e1f09671be445
+	sha256sums = a562644eac426ba3d57a875ca5a8d73b1b651fc51174420c35711d3b4edb3ebe
 	sha256sums = ef1f46b993d1c88d2e28b88c25e09269e92c127050afa403fca57c0eecec6afe
 	sha256sums = 1c8b8f8cd47819714a05055a75f06f3a9804478f4a80cbd80d3280839454fde1
 	sha256sums = c3801e7a602660b53c4aeac79ec480a2d7311054b0fcc5fa24de7c9f71a4dc84
