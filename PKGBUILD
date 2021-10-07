@@ -1,7 +1,7 @@
-# Maintainer: Přemysl Janouch <p.janouch@gmail.com>
+# Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=autistdraw-git
 _pkgname=autistdraw
-pkgver=r43.e2bc6b0
+pkgver=r67.6964c61
 pkgrel=1
 pkgdesc="Terminal drawing application"
 url="https://git.janouch.name/p/autistdraw"
@@ -33,7 +33,7 @@ build() {
   rm -rf "$srcdir/$_pkgname-build"
   mkdir "$srcdir/$_pkgname-build"
   cd "$srcdir/$_pkgname-build"
-  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None
   make
 }
 

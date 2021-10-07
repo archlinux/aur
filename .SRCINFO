@@ -1,6 +1,6 @@
 pkgbase = autistdraw-git
 	pkgdesc = Terminal drawing application
-	pkgver = r32.254b993
+	pkgver = r67.6964c61
 	pkgrel = 1
 	url = https://git.janouch.name/p/autistdraw
 	arch = i686
@@ -18,4 +18,3 @@ pkgbase = autistdraw-git
 	md5sums = SKIP
 
 pkgname = autistdraw-git
-
