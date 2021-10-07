@@ -16,7 +16,7 @@ backup=()
 options=()
 install=
 
-source=('https://github.com/RoanH/KeysPerSecond/releases/download/v${pkgver}/KeysPerSecond-v${pkgver}.jar'
+source=("https://github.com/RoanH/KeysPerSecond/releases/download/v${pkgver}/KeysPerSecond-v${pkgver}.jar"
         'https://raw.githubusercontent.com/RoanH/KeysPerSecond/master/README.md'
         'https://raw.githubusercontent.com/RoanH/KeysPerSecond/master/LICENSE'
         'https://raw.githubusercontent.com/RoanH/KeysPerSecond/master/CHANGELOG.md'
