@@ -1,6 +1,6 @@
 pkgname='chad_launcher-bin'
 _pkgname='chad_launcher'
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='GNU/LINUX GAMING UNLEASHED!'
 arch=('x86_64')
@@ -8,8 +8,8 @@ url='https://gitlab.com/Gnurur/chad_launcher'
 license=('GPL3')
 depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips)
 makedepends=()
-source=("$pkgname-$pkgver.zip::https://gitlab.com/Gnurur/chad_launcher/-/jobs/artifacts/$pkgver/download?job=tauri:build")
-md5sums=('28467e44a55547d370c0ae4dbe395a27')
+source=("$pkgname-$pkgver.zip::https://gitlab.com/Gnurur/chad_launcher/-/jobs/artifacts/v$pkgver/download?job=tauri:build")
+md5sums=('ed9d12305059540bd1aecab91bcd79d0')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "chad-launcher"
