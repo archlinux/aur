@@ -11,15 +11,15 @@ license=("custom:ISC")
 groups=()
 options=("!strip")
 depends=(
-	"yosys-nightly>=yosys_0.9_5623_g356ec7bb_20211007"
+	"yosys-nightly>=yosys_0.9_5624_g4e70c307_20211007"
 	"symbiyosys-nightly>=15278f1_20211007"
-	"nextpnr-generic-nightly>=4f17a171_20211007"
+	"nextpnr-generic-nightly>=b749ef5f_20211007"
 	"icestorm-nightly>=83b8ef9_20211007"
-	"nextpnr-ice40-nightly>=4f17a171_20211007"
+	"nextpnr-ice40-nightly>=b749ef5f_20211007"
 	"prjtrellis-nightly>=1.1_20211007"
-	"nextpnr-ecp5-nightly>=4f17a171_20211007"
+	"nextpnr-ecp5-nightly>=b749ef5f_20211007"
 	"prjoxide-nightly>=318331f_20211007"
-	"nextpnr-nexus-nightly>=4f17a171_20211007"
+	"nextpnr-nexus-nightly>=b749ef5f_20211007"
 )
 
 package() {
