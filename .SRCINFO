@@ -1,6 +1,6 @@
 pkgbase = bashate
 	pkgdesc = Code style enforcement for bash programs
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/openstack/bashate
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = bashate
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pbr
-	source = bashate-2.0.0.tar.gz::https://github.com/openstack/bashate/archive/2.0.0.tar.gz
-	sha256sums = 025d75cf779e9f0634a508644bc9e5a4d0ea82fbecf1b88d8585ee2721243964
+	source = bashate-2.1.0.tar.gz::https://github.com/openstack/bashate/archive/2.1.0.tar.gz
+	sha256sums = a3ece9c844f2f9772ee9311ef692a8b0851135a5d9ca2a99b3fe9815d236ca6b
 
 pkgname = bashate
-
