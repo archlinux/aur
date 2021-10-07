@@ -1,0 +1,17 @@
+pkgbase = dt-cli
+	pkgdesc = Syncing dotfiles and more
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/blurgyy/dt
+	arch = any
+	license = MIT OR Apache 2.0
+	makedepends = curl
+	makedepends = rustup
+	depends = cargo
+	provides = dt-cli
+	conflicts = dt-git
+	conflicts = dt-bin
+	source = https://github.com/blurgyy/dt/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9b4cea5f092194793a624ebc3ece43f84fb0daaeba0b7e9200b9982e32679f81
+
+pkgname = dt-cli
