@@ -19,13 +19,13 @@ diff -ura package.orig/config.example.yml package.new/config.example.yml
        hosts: # the hosts for which letsencrypt should request certificates
  #      - mydomain.tld
  #      - myotherdomain.tld
-@@ -31,11 +31,11 @@
- 
+@@ -42,12 +43,12 @@
+
  database: # for database see (configure database section)
    dialect: sqlite3
 -  connection: data/gotify.db
 +  connection: /var/lib/gotify/gotify.db
- 
+
  defaultuser: # on database creation, gotify creates an admin user
    name: admin # the username of the default user
    pass: admin # the password of the default user
@@ -34,3 +34,4 @@ diff -ura package.orig/config.example.yml package.new/config.example.yml
 -pluginsdir: data/plugins # the directory where plugin resides
 +uploadedimagesdir: /var/lib/gotify/images # the directory for storing uploaded images
 +pluginsdir: /var/lib/gotify/plugins # the directory where plugin resides
+ registration: false # enable registrations
