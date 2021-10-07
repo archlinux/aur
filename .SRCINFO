@@ -1,0 +1,37 @@
+pkgbase = opensearch
+	pkgdesc = Search and analytics suite derived from Apache 2.0 licensed elasticsearch
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://opensearch.org/
+	arch = x86_64
+	license = Apache
+	makedepends = java-environment=11
+	depends = java-runtime-headless<=16
+	depends = systemd
+	depends = libxml2
+	backup = etc/opensearch/opensearch.yml
+	backup = etc/opensearch/log4j2.properties
+	backup = etc/opensearch/jvm.options
+	backup = etc/default/opensearch
+	source = opensearch-1.1.0.tar.gz::https://github.com/opensearch-project/OpenSearch/archive/1.1.0.tar.gz
+	source = opensearch.service
+	source = opensearch@.service
+	source = opensearch-keystore.service
+	source = opensearch-keystore@.service
+	source = opensearch-sysctl.conf
+	source = opensearch-user.conf
+	source = opensearch-tmpfile.conf
+	source = opensearch.default
+	source = remove-systemd-distribution-check.patch
+	sha256sums = 6e664cb5d14f73f5678b218f1f4e9dd393f760789b9d11f4b97c5683e156cf39
+	sha256sums = ede02faa5d4f635e15c02653be37d0140f425ec18c2357e94d477b7ddd7f0c6b
+	sha256sums = c749a2f8cd597a085bfa45089df125cbfdc0382c499c12542837b2e16f14c999
+	sha256sums = 097de1fc6ef1f12e99d2b3def9c9803cf0dd8609aeace608048d599a2cb85c5c
+	sha256sums = ec20f13e0d0040042cb284423a84bd23d36d05a1059c182c804515b6e112a951
+	sha256sums = b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c
+	sha256sums = 79cb5856b7105da7f25c6da2a25be88ccba2b849fd92cc32c3204e2fad530efc
+	sha256sums = 7ca9e6e72d284f791f6e7bd4fd8ac68f5ff9aeb23dd9a6fe37ed353f71b5406d
+	sha256sums = 52c238bff8c4c8bf49e8844f3f121275cca4e0c00346ad90177f69f634e67a2b
+	sha256sums = fbc2b6ec44a644cabc6a89ccd50546cf5f6f3cf409c984d1657238169f0cafad
+
+pkgname = opensearch

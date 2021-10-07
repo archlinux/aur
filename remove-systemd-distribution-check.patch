@@ -1,0 +1,17 @@
+diff --git a/modules/systemd/src/main/java/org/opensearch/systemd/SystemdPlugin.java b/modules/systemd/src/main/java/org/opensearch/systemd/SystemdPlugin.java
+index fa1ce73fc07..bc776970233 100644
+--- a/modules/systemd/src/main/java/org/opensearch/systemd/SystemdPlugin.java
++++ b/modules/systemd/src/main/java/org/opensearch/systemd/SystemdPlugin.java
+@@ -72,11 +72,7 @@ public class SystemdPlugin extends Plugin implements ClusterPlugin {
+     }
+ 
+     SystemdPlugin(final boolean assertIsPackageDistribution, final Build.Type buildType, final String esSDNotify) {
+-        final boolean isPackageDistribution = buildType == Build.Type.DEB || buildType == Build.Type.RPM;
+-        if (assertIsPackageDistribution) {
+-            // our build is configured to only include this module in the package distributions
+-            assert isPackageDistribution : buildType;
+-        }
++        final boolean isPackageDistribution = true;
+         if (isPackageDistribution == false) {
+             logger.debug("disabling sd_notify as the build type [{}] is not a package distribution", buildType);
+             enabled = false;
