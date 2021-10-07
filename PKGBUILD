@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-generic-nightly
-pkgver=4f17a171_20211007
+pkgver=b749ef5f_20211007
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - generic"
@@ -17,13 +17,13 @@ depends=(
 	"qt5-base"
 )
 optdepends=()
-makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen")
+makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost")
 conflicts=(
 	"nextpnr-git"
 )
 replaces=()
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git"#commit=4f17a171
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git"#commit=b749ef5f
 )
 sha256sums=(
 	"SKIP"

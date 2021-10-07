@@ -17,7 +17,7 @@ depends=(
 	"qt5-base"
 )
 optdepends=()
-makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen")
+makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost")
 conflicts=(
 	"nextpnr-git"
 )
