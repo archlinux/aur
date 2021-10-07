@@ -1,14 +1,14 @@
 # Maintainer: Leon Schumacher <leonsch@protonmail.com>
 # vim: ft=sh:
 pkgname=arch-package-download
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="Download a package using your pacman configuration "
 arch=('any')
 url="https://github.com/42LoCo42/arch-package-download"
 license=('AGPL')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cd62a43ef5cad9d2b4a8651b9cd419b9b66c231a3dd31d88a79896b2b2934b7f')
+sha256sums=('abb5d5dde75294240e80514a69575d261a20c9ef21cb1bd3d5ffa008f4fc7731')
 
 package() {
 	cd "$pkgname-$pkgver"
