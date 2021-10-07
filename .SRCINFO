@@ -1,6 +1,6 @@
 pkgbase = audio-sharing
 	pkgdesc = Share your computer audio
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/AudioSharing
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = audio-sharing
 	makedepends = meson
 	depends = gst-rtsp-server
 	depends = libadwaita
-	source = https://gitlab.gnome.org/World/AudioSharing/-/archive/0.1.1/AudioSharing-0.1.1.tar.gz
-	sha256sums = f9b77d5be4fac8dfb659421705dc927774b4406bbaafa32b9a400699e26f8eec
+	source = https://gitlab.gnome.org/World/AudioSharing/-/archive/0.1.2/AudioSharing-0.1.2.tar.gz
+	sha256sums = 1fea93f41d84eb961971fb814f4216f0663a84a22795305cc951ed4f83388ffa
 
 pkgname = audio-sharing

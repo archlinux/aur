@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=audio-sharing
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Share your computer audio'
 url='https://gitlab.gnome.org/World/AudioSharing'
@@ -16,7 +16,7 @@ makedepends=(
 	meson
 )
 source=("${url}/-/archive/${pkgver}/AudioSharing-${pkgver}.tar.gz")
-sha256sums=('f9b77d5be4fac8dfb659421705dc927774b4406bbaafa32b9a400699e26f8eec')
+sha256sums=('1fea93f41d84eb961971fb814f4216f0663a84a22795305cc951ed4f83388ffa')
 
 build() {
 	arch-meson AudioSharing-${pkgver} build
