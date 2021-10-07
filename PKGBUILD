@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-mleap
-pkgver=0.17.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc='Common serialization format and execution engine for machine learning
 pipelines (Python API)'
@@ -13,7 +13,7 @@ depends=('python' 'python-numpy' 'python-six' 'python-scipy' 'python-pandas'
 optdepends=()
 makedepends=('python' 'python-setuptools')
 source=("$pkgname-$pkgver::https://pypi.org/packages/source/m/mleap/mleap-$pkgver.tar.gz")
-sha256sums=('ea02da18676da893be91b12cca15f2aafdad8b34cf222a244b7c72533eae4818')
+sha256sums=('fa60996ef64f7ba7593f35783469dcb5aab6955230319b849f1ccecfe3dc30b5')
 
 _pkgname=mleap
 
