@@ -1,7 +1,7 @@
 pkgbase = opensearch
 	pkgdesc = Search and analytics suite derived from Apache 2.0 licensed elasticsearch
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opensearch.org/
 	arch = x86_64
 	license = Apache

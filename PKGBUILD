@@ -7,7 +7,7 @@
 pkgname=opensearch
 _pkgname=OpenSearch
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Search and analytics suite derived from Apache 2.0 licensed elasticsearch"
 arch=('x86_64')
 url="https://opensearch.org/"
@@ -89,7 +89,7 @@ package() {
   cp -r distribution/build/outputs/systemd/modules/systemd "$pkgdir"/usr/share/opensearch/modules/
 
   sed -i '2iJAVA_HOME=/usr/lib/jvm/default-runtime' "$pkgdir"/usr/share/opensearch/bin/opensearch-env
-  sed -i 's/ES_BUNDLED_JDK=true/ES_BUNDLED_JDK=false/g' "$pkgdir"/usr/share/opensearch/bin/opensearch-env
+  sed -i 's/OPENSEARCH_BUNDLED_JDK=true/OPENSEARCH_BUNDLED_JDK=false/g' "$pkgdir"/usr/share/opensearch/bin/opensearch-env
 
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
