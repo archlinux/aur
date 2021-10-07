@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gnome-text-editor
-pkgver=41.0
+pkgver=41.1
 pkgrel=1
 pkgdesc='Simple text editor that focuses on session management'
 url='https://gitlab.gnome.org/GNOME/gnome-text-editor'
@@ -16,7 +16,7 @@ depends=(
 makedepends=(meson)
 _commit=${pkgver}
 source=("${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
-sha256sums=('67e84acb0b76c4018fe57612a633a4c8e5d38f9c18c80f50d0a1cf4e96587c1b')
+sha256sums=('de1cf9582df8f8bb0ea034ed955db7164b0b12b68c62d576b033f14574fb3f94')
 
 build() {
 	arch-meson ${pkgname}-${_commit} build
