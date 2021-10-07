@@ -6,7 +6,7 @@
 pkgname=openafs-modules
 _srcname=openafs
 pkgver=1.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -15,9 +15,11 @@ depends=('openafs')
 makedepends=('libelf' 'linux-headers')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=("http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2")
+source=("http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2"
+        "0001-LINUX-5.14-explicitly-set-set_page_dirty-to-default.patch")
 install=openafs-modules.install
-sha256sums=('daa8ef86a7727facfcde3bc97a6ad143129c1c25ee35f3347080ec7e9d284da0')
+sha256sums=('daa8ef86a7727facfcde3bc97a6ad143129c1c25ee35f3347080ec7e9d284da0'
+            '0e348a09c9c8e5f2989e4e1773e2845898094c29b5bc3b3dbc5adc27c5e35446')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -31,6 +33,11 @@ _extramodules="/usr/lib/modules/${_kernelver}/extramodules"
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
+
+  # Fix compatibility with Linux 5.14
+  # Fixes https://bugs.archlinux.org/task/72340
+  # Source: https://gerrit.openafs.org/#/c/14826/1
+  patch -p1 < "${srcdir}"/0001-LINUX-5.14-explicitly-set-set_page_dirty-to-default.patch
 
   # Only needed when changes to configure were made
   # ./regen.sh -q
