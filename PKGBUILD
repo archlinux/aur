@@ -7,15 +7,14 @@ pkgname=libmagick6
 pkgbase=imagemagick6
 _pkgver=6.9.12-25
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
 url="https://legacy.imagemagick.org/"
 arch=('x86_64')
 license=('custom')
-depends=('libltdl' 'lcms2' 'fontconfig' 'libxext' 'liblqr' 'libraqm' 'libpng')
-makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2'
-             'libraw' 'opencl-headers' 'libwebp' 'libzip' 'chrpath' 'ocl-icd'
-             'glu' 'ghostpcl' 'ghostxps' 'libheif' 'jbigkit')
+depends=('libltdl' 'lcms2' 'fontconfig' 'libxext' 'liblqr' 'libraqm' 'libpng' 'libxml2')
+makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2' 'libraw' 'opencl-headers' 'libwebp' 'libzip' 'libjxl'
+             'chrpath' 'ocl-icd' 'glu' 'ghostpcl' 'ghostxps' 'libheif' 'jbigkit' 'lcms2' 'libxext' 'liblqr' 'libraqm' 'libpng' 'djvulibre')
 checkdepends=('gsfonts' 'ttf-dejavu')
 source=("ImageMagick6-$_pkgver.tar.gz::https://github.com/ImageMagick/ImageMagick6/archive/refs/tags/$_pkgver.tar.gz"
         'arch-fonts.diff')
@@ -29,8 +28,6 @@ prepare() {
 
   # Fix up typemaps to match our packages, where possible
   patch -Np1 -i ../arch-fonts.diff
-
-  # Don't run auto(re)conf; assumes use of git
 }
 
 build() {
@@ -40,6 +37,8 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --enable-shared \
+    --disable-static \
+    --disable-docs \
     --with-dejavu-font-dir=/usr/share/fonts/TTF \
     --with-gs-font-dir=/usr/share/fonts/gsfonts \
     PSDelegate=/usr/bin/gs \
@@ -48,6 +47,8 @@ build() {
     --enable-hdri \
     --enable-opencl \
     --without-gslib \
+    --with-djvu \
+    --with-jxl \
     --with-lqr \
     --with-modules \
     --with-openexr \
@@ -59,7 +60,6 @@ build() {
     --with-wmf \
     --with-xml \
     --without-autotrace \
-    --without-djvu \
     --without-dps \
     --without-fftw \
     --without-fpx \
@@ -79,6 +79,7 @@ package_libmagick6() {
   pkgdesc="${pkgdesc/)/; library)}"
   optdepends=('ghostscript: PS/PDF support'
               'libheif: HEIF support'
+              'libjxl: JPEG XL support'
               'libraw: DNG support'
               'librsvg: SVG support'
               'libwebp: WEBP support'
@@ -87,9 +88,10 @@ package_libmagick6() {
               'ocl-icd: OpenCL support'
               'openexr: OpenEXR support'
               'openjpeg2: JPEG2000 support'
+              'djvulibre: DJVU support'
               'pango: Text rendering')
+  options=('!emptydirs' 'libtool')
   backup=(etc/ImageMagick-6/{coder,colors,delegates,log,magic,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
-  options=('!docs' '!emptydirs' 'libtool')
 
   cd ImageMagick6-$_pkgver
   make DESTDIR="$pkgdir" install pkgconfigdir="/usr/lib/$pkgbase/pkgconfig"
