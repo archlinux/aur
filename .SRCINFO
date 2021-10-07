@@ -1,6 +1,6 @@
 pkgbase = python-cplot
 	pkgdesc = Color maps for complex-valued functions
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/nschloe/cplot
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = python-cplot
 	checkdepends = python-pytest-codeblocks
 	makedepends = python-setuptools
 	depends = python-colorio
-	source = https://github.com/nschloe/cplot/archive/v0.5.2.tar.gz
-	sha512sums = f964e826c29dc7d8f9b15f5f724cc1a7d236e3c2c9476dc3d98111793c4960718bfb899e7477d6b36d4d403d1baf3599503a6d1f51c4204a38e2451268442865
+	source = https://github.com/nschloe/cplot/archive/v0.6.0.tar.gz
+	sha512sums = 7efcabf76a9ccb2f9539fe7a241b3249bd6d06def4d21855c125abcc08eae9e58cd671d54ca50ab5a69a662cd510b35ecfa5567517f020d27d199c3c6faffbd6
 
 pkgname = python-cplot
