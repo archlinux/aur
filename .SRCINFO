@@ -1,7 +1,7 @@
 pkgbase = mpdris2-git
 	pkgdesc = MPRIS2 support for MPD -- git version
 	pkgver = 0.9.1.r0.g09e3371
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eonpatapon/mpDris2
 	arch = any
 	license = GPL3
