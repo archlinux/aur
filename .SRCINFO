@@ -1,7 +1,7 @@
 pkgbase = arch-maintenance
 	pkgdesc = Scripts and services to support arch maintenance
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/paulbastian/arch-maintenance
 	arch = any
 	license = APACHE

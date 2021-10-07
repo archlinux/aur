@@ -1,7 +1,7 @@
 # Maintainer: Paul Bastian <paul.bastian@posteo.de>
 pkgname=arch-maintenance
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Scripts and services to support arch maintenance"
 arch=('any')
 url="https://github.com/paulbastian/arch-maintenance"
@@ -17,7 +17,7 @@ package() {
   cd "$srcdir"
 
   mkdir -p "${pkgdir}"/usr/share/arch-maintenance
-  install -D -m644 checkUpdates.sh "$pkgdir/usr/share/arch-maintenance/checkUpdates.sh" 
+  install -D -m755 checkUpdates.sh "$pkgdir/usr/share/arch-maintenance/checkUpdates.sh" 
   
   install -m644 -Dt "$pkgdir/usr/lib/systemd/system" checkPackageUpdates.service
   install -m644 -Dt "$pkgdir/usr/lib/systemd/system" checkPackageUpdates.timer
