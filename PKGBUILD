@@ -2,7 +2,7 @@
 
 pkgname=archtorify-git
 _pkgname=archtorify
-pkgver=v1.25.0
+pkgver=v1.26.0
 pkgrel=1
 pkgdesc="Transparent proxy through Tor for Arch Linux"
 arch=('any')
