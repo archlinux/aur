@@ -1,0 +1,23 @@
+pkgbase = fishfight-git
+	pkgdesc = A tactical 2D shooter game
+	pkgver = r262.c05f002
+	pkgrel = 1
+	url = https://github.com/fishfight/FishFight
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = rust
+	makedepends = git
+	depends = pkg-config
+	depends = libx11
+	depends = libxi
+	depends = mesa-libgl
+	depends = alsa-lib
+	provides = fishfight
+	conflicts = fishfight
+	source = git+https://github.com/fishfight/FishFight
+	source = fishfight.sh
+	sha256sums = SKIP
+	sha256sums = 7ba8b5635f316c9bf1d4eeae5cc7a84a8076f4c496cd107b4207cf8b4a86fb81
+
+pkgname = fishfight-git
