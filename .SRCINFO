@@ -1,0 +1,20 @@
+pkgbase = mpdris2-git
+	pkgdesc = MPRIS2 support for MPD -- git version
+	pkgver = 0.9.1.r0.g09e3371
+	pkgrel = 1
+	url = https://github.com/eonpatapon/mpDris2
+	arch = any
+	license = GPL3
+	makedepends = intltool
+	depends = python-dbus
+	depends = python-mpd2
+	depends = python-gobject
+	optdepends = python-mutagen: read covers from music files
+	optdepends = libnotify: notifications on track change
+	provides = mpdris2
+	conflicts = mpdris2
+	source = mpDris2::git+https://github.com/eonpatapon/mpDris2
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mpdris2-git
