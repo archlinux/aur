@@ -17,3 +17,4 @@ package() {
     cd "$srcdir/$pkgname-v$pkgver/"
     make install DESTDIR=$pkgdir NO_DIST_INSTALL=true
 }
+
