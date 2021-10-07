@@ -1,5 +1,5 @@
 pkgname=mastercard-pkcs11-tools
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Tools to manage objects on PKCS#11 cryptographic tokens"
 url="https://github.com/Mastercard/pkcs11-tools"
@@ -10,7 +10,7 @@ makedepends=(
   bison
   flex
 )
-_commit=v2.4.0
+_commit=v2.5.0
 source=("git+https://github.com/Mastercard/pkcs11-tools#commit=$_commit"
         "git+https://git.savannah.gnu.org/git/gnulib.git"
         "oasis-pkcs11::git+https://github.com/oasis-tcs/pkcs11")
@@ -37,6 +37,10 @@ build() {
   cd pkcs11-tools
   sh -ex ./bootstrap.sh
   ./configure --prefix=/usr --sysconfdir=/etc
+
+  # Hack to fix what the compiler insists is a syntax error
+  : > gl/string.h
+
   make
 }
 
