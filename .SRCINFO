@@ -1,0 +1,24 @@
+pkgbase = fontdownloader-git
+	pkgdesc = A simple GTK font downloader
+	pkgver = r383.392ccff
+	pkgrel = 1
+	url = https://github.com/GustavoPeredo/font-downloader
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = libhandy
+	depends = python
+	depends = python-gobject
+	provides = fontdownloader
+	provides = font-downloader
+	provides = font-downloader-git
+	conflicts = fontdownloader
+	conflicts = font-downloader
+	conflicts = font-downloader-git
+	source = git+https://github.com/GustavoPeredo/font-downloader.git
+	b2sums = SKIP
+
+pkgname = fontdownloader-git
