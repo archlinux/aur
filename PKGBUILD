@@ -24,7 +24,7 @@ build() {
   # use system electron version
   # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
   electronDist="/usr/lib/electron"
-  electronVer=$(sed s/^v// /usr/lib/electron/version)
+  electronVer=$(pacman -Q $(pacman -Qqo $electronDist) | cut -d " " -f2 | cut -d "-" -f1)
   yarn install
   yarn build:dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
