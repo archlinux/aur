@@ -2,14 +2,14 @@
 
 pkgname=httpobs-git
 _pkgname=httpobs
-pkgver=r650.b267848
+pkgver=r657.92641c6
 pkgrel=1
 pkgdesc='A command line tool to scan your website'
 arch=('any')
 url='https://github.com/mozilla/http-observatory'
 license=('custom:MPL2')
 depends=('python-celery' 'python-beautifulsoup4' 'python-publicsuffixlist')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 provides=('httpobs')
 conflicts=('httpobs')
 source=(
