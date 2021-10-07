@@ -15,7 +15,7 @@ pkgname = dgnvindex-bin
 	conflicts = dgnvindex
 
 pkgname = vapoursynth-plugin-dgdecodenv-bin
-	pkgdesc = Plugin for Vapoursynth: dgdecodenv (GIT version)
+	pkgdesc = Plugin for Vapoursynth: dgdecodenv
 	depends = vapoursynth
 	depends = cuda
 	provides = vapoursynth-plugin-dgdecodenv

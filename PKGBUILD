@@ -28,7 +28,7 @@ package_dgnvindex-bin() {
 }
 
 package_vapoursynth-plugin-dgdecodenv-bin() {
-  pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
+  pkgdesc="Plugin for Vapoursynth: ${_plug}"
   depends=('vapoursynth'
            'cuda'
            )
@@ -40,7 +40,7 @@ package_vapoursynth-plugin-dgdecodenv-bin() {
 }
 
 package_avisynth-plugin-dgdecodenv-bin() {
-  pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
+  pkgdesc="Plugin for Avisynth: ${_plug}"
   depends=('avisynthplus'
            'cuda'
            )
