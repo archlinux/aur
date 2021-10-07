@@ -1,13 +1,14 @@
 pkgbase = elementary-planner
 	pkgdesc = Task manager with Todoist support
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://useplanner.com
 	arch = x86_64
 	license = GPL3
+	checkdepends = appstream
+	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
-	makedepends = gobject-introspection
 	depends = elementary-icon-theme
 	depends = evolution-data-server
 	depends = granite
