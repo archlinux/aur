@@ -13,10 +13,10 @@ arch=("any")
 url="https://github.com/blurgyy/dt"
 license=('MIT OR Apache 2.0')
 groups=()
-depends=(cargo)
+depends=()
 makedepends=(
     git
-    rustup
+    cargo
 )
 checkdepends=()
 optdepends=()
