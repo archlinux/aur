@@ -6,6 +6,7 @@ pkgdesc=".po file editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/poe"
 license=('GPL3')
+depends=('gcc','gzip')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/poe/archive/$pkgver.tar.gz")
 md5sums=('f4cd5ec3aa9e7fdf3ee6a40c3daa1b78')
 
