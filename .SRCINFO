@@ -1,6 +1,6 @@
 pkgbase = php74-apcu
 	pkgdesc = A userland caching module for PHP
-	pkgver = 5.1.20
+	pkgver = 5.1.21
 	pkgrel = 1
 	url = https://pecl.php.net/package/APCu
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = php74-apcu
 	depends = php74
 	provides = php-apcu
 	backup = etc/php74/conf.d/apcu.ini
-	source = https://pecl.php.net/get/apcu-5.1.20.tgz
-	sha256sums = b99d40fafec06f4d132fcee53e7526ddbfc1d041ea6e04e17389dfad28f9c390
+	source = https://pecl.php.net/get/apcu-5.1.21.tgz
+	sha256sums = 1033530448696ee7cadec85050f6df5135fb1330072ef2a74569392acfecfbc1
 
 pkgname = php74-apcu
-
