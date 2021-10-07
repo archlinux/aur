@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gnome-text-editor-git
-pkgver=41.0.r40.g3ebc6e8
+pkgver=41.0.r56.g3d37366
 pkgrel=1
 pkgdesc='Simple text editor that focuses on session management'
 url='https://gitlab.gnome.org/GNOME/gnome-text-editor'
@@ -15,7 +15,11 @@ depends=(
 	gtksourceview5
 	libadwaita
 )
-makedepends=(git meson)
+makedepends=(
+	git
+	itstool
+	meson
+)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
