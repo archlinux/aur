@@ -4,7 +4,7 @@
 
 pkgname=barman
 _realname=barman
-pkgver=2.13
+pkgver=2.14
 pkgrel=1
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   streaming-server.conf-template
 )
 
-md5sums=('04af82a892cf330679c54cc1019fa31e'
+md5sums=('508787bcdcd3e99fb8754d86b8d62c86'
          '0e48345895f88b3939543c00928a199b'
          '58c5b20b8e1272ab4ce46757f6613e0d'
          'b43254374978938f7d21035a3356b531'
@@ -40,7 +40,6 @@ package()
   install -Dm 0644 LICENSE -t      "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # install docs
-  install -Dm 0644 ChangeLog -t    "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 0644 README.rst -t   "${pkgdir}/usr/share/doc/${pkgname}"
 
   # install example files
