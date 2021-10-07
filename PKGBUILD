@@ -5,7 +5,7 @@
 _reponame=rapidjson
 pkgname=mingw-w64-$_reponame
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast JSON parser/generator for C++ with both SAX/DOM style API (mingw-w64)'
 arch=('any')
 url='https://github.com/miloyip/rapidjson'
@@ -39,7 +39,7 @@ build () {
         -DRAPIDJSON_BUILD_CXX11=ON \
         -DRAPIDJSON_ENABLE_INSTRUMENTATION_OPT=OFF \
         -DCMAKE_INSTALL_PREFIX:PATH="/usr/${_arch}" \
-        -DGTEST_SOURCE_DIR=/usr/src/gtest \
+        -DGTEST_SOURCE_DIR=/usr/src/googletest \
         ..
     ninja
     popd
