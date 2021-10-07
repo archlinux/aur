@@ -1,12 +1,12 @@
 pkgbase = simplicity-commander
 	pkgdesc = GUI and command line access to the debug features of Silicon Labs devices
-	pkgver = 1.11.2
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://www.silabs.com/mcu/programming-options
 	arch = x86_64
 	license = LGPL
 	options = !strip
 	source = https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip
-	sha256sums = 22be3651a817d39ff47a0023fc6873154812fcd55d2690b22299515c5edff3fe
+	sha256sums = 9d306688b8b08e584e5388495e8bf8144d2bb7d6111ab86d24cf9b8246fb8cf1
 
 pkgname = simplicity-commander
