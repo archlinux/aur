@@ -1,7 +1,7 @@
 pkgbase = ruby-veewee-to-packer
 	pkgdesc = A tool for converting Veewee templates into Packer templates
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mitchellh/veewee-to-packer
 	arch = any
 	license = MIT
@@ -14,4 +14,3 @@ pkgbase = ruby-veewee-to-packer
 	sha256sums = ddbdcaa797aedbec09d8a6036be27c2df6802ac302bbc01d3b09d3aeeda65d85
 
 pkgname = ruby-veewee-to-packer
-

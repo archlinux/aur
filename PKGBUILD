@@ -1,8 +1,8 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-veewee-to-packer
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for converting Veewee templates into Packer templates"
 arch=('any')
 url="https://github.com/mitchellh/veewee-to-packer"
@@ -15,12 +15,8 @@ provides=('ruby-veewee-to-packer' 'veewee-to-packer')
 conflicts=('veewee-to-packer')
 
 package() {
-  cd "$srcdir"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
-  msg 'Installing...'
-  gem install \
-    --no-user-install \
-    --ignore-dependencies \
-    -i "$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')" \
-    ${pkgname#*-}-$pkgver.gem
+  gem install --ignore-dependencies --no-user-install -N -i "${pkgdir}"/${_gemdir} ${pkgname#*-}-${pkgver}.gem
+  find "${pkgdir}" -type f -name *.gem -delete
 }
