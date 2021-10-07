@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=uirc3-git
 _pkgname=uirc3
-pkgver=v1.0.0.r0.g1de4a2a
+pkgver=v1.4.0.r0.g5e728f6
 pkgrel=1
 pkgdesc="Experimental IRC client, daemon and bot"
 url="https://git.janouch.name/p/uirc3"
@@ -34,7 +34,7 @@ build() {
   rm -rf "$srcdir/$_pkgname-build"
   mkdir "$srcdir/$_pkgname-build"
   cd "$srcdir/$_pkgname-build"
-  cmake "$srcdir/$_pkgname" -DCMAKE_BUILD_TYPE=Release \
+  cmake "$srcdir/$_pkgname" -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
