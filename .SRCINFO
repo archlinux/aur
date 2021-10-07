@@ -1,0 +1,12 @@
+pkgbase = cert-chain-resolver
+	pkgdesc = An ssl certificate chain resolver
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/zakjan/cert-chain-resolver
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/zakjan/cert-chain-resolver/archive/1.0.3.tar.gz
+	sha256sums = 77d1c06930a4c8d5f8e5c86a81377174b63f8c7851ea68f773ab438f5b9a3005
+
+pkgname = cert-chain-resolver
