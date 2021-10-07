@@ -28,5 +28,4 @@ package() {
   cd "$pkgname"
 
   make DESTDIR="$pkgdir/" PREFIX=/usr/ install
-  install -Dm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
 }
