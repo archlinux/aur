@@ -1,7 +1,7 @@
-# Maintainer: Přemysl Janouch <p.janouch@gmail.com>
+# Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=logdiag-git
 _pkgname=logdiag
-pkgver=v0.1.2.r100.g24731d6
+pkgver=v0.2.0.r4.g3102bc0
 pkgrel=1
 pkgdesc="Schematic editor"
 url="https://git.janouch.name/p/logdiag"
@@ -28,7 +28,7 @@ build() {
   rm -rf "$srcdir/$_pkgname-build"
   mkdir "$srcdir/$_pkgname-build"
   cd "$srcdir/$_pkgname-build"
-  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None
   make
 }
 

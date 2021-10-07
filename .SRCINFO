@@ -1,6 +1,6 @@
 pkgbase = logdiag-git
 	pkgdesc = Schematic editor
-	pkgver = v0.1.2.r100.g24731d6
+	pkgver = v0.2.0.r4.g3102bc0
 	pkgrel = 1
 	url = https://git.janouch.name/p/logdiag
 	install = logdiag.install
@@ -20,4 +20,3 @@ pkgbase = logdiag-git
 	md5sums = SKIP
 
 pkgname = logdiag-git
-
