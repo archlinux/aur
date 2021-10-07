@@ -10,7 +10,7 @@ url='https://github.com/C0D3D3V/Moodle-Downloader-2'
 license=('GPL3')
 depends=('python' 'ffmpeg' 'python-sentry_sdk' 'python-colorama'
          'python-readchar' 'youtube-dl' 'python-certifi' 'python-html2text'
-         'python-requests' 'python-slixmpp')
+         'python-requests' 'python-aioxmpp')
 makedepends=('git')
 conflicts=('moodle-dl')
 provides=('moodle-dl')
