@@ -80,7 +80,7 @@ _use_current=
 
 pkgbase=linux-cacule-rdb
 pkgver=5.14.10
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patches'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -98,36 +98,37 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
         "config"
 #        "${_patchsource}/arch-patches-v9/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/arch-patches-v10/0001-arch-patches.patch"
-        "${_caculepatches}/v5.14/cacule-5.14-full.patch"
-        "${_patchsource}/misc/amd/0006-amd-cppc.patch"
-        "${_patchsource}/misc/zen-tweaks-cacule.patch"
-        "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
-        "${_patchsource}/ll-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
-        "${_patchsource}/ll-patches/0004-mm-set-8-megabytes-for-address_space-level-file-read.patch"
-        "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-        "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
-        "${_patchsource}/block-patches/0001-block-patches.patch"
-        "${_patchsource}/btrfs-patches-v5/0001-btrfs-patches.patch"
-        "${_patchsource}/fixes-miscellaneous-v5/0001-fixes-miscellaneous.patch"
-        "${_patchsource}/futex-xanmod-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
-        "${_patchsource}/futex2-xanmod-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
-        "${_patchsource}/ksmbd-patches-v14/0001-ksmbd-patches.patch"
-        "${_patchsource}/hwmon-patches/0001-hwmon-patches.patch"
-        "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
-        "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
-        "${_patchsource}/lru-zen-patches-v3/0001-lru-zen-patches.patch"
-        "${_patchsource}/pf-patches-v8/0001-pf-patches.patch"
-        "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
-        "${_patchsource}/zen-patches-v3/0001-zen-patches.patch"
-        "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
-        "${_patchsource}/0013-zstd.patch"
-        "${_patchsource}/ntfs3-patches-v13/0001-ntfs3-patches.patch"
-        "${_patchsource}/0001-cpu-patches.patch"
-        "${_patchsource}/0001-winesync.patch"
-        "${_patchsource}/0001-v4l2loopback.patch"
-        "${_patchsource}/0001-ksm.patch"
-        "auto-cpu-optimization.sh"
+          "${_patchsource}/arch-patches-v10/0001-arch-patches.patch"
+          "${_caculepatches}/v5.14/cacule-5.14-full.patch"
+          "${_patchsource}/misc/amd/0006-amd-cppc.patch"
+          "${_patchsource}/misc/zen-tweaks-cacule.patch"
+          "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+          "${_patchsource}/ll-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
+          "${_patchsource}/ll-patches/0004-mm-set-8-megabytes-for-address_space-level-file-read.patch"
+          "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
+          "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
+          "${_patchsource}/block-patches/0001-block-patches.patch"
+          "${_patchsource}/btrfs-patches-v5/0001-btrfs-patches.patch"
+          "${_patchsource}/fixes-miscellaneous-v6/0001-fixes-miscellaneous.patch"
+          "${_patchsource}/futex-xanmod-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
+          "${_patchsource}/futex2-xanmod-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
+          "${_patchsource}/ksmbd-patches-v15/0001-ksmbd-patches.patch"
+          "${_patchsource}/hwmon-patches/0001-hwmon-patches.patch"
+          "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
+          "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
+          "${_patchsource}/lru-zen-patches-v3/0001-lru-zen-patches.patch"
+          "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
+          "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
+          "${_patchsource}/zen-patches-v3/0001-zen-patches.patch"
+          "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
+          "${_patchsource}/0013-zstd.patch"
+          "${_patchsource}/ntfs3-patches-v13/0001-ntfs3-patches.patch"
+          "${_patchsource}/0001-cpu-patches.patch"
+          "${_patchsource}/0001-winesync.patch"
+          "${_patchsource}/0001-v4l2loopback.patch"
+          "${_patchsource}/0001-ksm.patch"
+          "auto-cpu-optimization.sh"
+  	#  "/home/ptr1337/projects/kernel/linuxcacule/linux-cacule-rdb/
                                 )
 
   if [ -n "$_use_cfi" ]; then
@@ -508,8 +509,8 @@ _package-headers() {
 
 }
 
-md5sums=('9f4fe4d784f3c5dd34e9251f83202eba'
-         '50f7fde55065b9329b7375a0dd818160'
+md5sums=('c467f0e8c5ab6e0ec7c47555ea4a8da3'
+         '426a97a2a3d02625303b7885d1390afb'
          '581faf85cd625c41bbdd0cadbd0e451e'
          '024a0126cfcd18e000a2241f35c4d69e'
          '430972ae1e936f99d8dc2a1f4fdaf774'
@@ -521,19 +522,19 @@ md5sums=('9f4fe4d784f3c5dd34e9251f83202eba'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
          '2c4d1d4e79d228af39f84ed4caea2f09'
-         'c5a1e8c50dd049b2f1b44d43d6754235'
+         'f364618bad6154856085c7025d388d3b'
          'fd934f7d11131d5a5043e4aea640583b'
          '8a96c5e8346bd5b430776ac8a41f96b0'
-         '72cb6f5a61e9c678dd676a2647ab3803'
+         '061b79958d812923886984d7b0853149'
          'bad682a72d2549f409caea361fb0456f'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '366c90b64f9582c0733b8fb607a07594'
          'd24fd0f81fbeed243b1b71fde7659548'
-         'fad618c6e6c06ee3700791f9c3c3995a'
+         '607228871a4127c31baae7b1d66866bc'
          '28864f14bf33bad92e57bc48bc5c2c78'
          'cfef1423ad1e6aecad63f0d5eacaea37'
          '808981a36c81165953017e5e432c1fa1'
-         '1fc22bb415b91dcdca81ddf3f40af061'
+         '2cd671c79536f8ae6b58d874c8496433'
          '82c0c2242d2a9d317b2601380f87488a'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
