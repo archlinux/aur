@@ -13,7 +13,10 @@ depends=(
 	gtksourceview5
 	libadwaita
 )
-makedepends=(meson)
+makedepends=(
+	itstool
+	meson
+)
 _commit=${pkgver}
 source=("${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
 sha256sums=('de1cf9582df8f8bb0ea034ed955db7164b0b12b68c62d576b033f14574fb3f94')

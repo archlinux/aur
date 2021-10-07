@@ -6,6 +6,7 @@ pkgbase = gnome-text-editor
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = itstool
 	makedepends = meson
 	depends = enchant
 	depends = glib2>=2.70.0
