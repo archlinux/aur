@@ -1,6 +1,6 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 pkgname=solana  
-pkgver=1.6.27
+pkgver=1.7.15
 _splver=0.1.8
 pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain."
@@ -13,11 +13,11 @@ conflicts=("solana-bin")
 provides=("solana")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/solana-labs/$pkgname/archive/v$pkgver.tar.gz"
         "spl-token-$_splver.tar.gz::https://github.com/solana-labs/solana-program-library/archive/refs/tags/@solana/spl-token@v$_splver.tar.gz")
-md5sums=('73740eaa5477de79e4c33e68cec87763'
+md5sums=('a1ed35f716d2336e98365ce298308faf'
          'd2a25d5b510bcc796ef955f71884581e')
 
 prepare() {
-  rustup toolchain install 1.51.0
+  rustup toolchain install 1.52.1
 }
 
 build() {
@@ -40,7 +40,6 @@ build() {
     solana-dos
     solana-install-init
     solana-stake-accounts
-    solana-stake-o-matic
     solana-test-validator
     solana-tokens
     solana-watchtower
@@ -50,9 +49,9 @@ build() {
   for bin in "${BINS[@]}"; do
     binargs+=(--bin "$bin")
   done
-  cargo +1.51.0 build --release --locked "${binargs[@]}"
+  cargo +1.52.1 build --release --locked "${binargs[@]}"
   cd "$srcdir/solana-program-library--solana-spl-token-v$_splver"
-  cargo +1.51.0 build --release --locked --bin spl-token
+  cargo +1.52.1 build --release --locked --bin spl-token
 }
 
 package() {
@@ -75,7 +74,6 @@ package() {
     solana-dos
     solana-install-init
     solana-stake-accounts
-    solana-stake-o-matic
     solana-test-validator
     solana-tokens
     solana-watchtower
