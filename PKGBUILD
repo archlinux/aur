@@ -1,35 +1,34 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: tsipizic
 
-pkgname='python-yeelight'
-pkgver=0.5.4
-pkgrel=2
+pkgname=python-yeelight
+pkgver=0.7.6
+pkgrel=1
+_commit=2edec00176a3d06bcba90c3e83f13596d127919f
 pkgdesc='Python library for controlling YeeLight RGB bulbs'
 arch=('any')
 url='https://gitlab.com/stavros/python-yeelight'
-_url_pypi='https://pypi.org/project/yeelight'
 license=('BSD')
-depends=('python-enum-compat' 'python-future' 'python-ifaddr')
-
-#makedepends=('python-setuptools')
-#source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-#sha256sums=('TBA')
-
-makedepends=('git' 'python-setuptools')
-_commit='119faeff0d4f9de8c7f6d0580bdecc1c79bcdaea'
-source=("git+${url}.git#commit=${_commit}")
+depends=('python-future' 'python-ifaddr')
+makedepends=('git' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
+source=("$pkgname::git+$url#commit=$_commit?signed")
 sha256sums=('SKIP')
+validpgpkeys=('3D2E921F15667F0FD5B3017E26EA345ECD4C2A63')
 
 build() {
-  cd "${pkgname}"
+  cd "$pkgname"
   python setup.py build
+  cd docs
+  PYTHONPATH=../ make man
 }
 
 package() {
-  cd "${pkgname}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "$pkgname"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 docs/build/man/yeelight.1 -t "$pkgdir/usr/share/man/man1/"
 }
 
 # vim: ts=2 sw=2 et:
