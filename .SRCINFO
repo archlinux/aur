@@ -1,14 +1,13 @@
 pkgbase = python-vcard
 	pkgdesc = vCard validator
-	pkgver = 0.13.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://gitlab.com/victor-engmark/vcard
 	arch = any
-	license = GPL3
-	depends = python
-	depends = python-isodate
-	source = https://files.pythonhosted.org/packages/source/v/vcard/vcard-0.13.0.tar.gz
-	sha512sums = 0b8a7d8873d26d2a99fb38acd2970018d874ec1ecefcf202da0e2ed2e282b5cb43d0b53717873d29c62c0c72748278929db9562308f6503792271fe42f915ce3
+	license = AGPL3
+	makedepends = python-setuptools
+	depends = python-dateutil
+	source = python-vcard-0.14.1.tar.bz2::https://gitlab.com/victor-engmark/vcard/-/archive/v0.14.1/vcard-v0.14.1.tar.bz2
+	sha512sums = 8e07db501e7974301d680286c900bab687439d0ce542c94c4d399c6c0e855107ef2a6e9252667870e22debcdc30d5bda92587b43d06837d8789922ded8eda178
 
 pkgname = python-vcard
-

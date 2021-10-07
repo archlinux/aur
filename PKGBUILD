@@ -1,25 +1,31 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Victor Engmark <victor.engmark@gmail.com>
 
 pkgname=python-vcard
-_name="${pkgname#*-}"
-pkgver=0.13.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="vCard validator"
 arch=('any')
 url='https://gitlab.com/victor-engmark/vcard'
-license=('GPL3')
-depends=('python' 'python-isodate')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('0b8a7d8873d26d2a99fb38acd2970018d874ec1ecefcf202da0e2ed2e282b5cb43d0b53717873d29c62c0c72748278929db9562308f6503792271fe42f915ce3')
+license=('AGPL3')
+depends=('python-dateutil')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.bz2::$url/-/archive/v$pkgver/vcard-v$pkgver.tar.bz2")
+sha512sums=('8e07db501e7974301d680286c900bab687439d0ce542c94c4d399c6c0e855107ef2a6e9252667870e22debcdc30d5bda92587b43d06837d8789922ded8eda178')
 
+prepare() {
+	cd "vcard-v$pkgver"
+	sed -i '/data_files/d' setup.py
+}
 
 build() {
-	cd "${_name}-${pkgver}"
-    python setup.py build
+	cd "vcard-v$pkgver"
+	python setup.py build
 }
 
 package() {
-	cd "${_name}-${pkgver}"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	cd "vcard-v$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 bash-completion/vcard -t "$pkgdir/usr/share/bash-completion/completions/"
 }
