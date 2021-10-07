@@ -2,7 +2,7 @@
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://slimbook.es"
@@ -12,7 +12,7 @@ depends=('cron' 'dbus-python' 'dmidecode' 'gtk3' 'libnotify' 'python-cairo'
 optdepends=('nvidia-prime: for hybrid graphics switching'
             'libappindicator-gtk3: tray icon'
             'slimbookamdcontroller: Synchronize battery mode with CPU TDP mode'
-            'slimbootkintelcontroller: Synchronize battery mode with CPU TDP mode')
+            'slimbookkintelcontroller: Synchronize battery mode with CPU TDP mode')
 install="$pkgname.install"
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
 sha256sums=('d7493c65109df43becd0900eeb7293f579626f4a3b31bffe6f6c6463652f4c74')
