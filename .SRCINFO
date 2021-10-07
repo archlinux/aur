@@ -1,7 +1,7 @@
 pkgbase = mastercard-pkcs11-tools
 	pkgdesc = Tools to manage objects on PKCS#11 cryptographic tokens
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mastercard/pkcs11-tools
 	arch = x86_64
 	makedepends = autoconf-archive

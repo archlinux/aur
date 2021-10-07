@@ -1,6 +1,6 @@
 pkgname=mastercard-pkcs11-tools
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to manage objects on PKCS#11 cryptographic tokens"
 url="https://github.com/Mastercard/pkcs11-tools"
 arch=(x86_64)
@@ -39,7 +39,7 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc
 
   # Hack to fix what the compiler insists is a syntax error
-  : > gl/string.h
+  echo '#include_next <string.h>' > gl/string.h
 
   make
 }
