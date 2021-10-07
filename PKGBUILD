@@ -2,13 +2,22 @@
 
 _pkgbase=neoray
 pkgname=${_pkgbase}-git
-pkgver=r295.04af3e7
-pkgrel=2
+pkgver=r442.6a2d327
+pkgrel=1
 pkgdesc="Go GUI for neovim"
 arch=('any')
 url="https://github.com/hismailbulut/neoray"
 license=('MIT')
-depends=('neovim')
+depends=(
+	'neovim'
+	'libx11'
+	'gtk3'
+	'libxcursor'
+	'libxrandr'
+	'libxinerama'
+	'libxi'
+	'libgl'
+)
 makedepends=('go' 'git')
 conflicts=()
 source=('git+https://github.com/hismailbulut/neoray.git'
