@@ -36,8 +36,9 @@ build() {
   # it just removes line numbers in history command
   # and made history more readable 
   cp "$srcdir/../show_history-patch.lineedit.c.patch" "$srcdir/busybox/lineedit.c.patch"
-  
-  make menuconfig
+
+  # Uncoment to make custom changes
+  #make menuconfig
   # Apply fancy show_history output patch
   patch -p0 < lineedit.c.patch
   
