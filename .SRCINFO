@@ -1,0 +1,12 @@
+pkgbase = h2-dmenu-desktop
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://joren.ga
+	arch = any
+	license = MIT
+	depends = python
+	depends = dmenu
+	source = h2-dmenu-desktop::https://github.com/Jorengarenar/h2-dmenu-desktop/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = aade9e11704187a4e5c374192c65d3548d3461dae919b68fe92bedf6351c7882
+
+pkgname = h2-dmenu-desktop
