@@ -1,13 +1,12 @@
 pkgbase = dt-cli
 	pkgdesc = Syncing dotfiles and more
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/blurgyy/dt
 	arch = any
 	license = MIT OR Apache 2.0
+	makedepends = cargo
 	makedepends = curl
-	makedepends = rustup
-	depends = cargo
 	provides = dt-cli
 	conflicts = dt-cli-git
 	conflicts = dt-cli-bin
