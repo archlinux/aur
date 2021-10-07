@@ -1,39 +1,29 @@
 # Maintainer: Kevin Rauwolf <sweetpea-aur@tentacle.net>
 pkgname=prometheus-statsd-exporter
-pkgver=0.15.0
-pkgrel=2
+pkgver=0.22.2
+pkgrel=1
 pkgdesc="StatsD to Prometheus metrics exporter"
 arch=('x86_64')
 url="https://github.com/prometheus/statsd_exporter"
 license=('Apache')
 depends=(glibc)
-makedepends=(go-pie git)
+makedepends=(go-pie git yamllint)
 source=($pkgname-$pkgver.tar.gz::https://github.com/prometheus/statsd_exporter/archive/v${pkgver}.tar.gz prometheus-statsd-exporter.service)
-sha512sums=('09d76a9329f9b8c208cfb30f43303542c98bc64cdae04fb7db11d766c24ea64a2370a63f82b00db5b23f2f7e737b95a3dfdd2bdf186a6b18d0fb1a6f7585513f'
+sha512sums=('ed60640c6b84e916d3bec224959a55c6890ee76651be16493ac9e5c25d6c7179b29fa17ef81d4cbda1aecbb75ec965cff2d21f8f30502e0de88827298bb6bf72'
             'a4ceb1291b358140082ac044c5c5f38dc24bdcb60e94fb2c3a41c5c01a7d8e4d40cac01b653e7f8c146b91db0348b2d350a7523144090a3e6c92c5f56975c171')
 
 check() {
   cd statsd_exporter-$pkgver
-  go test ./...
+  make test
 }
 
 build() {
   cd statsd_exporter-$pkgver
-  go build \
-    -mod=vendor \
-    -gcflags "all=-trimpath=${PWD}" \
-    -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-extldflags ${LDFLAGS} \
-      -X github.com/prometheus/common/version.Version=$pkgver \
-      -X github.com/prometheus/common/version.Revision=$pkgver \
-      -X github.com/prometheus/common/version.Branch=tarball \
-      -X github.com/prometheus/common/version.BuildUser=someone@builder \
-      -X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)" \
-    .
+  make build
 }
 
 package() {
   install -Dm644 prometheus-statsd-exporter.service "$pkgdir"/usr/lib/systemd/system/prometheus-statsd-exporter.service
   cd statsd_exporter-$pkgver
-  install -Dm755 statsd_exporter "$pkgdir"/usr/bin/prometheus-statsd-exporter
+  install -Dm755 prometheus-statsd-exporter "$pkgdir"/usr/bin/prometheus-statsd-exporter
 }
