@@ -1,6 +1,6 @@
 pkgbase = anylogic-professional
 	pkgdesc = AnyLogic Professional Edition - for companies and government organizations
-	pkgver = 8.7.5
+	pkgver = 8.7.7
 	pkgrel = 1
 	url = https://www.anylogic.com
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = anylogic-professional
 	provides = anylogic
 	conflicts = anylogic
 	options = !strip
-	source = https://files.anylogic.com/anylogic-professional-8.7.5.linux.x86_64.tgz.bin
-	sha256sums = 55c1bef81af60201bb1cd5e08d0ee829eed7904550b8850fe658f335009a7df4
+	source = https://files.anylogic.com/anylogic-professional-8.7.7.linux.x86_64.tgz.bin
+	sha256sums = 8b87784432fc4bf8d7ff0210dae45eadda0beb49e24aa614460e080b6ce874d8
 
 pkgname = anylogic-professional
