@@ -1,0 +1,12 @@
+pkgbase = udev-uaccess-fix
+	pkgdesc = Workaround for udev's uaccess ACL hack, to give all users access to devices
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/sandsmark
+	arch = any
+	license = GPL3
+	depends = udev
+	source = udev-uaccess-fix.rules
+	md5sums = SKIP
+
+pkgname = udev-uaccess-fix

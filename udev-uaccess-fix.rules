@@ -1,0 +1,4 @@
+# The 'uaccess' tag is a magic tag that makes udev try to look up the currently active user,
+# and set an ACL for that user to access the device.
+# This hack makes sure that there it at least one group a user can be part of to get the same access.
+TAG=="uaccess", GROUP="users"
