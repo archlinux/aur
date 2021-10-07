@@ -1,19 +1,19 @@
 pkgbase = yup-git
 	pkgdesc = Ncurses based AUR Helper with improved searching and sorting
-	pkgver = v0.1.8.beta.r1.gb764aa8
+	pkgver = 1.1.7.r0.g4368489
 	pkgrel = 1
 	url = https://github.com/ericm/yup
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL3
+	makedepends = git
 	makedepends = go
 	depends = pacman>=5.1
-	depends = git
 	depends = ncurses
-	depends = sudo
+	optdepends = sudo
 	provides = yup
 	conflicts = yup
 	source = git+https://github.com/ericm/yup.git
 	sha256sums = SKIP
 
 pkgname = yup-git
-

@@ -1,31 +1,47 @@
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: atemu
 pkgname=yup-git
-basepkgname=yup
-pkgver=v0.1.8.beta.r1.gb764aa8
+pkgver=1.1.7.r0.g4368489
 pkgrel=1
 pkgdesc="Ncurses based AUR Helper with improved searching and sorting"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/ericm/yup"
 license=('GPL3')
-depends=('pacman>=5.1' 'git' 'ncurses' 'sudo')
-makedepends=('go')
-provides=("$basepkgname")
-conflicts=("$basepkgname")
+depends=('pacman>=5.1' 'ncurses')
+makedepends=('git' 'go')
+optdepends=('sudo')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/ericm/yup.git')
 sha256sums=('SKIP')
 
+prepare() {
+  # Prevent creation of a `go` directory in one's home.
+  # Sometimes this directory cannot be removed with even `rm -rf` unless
+  # one becomes root or changes the write permissions.
+  export GOPATH="$srcdir/gopath"
+  go clean -modcache
+}
+
 pkgver() {
-	cd "$srcdir/$basepkgname"
- 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$basepkgname"
-	make prefix=/usr
+  cd "$srcdir/${pkgname%-git}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  make
+
+  # Clean mod cache for makepkg -C
+  go clean -modcache
 }
 
 package() {
-	cd "$srcdir/$basepkgname"
-	install -Dm755 "$basepkgname" "$pkgdir/usr/bin/$basepkgname"
-	install -Dm755 completions/zsh \
-		"$pkgdir/usr/share/zsh/site-functions/completions/_$basepkgname"
+  cd "$srcdir/${pkgname%-git}"
+  make PREFIX="$pkgdir/usr" install
 }
