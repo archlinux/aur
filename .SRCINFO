@@ -1,6 +1,6 @@
 pkgbase = skeuos-gtk-theme-git
 	pkgdesc = Light and dark colorful Gtk3.20+ theme
-	pkgver = 20210921.r2.gc08bcb1
+	pkgver = 20211006.r0.gcc944ac
 	pkgrel = 1
 	url = https://github.com/daniruiz/skeuos-gtk
 	arch = any
