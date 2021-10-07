@@ -2,19 +2,24 @@
 
 _pkgname=TAUOLA
 pkgname=tauola++
-pkgver=1.1.6b
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="C++ Interface to Tauola"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://tauolapp.web.cern.ch/tauolapp"
 license=('GPL3')
-depends=(gcc-fortran hepmc lhapdf pythia)
+depends=(gcc-fortran hepmc lhapdf pythia8)
 source=("http://tauolapp.web.cern.ch/tauolapp/resources/${_pkgname}.$pkgver/${_pkgname}.$pkgver-LHC.tar.gz")
-sha256sums=('1c84b7eb3bbd9645c751ae0d2ab998d15732a5da1fe5a28750677d3c6fe5f0e3')
+sha256sums=('3f734e8a967682869cca2c1ffebd3e055562613c40853cc81820d8b666805ed5')
 
 build() {
   cd "${_pkgname}"
-  ./configure --prefix=/usr --with-hepmc=/usr --with-lhapdf=/usr --with-pythia8=/usr
+  ./configure --prefix=/usr \
+              --without-hepmc \
+              --with-hepmc3=/usr \
+              --with-lhapdf=/usr \
+              --with-pythia8=/usr
+
   make
 }
 

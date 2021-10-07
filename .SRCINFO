@@ -1,17 +1,15 @@
 pkgbase = tauola++
 	pkgdesc = C++ Interface to Tauola
-	pkgver = 1.1.6b
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = http://tauolapp.web.cern.ch/tauolapp
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gcc-fortran
 	depends = hepmc
 	depends = lhapdf
-	depends = pythia
-	source = http://tauolapp.web.cern.ch/tauolapp/resources/TAUOLA.1.1.6b/TAUOLA.1.1.6b-LHC.tar.gz
-	sha256sums = 1c84b7eb3bbd9645c751ae0d2ab998d15732a5da1fe5a28750677d3c6fe5f0e3
+	depends = pythia8
+	source = http://tauolapp.web.cern.ch/tauolapp/resources/TAUOLA.1.1.8/TAUOLA.1.1.8-LHC.tar.gz
+	sha256sums = 3f734e8a967682869cca2c1ffebd3e055562613c40853cc81820d8b666805ed5
 
 pkgname = tauola++
-
