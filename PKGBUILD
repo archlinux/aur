@@ -1,7 +1,7 @@
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 pkgname=datadog-agent
-pkgver=7.28.1
+pkgver=7.31.1
 _agentrel=1
 pkgrel=1
 pkgdesc='Datadog Agent: collect metrics and events from your systems and apps'
@@ -24,9 +24,9 @@ sha512sums=('SKIP'
             '20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87562326b21b5ed677032f'
             '2a3e873d88b8f3a5d90591f955894273eb28d0f9b352e54be4f1125d4229a8f1d7eece8bf6ad41b85ee194390821e9c851393fb36ac249069cfdf7470925ce21')
 sha512sums_x86_64=('SKIP'
-                   'a12738d5f02380233277c5ec04fec399fa8da159f395b65daeb11f6d7c027b354ba1a5c8c9848d3d733aa4d941f82aa86fb9776059cf45ef732f94354a62188f')
+                   'cdfecbc1a39e309047cea7f61bca59b2278317d559961c7994d3dd09df2404f8998cbc5c038db645b1361e7923b9d83cd3a813dee0492e52a1161a34b0bcfd1a')
 sha512sums_aarch64=('SKIP'
-                     'ef2d774a6ac4f3d81655a4dc56208b8aed237fbf2d6885bd9edf6048448028cca0eaea1635e99795c10df7904ec9c7fe4461145a236f899d8d8625690f7cb7b4')
+                     'b2b17b09a4b7dc149168e8ff745b93f29b3ed8e7fc1ce19dcbcde0e55df3a635a91f96173b1f04d3b39db9cff45b616286ace6d8e768b50ae21b3fa8df2c5d5d')
 
 
 prepare() {
