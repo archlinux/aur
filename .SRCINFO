@@ -1,0 +1,19 @@
+pkgbase = umlfri2
+	pkgdesc = A flexible DSM modeling tool aimed to help teachers to teach multiple visual modeling languages
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://umlfri.org
+	arch = any
+	license = GPL3
+	depends = python-pyqt5
+	depends = python-lxml
+	depends = python-jinja
+	depends = python-qtconsole
+	depends = python-appdirs
+	depends = python-pyparsing
+	source = umlfri::git+https://github.com/umlfri/umlfri2
+	source = umlfri.desktop
+	sha256sums = SKIP
+	sha256sums = df9dca217849fcf4de8d73fe227bf52d0e9f126f863a8413dcf13386939a2f6b
+
+pkgname = umlfri2

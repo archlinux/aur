@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=UML FRI
+Comment=A flexible DSM modeling tool for teaching
+Categories=Development;
+Exec=umlfri2 %u
+Terminal=false
+Type=Application
