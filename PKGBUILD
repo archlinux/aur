@@ -1,7 +1,7 @@
 # Maintainer:Samuel Fernando Mesa Giraldo <samuelmesa [at] linuxmail.org>
 
 pkgname=mapcache
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A server that implements tile caching to speed up access to WMS layers"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake')
 provides=('mapcache')
 conflicts=('mapcache')
 source=("http://download.osgeo.org/mapserver/mapcache-${pkgver}.tar.gz")
-md5sums=('e6cdc6a088038c7f49903b8dc42008c2')
+md5sums=('6114e95c8abe37716ea6d7591b2915d1')
 
 build() {
   cd ${pkgname}-${pkgver}
