@@ -1,4 +1,4 @@
-# Maintainer: Přemysl Janouch <p.janouch@gmail.com>
+# Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=ponymap-git
 _pkgname=ponymap
 pkgver=r87.9c16e19
@@ -34,7 +34,7 @@ build() {
   rm -rf "$srcdir/$_pkgname-build"
   mkdir "$srcdir/$_pkgname-build"
   cd "$srcdir/$_pkgname-build"
-  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None
   make
 }
 
