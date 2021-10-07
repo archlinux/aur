@@ -2,7 +2,7 @@
 
 pkgname=badwolf
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimalist and privacy-oriented WebKitGTK+ browser."
 url="https://hacktivis.me/projects/badwolf"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,7 +15,7 @@ changelog=changelog
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  PREFIX=/usr ./configure
   make
 }
 
