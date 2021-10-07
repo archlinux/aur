@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features-insiders
-pkgver=1.58.0
+pkgver=1.60.2
 pkgrel=1
 pkgdesc='Unblock some features in Code OSS, including features in VSCode Insiders'
 arch=('any')
@@ -14,7 +14,7 @@ install="${pkgname}.install"
 source=("${pkgname}.hook"
         'patch.sh')
 md5sums=('6ff3e599956e45e9d1a78ac3c88c0454'
-         '7777d82c29e149ca9a2083b300aa37c8')
+         '276de0a56cbe42555fcfa5106659ce75')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
