@@ -1,7 +1,7 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
 pkgname=python-picos
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc='A Python interface to conic optimization solvers.'
 arch=('any')
@@ -16,11 +16,12 @@ optdepends=(
 	'python-pyscipopt: solve using SCIP'
 	'python-smcp: solve using SMCP'
 	'python-swiglpk: solve using GLPK'
+	'python-osqp: solve using OSQP'
 )
 makedepends=('python-setuptools')
 conflicts=('python-picos-git')
 source=("https://gitlab.com/picos-api/picos/-/archive/v${pkgver}/picos-v${pkgver}.tar.gz")
-md5sums=('745f4df0bc84ed4773f9a891bc6cb9f1')
+md5sums=('47f598bf471091dd51ef6ee3f4466a57')
 
 build() {
 	cd "${srcdir}/picos-v${pkgver}"
