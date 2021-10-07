@@ -1,0 +1,20 @@
+pkgbase = gowin-eda-edu
+	pkgver = 1.9.8
+	pkgrel = 1
+	url = http://www.gowinsemi.com.cn/faq.aspx
+	arch = x86_64
+	license = unknown
+	source = http://cdn.gowinsemi.com.cn/Gowin_V1.9.8_Education.tar.gz
+	sha256sums = 5a228caed04335351b7b5f393e36cfb91226a2a6cafbf1d7286e3072467daec6
+
+pkgname = gowin-eda-edu-ide
+	pkgdesc = Gowin EDA IDE - Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)
+	depends = fontconfig
+	depends = freetype2
+	provides = gowin-eda-ide
+	provides = gowin-ide
+
+pkgname = gowin-eda-edu-programmer
+	pkgdesc = Gowin EDA Programmer - Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)
+	provides = gowin-eda-programmer
+	provides = gowin-programmer
