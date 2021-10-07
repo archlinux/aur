@@ -5,7 +5,7 @@
 # Contributor: tze <tze@datalove.me>
 
 pkgname=jcryptool
-pkgver=1.0.4
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="e-learning application for applying and analysing cryptographic algorithms"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("https://github.com/jcryptool/core/releases/download/${pkgver}/${pkgname
         "jcryptool-128.png::${_iconsrc}128x128.png"
         "jcryptool-256.png::${_iconsrc}256x256.png"
         "jcryptool-512.png::${_iconsrc}512x512.png")
-sha512sums=('aec84930a21a32efbf41d0760c4eb41cf7217f5b3bed2ca48990e454a192dcd9889627e2085088f59b687df6ac14c8032e9a04c806c80b3e458f3b8bceaf0594'
+sha512sums=('8af82311b3030d5b912747dc073d42ca3114ed40ba068679701f1701e441f53c7683e719b4b155cc7b2cb1660e7bae47e7cdaf9f9bb28fc190a560bf86d3b677'
             '4b08c526016f27fa78bdcbe0f499236757c9e14e0548da8736d99b0d6f3e85fa7f84ac27b7f4922b2064802e92ec0e508848fb327a519b55f49bc5a0a9bda5e8'
             '02c728049ff612f4c77575aa557850d826fbf40b09e885a9de6e80429020b742f7193d7e0e572dff21a6bf091006f7d8fa7c377ea68b96ac01a60384b1dd1aff'
             '3df55b87975dc5ed5b475fc2cf9c55d21b29d1ec6ef34b8773b7e9c72ff39225c0ab6c34464b04ea57dd5b4d856d63686d78e0741c3f3a1300e276192c72a4c4'
