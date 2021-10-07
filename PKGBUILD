@@ -2,7 +2,7 @@
 
 pkgname=sunamu-git
 _pkgname=sunamu
-pkgver=r54.86fb6f3be9
+pkgver=r73.71943da249
 pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way! (Development version)"
 url="https://github.com/AryToNeX/Sunamu"
@@ -30,7 +30,7 @@ build() {
   # use system electron version
   # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
   electronDist="/usr/lib/electron"
-  electronVer=$(sed s/^v// /usr/lib/electron/version)
+  electronVer=$(pacman -Q $(pacman -Qqo $electronDist) | cut -d " " -f2 | cut -d "-" -f1)
   yarn install
   yarn build:dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
