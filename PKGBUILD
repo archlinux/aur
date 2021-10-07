@@ -4,7 +4,7 @@
 
 pkgname=python-yeelight
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 _commit=2edec00176a3d06bcba90c3e83f13596d127919f
 pkgdesc='Python library for controlling YeeLight RGB bulbs'
 arch=('any')
@@ -12,6 +12,7 @@ url='https://gitlab.com/stavros/python-yeelight'
 license=('BSD')
 depends=('python-future' 'python-ifaddr')
 makedepends=('git' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
+changelog=CHANGELOG.md
 source=("$pkgname::git+$url#commit=$_commit?signed")
 sha256sums=('SKIP')
 validpgpkeys=('3D2E921F15667F0FD5B3017E26EA345ECD4C2A63')
