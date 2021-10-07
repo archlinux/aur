@@ -1,0 +1,25 @@
+pkgbase = icalingua-git
+	pkgdesc = A Linux client for QQ and more
+	pkgver = 2.3.2_df984f9
+	pkgrel = 1
+	url = https://github.com/Icalingua/Icalingua
+	arch = aarch64
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = yarn
+	makedepends = git
+	depends = ffmpeg
+	depends = electron
+	depends = libappindicator-gtk3
+	optdepends = mongodb-bin: Provides storage
+	optdepends = redis: Provides storage
+	provides = electron-qq
+	provides = icalingua
+	conflicts = electron-qq
+	conflicts = icalingua
+	replaces = electron-qq
+	source = git+https://github.com/Icalingua/Icalingua
+	sha256sums = SKIP
+
+pkgname = icalingua-git
