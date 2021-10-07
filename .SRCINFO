@@ -1,0 +1,38 @@
+pkgbase = damask
+	pkgdesc = DAMASK - The Duesseldorf Advanced Material Simulation Kit
+	pkgver = 3.0.0~alpha5
+	pkgrel = 1
+	url = https://damask.mpie.de
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = python-setuptools
+	optdepends = paraview: post-processing
+	source = https://damask3.mpie.de/download/damask-3.0.0-alpha5.tar.xz
+	sha256sums = 2d2b10901959c26a5bb5c52327cdafc7943bc1b36b77b515b0371221703249ae
+
+pkgname = damask
+	depends = python-damask
+	depends = damask-grid
+	depends = damask-mesh
+
+pkgname = damask-grid
+	depends = petsc
+	depends = hdf5-openmpi
+	depends = fftw
+	optdepends = dream3d: pre-processing
+
+pkgname = damask-mesh
+	depends = petsc
+	depends = hdf5-openmpi
+	optdepends = neper: pre-processing
+
+pkgname = python-damask
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-h5py
+	depends = python-pyaml
+	optdepends = seaborn: post-processing
+	optdepends = jupterlab: comfortable shell
+	optdepends = ipython: comfortable shell
