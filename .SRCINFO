@@ -1,16 +1,15 @@
 pkgbase = web-to-webm
 	pkgdesc = Gui tool for extracting webm clips from Youtube and many other video hosting services
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://solusipse.github.io/web-to-webm/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = youtube-dl
 	depends = ffmpeg
-	depends = qt5-base
+	depends = qt5-webkit
 	source = https://github.com/solusipse/web-to-webm/archive/0.7.2.tar.gz
 	sha256sums = e97327b5ec2fbdaf67b945357bb188fd2451a831463d73bdb81aadc4f6a2b5e1
 
 pkgname = web-to-webm
-
