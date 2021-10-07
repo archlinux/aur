@@ -1,12 +1,14 @@
 pkgbase = python-logging_tree
 	pkgdesc = Introspect and display the logger tree inside "logging"
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brandon-rhodes/logging_tree
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
+	provides = python-logging-tree
+	replaces = python-logging-tree
 	source = python-logging_tree-1.9.tar.gz::https://github.com/brandon-rhodes/logging_tree/archive/1.9.tar.gz
 	sha256sums = 3e15b37911efcdbc7195199aa20a463fd37a7385251a90600b5df1eb28569c35
 
