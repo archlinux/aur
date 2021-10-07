@@ -13,7 +13,7 @@ pkgbase = ly
 	conflicts = ly-git
 	conflicts = python-ly-git
 	backup = etc/ly/config.ini
-	source = git+https://github.com/nullgemm/ly.git#tag=v0.5.2
+	source = git+https://github.com/nullgemm/ly.git#tag=v0.5.3
 	source = git+https://github.com/nullgemm/argoat.git
 	source = git+https://github.com/nullgemm/configator.git
 	source = git+https://github.com/nullgemm/dragonfail.git
