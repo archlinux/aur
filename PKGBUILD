@@ -6,7 +6,7 @@
 
 pkgname=xdebug7
 provides=('xdebug')
-pkgver=3.0.4
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="PHP debugging extension. For PHP7 package."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('php7')
 backup=('etc/php7/conf.d/xdebug.ini')
 source=("https://xdebug.org/files/xdebug-${pkgver}.tgz"
 	'xdebug.ini')
-sha256sums=('b27290491f4634b0cd3badfc3a2be98fb1e3c0c3710a706724d8b195baad72af'
+sha256sums=('b956930adaef4a20e7573ad637a2f0e7f9a94ae2adaf122856bc8bf0d1e39d3a'
             '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
 
 build() {
