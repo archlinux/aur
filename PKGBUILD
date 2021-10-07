@@ -9,7 +9,6 @@ url="https://trueskill.org/"
 license=('BSD')
 depends=('python-six')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sublee/trueskill/archive/v$pkgver.tar.gz")
 sha256sums=('633459b2cc5765bf49c2202dea1ac0e7d51bb5a9a5fa093c4a5969ef23a3bd50')
 
