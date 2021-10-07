@@ -1,13 +1,12 @@
 pkgbase = shared-mime-info-gnome
 	pkgdesc = GNOME Shared MIME Info
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 40.5
+	pkgrel = 1
 	arch = x86_64
 	license = GPL2
 	depends = shared-mime-info
 	options = !makeflags
 	source = mimeapps.list
-	sha256sums = a8a9a422ccde9d608912a8435db7870c7ad5c78086922e3f889a90d1694a8eaf
+	sha256sums = 60b95e7597099e53e4bbf8a2e354824549c89bfe6586ca920af945b9023b3922
 
 pkgname = shared-mime-info-gnome
-
