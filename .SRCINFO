@@ -1,6 +1,6 @@
 pkgbase = whizard
 	pkgdesc = The Generator of Monte Carlo Event Generators for Tevatron, LHC, ILC, CLIC, CEPC, FCC-ee, FCC-hh, SppC and other High Energy Physics Experiments
-	pkgver = 2.8.5
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://whizard.hepforge.org
 	arch = x86_64
@@ -17,8 +17,7 @@ pkgbase = whizard
 	optdepends = fastjet: FastJet for handling event data
 	optdepends = looptools: LoopTools loop integral library
 	optdepends = hepmc: HepMC for handling event data
-	source = http://whizard.hepforge.org/downloads/whizard-2.8.5.tar.gz
-	sha256sums = 0f633e5620aa7dd50336b492e8a76bfae15b15943ea842010346ad7610818ecd
+	source = http://whizard.hepforge.org/whizard-3.0.1.tar.gz
+	sha256sums = 1463abd6c50ffe72029abc6f5a7d28ec63013852bfe5914cb464b58202c1437c
 
 pkgname = whizard
-

@@ -1,7 +1,7 @@
 # Maintainer: Chan Beom Park <cbpark@gmail.com>
 
 pkgname=whizard
-pkgver=2.8.5
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="The Generator of Monte Carlo Event Generators for Tevatron, LHC, ILC, CLIC, CEPC, FCC-ee, FCC-hh, SppC and other High Energy Physics Experiments"
 arch=("x86_64")
@@ -14,8 +14,8 @@ optdepends=('pythia8: PYTHIA8 for shower and hadronization'
             'fastjet: FastJet for handling event data'
             'looptools: LoopTools loop integral library'
             'hepmc: HepMC for handling event data')
-source=("${url}/downloads/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0f633e5620aa7dd50336b492e8a76bfae15b15943ea842010346ad7610818ecd')
+source=("${url}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('1463abd6c50ffe72029abc6f5a7d28ec63013852bfe5914cb464b58202c1437c')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -34,7 +34,9 @@ build() {
                --enable-looptools \
                --with-precision=quadruple \
                CPPFLAGS="-I/usr/include/tirpc" LIBS="-ltirpc" \
-               CXXFLAGS="-std=c++17"
+               CXXFLAGS="-std=c++17" \
+               CFLAGS="-Wno-error=format-security"
+
   make
 }
 
