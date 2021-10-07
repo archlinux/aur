@@ -1,7 +1,7 @@
-# Maintainer: Přemysl Janouch <p.janouch@gmail.com>
+# Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=sensei-raw-ctl-git
 _pkgname=sensei-raw-ctl
-pkgver=r25.2f70930
+pkgver=r48.5ffdd26
 pkgrel=1
 pkgdesc="SteelSeries Sensei Raw configuration tool"
 url="https://git.janouch.name/p/sensei-raw-ctl"
@@ -30,7 +30,7 @@ build() {
   rm -rf "$srcdir/$_pkgname-build"
   mkdir "$srcdir/$_pkgname-build"
   cd "$srcdir/$_pkgname-build"
-  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None
   make
 }
 
