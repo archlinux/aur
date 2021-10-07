@@ -2,6 +2,7 @@
 Description=Prometheus exporter for S.M.A.R.T. metrics using smartctl
 Requires=network-online.target
 After=network-online.target
+ConditionVirtualization=false
 
 [Service]
 Type=simple
@@ -18,7 +19,7 @@ ProtectSystem=strict
 ProtectHome=true
 #PrivateUsers=yes       # this breaks smartctl
 PrivateTmp=true
-#PrivateDevices=true    # this is actually needed to access the GPUs
+#PrivateDevices=true    # this is actually needed to access the disks
 ProtectHostname=true
 #ProtectClock=true      # this is actually needed - no idea why...
 ProtectKernelTunables=true
