@@ -1,7 +1,7 @@
 pkgbase = flannel-cni-plugin
 	pkgdesc = Flannel cni plugin, maintained by flannel-io
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flannel-io/cni-plugin
 	arch = x86_64
 	license = Apache

@@ -2,7 +2,7 @@
 
 pkgname=flannel-cni-plugin
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Flannel cni plugin, maintained by flannel-io'
 arch=(x86_64)
 url="https://github.com/flannel-io/cni-plugin"
@@ -15,7 +15,7 @@ sha512sums=('cfd966568095f82ff5af5d49f40f723454f70df5ee1c30dd27210afd2b71f7de4cd
 b2sums=('22b87abbbfa56c9dac4e9023d5c7ad905ddc59ebd8994c3faf902f591f682a8181ddc7f6356b81d4e5a5153cc9d06e62bd17a46f1f866c51cabe73c681d0dbe7')
 
 build() {
-  cd cni-plugin-main
+  cd cni-plugin-$pkgver
 
   go mod vendor && go mod tidy
 
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  cd cni-plugin-main
+  cd cni-plugin-$pkgver
   install -vDm755 bin/* -t "$pkgdir/usr/lib/cni/"
 
   # Some CNI stuff would build their binaries into /usr/lib/cni with the
