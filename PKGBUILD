@@ -1,32 +1,34 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-scruffington
-pkgver=0.3.7
+pkgver=0.3.8.2
 pkgrel=1
-pkgdesc="Handles the loading and management of configuration files, plugins, and other filesystem resources such as temporary files and directories, log files, etc"
+pkgdesc="scruffy: boilerplate janitor for Python"
 arch=('any')
-depends=('python'
-         'python-six'
-         'python-sqlalchemy'
-         'python-yaml')
-makedepends=('python-setuptools')
 url="https://github.com/snare/scruffy"
-license=('Beerware')
-options=('!emptydirs')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/snare/scruffy/tar.gz/v$pkgver)
-md5sums=('169a8dc734bdef6d5650aaa96308d7af')
-sha256sums=('43671fcc6428533e68773490eec55e54a2dd205adbbd067bb5057ddff6ed0595')
+license=('MIT')
+depends=('python-six>=1.10.0' 'python-yaml>=3.11')
+makedepends=('python-setuptools' 'python-sphinx')
+checkdepends=('python-nose')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('36bd10f44a5329590e4ea7a6746645c1f9fa05d03b62c8c713676c65dbff2392')
 
 build() {
-  cd "$srcdir/scruffy-$pkgver"
+	cd "scruffy-$pkgver"
+	python setup.py build
+	cd doc
+	make man
+}
 
-  msg2 'Building...'
-  python setup.py build
+check() {
+	cd "scruffy-$pkgver"
+	nosetests
 }
 
 package() {
-  cd "$srcdir/scruffy-$pkgver"
-
-  msg2 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+	cd "scruffy-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 doc/_build/man/scruffy.1 -t "$pkgdir/usr/share/man/man1/"
 }
