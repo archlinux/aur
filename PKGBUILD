@@ -2,25 +2,16 @@
 # Maintainer: Guilhem Saurel <gsaurel at laas dot fr>
 
 pkgname=urdfdom
-pkgver=1.0.4
-pkgrel=4
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="The URDF (U-Robot Description Format) library provides core data structures and a simple XML parsers for populating the class data structures from an URDF file."
 arch=('i686' 'x86_64')
 url="https://github.com/ros/$pkgname"
 license=('BSD')
 depends=('tinyxml' 'console-bridge' 'urdfdom-headers')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-    $url/pull/141.patch)
-sha256sums=('8f3d56b0cbc4b84436d8baf4c8346cd2ee7ffb257bba5ddd9892c41bf516edc4'
-    'fc50cc69d0be8eab567b73f13376769b026255baac2d97d50a5f10ca5a6189e5')
-
-prepare() {
-    cd "$pkgbase-$pkgver"
-
-    # ref https://github.com/ros/urdfdom/pull/141
-    patch -p1 -i "$srcdir/141.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('3c780132d9a0331eb2116ea5dac6fa53ad2af86cb09f37258c34febf526d52b4')
 
 build() {
     cd "$pkgname-$pkgver"
