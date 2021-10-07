@@ -1,0 +1,17 @@
+pkgbase = dt-git
+	pkgdesc = Syncing dotfiles and more
+	pkgver = v0.1.0.10.g450a984
+	pkgrel = 1
+	url = https://github.com/blurgyy/dt
+	arch = any
+	license = MIT OR Apache 2.0
+	makedepends = git
+	makedepends = rustup
+	depends = cargo
+	provides = dt-cli
+	conflicts = dt
+	conflicts = dt-bin
+	source = git+https://github.com/blurgyy/dt.git
+	sha256sums = SKIP
+
+pkgname = dt-git
