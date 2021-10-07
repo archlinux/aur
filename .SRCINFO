@@ -1,6 +1,6 @@
 pkgbase = hex-git
 	pkgdesc = Hex viewer
-	pkgver = r22.233a69e
+	pkgver = r79.252e349
 	pkgrel = 1
 	url = https://git.janouch.name/p/hex
 	arch = i686
@@ -21,4 +21,3 @@ pkgbase = hex-git
 	md5sums = SKIP
 
 pkgname = hex-git
-

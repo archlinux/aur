@@ -1,7 +1,7 @@
-# Maintainer: Přemysl Janouch <p.janouch@gmail.com>
+# Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=hex-git
 _pkgname=hex
-pkgver=r22.233a69e
+pkgver=r79.252e349
 pkgrel=1
 pkgdesc="Hex viewer"
 url="https://git.janouch.name/p/hex"
@@ -33,7 +33,7 @@ build() {
   rm -rf "$srcdir/$_pkgname-build"
   mkdir "$srcdir/$_pkgname-build"
   cd "$srcdir/$_pkgname-build"
-  cmake "$srcdir/$_pkgname" -DCMAKE_BUILD_TYPE=Release \
+  cmake "$srcdir/$_pkgname" -DCMAKE_BUILD_TYPE=None \
 	  -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
