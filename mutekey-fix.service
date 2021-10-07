@@ -1,0 +1,8 @@
+[Unit]
+Descrition=GPD Win Max mute key fix
+
+[Service]
+ExecStart=/usr/local/bin/mutekey-fix
+
+[Install]
+WantedBy=multi-user.target

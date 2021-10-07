@@ -1,0 +1,13 @@
+pkgbase = gpd-winmax-mutekey-fix
+	pkgdesc = Mute key fix for GPD Win Max
+	pkgver = 1.0
+	pkgrel = 1
+	install = PKGBUILD
+	arch = any
+	license = gpl
+	source = mutekey-fix.service
+	source = mutekey-fix
+	sha256sums = 501189aecde241fcaa7eb569000ab99d7d142bf4c1f1dc4e79e381cd3892fd69
+	sha256sums = 66fa38cafe47d339a81a6f83025d1179c0fe2482a74533c93457bda08316b677
+
+pkgname = gpd-winmax-mutekey-fix

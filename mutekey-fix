@@ -1,0 +1,2 @@
+#!/bin/bash
+echo 369-370,160,174,176 > /sys/bus/serio/devices/serio0/force_release
