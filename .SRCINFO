@@ -1,18 +1,19 @@
 pkgbase = lua-luacov-coveralls
 	pkgdesc = LuaCov reporter for coveralls.io service
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moteus/luacov-coveralls
 	arch = any
 	license = MIT
 	makedepends = luarocks
-	depends = lua53
-	depends = lua53-dkjson
-	depends = lua53-filesystem
-	depends = lua53-luacov
-	depends = lua53-path
+	depends = lua
+	depends = lua-dkjson
+	depends = lua-filesystem
+	depends = lua-luacov
+	depends = lua-path
+	conflicts = lua53-luacov-coveralls
+	replaces = lua53-luacov-coveralls
 	source = luacov-coveralls-0.2.3.tar.gz::https://github.com/moteus/luacov-coveralls/archive/v0.2.3.tar.gz
 	sha256sums = 4fc293b3780783f263469d49fb4d17b2151ba2a7693377673d1cb8eb1576d1d3
 
-pkgname = lua53-luacov-coveralls
-
+pkgname = lua-luacov-coveralls
