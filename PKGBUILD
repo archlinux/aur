@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('python-dbus' 'python-mpd2' 'python-gobject')
 provides=('mpdris2')
 conflicts=('mpdris2')
-makedepends=('intltool')
+makedepends=('git' 'intltool')
 optdepends=(
   'python-mutagen: read covers from music files'
   'libnotify: notifications on track change'

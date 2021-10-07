@@ -5,6 +5,7 @@ pkgbase = mpdris2-git
 	url = https://github.com/eonpatapon/mpDris2
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = intltool
 	depends = python-dbus
 	depends = python-mpd2
