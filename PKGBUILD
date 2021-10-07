@@ -7,14 +7,14 @@ ROOT_LABEL='Archlinux'
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=98
+_microarchitecture=0
 
 ## --- PKGBUILD
 
 ## Major kernel version
 _major=5.10
 ## Minor kernel version
-_minor=68
+_minor=71
 
 pkgbase=linux-multimedia-lts
 #pkgver=${_major}
@@ -42,11 +42,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('1baa830e3d359464e3762c30b96c1ba450a34d97834a57e455618c99de229421'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
+sha256sums=('02e688d27d963f0325f5cd30e383329cf00ab23db46d1586d6e848e3f992a497'
+			'SKIP'
+			'SKIP'
+			'SKIP'
+			'1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -67,7 +67,8 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-clear-patches.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-base.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0005-v5.10_undead-pds099o.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs-additions.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex2_interface.patch
@@ -90,11 +91,6 @@ prepare() {
   msg2 "Disabling NUMA from kernel config..."
   scripts/config --disable CONFIG_NUMA
 
-  ### Set PDS as the default CPU scheduler
-  msg2 "Setting Default CPU Scheduler..."
-  scripts/config --disable CONFIG_SCHED_BMQ
-  scripts/config --enable CONFIG_SCHED_PDS
-
   ### Set tickrate to 1000HZ
   msg2 "Setting tick rate to 1k..."
   scripts/config --disable CONFIG_HZ_300
@@ -113,21 +109,6 @@ prepare() {
   ### Enable Esync Support
   msg2 "Enable winesync support..."
   scripts/config --enable CONFIG_WINESYNC
-
-  ### Set performance as default governor
-  msg2 "Setting performance governor..."
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_POWERSAVE
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
-  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
 
   ### Enable Full Tickless Timer
   msg2 "Enabling Full Tickless..."
