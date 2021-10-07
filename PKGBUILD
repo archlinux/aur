@@ -1,8 +1,8 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=json-rpc-shell-git
 _pkgname=json-rpc-shell
-pkgver=v1.0.0.r10.gee79249
-pkgrel=2
+pkgver=v1.1.0.r30.g990cf5a
+pkgrel=1
 pkgdesc="Shell for JSON-RPC 2.0 HTTP queries"
 url="https://git.janouch.name/p/json-rpc-shell"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ build() {
   rm -rf "$srcdir/$_pkgname-build"
   mkdir "$srcdir/$_pkgname-build"
   cd "$srcdir/$_pkgname-build"
-  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None
   make
 }
 

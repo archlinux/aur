@@ -1,7 +1,7 @@
 pkgbase = json-rpc-shell-git
 	pkgdesc = Shell for JSON-RPC 2.0 HTTP queries
-	pkgver = v1.0.0.r10.gee79249
-	pkgrel = 2
+	pkgver = v1.1.0.r30.g990cf5a
+	pkgrel = 1
 	url = https://git.janouch.name/p/json-rpc-shell
 	arch = i686
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = json-rpc-shell-git
 	md5sums = SKIP
 
 pkgname = json-rpc-shell-git
-
