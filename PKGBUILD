@@ -3,10 +3,10 @@
 
 pkgname=pockyt
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="automate and manage your pocket collection"
 url="https://github.com/arvindch/pockyt"
-depends=('python')
+depends=('python' 'python-parse')
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
