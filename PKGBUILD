@@ -1,6 +1,6 @@
 # Maintainer: LGiki <lgiki at lgiki dot net>
 pkgname=gnome-shell-extension-simple-system-monitor
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Show current CPU usage, memory usage and net speed on panel."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/LGiki/gnome-shell-extension-simple-system-monitor"
 license=('GPL')
 depends=('gnome-shell')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('86178281d1f4f04f269d34d10987fbd9e476c2a2c8dcd458c84deb69ae0fc621204a59f4f76fe8f3d275ab0686147dcfb2f555839d9b49d2ad3ce99cb37b2d42')
+sha512sums=('3c679362919f4d0b7ad755dec26fde4e95adb5c8ad0cb63b657026c451a9f750c26c20740edeb36b3f70b8b02516cf802782ba9d5abf53b01d7985488721ad73')
 
 package() {
     _uuid="ssm-gnome@lgiki.net"

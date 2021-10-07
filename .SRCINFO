@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-simple-system-monitor
 	pkgdesc = Show current CPU usage, memory usage and net speed on panel.
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	url = https://github.com/LGiki/gnome-shell-extension-simple-system-monitor
 	arch = any
 	license = GPL
 	depends = gnome-shell
-	source = gnome-shell-extension-simple-system-monitor-2.tar.gz::https://github.com/LGiki/gnome-shell-extension-simple-system-monitor/archive/v2.tar.gz
-	sha512sums = 86178281d1f4f04f269d34d10987fbd9e476c2a2c8dcd458c84deb69ae0fc621204a59f4f76fe8f3d275ab0686147dcfb2f555839d9b49d2ad3ce99cb37b2d42
+	source = gnome-shell-extension-simple-system-monitor-3.tar.gz::https://github.com/LGiki/gnome-shell-extension-simple-system-monitor/archive/v3.tar.gz
+	sha512sums = 3c679362919f4d0b7ad755dec26fde4e95adb5c8ad0cb63b657026c451a9f750c26c20740edeb36b3f70b8b02516cf802782ba9d5abf53b01d7985488721ad73
 
 pkgname = gnome-shell-extension-simple-system-monitor
