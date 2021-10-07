@@ -20,6 +20,7 @@ build() {
 
 package() {
     cd ${srcdir}/${pkgname}-${pkgver}
+    PBR_VERSION=$pkgver \
     python setup.py install \
         --skip-build \
         --optimize=1 \
