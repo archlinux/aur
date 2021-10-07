@@ -1,16 +1,14 @@
 pkgbase = microblocks
 	pkgdesc = MicroBlocks is a blocks pogramming language for physical computing inspired by Scratch. It runs on microcontrollers such as the micro:bit, Calliope mini, AdaFruit Circuit Playground Express, and many others.
-	pkgver = 1.0.14
+	pkgver = 1.1.16
 	pkgrel = 1
 	url = http://microblocks.fun
 	install = microblocks.install
 	arch = x86_64
-	groups = 
 	license = MPL2
 	options = !strip
 	options = !emptydirs
-	source = https://microblocks.fun/downloads/v1.0.14/packages/ublocks-amd64.deb
-	sha512sums = 9ed526fa278319efa0ee3841d5a4dcf0a4dc9547f2ec22511c371f6f82bbadc8416f535f2c74d8b2530f7bfa7a9e57b97eb73a3de45169d25f2d835d6c889375
+	source = https://microblocks.fun/downloads/v1.1.16/packages/ublocks-amd64.deb
+	sha512sums = 17107c06251e1dcb7d69bc7733e4230f8df16d447f15dfb6775a059e8afeb173bfc491bda4bec50bd1692030a432a24ca5d1ea6812e64a45782e95911805fb02
 
 pkgname = microblocks
-
