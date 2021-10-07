@@ -1,0 +1,23 @@
+diff -rupN a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2021-07-13 00:54:03.000000000 +0900
++++ b/Makefile.am	2021-10-07 14:07:58.321394685 +0900
+@@ -15,7 +15,7 @@ include src/softsusy.amk
+ DOCFILES = doc/rpcManual.pdf doc/rpvManual.pdf doc/neutManual.pdf \
+ 	   doc/nmssmManual.pdf doc/threeLoop.pdf doc/ho.pdf doc/decays.pdf
+ #include doc/doc.amk
+-include inOutFiles/inOut.amk
++#include inOutFiles/inOut.amk
+ 
+ dist_pkgdata_DATA += CHANGES GUIDELINES COPYING $(DOCFILES)
+ 
+@@ -37,8 +37,8 @@ updateWeb: dist
+ 	scp -P 222 -r CHANGES allanach@login.hepforge.org:~/softsusy/public_html/CHANGES.${VERSION}.shtml; \
+ 	rm -fr html *.tar.gz
+ 
+-install-data-local:
+-	rm -f softsusy.x softsusy-nmssm.x softpoint.x rpvsoftsusy.x rpvneut.x *.la
++#install-data-local:
++#	rm -f softsusy.x softsusy-nmssm.x softpoint.x rpvsoftsusy.x rpvneut.x *.la
+ 
+ # For distributions: don't re-make the docs
+ dist-hook:
