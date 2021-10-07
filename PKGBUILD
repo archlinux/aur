@@ -9,8 +9,8 @@ pkgname=(
   ppsspp
   ppsspp-assets
 )
-pkgver=1.11.3
-pkgrel=2
+pkgver=1.12
+pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
@@ -31,7 +31,7 @@ makedepends=(
   snappy
   zlib
 )
-_tag=f7ace3b8ee33e97e156f3b07f416301e885472c5
+_tag=3b8cab724fc3685e52b63532472fde1b04b31acf
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kingcom/armips.git
@@ -45,6 +45,7 @@ source=(
   armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
   ppsspp-sdl.desktop
   ppsspp-qt.desktop
+  ppsspp-system-zstd.patch
 )
 b2sums=('SKIP'
         'SKIP'
@@ -57,7 +58,8 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'c6bcdfedee866dfdcc82a8c333c31ff73ed0beec65b63acec8bc8186383c0bc9f0912f21bb9715b665e8dc1793b1a85599761f9037856fa54ad8aa3bfdbfd468'
-        '328e2ba47b78d242b0ec6ba6bfa039c77a36d1ef7246e5c2c2432d8e976e9360baf505eb05f48408ede1a30545cbbb7f875bf5ebd0252cef35523d449b8254a0')
+        '328e2ba47b78d242b0ec6ba6bfa039c77a36d1ef7246e5c2c2432d8e976e9360baf505eb05f48408ede1a30545cbbb7f875bf5ebd0252cef35523d449b8254a0'
+        'c9fefb1456341f8bdc66ff787dd45e849c44a927dea7d9453ae507ed8d03e440651afe5795f929995a4e55a3b44ffb19fc1105b5621ec4917c8d17250dda1259')
 
 pkgver() {
   cd ppsspp
@@ -66,6 +68,8 @@ pkgver() {
 
 prepare() {
   cd ppsspp
+
+  patch -Np1 -i ../ppsspp-system-zstd.patch
 
   for submodule in assets/lang ext/{glslang,miniupnp} ffmpeg; do
     git submodule init ${submodule}
@@ -98,6 +102,7 @@ build() {
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
+    -DUSE_SYSTEM_ZSTD=ON \
     -DUSING_QT_UI=OFF
   cmake --build build-sdl
   cmake -S ppsspp -B build-qt -G Ninja \
@@ -107,6 +112,7 @@ build() {
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
+    -DUSE_SYSTEM_ZSTD=ON \
     -DUSING_QT_UI=ON
   cmake --build build-qt
 }
@@ -124,6 +130,7 @@ package_ppsspp() {
     sdl2
     snappy
     zlib
+    zstd
   )
 
   install -Dm 755 build-sdl/PPSSPPSDL -t "${pkgdir}"/usr/bin/
