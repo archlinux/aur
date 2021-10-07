@@ -1,6 +1,6 @@
 pkgbase = diodon
 	pkgdesc = GTK+ clipboard manager
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://launchpad.net/diodon
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = diodon
 	depends = libpeas
 	depends = xorg-server-xvfb
 	depends = zeitgeist
-	source = https://launchpad.net/diodon/trunk/1.11.0/+download/diodon-1.11.0.tar.xz
-	sha256sums = f5ce0f4250f362360b168bde243cd3049ff994dc01b18bdbdd4f9ab956ef6a63
+	source = diodon-1.11.1.tar.xz::https://launchpad.net/diodon/trunk/1.11.1/+download/diodon-1.11.1.tar.xz
+	sha256sums = a494b5b50210c5ff21b35c4e3fd72ba2b846462eeab5ce69fcb28dadcded3912
 
 pkgname = diodon
