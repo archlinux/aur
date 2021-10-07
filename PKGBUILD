@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=sdtui-git
 _pkgname=sdtui
-pkgver=r180.f15fc0f
+pkgver=r194.20fcf2a
 pkgrel=1
 pkgdesc="StarDict terminal UI"
 url="https://git.janouch.name/p/sdtui"
@@ -34,7 +34,7 @@ build() {
   rm -rf "$srcdir/$_pkgname-build"
   mkdir "$srcdir/$_pkgname-build"
   cd "$srcdir/$_pkgname-build"
-  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None
   make
 }
 
