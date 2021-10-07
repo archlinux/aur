@@ -6,7 +6,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Syncing dotfiles and more"
 arch=("any")
@@ -21,7 +21,7 @@ makedepends=(
 checkdepends=()
 optdepends=()
 provides=("dt-cli")
-conflicts=("dt-git" "dt-bin")
+conflicts=("dt-cli-git" "dt-cli-bin")
 replaces=()
 backup=()
 options=()
