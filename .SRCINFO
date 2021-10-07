@@ -1,12 +1,12 @@
 pkgbase = python-sherpa
 	pkgdesc = Modeling and fitting package for scientific data analysis
-	pkgver = 4.13.1
+	pkgver = 4.14.0
 	pkgrel = 1
 	url = http://cxc.cfa.harvard.edu/contrib/sherpa/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = python>=3.5
+	checkdepends = python-pytest-xvfb
 	makedepends = python-numpy
 	makedepends = fftw
 	makedepends = python-setuptools
@@ -15,15 +15,15 @@ pkgbase = python-sherpa
 	makedepends = graphviz
 	makedepends = python-nbsphinx>=0.8.6
 	makedepends = pandoc
-	source = https://files.pythonhosted.org/packages/source/s/sherpa/sherpa-4.13.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/sherpa/sherpa-4.14.0.tar.gz
 	source = sherpa_local_fftw.patch
-	md5sums = cdd0a6677e2100e6a98a14355fee9249
+	md5sums = 05674dfa5a616a34acac02c4d336f0c1
 	md5sums = d1823cc7683442d92450fadff7aed362
 
 pkgname = python-sherpa
 	install = python-sherpa.install
-	depends = python>=3.5
-	depends = python-numpy>=1.7.0
+	depends = python>=3.7
+	depends = python-numpy>=1.17.0
 	depends = fftw
 	optdepends = python-matplotlib: Graphical output
 	optdepends = python-astropy>=3.2.1: Data I/O support
