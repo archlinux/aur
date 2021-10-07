@@ -1,3 +1,12 @@
+=== Morgen 2.2.6
+Improvements
+- Often an event timezone differs from the current local timezone. We have improved the event detail widget to show both the event original time and the time in the local timezone. Moreover, when the start and end timezones are different (long flights are a common example), Morgen now shows both. 
+
+Bug Fixes
+- It is now possible to select and copy text from the Notes field of an event that is not editable.
+- Fixed an issue causing some yearly events to be displayed every month.
+- Fixed an issue preventing the correct update of a weekly event series when the weekday is changed.
+
 === Morgen 2.2.5
 New
 - You can now define the auto-refresh interval for calendar subscriptions (iCalendar feeds). If you are working with a highly dynamic calendar, you might want to use a refresh interval of 5, 15, or 60 minutes. Instead, if you know that the calendar does not change often, or if it contains a large number of events, you can set the refresh interval to 1 day to save resources.
