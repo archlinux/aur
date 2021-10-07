@@ -14,6 +14,7 @@ depends=(
 )
 makedepends=(
 	cargo
+	clang
 	meson
 )
 source=("${url}/-/archive/${pkgver}/decoder-${pkgver}.tar.gz")
