@@ -3,8 +3,8 @@
 
 pkgbase=freetype2-git
 pkgname=(freetype2-git freetype2-demos-git freetype2-docs-git)
-pkgver=2.11.0+p0+g801cd842e
-pkgrel=2
+pkgver=2.11.0+p110+g842ec5ed6
+pkgrel=1
 epoch=1
 pkgdesc="Font rasterization library (from git)"
 url="https://www.freetype.org/"
@@ -24,11 +24,11 @@ source=(git+https://gitlab.freedesktop.org/freetype/freetype.git
         freetype2.sh)
 sha256sums=('SKIP'
             'SKIP'
-            'e606bdba5c0ee698902886140e4643551ffc8327b1b7d2b0c9129d1f93b1f36c'
-            '17ab1609cdbcaba3c5975f5cf1ffd078e067d560f906d5507390d41997e6c468'
-            '561d2f2503d180b796f868470612610f6d7fcb34efa0620ecab38fd39002e27a'
-            '9c068a984e7b9a27ff9e709839d522b66815ac4e8c7a5bd4ea0224335f7f2ef6'
-            '5b6f2292e7956510c6729c0de1a86be66886d9d10c8723fe399b6eb42003d8ac'
+            '663310ef70f7830de462fb8964ee4fa1d49ad4aeb1a6eae5857707e161039a53'
+            '17cd4bd0c650b9bdd3bc30581ad6457524db14ec34b56f98e243357c3ab4bc05'
+            '0607ac8176d4f08bcfb78d07bdc2c66fcbe7dfde6c82a0e98d6e625597442fd0'
+            '6e5192dc08119e32992eee5a15595e131adcc9d2411066ca8691bfe2af14d97e'
+            '27b2d2358e2d0488d4a7f714986e311de514ab8e173f11120395784894fdd2a4'
             'f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467')
 validpgpkeys=(58E0C111E39F5408C5D3EC76C1A60EACE707FDA5) # Werner Lemberg <wl@gnu.org>
 

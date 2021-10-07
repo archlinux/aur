@@ -5,11 +5,10 @@ Subject: [PATCH] Run docwriter via venv
 
 ---
  builds/meson/generate_reference_docs.py | 6 ++++--
- meson.build                             | 2 +-
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/builds/meson/generate_reference_docs.py b/builds/meson/generate_reference_docs.py
-index 15d9b06600..124c174ff5 100644
+index 15d9b066005e..124c174ff570 100644
 --- a/builds/meson/generate_reference_docs.py
 +++ b/builds/meson/generate_reference_docs.py
 @@ -65,22 +65,24 @@ def main():
@@ -39,16 +38,3 @@ index 15d9b06600..124c174ff5 100644
      )
      return 0
  
-diff --git a/meson.build b/meson.build
-index 0eb780bfd6..295a3853f8 100644
---- a/meson.build
-+++ b/meson.build
-@@ -392,7 +392,7 @@ gen_docs = custom_target('freetype2 reference documentation',
-   command: [python_exe,
-     files('builds/meson/generate_reference_docs.py'),
-     '--version=' + meson.project_version(),
--    '--input-dir=' + meson.source_root(),
-+    '--input-dir=' + meson.current_source_dir(),
-     '--output-dir=@OUTPUT@'
-   ],
- )
