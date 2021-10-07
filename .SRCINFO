@@ -1,7 +1,7 @@
 pkgbase = ly
 	pkgdesc = TUI display manager
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.5.3
+	pkgrel = 0
 	url = https://github.com/nullgemm/ly
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,8 @@ pkgbase = ly
 	source = git+https://github.com/nullgemm/ly.git#tag=v0.5.2
 	source = git+https://github.com/nullgemm/argoat.git
 	source = git+https://github.com/nullgemm/configator.git
-	source = git+https://github.com/nullgemm/ctypes.git
 	source = git+https://github.com/nullgemm/dragonfail.git
 	source = git+https://github.com/nullgemm/termbox_next.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

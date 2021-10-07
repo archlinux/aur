@@ -1,7 +1,7 @@
 # Maintainer: nullgemm <nullgemm@mailbox.org>
 pkgname=ly
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=0
 pkgdesc="TUI display manager"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/nullgemm/ly"
@@ -13,11 +13,9 @@ backup=('etc/ly/config.ini')
 source=("git+https://github.com/nullgemm/${pkgname}.git#tag=v${pkgver}"
         "git+https://github.com/nullgemm/argoat.git"
         "git+https://github.com/nullgemm/configator.git"
-        "git+https://github.com/nullgemm/ctypes.git"
         "git+https://github.com/nullgemm/dragonfail.git"
         "git+https://github.com/nullgemm/termbox_next.git")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -25,9 +23,8 @@ sha256sums=('SKIP'
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	cp .github .gitmodules
 	git submodule init
-	for _i in argoat configator ctypes dragonfail termbox_next; do
+	for _i in argoat configator dragonfail termbox_next; do
 		git config submodule.sub/${_i}.url $srcdir/${_i}
 	done
 	git submodule update
