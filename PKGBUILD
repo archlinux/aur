@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ip2geo'
-pkgver='1.1.4'
+pkgver='1.1.5'
 pkgrel='1'
 pkgdesc='Import ipgeo data to files for nginx geoip module'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url="https://github.com/m-messiah/${pkgname}"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e60d54b2a93771ab60b07cfce77d291bffb49d83123674c57ef90513d9a8341a')
+sha256sums=('cee63b8f9658e38b265c4c3dcf4b8c31de863f137c63106cd9111a8d37428a48')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
