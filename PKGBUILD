@@ -67,13 +67,6 @@ package() {
   rm -f "${pkgdir}/usr/lib/libpython${_pymajver}.so"
   rm -f "${pkgdir}/usr/share/man/man1/python${_pymajver}.1"
 
-  # Fix FS#22552
-  ln -sf ../../libpython${_pybasever}m.so \
-    "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}-${CARCH}-linux-gnu/libpython${_pybasever}m.so"
-
-  # Fix pycairo build
-  ln -sf python${_pybasever}m-config "${pkgdir}/usr/bin/python${_pybasever}-config"
-
   # Clean-up reference to build directory
   sed -i "s|$srcdir/Python-${pkgver}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}-${CARCH}-linux-gnu/Makefile"
 
