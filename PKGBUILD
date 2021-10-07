@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.0.8
+pkgver=7.1.0.9
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -34,7 +34,7 @@ makedepends=(
 )
 source=("https://download.imagemagick.org/ImageMagick/download/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('393280a93396cbb10f4a88e4dafaa03b0bc8031a86d92fb80948f814fc5d0c01'
+sha256sums=('04e92947813dc8bd716392b35c73d778860cf27bc146dcdaf87fe85e54c2bbd4'
             'SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
@@ -131,7 +131,7 @@ package_imagemagick-full() {
             'dmalloc' 'flif' 'libfpx' 'libumem-git'
     )
     optdepends=('imagemagick-full-doc: manual and API docs')
-    backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type-{apple,dejavu,ghostscripturw-base35,windows,}}.xml)
+    backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type-{apple,dejavu,ghostscript,urw-base35,windows,}}.xml)
     options=('!emptydirs' 'libtool')
     provides=("imagemagick=${pkgver}" "libmagick=${pkgver}" "libmagick-full=${pkgver}")
     conflicts=('imagemagick' 'libmagick')
