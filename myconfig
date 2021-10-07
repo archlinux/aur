@@ -16,7 +16,7 @@ scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
 
 ## s0ix debugging
 scripts/config --enable CONFIG_CMDLINE_BOOL \
-               --set-str CONFIG_CMDLINE "pm_debug_messages amd_pmc.dyndbg=+p acpi.dyndbg=file drivers/acpi/x86/s2idle.c +p" \
+               --set-str CONFIG_CMDLINE "pm_debug_messages amd_pmc.dyndbg=+p acpi.dyndbg=file drivers/acpi/x86/s2idle.c +p amd_pmc.enable_stb=1" \
                --disable CMDLINE_OVERRIDE
 
 ## asusctl/supergfxctl compatibility
