@@ -5,32 +5,45 @@
 # - Mirror: https://github.com/timvisee/ffsend/blob/master/pkg/aur/ffsend/PKGBUILD
 
 pkgname=ffsend
-pkgver=0.2.73
+pkgver=0.2.74
 pkgrel=1
 pkgdesc="Easily and securely share files from the command line. A Send client."
 url="https://gitlab.com/timvisee/ffsend"
 license=('GPL3')
-source=("ffsend-v$pkgver.tar.gz::https://gitlab.com/timvisee/ffsend/-/archive/v0.2.73/ffsend-v0.2.73.tar.gz")
-sha256sums=('7d9995edc929e21f207b43476cf87ffff4888e0c5dbf0cfed3ed08ce62cf6276')
+source=("https://gitlab.com/timvisee/ffsend/-/archive/v0.2.74/ffsend-v0.2.74.tar.gz")
+sha256sums=('a746ff52547a7fab5731554b81a2ed327a174f3146189c2b7ca25b0ef167352e')
 arch=('x86_64' 'i686')
-provides=('ffsend')
 depends=('ca-certificates')
-makedepends=('openssl>=1.0' 'rust>=1.39' 'cargo' 'cmake')
-optdepends=('xclip: clipboard support'
-            'bash-completion: support auto completion for bash')
+makedepends=('cargo' 'cmake' 'openssl>=1.0')
+optdepends=('xclip: clipboard support')
+
+prepare() {
+    cd "$pkgname-v$pkgver"
+
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-    cd "ffsend-v$pkgver"
-    env CARGO_INCREMENTAL=0 cargo build --release
+    cd "$pkgname-v$pkgver"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
+}
+
+check() {
+    cd "$pkgname-v$pkgver"
+
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen
 }
 
 package() {
-    cd "$srcdir/ffsend-v$pkgver"
+    cd "$pkgname-v$pkgver"
 
-    # Install Binary
-    install -Dm755 "./target/release/ffsend" "$pkgdir/usr/bin/ffsend"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 
-    # Install shell completions and LICENSE file
+    # Shell completions and LICENSE file
     install -Dm644 "contrib/completions/ffsend.bash" \
         "$pkgdir/etc/bash_completion.d/ffsend"
 	install -Dm644 "contrib/completions/_ffsend" \
