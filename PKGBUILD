@@ -10,11 +10,11 @@ source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/poe/archive/v$pkg
 md5sums=('b79d8703819ab6b5367e43101f27c755')
 
 build() {
-	cd $srcdir
+	cd $pkgname-v$pkgver
 	PREFIX="$pkgdir/usr" ./do -c
 }
 
 package() {
-	cd $srcdir
+	cd $pkgname-v$pkgver
 	PREFIX="$pkgdir/usr" ./do install
 }
