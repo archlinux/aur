@@ -4,7 +4,7 @@
 pkgname=shared-mime-info-gnome
 pkgver=40.5
 pkgrel=1
-pkgdesc="GNOME Shared MIME Info"
+pkgdesc="GNOME Shared MIME Info. Default GNOME file associations"
 arch=('x86_64')
 license=('GPL2')
 depends=('shared-mime-info')

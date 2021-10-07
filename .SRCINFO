@@ -1,5 +1,5 @@
 pkgbase = shared-mime-info-gnome
-	pkgdesc = GNOME Shared MIME Info
+	pkgdesc = GNOME Shared MIME Info. Default GNOME file associations
 	pkgver = 40.5
 	pkgrel = 1
 	arch = x86_64
