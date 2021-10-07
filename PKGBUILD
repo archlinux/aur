@@ -1,7 +1,7 @@
 # Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=navidrome
-pkgver=0.45.1
+pkgver=0.46.0
 pkgrel=1
 pkgdesc='Modern Music Server and Streamer compatible with Subsonic/Airsonic'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "navidrome.toml"
     "sysusers.conf"
 )
-sha256sums=('8fd89f0690d6ef108d30fbd53ba309e03e3369d17be5f84b3756eb1648a77f54'
+sha256sums=('662c1a6d31cafd58c6d1d015cd44f650bfc8dc10f12cc4407409f2d4a9c83d3c'
             '790cdabdffba7163a92e22572f4a0810081c9617338b8c28d3eb8d0a7edb8ae1'
             '23e62c707f3518f917e578979407cb26af2fd021fe88e580b920ccd05458ce13'
             'ee74a732f807e314f97e22b907882d16d125512d6ee23a36251fde2b3b7e608c')
@@ -23,7 +23,7 @@ backup=('etc/navidrome/navidrome.toml')
 
 build() {
     # NOTE: Update with new release; git rev-parse --short HEAD
-    local gitSha="c55e6590"
+    local gitSha="8bbb878b"
 
     cd "$srcdir/$pkgname-$pkgver"
 
