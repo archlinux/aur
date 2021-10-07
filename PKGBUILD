@@ -17,9 +17,9 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  git init
   sed -i "s|\${CMAKE_CURRENT_BINARY_DIR}/loader.rc|\${CMAKE_CURRENT_LIST_DIR}/loader.rc|g" loader/CMakeLists.txt
   curl -L https://github.com/KhronosGroup/Vulkan-Loader/pull/710.patch | patch -p1
+  curl -L https://github.com/KhronosGroup/Vulkan-Loader/pull/715.patch | patch -p1
   sed -i "s|NO_CMAKE_FIND_ROOT_PATH||g" cmake/FindVulkanHeaders.cmake
 }
 
