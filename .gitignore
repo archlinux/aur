@@ -1,0 +1,10 @@
+*.tar
+*.gz
+*.zip
+*.zst
+*.log
+/pkg/
+/src/
+
+# Author: Blurgy <gy@blurgy.xyz>
+# Date:   Oct 07 2021, 15:58 [CST]
