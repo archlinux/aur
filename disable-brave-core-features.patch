@@ -1,3 +1,77 @@
+diff --git a/browser/brave_browser_process_impl.cc b/browser/brave_browser_process_impl.cc
+index 78f6dea20b..1975955c43 100644
+--- a/browser/brave_browser_process_impl.cc
++++ b/browser/brave_browser_process_impl.cc
+@@ -217,6 +217,7 @@ BraveBrowserProcessImpl::ad_block_regional_service_manager() {
+   return ad_block_service()->regional_service_manager();
+ }
+
++#if 0
+ NTPBackgroundImagesService*
+ BraveBrowserProcessImpl::ntp_background_images_service() {
+   if (!base::FeatureList::IsEnabled(kBraveNTPBrandedWallpaper))
+@@ -231,6 +232,7 @@ BraveBrowserProcessImpl::ntp_background_images_service() {
+
+   return ntp_background_images_service_.get();
+ }
++#endif
+
+ #if BUILDFLAG(ENABLE_EXTENSIONS)
+ brave_component_updater::ExtensionWhitelistService*
+@@ -328,6 +330,7 @@ BraveBrowserProcessImpl::brave_federated_learning_service() {
+   return brave_federated_learning_service_.get();
+ }
+
++#if 0
+ brave::BraveP3AService* BraveBrowserProcessImpl::brave_p3a_service() {
+   if (brave_p3a_service_) {
+     return brave_p3a_service_.get();
+@@ -347,6 +350,7 @@ BraveBrowserProcessImpl::brave_referrals_service() {
+         brave_stats::GetPlatformIdentifier());
+   return brave_referrals_service_.get();
+ }
++#endif
+
+ brave_stats::BraveStatsUpdater* BraveBrowserProcessImpl::brave_stats_updater() {
+   if (!brave_stats_updater_)
+diff --git a/browser/brave_browser_process_impl.h b/browser/brave_browser_process_impl.h
+index 225890cc6f..934db87040 100644
+--- a/browser/brave_browser_process_impl.h
++++ b/browser/brave_browser_process_impl.h
+@@ -111,8 +111,8 @@ class BraveBrowserProcessImpl : public BraveBrowserProcess,
+   ipfs::BraveIpfsClientUpdater* ipfs_client_updater() override;
+ #endif
+   brave::BraveFederatedLearningService* brave_federated_learning_service();
+-  brave::BraveP3AService* brave_p3a_service() override;
+-  brave::BraveReferralsService* brave_referrals_service() override;
++  //brave::BraveP3AService* brave_p3a_service() override;
++  //brave::BraveReferralsService* brave_referrals_service() override;
+   brave_stats::BraveStatsUpdater* brave_stats_updater() override;
+   ntp_background_images::NTPBackgroundImagesService*
+   ntp_background_images_service() override;
+@@ -158,7 +158,7 @@ class BraveBrowserProcessImpl : public BraveBrowserProcess,
+   std::unique_ptr<brave_shields::HTTPSEverywhereService>
+       https_everywhere_service_;
+   std::unique_ptr<brave_stats::BraveStatsUpdater> brave_stats_updater_;
+-#if BUILDFLAG(ENABLE_BRAVE_REFERRALS)
++#if 0
+   std::unique_ptr<brave::BraveReferralsService> brave_referrals_service_;
+ #endif
+ #if BUILDFLAG(ENABLE_TOR)
+@@ -169,10 +169,10 @@ class BraveBrowserProcessImpl : public BraveBrowserProcess,
+ #endif
+   std::unique_ptr<brave::BraveFederatedLearningService>
+       brave_federated_learning_service_;
+-  scoped_refptr<brave::BraveP3AService> brave_p3a_service_;
++  //scoped_refptr<brave::BraveP3AService> brave_p3a_service_;
+   scoped_refptr<brave::HistogramsBraveizer> histogram_braveizer_;
+-  std::unique_ptr<ntp_background_images::NTPBackgroundImagesService>
+-      ntp_background_images_service_;
++  //std::unique_ptr<ntp_background_images::NTPBackgroundImagesService>
++  //    ntp_background_images_service_;
+   std::unique_ptr<brave_ads::ResourceComponent> resource_component_;
+
+ #if BUILDFLAG(ENABLE_SPEEDREADER)
 diff --git a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
 index 74a696a168..64d7449003 100644
 --- a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
