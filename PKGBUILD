@@ -1,9 +1,10 @@
-# Maintainer: Thomas Jost <schnouki@schnouki.net>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Thomas Jost <schnouki@schnouki.net>
 # Contributor: Joost Bremmer <toost.b@gmail.com>
 # Contributor: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=mpdris2-py3-git
-pkgver=0.7.r48.g1231f84
+pkgver=0.9.1.r0.g09e3371
 pkgrel=1
 pkgdesc="MPRIS2 support for MPD using Python 3 -- git version"
 url="https://github.com/eonpatapon/mpDris2"
@@ -11,14 +12,13 @@ arch=('any')
 license=('GPL3')
 depends=('python-dbus'
          'python-mpd2'
-         'libnotify'
          'python-gobject')
 provides=('mpdris2')
 conflicts=('mpdris2')
-makedepends=('git' 'intltool')
+makedepends=('intltool')
 optdepends=(
-  'mutagen: read covers from music files'
-  'python-gobject: Gnome notifications and media keys'
+  'python-mutagen: read covers from music files'
+  'libnotify: Desktop notification support'
 )
 source=("mpDris2::git+https://github.com/eonpatapon/mpDris2")
 md5sums=('SKIP')
