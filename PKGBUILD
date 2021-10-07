@@ -9,15 +9,10 @@ url="https://github.com/AbdeltwabMF/nxprayer.git"
 license=('GPL-v3')
 depends=(
 	'jq'
-	'bash'
 	'libnotify'
 )
 makedepends=(
 	'git'
-	'sed'
-	'gawk'
-	'gcc'
-	'make'
 	'python3'
 )
 provides=("${pkgname}")
