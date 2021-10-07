@@ -1,14 +1,15 @@
 pkgbase = nmrpflash
 	pkgdesc = Netgear Unbrick Utility
-	pkgver = 0.9.15
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = https://github.com/jclehner/nmrpflash
 	arch = x86_64
 	makedepends = make
 	depends = libpcap
 	depends = libnl>=3
-	source = nmrpflash-0.9.15.tar.gz::https://github.com/jclehner/nmrpflash/archive/v0.9.15.tar.gz
-	sha256sums = 334328b5c960da9527dfdc20f39a65bf0c65ce7abdbfba0d7b54f997141fa0a7
+	source = nmrpflash-0.9.16.tar.gz::https://github.com/jclehner/nmrpflash/archive/v0.9.16.tar.gz
+	cksums = 3262774792
+	sha256sums = ccb5974a9574f0ce361f8d2d68f743957a44c9e27dc9490589e8f91c9f8f6bb6
+	b2sums = ddfbfe95803a686b5122f8d4de111a729723be434b3ab1efa427b5505355534e6cdc264a93a061ba6456e007e5bf65c5473a1bd964a5ad27185441dec8f3fce3
 
 pkgname = nmrpflash
-
