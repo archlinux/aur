@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way! (Development version)"
 url="https://github.com/AryToNeX/Sunamu"
 license=("MPL-2.0")
-arch=("x86_64")
+arch=("any")
 conflicts=(sunamu sunamu-bin)
 makedepends=("git" "npm" "yarn" "node-gyp")
 depends=("electron")
@@ -38,7 +38,8 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   install -dm755 "${pkgdir}/usr/lib/$_pkgname"
-  cp -dr --no-preserve=ownership targets/linux-unpacked/resources/* "${pkgdir}/usr/lib/$_pkgname/"
+  dir=$(compgen -G "targets/linux*unpacked" | head -n1)
+  cp -dr --no-preserve=ownership $dir/resources/* "${pkgdir}/usr/lib/$_pkgname/"
 
   install -Dm644 assets/icon.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
 
