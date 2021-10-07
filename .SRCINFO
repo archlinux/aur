@@ -1,7 +1,7 @@
 pkgbase = damask
 	pkgdesc = DAMASK - The Duesseldorf Advanced Material Simulation Kit
 	pkgver = 3.0.0~alpha5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://damask.mpie.de
 	arch = x86_64
 	license = GPL3
@@ -33,6 +33,6 @@ pkgname = python-damask
 	depends = python-pandas
 	depends = python-h5py
 	depends = python-pyaml
-	optdepends = seaborn: post-processing
-	optdepends = jupterlab: comfortable shell
+	optdepends = python-seaborn: post-processing
+	optdepends = jupyterlab: comfortable shell
 	optdepends = ipython: comfortable shell

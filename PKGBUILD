@@ -3,7 +3,7 @@ pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.0~alpha5
 pkgver_=3.0.0-alpha5
-pkgrel=1
+pkgrel=2
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
@@ -50,8 +50,8 @@ package_damask-mesh() {
 
 package_python-damask() {
   depends=('python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
-  optdepends=('seaborn: post-processing'
-              'jupterlab: comfortable shell'
+  optdepends=('python-seaborn: post-processing'
+              'jupyterlab: comfortable shell'
               'ipython: comfortable shell')
 
   install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
