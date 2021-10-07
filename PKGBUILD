@@ -1,8 +1,8 @@
-# Maintainer: Brian BIdulock <bidulock@openss7.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=openconnect-git
 _pkgname=openconnect
-pkgver=8.10.r176.gb5b50c29
+pkgver=8.10.r682.g5ddd857f
 pkgrel=1
 pkgdesc="Open client for Cisco AnyConnect VPN"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 url="http://www.infradead.org/openconnect.html"
 depends=('libxml2' 'gnutls' 'libproxy' 'vpnc' 'krb5' 'lz4' 'pcsclite' 'trousers' 'stoken'
 		'oath-toolkit')
-makedepends=('intltool' 'python2' 'git')
+makedepends=('intltool' 'python' 'git')
 options=('!emptydirs')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -27,10 +27,11 @@ pkgver() {
 build() {
   cd $pkgname
   ./autogen.sh
-  PYTHON=/usr/bin/python2 ./configure --prefix=/usr \
+  PYTHON=/usr/bin/python ./configure --prefix=/usr \
       --sbindir=/usr/bin \
       --disable-static \
-      --without-gnutls
+      --without-gnutls \
+      --with-vpnc-script=/etc/vpnc/vpnc-script
   make V=0
 }
 
