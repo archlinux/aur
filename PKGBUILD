@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-prometheus-flask-exporter
-pkgver=0.18.2
+pkgver=0.18.3
 pkgrel=1
 pkgdesc='Prometheus metrics exporter for Flask'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python' 'python-flask' 'python-prometheus_client')
 optdepends=()
 makedepends=('python' 'python-setuptools')
 source=("$pkgname-$pkgver::https://github.com/rycus86/prometheus_flask_exporter/archive/$pkgver.tar.gz")
-sha256sums=('2657595092a5788de29cc5c9c2b4fd9a144ea141845ecacc934220b2ece1f758')
+sha256sums=('01da42630c81bc321b5637a77e49836d05092afcdc1237f3452f13241d66916a')
 
 _pkgname=prometheus_flask_exporter
 
