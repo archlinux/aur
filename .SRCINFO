@@ -1,14 +1,18 @@
 pkgbase = python-krakenex
 	pkgdesc = Exchange API for Kraken.com
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/veox/python3-krakenex
 	arch = any
-	license = LGPL
+	license = LGPL3
+	makedepends = git
 	makedepends = python-setuptools
-	source = https://github.com/veox/python3-krakenex/archive/v2.1.0.tar.gz
-	sha1sums = de79e2b7b49cf370078374b116b389f313f3bc79
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	depends = python-requests>=2.18.2
+	depends = python-requests<3
+	source = python-krakenex::git+https://github.com/veox/python3-krakenex#tag=v2.1.0?signed
+	validpgpkeys = 1298BC0A9B0DBEEA3BDDCBA62D3DA6CD74AB3D37
+	sha256sums = SKIP
 
 pkgname = python-krakenex
-	depends = 
-
