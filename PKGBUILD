@@ -8,7 +8,6 @@ pkgdesc="Another Slight Atari Player - library and players for 8-bit Atari music
 url="http://asap.sourceforge.net"
 arch=('x86_64')
 license=('GPL2')
-depends=(glibc)
 source=("https://downloads.sourceforge.net/asap/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ec881c6894d00e669e25a9c22f7ceae38ea65bd6240ec00d0a4f475c13b642b0')
 
