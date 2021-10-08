@@ -3,7 +3,7 @@
 pkgname=keyd-git
 pkgver=1.1.2.r14.95e1d89
 pkgrel=1
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
 url="https://github.com/rvaiya/keyd"
 license=('MIT')
