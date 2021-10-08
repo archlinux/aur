@@ -1,7 +1,7 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=table
 pkgver=0.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Command line utility to format and display CSV"
 arch=('x86_64')
 url="https://strahinja.srht.site/table"
