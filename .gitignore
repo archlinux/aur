@@ -1,5 +1,5 @@
 src
 pkg
-libmodulemd
-*tar.gz
-*pkg.tar.xz
+libmodulemd-git
+*pkg.tar.*
+tags
