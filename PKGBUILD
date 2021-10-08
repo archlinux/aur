@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=terraform-provider-lxd
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Terraform provider to provision infrastructure with LXD"
 arch=('x86_64')
 url="https://github.com/terraform-lxd/terraform-provider-lxd"
@@ -11,7 +11,8 @@ depends=('terraform')
 makedepends=('go' 'git')
 optdepends=('lxd: for a local instance of LXD')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('9912b42622584396f4d6435f97465a9ff5cda8904fc6477a5d45bb992606e92997eb766b7b0d53e6be8e25264fd14fdb65a8e695fdbb92cd613ce5bc3ab57734')
+sha512sums=('61c61b8220cd9ddf2f08e02e53a77f767d0d016b8c93ffc9c816bd5b50b970fe9f3f280767abae32a633e1d763739f26cd1372e6d0a8aec61b8e4fff2331c87e')
+b2sums=('9b7aa822fa1271792084c2b787eac5e520457f9c6bcc5cb4ac127f696deeea5b187796c33c38905f99fcf854e7344bebd6991469e56bfc3042cd501e59ada1e4')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -20,7 +21,7 @@ prepare() {
   mkdir build
 
   # download dependencies
-  go mod vendor
+  go mod download
 }
 
 build() {
@@ -29,7 +30,7 @@ build() {
   go build -v \
     -buildmode=pie \
     -trimpath \
-    -mod=vendor \
+    -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
     -X main.version=$pkgver \
