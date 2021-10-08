@@ -4,6 +4,7 @@ pkgbase = wgcf-git
 	pkgrel = 1
 	url = https://github.com/ViRb3/wgcf
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = git
