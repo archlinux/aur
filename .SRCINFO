@@ -1,18 +1,18 @@
 pkgbase = atto
 	pkgdesc = A tiny Nano wallet, focused on ease of use through simplicity
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/codesoap/atto
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	provides = atto
 	conflicts = atto
-	source = atto-1.3.0.tar.gz::https://github.com/codesoap/atto/archive/refs/tags/v1.3.0.tar.gz
-	md5sums = 6f0c8ce8411d59ceb4645c71a60c6173
-	sha1sums = e2e157b03368d24051456325b7e96ba0b02f9e99
-	sha256sums = 040f80e1d366605c744a67d32dda3f795bc3e28ea2fdbb79c939f90fe8dd9c42
-	sha512sums = ed8133bf24b7e21a08981beabff0a404033f2fb4896a437ec346de5927a4718fa6d3cab3252971cbefc885183d04fa586267a3f0028afb0a97cb27333b54b675
-	b2sums = bb0da975dc1d0867283604e0ca6462a73b10c3db28ba4bdad951775f59d011b863e86f380c649b2c730445a8445c4a563440fcadc9f333c1f065a3d74e4638f5
+	source = atto-1.4.0.tar.gz::https://github.com/codesoap/atto/archive/refs/tags/v1.4.0.tar.gz
+	md5sums = f2aad9484ce412773f28964aa65af1dd
+	sha1sums = 5ea5cbdba8d04ad6cd9c87acf377b35ade9bfb04
+	sha256sums = 2cb206b069484fa4a7732669f236fc6182786ec8d7bdcd4933d0aa17200e3eb7
+	sha512sums = 194d0d58a70ce4c4fd5677ff9fe7995cc4de7c9eb63876c0563297f5ab1d43011be0ffb05151543997bea8ddde655354b51cb340f73b653d0ccf9c75bdecd675
+	b2sums = 411315fd3cf2ac13b42c4885182d2bfa81077f60607f11a9eaf9f6415354fcf13d0219dc9b228970aa4cbc5f34438fc79f77e8438933d2b9f7918b76ab168084
 
 pkgname = atto
