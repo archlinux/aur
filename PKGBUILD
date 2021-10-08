@@ -3,7 +3,7 @@
 
 _gemname=excon
 pkgname=ruby-$_gemname
-pkgver=0.86.0
+pkgver=0.87.0
 pkgrel=1
 pkgdesc="EXtended http(s) CONnections"
 arch=('any')
@@ -14,7 +14,8 @@ makedepends=('rubygems' 'ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('25f873315d218fe371ef4db52f0480db2cc1a0a31cf4c0a87b61a34ee2025a1adedf011f40dbc547697100b268556d5d90f7a21f3965e1b0ae1e2dedd6abcd23')
+sha512sums=('5e36d0fdab2529f7574bebe921ae5250f37a3f7873a0d144836f65cf4f3e23cd4385ca1ee42dac5aeafd7c835f1d20ddf1c9843634b89502e8b9e11b67a9a00b')
+b2sums=('f68b7790bfde6a68de6cacf192bffbd2dc3d67b3c07e69635f2d5abb710c26440f9792277b4250cf23b35c96371f3273cc1fa14c4703b53e532524cbd84c037b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
