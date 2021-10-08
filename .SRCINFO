@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-bilateral-git
+	pkgdesc = Plugin for Avisynth: bilateral (GIT version)
+	pkgver = 1.0.0.3.g8d5c8e5
+	pkgrel = 1
+	url = https://github.com/Asd-g/AviSynth-Bilateral
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-bilateral
+	conflicts = avisynth-plugin-bilateral
+	source = bilateral::git+https://github.com/Asd-g/AviSynth-Bilateral.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-bilateral-git
