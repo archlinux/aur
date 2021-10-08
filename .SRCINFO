@@ -1,6 +1,6 @@
 pkgbase = zesarux-bin
 	pkgdesc = Emulator of different Z80-based computers, including ZX Spectrum. Precompiled binary.
-	pkgver = 9.2
+	pkgver = 10.0
 	pkgrel = 1
 	url = https://github.com/chernandezba/zesarux
 	arch = x86_64
@@ -9,12 +9,11 @@ pkgbase = zesarux-bin
 	optdepends = sdl
 	conflicts = zesarux
 	conflicts = zesarux-git
-	source = https://github.com/chernandezba/zesarux/releases/download/9.2/ZEsarUX_linux-9.2-debian10_x64.tar.gz
+	source = https://github.com/chernandezba/zesarux/releases/download/10.0/ZEsarUX_linux-10.0-debian10_x64.tar.gz
 	source = Zesarux.desktop
 	source = zesarux.png
-	sha256sums = 4846c5d739885fa0ed1236f7b84a9778a0122a571ed78cd5cbc5bcd1c7bf94ee
+	sha256sums = e49c719a7400ae46766f760c31156c5d2a98b24ce5b8a49ac9b8bc8d60410a10
 	sha256sums = 0059e183e7cfd8daec6f649728ee15a39f2646fe000032b390caa3dfbeb1edb8
 	sha256sums = fc71caee4fa242c767793c6b6a3b66fb7ee003d7ef32645a5ef48e19e086ddd7
 
 pkgname = zesarux-bin
-
