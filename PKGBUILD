@@ -2,11 +2,11 @@
 
 pkgname=wol-systemd
 pkgver=20210121
-pkgrel=1
+pkgrel=2
 pkgdesc="A systemd unit file for enabling Wake-On-LAN automatically"
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Wake-on-LAN"
-license=('MIT')
+license=('FDL1.3')
 depends=('ethtool')
 install=wol-systemd.install
 source=('wol@.service' 'wol-systemd.install')
