@@ -1,12 +1,14 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gomplate-git
-pkgver=r747.e69cf65c
+pkgver=v3.10.0.r4.gd57887e6
 pkgrel=1
 pkgdesc='A flexible commandline tool for template rendering.'
 arch=(i686 x86_64)
 url='https://gomplate.hairyhenderson.ca/'
 license=(BSD)
+conflicts=('gomplate')
+provides=('gomplate')
 makedepends=(go)
 source=("${pkgname}::git+https://github.com/hairyhenderson/gomplate")
 sha256sums=('SKIP')
@@ -14,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
