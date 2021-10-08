@@ -4,7 +4,7 @@ pkgver=0.3.4beta
 pkgrel=4
 pkgdesc="Application for the performance management of AMD processors"
 arch=('any')
-url="https://slimbook.es"
+url="https://github.com/slimbook/slimbookamdcontroller"
 license=('GPL')
 depends=('dbus-python' 'gtk3' 'libnotify' 'python-gobject' 'python-pillow'
          'python-pyamdgpuinfo' 'ryzenadj' 'systemd-libs')
