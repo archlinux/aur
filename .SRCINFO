@@ -1,4 +1,4 @@
-pkgbase = tepl
+pkgbase = tepl4
 	pkgdesc = Library that eases the development of GtkSourceView-based text editors and IDEs
 	pkgver = 4.4.0
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = tepl
 	source = https://download.gnome.org/sources/tepl/4.4/tepl-4.4.0.tar.xz
 	sha256sums = e6f6673a8a27e8f280725db8fbacec79b20676ae0558755239d15a9808faa256
 
-pkgname = tepl
+pkgname = tepl4
