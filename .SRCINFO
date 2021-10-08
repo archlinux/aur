@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-retinex-git
+	pkgdesc = Plugin for Avisynth: retinex (GIT version)
+	pkgver = 1.0.1.0.gbca5463
+	pkgrel = 1
+	url = https://github.com/Asd-g/AviSynth-Retinex
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-retinex
+	conflicts = avisynth-plugin-retinex
+	source = retinex::git+https://github.com/Asd-g/AviSynth-Retinex.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-retinex-git
