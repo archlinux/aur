@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lfs-git
-pkgver=0.7.6.r0.g7b3218d
+pkgver=1.1.0.r0.g5cf0fd4
 pkgrel=1
 pkgdesc="Get information on your mounted disks (git)"
 arch=('x86_64')
@@ -20,9 +20,14 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 package() {
