@@ -2,9 +2,9 @@
 
 pkgname=kuttle
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes wrapper for sshuttle'
-provides=(kuttle)
+provides=(kuttle autokuttle)
 depends=(sshuttle)
 arch=(any)
 url='https://github.com/kayrus/kuttle'
