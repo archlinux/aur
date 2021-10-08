@@ -1,7 +1,7 @@
 # Maintainer: Moses Miller <Majora320@gmail.com>
 
 pkgname=olympus-bin
-pkgver=2253
+pkgver=2369
 pkgrel=1
 pkgdesc='A mod manager for Celeste'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('love' 'lua51-lsqlite3')
 makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds/$pkgver/artifacts?artifactName=linux.main&\$format=zip")
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('b8b5927aafc49004f1c90e9f0436e21d0a2254a05041731b93de58534c31843c')
+sha256sums=('5bd3c575738f17a6bd2cd51e8d79b9b21d22d6222765c7738152da34a3697de8')
 
 prepare() {
     unzip "$pkgname-$pkgver.zip"
