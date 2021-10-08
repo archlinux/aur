@@ -1,6 +1,6 @@
 pkgbase = brickstore
 	pkgdesc = BrickStore is a BrickLink offline management tool.
-	pkgver = 2021.6.1
+	pkgver = 2021.10.1
 	pkgrel = 1
 	url = https://github.com/rgriebl/brickstore
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = brickstore
 	makedepends = qt5-translations
 	depends = qt5-base
 	depends = tbb
-	source = https://github.com/rgriebl/brickstore/archive/v2021.6.1.tar.gz
-	sha256sums = 3d8eedcdc85d4e56cdd865f1a4d6d443cacd72a2f4a48b92b5d1c37100edd87d
+	source = https://github.com/rgriebl/brickstore/archive/v2021.10.1.tar.gz
+	sha256sums = fcaaba22bc3acc02bf5d3a17f0eb6e80bac5454568e3ce4dad3f2226ecb3f6d2
 
 pkgname = brickstore
-
