@@ -1,20 +1,21 @@
-From 67b29178b5e87752ffc6d55805ba40e9beba1226 Mon Sep 17 00:00:00 2001
+From cb5ff0856fffcb11797b0584941415b051d3914b Mon Sep 17 00:00:00 2001
 From: Liam Timms <timms5000@gmail.com>
-Date: Thu, 15 Jul 2021 19:56:34 -0400
-Subject: [PATCH] fix for GDCM build isssue with superbuilding on Arch
+Date: Thu, 7 Oct 2021 20:40:25 -0400
+Subject: [PATCH] fix for GDCM build
 
 ---
- SuperBuild/External_ITKv5.cmake | 5 +++++
- 1 file changed, 5 insertions(+)
+ SuperBuild/External_ITKv5.cmake | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/SuperBuild/External_ITKv5.cmake b/SuperBuild/External_ITKv5.cmake
-index 31cc34e4..a7d046fd 100644
+index ae5db29c..d89f39e8 100644
 --- a/SuperBuild/External_ITKv5.cmake
 +++ b/SuperBuild/External_ITKv5.cmake
-@@ -119,6 +119,11 @@ if(NOT DEFINED ${extProjName}_DIR AND NOT ${USE_SYSTEM_${extProjName}})
+@@ -119,7 +119,11 @@ if(NOT DEFINED ${extProjName}_DIR AND NOT ${USE_SYSTEM_${extProjName}})
        -DITK_FUTURE_LEGACY_REMOVE:BOOL=ON
        -DITKV3_COMPATIBILITY:BOOL=OFF
        -DITK_BUILD_DEFAULT_MODULES:BOOL=ON
+-      -DITK_USE_SYSTEM_PNG=${ITK_USE_SYSTEM_PNG}
 +      -DITK_USE_SYSTEM_JPEG:BOOL=ON
 +      -DITK_USE_SYSTEM_PNG:BOOL=ON
 +      -DITK_USE_SYSTEM_ZLIB:BOOL=ON
@@ -24,5 +25,5 @@ index 31cc34e4..a7d046fd 100644
  #      -DITK_MODULE_IO:BOOL=ON
  #      -DITK_MODULE_Filtering:BOOL=ON
 -- 
-2.32.0
+2.33.0
 

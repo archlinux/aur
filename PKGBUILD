@@ -3,8 +3,8 @@
 
 _pkgname='ants'
 pkgname="${_pkgname}-git"
-pkgver=v2.3.5.r38.ga7eca60d
-pkgrel=2
+pkgver=v2.3.5.r64.g221dad77
+pkgrel=1
 pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional \
 mappings to capture the statistics of brain structure and function'
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}"'::git+https://github.com/stnava/ANTs.git'
-        '0001-fix-for-GDCM-build-isssue-with-superbuilding-on-Arch.patch')
+        '0001-fix-for-GDCM-build.patch')
 sha256sums=('SKIP'
-            'f28f9a2edf0e14e7ecdba68fccf78a2226538c268529b16bc66b9a484490b9b0')
+            'f20685afed8f3fdc005b7c6924cee39350f0eac1e6010cfe9fee78a517d7e684')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -27,7 +27,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  patch -Np1 -i "${srcdir}"/0001-fix-for-GDCM-build-isssue-with-superbuilding-on-Arch.patch
+  patch -Np1 -i "${srcdir}"/0001-fix-for-GDCM-build.patch
   mkdir -p antsBuild
 }
 
