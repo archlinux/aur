@@ -1,6 +1,6 @@
 pkgbase = megaproxy
 	pkgdesc = HTTP proxy for mega.nz
-	pkgver = 0.2.0
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/connesc/megaproxy
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = megaproxy
 	makedepends = boost
 	depends = mega-sdk
 	depends = boost-libs
-	source = https://github.com/connesc/megaproxy/archive/v0.2.0.tar.gz
-	md5sums = 60853c967584761ef0bacc2365b9e027
+	source = https://github.com/connesc/megaproxy/archive/v0.2.3.tar.gz
+	b2sums = af028dcbe215667403ceffbf4331de44e03f5bac080cccc9298f1efdd4ff25c8d4d1624bad58ef056465e631328dcb235190f0741c095ba06adf462ff56237c5
 
 pkgname = megaproxy
-
