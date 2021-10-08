@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com
+# Maintainer: Tony Lambiris <tony@libpcap.net
 
 pkgname=double-conversion-git
-pkgver=3.1.0.r5.g4b2a7f3
+pkgver=v3.1.5.r38.g1623566
 pkgrel=1
 pkgdesc='Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.'
 arch=(i686 x86_64)
