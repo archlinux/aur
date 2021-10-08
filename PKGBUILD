@@ -1,7 +1,7 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=poe
-pkgver=1.3.4
-pkgrel=10
+pkgver=1.3.5
+pkgrel=1
 pkgdesc=".po file editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/poe"
@@ -11,7 +11,7 @@ md5sums=('b79d8703819ab6b5367e43101f27c755')
 
 build() {
 	cd $pkgname-v$pkgver
-	PREFIX="$pkgdir/usr" ./do -c
+	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" ./do -c
 }
 
 package() {
