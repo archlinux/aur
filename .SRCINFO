@@ -1,6 +1,6 @@
 pkgbase = nvtop-git
 	pkgdesc = A (h)top like task monitor for NVIDIA GPUs
-	pkgver = 1.2.2.r0.g29e5523
+	pkgver = 1.2.2.r4.gabdec70
 	pkgrel = 1
 	url = https://github.com/Syllo/nvtop
 	arch = x86_64
