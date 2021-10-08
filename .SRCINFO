@@ -1,7 +1,7 @@
 pkgbase = cppadcodegen
 	pkgdesc = Source Code Generation for Automatic Differentiation using Operator Overloading
 	pkgver = 2.4.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/joaoleal/CppADCodeGen
 	arch = any
 	license = GPL3
