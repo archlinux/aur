@@ -13,6 +13,8 @@ makedepends=('make' 'cmake' 'git')
 conflicts=('puzzle-moppet-bin')
 source=(${pkgname}::git+https://github.com/karjonas/Puzzle-Moppet.git)
 md5sums=('SKIP')
+_name='Puzzle Moppet'
+_categories='Game;PuzzleGame'
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -20,7 +22,9 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}"
+    # Generate desktop file
+    gendesk -n -f ../PKGBUILD
 }
 
 build() {
@@ -32,4 +36,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     make install DESTDIR=$pkgdir
+    install -Dm644 "${srcdir}/puzzlemoppet.desktop" "${pkgdir}/usr/share/applications/puzzlemoppet.desktop"
+    install -Dm644 "icons/main.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/puzzlemoppet.png"
 }
