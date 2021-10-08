@@ -1,6 +1,6 @@
 pkgbase = komanda-cli-git
 	pkgdesc = The Komanda Command-line IRC Client
-	pkgver = v0.9.4.r15.g61e52d1
+	pkgver = v0.9.4.r24.g391040d
 	pkgrel = 1
 	url = https://github.com/mephux/komanda-cli
 	arch = x86_64

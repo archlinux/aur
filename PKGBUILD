@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=komanda-cli-git
-pkgver=v0.9.4.r15.g61e52d1
+pkgver=v0.9.4.r29.gb5ba03b
 pkgrel=1
 pkgdesc='The Komanda Command-line IRC Client'
 arch=(x86_64)
