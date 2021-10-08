@@ -10,4 +10,3 @@ pkgbase = mysqltcl
 	sha256sums = fa16b9d991c0a2934a7a336102c5f83497c5eb05e631a5f45359ce293e92d3ad
 
 pkgname = mysqltcl
-
