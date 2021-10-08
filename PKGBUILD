@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=cvechecker-git
-pkgver=v3.9.r13.g1e751b9
-pkgrel=2
+pkgver=cvechecker.4.0.r17.gb4cda96
+pkgrel=1
 pkgdesc="a local CVE checker tool"
 arch=('i686' 'x86_64')
 url="https://github.com/sjvermeu/cvechecker"
@@ -21,7 +21,7 @@ source=("${pkgname}::git+https://github.com/sjvermeu/cvechecker.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${srcdir}/${pkgname}
+	cd "${srcdir}/${pkgname}"
 
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
