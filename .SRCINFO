@@ -1,16 +1,13 @@
 pkgbase = dongbei
 	pkgdesc = 东北方言编程语言
-	pkgver = 0.0.6
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/zhanyong-wan/dongbei
 	arch = any
 	license = MIT
 	makedepends = python-setuptools-scm
-	depends = python-setuptools
-	provides = dongbei-git
-	conflicts = dongbei-git
-	source = dongbei-0.0.6.tar.gz::https://github.com/zhanyong-wan/dongbei/archive/0.0.6.tar.gz
-	sha256sums = 91f5d5ab1bbec14e50acc73027b3e6ac852fade50fa06238b1e0e372eb4936e9
+	makedepends = python-setuptools
+	source = dongbei-0.0.11.tar.gz::https://github.com/zhanyong-wan/dongbei/archive/0.0.11.tar.gz
+	sha256sums = 896ea5f48a7b491f24858d5598531c76a4df899477d2b44ffe89328f9dd909c4
 
 pkgname = dongbei
-

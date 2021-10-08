@@ -1,18 +1,15 @@
-# Maintainer: yjun <jerrysteve1101@gmail.com>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=dongbei
-pkgver=0.0.6
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="东北方言编程语言"
 arch=('any')
 url="https://github.com/zhanyong-wan/dongbei"
 license=('MIT')
-depends=('python-setuptools')
-makedepends=('python-setuptools-scm')
-provides=("${pkgname}-git")
-conflicts=("${pkgname}-git")
+makedepends=('python-setuptools-scm' 'python-setuptools')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/zhanyong-wan/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('91f5d5ab1bbec14e50acc73027b3e6ac852fade50fa06238b1e0e372eb4936e9')
+sha256sums=('896ea5f48a7b491f24858d5598531c76a4df899477d2b44ffe89328f9dd909c4')
 
 build() {
   cd $pkgname-$pkgver
