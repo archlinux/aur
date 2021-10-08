@@ -1,0 +1,14 @@
+pkgbase = xml2tsv
+	pkgdesc = XML to TSV converter
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.katolaz.net/xml2tsv/tree/README.md
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = ISC
+	source = ftp://bitreich.org/releases/xml2tsv/xml2tsv-0.1.tgz
+	sha512sums = 31f049bbfbcec484d85fe05157fb8b24f0b0eaf7cc145f704d7b762d0b974dedb9a46031a783f4d3e91cfa5b871c5f8bd25eafcc8638372ed91250675d15bb0b
+
+pkgname = xml2tsv
