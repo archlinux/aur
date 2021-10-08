@@ -1,0 +1,21 @@
+pkgbase = electrs-git
+	pkgdesc = An efficient re-implementation of Electrum Server in Rust
+	pkgver = v0.9.0.r27.gfbda004
+	pkgrel = 1
+	url = https://github.com/romanz/electrs
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = clang
+	makedepends = cmake
+	makedepends = rust
+	depends = rocksdb
+	provides = electrs
+	conflicts = electrs
+	source = git+https://github.com/romanz/electrs.git
+	source = electrs.service
+	validpgpkeys = 15C8C3574AE4F1E25F3F35C587CAE5FA46917CBB
+	sha256sums = SKIP
+	sha256sums = 339c165f2a0318ca0d0099cc79e493f0451dcdb37de7d1c35473db18bd9038c6
+
+pkgname = electrs-git

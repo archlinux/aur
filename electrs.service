@@ -1,0 +1,18 @@
+[Unit]
+Description=Electrum Rust Server
+Requires=bitcoind.service
+After=bitcoind.service
+
+[Service]
+Type=simple
+User=bitcoin
+Group=bitcoin
+WorkingDirectory=/var/lib/electrs
+ExecStart=/usr/bin/electrs -vv --db-dir ./db --daemon-dir=/var/lib/bitcoind
+KillMode=process
+TimeoutSec=60
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
