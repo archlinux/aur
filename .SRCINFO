@@ -17,6 +17,13 @@ pkgbase = foosynth-plugin-knlmeanscl-git
 	source = knlmeanscl::git+https://github.com/pinterf/KNLMeansCL
 	sha256sums = SKIP
 
+pkgname = vapoursynth-plugin-knlmeanscl-git
+	pkgdesc = Plugin for Vapoursynth: knlmeanscl (GIT version)
+	depends = opencl-icd-loader
+	depends = vapoursynth
+	provides = vapoursynth-plugin-knlmeanscl
+	conflicts = vapoursynth-plugin-knlmeanscl
+
 pkgname = avisynth-plugin-knlmeanscl-git
 	pkgdesc = Plugin for Avisynth: knlmeanscl (GIT version)
 	depends = opencl-icd-loader

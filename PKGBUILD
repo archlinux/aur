@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgbase="foosynth-plugin-${_plug}-git"
-pkgname=(# "vapoursynth-plugin-${_plug}-git"
+pkgname=("vapoursynth-plugin-${_plug}-git"
          "avisynth-plugin-${_plug}-git")
 pkgver=1.1.1.r571.c4af339
 pkgrel=1
