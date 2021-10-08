@@ -2,7 +2,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-cloud-bigquery
-pkgver=2.28.0
+pkgver=2.28.1
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
 	'python-llvmlite: fastparquet support')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/python-bigquery/archive/v$pkgver.tar.gz")
-sha256sums=('66258a2caaa06cfbc8ff66cf6187df60b49f2e417e3f51da627be3736d8ecfe8')
+sha256sums=('7697a28f61a04020e6b906dd2a2b733e8ee2218bfac29a1c5b948c8825b38f53')
 
 build() {
 	cd "python-bigquery-$pkgver"
