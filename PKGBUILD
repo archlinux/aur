@@ -2,20 +2,20 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
-pkgver=r4457.8e4fa54e
-pkgrel=2
+pkgver=r4464.4a913e06
+pkgrel=1
 pkgdesc='Sega Dreamcast core'
 arch=('i686' 'x86_64')
 url="https://github.com/libretro/flycast"
 license=('GPL2')
 groups=('libretro')
-depends=('libgl' 'libretro-core-info' 'libzip' 'xxhash' 'zlib')
-makedepends=('git' 'libglvnd')
+depends=('libchdr' 'libgl' 'libretro-core-info' 'libzip' 'xxhash')
+makedepends=('git' 'libglvnd' 'zlib')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!lto') # https://github.com/libretro/flycast/issues/892
 source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
@@ -29,6 +29,7 @@ prepare() {
 build() {
 	make -C $_pkgname \
 		HAVE_OIT=1 \
+		SYSTEM_LIBCHDR=1 \
 		SYSTEM_LIBZIP=1 \
 		SYSTEM_XXHASH=1 \
 		SYSTEM_ZLIB=1
