@@ -1,6 +1,6 @@
 pkgbase = dive-git
 	pkgdesc = A tool for exploring each layer in a docker image
-	pkgver = v0.9.2.r1.g4026276
+	pkgver = v0.10.0.r2.gc7d121b
 	pkgrel = 1
 	url = https://github.com/wagoodman/dive
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = dive-git
 	sha256sums = SKIP
 
 pkgname = dive-git
-

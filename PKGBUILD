@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=dive-git
-pkgver=v0.9.2.r1.g4026276
+pkgver=v0.10.0.r2.gc7d121b
 pkgrel=1
 pkgdesc="A tool for exploring each layer in a docker image"
 url="https://github.com/wagoodman/dive"
