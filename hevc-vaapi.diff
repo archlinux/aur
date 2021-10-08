@@ -263,3 +263,42 @@ index 445c5a792..a7a96d819 100644
  };
  
  #endif
+diff --git a/plugins/obs-ffmpeg/obs-ffmpeg.c b/plugins/obs-ffmpeg/obs-ffmpeg.c
+index b7a17095d..9d8397e68 100644
+--- a/plugins/obs-ffmpeg/obs-ffmpeg.c
++++ b/plugins/obs-ffmpeg/obs-ffmpeg.c
+@@ -35,6 +35,7 @@ extern struct obs_encoder_info nvenc_encoder_info;
+ 
+ #ifdef LIBAVUTIL_VAAPI_AVAILABLE
+ extern struct obs_encoder_info vaapi_encoder_info;
++extern struct obs_encoder_info vaapi_hevc_encoder_info;
+ #endif
+ 
+ #ifndef __APPLE__
+@@ -210,9 +211,9 @@ finish:
+ #endif
+ 
+ #ifdef LIBAVUTIL_VAAPI_AVAILABLE
+-static bool vaapi_supported(void)
++static bool vaapi_supported(const char *codec_name)
+ {
+-	AVCodec *vaenc = avcodec_find_encoder_by_name("h264_vaapi");
++	AVCodec *vaenc = avcodec_find_encoder_by_name(codec_name);
+ 	return !!vaenc;
+ }
+ #endif
+@@ -253,10 +254,14 @@ bool obs_module_load(void)
+ 		obs_register_encoder(&nvenc_encoder_info);
+ 	}
+ #if !defined(_WIN32) && defined(LIBAVUTIL_VAAPI_AVAILABLE)
+-	if (vaapi_supported()) {
++	if (vaapi_supported("h264_vaapi")) {
+ 		blog(LOG_INFO, "FFMPEG VAAPI supported");
+ 		obs_register_encoder(&vaapi_encoder_info);
+ 	}
++	if (vaapi_supported("hevc_vaapi")) {
++		blog(LOG_INFO, "FFMPEG HEVC VAAPI supported");
++		obs_register_encoder(&vaapi_hevc_encoder_info);
++	}
+ #endif
+ #endif
