@@ -1,4 +1,3 @@
 src
 pkg
-files
-make.sh
+*.tar*
