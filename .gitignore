@@ -1,4 +1,5 @@
 src
 pkg
-*pkg.tar.xz
+*.tar.gz
+*pkg.tar.*
 tags
