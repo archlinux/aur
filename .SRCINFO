@@ -1,7 +1,7 @@
 pkgbase = timeshift
 	pkgdesc = A system restore utility for Linux
 	pkgver = 21.09.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/teejee2008/timeshift
 	install = timeshift.install
 	arch = i686
