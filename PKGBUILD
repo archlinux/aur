@@ -5,8 +5,8 @@
 
 pkgname=github-desktop
 pkgver=2.9.3
-_gitname="release-$pkgver-linux2"
-pkgrel=2
+_gitname="release-$pkgver-linux3"
+pkgrel=3
 pkgdesc='GUI for managing Git and GitHub'
 arch=(x86_64)
 url='https://desktop.github.com'
@@ -40,29 +40,31 @@ sha256sums=('SKIP'
             '932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c')
 
 prepare() {
-    cd "$pkgname"
-    git submodule init
-    git config submodule."gemoji".url "$srcdir/gemoji"
-    git config submodule."app/static/common/gitignore".url "$srcdir/gitignore"
-    git config submodule."app/static/common/choosealicense.com".url "$srcdir/choosealicense.com"
-    git submodule update
+	cd "$pkgname"
+	git submodule init
+	git config submodule."gemoji".url "$srcdir/gemoji"
+	git config submodule."app/static/common/gitignore".url "$srcdir/gitignore"
+	git config submodule."app/static/common/choosealicense.com".url "$srcdir/choosealicense.com"
+	git submodule update
 }
 
 build() {
-    cd "$pkgname"
-    export DISPLAY=':99.0'
-    Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-    yarn install
-    yarn build:prod
+	cd "$pkgname"
+	export DISPLAY=':99.0'
+	Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+	yarn install
+	yarn build:prod
 }
 
 package() {
-    cd "$pkgname"
-    install -d "$pkgdir/opt/$pkgname"
-    cp -r --preserve=mode dist/github-desktop-linux-x64/* "$pkgdir/opt/$pkgname/"
-    install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "app/static/logos/1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png"
-    install -Dm644 "app/static/logos/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-    install -Dm644 "app/static/logos/256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-    printf "#!/bin/sh\n\n/opt/$pkgname/github-desktop \"\$@\"\n" | install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
+	cd "$pkgname"
+	install -d "$pkgdir/opt/$pkgname"
+	cp -r --preserve=mode dist/github-desktop-linux-x64/* "$pkgdir/opt/$pkgname/"
+	install -Dm0644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	pushd "$pkgdir/opt/$pkgname/resources/app/static/logos"
+	install -Dm0644 "1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png"
+	install -Dm0644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+	install -Dm0644 "256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+	printf "#!/bin/sh\n\n/opt/$pkgname/github-desktop \"\$@\"\n" |
+		install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
 }
