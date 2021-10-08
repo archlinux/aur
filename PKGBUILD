@@ -20,5 +20,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" prefix="/usr" install-asapconv install
+	make DESTDIR="$pkgdir" prefix="/usr" install
 }
