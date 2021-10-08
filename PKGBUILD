@@ -9,7 +9,9 @@ arch=('x86_64')
 url="https://www.volcengine.com/product/feilian"
 license=('unknown')
 groups=('')
-depends=('libxtst' 'networkmanager' 'nss')
+depends=('gtk3' 'libxss' 'nss')
+optdepends=('dnsmasq: NetworkManager integration'
+            'networkmanager: NetworkManager integration')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://oss.ifeilian.com/linux/FeiLian_Linux_v${pkgver}_${_pkgrel}.deb")
@@ -21,8 +23,9 @@ package(){
 
   # Fix directory structure differences
   cd "${pkgdir}"
+  mkdir -p usr/bin usr/lib/systemd/system
   ln -s /opt/Corplink/Corplink usr/bin/corplink
-  mv "${pkgdir}"/opt/Corplink/corplink.service lib/systemd/system/corplink.service
+  mv "${pkgdir}"/opt/Corplink/corplink.service usr/lib/systemd/system/corplink.service
 
   rm -rf usr/local
 }
