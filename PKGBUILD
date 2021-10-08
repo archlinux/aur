@@ -1,7 +1,7 @@
 # Maintainer: Esmail EL BoB <aur.valj8@simplelogin.co>
 
 pkgname="wine-roblox-bin" # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r2.478f4de
+pkgver=r2.9e56722
 pkgrel=1
 pkgdesc="Wine-tkg with custom roblox mouse patch"
 arch=('x86_64')
@@ -59,7 +59,6 @@ optdepends=(
 )
 
 pkgver() {
-	mkdir "$pkgname"
 	cd "$pkgname"
 	( set -o pipefail
 	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||

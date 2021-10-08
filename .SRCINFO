@@ -1,6 +1,6 @@
 pkgbase = wine-roblox-bin
 	pkgdesc = Wine-tkg with custom roblox mouse patch
-	pkgver = r2.478f4de
+	pkgver = r2.9e56722
 	pkgrel = 1
 	url = https://github.com/EsmailELBoBDev2/wine-tkg-roblox-mouce-patch
 	arch = x86_64
