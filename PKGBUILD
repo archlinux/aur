@@ -1,6 +1,6 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 pkgname=aws-checksums-git
-pkgver=v0.1.2.r0.g78be31b
+pkgver=v0.1.12.r1.g764eb92
 pkgrel=1
 pkgdesc="Cross-Platform HW accelerated CRC32c and CRC32 with fallback to efficient SW implementations."
 arch=('x86_64')
@@ -8,13 +8,13 @@ conflicts=('aws-checksums')
 provides=('aws-checksums')
 url="https://github.com/awslabs/aws-checksums"
 license=('Apache')
-depends=('cmake')
-makedepends=('openssl' 'curl' 'zlib' 'libutil-linux')
-source=("${pkgname}::git+https://github.com/awslabs/aws-checksums")
+depends=('aws-c-common')
+makedepends=('cmake' 'openssl' 'curl' 'zlib' 'libutil-linux')
+source=("${pkgname}::git+https://github.com/awslabs/aws-checksums#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}"
+	cd "${srcdir}/${pkgname}"
 
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -22,22 +22,19 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	mkdir -p build
-	cd build
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON -S . -B build
+    cmake --build build
+}
 
-    CMAKE_FLAGS="-Wno-dev \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib
-		-DCMAKE_BUILD_TYPE=Release \
-		-DBUILD_SHARED_LIBS=OFF"
-    cmake ${CMAKE_FLAGS} ..
+check() {
+	cd "${srcdir}/${pkgname}"
 
-	make ${MAKEFLAGS}
+    cmake --build build --target test
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	make -C build DESTDIR="${pkgdir}" install
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cmake --build build --target install -- DESTDIR="${pkgdir}/"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
