@@ -1,8 +1,8 @@
 pkgbase = tbb-combo-native-agent
 	pkgdesc = Taiwan Business Bank combo native agent (臺灣企銀二合一元件)
 	pkgver = 1.0.0.12
-	pkgrel = 1
-	url = https://webatm.post.gov.tw/
+	pkgrel = 2
+	url = https://ebank.tbb.com.tw/
 	arch = any
 	license = unknown
 	makedepends = p7zip

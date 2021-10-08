@@ -3,10 +3,10 @@
 pkgname=tbb-combo-native-agent
 # peres -v TbbComboNativeAgentHost.exe | grep 'Product Version' | cut -f 2 -d : | sed 's# ##g'
 pkgver=1.0.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Taiwan Business Bank combo native agent (臺灣企銀二合一元件)'
 arch=(any)
-url='https://webatm.post.gov.tw/'
+url='https://ebank.tbb.com.tw/'
 license=(unknown)
 depends=(wine-winscard lib32-gnutls)
 makedepends=(p7zip gendesk)
