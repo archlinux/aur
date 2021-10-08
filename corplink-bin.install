@@ -1,0 +1,40 @@
+pre_install() {
+
+	if [ "$1" == "install" ]; then
+	    rm -rf /opt/Corplink
+	    rm -rf $HOME/.config/CorpLink
+	fi
+}
+
+post_install() {
+	chown -R root:root /opt/Corplink/
+	P_PPID=$(ps -p $PPID -o ppid= | awk '$1=$1')
+	CMD=$(ps -p $P_PPID -o args=)
+	COMPANY_ID=$(echo $CMD | grep -o '{.*}.*\.deb$' | cut -d '{' -f2 | cut -d '}' -f1)
+	if [ -n "$COMPANY_ID" ]; then
+	    echo -n $COMPANY_ID > /opt/Corplink/company_id.conf
+	else
+	    /usr/bin/rm -f /opt/Corplink/company_id.conf
+	fi
+	/bin/cp opt/Corplink/corplink.service /usr/lib/systemd/system/
+	systemctl enable corplink.service
+	systemctl restart corplink.service
+	systemctl reload NetworkManager
+	systemctl daemon-reload
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+
+	systemctl disable --now corplink.service
+	systemctl reload NetworkManager
+	systemctl daemon-reload
+	/bin/rm -f /opt/Corplink/company_id.conf
+}

@@ -1,0 +1,7 @@
+tmp/
+
+*.deb
+*.rpm
+*.log
+*.xz
+*.zst
