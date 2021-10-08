@@ -2,7 +2,7 @@
 
 _plug=fft3dfilter
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=R1.32.g64323f0
+pkgver=R2.0.g50194b4
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('git'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/myrsloik/VapourSynth-FFT3DFilter.git#commit=64323f0")
+source=("${_plug}::git+https://github.com/myrsloik/VapourSynth-FFT3DFilter.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -38,5 +38,5 @@ build() {
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
 
-#   install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  install -Dm644 fft3dfilter/doc/fft3dfilter.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/fft3dfilter.md"
 }

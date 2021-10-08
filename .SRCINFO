@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-fft3dfilter-git
 	pkgdesc = Plugin for Vapoursynth: fft3dfilter (GIT version)
-	pkgver = R1.32.g64323f0
+	pkgver = R2.0.g50194b4
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=175199
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = vapoursynth-plugin-fft3dfilter-git
 	depends = fftw
 	provides = vapoursynth-plugin-fft3dfilter
 	conflicts = vapoursynth-plugin-fft3dfilter
-	source = fft3dfilter::git+https://github.com/myrsloik/VapourSynth-FFT3DFilter.git#commit=64323f0
+	source = fft3dfilter::git+https://github.com/myrsloik/VapourSynth-FFT3DFilter.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-fft3dfilter-git
-
