@@ -1,6 +1,6 @@
 pkgbase = wine-roblox-git
 	pkgdesc = Wine-tkg with custom roblox mouse patch
-	pkgver = r.
+	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/Frogging-Family/wine-tkg-git
 	arch = x86_64
