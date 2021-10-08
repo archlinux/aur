@@ -12,7 +12,6 @@ pkgbase = nosystemd-boot
 	makedepends = gnu-efi-libs
 	makedepends = git
 	makedepends = meson
-	conflicts = systemd
 	options = strip
 	source = git+https://github.com/systemd/systemd-stable#tag=91ea8d825553fc1ecfc19448be24a4da56b13d00?signed
 	source = git+https://github.com/systemd/systemd#tag=v249?signed

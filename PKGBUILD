@@ -5,7 +5,6 @@
 _pkgbase='systemd'
 pkgname='nosystemd-boot'
 pkgdesc='UEFI boot manager from systemd (formerly gummiboot) - patched to work without systemd'
-conflicts=('systemd')
 _tag='91ea8d825553fc1ecfc19448be24a4da56b13d00' # git rev-parse v${_tag_name}
 _tag_name=249.4
 pkgver="${_tag_name/-/}"
