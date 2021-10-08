@@ -1,7 +1,7 @@
 pkgbase = homebridge
 	pkgdesc = HomeKit support for the impatient
-	pkgver = 1.3.4
-	pkgrel = 2
+	pkgver = 1.3.5
+	pkgrel = 1
 	url = https://github.com/homebridge/homebridge
 	arch = any
 	license = Apache
@@ -10,8 +10,8 @@ pkgbase = homebridge
 	optdepends = homebridge-config-ui-x: for web-based management tool
 	options = !emptydirs
 	options = !strip
-	source = homebridge-1.3.4.tar.gz::https://github.com/homebridge/homebridge/archive/v1.3.4.tar.gz
-	b2sums = 91a3cf0e1b174f2122d23a13e3c3b45843f8ce6391f1b9684ffc0d5044e51e8412f85625bbe1aaec4f9fbd4ddc0958091a3310e5d3e4ccfe2e406b3a7fe36e41
+	source = homebridge-1.3.5.tar.gz::https://github.com/homebridge/homebridge/archive/v1.3.5.tar.gz
+	sha512sums = 92dea73ddfb4c66854c98dcfa5cc13f5642707c6077190119869c22c482a598af998646abb26dd9af631a29932786021e966bb648e40e86607c85f91b5813bcd
+	b2sums = 704025bcb755a0a2568b9f291b6b20085dee95206524394d73800bd90014db27fb167b1ec94388aa6aae00b0896f3a557066869f64ae19f99489fc90c575eec2
 
 pkgname = homebridge
-
