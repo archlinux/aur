@@ -1,10 +1,10 @@
 # Maintainer: Amy <amy at fluff dot tech>
 
-_distnum=3015
+_distnum=3017
 _distname="dist-chrome-${_distnum}.zip"
 
 pkgname=bitwarden-chromium
-pkgver=1.52.0
+pkgver=1.53.0
 pkgrel=1
 pkgdesc='Bitwarden Chromium extension'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('chromium' 'google-chrome')
 install="${pkgname}.install"
 source=("https://github.com/bitwarden/browser/releases/download/v${pkgver}/${_distname}")
 noextract=("${_distname}")
-sha512sums=('93e70fb9a18679bedca7a0ff96c0d8763f41a020f0a2da7f98eaa9ba58f1bd2c211946af480d55d9022afc71a6c3312cd354ebc6412245066eeeb47bc6ddb407')
+sha512sums=('a9e66880fff44aea2e8f62fcdf8a144ad9ac7bb87b54cfbfbe4bcfebad82c9c6ec5eb066e4f77cb17512d4952e609338cebbb3f61bc8aa4d8997d1c5d13a0527')
 
 package() {
 	# Extract files - bsdtar doesn't seem to handle it well
