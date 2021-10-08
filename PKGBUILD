@@ -36,7 +36,7 @@ prepare() {
 
 build() {
   cd ulauncher
-  python setup.py build
+  env PATH=$(getconf PATH) python setup.py build
   ./ul build-preferences
 }
 
@@ -48,7 +48,7 @@ check() {
 package() {
   cd ulauncher
   export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  env PATH=$(getconf PATH) python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   rm -rf "$pkgdir"/usr/share/ulauncher/preferences/{no*,src,bow*,gul*,pack*}
   find $pkgdir -type d -name __pycache__ | xargs rm -rf
 }
