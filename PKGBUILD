@@ -1,40 +1,70 @@
 # Maintainer: Dimitris Karnikis <dkarnikis@gmail.com>
+# Contributor: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 
-pkgname="pash-shell"
-pkgver=04
-pkgrel='0'
-packager="Dimitris Karnikis"
+pkgbase="pash-shell"
+pkgname=('pash-shell' 'pash-shell-docs')
+_reponame="pash"
+pkgver=4
+pkgrel=2
 pkgdesc="PaSh: Light-touch Data-Parallel Shell Processing"
 url="https://binpa.sh/"
 arch=("x86_64")
 license=('MIT')
-source=("git+https://github.com/binpash/pash.git")
-makedepends=(git libtool m4 automake curl pkg-config python-pip libffi make autoconf gcc sudo inetutils bc)
+_commit=2b4db9ddb1616ce6fe56575724c966177bb950f7  # tags/v.04^0
+source=("git+https://github.com/binpash/pash.git#commit=$_commit")
+depends=('python-jsonpickle' 'python-yaml' 'python-numpy' 'python-matplotlib')
+makedepends=('git' 'gcc' 'gcc10')
+checkdepends=('inetutils')
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${srcdir}/${_reponame}"
+  git describe --tags | sed 's/v.//;s/^0*//;s/-/+/g'
+}
+
 prepare() {
-    cd "$srcdir/$pkgname"
-    git checkout v.$pkgver
+  # Hardcode PASH_TOP, as we already know where it is placed in the FS
+  # and there is no need for the user the set it later on
+  sed -i 's|^export PASH_TOP=.*|export PASH_TOP="/opt/pash"|' "${srcdir}/${_reponame}/pa.sh"
 }
 
 build() {
-    echo "Building from sources"
-    # access the repo code
-    export PASH_TOP="$srcdir/$pkgname"
-    cd $PASH_TOP
-    # setup pash
-    bash scripts/setup-pash.sh
+  export PASH_TOP="${srcdir}/${_reponame}"
+
+  cd ${PASH_TOP}
+  git submodule init
+  git submodule update
+
+  cd compiler/parser
+  make libdash
+
+  cd "${PASH_TOP}/runtime"
+  make
 }
 
-package() {
-    install -d ${pkgdir}/opt
-    cp -r "$srcdir/${pkgname}" -t "${pkgdir}/opt"
-    # add access permission to the folder
-    $(chmod -R 777 "${pkgdir}/opt")
-    # copy the pa.sh to /usr/local/bin
-    install -D -m0777 "${srcdir}/${pkgname}/pa.sh" -t "${pkgdir}/usr/local/bin"
-    red=`tput setaf 1`
-    green=`tput setaf 2`
-    reset=`tput sgr0`
-    echo "${green}Dont forget to run ${red}export PASH_TOP=/opt/pash${reset}"
+check() {
+  cd "${PASH_TOP}"
+  "${PASH_TOP}/evaluation/tests/input/setup.sh"
+}
+
+package_pash-shell() {
+  cd "${srcdir}/${_reponame}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/pash-shell/LICENSE"
+  /usr/bin/install -dm755 "${pkgdir}/opt/pash"
+
+  mv ./annotations ./compiler ./evaluation ./runtime "${pkgdir}/opt/pash/"
+  /usr/bin/install -m755 ./pa.sh "${pkgdir}/opt/pash/pa.sh"
+  
+  /usr/bin/install -dm755 "${pkgdir}/usr/bin"
+  ln -s /opt/pash/pa.sh "${pkgdir}/usr/bin/pa.sh"
+}
+
+package_pash-shell-docs() {
+  pkgdesc="Documentation for PaSh"
+  arch=("any")
+  depends=()
+  cd "${srcdir}/${_reponame}"
+  /usr/bin/install -dm755 "${pkgdir}/opt/pash"
+  mv ./docs "${pkgdir}/opt/pash/"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/pash-shell-docs/LICENSE"
 }
