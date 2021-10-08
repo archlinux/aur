@@ -1,6 +1,6 @@
 pkgbase = noto-fonts-emoji-apple
 	pkgdesc = Google Noto emoji fonts replaced with apple branded emoji, modified form a magisk module
-	pkgver = 14.5
+	pkgver = 14.6
 	pkgrel = 1
 	url = https://gitlab.com/timescam/noto-fonts-emoji-apple
 	arch = any
@@ -10,4 +10,3 @@ pkgbase = noto-fonts-emoji-apple
 	md5sums = SKIP
 
 pkgname = noto-fonts-emoji-apple
-

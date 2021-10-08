@@ -2,7 +2,7 @@
 
 pkgname=noto-fonts-emoji-apple
 _pkgname=noto-fonts-emoji
-pkgver=14.5
+pkgver=14.6
 pkgrel=1
 pkgdesc="Google Noto emoji fonts replaced with apple branded emoji, modified form a magisk module"
 arch=(any)
