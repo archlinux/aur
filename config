@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 5.14.2 Kernel Configuration
+# Linux/um 5.14.10 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -933,8 +933,6 @@ CONFIG_USB_OHCI_LITTLE_ENDIAN=y
 # DMABUF options
 #
 # CONFIG_SYNC_FILE is not set
-# CONFIG_DMABUF_MOVE_NOTIFY is not set
-# CONFIG_DMABUF_DEBUG is not set
 # CONFIG_DMABUF_HEAPS is not set
 # end of DMABUF options
 
