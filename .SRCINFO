@@ -1,0 +1,22 @@
+pkgbase = com.seewo.easicamera
+	pkgdesc = Seewo EasiCamera 视睿视频展台
+	pkgver = 2.0.0.602
+	pkgrel = 1
+	install = com.seewo.easicamera.install
+	arch = x86_64
+	groups = 
+	license = 
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/YidaozhanYa/seewo-uos-bin/releases/download/2/com.seewo.easicamera.tar.gz
+	sha512sums = abe38ffe18b03dcf19bdb3c51c9f902e706d7ee72ab10249fd56cd2fa41f61860194e2c69c996a268810c99dbd213e91be69432ad1b8347d9ad8cf3badd1f905
+
+pkgname = com.seewo.easicamera
