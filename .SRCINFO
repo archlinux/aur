@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-jincresize-git
+	pkgdesc = Plugin for Avisynth: jincresize (GIT version)
+	pkgver = 2.1.0.1.gf3dbaff
+	pkgrel = 1
+	url = https://github.com/Asd-g/AviSynth-JincResize
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-jincresize
+	conflicts = avisynth-plugin-jincresize
+	source = jincresize::git+https://github.com/Asd-g/AviSynth-JincResize.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-jincresize-git
