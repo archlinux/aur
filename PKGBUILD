@@ -3,8 +3,8 @@
 # Maintainer: Zhuo FENG <fenprace.i@gmail.com>
 
 pkgname=mosdns-cn
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A DNS forwarder"
 license=("GPL3")
 arch=("any")
@@ -15,7 +15,7 @@ optdepends=('v2ray-domain-list-community: geosite.dat'
             'v2ray-rules-dat-git: geosite.dat & geoip.dat')
 provides=("mosdns-cn")
 conflicts=("mosdns-cn")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/IrineSistiana/mosdns-cn/archive/refs/tags/v1.0.1.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/IrineSistiana/mosdns-cn/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {
   export GOPATH="$srcdir/gopath"
@@ -28,4 +28,4 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
-sha256sums=('75c0ae4af80067377ec287ceb5b2f038e64eb5a0223e3a7cb14e6368a3079492')
+sha256sums=('bf15d71890f121c4ef8f2e880ed49ae4827c79a90cb65b18c5edd75a3b337425')
