@@ -4,7 +4,7 @@ pkgver=0.2beta
 pkgrel=1
 pkgdesc="Application for the performance management of Intel processors"
 arch=('any')
-url="https://slimbook.es"
+url="https://github.com/slimbook/slimbookintelcontroller"
 license=('GPL2')
 depends=('dbus-python' 'gtk3' 'intel-undervolt' 'libnotify' 'pciutils' 'python-gobject'
          'python-pillow' 'systemd-libs')
