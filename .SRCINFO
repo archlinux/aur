@@ -1,6 +1,6 @@
 pkgbase = swaysettings-git
 	pkgdesc = A gui for setting sway wallpaper, default apps, GTK themes, etc...
-	pkgver = 0.1.r44.42f4e96
+	pkgver = 0.2.r148.6d3aa0a
 	pkgrel = 1
 	url = https://github.com/ErikReider/SwaySettings
 	arch = x86_64
@@ -16,6 +16,9 @@ pkgbase = swaysettings-git
 	depends = libgee>=0.20
 	depends = json-glib>=1.0
 	depends = granite>=6.1.0
+	depends = libxml2
+	depends = xkeyboard-config
+	optdepends = swaync-git
 	source = git+https://github.com/ErikReider/SwaySettings
 	sha256sums = SKIP
 
