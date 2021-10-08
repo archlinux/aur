@@ -4,7 +4,7 @@
 
 pkgname=lx-music
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An Electron-based music player'
 arch=('any')
 url='https://github.com/lyswhut/lx-music-desktop'
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         )
 sha256sums=('036ee0024710bba4ed58aaeac4f5dcfa08104ab1eff9e6827253276d8071814f'
             '1e69184fd93f8d86d800306b99e5f630253d32de610342485ba5d4b0be018eb4'
-            '86c65106fb93671b2f3da2896ef69d709f0558b2113779b9ca45bbbb73de64ce'
+            '9e96bfd1093d82c9cc05275953d288dff2966242ab59d8abcd9d74e90fce875e'
             'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
 
 prepare() {
