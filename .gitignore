@@ -1,0 +1,17 @@
+# package archives, downloaded sources
+*.tar.zst
+LICENSE-*
+buildifier-*
+
+# subfolders, e.g. source and build package trees
+*/**/
+
+# backup files
+*~
+*.bak
+
+# log files from makepkg --log
+*.log
+
+# lockfiles from mkarchchroot+makepkg
+*/*.lock
