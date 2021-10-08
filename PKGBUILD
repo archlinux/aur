@@ -1,4 +1,4 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=pkgcloud-git
 pkgver=r63.b0bbd28

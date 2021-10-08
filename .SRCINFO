@@ -11,4 +11,3 @@ pkgbase = pkgcloud-git
 	sha256sums = SKIP
 
 pkgname = pkgcloud-git
-
