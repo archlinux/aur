@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=tela-icon-theme
-_pkgver=2021-01-21
+_pkgver=2021-10-08
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A flat colorful design icon theme."
@@ -10,10 +10,10 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 options=('!strip')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/vinceliuice/Tela-icon-theme/archive/$_pkgver.tar.gz")
-sha256sums=('aca41d6e449d66240ad2c484edae96a26d32dd69995a9a8ce3edd4b0d5fb2b70')
+sha256sums=('3779317c8114ce9140971bda3383ff88283776bb10107f879d5b0c29b085fe81')
 
 package() {
-	cd "Tela-icon-theme-$_pkgver"
-	install -d "$pkgdir/usr/share/icons"
-	./install.sh -a -d "$pkgdir/usr/share/icons"
+  cd "Tela-icon-theme-$_pkgver"
+  install -d "$pkgdir/usr/share/icons"
+  ./install.sh -a -d "$pkgdir/usr/share/icons"
 }
