@@ -12,7 +12,7 @@ depends=('obs-studio')
 makedepends=('git' 'cmake')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-_obsver="$(obs -V | awk -F- '{print $2}' | xargs)"
+_obsver="$(obs -V | grep -Eo '[0-9.]+')"
 source=("git+${url}.git"
         "obs-studio-${_obsver}.tar.gz::https://github.com/obsproject/obs-studio/archive/${_obsver}.tar.gz")
 sha256sums=('SKIP'
