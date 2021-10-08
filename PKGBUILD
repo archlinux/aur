@@ -3,8 +3,8 @@
 
 _pkgbase=veeamsnap
 pkgname=veeamsnap
-pkgver=5.0.0.4318
-pkgrel=3
+pkgver=5.0.1.4493
+pkgrel=4
 pkgdesc="Veeam Agent for Linux kernel modules (DKMS)"
 arch=('i686' 'x86_64')
 url="https://repository.veeam.com/backup/linux/agent"
@@ -14,7 +14,7 @@ conflicts=("${_pkgbase}")
 install=${pkgname}.install
 source=("${url}/rpm/el/8/x86_64/veeamsnap-${pkgver}-1.noarch.rpm"
         'dkms.conf')
-sha256sums=('9e04016b7502b078db17a0a1dccefa2950c4abf2ac1e6251c77123ff3fea21db'
+sha256sums=('74ebf17d736447b455d7153be58399e3214eea1d7fc8900d3d463ca7daba0d46'
             '7d2a83f28b7c41797fadf06f29ab124ae63d662f2dba4e81e1eb4d1ef15bee7c')
 
 build() {
