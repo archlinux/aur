@@ -1,0 +1,13 @@
+pkgbase = heaptrace-git
+	pkgdesc = a tool for tracking heap operations
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/Arinerron/heaptrace
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = java-runtime-common
+	source = heaptrace-2.0::git+https://github.com/BlackberryCode/heaptrace.git#branch=main
+	md5sums = SKIP
+
+pkgname = heaptrace-git
