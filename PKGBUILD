@@ -3,7 +3,7 @@
 # Contributor: David Mehren <david.mehren@udo.edu>
 
 pkgname=schildichat-desktop-bin
-_pkgver=1.8.5-sc1
+_pkgver=1.9.0-sc.1
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="SchildiChat is a Matrix client based on Element with a more traditional instant messaging experience."
@@ -15,7 +15,7 @@ provides=('schildichat-desktop')
 conflicts=('schildichat-desktop')
 source=("https://github.com/SchildiChat/schildichat-desktop/releases/download/v${_pkgver}/schildichat-desktop_${_pkgver}_amd64.deb"
         "schildichat-desktop.sh")
-sha256sums=('45cc1f6dbee5ba87d1525a31a9e1b2f3309ea44a4f6b9f74228e2eca704f1555'
+sha256sums=('2c159ea68f7d7aa2bd0c0725463f6267fda6e4c29ee0c691d40f970a9ad1d667'
             'fbc7d9a5480a66e2623dbf05c0c51deee39bf35289d5b79325bfc4b87fa2a609')
 
 package() {
