@@ -12,23 +12,18 @@ makedepends=("gcc")
 
 prepare() {
     # pre_build
-
     cd "${srcdir}/${pkgname}-${pkgver}"
-    
 }
 
 build() {
     # build
-
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./compile.sh
 }
 
 check() {
     # post_build
-
     cd "${srcdir}/${pkgname}-${pkgver}"
-    
 }
 
 package() {
