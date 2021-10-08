@@ -1,7 +1,7 @@
 pkgbase = bucklespring-libinput-git
 	pkgdesc = Nostalgia bucklespring keyboard sound, sampled from IBM's Model-M. libinput version
 	pkgver = latest
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/zevv/bucklespring
 	arch = i686
 	arch = x86_64

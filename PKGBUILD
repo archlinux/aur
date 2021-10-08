@@ -1,17 +1,17 @@
 # Maintainer: somini <dev@somini.xyz>
 # Contributor: Sebastian Morr <sebastian@morr.cc>
 
-_pkgname=bucklespring
 pkgname=bucklespring-libinput-git
+_pkgname=bucklespring
 pkgver=latest
-pkgrel=6
+pkgrel=7
 pkgdesc="Nostalgia bucklespring keyboard sound, sampled from IBM's Model-M. libinput version"
 arch=('i686' 'x86_64')
 url="https://github.com/zevv/bucklespring"
 license=('MIT')
-conflicts=('bucklespring' 'bucklespring-git')
 depends=('openal' 'alure' 'libxtst' 'dumb' 'mpg123' 'libinput')
 makedepends=('git')
+conflicts=('bucklespring' 'bucklespring-git')
 source=(
   'git+https://github.com/zevv/bucklespring'
   'nl.zevv.bucklespring.run.policy'
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   make PATH_AUDIO=/usr/share/bucklespring libinput=1
 }
 
