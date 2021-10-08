@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 4c7094d..64ad2fe 100644
+--- a/setup.py
++++ b/setup.py
+@@ -57,7 +57,7 @@ def main():
+         'author': 'Victor Stinner',
+         'author_email': 'vstinner@redhat.com',
+         'classifiers': CLASSIFIERS,
+-        'packages': ['pyperf', 'pyperf.tests'],
++        'packages': ['pyperf'],
+         'install_requires': [],
+         # don't use environment markers in install_requires, but use weird
+         # syntax of extras_require, to support setuptools 18
