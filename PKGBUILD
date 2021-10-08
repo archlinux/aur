@@ -1,8 +1,8 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=gepetto-viewer
-pkgver=4.12.0
-pkgrel=6
+pkgver=4.12.1
+pkgrel=1
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
 url="https://github.com/gepetto/$pkgname"
