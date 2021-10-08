@@ -3,14 +3,14 @@
 
 pkgname=i4tools-bin
 pkgver=1.0.038
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。"
 arch=('any')
 url="https://www.i4.cn/pro_pc.html"
 license=('Custom')
 groups=()
-depends=('bash' 'ffmpeg' 'libwebp' 'sdl2' 'libcdio-paranoia' 'numactl')
+depends=('bash' 'ffmpeg' 'libwebp' 'sdl2' 'libcdio-paranoia' 'numactl' 'rtmpdump' 'twolame' 'mpg123')
 makedepends=('libarchive')
 checkdepends=()
 optdepends=()
