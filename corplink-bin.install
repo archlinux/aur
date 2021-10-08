@@ -1,4 +1,7 @@
 post_install() {
     chown -R root:root /opt/Corplink/
+
+    echo ':: Note:'
+    echo '    Remember to start corplink.service before start the app.'
 }
 
