@@ -3,7 +3,7 @@
 
 pkgname=gog-cuphead
 pkgver=1.2.4.29705
-pkgrel=1
+pkgrel=2
 pkgdesc='Contra-esque action game with retro cartoon visuals. GOG version, uses Wine.'
 arch=('x86_64')
 url='https://www.gog.com/game/cuphead'
@@ -14,9 +14,9 @@ options=('libtool' 'staticlibs' '!strip')
 install="${pkgname}.install"
 source=(
     "setup_cuphead_${pkgver%.*}_(${pkgver##*.}).exe`
-      `::gogdownloader://${pkgname#gog-}/en1installer1"
+      `::gogdownloader://${pkgname#gog-}/en1installer0"
     "setup_cuphead_${pkgver%.*}_(${pkgver##*.})-1.bin`
-      `::gogdownloader://${pkgname#gog-}/en1installer2"
+      `::gogdownloader://${pkgname#gog-}/en1installer1"
     'launch_gog-cuphead.bash'
     'gog-cuphead.desktop'
 )
