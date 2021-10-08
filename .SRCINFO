@@ -1,16 +1,16 @@
 pkgbase = insync-dolphin
 	pkgdesc = This package contains the service menu for integrating Insync with Dolphin
-	pkgver = 3.5.2.50118
+	pkgver = 3.4.0.40973
 	pkgrel = 1
 	url = https://www.insynchq.com
 	arch = x86_64
 	license = custom
 	depends = insync
 	depends = dolphin
-	noextract = insync-dolphin-3.5.2.50118.deb
+	noextract = insync-dolphin-3.4.0.40973.deb
 	options = !strip
 	options = !emptydirs
-	source = insync-dolphin-3.5.2.50118.deb::http://s.insynchq.com/builds/insync-dolphin_3.5.2.50118_all.deb
-	sha256sums = c7f2d1b9f7943b1cfff4254015a43569f25da1886ec5cadfe31ccfcfcfd61620
+	source = insync-dolphin-3.4.0.40973.deb::http://s.insynchq.com/builds/insync-dolphin_3.4.0.40973_all.deb
+	sha256sums = e7c79d67baa24e1400ef5ba377d7e3c9f075b32f67c21e2be83bf919bdef14b9
 
 pkgname = insync-dolphin
