@@ -1,0 +1,6 @@
+jupyterlab-language-pack-no-NO-*.tar.gz
+jupyterlab-language-pack-no-no-*.pkg.tar.gz
+jupyterlab-language-pack-no-no-*.pkg.tar.zst
+pkg
+src
+*.log
