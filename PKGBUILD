@@ -6,8 +6,7 @@ pkgdesc="An Electron based Mastodon, Pleroma and Misskey client"
 arch=('x86_64')
 url="https://whalebird.social"
 license=('MIT')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxslt' 'minizip'
-         'nss' 're2' 'snappy' 'libnotify')
+depends=('electron>=15.1.0' 'electron<16.0.0')
 makedepends=('yarn' 'tar' 'nodejs>=14.15')
 provides=('whalebird')
 source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/$pkgver.tar.gz"
@@ -20,14 +19,15 @@ md5sums=('cc74986da5faad240db5b06c0ce344ae'
 prepare() {
   cd "whalebird-desktop-${pkgver}"
   rm -f electron-builder.json
+  _electronVersion="$(</usr/lib/electron/version)"
+  yarn upgrade "electron@$_electronVersion"
 }
 
 build() {
   cp electron-builder.yml "whalebird-desktop-${pkgver}"/electron-builder.yml
   cd "whalebird-desktop-${pkgver}"
   make build
-  yarn exec electron-builder --linux --dir --config electron-builder.yml
-
+  yarn exec electron-builder --linux --dir --config electron-builder.yml -c.electronDist=/usr/lib/electron -c.electronVersion="$_electronVersion"
 }
 
 package() {

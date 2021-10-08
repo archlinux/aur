@@ -8,17 +8,8 @@ pkgbase = whalebird
 	makedepends = yarn
 	makedepends = tar
 	makedepends = nodejs>=14.15
-	depends = c-ares
-	depends = ffmpeg
-	depends = gtk3
-	depends = libevent
-	depends = libnghttp2
-	depends = libxslt
-	depends = minizip
-	depends = nss
-	depends = re2
-	depends = snappy
-	depends = libnotify
+	depends = electron>=15.1.0
+	depends = electron<16.0.0
 	provides = whalebird
 	source = https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/4.4.5.tar.gz
 	source = whalebird.desktop
