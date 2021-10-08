@@ -1,35 +1,32 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=lte-cell-scanner-git
-pkgver=r335.ef1ad25
-pkgrel=3
+pkgver=r20.3152eb7
+pkgrel=1
 pkgdesc="An OpenCL accelerated TDD/FDD LTE Scanner"
 arch=('i686' 'x86_64')
 url="https://github.com/JiaoXianjun/LTE-Cell-Scanner"
 license=('GPL')
 depends=('git')
 makedepends=('cmake' 'hackrf' 'fftw' 'itpp' 'boost' 'boost-libs' 'libbladerf-git')
-source=("${pkgname}::git+https://github.com/JiaoXianjun/LTE-Cell-Scanner"
-		"Fix-compile-issues-with-newer-libbladerf-releases.patch")
-sha256sums=('SKIP'
-            '5cd6c5f96b2d39a1aa0e22ea6f1d47401c0d5f26c1944ba12219d03578f7668f')
+source=("${pkgname}::git+https://github.com/JiaoXianjun/LTE-Cell-Scanner")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 
-	patch -Np1 -i ../Fix-compile-issues-with-newer-libbladerf-releases.patch
+	mkdir -p "${srcdir}/${pkgname}/build"
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 
-	mkdir -p "$srcdir/$pkgname/build"
 	cd build
 	cmake ../ \
 		-DCMAKE_BUILD_TYPE=Release \
@@ -42,7 +39,8 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname/build"
+	cd "${srcdir}/${pkgname}"
 
+    cd build
 	make DESTDIR="${pkgdir}" install
 }
