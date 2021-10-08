@@ -5,7 +5,7 @@
 
 pkgname=forkgram-bin
 _pkgname=forkgram
-pkgver=3.1.8
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="Forkgram is the fork of the official Telegram Desktop application - Static binary"
 arch=(x86_64)
@@ -29,17 +29,24 @@ optdepends=(
 
 # Sources
 source=(
-	"https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/Telegram.tar.xz"
+	"${_pkgname}-${pkgver}.tar.xz::https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/Telegram.tar.xz"
 	"$pkgname.desktop"
 	tg.protocol
-	"${_pkgname}.png::https://user-images.githubusercontent.com/4051126/43634235-402a8b74-9714-11e8-85c0-8ceb0844a3b0.png"
-)
+	https://raw.githubusercontent.com/Forkgram/tdesktop/dev/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png)
+	#"${_pkgname}.png::https://user-images.githubusercontent.com/4051126/43634235-402a8b74-9714-11e8-85c0-8ceb0844a3b0.png"
+
 
 # Checksums
 sha256sums=('1958cf1bd52357804e9415a3772fecd5657607072e7d5b0497721450ed25ef1a'
-            'd120aa0e034fe8d8edf6f91ce81ab9bbf2ce8b2760df75fb9a5416860135700f'
+            '9d2105c26352543d3fbc46b26ace4a8aa6f5893cf9a0d6bbae919bd440b74d93'
             '9fd7d8ce9c4246ed414ddf15c2a19f6df1a749c1e6cb23ac1aac2fc0e6152fe7'
-            'a82426db2c86b32ea38d274d98ed741f51f7488643061fdf7749966208095f8b')
+            '13c5b79d31f123ba4da10d57f93e11bf9490c78476dc44758a9d58f6b4488f0a'
+            '371dfd02eb3f9a5e69d0a6dd81d931bfc9fdf749cf4700c9c8def82bf0452701'
+            '36fe2468f41996ed464d39da17c1518c23e230569a10d32fa96c84a492a8e6c0'
+            '6579cb28df4d36f0bb7944434c3c00b08f09f387d7c89e8e53c05af1f5b15d91'
+            '0b8ab0a5f1dbd15e0496a119afb28f684e29b7fe731d5540a417b89195297022'
+            'c51a86c6fef238ef3ba4e25337be44548e7f5d358faec8075980929581663c96'
+            '11c609c98c14628f3bcef080be6e8005fc30b26aea01605a0c629f7e142065bf')
 # Some installation information
 install="$pkgname.install"
 
@@ -59,7 +66,6 @@ package() {
 	chrpath --delete "$pkgdir/usr/bin/Forkgram"
 
 	# Desktop launcher
-	install -Dm644 "$srcdir/${_pkgname}.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
 	install -Dm644 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 
 	# KDE5 & KDE4 protocol file
@@ -68,7 +74,15 @@ package() {
 	install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
 	ln -s "/usr/share/kservices5/tg.protocol" "$pkgdir/usr/share/kde4/services"
 
+	# Icons
+	local icon_size icon_dir
+	for icon_size in 16 32 48 64 128 256 512; do
+		icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
+		install -d "$icon_dir"
+		install -m644 "$srcdir/icon${icon_size}.png" "$icon_dir/${_pkgname}.png"
+	done
+
 	# Disable the official Telegram Desktop updater
-	#mkdir -p "$pkgdir/etc/tdesktop"
-	#echo "/usr/bin/Forkgram" > "$pkgdir/etc/tdesktop/externalupdater"
+	mkdir -p "$pkgdir/etc/tdesktop"
+	echo "/usr/bin/Forkgram" > "$pkgdir/etc/tdesktop/externalupdater"
 }
