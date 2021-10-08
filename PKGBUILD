@@ -12,7 +12,7 @@
 #pkgbase=linux-mainline               # Build stock -ARCH kernel
 pkgbase=linux-yoga9                   # Build kernel with a different name
 _tag=v5.14
-pkgver=5.14
+pkgver=5.14.1
 pkgrel=1
 pkgdesc="Linux Mainline Yoga9"
 arch=(x86_64)

@@ -1,6 +1,6 @@
 pkgbase = linux-yoga9
 	pkgdesc = Linux Mainline Yoga9
-	pkgver = 5.14
+	pkgver = 5.14.1
 	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
