@@ -66,6 +66,20 @@ kubectl run kuttle --image=alpine:latest --restart=Never -- sh -c 'apk add pytho
 sshuttle -r kuttle -e kuttle 0.0.0.0/0
 ```
 
+## Automatic target pod creation
+
+If you don't care about having a long-running pod in your cluster, you can use the `autokuttle` script instead:
+
+```sh
+wget https://github.com/kayrus/kuttle/raw/master/autokuttle
+chmod +x autokuttle
+sshuttle -r kuttle -e autokuttle 0.0.0.0/0
+```
+
+This will create a deployment named `autokuttle` with one replica pod and use
+that as the target. If the deployment already exists it will re-use it the next
+time it runs.
+
 # Examples
 
 Route local requests to the `10.254.0.0/16` subnet via `pod-with-python` pod in your Kubernetes cluster:

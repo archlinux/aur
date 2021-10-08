@@ -1,0 +1,67 @@
+#!/bin/sh
+#
+# Alternative version of kuttle (https://github.com/kayrus/kuttle) that
+# automatically creates a long-running pod with python to run the sshuttle
+# python command in.
+#
+# Usage:
+#
+#   sshuttle -v -r 'whatever' -e /path/to/autokuttle 172.20.0.0/16
+#
+
+set -e
+
+NAME=$(basename $0)
+NAMESPACE=default
+
+# skip until "--" or the last argument (the python command)
+# https://github.com/sshuttle/sshuttle/blob/45f8cce2f892749a0971f0d1e299dcdc32f88afe/sshuttle/ssh.py#L141
+while [ $# -gt 1 ] ; do
+  arg=$1
+  shift
+  if [ "$arg" = "--" ] ; then
+    break
+  fi
+done
+
+if [ $# -lt 1 ] ; then
+  printf "Missing command to exec in pod!\n"
+  exit 1
+fi
+
+if [ -z "$(kubectl get -n $NAMESPACE deployment/$NAME -o name --ignore-not-found)" ] ; then
+  kubectl create -n $NAMESPACE --save-config -f - >/dev/null <<EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: $NAME
+  name: $NAME
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: $NAME
+  template:
+    metadata:
+      labels:
+        app: $NAME
+    spec:
+      containers:
+      - image: python:3-alpine
+        name: python
+        command: ["sh"]
+        args: ["-c", "exec tail -f /dev/null"]
+EOF
+  kubectl -n $NAMESPACE wait pod -l app=$NAME --for condition=Ready --timeout 30s >/dev/null
+fi
+
+FILTER_READY='{{range $index, $element := .items}}{{range .status.containerStatuses}}{{if .ready}}{{$element.metadata.name}}{{"\n"}}{{end}}{{end}}{{end}}'
+POD=$(kubectl -n $NAMESPACE get pods -l app=$NAME -o go-template="$FILTER_READY")
+
+if [ -n "$POD" ] ; then
+  eval exec kubectl -n $NAMESPACE exec -i $POD -- "$@"
+else
+  printf "No pods matching 'app=$NAME' are Ready.\n"
+  exit 1
+fi
