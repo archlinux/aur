@@ -1,0 +1,14 @@
+--- a/Makefile	2021-10-07 21:48:58.204086012 -0700
++++ b/Makefile	2021-10-07 22:14:39.290565502 -0700
+@@ -3,9 +3,9 @@
+ bindir = $(prefix)/bin
+ libdir = $(prefix)/lib
+ CC = gcc
+-CFLAGS = -O2 -Wall
++CFLAGS += -O2 -Wall
+ CPPFLAGS =
+-LDFLAGS = -s
++LDFLAGS += -s
+ AR = ar
+ ARFLAGS = rc
+ DO_CC = $(DO)$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $(if $(filter %.so,$@),-shared -fPIC) $(INCLUDEOPTS) $(filter %.c,$^) $(LDFLAGS)

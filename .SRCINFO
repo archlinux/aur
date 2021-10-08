@@ -1,11 +1,13 @@
 pkgbase = asap
 	pkgdesc = Another Slight Atari Player - library and players for 8-bit Atari music format
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://asap.sourceforge.net
 	arch = x86_64
 	license = GPL2
 	source = https://downloads.sourceforge.net/asap/asap-5.1.0.tar.gz
+	source = cflags_ldflags_append.patch
 	sha256sums = ec881c6894d00e669e25a9c22f7ceae38ea65bd6240ec00d0a4f475c13b642b0
+	sha256sums = 1c17f996fe616daa4dc14eabb20f3e58546873aab24abe7dcb1f27edc90fbd5c
 
 pkgname = asap
