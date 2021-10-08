@@ -2,7 +2,7 @@
 
 _plug=yadifmod2
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=0.2.6.5.ga3472ef
+pkgver=0.2.7.0.g54afaf5
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -23,21 +23,21 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  mkdir -p "${_plug}/build"
 }
 
 build() {
-  cd build
+  cd "${_plug}/build"
 
-  cmake "../${_plug}/build" \
-   -DCMAKE_BUILD_TYPE=None \
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)" cmake .. \
+   -DCMAKE_BUILD_TYPE=Release \
    -DCMAKE_INSTALL_PREFIX=/usr \
 
   make
 }
 
 package(){
-  install -Dm755 build/libyadifmod2.so "${pkgdir}/usr/lib/avisynth/libyadifmod2.so"
+  make -C "${_plug}/build" DESTDIR="${pkgdir}" install
 
-  install -Dm644 "${_plug}/readme.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/readme.md"
+  install -Dm644 "${_plug}/readme.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 }
