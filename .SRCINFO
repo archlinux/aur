@@ -1,6 +1,6 @@
 pkgbase = gdtoa-desktop-git
 	pkgdesc = Binary-decimal floating-point conversion library by David M. Gay
-	pkgver = r22.96aac69
+	pkgver = r30.698924a
 	pkgrel = 1
 	url = https://github.com/10110111/gdtoa-desktop
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = gdtoa-desktop-git
 	sha256sums = SKIP
 
 pkgname = gdtoa-desktop-git
-

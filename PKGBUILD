@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gdtoa-desktop-git
-pkgver=r22.96aac69
+pkgver=r30.698924a
 pkgrel=1
 pkgdesc="Binary-decimal floating-point conversion library by David M. Gay"
 arch=('i686' 'x86_64')
@@ -20,12 +20,16 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
 	cd "${srcdir}/${pkgname}"
 
 	mkdir -p build
-	cd build
+}
 
+build() {
+	cd "${srcdir}/${pkgname}"
+
+	cd build
 	cmake .. -Wno-dev \
 		-DCMAKE_VERBOSE_MAKEFILE=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -34,8 +38,9 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}/build"
+	cd "${srcdir}/${pkgname}"
 
+	cd build
 	make DESTDIR="${pkgdir}" install
 
 	if test -d "${pkgdir}"/usr/lib64; then
