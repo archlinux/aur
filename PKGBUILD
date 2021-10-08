@@ -1,7 +1,7 @@
 # Maintainer: Esmail EL BoB <aur.valj8@simplelogin.co>
 
 pkgname="wine-roblox-git" # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r.
+pkgver=1
 pkgrel=1
 pkgdesc="Wine-tkg with custom roblox mouse patch"
 arch=('x86_64')
