@@ -1,6 +1,6 @@
 pkgbase = reflex-curses
 	pkgdesc = A TUI/CLI twitch.tv streamlink wrapper. Fork of twitch-curses.
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/foldex/reflex-curses
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = reflex-curses
 	depends = util-linux
 	optdepends = mpv: Default player for streams
 	optdepends = xclip: Copy channel urls to clipboard
-	source = reflex-curses-0.9.3.tar.gz::https://github.com/foldex/reflex-curses/archive/v0.9.3.tar.gz
-	sha256sums = d4cc09f6b42ca8b55e33c22426e8498984d42c480c1eac1c55d9574276c1c299
+	source = reflex-curses-0.9.4.tar.gz::https://github.com/foldex/reflex-curses/archive/v0.9.4.tar.gz
+	sha256sums = a401ca5316e831290fbee18078127b1ffa90176fc9cadef3094148a74564efae
 
 pkgname = reflex-curses
-
