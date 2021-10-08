@@ -1,0 +1,15 @@
+pkgbase = aws-c-common-git
+	pkgdesc = AWS SDK for C++
+	pkgver = v0.6.11.r4.g73067c19
+	pkgrel = 1
+	url = https://github.com/awslabs/aws-c-common
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = glibc
+	provides = aws-c-common
+	conflicts = aws-c-common
+	source = aws-c-common-git::git+https://github.com/awslabs/aws-c-common#branch=main
+	sha256sums = SKIP
+
+pkgname = aws-c-common-git
