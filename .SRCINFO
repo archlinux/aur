@@ -1,7 +1,7 @@
 pkgbase = asap
-	pkgdesc = Another Slight Atari Player - library and players for 8-bit Atari music format
+	pkgdesc = Player of Atari 8-bit chiptunes for modern computers
 	pkgver = 5.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://asap.sourceforge.net
 	arch = x86_64
 	license = GPL2

@@ -3,8 +3,8 @@
 
 pkgname=asap
 pkgver=5.1.0
-pkgrel=2
-pkgdesc="Another Slight Atari Player - library and players for 8-bit Atari music format"
+pkgrel=3
+pkgdesc="Player of Atari 8-bit chiptunes for modern computers"
 url="http://asap.sourceforge.net"
 arch=('x86_64')
 license=('GPL2')
