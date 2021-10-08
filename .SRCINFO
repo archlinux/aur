@@ -1,6 +1,6 @@
 pkgbase = txr-git
 	pkgdesc = A programming language for convenient data munging
-	pkgver = 268.r36.0efaa0c6
+	pkgver = 271.r0.884002da
 	pkgrel = 1
 	url = http://nongnu.org/txr/
 	arch = i686
