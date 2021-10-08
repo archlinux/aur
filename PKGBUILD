@@ -59,7 +59,7 @@ optdepends=(
 )
 
 pkgver() {
-	cd "src/$pkgname"
+	cd src/$pkgname
 
 	( set -o pipefail
 	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -69,7 +69,7 @@ pkgver() {
 
 
 build() {
-	cd "$pkgname"
+	cd src/$pkgname
 	git clone --depth=1 https://github.com/EsmailELBoBDev2/wine-tkg-roblox-mouce-patch .
     sudo pacman -U wine-tkg-staging-fsync-git-*.pkg.tar.zst
 }
