@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=swtpm-git
-pkgver=0.5.0.r67.4ec1788
+pkgver=0.7.0rc1.r12.f1d425b
 pkgrel=1
 pkgdesc='Libtpms-based TPM emulator with socket, character device, and Linux CUSE interface'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+	git describe --long | sed 's/^v//;s/[-_]rc/rc/;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
