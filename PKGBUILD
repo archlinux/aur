@@ -1,5 +1,5 @@
 # Maintainer: Aaron Esau <contact@aaronesau.com>
-pkgname="heaptrace"
+pkgname="heaptrace-git"
 pkgver="2.0"
 pkgrel="1"
 license=("BSD")
