@@ -5,7 +5,7 @@ pkgver=4.0.1
 pkgrel=2
 pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
-url="https://slimbook.es"
+url="https://github.com/slimbook/slimbookbattery"
 license=('GPL3')
 depends=('cron' 'dbus-python' 'dmidecode' 'gtk3' 'libnotify' 'python-cairo'
          'python-gobject' 'python-pillow' 'tlp<=1.3.1' 'tlp-rdw<=1.3.1' 'xorg-xdpyinfo')
