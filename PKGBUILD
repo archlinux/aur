@@ -2,12 +2,12 @@
 
 pkgname=navidrome
 pkgver=0.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern Music Server and Streamer compatible with Subsonic/Airsonic'
 arch=('x86_64')
 url='https://www.navidrome.org'
 license=('GPL3')
-depends=('ffmpeg' 'nodejs' 'taglib')
+depends=('ffmpeg' 'nodejs>=16' 'taglib')
 makedepends=('git' 'go' 'npm')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/navidrome/navidrome/archive/refs/tags/v$pkgver.tar.gz"
