@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-lineslumadiff-git
+	pkgdesc = Plugin for Avisynth: lineslumadiff (GIT version)
+	pkgver = 2.0.0.1.gb914fb7
+	pkgrel = 1
+	url = https://github.com/Asd-g/AviSynth-LinesLumaDiff
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-lineslumadiff
+	conflicts = avisynth-plugin-lineslumadiff
+	source = lineslumadiff::git+https://github.com/Asd-g/AviSynth-LinesLumaDiff.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-lineslumadiff-git
