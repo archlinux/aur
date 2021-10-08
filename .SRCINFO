@@ -10,9 +10,7 @@ pkgbase = apfsprogs-git
 	provides = apfsprogs=r345.5efac5a
 	conflicts = apfsprogs
 	source = git+https://github.com/eafer/apfsprogs
-	source = destdir.patch
 	sha256sums = SKIP
-	sha256sums = 65c7af8a2538536bcf9e62b152893849b2cd1092040f5bc6ec2a33040027f8ac
 
 pkgname = apfsprogs-git
 
