@@ -1,0 +1,323 @@
+From c7374fcfd0accf6415884354b4d4afcfb4a22143 Mon Sep 17 00:00:00 2001
+From: tioguda <guda.flavio@gmail.com>
+Date: Sat, 25 Apr 2020 02:19:14 -0300
+Subject: Translation into Portuguese of Brazil
+
+
+diff --git a/opt/thefanclub/ddutility/ddutility.sh b/opt/thefanclub/ddutility/ddutility.sh
+index 5301f2a..db76445 100755
+--- a/opt/thefanclub/ddutility/ddutility.sh
++++ b/opt/thefanclub/ddutility/ddutility.sh
+@@ -45,7 +45,7 @@ if [ "$1" == "--Backup" ] ; then
+   action="Backup"
+ fi
+ if [ "$1" == "--Restore" ] ; then
+-  action="Restore"
++  action="Restaurar"
+ fi
+ 
+ # Check if Disk Dev was dropped
+@@ -64,7 +64,7 @@ if [ -f "$1" ] ; then
+   extension=$( echo "${1##*.}" | tr '[:upper:]' '[:lower:]' )
+   case "$extension" in
+     img|iso|zip|gz|xz)
+-      action="Restore"
++      action="Restaurar"
+       imagepath=$1
+       ;;
+   esac
+@@ -94,19 +94,19 @@ function progressmonitor () {
+     # Backup Progress
+     if [ "$action" == "Backup" ] ; then
+       # img
+-      if [ "$compression" == "No" ] ; then
++      if [ "$compression" == "Não" ] ; then
+         # Calc progress with size of output file and disk dev size
+         outputfilesize=$( du -b "$outputfile" | awk {'print $1'} )
+       fi
+       # zip
+-      if [ "$compression" == "Yes" ] ; then
++      if [ "$compression" == "Sim" ] ; then
+         # Calc progress for compressed backup using read offset on disk device and total size of disk
+         outputfilesize=$( lsof -o0 -o -e /run/user/"$(ls /run/user | xargs)"/gvfs 2>/dev/null | grep "$inputfile" | awk {'print $7'} | cut -d 't' -f2 )         
+       fi      
+     fi
+     
+     # Restore Progress
+-    if [ "$action" == "Restore" ] ; then
++    if [ "$action" == "Restaurar" ] ; then
+         # Calc progress by using offset bytes on disk device and uncompressed size pf restore file
+         outputfilesize=$( lsof -o0 -o -p $pid -e /run/user/"$(ls /run/user | xargs)"/gvfs 2>/dev/null | grep "$outputfile" | awk {'print $7'} | cut -d 't' -f2 )
+     fi
+@@ -118,7 +118,7 @@ function progressmonitor () {
+     
+     # Wait for buffer to finish 
+     if [ ! "$outputfilesize" ] && [ "$percentage" -gt 90 ] ; then
+-      echo "# $action almost done..."
++      echo "# $action quase pronto..."
+     fi
+     
+     # Update progress bar
+@@ -128,7 +128,7 @@ function progressmonitor () {
+     # Check if process still active
+     processactive=$( ps -p $pid -o pid= )
+   done
+-  echo "# $action Complete"
++  echo "# $action Completo"
+   echo "$percentage"
+ }
+ 
+@@ -145,9 +145,9 @@ function getdevdisk () {
+   countdev=$( echo $devdisks | wc -w )
+   # Retry detection if no memcards found
+   while [ $countdev -eq 0 ] ; do
+-    notify-send --icon=$iconfile "$apptitle" "No Volumes Detected"
++    notify-send --icon=$iconfile "$apptitle" "Nenhum volume detectado"
+     # Ask for redetect
+-    zenity --question  --no-wrap --title="$apptitle - $action" --text="<big><b>No Volumes Detected</b></big> \n\nInsert a memory card or removable storage and click Retry.\n\nSelect Cancel to Quit" --ok-label=Retry --cancel-label=Cancel 
++    zenity --question  --no-wrap --title="$apptitle - $action" --text="<big><b>Nenhum volume detectado</b></big> \n\nInsira um cartão de memória ou armazenamento removível e clique em Repetir.\n\nSelecione Cancelar para sair" --ok-label=Repetir --cancel-label=Cancelar 
+     if [ ! $? -eq 0 ] ; then
+       exit 1
+     fi
+@@ -177,8 +177,8 @@ function getdevdisk () {
+       echo "$drivesizehuman" ; echo "$devicevendor $devicemodel   " ; echo "$(basename $devitem)" 
+   done
+ 
+-  ) | zenity --list --title="$apptitle - $action : Select memory card" \
+-   --column="Volume" --column="Description" --column="Device" --print-column=3 --ok-label=Continue --width=400 --height=200 )
++  ) | zenity --list --title="$apptitle - $action : Selecionar cartão de memória" \
++   --column="Volume" --column="Descrição" --column="Dispositivo" --print-column=3 --ok-label=Continue --width=400 --height=200 )
+  
+   # Return value if selected
+   if [ $devdisk ] ; then
+@@ -188,16 +188,16 @@ function getdevdisk () {
+ 
+ # Select Backup or Restore if not in args
+ if [ ! "$action" ] ; then
+-  response=$(zenity --question --no-wrap --text "\n<big>Select <b>Backup</b> to create an image file from a memory card or disk.\n\n\nSelect <b>Restore</b> to copy an image file to a memory card or disk.</big>\nSupported formats: img, iso, zip, gzip, xz\n\n\n\nWARNING - Use this program with caution. Data could be lost." --title "$apptitle $version" --ok-label=Restore --cancel-label=Backup  )
++  response=$(zenity --question --no-wrap --text "\n<big>Selecione <b>Backup</b> para criar um arquivo de imagem a partir de um cartão de memória ou disco.\n\n\nSelecione <b>Restaurar</b> para copiar um arquivo de imagem para um cartão de memória ou disco.</big>\nFormatos suportados: img, iso, zip, gzip, xz\n\n\n\nATENÇÃO - Use este programa com cuidado. Dados podem ser perdidos." --title "$apptitle $version" --ok-label=Restaurar --cancel-label=Backup  )
+ 
+   if [ $? -eq 0 ] ; then
+-    action="Restore"
++    action="Restaurar"
+   else
+     action="Backup"
+   fi
+ fi
+ 
+-### BACKUP : Select inputfile and outputfile
++### BACKUP : Selecione arquivo de entrada e arquivo de saída
+ if [ "$action" == "Backup" ] ; then
+   
+   # Check if volume was dropped already
+@@ -208,16 +208,16 @@ if [ "$action" == "Backup" ] ; then
+    
+   # Cancel if user selects Cancel
+   if [ ! "$devdisk" ] ; then
+-    notify-send --icon=$iconfile "$apptitle" "No Volumes Selected. $action Cancelled. "
++    notify-send --icon=$iconfile "$apptitle" "Nenhum volume selecionado. $action Cancelado. "
+     exit 0
+   fi
+ 
+   # Get output filename and folder for backup image
+-  imagepath=$(zenity --file-selection --filename=/home/$SUDO_USER/Desktop/ --save --confirm-overwrite --title="$apptitle - $action : Select the filename and folder for memory card image file" --file-filter="*.img *.IMG *.gz *.GZ" )
++  imagepath=$(zenity --file-selection --filename=/home/$SUDO_USER/Desktop/ --save --confirm-overwrite --title="$apptitle - $action : Selecione o nome do arquivo e a pasta para o arquivo de imagem do cartão de memória" --file-filter="*.img *.IMG *.gz *.GZ" )
+  
+   # Cancel if user selects Cancel
+   if [ ! $? -eq 0 ] ; then
+-    echo "$action Cancelled"
++    echo "$action Cancelado"
+     exit 0
+   fi
+ 
+@@ -228,15 +228,15 @@ if [ "$action" == "Backup" ] ; then
+   extension=$( echo "${filename##*.}" | tr '[:upper:]' '[:lower:]' )
+   # Check if extension is already zip
+   if [ "$extension" == "gz" ] ; then
+-     compression="Yes"
++     compression="Sim"
+   else
+     # Ask for compression if not a zip file
+-    zenity --question --no-wrap --title="$apptitle - $action" --text="<big><b>Compress the Backup image file?</b></big> \n\nThis can significantly reduce the space used by the backup." --ok-label=Yes --cancel-label=No --width=400 
++    zenity --question --no-wrap --title="$apptitle - $action" --text="<big><b>Compactar o arquivo de imagem de backup?</b></big> \n\nIsso pode reduzir significativamente o espaço usado pelo backup." --ok-label=Sim --cancel-label=Não --width=400 
+ 
+     if [ $? -eq 0 ] ; then
+-      compression="Yes"
++      compression="Sim"
+     else
+-      compression="No"
++      compression="Não"
+     fi
+   fi
+ 
+@@ -247,17 +247,17 @@ if [ "$action" == "Backup" ] ; then
+     outputfile="$outputfile.img"
+   fi
+   # Add zip for compressed backup
+-  if [ "$compression" == "Yes" ] && [ "$extension" != "gz" ] ; then    
++  if [ "$compression" == "Sim" ] && [ "$extension" != "gz" ] ; then    
+     outputfile="$outputfile.gz"
+   fi
+ 
+   # Check if image file exists again
+   if [ -f "$outputfile" ] && [ "$imagepath" != "$outputfile" ] ; then
+-    zenity --question --no-wrap --title="$apptitle - $action" --text="<big><b>The file $(basename $outputfile) already exist.</b></big>\n\nSelect <b>Continue</b> to overwrite the file.\n\nSelect <b>Cancel</b> to Quit" --ok-label=Continue --cancel-label=Cancel --width=500 
++    zenity --question --no-wrap --title="$apptitle - $action" --text="<big><b>O arquivo $(basename $outputfile) já existe.</b></big>\n\nSelecione <b>Continue</b> para substituir o arquivo.\n\nSelecione <b>Cancelar</b> para sair" --ok-label=Continue --cancel-label=Cancelar --width=500 
+     
+     # Cancel if user selects Cancel
+     if [ ! $? -eq 0 ] ; then
+-      echo "$action Cancelled"
++      echo "$action Cancelado"
+       exit 0
+     fi
+ 
+@@ -268,17 +268,17 @@ if [ "$action" == "Backup" ] ; then
+ fi
+ 
+ 
+-### RESTORE : Select image file and memcard location
+-if [ "$action" == "Restore" ] ; then
++### RESTORE : Selecionar arquivo de imagem e localização do cartão de memória
++if [ "$action" == "Restaurar" ] ; then
+ 
+   # Check if restore file was dropped as arg already
+   if [ ! "$imagepath" ] ; then
+     # Get image file location
+-    imagepath=$(zenity --file-selection --filename=/home/$SUDO_USER/ --title="$apptitle - $action : Select image file to restore to memory card. Supported files : IMG, ISO, ZIP, GZ, XZ" --file-filter="*.img *.IMG *.iso *.ISO *.gz *.GZ *.xz *.XZ *.zip *.ZIP")
++    imagepath=$(zenity --file-selection --filename=/home/$SUDO_USER/ --title="$apptitle - $action : Selecione o arquivo de imagem para restaurar no cartão de memória. Arquivos suportados : IMG, ISO, ZIP, GZ, XZ" --file-filter="*.img *.IMG *.iso *.ISO *.gz *.GZ *.xz *.XZ *.zip *.ZIP")
+  
+     # Cancel if user selects Cancel
+     if [ ! $? -eq 0 ] ; then
+-      echo "$action Cancelled"
++      echo "$action Cancelado"
+       exit 0
+     fi
+   fi
+@@ -288,7 +288,7 @@ if [ "$action" == "Restore" ] ; then
+    
+   # Cancel if user selects Cancel
+     if [ ! $devdisk ] ; then
+-      echo "No Volumes Selected. $action Cancelled. "
++      echo "Nenhum volume selecionado. $action Cancelado. "
+       exit 0
+     fi
+ 
+@@ -298,9 +298,9 @@ if [ "$action" == "Restore" ] ; then
+   # Check if Compressed from extension
+   extension=$( echo "${inputfile##*.}" | tr '[:upper:]' '[:lower:]' )
+   if [ "$extension" == "gz" ] || [ "$extension" == "zip" ] || [ "$extension" == "xz" ]; then
+-    compression="Yes"
++    compression="Sim"
+   else
+-    compression="No"
++    compression="Não"
+   fi
+ 
+ fi
+@@ -320,7 +320,7 @@ if [ "$action" == "Backup" ] ; then
+   # Output of df is in 1024 K blocks 
+   outputspace=$(( $outputspace * 1024 ))
+ fi
+-if [ "$action" == "Restore" ] ; then
++if [ "$action" == "Restaurar" ] ; then
+   inputfilesize=$( du -b "$inputfile" | awk {'print $1'} )
+   inputfilesizehuman=$( filesizehuman $inputfilesize )
+   source="<big><b>$(basename "$inputfile")</b></big>"
+@@ -339,7 +339,7 @@ if [ "$action" == "Restore" ] ; then
+        totalbytes=$( gzip -l "$inputfile" | tail -1 | awk '{print $2}')
+        ;;
+      xz)
+-       totalbytes=$( xz -lv  "$inputfile" | grep "Uncompressed" | cut -d "(" -f2 | cut -d "B" -f1 | sed -e 's/[^0-9]*//g')
++       totalbytes=$( xz -lv  "$inputfile" | grep "Descomprimido" | cut -d "(" -f2 | cut -d "B" -f1 | sed -e 's/[^0-9]*//g')
+        ;;
+   esac 
+ fi
+@@ -349,20 +349,20 @@ if [ "$totalbytes" -gt "$outputspace" ] ; then
+   sizedif=$(( $totalbytes - $outputspace ))
+   sizedifhuman=$( filesizehuman $sizedif )
+ 
+-  if [ "$compression" == "Yes" ] && [ "$action" == "Restore" ] ; then
+-    compressflag=" uncompressed"
++  if [ "$compression" == "Sim" ] && [ "$action" == "Restaurar" ] ; then
++    compressflag=" descomprimido"
+   fi
+   # Add Warning text 
+-  warning="<b>WARNING: </b>The$compressflag ${action,,} file is <b>$sizedifhuman</b> too big to fit on the destination storage device.\n\nYou can click Start to continue anyway, or select Cancel to Quit."
++  warning="<b>ATENÇÃO: </b>O$compressflag ${action,,} arquivo é <b>$sizedifhuman</b> grande demais para caber no dispositivo de armazenamento de destino.\n\nVocê pode clicar em Iniciar para continuar assim mesmo ou selecionar Cancelar para sair."
+ 
+ fi 
+   
+-### Confirmation Dialog
+-zenity --question --no-wrap --text="<big>Please confirm settings and click Start</big>\n\n\nSource \n$source \n\nDestination \n$dest \n\n\n$warning\n\n\n<b>NOTE: </b>All Data on the Destination will be deleted" --title "$apptitle - $action" --ok-label=Start --cancel-label=Cancel --width=580
++### Caixa de diálogo de confirmação
++zenity --question --no-wrap --text="<big>Confirme as configurações e clique em Iniciar</big>\n\n\nFonte \n$source \n\nDestino \n$dest \n\n\n$warning\n\n\n<b>NOTA: </b>Todos os dados no destino serão excluídos" --title "$apptitle - $action" --ok-label=Iniciar --cancel-label=Cancelar --width=580
+ 
+ # Cancel if user selects Cancel
+ if [ ! $? -eq 0 ] ; then
+-  echo "$action Cancelled"
++  echo "$action Cancelado"
+   exit 0
+ fi
+ 
+@@ -377,16 +377,16 @@ partitions=$( df | grep -c $devdisk )
+ 
+ # Cancel if unable to unmount
+ if [ ! $partitions -eq 0 ] ; then
+-  notify-send --icon=$iconfile "$apptitle" "Cannot Unmount $devdisk"
++  notify-send --icon=$iconfile "$apptitle" "Não é possível desmontar $devdisk"
+   exit 0
+ fi
+ 
+-### Start dd copy
+-notify-send --icon=$iconfile "$apptitle" "$drivesizehuman Volume $action Started" 
++### Iniciar cópia dd
++notify-send --icon=$iconfile "$apptitle" "$drivesizehuman Volume $action Começado" 
+ 
+ # Backup
+ if [ "$action" == "Backup" ] ; then
+-  if [ "$compression" == "Yes" ] ; then
++  if [ "$compression" == "Sim" ] ; then
+     # Compressed Backup to GZ file
+     dd if="$inputfile" bs=1M | gzip > "$outputfile" &
+   else
+@@ -396,7 +396,7 @@ if [ "$action" == "Backup" ] ; then
+ fi
+ 
+ # Restore
+-if [ "$action" == "Restore" ] ; then
++if [ "$action" == "Restaurar" ] ; then
+   # IMG files
+   if [ "$extension" == "img" ] || [ "$extension" == "iso" ] ; then
+     dd if="$inputfile" of="$outputfile" bs=1M &
+@@ -421,15 +421,15 @@ fi
+ pid=$!
+ 
+ # Monitor progress
+-progresstext="$action in progress..."
+-progressmonitor | zenity --progress --auto-close --title="$apptitle - $drivesizehuman Volume $action" --width=400 --text="$progresstext" --ok-label=Done --no-cancel 
++progresstext="$action em progresso..."
++progressmonitor | zenity --progress --auto-close --title="$apptitle - $drivesizehuman Volume $action" --width=400 --text="$progresstext" --ok-label=Feito --no-cancel 
+ 
+ # check if job was cancelled 
+ if [ ! $? -eq 0 ] ; then
+-  notify-send --icon=$iconfile "$apptitle" "$drivesizehuman Volume $action Cancelled"
+-  status="Cancelled"
++  notify-send --icon=$iconfile "$apptitle" "$drivesizehuman Volume $action Cancelado"
++  status="Cancelado"
+ else
+-  status="Complete"
++  status="Completo"
+ fi
+ 
+ # set permissions
+@@ -441,7 +441,7 @@ fi
+ # Display Notifications
+ notify-send --icon=$iconfile "$apptitle" "$drivesizehuman Volume $action $status"
+ 
+-zenity --info --no-wrap --title="$apptitle $version" --text="<big><b>$drivesizehuman Volume $action $status</b></big>" --ok-label=Done
++zenity --info --no-wrap --title="$apptitle $version" --text="<big><b>$drivesizehuman Volume $action $status</b></big>" --ok-label=Feito
+ 
+ # exit
+-exit 0
+\ No newline at end of file
++exit 0

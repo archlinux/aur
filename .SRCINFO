@@ -14,11 +14,16 @@ pkgbase = ddutility-bin
 	depends = zenity
 	depends = zip
 	provides = ddutility
-	conflicts = ddutility-bin-pt-br
 	options = !strip
 	options = !emptydirs
 	source = https://raw.githubusercontent.com/thefanclub/dd-utility/master/DEB/ddutility_1.6_all.deb
 	sha256sums = bf01d8fc8fafaf76ab751fbcf6b54d75930581e62d602fcaf4cd28fe23579224
 
 pkgname = ddutility-bin
+	conflicts = ddutility
 
+pkgname = ddutility-bin-pt-br
+	pkgdesc = Gravar e fazer backup dos arquivos IMG e ISO do sistema operacional no cartão de memória ou no disco
+	conflicts = ddutility
+	source = translation_pt-br.patch
+	sha256sums = de5c1fca6693f3b545ea5094a921fe67a3bbc43372f67992fee9bb06a8e26083
