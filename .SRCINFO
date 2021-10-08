@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-dpid-git
+	pkgdesc = Plugin for Avisynth: dpid (GIT version)
+	pkgver = 1.0.0.2.g2a13540
+	pkgrel = 1
+	url = https://github.com/Asd-g/AviSynth-DPID
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-dpid
+	conflicts = avisynth-plugin-dpid
+	source = dpid::git+https://github.com/Asd-g/AviSynth-DPID.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-dpid-git
