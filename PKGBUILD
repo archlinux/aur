@@ -2,8 +2,8 @@
 # Contributors: dekart811
 
 pkgname=veeam
-pkgver=5.0.0.4318
-pkgrel=12
+pkgver=5.0.1.4493
+pkgrel=13
 pkgdesc="Veeam Agent for Linux"
 arch=('x86_64')
 url=https://repository.veeam.com/backup/linux/agent
@@ -11,7 +11,7 @@ install=${pkgname}.install
 license=('custom')
 depends=('ncurses' 'lvm2' 'fuse' 'mlocate' 'veeamsnap')
 source=( "$url/rpm/el/8/x86_64/veeam-$pkgver-1.el8.x86_64.rpm" )
-sha256sums=('876c046f9e8ad37a02cfd5dfd0272326cdd3dec9655b23cbd2469df2f87646b8')
+sha256sums=('774e9b3c7d08226d3b9dbbdaa73c6f3045778559a444c3cd0b328ab5f67ab8f7')
 noextract=("$pkgname-$pkgver-1.el8.x86_64.rpm")
 backup=('etc/veeam/veeam.ini' 'usr/share/veeam/lpb_scheme.sql' 'usr/share/veeam/db_upgrade.sql' 'usr/share/veeam/db_scheme.sql' 'var/lib/veeam/veeam_db.sqlite' 'var/lib/veeam/veeam_db.sqlite-shm' 'var/lib/veeam/veeam_db.sqlite-wal')
 
