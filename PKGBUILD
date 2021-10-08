@@ -3,8 +3,8 @@
 # Contributor: ribbons <aur dot ribbons at codefive dot co dot uk>
 
 pkgname=python-vispy
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='A high-performance interactive 2D/3D data visualization library.'
 arch=('any')
 url='http://vispy.org'
@@ -14,16 +14,8 @@ makedepends=('python-setuptools' 'cython' 'npm')
 optdepends=('pyside2: a possible backend'
             'python-pyqt5: a possible backend')
 _pkgname=vispy
-_js_commit=2d8be774552f20add80860b2b7d0bfd600730595
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vispy/vispy/archive/v$pkgver.tar.gz"
-        "vispy.js.tar.gz"::"https://github.com/vispy/vispy.js/archive/${_js_commit}.tar.gz")
-sha256sums=('f9c9e44a9d7fed744abbe98dfa815bb6b690d53665d472f163478e746b6a7923'
-            '2f10454096cb1ebfa14bd76109fa9ec729f3866307eb990bb66dad1012938c4f')
-
-prepare() {
-    rm -r "$srcdir/${_pkgname}-${pkgver}/js"
-    cp -r "$srcdir/vispy.js-${_js_commit}/." "$srcdir/${_pkgname}-${pkgver}/js"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vispy/vispy/archive/v$pkgver.tar.gz")
+sha256sums=('bfd85ac6c4c9555ec29e92bfe2652c89a1824134853ef4827c1cf007a3f6cca5')
 
 build() {
     cd "$srcdir/${_pkgname}-${pkgver}"
