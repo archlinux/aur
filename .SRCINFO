@@ -1,7 +1,7 @@
 pkgbase = tsid
 	pkgdesc = Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio
 	pkgver = 1.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/stack-of-tasks/tsid
 	arch = i686
 	arch = x86_64
