@@ -2,7 +2,7 @@
 
 _plug=rawsource26
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=0.0.1.5.g1c0e215
+pkgver=1.3.1.0.gae700df
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -23,22 +23,21 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  mkdir -p "${_plug}/build"
 }
 
 build() {
-  cd build
+  cd "${_plug}/build"
 
-  cmake "../${_plug}/build" \
-   -DCMAKE_BUILD_TYPE=None \
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)" cmake .. \
+   -DCMAKE_BUILD_TYPE=Release \
    -DCMAKE_INSTALL_PREFIX=/usr \
 
   make
 }
 
 package(){
-  install -Dm755 build/librawsourceplus.so "${pkgdir}/usr/lib/avisynth/librawsourceplus.so"
+  make -C "${_plug}/build" DESTDIR="${pkgdir}" install
 
-  install -Dm644 "${_plug}/src/RawSourcePlus.html" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/RawSourcePlus.html"
-  install -Dm644 "${_plug}/src/readme.txt" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/readme.txt"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 }

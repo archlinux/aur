@@ -1,6 +1,6 @@
 pkgbase = avisynth-plugin-rawsource26-git
 	pkgdesc = Plugin for Avisynth: rawsource26 (GIT version)
-	pkgver = 0.0.1.5.g1c0e215
+	pkgver = 1.3.1.0.gae700df
 	pkgrel = 1
 	url = https://github.com/Asd-g/RawSource_2.6x
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = avisynth-plugin-rawsource26-git
 	sha256sums = SKIP
 
 pkgname = avisynth-plugin-rawsource26-git
-
