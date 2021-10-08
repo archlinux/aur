@@ -1,13 +1,13 @@
 pkgbase = sysz
 	pkgdesc = fzf terminal UI for systemctl
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 0
 	url = https://github.com/joehillen/sysz
 	arch = any
 	license = UNLICENSE
 	depends = bash
 	depends = fzf
-	source = sysz-1.4.0.tar.gz::https://github.com/joehillen/sysz/archive/refs/tags/1.4.0.tar.gz
-	sha256sums = cee48988aa4945643243dfcac5fa6d77b5f5a6a209b48dcc28d8b99b76dd380b
+	source = sysz-1.4.1.tar.gz::https://github.com/joehillen/sysz/archive/refs/tags/1.4.1.tar.gz
+	sha256sums = e8bc9d9764df63b9f1680b60895d929586d7b5cff84c0a5c2a5448f9be69e535
 
 pkgname = sysz
