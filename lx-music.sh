@@ -1,3 +1,3 @@
 #!/bin/sh
-
-exec electron /usr/share/lx-music/
+cd /usr/share/lx-music/
+electron ./ $@

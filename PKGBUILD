@@ -1,23 +1,26 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Sukanka <su975853527 [AT] gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributer: Bruce Zhang
-# This PKGBUILD is directly modified from aur/dingtalk
 
 pkgname=lx-music
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='An Electron-based music player'
 arch=('any')
 url='https://github.com/lyswhut/lx-music-desktop'
 license=('Apache')
 changelog=CHANGELOG.md
-depends=('electron' 'nodejs>=14')
+depends=('electron')
 makedepends=('asar' 'jq' 'moreutils' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
-        "$pkgname.desktop")
-sha256sums=('26e282594dad6c24a3725f191add2679e64d795b5a2743dbf24b28adf29736eb'
-            '0b19e2d26237f48379c024d48398a3a819b1de72bfe95c680f9a81c3d13c537f'
-            '86c65106fb93671b2f3da2896ef69d709f0558b2113779b9ca45bbbb73de64ce')
+        "$pkgname.desktop"
+        'dev-app-update.yml'
+        )
+sha256sums=('036ee0024710bba4ed58aaeac4f5dcfa08104ab1eff9e6827253276d8071814f'
+            '1e69184fd93f8d86d800306b99e5f630253d32de610342485ba5d4b0be018eb4'
+            '86c65106fb93671b2f3da2896ef69d709f0558b2113779b9ca45bbbb73de64ce'
+            'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
 
 prepare() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
@@ -35,6 +38,7 @@ build() {
 }
 
 package() {
+    install -Dm644 'dev-app-update.yml' -t  "$pkgdir/usr/share/lx-music/"
 	install -Dm755 lx-music.sh "$pkgdir/usr/bin/lx-music"
 	install -Dm644 lx-music.desktop -t "$pkgdir/usr/share/applications/"
 
