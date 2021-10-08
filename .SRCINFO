@@ -1,0 +1,26 @@
+pkgbase = poddr-deb
+	pkgdesc = Poddr is an open-source podcast player for Windows, Mac and Linux
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Sn8z/Poddr
+	arch = x86_64
+	groups = 
+	license = GPL3
+	makedepends = unzip
+	makedepends = sed
+	depends = nodejs
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = util-linux-libs
+	depends = libappindicator-gtk3
+	depends = libsecret
+	provides = poddr
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/Sn8z/Poddr/releases/download/2.0.0/poddr_2.0.0_amd64.deb
+	sha512sums = 512ede696e4c2f42fe78f1714278d2bce00e3db4163fe948d4bfae3b842ddbbfb81a0f54768b9dffba2e1243edba855f4d9c55248663408de63ede5eedfa56a2
+
+pkgname = poddr-deb
