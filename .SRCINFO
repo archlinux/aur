@@ -1,6 +1,6 @@
 pkgbase = amxo-cg-git
 	pkgdesc = ODL (Object Definition Language) Compiler/Generator
-	pkgver = 1.2.0.r0.g8fb5e5f
+	pkgver = 1.2.0.r1.g7484f53
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/applications/amxo-cg.git
 	arch = x86_64
