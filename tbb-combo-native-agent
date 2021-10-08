@@ -1,0 +1,2 @@
+#!/bin/sh
+wine /usr/share/tbb-combo-native-agent/TbbComboNativeAgentHost.exe

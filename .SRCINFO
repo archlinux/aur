@@ -1,0 +1,17 @@
+pkgbase = tbb-combo-native-agent
+	pkgdesc = Taiwan Business Bank combo native agent (臺灣企銀二合一元件)
+	pkgver = 1.0.0.12
+	pkgrel = 1
+	url = https://webatm.post.gov.tw/
+	arch = any
+	license = unknown
+	makedepends = p7zip
+	makedepends = gendesk
+	depends = wine-winscard
+	depends = lib32-gnutls
+	source = Install_TbbComboNativeAgentHost-1.0.0.12.exe::https://ebank.tbb.com.tw/nb3/COMPONENT/component_download?componentPath=win&trancode=ComponentDownload
+	source = tbb-combo-native-agent
+	sha256sums = 60220263043e71cfd20d2618d6a4be8834f76fc0e251e6b96f6a46b376a68028
+	sha256sums = d53b1fa92ef27d426a390a6d1b56a0096bdfc37a60bc9700e79c7d982796994c
+
+pkgname = tbb-combo-native-agent
