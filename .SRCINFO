@@ -14,4 +14,3 @@ pkgbase = nct6775-master-dkms-git
 	sha256sums = 991980f5e5d4b0c45d3b8ef823d983c1fe6059ad4f9ea462900a6d11e137ae74
 
 pkgname = nct6775-master-dkms-git
-
