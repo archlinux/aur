@@ -3,7 +3,7 @@
 pkgname=librespot-git
 _pkgname=librespot
 pkgver=1383.095536f
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Open Source Spotify client library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -23,9 +23,15 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
+
+    case "$CARCH" in
+      armv7h) target=armv7-unknown-linux-gnueabihf;;
+      *)      target="$CARCH-unknown-linux-gnu";;
+    esac
+
     cargo fetch \
         --locked \
-        --target "$CARCH-unknown-linux-gnu"
+        --target "$target"
 }
 
 build() {
