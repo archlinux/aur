@@ -1,4 +1,5 @@
-# Maintainer: maniacata <maniaciachao at gmail dot com>
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: maniacata <maniaciachao at gmail dot com>
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Martin Thierer <thierer@web.de>
 # Contributor: Amy Wilson <awils_1[at]xsmail[dot]com>
@@ -8,8 +9,8 @@
 # Contributor: Renan Birck <renan.ee.ufsm at gmail.com>
 
 pkgname=logisim-evolution
-pkgver=3.4.1
-pkgrel=3
+pkgver=3.6.1
+pkgrel=1
 pkgdesc='An educational tool for designing and simulating digital logic circuits (build from source)'
 provides=('logisim-evolution')
 conflicts=('logisim-evolution-git' 'logisim-evolution-bin')
@@ -21,7 +22,7 @@ makedepends=('java-environment>=9')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/reds-heig/logisim-evolution/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('bce8ee163e80b56a49a4ec3b5fa10c2b21779146f4c2c44d4bc7560a72566236'
+sha256sums=('181694b68578bf0ecc9e6498e9246e49e60e926b4b047094419baf2f4bb721fb'
             'd5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba')
 
 install=$pkgname.install
@@ -40,14 +41,11 @@ package() {
     install -Dm644 "support/Flatpak/com.github.reds.LogisimEvolution.desktop" \
                    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    for SIZE in 16 20 24 48 64 128; do
+    for SIZE in 16 32 48 128 256; do
         install -Dm644 \
             "src/main/resources/resources/logisim/img/logisim-icon-${SIZE}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/${pkgname}.png"
     done
-
-    install -Dm644 "build/resources/main/resources/logisim/img/logisim-icon.svg" \
-                   "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
@@ -55,4 +53,3 @@ package() {
         -e 's|com.github.reds.LogisimEvolution|logisim-evolution|' \
         -i "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
-

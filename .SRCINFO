@@ -1,7 +1,7 @@
 pkgbase = logisim-evolution
 	pkgdesc = An educational tool for designing and simulating digital logic circuits (build from source)
-	pkgver = 3.4.1
-	pkgrel = 3
+	pkgver = 3.6.1
+	pkgrel = 1
 	url = https://github.com/reds-heig/logisim-evolution
 	install = logisim-evolution.install
 	arch = any
@@ -12,10 +12,9 @@ pkgbase = logisim-evolution
 	provides = logisim-evolution
 	conflicts = logisim-evolution-git
 	conflicts = logisim-evolution-bin
-	source = logisim-evolution-3.4.1.tar.gz::https://github.com/reds-heig/logisim-evolution/archive/v3.4.1.tar.gz
+	source = logisim-evolution-3.6.1.tar.gz::https://github.com/reds-heig/logisim-evolution/archive/v3.6.1.tar.gz
 	source = logisim-evolution.sh
-	sha256sums = bce8ee163e80b56a49a4ec3b5fa10c2b21779146f4c2c44d4bc7560a72566236
+	sha256sums = 181694b68578bf0ecc9e6498e9246e49e60e926b4b047094419baf2f4bb721fb
 	sha256sums = d5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba
 
 pkgname = logisim-evolution
-
