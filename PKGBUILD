@@ -3,7 +3,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=vcpkg-git
-pkgver=2021.05.12.r575.g6b24f0fa76
+pkgver=2021.05.12.r1018.g973a7d517c
 pkgrel=1
 pkgdesc='C++ library manager for Windows, Linux, and MacOS'
 depends=('curl' 'zip' 'unzip')
@@ -16,11 +16,11 @@ provides=('vcpkg')
 conflicts=('vcpkg')
 source=("$pkgname"::'git+https://github.com/microsoft/vcpkg'
         'vcpkg.sh'
-        'vcpkg-git.install')
+        'vcpkg.conf')
 sha256sums=('SKIP'
-            '8571fc5d24e62f448647a7d41ae2f3b64bce4ef0f51596f94b3ea92c3d2d2899'
-            '928a5845d87a61bc0126d6ee860c832bb739e0d5f8a0d45641bfb76851076d1b')
-install=${pkgname}.install
+            'a26b2b4472e3e7c3372617ada9ca2d4c33094c5c5004880e0f3b32bcf5086a25'
+            '02a6d2bca471adedfc7acc9ba57860d976ec5115b282cb1a96341850e1c7b221')
+install=$pkgname.install
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -36,20 +36,29 @@ build() {
 }
 
 package() {
+    export VCPKG_ROOT=/opt/vcpkg
+    export VCPKG_DOWNLOADS=/var/cache/vcpkg
+
     # executable entry point
     install -Dm755 "$srcdir/vcpkg.sh" "$pkgdir/usr/bin/vcpkg"
 
     # vcpkg root
-    install -Dm755 "$srcdir/$pkgname/vcpkg" "$pkgdir/usr/share/vcpkg/vcpkg"
+    install -Dm755 "$srcdir/$pkgname/vcpkg" "$pkgdir/$VCPKG_ROOT/vcpkg"
     cp --preserve=mode -r \
         "$srcdir/$pkgname"/{docs,ports,scripts,triplets,.vcpkg-root} \
-        "$pkgdir/usr/share/vcpkg/"
+        "$pkgdir/$VCPKG_ROOT/"
 
     # default downloads root directory
-    install -dm1777 "$pkgdir/var/cache/vcpkg"
+    install -dm1777 "$pkgdir/$VCPKG_DOWNLOADS"
+
+    # reset ownerships and permissions
+    chmod -R g+w "$pkgdir/$VCPKG_ROOT"
+    chgrp -hR 499 "$pkgdir/$VCPKG_ROOT" "$pkgdir/$VCPKG_DOWNLOADS"
 
     # license
     install -Dm644 "$srcdir/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # systemd-sysusers.service
+    install -Dm644 "$srcdir/vcpkg.conf" "$pkgdir/usr/lib/sysusers.d/vcpkg.conf"
 }
 
 # vim: set sw=4 ts=4 et:
