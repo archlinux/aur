@@ -1,6 +1,6 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=gdm-tools-git
-pkgver=68.bfc73c4
+pkgver=69.74c935e
 pkgrel=1
 pkgdesc="Tools(set-gdm-theme,gnomeconf2gdm) for theming/personlizing Gnome Login Manager (GDM)"
 packager="Mazhar Hussain <mmazharhussainkgb1145@gmail.com>"
