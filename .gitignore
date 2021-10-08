@@ -1,0 +1,5 @@
+src
+pkg
+crackle-git
+*.pkg.tar.*
+tags

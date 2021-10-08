@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=crackle-git
-pkgver=r100.ff47a48
+pkgver=0.1.r86.gd83b4b6
 pkgrel=1
 pkgdesc="Crack and decrypt BLE encryption"
 arch=('i686' 'x86_64')
@@ -12,19 +12,19 @@ source=("${pkgname}::git+https://github.com/mikeryan/crackle")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 
 	install -Dm755 "crackle" "${pkgdir}/usr/bin/crackle"
 }
