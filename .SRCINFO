@@ -1,6 +1,6 @@
 pkgbase = aws-cfn-template-flip
 	pkgdesc = Tool for converting AWS CloudFormation templates between JSON and YAML formats.
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/awslabs/aws-cfn-template-flip
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = aws-cfn-template-flip
 	makedepends = python-distribute
 	depends = python-click
 	depends = python-yaml
-	source = https://github.com/awslabs/aws-cfn-template-flip/archive/1.2.2.tar.gz
-	sha256sums = c2780f27b74bd14222d19dd82b2b60ca6451c91e5a5ea963758b085bf9dde9ea
+	source = https://github.com/awslabs/aws-cfn-template-flip/archive/1.3.0.tar.gz
+	sha256sums = 80ba7631f7689e1116879fbf073c56f1848fa73b344fb23e27d0e393237b433d
 
 pkgname = aws-cfn-template-flip
-
