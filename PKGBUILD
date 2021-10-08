@@ -1,5 +1,5 @@
-# $Id: PKGBUILD,v2.1 2019/01/11 00:43:36 wh Exp $
-# Maintainer: nisk1 <esqueleto_bajo[it_looks_like_a_snail]outlook[dot]com>
+# Maintainer: Brett Cornwall <ainola@archlinux.org>
+# Contributor: nisk1
 
 # Uncomment any of below lines to build additional plugins:
 #_build_vlc="yes"
