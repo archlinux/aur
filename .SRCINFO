@@ -1,0 +1,16 @@
+pkgbase = avisynth-plugin-vstedgemask-git
+	pkgdesc = Plugin for Avisynth: vstedgemask (GIT version)
+	pkgver = 1.0.0.1.g054e67f
+	pkgrel = 1
+	url = https://github.com/Asd-g/AviSynth-vsTEdgeMask
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-vstedgemask
+	conflicts = avisynth-plugin-vstedgemask
+	source = vstedgemask::git+https://github.com/Asd-g/AviSynth-vsTEdgeMask.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-vstedgemask-git
