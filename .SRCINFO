@@ -1,0 +1,12 @@
+pkgbase = arc-welder-bin-git
+	pkgdesc = A collection of projects used to convert G0/G1 commands to G2/G3 commands.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/FormerLurker/ArcWelderLib
+	arch = x86_64
+	arch = i686
+	license = unknown
+	source = https://github.com/FormerLurker/ArcWelderLib/releases/download/1.1.1/Linux_1.1.1.tar
+	md5sums = 3b924a9800710b28d57f5c81e6b1708c
+
+pkgname = arc-welder-bin-git
