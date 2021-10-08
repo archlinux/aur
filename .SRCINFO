@@ -1,0 +1,27 @@
+pkgbase = nosystemd-boot
+	pkgdesc = UEFI boot manager from systemd (formerly gummiboot) - patched to work without systemd
+	pkgver = 249.4
+	pkgrel = 2
+	url = https://www.github.com/systemd/systemd
+	arch = x86_64
+	makedepends = docbook-xsl
+	makedepends = gperf
+	makedepends = intltool
+	makedepends = python-jinja
+	makedepends = python-lxml
+	makedepends = gnu-efi-libs
+	makedepends = git
+	makedepends = meson
+	conflicts = systemd
+	options = strip
+	source = git+https://github.com/systemd/systemd-stable#tag=91ea8d825553fc1ecfc19448be24a4da56b13d00?signed
+	source = git+https://github.com/systemd/systemd#tag=v249?signed
+	source = https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-boot/systemd-boot/files/249-libshared-static.patch
+	validpgpkeys = 63CDA1E5D3FC22B998D20DD6327F26951A015CC4
+	validpgpkeys = A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E
+	validpgpkeys = 5C251B5FC54EB2F80F407AAAC54CA336CFEB557E
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 5bb94984cddc26f35bec6edd02c7574ebd851e45efe551454d4372174ba2bca86c92c7be71936ddce4c2792886395467354e976a6a1f6e1505e95ba464a9466f
+
+pkgname = nosystemd-boot
