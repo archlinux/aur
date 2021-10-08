@@ -1,0 +1,17 @@
+pkgbase = avisynth-plugin-smoothuv2-git
+	pkgdesc = Plugin for Avisynth: smoothuv2 (GIT version)
+	pkgver = 4.4.0.1.g36415a3
+	pkgrel = 1
+	url = https://github.com/Asd-g/AviSynth-SmoothUV2
+	arch = x86_64
+	license = GPL
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-smoothuv2
+	conflicts = avisynth-plugin-smoothuv2
+	source = smoothuv2::git+https://github.com/Asd-g/AviSynth-SmoothUV2.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-smoothuv2-git
