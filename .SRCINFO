@@ -1,0 +1,23 @@
+pkgbase = com.seewo.easinote5
+	pkgdesc = Seewo EasiNote5 for Linux.
+	pkgver = 5.1.17.1876
+	pkgrel = 1
+	url = https://gitlab.gz.cvte.cn/front-end/enow-cloud
+	install = com.seewo.easinote5.install
+	arch = x86_64
+	groups = 
+	license = MIT
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/YidaozhanYa/seewo-uos-bin/releases/download/main/EasiNote5_5.1.17.1876.deb
+	sha512sums = ac8983af4397c17c324efb1505f98028866ab68f385f05deea92e73ab1d0efe2f2c50ff591c26091e8318366f6ff16dec846b4f908083fb55325d86988b4be87
+
+pkgname = com.seewo.easinote5
