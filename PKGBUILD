@@ -12,7 +12,7 @@ makedepends=('git' 'premake')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=(
-    "git+https://github.com/GTAmodding/re3.git"
+    "git+https://github.com/td512/re3.git"
     "git+https://github.com/aap/librw.git"
     "git+https://github.com/xiph/ogg.git"
     "git+https://github.com/xiph/opus.git"
