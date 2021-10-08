@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=nauz-file-detector-git
-pkgver=0.05.r110.gef817bd
+pkgver=0.06.r440.g71ad86a
 pkgrel=1
 pkgdesc="Nauz File Detector is a portable linker/compiler/packer identifier utility."
 arch=(x86_64)
@@ -49,6 +49,7 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	install -Dm755 build/release/nfd "${pkgdir}"/usr/bin/nfd
-	install -Dm755 build/release/nfdc "${pkgdir}"/usr/bin/nfdc
+	install -Dm755 build/release/nfd "${pkgdir}/usr/bin/nfd"
+	install -Dm755 build/release/nfdc "${pkgdir}/usr/bin/nfdc"
+	install -Dm644 DEBIAN/nfd.desktop "${pkgdir}/usr/share/applications/nfd.desktop"
 }
