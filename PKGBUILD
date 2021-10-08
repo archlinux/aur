@@ -2,7 +2,7 @@
 
 pkgname=kuttle
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Kubernetes wrapper for sshuttle'
 provides=(kuttle autokuttle)
 depends=(sshuttle)
@@ -16,4 +16,5 @@ sha256sums=('fe4e7bd48a56d016d8a7763a09d17ef09966f4b89593e5b66007d440a8668597'
 
 package() {
     install -Dm755 "${srcdir}/kuttle" "${pkgdir}/usr/bin/kuttle"
+    install -Dm755 "${srcdir}/autokuttle" "${pkgdir}/usr/bin/autokuttle"
 }
