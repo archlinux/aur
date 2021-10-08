@@ -1,38 +1,41 @@
-# Maintainer: Dzmitry Neviadomski <nevack dot d at gmail dot com>
+# Maintainer: bagel jr aryanagarwal897 at Gmail dot com
+# Contributor: Amin Vakil <info at aminvakil dot com>
 # Contributor: XZS <d dot f dot fischer at web dot de>
 # Contributor: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 # Contributor: Christopher Krooß <didi2002 at web.de>
 
+_srcname=dash-to-dock
 pkgname=gnome-shell-extension-dash-to-dock-gnome41-git
-_pkgname=dash-to-dock
-pkgver=69+101+gcd5d7c4
+pkgver=56.r526.gcd5d7c4
 pkgrel=1
-pkgdesc="Move the dash out of the overview transforming it in a dock"
+pkgdesc="move the dash out of the overview transforming it in a dock (With GNOME 41 patches)"
 arch=('any')
-url="https://micheleg.github.io/dash-to-dock/"
+url="https://github.com/frantisekz/dash-to-dock/"
+_giturl="git+https://github.com/frantisekz/dash-to-dock/"
 license=('GPL')
 depends=('gnome-shell')
-makedepends=('intltool' 'gettext' 'git' 'sassc')
+makedepends=('git' 'sassc')
 conflicts=('gnome-shell-extension-dash-to-dock')
 provides=('gnome-shell-extension-dash-to-dock')
-_commit=cd5d7c45ef7249d70337e22e5fa81e6e6fe9d470
-source=("git+https://github.com/frantisekz/dash-to-dock.git#commit=$_commit")
+source=("git+https://github.com/frantisekz/${_srcname}.git#branch=fzatlouk/gnome-41")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}"/${_pkgname}
-  git describe --tags | sed 's/^extensions\.gnome\.org-v//g' | sed 's/-/+/g' | sed 's/^56/69/g'
+  cd "${_srcname}"
+  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
+  [ ${PIPESTATUS[0]} -eq 0 ] || \
+printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}"/${_pkgname}
-  make
+  export SASS=sassc
+  cd "${_srcname}"
+  make VERSION="$pkgver" _build
 }
 
 package() {
-  cd "${srcdir}"/${_pkgname}
-  make DESTDIR="${pkgdir}" VERSION="${pkgver}" install
+  cd "${_srcname}"
+  make
+  make DESTDIR=${pkgdir} install
 }
-
-# vim:set ts=2 sw=2 et:
