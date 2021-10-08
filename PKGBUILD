@@ -1,51 +1,50 @@
-# Maintainer: Salamandar <felix at piedallu dot me>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Salamandar <felix at piedallu dot me>
 
-_pkgname=git-sizer
-pkgname=${_pkgname}-git
-pkgver=1.1.0_1_g2e9a30f
+pkgname=git-sizer-git
+pkgver=1.4.0.r12.g0d882b6
 pkgrel=1
-pkgdesc="Compute various size metrics for a Git repository, flagging those that might cause problems (git version)"
+pkgdesc="Compute various size metrics for a Git repository, flagging those that might cause problems"
+arch=('i686' 'x86_64')
+url="https://github.com/github/git-sizer"
 license=('MIT')
-arch=('any')
-
-makedepends=(
-  'go'
-)
-depends=(
-  'git'
-)
-conflicts=( "${_pkgname}" "${_pkgname}-bin" )
-
-url="https://github.com/github/${_pkgname}"
-
-source=( "git+${url}" )
+depends=('glibc')
+makedepends=('git' 'go')
+provides=('git-sizer')
+conflicts=('git-sizer')
+source=("git+https://github.com/github/git-sizer.git")
 sha256sums=('SKIP')
 
 
+export CGO_CPPFLAGS="${CPPFLAGS}"
+export CGO_CFLAGS="${CFLAGS}"
+export CGO_CXXFLAGS="${CXXFLAGS}"
+export CGO_LDFLAGS="${LDFLAGS}"
+export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
+
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe | sed 's/^v//g'  | sed 's/-/_/g'
-}
+  cd "git-sizer"
 
-build() {
-  cd "${srcdir}/${_pkgname}"
-
-  ./script/bootstrap
-  make
+  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}"
+  cd "git-sizer"
 
-  make test
+  #go test \
+  #  ./
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "git-sizer"
 
-  install -Dm755 bin/git-sizer  "${pkgdir}/usr/bin/git-sizer"
-  install -Dm644 README.md      "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 LICENSE.md     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 vendor/github.com/spf13/pflag/LICENSE \
-                                "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-spf13-pflag"
+  GOBIN="$pkgdir/usr/bin" \
+    go install \
+      ./
+
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/git-sizer"
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/git-sizer"
 }
