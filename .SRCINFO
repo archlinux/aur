@@ -1,7 +1,7 @@
 pkgbase = ciel
 	pkgdesc = A tool for controlling multi-layer file systems and containers.
-	pkgver = 3.0.13
-	pkgrel = 1
+	pkgver = 3.0.11
+	pkgrel = 5
 	url = https://github.com/AOSC-Dev/ciel-rs
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ciel
 	optdepends = libgit2: git vcs support
 	optdepends = xz: xzip archive support
 	conflicts = ciel-git
-	source = ciel-3.0.13.tar.gz::https://github.com/AOSC-Dev/ciel-rs/archive/v3.0.13.tar.gz
-	sha256sums = f4c88b4eb9944f8b8ea5aab98c81708d2e473fe3b533b0beee546a7fd17057d4
+	source = ciel-3.0.11.tar.gz::https://github.com/AOSC-Dev/ciel-rs/archive/v3.0.11.tar.gz
+	sha256sums = 3b60131ad14ecf8dcdfc50dc8c812f2ec158416ad004b2a3d74835a94131f1c7
 
 pkgname = ciel
