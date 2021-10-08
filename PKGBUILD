@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=libsahtrace-git
-pkgver=1.7.2.r0.gf376be0
+pkgver=1.7.3.r0.g9c5b628
 pkgrel=1
 pkgdesc="Small and flexible library to enable tracing and logging"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
