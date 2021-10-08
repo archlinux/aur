@@ -3,10 +3,10 @@
 
 pkgname='atto-bin'
 _pkgname=${pkgname%-bin}
-pkgver=1.3.0
-pkgrel=2
-_atto_ver=1.2.1
-_atto_safesign_ver=1.0.0
+pkgver=1.4.0
+pkgrel=1
+_atto_ver=1.3.0
+_atto_safesign_ver=1.1.0
 pkgdesc='A tiny Nano wallet, focused on ease of use through simplicity'
 arch=('x86_64')
 url='https://github.com/codesoap/atto'
@@ -21,32 +21,32 @@ source=(
   "README.md::$_rawurl/master/README.md"
 )
 md5sums=(
-  '42ddb0132fa20f4249889402bc10fb7b'
-  '67b7513c027155422b6a2ad0b78dcf0b'
+  '134583686ea2af5e9f4fb486a12b4bb4'
+  '0a93c6724fe3ed8547fd42946008ba07'
   'SKIP'
   'SKIP'
 )
 sha1sums=(
-  'db76ad30de4edf296d1d47c130bfcc8f0c640bf8'
-  '3daaaf65853c08e6bea26ec5918897406ec0837c'
+  'e16feb48e80a266cf67c45d043a67e138eae9f93'
+  '007d8f9efb74f2cf791dea52d9797e84c5feb303'
   'SKIP'
   'SKIP'
 )
 sha256sums=(
-  '79dd0e2ed8d6cd5c85fea83b015f2416f1267baf0d97f58e7890749968e867f7'
-  'a245eab521b302b60dade71f21ea532a5fe25faad0249c7cb643913c1637f810'
+  '063bdeda80cccd5dad115ed2a2936174e1b448fa025c0d262d755d6ec913a8b5'
+  '41ecc25fe11fe71f7b0847336f34b14dfe10a7a0e9a2cc5a1a6170c5a3a692c3'
   'SKIP'
   'SKIP'
 )
 sha512sums=(
-  'aebff41fa26881d12f3a5c7d95c1f0bd5a83f183388440ad66f407c4e58dd3643b0d0a7544afe03deedcd770f6c6b4470085f128fdc0414e0a045dbca07b9d02'
-  'b4deebea67e4a178ff5bab3ef000c099b8488a6567877926103d4629f9d1660b5df7f1882807be44ecef95fd42301ba89a5e3b35e734feddea28caed1634cd0a'
+  '947ae6f23a8591b3c132e82510b48ec421fbe0c563537e94088a94767cf5ab34573495c4e6417cb147db292179f3f583b5c925be645c79e28fba5a4e8ebd19c5'
+  '4393b7d0131470b81df0711cc61e7c1b82f7ce6b6913dfb54b40891eb2eba34f7b5d4d8c2d8abc67debbd2c7e728aec113baca6f52265b8ec53fdab1ccc02d83'
   'SKIP'
   'SKIP'
 )
 b2sums=(
-  '4b8db1762eda6c48c5ffdd4316265af6a823ff90237f4a45b8e315f128394ae1d77454e0fb848ce12403a6790963e53fab7b3a0c7b5824206fdbb8ecdf5dd49a'
-  '1b54471fb77c4771b765cefc6628b7c3e2b468101178b1fc411563abe527d8e303e0c712393f5f49b4220f8b8f6a6601eba2b5478f4e7281254bf721fff18054'
+  '0ccccd2c6a0aa0eb374660705387a0a1bcf17b1a00b73c7434b34007339d57ffecfb1c4b0349e08abb274f25461fefe2edc41b89dd67d220f76c7c9c7ba383c0'
+  '26650b8b611ac97761f488fc21ab324b8cd1c6ce7b2148778902bcc54a6f20f0b4e45890b1516e7378b23f49631254f2e02d7a16f01c1dc7375de55a0f51e615'
   'SKIP'
   'SKIP'
 )
