@@ -1,18 +1,17 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 pkgname=av1an-git
-pkgver=1.12.r1007.g657810d
+pkgver=1.12.r1011.g9b1a007
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('x86_64')
 url='https://github.com/master-of-zen/Av1an'
 license=('GPL3')
-makedepends=('git' 'cargo' 'nasm')
+makedepends=('git' 'cargo' 'nasm' 'clang')
 depends=('ffmpeg' 'aom' 'vapoursynth')
 optdepends=('svt-av1: SVT-AV1 encoder support'
             'rav1e: rav1e encoder support'
             'libvpx: vpx encoder support'
-            'svt-vp9: SVT-VP9 encoder support'
             'vmaf: VMAF calculation support'
             'mkvtoolnix-cli: mkvmerge support'
             'ffms2'
