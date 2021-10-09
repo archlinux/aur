@@ -1,5 +1,5 @@
 pkgbase = com.seewo.easinote5
-	pkgdesc = Seewo EasiNote5 for Linux.
+	pkgdesc = Seewo EasiNote5 希沃白板5
 	pkgver = 5.1.17.1876
 	pkgrel = 1
 	url = https://gitlab.gz.cvte.cn/front-end/enow-cloud
