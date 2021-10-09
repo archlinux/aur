@@ -2,7 +2,7 @@
 # Contributor: JP Cimalando <jp-dev at inbox dot ru>
 pkgname=ptcollab-git
 _pkgname=ptcollab
-pkgver=0.4.3
+pkgver=0.4.3.r20.gdd2f630
 pkgrel=1
 epoch=
 pkgdesc="Multiplayer music editor"
@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  qmake ptcollab.pro CONFIG+=release PREFIX=/usr
+  qmake ptcollab.pro CONFIG+=release PREFIX=/usr QMAKE_CXXFLAGS+='-D_FORTIFY_SOURCE=0'
   make -j1 qmake_all
   make
 }
