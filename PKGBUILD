@@ -78,9 +78,13 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-pkgbase=linux-cacule-rdb
-pkgver=5.14.10
-pkgrel=2
+if [ -n "$_use_llvm_lto" ]; then
+pkgbase=linux-cacule-lto
+else
+pkgbase=linux-cacule
+fi
+pkgver=5.14.11
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patches'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -108,7 +112,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
           "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
           "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
           "${_patchsource}/block-patches/0001-block-patches.patch"
-          "${_patchsource}/btrfs-patches-v5/0001-btrfs-patches.patch"
+          "${_patchsource}/btrfs-patches-v6/0001-btrfs-patches.patch"
           "${_patchsource}/fixes-miscellaneous-v6/0001-fixes-miscellaneous.patch"
           "${_patchsource}/futex-xanmod-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
           "${_patchsource}/futex2-xanmod-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
@@ -509,7 +513,7 @@ _package-headers() {
 
 }
 
-md5sums=('c467f0e8c5ab6e0ec7c47555ea4a8da3'
+md5sums=('0eba0d3a75f56ddbbb0f4265b35724c3'
          '426a97a2a3d02625303b7885d1390afb'
          '581faf85cd625c41bbdd0cadbd0e451e'
          '024a0126cfcd18e000a2241f35c4d69e'
@@ -521,7 +525,7 @@ md5sums=('c467f0e8c5ab6e0ec7c47555ea4a8da3'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
-         '2c4d1d4e79d228af39f84ed4caea2f09'
+         '2ea9f8bab423cc6fdd9ff9c04006ccb6'
          'f364618bad6154856085c7025d388d3b'
          'fd934f7d11131d5a5043e4aea640583b'
          '8a96c5e8346bd5b430776ac8a41f96b0'
