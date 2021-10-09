@@ -3,7 +3,7 @@
 # Contributor: Kyle Keen <keenerd [at] gmail.com>, das-ich <das-ich [at] yandex.ru>
 
 pkgname=powerpanel
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
@@ -22,13 +22,13 @@ sha256sums=('255e5958346daa9d7c0e96ae3d86095afd3b3ec99880205d15d51b8f20a602df'
             '10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998')
 
 if [[ $CARCH = 'x86_64' ]]; then
-  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL-${pkgver}-64bit.tar.gz")
-  sha256sums+=('ddaa0e3b15f294b97bc152a992a22853dc9fc0f814ca88ae29dd904b8b0a5947')
+  source+=("powerpanel_${pkgver}_x86_64.tar.gz::https://www.cyberpower.com/global/en/File/GetFileSampleByType?fileId=SU-18070001-08&fileType=Download%20Center&fileSubType=FileOriginal")
+  sha256sums+=('99804595dba623bead77e348ae9d89d982516175d81f7a6af8c41de26dd7e40d')
 fi
 
 if [[ $CARCH = 'i686' ]]; then
-  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL-${pkgver}-32bit.tar.gz")
-  sha256sums+=('5c6d86a407ea9988ff7965bd1bfc5d9662e79b668df3dc5f8742ebedda774435')
+  source+=("powerpanel_${pkgver}_i686.tar.gz::https://www.cyberpower.com/global/en/File/GetFileSampleByType?fileId=SU-18070001-05&fileType=Download%20Center&fileSubType=FileOriginal")
+  sha256sums+=('15167da60043c00d72581310e50f5d1d0245f67bbda6a22214586c481e229150')
 fi
 
 package() {
