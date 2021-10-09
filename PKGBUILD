@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=176553'
-license=('GPL3')
+license=('GPL')
 makedepends=('git'
              'cmake'
              'avisynthplus'
@@ -28,8 +28,6 @@ pkgver() {
 prepare() {
   cd "${_plug}"
   mkdir -p build
-
-  rm -fr include/{vapour,avi}synth
 }
 
 build() {
@@ -47,10 +45,8 @@ package_avisynth-plugin-neo_f3kdb-git() {
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-f3kdb.so" "${pkgdir}/usr/lib/avisynth/libneo-f3kdb.so"
+  install -Dm755 "${_plug}/build/libneo-f3kdb.so" "${pkgdir}/usr/lib/avisynth/libneo-f3kdb.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
-
-  install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_vapoursynth-plugin-neo_f3kdb-git() {
@@ -59,9 +55,7 @@ package_vapoursynth-plugin-neo_f3kdb-git() {
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-f3kdb.so" "${pkgdir}/usr/lib/vapoursynth/libneo-f3kdb.so"
+  install -Dm755 "${_plug}/build/libneo-f3kdb.so" "${pkgdir}/usr/lib/vapoursynth/libneo-f3kdb.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
-
-  install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
