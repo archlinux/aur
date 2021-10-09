@@ -20,7 +20,7 @@
 ((DISABLE_CUDA)) && optdepends+=("cuda: CUDA support in Cycles") || { makedepends+=("cuda") ; ((DISABLE_OPTIX)) || makedepends+=("optix>=7.0"); }
 
 pkgname=upbge-git
-pkgver=112334.fe966584e8f
+pkgver=113940.bc0b5dd720c
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
@@ -46,7 +46,6 @@ source=(
   "blender-translations.git::git://git.blender.org/blender-translations.git"
   "blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git"
   upbge.desktop
-  SelectCudaComputeArch.patch
   usd_python.patch
   embree.patch
   openexr3.patch)
@@ -57,7 +56,6 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "b5c9bf4fa265389db4b3f23e96d74cc86c51d908b8943eb80967614d8af1ea1a"
-  "66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c"
   "333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703"
   "6249892f99ffd960e36f43fb893c14e2f8e4dd1d901b9581d25882e865f2603f"
   "5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b")
@@ -70,9 +68,6 @@ pkgver() {
 prepare() {
   # update the submodules
   git -C "$srcdir/upbge" submodule update --init --recursive --remote
-  if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
-  git -C "$srcdir/upbge" apply -v "${srcdir}"/SelectCudaComputeArch.patch
-  fi
   ((DISABLE_USD)) || git -C "$srcdir/upbge" apply -v "${srcdir}"/usd_python.patch
   git -C "$srcdir/upbge" apply -v "${srcdir}"/{embree,openexr3}.patch
 }
