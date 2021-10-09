@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-git
-pkgver=R19.mod.3.14.g5d5244f
+pkgver=R19.mod.3.2.9.g26b84b2
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
 arch=('x86_64')

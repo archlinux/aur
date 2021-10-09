@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-editor-git
 	pkgdesc = A simple program for edit/create VapourSynth scripts. (GIT version)
-	pkgver = R19.mod.3.14.g5d5244f
+	pkgver = R19.mod.3.2.9.g26b84b2
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=170965
 	arch = x86_64
