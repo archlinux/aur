@@ -117,7 +117,7 @@ pkgbase=linux-baby
 fi
 
 pkgver=5.14.11
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux  Kernel wwith the baby scheduler CachyOS and with some other patchsets'
 _gittag=v${pkgver%.*}-${pkgver##*.}

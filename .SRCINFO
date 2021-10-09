@@ -1,7 +1,7 @@
 pkgbase = linux-baby
 	pkgdesc = Linux Kernel wwith the baby scheduler CachyOS and with some other patchsets
 	pkgver = 5.14.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
 	arch = x86_64_v3
@@ -80,7 +80,7 @@ pkgbase = linux-baby
 	md5sums = 566435a0444ee45816599f2e0e362c7a
 	md5sums = bb22330e270bf36ccf53cb04d6b496d2
 	md5sums = 4c493a3e0f3486be8ad1b6c67c9c6917
-	md5sums = d825c650f5b7baeaebb43a442c764622
+	md5sums = 63ee6ec75b8867b24a573bbb5e413623
 	md5sums = 95eb4457f95f3f8dd153983612ee65c0
 	md5sums = 21c98f19e883879dd3336c1fa143fd31
 
