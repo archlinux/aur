@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=gdown
-pkgver=3.13.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Download a large file from Google Drive"
 arch=('any')
