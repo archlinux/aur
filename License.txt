@@ -1,0 +1,7 @@
+This game was created using the Hello Mario Engine, an open source Mario engine for GameMaker Studio.
+
+The Mario franchise is a registered trademark of Nintendo.
+
+For more information, check out the engine's Google Code page.
+
+http://code.google.com/p/hello-mario-engine/

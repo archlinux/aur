@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Super Mario 4 Jugadores
+GenericName=SM4J
+Comment=A fangame of Super Mario Bros.
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Icon=super-mario-4-jugadores
+Exec=super-mario-4-jugadores %F
+Categories=Game;
+StartupWMClass=SM4JLegacy.exe
+

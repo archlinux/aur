@@ -1,0 +1,25 @@
+pkgbase = super-mario-4-jugadores
+	pkgdesc = A fangame of Super Mario Bros. (uses Wine)
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://carlosxdjavgames.altervista.org/archivos/134/
+	install = super-mario-4-jugadores.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	makedepends = wget
+	depends = wine
+	depends = desktop-file-utils
+	source = https://cdn.discordapp.com/attachments/630931682924429328/808555699637846026/SM4J2.0.5Fix.zip
+	source = super-mario-4-jugadores.sh
+	source = super-mario-4-jugadores.png
+	source = super-mario-4-jugadores.desktop
+	source = License.txt
+	sha256sums = 9ae90076ccd567254d1c4d12c009aa51d511df24e7efc03d4404bb5f8ac15795
+	sha256sums = 458b44e169e0d8a263fddcb476ce70c7eefacbcc3e9617f2effaa81ceeeb1734
+	sha256sums = 8352f56fa923bc8e283ff091ffac508169d4563d92bab4ede2285bddbfe09cd9
+	sha256sums = 4d375657e6a90353aeeaf7d8687022dba9ec0dbba166603a7af29c0152e2a8b8
+	sha256sums = e2333a34a96432b05241bf72e71f7b16207fa50e3165250cfc1008e360738b68
+
+pkgname = super-mario-4-jugadores
