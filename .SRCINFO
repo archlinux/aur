@@ -9,6 +9,7 @@ pkgbase = puzzlemoppet-git
 	makedepends = make
 	makedepends = cmake
 	makedepends = git
+	makedepends = gendesk
 	depends = irrlicht
 	depends = ode
 	depends = openal
