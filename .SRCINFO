@@ -1,9 +1,9 @@
 pkgbase = khronos
 	pkgdesc = Track each task's time in a simple inobtrusive way
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lainsce/khronos
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = gobject-introspection
@@ -11,9 +11,9 @@ pkgbase = khronos
 	makedepends = vala
 	depends = gtk4
 	depends = json-glib
-	depends = libadwaita-git
+	depends = libadwaita
 	depends = libgee
-	source = khronos-3.6.0.tar.gz::https://github.com/lainsce/khronos/archive/3.6.0.tar.gz
+	source = https://github.com/lainsce/khronos/archive/3.6.0.tar.gz
 	sha512sums = 90e8c523061ab3fe00e9dd6c092067a8da3d6fc0976fc5d405875035139e03f12e0805b9ef8ac630e79eac30db462a910e14fbede0ee841f8696cc52e500f0dd
 
 pkgname = khronos
