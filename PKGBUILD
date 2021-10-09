@@ -14,9 +14,11 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 backup=(etc/$_pkgname/chipset.cfg)
 source=(git+$url.git
-        chipconfig.patch)
+        chipconfig.patch
+        rename-qterminal.patch)
 sha256sums=('SKIP'
-            '618abb9acc929cdab9964a49254681bca07ffab088e283936501bfcdb5a881e4')
+            '618abb9acc929cdab9964a49254681bca07ffab088e283936501bfcdb5a881e4'
+            'b7d074976dc8191b8133d2bdc7cd20d850f08b868acfab0bc50e3b4eca8b5989')
 
 pkgver() {
   cd $_pkgname
@@ -30,6 +32,7 @@ pkgver() {
 prepare() {
   cd $_pkgname
   patch -N -p 1 -i ../chipconfig.patch
+  patch -N -p 1 -i ../rename-qterminal.patch
 }
 
 build () {
@@ -51,7 +54,7 @@ package() {
     qnvram \
     qrflash \
     qrmem \
-    qterminal \
+    qterm \
     qwdirect \
     qwflash
   install -D -m 644 -t $pkgdir/usr/lib/$_pkgname/loaders loaders/*.bin

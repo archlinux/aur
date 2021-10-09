@@ -13,8 +13,9 @@ pkgbase = qtools-git
 	backup = etc/qtools/chipset.cfg
 	source = git+https://github.com/forth32/qtools.git
 	source = chipconfig.patch
+	source = rename-qterminal.patch
 	sha256sums = SKIP
 	sha256sums = 618abb9acc929cdab9964a49254681bca07ffab088e283936501bfcdb5a881e4
+	sha256sums = b7d074976dc8191b8133d2bdc7cd20d850f08b868acfab0bc50e3b4eca8b5989
 
 pkgname = qtools-git
-
