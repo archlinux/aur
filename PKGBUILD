@@ -1,7 +1,7 @@
 # Maintainer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
 
 pkgname=frece-git
-pkgver=1.0.4.r0.g8f40889
+pkgver=1.0.6.r0.g41d11ec
 pkgrel=1
 pkgdesc="Frecency sorted database"
 arch=("x86_64")
@@ -16,7 +16,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
