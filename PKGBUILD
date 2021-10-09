@@ -26,23 +26,33 @@ install=mutter.install
 
 _commit=2b2b3ab8502a5bcc2436e169279d2421f6f1a605  # tags/40.5^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-_setting_src="mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/100ce7589dd614832b8d500f3602ebe9/main.js"
+_shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.h"
+_shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.c"
+_setting_src="mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/b1ba5b74faf000b93a4ddcbd73ddcb98/main.js"
 
 if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
   _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
-  _setting_src="mutter_setting::https://gitee.com/lluo/mutter-rounded-setting/attach_files/834737/download/main.js"
+  _setting_src="mutter_setting::https://gitee.com/lluo/mutter-rounded-setting/attach_files/847740/download/main.js"
 fi
 
 source=("$_mutter_src"
         "rounded_corners_${pkgver}.patch"
+        "shell_blur_effect_${pkgver}.patch"
         "meta_clip_effect.c"
         "meta_clip_effect.h"
+        "shader.h"
+        "$_shell_blur_h_src"
+        "$_shell_blur_c_src"
         "$_setting_src")
 sha256sums=('SKIP'
-            '0ea54e94d6f497fc37044a0bb6ec2e992cafb1bf9b6b38053aa7b1f157955767'
-            '0fdb280566584dfe7226e56b5aa1e7e3f6ec462d097a6ebb9913fb08c5b60e58'
-            'cd836fa66e219f58d7294536e30f3654c41d45423861da633bb41ad0bc550de3'
-            'bf3c1cd55f97ae9482b368b585575eb61e07f09c189a2bc0d472fe7149a9d3a0')
+            '2502b64ecff2ac051b3e1cda5d8c424ca0caa71aa5055a48ba2e8441358c6ab1'
+            'c9eb42bdb6f8f1dbed2d6e6d1c47f5826f308411e91838eb407ba2aeab98b535'
+            'c47f3a998e5b8dbb53951be450a5f561f91ad8803a653dab2bcee69b1400e6d4'
+            '2ec553a260497f0ac0180512201c9819b10159a15fcbc6d5007932d8e2a44844'
+            'a02e991156dc3b4418899b73a2e65187a43990851fb235ea128ed7650c839a3b'
+            '8fb024306843153b28db2f5347775ef7e8add1dd846345148a572ad5336e168b'
+            'd58056b5028e1cf02a029036792f52e3429bd5f71a9403b5be93d95a7ba8252a'
+            '0182ba6d60c1bcc13d959b018662ea0bc1cc2347e6648fd455212fa3221dfd79')
 
 pkgver() {
   cd $pkgname
@@ -53,8 +63,9 @@ prepare() {
   sed -i '1i\#!/usr/bin/gjs' mutter_setting
 
   cd $pkgname
-  cp $srcdir/meta_clip_effect.[ch] $srcdir/$pkgname/src
+  cp $srcdir/*.[ch] $srcdir/$pkgname/src
   patch -p1 < $srcdir/rounded_corners_${pkgver}.patch
+  patch -p1 < $srcdir/shell_blur_effect_${pkgver}.patch
 }
 
 build() {
