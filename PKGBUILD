@@ -1,4 +1,4 @@
-# Maintainer: Tony Lambiris <tony@critialstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=veles
 pkgver=2018.05
