@@ -3,7 +3,7 @@
 _pkgname=myrowing
 pkgname=${_pkgname}-git
 _pkgorg=gitlab.com/${_pkgname} 
-pkgver=v0.1.0
+pkgver=v0.2.0
 pkgrel=1
 pkgdesc="Analyze your rowing training data"          
 arch=(any) 
