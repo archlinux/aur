@@ -1,7 +1,7 @@
 pkgbase = osu-lazer
 	pkgdesc = The new open source version of osu!, the free-to-win rhythm game
 	pkgver = 2021.1006.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osu.ppy.sh/
 	arch = x86_64
 	license = MIT

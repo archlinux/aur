@@ -5,7 +5,7 @@
 
 pkgname=osu-lazer
 pkgver=2021.1006.1
-pkgrel=1
+pkgrel=2
 
 dotnet_version=5.0
 
@@ -66,12 +66,10 @@ package()
     mkdir -p "$pkgdir/usr/share/pixmaps"
     install -m644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
-    # Compiled binaries
-    cd "$srcdir/osu-lazer/osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
+    # Compiled binaries, localization files, debug info and rulesets
     mkdir -p "$pkgdir/usr/lib/$pkgname"
-    for binary in *.so *.dll *.json *.pdb; do
-        install -m755 "$binary" "$pkgdir/usr/lib/$pkgname/$binary"
-    done
+    cd "$srcdir/osu-lazer/osu.Desktop/bin/Release/netcoreapp$dotnet_version/"
+    cp -r "linux-x64"/* "$pkgdir/usr/lib/$pkgname/"
 
     # osu-lazer licence
     cd "$srcdir/osu-lazer/"
