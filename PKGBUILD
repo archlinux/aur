@@ -9,8 +9,8 @@ pkgver=1.10.g3f4e137
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
-url='https://github.com/AmusementClub/VapourSynth-EEDI2CUDA.git'
-license=('GPL')
+url='https://github.com/AmusementClub/VapourSynth-EEDI2CUDA'
+license=('GPL2')
 makedepends=('git'
              'cmake'
              'avisynthplus'
@@ -66,7 +66,7 @@ package_avisynth-plugin-eedi2cuda-git() {
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build-avs/libEEDI2CUDA.so" "${pkgdir}/usr/lib/avisynth/libEEDI2CUDA.so"
+  install -Dm755 "${_plug}/build-avs/libEEDI2CUDA.so" "${pkgdir}/usr/lib/avisynth/libEEDI2CUDA.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -78,7 +78,7 @@ package_vapoursynth-plugin-eedi2cuda-git() {
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build-vs/libEEDI2CUDA.so" "${pkgdir}/usr/lib/vapoursynth/libEEDI2CUDA.so"
+  install -Dm755 "${_plug}/build-vs/libEEDI2CUDA.so" "${pkgdir}/usr/lib/vapoursynth/libEEDI2CUDA.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
