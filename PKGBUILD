@@ -1,6 +1,6 @@
 pkgname=fheroes2
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Free remake of Heroes of Might and Magic II game engine"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://ihhub.github.io/fheroes2/"
@@ -29,15 +29,17 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm755 "src/dist/fheroes2" "$pkgdir/usr/bin/fheroes2"
+  install -Dm755 "src/dist/fheroes2"                        "$pkgdir/usr/bin/fheroes2"
   install -Dm644 "script/packaging/common/fheroes2.desktop" "$pkgdir/usr/share/applications/fheroes2.desktop"
-  install -dm755 "$pkgdir/usr/share/fheroes2/files/lang"
-  install -Dm644 files/lang/*.mo "$pkgdir/usr/share/fheroes2/files/lang"
-  install -Dm755 "script/demo/download_demo_version.sh" "$pkgdir/usr/share/fheroes2/download_demo_version.sh"
-  install -Dm644 "fheroes2.key" "$pkgdir/usr/share/fheroes2/fheroes2.key"
-  install -dm755 "$pkgdir/usr/share/fheroes2/data"
-  install -dm755 "$pkgdir/usr/share/fheroes2/maps"
-  install -Dm644 src/resources/fheroes2.png "$pkgdir/usr/share/pixmaps/fheroes2.png"
+  install -dm755                                            "$pkgdir/usr/share/fheroes2/data"
+  install -dm755                                            "$pkgdir/usr/share/fheroes2/files/data"
+  install -Dm644 files/data/*.h2d                           "$pkgdir/usr/share/fheroes2/files/data"
+  install -dm755                                            "$pkgdir/usr/share/fheroes2/files/lang"
+  install -Dm644 files/lang/*.mo                            "$pkgdir/usr/share/fheroes2/files/lang"
+  install -dm755                                            "$pkgdir/usr/share/fheroes2/maps"
+  install -Dm755 "script/demo/download_demo_version.sh"     "$pkgdir/usr/share/fheroes2/download_demo_version.sh"
+  install -Dm644 "fheroes2.key"                             "$pkgdir/usr/share/fheroes2/fheroes2.key"
+  install -Dm644 src/resources/fheroes2.png                 "$pkgdir/usr/share/pixmaps/fheroes2.png"
 }
 
 # vim:set ts=2 sw=2 et:
