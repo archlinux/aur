@@ -1,0 +1,18 @@
+pkgbase = nvidia-vpf
+	pkgdesc = NVIDIA Video Processing Framework
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/NVIDIA/VideoProcessingFramework/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = nvidia-sdk
+	depends = cuda
+	depends = nvidia-utils
+	depends = ffmpeg
+	depends = python
+	options = !emptydirs
+	source = https://github.com/NVIDIA/VideoProcessingFramework/archive/v1.0/nvidia-vpf-1.0.tar.gz
+	sha256sums = 849d98221abb8a7641600c2755367b92fba4a7b5bbc4661a71d43eec7a1d9aea
+
+pkgname = nvidia-vpf
