@@ -11,7 +11,7 @@ groups=('')
 depends=('systemd' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libnotify' 'libxss' 'libxtst' 'nss' 'xdg-utils')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://github.com/YidaozhanYa/seewo-uos-bin/releases/download/2/com.seewo.easirecorder.tar.gz" "https://raw.githubusercontent.com/YidaozhanYa/seewo-uos-bin/main/run_easirecorder_mod.sh")
+source=("https://github.com/YidaozhanYa/seewo-uos-bin/releases/download/2/com.seewo.easirecorder.tar.gz" "https://github.com/YidaozhanYa/seewo-uos-bin/raw/main/run_easirecorder_mod.sh")
 sha512sums=('249421063e7d195da1a930f008ed4c47a1fe1dad600c15d339d4c6d036e895d5d449eb9be49a0bf4fdde0cfdd4c5109df7a1cb8b3e261eac14396ba0142d95dd' 'fcb5b4107246842c96670073794086e46317b6a642926e694488a482ab408fbde4fc39e6e9078737b33527cd7b2ed39b6f8a3d921bfe3bffc8c8fd95d35f1b17')
 
 package(){
