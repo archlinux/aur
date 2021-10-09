@@ -1,3 +1,5 @@
+# Maintainer : atriix <aur a snilius d com>
+
 pkgname=godoc
 pkgver=0.1.7
 pkgrel=1
@@ -27,3 +29,5 @@ package() {
   cd "tools-$pkgver"
   install -Dm755 _godoc "$pkgdir"/usr/bin/$pkgname
 }
+
+# vim: ts=2 sw=2 et ft=PKGBUILD:
