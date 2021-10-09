@@ -1,8 +1,8 @@
-# Maintainer: Mark Vainomaa <mikroskeem round around a mikroskeem dot eu>
-# Old maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Previous maintainer: Mark Vainomaa <mikroskeem round around a mikroskeem dot eu>
 
 pkgname=quakespasm
-pkgver=0.93.2
+pkgver=0.94.1
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. Stable version with optional Mission pack desktop files."
 arch=('i686' 'x86_64')
@@ -11,12 +11,12 @@ license=('GPL2')
 depends=('libvorbis' 'libmad' 'sdl2')
 conflicts=('quakespasm-svn')
 install="${pkgname}.install"
-source=("https://sourceforge.net/projects/quakespasm/files/Source/${pkgname}-${pkgver}.tgz"
+source=("https://sourceforge.net/projects/quakespasm/files/Source/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}-mp1.desktop"
         "${pkgname}-mp2.desktop"
         "${pkgname}-impel.desktop")
-sha256sums=('45eb37548cc0352e358fa67eee57d7b8e731efbcd7bba63ac27b2f9f5b91a062'
+sha256sums=('5732593947ac2c6560a2bc21f766c7d92a5eba76f70199faf572c631f5bef9a5'
             '09f6819046421f00dd851c9dc6913e931bf410deb1fc4c11f15ffa56c14a9458'
             '2a1a8ee5f1c2b849cb9e11b61cb2745e791595025acbe779396c41b5ff97ba2a'
             '99a957c430d4a67fd78a9d7f49095a4c00c09a9840c69e347d46863694ebdc76'
