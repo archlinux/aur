@@ -3,7 +3,7 @@
 pkgname=0ad-zh-lang
 pkgver=a25.b
 _pkgver=0.0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Chinese Fonts and Translations For 0ad"
 arch=(any)
 url="https://play0ad.com/"
@@ -16,7 +16,8 @@ package() {
   install -d 644 ${pkgdir}/usr/share/0ad/data/mods/public
   cp -r ${srcdir}/fonts ${pkgdir}/usr/share/0ad/data/mods/public/
   cp -r ${srcdir}/l10n ${pkgdir}/usr/share/0ad/data/mods/public/
-  cp -r ${srcdir}/mod.json ${pkgdir}/usr/share/0ad/data/mods/public/
+  # Because mod.json is owned by 0ad-data since a24, we only manually select the language
+  # cp -r ${srcdir}/mod.json ${pkgdir}/usr/share/0ad/data/mods/public/
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = 0ad-zh-lang
 	pkgdesc = Chinese Fonts and Translations For 0ad
 	pkgver = a25.b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://play0ad.com/
 	arch = any
 	license = GPL
