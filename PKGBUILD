@@ -2,8 +2,8 @@
 
 _name=secret-service
 pkgname=$_name-bin
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Service to keep secrets of applications. Implements  FreeDesktop Secret Service API"
 arch=('x86_64')
 url="https://github.com/yousefvand/secret-service"
@@ -12,8 +12,8 @@ provides=('secret-service')
 conflicts=('secret-service')
 depends=()
 optdepends=()
-source=("https://github.com/yousefvand/$_name/files/6727911/secretserviced-v$pkgver.tar.gz")
-sha256sums=('29da13c091427ff64e04a52b10664fc9c4788c6eef4b4a06c1ad7ec8f71a1038')
+source=("https://github.com/yousefvand/$_name/releases/download/v$pkgver/secretserviced-v$pkgver.tar.gz")
+sha256sums=('fc5ea442139f8ea4a5c85cf7694b397aafb2d75d389ff8c16c3fd82f69a7d593')
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
