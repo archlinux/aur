@@ -1,5 +1,5 @@
 pkgname=icalingua-git
-pkgver=2.3.2_df984f9
+pkgver=2.3.2_19_g5b164d0
 pkgrel=1
 pkgdesc='A Linux client for QQ and more'
 license=('GPL')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver(){
     cd "${srcdir}/Icalingua"
-    echo "$(git describe --tags | sed "s/v//")_$(git rev-parse --short HEAD)"
+    git describe --tags | sed "s/v//;s/-/_/g"
 }
 prepare(){
     cd "${srcdir}/Icalingua/icalingua"
