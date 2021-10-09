@@ -2,7 +2,7 @@
 
 pkgname=man-pages-mk-git
 _gitname=manpages-l10n
-pkgver=r15597.9805c4d67a
+pkgver=r16282.12eccbc8c4
 pkgrel=1
 pkgdesc="Macedonian man pages (Git version)"
 arch=('any')
