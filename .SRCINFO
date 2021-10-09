@@ -1,0 +1,18 @@
+pkgbase = greetd-mini-greeter-git
+	pkgdesc = Extremely minimal GTK 4 greeter for greetd.
+	pkgver = r7.02eff1e
+	pkgrel = 1
+	url = https://github.com/philj56/greetd-mini-greeter
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = scdoc
+	depends = gtk4
+	depends = json-c
+	provides = greetd-mini-greeter
+	conflicts = greetd-mini-greeter
+	source = greetd-mini-greeter-git::git+https://github.com/philj56/greetd-mini-greeter
+	sha512sums = SKIP
+
+pkgname = greetd-mini-greeter-git
