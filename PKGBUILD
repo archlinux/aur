@@ -5,11 +5,11 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r2.0.g172613e
+pkgver=r2.0.g9b6a893
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
-url='https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian.git'
+url='https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian'
 license=('MIT')
 makedepends=('git'
              'cmake'
@@ -32,10 +32,10 @@ prepare() {
 build() {
   cd "${_plug}/build"
   cmake .. \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  LC_ALL=C make
+  make
 }
 
 package_avisynth-plugin-neo_tmedian-git() {
@@ -44,7 +44,7 @@ package_avisynth-plugin-neo_tmedian-git() {
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-tmedian.so" "${pkgdir}/usr/lib/avisynth/libneo-tmedian.so"
+  install -Dm755 "${_plug}/build/libneo-tmedian.so" "${pkgdir}/usr/lib/avisynth/libneo-tmedian.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -56,7 +56,7 @@ package_vapoursynth-plugin-neo_tmedian-git() {
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-tmedian.so" "${pkgdir}/usr/lib/vapoursynth/libneo-tmedian.so"
+  install -Dm755 "${_plug}/build/libneo-tmedian.so" "${pkgdir}/usr/lib/vapoursynth/libneo-tmedian.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
