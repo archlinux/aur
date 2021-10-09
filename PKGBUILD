@@ -1,14 +1,14 @@
 # Maintainer: Ruben Gees <rubengees7@gmail.com>
 
 pkgname=helmup-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Check your helm chart dependencies for updates and apply them with an interactive selection."
 arch=('x86_64')
 url="https://github.com/rubengees/helmup"
 license=('MIT')
-source=(https://github.com/rubengees/helmup/releases/download/0.1.5/helmup-0.1.5-linux-amd64 https://raw.githubusercontent.com/rubengees/helmup/0.1.5/LICENSE.txt)
-md5sums=(1ca503e6cb64a140d0256020a7f94961 3cedd8b36dadab22d43300fe89a0bf67)
+source=(https://github.com/rubengees/helmup/releases/download/0.1.6/helmup-0.1.6-linux-amd64 https://raw.githubusercontent.com/rubengees/helmup/0.1.6/LICENSE.txt)
+md5sums=(164d46c770a616ea195da4fc7f6d220b 3cedd8b36dadab22d43300fe89a0bf67)
 
 build() {
   chmod +x ./helmup-*
