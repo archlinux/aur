@@ -1,7 +1,36 @@
+diff --git a/browser/brave_browser_process.h b/browser/brave_browser_process.h
+index 303ca1a1fb..8557c44efd 100644
+--- a/browser/brave_browser_process.h
++++ b/browser/brave_browser_process.h
+@@ -100,11 +100,11 @@ class BraveBrowserProcess {
+ #if BUILDFLAG(ENABLE_IPFS)
+   virtual ipfs::BraveIpfsClientUpdater* ipfs_client_updater() = 0;
+ #endif
+-  virtual brave::BraveP3AService* brave_p3a_service() = 0;
+-  virtual brave::BraveReferralsService* brave_referrals_service() = 0;
++  //virtual brave::BraveP3AService* brave_p3a_service() = 0;
++  //virtual brave::BraveReferralsService* brave_referrals_service() = 0;
+   virtual brave_stats::BraveStatsUpdater* brave_stats_updater() = 0;
+-  virtual ntp_background_images::NTPBackgroundImagesService*
+-  ntp_background_images_service() = 0;
++  //virtual ntp_background_images::NTPBackgroundImagesService*
++  //ntp_background_images_service() = 0;
+ #if BUILDFLAG(ENABLE_SPEEDREADER)
+   virtual speedreader::SpeedreaderRewriterService*
+   speedreader_rewriter_service() = 0;
 diff --git a/browser/brave_browser_process_impl.cc b/browser/brave_browser_process_impl.cc
-index 78f6dea20b..1975955c43 100644
+index 78f6dea20b..1af016bcdd 100644
 --- a/browser/brave_browser_process_impl.cc
 +++ b/browser/brave_browser_process_impl.cc
+@@ -49,7 +49,7 @@
+ #include "services/network/public/cpp/resource_request.h"
+ #include "services/network/public/cpp/shared_url_loader_factory.h"
+
+-#if BUILDFLAG(ENABLE_BRAVE_REFERRALS)
++#if 0
+ #include "brave/components/brave_referrals/browser/brave_referrals_service.h"
+ #endif
+
 @@ -217,6 +217,7 @@ BraveBrowserProcessImpl::ad_block_regional_service_manager() {
    return ad_block_service()->regional_service_manager();
  }
@@ -35,10 +64,10 @@ index 78f6dea20b..1975955c43 100644
  brave_stats::BraveStatsUpdater* BraveBrowserProcessImpl::brave_stats_updater() {
    if (!brave_stats_updater_)
 diff --git a/browser/brave_browser_process_impl.h b/browser/brave_browser_process_impl.h
-index 225890cc6f..934db87040 100644
+index 225890cc6f..a60b56bfdc 100644
 --- a/browser/brave_browser_process_impl.h
 +++ b/browser/brave_browser_process_impl.h
-@@ -111,8 +111,8 @@ class BraveBrowserProcessImpl : public BraveBrowserProcess,
+@@ -111,11 +111,11 @@ class BraveBrowserProcessImpl : public BraveBrowserProcess,
    ipfs::BraveIpfsClientUpdater* ipfs_client_updater() override;
  #endif
    brave::BraveFederatedLearningService* brave_federated_learning_service();
@@ -47,8 +76,13 @@ index 225890cc6f..934db87040 100644
 +  //brave::BraveP3AService* brave_p3a_service() override;
 +  //brave::BraveReferralsService* brave_referrals_service() override;
    brave_stats::BraveStatsUpdater* brave_stats_updater() override;
-   ntp_background_images::NTPBackgroundImagesService*
-   ntp_background_images_service() override;
+-  ntp_background_images::NTPBackgroundImagesService*
+-  ntp_background_images_service() override;
++  //ntp_background_images::NTPBackgroundImagesService*
++  //ntp_background_images_service() override;
+   brave_ads::ResourceComponent* resource_component() override;
+ #if BUILDFLAG(ENABLE_SPEEDREADER)
+   speedreader::SpeedreaderRewriterService* speedreader_rewriter_service()
 @@ -158,7 +158,7 @@ class BraveBrowserProcessImpl : public BraveBrowserProcess,
    std::unique_ptr<brave_shields::HTTPSEverywhereService>
        https_everywhere_service_;
@@ -72,8 +106,86 @@ index 225890cc6f..934db87040 100644
    std::unique_ptr<brave_ads::ResourceComponent> resource_component_;
 
  #if BUILDFLAG(ENABLE_SPEEDREADER)
+diff --git a/browser/brave_stats/brave_stats_updater.cc b/browser/brave_stats/brave_stats_updater.cc
+index 7941375222..8d7a6e2576 100644
+--- a/browser/brave_stats/brave_stats_updater.cc
++++ b/browser/brave_stats/brave_stats_updater.cc
+@@ -36,7 +36,7 @@
+ #include "services/network/public/cpp/simple_url_loader.h"
+ #include "services/network/public/mojom/fetch_api.mojom-shared.h"
+
+-#if BUILDFLAG(ENABLE_BRAVE_REFERRALS)
++#if 0
+ #include "brave/components/brave_referrals/common/pref_names.h"
+ #endif
+
+@@ -304,7 +304,7 @@ void BraveStatsUpdater::OnServerPingTimerFired() {
+ }
+
+ bool BraveStatsUpdater::IsReferralInitialized() {
+-#if BUILDFLAG(ENABLE_BRAVE_REFERRALS)
++#if 0
+   return pref_service_->GetBoolean(kReferralInitialization) ||
+          pref_service_->GetBoolean(kReferralCheckedForPromoCodeFile);
+ #else
+@@ -327,16 +327,18 @@ void BraveStatsUpdater::DisableThresholdPing() {
+ }
+
+ void BraveStatsUpdater::QueueServerPing() {
+-  const bool referrals_initialized = IsReferralInitialized();
++  //const bool referrals_initialized = IsReferralInitialized();
+   const bool ads_enabled = IsAdsEnabled();
+   int num_closures = 0;
+
++#if 0
+   // Note: We don't have the callbacks here because otherwise there is a race
+   // condition whereby the callback completes before the barrier has been
+   // initialized.
+   if (!referrals_initialized) {
+     ++num_closures;
+   }
++#endif
+   if (ads_enabled) {
+     ++num_closures;
+   }
+@@ -346,6 +348,7 @@ void BraveStatsUpdater::QueueServerPing() {
+       num_closures,
+       base::BindOnce(&BraveStatsUpdater::StartServerPingStartupTimer,
+                      base::Unretained(this)));
++#if 0
+   if (!referrals_initialized) {
+     pref_change_registrar_.reset(new PrefChangeRegistrar());
+     pref_change_registrar_->Init(pref_service_);
+@@ -354,6 +357,7 @@ void BraveStatsUpdater::QueueServerPing() {
+         base::BindRepeating(&BraveStatsUpdater::OnReferralInitialization,
+                             base::Unretained(this)));
+   }
++#endif
+   if (ads_enabled) {
+     DetectUncertainFuture();
+   }
+diff --git a/browser/ntp_background_images/view_counter_service_factory.cc b/browser/ntp_background_images/view_counter_service_factory.cc
+index d28e97b348..aaea32fccd 100644
+--- a/browser/ntp_background_images/view_counter_service_factory.cc
++++ b/browser/ntp_background_images/view_counter_service_factory.cc
+@@ -53,6 +53,7 @@ KeyedService* ViewCounterServiceFactory::BuildServiceInstanceFor(
+   if (!brave::IsRegularProfile(browser_context))
+     return nullptr;
+
++#if 0
+   if (auto* service =
+           g_brave_browser_process->ntp_background_images_service()) {
+     Profile* profile = Profile::FromBrowserContext(browser_context);
+@@ -69,6 +70,7 @@ KeyedService* ViewCounterServiceFactory::BuildServiceInstanceFor(
+                                   g_browser_process->local_state(),
+                                   is_supported_locale);
+   }
++#endif
+
+   return nullptr;
+ }
 diff --git a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
-index 74a696a168..64d7449003 100644
+index b7d86c3d1b..e47c9e1baa 100644
 --- a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
 +++ b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
 @@ -42,12 +42,14 @@
@@ -115,7 +227,7 @@ index 74a696a168..64d7449003 100644
    pref_data.SetBoolean("isBraveTodayOptedIn",
                         prefs->GetBoolean(kBraveTodayOptedIn));
    pref_data.SetBoolean("hideAllWidgets",
-@@ -137,24 +143,30 @@ base::DictionaryValue GetTorPropertiesDictionary(bool connected,
+@@ -140,24 +146,30 @@ base::DictionaryValue GetTorPropertiesDictionary(bool connected,
  // TODO(petemill): Move p3a to own NTP component so it can
  // be used by other platforms.
 
@@ -146,7 +258,7 @@ index 74a696a168..64d7449003 100644
  }
 
  bool BraveNewTabMessageHandler::CanPromptBraveTalk() {
-@@ -176,6 +188,7 @@ bool BraveNewTabMessageHandler::CanPromptBraveTalk(base::Time now) {
+@@ -179,6 +191,7 @@ bool BraveNewTabMessageHandler::CanPromptBraveTalk(base::Time now) {
  BraveNewTabMessageHandler* BraveNewTabMessageHandler::Create(
      content::WebUIDataSource* source,
      Profile* profile) {
@@ -154,7 +266,7 @@ index 74a696a168..64d7449003 100644
    //
    // Initial Values
    // Should only contain data that is static
-@@ -194,6 +207,7 @@ BraveNewTabMessageHandler* BraveNewTabMessageHandler::Create(
+@@ -197,6 +210,7 @@ BraveNewTabMessageHandler* BraveNewTabMessageHandler::Create(
    source->AddBoolean("featureFlagBraveNTPSponsoredImagesWallpaper",
                       base::FeatureList::IsEnabled(kBraveNTPBrandedWallpaper) &&
                           is_ads_supported_locale_);
@@ -162,7 +274,7 @@ index 74a696a168..64d7449003 100644
    source->AddBoolean("braveTalkPromptAllowed",
                       BraveNewTabMessageHandler::CanPromptBraveTalk());
 
-@@ -252,6 +266,7 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+@@ -255,6 +269,7 @@ void BraveNewTabMessageHandler::RegisterMessages() {
        "saveNewTabPagePref",
        base::BindRepeating(&BraveNewTabMessageHandler::HandleSaveNewTabPagePref,
                            base::Unretained(this)));
@@ -170,7 +282,7 @@ index 74a696a168..64d7449003 100644
    web_ui()->RegisterMessageCallback(
        "registerNewTabPageView",
        base::BindRepeating(
-@@ -303,6 +318,7 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+@@ -306,6 +321,7 @@ void BraveNewTabMessageHandler::RegisterMessages() {
        base::BindRepeating(
            &BraveNewTabMessageHandler::HandleTodayOnDisplayAdView,
            base::Unretained(this)));
@@ -178,7 +290,7 @@ index 74a696a168..64d7449003 100644
  }
 
  void BraveNewTabMessageHandler::OnJavascriptAllowed() {
-@@ -354,10 +370,12 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+@@ -357,10 +373,12 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
        kNewTabPageShowBackgroundImage,
        base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
                            base::Unretained(this)));
@@ -191,7 +303,7 @@ index 74a696a168..64d7449003 100644
    pref_change_registrar_.Add(
        kNewTabPageShowClock,
        base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
-@@ -374,6 +392,7 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+@@ -377,6 +395,7 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
        kNewTabPageShowToday,
        base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
                            base::Unretained(this)));
@@ -199,7 +311,7 @@ index 74a696a168..64d7449003 100644
    pref_change_registrar_.Add(
        kNewTabPageShowRewards,
        base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
-@@ -382,6 +401,7 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+@@ -385,6 +404,7 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
        kBrandedWallpaperNotificationDismissed,
        base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
                            base::Unretained(this)));
@@ -207,7 +319,7 @@ index 74a696a168..64d7449003 100644
    pref_change_registrar_.Add(
        kNewTabPageShowBinance,
        base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
-@@ -474,9 +494,11 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+@@ -477,9 +497,11 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
      LOG(ERROR) << "Invalid input";
      return;
    }
@@ -219,7 +331,7 @@ index 74a696a168..64d7449003 100644
    PrefService* prefs = profile_->GetPrefs();
    // Collect args
    std::string settingsKeyInput = args[0].GetString();
-@@ -504,10 +526,12 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+@@ -507,10 +529,12 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
    const auto settingsValueBool = settingsValue.GetBool();
    if (settingsKeyInput == "showBackgroundImage") {
      settingsKey = kNewTabPageShowBackgroundImage;
@@ -232,7 +344,7 @@ index 74a696a168..64d7449003 100644
    } else if (settingsKeyInput == "showClock") {
      settingsKey = kNewTabPageShowClock;
    } else if (settingsKeyInput == "showStats") {
-@@ -516,10 +540,12 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+@@ -519,10 +543,12 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
      settingsKey = kNewTabPageShowToday;
    } else if (settingsKeyInput == "isBraveTodayOptedIn") {
      settingsKey = kBraveTodayOptedIn;
@@ -245,7 +357,7 @@ index 74a696a168..64d7449003 100644
    } else if (settingsKeyInput == "hideAllWidgets") {
      settingsKey = kNewTabPageHideAllWidgets;
    } else if (settingsKeyInput == "showBinance") {
-@@ -542,24 +568,29 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+@@ -545,24 +571,29 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
    }
    prefs->SetBoolean(settingsKey, settingsValueBool);
 
@@ -275,7 +387,7 @@ index 74a696a168..64d7449003 100644
    AllowJavascript();
    if (args.size() != 1) {
      LOG(ERROR) << "Invalid input";
-@@ -583,10 +614,12 @@ void BraveNewTabMessageHandler::HandleBrandedWallpaperLogoClicked(
+@@ -586,10 +617,12 @@ void BraveNewTabMessageHandler::HandleBrandedWallpaperLogoClicked(
          destination_url ? *destination_url : "",
          wallpaper_id ? *wallpaper_id : "");
    }
@@ -288,7 +400,7 @@ index 74a696a168..64d7449003 100644
    AllowJavascript();
 
    auto* service = ViewCounterServiceFactory::GetForProfile(profile_);
-@@ -601,18 +634,22 @@ void BraveNewTabMessageHandler::HandleGetBrandedWallpaperData(
+@@ -604,18 +637,22 @@ void BraveNewTabMessageHandler::HandleGetBrandedWallpaperData(
    }
 
    ResolveJavascriptCallback(args[0], std::move(data));
@@ -311,7 +423,7 @@ index 74a696a168..64d7449003 100644
    AllowJavascript();
    // Track if user has ever scrolled to Brave Today.
    UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.HasEverInteracted", 1, 1);
-@@ -629,10 +666,12 @@ void BraveNewTabMessageHandler::HandleTodayInteractionBegin(
+@@ -632,10 +669,12 @@ void BraveNewTabMessageHandler::HandleTodayInteractionBegin(
    int answer = it_count - kSessionCountBuckets;
    UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklySessionCount", answer,
                               base::size(kSessionCountBuckets) + 1);
@@ -324,7 +436,7 @@ index 74a696a168..64d7449003 100644
    // Argument should be how many cards visited in this session.
    // We need the front-end to give us this since this class
    // will be destroyed and re-created when the user navigates "back",
-@@ -663,10 +702,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardVisit(
+@@ -666,10 +705,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardVisit(
          item_id, creative_instance_id,
          ads::mojom::PromotedContentAdEventType::kClicked);
    }
@@ -337,7 +449,7 @@ index 74a696a168..64d7449003 100644
    // Argument should be how many cards viewed in this session.
    int cards_viewed_total = args[0].GetInt();
    // Track how many Brave Today cards have been viewed per session
-@@ -680,10 +721,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardViews(
+@@ -683,10 +724,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardViews(
    int answer = it_count - kBuckets;
    UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklyMaxCardViewsCount", answer,
                               base::size(kBuckets) + 1);
@@ -350,7 +462,7 @@ index 74a696a168..64d7449003 100644
    // Argument should be how many cards viewed in this session.
    std::string creative_instance_id = args[0].GetString();
    std::string item_id = args[1].GetString();
-@@ -693,10 +736,12 @@ void BraveNewTabMessageHandler::HandleTodayOnPromotedCardView(
+@@ -696,10 +739,12 @@ void BraveNewTabMessageHandler::HandleTodayOnPromotedCardView(
          item_id, creative_instance_id,
          ads::mojom::PromotedContentAdEventType::kViewed);
    }
@@ -363,7 +475,7 @@ index 74a696a168..64d7449003 100644
    AllowJavascript();
    std::string callback_id = args[0].GetString();
    auto* ads_service_ = brave_ads::AdsServiceFactory::GetForProfile(profile_);
-@@ -728,10 +773,12 @@ void BraveNewTabMessageHandler::HandleTodayGetDisplayAd(
+@@ -731,10 +776,12 @@ void BraveNewTabMessageHandler::HandleTodayGetDisplayAd(
        },
        weak_ptr_factory_.GetWeakPtr(), callback_id);
    ads_service_->GetInlineContentAd("900x750", std::move(on_ad_received));
@@ -376,7 +488,7 @@ index 74a696a168..64d7449003 100644
    // Collect params
    std::string item_id = args[0].GetString();
    std::string creative_instance_id = args[1].GetString();
-@@ -757,10 +804,12 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit(
+@@ -760,10 +807,12 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit(
    ads_service_->OnInlineContentAdEvent(
        item_id, creative_instance_id,
        ads::mojom::InlineContentAdEventType::kClicked);
@@ -389,7 +501,7 @@ index 74a696a168..64d7449003 100644
    // Collect params
    std::string item_id = args[0].GetString();
    std::string creative_instance_id = args[1].GetString();
-@@ -796,6 +845,7 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
+@@ -799,6 +848,7 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
    int answer = it_count - kBuckets;
    UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklyDisplayAdsViewedCount", answer,
                               base::size(kBuckets) + 1);
