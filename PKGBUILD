@@ -3,10 +3,10 @@
 pkgname=ldid
 pkgver=2.1.4
 pkgrel=1
-pkgdesc="a tool used for ad-hoc codesigning iOS binaries - sbingners fork"
+pkgdesc="a tool used for ad-hoc codesigning Darwin binaries - sbingners fork"
 provides=('ldid' 'ldid2')
 arch=('x86_64')
-url="https://git.saurik.com/ldid"
+url="https://github.com/sbingner/ldid"
 license=('AGPL')
 depends=('openssl' 'libplist' 'libxml2')
 source=("https://github.com/sbingner/ldid/archive/v$pkgver.tar.gz" "password-p12.patch")

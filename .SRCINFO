@@ -1,8 +1,8 @@
 pkgbase = ldid
-	pkgdesc = a tool used for ad-hoc codesigning iOS binaries - sbingners fork
+	pkgdesc = a tool used for ad-hoc codesigning Darwin binaries - sbingners fork
 	pkgver = 2.1.4
 	pkgrel = 1
-	url = https://git.saurik.com/ldid
+	url = https://github.com/sbingner/ldid
 	arch = x86_64
 	license = AGPL
 	depends = openssl
