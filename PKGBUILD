@@ -22,11 +22,9 @@ build() {
 }
 
 package() {
-#     cd "$srcdir/${pkgname%-git}"
-#     bsdtar -xf "$srcdir/${pkgname%-git}/MS-Office-Electron-Linux/release/MS-Office-Electron-Setup-0.3.0-x86_64.pacman" -C "$pkgdir"
-#     install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-#     ln -sf "/opt/MS Office - Electron/MS Office - Electron" "/usr/bin/MS Office - Electron"
-#     rm "$pkgdir"/.[^.]*
+    echo
+    echo "NOTE - If you get an error about "Permission Denied" (using yay), use "--sudoloop" argument while installing"
+    echo
     cd "$srcdir/${pkgname%-git}"
     bsdtar -xf release/MS-Office-Electron-*.pacman -C "$pkgdir"
 
