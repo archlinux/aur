@@ -21,11 +21,13 @@ md5sums=('b94f87aebe0bf59602d2063d2c4658e3')
 
 prepare() {
 bsdtar xf ZCentral_RB_20.3_Linux_Receiver_M39127-005.tar.gz
-bsdtar xf rhel7-8/receiver/*.tar.gz
-bsdtar xf ./*.rpm
+bsdtar xf ubuntu/receiver/*.tar.gz
+bsdtar xf ./*.deb
 }
 
 package() {
+
+bsdtar xf data.tar.xz 
 cd "${srcdir}"
 
 # install licence
