@@ -1,19 +1,21 @@
 # Maintainer: Cameron Katri <katri.cameron@gmail.com>
 
 pkgname=ldid
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.1.4
+pkgrel=1
 pkgdesc="a tool used for ad-hoc codesigning iOS binaries - CRKatri's mirror"
 provides=('ldid' 'ldid2')
 arch=('x86_64')
 url="https://git.saurik.com/ldid"
 license=('AGPL')
 depends=('openssl' 'libplist' 'libxml2')
-source=("https://github.com/CRKatri/ldid/archive/$pkgver.tar.gz")
-md5sums=('8af2d65766f11fef4e90b26a4694c8b6')
+source=("https://github.com/sbingner/ldid/archive/v$pkgver.tar.gz" "password-p12.patch")
+b2sums=('1241cfde82259918bc4590b52e23ffc1f955e80ff2095eb9c47d2c465024288748f45b666da50bd6428dbf18ef2ed806845f025ef9dc99d61aad56d256025e66'
+        '63781c6ebd916356f6c499984a5f48d53042bfcd836d7b13b68b5874d04ca96f17562676509d04176f40833d5381523206c7608e893f14b44078462fe2d1ce3a')
 
 build() {
 	cd ldid-$pkgver
+	patch -p1 < ${srcdir}/password-p12.patch
 	cc ${CFLAGS} -I. -c -o lookup2.o lookup2.c
 	c++ ${CXXFLAGS} -std=c++11 -o ldid lookup2.o ldid.cpp -I. -lcrypto -lplist-2.0 -lxml2
 }
