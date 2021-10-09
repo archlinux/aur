@@ -1,5 +1,27 @@
 = CLI Changelog
 
+// scriv-insert-here
+
+= 3.1.0 (2021-10-08)
+
+Enhancements:
+
+* Add the new `globus search` command group for interacting with the Globus
+  Search service. `globus search` commands may prompt users to login again if
+  they have not previously used a `globus search` command.
+* Add the `globus search query` command for executing searches on Globus Search
+  indices.
+* Add the `globus search ingest` command for ingesting data into a Globus Search
+  index. You must have `writer` permissions on the index in order to use this
+  operation.
+* Add the `globus search task show` and `globus search task list` commands. To
+  use these commands, you must have `writer` permissions on the index whose
+  tasks are being displayed.
+
+Bugfixes:
+
+* Fix `TypeError` when running `globus endpoint set-subscription-id`
+
 == 3.0.2 (2021-10-06)
 
 Bugfixes:
