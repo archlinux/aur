@@ -1,6 +1,6 @@
 pkgbase = icalingua-git
 	pkgdesc = A Linux client for QQ and more
-	pkgver = 2.3.2_df984f9
+	pkgver = 2.3.2_19_g5b164d0
 	pkgrel = 1
 	url = https://github.com/Icalingua/Icalingua
 	arch = aarch64
