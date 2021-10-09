@@ -1,0 +1,22 @@
+pkgbase = com.seewo.easicare
+	pkgdesc = Seewo EasiCare 班级优化大师
+	pkgver = 2.0.12
+	pkgrel = 1
+	install = com.seewo.easicare.install
+	arch = x86_64
+	groups = 
+	license = 
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/YidaozhanYa/seewo-uos-bin/releases/download/2/com.seewo.easicare.tar.gz
+	sha512sums = 1e06c2be5d2e206ec96ed7d499a1aadcc3b6dba432fb2d1d9601360167acd86800d6d5d5cf245e0f52151ad83ad01d90221a2423a82d5604e8e21971be377e3d
+
+pkgname = com.seewo.easicare
