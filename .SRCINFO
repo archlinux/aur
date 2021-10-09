@@ -1,6 +1,6 @@
 pkgbase = teleport
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure
-	pkgver = 7.1.0
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://github.com/gravitational/teleport
 	arch = i386
@@ -12,20 +12,26 @@ pkgbase = teleport
 	depends = glibc
 	provides = tctl
 	provides = tsh
-	source = teleport-7.1.0.tar.gz::https://github.com/gravitational/teleport/archive/refs/tags/v7.1.0.tar.gz
+	source = teleport-7.2.1.tar.gz::https://github.com/gravitational/teleport/archive/refs/tags/v7.2.1.tar.gz
 	source = teleport-webassets-07493a5e78677de448b0e35bd72bf1dc6498b5ea.tar.gz::https://github.com/gravitational/webassets/archive/07493a5e78677de448b0e35bd72bf1dc6498b5ea.tar.gz
 	source = teleport.service
 	source = teleport@.service
 	source = teleport.install
 	source = no-bpf.patch
-	sha256sums = 0b716eb1cd02b1d41c017954c5a173ab5372ab4698276faab6c45e3f2aedaeae
+	source = shared-bpf.patch
+	source = version-fix.patch
+	sha256sums = 8087cb4c6a6725038e4b31f2ec6accd1ba5122b0678db2583d24efe712f497ec
 	sha256sums = 2074ee7e50720f20ff1b4da923434c05f6e1664e13694adde9522bf9ab09e0fd
 	sha256sums = 10ac25cea1b5c193d7f968ca28a1da0e54b847f29c2a0186b46fd853194be38a
 	sha256sums = 4bc17fdde981f91c5d9972ae0555ee5e8b63a6b67e007c28f83ada80823980fd
 	sha256sums = ce2dd61cae3c0c3684e7e629f98b77551e66ddedca2194250a34f0efbc674f3a
 	sha256sums = 12ba2a2b9d5efd5751799c2a1c3ddefe5aea4daf0f5d38fad4ec7923631e5ec0
+	sha256sums = e46ee57ae7f877d3ae3650aa4d10146d9e5190ed61b0209849745ea7d8443988
+	sha256sums = 066c64e374afdefdd799daa0e88ae21fef7b290042c5e852c1ec4f8af705fa62
 
 pkgname = teleport
 	install = teleport.install
+	replaces = teleport-client
 
 pkgname = teleport-client
+	replaces = teleport
