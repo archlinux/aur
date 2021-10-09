@@ -1,7 +1,7 @@
 # Maintainer: Agampreet
 # Contributor: Agampreet
 pkgname=ms-office-electron-git
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="An Unofficial Microsoft Office Online Desktop Client. Free of Cost."
 arch=('x86_64')
@@ -15,17 +15,25 @@ source=("${pkgname%-git}::git+https://github.com/agam778/MS-Office-Electron.git"
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/${pkgname%-git}/MS-Office-Electron-Linux/"
+    cd "$srcdir/${pkgname%-git}"
     export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
     yarn install
     yarn electron-builder -l pacman
 }
 
 package() {
+#     cd "$srcdir/${pkgname%-git}"
+#     bsdtar -xf "$srcdir/${pkgname%-git}/MS-Office-Electron-Linux/release/MS-Office-Electron-Setup-0.3.0-x86_64.pacman" -C "$pkgdir"
+#     install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+#     ln -sf "/opt/MS Office - Electron/MS Office - Electron" "/usr/bin/MS Office - Electron"
+#     rm "$pkgdir"/.[^.]*
     cd "$srcdir/${pkgname%-git}"
-    bsdtar -xf "$srcdir/${pkgname%-git}/MS-Office-Electron-Linux/release/MS-Office-Electron-Setup-0.3.0-x86_64.pacman" -C "$pkgdir"
+    bsdtar -xf release/ms-office-electron-*.pacman -C "$pkgdir"
+
     install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-    ln -sf "/opt/MS Office - Electron/MS Office - Electron" "/usr/bin/MS Office - Electron"
+
+    ln -sf '/opt/MS Office - Electron/ms-office-electron' '/usr/bin/ms-office-electron'
+
     rm "$pkgdir"/.[^.]*
 }
 
