@@ -3,7 +3,7 @@
 pkgname=ldid
 pkgver=2.1.4
 pkgrel=1
-pkgdesc="a tool used for ad-hoc codesigning iOS binaries - CRKatri's mirror"
+pkgdesc="a tool used for ad-hoc codesigning iOS binaries - sbingners fork"
 provides=('ldid' 'ldid2')
 arch=('x86_64')
 url="https://git.saurik.com/ldid"

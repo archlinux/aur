@@ -1,5 +1,5 @@
 pkgbase = ldid
-	pkgdesc = a tool used for ad-hoc codesigning iOS binaries - CRKatri's mirror
+	pkgdesc = a tool used for ad-hoc codesigning iOS binaries - sbingners fork
 	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://git.saurik.com/ldid
