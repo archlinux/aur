@@ -1,13 +1,15 @@
 pkgbase = torguard
 	pkgdesc = TorGuard VPN Software Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide.
 	pkgver = 4.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.torguard.net
 	arch = x86_64
 	license = custom
 	depends = iproute2
 	depends = qt5-websockets
 	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
 	depends = shadowsocks-libev
 	depends = unbound
 	depends = stunnel
