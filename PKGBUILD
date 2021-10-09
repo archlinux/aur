@@ -2,7 +2,7 @@
 # Contributor: Foxboron
 
 pkgname=jotta-cli
-pkgver=0.9.39536
+pkgver=0.11.47628
 pkgrel=1
 pkgdesc="Jottacloud command line client to back up/share your files to/on Jottacloud."
 arch=('x86_64' 'i686' 'armv7h')
@@ -18,9 +18,9 @@ source_armv7h=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${p
 sha256sums=('236b77504910d1e9c2bec69bd73d49ce9e9ca21dfd26cf0c69a212fe370bbe2d'
             '2f686a82aafbb9b2168303907b2fe623fe4635ff314583dfb38ad747e0a0e450')
 
-sha256sums_x86_64=('516d74090d7fd54733bbdd4c156447d142a60acdfb83577f8ca6e175bc52aae5')
-sha256sums_i686=('9f024775f4c49b283a7c8a479f58d958febd4f5c712e7d424a5d6ad4e0b656f6')
-sha256sums_armv7h=('b78b1dd2da899cf08b0e07e28b502c24525c7d72d6119360de4f57090b58deaf')
+sha256sums_x86_64=('c57eb05ef086f412be68ade1ce3930f59e84fdc1d49d209b6cdcc020bbfca2da')
+sha256sums_i686=('06fa73fbf5e9ec37387cf4d49bf2f22c08b9f23dd097733c9fe2ab846ab858cd')
+sha256sums_armv7h=('86f23648e3932b1042c66639a2ea2852b99da52c81bcfc82f5e20a603b38c8db')
 
 package() {
     cd ${srcdir}
