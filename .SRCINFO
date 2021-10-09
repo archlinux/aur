@@ -15,4 +15,3 @@ pkgname = python2-smartcols
 
 pkgname = python-smartcols
 	depends = python
-

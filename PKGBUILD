@@ -1,4 +1,4 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgbase=python-smartcols
 pkgname=('python2-smartcols' 'python-smartcols')
