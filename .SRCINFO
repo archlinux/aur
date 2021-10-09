@@ -1,8 +1,8 @@
 pkgbase = pvs-studio
 	pkgdesc = Static code analyzer for C, C++ and C#
-	pkgver = 7.12.46137.116
+	pkgver = 7.15.53134.163
 	pkgrel = 1
-	url = http://www.viva64.com/en/pvs-studio
+	url = http://www.pvs-studio.com/en/pvs-studio
 	install = pvs-studio.install
 	arch = pentium4
 	arch = x86_64
@@ -11,11 +11,10 @@ pkgbase = pvs-studio
 	optdepends = bash-completion: for bash completion
 	optdepends = strace: for analyzing via using strace logs
 	options = !strip
-	source = http://files.viva64.com/pvs-studio-7.12.46137.116-x86_64.tgz
-	sha256sums = 5ff16534aa8a4e66f959ae9f4cca390b25b69b4fee8d7bb3d4ff7e362107f96d
+	source = http://files.pvs-studio.com/pvs-studio-7.15.53134.163-x86_64.tgz
+	sha256sums = 022091f6b245b3deeccc58101fd4868c9c9ef0df02ae27bdd01f7ddbd5b23e75
 	source_pentium4 = pvs-studio.binfmt.d
 	depends_pentium4 = qemu-headless-arch-extra
 	sha256sums_pentium4 = fd7b1f7b48aa84205c1c0f60f630f1a33504e0e4904c5b0e8ae2477494899c97
 
 pkgname = pvs-studio
-

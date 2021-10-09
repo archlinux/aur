@@ -1,11 +1,11 @@
 # Maintainer: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 pkgname=pvs-studio
-pkgver=7.12.46137.116
+pkgver=7.15.53134.163
 pkgrel=1
 pkgdesc='Static code analyzer for C, C++ and C#'
 arch=('pentium4' 'x86_64')
-url=http://www.viva64.com/en/$pkgname
+url=http://www.$pkgname.com/en/$pkgname
 license=('unknown')
 depends_pentium4=('qemu-headless-arch-extra')
 optdepends=('how-to-use-pvs-studio-free: for adding special comments to a source code'
@@ -13,9 +13,9 @@ optdepends=('how-to-use-pvs-studio-free: for adding special comments to a source
             'strace: for analyzing via using strace logs')
 options=('!strip')
 install=$pkgname.install
-source=(http://files.viva64.com/$pkgname-$pkgver-${arch[1]}.tgz)
+source=(http://files.$pkgname.com/$pkgname-$pkgver-${arch[1]}.tgz)
 source_pentium4=($pkgname.binfmt.d)
-sha256sums=('5ff16534aa8a4e66f959ae9f4cca390b25b69b4fee8d7bb3d4ff7e362107f96d')
+sha256sums=('022091f6b245b3deeccc58101fd4868c9c9ef0df02ae27bdd01f7ddbd5b23e75')
 sha256sums_pentium4=('fd7b1f7b48aa84205c1c0f60f630f1a33504e0e4904c5b0e8ae2477494899c97')
 
 package() {
