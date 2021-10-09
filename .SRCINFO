@@ -1,6 +1,6 @@
 pkgbase = moodle-dl-git
 	pkgdesc = Moodle downloader to download course content automatically
-	pkgver = v2.1.2.6
+	pkgver = v2.2.0.1.r1.g9c7ff43-1
 	pkgrel = 1
 	url = https://github.com/C0D3D3V/Moodle-Downloader-2
 	arch = any
