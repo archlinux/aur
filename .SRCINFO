@@ -1,6 +1,6 @@
 pkgbase = hockeypuck-git
 	pkgdesc = An OpenPGP public keyserver.
-	pkgver = 2.1.0.r78.g05ea84b
+	pkgver = 2.1.0.r82.gc6011b7
 	pkgrel = 1
 	url = https://hockeypuck.io
 	arch = x86_64
