@@ -2,3 +2,6 @@
 src/*
 pkg/*
 ericw-tools/*
+fmt/*
+googletest/*
+json/*

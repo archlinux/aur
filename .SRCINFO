@@ -1,6 +1,6 @@
 pkgbase = ericw-tools-git
 	pkgdesc = Quake/Hexen 2 Map compiling tools
-	pkgver = 0.18.2.rc1.r166.gac79487
+	pkgver = 0.18.2.rc1.r354.gf0e3d32f
 	pkgrel = 1
 	url = https://ericwa.github.io/ericw-tools
 	arch = x86_64
@@ -12,6 +12,12 @@ pkgbase = ericw-tools-git
 	provides = ericw-tools
 	conflicts = ericw-tools
 	source = ericw-tools::git+https://github.com/ericwa/ericw-tools.git
+	source = fmt::git+https://github.com/fmtlib/fmt.git
+	source = googletest::git+https://github.com/google/googletest.git
+	source = json::git+https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ericw-tools-git

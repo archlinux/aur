@@ -1,6 +1,6 @@
 _pkgname=ericw-tools
 pkgname=${_pkgname}-git
-pkgver=0.18.2.rc1.r166.gac79487
+pkgver=0.18.2.rc1.r354.gf0e3d32f
 pkgrel=1
 pkgdesc="Quake/Hexen 2 Map compiling tools"
 arch=('x86_64')
@@ -11,8 +11,15 @@ depends=('embree' 'groff')
 makedepends=('cmake' 'git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${_pkgname}::git+${_giturl}.git")
-sha256sums=('SKIP')
+source=("${_pkgname}::git+${_giturl}.git"
+    "fmt::git+https://github.com/fmtlib/fmt.git"
+    "googletest::git+https://github.com/google/googletest.git"
+    "json::git+https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent.git"
+)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
     cd ${_pkgname}
@@ -20,8 +27,13 @@ pkgver() {
 }
 
 prepare() {
-    cd ${_pkgname}
-    git submodule update --init --recursive --force
+    cd "${_pkgname}/3rdparty/"
+    rm -r "fmt"
+    ln -s "${srcdir}/fmt"
+    rm -r "googletest"
+    ln -s "${srcdir}/googletest"
+    rm -r "json"
+    ln -s "${srcdir}/json"
 }
 
 build() {
