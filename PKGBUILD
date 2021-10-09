@@ -7,7 +7,7 @@
 
 pkgname=mutter-rounded
 pkgver=40.5
-pkgrel=1
+pkgrel=1.1
 pkgdesc="A window manager for GNOME, with rounded corners patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
