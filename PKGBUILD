@@ -1,20 +1,19 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=rexgen-git
-pkgver=2.1.3.r2.g585e86d
-pkgrel=2
+pkgver=2.1.3.r8.gcac6cba
+pkgrel=1
 pkgdesc="A tool to create words based on regular expressions"
 arch=('i686' 'x86_64')
 url="https://github.com/teeshop/rexgen"
 license=('GPL')
 depends=('git')
 makedepends=('gcc' 'cmake' 'flex' 'bison' 'clang')
-source=("${pkgname}::git+${url}" "fix-include-stdexcept.patch")
-sha256sums=('SKIP'
-            '097d0adb6b380794ec73c279839250f37d24e153ab990f0a2ab399deca9f9412')
+source=("${pkgname}::git+${url}" )
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}"
+	cd "${srcdir}/${pkgname}"
 
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -22,26 +21,22 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
-	patch -Np1 -i "${srcdir}/fix-include-stdexcept.patch"
+    mkdir -p build
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}/build"
 
-	mkdir -p build
-	cd build
+    export CC=clang CXX=clang++
 
-	export CC=clang CXX=clang++
 	cmake -Wno-dev .. \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr
-
-	make ${MAKEFLAGS} all
+	make all
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}/build"
 
-	cd build
 	make DESTDIR="${pkgdir}" install
 }
