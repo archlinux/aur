@@ -1,5 +1,5 @@
 pkgname=mingw-w64-sz
-pkgver=2.1.11
+pkgver=2.1.12
 pkgrel=1
 pkgdesc="Modular parametrizable lossy compressor framework for scientific data (mingw-w64)"
 url="https://szcompressor.org"
@@ -9,7 +9,7 @@ depends=('mingw-w64-zstd')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/szcompressor/SZ/archive/v${pkgver}.tar.gz")
-sha256sums=('85b8ef99344a3317ba9ee63ca4b9d99a51d1832d4d8880e01c7c56b3a69cacc9')
+sha256sums=('3712b2cd7170d1511569e48a208f02dfb72ecd7ad053c321e2880b9083e150de')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
