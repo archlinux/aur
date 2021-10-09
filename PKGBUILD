@@ -22,9 +22,6 @@ build() {
 }
 
 package() {
-    echo
-    echo "NOTE - If you get an error about "Permission Denied" (using yay), use "--sudoloop" argument while installing"
-    echo
     cd "$srcdir/${pkgname%-git}"
     bsdtar -xf release/MS-Office-Electron-*.pacman -C "$pkgdir"
 
