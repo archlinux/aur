@@ -24,7 +24,12 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     # manually specify hdf5 paths as the exported cmake target is not using the hdf5 config properly
-    ${_arch}-cmake -DENABLE_TESTS=OFF -DBUILD_UTILITIES=OFF ..
+    ${_arch}-cmake -DENABLE_TESTS=OFF -DBUILD_UTILITIES=OFF \
+      -DHDF5_C_LIBRARY=/usr/${_arch}/lib/libhdf5.dll.a \
+      -DHDF5_HL_LIBRARY=/usr/${_arch}/lib/libhdf5_hl.dll.a \
+      -DHDF5_INCLUDE_DIR=/usr/${_arch}/include/ \
+      -DHDF5_VERSION=1.12.1  \
+      ..
     make
     popd
   done
