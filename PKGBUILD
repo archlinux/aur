@@ -2,12 +2,12 @@
 
 _plug=bwdif
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.0.g477e518
+pkgver=r4.1.1.g2589910
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='https://forum.doom9.org/showthread.php?t=175862'
-license=('GPL')
+url='https://forum.doom9.org/showthread.php?t=180419'
+license=('GPL' 'Apache')
 depends=('vapoursynth')
 makedepends=('git'
              'meson'
@@ -31,11 +31,12 @@ build() {
   arch-meson "../${_plug}" \
     --libdir /usr/lib/vapoursynth
 
-  LC_ALL=C ninja
+  ninja
 }
 
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/Bwdif/VCL2/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/VCL2_LICENSE"
 }
