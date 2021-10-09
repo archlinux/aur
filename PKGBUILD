@@ -55,7 +55,7 @@ conflicts=('newm')
 
 pkgver() {
     cd $srcdir/newm
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare() {
     cd $srcdir/pywm
