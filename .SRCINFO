@@ -1,6 +1,6 @@
 pkgbase = buildkit-git
 	pkgdesc = BuildKit is a toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner.
-	pkgver = r2571.898d7207
+	pkgver = r3441.ba673bbd
 	pkgrel = 1
 	url = https://github.com/moby/buildkit
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = buildkit-git
 	sha256sums = SKIP
 
 pkgname = buildkit-git
-

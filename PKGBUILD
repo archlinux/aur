@@ -1,7 +1,7 @@
 # Maintainer: Victor <victor@xirion.net>
 pkgname=buildkit-git
 _pkgname=buildkit
-pkgver=r2571.898d7207
+pkgver=r3441.ba673bbd
 pkgrel=1
 pkgdesc='BuildKit is a toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner.'
 arch=('any')
@@ -29,6 +29,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
 
-  make DESTDIR="$pkgdir/usr/" install
+  make DESTDIR="$pkgdir/" install
 }
 
