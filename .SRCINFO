@@ -1,0 +1,14 @@
+pkgbase = firefox-video-acceleration
+	pkgdesc = Enable hardware accelerated video decoding on Firefox and Firefox-based browsers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/firefox-video-acceleration
+	arch = any
+	license = GPL
+	depends = firefox-h264ify
+	optdepends = intel-media-driver: VA-API for modern intel GPUs
+	optdepends = libva-mesa-driver: VA-API for Nvidia (nouveau) and AMD GPUs
+	source = hardware-acceleration.js
+	md5sums = 556f7d2c12345c8011217d30c1f86fb4
+
+pkgname = firefox-video-acceleration
