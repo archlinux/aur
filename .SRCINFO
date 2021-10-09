@@ -1,0 +1,19 @@
+pkgbase = antora
+	pkgdesc = A modular documentation site generator
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://antora.org
+	arch = any
+	license = MPL2
+	makedepends = npm
+	depends = nodejs
+	noextract = cli-2.3.4.tgz
+	noextract = site-generator-default-2.3.4.tgz
+	source = https://registry.npmjs.org/@antora/cli/-/cli-2.3.4.tgz
+	source = https://registry.npmjs.org/@antora/site-generator-default/-/site-generator-default-2.3.4.tgz
+	sha256sums = b496b2a1f4ae02f4e792811eeb66a3d912d7c59087ea7cbb2091cbff38764c57
+	sha256sums = cbfbade98643696108b90bcf27be1024271307bf1a9ac36c03763a3b7f494afe
+
+pkgname = antora-cli
+
+pkgname = antora-site-generator-default
