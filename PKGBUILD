@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-fribidi
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://fribidi.org"
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'git')
-_commit=5464c284034da9c058269377b7f5013bb089f553  # tags/v1.0.10^0
+_commit=247fddc3599e3fe7b1b5cc21020c9eb51e662637  # tags/v1.0.11^0
 source=("git+https://github.com/fribidi/fribidi#commit=$_commit"
         "testrunnerwine.patch")
 sha256sums=('SKIP'
@@ -43,7 +43,7 @@ check() {
 
 package() {
   for _arch in ${_architectures}; do
-    DESTDIR="${pkgdir}" meson install -C ${srcdir}/fribidi/build-${_arch}
+    meson install -C ${srcdir}/fribidi/build-${_arch} --destdir "${pkgdir}"
 
     #FIXME: Ranlib (isn't meson supposed to do this?)
     ${_arch}-ranlib ${pkgdir}/usr/${_arch}/lib/*.a
