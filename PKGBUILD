@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20211006.r0.g0dda5ee37364
+pkgver=20211008.r0.g683f29b781ae
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -212,6 +212,7 @@ _package-headers() {
 
   # add objtool for external module building and enabled VALIDATION_STACK option
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
