@@ -10,10 +10,10 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
 url='https://github.com/HomeOfAviSynthPlusEvolution/neo_Gradient_Mask'
-license=('GPL')
+license=('MIT')
 makedepends=('git'
              'cmake'
-             'intel-tbb'
+             'tbb'
              'avisynthplus'
              'vapoursynth'
              )
@@ -35,7 +35,7 @@ prepare() {
 build() {
   cd "${_plug}/build"
   cmake .. \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
   make
@@ -44,12 +44,12 @@ build() {
 package_avisynth-plugin-neo_gradient-mask-git() {
   pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
   depends=('avisynthplus'
-           'intel-tbb'
+           'tbb'
            )
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-gradient-mask.so" "${pkgdir}/usr/lib/avisynth/libneo-gradient-mask.so"
+  install -Dm755 "${_plug}/build/libneo-gradient-mask.so" "${pkgdir}/usr/lib/avisynth/libneo-gradient-mask.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -58,12 +58,12 @@ package_avisynth-plugin-neo_gradient-mask-git() {
 package_vapoursynth-plugin-neo_gradient-mask-git() {
   pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
   depends=('vapoursynth'
-           'intel-tbb'
+           'tbb'
            )
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-gradient-mask.so" "${pkgdir}/usr/lib/vapoursynth/libneo-gradient-mask.so"
+  install -Dm755 "${_plug}/build/libneo-gradient-mask.so" "${pkgdir}/usr/lib/vapoursynth/libneo-gradient-mask.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
