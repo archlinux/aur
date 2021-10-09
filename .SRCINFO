@@ -1,6 +1,6 @@
 pkgbase = heaptrace-git
 	pkgdesc = a tool for tracking heap operations
-	pkgver = 2.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Arinerron/heaptrace
 	arch = x86_64
