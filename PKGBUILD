@@ -1,22 +1,22 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-power-git
-pkgver=1.1.17.r1.g82bf0f4
+pkgver=1.1.18.r12.g94b057e
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
-url="https://github.com/pop-os/system76-power"
+url='https://github.com/pop-os/system76-power'
 license=('GPL')
-conflicts=("system76-power")
-provides=("system76-power")
+conflicts=('system76-power')
+provides=('system76-power')
 makedepends=('git' 'rust')
 depends=('dbus' 'systemd' 'system76-dkms')
 source=("${pkgname}::git+https://github.com/pop-os/system76-power.git"
         "makefile.patch"
         "mkinitcpio.patch")
 sha256sums=('SKIP'
-            '97deb1f9cf6a312e8378bb96a4a83dae2498a4936c130e2ef5b125d13b92bb65'
-            '2ead269c71919c220a7880b0036c6d62aadeae3d6cde769029784d3565686539')
+            '59c2b6a4ee4d5bf728d8f68fd9c066ba33cf9c91bf173bf16734924f6e641643'
+            'fefd4bd1c173cca2aafd3d5f03af20b9cfc5553f9a53f510a12d565cc90fe7ba')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
