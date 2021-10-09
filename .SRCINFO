@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-compiz-alike-magic-lamp-effect-git
+	pkgdesc = Magic lamp effect inspired by the Compiz ones
+	pkgver = r11.cb57358
+	pkgrel = 1
+	url = https://github.com/hermes83/compiz-alike-magic-lamp-effect
+	install = gnome-shell-extension-compiz-alike-magic-lamp-effect.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = glib2
+	depends = gnome-shell>=3.28
+	provides = gnome-shell-extension-compiz-alike-magic-lamp-effect
+	conflicts = gnome-shell-extension-compiz-alike-magic-lamp-effect
+	options = !strip
+	source = gnome-shell-extension-compiz-alike-magic-lamp-effect::git+https://github.com/hermes83/compiz-alike-magic-lamp-effect.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-compiz-alike-magic-lamp-effect-git
