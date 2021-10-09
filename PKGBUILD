@@ -9,11 +9,11 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc
-pkgver=10.2.0
+pkgver=11.2.0
 _mpfrver=4.1.0
 _mpcver=1.2.1
 _gmpver=6.2.1
-pkgrel=2
+pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -35,7 +35,6 @@ source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig")
 
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
-
 validpgpkeys=(13975A70E63C361C73AE69EF6EEB81F8981C74C7
               07F3DBBECC1A39605078094D980C197698C3739D
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3
@@ -56,6 +55,10 @@ prepare() {
 }
 
 build() {
+  # GCC cannot be built with -Werror=format-security
+  export CFLAGS=${CFLAGS//-Werror=format-security/}
+  export CXXFLAGS=${CXXFLAGS//-Werror=format-security/}
+
   cd ${srcdir}/gcc-build
 
   ../gcc-${pkgver}/configure --prefix=/usr \
