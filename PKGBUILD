@@ -2,7 +2,7 @@
 
 pkgname=spotify-player
 _gitname=spotify-player
-pkgver=0.1.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A command driven spotify player."
 arch=("x86_64")
@@ -10,7 +10,7 @@ url="https://github.com/aome510/spotify-player"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aome510/spotify-player/archive/v$pkgver.tar.gz")
-sha512sums=('f8dd7b505eb7dd3d2699fe5eb514e50caf854b7317ef026228e33d3c903d35441a3ff1fb0272dacde07695ae788761b4dd39f8877d6631240781d26e2382e2f9')
+sha512sums=('b892009ecdde03df21c5e06a5af435e4a199919d748b6f86a0860195adc02ea0a070302b8db8b6204f022426906d3f16c6d5afc36a9f890c64fd4551e015ebc2')
 
 build() {
     cd "${_gitname}-$pkgver"
