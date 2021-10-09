@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="MSRP (RFC4975) client library"
 license=('LGPL-2.1+')
 arch=('aarch64' 'x86_64')
-url="http://download.ag-projects.com/SipSimpleSDK/Python3"
+url="https://github.com/AGProjects/python3-msrplib"
 depends=(
   'python3-application'
   'python3-gnutls'
