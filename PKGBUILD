@@ -41,5 +41,5 @@ package(){
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 
-  install -Dm644 "${_plug}/src/VCL2/LICENSE" "${pkgdir}/usr/share/license/${pkgname}/VCL2_LICENSE"
+  install -Dm644 "${_plug}/src/VCL2/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/VCL2_LICENSE"
 }
