@@ -1,6 +1,6 @@
 pkgbase = dynarmic-git
 	pkgdesc = An ARM dynamic recompiler
-	pkgver = 5.r117.g16979029
+	pkgver = 5.r123.ge4146ec3
 	pkgrel = 1
 	url = https://github.com/MerryMage/dynarmic
 	arch = x86_64
@@ -10,16 +10,17 @@ pkgbase = dynarmic-git
 	makedepends = cmake>=3.8
 	makedepends = fmt>=8
 	makedepends = git
+	makedepends = ninja
 	makedepends = robin-map>=0.6.2
 	makedepends = xbyak>=5.995.r3
 	makedepends = zydis>=3.1.0.r78
-	provides = dynarmic=5.r117.g16979029
+	provides = dynarmic=5.r123.ge4146ec3
 	provides = libdynarmic.so
 	conflicts = dynarmic
 	source = git+https://github.com/MerryMage/dynarmic.git
-	source = 0005-dynarmic-add-cmake-install-rules.patch::https://github.com/MerryMage/dynarmic/pull/636.patch
+	source = 0007-dynarmic-add-cmake-install-rules.patch::https://github.com/MerryMage/dynarmic/pull/636.patch
 	b2sums = SKIP
-	b2sums = ee11c1ddb4d0adca53eb7801eb271b20d22c66ee5b0a5aba7519066d01a8e4fc4a8edf9b494102fbc5d024243ad45fe81a6ef392856deed7db455a6876727e19
+	b2sums = c934e71f13ce9ecc3b54c60deed83df89747e1e0bbea112f0283f08edd6ba8562acb4796029861b5c7df081b8f647be44d7d76568e50dc5b761c843991ea193b
 
 pkgname = dynarmic-git
 	depends = libfmt.so

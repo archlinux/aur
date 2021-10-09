@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=5.r117.g16979029
+pkgver=5.r123.ge4146ec3
 pkgrel=1
 pkgdesc='An ARM dynamic recompiler'
 arch=('x86_64')
@@ -12,6 +12,7 @@ makedepends=(
 	'cmake>=3.8'
 	'fmt>=8'
 	'git'
+	'ninja'
 	'robin-map>=0.6.2'
 	'xbyak>=5.995.r3'
 	'zydis>=3.1.0.r78'
@@ -21,11 +22,11 @@ provides=("$_pkgname=$pkgver" 'libdynarmic.so')
 conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
-	"0005-dynarmic-add-cmake-install-rules.patch::$url/pull/636.patch"
+	"0007-dynarmic-add-cmake-install-rules.patch::$url/pull/636.patch"
 )
 b2sums=(
 	'SKIP'
-	'ee11c1ddb4d0adca53eb7801eb271b20d22c66ee5b0a5aba7519066d01a8e4fc4a8edf9b494102fbc5d024243ad45fe81a6ef392856deed7db455a6876727e19'
+	'c934e71f13ce9ecc3b54c60deed83df89747e1e0bbea112f0283f08edd6ba8562acb4796029861b5c7df081b8f647be44d7d76568e50dc5b761c843991ea193b'
 )
 
 pkgver() {
@@ -34,11 +35,11 @@ pkgver() {
 }
 
 prepare() {
-	patch -d $_pkgname -Np1 < 0005-dynarmic-add-cmake-install-rules.patch
+	patch -d $_pkgname -Np1 < 0007-dynarmic-add-cmake-install-rules.patch
 }
 
 build() {
-	cmake -S $_pkgname -B build \
+	cmake -S $_pkgname -B build -G Ninja \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
