@@ -3,7 +3,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mingw-w64-aom
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (mingw-w64)"
 url="https://aomedia.org/"
@@ -11,28 +11,25 @@ arch=('any')
 license=(BSD custom:PATENTS)
 depends=(mingw-w64-crt)
 options=(!strip !buildflags staticlibs)
-makedepends=(mingw-w64-gcc mingw-w64-cmake git ninja yasm)
-_commit=ae2be8030200925895fa6e98bd274ffdb595cbf6  # tags/v3.1.2^0
-source=("git+https://aomedia.googlesource.com/aom#commit=$_commit"
+makedepends=(mingw-w64-gcc mingw-w64-cmake ninja yasm)
+source=(https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz{,.asc}
         "cmake.patch")
-b2sums=('SKIP'
+b2sums=('b950c2cda0788d41e16ff771015ab934489c1aa53e366e394a17504845f152d93afc9ccf22a0f95fe828f1fdab27e617b8f81c61b250e64f8903e64043e746d1'
+        'SKIP'
         '627c000cc5b152e78714898156ebebb2524749bd1d701bbbdca0b431301426c2f821403299a6fd4420be80133d4e7178dea8b2f4aae2ab34e9e81e584ebda345')
+validpgpkeys=(B002F08B74A148DAA01F7123A48E86DB0B830498) # AOMedia release signing key <av1-discuss@aomedia.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-pkgver() {
-  cd aom
-  git describe --tags | sed 's/^v//;s/-errata/.errata/;s/-/+/g'
-}
-
 prepare() {
-  cd aom
-  patch -Np1 -i ${srcdir}/cmake.patch
+  cd "${srcdir}"
+
+  patch -Np1 -i "${srcdir}"/cmake.patch
 }
 
 build() {
   for _arch in ${_architectures}; do
-    mkdir -p "${srcdir}"/aom/build-static-${_arch} && cd "${srcdir}"/aom/build-static-${_arch}
-    ${_arch}-cmake -S aom -G Ninja \
+    mkdir -p "${srcdir}"/build-static-${_arch} && cd "${srcdir}"/build-static-${_arch}
+    ${_arch}-cmake -G Ninja \
       -DBUILD_SHARED_LIBS=0 \
       -DENABLE_TESTS=0 \
       ..
@@ -40,8 +37,8 @@ build() {
   done
 
   for _arch in ${_architectures}; do
-    mkdir -p "${srcdir}"/aom/build-${_arch} && cd "${srcdir}"/aom/build-${_arch}
-    ${_arch}-cmake -Haom -G Ninja \
+    mkdir -p "${srcdir}"/build-${_arch} && cd "${srcdir}"/build-${_arch}
+    ${_arch}-cmake -G Ninja \
       -DBUILD_SHARED_LIBS=1 \
       -DENABLE_TESTS=0 \
       ..
@@ -50,12 +47,10 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/aom
+  cd "${srcdir}"
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" cmake --install build-static-${_arch}
     DESTDIR="$pkgdir" cmake --install build-${_arch}
-
-    mv "${pkgdir}"/usr/${_arch}/lib/*.dll "${pkgdir}"/usr/${_arch}/bin/
 
     ${_arch}-strip -s "${pkgdir}"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
