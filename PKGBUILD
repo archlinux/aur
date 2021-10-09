@@ -5,7 +5,7 @@
 pkgname=torguard
 pkgver=4.7.7
 build=build.68+g6f12bd0
-pkgrel=1
+pkgrel=2
 pkgdesc="TorGuard VPN Software
  Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide."
 arch=('x86_64')
@@ -13,6 +13,8 @@ url="https://www.torguard.net"
 depends=('iproute2'
 	'qt5-websockets'
 	'qt5-declarative'
+	'qt5-quickcontrols2'
+	'qt5-svg'
 	'shadowsocks-libev'
     'unbound'
 	'stunnel')
