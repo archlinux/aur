@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=183115'
 license=('LGPL')
 depends=('vapoursynth'
-         'imagemagick'
+         'libmagick'
          'libxrandr'
          'libcolord.so'
          )
