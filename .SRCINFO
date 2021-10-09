@@ -1,0 +1,17 @@
+pkgbase = python3-msrplib
+	pkgdesc = MSRP (RFC4975) client library
+	pkgver = 0.21.1
+	pkgrel = 1
+	url = http://download.ag-projects.com/SipSimpleSDK/Python3
+	arch = aarch64
+	arch = x86_64
+	license = LGPL-2.1+
+	depends = python3-application
+	depends = python3-gnutls
+	depends = python3-eventlib
+	depends = python-twisted
+	depends = python-zope-interface
+	source = http://download.ag-projects.com/SipSimpleSDK/Python3/python3-msrplib-0.21.1.tar.gz
+	sha512sums = ad9dd88bd40ed4df843765d733ad38bb3ee52445100a47181bac851d7f753ec06cbbf4c61ba31991bbd98856f6157dc871d4b03c56a159669cddc2518060a5f6
+
+pkgname = python3-msrplib
