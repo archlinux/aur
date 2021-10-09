@@ -1,5 +1,5 @@
 pkgbase = fheroes2
-	pkgdesc = Free remake of Heroes of Might and Magic II game engine
+	pkgdesc = Free Heroes of Might and Magic II (fheroes2) is a recreation of HoMM2 game engine
 	pkgver = 0.9.8
 	pkgrel = 2
 	url = https://ihhub.github.io/fheroes2/
