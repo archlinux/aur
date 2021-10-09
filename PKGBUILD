@@ -44,8 +44,8 @@ package() {
   make -C nut/src/trunk PREFIX=/usr DESTDIR="${pkgdir}" install-libnut-shared
   make -C nut/src/trunk PREFIX=/usr DESTDIR="${pkgdir}" install-nututils
 
-  install -Dm644 nut/doc/nut.txt "${pkgdir}/usr/share/doc/nut-multimedia/nut.txt"
-  install -Dm644 nut/doc/nut4cc.txt "${pkgdir}/usr/share/doc/nut-multimedia/nut4cc.txt"
-  install -Dm644 nut/doc/nutissues.txt "${pkgdir}/usr/share/doc/nut-multimedia/nutissues.txt"
+  install -Dm644 nut/docs/nut.txt "${pkgdir}/usr/share/doc/nut-multimedia/nut.txt"
+  install -Dm644 nut/docs/nut4cc.txt "${pkgdir}/usr/share/doc/nut-multimedia/nut4cc.txt"
+  install -Dm644 nut/docs/nutissues.txt "${pkgdir}/usr/share/doc/nut-multimedia/nutissues.txt"
   (cd nut/src/trunk/libnut; doxygen)
 }
