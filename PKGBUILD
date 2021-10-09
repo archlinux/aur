@@ -2,14 +2,15 @@
 
 _plug=knlmeanscl
 pkgbase="foosynth-plugin-${_plug}-git"
-pkgname=("vapoursynth-plugin-${_plug}-git"
-         "avisynth-plugin-${_plug}-git")
+pkgname=("avisynth-plugin-${_plug}-git"
+         "vapoursynth-plugin-${_plug}-git"
+        )
 pkgver=1.1.1.r571.c4af339
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=171379'
-license=('GPL')
+license=('GPL3')
 depends=('opencl-icd-loader')
 makedepends=('git'
              'opencl-headers'
@@ -20,7 +21,7 @@ makedepends=('git'
              )
 conflicts=("vapoursynth-plugin-${_plug}")
 provides=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/pinterf/KNLMeansCL")
+source=("${_plug}::git+https://github.com/pinterf/KNLMeansCL.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -47,7 +48,7 @@ package_avisynth-plugin-knlmeanscl-git() {
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
-  install -Dm644 build/libknlmeanscl.so "${pkgdir}/usr/lib/avisynth/libknlmeanscl.so"
+  install -Dm755 build/libknlmeanscl.so "${pkgdir}/usr/lib/avisynth/libknlmeanscl.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -59,7 +60,7 @@ package_vapoursynth-plugin-knlmeanscl-git() {
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
-  install -Dm644 build/libknlmeanscl.so "${pkgdir}/usr/lib/vapoursynth/libknlmeanscl.so"
+  install -Dm755 build/libknlmeanscl.so "${pkgdir}/usr/lib/vapoursynth/libknlmeanscl.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
