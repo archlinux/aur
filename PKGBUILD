@@ -1,19 +1,19 @@
 # Maintainer: Jose Lopes <josemslopes at gmail dot com>
 
 pkgname=python3-otr
-pkgver=3.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Off-The-Record Messaging (OTR) protocol implementation for python"
 license=('LGPL-2.1+')
 arch=('aarch64' 'x86_64')
-url="http://download.ag-projects.com/SipSimpleSDK/Python3"
+url="https://github.com/AGProjects/python3-otr"
 depends=(
   'python-gmpy2'
   'python-zope-interface'
   'python3-application'
   )
-source=("http://download.ag-projects.com/SipSimpleSDK/Python3/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('16cba9fb7d021e88b5e4e1b3eb3047829f3c998a7a8511ef8881f9013716fdd53e96c2e96d91022dbc83bf72b5f22a2fd5466cc91c859926cef32c2b06466d82')
+source=("https://github.com/AGProjects/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('3fc0a49b30e752f77be7533744a418a8471486a2860f50b7d9157f2bc25fe593cf4b486ae856cb3944695f61466a87e1ca34cdaf48eea7ef9ba2feaef78332c7')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
