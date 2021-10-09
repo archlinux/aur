@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc-bootstrap
-pkgver=10.2.0
+pkgver=11.2.0
 _mpfrver=4.1.0
 _mpcver=1.2.1
 _gmpver=6.2.1
@@ -52,6 +52,10 @@ prepare() {
 }
 
 build() {
+  # GCC cannot be built with -Werror=format-security
+  export CFLAGS=${CFLAGS//-Werror=format-security/}
+  export CXXFLAGS=${CXXFLAGS//-Werror=format-security/}
+
   cd ${srcdir}/gcc-build
 
   ../gcc-${pkgver}/configure --prefix=/usr \
