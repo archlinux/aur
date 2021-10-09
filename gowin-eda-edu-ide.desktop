@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Gowin EDA IDE Education
+Encoding=UTF-8
+Exec=/opt/gowin-eda-edu-ide/bin/gw_ide
+Icon=gowin-eda-edu-ide
+Name=Gowin EDA IDE Education
+Type=Application
