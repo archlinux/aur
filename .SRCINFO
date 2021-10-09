@@ -1,0 +1,18 @@
+pkgbase = typos-git
+	pkgdesc = Source code spell checker
+	pkgver = r709.g32ad1f6
+	pkgrel = 1
+	url = https://github.com/crate-ci/typos
+	arch = i686
+	arch = x86_64
+	license = apache
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	provides = typos
+	conflicts = typos
+	source = git+https://github.com/crate-ci/typos.git
+	sha256sums = SKIP
+
+pkgname = typos-git
