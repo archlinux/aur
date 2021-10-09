@@ -2,7 +2,7 @@
 
 pkgname=tidy-viewer
 _pkgname=tv
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 pkgdesc="CLI csv pretty printer that uses column styling"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/alexhallam/tv"
 license=('Unlicense')
 makedepends=('cargo')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('2f4d3a81f6d0d0a343f574d9db2aaf5824b97cb9a5117f744949948b34833fd7')
+sha256sums=('bee01aa9b07a9ec45f6a88f64b515d1eb88933d0bbb43de23452a434f00a0bae')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
