@@ -7,12 +7,10 @@ pkgname=code-wayland
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor, with ozone enabled for wayland support'
 # Important: Remember to check https://github.com/microsoft/vscode/wiki/How-to-Contribute#prerequisites for target node version
 # NodeJS versioning cheatsheet:
-#   - dubnium: 10
-#   - erbium: 12
 #   - fermium: 14
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
 _electron=electron13
-pkgver=1.60.0
+pkgver=1.61.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -21,7 +19,7 @@ depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-fermium')
+makedepends=('git' 'gulp' 'npm' 'python' 'yarn' 'nodejs>=14.0.0' 'nodejs<15.0.0')
 provides=('vscode')
 conflicts=('code')
 source=("$pkgname::git+$url.git#tag=$pkgver"
@@ -31,7 +29,7 @@ source=("$pkgname::git+$url.git#tag=$pkgver"
 sha512sums=('SKIP'
             '6e8ee1df4dd982434a8295ca99e786a536457c86c34212546e548b115081798c5492a79f99cd5a3f1fa30fb71d29983aaabc2c79f4895d4a709d8354e9e2eade'
             '84c4f14bfa79210721f18b46e2d672f3816638b526721475445ad437b373a7574d96b808e5a16eb1026ea60d5b50e30aa5eef7f69d4bd64019291ee195b2ec89'
-            'c3e32bfb1fe75b7cdbb6e341335a1ddf8096f364e9b5d36dd8f84dc129dc0951b1ea7a06f5bf57fa12b6e0bb3e02e9a52c664cb22eeca61df9c9ba673950f14d')
+            'e2dcb9153734103508992b6a8ae29b543040d7f4f50381fd811feacde3691016a886b378a96b98c8ac0963ed5b916fa4d14ba87ccfedd81108bf66173d1a6d97')
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
@@ -99,11 +97,6 @@ prepare() {
 }
 
 build() {
-  # https://github.com/mapbox/node-sqlite3/issues/1044
-  mkdir -p path
-  ln -sf /usr/bin/python2 path/python
-  export PATH="$PWD/path:$PATH"
-
   cd $pkgname
 
   yarn install --arch=$_vscode_arch
@@ -150,7 +143,6 @@ package() {
   install -Dm 644 $pkgname/resources/completions/zsh/_code-wayland "$pkgdir"/usr/share/zsh/site-functions/_code-wayland
 
   # Install license files
-  install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/$pkgname/ThirdPartyNotices.txt
 }
 
