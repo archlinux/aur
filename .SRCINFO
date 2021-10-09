@@ -1,15 +1,14 @@
 pkgbase = librsb
 	pkgdesc = A shared memory parallel sparse matrix library including Sparse BLAS.
-	pkgver = 1.2.0.8
+	pkgver = 1.2.0.10
 	pkgrel = 1
 	url = http://sourceforge.net/projects/librsb
 	arch = any
 	license = LGPL3
-	source = https://downloads.sourceforge.net/project/librsb/librsb-1.2.0.8.tar.gz
-	source = https://downloads.sourceforge.net/project/librsb/librsb-1.2.0.8.tar.gz.asc
+	source = https://downloads.sourceforge.net/project/librsb/librsb-1.2.0.10.tar.gz
+	source = https://downloads.sourceforge.net/project/librsb/librsb-1.2.0.10.tar.gz.asc
 	validpgpkeys = 1DBB555AEA359B8AAF0C6B88E0E669C8EF1258B8
-	md5sums = 15943a0ea16b577a198cadf34f21ec58
+	md5sums = e5a16a81e0001e1862da78eae359ca61
 	md5sums = SKIP
 
 pkgname = librsb
-
