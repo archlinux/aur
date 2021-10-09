@@ -6,7 +6,7 @@ pkgver=R19.mod.3.14.g5d5244f
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
 arch=('x86_64')
-url='https://forum.doom9.org/showthread.php?t=181708'
+url='https://forum.doom9.org/showthread.php?t=170965'
 license=('CCPL'
          'MIT'
          'LGPL'
