@@ -21,11 +21,11 @@ provides=("$_pkgname=$pkgver" 'libdynarmic.so')
 conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
-	"0004-dynarmic-add-cmake-install-rules.patch::$url/pull/636.patch"
+	"0005-dynarmic-add-cmake-install-rules.patch::$url/pull/636.patch"
 )
 b2sums=(
 	'SKIP'
-	'64ee1b918bd3fd6d96be2f5cdea58bfbedfdd37c857d95cc5b51f1721cb3c8b7624b2dfdd3249e520bfbc490a4ffd99ae1107e4f083fb3c05976005bf27f11f1'
+	'ee11c1ddb4d0adca53eb7801eb271b20d22c66ee5b0a5aba7519066d01a8e4fc4a8edf9b494102fbc5d024243ad45fe81a6ef392856deed7db455a6876727e19'
 )
 
 pkgver() {
@@ -34,7 +34,7 @@ pkgver() {
 }
 
 prepare() {
-	patch -d $_pkgname -Np1 < 0004-dynarmic-add-cmake-install-rules.patch
+	patch -d $_pkgname -Np1 < 0005-dynarmic-add-cmake-install-rules.patch
 }
 
 build() {
