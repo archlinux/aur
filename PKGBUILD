@@ -30,20 +30,20 @@ _mq_deadline_disable=y
 _kyber_disable=y
 
 ### Enable protect file mappings under memory pressure
-#_mm_protect=y
+_mm_protect=y
+
+### Enable multigenerational LRU
 _lru_enable=y
 
 ### Enable Linux Random Number Generator
 _lrng_enable=y
 
+## Samba3 Server
+_ksmbd_enable=
+
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-## Setting some security options
-use_selinux=n
-use_tomoyo=n
-use_yama=n
-use_apparmor=
 
 ## Apply Kernel automatic Optimization
 _use_auto_optimization=y
@@ -51,10 +51,37 @@ _use_auto_optimization=y
 ## Apply Kernel Optimization selecting
 _use_optimization_select=
 
-### Use LLVM with FULL-LTO
+
+### Selecting the ZSTD compression level
+# ATTENTION - one of two predefined values should be selected!
+# 'ultra' - highest compression ratio
+# 'normal' - standard compression ratio
+_zstd_level='normal'
+
+### Selecting the ZSTD module compression level
+# If you want to use ZSTD compression,
+# first install mkinitcpio-zstd:
+# https://gitlab.com/sirlucjan/lucjan-kernels/tree/master/depends
+# or
+# https://github.com/sirlucjan/lucjan-kernels/tree/master/depends
+# ATTENTION - one of two predefined values should be selected!
+# 'ultra' - highest compression ratio
+# 'normal' - standard compression ratio
+# WARNING: the ultra settings can sometimes
+# be counterproductive in both size and speed.
+_zstd_module_level='normal'
+
+### Enable SECURITY_FORK_BRUTE
+# WARNING Not recommended.
+# An experimental solution, still in testing phase.
+# Possible compilation and installation errors.
+# Leave it unselected.
+_fork_brute=
+
+## Enable it for compiling with LLVM and THINLTO
 _use_llvm_lto=
 
-## Enable CFI (booting seems to be broken at nvidia based systems)
+# Enable it for using the LLVM CFI PATCH for a better security
 _use_cfi=
 
 ## Enable PGO (patch is failing when cfi is also used)
@@ -77,9 +104,17 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
+# Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
+
+if [ -n "$_use_llvm_lto" ]; then
+pkgbase=linux-cacule-lto
+else
 pkgbase=linux-cacule
-pkgver=5.14.10
-pkgrel=2
+fi
+pkgver=5.14.11
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -107,7 +142,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
-        "${_patchsource}/btrfs-patches-v5/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v6/0001-btrfs-patches.patch"
         "${_patchsource}/fixes-miscellaneous-v6/0001-fixes-miscellaneous.patch"
         "${_patchsource}/futex-xanmod-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-xanmod-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
@@ -115,17 +150,18 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/hwmon-patches/0001-hwmon-patches.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
-        "${_patchsource}/lru-zen-patches-v3/0001-lru-zen-patches.patch"
+        "${_patchsource}/lru-patches-v3/0001-lru-patches.patch"
         "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
         "${_patchsource}/zen-patches-v3/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
-        "${_patchsource}/0013-zstd.patch"
+        "${_patchsource}/security-patches/0001-security-patches.patch"
+        "${_patchsource}/zstd-dev-patches-v6/0001-zstd-dev-patches.patch"
         "${_patchsource}/ntfs3-patches-v13/0001-ntfs3-patches.patch"
+        "${_patchsource}/0001-ksm.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
         "${_patchsource}/0001-v4l2loopback.patch"
-        "${_patchsource}/0001-ksm.patch"
         "auto-cpu-optimization.sh"
         )
   if [ -n "$_use_cfi" ]; then
@@ -261,15 +297,15 @@ prepare() {
         	   fi
 
             ### Enable protect file mappings under memory pressure
-#            if [ -n "$_mm_protect" ]; then
-#              echo "Enabling protect file mappings under memory pressure..."
-#              scripts/config --enable CONFIG_UNEVICTABLE_FILE
-#              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-#              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-#              scripts/config --enable CONFIG_UNEVICTABLE_ANON
-#              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
-#              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
-#            fi
+            if [ -n "$_mm_protect" ]; then
+              echo "Enabling protect file mappings under memory pressure..."
+              scripts/config --enable CONFIG_UNEVICTABLE_FILE
+              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+              scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+              scripts/config --enable CONFIG_UNEVICTABLE_ANON
+              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
+              scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
+            fi
 
             ### Enable multigenerational LRU
             if [ -n "$_lru_enable" ]; then
@@ -282,63 +318,133 @@ prepare() {
               scripts/config --disable CONFIG_LRU_GEN_STATS
             fi
 
-
-            if [ "$use_selinux" = "n" ]; then
-              echo "Disabling SELinux..."
-              scripts/config --disable CONFIG_SECURITY_SELINUX
-            fi
-
-            if [ "$use_tomoyo" = "n" ]; then
-              echo "Disabling TOMOYO..."
-              scripts/config --disable CONFIG_SECURITY_TOMOYO
-            fi
-
-            if [ "$use_apparmor" = "n" ]; then
-              echo "Disabling AppArmor..."
-              scripts/config --disable CONFIG_SECURITY_APPARMOR
-              scripts/config --set-str CONFIG_LSM lockdown,yama,integrity
-            fi
-
-            if [ "$use_yama" = "n" ]; then
-              echo "Disabling YAMA..."
-              scripts/config --disable CONFIG_SECURITY_YAMA
-              scripts/config --set-str CONFIG_LSM lockdown,integrity,apparmor
-            fi
-
             ### Enable Linux Random Number Generator
           if [ -n "$_lrng_enable" ]; then
             echo "Enabling Linux Random Number Generator ..."
             scripts/config --enable CONFIG_LRNG
-            scripts/config --disable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
-            scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 0
-            scripts/config --set-val CONFIG_LRNG_SEED_BUFFER_INIT_ADD_BITS 0
-            scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
-            scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
-            scripts/config --disable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
-            scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_32
-            scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_256
-            scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
-            scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
-            scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
-            scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
-            scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
-            scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
-            scripts/config --disable CONFIG_LRNG_HEALTH_TESTS
-            scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
-            scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
-            scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
-            scripts/config --enable CONFIG_LRNG_JENT
-            scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
-            scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
-            scripts/config --disable CONFIG_LRNG_DRNG_SWITCH
-            scripts/config --disable CONFIG_LRNG_DRBG
-            scripts/config --disable CONFIG_LRNG_TESTING_MENU
-            scripts/config --disable CONFIG_LRNG_SELFTEST
+        		scripts/config --enable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
+        		scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 64
+        		scripts/config --set-val CONFIG_LRNG_SEED_BUFFER_INIT_ADD_BITS 128
+        		scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
+        		scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
+        		scripts/config --enable CONFIG_LRNG_ENABLE_CONTINUOUS_COMPRESSION
+        		scripts/config --enable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
+        		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
+        		scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
+        		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
+        		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
+        		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
+        		scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
+        		scripts/config --enable CONFIG_LRNG_HEALTH_TESTS
+        		scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
+        		scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
+        		scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
+        		scripts/config --enable CONFIG_LRNG_JENT
+        		scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
+        		scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
+        		scripts/config --enable CONFIG_LRNG_DRNG_SWITCH
+        		scripts/config --enable CONFIG_LRNG_KCAPI_HASH
+        		scripts/config --module CONFIG_LRNG_DRBG
+        		scripts/config --module CONFIG_LRNG_KCAPI
+        		scripts/config --enable CONFIG_LRNG_TESTING_MENU
+        		scripts/config --disable CONFIG_LRNG_RAW_HIRES_ENTROPY
+        		scripts/config --disable CONFIG_LRNG_RAW_JIFFIES_ENTROPY
+        		scripts/config --disable CONFIG_LRNG_RAW_IRQ_ENTROPY
+        		scripts/config --disable CONFIG_LRNG_RAW_IRQFLAGS_ENTROPY
+        		scripts/config --disable CONFIG_LRNG_RAW_RETIP_ENTROPY
+        		scripts/config --disable CONFIG_LRNG_RAW_REGS_ENTROPY
+        		scripts/config --disable CONFIG_LRNG_RAW_ARRAY
+        		scripts/config --disable CONFIG_LRNG_IRQ_PERF
+        		scripts/config --disable CONFIG_LRNG_ACVT_HASH
+        		scripts/config --enable CONFIG_LRNG_RUNTIME_ES_CONFIG
+        		scripts/config --disable CONFIG_LRNG_RUNTIME_MAX_WO_RESEED_CONFIG
+        		scripts/config --enable CONFIG_LRNG_SELFTEST
+        		scripts/config --disable CONFIG_LRNG_SELFTEST_PANIC
           fi
           echo "Enable LLVM LTO"
           if [ -n "$_use_llvm_lto" ]; then
             scripts/config --disable CONFIG_LTO_NONE
           fi
+      		echo "Selecting CacULE scheduler..."
+      		scripts/config --disable CONFIG_SCHED_ALT
+      		scripts/config --enable CONFIG_CACULE_SCHED
+      		scripts/config --disable CONFIG_CACULE_RDB
+
+
+        ### Enable SMB3 Kernel Server
+    	  if [ -n "$_ksmbd_enable" ]; then
+    		echo "Enabling SMB3 Kernel Server..."
+    		scripts/config --module CONFIG_SMB_SERVER
+    		scripts/config --enable CONFIG_SMB_SERVER_SMBDIRECT
+    		scripts/config --enable CONFIG_SMB_SERVER_CHECK_CAP_NET_ADMIN
+    		scripts/config --enable CONFIG_SMB_SERVER_KERBEROS5
+    	fi
+
+      ### Selecting the ZSTD compression level
+  	if [ "$_zstd_level" = "ultra" ]; then
+  		echo "Enabling highest ZSTD compression ratio..."
+  		scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 19
+  		scripts/config --enable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+  	elif [ "$_zstd_level" = "normal" ]; then
+  		echo "Enabling standard ZSTD compression ratio..."
+  		scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 19
+  		scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+  	else
+  		if [ -n "$_zstd_level" ]; then
+  			error "The value $_zstd_level is invalid. Choose the correct one again."
+  		else
+  			error "The value is empty. Choose the correct one again."
+  		fi
+  		error "Selecting the ZSTD compression level failed!"
+  		exit
+  	fi
+
+      ### Selecting the ZSTD module compression level
+  	if [ "$_zstd_module_level" = "ultra" ]; then
+  		echo "Enabling highest ZSTD module compression ratio..."
+  		scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+  		scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
+  		scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22
+  	elif [ "$_zstd_module_level" = "normal" ]; then
+  		echo "Enabling standard ZSTD module compression ratio..."
+  		scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+  		scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
+  	else
+  		if [ -n "$_zstd_module_level" ]; then
+  			error "The value $_zstd_module_level is invalid. Choose the correct one again."
+  		else
+  			error "The value is empty. Choose the correct one again."
+  		fi
+  		error "Selecting the ZSTD module compression level failed!"
+  		exit
+    fi
+
+    echo "Disabling TCP_CONG_CUBIC..."
+		scripts/config --module CONFIG_TCP_CONG_CUBIC
+		scripts/config --disable CONFIG_DEFAULT_CUBIC
+		echo "Enabling TCP_CONG_BBR2..."
+		scripts/config --enable CONFIG_TCP_CONG_BBR2
+		scripts/config --enable CONFIG_DEFAULT_BBR2
+		scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
+		echo "Enabling FULLCONENAT..."
+		scripts/config --module CONFIG_IP_NF_TARGET_FULLCONENAT
+		scripts/config --module CONFIG_NETFILTER_XT_TARGET_FULLCONENAT
+    echo "Setting performance governor..."
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+
+
+    ### Optionally disable NUMA for 64-bit kernels only
+        # (x86 kernels do not support NUMA)
+	if [ -n "$_NUMAdisable" ]; then
+		echo "Disabling NUMA from kernel config..."
+		scripts/config --disable CONFIG_NUMA
+	fi
+
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
     if [ -n "$_use_current" ]; then
@@ -419,7 +525,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the ${pkgdesc}"
-  depends=("linux-cacule=${pkgver}" "pahole")
+  depends=("${pkgbase}=${pkgver}" "pahole")
 
   cd "${srcdir:?}/linux-${pkgver}" || (
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Package linux headers failed! \E[0m"
@@ -504,7 +610,7 @@ _package-headers() {
 
 }
 
-md5sums=('c467f0e8c5ab6e0ec7c47555ea4a8da3'
+md5sums=('0eba0d3a75f56ddbbb0f4265b35724c3'
          '69a04dedf4ecc005786ec50b9944495b'
          '581faf85cd625c41bbdd0cadbd0e451e'
          '024a0126cfcd18e000a2241f35c4d69e'
@@ -516,7 +622,7 @@ md5sums=('c467f0e8c5ab6e0ec7c47555ea4a8da3'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
-         '2c4d1d4e79d228af39f84ed4caea2f09'
+         '2ea9f8bab423cc6fdd9ff9c04006ccb6'
          'f364618bad6154856085c7025d388d3b'
          'fd934f7d11131d5a5043e4aea640583b'
          '8a96c5e8346bd5b430776ac8a41f96b0'
@@ -524,17 +630,18 @@ md5sums=('c467f0e8c5ab6e0ec7c47555ea4a8da3'
          'bad682a72d2549f409caea361fb0456f'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '366c90b64f9582c0733b8fb607a07594'
-         'd24fd0f81fbeed243b1b71fde7659548'
+         '8e2219f09adfe049b3e8b59fb8c4348a'
          '607228871a4127c31baae7b1d66866bc'
          '28864f14bf33bad92e57bc48bc5c2c78'
          'cfef1423ad1e6aecad63f0d5eacaea37'
          '808981a36c81165953017e5e432c1fa1'
-         '2cd671c79536f8ae6b58d874c8496433'
+         'f6a1c51adfc68fb7b52dc5715a9cb5a7'
+         '97d9c9da437152c2f1161e5da5b5d7d4'
          '82c0c2242d2a9d317b2601380f87488a'
+         '566435a0444ee45816599f2e0e362c7a'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
-         '566435a0444ee45816599f2e0e362c7a'
          '21c98f19e883879dd3336c1fa143fd31')
 pkgname=("$pkgbase" "$pkgbase-headers" )
       for _p in "${pkgname[@]}"; do
