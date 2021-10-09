@@ -9,8 +9,8 @@ pkgver=r2.2.g784b43c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
-url='https://github.com/HomeOfAviSynthPlusEvolution/neo_Vague_Denoiser.git'
-license=('GPL')
+url='https://github.com/HomeOfAviSynthPlusEvolution/neo_Vague_Denoiser'
+license=('GPL2')
 makedepends=('git'
              'cmake'
              'avisynthplus'
@@ -45,7 +45,7 @@ package_avisynth-plugin-neo_vague_denoiser-git() {
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-vague-denoiser.so" "${pkgdir}/usr/lib/avisynth/libneo-vague-denoiser.so"
+  install -Dm755 "${_plug}/build/libneo-vague-denoiser.so" "${pkgdir}/usr/lib/avisynth/libneo-vague-denoiser.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -57,7 +57,7 @@ package_vapoursynth-plugin-neo_vague_denoiser-git() {
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-vague-denoiser.so" "${pkgdir}/usr/lib/vapoursynth/libneo-vague-denoiser.so"
+  install -Dm755 "${_plug}/build/libneo-vague-denoiser.so" "${pkgdir}/usr/lib/vapoursynth/libneo-vague-denoiser.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
