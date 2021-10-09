@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r10.1.g87e6d19
+pkgver=r12.0.g7e39809
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -39,7 +39,7 @@ prepare() {
 build() {
   cd "${_plug}/build"
   cmake .. \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} $(pkg-config --cflags vapoursynth avisynth)"
 
@@ -52,7 +52,7 @@ package_avisynth-plugin-delogohd-git() {
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libDelogoHD.so" "${pkgdir}/usr/lib/avisynth/libDelogoHD.so"
+  install -Dm755 "${_plug}/build/libDelogoHD.so" "${pkgdir}/usr/lib/avisynth/libDelogoHD.so"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 }
@@ -63,7 +63,7 @@ package_vapoursynth-plugin-delogohd-git() {
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libDelogoHD.so" "${pkgdir}/usr/lib/vapoursynth/libDelogoHD.so"
+  install -Dm755 "${_plug}/build/libDelogoHD.so" "${pkgdir}/usr/lib/vapoursynth/libDelogoHD.so"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
