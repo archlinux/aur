@@ -31,4 +31,3 @@ pkgname = python-veles-git
 	depends = python-six
 	depends = python-msgpack
 	conflicts = python-veles
-

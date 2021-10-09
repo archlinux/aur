@@ -1,4 +1,4 @@
-# Maintainer: Tony Lambiris <tony@critialstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=(veles-git python-veles-git)
 pkgver=2018.05.0.r0.ge65de5a

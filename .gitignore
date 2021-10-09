@@ -1,6 +1,5 @@
-*.zip
 src
 pkg
-*.xz
 veles
+*pkg.tar.*
 tags
