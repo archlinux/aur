@@ -1,4 +1,4 @@
-pkgbase = linux-cacule
+pkgbase = linux-cacule-rdb
 	pkgdesc = Linux-CacULE-RDB Kernel by Hamad Marri and with some other patches
 	pkgver = 5.14.11
 	pkgrel = 1
@@ -84,7 +84,7 @@ pkgbase = linux-cacule
 	md5sums = 566435a0444ee45816599f2e0e362c7a
 	md5sums = 21c98f19e883879dd3336c1fa143fd31
 
-pkgname = linux-cacule
+pkgname = linux-cacule-rdb
 	pkgdesc = The Linux-CacULE-RDB Kernel by Hamad Marri and with some other patches kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -95,7 +95,7 @@ pkgname = linux-cacule
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
-pkgname = linux-cacule-headers
+pkgname = linux-cacule-rdb-headers
 	pkgdesc = Headers and scripts for building modules for the Linux-CacULE-RDB Kernel by Hamad Marri and with some other patches
 	depends = linux-cacule-rdb=5.14.11
 	depends = pahole

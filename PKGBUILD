@@ -79,9 +79,9 @@ _localmodcfg=
 _use_current=
 
 if [ -n "$_use_llvm_lto" ]; then
-pkgbase=linux-cacule-lto
+pkgbase=linux-cacule-rdb-lto
 else
-pkgbase=linux-cacule
+pkgbase=linux-cacule-rdb
 fi
 pkgver=5.14.11
 pkgrel=1
