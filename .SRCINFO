@@ -1,14 +1,13 @@
 pkgbase = frece
 	pkgdesc = Frecency sorted database
-	pkgver = 1.0.4
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/YodaEmbedding/frece
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = frece-1.0.4.tar.gz::https://github.com/YodaEmbedding/frece/archive/1.0.4.tar.gz
-	sha256sums = b8d0b894a8f693718986db6a49071effc7d6de523d385e8fdd12b663d99c8f09
+	source = frece-1.0.6.tar.gz::https://github.com/YodaEmbedding/frece/archive/refs/tags/v1.0.6.tar.gz
+	sha256sums = d284a5d3d16047a8772b1f1523f8b8dde53e3c2f8a82760a89abbc3c492d8168
 
 pkgname = frece
-
