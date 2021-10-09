@@ -2,11 +2,12 @@
 
 _plug=neo_dfttest
 pkgbase="foosynth-plugin-${_plug}-git"
-pkgname=("vapoursynth-plugin-${_plug}-git"
-         "avisynth-plugin-${_plug}-git")
+pkgname=("avisynth-plugin-${_plug}-git"
+         "vapoursynth-plugin-${_plug}-git"
+         )
 pkgver=r7.8.g8e8ae4e
 pkgrel=1
-pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
+pkgdesc="Plugin for Vapoursynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
 url='https://github.com/HomeOfAviSynthPlusEvolution/neo_DFTTest'
 license=('GPL')
@@ -49,7 +50,7 @@ package_avisynth-plugin-neo_dfttest-git() {
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-dfttest.so" "${pkgdir}/usr/lib/avisynth/libneo-dfttest.so"
+  install -Dm755 "${_plug}/build/libneo-dfttest.so" "${pkgdir}/usr/lib/avisynth/libneo-dfttest.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -63,7 +64,7 @@ package_vapoursynth-plugin-neo_dfttest-git() {
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-dfttest.so" "${pkgdir}/usr/lib/vapoursynth/libneo-dfttest.so"
+  install -Dm755 "${_plug}/build/libneo-dfttest.so" "${pkgdir}/usr/lib/vapoursynth/libneo-dfttest.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

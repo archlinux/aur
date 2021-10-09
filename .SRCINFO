@@ -1,5 +1,5 @@
 pkgbase = foosynth-plugin-neo_dfttest-git
-	pkgdesc = Plugin for Vapoursynth: neo_dfttest (GIT version)
+	pkgdesc = Plugin for Vapoursynth: neo_dfttest (Dual interface for Vapoursynth/Avisynth) (GIT version)
 	pkgver = r7.8.g8e8ae4e
 	pkgrel = 1
 	url = https://github.com/HomeOfAviSynthPlusEvolution/neo_DFTTest
@@ -15,16 +15,16 @@ pkgbase = foosynth-plugin-neo_dfttest-git
 	source = neo_dfttest::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_DFTTest.git
 	sha256sums = SKIP
 
-pkgname = vapoursynth-plugin-neo_dfttest-git
-	pkgdesc = Plugin for Vapoursynth: neo_dfttest (GIT version)
-	depends = vapoursynth
-	depends = tbb
-	provides = vapoursynth-plugin-neo_dfttest
-	conflicts = vapoursynth-plugin-neo_dfttest
-
 pkgname = avisynth-plugin-neo_dfttest-git
 	pkgdesc = Plugin for Avisynth: neo_dfttest (GIT version)
 	depends = avisynthplus
 	depends = tbb
 	provides = avisynth-plugin-neo_dfttest
 	conflicts = avisynth-plugin-neo_dfttest
+
+pkgname = vapoursynth-plugin-neo_dfttest-git
+	pkgdesc = Plugin for Vapoursynth: neo_dfttest (GIT version)
+	depends = vapoursynth
+	depends = tbb
+	provides = vapoursynth-plugin-neo_dfttest
+	conflicts = vapoursynth-plugin-neo_dfttest
