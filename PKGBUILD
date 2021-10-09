@@ -2,7 +2,7 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-go
-pkgver=0.17.2
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
@@ -13,14 +13,13 @@ conflicts=("flux-bin")
 replaces=("flux-cli")
 depends=("glibc")
 makedepends=('go>=1.16', 'kustomize>=3.0')
-optdepends=('kubectl: for apply actions on the Kubernetes cluster',
-'bash-completion: auto-completion for flux in Bash',
+optdepends=('bash-completion: auto-completion for flux in Bash',
 'zsh-completions: auto-completion for flux in ZSH')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  e11d7edc37c73e3976733a07f9131464ab33e251da99ad5ede538485cf3256d9
+  e85fe9d09fbcde20aab2eaa059652f081d65846d7152a8f617ab1d47e3e7c059
 )
 _srcname=flux
 

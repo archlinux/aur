@@ -1,6 +1,6 @@
 pkgbase = flux-go
 	pkgdesc = Open and extensible continuous delivery solution for Kubernetes
-	pkgver = 0.17.2
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://fluxcd.io/
 	arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = flux-go
 	license = APACHE
 	makedepends = go
 	depends = glibc
-	optdepends = kubectl
 	provides = flux-bin
 	conflicts = flux-bin
   replaces = flux-cli
-	source = flux-go-0.17.2.tar.gz::https://github.com/fluxcd/flux2/archive/v0.17.2.tar.gz
+	source = flux-go-0.18.0.tar.gz::https://github.com/fluxcd/flux2/archive/v0.18.0.tar.gz
 
 pkgname = flux-go
