@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r10.0.g9605825
+pkgver=r11.0.g0342ed5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd "${_plug}/build"
   cmake .. \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
   make
@@ -44,7 +44,7 @@ package_avisynth-plugin-neo_minideen-git() {
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-minideen.so" "${pkgdir}/usr/lib/avisynth/libneo-minideen.so"
+  install -Dm755 "${_plug}/build/libneo-minideen.so" "${pkgdir}/usr/lib/avisynth/libneo-minideen.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -56,7 +56,7 @@ package_vapoursynth-plugin-neo_minideen-git() {
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
-  install -Dm644 "${_plug}/build/libneo-minideen.so" "${pkgdir}/usr/lib/vapoursynth/libneo-minideen.so"
+  install -Dm755 "${_plug}/build/libneo-minideen.so" "${pkgdir}/usr/lib/vapoursynth/libneo-minideen.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

@@ -1,6 +1,6 @@
 pkgbase = foosynth-plugin-neo_minideen-git
 	pkgdesc = Plugin for Vapoursynth/Avisynth: neo_minideen (Dual interface for Vapoursynth/Avisynth) (GIT version)
-	pkgver = r10.0.g9605825
+	pkgver = r11.0.g0342ed5
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=176554
 	arch = x86_64
@@ -24,4 +24,3 @@ pkgname = vapoursynth-plugin-neo_minideen-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-neo_minideen
 	conflicts = vapoursynth-plugin-neo_minideen
-
