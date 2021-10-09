@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gstreamer-git
-pkgver=1.19.1.r11.gba294415d
+pkgver=1.19.2.r93535.g33ad1cdc5e
 pkgrel=1
 pkgdesc='GStreamer Multimedia Framework (Git version)'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('libxml2' 'glib2' 'libcap'
           'bash-completion' 'python')
 optdepends=('sh: feedback script')
 makedepends=('intltool' 'pkgconfig' 'gtk-doc'
-             'meson' 'gtk3'
+             'meson' 'gtk3' 'orc'
              'gobject-introspection' 'git')
 provides=('gstreamer='$pkgver)
 conflicts=('gstreamer')
@@ -31,8 +31,9 @@ pkgver() {
 }
 
 build() {
-  arch-meson gstreamer build \
-    -Ddbghelp=disabled -Ddoc=disabled
+  cd gstreamer/subprojects
+   arch-meson gstreamer build \
+    -Ddoc=disabled -Ddbghelp=disabled
   ninja -C build
 }
 
@@ -42,5 +43,5 @@ build() {
 #}
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C gstreamer/subprojects/build install
 }
