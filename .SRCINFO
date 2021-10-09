@@ -1,11 +1,12 @@
 pkgbase = matebook-applet
 	pkgdesc = System tray applet/control app for Huawei Matebook
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nekr0z/matebook-applet
 	arch = x86_64
 	license = GPL
 	makedepends = go
+	makedepends = libayatana-appindicator
 	depends = libappindicator-gtk3
 	optdepends = huawei-wmi-dkms: for kernels without huawei-wmi.
 	provides = matebook-applet
