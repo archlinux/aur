@@ -1,11 +1,11 @@
 pkgbase = xdump
 	pkgdesc = Display file contents in hexadecimal and ASCII
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/xfgusta/xdump
 	arch = x86_64
 	license = MIT
-	source = https://github.com/xfgusta/xdump/archive/v0.1.0/xdump-0.1.0.tar.gz
+	source = https://github.com/xfgusta/xdump/archive/v0.1.1/xdump-0.1.1.tar.gz
 	sha1sums = SKIP
 
 pkgname = xdump

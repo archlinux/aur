@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Costa <xfgusta@gmail.com>
 
 pkgname=xdump
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Display file contents in hexadecimal and ASCII'
 arch=(x86_64)
