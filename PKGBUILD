@@ -10,7 +10,7 @@ pkgname="${_target}-gcc"
 pkgver=11.2.0
 _majorver=${pkgver%%.*}
 _islver=0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
@@ -23,7 +23,7 @@ replaces=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 provides=("${_target}-gcc-stage1=${pkgver}" "${_target}-gcc-stage2=${pkgver}")
 #source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
+        https://libisl.sourceforge.io/isl-${_islver}.tar.xz
         all_default-ssp-fix.patch
         gcc-ada-repro.patch
         gcc11-Wno-format-security.patch)
