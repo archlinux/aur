@@ -1,0 +1,14 @@
+pkgbase = kmame-git
+	pkgdesc = Frontend for MAME based on mamepgui
+	pkgver = r79.4875338
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-2
+	makedepends = git
+	depends = qt5-base
+	depends = quazip
+	optdepends = mame
+	source = kmame::git+https://invent.kde.org/gianlucapettinello/kmame.git
+	md5sums = SKIP
+
+pkgname = kmame-git
