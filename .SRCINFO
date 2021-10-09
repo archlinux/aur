@@ -1,0 +1,14 @@
+pkgbase = python3-application
+	pkgdesc = Basic building blocks for Python applications
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/AGProjects/python3-application
+	arch = aarch64
+	arch = x86_64
+	license = LGPL-2.1+
+	depends = python
+	depends = python-zope-interface
+	source = https://github.com/AGProjects/python3-application/archive/3.0.3.tar.gz
+	sha512sums = 5fd9bd0df4312a912534e38ed8a20116134efa4008641399cffc0d16d581bcdb799135290c88f11572903e8b76702f312dc01776814edbede3b38aa8f8006cc0
+
+pkgname = python3-application
