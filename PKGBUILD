@@ -1,7 +1,7 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=openblok
-pkgver=0.8.2
-pkgrel=3
+pkgver=0.8.3
+pkgrel=1
 pkgdesc="A customizable, cross platform, open-source falling block game, packed with a bunch of features."
 arch=('i686' 'x86_64')
 url="https://github.com/mmatyas/openblok"
@@ -11,7 +11,7 @@ depends=('sdl2'
          'sdl2_image'
          'sdl2_mixer'
          'sdl2_ttf')
-makedepends=('cmake' 'gcc8')
+makedepends=('cmake')
 optdepends=()
 provides=()
 conflicts=()
@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://codeload.github.com/mmatyas/$pkgname/tar.gz/v$pkgver libSDL2pp::git+https://github.com/mmatyas/libSDL2pp.git#branch=cmake_modernization)
+source=(https://codeload.github.com/mmatyas/$pkgname/tar.gz/v$pkgver libSDL2pp::git+https://github.com/mmatyas/libSDL2pp.git#commit=4cb0e063ddd7db666007c71cef7a5f9cce866671)
 noextract=()
-md5sums=('6dd426a1dec30c74036ae09113505659'
+md5sums=('e3704fbdd4451255efc6772046a12dd0'
          'SKIP')
 
 prepare()
@@ -36,7 +36,7 @@ build()
     cd $pkgname-$pkgver
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DEXEDIR=/usr/bin -DCMAKE_CXX_COMPILER=c++-8 -DCMAKE_C_COMPILER=gcc-8 ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DEXEDIR=/usr/bin ..
     make
 }
 

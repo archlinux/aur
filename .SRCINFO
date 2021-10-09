@@ -1,21 +1,19 @@
 pkgbase = openblok
 	pkgdesc = A customizable, cross platform, open-source falling block game, packed with a bunch of features.
-	pkgver = 0.8.2
-	pkgrel = 3
+	pkgver = 0.8.3
+	pkgrel = 1
 	url = https://github.com/mmatyas/openblok
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = gcc8
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_ttf
-	source = https://codeload.github.com/mmatyas/openblok/tar.gz/v0.8.2
-	source = libSDL2pp::git+https://github.com/mmatyas/libSDL2pp.git#branch=cmake_modernization
-	md5sums = 6dd426a1dec30c74036ae09113505659
+	source = https://codeload.github.com/mmatyas/openblok/tar.gz/v0.8.3
+	source = libSDL2pp::git+https://github.com/mmatyas/libSDL2pp.git#commit=4cb0e063ddd7db666007c71cef7a5f9cce866671
+	md5sums = e3704fbdd4451255efc6772046a12dd0
 	md5sums = SKIP
 
 pkgname = openblok
-
