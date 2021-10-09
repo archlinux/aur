@@ -1,6 +1,6 @@
 pkgbase = man-pages-hu-git
 	pkgdesc = Hungarian man pages (Git version)
-	pkgver = r15923.4f434121f9
+	pkgver = r16282.12eccbc8c4
 	pkgrel = 1
 	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
 	arch = any

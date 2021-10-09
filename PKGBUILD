@@ -2,7 +2,7 @@
 
 pkgname=man-pages-hu-git
 _gitname=manpages-l10n
-pkgver=r15923.4f434121f9
+pkgver=r16282.12eccbc8c4
 pkgrel=1
 pkgdesc="Hungarian man pages (Git version)"
 arch=('any')
