@@ -5,8 +5,6 @@ pre_install() {
 }
 
 post_install() {
-  echo "IP: ${_install_path}"
-
   "${astrill_path}/asproxy" --init
   setcap cap_net_admin,cap_net_raw+ep "${astrill_path}/astrill"
 
