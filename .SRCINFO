@@ -1,14 +1,13 @@
 pkgbase = starfighter
 	pkgdesc = Side-scrolling shoot 'em up space game
-	pkgver = 2.3.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://pr-starfighter.github.io/
 	arch = x86_64
 	license = GPL3
 	depends = sdl2_image
 	depends = sdl2_mixer
-	source = starfighter-2.3.3.tar.gz::https://github.com/pr-starfighter/starfighter/releases/download/v2.3.3/starfighter-2.3.3-src.tar.gz
-	md5sums = ec37d907a939a429acd5f000448e8e32
+	source = starfighter-2.4.tar.gz::https://github.com/pr-starfighter/starfighter/releases/download/v2.4/starfighter-2.4-src.tar.gz
+	md5sums = ab7d7c3d122225c19e5647792ba374bd
 
 pkgname = starfighter
-
