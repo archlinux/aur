@@ -1,19 +1,19 @@
 pkgbase = espanso-git
 	pkgdesc = Cross-platform Text Expander written in Rust
-	pkgver = r1058.8f291f4
+	pkgver = 2.0.0.r53.g8f291f4
 	pkgrel = 1
 	url = https://espanso.org/
-	install = espanso-git.install
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	makedepends = git
 	makedepends = cmake
+	makedepends = cargo-make
+	makedepends = rust-script
 	depends = xdotool
 	depends = xclip
 	depends = libxtst
 	depends = libnotify
-	optdepends = modulo: Support for interactive forms
 	provides = espanso
 	conflicts = espanso
 	source = espanso::git+https://github.com/federico-terzi/espanso.git#branch=dev

@@ -1,28 +1,30 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
+_wayland=false
 _branch=dev
 _pkgname=espanso
 pkgname=${_pkgname}-git
-pkgver=r1058.8f291f4
+pkgver=2.0.0.r53.g8f291f4
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
 depends=("xdotool" "xclip" "libxtst" "libnotify")
-optdepends=("modulo: Support for interactive forms")
-makedepends=("rust" "git" "cmake")
+makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
 provides=($_pkgname)
 conflicts=($_pkgname)
-install="${pkgname}.install"
 source=("${_pkgname}::git+https://github.com/federico-terzi/espanso.git#branch=${_branch}")
 sha512sums=('SKIP')
 
+if [ "$_wayland" == "true" ]; then  # setcap "cap_dac_override+p" after install; See https://espanso.org/docs/next/install/linux/#adding-the-required-capabilities
+  install="${pkgname}-wayland.install"
+fi
 
 pkgver() {
     cd "$_pkgname"
 
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -36,7 +38,7 @@ prepare() {
 build() {
     cd "$_pkgname"
 
-    cargo build --release --locked
+    cargo make build-binary --profile release --env NO_X11=$_wayland
 }
 
 package() {
