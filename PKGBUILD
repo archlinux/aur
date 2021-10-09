@@ -3,7 +3,7 @@
 pkgname=com.seewo.easicamera
 pkgver=2.0.0.602
 pkgrel=1
-pkgdesc="Seewo EasiCamera 视睿视频展台"
+pkgdesc="Seewo EasiCamera 希沃视频展台"
 arch=('x86_64')
 url=""
 license=('')
