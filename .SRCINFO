@@ -1,0 +1,15 @@
+pkgbase = python3-gnutls
+	pkgdesc = GnuTLS bindings for Python
+	pkgver = 3.1.8
+	pkgrel = 1
+	url = https://github.com/AGProjects/python3-gnutls
+	arch = aarch64
+	arch = x86_64
+	license = LGPL-2.1+
+	depends = python
+	depends = python-twisted
+	depends = gnutls
+	source = https://github.com/AGProjects/python3-gnutls/archive/3.1.8.tar.gz
+	sha512sums = f45e149a41a2b2d8441e17301db4ca29f42047aab5af781bb2e5a9a0b2db5c64deaff2c0a115b65104a3976dfbe39a8074dcfa1b53f7cab1a30645dc998bae70
+
+pkgname = python3-gnutls
