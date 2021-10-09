@@ -35,6 +35,7 @@ package() {
     cp -rL "${srcdir}/${_appname}-linux-"* "${pkgdir}/opt/${_pkgname}"
     cp -L "${srcdir}/${pkgname}.png" "${pkgdir}/opt/${_pkgname}/resources/app/icon.png"
     ln -sf "/opt/${_pkgname}/TickTick" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -snf "/usr/lib/libnotify.so" "${pkgdir}/usr/lib/libnotify.so.1"  # Per https://github.com/nativefier/nativefier/issues/1184
 
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
