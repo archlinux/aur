@@ -2,7 +2,7 @@
 
 _pkgname=apfsprogs
 pkgname=$_pkgname-git
-pkgver=r345.5efac5a
+pkgver=r348.f9e48ce
 pkgrel=1
 pkgdesc='Experimental APFS tools for linux'
 arch=(x86_64)

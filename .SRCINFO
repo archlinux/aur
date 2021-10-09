@@ -1,13 +1,13 @@
 pkgbase = apfsprogs-git
 	pkgdesc = Experimental APFS tools for linux
-	pkgver = r345.5efac5a
+	pkgver = r348.f9e48ce
 	pkgrel = 1
 	url = https://github.com/eafer/apfsprogs
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = glibc
-	provides = apfsprogs=r345.5efac5a
+	provides = apfsprogs=r348.f9e48ce
 	conflicts = apfsprogs
 	source = git+https://github.com/eafer/apfsprogs
 	sha256sums = SKIP
