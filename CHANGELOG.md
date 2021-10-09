@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.6.4](#1-6-4)
 * [1.6.3](#1-6-3)
 * [1.6.2](#1-6-2)
 * [1.6.1](#1-6-1)
@@ -11,6 +12,30 @@
 * [1.5.0](#1-5-0)
 * [1.4.2](#1-4-2)
 * [1.4.1](#1-4-1)
+
+
+## 1.6.4
+
+### Added
+
+* Support for [nanosvg](https://github.com/memononen/nanosvg) as an
+  alternative SVG backend. Nanosvg is bundled with fuzzel and has
+  **no** additional dependencies. This means you can now have SVGs
+  without depending on Cairo.
+
+
+### Changed
+
+* Meson option `-Denable-png` replaced with `-Dpng-backend=none|libpng`.
+* Meson option `-Denable-svg` replaced with `-Dsvg-backend=none|librsvg|nanosvg`.
+
+
+### Fixed
+
+* Graphical corruption triggered by the “gerbview” SVG icon, from
+  KiCAD (https://codeberg.org/dnkl/fuzzel/issues/47).
+* SVG icons containing multiple icons not being limited to the main
+  icon (https://codeberg.org/dnkl/fuzzel/issues/48).
 
 
 ## 1.6.3
