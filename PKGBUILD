@@ -2,13 +2,13 @@
 
 pkgname=kopia
 pkgdesc='A cross-platform backup-tool with encryption, deduplication, compression and cloud support.'
-pkgver=0.8.4
+pkgver=0.9.0
 pkgrel=1
 arch=('x86_64')
 url='https://kopia.io'
 license=('APACHE')
 depends=('glibc')
-makedepends=('go>=1.16')
+makedepends=('go>=1.17')
 #makedepends=('go>=1.15', 'git') # git is needed if we switch to signed git commits/tags in the future
 #source=("$pkgname-$pkgver::git+https://github.com/kopia/kopia.git#commit=$(git rev-list -n 1 v$pkgver)?signed") # use git commit, if those are signed by a proper key in the future
 #source=("$pkgname-$pkgver::git+https://github.com/kopia/kopia.git#tag=v$pkgver?signed") # use git tag, if those are signed by a proper key in the future
