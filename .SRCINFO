@@ -1,8 +1,8 @@
 pkgbase = python-bioservices
 	pkgdesc = Access Bioinformatices Web Services and framework for WSDL/SOAP and REST wrappers
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
-	url = https://bioservices.readthedocs.io/
+	url = https://github.com/cokelaer/bioservices
 	arch = any
 	license = GPL
 	depends = python-easydev>=0.9.36
@@ -13,7 +13,7 @@ pkgbase = python-bioservices
 	depends = python-requests-cache
 	depends = python-xmltodict
 	depends = python-suds
-	source = https://pypi.io/packages/source/b/bioservices/bioservices-1.8.1.tar.gz
-	sha256sums = ad9147885d92bdbe31cee4eec29a795ec0c9dbcfb373998f1e44f4354f3512ca
+	source = python-bioservices-1.8.2.tar.gz::https://github.com/cokelaer/bioservices/archive/refs/tags/v1.8.2.tar.gz
+	sha256sums = 9e6194e2795aac7e192cf4f4ff793243f63d2a8458eff169a832f56ed80528e0
 
 pkgname = python-bioservices
