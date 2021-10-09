@@ -664,7 +664,7 @@ md5sums=('0eba0d3a75f56ddbbb0f4265b35724c3'
          '566435a0444ee45816599f2e0e362c7a'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
-         'd825c650f5b7baeaebb43a442c764622'
+         '63ee6ec75b8867b24a573bbb5e413623'
          '95eb4457f95f3f8dd153983612ee65c0'
          '21c98f19e883879dd3336c1fa143fd31')
 pkgname=("$pkgbase" "$pkgbase-headers" )
