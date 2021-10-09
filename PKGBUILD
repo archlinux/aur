@@ -4,7 +4,7 @@
 pkgname=com.seewo.easinote5
 pkgver=5.1.17.1876
 pkgrel=1
-pkgdesc="Seewo EasiNote5 for Linux."
+pkgdesc="Seewo EasiNote5 希沃白板5"
 arch=('x86_64')
 url="https://gitlab.gz.cvte.cn/front-end/enow-cloud"
 license=('MIT')
@@ -20,13 +20,10 @@ package(){
 	# Extract package data
 	export LANG=en_US.UTF-8
 	export LC_ALL=en_US.UTF-8
-	echo "正在解压并安装deb包"
 	tar xf data.tar.xz -C "${pkgdir}"
 	mkdir -p "${pkgdir}/usr/share/applications"
 	install -D -m644 "${pkgdir}/opt/apps/com.seewo.easinote5/files/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	echo "正在创建应用列表快捷方式"
 	sed -i "1i\#!/usr/bin/bash" "${pkgdir}/opt/apps/com.seewo.easinote5/files/com.seewo.easinote5.sh"
 	cp "${pkgdir}/opt/apps/com.seewo.easinote5/entries/applications/com.seewo.easinote5.desktop" "${pkgdir}/usr/share/applications/com.seewo.easinote5.desktop"
-	echo "正在刷新图标缓存"
 
 }
