@@ -1,0 +1,51 @@
+astrill_path=/opt/astrill
+
+pre_install() {
+  killall -q astrill | true
+}
+
+post_install() {
+  echo "IP: ${_install_path}"
+
+  "${astrill_path}/asproxy" --init
+  setcap cap_net_admin,cap_net_raw+ep "${astrill_path}/astrill"
+
+  # Enable reconnecting after hibernate/sleep
+  if which systemctl >/dev/null 2>&1; then
+  	systemctl enable astrill-reconnect.service
+  fi
+
+  # Check if theme engine is installed
+  if ! "${astrill_path}/astrill" /gtk2checkengine; then
+  	echo 'WARNING: Your system is missing pixbuf theme engine. Please install package gtk2-engines-pixbuf or gtk2-engines'
+  fi
+
+  # Reload menus
+  if [ -x '`which update-menus 2>/dev/null`' ]; then
+    update-menus
+  fi
+
+  # Reload icon cache
+  if which update-icon-caches >/dev/null 2>&1 ; then
+    update-icon-caches /usr/share/icons/hicolor
+  fi
+
+  echo 'Please restart your web browser for all changes to take effect'
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  "${astrill_path}/asproxy" --uninit
+  "${astrill_path}/astrill" /uninstall
+
+  if which systemctl >/dev/null 2>&1; then
+    systemctl disable astrill-reconnect.service
+  fi
+}

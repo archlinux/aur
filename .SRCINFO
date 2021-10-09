@@ -1,13 +1,15 @@
 pkgbase = astrill
 	pkgdesc = VPN configuration tool for Astrill's servers
-	pkgver = 3.8.0.2156
+	pkgver = 3.9.0.2180
 	pkgrel = 0
 	url = http://astrill.com/
+	install = astrill.install
 	arch = x86_64
 	arch = i686
 	license = custom
-	source = https://www.astrill.com/public/arch/desktop-linux64-3.8.0.2156.rpm
-	md5sums = 3681872f9e6007e24f914a384e483a55
+	source_x86_64 = https://www.astrilldownloads.com/astrill-setup-linux64.rpm
+	sha256sums_x86_64 = f21488ca0ca9e38ab95b95e5ba0c58bc348c33aab56a246dcb06d0ed35a4dbb1
+	source_i686 = https://www.astrilldownloads.com/astrill-setup-linux.rpm
+	sha256sums_i686 = 9eadf4d62e12df3448760f912c4175414524b9293afba9d6eeb7636a5efcd5fc
 
 pkgname = astrill
-

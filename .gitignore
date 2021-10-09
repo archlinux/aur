@@ -1,0 +1,5 @@
+*.zst
+*.rpm
+.idea
+pkg
+src
