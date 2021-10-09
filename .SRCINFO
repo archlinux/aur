@@ -1,6 +1,6 @@
 pkgbase = nng
 	pkgdesc = Rewrite of the SP protocol library known as libnanomsg
-	pkgver = 1.4.0
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://nanomsg.github.io/nng/
 	arch = arm
@@ -16,8 +16,7 @@ pkgbase = nng
 	depends = mbedtls
 	provides = nng
 	conflicts = nng
-	source = https://github.com/nanomsg/nng/archive/v1.4.0.tar.gz
-	md5sums = 124c94f9cbfabfecd3b18fdcefa66576
+	source = https://github.com/nanomsg/nng/archive/v1.5.2.tar.gz
+	md5sums = 8adba2c9396dd0648bcfd7280bc48679
 
 pkgname = nng
-
