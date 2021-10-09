@@ -1,7 +1,7 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=easyexif-git
-pkgver=r34.a68a2cc
-pkgrel=2
+pkgver=r41.cd994a3
+pkgrel=1
 pkgdesc="Tiny ISO-compliant C++ EXIF parsing library, third-party dependency free."
 arch=('i686' 'x86_64')
 url="https://github.com/mayanklahiri/easyexif"
