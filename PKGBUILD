@@ -2,7 +2,7 @@
 # Maintainer: Daniel Vogt <marioortizmanero@gmail.com>
 pkgname=moodle-dl-git
 _pkgname=Moodle-Downloader-2
-pkgver=v2.2.0.1.r1.g9c7ff43-1
+pkgver=v2.2.0.1.r1.g9c7ff43
 pkgrel=1
 pkgdesc='Moodle downloader to download course content automatically'
 arch=('any')
