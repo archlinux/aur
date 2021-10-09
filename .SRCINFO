@@ -1,0 +1,26 @@
+pkgbase = com.seewo.easirecorder
+	pkgdesc = Seewo EasiRecorder 轻录播
+	pkgver = 1.0.0.778
+	pkgrel = 1
+	install = com.seewo.easirecorder.install
+	arch = x86_64
+	groups = 
+	license = 
+	depends = patch
+	depends = systemd
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/YidaozhanYa/seewo-uos-bin/releases/download/2/com.seewo.easirecorder.tar.gz
+	source = https://raw.githubusercontent.com/YidaozhanYa/seewo-uos-bin/main/run_easirecorder_mod.sh
+	sha512sums = 249421063e7d195da1a930f008ed4c47a1fe1dad600c15d339d4c6d036e895d5d449eb9be49a0bf4fdde0cfdd4c5109df7a1cb8b3e261eac14396ba0142d95dd
+	sha512sums = fcb5b4107246842c96670073794086e46317b6a642926e694488a482ab408fbde4fc39e6e9078737b33527cd7b2ed39b6f8a3d921bfe3bffc8c8fd95d35f1b17
+
+pkgname = com.seewo.easirecorder
