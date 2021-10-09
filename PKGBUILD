@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-binutils
-pkgver=2.35
+pkgver=2.37
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=('i686' 'x86_64')
@@ -48,7 +48,8 @@ package() {
   cd binutils-build
   make prefix=${pkgdir}/usr install
 
-  # Remove unwanted files
+  # Remove unwanted and conflicting files
   rm -rf ${pkgdir}/usr/share
+  rm ${pkgdir}/usr/lib/bfd-plugins/libdep.so
 }
 
