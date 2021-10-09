@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-gcc-stage1
 	pkgdesc = The GNU Compiler Collection. Stage 1 for toolchain building (arm-linux-gnueabihf)
 	pkgver = 11.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = arm-linux-gnueabihf-gcc-stage1
 	options = !strip
 	source = https://sourceware.org/pub/gcc/releases/gcc-11.2.0/gcc-11.2.0.tar.xz
 	source = https://sourceware.org/pub/gcc/releases/gcc-11.2.0/gcc-11.2.0.tar.xz.sig
-	source = http://isl.gforge.inria.fr/isl-0.24.tar.xz
+	source = https://libisl.sourceforge.io/isl-0.24.tar.xz
 	source = all_default-ssp-fix.patch
 	source = gcc-ada-repro.patch
 	source = gcc11-Wno-format-security.patch

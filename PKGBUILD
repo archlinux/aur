@@ -10,7 +10,7 @@ pkgname=${_target}-gcc-stage1
 pkgver=11.2.0
 _majorver=${pkgver%%.*}
 _islver=0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
@@ -18,7 +18,7 @@ url='https://gcc.gnu.org'
 depends=("${_target}-binutils>=2.37-1" libmpc zlib)
 options=(!emptydirs !distcc !strip)
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
+        https://libisl.sourceforge.io/isl-${_islver}.tar.xz
         all_default-ssp-fix.patch
         gcc-ada-repro.patch
         gcc11-Wno-format-security.patch)
