@@ -14,7 +14,7 @@ url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
-makedepends=('cargo' 'git' 'go' 'nodejs>=12' 'npm>=6.12' 'nvm')
+makedepends=('cargo' 'git' 'go' 'nvm')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
@@ -67,7 +67,6 @@ prepare() {
   go clean -modcache
 
   # Build fails with Node.js 16, use 15
-  export npm_config_cache="$srcdir/npm-cache"
   _ensure_local_nvm
   nvm install 15.14.0
 }
