@@ -1,14 +1,12 @@
-pkgbase = openpnp-git
+pkgbase = openpnp
 	pkgdesc = Open Source SMT Pick and Place Hardware and Software
-	pkgver = r3506.693671c629
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://openpnp.org/
 	arch = arm64
 	arch = x86_64
 	license = GPL3
-	makedepends = git
-	makedepends = maven
-	source = openpnp-git::git+https://github.com/openpnp/openpnp.git
+	source = openpnp::https://s3-us-west-2.amazonaws.com/openpnp/OpenPnP-unix-develop.tar.gz
 	sha256sums = SKIP
 
-pkgname = openpnp-git
+pkgname = openpnp
