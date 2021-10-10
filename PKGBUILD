@@ -4,10 +4,10 @@ pkgver=0.4.0
 pkgrel=1
 pkgdesc="Easy and fast logging library"
 arch=('any')
-url="https://github.com/ern123/$pkgname"
+url="https://github.com/ecsuarez/$pkgname"
 license=('LGPL')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ern123/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ecsuarez/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('819c676be61e3ff04a87171d5ad29a25')
 
 build() {
