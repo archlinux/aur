@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=6.18-GE-1
+_srctag=6.19-GE-1
 pkgver=${_srctag//-/.}
 pkgrel=2
 
@@ -14,9 +14,9 @@ pkgrel=2
 _winever=$pkgver
 _pkgbasever=${pkgver/rc/-rc}
 
-source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=$_srctag
-        wine::git+https://github.com/wine-mirror/wine.git
-        wine-staging::git+https://github.com/wine-staging/wine-staging.git
+source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
+        wine::git+https://github.com/wine-mirror/wine.git#tag=wine-${_srctag%%-*}
+        wine-staging::git+https://github.com/wine-staging/wine-staging.git#tag=v${_srctag%%-*}
         wine-more_8x5_res.patch
         wine-wmclass.patch
         wine-isolate_home.patch
@@ -122,16 +122,14 @@ optdepends=(
   samba           dosbox
 )
 
-provides=("wine=$pkgver" "wine-wow64=$pkgver")
+provides=("wine=${_srctag%%-*}" "wine-wow64=${_srctag%%-*}")
 conflicts=('wine' 'wine-wow64')
 install=wine.install
 
 prepare() {
   pushd $pkgname
-    git submodule init wine wine-staging
-    git config submodule.wine.url "$srcdir"/wine
-    git config submodule.wine-staging.url "$srcdir"/wine-staging
-    git submodule update wine wine-staging
+    rm -r wine && cp -r "$srcdir"/wine wine
+    rm -r wine-staging && cp -r "$srcdir"/wine-staging wine-staging
     patches/protonprep.sh
     pushd wine
       patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
