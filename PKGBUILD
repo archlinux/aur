@@ -1,4 +1,5 @@
-# Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
+# Maintainer: Angel de Vicente <angel.vicente.garrido at gmail dot com>
+# Contributor: XavierCLL <xavier.corredor.llano (a) gmail.com>
 # Contributor: richli
 
 pkgname=hdf-eos5
@@ -10,10 +11,11 @@ license=('GPL')
 arch=('i686' 'x86_64')
 depends=('zlib' 'libaec' 'hdf5' 'gdal' 'hdf-eos-common')
 options=('libtool' 'staticlibs')
-source=("ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.$pkgver.tar.Z"
+source=("https://git.earthdata.nasa.gov/rest/git-lfs/storage/DAS/hdfeos5/7054de24b90b6d9533329ef8dc89912c5227c83fb447792103279364e13dd452?response-content-disposition=attachment%3B%20filename%3D%22HDF-EOS5.1.16.tar.Z%22%3B%20filename*%3Dutf-8%27%27HDF-EOS5.1.16.tar.Z"
         "szip_cc.patch")
-md5sums=('c4a3286f38a2faafc840017af4bd39d6'
-         'f4bf627e4dedaae3f142ca05253743eb')
+sha256sums=('7054de24b90b6d9533329ef8dc89912c5227c83fb447792103279364e13dd452'
+            '7d9d204090cb4b5faeaea6075a4d0103cbd79da3bc154466b2108a05627e2517')
+
 
 build() {
   cd "hdfeos5"

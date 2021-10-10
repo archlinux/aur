@@ -13,10 +13,9 @@ pkgbase = hdf-eos5
 	depends = hdf-eos-common
 	options = libtool
 	options = staticlibs
-	source = ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.1.16.tar.Z
+	source = https://git.earthdata.nasa.gov/rest/git-lfs/storage/DAS/hdfeos5/7054de24b90b6d9533329ef8dc89912c5227c83fb447792103279364e13dd452?response-content-disposition=attachment%3B%20filename%3D%22HDF-EOS5.1.16.tar.Z%22%3B%20filename*%3Dutf-8%27%27HDF-EOS5.1.16.tar.Z
 	source = szip_cc.patch
-	md5sums = c4a3286f38a2faafc840017af4bd39d6
-	md5sums = f4bf627e4dedaae3f142ca05253743eb
+	sha256sums = 7054de24b90b6d9533329ef8dc89912c5227c83fb447792103279364e13dd452
+	sha256sums = 7d9d204090cb4b5faeaea6075a4d0103cbd79da3bc154466b2108a05627e2517
 
 pkgname = hdf-eos5
-
