@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-pkgbase=mesa
+pkgbase=mesa-i915g
 pkgname=('mesa-i915g')
 pkgdesc="Mesa with i915 Gallium driver"
 pkgver=21.2.2
