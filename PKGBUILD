@@ -19,6 +19,10 @@ package() {
 		--lua-version $luaver \
 		--tree "$pkgdir/usr" \
 		install --no-manifest luv
+	luarocks \
+		--lua-version $luaver \
+		--tree "$pkgdir/usr" \
+		install --no-manifest struct
 	mkdir -p $dir
 	cd $dir
 	cp -R "$srcdir/${pkgname%-git}/i3ipc/" .
