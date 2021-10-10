@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-xclean-git
+	pkgdesc = Plugin for Vapoursynth: xclean
+	pkgver = r0
+	pkgrel = 6
+	url = https://forum.doom9.org/showthread.php?t=183245
+	arch = any
+	license = GPL
+	depends = vapoursynth-plugin-rgsf-git
+	depends = vapoursynth-plugin-knlmeanscl-git
+	depends = vapoursynth-plugin-fmtconv
+	depends = vapoursynth-plugin-mvtools
+	depends = vapoursynth-plugin-mvtools_sf-git
+	depends = vapoursynth-plugin-temporalmedian-git
+	source = xclean::git+https://github.com/mysteryx93/xClean.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-xclean-git
