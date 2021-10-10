@@ -12,5 +12,7 @@ sha256sums=('SKIP')
 
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  cp -r "${srcdir}/${pkgname}" "${pkgdir}/opt/"
+  ln -sf "${pkgdir}/usr/bin/OpenPnP" "${pkgdir}/opt/${pkgname}/OpenPnP"
 }
