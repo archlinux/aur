@@ -1,17 +1,13 @@
-pkgbase = dvm-git
-	pkgdesc = discord version manager for linux
-	pkgver = 1.1.6
+pkgbase = fu
+	pkgdesc = Flameshot Uploader - Allows using SXCU files to upload images
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/diced/dvm
+	url = https://github.com/diced/flameshot-uploader
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	conflicts = discord
-	conflicts = discord-canary
-	conflicts = discord-ptb
-	conflicts = discord-development
-	source = git+https://github.com/diced/dvm.git#branch=trunk
+	source = git+https://github.com/diced/flameshot-uploader.git#branch=trunk
 	sha256sums = SKIP
 
-pkgname = dvm-git
+pkgname = fu
