@@ -13,7 +13,7 @@ depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-nnedi3_resample-git'
          'vapoursynth-plugin-mvtools_sf-git'
          'vapoursynth-plugin-rgsf-git'
-         'vapoursynth-plugin-vcmod'
+         'vapoursynth-plugin-vcm-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
