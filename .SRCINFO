@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-resamplehq-git
 	pkgdesc = Plugin for Vapoursynth: resamplehq (GIT version)
-	pkgver = v2.0.0.0.gb6ab680
-	pkgrel = 3
+	pkgver = v2.1.2.0.gb26c588
+	pkgrel = 1
 	url = https://github.com/4re/resamplehq
 	arch = any
 	license = GPL
@@ -13,4 +13,3 @@ pkgbase = vapoursynth-plugin-resamplehq-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-resamplehq-git
-
