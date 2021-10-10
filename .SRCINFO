@@ -17,7 +17,6 @@ pkgbase = vapoursynth-plugin-havsfunc-git
 	depends = vapoursynth-plugin-dfttest-git
 	depends = vapoursynth-plugin-eedi2-git
 	depends = vapoursynth-plugin-fmtconv-git
-	depends = vapoursynth-plugin-eedi3-git
 	depends = vapoursynth-plugin-sangnom-git
 	depends = vapoursynth-plugin-misc-git
 	depends = vapoursynth-plugin-deblock
