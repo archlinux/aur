@@ -1,21 +1,20 @@
 pkgbase = vapoursynth-plugin-oyster-git
 	pkgdesc = Plugin for Vapoursynth: oyster (GIT version)
-	pkgver = r137.54fe6c3
-	pkgrel = 3
+	pkgver = r153.a8e5749
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=173470
 	arch = any
-	license = LGPL2.1
+	license = LGPL3
 	makedepends = git
-	depends = vapoursynth-plugin-bm3d-git
-	depends = vapoursynth-plugin-knlmeanscl-git
-	depends = vapoursynth-plugin-fmtconv-git
-	depends = vapoursynth-plugin-msmoosh-git
-	depends = vapoursynth-plugin-mvtools_sf-git
 	depends = vapoursynth-plugin-nnedi3-git
+	depends = vapoursynth-plugin-knlmeanscl-git
+	depends = vapoursynth-plugin-bm3d-git
+	depends = vapoursynth-plugin-dfttest-git
+	depends = vapoursynth-plugin-fmtconv
+	depends = vapoursynth-plugin-mvtools_sf-git
 	provides = vapoursynth-plugin-oyster
 	conflicts = vapoursynth-plugin-oyster
 	source = oyster::git+https://github.com/IFeelBloated/Oyster.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-oyster-git
-
