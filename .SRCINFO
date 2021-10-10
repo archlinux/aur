@@ -1,0 +1,16 @@
+pkgbase = codium-nautilus-git
+	pkgdesc = VSCodium extension for Nautilus
+	pkgver = r9.ddff975
+	pkgrel = 2
+	url = https://github.com/Gyro7/codium-nautilus
+	install = codium-nautilus-git.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = python-nautilus
+	optdepends = codium: The Visual Studio Codium editor
+	source = codium-nautilus-git::git+https://github.com/Gyro7/codium-nautilus.git
+	md5sums = SKIP
+
+pkgname = codium-nautilus-git
