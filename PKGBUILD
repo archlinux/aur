@@ -1,22 +1,22 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 # Contributor: Mick Elliot <micke at sfu dot ca>
 pkgname=ncbi-toolkit
-pkgver=22.0.0
+pkgver=25.2.0
 _pkgver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Applications, scripts and C++ libraries for the analysis of biological data"
 arch=('i686' 'x86_64')
 url="https://ncbi.github.io/cxx-toolkit/"
 license=('custom')
-depends=('python2' 'pcre' 'sqlite' 'lzo' 'libtiff' 'giflib' 'libxpm'
+depends=('python' 'pcre' 'sqlite' 'lzo' 'libtiff' 'giflib' 'libxpm'
          'mariadb-libs' 'libpng' 'gnutls' 'libxml2' 'libxslt')
 optdepends=('fltk' 'wxgtk' 'fcgi')
 makedepends=('autoconf' 'cpio')
 provides=('blast+-bin')
 conflicts=('blast+-bin')
-source=("ftp://ftp.ncbi.nlm.nih.gov/toolbox/ncbi_tools++/2019/Mar_28_2019/ncbi_cxx--$_pkgver.tar.gz"
-        "LICENSE")
-sha256sums=('ef39429bbc7f13c44c0d327432d9cfb430f9f20d10d825e6b2c4ddd7ccce457f'
+source=(https://ftp.ncbi.nlm.nih.gov/toolbox/ncbi_tools++/2021/Sep_30_2021/ncbi_cxx--$_pkgver.tar.gz
+        LICENSE)
+sha256sums=('9f824a92750e64e7b9be98d82b84414ab4f7e5d73392dadbb87c94ff5ccf9111'
             '78bbf3f310ff43f1b5f711e7221d51da1e6f055831bd6c6941e0650bf1261df2')
 
 build() {
