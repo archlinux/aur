@@ -1,11 +1,13 @@
+#!/bin/bash
+
 # Maintainer: PumpkinCheshire <sollyonzou at gmail dot com>
 # Contributor: Fabio Zanini <fabio.zanini _at_ stanford.edu>
 
-pkgname='python-pysam'
-_name='pysam'
-pkgver=0.16.0.1
+pkgname=python-pysam
+_name=pysam
+pkgver=0.17.0
 pkgrel=1
-pkgdesc="Python interface for the SAM/BAM sequence alignment and mapping format"
+pkgdesc='Python interface for the SAM/BAM sequence alignment and mapping format'
 arch=('x86_64')
 url="https://github.com/pysam-developers/pysam"
 license=('MIT')
@@ -13,9 +15,8 @@ depends=('python')
 makedepends=('python-setuptools' 'cython' 'htslib')
 provides=('python-pysam')
 options=(!emptydirs)
-install=
 source=("https://github.com/pysam-developers/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('a61e98e299fa93ba121aab521081282b61bc978bb9052d33b26b38f8fe15573e')
+sha256sums=('f4d697e322d12f239c96c263374bad2b40fd95bff34841ab9515e3de9e3e7cca')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
