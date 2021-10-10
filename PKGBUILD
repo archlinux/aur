@@ -64,7 +64,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.14.10
+pkgver=5.14.11
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -96,9 +96,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('8875ce37b6579e51de0ed3c059d99fe26b3a2ab3e795161fbb8de8476f2e3e26ebc1e0c98c3fb1b904b43e954ddb0f91b30248c91307d20912963f2f13fd9925'
+b2sums=('b84afc268eaace7029d13b0e37b5366d042e96f1437b95b08a995d7717d6b6ed118e929c2d0e0929ddcc4dba772768d686d1c3a29a7c9ed60b9534797b006efa'
         'SKIP'
-        '1c45fa4c2e6864702efa759e7e2071294c7d0b39449a885c72c876033d1420d34d565d159b034a347c0d67fd2d13426878f049099dddae5881d17fb47a55bea2'
+        'e549ff2253b3819d38df7e71d0ff377dc6faf332745295c8a2cf40d45a57128e3a707c8f715b6c1c11531575e37c08eb8bd1eba092b39acc432ab94c973fea67'
         'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
         'bd20774ee2c9856601af2c89a3af95c6abc812b71253368090e9c252edcce452f416bfeed54ced0886d401b5a9e1cb72c16ea5f04a72d8ded596c0d083f80e42'
         '09ffbf36f65701b26c727cbc0934bb58197c4dd0794e5d77463210bed2e6fac51c8481a0b5aa759b7c9c607f35db91508faa1bc22244a2dc81c297d858f35135'
@@ -167,6 +167,7 @@ prepare() {
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
   make olddefconfig
+  diff -u ../config .config || :
 
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
