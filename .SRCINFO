@@ -1,7 +1,7 @@
 pkgbase = ghcid
 	pkgdesc = GHCi based bare bones IDE
 	pkgver = 0.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ndmitchell/ghcid
 	arch = x86_64
 	license = BSD
