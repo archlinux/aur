@@ -1,7 +1,7 @@
 pkgbase = photoprism
 	pkgdesc = Personal Photo Management powered by Go and Google TensorFlow
 	pkgver = 211010
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/photoprism/photoprism
 	arch = x86_64
 	arch = aarch64

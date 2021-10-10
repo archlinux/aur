@@ -5,7 +5,7 @@
 pkgname=photoprism
 pkgver="211010"
 commit="83b4f783"
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
 arch=(x86_64 aarch64)
