@@ -1,6 +1,6 @@
 pkgbase = r-manipulatewidget
 	pkgdesc = Add Even More Interactivity to Interactive Charts
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=manipulateWidget
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-manipulatewidget
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/manipulateWidget_0.11.0.tar.gz
-	sha256sums = f2953494a08babba972e9dcc293f767371ccf5c8d0f4d67b78dba1a50c7dda47
+	source = https://cran.r-project.org/src/contrib/manipulateWidget_0.11.1.tar.gz
+	sha256sums = 5b73728d7d6dcc32f32d861375074cd65112c03a01e4ee4fa94e21b063fdefb6
 
 pkgname = r-manipulatewidget
