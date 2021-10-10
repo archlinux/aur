@@ -1,60 +1,66 @@
-# Maintainer: Milkii Brewster <milkii on Freenode IRC>
-_pkgname=bespokesynth
-pkgname="$_pkgname"-git
-pkgdesc="Software modular synth, VST host input, transport/Ableton Push (unstable)"
-pkgver=r311.881cb92
+# Maintainer: David Runge <dvzrv@archlinux.org>
+
+_name=bespokesynth
+pkgname=bespokesynth-git
+pkgver=1.0.0.r117.gb9d6dc3
 pkgrel=1
-arch=(x86_64)
-url="https://github.com/awwbees/BespokeSynth"
-license=(GPL3)
-depends=('jack' 'curl' 'mesa' 'xorg-xrandr' 'python' 'libxext' 'ladspa' 'juce' 'xorg-server-xvfb')
-makedepends=('gcc' 'libx11' 'libxinerama' 'freetype2' )
-checkdepends=()
-optdepends=()
-provides=('bespokesynth' 'bespokesynth-bin')
-conflicts=('bespokesynth' 'bespokesynth-bin')
-replaces=()
-noextract=()
-source=(BespokeSynth::git+https://github.com/awwbees/BespokeSynth)
-md5sums=('SKIP')
+pkgdesc="A software modular synth"
+arch=('x86_64')
+url="https://www.bespokesynth.com/"
+license=('GPL3')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'libpng' 'python'
+'zlib')
+makedepends=('alsa-lib' 'cmake' 'flac' 'freetype2' 'git' 'jack' 'juce' 'libusb'
+'libvorbis' 'libx11' 'libxcursor' 'libxinerama' 'pybind11' 'tuning-library'
+'xorg-xrandr')
+conflicts=('bespokesynth')
+provides=('bespokesynth')
+source=(
+  "$pkgname::git+https://github.com/${_name}/${_name}"
+  "MTS-ESP::git+https://github.com/ODDSound/MTS-ESP"
+  "${_name}-1.0.0.r117.gb9d6dc3-remove_vendoring.patch"
+)
+sha512sums=('SKIP'
+            'SKIP'
+            '57f597c0e2fa6db631b7745fb1162191d884b81f2ab90b1e5ef6194a5271c054d95705b531b9ad991efff25069bf5a3bd2110cc2db44b8852ed2efb94e822569')
+b2sums=('SKIP'
+        'SKIP'
+        'e47c47f488f9c7f6047e491e3d4513e86dbbf917a8d31f7c06fd639e5d42e629bf8799c8c0aa8fd6db916d3bfcbf2537aa7159a501ffca2fdbda6e04e69c7575')
+validpgpkeys=()
 
 pkgver() {
-  cd "BespokeSynth"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "BespokeSynth"
-  sed -i -e 's/usb-1.0/usb-1.0;python3.8/'  BespokeSynth.jucer
-  sed -i -e 's/python-config/python3-config/'  BespokeSynth.jucer
-  sed -i -e 's/JUCE_PLUGINHOST_VST="1"/JUCE_PLUGINHOST_VST="1" JUCE_WEB_BROWSER="0"/'  BespokeSynth.jucer
+  cd "$pkgname"
+  git submodule init
+  git config submodule.libs/oddsound-mts/MTS-ESP.url "${srcdir}/MTS-ESP"
+  git submodule deinit libs/JUCE
+  git submodule deinit libs/pybind11
+  git submodule deinit libs/tuning-library
+  git submodule update
 
-  ### Launch a virtual framebuffer X server ###
-  export DISPLAY=":98"
-  Xvfb $DISPLAY >& Xvfb.log &
-  trap "kill $! || true" EXIT
-  sleep 10
-
-  Projucer --set-global-search-path linux defaultJuceModulePath /usr/share/juce/modules
-  Projucer --resave BespokeSynth.jucer
+  patch -Np1 -i ../"${_name}-1.0.0.r117.gb9d6dc3-remove_vendoring.patch"
 }
 
 build() {
-  cd "BespokeSynth"
-	# ./configure --prefix=/usr
-  cd Builds/LinuxMakefile
-  CONFIG=Release make
+  cd "$pkgname"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE='Debug' \
+        -DBESPOKE_JUCE_LOCATION=/usr/share/juce/ \
+        -Wno-dev \
+        -B build \
+        -S .
+  make VERBOSE=1 -C build
 }
 
 package() {
-  cd "BespokeSynth"
-  mkdir -p ${pkgdir}/usr/bin
-  install ${srcdir}/BespokeSynth/Builds/LinuxMakefile/build/BespokeSynth ${pkgdir}/usr/bin/BespokeSynth
-  mkdir -p ${pkgdir}/usr/share/icons/hicolor/512x512/apps
-  install ${srcdir}/BespokeSynth/bespoke_icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps
-  mkdir -p ${pkgdir}/usr/share/applications/
-  install ${srcdir}/BespokeSynth/BespokeSynth.desktop  ${pkgdir}/usr/share/applications/BespokeSynth.desktop
+  depends+=('libasound.so' 'libFLAC.so' 'libfreetype.so' 'libjpeg.so'
+  'libogg.so' 'libusb-1.0.so' 'libvorbis.so' 'libvorbisenc.so'
+  'libvorbisfile.so')
+
+  cd "$pkgname"
+  make DESTDIR="$pkgdir/" install -C build
 }

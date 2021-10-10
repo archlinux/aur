@@ -1,0 +1,64 @@
+diff --git i/CMakeLists.txt w/CMakeLists.txt
+index f43eaac..0284acf 100644
+--- i/CMakeLists.txt
++++ w/CMakeLists.txt
+@@ -35,13 +35,14 @@ if(BESPOKE_PYTHON_ROOT)
+     set(Python_ROOT "${BESPOKE_PYTHON_ROOT}")
+     message(STATUS "Overriding Python_ROOT to ${Python_ROOT}")
+ endif()
+-find_package (Python COMPONENTS Interpreter Development REQUIRED)
++find_package(Python COMPONENTS Interpreter Development REQUIRED)
++find_package(JUCE COMPONENTS REQUIRED)
++find_package(pybind11 COMPONENTS REQUIRED)
+ message(STATUS "Python version: ${Python_VERSION}")
+ message(STATUS "Python executable: ${Python_EXECUTABLE}")
+ message(STATUS "Python library: ${Python_LIBRARIES}")
+ 
+ message(STATUS "Using JUCE from ${BESPOKE_JUCE_LOCATION}")
+-add_subdirectory(${BESPOKE_JUCE_LOCATION} ${CMAKE_BINARY_DIR}/JUCE EXCLUDE_FROM_ALL)
+ 
+ if (BESPOKE_VST2_SDK_LOCATION)
+     juce_set_vst2_sdk_path(${BESPOKE_VST2_SDK_LOCATION})
+diff --git i/Source/CMakeLists.txt w/Source/CMakeLists.txt
+index 2f38329..cb8fa4f 100644
+--- i/Source/CMakeLists.txt
++++ w/Source/CMakeLists.txt
+@@ -501,7 +501,6 @@ target_link_libraries(BespokeSynth PRIVATE
+ 
+     pybind11::pybind11
+ 
+-    tuning-library
+     oddsound-mts
+ 
+     juce::juce_audio_basics
+@@ -512,6 +511,12 @@ target_link_libraries(BespokeSynth PRIVATE
+     juce::juce_opengl
+     juce::juce_osc
+ 
++    ogg
++    FLAC
++    vorbis
++    vorbisenc
++    vorbisfile
++
+     ${Python_LIBRARIES}
+     $<$<BOOL:${MINGW}>:dbghelp>
+     )
+@@ -551,4 +556,4 @@ else()
+             COMMAND ${CMAKE_COMMAND} -E make_directory ${BESPOKE_NIGHTLY_DIR}
+             COMMAND ${CMAKE_COMMAND} -E echo "coming soon}" > ${BESPOKE_NIGHTLY_DIR}/installer.txt
+             )
+-endif()
+\ No newline at end of file
++endif()
+diff --git i/libs/CMakeLists.txt w/libs/CMakeLists.txt
+index 680d36d..cfd82fa 100644
+--- i/libs/CMakeLists.txt
++++ w/libs/CMakeLists.txt
+@@ -8,6 +8,4 @@ add_subdirectory(oddsound-mts EXCLUDE_FROM_ALL)
+ add_subdirectory(psmove EXCLUDE_FROM_ALL)
+ add_subdirectory(push2 EXCLUDE_FROM_ALL)
+ set(PYBIND11_NOPYTHON TRUE)
+-add_subdirectory(pybind11 EXCLUDE_FROM_ALL)
+-add_subdirectory(tuning-library EXCLUDE_FROM_ALL)
+ add_subdirectory(xwax EXCLUDE_FROM_ALL)
