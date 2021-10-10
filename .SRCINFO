@@ -1,9 +1,8 @@
 pkgbase = alchemy-next-viewer
 	pkgdesc = This is the next generation of Alchemy Viewer!
-	pkgver = 6.4.23.47339
+	pkgver = 6.4.23.47423
 	pkgrel = 1
 	url = https://www.alchemyviewer.org
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
