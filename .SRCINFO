@@ -1,6 +1,6 @@
 pkgbase = emusak-bin
 	pkgdesc = Allows you to download saves and shaders for Switch emulators.
-	pkgver = 1.0.104
+	pkgver = 1.0.105
 	pkgrel = 1
 	url = https://github.com/stromcon/emusak-ui
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = emusak-bin
 	depends = glib2
 	depends = nss
 	depends = gtk3
-	source = https://github.com/stromcon/emusak-ui/releases/download/v1.0.104/emusak_1.0.104_amd64.deb
-	sha256sums = f4eb5b7a35dc20407840f3c1866fe0b9981bbf5b4917fc2cf899933fe7f65472
+	source = https://github.com/stromcon/emusak-ui/releases/download/v1.0.105/emusak_1.0.105_amd64.deb
+	sha256sums = c00b20e39bb0da9abcdbcea17b146324eb712e10bec299c16b26daf0b96006e0
 
 pkgname = emusak-bin
