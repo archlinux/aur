@@ -22,6 +22,8 @@ pkgver() {
 prepare() {
 	# prefer user makepkg.conf
 	sed -i '/CMAKE_C_FLAGS/d;/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' $_pkgname/CMakeLists.txt
+	# build only shared library
+	sed -i '/(chdr-static/d' $_pkgname/CMakeLists.txt
 }
 
 build() {
