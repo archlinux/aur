@@ -1,12 +1,11 @@
-# Maintainer: Kenneth Kasilag (hurrian) <kenneth@kasilag.me>
 # Maintainer: Mark Weiman (markzz) <mark.weiman@markzz.com>
 # Maintainer: Katelyn Schiesser (slowbro) <katelyn.schiesser@gmail.com>
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=5.14.3.arch1
-pkgrel=2
+pkgver=5.14.10.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
@@ -32,9 +31,9 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549' # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'e2140782726c69db81dd5be0602479bb4e161772e83e77de1470c9ceea622ca4'
+            'cada4ca234a96e1f78da61ad29310bf076523d157ad55aadfc93465d3865c9e3'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
-            '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6' )
+            '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
