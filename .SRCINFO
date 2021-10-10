@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-core
 	pkgdesc = Google Cloud API client core library
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/googleapis/python-cloud-core
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-google-cloud-core
 	depends = python-google-api-core
 	depends = python-google-auth
 	optdepends = python-grpcio: for grpc support
-	source = https://files.pythonhosted.org/packages/source/g/google-cloud-core/google-cloud-core-2.0.0.tar.gz
-	b2sums = 4e23864d2a4a42595fb494f8e7f7e000acec300d45ae6580771180f46d3431f01c223dc74e4d0ee354ece237c3a8d5b8b891b5be30adc57fef6c6cc6d2a4e9e2
+	source = https://files.pythonhosted.org/packages/source/g/google-cloud-core/google-cloud-core-2.1.0.tar.gz
+	b2sums = 9640036d0244d771b609d41d5c9995499ee76c56472812f7bb83d97897bc37cfe7c240568c3978247122886e7ad319b380cc6d9711c3c19032f723435f385877
 
 pkgname = python-google-cloud-core
