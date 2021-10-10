@@ -34,6 +34,7 @@ if [ -z ${USE_NOCONFIRM+x} ]; then
 fi
 
 pkgname=unbrave-git
+_pkgname=unbrave
 pkgver=r5046.f567e657
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
@@ -56,8 +57,8 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git"
         "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
         "git+https://github.com/brave/brave-core.git"
         "git+https://github.com/brave/adblock-rust.git"
-        'brave-launcher'
-        'brave-browser.desktop'
+        'unbrave-launcher'
+        'unbrave.desktop'
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         "chromium-no-history.patch"
@@ -76,8 +77,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'e4478c79e2eed500777117bb1d48f4be1866908dcda8d75003a5d055618dfdca'
-            'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
+            '12542a49b03db1878c41dc7e969ff9a00bece47713c564c3e1885aa2402eea23'
+            '5b3acebaed783e5228a14b940c707233c4a3fc36c5572b23c86d52d33982e24c'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '5796f54f53794dd859da43c60db97f76a941be334bc7365b9058582e192bda52'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
@@ -311,7 +312,7 @@ build() {
 }
 
 package() {
-  install -d -m0755 "${pkgdir}/usr/lib/${pkgname}/"{,swiftshader,locales,resources}
+  install -d -m0755 "${pkgdir}/usr/lib/${_pkgname}/"{,swiftshader,locales,resources}
 
   # Copy necessary release files
   cd "brave-browser/src/out/Release"
@@ -324,30 +325,30 @@ package() {
     v8_context_snapshot.bin \
     libGLESv2.so \
     libEGL.so \
-    "${pkgdir}/usr/lib/${pkgname}/"
+    "${pkgdir}/usr/lib/${_pkgname}/"
   cp -a --reflink=auto \
     swiftshader/libGLESv2.so \
     swiftshader/libEGL.so \
-    "${pkgdir}/usr/lib/${pkgname}/swiftshader/"
+    "${pkgdir}/usr/lib/${_pkgname}/swiftshader/"
   cp -a --reflink=auto \
     locales/*.pak \
-    "${pkgdir}/usr/lib/${pkgname}/locales/"
+    "${pkgdir}/usr/lib/${_pkgname}/locales/"
   cp -a --reflink=auto \
     resources/brave_extension \
     resources/brave_rewards \
-    "${pkgdir}/usr/lib/${pkgname}/resources/"
+    "${pkgdir}/usr/lib/${_pkgname}/resources/"
 
   if [ "$COMPONENT" != "4" ] || [[ -z ${_system_libs[icu]+set} ]]; then
     cp -a --reflink=auto \
       icudtl.dat \
-      "${pkgdir}/usr/lib/${pkgname}/"
+      "${pkgdir}/usr/lib/${_pkgname}/"
   fi
 
   cd "${srcdir}"
-  install -Dm0755 brave-launcher "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm0644 -t "${pkgdir}/usr/share/applications/" brave-browser.desktop
-  install -Dm0644 "brave-browser/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "brave-browser/LICENSE"
+  install -Dm0755 unbrave-launcher "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm0644 -t "${pkgdir}/usr/share/applications/" unbrave.desktop
+  install -Dm0644 "brave-browser/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" "brave-browser/LICENSE"
 }
 
 # vim:set ts=4 sw=4 et:
