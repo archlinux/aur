@@ -1,6 +1,6 @@
 pkgbase = heroic-games-launcher-bin
 	pkgdesc = HGL, a Native alternative Linux Launcher for Epic Games
-	pkgver = 1.9.3
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = heroic-games-launcher-bin
   depends = python-setuptools
 	conflicts = heroic-games-launcher-appimage
 	conflicts = heroic-games-launcher-electron
-	noextract = heroic-1.9.3.pacman
+	noextract = heroic-1.10.1.pacman
 	options = !strip
-	source = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v1.9.3/heroic-1.9.3.pacman
-	md5sums = 24e52082aca96a8ae15ff7c77307d7ce
+	source = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v1.10.1/heroic-1.10.1.pacman
+	md5sums = 05c167068cf35afbc90502bbb24787e6
 
 pkgname = heroic-games-launcher-bin
 
