@@ -2,7 +2,7 @@
 
 pkgname=digital-assets
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cryptocurrencies prices and statistics"
 arch=('any')
 url="https://gitlab.gnome.org/fgrabenstaetter/$pkgname"
@@ -19,7 +19,7 @@ makedepends=(
     'git'
     'meson'
 )
-source=("git+$url.git#tag=$pkgver")
+source=("git+$url.git#commit=2b2b010e8f227da9e98ff63b2eb7b504b65ae0b6")
 sha256sums=('SKIP')
 
 build() {
