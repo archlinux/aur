@@ -1,7 +1,7 @@
 pkgbase = netrc
 	pkgdesc = Utility that allows users to manage netrc files
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dokku/netrc
 	arch = x86_64
 	license = MIT
