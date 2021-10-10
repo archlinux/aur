@@ -1,11 +1,10 @@
 pkgbase = ytmdesktop
 	pkgdesc = A desktop app for YouTube Music
 	pkgver = 1.13.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://ytmdesktop.app
 	arch = x86_64
 	license = CC0 1.0 Universal
-	makedepends = npm
 	makedepends = nvm
 	depends = electron10
 	optdepends = libnotify: for desktop notifications
