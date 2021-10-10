@@ -2,8 +2,8 @@
 
 pkgname=clibasic-bin
 ghpkgname=CLIBASIC
-pkgver=0.23.5
-pkgrel=2
+pkgver=0.23.6
+pkgrel=1
 pkgdesc="A BASIC interpreter for the terminal, written in C"
 arch=(x86_64 i686)
 url="https://github.com/PQCraft/${ghpkgname}"
