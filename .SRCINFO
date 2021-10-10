@@ -1,12 +1,12 @@
 pkgbase = dprint-bin
 	pkgdesc = Pluggable and configurable code formatting platform written in Rust.
-	pkgver = 0.17.3
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://dprint.dev/
 	arch = x86_64
 	license = MIT
-	source = 0.17.3.zip::https://github.com/dprint/dprint/releases/download/0.17.3/dprint-x86_64-unknown-linux-gnu.zip
-	source = 0.17.3.LICENSE::https://github.com/dprint/dprint/raw/0.17.3/LICENSE
+	source = 0.18.0.zip::https://github.com/dprint/dprint/releases/download/0.18.0/dprint-x86_64-unknown-linux-gnu.zip
+	source = 0.18.0.LICENSE::https://github.com/dprint/dprint/raw/0.18.0/LICENSE
 	sha512sums = SKIP
 	sha512sums = SKIP
 
