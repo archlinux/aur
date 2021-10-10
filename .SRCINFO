@@ -3,9 +3,11 @@ pkgbase = openpnp-git
 	pkgver = r3506.693671c629
 	pkgrel = 1
 	url = https://openpnp.org/
-	arch = any
+	arch = arm64
+	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = maven
 	source = openpnp-git::git+https://github.com/openpnp/openpnp.git
 	sha256sums = SKIP
 
