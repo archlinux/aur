@@ -17,7 +17,7 @@ sha256sums=('510494bd8dc3b8e0a618ce22d2ef707aaed942b628a0a5537ea346041d352250'
             '568d8a08b942868ab9aa67458ad9bfcee4d56ef079d2467dd259613bb37d0bff'
             'fa8e5f6561192d1f2554365a7f49c36ac368ae00413f489c0873a801c11e6219'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'e750f286bdfd1b2c81367a55045bfa857b544dbd5e2b5a94002f0a6bd9b32c87')
+            'e4f8a00dbb222484d4d73ada2dfd5748a56542aeb7ab83abeed5bea4596d411e')
 noextract=('btdex-v${pkgver}-all.jar')
 
 package() {
