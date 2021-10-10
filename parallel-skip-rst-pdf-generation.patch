@@ -1,0 +1,156 @@
+From 9ba90d396c4094e6fbbf0078017bced32fb14179 Mon Sep 17 00:00:00 2001
+From: Angel de Vicente <angel.de.vicente@iac.es>
+Date: Sun, 10 Oct 2021 10:11:28 +0100
+Subject: [PATCH] Avoid generation of .rst and .pdf
+
+---
+ src/Makefile.am | 119 +-----------------------------------------------
+ 1 file changed, 2 insertions(+), 117 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index eb2e4239..6e21640c 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -23,15 +23,7 @@ doc_DATA = parallel.html env_parallel.html sem.html sql.html		\
+         parallel.texi env_parallel.texi sem.texi sql.texi		\
+ 	niceload.texi parallel_tutorial.texi parallel_book.texi		\
+ 	parallel_design.texi parallel_alternatives.texi parcat.texi	\
+-	parset.texi parsort.texi \
+-        parallel.rst env_parallel.rst sem.rst sql.rst 			\
+-	niceload.rst parallel_tutorial.rst parallel_book.rst		\
+-	parallel_design.rst parallel_alternatives.rst parcat.rst	\
+-	parset.rst parsort.rst \
+-	parallel.pdf env_parallel.pdf sem.pdf sql.pdf niceload.pdf	\
+-	parallel_tutorial.pdf parallel_book.pdf parallel_design.pdf	\
+-	parallel_alternatives.pdf parcat.pdf parset.pdf	parsort.pdf 	\
+-	parallel_cheat_bw.pdf
++	parset.texi parsort.texi 
+ endif
+ 
+ web: sphinx
+@@ -245,106 +237,6 @@ parsort.texi: parsort
+ 	pod2texi --output="$(srcdir)"/parsort.texi "$(srcdir)"/parsort \
+ 	|| echo "Warning: pod2texi not found. Using old parsort.texi"
+ 
+-parallel.rst: parallel.pod
+-	pod2rst --outfile "$(srcdir)"/parallel.rst --infile="$(srcdir)"/parallel.pod \
+-	|| echo "Warning: pod2rst not found. Using old parallel.rst"
+-
+-env_parallel.rst: env_parallel.pod
+-	pod2rst --outfile "$(srcdir)"/env_parallel.rst --infile="$(srcdir)"/env_parallel.pod \
+-	|| echo "Warning: pod2rst not found. Using old env_parallel.rst"
+-
+-parallel_tutorial.rst: parallel_tutorial.pod
+-	pod2rst --outfile "$(srcdir)"/parallel_tutorial.rst --infile="$(srcdir)"/parallel_tutorial.pod \
+-	|| echo "Warning: pod2rst not found. Using old parallel_tutorial.rst"
+-
+-parallel_book.rst: parallel_book.pod
+-	pod2rst --outfile "$(srcdir)"/parallel_book.rst --infile="$(srcdir)"/parallel_book.pod \
+-	|| echo "Warning: pod2rst not found. Using old parallel_book.rst"
+-
+-parallel_design.rst: parallel_design.pod
+-	pod2rst --outfile "$(srcdir)"/parallel_design.rst --infile="$(srcdir)"/parallel_design.pod \
+-	|| echo "Warning: pod2rst not found. Using old parallel_design.rst"
+-
+-parallel_alternatives.rst: parallel_alternatives.pod
+-	pod2rst --outfile "$(srcdir)"/parallel_alternatives.rst --infile="$(srcdir)"/parallel_alternatives.pod \
+-	|| echo "Warning: pod2rst not found. Using old parallel_alternatives.rst"
+-
+-sem.rst: sem.pod
+-	pod2rst --outfile "$(srcdir)"/sem.rst --infile="$(srcdir)"/sem.pod \
+-	|| echo "Warning: pod2rst not found. Using old sem.rst"
+-
+-sql.rst: sql
+-	pod2rst --outfile "$(srcdir)"/sql.rst --infile="$(srcdir)"/sql \
+-	|| echo "Warning: pod2rst not found. Using old sql.rst"
+-
+-niceload.rst: niceload.pod
+-	pod2rst --outfile "$(srcdir)"/niceload.rst --infile="$(srcdir)"/niceload.pod \
+-	|| echo "Warning: pod2rst not found. Using old niceload.rst"
+-
+-parcat.rst: parcat.pod
+-	pod2rst --outfile "$(srcdir)"/parcat.rst --infile="$(srcdir)"/parcat.pod \
+-	|| echo "Warning: pod2rst not found. Using old parcat.rst"
+-
+-parset.rst: parset.pod
+-	pod2rst --outfile "$(srcdir)"/parset.rst --infile="$(srcdir)"/parset.pod \
+-	|| echo "Warning: pod2rst not found. Using old parset.rst"
+-
+-parsort.rst: parsort
+-	pod2rst --outfile "$(srcdir)"/parsort.rst --infile="$(srcdir)"/parsort \
+-	|| echo "Warning: pod2rst not found. Using old parsort.rst"
+-
+-parallel.pdf: parallel.pod
+-	pod2pdf --output-file "$(srcdir)"/parallel.pdf "$(srcdir)"/parallel.pod --title "GNU Parallel" \
+-	|| echo "Warning: pod2pdf not found. Using old parallel.pdf"
+-
+-env_parallel.pdf: env_parallel.pod
+-	pod2pdf --output-file "$(srcdir)"/env_parallel.pdf "$(srcdir)"/env_parallel.pod --title "GNU Parallel with environment" \
+-	|| echo "Warning: pod2pdf not found. Using old env_parallel.pdf"
+-
+-parallel_tutorial.pdf: parallel_tutorial.pod
+-	pod2pdf --output-file "$(srcdir)"/parallel_tutorial.pdf "$(srcdir)"/parallel_tutorial.pod --title "GNU Parallel Tutorial" \
+-	|| echo "Warning: pod2pdf not found. Using old parallel_tutorial.pdf"
+-
+-parallel_book.pdf: parallel_book.pod
+-	pod2pdf --output-file "$(srcdir)"/parallel_book.pdf "$(srcdir)"/parallel_book.pod --title "GNU Parallel Book" \
+-	|| echo "Warning: pod2pdf not found. Using old parallel_book.pdf"
+-
+-parallel_design.pdf: parallel_design.pod
+-	pod2pdf --output-file "$(srcdir)"/parallel_design.pdf "$(srcdir)"/parallel_design.pod --title "GNU Parallel Design" \
+-	|| echo "Warning: pod2pdf not found. Using old parallel_design.pdf"
+-
+-parallel_alternatives.pdf: parallel_alternatives.pod
+-	pod2pdf --output-file "$(srcdir)"/parallel_alternatives.pdf "$(srcdir)"/parallel_alternatives.pod --title "GNU Parallel alternatives" \
+-	|| echo "Warning: pod2pdf not found. Using old parallel_alternatives.pdf"
+-
+-sem.pdf: sem.pod
+-	pod2pdf --output-file "$(srcdir)"/sem.pdf "$(srcdir)"/sem.pod --title "GNU sem" \
+-	|| echo "Warning: pod2pdf not found. Using old sem.pdf"
+-
+-sql.pdf: sql
+-	pod2pdf --output-file "$(srcdir)"/sql.pdf "$(srcdir)"/sql --title "GNU SQL" \
+-	|| echo "Warning: pod2pdf not found. Using old sql.pdf"
+-
+-niceload.pdf: niceload.pod
+-	pod2pdf --output-file "$(srcdir)"/niceload.pdf "$(srcdir)"/niceload.pod --title "GNU niceload" \
+-	|| echo "Warning: pod2pdf not found. Using old niceload.pdf"
+-
+-parcat.pdf: parcat.pod
+-	pod2pdf --output-file "$(srcdir)"/parcat.pdf "$(srcdir)"/parcat.pod --title "GNU parcat" \
+-	|| echo "Warning: pod2pdf not found. Using old parcat.pdf"
+-
+-parset.pdf: parset.pod
+-	pod2pdf --output-file "$(srcdir)"/parset.pdf "$(srcdir)"/parset.pod --title "GNU parset" \
+-	|| echo "Warning: pod2pdf not found. Using old parset.pdf"
+-
+-parsort.pdf: parsort
+-	pod2pdf --output-file "$(srcdir)"/parsort.pdf "$(srcdir)"/parsort --title "GNU parsort" \
+-	|| echo "Warning: pod2pdf not found. Using old parsort.pdf"
+-
+-parallel_cheat_bw.pdf: parallel_cheat_bw.fodt
+-	libreoffice --headless --convert-to pdf parallel_cheat_bw.fodt \
+-	|| echo "Warning: libreoffice failed. Using old parallel_cheat_bw.pdf"
+-
+ sem: parallel
+ 	ln -fs parallel sem
+ 
+@@ -358,14 +250,7 @@ DISTCLEANFILES = parallel.1 env_parallel.1 sem.1 sql.1 niceload.1	\
+ 	sem.texi sql.texi niceload.texi parallel_tutorial.texi		\
+ 	parallel_book.texi parallel_design.texi				\
+ 	parallel_alternatives.texi parcat.texi parset.texi		\
+-	parsort.texi \
+-	parallel.rst env_parallel.rst sem.rst sql.rst niceload.rst	\
+-	parallel_tutorial.rst parallel_book.rst parallel_design.rst	\
+-	parallel_alternatives.rst parcat.rst parset.rst parsort.rst	\
+-	parallel.pdf env_parallel.pdf sem.pdf sql.pdf niceload.pdf	\
+-	parallel_tutorial.pdf parallel_book.pdf parallel_design.pdf	\
+-	parallel_alternatives.pdf parcat.pdf parset.pdf parsort.pdf	\
+-	parallel_cheat_bw.pdf
++	parsort.texi 
+ 
+ EXTRA_DIST = parallel sem sql niceload parcat parset parsort		\
+ 	env_parallel env_parallel.ash env_parallel.bash			\
+-- 
+2.33.0
+
