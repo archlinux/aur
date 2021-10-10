@@ -7,8 +7,8 @@
 
 _gemname=nanoc
 pkgname=ruby-$_gemname
-pkgver=4.12.2
-pkgrel=2
+pkgver=4.12.3
+pkgrel=1
 pkgdesc="A static-site generator with a focus on flexibility"
 arch=('any')
 url="https://nanoc.app"
@@ -21,20 +21,17 @@ depends=(
   'ruby-nanoc-cli'
   'ruby-nanoc-core'
   'ruby-nanoc-deploying'
+  'ruby-nanoc-external'
+  'ruby-nanoc-live'
   'ruby-parallel'
   'ruby-tty-command'
   'ruby-tty-which'
 )
-optdepends=(
-  'ruby-nanoc-external: For using an :external filter'
-  "ruby-nanoc-checking: Provides the 'check' subcommand"
-  "ruby-nanoc-deploying: Provides the 'deploy' subcommand"
-  "ruby-nanoc-live: Provides the 'live' subcommand, and required for 'nanoc compile --watch'"
-)
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('e816fa233a60dd6430dfb1495051fd5246c37663df83adb9f8387cb20fc3ad1b174132c79b8c1a3c15a41e74eeb2b6a5cd9caa9c2d671096a1f1612b6efd138a')
+sha512sums=('5551fb300b148c7de9c9bc03eb6687f39900f9e2a8a673e5e2e5f4c400b6b57b66af19c2e5b5b949ca36d6c990ce58779f9ba8a49172e2c7dbb2dc706f410d05')
+b2sums=('fe70f3318e5517f6c11d786b5ecc8ebca2d1114c6450ae0dfea9ea728fc3b2bb12c1a661a0f7bddf0b6c50d31957ebe4414f892ce5a8373b29881a07d91d2e9d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
