@@ -1,0 +1,23 @@
+pkgbase = vapoursynth-plugin-vsrealesrgan-git
+	pkgdesc = Plugin for Vapoursynth: vsrealesrgan (GIT version)
+	pkgver = 1.2.0.3.g5a1bef4
+	pkgrel = 1
+	url = https://github.com/HolyWu/vs-realesrgan
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = vapoursynth
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-requests
+	optdepends = python-pytorch: CPU
+	optdepends = python-pytorch-opt: CPU with AVX2 optimizations
+	optdepends = python-pytorch-cuda: CUDA and CPU
+	optdepends = python-pytorch-opt-cuda: CUDA with CPU with AVX2 optimizations
+	provides = vapoursynth-plugin-vsrealesrgan
+	conflicts = vapoursynth-plugin-vsrealesrgan
+	source = vsrealesrgan::git+https://github.com/HolyWu/vs-realesrgan.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsrealesrgan-git
