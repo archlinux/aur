@@ -7,8 +7,8 @@
 
 _srcname=dash-to-dock
 pkgname=gnome-shell-extension-dash-to-dock-gnome41-git
-pkgver=56.r526.gcd5d7c4
-pkgrel=1
+pkgver=69+526+gcd5d7c4
+pkgrel=2
 pkgdesc="move the dash out of the overview transforming it in a dock (With GNOME 41 patches)"
 arch=('any')
 url="https://github.com/frantisekz/dash-to-dock/"
@@ -23,9 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_srcname}"
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
-  [ ${PIPESTATUS[0]} -eq 0 ] || \
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/^extensions\.gnome\.org-v//g' | sed 's/-/+/g' | sed 's/^56/69/g'
 }
 
 build() {
