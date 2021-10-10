@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=cmake-language-server
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Python based cmake language server"
 arch=('any')
 url="https://github.com/regen100/cmake-language-server"
@@ -18,23 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz" pygls.patch)
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('a0b8cc43555a06b7964359c80dd35c8cfcbcdea1b2213b2e64378d5ea721c100' 'SKIP')
-
-prepare() {
-	cd "$srcdir"
-
-	patch --forward --strip=1 --input="$srcdir/pygls.patch"
-
-	cd "$srcdir/$pkgname-$pkgver"
-
-	sed \
-		-e "s/from distutils.core import setup/from setuptools import setup/" \
-		-e "s/pygls>=0.8.1,<0.9.0/pygls>=0.8.1/" \
-		-i setup.py
-
-}
+sha256sums=('f8719065a57e028cee773759a7e9e5966455ca928fd8d51a441bfcb2574959d8')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
