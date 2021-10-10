@@ -1,0 +1,13 @@
+pkgbase = fasmg
+	pkgdesc = Assembler with advanced macro-instruction abilities
+	pkgver = jg8x
+	pkgrel = 1
+	url = http://flatassembler.net/
+	arch = x86_64
+	license = BSD
+	noextract = fasmg.jg8x.zip
+	options = !strip
+	source = https://flatassembler.net/fasmg.jg8x.zip
+	sha512sums = 158343809c2ede96f0872325d70467c476a8099cd8c1311a32e23bac16cc5ad5a33d61ef95471bf20fe17ea0061d031e244faf0b9e34d95fb9f09efaee1c7746
+
+pkgname = fasmg
