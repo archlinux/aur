@@ -1,0 +1,11 @@
+pkgbase = gfie-bin
+	pkgdesc = Greenfish Icon Editor Pro (GFIE Pro) is a powerful open source image editor, especially suitable for creating icons, cursors, animations and icon libraries.
+	pkgver = 3.6
+	pkgrel = 1
+	url = http://greenfishsoftware.org/gfie.php
+	arch = x86_64
+	license = GPL v3
+	source = http://greenfishsoftware.org/dl.php?filename=gfie3.6_linux.zip
+	md5sums = SKIP
+
+pkgname = gfie-bin
