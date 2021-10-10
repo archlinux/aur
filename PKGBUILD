@@ -6,7 +6,7 @@
 
 pkgname=squeak-vm
 pkgver=4.10.2.2614
-pkgrel=5
+pkgrel=6
 pkgdesc="Full-featured implementation of the Smalltalk programming language and environment"
 arch=('x86_64')
 url="http://squeakvm.org"
