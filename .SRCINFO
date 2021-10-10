@@ -1,6 +1,6 @@
 pkgbase = r-bslib
 	pkgdesc = Custom 'Bootstrap' 'Sass' Themes for 'shiny' and 'rmarkdown'
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bslib
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-bslib
 	optdepends = r-rappdirs
 	optdepends = r-curl
 	optdepends = r-magrittr
-	source = https://cran.r-project.org/src/contrib/bslib_0.3.0.tar.gz
-	sha256sums = d9468c62f69576db5b66cb552e938a02f7cc76d42f0f56f372947059fe56d27d
+	source = https://cran.r-project.org/src/contrib/bslib_0.3.1.tar.gz
+	sha256sums = 5f5cb56e5cab9039a24cd9d70d73b69c2cab5b2f5f37afc15f71dae0339d9849
 
 pkgname = r-bslib
