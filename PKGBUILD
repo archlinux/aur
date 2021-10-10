@@ -4,8 +4,8 @@
 pkgname='zellij-bin'
 _pkgname=${pkgname%-bin}
 pkgver=0.18.1
-pkgrel=1
-pkgdesc='A multiplexing terminal workspace with batteries included'
+pkgrel=2
+pkgdesc='A multiplexing terminal workspace with batteries included (pre-compiled)'
 arch=('x86_64')
 url='https://github.com/zellij-org/zellij'
 _rawurl='https://raw.githubusercontent.com/zellij-org/zellij/main'
