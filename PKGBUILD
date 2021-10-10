@@ -17,13 +17,13 @@ optdepends=(
 )
 pkgrel=1
 source=(
-    'https://launchpad.net/~kicad/+archive/ubuntu/kicad-dev-nightly/+files/kicad-nightly_202110091812+2662433374~140~ubuntu21.04.1_amd64.deb'
+    'https://launchpad.net/~kicad/+archive/ubuntu/kicad-dev-nightly/+files/kicad-nightly_202110101822+a92516bcd2~140~ubuntu21.04.1_amd64.deb'
     'kicad-nightly.env'
 )
 
-pkgver=202110091812+2662433374
+pkgver=202110101822+a92516bcd2
 sha256sums=(
-    'e108e543f866a854bc2455a33ae4a028c0dfbe0b88f47a70cd6d22eed2707de8'
+    '5dc0fdbe356994a919fa6c7bc0f15295cc27c69ee4543b956501eeb717d8724d'
     'fce26af6b9c181a99197bfc9bc6c778561ad55a375480f4d0d73bb34078b5d18'
 )
 
