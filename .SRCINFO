@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-vsffdnet-git
+	pkgdesc = Plugin for Vapoursynth: vsffdnet (GIT version)
+	pkgver = 1.1.1.0.ga07ab9a
+	pkgrel = 1
+	url = https://github.com/HolyWu/vs-ffdnet
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = vapoursynth
+	depends = python-numpy
+	optdepends = python-pytorch: CPU
+	optdepends = python-pytorch-opt: CPU with AVX2 optimizations
+	optdepends = python-pytorch-cuda: CUDA and CPU
+	optdepends = python-pytorch-opt-cuda: CUDA with CPU with AVX2 optimizations
+	provides = vapoursynth-plugin-vsffdnet
+	conflicts = vapoursynth-plugin-vsffdnet
+	source = vsffdnet::git+https://github.com/HolyWu/vs-ffdnet.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsffdnet-git
