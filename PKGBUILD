@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.8.3.r133.gd0d5b5fc
+pkgver=0.5.9.beta2.r11.gd56dff08
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -16,8 +16,7 @@ depends=('python-gobject' 'python-yaml' 'python-evdev' 'python-dbus' 'gtk3'
          'python-pillow' 'python-requests' 'gnome-desktop' 'webkit2gtk'
          'mesa-demos' 'python-dbus' 'python-distro' 'python-magic' 'python-lxml')
 makedepends=('git' 'meson')
-#checkdepends=('xorg-server-xvfb' 'python-nose-cover3' 'wine' 'xterm'
-#              'gnome-desktop' 'pciutils' 'xorg-xrandr')
+#checkdepends=('xorg-server-xvfb' 'python-nose-cover3' 'wine' 'xterm')
 optdepends=(
   'wine: easiest way to get all the libraries missing from the Lutris runtime'
   'vulkan-icd-loader: Vulkan support'
@@ -29,28 +28,29 @@ optdepends=(
   'gamemode: Allows games to request a temporary set of optimisations'
   "mangohud: Display the games' FPS + other information"
   "lib32-mangohud: Display the games' FPS + other information"
-  'innoextract: Extract Inno Setup installers')
+  'innoextract: Extract Inno Setup installers'
+  'xorg-xgamma: Restore gamma on game exit')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/lutris/lutris.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	arch-meson "${pkgname%-git}" build
-	meson compile -C build
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
 }
 
 #check() {
-#	cd "$srcdir/${pkgname%-git}"
-#	xvfb-run nosetests --cover-erase --with-xunit --xunit-file=nosetests.xml \
-#		--with-coverage --cover-package=lutris --cover-xml-file=coverage.xml
+#  cd "$srcdir/${pkgname%-git}"
+#  xvfb-run nosetests --cover-erase --with-xunit --xunit-file=nosetests.xml \
+#    --with-coverage --cover-package=lutris --cover-xml-file=coverage.xml
 #}
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }

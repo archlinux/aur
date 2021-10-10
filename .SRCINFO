@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.8.3.r133.gd0d5b5fc
+	pkgver = 0.5.9.beta2.r11.gd56dff08
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
@@ -39,10 +39,10 @@ pkgbase = lutris-git
 	optdepends = mangohud: Display the games' FPS + other information
 	optdepends = lib32-mangohud: Display the games' FPS + other information
 	optdepends = innoextract: Extract Inno Setup installers
+	optdepends = xorg-xgamma: Restore gamma on game exit
 	provides = lutris
 	conflicts = lutris
 	source = git+https://github.com/lutris/lutris.git
 	sha256sums = SKIP
 
 pkgname = lutris-git
-
