@@ -1,2 +1,2 @@
-d /var/cache/photoprism 0755 photoprism photoprism -
-d /var/lib/photoprism 0755 photoprism photoprism -
+Z /var/cache/photoprism 0755 photoprism photoprism -
+Z /var/lib/photoprism 0755 photoprism photoprism -
