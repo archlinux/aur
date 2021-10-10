@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-lostfunc-git
+	pkgdesc = Plugin for Vapoursynth: lostfunc (GIT version)
+	pkgver = v1.0.g0a68168
+	pkgrel = 1
+	url = https://github.com/theChaosCoder/lostfunc
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth-plugin-adjust-git
+	depends = vapoursynth-plugin-havsfunc
+	depends = vapoursynth-plugin-oyster-git
+	depends = vapoursynth-plugin-mvtools
+	depends = vapoursynth-plugin-knlmeanscl-git
+	depends = vapoursynth-plugin-awarpsharp2-git
+	depends = vapoursynth-plugin-bm3d-git
+	provides = vapoursynth-plugin-lostfunc
+	conflicts = vapoursynth-plugin-lostfunc
+	source = lostfunc::git+https://github.com/theChaosCoder/lostfunc.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-lostfunc-git
