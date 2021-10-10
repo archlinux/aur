@@ -4,10 +4,10 @@
 
 
 pkgname=alchemy-next-viewer
-pkgver=6.4.23.47339
+pkgver=6.4.23.47423
 pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer!"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
 depends=(dbus-glib glu gtk3 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
@@ -32,23 +32,24 @@ pkgver() {
 }
 
 prepare() {
-	cd "$pkgname"
+	cd "$pkgname" || exit 1
 	virtualenv ".venv" -p python3
 	source ".venv/bin/activate"
-	pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
-	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=FALSE -DDISABLE_FATAL_WARNINGS=ON -DREVISION_FROM_VCS=ON -DUSE_FMODSTUDIO=OFF
+	command -v autobuild || pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
+	git reset --hard f022995d691505b625ce28520c97ed2ccc47026a
+	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON
 }
 
 build() {
-	cd "$pkgname/build-linux-64"
-	autobuild build -A 64 -c ReleaseOS --no-configure
+	cd "$pkgname/build-linux-64" || exit 1
+	ninja -j$(nproc)
 }
 
 package() {
 	mkdir -p "$pkgdir/opt"
 	mkdir -p "$pkgdir/usr/share/applications"
 
-	mv "$pkgname/build-linux-64/newview/packaged" "$pkgdir/opt/alchemy-next"
+	mv "${pkgname}/build-linux-64/newview/packaged" "$pkgdir/opt/alchemy-next"
 
 	install -Dm644 "alchemy-next.desktop" "$pkgdir/usr/share/applications/alchemy-next.desktop"
 }
