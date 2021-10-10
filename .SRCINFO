@@ -1,0 +1,20 @@
+pkgbase = moosync
+	pkgdesc = A simple music player
+	pkgver = 0.0.4.r74.ga03892d
+	pkgrel = 1
+	url = https://github.com/Moosync/Moosync
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs
+	makedepends = yarn
+	depends = electron13
+	provides = moosync
+	source = moosync-git::git+https://github.com/Moosync/Moosync#branch=main
+	source = moosync
+	source = moosync.desktop
+	sha256sums = SKIP
+	sha256sums = 76fa98490ebc9c5b2e29a11b4a2abf72080a44903ae3dd53a8c0ff65ff5eee6b
+	sha256sums = e21b3972035947af7515bad24965a3786756cbfbf12e9c2df6d6029151a47da3
+
+pkgname = moosync

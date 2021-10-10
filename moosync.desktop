@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Moosync
+Comment=A simple music player for desktop
+Exec=moosync
+Terminal=false
+Type=Application
+Icon=moosync
