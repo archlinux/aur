@@ -10,7 +10,6 @@ pkgbase = thextech-supermariobrosx
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = sdl2
 	makedepends = libpng
 	makedepends = libjpeg-turbo
