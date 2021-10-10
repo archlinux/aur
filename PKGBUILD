@@ -11,7 +11,7 @@ makedepends=("gcc")
 optdepends=("viu: Display distro logos as images"
 		"lshw: Better GPU detection")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheDarkBug/uwufetch/archive/$pkgver.tar.gz")
-sha256sums=("ed737f29442db0b82def11ba2902f136c8205750493d4b5222639be071c5a3c3")
+sha256sums=("6fa341b68d4c8c4bf4ff12d88ea0a81d35328992530d3747ba6b186095f09554")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
