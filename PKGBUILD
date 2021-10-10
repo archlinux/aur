@@ -7,8 +7,11 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-debandshit'
-license=('GPL')
-depends=('vapoursynth-plugin-vsutil-git')
+license=('MIT')
+depends=('vapoursynth-plugin-mvsfunc-git'
+         'vapoursynth-plugin-vsutil-git'
+         'vapoursynth-plugin-fmtconv'
+         )
 makedepends=('git'
              'python-setuptools'
              )
