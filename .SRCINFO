@@ -1,6 +1,6 @@
 pkgbase = rhubarb-lip-sync
 	pkgdesc = Rhubarb Lip Sync is a command-line tool that automatically creates 2D mouth animation from voice recordings.
-	pkgver = 1.10.1
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/DanielSWolf/rhubarb-lip-sync
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = rhubarb-lip-sync
 	makedepends = boost-libs
 	provides = DanielSWolf
 	options = !strip
-	source = v1.10.1.zip::https://codeload.github.com/DanielSWolf/rhubarb-lip-sync/zip/refs/heads/master
-	md5sums = f41965770f138601e00e6b1115051ed9
+	source = v1.11.1.zip::https://codeload.github.com/DanielSWolf/rhubarb-lip-sync/zip/refs/heads/master
+	md5sums = SKIP
 
 pkgname = rhubarb-lip-sync
-
