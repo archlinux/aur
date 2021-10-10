@@ -1,6 +1,6 @@
 pkgbase = remoteit-desktop-bin
 	pkgdesc = Remote.it cross platform desktop application for creating and hosting connections
-	pkgver = 3.0.2
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://remote.it/
 	install = remoteit-desktop-bin.install
@@ -47,8 +47,7 @@ pkgbase = remoteit-desktop-bin
 	conflicts = remoteit-desktop
 	options = !strip
 	options = !emptydirs
-	source = https://downloads.remote.it/desktop/v3.0.2/remoteit-amd64-installer.deb
-	md5sums = e2fbaa1a9362853825309e5034889476
+	source = https://downloads.remote.it/desktop/v3.2.2/remoteit-amd64-installer.deb
+	md5sums = e210df7ba2de5d96c35a96cd721b086b
 
 pkgname = remoteit-desktop-bin
-
