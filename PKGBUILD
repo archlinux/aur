@@ -9,7 +9,7 @@ url='https://github.com/linux-surface/surface-control'
 license=('MIT')
 arch=('x86_64')
 depends=('gcc-libs' 'systemd-libs')
-makedepends=('rust' 'cargo' 'systemd')
+makedepends=('git' 'rust' 'cargo' 'systemd')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

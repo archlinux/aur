@@ -5,6 +5,7 @@ pkgbase = surface-control-git
 	url = https://github.com/linux-surface/surface-control
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = systemd
