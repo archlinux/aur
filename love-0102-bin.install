@@ -1,0 +1,15 @@
+post_install() {
+	if [ "$1" = "configure" ]; then
+		ldconfig
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	if [ "$1" = "remove" ]; then
+		ldconfig
+	fi
+}
