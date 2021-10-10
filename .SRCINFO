@@ -1,7 +1,7 @@
 pkgbase = tasker-permissions-git
 	pkgdesc = Utility to easily grant Tasker permissions
-	pkgver = 0.0.1.r3.g5528ae3
-	pkgrel = 1
+	pkgver = 0.1.0.r1.g8aef028
+	pkgrel = 2
 	url = https://github.com/joaomgcd/Tasker-Permissions
 	arch = x86_64
 	license = ISC

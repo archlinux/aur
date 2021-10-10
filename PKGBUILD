@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=tasker-permissions-git
-pkgver=0.0.1.r3.g5528ae3
-pkgrel=1
+pkgver=0.1.0.r1.g8aef028
+pkgrel=2
 pkgdesc="Utility to easily grant Tasker permissions"
 arch=('x86_64')
 url="https://github.com/joaomgcd/Tasker-Permissions"
@@ -24,8 +24,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
+  electronDist=/usr/lib/electron
+  electronVer=$(sed s/^v// /usr/lib/electron/version)
   npm install --cache "$srcdir/npm-cache"
-  npm run pack
+  ./node_modules/.bin/electron-builder build --dir \
+    $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
