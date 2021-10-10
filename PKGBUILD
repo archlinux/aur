@@ -8,7 +8,7 @@
 _target_arch=arm
 _target=${_target_arch}-linux-gnueabihf
 pkgname=${_target}-linux-api-headers
-pkgver=5.12.15
+pkgver=5.14.9
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace (${_target})"
 arch=(any)
@@ -16,7 +16,7 @@ url='https://www.gnu.org/software/libc'
 license=(GPL2)
 makedepends=(rsync)
 source=(https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.{xz,sign})
-b2sums=('2d94859080bba686786b690733d6df4a17f6183c690854545b87d784d16fbc5050fc07be08b2360cc1d0a6fe11bd8f18add68c893d92bb52e10bb0f61ff4eb76'
+b2sums=('3d3c4e64ddf53454c25a283287cfac2f8d9674e146c7fdf80d130cfa50252fc52c57ad187f47db09d134a2ea49e16bda5018c83cd7c38c6cec9bc2e27a18b751'
         'SKIP')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E')  # Greg Kroah-Hartman
