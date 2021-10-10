@@ -1,0 +1,4 @@
+*.snap
+/pkg
+/src
+squashfs-root
