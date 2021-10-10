@@ -1,17 +1,29 @@
 pkgbase = vapoursynth-plugin-fvsfunc-git
 	pkgdesc = Plugin for Vapoursynth: fvsfunc (GIT version)
-	pkgver = r19.83f5705
-	pkgrel = 2
+	pkgver = r24.2f5b28d
+	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/fvsfunc
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = vapoursynth-plugin-havsfunc-git
+	depends = vapoursynth-plugin-mvsfunc-git
 	depends = vapoursynth-plugin-muvsfunc-git
 	depends = vapoursynth-plugin-edi_rpow2-git
+	depends = vapoursynth-plugin-nnedi3-git
+	depends = vapoursynth-plugin-fmtconv
+	depends = vapoursynth-plugin-bilateral-git
+	depends = vapoursynth-plugin-dfttest-git
+	depends = vapoursynth-plugin-ffms2
+	depends = vapoursynth-plugin-fft3dfilter-git
+	depends = vapoursynth-plugin-mvtools-git
+	depends = vapoursynth-plugin-sangnom-git
+	depends = vapoursynth-plugin-yadifmod-git
+	optdepends = vapoursynth-plugin-bilateralgpu-git
+	optdepends = vapoursynth-plugin-descale-git
 	provides = vapoursynth-plugin-fvsfunc
 	conflicts = vapoursynth-plugin-fvsfunc
 	source = fvsfunc::git+https://github.com/Irrational-Encoding-Wizardry/fvsfunc.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-fvsfunc-git
-

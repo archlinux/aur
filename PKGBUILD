@@ -2,15 +2,29 @@
 
 _plug=fvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r19.83f5705
-pkgrel=2
+pkgver=r24.2f5b28d
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/fvsfunc'
 license=('GPL')
-depends=('vapoursynth-plugin-muvsfunc-git'
+depends=('vapoursynth-plugin-havsfunc-git'
+         'vapoursynth-plugin-mvsfunc-git'
+         'vapoursynth-plugin-muvsfunc-git'
          'vapoursynth-plugin-edi_rpow2-git'
+         'vapoursynth-plugin-nnedi3-git'
+         'vapoursynth-plugin-fmtconv'
+         'vapoursynth-plugin-bilateral-git'
+         'vapoursynth-plugin-dfttest-git'
+         'vapoursynth-plugin-ffms2'
+         'vapoursynth-plugin-fft3dfilter-git'
+         'vapoursynth-plugin-mvtools-git'
+         'vapoursynth-plugin-sangnom-git'
+         'vapoursynth-plugin-yadifmod-git'
          )
+optdepends=('vapoursynth-plugin-bilateralgpu-git'
+            'vapoursynth-plugin-descale-git'
+            )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
