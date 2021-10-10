@@ -16,6 +16,8 @@ pkgbase = vapoursynth-plugin-vsffdnet-git
 	provides = vapoursynth-plugin-vsffdnet
 	conflicts = vapoursynth-plugin-vsffdnet
 	source = vsffdnet::git+https://github.com/HolyWu/vs-ffdnet.git
+	source = https://github.com/NSQY/vs-ffdnet/commit/e770853e55840f4b4682ea5687d6a5b8d335f0eb.diff
 	sha256sums = SKIP
+	sha256sums = 1aed9b1223e2ec510a8f92f8884c1732fc9e21fba40f633a60ccbf7b082d2b0f
 
 pkgname = vapoursynth-plugin-vsffdnet-git

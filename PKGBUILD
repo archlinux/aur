@@ -21,12 +21,20 @@ optdepends=('python-pytorch: CPU'
             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/HolyWu/vs-ffdnet.git")
-sha256sums=('SKIP')
+source=("${_plug}::git+https://github.com/HolyWu/vs-ffdnet.git"
+        'https://github.com/NSQY/vs-ffdnet/commit/e770853e55840f4b4682ea5687d6a5b8d335f0eb.diff')
+sha256sums=('SKIP'
+            '1aed9b1223e2ec510a8f92f8884c1732fc9e21fba40f633a60ccbf7b082d2b0f'
+            )
 
 pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - . | tr -d v)"
+}
+
+prepare() {
+  cd "${_plug}"
+  patch -p1 -i "${srcdir}/e770853e55840f4b4682ea5687d6a5b8d335f0eb.diff"
 }
 
 build() {
