@@ -6,12 +6,12 @@ pkgver=r13.c395f09
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url="https://github.com/dubhater/vapoursynth-${_plug}"
+url="https://github.com/Vapoursynth-Plugins-Gitify/G41Fun"
 license=('apache')
 depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-muvsfunc-git'
          'vapoursynth-plugin-nnedi3_resample-git'
-         'vapoursynth-plugin-mvtools_sf-git'
+         'vapoursynth-plugin-mvmulti'
          'vapoursynth-plugin-rgsf-git'
          'vapoursynth-plugin-vcm-git'
          )
