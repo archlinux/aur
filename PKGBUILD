@@ -4,8 +4,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bigloo-devel
-pkgver=4.4b
-pkgrel=13
+pkgver=4.4c
+pkgrel=1
 epoch=1
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=("bigloo=$pkgver")
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-unstable.tar.gz bigloo-emacs.patch)
-sha256sums=('c5f9f690a008bee150545ea150a1d18240620ec6b7c4100b25ea434987b471b5'
+sha256sums=('f24522f080eb9722640c26e8d219a426229bbec2392d0ad239c9dabbb97f9a0d'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
 
 prepare() {
