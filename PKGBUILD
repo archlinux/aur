@@ -6,7 +6,7 @@
 _gitname='nerd-fonts'
 pkgname='nerd-fonts-complete'
 pkgver=2.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts.'
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
@@ -29,6 +29,8 @@ provides=(
   'nerd-fonts-source-code-pro'
   'nerd-fonts-terminus'
   'nerd-fonts-ubuntu-mono'
+  'ttf-font-nerd'
+  'ttf-nerd-font'
   'ttf-nerd-fonts'
   'ttf-nerd-fonts-symbols'
   'ttf-nerd-fonts-symbols-mono'
