@@ -1,6 +1,6 @@
 pkgbase = r-caret
 	pkgdesc = Classification and Regression Training
-	pkgver = 6.0.89
+	pkgver = 6.0.90
 	pkgrel = 1
 	url = https://cran.r-project.org/package=caret
 	arch = i686
@@ -45,7 +45,7 @@ pkgbase = r-caret
 	optdepends = r-superpc
 	optdepends = r-testthat
 	optdepends = r-themis
-	source = https://cran.r-project.org/src/contrib/caret_6.0-89.tar.gz
-	sha256sums = 043b602360a6434f6e61e13ea8483f894f818d9f6e52d4a721e2ed5007612221
+	source = https://cran.r-project.org/src/contrib/caret_6.0-90.tar.gz
+	sha256sums = e851a4ed7d939c665e57e3551a5464b09fe4285e7c951236efdd890b0da866bc
 
 pkgname = r-caret
