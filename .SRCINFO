@@ -1,13 +1,13 @@
 pkgbase = surface-control-git
 	pkgdesc = Control various aspects of Microsoft Surface devices from the Command-Line
-	pkgver = 0.4.1.1.r0.g073eae1
+	pkgver = 0.4.1.1.r1.g152f1b8
 	pkgrel = 1
 	url = https://github.com/linux-surface/surface-control
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	makedepends = systemd-libs
+	makedepends = systemd
 	depends = gcc-libs
 	depends = systemd-libs
 	provides = surface-control
@@ -16,4 +16,3 @@ pkgbase = surface-control-git
 	sha256sums = SKIP
 
 pkgname = surface-control-git
-
