@@ -14,7 +14,6 @@ depends=('vapoursynth-plugin-eedi2-git'
          'vapoursynth-plugin-tcanny-git'
          'vapoursynth-plugin-tedgemask-git'
          'vapoursynth-plugin-nnedi3cl-git'
-         'vapoursynth-plugin-eedi3-git'
          'vapoursynth-plugin-eedi3m-git'
          )
 makedepends=('git')

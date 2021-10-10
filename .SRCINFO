@@ -12,7 +12,6 @@ pkgbase = vapoursynth-plugin-xaa-git
 	depends = vapoursynth-plugin-tcanny-git
 	depends = vapoursynth-plugin-tedgemask-git
 	depends = vapoursynth-plugin-nnedi3cl-git
-	depends = vapoursynth-plugin-eedi3-git
 	depends = vapoursynth-plugin-eedi3m-git
 	provides = vapoursynth-plugin-xaa
 	conflicts = vapoursynth-plugin-xaa
