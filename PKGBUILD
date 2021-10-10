@@ -62,7 +62,7 @@ pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=17.3.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
@@ -90,7 +90,17 @@ fi
 _archive=${_archive_name}.zip
 _installer_binary=${_archive_name}.run
 
-source=("${_archive}"::"$_srcurl")
+if [ ! -f ${PWD}/${_archive} ]; then
+	DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
+	if [ -f $DOWNLOADS_DIR/${_archive} ]; then
+		ln -sfn $DOWNLOADS_DIR/${_archive} ${PWD}
+		source=("local://${_archive}")
+	else
+		source=("${_archive}"::"$_srcurl")
+	fi
+else
+	source=("local://${_archive}")
+fi
 
 prepare()
 {
@@ -121,10 +131,12 @@ package()
 	./${_installer_binary} -i -y -n -a -C "${pkgdir}/opt/${_pkgname}"
 	rm -rf ${_installer_binary}
 
-	echo -e "\033[1m==> Add lib symlinks...\033[0m"
-	cd "${pkgdir}/opt/${_pkgname}/" || exit
-	ln -s /usr/lib/libcrypto.so.1.0.0 libs/libcrypto.so.10
-	ln -s /usr/lib/libssl.so.1.0.0 libs/libssl.so.10
+#### No longer necessary
+#	echo -e "\033[1m==> Add lib symlinks...\033[0m"
+#	cd "${pkgdir}/opt/${_pkgname}/" || exit
+#	ln -s /usr/lib/libcrypto.so.1.0.0 libs/libcrypto.so.10
+#	ln -s /usr/lib/libssl.so.1.0.0 libs/libssl.so.10
+####
 
 	echo -e "\033[1m==> Install launchers and configs...\033[0m"
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
