@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/armosec/kubescape"
 license=("APACHE")
 source=(
-https://github.com/armosec/kubescape/releases/download/v${pkgver}/kubescape-ubuntu-latest
+$pkgname-$pkgver::https://github.com/armosec/kubescape/releases/download/v${pkgver}/kubescape-ubuntu-latest
 )
 sha256sums=(
 323e734cd5a87eb5b79adb51649bd8315746da4292a15e4df822fee6ef9368b4

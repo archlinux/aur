@@ -6,7 +6,7 @@ pkgbase = kubescape-bin
 	arch = x86_64
 	license = APACHE
 	provides = kubescape
-	source = https://github.com/armosec/kubescape/releases/download/v1.0.109/kubescape-ubuntu-latest
+	source = kubescape-bin-1.0.109::https://github.com/armosec/kubescape/releases/download/v1.0.109/kubescape-ubuntu-latest
 	sha256sums = 323e734cd5a87eb5b79adb51649bd8315746da4292a15e4df822fee6ef9368b4
 
 pkgname = kubescape-bin
