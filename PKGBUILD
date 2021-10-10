@@ -2,7 +2,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _cranname=mvtnorm
-_cranver=1.1-2
+_cranver=1.1-3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
 depends=('r>=3.5.0')
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('f25ce135e5bd1adc82e65bf53fe3da86d6cada15a70dd8a7a8510b976f3d9017')
+sha256sums=('ff4e302139ba631280fc9c4a2ab168596bfd09e17a805974199b043697c02448')
 
 build() {
   cd "${srcdir}"
