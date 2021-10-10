@@ -51,6 +51,7 @@ check() {
 package() {
 	install -Dm 0644 "${srcdir}/photoprism.service" "${pkgdir}/usr/lib/systemd/system/photoprism.service"
 	install -Dm 0644 "${srcdir}/photoprism.sysusers" "${pkgdir}/usr/lib/sysusers.d/photoprism.conf"
+	install -Dm 0644 "${srcdir}/photoprism.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/photoprism.conf"
 
 	mkdir -p "$pkgdir/etc/photoprism"
 	install -Dm 0444 "${srcdir}/options.yml" "$pkgdir/etc/photoprism/options.yml"
