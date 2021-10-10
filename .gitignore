@@ -1,1 +1,4 @@
 nordic-wallpapers
+src/
+pkg/
+*.zst
