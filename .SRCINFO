@@ -1,6 +1,6 @@
 pkgbase = chad_launcher-git
 	pkgdesc = GNU/LINUX GAMING UNLEASHED!
-	pkgver = r169.81a271b
+	pkgver = r228.f7753df
 	pkgrel = 1
 	url = https://gitlab.com/Gnurur/chad_launcher
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = chad_launcher-git
 	depends = libappindicator-gtk3
 	depends = libvips
 	conflicts = chad_launcher-bin
-	source = git+https://gitlab.com/Gnurur/chad_launcher.git#branch=master
+	source = git+https://notabug.org/johncena141/chad_launcher.git#branch=master
 	md5sums = SKIP
 
 pkgname = chad_launcher-git
