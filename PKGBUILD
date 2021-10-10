@@ -10,16 +10,27 @@ url='https://forum.doom9.org/showthread.php?t=171956'
 license=('GPL')
 depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-mvsfunc-git'
+         'vapoursynth-plugin-fmtconv'
+         'vapoursynth-plugin-eedi2-git'
+         'vapoursynth-plugin-nnedi3-git'
+         'vapoursynth-plugin-mvtools'
+         'vapoursynth-plugin-sangnom-git'
          'vapoursynth-plugin-tcanny-git'
+         'vapoursynth-plugin-awarpsharp2-git'
+         'vapoursynth-plugin-dfttest-git'
+#          'vapoursynth-plugin-vsfilter-git'        # windows only
+#          'vapoursynth-plugin-vsfiltermod-git'     # windows only
+         'vapoursynth-plugin-bilateral-git'
          'vapoursynth-plugin-median-git'
-         'vapoursynth-plugin-histogram'
+         'vapoursynth-plugin-ctmf-git'
+         'vapoursynth-plugin-histogram-git'
+         'vapoursynth-plugin-cas-git'
          )
 optdepends=('python-numpy: For use muvsfunc_numpy'
             'python-tensorflow: For use super_resolution function with TensorFlow as backend (muvsfunc_numpy)'
-            'mxnet: For use super_resolution function with MxNET as backend (muvsfunc_numpy)'
-            'vapoursynth-plugin-vsmxnet-git: For use super_resolution function with MxNET as backend (SuperRes)'
-            'vapoursynth-plugin-vcfreq: For use with GPS function (muvsfunc_misc)'
-
+#             'mxnet: For use super_resolution function with MxNET as backend (muvsfunc_numpy)'
+#             'vapoursynth-plugin-vsmxnet-git: For use super_resolution function with MxNET as backend (SuperRes)'
+            'vapoursynth-plugin-vcm-git: For use with GPS function (muvsfunc_misc)'
             )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
