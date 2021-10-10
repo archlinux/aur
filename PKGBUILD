@@ -4,7 +4,7 @@ pkgname=xaskpass
 pkgdesc="A lightweight passphrase dialog"
 url="https://github.com/user827/xaskpass.git"
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('Apache')
 makedepends=('git' 'rust' 'cargo' 'clang')
@@ -17,7 +17,7 @@ options=(strip)
 
 build() {
   cd "$pkgname"
-  mkdir manout
+  [ -d manout ] || mkdir manout
   XASKPASS_BUILDDIR=manout cargo build --release --locked --target-dir target
 }
 
@@ -25,7 +25,9 @@ check() {
   cd "$pkgname"
   cargo test --release --locked --target-dir target
   cd target/release
-  ./xaskpass --version
+  local version
+  version=$(./xaskpass --version)
+  [ "$version" = "$pkgname $pkgver" ]
 }
 
 package() {
