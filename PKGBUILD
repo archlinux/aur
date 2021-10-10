@@ -14,17 +14,9 @@ depends=('vapoursynth'
 makedepends=('git'
              'meson'
              )
-provides=("vapoursynth-plugin-${_plug}"
-          'vapoursynth-plugin-vcmod'
-          'vapoursynth-plugin-vcfreq'
-          'vapoursynth-plugin-vcmove'
-           )
+provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}"
            'vapoursynth-plugin-vcmod'
-           'vapoursynth-plugin-vcfreq'
-           'vapoursynth-plugin-vcmove'
-           )
-replaces=('vapoursynth-plugin-vcmod'
            'vapoursynth-plugin-vcfreq'
            'vapoursynth-plugin-vcmove'
            )
