@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-dash-to-plank
 	pkgdesc = GNOME Shell extension to integrate Plank, the simplest dock on the planet.
-	pkgver = 11
+	pkgver = 12
 	pkgrel = 1
 	url = https://github.com/hardpixel/dash-to-plank
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-dash-to-plank
 	depends = plank
 	provides = gnome-shell-extension-dash-to-plank
 	conflicts = gnome-shell-extension-dash-to-plank-git
-	source = gnome-shell-extension-dash-to-plank-11.tar.gz::https://github.com/hardpixel/dash-to-plank/archive/v11.tar.gz
-	md5sums = e0808d4cc8e63c2d0b4c08a652973008
+	source = gnome-shell-extension-dash-to-plank-12.tar.gz::https://github.com/hardpixel/dash-to-plank/archive/v12.tar.gz
+	md5sums = 10cc2fbfe1c205cb92aaea2f77fe3559
 
 pkgname = gnome-shell-extension-dash-to-plank
