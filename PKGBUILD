@@ -27,15 +27,15 @@ pkgver() {
 build() {
   cd "busybox"
 
-  # If you want pure alpine busybox config then uncoment this line:
-  # cp "$srcdir/../config" "$srcdir/busybox/.config"
-  yes "" | make oldconfig
-
   cp "$srcdir/../config-example-latest" "$srcdir/busybox/.config"
   # This patch made by myself 
   # it just removes line numbers in history command
   # and made history more readable 
   cp "$srcdir/../show_history-patch.lineedit.c.patch" "$srcdir/busybox/lineedit.c.patch"
+
+  # If you want pure alpine busybox config then uncoment this line:
+  # cp "$srcdir/../config" "$srcdir/busybox/.config"
+  yes "" | make oldconfig
 
   # Uncoment to make custom changes
   #make menuconfig
