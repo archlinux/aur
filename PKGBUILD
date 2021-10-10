@@ -1,6 +1,6 @@
 pkgname="kbct-git"
 _gitname=kbct
-pkgver=0.1.0.r45.7c2a54f
+pkgver=0.1.0.r48.e0e1139
 pkgrel=1
 pkgdesc="Keyboard keycode mapping utility for Linux supporting layered configuration"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = kbct-git
 	pkgdesc = Keyboard keycode mapping utility for Linux supporting layered configuration
-	pkgver = 0.1.0.r45.7c2a54f
+	pkgver = 0.1.0.r48.e0e1139
 	pkgrel = 1
 	url = https://github.com/samvel1024/kbct
 	arch = x86_64
