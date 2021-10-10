@@ -1,4 +1,4 @@
-pkgbase = mesa
+pkgbase = mesa-i915g
 	pkgdesc = Mesa with i915 Gallium driver
 	pkgver = 21.2.2
 	pkgrel = 1
