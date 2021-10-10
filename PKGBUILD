@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=crabz
-pkgver=0.6.3
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Cross-platform compression and decompression tool"
 arch=('x86_64')
@@ -9,8 +9,9 @@ url="https://github.com/sstadick/crabz"
 license=('Unlicense' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'cmake')
+changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('875fc9d8914e53568b9aded241682c790c42f1346e1306b1697d45c7cadfe1e8')
+sha256sums=('c4c5a0ec5f8164774f7d83347c321dd9b37f3b3ed40d30e08b6ffed62bffd8ee')
 
 prepare() {
 	cd "$pkgname-$pkgver"
