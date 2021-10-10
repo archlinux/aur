@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=deSolve
-_cranver=1.29
+_cranver=1.30
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.3.0')
 optdepends=(r-scatterplot3d r-fme)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('266fe15ba1151e6a43f4d5e924875e9d4847a419444ebe043e2d263fc368190a')
+sha256sums=('39f65d7af6b4d85eb023cce2a200c2de470644b22d45e210c5b7d558c3abf548')
 
 build() {
   cd "${srcdir}"
