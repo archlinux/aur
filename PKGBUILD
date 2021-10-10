@@ -8,9 +8,9 @@
 
 
 ## Helpful internal stuff
-_commit=10b69af9e93a062525924041ffc419b0f8779b73
-_mozcver=2.26.4507.102
-_utdicver=20210925
+_commit=aa48b23dcf92ea1d85d8e8dbca8c0a0c37e159f8
+_mozcver=2.26.4520.102
+_utdicver=20211009
 
 pkgname='fcitx5-mozc-ut'
 pkgver=${_mozcver}.${_utdicver}

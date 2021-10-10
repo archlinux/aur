@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mozc-ut
 	pkgdesc = Mozc module for Fcitx5 bundled with the UT dictionary
-	pkgver = 2.26.4507.102.20210925
+	pkgver = 2.26.4520.102.20211009
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = fcitx5-mozc-ut
 	depends = fcitx5
 	depends = mozc-ut-common
 	optdepends = fcitx5-configtool
-	provides = fcitx5-mozc=2.26.4507.102
+	provides = fcitx5-mozc=2.26.4520.102
 	conflicts = fcitx-mozc
 	conflicts = fcitx-mozc-ut2
 	conflicts = fcitx-mozc-neologd-ut
@@ -24,7 +24,7 @@ pkgbase = fcitx5-mozc-ut
 	conflicts = fcitx-mozc-ut
 	conflicts = fcitx5-mozc
 	conflicts = fcitx5-mozc-git
-	source = fcitx5-mozc-ut-git::git+https://github.com/google/mozc.git#commit=10b69af9e93a062525924041ffc419b0f8779b73
+	source = fcitx5-mozc-ut-git::git+https://github.com/google/mozc.git#commit=aa48b23dcf92ea1d85d8e8dbca8c0a0c37e159f8
 	source = fcitx5.patch
 	sha256sums = SKIP
 	sha256sums = a4e74f6295dc9e23f9207657cd2e2e75acb35a2fc684f016538b36b33a38c812
