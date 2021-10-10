@@ -2,7 +2,7 @@
 # Contributor: Sonny Piers <sonny at fastmail dot net>
 pkgname=tangram
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run web apps on your desktop."
 arch=('any')
 url="https://apps.gnome.org/app/re.sonny.Tangram"
@@ -43,5 +43,6 @@ check() {
 package(){
   DESTDIR="$pkgdir" meson install -C build
 
-  ln -s /usr/bin/re.sonny.Tangram "$pkgdir/usr/bin/$pkgname"
+# Conflicts with tangram-bin binary
+#  ln -s /usr/bin/re.sonny.Tangram "$pkgdir/usr/bin/$pkgname"
 }
