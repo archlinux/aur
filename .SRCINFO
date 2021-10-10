@@ -9,8 +9,7 @@ pkgbase = tiddlywiki
 	depends = xdg-utils
 	source = http://www.tiddlywiki.com/empty.html
 	source = tiddlywiki.py
-	md5sums = 8e605c6b4957a51f5fe03b8311d09ccb
+	md5sums = a2736c475c282e40703f5051a2ba5215
 	md5sums = 219c3db3c4be8d359d3c18e96b171ee3
 
 pkgname = tiddlywiki
-
