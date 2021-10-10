@@ -1,0 +1,11 @@
+pkgbase = brltty-dummy
+	pkgdesc = brltty dummy package
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://brltty.app
+	arch = any
+	license = MIT
+	provides = brltty
+	conflicts = brltty
+
+pkgname = brltty-dummy
