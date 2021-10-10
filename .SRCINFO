@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-vsbasicvsrpp-git
+	pkgdesc = Plugin for Vapoursynth: vsbasicvsrpp (GIT version)
+	pkgver = 1.3.0.1.g81fbf5f
+	pkgrel = 1
+	url = https://github.com/HolyWu/vs-basicvsrpp
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = vapoursynth
+	depends = python-numpy
+	optdepends = python-pytorch: CPU
+	optdepends = python-pytorch-opt: CPU with AVX2 optimizations
+	optdepends = python-pytorch-cuda: CUDA and CPU
+	optdepends = python-pytorch-opt-cuda: CUDA with CPU with AVX2 optimizations
+	provides = vapoursynth-plugin-vsbasicvsrpp
+	conflicts = vapoursynth-plugin-vsbasicvsrpp
+	source = vsbasicvsrpp::git+https://github.com/HolyWu/vs-basicvsrpp.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsbasicvsrpp-git
