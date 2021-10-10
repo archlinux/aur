@@ -9,7 +9,7 @@ _lang=en-US
 
 pkgname=openoffice-bin
 _vmaj=4
-pkgver=$_vmaj.1.10
+pkgver=$_vmaj.1.11
 pkgrel=1
 pkgdesc="The Free and Open Productivity Suite"
 arch=('x86_64' 'i686')
@@ -38,8 +38,8 @@ backup=("opt/openoffice$_vmaj/program/sofficerc")
 options=(!strip docs)
 source_x86_64=("https://downloads.apache.org/openoffice/$pkgver/binaries/$_lang/Apache_OpenOffice_${pkgver}_Linux_x86-64_install-rpm_$_lang.tar.gz")
 source_i686=("https://downloads.apache.org/openoffice/$pkgver/binaries/$_lang/Apache_OpenOffice_${pkgver}_Linux_x86_install-rpm_$_lang.tar.gz")
-sha256sums_x86_64=('35c11da3c05dbb0eab59db593b2e9fe30057327f0d538a19e4d50cb47e3e7c38')
-sha256sums_i686=('c0dcf1914fac243234087b21da43663dc1e4d8b268c94f8e2b9e2f291c4a2478')
+sha256sums_x86_64=('4b3c99a29330f2ff1ac6076ffcbe8f9cbfbce1a80522c9e464a8d22d865069b7')
+sha256sums_i686=('e87bdedcf9464a28457305e907057cfaa7c29e0ae67688970ac0d04710893218')
 
 _source_dirs=$_lang/RPMS
 

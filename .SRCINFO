@@ -1,6 +1,6 @@
 pkgbase = openoffice-bin
 	pkgdesc = The Free and Open Productivity Suite
-	pkgver = 4.1.10
+	pkgver = 4.1.11
 	pkgrel = 1
 	url = https://www.openoffice.org
 	arch = x86_64
@@ -29,10 +29,9 @@ pkgbase = openoffice-bin
 	options = !strip
 	options = docs
 	backup = opt/openoffice4/program/sofficerc
-	source_x86_64 = https://downloads.apache.org/openoffice/4.1.10/binaries/en-US/Apache_OpenOffice_4.1.10_Linux_x86-64_install-rpm_en-US.tar.gz
-	sha256sums_x86_64 = 35c11da3c05dbb0eab59db593b2e9fe30057327f0d538a19e4d50cb47e3e7c38
-	source_i686 = https://downloads.apache.org/openoffice/4.1.10/binaries/en-US/Apache_OpenOffice_4.1.10_Linux_x86_install-rpm_en-US.tar.gz
-	sha256sums_i686 = c0dcf1914fac243234087b21da43663dc1e4d8b268c94f8e2b9e2f291c4a2478
+	source_x86_64 = https://downloads.apache.org/openoffice/4.1.11/binaries/en-US/Apache_OpenOffice_4.1.11_Linux_x86-64_install-rpm_en-US.tar.gz
+	sha256sums_x86_64 = 4b3c99a29330f2ff1ac6076ffcbe8f9cbfbce1a80522c9e464a8d22d865069b7
+	source_i686 = https://downloads.apache.org/openoffice/4.1.11/binaries/en-US/Apache_OpenOffice_4.1.11_Linux_x86_install-rpm_en-US.tar.gz
+	sha256sums_i686 = e87bdedcf9464a28457305e907057cfaa7c29e0ae67688970ac0d04710893218
 
 pkgname = openoffice-bin
-
