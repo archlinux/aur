@@ -1,9 +1,10 @@
-# Maintainer: Marcio Silva <marcionps at gmail dot com>
+# Maintainer: Tianrui Wei <archlinux_aur at mail dot tianrui-wei dot com>
+# Contributor: Marcio Silva <marcionps at gmail dot com>
 _pkgname=amazingmarvin
 
 pkgname="${_pkgname}"-appimage
 pkgver=1.61.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal productivity app that incorporates principles from behavioral psychology to help you beat procrastination, feel in control and finish your to-do list"
 arch=('x86_64')
 url="https://amazingmarvin.com/"
