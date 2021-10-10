@@ -1,6 +1,6 @@
 # Maintainer: gbr <gbr@protonmail.com>
 pkgname=sfz
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A simple static file server'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/weihanglo/sfz'
 license=('MIT' 'APACHE')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d2c6d5295d1c81a59106a66f41ec9cc6a0f0ef25396e1eb09aad01faeb8b5b2782fbf1025c4e45b14b4e7ee6a5eb92cb68ac35194c5f0eed0d591282f11182d7')
+sha512sums=('eb574b709b3ec92585c675e7078e035df0ea88ad6b65b560c941c728ae106f4c95ac22545f77137a0acfc036a7252bbc786b41753ab51ad84272210ed3ab6a2f')
 
 build() {
   cd "$pkgname-$pkgver"
