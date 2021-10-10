@@ -51,6 +51,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 chromium_base_ver="95"
 patchset="2"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
+_ungoogled_patchset_url="https://raw.githubusercontent.com/Eloston/ungoogled-chromium/master/patches/extra"
 _launcher_ver=8
 source=("brave-browser::git+https://github.com/brave/brave-browser.git"
         "chromium::git+https://github.com/chromium/chromium.git"
@@ -61,6 +62,11 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git"
         'unbrave.desktop'
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
+        "${_ungoogled_patchset_url}/bromite/fingerprinting-flags-client-rects-and-measuretext.patch"
+        "${_ungoogled_patchset_url}/bromite/flag-fingerprinting-canvas-image-data-noise.patch"
+        "${_ungoogled_patchset_url}/bromite/flag-max-connections-per-host.patch"
+        "${_ungoogled_patchset_url}/ungoogled-chromium/enable-default-prefetch-privacy-changes.patch"
+        "${_ungoogled_patchset_url}/ungoogled-chromium/add-components-ungoogled.patch"
         "chromium-no-history.patch"
         "disable-brave-core-features.patch")
 arch_revision=3cd421c2e8ea04eacf49253ea8b40957ef5d3524
@@ -81,6 +87,11 @@ sha256sums=('SKIP'
             '5b3acebaed783e5228a14b940c707233c4a3fc36c5572b23c86d52d33982e24c'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '5796f54f53794dd859da43c60db97f76a941be334bc7365b9058582e192bda52'
+            'ad51d77a47f94d5f00ea1ab19adf3f7478ac14d0d2499bd595f1d2f9a678e3e0'
+            'e36f9c3f7f0d4e9ff6b459607c691c1a1b80e9f9d9bed994834547a564f6c3ad'
+            'ca4230c12db9233198bfbedc06ec88197a865839512688c705a3e971905a3a4d'
+            'c48fda92408927813f281ebf62e53bbe5c89273ef0660911c5289dbf31f194e4'
+            'ba7085e85e3f212f50a9d04d721ef06ab2fefbeb115f72824b5ad3c1dd4144ac'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
             '3c0fb3401f1d8a68d1b3361622dfafae310647a1a3912deb3cfa5b3e1f27173b'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150')
@@ -177,6 +188,13 @@ prepare() {
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../../sql-make-VirtualCursor-standard-layout-type.patch
+
+  # ungoogled-chromium patches
+  #patch -Np1 -i ../../fingerprinting-flags-client-rects-and-measuretext.patch
+  #patch -Np1 -i ../../flag-fingerprinting-canvas-image-data-noise.patch
+  #patch -Np1 -i ../../flag-max-connections-per-host.patch
+  patch -Np1 -i ../../add-components-ungoogled.patch
+  patch -Np1 -i ../../enable-default-prefetch-privacy-changes.patch
 
   # Hacky patching
   sed -e 's/enable_distro_version_check = true/enable_distro_version_check = false/g' -i chrome/installer/linux/BUILD.gn
