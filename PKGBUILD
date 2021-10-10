@@ -2,13 +2,13 @@
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
 pkgver=1.14.0.r97.g45ed2e7
-pkgrel=3
+pkgrel=4
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
-license=('CC0 1.0 Universal')
+license=('CC0-1.0')
 depends=('electron11')
-makedepends=('git' 'npm' 'nvm')
+makedepends=('git' 'nvm')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
             'nss-mdns: for companion server')
@@ -39,16 +39,18 @@ _ensure_local_nvm() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm install 12.22.6
 }
 
 build() {
   cd "$srcdir/${pkgname%-git}"
+  electronDist=/usr/lib/electron11
+  electronVer=$(sed s/^v// /usr/lib/electron11/version)
   _ensure_local_nvm
   npm install --cache "$srcdir/npm-cache"
-  npm run publish:lin
+  npx electron-builder --linux --dir -p always --config electron-builder64.yml \
+    $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
