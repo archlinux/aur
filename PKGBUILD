@@ -1,5 +1,5 @@
 # Maintainer: Bruno Miguel <bruno@userrepository.eu>
-pkgname=poddr-deb
+pkgname=poddr-bin
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="Poddr is an open-source podcast player for Windows, Mac and Linux"
