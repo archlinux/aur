@@ -3,9 +3,9 @@
 # Contributor: tsipizic
 
 pkgname=python-yeelight
-pkgver=0.7.6
-pkgrel=2
-_commit=2edec00176a3d06bcba90c3e83f13596d127919f
+pkgver=0.7.7
+pkgrel=1
+_commit=2644e00147bab61923eec91c722781dc95a56ebf
 pkgdesc='Python library for controlling YeeLight RGB bulbs'
 arch=('any')
 url='https://gitlab.com/stavros/python-yeelight'
