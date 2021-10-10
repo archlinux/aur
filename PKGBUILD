@@ -1,8 +1,8 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=standardese-git
-pkgver=0.5.2.r9.gefbc112
-pkgrel=4
+pkgver=0.5.2.r11.g457b264
+pkgrel=5
 pkgdesc="A (work-in-progress) nextgen Doxygen for C++"
 arch=('i686' 'x86_64')
 url="https://github.com/standardese/standardese"
