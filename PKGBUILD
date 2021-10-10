@@ -12,7 +12,7 @@ depends=('vapoursynth-plugin-descale-git'
          'vapoursynth-plugin-nnedi3cl-git'
          'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-znedi3-git'
-         'vapoursynth-plugin-eedi3-git'
+         'vapoursynth-plugin-eedi3m-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
