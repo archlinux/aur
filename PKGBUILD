@@ -1,4 +1,4 @@
-# PKGBUILD copied from Chocobo1
+# PKGBUILD copied from Chocobo1 (thanks)
 # edited by cuzrawr
 # Maintainer: cuzrawr
 
@@ -11,7 +11,7 @@ url="https://www.busybox.net/"
 license=('GPL')
 makedepends=('git' 'ncurses')
 provides=('busybox')
-conflicts=("busybox" "busybox-custom" "busybox-git")
+conflicts=("busybox" "busybox-custom" "busybox-custom-git" "mindi-busybox" "busybox-norootreboot" "busybox-git")
 source=("git+https://git.busybox.net/busybox"
         "config::https://git.alpinelinux.org/aports/plain/main/busybox/busyboxconfig")
 sha256sums=('SKIP'
@@ -44,19 +44,6 @@ build() {
   
   export KCONFIG_NOTIMESTAMP=1  # reproducible build
   make
-
-  #
-  printf "================================note==================================\n"
-  printf "Please use \e[1;34mchsh\e[0m to change your default shell.\n"
-  printf "And do not forget to add: \n"
-  printf "    \e[1;34m /bin/ash \e[0m   to your \e[1;34m /etc/shells \e[0m  \n"
-  printf "You may also want relinking by: \n"
-  printf "    \e[1;34m ln -sfT ash /usr/bin/sh \e[0m  \n"
-  printf "==============================note-EOF================================\n"
-
-
-
-
 }
 
 check() {

@@ -1,0 +1,17 @@
+post_upgrade() {
+  #
+  printf ">>    \n"
+  printf ">>    Please use \e[1;34mchsh\e[0m to change your default shell.\n"
+  printf ">>    See man \e[1;34mchsh\e[0m for details.\n"
+  printf ">>    And do not forget to add: \n"
+  printf ">>    \e[1;34m /bin/ash \e[0m to your \e[1;34m /etc/shells \e[0m  \n"
+  printf ">>    You may also want relinking by: \n"
+  printf ">>    \e[1;34m ln -sfT ash /usr/bin/sh \e[0m \n"
+  printf ">>    \n"
+  printf ">>    Remember to check \e[1;34m/bin/sh\e[0m is symbolic link to \e[1;34m /bin/busybox\e[0m \n"
+  printf ">>    \n"
+}
+
+post_install() {
+  post_upgrade
+}
