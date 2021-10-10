@@ -128,8 +128,8 @@ install=wine.install
 
 prepare() {
   pushd $pkgname
-    rm -r wine && cp -r "$srcdir"/wine wine
-    rm -r wine-staging && cp -r "$srcdir"/wine-staging wine-staging
+    rm -r wine && ln -s "$srcdir"/wine wine
+    rm -r wine-staging && ln -s "$srcdir"/wine-staging wine-staging
     patches/protonprep.sh
     pushd wine
       patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
