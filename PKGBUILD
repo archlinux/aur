@@ -2,8 +2,8 @@
 # Contributor: Nover <novares.x@gmail.com>
 # Contributor: agentcobra <agentcobra@free.fr>
 pkgname=shadow-tech
-pkgver=5.0.996
-pkgrel=2
+pkgver=5.0.1020
+pkgrel=1
 pkgdesc="Desktop client for Shadow Tech cloud gaming service."
 arch=('x86_64')
 url="https://shadow.tech"
@@ -33,7 +33,7 @@ provides=(shadow-tech)
 _urlbase='https://storage.googleapis.com/shadow-update/launcher/prod/linux/ubuntu_18.04'
 source=(
     "${pkgname}-meta.yml::${_urlbase}/latest-linux.yml"
-    "${pkgname}-${pkgver}.AppImage::${_urlbase}/Shadow.AppImage"
+    "${pkgname}.AppImage::${_urlbase}/Shadow.AppImage"
     "shadow.sh"
 )
 sha256sums=(
@@ -53,24 +53,24 @@ prepare() {
 
     # manually check the sha512sum of the appimage file
     sha="$(yq -r .sha512 ${pkgname}-meta.yml| base64 -d | xxd -p -c 256)"
-    echo "${sha} ${pkgname}-${pkgver}.AppImage" | sha512sum --check
+    echo "${sha} ${pkgname}.AppImage" | sha512sum --check
 
     # give execution rights
-    chmod +x ${pkgname}-${pkgver}.AppImage
+    chmod +x ${pkgname}.AppImage
 
     # extract AppImage
-    ./${pkgname}-${pkgver}.AppImage --appimage-extract
+    ./${pkgname}.AppImage --appimage-extract
 
     # rename the folder
-    rm -rf ${pkgname}-${pkgver}
-    mv squashfs-root ${pkgname}-${pkgver}
+    rm -rf ${pkgname}
+    mv squashfs-root ${pkgname}
 }
 
 package() {
 
     # copy all files first
     mkdir -p "${pkgdir}/opt"
-    mv ${pkgname}-${pkgver} "${pkgdir}/opt/${pkgname}"
+    mv ${pkgname} "${pkgdir}/opt/${pkgname}"
 
     # go into the package folder
     cd "${pkgdir}/opt/${pkgname}"
