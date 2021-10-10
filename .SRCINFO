@@ -1,8 +1,7 @@
 pkgbase = gitlab-runner-openrc
 	pkgdesc = OpenRC gitlab-runner init script
-	pkgver = 20211003
+	pkgver = 20211010
 	pkgrel = 1
-	url = https://codeberg.org/twann/openrc-pkgbuilds
 	arch = any
 	license = GPL3
 	depends = gitlab-runner
