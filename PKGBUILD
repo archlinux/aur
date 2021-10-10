@@ -6,7 +6,7 @@
 
 pkgname=autofs
 pkgver=5.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A kernel-based automounter for Linux'
 arch=('x86_64')
 url='https://www.kernel.org/pub/linux/daemons/autofs/'
