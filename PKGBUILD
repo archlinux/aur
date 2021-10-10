@@ -2,17 +2,17 @@
 
 _plug=insaneaa
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.7.1.g2f6eda5
+pkgver=0.9c.0.g2f6eda5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Beatrice-Raws/VapourSynth-insaneAA'
 license=('MIT')
 depends=('vapoursynth-plugin-descale-git'
-         'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-nnedi3cl-git'
-         'vapoursynth-plugin-eedi3cl-git'
+         'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-znedi3-git'
+         'vapoursynth-plugin-eedi3-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
