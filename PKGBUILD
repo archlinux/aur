@@ -57,6 +57,8 @@ package() {
 
   install -Dm755 "busybox" -t "$pkgdir/usr/bin"
 
-  install -Dm644 "docs/busybox.1" -t "$pkgdir/usr/share/man/man1"
-  install -Dm644 "docs"/BusyBox.{html,txt} -t "$pkgdir/usr/share/doc/busybox"
+   # uncomment next lines for docs and manpages:
+   
+  #install -Dm644 "docs/busybox.1" -t "$pkgdir/usr/share/man/man1"
+  #install -Dm644 "docs"/BusyBox.{html,txt} -t "$pkgdir/usr/share/doc/busybox"
 }
