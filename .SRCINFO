@@ -9,8 +9,6 @@ pkgbase = mullvad-vpn
 	makedepends = cargo
 	makedepends = git
 	makedepends = go
-	makedepends = nodejs>=12
-	makedepends = npm>=6.12
 	makedepends = nvm
 	depends = iputils
 	depends = libnotify
