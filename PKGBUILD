@@ -8,7 +8,7 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TTempSmooth'
 license=('GPL')
-depends=('vapoursynth')
+depends=('vapoursynth-plugin-misc-git')
 makedepends=('git'
              'meson'
              )
