@@ -3,7 +3,7 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.4.0.r3.c66d5d6
+pkgver=1.4.0.r20.9ef64da
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -38,7 +38,6 @@ prepare() {
 build() {
   cd "$srcdir/${pkgname%-git}"
 
-  pushd proto
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -46,7 +45,9 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=mod"
   export PATH=${PATH}:${GOPATH}/bin
-  go get github.com/golang/protobuf/protoc-gen-go
+  go install github.com/golang/protobuf/protoc-gen-go@latest
+  go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+  pushd proto
   make
   popd
 
