@@ -1,0 +1,12 @@
+pkgbase = vapoursynth-plugin-mvmulti
+	pkgdesc = Plugin for Vapoursynth: mvmulti (GIT version)
+	pkgver = r9
+	pkgrel = 1
+	url = https://github.com/IFeelBloated/vapoursynth-mvtools-sf/tree/r9
+	arch = x86_64
+	license = GPL
+	depends = vapoursynth-plugin-mvtools_sf-git
+	source = https://raw.githubusercontent.com/IFeelBloated/vapoursynth-mvtools-sf/r9/src/mvmulti.py
+	sha256sums = 97ead4d5dee3f9a8a3fca31cadc1978f5cacf442c78bf198c84ab5de1e277dc2
+
+pkgname = vapoursynth-plugin-mvmulti
