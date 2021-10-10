@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-eedi3m-git
+	pkgdesc = Plugin for Vapoursynth: eedi3m (GIT version)
+	pkgver = r4.7.gd11bdb3
+	pkgrel = 1
+	url = https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = opencl-headers
+	makedepends = boost
+	makedepends = meson
+	depends = vapoursynth
+	depends = opencl-icd-loader
+	depends = boost-libs
+	provides = vapoursynth-plugin-eedi3m
+	conflicts = vapoursynth-plugin-eedi3m
+	conflicts = vapoursynth-plugin-eedi3cl-git
+	source = eedi3m::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-eedi3m-git
