@@ -6,6 +6,6 @@ pkgbase = f35-backgrounds
 	arch = any
 	license = custom
 	source = https://github.com/fedoradesign/backgrounds/releases/download/v35.0.1/f35-backgrounds-35.0.1.tar.xz
-	b2sums = bb239f0d4f2c3352152005eb31a2173e7a8bb857323c843aef1d1549e8c31d6b6d35b25a83d7969f6ebd63fa0e934c2a2cad13952b83ccb76467c4ac451710ff
+	b2sums = ab008e499c476bf502535916f2fd6733ce675d6e782eb8be1f6f88388cb5caa39f48583d76cf4026012680b42f9008a4ce66a74b32aefc91ded2850d58bdf2a9
 
 pkgname = f35-backgrounds
