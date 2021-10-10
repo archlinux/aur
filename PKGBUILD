@@ -3,7 +3,7 @@
 # Maintainer: cuzrawr
 
 pkgname=busybox-alpinevariant-git
-pkgver=1.34.0.r71.g56f0e886d
+pkgver=1.34.0.r120.g04ad683bf
 pkgrel=1
 pkgdesc="This variant of busybox primary focus on ash shell and optimized for everyday use as an light alternative to bash."
 arch=('x86_64')
