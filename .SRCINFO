@@ -6,7 +6,6 @@ pkgbase = vapoursynth-plugin-xvs-git
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = ffms2
 	depends = vapoursynth-plugin-mvsfunc-git
 	depends = vapoursynth-plugin-havsfunc
 	depends = vapoursynth-plugin-muvsfunc-git

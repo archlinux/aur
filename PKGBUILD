@@ -8,8 +8,7 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/xyx98/my-vapoursynth-script'
 license=('GPL')
-depends=('ffms2'
-         'vapoursynth-plugin-mvsfunc-git'
+depends=('vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-havsfunc'
          'vapoursynth-plugin-muvsfunc-git'
          'vapoursynth-plugin-mvtools'
