@@ -2,23 +2,29 @@
 
 _plug=vstaambk
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.8.0.r105.b1938f6
-pkgrel=3
+pkgver=0.8.1.r118.9d0e19d
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/HomeOfVapourSynthEvolution/vsTAAmbk'
 license=('GPL')
-depends=('vapoursynth-plugin-awarpsharp2-git'
-         'vapoursynth-plugin-eedi2-git'
+depends=('vapoursynth-plugin-eedi2-git'
          'vapoursynth-plugin-nnedi3-git'
+         'vapoursynth-plugin-eedi3-git'
+         'vapoursynth-plugin-mvtools'
          'vapoursynth-plugin-fmtconv-git'
-         'vapoursynth-plugin-mvsfunc-git'
-         'vapoursynth-plugin-mvtools-git'
-         'vapoursynth-plugin-temporalsoften-git'
+         'vapoursynth-plugin-sangnom-git'
          'vapoursynth-plugin-tcanny-git'
-         'vapoursynth-plugin-sangnom'
-         'vapoursynth-plugin-havsfunc-git'
+         'vapoursynth-plugin-msmoosh-git'
+         'vapoursynth-plugin-awarpsharp2-git'
          )
+optdepends=('vapoursynth-plugin-eedi3m-git'
+            'vapoursynth-plugin-nnedi3cl-git'
+            'vapoursynth-plugin-znedi3-git'
+            'vapoursynth-plugin-eedi2cuda-git'
+            'vapoursynth-plugin-havsfunc-git'
+            'vapoursynth-plugin-mvsfunc-git'
+            )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
