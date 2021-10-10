@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=generator-code
 pkgname=nodejs-generator-code
-pkgver=1.5.2
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Visual Studio Code extension generator"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs-yeoman')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_name/-/$_name-$pkgver.tgz")
-sha256sums=('6703da53e99ec95c26619178c4b121f4b15416767aeb7e2c4fdb8a6efa9b05e4')
+sha256sums=('cb16863fbf35080702a19a227a1badff7184be7f147675ebd8f62b58a4166c00')
 
 package() {
 	npm install -g \
