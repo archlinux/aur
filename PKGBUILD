@@ -1,7 +1,7 @@
 # Maintainer: Jokler <jokler@protonmail.com>
 
 pkgname=nora
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Freezes the screen for another program"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git' 'cargo' 'python')
 depends=('libxcb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Jokler/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e9a52252225dd79c61ac9d2edcb22a5f982bc61f6f069db668e071b2b995e7b4')
+sha256sums=('1e06b674bb151fa841ce738bf73394eb40779bd4d71788531db3698ac0581f98')
 
 build() {
   cd "$pkgname-$pkgver"
