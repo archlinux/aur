@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-plum-git
 	pkgdesc = Plugin for Vapoursynth: plum (GIT version)
-	pkgver = r75.11fb537
-	pkgrel = 2
+	pkgver = r76.647f53a
+	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=173775
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = vapoursynth-plugin-plum-git
 	depends = vapoursynth-plugin-knlmeanscl-git
 	depends = vapoursynth-plugin-fmtconv-git
 	depends = vapoursynth-plugin-nnedi3-git
-	depends = vapoursynth-plugin-vcfreq
+	depends = vapoursynth-plugin-vcm-git
 	depends = vapoursynth-plugin-mvtools_sf-git
 	depends = vapoursynth-plugin-dfttest-git
 	depends = vapoursynth-plugin-bm3d-git
@@ -19,4 +19,3 @@ pkgbase = vapoursynth-plugin-plum-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-plum-git
-
