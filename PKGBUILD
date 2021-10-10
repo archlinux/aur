@@ -16,7 +16,7 @@ source=("git+https://git.busybox.net/busybox"
         "config::https://git.alpinelinux.org/aports/plain/main/busybox/busyboxconfig")
 sha256sums=('SKIP'
             'SKIP')
-
+install='busybox-alpinevariant-git.install'
 
 pkgver() {
   cd "busybox"
