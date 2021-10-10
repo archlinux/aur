@@ -7,7 +7,7 @@ pkgdesc="VESTA is a 3D visualization program for structural models, volumetric d
 arch=('x86_64')
 url="http://www.jp-minerals.org/vesta/en/"
 license=('VESTA LICENSE')
-conflicts=(vesta)
+conflicts=('vesta' 'vesta-bin')
 depends=(
 	'gtk3' 'glu' 'desktop-file-utils' 'libxtst'  'java-environment-common'
 )
