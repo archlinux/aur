@@ -1,0 +1,23 @@
+pkgbase = vapoursynth-plugin-vsdpir-git
+	pkgdesc = Plugin for Vapoursynth: vsdpir (GIT version)
+	pkgver = 1.6.0.2.g0163cf3
+	pkgrel = 1
+	url = https://github.com/HolyWu/vs-dpir
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = vapoursynth
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-requests
+	optdepends = python-pytorch: CPU
+	optdepends = python-pytorch-opt: CPU with AVX2 optimizations
+	optdepends = python-pytorch-cuda: CUDA and CPU
+	optdepends = python-pytorch-opt-cuda: CUDA with CPU with AVX2 optimizations
+	provides = vapoursynth-plugin-vsdpir
+	conflicts = vapoursynth-plugin-vsdpir
+	source = vsdpir::git+https://github.com/HolyWu/vs-dpir.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsdpir-git
