@@ -4,15 +4,19 @@
 _pkgbase='worm'
 pkgname='worm-git'
 pkgdesc="A floating, tag-based window manager written in Rust"
-pkgver=0.1.0.23.g1e61b62
+pkgver=0.1.0.43.gacbb619
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/codic12/worm"
 license=('MIT')
 makedepends=('cargo' 'git')
 depends=('xorg-server')
-source=("$_pkgbase::git+$url.git")
-sha256sums=('SKIP')
+install=$_pkgbase.install
+
+source=("$_pkgbase::git+$url.git"
+        "worm.desktop")
+sha256sums=('SKIP'
+            '1e0247e50f06a575c927348f888d5a0ba77874526917cb864f7f4502280a133f')
 
 pkgver() {
     cd "$_pkgbase"
@@ -32,6 +36,9 @@ build() {
 }
 
 package() {
+    # X session file
+    install -Dm544 "worm.desktop" "$pkgdir/usr/share/xsessions/worm.desktop"
+
     cd "$_pkgbase"
 
     # bin
