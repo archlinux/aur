@@ -2,16 +2,16 @@
 # Maintainer: Redson dos Santos Silva <redsonbr81 {at} protonmail {dot} com>
 pkgname=ppfetch-git
 _pkgname=ppfetch
-pkgver=1.09.8fd1ae9
+pkgver=1.03.4415dd7
 pkgrel=1
 pkgdesc="Info script written in BASH, alternative for ufetch and neofetch."
 arch=('any')
-url="https://gitlab.com/pedro.portales/${_pkgname}"
+url="https://github.com/pedroportales/${_pkgname}"
 license=('GPL')
 provides=($_pkgname)
 conflicts=($_pkgname)
 makedepends=('git')
-source=("git+https://gitlab.com/pedro.portales/ppfetch.git")
+source=("git+https://github.com/pedroportales/ppfetch.git")
 md5sums=('SKIP')
 
 pkgver() {
