@@ -1,22 +1,22 @@
 pkgbase = vapoursynth-plugin-xaa-git
 	pkgdesc = Plugin for Vapoursynth: xaa (GIT version)
-	pkgver = v3.0.g104f39e
-	pkgrel = 2
+	pkgver = v3.2.g6a39c63
+	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-xaa
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = vapoursynth-plugin-eedi2-git
-	depends = vapoursynth-plugin-eedi3cl-git
-	depends = vapoursynth-plugin-nnedi3cl-git
-	depends = vapoursynth-plugin-sangnom
+	depends = vapoursynth-plugin-znedi3-git
+	depends = vapoursynth-plugin-sangnom-git
 	depends = vapoursynth-plugin-tcanny-git
 	depends = vapoursynth-plugin-tedgemask-git
-	depends = vapoursynth-plugin-znedi3-git
+	depends = vapoursynth-plugin-nnedi3cl-git
+	depends = vapoursynth-plugin-eedi3-git
+	depends = vapoursynth-plugin-eedi3m-git
 	provides = vapoursynth-plugin-xaa
 	conflicts = vapoursynth-plugin-xaa
 	source = xaa::git+https://github.com/dubhater/vapoursynth-xaa.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-xaa-git
-
