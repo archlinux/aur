@@ -1,7 +1,7 @@
 pkgbase = procfile-util
 	pkgdesc = A tool for interacting with Procfiles.
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/josegonzalez/go-procfile-util
 	arch = x86_64
 	license = MIT
