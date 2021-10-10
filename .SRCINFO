@@ -1,12 +1,13 @@
 pkgbase = powerpanel
 	pkgdesc = CyberPower UPS daemon
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cyberpowersystems.com/product/software/powerpanel-for-linux/
 	arch = x86_64
 	arch = i686
 	license = custom:CyberPower
 	depends = libusb
+	depends = paho-mqtt-c
 	backup = etc/powerpanel/pwrstatd-powerfail.sh
 	backup = etc/powerpanel/pwrstatd-lowbatt.sh
 	backup = etc/powerpanel/pwrstatd-email.sh
