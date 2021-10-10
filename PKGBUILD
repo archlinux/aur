@@ -3,7 +3,7 @@
 
 
 pkgname="fetchmirrorsgui"
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="  standalone with gui populator for /etc/pacman.d/mirrorslist"
 arch=("x86_64")
@@ -19,4 +19,5 @@ package() {
  
 }
 
-sha256sums=('83ae1a9d5d0f201d93bd800421d5250be4193e34b423367a59c510499ce4de32')
+
+sha256sums=('ab197fa0c660fdd074474537f6076835f2b57c7ef49b672c1a5ef422e2ec9cf7')
