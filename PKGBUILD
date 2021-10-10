@@ -4,7 +4,7 @@
 pkgname='zellij-bin'
 _pkgname=${pkgname%-bin}
 pkgver=0.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A multiplexing terminal workspace with batteries included (pre-compiled)'
 arch=('x86_64')
 url='https://github.com/zellij-org/zellij'
@@ -59,7 +59,7 @@ package() {
     CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md GOVERNANCE.md README.md
   )
   for doc in "${documents[@]}"; do
-    install -Dm0644 "$doc"    "$pkgdir/usr/share/$pkgname/doc/$doc"
+    install -Dm0644 "$doc"    "$pkgdir/usr/share/doc/$pkgname/$doc"
   done
 
   install -Dm0644 LICENSE.md  "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"

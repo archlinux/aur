@@ -1,7 +1,7 @@
 pkgbase = zellij-bin
 	pkgdesc = A multiplexing terminal workspace with batteries included (pre-compiled)
 	pkgver = 0.18.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zellij-org/zellij
 	arch = x86_64
 	license = MIT
