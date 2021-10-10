@@ -1,7 +1,7 @@
 # Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 pkgname=easy-copy
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="modern alternative to coreutils' file handling - beta version"
 license=('GPL3')
 url="https://github.com/scrouthtv/easy-copy"
@@ -10,17 +10,18 @@ depends=()
 makedepends=('go')
 optdepends=()
 conflicts=('easycopy-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-rc1.tar.gz")
-sha512sums=("2cfc611904f99b22eb6fea0f1e9daa45469811073085702e9858bd3a48fe3c53f3e6a0aeef3ec517f3e0b74ad9b5c18fb28e46cd230f4a9a7b7793c0b2c90d35")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-rc2.tar.gz")
+sha512sums=("6e0288806160011cdb488c6afd38f7c88393c840f4736d156ef72f9aed03db46736c6382ea5c611cd109d80d4c4d8e14d43d8eecf226abc54e2d9cdfd0166677")
 
 build() {
-  cd "$pkgname-$pkgver-rc1"
+  cd "$pkgname-$pkgver-rc2"
 
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export CGO_ENABLED=1
 
   go build .
 
@@ -29,7 +30,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver-rc1"
+	cd "$pkgname-$pkgver-rc2"
 
 	# binary:
   install -Dm755 "easy-copy" "$pkgdir/usr/bin/ec"

@@ -1,7 +1,7 @@
 pkgbase = easy-copy
 	pkgdesc = modern alternative to coreutils' file handling - beta version
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/scrouthtv/easy-copy
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = easy-copy
 	license = GPL3
 	makedepends = go
 	conflicts = easycopy-git
-	source = easy-copy-1.0.0.tar.gz::https://github.com/scrouthtv/easy-copy/archive/refs/tags/v1.0.0-rc1.tar.gz
-	sha512sums = 2cfc611904f99b22eb6fea0f1e9daa45469811073085702e9858bd3a48fe3c53f3e6a0aeef3ec517f3e0b74ad9b5c18fb28e46cd230f4a9a7b7793c0b2c90d35
+	source = easy-copy-1.0.0.tar.gz::https://github.com/scrouthtv/easy-copy/archive/refs/tags/v1.0.0-rc2.tar.gz
+	sha512sums = 6e0288806160011cdb488c6afd38f7c88393c840f4736d156ef72f9aed03db46736c6382ea5c611cd109d80d4c4d8e14d43d8eecf226abc54e2d9cdfd0166677
 
 pkgname = easy-copy
