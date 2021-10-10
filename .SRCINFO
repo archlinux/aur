@@ -1,0 +1,14 @@
+pkgbase = vapoursynth-plugin-eedi3-git
+	pkgdesc = Plugin for Vapoursynth: eedi3 (obsolete, but still used) (GIT version)
+	pkgver = R1.0.g54a567a
+	pkgrel = 1
+	url = https://github.com/vapoursynth/vs-eedi3-obsolete
+	arch = x86_64
+	license = GPL
+	depends = vapoursynth
+	provides = vapoursynth-plugin-eedi3
+	conflicts = vapoursynth-plugin-eedi3
+	source = eedi3::git+https://github.com/vapoursynth/vs-eedi3-obsolete
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-eedi3-git
