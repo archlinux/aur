@@ -1,4 +1,5 @@
-# Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
+# Maintainer: Angel de Vicente <angel.vicente.garrido at gmail dot com>
+# Contributor: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=hdf-eos2
 pkgver=2.20
@@ -9,10 +10,11 @@ license=('GPL')
 arch=('i686' 'x86_64')
 depends=('libaec' 'hdf5' 'hdf4' 'gdal' 'hdf-eos-common')
 options=('libtool' 'staticlibs')
-source=("ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos/latest_release/HDF-EOS${pkgver}v1.00.tar.Z"
+source=("https://git.earthdata.nasa.gov/rest/git-lfs/storage/DAS/hdfeos/cb0f900d2732ab01e51284d6c9e90d0e852d61bba9bce3b43af0430ab5414903?response-content-disposition=attachment%3B%20filename%3D%22HDF-EOS2.20v1.00.tar.Z%22%3B%20filename*%3Dutf-8%27%27HDF-EOS2.20v1.00.tar.Z"
         "szip_cc.patch")
-md5sums=('4697174a9296aa3d921915b75b3362d1'
-         'f4bf627e4dedaae3f142ca05253743eb')
+sha256sums=('cb0f900d2732ab01e51284d6c9e90d0e852d61bba9bce3b43af0430ab5414903'
+            '7d9d204090cb4b5faeaea6075a4d0103cbd79da3bc154466b2108a05627e2517')
+
 
 build() {
   cd hdfeos
