@@ -1,6 +1,6 @@
 pkgbase = python-proto-plus
 	pkgdesc = A wrapper around protocol buffers.
-	pkgver = 1.19.0
+	pkgver = 1.19.4
 	pkgrel = 1
 	url = https://github.com/googleapis/proto-plus-python
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-proto-plus
 	makedepends = python-setuptools
 	depends = python-protobuf
 	optdepends = python-google-api-core: Testing
-	source = https://files.pythonhosted.org/packages/source/p/proto-plus/proto-plus-1.19.0.tar.gz
-	b2sums = 8f5fa148e464de288849ee96381f5172419c45db51036b80734a4a7e82bcfb4e88a4058acfcce815a3c6c92079a09871cc3ebe24146d4be443647e6d8cf31ccb
+	source = https://files.pythonhosted.org/packages/source/p/proto-plus/proto-plus-1.19.4.tar.gz
+	b2sums = 698539bb900e2e51d978410d1cb181060b0b44fb49970407a2d5028e9689d6396d8dae4ad4cc697920b7939a2d0ba9b9b6f051c504ce2eaca287da5b37dd065f
 
 pkgname = python-proto-plus
