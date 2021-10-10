@@ -1,0 +1,17 @@
+pkgbase = xdg-desktop-portal-gnome-git
+	pkgdesc = A backend implementation for xdg-desktop-portal for the GNOME desktop environment
+	pkgver = 41.0+31+g89f18b8
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = meson
+	depends = xdg-desktop-portal
+	depends = xdg-desktop-portal-gtk
+	provides = xdg-desktop-portal-gnome
+	conflicts = xdg-desktop-portal-gnome
+	source = git+https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
+	b2sums = SKIP
+
+pkgname = xdg-desktop-portal-gnome-git
