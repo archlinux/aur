@@ -16,7 +16,7 @@ source=("git://github.com/Wohlstand/TheXTech"
 "thextech-supermariobrosx.desktop")
 sha256sums=("SKIP"
 "73fbd497a60ce13525121a8d1a43ae3fd9205f6f4c64335787e06544d67cb4a9"
-"9b2f13d4f9078eae7e5346c48ed7467536f22068dbfa941fe2c1daf00d78923d")
+"5fd5af376176f4e1d466020da57e0ccff73abb4f52a30e6e429b0eb52b1887b3")
 noextract=()
 
 prepare() {
@@ -36,11 +36,11 @@ build() {
 
 package() {
     mkdir -p "${pkgdir}/usr/share/games/thextech-smbx"
-    install -Dm0644 -r "${srcdir}/battle" "${pkgdir}/usr/share/games/thextech-smbx/battle"
-    install -Dm0644 -r "${srcdir}/graphics" "${pkgdir}/usr/share/games/thextech-smbx/graphics"
-    install -Dm0644 -r "${srcdir}/music" "${pkgdir}/usr/share/games/thextech-smbx/music"
-    install -Dm0644 -r "${srcdir}/sound" "${pkgdir}/usr/share/games/thextech-smbx/sound"
-    install -Dm0644 -r "${srcdir}/worlds" "${pkgdir}/usr/share/games/thextech-smbx/worlds"
+    install -Dm0644 "${srcdir}/battle" "${pkgdir}/usr/share/games/thextech-smbx/battle"
+    install -Dm0644 "${srcdir}/graphics" "${pkgdir}/usr/share/games/thextech-smbx/graphics"
+    install -Dm0644 "${srcdir}/music" "${pkgdir}/usr/share/games/thextech-smbx/music"
+    install -Dm0644 "${srcdir}/sound" "${pkgdir}/usr/share/games/thextech-smbx/sound"
+    install -Dm0644 "${srcdir}/worlds" "${pkgdir}/usr/share/games/thextech-smbx/worlds"
     install -Dm0644 "${srcdir}/gameinfo.ini" "${pkgdir}/usr/share/games/thextech-smbx/gameinfo.ini"
     install -Dm0644 "${srcdir}/music.ini" "${pkgdir}/usr/share/games/thextech-smbx/music.ini"
     install -Dm0644 "${srcdir}/sounds.ini" "${pkgdir}/usr/share/games/thextech-smbx/sounds.ini"
