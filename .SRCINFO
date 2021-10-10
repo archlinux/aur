@@ -1,16 +1,15 @@
 pkgbase = digital
 	pkgdesc = A digital logic designer and circuit simulator.
-	pkgver = 0.27
-	pkgrel = 3
+	pkgver = 0.28
+	pkgrel = 1
 	url = https://github.com/hneemann/Digital
 	arch = x86_64
 	license = GPL
 	depends = java-runtime
 	depends = imagemagick
-	source = digital-0.27.zip::https://github.com/hneemann/Digital/releases/download/v0.27/Digital.zip
+	source = digital-0.28.zip::https://github.com/hneemann/Digital/releases/download/v0.28/Digital.zip
 	source = digital.desktop
-	sha256sums = a93b9dd70ed5b051bf04aacc37f2794c3c3d17f214ab99f0c8f4a36e55bbe835
+	sha256sums = a96509442cc7b6697e66c1420b9e42f91325e20f9f34cc13cbfd92cb9b90c70d
 	sha256sums = 9321b9c6c0a038782e0334190ed7d345d170c00cef0c5d784aaa9cb4bfab4ed0
 
 pkgname = digital
-

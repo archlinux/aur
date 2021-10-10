@@ -1,7 +1,7 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 pkgname=digital
-pkgver=0.27
-pkgrel=3
+pkgver=0.28
+pkgrel=1
 pkgdesc="A digital logic designer and circuit simulator."
 arch=('x86_64')
 url="https://github.com/hneemann/Digital"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('java-runtime' 'imagemagick')
 source=("$pkgname-$pkgver.zip::https://github.com/hneemann/Digital/releases/download/v${pkgver}/Digital.zip"
     "digital.desktop")
-sha256sums=("a93b9dd70ed5b051bf04aacc37f2794c3c3d17f214ab99f0c8f4a36e55bbe835"
+sha256sums=("a96509442cc7b6697e66c1420b9e42f91325e20f9f34cc13cbfd92cb9b90c70d"
 "9321b9c6c0a038782e0334190ed7d345d170c00cef0c5d784aaa9cb4bfab4ed0")
 
 prepare() {
@@ -31,8 +31,11 @@ package() {
 	install -vDm644 "$srcdir/Digital/ReleaseNotes.txt" "$pkgdir/usr/share/doc/$pkgname/changelog.txt"
 	install -vDm644 "$srcdir/Digital/Digital.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 	install -vDm644 "$srcdir/Digital/linux/digital-simulator.xml" "$pkgdir/usr/share/mime/packages/digital-simulator.xml"
-	cp -dr --no-preserve=ownership "$srcdir/Digital/lib/" "$pkgdir/usr/share/java/$pkgname/lib/"
-	cp -dr --no-preserve=ownership "$srcdir/Digital/examples/" "$pkgdir/usr/share/java/$pkgname/examples/"
+	cd "$srcdir/Digital/lib/"
+	find . -exec install -vDm644 "{}" "$pkgdir/usr/share/java/$pkgname/lib/{}" \;
+	cd ../examples
+	find . -exec install -vDm644 "{}" "$pkgdir/usr/share/java/$pkgname/examples/{}" \;
+	cd ../../../
 	install -vDm644 digital.desktop "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
 	install -vDm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 	for SIZE in 16 32 48 128 256 512
