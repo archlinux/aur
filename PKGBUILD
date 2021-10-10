@@ -1,6 +1,6 @@
 # Maintainer: Radek Podgorny <radek@podgorny.cz>
 pkgname=speedscope
-pkgver=1.5.3
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="A fast, interactive web-based viewer for performance profiles."
 arch=(any)
@@ -14,3 +14,4 @@ package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" $pkgname@$pkgver
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
 }
+
