@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=diffobj
-_cranver=0.3.4
+_cranver=0.3.5
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MIT)
 depends=('r>=3.1.0' 'r-crayon>=1.3.2')
 optdepends=(r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('38cd8ac8698af3c0be42e630088d3a24e9ed8fb72b411a68cf295ea995839efc')
+sha256sums=('d860a79b1d4c9e369282d7391b539fe89228954854a65ba47181407c53e3cf60')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
