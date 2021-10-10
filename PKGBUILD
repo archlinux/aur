@@ -2,14 +2,14 @@
 
 _pkgname='surface-control'
 pkgname="${_pkgname}-git"
-pkgver=0.4.1.1.r0.g073eae1
+pkgver=0.4.1.1.r1.g152f1b8
 pkgrel=1
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
 url='https://github.com/linux-surface/surface-control'
 license=('MIT')
 arch=('x86_64')
 depends=('gcc-libs' 'systemd-libs')
-makedepends=('rust' 'cargo' 'systemd-libs')
+makedepends=('rust' 'cargo' 'systemd')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
