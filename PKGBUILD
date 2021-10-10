@@ -7,7 +7,7 @@
 
 pkgname=icaclient
 pkgver=21.9.0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/'
@@ -75,6 +75,8 @@ package() {
     cp -r ./site/ "${pkgdir}$ICAROOT"
     cp -r ./usb/ "${pkgdir}$ICAROOT"
     cp -r ./util/ "${pkgdir}$ICAROOT"
+    # fix permissions
+    chmod -R a+r "${pkgdir}$ICAROOT"
 
     rm "${pkgdir}$ICAROOT/lib/UIDialogLibWebKit.so"
 
