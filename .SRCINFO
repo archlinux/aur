@@ -5,7 +5,6 @@ pkgbase = tangram-bin
 	url = https://www.tangram.dev
 	arch = x86_64
 	license = MIT
-	provides = tangram
 	source_x86_64 = https://github.com/tangramdotdev/tangram/releases/download/v0.5.0/tangram_cli_0.5.0_x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = 4e2b86675a879e218b92e18d9fe3092ba3dba0cfb06cf8a77dc09910130a68ca
 
