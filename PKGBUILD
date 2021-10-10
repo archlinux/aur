@@ -27,7 +27,6 @@ _nvidia_patch=
 # 1 - Static strategy with maximum performance for AC operation and maximum power savings for the battery
 # 2 - Static strategy with maximum performance for AC operation, but an adaptive strategy for battery operation.
 # 3 - Adaptive strategy for AC operation, but static strategy with maximum power saving for the battery.
-# 4 - Adaptive strategy for all (This is the default, right?
 #
 # Note: Setting up the PowerMizer circuitry is not overclocking the GPU and assumes safe use for your hardware.
 # However, you can reassign the behavior of the power scheme through the Xorg option "RegistryDwords".
@@ -51,6 +50,12 @@ _powermizer_scheme=
 # Warning: Works only for laptops.
 _override_max_perf=
 
+# Forced use of the clang compiler to build DKMS modules
+# Works only for kernels built by clang
+# Note: This is experimental and not officially supported by driver/DKMS.
+# Please do not send bug reports to NVIDIA with this option enabled.
+_force_clang_usage=
+
 pkgbase=nvidia-dkms-performance
 if [ $CARCH != 'aarch64' ]; then
         pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance
@@ -59,7 +64,7 @@ else
 	pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance)
 fi
 pkgver=470.74
-pkgrel=6
+pkgrel=7
 arch=('x86_64' 'aarch64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -148,22 +153,17 @@ prepare() {
         fi
     fi
 
+    registrydwords='"EnableBrightnessControl=1'
     if [ ! -z $_powermizer_scheme ] && [ -z $_override_max_perf ]; then
         echo "You have selected the powermizer scheme: $_powermizer_scheme"
         echo "If you don't like it in time you can change it with the Xorg "RegistryDwords" option (in the bit value)"
         echo "or rebuild it with the new value."
         if [ "$_powermizer_scheme" = "1" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault=0x3;PowerMizerDefaultAC=0x1"/' \
-		    kernel/nvidia/nv-reg.h
+            registrydwords+=';PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault=0x3;PowerMizerDefaultAC=0x1"'
         elif [ "$_powermizer_scheme" = "2" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3"/' \
-		    kernel/nvidia/nv-reg.h
+            registrydwords+=';PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3"'
         elif [ "$_powermizer_scheme" = "3" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3"/' \
-		    kernel/nvidia/nv-reg.h
-        elif [ "$_powermizer_scheme" = "4" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3333"/' \
-		    kernel/nvidia/nv-reg.h
+            registrydwords+=';PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3"'
 	else
             echo "You have selected the wrong powermizer scheme, please reread the option description in PKGBUILD."
         fi
@@ -174,14 +174,20 @@ prepare() {
         echo "If you don't like it in time you can change it with the Xorg "OverrideMaxPerf" option (in the bit value)"
         echo "or rebuild it with the new value."
         if [ "$_override_max_perf" = "1" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x2"/' \
-		    kernel/nvidia/nv-reg.h
+	    registrydwords+=';OverrideMaxPerf=0x2"'
         elif [ "$_override_max_perf" = "2" ]; then
-            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x3"/' \
-		    kernel/nvidia/nv-reg.h
+	    registrydwords+=';OverrideMaxPerf=0x3"'
         else
             echo "You selected the wrong value for the performance level forcing. Please reread the option description in PKGBUILD."
         fi
+    fi
+
+    sed -i "s/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, ${registrydwords}/" \
+		    kernel/nvidia/nv-reg.h
+
+    # workaround for dkms+clang
+    if [[ ! -z $_force_clang_usage ]]; then
+        sed -i "s/'make'/'make' LLVM=1 CC=clang CXX=clang++ LD=ld.lld AS=llvm-as AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJSIZE=llvm-size STRIP=llvm-strip/" kernel/dkms.conf
     fi
 }
 
@@ -189,6 +195,9 @@ package_nvidia-dkms-performance() {
     pkgdesc='NVIDIA driver sources for linux with some optimizations'
     arch=('x86_64' 'aarch64')
     depends=('dkms' "nvidia-utils-performance=${pkgver}" 'libglvnd')
+    if [[ ! -z $_force_clang_usage ]]; then
+        depends+=('llvm' 'clang' 'lld')
+    fi
     provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" 
               "nvidia-dkms-performance=${pkgver}" 'NVIDIA-MODULE')
     conflicts=('nvidia' 'nvidia-dkms')

@@ -1,6 +1,6 @@
 pkgbase = nvidia-dkms-performance
 	pkgver = 470.74
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.nvidia.com/
 	arch = x86_64
 	arch = aarch64
@@ -55,6 +55,9 @@ pkgname = nvidia-dkms-performance
 	depends = dkms
 	depends = nvidia-utils-performance=470.74
 	depends = libglvnd
+	depends = llvm
+	depends = clang
+	depends = lld
 	provides = nvidia=470.74
 	provides = nvidia-dkms=470.74
 	provides = nvidia-dkms-performance=470.74
