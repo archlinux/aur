@@ -1,37 +1,35 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=ironpython-git
-pkgver=2.7.9.r24.g5c594f32b
+_pkgname=ironpython2
+pkgver=2.7.11.r4.gf854444e1
 pkgrel=1
 pkgdesc="Python implementation for the .NET framework"
 arch=("any")
 url="http://ironpython.net"
 license=("Apache")
-depends=('mono>=5.18')
-makedepends=('git' 'msbuild-stable' 'dos2unix')
+depends=('mono>=5.18' 'dotnet-runtime')
+makedepends=('git' 'powershell' 'dotnet-sdk' 'dos2unix' 'dpkg')
 options=('!strip' 'emptydirs' 'libtool')
-source=($pkgname::git+https://github.com/IronLanguages/ironpython2.git
-        package.patch)
-sha256sums=('SKIP'
-            'b57180aa2eacdf668e87dd605181867928b4363a3d9a1abf5186e8c21d6e560d')
+source=(git+https://github.com/IronLanguages/ironpython2.git)
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/^ipy-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   git submodule update --init
-  patch -p0 < ../package.patch
-  sed -i "s:@pkgdir@:$pkgdir:" Package/deb/Deb.Packaging.targets
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  msbuild Build.proj /t:Stage /p:Configuration=Release
+  cd "$srcdir/$_pkgname"
+  ./make.ps1 stage
+  ./make.ps1 package
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  msbuild Build.proj /t:Package /p:Configuration=Release
+  cd "$srcdir/$_pkgname"
+  dpkg -x Package/Release/Packages/IronPython-2.7.11/ironpython_2.7.11.deb "$pkgdir"
 }
