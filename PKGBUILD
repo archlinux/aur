@@ -1,7 +1,7 @@
 #Maintainer: Bazza <bazza@riseup.net>
 
 pkgname=('rhubarb-lip-sync')
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Rhubarb Lip Sync is a command-line tool that automatically creates 2D mouth animation from voice recordings."
 provides=("DanielSWolf")
