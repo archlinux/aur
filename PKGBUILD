@@ -8,7 +8,7 @@ arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/rtissera/$_pkgname"
 license=('BSD')
 depends=('zlib')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'ninja')
 provides=("$_pkgname=$pkgver" "$_pkgname.so")
 conflicts=("$_pkgname")
 source=("git+$url.git")
@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-	cmake -S $_pkgname -B build \
+	cmake -S $_pkgname -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DWITH_SYSTEM_ZLIB=ON \
 		-Wno-dev
