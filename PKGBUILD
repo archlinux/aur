@@ -23,9 +23,9 @@ noextract=('love_0.10.2ppa1_amd64.deb' 'liblove0_0.10.2ppa1_amd64.deb')
 
 package(){
     export LC_ALL=en_US.UTF-8
-	rm "${srcdir}/debian-binary"
-	rm "${srcdir}/data.tar.xz"
-	rm "${srcdir}/control.tar.gz"
+	#rm "${srcdir}/debian-binary"
+	#rm "${srcdir}/data.tar.xz"
+	#rm "${srcdir}/control.tar.gz"
 	ar xv "${srcdir}/liblove0_0.10.2ppa1_amd64.deb"
 	tar xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 	cp "${pkgdir}/usr/lib/x86_64-linux-gnu/liblove.so.0.0.0" "${pkgdir}/usr/lib/liblove.so.0.0.0"
