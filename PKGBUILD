@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/WolframRhodium/VapourSynth-BM3DCUDA'
 license=('GPL')
 depends=('vapoursynth'
-         'fftw'
+         'cuda'
          )
 makedepends=('git'
              'cmake'
@@ -31,7 +31,8 @@ prepare() {
 build() {
   cd build
   CXXFLAGS+=" $(pkg-config --cflags vapoursynth)" cmake ../bm3dcuda \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_SKIP_RPATH=ON
 
   make
 }
