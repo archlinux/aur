@@ -36,11 +36,11 @@ build() {
 
 package() {
     mkdir -p "${pkgdir}/usr/share/games/thextech-smbx"
-    install -Dm0644 "${srcdir}/battle" "${pkgdir}/usr/share/games/thextech-smbx/battle"
-    install -Dm0644 "${srcdir}/graphics" "${pkgdir}/usr/share/games/thextech-smbx/graphics"
-    install -Dm0644 "${srcdir}/music" "${pkgdir}/usr/share/games/thextech-smbx/music"
-    install -Dm0644 "${srcdir}/sound" "${pkgdir}/usr/share/games/thextech-smbx/sound"
-    install -Dm0644 "${srcdir}/worlds" "${pkgdir}/usr/share/games/thextech-smbx/worlds"
+    cp -r "${srcdir}/battle" "${pkgdir}/usr/share/games/thextech-smbx/battle"
+    cp -r "${srcdir}/graphics" "${pkgdir}/usr/share/games/thextech-smbx/graphics"
+    cp -r "${srcdir}/music" "${pkgdir}/usr/share/games/thextech-smbx/music"
+    cp -r "${srcdir}/sound" "${pkgdir}/usr/share/games/thextech-smbx/sound"
+    cp -r "${srcdir}/worlds" "${pkgdir}/usr/share/games/thextech-smbx/worlds"
     install -Dm0644 "${srcdir}/gameinfo.ini" "${pkgdir}/usr/share/games/thextech-smbx/gameinfo.ini"
     install -Dm0644 "${srcdir}/music.ini" "${pkgdir}/usr/share/games/thextech-smbx/music.ini"
     install -Dm0644 "${srcdir}/sounds.ini" "${pkgdir}/usr/share/games/thextech-smbx/sounds.ini"
