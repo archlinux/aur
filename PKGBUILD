@@ -10,9 +10,8 @@ license=('GPL3')
 source=("${pkgname}::https://s3-us-west-2.amazonaws.com/openpnp/OpenPnP-unix-develop.tar.gz")
 sha256sums=('SKIP')
 
-
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
   cp -r "${srcdir}/${pkgname}" "${pkgdir}/opt/"
-  ln -sf "${pkgdir}/usr/bin/OpenPnP" "${pkgdir}/opt/${pkgname}/OpenPnP"
+  ln -sf "${pkgdir}/opt/${pkgname}/OpenPnP" "${pkgdir}/usr/bin/OpenPnP" 
 }
