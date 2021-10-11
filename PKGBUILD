@@ -50,8 +50,8 @@ validpgpkeys=()
 build()
 {
     # shellcheck disable=SC2154
-    mkdir -p "${srcdir}"/"${pkgname}"-v"${pkgver}"/build/
-    cd "${srcdir}"/"${pkgname}"-v"${pkgver}"/build/ || exit
+    mkdir -p "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
+    cd "${srcdir}"/"${pkgname}"-"${pkgver}"/build/ || exit
     cmake ..
     make
 }
@@ -64,12 +64,12 @@ package()
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # Install the software.
-    cd "${srcdir}"/"${pkgname}"-v"${pkgver}"/build/ || exit
+    cd "${srcdir}"/"${pkgname}"-"${pkgver}"/build/ || exit
     make DESTDIR="${pkgdir}" install
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${pkgname}"-v"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     # Install the license.
-    install -Dm644 "${srcdir}"/"${pkgname}"-v"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
