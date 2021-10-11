@@ -1,0 +1,28 @@
+[Unit]
+Description=Parca service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=parca
+Group=parca
+Restart=on-failure
+WorkingDirectory=/var/lib/parca
+EnvironmentFile=-/etc/conf.d/parca
+ExecStart=/usr/bin/parca --config-path=/etc/parca/parca.yaml $PARCA_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+LimitNOFILE=65535
+NoNewPrivileges=true
+ProtectHome=true
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+RestrictRealtime=yes
+RestrictNamespaces=yes
+MemoryDenyWriteExecute=yes
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
