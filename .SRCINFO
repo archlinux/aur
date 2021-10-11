@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-tslib
 	pkgdesc = Touchscreen Access Library (mingw-w64)
-	pkgver = 1.21
+	pkgver = 1.22
 	pkgrel = 1
 	url = https://github.com/kergoth/tslib
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-tslib
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/kergoth/tslib/releases/download/1.21/tslib-1.21.tar.xz
-	sha256sums = d2a57b823ea59e53a3b130eef05dfed1190b857854f886eec764e1ca1957cf56
+	source = https://github.com/kergoth/tslib/releases/download/1.22/tslib-1.22.tar.xz
+	sha256sums = aaf0aed410a268d7b51385d07fe4d9d64312038e87c447ec8a24c8db0a15617a
 
 pkgname = mingw-w64-tslib
-
