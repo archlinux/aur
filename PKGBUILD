@@ -343,6 +343,7 @@ package() {
     v8_context_snapshot.bin \
     libGLESv2.so \
     libEGL.so \
+    chrome_crashpad_handler \
     "${pkgdir}/usr/lib/${_pkgname}/"
   cp -a --reflink=auto \
     swiftshader/libGLESv2.so \
