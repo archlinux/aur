@@ -2,7 +2,7 @@
 # Contributer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=tcmu-runner
-pkgver=1.5.2
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="A daemon that handles the userspace side of the LIO TCM-User backstore."
 arch=('x86_64')
@@ -18,6 +18,9 @@ prepare() {
 
 	cmake ./ \
 		-Dwith-glfs=false \
+		-Dwith-rbd=false \
+		-Dwith-zbc=false \
+		-Dwith-tcmalloc=false \
 		-DSUPPORT_SYSTEMD=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr/ \
 		-DCMAKE_BUILD_TYPE=Release

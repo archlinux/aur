@@ -1,13 +1,12 @@
 pkgbase = tcmu-runner
 	pkgdesc = A daemon that handles the userspace side of the LIO TCM-User backstore.
-	pkgver = 1.5.2
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/open-iscsi/tcmu-runner
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = cmake
-	source = tcmu-runner-1.5.2.tar.gz::https://github.com/open-iscsi/tcmu-runner/archive/v1.5.2.tar.gz
+	source = tcmu-runner-1.5.4.tar.gz::https://github.com/open-iscsi/tcmu-runner/archive/v1.5.4.tar.gz
 	md5sums = SKIP
 
 pkgname = tcmu-runner
-
