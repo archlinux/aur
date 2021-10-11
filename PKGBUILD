@@ -67,7 +67,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.13.13
+pkgver=5.14.11
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -76,29 +76,37 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=3d3eca364633a3d27f13d157fc34ed958e4ff3b1
-_bmqversion=5.13-r3
+_arch_config_commit=15fe7090369ec9ac511443ac8092aba2e3046e3d
+_bmqversion=5.14-r3
 _bmq_patch="prjc_v${_bmqversion}.patch"
-_gcc_more_v=20210818
+_gcc_more_v=20210914
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/2145b5dfcd8968021af85f8c56f93caf58d7bad1.patch"
-  "0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch::https://github.com/archlinux/linux/commit/3f1b39b04e2a610d0780fec9058326334ced1713.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/f76db6fc04fadf872a138740592b4e8ec9ba9149.patch"
+  "0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch::https://github.com/archlinux/linux/commit/810821eb3b1894f2cfcc29cffd42d193b8fe54a6.patch"
+  "0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch::https://github.com/archlinux/linux/commit/38c2ca84b97f9d6021c2607e214f99acd84dac2d.patch"
+  "0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch::https://github.com/archlinux/linux/commit/ab60c2d0242fc428a436c25c1144f6acd9d6f419.patch"
+  "0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch::https://github.com/archlinux/linux/commit/7b0c23ec626e579ffa7ef239cac20dc7fa1797e9.patch"
+  "0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch::https://github.com/archlinux/linux/commit/b5ed7b38f5551c5dfca87ab29d679f3d6d327557.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('c763adef68a11c42a6e9435522300c5327a9dd3c8b25f1c41e0fdc536e224aac83dbb13d86bb52973304520f1cc28c4c9158baddf6087af54b1e5fbe010be485'
+b2sums=('b84afc268eaace7029d13b0e37b5366d042e96f1437b95b08a995d7717d6b6ed118e929c2d0e0929ddcc4dba772768d686d1c3a29a7c9ed60b9534797b006efa'
         'SKIP'
-        '921261a140d7eeebc5805e6b0a81f5dfad960edae863cf91bb40ec710688df596ae0a699be00dc0957bf788265e57ba63c1140470c71955a970f125d19a22536'
-        '22e05106ee91f104c69f8d11fa4072b28910b8202388a1778ac498f5128f8b93e6465c3e1ef0d9393aa5d01bfc226b3d6463fbba9e463305381a45cb5f015fa0'
-        '5a191fb995303be264e8721318622bee1d1a3822f805ddf21c1002817ca2e144d6d17e1337f37b32dc3aca1a8754e4354a800c1b4d44417aea0acaf326533b35'
-        'a85dee3ad3795306ba602876afe970b7fc722367a74b578e17f20f9b1b5fa55a625bbb562695c110c3a0cbaee64eafa9b712f86e5a1db09a08c352a97b1af262'
-        '3e67a1604be248986aea911274efd0ac56f5cc5c9e1dede224bf187f3f4a2c38fe835c38cf174b98baecc2ef13f5749175916cfe4ec9b809274443d773b67708')
+        'e549ff2253b3819d38df7e71d0ff377dc6faf332745295c8a2cf40d45a57128e3a707c8f715b6c1c11531575e37c08eb8bd1eba092b39acc432ab94c973fea67'
+        '27cd56595a131b7c9a45429d775ff3a0eea79f95674711acf0c0688716a0952150f335540457dc7aab05ac92c58e32e576ce3d392c7e0df51c93be28b17522b6'
+        'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
+        '73d7a6daab0a9eeb95e944f7a26e9c4a9e0a6b0b019e401873ac272b7213a9b011165d1a0c45cf49aaa4e46e468220f5c3570db467407bb8661c823e0fc79299'
+        '5b70deed51bb2255b87136529324b33fe2b06e84f9e52a84beb2ca07b42a3569335ef34a81643edd6476cd5a8a667c0a0adfb40f926e409627178520e00349cd'
+        'ab13eeb4b49ca55198e49a77f75d9e4dacf899b9649b7d9f0e7217c7579f2db40ec12024563943adfd608066805ed7321e49eea72a8cacae46c652c71c15b5c9'
+        '0be34a0b342d80d3a34452b0f7f0aacf32b6b17215de1775488d1ca4efa94a00811ba61898c8c1e9cf4ef061e2d381346a005875dfde1d93f290933c1b845bef'
+        'f05d04b05d36e6c5756632903182362b2e6f84b53b5e7a2b7992eb89f87c55d14166acc0ff0c36a9aaaf9afb9406c2fb48f0acbc647075e9de216e77913ac2c0'
+        '40782be9898fba40d85e75a5bdf55a03a935c51bdac3c562968a1e52a95ad5fe42d4710e660b9e02a6e7b8c19d30e8455886723fbac40573a905a2a55f02c41d')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -158,7 +166,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8-5.14.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
