@@ -1,8 +1,8 @@
 # Maintainer: Jacob Wang <jatcwang@gmail.com>
 
 pkgname=jdk-mission-control-bin
-pkgver=8.0.0
-pkgrel=2
+pkgver=8.1.0
+pkgrel=1
 pkgdesc="OpenJDK Mission Control"
 arch=('x86_64')
 license=('UPL')
@@ -11,10 +11,10 @@ depends=('java-environment')
 optdepends=()
 options=(!strip)
 source=(
-  "org.openjdk.jmc-linux.gtk.x86_64.tar.gz"::"https://github.com/AdoptOpenJDK/openjdk-jmc-overrides/releases/download/8.0.0/org.openjdk.jmc-8.0.0-linux.gtk.x86_64.tar.gz"
+  "org.openjdk.jmc-linux.gtk.x86_64.tar.gz"::"https://github.com/adoptium/jmc-overrides/releases/download/8.1.0/org.openjdk.jmc-8.1.0-linux.gtk.x86_64.tar.gz"
   "jdk-mission-control.desktop"
 )
-sha512sums=('b7a60b41772c8c847e1934363f4f81b1c60f603b9ae12aefe654decb40a35abd51040d26096f16e8218cb77430689080e0620680b048c57d836d593b4fcb6979' 'SKIP')
+sha512sums=('b22aa01440cd88e64841b9a59be625ef3ed53b051950004f8aca50a7091572b65461526c41b8945e23683980bb9dc029a2f51f0fd3662364c9ed783d6576038a' 'SKIP')
 
 # pkgver() {
 #   echo $(curl -I https://ci.adoptopenjdk.net/view/JMC/job/jmc-build/job/master/lastSuccessfulBuild/artifact/target/products/org.openjdk.jmc-linux.gtk.x86_64.tar.gz | grep 'Last-Modified' | sed 's/Last-Modified: //' | xargs -I {} date --date {} -u +"%Y%m%d%H%M%S")
