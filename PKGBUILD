@@ -1,23 +1,29 @@
 # Maintainer: Charles Vejnar
 
 pkgname=python-pyfnutils
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
-pkgdesc="Small utility functions for Python."
+pkgdesc="Small utility functions for Python: logging, parallel tasks, zstd."
 arch=("any")
-url="https://gitlab.com/vejnar/pyfnutils"
+url="https://github.com/vejnar/pyfnutils"
 license=("MPLv2")
 depends=("python")
-makedepends=("python-setuptools")
-source=("https://gitlab.com/vejnar/pyfnutils/-/archive/v$pkgver/pyfnutils-v$pkgver.tar.gz")
-sha1sums=("366875df4b91f89f4786810102560ed27c94ff27")
-
-build() {
-    cd "$srcdir/pyfnutils-v$pkgver"
-    python setup.py build
-}
+makedepends=("python-setuptools" "python-pip")
+source=("https://github.com/vejnar/pyfnutils/archive/refs/tags/v$pkgver.tar.gz")
+sha1sums=("055825e6dbeebde50e955535c22a7af973ea4d41")
 
 package() {
-    cd "$srcdir/pyfnutils-v$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    cd "$srcdir/pyfnutils-$pkgver"
+    pip install --disable-pip-version-check \
+                --ignore-installed \
+                --isolated \
+                --no-deps \
+                --no-build-isolation \
+                --no-index \
+                --no-cache-dir \
+                --no-warn-script-location \
+                --root="$pkgdir" \
+                .
+    cd "${pkgdir}"
+    python -O -m compileall "usr/lib"
 }
