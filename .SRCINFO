@@ -1,0 +1,32 @@
+pkgbase = hugetracker-git
+	pkgdesc = The music composition suite for the Nintendo Game Boy
+	pkgver = 1.0b9.r24.357b083
+	pkgrel = 1
+	url = https://nickfa.ro/index.php?title=HUGETracker
+	arch = x86_64
+	license = custom:public domain
+	makedepends = fpc
+	makedepends = git
+	makedepends = lazarus
+	depends = fontconfig
+	depends = gtk2
+	depends = pango
+	depends = rgbds>=0.5.0
+	depends = sdl2
+	optdepends = ffmpeg: "Export song" functionality
+	provides = hugetracker
+	conflicts = hugetracker
+	source = hugetracker::git+https://github.com/SuperDisk/hUGETracker
+	source = git+https://github.com/ev1313/Pascal-SDL-2-Headers
+	source = git+https://github.com/bgrabitmap/bgrabitmap
+	source = git+https://github.com/SuperDisk/hUGEDriver
+	source = git+https://github.com/olivluca/rackctls
+	source = non-portable.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hugetracker-git

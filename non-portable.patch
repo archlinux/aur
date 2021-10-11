@@ -1,0 +1,183 @@
+diff -rU5 hugetracker.orig/codegen.pas hugetracker/codegen.pas
+--- hugetracker.orig/codegen.pas	2021-10-11 11:50:37.297998405 +0200
++++ hugetracker/codegen.pas	2021-10-11 11:56:54.786812153 +0200
+@@ -477,11 +477,11 @@
+     Define: string;
+   begin
+     Proc.Executable := 'rgbasm';
+     Proc.Parameters.Clear;
+     Proc.Parameters.Add('-i' + 'render');
+-    Proc.Parameters.Add('-i' + 'hUGEDriver');
++    Proc.Parameters.Add('-i' + '/usr/share/hugetracker/hUGEDriver');
+     Proc.Parameters.Add('-o' + OutFile);
+     for Define in Defines do
+       // HACK: This just removes all instances of double quotes to avoid a bug
+       // where arguments don't get passed in right with double quotes.
+       Proc.Parameters.Add('-D' + ReplaceStr(Define, '"', ''));
+@@ -556,37 +556,37 @@
+ 
+   try
+     // Assemble
+     if Mode = emPreview then
+     begin
+-      if Assemble(Filename + '_driver.obj', 'hUGEDriver/hUGEDriver.asm', ['PREVIEW_MODE']) <> 0 then
++      if Assemble(Filename + '_driver.obj', '/usr/share/hugetracker/hUGEDriver/hUGEDriver.asm', ['PREVIEW_MODE']) <> 0 then
+         Die;
+     end
+     else
+     begin
+-      if Assemble(Filename + '_driver.obj', 'hUGEDriver/hUGEDriver.asm', []) <> 0 then
++      if Assemble(Filename + '_driver.obj', '/usr/share/hugetracker/hUGEDriver/hUGEDriver.asm', []) <> 0 then
+         Die;
+     end;
+ 
+     if Assemble(Filename + '_song.obj',
+-                'hUGEDriver/song.asm',
++                '/usr/share/hugetracker/hUGEDriver/song.asm',
+                 ['SONG_DESCRIPTOR=song', 'TICKS='+IntToStr(Song.TicksPerRow)]) <> 0 then
+       Die;
+ 
+     if Mode = emGBS then
+     begin
+       if Assemble(
+-            Filename + '_gbs.obj', 'hUGEDriver/gbs.asm',
++            Filename + '_gbs.obj', '/usr/share/hugetracker/hUGEDriver/gbs.asm',
+             ['SONG_DESCRIPTOR=song',
+              'GBS_TITLE="'+PadRight(LeftStr(Song.Name, 32), 32)+'"',
+              'GBS_AUTHOR="'+PadRight(LeftStr(Song.Artist, 32), 32)+'"',
+              'GBS_COPYRIGHT="'+PadRight(IntToStr(CurrentYear), 32)+'"']
+          ) <> 0 then Die;
+     end
+     else
+     begin
+-      if Assemble(Filename + '_player.obj', 'hUGEDriver/player.asm', ['SONG_DESCRIPTOR=song']) <> 0 then
++      if Assemble(Filename + '_player.obj', '/usr/share/hugetracker/hUGEDriver/player.asm', ['SONG_DESCRIPTOR=song']) <> 0 then
+         Die;
+     end;
+ 
+     // Link
+     if Mode = emGBS then
+diff -rU5 hugetracker.orig/Global/vars.pas hugetracker/Global/vars.pas
+--- hugetracker.orig/Global/vars.pas	2021-10-11 11:50:37.267998796 +0200
++++ hugetracker/Global/vars.pas	2021-10-11 15:02:55.781037214 +0200
+@@ -304,24 +304,41 @@
+                                   | Writing a value into 2100-21FF area will
+                                   | select an appropriate ROM bank at
+                                   | 4000-7FFF. RAM switching is not provided.
+ *)
+ 
++procedure ChWorkingDir();
+ procedure load(Name: string);
+ function ReadGameState(filename: string): byte;
+ function SaveGameState(filename: string): boolean;
+ 
+ implementation
+ 
++uses sysutils;
++
++procedure ChWorkingDir();
++var dir: UnicodeString;
++begin
++  dir := GetEnvironmentVariable('XDG_CACHE_HOME');
++  if dir = '' then
++    dir := GetEnvironmentVariable('HOME') + '/.cache';
++  dir := dir + '/hugetracker';
++
++  if not DirectoryExists(dir) then
++    MkDir(dir);
++  ChDir(dir);
++end;
++
+ procedure load(Name: string);
+ var
+   cf: file;
+   m_rom: array[0..$180 - 1] of byte;
+   i, c1: byte;
+   S: string;
+ begin
+   assignfile(cf, Name);
++  Filemode := 0; // Open the file read-only
+   reset(cf, 1);
+   blockread(cf, {%H-}m_rom, $180);
+   closefile(cf);
+   buffer := '                ';
+   for i := 0 to 15 do
+diff -rU5 hugetracker.orig/hUGETracker.lpr hugetracker/hUGETracker.lpr
+--- hugetracker.orig/hUGETracker.lpr	2021-10-11 11:50:37.304664984 +0200
++++ hugetracker/hUGETracker.lpr	2021-10-11 11:56:54.790145449 +0200
+@@ -41,11 +41,11 @@
+ 
+ begin
+   ReturnNilIfGrowHeapFails := False;
+ 
+   // Change working directory to the tracker directory
+-  ChDir(ExtractFileDir(ParamStr(0)));
++  ChWorkingDir();
+ 
+   {$if declared(useHeapTrace)}
+     // Set up -gh output for the Leakview package:
+     if FileExists('heap.trc') then
+       DeleteFile('heap.trc');
+diff -rU5 hugetracker.orig/tracker.pas hugetracker/tracker.pas
+--- hugetracker.orig/tracker.pas	2021-10-11 11:50:37.344664463 +0200
++++ hugetracker/tracker.pas	2021-10-11 11:56:54.790145449 +0200
+@@ -1060,12 +1060,12 @@
+ end;
+ 
+ procedure TfrmTracker.HaltPlayback;
+ begin
+   LockPlayback;
+-  GetROMReady('halt.gb');
+-  ParseSymFile('halt.sym');
++  GetROMReady('/usr/share/hugetracker/halt.gb');
++  ParseSymFile('/usr/share/hugetracker/halt.sym');
+   UnlockPlayback;
+ 
+   Playing := False;
+ 
+   TrackerGrid.HighlightedRow := -1;
+@@ -1085,11 +1085,11 @@
+   InFDCallback := False; // HACK!!!!!!!!
+ end;
+ 
+ procedure TfrmTracker.OnSampleSongMenuItemClicked(Sender: TObject);
+ begin
+-  LoadSong('Sample Songs/'+TMenuItem(Sender).Caption);
++  LoadSong('/usr/share/hugetracker/Sample Songs/'+TMenuItem(Sender).Caption);
+ end;
+ 
+ procedure TfrmTracker.CreateKeymap;
+ var
+   StringGrid: TStringGrid;
+@@ -1361,14 +1361,14 @@
+   SampleSongs: TStringList;
+   S: String;
+   MenuItem: TMenuItem;
+   I: Integer;
+ begin
+-  if (not FileExists('PixeliteTTF.ttf'))
+-  or (not FileExists('halt.gb'))
+-  or (not FileExists('halt.sym'))
+-  or (not DirectoryExists('hUGEDriver')) then begin
++  if (not FileExists('/usr/share/hugetracker/PixeliteTTF.ttf'))
++  or (not FileExists('/usr/share/hugetracker/halt.gb'))
++  or (not FileExists('/usr/share/hugetracker/halt.sym'))
++  or (not DirectoryExists('/usr/share/hugetracker/hUGEDriver')) then begin
+     MessageDlg('Error',
+       'hUGETracker can''t load a required file which comes with '+
+       'the tracker. This likely means that you haven''t extracted the program ' +
+       'before running it. Please do so, and relaunch. Thanks!',
+       mtError, [mbOk], 0);
+@@ -1445,11 +1445,11 @@
+   DebugPlayNoteButton.Visible := False;
+   MenuItem41.Visible := False;
+   {$endif}
+ 
+   // Load sample songs list
+-  SampleSongs := FindAllFiles('./Sample Songs/', '*.uge', False);
++  SampleSongs := FindAllFiles('/usr/share/hugetracker/Sample Songs/', '*.uge', False);
+   if SampleSongs.Count > 0 then
+     for S in SampleSongs do begin
+       MenuItem := TMenuItem.Create(MainMenu1);
+       MenuItem.Caption := ExtractFileName(S);
+       MenuItem.OnClick := @OnSampleSongMenuItemClicked;
