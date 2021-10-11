@@ -1,6 +1,6 @@
 pkgbase = processing4-git
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = 4.0a6.r2.ga1122aa67
+	pkgver = 4.0b2.r23.g272801f95
 	pkgrel = 1
 	url = https://github.com/processing/processing4
 	arch = x86_64
@@ -11,14 +11,12 @@ pkgbase = processing4-git
 	makedepends = gendesk
 	makedepends = unzip
 	depends = libgl
+	provides = processing
 	provides = processing4
-	conflicts = processing4
 	options = !strip
 	source = https://download.processing.org/reference.zip
-	source = change_cmd_name.patch
 	source = disable_update_check.patch
 	sha256sums = fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f
-	sha256sums = 7f821db61160248b65df19b018dc3b2ba7cc995564dd389bb83b3ce8e5097119
 	sha256sums = 35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30
 
 pkgname = processing4-git
