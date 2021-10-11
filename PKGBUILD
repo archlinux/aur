@@ -5,11 +5,11 @@ pkgver=r27.7f3bc69
 pkgrel=2
 pkgdesc="HRPT Blocks from gr-noaa and others ported to GNU Radio 3.8+"
 arch=('x86_64')
-url="https://gitlab.altillimity.com/altillimity/gr-hrpt"
+url="https://github.com/altillimity/gr-hrpt"
 license=('GPL3')
 depends=(gnuradio liborcus)
 makedepends=(boost boost-libs cmake git)
-source=("$pkgname"::'git+http://gitlab.altillimity.com/altillimity/gr-hrpt.git')
+source=("$pkgname"::'git+https://github.com/altillimity/gr-hrpt.git')
 sha256sums=("SKIP")
 
 pkgver() {
