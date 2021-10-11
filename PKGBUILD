@@ -2,7 +2,7 @@
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 _commit="46273bd11471b5b7d4c551c65bd1f304e12e1877"
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – stable"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
 conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
 depends=('dbus' 'openssl' 'libxml2' 'xz' 'lz4' 'crypto++')
-makedepends=('gcc' 'make' 'pkgconf' 'autoconf' 'automake' 'git')
+makedepends=('gcc' 'make' 'pkgconf' 'autoconf' 'automake' 'git' 'wget')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 install="$pkgname.install"
