@@ -1,6 +1,6 @@
 pkgbase = python-chess
 	pkgdesc = A Python chess library with move generation/validation and PGN/Polyglot/Gaviota/Syzygy/UCI support
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/niklasf/python-chess
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-chess
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python
-	source = python-chess-1.6.1.tar.gz::https://github.com/niklasf/python-chess/archive/v1.6.1.tar.gz
-	sha256sums = 2f8f7574f963df7e23cd4c442715285c2e40a5d43373ef04ea4daa344f03c537
+	source = python-chess-1.7.0.tar.gz::https://github.com/niklasf/python-chess/archive/v1.7.0.tar.gz
+	sha256sums = d77e9b76acfede4f3f97e4d854eafefe918471c7208659e05a80dc3dfdaeb1e6
 
 pkgname = python-chess
