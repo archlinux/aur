@@ -10,8 +10,8 @@ makedepends = libicns
 depends = java-runtime>=8
 depends = sh
 depends = hicolor-icon-theme
-provides = mindustry-foos-client
-conflicts = mindustry-foos-client
+provides = mindustry-foos-client-bin
+conflicts = mindustry-foos-client-bin
 noextract = mindustry-foos-client-bin-761.jar
 source = mindustry-foos-client-bin-761.jar::https://github.com/mindustry-antigrief/mindustry-client-v7-builds/releases/download/761/desktop.jar
 source = mindustry-foos-client-bin.icns::https://github.com/mindustry-antigrief/mindustry-client/blob/v6/core/assets/icons/icon.icns
