@@ -24,8 +24,8 @@ conflicts=('alchemy')
 provides=('alchemy-next')
 
 source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git' 'alchemy-next.desktop')
-md5sums=('SKIP' '6d65e849f37a05b8684d99185feaa07c')
-
+md5sums=('SKIP'
+         '6d65e849f37a05b8684d99185feaa07c')
 pkgver() {
 	cat "$pkgname/build-linux-64/newview/viewer_version.txt"
 }
@@ -34,7 +34,15 @@ prepare() {
 	cd "$pkgname" || exit 1
 	virtualenv ".venv" -p python3
 	source ".venv/bin/activate"
-	command -v autobuild || pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
+	if command -v autobuild; then
+		abver="$(autobuild --version)"
+		echo "Found $abver"
+		if [[ "${abver}" != "autobuild 2.1.0" ]]; then
+			echo "Reinstalling autobuild to work around some bugs"
+			pip3 uninstall --yes autobuild
+		fi
+	fi
+	pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
 	git reset --hard 52025a7c
 	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON
 }
