@@ -1,0 +1,14 @@
+pkgbase = ruby-cbor-canonical
+	pkgdesc = CBOR (Concise Binary Object Representation) old canonical encoding
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://cbor.io/
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	noextract = cbor-canonical-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/cbor-canonical-0.1.2.gem
+	sha1sums = 66d6da1c17a8d94ed0145a52869aae89899e3f8c
+
+pkgname = ruby-cbor-canonical
