@@ -1,7 +1,7 @@
 pkgbase = processing4-git
 	pkgdesc = Programming environment for creating images, animations and interactions
 	pkgver = 4.0b2.r23.g272801f95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/processing/processing4
 	arch = x86_64
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = processing4-git
 	depends = libgl
 	provides = processing
 	provides = processing4
+	conflicts = processing
 	options = !strip
 	source = https://download.processing.org/reference.zip
 	source = disable_update_check.patch
