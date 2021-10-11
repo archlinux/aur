@@ -1,4 +1,5 @@
-# Maintainer : Barfin
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor : Barfin
 # Contributor: Kostis Karantias <kkarantias [at] gmail [dot] com>
 # Contributor: Pieter Goetschalckx <3.14.e.ter [at] gmail [dot] com>
 # Contributor: Bastien Traverse <firstname at lastname dot email>
@@ -16,7 +17,7 @@
 
 pkgname=popcorntime-bin
 _pkgname=popcorntime
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Stream free movies and TV shows from torrents"
 arch=('x86_64')
@@ -30,7 +31,7 @@ options=('!strip')
 _zipfile="Popcorn-Time-${pkgver}-linux64.zip"
 source=("https://github.com/popcorn-official/popcorn-desktop/releases/download/v${pkgver}/$_zipfile"
         "${_pkgname}.desktop" )
-sha256sums=('2c88cd9b9455f52d90bb4f1d868a7c9cfb8093ea0d3cd7b338f8ce5a8ede01fa'
+sha256sums=('0fe15d2933b331a49b2da9a820e45a722b7d2d3224f92da0a31ce4a1296adad3'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = popcorntime-bin
 	pkgdesc = Stream free movies and TV shows from torrents
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/popcorn-official/popcorn-desktop
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = popcorntime-bin
 	conflicts = popcorntime
 	conflicts = popcorntime-ce
 	options = !strip
-	source = https://github.com/popcorn-official/popcorn-desktop/releases/download/v0.4.5/Popcorn-Time-0.4.5-linux64.zip
+	source = https://github.com/popcorn-official/popcorn-desktop/releases/download/v0.4.6/Popcorn-Time-0.4.6-linux64.zip
 	source = popcorntime.desktop
-	sha256sums = 2c88cd9b9455f52d90bb4f1d868a7c9cfb8093ea0d3cd7b338f8ce5a8ede01fa
+	sha256sums = 0fe15d2933b331a49b2da9a820e45a722b7d2d3224f92da0a31ce4a1296adad3
 	sha256sums = 4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334
 
 pkgname = popcorntime-bin
