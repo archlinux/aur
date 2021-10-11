@@ -1,10 +1,10 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mediawiki-extension-usermerge
-pkgver=1.36+r1027+ga285dbc
+pkgver=1.36+r1028+gf1dffed
 pkgrel=1
 _mw='1.36'
-_commit='a285dbc704018ebef05bc149ed2b6865402cc008' # git rev-parse "REL${_mw/./_}"
+_commit='f1dffed0d5f46299d59eb85a9c3a0cae3de7feb5' # git rev-parse "REL${_mw/./_}"
 pkgdesc="An extension for MediaWiki that allows to merge one Wiki user's account with another Wiki user's account"
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:UserMerge'
