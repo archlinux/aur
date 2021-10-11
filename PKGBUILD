@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full-git
 pkgname=('imagemagick-full-git' 'imagemagick-full-doc-git')
-pkgver=7.1.0.9.r9.ga3c068017
+pkgver=7.1.0.9.r18.ga3a2cc750
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -28,7 +28,7 @@ makedepends=(
         'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'gperftools' 'libraw'
         'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
-        'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip'
+        'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'highway'
     # AUR:
         'dmalloc' 'flif' 'libfpx' 'libumem-git'
 )
@@ -89,7 +89,7 @@ build() {
         --with-heic \
         --with-jbig \
         --with-jpeg \
-        --without-jxl \
+        --with-jxl \
         --with-lcms \
         --with-openjp2 \
         --with-lqr \
@@ -128,7 +128,7 @@ package_imagemagick-full-git() {
             'libx11' 'bzip2' 'zlib' 'libltdl' 'gperftools' 'djvulibre' 'libraw'
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
-            'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl'
+            'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libjxl'
         # AUR:
             'dmalloc' 'flif' 'libfpx' 'libumem-git'
     )
