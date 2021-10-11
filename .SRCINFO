@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libgpg-error
 	pkgdesc = Support library for libgcrypt (mingw-w64)
-	pkgver = 1.41
+	pkgver = 1.42
 	pkgrel = 1
 	url = http://www.gnupg.org
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-libgpg-error
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.41.tar.bz2
-	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.41.tar.bz2.sig
+	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.42.tar.bz2
+	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.42.tar.bz2.sig
 	source = 01-mingw32-fix-potomo.mingw.patch
 	source = 02-fix-symbollist-on.mingw.patch
 	source = 05-w32-gen.all.patch
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-libgpg-error
 	validpgpkeys = D8692123C4065DEA5E0F3AB5249B39D24F25E3B6
 	validpgpkeys = 031EC2536E580D8EA286A9F22071B08A33BD3F06
 	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
-	sha256sums = 64b078b45ac3c3003d7e352a5e05318880a5778c42331ce1ef33d1a0d9922742
+	sha256sums = fc07e70f6c615f8c4f590a8e37a9b8dd2e2ca1e9408f8e60459c67452b925e23
 	sha256sums = SKIP
 	sha256sums = 252349e58d418adfec5621af1e09753db52b1bf39983aa3bc398d636afb9b495
 	sha256sums = 364da17febff3f6eeffee5a5f1e3ed1b644adeb5ca48a972c5c4675c10238a91
@@ -27,4 +27,3 @@ pkgbase = mingw-w64-libgpg-error
 	sha256sums = f62a8464414a65b1aac20820d4f4eeb0aa25e5c865aa4ba5914f1f10a41d336d
 
 pkgname = mingw-w64-libgpg-error
-
