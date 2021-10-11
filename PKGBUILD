@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=4.5.1
-_commit=e86a1f4927f2092bf9b7d97d0e3302c2eb4d3260
+pkgver=4.5.1_1
+_commit=3ac39a56e407d19e8d9d193fad14a75b10b40799
 _db_version=6.2.23
 _db_sha256_hash=47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7
 pkgrel=1
