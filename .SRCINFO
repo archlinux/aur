@@ -25,5 +25,7 @@ pkgname = ddutility-bin
 pkgname = ddutility-bin-pt-br
 	pkgdesc = Gravar e fazer backup dos arquivos IMG e ISO do sistema operacional no cartão de memória ou no disco
 	conflicts = ddutility
+	source = https://raw.githubusercontent.com/thefanclub/dd-utility/master/DEB/ddutility_1.6_all.deb
 	source = translation_pt-br.patch
 	sha256sums = de5c1fca6693f3b545ea5094a921fe67a3bbc43372f67992fee9bb06a8e26083
+	sha256sums = bf01d8fc8fafaf76ab751fbcf6b54d75930581e62d602fcaf4cd28fe23579224
