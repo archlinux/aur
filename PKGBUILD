@@ -34,7 +34,7 @@ package() {
   echo "WARNING: thus requires to run it with root permissions."
 }
 
-sha256sums=('3b877f309270685ce2ebaaca32ec6a4880aa6eb29fbfc7c7e7243b8ac60da202'
+sha256sums=('69cc92d51ea1049519a485327480b7904b4f98648cc806ec500e8dc2402a2234'
             '16fcae782b13a8460e631d265c505f56393acd14700b016904744bd44aa290eb'
             '93f661599e14456f27c3adb92c31538a3b707e11876310a8440430cb23ada8b1'
             '6827b29e2afc023089c4d46c6dde3fccf3ad01554ba6c22c20e7bce7a109224f')
