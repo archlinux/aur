@@ -1,0 +1,20 @@
+pkgbase = ruby-cbor-diag
+	pkgdesc = CBOR (Concise Binary Object Representation) diagnostic notation
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://cbor.io/
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	depends = ruby-treetop
+	depends = ruby-json
+	depends = ruby-neatjson
+	depends = ruby-cbor-deterministic
+	depends = ruby-cbor-canonical
+	depends = ruby-cbor-packed
+	noextract = cbor-diag-0.6.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/cbor-diag-0.6.1.gem
+	sha1sums = 3969acd16e20d8ca105a9f97cfe6c87c9326b5af
+
+pkgname = ruby-cbor-diag
