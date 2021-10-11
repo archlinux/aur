@@ -12,14 +12,10 @@ makedepends=('git' 'dotnet-sdk>=5' 'dotnet-targeting-pack>=5' 'netstandard-targe
 #provides=("${pkgname%-git}")
 #conflicts=("${pkgname%-git}")
 #options=('!strip')
+_meta=vignette-linux-meta
 source=("$pkgname::git+https://github.com/vignette-project/vignette.git"
-        "$pkgname.sh"
-        "$pkgname.svg"
-        "$pkgname.desktop")
-sha256sums=('SKIP'
-            '6e5093a1e0ab26efd32cb343ed058cd779aed68ea60c750490fcbd8d83fe41f6'
-            'bb0000105fc2a0ec6ae151bb811fbca9cb12223e610406188586f0676595fd73'
-            'e5b74b7781199961214fa2b4375edd4f2391477407a7153a7db31a61bb38911d')
+        "$_meta::git+https://github.com/lionirdeadman/$_meta")
+sha256sums=(SKIP SKIP)
 
 pkgver() {
   cd "$pkgname"
@@ -35,20 +31,20 @@ build() {
 }
 
 package() {
-  # Application launch script
-  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/vignette"
+  cd "$_meta"
 
-  # Desktop file
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/vignette.desktop"
-
-  # Icon
-  install -Dm644 "$pkgname.svg" "$pkgdir/usr/share/pixmaps/vignette.svg"
+  # Install launch script and app metadata
+  install -Dm755 vignette "$pkgdir/usr/bin/vignette"
+  install -Dm644 org.vignetteapp.Vignette.desktop "$pkgdir/usr/share/applications/org.vignetteapp.Vignette.desktop"
+  install -Dm644 org.vignetteapp.Vignette.appdata.xml "$pkgdir/usr/share/appdata/org.vignetteapp.Vignette.appdata.xml"
+  install -Dm644 org.vignetteapp.Vignette.svg "$pkgdir/usr/share/pixmaps/org.vignetteapp.Vignette.svg"
 
   # License
-  install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "../$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Runtime
-  cd "$pkgname/compiled"
+  cd compiled
   find . -type f -exec install -Dm644 '{}' "$pkgdir/usr/lib/vignette/{}" ';'
   cd ..
 }

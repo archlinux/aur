@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Vignette
-GenericName=VTuber Toolkit
-Comment=The open source VTuber software toolkit. ❤
-Icon=vignette.svg
-Exec=vignette
-Terminal=false
-Categories=Graphics;
