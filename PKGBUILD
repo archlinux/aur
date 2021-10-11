@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=libmobi
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Library for handling Kindle formats of ebook documents"
 arch=('x86_64')
@@ -9,7 +9,8 @@ url="https://github.com/bfabiszewski/libmobi"
 license=('LGPL3')
 depends=('libxml2' 'zlib')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('8fff0413b5be51ed0b330591f07034530e6a690951f263f8494fd8b1102f17702e77036a3fbfbab5ccf719ad787e510ef1e3b21a029b1b8666b02897639d157e')
+sha512sums=('8d766d39531b10a16a6e904fd91614e09c11fec147b4d133b053c807797b07328c8bdce83d8660edb31de25060f72f219c9d7a53936f37e1260d32cc198d5da7')
+b2sums=('55b07287d596db555305819db6e78083aa0011e870e1a0e2be032da0266d4252e4c38be315b6375a17535fae700b5aace2fddb72b4decdf31fb1f47327156994')
 
 build() {
   cd "$pkgname-$pkgver"
