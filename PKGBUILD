@@ -9,7 +9,7 @@ url='https://github.com/processing/processing4'
 license=(GPL LGPL)
 provides=('processing' 'processing4')
 depends=('libgl')
-makedepends=('ant' 'jdk11-openjdk' 'gendesk' 'unzip')
+makedepends=('java-environment=17' 'ant' 'gendesk' 'unzip')
 options=(!strip)
 source=('https://download.processing.org/reference.zip'
         disable_update_check.patch)
@@ -42,7 +42,7 @@ prepare() {
 build() {
   cd "$pkgname/build"
 
-  PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" ant build
+  PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH" ant build
 }
 
 package() {

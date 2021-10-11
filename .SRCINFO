@@ -6,8 +6,8 @@ pkgbase = processing4-git
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	makedepends = java-environment=17
 	makedepends = ant
-	makedepends = jdk11-openjdk
 	makedepends = gendesk
 	makedepends = unzip
 	depends = libgl
