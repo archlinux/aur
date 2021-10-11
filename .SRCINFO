@@ -1,6 +1,6 @@
 pkgbase = uget-integrator-browsers
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/ugetdm/uget-integrator
 	arch = any
 	license = GPL3
@@ -31,3 +31,7 @@ pkgname = uget-integrator-firefox
 	install = firefox.install
 	optdepends = firefox: the browser
 
+pkgname = uget-integrator-libreworlf
+	pkgdesc = Configuration to connect LibreWolf with uget-integrator
+	install = firefox.install
+	optdepends = librewolf: the browser
