@@ -2,7 +2,7 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=yash
-pkgver=2.51
+pkgver=2.52
 pkgrel=1
 pkgdesc='Yet Another SHell is a POSIX-compliant command line shell'
 arch=('x86_64' 'armv7h')
@@ -12,7 +12,7 @@ depends=('ncurses')
 install="${pkgname}.install"
 source=("https://osdn.net/dl/${pkgname}/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}.install")
-sha256sums=('6f15e68eeb63fd42e91c3ce75eccf325f2c938fa1dc248e7213af37c043aeaf8'
+sha256sums=('55137beffd83848805b8cef90c0c6af540744afcc103e1b0f7bdf3ef1991b5c9'
             'c66c7a4b9da4416082ea57bbec0ce0c2bbc13af340ceb1241b4a4897d8944531')
 
 build() {
