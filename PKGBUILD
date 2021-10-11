@@ -52,7 +52,7 @@ build()
     # shellcheck disable=SC2154
     mkdir -p "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/build/ || exit
-    cmake ..
+    cmake -D BUILD_BENCHMARK=OFF -D BUILD_TESTING=OFF -D INJA_BUILD_TESTS=OFF -D INJA_USE_EMBEDDED_JSON=OFF ..
     make
 }
 
