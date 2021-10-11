@@ -1,0 +1,14 @@
+pkgbase = ruby-neatjson
+	pkgdesc = Pretty, powerful, flexible JSON generation.
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://github.com/Phrogz/NeatJSON
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = neatjson-0.9.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/neatjson-0.9.gem
+	sha1sums = e8d0009037fee6879e3afbdb1699e11e6a86a964
+
+pkgname = ruby-neatjson
