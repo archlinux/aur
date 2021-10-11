@@ -10,8 +10,8 @@ pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Modern and elegant HTTP and REST framework for C++'
 license=('APACHE')
-depends=()
-makedepends=('meson' 'git')
+depends=('openssl')
+makedepends=('rapidjson' 'meson' 'git')
 checkdepends=('gtest')
 provides=("${_name}")
 conflicts=("${_name}")
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_name}"
 
-  meson setup build \
+  arch-meson build \
     --buildtype=release \
     -DPISTACHE_USE_SSL=true \
     -DPISTACHE_BUILD_EXAMPLES=true \
@@ -44,5 +44,5 @@ check() {
 
 package() {
   cd "${srcdir}/${_name}"
-  meson install -C build
+  DESTDIR="$pkgdir" meson install -C build
 }
