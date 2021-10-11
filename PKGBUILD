@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=vim-sandwich-git
-pkgver=r412.02e3b6d1ff
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Set of operator and textobject plugins to search/select/edit sandwiched textobjects"
 arch=(any)
@@ -15,10 +15,8 @@ provides=(vim-sandwich)
 conflicts=(vim-sandwich)
 
 pkgver() {
-  cd vim-sandwich
-  printf 'r%d.%s' \
-    $(git rev-list --count HEAD) \
-    $(git rev-parse HEAD | head -c10)
+  git -C vim-sandwich describe --tags --abbrev=10 | \
+    sed 's/^v//; s/-/+/; s/-/./'
 }
 
 package() {
