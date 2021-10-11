@@ -8,7 +8,7 @@ _major=5.14
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
@@ -51,6 +51,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   yes "" | make ARCH=um config >/dev/null
+  diff -u ../config .config || :
 
   make ARCH=um kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
