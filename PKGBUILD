@@ -5,19 +5,19 @@
 
 pkgname=pistache-git
 _name=${pkgname%-git}
-pkgver=1047.0c21c85
+pkgver=1534.ff9db0d
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Modern and elegant HTTP and REST framework for C++'
 license=('APACHE')
 depends=()
-makedepends=('cmake' 'git')
+makedepends=('meson' 'git')
 checkdepends=('gtest')
 provides=("${_name}")
 conflicts=("${_name}")
 options=(staticlibs)
-url="https://github.com/oktal/${_name}"
-source=("${_name}::git://github.com/oktal/${_name}.git")
+url="https://github.com/pistacheio/${_name}"
+source=("git+https://github.com/pistacheio/${_name}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,21 +28,21 @@ pkgver() {
 build() {
   cd "${srcdir}/${_name}"
 
-  cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPISTACHE_BUILD_TESTS=true \
+  meson setup build \
+    --buildtype=release \
     -DPISTACHE_USE_SSL=true \
-    .
-  make
+    -DPISTACHE_BUILD_EXAMPLES=true \
+    -DPISTACHE_BUILD_TESTS=true \
+    -DPISTACHE_BUILD_DOCS=false
+  meson compile -C build
 }
 
 check() {
   cd "${srcdir}/${_name}"
-  make test
+  meson test -C build
 }
 
 package() {
   cd "${srcdir}/${_name}"
-  make DESTDIR="${pkgdir}" install
+  meson install -C build
 }
