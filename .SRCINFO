@@ -8,7 +8,7 @@ pkgbase = inja
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
-	makedepends = nlohmann-json
+	depends = nlohmann-json
 	source = inja-v3.3.0.tar.gz::https://github.com/pantor/inja/archive/refs/tags/v3.3.0.tar.gz
 	sha256sums = e628d994762dcdaa9a97f63a9b8b73d9af51af0ffa5acea6bdbba0aceaf8ee25
 
