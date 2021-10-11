@@ -1,10 +1,12 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=14.1.0
-_commit=02ce2d108c927805a4086f2669fed0c9efb8053a
+pkgver=14.1.1
+_commit=3b1127ccbd4b27ea1c55098cb45cbb003e1d48aa
 _chromiumver=93.0.4577.82
 _gcc_patchset=6
+# shellcheck disable=SC2034
+pkgrel=1
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -12,8 +14,6 @@ if [[ ${_use_suffix} != 0 ]]; then
 else
   pkgname=electron
 fi
-# shellcheck disable=SC2034
-pkgrel=1
 # shellcheck disable=SC2034
 pkgdesc='Build cross platform desktop apps with web technologies'
 # shellcheck disable=SC2034
