@@ -1,7 +1,7 @@
 # Maintainer: TheAirBlow <pilexet.danila@gmail.com>
 _pkgname=mindustry-foos-client
 pkgname="${_pkgname}-bin"
-_build=761
+_build=763
 pkgver="7.0_${_build}"
 pkgrel=1
 epoch=1

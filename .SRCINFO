@@ -1,6 +1,6 @@
 pkgbase = mindustry-foos-client-bin
 pkgdesc = Client modification for Mindustry
-pkgver = 7.0_761
+pkgver = 7.0_763
 pkgrel = 1
 epoch = 1
 url = https://github.com/mindustry-antigrief/mindustry-client
