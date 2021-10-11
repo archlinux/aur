@@ -7,18 +7,18 @@
 pkgbase=mesa-i915g
 pkgname=('mesa-i915g')
 pkgdesc="Mesa with i915 Gallium driver"
-pkgver=21.2.2
+pkgver=21.2.3
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence'
              'wayland' 'wayland-protocols' 'zstd' 
-             'clang' 'libglvnd' 'lm_sensors' 'libxrandr'
+             'clang' 'libglvnd' 'llvm-libs' 'lm_sensors' 'libxrandr'
              'cmake' 'meson')
 url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
         https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mesa/trunk/LICENSE)
-sha512sums=('0a4877b405384088c8bdac3031444cd22377d19552c41c08fb8928d6edf23d5f5a237ef1d6c5f96e3293c2e90c63f4702813226b85cb304fe5e01dd2710ba697'
+sha512sums=('a5841c200416c19b60563a3823dd51592627e64f5f794c9fa3fba630e33a126048866e9b425739d88f2832770646a7ba8752a718a50d06266392b92d1a7370ea'
             'SKIP'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
@@ -34,13 +34,13 @@ build() {
     -D b_ndebug=true \
     -D platforms=x11,wayland \
     -D dri-drivers= \
-    -D gallium-drivers=i915,swrast \
+    -D gallium-drivers=i915 \
     -D vulkan-drivers= \
     -D vulkan-layers= \
     -D dri3=enabled \
     -D egl=enabled \
     -D gallium-extra-hud=true \
-    -D gallium-nine=true \
+    -D gallium-nine=false \
     -D gallium-omx=disabled \
     -D gallium-opencl=disabled \
     -D gallium-va=disabled \
@@ -55,15 +55,16 @@ build() {
     -D libunwind=enabled \
     -D llvm=enabled \
     -D lmsensors=enabled \
-    -D osmesa=true \
+    -D osmesa=false \
     -D shared-glapi=enabled \
     -D microsoft-clc=disabled \
-    -D valgrind=disabled
+    -D valgrind=disabled \
+    -D zstd=enabled
 
   # Print config
   meson configure build
 
-  ninja -j $(nproc) -C build
+  ninja -C build
   meson compile -C build
 
   # fake installation to be seperated into packages
@@ -99,9 +100,9 @@ package_mesa-i915g() {
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
   _install fakeinstall/usr/lib/dri/*_dri.so
 
-  _install fakeinstall/usr/lib/d3d
+#  _install fakeinstall/usr/lib/d3d
   _install fakeinstall/usr/lib/lib{gbm,glapi}.so*
-  _install fakeinstall/usr/lib/libOSMesa.so*
+#  _install fakeinstall/usr/lib/libOSMesa.so*
   _install fakeinstall/usr/lib/libxatracker.so*
 
   _install fakeinstall/usr/include
