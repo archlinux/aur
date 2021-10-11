@@ -24,8 +24,9 @@ depends=('qt5-base'
          'xml-security-c'
 				 'libcurl-gnutls'
 				 'openjpeg2'
-				 'jre-openjdk')
-makedepends=('swig' 'qconf' 'git' 'xml-security-c' 'libcurl-gnutls' 'jdk-openjdk' 'jre-openjdk' 'openjpeg2')
+				 'java-runtime'
+				 'java-environment')
+makedepends=('swig' 'qconf' 'git' 'xml-security-c' 'libcurl-gnutls' 'java-runtime' 'java-environment' 'openjpeg2')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
             'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
             'ecce-gov-pt-certificates: Certificados da ECCE quem assina dos certificados contidos em cartaodecidadao-pki')
