@@ -2,14 +2,15 @@
 
 pkgname=processing4
 pkgver=4.0b2
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
 license=(GPL LGPL)
+provides=('processing')
+conflicts=('processing')
 depends=('libgl')
 makedepends=('ant' 'jdk11-openjdk' 'gendesk' 'unzip')
-provides=('processing')
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$((1275+${pkgver##4.0b}))-$pkgver.tar.gz"
         'https://download.processing.org/reference.zip'
