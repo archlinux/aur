@@ -61,7 +61,7 @@ pkgbase=linux-cacule-rc
 _major=5.15
 #_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc4
+_rcver=rc5
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
@@ -80,6 +80,7 @@ source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
         "config"
 #        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_caculepatches}/v5.15/cacule-5.15-full.patch"
+#        "${_patchsource}/0001-CK-TIMER.patch"
         "${_patchsource}/misc/0007-v5.15-fsync.patch"
         "${_patchsource}/misc/0003-glitched-cfs.patch"
         "${_patchsource}/misc/more-uarches-for-kernel-5.15+.patch"
@@ -90,7 +91,7 @@ source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
         "${_patchsource}/0001-mm.patch"
         "${_patchsource}/0001-misc.patch"
         "${_patchsource}/0001-lrng.patch"
-        "${_patchsource}/0001-zstd.patch"
+        "${_patchsource}/zstd-dev-patches-v6/0001-zstd-dev-patches.patch"
         "${_patchsource}/0001-bbr2.patch"
         "auto-cpu-optimization.sh"
         )
@@ -361,8 +362,8 @@ for _p in "${pkgname[@]}"; do
 done
 
 
-md5sums=('00dd752ba53fed55793f07864cbedac8'
-         '02eb64232420f2d2159380eb7c5c39de'
+md5sums=('493b75bec74e5dfc887c7224df404dd3'
+         'e29e088059fd06f1c6ac9884e23f52a3'
          '0d27a2f6ac0b39eb8a441d9b879bcf55'
          '6236a665dd6c93c5de76c1c658c99910'
          'd3ffe87474459e33c901f6141a047c95'
@@ -373,6 +374,6 @@ md5sums=('00dd752ba53fed55793f07864cbedac8'
          'e422617aff583cec11129e0f185e9549'
          'db32c669e1d4dec440341815fc81a108'
          '80fe84d2b357c2a66b467d2c66bd09fb'
-         '52d324bcca2b2c41c739e257d5c6fd6e'
+         '97d9c9da437152c2f1161e5da5b5d7d4'
          '422fe01f2e2b1ba1c2b9174fa1a75e40'
          '21c98f19e883879dd3336c1fa143fd31')
