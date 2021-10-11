@@ -1,0 +1,15 @@
+pkgbase = inja
+	pkgdesc = A template engine for modern C++.
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/pantor/inja
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = nlohmann-json
+	source = inja-v3.3.0.tar.gz::https://github.com/pantor/inja/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = e628d994762dcdaa9a97f63a9b8b73d9af51af0ffa5acea6bdbba0aceaf8ee25
+
+pkgname = inja
