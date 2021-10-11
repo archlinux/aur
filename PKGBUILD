@@ -14,7 +14,7 @@ makedepends=("libicns")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}-${_build}.jar::https://github.com/mindustry-antigrief/mindustry-client-v7-builds/releases/download/761/desktop.jar"
-        "${pkgname}.icns::https://github.com/mindustry-antigrief/mindustry-client/blob/v6/core/assets/icons/icon.icns"
+        "${pkgname}.icns::https://github.com/mindustry-antigrief/mindustry-client/raw/v7/core/assets/icons/icon.icns"
         "${pkgname}.desktop"
         "${pkgname}.sh")
 noextract=("${pkgname}-${_build}.jar")
@@ -33,6 +33,6 @@ package() {
 }
 
 sha256sums=('3b877f309270685ce2ebaaca32ec6a4880aa6eb29fbfc7c7e7243b8ac60da202'
-            '5a8bc8b653aeea9fcb1d7e5a566a994373af454e944914abcb1eb74b5595b1ad'
-            'a18724f42a2a79b129d1901a8b75a965a621eb5ef97698b05cf8addcf5948600'
+            '16fcae782b13a8460e631d265c505f56393acd14700b016904744bd44aa290eb'
+            '93f661599e14456f27c3adb92c31538a3b707e11876310a8440430cb23ada8b1'
             '6827b29e2afc023089c4d46c6dde3fccf3ad01554ba6c22c20e7bce7a109224f')

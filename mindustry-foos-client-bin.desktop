@@ -4,6 +4,6 @@ Type=Application
 Name=Foo's Client
 Comment=Client modification of Mindustry
 Exec=mindustry-foos-client
-Icon=mindustry-foos-client
+Icon=mindustry
 Categories=Game;
 Terminal=false
