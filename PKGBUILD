@@ -5,7 +5,7 @@
 
 pkgname=selinux-refpolicy-git
 _policyname=refpolicy-git
-pkgver=RELEASE_2_20210203.r23.g1167739da188
+pkgver=RELEASE_2_20210908.r29.ge49243a08f4d
 pkgrel=1
 pkgdesc="Modular SELinux reference policy including headers and docs"
 arch=('any')
@@ -29,7 +29,7 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
+build() {
   cd refpolicy
 
   # Ensure the environment is clean
@@ -37,10 +37,7 @@ prepare() {
 
   # Configure, overriding build.conf values with the ones given on the command line
   make conf NAME="${_policyname}" DISTRO=arch SYSTEMD=y UBAC=n
-}
 
-build() {
-  cd refpolicy
   make NAME="${_policyname}" DISTRO=arch SYSTEMD=y UBAC=n
 }
 

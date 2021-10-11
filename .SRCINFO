@@ -1,6 +1,6 @@
 pkgbase = selinux-refpolicy-git
 	pkgdesc = Modular SELinux reference policy including headers and docs
-	pkgver = RELEASE_2_20210203.r23.g1167739da188
+	pkgver = RELEASE_2_20210908.r29.ge49243a08f4d
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/refpolicy/wiki
 	install = selinux-refpolicy-git.install
@@ -18,4 +18,3 @@ pkgbase = selinux-refpolicy-git
 	sha256sums = a5faaa2a2c3f986770a9296882b1887c2bdd38b0a990a36f95fe22f22ffb5c13
 
 pkgname = selinux-refpolicy-git
-
