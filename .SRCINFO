@@ -1,6 +1,6 @@
 pkgbase = python-espnet-git
 	pkgdesc = End-to-End Speech Processing Toolkit Python Package
-	pkgver = 0.10.3a1
+	pkgver = 0.10.4a1
 	pkgrel = 1
 	url = https://github.com/espnet/espnet
 	arch = any
