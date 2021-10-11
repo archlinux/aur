@@ -1,11 +1,11 @@
 pkgbase = pacapt
 	pkgdesc = A pacman-like shell wrapper for many package managers
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://github.com/icy/pacapt
 	arch = any
 	license = custom
-	source = pacapt-3.0.4.tar.gz::https://github.com/icy/pacapt/archive/v3.0.4.tar.gz
-	b2sums = dd98120117de40f6ed3dc89be0c106b12e08fe8b5b0e190e9ba50a716c0018049cd814ad4bfee226802468a74bbf771176bee155db6135f45766c197db759cb1
+	source = pacapt-3.0.5.tar.gz::https://github.com/icy/pacapt/archive/v3.0.5.tar.gz
+	b2sums = b5a52a3931d57cabdf532a444957596895f745d39251ebb3ced2a6aacc924d18a81aacc12a30d0a14324f7297a68f004704ccb06bc970fe572f9cef31d04e1ef
 
 pkgname = pacapt
