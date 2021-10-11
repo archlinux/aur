@@ -2,11 +2,11 @@
 # Contributor: Marco A Rojas <marco.rojas@zentek.com.mx>
 
 pkgname=twint-git
-pkgver=20200426.d9d0d68
+pkgver=20210211.d326cae
 pkgrel=1
 pkgdesc="An advanced Twitter scraping & OSINT tool. (git version)"
 url="https://github.com/twintproject/twint"
-depends=('python' 'python-aiohttp' 'python-aiodns' 'python-beautifulsoup4' 'python-cchardet' 'python-dataclasses' 'python-elasticsearch' 'python-pysocks' 'python-pandas>=0.23.0' 'python-geopy' 'python-googletransx' 'python-schedule' 'python-fake-useragent' 'python-aiohttp-socks')
+depends=('python' 'python-requests' 'python-aiohttp' 'python-aiodns' 'python-beautifulsoup4' 'python-cchardet' 'python-dataclasses' 'python-elasticsearch' 'python-pysocks' 'python-pandas>=0.23.0' 'python-geopy' 'python-googletransx' 'python-schedule' 'python-fake-useragent' 'python-aiohttp-socks')
 makedepends=('python-setuptools')
 license=('MIT')
 conflicts=('twint')

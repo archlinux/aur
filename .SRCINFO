@@ -1,12 +1,13 @@
 pkgbase = twint-git
 	pkgdesc = An advanced Twitter scraping & OSINT tool. (git version)
-	pkgver = 20200426.d9d0d68
+	pkgver = 20210211.d326cae
 	pkgrel = 1
 	url = https://github.com/twintproject/twint
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = python-requests
 	depends = python-aiohttp
 	depends = python-aiodns
 	depends = python-beautifulsoup4
@@ -25,4 +26,3 @@ pkgbase = twint-git
 	sha256sums = SKIP
 
 pkgname = twint-git
-
