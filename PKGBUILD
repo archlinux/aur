@@ -1,8 +1,8 @@
 # Maintainer: Benjamin Gallois <benjamin.gallois at fasttrack dot sh>
 pkgbase=fasttrack
 pkgname=(fasttrack fasttrack-cli)
-pkgver=5.3.4
-pkgrel=2
+pkgver=5.3.5
+pkgrel=3
 pkgdesc='Multiple objects tracking software, easy to use, and performant.'
 arch=(any)
 url='https://www.fasttrack.sh'
@@ -35,3 +35,6 @@ package_fasttrack-cli() {
   cd "$pkgbase-$pkgver"
   install -D build_cli/fasttrack-cli "$pkgdir"/usr/bin/fasttrack-cli
 }
+sha256sums=('a2f00e5fa9c32ab1947b7e7390a0e1550e6d316dedfc816d90c0fa456960bc71')
+sha256sums=('a2f00e5fa9c32ab1947b7e7390a0e1550e6d316dedfc816d90c0fa456960bc71')
+sha256sums=('a2f00e5fa9c32ab1947b7e7390a0e1550e6d316dedfc816d90c0fa456960bc71')
