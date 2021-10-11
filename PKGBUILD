@@ -1,12 +1,13 @@
-# Maintainer: svartalf <self@svartalf.info>
+# Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
+# Contributor: svartalf <self@svartalf.info>
 
-pkgname='battop'
+pkgname=battop
 pkgdesc="Interactive batteries viewer"
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/svartalf/rust-battop"
-license=('Apache', 'MIT')
+license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/svartalf/rust-battop/archive/v${pkgver}.tar.gz")
@@ -15,7 +16,10 @@ sha512sums=('f5744a8ddcfe09f2547494d2a6e1b184b967c5e4439c7bd3d74e47a1579dc86192a
 build() {
   cd "rust-$pkgname-$pkgver"
 
-  cargo build --release --locked
+  # build fails with battery crate version < 0.7.5
+  # Thank you for fix @arglebargle
+  sed -i 's/battery = "^0.7"/battery = "^0.7.5"/' Cargo.toml
+  cargo build --release
 }
 
 package_battop() {
