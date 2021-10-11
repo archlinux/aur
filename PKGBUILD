@@ -1,4 +1,4 @@
-# Maintainer: Jaron Kent-Dobias <jaron@kent-dobias.com
+# Maintainer: Jaron Kent-Dobias <jaron@kent-dobias.com>
 
 pkgname=clad
 pkgver=0.9
