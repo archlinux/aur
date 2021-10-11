@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=5.r123.ge4146ec3
+pkgver=5.r125.gb87a889d
 pkgrel=1
 pkgdesc='An ARM dynamic recompiler'
 arch=('x86_64')
@@ -22,11 +22,11 @@ provides=("$_pkgname=$pkgver" 'libdynarmic.so')
 conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
-	"0008-dynarmic-add-cmake-install-rules.patch::$url/pull/636.patch"
+	"0009-dynarmic-add-cmake-install-rules.diff::$url/pull/636.diff"
 )
 b2sums=(
 	'SKIP'
-	'ec8f6318e05300ad826210767c32b8ee912d28f4d707fe5d0330bb9d86c0fb32c16877735b5bd52e80cf552e34c34d5f5169ca6bc46bf8ce0f701bf45151ab26'
+	'a53af744acc50c6e592cc6942c374e7cf96a74d39a11eebeed59c869cd980983bc13364485e5bb493f3ff1bf9ed36c3ef810036f1f93feea918012968e25ebd7'
 )
 
 pkgver() {
@@ -35,7 +35,7 @@ pkgver() {
 }
 
 prepare() {
-	patch -d $_pkgname -Np1 < 0008-dynarmic-add-cmake-install-rules.patch
+	patch -d $_pkgname -Np1 < 0009-dynarmic-add-cmake-install-rules.diff
 }
 
 build() {
