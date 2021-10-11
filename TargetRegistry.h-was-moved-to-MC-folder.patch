@@ -1,0 +1,27 @@
+diff --unified --recursive --text mesa.orig/src/gallium/frontends/clover/llvm/codegen/native.cpp mesa.new/src/gallium/frontends/clover/llvm/codegen/native.cpp
+--- mesa.orig/src/gallium/frontends/clover/llvm/codegen/native.cpp	2021-10-09 12:43:48.935462036 +0200
++++ mesa.new/src/gallium/frontends/clover/llvm/codegen/native.cpp	2021-10-09 13:25:54.763196300 +0200
+@@ -28,7 +28,6 @@
+ ///
+ 
+ #include <llvm/Target/TargetMachine.h>
+-#include <llvm/Support/TargetRegistry.h>
+ #include <llvm/Transforms/Utils/Cloning.h>
+ 
+ #include "llvm/codegen.hpp"
+diff --unified --recursive --text mesa.orig/src/gallium/frontends/clover/llvm/compat.hpp mesa.new/src/gallium/frontends/clover/llvm/compat.hpp
+--- mesa.orig/src/gallium/frontends/clover/llvm/compat.hpp	2021-10-09 12:43:48.935462036 +0200
++++ mesa.new/src/gallium/frontends/clover/llvm/compat.hpp	2021-10-09 13:25:16.192571949 +0200
+@@ -56,6 +56,12 @@
+ #include <llvm/Support/CodeGen.h>
+ #endif
+ 
++#if LLVM_VERSION_MAJOR >= 13
++#include <llvm/MC/TargetRegistry.h>
++#else
++#include <llvm/Support/TargetRegistry.h>
++#endif
++
+ namespace clover {
+    namespace llvm {
+       namespace compat {

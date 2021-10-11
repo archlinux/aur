@@ -60,6 +60,7 @@ pkgbase = mesa-git
 	conflicts = vulkan-swrast
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
 	source = LICENSE
+	source = TargetRegistry.h-was-moved-to-MC-folder.patch
 	md5sums = SKIP
 	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
 	sha512sums = SKIP
