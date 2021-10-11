@@ -2,7 +2,7 @@
 # Contributor: Xiang Gao <qasdfgtyuiop at gmail dot com>
 
 pkgname=bazel-buildtools
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/bazelbuild/buildtools'
@@ -11,7 +11,7 @@ pkgdesc="Developer tools for working with Google's bazel buildtool."
 makedepends=("bazel" "git")
 
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=("b8b69615e8d9ade79f3612311b8d0c4dfe01017420c90eed11db15e9e7c9ff3c")
+sha256sums=("ae34c344514e08c23e90da0e2d6cb700fcd28e80c02e23e4d5715dddcb42f7b3")
 
 build() {
   cd buildtools-$pkgver
