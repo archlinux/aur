@@ -1,14 +1,11 @@
 pkgbase = ghidra-gekko-broadway-lang-git
-	pkgdesc = Ghidra language definition for GameCube/Wii
-	pkgver = r22.g7257b32
+	pkgdesc = UNMAINTAINED: Replaced by ghidra-gamecube-loader-git
+	pkgver = r99+unmaintained
 	pkgrel = 1
-	url = https://github.com/encounter/ghidra-gekko-broadway-lang
+	url = https://github.com/aldelaro5/ghidra-gekko-broadway-lang
 	arch = any
 	license = Apache 2.0
-	makedepends = git
-	makedepends = unzip
 	depends = ghidra
-	source = ghidra-gekko-broadway-lang::git+https://github.com/encounter/ghidra-gekko-broadway-lang#branch=merged
-	sha512sums = SKIP
+	depends = ghidra-extension-gamecube-loader-git>=1.1.3_1.r4.gaf9091a-1
 
 pkgname = ghidra-gekko-broadway-lang-git

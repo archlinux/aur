@@ -2,25 +2,16 @@
 
 _pkgname=ghidra-gekko-broadway-lang
 pkgname=ghidra-gekko-broadway-lang-git
-pkgver=r22.g7257b32
+pkgver=r99+unmaintained
 pkgrel=1
-pkgdesc="Ghidra language definition for GameCube/Wii"
-url=https://github.com/encounter/${_pkgname}
+pkgdesc="UNMAINTAINED: Replaced by ghidra-gamecube-loader-git"
+url=https://github.com/aldelaro5/${_pkgname}
 arch=('any')
 license=('Apache 2.0')
-depends=('ghidra')
-makedepends=('git' 'unzip')
-source=("$_pkgname::git+${url}#branch=merged")
-sha512sums=('SKIP')
-
-pkgver() {
-  cd $srcdir/${_pkgname}
-  echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
+depends=('ghidra' 'ghidra-extension-gamecube-loader-git>=1.1.3_1.r4.gaf9091a-1')
+source=()
+sha512sums=()
 
 package() {
-  cd $srcdir/${_pkgname}
-  install -d $pkgdir/opt/ghidra/Ghidra/Processors/PowerPC/data/languages
-  cp -r data/languages/* $pkgdir/opt/ghidra/Ghidra/Processors/PowerPC/data/languages
-  install -Dm 644 LICENSE.txt -t $pkgdir/usr/share/licenses/$pkgname
+  echo "  $(tput setaf 1)$(tput bold)-> This package has been replaced by ghidra-extension-gamecube-loader-git$(tput sgr0)"
 }
