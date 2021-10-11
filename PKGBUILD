@@ -18,7 +18,7 @@ license=(GPL2)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/roehling/postsrsd/archive/${pkgver}.tar.gz"
         "postsrsd.conf")
 md5sums=('5585ff7685ad5f0331ac6dde6304ca4b'
-         'dd002a74bd323a7ea315da4ef2df79dc')
+         'cee1be46359eb9b6a44d1fac3cbc718b')
 
 check() {
   cd "$srcdir/postsrsd-$pkgver/build"

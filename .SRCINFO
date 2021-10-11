@@ -15,7 +15,6 @@ pkgbase = postsrsd
 	source = postsrsd-1.11.tar.gz::https://github.com/roehling/postsrsd/archive/1.11.tar.gz
 	source = postsrsd.conf
 	md5sums = 5585ff7685ad5f0331ac6dde6304ca4b
-	md5sums = dd002a74bd323a7ea315da4ef2df79dc
+	md5sums = cee1be46359eb9b6a44d1fac3cbc718b
 
 pkgname = postsrsd
-
