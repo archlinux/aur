@@ -1,0 +1,14 @@
+pkgbase = ruby-cbor-deterministic
+	pkgdesc = CBOR (Concise Binary Object Representation) deterministic encoding
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://cbor.io/
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	noextract = cbor-deterministic-0.1.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/cbor-deterministic-0.1.3.gem
+	sha1sums = d0e0d32cfcdbf95aaa36a4dc0ad51aa887b21549
+
+pkgname = ruby-cbor-deterministic
