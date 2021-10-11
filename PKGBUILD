@@ -3,14 +3,15 @@
 pkgname='perl-template-timer'
 _pkgname='Template-Timer'
 pkgver='1.00'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Rudimentary profiling for Template Toolkit"
 arch=('any')
-url='http://search.cpan.org/dist/Template-Timer'
+url='https://metacpan.org/dist/Template-Timer'
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-template-toolkit')
+checkdepends=('perl-test-pod')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/${_pkgname}-${pkgver}.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('b9aa5f2f2d7034b0a62bb670afc6711ec7d49aff84cd948ea09d6c55d9b8b2aeb7606150ed0bea5402ba63761fd03ee6fce402598ef82a8235fb8b50c2ba4f43')
 
 build() {

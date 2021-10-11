@@ -1,16 +1,16 @@
 pkgbase = perl-template-timer
 	pkgdesc = Rudimentary profiling for Template Toolkit
 	pkgver = 1.00
-	pkgrel = 3
-	url = http://search.cpan.org/dist/Template-Timer
+	pkgrel = 4
+	url = https://metacpan.org/dist/Template-Timer
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-pod
 	depends = perl
 	depends = perl-template-toolkit
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Template-Timer-1.00.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Template-Timer-1.00.tar.gz
 	sha512sums = b9aa5f2f2d7034b0a62bb670afc6711ec7d49aff84cd948ea09d6c55d9b8b2aeb7606150ed0bea5402ba63761fd03ee6fce402598ef82a8235fb8b50c2ba4f43
 
 pkgname = perl-template-timer
-
