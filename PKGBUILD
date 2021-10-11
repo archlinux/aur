@@ -10,6 +10,7 @@ license=('GPL-2.0')
 depends=('dkms')
 makedepends=('git')
 conflicts=("${pkgname}")
+install=$_pkgbase.install
 source=("git+${url}")
 md5sums=('SKIP')
 
