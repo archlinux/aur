@@ -2,7 +2,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=gst-plugins-bad-git
-pkgver=1.18.0.r970.g4900e3583
+pkgver=1.19.2.r93557.g2200a3dbcd
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins"
 arch=('i686' 'x86_64')
@@ -16,14 +16,15 @@ depends=('mjpegtools' 'gst-plugins-base-git' 'curl'
         'libdvdnav' 'libmodplug' 'libgme' 'opus'
         'wayland' 'rtmpdump' 'opencv' 'vulkan-headers'
         'bluez-libs' 'intel-media-sdk' 'libbs2b' 'libfdk-aac'
-        'fluidsynth' 'dssim' 'libkate' 'liblrdf'
+        'fluidsynth' 'dssim-c-git' 'libkate' 'liblrdf'
         'ladspa' 'libde265' 'libmicrodns' 'libmpcdec'
         'neon' 'libofa' 'openal' 'openh264'
         'libopenmpt' 'openni2' 'sbc' 'srt' 'libsrtp'
-        'zvbi' 'vo-aacenc' 'vo-amrwbenc'  'shaderc'
+        'zvbi' 'shaderc' 'onnxruntime-git'
         'libnice' 'webrtc-audio-processing' 'wildmidi'
         'zbar' 'lilv-git' 'vulkan-icd-loader'
-        'libldac' 'libopenaptx'
+        'libldac' 'libopenaptx-git' 'wayland-protocols'
+        'qrencode' 'svt-hevc' 'vo-aacenc' 'vo-amrwbenc'
       )
 makedepends=('git' 'meson' 'schroedinger'
              'libexif' 'libdvdread' 'lilv-git'
@@ -31,12 +32,10 @@ makedepends=('git' 'meson' 'schroedinger'
             'gtk-doc' 'glu' 'gobject-introspection')
 options=(!emptydirs)
 
-source=('git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad.git'
-        'gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git')
-sha256sums=('SKIP'
-            'SKIP')
+source=('git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git')
+sha256sums=('SKIP')
 
-_gitname='gst-plugins-bad'
+_gitname='gstreamer/subprojects/gst-plugins-bad'
 
 pkgver() {
   cd $_gitname
@@ -46,12 +45,10 @@ pkgver() {
 prepare() {
   cd $_gitname
 
-  git submodule init
-  git config --local submodule.common.url "$srcdir/gst-common"
-  git submodule update
-
   # openexr 2.4 requires c++11
   sed -e "s|'-std=c++98'||" -i ext/openexr/meson.build
+  sed -i 's/0.31.99/0.33.99/g' ext/neon/meson.build
+  sed -i 's/0.2.0/0.2.1/g' ext/openaptx/meson.build
 }
 
 build() {
@@ -63,6 +60,7 @@ build() {
     -Ddirectfb=disabled \
     -Dflite=disabled \
     -Dsctp=disabled \
+    -Dgs=disabled \
     -Dwpe=disabled \
     -Ddoc=disabled \
     -Dmagicleap=disabled \

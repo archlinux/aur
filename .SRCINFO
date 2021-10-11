@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-bad-git
 	pkgdesc = GStreamer Multimedia Framework Bad Plugins
-	pkgver = 1.18.0.r970.g4900e3583
+	pkgver = 1.19.2.r93557.g2200a3dbcd
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -42,7 +42,7 @@ pkgbase = gst-plugins-bad-git
 	depends = libbs2b
 	depends = libfdk-aac
 	depends = fluidsynth
-	depends = dssim
+	depends = dssim-c-git
 	depends = libkate
 	depends = liblrdf
 	depends = ladspa
@@ -59,9 +59,8 @@ pkgbase = gst-plugins-bad-git
 	depends = srt
 	depends = libsrtp
 	depends = zvbi
-	depends = vo-aacenc
-	depends = vo-amrwbenc
 	depends = shaderc
+	depends = onnxruntime-git
 	depends = libnice
 	depends = webrtc-audio-processing
 	depends = wildmidi
@@ -69,16 +68,18 @@ pkgbase = gst-plugins-bad-git
 	depends = lilv-git
 	depends = vulkan-icd-loader
 	depends = libldac
-	depends = libopenaptx
-	provides = gst-plugins-bad=1.18.0.r970.g4900e3583
+	depends = libopenaptx-git
+	depends = wayland-protocols
+	depends = qrencode
+	depends = svt-hevc
+	depends = vo-aacenc
+	depends = vo-amrwbenc
+	provides = gst-plugins-bad=1.19.2.r93557.g2200a3dbcd
 	conflicts = gst-plugins-bad
 	conflicts = gst-plugins-gl
 	conflicts = gst-plugins-bad-libs
 	options = !emptydirs
-	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad.git
-	source = gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git
-	sha256sums = SKIP
+	source = git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
 	sha256sums = SKIP
 
 pkgname = gst-plugins-bad-git
-
