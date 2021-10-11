@@ -13,7 +13,7 @@ depends=("java-runtime>=8" "sh" "hicolor-icon-theme")
 makedepends=("libicns")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${pkgname}-${_build}.jar::https://github.com/mindustry-antigrief/mindustry-client-v7-builds/releases/download/761/desktop.jar"
+source=("${pkgname}-${_build}.jar::https://github.com/mindustry-antigrief/mindustry-client-v7-builds/releases/download/${_build}/desktop.jar"
         "${pkgname}.icns::https://github.com/mindustry-antigrief/mindustry-client/raw/v7/core/assets/icons/icon.icns"
         "${pkgname}.desktop"
         "${pkgname}.sh")
