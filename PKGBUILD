@@ -1,6 +1,8 @@
 # Maintainer: Matthias Loibl <mail@matthiasloibl.com>
 # Maintainer: Kemal Akkoyun <kakkoyun@gmail.com>
 
+# Feel free to send a PR to https://github.com/parca-dev/parca-archlinux
+
 pkgname=parca
 pkgver=0.1.0
 pkgrel=1
@@ -25,14 +27,11 @@ sha256sums=('cd7d55999e72bf8a07a8e481701d80204e5a974da9489bd94ff376e6ff64c2f0'
             'd917730e72fc1db483fc7a64e4ade9c4cebb91df9199b3981a3a107232602e23')
 
 build() {
-  # The makefile seems to not be able to execute npm properly, so run the make assets target manually
   cd $srcdir/parca-$pkgver/ui
   yarn install
   yarn workspace @parca/web build
 
   cd $srcdir/parca-$pkgver
-  # Build the react app, normally a part of the assets target
-  # make web/ui/static/react
 
   go build \
     -trimpath \
