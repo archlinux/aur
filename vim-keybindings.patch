@@ -1,8 +1,8 @@
 diff --git a/Action.c b/Action.c
-index d6fd737..a9bd9cf 100644
+index 07e21dca..fdc62e85 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -452,7 +452,7 @@ static const struct {
+@@ -459,7 +459,7 @@ static const struct {
     bool roInactive;
     const char* info;
  } helpLeft[] = {
@@ -11,7 +11,7 @@ index d6fd737..a9bd9cf 100644
     { .key = " Digits: ",  .roInactive = false, .info = "incremental PID search" },
     { .key = "   F3 /: ",  .roInactive = false, .info = "incremental name search" },
     { .key = "   F4 \\: ", .roInactive = false, .info = "incremental name filtering" },
-@@ -479,7 +479,7 @@ static const struct {
+@@ -486,7 +486,7 @@ static const struct {
     { .key = "  Space: ", .roInactive = false, .info = "tag process" },
     { .key = "      c: ", .roInactive = false, .info = "tag process and its children" },
     { .key = "      U: ", .roInactive = false, .info = "untag all processes" },
@@ -19,8 +19,8 @@ index d6fd737..a9bd9cf 100644
 +   { .key = "   F9 x: ", .roInactive = true,  .info = "kill process/tagged processes" },
     { .key = "   F7 ]: ", .roInactive = true,  .info = "higher priority (root only)" },
     { .key = "   F8 [: ", .roInactive = false, .info = "lower priority (+ nice)" },
- #if (defined(HAVE_LIBHWLOC) || defined(HAVE_LINUX_AFFINITY))
-@@ -487,12 +487,12 @@ static const struct {
+ #if (defined(HAVE_LIBHWLOC) || defined(HAVE_AFFINITY))
+@@ -494,12 +494,12 @@ static const struct {
  #endif
     { .key = "      e: ", .roInactive = false, .info = "show process environment" },
     { .key = "      i: ", .roInactive = true,  .info = "set IO priority" },
@@ -36,7 +36,7 @@ index d6fd737..a9bd9cf 100644
     { .key = "  F10 q: ", .roInactive = false, .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -666,12 +666,14 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -673,12 +673,14 @@ void Action_setBindings(Htop_Action* keys) {
     keys['H'] = actionToggleUserlandThreads;
     keys['I'] = actionInvertSortOrder;
     keys['K'] = actionToggleKernelThreads;
@@ -51,7 +51,7 @@ index d6fd737..a9bd9cf 100644
     keys['Z'] = actionTogglePauseProcessUpdate;
     keys['['] = actionLowerPriority;
     keys['\014'] = actionRedraw; // Ctrl+L
-@@ -681,9 +683,6 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -688,9 +690,6 @@ void Action_setBindings(Htop_Action* keys) {
     keys['a'] = actionSetAffinity;
     keys['c'] = actionTagAllChildren;
     keys['e'] = actionShowEnvScreen;
@@ -61,7 +61,7 @@ index d6fd737..a9bd9cf 100644
     keys['m'] = actionToggleMergedCommand;
     keys['p'] = actionToggleProgramPath;
     keys['q'] = actionQuit;
-@@ -691,7 +690,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -698,7 +697,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['t'] = actionToggleTreeView;
     keys['u'] = actionFilterByUser;
     keys['w'] = actionShowCommandScreen;
@@ -70,7 +70,7 @@ index d6fd737..a9bd9cf 100644
     keys[KEY_F(1)] = actionHelp;
     keys[KEY_F(2)] = actionSetup;
     keys[KEY_F(3)] = actionIncSearch;
-@@ -703,5 +702,6 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -710,5 +709,6 @@ void Action_setBindings(Htop_Action* keys) {
     keys[KEY_F(9)] = actionKill;
     keys[KEY_F(10)] = actionQuit;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
@@ -78,10 +78,10 @@ index d6fd737..a9bd9cf 100644
     keys[KEY_RECLICK] = actionExpandOrCollapse;
  }
 diff --git a/CategoriesPanel.c b/CategoriesPanel.c
-index 4ee1ad4..43930da 100644
+index 30867ee9..93c659fc 100644
 --- a/CategoriesPanel.c
 +++ b/CategoriesPanel.c
-@@ -67,6 +67,14 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
+@@ -101,6 +101,14 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
     HandlerResult result = IGNORED;
  
     int selected = Panel_getSelectedIndex(super);
@@ -97,7 +97,7 @@ index 4ee1ad4..43930da 100644
        case EVENT_SET_SELECTED:
           result = HANDLED;
 diff --git a/MainPanel.c b/MainPanel.c
-index 5a75af3..48e6345 100644
+index 07dc6319..a5282388 100644
 --- a/MainPanel.c
 +++ b/MainPanel.c
 @@ -50,7 +50,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
@@ -110,7 +110,7 @@ index 5a75af3..48e6345 100644
  
     HandlerResult result = IGNORED;
 diff --git a/MainPanel.h b/MainPanel.h
-index 04f347d..6c8fd32 100644
+index 04f4c0a8..cc6b0edd 100644
 --- a/MainPanel.h
 +++ b/MainPanel.h
 @@ -46,4 +46,6 @@ void MainPanel_setState(MainPanel* this, State* state);
@@ -121,7 +121,7 @@ index 04f347d..6c8fd32 100644
 +
  #endif
 diff --git a/Panel.c b/Panel.c
-index 69933ae..98eb588 100644
+index a5773d52..f46563ad 100644
 --- a/Panel.c
 +++ b/Panel.c
 @@ -351,6 +351,7 @@ bool Panel_onKey(Panel* this, int key) {
@@ -192,10 +192,10 @@ index 69933ae..98eb588 100644
        break;
  
 diff --git a/README b/README
-index a9cb1df..e8723ec 100644
+index e4831f89..701b7478 100644
 --- a/README
 +++ b/README
-@@ -19,6 +19,48 @@ The information displayed is configurable through a graphical setup and can be s
+@@ -21,6 +21,48 @@ The information displayed is configurable through a graphical setup and can be s
  
  Tasks related to processes (e.g. killing and renicing) can be done without entering their PIDs.
  
@@ -241,14 +241,14 @@ index a9cb1df..e8723ec 100644
 +Comparison between `htop` and classic `top`
 +-------------------------------------------
 +
- Running `htop` requires `ncurses` libraries (typically named libncursesw*).
+ Running `htop` requires `ncurses` libraries, typically named libncurses(w).
  
- For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
+ `htop` is written in C.
 diff --git a/ScreenManager.c b/ScreenManager.c
-index 6e7551f..27afda3 100644
+index 54dec643..7fa03ef6 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
-@@ -14,6 +14,7 @@ in the source distribution for its full text.
+@@ -16,6 +16,7 @@ in the source distribution for its full text.
  
  #include "CRT.h"
  #include "FunctionBar.h"
@@ -256,7 +256,7 @@ index 6e7551f..27afda3 100644
  #include "Object.h"
  #include "Platform.h"
  #include "ProcessList.h"
-@@ -222,14 +223,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -224,14 +225,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           redraw = false;
           continue;
        }
@@ -279,7 +279,7 @@ index 6e7551f..27afda3 100644
           result = Panel_eventHandler(panelFocus, ch);
        }
        if (result & SYNTH_KEY) {
-@@ -259,7 +262,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -265,7 +268,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
@@ -288,7 +288,7 @@ index 6e7551f..27afda3 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -280,7 +283,7 @@ tryLeft:
+@@ -286,7 +289,7 @@ tryLeft:
  
           break;
        case KEY_RIGHT:
