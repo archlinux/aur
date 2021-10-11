@@ -3,7 +3,7 @@
 _name=bespokesynth
 pkgname=bespokesynth-git
 pkgver=1.0.0.r117.gb9d6dc3
-pkgrel=1
+pkgrel=2
 pkgdesc="A software modular synth"
 arch=('x86_64')
 url="https://www.bespokesynth.com/"
@@ -48,7 +48,7 @@ prepare() {
 build() {
   cd "$pkgname"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE='Debug' \
+        -DCMAKE_BUILD_TYPE='None' \
         -DBESPOKE_JUCE_LOCATION=/usr/share/juce/ \
         -Wno-dev \
         -B build \
