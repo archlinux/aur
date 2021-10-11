@@ -50,7 +50,7 @@ pkgbase=linux-bfq-dev
 _major=5.14
 _minor=11
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -118,6 +118,7 @@ prepare() {
         echo "Setting config..."
         cp ../config .config
         make olddefconfig
+        diff -u ../config .config || :
 
     ### Prepared version
         make -s kernelrelease > version
