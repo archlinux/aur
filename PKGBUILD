@@ -2,7 +2,7 @@
 
 pkgname='gsa'
 pkgver=21.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Greenbone Security Assistant'
 arch=('x86_64')
 url="https://github.com/greenbone/gsa"
@@ -32,8 +32,8 @@ package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  install -d $pkgdir/usr/lib/systemd/system
-  install -m 644 $srcdir/gsad.service $pkgdir/usr/lib/systemd/system
+  install -d $pkgdir/lib/systemd/system
+  install -m 644 $srcdir/gsad.service $pkgdir/lib/systemd/system
   install -d $pkgdir/etc/default
   install -m 644 $srcdir/gsad $pkgdir/etc/default
 }

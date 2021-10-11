@@ -1,7 +1,7 @@
 pkgbase = gsa
 	pkgdesc = Greenbone Security Assistant
 	pkgver = 21.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gsa
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
