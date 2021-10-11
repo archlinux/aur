@@ -22,6 +22,15 @@ source=('hugetracker::git+https://github.com/SuperDisk/hUGETracker'
         'non-portable.patch')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP') # Last one TODO
 
+
+## CONFIGURATION
+# These can be overridden from the environment if desired.
+
+# Lazarus base directory
+# Required since `~/.lazarus/environmentoptions.xml` may not contain a `LazarusDirectory` entry.
+_lazdir="${LAZDIR:-/usr/lib/lazarus}
+
+
 # These modules, and only them, are required to build hUGETracker.
 # For example, hUGEDriver is only required at runtime, so we only need its sources for `package()`,
 # but not submodule'd for building.
@@ -54,9 +63,9 @@ prepare() {
 build() {
 	cd "$srcdir/hugetracker"
 
-	lazbuild --add-package-link rackctls/RackCtlsPkg.lpk
-	lazbuild --add-package-link bgrabitmap/bgrabitmap/bgrabitmappack.lpk
-	lazbuild hUGETracker.lpi --build-mode="Production Linux" --ws=gtk2
+	lazbuild --lazarusdir="${_lazdir}" --add-package-link rackctls/RackCtlsPkg.lpk
+	lazbuild --lazarusdir="${_lazdir}" --add-package-link bgrabitmap/bgrabitmap/bgrabitmappack.lpk
+	lazbuild --lazarusdir="${_lazdir}" hUGETracker.lpi --build-mode="Production Linux" --ws=gtk2
 
 	rgbasm -i "$srcdir/hUGEDriver/include" -o - halt.asm | rgblink -o - -n halt.sym - | rgbfix -vp 0xFF >halt.gb
 }
