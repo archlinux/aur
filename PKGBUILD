@@ -1,36 +1,37 @@
-# CPAN Name  : PDL::IO::HDF5
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname=perl-pdl-io-hdf5
-pkgver=0.6501
+epoch=1
+pkgver=0.75
 pkgrel=1
 pkgdesc='Perl module providing PDL interface to the HDF5 data format'
 arch=('i686' 'x86_64')
-url='http://search.cpan.org/dist/PDL-IO-HDF5'
+url='https://metacpan.org/dist/PDL-IO-HDF5'
 license=('PerlArtistic' 'GPL')
-depends=(
-	'perl-pdl>=2.007'
-	'hdf5'
-)
-
-source=(http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-IO-HDF5-0.6501.tar.gz)
+depends=('perl-pdl' 'hdf5')
+source=(https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-IO-HDF5-$pkgver.tar.gz)
 options=(!emptydirs)
-md5sums=('8316e29979e5bea41302785aa8f5ea3e')
+md5sums=('6c497da659ca929ee78203d63dfe48d4')
 
 build() {
-	cd PDL-IO-HDF5-0.6501
-	F77LIBS='-lgfortran -lm' PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PDLCONF=$srcdir/perldl.conf
-	make
+  cd PDL-IO-HDF5-$pkgver
+  F77LIBS='-lgfortran -lm' PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PDLCONF=$srcdir/perldl.conf
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
-	cd PDL-IO-HDF5-0.6501
-	make test
+  cd PDL-IO-HDF5-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
-	cd PDL-IO-HDF5-0.6501
-	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd PDL-IO-HDF5-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
