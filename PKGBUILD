@@ -6,7 +6,7 @@
 pkgname=ghidra-darcula
 _darcula=08c13c5f1a12624f4d8df8723b39061e11c93241
 _darcula_version=2019.09
-pkgver=10.0.1
+pkgver=10.0.4
 pkgrel=1
 pkgdesc='Software reverse engineering framework (with dark theme)'
 arch=('x86_64')
