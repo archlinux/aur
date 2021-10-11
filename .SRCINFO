@@ -1,7 +1,7 @@
 pkgbase = bashate
 	pkgdesc = Code style enforcement for bash programs
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openstack/bashate
 	arch = any
 	license = Apache
