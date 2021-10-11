@@ -29,6 +29,7 @@ build() {
   cmake \
     -DBUILD_SHARED_LIBS=OFF \
     -DSTANDARDESE_BUILD_TEST=OFF \
+    -DCMAKE_BUILD_TYPE=none \
     -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -DLIBCLANG_INCLUDE_DIR="/usr/include/" \
     -DLIBCLANG_SYSTEM_INCLUDE_DIR="$(find /usr/lib/clang/ -type d -name include)" \
