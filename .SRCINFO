@@ -1,12 +1,13 @@
 pkgbase = pulsemeeter-git
 	pkgdesc = A pulseaudio audio routing application
-	pkgver = 1.0.r8.f3c787c
+	pkgver = 1.0.r9.d7ca8cb
 	pkgrel = 1
 	url = https://github.com/theRealCarneiro/pulsemeeter
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = imagemagick
 	depends = python-gobject
 	optdepends = glade: customize interface
 	source = pulsemeeter::git+https://github.com/theRealCarneiro/pulsemeeter.git
