@@ -2,7 +2,7 @@
 # Maintainer: So1ar <so1ar114514@gmail.com>
 
 pkgname=hmcl-bin
-pkgver=3.4.205
+pkgver=3.4.206
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
@@ -18,7 +18,7 @@ source=("hmcl.desktop"
 sha1sums=('613a2483883028a52b369c27c1468fc8d31e2d5e'
           'ff8a9141b115ea7788111ce28cc462c8fd46c471'
           '635509ef81b82837fcd1f7d4b24a7d44241559c2'
-          'c958d63075a02547f1908246bd9719773a6147dc')
+          'eeb5d7c78ee5b525bcd3c8ec4e4ac568d185b43a')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
