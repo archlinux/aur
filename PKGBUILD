@@ -2,7 +2,7 @@
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 
 pkgname=angelscript
-pkgver=2.35.0
+pkgver=2.35.1
 pkgrel=1
 pkgdesc="An extremely flexible cross-platform scripting library."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('custom:ZLIB')
 depends=('gcc-libs')
 source=("http://angelcode.com/angelscript/sdk/files/${pkgname}_${pkgver}.zip"
         LICENSE)
-sha512sums=('e54b58e78b21c2ff6aa34d5f55b18fcf8737d057c86aef8901ac0c11f14739fe7f1494f9bcfdbca6a8e54b6d0b36a04dd098780bcd02dea5764fd6d22984b6b0'
+sha512sums=('b15083c7a77434c291e72ea82cfbab7734fa79df654d911a822f306d526669ebe9e55a981e8a1914deda0d2a52ebdc0ffb51a4179f307632c8c7d74b1abc69fa'
             '523a6ded94dab26ebc1fc5ed39346b950afea1dae1a51c5f262242de1ad86ce921d462b430825bd7a0ca7bb2d501b85e60f39732c3e1d948e1f0182cc9c691a1')
 
 build() {
