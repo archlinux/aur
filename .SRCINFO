@@ -1,14 +1,13 @@
 pkgbase = veusz-git
 	pkgdesc = A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output.
-	pkgver = 3.3.1.r38.g9813706a
+	pkgver = 3.3.99.r0.g3605b232
 	pkgrel = 1
 	url = https://github.com/veusz/veusz
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = sip4
+	makedepends = sip
 	depends = python-pyqt5
-	depends = python-sip4
 	depends = python-numpy
 	depends = hicolor-icon-theme
 	depends = cblas
@@ -23,4 +22,3 @@ pkgbase = veusz-git
 	sha256sums = SKIP
 
 pkgname = veusz-git
-
