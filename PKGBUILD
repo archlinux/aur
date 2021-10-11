@@ -12,9 +12,11 @@ depends=('libgl')
 makedepends=('java-environment=17' 'ant' 'gendesk' 'unzip')
 options=(!strip)
 source=('https://download.processing.org/reference.zip'
-        disable_update_check.patch)
+        disable_update_check.patch
+        disable_native_dialogs.patch)
 sha256sums=('fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
-            '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30')
+            '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
+            '500d00811031c0445416b6112972aa1f7a377092dd3b8565d79ead3fdfc62451')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -37,6 +39,9 @@ prepare() {
 
   # Disable update check in default preferences
   patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
+
+  # Disable native dialogs in default preferences
+  patch $pkgname/build/shared/lib/defaults.txt < disable_native_dialogs.patch
 }
 
 build() {
