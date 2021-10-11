@@ -1,5 +1,5 @@
 pkgbase = ghidra-gekko-broadway-lang-git
-	pkgdesc = UNMAINTAINED: Replaced by ghidra-gamecube-loader-git
+	pkgdesc = UNMAINTAINED: Replaced by ghidra-extension-gamecube-loader-git
 	pkgver = r99+unmaintained
 	pkgrel = 1
 	url = https://github.com/aldelaro5/ghidra-gekko-broadway-lang
