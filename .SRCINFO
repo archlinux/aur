@@ -1,36 +1,36 @@
 pkgbase = superslicer-git
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
-	pkgver = 2.3.56.4.r0.gea2aea4c3
-	pkgrel = 2
+	pkgver = 2.3.57.1.r0.g1a483260c
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/supermerill/SuperSlicer
 	arch = x86_64
 	license = AGPL3
+	makedepends = boost>=1.73.0
 	makedepends = git
 	makedepends = cereal
 	makedepends = cmake
 	makedepends = eigen
 	makedepends = libigl
-	makedepends = wxgtk2-dev-opt
+	makedepends = ninja
+	makedepends = wxgtk2-dev-314-opt
+	depends = boost-libs>=1.73.0
 	depends = cgal
 	depends = glew
 	depends = nlopt
 	depends = openvdb
-	depends = wxgtk3-dev-opt
-	depends = boost>=1.73.0
 	depends = qhull>=2020.2-4
-	provides = superslicer=1:2.3.56.4.r0.gea2aea4c3
+	depends = wxgtk3-dev-314-opt
+	optdepends = superslicer-profiles: Predefined printer profiles
+	provides = superslicer=1:2.3.57.1.r0.g1a483260c
 	conflicts = superslicer
 	conflicts = superslicer-prerelease
 	replaces = slic3r++
 	source = SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git
-	source = start-superslicer.sh
 	source = 0001-wxgtk3-is-broken-on-wayland.patch
 	source = https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch
 	sha512sums = SKIP
-	sha512sums = 6a117a0ae2e82b2c0ad9e8f746fddeceb1b0efe04962468e266d7ee9d38218311fff5a82c9880b82a23b2499461ba6f8f3cabef064fc8f9b906b0e2e35bcd846
 	sha512sums = acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5
 	sha512sums = c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98
 
 pkgname = superslicer-git
-
