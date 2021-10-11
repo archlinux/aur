@@ -2,32 +2,26 @@
 
 pkgname=pamixer-git
 _realname=pamixer
-pkgver=20191030
-pkgrel=2
+pkgver=20211011
+pkgrel=1
 pkgdesc="Pulseaudio command-line mixer like amixer"
 arch=('i686' 'x86_64')
 url="https://github.com/cdemoulins/pamixer"
 license=('GPL3')
 depends=('libpulse' 'boost-libs')
-makedepends=('git' 'boost')
+makedepends=('git' 'boost' 'meson')
 conflicts=('pamixer')
 
 source=(git+https://github.com/cdemoulins/pamixer.git)
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/${_realname}"
-  git log -1 --format="%cd" --date=short | tr -d '-'
-}
-
 build() {
-  cd "$srcdir/${_realname}"
-  make
+  arch-meson ${_realname} build
+  meson compile -C build
 }
 
 package() {
-  cd "$srcdir/${_realname}"
-  install -D -m755 pamixer $pkgdir/usr/bin/pamixer
+  meson install -C build --destdir "$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
