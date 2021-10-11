@@ -1,0 +1,24 @@
+pkgbase = levant-bin
+	pkgdesc = An open source templating and deployment tool for HashiCorp Nomad jobs
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/hashicorp/levant
+	changelog = levant-bin.changelog
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MPL
+	depends = glibc
+	provides = levant
+	options = !strip
+	source_i686 = https://releases.hashicorp.com/levant/0.3.0/levant_0.3.0_linux_386.zip
+	sha256sums_i686 = 16171b0cf0ea1cdbd6805eb8b0160eaee32ed35f3832f958a231e7d71deb65e5
+	source_x86_64 = https://releases.hashicorp.com/levant/0.3.0/levant_0.3.0_linux_amd64.zip
+	sha256sums_x86_64 = 082bd747cf49bc317035a4caab8742924eac67605a82b1b5f4640d896999ea98
+	source_arm = https://releases.hashicorp.com/levant/0.3.0/levant_0.3.0_linux_arm.zip
+	sha256sums_arm = b7ab105a08622e75fcff2d47e0475f7ba9ccbff791dddfd66ed5f1cd63db6ac1
+	source_aarch64 = https://releases.hashicorp.com/levant/0.3.0/levant_0.3.0_linux_arm64.zip
+	sha256sums_aarch64 = 5d4af2ed56b7493ea04b0d2a984e26661d3d500cc8bcf097d87545d4583dd9c8
+
+pkgname = levant-bin
