@@ -1,6 +1,6 @@
 pkgbase = ghidra-extension-gamecube-loader-git
 	pkgdesc = A Nintendo GameCube binary loader for Ghidra
-	pkgver = 1.1.2_1.r2.g52573c9
+	pkgver = 1.1.3_1.r4.gaf9091a
 	pkgrel = 1
 	url = https://github.com/Cuyler36/Ghidra-GameCube-Loader
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = ghidra-extension-gamecube-loader-git
 	sha512sums = SKIP
 
 pkgname = ghidra-extension-gamecube-loader-git
-
