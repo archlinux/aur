@@ -1,0 +1,21 @@
+pkgbase = neovim-onedark-git
+	pkgdesc = OneDark Neovim colorscheme
+	pkgver = 0.1.0.r12.gbef8485
+	pkgrel = 1
+	url = https://github.com/monsonjeremy/onedark.nvim
+	install = onedark.install
+	arch = any
+	groups = neovim-plugin
+	license = MIT
+	makedepends = git
+	depends = neovim>=0.5
+	provides = neovim-onedark
+	provides = neovim-lualine-onedark
+	conflicts = neovim-onedark
+	conflicts = neovim-lualine-onedark
+	source = neovim-onedark-git::git+https://github.com/monsonjeremy/onedark.nvim?signed
+	validpgpkeys = 8C7BFFA82499750664C8AA811E149DA4B81CF897
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	md5sums = SKIP
+
+pkgname = neovim-onedark-git
