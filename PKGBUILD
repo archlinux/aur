@@ -14,7 +14,7 @@ url="https://github.com/AdaCore/gps"
 license=('GPL')
 
 depends=("clang" "ada_language_server"
-         "gnatcoll-python2" "gnatcoll-xref" "gtkada"
+         "gnatcoll-python2" "gnatcoll-xref" "gnatcoll-db2ada" "gtkada"
          "python2-gobject" "python2-gobject2" "python2-cairo"
          "python2-yaml")
 

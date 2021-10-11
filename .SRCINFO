@@ -13,6 +13,7 @@ pkgbase = gnat-gps
 	depends = ada_language_server
 	depends = gnatcoll-python2
 	depends = gnatcoll-xref
+	depends = gnatcoll-db2ada
 	depends = gtkada
 	depends = python2-gobject
 	depends = python2-gobject2
