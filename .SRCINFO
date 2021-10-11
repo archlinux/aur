@@ -1,7 +1,7 @@
 pkgbase = xorgxrdp-nvidia
 	pkgdesc = Xorg drivers for xrdp, with NVIDIA GPU support.
-	pkgver = 0.2.16
-	pkgrel = 2
+	pkgver = 0.2.17
+	pkgrel = 1
 	url = https://github.com/neutrinolabs/xorgxrdp
 	install = xorgxrdp-nvidia.install
 	arch = i686
@@ -14,11 +14,11 @@ pkgbase = xorgxrdp-nvidia
 	provides = xorgxrdp
 	conflicts = xorgxrdp
 	options = staticlibs
-	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.16/xorgxrdp-0.2.16.tar.gz
-	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.16/xorgxrdp-0.2.16.tar.gz.asc
-	source = nvidia.patch::https://github.com/neutrinolabs/xorgxrdp/compare/v0.2.16...jsorg71:nvidia_hack.diff
+	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.17/xorgxrdp-0.2.17.tar.gz
+	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.17/xorgxrdp-0.2.17.tar.gz.asc
+	source = 0.2.17.nvidia.patch::https://github.com/neutrinolabs/xorgxrdp/compare/v0.2.17...jsorg71:nvidia_hack.diff
 	validpgpkeys = 61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB
-	sha256sums = e6b5f3df44cbf147dcbbc326cdd08c95fe28dba80c2a216e046fe42d962f9215
+	sha256sums = de6fb593edfbaead1d47c663fc9c04bdad7e98293c0dca2bdc10727c54b24ced
 	sha256sums = SKIP
 	sha256sums = 5065757020d8a2d07096ee5dc3d7998b459dd0ea172907e52ae2945338cee154
 
