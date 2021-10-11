@@ -2,8 +2,8 @@
 
 _pkgname=xorgxrdp
 pkgname=xorgxrdp-glamor
-pkgver=0.2.16
-pkgrel=3
+pkgver=0.2.17
+pkgrel=1
 pkgdesc="Xorg drivers for xrdp, with glamor enabled. Only works on Intel and AMD GPUs."
 arch=('i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
@@ -15,7 +15,7 @@ makedepends=('nasm' 'xorg-server-devel' 'xrdp')
 options=('staticlibs')
 source=("https://github.com/neutrinolabs/xorgxrdp/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc}
         'glamor.patch')
-sha256sums=('e6b5f3df44cbf147dcbbc326cdd08c95fe28dba80c2a216e046fe42d962f9215'
+sha256sums=('de6fb593edfbaead1d47c663fc9c04bdad7e98293c0dca2bdc10727c54b24ced'
             'SKIP'
             '10d289d1a11c9a5a8b4c6af534c2f9e7900ae2b4351860a063ba572010d95912')
 validpgpkeys=('61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB')  # Koichiro IWAO <meta@vmeta.jp>
