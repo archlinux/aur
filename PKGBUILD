@@ -1,8 +1,9 @@
-# Maintainer: Philippe Proulx <pproulx@efficios.com>
+# Maintainer: Homalozoa <xuhaiwang at xiaomi dot com>
+# Contributor: Philippe Proulx <pproulx@efficios.com>
 # Contributor: Manuel Mendez <mmendez534 at gmail dot com>
 
 pkgname=lttng-tools
-pkgver=2.11.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc='LTTng tracing control tools'
 arch=(i686 x86_64)
@@ -23,7 +24,7 @@ optdepends=(
     'babeltrace: view traces with `lttng view` command'
     'man-db: view man pages with the `lttng help` command'
 )
-sha1sums=(aa7e5784ed6c7fe68f91d16edf497cbd761564c2)
+sha1sums=(5c72a0450feaac132af7e6d4054520fecb5a9718)
 
 build()
 {
