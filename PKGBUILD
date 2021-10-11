@@ -29,7 +29,7 @@ prepare() {
   git clone --depth 1000 https://github.com/processing/processing4.git $pkgname
 
   # Create .desktop file
-  gendesk -f -n --pkgname=processing --pkgdesc="$pkgdesc" --name="Processing"
+  gendesk -f -n --pkgname=processing --pkgdesc="$pkgdesc" --name="Processing" --exec="processing %f" --mimetypes="text/x-processing"
 
   # Copy reference.zip to the java directory
   mkdir -p $pkgname/java
@@ -51,7 +51,9 @@ package() {
   install -d "$pkgdir/usr/"{bin/,share/processing/}
   cp -r build/linux/work/* "$pkgdir/usr/share/processing/"
 
-  # Desktop shortcut
+  # MIME type, icon and desktop shortcut
+  install -Dm644 "build/linux/processing-pde.xml" \
+    "$pkgdir/usr/share/mime/packages/processing-pde.xml"
   install -Dm644 "build/shared/lib/icons/pde-256.png" \
     "$pkgdir/usr/share/pixmaps/processing.png"
   install -Dm644 "$srcdir/processing.desktop" \
