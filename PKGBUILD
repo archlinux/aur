@@ -1,9 +1,10 @@
-# Maintainer: Philippe Proulx <pproulx@efficios.com>
+# Maintainer: Homalozoa <xuhaiwang at xiaomi dot com>
+# Contributor: Philippe Proulx <pproulx@efficios.com>
 # Contributor: Manuel Mendez <mmenedez534 at gmail dot com>
 # Contributor: Markus Opitz <mastero23 at gmail dot com>
 
 pkgname=lttng-modules
-pkgver=2.11.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="LTTng kernel modules"
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ optdepends=(
 )
 install=${pkgname}.install
 source=("http://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('2035881162ef0a85587ce31c80d275dcfcab72aa')
+sha1sums=('62cd6564e6e9d9378a726fe44dafb01f7e973ae2')
 
 build()
 {
