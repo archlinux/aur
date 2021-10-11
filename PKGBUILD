@@ -2,7 +2,7 @@
 
 pkgname=bashate
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Code style enforcement for bash programs"
 arch=('any')
 makedepends=('python-setuptools')
@@ -15,6 +15,7 @@ sha256sums=('a3ece9c844f2f9772ee9311ef692a8b0851135a5d9ca2a99b3fe9815d236ca6b')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
+    PBR_VERSION=$pkgver \
     python setup.py build
 }
 
