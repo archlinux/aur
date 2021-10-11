@@ -6,23 +6,29 @@
 # Contributor: Jesse Young <jesse.young@gmail.com>
 
 pkgname=namcap-git
-pkgver=3.2.7.10.g2090aa7
+pkgver=3.2.10.r6.ge68dc85
 pkgrel=1
-pkgdesc="A Pacman package analyzer (git)"
+pkgdesc="A Pacman package analyzer"
 arch=('any')
 url="https://gitlab.archlinux.org/pacman/namcap"
 license=('GPL')
-depends=('python' 'pyalpm' 'licenses' 'binutils' 'elfutils' 'python-pyelftools')
-makedepends=('git' 'python-distribute')
-provides=('namcap')
-conflicts=('namcap')
+depends=('pyalpm' 'licenses' 'binutils' 'python-pyelftools')
+makedepends=('git' 'python-setuptools')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
 
-  git describe --always | sed 's/-/./g'
+  git describe --long | sed 's/-/.r/;s/-/./'
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
 }
 
 check() {
@@ -30,15 +36,13 @@ check() {
 
   env PARSE_PKGBUILD_PATH="$srcdir/${pkgname}" \
       PATH="$srcdir/${pkgname}:$PATH" \
-      python3 setup.py test
+      python setup.py test
 }
 
 package() {
   cd $pkgname
 
-  python ./setup.py install --root="$pkgdir"
-
-  find "$pkgdir" -type d -name '.git' -exec rm -r '{}' +
+  python setup.py install --root="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
