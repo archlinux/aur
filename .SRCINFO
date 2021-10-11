@@ -6,9 +6,10 @@ pkgbase = todoist-appimage
 	arch = x86_64
 	license = custom:Commercial
 	depends = zlib
-	noextract = todoist-1.0.1.AppImage
+	depends = fuse2
+	noextract = todoist-appimage-1.0.1.AppImage
 	options = !strip
-	source_x86_64 = todoist-1.0.1.AppImage::https://electron-dl.todoist.com/linux/Todoist-1.0.1.AppImage
+	source_x86_64 = todoist-appimage-1.0.1.AppImage::https://electron-dl.todoist.com/linux/Todoist-1.0.1.AppImage
 	sha256sums_x86_64 = 13f0767e89ffdbbbcb2fb18751ae7fbae80e035eb2cf55b41b1592e8bcab98b0
 
 pkgname = todoist-appimage

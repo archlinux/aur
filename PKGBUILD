@@ -1,5 +1,6 @@
 # Based  on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer: Marcio Silva <marcionps at gmail dot com>
+# Maintainer : Tianrui Wei <archlinux_aur at mail dot tianrui-wei dot com>
+# Contributor : Marcio Silva <marcionps at gmail dot com>
 
 _pkgname=todoist
 
@@ -10,7 +11,7 @@ pkgdesc="The to-do list to organize work & life."
 arch=('x86_64')
 url="https://todoist.com/"
 license=('custom:Commercial')
-depends=('zlib' 'fuse')
+depends=('zlib' 'fuse2')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://electron-dl.todoist.com/linux/Todoist-${pkgver}.AppImage")
