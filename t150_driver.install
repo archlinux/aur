@@ -1,0 +1,11 @@
+_install_msg(){
+	printf "\nTo load t150_driver modules run \"modprobe hid-t150\" and \"modprobe hid-tminit\" after installation\n"
+}
+
+post_install(){
+	_install_msg
+}
+
+post_upgrade(){
+	_install_msg
+}
