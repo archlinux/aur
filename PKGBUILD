@@ -2,12 +2,12 @@
 
 pkgname=dssim-c-git
 pkgrel=1
-pkgver=1.3.3.r13.g0219de1
+pkgver=1.3.3.r18.ga40c62b
 pkgdesc=" DSSIM C implementation"
 arch=('x86_64')
 url="https://github.com/pornel/dssim/"
 license=(AGPL)
-depends=('libpng')
+depends=('libpng' 'libjpeg-turbo')
 provides=('dssim')
 makedepends=('git' 'ninja' 'meson')
 source=('git+https://github.com/kornelski/dssim#branch=dssim1-c')
