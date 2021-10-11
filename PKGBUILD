@@ -1,7 +1,8 @@
 # Maintainer: kraftwerk28 <kefirchik3@gmail.com>
 
 pkgname=lua-i3ipc-git
-pkgver=1.2
+_pkgname="${pkgname%-git}"
+pkgver=v1.0.r0.g22378ed
 pkgrel=1
 pkgdesc="A lua library for controlling i3wm & Sway"
 arch=('any')
@@ -11,6 +12,11 @@ depends=('luajit')
 makedepends=('git' 'luarocks' 'tree')
 source=("git+https://github.com/kraftwerk28/lua-i3ipc.git")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd $_pkgname
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
 	local luaver=5.1
@@ -25,5 +31,5 @@ package() {
 		install --no-manifest struct
 	mkdir -p $dir
 	cd $dir
-	cp -R "$srcdir/${pkgname%-git}/i3ipc/" .
+	cp -R "$srcdir/$_pkgname/i3ipc/" .
 }
