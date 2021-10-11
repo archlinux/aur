@@ -1,13 +1,11 @@
 pkgbase = smartversion
-	pkgdesc = A tool for storing multiple versions of your files inside SVF files (Shareware)
+	pkgdesc = SmartVersion is a tool for storing multiple versions of your files inside SmartVersion Files (SVF files).
 	pkgver = 3.82
 	pkgrel = 1
-	url = https://www.smartversion.com
+	url = https://smartversion.com
 	arch = x86_64
 	license = custom:smartversion
-	depends = glibc
-	source = smartversion-3.82.zip::https://www.smartversion.com/smartvs382_linux_x64.zip
+	source = smartversion-3.82-x64.zip::https://smartversion.com/smartvs382_linux_x64.zip
 	sha256sums = a34e70f8415edc3729810fcb8baa11036b36cc6beb0e47e8f37a9e071972e2e3
 
 pkgname = smartversion
-
