@@ -33,7 +33,6 @@ pkgbase = alchemy-next-viewer
 	depends = vlc
 	depends = zlib
 	optdepends = alsa-lib: for ALSA support
-	optdepends = pepper-flash: for inworld Flash support
 	optdepends = freealut: for OpenAL support
 	optdepends = lib32-libidn11: for voice support
 	optdepends = libpulse: for PulseAudio support

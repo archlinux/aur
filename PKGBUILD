@@ -13,7 +13,6 @@ license=('LGPL')
 depends=(dbus-glib glu gtk3 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
 optdepends=(
   'alsa-lib: for ALSA support'
-  'pepper-flash: for inworld Flash support'
   'freealut: for OpenAL support'
   'lib32-libidn11: for voice support'
   'libpulse: for PulseAudio support'
