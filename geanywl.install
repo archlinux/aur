@@ -1,0 +1,3 @@
+post_install() {
+	echo "> You may wish to symlink geanywl to ~/.local/bin/geany."
+}

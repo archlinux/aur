@@ -1,0 +1,148 @@
+#!/bin/bash
+
+GEANY_PATH="/usr/bin/geany"
+
+if [ -z "$XDG_RUNTIME_DIR" ]; then
+	[ -z "$XDG_CACHE_HOME" ] &&
+		XDG_CACHE_HOME="$HOME/.cache"
+
+	XDG_RUNTIME_DIR="$XDG_CACHE_HOME"
+fi
+
+main() {
+	OPTS=$(getopt -o hc:gPil:mnprstvV -l help,help-all,help-gtk,column:,config:,ft-names,generate-tags,no-preprocessing,new-instance,socket-file:,list-documents,line:,no-msgwin,no-ctags,no-plugins,print-prefix,read-only,no-session,no-terminal,vte-lib:,verbose,version,display: -n geanywl -- "$@")
+	
+	eval set -- "$OPTS"
+	
+	SKIP=
+	NEW_INSTANCE=
+	PARAMS=()
+	
+	# https://gist.github.com/cosimo/3760587
+	while true; do
+		ARG1="$1"
+		ARG2=
+		
+		case "$1" in
+			-h | --help | --help-all | --help-gtk) SKIP=true; shift ;;
+			--column ) ARG2="$2"; shift 2 ;;
+			-c | --config ) ARG2="$2"; shift 2 ;;
+			--ft-names ) SKIP=true; shift ;;
+			-g | --generates-tags ) SKIP=true; shift ;;
+			-P | --no-preprocessing ) shift ;;
+			-i | --new-instance ) NEW_INSTANCE=true; ARG1=""; shift ;;
+			--socket-file ) SKIP=true; ARG2="$2"; shift 2 ;;
+			--list-documents ) SKIP=true; shift ;;
+			-l | --line ) ARG2="$2"; shift 2 ;;
+			-m | --no-msgwin ) shift ;;
+			-n | --no-ctags ) shift ;;
+			-p | --no-plugins ) shift ;;
+			--print-prefix ) SKIP=true; shift ;;
+			-r | --read-only ) shift ;;
+			-s | --no-session ) shift ;;
+			-t | --no-terminal ) shift ;;
+			--vte-lib ) ARG2="$2"; shift 2 ;;
+			-v | --verbose ) shift ;;
+			-V | --version ) SKIP=true; shift ;;
+			--display ) ARG2="$2"; shift 2 ;;
+			-- ) shift; break ;;
+			* ) break ;;
+		esac
+		
+		[ "$ARG1" ] && PARAMS+=("$ARG1")
+		[ "$ARG2" ] && PARAMS+=("$ARG2")
+	done
+	
+	FILES="$@"
+	
+	[ "$FILES" ] && PARAMS+=("$@")
+	
+	if [ "$SKIP" = true ]; then
+		exec_geany
+	fi
+	
+	if [ ! "$FILES" ]; then
+		NEW_INSTANCE=true
+	fi
+	
+	# If a new instance is not requested, look for existing instances
+	if [ ! "$NEW_INSTANCE" = true ]; then
+		
+		# Check for instances in the current workspace, keep the pids
+		# And iterate the resulting pids. This list may contain some
+		#  false positives. The windows are also sorted according to
+		#  which of them was focused more recently
+		
+		while read -r pid; do
+			
+			# Verify the process user is the same as the current one
+			# Verify the pid corresponds to a process named 'geany'
+			[ "$(ps -o uid="" $pid)" -ne "$UID" ] && continue
+			[ $(ps -q $pid -o comm="") != "geany" ] && continue
+			
+			# Get listening unix domain sockets from the PID
+			pinfo=$(ss -lpxH | grep "pid=$pid" | grep geany_socket)
+			
+			# If sockets were found, launch Geany
+			if [ -n "$pinfo" ]; then
+				socket=$(echo "$pinfo" | head -n 1 |
+					grep -Po "$XDG_RUNTIME_DIR/geany/geany_socket\.[0-9a-fA-F]+")
+				
+				exec_geany "$socket"
+			fi
+		done < <(wmctrl -lp | grep '0x[0-9a-fA-F]\+ \+'$(wmctrl -d | grep '*' \
+			| sed -r 's/([0-9]+).*/\1/g') | grep Geany \
+			| sort_recently_focused \
+			| sed -r 's/0x[0-9a-fA-F]+ +[0-9]+ +([0-9]+).*/\1/g')
+	fi
+	
+	for (( i=0; ; i++ )); do
+		socket="$HOME/.config/geany/geany_socket_${HOSTNAME}__$i"
+		
+		# Get UID of owner
+		owner=$(stat -c "%u" "$socket" 2>/dev/null)
+		
+		# If the owner var is empty, the file does not exist
+		if [ -z "$owner" ]; then
+			exec_geany "$socket"
+		fi
+		
+		# If the user does not own the file, we cannot examine it
+		# If the -e check fails, while the stat  earlier succeeded,
+		#  it means the the file is broken symbolic link
+		if [[ "$owner" -eq "$UID" ]] && [ ! -e "$socket" ]; then
+			exec_geany "$socket"
+		fi
+	done
+}
+
+exec_geany() {
+	if [ "$1" ]; then
+		exec "$GEANY_PATH" --socket-file "$1" "${PARAMS[@]}"
+	else
+		exec "$GEANY_PATH" "${PARAMS[@]}"
+	fi
+}
+
+sort_recently_focused() {
+	recent=$(xprop -root | grep "^_NET_CLIENT_LIST_STACKING" | tr "," " ")
+	recent=(${recent##*#})
+	
+	wins=()
+	ids=()
+	
+	while read -r line; do
+		wins+=("$line")
+		ids+=($(grep -o '0x[0-9a-fA-F]\+' <<< "$line"))
+	done
+	
+	for (( i=${#recent[@]}-1 ; i>=0 ; i-- )); do
+		for (( j=0; j<${#ids[@]}; j++ )); do
+			if [ $((ids[j])) = $((recent[i])) ]; then
+				echo "${wins[j]}"
+			fi
+		done
+	done
+}
+
+main "$@"
