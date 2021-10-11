@@ -8,12 +8,15 @@ pkgrel=1
 pkgdesc="Manage your email, contacts and schedule - git version"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(dconf
+depends=(
+         cmark
+         dconf
          desktop-file-utils
          evolution-data-server
          gnome-autoar
          gnome-common
          gnome-desktop
+         gspell
          gtk-doc
          gtkspell3
          hicolor-icon-theme
@@ -22,6 +25,7 @@ depends=(dconf
          libcryptui
          libpst
          libytnef
+         nss
          )
 makedepends=(dconf
              desktop-file-utils
@@ -31,7 +35,6 @@ makedepends=(dconf
              gtkspell3
              hicolor-icon-theme
              highlight
-             intltool
              itstool
              libcanberra
              libcryptui
