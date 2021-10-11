@@ -1,4 +1,6 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+#!/hint/bash -e
+# Maintainer: Adrien Smith <adrien@panissupraomnia.dev>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: sudokode <sudokode@gmail.com>
 # Contributor: Jason Chu <jason@archlinux.org>
 # Contributor: Jesse Young <jesse.young@gmail.com>
@@ -8,13 +10,13 @@ pkgver=3.2.7.10.g2090aa7
 pkgrel=1
 pkgdesc="A Pacman package analyzer (git)"
 arch=('any')
-url="http://projects.archlinux.org/namcap.git/"
+url="https://gitlab.archlinux.org/pacman/namcap"
 license=('GPL')
 depends=('python' 'pyalpm' 'licenses' 'binutils' 'elfutils' 'python-pyelftools')
 makedepends=('git' 'python-distribute')
 provides=('namcap')
 conflicts=('namcap')
-source=("$pkgname::git+http://projects.archlinux.org/git/namcap.git")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
