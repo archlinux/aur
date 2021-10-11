@@ -1,0 +1,11 @@
+--- a/build/shared/lib/defaults.txt
++++ b/build/shared/lib/defaults.txt
+@@ -74,7 +74,7 @@
+ recent.count = 10
+ 
+ # Default to the native (AWT) file selector where possible
+-chooser.files.native = true
++chooser.files.native = false
+ # We were shutting this off on macOS because it broke Copy/Paste:
+ # https://github.com/processing/processing/issues/1035
+ # https://github.com/processing/processing4/issues/77
