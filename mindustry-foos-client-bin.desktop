@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=761
+Type=Application
+Name=Foo's Client
+Comment=Client modification of Mindustry
+Exec=mindustry-foos-client
+Icon=mindustry-foos-client
+Categories=Game;
+Terminal=false

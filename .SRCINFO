@@ -1,0 +1,24 @@
+pkgbase = mindustry-foos-client-bin
+pkgdesc = Client modification for Mindustry
+pkgver = 7.0_761
+pkgrel = 1
+epoch = 1
+url = https://github.com/mindustry-antigrief/mindustry-client
+arch = any
+license = GPL3
+makedepends = libicns
+depends = java-runtime>=8
+depends = sh
+depends = hicolor-icon-theme
+provides = mindustry-foos-client
+conflicts = mindustry-foos-client
+noextract = mindustry-foos-client-bin-761.jar
+source = mindustry-foos-client-bin-761.jar::https://github.com/mindustry-antigrief/mindustry-client-v7-builds/releases/download/761/desktop.jar
+source = mindustry-foos-client-bin.icns::https://github.com/mindustry-antigrief/mindustry-client/blob/v6/core/assets/icons/icon.icns
+source = mindustry-foos-client-bin.desktop
+source = mindustry-foos-client-bin.sh
+sha256sums = 3b877f309270685ce2ebaaca32ec6a4880aa6eb29fbfc7c7e7243b8ac60da202
+sha256sums = 47b09296c869a67312e209e5d528cbcfd01532edfc031dba7b6fe2170c2493b6
+sha256sums = a18724f42a2a79b129d1901a8b75a965a621eb5ef97698b05cf8addcf5948600
+sha256sums = 6827b29e2afc023089c4d46c6dde3fccf3ad01554ba6c22c20e7bce7a109224f
+pkgname = mindustry-foos-client-bin
