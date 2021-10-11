@@ -1,6 +1,6 @@
 pkgbase = python-radicale-decsync
 	pkgdesc = Radicale storage plugin to add synchronization using DecSync
-	pkgver = 1.2.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/39aldo39/Radicale-DecSync
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-radicale-decsync
 	depends = python
 	depends = python-libdecsync
 	depends = radicale
-	source = python-radicale-decsync-1.2.2::https://github.com/39aldo39/Radicale-DecSync/archive/v1.2.2.tar.gz
-	sha256sums = c2d8bed1720af61a5c14ccd6ab1ab1bc0548f4a1571d428532c4ce060ecbf97b
+	source = python-radicale-decsync-2.0.0::https://github.com/39aldo39/Radicale-DecSync/archive/v2.0.0.tar.gz
+	sha256sums = 650cbc5921c87c7b9262874905ce08c2c5ee1eac8342fd268ea0d690d88dc1b1
 
 pkgname = python-radicale-decsync
-
