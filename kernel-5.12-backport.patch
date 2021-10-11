@@ -64,7 +64,7 @@
 
 --- a/inode.c
 +++ b/inode.c
-@@ -1169,7 +1169,7 @@
+@@ -1163,7 +1163,7 @@
  	return ERR_PTR(err);
  }
  
@@ -73,7 +73,7 @@
  				struct inode *dir, struct dentry *dentry,
  				const struct cpu_str *uni, umode_t mode,
  				dev_t dev, const char *symname, u32 size,
-@@ -1286,7 +1286,7 @@
+@@ -1280,7 +1280,7 @@
  		goto out3;
  	}
  	inode = &ni->vfs_inode;
@@ -82,7 +82,7 @@
  	mode = inode->i_mode;
  
  	inode->i_atime = inode->i_mtime = inode->i_ctime = ni->i_crtime =
-@@ -1580,7 +1580,7 @@
+@@ -1579,7 +1579,7 @@
  
  #ifdef CONFIG_NTFS3_FS_POSIX_ACL
  	if (!S_ISLNK(mode) && (sb->s_flags & SB_POSIXACL)) {
@@ -227,7 +227,7 @@
  	if (opts->fmask)
  		seq_printf(m, ",fmask=%04o", ~opts->fs_fmask_inv);
  	if (opts->dmask)
-@@ -1413,7 +1413,7 @@
+@@ -1435,7 +1435,7 @@
  	.init_fs_context	= ntfs_init_fs_context,
  	.parameters		= ntfs_fs_parameters,
  	.kill_sb		= kill_block_super,
