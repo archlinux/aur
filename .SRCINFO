@@ -6,7 +6,7 @@ pkgbase = veusz-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = sip
+	makedepends = sip>=5.0
 	depends = python-pyqt5
 	depends = python-numpy
 	depends = hicolor-icon-theme
