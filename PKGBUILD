@@ -1,8 +1,8 @@
 # Maintainer: Christoph Haag <haagch+aur@frickel.club>
 pkgname='vkmark-git'
 pkgdesc='Vulkan benchmark'
-pkgver=r127.53abc4f
-pkgrel=2
+pkgver=r129.cf45f2f
+pkgrel=1
 url='https://github.com/vkmark/vkmark'
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
@@ -10,7 +10,6 @@ depends=('vulkan-icd-loader' 'assimp')
 makedepends=('git' 'vulkan-headers' 'meson' 'ninja' 'glm' 'wayland-protocols' 'xcb-util-wm' 'wayland')
 optdepends=('xcb-util-wm: for X11 support'
             'wayland: for Wayland support')
-makedepends=('git' 'vulkan-headers' 'meson' 'ninja' 'glm' 'wayland-protocols')
 source=('git+https://github.com/vkmark/vkmark.git')
 sha1sums=('SKIP')
 
