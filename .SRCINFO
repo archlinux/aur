@@ -1,6 +1,6 @@
 pkgbase = gpmp2
 	pkgdesc = Gaussian Process Motion Planner 2
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/gtrll/gpmp2
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = gpmp2
 	makedepends = cmake
 	depends = boost
 	depends = gtsam
-	source = gpmp2-0.2.0::https://github.com/gtrll/gpmp2/archive/0.2.0.tar.gz
-	sha256sums = f3c96e24aea3982cfe8ac21435fc155fa781102111b753ff09c1f14c56ba42d3
+	source = gpmp2-0.3.0::https://github.com/gtrll/gpmp2/archive/0.3.0.tar.gz
+	sha256sums = d2c6dafe1518b4dad6bb6210b23d195843d0fa3b59feb3dda986ec0512ac5166
 
 pkgname = gpmp2
-

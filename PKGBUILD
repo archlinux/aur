@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=gpmp2
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Gaussian Process Motion Planner 2"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('boost' 'gtsam')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}::https://github.com/gtrll/gpmp2/archive/${pkgver}.tar.gz")
-sha256sums=('f3c96e24aea3982cfe8ac21435fc155fa781102111b753ff09c1f14c56ba42d3')
+sha256sums=('d2c6dafe1518b4dad6bb6210b23d195843d0fa3b59feb3dda986ec0512ac5166')
 
 prepare() {
     sed -i 's/GPMP2_VERSION_STRING/gpmp2_VERSION_STRING/g' "${srcdir}/${pkgname}-${pkgver}/CMakeLists.txt"
