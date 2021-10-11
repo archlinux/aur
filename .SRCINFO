@@ -1,6 +1,6 @@
 pkgbase = ruby-fog-json
 	pkgdesc = JSON parsing for fog providers
-	pkgver = 1.0.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://github.com/fog/fog-json
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = ruby-fog-json
 	depends = ruby
 	depends = ruby-fog-core
 	depends = ruby-multi_json
-	noextract = fog-json-1.0.2.gem
+	noextract = fog-json-1.2.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-json-1.0.2.gem
-	sha512sums = 7b57c2caa8f8ccccf2225d308ab77b35ed00f43937086d59c9d5431b221d6e2a7f2b79db9dc9e924399db213844066fc9a147fab1c177e2468c8609bc4b8ad84
+	source = https://rubygems.org/downloads/fog-json-1.2.0.gem
+	sha512sums = 3fd5f8e72a5b6b62129f0c1e0e9aea11202a90a853eec172a8ad83a81c1106fe6f47966ddae3bcc04874230bc384c6efe7a83d082ab0e20bc4458b79e3f500c6
 
 pkgname = ruby-fog-json
-
