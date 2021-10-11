@@ -24,15 +24,10 @@ source=("git+https://github.com/archlinuxhardened/${_reponame}#commit=${_commit}
 sha256sums=('SKIP'
             'c9f7cce9a06fd0595b3dd47d4fdde9d9c7457120c42c5f08bfdc5e89eb9a61df')
 
-prepare() {
-  cd "${srcdir}/${_reponame}"
-
-  make bare
-  make conf
-}
-
 build() {
   cd "${srcdir}/${_reponame}"
+  make bare
+  make conf
   make
 }
 
