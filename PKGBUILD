@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=21.3.0_devel.146031.6b9e12ea256
+pkgver=21.3.0_devel.146044.77e5f149ebb
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -99,6 +99,7 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
+    patch --directory="mesa" --forward --strip=1 --input="${srcdir}/TargetRegistry.h-was-moved-to-MC-folder.patch"
 }
 
 
