@@ -2,7 +2,7 @@
 pkgname=authelia-git
 _pkgname=authelia
 pkgver=4.32.2.r1.g9445878c
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -42,7 +42,7 @@ build() {
   XOPTIONS="-X 'github.com/authelia/authelia/v4/internal/utils.BuildBranch=master' -X 'github.com/authelia/authelia/v4/internal/utils.BuildTag=${TAG}' -X 'github.com/authelia/authelia/v4/internal/utils.BuildCommit=${COMMIT}' -X 'github.com/authelia/authelia/v4/internal/utils.BuildDate=${DATE}' -X 'github.com/authelia/authelia/v4/internal/utils.BuildState=${STATE}' -X 'github.com/authelia/authelia/v4/internal/utils.BuildNumber=AUR'"
 
   yarn install --frozen-lockfile --ignore-scripts
-  INLINE_RUNTIME_CHUNK=false yarn build
+  yarn build
   cd ..
   cp -R api internal/server/public_html/
   go build -ldflags "-w ${XOPTIONS}" -trimpath -o authelia cmd/authelia/*.go
