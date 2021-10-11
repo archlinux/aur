@@ -1,0 +1,108 @@
+From ebd3ff7e39c487718312a378637bb060cd8a1500 Mon Sep 17 00:00:00 2001
+From: Norihiro Kamae <norihiro@nagater.net>
+Date: Mon, 11 Oct 2021 13:59:56 +0900
+Subject: [PATCH] linux-pulseaudio: Fix monitoring volume for s32 format
+
+When signed 32-bit audio arrived to pulseaudio-output and volume was
+lowered, audio data was broken. In the function `process_volume`, the
+type of the data is switched by `bytes_per_channel`. However the size of
+signed 32-bit integer and the size of float are same so that the signed
+32-bit integer is processed as float.
+This commit changes these items.
+- Use `format` instead of `bytes_per_channel` so that all the sample
+  types can be differentiated.
+- Change `char` to `uint8_t` in `process_byte` because the type is
+  expected unsigned 8-bit.
+- Change `short` to `int16_t` and renames existing function
+  `process_short` to `process_s16` to clarify the function is
+  processing signed 16-bit.
+---
+ .../pulse/pulseaudio-output.c                 | 41 ++++++++++++-------
+ 1 file changed, 27 insertions(+), 14 deletions(-)
+
+diff --git a/libobs/audio-monitoring/pulse/pulseaudio-output.c b/libobs/audio-monitoring/pulse/pulseaudio-output.c
+index 9abfcd78b4e..f84a8913475 100644
+--- a/libobs/audio-monitoring/pulse/pulseaudio-output.c
++++ b/libobs/audio-monitoring/pulse/pulseaudio-output.c
+@@ -22,7 +22,6 @@ struct audio_monitor {
+ 	audio_resampler_t *resampler;
+ 	size_t buffer_size;
+ 	size_t bytesRemaining;
+-	size_t bytes_per_channel;
+ 
+ 	bool ignore;
+ 	pthread_mutex_t playback_mutex;
+@@ -127,17 +126,26 @@ static pa_channel_map pulseaudio_channel_map(enum speaker_layout layout)
+ 
+ static void process_byte(void *p, size_t frames, size_t channels, float vol)
+ {
+-	register char *cur = (char *)p;
+-	register char *end = cur + frames * channels;
++	register uint8_t *cur = (uint8_t *)p;
++	register uint8_t *end = cur + frames * channels;
+ 
+ 	while (cur < end)
+ 		*(cur++) *= vol;
+ }
+ 
+-static void process_short(void *p, size_t frames, size_t channels, float vol)
++static void process_s16(void *p, size_t frames, size_t channels, float vol)
+ {
+-	register short *cur = (short *)p;
+-	register short *end = cur + frames * channels;
++	register int16_t *cur = (int16_t *)p;
++	register int16_t *end = cur + frames * channels;
++
++	while (cur < end)
++		*(cur++) *= vol;
++}
++
++static void process_s32(void *p, size_t frames, size_t channels, float vol)
++{
++	register int32_t *cur = (int32_t *)p;
++	register int32_t *end = cur + frames * channels;
+ 
+ 	while (cur < end)
+ 		*(cur++) *= vol;
+@@ -155,19 +163,26 @@ static void process_float(void *p, size_t frames, size_t channels, float vol)
+ void process_volume(const struct audio_monitor *monitor, float vol,
+ 		    uint8_t *const *resample_data, uint32_t resample_frames)
+ {
+-	switch (monitor->bytes_per_channel) {
+-	case 1:
++	switch (monitor->format) {
++	case PA_SAMPLE_U8:
+ 		process_byte(resample_data[0], resample_frames,
+ 			     monitor->channels, vol);
+ 		break;
+-	case 2:
+-		process_short(resample_data[0], resample_frames,
+-			      monitor->channels, vol);
++	case PA_SAMPLE_S16LE:
++		process_s16(resample_data[0], resample_frames,
++			    monitor->channels, vol);
+ 		break;
+-	default:
++	case PA_SAMPLE_S32LE:
++		process_s32(resample_data[0], resample_frames,
++			    monitor->channels, vol);
++		break;
++	case PA_SAMPLE_FLOAT32LE:
+ 		process_float(resample_data[0], resample_frames,
+ 			      monitor->channels, vol);
+ 		break;
++	default:
++		// just ignore
++		break;
+ 	}
+ }
+ 
+@@ -440,8 +455,6 @@ static bool audio_monitor_init(struct audio_monitor *monitor,
+ 		return false;
+ 	}
+ 
+-	monitor->bytes_per_channel = get_audio_bytes_per_channel(
+-		pulseaudio_to_obs_audio_format(monitor->format));
+ 	monitor->speakers = pulseaudio_channels_to_obs_speakers(spec.channels);
+ 	monitor->bytes_per_frame = pa_frame_size(&spec);
+ 

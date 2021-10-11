@@ -1,0 +1,112 @@
+From 85e75085030664ff1bba2e87a79e8ff4294f28c4 Mon Sep 17 00:00:00 2001
+From: Kurt Kartaltepe <kkartaltepe@gmail.com>
+Date: Wed, 16 Jun 2021 09:42:46 -0700
+Subject: [PATCH] pulse: fill audio monitor buffer more aggressively
+
+Previously we would wait for pulse to attempt to read from the monitor
+source and obs buffered at least 5ms of audio data before we tried to
+fill the buffer. In some cases this resulted in consistently triggering
+underruns in pulse.
+
+Instead we try to fill the buffer immediately as obs outputs audio data
+and while the pa buffer is not full. We also stop trying to grow the
+buffer to prevent underruns after we reach 1s of latency.
+---
+ .../pulse/pulseaudio-output.c                 | 46 ++++++++++++-------
+ 1 file changed, 30 insertions(+), 16 deletions(-)
+
+diff --git a/libobs/audio-monitoring/pulse/pulseaudio-output.c b/libobs/audio-monitoring/pulse/pulseaudio-output.c
+index 9abfcd78b4e..d4ec239de71 100644
+--- a/libobs/audio-monitoring/pulse/pulseaudio-output.c
++++ b/libobs/audio-monitoring/pulse/pulseaudio-output.c
+@@ -20,7 +20,6 @@ struct audio_monitor {
+ 
+ 	struct circlebuf new_data;
+ 	audio_resampler_t *resampler;
+-	size_t buffer_size;
+ 	size_t bytesRemaining;
+ 	size_t bytes_per_channel;
+ 
+@@ -176,21 +175,20 @@ static void do_stream_write(void *param)
+ 	PULSE_DATA(param);
+ 	uint8_t *buffer = NULL;
+ 
+-	while (data->new_data.size >= data->buffer_size &&
+-	       data->bytesRemaining > 0) {
+-		size_t bytesToFill = data->buffer_size;
+-
+-		if (bytesToFill > data->bytesRemaining)
++	while (data->new_data.size > 0 && data->bytesRemaining > 0) {
++		size_t bytesToFill = data->new_data.size;
++		if (data->bytesRemaining < bytesToFill)
+ 			bytesToFill = data->bytesRemaining;
+ 
+ 		pulseaudio_lock();
+-		pa_stream_begin_write(data->stream, (void **)&buffer,
+-				      &bytesToFill);
+-		pulseaudio_unlock();
++		if (pa_stream_begin_write(data->stream, (void **)&buffer,
++					  &bytesToFill)) {
++			pulseaudio_unlock();
++			return;
++		}
+ 
+ 		circlebuf_pop_front(&data->new_data, buffer, bytesToFill);
+ 
+-		pulseaudio_lock();
+ 		pa_stream_write(data->stream, buffer, bytesToFill, NULL, 0LL,
+ 				PA_SEEK_RELATIVE);
+ 		pulseaudio_unlock();
+@@ -262,13 +260,30 @@ static void pulseaudio_underflow(pa_stream *p, void *userdata)
+ 	UNUSED_PARAMETER(p);
+ 	PULSE_DATA(userdata);
+ 
++	pa_sample_spec spec = {0};
++	spec.format = data->format;
++	spec.rate = (uint32_t)data->samples_per_sec;
++	spec.channels = data->channels;
++	uint64_t latency = pa_bytes_to_usec(data->attr.tlength, &spec);
++
+ 	pthread_mutex_lock(&data->playback_mutex);
+-	if (obs_source_active(data->source))
++	if (obs_source_active(data->source) && latency < 1000000) {
++		data->attr.fragsize = (uint32_t)-1;
++		data->attr.maxlength = (uint32_t)-1;
++		data->attr.prebuf = (uint32_t)-1;
++		data->attr.minreq = (uint32_t)-1;
+ 		data->attr.tlength = (data->attr.tlength * 3) / 2;
+-
+-	pa_stream_set_buffer_attr(data->stream, &data->attr, NULL, NULL);
++		pa_stream_set_buffer_attr(data->stream, &data->attr, NULL,
++					  NULL);
++		data->bytesRemaining = data->attr.maxlength;
++	}
+ 	pthread_mutex_unlock(&data->playback_mutex);
+ 
++	if (latency >= 1000000) {
++		blog(LOG_WARNING, "source monitor reached max latency %ldms",
++		     latency / 1000);
++	}
++
+ 	pulseaudio_signal(0);
+ }
+ 
+@@ -460,9 +475,6 @@ static bool audio_monitor_init(struct audio_monitor *monitor,
+ 	monitor->attr.prebuf = (uint32_t)-1;
+ 	monitor->attr.tlength = pa_usec_to_bytes(25000, &spec);
+ 
+-	monitor->buffer_size =
+-		monitor->bytes_per_frame * pa_usec_to_bytes(5000, &spec);
+-
+ 	pa_stream_flags_t flags = PA_STREAM_INTERPOLATE_TIMING |
+ 				  PA_STREAM_AUTO_TIMING_UPDATE;
+ 
+@@ -480,6 +492,8 @@ static bool audio_monitor_init(struct audio_monitor *monitor,
+ 		return false;
+ 	}
+ 
++	monitor->bytesRemaining = monitor->attr.maxlength;
++
+ 	blog(LOG_INFO, "Started Monitoring in '%s'", monitor->device);
+ 	return true;
+ }

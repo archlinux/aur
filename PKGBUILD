@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -57,6 +57,8 @@ source=(
         "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
         "FindLibpci.cmake" # https://github.com/carlocastoldi/obs-studio/blob/2936-fix/cmake/Modules/FindLibpci.cmake
         "vaapi_set_dri_devices.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/5336.patch
+        "pa_buffer_aggressive.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4908.patch
+        "pa_fix_monitor_s32.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/5400.patch
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
@@ -67,6 +69,8 @@ sha256sums=(
         "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
         "916f9fb3819c9d952140d65434e9dffc77b688dc1dc027b39226c33ee97be63f"
         "5c18a85f95090f01a9eb24aeea13220f8698f8d433970e4dc6391432d033f065"
+        "4b90a29e75eb7281cbe754408327d44192c0892557f03bd3c612f3658af739fc"
+        "994fcb78c948f3222a07ddd342453310da769e333307dcfea2e301c259d0d60a"
         "SKIP"
         "SKIP"
 )
@@ -93,6 +97,12 @@ prepare() {
   patch -Np1 < "$srcdir/vaapi_set_dri_devices.patch"
   # Add CMake finder for libpci (pciutils)
   cp "$srcdir/FindLibpci.cmake" cmake/Modules/
+
+  ## pulse: fill audio monitor buffer more aggressively (https://github.com/obsproject/obs-studio/pull/4908)
+  patch -Np1 < "$srcdir/pa_buffer_aggressive.patch"
+
+  ## linux-pulseaudio: Fix monitoring volume for s32 format (https://github.com/obsproject/obs-studio/pull/5400)
+  patch -Np1 < "$srcdir/pa_fix_monitor_s32.patch"
 }
 
 build() {
