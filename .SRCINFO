@@ -1,7 +1,7 @@
 pkgbase = gsa
 	pkgdesc = Greenbone Security Assistant
 	pkgver = 21.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/greenbone/gsa
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -20,10 +20,10 @@ pkgbase = gsa
 	depends = openvas-scanner
 	backup = etc/default/gsad
 	source = gsa-21.4.2.tar.gz::https://github.com/greenbone/gsa/archive/v21.4.2.tar.gz
-	source = gsad
 	source = gsad.service
+	source = gsad
 	sha512sums = 8916290f880187c190bc51ba454b66858a9a9f3513091c07752313a53a650e88352e1d875f7bb84f35781df91f7e7bbee053f6739492d2fef15c7000618672a1
-	sha512sums = 27542d6e194d8fe4ef37364f387293d69f4c7002f2b380b8a21ae995122531ccbce6ca689f0768c463252d33cf0b1735343cbe61eac51947fbec0e05a45e1d1b
 	sha512sums = 6c65e3ea08b427cd1773c346b054b7b1a3e95d06d6d4070603e97f92b59f9dd465e94992cd6b5927192bc9b859c1268d1cda8d92d4067264389a7a0a578b9d30
+	sha512sums = 27542d6e194d8fe4ef37364f387293d69f4c7002f2b380b8a21ae995122531ccbce6ca689f0768c463252d33cf0b1735343cbe61eac51947fbec0e05a45e1d1b
 
 pkgname = gsa
