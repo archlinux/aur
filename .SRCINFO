@@ -1,6 +1,6 @@
 pkgbase = python-iminuit
 	pkgdesc = Python interface for MINUIT, a physics analysis tool for function minimization.
-	pkgver = 2.8.3
+	pkgver = 2.8.4
 	pkgrel = 1
 	url = https://iminuit.readthedocs.io
 	arch = i686
@@ -9,15 +9,15 @@ pkgbase = python-iminuit
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-scipy
-	checkdepends = python-numba
+	checkdepends = python-numba>0.54.0
 	checkdepends = python-matplotlib
 	checkdepends = python-tabulate
 	makedepends = python-setuptools
 	makedepends = python-numpy
 	makedepends = cmake
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/i/iminuit/iminuit-2.8.3.tar.gz
-	md5sums = 2c971bef83e1744e6bf763791d9b1650
+	source = https://files.pythonhosted.org/packages/source/i/iminuit/iminuit-2.8.4.tar.gz
+	md5sums = 5993594ee67bcfa1800a37610fdd0fbd
 
 pkgname = python-iminuit
 	depends = python>=3.6
