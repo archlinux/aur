@@ -1,0 +1,13 @@
+pkgbase = vim-sandwich
+	pkgdesc = Set of operators and textobjects to search/select/edit sandwiched texts.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/machakann/vim-sandwich
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim
+	source = https://github.com/machakann/vim-sandwich/archive/v1.0.0.tar.gz
+	sha256sums = 45ea09a8a8818e0bbee2f48e856de875e687128d3086e508e5a0ddcaf883c156
+
+pkgname = vim-sandwich
