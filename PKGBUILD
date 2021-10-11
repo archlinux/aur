@@ -3,8 +3,8 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=ghidra-bin
-pkgver=10.0.1
-_date=20210708
+pkgver=10.0.4
+_date=20210928
 pkgrel=1
 pkgdesc='Software reverse engineering framework (bin)'
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
   ghidra.png::https://raw.githubusercontent.com/NationalSecurityAgency/ghidra/Ghidra_${pkgver}_build/Ghidra/Framework/Generic/src/main/resources/images/GhidraIcon256.png
   https://raw.githubusercontent.com/NationalSecurityAgency/ghidra/Ghidra_${pkgver}_build/LICENSE
 )
-sha256sums=('9b68398fcc4c2254a3f8ff231c4e8b2ac75cc8105f819548c7eed3997f8c5a5d'
+sha256sums=('1ce9bdf2d7f6bdfe5dccd06da828af31bc74acfd800f71ade021d5211e820d5e'
             'e4855b100fbe6b60f868cd74828d0b4ff4eda1ea0a097d3b45fcc034f77cc07f'
             '0e53f1b091046809c0f393326cadc69c27b1d574254e1094beedb312d09aa9c9'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
