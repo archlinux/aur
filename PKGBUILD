@@ -1,7 +1,8 @@
-# Maintainer: Kieran <kieran at dothq dot co>
+# Maintainer: Ada <adadonderr at gmail dot com>
+# Contributor: Kieran <kieran at dothq dot co>
 pkgname=dot-bin
 _pkgname=dot
-pkgver=0.1
+pkgver=87.0
 pkgrel=0
 pkgdesc="Dot Browser is a privacy-conscious web browser based on Firefox. (Binary)"
 arch=("x86_64")
@@ -20,7 +21,9 @@ conflicts=('dot' 'dot-git')
 source=("$_pkgname-$pkgver.tar.bz2::https://download.dothq.co/dot/releases/linux/x86/raw"
         "$_pkgname.desktop"
         "$_pkgname.sh")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('453a414b90fb0dfab47804c4164eb4922cce3f62cf305684d6a9556a5f137745'
+            '646598d45de69426e660c7c43ce97c5b5104143ea190a6ec8e39477345030662'
+            'ad3a13116d5dfd8241d57138c5355d258960b732204fae499f1f942a967a5ff7')
 
 package() {
   # Create directories
