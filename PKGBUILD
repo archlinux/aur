@@ -20,7 +20,7 @@ sha256sums=('060a126877d63ddb048cd389c505f0d502ba4f00bb59be38b99250b1f7006b2d'
 
 prepare() {
   # Create .desktop file
-  gendesk -f -n --pkgname=processing --pkgdesc="$pkgdesc" --name="Processing"
+  gendesk -f -n --pkgname=processing --pkgdesc="$pkgdesc" --name="Processing" --exec="processing %f" --mimetypes="text/x-processing"
 
   # Symbolic link for not having to repeat the revision number
   ln -sf "processing4-processing-"*"-$pkgver" $pkgname
@@ -45,7 +45,9 @@ package() {
   install -d "$pkgdir/usr/"{bin/,share/processing/}
   cp -r build/linux/work/* "$pkgdir/usr/share/processing/"
 
-  # Desktop shortcut
+  # MIME type, icon and desktop shortcut
+  install -Dm644 "build/linux/processing-pde.xml" \
+    "$pkgdir/usr/share/mime/packages/processing-pde.xml"
   install -Dm644 "build/shared/lib/icons/pde-256.png" \
     "$pkgdir/usr/share/pixmaps/processing.png"
   install -Dm644 "$srcdir/processing.desktop" \
