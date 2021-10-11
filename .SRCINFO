@@ -1,0 +1,17 @@
+pkgbase = gr-hrpt-git
+	pkgdesc = HRPT Blocks from gr-noaa and others ported to GNU Radio 3.8+
+	pkgver = r27.7f3bc69
+	pkgrel = 1
+	url = https://github.com/altillimity/gr-hrpt
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = boost-libs
+	makedepends = cmake
+	makedepends = git
+	depends = gnuradio
+	depends = liborcus
+	source = gr-hrpt-git::git+https://github.com/altillimity/gr-hrpt.git
+	sha256sums = SKIP
+
+pkgname = gr-hrpt-git
