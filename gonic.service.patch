@@ -2,28 +2,17 @@
 +++ b/contrib/gonic.service
 @@ -1,6 +1,5 @@
  [Unit]
- Description=Gonic service
--ConditionPathExists=/var/gonic/gonic
+ Description=gonic service
+-ConditionPathExists=/var/lib/gonic/
  After=network.target
  
  [Service]
-@@ -12,17 +11,8 @@
+@@ -11,7 +10,7 @@
  Restart=on-failure
  RestartSec=10
  
--WorkingDirectory=/var/gonic/
--ExecStart=/var/gonic/gonic -config-path /var/gonic/config
+-ExecStart=/usr/local/bin/gonic -config-path /etc/gonic/config
 +ExecStart=/usr/bin/gonic -config-path /var/lib/gonic/config
--
--# make sure log directory exists and owned by syslog
--PermissionsStartOnly=true
--ExecStartPre=/bin/mkdir -p /var/log/gonic
--ExecStartPre=/bin/chown syslog:adm /var/log/gonic
--ExecStartPre=/bin/chmod 755 /var/log/gonic
--StandardOutput=syslog
--StandardError=syslog
--SyslogIdentifier=sleepservice
  
  [Install]
  WantedBy=multi-user.target
-+

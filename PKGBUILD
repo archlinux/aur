@@ -1,32 +1,29 @@
-# Maintainer: Dimitri Pertin <pertin (dot) dimitri (at) protonmail (dot) com>
+# Maintainer: Rafael Epplée <aur (at) rafa (dot) ee>
 pkgname=gonic
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A lightweight music streaming server which implements the Subsonic API'
 arch=('x86_64')
 depends=('alsa-lib' 'gcc-libs' 'sqlite' 'taglib')
-makedepends=('go')
+makedepends=('go' 'zlib')
 optdepends=('ffmpeg: on-the-fly audio transcoding and caching')
 url='https://github.com/sentriz/gonic'
 license=('GPL3')
 backup=("var/lib/gonic/config")
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sentriz/gonic/archive/v$pkgver.tar.gz"
-        "$pkgname.config.patch"
         "$pkgname.install"
         "$pkgname.service.patch"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('29d301c749f1654e8bbc0835d3250e08'
-         '240faa29e218962b1ed6c4ce4d138248'
+md5sums=('26c41e119263d439eb0e5f201118849b'
          'd6e8eda0411af60e613819ac957fcc56'
-         'c8f973db7a107f8653f7ff36555ce1a0'
+         '18458d6d039609f3068248bf3df44782'
          '6ca6715be2cdd424846f7b37b98905f6'
          '487fe9a172e33d86514cf3dbb3b629b8')
 
 prepare() {
         cd "$srcdir/$pkgname-$pkgver"
-        patch --forward --strip=1 -i "../$pkgname.config.patch"
         patch --forward --strip=1 -i "../$pkgname.service.patch"
 }
 
