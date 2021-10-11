@@ -2,7 +2,7 @@
 
 _pkgname=libexif
 pkgname=mingw-w64-libexif
-pkgver=0.6.22
+pkgver=0.6.23
 pkgrel=1
 pkgdesc="A library to parse an EXIF file and read the data from those tags (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt' 'mingw-w64-gettext')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(${url}/archive/${_pkgname}-${pkgver//./_}-release.tar.gz)
-sha256sums=('46498934b7b931526fdee8fd8eb77a1dddedd529d5a6dbce88daf4384baecc54')
+sha256sums=('7701ec4b7071b1ac4f253c6d2478851c3baa5287302c336f68dd1810e8902bae')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
