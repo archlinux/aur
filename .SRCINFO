@@ -1,0 +1,16 @@
+pkgbase = cutelogger
+	pkgdesc = Simple, convenient and thread safe logger for Qt-based C++ apps
+	pkgver = r92.5001249
+	pkgrel = 1
+	url = https://github.com/dept2/CuteLogger
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	provides = cutelogger
+	source = git+https://github.com/dept2/CuteLogger
+	sha1sums = SKIP
+
+pkgname = cutelogger
