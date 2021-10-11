@@ -1,7 +1,7 @@
 # Maintainer: kraftwerk28 <kefirchik3@gmail.com>
 
 pkgname=lua-i3ipc-git
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A lua library for controlling i3wm & Sway"
 arch=('any')
