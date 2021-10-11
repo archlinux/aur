@@ -1,7 +1,7 @@
 pkgbase = quran-rofi
 	pkgdesc = Al-Quran dengan Terjemahan Indonesia
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nesstero/Al-Quran-Rofi
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = quran-rofi
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-pyperclip
-	source = quran-rofi::git+https://github.com/nesstero/Al-Quran-Rofi.git
+	source = quran-rofi-0.0.1::git+https://github.com/nesstero/Al-Quran-Rofi.git
 	sha256sums = SKIP
 
 pkgname = quran-rofi
