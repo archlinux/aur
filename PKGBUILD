@@ -1,7 +1,7 @@
 # Maintainer: Nils Grunwald <nils [@] grunwald [dot] fr>
 
 pkgname=janet-lang-bin
-pkgver=1.17.2
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='A dynamic Lisp dialect and bytecode vm'
 arch=('x86_64')
@@ -12,8 +12,8 @@ conflicts=('janet-lang' 'janet-lang-git')
 
 source=("https://github.com/janet-lang/janet/releases/download/v${pkgver}/${pkgname/\-lang-bin/}-v${pkgver}-linux-x64.tar.gz" "https://github.com/janet-lang/janet/releases/download/v${pkgver}/${pkgname/\-lang-bin/}.h")
 
-sha256sums=('8a39bae7dd01183df8b216aee8ec469c5ea463f6cc36f28cc9dc66279828f226'
-            'af215b80d4591920167690c1e8bda92b6ac5fd20a20393790098ceee8cc1a1e5')
+sha256sums=('f3d2c148e28beed108fc336510ea4e88a84aa5ee2d2d46380230c6639a4db31c'
+            '7420414dc283b59a0d6a5b93e64df61f81c7102d352dc9028d2081acd6e1ea6e')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname/\-lang-bin/}-v${pkgver}-linux/bin/janet" "${pkgdir}/usr/bin/janet"
