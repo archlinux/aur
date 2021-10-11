@@ -3,8 +3,8 @@
 # Contributor: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname=grass
-pkgver=7.8.5
-pkgrel=2
+pkgver=7.8.6
+pkgrel=1
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
@@ -16,15 +16,9 @@ depends=('bzip2' 'cairo' 'fftw' 'fontconfig' 'freetype2' 'gcc-libs' 'gdal' 'geos
 makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface'
             'sqlite: SQLite database interface')
-source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz"
-        "https://github.com/OSGeo/grass/commit/b86314c7.patch")
-md5sums=('91f4830a5164cea703384814cd89cdf9'
-         'e72affb054af2794560971ddab90d0a2')
+source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
+md5sums=('6a16bbefdb1f31480be82e6f352c3c10')
 
-prepare() {
-    cd "$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/b86314c7.patch"
-}
 build() {
   cd $pkgname-$pkgver
 
