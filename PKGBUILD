@@ -1,7 +1,7 @@
 pkgname=neovim-lspinstall
 pkgver=08ea726
 pkgrel=1
-pkgdesc='Quickstart configurations for the Nvim LSP client.'
+pkgdesc='Provides the missing :LspInstall for nvim-lspconfig.'
 arch=('any')
 url=https://github.com/kabouzeid/nvim-lspinstall
 license=('Apache')
