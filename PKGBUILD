@@ -10,12 +10,11 @@ depends=('neovim' 'neovim-plug' 'lua')
 makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')
-_luajitver=2.0.5
 package(){
     cd "${srcdir}/nvim-lspconfig"
+    mkdir -p "${pkgdir}/usr/share/nvim/runtime"
     install -Dm644 "plugin/lspconfig.vim" "${pkgdir}/usr/share/nvim/runtime/plugin/lspconfig.vim"
-    mkdir -p "${pkgdir}/usr/share/luajit-${_luajitver}"
-    cp -a lua/* "${pkgdir}/usr/share/luajit-${_luajitver}/"
+    cp -a lua "${pkgdir}/usr/share/nvim/runtime/"
 }
 pkgver(){
     cd "${srcdir}/nvim-lspconfig"
