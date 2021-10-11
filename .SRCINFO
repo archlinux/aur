@@ -1,0 +1,17 @@
+pkgbase = siyuan-note-bin
+	pkgdesc = A local-first personal knowledge management system
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://b3log.org/siyuan/
+	arch = x86_64
+	license = unknown
+	depends = electron
+	provides = siyuan-note
+	source = siyuan-note-bin-1.4.1.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v1.4.1/siyuan-1.4.1-linux.tar.gz
+	source = siyuan-note.sh
+	source = siyuan-note.desktop
+	sha512sums = 55dfa9bbf5c08cd089d14a567f329396a7a6bad348f46e891dfbfe6c09405fc3f98b9b1b785e0a20f505e0ed0bb0c5f58e074edd2c810e9fcc709307b3d44729
+	sha512sums = 4f8f503e770c96cd376db79e4691823b5e801bc8e8c62b8da46dc743786982c978f39b07761830578806ce8aba823491f35463d14746fcd1dc3c6466b9b2901e
+	sha512sums = 633efb81231d444a0e5717d94720fa03dcfffc497fde33f554e028c315b7be131264e70ea83b9c4dae1abeaa7ca4a761aabc650f0dfb2ccfbe2737e9aec4d309
+
+pkgname = siyuan-note-bin

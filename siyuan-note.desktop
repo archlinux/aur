@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=siyuan-note
+Name[zh_CN]=思源笔记
+Exec=siyuan-note %U
+Terminal=false
+Type=Application
+Icon=siyuan-note
+StartupWMClass=siyuan-note
+Comment=A local-first personal knowledge management system
+Categories=Utility;
+Keywords=siyuan-note
