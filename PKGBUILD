@@ -10,8 +10,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=coreutils-selinux
-pkgver=8.32
-pkgrel=1
+pkgver=9.0
+pkgrel=2
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
 arch=('x86_64' 'aarch64')
 license=('GPL3')
@@ -22,11 +22,11 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 source=("https://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig}
-        backport_syscall_fix.patch)  # https://github.com/coreutils/coreutils/commit/10fcb97bd728f09d4a027eddf8ad2900f0819b0a.patch
+        '01-fix-fs72253.patch')
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
-sha256sums=('4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'
+sha256sums=('ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce'
             'SKIP'
-            'ee8ddb4e04d89089ba6022dcc736e145cf3149f8c317d3ea114485605060fe83')
+            'aefec296212c10f8ddae10225216847f537e573d80b678161f453b34fd183bf5')
 
 prepare() {
   cd ${pkgname/-selinux}-$pkgver
@@ -34,15 +34,28 @@ prepare() {
   local filename
   for filename in "${source[@]}"; do
     if [[ "$filename" =~ \.patch$ ]]; then
-      msg2 "Applying patch ${filename##*/}"
+      echo "Applying patch ${filename##*/}"
       patch -p1 -N -i "$srcdir/${filename##*/}"
     fi
   done
   :
+
+  # tail -F fails to find out that files are removed, in test VM
+  # so disable the tests which verify this
+  sed '/^  tests\/tail-2\/assert\.sh\s/d' -i tests/local.mk
+  sed '/^  tests\/tail-2\/inotify-dir-recreate\.sh\s/d' -i tests/local.mk
+
+  # some tests create directories with long name, which does not work on GitHub Actions
+  sed '/^  tests\/du\/long-from-unreadable\.sh\s/d' -i tests/local.mk
+  sed '/^  tests\/rm\/deep-2\.sh\s/d' -i tests/local.mk
 }
 
 build() {
   cd ${pkgname/-selinux}-$pkgver
+  aclocal -I m4
+  autoconf -f
+  autoheader -f
+  automake -f
   ./configure \
       --prefix=/usr \
       --libexecdir=/usr/lib \
@@ -54,7 +67,7 @@ build() {
 
 check() {
   cd ${pkgname/-selinux}-$pkgver
-  #make check
+  make check
 }
 
 package() {
