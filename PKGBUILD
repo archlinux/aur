@@ -3,7 +3,7 @@
 pkgname=python-flake8-annotations
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=2.6.2
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="A flake8 extension that checks type annotations"
 arch=('any')
@@ -11,9 +11,9 @@ url="https://github.com/sco1/flake8-annotations"
 license=('MIT')
 depends=('python' 'flake8')
 makedepends=('python-setuptools' 'python-dephell')
-#checkdepends=('python-pytest' 'python-pytest-check' 'python-pytest-cov')
+checkdepends=('python-pytest' 'python-pytest-check' 'python-pytest-cov')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('726f83f16d985525ae8a3e4b834e8d1cb0f0ce2ece3002628135f30d1562a1b9cacf3e9e0b1ecfb7037282f9911409bd0cc6a8b039cfc14051f096c9f2bf6a42')
+b2sums=('a48e9a7d6e7c44c52eeff7328c089bc5f15adde3bdd59394e8ad8313c53eced287858d8e3adcea8bf1147b9e37bf8a354ef8d92aa21cad0882d7d49d610a8ab4')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -25,17 +25,19 @@ build() {
   python setup.py build
 }
 
-#check() {
-#  cd "$_pkgname-$pkgver"
-#  pytest --ignore testing/test_flake8_actually_runs_checker.py .
-#}
+check() {
+  cd "$_pkgname-$pkgver"
+  pytest --ignore testing/test_flake8_actually_runs_checker.py .
+}
 
 package() {
   cd "$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  # license
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
-  # delete unnecessary files/folders
+  # delete tests folder
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm -rf "$pkgdir/$site_packages/testing"
 }
