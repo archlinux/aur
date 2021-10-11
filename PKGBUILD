@@ -42,7 +42,7 @@ package() {
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/vignette.desktop"
 
   # Icon
-	install -Dm644 "$pkgname.svg" "$pkgdir/usr/share/pixmaps/vignette.svg"
+  install -Dm644 "$pkgname.svg" "$pkgdir/usr/share/pixmaps/vignette.svg"
 
   # License
   install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
