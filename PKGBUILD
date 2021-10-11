@@ -24,8 +24,11 @@ pkgver() {
 build() {
   cd $srcdir/${_pkgname}
   rm -rf dist
+
   # Compile sleigh
   /opt/ghidra/support/sleigh -a data/languages
+  chmod 0644 data/languages/*.sla
+
   chmod +x gradlew
   ./gradlew -PGHIDRA_INSTALL_DIR=/opt/ghidra
 }
