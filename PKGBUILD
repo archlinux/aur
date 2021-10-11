@@ -6,7 +6,7 @@ _pkgtag=$pkgver
 pkgrel=3
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
-arch=('x86_64')
+arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'wxgtk3-dev-314-opt')
