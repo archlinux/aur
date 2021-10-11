@@ -1,6 +1,6 @@
 pkgbase = targetcli-fb
 	pkgdesc = free branch of the targetcli LIO administration shell (iSCSI + Co)
-	pkgver = 2.1.53
+	pkgver = 2.1.54
 	pkgrel = 1
 	url = https://github.com/open-iscsi/targetcli-fb
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = targetcli-fb
 	depends = python-gobject
 	optdepends = python-ethtool
 	provides = targetcli
-	source = https://github.com/open-iscsi/targetcli-fb/archive/v2.1.53.tar.gz
-	sha512sums = acefa7f8df8ee901cae8f04cbeb264d6024100e2d8b8343024bc52842af88a23d1bf5dd880ff2c77046bd8da8493630b4e357103617c02d1a90947e42c3a7c92
+	source = https://github.com/open-iscsi/targetcli-fb/archive/v2.1.54.tar.gz
+	sha512sums = dd008b8c47acc095078454c94b0c6f19ba88f86ddf1b5335eb050abf61d89ce1ffb7411ff3a174de60ed9759e6337206253aa9b2def6497b85c884a0a111308d
 
 pkgname = targetcli-fb
-
