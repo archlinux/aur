@@ -1,14 +1,10 @@
 pkgbase = vignette-git
 	pkgdesc = The open source VTuber software toolkit. ❤
-	pkgver = 2021.902.1.r6.af3df87
+	pkgver = 2021.902.1.r8.2211edf
 	pkgrel = 1
 	url = https://github.com/vignette-project/vignette
 	arch = i686
 	arch = x86_64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = Non-Profit OSL
 	makedepends = git
 	makedepends = dotnet-sdk>=5
@@ -20,11 +16,11 @@ pkgbase = vignette-git
 	depends = libgeotiff
 	source = vignette-git::git+https://github.com/vignette-project/vignette.git
 	source = vignette-git.sh
-	source = vignette-git.png
+	source = vignette-git.svg
 	source = vignette-git.desktop
 	sha256sums = SKIP
 	sha256sums = 6e5093a1e0ab26efd32cb343ed058cd779aed68ea60c750490fcbd8d83fe41f6
-	sha256sums = 1bf61c71b722bbd1e7b2f4e98af77d30ce9d5559c44fe965615dd36d8c6b3c29
-	sha256sums = da8ba30c4d5033fa63e7289ea9ca341da4e0cef514100754cc343b22c4f35d80
+	sha256sums = bb0000105fc2a0ec6ae151bb811fbca9cb12223e610406188586f0676595fd73
+	sha256sums = e5b74b7781199961214fa2b4375edd4f2391477407a7153a7db31a61bb38911d
 
 pkgname = vignette-git
