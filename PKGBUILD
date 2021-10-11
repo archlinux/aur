@@ -28,7 +28,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP') # Last one TODO
 
 # Lazarus base directory
 # Required since `~/.lazarus/environmentoptions.xml` may not contain a `LazarusDirectory` entry.
-_lazdir="${LAZDIR:-/usr/lib/lazarus}
+_lazdir="${LAZDIR:-/usr/lib/lazarus}"
 
 
 # These modules, and only them, are required to build hUGETracker.
