@@ -1,7 +1,7 @@
 pkgbase = mesa-i915g
 	pkgdesc = Mesa with i915 Gallium driver
 	pkgver = 21.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mesa3d.org/
 	arch = x86_64
 	license = custom
@@ -16,7 +16,7 @@ pkgbase = mesa-i915g
 	makedepends = zstd
 	makedepends = clang
 	makedepends = libglvnd
-	makedepends = llvm-libs
+	makedepends = llvm
 	makedepends = lm_sensors
 	makedepends = libxrandr
 	makedepends = cmake

@@ -8,11 +8,11 @@ pkgbase=mesa-i915g
 pkgname=('mesa-i915g')
 pkgdesc="Mesa with i915 Gallium driver"
 pkgver=21.2.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence'
              'wayland' 'wayland-protocols' 'zstd' 
-             'clang' 'libglvnd' 'llvm-libs' 'lm_sensors' 'libxrandr'
+             'clang' 'libglvnd' 'llvm' 'lm_sensors' 'libxrandr'
              'cmake' 'meson')
 url="https://www.mesa3d.org/"
 license=('custom')
@@ -34,7 +34,7 @@ build() {
     -D b_ndebug=true \
     -D platforms=x11,wayland \
     -D dri-drivers= \
-    -D gallium-drivers=i915 \
+    -D gallium-drivers=i915,swrast \
     -D vulkan-drivers= \
     -D vulkan-layers= \
     -D dri3=enabled \
