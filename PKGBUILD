@@ -47,7 +47,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.33.0_61_gdae9ea3fa7
+pkgver=0.33.0_360_gb3f3c3fec0
 pkgrel=1
 _waf_version=2.0.20
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
@@ -83,7 +83,7 @@ for feature in "${_opt_features[@]}"; do
       ;;
     lua)
       depends+=('lua52')
-      _opt_extra_flags+=('--enable-lua' '--lua=52arch')
+      _opt_extra_flags+=('--enable-lua' '--lua=lua52')
       ;;
     luajit)
       depends+=('luajit')

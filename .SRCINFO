@@ -1,6 +1,6 @@
 pkgbase = mpv-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (git version)
-	pkgver = 0.33.0_61_gdae9ea3fa7
+	pkgver = 0.33.0_360_gb3f3c3fec0
 	pkgrel = 1
 	url = https://mpv.io
 	install = mpv.install
