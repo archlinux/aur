@@ -45,5 +45,9 @@ pkgbase = alchemy-next-viewer
 	source = alchemy-next.desktop
 	md5sums = SKIP
 	md5sums = 6d65e849f37a05b8684d99185feaa07c
+	sha256sums = SKIP
+	sha256sums = d4eb1a048c26a17d5ab64c8961c1340007ba82502b88638cdf89f0af32ee3d50
+	b2sums = SKIP
+	b2sums = 479bfaa80a807e81bda2a27fc44a330feb996272e5b99f4581ef516946d7d67fc20be8eb5f2ae41a2dc5afbf3dd448cb582c5fa3e123e83c92945aa35f2f009f
 
 pkgname = alchemy-next-viewer
