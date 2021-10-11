@@ -30,7 +30,8 @@ checkdepends=('linux')
 optdepends=('ocaml: OCaml Bindings'
             'python: Python Bindings'
             'gobject-introspection: GObject-Introspection Bindings')
-provides=('libguestfs.so' 'libguestfs-gobject-1.0.so')
+provides=('libguestfs' 'libguestfs.so' 'libguestfs-gobject-1.0.so')
+conflicts=('libguestfs')
 backup=('etc/libguestfs-tools.conf'
         'etc/xdg/virt-builder/repos.d/libguestfs.conf'
         'etc/xdg/virt-builder/repos.d/libguestfs.gpg'
