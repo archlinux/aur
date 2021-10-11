@@ -30,6 +30,8 @@ package() {
   done
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm755 "${pkgname}-${_build}.jar" "${pkgdir}/usr/share/java/${_pkgname}/Mindustry.jar"
+  echo "WARNING: On the first run required .JARs will be created in the game's directorty,"
+  echo "WARNING: thus requires to run it with root permissions."
 }
 
 sha256sums=('3b877f309270685ce2ebaaca32ec6a4880aa6eb29fbfc7c7e7243b8ac60da202'
