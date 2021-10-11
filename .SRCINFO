@@ -1,7 +1,7 @@
 pkgbase = quran-rofi
 	pkgdesc = Al-Quran dengan Terjemahan Indonesia
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nesstero/Al-Quran-Rofi
 	arch = any
 	license = MIT
