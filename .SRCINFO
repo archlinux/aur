@@ -1,15 +1,14 @@
 pkgbase = ruby-classifier
 	pkgdesc = A general classifier module to allow Bayesian and other types of classifications.
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = http://classifier.rufy.com/
 	arch = any
 	depends = ruby
 	depends = ruby-fast-stemmer
-	noextract = classifier-1.3.4.gem
+	noextract = classifier-1.3.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/classifier-1.3.4.gem
-	sha512sums = b59fe17f7fe508d5f26584e14d5cd89eed8f77756b75a65adf2512116d0a67b716d14c2f742270fd14765567079a88264f5e1afe49d3865403814c4bdaf8f2f1
+	source = https://rubygems.org/downloads/classifier-1.3.5.gem
+	sha512sums = f8efb9fb2d3c157d8893454913b32221b6dfc0bcd489a9290e2ac797f72ca3cbea6c33ceacb00187280a79989a377cb22256c4d33093e8b357027c8f8b275d33
 
 pkgname = ruby-classifier
-
