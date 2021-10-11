@@ -1,61 +1,85 @@
-# Maintainer: Rod Kay   <charlie5 on #ada at freenode.net>
+# Maintainer: Rod Kay   <rodakay5 at gmail dot com>
 
 pkgname=ada-web-server
-pkgver=2020
-pkgrel=2
-pkgdesc="A complete embeddable Web application framework for Ada."
+pkgver=2021
+pkgrel=1
+pkgdesc="A complete embeddable web application framework for Ada."
 
 arch=(i686 x86_64)
 url=http://libre.adacore.com/tools/aws
 license=(GPL)
 groups=(gcc-ada)
 
-depends=('gcc-ada')
-makedepends=(gprbuild texlive-bin)
+depends=(gcc-ada)
+makedepends=(git gprbuild texlive-bin python-sphinx)
 
 provides=(aws)
 
-source=('https://community.download.adacore.com/v1/61134515bc9fc53a3ccc6c6f0097cb95e2b0722e?filename=aws-20.0w-20190801-155D3-src.tar.gz'
-        'aws-net-acceptors.adb-patch'
-        'aws-server.adb-patch'
-        'aws-server-hotplug.adb-patch')
-sha1sums=('61134515bc9fc53a3ccc6c6f0097cb95e2b0722e'
-          'e67c1264c9e4d03b5aa793edca97eb98b6fd813c'
-          'ad5d8f554910747598325bdf4d8171bc03b1c6f3'
-          '01b054021747ba83f3e69e78b71b2a59c074bb06')
+source=('git+https://github.com/AdaCore/aws#commit=5ddd74408d86363411714957baad72be76012b35'
+        'git+https://github.com/AdaCore/templates-parser#commit=2ed90c02deb53d5e453e62a4105354a9497c9ecd')
+sha1sums=('SKIP'
+          'SKIP')
 
 
 prepare()
 {
-    cd $srcdir/aws-20.0w-20190801-155D3-src
-    
-    patch -p1 < "$srcdir/aws-net-acceptors.adb-patch"
-    patch -p1 < "$srcdir/aws-server.adb-patch"
-    patch -p1 < "$srcdir/aws-server-hotplug.adb-patch"
+    cd $srcdir/aws
+
+    rmdir templates_parser
+    ln -s "$srcdir/templates-parser" templates_parser
 }
 
 
 build() 
 {
-    cd $srcdir/aws-20.0w-20190801-155D3-src
+    cd $srcdir/aws/templates_parser
 
-    export BUILD_MODE=prod
-    export LIBRARY_TYPE=static
-    export LIBADALANG_LIBRARY_TYPE=relocatable
-    export LANGKIT_SUPPORT_LIBRARY_TYPE=relocatable
-    export BUILD=relocatable
-    
-    make setup
-    make build
+    make DEBUG=false prefix=/usr setup 
+    make -j1 DEBUG=false build
 
     cd docs
-    make SPHINXBUILD=sphinx-build2 html
+    mkdir -p build
+    make -j1 html latexpdf
+
+
+    cd $srcdir/aws
+
+    make prefix=/usr setup
+    make -j1 build
+
+    cd $srcdir/aws/docs
+    make -j1 html latexpdf
 }
 
 
 package() 
 {
-    cd $srcdir/aws-20.0w-20190801-155D3-src
+    cd $srcdir/aws/templates_parser
+    make -j1 DEBUG=false DESTDIR="$pkgdir" install
 
-    make DESTDIR="$pkgdir" install
+    cd $srcdir/aws
+    make -j1 DESTDIR="$pkgdir" install
+
+
+   # Install the license.
+   install -D -m644     \
+      "COPYING3"        \
+      "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+
+   # Install the custom license.
+   install -D -m644     \
+      "COPYING.RUNTIME" \
+      "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+
+
+   # Install the templates-parser license.
+   install -D -m644     \
+      "COPYING3"        \
+      "$pkgdir/usr/share/licenses/templates-parser/COPYING3"
+
+   # Install the templates-parser custom license.
+   install -D -m644     \
+      "COPYING.RUNTIME" \
+      "$pkgdir/usr/share/licenses/templates-parser/COPYING.RUNTIME"
+
 }

@@ -1,24 +1,21 @@
 pkgbase = ada-web-server
-	pkgdesc = A complete embeddable Web application framework for Ada.
-	pkgver = 2020
-	pkgrel = 2
+	pkgdesc = A complete embeddable web application framework for Ada.
+	pkgver = 2021
+	pkgrel = 1
 	url = http://libre.adacore.com/tools/aws
 	arch = i686
 	arch = x86_64
 	groups = gcc-ada
 	license = GPL
+	makedepends = git
 	makedepends = gprbuild
 	makedepends = texlive-bin
+	makedepends = python-sphinx
 	depends = gcc-ada
 	provides = aws
-	source = https://community.download.adacore.com/v1/61134515bc9fc53a3ccc6c6f0097cb95e2b0722e?filename=aws-20.0w-20190801-155D3-src.tar.gz
-	source = aws-net-acceptors.adb-patch
-	source = aws-server.adb-patch
-	source = aws-server-hotplug.adb-patch
-	sha1sums = 61134515bc9fc53a3ccc6c6f0097cb95e2b0722e
-	sha1sums = e67c1264c9e4d03b5aa793edca97eb98b6fd813c
-	sha1sums = ad5d8f554910747598325bdf4d8171bc03b1c6f3
-	sha1sums = 01b054021747ba83f3e69e78b71b2a59c074bb06
+	source = git+https://github.com/AdaCore/aws#commit=5ddd74408d86363411714957baad72be76012b35
+	source = git+https://github.com/AdaCore/templates-parser#commit=2ed90c02deb53d5e453e62a4105354a9497c9ecd
+	sha1sums = SKIP
+	sha1sums = SKIP
 
 pkgname = ada-web-server
-
