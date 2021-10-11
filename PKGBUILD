@@ -2,18 +2,18 @@
 
 _pkgname=Ghidra-Switch-Loader
 pkgname=ghidra-extension-switch-loader-git
-pkgver=1.4.0.r3.g62dfd37
+pkgver=1.4.0.r4.g7ffbbf5
 pkgrel=1
 pkgdesc="A Nintendo Switch binary loader for Ghidra"
 arch=('any')
-url=https://github.com/encounter/${_pkgname}
+url=https://github.com/Adubbz/${_pkgname}
 license=('Apache 2.0')
 provides=()
 conflicts=()
 depends=('ghidra')
 makedepends=('git' 'unzip')
 optdepends=()
-source=("$_pkgname::git+${url}#branch=fix")
+source=("$_pkgname::git+${url}#branch=master")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -24,6 +24,7 @@ pkgver() {
 build() {
   cd $srcdir/${_pkgname}
   rm -rf dist
+  chmod +x gradlew
   ./gradlew -PGHIDRA_INSTALL_DIR=/opt/ghidra
 }
 
