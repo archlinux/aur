@@ -1,7 +1,7 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=securefs
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A better transparent encryption filesystem"
 arch=('i686' 'x86_64')
