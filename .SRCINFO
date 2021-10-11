@@ -1,0 +1,16 @@
+pkgbase = sacc
+	pkgdesc = sacc(omys), simple console gopher client with TLS support
+	pkgver = 1.04
+	pkgrel = 1
+	url = gopher://bitreich.org/1/scm/sacc
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = ISC
+	depends = libretls
+	depends = ncurses
+	source = ftp://bitreich.org/releases/sacc/sacc-1.04.tgz
+	sha512sums = d3ca4841e5c1d0cbaf16b92ba066d59abb2c4daa465943c69c917145d92f94b9d68ca2c25bc18ac8c04cf052e13e695d1d31f6b360a9c8fcbe2a6651e7e82e73
+
+pkgname = sacc
