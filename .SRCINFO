@@ -1,12 +1,13 @@
 pkgbase = solana-bin
 	pkgdesc = Solana CLI tools
 	pkgver = 1.7.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://solana.com
 	arch = x86_64
 	license = Apache
 	depends = openssl
 	depends = systemd-libs
+	optdepends = bash-completion: for tab completion
 	provides = solana
 	conflicts = solana
 	source = solana-1.7.15.tar.bz2::https://github.com/solana-labs/solana/releases/download/v1.7.15/solana-release-x86_64-unknown-linux-gnu.tar.bz2
