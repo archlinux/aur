@@ -2,7 +2,7 @@
 
 pkgname=sysz
 pkgver=1.4.2
-pkgrel=0
+pkgrel=1
 pkgdesc="fzf terminal UI for systemctl"
 arch=("any")
 url="https://github.com/joehillen/sysz"
