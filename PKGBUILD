@@ -1,4 +1,4 @@
-# Maintainer: MischievousTomato <mischievoustomato at gmail dot com>
+# Maintainer: MischievousTomat <mischievoustomato at protonmail dot com>
 # Contributor: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
