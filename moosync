@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron13 /usr/lib/moosync/app.asar "$@"
+exec electron /usr/lib/moosync/app.asar "$@"

@@ -14,7 +14,7 @@ pkgbase = moosync
 	source = moosync
 	source = moosync.desktop
 	sha256sums = SKIP
-	sha256sums = 76fa98490ebc9c5b2e29a11b4a2abf72080a44903ae3dd53a8c0ff65ff5eee6b
+	sha256sums = e24c5f462072ff450c74ef6af0671d3e0cafc426735932b487d00a03b46acc8f
 	sha256sums = fe482568ab2cde3025477e9197f15a615ed81531a2fbf7b1a2f2f47645afa282
 
 pkgname = moosync
