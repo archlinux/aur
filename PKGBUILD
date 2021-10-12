@@ -1,15 +1,16 @@
 # Maintainer: Todd E Johnson <todd@toddejohnson.net>
+options=(debug !strip) 
 pkgname=trunk-recorder-git
-pkgver=r1546.bd4975d
+pkgver=r1612.ba6959f
 pkgrel=1
 pkgdesc="Records calls from a Trunked Radio System (P25 & SmartNet)"
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
 url="https://github.com/robotastic/trunk-recorder"
 license=("GPL3")
-depends=("gnuradio" "gnuradio-osmosdr" "libuhd" "boost-libs" "sox" "fdkaac")
-makedepends=("git" "cmake" "boost")
+depends=("gnuradio" "gnuradio-osmosdr" "libuhd" "boost" "boost-libs" "sox" "fdkaac")
+makedepends=("git" "cmake" "cppunit")
 optdepends=()
-source=(${pkgname}::git+"https://github.com/robotastic/trunk-recorder.git#branch=4.0-beta"
+source=(${pkgname}::git+"https://github.com/robotastic/trunk-recorder.git"
   'trunk-recorder.service'
   'trunk-recorder.sysusers'
   'trunk-recorder.tmpfiles')
@@ -28,9 +29,11 @@ prepare() {
   mkdir build
 }
 build() {
+  CFLAGS=${CFLAGS/-fvar-tracking-assignments}
+  CXXFLAGS=${CXXFLAGS/-fvar-tracking-assignments}
   cd build
   cmake "../${pkgname}" \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_INSTALL_PREFIX=/usr
   make -j $(nproc)
 }

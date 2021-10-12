@@ -1,6 +1,6 @@
 pkgbase = trunk-recorder-git
 	pkgdesc = Records calls from a Trunked Radio System (P25 & SmartNet)
-	pkgver = r1546.bd4975d
+	pkgver = r1612.ba6959f
 	pkgrel = 1
 	url = https://github.com/robotastic/trunk-recorder
 	arch = x86_64
@@ -12,14 +12,17 @@ pkgbase = trunk-recorder-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = boost
+	makedepends = cppunit
 	depends = gnuradio
 	depends = gnuradio-osmosdr
 	depends = libuhd
+	depends = boost
 	depends = boost-libs
 	depends = sox
 	depends = fdkaac
-	source = trunk-recorder-git::git+https://github.com/robotastic/trunk-recorder.git#branch=4.0-beta
+	options = debug
+	options = !strip
+	source = trunk-recorder-git::git+https://github.com/robotastic/trunk-recorder.git
 	source = trunk-recorder.service
 	source = trunk-recorder.sysusers
 	source = trunk-recorder.tmpfiles
