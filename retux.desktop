@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Retux
-Comment=Game based on the SuperTux.
-Categories=Game;ArcadeGame;
-Exec=/usr/games/retux
+Type=Application
+Name=ReTux
+Comment=ReTux is a libre open source action platformer loosely inspired by the Mario games, utilizing the art assets from the SuperTux project.
+Categories=Game;Platform;
+Exec=retux
 Hidden=false
 Terminal=false
-Type=Application
-Icon=/usr/share/icons/retux.png
+Icon=retux

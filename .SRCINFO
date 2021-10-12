@@ -1,15 +1,22 @@
 pkgbase = retux
-	pkgdesc = Game based on the SuperTux.
-	pkgver = 1.3.6
-	pkgrel = 0
-	url = http://retux.nongnu.org/
+	pkgdesc = ReTux is a libre open source action platformer loosely inspired by the Mario games, utilizing the art assets from the SuperTux project.
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://retux-game.github.io/
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = python
-	source = http://download.savannah.gnu.org/releases/retux/1.3/retux-1.3.6-linux-gnu-x86_64.tar.gz
+	depends = python-pip
+	depends = python-pygame
+	provides = retux
+	conflicts = retux
+	conflicts = retux-bin
+	noextract = retux-1.6-src.zip
+	source = https://github.com/retux-game/retux/releases/download/v1.6/retux-1.6-src.zip
 	source = retux.desktop
-	sha512sums = 2253cd6ca604d15318a7a97038aef28ca487f68c752772efd5eb72c05f4be8838f5ec5e0f3578d8aea3797187622c0d5a2d255c3cde00e03422de2389eeb10a8
-	sha512sums = 1e1f55e571be598dabdb33434d56b166fcefe58168ea07ef1d23b20892b49ee2019625eb92fd265e851350d6baec91167f3b941bc6525f94500cd7dda03536d8
+	source = retux.sh
+	md5sums = 0696719cc65b4fc3f58037028aa8c9be
+	md5sums = 8e2937a7627804a6a079a9cce4dda3fa
+	md5sums = a8273ca35254ba6394cbd5f2ff55c2e5
 
 pkgname = retux
-
