@@ -21,7 +21,7 @@ source=("jameica-start-script.patch" "jameicaserver-start-script.patch"
         "jameica.desktop")
 sha1sums=('7c1cf5a2584b18bc3682475faeb1a045e3cd7328'
           '0664650342635fa5b0a9413dc8c22a65053ef234'
-          'e0ca3ab514a3ea7d94804aa2827cdf43a5abb410')
+          '79eb66782c0e37f1538ca29ce87580aa3bb4e444')
 sha1sums_i686=('c5e9e972fc96a1e2499fc7174da89d50a24732e1'
                'SKIP')
 sha1sums_x86_64=('108fdc342b98690c36df4df9e2d810414743ab1d'

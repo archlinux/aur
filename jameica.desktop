@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/usr/share/java/jameica/jameica.sh
+Exec=/usr/bin/jameica
 Type=Application
 Terminal=false
 Icon=/usr/share/java/jameica/jameica-icon.png
