@@ -1,16 +1,17 @@
 pkgbase = arm-linux-gnueabihf-glibc-headers
 	pkgdesc = GNU C Library headers (arm-linux-gnueabihf)
 	pkgver = 2.33
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = arm-linux-gnueabihf-gcc-stage1>=11.1.0-1
+	makedepends = arm-linux-gnueabihf-gcc-stage1>=11.2.0-2
 	makedepends = python
-	depends = arm-linux-gnueabihf-linux-api-headers>=5.10.9-2
+	depends = arm-linux-gnueabihf-linux-api-headers>=5.14.9-1
 	options = !buildflags
 	options = !strip
+	options = !lto
 	options = staticlibs
 	options = debug
 	source = https://ftp.gnu.org/gnu/glibc/glibc-2.33.tar.xz
@@ -27,4 +28,3 @@ pkgbase = arm-linux-gnueabihf-glibc-headers
 	md5sums = cfe57018d06bf748b8ca1779980fef33
 
 pkgname = arm-linux-gnueabihf-glibc-headers
-
