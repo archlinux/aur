@@ -5,7 +5,7 @@ pre_install() {
 pre_upgrade() {
   cat << EOF
 
-  This package requires java-runtime>= 14, if you have multiple jdks installed
+  This package requires java-runtime>= 16, if you have multiple jdks installed
   please ensure the correct one is set;
 
   # archlinux-java set java-16-openjdk
