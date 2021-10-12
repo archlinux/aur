@@ -1,7 +1,7 @@
-From ebd3ff7e39c487718312a378637bb060cd8a1500 Mon Sep 17 00:00:00 2001
+From 2d1ba361d4a267a9fcd85479311d428cba361be5 Mon Sep 17 00:00:00 2001
 From: Norihiro Kamae <norihiro@nagater.net>
 Date: Mon, 11 Oct 2021 13:59:56 +0900
-Subject: [PATCH] linux-pulseaudio: Fix monitoring volume for s32 format
+Subject: [PATCH 1/2] linux-pulseaudio: Fix monitoring volume for s32 format
 
 When signed 32-bit audio arrived to pulseaudio-output and volume was
 lowered, audio data was broken. In the function `process_volume`, the
@@ -11,17 +11,15 @@ signed 32-bit integer and the size of float are same so that the signed
 This commit changes these items.
 - Use `format` instead of `bytes_per_channel` so that all the sample
   types can be differentiated.
-- Change `char` to `uint8_t` in `process_byte` because the type is
-  expected unsigned 8-bit.
 - Change `short` to `int16_t` and renames existing function
   `process_short` to `process_s16` to clarify the function is
   processing signed 16-bit.
 ---
- .../pulse/pulseaudio-output.c                 | 41 ++++++++++++-------
- 1 file changed, 27 insertions(+), 14 deletions(-)
+ .../pulse/pulseaudio-output.c                 | 37 +++++++++++++------
+ 1 file changed, 25 insertions(+), 12 deletions(-)
 
 diff --git a/libobs/audio-monitoring/pulse/pulseaudio-output.c b/libobs/audio-monitoring/pulse/pulseaudio-output.c
-index 9abfcd78b4e..f84a8913475 100644
+index 9abfcd78b4e..788b579a4d6 100644
 --- a/libobs/audio-monitoring/pulse/pulseaudio-output.c
 +++ b/libobs/audio-monitoring/pulse/pulseaudio-output.c
 @@ -22,7 +22,6 @@ struct audio_monitor {
@@ -32,16 +30,7 @@ index 9abfcd78b4e..f84a8913475 100644
  
  	bool ignore;
  	pthread_mutex_t playback_mutex;
-@@ -127,17 +126,26 @@ static pa_channel_map pulseaudio_channel_map(enum speaker_layout layout)
- 
- static void process_byte(void *p, size_t frames, size_t channels, float vol)
- {
--	register char *cur = (char *)p;
--	register char *end = cur + frames * channels;
-+	register uint8_t *cur = (uint8_t *)p;
-+	register uint8_t *end = cur + frames * channels;
- 
- 	while (cur < end)
+@@ -134,10 +133,19 @@ static void process_byte(void *p, size_t frames, size_t channels, float vol)
  		*(cur++) *= vol;
  }
  
@@ -106,3 +95,35 @@ index 9abfcd78b4e..f84a8913475 100644
  	monitor->speakers = pulseaudio_channels_to_obs_speakers(spec.channels);
  	monitor->bytes_per_frame = pa_frame_size(&spec);
  
+
+From 933c251604d71946b92941cf96c4965c3ac5853b Mon Sep 17 00:00:00 2001
+From: Norihiro Kamae <norihiro@nagater.net>
+Date: Tue, 12 Oct 2021 09:37:09 +0900
+Subject: [PATCH 2/2] linux-pulseaudio: Fix monitoring volume for u8 format
+
+Change `char` to `uint8_t` in `process_byte` because the type is
+expected unsigned 8-bit.
+---
+ libobs/audio-monitoring/pulse/pulseaudio-output.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/libobs/audio-monitoring/pulse/pulseaudio-output.c b/libobs/audio-monitoring/pulse/pulseaudio-output.c
+index 788b579a4d6..4346c22d435 100644
+--- a/libobs/audio-monitoring/pulse/pulseaudio-output.c
++++ b/libobs/audio-monitoring/pulse/pulseaudio-output.c
+@@ -126,11 +126,11 @@ static pa_channel_map pulseaudio_channel_map(enum speaker_layout layout)
+ 
+ static void process_byte(void *p, size_t frames, size_t channels, float vol)
+ {
+-	register char *cur = (char *)p;
+-	register char *end = cur + frames * channels;
++	register uint8_t *cur = (uint8_t *)p;
++	register uint8_t *end = cur + frames * channels;
+ 
+-	while (cur < end)
+-		*(cur++) *= vol;
++	for (; cur < end; cur++)
++		*cur = ((int)*cur - 128) * vol + 128;
+ }
+ 
+ static void process_s16(void *p, size_t frames, size_t channels, float vol)
