@@ -3,6 +3,11 @@
 ### BUILD OPTIONS
 # Set the next two variables to ANYTHING that is not null to enable them
 
+# Selecting CacULE or CacULE-RDB scheduler, default:cacule
+_cpusched='cacule'
+#_cpusched='rdb'
+
+
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
@@ -56,7 +61,7 @@ _use_optimization_select=
 # ATTENTION - one of two predefined values should be selected!
 # 'ultra' - highest compression ratio
 # 'normal' - standard compression ratio
-_zstd_level='normal'
+_zstd_level='ultra'
 
 ### Selecting the ZSTD module compression level
 # If you want to use ZSTD compression,
@@ -108,15 +113,19 @@ _use_current=
 _makenconfig=
 
 
-if [ -n "$_use_llvm_lto" ]; then
+if [ "$_cpusched" = "cacule" ]  && [ -n "$_use_llvm_lto" ]; then
 pkgbase=linux-cacule-lto
-else
+elif  [ "$_cpusched" = "rdb" ] && [ -n "$_use_llvm_lto" ]; then
+pkgbase=linux-cacule-rdb-lto
+elif [ "$_cpusched" = "cacule" ]; then
 pkgbase=linux-cacule
+elif [ "$_cpusched" = "rdb" ]; then
+pkgbase=linux-cacule-rdb
 fi
 pkgver=5.14.11
-pkgrel=1
+pkgrel=3
 arch=(x86_64 x86_64_v3)
-pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
+pkgdesc='Linux-cacule Kernel by CachyOS and with some other patches and other improvements'
 _gittag=v${pkgver%.*}-${pkgver##*.}
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/ptr1337/linux-cacule"
@@ -134,6 +143,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
 #        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/arch-patches-v10/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14-full.patch"
+        "${_patchsource}/0001-CK-TIMER.patch"
+        "${_patchsource}/misc/0008-remove-LightNVM.patch"
         "${_patchsource}/misc/amd/0006-amd-cppc.patch"
         "${_patchsource}/misc/zen-tweaks-cacule.patch"
         "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
@@ -142,22 +153,22 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
-        "${_patchsource}/btrfs-patches-v6/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v7/0001-btrfs-patches.patch"
         "${_patchsource}/fixes-miscellaneous-v6/0001-fixes-miscellaneous.patch"
         "${_patchsource}/futex-xanmod-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-xanmod-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
-        "${_patchsource}/ksmbd-patches-v15/0001-ksmbd-patches.patch"
+        "${_patchsource}/ksmbd-patches-v17/0001-ksmbd-patches.patch"
         "${_patchsource}/hwmon-patches/0001-hwmon-patches.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
-        "${_patchsource}/lru-patches-v3/0001-lru-patches.patch"
+        "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
         "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
         "${_patchsource}/zen-patches-v3/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/security-patches/0001-security-patches.patch"
         "${_patchsource}/zstd-dev-patches-v6/0001-zstd-dev-patches.patch"
-        "${_patchsource}/ntfs3-patches-v13/0001-ntfs3-patches.patch"
+        "${_patchsource}/ntfs3-patches-v14/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-ksm.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
@@ -365,11 +376,19 @@ prepare() {
           if [ -n "$_use_llvm_lto" ]; then
             scripts/config --disable CONFIG_LTO_NONE
           fi
+          if [ "$_cpusched" = "cacule" ]; then
       		echo "Selecting CacULE scheduler..."
       		scripts/config --disable CONFIG_SCHED_ALT
       		scripts/config --enable CONFIG_CACULE_SCHED
       		scripts/config --disable CONFIG_CACULE_RDB
-
+          fi
+          if [ "$_cpusched" = "rdb" ]; then
+    		  echo "Enabling CacULE-RDB scheduler..."
+    		  scripts/config --disable CONFIG_SCHED_ALT
+    		  scripts/config --enable CONFIG_CACULE_SCHED
+    		  scripts/config --enable CONFIG_CACULE_RDB
+    		  scripts/config --set-val CONFIG_RDB_INTERVAL 19
+        fi
 
         ### Enable SMB3 Kernel Server
     	  if [ -n "$_ksmbd_enable" ]; then
@@ -429,13 +448,18 @@ prepare() {
 		echo "Enabling FULLCONENAT..."
 		scripts/config --module CONFIG_IP_NF_TARGET_FULLCONENAT
 		scripts/config --module CONFIG_NETFILTER_XT_TARGET_FULLCONENAT
-    echo "Setting performance governor..."
-    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
-    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
-    scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
-    scripts/config --enable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
-    scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
-    scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+    echo "Enable CFS ZENIFY"
+  	scripts/config --enable CONFIG_ZEN_INTERACTIVE
+   echo "Setting performance governor..."
+   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+   scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
+   scripts/config --enable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+   scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
+   scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+   echo "Enable AMD PSTATE v3 driver"
+   scripts/config --enable CONFIG_X86_AMD_PSTATE
+
 
 
     ### Optionally disable NUMA for 64-bit kernels only
@@ -488,7 +512,7 @@ build() {
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Build failed! \E[0m"
     exit 1
   )
-    make ${BUILD_FLAGS[*]} all
+    make ${BUILD_FLAGS[*]} -j$(nproc) all
 }
 
 _package() {
@@ -611,9 +635,11 @@ _package-headers() {
 }
 
 md5sums=('0eba0d3a75f56ddbbb0f4265b35724c3'
-         '69a04dedf4ecc005786ec50b9944495b'
+         'e2d5c8ee1654b4076fcf9f4b0d7ffa10'
          '581faf85cd625c41bbdd0cadbd0e451e'
          '024a0126cfcd18e000a2241f35c4d69e'
+         '04c5865e765e07cff0649824c2a8d810'
+         'eb39a5681a153f5a1f5a67e8b9e957a5'
          '430972ae1e936f99d8dc2a1f4fdaf774'
          '9d7612159f8745044254077ce8a76df6'
          'f8e172e9ea554bbb1053eb122c3ace35'
@@ -622,27 +648,28 @@ md5sums=('0eba0d3a75f56ddbbb0f4265b35724c3'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
-         '2ea9f8bab423cc6fdd9ff9c04006ccb6'
+         'cb9f92bf2ce143d5552dc89b037fb1f7'
          'f364618bad6154856085c7025d388d3b'
          'fd934f7d11131d5a5043e4aea640583b'
          '8a96c5e8346bd5b430776ac8a41f96b0'
-         '061b79958d812923886984d7b0853149'
+         'f71331c247285499ca42b63d707831a6'
          'bad682a72d2549f409caea361fb0456f'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '366c90b64f9582c0733b8fb607a07594'
-         '8e2219f09adfe049b3e8b59fb8c4348a'
+         '8adcaccbb5c0ebd4bc81144e16b92627'
          '607228871a4127c31baae7b1d66866bc'
          '28864f14bf33bad92e57bc48bc5c2c78'
          'cfef1423ad1e6aecad63f0d5eacaea37'
          '808981a36c81165953017e5e432c1fa1'
          'f6a1c51adfc68fb7b52dc5715a9cb5a7'
          '97d9c9da437152c2f1161e5da5b5d7d4'
-         '82c0c2242d2a9d317b2601380f87488a'
+         '0636779d32ba47bda25d3edb5fbd08c9'
          '566435a0444ee45816599f2e0e362c7a'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
          '21c98f19e883879dd3336c1fa143fd31')
+
 pkgname=("$pkgbase" "$pkgbase-headers" )
       for _p in "${pkgname[@]}"; do
             eval "package_$_p() {
