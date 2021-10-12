@@ -8,6 +8,6 @@ pkgbase = sysz
 	depends = bash
 	depends = fzf
 	source = sysz-1.4.3.tar.gz::https://github.com/joehillen/sysz/archive/refs/tags/1.4.3.tar.gz
-	sha256sums = 3fa5997bfa83bccc2acfaaa5f652135e6382d5f7f86efe05f0ba0def817b0466
+	sha256sums = 186a650a1539005749df7b0c186328acc7a18bd7549d1a6279c26044d67ec0ef
 
 pkgname = sysz
