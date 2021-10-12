@@ -1,6 +1,7 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=snapgene-viewer
-pkgver=5.1.7
+pkgver=5.3.2
 pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')

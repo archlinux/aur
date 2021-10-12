@@ -1,12 +1,11 @@
 pkgbase = snapgene-viewer
 	pkgdesc = Software for plasmid mapping, primer design, and restriction site analysis
-	pkgver = 5.1.7
+	pkgver = 5.3.2
 	pkgrel = 1
 	url = http://www.snapgene.com/products/snapgene_viewer/
 	arch = x86_64
 	license = custom
-	source = https://cdn.snapgene.com/downloads/SnapGeneViewer/5.x/5.1/5.1.7/snapgene_viewer_5.1.7_linux.rpm
+	source = https://cdn.snapgene.com/downloads/SnapGeneViewer/5.x/5.3/5.3.2/snapgene_viewer_5.3.2_linux.rpm
 	sha512sums = SKIP
 
 pkgname = snapgene-viewer
-
