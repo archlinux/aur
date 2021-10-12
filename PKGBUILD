@@ -1,8 +1,8 @@
-# Maintainer: ml <>
+# Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 # Contributor: Thomas Hobson <thomas /at/ hexf.me>
 pkgname=chart-testing
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI tool for linting and testing Helm charts'
 arch=('x86_64' 'aarch64' 'armv6h')
 url='https://github.com/helm/chart-testing'

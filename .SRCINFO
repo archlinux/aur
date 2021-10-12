@@ -1,7 +1,7 @@
 pkgbase = chart-testing
 	pkgdesc = CLI tool for linting and testing Helm charts
 	pkgver = 3.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/helm/chart-testing
 	arch = x86_64
 	arch = aarch64
