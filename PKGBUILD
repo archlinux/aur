@@ -6,7 +6,7 @@ _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
 pkgver=v0.5.3.1.r524.g17d1cad6
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
@@ -52,7 +52,8 @@ build() {
         --output          "./$_pkgname/out"         \
         /p:VersionPrefix="$PREFIX"                  \
         /p:SuppressNETCoreSdkPreviewMessage=true    \
-        /p:PublishTrimmed=false
+        /p:PublishTrimmed=false                     \
+        /p:DebugType=None /p:DebugSymbols=false
 
     dotnet publish        OpenTabletDriver.Console  \
         --configuration   Release                   \
@@ -63,7 +64,8 @@ build() {
         --version-suffix  "$SUFFIX"                 \
         /p:VersionPrefix="$PREFIX"                  \
         /p:SuppressNETCoreSdkPreviewMessage=true    \
-        /p:PublishTrimmed=false
+        /p:PublishTrimmed=false                     \
+        /p:DebugType=None /p:DebugSymbols=false
 
     dotnet publish        OpenTabletDriver.UX.Gtk   \
         --configuration   Release                   \
@@ -74,7 +76,8 @@ build() {
         --version-suffix  "$SUFFIX"                 \
         /p:VersionPrefix="$PREFIX"                  \
         /p:SuppressNETCoreSdkPreviewMessage=true    \
-        /p:PublishTrimmed=false
+        /p:PublishTrimmed=false                     \
+        /p:DebugType=None /p:DebugSymbols=false
 
     dotnet build          OpenTabletDriver.Tools.udev \
         --configuration   Release                   \
@@ -94,7 +97,7 @@ package() {
     install -do root "$pkgdir/usr/share/$_pkgname"
 
     cd "$srcdir/$_pkgname/$_pkgname/out"
-    for binary in *.dll *.json *.pdb; do
+    for binary in *.dll *.json; do
         install -Dm 755 -o root "$binary" -t "$pkgdir/usr/share/$_pkgname"
     done
     cd "$srcdir"
