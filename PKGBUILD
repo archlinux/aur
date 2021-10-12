@@ -5,7 +5,7 @@
 
 # Maintainer: Moritz Sokoll <moritz@sokoll.com>
 pkgname=vct
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="a vocabulary trainer written in rust"
@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://gitlab.sokoll.com/moritz/vct/-/archive/main/vct-main.tar.gz")
 noextract=()
-sha256sums=("4bf96d4f40ef0530f35de21ea54438eaab067575c0c379c6b2d39d93c4fe3f27")
+sha256sums=("a119222385df63b6951e5a7fc1f80979a6d5a4a24460bd3913e9ede58f600f4c")
 validpgpkeys=()
 
 build() {
