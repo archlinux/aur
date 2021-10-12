@@ -1,36 +1,29 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libidn
-pkgver=1.36
+pkgver=1.38
 pkgrel=1
 pkgdesc="Implementation of the Stringprep, Punycode and IDNA specifications (mingw-w64)"
 arch=(any)
-url="http://www.gnu.org/software/libidn"
+url="https://www.gnu.org/software/libidn"
 license=("GPL3, LGPL")
 makedepends=('gettext' 'autoconf-archive' 'mingw-w64-configure')
 depends=('mingw-w64-crt' 'mingw-w64-gettext')
 options=(staticlibs !strip !buildflags)
-source=("http://ftp.gnu.org/gnu/libidn/libidn-${pkgver}.tar.gz"
-        "0002-fix-gdoc.all.patch"
+source=("https://ftp.gnu.org/gnu/libidn/libidn-${pkgver}.tar.gz"
         "0003-nfkc.c-Fix-Win64-crash.patch"
         "0004-nfkc.c-Fixed-invalid-var-types.patch")
-sha256sums=('14b67108344d81ba844631640df77c9071d9fb0659b080326ff5424e86b14038'
-            '02d9b9e6e3f966cff2d4d763c0de9219da6c8cf444248011caa8eb2fb3067a24'
+sha256sums=('de00b840f757cd3bb14dd9a20d5936473235ddcba06d4bc2da804654b8bbf0f6'
             '6293c730a98af32a337149a95d848f3c4619df8dc367e0bf0251a509b09f5963'
             '8ae6ad9513fc11bd79cb1ab73f187cb8297bdabd21a2aef3b6526ca17810eda9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare() {
-  
+prepare() {  
   cd "${srcdir}"/libidn-${pkgver}
 
-  patch -p1 -i ${srcdir}/0002-fix-gdoc.all.patch
   patch -p1 -i ${srcdir}/0003-nfkc.c-Fix-Win64-crash.patch
   patch -p1 -i ${srcdir}/0004-nfkc.c-Fixed-invalid-var-types.patch
-  
-  autopoint --force
-  autoreconf -i
 }
 
 build() {
