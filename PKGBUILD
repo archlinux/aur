@@ -1,5 +1,5 @@
 pkgname=imgui
-pkgver=1.84.2
+pkgver=1.85
 pkgrel=1
 pkgdesc="Bloat-free Graphical User interface for C++"
 license=('MIT')
@@ -8,7 +8,7 @@ url="https://github.com/ocornut/imgui"
 depends=('gcc-libs' 'wget')
 makedepends=('cmake')
 source=("https://codeload.github.com/ocornut/imgui/tar.gz/v${pkgver}")
-sha256sums=('35cb5ca0fb42cb77604d4f908553f6ef3346ceec4fcd0189675bdfb764f62b9b')
+sha256sums=('7ed49d1f4573004fa725a70642aaddd3e06bb57fcfe1c1a49ac6574a3e895a77')
 
 prepare() {
   cd $pkgname-$pkgver
