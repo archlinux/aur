@@ -1,9 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=naabu-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='Fast port scanner with a focus on reliability and simplicity'
 arch=('x86_64')
@@ -16,11 +16,11 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/projectdiscovery/naa
         "README-$pkgver::https://raw.githubusercontent.com/projectdiscovery/naabu/v$pkgver/README.md")
 source_x86_64=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_amd64.zip")
 sha256sums=('cbcdaab87df3175107aa28915bd253cebdd618a49c9ac5d6c669c0b1cbebcacb'
-            '2f8b5236d5cd101a9788459a9b5d4ca90b044c0e0a10263908a84fd5e34fad3c')
-sha256sums_x86_64=('babd6a42d0f7aea242abdc7dae195ef34177d051e000db2bc8864b5a6e32922e')
+            'd1e930d7040970e70b1e5ea7fe5a4652f833dcdc7f0771eeca361d1aff20e3f5')
+sha256sums_x86_64=('6bdca81f5d722be8bb5261e7147354058253d56beb2c61088541aa4de893d7de')
 
 package() {
-  install -Dm755 naabu -t "$pkgdir/usr/bin"
+  install -D naabu -t "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/lib/"
   ## ugly hack to fix deps issue
   ln -s "/usr/lib/libpcap.so" "$pkgdir/usr/lib/libpcap.so.0.8"
