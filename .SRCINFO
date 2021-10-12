@@ -1,11 +1,11 @@
 pkgbase = crunchy-postgresql-operator-bin
 	pkgdesc = Crunchydata PostgreSQL Kubernetes operator
-	pkgver = 4.7.2
+	pkgver = 4.7.3
 	pkgrel = 1
 	url = https://github.com/CrunchyData/postgres-operator
 	arch = x86_64
 	license = Apache
-	source = https://github.com/CrunchyData/postgres-operator/releases/download/v4.7.2/pgo
-	md5sums = 46898b915a209d9fd44d7402e56956ac
+	source = https://github.com/CrunchyData/postgres-operator/releases/download/v4.7.3/pgo
+	md5sums = 218d69c21e2e39bb9b8de7b968b1227b
 
 pkgname = crunchy-postgresql-operator-bin
