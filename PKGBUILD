@@ -1,28 +1,33 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Antony Lee <anntzer dot lee at gmail dot com>
-
-_pyname=viscm
-pkgname=python-$_pyname
+_base=viscm
+pkgname=python-${_base}
+pkgdesc="A tool for visualizing and designing colormaps using colorspacious and matplotlib"
 pkgver=0.9
-pkgrel=1
-pkgdesc='A colormap tool'
-url='https://pypi.python.org/pypi/viscm/'
-depends=('python-matplotlib' 'python-colorspacious')
-license=('MIT')
+pkgrel=2
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz"
-        'LICENSE')
-md5sums=('4284331c77c917ded6b85dbc5e66c931'
-         '5f55a94c837657a48d83f91fdc6529f7')
-
+url="https://github.com/matplotlib/${_base}"
+license=(MIT)
+depends=(python-matplotlib python-colorspacious)
+makedepends=(python-setuptools python-scipy)
+checkdepends=(python-pyqt5 scipy)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('aa352f12c243f9940297dc2799e1ad1e649f8bfc0c3a5bb772f351ec0d3c380619382da847e090c1191840036a3f06ccf552658c59ce2296f576e5213884e334')
 
 build() {
-  cd "$_pyname-$pkgver"
+  cd "${_base}-${pkgver}"
   python setup.py build
 }
 
+check() {
+  cd "${_base}-${pkgver}"
+  python tests.py
+}
+
 package() {
-  cd "$_pyname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

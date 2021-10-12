@@ -1,16 +1,17 @@
 pkgbase = python-viscm
-	pkgdesc = A colormap tool
+	pkgdesc = A tool for visualizing and designing colormaps using colorspacious and matplotlib
 	pkgver = 0.9
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/viscm/
+	pkgrel = 2
+	url = https://github.com/matplotlib/viscm
 	arch = any
 	license = MIT
+	checkdepends = python-pyqt5
+	checkdepends = scipy
+	makedepends = python-setuptools
+	makedepends = python-scipy
 	depends = python-matplotlib
 	depends = python-colorspacious
-	source = https://files.pythonhosted.org/packages/source/v/viscm/viscm-0.9.tar.gz
-	source = LICENSE
-	md5sums = 4284331c77c917ded6b85dbc5e66c931
-	md5sums = 5f55a94c837657a48d83f91fdc6529f7
+	source = https://github.com/matplotlib/viscm/archive/v0.9.tar.gz
+	sha512sums = aa352f12c243f9940297dc2799e1ad1e649f8bfc0c3a5bb772f351ec0d3c380619382da847e090c1191840036a3f06ccf552658c59ce2296f576e5213884e334
 
 pkgname = python-viscm
-
