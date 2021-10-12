@@ -2,8 +2,11 @@
 [Desktop Entry]
 Name=Moosync
 Comment=A simple music player for desktop
-Exec=moosync
+Exec=/usr/bin/moosync %U
 Terminal=false
 Type=Application
 Icon=moosync
 MimeType=x-scheme-handler/moosync;
+StartupWMClass=Moosync
+Categories=Utility;
+
