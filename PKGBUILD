@@ -1,15 +1,16 @@
 # Maintainer: thegala <thegala at disroot dot org>
 pkgname=icestudio-appimage
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A real gamechanger in the world of Open Source FPGAs"
 arch=('x86_64')
 url='https://icestudio.io/'
 license=('GPL2')
-depends=('python')
+depends=('python' 'gconf')
+makedep=('fakeroot')
 provides=("icestudio")
 conflicts=('icestudio')
-source=("https://github.com/FPGAwars/icestudio/releases/download/v0.5.0/icestudio-0.5.0-linux64.AppImage"
+source=("https://github.com/FPGAwars/icestudio/releases/download/v${pkgver}/icestudio-${pkgver}-linux64.AppImage"
         "icestudio.sh")
 sha256sums=('SKIP' 'SKIP')
 options=(!strip)
