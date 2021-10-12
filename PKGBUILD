@@ -1,6 +1,6 @@
 pkgname=picolisp
 pkgver=21.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="http://www.picolisp.com"
 arch=('x86_64')
@@ -43,4 +43,7 @@ package() {
   mv $LIBDIR/src $DATADIR
   mv $LIBDIR/img $DATADIR
   mv $LIBDIR/lib.css $DATADIR
+
+  install -d -m755 ${COMPDIR:=$pkgdir/usr/share/bash-completion/completions/}
+  mv $LIBDIR/lib/bash_completion $COMPDIR/$pkgname
 }
