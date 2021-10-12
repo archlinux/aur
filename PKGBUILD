@@ -2,7 +2,7 @@
 
 pkgname=snowball-c-git
 pkgver=20211012.662.d29510a
-pkgrel=1
+pkgrel=2
 pkgdesc="Snowball compiler and stemming algorithms ."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/snowballstem/snowball"
