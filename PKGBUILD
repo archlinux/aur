@@ -7,8 +7,17 @@ arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
 license=('MIT')
 depends=('fontconfig')
-provides=("${pkgname}")
-conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
+provides=(
+  'otf-nerd-fonts'
+  'nerd-fonts-victor-mono'
+  'ttf-font-nerd'
+  'ttf-iosevka-nerd'
+  'ttf-nerd-font'
+  'ttf-nerd-fonts'
+  'ttf-nerd-fonts-symbols'
+  'ttf-nerd-fonts-symbols-mono'
+)
+conflicts=('nerd-fonts-git' 'nerd-fonts-complete' 'nerd-fonts-complete-mono-glyphs')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/VictorMono.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
