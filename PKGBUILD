@@ -3,7 +3,7 @@
 # Former Maintainer: Govind Gopakumar < govind.93 at gmail dot com>
 # Former Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc='A fast, flexible, scalable C++ machine learning library'
 arch=('x86_64')
@@ -31,7 +31,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("https://www.mlpack.org/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('05a20818477894b64726441fa98301a0334e36ded8c84380d2d0f800a961ad21')
+sha256sums=('9e5c4af5c276c86a0dcc553289f6fe7b1b340d61c1e59844b53da0debedbb171')
 options=(!emptydirs)
 
 prepare() {
