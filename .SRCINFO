@@ -1,6 +1,6 @@
 pkgbase = docker-rootless-extras
 	pkgdesc = Extras to run docker as non-root.
-	pkgver = 20.10.8
+	pkgver = 20.10.9
 	pkgrel = 1
 	url = https://docs.docker.com/engine/security/rootless/
 	install = docker-rootless-extras.install
@@ -11,7 +11,7 @@ pkgbase = docker-rootless-extras
 	depends = rootlesskit
 	optdepends = fuse-overlayfs: overlayfs support
 	optdepends = slirp4netns: faster network stack
-	source = https://raw.githubusercontent.com/moby/moby/v20.10.8/contrib/dockerd-rootless.sh
+	source = https://raw.githubusercontent.com/moby/moby/v20.10.9/contrib/dockerd-rootless.sh
 	source = docker.service
 	source = docker.socket
 	source = 99-docker-rootless.conf
