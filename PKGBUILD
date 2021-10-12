@@ -2,12 +2,12 @@
 
 pkgname=maldita-castilla
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Maldita Castilla (Cursed/damn Castile) is an action arcade game like Ghost and Goblins full of myths from Spain and the rest of Europe"
 arch=('i686' 'x86_64')
 url='http://www.locomalito.com/maldita_castilla.php'
 license=('CCPL')
-depends=('zlib' 'openssl-1.0' 'openal' 'mesa')
+depends=('zlib' 'openssl-1.0' 'openal' 'mesa' 'xorg-fonts-misc')
 if [ "$CARCH" = "x86_64" ]; then
 	depends+=('lib32-zlib' 'lib32-openssl-1.0' 'lib32-openal' 'lib32-mesa')
 fi

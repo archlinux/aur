@@ -1,7 +1,7 @@
 pkgbase = maldita-castilla
 	pkgdesc = Maldita Castilla (Cursed/damn Castile) is an action arcade game like Ghost and Goblins full of myths from Spain and the rest of Europe
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.locomalito.com/maldita_castilla.php
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = maldita-castilla
 	depends = openssl-1.0
 	depends = openal
 	depends = mesa
+	depends = xorg-fonts-misc
 	depends = lib32-zlib
 	depends = lib32-openssl-1.0
 	depends = lib32-openal
@@ -20,4 +21,3 @@ pkgbase = maldita-castilla
 	md5sums = 19f341eef103764cbe3a4d03a7e6a225
 
 pkgname = maldita-castilla
-
