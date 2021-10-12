@@ -2,8 +2,8 @@
 
 _name=calmjs
 pkgname=python-calmjs
-pkgver=3.4.1
-pkgrel=4
+pkgver=3.4.2
+pkgrel=1
 pkgdesc="framework for building toolchains and utilities for working with the JavaScript/Node.js ecosystem"
 arch=('any')
 url="https://github.com/calmjs/calmjs"
@@ -11,8 +11,8 @@ license=('GPL2')
 depends=('python-calmjs.parse' 'python-calmjs.types' 'python-setuptools')
 checkdepends=('npm' 'python-pytest' 'yarn')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.zip")
-sha512sums=('3ac22ee03b0450141376ddcad1ac559e23fc15b7b496937a3b43c7334510ee1b6338b3a21c5ea875c908f4c8bb0c3657f18d83ac77cd9c76cc9f584a330316ca')
-b2sums=('ed9d99ffbe7e5a1f8583791ae6a0680aa4a1ecdf74de8332a5fc1d6b8065d7318d0abb0cd8bd100594794e83ddf98cecde4de47ef9e8ae9b31a836a11c9f45e6')
+sha512sums=('7730a392acb511227fc455774557ed74286aeea71d94f3fe53588dd5119d9bd90c43a49999a324d83dda8ed0d1282d4d2d9b0263b4ad5b853ea8669a87a68919')
+b2sums=('436d85e40882902f9c0b4efe338124eff6a401e46d187a554d1d3b7621929f2e682a662d1beb8bc3b8d404d96dbf857d92f4b8daacbb30fe072debf3d0ca7416')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
