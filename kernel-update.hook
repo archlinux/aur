@@ -1,0 +1,12 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Operation = Install
+Target = linux*
+Target = amd-ucode
+Target = intel-ucode
+
+[Action]
+Description = Updating EFI kernel images
+When = PostTransaction
+Exec = /bin/bash -e /usr/bin/build_kernel.sh
