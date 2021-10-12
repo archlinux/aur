@@ -1,12 +1,13 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 _pkgname=dnstwist
 pkgname=${_pkgname}-git
-pkgver=r6.5560dc3
+pkgver=r411.74edcea
 pkgrel=1
 pkgdesc="simple tool to look for registered domains similar to your own, only distinguished by typos. useful for detection of fraud and fishing attacs"
 url="https://github.com/elceef/dnstwist"
 arch=('any')
 license=('unknown')
+depends=('python-dnspython' 'python-tld' 'python-geoip' 'python-whois' 'python-requests' 'python-ssdeep')
 source=("git+https://github.com/elceef/dnstwist")
 md5sums=('SKIP')
 
@@ -20,8 +21,5 @@ pkgver() {
 }
  
 package() {
-    #cd "${srcdir}/${_pkgname}"
     install -D "${srcdir}/${_pkgname}/dnstwist.py" "${pkgdir}/usr/bin/dnstwist.py"
-    mkdir -p "${pkgdir}/usr/share/dnstwist/examples/"
-    cp "${srcdir}/${_pkgname}/report"* "${pkgdir}/usr/share/dnstwist/examples/"
   }
