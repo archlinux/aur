@@ -1,25 +1,30 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
-
-_pyname=yep
-pkgname=python-$_pyname
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
+_base=yep
+pkgname=python-${_base}
+pkgdesc="A module for profiling compiled extensions"
 pkgver=0.4
 pkgrel=1
-pkgdesc='A module for profiling compiled extensions'
-url="https://pypi.python.org/pypi/$_pyname/"
-depends=('gperftools' 'python')
-license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('b78a9232a296bbd416c038d1b588dff6')
+url="https://pypi.python.org/pypi/${_base}/"
+depends=(gperftools python)
+license=(BSD)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('c27273b64052dd2337b3f47c1e97e0aa1dea6995a554e1d938d128150da357a061e6df3b2a7cead6b6f416b9c1ab7f8f502401ec86574052f6c1fb654daaf170')
+
+prepare() {
+  cd "${_base}-${pkgver}"
+  sed -n '/License, (C)/p' README.rst >LICENSE
+}
 
 build() {
-  cd $srcdir/$_pyname-$pkgver
+  cd "${_base}-${pkgver}"
   python setup.py build
-  sed -n '/License, (C)/p' README.rst > LICENSE
 }
 
 package() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
