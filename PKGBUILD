@@ -1,7 +1,7 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=snowball-c-git
-pkgver=20201213.662.d29510a
+pkgver=20211012.662.d29510a
 pkgrel=1
 pkgdesc="Snowball compiler and stemming algorithms ."
 arch=('i686' 'x86_64' 'aarch64')
@@ -24,7 +24,6 @@ build() {
 package() {
     cd $srcdir/$pkgname
     install -Dm644 include/* $pkgdir/usr/include/libstemmer.h
-    install -Dm644 libstemmer.o $pkgdir/usr/lib/libstemmer.a
     install -Dm755 snowball $pkgdir/usr/bin/snowball
     install -Dm755 stemwords $pkgdir/usr/bin/stemwords
 }
