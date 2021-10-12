@@ -6,7 +6,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2021.9.7
+pkgver=2021.10.3
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -51,7 +51,7 @@ optdepends=(
   'python-dtlssocket: Ikea Tradfri integration'
   'python-lxml: Meteo France integration'
 )
-_tag=9ffdc2594f3fc6473fc82e73183a98786e39561c
+_tag=a3ae25efdb59433d3de136eedac2773ab1ed96c5
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
