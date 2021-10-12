@@ -1,4 +1,4 @@
-# Maintainer: Roberto Hueso < robertohueso96 at gmail dot com >
+# Maintainer: Roberto Hueso < roberto at robertohueso dot org >
 # Former Maintainer: jerry73204 <jerry73204@gmail.com>
 # Former Maintainer: Govind Gopakumar < govind.93 at gmail dot com>
 # Former Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
