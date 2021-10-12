@@ -1,19 +1,32 @@
-# Maintainer: Robiot <robiot#5485>
+# Maintainer: robiot
 
 pkgname=rustcat
 _binname=rcat
-pkgver=2.0.0
-pkgrel=5
-pkgdesc="Rustcat - A Modern Port Listener & Reverse Shell"
-url="https://github.com/robiot/rustcat"
+pkgver=v2.0.0.r0.g7a7e074
+pkgrel=1
+pkgdesc='A Modern Port Listener & Reverse Shell.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/robiot/rustcat'
 license=('MIT')
-arch=('x86_64')
+makedepends=('cargo' 'git')
+sha512sums=('SKIP')
+source=("git+https://github.com/robiot/$pkgname.git")
 
-source=("rc.tar.gz::https://github.com/robiot/rustcat/releases/download/v${pkgver}/rustcat_${pkgver}_amd64-linux.tar.gz")
-conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
-md5sums=('SKIP')
+pkgver() {
+  cd $pkgname
+
+  echo $(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+}
+
+build() {
+  cd $pkgname
+
+  cargo build --release
+}
 
 package() {
-    cd "${srcdir}"
-    install -Dm 755 "./${_binname}" "$pkgdir/usr/bin/$_binname"
+  cd $pkgname
+
+  install -Dm 755 "target/release/$_binname" "$pkgdir/usr/bin/$_binname"
 }
+
