@@ -1,11 +1,11 @@
 # Maintainer: Ashley Chiara <ashley@kira64.xyz>
 pkgname=yafetch-git
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='yet another fetch, written in C++'
 arch=('x86_64')
 url='https://git.kira64.xyz/yafetch'
-license=('MIT')
+license=('GPL3')
 makedepends=('git' 'make' 'gcc')
 backup=()
 source=('git+git://git.kira64.xyz/yafetch.git'
