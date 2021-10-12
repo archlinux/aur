@@ -3,7 +3,7 @@ pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.0~alpha5
 pkgver_=3.0.0-alpha5
-pkgrel=2
+pkgrel=3
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
@@ -27,6 +27,7 @@ build() {
 }
 
 package_damask-grid() {
+  pkgdesc='Grid solver for DAMASK'
   depends=('petsc' 'hdf5-openmpi' 'fftw')
   optdepends=('dream3d: pre-processing')
 
@@ -38,6 +39,7 @@ package_damask-grid() {
 }
 
 package_damask-mesh() {
+  pkgdesc='Mesh solver for DAMASK'
   depends=('petsc' 'hdf5-openmpi')
   optdepends=('neper: pre-processing')
 
@@ -49,6 +51,7 @@ package_damask-mesh() {
 }
 
 package_python-damask() {
+  pkgdesc='Pre- and post-processing tools for DAMASK'
   depends=('python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
   optdepends=('python-seaborn: post-processing'
               'jupyterlab: comfortable shell'

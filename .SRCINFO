@@ -1,7 +1,7 @@
 pkgbase = damask
 	pkgdesc = DAMASK - The Duesseldorf Advanced Material Simulation Kit
 	pkgver = 3.0.0~alpha5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://damask.mpie.de
 	arch = x86_64
 	license = GPL3
@@ -17,17 +17,20 @@ pkgname = damask
 	depends = damask-mesh
 
 pkgname = damask-grid
+	pkgdesc = Grid solver for DAMASK
 	depends = petsc
 	depends = hdf5-openmpi
 	depends = fftw
 	optdepends = dream3d: pre-processing
 
 pkgname = damask-mesh
+	pkgdesc = Mesh solver for DAMASK
 	depends = petsc
 	depends = hdf5-openmpi
 	optdepends = neper: pre-processing
 
 pkgname = python-damask
+	pkgdesc = Pre- and post-processing tools for DAMASK
 	depends = python-matplotlib
 	depends = python-scipy
 	depends = python-pandas
