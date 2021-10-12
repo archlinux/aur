@@ -1,6 +1,6 @@
 pkgbase = python-executing
 	pkgdesc = Get information about what a Python frame is currently doing, particularly the AST node being executed
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/alexmojaki/executing
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-executing
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/e/executing/executing-0.8.1.tar.gz
-	sha256sums = f3dd49578371a633bd1ff5ca0af4afad65e6d549a06eb35ef20df198eced58ef
+	source = https://files.pythonhosted.org/packages/source/e/executing/executing-0.8.2.tar.gz
+	sha256sums = c23bf42e9a7b9b212f185b1b2c3c91feb895963378887bb10e64a2e612ec0023
 
 pkgname = python-executing
