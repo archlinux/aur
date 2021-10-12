@@ -11,8 +11,8 @@ md5sums=(
 )
 pkgdesc="Semantic, procedural, non-destructive vector modelling"
 pkgname=ommpfritt-git
-pkgrel=2
-pkgver=0.1.3.r568.g62a6fe81
+pkgrel=1
+pkgver=0.1.4.r74.gf8a066a5
 provides=('ommpfritt')
 source=(
   ommpfritt.desktop
@@ -21,21 +21,42 @@ source=(
 url="https://github.com/pasbi/ommpfritt"
 
 build() {
-  cd "${srcdir}"/ommpfritt
-  rm -rf build
-  mkdir build
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DQT_QM_PATH=/usr/share/qt/translations \
-        ..
-  make -j2
+  cd "${srcdir}"
+  rm -rf ommpfritt-build
+  mkdir ommpfritt-build
+  # Configure (without icons present)
+  cmake -S ommpfritt \
+        -B ommpfritt-build \
+        -GNinja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX="${srcdir}"/ommpfritt-install \
+        -DCMAKE_PREFIX_PATH="${QT_PREFIX}"
+  # Build and install locally (without icons present)
+  cmake --build ommpfritt-build \
+        --config Release \
+        --target install \
+        -j2
+  # Use local installation to generate icons
+  cmake --build ommpfritt-build \
+        --target icons
+  # Configure again (with icons present)
+  cmake -S ommpfritt \
+        -B ommpfritt-build \
+        -GNinja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX="${srcdir}"/ommpfritt-install \
+        -DCMAKE_PREFIX_PATH="${QT_PREFIX}"
+  # Build again, without installing (with icons present)
+  cmake --build ommpfritt-build \
+        --config Release \
+        -j2
 }
 
 package() {
   cd "${srcdir}"
   install -Dm644 ommpfritt.desktop "${pkgdir}"/usr/share/applications/ommpfritt.desktop
 
-  cd "${srcdir}"/ommpfritt/build
+  cd "${srcdir}"/ommpfritt-build
   install -Dm755 ommpfritt "${pkgdir}"/usr/bin/ommpfritt
 }
 

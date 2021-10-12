@@ -1,7 +1,7 @@
 pkgbase = ommpfritt-git
 	pkgdesc = Semantic, procedural, non-destructive vector modelling
-	pkgver = 0.1.3.r568.g62a6fe81
-	pkgrel = 2
+	pkgver = 0.1.4.r74.gf8a066a5
+	pkgrel = 1
 	url = https://github.com/pasbi/ommpfritt
 	arch = i686
 	arch = x86_64
@@ -26,4 +26,3 @@ pkgbase = ommpfritt-git
 	md5sums = SKIP
 
 pkgname = ommpfritt-git
-
