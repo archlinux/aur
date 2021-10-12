@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features-insiders
-pkgver=1.60.2
+pkgver=1.61.0
 pkgrel=1
 pkgdesc='Unblock some features in Code OSS, including features in VSCode Insiders'
 arch=('any')

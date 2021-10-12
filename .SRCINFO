@@ -1,6 +1,6 @@
 pkgbase = code-features-insiders
 	pkgdesc = Unblock some features in Code OSS, including features in VSCode Insiders
-	pkgver = 1.60.2
+	pkgver = 1.61.0
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	install = code-features-insiders.install
