@@ -1,13 +1,10 @@
 pkgbase = python2-gobject
 	pkgdesc = Python 2 Bindings for GLib/GObject/GIO/GTK+
 	pkgver = 3.36.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Projects/PyGObject
 	arch = x86_64
 	license = LGPL
-	checkdepends = python2-pytest
-	checkdepends = gtk3
-	checkdepends = xorg-server-xvfb
 	makedepends = python2-cairo
 	makedepends = gobject-introspection
 	makedepends = git
