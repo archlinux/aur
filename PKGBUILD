@@ -1,13 +1,13 @@
 # Maintainer: Roberto Hueso < roberto at robertohueso dot org >
 pkgname=ensmallen
-pkgver=2.14.2
+pkgver=2.17.0
 pkgrel=1
 pkgdesc='Flexible C++ library for efficient mathematical optimization'
 arch=('x86_64')
 url="https://ensmallen.org/"
 license=('BSD')
 depends=(
-  'armadillo>=8.400.0'
+  'armadillo>=9.800.0'
   'lapack'
 )
 
@@ -19,7 +19,7 @@ makedepends=(
   'cmake>=3.3.2'
 )
 source=("https://ensmallen.org/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d067ce6aec567e1f49e47c6b59600a666f74755ff46228e8855cd21cb04188cc')
+sha256sums=('2803c8cce58f278d6e7eb4a5d8090da10b4cce7a5c6c6e6f65e89de4fc9c9086')
 options=(!emptydirs)
 
 prepare() {
