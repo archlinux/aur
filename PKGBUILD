@@ -1,7 +1,7 @@
 # Maintainer: hmsy <heimoshuiyu at gmail dot com>
 
 pkgname=caddy-webdav-git
-pkgver=20210927.059fc32f
+pkgver=20211012.c4790d7f
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS and webdav plugin'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("caddy::git://github.com/caddyserver/caddy"
 	"caddy.service")
 sha256sums=('SKIP'
             '2bcb3cc1e19cec630ea64c014bba5463d49c45a2712d1107d1d10e87d3c023c6'
-            '9bdd2741269a0ac2088f325ca7c08bfa01ddc707149e5027170bc8aeb83cf0aa')
+            '7c5cd88ac3a35e3cb5f467118bcf0dac896aba00945ce1566df710c09bf985c2')
 
 
 pkgver() {

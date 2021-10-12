@@ -22,8 +22,8 @@ StartLimitIntervalSec=14400
 StartLimitBurst=10
 
 [Service]
-User=caddy
-Group=caddy
+User=http
+Group=http
 Environment=XDG_DATA_HOME=/var/lib
 Environment=XDG_CONFIG_HOME=/etc
 ExecStartPre=/usr/bin/caddy validate --config /etc/caddy/Caddyfile
@@ -54,15 +54,12 @@ PrivateTmp=true
 ProcSubset=pid
 ProtectClock=true
 ProtectControlGroups=true
-ProtectHome=true
 ProtectHostname=true
 ProtectKernelLogs=true
 ProtectKernelModules=true
 ProtectKernelTunables=true
 ProtectProc=invisible
-ProtectSystem=strict
 RemoveIPC=true
-ReadWritePaths=/var/lib/caddy /var/log/caddy /run/caddy
 RestrictNamespaces=true
 RestrictRealtime=true
 RestrictSUIDSGID=true
