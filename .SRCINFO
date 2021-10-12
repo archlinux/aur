@@ -6,7 +6,7 @@ pkgbase = ensmallen
 	arch = x86_64
 	license = BSD
 	makedepends = cmake>=3.3.2
-	depends = armadillo>=8.400.0
+	depends = armadillo>=9.800.0
 	depends = lapack
 	optdepends = openmp: parallel computation support
 	source = https://ensmallen.org/files/ensmallen-2.17.0.tar.gz
