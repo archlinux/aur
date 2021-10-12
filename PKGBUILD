@@ -1,4 +1,4 @@
-# Maintainer: Roberto Hueso < robertohueso96 at gmail dot com >
+# Maintainer: Roberto Hueso < roberto at robertohueso dot org >
 pkgname=ensmallen
 pkgver=2.14.2
 pkgrel=1
