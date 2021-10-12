@@ -3,7 +3,7 @@
 
 pkgname=mattermost-desktop-bin
 _pkgname=mattermost-desktop
-pkgver=4.7.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Mattermost Desktop for Linux (binary)"
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ source=(${_pkgname}.desktop)
 source_i686=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-ia32.tar.gz")
 source_x86_64=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz")
 sha256sums=('9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093')
-sha256sums_i686=('62db9b1b42acedcc29cd48f1c4513603009139900347bfd120ae37e3bb898a87')
-sha256sums_x86_64=('dc77a8638773684d042c51597c75fe0ada82fd80dde820a48b1ae310c015348a')
+sha256sums_i686=('5bbbe6b2f24f8fa6629a66b6f9f9e92a74ba53f6d9456a22a8d7830c69e6a999')
+sha256sums_x86_64=('196061fbfb186b3ea0400d4e2090bb9d4f2e697195b25d57baed100e6e5082e5')
 
 package() {
     case "$CARCH" in
