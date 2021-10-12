@@ -1,6 +1,6 @@
 # Maintainer: mickaelca <contact@mickael-caudrelier.fr>
 pkgname=kubescape-bin
-pkgver=1.0.109
+pkgver=1.0.115
 pkgrel=1
 pkgdesc="kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA"
 provides=('kubescape')
@@ -11,7 +11,7 @@ source=(
 $pkgname-$pkgver::https://github.com/armosec/kubescape/releases/download/v${pkgver}/kubescape-ubuntu-latest
 )
 sha256sums=(
-323e734cd5a87eb5b79adb51649bd8315746da4292a15e4df822fee6ef9368b4
+8720ba99f9fc1a9c725afb56036cbbc1dfabcd6ee9c1b14bfe76696e3833793f
 )
 
 build() {
@@ -23,5 +23,5 @@ package () {
 
   mkdir -p "usr/bin"
 
-  install -Dm755 "$srcdir/kubescape-ubuntu-latest" "$pkgdir/usr/bin/${provides}"
+  install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/${provides}"
 }
