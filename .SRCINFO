@@ -11,9 +11,7 @@ pkgbase = neovim-tree-lua-git
 	depends = neovim>=0.5.0
 	optdepends = neovim-web-devicons
 	provides = neovim-tree-lua
-	provides = vim-nerdtree
 	conflicts = neovim-tree-lua
-	conflicts = vim-nerdtree
 	source = neovim-tree-lua-git::git+https://github.com/kyazdani42/nvim-tree.lua
 	sha256sums = SKIP
 
