@@ -2,7 +2,7 @@
 #   Radek Podgorny <radek@podgorny.cz>
 #   Thomas Haider <t.haider@deprecate.de>
 # maintainer: fordprefect <fordprefect@dukun.de>
-# contributor: bertptrs
+# contributors: bertptrs, Asuranceturix
 
 pkgname=postsrsd
 pkgver=1.11
@@ -16,9 +16,11 @@ url="https://github.com/roehling/postsrsd"
 install=postsrsd.install
 license=(GPL2)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/roehling/postsrsd/archive/${pkgver}.tar.gz"
-        "postsrsd.conf")
+        "${pkgname}.install" "sysusers.d-postsrsd.conf" "tmpfiles.d-postsrsd.conf")
 md5sums=('5585ff7685ad5f0331ac6dde6304ca4b'
-         'cee1be46359eb9b6a44d1fac3cbc718b')
+         'e8462ec9348abf296166fde0dc448974'
+         'cee1be46359eb9b6a44d1fac3cbc718b'
+         'f5f42125b253b5a6c680a628ee39a274')
 
 check() {
   cd "$srcdir/postsrsd-$pkgver/build"
@@ -38,12 +40,15 @@ package() {
   cd "$srcdir/postsrsd-$pkgver/build"
   make DESTDIR="$pkgdir/" install
 
-  install -Dm644 "$srcdir/postsrsd.conf" "$pkgdir/usr/lib/sysusers.d/postsrsd.conf"
-
-  #rm -rf $pkgdir/usr/lib
   mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
   sed -e 's/^\(RUN_AS=\)nobody/#\1postsrsd/;s/\(\/etc\/postsrsd\)\(\.secret\)/\1\/postsrsd\2/' \
       -e 's/^\(# is \).*$/\1localhost\.localdomain/'< postsrsd.default > "$pkgdir/etc/postsrsd/postsrsd"
   mkdir -p "$pkgdir/usr/lib/systemd/system"
-  mv "$pkgdir/etc/systemd/system/postsrsd.service" "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$srcdir/sysusers.d-postsrsd.conf" "$pkgdir/usr/lib/sysusers.d/postsrsd.conf"
+  install -Dm644 "$srcdir/tmpfiles.d-postsrsd.conf" "$pkgdir/usr/lib/tmpfiles.d/postsrsd.conf"
+
+  # fix systemd unit location
+  mkdir -p "$pkgdir"/usr/lib/systemd/system/
+  mv "$pkgdir"/etc/systemd/system/postsrsd.service "$pkgdir"/usr/lib/systemd/system/
+
 }
