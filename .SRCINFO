@@ -1,13 +1,12 @@
 pkgbase = python-docplex
 	pkgdesc = The IBM Decision Optimization CPLEX Modeling for Python
-	pkgver = 2.20.204
+	pkgver = 2.22.213
 	pkgrel = 1
 	url = https://pypi.org/project/docplex/
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools
-	source = docplex-2.20.204.tar.gz::https://files.pythonhosted.org/packages/source/d/docplex/docplex-2.20.204.tar.gz
-	sha256sums = 24d8c3f54b4b1ec306c13b97c9d67e2f9fa93d0d9ea1b92bdba62df6982cd6a0
+	source = docplex-2.22.213.tar.gz::https://files.pythonhosted.org/packages/source/d/docplex/docplex-2.22.213.tar.gz
+	sha256sums = 8a86bba42b5b65f2e0f88ed350115efeb783b444661e2cfcf3a67d5c59bcb0bd
 
 pkgname = python-docplex
-
