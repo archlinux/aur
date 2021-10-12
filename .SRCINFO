@@ -1,6 +1,6 @@
 pkgbase = vdhcoapp-bin
 	pkgdesc = Companion application for Video DownloadHelper browser add-on, precompiled binary version
-	pkgver = 1.6.1
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/mi-g/vdhcoapp
 	arch = i686
@@ -9,12 +9,11 @@ pkgbase = vdhcoapp-bin
 	depends = ffmpeg
 	depends = orc
 	options = !strip
-	source = https://github.com/mi-g/vdhcoapp/releases/download/v1.6.1/net.downloadhelper.coapp-1.6.1-1_amd64.deb
+	source = https://github.com/mi-g/vdhcoapp/releases/download/v1.6.3/net.downloadhelper.coapp-1.6.3-1_amd64.deb
 	source = vdhcoapp-install.hook
 	source = vdhcoapp-remove.hook
-	sha256sums = c375ea1842535220f7f8a3b3b0c50173de75fb0354e9748d3fefb2973f71d9be
+	sha256sums = d866b1ade5a24cf050810305f9be50f7a7848905322409922ad4d863d3a34756
 	sha256sums = a2b56e6ae3f7f8933e20762baa90e69f63f0802b2e6d213b51e0bc68843e5d27
 	sha256sums = 3287859986d67e15e269965676bf9c75d1e853ea0ec97695811072fb8f10a7a8
 
 pkgname = vdhcoapp-bin
-
