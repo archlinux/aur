@@ -1,7 +1,7 @@
 # Maintainer: Dino Hensen <dino.hensen@gmail.com>
 
 pkgname=nosql-workbench
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="NoSQL Workbench for Amazon DynamoDB"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source_x86_64=("${pkgname}-${pkgver}.AppImage::https://s3.amazonaws.com/nosql-wo
 "nosql-workbench.png"
 )
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha512sums_x86_64=('61a7b99c8be23c438202198216196b036f12eebec0ac70cc39fafd5d18b1185554fa4e6bfb362a1730ec21b9db1a92f79c189f86eb93b2ba660a4211d7c9ceca'
+sha512sums_x86_64=('051c39e47bb9ba61879c0e55410af296533339c491256cb31fecf13e39474a050bd6dad1ba34e460ba8a366062083790a0cce804611de1ac15f9153efb6e2351'
 'SKIP'
 'SKIP'
 )
