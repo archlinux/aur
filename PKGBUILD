@@ -28,8 +28,8 @@ sha1sums=(
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA')
 
 prepare() {
-    # https://dev.gnupg.org/rS49ad2b0e05e3fcb8c8c2e23bb1c6063b390dee02
-    patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/fix-build.patch"
+  # https://dev.gnupg.org/rS49ad2b0e05e3fcb8c8c2e23bb1c6063b390dee02
+  patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/fix-build.patch"
 }
 
 build() {
