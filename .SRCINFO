@@ -1,6 +1,6 @@
 pkgbase = bulldog-vst
 	pkgdesc = Brute-Force Amp Sim (VST Plugin)
-	pkgver = 0.9.9
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://audioassault.mx/collections/plugins/products/bulldog
 	arch = x86_64

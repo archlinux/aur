@@ -1,5 +1,5 @@
 pkgname=bulldog-vst
-pkgver=0.9.9
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Brute-Force Amp Sim (VST Plugin)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('xdg-user-dirs' 'unzip')
 
 prepare () {
 	## Extract AIR Impulse Response
-	_archive="`xdg-user-dir DOWNLOAD`/Bulldog+Beta.zip"
+	_archive="`xdg-user-dir DOWNLOAD`/BulldogRelease.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
 }
@@ -19,9 +19,9 @@ prepare () {
 package() {
     ## Install Preset and Default Libraries
     mkdir -p "$pkgdir/opt/Audio Assault/Bulldog"
-    cp -rf $srcdir/Bulldog\ Beta\ Linux/Bulldog/* "$pkgdir/opt/Audio Assault/Bulldog/"
+    cp -rf $srcdir/Bulldog\ Linux\ Install/Bulldog/* "$pkgdir/opt/Audio Assault/Bulldog/"
     chmod -R 777 $pkgdir/opt/Audio\ Assault/Bulldog
 
     ## Install VST Plugin
-    install -Dm755 "$srcdir/Bulldog Beta Linux/BULLDOGvst2.so" "$pkgdir/usr/lib/vst/BULLDOGvst2.so"
+    install -Dm755 "$srcdir/Bulldog Linux Install/BULLDOGvst2.so" "$pkgdir/usr/lib/vst/BULLDOGvst2.so"
 }
