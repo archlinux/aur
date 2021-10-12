@@ -1,8 +1,8 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter
-pkgver=1.9.3
+pkgver=1.10
 pkgrel=1
-pkgdesc='Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)'
+pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
 license=('GPL3')
