@@ -1,6 +1,6 @@
 pkgbase = mymonero
 	pkgdesc = The simplest way to use the next-generation private digital currency Monero, at the sweet spot between security, convenience, and features.
-	pkgver = 1.1.24
+	pkgver = 1.2.0
 	pkgrel = 2
 	url = https://www.mymonero.com/
 	install = mymonero.install
@@ -11,13 +11,13 @@ pkgbase = mymonero
 	depends = nss
 	depends = gtk3
 	provides = mymonero
-	noextract = mymonero-1.1.24.x86_64.AppImage
+	noextract = mymonero-1.2.0.x86_64.AppImage
 	options = strip
 	options = emptydirs
 	options = zipman
-	source = mymonero-1.1.24.x86_64.AppImage::https://github.com/mymonero/mymonero-app-js/releases/download/v1.1.24/MyMonero-1.1.24.AppImage
+	source = mymonero-1.2.0.x86_64.AppImage::https://github.com/mymonero/mymonero-app-js/releases/download/v1.2.0/MyMonero-1.2.0.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/mymonero/mymonero-app-js/master/LICENSE.txt
-	b2sums = fc839324f7e8fd7c15b0aae8a0e335feebdf9fb712f7b63e73f3e04e5ce0aaa639e816b41b84534102734671990182b33f7b605cabd1515b73bca0e0a0aeb086
+	b2sums = e6185fd550ff6e28e5e65665b957a1fcb706183f7b285ce98149dfd4be680e7bfa9bf4bda7f32032fddf238f9cee83a763bcf5a962ea92894a827df537d8cf3e
 	b2sums = e15003acc9be63fd7b76a1021d86045f82fe19a63551c0f2ab1478d4e3e3be8a9bb7dc7f4f06b79fa1005995cebd73807259c3c5c36861f085ca7ad7959eef52
 
 pkgname = mymonero

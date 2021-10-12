@@ -1,7 +1,7 @@
 # Maintainer: zoorat <zoorat [at] protonmail [dot] com>
 
 pkgname="mymonero"
-pkgver=1.1.24
+pkgver=1.2.0
 pkgrel=2
 
 pkgdesc="The simplest way to use the next-generation private digital currency Monero, at the sweet spot between security, convenience, and features."
@@ -20,7 +20,7 @@ changelog="changelog.md"
 source=("${pkgname}-${pkgver}.${CARCH}.AppImage::https://github.com/mymonero/mymonero-app-js/releases/download/v${pkgver}/MyMonero-${pkgver}.AppImage"
 	"LICENSE::https://raw.githubusercontent.com/mymonero/mymonero-app-js/master/LICENSE.txt")
 noextract=("${pkgname}-${pkgver}.${CARCH}.AppImage")
-b2sums=('fc839324f7e8fd7c15b0aae8a0e335feebdf9fb712f7b63e73f3e04e5ce0aaa639e816b41b84534102734671990182b33f7b605cabd1515b73bca0e0a0aeb086'
+b2sums=('e6185fd550ff6e28e5e65665b957a1fcb706183f7b285ce98149dfd4be680e7bfa9bf4bda7f32032fddf238f9cee83a763bcf5a962ea92894a827df537d8cf3e'
 	'e15003acc9be63fd7b76a1021d86045f82fe19a63551c0f2ab1478d4e3e3be8a9bb7dc7f4f06b79fa1005995cebd73807259c3c5c36861f085ca7ad7959eef52')
 
 log() {
