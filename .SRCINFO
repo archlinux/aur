@@ -1,23 +1,22 @@
 pkgbase = meshcentral
 	pkgdesc = Web based remote computer management and file server
-	pkgver = 0.6.28
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = http://meshcommander.com
 	arch = any
 	license = Apache
 	makedepends = npm
 	depends = nodejs
-	noextract = meshcentral-0.6.28.tgz
+	noextract = meshcentral-0.9.16.tgz
 	backup = etc/meshcentral/config.json
 	backup = var/lib/meshcentral
-	source = https://registry.npmjs.org/meshcentral/-/meshcentral-0.6.28.tgz
+	source = https://registry.npmjs.org/meshcentral/-/meshcentral-0.9.16.tgz
 	source = meshcentral.service
 	source = meshcentral.sysusers
 	source = meshcentral.tmpfiles
-	sha1sums = a38335776d2c96959fbc952c946e11c762bf78bb
+	sha1sums = 09cdd24de09b284476650a693c9427990630e00c
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = meshcentral
-

@@ -1,8 +1,8 @@
 # Maintainer: Carlos Galindo <carlos.s.galindo (at) gmail.com>
 _npmname=meshcentral
-_npmver=0.6.28
+_npmver=0.9.16
 pkgname=meshcentral
-pkgver=0.6.28
+pkgver=0.9.16
 pkgrel=1
 pkgdesc="Web based remote computer management and file server"
 arch=(any)
@@ -16,14 +16,14 @@ source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
         "$_npmname.sysusers"
         "$_npmname.tmpfiles")
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(a38335776d2c96959fbc952c946e11c762bf78bb SKIP SKIP SKIP)
+sha1sums=(09cdd24de09b284476650a693c9427990630e00c SKIP SKIP SKIP)
 
 package() {
   cd $srcdir
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver archiver@4.0.2 otplib@10.2.3
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
