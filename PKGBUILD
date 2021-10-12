@@ -4,7 +4,7 @@
 # Contributor: Vladimir Navrat <vn158 at seznam dot cz>
 
 pkgname=winscp
-pkgver=5.19.2
+pkgver=5.19.3
 pkgrel=1
 pkgdesc="Free SFTP, SCP and FTP client for Wine"
 arch=('any')
@@ -23,7 +23,7 @@ source=("http://downloads.sourceforge.net/project/winscp/WinSCP/${pkgver}/WinSCP
         "${pkgname}-128.png"
         "${pkgname}-256.png"
         "${pkgname}_default_configuration.ini")
-sha256sums=('269a1020bfa8b958697e7b3aeec673fc68bdfe68c660cfa51f9f2d678004ebd5'
+sha256sums=('afed99ab3162207b515c7ce52831bc57ef6501d05ed7e5b436e590cb3017022b'
 '322f3f8d4a29a2e5a40c057ffadf6566ff21233b5f8367a749618e5b4d845fc9'
 '67eba469b8f34ccc2342ea54b14601f13a245af5e0d4ea574786efdd33fc285c'
 '0c28369a4b35713ade79a158b4ee0e28576561c7ba0b8766dbbc0f63d0748ea2'
