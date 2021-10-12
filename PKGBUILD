@@ -1,4 +1,5 @@
-# Maintainer: dszryan
+# Maintainer: jonathanh
+# Contributor: dszryan
 # Contributor: Bryce Beagle <first dot last at gmail dot com>
 # Contributor: Giampaolo Mancini <mancho at trmpln dot com>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
@@ -6,13 +7,12 @@
 # Contributor: Gifts <gifts.antichat@gmail.com>
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
-# https://download.jetbrains.com/rider/JetBrains.Rider-2020.3-EAP10-203.5981.86.Checked.tar.gz
 pkgname=rider-eap
-eapver=2021.2
-eaprelease=8
-pkgver=212.4746.59
+eapver=2021.3
+eaprelease=3
+pkgver=213.4631.30
 _dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="A cross-platform C# IDE by JetBrains."
 arch=('any')
@@ -26,7 +26,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 source=("https://download.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
         "${pkgname}.desktop"
         "ResharperHost-runtime-folder.sh")
-sha256sums=('7f08750b5516e6f0ecd10d3356024d988b6bc2d02e144b73a3033529c17ab665'
+sha256sums=('fa7345f597bb7c712290f7ef5cdd3db3f4aaf1c14afefd02110eb64cc0fa4bab'
             'ada362803d6d2b5ff84680277694d0ecdcb97d46f85d140f79850500966f1ecf'
             '4bc086ff245cf18c5fd2351008b05a0d0e792e8af0394fb094a9118c312c373d')
 
