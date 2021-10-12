@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-all-nightly
-pkgver=9963f765_20211011
+pkgver=4e1f2d7d_20211012
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - all"
@@ -11,10 +11,10 @@ license=("custom:ISC")
 groups=()
 options=("!strip")
 depends=(
-	"nextpnr-ice40-nightly>=9963f765_20211011"
-	"nextpnr-ecp5-nightly>=9963f765_20211011"
-	"nextpnr-nexus-nightly>=9963f765_20211011"
-	"nextpnr-generic-nightly>=9963f765_20211011"
+	"nextpnr-ice40-nightly>=4e1f2d7d_20211012"
+	"nextpnr-ecp5-nightly>=4e1f2d7d_20211012"
+	"nextpnr-nexus-nightly>=4e1f2d7d_20211012"
+	"nextpnr-generic-nightly>=4e1f2d7d_20211012"
 )
 
 conflicts=(
