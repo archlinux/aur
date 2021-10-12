@@ -22,8 +22,8 @@ StartLimitIntervalSec=14400
 StartLimitBurst=10
 
 [Service]
-User=http
-Group=http
+User=caddy
+Group=caddy
 Environment=XDG_DATA_HOME=/var/lib
 Environment=XDG_CONFIG_HOME=/etc
 ExecStartPre=/usr/bin/caddy validate --config /etc/caddy/Caddyfile
