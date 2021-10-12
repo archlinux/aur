@@ -10,7 +10,7 @@
 
 pkgname=logisim-evolution
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An educational tool for designing and simulating digital logic circuits (build from source)'
 provides=('logisim-evolution')
 conflicts=('logisim-evolution-git' 'logisim-evolution-bin')
@@ -30,6 +30,11 @@ install=$pkgname.install
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./gradlew shadowJar
+}
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    sed -i 's/https/http/' "support/Flatpak/com.github.reds.LogisimEvolution.xml"
 }
 
 package() {
