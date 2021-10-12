@@ -1,0 +1,18 @@
+pkgbase = osqp
+	pkgdesc = The Operator Splitting QP Solver
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/osqp/osqp
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = boost
+	makedepends = python-numpy
+	depends = boost-libs
+	optdepends = doxygen
+	source = osqp-0.6.2.tar.gz::https://github.com/osqp/osqp/releases/download/v0.6.2/complete_sources.tar.gz
+	sha256sums = 0a7ade2fa19f13e13bc12f6ea0046ef764049023efb4997a4e72a76534f623ec
+
+pkgname = osqp
