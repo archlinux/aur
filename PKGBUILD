@@ -1,8 +1,8 @@
-# Maintainer: ml <>
+# Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 # Contributor: Thomas Hobson <thomas@hexf.me>
 pkgname=python3-yamale
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A schema and validator for YAML'
 arch=('x86_64')
 url='https://github.com/23andMe/Yamale'
