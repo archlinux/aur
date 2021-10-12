@@ -30,12 +30,12 @@ _750_HZ_ticks=y
 _mm_protect=y
 _lrng_enable=y
 ## Apply Kernel automatic Optimization
-_use_optimization=y
+_use_optimization=
 ## Apply Kernel Optimization selecting
-_use_optimization_select=
+_use_optimization_select=y
 
 ## compiling with LLVM/LTO
-_use_llvm_lto=
+_use_llvm_lto=y
 
 # Comfpile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -201,6 +201,8 @@ prepare() {
               echo "Enabling KBUILD_CFLAGS -O3..."
               scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
               scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+              echo "Enable AMD PSTATE v3 driver"
+              Cscripts/config --enable CONFIG_X86_AMD_PSTATE
 
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -363,7 +365,7 @@ done
 
 
 md5sums=('493b75bec74e5dfc887c7224df404dd3'
-         'e29e088059fd06f1c6ac9884e23f52a3'
+         '22e4f491ac2becbf37bdf36392cf9648'
          '0d27a2f6ac0b39eb8a441d9b879bcf55'
          '6236a665dd6c93c5de76c1c658c99910'
          'd3ffe87474459e33c901f6141a047c95'
