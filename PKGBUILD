@@ -5,8 +5,8 @@
 
 pkgbase=openfoam
 pkgname=openfoam-org
-_subver=20201114
-_pkgver=8
+_subver=20211007
+_pkgver=9
 pkgver=${_pkgver}.${_subver}
 #pkgver=${_pkgver}
 pkgrel=1
@@ -20,9 +20,9 @@ depends=('bzip2' 'paraview' 'parmetis' 'scotch' 'boost' 'flex' 'cgal')
 makedepends=('bash')
 provides=('openfoam')
 conflicts=('openfoam-com')
-source=("https://github.com/OpenFOAM/$_gitname/archive/$_subver.tar.gz")
+source=("https://github.com/OpenFOAM/$_gitname/archive/refs/tags/$_subver.tar.gz")
 install="${pkgbase}.install"
-md5sums=('a754470e3d988186976bf8a8a73a7a84')
+md5sums=('3fd048d2e2e3b2393633e549dc317706')
 
 prepare() {
   mv $srcdir/$_gitname-$_subver $srcdir/$_distpkgbase-$_pkgver
