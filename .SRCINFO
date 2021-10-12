@@ -1,6 +1,6 @@
 pkgbase = vivado-wrapper
 	pkgdesc = Wrap vivado as a simple project manager, which works in linux command line natively.
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/recolic/vivado-wrapper
 	install = vivado-wrapper.install
@@ -8,11 +8,10 @@ pkgbase = vivado-wrapper
 	license = GPL3
 	depends = bash
 	depends = findutils
-	source = vivado-wrapper-1.5.tar.gz::https://github.com/recolic/vivado-wrapper/archive/v1.5.tar.gz
-	source = vivado-wrapper-1.5.tar.gz.sig::https://github.com/recolic/vivado-wrapper/releases/download/v1.5/v1.5.tar.gz.sig
-	validpgpkeys = 8A260D8ABBEBEF75855FEFDF7C3D13CDCA5C947F
-	sha256sums = e01ed4f4dcf70ff99b308e88ae064b4086a1f9ce1e816a6521649f495fecc05c
+	source = vivado-wrapper-1.6.tar.gz::https://github.com/recolic/vivado-wrapper/archive/v1.6.tar.gz
+	source = vivado-wrapper-1.6.tar.gz.sig::https://github.com/recolic/vivado-wrapper/releases/download/v1.6/v1.6.tar.gz.sig
+	validpgpkeys = 6861D89984E7887F0FFE6E08C344D5EAE3933636
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vivado-wrapper
-
