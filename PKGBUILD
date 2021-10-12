@@ -1,18 +1,36 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=scute
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="GnuPG PKCS#11 module for using OpenPGP smartcards with X.509"
 arch=(i686 x86_64)
 url="https://github.com/gpg/scute"
 license=(GPL2)
-depends=(gnupg)
-makedepends=(texinfo)
-source=("https://gnupg.org/ftp/gcrypt/scute/scute-$pkgver.tar.bz2"
-        "https://gnupg.org/ftp/gcrypt/scute/scute-$pkgver.tar.bz2.sig")
-sha256sums=('511be523407590a586b7d61b5985af965dd91901b75d9650b55e9ae1d86d0ab0'
-            'SKIP')
-validpgpkeys=('4FA2082362FE73AD03B88830A8DC7067E25FBABB')
+depends=(
+    'gnupg'
+    'pinentry'
+)
+makedepends=(
+    'libgpg-error'
+    'libassuan'
+    'texinfo'
+)
+source=(
+    "https://gnupg.org/ftp/gcrypt/scute/scute-$pkgver.tar.bz2"
+    "https://gnupg.org/ftp/gcrypt/scute/scute-$pkgver.tar.bz2.sig"
+    "fix-build.patch"
+)
+sha1sums=(
+    '3f8a0ba9c7821049d51b982141a2330a246beb55'
+    'SKIP'
+    '71c853f6f12c036f3da0dc54ac2db91c2108bf00'
+)
+validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA')
+
+prepare() {
+    # https://dev.gnupg.org/rS49ad2b0e05e3fcb8c8c2e23bb1c6063b390dee02
+    patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/fix-build.patch"
+}
 
 build() {
   cd scute-$pkgver
