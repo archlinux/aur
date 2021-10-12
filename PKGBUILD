@@ -5,7 +5,7 @@
 pkgname=shared-bootdir-helper
 pkgver=1.3.1
 pkgrel=1
-pkgdesc="Allow multiple linux installations to share the same /boot directory, even with different kernel parameters. "
+pkgdesc="Allow multiple linux installations to share the same /boot directory, even with different kernel parameters. (GRUB only)"
 url="https://git.recolic.net/root/$pkgname"
 license=("GPL3")
 arch=("any")
