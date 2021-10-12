@@ -1,6 +1,6 @@
 pkgbase = plug-git
 	pkgdesc = Software for the Fender Mustang series of guitar amplifiers.
-	pkgver = v1.4.2.r47.g63fe913
+	pkgver = v1.4.2.r49.geaae4c6
 	pkgrel = 1
 	url = https://github.com/offa/plug
 	arch = x86_64
