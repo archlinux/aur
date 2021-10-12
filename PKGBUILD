@@ -4,7 +4,7 @@
 
 pkgname=python-coord
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for handling angle and celestial coordinates"
 arch=('x86_64')
 url="https://github.com/LSSTDESC/Coord"
@@ -20,7 +20,7 @@ build() {
 	cd "Coord-$pkgver"
 	python setup.py build
 	cd docs
-	make man
+	PYTHONPATH=../ make man
 }
 
 check() {

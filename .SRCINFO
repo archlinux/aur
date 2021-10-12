@@ -1,7 +1,7 @@
 pkgbase = python-coord
 	pkgdesc = Python module for handling angle and celestial coordinates
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LSSTDESC/Coord
 	changelog = CHANGELOG.rst
 	arch = x86_64
