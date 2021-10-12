@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sxemacs-git
-pkgver=22.1.17.1.ga354e10
+pkgver=22.1.17.4.g66cd362
 pkgrel=1
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
@@ -34,8 +34,9 @@ prepare() {
 build() {
   cd build
   ../${_gitname}/autogen.sh 
-  CFLAGS="$CFLAGS -I/usr/include/freetype2 -fcommon" \
-      ../${_gitname}/configure --prefix=/usr --with-openssl --with-athena=3d
+  CFLAGS="$CFLAGS -I/usr/include/freetype2" \
+	../${_gitname}/configure --prefix=/usr --with-openssl --with-athena=3d \
+	--without-database
   make
 }
 
