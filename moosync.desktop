@@ -6,4 +6,4 @@ Exec=moosync
 Terminal=false
 Type=Application
 Icon=moosync
-MimeType=application/moosync
+MimeType=x-scheme-handler/moosync;

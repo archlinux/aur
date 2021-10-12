@@ -11,7 +11,7 @@ provides=("${pkgname%-git}")
 depends=('electron')
 makedepends=('git' 'nodejs' 'yarn')
 source=("$pkgname-git::git+$url#branch=main" moosync moosync.desktop)
-sha256sums=('SKIP' 'e24c5f462072ff450c74ef6af0671d3e0cafc426735932b487d00a03b46acc8f' '9c915e1288c3cd11fa13eb3a9afd70477fe8d6370c6ae52bfd8382c397e9d8f7')
+sha256sums=('SKIP' 'e24c5f462072ff450c74ef6af0671d3e0cafc426735932b487d00a03b46acc8f' 'fe482568ab2cde3025477e9197f15a615ed81531a2fbf7b1a2f2f47645afa282')
 
 _get_tag() {
   _tag=$(git tag --list | grep '^v' | grep -v alpha | tail -n1)
