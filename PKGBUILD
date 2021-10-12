@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("${pkgname}")
 depends=('electron')
 source=("${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/releases/download/v0.0.5/moosync-0.0.5.pacman" moosync)
-sha256sums=('SKIP' '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba')
+sha256sums=('183b23bfba16e7f0fc6895f362515b4772629177dee93a3270c4592079119865' '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba')
 
 package() {
     cd "$srcdir"
