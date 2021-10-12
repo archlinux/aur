@@ -1,7 +1,7 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-rchitect
 _pkgname=${pkgname#python-}
-pkgver=0.3.32
+pkgver=0.3.33
 pkgrel=1
 pkgdesc="Minimal R API for Python"
 url="https://github.com/randy3k/$_pkgname"
@@ -11,14 +11,14 @@ depends=('r>3.4.0' 'python-multipledispatch' 'python-cffi>=1.10.0')
 makedepends=('python-setuptools' 'python-six>=1.9.0')
 checkdepends=('python-pytest')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('85dbfd71e7d72764d77786a49845085e64ae18b234c84162c72002475be5115f')
+sha256sums=('be682945d981327e2650f1aae2a3584d66fce3563158d60c7a941577b69a983b')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py build
 }
 
-check_disabled() { # unnamed error
+check_disabled() { # tests/test_reticulate.py unnamed error
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py test
 }
