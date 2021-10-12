@@ -6,7 +6,7 @@
 
 pkgname=yosys-git
 pkgrel=1
-pkgver=0.9+3627.r10276.e919d0c1
+pkgver=0.10+25.r10984.a0f5ba850
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
