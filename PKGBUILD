@@ -9,16 +9,16 @@
 # Contributor: Renan Birck <renan.ee.ufsm at gmail.com>
 
 pkgname=logisim-evolution
-pkgver=3.6.1
-pkgrel=3
+pkgver=3.7.0
+pkgrel=1
 pkgdesc='An educational tool for designing and simulating digital logic circuits (build from source)'
 provides=('logisim-evolution')
 conflicts=('logisim-evolution-git' 'logisim-evolution-bin')
 arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
 license=('GPL3')
-depends=('java-runtime>=14' 'hicolor-icon-theme')
-makedepends=('java-environment>=14')
+depends=('java-runtime>=16' 'hicolor-icon-theme')
+makedepends=('java-environment>=16')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/reds-heig/logisim-evolution/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
@@ -53,3 +53,5 @@ package() {
         -e 's|com.github.reds.LogisimEvolution|logisim-evolution|' \
         -i "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
+sha256sums=('7bf16724e11bc4e441c1a4a2c207a629a6933d7941898908847a668bd8b9c043'
+            'd5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba')
