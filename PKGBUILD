@@ -1,7 +1,8 @@
-# Maintainer: Mario Ray MahardhikZza <leledumbo_cool@yahoo.co.id>
+# Maintainer: Paragoumba <paragoumba@protonmail.com>
+# Contributor: Mario Ray MahardhikZza <leledumbo_cool@yahoo.co.id>
 
 pkgname=vdhcoapp-bin
-pkgver=1.6.1
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Companion application for Video DownloadHelper browser add-on, precompiled binary version"
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ options=('!strip') # IMPORTANT! DO NOT REMOVE THIS, OTHERWISE THE BINARY WILL BE
 source=(https://github.com/mi-g/vdhcoapp/releases/download/v${pkgver}/net.downloadhelper.coapp-${pkgver}-1_amd64.deb
         vdhcoapp-install.hook
         vdhcoapp-remove.hook)
-sha256sums=('c375ea1842535220f7f8a3b3b0c50173de75fb0354e9748d3fefb2973f71d9be'
+sha256sums=('d866b1ade5a24cf050810305f9be50f7a7848905322409922ad4d863d3a34756'
             'a2b56e6ae3f7f8933e20762baa90e69f63f0802b2e6d213b51e0bc68843e5d27'
             '3287859986d67e15e269965676bf9c75d1e853ea0ec97695811072fb8f10a7a8')
 
