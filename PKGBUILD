@@ -2,7 +2,7 @@
 # Contributor: Astro Benzene <universebenzene at sina dot com>
 
 pkgname="mkdocs-material-pymdownx-extras"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="MkDocs Material additions used for pymdownx documentation"
 url="https://github.com/facelessuser/mkdocs_pymdownx_material_extras"
@@ -14,7 +14,7 @@ replaces=("python-mkdocs-material-pymdownx-extras-git")
 depends=("mkdocs-material")
 makedepends=("python-setuptools" "git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("b8573aa879aa5bd84188c7c23f99613493c202e80afe25dc472eec6e2573dbd8")
+sha256sums=('257e157430723472b5d4d10be6bb1a3a8ab133055a7b3aa40afe60610f935861')
 
 build(){
  cd "mkdocs_pymdownx_material_extras-$pkgver"
