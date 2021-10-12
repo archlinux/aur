@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Başerdem <lastname dot firstname at gmail dot com>
 # Based on PKGBUILD by bserckx
 pkgname=hamsket
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Free and Open Source app that combines common web apps into one'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
     'git')
 provides=('hamsket')
 conflicts=('hamsket-bin' 'rambox' 'rambox-bin' 'rambox-os' 'ramboxpro-bin')
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/nightly/${pkgname}-${pkgver}.tar.gz")
 # For gendesk
 _name='Hamsket'
 _exec='/usr/bin/hamsket -- %u'
@@ -74,4 +74,4 @@ package() {
     # Install desktop file
     desktop-file-install "${srcdir}/${pkgname}.desktop" --dir "${pkgdir}/usr/share/applications/"
 }
-md5sums=('ad52b4fdf1a7d4e4f2d401a0bff00f91')
+md5sums=('7a5a036e93e5da6d338de636fb9b3faa')

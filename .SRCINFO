@@ -1,6 +1,6 @@
 pkgbase = hamsket
 	pkgdesc = Free and Open Source app that combines common web apps into one
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/TheGoddessInari/hamsket
 	arch = x86_64
@@ -19,8 +19,7 @@ pkgbase = hamsket
 	conflicts = rambox-bin
 	conflicts = rambox-os
 	conflicts = ramboxpro-bin
-	source = https://github.com/TheGoddessInari/hamsket/archive/0.6.2.tar.gz
-	md5sums = ad52b4fdf1a7d4e4f2d401a0bff00f91
+	source = hamsket-0.6.3.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/download/nightly/hamsket-0.6.3.tar.gz
+	md5sums = 7a5a036e93e5da6d338de636fb9b3faa
 
 pkgname = hamsket
-
