@@ -2,8 +2,8 @@
 # Contributor: david0
 
 pkgname=reaper-bin
-pkgver=6.36
-pkgrel=2
+pkgver=6.37
+pkgrel=1
 pkgdesc="A complete digital audio production application for computers, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset"
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
 url="https://reaper.fm"
@@ -15,10 +15,10 @@ source_x86_64=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_x86_64.tar.
 source_i686=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_i686.tar.xz")
 source_aarch64=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_aarch64.tar.xz")
 source_armv7l=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_armv7l.tar.xz")
-sha256sums_x86_64=('dc5d7cbd5e4beeb0667211884576f16f9a68d4360a4ded6beedb2c161f88bf4f')
-sha256sums_i686=('f40ab35fd632d4929e66d1190b68bcf07eb54f27f641b821420608cdd48cdaa5')
-sha256sums_aarch64=('2bc7232fd918acb1276ff2826e7eb17641b039ee51aa553ba2ff501d64f9371e')
-sha256sums_armv7l=('b3d8534d0aaf728d727db58055b908553396cf544c0a2844153c47136e0f6ab2')
+sha256sums_x86_64=('c59cfd8d572a06466abc5103dcd9115fff9acff111c42d0e05f01233eb756ae8')
+sha256sums_i686=('7894ca954e3a3b6eec24eb6bc3006c72dc9aeafeff88edb3e1eb50187c6eba69')
+sha256sums_aarch64=('a2c11ee31ada2be65a3e06d4b1ed5b547f40725811abcad42e2af5f87549f971')
+sha256sums_armv7l=('56c04f2f7a498707cc0c6e1614ed50a9b7e483fbdcac16aeda86fd8edf413709')
 
 _arch=$(uname -m)
 
