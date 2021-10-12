@@ -1,0 +1,18 @@
+pkgbase = shared-bootdir-helper
+	pkgdesc = Allow multiple linux installations to share the same /boot directory, even with different kernel parameters.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://git.recolic.net/root/shared-bootdir-helper
+	install = shared-bootdir-helper.install
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = sed
+	depends = grep
+	depends = mkinitcpio
+	backup = etc/shared-bootdir-helper-multi-kparam.cfg
+	source = shared-bootdir-helper::git+https://git.recolic.net/root/shared-bootdir-helper.git
+	validpgpkeys = 6861D89984E7887F0FFE6E08C344D5EAE3933636
+	sha256sums = SKIP
+
+pkgname = shared-bootdir-helper
