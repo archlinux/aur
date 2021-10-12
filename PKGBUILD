@@ -6,12 +6,12 @@
 pkgname=blobsaver-bin
 _pkgname=blobsaver
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform GUI app for saving SHSH blobs using tsschecker"
 arch=('x86_64')
 url='https://github.com/airsquared/blobsaver'
 license=('GPL3')
-depends=('java-runtime=16'
+depends=('java-runtime>=16'
          'bash'
          'zlib'
          )

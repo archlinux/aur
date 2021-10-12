@@ -1,12 +1,12 @@
 pkgbase = blobsaver-bin
 	pkgdesc = A cross-platform GUI app for saving SHSH blobs using tsschecker
 	pkgver = 3.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/airsquared/blobsaver
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
-	depends = java-runtime=16
+	depends = java-runtime>=16
 	depends = bash
 	depends = zlib
 	optdepends = libimobiledevice: Get plugged in device information
