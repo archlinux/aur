@@ -10,12 +10,12 @@ pkgname=${_target}-gcc-stage2
 pkgver=11.2.0
 _majorver=${pkgver%%.*}
 _islver=0.24
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection. Stage 2 for toolchain building (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-depends=("${_target}-binutils>=2.37-1" "${_target}-glibc-headers>=2.33-3" libmpc zlib)
+depends=("${_target}-binutils>=2.37-1" "${_target}-glibc-headers>=2.33-4" libmpc zlib)
 options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
