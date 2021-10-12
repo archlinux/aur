@@ -19,7 +19,7 @@ _get_tag() {
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "${pkgname}-git"
   _get_tag
   git reset --hard "$_tag"
 }
