@@ -8,7 +8,7 @@ pkgbase = moosync
 	makedepends = git
 	makedepends = nodejs
 	makedepends = yarn
-	depends = electron13
+	depends = electron
 	provides = moosync
 	source = moosync-git::git+https://github.com/Moosync/Moosync#branch=main
 	source = moosync
