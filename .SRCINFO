@@ -1,6 +1,6 @@
 pkgbase = rqlite-git
 	pkgdesc = A lightweight, distributed relational database, which uses SQLite as its storage engine
-	pkgver = ec2b6a0
+	pkgver = 6.6.0.f9e8dfc
 	pkgrel = 1
 	url = http://www.rqlite.com/
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = rqlite-git
 	sha256sums = 43c1094a6fdd04c18df738fdc85250f0cbcb87b2f8f23320f42f4ca0656f43fc
 
 pkgname = rqlite-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 _pkgbase=rqlite
 pkgname=rqlite-git
-pkgver=ec2b6a0
+pkgver=6.6.0.f9e8dfc
 pkgrel=1
 pkgdesc="A lightweight, distributed relational database, which uses SQLite as its storage engine"
 arch=(x86_64 aarch64)
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
             '43c1094a6fdd04c18df738fdc85250f0cbcb87b2f8f23320f42f4ca0656f43fc')
 pkgver(){
 	cd ${srcdir}/${_pkgbase}
-	git log --format=%h -1
+	echo $(git describe --tags | sed "s/v//").$(git log --format=%h -1)
 }
 check(){
 	export GOPATH=${srcdir}/go
