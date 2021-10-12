@@ -6,7 +6,7 @@ arch=('any')
 url='https://github.com/theeyeofcthulhu/term-sudoku'
 license=('GPL')
 makedepends=('git')
-depends=('ncurses' 'dialog')
+depends=('ncurses')
 source=("https://github.com/theeyeofcthulhu/term-sudoku/archive/refs/tags/v$pkgver.tar.gz")
 sha1sums=('SKIP')
 
