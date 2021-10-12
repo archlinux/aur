@@ -17,7 +17,7 @@ source=("caddy::git://github.com/caddyserver/caddy"
 	"Caddyfile"
 	"caddy.service")
 sha256sums=('SKIP'
-            'bcec35e3a514dffed5aae314cded658dd5fbd534d30756941ad37298bf066ab8'
+            '2bcb3cc1e19cec630ea64c014bba5463d49c45a2712d1107d1d10e87d3c023c6'
             '9bdd2741269a0ac2088f325ca7c08bfa01ddc707149e5027170bc8aeb83cf0aa')
 
 

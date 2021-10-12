@@ -4,9 +4,9 @@
 
 localhost {
 	rewrite /dav /dav/
-	webdav /some/path/match/* {
+	webdav /dav/* {
 		root /path
-		prefix /some/path/match
+		prefix /dav
 	}
 	root * /srv/http
 	file_server
