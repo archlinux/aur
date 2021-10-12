@@ -64,7 +64,7 @@ else
 	pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance)
 fi
 pkgver=470.74
-pkgrel=8
+pkgrel=9
 arch=('x86_64' 'aarch64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -153,17 +153,16 @@ prepare() {
         fi
     fi
 
-    registrydwords='"EnableBrightnessControl=1'
     if [ ! -z $_powermizer_scheme ] && [ -z $_override_max_perf ]; then
         echo "You have selected the powermizer scheme: $_powermizer_scheme"
         echo "If you don't like it in time you can change it with the Xorg "RegistryDwords" option (in the bit value)"
         echo "or rebuild it with the new value."
         if [ "$_powermizer_scheme" = "1" ]; then
-            registrydwords+=';PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault=0x3;PowerMizerDefaultAC=0x1'
+            registrydwords='"PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault=0x3;PowerMizerDefaultAC=0x1"'
         elif [ "$_powermizer_scheme" = "2" ]; then
-            registrydwords+=';PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3'
+            registrydwords='"PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3"'
         elif [ "$_powermizer_scheme" = "3" ]; then
-            registrydwords+=';PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3'
+            registrydwords='"PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3"'
 	else
             echo "You have selected the wrong powermizer scheme, please reread the option description in PKGBUILD."
         fi
@@ -174,16 +173,18 @@ prepare() {
         echo "If you don't like it in time you can change it with the Xorg "OverrideMaxPerf" option (in the bit value)"
         echo "or rebuild it with the new value."
         if [ "$_override_max_perf" = "1" ]; then
-	    registrydwords+=';OverrideMaxPerf=0x2'
+	    registrydwords='"OverrideMaxPerf=0x2"'
         elif [ "$_override_max_perf" = "2" ]; then
-	    registrydwords+=';OverrideMaxPerf=0x3'
+	    registrydwords='"OverrideMaxPerf=0x3"'
         else
             echo "You selected the wrong value for the performance level forcing. Please reread the option description in PKGBUILD."
         fi
     fi
 
-    sed -i "s/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, ${registrydwords}\"/" \
-		    kernel/nvidia/nv-reg.h
+    if [[ ! -z $registrydwords ]]; then
+        sed -i "s/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, ${registrydwords}\"/" \
+		      kernel/nvidia/nv-reg.h
+    fi
 
     # workaround for dkms+clang
     if [[ ! -z $_force_clang_usage ]]; then
