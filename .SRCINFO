@@ -1,7 +1,7 @@
 pkgbase = sysz
 	pkgdesc = fzf terminal UI for systemctl
 	pkgver = 1.4.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/joehillen/sysz
 	arch = any
 	license = UNLICENSE
