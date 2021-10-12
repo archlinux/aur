@@ -8,7 +8,7 @@
 
 ## Set 98 (Intel native) or 99 (AMD native)
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=98
+  _microarchitecture=0
 fi
 
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
@@ -43,7 +43,7 @@ _minor=11
 pkgver=${_major}.${_minor}
 _branch=5.x
 pkgrel=1
-pkgdesc='Linux kernel, with native CPU optimizations.'
+pkgdesc='Linux with cpu optimizations'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
@@ -149,7 +149,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules"
+  pkgdesc="The linux-cpu-optimized kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -176,7 +176,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  pkgdesc="Headers and scripts for building modules for the linux-cpu-optimized kernel"
   depends=(pahole)
 
   cd linux-${_major}.${_minor}
