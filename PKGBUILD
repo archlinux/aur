@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/Moosync/Moosync'
 license=('GPL3')
 provides=("${pkgname%-git}")
-depends=('electron13')
+depends=('electron')
 makedepends=('git' 'nodejs' 'yarn')
 source=("$pkgname-git::git+$url#branch=main" moosync moosync.desktop)
 sha256sums=('SKIP' '76fa98490ebc9c5b2e29a11b4a2abf72080a44903ae3dd53a8c0ff65ff5eee6b' 'e21b3972035947af7515bad24965a3786756cbfbf12e9c2df6d6029151a47da3')
