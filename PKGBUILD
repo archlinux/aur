@@ -1,8 +1,10 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Gregory G Danielson III <gregdan3@protonmail.com>
 
+## GPG key is available for download from upstream's repo
+
 pkgname=doppler-cli
-pkgver=3.33.0
+pkgver=3.33.2
 pkgrel=1
 pkgdesc="CLI utility for Doppler, environment and secrets manager"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -10,13 +12,16 @@ license=('Apache')
 url='https://doppler.com'
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dopplerhq/cli/archive/$pkgver.tar.gz")
-sha256sums=('be7c252bcfdfe2f1a67e656446436ea800ef84c02a3c1de10793e2c4f0908232')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dopplerhq/cli/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz"
+        "$pkgname-$pkgver.tar.gz.sig::https://github.com/dopplerhq/cli/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz.sig")
+sha256sums=('cbe43abc96fbb3e95193af38c34ff59426834578b1646bca63865a079596d0a4'
+            'SKIP')
+validpgpkeys=('B70BD7FCA460C4A3D0EEB965D3D593D50EE79DEC')
 
 prepare() {
-	mkdir -p "cli-$pkgver/build"
+	mkdir -p build
 	## remove self-update functionality
-	sed -i '/rootCmd.AddCommand/d' "cli-$pkgver/pkg/cmd/update.go"
+	sed -i '/rootCmd.AddCommand/d' pkg/cmd/update.go
 }
 
 build() {
@@ -26,7 +31,6 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-	cd "cli-$pkgver"
 	go build -o build -ldflags="-linkmode=external -X github.com/DopplerHQ/cli/pkg/version.ProgramVersion=$pkgver"
 	build/cli completion bash > build/doppler.bash
 	build/cli completion zsh > build/_doppler
@@ -34,12 +38,10 @@ build() {
 }
 
 check() {
-	cd "cli-$pkgver"
 	go test ./...
 }
 
 package() {
-	cd "cli-$pkgver"
 	install -D build/cli "$pkgdir/usr/bin/doppler"
 	install -Dm 644 build/doppler.bash "$pkgdir/usr/share/bash-completion/completions/doppler"
 	install -Dm 644 build/_doppler -t "$pkgdir/usr/share/zsh/site-functions/"
