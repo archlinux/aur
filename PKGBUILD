@@ -5,13 +5,13 @@ _base=viscm
 pkgname=python-${_base}
 pkgdesc="A tool for visualizing and designing colormaps using colorspacious and matplotlib"
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/matplotlib/${_base}"
 license=(MIT)
 depends=(python-matplotlib python-colorspacious)
-makedepends=(python-setuptools python-scipy)
-checkdepends=(python-pyqt5 scipy)
+makedepends=(python-setuptools)
+checkdepends=(python-pyqt5 python-scipy)
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('aa352f12c243f9940297dc2799e1ad1e649f8bfc0c3a5bb772f351ec0d3c380619382da847e090c1191840036a3f06ccf552658c59ce2296f576e5213884e334')
 
