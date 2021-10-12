@@ -7,6 +7,7 @@ Type=simple
 User=zwavejs2mqtt
 Group=zwavejs2mqtt
 ExecStart=/usr/bin/node /usr/share/webapps/zwavejs2mqtt/server/bin/www.js
+Environment=ZWAVEJS_EXTERNAL_CONFIG=/var/lib/zwavejs2mqtt/.config-db
 PrivateTmp=true
 ProtectSystem=full
 ProtectHome=true
