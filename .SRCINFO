@@ -1,6 +1,6 @@
 pkgbase = qarma-git
-	pkgdesc = A drop-in replacement clone for zenity, written in Qt4/5, Qt5 build
-	pkgver = 70
+	pkgdesc = A drop-in replacement clone for zenity, written in Qt, Qt5 build
+	pkgver = 72.605ea42
 	pkgrel = 1
 	url = https://github.com/luebking/qarma
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = qarma-git
 	depends = qt5-x11extras
 	provides = qarma
 	provides = zenity
-	conflicts = zenity
 	conflicts = qarma
+	conflicts = zenity
 	source = git+https://github.com/luebking/qarma
 	md5sums = SKIP
 
