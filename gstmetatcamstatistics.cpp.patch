@@ -1,0 +1,11 @@
+--- src/tiscamera-v-tiscamera-0.14.0/src/gstreamer-1.0/gstmetatcamstatistics.cpp	2021-10-12 14:59:29.813457696 -0400
++++ /home/jason/gstmetatcamstatistics.cpp	2021-10-12 14:57:39.063456744 -0400
+@@ -19,7 +19,7 @@
+ 
+ GType tcam_statistics_meta_api_get_type (void)
+ {
+-    static volatile GType type;
++    static GType type;
+     static const gchar* tags[] = {"id", "val", NULL};
+ 
+     if (g_once_init_enter(&type))

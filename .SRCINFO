@@ -1,0 +1,11 @@
+pkgbase = tiscamera
+	pkgdesc = The Linux SDK for The Imaging Source cameras.
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/TheImagingSource
+	arch = x86_64
+	license = APACHE
+	source = tiscamera-0.14.0.tar.gz::https://github.com/TheImagingSource/tiscamera/archive/refs/tags/v-tiscamera-0.14.0.tar.gz
+	md5sums = 63bf7759737ae69fa0a79f4a8001a116
+
+pkgname = tiscamera
