@@ -1,7 +1,7 @@
 # Maintainer: Brice Vissière <dev at pystash dot me>
 pkgname=mdatp-bin
 _actual_pkgname=mdatp
-pkgver=101.39.98
+pkgver=101.45.00
 pkgrel=0
 pkgdesc='Microsoft Defender Advanced Threat Protection for Endpoints'
 arch=('x86_64')
@@ -15,11 +15,11 @@ url=https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/li
 depends=(systemd libselinux)
 
 source=(
-    "https://packages.microsoft.com/debian/10/prod/pool/main/m/${_actual_pkgname}/${_actual_pkgname}_${pkgver}.amd64.deb"
+    "https://packages.microsoft.com/debian/11/prod/pool/main/m/${_actual_pkgname}/${_actual_pkgname}_${pkgver}.amd64.deb"
     mdatp-user.conf
 )
 
-sha256sums=('66a205cdcfd0101d2ffb87dd2ab98a2c4d910e060d90f05739219ac8f2824dd8'
+sha256sums=('e6bf6ec6dee9242a8608578de115b0480159a317dc8c58950a476262014b51d2'
             'd516a208a443dd35716250f9a9ef9b12f7e752ba91a213c70cb4592ab8c0435c')
 
 prepare() {
