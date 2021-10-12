@@ -1,29 +1,22 @@
 # Maintainer: Dāvis Mosāns <davispuh at gmail dot com>
 
 pkgname=epicgames-freebies-claimer
-pkgver=V1.4.1
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Automatically claim free game promotions from the Epic Game Store."
 arch=("any")
 url="https://github.com/Revadike/epicgames-freebies-claimer"
 license=("MIT")
-depends=("nodejs" "sh")
-makedepends=("npm" "sed" "curl" "jq")
-source=("epicgames-freebies-claimer" "epicgames-freebies-claimer.service")
-sha256sums=("ef1f2943deb5776fa3fa44b850c202373b222b8232c02832f102c80f693d0630"
-            "26001be311424a616f2c4ca35de68d5427d918b4849857e36dba0eeb88ac6a22")
-
-pkgver() {
-    curl -s https://api.github.com/repos/Revadike/epicgames-freebies-claimer/releases/latest | jq -r '.tag_name'
-}
-
-prepare() {
-    tarballUrl=$(curl -s https://api.github.com/repos/Revadike/epicgames-freebies-claimer/releases/latest | jq -r '.tarball_url')
-    curl -L "$tarballUrl" > "$srcdir/tarball.tar.gz"
-}
+depends=("nodejs")
+makedepends=("npm")
+source=("https://github.com/Revadike/epicgames-freebies-claimer/archive/refs/tags/V$pkgver.tar.gz"
+        "epicgames-freebies-claimer" "epicgames-freebies-claimer.service")
+sha256sums=('c8a7471f7922ed315e5bccfa7410b0cae56a9616d37ec466b53acb3165b3086d'
+            'ef1f2943deb5776fa3fa44b850c202373b222b8232c02832f102c80f693d0630'
+            '26001be311424a616f2c4ca35de68d5427d918b4849857e36dba0eeb88ac6a22')
 
 package() {
-    npm install -g --user root --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$srcdir/tarball.tar.gz"
+    npm install -g --user root --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$srcdir/V$pkgver.tar.gz"
 
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/npm/issues/9359 for details.
