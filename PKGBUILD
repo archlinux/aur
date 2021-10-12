@@ -3,7 +3,7 @@
 # Contributor: jnbek
 pkgname=ttf-vista-fonts
 pkgver=1
-pkgrel=10
+pkgrel=11
 pkgdesc="Microsoft Vista and Office 2007 True Type Fonts"
 url="https://docs.microsoft.com/en-us/typography/fonts/font-faq"
 license=('custom:microsoft')

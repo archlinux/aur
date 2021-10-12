@@ -1,7 +1,6 @@
 post_install() {
-	rebuild_font_cache
-  echo
-  echo
+	echo
+	echo
 	echo "######################################################################"
 	echo "#                                                                    #"
 	echo "# LICENSE AGREEEMENT for ttf-vista-fonts                             #"
@@ -13,29 +12,3 @@ post_install() {
 	echo "######################################################################"
 	echo
 }
-
-post_upgrade() {
-	rebuild_font_cache
-}
-
-pre_remove() {
-  /bin/true
-}
-
-# arg 1:  the old package version
-post_remove() {
-	rebuild_font_cache
-}
-
-rebuild_font_cache() {
-  echo -n "Rebuilding font cache... "
-  fc-cache /usr/share/fonts/TTF
-  mkfontscale /usr/share/fonts/TTF
-  mkfontdir /usr/share/fonts/TTF
-  echo "done."
-}
-
-op=$1
-shift
-
-$op $*

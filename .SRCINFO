@@ -1,7 +1,7 @@
 pkgbase = ttf-vista-fonts
 	pkgdesc = Microsoft Vista and Office 2007 True Type Fonts
 	pkgver = 1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://docs.microsoft.com/en-us/typography/fonts/font-faq
 	install = ttf-vista-fonts.install
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = ttf-vista-fonts
 	sha256sums = 249473568eba7a1e4f95498acba594e0f42e6581add4dead70c1dfb908a09423
 
 pkgname = ttf-vista-fonts
-
