@@ -1,0 +1,16 @@
+pkgbase = gosc
+	pkgdesc = Cross platform text based spreadsheet calculator written in Go.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/scrouthtv/gosc
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	makedepends = go
+	depends = glibc
+	source = gosc-1.2.tar.gz::https://github.com/scrouthtv/gosc/archive/refs/tags/v1.2.tar.gz
+	sha512sums = 56e08856da76f3d24cca8d557fe382622eff380c81c6546d952152db86070d09bb9d5d5b72cc211e4b982fab746ffa887234b5c377d5dea0ae6177c1f29a3c8a
+
+pkgname = gosc

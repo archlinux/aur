@@ -1,0 +1,4 @@
+gosc-*.tar.gz
+gosc-*.pkg.tar.*
+pkg/
+src/
