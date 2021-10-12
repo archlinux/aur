@@ -2,7 +2,7 @@
 # https://gitlab.com/lulzbot3d/cura-le/curabuild-lulzbot/
 pkgname=cura-lulzbot
 pkgver=3.6.21
-pkgrel=6
+pkgrel=7
 pkgdesc='Cura LulzBot Edition for LulzBot 3D Printers by Aleph Objects, Inc.'
 arch=('x86_64')
 url='https://www.lulzbot.com/cura'
@@ -37,7 +37,7 @@ makedepends=('cmake'
              'python-sip'
              'python-zeroconf'
              'qt5-tools'
-             'sip')
+             'sip4')
 optdepends=('python-zeroconf: Detecting mDNS printers'
             'python-pyserial: USB printing')
 
@@ -130,4 +130,4 @@ package() {
 # We also need to manually install openblas to avoid a conflict with blas.
 #
 # Ex.
-# extra-x86_64-build -- -c -I ~/builds/libffi6/libffi6-3.2.1-1-x86_64.pkg.tar.zst -I ~/builds/python-numpy-stl/python-numpy-stl-2.11.2-1-any.pkg.tar.zst -I /var/cache/pacman/pkg/openblas-0.3.10-1-x86_64.pkg.tar.zst
+# extra-x86_64-build -- -c -I ~/builds/libffi6/libffi6-3.2.1-1-x86_64.pkg.tar.zst -I ~/builds/python-numpy-stl/python-numpy-stl-2.16.3-1-x86_64.pkg.tar.zst -I /var/cache/pacman/pkg/openblas-0.3.18-1-x86_64.pkg.tar.zst
