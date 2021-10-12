@@ -1,6 +1,6 @@
 pkgbase = princeprocessor-git
 	pkgdesc = Standalone password candidate generator using the PRINCE algorithm.
-	pkgver = v0.22.r0.gbffda8c
+	pkgver = v0.22.r4.ge4e7d89
 	pkgrel = 1
 	url = https://github.com/hashcat/princeprocessor
 	arch = i686
