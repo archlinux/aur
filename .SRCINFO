@@ -1,6 +1,6 @@
 pkgbase = moneydance
 	pkgdesc = A personal finance manager for Mac, Windows and Linux
-	pkgver = 2021.1.3069
+	pkgver = 2022.4055
 	pkgrel = 1
 	url = https://www.moneydance.com/
 	arch = i686
@@ -14,10 +14,9 @@ pkgbase = moneydance
 	source = moneydance.desktop
 	sha256sums = eff9da311388e046e33f2c3669b0229b92bc650eb5f76589233afaa41dc39109
 	sha256sums = 242dc66a95c4842099e41092bd87ccaf97c314bed1f9865f5c6a72f135f7de21
-	source_x86_64 = moneydance_amd64-2021.1.3069-1.tar.gz::https://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5f239295cf65fddde3abbb3cd8fd0fae5c84f97e6162d387e3a58b19a746d4fe
-	source_aarch64 = moneydance_amd64-2021.1.3069-1.tar.gz::https://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz
-	sha256sums_aarch64 = 5f239295cf65fddde3abbb3cd8fd0fae5c84f97e6162d387e3a58b19a746d4fe
+	source_x86_64 = moneydance_amd64-2022.4055-1.tar.gz::https://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz
+	sha256sums_x86_64 = 380a1f2846c95c6874fbfe4d19d9a70f4b1f5f6d16caa67f21b9e5bc4fca819a
+	source_aarch64 = moneydance_amd64-2022.4055-1.tar.gz::https://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz
+	sha256sums_aarch64 = 380a1f2846c95c6874fbfe4d19d9a70f4b1f5f6d16caa67f21b9e5bc4fca819a
 
 pkgname = moneydance
-
