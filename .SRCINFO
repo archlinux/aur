@@ -1,6 +1,6 @@
 pkgbase = moosync
 	pkgdesc = A simple music player
-	pkgver = 0.0.4.r74.ga03892d
+	pkgver = 0.0.5.r0.g54c0473
 	pkgrel = 1
 	url = https://github.com/Moosync/Moosync
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = moosync
 	source = moosync.desktop
 	sha256sums = SKIP
 	sha256sums = 76fa98490ebc9c5b2e29a11b4a2abf72080a44903ae3dd53a8c0ff65ff5eee6b
-	sha256sums = e21b3972035947af7515bad24965a3786756cbfbf12e9c2df6d6029151a47da3
+	sha256sums = fe482568ab2cde3025477e9197f15a615ed81531a2fbf7b1a2f2f47645afa282
 
 pkgname = moosync

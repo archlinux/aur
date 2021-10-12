@@ -1,7 +1,7 @@
 # Maintainer: Sahil Gupte <ovenoboyo@gmail.com>
 
 pkgname=moosync
-pkgver=0.0.4.r74.ga03892d
+pkgver=0.0.5.r0.g54c0473
 pkgrel=1
 pkgdesc='A simple music player'
 arch=('x86_64')
@@ -12,6 +12,17 @@ depends=('electron')
 makedepends=('git' 'nodejs' 'yarn')
 source=("$pkgname-git::git+$url#branch=main" moosync moosync.desktop)
 sha256sums=('SKIP' '76fa98490ebc9c5b2e29a11b4a2abf72080a44903ae3dd53a8c0ff65ff5eee6b' 'fe482568ab2cde3025477e9197f15a615ed81531a2fbf7b1a2f2f47645afa282')
+
+_get_tag() {
+  _tag=$(git tag --list | grep '^v' | grep -v alpha | tail -n1)
+  echo "Selected git tag: $_tag" >&2
+}
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  _get_tag
+  git reset --hard "$_tag"
+}
 
 pkgver() {
   cd "${pkgname}-git"
