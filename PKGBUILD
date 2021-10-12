@@ -5,8 +5,8 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.5.3.1.r221.g96516285
-pkgrel=3
+pkgver=v0.5.3.1.r524.g17d1cad6
+pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
@@ -84,7 +84,7 @@ build() {
         /p:SuppressNETCoreSdkPreviewMessage=true
 
     dotnet "./$_pkgname/out-udev/$_pkgname.Tools.udev.dll" \
-        "$srcdir/$_pkgname/$_pkgname/Configurations" \
+        "$srcdir/$_pkgname/$_pkgname.Configurations/Configurations" \
         "90-$_lpkgname.rules" > /dev/null
 }
 
@@ -103,7 +103,6 @@ package() {
 
     install -Dm 644 -o root "$srcdir/$_pkgname/90-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
     install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname.UX/Assets/$_spkgname.png" -t "$pkgdir/usr/share/pixmaps"
-    cp -r "$srcdir/$_pkgname/$_pkgname/Configurations" "$pkgdir/usr/share/$_pkgname/"
 
     install -Dm 755 -o root "$_spkgname" -t "$pkgdir/usr/bin"
     install -Dm 755 -o root "$_spkgname-gui" -t "$pkgdir/usr/bin"
