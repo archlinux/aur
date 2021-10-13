@@ -43,8 +43,8 @@ makedepends=(
 arch=('any')
 url="https://github.com/jbuchermn/newm"
 source=(
-	'git://github.com/jbuchermn/pywm.git'
-	'git://github.com/jbuchermn/newm.git'
+	'git+https://github.com/jbuchermn/pywm.git'
+	'git+https://github.com/jbuchermn/newm.git'
 )
 md5sums=(
 	'SKIP'

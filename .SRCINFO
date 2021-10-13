@@ -34,8 +34,8 @@ pkgbase = newm-git
 	depends = python-fuzzywuzzy
 	provides = newm
 	conflicts = newm
-	source = git://github.com/jbuchermn/pywm.git
-	source = git://github.com/jbuchermn/newm.git
+	source = git+https://github.com/jbuchermn/pywm.git
+	source = git+https://github.com/jbuchermn/newm.git
 	md5sums = SKIP
 	md5sums = SKIP
 
