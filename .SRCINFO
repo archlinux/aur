@@ -7,11 +7,12 @@ pkgbase = dolfin
 	arch = x86_64
 	groups = fenics
 	license = LGPL3
+	depends = boost
 	depends = cppunit
 	depends = eigen
 	depends = gl2ps
-	depends = python-ffc=2019.1.0
 	depends = petsc
+	depends = python-ffc=2019.1.0
 	depends = suitesparse
 	optdepends = scotch: libraries for graph, mesh and hypergraph partitioning
 	optdepends = slepc: eigenvalue problem solvers
