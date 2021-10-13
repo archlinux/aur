@@ -1,12 +1,11 @@
 pkgbase = python-colorio
 	pkgdesc = Tools for color models
 	pkgver = 0.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nschloe/colorio
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
-	makedepends = git-lfs
 	depends = python-matplotlib
 	depends = python-npx
 	optdepends = python-meshio: for creation mesh
@@ -16,7 +15,7 @@ pkgbase = python-colorio
 	optdepends = python-pyvista: for creation unstructured grid and plotter
 	optdepends = python-scipy: for curve fit support
 	optdepends = vtk: for create VTK hexahedron support
-	source = git+https://github.com/nschloe/colorio.git#tag=v0.8.4
-	sha512sums = SKIP
+	source = https://pypi.org/packages/source/c/colorio/colorio-0.8.4.tar.gz
+	sha512sums = af5c142c4b61a336f4c5da444fc0b33539d62fad3fea70ac3435ed74b83ed7153901ed06aa9193875b640276c5378735c1d905d89f8cbd6fe0b2f7dfd6e49ce4
 
 pkgname = python-colorio
