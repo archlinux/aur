@@ -14,4 +14,3 @@ pkgbase = python-fiat
 	sha256sums = 341a1046cbe0f5f2eb26630c2f71f378b0dca51daf9892a54a2ff193970371e9
 
 pkgname = python-fiat
-
