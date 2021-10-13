@@ -4,7 +4,7 @@ _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color models"
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=('GPL3')
@@ -18,7 +18,7 @@ optdepends=('python-meshio: for creation mesh'
   'python-pyvista: for creation unstructured grid and plotter'
   'python-scipy: for curve fit support'
   'vtk: for create VTK hexahedron support')
-source=("git+${url}.git#tag=${pkgver}")
+source=("git+${url}.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
 export GIT_LFS_SKIP_SMUDGE=1
