@@ -1,12 +1,14 @@
 pkgbase = ptcollab-git
 	pkgdesc = Multiplayer music editor
-	pkgver = 0.4.3.r20.gdd2f630
+	pkgver = 0.4.3.r40.g537c7e1
 	pkgrel = 1
 	url = https://yuxshao.github.io/ptcollab/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = qt5-tools
+	makedepends = qt5-multimedia
+	makedepends = libogg
 	depends = qt5-base
 	depends = rtmidi
 	provides = ptcollab
