@@ -11,7 +11,6 @@ pkgbase = gcsvedit-git
 	makedepends = git
 	depends = gtk3
 	depends = libxml2
-	depends = gtksourceview3
 	depends = libtepl-6.so
 	depends = gtksourceview4
 	provides = gcsvedit=0.8.0+58+gc1c7746
