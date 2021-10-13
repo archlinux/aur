@@ -10,6 +10,7 @@ pkgbase = ptcollab-git
 	makedepends = qt5-tools
 	makedepends = qt5-multimedia
 	makedepends = libogg
+	makedepends = libvorbis
 	depends = qt5-base
 	depends = rtmidi
 	provides = ptcollab
