@@ -5,6 +5,9 @@ pkgbase = kubergrunt
 	url = https://github.com/gruntwork-io/kubergrunt
 	arch = x86_64
 	license = Apache-2
+	optdepends = terraform
+	optdepends = kubectl
+	optdepends = helm
 	source = https://github.com/gruntwork-io/kubergrunt/releases/download/v0.7.9/kubergrunt_linux_amd64
 	sha256sums = c6c75248e72ecdfecfe5a6b2018491d0301589da4772345457860ad67bffcfb7
 
