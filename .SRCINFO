@@ -1,0 +1,17 @@
+pkgbase = ruby-asciidoctor-epub3
+	pkgdesc = An extension for Asciidoctor that converts AsciiDoc documents to EPUB3 and KF8/MOBI (Kindle) e-book archives
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/asciidoctor/asciidoctor-epub3
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	depends = asciidoctor
+	depends = ruby-gepub
+	depends = ruby-mime-types
+	noextract = asciidoctor-epub3-1.5.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/asciidoctor-epub3-1.5.1.gem
+	sha256sums = efff22bcd2e8562f8ab0df7e13de0247dd8edb3fc41e6286b36ca330c5a69e16
+
+pkgname = ruby-asciidoctor-epub3
