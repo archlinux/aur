@@ -74,7 +74,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.14
-_minor=11
+_minor=12
 _srcname=linux-${_major}
 _clr=${_major}.9-1079
 pkgbase=linux-clear
@@ -91,7 +91,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
+  "$pkgbase::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/e2d48df5def86f498766b22e836a9c2f1bcb3809/linux-5.14.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
   "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/e2d48df5def86f498766b22e836a9c2f1bcb3809/linux-5.14.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
@@ -115,9 +115,9 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-    for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | sed -n 's/.*: //p'); do
+    for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux.spec | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
-        patch -Np1 -i "$srcdir/clearlinux/${i}"
+        patch -Np1 -i "$srcdir/$pkgbase/${i}"
     done
 
     local src
@@ -131,7 +131,7 @@ prepare() {
 
     ### Setting config
     echo "Setting config..."
-    cp -Tf $srcdir/clearlinux/config ./.config
+    cp -Tf $srcdir/$pkgbase/config ./.config
 
     ### Enable extra stuff from arch kernel
     echo "Enable extra stuff from arch kernel..."
@@ -181,6 +181,7 @@ prepare() {
     scripts/config --enable FONT_TER16x32
 
     make olddefconfig
+    diff -u $srcdir/$pkgbase/config .config || :
 
     # https://github.com/graysky2/kernel_compiler_patch
     # make sure to apply after olddefconfig to allow the next section
@@ -353,7 +354,7 @@ done
 
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            'c073f72d39b2915659c629a8a17c43e59bd77d77564312be99045ab826d7f3d4'
+            '1553ab8d8e8485716be25c220850496522065b49ac6e4a8d3f9129439c2ed46d'
             'SKIP'
             'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611'
             '1c7aee7bccb1d848887b0cef273518badb09021788b148db1c6168d4c761f1fd'
