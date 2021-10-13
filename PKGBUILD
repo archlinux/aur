@@ -76,7 +76,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.14.10-xanmod1
+xanmod=5.14.11-xanmod1
 pkgver=${xanmod//-/.}
 #pkgver=5.14.9.xanpre0     # NOTE: start 4th position with 'xan...', we rely on parsing for '.xan...' later
 pkgrel=1
@@ -162,7 +162,7 @@ validpgpkeys=(
 
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            '5654fbd2b5de93d9d5ca3f458ae2a6668d04e01fbb5947637d63030263a35fac'
+            '28a693aa89638012562172da2790e951f233f222e288c83f9e568ce28a542bbb'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
