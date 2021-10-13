@@ -3,7 +3,7 @@
 # Contributor: florianbw <florian.bw gmail.com>
 
 pkgname=cytoscape
-pkgver=3.8.2
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Network Data Integration, Analysis, and Visualization in a Box"
 arch=('any')
@@ -15,15 +15,15 @@ source=("https://github.com/cytoscape/cytoscape/releases/download/${pkgver}/cyto
         "${pkgname}.png"
         "${pkgname}")
 
-sha256sums=('1cfd9385236dfd14bb380a930c9a2303d46c4216671cf7ae49b86e6f71c2fa7d'
+sha256sums=('ed80e6a23cd0ba31ebb03b81ed60b40b7676b2b4ddf5052f7a1d5b6a87772af5'
             'f4476545086f845e1cec5861169270da9f82a6ad4944972010827a567af0c7d0'
             '135faa3f0beb8ecc1b704cf376408e8bd5f62f32ba50a84002c14321d0bb0b68'
-            'ac32353b765e16f9f8b82218ae9edae15082fe0dc93f91023b1cc029bb5c1a94')
+            'b16706514961f0d206a0e9c22dbf0bb9e74985e30163b1e26400121947688190')
 
 prepare() {
   cd ${pkgname}-unix-${pkgver}
   sed -i 's#^\(vm_options_path\)=.*$#\1="\${HOME}/CytoscapeConfiguration"#' cytoscape.sh gen_vmoptions.sh
-  sed -i '/^KARAF_SCRIPT/a KARAF_INSTANCES="\${HOME}/CytoscapeConfiguration/instances"' framework/bin/karaf
+  sed -i '/^LOCAL_CLASSPATH/a KARAF_INSTANCES="\${HOME}/CytoscapeConfiguration/instances"' framework/bin/karaf
   sed -i 's#\${KARAF_HOME}/instances#\${KARAF_INSTANCES}#' framework/bin/karaf
 }
 
