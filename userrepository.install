@@ -9,6 +9,12 @@ msg() {
 post_install() {
     msg "Thank you for installing userrepository.eu"
     echo ""
+    msg "To activate the repository, please add the following to /etc/pacman.conf"
+    echo ""
+    msg "[userrepository]"
+    echo ""
+    msg "Include = /etc/pacman.d/userrepository-mirrorlist"
+    echo ""
     msg "You can edit the mirror file at:"
     echo ""
     msg "/etc/pacman.d/userrepository-mirrorlist"

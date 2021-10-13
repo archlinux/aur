@@ -1,5 +1,10 @@
+# Fosshost CDN in partnership with Fastly
+# Synced after every build
+# This is the recomended server
+Server = https://mirrors.fossho.st/userrepository/
+
 # Main repository
-# [userrepository]
 Server = https://userrepository.eu
+
 SigLevel = Optional TrustAll
 

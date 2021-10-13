@@ -1,8 +1,8 @@
-# Maintainer: Bruno Miguel <https://twitter.com/brunomiguel>
+# Maintainer: Bruno Miguel <bruno@userrepository.eu>
 
 pkgname=userrepository-mirrorlist
-pkgver=0.0.2
-pkgrel=3
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="Userrepository.eu mirror list for pacman"
 arch=('any')
 url="https://github.com/brunomiguel/userrepository-mirrorlist"
@@ -10,6 +10,7 @@ license=('GPL3')
 backup=(etc/pacman.d/userrepository-mirrorlist)
 source=(mirrorlist)
 install=userrepository.install
+sha256sums=('11d85348a61fe85e173424313d3affc39d565c3d58f7222fd7e1303be5f53a31')
 
 # NOTE on building this package:
 # * Go to the trunk/ directory
@@ -26,6 +27,4 @@ package() {
   mkdir -p "$pkgdir/etc/pacman.d"
   install -m644 "$srcdir/mirrorlist" "$pkgdir/etc/pacman.d/userrepository-mirrorlist"
 }
-
-sha256sums=('5558c32995ca1ae359709cb63f9dafd57db64bc9ff11626b3e110c9e0d290599')
 
