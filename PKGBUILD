@@ -1,21 +1,35 @@
 # Maintainer: Ruben
 # Contributor: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
+_major=1
+_minor=0
+_patch=4
 pkgname=dnieremote-bin
-pkgver=1.0
-pkgrel=4
+pkgver="${_major}.${_minor}.${_patch}"
+pkgrel=1
 pkgdesc="DNIeRemote enable to use the smartphone as reader for Spanish DNI"
 arch=('x86_64')
 url="https://www.dnielectronico.es/"
 license=('custom')
 depends=('gtkmm3')
-source=("https://www.dnielectronico.es/descargas/Apps/DNIeRemote_${pkgver}-${pkgrel}_amd64.zip"
-        "https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf")
-sha256sums=('c56acb2e01a75ad00dc2e6b940f4040140f979a9446415d5932118bd3a014bee'
-            'afb1520fc5d3329d5ef271d89b6c7026d9208b79c52de0d491eaf543d642f9d0')
+source=("https://www.dnielectronico.es/descargas/Apps/DNIeRemote_${_major}.${_minor}-${_patch}_amd64.zip")
+sha256sums=('c56acb2e01a75ad00dc2e6b940f4040140f979a9446415d5932118bd3a014bee')
+
+prepare() {
+  # Create docfile
+  cat << EOF > README.txt
+# DNIeRemote
+
+Puedes acceder al manual de DNIeRemote en línea en la URL:
+https://www.dnielectronico.es/descargas/Apps/manual_DNIeRemote.html
+
+También es posible descargar una versión en PDF en la URL:
+https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf
+EOF
+}
 
 package() {
-  bsdtar -O -xf "DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+  bsdtar -O -xf "DNIeRemoteSetup_${_major}.${_minor}-${_patch}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
 
   # Fix permissions
   find "${pkgdir}" -type f -exec chmod 644 {} \;
@@ -29,6 +43,6 @@ package() {
   ln -fsT "libdnieremotepkcs11.so.0.0.3" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
   ln -fsT "libdnieremotepkcs11.so.0.0.3" "${pkgdir}/usr/lib/libdnieremotepkcs11.so"
 
-  # Install manual
-  install -D -m644 "DNIeRemote_user_manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/README.pdf"
+  # Install docfile
+  install -D -m644 "README.txt" "${pkgdir}/usr/share/doc/${pkgname}/README.txt"
 }
