@@ -126,7 +126,4 @@ ReadWritePaths = /usr/share/webapps/${_pkgname}/tmp/" > "${pkgdir}"/etc/systemd/
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
-
-    # Install the license.
-    install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
 }
