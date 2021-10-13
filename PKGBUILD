@@ -30,5 +30,5 @@ package() {
 
         cd "$srcdir/quadlet"
         install -vDm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-        cp -vr "examples" "$pkgdir/usr/share/doc/$pkgname"
+        cp -vr "docs" "examples" "$pkgdir/usr/share/doc/$pkgname"
 }
