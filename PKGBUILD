@@ -2,7 +2,7 @@
 
 pkgname=v2raya-git
 pkgver=20211002.r1020.a526160
-pkgrel=1
+pkgrel=2
 install=.INSTALL
 pkgdesc="v2rayA nightly version"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -34,7 +34,7 @@ build() {
 
     cd "$srcdir/$pkgname/service"
     export GO111MODULE=on
-    export GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
+    export GOPROXY=https://goproxy.cn,direct
     go build -ldflags '-X github.com/v2rayA/v2rayA/conf.Version=unstable-'"$(pkgver)"' -s -w' -o v2raya
 }
 
