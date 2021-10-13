@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest at mac dot com>
 
 pkgname=s
-pkgver=0.5.16
+pkgver=0.6.0
 pkgrel=0
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("s")
 source=("https://github.com/zquestz/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('08b7082ff900c7ec61905d954b7025dc6f780c23c81f2f13e200b2bbd7a2ef9c')
+sha256sums=('0019e21dba7bb30e4de279b71e027c7d78f3236d709c2fe5be39b38d22aa7097')
 
 build() {
   mkdir -p "${srcdir}/go/src/github.com/zquestz"
@@ -33,8 +33,4 @@ package() {
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" \
     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm 644 "autocomplete/s-completion.bash" \
-    "${pkgdir}/usr/share/bash-completion/completions/s"
-  install -Dm644 "autocomplete/s.fish" \
-    "${pkgdir}/usr/share/fish/vendor-completions.d/s.fish"
 }
