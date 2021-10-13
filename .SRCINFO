@@ -1,0 +1,15 @@
+pkgbase = nvidia-launcher
+	pkgdesc = Launch applications with NVIDIA graphics card
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://gitlab.com/WheelchairArtist/nvidia-launcher
+	arch = x86_64
+	license = GPL2
+	makedepends = gendesk
+	depends = kdialog
+	depends = bumblebee
+	optdepends = primusrun
+	source = https://gitlab.com/WheelchairArtist/nvidia-launcher/raw/0.7/nvidia-launcher
+	sha256sums = 807fe8c271e82ce0c258845273af452e3a0775bfda4cea89405e20d315dde172
+
+pkgname = nvidia-launcher
