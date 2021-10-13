@@ -6,7 +6,6 @@ pkgbase = rootlesskit
 	arch = x86_64
 	arch = aarch64
 	license = Apache 2.0
-	checkdepends = netcat
 	makedepends = go
 	source = https://github.com/rootless-containers/rootlesskit/archive/refs/tags/v0.14.5.tar.gz
 	sha256sums = 9f36a4e871eb4ca3e521139f02bf8ef9d3249c9c6688558ada07ccc74a477d32

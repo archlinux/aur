@@ -11,7 +11,6 @@ license=('Apache 2.0')
 makedepends=('go')
 source=("https://github.com/rootless-containers/rootlesskit/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9f36a4e871eb4ca3e521139f02bf8ef9d3249c9c6688558ada07ccc74a477d32')
-checkdepends=('netcat')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -28,10 +27,11 @@ build() {
   go build -o build ./cmd/...
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  go test ./...
-}
+# Skip this check because it depends on bsd netcat which may conflict with an installed gnu netcat.
+#check() {
+#  cd "$pkgname-$pkgver"
+#  go test ./...
+#}
 
 package() {
   cd "$pkgname-$pkgver"
