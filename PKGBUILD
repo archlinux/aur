@@ -32,6 +32,7 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
+  sed -i "/MFTranscodeContainerType_MPEG4/d" VTK/IO/Movie/vtkMP4Writer.cxx
 }
 
 build() {
@@ -49,7 +50,6 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_MODULE_USE_EXTERNAL_ParaView_vtkcatalyst=OFF \
-      -DVTK_MODULE_ENABLE_VTK_IOMovie=NO \
       -DVTK_QT_VERSION=5 \
       -Dqt_xmlpatterns_executable=/usr/bin/${_arch}-xmlpatterns \
       ..
