@@ -4,7 +4,7 @@
 # Contributor: maat
 
 pkgname=brickv
-pkgver=2.4.19
+pkgver=2.4.20
 pkgrel=1
 pkgdesc="testing/flashing tool for tinkerforge brick(let)s"
 url="http://www.tinkerforge.com/"
@@ -14,7 +14,7 @@ depends=('python-pyserial' 'python-pyqt5' 'python-pytz' 'python-tzlocal')
 optdepends=('brickd: local device support')
 makedepends=('python-setuptools')
 source=(https://github.com/Tinkerforge/${pkgname}/archive/v${pkgver}.zip)
-sha256sums=('5867cfee494d29f23334155cc95e7ad936b60821b8602cf0c914cb0ff7b882b6')
+sha256sums=('b1e156b81119a39d5e0d53a121d0c040ff5de4e22da5f7fd670dce14dae946bf')
 
 build() {
   cd $srcdir/$pkgname-$pkgver/src
