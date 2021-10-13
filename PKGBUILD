@@ -1,7 +1,7 @@
 # Maintainer: David Horvath <horvath.david987 at gmail dot com>
 pkgname='mqtt-explorer'
 pkgver=0.3.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A comprehensive and easy-to-use MQTT Client"
 arch=('any')
 url="https://mqtt-explorer.com/"
@@ -42,4 +42,4 @@ package() {
 	ln -s "/usr/share/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 md5sums=('66b04e6991416cf8be67c0d8c3706477'
-         'd1edbfd617569f74c3cb8e25fca500de')
+         '306a5ee73ab04fee5eb0f8202d2d90a1')
