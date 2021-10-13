@@ -1,7 +1,7 @@
 # Maintainer: David Horvath <horvath.david987 at gmail dot com>
 pkgname='mqtt-explorer'
 pkgver=0.3.5
-pkgrel=5
+pkgrel=6
 pkgdesc="A comprehensive and easy-to-use MQTT Client"
 arch=('any')
 url="https://mqtt-explorer.com/"
@@ -34,7 +34,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/$pkgname"
 	cp -r MQTT-Explorer-${pkgver}/* $pkgdir/usr/share/$pkgname/
 	mkdir -p "$pkgdir/usr/share/applications"
-	cp mqtt-explorer.desktop-1.0/mqtt-explorer.desktop $pkgdir/usr/share/applications/
+	cp mqtt-explorer.desktop-1.1/mqtt-explorer.desktop $pkgdir/usr/share/applications/
 	mkdir -p "$pkgdir/usr/bin"
 	echo "#!/bin/bash" > "$pkgdir/usr/share/$pkgname/$pkgname"
 	echo "yarn --cwd /usr/share/mqtt-explorer start" >> "$pkgdir/usr/share/$pkgname/$pkgname"
