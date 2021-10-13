@@ -1,13 +1,12 @@
 [Unit]
-Description=mstream
+Description=mStream
 After=network.target
 
 [Service]
 User=mstream
 Type=simple
 WorkingDirectory=/var/lib/mstream
-ExecStart=/usr/bin/mstream -j /var/lib/mstream/config.json
+ExecStart=/usr/bin/mstream -j /etc/mstream.json
 
 [Install]
 WantedBy=multi-user.target
-
