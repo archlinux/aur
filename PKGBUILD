@@ -11,8 +11,7 @@ license=('Apache')
 provides=('crictl')
 conflicts=('crictl')
 source=("crictl.yaml")
-sha256sums=('d2725490e1fb2e6f565605f09871c1440371b85e04de5d70bbac05954d827f72'
-            '45e0556c42616af60ebe93bf4691056338b3ea0001c0201a6a8ff8b1dbc0652a')
+sha256sums=('d2725490e1fb2e6f565605f09871c1440371b85e04de5d70bbac05954d827f72')
 
 case "$CARCH" in
 	arm*) _pkgarch="arm"
