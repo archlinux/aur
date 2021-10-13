@@ -15,16 +15,16 @@ sha512sums=('SKIP')
 
 build() {
 
-        arch-meson "$srcdir/quadlet" "$srcdir/build"
-        meson compile -C build
+        arch-meson "$srcdir/quadlet" "build"
+        meson compile -C "build"
 }
 
 check() {
 
-        meson test -C build
+        meson test -C "build"
 }
 
 package() {
 
-        meson install -C build --destdir "$pkgdir"
+        meson install -C "build" --destdir "$pkgdir"
 }
