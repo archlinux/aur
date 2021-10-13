@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Paperspace
+Comment=Paperspace Receiver
+Icon=paperspace
+Exec=paperspace
+Terminal=false
+Type=Application
+Categories=Network;Utility;
+StartupNotify=true
