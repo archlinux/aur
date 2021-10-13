@@ -1,0 +1,11 @@
+pkgbase = numworks-udev
+	pkgdesc = udev rules to connect the Numworks calculator to your linux box
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.numworks.com/
+	arch = any
+	license = Unlicense
+	source = 70-numworks.rules
+	sha256sums = d3416bd3e388374b43fb02025f165907f77aec81ea39ecbc5c6a58c7b7ec3776
+
+pkgname = numworks-udev
