@@ -14,7 +14,7 @@ _microarchitecture=0
 ## Major kernel version
 _major=5.14
 ## Minor kernel version
-_minor=10
+_minor=11
 
 pkgbase=linux-multimedia
 #pkgver=${_major}
@@ -42,11 +42,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('45ce25e0abd1b46b273c804a00cd3513cd2a5bbcd89180e2e2a5dc8d062085d8'
-	    'SKIP'
-	    'SKIP'
-	    'SKIP'
-	    '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
+sha256sums=('93830a24df5342fb8fb857b7ca58d637f99d84b0ac54610fbf49743e3e8d5731'
+			'SKIP'
+			'SKIP'
+			'SKIP'
+			'1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -93,6 +93,15 @@ prepare() {
   # (x86 kernels do not support NUMA)
   msg2 "Disabling NUMA from kernel config..."
   scripts/config --disable CONFIG_NUMA
+
+  ### Set performance as default governor
+  msg2 "Setting performance governor..."
+  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
 
   ### Set tickrate to 1000HZ
   msg2 "Setting tick rate to 1k..."
@@ -297,7 +306,7 @@ _package-bootloader() {
   echo "title ${ROOT_LABEL} Multimedia" > $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
   echo "linux /vmlinuz-${pkgbase}" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
   echo "initrd /initramfs-${pkgbase}.img" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
-  echo "options root=LABEL=\"${ROOT_LABEL}\" rootflags=subvol=@ loglevel=3 mitigations=off nowatchdog nvidia-drm.modeset=1 threadirqs usbcore.autosuspend=-1 rw" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
+  echo "options root=LABEL=\"${ROOT_LABEL}\" rootflags=subvol=@ loglevel=3 acpi=force intel_pstate=disable mitigations=off nowatchdog nvidia-drm.modeset=1 threadirqs usbcore.autosuspend=-1 rw" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
   chmod 755 $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
 }
 
