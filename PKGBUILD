@@ -1,7 +1,7 @@
 pkgbase='python-retype'
 pkgname='python-retype'
 _module='retype'
-pkgver='21.5.0'
+pkgver='21.10.0'
 pkgrel=1
 pkgdesc="Re-apply types from .pyi stub files to your codebase."
 url="https://github.com/ambv/retype"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/r/retype/retype-${pkgver}.tar.gz")
-sha256sums=('43cd2876481e0bba0e1376f90684de6e51b3b314c542356a6477e34b78e83193')
+sha256sums=('54b9220c9755897f15ead82e4a9a3923dc1a859482c792ca338da14d3ffedec2')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
