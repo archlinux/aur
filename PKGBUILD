@@ -9,17 +9,17 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc
 pkgver=2.33
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU C Library (${_target})"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
-depends=("${_target}-linux-api-headers>=5.10.9-2")
-makedepends=("${_target}-gcc-stage2>=11.1.0-1" python gperf)
+depends=("${_target}-linux-api-headers>=5.14.9-1")
+makedepends=("${_target}-gcc-stage2>=11.2.0-3" python gperf)
 provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
 replaces=("${_target}-glibc-headers")
-options=(!buildflags !strip staticlibs)
+options=(!buildflags !strip !lto staticlibs)
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
         sdt.h sdt-config.h
         bz27343.patch)
