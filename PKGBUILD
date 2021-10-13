@@ -5,7 +5,7 @@
 
 _base=petsc
 pkgname=("${_base}"-git "${_base}"-doc)
-pkgver=3.15.5
+pkgver=3.16.0.63.gedb78736ace
 pkgrel=1
 _mainver="${pkgver:0:6}"
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -19,12 +19,11 @@ makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
              'git' 'cython' 'chrpath' "hypre=2.18.2")
 source=(git+${url}.git#branch=release
         https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
-        test_optdepends.sh
-        so.diff)
+        test_optdepends.sh)
 sha512sums=('SKIP'
-            'd6be4488cb5dad9f7928e0966b875f83d4b84a0fd8553fcc9912aed1b7f1fcd3922ec282c30dc8cb0b424e8375b437fe50ce84b76c9c8a28c51efd954f6ed001'
-            'e45df388b373b5f8c86567f32f0d79ae275a855a7fd3b4bb9c03d6875351633d4064de701644a4aa2f9eff90d63806f714230298149868b2f6d92a4f21e20cb8'
-            'e79a4a070df882d8cbf302c1b8732fc2fea907cd5bc5c429e4ff4919e45ffef1a0b7abe578c5942bf44bbb34bcabed70029f4f6403fee23b7da3ca7cce29edb4')
+            'ed58dd2f479b4177176f12aea55c8fd48a39e1f5105194896509d5e469095eb04c48405d4c062cc500b19e0b140a6984b482aa2a211b5fefc5be18d7071ec45a'
+            'e45df388b373b5f8c86567f32f0d79ae275a855a7fd3b4bb9c03d6875351633d4064de701644a4aa2f9eff90d63806f714230298149868b2f6d92a4f21e20cb8')
+install=petsc.install
 
 _config=linux-c-opt
 _install_dir="/usr"
@@ -90,17 +89,12 @@ export OMPI_MCA_mpi_oversubscribe=0
 unset PETSC_DIR
 export PETSC_ARCH=${_config}
 
-prepare() {
-  patch -p1 -d "${srcdir}"/"${_base}" -i "${srcdir}"/so.diff
-}
-
 pkgver() {
   cd "${srcdir}"/"${_base}"
   git describe --tags --match '*.*' | tr '-' '.' | sed 's-^v--'
 }
 
 build() {
-
   CONFOPTS=(
     --silent --enable-silent-rules
     --ignoreWarnings=1
