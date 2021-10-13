@@ -1,0 +1,22 @@
+pkgbase = gcsvedit-git
+	pkgdesc = Simple text editor for CSV, TSV and other kinds of delimiter-separated values (DSV) files.
+	pkgver = 0.8.0+58+gc1c7746
+	pkgrel = 1
+	url = https://github.com/swilmet/gCSVedit
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	depends = libxml2
+	depends = gtksourceview3
+	depends = libtepl-6.so
+	depends = gtksourceview4
+	provides = gcsvedit=0.8.0+58+gc1c7746
+	conflicts = gcsvedit
+	source = gcsvedit::git+https://github.com/swilmet/gCSVedit
+	sha256sums = SKIP
+
+pkgname = gcsvedit-git
