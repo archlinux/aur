@@ -153,7 +153,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip-MT7921.patch"
 
         # squashed s0ix enablement
-        "9001-v5.14.10-s0ix-patch-2021-10-07.patch"
+        "9001-v5.14.12-s0ix-patch-2021-10-13.patch"
         )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -194,7 +194,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c'
             '7dbfdd120bc155cad1879579cb9dd1185eb5e37078c8c93fef604a275a163812'
             '1444af2e125080934c67b6adb4561fd354a72ce47d3de393b24f53832ee492ac'
-            '4791bd109d70c84ab3835ee3bb1b8293fb9063553418e5fd341ed87244aad140')
+            '44bd6f30fef0809f6f38606fae270d9d94ab5f5086ed610234fbb83fa2bb269c')
 
 # apply UKSM patch; TODO: note to self: don't forget to update the sum here during major version changes
 #

@@ -1,11 +1,28 @@
-From 3f318570b30ef7a34babda28ddc96cc7359822f6 Mon Sep 17 00:00:00 2001
+From 069131f6c7f8927410f5ba0a6a8fc4f36b6de278 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Thu, 7 Oct 2021 14:34:30 -0700
-Subject: [PATCH] v5.14.10 s0ix patch 2021-10-07
+Date: Wed, 13 Oct 2021 01:14:48 -0700
+Subject: [PATCH] v5.14.12 s0ix patch 2021-10-13
 
 Squashed commit of the following:
 
-commit 27bb867625743d06b875d4c7c501b4003f7fe1a8
+commit 3f111b27da3eb906142e232750567830eaad2517
+Author: Sachi King <nakato@nakato.io>
+Date:   Sat Oct 9 14:32:40 2021 +1100
+
+    pinctrl: amd: disable and mask interrupts on probe
+
+    Some systems such as the Microsoft Surface Laptop 4 leave interrupts
+    enabled and configured for use in sleep states on boot, which cause
+    unexpected behaviour such as spurious wakes and failed resumes in
+    s2idle states.
+
+    As interrupts should not be enabled until they are claimed and
+    explicitly enabled, disabling any interrupts mistakenly left enabled by
+    firmware should be safe.
+
+    Signed-off-by: Sachi King <nakato@nakato.io>
+
+commit dc1cf0c61409180a8300f8bac42da46bb1171e44
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Oct 5 21:26:41 2021 +0530
 
@@ -24,7 +41,7 @@ Date:   Tue Oct 5 21:26:41 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 00c61ca3ae04a7d89494e3299af8d8cf647ca318
+commit e4f9c6e914e94b676f99ebd9957213d49edbab50
 Author: Sachi King <nakato@nakato.io>
 Date:   Sat Oct 2 14:18:40 2021 +1000
 
@@ -37,7 +54,7 @@ Date:   Sat Oct 2 14:18:40 2021 +1000
     Cc: <stable@vger.kernel.org> # 5.14+
     Signed-off-by: Sachi King <nakato@nakato.io>
 
-commit 605d74009fd05ab904bf55f231c6866a045f3f1f
+commit 4b40a25782950cc77f6cadb9e9807562299e4c6b
 Author: Sachi King <nakato@nakato.io>
 Date:   Sat Oct 2 14:18:39 2021 +1000
 
@@ -50,25 +67,7 @@ Date:   Sat Oct 2 14:18:39 2021 +1000
     Cc: <stable@vger.kernel.org> # 5.14+
     Signed-off-by: Sachi King <nakato@nakato.io>
 
-commit 78ec75c50b631738e18a4314b59d4555b2ef5af1
-Author: Lijo Lazar <lijo.lazar@amd.com>
-Date:   Fri Oct 1 18:16:25 2021 +0800
-
-    drm/amdgpu: During s0ix don't wait to signal GFXOFF
-
-    In the rare event when GFX IP suspend coincides with a s0ix entry, don't
-    schedule a delayed work, instead signal PMFW immediately to allow GFXOFF
-    entry. GFXOFF is a prerequisite for s0ix entry. PMFW needs to be
-    signaled about GFXOFF status before amd-pmc module passes OS HINT
-    to PMFW telling that everything is ready for a safe s0ix entry.
-
-    Bug: https://gitlab.freedesktop.org/drm/amd/-/issues/1712
-
-    Signed-off-by: Lijo Lazar <lijo.lazar@amd.com>
-    Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
-    Reviewed-by: Mario Limonciello <mario.limonciell@amd.com>
-
-commit 5364cc5a36ea3c4931c9af16a34f7bc76e137fb8
+commit f67bd30ba26a929f9df034d6e28cd9dcec4e712c
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Sep 28 16:21:22 2021 +0200
 
@@ -87,7 +86,7 @@ Date:   Tue Sep 28 16:21:22 2021 +0200
     Reported-by: Nathan Chancellor <nathan@kernel.org>
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
 
-commit 19828e04572e6367dfedc04946611a82248a937b
+commit 74c8c17ac05248f793b3209981587ff4b1be9741
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -99,7 +98,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 81b173859054b38b677d884ac3da2f5aa6edfd82
+commit 2146fa693e81f466c696136dd52a4ac960d3abc1
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -114,7 +113,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit f9b9b877b5eaf324ed5ce3b071fa558228dc1ac9
+commit 406149463f185a3a7344e077cd271bfaa712fbd5
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -127,7 +126,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit fc6d78a0cb2a3075ffa503cf6b3334381e21d522
+commit 364688918ede9e09b58489ced636fec2f8f459de
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -146,7 +145,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit df32112b47ab7ac5540c3471f4693543005d02e7
+commit 159ec76842540d13aa4b2539a35820a1628d12fd
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -161,7 +160,7 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 16414f40c5fec817016450540ad72ab78c2f2005
+commit 167e8488be639cbc1079570c4ed5858dbca56a95
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -174,7 +173,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 4b1d3bc7c180512a8c76240591e0883d91149ba7
+commit 35fd49c9047bade19e02708b9cb248d50325f800
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -187,13 +186,12 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 ---
- drivers/acpi/processor_idle.c           |   3 +-
- drivers/acpi/x86/s2idle.c               |   3 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c |  14 +-
- drivers/pinctrl/pinctrl-amd.c           |  19 ++-
- drivers/pinctrl/pinctrl-amd.h           |   1 +
- drivers/platform/x86/amd-pmc.c          | 200 +++++++++++++++++++++++-
- 6 files changed, 226 insertions(+), 14 deletions(-)
+ drivers/acpi/processor_idle.c  |   3 +-
+ drivers/acpi/x86/s2idle.c      |   3 +-
+ drivers/pinctrl/pinctrl-amd.c  |  50 ++++++++-
+ drivers/pinctrl/pinctrl-amd.h  |   1 +
+ drivers/platform/x86/amd-pmc.c | 200 ++++++++++++++++++++++++++++++++-
+ 5 files changed, 245 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index 095c8aca141e..1b6529396371 100644
@@ -230,47 +228,8 @@ index bd92b549fd5a..1c48358b43ba 100644
  						 !strcmp(hid, "AMDI0005"))) {
  			lps0_dsm_func_mask = (lps0_dsm_func_mask << 1) | 0x1;
  			acpi_handle_debug(adev->handle, "_DSM UUID %s: Adjusted function mask: 0x%x\n",
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
-index b4ced45301be..1795d448c700 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
-@@ -31,6 +31,8 @@
- /* delay 0.1 second to enable gfx off feature */
- #define GFX_OFF_DELAY_ENABLE         msecs_to_jiffies(100)
- 
-+#define GFX_OFF_NO_DELAY 0
-+
- /*
-  * GPU GFX IP block helpers function.
-  */
-@@ -558,6 +560,8 @@ int amdgpu_gfx_enable_kcq(struct amdgpu_device *adev)
- 
- void amdgpu_gfx_off_ctrl(struct amdgpu_device *adev, bool enable)
- {
-+	unsigned long delay = GFX_OFF_DELAY_ENABLE;
-+
- 	if (!(adev->pm.pp_feature & PP_GFXOFF_MASK))
- 		return;
- 
-@@ -573,8 +577,14 @@ void amdgpu_gfx_off_ctrl(struct amdgpu_device *adev, bool enable)
- 
- 		adev->gfx.gfx_off_req_count--;
- 
--		if (adev->gfx.gfx_off_req_count == 0 && !adev->gfx.gfx_off_state)
--			schedule_delayed_work(&adev->gfx.gfx_off_delay_work, GFX_OFF_DELAY_ENABLE);
-+		if (adev->gfx.gfx_off_req_count == 0 &&
-+		    !adev->gfx.gfx_off_state) {
-+			/* If going to s2idle, no need to wait */
-+			if (adev->in_s0ix)
-+				delay = GFX_OFF_NO_DELAY;
-+			schedule_delayed_work(&adev->gfx.gfx_off_delay_work,
-+					      delay);
-+		}
- 	} else {
- 		if (adev->gfx.gfx_off_req_count == 0) {
- 			cancel_delayed_work_sync(&adev->gfx.gfx_off_delay_work);
 diff --git a/drivers/pinctrl/pinctrl-amd.c b/drivers/pinctrl/pinctrl-amd.c
-index 5b764740b829..d19974aceb2e 100644
+index 5b764740b829..80b67cd7c008 100644
 --- a/drivers/pinctrl/pinctrl-amd.c
 +++ b/drivers/pinctrl/pinctrl-amd.c
 @@ -445,6 +445,7 @@ static int amd_gpio_irq_set_wake(struct irq_data *d, unsigned int on)
@@ -297,7 +256,42 @@ index 5b764740b829..d19974aceb2e 100644
  	return 0;
  }
  
-@@ -904,7 +914,6 @@ static struct pinctrl_desc amd_pinctrl_desc = {
+@@ -832,6 +842,34 @@ static const struct pinconf_ops amd_pinconf_ops = {
+ 	.pin_config_group_set = amd_pinconf_group_set,
+ };
+ 
++static void amd_gpio_irq_init(struct amd_gpio *gpio_dev)
++{
++	struct pinctrl_desc *desc = gpio_dev->pctrl->desc;
++	unsigned long flags;
++	u32 pin_reg, mask;
++	int i;
++
++	mask = BIT(WAKE_CNTRL_OFF_S0I3) | BIT(WAKE_CNTRL_OFF_S3) |
++		BIT(INTERRUPT_MASK_OFF) | BIT(INTERRUPT_ENABLE_OFF) |
++		BIT(WAKE_CNTRL_OFF_S4);
++
++	for (i = 0; i < desc->npins; i++) {
++		int pin = desc->pins[i].number;
++		const struct pin_desc *pd = pin_desc_get(gpio_dev->pctrl, pin);
++
++		if (!pd)
++			continue;
++
++		raw_spin_lock_irqsave(&gpio_dev->lock, flags);
++
++		pin_reg = readl(gpio_dev->base + i * 4);
++		pin_reg &= ~mask;
++		writel(pin_reg, gpio_dev->base + i * 4);
++
++		raw_spin_unlock_irqrestore(&gpio_dev->lock, flags);
++	}
++}
++
+ #ifdef CONFIG_PM_SLEEP
+ static bool amd_gpio_should_save(struct amd_gpio *gpio_dev, unsigned int pin)
+ {
+@@ -904,7 +942,6 @@ static struct pinctrl_desc amd_pinctrl_desc = {
  static int amd_gpio_probe(struct platform_device *pdev)
  {
  	int ret = 0;
@@ -305,7 +299,7 @@ index 5b764740b829..d19974aceb2e 100644
  	struct resource *res;
  	struct amd_gpio *gpio_dev;
  	struct gpio_irq_chip *girq;
-@@ -927,9 +936,9 @@ static int amd_gpio_probe(struct platform_device *pdev)
+@@ -927,9 +964,9 @@ static int amd_gpio_probe(struct platform_device *pdev)
  	if (!gpio_dev->base)
  		return -ENOMEM;
  
@@ -318,7 +312,17 @@ index 5b764740b829..d19974aceb2e 100644
  
  #ifdef CONFIG_PM_SLEEP
  	gpio_dev->saved_regs = devm_kcalloc(&pdev->dev, amd_pinctrl_desc.npins,
-@@ -989,7 +998,7 @@ static int amd_gpio_probe(struct platform_device *pdev)
+@@ -969,6 +1006,9 @@ static int amd_gpio_probe(struct platform_device *pdev)
+ 		return PTR_ERR(gpio_dev->pctrl);
+ 	}
+ 
++	/* Disable and mask interrupts */
++	amd_gpio_irq_init(gpio_dev);
++
+ 	girq = &gpio_dev->gc.irq;
+ 	girq->chip = &amd_gpio_irqchip;
+ 	/* This will let us handle the parent IRQ in the driver */
+@@ -989,7 +1029,7 @@ static int amd_gpio_probe(struct platform_device *pdev)
  		goto out2;
  	}
  
