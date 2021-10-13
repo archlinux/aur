@@ -74,7 +74,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=72
+_minor=73
 _srcname=linux-${_major}
 _clr=${_major}.71-22
 pkgbase=linux-clear-lts2020
@@ -91,7 +91,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-  "clearlinux-lts2020::git+https://github.com/clearlinux-pkgs/linux-lts2020.git#tag=${_clr}"
+  "$pkgbase::git+https://github.com/clearlinux-pkgs/linux-lts2020.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 )
 
@@ -113,14 +113,14 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-    for i in $(grep '^Patch' ${srcdir}/clearlinux-lts2020/linux-lts2020.spec | sed -n 's/.*: //p'); do
+    for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux-lts2020.spec | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
-        patch -Np1 -i "$srcdir/clearlinux-lts2020/${i}"
+        patch -Np1 -i "$srcdir/$pkgbase/${i}"
     done
 
     ### Setting config
     echo "Setting config..."
-    cp -Tf $srcdir/clearlinux-lts2020/config ./.config
+    cp -Tf $srcdir/$pkgbase/config ./.config
 
     ### Enable extra stuff from arch kernel
     echo "Enable extra stuff from arch kernel..."
@@ -172,6 +172,7 @@ prepare() {
     scripts/config --enable FONT_TER16x32
 
     make olddefconfig
+    diff -u $srcdir/$pkgbase/config .config || :
 
     # https://github.com/graysky2/kernel_compiler_patch
     # make sure to apply after olddefconfig to allow the next section
@@ -344,7 +345,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '19ee9d668b7197e1921423ff9f8e53b58a8d24f3dad4c1e196d5101ddf8e051e'
+            '6ee8f9197d7485cac050293201a46140e1dd51304f6885bacd53a39bea292bbe'
             'SKIP'
             'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611')
 
