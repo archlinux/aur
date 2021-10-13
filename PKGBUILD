@@ -74,9 +74,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=209
+_minor=211
 _srcname=linux-${_major}
-_clr=${_major}.208-221
+_clr=${_major}.209-222
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -90,7 +90,7 @@ _gcc_more_v='20210914'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  "${pkgbase}::git+https://github.com/clearlinux-pkgs/linux-lts2018.git#tag=${_clr}"
+  "$pkgbase::git+https://github.com/clearlinux-pkgs/linux-lts2018.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 )
 
@@ -170,6 +170,7 @@ prepare() {
                    --enable SECURITY_YAMA
 
     make olddefconfig
+    diff -u $srcdir/$pkgbase/config .config || :
 
     # https://github.com/graysky2/kernel_compiler_patch
     # make sure to apply after olddefconfig to allow the next section
@@ -345,7 +346,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'f7cb37a31dc650d7313e0fc59dd2d8a5f041070e74bf7ac2e0feb06fa0e2af98'
+            '98df4ebd40982f26ef67fc15925cfde2182521f309f86e3a6b334c6e3ea0343c'
             'SKIP'
             'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611')
 
