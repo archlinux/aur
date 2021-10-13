@@ -1,6 +1,6 @@
 pkgbase = qmmp-plugin-pack-svn
 	pkgdesc = Qmmp Plugin Pack. (SVN Version)
-	pkgver = 1.4.0.svn.r9311
+	pkgver = 2.1.0.svn.r10359
 	pkgrel = 1
 	url = http://qmmp.ylsoftware.com
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = qmmp-plugin-pack-svn
 	makedepends = libavformat.so
 	makedepends = libswresample.so
 	depends = qmmp-svn
+	depends = qt6-base
 	optdepends = mpg123: alternative Mpeg-1-2-3 support
 	optdepends = taglib: Mpeg-1-2-3 tag support
 	optdepends = libxmp: support for chiptune formats (Amiga, Atari, ..)
@@ -25,8 +26,7 @@ pkgbase = qmmp-plugin-pack-svn
 	optdepends = ffmpeg: ffmpeg engine support
 	provides = qmmp-plugin-pack
 	conflicts = qmmp-plugin-pack
-	source = qmmp-plugin-pack::svn+svn://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp-plugin-pack/
+	source = qmmp-plugin-pack::svn+http://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-2.1/
 	sha1sums = SKIP
 
 pkgname = qmmp-plugin-pack-svn
-
