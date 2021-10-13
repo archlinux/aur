@@ -4,7 +4,7 @@
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
 pkgver=7.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
@@ -65,8 +65,11 @@ build() {
     # Do not generate version number
     patch Makefile "${srcdir}/version-fix.patch"
 
-    make bpf-bytecode
+    # Build
     make full
+
+    # Make sure go path is writable so it can be cleaned up
+    chmod -R u+w "${srcdir}/go"
 }
 
 package_teleport() {
