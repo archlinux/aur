@@ -69,7 +69,4 @@ package()
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${pkgname}"-v"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
-
-    # Install the license.
-    install -Dm644 "${srcdir}"/"${pkgname}"-v"${pkgver}"/LICENSES/GPL-3.0-or-later.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
