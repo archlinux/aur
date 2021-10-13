@@ -4,7 +4,7 @@
 # Contributor: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=libnghttp2_asio
-pkgver=1.45.0
+pkgver=1.45.1
 pkgrel=1
 pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library. ASIO part'
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(MIT)
 depends=(glibc boost-libs "nghttp2=$pkgver" openssl)
 makedepends=(boost)
 source=(https://github.com/nghttp2/nghttp2/releases/download/v$pkgver/nghttp2-$pkgver.tar.xz)
-sha512sums=('e97f5ee9c468083582396bb4772f39cf13db415747c6b4118e6961d7e8da0e5302053884ed39386ad48aa4fcd2452f6e23868164b976b127e105762bb4567038')
+sha512sums=('320a8c9f29b58c55df98be4312d415bc406edbdfb0765aa37570cdb472a84f40c4f95a51c44c5488363c16ad6815c75b5503b32e43d94724c54117ff583c7150')
 
 build() {
   cd nghttp2-$pkgver
