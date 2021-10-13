@@ -1,6 +1,6 @@
 pkgbase = whoogle
 	pkgdesc = A self-hosted, ad-free, privacy-respecting metasearch engine
-	pkgver = 0.5.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/benbusby/whoogle-search
 	install = whoogle.install
@@ -11,10 +11,9 @@ pkgbase = whoogle
 	makedepends = python-pip
 	depends = python
 	conflicts = whoogle-git
-	source = whoogle-0.5.4.tar.gz::https://github.com/benbusby/whoogle-search/archive/refs/tags/v0.5.4.tar.gz
+	source = whoogle-0.6.0.tar.gz::https://github.com/benbusby/whoogle-search/archive/refs/tags/v0.6.0.tar.gz
 	source = whoogle.service
-	sha256sums = SKIP
+	sha256sums = 034827d32f7acf49bb53bf5c18b5a8a9926e613b7f52d2370cb7ba3d0b33cc10
 	sha256sums = b8474f3024d310b67454b8b59977fd26b66dba3930f31604058b773e13905e49
 
 pkgname = whoogle
-
