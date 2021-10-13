@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=cloudflared-bin
-pkgver=2021.9.0
+pkgver=2021.10.0
 pkgrel=1
 pkgdesc="An Argo Tunnel client which proxies any local webserver through the Cloudflare network"
 arch=("x86_64" "i686" "aarch64" "armv6h" "armv7h")
@@ -21,16 +21,16 @@ source_i686=("${pkgname}-386-${pkgver}::${_url}/releases/download/${pkgver}/clou
 source_aarch64=("${pkgname}-aarch64-${pkgver}::${_url}/releases/download/${pkgver}/cloudflared-linux-arm64")
 source_armv6h=("${pkgname}-armv6h-${pkgver}::${_url}/releases/download/${pkgver}/cloudflared-linux-arm")
 source_armv7h=("${pkgname}-armv7h-${pkgver}::${_url}/releases/download/${pkgver}/cloudflared-linux-arm")
-sha256sums=('6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda'
-            'e769786afdfbd486a4d7ca99495dbe955c25e41b5e012b722b018ca17f269dac'
-            '83234a52452dce5497dd04e27323b2f83c702d4435a2687d1be4f829451fb061'
-            'bc40e3f7e1b21b93a949a1b1c05639584943d9ce9cc7ccb96612688eeb9fd206'
-            'bfda935c07b8e49821ee13e19433b1ed475ebb651e3008a32950734afbaef813')
-sha256sums_x86_64=('27270c4ee59e0261ea68a5007f82c99670c1ff18ed8722344efab6570af9f977')
-sha256sums_i686=('48e069ebb9f3ddf870eff16821e4e10e558c95a6e88da6ad6db35d016b5dc7fd')
-sha256sums_aarch64=('bb71b10cc5849d7343be0bfdab9202dd9f8d130ffbbc443d542b1482099fda62')
-sha256sums_armv6h=('9163b2cec5351d8764ddb28b81c7086a37d09446b2aa67586e7ffbcd18321bba')
-sha256sums_armv7h=('9163b2cec5351d8764ddb28b81c7086a37d09446b2aa67586e7ffbcd18321bba')
+b2sums=('88c2a20908e165ef79e13799549be16b577e095c6874ede50b1d7203ae9d7c3ac22d5a645e36407cba63021f4eb95c30f103df1dc51dba451a81f8b0f609f011'
+        '09ac52a248193706455b141f31da2a44f8f176b15ff062554da2c9a5e1e5a796b7d39890ed4d81e8941cedad24a0d56169251e9cb1df51097a95111165981630'
+        '10ecd693cd7b310f69dce1551a0a9299c89fffafcc67c856f340c66f45263daa1a065ab3c82005856b3ee62a85a1c921db177bf99d91db64be12e4ee3114dccc'
+        '2916ff952590b1322c84a390da01639f4e2656faa6d72c3f270b21c89a56bd5fb54fd54c6204736d61a0433b46427701de5a641bf68958dd03f551fe18b8bc7f'
+        '38c9699663b667844e4236a4f33ff156ab0226f2144590d03e968dc73ae1a5be9510d979c408f5ff3205a057120cc54cf740732b36f361616f48dc269ae1a1a1')
+b2sums_x86_64=('68337eab904c0c81ca8da3e0afae1dc903d6cae6502ce76d49c00e9aa62c25602caf1a83cb5e782bd0a62d1a9313a986737627f37d73d752721e6ab7746faddb')
+b2sums_i686=('98d5bd17630bd35bfcb6072e18e800f97faf52e9b3edc92e5418857c897d658cf2b0cb2c755bfbc84cbca3171413c760051455ba545e58e0fba328a87498c806')
+b2sums_aarch64=('91ac0b577ec39d9d14b1f13e8802b5f045b0af5b5f2117ed3113465e8cd346559730f73992d6fdc1f4d7601d5dce742ccb6abe14c246e230428695250f58bd81')
+b2sums_armv6h=('7a285710aa304f3bbee24870c1bd65aaea94e98e5990fd8fd624e5b1efcf0eb27e04b6cc2f5ade6d9bf543b29190ba5dcd393af9a7ba87b4c9b21c51afeceb5d')
+b2sums_armv7h=('7a285710aa304f3bbee24870c1bd65aaea94e98e5990fd8fd624e5b1efcf0eb27e04b6cc2f5ade6d9bf543b29190ba5dcd393af9a7ba87b4c9b21c51afeceb5d')
 
 package() {
   # Install License
