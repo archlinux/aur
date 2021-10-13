@@ -2,7 +2,7 @@
 # Contributor: JP Cimalando <jp-dev at inbox dot ru>
 pkgname=ptcollab-git
 _pkgname=ptcollab
-pkgver=0.4.3.r20.gdd2f630
+pkgver=0.4.3.r40.g537c7e1
 pkgrel=1
 epoch=
 pkgdesc="Multiplayer music editor"
@@ -11,7 +11,7 @@ url="https://yuxshao.github.io/ptcollab/"
 license=('MIT')
 groups=()
 depends=('qt5-base' 'rtmidi')
-makedepends=('git' 'qt5-tools')
+makedepends=('git' 'qt5-tools' 'qt5-multimedia' 'libogg')
 checkdepends=()
 optdepends=()
 provides=("$_pkgname")
