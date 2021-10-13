@@ -1,7 +1,7 @@
 pkgbase = plasma-wallpaper-asciiquarium-git
 	pkgdesc = Plasma Wallpaper Asciiquarium
 	pkgver = r33.4d6e48a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cgit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git/about/
 	arch = any
 	license = GPL
@@ -10,8 +10,7 @@ pkgbase = plasma-wallpaper-asciiquarium-git
 	makedepends = git
 	depends = plasma-workspace
 	provides = plasma-wallpaper-asciiquarium-git
-	source = git+https://anongit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git
+	source = git+https://invent.kde.org/mpyne/plasma_wallpaper_asciiquarium.git
 	md5sums = SKIP
 
 pkgname = plasma-wallpaper-asciiquarium-git
-

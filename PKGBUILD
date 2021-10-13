@@ -1,6 +1,6 @@
 pkgname='plasma-wallpaper-asciiquarium-git'
 pkgver=r33.4d6e48a
-pkgrel=2
+pkgrel=3
 pkgdesc='Plasma Wallpaper Asciiquarium'
 arch=('any')
 url='https://cgit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git/about/'
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('plasma-workspace')
 makedepends=('cmake' 'extra-cmake-modules' 'git')
 provides=("${pkgname}")
-source=("git+https://anongit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git")
+source=("git+https://invent.kde.org/mpyne/plasma_wallpaper_asciiquarium.git")
 md5sums=('SKIP')
 
 pkgver() {
