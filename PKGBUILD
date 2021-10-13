@@ -2,7 +2,7 @@
 # Contributor: Ryan Dowling <ryan@ryandowling.me>
 
 pkgname=hyper-bin
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=('gtk3' 'libxss' 'nss')
 options=('!strip')
 source=("${pkgname}-${pkgver}-amd64.deb::https://github.com/zeit/hyper/releases/download/v${pkgver}/Hyper_${pkgver}_amd64.deb"
         "${pkgname}-${pkgver}-LICENSE::https://github.com/zeit/hyper/raw/v${pkgver}/LICENSE")
-sha256sums=('c3e1484887867f72b5767ca4204cd4dca7afc9a14d9785f46de4fa0dd2d6fb34'
-            '07a1ce5a08f3f385ea6f2aef0c8246c2d9bdd7c8dd21235b76b1cb7116efc13f')
+b2sums=('2480ae6eb12f8749658cea5a5fbc232394fa0ba4717ed4cccd91cb53a1e32a23a725f8a7c8865759a9f2e16c6eb548ec5b732aa03334e9136fb1c80ecfea75db'
+        'ce0705a42e98b23c60d347990c0ee91443b53bf282fb55ecb7f294d84b08f1b4515989efe2458999212a5705e6e4105e43998eb3e24b1f797129d0c1bf2bf7f8')
 
 package() {
   # extract the data file (already has everything as we need it)
