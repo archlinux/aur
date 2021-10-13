@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r1009.7d4825e
+pkgver=r1010.522285b
 pkgrel=1
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist and several manga sites.'
 arch=('x86_64')
@@ -19,8 +19,8 @@ optdepends=(
 )
 provides=('quickmedia' 'qm')
 conflicts=('quickmedia' 'qm')
-source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1009.7d4825e.tar.gz")
-sha512sums=('aadf869677fdd6ac4cd7f41878c1a36ba5e042abd73240a1887e1b3f57a6af27a674f0aaf6fa87a582c5d31c08d05aa64e3b374d27f2538514d92731672f7e7a')
+source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1010.522285b.tar.gz")
+sha512sums=('1fba684e6657ee2b43b85b3066e0988007c416ec681b08f0762340c1129b43b6ccce45ee62aa7063a06689fca0f0368c9e0269a2e001de9e441cef405bafbbee')
 
 build() {
   cd "$srcdir"
@@ -30,7 +30,7 @@ build() {
 package() {
   cd "$srcdir"
   install -Dm755 "sibs-build/$(sibs platform)/release/quickmedia" "$pkgdir/usr/bin/quickmedia"
-  ln -sf "$pkgdir/usr/bin/quickmedia" "$pkgdir/usr/bin/qm"
+  ln -sf "/usr/bin/quickmedia" "$pkgdir/usr/bin/qm"
   install -Dm644 boards.json "$pkgdir/usr/share/quickmedia/boards.json"
   install -Dm644 input.conf "$pkgdir/usr/share/quickmedia/input.conf"
   for file in images/* icons/* shaders/* themes/*; do
