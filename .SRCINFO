@@ -1,0 +1,14 @@
+pkgbase = neocities-sync
+	pkgdesc = Sync local directories with neocities.org sites
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kugland/neocities-sync
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pathspec
+	optdepends = python-colorama: beautiful colors
+	source = https://github.com/kugland/neocities-sync/archive/v0.1.0.tar.gz
+	sha512sums = 585478e6d4c4f8a82c332af0a960783ffae3ff84d24072d0c95fd8c1d1bac7931bb4172572038fc5e6ace5ffe03b48bc209244eb17b23b579f242d1ba3948cf0
+
+pkgname = neocities-sync
