@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=elfcat
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Generates HTML files from ELF binaries"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/ruslashev/elfcat"
 license=('ZLIB')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('b5328fa2a19f97b4d77eb42da6d9407318e8a5ff17cb1c6b34a5b4d3fb1bf3c673f5afec50579bb1b4acad15d58f2fe63bc08b1bd3d733100836c8bc684a020c')
+b2sums=('96ccaf0b17afade1c0066dcf0af18869e8515de429fb1a9561e8a5b7844da3cf914006334dcc66a99ab7a0261c55cd73f907a6e04aa07c2ec33d8b8750d89d74')
 
 prepare() {
 	cd "$pkgname-$pkgver"
