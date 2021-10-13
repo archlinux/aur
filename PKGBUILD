@@ -1,6 +1,6 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm-git
-pkgver=6.2.r2133.aca090e
+pkgver=6.2.r2281.75f86b4
 pkgrel=1
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
@@ -35,6 +35,8 @@ pkgver() {
 
 build() {
     cd "${pkgname%-git}"
+    git submodule init
+    git submodule update
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 
