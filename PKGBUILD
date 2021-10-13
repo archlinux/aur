@@ -1,16 +1,18 @@
 # Maintainer: Maarten de Boer <maarten@cloudstek.nl>
 
-pkgname=teleport-git
-pkgver=r6397.7443451d5
+pkgname=('teleport-git' 'teleport-client-git')
+pkgver=r6843.36998cf56
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
 license=('Apache')
-depends=()
-makedepends=('go>=1.14.0', 'git')
+depends=('glibc')
+makedepends=('go>=1.16.0', 'git')
 provides=('tctl' 'tsh')
 install=teleport.install
+
+_go_srcpath="go/src/github.com/gravitational"
 
 source=("${pkgname}::git+https://github.com/gravitational/teleport.git"
         "teleport.service"
@@ -23,16 +25,23 @@ sha256sums=('SKIP'
             'ce2dd61cae3c0c3684e7e629f98b77551e66ddedca2194250a34f0efbc674f3a')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/${_go_srcpath}"
+
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    install -m755 -d "${srcdir}/go/src/github.com/gravitational"
-    ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/gravitational/teleport"
+    install -dm755 "${srcdir}/go/src/github.com"
+
+    if [ -d "${srcdir}/${pkgname}" ]; then
+        rm -Rf "${srcdir}/${_go_srcpath}"
+        mv "${srcdir}/${pkgname}" "${srcdir}/${_go_srcpath}"
+    fi
 }
 
 build() {
+    cd "${srcdir}/${_go_srcpath}"
+
     export GOPATH="${srcdir}/go"
 
     # See: https://wiki.archlinux.org/index.php/Go_package_guidelines
@@ -40,18 +49,20 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    cd "${GOPATH}/src/github.com/gravitational/teleport"
+    # Build
+    make full
 
-    make
-
-    rm -Rf "${srcdir}/go"
-    unset GOPATH
+    # Make sure go path is writable so it can be cleaned up
+    chmod -R u+w "${srcdir}/go"
 }
 
-package() {
-    cd "${srcdir}/${pkgname}"
+package_teleport-git() {
+    install=teleport.install
+    replaces=('teleport-client' 'teleport-client-git')
+
+    cd "${srcdir}/${_go_srcpath}"
 
     # Install binaries
     install -Dm755 build/teleport "${pkgdir}/usr/bin/teleport"
@@ -65,4 +76,13 @@ package() {
     # Copy example files
     install -dm755 "${pkgdir}/usr/share/teleport"
     cp -r examples "${pkgdir}/usr/share/teleport/"
+}
+
+package_teleport-client-git() {
+    replaces=('teleport' 'teleport-git')
+
+    cd "${srcdir}/${_go_srcpath}"
+
+    install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
+    install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
 }
