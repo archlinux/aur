@@ -1,0 +1,17 @@
+pkgbase = mongodb-tools-git
+	pkgdesc = The MongoDB tools provide import, export, and diagnostic capabilities.
+	pkgver = 100.5.1.d62df26a
+	pkgrel = 1
+	url = https://github.com/mongodb/mongo-tools
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = libpcap
+	provides = mongodb-tools
+	conflicts = mongodb-tools
+	source = git+https://github.com/mongodb/mongo-tools
+	sha512sums = SKIP
+
+pkgname = mongodb-tools-git
