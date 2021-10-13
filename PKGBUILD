@@ -1,16 +1,15 @@
 # Maintainer: ifdog <aur@ifdog.com>
 pkgname=trojan-go-bin
 pkgver=0.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Trojan proxy written in Go."
 arch=('x86_64')
 url="https://github.com/p4gefau1t/trojan-go"
 license=('GPL3')
-depends=('git')
 optdepends=('sudo')
 provides=('trojan-go')
 conflicts=('trojan-go-git')
-backup=('etc/trojan-go/client.json')
+backup=('etc/trojan-go/config.json')
 
 source=("https://github.com/p4gefau1t/trojan-go/releases/download/v${pkgver}/trojan-go-linux-amd64.zip")
 sha256sums=('764480722783a6d76ed8401f6d2f1d87d8df7e60bf261f69c67eb94b77e732af')
