@@ -5,24 +5,25 @@
 # Contributor: Shivam Mehta <sm.cse at gmail dot com>
 
 pkgname=quick-lint-js
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Find bugs in JavaScript programs"
 arch=(aarch64 arm armv6h armv7h i686 pentium4 x86_64)
 url="https://quick-lint-js.com/"
 license=(Apache Boost GPL3)
 depends=(gcc-libs)
-makedepends=(cmake ninja)
+makedepends=(cmake gcc ninja)
 checkdepends=(icu)
 provides=()
 conflicts=(quick-lint-js)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quick-lint/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('033b4665e94850cd1ab9e4665e1ad294989c8514062fb27abf031eb163c0daf7810b6f6a778a3695bee21759c5981621aa17d57b1dd8ba46322c6b96b07265a2')
+sha512sums=('32748f0595815693452fa255d9e5ed6de001cacf2833bc939c89f6883d747cb2f323d4daa5a4d9904b170f6c198810bf4c5482a9841700f8e7d6c322e583209f')
 
 build() {
   cd "${pkgname}-${pkgver}"
   cmake -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=YES \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DQUICK_LINT_JS_INSTALL_LICENSES_DIR="share/licenses/${pkgname}" \
     -S . -B build
