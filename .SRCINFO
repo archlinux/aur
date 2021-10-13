@@ -29,6 +29,7 @@ pkgbase = python-espnet-git
 	depends = python-espnet-tts-frontend-git
 	depends = python-ctc-segmentation-git
 	depends = python-humanfriendly
+	depends = python-jamo-git
 	optdepends = sox: convert audio files
 	optdepends = python-espnet-model-zoo-git: pretrained models
 	provides = python-espnet
