@@ -8,14 +8,14 @@ provides=("DanielSWolf")
 makedepends=('cmake' 'boost-libs')
 url='https://github.com/DanielSWolf/rhubarb-lip-sync'
 arch=('x86_64')
-source=("v${pkgver}.zip::https://codeload.github.com/DanielSWolf/rhubarb-lip-sync/zip/refs/heads/master")
-md5sums=('SKIP')
+source=("v${pkgver}.zip::https://github.com/DanielSWolf/rhubarb-lip-sync/archive/refs/tags/v1.11.0.zip")
+md5sums=('477b02584277e4e0cb3d5abe4c45fc83')
 license=('MIT')
 options=(!strip)
 
 prepare(){
 	pwd
-	cd ${pkgname}-master #${pkgver}
+	cd ${pkgname}-${pkgver}
 	pwd
 	mkdir build
 	cd build
