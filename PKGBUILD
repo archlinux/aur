@@ -1,7 +1,7 @@
 # Maintainer: Ninni <soelder@hotmail.com>
 pkgname=humble-lumpia-git
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A script for managing installations of Glorious Eggroll's custom proton build "
 arch=("any")
 url="https://github.com/chuck-flowers/humble-lumpia"

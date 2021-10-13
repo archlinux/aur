@@ -1,7 +1,7 @@
 pkgbase = humble-lumpia-git
 	pkgdesc = A script for managing installations of Glorious Eggroll's custom proton build
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/chuck-flowers/humble-lumpia
 	arch = any
 	license = GPL3
