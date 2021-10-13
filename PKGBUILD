@@ -5,7 +5,7 @@
 pkgname=lix-git
 _pkgname=${pkgname%-git}
 pkgver=0.9.31.r1587672355.8757be6b
-pkgrel=2
+pkgrel=3
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/SimonN/lix-unstable.git")
@@ -17,15 +17,15 @@ license=('custom:CC0')
 depends=('allegro' 'enet' 'hicolor-icon-theme' 'liblphobos')
 makedepends=('git' 'ldc' 'dub')
 _dubv=( "4.0.4+5.2.0"   # allegro
-        "0.7.1"         # bolts
+        "1.3.1"         # bolts
         "4.2.0"         # derelict-enet
         "3.0.0-beta.2"  # derelict-util
         "0.4.2"         # enumap
         "1.2.2"         # libinputvisitor
-        "0.6.3"         # optional
+        "1.3.0"         # optional
         "0.10.6"        # sdlang-d
         "1.0.2"         # silly
-        "0.11.18"       # taggedalgebraic
+        "0.11.22"       # taggedalgebraic
         "0.7.55"        # unit-threaded
         )
 
