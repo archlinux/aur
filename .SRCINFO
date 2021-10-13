@@ -1,0 +1,13 @@
+pkgbase = detox-rs
+	pkgdesc = Quickly clean up your development directories
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/whitfin/detox
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	conflicts = detox
+	source = detox-rs-0.1.2.tar.gz::https://github.com/whitfin/detox/archive/v0.1.2.tar.gz
+	sha256sums = 808c3ed1fc47fafd732735237de555ec041327c92f7d42f95827f14d4f3c42b7
+
+pkgname = detox-rs
