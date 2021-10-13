@@ -5,7 +5,7 @@
 # Contributor: Özgür Sarıer <ozgursarier1011601115[at]gmail[dot]com>
 
 pkgname=viber
-pkgver=13.3.1.22
+pkgver=16.1.0.37
 pkgrel=1
 pkgdesc="Proprietary cross-platform IM and VoIP software"
 arch=('x86_64')
@@ -16,12 +16,12 @@ depends=('libxss' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb
 	'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-libav' 'libxslt' 'openssl-1.0')
 options=('!strip')
 source=("$pkgname-$pkgver.deb::https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb")
-sha256sums=('1037a48d74caef33d123b166da2bfb1fe8fa67590b8669ecf25b314f41374267')
+sha256sums=('84ecfe11073638e94b4cf6b690e79f3c9314c96bd2beb82a80f8012a3584de9f')
 
 prepare() {
   cd "$srcdir"
 
-  tar -xf control.tar.gz
+  tar -xf control.tar.xz
   tar -Jxf data.tar.xz
   sed -e 's|Exec=/opt/viber/Viber|Exec=viber|g' \
       -e 's|/usr/share/pixmaps/viber.png|viber.png|g' \
