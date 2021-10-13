@@ -1,11 +1,10 @@
 pkgbase = punes-git
 	pkgdesc = Nintendo Entertaiment System emulator
-	pkgver = 0.107.r1233.b8dc4659
+	pkgver = 0.107.r1340.0d596403
 	pkgrel = 1
-	url = http://forums.nesdev.com/viewtopic.php?t=6928
+	url = https://github.com/punesemu/puNES
 	arch = x86_64
 	license = GPL2
-	makedepends = automake
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-tools
@@ -23,4 +22,3 @@ pkgbase = punes-git
 	md5sums = SKIP
 
 pkgname = punes-git
-
