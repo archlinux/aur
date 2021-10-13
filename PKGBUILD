@@ -2,11 +2,13 @@
 _pkgname=spacecadetpinball
 pkgname=$_pkgname-git
 pkgdesc='Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux'
-pkgver=1.1.1.r25.ga281000
-pkgrel=2
+pkgver=1.1.1.r45.g5947727
+pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 depends=('sdl2' 'sdl2_mixer')
-makedepends=('unrar' 'cmake')
+makedepends=('unrar' 'cmake' 'git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 license=('MIT' 'proprietary')
 noextract=('Space_Cadet.rar')
 url="https://github.com/k4zmu2a/SpaceCadetPinball"
