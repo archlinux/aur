@@ -3,14 +3,15 @@
 pkgname=guapow-staging
 _pkgname=guapow
 pkgver=1.0.1.RC
-pkgrel=1
+pkgrel=2
 _commit="49c4571d5dcddaf79df143cd22ae52ba399d8742"
 pkgdesc="On-demand and auto performance optimizer for Linux applications (testing branch. It may not be working properly)"
 arch=('any')
 url="https://github.com/vinifmor/guapow"
 license=('zlib/libpng')
 depends=('python' 'python-aiofiles' 'python-aiohttp' 'python-pycryptodome' 'systemd')
-optdepends=('unclutter: required for hiding the mouse cursor')
+optdepends=('inxi: guess the window compositor',
+            'unclutter: required for hiding the mouse cursor')
 makedepends=('git' 'python' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname)

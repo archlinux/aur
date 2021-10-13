@@ -1,7 +1,7 @@
 pkgbase = guapow-staging
 	pkgdesc = On-demand and auto performance optimizer for Linux applications (testing branch. It may not be working properly)
 	pkgver = 1.0.1.RC
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinifmor/guapow
 	arch = any
 	license = zlib/libpng
@@ -13,6 +13,7 @@ pkgbase = guapow-staging
 	depends = python-aiohttp
 	depends = python-pycryptodome
 	depends = systemd
+	optdepends = inxi: guess the window compositor,
 	optdepends = unclutter: required for hiding the mouse cursor
 	provides = guapow
 	conflicts = guapow
