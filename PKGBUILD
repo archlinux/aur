@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/linux-nfc/neard"
 license=('GPL2')
 depends=('dbus>=1.2' 'libnl' 'glib2>=2.28')
-makedepends=('automake' 'autoconf>=2.60' 'libtool' 'chrpath')
+makedepends=('automake' 'autoconf>=2.60' 'autoconf-archive' 'libtool' 'chrpath')
 backup=(etc/neard/main.conf)
 source=(https://git.kernel.org/cgit/network/nfc/neard.git/snapshot/$pkgname-$pkgver.tar.gz
         bindir.patch
@@ -32,6 +32,8 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
+    --with-systemdsystemunitdir=/usr/lib/systemd/system \
+    --with-systemduserunitdir=/usr/lib/systemd/user \
     --disable-debug \
     --enable-tools
 
