@@ -1,7 +1,7 @@
 pkgbase = guapow
 	pkgdesc = On-demand and auto performance optimizer for Linux applications
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinifmor/guapow
 	arch = any
 	license = zlib/libpng
@@ -13,6 +13,7 @@ pkgbase = guapow
 	depends = python-aiohttp
 	depends = python-pycryptodome
 	depends = systemd
+	optdepends = inxi: required for guessing the window compositor,
 	optdepends = unclutter: required for hiding the mouse cursor
 	source = https://github.com/vinifmor/guapow/archive/1.0.1.tar.gz
 	sha512sums = e226682a6f41ae9f5a2ec1303d345a39214453f8d42573c2949692519116aeb07418ba14dddb085cd205434071a7d6870c9bc58ae887c84246f37b970fc8fdd2
