@@ -3,13 +3,13 @@
 # Contributor: Joermungand <joermungand at gmail dot com>
 
 pkgname=loopauditioneer-svn
-pkgver=r54
-pkgrel=2
+pkgver=r62
+pkgrel=1
 pkgdesc="Software for loop and cue handling in .wav files"
 arch=('i686' 'x86_64')
 url="http://loopauditioneer.sourceforge.net/"
 license=('GPL3')
-depends=('wxgtk3' 'webkit2gtk' 'rtaudio')
+depends=('wxgtk3' 'webkit2gtk' 'rtaudio' 'libsamplerate')
 makedepends=('svn')
 provides=('loopauditioneer')
 conflicts=('loopauditioneer')
@@ -17,10 +17,11 @@ source=("${pkgname%-*}"::'svn://svn.code.sf.net/p/loopauditioneer/code/trunk'
         'loopauditioneer-datadir.diff'
         "${pkgname%-*}.desktop")
 md5sums=('SKIP'
-         '2aaf74119fab99191937d0f38f47b02e'
+         '2a48bc667b0f4b01aeb7d9c3c9a7319a'
          '0e2286c155701065663461be6c1056ba')
 
 _cpp_sources=(
+  AudioSettingsDialog.cpp
   AutoLoopDialog.cpp
   AutoLooping.cpp
   BatchProcessDialog.cpp
@@ -37,6 +38,7 @@ _cpp_sources=(
   MyFrame.cpp
   MyListCtrl.cpp
   MyPanel.cpp
+  MyResampler.cpp
   MySound.cpp
   PitchDialog.cpp
   StopHarmonicDialog.cpp
@@ -51,7 +53,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-*}"
-
   patch -p1 -N -r - -i "$srcdir"/loopauditioneer-datadir.diff || true
 }
 
@@ -83,6 +84,7 @@ build() {
       `pkg-config --cflags --libs rtaudio` \
       -lm \
       -lpthread \
+      -lsamplerate \
       `wx-config-gtk3 --cxxflags --unicode=yes --libs` \
   )
 }

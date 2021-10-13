@@ -1,13 +1,14 @@
 diff --git a/src/LoopAuditioneer.cpp b/src/LoopAuditioneer.cpp
-index ed2832a..ea1a855 100644
+index 7f5b567..4f8b715 100644
 --- a/src/LoopAuditioneer.cpp
 +++ b/src/LoopAuditioneer.cpp
-@@ -41,13 +41,13 @@ bool LoopAuditioneerApp::OnInit() {
+@@ -41,14 +41,14 @@ bool LoopAuditioneerApp::OnInit() {
    wxImage::AddHandler(new wxJPEGHandler);
    wxFileSystem::AddHandler(new wxZipFSHandler);
    m_helpController = new wxHtmlHelpController();
--  m_helpController->Initialize(wxT("help/help.zip"));
-+  m_helpController->Initialize(wxT(DATADIR "/help/help.zip"));
+-  m_helpController->AddBook(wxFileName("help/help.zip"));
++  m_helpController->AddBook(wxFileName(DATADIR "/help/help.zip"));
+   m_helpController->SetFrameParameters(wxT("%s"), wxDefaultSize, wxDefaultPosition); 	
  
    // load icons
 -  m_icons = wxIconBundle(wxIcon(wxT("icons/LoopyIcon-16.png"), wxBITMAP_TYPE_PNG));
@@ -22,10 +23,10 @@ index ed2832a..ea1a855 100644
    frame->SetIcons(m_icons);
  
 diff --git a/src/MyFrame.cpp b/src/MyFrame.cpp
-index 5e2f8c0..902d308 100644
+index ba1dfeb..73dc58d 100644
 --- a/src/MyFrame.cpp
 +++ b/src/MyFrame.cpp
-@@ -680,23 +680,23 @@ MyFrame::MyFrame(const wxString& title) : wxFrame(NULL, wxID_ANY, title), m_time
+@@ -766,23 +766,23 @@ MyFrame::MyFrame(const wxString& title) : wxFrame(NULL, wxID_ANY, title), m_time
    toolBar = CreateToolBar(wxNO_BORDER | wxTB_HORIZONTAL | wxTB_FLAT);
    toolBar->SetToolBitmapSize(wxSize(24, 24));
    wxImage::AddHandler(new wxPNGHandler);
