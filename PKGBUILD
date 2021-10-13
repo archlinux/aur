@@ -1,7 +1,7 @@
 # Maintainer: David Horvath <horvath.david987 at gmail dot com>
 pkgname='mqtt-explorer'
 pkgver=0.3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A comprehensive and easy-to-use MQTT Client"
 arch=('any')
 url="https://mqtt-explorer.com/"
@@ -21,7 +21,7 @@ options=(!strip)
 install=
 changelog=
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/thomasnordquist/MQTT-Explorer/archive/v$pkgver.tar.gz"
-        "$pkgname-${pkgver}-desktop.tar.gz::https://github.com/dave12311/mqtt-explorer.desktop/archive/1.0.tar.gz")
+        "$pkgname-${pkgver}-desktop.tar.gz::https://github.com/dave12311/mqtt-explorer.desktop/archive/1.1.tar.gz")
 validpgpkeys=("4AEE18F83AFDEB23")
 
 build() {
