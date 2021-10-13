@@ -5,7 +5,7 @@
 pkgname=ttf-mplus-git
 pkgver=r215.977baab
 pkgrel=1
-pkgdesc='A little nifty font family for everyday usage'
+pkgdesc='A little nifty font family for everyday usage (git version)'
 _repo_name='MPLUS_FONTS'
 url='https://mplusfonts.github.io/'
 arch=('any')
