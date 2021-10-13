@@ -3,11 +3,11 @@
 # shellcheck disable=SC2034,2154,2148
 
 pkgname=lix
-pkgver=0.9.38
+pkgver=0.9.39
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
-sha512sums=('1cd9025ad76e224eab0cef65b6d34bda9d186a99376c1e81c5252251f75d4d4f972328bca54b6807204eb2886a8b160462d7e92ae652d4dcae99d7be55463d06')
+sha512sums=('49895c78d892ee62fa6d40fc0c7c7377916cda494581eaf95b080558e6dee50c3b1298e9d94e72b9f7aa669f7303c7f4ce53692709dbcd6f040a000e0c0cf354')
 
 _gitname=LixD
 pkgdesc="An action-puzzle game inspired by Lemmings"
@@ -17,15 +17,15 @@ license=('custom:CC0')
 depends=('allegro' 'enet' 'hicolor-icon-theme' 'liblphobos')
 makedepends=('git' 'ldc' 'dub')
 _dubv=( "4.0.4+5.2.0"   # allegro
-        "0.7.1"         # bolts
+        "1.3.1"         # bolts
         "4.2.0"         # derelict-enet
         "3.0.0-beta.2"  # derelict-util
         "0.4.2"         # enumap
         "1.2.2"         # libinputvisitor
-        "0.6.3"         # optional
+        "1.3.0"         # optional
         "0.10.6"        # sdlang-d
         "1.0.2"         # silly
-        "0.11.18"       # taggedalgebraic
+        "0.11.22"       # taggedalgebraic
         "0.7.55"        # unit-threaded
         )
 

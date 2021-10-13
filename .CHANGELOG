@@ -1,6 +1,31 @@
 Version history
 ===============
 
+0.9.39
+------
+
+2021-10-12
+
+Added a dedicated end-of-singleplayer screen to show stats of the finished
+attempt, to offer the immediate next level, and to offer the next unsolved
+level in case the player has already solved the immediate next level.
+
+Darkened the labels "by" and "Goal:" in front of level nameplates in
+the browser and in the end-of-level screen. They're now darker than the
+normal text color. Title, author and goal stand out better in their normal
+text color now.
+
+Re-added 3 levels -- Fill the Floor, Interval Training, Chaos Theory --
+to single/clam/Outtakes. Fill the Floor and Interval Training originally
+needed variable spawn intervals during play; now, they employ floaters and
+runners at fixed spawn intervals. Chaos Theory originally needed the nuke
+to solve; now, it employs manually assigned exploders to fling.
+
+Updated the Lix source code to comply with the future meaning of the "in"
+keyword. Updated Lix for package optional 1.3.0 instead of 0.6.3.
+
+
+
 0.9.38
 ------
 
@@ -30,8 +55,8 @@ even when we return from a netgame.
 Fix #423: De-duplicate the multiplayer level tree, as reported by Dullstar.
 I had extra copies of Along the Fabrics of Your Clothing in the 8p directory.
 
-Updated Allegro DLLs to Allegro 5.2.7.1. You can check what Lix usesat runtime
-with Lix's command-line argument: --allgero-version
+Updated Allegro DLLs to Allegro 5.2.7.1. You can check what Lix uses at
+runtime with Lix's command-line argument: --allgero-version
 
 I build the 32-bit Windows release with LDC, not with DMD. LDC generates
 faster-running machine code, exactly what we want for a release version. Tell
@@ -50,7 +75,8 @@ Windows Notepad. (Documentation should have CRLF endings, code should have LF
 endings.) Removed note in the 32-bit DMD Windows build notes about NuGet libs,
 DMD 32-bit doesn't play well with them.
 
-The build documentation points to new archives (lix-dlls-libs-dmd32.zip, lix-dlls-libs-ldc32.zip, lix-dlls-libs-win64.zip) because the .lib files
+The build documentation points to new archives (lix-dlls-libs-dmd32.zip,
+lix-dlls-libs-ldc32.zip, lix-dlls-libs-win64.zip) because the .lib files
 can be incompatible between compilers.
 
 
@@ -105,7 +131,7 @@ NuGet.
 
 2021-02-24
 
-Add a whopping 66 multiplayer maps by Flopsy, including Perfect Situation
+Add a whopping 66 multiplayer maps by Flopsy, including Perfect Situation.
 
 Fix #413: The new-level button in the editor will now ask for data loss
 before clearing the map and clearing the undo buffer. You can click Save,
