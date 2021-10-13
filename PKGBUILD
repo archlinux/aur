@@ -29,6 +29,16 @@ options=('!strip')
 
 validpgpkeys=('58117AFA1F85B3EEC154677D615D449FE6E6A235')
 
+prepare() {
+  if ! archlinux-java status | grep default | grep 17 ; then 
+      echo "You don't have a Java 17 JDK selected but the following installed on your system:"
+      echo "`archlinux-java status | grep 17`"
+      echo "Select a Java 17 JDK using \"sudo archlinux-java set [name from the list above]\""
+      echo "If you switched to a JDK 17, please re-run the installation."
+      return 1
+  fi
+}
+
 build() {
   cd "${srcdir}/cryptomator-${pkgver}"
   mvn -B clean package -DskipTests -Plinux
