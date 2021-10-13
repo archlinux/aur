@@ -1,43 +1,36 @@
 # Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-pkgname=python-meshplex
-_name=${pkgname#python-}
+_base=meshplex
+pkgname=python-${_base}
+pkgdesc="Compute interesting points, areas, and volumes in simplex meshes of any dimension"
 pkgver=0.16.5
-pkgrel=1
-pkgdesc='Compute interesting points, areas, and volumes in triangular and tetrahedral meshes.'
-url='https://github.com/nschloe/meshplex'
+pkgrel=2
 arch=('any')
-license=('GPL')
-makedepends=(
-	'python'
-	'python-setuptools'
-	'python-dephell'
+url="https://github.com/nschloe/${_base}"
+license=(GPL3)
+depends=(python-meshio python-npx)
+makedepends=(python-setuptools)
+# checkdepends=(python-pytest-codeblocks python-meshzoo python-matplotlib python-scipy)
+optdepends=('python-matplotlib: for Matplotlib rendering'
+	'vtk: for create polygonal sphere'
 )
-depends=(
-	'python-meshio'
-	'python-numpy'
-	'python-npx'
-)
-optdepends=(
-	'python-matplotlib'
-	'vtk'
-)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('6e97a5164bc8cfb7bf410508aa92b2900671c5372fdf1b8a522042f84978b5d404190195a0ce864ef2270a9cfd2497a832a6e14effbf6ab71688f5d8c256c840')
-
-prepare() {
-	cd "$srcdir/$_name-$pkgver" || exit
-	dephell deps convert --from pyproject.toml --to setup.py
-}
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('f706429aa7fcd68df45392476fa266698b41d64b9237fdae1fa54626038e6aa3b81db107eff850fb44c009155e13cf1f65c7299fe5ae2e5ac60bf780d785cf81')
 
 build() {
-	cd "$srcdir/$_name-$pkgver" || exit
+	cd "${_base}-${pkgver}"
 	export PYTHONHASHSEED=0
-	python setup.py build
+	python -c "from setuptools import setup; setup();" build
 }
 
+# check() {
+#   cd "${_base}-${pkgver}"
+#   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
+#   MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks tests
+# }
+
 package() {
-	cd "$srcdir/$_name-$pkgver" || exit
-	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	cd "${_base}-${pkgver}"
+	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
