@@ -1,7 +1,7 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
 
 pkgname=whoogle-git
-pkgver=0.5.0_r317.g75e7410
+pkgver=0.6.0_r391.g20976f2
 pkgrel=1
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
@@ -31,7 +31,7 @@ build() {
   pip install -r requirements.txt
   
   # Cleanup unsed
-  rm -r .git .github docs test .dockerignore .gitignore .replit .travis.yml docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt setup.py
+  rm -r .git .github docs test .dockerignore .gitignore .replit docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt setup.py
 }
 
 package() {
