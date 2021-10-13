@@ -1,0 +1,18 @@
+pkgbase = way-displays
+	pkgdesc = way-displays: Manage Your Wayland Displays
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alex-courtis/way-displays
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = wayland
+	depends = wlroots
+	depends = libinput
+	depends = yaml-cpp
+	source = https://github.com/alex-courtis/way-displays/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 5d51b74f7c9ea21c7503222d84a9f74f3832890bc7d0b86201033f56395e7a42
+
+pkgname = way-displays
