@@ -18,6 +18,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make PREFIX="/usr" PREFIX_ETC="" DESTDIR="$pkgdir/" install
+	make PREFIX="/usr" PREFIX_ETC="" DESTDIR="$pkgdir" install
 }
 
