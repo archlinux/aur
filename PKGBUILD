@@ -1,9 +1,9 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r999.fdeb828
+pkgver=r1009.7d4825e
 pkgrel=1
-pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist and several manga sites.'
+pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
 license=('GPL3')
@@ -17,10 +17,10 @@ optdepends=(
     'ffmpeg: For displaying webp thumbnails, uploading video thumbnails on matrix and merging video and audio when downloading youtube videos'
     'noto-fonts-cjk: To display chinese, japanese and korean characters'
 )
-provides=('quickmedia')
-conflicts=('quickmedia')
-source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r999.fdeb828.tar.gz")
-sha512sums=('37693c213acdbea505366a3e70fed8afa57d229efa3e195fd7681dde4a5a8282777be8fcc36541077e84bd7add9dda19ab4913133a343689b3fba3ca39e7d09e')
+provides=('quickmedia' 'qm')
+conflicts=('quickmedia' 'qm')
+source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1009.7d4825e.tar.gz")
+sha512sums=('aadf869677fdd6ac4cd7f41878c1a36ba5e042abd73240a1887e1b3f57a6af27a674f0aaf6fa87a582c5d31c08d05aa64e3b374d27f2538514d92731672f7e7a')
 
 build() {
   cd "$srcdir"
@@ -30,6 +30,7 @@ build() {
 package() {
   cd "$srcdir"
   install -Dm755 "sibs-build/$(sibs platform)/release/quickmedia" "$pkgdir/usr/bin/quickmedia"
+  ln -sf "$pkgdir/usr/bin/quickmedia" "$pkgdir/usr/bin/qm"
   install -Dm644 boards.json "$pkgdir/usr/share/quickmedia/boards.json"
   install -Dm644 input.conf "$pkgdir/usr/share/quickmedia/input.conf"
   for file in images/* icons/* shaders/* themes/*; do
