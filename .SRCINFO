@@ -1,7 +1,7 @@
 pkgbase = dwm
 	pkgdesc = A dynamic window manager for X
 	pkgver = 6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dwm.suckless.org
 	install = dwm.install
 	arch = i686
@@ -13,8 +13,6 @@ pkgbase = dwm
 	depends = freetype2
 	depends = st
 	depends = dmenu
-	provides = dwm-git
-	conflicts = dwm-git
 	options = zipman
 	source = dwm.desktop
 	source = https://dl.suckless.org/dwm/dwm-6.2.tar.gz

@@ -4,7 +4,7 @@
 
 pkgname=dwm
 pkgver=6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic window manager for X"
 url="https://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -12,8 +12,6 @@ license=('MIT')
 options=(zipman)
 depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'st' 'dmenu')
 install=dwm.install
-provides=('dwm-git')
-conflicts=('dwm-git')
 source=(dwm.desktop
         https://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
         config.h)
