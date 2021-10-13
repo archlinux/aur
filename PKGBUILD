@@ -2,12 +2,12 @@
 
 pkgname=verminian-trap
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Your space pod has been forced to land on a planet infested with giant insects from Verminest. Fight with your companions and survive the incoming waves of enemy bugs for as long as you can"
 arch=('i686' 'x86_64')
 url='http://www.locomalito.com/verminian_trap.php'
 license=('CCPL')
-depends=('zlib' 'openssl-1.0' 'openal' 'mesa')
+depends=('zlib' 'openssl-1.0' 'openal' 'mesa' 'xorg-fonts-misc')
 if [ "$CARCH" = "x86_64" ]; then
 	depends+=('lib32-zlib' 'lib32-openssl-1.0' 'lib32-openal' 'lib32-mesa')
 fi

@@ -1,7 +1,7 @@
 pkgbase = verminian-trap
 	pkgdesc = Your space pod has been forced to land on a planet infested with giant insects from Verminest. Fight with your companions and survive the incoming waves of enemy bugs for as long as you can
 	pkgver = 1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.locomalito.com/verminian_trap.php
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = verminian-trap
 	depends = openssl-1.0
 	depends = openal
 	depends = mesa
+	depends = xorg-fonts-misc
 	depends = lib32-zlib
 	depends = lib32-openssl-1.0
 	depends = lib32-openal
@@ -22,4 +23,3 @@ pkgbase = verminian-trap
 	md5sums = 03a55d9b815448c62d428f5393d4bc84
 
 pkgname = verminian-trap
-
