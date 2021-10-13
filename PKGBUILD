@@ -1,20 +1,26 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=patterns-git
-pkgver=r37.770a676
+pkgver=r51.02394e9
 pkgrel=1
 pkgdesc="GNOME patterns"
-arch=('any')
+arch=('x86_64')
 url="https://gitlab.gnome.org/exalm/patterns"
-license=('MIT')
-depends=('glib2' 'gtk4' 'libadwaita' 'libsass' 'sassc')
-makedepends=('git' 'meson' 'gcc')
+license=('MIT' 'LGPL')
+depends=('glib2' 'gtk4' 'libadwaita')
+makedepends=('git' 'meson')
+checkdepends=('appstream-glib')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=(git+$url.git)
-md5sums=(SKIP) #autofill using updpkgsums
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
@@ -23,9 +29,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
