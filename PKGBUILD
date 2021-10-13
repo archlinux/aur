@@ -1,6 +1,6 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=vouch-proxy
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="an SSO and OAuth / OIDC login solution for Nginx using the auth_request module"
 arch=('x86_64')
@@ -13,13 +13,14 @@ build() {
   cd $pkgname-$pkgver
   ./do.sh goget
   ./do.sh gobuildstatic
-  ./do.sh install
 }
 
 package() {
-  install -Dm755 $pkgname-$pkgver/$pkgname "$pkgdir"/usr/bin/$pkgname
+  cd $pkgname-$pkgver
   install -Dm755 "$srcdir"/vouch-proxy.service "$pkgdir"/usr/lib/systemd/system/vouch-proxy.service
+  install -dm755 "$pkgdir"/usr/bin
+  GOPATH="$pkgdir"/usr ./do.sh install
 }
 
-sha256sums=('3fd4fe8332f3908e44802484f051b14999b094005399c3cecc2b7ca7942ef46c'
+sha256sums=('0abd258f52a9f59b050b1e0bd5170cc55be3c23d772ecbf6b1aa22493829b424'
             'f278afaa8053181956b1b11fe156207fc56817aae7c8d145434a305662b25aa7')
