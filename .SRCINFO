@@ -1,7 +1,7 @@
 pkgbase = loopauditioneer-svn
 	pkgdesc = Software for loop and cue handling in .wav files
-	pkgver = r54
-	pkgrel = 2
+	pkgver = r62
+	pkgrel = 1
 	url = http://loopauditioneer.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = loopauditioneer-svn
 	depends = wxgtk3
 	depends = webkit2gtk
 	depends = rtaudio
+	depends = libsamplerate
 	provides = loopauditioneer
 	conflicts = loopauditioneer
 	source = loopauditioneer::svn://svn.code.sf.net/p/loopauditioneer/code/trunk
 	source = loopauditioneer-datadir.diff
 	source = loopauditioneer.desktop
 	md5sums = SKIP
-	md5sums = 2aaf74119fab99191937d0f38f47b02e
+	md5sums = 2a48bc667b0f4b01aeb7d9c3c9a7319a
 	md5sums = 0e2286c155701065663461be6c1056ba
 
 pkgname = loopauditioneer-svn
-
