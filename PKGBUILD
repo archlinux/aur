@@ -12,7 +12,7 @@ url="http://web.monkeysphere.info/"
 license=('GPL3')
 depends=('agent-transfer' 'lockfile-progs' 'perl-crypt-openssl-rsa' 'perl-digest-sha1' 'perl-crypt-openssl-bignum' 'gnupg>=2.1.22')
 checkdepends=('socat' 'openssh' 'cpio' 'gnupg>=2.1.22' 'perl-crypt-openssl-bignum')
-source=(https://archive.monkeysphere.info/debian/pool/${pkgname}/m/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
+source=(http://deb.debian.org/debian/pool/main/m/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
     binmerge.patch
     exclude-agent.patch
     )

@@ -10,12 +10,14 @@ pkgbase = monkeysphere
 	checkdepends = openssh
 	checkdepends = cpio
 	checkdepends = gnupg>=2.1.22
+	checkdepends = perl-crypt-openssl-bignum
 	depends = agent-transfer
 	depends = lockfile-progs
 	depends = perl-crypt-openssl-rsa
 	depends = perl-digest-sha1
+	depends = perl-crypt-openssl-bignum
 	depends = gnupg>=2.1.22
-	source = https://archive.monkeysphere.info/debian/pool/monkeysphere/m/monkeysphere/monkeysphere_0.44.orig.tar.gz
+	source = http://deb.debian.org/debian/pool/main/m/monkeysphere/monkeysphere_0.44.orig.tar.gz
 	source = binmerge.patch
 	source = exclude-agent.patch
 	sha256sums = 6ac6979fa1a4a0332cbea39e408b9f981452d092ff2b14ed3549be94918707aa
