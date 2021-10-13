@@ -1,0 +1,16 @@
+pkgbase = python-jamo-git
+	pkgdesc = Hangul syllable decomposition and synthesis using jamo
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/JDongian/python-jamo
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.6
+	provides = python-jamo
+	conflicts = python-jamo
+	source = python-jamo-git::git+https://github.com/JDongian/python-jamo
+	md5sums = SKIP
+
+pkgname = python-jamo-git
