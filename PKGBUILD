@@ -1,7 +1,7 @@
 # Maintainer: pappy <pa314159@users.noreply.github.com>
 
 pkgname=octoprint
-pkgver=1.7.0rc3
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="The snappy web interface for your 3D printer on Arch Linux"
 arch=(any)
@@ -49,7 +49,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OctoPrint/OctoPrint/arc
 		octoprint.conf
 		)
 options=(!distcc !ccache)
-sha256sums=('f85cf191f4bb71b584615c0bd558bfb54062c487dc06ca8eb2451e342fc555cc'
+sha256sums=('e6ae685e5bf09df0d550713cfef3d1fd8937be7bc3bec41033cdc4be7c414e6b'
             'bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65'
             '231685e84b0241a466766c766f8d3ba31efda3238f19e9adedea380e7b861737'
             '08e6ff10fb7f61c40e5770b67e8f7201d02d82d3bd46c5441a7f2b0435fbe9c2'
