@@ -1,8 +1,8 @@
 diff --git a/proton b/proton
-index 667a24b..0ac6bd8 100755
+index 910a2e1..9cc88f0 100755
 --- a/proton
 +++ b/proton
-@@ -161,53 +161,22 @@ class Proton:
+@@ -292,7 +292,6 @@ class Proton:
          self.wine_bin = self.bin_dir + "wine"
          self.wine64_bin = self.bin_dir + "wine64"
          self.wineserver_bin = self.bin_dir + "wineserver"
@@ -10,52 +10,22 @@ index 667a24b..0ac6bd8 100755
  
      def path(self, d):
          return self.base_dir + d
+@@ -1463,8 +1462,6 @@ if __name__ == "__main__":
  
-     def cleanup_legacy_dist(self):
--        old_dist_dir = self.path("dist/")
--        if os.path.exists(old_dist_dir):
--            with self.dist_lock:
--                if os.path.exists(old_dist_dir):
--                    shutil.rmtree(old_dist_dir)
-+        return True
+     g_proton = Proton(os.path.dirname(sys.argv[0]))
  
-     def do_steampipe_fixups(self):
--        fixups_json = self.path("steampipe_fixups.json")
--        fixups_mtime = self.path("files/steampipe_fixups_mtime")
--
--        if os.path.exists(fixups_json):
--            with self.dist_lock:
--                import steampipe_fixups
--
--                current_fixup_mtime = None
--                if os.path.exists(fixups_mtime):
--                    with open(fixups_mtime, "r") as f:
--                        current_fixup_mtime = f.readline().strip()
--
--                new_fixup_mtime = getmtimestr(fixups_json)
--
--                if current_fixup_mtime != new_fixup_mtime:
--                    result_code = steampipe_fixups.do_restore(self.base_dir, fixups_json)
--
--                    if result_code == 0:
--                        with open(fixups_mtime, "w") as f:
--                            f.write(new_fixup_mtime + "\n")
-+        return True
+-    g_proton.cleanup_legacy_dist()
+-    g_proton.do_steampipe_fixups()
  
-     def missing_default_prefix(self):
-         '''Check if the default prefix dir is missing. Returns true if missing, false if present'''
-         return not os.path.isdir(self.default_pfx_dir)
+     g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-     def make_default_prefix(self):
--        with self.dist_lock:
--            local_env = dict(g_session.env)
--            if self.missing_default_prefix():
--                #make default prefix
--                local_env["WINEPREFIX"] = self.default_pfx_dir
--                local_env["WINEDEBUG"] = "-all"
--                g_session.run_proc([self.wine64_bin, "wineboot"], local_env)
--                g_session.run_proc([self.wineserver_bin, "-w"], local_env)
-+        return True
+@@ -1477,7 +1474,8 @@ if __name__ == "__main__":
+     g_session.init_wine()
  
- class CompatData:
-     def __init__(self, compatdata):
+     if g_proton.missing_default_prefix():
+-        g_proton.make_default_prefix()
++        log("Default prefix is missing, something is very wrong.")
++        sys.exit(1)
+ 
+     import protonfixes
+ 

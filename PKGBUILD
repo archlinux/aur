@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.18-GE-2
+_srctag=6.19-GE-2
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
@@ -117,6 +117,10 @@ source=(
     vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
+    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
+    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
+    Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    vkd3d-zfigura::git+https://repo.or.cz/vkd3d/zf.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
     lsteamclient-gloriouseggroll::git+https://github.com/gloriouseggroll/lsteamclient.git
@@ -125,12 +129,8 @@ source=(
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
     gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
-    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
-    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
-    Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    proton-remove_broken_patch_segments.patch
     wine-more_8x5_res.patch
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
@@ -172,6 +172,9 @@ prepare() {
         vkd3d-proton
         OpenXR-SDK
         dxvk-nvapi
+        SPIRV-Headers
+        Vulkan-Headers
+        vkd3d-zfigura::vkd3d
         wine-staging
         ffmpeg-meson::ffmpeg
         lsteamclient-gloriouseggroll::lsteamclient
@@ -207,7 +210,6 @@ prepare() {
         git submodule update external/Vulkan-Headers
     popd
 
-    patch -p1 -i "$srcdir"/proton-remove_broken_patch_segments.patch
     ./patches/protonprep.sh
 
     pushd wine
@@ -336,12 +338,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             '0473570207938f983994addb1ff3c3904a30f6cc07ecaa291c7900f5f7e4cc21'
-            'e8cb8d0517822be7ce80782c2c7b1fea5b34467e87a4b2cd23c320007eba909a'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '6dc9620ba46832b13ea0c2a5e7dec3d0d9473bd3652e79b382419a355bd62ced'
-            '61dbdb4d14e22c2c34b136e5ddb800eac54023b5b23c19acd13a82862f94738c'
-            '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-)
+            '253ddfdf066fd182395c80c6be462f5970ed3017a9fba00f2e75d0f2b99ea1a9'
+            '27b75be282c5f235171569aebce80020b330d6117becdb3b1670d3124eb52489'
+            '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')

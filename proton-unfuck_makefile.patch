@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index e1d01ac..a2e1852 100755
+index 681a052..4093606 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -106,7 +106,7 @@ index e1d01ac..a2e1852 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_LIBAV_DEPENDS = gst_orc gstreamer gst_base
-@@ -730,7 +747,14 @@ WINE_SOURCE_ARGS = \
+@@ -748,8 +765,14 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -114,14 +114,14 @@ index e1d01ac..a2e1852 100755
 +  --with-gstreamer \
 +  --with-faudio \
    --with-mingw \
-+  --with-xpresent \
+   --without-xpresent \
 +  --without-vkd3d \
 +  --without-oss \
 +  --disable-win16 \
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -789,16 +813,6 @@ $(OBJ)/.vrclient-post-source:
+@@ -804,16 +827,6 @@ $(OBJ)/.vrclient-post-source:
  	mkdir -p $(VRCLIENT_OBJ64) && cp -a $(VRCLIENT_SRC)/vrclient_x64/vrclient_x64.spec $(VRCLIENT_OBJ64)/vrclient_x64.spec
  	touch $@
  
@@ -138,7 +138,27 @@ index e1d01ac..a2e1852 100755
  
  
  ##
-@@ -861,7 +875,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -890,17 +903,18 @@ VKD3D_CONFIGURE_ARGS = \
+   --disable-tests \
+   --disable-demos \
+   --without-ncurses \
+-  WIDL=$(WINE_OBJ64)/tools/widl/widl
+ 
+ VKD3D_CONFIGURE_ARGS32 = \
+   --host=i686-w64-mingw32 \
+   CC="$(CCACHE_BIN) i686-w64-mingw32-gcc" \
+   LD="i686-w64-mingw32-ld" \
++  WIDL=$(WINE_OBJ32)/tools/widl/widl
+ 
+ VKD3D_CONFIGURE_ARGS64 = \
+   --host=x86_64-w64-mingw32 \
+   CC="$(CCACHE_BIN) x86_64-w64-mingw32-gcc" \
+   LD="x86_64-w64-mingw32-ld" \
++  WIDL=$(WINE_OBJ64)/tools/widl/widl
+ 
+ VKD3D_LDFLAGS = -static-libgcc $(CROSSLDFLAGS)
+ VKD3D_LDFLAGS32 = -L$(WINE_OBJ32)/dlls/vulkan-1/
+@@ -930,7 +944,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
@@ -148,10 +168,10 @@ index e1d01ac..a2e1852 100755
      --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton \
      --cross-file=$(VKD3D_PROTON_OBJ32)/build-win32.txt
 diff --git a/make/rules-autoconf.mk b/make/rules-autoconf.mk
-index 80eee67..328c8c1 100644
+index 6567f05..3dd740b 100644
 --- a/make/rules-autoconf.mk
 +++ b/make/rules-autoconf.mk
-@@ -27,9 +27,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/configure.ac
+@@ -32,9 +32,9 @@ $$(OBJ)/.$(1)-configure$(3): $$(OBJ)/.$(1)-pre-configure
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	cd "$$($(2)_OBJ$(3))" && env $$($(2)_ENV$(3)) \
@@ -164,15 +184,17 @@ index 80eee67..328c8c1 100644
  endif
  endef
 diff --git a/make/rules-cargo.mk b/make/rules-cargo.mk
-index 5369fb4..3cbf8c2 100644
+index 5369fb4..21db917 100644
 --- a/make/rules-cargo.mk
 +++ b/make/rules-cargo.mk
-@@ -14,7 +14,7 @@ $(OBJ)/.$(1)-configure$(3):
+@@ -14,7 +14,9 @@ $(OBJ)/.$(1)-configure$(3):
  $(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
 -	cargo build --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
-+	cargo build --verbose --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
++	cargo update --offline --verbose
++	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
++	cargo build --locked --offline --verbose --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
  	touch $$@
  endif
  endef
@@ -202,12 +224,16 @@ index 4c61951..3a31610 100644
  endif
  endef
 diff --git a/make/rules-common.mk b/make/rules-common.mk
-index 916df8b..044f705 100644
+index 083655b..28d7785 100644
 --- a/make/rules-common.mk
 +++ b/make/rules-common.mk
-@@ -109,17 +109,18 @@ CONTAINERGOALS := $(CONTAINERGOALS) $(filter $(1),$(MAKECMDGOALS))
+@@ -108,18 +108,22 @@ CONTAINERGOALS := $(CONTAINERGOALS) $(filter $(1),$(MAKECMDGOALS))
+ 
  
  $(2)_ENV$(3) = \
++    WINEDEBUG="-all" \
++    WINEPREFIX="$$(OBJ)/pfx-wine$(3)" \
++    WINEDLLOVERRIDES="winemenubuilder=d;mscoree=d;mshtml=d" \
      CARGO_HOME=$$(OBJ)/.cargo \
 -    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="$$(ARCH$(3))-linux-gnu-gcc" \
 +    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="gcc" \
