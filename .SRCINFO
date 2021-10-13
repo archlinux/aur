@@ -1,7 +1,7 @@
 pkgbase = gcc-git
 	pkgdesc = The GNU Compiler Collection
-	pkgver = 12.0.0_r188038.g31e924c52f4
-	pkgrel = 2
+	pkgver = 12.0.0_r188792.gf874a13ca38
+	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL
@@ -22,7 +22,7 @@ pkgbase = gcc-git
 	makedepends = libxcrypt
 	options = !emptydirs
 	source = git://gcc.gnu.org/git/gcc.git
-	source = http://isl.gforge.inria.fr/isl-0.24.tar.xz
+	source = https://mirrors.slackware.com/slackware/slackware64-current/source/l/isl/isl-0.24.tar.xz
 	source = c89
 	source = c99
 	source = gdc_phobos_path.patch
@@ -45,7 +45,7 @@ pkgbase = gcc-git
 pkgname = gcc-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends
 	groups = base-devel-git
-	depends = gcc-libs-git=12.0.0_r188038.g31e924c52f4-2
+	depends = gcc-libs-git=12.0.0_r188792.gf874a13ca38-1
 	depends = binutils>=2.28
 	depends = libmpc
 	optdepends = lib32-gcc-libs-git: for generating code for 32-bit ABI
@@ -60,7 +60,7 @@ pkgname = gcc-git
 pkgname = gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC
 	depends = glibc
-	provides = gcc-libs=12.0.0_r188038.g31e924c52f4-2
+	provides = gcc-libs=12.0.0_r188792.gf874a13ca38-1
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	provides = libgo.so
@@ -77,7 +77,7 @@ pkgname = gcc-libs-git
 
 pkgname = gcc-fortran-git
 	pkgdesc = Fortran front-end for GCC
-	depends = gcc-git=12.0.0_r188038.g31e924c52f4-2
+	depends = gcc-git=12.0.0_r188792.gf874a13ca38-1
 	provides = gcc-fortran
 	provides = gcc-multilib
 	provides = gcc-multilib-git
@@ -86,7 +86,7 @@ pkgname = gcc-fortran-git
 
 pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC
-	depends = gcc-git=12.0.0_r188038.g31e924c52f4-2
+	depends = gcc-git=12.0.0_r188792.gf874a13ca38-1
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	conflicts = gcc-objc
@@ -94,7 +94,7 @@ pkgname = gcc-objc-git
 
 pkgname = gcc-ada-git
 	pkgdesc = Ada front-end for GCC (GNAT)
-	depends = gcc-git=12.0.0_r188038.g31e924c52f4-2
+	depends = gcc-git=12.0.0_r188792.gf874a13ca38-1
 	provides = gcc-ada
 	provides = gcc-multilib
 	provides = gcc-multilib-git
@@ -105,7 +105,7 @@ pkgname = gcc-ada-git
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC
-	depends = gcc-git=12.0.0_r188038.g31e924c52f4-2
+	depends = gcc-git=12.0.0_r188792.gf874a13ca38-1
 	provides = go=1.12.2
 	provides = gcc-multilib
 	provides = gcc-multilib-git
@@ -116,7 +116,7 @@ pkgname = gcc-go-git
 
 pkgname = gcc-d-git
 	pkgdesc = D frontend for GCC
-	depends = gcc-git=12.0.0_r188038.g31e924c52f4-2
+	depends = gcc-git=12.0.0_r188792.gf874a13ca38-1
 	provides = gcc-d
 	provides = gdc
 	provides = gdc-git

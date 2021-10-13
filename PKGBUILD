@@ -4,14 +4,15 @@
 # NOTE: libtool requires rebuilding with each new gcc version
 
 # You probably don't need support for all the languages, feel free to remove the ones you don't;
-# Just edit the --enable-languages option as well as the pkgname array :)
+# Just edit the --enable-languages option as well as the pkgname array, and comment out the pkg functions :)
 
 pkgbase=gcc-git
 pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d}-git)
-pkgver=12.0.0_r188038.g31e924c52f4
+pkgver=12.0.0_r188792.gf874a13ca38
 _majorver=${pkgver%%.*}
-_isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep "isl-.*tar\.xz" | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
-pkgrel=2
+_isl_link=https://mirrors.slackware.com/slackware/slackware64-current/source/l/isl
+_isl=$(curl -s "$_isl_link/?C=M;O=A" | grep "isl-.*tar\.xz" | tail -1 | sed -e 's/.*href="//' -e 's/\.mirrorlist.*//')
+pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=($CARCH)
 license=(GPL LGPL FDL custom)
@@ -22,7 +23,7 @@ options=(!emptydirs)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
 
 source=(git://gcc.gnu.org/git/gcc.git
-        http://isl.gforge.inria.fr/$_isl
+        $_isl_link/$_isl
         c89 c99
         gdc_phobos_path.patch
         fs64270.patch
@@ -144,33 +145,39 @@ package_gcc-libs-git() {
             libubsan.so libasan.so libtsan.so liblsan.so)
   replaces=(gcc-multilib-git libgphobos-git)
 
-  cd gcc-build
-  make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
+  cd gcc-build/$CHOST
+  make -C libgcc DESTDIR="$pkgdir" install-shared
   rm -f "$pkgdir/$_libdir/libgcc_eh.a"
 
+  # beautiful hack I came up with to skip libs when they're missing :)
+  # i.e. when the respective languages were disabled
+  shopt -s nullglob
   for lib in libatomic \
-             libgfortran \
-             libgo \
+             [l]ibgfortran \
+             [l]ibgo \
              libgomp \
              libitm \
              libquadmath \
              libsanitizer/{a,l,ub,t}san \
              libstdc++-v3/src \
              libvtv; do
-    make -C $CHOST/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
+    make -C $lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
+  shopt -u nullglob
 
-  make -C $CHOST/libobjc DESTDIR="$pkgdir" install-libs
-  make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
+  # why ! and || instead of just &&, i hear you ask?
+  # so that $? is always 0 (unless make fails)
+  [[ ! -e libobjc ]] || make -C libobjc DESTDIR="$pkgdir" install-libs
+  make -C libstdc++-v3/po DESTDIR="$pkgdir" install
 
-  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+  make -C libphobos DESTDIR="$pkgdir" install
   rm -rf "$pkgdir"/$_libdir/include/d/
   rm -f "$pkgdir"/usr/lib/libgphobos.spec
 
   for lib in libgomp \
              libitm \
              libquadmath; do
-    make -C $CHOST/$lib DESTDIR="$pkgdir" install-info
+    make -C $lib DESTDIR="$pkgdir" install-info
   done
 
   # remove files provided by lib32-gcc-libs
@@ -241,8 +248,10 @@ package_gcc-git() {
   install -m644 libiberty/pic/libiberty.a "$pkgdir/usr/lib"
 
   make -C gcc DESTDIR="$pkgdir" install-man install-info
-  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1
-  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info
+
+  # don't fail if can't remove the files (when certain languages were disabled)
+  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1 ||:
+  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info ||:
 
   make -C libcpp DESTDIR="$pkgdir" install
   make -C gcc DESTDIR="$pkgdir" install-po
