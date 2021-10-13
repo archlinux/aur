@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-gcc
 	pkgdesc = The GNU Compiler Collection (arm-linux-gnueabihf)
 	pkgver = 11.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = arm-linux-gnueabihf-gcc
 	checkdepends = dejagnu
 	checkdepends = inetutils
 	depends = arm-linux-gnueabihf-binutils>=2.37-1
-	depends = arm-linux-gnueabihf-glibc>=2.33-3
+	depends = arm-linux-gnueabihf-glibc>=2.33-4
 	depends = libmpc
 	depends = elfutils
 	depends = zlib

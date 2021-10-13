@@ -10,12 +10,12 @@ pkgname="${_target}-gcc"
 pkgver=11.2.0
 _majorver=${pkgver%%.*}
 _islver=0.24
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-depends=("${_target}-binutils>=2.37-1" "${_target}-glibc>=2.33-3" libmpc elfutils zlib)
+depends=("${_target}-binutils>=2.37-1" "${_target}-glibc>=2.33-4" libmpc elfutils zlib)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
