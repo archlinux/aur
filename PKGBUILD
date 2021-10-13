@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=universal-android-debloater
 pkgver=0.3
 pkgrel=1
