@@ -1,4 +1,5 @@
-# Maintainer: Cillian Berragan <cjberragan@gmail.com>
+# Maintainer: MithicSpirit <rpc01234 at gmail dot com>
+# Contributor: Cillian Berragan <cjberragan@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
 _pkgname=nyxt-browser
