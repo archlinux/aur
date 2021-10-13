@@ -6,7 +6,7 @@ pkgdesc="The Linux SDK for The Imaging Source cameras."
 arch=(x86_64)
 url="https://github.com/TheImagingSource"
 license=(APACHE)
-depends=()
+depends=(libzip)
 checkdepends=()
 provides=()
 source=("$pkgname-$pkgver.tar.gz::$url/$pkgname/archive/refs/tags/v-tiscamera-$pkgver.tar.gz")
@@ -21,12 +21,6 @@ build() {
         mkdir build && cd build
         cmake -DCMAKE_CXX_FLAGS="-Wno-error" -DBUILD_ARAVIS=ON ..
 	make
-}
-
-check() {
-	true
-	#cd "$pkgname-$pkgver"
-	#make -k check
 }
 
 package() {
