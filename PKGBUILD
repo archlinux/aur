@@ -3,7 +3,7 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=7.2.1
+pkgver=7.3.0
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go>=1.16.0')
 provides=('tctl' 'tsh')
 
-_webassets_ref=07493a5e78677de448b0e35bd72bf1dc6498b5ea
+_webassets_ref='07493a5e78677de448b0e35bd72bf1dc6498b5ea'
 
 _go_srcpath="go/src/github.com/gravitational"
 
@@ -23,16 +23,14 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport
         "teleport@.service"
         "teleport.install"
         "no-bpf.patch"
-        "shared-bpf.patch"
         "version-fix.patch")
 
-sha256sums=('8087cb4c6a6725038e4b31f2ec6accd1ba5122b0678db2583d24efe712f497ec'
+sha256sums=('0ebda4ebc5482a3e23302df696edf8ad60fb68466e41a4deecc05acf1e76c771'
             '2074ee7e50720f20ff1b4da923434c05f6e1664e13694adde9522bf9ab09e0fd'
             '10ac25cea1b5c193d7f968ca28a1da0e54b847f29c2a0186b46fd853194be38a'
             '4bc17fdde981f91c5d9972ae0555ee5e8b63a6b67e007c28f83ada80823980fd'
             'ce2dd61cae3c0c3684e7e629f98b77551e66ddedca2194250a34f0efbc674f3a'
             '12ba2a2b9d5efd5751799c2a1c3ddefe5aea4daf0f5d38fad4ec7923631e5ec0'
-            'e46ee57ae7f877d3ae3650aa4d10146d9e5190ed61b0209849745ea7d8443988'
             '066c64e374afdefdd799daa0e88ae21fef7b290042c5e852c1ec4f8af705fa62')
 
 prepare() {
@@ -59,21 +57,16 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    # Allow linking against shared libbpf
-    patch Makefile "${srcdir}/shared-bpf.patch"
-
-    # Comment the line above and uncomment the line below to disable libbpf
-    # patch Makefile "${srcdir}/no-bpf.patch"
+    # Remove BPF support
+    patch Makefile "${srcdir}/no-bpf.patch"
 
     # Do not generate version number
     patch Makefile "${srcdir}/version-fix.patch"
 
     make bpf-bytecode
     make full
-
-    unset GOPATH
 }
 
 package_teleport() {
