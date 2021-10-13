@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=1.4.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
@@ -34,14 +34,29 @@ optdepends=(
            )
 makedepends=(python python-setuptools python-wheel python-pip cython bazel)
 _pkgname=ray
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('a5fcaeb405fc9e6ddf084d55d202f72c919e974dac736d0426a8b569f7022e4a')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz"
+        "limit.patch::https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/19108.patch"
+        "memory.patch::https://github.com/ray-project/ray/commit/b897b7b3be47da4a498ee1fabd78543faeb7f04f.patch"
+        "uninit.patch::https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/19103.patch")
+sha256sums=('b7d565e4fe2ca1c145ee82aed47d5360ea0217c87d0a7b555e33a1d4b719ce42'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
 
   # https://aur.archlinux.org/packages/py-spy#comment-781521
   sed -i "/py-spy/d" python/setup.py
+
+  # https://github.com/ray-project/ray/pull/19108
+  patch -Np1 -i "${srcdir}/limit.patch"
+
+  # https://github.com/ray-project/ray/pull/19083
+  patch -Np1 -i "${srcdir}/memory.patch"
+
+  # https://github.com/ray-project/ray/pull/19103
+  patch -Np1 -i "${srcdir}/uninit.patch"
 }
 
 build() {
