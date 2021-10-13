@@ -1,6 +1,6 @@
 pkgname=cloudflare-dynamic-dns
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Updates AAAA records at Cloudflare according to the current IPv6 address'
 arch=('any')
 url='https://github.com/Zebradil/cloudflare-dynamic-dns'
@@ -33,5 +33,5 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
     install -Dm644 systemd/* -t "$pkgdir"/usr/lib/systemd/system
-    install -m755 -d "$pkgdir"/etc/cloudflare-dynamic-dns/config.d
+    install -m700 -d "$pkgdir"/etc/cloudflare-dynamic-dns/config.d
 }
