@@ -74,7 +74,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=152
+_minor=153
 _srcname=linux-${_major}
 _clr=${_major}.151-144
 pkgbase=linux-clear-lts2019
@@ -91,7 +91,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-  "clearlinux-lts2019::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=${_clr}"
+  "$pkgbase::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 )
 
@@ -113,15 +113,15 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-    for i in $(grep '^Patch' ${srcdir}/clearlinux-lts2019/linux-lts2019.spec |\
+    for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux-lts2019.spec |\
         grep -Ev '^Patch0123' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
-        patch -Np1 -i "$srcdir/clearlinux-lts2019/${i}"
+        patch -Np1 -i "$srcdir/$pkgbase/${i}"
     done
 
     ### Setting config
     echo "Setting config..."
-    cp -Tf $srcdir/clearlinux-lts2019/config ./.config
+    cp -Tf $srcdir/$pkgbase/config ./.config
 
     ### Enable extra stuff from arch kernel
     echo "Enable extra stuff from arch kernel..."
@@ -173,6 +173,7 @@ prepare() {
     scripts/config --enable FONT_TER16x32
 
     make olddefconfig
+    diff -u $srcdir/$pkgbase/config .config || :
 
     # https://github.com/graysky2/kernel_compiler_patch
     # make sure to apply after olddefconfig to allow the next section
@@ -345,7 +346,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '493ed821c4e85cafb04c1c4f780d1ef5901e3d0a11d9de6eda0029df39054c4e'
+            '8d0587b56ebe715f17c9fac26b1de2e9e9ec355f05c6aa9e2c6bc005bd4e171e'
             'SKIP'
             'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611')
 
