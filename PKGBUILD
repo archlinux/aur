@@ -3,7 +3,7 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-svn
-pkgver=1.4.0.svn.r9311
+pkgver=2.1.0.svn.r10359
 pkgrel=1
 pkgdesc="A Qt based audio-player. (SVN Version)"
 arch=('x86_64')
@@ -11,12 +11,11 @@ url='http://qmmp.ylsoftware.com'
 license=('GPL')
 depends=('curl'
          'hicolor-icon-theme'
-         'qt5-x11extras'
+#          'qt6-x11extras'
          'taglib'
-         'desktop-file-utils'
          )
 makedepends=('subversion'
-             'cmake'
+#              'cmake'
              'flac'
              'jack'
              'libmpcdec'
@@ -44,10 +43,13 @@ makedepends=('subversion'
              'libbs2b'
              'taglib'
              'alsa-lib'
-             'qt5-multimedia'
+             'qt6-multimedia'
              'libarchive'
              'libshout'
              'mpg123'
+             'librcd'
+             'libxmp'
+             'pipewire'
              )
 optdepends=('qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
             'flac: native FLAC support'
@@ -62,6 +64,7 @@ optdepends=('qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
             'libsndfile: sampled sound support'
             'projectm: visual efects support'
             'ffmpeg: FFmpeg engine (include lot of audio formats) support'
+            'librcd: Used by FFmpeg plugin'
             'mplayer: Mplayer engine (include lot of audio formats) support'
             'libsamplerate: audio filter support'
             'libbs2b: audio filter support'
@@ -75,14 +78,16 @@ optdepends=('qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
             'libmad: MPEG audio decoder support'
             'libvorbis: Vorbis audio support'
             'libogg: OGG audio support'
-            'qt5-multimedia: Qt media output support'
+            'qt6-multimedia: Qt media output support'
             'libarchive: libarchive input support'
             'libshout: shoutcast/icecast input support'
             'mpg123: alternative Mpeg-1-2-3 support'
+            'libxmp: XMP input support'
+            'pipewire: Pipewiro output support'
             )
 provides=('qmmp')
 conflicts=('qmmp')
-source=('qmmp::svn+http://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp/'
+source=('qmmp::svn+http://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-2.1/'
         'pkgconfig_fix.diff'
         )
 sha256sums=('SKIP'
@@ -91,7 +96,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd qmmp
-  echo "$(cat qmmp.pri | grep -m1 QMMP_VERSION | cut -d ' ' -f3).svn.r$(svnversion | tr -d M)"
+  echo "$(cat qmmp.pri | grep -m1 QMMP_VERSION | cut -d ' ' -f3).svn.r$(svnversion | tr -d M | tr : .)"
 }
 
 prepare() {
@@ -103,9 +108,9 @@ prepare() {
 build() {
   cd build
   cmake ../qmmp \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib
+    -DUSE_LIBRCD=ON
 
   make
 }
