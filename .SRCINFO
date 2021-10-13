@@ -8,10 +8,9 @@ pkgbase = agent-transfer
 	license = GPL3
 	depends = libassuan>=2.0.1
 	depends = libgcrypt>=1.7.0
-	source = https://archive.monkeysphere.info/debian/pool/monkeysphere/m/monkeysphere/monkeysphere_0.44.orig.tar.gz
+	source = http://deb.debian.org/debian/pool/main/m/monkeysphere/monkeysphere_0.44.orig.tar.gz
 	source = agent-transfer.patch
 	sha256sums = 6ac6979fa1a4a0332cbea39e408b9f981452d092ff2b14ed3549be94918707aa
 	sha256sums = bce1ef58a6e2c01655501f2f15e326cf851bb909029e8431b963f4cd939e8648
 
 pkgname = agent-transfer
-
