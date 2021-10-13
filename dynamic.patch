@@ -1,0 +1,4 @@
+163c163
+<  where opts bin = ["--make" , execName ++ ".hs" , "-i" , "-ilib"
+---
+>  where opts bin = ["--make" , execName ++ ".hs" , "-i" , "-ilib", "-dynamic"
