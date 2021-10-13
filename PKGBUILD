@@ -6,50 +6,42 @@
 
 pkgname=saga-gis
 _pkgname=saga
-pkgver=7.9.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis."
 url="http://www.saga-gis.org"
 license=("GPL3")
 arch=('i686' 'x86_64')
-depends=('wxgtk2'
-         'proj'          
-         'gdal'
-         'libtiff'
-         'unixodbc'
-         'jasper'
-         'swig')
-optdepends=('opencv3-opt'
-			'lua-hpdf'
-            'vigra'
-            'liblas'
-            'libharu' 'libsvm')
-source=("https://sourceforge.net/projects/saga-gis/files/SAGA - 7/SAGA - ${pkgver}/saga-${pkgver}.tar.gz")
-md5sums=('b988d202508ea8387150d13ff9292fa5')
+depends=('wxgtk3>=3.1.0' 'proj' 'gdal' 'libtiff' 'unixodbc' 'jasper' 'swig' 'opencv' 'pdal')
+optdepends=('lua-hpdf' 'vigra' 'liblas' 'libharu' 'libsvm')
+source=("https://download.sourceforge.net/saga-gis/saga-${pkgver}.tar.gz")
+md5sums=('38da7588f01f9c7d64c2155a8675a2d1')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  autoreconf -i
+  [[ -d build ]] || mkdir build
 
-  ./configure --prefix=/usr \
-              --enable-shared \
-              --enable-python PYTHON_VERSION=3 PYTHON=/usr/bin/python \
-              --with-postgresql=/usr/bin/pg_config \
-              --with-gdal=/usr/bin/gdal-config \
-              CXXFLAGS="`wx-config --version=3.0 --cxxflags` -I/opt/opencv3/include/" \
-              LIBS="`wx-config --version=3.0 --libs`" \
-              LDFLAGS="-L/opt/opencv3/lib/"
+  cd "${srcdir}/${_pkgname}-${pkgver}/build"
+
+  cmake -G "Unix Makefiles" ../saga-gis \
+  -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
+  -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config   \
+  -DWITH_GUI:BOOL=TRUE \
+  -DWITH_TOOLS:BOOL=TRUE \
+  -DLAS_INCLUDE:PATH= \
+  -DLAS_LIBRARY:FILEPATH= \
+  -DWITH_DEV_TOOLS:BOOL=TRUE 
 
   msg "Start compiling ..."
   make -j$(nproc)
 }
 
 package () {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}/build"
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/src/saga_core/saga_gui/res/saga.png" \
+  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${pkgname}/src/saga_core/saga_gui/res/saga.png" \
                    "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
