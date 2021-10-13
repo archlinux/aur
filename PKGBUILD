@@ -7,14 +7,14 @@ ROOT_LABEL='Archlinux'
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## --- PKGBUILD
 
 ## Major kernel version
 _major=5.10
 ## Minor kernel version
-_minor=71
+_minor=72
 
 pkgbase=linux-multimedia-lts
 #pkgver=${_major}
@@ -42,7 +42,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('02e688d27d963f0325f5cd30e383329cf00ab23db46d1586d6e848e3f992a497'
+sha256sums=('b4d635afe7646ac6a6617c738e747ba0a6006675cd9735d18f672f8b1fba4c7c'
 			'SKIP'
 			'SKIP'
 			'SKIP'
@@ -90,6 +90,15 @@ prepare() {
   # (x86 kernels do not support NUMA)
   msg2 "Disabling NUMA from kernel config..."
   scripts/config --disable CONFIG_NUMA
+
+  ### Set performance as default governor
+  msg2 "Setting performance governor..."
+  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
 
   ### Set tickrate to 1000HZ
   msg2 "Setting tick rate to 1k..."
@@ -294,7 +303,7 @@ _package-bootloader() {
   echo "title ${ROOT_LABEL} Multimedia LTS" > $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
   echo "linux /vmlinuz-${pkgbase}" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
   echo "initrd /initramfs-${pkgbase}.img" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
-  echo "options root=LABEL=\"${ROOT_LABEL}\" rootflags=subvol=@ loglevel=3 mitigations=off nowatchdog nvidia-drm.modeset=1 threadirqs usbcore.autosuspend=-1 rw" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
+  echo "options root=LABEL=\"${ROOT_LABEL}\" rootflags=subvol=@ loglevel=3 acpi=force intel_pstate=disable mitigations=off nowatchdog nvidia-drm.modeset=1 threadirqs usbcore.autosuspend=-1 rw" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
   chmod 755 $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
 }
 
