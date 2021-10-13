@@ -1,0 +1,33 @@
+--- lib/Object/Error.cpp.orig	2014-06-13 17:36:17.000000000 +0200
++++ lib/Object/Error.cpp	2021-10-13 06:55:08.333326192 +0200
+@@ -25,7 +25,7 @@
+ };
+ }
+ 
+-const char *_object_error_category::name() const {
++const char *_object_error_category::name() const LLVM_NOEXCEPT {
+   return "llvm.object";
+ }
+ 
+--- tools/llvm-readobj/Error.cpp.orig	2014-06-13 17:36:17.000000000 +0200
++++ tools/llvm-readobj/Error.cpp	2021-10-13 07:00:45.222140749 +0200
+@@ -24,7 +24,7 @@
+ };
+ } // namespace
+ 
+-const char *_readobj_error_category::name() const {
++const char *_readobj_error_category::name() const LLVM_NOEXCEPT {
+   return "llvm.readobj";
+ }
+ 
+--- tools/obj2yaml/Error.cpp.orig	2014-06-13 17:36:17.000000000 +0200
++++ tools/obj2yaml/Error.cpp	2021-10-13 07:15:20.861056162 +0200
+@@ -20,7 +20,7 @@
+ };
+ } // namespace
+ 
+-const char *_obj2yaml_error_category::name() const { return "obj2yaml"; }
++const char *_obj2yaml_error_category::name() const LLVM_NOEXCEPT { return "obj2yaml"; }
+ 
+ std::string _obj2yaml_error_category::message(int ev) const {
+   switch (static_cast<obj2yaml_error>(ev)) {
