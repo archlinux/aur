@@ -11,7 +11,6 @@ depends=('python' 'python-aiohttp' 'python-dateparser'
          'python-requests' 'python-ujson' 'python-websockets=9.1')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-requests-mock')
-provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('2b059b763a380e9fe2529a6a9621acbbd180594ea54f1310ba0a8e266373ce1b13a9138bddd8232a77f1265216e0c3d5cb45e4a0c13840929a4e99c41a83829a')
 
