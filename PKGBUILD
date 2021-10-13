@@ -1,7 +1,7 @@
 # Maintainer: Vasil Bakalov <jens300304@gmail.com>
 pkgname=python-circlecore
 url="https://github.com/circleguard/circlecore"
-pkgver=5.2.3
+pkgver=5.2.4
 pkgrel=1
 pkgdesc="A utilities library for osu!."
 arch=('any')
@@ -10,7 +10,7 @@ source=(
     "https://github.com/circleguard/circlecore/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    'a5ac7dc0dc1f348ec6ef4fcb0f675e88457c736ab018cb83579444b9a521511f'
+    'c471ff9e62100c28499c1ab140898ee1ab6a8d4b2ab6e016830a3eb6947ce636'
 )
 depends=(
     'python'
