@@ -4,13 +4,11 @@
 
 pkgname=mir
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
 arch=(x86_64 i686)
 license=(GPL LGPL)
-conflicts=(mir)
-provides=(mir)
 depends=(gtest boost-libs capnproto google-glog gflags libglvnd  liburcu lttng-ust libepoxy libxml++2.6 nettle libinput libxkbcommon python-pillow freetype2 libevdev protobuf python-dbus python-gobject hicolor-icon-theme libxcursor yaml-cpp)
 makedepends=(git glm doxygen cmake boost gcovr gmock lcov valgrind python-dbusmock umockdev wlcs)
 optdepends=('qterminal: required for miral demos'
