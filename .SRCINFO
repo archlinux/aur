@@ -1,7 +1,7 @@
 pkgbase = efmb
 	pkgdesc = Endless Forms Most Beautiful is a crazy platformer with braincrashing mechanics
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.locomalito.com/efmb.php
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = efmb
 	depends = openssl-1.0
 	depends = openal
 	depends = mesa
+	depends = xorg-fonts-misc
 	depends = lib32-zlib
 	depends = lib32-openssl-1.0
 	depends = lib32-openal
@@ -22,4 +23,3 @@ pkgbase = efmb
 	md5sums = 99dce59d073c2496e6ae5604fef74ef4
 
 pkgname = efmb
-
