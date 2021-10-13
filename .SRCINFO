@@ -1,13 +1,14 @@
 pkgbase = python-pykry
 	pkgdesc = Thin wrapper around KryPy (Krylov subspace package)
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/pykry
 	arch = x86_64
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-krypy
-	source = https://github.com/nschloe/pykry/archive/v0.1.5.tar.gz
-	sha512sums = 55488bf0f3914656696e2fe08445d95617bb96a52e9dbca179da2ae6d431153999e1165fbee7a057d39f5e8ccf07ad701572d0cbdcad758ba786add062de0889
+	source = https://pypi.org/packages/source/p/pykry/pykry-0.1.5.tar.gz
+	sha512sums = ad615d19b4436431188b19fe0363e1e4305059a1790112b4307a2fd26192460fc1db9341680d7e835c3763d568bcd6ffe9ea84e64bf9d25ced80bbada7605e35
 
 pkgname = python-pykry
