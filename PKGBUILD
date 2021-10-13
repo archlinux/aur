@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r76931.63061ac889
+pkgver=r76950.dcf9b7d53f
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -33,6 +33,8 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
   sed -i "/MFTranscodeContainerType_MPEG4/d" VTK/IO/Movie/vtkMP4Writer.cxx
+  # We have a patched libharu
+  sed -i "s|2.4.0|2.3.0|" VTK/ThirdParty/libharu/CMakeLists.txt
 }
 
 build() {
