@@ -2,7 +2,7 @@
 
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
-pkgver=6.4.0
+pkgver=6.5.0
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
@@ -18,7 +18,7 @@ conflicts=('nodejs-web-ext')
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
 source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz")
-sha256sums=('d785e15ca814e4516fde1af8e439094d523638f2d2f4448d6fbd6e2d5e247ec3')
+sha256sums=('c5b93036fe675286cbbd1e92708cb7b214a14b2a6968a362f4d9c9e2634bd7e2')
 
 prepare() {
   cd "$srcdir"
@@ -41,7 +41,8 @@ build() {
 check() {
   cd "$srcdir/$pkgname-$pkgver-build"
 
-  npm test
+  # web-ext uses flow-bin, which does not support some architectures (e.g., RISC-V)
+  CI_SKIP_FLOWCHECK=y npm test
 }
 
 package() {
