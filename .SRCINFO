@@ -1,0 +1,14 @@
+pkgbase = antidote
+	pkgdesc = The most complete writing assistance software suite for English and French.
+	pkgver = 10.6.1_F_39
+	pkgrel = 1
+	url = https://www.antidote.info
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = Antidote_10.6.1_F_39_Linux.tar.gz
+	source = antidote.install
+	md5sums = ddd568a5ced2aebaa0f905b6155c7222
+	md5sums = 4a84d8ffa4e4744bb6385a7d022d4f67
+
+pkgname = antidote
