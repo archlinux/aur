@@ -122,8 +122,8 @@ pkgbase=linux-cacule
 elif [ "$_cpusched" = "rdb" ]; then
 pkgbase=linux-cacule-rdb
 fi
-pkgver=5.14.11
-pkgrel=3
+pkgver=5.14.12
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-cacule Kernel by CachyOS and with some other patches and other improvements'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -167,7 +167,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/zen-patches-v3/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/security-patches/0001-security-patches.patch"
-        "${_patchsource}/zstd-dev-patches-v6/0001-zstd-dev-patches.patch"
+        "${_patchsource}/zstd-upstream-patches-v6/0001-zstd-upstream-patches.patch"
         "${_patchsource}/ntfs3-patches-v14/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-ksm.patch"
         "${_patchsource}/0001-cpu-patches.patch"
@@ -634,7 +634,7 @@ _package-headers() {
 
 }
 
-md5sums=('0eba0d3a75f56ddbbb0f4265b35724c3'
+md5sums=('a52286fe206a3f7664ca5a6c5995b9ed'
          'e2d5c8ee1654b4076fcf9f4b0d7ffa10'
          '581faf85cd625c41bbdd0cadbd0e451e'
          '024a0126cfcd18e000a2241f35c4d69e'
@@ -662,7 +662,7 @@ md5sums=('0eba0d3a75f56ddbbb0f4265b35724c3'
          'cfef1423ad1e6aecad63f0d5eacaea37'
          '808981a36c81165953017e5e432c1fa1'
          'f6a1c51adfc68fb7b52dc5715a9cb5a7'
-         '97d9c9da437152c2f1161e5da5b5d7d4'
+         '6bce25efd0395a4d0a9e0fc52e0d93e4'
          '0636779d32ba47bda25d3edb5fbd08c9'
          '566435a0444ee45816599f2e0e362c7a'
          'bb22330e270bf36ccf53cb04d6b496d2'
