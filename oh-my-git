@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /usr/lib/oh-my-git
+./oh-my-git "$@"

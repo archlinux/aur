@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Oh My Git!
+Comment=An interactive Git learning game!
+Exec=/usr/bin/oh-my-git
+Icon=/usr/share/oh-my-git/icon.png
+Categories=Game;
