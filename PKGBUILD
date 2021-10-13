@@ -1,6 +1,6 @@
 pkgname=('alfis')
 pkgver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Alternative Free Identity System using blockchain'
 arch=('x86_64')
 url='https://github.com/Revertron/Alfis'
@@ -26,4 +26,16 @@ package() {
     install -Dm644 "${srcdir}"/${_dirname}/contrib/systemd/alfis.sysusers "${pkgdir}"/usr/lib/sysusers.d/alfis.conf
     install -Dm644 "${srcdir}"/${_dirname}/contrib/systemd/alfis.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/alfis.conf
     install -Dm644 "${srcdir}"/${_dirname}/contrib/name.alfis.Alfis.desktop "${pkgdir}"/usr/share/applications/name.alfis.Alfis.desktop
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon16.png "${pkgdir}"/usr/share/icons/hicolor/16x16/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon22.png "${pkgdir}"/usr/share/icons/hicolor/22x22/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon24.png "${pkgdir}"/usr/share/icons/hicolor/24x24/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon32.png "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon36.png "${pkgdir}"/usr/share/icons/hicolor/36x36/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon48.png "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon64.png "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon72.png "${pkgdir}"/usr/share/icons/hicolor/72x72/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon96.png "${pkgdir}"/usr/share/icons/hicolor/96x96/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon128.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon192.png "${pkgdir}"/usr/share/icons/hicolor/192x192/apps/alfis.png
+    install -Dm644 "${srcdir}"/${_dirname}/img/logo/alfis_icon256.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/alfis.png
 }

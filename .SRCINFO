@@ -1,7 +1,7 @@
 pkgbase = alfis
 	pkgdesc = Alternative Free Identity System using blockchain
 	pkgver = 0.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Revertron/Alfis
 	arch = x86_64
 	license = AGPL3
