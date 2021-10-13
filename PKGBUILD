@@ -33,7 +33,7 @@ pkgrel=8
 arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
-makedepends=('libffi' 'python-sphinx')
+makedepends=('libffi' 'python-sphinx' 'groff')
 # Use gcc-multilib to build 32-bit compiler-rt libraries on x86_64 (FS#41911)
 makedepends_x86_64=('gcc-multilib')
 options=('staticlibs')
