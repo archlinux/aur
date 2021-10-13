@@ -2,7 +2,7 @@
 
 pkgname=userrepository-mirrors
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Userrepository.eu mirror list for pacman"
 arch=('any')
 url="https://github.com/brunomiguel/userrepository-mirrorlist"
