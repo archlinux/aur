@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=meep
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="A free finite-difference time-domain simulation software package"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('gcc-fortran' 'suitesparse' 'swig')
 optdepends=('h5utils: for visualization and conversion of scientific data')
 options=('!libtool' '!makeflags' 'staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stevengj/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f46f4310a8a804d9e3f7a93444b0a43391e40b45e80f9e9af84e886834c116a0')
+sha256sums=('71911cd2f38b15bdafe9a27ad111f706f24717894d5f9b6f9f19c6c10a0d5896')
 
 build() {
   cd $pkgname-$pkgver
