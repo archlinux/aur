@@ -4,7 +4,7 @@
 
 pkgname=plexamp-appimage
 pkgver=3.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern music client for Plex"
 provides=('plexamp')
 conflicts=('plexamp')
