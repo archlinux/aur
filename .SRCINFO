@@ -1,0 +1,24 @@
+pkgbase = check-soa-git
+	pkgdesc = A simple command-line DNS testing tool for having rapidly an idea of the health of a DNS.
+	pkgver = r73.412cb8a
+	pkgrel = 1
+	url = https://www.bortzmeyer.org/check-soa-go.html
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = custom
+	makedepends = go
+	makedepends = godns
+	provides = check-soa
+	conflicts = check-soa
+	conflicts = check-soa-bin
+	source = git+https://framagit.org/bortzmeyer/check-soa/
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = c13767fa780d56b981f4bc6eea82263bdc77bf974b5d356293e608ca6b37776b
+
+pkgname = check-soa-git

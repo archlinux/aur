@@ -1,0 +1,14 @@
+# makepkg directories
+pkg/
+src/
+check-soa/
+
+# Built packages
+*.tar.xz
+*.tar.zst
+
+# Downloaded sources
+*.tar.gz
+
+# Backup files
+*~
