@@ -1,0 +1,14 @@
+pkgbase = python-krb5
+	pkgdesc = Python krb5 API interface
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/krb5/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = krb5
+	source = https://files.pythonhosted.org/packages/source/k/krb5/krb5-0.1.2.tar.gz
+	sha256sums = 9d8cfafc3db34c8d7ebdb62640b5dbc5342b6892fcad528611da9c258a679cb0
+
+pkgname = python-krb5
