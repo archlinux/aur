@@ -1,7 +1,7 @@
 # Maintainer: Stephen Erisman <aur at serisman dot com>
 
 pkgname='xmrig-mo'
-pkgver='6.15.0mo1'
+pkgver='6.15.2mo1'
 pkgrel='1'
 pkgdesc='High performance RandomX, KawPow, CryptoNight, and AstroBWT CPU/GPU miner, with MoneroOcean auto alg switching'
 arch=('x86_64')
@@ -9,15 +9,15 @@ url="https://github.com/MoneroOcean/xmrig"
 depends=('libuv' 'openssl' 'hwloc')
 makedepends=('cmake')
 license=('GPL')
-source=("${url}/archive/v6.15.0-mo1.tar.gz"
+source=("${url}/archive/v6.15.2-mo1.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers")
-sha256sums=('a4827f41aa34aac81ef60c9e2838660e65a91b1ea4528012039a01519044126c'
+sha256sums=('a1d9e97e3e81f6451218a82514e71237559578181212f1963bb81e100f2b961f'
             'eceb05ca62896015f4cb2866e9caa516efc9a77a370d9ecf2eaf4763ff315e5f'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6')
 
 prepare() {
-  cd "xmrig-6.15.0-mo1"
+  cd "xmrig-6.15.2-mo1"
   [ -d build ] || mkdir build
 
   msg2 "Resetting donation level to zero"
@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-  cd "xmrig-6.15.0-mo1/build"
+  cd "xmrig-6.15.2-mo1/build"
   cmake .. \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-  cd "xmrig-6.15.0-mo1"
+  cd "xmrig-6.15.2-mo1"
   install -Dm775 "build/xmrig" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "src/config.json" "${pkgdir}/etc/${pkgname}/${pkgname}.conf.example"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
