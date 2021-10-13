@@ -3,7 +3,7 @@
 _base=quadpy
 pkgname=python-${_base}
 pkgver=0.16.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Numerical integration (quadrature, cubature) in Python"
 arch=('any')
 url="https://github.com/nschloe/${_base}"
@@ -13,8 +13,8 @@ makedepends=('python-setuptools')
 # checkdepends=('python-pytest-codeblocks' 'python-accupy') # 'python-matplotlib' 'eigen' 'qt5-x11extras'
 optdepends=('python-matplotlib: for Matplotlib rendering'
   'vtk: for generate polygon data for a sphere')
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('258d87368078535d87992d5506539d736708527f106bc67fdb532dae052cb2cde4d96a725b6e15e2369a126e0fe1bc05ea8a1745ee3738f0f195d5617be88ae8')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('badd0262e9d7cb12517357e5560c2f57ce2a643ca3cd9bab31464e7b238f373edc875cb902e62fc53220f0285fb8ad5b93c791a1a55b9c4876d09e27e4c9de5c')
 
 build() {
   cd "${_base}-${pkgver}"

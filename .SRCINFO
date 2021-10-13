@@ -1,7 +1,7 @@
 pkgbase = python-quadpy
 	pkgdesc = Numerical integration (quadrature, cubature) in Python
 	pkgver = 0.16.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nschloe/quadpy
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = python-quadpy
 	depends = python-ndim
 	optdepends = python-matplotlib: for Matplotlib rendering
 	optdepends = vtk: for generate polygon data for a sphere
-	source = https://github.com/nschloe/quadpy/archive/v0.16.10.tar.gz
-	sha512sums = 258d87368078535d87992d5506539d736708527f106bc67fdb532dae052cb2cde4d96a725b6e15e2369a126e0fe1bc05ea8a1745ee3738f0f195d5617be88ae8
+	source = https://pypi.org/packages/source/q/quadpy/quadpy-0.16.10.tar.gz
+	sha512sums = badd0262e9d7cb12517357e5560c2f57ce2a643ca3cd9bab31464e7b238f373edc875cb902e62fc53220f0285fb8ad5b93c791a1a55b9c4876d09e27e4c9de5c
 
 pkgname = python-quadpy
