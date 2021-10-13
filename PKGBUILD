@@ -1,5 +1,5 @@
-# Maintainer: Abigail G <dev@kb6.ee>
-
+# Maintainer: Brian Salcedo <brian@salcedo.tech>
+# Contributor: Abigail G <dev@kb6.ee>
 pkgname=js8call
 pkgver=2.2.0
 pkgrel=3
