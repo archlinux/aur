@@ -1,0 +1,16 @@
+pkgbase = ruby-gepub
+	pkgdesc = gepub is a generic EPUB parser/generator. Generates and parse EPUB2 and EPUB3
+	pkgver = 1.0.15
+	pkgrel = 1
+	url = https://github.com/skoji/gepub
+	arch = x86_64
+	license = BSD
+	depends = ruby
+	depends = ruby-nokogiri
+	depends = ruby-rubyzip
+	noextract = gepub-1.0.15.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gepub-1.0.15.gem
+	sha256sums = 1d6aec4637a71f85366563fa68f58db229bacc61930d231c0087b47f00f2d621
+
+pkgname = ruby-gepub
