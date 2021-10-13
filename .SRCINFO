@@ -1,5 +1,5 @@
 pkgbase = ttf-mplus-git
-	pkgdesc = A little nifty font family for everyday usage
+	pkgdesc = A little nifty font family for everyday usage (git version)
 	pkgver = r215.977baab
 	pkgrel = 1
 	url = https://mplusfonts.github.io/
