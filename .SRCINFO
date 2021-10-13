@@ -1,6 +1,6 @@
 pkgbase = task-maker-rust-git
 	pkgdesc = The new cmsMake
-	pkgver = r471.c40a9ce
+	pkgver = r520.a1dd6a2b
 	pkgrel = 1
 	url = https://github.com/edomora97/task-maker-rust
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = task-maker-rust-git
 	sha384sums = SKIP
 
 pkgname = task-maker-rust-git
-

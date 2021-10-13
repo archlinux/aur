@@ -1,7 +1,7 @@
 # Maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-rust-git
-pkgver=r471.c40a9ce
+pkgver=r520.a1dd6a2b
 pkgrel=1
 pkgdesc="The new cmsMake"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -24,13 +24,14 @@ pkgver() {
 build() {
     cd "$srcdir/task-maker-rust"
     TM_DATA_DIR=/usr/share/task-maker-rust cargo build --release --bin task-maker
-    cargo run --release --bin task-maker-gen-autocompletion
+    cargo run --release --bin task-maker-tools gen-autocompletion
 }
 
 package() {
     cd "$srcdir/task-maker-rust"
-    # main binary
+    # main binaries
     install -Dm755 "target/release/task-maker" "$pkgdir/usr/bin/task-maker-rust"
+    install -Dm755 "target/release/task-maker-tools" "$pkgdir/usr/bin/task-maker-tools"
     # runtime data
     install -dDm755 "$pkgdir/usr/share/task-maker-rust"
     cp -rT data "$pkgdir/usr/share/task-maker-rust"
