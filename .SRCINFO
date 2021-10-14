@@ -1,15 +1,15 @@
 pkgbase = cmp-nvim-lsp
 	pkgdesc = nvim-cmp source for neovim builtin LSP client
 	pkgver = f93a6cf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hrsh7th/cmp-nvim-lsp
 	arch = any
 	groups = neovim-plugins
 	license = 
 	makedepends = git
 	depends = neovim
-	depends = neovim-plug
 	depends = lua
+	optdepends = neovim-plug: for plugin manager
 	source = git+https://github.com/hrsh7th/cmp-nvim-lsp
 	sha256sums = SKIP
 

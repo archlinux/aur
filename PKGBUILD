@@ -1,13 +1,14 @@
 pkgname=cmp-nvim-lsp
 pkgver=f93a6cf
-pkgrel=1
+pkgrel=2
 pkgdesc='nvim-cmp source for neovim builtin LSP client'
 arch=('any')
 url=https://github.com/hrsh7th/cmp-nvim-lsp
 license=('')
 groups=('neovim-plugins')
-depends=('neovim' 'neovim-plug' 'lua')
+depends=('neovim' 'lua')
 makedepends=('git')
+optdepends=('neovim-plug: for plugin manager')
 source=("git+${url}")
 sha256sums=('SKIP')
 package(){
