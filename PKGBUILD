@@ -1,4 +1,4 @@
-# Maintainer: Troye Guo <https://960960.xyz/>
+# Maintainer: App by Troye <guo362429@gmail.com>
 # Contributor: Rizwan Hasan <rizwan.hasan486@gmail.com>
 
 pkgname=koodo-reader
