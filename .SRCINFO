@@ -1,0 +1,17 @@
+pkgbase = neovim-cmp-emoji-git
+	pkgdesc = nvim-cmp source for emoji
+	pkgver = r4.19075c3
+	pkgrel = 1
+	url = https://github.com/hrsh7th/cmp-emoji
+	install = cmp-emoji.install
+	arch = any
+	groups = neovim-plugin
+	license = custom:unknown
+	makedepends = git
+	depends = neovim-cmp
+	provides = neovim-cmp-emoji
+	conflicts = neovim-cmp-emoji
+	source = neovim-cmp-emoji-git::git+https://github.com/hrsh7th/cmp-emoji
+	md5sums = SKIP
+
+pkgname = neovim-cmp-emoji-git
