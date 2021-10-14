@@ -1,20 +1,21 @@
 pkgbase = hydrapaper
 	pkgdesc = A Gtk utility to set different backgrounds for each monitor on GNOME
-	pkgver = 3.1.0
+	pkgver = 3.1.0+1+g290d4e2
 	pkgrel = 1
 	url = https://hydrapaper.gabmus.org
 	arch = any
 	license = GPL3
 	checkdepends = appstream
+	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = pandoc
 	depends = gtk4
 	depends = libadwaita
-	depends = python-dbus
+	depends = dbus-python
 	depends = python-gobject
 	depends = python-pillow
-	source = https://gitlab.gnome.org/GabMus/HydraPaper/-/archive/3.1.0/HydraPaper-3.1.0.tar.gz
-	sha256sums = fc69f1fa934743f1ee1f823248d9bfaaa2ced4af65176f9852bc5278bcb5a469
+	source = git+https://gitlab.gnome.org/GabMus/HydraPaper.git#commit=290d4e2ff81afe6d7188643a9daf44fc91d5f316
+	sha256sums = SKIP
 
 pkgname = hydrapaper
