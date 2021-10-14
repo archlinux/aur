@@ -3,7 +3,7 @@
 
 pkgname=asciidocfx
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Asciidoc Editor and Toolchain written with JavaFX"
 arch=('any')
 
@@ -11,7 +11,7 @@ url='http://asciidocfx.com/'
 license=('Apache')
 
 makedepends=('maven>=3.3.9' 'java-environment>=12' 'gendesk')
-depends=('java-environment=16' 'java-openjfx')
+depends=('java-environment=17' 'java-openjfx')
 
 source=(
     "https://github.com/asciidocfx/AsciidocFX/archive/v${pkgver}.tar.gz"
@@ -19,7 +19,7 @@ source=(
 )
 sha512sums=(
     'deb6a1a3140ce25974d96301e070ef7735d6253bcfd55abf97e5c6dc66c6ca7e03b7a4cc49f135923939d801b0c00692ea2cb3f7b968cbd21d0094b055ba59e2'
-    '3e7b1e8cea0469312b9e842a4f4d65f495a16ab120acc5e414865af1a14c28dedf44a729f23fa55bc075f4b353aaafbd2506b11e09ab9e09ef29059a2d85014d'
+    'f185cdbb7ac4866160dc88c17373e668a0f37c0d380783f84e6138ba5f775347242a24e9a1ca97d9200ff601edb756e0944f27a2e1e53239b4d16d253605b0fa'
 )
 
 prepare() {
@@ -56,5 +56,5 @@ package() {
 
     # Workaround for FS#64121
     install -dm755 "${pkgdir}/usr/share/java/asciidocfx/lib/java-openjfx"
-    cp -t "${pkgdir}/usr/share/java/asciidocfx/lib/java-openjfx" /usr/lib/jvm/java-16-openjdk/lib/javafx*
+    cp -t "${pkgdir}/usr/share/java/asciidocfx/lib/java-openjfx" /usr/lib/jvm/java-17-openjdk/lib/javafx*
 }
