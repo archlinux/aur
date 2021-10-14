@@ -5,7 +5,7 @@ pkgver=2.7.0
 pkgrel=1
 pkgdesc="Python coordinate conversions, following convention of several popular Matlab routines"
 arch=(any)
-url="https://pypi.org/project/python-pymap3d/"
+url="https://pypi.org/project/pymap3d/"
 license=('Apache')
 makedepends=('python-setuptools'
              'python-pip')
