@@ -1,0 +1,11 @@
+--- a/java/libraries/javafx/build.xml
++++ b/java/libraries/javafx/build.xml
+@@ -167,7 +167,6 @@
+            nowarn="true" />
+   </target>
+ 
+-  <target name="build" depends="compile" description="Build JavaFX renderer">
+-    <jar basedir="bin" destfile="library/javafx.jar" />
++  <target name="build" description="Build JavaFX renderer">
+   </target>
+ </project>

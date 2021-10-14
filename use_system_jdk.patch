@@ -1,0 +1,20 @@
+--- a/build/linux/processing
++++ b/build/linux/processing
+@@ -66,7 +66,7 @@ APPDIR=`dirname "$APPDIR"`
+ log APPDIR
+ 
+ # Try using a local JDK from the same directory as this script
+-JDKDIR=`readlink -f "$APPDIR/java"`
++JDKDIR=`readlink -f /usr/lib/jvm/java-17-openjdk`
+ make_jdkcp "$JDKDIR"
+ log SUCCESS
+ 
+@@ -113,6 +113,6 @@ else
+   fi
+   cd "$APPDIR"
+ 
+-  #java -splash:lib/about-1x.png -Djna.nosys=true -Djava.library.path=lib:modes/java/libraries/javafx/library/linux64 --module-path=modes/java/libraries/javafx/library/linux64/modules --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web -Xmx512m processing.app.Base "$SKETCH" &
+-  java -Djna.nosys=true -Dpython.console.encoding=UTF-8 -Djava.library.path=lib:modes/java/libraries/javafx/library/linux64 --module-path=modes/java/libraries/javafx/library/linux64/modules --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web -Xmx512m processing.app.ui.Splash "$SKETCH" &
++  #java -splash:lib/about-1x.png -Djna.nosys=true -Djava.library.path=lib:/usr/lib/jvm/java-17-openjdk/lib --module-path=/usr/lib/jvm/java-17-openjdk/lib --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web -Xmx512m processing.app.Base "$SKETCH" &
++  java -Djna.nosys=true -Dpython.console.encoding=UTF-8 -Djava.library.path=lib:/usr/lib/jvm/java-11-openjfx/lib --module-path=/usr/lib/jvm/java-11-openjfx/lib --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web -Xmx512m processing.app.ui.Splash "$SKETCH" &
+ fi

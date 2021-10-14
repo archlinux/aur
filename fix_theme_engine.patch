@@ -1,0 +1,20 @@
+--- a/build/shared/tools/ThemeEngine/build.xml
++++ b/build/shared/tools/ThemeEngine/build.xml
+@@ -6,7 +6,7 @@
+   <property name="core.bin.path" location="../../../../core/bin" />
+ 
+   <property name="javafx.path"
+-            location="../../../../java/libraries/javafx/library/macosx" />
++            location="/usr/lib/jvm/java-17-openjdk/lib/" />
+ 
+   <target name="clean" description="Clean the build directories">
+     <delete dir="bin" />
+@@ -26,7 +26,7 @@
+         <pathelement location="${app.bin.path}" />
+         <pathelement location="${core.bin.path}" />
+ 
+-        <fileset dir="${javafx.path}/modules">
++        <fileset dir="${javafx.path}">
+           <include name="**/*.jar" />
+         </fileset>
+       </classpath>
