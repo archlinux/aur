@@ -1,20 +1,24 @@
 pkgbase = msquic
 	pkgdesc = MsQuic is a Microsoft implementation of the IETF QUIC protocol.
-	pkgver = 1.1.8.r0.g794436f54
+	pkgver = 1.1.8
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/microsoft/msquic
-	arch = any
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	makedepends = dotnet-sdk
-	makedepends = git
-	makedepends = powershell
 	depends = lttng-ust
 	provides = libmsquic.so
 	conflicts = libmsquic.so
-	source = msquic::git+https://github.com/microsoft/msquic.git#branch=release/1.1
+	noextract = openssl-484fcc7.tar.gz
+	source = msquic-1.1.8.tar.gz::https://github.com/microsoft/msquic/archive/refs/tags/v1.1.8.tar.gz
+	source = openssl-484fcc7.tar.gz::https://github.com/akamai/openssl/archive/484fcc7392f3d7f4c257448f9aa70ad4f788ed33.tar.gz
 	source = cmake_args.patch
-	sha512sums = SKIP
+	sha512sums = 246f5f42ddd2b8449a8add694902e43ea426fd43e3a851989ba1050f35ee1397e94251a5f9d04115280d31a3b9aa9fed302546393a7c9ee724670af4e8a457cf
+	sha512sums = 5ab9ceffb2d7a09360dd4ceeb66b868f6e2a073d8a5b649d5812652a57f3dd3290c1115b6b2a4848fee18d4c523b3d081ae24ab308ae9432959f21eb67c27b26
 	sha512sums = f0eb23f885b9577f93101f9e68c6863dc896086068d3ed29e7b6924a1286ab8aa478feec42cf0fa3cfee2e5e2fb42e5be3f15451ff0954c4db2059de6ebe7c27
 
 pkgname = msquic
