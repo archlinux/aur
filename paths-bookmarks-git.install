@@ -8,7 +8,6 @@ or similar depending on your shell (and then restart your shell):
 "
 }
 
-## arg 1:  the old package version
 post_remove() {
   echo "
 Don't forget to clean up any lines added to your shell's startup script!
