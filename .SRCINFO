@@ -1,0 +1,15 @@
+pkgbase = ruby27-rspec-mocks
+	pkgdesc = RSpecs 'test double' framework, with support for stubbing and mocking
+	pkgver = 3.10.2
+	pkgrel = 1
+	url = https://github.com/rspec/rspec-mocks
+	arch = any
+	license = MIT
+	depends = ruby27-rspec-support
+	depends = ruby27-diff-lcs
+	noextract = rspec-mocks-3.10.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rspec-mocks-3.10.2.gem
+	sha512sums = a40a14842bc98d1da767e899a5ffb6aca649202549ab53fe59d83e83d35f0ff902dd8631a0a557806e68b573c6b425f650142faad2b60ced6f6863b8adbff1fd
+
+pkgname = ruby27-rspec-mocks
