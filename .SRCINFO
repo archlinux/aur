@@ -8,6 +8,7 @@ pkgbase = neovim-cmp-latex-symbols-git
 	groups = neovim-plugin
 	license = MIT
 	makedepends = git
+	makedepends = julia
 	depends = neovim-cmp
 	provides = neovim-cmp-latex-symbols
 	conflicts = neovim-cmp-latex-symbols
