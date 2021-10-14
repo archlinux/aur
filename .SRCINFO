@@ -1,0 +1,17 @@
+pkgbase = bevm-git
+	pkgdesc = A God's basic evm
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/JustAGod1/bevm
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	depends = sdl2
+	depends = gtk3
+	depends = gcc-libs
+	source = bevm-git-1.4::git+https://github.com/JustAGod1/bevm
+	md5sums = SKIP
+
+pkgname = bevm-git
