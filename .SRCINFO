@@ -1,11 +1,12 @@
 pkgbase = python-pooch
 	pkgdesc = Python library for fetching and caching data files
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fatiando.org/pooch/latest/
 	arch = any
 	license = BSD 3-Clause
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python-requests
 	depends = python-packaging
 	depends = python-appdirs
