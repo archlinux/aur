@@ -1,0 +1,25 @@
+pkgbase = puppet5
+	pkgdesc = Server automation framework and application
+	pkgver = 5.5.22
+	pkgrel = 3
+	url = https://puppet.com/products/open-source-projects
+	install = puppet.install
+	arch = any
+	license = Apache
+	depends = facter
+	depends = hiera
+	depends = ruby27-multi_json
+	depends = ruby27-augeas
+	depends = ruby27-shadow
+	depends = ruby27-sync
+	provides = puppet
+	conflicts = puppet
+	backup = etc/puppetlabs/puppet/auth.conf
+	backup = etc/puppetlabs/puppet/puppet.conf
+	source = https://downloads.puppetlabs.com/puppet/puppet-5.5.22.tar.gz
+	source = https://downloads.puppetlabs.com/puppet/puppet-5.5.22.tar.gz.asc
+	validpgpkeys = 6F6B15509CF8E59E6E469F327F438280EF8D349F
+	sha512sums = 5332b084a63bdf244672cc4751022c84a1cc50d3f394a13bdcbccf7fcf4ebea67953e88957f23046608bf25e9182548449be824c18289cb2bf1e3ed29b40dc58
+	sha512sums = SKIP
+
+pkgname = puppet5
