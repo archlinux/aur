@@ -2,7 +2,7 @@
 _release_type=alpha
 
 pkgname=makedeb-alpha
-pkgver=8.0.2
+pkgver=8.0.3
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release_type} release)"
 arch=('any')
@@ -43,7 +43,9 @@ package() {
   done
   
   # Copy over extra utilities.
-  find ./src/utils/ -type f -exec install -Dm 755 '{}' "${pkgdir}/usr/share/makedeb/utils/{}" \;
+  cd ./src/utils/
+  find ./ -type f -exec install -Dm 755 '{}' "${pkgdir}/usr/share/makedeb/utils/{}" \;
+  cd ../../
 
   cat "src/makedeb.sh" >> "${pkgdir}/usr/bin/makedeb"
   chmod 555 "${pkgdir}/usr/bin/makedeb"
