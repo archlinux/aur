@@ -8,7 +8,11 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/vapoursynth/vs-imwri'
 license=('MIT')
-depends=('vapoursynth')
+depends=('vapoursynth'
+  'libheif'
+  'libtiff'
+  'imagemagick'
+)
 makedepends=('git'
   'meson'
 )
