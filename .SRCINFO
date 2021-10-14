@@ -1,9 +1,8 @@
 pkgbase = gnome-pomodoro-git
 	pkgdesc = A time management utility for GNOME based on the pomodoro technique
-	pkgver = r1038.1e1d8d5
+	pkgver = r1161.ddfe240
 	pkgrel = 1
-	url = https://github.com/codito/gnome-pomodoro/
-	install = gschemas.install
+	url = https://github.com/gnome-pomodoro/gnome-pomodoro
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -12,9 +11,9 @@ pkgbase = gnome-pomodoro-git
 	makedepends = gnome-common
 	makedepends = docbook2x
 	makedepends = perl-xml-sax-expat
-	makedepends = gom
+	makedepends = xorgproto
+	makedepends = meson
 	depends = gnome-desktop
-	depends = libcanberra
 	depends = gstreamer
 	depends = gobject-introspection
 	depends = libpeas
@@ -23,8 +22,7 @@ pkgbase = gnome-pomodoro-git
 	provides = gnome-pomodoro
 	conflicts = gnome-pomodoro
 	conflicts = gnome-shell-pomodoro
-	source = gnome-pomodoro-git::git+https://github.com/codito/gnome-pomodoro.git#branch=master
+	source = gnome-pomodoro-git::git+https://github.com/gnome-pomodoro/gnome-pomodoro.git#branch=master
 	sha256sums = SKIP
 
 pkgname = gnome-pomodoro-git
-

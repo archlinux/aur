@@ -1,4 +1,5 @@
-# Maintainer: Skjnldsv <skjnldsv at protonmail com>
+# Maintainer: gj545rndmu <6zogm6z2nh at bljvf anonbox net>
+# Contributor: Skjnldsv <skjnldsv at protonmail com>
 
 pkgname=gnome-pomodoro-git
 pkgver=r1161.ddfe240
