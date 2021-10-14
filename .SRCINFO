@@ -1,0 +1,12 @@
+pkgbase = ruby27-shadow
+	pkgdesc = Shadow password module
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/apalmblad/ruby27-shadow
+	arch = x86_64
+	license = CPL
+	depends = ruby2.7
+	source = ruby27-shadow-2.5.0.tar.gz::https://github.com/apalmblad/ruby-shadow/archive/2.5.0.tar.gz
+	sha512sums = 66cf0405230c0cbc723f17bf016d84b5054be4db5b32bca55ede876b5725c0f8de849c537c6020f38053825f55177bebacd0fdbb20d49110ea8cb2d5b75df9da
+
+pkgname = ruby27-shadow
