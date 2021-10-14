@@ -1,0 +1,14 @@
+pkgbase = ruby27-rspec-core
+	pkgdesc = RSpec runner and formatters
+	pkgver = 3.10.1
+	pkgrel = 2
+	url = https://github.com/rspec/rspec-core
+	arch = any
+	license = MIT
+	depends = ruby27-rspec-support
+	noextract = rspec-core-3.10.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rspec-core-3.10.1.gem
+	sha512sums = 46808d37736b5f30d562b4014638cbf2d1a7d7432730c6c727a6e539f63ee21a04185610034fff4d938a948a887ba6a626955963add6b5e9b5f64499732d742a
+
+pkgname = ruby27-rspec-core
