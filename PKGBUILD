@@ -2,7 +2,7 @@
 
 pkgname=clibasic
 ghpkgname=CLIBASIC
-pkgver=0.24.1
+pkgver=0.24.2
 pkgrel=1
 pkgdesc="A BASIC interpreter for the terminal, written in C"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
