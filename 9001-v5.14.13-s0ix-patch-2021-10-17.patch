@@ -1,11 +1,34 @@
-From 069131f6c7f8927410f5ba0a6a8fc4f36b6de278 Mon Sep 17 00:00:00 2001
+From 96d064ca676e6f62cc4e8850bebc3ce56498c2a5 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Wed, 13 Oct 2021 01:14:48 -0700
-Subject: [PATCH] v5.14.12 s0ix patch 2021-10-13
+Date: Sun, 17 Oct 2021 07:39:02 -0700
+Subject: [PATCH] v5.14.13 s0ix patch 2021-10-17
 
 Squashed commit of the following:
 
-commit 3f111b27da3eb906142e232750567830eaad2517
+commit 88230ab44d6f9fa6f76b6f24dc4e2ce6636715c5
+Author: Scott B <arglebargle@arglebargle.dev>
+Date:   Sun Oct 17 07:03:00 2021 -0700
+
+    pinctrl: amd: Fix wakeups when IRQ is shared with SCI (FIXUP)
+
+commit 71ec0b27fda84c20b2051f33d2830be749a21257
+Author: Mario Limonciello <mario.limonciello@amd.com>
+Date:   Fri Oct 15 09:43:32 2021 -0500
+
+    pinctrl: amd: Fix wakeups when IRQ is shared with SCI
+
+    On some Lenovo AMD Gen2 platforms the IRQ for the SCI and pinctrl drivers
+    are shared.  Due to how the s2idle loop handling works, this case needs
+    an extra explicit check whether the interrupt was caused by SCI or by
+    the GPIO controller.
+
+    To fix this rework the existing IRQ handler function to function as a
+    checker and an IRQ handler depending on the calling arguments.
+
+    BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1738
+    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+
+commit 5de6a0019bc8c145249a581c7f9a9d39a37e769c
 Author: Sachi King <nakato@nakato.io>
 Date:   Sat Oct 9 14:32:40 2021 +1100
 
@@ -22,7 +45,7 @@ Date:   Sat Oct 9 14:32:40 2021 +1100
 
     Signed-off-by: Sachi King <nakato@nakato.io>
 
-commit dc1cf0c61409180a8300f8bac42da46bb1171e44
+commit f7ebc28774dacd2005465491b477f1f4c22eb0e2
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Oct 5 21:26:41 2021 +0530
 
@@ -41,7 +64,7 @@ Date:   Tue Oct 5 21:26:41 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit e4f9c6e914e94b676f99ebd9957213d49edbab50
+commit eac3a5ace2bf72169c1b603f925cb31b064ec1fd
 Author: Sachi King <nakato@nakato.io>
 Date:   Sat Oct 2 14:18:40 2021 +1000
 
@@ -54,7 +77,7 @@ Date:   Sat Oct 2 14:18:40 2021 +1000
     Cc: <stable@vger.kernel.org> # 5.14+
     Signed-off-by: Sachi King <nakato@nakato.io>
 
-commit 4b40a25782950cc77f6cadb9e9807562299e4c6b
+commit cee45b2ead71565f22f31594d55addbeb1ac9f5e
 Author: Sachi King <nakato@nakato.io>
 Date:   Sat Oct 2 14:18:39 2021 +1000
 
@@ -67,7 +90,7 @@ Date:   Sat Oct 2 14:18:39 2021 +1000
     Cc: <stable@vger.kernel.org> # 5.14+
     Signed-off-by: Sachi King <nakato@nakato.io>
 
-commit f67bd30ba26a929f9df034d6e28cd9dcec4e712c
+commit b8ca017aaf1ccaf765d665b70033f31faae702cc
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Sep 28 16:21:22 2021 +0200
 
@@ -86,7 +109,20 @@ Date:   Tue Sep 28 16:21:22 2021 +0200
     Reported-by: Nathan Chancellor <nathan@kernel.org>
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
 
-commit 74c8c17ac05248f793b3209981587ff4b1be9741
+commit 1b5d54074071b787f5f000e690bbbffe300039fe
+Author: Mario Limonciello <mario.limonciello@amd.com>
+Date:   Fri Sep 24 12:32:06 2021 -0500
+
+    ACPI: PM: s2idle: Don't report missing devices as failing constraints
+
+    ACPI tables may have entries for devices that are not physically
+    present but that can be connected.  These devices shouldn't cause
+    constraints checking to fail.
+
+    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+    Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
+
+commit 43ad349462f59bec501a1204b7701d3dc2dd7b73
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -98,7 +134,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 2146fa693e81f466c696136dd52a4ac960d3abc1
+commit 4711b9421ba64c864fdfd9b52c1425216559cc37
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -113,7 +149,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 406149463f185a3a7344e077cd271bfaa712fbd5
+commit 0bf64dbc15381fd63cef11035e54970c19052058
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -126,7 +162,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 364688918ede9e09b58489ced636fec2f8f459de
+commit 6738be9a1e6a13dfc050482e6289e8b62df59e5d
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -145,7 +181,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 159ec76842540d13aa4b2539a35820a1628d12fd
+commit 9e06b4819516c194ed762b59ff345fde96835c5a
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -160,7 +196,7 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 167e8488be639cbc1079570c4ed5858dbca56a95
+commit c2690a5827ca0da39ebc5d52386e71d6e427f3a9
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -173,7 +209,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 35fd49c9047bade19e02708b9cb248d50325f800
+commit ce18e7758d09249f615318a663c061c7cd56c036
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -187,11 +223,12 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 ---
  drivers/acpi/processor_idle.c  |   3 +-
- drivers/acpi/x86/s2idle.c      |   3 +-
- drivers/pinctrl/pinctrl-amd.c  |  50 ++++++++-
+ drivers/acpi/x86/s2idle.c      |   9 +-
+ drivers/pinctrl/Kconfig        |   2 +-
+ drivers/pinctrl/pinctrl-amd.c  |  77 +++++++++++--
  drivers/pinctrl/pinctrl-amd.h  |   1 +
  drivers/platform/x86/amd-pmc.c | 200 ++++++++++++++++++++++++++++++++-
- 5 files changed, 245 insertions(+), 12 deletions(-)
+ 6 files changed, 276 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index 095c8aca141e..1b6529396371 100644
@@ -208,10 +245,23 @@ index 095c8aca141e..1b6529396371 100644
  			drv->safe_state_index = count;
  		}
 diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
-index bd92b549fd5a..1c48358b43ba 100644
+index bd92b549fd5a..0b65d4623214 100644
 --- a/drivers/acpi/x86/s2idle.c
 +++ b/drivers/acpi/x86/s2idle.c
-@@ -371,7 +371,7 @@ static int lps0_device_attach(struct acpi_device *adev,
+@@ -309,6 +309,12 @@ static void lpi_check_constraints(void)
+ 			continue;
+ 		}
+ 
++		if (!acpi_get_first_physical_node(adev)) {
++			acpi_handle_debug(handle, "LPI: Device is not physically present\n");
++			lpi_constraints_table[i].handle = NULL;
++			continue;
++		}
++
+ 		if (adev->power.state < lpi_constraints_table[i].min_dstate)
+ 			acpi_handle_info(handle,
+ 				"LPI: Constraint not met; min power state:%s current power state:%s\n",
+@@ -371,7 +377,7 @@ static int lps0_device_attach(struct acpi_device *adev,
  		return 0;
  
  	if (acpi_s2idle_vendor_amd()) {
@@ -220,7 +270,7 @@ index bd92b549fd5a..1c48358b43ba 100644
  		 * - Should use rev_id 0x0
  		 * - function mask > 0x3: Should use AMD method, but has off by one bug
  		 * - function mask = 0x3: Should use Microsoft method
-@@ -390,6 +390,7 @@ static int lps0_device_attach(struct acpi_device *adev,
+@@ -390,6 +396,7 @@ static int lps0_device_attach(struct acpi_device *adev,
  					ACPI_LPS0_DSM_UUID_MICROSOFT, 0,
  					&lps0_dsm_guid_microsoft);
  		if (lps0_dsm_func_mask > 0x3 && (!strcmp(hid, "AMD0004") ||
@@ -228,8 +278,21 @@ index bd92b549fd5a..1c48358b43ba 100644
  						 !strcmp(hid, "AMDI0005"))) {
  			lps0_dsm_func_mask = (lps0_dsm_func_mask << 1) | 0x1;
  			acpi_handle_debug(adev->handle, "_DSM UUID %s: Adjusted function mask: 0x%x\n",
+diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
+index f38f12801f18..b225e28e433c 100644
+--- a/drivers/pinctrl/Kconfig
++++ b/drivers/pinctrl/Kconfig
+@@ -96,7 +96,7 @@ config PINCTRL_AT91PIO4
+ config PINCTRL_AMD
+ 	tristate "AMD GPIO pin control"
+ 	depends on HAS_IOMEM
+-	depends on ACPI || COMPILE_TEST
++	depends on ACPI
+ 	select GPIOLIB
+ 	select GPIOLIB_IRQCHIP
+ 	select PINMUX
 diff --git a/drivers/pinctrl/pinctrl-amd.c b/drivers/pinctrl/pinctrl-amd.c
-index 5b764740b829..80b67cd7c008 100644
+index 5b764740b829..0a9360ee6be1 100644
 --- a/drivers/pinctrl/pinctrl-amd.c
 +++ b/drivers/pinctrl/pinctrl-amd.c
 @@ -445,6 +445,7 @@ static int amd_gpio_irq_set_wake(struct irq_data *d, unsigned int on)
@@ -256,7 +319,70 @@ index 5b764740b829..80b67cd7c008 100644
  	return 0;
  }
  
-@@ -832,6 +842,34 @@ static const struct pinconf_ops amd_pinconf_ops = {
+@@ -588,16 +598,16 @@ static struct irq_chip amd_gpio_irqchip = {
+ 
+ #define PIN_IRQ_PENDING	(BIT(INTERRUPT_STS_OFF) | BIT(WAKE_STS_OFF))
+ 
+-static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
++static bool _amd_gpio_irq_handler(int irq, void *dev_id)
+ {
+ 	struct amd_gpio *gpio_dev = dev_id;
+ 	struct gpio_chip *gc = &gpio_dev->gc;
+-	irqreturn_t ret = IRQ_NONE;
+ 	unsigned int i, irqnr;
+ 	unsigned long flags;
+ 	u32 __iomem *regs;
+ 	u32  regval;
+ 	u64 status, mask;
++	bool ret = false;
+ 
+ 	/* Read the wake status */
+ 	raw_spin_lock_irqsave(&gpio_dev->lock, flags);
+@@ -617,6 +627,12 @@ static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
+ 		/* Each status bit covers four pins */
+ 		for (i = 0; i < 4; i++) {
+ 			regval = readl(regs + i);
++			/* called from resume context on a shared IRQ, just
++			 * checking wake source.
++			 */
++			if (irq < 0 && (regval & BIT(WAKE_STS_OFF)))
++				return true;
++
+ 			if (!(regval & PIN_IRQ_PENDING) ||
+ 			    !(regval & BIT(INTERRUPT_MASK_OFF)))
+ 				continue;
+@@ -642,9 +658,12 @@ static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
+ 			}
+ 			writel(regval, regs + i);
+ 			raw_spin_unlock_irqrestore(&gpio_dev->lock, flags);
+-			ret = IRQ_HANDLED;
++			ret = true;
+ 		}
+ 	}
++	/* called from resume context on shared IRQ but didn't cause wake */
++	if (irq < 0)
++		return ret;
+ 
+ 	/* Signal EOI to the GPIO unit */
+ 	raw_spin_lock_irqsave(&gpio_dev->lock, flags);
+@@ -656,6 +675,16 @@ static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
+ 	return ret;
+ }
+ 
++static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
++{
++	return _amd_gpio_irq_handler(irq, dev_id) ? IRQ_HANDLED : IRQ_NONE;
++}
++
++static bool amd_gpio_check_wake(void *dev_id)
++{
++	return _amd_gpio_irq_handler(-1, dev_id);
++}
++
+ static int amd_get_groups_count(struct pinctrl_dev *pctldev)
+ {
+ 	struct amd_gpio *gpio_dev = pinctrl_dev_get_drvdata(pctldev);
+@@ -832,6 +861,34 @@ static const struct pinconf_ops amd_pinconf_ops = {
  	.pin_config_group_set = amd_pinconf_group_set,
  };
  
@@ -291,7 +417,7 @@ index 5b764740b829..80b67cd7c008 100644
  #ifdef CONFIG_PM_SLEEP
  static bool amd_gpio_should_save(struct amd_gpio *gpio_dev, unsigned int pin)
  {
-@@ -904,7 +942,6 @@ static struct pinctrl_desc amd_pinctrl_desc = {
+@@ -904,7 +961,6 @@ static struct pinctrl_desc amd_pinctrl_desc = {
  static int amd_gpio_probe(struct platform_device *pdev)
  {
  	int ret = 0;
@@ -299,7 +425,7 @@ index 5b764740b829..80b67cd7c008 100644
  	struct resource *res;
  	struct amd_gpio *gpio_dev;
  	struct gpio_irq_chip *girq;
-@@ -927,9 +964,9 @@ static int amd_gpio_probe(struct platform_device *pdev)
+@@ -927,9 +983,9 @@ static int amd_gpio_probe(struct platform_device *pdev)
  	if (!gpio_dev->base)
  		return -ENOMEM;
  
@@ -312,7 +438,7 @@ index 5b764740b829..80b67cd7c008 100644
  
  #ifdef CONFIG_PM_SLEEP
  	gpio_dev->saved_regs = devm_kcalloc(&pdev->dev, amd_pinctrl_desc.npins,
-@@ -969,6 +1006,9 @@ static int amd_gpio_probe(struct platform_device *pdev)
+@@ -969,6 +1025,9 @@ static int amd_gpio_probe(struct platform_device *pdev)
  		return PTR_ERR(gpio_dev->pctrl);
  	}
  
@@ -322,7 +448,7 @@ index 5b764740b829..80b67cd7c008 100644
  	girq = &gpio_dev->gc.irq;
  	girq->chip = &amd_gpio_irqchip;
  	/* This will let us handle the parent IRQ in the driver */
-@@ -989,7 +1029,7 @@ static int amd_gpio_probe(struct platform_device *pdev)
+@@ -989,12 +1048,13 @@ static int amd_gpio_probe(struct platform_device *pdev)
  		goto out2;
  	}
  
@@ -331,6 +457,20 @@ index 5b764740b829..80b67cd7c008 100644
  			       IRQF_SHARED, KBUILD_MODNAME, gpio_dev);
  	if (ret)
  		goto out2;
+ 
+ 	platform_set_drvdata(pdev, gpio_dev);
++	acpi_register_wakeup_handler(gpio_dev->irq, amd_gpio_check_wake, gpio_dev);
+ 
+ 	dev_dbg(&pdev->dev, "amd gpio driver loaded\n");
+ 	return ret;
+@@ -1012,6 +1072,7 @@ static int amd_gpio_remove(struct platform_device *pdev)
+ 	gpio_dev = platform_get_drvdata(pdev);
+ 
+ 	gpiochip_remove(&gpio_dev->gc);
++	acpi_unregister_wakeup_handler(amd_gpio_check_wake, gpio_dev);
+ 
+ 	return 0;
+ }
 diff --git a/drivers/pinctrl/pinctrl-amd.h b/drivers/pinctrl/pinctrl-amd.h
 index 95e763424042..1d4317073654 100644
 --- a/drivers/pinctrl/pinctrl-amd.h
@@ -659,5 +799,5 @@ index d6a7c896ac86..dc851c2c4d1c 100644
  };
  MODULE_DEVICE_TABLE(acpi, amd_pmc_acpi_ids);
 -- 
-2.33.0
+2.33.1
 
