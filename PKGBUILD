@@ -7,7 +7,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/microsoft/msquic"
 license=('MIT')
 depends=('glibc')
-makedepends=('cmake' 'dotnet-sdk' 'git')
+makedepends=('cmake>=3.16' 'dotnet-sdk>=3.1' 'git')
 provides=('msquic' 'libmsquic.so')
 conflicts=('msquic' 'libmsquic.so')
 source=("$pkgname::git+https://github.com/microsoft/msquic.git#branch=release/1.1"
