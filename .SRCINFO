@@ -1,0 +1,16 @@
+pkgbase = ruby27-rspec
+	pkgdesc = RSpec meta-gem that depends on the other components
+	pkgver = 3.10.0
+	pkgrel = 1
+	url = https://github.com/rspec/rspec
+	arch = any
+	license = MIT
+	depends = ruby27-rspec-core
+	depends = ruby27-rspec-expectations
+	depends = ruby27-rspec-mocks
+	noextract = rspec-3.10.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rspec-3.10.0.gem
+	sha512sums = dd1a3a1c7c73ae9c053e071d7851780d8cf61e92ddba24072b9f2c00a342ed08c81090332ba2eaf7ab96adac3fc723685996195e5cc584e15de57ff02a4455ec
+
+pkgname = ruby27-rspec
