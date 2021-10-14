@@ -64,7 +64,7 @@ else
 	pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance)
 fi
 pkgver=495.29.05
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -423,6 +423,13 @@ package_nvidia-utils-performance() {
     # udev rules for node presence and runtime PM
     # Fixes https://github.com/HansKristian-Work/vkd3d-proton/issues/711
     install -D -m644 "${srcdir}"/60-nvidia.rules "${pkgdir}/usr/lib/udev/rules.d/60-nvidia.rules"
+
+    # NVIDIA GBM Library
+    install -D -m755 libnvidia-egl-gbm.so.1.1.0 "${pkgdir}/usr/lib/libnvidia-egl-gbm.so.1.1.0"
+    ln -s libnvidia-egl-gbm.so.1.1.0 "${pkgdir}/usr/lib/libnvidia-egl-gbm.so.1"
+    ln -s libnvidia-egl-gbm.so.1 "${pkgdir}/usr/lib/libnvidia-egl-gbm.so"
+
+    install -D -m755 15_nvidia_gbm.json "${pkgdir}/usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json"
     
     create_links
 }
