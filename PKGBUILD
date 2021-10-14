@@ -3,7 +3,7 @@
 
 pkgname='python-runtype'
 _pkgname=${pkgname#python-}
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
@@ -17,19 +17,19 @@ makedepends=(
   'python-sphinx-markdown-tables'
 )
 md5sums=(
-  '83e16f80662bf0a1490a05cdcc422f34'
+  '9ee6bc875a5c0e7e3fe7936f1b65745e'
 )
 sha1sums=(
-  '003e9fe449e439f513d9e9a2deebfa134d7a826f'
+  '1447316075323cc2093ab3baf7b7bf35752c4b33'
 )
 sha256sums=(
-  '96a5ff7729150678b4cb8161b203fda983babe226ea215e2d096ecbc67ba4f68'
+  '4d9b1d5c29aa1f372fe96cae03cfb85fe30f51bda8dd1658b0581e539ee08a7f'
 )
 sha512sums=(
-  '75d4cbb329c3db5f90ecd900664756c1067247c9a2f5dabcc2705c1d29d81c0a11632a4a35f9acd769414712c9219ff8fa4888925e49daf6285d6cb6de2351c0'
+  '6a0da395b316c0a30d36f12a31a6a6f62e1e58a34cc04a4fa2515bd57c21a339eecd1bcd188f0ddf5013a2c3636f7e433765f501b9772235e426f29acf9482b1'
 )
 b2sums=(
-  'db01ad896c1ff136575633d3467ef88325d7550cf8167c302f0573d8156a71f8af40578db52ce7ad378d8a8db263ea2eede9e1fd60884183f365391c79b0c43b'
+  'e0038ec9d002271ec7e018d78c9a7f0a265bd733d144dcdb0838e75ec7d015d28f1f8bc452c5b9f2e6406a6778564d4da94db8d945da0be73bb188a4ebd9b3e5'
 )
 
 build() {
