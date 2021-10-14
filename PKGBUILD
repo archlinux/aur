@@ -1,7 +1,7 @@
 # Maintainer: fsyy <fossy2001 web de>
 pkgname=remotelight-bin
 _pkgname=remotelight
-pkgver=0.2.5
+pkgver=0.2.5.2
 pkgrel=1
 pkgdesc="Multifunctional LED Control Software"
 url="https://github.com/Drumber/RemoteLight"
