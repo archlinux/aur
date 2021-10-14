@@ -1,11 +1,5 @@
 See the full changelog for all versions at:
 https://github.com/krathalan/wtwitch/blob/master/FULLCHANGELOG
 
-2.3.0 (June 26, 2021)
-    Added command to show and watch VODs from a streamer
-      To list VODs: wtwitch v [streamer]
-      To watch a VOD: wtwitch v [streamer] [number to watch]
-      Previously 'wtwitch v' would ouptut the wtwitch version.
-      Now, use 'wtwitch version' to print the version.
-    Added pagination to "wtwitch g" command to let you browse more streamers
-    Added more French translations from Léo Villeveygoux
+2.3.1 (October 11, 2021)
+    Fixed a bug where wtwitch would try to fetch vod info with an invalid API token if it had not been refreshed
