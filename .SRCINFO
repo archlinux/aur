@@ -1,0 +1,18 @@
+pkgbase = neovim-cmp-vsnip-git
+	pkgdesc = nvim-cmp source for vsnip
+	pkgver = r11.8d88c92
+	pkgrel = 1
+	url = https://github.com/hrsh7th/cmp-vsnip
+	install = cmp-vsnip.install
+	arch = any
+	groups = neovim-plugin
+	license = custom:unknown
+	makedepends = git
+	depends = neovim-cmp
+	depends = vim-vsnip
+	provides = neovim-cmp-vsnip
+	conflicts = neovim-cmp-vsnip
+	source = neovim-cmp-vsnip-git::git+https://github.com/hrsh7th/cmp-vsnip
+	md5sums = SKIP
+
+pkgname = neovim-cmp-vsnip-git
