@@ -2,6 +2,16 @@
 
 // scriv-insert-here
 
+== 3.1.2 (2021-10-13)
+
+Bugfixes:
+
+* Fix a typo in the word "latitude" for `--location` arguments.
+* Fix the handling of the legacy-line of `virtualenv`, versions below `20.0.0`.
+  When the `globus-cli` was installed under these versions of `virtualenv`, all
+  commands would fail at import-time due to an API difference between stdlib
+  `site` module and the `virtualenv`-generated `site`
+
 == 3.1.1 (2021-10-12)
 
 Bugfixes:
