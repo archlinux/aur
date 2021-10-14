@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-gitsigns-git
-pkgver=r339.dd58b79
+pkgver=r410.ceb2dcb
 pkgrel=1
 epoch=1
 pkgdesc="Git signs written in pure Lua"
@@ -18,16 +18,17 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	( set -o pipefail
-	  git describe --long --tags 2> /dev/null | sed 's/^v//;s/-/.r/;s/-/./' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	## upstream broke their tags
+	# ( set -o pipefail
+	#   git describe --long --tags 2> /dev/null | sed 's/^v//;s/-/.r/;s/-/./' ||
+	#   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	# )
 }
 
 package() {
 	cd "$pkgname"
-	find doc lua teal \
-		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	find doc lua teal -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
