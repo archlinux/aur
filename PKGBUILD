@@ -4,7 +4,7 @@
 # Maintainer: Erik Bender <erik.bender@develerik.dev>
 
 pkgname=studio-3t
-pkgver=2021.7.1
+pkgver=2021.8.0
 pkgrel=1
 pkgdesc="The professional workspace for MongoDB (formerly known as MongoChef)"
 arch=('x86_64')
@@ -16,8 +16,8 @@ provides=('studio-3t')
 replaces=('mongochef')
 
 source=("$pkgname-$pkgver.tar.gz::https://download.studio3t.com/studio-3t/linux/${pkgver}/${pkgname}-linux-x64.tar.gz")
-            
-sha256sums=('beb3961aaf30eaf715ea4070c17290877d62b303917fde36b219ff285036e48c')
+
+sha256sums=('591ce1b974a3c31454e58cb7a353c9b6b016c2bbb92b3c493ab35619409cc97a')
 
 prepare() {
     # Extract, rename and add execution permision
