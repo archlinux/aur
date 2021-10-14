@@ -1,5 +1,5 @@
 pkgname="paths-bookmarks-git"
-pkgver=r56.2d6af6f
+pkgver=r57.8f102bf
 pkgrel=1
 pkgdesc="Save often used directories like bookmarks"
 arch=("x86_64")
@@ -28,7 +28,9 @@ package() {
   # Install binary
   install -Dm755 "bin/paths" "${pkgdir}/usr/share/paths/paths"
   install -Dm755 "paths.sh" "${pkgdir}/usr/share/paths/paths.sh"
+  install -Dm755 "paths.fish" "${pkgdir}/usr/share/paths/paths.fish"
 
-  # Install bash and zsh completions
+  # Install shell completions
   install -Dm644 "doc/completions/bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/paths"
+  install -Dm644 "doc/completions/fishcompletion.fish" "${pkgdir}/usr/share/fish/completions/paths"
 }
