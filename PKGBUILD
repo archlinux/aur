@@ -1,12 +1,12 @@
 # Maintainer: Aaron Esau <contact@aaronesau.com>
 pkgname="heaptrace-git"
-pkgver="2.2.1"
+pkgver="2.2.2"
 pkgrel="1"
 license=("BSD")
 arch=("x86_64")
 md5sums=("SKIP")
 url="https://github.com/Arinerron/heaptrace"
-pkgdesc="a tool for tracking heap operations"
+pkgdesc="helps visualize heap operations for pwn and debugging"
 source=("${pkgname}-${pkgver}::git+https://github.com/Arinerron/heaptrace.git#branch=main")
 makedepends=("gcc")
 
