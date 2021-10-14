@@ -1,6 +1,6 @@
 pkgbase = nordpy
 	pkgdesc = An application with gui to connect automatically to the recommended NordVPN server
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/morpheusthewhite/NordPy
 	install = nordpy.install
@@ -18,8 +18,7 @@ pkgbase = nordpy
 	optdepends = strongswan
 	provides = nordpy
 	conflicts = nordpy
-	source = nordpy-1.3.4.tar.gz::https://github.com/morpheusthewhite/NordPy/archive/1.3.4.tar.gz
+	source = nordpy-1.3.5.tar.gz::https://github.com/morpheusthewhite/NordPy/archive/1.3.5.tar.gz
 	md5sums = SKIP
 
 pkgname = nordpy
-
