@@ -1,0 +1,14 @@
+pkgbase = stybulate
+	pkgdesc = Tabulate with Style
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/guigui64/stybulate
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	depends = gcc-libs
+	source = stybulate-1.1.2.tar.gz::https://github.com/guigui64/stybulate/archive/refs/tags/1.1.2.tar.gz
+	sha256sums = 81dea03fee7e184b93243f94823edf856b3b54ce60540853206afacfd50320a6
+
+pkgname = stybulate
