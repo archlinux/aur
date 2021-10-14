@@ -1,7 +1,7 @@
 pkgbase = cryptr-bin
 	pkgdesc = A GUI for Vault
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/adobe/cryptr#readme
 	install = cryptr.install
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = cryptr-bin
 	depends = libxss
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/adobe/cryptr/releases/download/0.4.0/cryptr_0.4.0_amd64.deb
-	md5sums = 194d791e890856869bb38c147ce34566
+	source = https://github.com/adobe/cryptr/releases/download/v0.5.0/cryptr_0.5.0_amd64.deb
+	sha256sums = b4b3e685e7c0de0eba3d5141a367cfdc5d9582cfa6f0756db99287d6a161b4e7
 
 pkgname = cryptr-bin
-
