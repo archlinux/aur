@@ -7,7 +7,7 @@ pkgdesc="Autocompletion plugin for Neovim"
 arch=('any')
 url="https://github.com/hrsh7th/nvim-cmp"
 license=('MIT')
-groups=('neovim-plugins' 'neovim-cmp')
+groups=('neovim-plugins')
 depends=('neovim>=0.5.0')
 optdepends=(
 	'neovim-cmp-nvim-lsp: source for Neovim builtin LSP client'
