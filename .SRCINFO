@@ -1,0 +1,15 @@
+pkgbase = ruby27-rake
+	pkgdesc = Make-like build tool implemented in Ruby
+	pkgver = 13.0.3
+	pkgrel = 2
+	url = https://ruby.github.io/rake/
+	arch = any
+	license = MIT
+	depends = ruby2.7
+	provides = rake
+	noextract = rake-13.0.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rake-13.0.3.gem
+	sha512sums = cecfc63e8cf52f016d001d7ea886be434c4713c8d0af1d5c99b685c0524577239e7199376aed0b2f167e4f67bca1e2572c422b35aecb3aa6af4d9e8d6e2d347d
+
+pkgname = ruby27-rake
