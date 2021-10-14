@@ -1,14 +1,13 @@
 pkgbase = grit-task-manager
 	pkgdesc = A multitree-based personal task manager
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/climech/grit
 	arch = any
 	license = MIT
 	makedepends = go
 	makedepends = git
-	provides = grit
-	source = git+https://github.com/climech/grit.git#tag=v0.3.0
-	sha256sums = SKIP
+	source = grit-task-manager-0.3.0.tar.gz::https://github.com/climech/grit/archive/v0.3.0.tar.gz
+	sha256sums = 6c6ef08ba01c080e0d7fc3dd7fdaf1c8662dad6456da22ef453e2963c44bab01
 
 pkgname = grit-task-manager
