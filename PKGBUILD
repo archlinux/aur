@@ -4,26 +4,26 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jason Edson <jaysonedson@gmail.com>
 
-pkgbase='vte3-notification'
-pkgname=("${pkgbase}" 'vte-notification-common')
+pkgbase=vte3-notification
+pkgname=(${pkgbase} vte-notification-common)
 pkgver=0.66.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
-license=('LGPL')
-depends=('fribidi'
-         'gnutls'
-         'gtk3'
-         'pcre2'
-         'systemd-libs')
-makedepends=('git'
-             'gobject-introspection'
-             'gtk-doc'
-             'meson'
-             'vala'
-             'gperf')
-options=('!emptydirs')
+license=(LGPL)
+depends=(fribidi
+         gnutls
+         gtk3
+         pcre2
+         systemd-libs)
+makedepends=(git
+             gobject-introspection
+             gtk-doc
+             meson
+             vala
+             gperf)
+options=(!emptydirs)
 
 # Fedora patches: https://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 _frepourl='https://src.fedoraproject.org/rpms/vte291'
@@ -70,22 +70,22 @@ _pick() {
 }
 
 package_vte3-notification(){
-    depends+=('vte-notification-common')
-    provides=("vte3=${pkgver}")
-    conflicts=('vte3')
+    depends+=(vte-notification-common)
+    provides=(vte3=${pkgver} libvte-2.91.so)
+    conflicts=(vte3)
 
-    DESTDIR="${pkgdir}" meson install -C build
+    meson install -C build --destdir "$pkgdir"
 
     _pick vte-common "$pkgdir"/etc/profile.d
     _pick vte-common "$pkgdir"/usr/lib/{systemd,vte-urlencode-cwd}
 }
 
 package_vte-notification-common() {
-    depends=('sh')
+    depends=(sh)
     pkgdesc='Common files used by vte and vte3'
-    arch=('any')
-    provides=("vte-common=${pkgver}")
-    conflicts=('vte-common')
+    arch=(any)
+    provides=(vte-common=${pkgver})
+    conflicts=(vte-common)
 
     mv vte-common/* "$pkgdir"
 }
