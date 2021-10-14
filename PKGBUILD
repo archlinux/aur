@@ -1,7 +1,7 @@
 pkgbase='python-realesrgan'
-pkgname=('python-realesrgan' 'python-realesrgan-model')
+pkgname=('python-realesrgan' 'realesrgan-model')
 pkgver=0.2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-ESRGAN aims at developing Practical Algorithms for General Image Restoration. "
 arch=('x86_64')
 url="https://github.com/xinntao/Real-ESRGAN"
@@ -18,15 +18,19 @@ sha256sums=('d0d0e10ab398ee53bf385a23dfb13d88fc67999454008360801bcf6a97efd235'
             'f872d837d3c90ed2e05227bed711af5671a6fd1c9f7d7e91c911a61f155e99da')
 
 package_python-realesrgan() {
-    optdepends=('python-realesrgan-model: pre-trained model and inference script')
+    optdepends=('realesrgan-model: pre-trained model and inference script')
     cd Real-ESRGAN-${pkgver}
     python setup.py install --root="${pkgdir}" --optimize=1
 }
 
-package_python-realesrgan-model() {
+package_realesrgan-model() {
     pkgdesc="Pre-trained model and interference script for python-realesrgan."
     depends=('python-realesrgan')
-    mkdir -p ${pkgdir}/usr/share/python-realesrgan-model
-    cp Real-ESRGAN-${pkgver}/inference_realesrgan.py ${pkgdir}/usr/share/python-realesrgan-model/
-    cp *.pth ${pkgdir}/usr/share/python-realesrgan-model/
+    mkdir -p ${pkgdir}/usr/share/realesrgan-model
+    cp *.pth ${pkgdir}/usr/share/realesrgan-model/
+    mkdir -p ${pkgdir}/usr/bin
+    cp Real-ESRGAN-${pkgver}/inference_realesrgan.py ${pkgdir}/usr/bin/realesrgan
+    sed -i "1i#!/usr/bin/python" ${pkgdir}/usr/bin/realesrgan
+    sed -i "s|experiments/pretrained_models|/usr/share/realesrgan-model|" ${pkgdir}/usr/bin/realesrgan
+    chmod 755 ${pkgdir}/usr/bin/realesrgan    
 }
