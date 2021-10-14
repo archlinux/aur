@@ -2,14 +2,13 @@
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookintelcontroller
 pkgver=0.2beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for the performance management of Intel processors"
 arch=('any')
 url="https://github.com/slimbook/slimbookintelcontroller"
 license=('GPL2')
-depends=('dbus-python' 'gtk3' 'intel-undervolt' 'libnotify' 'pciutils' 'python-gobject'
-         'python-pillow' 'systemd-libs')
-optdepends=('libappindicator-gtk3: tray icon')
+depends=('dbus-python' 'gtk3' 'intel-undervolt' 'libappindicator-gtk3' 'libnotify'
+         'pciutils' 'python-gobject' 'python-pillow' 'systemd-libs')
 install="$pkgname.install"
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
 sha256sums=('2a36bb471c488714dc15261bfa6a2d06cfd1e08a2a409a1cb6ac354f2587e055')
