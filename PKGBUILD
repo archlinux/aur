@@ -3,7 +3,7 @@
 _pkgname=myrowing
 pkgname=${_pkgname}-git
 _pkgorg=gitlab.com/${_pkgname} 
-pkgver=v0.2.2
+pkgver=v0.2.3
 pkgrel=1
 pkgdesc="Analyze your rowing training data"          
 arch=(any) 
@@ -17,6 +17,11 @@ makedepends=(
   pwgen
 ) 
 provides=(myrowing)
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
  
 build() {
   cd "${_pkgname}"
