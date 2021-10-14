@@ -5,7 +5,6 @@ pkgbase = commit
 	url = https://apps.gnome.org/app/re.sonny.Commit
 	arch = x86_64
 	license = GPL3
-	checkdepends = appstream-glib
 	makedepends = meson
 	depends = libadwaita
 	depends = gjs
