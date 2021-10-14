@@ -1,7 +1,7 @@
 pkgbase = bevm-git
 	pkgdesc = A God's basic evm
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustAGod1/bevm
 	arch = any
 	license = GPL

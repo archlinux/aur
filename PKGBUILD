@@ -1,7 +1,7 @@
 # Maintainer: Iamnotagenius <kazakk9@gmail.com>
 pkgname=bevm-git
 pkgver=1.4 # Версия проги
-pkgrel=1 # Номер релиза
+pkgrel=2 # Номер релиза
 pkgdesc="A God's basic evm"
 arch=('any')
 url="https://github.com/JustAGod1/bevm"
