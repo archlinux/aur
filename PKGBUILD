@@ -2,7 +2,7 @@
 _pkgname=delighter
 pkgname=agisoft-${_pkgname}
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A free stand-alone tool designed to remove shadows from model textures"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -28,7 +28,7 @@ Icon=agisoft-delighter
 Terminal=false
 Categories=Science;ImageProcessing" > "$srcdir/agisoft-delighter.desktop"
 
-    # Create MetaShape MIME type file
+    # Create Delighter MIME type file
     echo '<?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
     <mime-type type="application/agisoft.dlz">
