@@ -1,14 +1,16 @@
 pkgbase = python-dash-bootstrap-components
 	pkgdesc = Bootstrap themed components for use in Plotly Dash
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://dash-bootstrap-components.opensource.faculty.ai/
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/dash-bootstrap-components/dash-bootstrap-components-0.13.0.tar.gz
-	sha256sums = 6ebbf564e62221468b0233a1e53cbc5df0b2bd9aeb90e0d77517289ce396f28c
+	depends = python-dash
+	source = https://files.pythonhosted.org/packages/source/d/dash-bootstrap-components/dash-bootstrap-components-0.13.1.tar.gz
+	sha256sums = 04ad75c37bec005ac1cc0ff7bfb5645f3e2c75aacacfa11279c432f4c83ae70a
 
 pkgname = python-dash-bootstrap-components
 	depends = python
+	depends = python-dash
