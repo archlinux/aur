@@ -1,7 +1,7 @@
 pkgbase = encrypted-dns
 	pkgdesc = A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jedisct1/encrypted-dns-server
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = encrypted-dns
 	source = encrypted-dns-0.9.1.tar.gz::https://github.com/jedisct1/encrypted-dns-server/archive/0.9.1.tar.gz
 	source = encrypted-dns.service
 	sha256sums = 8b25b568e8b583bd04cdd0b5f4e2a684675877d1155cc44423baec4696c09511
-	sha256sums = bcd4ba7e55288ee2209ba358c3ede64044c1ee93b0f6223a10dc3ca4bba7aa5b
+	sha256sums = 1f1c0221fd05019f9d3d8aa2bbf22b845daef8a408f86442c7fa5b5afe720d04
 
 pkgname = encrypted-dns

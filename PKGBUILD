@@ -2,7 +2,7 @@
 
 pkgname=encrypted-dns
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)"
 url="https://github.com/jedisct1/encrypted-dns-server"
 license=(MIT)
@@ -12,7 +12,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jedisct1/encrypted-dns-s
 backup=(etc/encrypted-dns/encrypted-dns.toml)
 makedepends=(rust cargo)
 sha256sums=('8b25b568e8b583bd04cdd0b5f4e2a684675877d1155cc44423baec4696c09511'
-            'bcd4ba7e55288ee2209ba358c3ede64044c1ee93b0f6223a10dc3ca4bba7aa5b')
+            '1f1c0221fd05019f9d3d8aa2bbf22b845daef8a408f86442c7fa5b5afe720d04')
 
 prepare() {
 	cd ${pkgname}-server-${pkgver}
