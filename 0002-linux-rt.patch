@@ -13,7 +13,7 @@ diff --git a/kernel/conftest.sh b/kernel/conftest.sh
 index 0be67cf..a0559c2 100755
 --- a/kernel/conftest.sh
 +++ b/kernel/conftest.sh
-@@ -4815,9 +4815,9 @@ case "$5" in
+@@ -5267,9 +5267,9 @@ case "$5" in
          fi
  
          if test_configuration_option CONFIG_PREEMPT_RT; then

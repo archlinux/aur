@@ -63,8 +63,8 @@ if [ $CARCH != 'aarch64' ]; then
 else
 	pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance)
 fi
-pkgver=470.74
-pkgrel=9
+pkgver=495.29.05
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -83,18 +83,18 @@ _sources_sums=('ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae
                'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
                '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
                '60237cc4b1fc7d3c7ca59155a3079af1923ba2490995c0208597b959ba168cfd'
-               'c18d3511c4169e7a20ad8b792161956fbd28fad9b3a15f7fb6846e37d74cbb24'
-               '6ef8cde2a5c1a5eadaefc0b4fb9005ab433ac10b0452a015b9d93e345156665e'
+               '7a7848252ee8cf547968e97c2a03f5e39b4d2e762b774a02003dd1028a3cf557'
+               'a74e26073efb10d6889088d1fb75082c395e32119518aa3c3c89c7ebc2e6ae71'
                '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
-               '898fe80847fb2974e1d16b380c16569ddb3ab24c6974bbeb72d68e8e13902311'
+               'db329bd2542132a25f4cd1b4a892ece32e610970db7138e5213245740c91992a'
                '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
 source_x86_64=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
                ${_sources[@]})
 source_aarch64=("https://us.download.nvidia.com/XFree86/aarch64/${pkgver}/${_pkg}.run"
                 ${_sources[@]})
-sha256sums_x86_64=('33e513dee329f2a9b106882979f1747eccb64eb698952c12cd030987cecadf6a'
+sha256sums_x86_64=('f7254b97d400c692504796496f4e7d8f64e93b1e31c427860a4f219a186f125e'
                    ${_sources_sums[@]})
-sha256sums_aarch64=('d5bb2101574aeb0937f5039ff2297241684a9069e51ee54b0f0839fdef542226'
+sha256sums_aarch64=('49fd542c2312468b8aa39d753813fbaaf39ed2db73086f7450ab2cd1e68442e6'
 	            ${_sources_sums[@]})
 
 create_links() {
@@ -324,7 +324,6 @@ package_nvidia-utils-performance() {
     
     # misc
     if [ $CARCH != 'aarch64' ]; then
-        install -D -m755 "libnvidia-ifr.so.${pkgver}" -t "${pkgdir}/usr/lib"
         install -D -m755 "libnvidia-fbc.so.${pkgver}" -t "${pkgdir}/usr/lib"
     fi
     install -D -m755 "libnvidia-encode.so.${pkgver}" -t "${pkgdir}/usr/lib"
@@ -353,7 +352,6 @@ package_nvidia-utils-performance() {
     # raytracing
     install -D -m755 "libnvoptix.so.${pkgver}" -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-rtcore.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    install -D -m755 "libnvidia-cbl.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # Optical flow
     install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib"
@@ -471,7 +469,6 @@ package_lib32-nvidia-utils-performance() {
     install -D -m755 "libnvidia-glsi.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     
     # misc
-    install -D -m755 "libnvidia-ifr.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     install -D -m755 "libnvidia-fbc.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     install -D -m755 "libnvidia-encode.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     install -D -m755 "libnvidia-ml.so.${pkgver}" -t "${pkgdir}/usr/lib32"

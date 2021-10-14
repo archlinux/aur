@@ -37,7 +37,7 @@ diff --git a/kernel/nvidia/nv-reg.h b/kernel/nvidia/nv-reg.h
 index 1ee7473..7ea5acf 100644
 --- a/kernel/nvidia/nv-reg.h
 +++ b/kernel/nvidia/nv-reg.h
-@@ -774,13 +774,13 @@ NV_DEFINE_REG_ENTRY_GLOBAL(__NV_MODIFY_DEVICE_FILES, 1);
+@@ -786,13 +786,13 @@ NV_DEFINE_REG_ENTRY_GLOBAL(__NV_MODIFY_DEVICE_FILES, 1);
  NV_DEFINE_REG_ENTRY(__NV_DEVICE_FILE_UID, 0);
  NV_DEFINE_REG_ENTRY(__NV_DEVICE_FILE_GID, 0);
  NV_DEFINE_REG_ENTRY(__NV_DEVICE_FILE_MODE, 0666);
