@@ -1,4 +1,4 @@
-pkgbase = dotnet-core-preview
+pkgbase = dotnet-core-preview-bin
 	pkgver = 6.0.0.sdk100+rc.1.21463.6
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
@@ -22,21 +22,23 @@ pkgbase = dotnet-core-preview
 	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/c56c49ce-176e-4472-bd0c-5667475790f2/018c2de72f984826afe4b1b87715f1c0/dotnet-sdk-6.0.100-rc.1.21463.6-linux-arm64.tar.gz
 	sha512sums_aarch64 = d1ebb53cd36617a3e02dbb759a842d2f62ba70b71b528c31e7c76d5137b655865c570c8ad50a0f206264db836afe83e3fb42037bf80127d179cecb8f7b3f28e7
 
-pkgname = dotnet-host-preview
+pkgname = dotnet-host-preview-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview, binary)
 	depends = glibc
 	provides = dotnet-host
 	provides = dotnet-host=6.0.0
 	conflicts = dotnet-host
+	replaces = dotnet-host-preview-bin
 
-pkgname = aspnet-runtime-preview
+pkgname = aspnet-runtime-preview-bin
 	pkgdesc = The ASP.NET Core runtime (preview, binary)
-	depends = dotnet-runtime-preview
+	depends = dotnet-runtime-preview-bin
 	provides = aspnet-runtime=6.0.0
 	provides = aspnet-runtime-6.0
 	conflicts = aspnet-runtime=6.0.0
+	replaces = aspnet-runtime-preview-bin
 
-pkgname = dotnet-runtime-preview
+pkgname = dotnet-runtime-preview-bin
 	pkgdesc = The .NET Core runtime (preview, binary)
 	depends = dotnet-host>=6.0.0
 	depends = glibc
@@ -50,28 +52,32 @@ pkgname = dotnet-runtime-preview
 	provides = dotnet-runtime=6.0.0
 	provides = dotnet-runtime-6.0
 	conflicts = dotnet-runtime=6.0.0
+	replaces = dotnet-runtime-preview-bin
 
-pkgname = dotnet-sdk-preview
+pkgname = dotnet-sdk-preview-bin
 	pkgdesc = The .NET Core SDK (preview, binary)
-	depends = dotnet-runtime-preview
-	depends = dotnet-targeting-pack-preview
+	depends = dotnet-runtime-preview-bin
+	depends = dotnet-targeting-pack-preview-bin
 	depends = glibc
 	depends = netstandard-targeting-pack-2.1
-	optdepends = aspnet-targeting-pack-preview: Build ASP.NET Core applications
+	optdepends = aspnet-targeting-pack-preview-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk=6.0.100
 	provides = dotnet-sdk-6.0
 	conflicts = dotnet-sdk=6.0.100
+	replaces = dotnet-sdk-preview-bin
 
-pkgname = dotnet-targeting-pack-preview
+pkgname = dotnet-targeting-pack-preview-bin
 	pkgdesc = The .NET Core targeting pack (preview, binary)
 	depends = netstandard-targeting-pack-2.1
 	provides = dotnet-targeting-pack=6.0.0
 	provides = dotnet-targeting-pack-6.0
 	conflicts = dotnet-targeting-pack=6.0.0
+	replaces = dotnet-targeting-pack-preview-bin
 
-pkgname = aspnet-targeting-pack-preview
+pkgname = aspnet-targeting-pack-preview-bin
 	pkgdesc = The ASP.NET Core targeting pack (preview, binary)
-	depends = dotnet-targeting-pack-preview
+	depends = dotnet-targeting-pack-preview-bin
 	provides = aspnet-targeting-pack=6.0.0
 	provides = aspnet-targeting-pack-6.0
 	conflicts = aspnet-targeting-pack=6.0.0
+	replaces = aspnet-targeting-pack-preview-bin

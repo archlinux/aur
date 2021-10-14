@@ -3,15 +3,15 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 # Contributor: Attila Greguss <floyd0122[at]gmail[dot]com>
 
-pkgbase=dotnet-core-preview
+pkgbase=dotnet-core-preview-bin
 pkgname=(
-  dotnet-host-preview
-  aspnet-runtime-preview
-  dotnet-runtime-preview
-  dotnet-sdk-preview
-  # netstandard-targeting-pack-preview
-  dotnet-targeting-pack-preview
-  aspnet-targeting-pack-preview
+  dotnet-host-preview-bin
+  aspnet-runtime-preview-bin
+  dotnet-runtime-preview-bin
+  dotnet-sdk-preview-bin
+  # netstandard-targeting-pack-preview-bin
+  dotnet-targeting-pack-preview-bin
+  aspnet-targeting-pack-preview-bin
 )
 pkgver=6.0.0.sdk100+rc.1.21463.6
 _hostver=6.0.0-rc.1.21451.13
@@ -38,15 +38,16 @@ sha512sums_x86_64=('a1d1de7950d0a7221abc4aa73221a5e7f5093a7aa2142ffb89691c3c1ff6
 sha512sums_armv7h=('8461399292a7dedcbd31295bc6b3e010b0ac0b69dc742026bdfe795780543b9458a3df343d83528d5a0eb60b774ef535aea4f8d3061bf151d7dc90adccf1ad54')
 sha512sums_aarch64=('d1ebb53cd36617a3e02dbb759a842d2f62ba70b71b528c31e7c76d5137b655865c570c8ad50a0f206264db836afe83e3fb42037bf80127d179cecb8f7b3f28e7')
 
-package_dotnet-host-preview() {
+package_dotnet-host-preview-bin() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview, binary)'
   depends=(glibc)
   provides=(dotnet-host dotnet-host=${_hostver%-*})
   conflicts=(dotnet-host)
+  replaces=(dotnet-host-preview-bin)
 
-  install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host-preview}}
+  install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host-preview-bin}}
   cp -dr --no-preserve='ownership' dotnet host "${pkgdir}"/usr/share/dotnet/
-  cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host-preview
+  cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host-preview-bin
   ln -sf /usr/share/dotnet/dotnet "${pkgdir}"/usr/bin/dotnet
   ln -sf /usr/share/dotnet/host/fxr/"${_hostver}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
   install -Dm 644 "${srcdir}"/dotnet.sh -t "${pkgdir}"/etc/profile.d/
@@ -55,7 +56,7 @@ package_dotnet-host-preview() {
   install -Dm 644 "${srcdir}"/register-completions.zsh "${pkgdir}"/usr/share/zsh/site-functions/_dotnet
 }
 
-package_dotnet-runtime-preview() {
+package_dotnet-runtime-preview-bin() {
   pkgdesc='The .NET Core runtime (preview, binary)'
   depends=(
     "dotnet-host>=${_hostver%-*}"
@@ -71,55 +72,60 @@ package_dotnet-runtime-preview() {
   optdepends=('lttng-ust: CoreCLR tracing')
   provides=(dotnet-runtime=${_dotnetruntimever%-*} dotnet-runtime-6.0)
   conflicts=(dotnet-runtime=${_dotnetruntimever%-*})
+  replaces=(dotnet-runtime-preview-bin)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
-  ln -s dotnet-host-preview "${pkgdir}"/usr/share/licenses/dotnet-runtime-preview
+  ln -s dotnet-host-preview-bin "${pkgdir}"/usr/share/licenses/dotnet-runtime-preview-bin
 }
 
-package_aspnet-runtime-preview() {
+package_aspnet-runtime-preview-bin() {
   pkgdesc='The ASP.NET Core runtime (preview, binary)'
-  depends=(dotnet-runtime-preview)
+  depends=(dotnet-runtime-preview-bin)
   provides=(aspnet-runtime=${_aspnetruntimever%-*} aspnet-runtime-6.0)
   conflicts=(aspnet-runtime=${_aspnetruntimever%-*})
+  replaces=(aspnet-runtime-preview-bin)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
-  ln -s dotnet-host-preview "${pkgdir}"/usr/share/licenses/aspnet-runtime-preview
+  ln -s dotnet-host-preview-bin "${pkgdir}"/usr/share/licenses/aspnet-runtime-preview-bin
 }
 
-package_dotnet-sdk-preview() {
+package_dotnet-sdk-preview-bin() {
   pkgdesc='The .NET Core SDK (preview, binary)'
   depends=(
-    dotnet-runtime-preview
-    dotnet-targeting-pack-preview
+    dotnet-runtime-preview-bin
+    dotnet-targeting-pack-preview-bin
     glibc
     netstandard-targeting-pack-2.1
   )
-  optdepends=('aspnet-targeting-pack-preview: Build ASP.NET Core applications')
+  optdepends=('aspnet-targeting-pack-preview-bin: Build ASP.NET Core applications')
   provides=(dotnet-sdk=${_sdkver%-*} dotnet-sdk-6.0)
   conflicts=(dotnet-sdk=${_sdkver%-*})
+  replaces=(dotnet-sdk-preview-bin)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk sdk-manifests templates "${pkgdir}"/usr/share/dotnet/
-  ln -s dotnet-host-preview "${pkgdir}"/usr/share/licenses/dotnet-sdk-preview
+  ln -s dotnet-host-preview-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-preview-bin
 }
 
-# package_netstandard-targeting-pack-preview() {
+# package_netstandard-targeting-pack-preview-bin() {
 #   pkgdesc='The .NET Standard targeting pack (preview, binary)'
 #   provides=(netstandard-targeting-pack-2.1)
 #   conflicts=(netstandard-targeting-pack-2.1)
+#   replaces=(netstandard-targeting-pack-preview-bin)
 
 #   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
 #   cp -dr --no-preserve='ownership' packs/NETStandard.Library.Ref "${pkgdir}"/usr/share/dotnet/packs/
-#   ln -s dotnet-host "${pkgdir}"/usr/share/licenses/netstandard-targeting-pack-preview
+#   ln -s dotnet-host-preview-bin "${pkgdir}"/usr/share/licenses/netstandard-targeting-pack-preview-bin
 # }
 
-package_dotnet-targeting-pack-preview() {
+package_dotnet-targeting-pack-preview-bin() {
   pkgdesc='The .NET Core targeting pack (preview, binary)'
   depends=(netstandard-targeting-pack-2.1)
   provides=(dotnet-targeting-pack=${_dotnetruntimever%-*} dotnet-targeting-pack-6.0)
   conflicts=(dotnet-targeting-pack=${_dotnetruntimever%-*})
+  replaces=(dotnet-targeting-pack-preview-bin)
 
   if [ $CARCH = 'x86_64' ]; then msarch=x64;
   elif [ $CARCH = 'armv7h' ]; then msarch=arm;
@@ -127,16 +133,17 @@ package_dotnet-targeting-pack-preview() {
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-${msarch},Ref} "${pkgdir}"/usr/share/dotnet/packs/
-  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-preview
+  ln -s dotnet-host-preview-bin "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-preview-bin
 }
 
-package_aspnet-targeting-pack-preview() {
+package_aspnet-targeting-pack-preview-bin() {
   pkgdesc='The ASP.NET Core targeting pack (preview, binary)'
-  depends=(dotnet-targeting-pack-preview)
+  depends=(dotnet-targeting-pack-preview-bin)
   provides=(aspnet-targeting-pack=${_aspnetruntimever%-*} aspnet-targeting-pack-6.0)
   conflicts=(aspnet-targeting-pack=${_aspnetruntimever%-*})
+  replaces=(aspnet-targeting-pack-preview-bin)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
-  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/aspnet-targeting-pack-preview
+  ln -s dotnet-host-preview-bin "${pkgdir}"/usr/share/licenses/aspnet-targeting-pack-preview-bin
 }
