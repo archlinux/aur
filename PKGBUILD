@@ -2,7 +2,7 @@
 
 pkgbase=neovim-zenbones
 pkgname=('neovim-zenbones' 'neovim-zenbones-extras')
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="Contrast-focused Neovim colorscheme"
 arch=('any')
