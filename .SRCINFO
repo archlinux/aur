@@ -1,0 +1,21 @@
+pkgbase = python-facexlib
+	pkgdesc = FaceXlib aims at providing ready-to-use face-related functions based on current STOA open-source methods.
+	pkgver = 0.2.1.0
+	pkgrel = 1
+	url = https://github.com/xinntao/facexlib
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-filterpy
+	depends = python-numba
+	depends = python-numpy
+	depends = python-opencv
+	depends = python-pillow
+	depends = python-scipy
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-tqdm
+	source = https://github.com/xinntao/facexlib/archive/refs/tags/v0.2.1.0.tar.gz
+	sha256sums = 557886ad7465c501eadb98d77c1976ce69b1ccaa7a921db4115ebe3759747f74
+
+pkgname = python-facexlib
