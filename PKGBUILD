@@ -15,7 +15,7 @@ options=(!strip)
 
 prepare(){
 	pwd
-	cd ${pkgname}-${pkgver}
+	cd ${pkgname}-* #${pkgver}
 	pwd
 	mkdir build
 	cd build
@@ -25,6 +25,6 @@ prepare(){
 
 package(){
 	mkdir -p "${pkgdir}"/usr/bin/
-	cp "${srcdir}"/${pkgname}-master/build/rhubarb/rhubarb "${pkgdir}"/usr/bin/
+	cp "${srcdir}"/${pkgname}-*/build/rhubarb/rhubarb "${pkgdir}"/usr/bin/
 	chmod 755 "${pkgdir}"/usr/bin/rhubarb
 }
