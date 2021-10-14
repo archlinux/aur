@@ -1,0 +1,13 @@
+pkgbase = python-gtsam
+	pkgdesc = Georgia Tech Smoothing And Mapping library
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/gtsam
+	arch = any
+	license = Simplified BSD license
+	makedepends = python-setuptools
+	makedepends = python-pip
+	source = https://files.pythonhosted.org/packages/cp39/g/gtsam/gtsam-4.1.1.dev2-cp39-cp39-manylinux2014_x86_64.whl
+	sha256sums = 4229e4d19ef6eb12ae97006a2e88b2c721099199430db57c379a063a2ee02d54
+
+pkgname = python-gtsam
