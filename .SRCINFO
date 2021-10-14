@@ -1,0 +1,16 @@
+pkgbase = ruby27-concurrent
+	pkgdesc = Modern concurrency tools including agents, futures, promises, thread pools, actors, supervisors, and more.
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/ruby-concurrent/concurrent-ruby
+	arch = any
+	license = MIT
+	makedepends = ruby27-rdoc
+	depends = ruby2.7
+	optdepends = java-runtime>=8: jruby support
+	noextract = concurrent-ruby-1.1.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/gems/concurrent-ruby-1.1.8.gem
+	sha512sums = 6c33580be8212505c30852bbc9c4e3d988686f3e20d0a7b810d11cb39f8b1bd204ec73a230cea3401230db82c6157dde95d8f4749f5a316e2b01264883cf911b
+
+pkgname = ruby27-concurrent
