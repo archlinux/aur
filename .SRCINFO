@@ -1,6 +1,6 @@
 pkgbase = ormolu-bin
 	pkgdesc = A formatter for Haskell source code
-	pkgver = 0.3.0.1
+	pkgver = 0.3.1.0
 	pkgrel = 1
 	url = https://github.com/tweag/ormolu
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ormolu-bin
 	provides = ormolu
 	conflicts = ormolu
 	conflicts = haskell-ormolu
-	source = ormolu-0.3.0.1.zip::https://github.com/tweag/ormolu/releases/download/0.3.0.1/ormolu-Linux.zip
-	source = LICENSE-0.3.0.1::https://raw.githubusercontent.com/tweag/ormolu/0.3.0.1/LICENSE.md
-	sha256sums = c2db077cdbd9ee1eaa308385d4c6fd734d0d50b6f2990000472a400ee734de64
+	source = ormolu-0.3.1.0.zip::https://github.com/tweag/ormolu/releases/download/0.3.1.0/ormolu-Linux.zip
+	source = LICENSE-0.3.1.0::https://raw.githubusercontent.com/tweag/ormolu/0.3.1.0/LICENSE.md
+	sha256sums = da935579d2b74e2e59fab2b85170ac415cc4ee510325f0067c97129854fe7e81
 	sha256sums = 6572a825b43b87cf53d197723e1d64ce78535fe8bfa19b1377be582909b81141
 
 pkgname = ormolu-bin
