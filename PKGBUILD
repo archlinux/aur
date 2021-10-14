@@ -2,7 +2,7 @@
 _pkgname=viewer
 pkgname=agisoft-${_pkgname}
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A free stand-alone software to visualize 3D data"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -30,7 +30,7 @@ Icon=agisoft-viewer
 Terminal=false
 Categories=Science;ImageProcessing" > "$srcdir/agisoft-viewer.desktop"
 
-    # Create MetaShape MIME type file
+    # Create Viewer MIME type file
     echo '<?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
     <mime-type type="application/agisoft.3dv">
