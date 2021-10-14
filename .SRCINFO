@@ -1,0 +1,13 @@
+pkgbase = prosody-mod-external-services
+	pkgdesc = XEP-0215: External Service Discovery for prosody (pre 0.12)
+	pkgver = 2021.08.30
+	pkgrel = 1
+	url = https://prosody.im/doc/modules/mod_external_services
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	depends = prosody
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=ede9682c2022
+	sha1sums = SKIP
+
+pkgname = prosody-mod-external-services
