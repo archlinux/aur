@@ -1,0 +1,17 @@
+pkgbase = ruby27-mocha
+	pkgdesc = Mocha is a mocking and stubbing library for Ruby
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/freerange/mocha
+	arch = any
+	license = Custom
+	checkdepends = ruby27-rake
+	makedepends = ruby27-minitest
+	depends = ruby2.7
+	options = !emptydirs
+	source = ruby27-mocha-1.12.0.tar.gz::https://github.com/freerange/mocha/archive/v1.12.0.tar.gz
+	source = remove-unneeded-dependencies.patch
+	sha512sums = 969a6cd48d925845004dffa12f8a9dad155d3bf24b974957e9921a2e13dc67985f01080017ef9e82dacfd4bf87533774f3f5d15226923bdf50f8b90e95e1730f
+	sha512sums = 6a3c4568b6cf8009aed70935ddcff96a75d8d92b2e87a2a332a71ec569ed28c7c83e507ad408a0f62f93fc16b066133ba184f13a3e5b9a14bf90dc6276acde60
+
+pkgname = ruby27-mocha
