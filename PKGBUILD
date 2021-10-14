@@ -3,7 +3,7 @@
 pkgname=neovim-gitsigns-git
 pkgver=r410.ceb2dcb
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Git signs written in pure Lua"
 arch=('any')
 url="https://github.com/lewis6991/gitsigns.nvim"
