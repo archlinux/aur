@@ -29,7 +29,7 @@ sha1sums=('b096624adab1c99cb2ad95572ab186f7c768eb19'
 b2sums=('02aaab99adc8c492cca95b410632e3a5d0c6e6cd4a6d3308ad4f40f14249753592e666f1a0825ec982df0420c1c5f8ad50457e9e2af62048f04dcf82e39d58ff'
         '152ed008f85eb748528e74d07fcce577f3d6e7ebf4e1224242c10af9be420d9513db4ad0b252600ebac26949f69d73809554fe6a6d1bf2841af28e0da65ffc91')
 pkgver() {
-	echo "${pkgver}"
+  echo "${pkgver}"
 }
 package() {
   mkdir -p "${pkgdir}"/usr/share/applications
