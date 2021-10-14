@@ -1,14 +1,14 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 pkgname=msquic
 pkgver=1.1.8
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/microsoft/msquic"
 license=('MIT')
 depends=('glibc')
-makedepends=('cmake' 'dotnet-sdk')
+makedepends=('cmake>=3.16' 'dotnet-sdk>=3.1')
 provides=('libmsquic.so')
 conflicts=('libmsquic.so')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
