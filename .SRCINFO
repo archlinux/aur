@@ -1,0 +1,17 @@
+pkgbase = ruby27-hoe
+	pkgdesc = Hoe is a rake/rubygems helper for project Rakefiles
+	pkgver = 3.22.3
+	pkgrel = 3
+	url = https://www.zenspider.com/projects/hoe.html
+	arch = any
+	license = MIT
+	checkdepends = ruby27-minitest
+	makedepends = git
+	makedepends = ruby27-rdoc
+	makedepends = ruby27-rake
+	depends = ruby2.7
+	options = !emptydirs
+	source = git+https://github.com/seattlerb/hoe#commit=c50be1641440a5fd821c5438219a9a88e189461c
+	sha512sums = SKIP
+
+pkgname = ruby27-hoe
