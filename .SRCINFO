@@ -1,0 +1,15 @@
+pkgbase = ruby27-rspec-support
+	pkgdesc = Common code needed by the other RSpec gems. Not intended for direct use
+	pkgver = 3.10.2
+	pkgrel = 1
+	url = https://github.com/rspec/rspec-support
+	arch = any
+	license = MIT
+	depends = ruby2.7
+	depends = ruby27-rdoc
+	noextract = rspec-support-3.10.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rspec-support-3.10.2.gem
+	sha512sums = c8825dbf8fc5f044de65400fb3f4d6f4d9352167b40caef904afecdc12ae1e4156590a20f222cf841887549d59a88a057bd503759147cf8ec4ddd05679732e1f
+
+pkgname = ruby27-rspec-support
