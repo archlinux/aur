@@ -1,0 +1,17 @@
+pkgbase = ruby27-deep_merge
+	pkgdesc = Recursively merge Ruby hashes
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/danielsdeleo/deep_merge
+	arch = any
+	license = MIT
+	checkdepends = ruby27-rake
+	checkdepends = ruby27-minitest
+	checkdepends = ruby27-test-unit
+	makedepends = ruby27-rdoc
+	depends = ruby2.7
+	options = !emptydirs
+	source = https://github.com/danielsdeleo/deep_merge/archive/1.2.1/ruby27-deep_merge-1.2.1.tar.gz
+	sha512sums = d5a61761e0d7d83d0956f98d6d2e841427b9b7a6d8f80598bd97c5dea7bdd582a6d406ed0d8701180c0a8a950a5bbd50a50349ec4b85e5a3e999dcb3741de25f
+
+pkgname = ruby27-deep_merge
