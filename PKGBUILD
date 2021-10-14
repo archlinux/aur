@@ -1,10 +1,11 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+# Contributor: Nabobalis <nabil dot freij at gmail dot com>
 
 pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
@@ -29,36 +30,38 @@ checkdepends=('python-pytest-doctestplus'
               'python-sqlalchemy'
               'python-hypothesis'
               'python-scikit-image'
-              'python-h5netcdf')
+              'python-h5netcdf'
+              'python-glymur')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_063301_0131_lowres.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_063302_0171_lowres.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_063302_0211_lowres.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_063303_0335_lowres.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_063305_0094_lowres.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_063305_1600_lowres.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_063307_0193_cutout.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_063307_0193_lowres.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_063931_0193_cutout.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_064555_0193_cutout.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_065219_0193_cutout.fits"
-"http://data.sunpy.org/sunpy/v1/AIA20110607_065843_0193_cutout.fits"
-"http://data.sunpy.org/sunpy/v1/BIR_20110607_062400_10.fit"
-"http://data.sunpy.org/sunpy/v1/HMI20110607_063211_los_lowres.fits"
-"http://data.sunpy.org/sunpy/v1/LOFAR_70MHZ_20190409_131136.fits"
-"http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
-"http://data.sunpy.org/sunpy/v1/eit_l1_20110607_203753.fits"
-"http://data.sunpy.org/sunpy/v1/go1520110607.fits"
-"http://data.sunpy.org/sunpy/v1/hsi_image_20110607_063300.fits"
-"http://data.sunpy.org/sunpy/v1/hsi_obssumm_20110607_025.fits"
-"http://data.sunpy.org/sunpy/v1/lyra_20110607-000000_lev3_std.fits"
-"http://data.sunpy.org/sunpy/v1/swap_lv1_20110607_063329.fits"
-"http://data.sunpy.org/sunpy/v1/tca110607.fits"
-"http://data.sunpy.org/sunpy/v1/20110607_EVE_L0CS_DIODES_1m.txt"
-"http://data.sunpy.org/sunpy/v1/20110607SRS.txt"
-"http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
-"http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
-md5sums=('2ea12ca662e987cf7e0ff8846fc85c6e'
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_063301_0131_lowres.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_063302_0171_lowres.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_063302_0211_lowres.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_063303_0335_lowres.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_063305_0094_lowres.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_063305_1600_lowres.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_063307_0193_cutout.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_063307_0193_lowres.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_063931_0193_cutout.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_064555_0193_cutout.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_065219_0193_cutout.fits"
+        "http://data.sunpy.org/sunpy/v1/AIA20110607_065843_0193_cutout.fits"
+        "http://data.sunpy.org/sunpy/v1/BIR_20110607_062400_10.fit"
+        "http://data.sunpy.org/sunpy/v1/HMI20110607_063211_los_lowres.fits"
+        "http://data.sunpy.org/sunpy/v1/LOFAR_70MHZ_20190409_131136.fits"
+        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
+        "http://data.sunpy.org/sunpy/v1/eit_l1_20110607_203753.fits"
+        "http://data.sunpy.org/sunpy/v1/go1520110607.fits"
+        "http://data.sunpy.org/sunpy/v1/hsi_image_20110607_063300.fits"
+        "http://data.sunpy.org/sunpy/v1/hsi_obssumm_20110607_025.fits"
+        "http://data.sunpy.org/sunpy/v1/lyra_20110607-000000_lev3_std.fits"
+        "http://data.sunpy.org/sunpy/v1/swap_lv1_20110607_063329.fits"
+        "http://data.sunpy.org/sunpy/v1/tca110607.fits"
+        "http://data.sunpy.org/sunpy/v1/20110607_EVE_L0CS_DIODES_1m.txt"
+        "http://data.sunpy.org/sunpy/v1/20110607SRS.txt"
+        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
+        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
+#       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
+md5sums=('210db42260ab7f4a703bb3307887296f'
          'bde3bd7a691b38e2e4c4e1d17b143b24'
          '01efaf052d81efc32a92050a249aa557'
          'ead6d3ce4c183c471d76bf1bc3be44a3'
@@ -86,6 +89,7 @@ md5sums=('2ea12ca662e987cf7e0ff8846fc85c6e'
          '83341ef73b722cb250cfd7755f32f2b8'
          '4dda208f27f5632a810b063160d8f300'
          'b1255ddcf10d91ae81439aadfe8cbccd')
+#        '09e93384ceff4aecfef1ad4b0ca89290')
 
 prepare() {
 #   cd ${srcdir}/${_pyname}-${pkgver}
@@ -105,7 +109,12 @@ build() {
 #   export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 #   cd ${srcdir}/${_pyname}-${pkgver}/docs
 #   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname}*egg-info \
-#       build/lib.linux-${CARCH}-${_pyver}/${_pyname}-${pkgver}-py${_pyver}.egg-info
+#       ../build/lib.linux-${CARCH}-${_pyver}/${_pyname}-${pkgver}-py${_pyver}.egg-info
+#   mkdir -p ${HOME}/.local/share/${_pyname}
+#   ln -rs ${srcdir}/*.fit* ${HOME}/.local/share/${_pyname}
+#   ln -rs ${srcdir}/*.txt ${HOME}/.local/share/${_pyname}
+#   ln -rs ${srcdir}/*.pha ${HOME}/.local/share/${_pyname}
+#   ln -rs ${srcdir}/VSOi_rpc_literal.wsdl .
 #   PYTHONPATH="../build/lib.linux-${CARCH}-${_pyver}" make html
 }
 
@@ -122,13 +131,14 @@ check() {
 }
 
 package_python-sunpy() {
-    depends=('python>=3.7' 'python-astropy>=4.1' 'python-parfive>=1.2.0')
+    depends=('python>=3.7' 'python-astropy>=4.2.0' 'python-parfive>=1.2.0')
     optdepends=('python-asdf>=2.6.0: asdf'
                 'python-dask>=2.0.0: dask'
                 'python-sqlalchemy>=1.3.4: database'
                 'python-scikit-image>=0.16.0: image'
                 'python-scipy>=1.3.0: image, map'
-                'python-matplotlib>=3.1.0: map, timeseries, visualization'
+                'python-reproject: map'
+                'python-matplotlib>=3.2.0: map, timeseries, visualization'
                 'python-glymur>0.9.0: jpeg2000'
                 'python-beautifulsoup4>=4.8.0: net'
                 'python-drms>=0.6.1: net'
@@ -138,7 +148,7 @@ package_python-sunpy() {
                 'python-cdflib>=0.3.19: timeseries'
                 'python-h5netcdf>=0.8.1: timeseries'
                 'python-h5py>=3.1.0: timeseries'
-                'python-pandas>=0.24.0: timeseries')
+                'python-pandas>=1.0.0: timeseries')
 #               'python-sunpy-doc: Documentation for SunPy')
     cd ${srcdir}/${_pyname}-${pkgver}
 

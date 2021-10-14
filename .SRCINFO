@@ -1,6 +1,6 @@
 pkgbase = python-sunpy
 	pkgdesc = Python library for solar physics
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://sunpy.org
 	arch = i686
@@ -22,10 +22,11 @@ pkgbase = python-sunpy
 	checkdepends = python-hypothesis
 	checkdepends = python-scikit-image
 	checkdepends = python-h5netcdf
+	checkdepends = python-glymur
 	makedepends = python-setuptools-scm
 	makedepends = python-extension-helpers
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-3.0.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-3.0.2.tar.gz
 	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063301_0131_lowres.fits
 	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063302_0171_lowres.fits
 	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063302_0211_lowres.fits
@@ -53,7 +54,7 @@ pkgbase = python-sunpy
 	source = http://data.sunpy.org/sunpy/v1/20110607SRS.txt
 	source = http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz
 	source = http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha
-	md5sums = 2ea12ca662e987cf7e0ff8846fc85c6e
+	md5sums = 210db42260ab7f4a703bb3307887296f
 	md5sums = bde3bd7a691b38e2e4c4e1d17b143b24
 	md5sums = 01efaf052d81efc32a92050a249aa557
 	md5sums = ead6d3ce4c183c471d76bf1bc3be44a3
@@ -84,14 +85,15 @@ pkgbase = python-sunpy
 
 pkgname = python-sunpy
 	depends = python>=3.7
-	depends = python-astropy>=4.1
+	depends = python-astropy>=4.2.0
 	depends = python-parfive>=1.2.0
 	optdepends = python-asdf>=2.6.0: asdf
 	optdepends = python-dask>=2.0.0: dask
 	optdepends = python-sqlalchemy>=1.3.4: database
 	optdepends = python-scikit-image>=0.16.0: image
 	optdepends = python-scipy>=1.3.0: image, map
-	optdepends = python-matplotlib>=3.1.0: map, timeseries, visualization
+	optdepends = python-reproject: map
+	optdepends = python-matplotlib>=3.2.0: map, timeseries, visualization
 	optdepends = python-glymur>0.9.0: jpeg2000
 	optdepends = python-beautifulsoup4>=4.8.0: net
 	optdepends = python-drms>=0.6.1: net
@@ -101,4 +103,4 @@ pkgname = python-sunpy
 	optdepends = python-cdflib>=0.3.19: timeseries
 	optdepends = python-h5netcdf>=0.8.1: timeseries
 	optdepends = python-h5py>=3.1.0: timeseries
-	optdepends = python-pandas>=0.24.0: timeseries
+	optdepends = python-pandas>=1.0.0: timeseries
