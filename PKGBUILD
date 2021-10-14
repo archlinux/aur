@@ -2,7 +2,7 @@
 
 _pkgname=yml2
 pkgname=$_pkgname-git
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A tool written in Python to convert yml to xml"
 arch=('any')
@@ -13,6 +13,7 @@ depends=('python-lxml')
 provides=('yml2')
 source=("git+https://gitea.pep.foundation/fdik/yml2.git")
 md5sums=('SKIP')
+conflicts=('yml2-hg')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"

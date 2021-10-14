@@ -1,6 +1,6 @@
 pkgbase = yml2-git
 	pkgdesc = A tool written in Python to convert yml to xml
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://pypi.org/project/yml2
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = yml2-git
 	makedepends = python
 	depends = python-lxml
 	provides = yml2
+	conflicts = yml2-hg
 	source = git+https://gitea.pep.foundation/fdik/yml2.git
 	md5sums = SKIP
 
