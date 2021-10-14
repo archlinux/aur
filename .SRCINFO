@@ -1,11 +1,12 @@
 pkgbase = pacautomation
 	pkgdesc = Background download of package upgrades and cache cleaning.
 	pkgver = 0.14.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/lagru/pacautomation
 	arch = any
 	license = GPL
 	depends = python>=3.9
+	depends = hicolor-icon-theme
 	optdepends = breeze-icons: icons for desktop notifications
 	backup = etc/pacautomation.conf
 	source = https://gitlab.com/lagru/pacautomation/-/archive/v0.14.5/pacautomation-v0.14.5.tar.gz
