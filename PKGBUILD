@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=verco-git
-pkgver=6.7.0
+pkgver=6.7.0.r0.g111fc39
 pkgrel=1
 pkgdesc="A simple Git/Mercurial/PlasticSCM tui client based on keyboard shortcuts (git)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --tags $(git rev-list --tags --max-count=1) | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
