@@ -1,0 +1,17 @@
+pkgbase = neovim-cmp-calc-git
+	pkgdesc = nvim-cmp source for math calculation
+	pkgver = r5.eb7bd1d
+	pkgrel = 1
+	url = https://github.com/hrsh7th/cmp-calc
+	install = cmp-calc.install
+	arch = any
+	groups = neovim-plugin
+	license = custom:unknown
+	makedepends = git
+	depends = neovim-cmp
+	provides = neovim-cmp-calc
+	conflicts = neovim-cmp-calc
+	source = neovim-cmp-calc-git::git+https://github.com/hrsh7th/cmp-calc
+	md5sums = SKIP
+
+pkgname = neovim-cmp-calc-git
