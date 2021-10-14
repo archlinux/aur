@@ -8,6 +8,7 @@ pkgdesc="A smarter cd command for your terminal"
 arch=('x86_64')
 url="https://github.com/ajeetdsouza/zoxide"
 license=('MIT')
+depends=('gcc-libs')
 makedepends=('rust')
 optdepends=(
   'fzf: for interactive selection'
