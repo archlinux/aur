@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Slimbook <dev at slimbook dot es>
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
 pkgver=4.0.1
