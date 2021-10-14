@@ -9,8 +9,8 @@ pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/gnome-pomodoro/gnome-pomodoro'
 license=('GPL3')
-depends=('gnome-desktop' 'gstreamer' 'gobject-introspection' 'libpeas' 'appstream-glib' 'gom')
-makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x' 'perl-xml-sax-expat' 'xorgproto' 'meson')
+depends=('glib2' 'gom' 'gtk3' 'cairo' 'glibc' 'libpeas' 'sqlite' 'gstreamer' 'libcanberra')
+makedepends=('meson' 'vala')
 conflicts=('gnome-pomodoro' 'gnome-shell-pomodoro')
 provides=('gnome-pomodoro')
 source=("$pkgname"::"git+https://github.com/gnome-pomodoro/gnome-pomodoro.git#branch=${_gitbranch}")
