@@ -1,0 +1,106 @@
+diff -U 3 a/src/main.c b/src/main.c
+--- a/src/main.c	2013-05-27 22:38:37.000000000 +0000
++++ b/src/main.c	2021-10-13 19:36:26.460797433 +0000
+@@ -246,7 +246,7 @@
+     }
+     else
+     {
+-        SLOG("Not forking, roxterm_exit doing nothing");
++//        SLOG("Not forking, roxterm_exit doing nothing");
+     }
+     return exit_code;
+ }
+@@ -445,10 +445,10 @@
+ 
+     g_idle_add(roxterm_idle_ok, &fork_pipe[1]);
+ 
+-    SLOG("Entering main loop with %d windows", g_list_length(multi_win_all));
++//    SLOG("Entering main loop with %d windows", g_list_length(multi_win_all));
+     gtk_main();
+ 
+-    SLOG("Exiting normally");
++//    SLOG("Exiting normally");
+ 
+     return 0;
+ }
+diff -U 3 a/src/multitab.h b/src/multitab.h
+--- a/src/multitab.h	2013-04-01 22:51:31.000000000 +0000
++++ b/src/multitab.h	2021-10-13 18:41:37.980824844 +0000
+@@ -105,7 +105,7 @@
+ typedef gboolean (*MultiTabGetShowCloseButton)(gpointer user_data);
+ 
+ /* Needed externally */
+-MultiWinGetDisableMenuShortcuts multi_win_get_disable_menu_shortcuts;
++extern MultiWinGetDisableMenuShortcuts multi_win_get_disable_menu_shortcuts;
+ 
+ /* Whether to open a new tab adjacent to current one */
+ typedef gboolean (*MultiTabGetNewTabAdjacent)(gpointer user_data);
+diff -U 3 a/src/roxterm.c b/src/roxterm.c
+--- a/src/roxterm.c	2014-01-15 00:10:58.000000000 +0000
++++ b/src/roxterm.c	2021-10-13 19:37:13.180797044 +0000
+@@ -4940,7 +4940,7 @@
+             return;
+         }
+     }
+-    SLOG("Opening window with title %s", title);
++//    SLOG("Opening window with title %s", title);
+ 
+     shortcuts = shortcuts_open(shortcuts_name);
+     rctx->win = win = multi_win_new_blank(disp, shortcuts,
+@@ -5095,7 +5095,7 @@
+             return;
+         }
+     }
+-    SLOG("Loading tab with icon_title %s, cwd %s", rctx->icon_title, cwd);
++//    SLOG("Loading tab with icon_title %s, cwd %s", rctx->icon_title, cwd);
+ 
+     profile = dynamic_options_lookup_and_ref(roxterm_get_profiles(),
+             profile_name, "roxterm profile");
+@@ -5448,7 +5448,7 @@
+         g_error_free(error);
+         error = NULL;
+     }
+-    SLOG("Session loaded, result %d", result);
++//    SLOG("Session loaded, result %d", result);
+     return result;
+ }
+ #endif /* ENABLE_SM */
+diff -U 3 a/src/roxterm-config.ui b/src/roxterm-config.ui
+--- a/src/roxterm-config.ui	2013-11-08 00:13:26.000000000 +0000
++++ b/src/roxterm-config.ui	2021-10-13 18:42:19.530824497 +0000
+@@ -4316,7 +4316,7 @@
+                             </child>
+                             <child>
+                               <object class="GtkCheckButton" id="disable_tab_menu_shortcuts">
+-                                <property name="label" translatable="yes">Disable _tab switching shortcut keys (Alt+number)</property>
++                                <property name="label" translatable="yes">Disable _tab switching shortcut keys (Ctrl+number)</property>
+                                 <property name="use_action_appearance">False</property>
+                                 <property name="visible">True</property>
+                                 <property name="can_focus">True</property>
+diff -U 3 a/src/shortcuts.c b/src/shortcuts.c
+--- a/src/shortcuts.c	2013-04-01 22:51:31.000000000 +0000
++++ b/src/shortcuts.c	2021-10-13 18:42:49.960824244 +0000
+@@ -81,7 +81,7 @@
+         {
+             guint a_key;
+             GdkModifierType a_mods;
+-            char *accel = g_strdup_printf("<Alt>%d", n < 9 ? n + 1 : 0);
++            char *accel = g_strdup_printf("<Ctrl>%d", n < 9 ? n + 1 : 0);
+ 
+             gtk_accelerator_parse(accel, &a_key, &a_mods);
+             gtk_accel_map_add_entry(path, a_key, a_mods);
+diff -U 3 a/mscript.py b/mscript.py             
+--- a/mscript.py	2014-01-16 23:38:45.000000000 +0000
++++ b/mscript.py	2021-10-13 19:20:57.590805176 +0000
+@@ -230,9 +230,9 @@
+     ctx.setenv('CORE_LIBS',
+             "${LIBS} ${GTK_LIBS} ${DBUS_LIBS}")
+     ctx.setenv('ROXTERM_CFLAGS',
+-            "${CFLAGS} ${MCFLAGS} ${VTE_CFLAGS} ${SM_CFLAGS} ${DBUS_CFLAGS}")
++            "${CFLAGS} ${MCFLAGS} ${VTE_CFLAGS} ${DBUS_CFLAGS}")
+     ctx.setenv('ROXTERM_LIBS',
+-            "${LIBS} ${VTE_LIBS} ${SM_LIBS} ${DBUS_LIBS}")
++            "${LIBS} ${VTE_LIBS} ${DBUS_LIBS}")
+     ctx.setenv('ROXTERM_CONFIG_CFLAGS',
+             "${CFLAGS} ${MCFLAGS} ${GTK_CFLAGS} ${DBUS_CFLAGS} " \
+             "${GMODULE_CFLAGS} -DROXTERM_CAPPLET")

@@ -1,0 +1,23 @@
+pkgbase = roxterm-gtk2-patched
+	pkgdesc = Tabbed, VTE-based terminal emulator (GTK2 version)
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = http://roxterm.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = docbook-xsl
+	makedepends = xmlto
+	makedepends = po4a
+	makedepends = python2
+	makedepends = python2-lockfile
+	makedepends = imagemagick
+	makedepends = librsvg
+	depends = dbus-glib
+	depends = vte
+	depends = hicolor-icon-theme
+	depends = libsm
+	source = http://downloads.sourceforge.net/roxterm/roxterm-2.8.1.tar.bz2
+	sha256sums = b8b9660917c6a036d71a55b841143b8e9291a12e8f5748a2406c2d1ba5879b04
+
+pkgname = roxterm-gtk2-patched
