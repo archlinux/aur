@@ -1,14 +1,13 @@
 pkgbase = git-chglog
 	pkgdesc = git CHANGELOG generator
-	pkgver = 0.14.2
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/git-chglog/git-chglog
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = git
-	source = git-chglog-0.14.2.tar.gz::https://github.com/git-chglog/git-chglog/archive/v0.14.2.tar.gz
-	sha512sums = f50c51339a109bb3c184e23840c634a00654ec210add808572e0533a012950444093804a0faa9241d5a0a696ffd06ecd3b197c4013168bf7611f55a4ea112f6e
+	source = git-chglog-0.15.0.tar.gz::https://github.com/git-chglog/git-chglog/archive/v0.15.0.tar.gz
+	sha512sums = 3406cf0a89a45791c5095322b25dde17afa5d6f71ac41ed03be51d581b3cbbe3ecfc9dcb47258611d3c76f2455cf4cb0bb2a0ee315c5e9361cfd43e9627fd6b4
 
 pkgname = git-chglog
-
