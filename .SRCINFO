@@ -1,0 +1,18 @@
+pkgbase = ruby27-power_assert
+	pkgdesc = Power Assert for Ruby
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ruby/power_assert
+	arch = any
+	license = custom:BSDL
+	checkdepends = ruby27-test-unit
+	makedepends = ruby27-rdoc
+	makedepends = ruby27-rake
+	depends = ruby2.7
+	options = !emptydirs
+	source = https://github.com/ruby/power_assert/archive/refs/tags/v2.0.0.tar.gz
+	source = disable-irb-1.3.1-and-newer-specific-test.patch
+	sha512sums = e6faf3cf50d2c70ae421bae20b885ac858fe11b10b1a8562d9ca88afbd397fa4812631f2aa02638c273eed518091dfaa020b6c002c0559383ddca625404bcc1c
+	sha512sums = 7e959ac2b2170e7465cdb7b1a76740c8e84013b2f5c479574e9412aa252891d8713813c416679b79b19ae32693a4e1f032f4349018dcb69c2bacbe9727d65be5
+
+pkgname = ruby27-power_assert

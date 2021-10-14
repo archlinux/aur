@@ -1,0 +1,42 @@
+diff --git a/test/block_test.rb b/test/block_test.rb
+index 3f5d24f..55bbb41 100644
+--- a/test/block_test.rb
++++ b/test/block_test.rb
+@@ -530,37 +530,6 @@ END
+        'colorize_message'               => [true,  :p ],
+        'inspector(pp)'                  => [false, :pp]
+   )
+-  def test_colorized_pp((colorize_message, inspector))
+-    begin
+-      PowerAssert.configure do |c|
+-        c.lazy_inspection = true
+-        c.colorize_message = colorize_message
+-        c.inspector = inspector
+-      end
+-      assert_equal <<END.chomp, strip_color(assertion_message {
+-        0 == 0
+-          |
+-          true
+-END
+-        0 == 0
+-      })
+-      if colorize_message and IRB::Color.colorable?
+-        assert_not_equal <<END.chomp, assertion_message {
+-          0 == 0
+-            |
+-            true
+-END
+-          0 == 0
+-        }
+-      end
+-    ensure
+-      PowerAssert.configure do |c|
+-        c.inspector = :p
+-        c.colorize_message = false
+-        c.lazy_inspection = false
+-      end
+-    end
+-  end
+ 
+   def test_assertion_message_with_string
+     a, = 0, a # suppress "assigned but unused variable" warning
