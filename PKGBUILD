@@ -7,10 +7,14 @@ pkgname="${_pkgname}-git"
 epoch=0
 _pkgver=latest
 pkgver=21+r24821_20200828_7f72ddf
-pkgrel=3
+pkgrel=4
 pkgdesc="An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'."
 url="http://widelands.org/"
-arch=('i686' 'x86_64')
+arch=(
+  'aarch64'
+  'i686'
+  'x86_64'
+)
 license=('GPL2')
 depends=(
   'boost-libs'
