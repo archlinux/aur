@@ -1,0 +1,17 @@
+pkgbase = neovim-cmp-path-git
+	pkgdesc = nvim-cmp source for path
+	pkgver = r11.8d88c92
+	pkgrel = 1
+	url = https://github.com/hrsh7th/cmp-path
+	install = cmp-path.install
+	arch = any
+	groups = neovim-plugin
+	license = custom:unknown
+	makedepends = git
+	depends = neovim-cmp
+	provides = neovim-cmp-path
+	conflicts = neovim-cmp-path
+	source = neovim-cmp-path-git::git+https://github.com/hrsh7th/cmp-path
+	md5sums = SKIP
+
+pkgname = neovim-cmp-path-git
