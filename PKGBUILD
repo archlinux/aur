@@ -4,14 +4,14 @@
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=python-pex
-pkgver=2.1.51
+pkgver=2.1.52
 pkgrel=1
 arch=('any')
-pkgdesc='a tool for generating executable Python environments'
+pkgdesc='Generates executable Python environments'
 url='https://github.com/pantsbuild/pex'
 license=('Apache')
 depends=('python')
-makedepends=('git' 'python-setuptools' 'python-dephell')
+makedepends=('git' 'python-setuptools' 'python-dephell' 'python-sphinx')
 # checkdepends=('python-pytest-runner' 'python-pkginfo')
 changelog=CHANGES.rst
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
@@ -26,6 +26,8 @@ prepare() {
 build() {
 	cd "$pkgname"
 	python setup.py build
+	cd docs
+	make man
 }
 
 ## 25 minutes to run a test suite lol no thanks
@@ -38,4 +40,5 @@ build() {
 package() {
 	cd "$pkgname"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 docs/_build/man/pex.1 -t "$pkgdir/usr/share/man/man1/"
 }
