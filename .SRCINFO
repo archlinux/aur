@@ -1,6 +1,6 @@
 pkgbase = jbwm
 	pkgdesc = minimalist X11 window manager, based on evilwm
-	pkgver = 1.57
+	pkgver = 1.62
 	pkgrel = 1
 	url = https://github.com/jefbed/jbwm
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = jbwm
 	license = MIT
 	depends = libxext
 	depends = libxft
-	source = https://github.com/jefbed/jbwm/archive/1.57.tar.gz
-	md5sums = 87f8b3ac8a08c90a4630ed0d9b07d8e4
+	source = https://github.com/jefbed/jbwm/archive/1.62.tar.gz
+	md5sums = 3aba03d1bed20c89763c1e7c97845769
 
 pkgname = jbwm
 
