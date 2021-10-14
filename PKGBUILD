@@ -2,15 +2,14 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.35.1.r193.g219e1a871
+pkgver=1.2.0.r0.g9f90efe33
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('x86_64' 'aarch64')
 url="http://crystal-lang.org"
 license=('Apache')
-depends=('gc' 'libatomic_ops' 'pcre' 'libevent')
-makedepends=('git' 'libxml2' 'llvm10')
-makedepends_x86_64=('crystal')
+depends=('gc' 'pcre' 'libevent')
+makedepends=('git' 'libxml2' 'llvm10' 'crystal')
 checkdepends=('libyaml' 'libxml2' 'gmp' 'git' 'inetutils')
 optdepends=('shards: To make the crystal deps command work'
             'libyaml: For YAML support'
@@ -19,7 +18,6 @@ optdepends=('shards: To make the crystal deps command work'
 conflicts=('crystal')
 provides=('crystal')
 source=("git+https://github.com/crystal-lang/crystal.git")
-source_aarch64=("https://dev.alpinelinux.org/archive/crystal/crystal-0.35.0-aarch64-alpine-linux-musl.tar.gz")
 
 pkgver() {
   cd "$srcdir/${pkgname/-git/}"
@@ -33,11 +31,6 @@ prepare() {
   cd "$srcdir/${pkgname/-git/}"
 
   if [ "$CARCH" = "aarch64" ]; then
-    git clean -f
-    patch -p1 < "$srcdir/9401.patch"
-    patch -p1 < "$srcdir/9430.patch"
-    patch -p1 < "$srcdir/9422.patch"
-    export PATH="$srcdir/crystal-0.35.0-aarch64-alpine-linux-musl/bin:$PATH"
     export EXPORT_CC="CC=cc" # prevent lld usage, broken on  aarch64
   fi
 }
@@ -47,7 +40,6 @@ build() {
 
   make release=1 FLAGS="--no-debug" \
        CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
-       CRYSTAL_CONFIG_PATH="/usr/lib/crystal" \
        CRYSTAL_CACHE_DIR="/tmp/crystal"
   make docs CRYSTAL_CACHE_DIR="/tmp/crystal"
 }
@@ -64,27 +56,9 @@ check() {
 package() {
   cd "$srcdir/${pkgname/-git/}"
 
-  # /usr/bin/crystal                compiled executable
-  # /usr/lib/crystal/               compiler src & core libs
-  # /usr/share/doc/crystal/api/     api docs
-  # /usr/share/doc/crystal/samples/ samples
-
-  install -Dm755 ".build/crystal" "$pkgdir/usr/bin/crystal"
-
-  install -dm755 "$pkgdir/usr/lib"
-  cp -av src "$pkgdir/usr/lib/crystal"
-
-  install -dm755 "$pkgdir/usr/share/doc/crystal"
-  cp -av docs     "$pkgdir/usr/share/doc/crystal/api"
-  cp -av samples "$pkgdir/usr/share/doc/crystal/"
-
-  install -Dm644 etc/completion.bash "$pkgdir/usr/share/bash-completion/completions/crystal"
-  install -Dm644 etc/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_crystal"
-
-  install -Dm644 man/crystal.1 "$pkgdir/usr/share/man/man1/crystal.1"
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make install install_docs PREFIX="$pkgdir/usr"
+  install -Dm644 src/llvm/ext/llvm_ext.o "$pkgdir/usr/share/crystal/src/llvm/ext/llvm_ext.o"
+  cp -av lib/ "$pkgdir/usr/share/crystal/lib/"
 }
 
 sha256sums=('SKIP')
-sha256sums_aarch64=('de903f2b53eec558cb77520cd9d52bde357bffae37fc6120308b4ddd8a7d65f9')
