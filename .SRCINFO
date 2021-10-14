@@ -11,6 +11,7 @@ pkgbase = bevm-git
 	depends = sdl2
 	depends = gtk3
 	depends = gcc-libs
+	provides = bevm
 	source = bevm-git-1.4::git+https://github.com/JustAGod1/bevm
 	md5sums = SKIP
 

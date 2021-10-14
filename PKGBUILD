@@ -8,6 +8,7 @@ url="https://github.com/JustAGod1/bevm"
 license=('GPL')
 depends=('glibc' 'sdl2' 'gtk3' 'gcc-libs')
 makedepends=('git' 'rust')
+provides=('bevm')
 source=("$pkgname-$pkgver"::"git+https://github.com/JustAGod1/bevm")
 md5sums=('SKIP') #autofill using updpkgsums
 
