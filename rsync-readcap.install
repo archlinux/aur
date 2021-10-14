@@ -1,0 +1,7 @@
+post_install() {
+    echo ">>please reinstall rsync package"
+}
+
+post_upgrade() {
+    post_install
+}

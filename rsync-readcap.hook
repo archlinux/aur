@@ -1,0 +1,12 @@
+# Create copy of rsync with read-everywhere capability under rsyncr user. For pull backups.
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = usr/bin/rsync
+
+[Action]
+Description = Create copy of rsync with read-everywhere capability
+When = PostTransaction
+Exec = /bin/sh -c 'cp --force /usr/bin/rsync /var/lib/rsync-readcap/; chown -R rsyncr. /var/lib/rsync-readcap/; setcap cap_dac_read_search+ep /var/lib/rsync-readcap/rsync'

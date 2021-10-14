@@ -1,0 +1,1 @@
+u rsyncr - "Rsync read-cap user" /var/lib/rsync-readcap /bin/bash
