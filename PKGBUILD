@@ -1,19 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=commit
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Commit message editor."
 arch=('x86_64')
 url="https://apps.gnome.org/app/re.sonny.Commit"
 license=('GPL3')
-depends=('gjs' 'gtk3')
+depends=('libadwaita' 'gjs' 'gtk4')
 makedepends=('meson')
-#checkdepends=('appstream-glib')
+checkdepends=('appstream-glib')
 optdepends=('git: git support'
             'mercurial: mercurial support'
-            'gspell: spell checking support')
+#            'gspell: spell checking support' # Spell checking currently disabled
+            )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sonnyp/Commit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('79f3d88eb8cdc0c0a024e3953f03db0faab5d0368e4a917c91321571f6ff32ed')
+sha256sums=('6821a2dd3b422f27c42b0119b9fc96b588cfd6a87111f9d5b8e4ac3556dbf136')
 
 build() {
   arch-meson Commit-$pkgver build
