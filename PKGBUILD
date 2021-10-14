@@ -3,7 +3,7 @@
 _pkgname=prisma-studio
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.432.0
+pkgver=0.437.0
 pkgrel=1
 pkgdesc="The easiest way to explore and manipulate your data in all of your Prisma projects."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source_x86_64=(
 )
 noextract=("${_appimage}")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('85e78c2d0dcc51117dae26462b13989ff9a1f799c57d12e32baec4ddea7dbd62')
+sha256sums_x86_64=('108ff7b309c803768d203e16fe750789013d2e622125b4ad429027d8eb56a1d9')
 
 prepare() {
     chmod +x "${_appimage}"
