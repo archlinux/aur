@@ -2,8 +2,8 @@
 
 _pkgname=nimf
 pkgname=nimf-libhangul-git
-pkgver=1.3.0.r5.f02290d
-pkgrel=2
+pkgver=1.3.0.r9.799dfcd
+pkgrel=1
 pkgdesc="Nimf is a lightweight, fast and extensible input method framework. (libhangul only)"
 arch=('any')
 url="https://github.com/hamonikr/nimf"
@@ -11,7 +11,7 @@ license=('LGPL3')
 depends=(
 	'glib2'
 	'libxklavier'
-	'libhangul-git'
+	'libhangul'
 	'libxkbcommon>=0.5.0'
 	'libappindicator-gtk3'
 )
