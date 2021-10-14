@@ -1,0 +1,6 @@
+post_install() {
+	echo ':: This plugin may require manual configuration.'
+	echo ':: Please consult upstream documentation.'
+	echo ':: This package installed a copy of the README for your convenience under'
+	echo ':: /usr/share/doc/vim-vsnip-git/README.md'
+}
