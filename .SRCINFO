@@ -1,0 +1,16 @@
+pkgbase = ruby27-augeas
+	pkgdesc = Provides Ruby bindings for augeas
+	pkgver = 0.5.0
+	pkgrel = 3
+	url = https://augeas.net
+	arch = x86_64
+	license = LGPL
+	makedepends = ruby27-rdoc
+	depends = ruby2.7
+	depends = augeas
+	noextract = ruby-augeas-0.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ruby-augeas-0.5.0.gem
+	sha512sums = 523742368543c617baa2b393e4682451d7fe20aecbcf9ab50fed0f5575119b3fbc06f79f0894cca728d2fee7d441cdd9f075dbcf81628835ba870930c3d2ac8d
+
+pkgname = ruby27-augeas
