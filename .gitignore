@@ -5,3 +5,4 @@
 pkg/
 src/
 .AURINFO
+msquic-release-git/

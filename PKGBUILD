@@ -1,12 +1,12 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 pkgname=msquic-release-git
 pkgver=1.1.8.r0.g794436f54
-pkgrel=1
+pkgrel=2
 pkgdesc="MsQuic is a Microsoft implementation of the IETF QUIC protocol."
-arch=('any')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/microsoft/msquic"
 license=('MIT')
-depends=('lttng-ust')
+depends=('glibc')
 makedepends=('cmake' 'dotnet-sdk' 'git')
 provides=('msquic' 'libmsquic.so')
 conflicts=('msquic' 'libmsquic.so')
