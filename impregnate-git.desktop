@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Impregnate
+Comment=Official installer for Discord client mod 'Cumcord'
+Exec=impregnate
+Icon=impregnate
+Categories=PluginManager;

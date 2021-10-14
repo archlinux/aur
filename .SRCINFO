@@ -1,0 +1,19 @@
+pkgbase = impregnate-git
+	pkgdesc = Official installer for Discord client mod 'Cumcord'
+	pkgver = r16.62e0798
+	pkgrel = 1
+	url = https://github.com/Cumcord/Impregnate
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = sdl2
+	provides = impregnate
+	conflicts = impregnate
+	source = impregnate-git::git+https://github.com/Cumcord/Impregnate.git
+	source = impregnate-git.desktop
+	sha256sums = SKIP
+	sha256sums = 5b1311ea091fbcab72e81ee454b97a55253c296a8f0979c2da5246454b5287bf
+
+pkgname = impregnate-git
