@@ -2,14 +2,13 @@
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookamdcontroller
 pkgver=0.3.4beta
-pkgrel=4
+pkgrel=5
 pkgdesc="Application for the performance management of AMD processors"
 arch=('any')
 url="https://github.com/slimbook/slimbookamdcontroller"
 license=('GPL')
-depends=('dbus-python' 'gtk3' 'libnotify' 'python-gobject' 'python-pillow'
-         'python-pyamdgpuinfo' 'ryzenadj' 'systemd-libs')
-optdepends=('libappindicator-gtk3: tray icon')
+depends=('dbus-python' 'gtk3' 'libappindicator-gtk3' 'libnotify' 'python-gobject'
+         'python-pillow' 'python-pyamdgpuinfo' 'ryzenadj' 'systemd-libs')
 install="$pkgname.install"
 source=("https://github.com/slimbook/slimbookamdcontroller/releases/download/Test/${pkgname}_${pkgver}_all.deb")
 sha256sums=('221448371218785671e50f5acce9a8b0d4497d34bb88ba93dd6d8417a0544790')
