@@ -30,6 +30,7 @@ source=("git+${url}.git"
         'ahriman.tmpfiles')
 backup=('etc/ahriman.ini'
         'etc/ahriman.ini.d/logging.ini')
+conflicts=("ahriman")
 
 pkgver() {
   cd "$_pkgname"

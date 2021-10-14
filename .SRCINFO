@@ -27,6 +27,7 @@ pkgbase = ahriman-git
 	optdepends = python-jinja: html report generation
 	optdepends = rsync: sync by using rsync
 	optdepends = subversion: -svn packages support
+	conflicts = ahriman
 	backup = etc/ahriman.ini
 	backup = etc/ahriman.ini.d/logging.ini
 	source = git+https://github.com/arcan1s/ahriman.git
