@@ -1,0 +1,14 @@
+pkgbase = python-pafx
+	pkgdesc = Pixel Art effects for PIL
+	pkgver = r11.b7ab941
+	pkgrel = 1
+	url = https://github.com/agateau/pafx
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-pillow
+	source = git+https://github.com/agateau/pafx.git#commit=b7ab941531b2b29940c8508c210dd306dcdf9256
+	sha512sums = SKIP
+
+pkgname = python-pafx
