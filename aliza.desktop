@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Aliza
+GenericName=Aliza
+Comment=Medical Imaging
+Exec="/opt/aliza/aliza.sh" %F
+Icon=aliza
+Terminal=false
+Categories=Graphics;
+StartupNotify=false
+MimeType=application/dicom;

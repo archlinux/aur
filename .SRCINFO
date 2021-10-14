@@ -1,7 +1,7 @@
 pkgbase = aliza
 	pkgdesc = Medical Imaging. Open 2D, 3D and 4D images in DICOM, MetaIO, Nifti, Nrrd and other formats, incl. THIS PACKAGE REQUIRES PAID LICENSE!
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.aliza-dicom-viewer.com
 	arch = x86_64
 	license = custom
@@ -10,6 +10,8 @@ pkgbase = aliza
 	depends = libglvnd
 	options = !emptydirs
 	source = https://www.aliza-medical-imaging.de/aliza-2.2.0.tar.gz
+	source = aliza.desktop
 	sha512sums = 99e3455764d93557b019440424ebf9476f22d5ffb00cb3ff50aaba466c46300fc520192ea3272fb0a374552e4b083a2f384b7bf761a61982f348a158f8240ddd
+	sha512sums = b17f64ef917e3a85fa846f57285de427a9b61baaba204172a617b6b7ef0c6a7e2c242628b80356df8245603720e95331f7de048b097acc4d09e08ece304a36a3
 
 pkgname = aliza
