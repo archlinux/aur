@@ -1,0 +1,21 @@
+pkgbase = msquic-release-git
+	pkgdesc = MsQuic is a Microsoft implementation of the IETF QUIC protocol.
+	pkgver = 1.1.8.r0.g794436f54
+	pkgrel = 1
+	url = https://github.com/microsoft/msquic
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = dotnet-sdk
+	makedepends = git
+	depends = lttng-ust
+	provides = msquic
+	provides = libmsquic.so
+	conflicts = msquic
+	conflicts = libmsquic.so
+	source = msquic-release-git::git+https://github.com/microsoft/msquic.git#branch=release/1.1
+	source = cmake_args.patch
+	sha512sums = SKIP
+	sha512sums = f0eb23f885b9577f93101f9e68c6863dc896086068d3ed29e7b6924a1286ab8aa478feec42cf0fa3cfee2e5e2fb42e5be3f15451ff0954c4db2059de6ebe7c27
+
+pkgname = msquic-release-git
