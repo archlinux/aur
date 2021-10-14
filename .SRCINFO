@@ -1,0 +1,17 @@
+pkgbase = ruby27-minitest
+	pkgdesc = Complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking
+	pkgver = 5.14.3
+	pkgrel = 3
+	url = https://github.com/seattlerb/minitest
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = ruby27-rake
+	makedepends = ruby27-rdoc
+	makedepends = ruby27-hoe
+	depends = ruby2.7
+	options = !emptydirs
+	source = git+https://github.com/seattlerb/minitest#commit=b8fb1014ad1932eddefb5107c0f6504ba45e0cbc
+	sha512sums = SKIP
+
+pkgname = ruby27-minitest
