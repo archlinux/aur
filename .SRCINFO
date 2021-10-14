@@ -1,0 +1,16 @@
+pkgbase = ruby27-sync
+	pkgdesc = A Ruby module packaged as a gem that provides a two-phase lock with a counter. Was in Ruby core until 2.7
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/ruby/sync
+	arch = any
+	license = BSD
+	checkdepends = ruby27-test-unit
+	makedepends = ruby27-rdoc
+	makedepends = ruby27-rake
+	depends = ruby2.7
+	options = !emptydirs
+	source = https://github.com/ruby/sync/archive/v0.5.0/ruby-sync-0.5.0.tar.gz
+	sha512sums = 5f887d9169e0be834c7fa17ae42b71078f25ce3d83e695490cd136adc1799d6b92e4aed41ce3f3d57b3ad193a1ac4de940b37212c2864bbf6331ba3582128166
+
+pkgname = ruby27-sync
