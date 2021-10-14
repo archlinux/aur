@@ -8,7 +8,10 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/vapoursynth/subtext'
 license=('MIT')
-depends=('vapoursynth')
+depends=('vapoursynth'
+  'libass'
+  'ffmpeg'
+)
 makedepends=('git'
   'meson'
 )
