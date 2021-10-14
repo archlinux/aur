@@ -3,7 +3,7 @@
 pkgname=neovim-cmp-omni-git
 pkgver=r1.3fec8a5
 pkgrel=1
-pkgdesc="nvim-cmp source for omni"
+pkgdesc="nvim-cmp source for omnifunc"
 arch=('any')
 url="https://github.com/hrsh7th/cmp-omni"
 license=('custom:unknown')
