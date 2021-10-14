@@ -1,0 +1,14 @@
+pkgbase = ruby27-rdoc
+	pkgdesc = Command-line documentation generator for Ruby projects
+	pkgver = 6.3.1
+	pkgrel = 1
+	url = https://ruby.github.io/rdoc/
+	arch = any
+	license = MIT
+	depends = ruby2.7
+	noextract = rdoc-6.3.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rdoc-6.3.1.gem
+	sha512sums = 78bb8a7dce31bb384ce2c761bf30b0169d11513c334df176112565a5989d97ce2247be138e11ef2c23df6c01af58cfcd80c7755ca2d19173be9e4b7d31e0d900
+
+pkgname = ruby27-rdoc
