@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk-git
-pkgver=r79821.63cc8438341
+pkgver=r79880.627a81f95bf
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -24,6 +24,7 @@ prepare() {
   cd "${srcdir}/vtk"
   # We have a patched libharu
   sed -i "s|2.4.0|2.3.0|" ThirdParty/libharu/CMakeLists.txt
+  sed -i "s|set(HPDF_DLL 1)|set(HPDF_DLL 0)|g" ThirdParty/libharu/CMakeLists.txt
 }
 
 build() {
