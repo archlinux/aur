@@ -1,0 +1,15 @@
+pkgbase = ruby27-rspec-expectations
+	pkgdesc = Provides a readable API to express expected outcomes of a code example
+	pkgver = 3.10.1
+	pkgrel = 1
+	url = https://github.com/rspec/rspec-expectations
+	arch = any
+	license = MIT
+	depends = ruby27-rspec-support
+	depends = ruby27-diff-lcs
+	noextract = rspec-expectations-3.10.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rspec-expectations-3.10.1.gem
+	sha512sums = c2e6fa12f5531ba91f03e22de3af4eed5cea74434634503302e38732b042423c669d2ddae3750d94f5f36c85433ae5743fcc0d0c4a0c50326050efde087b8a0a
+
+pkgname = ruby27-rspec-expectations
