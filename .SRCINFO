@@ -1,7 +1,7 @@
 pkgbase = python-realesrgan
 	pkgdesc = Real-ESRGAN aims at developing Practical Algorithms for General Image Restoration.
 	pkgver = 0.2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xinntao/Real-ESRGAN
 	arch = x86_64
 	license = BSD 3-Clause
@@ -23,8 +23,8 @@ pkgbase = python-realesrgan
 	sha256sums = f872d837d3c90ed2e05227bed711af5671a6fd1c9f7d7e91c911a61f155e99da
 
 pkgname = python-realesrgan
-	optdepends = python-realesrgan-model: pre-trained model and inference script
+	optdepends = realesrgan-model: pre-trained model and inference script
 
-pkgname = python-realesrgan-model
+pkgname = realesrgan-model
 	pkgdesc = Pre-trained model and interference script for python-realesrgan.
 	depends = python-realesrgan
