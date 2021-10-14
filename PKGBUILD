@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 pkgname=ibmcloud-cli
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line client for IBM Cloud"
 arch=('x86_64' 'i686')
 url="https://console.bluemix.net/docs/cli/reference/ibmcloud/all_versions.html"
@@ -32,6 +32,10 @@ package() {
   ln -sf /opt/ibmcloud/bin/ibmcloud "${pkgdir}/usr/bin/bluemix"
   ln -sf /opt/ibmcloud/bin/ibmcloud "${pkgdir}/usr/bin/bx"
   ln -sf /opt/ibmcloud/bin/ibmcloud "${pkgdir}/usr/bin/ibmcloud"
+
+  install -d "${pkgdir}/usr/share/bash-completion/completions"
+
+  ln -sf /opt/ibmcloud/autocomplete/bash_autocomplete "${pkgdir}/usr/share/bash-completion/completions/ibmcloud"
 
   chown -R root:root "${pkgdir}/opt/ibmcloud/"
   chmod -R 755 "${pkgdir}/opt/ibmcloud/"
