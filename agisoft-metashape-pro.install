@@ -11,22 +11,6 @@ post_install() {
     echo
 }
 
-pre_upgrade() {
-    echo "Deactivating the product..."
-    agisoft-metashape-pro --deactivate 2>/dev/null
-}
-
-post_upgrade() {
-    echo 
-    echo "This upgrade change the rehostable directory for activation"
-    echo
-    echo "Therefore, we deactivated the licence to avoid it becomes invalid"
-    echo
-    echo "Please use sudo agisoft-metashape-pro --activate to reactivate your licence"
-    echo
-    echo "This behaviour will be removed in the next release"
-}
-
 pre_remove() {
     echo "Deactivating the product..."
     agisoft-metashape-pro --deactivate 2>/dev/null
