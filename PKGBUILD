@@ -27,10 +27,6 @@ package() {
 	cd -
 
 
-	# Non-deterministic race in npm gives 777 permissions to random directories.
-	# See https://github.com/npm/cli/issues/1103 for details.
-	find "$pkgdir/usr" -type d -exec chmod 755 {} +
-
 	# Remove references to $pkgdir
 	find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
 
