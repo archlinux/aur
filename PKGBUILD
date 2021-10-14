@@ -46,8 +46,13 @@ if [ -z ${use_tracers+x} ]; then
 fi
 
 ## Choose between GCC and CLANG config (default is GCC)
-if [ -z ${_compiler+x} ]; then
+#if [ -z ${_compiler+x} ]; then
   _compiler=gcc
+#fi
+
+# Compress modules with ZSTD (to save disk space)
+if [ -z ${_compress_modules+x} ]; then
+  _compress_modules=n
 fi
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
@@ -70,7 +75,7 @@ _makenconfig=
 pkgbase=linux-manjaro-xanmod-lts
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.10
-pkgver=${_major}.67
+pkgver=${_major}.73
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -78,7 +83,7 @@ pkgdesc='Linux Xanmod LTS'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="f8a49a409b4a8157f1e7c0703f0fe09d44c56cd6" # 5.10.67-1
+__commit="95873465553ab383258acd65fa48ee318a1d8bcc" # 5.10.73-1
 
 license=(GPL2)
 makedepends=(
@@ -98,9 +103,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "https://gitlab.manjaro.org/packages/core/linux510/-/archive/${__commit}/linux510-${__commit}.tar.gz")
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43' # linux-5.4.tar.xz
             'SKIP'                                                             #            .sign
-            '329f2d5949799ea470a95899472a1915a0c9e0b626710b136933438d17b6806e' # xanmod
+            '4bbde79c810299f27f9ef31f405a394183bf2e48088b59d2245baa0466f39ac5' # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee' # choose-gcc-optimization.sh
-            '2976851e918505efb2d3fe4853d05c63497c53baa21be8d61043eec5bc84a234') # manjaro
+            '6cf4ea618afa3f87d5bddc4e21bd13cb4c6966d3b72242d579f2dc2bee275747') # manjaro
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -184,6 +189,11 @@ prepare() {
   if [ "$use_numa" = "n" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
+  fi
+
+  # Compress modules by default (following Arch's kernel)
+  if [ "$_compress_modules" = "y" ]; then
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   fi
 
   
