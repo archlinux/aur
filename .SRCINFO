@@ -1,0 +1,18 @@
+pkgbase = ruby27-puppet-resource_api
+	pkgdesc = This library provides a simple way to write new native resources for puppet.
+	pkgver = 1.8.13
+	pkgrel = 1
+	url = https://github.com/puppetlabs/puppet-resource_api
+	arch = any
+	license = Apache
+	checkdepends = ruby27-rake
+	checkdepends = ruby27-rspec
+	makedepends = ruby27-rdoc
+	depends = ruby2.7
+	depends = ruby27-hocon
+	noextract = puppet-resource_api-1.8.13.gem
+	options = !emptydirs
+	source = https://github.com/puppetlabs/puppet-resource_api/archive/1.8.13/puppet-resource_api-1.8.13.tar.gz
+	sha512sums = cc675e6142cf474fb0eea31259f9c738c5ed428a7546c0630411a4aa0fc45597424cb7056882460eb00103057ad286e60a5a774037b11c7a3f6d8a2f1e148ea1
+
+pkgname = ruby27-puppet-resource_api
