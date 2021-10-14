@@ -3,7 +3,7 @@ pkgname=moonwm
 pkgver=7.2.0
 _wmcname=wmcommons
 _wmcver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
 url="https://github.com/jzbor/moonwm"
@@ -13,20 +13,21 @@ groups=()
 depends=(libx11 libxcb libxinerama slop xmenu  arandr dmenu ffmpeg geoclue i3lock imagemagick libnotify light network-manager-applet notification-daemon otf-nerd-fonts-fira-code pamixer picom polkit-gnome sound-theme-freedesktop xfce4-power-manager xorg-setxkbmap xorg-xrandr xorg-xrdb xwallpaper)
 makedepends=()
 checkdepends=()
-optdepends=(\
-    'lxappearance: GUI for configuring GTK and icon theme',
-    'matcha-gtk-theme: a fitting GTK theme (Matcha-dark-aliz)',
-    'numix-circle-icon-theme: an icon theme that fits nicely',
-    'redshift: night mode',
-    'scrot: integrated screenshot support',
+optdepends=( 'lxappearance: GUI for configuring GTK and icon theme'
+    'matcha-gtk-theme: a fitting GTK theme (Matcha-dark-aliz)'
+    'numix-circle-icon-theme: an icon theme that fits nicely'
+    'redshift: night mode'
+    'scrot: integrated screenshot support'
 	'xfce4-notifyd: a good default notification-daemon')
+# ' - this is somehow required for vim syntax hl to work
 provides=(moonwm)
 conflicts=(moonwm)
 replaces=()
 backup=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/jzbor/moonwm/tar.gz/refs/tags/$pkgver"
-        "$_wmcname-$_wmcver.tar.gz::https://codeload.github.com/jzbor/wmcommons/tar.gz/refs/tags/$_wmcver") noextract=()
+        "$_wmcname-$_wmcver.tar.gz::https://codeload.github.com/jzbor/wmcommons/tar.gz/refs/tags/$_wmcver")
+noextract=()
 sha256sums=('7b486810c5b7568c0f7d46ae2c461f009545f9a4e42333390e9c76fc82502a13'
     'a55fffefac7f960c2f93c1d7070c98a358920d758a177aefee993f755bb763cd')
 validpgpkeys=()
