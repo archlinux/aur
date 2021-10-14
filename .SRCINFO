@@ -1,0 +1,15 @@
+pkgbase = ruby27-semantic_puppet
+	pkgdesc = Tools used by Puppet to parse, validate, and compare Semantic Versions and Version Ranges and to query and resolve module dependencies.
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = https://github.com/puppetlabs/semantic_puppet#semanticpuppet
+	arch = any
+	license = Apache
+	makedepends = ruby27-rdoc
+	depends = ruby2.7
+	noextract = semantic_puppet-1.0.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/gems/semantic_puppet-1.0.3.gem
+	sha512sums = bdca6793a064d37d15010551c579f61837b1095025d84469ed8893d4bbed4372cde005ed452460a8d771c8e4bf842283628f2c613295bab0af3834cdc163f7ba
+
+pkgname = ruby27-semantic_puppet
