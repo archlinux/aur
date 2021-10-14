@@ -1,6 +1,6 @@
 pkgbase = python-httpx-gssapi
 	pkgdesc = GSSAPI (HTTP Negotiate) authentication for Python httpx
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/pythongssapi/httpx-gssapi
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-httpx-gssapi
 	makedepends = python-setuptools
 	depends = python-gssapi
 	depends = python-httpx
-	source = git+https://github.com/pythongssapi/httpx-gssapi#commit=c7f7d3b74dd2607f6c6850dd5f9592451cfdcc0e
+	source = git+https://github.com/pythongssapi/httpx-gssapi#commit=3f22aecc1ffc5b8550eed271e9cb6950b1ad5ee1
 	sha256sums = SKIP
 
 pkgname = python-httpx-gssapi
