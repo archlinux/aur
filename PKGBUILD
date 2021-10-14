@@ -1,6 +1,6 @@
 # Maintainer: Nova Wittam <novawittam@gmail.com>
 pkgname=nbtvol
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 epoch=
 pkgdesc="A simple set of shell scripts and C programs to control bluetooth device volume through PulseAudio"
@@ -30,5 +30,5 @@ build() {
 
 package() {
 	mkdir -p ~/.local/bin
-	cp ./volwatcher ./btVolume ./btVolumeWrapper ~/.local/bin/
+	cp ./volwatcher ./btVolume ./nbtvol ~/.local/bin/
 }
