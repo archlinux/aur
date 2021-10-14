@@ -1,14 +1,13 @@
 pkgbase = nvim-cmp
 	pkgdesc = A completion plugin for neovim coded in Lua.
 	pkgver = 49acc84
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hrsh7th/nvim-cmp
 	arch = any
 	groups = neovim-plugins
 	license = MIT
 	makedepends = git
 	depends = neovim
-	depends = neovim-plug
 	depends = lua
 	depends = cmp-nvim-lsp
 	depends = cmp-buffer

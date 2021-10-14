@@ -1,13 +1,14 @@
 pkgname=nvim-cmp
 pkgver=49acc84
-pkgrel=1
+pkgrel=2
 pkgdesc='A completion plugin for neovim coded in Lua.'
 arch=('any')
 url=https://github.com/hrsh7th/nvim-cmp
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim' 'neovim-plug' 'lua' 'cmp-nvim-lsp' 'cmp-buffer')
+depends=('neovim' 'lua' 'cmp-nvim-lsp' 'cmp-buffer')
 makedepends=('git')
+optdependss=('neovim-plug: for plugin manager')
 source=("git+${url}")
 sha256sums=('SKIP')
 package(){
