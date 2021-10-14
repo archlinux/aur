@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-preview-bin
 	pkgver = 6.0.0.sdk100+rc.2.21505.57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -49,6 +49,7 @@ pkgname = dotnet-runtime-preview-bin
 	depends = openssl
 	depends = zlib
 	optdepends = lttng-ust: CoreCLR tracing
+	optdepends = msquic>=1.4: HTTP/3 support with System.Net.Quic
 	provides = dotnet-runtime=6.0.0
 	provides = dotnet-runtime-6.0
 	conflicts = dotnet-runtime=6.0.0
