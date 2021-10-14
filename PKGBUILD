@@ -1,6 +1,6 @@
 # Maintainer: Nova Wittam <novawittam@gmail.com>
 pkgname=nbtvol
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 epoch=
 pkgdesc="A simple set of shell scripts and C programs to control bluetooth device volume through PulseAudio"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-sha512sums=("b8183adc4d0ab5eb5c231dc503e18758e5a03c0582b30c1e14c8f06257532c417686669c89ca5e79608971a7fe0137c7dedfccfd3b43f3885e07d744415ee93b")
+sha512sums=("cecf07dc75305745c350f6b18ab01f5e67c049ccfe58402cb3d66390ecb7fcb22d91475ac31e5029b12296f9496399fcb21a23607b223392ee46ea7941aaee2b")
 validpgpkeys=()
 
 build() {
