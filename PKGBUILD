@@ -1,13 +1,14 @@
 pkgname=completion-nvim
 pkgver=139fb6c
-pkgrel=1
+pkgrel=2
 pkgdesc='A async completion framework aims to provide completion to neovim.'
 arch=('any')
 url=https://github.com/nvim-lua/completion-nvim
 license=('Apache')
 groups=('neovim-plugins')
-depends=('neovim' 'neovim-plug' 'lua')
+depends=('neovim' 'lua')
 makedepends=('git')
+optdepends=('neovim-plug: for plugin manager')
 source=("git+${url}")
 sha256sums=('SKIP')
 package(){

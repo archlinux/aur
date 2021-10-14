@@ -1,15 +1,15 @@
 pkgbase = completion-nvim
 	pkgdesc = A async completion framework aims to provide completion to neovim.
 	pkgver = 139fb6c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nvim-lua/completion-nvim
 	arch = any
 	groups = neovim-plugins
 	license = Apache
 	makedepends = git
 	depends = neovim
-	depends = neovim-plug
 	depends = lua
+	optdepends = neovim-plug: for plugin manager
 	source = git+https://github.com/nvim-lua/completion-nvim
 	sha256sums = SKIP
 
