@@ -1,6 +1,6 @@
 pkgname=nvim-cmp
-pkgver=49acc84
-pkgrel=2
+pkgver=f5393d5
+pkgrel=1
 pkgdesc='A completion plugin for neovim coded in Lua.'
 arch=('any')
 url=https://github.com/hrsh7th/nvim-cmp
