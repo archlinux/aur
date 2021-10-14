@@ -22,12 +22,12 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/gnome-pomodoro-$pkgver"
+  cd "$srcdir/$pkgname"
   arch-meson build
   meson compile -C build
 }
 
 package() {
-  cd "$srcdir/gnome-pomodoro-$pkgver"
+  cd "$srcdir/$pkgname"
   meson install -C build --destdir "$pkgdir"
 }
