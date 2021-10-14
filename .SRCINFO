@@ -9,6 +9,7 @@ pkgbase = python-scikit-fem
 	checkdepends = python-matplotlib
 	checkdepends = python-pacopy
 	checkdepends = python-pyamg
+	checkdepends = python-h5py
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python-scipy

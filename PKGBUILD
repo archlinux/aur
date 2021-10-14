@@ -3,13 +3,13 @@ _base=scikit-fem
 pkgname=python-${_base}
 pkgdesc="Simple finite element assemblers"
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/kinnala/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-scipy python-meshio)
 makedepends=(python-setuptools python-pip)
-checkdepends=(python-pytest python-matplotlib python-pacopy python-pyamg)
+checkdepends=(python-pytest python-matplotlib python-pacopy python-pyamg python-h5py)
 source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('6ec180b5324ccaed26af2714a013cded02c2c65c505acd422a9728e4a02f570f514e6813f1d25e660d9887c13b61ad818cc9c46bcd532077f3ff388e47dd53ef')
 
