@@ -1,7 +1,7 @@
 pkgbase = torrentflix
 	pkgdesc = Nodejs cli app to search torrent sites and stream using peerflix
 	pkgver = 9.0.7
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.npmjs.com/package/torrentflix
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = torrentflix
 	depends = nodejs
 	depends = peerflix
 	options = !emptydirs
-	source = https://github.com/ItzBlitz98/torrentflix/archive/v9.0.7.tar.gz
+	source = torrentflix-9.0.7.tar.gz::https://github.com/ItzBlitz98/torrentflix/archive/v9.0.7.tar.gz
 	sha256sums = e83a5ce8c7aecb28b30c8263fc0ab388ce5c64a9cda06461e4819fff211d00ef
 
 pkgname = torrentflix
