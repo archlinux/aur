@@ -15,9 +15,12 @@ pkgbase = msquic-prerelease
 	provides = libmsquic.so
 	conflicts = msquic
 	conflicts = libmsquic.so
+	noextract = openssl-df92821.tar.gz
 	source = msquic-1.8.0.tar.gz::https://github.com/microsoft/msquic/archive/refs/tags/v1.8.0.tar.gz
+	source = openssl-df92821.tar.gz::https://github.com/quictls/openssl/archive/df92821e310497f8664b30cff24da897996d3cce.tar.gz
 	source = cmake_args.patch
 	sha512sums = 8d34612874c0454760c90d082932d4cde0c83c1b2829b5025e9550b2a47db7000ab34822dc1ae84d835d60f4d382381b14d2d0c70b8109447b756e20250776e2
-	sha512sums = f0eb23f885b9577f93101f9e68c6863dc896086068d3ed29e7b6924a1286ab8aa478feec42cf0fa3cfee2e5e2fb42e5be3f15451ff0954c4db2059de6ebe7c27
+	sha512sums = 4eb7596bb7b35c17b1d713dfe62e8a4f470d6c9d41eae14955f534aa4527ec3f14532155b8111d7b390ae82888207247c5b205ce5648aceeb59d959e88a7d870
+	sha512sums = d0854c3cbab909dc55d879a86870ad2c118fdb19521606de6c1294348e3c7bd9056d5a2f7ede36881a2632925d58665dfcefe4cfa1e2a35124efa1cf350dff74
 
 pkgname = msquic-prerelease
