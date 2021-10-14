@@ -1,0 +1,17 @@
+pkgbase = neovim-luasnip-git
+	pkgdesc = Snippet engine for Neovim
+	pkgver = r829.4526e71
+	pkgrel = 1
+	url = https://github.com/L3MON4D3/LuaSnip
+	install = luasnip.install
+	arch = any
+	groups = neovim-plugin
+	license = Apache
+	makedepends = git
+	depends = neovim>=0.5
+	provides = neovim-luasnip
+	conflicts = neovim-luasnip
+	source = neovim-luasnip-git::git+https://github.com/L3MON4D3/LuaSnip
+	md5sums = SKIP
+
+pkgname = neovim-luasnip-git
