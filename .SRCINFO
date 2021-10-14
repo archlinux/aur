@@ -1,0 +1,16 @@
+pkgbase = ruby27-httpclient
+	pkgdesc = gives something like the functionality of libwww-perl (LWP) in Ruby
+	pkgver = 2.8.3
+	pkgrel = 2
+	url = https://github.com/nahi/httpclient
+	arch = any
+	license = RUBY
+	makedepends = ruby27-rdoc
+	depends = ruby2.7
+	options = !emptydirs
+	source = https://github.com/nahi/httpclient/archive/v2.8.3/ruby27-httpclient-v2.8.3.tar.gz
+	source = disable-broken-TLS-test.patch
+	sha512sums = b65b5adb97af069d7ff6b6f4cccd6a42c6d9c88b797e9495768fe1f36a6bd93defe50190edc201de5e39c4e306ba0bd17a8ff2f8eba4d636dacafa06c172967d
+	sha512sums = fcdb88f83ea1663f1f21113f7943223ffc1c69dc0f1305d74e8a96b3752f905c1bfa3727f2eb9dae9742db16d222ba5971a072b065a6c7ce535615b51fdb8712
+
+pkgname = ruby27-httpclient
