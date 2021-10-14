@@ -1,11 +1,11 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=librespot
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=2
-pkgdesc="Open source client library for Spotify"
+pkgdesc='Open source client library for Spotify'
 arch=(x86_64 aarch64)
-url="https://github.com/librespot-org/librespot"
+url='https://github.com/librespot-org/librespot'
 license=(MIT)
 depends=(
 	libpulse
@@ -20,7 +20,7 @@ makedepends=(
 	cargo
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cd6e7ae63583584598dead53b5e8e4077ab37df6e3b59c2a7416459b9a649fc3')
+sha256sums=('3ae67ac39606d049a26ee9e4b59f932222aac0098845ce3e1ef33c1b98080454')
 
 build() {
 	return 0
@@ -29,7 +29,7 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	cargo install --no-track --locked --all-features --root "${pkgdir}/usr/" --path .
-	install -Dm644 contrib/librespot.service ${pkgdir}/usr/lib/systemd/system/librespot.service
-	# install -Dm644 contrib/librespot.user.service ${pkgdir}/usr/lib/systemd/user/librespot.service
+	install -Dm644 contrib/librespot.service "${pkgdir}/usr/lib/systemd/system/librespot.service"
+	install -Dm644 contrib/librespot.user.service "${pkgdir}/usr/lib/systemd/user/librespot.service"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
