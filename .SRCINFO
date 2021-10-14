@@ -1,8 +1,9 @@
 pkgbase = paths-bookmarks-git
 	pkgdesc = Save often used directories like bookmarks
-	pkgver = r57.8f102bf
+	pkgver = r58.f3eb08c
 	pkgrel = 1
 	url = https://github.com/sproott/pat.hs
+	install = paths-bookmarks-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = git

@@ -1,0 +1,21 @@
+post_install() {
+  echo "
+You need to source the pat.hs script before you can use it. Do one of the following
+or similar depending on your shell (and then restart your shell):
+
+  echo 'source /usr/share/paths/paths.sh' >> ~/.bashrc
+  echo 'source /usr/share/paths/paths.fish' >> ~/.config/fish/config.fish
+"
+}
+
+## arg 1:  the old package version
+post_remove() {
+  echo "
+Don't forget to clean up any lines added to your shell's startup script!
+
+For example, from your .bashrc (or config.fish etc.), delete the corresponding line:
+
+source /usr/share/paths/paths.sh
+source /usr/share/paths/paths.fish
+"
+}

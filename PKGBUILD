@@ -1,5 +1,5 @@
 pkgname="paths-bookmarks-git"
-pkgver=r57.8f102bf
+pkgver=r58.f3eb08c
 pkgrel=1
 pkgdesc="Save often used directories like bookmarks"
 arch=("x86_64")
@@ -7,6 +7,7 @@ url="https://github.com/sproott/pat.hs"
 license=("MIT")
 makedepends=("git" "stack")
 optdepends=()
+install="${pkgname}.install"
 provides=("paths-bookmarks")
 source=("${pkgname}::git+https://github.com/sproott/pat.hs.git")
 sha256sums=('SKIP')
@@ -32,5 +33,5 @@ package() {
 
   # Install shell completions
   install -Dm644 "doc/completions/bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/paths"
-  install -Dm644 "doc/completions/fishcompletion.fish" "${pkgdir}/usr/share/fish/completions/paths"
+  install -Dm644 "doc/completions/fishcompletion.fish" "${pkgdir}/usr/share/fish/completions/paths.fish"
 }
