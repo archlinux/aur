@@ -1,0 +1,6 @@
+/PKGBUILD-namcap.log
+/pkg/
+/src/
+/tdom-*.log
+/tdom-*.tar.zst
+/tdom-*src.tgz
