@@ -1,0 +1,4 @@
+/test.py
+*.pkg.tar.xz
+elitech-datareader-git
+prepare.sh
