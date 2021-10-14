@@ -1,6 +1,6 @@
 pkgbase = chad-launcher-bin
 	pkgdesc = GNU/LINUX GAMING UNLEASHED!
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://gitlab.com/Gnurur/chad_launcher
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = chad-launcher-bin
 	depends = libappindicator-gtk3
 	depends = libvips
 	replaces = chad_launcher-bin
-	source = chad-launcher::https://notabug.org/attachments/deab4230-5a45-4a15-931f-339f6bb97048
-	source = chad-launcher.desktop::https://notabug.org/johncena141/chad_launcher/raw/v0.4.2/chad_launcher.desktop
-	source = chad-launcher.svg::https://notabug.org/johncena141/chad_launcher/raw/v0.4.2/icon.svg
-	md5sums = 1d0e9c0be355906c78bb3278193b798f
+	source = chad-launcher::https://notabug.org/attachments/ad7f3cc9-c219-47f1-a482-cbc1a1359fbb
+	source = chad-launcher.desktop::https://notabug.org/johncena141/chad-launcher/raw/v0.4.4/chad-launcher.desktop
+	source = chad-launcher.svg::https://notabug.org/johncena141/chad-launcher/raw/v0.4.4/icon.svg
+	md5sums = 98ad2ed5789fb69fae95626838c242d7
 	md5sums = 3982c2923488557d1bc82d8fc3391b4c
 	md5sums = eb5ae7c983884713edf7954c270085a2
 

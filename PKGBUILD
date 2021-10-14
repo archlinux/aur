@@ -1,6 +1,6 @@
 pkgname='chad-launcher-bin'
 _pkgname="${pkgname%-bin}"
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='GNU/LINUX GAMING UNLEASHED!'
 arch=('x86_64')
@@ -10,18 +10,18 @@ replaces=('chad_launcher-bin')
 depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips)
 makedepends=()
 source=(
-    "$_pkgname::https://notabug.org/attachments/deab4230-5a45-4a15-931f-339f6bb97048"
-    "${_pkgname}.desktop::https://notabug.org/johncena141/chad_launcher/raw/v0.4.2/chad_launcher.desktop"
-    "${_pkgname}.svg::https://notabug.org/johncena141/chad_launcher/raw/v0.4.2/icon.svg"
+    "$_pkgname::https://notabug.org/attachments/ad7f3cc9-c219-47f1-a482-cbc1a1359fbb"
+    "${_pkgname}.desktop::https://notabug.org/johncena141/${_pkgname}/raw/v${pkgver}/${_pkgname}.desktop"
+    "${_pkgname}.svg::https://notabug.org/johncena141/${_pkgname}/raw/v${pkgver}/icon.svg"
 )
-md5sums=('1d0e9c0be355906c78bb3278193b798f'
+md5sums=('98ad2ed5789fb69fae95626838c242d7'
          '3982c2923488557d1bc82d8fc3391b4c'
          'eb5ae7c983884713edf7954c270085a2')
 
 package() {
     cd $srcdir
-    install -Dm0755 -t "$pkgdir/usr/bin/" "chad-launcher"
-    install -Dm644 chad-launcher.desktop "$pkgdir/usr/share/applications/chad-launcher.desktop"
-    install -Dm644 chad-launcher.svg "$pkgdir/usr/share/pixmaps/chad-launcher.svg"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "${_pkgname}"
+    install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 ${_pkgname}.svg "$pkgdir/usr/share/pixmaps/${_pkgname}.svg"
 }
 
