@@ -1,6 +1,6 @@
 pkgbase = spotblock-rs
-	pkgdesc = Spotify Advertisment muter for linux
-	pkgver = 0.9.0
+	pkgdesc = Spotify Advertisment muter for *nix
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/StarPlatin4m/spotblock-rs
 	arch = i686
