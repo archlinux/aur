@@ -1,7 +1,7 @@
 pkgbase = kisslinux-init
 	pkgdesc = Init framework of KISS Linux
 	pkgver = 1.0.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/kisslinux/init
 	arch = x86_64
 	arch = i686
@@ -23,6 +23,6 @@ pkgbase = kisslinux-init
 	sha256sums = adda171decc0f691b6f59ffc8a3855efd51335c83f79292a6183ac5096adb43f
 	sha256sums = 2e4db40e5690f16d8a351072d3f6ff11b6fb07380ac8feea41fa4166f42d5f43
 	sha256sums = 90cb006b936b90f48c0097ac1921299baab0d404a14d35757c0605dd52aa4f66
-	sha256sums = 161a417ca25e4d1342ab5191c6fb32ee6a5b1c3f8f714cbd240047792ed103ee
+	sha256sums = dfa8f56b8665eba7bf96d2644f8e919a3cd587b1bc784a7d8ef47f41916f783c
 
 pkgname = kisslinux-init
