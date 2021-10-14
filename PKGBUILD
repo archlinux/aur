@@ -1,7 +1,7 @@
 # Maintainer: Jason Gonzalez <jason at jasong-designs dot com>
 
 pkgname=jgd-springawakening
-pkgver=08_12_19
+pkgver=10_14_21
 pkgrel=1
 pkgdesc="Pastel yellow and green theme for GTK2 and GTK3 (3.10 and 3.20+)"
 arch=('any')
@@ -19,4 +19,4 @@ package() {
 }
 
 
-md5sums=('c0c8ad193f3743d01fe6792ee3825d92')
+sha256sums=('c11a7468c0c3164c52c4ab0f37a2dc387e2a9a9cd2509046097aa899ccb84e8f')
