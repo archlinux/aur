@@ -5,5 +5,5 @@ find \
 	/usr/lib/modules-load.d \
 	-name '*.conf' \
 | while read -r file; do
-	grep -v "^#" "$file" | xargs modprobe
+	grep -v "^#" "$file" | xargs modprobe -a
 done

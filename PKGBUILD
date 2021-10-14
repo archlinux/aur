@@ -4,7 +4,7 @@
 
 pkgname=kisslinux-init
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Init framework of KISS Linux"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/kisslinux/init"
