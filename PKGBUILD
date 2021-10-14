@@ -1,13 +1,13 @@
 pkgname=1337
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=0
 pkgdesc="c0nv3r7 n0rm41 73x7 in70 1337"
 arch=("any")
 url="https://code.obermui.de/6543/1337"
 license=('GPL3+')
 depends=('bash')
-source=("https://code.obermui.de/6543/1337/raw/branch/master/1337")
-sha1sums=('ac86d02ffcea1bc65922cf2b3150226d5216f0ac')
+source=("https://code.obermui.de/6543/1337/raw/tag/v1.1/1337")
+sha1sums=('d10d82a467cfd64c48db4b93980a472695bdabb7')
 
 package() {
     mkdir -p $pkgdir/usr/bin
