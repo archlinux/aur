@@ -18,17 +18,21 @@ build() {
     cd "$srcdir/${pkgname%-git}"
     export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
     yarn install
-    yarn electron-builder -l pacman
+    yarn electron-builder -l deb
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    bsdtar -xf release/MS-Office-Electron-*.pacman -C "$pkgdir"
+  bsdtar -xf "${srcdir}/${pkgname%-git}/release/MS-Office-Electron*.deb" \
+    -C "${srcdir}" --include data.tar.bz2
+ tar xfJ ${srcdir}/data.tar.bz2 -C ${pkgdir}
 
-    install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+   install -d ${pkgdir}/usr/bin/
+ln -s '/opt/MS Office - Electron/ms-office-electron' ' ${pkgdir}/usr/bin/ms-office-electron'
 
-    ln -sf '/opt/MS Office - Electron/ms-office-electron' '$pkgdir/usr/bin/ms-office-electron'
+  install -Dm 644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/MS Office - Electron.png" \
+    "${pkgdir}/usr/share/pixmaps/MS Office - Electron.png"
+  rm -rfv "${pkgdir}/usr/share/icons/hicolor"
 
     rm "$pkgdir"/.[^.]*
 }
-
