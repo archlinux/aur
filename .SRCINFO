@@ -1,14 +1,14 @@
 pkgbase = eslint_d
 	pkgdesc = Makes eslint the fastest linter on the planet.
-	pkgver = 10.1.3
+	pkgver = 11.0.0
 	pkgrel = 1
 	url = https://github.com/mantoni/eslint_d.js
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = eslint_d-10.1.3.tgz
-	source = https://registry.npmjs.org/eslint_d/-/eslint_d-10.1.3.tgz
-	sha256sums = 8a6b755fe5f5d896d8eb519334c27e069445e4aca2f05baca3343f2778ef3b6a
+	noextract = eslint_d-11.0.0.tgz
+	source = https://registry.npmjs.org/eslint_d/-/eslint_d-11.0.0.tgz
+	sha256sums = c309f10d009bddec71bfac0c5a848f4d944f9861123549d25389e49d87c4320d
 
 pkgname = eslint_d
