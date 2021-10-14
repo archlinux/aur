@@ -1,13 +1,14 @@
 # Maintainer: fspy <felipe@fspy.net>
+# Maintainer: Andy Bao <contact at andybao dot me>
 
 pkgname=mktorrent-git
-pkgver=r69.886c3d1
-pkgrel=2
+pkgver=r121.de7d011
+pkgrel=1
 pkgdesc="A simple command line utility to create BitTorrent metainfo files"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/Rudde/mktorrent"
 license=('GPL')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/Rudde/mktorrent.git")
@@ -25,5 +26,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	make PREFIX="/usr" DESTDIR="$pkgdir/" install
 }
