@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=verco-git
-pkgver=6.5.5.r0.g2705ca6
+pkgver=6.6.0.r0.gfda7213
 pkgrel=1
 pkgdesc="A simple Git/Mercurial/PlasticSCM tui client based on keyboard shortcuts (git)"
 arch=('x86_64')
