@@ -1,0 +1,17 @@
+pkgbase = neovim-cmp-latex-symbols-git
+	pkgdesc = nvim-cmp source for LaTeX symbols
+	pkgver = r21.29dc9e5
+	pkgrel = 1
+	url = https://github.com/kdheepak/cmp-latex-symbols
+	install = cmp-latex-symbols.install
+	arch = any
+	groups = neovim-plugin
+	license = MIT
+	makedepends = git
+	depends = neovim-cmp
+	provides = neovim-cmp-latex-symbols
+	conflicts = neovim-cmp-latex-symbols
+	source = neovim-cmp-latex-symbols-git::git+https://github.com/kdheepak/cmp-latex-symbols
+	md5sums = SKIP
+
+pkgname = neovim-cmp-latex-symbols-git
