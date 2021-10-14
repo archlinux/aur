@@ -1,0 +1,15 @@
+pkgbase = ruby27-multi_json
+	pkgdesc = A common interface to multiple JSON libraries.
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/intridea/multi_json
+	arch = any
+	license = MIT
+	makedepends = ruby27-rdoc
+	depends = ruby2.7
+	noextract = multi_json-1.15.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/multi_json-1.15.0.gem
+	sha512sums = 5021b66bd607bde8679899ff48fbf596cdf6a4f6c026472b20f25bd1933d105bef597c143ab529804d7b5a4a244476be24555f13a7fbe9fef30bbe1fb92978eb
+
+pkgname = ruby27-multi_json
