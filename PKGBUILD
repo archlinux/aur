@@ -1,5 +1,5 @@
 pkgname="figma-linux"
-pkgver="0.9.0"
+pkgver="0.9.1"
 pkgrel="0"
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 arch=("x86_64" "aarch64")
@@ -51,5 +51,5 @@ sha256sums=('21def936e0a912743e4f6b5832b7c59ff5437538f93b372ff1f2949d35579dc4'
             '1db635df7d84f73694303eba423acd75da892e084cf35c4e260bd5c6b56fcc1e'
             '5dc381da3bb02e5bc9d60cdbae3e3c5c8f249a83b4ef606721bb87559d0a122b'
             'e77bf9e7c699a53e69ba4a025e31ccf2b0a3b4c86acc842f7d0ecf1f8fe71ac2')
-sha256sums_x86_64=('b32b694147071001ad138df98812f0dc1939c2b32e2f3722e91b75bba5cec0f1')
-sha256sums_aarch64=('1ba3d584ce59c6b64b0e00c1d22e578ffc9b21f6731c896667bc943e4b433bf7')
+sha256sums_x86_64=('143d70a22e7945efc80f5eca853f88a099e78a5bc6328abadee7f37050c2cb03')
+sha256sums_aarch64=('f33116be87223389475286a9f7978ed2690f8ff4fa874b3dcc2988778b9dfda1')
