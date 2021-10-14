@@ -8,8 +8,8 @@ provides=("DanielSWolf")
 makedepends=('cmake' 'boost-libs')
 url='https://github.com/DanielSWolf/rhubarb-lip-sync'
 arch=('x86_64')
-source=("v${pkgver}.zip::https://github.com/DanielSWolf/rhubarb-lip-sync/archive/refs/tags/v1.11.0.zip")
-md5sums=('477b02584277e4e0cb3d5abe4c45fc83')
+source=("v${pkgver}.zip::https://github.com/DanielSWolf/rhubarb-lip-sync/archive/refs/heads/feature/%23103-minor-syntax-fixes.zip")
+md5sums=('8c8b16060c1088554c67afabe9453329')
 license=('MIT')
 options=(!strip)
 
