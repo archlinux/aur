@@ -1,17 +1,16 @@
 pkgbase = nodejs-less
 	pkgdesc = A standalone compiler for the LESS CSS language.
-	pkgver = 4.1.1
-	pkgrel = 2
+	pkgver = 4.1.2
+	pkgrel = 1
 	url = http://lesscss.org/
 	arch = any
 	license = Apache
 	makedepends = npm
 	depends = nodejs
-	provides = lessc=4.1.1
+	provides = lessc=4.1.2
 	conflicts = lessc
 	replaces = lessc
-	source = https://registry.npmjs.org/less/-/less-4.1.1.tgz
-	sha256sums = 1b3b222f91dc2540712e096668b20aaec352c8107009e63d1c2726bc8a6ceff0
+	source = https://registry.npmjs.org/less/-/less-4.1.2.tgz
+	sha256sums = f2067b038bec06176cbe955f26bdb29cfc9bed7aa511ac9243db50b31cbf59ce
 
 pkgname = nodejs-less
-
