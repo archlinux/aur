@@ -1,7 +1,7 @@
 pkgbase = python-gfpgan
 	pkgdesc = GFPGAN aims at developing Practical Algorithms for Real-world Face Restoration.
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TencentARC/GFPGAN
 	arch = x86_64
 	license = Apache 2.0
@@ -24,8 +24,9 @@ pkgbase = python-gfpgan
 	sha256sums = 29e25ee90c170f4231163f4c83df6b59c968b73f3ce00cb884015ae005db083c
 
 pkgname = python-gfpgan
-	optdepends = python-gfpgan-model: pre-trained model and inference script
+	optdepends = gfpgan-model: pre-trained model and inference script
+	optdepends = python-realesrgan: enhance the background (non-face) regions
 
-pkgname = python-gfpgan-model
+pkgname = gfpgan-model
 	pkgdesc = Pre-trained model and interference script for python-gfpgan.
 	depends = python-gfpgan
