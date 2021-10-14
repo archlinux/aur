@@ -1,0 +1,19 @@
+pkgbase = vite-git
+	pkgdesc = Trace explorer. Visualize execution traces in Pajé or OTF format, for debugging and profiling.
+	pkgver = r1166.442cf13
+	pkgrel = 1
+	url = https://solverstack.gitlabpages.inria.fr/vite/
+	arch = x86_64
+	arch = x86_64_v3
+	license = custom
+	makedepends = glm
+	makedepends = qt5-charts
+	makedepends = qt5-svg
+	makedepends = qt5-tools
+	makedepends = qt5-base
+	makedepends = glew
+	makedepends = git
+	source = git+https://gitlab.inria.fr/solverstack/vite.git
+	sha1sums = SKIP
+
+pkgname = vite-git
