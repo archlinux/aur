@@ -27,7 +27,7 @@ package() {
     bsdtar -xf ${srcdir}/data.tar.bz2 -C ${pkgdir}
 	ls
 	install -d ${pkgdir}/usr/bin/
-	ln -s '/opt/MS Office - Electron/ms-office-electron' ' ${pkgdir}/usr/bin/ms-office-electron'
+	# ln -s '/opt/MS Office - Electron/ms-office-electron' ' ${pkgdir}/usr/bin/ms-office-electron'
 	install -Dm 644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/MS Office - Electron.png"  "${pkgdir}/usr/share/pixmaps/MS Office - Electron.png"
 	rm -rfv "${pkgdir}/usr/share/icons/hicolor"
     rm "$pkgdir"/.[^.]*
