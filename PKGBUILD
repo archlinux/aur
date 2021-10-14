@@ -12,7 +12,11 @@ depends=('neovim>=0.5.0')
 optdepends=(
 	'neovim-cmp-nvim-lsp: source for Neovim builtin LSP client'
 	'neovim-cmp-buffer: buffer autocompletion'
-	'neovim-cmp-path: path autocompletion')
+	'neovim-cmp-path: path autocompletion'
+	'neovim-cmp-emoji: emoji autocompletion'
+	'neovim-cmp-latex-symbols: LaTeX symbol autocompletion'
+	'neovim-cmp-omni: omnifunc autocompletion'
+	'neovim-cmp-vsnip: vsnip autocompletion')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
