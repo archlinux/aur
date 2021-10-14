@@ -3,7 +3,7 @@
 
 _gemname=xdg
 pkgname=ruby-xdg
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Provides a Ruby implementation of the XDG Base Directory Specification"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-rdoc')
 options=(!emptydirs)
 source=("http://rubygems.org/downloads/xdg-$pkgver.gem")
 noextract=("xdg-$pkgver.gem")
-sha256sums=('9700a62e1b0da9355362482c097f2a8c3864f0aba60e62b9d49cbfcea6706061')
+sha256sums=('ad4f3581131892daed73e14f61f0715b4ed7fa0f67e2ccdd68deb2027629f12e')
 
 package() {
     local _gemdir
