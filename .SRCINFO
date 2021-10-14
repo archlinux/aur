@@ -1,0 +1,15 @@
+pkgbase = ruby27-test-unit
+	pkgdesc = An xUnit family unit testing framework for Ruby
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://github.com/test-unit/test-unit
+	arch = any
+	license = GPL
+	makedepends = ruby27-rdoc
+	depends = ruby2.7
+	depends = ruby27-power_assert
+	options = !emptydirs
+	source = https://github.com/test-unit/test-unit/archive/3.4.1/ruby27-test-unit-3.4.1.tar.gz
+	sha512sums = 505262c6100fc43496c6b831cc22a98dd73351787c73903e6d2e776ad2987b5d5010c0d7e3bc568486825578aa8a2c69cf9d99cb3da655bf79424ab2f92baa94
+
+pkgname = ruby27-test-unit
