@@ -3,8 +3,8 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=lando-bin
-pkgver=3.3.2
-pkgrel=3
+pkgver=3.4.2
+pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
 url="https://docs.lando.dev/"
