@@ -1,0 +1,17 @@
+pkgbase = neovim-cmp-omni-git
+	pkgdesc = nvim-cmp source for omni
+	pkgver = r1.3fec8a5
+	pkgrel = 1
+	url = https://github.com/hrsh7th/cmp-omni
+	install = cmp-omni.install
+	arch = any
+	groups = neovim-plugin
+	license = custom:unknown
+	makedepends = git
+	depends = neovim-cmp
+	provides = neovim-cmp-omni
+	conflicts = neovim-cmp-omni
+	source = neovim-cmp-omni-git::git+https://github.com/hrsh7th/cmp-omni
+	md5sums = SKIP
+
+pkgname = neovim-cmp-omni-git
