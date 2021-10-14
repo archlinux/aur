@@ -2,7 +2,7 @@
 #Contributor Matthijs Tadema <M dot J dot Tadema at pm dot me>
 #Contributor Jens Staal <staal1978@gmail.com>
 
-pkgname=ugene
+pkgname=ugene-bin
 pkgver=40.1
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite (binary release)"

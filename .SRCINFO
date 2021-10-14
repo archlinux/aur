@@ -1,4 +1,4 @@
-pkgbase = ugene
+pkgbase = ugene-bin
 	pkgdesc = A free cross-platform genome analysis suite (binary release)
 	pkgver = 40.1
 	pkgrel = 1
@@ -46,4 +46,4 @@ pkgbase = ugene
 	sha256sums = 58aeee982faa07913c016323cdded0a4022695c4e313954fdc09c36742013896
 	sha256sums = 5a159437635965cae796c968c7297fd098e7f86dcecbe6a97e62950e782641fc
 
-pkgname = ugene
+pkgname = ugene-bin
