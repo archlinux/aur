@@ -27,27 +27,12 @@ source=('https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/Alche
 pkgver() {
 	echo "${pkgver}"
 }
-
-# build()
-# {
-  # rename packaged binary folder to conform with pkg standards
-  # mv "$pkgfolder" "$pkgname"
-# }
 package() {
-  # Create directories
   mkdir -p "${pkgdir}"/usr/share/applications
   mkdir -p "${pkgdir}"/opt
-#   mkdir -p "${pkgdir}"/usr/bin
   mv "${srcdir}/${pkgfolder}" "$pkgdir/opt/$pkgname"
-#   mv "${pkgname}/build-linux-64/newview/packaged" "$pkgdir/opt/alchemy-next"
-  # logger $(ls "${srcdir}/${pkgfolder}/")
-	# cp -r "${srcdir}/${pkgfolder}/*" "${pkgdir}/opt/${pkgname}"
-  
   install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/share/applications/alchemy-next.desktop"
-  # Edit shortcut after copying to avoid breaking the checksum. Is that okay?
   sed -i 's/Name=Alchemy/Name=Alchemy Project '"${_projectname}"'/' "${pkgdir}/usr/share/applications/alchemy-next.desktop"
-	# logger srcdir="${srcdir}"
-	# logger pkgdir="${pkgdir}"
 }
 sha1sums=('b096624adab1c99cb2ad95572ab186f7c768eb19'
           'ceda56749a643b5baa17a236dfb89f76b8350f78')
