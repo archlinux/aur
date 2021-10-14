@@ -1,7 +1,7 @@
 pkgbase = msquic-prerelease
 	pkgdesc = Microsoft implementation of the IETF QUIC protocol.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/msquic
 	arch = x86_64
 	arch = armv7h
@@ -9,7 +9,6 @@ pkgbase = msquic-prerelease
 	license = MIT
 	makedepends = cmake
 	makedepends = dotnet-sdk
-	depends = glibc
 	depends = openssl
 	provides = msquic
 	provides = libmsquic.so

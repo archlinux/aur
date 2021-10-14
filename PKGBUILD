@@ -2,12 +2,12 @@
 _pkgname=msquic
 pkgname=$_pkgname-prerelease
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft implementation of the IETF QUIC protocol."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/microsoft/msquic"
 license=('MIT')
-depends=('glibc' 'openssl')
+depends=('openssl')
 makedepends=('cmake' 'dotnet-sdk')
 provides=('msquic' 'libmsquic.so')
 conflicts=('msquic' 'libmsquic.so')
