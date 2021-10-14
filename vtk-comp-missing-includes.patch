@@ -1,0 +1,60 @@
+From e066c3f4fbbfe7470c6207db0fc3f3952db633cb Mon Sep 17 00:00:00 2001
+From: Mark Olesen <Mark.Olesen@esi-group.com>
+Date: Tue, 9 Feb 2021 15:19:10 +0100
+Subject: [PATCH] COMP: missing includes (clang)
+
+---
+ Common/Core/vtkGenericDataArrayLookupHelper.h   | 1 +
+ Common/DataModel/vtkPiecewiseFunction.cxx       | 1 +
+ Filters/HyperTree/vtkHyperTreeGridThreshold.cxx | 1 +
+ Rendering/Core/vtkColorTransferFunction.cxx     | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/Common/Core/vtkGenericDataArrayLookupHelper.h b/Common/Core/vtkGenericDataArrayLookupHelper.h
+index ab9d57248f8..202aaa27f4a 100644
+--- a/Common/Core/vtkGenericDataArrayLookupHelper.h
++++ b/Common/Core/vtkGenericDataArrayLookupHelper.h
+@@ -25,6 +25,7 @@
+ #include "vtkIdList.h"
+ #include <algorithm>
+ #include <cmath>
++#include <limits>
+ #include <unordered_map>
+ #include <vector>
+ 
+diff --git a/Common/DataModel/vtkPiecewiseFunction.cxx b/Common/DataModel/vtkPiecewiseFunction.cxx
+index 22eca0bc22e..11086f1dc42 100644
+--- a/Common/DataModel/vtkPiecewiseFunction.cxx
++++ b/Common/DataModel/vtkPiecewiseFunction.cxx
+@@ -22,6 +22,7 @@
+ #include <cassert>
+ #include <cmath>
+ #include <iterator>
++#include <limits>
+ #include <set>
+ #include <vector>
+ 
+diff --git a/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx b/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
+index a16bb27fc66..1052192c616 100644
+--- a/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
++++ b/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
+@@ -27,6 +27,7 @@
+ #include "vtkHyperTreeGridNonOrientedCursor.h"
+ 
+ #include <cmath>
++#include <limits>
+ 
+ vtkStandardNewMacro(vtkHyperTreeGridThreshold);
+ 
+diff --git a/Rendering/Core/vtkColorTransferFunction.cxx b/Rendering/Core/vtkColorTransferFunction.cxx
+index 55c046b4df7..1be02919ab9 100644
+--- a/Rendering/Core/vtkColorTransferFunction.cxx
++++ b/Rendering/Core/vtkColorTransferFunction.cxx
+@@ -21,6 +21,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <iterator>
++#include <limits>
+ #include <set>
+ #include <vector>
+ 

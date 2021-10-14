@@ -10,7 +10,7 @@ _mpi=openmpi
 pkgname=${_pkg}-opt
 #-${_mpi}
 pkgver=5.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel Visualization application using VTK (${_mpi} version): installed to /opt/"
 arch=(x86_64)
 provides=("${_pkg}")
@@ -18,54 +18,57 @@ conflicts=("${_pkg}")
 url="https://www.paraview.org"
 license=(BSD custom)
 depends=(boost-libs qt5-tools qt5-x11extras qt5-svg intel-tbb openmpi ffmpeg
-         ospray python-numpy cgns protobuf
+         adios2 liblas ospray pdal python-numpy cgns protobuf
          double-conversion expat freetype2 gdal gl2ps glew hdf5 libjpeg jsoncpp
          libjsoncpp.so libharu libxml2 lz4 xz python-mpi4py netcdf libogg
-         libpng pdal pugixml libtheora libtiff zlib)
+         libpng pugixml libtheora libtiff zlib)
 optdepends=(python-matplotlib python-pandas)
 makedepends=(cmake boost mesa gcc-fortran ninja qt5-tools qt5-xmlpatterns eigen utf8cpp)
 # pegtl https://gitlab.kitware.com/vtk/vtk/-/issues/18151
 source=(${url}/files/v${pkgver:0:3}/ParaView-v${pkgver/R/-R}.tar.xz
+        vtk-comp-missing-includes.patch
         paraview.sh)
 sha256sums=('0d486cb6fbf55e428845c9650486f87466efcb3155e40489182a7ea85dfd4c8d'
+            'c400753e386601008a2ed0269a58be76f06cc3c084f2dd48e87f6f04e8eca77f'
             '862e79bdf72f5c3ec55d3373fc34d0e5da33b1597c54c4586bdf84641d0cc291')
 
 prepare() {
     cd ParaView-v${pkgver/R/-R}
     # We have a patched libharu
     sed -i "s|2.4.0|2.3.0|" VTK/ThirdParty/libharu/CMakeLists.txt
-    # fix build against gcc:11 https://gcc.gnu.org/gcc-11/porting_to.html#header-dep-changes
-    files_to_patch=(  VTK/Common/Core/vtkGenericDataArrayLookupHelper.h
-                      VTK/Common/Core/vtkDataArrayPrivate.txx
-                      VTK/Common/DataModel/vtkPiecewiseFunction.cxx
-                      VTK/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
-                      VTK/Rendering/Core/vtkColorTransferFunction.cxx)
-    sed -i '1 i\#include <limits>' -i "${files_to_patch[@]}"
-    #fix gcc:11 headers regression
-    grep -lR "std::numeric_limits"|xargs sed -i '1 i\#include <limits>'
+    # Missing includes with GCC11
+    patch -p1 -d VTK <../vtk-comp-missing-includes.patch
+    # Fix build with HDF5 1.12.1, https://gitlab.kitware.com/vtk/vtk/-/issues/18265
+    sed -i 's/typedef int hid_t;/typedef int64_t hid_t;/' VTK/ThirdParty/xdmf3/vtkxdmf3/core/XdmfHDF5Controller.hpp
 }
 
 build() {
-    cmake -B build -S ParaView-v${pkgver/R/-R} \
+  # LICENSEDIR blocked by https://gitlab.kitware.com/vtk/vtk/-/issues/18266
+  cmake -B build -S ParaView-v${pkgver/R/-R} -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/opt/paraview \
+        -DCMAKE_SKIP_INSTALL_RPATH=OFF \
+        -DPARAVIEW_ENABLE_ADIOS2=ON \
         -DPARAVIEW_ENABLE_FFMPEG=ON \
+        -DPARAVIEW_ENABLE_FIDES=ON \
         -DPARAVIEW_ENABLE_GDAL=ON \
+        -DPARAVIEW_ENABLE_LAS=ON \
         -DPARAVIEW_ENABLE_MOTIONFX=ON \
         -DPARAVIEW_ENABLE_PDAL=ON \
         -DPARAVIEW_ENABLE_RAYTRACING=ON \
         -DPARAVIEW_ENABLE_VISITBRIDGE=ON \
         -DPARAVIEW_ENABLE_XDMF3=ON \
-        -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
         -DPARAVIEW_USE_MPI=ON \
         -DPARAVIEW_USE_PYTHON=ON \
+        -DPARAVIEW_VERSIONED_INSTALL=OFF \
         -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
         -DVTK_SMP_IMPLEMENTATION_TYPE=TBB \
         -DVTKm_ENABLE_MPI=ON \
+        -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
         -DVTK_MODULE_ENABLE_VTK_IOGDAL=YES \
         -DVTK_MODULE_ENABLE_VTK_IOPDAL=YES \
-        -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
-        -GNinja
+        -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
+    -Wno-dev
     export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
   # shellcheck disable=SC2086 # to allowing MAKEFLAGS to expand into multiple flags.
     ninja -C build ${MAKEFLAGS:--j1}
