@@ -1,0 +1,15 @@
+[Unit]
+Description=The Marionette Collective Daemon
+After=network.target
+
+[Service]
+Type=simple
+StandardOutput=syslog
+StandardError=syslog
+PIDFile=/run/puppetlabs/mcollective.pid
+ExecStart=/usr/bin/mcollectived --config=/etc/puppetlabs/mcollective/server.cfg --pidfile=/run/puppetlabs/mcollective.pid
+ExecReload=/usr/bin/kill -USR1 $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

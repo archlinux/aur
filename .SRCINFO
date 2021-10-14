@@ -1,0 +1,26 @@
+pkgbase = mcollective
+	pkgdesc = The Marionette Collective, a framework for building server orchestration or parallel job-execution systems.
+	pkgver = 2.12.5
+	pkgrel = 3
+	url = https://puppet.com/docs/mcollective/current/index.html
+	arch = any
+	license = Apache
+	depends = ruby
+	depends = puppet5
+	depends = ruby-stomp
+	optdepends = ruby-nats-pure: NATS backend
+	optdepends = ruby-net-ping: ping interface supporting various protocols
+	optdepends = ruby-sys-proctable: interface for providing process table info
+	backup = etc/puppetlabs/mcollective/server.cfg
+	backup = etc/puppetlabs/mcollective/client.cfg
+	source = https://downloads.puppetlabs.com/mcollective/mcollective-2.12.5.tar.gz
+	source = https://downloads.puppetlabs.com/mcollective/mcollective-2.12.5.tar.gz.asc
+	source = mcollective.service
+	source = ruby30.patch
+	validpgpkeys = 6F6B15509CF8E59E6E469F327F438280EF8D349F
+	sha512sums = f24c971a816f89196085574416a209ccf5584e61975a6a301aa6c697debf675a3ef49acf5ad3c772b8225d50fd149848afa79e7a5666b471299beb11e213cd57
+	sha512sums = SKIP
+	sha512sums = 132cdf7d4262ed3969ab09d2951bf79a3182e2a795a2778bd6f4d5d66b53b17f170a7b106e4499f73acdd4a0b29b48eb34fb7a1cd5cba36b70570a9775fda9b1
+	sha512sums = cd1e76378e3f6c3d759d2d9cb52825484c7f0efc11a577cf317a937dcd1597b1d7f7c5ae2049a2be5fb6f922b731a94851c7c7d10415e63f8b9928383536a614
+
+pkgname = mcollective

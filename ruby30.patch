@@ -1,0 +1,52 @@
+commit b03686459ad1eca67c8ddb64e90284e0623ae3b1
+Author: Anatol Pomozov <anatol.pomozov@gmail.com>
+Date:   Fri Mar 19 16:35:03 2021 -0700
+
+    Port to ruby 3.0
+    
+    Ruby 3.0 removed long deprecated constants
+    https://bigbinary.com/blog/ruby-2-4-has-depecated-constants-true-false-and-nil
+    
+    Use keyword arguments
+
+diff --git a/install.rb b/install.rb
+index 902d5e8..98f5704 100755
+--- a/install.rb
++++ b/install.rb
+@@ -46,9 +46,9 @@ rescue LoadError
+ end
+ 
+ if (defined?(RbConfig) ? RbConfig : Config)::CONFIG['host_os'] =~ /mswin|win32|dos|mingw|cygwin/i
+-  WINDOWS = TRUE
++  WINDOWS = true
+ else
+-  WINDOWS = FALSE
++  WINDOWS = false
+ end
+ 
+ PREREQS = %w{}
+@@ -79,8 +79,8 @@ def do_configs(configs, target, strip = 'etc/')
+   configs.each do |cf|
+     ocf = File.join(target, cf.gsub(Regexp.new(strip), ''))
+     oc = File.dirname(ocf)
+-    makedirs(oc, {:mode => 0755, :verbose => true})
+-    install(cf, ocf, {:mode => 0644, :preserve => true, :verbose => true})
++    makedirs(oc, :mode => 0755, :verbose => true)
++    install(cf, ocf, :mode => 0644, :preserve => true, :verbose => true)
+   end
+ end
+ 
+@@ -97,10 +97,10 @@ def do_libs(libs, target, strip = 'lib/')
+     olf = File.join(target, lf.sub(/^#{strip}/, ''))
+     op = File.dirname(olf)
+     if File.directory?(lf)
+-      makedirs(olf, {:mode => 0755, :verbose => true})
++      makedirs(olf, :mode => 0755, :verbose => true)
+     else
+-      makedirs(op, {:mode => 0755, :verbose => true})
+-      install(lf, olf, {:mode => 0644, :preserve => true, :verbose => true})
++      makedirs(op, :mode => 0755, :verbose => true)
++      install(lf, olf, :mode => 0644, :preserve => true, :verbose => true)
+     end
+   end
+ end
