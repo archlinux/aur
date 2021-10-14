@@ -1,0 +1,19 @@
+pkgbase = git-annex-remote-ipfs-git
+	pkgdesc = Git annex special remote to store content in ipfs
+	pkgver = 202110142127
+	pkgrel = 1
+	url = https://github.com/paperbenni/git-remote-annex-ipfs
+	arch = any
+	license = GPL-v3
+	makedepends = git
+	depends = go-ipfs
+	depends = git
+	depends = git-annex
+	depends = jq
+	provides = git-annex-remote-ipfs
+	conflicts = git-annex-remote-ipfs
+	options = zipman
+	source = git-annex-remote-ipfs-git::git+https://github.com/paperbenni/git-annex-remote-ipfs.git
+	md5sums = SKIP
+
+pkgname = git-annex-remote-ipfs-git
