@@ -2,8 +2,8 @@
 # Contributor: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=python-pynput
 _name=${pkgname#python-}
-pkgver=1.7.3
-pkgrel=5
+pkgver=1.7.4
+pkgrel=1
 pkgdesc="Python library to monitor and control user input devices"
 arch=('any')
 url="https://github.com/moses-palmer/pynput"
@@ -12,7 +12,7 @@ depends=('python-xlib' 'python-six' 'python-evdev')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
         'setup.patch')
-sha256sums=('4e50b1a0ab86847e87e58f6d1993688b9a44f9f4c88d4712315ea8eb552ef828'
+sha256sums=('16fecc4d1e53a28fb7c669c79e189c3f2cde14a08d6b457c3da07075c82f3b4c'
             'c519290a88baa3e15be4bb6cff4d665a020b9e0c8c1241749670d58a48b07e2c')
 
 prepare() {
@@ -27,7 +27,6 @@ build() {
 
 package() {
   cd "$_name-$pkgver"
-  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
   # Fix permissions
