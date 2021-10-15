@@ -3,7 +3,7 @@
 
 _pkgname=Responder
 pkgname=responder
-pkgver=3.0.2.0
+pkgver=3.0.6.0
 pkgrel=1
 pkgdesc='A LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication'
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL3')
 source=("https://github.com/lgandx/${pkgname}/archive/v${pkgver}.tar.gz"
         'responder.sh'
         'responder.patch')
-sha256sums=('cadd3259f41183c88b66e02a0576dea40c9bf33d16ef046752ee898b9814b5b5'
+sha256sums=('76336421327cd2c89eb348d5758f53d95f65431284b3abcd34798a32a7c56899'
             'ac1ac36c7e75b2bbd387f3b915211999e36d46c4aac086402dffef3a53198990'
             '64b6649338157fdb62cc004e60e814156305b59804e9f532615dfbfc9ee57c0d')
 
