@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=hm-git
-pkgver=16.23.r32.g6169f170
+pkgver=16.24.r0.gfd452ecd
 pkgrel=1
 pkgdesc='HEVC Test Model - the reference software for HEVC (git version)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 prepare() {
     patch -d HM -Np1 -i "${srcdir}/010-hm-disable-werror.patch"
-    cp -a HM HM-highbit
+    cp -a HM{,-highbit}
 }
 
 pkgver() {
@@ -27,18 +27,15 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S HM \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
-        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DHIGH_BITDEPTH:BOOL='OFF' \
-        -Wno-dev
+    local -a _common_opts=(
+        '-DCMAKE_BUILD_TYPE:STRING=Release'
+        '-DCMAKE_INSTALL_PREFIX:PATH=/usr'
+        '-Wno-dev')
+    
+    cmake -B build -S HM "$_common_opts" -DHIGH_BITDEPTH:BOOL='OFF'
     make -C build
     
-    cmake -B build-highbit -S HM-highbit \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
-        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DHIGH_BITDEPTH:BOOL='ON' \
-        -Wno-dev
+    cmake -B build-highbit -S HM-highbit "$_common_opts" -DHIGH_BITDEPTH:BOOL='ON'
     make -C build-highbit
 }
 
