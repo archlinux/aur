@@ -32,7 +32,7 @@ build() {
   cd build
   cmake "../${pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make -j $(nproc)
+  make
 }
 
 package() {

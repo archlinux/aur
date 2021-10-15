@@ -6,7 +6,7 @@ User=trunk-recorder
 Group=trunk-recorder
 Environment=LC_ALL=en_US.utf8
 WorkingDirectory=/var/lib/trunk-recorder
-ExecStart=/usr/bin/recorder --config /etc/trunk-recorder/config.json
+ExecStart=/usr/bin/trunk-recorder --config /etc/trunk-recorder/config.json
 Restart=always
 
 [Install]
