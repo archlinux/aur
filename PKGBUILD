@@ -18,7 +18,7 @@ license=(GPL2)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/roehling/postsrsd/archive/${pkgver}.tar.gz"
         "${pkgname}.install" "sysusers.d-postsrsd.conf" "tmpfiles.d-postsrsd.conf")
 md5sums=('5585ff7685ad5f0331ac6dde6304ca4b'
-         'e8462ec9348abf296166fde0dc448974'
+         '4b12fbf341433767850a571128199bad'
          'cee1be46359eb9b6a44d1fac3cbc718b'
          'f5f42125b253b5a6c680a628ee39a274')
 

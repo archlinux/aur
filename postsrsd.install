@@ -1,3 +1,4 @@
 post_install() {
+   [ -e /etc/postsrsd/postsrsd.secret ] || dd if=/dev/urandom bs=18 count=1 status=none | base64 > /etc/postsrsd/postsrsd.secret
    echo  "Don't forget to set your domainname in /etc/postsrsd/postsrsd.conf"
 }
