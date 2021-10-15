@@ -3,6 +3,3 @@
 *.tar.zst
 pkg
 src
-
-# Ignore helper script
-update.sh

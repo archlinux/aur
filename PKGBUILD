@@ -10,6 +10,8 @@ license=("GPL")
 depends=("python>=3.9" "hicolor-icon-theme")
 optdepends=("breeze-icons: icons for desktop notifications")
 backup=("etc/pacautomation.conf")
+install="INSTALL.sh"
+changelog="CHANGELOG.md"
 source=("https://gitlab.com/lagru/pacautomation/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 # Update with updpkgsums
 sha256sums=('a20eb44c88729232685298c3a03578cd119af34ec5b68f52b15d0ab81e4abe20')
