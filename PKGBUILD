@@ -26,8 +26,8 @@ package() {
     bsdtar -xf "${srcdir}/${pkgname%-git}/release/MS-Office-Electron-Setup-0.3.1-x86_64.deb" -C "${srcdir}" --include data.tar.bz2
     bsdtar -xf ${srcdir}/data.tar.bz2 -C ${pkgdir}
 	install -d ${pkgdir}/usr/bin/
-	mkdir '$pkgdir/usr/bin/'
-	ln -s '/opt/MS Office - Electron/ms-office-electron' '${pkgdir}/usr/bin/ms-office-electron'
+	# ln -s '/opt/MS Office - Electron/ms-office-electron' '${pkgdir}/usr/bin/ms-office-electron'
+	# ^^ can't make ln work someone pls help
 	install -Dm 644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/MS Office - Electron.png"  "${pkgdir}/usr/share/pixmaps/MS Office - Electron.png"
 	rm -rfv "${pkgdir}/usr/share/icons/hicolor"
 }
