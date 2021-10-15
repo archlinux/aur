@@ -1,5 +1,5 @@
 pkgbase = kate-root
-	pkgver = 21.04.3
+	pkgver = 21.08.2
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
@@ -15,15 +15,15 @@ pkgbase = kate-root
 	makedepends = ktexteditor
 	makedepends = kactivities
 	makedepends = kuserfeedback
-	source = https://download.kde.org/stable/release-service/21.04.3/src/kate-21.04.3.tar.xz
-	source = https://download.kde.org/stable/release-service/21.04.3/src/kate-21.04.3.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/21.08.2/src/kate-21.08.2.tar.xz
+	source = https://download.kde.org/stable/release-service/21.08.2/src/kate-21.08.2.tar.xz.sig
 	source = 0001-Defuse-root-block.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = b44ea77cf77d579e9ade0af98f9a27a02292bc1b7edff387a386ab7e9e84f7eb
+	sha256sums = d68898759dd2538051124681e5928ef5fb163ca61b6cd8f59ee056cc068ea6b2
 	sha256sums = SKIP
-	sha256sums = 2fbd6b482fcb4a56050f393ceb292e9bf72f796aeaba37ed4cadfb37c4fc90f1
+	sha256sums = 6d61580de90efa53eb52077353097d66fb823965c0a70176a47bf5524603aa57
 
 pkgname = kwrite-root
 	pkgdesc = Text Editor, patched to be able to run as root
