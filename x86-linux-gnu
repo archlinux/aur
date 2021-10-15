@@ -3,13 +3,21 @@ c = '/usr/bin/gcc'
 cpp = '/usr/bin/g++'
 ar = '/usr/bin/gcc-ar'
 strip = '/usr/bin/strip'
-pkgconfig = './pkgconf32'
+pkgconfig = '/usr/bin/pkgconf'
+llvm-config = '/usr/bin/llvm-config32'
 
 [built-in options]
 c_args = ['-m32']
 c_link_args = ['-m32']
 cpp_args = ['-m32']
 cpp_link_args = ['-m32']
+
+prefix = '/usr'
+libdir = 'lib32'
+bindir = 'bin'
+
+[properties]
+pkg_config_libdir = ['.', '/usr/lib32/pkgconfig']
 
 [host_machine]
 system = 'linux'
