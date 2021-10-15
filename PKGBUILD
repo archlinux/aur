@@ -26,7 +26,7 @@ build() {
 
 package_pop-launcher() {
   pkgdesc="Modular IPC-based desktop launcher service"
-  optdepends=('pop-launcher-system76-power')
+  optdepends=('pop-shell-plugin-system76-power')
 
   cd "launcher-$pkgver"
   sed -i "s|$pkgbase-bin \$(BIN)|$pkgbase-bin $pkgdir/usr/bin/$pkgbase|g" Makefile
