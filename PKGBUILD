@@ -2,7 +2,7 @@
 # Contributor: Radoslaw Mejer <radmen@radmen.info>
 
 pkgname=contentful-cli
-pkgver=1.9.21
+pkgver=1.9.22
 pkgrel=1
 pkgdesc="Official Contentful command line interface"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('dfa0c50e12fc26debc816246c1115a6fd87e3497fc02da2b73b050e8c4dce3d1')
+sha256sums=('821c6718fe26011d21d9d3152a28f41e666bcae174d280f97e2a1b2fab2cbfcc')
 
 PURGE_TARGETS=(*.1 info package.json)
 
