@@ -1,8 +1,9 @@
-From 30206cc898c524bc3288844e22a63114b3a7a86d Mon Sep 17 00:00:00 2001
+From 4f66a9549a393e4d74b93eb85301a04ea94bc750 Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Wed, 24 Jul 2019 15:55:17 +0800
-Subject: [PATCH] Add duktape as javascript engine.
+Subject: [PATCH 01/16] Add duktape as javascript engine.
 
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
  configure.ac                                  |   28 +-
  src/polkitbackend/Makefile.am                 |   14 +-
@@ -11,7 +12,7 @@ Subject: [PATCH] Add duktape as javascript engine.
  create mode 100644 src/polkitbackend/polkitbackendduktapeauthority.c
 
 diff --git a/configure.ac b/configure.ac
-index b625743..54a8dc4 100644
+index e434ca2..5a03593 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -80,11 +80,22 @@ PKG_CHECK_MODULES(GLIB, [gmodule-2.0 gio-unix-2.0 >= 2.30.0])
@@ -42,7 +43,7 @@ index b625743..54a8dc4 100644
  
  EXPAT_LIB=""
  AC_ARG_WITH(expat, [  --with-expat=<dir>      Use expat from here],
-@@ -581,6 +592,13 @@ echo "
+@@ -585,6 +596,13 @@ echo "
          PAM support:                ${have_pam}
          systemdsystemunitdir:       ${systemdsystemunitdir}
          polkitd user:               ${POLKITD_USER}"
@@ -1508,5 +1509,3535 @@ index 0000000..ae98453
 +  return ret;
 +}
 -- 
-2.31.1
+GitLab
+
+
+From d74aad8152a7c51999fffa9abe28e4306a052399 Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 13:15:17 +0800
+Subject: [PATCH 02/16] check netgroup.h header file
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ src/polkitbackend/polkitbackendduktapeauthority.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index ae98453..543d6fd 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -26,7 +26,11 @@
+ #include <errno.h>
+ #include <pwd.h>
+ #include <grp.h>
++#ifdef HAVE_NETGROUP_H
++#include <netgroup.h>
++#else
+ #include <netdb.h>
++#endif
+ #include <string.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-- 
+GitLab
+
+
+From 69c761506cbe458807e4ae2742c9e05bc60dad3d Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 10:59:03 +0800
+Subject: [PATCH 03/16] check return value
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ src/polkitbackend/polkitbackendduktapeauthority.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index 543d6fd..a54ed5b 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -249,7 +249,11 @@ reload_scripts (PolkitBackendJsAuthority *authority)
+   duk_context *cx = authority->priv->cx;
+ 
+   duk_set_top (cx, 0);
+-  duk_get_global_string (cx, "polkit");
++  if (!duk_get_global_string (cx, "polkit")) {
++      polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                    "Error deleting old rules, not loading new ones");
++      return;
++  }
+   duk_push_string (cx, "_deleteRules");
+ 
+   duk_call_prop (cx, 0, 0);
+-- 
+GitLab
+
+
+From f1536c4899934fd3c8243fda2d084a472fe57d2e Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 11:22:39 +0800
+Subject: [PATCH 04/16] check return value
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ src/polkitbackend/polkitbackendduktapeauthority.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index a54ed5b..1a7e6d3 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -656,7 +656,10 @@ push_action_and_details (duk_context               *cx,
+   gchar **keys;
+   guint n;
+ 
+-  duk_get_global_string (cx, "Action");
++  if (!duk_get_global_string (cx, "Action")) {
++    return FALSE;
++  }
++
+   duk_new (cx, 0);
+ 
+   set_property_str (cx, "id", action_id);
+@@ -699,7 +702,12 @@ polkit_backend_js_authority_get_admin_auth_identities (PolkitBackendInteractiveA
+   duk_context *cx = authority->priv->cx;
+ 
+   duk_set_top (cx, 0);
+-  duk_get_global_string (cx, "polkit");
++  if (!duk_get_global_string (cx, "polkit")) {
++      polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                    "Error deleting old rules, not loading new ones");
++      goto out;
++  }
++
+   duk_push_string (cx, "_runAdminRules");
+ 
+   if (!push_action_and_details (cx, action_id, details, &error))
+-- 
+GitLab
+
+
+From ca15eecf5dc7755947515c1bfc651fd8770aaf8f Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 13:17:16 +0800
+Subject: [PATCH 05/16] check return value
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ src/polkitbackend/polkitbackendduktapeauthority.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index 1a7e6d3..3f1b32d 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -550,7 +550,10 @@ push_subject (duk_context               *cx,
+   char *seat_str = NULL;
+   char *session_str = NULL;
+ 
+-  duk_get_global_string (cx, "Subject");
++  if (!duk_get_global_string (cx, "Subject")) {
++    return FALSE;
++  }
++
+   duk_new (cx, 0);
+ 
+   if (POLKIT_IS_UNIX_PROCESS (subject))
+@@ -789,8 +792,11 @@ polkit_backend_js_authority_check_authorization_sync (PolkitBackendInteractiveAu
+   gboolean good = FALSE;
+   duk_context *cx = authority->priv->cx;
+ 
++  if (!duk_get_global_string (cx, "polkit")) {
++      goto out;
++  }
++
+   duk_set_top (cx, 0);
+-  duk_get_global_string (cx, "polkit");
+   duk_push_string (cx, "_runRules");
+ 
+   if (!push_action_and_details (cx, action_id, details, &error))
+-- 
+GitLab
+
+
+From 870348365cc0166e14f28e0d144ed552bba4d794 Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 13:18:13 +0800
+Subject: [PATCH 06/16] check return value
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ src/polkitbackend/polkitbackendduktapeauthority.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index 3f1b32d..6294ad9 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -843,7 +843,8 @@ polkit_backend_js_authority_check_authorization_sync (PolkitBackendInteractiveAu
+  out:
+   if (!good)
+     ret = POLKIT_IMPLICIT_AUTHORIZATION_NOT_AUTHORIZED;
+-  g_free (ret_str);
++  if (ret_str != NULL)
++      g_free (ret_str);
+ 
+   return ret;
+ }
+-- 
+GitLab
+
+
+From 81c916ff08fdcee3c7340c4b2d4632086b89666c Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 11:23:04 +0800
+Subject: [PATCH 07/16] fix typecase
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ src/polkitbackend/polkitbackendduktapeauthority.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index 6294ad9..d466c9d 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -1191,7 +1191,7 @@ static void
+ utils_on_cancelled (GCancellable *cancellable,
+                     gpointer      user_data)
+ {
+-  UtilsSpawnData *data = user_data;
++  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+   GError *error;
+ 
+   error = NULL;
+@@ -1206,7 +1206,7 @@ utils_read_child_stderr (GIOChannel *channel,
+                          GIOCondition condition,
+                          gpointer user_data)
+ {
+-  UtilsSpawnData *data = user_data;
++  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+   gchar buf[1024];
+   gsize bytes_read;
+ 
+@@ -1220,7 +1220,7 @@ utils_read_child_stdout (GIOChannel *channel,
+                          GIOCondition condition,
+                          gpointer user_data)
+ {
+-  UtilsSpawnData *data = user_data;
++  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+   gchar buf[1024];
+   gsize bytes_read;
+ 
+@@ -1234,7 +1234,7 @@ utils_child_watch_cb (GPid     pid,
+                       gint     status,
+                       gpointer user_data)
+ {
+-  UtilsSpawnData *data = user_data;
++  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+   gchar *buf;
+   gsize buf_size;
+ 
+@@ -1263,7 +1263,7 @@ utils_child_watch_cb (GPid     pid,
+ static gboolean
+ utils_timeout_cb (gpointer user_data)
+ {
+-  UtilsSpawnData *data = user_data;
++  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+ 
+   data->timed_out = TRUE;
+ 
+-- 
+GitLab
+
+
+From acb956bf52f0a78bf7aaf925876f96e97a146995 Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 18:04:27 +0800
+Subject: [PATCH 08/16] typecase
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ src/polkitbackend/polkitbackendduktapeauthority.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index d466c9d..237b1ad 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -915,8 +915,8 @@ spawn_cb (GObject       *source_object,
+           GAsyncResult  *res,
+           gpointer       user_data)
+ {
+-  SpawnData *data = user_data;
+-  data->res = g_object_ref (res);
++  SpawnData *data = (SpawnData *)user_data;
++  data->res = (GAsyncResult*)g_object_ref (res);
+   g_main_loop_quit (data->loop);
+ }
+ 
+@@ -1292,12 +1292,12 @@ utils_spawn (const gchar *const  *argv,
+   data->simple = g_simple_async_result_new (NULL,
+                                             callback,
+                                             user_data,
+-                                            utils_spawn);
++                                            (gpointer*)utils_spawn);
+   data->main_context = g_main_context_get_thread_default ();
+   if (data->main_context != NULL)
+     g_main_context_ref (data->main_context);
+ 
+-  data->cancellable = cancellable != NULL ? g_object_ref (cancellable) : NULL;
++  data->cancellable = cancellable != NULL ? (GCancellable*)g_object_ref (cancellable) : NULL;
+ 
+   data->child_stdout = g_string_new (NULL);
+   data->child_stderr = g_string_new (NULL);
+@@ -1397,7 +1397,7 @@ utils_spawn_finish (GAsyncResult   *res,
+   if (g_simple_async_result_propagate_error (simple, error))
+     goto out;
+ 
+-  data = g_simple_async_result_get_op_res_gpointer (simple);
++  data = (UtilsSpawnData*)g_simple_async_result_get_op_res_gpointer (simple);
+ 
+   if (data->timed_out)
+     {
+-- 
+GitLab
+
+
+From be060e4d48aceb09af34868b555b6c73c7afdabb Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 13:53:23 +0800
+Subject: [PATCH 09/16] some change
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ .../polkitbackendduktapeauthority.c           | 26 +++++++++++--------
+ 1 file changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index 237b1ad..fad9017 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -207,18 +207,22 @@ load_scripts (PolkitBackendJsAuthority  *authority)
+ 
+   for (l = files; l != NULL; l = l->next)
+     {
+-      const gchar *filename = l->data;
+-
++      const gchar *filename = (gchar *)l->data;
+ #if (DUK_VERSION >= 20000)
+-      gchar *contents;
+-      gsize length;
+-      GError *error = NULL;
+-      if (!g_file_get_contents (filename, &contents, &length, &error)){
+-        g_warning("Error when file contents of %s: %s\n", filename, error->message);
+-        g_error_free (error);
+-        continue;
+-      }
+-      if (duk_peval_lstring_noresult(cx, contents,length) != 0)
++      GFile *file = g_file_new_for_path (filename);
++      char *contents;
++      gsize len;
++      if (!g_file_load_contents (file, NULL, &contents, &len, NULL, NULL))
++        {
++          polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                        "Error compiling script %s",
++                                        filename);
++          g_object_unref (file);
++          continue;
++        }
++
++      g_object_unref (file);
++      if (duk_peval_lstring_noresult(cx, contents,len) != 0)
+ #else
+       if (duk_peval_file_noresult (cx, filename) != 0)
+ #endif
+-- 
+GitLab
+
+
+From 2ffb62048a5ebedfe3bb053feb7385c7270ede28 Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 15:25:45 +0800
+Subject: [PATCH 10/16] some change
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ .../polkitbackendduktapeauthority.c           | 24 +++++++++----------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index fad9017..6fac3be 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -125,6 +125,18 @@ G_DEFINE_TYPE (PolkitBackendJsAuthority, polkit_backend_js_authority, POLKIT_BAC
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
++static duk_ret_t js_polkit_log (duk_context *cx);
++static duk_ret_t js_polkit_spawn (duk_context *cx);
++static duk_ret_t js_polkit_user_is_in_netgroup (duk_context *cx);
++
++static const duk_function_list_entry js_polkit_functions[] =
++{
++  { "log", js_polkit_log, 1 },
++  { "spawn", js_polkit_spawn, 1 },
++  { "_userIsInNetGroup", js_polkit_user_is_in_netgroup, 2 },
++  { NULL, NULL, 0 },
++};
++
+ static void
+ polkit_backend_js_authority_init (PolkitBackendJsAuthority *authority)
+ {
+@@ -347,18 +359,6 @@ setup_file_monitors (PolkitBackendJsAuthority *authority)
+   authority->priv->dir_monitors = (GFileMonitor**) g_ptr_array_free (p, FALSE);
+ }
+ 
+-static duk_ret_t js_polkit_log (duk_context *cx);
+-static duk_ret_t js_polkit_spawn (duk_context *cx);
+-static duk_ret_t js_polkit_user_is_in_netgroup (duk_context *cx);
+-
+-static const duk_function_list_entry js_polkit_functions[] =
+-{
+-  { "log", js_polkit_log, 1 },
+-  { "spawn", js_polkit_spawn, 1 },
+-  { "_userIsInNetGroup", js_polkit_user_is_in_netgroup, 2 },
+-  { NULL, NULL, 0 },
+-};
+-
+ static void
+ polkit_backend_js_authority_constructed (GObject *object)
+ {
+-- 
+GitLab
+
+
+From edb70ef69eed3275f5654510d135e680eb46c85d Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 15:25:35 +0800
+Subject: [PATCH 11/16] remove WATCHDOG_TIMEOUT define
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ src/polkitbackend/polkitbackendduktapeauthority.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index 6fac3be..51e03fd 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -69,7 +69,6 @@ struct _PolkitBackendJsAuthorityPrivate
+   duk_context *cx;
+ };
+ 
+-#define WATCHDOG_TIMEOUT (15 * G_TIME_SPAN_SECOND)
+ 
+ static void utils_spawn (const gchar *const  *argv,
+                          guint                timeout_seconds,
+-- 
+GitLab
+
+
+From 906ae404f29f15ef8c529b999bf091b5d18ed7ac Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 12:46:40 +0800
+Subject: [PATCH 12/16] add meson build system support
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ meson.build                   | 11 ++++++++++-
+ meson_options.txt             |  1 +
+ src/polkitbackend/meson.build | 10 ++++++++--
+ 3 files changed, 19 insertions(+), 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 858078d..4e44723 100644
+--- a/meson.build
++++ b/meson.build
+@@ -133,7 +133,13 @@ expat_dep = dependency('expat')
+ assert(cc.has_header('expat.h', dependencies: expat_dep), 'Can\'t find expat.h. Please install expat.')
+ assert(cc.has_function('XML_ParserCreate', dependencies: expat_dep), 'Can\'t find expat library. Please install expat.')
+ 
+-mozjs_dep = dependency('mozjs-78')
++js_engine = get_option('js_engine')
++if js_engine == 'duktape'
++  js_dep = dependency('duktape')
++  libm_dep = cc.find_library('m')
++elif js_engine == 'mozjs'
++  js_dep = dependency('mozjs-78')
++endif
+ 
+ dbus_dep = dependency('dbus-1', required: false)
+ dbus_policydir = pk_prefix / pk_datadir / 'dbus-1/system.d'
+@@ -361,6 +367,9 @@ if enable_logind
+   output += '        systemdsystemunitdir:     ' + systemd_systemdsystemunitdir + '\n'
+ endif
+ output += '        polkitd user:             ' + polkitd_user + ' \n'
++output += '        Javascript engine:        ' + js_engine + '\n'
++if enable_logind
++endif
+ output += '        PAM support:              ' + enable_pam.to_string() + '\n\n'
+ if enable_pam
+   output += '        PAM file auth:            ' + pam_conf['PAM_FILE_INCLUDE_AUTH'] + '\n'
+diff --git a/meson_options.txt b/meson_options.txt
+index 25e3e77..76aa311 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -16,3 +16,4 @@ option('introspection', type: 'boolean', value: true, description: 'Enable intro
+ 
+ option('gtk_doc', type: 'boolean', value: false, description: 'use gtk-doc to build documentation')
+ option('man', type: 'boolean', value: false, description: 'build manual pages')
++option('js_engine', type: 'combo', choices: ['mozjs', 'duktape'], value: 'duktape', description: 'javascript engine')
+diff --git a/src/polkitbackend/meson.build b/src/polkitbackend/meson.build
+index 64f0e4a..489897d 100644
+--- a/src/polkitbackend/meson.build
++++ b/src/polkitbackend/meson.build
+@@ -5,7 +5,6 @@ sources = files(
+   'polkitbackendactionpool.c',
+   'polkitbackendauthority.c',
+   'polkitbackendinteractiveauthority.c',
+-  'polkitbackendjsauthority.cpp',
+ )
+ 
+ output = 'initjs.h'
+@@ -21,7 +20,7 @@ sources += custom_target(
+ deps = [
+   expat_dep,
+   libpolkit_gobject_dep,
+-  mozjs_dep,
++  js_dep,
+ ]
+ 
+ c_flags = [
+@@ -31,6 +30,13 @@ c_flags = [
+   '-DPACKAGE_SYSCONF_DIR="@0@"'.format(pk_prefix / pk_sysconfdir),
+ ]
+ 
++if js_engine == 'duktape'
++  sources += files('polkitbackendduktapeauthority.c')
++  deps += libm_dep
++elif js_engine == 'mozjs'
++  sources += files('polkitbackendjsauthority.cpp')
++endif
++
+ if enable_logind
+   sources += files('polkitbackendsessionmonitor-systemd.c')
+ 
+-- 
+GitLab
+
+
+From 1380b505c25be4aebe54b1b4223a570d64af83cc Mon Sep 17 00:00:00 2001
+From: Wu Xiaotian <yetist@gmail.com>
+Date: Sun, 22 Nov 2020 18:49:14 +0800
+Subject: [PATCH 13/16] fix run error
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ src/polkitbackend/polkitbackendduktapeauthority.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index 51e03fd..4b4f8fd 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -795,11 +795,11 @@ polkit_backend_js_authority_check_authorization_sync (PolkitBackendInteractiveAu
+   gboolean good = FALSE;
+   duk_context *cx = authority->priv->cx;
+ 
++  duk_set_top (cx, 0);
+   if (!duk_get_global_string (cx, "polkit")) {
+       goto out;
+   }
+ 
+-  duk_set_top (cx, 0);
+   duk_push_string (cx, "_runRules");
+ 
+   if (!push_action_and_details (cx, action_id, details, &error))
+-- 
+GitLab
+
+
+From 6856a704b70378948ef5f66e9b09555d97d4070b Mon Sep 17 00:00:00 2001
+From: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+Date: Fri, 10 Sep 2021 15:17:58 -0700
+Subject: [PATCH 14/16] Deduplicate code for "Add duktape as JS engine backend"
+ effort/MR
+
+This leverages Wu Xiaotian (@yetist)'s original MR
+(https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/35), in
+an effort to complete said work.
+
+This is the first of the requests from maintainers--to reduce
+eliminate code duplication.
+
+The runaway-killer missing functionality will come in the sequence.
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ src/polkitbackend/Makefile.am                 |   1 +
+ src/polkitbackend/meson.build                 |   1 +
+ src/polkitbackend/polkitbackendcommon.c       | 530 +++++++++++++
+ src/polkitbackend/polkitbackendcommon.h       | 156 ++++
+ .../polkitbackendduktapeauthority.c           | 714 ++----------------
+ .../polkitbackendjsauthority.cpp              | 711 ++---------------
+ 6 files changed, 790 insertions(+), 1323 deletions(-)
+ create mode 100644 src/polkitbackend/polkitbackendcommon.c
+ create mode 100644 src/polkitbackend/polkitbackendcommon.h
+
+diff --git a/src/polkitbackend/Makefile.am b/src/polkitbackend/Makefile.am
+index abcbc6f..6a8b4ae 100644
+--- a/src/polkitbackend/Makefile.am
++++ b/src/polkitbackend/Makefile.am
+@@ -31,6 +31,7 @@ libpolkit_backend_1_la_SOURCES =                                   			\
+         polkitbackend.h									\
+ 	polkitbackendtypes.h								\
+ 	polkitbackendprivate.h								\
++	polkitbackendcommon.h			polkitbackendcommon.c			\
+ 	polkitbackendauthority.h		polkitbackendauthority.c		\
+ 	polkitbackendinteractiveauthority.h	polkitbackendinteractiveauthority.c	\
+ 	polkitbackendjsauthority.h				\
+diff --git a/src/polkitbackend/meson.build b/src/polkitbackend/meson.build
+index 489897d..9ec01b2 100644
+--- a/src/polkitbackend/meson.build
++++ b/src/polkitbackend/meson.build
+@@ -4,6 +4,7 @@ sources = files(
+   'polkitbackendactionlookup.c',
+   'polkitbackendactionpool.c',
+   'polkitbackendauthority.c',
++  'polkitbackendcommon.c',
+   'polkitbackendinteractiveauthority.c',
+ )
+ 
+diff --git a/src/polkitbackend/polkitbackendcommon.c b/src/polkitbackend/polkitbackendcommon.c
+new file mode 100644
+index 0000000..6783dff
+--- /dev/null
++++ b/src/polkitbackend/polkitbackendcommon.c
+@@ -0,0 +1,530 @@
++/*
++ * Copyright (C) 2008 Red Hat, Inc.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General
++ * Public License along with this library; if not, write to the
++ * Free Software Foundation, Inc., 59 Temple Place, Suite 330,
++ * Boston, MA 02111-1307, USA.
++ *
++ * Author: David Zeuthen <davidz@redhat.com>
++ */
++
++#include "polkitbackendcommon.h"
++
++static void
++utils_child_watch_from_release_cb (GPid     pid,
++                                   gint     status,
++                                   gpointer user_data)
++{
++}
++
++static void
++utils_spawn_data_free (UtilsSpawnData *data)
++{
++  if (data->timeout_source != NULL)
++    {
++      g_source_destroy (data->timeout_source);
++      data->timeout_source = NULL;
++    }
++
++  /* Nuke the child, if necessary */
++  if (data->child_watch_source != NULL)
++    {
++      g_source_destroy (data->child_watch_source);
++      data->child_watch_source = NULL;
++    }
++
++  if (data->child_pid != 0)
++    {
++      GSource *source;
++      kill (data->child_pid, SIGTERM);
++      /* OK, we need to reap for the child ourselves - we don't want
++       * to use waitpid() because that might block the calling
++       * thread (the child might handle SIGTERM and use several
++       * seconds for cleanup/rollback).
++       *
++       * So we use GChildWatch instead.
++       *
++       * Avoid taking a references to ourselves. but note that we need
++       * to pass the GSource so we can nuke it once handled.
++       */
++      source = g_child_watch_source_new (data->child_pid);
++      g_source_set_callback (source,
++                             (GSourceFunc) utils_child_watch_from_release_cb,
++                             source,
++                             (GDestroyNotify) g_source_destroy);
++      g_source_attach (source, data->main_context);
++      g_source_unref (source);
++      data->child_pid = 0;
++    }
++
++  if (data->child_stdout != NULL)
++    {
++      g_string_free (data->child_stdout, TRUE);
++      data->child_stdout = NULL;
++    }
++
++  if (data->child_stderr != NULL)
++    {
++      g_string_free (data->child_stderr, TRUE);
++      data->child_stderr = NULL;
++    }
++
++  if (data->child_stdout_channel != NULL)
++    {
++      g_io_channel_unref (data->child_stdout_channel);
++      data->child_stdout_channel = NULL;
++    }
++  if (data->child_stderr_channel != NULL)
++    {
++      g_io_channel_unref (data->child_stderr_channel);
++      data->child_stderr_channel = NULL;
++    }
++
++  if (data->child_stdout_source != NULL)
++    {
++      g_source_destroy (data->child_stdout_source);
++      data->child_stdout_source = NULL;
++    }
++  if (data->child_stderr_source != NULL)
++    {
++      g_source_destroy (data->child_stderr_source);
++      data->child_stderr_source = NULL;
++    }
++
++  if (data->child_stdout_fd != -1)
++    {
++      g_warn_if_fail (close (data->child_stdout_fd) == 0);
++      data->child_stdout_fd = -1;
++    }
++  if (data->child_stderr_fd != -1)
++    {
++      g_warn_if_fail (close (data->child_stderr_fd) == 0);
++      data->child_stderr_fd = -1;
++    }
++
++  if (data->cancellable_handler_id > 0)
++    {
++      g_cancellable_disconnect (data->cancellable, data->cancellable_handler_id);
++      data->cancellable_handler_id = 0;
++    }
++
++  if (data->main_context != NULL)
++    g_main_context_unref (data->main_context);
++
++  if (data->cancellable != NULL)
++    g_object_unref (data->cancellable);
++
++  g_slice_free (UtilsSpawnData, data);
++}
++
++/* called in the thread where @cancellable was cancelled */
++static void
++utils_on_cancelled (GCancellable *cancellable,
++                    gpointer      user_data)
++{
++  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
++  GError *error;
++
++  error = NULL;
++  g_warn_if_fail (g_cancellable_set_error_if_cancelled (cancellable, &error));
++  g_simple_async_result_take_error (data->simple, error);
++  g_simple_async_result_complete_in_idle (data->simple);
++  g_object_unref (data->simple);
++}
++
++static gboolean
++utils_timeout_cb (gpointer user_data)
++{
++  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
++
++  data->timed_out = TRUE;
++
++  /* ok, timeout is history, make sure we don't free it in spawn_data_free() */
++  data->timeout_source = NULL;
++
++  /* we're done */
++  g_simple_async_result_complete_in_idle (data->simple);
++  g_object_unref (data->simple);
++
++  return FALSE; /* remove source */
++}
++
++static void
++utils_child_watch_cb (GPid     pid,
++                      gint     status,
++                      gpointer user_data)
++{
++  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
++  gchar *buf;
++  gsize buf_size;
++
++  if (g_io_channel_read_to_end (data->child_stdout_channel, &buf, &buf_size, NULL) == G_IO_STATUS_NORMAL)
++    {
++      g_string_append_len (data->child_stdout, buf, buf_size);
++      g_free (buf);
++    }
++  if (g_io_channel_read_to_end (data->child_stderr_channel, &buf, &buf_size, NULL) == G_IO_STATUS_NORMAL)
++    {
++      g_string_append_len (data->child_stderr, buf, buf_size);
++      g_free (buf);
++    }
++
++  data->exit_status = status;
++
++  /* ok, child watch is history, make sure we don't free it in spawn_data_free() */
++  data->child_pid = 0;
++  data->child_watch_source = NULL;
++
++  /* we're done */
++  g_simple_async_result_complete_in_idle (data->simple);
++  g_object_unref (data->simple);
++}
++
++static gboolean
++utils_read_child_stderr (GIOChannel *channel,
++                         GIOCondition condition,
++                         gpointer user_data)
++{
++  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
++  gchar buf[1024];
++  gsize bytes_read;
++
++  g_io_channel_read_chars (channel, buf, sizeof buf, &bytes_read, NULL);
++  g_string_append_len (data->child_stderr, buf, bytes_read);
++  return TRUE;
++}
++
++static gboolean
++utils_read_child_stdout (GIOChannel *channel,
++                         GIOCondition condition,
++                         gpointer user_data)
++{
++  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
++  gchar buf[1024];
++  gsize bytes_read;
++
++  g_io_channel_read_chars (channel, buf, sizeof buf, &bytes_read, NULL);
++  g_string_append_len (data->child_stdout, buf, bytes_read);
++  return TRUE;
++}
++
++void
++polkit_backend_common_spawn (const gchar *const  *argv,
++                             guint                timeout_seconds,
++                             GCancellable        *cancellable,
++                             GAsyncReadyCallback  callback,
++                             gpointer             user_data)
++{
++  UtilsSpawnData *data;
++  GError *error;
++
++  data = g_slice_new0 (UtilsSpawnData);
++  data->timeout_seconds = timeout_seconds;
++  data->simple = g_simple_async_result_new (NULL,
++                                            callback,
++                                            user_data,
++                                            (gpointer*)polkit_backend_common_spawn);
++  data->main_context = g_main_context_get_thread_default ();
++  if (data->main_context != NULL)
++    g_main_context_ref (data->main_context);
++
++  data->cancellable = cancellable != NULL ? (GCancellable*)g_object_ref (cancellable) : NULL;
++
++  data->child_stdout = g_string_new (NULL);
++  data->child_stderr = g_string_new (NULL);
++  data->child_stdout_fd = -1;
++  data->child_stderr_fd = -1;
++
++  /* the life-cycle of UtilsSpawnData is tied to its GSimpleAsyncResult */
++  g_simple_async_result_set_op_res_gpointer (data->simple, data, (GDestroyNotify) utils_spawn_data_free);
++
++  error = NULL;
++  if (data->cancellable != NULL)
++    {
++      /* could already be cancelled */
++      error = NULL;
++      if (g_cancellable_set_error_if_cancelled (data->cancellable, &error))
++        {
++          g_simple_async_result_take_error (data->simple, error);
++          g_simple_async_result_complete_in_idle (data->simple);
++          g_object_unref (data->simple);
++          goto out;
++        }
++
++      data->cancellable_handler_id = g_cancellable_connect (data->cancellable,
++                                                            G_CALLBACK (utils_on_cancelled),
++                                                            data,
++                                                            NULL);
++    }
++
++  error = NULL;
++  if (!g_spawn_async_with_pipes (NULL, /* working directory */
++                                 (gchar **) argv,
++                                 NULL, /* envp */
++                                 G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD,
++                                 NULL, /* child_setup */
++                                 NULL, /* child_setup's user_data */
++                                 &(data->child_pid),
++                                 NULL, /* gint *stdin_fd */
++                                 &(data->child_stdout_fd),
++                                 &(data->child_stderr_fd),
++                                 &error))
++    {
++      g_prefix_error (&error, "Error spawning: ");
++      g_simple_async_result_take_error (data->simple, error);
++      g_simple_async_result_complete_in_idle (data->simple);
++      g_object_unref (data->simple);
++      goto out;
++    }
++
++  if (timeout_seconds > 0)
++    {
++      data->timeout_source = g_timeout_source_new_seconds (timeout_seconds);
++      g_source_set_priority (data->timeout_source, G_PRIORITY_DEFAULT);
++      g_source_set_callback (data->timeout_source, utils_timeout_cb, data, NULL);
++      g_source_attach (data->timeout_source, data->main_context);
++      g_source_unref (data->timeout_source);
++    }
++
++  data->child_watch_source = g_child_watch_source_new (data->child_pid);
++  g_source_set_callback (data->child_watch_source, (GSourceFunc) utils_child_watch_cb, data, NULL);
++  g_source_attach (data->child_watch_source, data->main_context);
++  g_source_unref (data->child_watch_source);
++
++  data->child_stdout_channel = g_io_channel_unix_new (data->child_stdout_fd);
++  g_io_channel_set_flags (data->child_stdout_channel, G_IO_FLAG_NONBLOCK, NULL);
++  data->child_stdout_source = g_io_create_watch (data->child_stdout_channel, G_IO_IN);
++  g_source_set_callback (data->child_stdout_source, (GSourceFunc) utils_read_child_stdout, data, NULL);
++  g_source_attach (data->child_stdout_source, data->main_context);
++  g_source_unref (data->child_stdout_source);
++
++  data->child_stderr_channel = g_io_channel_unix_new (data->child_stderr_fd);
++  g_io_channel_set_flags (data->child_stderr_channel, G_IO_FLAG_NONBLOCK, NULL);
++  data->child_stderr_source = g_io_create_watch (data->child_stderr_channel, G_IO_IN);
++  g_source_set_callback (data->child_stderr_source, (GSourceFunc) utils_read_child_stderr, data, NULL);
++  g_source_attach (data->child_stderr_source, data->main_context);
++  g_source_unref (data->child_stderr_source);
++
++ out:
++  ;
++}
++
++void
++polkit_backend_common_on_dir_monitor_changed (GFileMonitor     *monitor,
++                                              GFile            *file,
++                                              GFile            *other_file,
++                                              GFileMonitorEvent event_type,
++                                              gpointer          user_data)
++{
++  PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (user_data);
++
++  /* TODO: maybe rate-limit so storms of events are collapsed into one with a 500ms resolution?
++   *       Because when editing a file with emacs we get 4-8 events..
++   */
++
++  if (file != NULL)
++    {
++      gchar *name;
++
++      name = g_file_get_basename (file);
++
++      /* g_print ("event_type=%d file=%p name=%s\n", event_type, file, name); */
++      if (!g_str_has_prefix (name, ".") &&
++          !g_str_has_prefix (name, "#") &&
++          g_str_has_suffix (name, ".rules") &&
++          (event_type == G_FILE_MONITOR_EVENT_CREATED ||
++           event_type == G_FILE_MONITOR_EVENT_DELETED ||
++           event_type == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT))
++        {
++          polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                        "Reloading rules");
++          polkit_backend_common_reload_scripts (authority);
++        }
++      g_free (name);
++    }
++}
++
++gboolean
++polkit_backend_common_spawn_finish (GAsyncResult   *res,
++                                    gint           *out_exit_status,
++                                    gchar         **out_standard_output,
++                                    gchar         **out_standard_error,
++                                    GError        **error)
++{
++  GSimpleAsyncResult *simple = G_SIMPLE_ASYNC_RESULT (res);
++  UtilsSpawnData *data;
++  gboolean ret = FALSE;
++
++  g_return_val_if_fail (G_IS_ASYNC_RESULT (res), FALSE);
++  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
++
++  g_warn_if_fail (g_simple_async_result_get_source_tag (simple) == polkit_backend_common_spawn);
++
++  if (g_simple_async_result_propagate_error (simple, error))
++    goto out;
++
++  data = (UtilsSpawnData*)g_simple_async_result_get_op_res_gpointer (simple);
++
++  if (data->timed_out)
++    {
++      g_set_error (error,
++                   G_IO_ERROR,
++                   G_IO_ERROR_TIMED_OUT,
++                   "Timed out after %d seconds",
++                   data->timeout_seconds);
++      goto out;
++    }
++
++  if (out_exit_status != NULL)
++    *out_exit_status = data->exit_status;
++
++  if (out_standard_output != NULL)
++    *out_standard_output = g_strdup (data->child_stdout->str);
++
++  if (out_standard_error != NULL)
++    *out_standard_error = g_strdup (data->child_stderr->str);
++
++  ret = TRUE;
++
++ out:
++  return ret;
++}
++
++static const gchar *
++polkit_backend_js_authority_get_name (PolkitBackendAuthority *authority)
++{
++  return "js";
++}
++
++static const gchar *
++polkit_backend_js_authority_get_version (PolkitBackendAuthority *authority)
++{
++  return PACKAGE_VERSION;
++}
++
++static PolkitAuthorityFeatures
++polkit_backend_js_authority_get_features (PolkitBackendAuthority *authority)
++{
++  return POLKIT_AUTHORITY_FEATURES_TEMPORARY_AUTHORIZATION;
++}
++
++void
++polkit_backend_common_js_authority_class_init_common (PolkitBackendJsAuthorityClass *klass)
++{
++  GObjectClass *gobject_class;
++  PolkitBackendAuthorityClass *authority_class;
++  PolkitBackendInteractiveAuthorityClass *interactive_authority_class;
++
++  gobject_class = G_OBJECT_CLASS (klass);
++  gobject_class->finalize                               = polkit_backend_common_js_authority_finalize;
++  gobject_class->set_property                           = polkit_backend_common_js_authority_set_property;
++  gobject_class->constructed                            = polkit_backend_common_js_authority_constructed;
++
++  authority_class = POLKIT_BACKEND_AUTHORITY_CLASS (klass);
++  authority_class->get_name                             = polkit_backend_js_authority_get_name;
++  authority_class->get_version                          = polkit_backend_js_authority_get_version;
++  authority_class->get_features                         = polkit_backend_js_authority_get_features;
++
++  interactive_authority_class = POLKIT_BACKEND_INTERACTIVE_AUTHORITY_CLASS (klass);
++  interactive_authority_class->get_admin_identities     = polkit_backend_common_js_authority_get_admin_auth_identities;
++  interactive_authority_class->check_authorization_sync = polkit_backend_common_js_authority_check_authorization_sync;
++
++  g_object_class_install_property (gobject_class,
++                                   PROP_RULES_DIRS,
++                                   g_param_spec_boxed ("rules-dirs",
++                                                       NULL,
++                                                       NULL,
++                                                       G_TYPE_STRV,
++                                                       G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE));
++}
++
++gint
++polkit_backend_common_rules_file_name_cmp (const gchar *a,
++                                           const gchar *b)
++{
++  gint ret;
++  const gchar *a_base;
++  const gchar *b_base;
++
++  a_base = strrchr (a, '/');
++  b_base = strrchr (b, '/');
++
++  g_assert (a_base != NULL);
++  g_assert (b_base != NULL);
++  a_base += 1;
++  b_base += 1;
++
++  ret = g_strcmp0 (a_base, b_base);
++  if (ret == 0)
++    {
++      /* /etc wins over /usr */
++      ret = g_strcmp0 (a, b);
++      g_assert (ret != 0);
++    }
++
++  return ret;
++}
++
++const gchar *
++polkit_backend_common_get_signal_name (gint signal_number)
++{
++  switch (signal_number)
++    {
++#define _HANDLE_SIG(sig) case sig: return #sig;
++    _HANDLE_SIG (SIGHUP);
++    _HANDLE_SIG (SIGINT);
++    _HANDLE_SIG (SIGQUIT);
++    _HANDLE_SIG (SIGILL);
++    _HANDLE_SIG (SIGABRT);
++    _HANDLE_SIG (SIGFPE);
++    _HANDLE_SIG (SIGKILL);
++    _HANDLE_SIG (SIGSEGV);
++    _HANDLE_SIG (SIGPIPE);
++    _HANDLE_SIG (SIGALRM);
++    _HANDLE_SIG (SIGTERM);
++    _HANDLE_SIG (SIGUSR1);
++    _HANDLE_SIG (SIGUSR2);
++    _HANDLE_SIG (SIGCHLD);
++    _HANDLE_SIG (SIGCONT);
++    _HANDLE_SIG (SIGSTOP);
++    _HANDLE_SIG (SIGTSTP);
++    _HANDLE_SIG (SIGTTIN);
++    _HANDLE_SIG (SIGTTOU);
++    _HANDLE_SIG (SIGBUS);
++#ifdef SIGPOLL
++    _HANDLE_SIG (SIGPOLL);
++#endif
++    _HANDLE_SIG (SIGPROF);
++    _HANDLE_SIG (SIGSYS);
++    _HANDLE_SIG (SIGTRAP);
++    _HANDLE_SIG (SIGURG);
++    _HANDLE_SIG (SIGVTALRM);
++    _HANDLE_SIG (SIGXCPU);
++    _HANDLE_SIG (SIGXFSZ);
++#undef _HANDLE_SIG
++    default:
++      break;
++    }
++  return "UNKNOWN_SIGNAL";
++}
++
++void
++polkit_backend_common_spawn_cb (GObject       *source_object,
++                                GAsyncResult  *res,
++                                gpointer       user_data)
++{
++  SpawnData *data = (SpawnData *)user_data;
++  data->res = (GAsyncResult*)g_object_ref (res);
++  g_main_loop_quit (data->loop);
++}
+diff --git a/src/polkitbackend/polkitbackendcommon.h b/src/polkitbackend/polkitbackendcommon.h
+new file mode 100644
+index 0000000..6d0d267
+--- /dev/null
++++ b/src/polkitbackend/polkitbackendcommon.h
+@@ -0,0 +1,156 @@
++/*
++ * Copyright (C) 2008 Red Hat, Inc.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General
++ * Public License along with this library; if not, write to the
++ * Free Software Foundation, Inc., 59 Temple Place, Suite 330,
++ * Boston, MA 02111-1307, USA.
++ *
++ * Author: David Zeuthen <davidz@redhat.com>
++ */
++
++#if !defined (_POLKIT_BACKEND_COMPILATION) && !defined(_POLKIT_BACKEND_INSIDE_POLKIT_BACKEND_H)
++#error "Only <polkitbackend/polkitbackend.h> can be included directly, this file may disappear or change contents."
++#endif
++
++#ifndef __POLKIT_BACKEND_COMMON_H
++#define __POLKIT_BACKEND_COMMON_H
++
++#include "config.h"
++#include <sys/wait.h>
++#include <errno.h>
++#include <pwd.h>
++#include <grp.h>
++#ifdef HAVE_NETGROUP_H
++#include <netgroup.h>
++#else
++#include <netdb.h>
++#endif
++#include <string.h>
++#include <glib/gstdio.h>
++#include <locale.h>
++#include <glib/gi18n-lib.h> //here, all things glib via glib.h (including -> gspawn.h)
++
++#include <polkit/polkit.h>
++#include "polkitbackendjsauthority.h"
++
++#include <polkit/polkitprivate.h>
++
++#ifdef HAVE_LIBSYSTEMD
++#include <systemd/sd-login.h>
++#endif /* HAVE_LIBSYSTEMD */
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++enum
++{
++  PROP_0,
++  PROP_RULES_DIRS,
++};
++
++typedef struct
++{
++  GSimpleAsyncResult *simple; /* borrowed reference */
++  GMainContext *main_context; /* may be NULL */
++
++  GCancellable *cancellable;  /* may be NULL */
++  gulong cancellable_handler_id;
++
++  GPid child_pid;
++  gint child_stdout_fd;
++  gint child_stderr_fd;
++
++  GIOChannel *child_stdout_channel;
++  GIOChannel *child_stderr_channel;
++
++  GSource *child_watch_source;
++  GSource *child_stdout_source;
++  GSource *child_stderr_source;
++
++  guint timeout_seconds;
++  gboolean timed_out;
++  GSource *timeout_source;
++
++  GString *child_stdout;
++  GString *child_stderr;
++
++  gint exit_status;
++} UtilsSpawnData;
++
++typedef struct
++{
++  GMainLoop *loop;
++  GAsyncResult *res;
++} SpawnData;
++
++void polkit_backend_common_spawn (const gchar *const  *argv,
++                                  guint                timeout_seconds,
++                                  GCancellable        *cancellable,
++                                  GAsyncReadyCallback  callback,
++                                  gpointer             user_data);
++void polkit_backend_common_spawn_cb (GObject       *source_object,
++                                     GAsyncResult  *res,
++                                     gpointer       user_data);
++gboolean polkit_backend_common_spawn_finish (GAsyncResult   *res,
++                                             gint           *out_exit_status,
++                                             gchar         **out_standard_output,
++                                             gchar         **out_standard_error,
++                                             GError        **error);
++
++void polkit_backend_common_on_dir_monitor_changed (GFileMonitor     *monitor,
++                                                   GFile            *file,
++                                                   GFile            *other_file,
++                                                   GFileMonitorEvent event_type,
++                                                   gpointer          user_data);
++
++void polkit_backend_common_js_authority_class_init_common (PolkitBackendJsAuthorityClass *klass);
++
++gint polkit_backend_common_rules_file_name_cmp (const gchar *a,
++                                                const gchar *b);
++
++const gchar *polkit_backend_common_get_signal_name (gint signal_number);
++
++/* To be provided by each JS backend, from here onwards  ---------------------------------------------- */
++
++void polkit_backend_common_reload_scripts (PolkitBackendJsAuthority *authority);
++void polkit_backend_common_js_authority_finalize (GObject *object);
++void polkit_backend_common_js_authority_constructed (GObject *object);
++GList *polkit_backend_common_js_authority_get_admin_auth_identities (PolkitBackendInteractiveAuthority *_authority,
++                                                                     PolkitSubject                     *caller,
++                                                                     PolkitSubject                     *subject,
++                                                                     PolkitIdentity                    *user_for_subject,
++                                                                     gboolean                           subject_is_local,
++                                                                     gboolean                           subject_is_active,
++                                                                     const gchar                       *action_id,
++                                                                     PolkitDetails                     *details);
++void polkit_backend_common_js_authority_set_property (GObject      *object,
++                                                      guint         property_id,
++                                                      const GValue *value,
++                                                      GParamSpec   *pspec);
++PolkitImplicitAuthorization polkit_backend_common_js_authority_check_authorization_sync (PolkitBackendInteractiveAuthority *_authority,
++                                                                                         PolkitSubject                     *caller,
++                                                                                         PolkitSubject                     *subject,
++                                                                                         PolkitIdentity                    *user_for_subject,
++                                                                                         gboolean                           subject_is_local,
++                                                                                         gboolean                           subject_is_active,
++                                                                                         const gchar                       *action_id,
++                                                                                         PolkitDetails                     *details,
++                                                                                         PolkitImplicitAuthorization        implicit);
++#ifdef __cplusplus
++}
++#endif
++
++#endif /* __POLKIT_BACKEND_COMMON_H */
++
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index 4b4f8fd..a2b4420 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -21,32 +21,12 @@
+  * Author: David Zeuthen <davidz@redhat.com>
+  */
+ 
+-#include "config.h"
+-#include <sys/wait.h>
+-#include <errno.h>
+-#include <pwd.h>
+-#include <grp.h>
+-#ifdef HAVE_NETGROUP_H
+-#include <netgroup.h>
+-#else
+-#include <netdb.h>
+-#endif
+-#include <string.h>
+-#include <glib/gstdio.h>
+-#include <locale.h>
+-#include <glib/gi18n-lib.h>
+-
+-#include <polkit/polkit.h>
+-#include "polkitbackendjsauthority.h"
+-
+-#include <polkit/polkitprivate.h>
++#include "polkitbackendcommon.h"
+ 
+-#ifdef HAVE_LIBSYSTEMD
+-#include <systemd/sd-login.h>
+-#endif /* HAVE_LIBSYSTEMD */
++#include "duktape.h"
+ 
++/* Built source and not too big to worry about deduplication */
+ #include "initjs.h" /* init.js */
+-#include "duktape.h"
+ 
+ /**
+  * SECTION:polkitbackendjsauthority
+@@ -54,10 +34,9 @@
+  * @short_description: JS Authority
+  * @stability: Unstable
+  *
+- * An implementation of #PolkitBackendAuthority that reads and
+- * evalates Javascript files and supports interaction with
+- * authentication agents (virtue of being based on
+- * #PolkitBackendInteractiveAuthority).
++ * An (Duktape-based) implementation of #PolkitBackendAuthority that reads and
++ * evaluates Javascript files and supports interaction with authentication
++ * agents (virtue of being based on #PolkitBackendInteractiveAuthority).
+  */
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+@@ -66,64 +45,16 @@ struct _PolkitBackendJsAuthorityPrivate
+ {
+   gchar **rules_dirs;
+   GFileMonitor **dir_monitors; /* NULL-terminated array of GFileMonitor instances */
+-  duk_context *cx;
+-};
+-
+-
+-static void utils_spawn (const gchar *const  *argv,
+-                         guint                timeout_seconds,
+-                         GCancellable        *cancellable,
+-                         GAsyncReadyCallback  callback,
+-                         gpointer             user_data);
+-
+-gboolean utils_spawn_finish (GAsyncResult   *res,
+-                             gint           *out_exit_status,
+-                             gchar         **out_standard_output,
+-                             gchar         **out_standard_error,
+-                             GError        **error);
+ 
+-static void on_dir_monitor_changed (GFileMonitor     *monitor,
+-                                    GFile            *file,
+-                                    GFile            *other_file,
+-                                    GFileMonitorEvent event_type,
+-                                    gpointer          user_data);
+-
+-/* ---------------------------------------------------------------------------------------------------- */
+-
+-enum
+-{
+-  PROP_0,
+-  PROP_RULES_DIRS,
++  duk_context *cx;
+ };
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+-static GList *polkit_backend_js_authority_get_admin_auth_identities (PolkitBackendInteractiveAuthority *authority,
+-                                                                     PolkitSubject                     *caller,
+-                                                                     PolkitSubject                     *subject,
+-                                                                     PolkitIdentity                    *user_for_subject,
+-                                                                     gboolean                           subject_is_local,
+-                                                                     gboolean                           subject_is_active,
+-                                                                     const gchar                       *action_id,
+-                                                                     PolkitDetails                     *details);
+-
+-static PolkitImplicitAuthorization polkit_backend_js_authority_check_authorization_sync (
+-                                                          PolkitBackendInteractiveAuthority *authority,
+-                                                          PolkitSubject                     *caller,
+-                                                          PolkitSubject                     *subject,
+-                                                          PolkitIdentity                    *user_for_subject,
+-                                                          gboolean                           subject_is_local,
+-                                                          gboolean                           subject_is_active,
+-                                                          const gchar                       *action_id,
+-                                                          PolkitDetails                     *details,
+-                                                          PolkitImplicitAuthorization        implicit);
+-
+ G_DEFINE_TYPE (PolkitBackendJsAuthority, polkit_backend_js_authority, POLKIT_BACKEND_TYPE_INTERACTIVE_AUTHORITY);
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+-/* ---------------------------------------------------------------------------------------------------- */
+-
+ static duk_ret_t js_polkit_log (duk_context *cx);
+ static duk_ret_t js_polkit_spawn (duk_context *cx);
+ static duk_ret_t js_polkit_user_is_in_netgroup (duk_context *cx);
+@@ -144,33 +75,6 @@ polkit_backend_js_authority_init (PolkitBackendJsAuthority *authority)
+                                                  PolkitBackendJsAuthorityPrivate);
+ }
+ 
+-static gint
+-rules_file_name_cmp (const gchar *a,
+-                     const gchar *b)
+-{
+-  gint ret;
+-  const gchar *a_base;
+-  const gchar *b_base;
+-
+-  a_base = strrchr (a, '/');
+-  b_base = strrchr (b, '/');
+-
+-  g_assert (a_base != NULL);
+-  g_assert (b_base != NULL);
+-  a_base += 1;
+-  b_base += 1;
+-
+-  ret = g_strcmp0 (a_base, b_base);
+-  if (ret == 0)
+-    {
+-      /* /etc wins over /usr */
+-      ret = g_strcmp0 (a, b);
+-      g_assert (ret != 0);
+-    }
+-
+-  return ret;
+-}
+-
+ static void
+ load_scripts (PolkitBackendJsAuthority  *authority)
+ {
+@@ -214,7 +118,7 @@ load_scripts (PolkitBackendJsAuthority  *authority)
+         }
+     }
+ 
+-  files = g_list_sort (files, (GCompareFunc) rules_file_name_cmp);
++  files = g_list_sort (files, (GCompareFunc) polkit_backend_common_rules_file_name_cmp);
+ 
+   for (l = files; l != NULL; l = l->next)
+     {
+@@ -258,8 +162,8 @@ load_scripts (PolkitBackendJsAuthority  *authority)
+   g_list_free_full (files, g_free);
+ }
+ 
+-static void
+-reload_scripts (PolkitBackendJsAuthority *authority)
++void
++polkit_backend_common_reload_scripts (PolkitBackendJsAuthority *authority)
+ {
+   duk_context *cx = authority->priv->cx;
+ 
+@@ -282,42 +186,6 @@ reload_scripts (PolkitBackendJsAuthority *authority)
+   g_signal_emit_by_name (authority, "changed");
+ }
+ 
+-static void
+-on_dir_monitor_changed (GFileMonitor     *monitor,
+-                        GFile            *file,
+-                        GFile            *other_file,
+-                        GFileMonitorEvent event_type,
+-                        gpointer          user_data)
+-{
+-  PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (user_data);
+-
+-  /* TODO: maybe rate-limit so storms of events are collapsed into one with a 500ms resolution?
+-   *       Because when editing a file with emacs we get 4-8 events..
+-   */
+-
+-  if (file != NULL)
+-    {
+-      gchar *name;
+-
+-      name = g_file_get_basename (file);
+-
+-      /* g_print ("event_type=%d file=%p name=%s\n", event_type, file, name); */
+-      if (!g_str_has_prefix (name, ".") &&
+-          !g_str_has_prefix (name, "#") &&
+-          g_str_has_suffix (name, ".rules") &&
+-          (event_type == G_FILE_MONITOR_EVENT_CREATED ||
+-           event_type == G_FILE_MONITOR_EVENT_DELETED ||
+-           event_type == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT))
+-        {
+-          polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
+-                                        "Reloading rules");
+-          reload_scripts (authority);
+-        }
+-      g_free (name);
+-    }
+-}
+-
+-
+ static void
+ setup_file_monitors (PolkitBackendJsAuthority *authority)
+ {
+@@ -349,7 +217,7 @@ setup_file_monitors (PolkitBackendJsAuthority *authority)
+         {
+           g_signal_connect (monitor,
+                             "changed",
+-                            G_CALLBACK (on_dir_monitor_changed),
++                            G_CALLBACK (polkit_backend_common_on_dir_monitor_changed),
+                             authority);
+           g_ptr_array_add (p, monitor);
+         }
+@@ -358,8 +226,8 @@ setup_file_monitors (PolkitBackendJsAuthority *authority)
+   authority->priv->dir_monitors = (GFileMonitor**) g_ptr_array_free (p, FALSE);
+ }
+ 
+-static void
+-polkit_backend_js_authority_constructed (GObject *object)
++void
++polkit_backend_common_js_authority_constructed (GObject *object)
+ {
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (object);
+   duk_context *cx;
+@@ -395,8 +263,8 @@ polkit_backend_js_authority_constructed (GObject *object)
+   g_assert_not_reached ();
+ }
+ 
+-static void
+-polkit_backend_js_authority_finalize (GObject *object)
++void
++polkit_backend_common_js_authority_finalize (GObject *object)
+ {
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (object);
+   guint n;
+@@ -405,7 +273,7 @@ polkit_backend_js_authority_finalize (GObject *object)
+     {
+       GFileMonitor *monitor = authority->priv->dir_monitors[n];
+       g_signal_handlers_disconnect_by_func (monitor,
+-                                            G_CALLBACK (on_dir_monitor_changed),
++                                            G_CALLBACK (polkit_backend_common_on_dir_monitor_changed),
+                                             authority);
+       g_object_unref (monitor);
+     }
+@@ -417,11 +285,11 @@ polkit_backend_js_authority_finalize (GObject *object)
+   G_OBJECT_CLASS (polkit_backend_js_authority_parent_class)->finalize (object);
+ }
+ 
+-static void
+-polkit_backend_js_authority_set_property (GObject      *object,
+-                                          guint         property_id,
+-                                          const GValue *value,
+-                                          GParamSpec   *pspec)
++void
++polkit_backend_common_js_authority_set_property (GObject      *object,
++                                                 guint         property_id,
++                                                 const GValue *value,
++                                                 GParamSpec   *pspec)
+ {
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (object);
+ 
+@@ -438,55 +306,10 @@ polkit_backend_js_authority_set_property (GObject      *object,
+     }
+ }
+ 
+-static const gchar *
+-polkit_backend_js_authority_get_name (PolkitBackendAuthority *authority)
+-{
+-  return "js";
+-}
+-
+-static const gchar *
+-polkit_backend_js_authority_get_version (PolkitBackendAuthority *authority)
+-{
+-  return PACKAGE_VERSION;
+-}
+-
+-static PolkitAuthorityFeatures
+-polkit_backend_js_authority_get_features (PolkitBackendAuthority *authority)
+-{
+-  return POLKIT_AUTHORITY_FEATURES_TEMPORARY_AUTHORIZATION;
+-}
+-
+ static void
+ polkit_backend_js_authority_class_init (PolkitBackendJsAuthorityClass *klass)
+ {
+-  GObjectClass *gobject_class;
+-  PolkitBackendAuthorityClass *authority_class;
+-  PolkitBackendInteractiveAuthorityClass *interactive_authority_class;
+-
+-
+-  gobject_class = G_OBJECT_CLASS (klass);
+-  gobject_class->finalize                               = polkit_backend_js_authority_finalize;
+-  gobject_class->set_property                           = polkit_backend_js_authority_set_property;
+-  gobject_class->constructed                            = polkit_backend_js_authority_constructed;
+-
+-  authority_class = POLKIT_BACKEND_AUTHORITY_CLASS (klass);
+-  authority_class->get_name                             = polkit_backend_js_authority_get_name;
+-  authority_class->get_version                          = polkit_backend_js_authority_get_version;
+-  authority_class->get_features                         = polkit_backend_js_authority_get_features;
+-
+-  interactive_authority_class = POLKIT_BACKEND_INTERACTIVE_AUTHORITY_CLASS (klass);
+-  interactive_authority_class->get_admin_identities     = polkit_backend_js_authority_get_admin_auth_identities;
+-  interactive_authority_class->check_authorization_sync = polkit_backend_js_authority_check_authorization_sync;
+-
+-  g_object_class_install_property (gobject_class,
+-                                   PROP_RULES_DIRS,
+-                                   g_param_spec_boxed ("rules-dirs",
+-                                                       NULL,
+-                                                       NULL,
+-                                                       G_TYPE_STRV,
+-                                                       G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE));
+-
+-
++  polkit_backend_common_js_authority_class_init_common (klass);
+   g_type_class_add_private (klass, sizeof (PolkitBackendJsAuthorityPrivate));
+ }
+ 
+@@ -689,15 +512,15 @@ push_action_and_details (duk_context               *cx,
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+-static GList *
+-polkit_backend_js_authority_get_admin_auth_identities (PolkitBackendInteractiveAuthority *_authority,
+-                                                       PolkitSubject                     *caller,
+-                                                       PolkitSubject                     *subject,
+-                                                       PolkitIdentity                    *user_for_subject,
+-                                                       gboolean                           subject_is_local,
+-                                                       gboolean                           subject_is_active,
+-                                                       const gchar                       *action_id,
+-                                                       PolkitDetails                     *details)
++GList *
++polkit_backend_common_js_authority_get_admin_auth_identities (PolkitBackendInteractiveAuthority *_authority,
++                                                              PolkitSubject                     *caller,
++                                                              PolkitSubject                     *subject,
++                                                              PolkitIdentity                    *user_for_subject,
++                                                              gboolean                           subject_is_local,
++                                                              gboolean                           subject_is_active,
++                                                              const gchar                       *action_id,
++                                                              PolkitDetails                     *details)
+ {
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (_authority);
+   GList *ret = NULL;
+@@ -777,16 +600,16 @@ polkit_backend_js_authority_get_admin_auth_identities (PolkitBackendInteractiveA
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+-static PolkitImplicitAuthorization
+-polkit_backend_js_authority_check_authorization_sync (PolkitBackendInteractiveAuthority *_authority,
+-                                                      PolkitSubject                     *caller,
+-                                                      PolkitSubject                     *subject,
+-                                                      PolkitIdentity                    *user_for_subject,
+-                                                      gboolean                           subject_is_local,
+-                                                      gboolean                           subject_is_active,
+-                                                      const gchar                       *action_id,
+-                                                      PolkitDetails                     *details,
+-                                                      PolkitImplicitAuthorization        implicit)
++PolkitImplicitAuthorization
++polkit_backend_common_js_authority_check_authorization_sync (PolkitBackendInteractiveAuthority *_authority,
++                                                             PolkitSubject                     *caller,
++                                                             PolkitSubject                     *subject,
++                                                             PolkitIdentity                    *user_for_subject,
++                                                             gboolean                           subject_is_local,
++                                                             gboolean                           subject_is_active,
++                                                             const gchar                       *action_id,
++                                                             PolkitDetails                     *details,
++                                                             PolkitImplicitAuthorization        implicit)
+ {
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (_authority);
+   PolkitImplicitAuthorization ret = implicit;
+@@ -864,65 +687,6 @@ js_polkit_log (duk_context *cx)
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+-static const gchar *
+-get_signal_name (gint signal_number)
+-{
+-  switch (signal_number)
+-    {
+-#define _HANDLE_SIG(sig) case sig: return #sig;
+-    _HANDLE_SIG (SIGHUP);
+-    _HANDLE_SIG (SIGINT);
+-    _HANDLE_SIG (SIGQUIT);
+-    _HANDLE_SIG (SIGILL);
+-    _HANDLE_SIG (SIGABRT);
+-    _HANDLE_SIG (SIGFPE);
+-    _HANDLE_SIG (SIGKILL);
+-    _HANDLE_SIG (SIGSEGV);
+-    _HANDLE_SIG (SIGPIPE);
+-    _HANDLE_SIG (SIGALRM);
+-    _HANDLE_SIG (SIGTERM);
+-    _HANDLE_SIG (SIGUSR1);
+-    _HANDLE_SIG (SIGUSR2);
+-    _HANDLE_SIG (SIGCHLD);
+-    _HANDLE_SIG (SIGCONT);
+-    _HANDLE_SIG (SIGSTOP);
+-    _HANDLE_SIG (SIGTSTP);
+-    _HANDLE_SIG (SIGTTIN);
+-    _HANDLE_SIG (SIGTTOU);
+-    _HANDLE_SIG (SIGBUS);
+-#ifdef SIGPOLL
+-    _HANDLE_SIG (SIGPOLL);
+-#endif
+-    _HANDLE_SIG (SIGPROF);
+-    _HANDLE_SIG (SIGSYS);
+-    _HANDLE_SIG (SIGTRAP);
+-    _HANDLE_SIG (SIGURG);
+-    _HANDLE_SIG (SIGVTALRM);
+-    _HANDLE_SIG (SIGXCPU);
+-    _HANDLE_SIG (SIGXFSZ);
+-#undef _HANDLE_SIG
+-    default:
+-      break;
+-    }
+-  return "UNKNOWN_SIGNAL";
+-}
+-
+-typedef struct
+-{
+-  GMainLoop *loop;
+-  GAsyncResult *res;
+-} SpawnData;
+-
+-static void
+-spawn_cb (GObject       *source_object,
+-          GAsyncResult  *res,
+-          gpointer       user_data)
+-{
+-  SpawnData *data = (SpawnData *)user_data;
+-  data->res = (GAsyncResult*)g_object_ref (res);
+-  g_main_loop_quit (data->loop);
+-}
+-
+ static duk_ret_t
+ js_polkit_spawn (duk_context *cx)
+ {
+@@ -962,21 +726,21 @@ js_polkit_spawn (duk_context *cx)
+   g_main_context_push_thread_default (context);
+ 
+   data.loop = loop;
+-  utils_spawn ((const gchar *const *) argv,
+-               10, /* timeout_seconds */
+-               NULL, /* cancellable */
+-               spawn_cb,
+-               &data);
++  polkit_backend_common_spawn ((const gchar *const *) argv,
++                               10, /* timeout_seconds */
++                               NULL, /* cancellable */
++                               polkit_backend_common_spawn_cb,
++                               &data);
+ 
+   g_main_loop_run (loop);
+ 
+   g_main_context_pop_thread_default (context);
+ 
+-  if (!utils_spawn_finish (data.res,
+-                           &exit_status,
+-                           &standard_output,
+-                           &standard_error,
+-                           &error))
++  if (!polkit_backend_common_spawn_finish (data.res,
++                                           &exit_status,
++                                           &standard_output,
++                                           &standard_error,
++                                           &error))
+     {
+       err_str = g_strdup_printf ("Error spawning helper: %s (%s, %d)",
+                                  error->message, g_quark_to_string (error->domain), error->code);
+@@ -998,7 +762,7 @@ js_polkit_spawn (duk_context *cx)
+         {
+           g_string_append_printf (gstr,
+                                   "Helper was signaled with signal %s (%d)",
+-                                  get_signal_name (WTERMSIG (exit_status)),
++                                  polkit_backend_common_get_signal_name (WTERMSIG (exit_status)),
+                                   WTERMSIG (exit_status));
+         }
+       g_string_append_printf (gstr, ", stdout=`%s', stderr=`%s'",
+@@ -1052,377 +816,3 @@ js_polkit_user_is_in_netgroup (duk_context *cx)
+ }
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+-
+-typedef struct
+-{
+-  GSimpleAsyncResult *simple; /* borrowed reference */
+-  GMainContext *main_context; /* may be NULL */
+-
+-  GCancellable *cancellable;  /* may be NULL */
+-  gulong cancellable_handler_id;
+-
+-  GPid child_pid;
+-  gint child_stdout_fd;
+-  gint child_stderr_fd;
+-
+-  GIOChannel *child_stdout_channel;
+-  GIOChannel *child_stderr_channel;
+-
+-  GSource *child_watch_source;
+-  GSource *child_stdout_source;
+-  GSource *child_stderr_source;
+-
+-  guint timeout_seconds;
+-  gboolean timed_out;
+-  GSource *timeout_source;
+-
+-  GString *child_stdout;
+-  GString *child_stderr;
+-
+-  gint exit_status;
+-} UtilsSpawnData;
+-
+-static void
+-utils_child_watch_from_release_cb (GPid     pid,
+-                                   gint     status,
+-                                   gpointer user_data)
+-{
+-}
+-
+-static void
+-utils_spawn_data_free (UtilsSpawnData *data)
+-{
+-  if (data->timeout_source != NULL)
+-    {
+-      g_source_destroy (data->timeout_source);
+-      data->timeout_source = NULL;
+-    }
+-
+-  /* Nuke the child, if necessary */
+-  if (data->child_watch_source != NULL)
+-    {
+-      g_source_destroy (data->child_watch_source);
+-      data->child_watch_source = NULL;
+-    }
+-
+-  if (data->child_pid != 0)
+-    {
+-      GSource *source;
+-      kill (data->child_pid, SIGTERM);
+-      /* OK, we need to reap for the child ourselves - we don't want
+-       * to use waitpid() because that might block the calling
+-       * thread (the child might handle SIGTERM and use several
+-       * seconds for cleanup/rollback).
+-       *
+-       * So we use GChildWatch instead.
+-       *
+-       * Avoid taking a references to ourselves. but note that we need
+-       * to pass the GSource so we can nuke it once handled.
+-       */
+-      source = g_child_watch_source_new (data->child_pid);
+-      g_source_set_callback (source,
+-                             (GSourceFunc) utils_child_watch_from_release_cb,
+-                             source,
+-                             (GDestroyNotify) g_source_destroy);
+-      g_source_attach (source, data->main_context);
+-      g_source_unref (source);
+-      data->child_pid = 0;
+-    }
+-
+-  if (data->child_stdout != NULL)
+-    {
+-      g_string_free (data->child_stdout, TRUE);
+-      data->child_stdout = NULL;
+-    }
+-
+-  if (data->child_stderr != NULL)
+-    {
+-      g_string_free (data->child_stderr, TRUE);
+-      data->child_stderr = NULL;
+-    }
+-
+-  if (data->child_stdout_channel != NULL)
+-    {
+-      g_io_channel_unref (data->child_stdout_channel);
+-      data->child_stdout_channel = NULL;
+-    }
+-  if (data->child_stderr_channel != NULL)
+-    {
+-      g_io_channel_unref (data->child_stderr_channel);
+-      data->child_stderr_channel = NULL;
+-    }
+-
+-  if (data->child_stdout_source != NULL)
+-    {
+-      g_source_destroy (data->child_stdout_source);
+-      data->child_stdout_source = NULL;
+-    }
+-  if (data->child_stderr_source != NULL)
+-    {
+-      g_source_destroy (data->child_stderr_source);
+-      data->child_stderr_source = NULL;
+-    }
+-
+-  if (data->child_stdout_fd != -1)
+-    {
+-      g_warn_if_fail (close (data->child_stdout_fd) == 0);
+-      data->child_stdout_fd = -1;
+-    }
+-  if (data->child_stderr_fd != -1)
+-    {
+-      g_warn_if_fail (close (data->child_stderr_fd) == 0);
+-      data->child_stderr_fd = -1;
+-    }
+-
+-  if (data->cancellable_handler_id > 0)
+-    {
+-      g_cancellable_disconnect (data->cancellable, data->cancellable_handler_id);
+-      data->cancellable_handler_id = 0;
+-    }
+-
+-  if (data->main_context != NULL)
+-    g_main_context_unref (data->main_context);
+-
+-  if (data->cancellable != NULL)
+-    g_object_unref (data->cancellable);
+-
+-  g_slice_free (UtilsSpawnData, data);
+-}
+-
+-/* called in the thread where @cancellable was cancelled */
+-static void
+-utils_on_cancelled (GCancellable *cancellable,
+-                    gpointer      user_data)
+-{
+-  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+-  GError *error;
+-
+-  error = NULL;
+-  g_warn_if_fail (g_cancellable_set_error_if_cancelled (cancellable, &error));
+-  g_simple_async_result_take_error (data->simple, error);
+-  g_simple_async_result_complete_in_idle (data->simple);
+-  g_object_unref (data->simple);
+-}
+-
+-static gboolean
+-utils_read_child_stderr (GIOChannel *channel,
+-                         GIOCondition condition,
+-                         gpointer user_data)
+-{
+-  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+-  gchar buf[1024];
+-  gsize bytes_read;
+-
+-  g_io_channel_read_chars (channel, buf, sizeof buf, &bytes_read, NULL);
+-  g_string_append_len (data->child_stderr, buf, bytes_read);
+-  return TRUE;
+-}
+-
+-static gboolean
+-utils_read_child_stdout (GIOChannel *channel,
+-                         GIOCondition condition,
+-                         gpointer user_data)
+-{
+-  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+-  gchar buf[1024];
+-  gsize bytes_read;
+-
+-  g_io_channel_read_chars (channel, buf, sizeof buf, &bytes_read, NULL);
+-  g_string_append_len (data->child_stdout, buf, bytes_read);
+-  return TRUE;
+-}
+-
+-static void
+-utils_child_watch_cb (GPid     pid,
+-                      gint     status,
+-                      gpointer user_data)
+-{
+-  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+-  gchar *buf;
+-  gsize buf_size;
+-
+-  if (g_io_channel_read_to_end (data->child_stdout_channel, &buf, &buf_size, NULL) == G_IO_STATUS_NORMAL)
+-    {
+-      g_string_append_len (data->child_stdout, buf, buf_size);
+-      g_free (buf);
+-    }
+-  if (g_io_channel_read_to_end (data->child_stderr_channel, &buf, &buf_size, NULL) == G_IO_STATUS_NORMAL)
+-    {
+-      g_string_append_len (data->child_stderr, buf, buf_size);
+-      g_free (buf);
+-    }
+-
+-  data->exit_status = status;
+-
+-  /* ok, child watch is history, make sure we don't free it in spawn_data_free() */
+-  data->child_pid = 0;
+-  data->child_watch_source = NULL;
+-
+-  /* we're done */
+-  g_simple_async_result_complete_in_idle (data->simple);
+-  g_object_unref (data->simple);
+-}
+-
+-static gboolean
+-utils_timeout_cb (gpointer user_data)
+-{
+-  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+-
+-  data->timed_out = TRUE;
+-
+-  /* ok, timeout is history, make sure we don't free it in spawn_data_free() */
+-  data->timeout_source = NULL;
+-
+-  /* we're done */
+-  g_simple_async_result_complete_in_idle (data->simple);
+-  g_object_unref (data->simple);
+-
+-  return FALSE; /* remove source */
+-}
+-
+-static void
+-utils_spawn (const gchar *const  *argv,
+-             guint                timeout_seconds,
+-             GCancellable        *cancellable,
+-             GAsyncReadyCallback  callback,
+-             gpointer             user_data)
+-{
+-  UtilsSpawnData *data;
+-  GError *error;
+-
+-  data = g_slice_new0 (UtilsSpawnData);
+-  data->timeout_seconds = timeout_seconds;
+-  data->simple = g_simple_async_result_new (NULL,
+-                                            callback,
+-                                            user_data,
+-                                            (gpointer*)utils_spawn);
+-  data->main_context = g_main_context_get_thread_default ();
+-  if (data->main_context != NULL)
+-    g_main_context_ref (data->main_context);
+-
+-  data->cancellable = cancellable != NULL ? (GCancellable*)g_object_ref (cancellable) : NULL;
+-
+-  data->child_stdout = g_string_new (NULL);
+-  data->child_stderr = g_string_new (NULL);
+-  data->child_stdout_fd = -1;
+-  data->child_stderr_fd = -1;
+-
+-  /* the life-cycle of UtilsSpawnData is tied to its GSimpleAsyncResult */
+-  g_simple_async_result_set_op_res_gpointer (data->simple, data, (GDestroyNotify) utils_spawn_data_free);
+-
+-  error = NULL;
+-  if (data->cancellable != NULL)
+-    {
+-      /* could already be cancelled */
+-      error = NULL;
+-      if (g_cancellable_set_error_if_cancelled (data->cancellable, &error))
+-        {
+-          g_simple_async_result_take_error (data->simple, error);
+-          g_simple_async_result_complete_in_idle (data->simple);
+-          g_object_unref (data->simple);
+-          goto out;
+-        }
+-
+-      data->cancellable_handler_id = g_cancellable_connect (data->cancellable,
+-                                                            G_CALLBACK (utils_on_cancelled),
+-                                                            data,
+-                                                            NULL);
+-    }
+-
+-  error = NULL;
+-  if (!g_spawn_async_with_pipes (NULL, /* working directory */
+-                                 (gchar **) argv,
+-                                 NULL, /* envp */
+-                                 G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD,
+-                                 NULL, /* child_setup */
+-                                 NULL, /* child_setup's user_data */
+-                                 &(data->child_pid),
+-                                 NULL, /* gint *stdin_fd */
+-                                 &(data->child_stdout_fd),
+-                                 &(data->child_stderr_fd),
+-                                 &error))
+-    {
+-      g_prefix_error (&error, "Error spawning: ");
+-      g_simple_async_result_take_error (data->simple, error);
+-      g_simple_async_result_complete_in_idle (data->simple);
+-      g_object_unref (data->simple);
+-      goto out;
+-    }
+-
+-  if (timeout_seconds > 0)
+-    {
+-      data->timeout_source = g_timeout_source_new_seconds (timeout_seconds);
+-      g_source_set_priority (data->timeout_source, G_PRIORITY_DEFAULT);
+-      g_source_set_callback (data->timeout_source, utils_timeout_cb, data, NULL);
+-      g_source_attach (data->timeout_source, data->main_context);
+-      g_source_unref (data->timeout_source);
+-    }
+-
+-  data->child_watch_source = g_child_watch_source_new (data->child_pid);
+-  g_source_set_callback (data->child_watch_source, (GSourceFunc) utils_child_watch_cb, data, NULL);
+-  g_source_attach (data->child_watch_source, data->main_context);
+-  g_source_unref (data->child_watch_source);
+-
+-  data->child_stdout_channel = g_io_channel_unix_new (data->child_stdout_fd);
+-  g_io_channel_set_flags (data->child_stdout_channel, G_IO_FLAG_NONBLOCK, NULL);
+-  data->child_stdout_source = g_io_create_watch (data->child_stdout_channel, G_IO_IN);
+-  g_source_set_callback (data->child_stdout_source, (GSourceFunc) utils_read_child_stdout, data, NULL);
+-  g_source_attach (data->child_stdout_source, data->main_context);
+-  g_source_unref (data->child_stdout_source);
+-
+-  data->child_stderr_channel = g_io_channel_unix_new (data->child_stderr_fd);
+-  g_io_channel_set_flags (data->child_stderr_channel, G_IO_FLAG_NONBLOCK, NULL);
+-  data->child_stderr_source = g_io_create_watch (data->child_stderr_channel, G_IO_IN);
+-  g_source_set_callback (data->child_stderr_source, (GSourceFunc) utils_read_child_stderr, data, NULL);
+-  g_source_attach (data->child_stderr_source, data->main_context);
+-  g_source_unref (data->child_stderr_source);
+-
+- out:
+-  ;
+-}
+-
+-gboolean
+-utils_spawn_finish (GAsyncResult   *res,
+-                    gint           *out_exit_status,
+-                    gchar         **out_standard_output,
+-                    gchar         **out_standard_error,
+-                    GError        **error)
+-{
+-  GSimpleAsyncResult *simple = G_SIMPLE_ASYNC_RESULT (res);
+-  UtilsSpawnData *data;
+-  gboolean ret = FALSE;
+-
+-  g_return_val_if_fail (G_IS_ASYNC_RESULT (res), FALSE);
+-  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+-
+-  g_warn_if_fail (g_simple_async_result_get_source_tag (simple) == utils_spawn);
+-
+-  if (g_simple_async_result_propagate_error (simple, error))
+-    goto out;
+-
+-  data = (UtilsSpawnData*)g_simple_async_result_get_op_res_gpointer (simple);
+-
+-  if (data->timed_out)
+-    {
+-      g_set_error (error,
+-                   G_IO_ERROR,
+-                   G_IO_ERROR_TIMED_OUT,
+-                   "Timed out after %d seconds",
+-                   data->timeout_seconds);
+-      goto out;
+-    }
+-
+-  if (out_exit_status != NULL)
+-    *out_exit_status = data->exit_status;
+-
+-  if (out_standard_output != NULL)
+-    *out_standard_output = g_strdup (data->child_stdout->str);
+-
+-  if (out_standard_error != NULL)
+-    *out_standard_error = g_strdup (data->child_stderr->str);
+-
+-  ret = TRUE;
+-
+- out:
+-  return ret;
+-}
+diff --git a/src/polkitbackend/polkitbackendjsauthority.cpp b/src/polkitbackend/polkitbackendjsauthority.cpp
+index ca17108..e28091d 100644
+--- a/src/polkitbackend/polkitbackendjsauthority.cpp
++++ b/src/polkitbackend/polkitbackendjsauthority.cpp
+@@ -19,29 +19,7 @@
+  * Author: David Zeuthen <davidz@redhat.com>
+  */
+ 
+-#include "config.h"
+-#include <sys/wait.h>
+-#include <errno.h>
+-#include <pwd.h>
+-#include <grp.h>
+-#ifdef HAVE_NETGROUP_H
+-#include <netgroup.h>
+-#else
+-#include <netdb.h>
+-#endif
+-#include <string.h>
+-#include <glib/gstdio.h>
+-#include <locale.h>
+-#include <glib/gi18n-lib.h>
+-
+-#include <polkit/polkit.h>
+-#include "polkitbackendjsauthority.h"
+-
+-#include <polkit/polkitprivate.h>
+-
+-#ifdef HAVE_LIBSYSTEMD
+-#include <systemd/sd-login.h>
+-#endif /* HAVE_LIBSYSTEMD */
++#include "polkitbackendcommon.h"
+ 
+ #include <js/CompilationAndEvaluation.h>
+ #include <js/ContextOptions.h>
+@@ -52,6 +30,7 @@
+ #include <js/Array.h>
+ #include <jsapi.h>
+ 
++/* Built source and not too big to worry about deduplication */
+ #include "initjs.h" /* init.js */
+ 
+ #ifdef JSGC_USE_EXACT_ROOTING
+@@ -67,10 +46,9 @@
+  * @short_description: JS Authority
+  * @stability: Unstable
+  *
+- * An implementation of #PolkitBackendAuthority that reads and
+- * evalates Javascript files and supports interaction with
+- * authentication agents (virtue of being based on
+- * #PolkitBackendInteractiveAuthority).
++ * An (SpiderMonkey-based) implementation of #PolkitBackendAuthority that reads
++ * and evaluates Javascript files and supports interaction with authentication
++ * agents (virtue of being based on #PolkitBackendInteractiveAuthority).
+  */
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+@@ -100,57 +78,11 @@ static bool execute_script_with_runaway_killer (PolkitBackendJsAuthority *author
+                                     JS::HandleScript                 script,
+                                     JS::MutableHandleValue           rval);
+ 
+-static void utils_spawn (const gchar *const  *argv,
+-                         guint                timeout_seconds,
+-                         GCancellable        *cancellable,
+-                         GAsyncReadyCallback  callback,
+-                         gpointer             user_data);
+-
+-gboolean utils_spawn_finish (GAsyncResult   *res,
+-                             gint           *out_exit_status,
+-                             gchar         **out_standard_output,
+-                             gchar         **out_standard_error,
+-                             GError        **error);
+-
+-static void on_dir_monitor_changed (GFileMonitor     *monitor,
+-                                    GFile            *file,
+-                                    GFile            *other_file,
+-                                    GFileMonitorEvent event_type,
+-                                    gpointer          user_data);
+-
+-/* ---------------------------------------------------------------------------------------------------- */
+-
+-enum
+-{
+-  PROP_0,
+-  PROP_RULES_DIRS,
+-};
+-
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+ static gpointer runaway_killer_thread_func (gpointer user_data);
+ static void runaway_killer_terminate (PolkitBackendJsAuthority *authority);
+ 
+-static GList *polkit_backend_js_authority_get_admin_auth_identities (PolkitBackendInteractiveAuthority *authority,
+-                                                                     PolkitSubject                     *caller,
+-                                                                     PolkitSubject                     *subject,
+-                                                                     PolkitIdentity                    *user_for_subject,
+-                                                                     gboolean                           subject_is_local,
+-                                                                     gboolean                           subject_is_active,
+-                                                                     const gchar                       *action_id,
+-                                                                     PolkitDetails                     *details);
+-
+-static PolkitImplicitAuthorization polkit_backend_js_authority_check_authorization_sync (
+-                                                          PolkitBackendInteractiveAuthority *authority,
+-                                                          PolkitSubject                     *caller,
+-                                                          PolkitSubject                     *subject,
+-                                                          PolkitIdentity                    *user_for_subject,
+-                                                          gboolean                           subject_is_local,
+-                                                          gboolean                           subject_is_active,
+-                                                          const gchar                       *action_id,
+-                                                          PolkitDetails                     *details,
+-                                                          PolkitImplicitAuthorization        implicit);
+-
+ G_DEFINE_TYPE (PolkitBackendJsAuthority, polkit_backend_js_authority, POLKIT_BACKEND_TYPE_INTERACTIVE_AUTHORITY);
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+@@ -229,33 +161,6 @@ polkit_backend_js_authority_init (PolkitBackendJsAuthority *authority)
+                                                  PolkitBackendJsAuthorityPrivate);
+ }
+ 
+-static gint
+-rules_file_name_cmp (const gchar *a,
+-                     const gchar *b)
+-{
+-  gint ret;
+-  const gchar *a_base;
+-  const gchar *b_base;
+-
+-  a_base = strrchr (a, '/');
+-  b_base = strrchr (b, '/');
+-
+-  g_assert (a_base != NULL);
+-  g_assert (b_base != NULL);
+-  a_base += 1;
+-  b_base += 1;
+-
+-  ret = g_strcmp0 (a_base, b_base);
+-  if (ret == 0)
+-    {
+-      /* /etc wins over /usr */
+-      ret = g_strcmp0 (a, b);
+-      g_assert (ret != 0);
+-    }
+-
+-  return ret;
+-}
+-
+ /* authority->priv->cx must be within a request */
+ static void
+ load_scripts (PolkitBackendJsAuthority  *authority)
+@@ -299,7 +204,7 @@ load_scripts (PolkitBackendJsAuthority  *authority)
+         }
+     }
+ 
+-  files = g_list_sort (files, (GCompareFunc) rules_file_name_cmp);
++  files = g_list_sort (files, (GCompareFunc) polkit_backend_common_rules_file_name_cmp);
+ 
+   for (l = files; l != NULL; l = l->next)
+     {
+@@ -365,8 +270,8 @@ load_scripts (PolkitBackendJsAuthority  *authority)
+   g_list_free_full (files, g_free);
+ }
+ 
+-static void
+-reload_scripts (PolkitBackendJsAuthority *authority)
++void
++polkit_backend_common_reload_scripts (PolkitBackendJsAuthority *authority)
+ {
+   JS::RootedValueArray<1> args(authority->priv->cx);
+   JS::RootedValue rval(authority->priv->cx);
+@@ -395,42 +300,6 @@ reload_scripts (PolkitBackendJsAuthority *authority)
+   g_signal_emit_by_name (authority, "changed");
+ }
+ 
+-static void
+-on_dir_monitor_changed (GFileMonitor     *monitor,
+-                        GFile            *file,
+-                        GFile            *other_file,
+-                        GFileMonitorEvent event_type,
+-                        gpointer          user_data)
+-{
+-  PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (user_data);
+-
+-  /* TODO: maybe rate-limit so storms of events are collapsed into one with a 500ms resolution?
+-   *       Because when editing a file with emacs we get 4-8 events..
+-   */
+-
+-  if (file != NULL)
+-    {
+-      gchar *name;
+-
+-      name = g_file_get_basename (file);
+-
+-      /* g_print ("event_type=%d file=%p name=%s\n", event_type, file, name); */
+-      if (!g_str_has_prefix (name, ".") &&
+-          !g_str_has_prefix (name, "#") &&
+-          g_str_has_suffix (name, ".rules") &&
+-          (event_type == G_FILE_MONITOR_EVENT_CREATED ||
+-           event_type == G_FILE_MONITOR_EVENT_DELETED ||
+-           event_type == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT))
+-        {
+-          polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
+-                                        "Reloading rules");
+-          reload_scripts (authority);
+-        }
+-      g_free (name);
+-    }
+-}
+-
+-
+ static void
+ setup_file_monitors (PolkitBackendJsAuthority *authority)
+ {
+@@ -462,7 +331,7 @@ setup_file_monitors (PolkitBackendJsAuthority *authority)
+         {
+           g_signal_connect (monitor,
+                             "changed",
+-                            G_CALLBACK (on_dir_monitor_changed),
++                            G_CALLBACK (polkit_backend_common_on_dir_monitor_changed),
+                             authority);
+           g_ptr_array_add (p, monitor);
+         }
+@@ -471,8 +340,8 @@ setup_file_monitors (PolkitBackendJsAuthority *authority)
+   authority->priv->dir_monitors = (GFileMonitor**) g_ptr_array_free (p, FALSE);
+ }
+ 
+-static void
+-polkit_backend_js_authority_constructed (GObject *object)
++void
++polkit_backend_common_js_authority_constructed (GObject *object)
+ {
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (object);
+ 
+@@ -561,8 +430,8 @@ polkit_backend_js_authority_constructed (GObject *object)
+   g_assert_not_reached ();
+ }
+ 
+-static void
+-polkit_backend_js_authority_finalize (GObject *object)
++void
++polkit_backend_common_js_authority_finalize (GObject *object)
+ {
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (object);
+   guint n;
+@@ -577,7 +446,7 @@ polkit_backend_js_authority_finalize (GObject *object)
+     {
+       GFileMonitor *monitor = authority->priv->dir_monitors[n];
+       g_signal_handlers_disconnect_by_func (monitor,
+-                                            (gpointer*)G_CALLBACK (on_dir_monitor_changed),
++                                            (gpointer*)G_CALLBACK (polkit_backend_common_on_dir_monitor_changed),
+                                             authority);
+       g_object_unref (monitor);
+     }
+@@ -594,11 +463,11 @@ polkit_backend_js_authority_finalize (GObject *object)
+   G_OBJECT_CLASS (polkit_backend_js_authority_parent_class)->finalize (object);
+ }
+ 
+-static void
+-polkit_backend_js_authority_set_property (GObject      *object,
+-                                          guint         property_id,
+-                                          const GValue *value,
+-                                          GParamSpec   *pspec)
++void
++polkit_backend_common_js_authority_set_property (GObject      *object,
++                                                 guint         property_id,
++                                                 const GValue *value,
++                                                 GParamSpec   *pspec)
+ {
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (object);
+ 
+@@ -615,57 +484,12 @@ polkit_backend_js_authority_set_property (GObject      *object,
+     }
+ }
+ 
+-static const gchar *
+-polkit_backend_js_authority_get_name (PolkitBackendAuthority *authority)
+-{
+-  return "js";
+-}
+-
+-static const gchar *
+-polkit_backend_js_authority_get_version (PolkitBackendAuthority *authority)
+-{
+-  return PACKAGE_VERSION;
+-}
+-
+-static PolkitAuthorityFeatures
+-polkit_backend_js_authority_get_features (PolkitBackendAuthority *authority)
+-{
+-  return POLKIT_AUTHORITY_FEATURES_TEMPORARY_AUTHORIZATION;
+-}
+-
+ static void
+ polkit_backend_js_authority_class_init (PolkitBackendJsAuthorityClass *klass)
+ {
+-  GObjectClass *gobject_class;
+-  PolkitBackendAuthorityClass *authority_class;
+-  PolkitBackendInteractiveAuthorityClass *interactive_authority_class;
+-
+-
+-  gobject_class = G_OBJECT_CLASS (klass);
+-  gobject_class->finalize                               = polkit_backend_js_authority_finalize;
+-  gobject_class->set_property                           = polkit_backend_js_authority_set_property;
+-  gobject_class->constructed                            = polkit_backend_js_authority_constructed;
+-
+-  authority_class = POLKIT_BACKEND_AUTHORITY_CLASS (klass);
+-  authority_class->get_name                             = polkit_backend_js_authority_get_name;
+-  authority_class->get_version                          = polkit_backend_js_authority_get_version;
+-  authority_class->get_features                         = polkit_backend_js_authority_get_features;
+-
+-  interactive_authority_class = POLKIT_BACKEND_INTERACTIVE_AUTHORITY_CLASS (klass);
+-  interactive_authority_class->get_admin_identities     = polkit_backend_js_authority_get_admin_auth_identities;
+-  interactive_authority_class->check_authorization_sync = polkit_backend_js_authority_check_authorization_sync;
+-
+-  g_object_class_install_property (gobject_class,
+-                                   PROP_RULES_DIRS,
+-                                   g_param_spec_boxed ("rules-dirs",
+-                                                       NULL,
+-                                                       NULL,
+-                                                       G_TYPE_STRV,
+-                                                       GParamFlags(G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE)));
+-
++  polkit_backend_common_js_authority_class_init_common (klass);
+ 
+   g_type_class_add_private (klass, sizeof (PolkitBackendJsAuthorityPrivate));
+-
+   JS_Init ();
+ }
+ 
+@@ -1099,15 +923,15 @@ call_js_function_with_runaway_killer (PolkitBackendJsAuthority *authority,
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+-static GList *
+-polkit_backend_js_authority_get_admin_auth_identities (PolkitBackendInteractiveAuthority *_authority,
+-                                                       PolkitSubject                     *caller,
+-                                                       PolkitSubject                     *subject,
+-                                                       PolkitIdentity                    *user_for_subject,
+-                                                       gboolean                           subject_is_local,
+-                                                       gboolean                           subject_is_active,
+-                                                       const gchar                       *action_id,
+-                                                       PolkitDetails                     *details)
++GList *
++polkit_backend_common_js_authority_get_admin_auth_identities (PolkitBackendInteractiveAuthority *_authority,
++                                                              PolkitSubject                     *caller,
++                                                              PolkitSubject                     *subject,
++                                                              PolkitIdentity                    *user_for_subject,
++                                                              gboolean                           subject_is_local,
++                                                              gboolean                           subject_is_active,
++                                                              const gchar                       *action_id,
++                                                              PolkitDetails                     *details)
+ {
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (_authority);
+   GList *ret = NULL;
+@@ -1202,16 +1026,16 @@ polkit_backend_js_authority_get_admin_auth_identities (PolkitBackendInteractiveA
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+-static PolkitImplicitAuthorization
+-polkit_backend_js_authority_check_authorization_sync (PolkitBackendInteractiveAuthority *_authority,
+-                                                      PolkitSubject                     *caller,
+-                                                      PolkitSubject                     *subject,
+-                                                      PolkitIdentity                    *user_for_subject,
+-                                                      gboolean                           subject_is_local,
+-                                                      gboolean                           subject_is_active,
+-                                                      const gchar                       *action_id,
+-                                                      PolkitDetails                     *details,
+-                                                      PolkitImplicitAuthorization        implicit)
++PolkitImplicitAuthorization
++polkit_backend_common_js_authority_check_authorization_sync (PolkitBackendInteractiveAuthority *_authority,
++                                                             PolkitSubject                     *caller,
++                                                             PolkitSubject                     *subject,
++                                                             PolkitIdentity                    *user_for_subject,
++                                                             gboolean                           subject_is_local,
++                                                             gboolean                           subject_is_active,
++                                                             const gchar                       *action_id,
++                                                             PolkitDetails                     *details,
++                                                             PolkitImplicitAuthorization        implicit)
+ {
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (_authority);
+   PolkitImplicitAuthorization ret = implicit;
+@@ -1324,65 +1148,6 @@ js_polkit_log (JSContext  *cx,
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+-static const gchar *
+-get_signal_name (gint signal_number)
+-{
+-  switch (signal_number)
+-    {
+-#define _HANDLE_SIG(sig) case sig: return #sig;
+-    _HANDLE_SIG (SIGHUP);
+-    _HANDLE_SIG (SIGINT);
+-    _HANDLE_SIG (SIGQUIT);
+-    _HANDLE_SIG (SIGILL);
+-    _HANDLE_SIG (SIGABRT);
+-    _HANDLE_SIG (SIGFPE);
+-    _HANDLE_SIG (SIGKILL);
+-    _HANDLE_SIG (SIGSEGV);
+-    _HANDLE_SIG (SIGPIPE);
+-    _HANDLE_SIG (SIGALRM);
+-    _HANDLE_SIG (SIGTERM);
+-    _HANDLE_SIG (SIGUSR1);
+-    _HANDLE_SIG (SIGUSR2);
+-    _HANDLE_SIG (SIGCHLD);
+-    _HANDLE_SIG (SIGCONT);
+-    _HANDLE_SIG (SIGSTOP);
+-    _HANDLE_SIG (SIGTSTP);
+-    _HANDLE_SIG (SIGTTIN);
+-    _HANDLE_SIG (SIGTTOU);
+-    _HANDLE_SIG (SIGBUS);
+-#ifdef SIGPOLL
+-    _HANDLE_SIG (SIGPOLL);
+-#endif
+-    _HANDLE_SIG (SIGPROF);
+-    _HANDLE_SIG (SIGSYS);
+-    _HANDLE_SIG (SIGTRAP);
+-    _HANDLE_SIG (SIGURG);
+-    _HANDLE_SIG (SIGVTALRM);
+-    _HANDLE_SIG (SIGXCPU);
+-    _HANDLE_SIG (SIGXFSZ);
+-#undef _HANDLE_SIG
+-    default:
+-      break;
+-    }
+-  return "UNKNOWN_SIGNAL";
+-}
+-
+-typedef struct
+-{
+-  GMainLoop *loop;
+-  GAsyncResult *res;
+-} SpawnData;
+-
+-static void
+-spawn_cb (GObject       *source_object,
+-          GAsyncResult  *res,
+-          gpointer       user_data)
+-{
+-  SpawnData *data = (SpawnData *)user_data;
+-  data->res = (GAsyncResult*)g_object_ref (res);
+-  g_main_loop_quit (data->loop);
+-}
+-
+ static bool
+ js_polkit_spawn (JSContext  *cx,
+                  unsigned    js_argc,
+@@ -1440,21 +1205,21 @@ js_polkit_spawn (JSContext  *cx,
+   g_main_context_push_thread_default (context);
+ 
+   data.loop = loop;
+-  utils_spawn ((const gchar *const *) argv,
+-               10, /* timeout_seconds */
+-               NULL, /* cancellable */
+-               spawn_cb,
+-               &data);
++  polkit_backend_common_spawn ((const gchar *const *) argv,
++                               10, /* timeout_seconds */
++                               NULL, /* cancellable */
++                               polkit_backend_common_spawn_cb,
++                               &data);
+ 
+   g_main_loop_run (loop);
+ 
+   g_main_context_pop_thread_default (context);
+ 
+-  if (!utils_spawn_finish (data.res,
+-                           &exit_status,
+-                           &standard_output,
+-                           &standard_error,
+-                           &error))
++  if (!polkit_backend_common_spawn_finish (data.res,
++                                           &exit_status,
++                                           &standard_output,
++                                           &standard_error,
++                                           &error))
+     {
+       JS_ReportErrorUTF8 (cx,
+                       "Error spawning helper: %s (%s, %d)",
+@@ -1477,7 +1242,7 @@ js_polkit_spawn (JSContext  *cx,
+         {
+           g_string_append_printf (gstr,
+                                   "Helper was signaled with signal %s (%d)",
+-                                  get_signal_name (WTERMSIG (exit_status)),
++                                  polkit_backend_common_get_signal_name (WTERMSIG (exit_status)),
+                                   WTERMSIG (exit_status));
+         }
+       g_string_append_printf (gstr, ", stdout=`%s', stderr=`%s'",
+@@ -1542,381 +1307,5 @@ js_polkit_user_is_in_netgroup (JSContext  *cx,
+   return ret;
+ }
+ 
+-
+-
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+-typedef struct
+-{
+-  GSimpleAsyncResult *simple; /* borrowed reference */
+-  GMainContext *main_context; /* may be NULL */
+-
+-  GCancellable *cancellable;  /* may be NULL */
+-  gulong cancellable_handler_id;
+-
+-  GPid child_pid;
+-  gint child_stdout_fd;
+-  gint child_stderr_fd;
+-
+-  GIOChannel *child_stdout_channel;
+-  GIOChannel *child_stderr_channel;
+-
+-  GSource *child_watch_source;
+-  GSource *child_stdout_source;
+-  GSource *child_stderr_source;
+-
+-  guint timeout_seconds;
+-  gboolean timed_out;
+-  GSource *timeout_source;
+-
+-  GString *child_stdout;
+-  GString *child_stderr;
+-
+-  gint exit_status;
+-} UtilsSpawnData;
+-
+-static void
+-utils_child_watch_from_release_cb (GPid     pid,
+-                                   gint     status,
+-                                   gpointer user_data)
+-{
+-}
+-
+-static void
+-utils_spawn_data_free (UtilsSpawnData *data)
+-{
+-  if (data->timeout_source != NULL)
+-    {
+-      g_source_destroy (data->timeout_source);
+-      data->timeout_source = NULL;
+-    }
+-
+-  /* Nuke the child, if necessary */
+-  if (data->child_watch_source != NULL)
+-    {
+-      g_source_destroy (data->child_watch_source);
+-      data->child_watch_source = NULL;
+-    }
+-
+-  if (data->child_pid != 0)
+-    {
+-      GSource *source;
+-      kill (data->child_pid, SIGTERM);
+-      /* OK, we need to reap for the child ourselves - we don't want
+-       * to use waitpid() because that might block the calling
+-       * thread (the child might handle SIGTERM and use several
+-       * seconds for cleanup/rollback).
+-       *
+-       * So we use GChildWatch instead.
+-       *
+-       * Avoid taking a references to ourselves. but note that we need
+-       * to pass the GSource so we can nuke it once handled.
+-       */
+-      source = g_child_watch_source_new (data->child_pid);
+-      g_source_set_callback (source,
+-                             (GSourceFunc) utils_child_watch_from_release_cb,
+-                             source,
+-                             (GDestroyNotify) g_source_destroy);
+-      /* attach source to the global default main context */
+-      g_source_attach (source, NULL);
+-      g_source_unref (source);
+-      data->child_pid = 0;
+-    }
+-
+-  if (data->child_stdout != NULL)
+-    {
+-      g_string_free (data->child_stdout, TRUE);
+-      data->child_stdout = NULL;
+-    }
+-
+-  if (data->child_stderr != NULL)
+-    {
+-      g_string_free (data->child_stderr, TRUE);
+-      data->child_stderr = NULL;
+-    }
+-
+-  if (data->child_stdout_channel != NULL)
+-    {
+-      g_io_channel_unref (data->child_stdout_channel);
+-      data->child_stdout_channel = NULL;
+-    }
+-  if (data->child_stderr_channel != NULL)
+-    {
+-      g_io_channel_unref (data->child_stderr_channel);
+-      data->child_stderr_channel = NULL;
+-    }
+-
+-  if (data->child_stdout_source != NULL)
+-    {
+-      g_source_destroy (data->child_stdout_source);
+-      data->child_stdout_source = NULL;
+-    }
+-  if (data->child_stderr_source != NULL)
+-    {
+-      g_source_destroy (data->child_stderr_source);
+-      data->child_stderr_source = NULL;
+-    }
+-
+-  if (data->child_stdout_fd != -1)
+-    {
+-      g_warn_if_fail (close (data->child_stdout_fd) == 0);
+-      data->child_stdout_fd = -1;
+-    }
+-  if (data->child_stderr_fd != -1)
+-    {
+-      g_warn_if_fail (close (data->child_stderr_fd) == 0);
+-      data->child_stderr_fd = -1;
+-    }
+-
+-  if (data->cancellable_handler_id > 0)
+-    {
+-      g_cancellable_disconnect (data->cancellable, data->cancellable_handler_id);
+-      data->cancellable_handler_id = 0;
+-    }
+-
+-  if (data->main_context != NULL)
+-    g_main_context_unref (data->main_context);
+-
+-  if (data->cancellable != NULL)
+-    g_object_unref (data->cancellable);
+-
+-  g_slice_free (UtilsSpawnData, data);
+-}
+-
+-/* called in the thread where @cancellable was cancelled */
+-static void
+-utils_on_cancelled (GCancellable *cancellable,
+-                    gpointer      user_data)
+-{
+-  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+-  GError *error;
+-
+-  error = NULL;
+-  g_warn_if_fail (g_cancellable_set_error_if_cancelled (cancellable, &error));
+-  g_simple_async_result_take_error (data->simple, error);
+-  g_simple_async_result_complete_in_idle (data->simple);
+-  g_object_unref (data->simple);
+-}
+-
+-static gboolean
+-utils_read_child_stderr (GIOChannel *channel,
+-                         GIOCondition condition,
+-                         gpointer user_data)
+-{
+-  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+-  gchar buf[1024];
+-  gsize bytes_read;
+-
+-  g_io_channel_read_chars (channel, buf, sizeof buf, &bytes_read, NULL);
+-  g_string_append_len (data->child_stderr, buf, bytes_read);
+-  return TRUE;
+-}
+-
+-static gboolean
+-utils_read_child_stdout (GIOChannel *channel,
+-                         GIOCondition condition,
+-                         gpointer user_data)
+-{
+-  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+-  gchar buf[1024];
+-  gsize bytes_read;
+-
+-  g_io_channel_read_chars (channel, buf, sizeof buf, &bytes_read, NULL);
+-  g_string_append_len (data->child_stdout, buf, bytes_read);
+-  return TRUE;
+-}
+-
+-static void
+-utils_child_watch_cb (GPid     pid,
+-                      gint     status,
+-                      gpointer user_data)
+-{
+-  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+-  gchar *buf;
+-  gsize buf_size;
+-
+-  if (g_io_channel_read_to_end (data->child_stdout_channel, &buf, &buf_size, NULL) == G_IO_STATUS_NORMAL)
+-    {
+-      g_string_append_len (data->child_stdout, buf, buf_size);
+-      g_free (buf);
+-    }
+-  if (g_io_channel_read_to_end (data->child_stderr_channel, &buf, &buf_size, NULL) == G_IO_STATUS_NORMAL)
+-    {
+-      g_string_append_len (data->child_stderr, buf, buf_size);
+-      g_free (buf);
+-    }
+-
+-  data->exit_status = status;
+-
+-  /* ok, child watch is history, make sure we don't free it in spawn_data_free() */
+-  data->child_pid = 0;
+-  data->child_watch_source = NULL;
+-
+-  /* we're done */
+-  g_simple_async_result_complete_in_idle (data->simple);
+-  g_object_unref (data->simple);
+-}
+-
+-static gboolean
+-utils_timeout_cb (gpointer user_data)
+-{
+-  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
+-
+-  data->timed_out = TRUE;
+-
+-  /* ok, timeout is history, make sure we don't free it in spawn_data_free() */
+-  data->timeout_source = NULL;
+-
+-  /* we're done */
+-  g_simple_async_result_complete_in_idle (data->simple);
+-  g_object_unref (data->simple);
+-
+-  return FALSE; /* remove source */
+-}
+-
+-static void
+-utils_spawn (const gchar *const  *argv,
+-             guint                timeout_seconds,
+-             GCancellable        *cancellable,
+-             GAsyncReadyCallback  callback,
+-             gpointer             user_data)
+-{
+-  UtilsSpawnData *data;
+-  GError *error;
+-
+-  data = g_slice_new0 (UtilsSpawnData);
+-  data->timeout_seconds = timeout_seconds;
+-  data->simple = g_simple_async_result_new (NULL,
+-                                            callback,
+-                                            user_data,
+-                                            (gpointer*)utils_spawn);
+-  data->main_context = g_main_context_get_thread_default ();
+-  if (data->main_context != NULL)
+-    g_main_context_ref (data->main_context);
+-
+-  data->cancellable = cancellable != NULL ? (GCancellable*)g_object_ref (cancellable) : NULL;
+-
+-  data->child_stdout = g_string_new (NULL);
+-  data->child_stderr = g_string_new (NULL);
+-  data->child_stdout_fd = -1;
+-  data->child_stderr_fd = -1;
+-
+-  /* the life-cycle of UtilsSpawnData is tied to its GSimpleAsyncResult */
+-  g_simple_async_result_set_op_res_gpointer (data->simple, data, (GDestroyNotify) utils_spawn_data_free);
+-
+-  error = NULL;
+-  if (data->cancellable != NULL)
+-    {
+-      /* could already be cancelled */
+-      error = NULL;
+-      if (g_cancellable_set_error_if_cancelled (data->cancellable, &error))
+-        {
+-          g_simple_async_result_take_error (data->simple, error);
+-          g_simple_async_result_complete_in_idle (data->simple);
+-          g_object_unref (data->simple);
+-          goto out;
+-        }
+-
+-      data->cancellable_handler_id = g_cancellable_connect (data->cancellable,
+-                                                            G_CALLBACK (utils_on_cancelled),
+-                                                            data,
+-                                                            NULL);
+-    }
+-
+-  error = NULL;
+-  if (!g_spawn_async_with_pipes (NULL, /* working directory */
+-                                 (gchar **) argv,
+-                                 NULL, /* envp */
+-                                 GSpawnFlags(G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD),
+-                                 NULL, /* child_setup */
+-                                 NULL, /* child_setup's user_data */
+-                                 &(data->child_pid),
+-                                 NULL, /* gint *stdin_fd */
+-                                 &(data->child_stdout_fd),
+-                                 &(data->child_stderr_fd),
+-                                 &error))
+-    {
+-      g_prefix_error (&error, "Error spawning: ");
+-      g_simple_async_result_take_error (data->simple, error);
+-      g_simple_async_result_complete_in_idle (data->simple);
+-      g_object_unref (data->simple);
+-      goto out;
+-    }
+-
+-  if (timeout_seconds > 0)
+-    {
+-      data->timeout_source = g_timeout_source_new_seconds (timeout_seconds);
+-      g_source_set_priority (data->timeout_source, G_PRIORITY_DEFAULT);
+-      g_source_set_callback (data->timeout_source, utils_timeout_cb, data, NULL);
+-      g_source_attach (data->timeout_source, data->main_context);
+-      g_source_unref (data->timeout_source);
+-    }
+-
+-  data->child_watch_source = g_child_watch_source_new (data->child_pid);
+-  g_source_set_callback (data->child_watch_source, (GSourceFunc) utils_child_watch_cb, data, NULL);
+-  g_source_attach (data->child_watch_source, data->main_context);
+-  g_source_unref (data->child_watch_source);
+-
+-  data->child_stdout_channel = g_io_channel_unix_new (data->child_stdout_fd);
+-  g_io_channel_set_flags (data->child_stdout_channel, G_IO_FLAG_NONBLOCK, NULL);
+-  data->child_stdout_source = g_io_create_watch (data->child_stdout_channel, G_IO_IN);
+-  g_source_set_callback (data->child_stdout_source, (GSourceFunc) utils_read_child_stdout, data, NULL);
+-  g_source_attach (data->child_stdout_source, data->main_context);
+-  g_source_unref (data->child_stdout_source);
+-
+-  data->child_stderr_channel = g_io_channel_unix_new (data->child_stderr_fd);
+-  g_io_channel_set_flags (data->child_stderr_channel, G_IO_FLAG_NONBLOCK, NULL);
+-  data->child_stderr_source = g_io_create_watch (data->child_stderr_channel, G_IO_IN);
+-  g_source_set_callback (data->child_stderr_source, (GSourceFunc) utils_read_child_stderr, data, NULL);
+-  g_source_attach (data->child_stderr_source, data->main_context);
+-  g_source_unref (data->child_stderr_source);
+-
+- out:
+-  ;
+-}
+-
+-gboolean
+-utils_spawn_finish (GAsyncResult   *res,
+-                    gint           *out_exit_status,
+-                    gchar         **out_standard_output,
+-                    gchar         **out_standard_error,
+-                    GError        **error)
+-{
+-  GSimpleAsyncResult *simple = G_SIMPLE_ASYNC_RESULT (res);
+-  UtilsSpawnData *data;
+-  gboolean ret = FALSE;
+-
+-  g_return_val_if_fail (G_IS_ASYNC_RESULT (res), FALSE);
+-  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+-
+-  g_warn_if_fail (g_simple_async_result_get_source_tag (simple) == utils_spawn);
+-
+-  if (g_simple_async_result_propagate_error (simple, error))
+-    goto out;
+-
+-  data = (UtilsSpawnData*)g_simple_async_result_get_op_res_gpointer (simple);
+-
+-  if (data->timed_out)
+-    {
+-      g_set_error (error,
+-                   G_IO_ERROR,
+-                   G_IO_ERROR_TIMED_OUT,
+-                   "Timed out after %d seconds",
+-                   data->timeout_seconds);
+-      goto out;
+-    }
+-
+-  if (out_exit_status != NULL)
+-    *out_exit_status = data->exit_status;
+-
+-  if (out_standard_output != NULL)
+-    *out_standard_output = g_strdup (data->child_stdout->str);
+-
+-  if (out_standard_error != NULL)
+-    *out_standard_error = g_strdup (data->child_stderr->str);
+-
+-  ret = TRUE;
+-
+- out:
+-  return ret;
+-}
+-- 
+GitLab
+
+
+From 4858128107be9c3ab11828ee8f35c5e26efd36ce Mon Sep 17 00:00:00 2001
+From: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+Date: Tue, 14 Sep 2021 14:38:15 -0700
+Subject: [PATCH 15/16] Gitlab CI: add duktape pkgconfig dependency
+
+Make way for the CI to be able to build with duktape too
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ .gitlab-ci.yml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+index 23cf0d6..942415d 100644
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -14,6 +14,7 @@ variables:
+                 libxslt
+                 pkgconfig(gio-2.0)
+                 pkgconfig(mozjs-78)
++                pkgconfig(duktape)
+                 expat-devel
+                 pkgconfig(libsystemd)
+                 pkgconfig(systemd)
+-- 
+GitLab
+
+
+From cd5d6da837fce95f8831a355dad88c83347c7337 Mon Sep 17 00:00:00 2001
+From: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+Date: Mon, 20 Sep 2021 17:17:26 -0700
+Subject: [PATCH 16/16] duktape: implement runaway scripts killer timeout
+
+This was missing on Duktape's JS backend proposal, now in. As
+discussed in
+https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/35 and
+verified by the commit author, Duktape has no interrupt injection
+mechanism (it has no thread-safe API entry whatsoever, even). Using
+DUK_USE_EXEC_TIMEOUT_CHECK is also not feasible, because:
+
+  i) It must be enabled at build time and shared object builds of the
+  lib on distros go with the default options, something we cannot
+  change/control
+
+  ii) That does not account for non-ECMAScript explicit execution
+  contexts, like regex execution, native C calls, etc.
+
+It has been agreed, on that thread, that pthread_cond_timedwait()-ing
+and having proper Duktape evaluation/execution calls take place in a
+separate thread, to be killed after the runaway script killer's
+accorded timeout value, a reasonable approach. We have considered
+using glib wrappers for direct pthread usage, but that way would make
+it impossible to issue
+pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, ...) and we want to
+be paranoid in that regard.
+
+On Duktape, we don't get to err from the JS context (to be captured by
+the offending script), but to be forcibly killed on timeout scenarios,
+leading to null returns, thus polkit negation, by definition. It's a
+reasonable design/compromise.
+
+A fatal error handler routine, for the Duktape context, has also been
+added, using the polkit_backend_authority_log() logging infra to
+better assist users on what went wrong.
+
+Finally, the script evaluation routine has been made to use
+duk_peval_lstring() (previously using _noresult variant), so to able
+to present the user with proper error messages, should any occur.
+
+The original runaway script killer test has been adjusted to please
+both JS backends.
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ meson.build                                   |   1 +
+ src/polkitbackend/meson.build                 |   1 +
+ src/polkitbackend/polkitbackendcommon.h       |   2 +
+ .../polkitbackendduktapeauthority.c           | 236 ++++++++++++++----
+ .../polkitbackendjsauthority.cpp              |  10 +-
+ .../etc/polkit-1/rules.d/10-testing.rules     |   6 +-
+ .../test-polkitbackendjsauthority.c           |   2 +-
+ 7 files changed, 209 insertions(+), 49 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 4e44723..46956e3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -137,6 +137,7 @@ js_engine = get_option('js_engine')
+ if js_engine == 'duktape'
+   js_dep = dependency('duktape')
+   libm_dep = cc.find_library('m')
++  libpthread_dep = cc.find_library('pthread')
+ elif js_engine == 'mozjs'
+   js_dep = dependency('mozjs-78')
+ endif
+diff --git a/src/polkitbackend/meson.build b/src/polkitbackend/meson.build
+index 9ec01b2..4dfea39 100644
+--- a/src/polkitbackend/meson.build
++++ b/src/polkitbackend/meson.build
+@@ -34,6 +34,7 @@ c_flags = [
+ if js_engine == 'duktape'
+   sources += files('polkitbackendduktapeauthority.c')
+   deps += libm_dep
++  deps += libpthread_dep
+ elif js_engine == 'mozjs'
+   sources += files('polkitbackendjsauthority.cpp')
+ endif
+diff --git a/src/polkitbackend/polkitbackendcommon.h b/src/polkitbackend/polkitbackendcommon.h
+index 6d0d267..dd700fc 100644
+--- a/src/polkitbackend/polkitbackendcommon.h
++++ b/src/polkitbackend/polkitbackendcommon.h
+@@ -50,6 +50,8 @@
+ #include <systemd/sd-login.h>
+ #endif /* HAVE_LIBSYSTEMD */
+ 
++#define RUNAWAY_KILLER_TIMEOUT (15)
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
+index a2b4420..80f1976 100644
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -47,8 +47,20 @@ struct _PolkitBackendJsAuthorityPrivate
+   GFileMonitor **dir_monitors; /* NULL-terminated array of GFileMonitor instances */
+ 
+   duk_context *cx;
++
++  pthread_t runaway_killer_thread;
++};
++
++enum
++{
++  RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET,
++  RUNAWAY_KILLER_THREAD_EXIT_STATUS_SUCCESS,
++  RUNAWAY_KILLER_THREAD_EXIT_STATUS_FAILURE,
+ };
+ 
++static gboolean execute_script_with_runaway_killer(PolkitBackendJsAuthority *authority,
++                                                   const gchar *filename);
++
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+ G_DEFINE_TYPE (PolkitBackendJsAuthority, polkit_backend_js_authority, POLKIT_BACKEND_TYPE_INTERACTIVE_AUTHORITY);
+@@ -67,6 +79,15 @@ static const duk_function_list_entry js_polkit_functions[] =
+   { NULL, NULL, 0 },
+ };
+ 
++static void report_error (void     *udata,
++                          const char *msg)
++{
++    PolkitBackendJsAuthority *authority = udata;
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  "fatal Duktape JS backend error: %s",
++                                  (msg ? msg : "no message"));
++}
++
+ static void
+ polkit_backend_js_authority_init (PolkitBackendJsAuthority *authority)
+ {
+@@ -78,7 +99,6 @@ polkit_backend_js_authority_init (PolkitBackendJsAuthority *authority)
+ static void
+ load_scripts (PolkitBackendJsAuthority  *authority)
+ {
+-  duk_context *cx = authority->priv->cx;
+   GList *files = NULL;
+   GList *l;
+   guint num_scripts = 0;
+@@ -123,36 +143,9 @@ load_scripts (PolkitBackendJsAuthority  *authority)
+   for (l = files; l != NULL; l = l->next)
+     {
+       const gchar *filename = (gchar *)l->data;
+-#if (DUK_VERSION >= 20000)
+-      GFile *file = g_file_new_for_path (filename);
+-      char *contents;
+-      gsize len;
+-      if (!g_file_load_contents (file, NULL, &contents, &len, NULL, NULL))
+-        {
+-          polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
+-                                        "Error compiling script %s",
+-                                        filename);
+-          g_object_unref (file);
+-          continue;
+-        }
+ 
+-      g_object_unref (file);
+-      if (duk_peval_lstring_noresult(cx, contents,len) != 0)
+-#else
+-      if (duk_peval_file_noresult (cx, filename) != 0)
+-#endif
+-        {
+-          polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
+-                                        "Error compiling script %s: %s",
+-                                        filename, duk_safe_to_string (authority->priv->cx, -1));
+-#if (DUK_VERSION >= 20000)
+-          g_free (contents);
+-#endif
++      if (!execute_script_with_runaway_killer(authority, filename))
+           continue;
+-        }
+-#if (DUK_VERSION >= 20000)
+-      g_free (contents);
+-#endif
+       num_scripts++;
+     }
+ 
+@@ -232,7 +225,7 @@ polkit_backend_common_js_authority_constructed (GObject *object)
+   PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (object);
+   duk_context *cx;
+ 
+-  cx = duk_create_heap (NULL, NULL, NULL, authority, NULL);
++  cx = duk_create_heap (NULL, NULL, NULL, authority, report_error);
+   if (cx == NULL)
+     goto fail;
+ 
+@@ -243,6 +236,9 @@ polkit_backend_common_js_authority_constructed (GObject *object)
+   duk_put_function_list (cx, -1, js_polkit_functions);
+   duk_put_prop_string (cx, -2, "polkit");
+ 
++  /* load polkit objects/functions into JS context (e.g. addRule(),
++   * _deleteRules(), _runRules() et al)
++   */
+   duk_eval_string (cx, init_js);
+ 
+   if (authority->priv->rules_dirs == NULL)
+@@ -510,6 +506,167 @@ push_action_and_details (duk_context               *cx,
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
++typedef struct {
++  PolkitBackendJsAuthority *authority;
++  const gchar *filename;
++  pthread_cond_t cond;
++  pthread_mutex_t mutex;
++  gint ret;
++} RunawayKillerCtx;
++
++static gpointer
++runaway_killer_thread_execute_js (gpointer user_data)
++{
++  RunawayKillerCtx *ctx = user_data;
++  duk_context *cx = ctx->authority->priv->cx;
++
++  int oldtype;
++
++  pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &oldtype);
++
++#if (DUK_VERSION >= 20000)
++  GFile *file = g_file_new_for_path(ctx->filename);
++  char *contents;
++  gsize len;
++
++  if (!g_file_load_contents(file, NULL, &contents, &len, NULL, NULL)) {
++    polkit_backend_authority_log(POLKIT_BACKEND_AUTHORITY(ctx->authority),
++                                 "Error compiling script %s", ctx->filename);
++    g_object_unref(file);
++    goto err;
++  }
++
++  g_object_unref(file);
++
++  /* evaluate the script, trying to print context in any syntax errors
++     found */
++  if (duk_peval_lstring(cx, contents, len) != 0)
++#else
++  if (duk_peval_file(cx, ctx->filename) != 0)
++#endif
++  {
++    polkit_backend_authority_log(POLKIT_BACKEND_AUTHORITY(ctx->authority),
++                                 "Error compiling script %s: %s", ctx->filename,
++                                 duk_safe_to_string(cx, -1));
++    duk_pop(cx);
++    goto free_err;
++  }
++#if (DUK_VERSION >= 20000)
++  g_free(contents);
++#endif
++
++  ctx->ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_SUCCESS;
++  goto end;
++
++free_err:
++#if (DUK_VERSION >= 20000)
++  g_free(contents);
++#endif
++err:
++  ctx->ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_FAILURE;
++end:
++  pthread_cond_signal(&ctx->cond);
++  return NULL;
++}
++
++static gpointer
++runaway_killer_thread_call_js (gpointer user_data)
++{
++  RunawayKillerCtx *ctx = user_data;
++  duk_context *cx = ctx->authority->priv->cx;
++  int oldtype;
++
++  pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &oldtype);
++
++  if (duk_pcall_prop (cx, 0, 2) != DUK_EXEC_SUCCESS)
++    {
++      polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (ctx->authority),
++                                    "Error evaluating admin rules: ",
++                                    duk_safe_to_string (cx, -1));
++      goto err;
++    }
++
++  ctx->ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_SUCCESS;
++  goto end;
++
++err:
++  ctx->ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_FAILURE;
++end:
++  pthread_cond_signal(&ctx->cond);
++  return NULL;
++}
++
++/* Blocking for at most for RUNAWAY_KILLER_TIMEOUT */
++static gboolean
++execute_script_with_runaway_killer(PolkitBackendJsAuthority *authority,
++                                   const gchar *filename)
++{
++  gint64 end_time;
++  gboolean cancel = FALSE;
++  RunawayKillerCtx ctx = {.authority = authority, .filename = filename,
++                          .ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET,
++                          .mutex = PTHREAD_MUTEX_INITIALIZER,
++                          .cond = PTHREAD_COND_INITIALIZER};
++  struct timespec abs_time;
++
++  pthread_mutex_lock(&ctx.mutex);
++
++  clock_gettime(CLOCK_REALTIME, &abs_time);
++  abs_time.tv_sec += RUNAWAY_KILLER_TIMEOUT;
++
++  pthread_create(&authority->priv->runaway_killer_thread, NULL, runaway_killer_thread_execute_js, &ctx);
++
++  while (ctx.ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET) /* loop to treat spurious wakeups */
++    if (pthread_cond_timedwait(&ctx.cond, &ctx.mutex, &abs_time) == ETIMEDOUT) {
++      cancel = TRUE;
++      break;
++    }
++
++  pthread_mutex_unlock(&ctx.mutex);
++
++  if (cancel)
++    pthread_cancel (authority->priv->runaway_killer_thread);
++  pthread_join (authority->priv->runaway_killer_thread, NULL);
++
++  return ctx.ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_SUCCESS;
++}
++
++/* Calls already stacked function and args. Blocking for at most for
++ * RUNAWAY_KILLER_TIMEOUT
++ */
++static gboolean
++call_js_function_with_runaway_killer(PolkitBackendJsAuthority *authority)
++{
++  gint64 end_time;
++  gboolean cancel = FALSE;
++  RunawayKillerCtx ctx = {.authority = authority,
++                          .ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET,
++                          .mutex = PTHREAD_MUTEX_INITIALIZER,
++                          .cond = PTHREAD_COND_INITIALIZER};
++  struct timespec abs_time;
++
++  pthread_mutex_lock(&ctx.mutex);
++
++  clock_gettime(CLOCK_REALTIME, &abs_time);
++  abs_time.tv_sec += RUNAWAY_KILLER_TIMEOUT;
++
++  pthread_create(&authority->priv->runaway_killer_thread, NULL, runaway_killer_thread_call_js, &ctx);
++
++  while (ctx.ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET) /* loop to treat spurious wakeups */
++    if (pthread_cond_timedwait(&ctx.cond, &ctx.mutex, &abs_time) == ETIMEDOUT) {
++      cancel = TRUE;
++      break;
++    }
++
++  pthread_mutex_unlock(&ctx.mutex);
++
++  if (cancel)
++    pthread_cancel (authority->priv->runaway_killer_thread);
++  pthread_join (authority->priv->runaway_killer_thread, NULL);
++
++  return ctx.ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_SUCCESS;
++}
++
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+ GList *
+@@ -557,13 +714,8 @@ polkit_backend_common_js_authority_get_admin_auth_identities (PolkitBackendInter
+       goto out;
+     }
+ 
+-  if (duk_pcall_prop (cx, 0, 2) != DUK_ERR_NONE)
+-    {
+-      polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
+-                                    "Error evaluating admin rules: ",
+-                                    duk_safe_to_string (cx, -1));
+-      goto out;
+-    }
++  if (!call_js_function_with_runaway_killer (authority))
++    goto out;
+ 
+   ret_str = duk_require_string (cx, -1);
+ 
+@@ -643,15 +795,11 @@ polkit_backend_common_js_authority_check_authorization_sync (PolkitBackendIntera
+       goto out;
+     }
+ 
+-  if (duk_pcall_prop (cx, 0, 2) != DUK_ERR_NONE)
+-  {
+-      polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
+-                                    "Error evaluating authorization rules: ",
+-                                    duk_safe_to_string (cx, -1));
+-      goto out;
+-  }
++  if (!call_js_function_with_runaway_killer (authority))
++    goto out;
+ 
+   if (duk_is_null(cx, -1)) {
++    /* this fine, means there was no match, use implicit authorizations */
+     good = TRUE;
+     goto out;
+   }
+diff --git a/src/polkitbackend/polkitbackendjsauthority.cpp b/src/polkitbackend/polkitbackendjsauthority.cpp
+index e28091d..11e91c0 100644
+--- a/src/polkitbackend/polkitbackendjsauthority.cpp
++++ b/src/polkitbackend/polkitbackendjsauthority.cpp
+@@ -829,11 +829,14 @@ runaway_killer_setup (PolkitBackendJsAuthority *authority)
+ {
+   g_assert (authority->priv->rkt_source == NULL);
+ 
+-  /* set-up timer for runaway scripts, will be executed in runaway_killer_thread */
++  /* set-up timer for runaway scripts, will be executed in
++     runaway_killer_thread, that is one, permanent thread running a glib
++     mainloop (rkt_loop) whose context (rkt_context) has a timeout source
++     (rkt_source) */
+   g_mutex_lock (&authority->priv->rkt_timeout_pending_mutex);
+   authority->priv->rkt_timeout_pending = FALSE;
+   g_mutex_unlock (&authority->priv->rkt_timeout_pending_mutex);
+-  authority->priv->rkt_source = g_timeout_source_new_seconds (15);
++  authority->priv->rkt_source = g_timeout_source_new_seconds (RUNAWAY_KILLER_TIMEOUT);
+   g_source_set_callback (authority->priv->rkt_source, rkt_on_timeout, authority, NULL);
+   g_source_attach (authority->priv->rkt_source, authority->priv->rkt_context);
+ 
+@@ -893,6 +896,9 @@ execute_script_with_runaway_killer (PolkitBackendJsAuthority *authority,
+ {
+   bool ret;
+ 
++  // tries to JS_ExecuteScript(), may hang for > RUNAWAY_KILLER_TIMEOUT,
++  // runaway_killer_thread makes sure the call returns, due to exception
++  // injection
+   runaway_killer_setup (authority);
+   ret = JS_ExecuteScript (authority->priv->cx,
+                           script,
+diff --git a/test/data/etc/polkit-1/rules.d/10-testing.rules b/test/data/etc/polkit-1/rules.d/10-testing.rules
+index 98bf062..e346b5d 100644
+--- a/test/data/etc/polkit-1/rules.d/10-testing.rules
++++ b/test/data/etc/polkit-1/rules.d/10-testing.rules
+@@ -189,8 +189,10 @@ polkit.addRule(function(action, subject) {
+                 ;
+         } catch (error) {
+             if (error == "Terminating runaway script")
+-                return polkit.Result.YES;
+-            return polkit.Result.NO;
++                // Inverted logic to accomodate Duktape's model as well, which
++                // will always fail with negation, on timeouts
++                return polkit.Result.NO;
++            return polkit.Result.YES;
+         }
+     }
+ });
+diff --git a/test/polkitbackend/test-polkitbackendjsauthority.c b/test/polkitbackend/test-polkitbackendjsauthority.c
+index f97e0e0..2103b17 100644
+--- a/test/polkitbackend/test-polkitbackendjsauthority.c
++++ b/test/polkitbackend/test-polkitbackendjsauthority.c
+@@ -328,7 +328,7 @@ static const RulesTestCase rules_test_cases[] = {
+     "net.company.run_away_script",
+     "unix-user:root",
+     NULL,
+-    POLKIT_IMPLICIT_AUTHORIZATION_AUTHORIZED,
++    POLKIT_IMPLICIT_AUTHORIZATION_NOT_AUTHORIZED,
+   },
+ 
+   {
+-- 
+GitLab
 

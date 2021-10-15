@@ -1,15 +1,15 @@
 pkgbase = polkit-duktape
 	pkgdesc = polkit with duktape as the javascript engine
-	pkgver = 0.119
-	pkgrel = 1
+	pkgver = 0.120
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/polkit/
 	arch = x86_64
 	license = LGPL
-	makedepends = intltool
+	checkdepends = python-dbusmock
+	makedepends = meson
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
 	makedepends = git
-	makedepends = autoconf-archive
 	depends = glib2
 	depends = pam
 	depends = expat
@@ -18,9 +18,9 @@ pkgbase = polkit-duktape
 	provides = polkit
 	conflicts = polkit
 	backup = etc/pam.d/polkit-1
-	source = git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=2e5348bf4eb0ef984db32f7f96ec6722d441c6ca
+	source = git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=92b910ce2273daf6a76038f6bd764fa6958d4e8e
 	source = 0001-Add-duktape-as-javascript-engine.patch
 	sha256sums = SKIP
-	sha256sums = b7ffa913e2c6f9ba0ab70e09b2b9d735af909acd128f9b94f4b812914d96eefb
+	sha256sums = a7f8925d074c3bc42b1e3bc09305d047014fc209724e4e9609a1275bf1f3c3a8
 
 pkgname = polkit-duktape
