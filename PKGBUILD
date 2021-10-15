@@ -22,7 +22,7 @@ optdepends=(
     "gtk-engine-murrine: GTK2 support"
     "gnome-themes-extra: GTK2 support"
 )
-source=("${_pkgname}::git+${url}.git#branch=ocean")
+source=("${_pkgname}::git+${url}.git#branch=${_pkgname#*-}")
 sha256sums=(SKIP)
 
 pkgver() {
