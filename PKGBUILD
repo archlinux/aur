@@ -40,5 +40,5 @@ package() {
   install -m0644 -D "$srcdir/whoogle.conf" "$pkgdir/usr/lib/sysusers.d/whoogle.conf"
   install -m0644 -D "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
   install -dm0755 "$pkgdir/opt/whoogle-search"
-  cp -r "$srcdir/$pkgname-search/" "$pkgdir/opt/"
+  cp -r "$srcdir/whoogle-search/" "$pkgdir/opt/"
 }
