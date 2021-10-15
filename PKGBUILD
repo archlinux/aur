@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-lmstag
-pkgver=21.0308
+pkgver=21.0609
 pkgrel=1
 pkgdesc="Additional Battle Tag and Last Man Standing levels for RVGL."
 url='https://re-volt.io/online/tracks'
