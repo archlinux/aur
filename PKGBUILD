@@ -1,3 +1,5 @@
+# Maintainer: TwoFinger
+# Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
 pkgver=21.6
 pkgrel=2
