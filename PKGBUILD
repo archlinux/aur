@@ -2,7 +2,7 @@
 
 _name=transonic
 pkgname=python-${_name}
-pkgver=0.4.10
+pkgver=0.4.11
 pkgrel=1
 pkgdesc="AOT / JIT compiler frontend for modern Python-Numpy code"
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=('python-pytest')
 provides=(${_name})
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('332ec89d8b18d96b1cbe004f6d3d5f6633fe1db5450eafd54e02896d6c0e07cd')
+sha256sums=('257bd1abf3deff71a7fd1c5200c9d55f3ebd7fcc6df8454a49d96b9152818638')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
