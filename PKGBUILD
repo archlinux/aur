@@ -1,4 +1,5 @@
-# Maintainer: j605
+# Maintainer: Max <max@swk-web.com>
+# Contributor: j605
 
 pkgname=paperboy
 _pkgname=pboy
