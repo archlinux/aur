@@ -13,7 +13,7 @@ url='https://download.substance3d.com/substance-painter'
 license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip') # PNG assets here should be left untouched!
-# https://download.substance3d.com/adobe-substance-3d-painter/7.x/Adobe_Substance_3D_Painter-7.2.2-1163-linux-x64-standard.rpm
+# https://download.substance3d.com/adobe-substance-3d-painter/7.x/Adobe_Substance_3D_Painter-7.2.3-1197-linux-x64-standard.rpm
 source=("https://download.substance3d.com/adobe-substance-3d-painter/7.x/Adobe_Substance_3D_Painter-${pkgver}-${_build}-linux-x64-standard.rpm")
 
 sha256sums=('8f6949966d364559b0b86aae6a768d7c56452610a83bdb8501d16454a7730aac')
