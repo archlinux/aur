@@ -1,7 +1,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Syncing dotfiles and more"
 arch=("any")
@@ -40,5 +40,6 @@ check() {
 package() {
     cd "dt-$pkgver"
     install -Dm755 "target/release/dt-cli" "$pkgdir/usr/bin/dt-cli"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/dt/LICENSE"
+    install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
+    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
 }
