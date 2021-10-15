@@ -1,0 +1,8 @@
+pkgbase = wireguard-tools-china
+	pkgdesc = wireguard tools for china
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+
+pkgname = wireguard-tools-china
