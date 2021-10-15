@@ -1,6 +1,6 @@
 pkgname=globus-connect-personal
 _pkgname=globusconnectpersonal
-pkgver=3.1.2
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="Globus Connect Personal turns your laptop or other personal computer into a Globus endpoint with a just a few clicks."
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=("https://downloads.globus.org/globus-connect-personal/linux/stable/globu
         "$pkgname.service"
         "$pkgname@.service"
         "globusconnect")
-sha256sums=('f4217a215885094a164e3c69c0f720cb420eaba89b81a3c4872c84d9bbdaa7c6'
-            'e02212562b046dbe6d92e9a0ecd9aead22c6fec85a525a4e7c05451b1d76aec1'
+sha256sums=('141d640996689ad50973babbbbcad458f0120e2449bf3fe04b1eba9bef06ae33'
+            'eb12fd5d5d4e111f8a45af5f9ea803203f5c91a513287ba2d15547321fb7a59a'
             '211cca27d2e2fa963606d1d29ceb2d71b333cc33de9a85821d5c85aac36a4a9e'
             'a33e11761644011264a467d3ecf90147fed308b33e8915569cc4d65b2089ff2b'
             'd5fdbd95707bce40f1e6db29f528328eeb03f364aa33d2021a03b01f6174f916')
