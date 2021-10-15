@@ -2,7 +2,7 @@
 
 pkgname=tiup-bin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A component manager for TiDB"
 arch=(x86_64)
 url="https://github.com/pingcap/tiup"
@@ -17,5 +17,5 @@ sha256sums=('SKIP')
 
 package() {
 	# package
-	install -D -m755 $srcdir/tiup $pkgdir/usr/bin/tiup
+	install -D -m755 "$srcdir/bin/tiup*" $pkgdir/usr/bin/
 }

@@ -1,7 +1,7 @@
 pkgbase = tiup-bin
 	pkgdesc = A component manager for TiDB
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pingcap/tiup
 	arch = x86_64
 	license = Apache-2
