@@ -1,7 +1,7 @@
 # Maintainer: Todd E Johnson <todd@toddejohnson.net>
-options=(debug !strip libtool staticlibs !ccache !distcc !zipman docs emptydirs) 
+options=(!strip !buildflags debug )
 pkgname=trunk-recorder-git
-pkgver=r1619.30f26ab
+pkgver=r1621.ca33f8d
 pkgrel=1
 pkgdesc="Records calls from a Trunked Radio System (P25 & SmartNet)"
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
@@ -29,11 +29,8 @@ prepare() {
   mkdir build
 }
 build() {
-  CFLAGS=${CFLAGS/-fvar-tracking-assignments}
-  CXXFLAGS=${CXXFLAGS/-fvar-tracking-assignments}
   cd build
   cmake "../${pkgname}" \
-    -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_INSTALL_PREFIX=/usr
   make -j $(nproc)
 }
