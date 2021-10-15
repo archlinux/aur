@@ -2,7 +2,7 @@
 
 _pkgname='youki'
 pkgname="${_pkgname}-git"
-pkgver=r999.53bbdc2
+pkgver=r1007.5ae2385
 pkgrel=1
 pkgdesc="A container runtime written in rust"
 arch=('x86_64')
