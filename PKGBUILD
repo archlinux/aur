@@ -17,8 +17,7 @@ sha256sums=('SKIP')
 
 package() {
 	# package
-	for bin in $srcdir/bin/tiup*; do
-		echo $bin
+	for bin in $(basename $srcdir/bin/tiup*); do
 		install -D -m755 $bin $pkgdir/usr/bin/$bin
 	done
 }
