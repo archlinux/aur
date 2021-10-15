@@ -1,18 +1,16 @@
 # Maintainer : Ista Zahn <istazahn@gmail.com>
 ## Based on miniconda3 aur package by Ashwin Vishn Immae, Martin Wimpress and Jingbei Li
 pkgname=mambaforge
-pkgver=4.10.2
+pkgver=4.10.3.7
 pkgrel=1
+pkg_ver=4.10.3-7
 pkgdesc="Conda and Mamba package managers configured to use conda-forge."
 arch=('x86_64')
 url="https://github.com/conda-forge/miniforge"
 license=("BSD-3-Clause")
-source=("Mambaforge-${pkgver}.sh::https://github.com/conda-forge/miniforge/releases/download/${pkgver}-0/Mambaforge-${pkgver}-0-Linux-x86_64.sh"
-        "$pkgname.install")
+source=("Mambaforge-${pkgver}.sh::https://github.com/conda-forge/miniforge/releases/download/${pkg_ver}/Mambaforge-${pkg_ver}-Linux-x86_64.sh")
 options=(!strip libtool staticlibs)
-sha256sums=('1e89ee86afa06e23b2478579be16a33fff6cff346314f6a6382fd20b1f83e669'
-            '1df814280df859c40cd7dd1f7ff2552ca72dfbf9cde083f52e55c557b93d8977')
-install="$pkgname.install"
+sha256sums=('fc872522ec427fcab10167a93e802efaf251024b58cc27b084b915a9a73c4474')
 
 package() {
 	prefix="${pkgdir}/opt/${pkgname}"
@@ -32,3 +30,15 @@ package() {
 	msg2 "Installing license"
 	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+ipost_install(){
+        echo -e '
+If your shell is Bash or a Bourne variant, enable conda for the current user with
+
+    $ echo "[ -f /opt/mambaforge/etc/profile.d/conda.sh ] && source /opt/mambaforge/etc/profile.d/conda.sh" >> ~/.bashrc
+
+or, for all users, enable conda with
+
+    $ sudo ln -s /opt/mambaforge/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+'
+}
+
