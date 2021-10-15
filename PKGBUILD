@@ -4,7 +4,7 @@
 
 pkgname=powershell
 _binaryname=pwsh
-_pkgver=7.1.4
+_pkgver=7.1.5
 _pkgnum=${_pkgver:0:1}
 pkgver=${_pkgver/-/.}
 pkgrel=2
