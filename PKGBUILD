@@ -28,7 +28,7 @@ build() {
   cd build
   cmake "../${pkgname}-${_dlpkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make -j $(nproc)
+  make
 }
 
 package() {
