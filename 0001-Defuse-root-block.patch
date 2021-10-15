@@ -19,7 +19,7 @@ Index: kate/main.cpp
 @@ -46,21 +46,10 @@
  int main(int argc, char **argv)
  {
- #ifndef Q_OS_WIN
+ #if !defined(Q_OS_WIN) && !defined(Q_OS_HAIKU)
 -    // Prohibit using sudo or kdesu (but allow using the root user directly)
 +    // Allow running Kate as root, but with a warning
      if (getuid() == 0) {
@@ -48,7 +48,7 @@ Index: kwrite/main.cpp
 @@ -38,21 +38,10 @@
  extern "C" Q_DECL_EXPORT int main(int argc, char **argv)
  {
- #ifndef Q_OS_WIN
+ #if !defined(Q_OS_WIN) && !defined(Q_OS_HAIKU)
 -    // Prohibit using sudo or kdesu (but allow using the root user directly)
 +    // Allow running KWrite as root, but with a warning
      if (getuid() == 0) {
