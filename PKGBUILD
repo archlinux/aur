@@ -4,7 +4,7 @@ pkgdesc="ROS - The nodelet package is designed to provide a way to run multiple 
 url='https://wiki.ros.org/nodelet'
 
 pkgname='ros-noetic-nodelet'
-pkgver='1.10.1'
+pkgver='1.10.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -46,7 +46,7 @@ depends=(
 
 _dir="nodelet_core-${pkgver}/nodelet"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/nodelet_core/archive/${pkgver}.tar.gz")
-sha256sums=('0130cb6d52985927442fa5d80d109c57defaf4b4983abc951a0ef59e7f98c654')
+sha256sums=('9b49a06721ca23c76965937f1a5673cdb6250384d9bd89c1b0fdef5ecd2b83b2')
 
 build() {
 	# Use ROS environment variables.
