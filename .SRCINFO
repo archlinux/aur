@@ -37,7 +37,7 @@ pkgbase = vscodium-git
 	conflicts = vscodium
 	conflicts = vscodium-bin
 	source = git+https://github.com/VSCodium/vscodium.git#branch=master
-	source = git+https://github.com/microsoft/vscode.git#tag=1.61.0
+	source = git+https://github.com/microsoft/vscode.git#tag=1.61.1
 	source = vscodium.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
