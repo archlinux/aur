@@ -1,8 +1,9 @@
 pkgbase = pop-launcher
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cargo
 	depends = fd
@@ -15,7 +16,9 @@ pkgname = pop-launcher
 	pkgdesc = Modular IPC-based desktop launcher service
 	optdepends = pop-launcher-system76-power
 
-pkgname = pop-launcher-system76-power
+pkgname = pop-shell-plugin-system76-power
 	pkgdesc = System76 Power scripts for the launcher
-	depends = pop-launcher
+	depends = pop-shell
 	depends = system76-power
+	conflicts = pop-launcher-system76-power
+	replaces = pop-launcher-system76-power

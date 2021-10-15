@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-pkgname=('pop-launcher' 'pop-launcher-system76-power')
+pkgname=('pop-launcher' 'pop-shell-plugin-system76-power')
 pkgbase=pop-launcher
 pkgver=1.0.1
-pkgrel=1
-arch=('x86_64')
+pkgrel=2
+arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('GPL3')
 depends=('fd' 'gtk3' 'libqalculate')
@@ -13,6 +13,7 @@ sha256sums=('92927d1133648bcab4e960219e14d4681f921f458b653a4ed39f35678263957b')
 
 prepare() {
   cd "launcher-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -35,9 +36,11 @@ package_pop-launcher() {
   rm -rf "$pkgdir/usr/lib/$pkgbase/scripts/system76-power"
 }
 
-package_pop-launcher-system76-power() {
+package_pop-shell-plugin-system76-power() {
   pkgdesc="System76 Power scripts for the launcher"
-  depends=('pop-launcher' 'system76-power')
+  depends=('pop-shell' 'system76-power')
+  conflicts=('pop-launcher-system76-power')
+  replaces=('pop-launcher-system76-power')
 
   cd "launcher-$pkgver"
   install -d "$pkgdir/usr/lib/$pkgbase/scripts"
