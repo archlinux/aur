@@ -1,14 +1,15 @@
 pkgbase = sqlc
-	pkgdesc = Generate type safe Go from SQL
-	pkgver = 1.6.0
+	pkgdesc = Compile SQL to type-safe Go
+	pkgver = 1.10.0
 	pkgrel = 1
-	url = https://github.com/kyleconroy/sqlc
+	url = https://sqlc.dev
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = sqlc-1.6.0.tar.gz::https://github.com/kyleconroy/sqlc/archive/v1.6.0.tar.gz
-	sha256sums = a95a123f29a71f5a2eea0811e4590d59cbc92eccd407abe93c110c738fc4740b
+	depends = glibc
+	source = sqlc-1.10.0.tar.gz::https://github.com/kyleconroy/sqlc/archive/v1.10.0.tar.gz
+	sha512sums = 72957c6dc2e3a88033a91d10a0943d380d3d97fd4e4b4f0eb6563d3e7df2d2b6c291258f5c1a80564ad6122393985617e204a2985876cc25dabb922bb72c7f97
+	b2sums = f5fd227b3b1d0c9a12f1ae2249d05e52765ac512e9357da6afa98f074ccf1a41365978889ffe3a51c40e9bf076685d08bd3eba5e06670ebe676ceec4f74ac50c
 
 pkgname = sqlc
-
