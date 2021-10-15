@@ -1,5 +1,5 @@
 diff --git a/ares-PLACEHOLDER/desktop-ui/desktop-ui.cpp b/ares-PLACEHOLDER/desktop-ui/desktop-ui.cpp
-@@ -15,8 +15,19 @@
+@@ -15,8 +15,11 @@
      if(inode::exists(location)) return location;
    #endif
  
@@ -7,14 +7,6 @@ diff --git a/ares-PLACEHOLDER/desktop-ui/desktop-ui.cpp b/ares-PLACEHOLDER/deskt
 -  return {Path::userData(), "ares/", name};
 +  location = {Path::sharedData(), "ares/", name};
 +  if(inode::exists(location)) return location;
-+
-+  if(directory::exists({Path::userSettings(), "lucia/"})) {
-+    directory::rename({Path::userSettings(), "lucia/"}, {Path::userSettings(), "ares/"});
-+  }
-+
-+  if(directory::exists({Path::userData(), "lucia/"})) {
-+    directory::rename({Path::userData(), "lucia/"}, {Path::userData(), "ares/"});
-+  }
 +
 +  directory::create({Path::userSettings(), "ares/"});
 +  return {Path::userSettings(), "ares/", name};

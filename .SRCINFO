@@ -1,6 +1,6 @@
 pkgbase = ares-emu
 	pkgdesc = Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support
-	pkgver = 123
+	pkgver = 124
 	pkgrel = 1
 	url = https://ares-emulator.github.io/
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = ares-emu
 	depends = vulkan-icd-loader
 	provides = ares-emu
 	conflicts = ares-emu
-	source = https://github.com/higan-emu/ares/archive/refs/tags/v123.tar.gz
+	source = https://github.com/higan-emu/ares/archive/refs/tags/v124.tar.gz
 	source = ares-paths.patch
-	sha256sums = e168cc4aa1397a6603fcf8914cb4e602138370322a422f165cc0ae508cf4e7ac
-	sha256sums = 2a9a9faa65d2bc9f34438e52798ac6371afb1632dd502328c381153b3c9adb10
+	sha256sums = 4d5c906c5cd5d145dd1324dd41a521366c62130a5234ac5d6f8d8dc03279d4e0
+	sha256sums = c58222c38315197a8a6b1635958dcd99f97056dbb82db93096e94c376f500376
 
 pkgname = ares-emu

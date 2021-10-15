@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=123
+pkgver=124
 pkgrel=1
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support"
 arch=(x86_64 i686)
@@ -13,15 +13,14 @@ provides=(ares-emu)
 conflicts=(ares-emu)
 source=("https://github.com/higan-emu/ares/archive/refs/tags/v${pkgver}.tar.gz"
         "ares-paths.patch")
-sha256sums=("e168cc4aa1397a6603fcf8914cb4e602138370322a422f165cc0ae508cf4e7ac"
-        "2a9a9faa65d2bc9f34438e52798ac6371afb1632dd502328c381153b3c9adb10")
+sha256sums=("4d5c906c5cd5d145dd1324dd41a521366c62130a5234ac5d6f8d8dc03279d4e0"
+        "c58222c38315197a8a6b1635958dcd99f97056dbb82db93096e94c376f500376")
 
 prepare() {
   # Replace the placeholder with pkgver to automatically point at the source folder
   sed -i "s/PLACEHOLDER/${pkgver}/g" "${srcdir}/ares-paths.patch"
 
   # Patch Ares so that it can look for its files that are installed system-wide here
-  # In v123 lucia has been changed to ares, so for this version only we rename the folder in .config/ and .local/share/
   patch -Np1 -i "${srcdir}/ares-paths.patch"
 }
 
@@ -32,7 +31,7 @@ build() {
 package() {
   install -Dm 644 "${srcdir}/ares-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 755 "${srcdir}/ares-${pkgver}/desktop-ui/out/ares" -t "${pkgdir}/usr/bin/"
-  install -Dm 644 "${srcdir}/ares-${pkgver}/desktop-ui/resource/ares.png" -t "${pkgdir}/usr/share/icons/"
+  install -Dm 644 "${srcdir}/ares-${pkgver}/desktop-ui/resource/ares.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
   install -Dm 644 "${srcdir}/ares-${pkgver}/desktop-ui/resource/ares.desktop" -t "${pkgdir}/usr/share/applications/"
 
   # Also install the shaders in Ares' shared directory
