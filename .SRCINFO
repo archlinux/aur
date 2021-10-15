@@ -1,0 +1,14 @@
+pkgbase = tiup-bin
+	pkgdesc = A component manager for TiDB
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/pingcap/tiup
+	arch = x86_64
+	license = Apache-2
+	provides = tiup
+	conflicts = tiup
+	conflicts = tiup-git
+	source = https://github.com/pingcap/tiup/releases/download/v1.6.0/tiup-v1.6.0-linux-amd64.tar.gz
+	sha256sums = SKIP
+
+pkgname = tiup-bin
