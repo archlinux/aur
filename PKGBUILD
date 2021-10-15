@@ -2,13 +2,13 @@
 
 pkgname=betaflight-configurator-bin
 _pkgname=betaflight-configurator
-pkgver=10.7.0
+pkgver=10.7.1
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the Betaflight flight control system"
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
 source=("https://github.com/betaflight/betaflight-configurator/releases/download/$pkgver/betaflight-configurator_"$pkgver"_linux64.zip")
-sha256sums=('a1aa09c9d14478285e441af41d0a0d265d4608b8c2acd24fd5e509419205261f')
+sha256sums=('98c8f2ed57bbc0498fc64026bb1d166a152027ceb29675993f8b260d9781b3c4')
 options=(!strip)
 license=('GPL3')
 conflicts=('betaflight-configurator')
