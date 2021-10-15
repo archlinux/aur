@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qemu' 'coreutils' 'grep' 'jq' 'procps' 'python3' 'cdrtools' 'usbutils' 'util-linux' 'sed' 'spice-gtk' 'swtpm' 'wget' 'xorg-xrandr' 'zsync' 'edk2-ovmf')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname-$pkgver.tar.gz"::'https://github.com/wimpysworld/quickemu/archive/refs/tags/2.2.3.tar.gz')
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/wimpysworld/quickemu/archive/refs/tags/$pkgver.tar.gz")
 md5sums=("38cbaa95a18a6c98b9444a49263c64d4")
 
 prepare() {
