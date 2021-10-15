@@ -1,0 +1,11 @@
+--- a/fileio/@gifti/private/miniz.c	2021-06-01 19:58:59.000000000 +0200
++++ b/fileio/@gifti/private/miniz.c	2021-10-15 18:43:05.397466073 +0200
+@@ -177,7 +177,7 @@
+ #endif
+ 
+ #include <stddef.h>
+-
++#include <stdint.h>
+ #if !defined(MINIZ_NO_TIME) && !defined(MINIZ_NO_ARCHIVE_APIS)
+ #include <time.h>
+ #endif
