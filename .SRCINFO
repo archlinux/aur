@@ -1,8 +1,8 @@
 pkgbase = qliveplayer-git
 	pkgdesc = Cute and useful Live Stream Player with danmaku support.
-	pkgver = 4.0.1.r0.gcd30fe8
-	pkgrel = 2
-	url = https://github.com/IsoaSFlus/QLivePlayer
+	pkgver = 4.1.0.r0.gfd6b39a
+	pkgrel = 1
+	url = https://github.com/THMonster/QLivePlayer
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
@@ -18,8 +18,8 @@ pkgbase = qliveplayer-git
 	depends = qt5-quickcontrols
 	provides = qliveplayer
 	conflicts = qliveplayer
-	source = QLivePlayer::git+https://github.com/IsoaSFlus/QLivePlayer.git
-	source = QLivePlayer-Lib::git+https://github.com/IsoaSFlus/QLivePlayer-Lib.git#branch=dev
+	source = QLivePlayer::git+https://github.com/THMonster/QLivePlayer.git
+	source = QLivePlayer-Lib::git+https://github.com/THMonster/QLivePlayer-Lib.git#branch=dev
 	sha256sums = SKIP
 	sha256sums = SKIP
 
