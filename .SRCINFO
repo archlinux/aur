@@ -1,13 +1,12 @@
 pkgbase = shortwave-bin-hack
 	pkgdesc = Find and listen to internet radio stations.
 	pkgver = f6e31bf9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Shortwave/
 	arch = any
 	license = GPL
-	makedepends = rustup
+	makedepends = cargo
 	makedepends = ostree
-	makedepends = glib2
 	depends = gst-plugins-bad
 	depends = libadwaita
 	depends = libsoup
