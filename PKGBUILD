@@ -78,7 +78,7 @@ _major=5.10
 pkgver=${_major}.73
 _branch=5.x
 xanmod=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Xanmod LTS'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -149,6 +149,7 @@ prepare() {
   rm ../linux510-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
   rm ../linux510-$__commit/0105-ucsi-acpi.patch
   rm ../linux510-$__commit/0106-ucsi.patch
+  rm ../linux510-$__commit/0101-i2c-nuvoton-nc677x-hwmon-driver.patch
 
   local _patch
   for _patch in ../linux510-$__commit/*; do
