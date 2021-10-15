@@ -34,7 +34,9 @@ build() {
 }
 
 package() {
+  install -dm0755 "$pkgdir/usr/lib/sysusers.d"
   install -m0644 "$srcdir/whoogle.conf" "$pkgdir/usr/lib/sysusers.d/whoogle.conf"
+  install -dm0755 "$pkgdir/usr/lib/systemd/system"
   install -m0644 "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
   install -dm0755 "$pkgdir/opt/whoogle-search"
   cp -r "$srcdir/$pkgname-search/" "$pkgdir/opt/"
