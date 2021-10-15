@@ -1,6 +1,6 @@
 # Maintainer: Alexander Courtis <alex@courtis.org>
 pkgname=way-displays
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="way-displays: Manage Your Wayland Displays"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/alex-courtis/way-displays"
 license=('MIT')
 depends=('wayland' 'wlroots' 'libinput' 'yaml-cpp')
 makedepends=('git' 'make' 'gcc')
-source=("https://github.com/alex-courtis/way-displays/archive/refs/tags/1.0.0.tar.gz")
-sha256sums=('5d51b74f7c9ea21c7503222d84a9f74f3832890bc7d0b86201033f56395e7a42')
+source=("https://github.com/alex-courtis/way-displays/archive/refs/tags/1.0.1.tar.gz")
+sha256sums=('51c357664fdc9641f73999368b7d1cfe86e620f6f7f32e1eccf5fd48dcfbae72')
 
 build() {
 	cd "$pkgname-$pkgver"
