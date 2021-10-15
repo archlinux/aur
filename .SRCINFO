@@ -1,0 +1,19 @@
+pkgbase = juno-ocean-theme-git
+	pkgdesc = GTK themes inspired by epic vscode themes
+	pkgver = r124.c76453a
+	pkgrel = 1
+	url = https://github.com/EliverLara/Juno
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = inkscape
+	makedepends = optipng
+	optdepends = ttf-roboto: default font for gnome-shell
+	optdepends = gtk-engine-murrine: GTK2 support
+	optdepends = gnome-themes-extra: GTK2 support
+	provides = juno-ocean-theme
+	conflicts = juno-ocean-theme
+	source = Juno-ocean::git+https://github.com/EliverLara/Juno.git#branch=ocean
+	sha256sums = SKIP
+
+pkgname = juno-ocean-theme-git
