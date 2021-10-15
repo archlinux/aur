@@ -1,0 +1,21 @@
+diff --unified --recursive --text mumble.orig/src/mumble/MainWindow.cpp mumble.new/src/mumble/MainWindow.cpp
+--- mumble.orig/src/mumble/MainWindow.cpp	2021-10-15 17:41:39.557311268 -0400
++++ mumble.new/src/mumble/MainWindow.cpp	2021-10-15 17:42:28.590370257 -0400
+@@ -2778,7 +2778,7 @@
+ 	Global::get().iPrevTarget = 0;
+ 	if (down) {
+ 		Global::get().uiDoublePush = Global::get().tDoublePush.restart();
+-		Global::get().iPushToTalk++;
++		Global::get().iPushToTalk = 1;
+ 	} else if (Global::get().iPushToTalk > 0) {
+ 		QTimer::singleShot(static_cast< int >(Global::get().s.pttHold), this, SLOT(pttReleased()));
+ 	}
+@@ -2786,7 +2786,7 @@
+ 
+ void MainWindow::pttReleased() {
+ 	if (Global::get().iPushToTalk > 0) {
+-		Global::get().iPushToTalk--;
++		Global::get().iPushToTalk = 0;
+ 	}
+ }
+ 

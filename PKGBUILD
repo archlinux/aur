@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r170.g1bcbb7970
+pkgver=1.4.0.development.snapshot.006.r282.gc453a8bde
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -27,8 +27,9 @@ conflicts=("$_pkgname")
 source=('git://github.com/mumble-voip/mumble.git'
         'git://github.com/mumble-voip/celt-0.7.0.git'
         'git://github.com/mumble-voip/opus.git'
-        'git://github.com/mumble-voip/speex.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+        'git://github.com/mumble-voip/speex.git'
+        'mumble_one_ptt.patch')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -43,6 +44,8 @@ prepare() {
   git config submodule.3rdparty/opus.url "$srcdir/opus"
   git config submodule.3rdparty/speex.url "$srcdir/speex"
   git submodule update
+
+  patch --forward --strip=1 --input="${srcdir}/mumble_one_ptt.patch"
 }
 
 build() {
