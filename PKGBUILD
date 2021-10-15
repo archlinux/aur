@@ -1,15 +1,16 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# based on core/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-git
-pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.14.r1017101.93c5bcd4eaaa
+pkgdesc='Linux kernel with WIP AMDGPU material'
+pkgver=.r1031518.8f0284f190e6
 _product="${pkgbase%-git}"
-_kernel_rel=5.14
-_branch=drm-next-${_kernel_rel}
+# _kernel_rel=5.16
+# _branch=drm-next-${_kernel_rel}
+_branch=drm-next
 pkgrel=1
 arch=(x86_64)
-url='https://gitlab.freedesktop.org/drm/amd'
+url=https://gitlab.freedesktop.org/drm/amd
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
@@ -23,7 +24,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84')
+            'f5d3635520c9eb9519629f6df0d9a58091ed4b1ea4ddb1acd5caf5822d91a060')
 
 pkgver() {
   cd "${_srcname}"
@@ -55,6 +56,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"

@@ -1,6 +1,6 @@
 pkgbase = linux-amd-git
-	pkgdesc = Linux kernel with AMDGPU WIP patches
-	pkgver = 5.14.r1017101.93c5bcd4eaaa
+	pkgdesc = Linux kernel with WIP AMDGPU material
+	pkgver = .r1031518.8f0284f190e6
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/drm/amd
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = linux-amd-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-agd5f::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=drm-next-5.14
+	source = linux-agd5f::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=drm-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = 6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84
+	sha256sums = f5d3635520c9eb9519629f6df0d9a58091ed4b1ea4ddb1acd5caf5822d91a060
 
 pkgname = linux-amd-git
-	pkgdesc = The Linux kernel with AMDGPU WIP patches kernel and modules
+	pkgdesc = The Linux kernel with WIP AMDGPU material kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -38,8 +38,8 @@ pkgname = linux-amd-git
 	replaces = wireguard-arch
 
 pkgname = linux-amd-headers-git
-	pkgdesc = Headers and scripts for building modules for the Linux kernel with AMDGPU WIP patches kernel
+	pkgdesc = Headers and scripts for building modules for the Linux kernel with WIP AMDGPU material kernel
 	depends = pahole
 
 pkgname = linux-amd-docs-git
-	pkgdesc = Documentation for the Linux kernel with AMDGPU WIP patches kernel
+	pkgdesc = Documentation for the Linux kernel with WIP AMDGPU material kernel
