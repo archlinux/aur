@@ -1,4 +1,5 @@
-# Maintainer: Nick Boughton <nicholasboughton@gmail.com>
+# Maintainer: tjbp <archlinux@tjbp.net>
+# Contributor: Nick Boughton <nicholasboughton@gmail.com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: GFdevelop
 
@@ -7,7 +8,7 @@ _npmname=cli
 _npmid="@$_npmscope/$_npmname"
 
 pkgname="${_npmscope}-${_npmname}"
-pkgver=4.5.13
+pkgver=4.5.14
 pkgrel=1
 pkgdesc='Standard tooling for Vue.js development'
 arch=('any')
@@ -19,7 +20,7 @@ optdepends=()
 conflicts=('nodejs-vue-cli' 'vue')
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname-$pkgver.tgz")
 noextract=("${source[@]%%::*}")
-sha256sums=('540e6931c55f4b73487a5b714fb57a2e697c40aa6796aac7e85a8ec98cdbdd53')
+sha256sums=('9a3ff95a13f46c5dbdfedb6f59498c78de6ab533f9ae8634a00ed0d26d386fcc')
 
 package() {
   mkdir -p "${pkgdir}"/usr/lib
