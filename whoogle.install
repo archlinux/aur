@@ -1,4 +1,5 @@
 post_install() {
+    chown -R whoogle.whoogle /opt/whoogle-search/app/static/config
     systemctl enable --now whoogle
     echo ""
     echo "Enabled the Whoogle systemd service."
@@ -7,6 +8,7 @@ post_install() {
 }
 
 post_upgrade() {
+    chown -R whoogle.whoogle /opt/whoogle-search/app/static/config
     systemctl daemon-reload
     systemctl restart whoogle
     echo "Restarted Whoogle systemd service."

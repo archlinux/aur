@@ -2,7 +2,7 @@
 
 pkgname=whoogle
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
 url="https://github.com/benbusby/whoogle-search"
@@ -34,6 +34,7 @@ build() {
 }
 
 package() {
+  install -m0644 -D "$srcdir/whoogle" "$pkgdir/etc/default/whoogle"
   install -m0644 -D "$srcdir/whoogle.conf" "$pkgdir/usr/lib/sysusers.d/whoogle.conf"
   install -m0644 -D "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
   install -dm0755 "$pkgdir/opt/whoogle-search"
