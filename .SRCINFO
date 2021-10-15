@@ -1,11 +1,12 @@
 pkgbase = gnome-shell-extension-mullvad-indicator-git
 	pkgdesc = GNOME extension to track Mullvad connectivity
-	pkgver = 3.r3.g046aa90
-	pkgrel = 2
+	pkgver = 3.r7.g7689f36
+	pkgrel = 1
 	url = https://github.com/Pobega/gnome-shell-extension-mullvad-indicator
 	arch = any
 	license = Apache
 	makedepends = git
+	makedepends = zip
 	depends = gnome-shell
 	provides = gnome-shell-extension-mullvad-indicator
 	conflicts = gnome-shell-extension-mullvad-indicator
