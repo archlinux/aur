@@ -1,0 +1,19 @@
+pkgbase = juno-palenight-theme-git
+	pkgdesc = GTK themes inspired by epic vscode themes
+	pkgver = r117.632f395
+	pkgrel = 1
+	url = https://github.com/EliverLara/Juno
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = inkscape
+	makedepends = optipng
+	optdepends = ttf-roboto: default font for gnome-shell
+	optdepends = gtk-engine-murrine: GTK2 support
+	optdepends = gnome-themes-extra: GTK2 support
+	provides = juno-palenight-theme
+	conflicts = juno-palenight-theme
+	source = Juno-palenight::git+https://github.com/EliverLara/Juno.git#branch=palenight
+	sha256sums = SKIP
+
+pkgname = juno-palenight-theme-git
