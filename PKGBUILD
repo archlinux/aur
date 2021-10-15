@@ -5,7 +5,7 @@
 
 # Maintainer: Moritz Sokoll <moritz@sokoll.com>
 pkgname=vct
-pkgver=1.1.1
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc="a vocabulary trainer written in rust"
@@ -23,13 +23,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.sokoll.com/moritz/vct/-/archive/e7cf281af88498f13377d0b870194405a534ff41/vct-e7cf281af88498f13377d0b870194405a534ff41.tar.gz")
+source=("https://gitlab.sokoll.com/moritz/vct/-/archive/6f2fedec950c8631e2b5c96208099e0a77a366fb/vct-6f2fedec950c8631e2b5c96208099e0a77a366fb.tar.gz")
 noextract=()
-sha256sums=("943d30315f5db578656b8513ce9ca39e8e70ef2b68d973c9828bf1a202b3acd4")
+sha256sums=("66b83379924a924a1676046ef41be36aa551d63094a8479694d5017aeeaea267")
 validpgpkeys=()
 
 build() {
-	cd 'vct-e7cf281af88498f13377d0b870194405a534ff41'
+	cd 'vct-6f2fedec950c8631e2b5c96208099e0a77a366fb'
 	./configure.sh -p "$pkgdir/usr"
 	make
 }
@@ -40,7 +40,7 @@ build() {
 #}
 
 package() {
-	cd 'vct-e7cf281af88498f13377d0b870194405a534ff41'
+	cd 'vct-6f2fedec950c8631e2b5c96208099e0a77a366fb'
 	mkdir -p "$pkgdir"/usr/bin
 	make install
 }
