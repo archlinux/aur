@@ -15,10 +15,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=16.1.2
-_buildver=17966106
+pkgver=16.2.0
+_buildver=18760230
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -76,7 +76,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '3b4e08c63e7fe257a641232e7494fe437fc93ae5b329247c91ead9d03a1a4c3f'
+  '83e3469b8faa24b97ed2d862839e3fb33489400a629cc6195d118e1873f46552'
 
   '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -90,7 +90,7 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '14561220eca2d3ceca70ce6981598c0f143e7e66bcbd65d846768665110dd90a'
+  '1060b5d45caeda5119b220fab4e1ece398af34d75131139a5dc6f74ee06672c3'
   '7c3b6a7871b19e31fafdcc2631751dd9569196740d8e7c2026653d155c0c8da0'
 )
 options=(!strip emptydirs)
@@ -107,11 +107,10 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=12.1.2_17964953
+_vmware_fusion_ver=12.2.0_18760249
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
-_unlocker_ver=3.0.3
-_efi_unlocker_ver=1.0.0
+_unlocker_ver=3.0.6
 
 makedepends+=(
   python
@@ -121,13 +120,13 @@ makedepends+=(
 )
 
 source+=(
-  "https://download3.vmware.com/software/fusion/file/VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg"
-  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/paolo-projects/unlocker/${_unlocker_ver}/unlocker.py"
-  "efi-unlocker-patch-${_efi_unlocker_ver}.txt"
+  "https://download3.vmware.com/software/fusion/file/VMware-Fusion-${_vmware_fusion_ver/_/-}_x86.dmg"
+  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/unlocker.py"
+  "efi-patches-${_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/uefipatch/efi-patches.txt"
 )
 sha256sums+=(
-  '873049d4080168b56085c5b67be1d4eeb14debc0e6cf176dbd52c78518d0b883'
-  '1c27547dcf6fb2f436c96ee62ae8c7f5cfd14b40d8bbd35dc385e247c4fb7e0f'
+  '73dc64f66b0370ae3f3f1bc77917fd5a1d33abd6db13775b6d47e95330a214e2'
+  '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
 
@@ -167,8 +166,8 @@ prepare() {
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
-  dmg2img VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg VMware-Fusion-${_vmware_fusion_ver/_/-}.iso > /dev/null
-  7z e -y VMware-Fusion-${_vmware_fusion_ver/_/-}.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
+  dmg2img -s VMware-Fusion-${_vmware_fusion_ver/_/-}_x86.dmg VMware-Fusion-${_vmware_fusion_ver/_/-}_x86.iso
+  7z e -y VMware-Fusion-${_vmware_fusion_ver/_/-}_x86.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker-${_unlocker_ver}.py"
 fi
@@ -395,7 +394,7 @@ fi
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware to enable macOS guest support"
-  python "$srcdir/unlocker-${_unlocker_ver}.py" > /dev/null
+  python3 "$srcdir/unlocker-${_unlocker_ver}.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
@@ -406,7 +405,7 @@ if [ -n "$_enable_macOS_guests" ]; then
   _efi_arch=(32 64)
   for arch in ${_efi_arch[@]}
   do
-    uefipatch "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" "$srcdir/efi-unlocker-patch-${_efi_unlocker_ver}.txt" -o "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" > /dev/null
+    uefipatch "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" "$srcdir/efi-patches-${_unlocker_ver}.txt" -o "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" > /dev/null
   done
 fi
 
