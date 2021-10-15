@@ -1,0 +1,18 @@
+pkgbase = neovim-fixcursorhold-git
+	pkgdesc = Fixes CursorHold performance in Neovim
+	pkgver = r10.f2572b0
+	pkgrel = 1
+	url = https://github.com/antoinemadec/fixcursorhold.nvim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-fixcursorhold
+	provides = neovim-fix-cursorhold
+	conflicts = neovim-fixcursorhold
+	replaces = neovim-fix-cursorhold
+	source = neovim-fixcursorhold-git::git+https://github.com/antoinemadec/fixcursorhold.nvim
+	sha256sums = SKIP
+
+pkgname = neovim-fixcursorhold-git
