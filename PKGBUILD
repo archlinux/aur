@@ -4,10 +4,10 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='https://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-noetic-robot-state-publisher'
-pkgver='1.15.0'
+pkgver='1.15.2'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -51,7 +51,7 @@ depends=(
 
 _dir="robot_state_publisher-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/robot_state_publisher/archive/${pkgver}.tar.gz")
-sha256sums=('6446223fb1a0c742193a8bce2a2d37fa5ecdd8462322a6643db6181510090903')
+sha256sums=('15dd320a7409cd3542a9e78a18e103be54c5fa3cf467276085c804314014e521')
 
 build() {
 	# Use ROS environment variables.
