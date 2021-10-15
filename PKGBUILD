@@ -1,14 +1,14 @@
 pkgname='chad-launcher-git'
 _pkgname=${pkgname%-git}
-pkgver=r232.958beb4
+pkgver=r254.18e56ea
 pkgrel=1
 pkgdesc='GNU/LINUX GAMING UNLEASHED!'
 arch=('x86_64')
-url='https://gitlab.com/Gnurur/chad_launcher'
+url='https://notabug.org/johncena141/chad_launcher'
 license=('GPL3')
 depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips)
 makedepends=(cargo npm git squashfs-tools patchelf)
-conflicts=(chad_launcher-bin)
+provides=('chad-launcher')
 replaces=(chad_launcher-git)
 source=("git+https://notabug.org/johncena141/${_pkgname}.git#branch=master")
 md5sums=('SKIP')
