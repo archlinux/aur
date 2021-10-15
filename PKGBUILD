@@ -12,9 +12,11 @@ makedepends=(git)
 provides=(whoogle)
 conflicts=(whoogle)
 source=("git+$url.git"
-        whoogle.service)
+        whoogle.service
+        whoogle.conf)
 sha256sums=('SKIP'
-            'b8474f3024d310b67454b8b59977fd26b66dba3930f31604058b773e13905e49')
+            '7630105a0613d6758f0e298a8d197f307cb2d1657f7cedf10dc340c8f21c4511'
+            '51cda92f3ad2166eb2cb63ff80561f48b39688a57b66291d2eee5e1c7fcd8ee3')
 install=whoogle.install
 
 pkgver() {
@@ -35,8 +37,12 @@ build() {
 }
 
 package() {
- install -dm0755 "$pkgdir/usr/lib/systemd/system/"
- install -m0644 "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
- install -dm0755 "$pkgdir/opt/whoogle-search"
- cp -r "$srcdir/whoogle-search/" "$pkgdir/opt/"
+  install -dm0755 "$pkgdir/usr/lib/sysusers.d/"
+  install -m0644 "$srcdir/whoogle.conf" "$pkgdir/usr/lib/sysusers.d/whoogle.conf"
+
+  install -dm0755 "$pkgdir/usr/lib/systemd/system/"
+  install -m0644 "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
+
+  install -dm0755 "$pkgdir/opt/whoogle-search"
+  cp -r "$srcdir/$pkgname-search/" "$pkgdir/opt/"
 }

@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=root
+User=whoogle
 WorkingDirectory=/opt/whoogle-search
 ExecStart=/opt/whoogle-search/venv/bin/python3 -um app --host 0.0.0.0 --port 5000
 ExecReload=/bin/kill -HUP $MAINPID

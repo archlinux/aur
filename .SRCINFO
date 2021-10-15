@@ -1,6 +1,6 @@
 pkgbase = whoogle-git
 	pkgdesc = A self-hosted, ad-free, privacy-respecting metasearch engine
-	pkgver = 0.5.0_r317.g75e7410
+	pkgver = 0.6.0_r391.g20976f2
 	pkgrel = 1
 	url = https://github.com/benbusby/whoogle-search
 	install = whoogle.install
@@ -13,7 +13,9 @@ pkgbase = whoogle-git
 	conflicts = whoogle
 	source = git+https://github.com/benbusby/whoogle-search.git
 	source = whoogle.service
+	source = whoogle.conf
 	sha256sums = SKIP
-	sha256sums = b8474f3024d310b67454b8b59977fd26b66dba3930f31604058b773e13905e49
+	sha256sums = 7630105a0613d6758f0e298a8d197f307cb2d1657f7cedf10dc340c8f21c4511
+	sha256sums = 51cda92f3ad2166eb2cb63ff80561f48b39688a57b66291d2eee5e1c7fcd8ee3
 
 pkgname = whoogle-git
