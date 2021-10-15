@@ -9,12 +9,14 @@ url="https://github.com/benbusby/whoogle-search"
 license=(MIT)
 depends=(python)
 makedepends=(python python-pip)
-conflicts=(whoogle-git)
+conflicts=($pkgname-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benbusby/whoogle-search/archive/refs/tags/v$pkgver.tar.gz"
-        whoogle.service)
+        $pkgname.service
+        $pkgname.conf)
 sha256sums=('034827d32f7acf49bb53bf5c18b5a8a9926e613b7f52d2370cb7ba3d0b33cc10'
-            'b8474f3024d310b67454b8b59977fd26b66dba3930f31604058b773e13905e49')
-install=whoogle.install
+            '7630105a0613d6758f0e298a8d197f307cb2d1657f7cedf10dc340c8f21c4511'
+            'fe3e5b71d2d5cfcaf4a246d7a79f32a19d2240b59e761d59512fef5e711599da')
+install=$pkgname.install
 
 prepare() {
   mv $pkgname-search-$pkgver $pkgname-search
@@ -32,8 +34,12 @@ build() {
 }
 
 package() {
+  install -dm0755 "$pkgdir/usr/lib/sysusers.d/"
+  install -m0644 "$srcdir/whoogle.conf" "$pkgdir/usr/lib/sysusers.d/whoogle.conf"
+
   install -dm0755 "$pkgdir/usr/lib/systemd/system/"
   install -m0644 "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
+
   install -dm0755 "$pkgdir/opt/whoogle-search"
   cp -r "$srcdir/$pkgname-search/" "$pkgdir/opt/"
 }
