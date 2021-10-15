@@ -1,7 +1,7 @@
 # Maintainer: Robbert van der Helm <mail@robbertvanderhelm.nl>
 
 pkgname=yabridge
-pkgver=3.5.2
+pkgver=3.6.0
 pkgrel=2
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'meson' 'ninja')
 options=('!strip')
 install=yabridge.install
 source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
-sha256sums=('ad360deb3a6ebec036e178aa2499b724cb7b858e574cdae6ce425ecc41c09105')
+sha256sums=('6da519d47477ac8e2ab297eb6bc1513cd33dc736660a3b9a9449e14efdf2b3a2')
 
 build() {
   cd "$pkgname-$pkgver"
