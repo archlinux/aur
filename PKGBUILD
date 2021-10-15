@@ -16,7 +16,7 @@ pkgname=vmware-workstation15
 pkgver=15.5.7
 _buildver=17171714
 _pkgver=${pkgver}_${_buildver}
-pkgrel=4
+pkgrel=5
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -121,7 +121,7 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  'c6192797745e19e6361e005adb98383f8877f0118e1db5c018c67cc88c7cb6e1'
+  '5f90e47b151017d9a101c918380ee7175c71fe6c50adf5fdd9a9f050ba4257f6'
   '361a3abf195098a90cbf2a4ce16dbcfcfc224c78284269b6d980972bc3647796'
 )
 options=(!strip emptydirs)
@@ -141,8 +141,7 @@ if [ -n "$_enable_macOS_guests" ]; then
 _vmware_fusion_ver=11.5.7_17130923
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
-_unlocker_ver=3.0.3
-_efi_unlocker_ver=1.0.0
+_unlocker_ver=3.0.6
 
 makedepends+=(
   python
@@ -153,12 +152,12 @@ makedepends+=(
 
 source+=(
   "https://download3.vmware.com/software/fusion/file/VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg"
-  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/paolo-projects/unlocker/${_unlocker_ver}/unlocker.py"
-  "efi-unlocker-patch-${_efi_unlocker_ver}.txt"
+  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/unlocker.py"
+  "efi-patches-${_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/uefipatch/efi-patches.txt"
 )
 sha256sums+=(
   'c7d58ca44510de6c1ddffe86129ed19982114e742d71e7d81e4a5882036e06e3'
-  '1c27547dcf6fb2f436c96ee62ae8c7f5cfd14b40d8bbd35dc385e247c4fb7e0f'
+  '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
 
@@ -200,7 +199,7 @@ prepare() {
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
-  dmg2img VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg VMware-Fusion-${_vmware_fusion_ver/_/-}.iso > /dev/null
+  dmg2img -s VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg VMware-Fusion-${_vmware_fusion_ver/_/-}.iso
   7z e -y VMware-Fusion-${_vmware_fusion_ver/_/-}.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker-${_unlocker_ver}.py"
@@ -454,7 +453,7 @@ fi
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware to enable macOS guest support"
-  python "$srcdir/unlocker-${_unlocker_ver}.py" > /dev/null
+  python3 "$srcdir/unlocker-${_unlocker_ver}.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
@@ -465,7 +464,7 @@ if [ -n "$_enable_macOS_guests" ]; then
   _efi_arch=(32 64)
   for arch in ${_efi_arch[@]}
   do
-    uefipatch "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" "$srcdir/efi-unlocker-patch-${_efi_unlocker_ver}.txt" -o "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" > /dev/null
+    uefipatch "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" "$srcdir/efi-patches-${_unlocker_ver}.txt" -o "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" > /dev/null
   done
 fi
 
