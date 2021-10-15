@@ -1,7 +1,7 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=libgnt
-pkgver=2.14.2
+pkgver=2.14.3
 pkgrel=1
 pkgdesc="GLib Ncurses Toolkit"
 arch=('x86_64')
@@ -10,12 +10,12 @@ license=('GPL')
 depends=('glib2' 'libxml2' 'ncurses')
 makedepends=('meson' 'gtk-doc')
 source=(https://downloads.sourceforge.net/project/pidgin/libgnt/$pkgver/$pkgname-$pkgver.tar.xz{,.asc})
-sha256sums=('61cf74b14eef10868b2d892e975aa78614f094c8f4d30dfd1aaedf52e6120e75'
+sha256sums=('57f5457f72999d0bb1a139a37f2746ec1b5a02c094f2710a339d8bcea4236123'
             'SKIP')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
 build() {
-  arch-meson $pkgname-$pkgver build
+  arch-meson $pkgname-$pkgver build -D python2=false
   ninja -C build
 }
 
