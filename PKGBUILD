@@ -3,8 +3,8 @@
 
 _pkgbasever=0.5.1
 pkgname=nvim-with-restricted-mode
-pkgver=0.5.1.r1.af6ee44
-pkgrel=1
+pkgver=0.5.1.r2.af6ee44
+pkgrel=2
 pkgdesc="Neovim with restricted mode patch"
 arch=('x86_64')
 url='https://neovim.io'

@@ -1,7 +1,7 @@
 pkgbase = nvim-with-restricted-mode
 	pkgdesc = Neovim with restricted mode patch
-	pkgver = 0.5.0.r1.af6ee44
-	pkgrel = 1
+	pkgver = 0.5.1.r2.af6ee44
+	pkgrel = 2
 	url = https://neovim.io
 	arch = x86_64
 	license = custom:neovim
@@ -27,9 +27,9 @@ pkgbase = nvim-with-restricted-mode
 	conflicts = neovim
 	conflicts = neovim-git
 	backup = etc/xdg/nvim/sysinit.vim
-	source = https://github.com/neovim/neovim/archive/v0.5.0/nvim-with-restricted-mode-0.5.0.tar.gz
-	source = https://raw.githubusercontent.com/Eklektisk/nvim-restricted-mode-patch/master/restore_restricted_mode.patch
-	sha512sums = f6649f804faabb4104d3b28283932e40358c23990961f4ca7b380089318da312e59242746cee06387f4d881dd6514abbfec79c4063482383adfb4106e9e7a3a4
+	source = https://github.com/neovim/neovim/archive/v0.5.1/nvim-with-restricted-mode-0.5.1.tar.gz
+	source = restore_restricted_mode.patch
+	sha512sums = a5a976c4998e821e0d9a9038d3f0c9e7c424a951f6bfc6d75898916d6a004ac668f31a34c3472fc4fca6b1d9652ac662b06780dd04dc6a77ecdc81564ec05709
 	sha512sums = SKIP
 
 pkgname = nvim-with-restricted-mode
