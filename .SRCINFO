@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-urdfdom-py
 	pkgdesc = ROS - Python implementation of the URDF parser.
-	pkgver = 0.4.5
-	pkgrel = 2
+	pkgver = 0.4.6
+	pkgrel = 1
 	url = https://wiki.ros.org/urdfdom_py
 	arch = any
 	license = BSD
@@ -12,8 +12,7 @@ pkgbase = ros-noetic-urdfdom-py
 	depends = python-yaml
 	depends = python-lxml
 	depends = python
-	source = ros-noetic-urdfdom-py-0.4.5.tar.gz::https://github.com/ros/urdf_parser_py/archive/0.4.5.tar.gz
-	sha256sums = be5645c3153fd9c3e3e32b041abcf7ad815d6c0746a37e3b2d1be37b1ff977c3
+	source = ros-noetic-urdfdom-py-0.4.6.tar.gz::https://github.com/ros/urdf_parser_py/archive/0.4.6.tar.gz
+	sha256sums = 4c0c8072aca5c69cc659545914bd05e481cf73a9d5b80d6b5e50bfecf9cb1442
 
 pkgname = ros-noetic-urdfdom-py
-

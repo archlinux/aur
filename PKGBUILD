@@ -4,10 +4,10 @@ pkgdesc="ROS - Python implementation of the URDF parser."
 url='https://wiki.ros.org/urdfdom_py'
 
 pkgname='ros-noetic-urdfdom-py'
-pkgver='0.4.5'
+pkgver='0.4.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -33,7 +33,7 @@ depends=(
 
 _dir="urdf_parser_py-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/urdf_parser_py/archive/${pkgver}.tar.gz")
-sha256sums=('be5645c3153fd9c3e3e32b041abcf7ad815d6c0746a37e3b2d1be37b1ff977c3')
+sha256sums=('4c0c8072aca5c69cc659545914bd05e481cf73a9d5b80d6b5e50bfecf9cb1442')
 
 build() {
 	# Use ROS environment variables.
