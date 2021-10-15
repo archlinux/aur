@@ -7,8 +7,7 @@ pkgbase = dict-freedict-jpn-eng
 	arch = any
 	license = GPL
 	optdepends = dictd: dict client and server
-	source = https://sourceforge.net/projects/freedict/files/Japanese%20-%20English/0.1/freedict-jpn-eng-0.1.tar.bz2
-	md5sums = bc3b8e3f9b93432ddefff7c3505f0001
+	source = https://sourceforge.net/projects/freedict/files/jpn-eng/0.1/freedict-jpn-eng-0.1.dictd.tar.xz
+	md5sums = 9b19c068c6a112e42c188962494969cd
 
 pkgname = dict-freedict-jpn-eng
-
