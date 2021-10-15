@@ -2,7 +2,7 @@
 
 pkgname=moe-kde-git
 _gitname=moe-theme
-pkgver=r11.b58cecf
+pkgver=r24.f9f8732
 pkgrel=1
 pkgdesc='A Light theme, with blur transparencies and red tones with gradients for KDE'
 arch=('any')
@@ -40,7 +40,7 @@ package() {
   echo 'Installing desktoptheme...'
   install -dm755 "${pkgdir}/usr/share/plasma/desktoptheme"
   cp -r Moe "${pkgdir}/usr/share/plasma/desktoptheme"
-  cp -r Moe-Dark "${pkgdir}/usr/share/plasma/desktoptheme"
+  cp -r MoeDark "${pkgdir}/usr/share/plasma/desktoptheme"
 
   echo 'Installing look and feel theme...'
   install -dm755 "${pkgdir}/usr/share/plasma/look-and-feel"

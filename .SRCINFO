@@ -1,6 +1,6 @@
 pkgbase = moe-kde-git
 	pkgdesc = A Light theme, with blur transparencies and red tones with gradients for KDE
-	pkgver = r11.b58cecf
+	pkgver = r24.f9f8732
 	pkgrel = 1
 	url = https://gitlab.com/jomada/moe-theme
 	install = moe-kde-git.install
@@ -22,4 +22,3 @@ pkgbase = moe-kde-git
 	sha256sums = SKIP
 
 pkgname = moe-kde-git
-
