@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-pkgname=('pop-launcher-git' 'pop-launcher-system76-power-git')
+pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.0.1.r2.g5eb5b22
-pkgrel=1
+pkgver=1.0.1.r10.g55c1b6e
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('GPL3')
@@ -18,6 +18,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/launcher"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -41,11 +42,11 @@ package_pop-launcher-git() {
   rm -rf "$pkgdir/usr/lib/${pkgbase%-git}/scripts/system76-power"
 }
 
-package_pop-launcher-system76-power-git() {
+package_pop-shell-plugin-system76-power-git() {
   pkgdesc="System76 Power scripts for the launcher"
-  depends=('pop-launcher' 'system76-power')
-  provides=("${pkgname%-git}")
-  conflicts=("${pkgname%-git}")
+  depends=('pop-shell' 'system76-power')
+  conflicts=("${pkgname%-git}" 'pop-launcher-system76-power')
+  replaces=('pop-launcher-system76-power-git')
 
   cd "$srcdir/launcher"
   install -d "$pkgdir/usr/lib/${pkgbase%-git}/scripts"

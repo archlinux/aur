@@ -1,6 +1,6 @@
 pkgbase = pop-launcher-git
-	pkgver = 1.0.1.r2.g5eb5b22
-	pkgrel = 1
+	pkgver = 1.0.1.r10.g55c1b6e
+	pkgrel = 2
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
 	arch = aarch64
@@ -19,9 +19,10 @@ pkgname = pop-launcher-git
 	provides = pop-launcher
 	conflicts = pop-launcher
 
-pkgname = pop-launcher-system76-power-git
+pkgname = pop-shell-plugin-system76-power-git
 	pkgdesc = System76 Power scripts for the launcher
-	depends = pop-launcher
+	depends = pop-shell
 	depends = system76-power
-	provides = pop-launcher-system76-power
+	conflicts = pop-shell-plugin-system76-power
 	conflicts = pop-launcher-system76-power
+	replaces = pop-launcher-system76-power-git
