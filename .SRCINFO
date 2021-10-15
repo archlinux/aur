@@ -1,16 +1,27 @@
 pkgbase = shfmt-bin
-	pkgdesc = Format shell programs (pre-compiled static binary)
-	pkgver = 2.6.0
+	pkgdesc = Format shell programs
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/mvdan/sh
 	arch = x86_64
+	arch = i386
+	arch = armv7h
+	arch = aarch64
 	license = BSD
+	depends = glibc
 	provides = shfmt
 	conflicts = shfmt
-	source_x86_64 = https://github.com/mvdan/sh/releases/download/v2.6.0/shfmt_v2.6.0_linux_amd64
-	source_x86_64 = https://raw.githubusercontent.com/mvdan/sh/v2.6.0/LICENSE
-	sha256sums_x86_64 = e582c3417f1b773598c219683a98cc1ce444ca04aef1fa8457c378ad00316b29
-	sha256sums_x86_64 = ce63850f77649f00d1394045e2794ffb09a5596beabac51c9548edd958845d7c
+	noextract = shfmt-bin-3.4.0.LICENSE
+	noextract = shfmt-bin-3.4.0.shfmt
+	source = shfmt-bin-3.4.0.LICENSE::https://raw.githubusercontent.com/mvdan/sh/v3.4.0/LICENSE
+	sha256sums = ce63850f77649f00d1394045e2794ffb09a5596beabac51c9548edd958845d7c
+	source_x86_64 = shfmt-bin-3.4.0.shfmt::https://github.com/mvdan/sh/releases/download/v3.4.0/shfmt_v3.4.0_linux_amd64
+	sha256sums_x86_64 = 5cd7a2b57a0592f919ca2e4249bd567ae3426801a28ae94d0b26f8f2c4ce17f9
+	source_i386 = shfmt-bin-3.4.0.shfmt::https://github.com/mvdan/sh/releases/download/v3.4.0/shfmt_v3.4.0_linux_386
+	sha256sums_i386 = 5cd7a2b57a0592f919ca2e4249bd567ae3426801a28ae94d0b26f8f2c4ce17f9
+	source_armv7h = shfmt-bin-3.4.0.shfmt::https://github.com/mvdan/sh/releases/download/v3.4.0/shfmt_v3.4.0_linux_arm
+	sha256sums_armv7h = 5cd7a2b57a0592f919ca2e4249bd567ae3426801a28ae94d0b26f8f2c4ce17f9
+	source_aarch64 = shfmt-bin-3.4.0.shfmt::https://github.com/mvdan/sh/releases/download/v3.4.0/shfmt_v3.4.0_linux_arm64
+	sha256sums_aarch64 = 5cd7a2b57a0592f919ca2e4249bd567ae3426801a28ae94d0b26f8f2c4ce17f9
 
 pkgname = shfmt-bin
-
