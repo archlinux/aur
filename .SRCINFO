@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-nodelet-core
 	pkgdesc = ROS - Nodelet Core Metapackage.
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://wiki.ros.org/nodelet_core
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = ros-noetic-nodelet-core
 	makedepends = ros-noetic-catkin
 	depends = ros-noetic-nodelet
 	depends = ros-noetic-nodelet-topic-tools
-	source = ros-noetic-nodelet-core-1.10.1.tar.gz::https://github.com/ros/nodelet_core/archive/1.10.1.tar.gz
-	sha256sums = 0130cb6d52985927442fa5d80d109c57defaf4b4983abc951a0ef59e7f98c654
+	source = ros-noetic-nodelet-core-1.10.2.tar.gz::https://github.com/ros/nodelet_core/archive/1.10.2.tar.gz
+	sha256sums = 9b49a06721ca23c76965937f1a5673cdb6250384d9bd89c1b0fdef5ecd2b83b2
 
 pkgname = ros-noetic-nodelet-core
-
