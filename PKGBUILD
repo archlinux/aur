@@ -64,7 +64,7 @@ else
 	pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance)
 fi
 pkgver=495.29.05
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -182,7 +182,7 @@ prepare() {
     fi
 
     if [[ ! -z $registrydwords ]]; then
-        sed -i "s/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, ${registrydwords}\"/" \
+        sed -i "s/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, ${registrydwords}/" \
 		      kernel/nvidia/nv-reg.h
     fi
 

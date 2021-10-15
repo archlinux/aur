@@ -1,6 +1,6 @@
 pkgbase = nvidia-dkms-performance
 	pkgver = 495.29.05
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.nvidia.com/
 	arch = x86_64
 	arch = aarch64
