@@ -11,6 +11,7 @@ _url_pypi='https://pypi.org/project/castero'
 license=('MIT')
 depends=('python-beautifulsoup4'
         'python-cjkwrap'
+        'python-pytz'
         'python-grequests'
         'python-lxml'
         'python-mpv'
