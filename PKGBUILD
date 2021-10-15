@@ -7,7 +7,7 @@
 pkgname='lnd'
 pkgver=0.13.3_beta
 _pkgver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('i686' 'x86_64')
 url='https://github.com/lightningnetwork/lnd'
@@ -40,6 +40,10 @@ prepare() {
 }
 
 build() {
+  # Use suggested GOFLAGS for Arch Linux.
+  # https://wiki.archlinux.org/title/Go_package_guidelines
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
   export GOPATH="$srcdir/GOPATH"
   _fake_gopath_pushd "$pkgname" github.com/lightningnetwork/lnd
   make && make install
