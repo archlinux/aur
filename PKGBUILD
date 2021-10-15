@@ -1,7 +1,7 @@
 # Maintainer: Todd E Johnson <todd@toddejohnson.net>
-options=(debug !strip) 
+options=(debug !strip libtool staticlibs !ccache !distcc !zipman docs emptydirs) 
 pkgname=trunk-recorder-git
-pkgver=r1612.ba6959f
+pkgver=r1619.30f26ab
 pkgrel=1
 pkgdesc="Records calls from a Trunked Radio System (P25 & SmartNet)"
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
