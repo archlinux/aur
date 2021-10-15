@@ -1,13 +1,13 @@
 pkgbase = wgcf
 	pkgdesc = Generate WireGuard profile from Cloudflare Warp account
-	pkgver = 2.2.8
+	pkgver = 2.2.9
 	pkgrel = 1
 	url = https://github.com/ViRb3/wgcf
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = wgcf-2.2.8.tar.gz::https://github.com/ViRb3/wgcf/archive/v2.2.8.tar.gz
-	sha256sums = 1e151d8d79b3cd9f3c245ade69282a2e9eeb4414837b99de1b845b21e9952bf5
+	source = wgcf-2.2.9.tar.gz::https://github.com/ViRb3/wgcf/archive/v2.2.9.tar.gz
+	sha256sums = 2620d865913bfe272f97ecf0bdee9e84c72223b284ebba9a88f3ef0c4ce0f0e3
 
 pkgname = wgcf
