@@ -144,7 +144,7 @@ makedepends+=(
   python
   dmg2img
   p7zip
-  uefitool-git
+  uefitool
 )
 
 source+=(
@@ -455,7 +455,7 @@ if [ -n "$_enable_macOS_guests" ]; then
     objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx -O binary -j efi${arch} --set-section-flags efi${arch}=a efi${arch}.rom.Z
     perl -e 'use Compress::Zlib; my $v; read STDIN, $v, '$(stat -c%s "./efi${arch}.rom.Z")'; $v = uncompress($v); print $v;' < efi${arch}.rom.Z > efi${arch}.rom
 
-    uefipatch efi${arch}.rom "$srcdir/efi-patches-${_unlocker_ver}.txt" -o efi${arch}.rom > /dev/null
+    UEFIPatch efi${arch}.rom "$srcdir/efi-patches-${_unlocker_ver}.txt" -o efi${arch}.rom > /dev/null
 
     perl -e 'use Compress::Zlib; my $v; read STDIN, $v, '$(stat -c%s "./efi${arch}.rom")'; $v = compress($v); print $v;' < efi${arch}.rom > efi${arch}.rom.Z
     objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx --update-section efi${arch}=efi${arch}.rom.Z
