@@ -1,7 +1,7 @@
 pkgbase = sedutil-cli
 	pkgdesc = DTA sedutil Self encrypting drive software
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Drive-Trust-Alliance/sedutil
 	arch = i686
 	arch = x86_64

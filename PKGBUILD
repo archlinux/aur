@@ -2,7 +2,7 @@
 
 pkgname=sedutil-cli
 pkgver=1.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DTA sedutil Self encrypting drive software"
 url="https://github.com/Drive-Trust-Alliance/sedutil"
 license=('GPL3')
@@ -17,7 +17,7 @@ build() {
   cd "sedutil-$pkgver"
 
   make -C linux/CLI build CONF="Release_$CARCH" \
-    CC="$CC" CXX="$CXX" \
+    CC="${CC:-gcc}" CXX="${CXX:-g++}" \
     CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS"
 }
 
