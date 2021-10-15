@@ -3,7 +3,7 @@
 
 pkgname=torrentflix
 pkgver=9.0.7
-pkgrel=7
+pkgrel=8
 pkgdesc="Nodejs cli app to search torrent sites and stream using peerflix"
 arch=('any')
 url="https://www.npmjs.com/package/torrentflix"
@@ -18,7 +18,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  npm install --cache ../cache -g --production --prefix "${pkgdir}/usr" "../v${pkgver}.tar.gz"
+  npm install --cache ../cache -g --production --prefix "${pkgdir}/usr" "../${pkgname}-${pkgver}.tar.gz"
 
   # https://old.reddit.com/r/archlinux/comments/o3y03g/i_adopted_10_nodejs_aur_packages_that_conflict/
   chown -R root:root "${pkgdir}"
