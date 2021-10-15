@@ -18,7 +18,7 @@ pkgname = pop-launcher
 
 pkgname = pop-shell-plugin-system76-power
 	pkgdesc = System76 Power scripts for the launcher
-	depends = pop-shell
+	depends = gnome-shell-extension-pop-shell
 	depends = system76-power
 	conflicts = pop-launcher-system76-power
 	replaces = pop-launcher-system76-power
