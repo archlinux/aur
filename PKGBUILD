@@ -2,7 +2,7 @@
 
 pkgname=sfdx-cli
 pkgver="7.122.1"
-pkgrel=1
+pkgrel=2
 _dirname="${pkgname}-v${pkgver}"
 pkgdesc="a tool for creating and managing Salesforce DX projects from the command line"
 arch=('x86_64')
@@ -23,5 +23,6 @@ package() {
     sfdx_dir="sfdx"
     cp -a "${sfdx_dir}" "${pkgdir}"/opt/sfdx-cli
     ln -s /opt/sfdx-cli/bin/sfdx "${pkgdir}"/usr/bin/sfdx
+    ln -s /opt/sfdx-cli/bin/sf "${pkgdir}"/usr/bin/sf
 }
 sha256sums_x86_64=("16eeadb5eb6f48e39c56f119f2cfa1826d64ae72892650295b5c04200256f36a")
