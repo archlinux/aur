@@ -1,6 +1,6 @@
 pkgbase = protonmail-bridge-bin
 	pkgdesc = Integrate ProtonMail paid account with any program that supports IMAP and SMTP
-	pkgver = 1.8.9
+	pkgver = 1.8.10
 	pkgrel = 1
 	url = https://www.protonmail.com/bridge
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = protonmail-bridge-bin
 	conflicts = protonmail-bridge
 	options = !emptydirs
 	options = !strip
-	source = https://protonmail.com/download/bridge/protonmail-bridge_1.8.9-1_amd64.deb
+	source = https://protonmail.com/download/bridge/protonmail-bridge_1.8.10-1_amd64.deb
 	source = https://raw.githubusercontent.com/ProtonMail/proton-bridge/master/LICENSE
-	sha256sums = 05681f412da01e58cdb886902b205869616eb29d0aad545f1593d273447df53d
+	sha256sums = 48f7a2f86bb6a7bda946c59e51529e1375fb86d603cd343cf94275febc9f85ee
 	sha256sums = 1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68
 
 pkgname = protonmail-bridge-bin
