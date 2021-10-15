@@ -1,7 +1,7 @@
 # Maintainer: gilbus <aur(AT)tinkershell.eu>
-pkgname=cage-git
+pkgname=cage-scenegraph
 _pkgname=cage
-pkgver=0.1.4.r0.g646b3e8
+pkgver=0.1.4.r16.gf1ba664
 pkgrel=1
 epoch=1
 license=("MIT")
@@ -10,10 +10,10 @@ makedepends=("meson" "git" "wayland-protocols")
 depends=("wlroots-git" "wayland" "libxkbcommon" "xorg-server-xwayland")
 arch=("x86_64")
 url="https://www.hjdskes.nl/projects/cage/"
-source=("${pkgname%-*}::git+https://github.com/Hjdskes/cage.git")
+source=("${pkgname%-*}::git+https://github.com/emersion/cage.git#branch=scenegraph")
 sha1sums=("SKIP")
-#provides=("cage")
-#conflicts=("cage")
+provides=("cage")
+conflicts=("cage")
 options=(debug !strip)
 
 pkgver() {

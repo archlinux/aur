@@ -1,6 +1,6 @@
-pkgbase = cage-git
+pkgbase = cage-scenegraph
 	pkgdesc = A Wayland kiosk
-	pkgver = 0.1.4.r0.g646b3e8
+	pkgver = 0.1.4.r16.gf1ba664
 	pkgrel = 1
 	epoch = 1
 	url = https://www.hjdskes.nl/projects/cage/
@@ -13,9 +13,11 @@ pkgbase = cage-git
 	depends = wayland
 	depends = libxkbcommon
 	depends = xorg-server-xwayland
+	provides = cage
+	conflicts = cage
 	options = debug
 	options = !strip
-	source = cage::git+https://github.com/Hjdskes/cage.git
+	source = cage::git+https://github.com/emersion/cage.git#branch=scenegraph
 	sha1sums = SKIP
 
-pkgname = cage-git
+pkgname = cage-scenegraph
