@@ -1,11 +1,12 @@
 pkgname='chad-launcher-bin'
 _pkgname="${pkgname%-bin}"
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU/LINUX GAMING UNLEASHED!'
 arch=('x86_64')
-url='https://gitlab.com/Gnurur/chad_launcher'
+url='https://notabug.org/johncena141/chad-launcher'
 license=('GPL3')
+provides=('chad-launcher')
 replaces=('chad_launcher-bin')
 depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips)
 makedepends=()
