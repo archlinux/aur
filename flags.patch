@@ -1,6 +1,6 @@
-diff -ruN SuiteSparse-5.9.0.orig/Mongoose/CMakeLists.txt SuiteSparse-5.9.0/Mongoose/CMakeLists.txt
---- SuiteSparse-5.9.0.orig/Mongoose/CMakeLists.txt	2021-03-04 01:34:33.000000000 +0330
-+++ SuiteSparse-5.9.0/Mongoose/CMakeLists.txt	2021-05-13 11:20:57.620348766 +0430
+diff -ruN SuiteSparse-5.10.1.orig/Mongoose/CMakeLists.txt SuiteSparse-5.10.1/Mongoose/CMakeLists.txt
+--- SuiteSparse-5.10.1.orig/Mongoose/CMakeLists.txt	2021-05-18 17:31:16.000000000 +0430
++++ SuiteSparse-5.10.1/Mongoose/CMakeLists.txt	2021-10-15 13:18:15.322991534 +0330
 @@ -328,7 +328,7 @@
      SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "--coverage -g")
  elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
@@ -10,9 +10,9 @@ diff -ruN SuiteSparse-5.9.0.orig/Mongoose/CMakeLists.txt SuiteSparse-5.9.0/Mongo
      # Debug flags for GCC
      if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.6")
          set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-diff -ruN SuiteSparse-5.9.0.orig/SuiteSparse_config/SuiteSparse_config.mk SuiteSparse-5.9.0/SuiteSparse_config/SuiteSparse_config.mk
---- SuiteSparse-5.9.0.orig/SuiteSparse_config/SuiteSparse_config.mk	2021-03-04 01:34:33.000000000 +0330
-+++ SuiteSparse-5.9.0/SuiteSparse_config/SuiteSparse_config.mk	2021-05-13 11:22:13.751009370 +0430
+diff -ruN SuiteSparse-5.10.1.orig/SuiteSparse_config/SuiteSparse_config.mk SuiteSparse-5.10.1/SuiteSparse_config/SuiteSparse_config.mk
+--- SuiteSparse-5.10.1.orig/SuiteSparse_config/SuiteSparse_config.mk	2021-05-18 17:31:16.000000000 +0430
++++ SuiteSparse-5.10.1/SuiteSparse_config/SuiteSparse_config.mk	2021-10-15 13:20:25.381535826 +0330
 @@ -146,7 +146,7 @@
          endif
      endif
@@ -33,11 +33,3 @@ diff -ruN SuiteSparse-5.9.0.orig/SuiteSparse_config/SuiteSparse_config.mk SuiteS
  
      ifneq ($(CUDA),no)
          CUDA_PATH = $(shell which nvcc 2>/dev/null | sed "s/\/bin\/nvcc//")
-@@ -259,7 +259,6 @@
-                 MAGMA_LIB     = -L/opt/magma-2.4.0/lib/ -lmagma
-         NVCC          = $(CUDA_PATH)/bin/nvcc
-         NVCCFLAGS     = -Xcompiler -fPIC -O3 \
--                            -gencode=arch=compute_30,code=sm_30 \
-                             -gencode=arch=compute_35,code=sm_35 \
-                             -gencode=arch=compute_50,code=sm_50 \
-                             -gencode=arch=compute_53,code=sm_53 \

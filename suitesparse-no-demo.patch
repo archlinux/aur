@@ -1,6 +1,6 @@
-diff -ruN SuiteSparse-5.9.0.orig/Makefile SuiteSparse-5.9.0/Makefile
---- SuiteSparse-5.9.0.orig/Makefile	2021-03-04 01:34:33.000000000 +0330
-+++ SuiteSparse-5.9.0/Makefile	2021-05-07 11:15:34.594661725 +0430
+diff -ruN SuiteSparse-5.10.1.orig/Makefile SuiteSparse-5.10.1/Makefile
+--- SuiteSparse-5.10.1.orig/Makefile	2021-05-18 17:31:16.000000000 +0430
++++ SuiteSparse-5.10.1/Makefile	2021-10-15 13:16:39.664963751 +0330
 @@ -16,26 +16,26 @@
  # installs all libraries SuiteSparse/lib.
  go: metis
