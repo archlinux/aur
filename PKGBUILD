@@ -4,7 +4,7 @@ pkgbase=jxrlib-git
 pkgname=('jxrlib-git'
          'java-jxrlib-git'
          )
-pkgver=1.1.r326.12ce3f8
+pkgver=1.1.r340.90bea22
 pkgrel=1
 pkgdesc='Open source implementation of jpegxr (Git version)'
 arch=('x86_64')
@@ -72,5 +72,9 @@ package_java-jxrlib-git() {
 
   install -Dm744 jxrlib/build/libjxrjava.so "${pkgdir}/usr/lib/libjxrjava.so"
   ln -s libjxrjava.so "${pkgdir}/usr/lib/libjxrjava.so.0"
-  install -Dm644 jxrlib/java/target/jxrlib-0.3.0-SNAPSHOT.jar "${pkgdir}/usr/share/java/jxrlib-0.3.0-SNAPSHOT.jar"
+  (cd jxrlib/java/target
+  for i in *.jar; do
+    install -Dm644 "${i}" "${pkgdir}/usr/share/java/${i}"
+  done
+  )
 }
