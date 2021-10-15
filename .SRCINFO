@@ -1,0 +1,12 @@
+pkgbase = nordic-polar-theme
+	pkgdesc = A Gtk3.20+ theme created using the awesome Nord color palette.
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/EliverLara/Nordic-Polar
+	arch = any
+	license = GPL3
+	conflicts = nordic-polar-theme-git
+	source = nordic-polar-theme-1.9.0.tar.gz::https://github.com/EliverLara/Nordic-Polar/releases/download/v1.9.0/Nordic-Polar.tar.xz
+	sha512sums = 4d90cc1f5b54625de6da74ec1dcb9e43407903c3180e486d70e335e45d9422475dc40c930929e40b7dcf76a361c0bc5af7d98e6e29119aca5498433c2587d58e
+
+pkgname = nordic-polar-theme
