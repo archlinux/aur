@@ -4,7 +4,7 @@
 # Contributor: Chuck Yang <Chuck.Yang@gmail.com>
 
 pkgname=lshw-git
-pkgver=B.02.19.r59.g996aaad
+pkgver=B.02.19.r74.g52736f6
 pkgrel=1
 pkgdesc='A small tool to provide detailed information on the hardware configuration of the machine'
 url=https://ezix.org/project/wiki/HardwareLiSter
@@ -15,6 +15,7 @@ optdepends=('gtk3: for gtk-lshw')
 makedepends=(gtk3 sqlite docbook-utils perl-sgmls git)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
+options=(!lto)
 source=(git+https://ezix.org/src/pkg/lshw.git)
 sha256sums=('SKIP')
 
@@ -25,11 +26,13 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
-    sed -i 's|/usr/sbin/gtk-lshw|/usr/bin/gtk-lshw|' src/gui/integration/gtk-lshw.desktop
+    sed -i 's|/usr/bin/gtk-lshw|/usr/sbin/gtk-lshw|' src/gui/integration/gtk-lshw.desktop
+    sed -i '/^LDFLAGS=$/d' src/core/Makefile src/gui/Makefile
 }
 
 build() {
     cd "${pkgname%-git}"
+    export VERSION=$pkgver
     make SBINDIR=/usr/bin
     make SBINDIR=/usr/bin gui
 }
