@@ -1,6 +1,6 @@
 pkgbase = htop-vim
 	pkgdesc = Interactive process viewer with a Vim keybindings patch
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://htop.dev/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = htop-vim
 	provides = htop
 	conflicts = htop
 	options = !emptydirs
-	source = https://github.com/htop-dev/htop/archive/3.1.0/htop-3.1.0.tar.gz
+	source = https://github.com/htop-dev/htop/archive/3.1.1/htop-3.1.1.tar.gz
 	source = vim-keybindings.patch
-	sha256sums = 200a4f9331d0e5048bf9bda6a8dee38248c557e471b9e57ff3784853efd613a9
+	sha256sums = b52280ad05a535ec632fbcd47e8e2c40a9376a9ddbd7caa00b38b9d6bb87ced6
 	sha256sums = 2089457e7e6b331a1d290b5920bb2f2b3142256a6cb30a3231f6b0ec1ef71ff0
 
 pkgname = htop-vim
