@@ -7,7 +7,7 @@ pkgdesc="Find and listen to internet radio stations."
 arch=(any)
 url="https://gitlab.gnome.org/World/Shortwave/"
 license=(GPL)
-makedepends=(wget rustup ostree glib2)
+makedepends=(rustup ostree glib2)
 depends=('gst-plugins-bad' 'libadwaita' 'libsoup')
 source=("$url-/jobs/1557054/artifacts/download?file_type=archive" "fix_flatpak.rs" "shortwave")
 sha256sums=('5b72f434160dce871c902218e8bfd3053ce54a028ec9b2a725356c8326e7d8d8'

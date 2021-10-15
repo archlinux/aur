@@ -5,7 +5,6 @@ pkgbase = shortwave-bin-hack
 	url = https://gitlab.gnome.org/World/Shortwave/
 	arch = any
 	license = GPL
-	makedepends = wget
 	makedepends = rustup
 	makedepends = ostree
 	makedepends = glib2
