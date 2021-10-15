@@ -5,7 +5,7 @@
 pkgbase=lib32-poppler
 _pkgbase=poppler
 pkgname=('lib32-poppler' 'lib32-poppler-glib')
-pkgver=21.09.0
+pkgver=21.10.0
 pkgrel=1
 arch=(x86_64)
 license=('GPL')
@@ -19,7 +19,7 @@ url="https://poppler.freedesktop.org/"
 source=(https://poppler.freedesktop.org/${_pkgbase}-${pkgver}.tar.xz{,.sig}
         test::git+https://anongit.freedesktop.org/git/poppler/test/#commit=03a4b9eb854a06a83c465e82de601796c458bbe9
         pkgconf32)
-sha512sums=('e63181b98cbcb71e5b1beefce3aa7c196f69a7adc4304c8ced70eac7ab8a7edf918988faeb2a23727ecaafd6f4a809f561fa1c86f1fda0ab7e5e2dc882a5ab55'
+sha512sums=('4a125784716ee578f5be39830cc5903c27eeb707d3756c2ff04ef97328ed8d9e35d3873b7731d2144997cb31794674a1bd35461c84d4237335db27c8df43e4f1'
             'SKIP'
             'SKIP'
             'f704e11f3054312e35974194af845e00fdc795aa97e82d425fb52ff8e628702926551b583f0354f9f9e7eafeb71c7f348c288457ff19a8c4807c58f637d0d946')
