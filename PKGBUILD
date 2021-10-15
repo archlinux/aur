@@ -1,7 +1,7 @@
 # Maintainer: Emilio Reggi <nag@mailbox.org>
 pkgname=himalaya-git
 _pkgname=himalaya
-pkgver=r167.9d40a7d
+pkgver=r249.767eee9
 pkgrel=2
 pkgdesc="Minimalist CLI email client, written in Rust."
 arch=('any')
@@ -26,7 +26,7 @@ build() {
 
 check() {
    cd "$_pkgname"
-   RUSTUP_TOOLCHAIN=stable cargo test --release --locked --lib --target-dir=target
+   RUSTUP_TOOLCHAIN=stable cargo test --frozen --all-features
 }
 
 package() {
