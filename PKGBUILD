@@ -1,43 +1,26 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
-
-_srcname=zimports
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-zimports
-pkgver=0.1.3
-pkgrel=3
-pkgdesc="yet another import fixing tool"
+pkgver=0.4.1
+pkgrel=1
+pkgdesc="Python import rewriter"
 arch=('any')
 url="https://github.com/sqlalchemyorg/zimports"
-license=('BSD')
-depends=(
-  'python-pyflakes'
-  'python-flake8-import-order'
-)
-makedepends=('python' 'python-setuptools')
-options=(!emptydirs)
-source=(
-  "https://files.pythonhosted.org/packages/17/9e/ff7223a7ead8c064435b6200267b1abb5b34c71822ad2ea6d4eaaed8862e/zimports-${pkgver}.tar.gz"
-  'without-tests.patch'
-)
-sha256sums=(
-  '1297e0ecfc80dfe746cef3142ae9614eab1bf56ef75176fdea75a0915ab073e7'
-  'a174aa9b52935d37febe6f6d6a358cf9773c7adc7aa771cb49dc32bf2a699fd9'
-)
-
-prepare() {
-  cd "${srcdir}/${_srcname}-${pkgver}"
-  patch -p0 -i ../without-tests.patch
-}
+license=('MIT')
+depends=('python>=3.7' 'python-pyflakes' 'python-flake8-import-order')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('ab440a6382c54bf7268b5f42e2ec7e670c553d3d3a93ec0d69b0db02296e04c6')
 
 build() {
-  cd "${srcdir}/${_srcname}-${pkgver}"
-  python setup.py build
+	cd "zimports-$pkgver"
+	python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_srcname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
-  # LICENSE file is wrong (MIT but not BSD).
-  # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "zimports-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
