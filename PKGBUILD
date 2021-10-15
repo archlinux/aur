@@ -1,6 +1,6 @@
 # Maintainer: Aaron Esau <contact@aaronesau.com>
 pkgname="heaptrace-git"
-pkgver="2.2.2"
+pkgver="2.2.3"
 pkgrel="1"
 license=("BSD")
 arch=("x86_64")
