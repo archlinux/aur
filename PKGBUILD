@@ -2,8 +2,8 @@
 
 _pkgname="dofi"
 pkgname="dofi-manager-git"
-pkgver=0.1.3.r0.gcce1d91
-pkgrel=2
+pkgver=0.1.4.r0.g202f607
+pkgrel=1
 pkgdesc="A simple dotfile manager"
 arch=("x86_64")
 makedepends=("cargo" "git")
@@ -12,7 +12,7 @@ license=("MIT")
 provides=("dofi-manager")
 conflicts=("dofi-manager")
 source=("git+https://github.com/akiirui/dofi")
-b2sums=("SKIP")
+b2sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -21,7 +21,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  DOFI_VERSION=$pkgver cargo build --locked --release --target-dir target
+  RUSTUP_TOOLCHAIN=stable \
+    DOFI_VERSION=$pkgver \
+    cargo build --locked --bin dofi --release --target-dir target
 }
 
 package() {
