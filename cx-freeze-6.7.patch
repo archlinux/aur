@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index 33a77af..f529498 100644
+--- a/setup.py
++++ b/setup.py
+@@ -71,6 +71,7 @@ try:
+         packages = [],
+         excludes = [],
+         include_files = [cert_file],
++        bin_path_includes = sys.path,
+     )
+ 
+     if sys.platform == "win32":
