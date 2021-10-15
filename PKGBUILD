@@ -2,8 +2,8 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-skins-bonus
-pkgver=21.0308
-pkgrel=2
+pkgver=21.0609
+pkgrel=1
 pkgdesc="Additional skins for RVGL default and community cars."
 url='https://re-volt.io/downloads/packs'
 arch=('any')
@@ -20,11 +20,7 @@ package() {
     cd "$srcdir/rvgl_io_skins_bonus"
 
     # Remove conflicting files present in cars pack
-    rm cars/kingmoloko/carwhite.bmp
-    rm cars/sideswipe/carfatalsp.bmp
-    rm cars/xm250/carcyborg.bmp
-    rm cars/xm250/carcyborgtwo.bmp
-    rm cars/xm250/cardron.bmp
+    rm cars/phim_anaconda/car-boubil.bmp
 
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
