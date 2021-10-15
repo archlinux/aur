@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-gc
-pkgver=8.0.6
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="A garbage collector for C and C++ (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt' 'mingw-w64-libatomic_ops')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/ivmai/bdwgc/releases/download/v${pkgver}/gc-${pkgver}.tar.gz")
-sha256sums=('3b4914abc9fa76593596773e4da671d7ed4d5390e3d46fbf2e5f155e121bea11')
+sha256sums=('2540f7356cb74f6c5b75326c6d38a066edd796361fd7d4ed26e494d9856fed8f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
