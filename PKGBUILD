@@ -1,5 +1,8 @@
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: lesebas
+# Contributor: Seb Deligny
 pkgname=serviio
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Free DLNA media server"
 arch=('any')
@@ -11,7 +14,7 @@ source=(http://download.serviio.org/releases/serviio-${pkgver}-linux.tar.gz
         $pkgname.service
         $pkgname.desktop
         $pkgname.png)
-md5sums=('31b82ca2cb472f7c055df933bf497690'
+md5sums=('ac450526d38a496d3aaa700edae9c683'
          '227a75de2dea1db93c1fba3d004e01ad'
          'e958d9812448f97fe325dfffe8b44620'
          'fbfcac4ad5dffd909e51ea1a7a6335aa'
@@ -59,6 +62,4 @@ package() {
 
   #install the icon file
    install -Dm644 "${srcdir}/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"
-
-
 }
