@@ -4,7 +4,7 @@
 
 _pkgname=betterlockscreen
 pkgname=${_pkgname}-git
-pkgver=r172.9e43994
+pkgver=r176.c625f8b
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
