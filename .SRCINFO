@@ -1,6 +1,6 @@
 pkgbase = python-shtab
 	pkgdesc = Automagic shell tab completion for Python CLI applications
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/iterative/shtab
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-shtab
 	depends = python
 	depends = python-setuptools
 	depends = python-pip
-	source = shtab-1.4.1.tar.gz::https://pypi.python.org/packages/source/s/shtab/shtab-1.4.1.tar.gz
-	sha256sums = 84454cb20caa0fd322c20715ae0b2410d48ea0b64f4aa470ba45c993cadbd91a
+	source = shtab-1.4.2.tar.gz::https://pypi.python.org/packages/source/s/shtab/shtab-1.4.2.tar.gz
+	sha256sums = a11f296bf149df2c1cc781941e485191298ad1b745dc11d01cb226c555aff7cb
 
 pkgname = python-shtab
