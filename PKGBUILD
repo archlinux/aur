@@ -2,14 +2,14 @@
 _name=knossos
 pkgname=fs2-knossos
 pkgver=0.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple mod manager for FreeSpace 2 Open"
 arch=('any')
 url="https://github.com/ngld/knossos"
 license=('Apache')
 groups=()
 depends=(
-  'python' 'python-six' 'python-requests' 'python-requests-toolbelt' 'python-ply' 'python-token-bucket' 'python-pyqt5' 'qt5-webengine' 'python-pyqtwebengine'
+  'python' 'python-pip' 'python-six' 'python-requests' 'python-requests-toolbelt' 'python-ply' 'python-token-bucket' 'python-pyqt5' 'qt5-webengine' 'python-pyqtwebengine'
   'qt5-webchannel' 'qt5-tools' 'python-semantic-version' 'python-raven' 'p7zip' 'openal' 'sdl2'
 )
 makedepends=('python-setuptools' 'ninja' 'yarn')
