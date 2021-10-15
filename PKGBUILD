@@ -7,7 +7,7 @@ url="https://github.com/taviso/loadlibrary"
 arch=('x86_64')
 license=('GPL2')
 depends=("lib32-glibc")
-makedepends=("cabextract")
+makedepends=("cabextract" "lib32-gcc-libs")
 noextract=("mpam-fe.exe")
 source=("loadlibrary::git+https://github.com/taviso/loadlibrary.git"
         "mpam-fe.exe::http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86")
