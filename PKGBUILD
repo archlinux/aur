@@ -116,7 +116,7 @@ makedepends+=(
   python
   dmg2img
   p7zip
-  uefitool-git
+  uefitool
 )
 
 source+=(
@@ -405,7 +405,7 @@ if [ -n "$_enable_macOS_guests" ]; then
   _efi_arch=(32 64)
   for arch in ${_efi_arch[@]}
   do
-    uefipatch "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" "$srcdir/efi-patches-${_unlocker_ver}.txt" -o "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" > /dev/null
+    UEFIPatch "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" "$srcdir/efi-patches-${_unlocker_ver}.txt" -o "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" > /dev/null
   done
 fi
 
