@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amx_cli-git
-pkgver=0.2.17.r2.g0e27c71
+pkgver=0.2.18.r0.g6e1a558
 pkgrel=1
 pkgdesc="Ambiorix Interactive Command Line Interface"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
