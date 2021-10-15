@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="systemd for kexec"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
-arch=('i686' 'x86_64')
+arch=('any')
 #depends=('procps-ng' 'hwids' 'karchive' 'kauth' 'qt5-charts' 'qt5-quickcontrols2' 'qt5-base>=5.9' 'botan>=2.2.0' 'qt5-svg' 'qt5-xmlpatterns' 'qt5-base')
 #makedepends=('cmake>=3.3' 'qt5-tools' 'karchive' 'gcc>=8' 'extra-cmake-modules')
 #optdepends=(

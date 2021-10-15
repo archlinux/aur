@@ -2,8 +2,7 @@ pkgbase = systemd-kexec
 	pkgdesc = systemd for kexec
 	pkgver = 1.0.0
 	pkgrel = 3
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 
 pkgname = systemd-kexec
