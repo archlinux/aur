@@ -1,7 +1,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli-bin
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Syncing dotfiles and more"
 arch=("x86_64")
@@ -30,5 +30,6 @@ validpgpkeys=()
 
 package() {
     install -Dm755 "dt-cli" "$pkgdir/usr/bin/dt-cli"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/dt/LICENSE"
+    install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
+    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
 }
