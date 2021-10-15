@@ -1,0 +1,17 @@
+pkgbase = neovim-orgmode-git
+	pkgdesc = Orgmode clone for Neovim
+	pkgver = r303.a94f7b8
+	pkgrel = 1
+	url = https://github.com/kristijanhusak/orgmode.nvim
+	install = orgmode.install
+	arch = any
+	groups = neovim-plugin
+	license = MIT
+	makedepends = git
+	depends = neovim>=0.5
+	provides = neovim-orgmode
+	conflicts = neovim-orgmode
+	source = neovim-orgmode-git::git+https://github.com/kristijanhusak/orgmode.nvim
+	md5sums = SKIP
+
+pkgname = neovim-orgmode-git
