@@ -30,7 +30,7 @@ build() {
 
 package_pop-launcher-git() {
   pkgdesc="Modular IPC-based desktop launcher service"
-  optdepends=('pop-launcher-system76-power')
+  optdepends=('pop-shell-plugin-system76-power')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
