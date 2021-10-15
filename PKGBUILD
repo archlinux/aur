@@ -1,7 +1,7 @@
 # Maintainer: Todd E Johnson <todd@toddejohnson.net>
 options=(!strip !buildflags debug )
 pkgname=trunk-recorder-git
-pkgver=r1621.ca33f8d
+pkgver=r1629.b3d1776
 pkgrel=1
 pkgdesc="Records calls from a Trunked Radio System (P25 & SmartNet)"
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
