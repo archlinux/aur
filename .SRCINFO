@@ -1,0 +1,19 @@
+pkgbase = taskopen-git
+	pkgdesc = Script for taking notes and open urls with taskwarrior (staging branch)
+	pkgver = 2.0.0alpha.r12.gbdd3cdc
+	pkgrel = 1
+	url = http://github.com/ValiValpas/taskopen/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = nim
+	depends = perl
+	depends = perl-json
+	depends = task>=2.4.0
+	optdepends = xdg-utils: easily use default application associated with a file type
+	source = git+https://github.com/jschlatow/taskopen.git#branch=staging
+	sha256sums = SKIP
+
+pkgname = taskopen-git
