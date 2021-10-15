@@ -44,7 +44,7 @@ package_pop-launcher-git() {
 
 package_pop-shell-plugin-system76-power-git() {
   pkgdesc="System76 Power scripts for the launcher"
-  depends=('pop-shell' 'system76-power')
+  depends=('gnome-shell-extension-pop-shell' 'system76-power')
   conflicts=("${pkgname%-git}" 'pop-launcher-system76-power')
   replaces=('pop-launcher-system76-power-git')
 
