@@ -2,7 +2,7 @@
 
 pkgbase=neovim-zenbones
 pkgname=('neovim-zenbones' 'neovim-zenbones-extras')
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Contrast-focused Neovim colorscheme"
 arch=('any')
@@ -16,7 +16,6 @@ validpgpkeys=('A9C0645CE9FC1230271A768E9ABC0DCACC50317D')
 
 package_neovim-zenbones() {
 	depends=('vim-plugin-runtime')
-	optdepends=('neovim-lush: for zenbones-lua colorscheme')
 	provides=('neovim-lightline-zenbones' 'neovim-lualine-zenbones')
 	conflicts=('neovim-lightline-zenbones' 'neovim-lualine-zenbones')
 
