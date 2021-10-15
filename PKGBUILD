@@ -2,7 +2,7 @@
 ## Based on miniconda3 aur package by Ashwin Vishn Immae, Martin Wimpress and Jingbei Li
 pkgname=mambaforge
 pkgver=4.10.3.7
-pkgrel=2
+pkgrel=3
 pkg_ver=4.10.3-7
 pkgdesc="Conda and Mamba package managers configured to use conda-forge."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("Mambaforge-${pkgver}.sh::https://github.com/conda-forge/miniforge/relea
         "$pkgname.install")
 options=(!strip libtool staticlibs)
 sha256sums=('fc872522ec427fcab10167a93e802efaf251024b58cc27b084b915a9a73c4474'
-            '1df814280df859c40cd7dd1f7ff2552ca72dfbf9cde083f52e55c557b93d8977')
+            '14d79ebcc8fadec9cf59f8fa7eb496166272923ffaa7f36b0c73d24a36283786')
 
 package() {
 	prefix="${pkgdir}/opt/${pkgname}"
