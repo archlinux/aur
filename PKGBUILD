@@ -15,7 +15,7 @@ source=(${pkgname}::git+"https://github.com/robotastic/trunk-recorder.git"
   'trunk-recorder.sysusers'
   'trunk-recorder.tmpfiles')
 sha256sums=('SKIP'
-  '60193b9007ae10c05f70155c909fe2882432a5771d658e733c3d3d89cf46d949'
+  '78bb66aa30af3395c2eddcafa3e59f65e59a328e04a093bb849a83cdedf01a0d'
   'f2e06d333ec8a64c869a9cf369015bf6e0b9819d2af259b4d1c411ed3cca78f8'
   'c20344ba366fcab3f3552e2b5e537f394406ab634f35c2b8858423ffa63fd0e8')
 
