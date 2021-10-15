@@ -1,9 +1,9 @@
 # Maintainer: Eklektisk <eklektisk@eklektiskiscoding.xyz>
 # Neovim PKGBUILD Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
-_pkgbasever=0.5.0
+_pkgbasever=0.5.1
 pkgname=nvim-with-restricted-mode
-pkgver=0.5.0.r1.af6ee44
+pkgver=0.5.1.r1.af6ee44
 pkgrel=1
 pkgdesc="Neovim with restricted mode patch"
 arch=('x86_64')
@@ -18,8 +18,8 @@ optdepends=('python-neovim: for Python 3 plugin support (see :help python)'
             'xclip: for clipboard support on X11 (or xsel) (see :help clipboard)'
             'xsel: for clipboard support on X11 (or xclip) (see :help clipboard)'
             'wl-clipboard: for clipboard support on wayland (see :help clipboard)')
-source=("https://github.com/neovim/neovim/archive/v${_pkgbasever}/${pkgname}-${_pkgbasever}.tar.gz" "https://raw.githubusercontent.com/Eklektisk/nvim-restricted-mode-patch/master/restore_restricted_mode.patch")
-sha512sums=('f6649f804faabb4104d3b28283932e40358c23990961f4ca7b380089318da312e59242746cee06387f4d881dd6514abbfec79c4063482383adfb4106e9e7a3a4' 'SKIP')
+source=("https://github.com/neovim/neovim/archive/v${_pkgbasever}/${pkgname}-${_pkgbasever}.tar.gz" "restore_restricted_mode.patch")
+sha512sums=('a5a976c4998e821e0d9a9038d3f0c9e7c424a951f6bfc6d75898916d6a004ac668f31a34c3472fc4fca6b1d9652ac662b06780dd04dc6a77ecdc81564ec05709' 'SKIP')
 
 build() {
   cd neovim-${_pkgbasever}

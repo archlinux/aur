@@ -1,0 +1,1217 @@
+diff --git a/src/nvim/ex_cmds.lua b/src/nvim/ex_cmds.lua
+--- a/src/nvim/ex_cmds.lua
++++ b/src/nvim/ex_cmds.lua
+@@ -17,25 +15,26 @@ local COUNT      =    0x400
+ local NOTRLCOM   =    0x800
+ local ZEROR      =   0x1000
+ local CTRLV      =   0x2000
+ local CMDARG     =   0x4000
+ local BUFNAME    =   0x8000
+ local BUFUNL     =  0x10000
+ local ARGOPT     =  0x20000
+ local SBOXOK     =  0x40000
+ local CMDWIN     =  0x80000
+ local MODIFY     = 0x100000
+ local FLAGS      = 0x200000
++local RESTRICT   = 0x400000
+ local FILES      = bit.bor(XFILE, EXTRA)
+ local WORD1      = bit.bor(EXTRA, NOSPC)
+ local FILE1      = bit.bor(FILES, NOSPC)
+ 
+ module.flags = {
+   RANGE = RANGE,
+   DFLALL = DFLALL,
+ }
+ 
+ -- The following table is described in ex_cmds_defs.h file.
+ module.cmds = {
+   {
+     command='append',
+     flags=bit.bor(BANG, RANGE, ZEROR, TRLBAR, CMDWIN, MODIFY),
+@@ -1579,19 +1574,19 @@ return {
+   {
+     command='lua',
++    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_lua',
+   },
+   {
+     command='luado',
++    flags=bit.bor(RANGE, DFLALL, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, DFLALL, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_luado',
+   },
+   {
+     command='luafile',
++    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_luafile',
+   },
+   {
+@@ -1921,19 +1916,19 @@ return {
+   {
+     command='perl',
++    flags=bit.bor(RANGE, EXTRA, DFLALL, NEEDARG, SBOXOK, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, EXTRA, DFLALL, NEEDARG, SBOXOK, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_perl',
+   },
+   {
+     command='perldo',
++    flags=bit.bor(RANGE, EXTRA, DFLALL, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, EXTRA, DFLALL, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_perldo',
+   },
+   {
+     command='perlfile',
++    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_perlfile',
+   },
+   {
+@@ -2060,63 +2055,63 @@ return {
+   {
+     command='python',
++    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_python',
+   },
+   {
+     command='pydo',
++    flags=bit.bor(RANGE, DFLALL, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, DFLALL, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_pydo',
+   },
+   {
+     command='pyfile',
++    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_pyfile',
+   },
+   {
+     command='py3',
++    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_python3',
+   },
+   {
+     command='py3do',
++    flags=bit.bor(RANGE, DFLALL, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, DFLALL, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_pydo3',
+   },
+   {
+     command='python3',
++    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_python3',
+   },
+   {
+     command='py3file',
++    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_py3file',
+   },
+   {
+     command='pyx',
++    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_pyx',
+   },
+   {
+     command='pyxdo',
++    flags=bit.bor(RANGE, DFLALL, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, DFLALL, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_pyxdo',
+   },
+   {
+     command='pythonx',
++    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_pyx',
+   },
+   {
+     command='pyxfile',
++    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_pyxfile',
+   },
+   {
+@@ -2249,15 +2234,15 @@ return {
+   {
+     command='ruby',
++    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_ruby',
+   },
+   {
+     command='rubydo',
++    flags=bit.bor(RANGE, DFLALL, EXTRA, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, DFLALL, EXTRA, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_rubydo',
+   },
+   {
+     command='rubyfile',
++    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN, RESTRICT),
+-    flags=bit.bor(RANGE, FILE1, NEEDARG, CMDWIN),
+     addr_type='ADDR_LINES',
+     func='ex_rubyfile',
+   },
+   {
+diff --git a/src/nvim/po/af.po b/src/nvim/po/af.po
+--- a/src/nvim/po/af.po
++++ b/src/nvim/po/af.po
+@@ -1348,6 +1348,10 @@ msgstr "E143: Outobevele het nuwe buffer %s onverwags geskrap"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: nie-numeriese parameter vir :z"
+ 
++#, fuzzy
++#~ msgid "E145: Shell commands not allowed in restricted mode"
++#~ msgstr "E145: Dop bevele nie toegelaat in rvim"
++
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Patrone kan nie deur letters afgebaken word nie"
+ 
+diff --git a/src/nvim/po/ca.po b/src/nvim/po/ca.po
+--- a/src/nvim/po/ca.po
++++ b/src/nvim/po/ca.po
+@@ -1234,6 +1234,10 @@ msgstr "E143: Una auto-ordre ha eliminat el buffer nou %s inesperadament"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: Argument no num�ric per a :z"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Les ordres shell no estan permeses en l'rvim"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Les expressions regulars no poden estar delimitades per lletres"
+diff --git a/src/nvim/po/cs.cp1250.po b/src/nvim/po/cs.cp1250.po
+--- a/src/nvim/po/cs.cp1250.po
++++ b/src/nvim/po/cs.cp1250.po
+@@ -1249,6 +1249,10 @@ msgstr "E143: Automatick
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: ne��seln� argument pro :z"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: rvim nepovoluje pou�it� p��kaz� shellu"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regul�rn� v�razy nesm� b�t odd�leny p�smeny"
+diff --git a/src/nvim/po/cs.po b/src/nvim/po/cs.po
+--- a/src/nvim/po/cs.po
++++ b/src/nvim/po/cs.po
+@@ -1249,6 +1249,10 @@ msgstr "E143: Automatick
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: ne��seln� argument pro :z"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: rvim nepovoluje pou�it� p��kaz� shellu"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regul�rn� v�razy nesm� b�t odd�leny p�smeny"
+diff --git a/src/nvim/po/da.po b/src/nvim/po/da.po
+--- a/src/nvim/po/da.po
++++ b/src/nvim/po/da.po
+@@ -980,6 +980,9 @@ msgstr "E143: Autokommandoer slettede uventede ny buffer %s"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: ikke-numerisk argument til :z"
+ 
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Skalkommandoer er ikke tilladt i rvim"
++
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regulære udtryk kan ikke afgrænses af bogstaver"
+ 
+diff --git a/src/nvim/po/de.po b/src/nvim/po/de.po
+--- a/src/nvim/po/de.po
++++ b/src/nvim/po/de.po
+@@ -3,7 +3,7 @@
+ # Do ":help uganda"  in Vim to read copying and usage conditions.
+ # Do ":help credits" in Vim to see a list of people who contributed.
+ #
++# Previous-Translator(s): 
+-# Previous-Translator(s):
+ # Johannes Zellner <johannes@zellner.org>
+ # Gerfried Fuchs <alfie@ist.org>
+ msgid ""
+@@ -659,6 +659,10 @@ msgstr "E143: Autokommandos l
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: Nicht-numerisches Argument f�r :z"
+ 
++#: ../ex_cmds.c:3398
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Shell-Befehle sind in rvim nicht erlaubt"
++
+ #: ../ex_cmds.c:3492
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regul�re Ausdr�cke k�nnen nicht durch Buchstaben begrenzt werden"
+diff --git a/src/nvim/po/en_GB.po b/src/nvim/po/en_GB.po
+--- a/src/nvim/po/en_GB.po
++++ b/src/nvim/po/en_GB.po
+@@ -1194,6 +1194,10 @@ msgstr ""
+ msgid "E144: non-numeric argument to :z"
+ msgstr ""
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr ""
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regular expressions cannot be delimited by letters"
+diff --git a/src/nvim/po/eo.po b/src/nvim/po/eo.po
+--- a/src/nvim/po/eo.po
++++ b/src/nvim/po/eo.po
+@@ -969,6 +969,9 @@ msgstr "E143: Aŭtokomandoj neatendite forviŝis novan bufron %s"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: nenumera argumento de :z"
+ 
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Ŝelkomandoj nepermeseblaj en rvim"
++
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Ne eblas limigi regulesprimon per literoj"
+ 
+diff --git a/src/nvim/po/es.po b/src/nvim/po/es.po
+--- a/src/nvim/po/es.po
++++ b/src/nvim/po/es.po
+@@ -1234,6 +1234,10 @@ msgstr "E143: Las auto-órdenes han eliminado al nuevo búfer %s"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: Argumento no numérico para \":z\""
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: No se permiten órdenes de consola en rvim"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Las expresiones regulares no se pueden delimitar con letras"
+diff --git a/src/nvim/po/fi.po b/src/nvim/po/fi.po
+--- a/src/nvim/po/fi.po
++++ b/src/nvim/po/fi.po
+@@ -1515,6 +1515,10 @@ msgstr "E143: Autocommand poisti uuden puskurin odotuksen vastaisesti %s"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: :z:n argumentti ei ole numero"
+ 
++#, fuzzy
++#~ msgid "E145: Shell commands not allowed in restricted mode"
++#~ msgstr "E145: Kuoren komennot eivät toimi rvimissä"
++
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Säännöllistä ilmausta ei voi rajata kirjaimilla"
+ 
+diff --git a/src/nvim/po/fr.po b/src/nvim/po/fr.po
+--- a/src/nvim/po/fr.po
++++ b/src/nvim/po/fr.po
+@@ -1117,6 +1117,12 @@ msgstr "E143: Une autocommande a effac
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: L'argument de :z n'est pas num�rique"
+ 
++# AB - La version fran�aise fera peut-�tre mieux passer l'am�re pilule.
++#      La consultation de l'aide donnera l'explication compl�te � ceux qui
++#      ne comprendraient pas � quoi ce message est d�.
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Les commandes externes sont indisponibles dans rvim"
++
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr ""
+ "E146: Les expressions r�guli�res ne peuvent pas �tre d�limit�es par des "
+diff --git a/src/nvim/po/ga.po b/src/nvim/po/ga.po
+--- a/src/nvim/po/ga.po
++++ b/src/nvim/po/ga.po
+@@ -967,6 +967,9 @@ msgstr "E143: Scrios na huathorduithe maol
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: arg�int neamhuimhri�il chun :z"
+ 
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: N� cheada�tear orduithe blaoisce i rvim"
++
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr ""
+ "E146: N� cheada�tear litreacha mar theormharc�ir� ar shloinn ionada�ochta"
+diff --git a/src/nvim/po/it.po b/src/nvim/po/it.po
+--- a/src/nvim/po/it.po
++++ b/src/nvim/po/it.po
+@@ -1220,6 +1220,10 @@ msgstr ""
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: argomento non-numerico a :z"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Comandi Shell non permessi in rvim"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Le espressioni regolari non possono essere delimitate da lettere"
+diff --git a/src/nvim/po/ja.euc-jp.po b/src/nvim/po/ja.euc-jp.po
+--- a/src/nvim/po/ja.euc-jp.po
++++ b/src/nvim/po/ja.euc-jp.po
+@@ -987,6 +987,9 @@ msgstr "E143: autocommand
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: ���ǤϤʤ������� :z ���Ϥ���ޤ���"
+ 
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: rvim�Ǥϥ����륳�ޥ�ɤ�Ȥ��ޤ���"
++
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: ����ɽ����ʸ���Ƕ��ڤ뤳�Ȥ��Ǥ��ޤ���"
+ 
+diff --git a/src/nvim/po/ja.po b/src/nvim/po/ja.po
+--- a/src/nvim/po/ja.po
++++ b/src/nvim/po/ja.po
+@@ -987,6 +987,9 @@ msgstr "E143: autocommandが予期せず新しいバッファ %s を削除しま
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: 数ではない引数が :z に渡されました"
+ 
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: rvimではシェルコマンドを使えません"
++
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: 正規表現は文字で区切ることができません"
+ 
+diff --git a/src/nvim/po/ko.UTF-8.po b/src/nvim/po/ko.UTF-8.po
+--- a/src/nvim/po/ko.UTF-8.po
++++ b/src/nvim/po/ko.UTF-8.po
+@@ -1215,6 +1215,10 @@ msgstr "E143: Autocommand가 뜻 밖에 새 버퍼 %s을(를) 지웠습니다"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: 숫자가 아닌 인자가 :z에 주어졌습니다"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: rvim에서는 쉘 명령을 사용할 수 없습니다"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: 정규표현식은 글자로 구분될 수 없습니다"
+diff --git a/src/nvim/po/nb.po b/src/nvim/po/nb.po
+--- a/src/nvim/po/nb.po
++++ b/src/nvim/po/nb.po
+@@ -1231,6 +1231,10 @@ msgstr "E143: Autokommandoer slettet uventet den nye bufferen %s"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: Ikke-numerisk parameter til :z"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Skallkommandoer er ikke tillatt i rvim"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regul�re uttrykk kan ikke bli adskilt av bokstaver"
+diff --git a/src/nvim/po/nl.po b/src/nvim/po/nl.po
+--- a/src/nvim/po/nl.po
++++ b/src/nvim/po/nl.po
+@@ -1217,6 +1217,10 @@ msgstr "E143: 'Autocommands' hebben het nieuwe buffer %s onverwacht verwijderd"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: niet-numeriek argument voor :z"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: in rvim zijn shell-opdrachten zijn niet toegestaan"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: reguliere expressies kunnen niet begrensd worden door letters"
+diff --git a/src/nvim/po/no.po b/src/nvim/po/no.po
+--- a/src/nvim/po/no.po
++++ b/src/nvim/po/no.po
+@@ -1231,6 +1231,10 @@ msgstr "E143: Autokommandoer slettet uventet den nye bufferen %s"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: Ikke-numerisk parameter til :z"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Skallkommandoer er ikke tillatt i rvim"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regul�re uttrykk kan ikke bli adskilt av bokstaver"
+diff --git a/src/nvim/po/pl.UTF-8.po b/src/nvim/po/pl.UTF-8.po
+--- a/src/nvim/po/pl.UTF-8.po
++++ b/src/nvim/po/pl.UTF-8.po
+@@ -1201,6 +1201,10 @@ msgstr "E143: Autokomendy nieoczekiwanie skasowały nowy bufor %s"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: nienumeryczny argument dla :z"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Komendy powłoki są niedozwolone w rvim"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Wzorce regularne nie mogą być rozgraniczane literami"
+diff --git a/src/nvim/po/pt_BR.po b/src/nvim/po/pt_BR.po
+--- a/src/nvim/po/pt_BR.po
++++ b/src/nvim/po/pt_BR.po
+@@ -4210,6 +4210,10 @@ msgstr ""
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: argumento n�o-num�rico passado a :z"
+ 
++#: ../ex_cmds.c:3398
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Comandos do shell n�o s�o permitidos no rvim"
++
+ #: ../ex_cmds.c:3492
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Express�es regulares n�o podem ser delimitadas por letras"
+diff --git a/src/nvim/po/ru.po b/src/nvim/po/ru.po
+--- a/src/nvim/po/ru.po
++++ b/src/nvim/po/ru.po
+@@ -1205,6 +1205,10 @@ msgstr "E143: Автокоманды неожиданно убили новый
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: Параметр команды :z должен быть числом"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Использование команд оболочки не допускается в rvim."
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Регулярные выражения не могут разделяться буквами"
+diff --git a/src/nvim/po/sk.cp1250.po b/src/nvim/po/sk.cp1250.po
+--- a/src/nvim/po/sk.cp1250.po
++++ b/src/nvim/po/sk.cp1250.po
+@@ -1219,6 +1219,10 @@ msgstr "E143: Automatick
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: ne��seln� argument pre :z"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: rvim nepovo�uje pou�itie pr�kazov shellu"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regul�rne v�razy nesm� by� oddelen� p�smenami"
+diff --git a/src/nvim/po/sk.po b/src/nvim/po/sk.po
+--- a/src/nvim/po/sk.po
++++ b/src/nvim/po/sk.po
+@@ -1219,6 +1219,10 @@ msgstr "E143: Automatick
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: ne��seln� argument pre :z"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: rvim nepovo�uje pou�itie pr�kazov shellu"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regul�rne v�razy nesm� by� oddelen� p�smenami"
+diff --git a/src/nvim/po/sr.po b/src/nvim/po/sr.po
+--- a/src/nvim/po/sr.po
++++ b/src/nvim/po/sr.po
+@@ -981,6 +981,9 @@ msgstr "E143: Аутокоманде су неочекивано обрисал
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: ненумерички аргумент за :z"
+ 
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Shell команде нису дозвољене у rvim"
++
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Регуларни изрази не могу да се раздвајају словима"
+ 
+diff --git a/src/nvim/po/sv.po b/src/nvim/po/sv.po
+--- a/src/nvim/po/sv.po
++++ b/src/nvim/po/sv.po
+@@ -2622,6 +2622,10 @@ msgstr "E143: Autokommandon tog ov
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: ickenumeriskt argument till :z"
+ 
++#: ../ex_cmds.c:3398
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Skalkommandon inte till�tna i rvim"
++
+ #: ../ex_cmds.c:3492
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regulj�ra uttryck kan inte vara �tskilda av bokst�ver"
+diff --git a/src/nvim/po/uk.po b/src/nvim/po/uk.po
+--- a/src/nvim/po/uk.po
++++ b/src/nvim/po/uk.po
+@@ -1459,6 +1459,10 @@ msgstr "E143: Автокоманди несподівано знищили но
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: нечисловий аргумент для :z"
+ 
++msgid ""
++"E145: Shell commands and some functionality not allowed in restricted mode"
++msgstr "E145: У обмеженому режимі не дозволені команди оболонки і деяка функіональність"
++
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Регулярні вирази не можна розділяти літерами"
+ 
+diff --git a/src/nvim/po/vi.po b/src/nvim/po/vi.po
+--- a/src/nvim/po/vi.po
++++ b/src/nvim/po/vi.po
+@@ -1229,6 +1229,10 @@ msgstr "E143: Các lệnh tự động xóa bộ đệm mới ngoài ý muốn %
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: Tham số của lệnh :z phải là số"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: Không cho phép sử dụng lệnh shell trong rvim."
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Không thể phân cách biểu thức chính quy bằng chữ cái"
+diff --git a/src/nvim/po/zh_CN.UTF-8.po b/src/nvim/po/zh_CN.UTF-8.po
+--- a/src/nvim/po/zh_CN.UTF-8.po
++++ b/src/nvim/po/zh_CN.UTF-8.po
+@@ -1222,6 +1222,10 @@ msgstr "E143: 自动命令意外地删除了新缓冲区 %s"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: :z 不接受非数字的参数"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: rvim 中禁止使用 shell 命令"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: 正则表达式不能用字母作分界"
+diff --git a/src/nvim/po/zh_TW.UTF-8.po b/src/nvim/po/zh_TW.UTF-8.po
+--- a/src/nvim/po/zh_TW.UTF-8.po
++++ b/src/nvim/po/zh_TW.UTF-8.po
+@@ -1262,6 +1262,10 @@ msgstr "E143: Autocommands 意外地刪除新緩衝區 %s"
+ msgid "E144: non-numeric argument to :z"
+ msgstr "E144: :z 不接受非數字的參數"
+ 
++#: ../ex_cmds.c:3404
++msgid "E145: Shell commands not allowed in rvim"
++msgstr "E145: rvim 中禁止使用 shell 命令"
++
+ #: ../ex_cmds.c:3498
+ msgid "E146: Regular expressions can't be delimited by letters"
+ msgstr "E146: Regular expression 無法用字母分隔 (?)"
+diff --git a/runtime/doc/vim_diff.txt b/runtime/doc/vim_diff.txt
+--- a/runtime/doc/vim_diff.txt
++++ b/runtime/doc/vim_diff.txt
+@@ -416,8 +416,8 @@ Aliases:
+   gvimdiff  (GUI)
+   rgview    (GUI)
+   rgvim     (GUI)
++  rview     (alias for "nvim -RZ")
++  rvim      (alias for "nvim -Z")
+-  rview
+-  rvim
+   view      (alias for "nvim -R")
+   vimdiff   (alias for "nvim -d" |diff-mode|)
+ 
+@@ -496,7 +496,6 @@ Startup:
+   --literal (file args are always literal; to expand wildcards on Windows, use
+     |:n| e.g. `nvim +"n *"`)
+   Easy mode: eview, evim, nvim -y
+-  Restricted mode: rview, rvim, nvim -Z
+   Vi mode: nvim -v
+ 
+ Test functions:
+diff --git a/man/nvim.1 b/man/nvim.1
+--- a/man/nvim.1
++++ b/man/nvim.1
+@@ -113,6 +113,9 @@ associated with a file.
+ To overwrite a file, add an exclamation mark to the relevant Ex command, such as
+ .Ic :w! .
+ .Ic ":help 'readonly'"
++.It Fl Z
++Restricted mode.
++Disable commands that make use of an external shell.
+ .It Fl m
+ Resets the 'write' option, to disable file modifications.
+ Writing to a file is disabled, but buffers can still be modified.
+diff --git a/runtime/doc/cmdline.txt b/runtime/doc/cmdline.txt
+--- a/runtime/doc/cmdline.txt
++++ b/runtime/doc/cmdline.txt
+@@ -973,7 +973,7 @@ name).  This is included for backwards compatibility with version 3.0, the
+ 
+ Note: Where a file name is expected wildcards expansion is done.  On Unix the
+ shell is used for this, unless it can be done internally (for speed).
++Unless in |restricted-mode|, backticks work also, like in >
+-Backticks work also, like in >
+ 	:n `echo *.c`
+ But expansion is only done if there are any wildcards before expanding the
+ '%', '#', etc..  This avoids expanding wildcards inside a file name.  If you
+diff --git a/runtime/doc/diff.txt b/runtime/doc/diff.txt
+--- a/runtime/doc/diff.txt
++++ b/runtime/doc/diff.txt
+@@ -20,7 +20,8 @@ additionally sets up for viewing the differences between the arguments. >
+ 
+ 	nvim -d file1 file2 [file3 [file4]]
+ 
+-In addition to the |-d| argument, |-R| may be used for readonly mode.
++In addition to the |-d| argument, |-Z| and |-R| may be used for restricted
++mode and readonly mode respectively.
+ 
+ The second and following arguments may also be a directory name.  Vim will
+ then append the file name of the first argument to the directory name to find
+diff --git a/runtime/doc/eval.txt b/runtime/doc/eval.txt
+--- a/runtime/doc/eval.txt
++++ b/runtime/doc/eval.txt
+@@ -5698,6 +5698,7 @@ libcall({libname}, {funcname}, {argument})
+ 		If {argument} is a number, it is passed to the function as an
+ 		int; if {argument} is a string, it is passed as a
+ 		null-terminated string.
++		This function will fail in |restricted-mode|.
+ 
+ 		libcall() allows you to write your own 'plug-in' extensions to
+ 		Vim without having to recompile the program.  It is NOT a
+@@ -8803,6 +8804,7 @@ system({cmd} [, {input}])				*system()* *E677*
+ 		{cmd} is a string: 'shell' 'shellcmdflag' {cmd}
+ 
+ 		The resulting error code can be found in |v:shell_error|.
++		This function will fail in |restricted-mode|.
+ 
+ 		Note that any wrong value in the options mentioned above may
+ 		make the function fail.  It has also been reported to fail
+diff --git a/runtime/doc/starting.txt b/runtime/doc/starting.txt
+--- a/runtime/doc/starting.txt
++++ b/runtime/doc/starting.txt
+@@ -185,6 +185,18 @@ argument.
+ 		the 'modifiable' and 'write' options can be set to enable
+ 		changes and writing.
+ 
++					*-Z* *restricted-mode* *E145* *E981*
++-Z		Restricted mode.  All commands that make use of an external
++		shell are disabled.  This includes suspending with CTRL-Z,
++		":sh", filtering, the system() function, backtick expansion
++		and libcall().
++		Also disallowed are delete(), rename(), mkdir(), jobstart(),
++		etc.
++		Interfaces, such as Python, Ruby and Lua, are also disabled,
++		since they could be used to execute shell commands.
++		Note that the user may still find a loophole to execute a
++		shell command, it has only been made difficult.
++
+ -e							*-e* *-E*
+ -E		Start Nvim in Ex mode |gQ|.
+ 
+diff --git a/src/nvim/eval.c b/src/nvim/eval.c
+--- a/src/nvim/eval.c
++++ b/src/nvim/eval.c
+@@ -7152,7 +7152,7 @@ void get_system_output_as_rettv(typval_T *argvars, typval_T *rettv,
+   rettv->v_type = VAR_STRING;
+   rettv->vval.v_string = NULL;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -10418,7 +10418,7 @@ Channel *find_job(uint64_t id, bool show_error)
+ 
+ void script_host_eval(char *name, typval_T *argvars, typval_T *rettv)
+ {
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+diff --git a/src/nvim/eval/funcs.c b/src/nvim/eval/funcs.c
+--- a/src/nvim/eval/funcs.c
++++ b/src/nvim/eval/funcs.c
+@@ -205,7 +205,7 @@ static void float_op_wrapper(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ 
+ static void api_wrapper(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ {
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -862,7 +862,7 @@ static void f_chanclose(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_NUMBER;
+   rettv->vval.v_number = 0;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -901,7 +901,7 @@ static void f_chansend(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_NUMBER;
+   rettv->vval.v_number = 0;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -1480,7 +1480,7 @@ static void f_deepcopy(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ static void f_delete(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ {
+   rettv->vval.v_number = -1;
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -1515,7 +1515,7 @@ static void f_delete(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ // dictwatcheradd(dict, key, funcref) function
+ static void f_dictwatcheradd(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ {
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -1553,7 +1553,7 @@ static void f_dictwatcheradd(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ // dictwatcherdel(dict, key, funcref) function
+ static void f_dictwatcherdel(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ {
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -4798,7 +4798,7 @@ static void f_jobpid(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_NUMBER;
+   rettv->vval.v_number = 0;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -4822,7 +4822,7 @@ static void f_jobresize(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_NUMBER;
+   rettv->vval.v_number = 0;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -4855,7 +4855,7 @@ static void f_jobstart(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_NUMBER;
+   rettv->vval.v_number = 0;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -4988,7 +4988,7 @@ static void f_jobstop(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_NUMBER;
+   rettv->vval.v_number = 0;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -5021,7 +5021,7 @@ static void f_jobwait(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_NUMBER;
+   rettv->vval.v_number = 0;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+   if (argvars[0].v_type != VAR_LIST || (argvars[1].v_type != VAR_NUMBER
+@@ -5239,7 +5239,7 @@ static void libcall_common(typval_T *argvars, typval_T *rettv, int out_type)
+     rettv->vval.v_string = NULL;
+   }
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -5942,9 +5942,8 @@ static void f_mkdir(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   int prot = 0755;  // -V536
+ 
+   rettv->vval.v_number = FAIL;
++  if (check_restricted() || check_secure())
+-  if (check_secure()) {
+     return;
+-  }
+ 
+   char buf[NUMBUFLEN];
+   const char *const dir = tv_get_string_buf(&argvars[0], buf);
+@@ -6833,7 +6832,7 @@ static void f_remove(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+  */
+ static void f_rename(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ {
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     rettv->vval.v_number = -1;
+   } else {
+     char buf[NUMBUFLEN];
+@@ -7231,7 +7230,7 @@ static void f_rpcnotify(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_NUMBER;
+   rettv->vval.v_number = 0;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -7267,7 +7266,7 @@ static void f_rpcrequest(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->vval.v_number = 0;
+   const int l_provider_call_nesting = provider_call_nesting;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -7364,7 +7363,7 @@ static void f_rpcstart(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_NUMBER;
+   rettv->vval.v_number = 0;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -7430,7 +7429,7 @@ static void f_rpcstop(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_NUMBER;
+   rettv->vval.v_number = 0;
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -7892,7 +7891,7 @@ static void f_serverstart(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+   rettv->v_type = VAR_STRING;
+   rettv->vval.v_string = NULL;  // Address of the new server
+ 
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -7934,7 +7933,7 @@ static void f_serverstart(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ /// "serverstop()" function
+ static void f_serverstop(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ {
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+@@ -10467,7 +10466,7 @@ static void f_tempname(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ // "termopen(cmd[, cwd])" function
+ static void f_termopen(typval_T *argvars, typval_T *rettv, FunPtr fptr)
+ {
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     return;
+   }
+ 
+diff --git a/src/nvim/ex_cmds.c b/src/nvim/ex_cmds.c
+--- a/src/nvim/ex_cmds.c
++++ b/src/nvim/ex_cmds.c
+@@ -1049,13 +1049,13 @@ void do_bang(int addr_count, exarg_T *eap, int forceit, int do_in, int do_out)
+   int len;
+   int scroll_save = msg_scroll;
+ 
++  /*
++   * Disallow shell commands in restricted mode (-Z)
++   * Disallow shell commands from .exrc and .vimrc in current directory for
++   * security reasons.
++   */
++  if (check_restricted() || check_secure())
+-  //
+-  // Disallow shell commands from .exrc and .vimrc in current directory for
+-  // security reasons.
+-  //
+-  if (check_secure()) {
+     return;
+-  }
+ 
+   if (addr_count == 0) {                /* :! */
+     msg_scroll = FALSE;             /* don't scroll here */
+@@ -1383,9 +1383,10 @@ do_shell(
+     int flags             // may be SHELL_DOOUT when output is redirected
+ )
+ {
++  // Disallow shell commands in restricted mode (-Z)
+   // Disallow shell commands from .exrc and .vimrc in current directory for
+   // security reasons.
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     msg_end();
+     return;
+   }
+@@ -3029,6 +3030,20 @@ void ex_z(exarg_T *eap)
+   ex_no_reprint = true;
+ }
+ 
++// Check if the restricted flag is set.
++// If so, give an error message and return true.
++// Otherwise, return false.
++bool check_restricted(void)
++  FUNC_ATTR_PURE FUNC_ATTR_WARN_UNUSED_RESULT
++{
++  if (restricted) {
++    EMSG(_("E145: Shell commands and some functionality not allowed"
++           " in restricted mode"));
++    return true;
++  }
++  return false;
++}
++
+ /*
+  * Check if the secure flag is set (.exrc or .vimrc in current directory).
+  * If so, give an error message and return TRUE.
+diff --git a/src/nvim/ex_cmds_defs.h b/src/nvim/ex_cmds_defs.h
+--- a/src/nvim/ex_cmds_defs.h
++++ b/src/nvim/ex_cmds_defs.h
+@@ -62,5 +62,6 @@
+ #define EX_MODIFY       0x100000  // forbidden in non-'modifiable' buffer
+ #define EX_FLAGS        0x200000  // allow flags after count in argument
++#define EX_RESTRICT     0x400000  // forbidden in restricted mode
+ #define EX_FILES (EX_XFILE | EX_EXTRA)  // multiple extra files allowed
+ #define EX_FILE1 (EX_FILES | EX_NOSPC)  // 1 file, defaults to current file
+ #define EX_WORD1 (EX_EXTRA | EX_NOSPC)  // one extra word allowed
+diff --git a/src/nvim/ex_docmd.c b/src/nvim/ex_docmd.c
+--- a/src/nvim/ex_docmd.c
++++ b/src/nvim/ex_docmd.c
+@@ -1503,6 +1503,10 @@ static char_u * do_one_cmd(char_u **cmdlinep,
+       errormsg = (char_u *)_(e_sandbox);
+       goto doend;
+     }
++    if (restricted != 0 && (ea.argt & EX_RESTRICT)) {
++      errormsg = (char_u *)_("E981: Command not allowed in restricted mode");
++      goto doend;
++    }
+     if (!MODIFIABLE(curbuf) && (ea.argt & EX_MODIFY)
+         // allow :put in terminals
+         && (!curbuf->terminal || ea.cmdidx != CMD_put)) {
+@@ -6620,22 +6624,25 @@ static void ex_hide(exarg_T *eap)
+ /// ":stop" and ":suspend": Suspend Vim.
+ static void ex_stop(exarg_T *eap)
+ {
++  // Disallow suspending in restricted mode (-Z)
++  if (!check_restricted()) {
++    if (!eap->forceit) {
++      autowrite_all();
++    }
++    apply_autocmds(EVENT_VIMSUSPEND, NULL, NULL, false, NULL);
+-  if (!eap->forceit) {
+-    autowrite_all();
+-  }
+-  apply_autocmds(EVENT_VIMSUSPEND, NULL, NULL, false, NULL);
+ 
++    // TODO(bfredl): the TUI should do this on suspend
++    ui_cursor_goto(Rows - 1, 0);
++    ui_call_grid_scroll(1, 0, Rows, 0, Columns, 1, 0);
++    ui_flush();
++    ui_call_suspend();  // call machine specific function
+-  // TODO(bfredl): the TUI should do this on suspend
+-  ui_cursor_goto(Rows - 1, 0);
+-  ui_call_grid_scroll(1, 0, Rows, 0, Columns, 1, 0);
+-  ui_flush();
+-  ui_call_suspend();  // call machine specific function
+ 
++    ui_flush();
++    maketitle();
++    resettitle();  // force updating the title
++    ui_refresh();  // may have resized window
++    apply_autocmds(EVENT_VIMRESUME, NULL, NULL, false, NULL);
++  }
+-  ui_flush();
+-  maketitle();
+-  resettitle();  // force updating the title
+-  ui_refresh();  // may have resized window
+-  apply_autocmds(EVENT_VIMRESUME, NULL, NULL, false, NULL);
+ }
+ 
+ // ":exit", ":xit" and ":wq": Write file and quite the current window.
+diff --git a/src/nvim/globals.h b/src/nvim/globals.h
+--- a/src/nvim/globals.h
++++ b/src/nvim/globals.h
+@@ -492,6 +492,9 @@ EXTERN int stdout_isatty INIT(= true);
+ // volatile because it is used in a signal handler.
+ EXTERN volatile int full_screen INIT(= false);
+ 
++// When started in restricted mode (-Z).
++EXTERN int restricted INIT(= false);
++
+ /// Non-zero when only "safe" commands are allowed, e.g. when sourcing .exrc or
+ /// .vimrc in current directory.
+ EXTERN int secure INIT(= false);
+diff --git a/src/nvim/lua/executor.c b/src/nvim/lua/executor.c
+--- a/src/nvim/lua/executor.c
++++ b/src/nvim/lua/executor.c
+@@ -965,7 +965,7 @@ static void typval_exec_lua(const char *lcmd, size_t lcmd_len, const char *name,
+                             typval_T *const args, int argcount, bool special,
+                             typval_T *ret_tv)
+ {
++  if (check_restricted() || check_secure()) {
+-  if (check_secure()) {
+     if (ret_tv) {
+       ret_tv->v_type = VAR_NUMBER;
+       ret_tv->vval.v_number = 0;
+diff --git a/src/nvim/main.c b/src/nvim/main.c
+--- a/src/nvim/main.c
++++ b/src/nvim/main.c
+@@ -1012,6 +1012,10 @@ static void command_line_scan(mparm_T *parmp)
+           want_argument = true;
+           break;
+         }
++        case 'Z': {  // "-Z" restricted mode
++          restricted = true;
++          break;
++        }
+ 
+         case 'c': {  // "-c{command}" or "-c {command}" exec command
+           if (argv[0][argv_idx] != NUL) {
+diff --git a/src/nvim/misc1.c b/src/nvim/misc1.c
+--- a/src/nvim/misc1.c
++++ b/src/nvim/misc1.c
+@@ -1091,9 +1091,8 @@ char_u *get_cmd_output(char_u *cmd, char_u *infile, ShellOpts flags,
+ {
+   char_u *buffer = NULL;
+ 
++  if (check_restricted() || check_secure())
+-  if (check_secure()) {
+     return NULL;
+-  }
+ 
+   // get a name for the temp file
+   char_u *tempname = vim_tempname();
+diff --git a/src/nvim/os/shell.c b/src/nvim/os/shell.c
+--- a/src/nvim/os/shell.c
++++ b/src/nvim/os/shell.c
+@@ -150,11 +150,11 @@ int os_expand_wildcards(int num_pat, char_u **pat, int *num_file,
+     return FAIL;
+   }
+ 
++  // Don't allow the use of backticks in secure and restricted mode.
++  if (secure || restricted) {
+-  // Don't allow the use of backticks in secure.
+-  if (secure) {
+     for (i = 0; i < num_pat; i++) {
+       if (vim_strchr(pat[i], '`') != NULL
++          && (check_restricted() || check_secure())) {
+-          && (check_secure())) {
+         return FAIL;
+       }
+     }
+diff --git a/src/nvim/testdir/test_restricted.vim b/src/nvim/testdir/test_restricted.vim
+--- a/src/nvim/testdir/test_restricted.vim
++++ b/src/nvim/testdir/test_restricted.vim
+@@ -0,0 +1,103 @@
++" Test for "rvim" or "vim -Z"
++
++source shared.vim
++
++"if has('win32') && has('gui')
++"  " Win32 GUI shows a dialog instead of displaying the error in the last line.
++"  finish
++"endif
++
++func Test_restricted()
++  call Run_restricted_test('!ls', 'E145:')
++endfunc
++
++func Run_restricted_test(ex_cmd, error)
++  let cmd = GetVimCommand('Xrestricted')
++  if cmd == ''
++    return
++  endif
++
++  " Use a VimEnter autocommand to avoid that the error message is displayed in
++  " a dialog with an OK button.
++  call writefile([
++	\ "func Init()",
++	\ "  silent! " . a:ex_cmd,
++	\ "  call writefile([v:errmsg], 'Xrestrout')",
++	\ "  qa!",
++	\ "endfunc",
++	\ "au VimEnter * call Init()",
++	\ ], 'Xrestricted')
++  call system(cmd . ' -Z')
++  call assert_match(a:error, join(readfile('Xrestrout')))
++
++  call delete('Xrestricted')
++  call delete('Xrestrout')
++endfunc
++
++func Test_restricted_lua()
++  if !has('lua')
++    throw 'Skipped: Lua is not supported'
++  endif
++  call Run_restricted_test('lua print("Hello, Vim!")', 'E981:')
++  call Run_restricted_test('luado return "hello"', 'E981:')
++  call Run_restricted_test('luafile somefile', 'E981:')
++  call Run_restricted_test('call luaeval("expression")', 'E145:')
++endfunc
++
++func Test_restricted_mzscheme()
++  if !has('mzscheme')
++    throw 'Skipped: MzScheme is not supported'
++  endif
++  call Run_restricted_test('mzscheme statement', 'E981:')
++  call Run_restricted_test('mzfile somefile', 'E981:')
++  call Run_restricted_test('call mzeval("expression")', 'E145:')
++endfunc
++
++func Test_restricted_perl()
++  if !has('perl')
++    throw 'Skipped: Perl is not supported'
++  endif
++  " TODO: how to make Safe mode fail?
++  " call Run_restricted_test('perl system("ls")', 'E981:')
++  " call Run_restricted_test('perldo system("hello")', 'E981:')
++  " call Run_restricted_test('perlfile somefile', 'E981:')
++  " call Run_restricted_test('call perleval("system(\"ls\")")', 'E145:')
++endfunc
++
++func Test_restricted_python()
++  if !has('python')
++    throw 'Skipped: Python is not supported'
++  endif
++  call Run_restricted_test('python print "hello"', 'E981:')
++  call Run_restricted_test('pydo return "hello"', 'E981:')
++  call Run_restricted_test('pyfile somefile', 'E981:')
++  call Run_restricted_test('call pyeval("expression")', 'E145:')
++endfunc
++
++func Test_restricted_python3()
++  if !has('python3')
++    throw 'Skipped: Python3 is not supported'
++  endif
++  call Run_restricted_test('py3 print "hello"', 'E981:')
++  call Run_restricted_test('py3do return "hello"', 'E981:')
++  call Run_restricted_test('py3file somefile', 'E981:')
++  call Run_restricted_test('call py3eval("expression")', 'E145:')
++endfunc
++
++func Test_restricted_ruby()
++  if !has('ruby')
++    throw 'Skipped: Ruby is not supported'
++  endif
++  call Run_restricted_test('ruby print "Hello"', 'E981:')
++  call Run_restricted_test('rubydo print "Hello"', 'E981:')
++  call Run_restricted_test('rubyfile somefile', 'E981:')
++endfunc
++
++func Test_restricted_tcl()
++  if !has('tcl')
++    throw 'Skipped: Tcl is not supported'
++  endif
++  call Run_restricted_test('tcl puts "Hello"', 'E981:')
++  call Run_restricted_test('tcldo puts "Hello"', 'E981:')
++  call Run_restricted_test('tclfile somefile', 'E981:')
++endfunc
