@@ -5,7 +5,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2021.07.15.a.r122.g60a195e9721
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2021.10.05.a.r2611.g850426514ad
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -18,30 +18,38 @@ source=(
     'git+https://github.com/apple/swift#branch=main'
     'cmark::git+https://github.com/apple/swift-cmark#branch=main'
     'llbuild::git+https://github.com/apple/swift-llbuild#branch=main'
-    'swift-argument-parser::git+https://github.com/apple/swift-argument-parser#branch=main'
-    'swift-crypto::git+https://github.com/apple/swift-crypto#branch=main'
+    'swift-argument-parser::git+https://github.com/apple/swift-argument-parser#commit=0.4.4'
+    'swift-atomics::git+https://github.com/apple/swift-atomics#commit=1.0.2'
+    'swift-ccollections::git+https://github.com/apple/swift-collections#commit=1.0.1'
+    'swift-crypto::git+https://github.com/apple/swift-crypto#commit=1.1.5'
     'swift-driver::git+https://github.com/apple/swift-driver#branch=main'
+    'swift-numerics::git+https://github.com/apple/swift-numerics#commit=1.0.1'
     'swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main'
     'swiftpm::git+https://github.com/apple/swift-package-manager#branch=main'
     'swift-syntax::git+https://github.com/apple/swift-syntax#branch=main'
+    'swift-system::git+https://github.com/apple/swift-system#commit=1.0.0'
     'swift-stress-tester::git+https://github.com/apple/swift-stress-tester#branch=main'
     'swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#branch=main'
     'swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#branch=main'
     'swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#branch=main'
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main'
-    'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/main'
+    'llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20210726'
     '0001-arch-aur-pachtes.patch'
     '0002-asprintf-exists.patch'
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
-    'yams::git+https://github.com/jpsim/Yams#commit=3.0.1'
+    'yams::git+https://github.com/jpsim/Yams#commit=4.0.2'
     'sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main'
     'swift-format::git+https://github.com/apple/swift-format#branch=main'
+    'swift-installer-scripts::git+https://github.com/apple/swift-installer-scripts#branch=main'
     'swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main'
     'swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#branch=main'
-    'tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git'
 )
 noextract=()
 md5sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
