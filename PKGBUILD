@@ -16,7 +16,7 @@ pkgname=vmware-workstation12
 pkgver=12.5.9
 _buildver=7535481
 _pkgver=${pkgver}_${_buildver}
-pkgrel=18
+pkgrel=19
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -121,7 +121,7 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '3226511f49ddaf9d413ece46291717058b9286b94038fa4986111e5c234bf2ae'
+  '9ba0c4f87196f922cadc14bf8674b707c7d1fc7dc1eccfb2d5d847870e1c5398'
   'ba069b2d5b7a81d3648991444cf67945e31cab061dc089e5c44c78a37058d080'
 )
 options=(!strip emptydirs)
@@ -139,8 +139,7 @@ if [ -n "$_enable_macOS_guests" ]; then
 _vmware_fusion_ver=8.5.10_7527438
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
-_unlocker_ver=3.0.3
-_efi_unlocker_ver=1.0.0
+_unlocker_ver=3.0.6
 
 makedepends+=(
   python
@@ -151,13 +150,13 @@ makedepends+=(
 source+=(
   "darwinPre15-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwinPre15.zip.tar"
   "darwin-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
-  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/paolo-projects/unlocker/${_unlocker_ver}/unlocker.py"
-  "efi-unlocker-patch-${_efi_unlocker_ver}.txt"
+  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/unlocker.py"
+  "efi-patches-${_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/uefipatch/efi-patches.txt"
 )
 sha256sums+=(
   '78aaa6ba65d178d6242ad73b7e2e552ec707798ce5f4925a0adebf30f844dc17'
   '6327a76c2503f56d8bc67279f289ed4bb53e236d965ad78c0fcf7ee9e2bbb6c6'
-  '1c27547dcf6fb2f436c96ee62ae8c7f5cfd14b40d8bbd35dc385e247c4fb7e0f'
+  '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
 
@@ -448,7 +447,7 @@ fi
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware to enable macOS guest support"
-  python "$srcdir/unlocker-${_unlocker_ver}.py" > /dev/null
+  python3 "$srcdir/unlocker-${_unlocker_ver}.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
@@ -463,7 +462,7 @@ if [ -n "$_enable_macOS_guests" ]; then
     objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx -O binary -j efi${arch} --set-section-flags efi${arch}=a efi${arch}.rom.Z
     perl -e 'use Compress::Zlib; my $v; read STDIN, $v, '$(stat -c%s "./efi${arch}.rom.Z")'; $v = uncompress($v); print $v;' < efi${arch}.rom.Z > efi${arch}.rom
 
-    uefipatch efi${arch}.rom "$srcdir/efi-unlocker-patch-${_efi_unlocker_ver}.txt" -o efi${arch}.rom > /dev/null
+    uefipatch efi${arch}.rom "$srcdir/efi-patches-${_unlocker_ver}.txt" -o efi${arch}.rom > /dev/null
 
     perl -e 'use Compress::Zlib; my $v; read STDIN, $v, '$(stat -c%s "./efi${arch}.rom")'; $v = compress($v); print $v;' < efi${arch}.rom > efi${arch}.rom.Z
     objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx --update-section efi${arch}=efi${arch}.rom.Z
