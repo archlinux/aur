@@ -18,10 +18,10 @@ pkgbase = ms-office-electron-git
 	depends = libxtst
 	depends = util-linux-libs
 	depends = xdg-utils
-	provides = ms-office-electron
-	provides = ms-office-electron
-	conflicts = ms-office-electron
-	conflicts = ms-office-electron
+	provides = MS-Office-Electron
+	provides = MS-Office-Electron
+	conflicts = MS-Office-Electron
+	conflicts = MS-Office-Electron
 	source = ms-office-electron::git+https://github.com/agam778/MS-Office-Electron.git
 	sha256sums = SKIP
 
