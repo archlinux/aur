@@ -1,0 +1,19 @@
+pkgbase = vim-ctrlspace-git
+	pkgdesc = All-in-one buffer, session, and bookmark manager
+	pkgver = r846.7ad53ec
+	pkgrel = 1
+	url = https://github.com/vim-ctrlspace/vim-ctrlspace
+	arch = x86_64
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = vim-plugin-runtime
+	provides = vim-ctrlspace
+	conflicts = vim-ctrlspace
+	source = vim-ctrlspace-git::git+https://github.com/vim-ctrlspace/vim-ctrlspace
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 45850339ab42347c1dfe589698031e1ce620ad1029e5c357acd7569cdebf5e28
+
+pkgname = vim-ctrlspace-git
