@@ -1,0 +1,17 @@
+pkgbase = neovim-auto-session-git
+	pkgdesc = Small automated session manager
+	pkgver = r109.6f9506c
+	pkgrel = 1
+	url = https://github.com/rmagatti/auto-session
+	install = auto-session.install
+	arch = any
+	groups = neovim-plugin
+	license = MIT
+	makedepends = git
+	depends = neovim>=0.5.0
+	provides = neovim-auto-session
+	conflicts = neovim-auto-session
+	source = neovim-auto-session-git::git+https://github.com/rmagatti/auto-session
+	md5sums = SKIP
+
+pkgname = neovim-auto-session-git
