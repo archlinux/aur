@@ -3,7 +3,7 @@
 _srcname=koka
 
 pkgname=koka-bin
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Koka: a function-oriented language with effect inference"
 arch=('x86_64')
@@ -13,7 +13,10 @@ options=('!strip')
 depends=('gcc' 'make')
 optdepends=(
   'clang: for C backend compiler'
-  'nodejs'
+  'nodejs: for JavaScript target'
+  'emscripten: for WebAssembly target'
+  'wasmtime: for running WebAssembly modules'
+  'mono: for C# target'
 )
 provides=('koka')
 conflicts=('koka')
@@ -22,7 +25,7 @@ source=(
 )
 noextract=("koka-v${pkgver}-linux-x64.tar.gz")
 sha256sums=(
-  'f077910812f6d2b00980749409044c6a021c17cfe754c45d0ae92a0d591609c7'
+  'd9d4527e3cdd960545184d0b3eaa285753f996d2674c95edee128443d15c2521'
 )
 
 package() {
