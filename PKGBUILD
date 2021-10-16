@@ -7,7 +7,7 @@ _bundle_pandoc=false
 
 pkgname=zettlr
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -40,9 +40,9 @@ prepare() {
 
     # csl:refresh from package.json
     find "${srcdir}/locales-$_csl_locale_commit" -name "*.xml" \
-        -exec cp {} source/app/service-providers/assets/csl-locales/ \;
-    cp "${srcdir}/locales-$_csl_locale_commit/locales.json" source/app/service-providers/assets/csl-locales/
-    cp "${srcdir}/chicago-author-date-${pkgver}-$pkgrel.csl" source/app/service-providers/assets/csl-styles/chicago-author-date.csl
+        -exec cp {} static/csl-locales/ \;
+    cp "${srcdir}/locales-$_csl_locale_commit/locales.json" static/csl-locales/
+    cp "${srcdir}/chicago-author-date-${pkgver}-$pkgrel.csl" static/csl-styles/chicago-author-date.csl
 
 if ${_bundle_pandoc} ; then
     # Put pandoc binary in place
@@ -100,6 +100,7 @@ package() {
     # Copy the generated electron project
     cp -r --no-preserve=ownership --preserve=mode ./.webpack "${pkgdir}/${_destdir}/"
     cp -r --no-preserve=ownership --preserve=mode ./resources "${pkgdir}/${_destdir}/"
+    cp -r --no-preserve=ownership --preserve=mode ./static "${pkgdir}/${_destdir}/"
     cp -r --no-preserve=ownership --preserve=mode ./package.json "${pkgdir}/${_destdir}/"
 
     # Install start script to /usr/bin
