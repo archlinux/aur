@@ -1,0 +1,16 @@
+pkgbase = python-cuddle
+	pkgdesc = Python implementation of the KDL Document Language
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/djmattyg007/python-cuddle
+	arch = any
+	license = MIT
+	makedepends = python-poetry-core
+	makedepends = python-setuptools
+	depends = python
+	depends = python-regex
+	depends = python-tatsu
+	source = https://pypi.io/packages/source/c/cuddle/cuddle-1.0.3.tar.gz
+	sha256sums = a5d7066544c8d7d5025436482113a4b03c0595772b9796b393a6414eece716a1
+
+pkgname = python-cuddle
