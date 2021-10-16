@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=2009scape
+GenericName=2009scape
+Comment=Open source 2009 Runescape Emulation Launcher
+Exec=2009scape
+Icon=2009scape
+Terminal=false
+Type=Application
+Categories=Game;

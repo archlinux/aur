@@ -1,0 +1,17 @@
+pkgbase = 2009scape
+	pkgdesc = Authentic, Open Source 2009 Runescape Era Game (Launcher)
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://2009scape.org
+	arch = x86_64
+	license = GPL
+	depends = jre8-openjdk
+	noextract = 2009scape.jar
+	source = https://gitlab.com/2009scape/09launcher/-/jobs/1510765214/artifacts/raw/build/libs/2009scape.jar
+	source = 2009scape.desktop
+	source = 2009scape.png
+	sha256sums = 276232a73c5d4487f68ee12a44da7b50a4e398d8c2f1527deff5a98bc2b3bd2d
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = 2009scape
