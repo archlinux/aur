@@ -1,7 +1,7 @@
 pkgbase = carla-bridges-win64
 	pkgdesc = Carla win64 bridge (Stable)
-	pkgver = 2.4.0
-	pkgrel = 2
+	pkgver = 2.4.1
+	pkgrel = 1
 	url = http://kxstudio.sf.net/carla
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = carla-bridges-win64
 	depends = carla
 	provides = carla-bridges-win64
 	conflicts = carla-bridges-win64-git
-	source = https://github.com/falkTX/Carla/archive/refs/tags/v2.4.0.tar.gz
-	md5sums = 5d81af7bcecd658fe8506c9540d73b1a
+	source = https://github.com/falkTX/Carla/archive/refs/tags/v2.4.1.tar.gz
+	sha256sums = bbb188a672ea8871b11648d36770ba013497d03407ca9c73ed68429016f7536f
 
 pkgname = carla-bridges-win64

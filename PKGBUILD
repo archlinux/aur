@@ -1,6 +1,6 @@
 pkgname=carla-bridges-win64
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="Carla win64 bridge (Stable)"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
@@ -10,7 +10,7 @@ provides=('carla-bridges-win64')
 depends=('mingw-w64-crt' 'mingw-w64-winpthreads' 'wine' 'carla')
 makedepends=('mingw-w64-gcc' 'gcc-multilib')
 source=("https://github.com/falkTX/Carla/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('5d81af7bcecd658fe8506c9540d73b1a')
+sha256sums=('bbb188a672ea8871b11648d36770ba013497d03407ca9c73ed68429016f7536f')
 
   _path=$PATH
   _cflags=$CFLAGS
