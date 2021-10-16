@@ -10,7 +10,7 @@ license=('GPL3')
 depends=("java-runtime")
 source=("${_pkgname}-$pkgver.jar::$url/releases/download/v$pkgver/SpotiFlyer-linux-x64-$pkgver.jar"
         "${pkgname}.desktop")
-sha256sums=('0b67ae88e7bf8cdf27fe6ed9360377cb5628c65a6de87b23824feb8fcdb9cc27'
+sha256sums=('96e6910743268c60ae7f5bda1f0b407b9660a8909b50bc003cd8cd73d21f1570'
             '824d39c2d43a3f339140dbc3f8af430055a7a07ca324ec140c7be424c2ad90a3')
 
 package() {
