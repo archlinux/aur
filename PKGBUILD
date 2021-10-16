@@ -2,7 +2,7 @@
 
 pkgname=mdzk
 pkgver=0.4.3_rc1
-pkgrel=2
+pkgrel=3
 pkgdesc="Plain text Zettelkasten based on mdBook"
 url="https://github.com/mdzk-rs/$pkgname"
 arch=("x86_64")
@@ -13,14 +13,14 @@ b2sums=('4c2c374bbabe2203f9c185128fea8d0b0d1cd82ec7f3b93085b1b458c3f2c733b53b6a4
 
 build()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-${pkgver//_/-}"
 
     cargo build --release --target-dir=target
 }
 
 package()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-${pkgver//_/-}"
 
     install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

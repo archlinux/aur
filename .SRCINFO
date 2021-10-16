@@ -1,7 +1,7 @@
 pkgbase = mdzk
 	pkgdesc = Plain text Zettelkasten based on mdBook
 	pkgver = 0.4.3_rc1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mdzk-rs/mdzk
 	arch = x86_64
 	license = MPL2
