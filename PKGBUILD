@@ -12,8 +12,8 @@ source=("https://gitlab.com/2009scape/09launcher/-/jobs/1510765214/artifacts/raw
     2009scape.desktop
     2009scape.png)
 sha256sums=('276232a73c5d4487f68ee12a44da7b50a4e398d8c2f1527deff5a98bc2b3bd2d'
-    'SKIP'
-    'SKIP')
+    'f7e235d1c29345cec51cda35d910670afe4366d281bee7d5a38aba840ba06c66'
+    'da472600b4cc81d8985e91518425a6c571d4b401af094ae7e3573de9c71fa8c1')
 noextract=('2009scape.jar')
 
 package() {
