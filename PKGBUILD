@@ -13,14 +13,13 @@ sha256sums=(
     '2d13eef9df8439b3718c6683ae0e96090a42c52ec56a0bb4a2636f02991da5b3'
 )
 depends=(
-    'gcc'
     'libyuv'
     'ffmpeg'
 )
 makedepends=(
     'xorg-server-devel'
     'go>=1.17'
-    'git'
+    'gcc'
 )
 
 build() {

@@ -7,8 +7,7 @@ pkgbase = danser
 	license = MIT
 	makedepends = xorg-server-devel
 	makedepends = go>=1.17
-	makedepends = git
-	depends = gcc
+	makedepends = gcc
 	depends = libyuv
 	depends = ffmpeg
 	source = https://github.com/Wieku/danser-go/archive/refs/tags/0.6.4.tar.gz
