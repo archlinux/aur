@@ -1,6 +1,6 @@
 pkgbase = scantailor-advanced-git
 	pkgdesc = Interactive post-processing tool for scanned pages that merges the features of the ScanTailor Featured and ScanTailor Enhanced versions, brings new ones and fixes.
-	pkgver = v1.0.16.r119.gf6c8e5b
+	pkgver = v1.0.16.r121.g3d1e74e
 	pkgrel = 2
 	url = https://github.com/4lex4/scantailor-advanced
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = scantailor-advanced-git
 	sha256sums = SKIP
 
 pkgname = scantailor-advanced-git
-

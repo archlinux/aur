@@ -1,5 +1,5 @@
 pkgname=scantailor-advanced-git
-pkgver=v1.0.16.r119.gf6c8e5b
+pkgver=v1.0.16.r121.g3d1e74e
 pkgrel=2
 pkgdesc="Interactive post-processing tool for scanned pages that merges the features of the ScanTailor Featured and ScanTailor Enhanced versions, brings new ones and fixes. "
 arch=("x86_64")
@@ -37,8 +37,10 @@ build() {
 
     cd "${srcdir}/${pkgname%-git}"
     sed -i "s/#define VERSION .*$/#define VERSION \"$pkgver\"/" version.h.in
+    # https://aur.archlinux.org/packages/scantailor-advanced-git/#comment-831404
     mkdir build && cd build
-    cmake -G "Unix Makefiles" --build ..
+    cmake -G "Unix Makefiles" ..
+    cmake --build . --parallel ${nproc}
     make -j${nproc}
 }
 
