@@ -2,7 +2,7 @@
 
 pkgname=libzkgroup
 _pkgname=zkgroup
-pkgver=0.7.4
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Library for the Signal Private Group System."
 url="https://github.com/signalapp/${_pkgname}"
@@ -11,14 +11,15 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('b0fdf42c35ea08dec063b903967bef2a461ac1717dc38ee0b8757557b07cb204')
+sha256sums=('c2f758cb96c4e49b18439c8c0ae06d129a8f46549b63a9498cf54d7d64489dcc')
 
 prepare() {
   tar xf ${pkgname}-$pkgver.tar.gz
   cd "${_pkgname}-$pkgver"
 
   # Use the default system rust toolchain
-  rm rust-toolchain
+  # rm -f rust-toolchain
+
   sed -i '/ffi:android/d' settings.gradle
   sed -i '/:makeServer/d' ffi/java/build.gradle
   sed -i "/apply from: '..\/..\/deploy.gradle'/d" ffi/java/build.gradle
