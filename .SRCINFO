@@ -1,0 +1,15 @@
+pkgbase = crypt-git
+	pkgdesc = a simple utility to encrypt & decrypt files with AES-256 with passphrases
+	pkgver = 0.29.2d24bab
+	pkgrel = 1
+	url = https://github.com/keogami/crypt.git
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = go
+	provides = crypt
+	conflicts = crypt
+	source = git+https://github.com/keogami/crypt.git
+	md5sums = SKIP
+
+pkgname = crypt-git
