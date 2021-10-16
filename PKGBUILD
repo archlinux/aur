@@ -15,7 +15,7 @@ makedepends=(patchelf)
 provides=(odin)
 conflicts=(odin)
 options=(!strip)
-source=("https://github.com/odin-lang/Odin/archive/refs/tags/dev-2021-10.tar.gz")
+source=("https://github.com/odin-lang/Odin/archive/refs/tags/dev-${_pkgver}.tar.gz")
 source_x86_64=("https://github.com/odin-lang/Odin/releases/download/dev-${_pkgver}/odin-ubuntu-amd64-dev-${_pkgver}.zip")
 sha256sums=('0dd43f018a469d9dd1a8666e35366a0895d59a92ca0499e28717c217abfacb76')
 sha256sums_x86_64=('28b7ac480b823efadb13488c3805f8ce079107a253748322ab81bd3b7091d88a')
@@ -37,8 +37,8 @@ package() {
 
   ln -s "/usr/lib/odin/odin" "${pkgdir}/usr/bin/odin"
 
-  install -Dm644 "${srcdir}/Odin-dev-2021-10/README.md" "${pkgdir}/usr/share/doc/odin/README.md"
-  install -Dm644 "${srcdir}/Odin-dev-2021-10/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  cp -r "${srcdir}/Odin-dev-2021-10/examples" "${pkgdir}/usr/share/doc/odin/examples"
-  cp -r "${srcdir}/Odin-dev-2021-10/vendor" "${pkgdir}/usr/lib/odin/vendor"
+  install -Dm644 "${srcdir}/Odin-dev-${_pkgver}/README.md" "${pkgdir}/usr/share/doc/odin/README.md"
+  install -Dm644 "${srcdir}/Odin-dev-${_pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cp -r "${srcdir}/Odin-dev-${_pkgver}/examples" "${pkgdir}/usr/share/doc/odin/examples"
+  cp -r "${srcdir}/Odin-dev-${_pkgver}/vendor" "${pkgdir}/usr/lib/odin/vendor"
 }
