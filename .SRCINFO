@@ -1,7 +1,7 @@
 pkgbase = audacious-plugins-gtk3
 	pkgdesc = Plugins for Audacious
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
@@ -35,10 +35,10 @@ pkgbase = audacious-plugins-gtk3
 	depends = neon
 	depends = wavpack
 	depends = libbs2b
+	depends = libopenmpt
 	provides = audacious-plugins
 	conflicts = audacious-plugins
 	source = git+https://github.com/audacious-media-player/audacious-plugins.git#commit=111a7c92c5771a8072901700515858e5500b66b0
 	sha256sums = SKIP
 
 pkgname = audacious-plugins-gtk3
-

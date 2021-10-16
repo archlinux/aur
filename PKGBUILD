@@ -7,7 +7,7 @@
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
@@ -15,7 +15,7 @@ license=('BSD' 'GPL')
 depends=('alsa-lib' 'curl' 'dbus-glib' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
          'jack' 'lame' 'libcdio-paranoia' 'libcue' 'libmms' 'libmodplug'
          'libmtp' 'libpulse' 'libnotify' 'libsamplerate' 'libsidplayfp'
-         'libvorbis' 'lirc' 'mpg123' 'neon' 'wavpack' 'libbs2b')
+         'libvorbis' 'lirc' 'mpg123' 'neon' 'wavpack' 'libbs2b' 'libopenmpt')
 makedepends=("audacious-gtk3>=$pkgver" 'glib2' 'python' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
