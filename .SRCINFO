@@ -1,14 +1,14 @@
 pkgbase = vim-fern
 	pkgdesc = General purpose asynchronous tree viewer
-	pkgver = 1.38.3
+	pkgver = 1.38.4
 	pkgrel = 1
 	url = https://github.com/lambdalisue/fern.vim
 	arch = any
 	license = MIT
 	optdepends = gomi: trash-bin functionality
 	optdepends = trash-cli: trash-bin functionality
-	source = vim-fern-1.38.3.tar.gz::https://github.com/lambdalisue/fern.vim/archive/v1.38.3.tar.gz
-	sha256sums = 46319b1d992ca3629864d92872a5650fb93b4e486dc2b682f79095340b5df0fe
+	source = vim-fern-1.38.4.tar.gz::https://github.com/lambdalisue/fern.vim/archive/v1.38.4.tar.gz
+	sha256sums = 4eef77d6fb2984a64760c77751ac266104c39c277a678ffb2395622f19bf8275
 
 pkgname = vim-fern
 	groups = vim-plugins
@@ -17,4 +17,4 @@ pkgname = vim-fern
 pkgname = neovim-fern
 	groups = neovim-plugins
 	depends = neovim>=0.4.4
-	depends = neovim-fix-cursorhold
+	depends = neovim-fixcursorhold
