@@ -2,7 +2,7 @@
 
 pkgname=hamclock-big
 pkgver=2.69
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (1600x960 version)"
 arch=('x86_64')
