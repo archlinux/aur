@@ -34,7 +34,7 @@ build() {
 			-D CMAKE_C_FLAGS="$opts" \
 			-D CMAKE_INSTALL_LIBDIR="lib/$dir"
 		cmake --build "build/$dir" --target yio
-		cmake --build "build/$dir" --target yio_decimallib
+		cmake --build "build/$dir" --target yio_compat
 		)
 	done
 }
