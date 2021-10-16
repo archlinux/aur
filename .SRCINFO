@@ -1,13 +1,13 @@
 pkgbase = cptest
 	pkgdesc = Speed up testing your code during competitive programming rounds and outside of them NOW!
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/kuredoro/cptest
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = go
-	source = cptest-2.1.0.tar.gz::https://github.com/kuredoro/cptest/archive/cli2.1.0.tar.gz
-	sha256sums = 6293a28614b58554ac2cc76c7d646a126439edb363e512e9eb9919af0a4e7859
+	source = cptest-2.2.0.tar.gz::https://github.com/kuredoro/cptest/archive/cli2.2.0.tar.gz
+	sha256sums = f604c8d330e6ff085a780a61c48f29b98096bc2d0f7d324fd5de2f16a13dfc5b
 
 pkgname = cptest

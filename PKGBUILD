@@ -1,6 +1,6 @@
 # Maintainer: Sakamoto Shizue <supremeep at yandex dot ru>
 pkgname=cptest
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Speed up testing your code during competitive programming rounds and outside of them NOW!"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(
   'go'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kuredoro/cptest/archive/cli${pkgver}.tar.gz")
-sha256sums=('6293a28614b58554ac2cc76c7d646a126439edb363e512e9eb9919af0a4e7859')
+sha256sums=('f604c8d330e6ff085a780a61c48f29b98096bc2d0f7d324fd5de2f16a13dfc5b')
 
 build() {
   export GOPATH="$srcdir"/gopath
