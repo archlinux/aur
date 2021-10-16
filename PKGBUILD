@@ -23,8 +23,8 @@ package() {
   cp -a $srcdir/pil21/* $LIBDIR
 
   install -d -m755 ${BINDIR:=$pkgdir/usr/bin}
-  ln -s /usr/lib/$pkgname/bin/picolisp $BINDIR
-  ln -s /usr/lib/$pkgname/bin/pil $BINDIR
+  mv $LIBDIR/bin/picolisp $BINDIR
+  mv $LIBDIR/bin/pil $BINDIR
 
   install -d -m755 ${MAN1DIR:=$pkgdir/usr/share/man/man1}
   mv $LIBDIR/man/man1/*.1 $MAN1DIR
