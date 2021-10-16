@@ -28,6 +28,7 @@ makedepends=(
 	'wayland-protocols'
 	'wayland'
 	'qt5-base'
+	'libhangul-git'
 )
 source=( "${_pkgname}::git+${url}.git" )
 md5sums=('SKIP' )

@@ -17,6 +17,7 @@ pkgbase = nimf-libhangul-git
 	makedepends = wayland-protocols
 	makedepends = wayland
 	makedepends = qt5-base
+	makedepends = libhangul-git
 	depends = glib2
 	depends = libxklavier
 	depends = libhangul
