@@ -2,9 +2,9 @@
 
 pkgname=mdzk
 pkgver=0.4.3_rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plain text Zettelkasten based on mdBook"
-url="https://github.com/zoni/$pkgname"
+url="https://github.com/mdzk-rs/$pkgname"
 arch=("x86_64")
 license=("MPL2")
 makedepends=("cargo")
