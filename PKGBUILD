@@ -1,7 +1,8 @@
-# Maintainer: Aleksandr Arlanow <aleksandr@arlanow.ru>
+# Maintainer: Greg Land <landjgregory at gmail dot com>
+# Contributor: Aleksandr Arlanow <aleksandr at arlanow dot ru>
 pkgname=evelauncher
-pkgver=1548102
-pkgrel=2
+pkgver=1747682
+pkgrel=1
 pkgdesc="Unofficial Eve Online Launcher."
 arch=('any')
 url="https://forums.eveonline.com/t/eve-launcher-for-linux/7286"
@@ -20,7 +21,7 @@ source=(
 	"evelauncher.desktop"
 	"icon.png"
   "evelauncher.sh")
-md5sums=('6292c4155c4ceaac97dd186a62772461'
+md5sums=('1c8cbce131976b7725d55f215b448552'
          '251749f620075212991b997e98c39366'
          'ecd3b7d8dd554f8106045e1d78a885c6'
          'e133d2aaf8d35fb1438d0b97072dd630')

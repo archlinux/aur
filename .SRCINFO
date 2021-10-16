@@ -1,7 +1,7 @@
 pkgbase = evelauncher
 	pkgdesc = Unofficial Eve Online Launcher.
-	pkgver = 1548102
-	pkgrel = 2
+	pkgver = 1747682
+	pkgrel = 1
 	url = https://forums.eveonline.com/t/eve-launcher-for-linux/7286
 	arch = any
 	license = custom
@@ -13,14 +13,13 @@ pkgbase = evelauncher
 	depends = qt5-websockets
 	depends = openssl
 	depends = lib32-libldap
-	source = https://binaries.eveonline.com/evelauncher-1548102.tar.gz
+	source = https://binaries.eveonline.com/evelauncher-1747682.tar.gz
 	source = evelauncher.desktop
 	source = icon.png
 	source = evelauncher.sh
-	md5sums = 6292c4155c4ceaac97dd186a62772461
+	md5sums = 1c8cbce131976b7725d55f215b448552
 	md5sums = 251749f620075212991b997e98c39366
 	md5sums = ecd3b7d8dd554f8106045e1d78a885c6
 	md5sums = e133d2aaf8d35fb1438d0b97072dd630
 
 pkgname = evelauncher
-
