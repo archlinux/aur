@@ -7,7 +7,7 @@ _bundle_pandoc=false
 
 pkgname=zettlr
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -75,6 +75,10 @@ build() {
     rm -rfv icons/dmg
     rm -rfv icons/*icns
     rm -rfv icons/*.ico
+
+    # Remove fonts
+    cd "${srcdir}/Zettlr-${pkgver}/static"
+    rm -rf fonts
 }
 
 # check() {
