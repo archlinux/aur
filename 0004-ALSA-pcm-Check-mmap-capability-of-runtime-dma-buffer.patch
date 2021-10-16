@@ -1,0 +1,64 @@
+From 0924592bfda96616a8730b369159e1ade0d85db4 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Mon, 9 Aug 2021 09:18:27 +0200
+Subject: [PATCH 4/7] ALSA: pcm: Check mmap capability of runtime dma buffer at
+ first
+
+Currently we check only the substream->dma_buffer as the preset of the
+buffer configuration for verifying the availability of mmap.  But a
+few drivers rather set up the buffer in the own way without the
+standard buffer preallocation using substream->dma_buffer, and they
+miss the proper checks.  (Now it's working more or less fine as most
+of them are running only on x86).
+
+Actually, they may set up the runtime dma_buffer (referred via
+snd_pcm_get_dma_buf()) at the open callback, though.  That is, this
+could have been used as the primary source.
+
+This patch changes the hw_support_mmap() function to check the runtime
+dma buffer at first.  It's usually NULL with the standard buffer
+preallocation, and in that case, we continue checking
+substream->dma_buffer as fallback.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+Fixes: https://bugs.archlinux.org/task/72059
+---
+ sound/core/pcm_native.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/sound/core/pcm_native.c b/sound/core/pcm_native.c
+index 71323d807dbf..dc9fa312fadd 100644
+--- a/sound/core/pcm_native.c
++++ b/sound/core/pcm_native.c
+@@ -243,13 +243,18 @@ int snd_pcm_info_user(struct snd_pcm_substream *substream,
+ 
+ static bool hw_support_mmap(struct snd_pcm_substream *substream)
+ {
++	struct snd_dma_buffer *dmabuf;
++
+ 	if (!(substream->runtime->hw.info & SNDRV_PCM_INFO_MMAP))
+ 		return false;
+ 
+ 	if (substream->ops->mmap || substream->ops->page)
+ 		return true;
+ 
+-	switch (substream->dma_buffer.dev.type) {
++	dmabuf = snd_pcm_get_dma_buf(substream);
++	if (!dmabuf)
++		dmabuf = &substream->dma_buffer;
++	switch (dmabuf->dev.type) {
+ 	case SNDRV_DMA_TYPE_UNKNOWN:
+ 		/* we can't know the device, so just assume that the driver does
+ 		 * everything right
+@@ -259,7 +264,7 @@ static bool hw_support_mmap(struct snd_pcm_substream *substream)
+ 	case SNDRV_DMA_TYPE_VMALLOC:
+ 		return true;
+ 	default:
+-		return dma_can_mmap(substream->dma_buffer.dev.dev);
++		return dma_can_mmap(dmabuf->dev.dev);
+ 	}
+ }
+ 
+-- 
+2.33.0
+

@@ -77,12 +77,10 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.12.19
-pkgrel=3
-_major=5.12
-_ckpatchversion=1
-_ckpatch="patch-${_major}-ck${_ckpatchversion}"
-_gcc_more_v=20210818
+pkgver=5.14.12
+pkgrel=1
+_major=5.14
+_gcc_more_v=20210914
 _patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
 _jobs=$(nproc)
 arch=(x86_64)
@@ -93,21 +91,25 @@ makedepends=(
 )
 options=('!strip')
 
+# https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
+# thankfully xanmod keeps the hrtimer patches up to date
+_commit=e2d48df5def86f498766b22e836a9c2f1bcb3809
+_xan=linux-5.14.y-xanmod
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,sign}
         config         # the main kernel config file
         "more-uarches-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_gcc_more_v}.tar.gz"
-        "http://ck.kolivas.org/patches/5.0/${_major}/${_major}-ck${_ckpatchversion}/${_ckpatch}.xz"
+        "xanmod-patches-from-ck-${_commit}.tar.gz::https://hub.fastgit.org/xanmod/linux-patches/archive/${_commit}.tar.gz"
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-        0002-x86-setup-Consolidate-early-memory-reservations.patch
-        0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch
-        0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch
-        0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch
-        0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
-        0007-x86-crash-remove-crash_reserve_low_1M.patch
-        "0008-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
-        "0009-bbr2.patch::${_patches_url}/bbr2-patches-v3/0001-bbr2-patches.patch"
-        "0010-lru.patch::${_patches_url}/lru-patches-v4/0001-lru-patches.patch"
-        "0011-block.patch::${_patches_url}/block-patches-v7/0001-block-patches.patch"
+        0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch
+        0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch
+        0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch
+        0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch
+        0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch
+        "0007-UKSM.patch::${_patches_url}/uksm-patches-v2/0001-UKSM-for-${_major}.patch"
+        "0008-bbr2.patch::${_patches_url}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
+        "0009-lru.patch::${_patches_url}/lru-patches-v4/0001-lru-patches.patch"
+        "0010-block.patch::${_patches_url}/block-patches/0001-block-patches.patch"
+        "0011-bfq.patch::${_patches_url}/bfq-patches-v2/0001-bfq-patches.patch"
 )
 
 validpgpkeys=(
@@ -115,23 +117,22 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 
-b2sums=('88e4c32cf196662a6a24e72b978019d6f8881a8523918029f4229a995c5fd957a5e01f42de9f53c7980df7e3de5ea6b069cc2c5f93852e615fe8fe78a1b131c6'
+b2sums=('854c3160a327a38ba0e8e35a2952029670429d829e903ba4fda659aa7cc7b88014b5dbdeefd2e0cc95e0311875fc7dae4c5fad825bff72102a894624845acbb8'
         'SKIP'
-        'SKIP'
-        '5a191fb995303be264e8721318622bee1d1a3822f805ddf21c1002817ca2e144d6d17e1337f37b32dc3aca1a8754e4354a800c1b4d44417aea0acaf326533b35'
-        'c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3'
-        '2aa7bbea8e526ad080f4fbeef3364749b070e3d0b38f1b724a40796d455452f2c9865c96a25e52edcc8c827ce4dc3046db3cbbb858e899b9dd502673244b05c8'
-        'c8a372bdb918ecc8faeb203df3945c664d59bd61864952ea5e354bf6cef6e546f3c548e26887a718d34e51753fad603a2bf10d579f8d5ba9303a7ddfe57ada4e'
-        'b349cc801b7435a0772dafcefe4c350c925783a2fec96f56fb8b4298adbc494c295900e00498fd15894c6a778b67663743d2b2fe236765b2c65ec643d928b59d'
-        '10efc6f5460b9397b9bb3369bd3e94883682806d77c0efb0e322034f8b4b422ab10d5e975fb2df8a3c12ed2ec5d0a36f795614e928224864178d7ef25e59638b'
-        '14d6df3f80495d7c63f191a4cc2e42ab7fd27b1368f18c71e1d0f5230c9bfa0958c73c940bacf7f5073ed4288bbb846e1c2903b441e4171c8ea8171ce5d56e45'
-        'abe1754b1c16e2e6a6c369f6497a6679f5e846ad9652d2d019425bfe5fa1186c1e75f46790ba15a227982abc61469e7423b3eee30e3dc56a631a5d36e3ecbffa'
-        'ed1dc0f7e4f97969185de71b8f26c321359e06855d3c3b2ac3fccf2d1cdae121feb70fc5a6546c63d2ca0ce3ef21d510a40e4077262715d53165a1b236119788'
-        '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641'
-        'b6ab69f6b24293504f32a2fb10622c0e77ece7921c637456fba5e61e4d200063832be37a8119fae251d490cc4b80cfea3e45547e17de3cb363bcee164dffd581'
-        '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9'
-        'f6bad0e2ceac2849ff6d3ef330165bc06a6061bc7c653c084674af40598bf4aab826dd7039b05eb07fede3a3e45b9c3ba11c684930c383cf3eef18c98091e3bc'
-)
+        '1e1a466bef6fe16a5fc2b67ba66b7757a8048f07cb831d10b355d0ec5342a13590552ca41b0e3e88ef1a7c56f00cb5d09c7b2366c67811c47e72e1fd8f3b683a'
+        'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
+        'bd20774ee2c9856601af2c89a3af95c6abc812b71253368090e9c252edcce452f416bfeed54ced0886d401b5a9e1cb72c16ea5f04a72d8ded596c0d083f80e42'
+        '99706dd57b5620066bdfcb46ccd07de489dea59d5eeda10932f11abe7a43a6a354e7759638d75bc14e115a252eea6ab0a68163c23e45989d6bae820c4d772691'
+        '45f51985ca1450fcd8669db715ae7ee105f6f8331acf56d747d1dd93b420a6e6fb8159e4d5e3575ab1a55ace6df42185b97f9bb1476e7ab43b9aadd3e924b715'
+        'c5fd318fc4d2aef30f9ebf4b724e2aa26966384db8762eaff82137dc6161d0148798e8181207d0f8ba52f94ca1853bc7817efdf3cbbf996c5cc1a3da1868cef7'
+        'a9f502ad881fb115a90ee3133feab8f5ab0927a415df4f5140e4d61f45a69bb53e0c7af20b35078f75fd3898c3cd1056f4a0c0ff372b5e10e1d52c9d5afd3473'
+        '1877429274d65accf2e8684078d052a9b44b0ef9f7b5fae13a679877f6a3b8b4749fcfd4223648907cf53e0e89cf229abefaf1e40494d6a8866a7258ad6c5800'
+        'f0337c83077501734e40663a3bb2e0da31ba1921960e40c3c6040a9265a63707f7fd524fc9e3eb3e1b23f6c5f9cd883348b6fdf7bc085b3e30565a8669006f19'
+        '8f6d6263f0e517b6e7a1809fc57e01cc4b13dd261f778041026ec510f48257d4f525c3cb0b0935e291293960c9191282f5765ca0af3d948838e8f865c7deafcc'
+        'e263f1cf228d5a2c26340f37fa1b4a6d6c643b1a22378f37c96b68f5ec10372d65e2bf96716aec0722b18d76ca752b9debf82f621896e03917c977d8db2a4b21'
+        '29ef7be0f224ba79f1cd69cd61e21142fbf29b5717e9a1cf41a01f35def29c4e02bf138a06c09eab5b066dd54865c29acc219405572184ab213a41a72dbbef81'
+        'cfe0d9e00a2b8b47f92e61e851eb45243de4928b55708ec67f5558aa48ae62e580b85b58afadc8f6a301f44a14293274efe87f850af0c305e26647c3d9713239'
+        'fdb2c0b59e34b85a5859cbd3a8de707170cd235b91a092d338b91a7d4ada3da17a43b63f76b71b5c148ca3d97bb0534f339f9d4045156e1a0d0a9dce9047cd7e')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -178,16 +179,16 @@ prepare() {
   # FS#66613
   # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
   scripts/config --disable CONFIG_KVM_WERROR
+  scripts/config --enable CONFIG_HZ_1000
 
   scripts/config --enable CONFIG_FTRACE
   scripts/config --enable CONFIG_FTRACE_SYSCALLS
 
-  # fix naming schema in EXTRAVERSION of ck patch set
-  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
-
   # ck patchset itself
-  msg2 "Patching with ck patchset..."
-  patch -Np1 -i ../"${_ckpatch}"
+  msg2 "Patching with ck hrtimer patches..."
+  for i in ../linux-patches-"$_commit"/"$_xan"/ck-hrtimer/0*.patch; do
+    patch -Np1 -i $i
+  done
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
@@ -197,7 +198,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   msg2 "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8-5.14.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
@@ -237,7 +238,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 and uksm patchesset featuring MuQSS CPU scheduler"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ck's hrtimer,bbr2 patches,etc"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
