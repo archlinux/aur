@@ -15,8 +15,8 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-pkgver=5.13.8
-pkgrel=2
+pkgver=5.14.11
+pkgrel=1
 pkgdesc='Linux-libre'
 rcnver=5.11.11
 rcnrel=armv7-x14
@@ -29,10 +29,10 @@ makedepends=(
 )
 makedepends_armv7h=(uboot-tools vboot-utils dtc) # required by linux-libre-chromebook
 options=('!strip')
-_srcname=linux-5.13.8
+_srcname=linux-5.14
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
-  "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/patch-${pkgver%.*}-gnu-$pkgver-gnu.xz"{,.sign}
+  "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/patch-${_srcname##*-}-gnu-$pkgver-gnu.xz"{,.sign}
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}{,.sig}
   config.i686 config.x86_64 config.armv7h    # the main kernel config files
   linux-armv7h.preset                        # armv7h preset file for mkinitcpio ramdisk
@@ -47,7 +47,11 @@ source=(
   0002-fix-Atmel-maXTouch-touchscreen-support.patch
   # Arch Linux patches
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch
+  0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch
+  0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch
+  0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch
+  0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch
+  0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch
 )
 source_i686=(
   # avoid using zstd compression in ultra mode (exhausts virtual memory)
@@ -73,9 +77,9 @@ validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
   '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-sha512sums=('77bf66cc3e07b9a034a714be28c1e693b5fb097431608b27283f57ac5d6212ffa99f562c4c8a6dc5cbd89623f4564f6be95fe83a47071a4362ec747653388912'
+sha512sums=('18798d032184ce141216ad72fcbb5ddb340809fe8d953acb50700aa0b47d36fca104dcedc7521fb3aea913d8fbeb4bd3eab1cf2c955388e6996c4154eac67d0c'
             'SKIP'
-            '53a9a1abfb8ae6e73337986ed780034d5ecf4d89bf1bbf7d4c2b5b04b527b00296c7c427045c8ab454a175db1ab272c76ef115edd4b88f4f530cbd884e604bb5'
+            '951cdb68af3bbf3b841376f82fd9c82dfd7a159cae8564e5d772f99f3170deafcabc00cb0ecfa6e7669c22087577f2eafa47d3b50bc8ea6ee5edbc65821986e1'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -83,8 +87,8 @@ sha512sums=('77bf66cc3e07b9a034a714be28c1e693b5fb097431608b27283f57ac5d6212ffa99
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            'f97711c3ade9e09527967adb7c94d8a0e03061ab7bb16104a23ecb3f8a237d56f8a662424c8620a6ebf14f1e2bf4b84723a8cd68cc957763a8ecaea2528474c4'
-            'ca293f654e0fcbcacfc60fdf2b09596bd336a33784e236e002bf89cf5cb4ef3f6d34ce1da9e8d747a38ebca6b62107e7c0f87cd09e43dd8fa3a8c61cb9a1816f'
+            '5fc11fd9ff38cd4cd46d82c6f1330fa2ce48edb2b69db35ab8a2bf99d08a2ee064160929fe6d38683207a7e260393eee2c391d06feb081b0cf8f97ebc69ccbc3'
+            '172b5e7a6d4413abe41dd80ffa22b9eaaf493cc54c23022b91fc3ea3e79c86e7ab739ecdae37855c0eed764fa77ee543e0ce56de84590243b32a74385283405d'
             '51e8b4da770067e8257d292622d865cb16ac57fdfd8967bdfb74efec197dae9eab958e5637a728640ae60885bdde41c06c8076227a4f83db0b752215f91f3a87'
             '53103bf55b957b657039510527df0df01279dec59cda115a4d6454e4135025d4546167fa30bdc99107f232561c1e096d8328609ab5a876cf7017176f92ad3e0b'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
@@ -92,8 +96,12 @@ sha512sums=('77bf66cc3e07b9a034a714be28c1e693b5fb097431608b27283f57ac5d6212ffa99
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'fac53c8ce68e9f56c8930a9392c89377c909f6a43a318010194949def91a104f34f46c2b32457e571435a8b326c47a48737ceb6255644bb6d42c59b27b07449a'
-            '722d92b750f0a5af39b850c18ff0c57dac0165e3c0219415843ec5207945971448790fec3fca570b62c8726c89b0ca6b7a5b16fd503e4581b3a63b3adfcf2c50')
+            'dba36283b9ea3db5fcc9a72051a8e9cf4d409ec59769e6da9db4d321b72972242670210ad961a37f62aba68f7262e9f2f6308cfe62cda9fa050c72363a0c404a'
+            '693ac0e0e32cd0ab6c485deb43d6408dc9fc31234e4113206cf901a302eddf1a965f97f82ed7186f6426c085176ce95c48e116e9824d92bfd1f6656447da18dc'
+            'c4a19ccec8b7636f1b5b1cf8e135e46d3aa4d233af4a1e72c2aaa83536505013f0c83602fe05ce08212b4327bebfb4f8a84b57c0d81509f0b48df5dfcc334254'
+            '4d81c2995e7cc5fc36929eb5bf9cc68ec02cb24147f18a88da79facd3e25182b156ca4430bf2765ff1e4c6be237d3a3e527498cd49d75217a5e16b62a478be6d'
+            '12c0da7fbd4e4e6ffc473ecd6dffee1dd61c201dad854347400c8f551adc35c033d6fa623cc5c1b2fe7930cdab868a8c99c6874ee171c9143e0f370398759c96'
+            '7f6fd402d8c29ee4f6c98ed2236318ab3f57f3dd47a92911e1b556df251b67fc83f7256223f06d1fefa849a3ceb5e40d247d2d5664ddd7cd9749bab4bc1ecb36')
 sha512sums_i686=('3a346ff5e0fdefafd28bc3dd0e4b6cd68e3f0014e59d1611d99f2edb8d074fd32649eeb0894a7e340e4f907b5cfc0e08e0753e0427a68dc113bb22835a892968')
 sha512sums_armv7h=('a4aa00ca3f03d524d3fb6379116c4e4e7908e7c30f6347f55be256c44d806d8db5f04c96369d5a725e45b7390e9fde842f388cdc5d5699d80ec5d1519f7367f4'
                    'SKIP'
@@ -124,10 +132,10 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd $_srcname
 
-  #if [ "${_srcname##*-}" != "$pkgver" ]; then
-  #  echo "Applying upstream patch..."
-  #  patch -Np1 < "../patch-${_srcname##*-}-gnu-$pkgver-gnu"
-  #fi
+  if [ "${_srcname##*-}" != "$pkgver" ]; then
+    echo "Applying upstream patch..."
+    patch -Np1 < "../patch-${_srcname##*-}-gnu-$pkgver-gnu"
+  fi
 
   echo "Adding freedo as boot logo..."
   install -m644 -t drivers/video/logo \
@@ -172,6 +180,7 @@ prepare() {
   echo "Setting config..."
   cp ../config.$CARCH .config
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"

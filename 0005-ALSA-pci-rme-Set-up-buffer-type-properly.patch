@@ -1,0 +1,75 @@
+From 7b0c23ec626e579ffa7ef239cac20dc7fa1797e9 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Mon, 9 Aug 2021 09:18:28 +0200
+Subject: [PATCH 5/6] ALSA: pci: rme: Set up buffer type properly
+
+Although the regression of the mmap was fixed in the recent commit
+dc0dc8a73e8e ("ALSA: pcm: Fix mmap breakage without explicit buffer
+setup"), RME9652 and HDSP drivers have still potential issues with
+their mmap handling.  Namely, they use the default mmap handler
+without the standard buffer preallocation, and PCM core wouldn't use
+the coherent DMA mapping.  It's practically OK on x86, but on some
+exotic architectures, it wouldn't work.
+
+This patch addresses the potential breakage by replacing the buffer
+setup with the proper macro.  It also simplifies the source code,
+too.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+Fixes: https://bugs.archlinux.org/task/72059
+---
+ sound/pci/rme9652/hdsp.c    | 6 ++----
+ sound/pci/rme9652/rme9652.c | 6 ++----
+ 2 files changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/sound/pci/rme9652/hdsp.c b/sound/pci/rme9652/hdsp.c
+index 8457a4bbc3df..22b8b3357918 100644
+--- a/sound/pci/rme9652/hdsp.c
++++ b/sound/pci/rme9652/hdsp.c
+@@ -4518,8 +4518,7 @@ static int snd_hdsp_playback_open(struct snd_pcm_substream *substream)
+ 	snd_pcm_set_sync(substream);
+ 
+         runtime->hw = snd_hdsp_playback_subinfo;
+-	runtime->dma_area = hdsp->playback_buffer;
+-	runtime->dma_bytes = HDSP_DMA_AREA_BYTES;
++	snd_pcm_set_runtime_buffer(substream, &hdsp->playback_dma_buf);
+ 
+ 	hdsp->playback_pid = current->pid;
+ 	hdsp->playback_substream = substream;
+@@ -4595,8 +4594,7 @@ static int snd_hdsp_capture_open(struct snd_pcm_substream *substream)
+ 	snd_pcm_set_sync(substream);
+ 
+ 	runtime->hw = snd_hdsp_capture_subinfo;
+-	runtime->dma_area = hdsp->capture_buffer;
+-	runtime->dma_bytes = HDSP_DMA_AREA_BYTES;
++	snd_pcm_set_runtime_buffer(substream, &hdsp->capture_dma_buf);
+ 
+ 	hdsp->capture_pid = current->pid;
+ 	hdsp->capture_substream = substream;
+diff --git a/sound/pci/rme9652/rme9652.c b/sound/pci/rme9652/rme9652.c
+index f1aad38760d6..9ad2533925c4 100644
+--- a/sound/pci/rme9652/rme9652.c
++++ b/sound/pci/rme9652/rme9652.c
+@@ -2279,8 +2279,7 @@ static int snd_rme9652_playback_open(struct snd_pcm_substream *substream)
+ 	snd_pcm_set_sync(substream);
+ 
+         runtime->hw = snd_rme9652_playback_subinfo;
+-	runtime->dma_area = rme9652->playback_buffer;
+-	runtime->dma_bytes = RME9652_DMA_AREA_BYTES;
++	snd_pcm_set_runtime_buffer(substream, &rme9652->playback_dma_buf);
+ 
+ 	if (rme9652->capture_substream == NULL) {
+ 		rme9652_stop(rme9652);
+@@ -2339,8 +2338,7 @@ static int snd_rme9652_capture_open(struct snd_pcm_substream *substream)
+ 	snd_pcm_set_sync(substream);
+ 
+ 	runtime->hw = snd_rme9652_capture_subinfo;
+-	runtime->dma_area = rme9652->capture_buffer;
+-	runtime->dma_bytes = RME9652_DMA_AREA_BYTES;
++	snd_pcm_set_runtime_buffer(substream, &rme9652->capture_dma_buf);
+ 
+ 	if (rme9652->playback_substream == NULL) {
+ 		rme9652_stop(rme9652);
+-- 
+2.33.0
+
