@@ -1,6 +1,6 @@
 pkgbase = webbrowser-git
 	pkgdesc = A Goanna/UXP based browser with no spyware.
-	pkgver = v29.3.0.r0.g81f63a8
+	pkgver = v29.3.1.r1.g61f7aaa
 	pkgrel = 1
 	url = https://git.nuegia.net/webbrowser.git/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = webbrowser-git
 	makedepends = zip
 	makedepends = yasm
 	makedepends = ffmpeg
+	makedepends = gcc10
 	makedepends = libxt
 	makedepends = libffi
 	makedepends = dbus
@@ -32,10 +33,12 @@ pkgbase = webbrowser-git
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	provides = palemoon
+	provides = firefox
+	conflicts = palemoon
+	conflicts = palemoon-git
 	source = git+https://git.nuegia.net/webbrowser.git
 	source = git+https://git.nuegia.net/UXP
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = webbrowser-git
-
