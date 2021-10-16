@@ -1,0 +1,19 @@
+pkgbase = neovim-session-lens-git
+	pkgdesc = Session switcher extension for auto-session
+	pkgver = r34.4c1754b
+	pkgrel = 1
+	url = https://github.com/rmagatti/session-lens
+	install = session-lens.install
+	arch = any
+	groups = neovim-plugin
+	license = MIT
+	makedepends = git
+	depends = neovim>=0.5.0
+	depends = neovim-auto-session
+	depends = neovim-telescope
+	provides = neovim-session-lens
+	conflicts = neovim-session-lens
+	source = neovim-session-lens-git::git+https://github.com/rmagatti/session-lens
+	md5sums = SKIP
+
+pkgname = neovim-session-lens-git
