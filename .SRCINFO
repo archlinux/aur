@@ -1,0 +1,15 @@
+pkgbase = funnyboat
+	pkgdesc = side scrolling arcade shooter game on a steamboat equipped with a cannon and the ability to jump
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://funnyboat.sourceforge.net/
+	arch = any
+	license = custom
+	makedepends = gendesk
+	depends = python2-pygame
+	source = https://sourceforge.net/projects/funnyboat/files/funnyboat/1.5/funnyboat-1.5-src.zip/download
+	source = screenshot_to_homedir.patch
+	md5sums = 71724a755614c286bd861864bd0062a6
+	md5sums = 06761d4d402e8d9338157292f6dfb6e8
+
+pkgname = funnyboat

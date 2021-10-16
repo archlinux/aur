@@ -1,0 +1,17 @@
+diff --color -aur src.orig/funnyboat/game.py src/funnyboat/game.py
+--- src.orig/funnyboat/game.py	2021-10-16 23:01:03.166957782 +0200
++++ src/funnyboat/game.py	2021-10-16 23:07:37.429335490 +0200
+@@ -245,10 +245,10 @@
+ 
+     def take_screenshot(self):
+         i = 1
+-        filename = "sshot.tga"
++        filename = os.path.join(os.path.expanduser("~"), "sshot.tga")
+         while os.path.exists(filename):
+             i += 1
+-            filename = "sshot" + str(i) + ".tga"
++            filename = os.path.join(os.path.expanduser("~"), "sshot%s.tga" % i)
+         
+         pygame.image.save(self.screen, filename)
+         print "Screenshot saved as " + filename
+Only in src: screenshot_to_homedir.patch
