@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=systemd-lock-handler
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Logind lock event to systemd target translation."
 arch=('any')
