@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Jan Niklas Böhm <mail@jnboehm.com>
+# Contributer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributer: Eli Patterson <elipup@gmail.com>
 # Contributer: Franz Müller <ethylisocyanat@gmail.com>
 
