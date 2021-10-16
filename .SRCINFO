@@ -10,6 +10,6 @@ pkgbase = hamclock-big
 	provides = hamclock
 	conflicts = hamclock
 	source = https://github.com/kj7rrv/hamclock/archive/refs/tags/v2.69.tar.gz
-	sha256sums = ac9fb741161d34c1385db2e4471fb9484a91e4b652e407db4ee545611b2d3c3f
+	sha256sums = b6f893351ba9255f08f4c766d37d55d2ddb73ff5d53bc4b489ea6c5f10d68287
 
 pkgname = hamclock-big
