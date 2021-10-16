@@ -1,7 +1,7 @@
 # Maintainer: robot5x <alex at robot5x dot com>
 
 pkgname=holochain-launcher
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A cross-platform executable that launches a local Holochain conductor, and installs and opens apps"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 source=("https://github.com/holochain/launcher/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('cc8ef2ea5fa3a28149012225d5b6bd507de0ab19db51b3d87636e94080fab8e7')
+sha256sums=('163978c4d31993ae23f0cb827ca23d2aee85fcbceb511df1780962ba5a32a428')
 package() {
   bsdtar -O -xf "${pkgname}_${pkgver}_amd64.deb" data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
 
