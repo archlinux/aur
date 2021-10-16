@@ -1,0 +1,21 @@
+pkgbase = hidpi-daemon-git
+	pkgdesc = Daemon to manage HiDPI and LoDPI monitors on X
+	pkgver = 18.04.6.r1.g8f165bb
+	pkgrel = 1
+	url = https://github.com/pop-os/hidpi-daemon
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = acpid
+	depends = libnotify
+	depends = python-gobject
+	depends = python-pydbus
+	depends = python-xlib
+	provides = hidpi-daemon
+	conflicts = hidpi-daemon
+	conflicts = system76-hidpi-daemon
+	replaces = system76-hidpi-daemon-git
+	source = git+https://github.com/pop-os/hidpi-daemon.git
+	sha256sums = SKIP
+
+pkgname = hidpi-daemon-git
