@@ -3,7 +3,7 @@
 # Special thanks: tinywrkb <com dot gmail at tinywrkb>
 
 pkgname=pipewire-jack-replacement
-pkgdesc="Use pipewire as replacement for JACK (building headers + pkgconfig)"
+pkgdesc="Use pipewire-jack as replacement for JACK (building headers + pkgconfig)"
 pkgver=1.9.19
 pkgrel=2
 makedepends=("git" "coreutils" "findutils")
