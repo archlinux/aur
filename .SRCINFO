@@ -1,7 +1,7 @@
 pkgbase = gmid-bin
 	pkgdesc = Fast Gemini server written with security in mind.
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gmid.omarpolo.com
 	arch = x86_64
 	license = ISC
@@ -9,13 +9,9 @@ pkgbase = gmid-bin
 	provides = gmid
 	conflicts = gmid
 	conflicts = gmid-git
-	source = https://github.com/omar-polo/gmid/releases/download/1.7.5/gmid.linux.amd64
-	source = https://raw.githubusercontent.com/omar-polo/gmid/1.7.5/gmid.1
+	source = https://github.com/omar-polo/gmid/releases/download/1.7.5/gmid-1.7.5-binaries.tar.gz
 	source = https://raw.githubusercontent.com/omar-polo/gmid/1.7.5/LICENSE
-	source = https://raw.githubusercontent.com/omar-polo/gmid/1.7.5/README.md
-	sha256sums = b9b5fd01503f9f053e08de3fe38deeffa19c4770e2ae975bb2b9ea58a4a78629
-	sha256sums = 4950287661a3ee2970e337f18ad769821633b73799438d15a0aa90a9775700cd
+	sha256sums = 97009f8acdc81c1202dd14dfdcaea8e3fd99983ff1e0e4711258d3e75f49ecdc
 	sha256sums = f82c1fa80d35427d109a77ed59ecda41474ef46539238750876702fa40579f9f
-	sha256sums = 425308363e30b4fa0d2fdd321d20070816ce856fe55c8a4654ebd1fd3ad7a23f
 
 pkgname = gmid-bin
