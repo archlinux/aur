@@ -1,8 +1,8 @@
 # Maintainer: INhBQfUQO2eFzulN <281587887a at protonmail dot ch>
 _pkgname=spotiflyer
 pkgname="${_pkgname}-bin"
-pkgver=3.3.2
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Kotlin multiplatform music downloader, supports Spotify/Gaana/Youtube Music/Jio Saavn."
 arch=('x86_64')
 url="https://github.com/Shabinder/SpotiFlyer"
