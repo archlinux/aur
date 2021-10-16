@@ -9,7 +9,6 @@ license=('MIT')
 source=("git+https://github.com/Wieku/danser-go.git")
 sha256sums=('SKIP')
 depends=(
-    'gcc'
     'libyuv'
     'ffmpeg'
 )
@@ -17,6 +16,7 @@ makedepends=(
     'xorg-server-devel'
     'go>=1.17'
     'git'
+    'gcc'
 )
 
 pkgver() {
