@@ -2,7 +2,7 @@
 _release_type=stable
 
 pkgname=makedeb-makepkg
-pkgver=8.5.2
+pkgver=8.8.0
 pkgrel=1
 pkgdesc="Arch Linux build utility, modified for use with makedeb (stable release)"
 arch=(any)
