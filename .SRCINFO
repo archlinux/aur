@@ -1,0 +1,16 @@
+pkgbase = vim-grepper-git
+	pkgdesc = Uses your favorite grep tool to asynchronously search
+	pkgver = 1.4.r194.g2b93535
+	pkgrel = 1
+	url = https://github.com/mhinz/vim-grepper
+	arch = any
+	groups = vim-plugin
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-grepper
+	conflicts = vim-grepper
+	source = vim-grepper-git::git+https://github.com/mhinz/vim-grepper
+	md5sums = SKIP
+
+pkgname = vim-grepper-git
