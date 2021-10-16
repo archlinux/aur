@@ -5,7 +5,7 @@
 
 _pkgname='osmnx'
 pkgname="python-${_pkgname}"
-pkgver=0.16.2
+pkgver=1.1.1
 pkgrel=2
 pkgdesc='Retrieve, model, analyze, and visualize OpenStreetMap street networks and other spatial data'
 arch=('any')
@@ -27,7 +27,7 @@ depends=('python-descartes'
         'python-shapely')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('45c94896ca068653b2c233db459d03d8070a813df6cd8d95143f0714f8e0e7d6')
+sha256sums=('8ed9b69f2365a252b9cae78a1611ef7adb6b9800ca880aa49b3edcde6bcc5fbc')
 
 build() {
   cd "${_pkgname}-${pkgver}"

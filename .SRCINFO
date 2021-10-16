@@ -1,6 +1,6 @@
 pkgbase = python-osmnx
 	pkgdesc = Retrieve, model, analyze, and visualize OpenStreetMap street networks and other spatial data
-	pkgver = 0.16.2
+	pkgver = 1.1.1
 	pkgrel = 2
 	url = https://github.com/gboeing/osmnx
 	arch = any
@@ -19,8 +19,7 @@ pkgbase = python-osmnx
 	depends = python-scikit-learn
 	depends = python-scipy
 	depends = python-shapely
-	source = https://files.pythonhosted.org/packages/source/o/osmnx/osmnx-0.16.2.tar.gz
-	sha256sums = 45c94896ca068653b2c233db459d03d8070a813df6cd8d95143f0714f8e0e7d6
+	source = https://files.pythonhosted.org/packages/source/o/osmnx/osmnx-1.1.1.tar.gz
+	sha256sums = 8ed9b69f2365a252b9cae78a1611ef7adb6b9800ca880aa49b3edcde6bcc5fbc
 
 pkgname = python-osmnx
-
