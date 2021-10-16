@@ -6,7 +6,7 @@ _spirv_headers_commit='f027d53ded7e230e008d37c8b47ede7cd308e19d'
 
 pkgname=spirv-cross
 pkgver=2021.01.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages'
 arch=('x86_64')
 url='https://github.com/KhronosGroup/SPIRV-Cross/'
@@ -32,31 +32,27 @@ prepare() {
 
 build() {
     # NOTE: test suite fails when using 'None' build type
+    local -a _common_opts=('-DCMAKE_BUILD_TYPE:STRING=Release' '-Wno-dev')
     
     # glslang (required for tests)
-    printf '%s\n' '  -> Building glslang...'
     cmake -B SPIRV-Cross/external/glslang-build -S glslang \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
-        -DCMAKE_INSTALL_PREFIX:PATH='output' \
-        -Wno-dev
-    cmake --build SPIRV-Cross/external/glslang-build --config Release --target install
+        "${_common_opts[@]}" \
+        -DCMAKE_INSTALL_PREFIX:PATH='output'
+    cmake --build SPIRV-Cross/external/glslang-build --target install
     
     # spirv-tools (required for tests)
-    printf '%s\n' '  -> Building SPIRV-Tools...'
     cmake -B SPIRV-Cross/external/spirv-tools-build -S SPIRV-Tools \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
-        -DSPIRV_WERROR:BOOL='OFF' \
+        "${_common_opts[@]}" \
         -DCMAKE_INSTALL_PREFIX:PATH='output' \
-        -Wno-dev
-    cmake --build SPIRV-Cross/external/spirv-tools-build --config Release --target install
+        -DSPIRV_WERROR:BOOL='OFF'
+    cmake --build SPIRV-Cross/external/spirv-tools-build --target install
     
     # spirv-cross
-    printf '%s\n' '  -> Building SPIRV-Cross...'
     cmake -B build-SPIRV-Cross -S SPIRV-Cross \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        "${_common_opts[@]}" \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DSPIRV_CROSS_SHARED:BOOL='ON' \
-        -Wno-dev
+        -DSPIRV_CROSS_FORCE_PIC:BOOL='ON' \
+        -DSPIRV_CROSS_SHARED:BOOL='ON'
     make -C build-SPIRV-Cross
 }
 
