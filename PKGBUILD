@@ -1,13 +1,15 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=libimobiledevice-glue-git
-pkgver=r16.9035527
+pkgver=r19.499a557
 pkgrel=1
 pkgdesc='Library with common code used by the libraries and tools around the libimobiledevice project'
 url='http://www.libimobiledevice.org/'
 arch=(x86_64)
 license=('LGPL2.1')
-makedepends=('libplist-git' 'git')
+depends=('libplist-git')
+makedepends=('git')
+provides=('libimobiledevice-glue')
 source=("git+https://github.com/libimobiledevice/libimobiledevice-glue")
 sha256sums=('SKIP')
 
