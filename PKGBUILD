@@ -1,10 +1,12 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-_bundle_pandoc=true
+# Decide whether to install pandoc binary
+# Default to false, the application will use Arch's pandoc
+_bundle_pandoc=false
 
 pkgname=zettlr
-pkgver=1.8.9
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
@@ -15,22 +17,22 @@ makedepends=(git yarn)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-_csl_locale_commit=bd8d2dbc85713b192d426fb02749475df30f0d2c # April 21, 2021
-_csl_style_commit=1e63dfef3bb8fa695d5a8786ec979a71e7cc118a
-_pandoc_binary_ver=2.11.3.2 # check scripts/get-pandoc.sh for update
+_csl_locale_commit=0cc3885f6100e26ac6c6d103efa6f3d7195fd21b # Oct 17, 2021
+_csl_style_commit=3a6a0a7bc1410075c606e51cab45877cc76f1f69
+_pandoc_binary_ver=2.14.2 # check scripts/get-pandoc.sh for update
 options=(!strip)
 install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Zettlr/Zettlr/archive/v${pkgver}.tar.gz"
         # citation style
         "locales-${pkgver}-${pkgrel}.zip::https://github.com/citation-style-language/locales/archive/${_csl_locale_commit}.zip"
         "chicago-author-date-${pkgver}-${pkgrel}.csl::https://github.com/citation-style-language/styles/raw/${_csl_style_commit}/chicago-author-date.csl")
-sha256sums=('351b579c2c42f2f1836e9882a27e0497c862857a826231b5067c1204d9b846b4'
-            '8ebd67f265760cdcd450237ff109ee7334abaaf61eb26a2dfe917a5bd1f3c59d'
-            '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4')
+sha256sums=('b23d3a7e802ff4be31dd4dfb43fb54272a3935aec665e09b79c4b369da80ae8f'
+            '9b3e987aefb10da8b2baadd06e751e978ea23dc7b6297802cbda0ec6806744e2'
+            '1455e57b314fd13ba155f4ab93f061e3e6393c13cd0f16380adb9d73614f7930')
 if ${_bundle_pandoc} ; then
     # pandoc binary
     source+=("https://github.com/jgm/pandoc/releases/download/${_pandoc_binary_ver}/pandoc-${_pandoc_binary_ver}-linux-amd64.tar.gz")
-    sha256sums+=('422c1f38b4731edfafcc0f8011a8dc46ce3a84e61b896ef15e3a23e0a9b453d6')
+    sha256sums+=('1a0548b15255b1c11722f3d4e12fc7a652edf8c9a329a8458f1e765517aec1be')
 fi
 
 prepare() {
@@ -63,6 +65,9 @@ build() {
     # Remove fonts
     cd "${srcdir}/Zettlr-${pkgver}/.webpack"
     find . -type d -name "fonts" -exec rm -rf {} +
+
+    # Remove references to $srcdir
+    find renderer -type f -name 'index.js.map' -exec sed -i "s,${srcdir}/Zettlr,/usr/lib/${pkgname},g" {} +
 
     # Remove resources for other OSs
     cd "${srcdir}/Zettlr-${pkgver}/resources"
@@ -104,13 +109,10 @@ exec electron /${_destdir} "\$@"
 END
 
     # install icons of various sizes to hi-color theme
-    for px in 16 24 32 48 64 96 128 256 512; do
+    for px in 16 24 32 48 64 96 128 256 512 1024; do
         install -Dm644 "${srcdir}/Zettlr-${pkgver}/resources/icons/png/${px}x${px}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${px}x${px}/apps/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/Zettlr-${pkgver}/resources/icons/1024x1024.png" \
-        "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
-
 
     # generate freedesktop entry files, aligned with description in package.json and forge.config.js
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
