@@ -1,7 +1,7 @@
-# Maintainer: Luis Martinez
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=vim-neomake-git
-_pkgname=${pkgname%-git}
-pkgver=r2734.5e140db5
+pkgver=r2741.8df87617
 pkgrel=1
 pkgdesc="Asynchronous linting and make framework for Neovim/Vim"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 makedepends=('git')
-source=("$pkgname::git+$url.git")
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,8 +20,6 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  find autoload contrib doc plugin syntax -type f -exec \
-    install -Dm644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	find autoload doc plugin syntax -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
 }
-
