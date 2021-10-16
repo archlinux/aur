@@ -1,8 +1,8 @@
 # Maintainer: Samuel Sloniker <sam@kj7rrv.com>
 
 pkgname=hamclock-big
-pkgver=2.68
-pkgrel=3
+pkgver=2.69
+pkgrel=1
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (1600x960 version)"
 arch=('x86_64')
