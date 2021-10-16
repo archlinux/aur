@@ -1,0 +1,16 @@
+pkgbase = hyperbeam
+	pkgdesc = Shared Browser App
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://hyperbeam.com/
+	arch = x86_64
+	license = custom
+	depends = dbus-glib
+	depends = gtk3
+	depends = libdbusmenu-gtk2
+	depends = libindicator-gtk2
+	depends = nss
+	source = https://cdn.hyperbeam.com/Hyperbeam-0.21.0.AppImage
+	sha256sums = ed4631b5ba93eb9080767826ac8ab8dbdd0dcbcb02c9bb7815081b5191cc77b2
+
+pkgname = hyperbeam
