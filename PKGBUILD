@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=libs76-hidpi-widget-git
-pkgver=r15.7d871e0
+pkgver=r16.4a37fba
 pkgrel=1
 pkgdesc="System76 HiDPI daemon widget library"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/hidpi-widget"
 license=('GPL3')
 depends=('gtk3' 'libhandy')
@@ -20,6 +20,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/hidpi-widget"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
