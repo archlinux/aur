@@ -7,7 +7,7 @@ pkgdesc="Authentic, Open Source 2009 Runescape Era Game (Launcher) (Git Version)
 arch=(any)
 license=('GPL')
 url="https://gitlab.com/2009scape/09launcher"
-depends=('java-runtime>=8')
+depends=('java-runtime>=8' 'bash')
 makedepends=('git' 'bash')
 provides=("2009scape")
 conflicts=("2009scape")

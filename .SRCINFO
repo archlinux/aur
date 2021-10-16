@@ -1,26 +1,5 @@
 pkgbase = 2009scape-git
 	pkgdesc = Authentic, Open Source 2009 Runescape Era Game (Launcher) (Git Version)
-	pkgver = 2.1.3r
-	pkgrel = 1
-	url = https://gitlab.com/2009scape/09launcher
-	arch = any
-	license = GPL
-	makedepends = gradle
-	makedepends = git
-	makedepends = bash
-	depends = java-runtime>=8
-	provides = 2009scape
-	conflicts = 2009scape
-	source = git+https://gitlab.com/2009scape/09launcher.git
-	source = 2009scape.desktop
-	source = 2009scape.png
-	sha256sums = SKIP
-	sha256sums = f7e235d1c29345cec51cda35d910670afe4366d281bee7d5a38aba840ba06c66
-	sha256sums = da472600b4cc81d8985e91518425a6c571d4b401af094ae7e3573de9c71fa8c1
-
-pkgname = 2009scape-git
-pkgbase = 2009scape-git
-	pkgdesc = Authentic, Open Source 2009 Runescape Era Game (Launcher) (Git Version)
 	pkgver = r23.702984b
 	pkgrel = 1
 	url = https://gitlab.com/2009scape/09launcher
@@ -29,6 +8,7 @@ pkgbase = 2009scape-git
 	makedepends = git
 	makedepends = bash
 	depends = java-runtime>=8
+	depends = bash
 	provides = 2009scape
 	conflicts = 2009scape
 	source = git+https://gitlab.com/2009scape/09launcher.git
