@@ -2,8 +2,8 @@
 
 _pkgname=yt-dlg
 pkgname=$_pkgname-git
-pkgver=1.2.0.r127.g9789d97
-pkgrel=2
+pkgver=1.2.0.r150.g4ac8184
+pkgrel=1
 pkgdesc="A cross platform front-end GUI of the popular youtube-dl written in wxPython (maintained fork of youtube-dl-gui)"
 arch=('any')
 url="https://github.com/oleksis/youtube-dl-gui"
@@ -15,7 +15,7 @@ depends=(
 )
 optdepends=('ffmpeg: convert video files to audio-only files'
             'youtube-dl: alternative to the youtube-dl program downloaded by yt-dlg')
-makedepends=('git' 'python-polib')
+makedepends=('git' 'python-polib' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname youtube-dl-gui)
 source=($pkgname::git+https://github.com/yt-dlg/yt-dlg.git)
