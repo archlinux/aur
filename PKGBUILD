@@ -54,7 +54,7 @@ package() {
   cd "$_pkgname"
 
   if [ "$_use_meson" = 1 ]; then
-    DESTDIR="$pkgdir" meson install -C build
+    meson install -C build --destdir "$pkgdir"
   else
     make DESTDIR="$pkgdir" install
   fi
