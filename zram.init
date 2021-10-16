@@ -1,0 +1,21 @@
+#!/usr/bin/openrc-run
+# Copyright 2021 Doletov Fyodor
+
+description="Enable zram"
+
+depend() {
+    need sysfs
+}
+
+start(){
+    modprobe zram
+    echo "$comp_algorithm" > /sys/block/zram0/comp_algorithm
+    echo "$zram_size" > /sys/block/zram0/disksize
+    ebegin $(mkswap --label zram0 /dev/zram0)
+    swapon --priority 100 /dev/zram0
+}
+
+stop(){
+    swapoff /dev/zram0
+    rmmod zram
+}

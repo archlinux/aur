@@ -1,0 +1,17 @@
+pkgbase = zram-openrc
+	pkgdesc = Activate zram using openrc
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/zram-openrc
+	arch = any
+	groups = openrc-galaxy
+	license = GPL2
+	depends = openrc
+	provides = init-zram
+	conflicts = init-zram
+	source = zram.init
+	source = zram.conf
+	md5sums = b5967b1ede20310750e7e0ed62d2b5c2
+	md5sums = 1b48c7cf1f25478ec85cef7393170f99
+
+pkgname = zram-openrc
