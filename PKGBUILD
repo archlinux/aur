@@ -5,7 +5,7 @@
 pkgname=odin-dev-bin
 _pkgver=2021-10
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=(x86_64)
 url="https://odin-lang.org/"

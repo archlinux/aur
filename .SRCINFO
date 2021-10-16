@@ -1,7 +1,7 @@
 pkgbase = odin-dev-bin
 	pkgdesc = A fast, concise, readable, pragmatic and open sourced programming language.
 	pkgver = 2021.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://odin-lang.org/
 	arch = x86_64
 	license = BSD
@@ -14,4 +14,5 @@ pkgbase = odin-dev-bin
 	sha256sums = 0dd43f018a469d9dd1a8666e35366a0895d59a92ca0499e28717c217abfacb76
 	source_x86_64 = https://github.com/odin-lang/Odin/releases/download/dev-2021-10/odin-ubuntu-amd64-dev-2021-10.zip
 	sha256sums_x86_64 = 28b7ac480b823efadb13488c3805f8ce079107a253748322ab81bd3b7091d88a
+
 pkgname = odin-dev-bin
