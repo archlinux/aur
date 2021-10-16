@@ -1,7 +1,7 @@
 pkgbase = python-tatsu
 	pkgdesc = TatSu takes a grammar in a variation of EBNF as input, and outputs a memoizing PEG/Packrat parser in Python.
 	pkgver = 5.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/neogeny/TatSu
 	arch = any
 	license = BSD
