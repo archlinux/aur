@@ -7,7 +7,7 @@ pkgdesc="Authentic, Open Source 2009 Runescape Era Game (Launcher)"
 url="https://2009scape.org"
 arch=('x86_64')
 license=('GPL')
-depends=('jre8-openjdk')
+depends=('java-runtime>=8')
 source=("https://gitlab.com/2009scape/09launcher/-/jobs/1510765214/artifacts/raw/build/libs/2009scape.jar"
     2009scape.desktop
     2009scape.png)
