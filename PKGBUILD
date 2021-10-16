@@ -3,7 +3,7 @@
 _prefix=arm-none-eabi-
 pkgname=${_prefix}yiolibc
 pkgver=v0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Yio Input Output C Library that aims in type-safe printf replacement"
 arch=(any)
 url="https://gitlab.com/kamcuk/yio/"
@@ -54,7 +54,7 @@ check() {
 			tmp=$(mktemp)
 			trap 'rm "$tmp"' EXIT
 			set -x
-			${_prefix}gcc --specs=rdimon.specs -L"build/$dir" -I"build/$dir" $opts -xc - -lyio -o "$tmp" <<'EOF'
+			${_prefix}gcc --specs=rdimon.specs -L"build/$dir/src" -I"build/$dir/gen" $opts -xc - -lyio -o "$tmp" <<'EOF'
 #include <yio.h>
 int main() {
 	yprint("Hello world", 5, "\n");
