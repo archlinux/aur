@@ -2,7 +2,7 @@
 pkgname=danser-git
 url="https://github.com/Wieku/danser-go"
 pkgver=0.6.4.r0.gda852a79
-pkgrel=1
+pkgrel=2
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go (git version)"
 arch=('any')
 license=('MIT')
@@ -49,5 +49,5 @@ package() {
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    ln -s "${pkgdir}/opt/danser-git/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/opt/danser-git/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
