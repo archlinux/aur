@@ -1,7 +1,7 @@
 # Maintainer: bmgtjonas <linuxus@mail.de>
 pkgname='gqthres'
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Resolver for Callsigns and Locators"
 arch=(x86_64)
 url="https://github.com/BaumGuard/gqthres"
@@ -12,10 +12,11 @@ makedepends=()
 package() {
 	cd ~
 	git clone https://www.github.com/BaumGuard/gqthres
-	install -Dm755 ~/gqthres/gqthres "$pkgdir/usr/bin/gqthres"
-	install -Dm755 ~/gqthres/gqthres.jar "$pkgdir/usr/lib/gqthres/gqthres.jar"
-	install -Dm755 ~/gqthres/gqthres.conf "$pkgdir/etc/gqthres.conf"
-	install -Dm755 ~/gqthres/gqthres.desktop "$pkgdir/usr/share/applications/gqthres.desktop"
-	install -Dm755 ~/gqthres/gqthres.png "$pkgdir/usr/share/pixmaps/gqthres.png"
-	install -Dm777 ~/gqthres/gqthres.log "$pkgdir/$HOME/.cache/gqthres/gqthres.log"
+	cd gqthres
+	install -Dm755 gqthres "$pkgdir/usr/bin/gqthres"
+	install -Dm755 gqthres.jar "$pkgdir/usr/lib/gqthres/gqthres.jar"
+	install -Dm755 gqthres.conf "$pkgdir/etc/gqthres.conf"
+	install -Dm755 gqthres.desktop "$pkgdir/usr/share/applications/gqthres.desktop"
+	install -Dm755 gqthres.png "$pkgdir/usr/share/pixmaps/gqthres.png"
+	install -Dm777 gqthres.log "$pkgdir/$HOME/.cache/gqthres/gqthres.log"
 }
