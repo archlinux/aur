@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-pip')
 depends=('libgpiod' 'python' 'python-sysv_ipc' 'python-adafruit-platformdetect' 'python-adafruit-pureio')
 optdepends=()
 source=("https://pypi.io/packages/source/A/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('acbcfb778dc5e37ad9ef0aa1e1998e597a99c8a2a08b0dda58c05681950ea1f2')
+sha256sums=('2df80c4cbcd17a8b625e21216bfd0f05b344e20f37080c0893416085a62971d9')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
