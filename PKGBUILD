@@ -6,13 +6,13 @@
 
 pkgname=powerstat
 pkgver=0.02.26
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for measuring a laptops power usage via the battery.'
 arch=('i686' 'x86_64')
-url="http://kernel.ubuntu.com/~cking/powerstat/"
+url="https://launchpad.net/powerstat"
 license=('GPL2')
 depends=('glibc')
-source=("https://kernel.ubuntu.com/~cking/tarballs/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/$pkgname/${pkgver}-1/${pkgname}_${pkgver}.orig.tar.gz")
 sha256sums=('b3bf4f514c5e3cdcc23bb97878104c4b030883576e981e7701d26738d02ca8a2')
 
 build() {
