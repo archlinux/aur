@@ -4,7 +4,7 @@ pkgname=starpu
 pkgdesc="Task programming library for hybrid architectures"
 url="https://starpu.gitlabpages.inria.fr/"
 pkgver=1.3.8
-pkgrel=2
+pkgrel=3
 arch=(x86_64 x86_64_v3)
 source=(
 	https://files.inria.fr/starpu/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc}
@@ -46,6 +46,7 @@ prepare() {
 		--enable-valgrind \
 		--enable-hdf5 \
 		--enable-cuda \
+		--with-cuda-dir=${CUDA_PATH:-/opt/cuda} \
 		--enable-cpu \
 		--enable-opencl \
 		--disable-poti \

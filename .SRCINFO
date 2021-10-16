@@ -1,7 +1,7 @@
 pkgbase = starpu
 	pkgdesc = Task programming library for hybrid architectures
 	pkgver = 1.3.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://starpu.gitlabpages.inria.fr/
 	arch = x86_64
 	arch = x86_64_v3
