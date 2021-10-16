@@ -1,7 +1,7 @@
 # Maintainer: bmgtjonas <linuxus@mail.de>
 pkgname='gqthres'
 pkgver=1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Resolver for Callsigns and Locators"
 arch=(x86_64)
 url="https://github.com/BaumGuard/gqthres"
@@ -10,6 +10,8 @@ depends=('jre-openjdk')
 makedepends=()
 
 package() {
+	cd ~
+	git clone https://www.github.com/BaumGuard/gqthres
 	install -Dm755 ~/gqthres/gqthres "$pkgdir/usr/bin/gqthres"
 	install -Dm755 ~/gqthres/gqthres.jar "$pkgdir/usr/lib/gqthres/gqthres.jar"
 	install -Dm755 ~/gqthres/gqthres.conf "$pkgdir/etc/gqthres.conf"
