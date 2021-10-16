@@ -2,7 +2,7 @@
 # Maintainer: squitch
 
 pkgname=tess-git
-pkgver=0.5.1.r0.g3825f86
+pkgver=0.5.1.r0.gaefa567
 pkgrel=1
 epoch=1
 pkgdesc="Hackable, simple, rapid and beautiful terminal for the new era"
