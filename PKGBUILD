@@ -39,7 +39,7 @@ source=($pkgname::svn+svn://servers.simutrans.org/simutrans/trunk
 sha256sums=('SKIP'
             '671398550f46525ef0dae338d9e1984bfc0e1ec36153e1c4163c8c35de240c7e'
             'cb9fda1a99d0b54f316ba5ea5b90ec658641f9a9d3b77faf981525e12ff99188'
-            '99545152f5e739b7eb028152383fa10d3e3d303c99167e1c6e5a6bd7dcd00fa3'
+            '7f1724f13c9c9828f5f9875657fe1248ce6ce8ab26613bb2f3adcad53cf79ffc'
             '52a00091a71e250205adcb3ef8b86b560a5c27429ec700c5e5242f58184d90ab')
             
 prepare() {
