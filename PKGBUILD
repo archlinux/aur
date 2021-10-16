@@ -1,11 +1,11 @@
 # Maintainer: leuko <aur_et_aydos_de>
 _pkgname=xpra-html5
 pkgname=${_pkgname}-git
-pkgver=r801.89552ae
+pkgver=v4.5.1.r14.g281b274
 pkgrel=1
 pkgdesc="HTML5 client for Xpra"
 arch=('x86_64')
-url='https://www.xpra.org'
+url='https://github.com/Xpra-org/xpra-html5'
 license=('MPL2')
 conflicts=($_pkgname)
 provides=($_pkgname)
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

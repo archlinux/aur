@@ -1,8 +1,8 @@
 pkgbase = xpra-html5-git
 	pkgdesc = HTML5 client for Xpra
-	pkgver = r801.89552ae
+	pkgver = v4.5.1.r14.g281b274
 	pkgrel = 1
-	url = https://www.xpra.org
+	url = https://github.com/Xpra-org/xpra-html5
 	arch = x86_64
 	license = MPL2
 	makedepends = git
@@ -16,4 +16,3 @@ pkgbase = xpra-html5-git
 	md5sums = SKIP
 
 pkgname = xpra-html5-git
-
