@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=logdiag-git
 _pkgname=logdiag
-pkgver=v0.2.0.r4.g3102bc0
+pkgver=v0.2.0.r5.g8815d72
 pkgrel=1
 pkgdesc="Schematic editor"
 url="https://git.janouch.name/p/logdiag"
@@ -12,7 +12,6 @@ conflicts=('logdiag')
 provides=('logdiag')
 makedepends=('cmake' 'pkg-config' 'git')
 depends=('gtk3' 'lua' 'json-glib')
-install=logdiag.install
 source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 
