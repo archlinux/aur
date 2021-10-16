@@ -2,7 +2,7 @@
 
 _pkgname=julius
 pkgname=$_pkgname-game
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Open source re-implementation of Caesar III (Original copy required)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ install="$pkgname.install"
 source=($pkgname.desktop $pkgname.install $url/archive/v$pkgver.tar.gz)
 sha256sums=('d44482503d890ab62e64f607c67b5c9686de68e17411920d3c02d54d468ac2a2'
             '903b97f1a07bf4fa8495166c00e45fd1c2ec5fba4d25169cf5f810e51781ac40'
-            'f50eade82c1f011a642a89ec526fe9e9589ac44ffa6041e072577336233b8166')
+            '3ee62699bcbf6c74fe5a9c940c62187141422a9bd98e01747a554fd77483431f')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
