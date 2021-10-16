@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.780
+pkgver=mainline.0.781
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=(
 	'cpp-httplib-compiled>=0.9.1'
 	'cubeb>=r1398'
 	'discord-rpc>=3.4.0.r10'
-	'dynarmic>=5.r113'
+	'dynarmic>=5.r127'
 	'ffmpeg>=4.3.1'
 	'fmt>=8'
 	'git'
@@ -26,7 +26,7 @@ makedepends=(
 	'opus>=1.3'
 	'qt5-tools>=5.15'
 	'sdl2>=2.0.16'
-	'sirit>=r185'
+	'spirv-headers>=1.5.4.raytracing.fixed.r32'
 	'vulkan-headers>=1.2.145'
 	'xbyak>=5.995.r3'
 	'zstd>=1.5'
@@ -37,16 +37,17 @@ source=(
 	"gamedb-$(date -I).json::https://api.yuzu-emu.org/gamedb/"
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
 	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
+	'git+https://github.com/ReinUsesLisp/sirit.git'
 	'unbundle-catch2.patch'
 	'unbundle-cubeb.patch'
 	'unbundle-discord-rpc.patch'
 	'unbundle-dynarmic.patch'
 	'unbundle-httplib.patch'
 	'unbundle-inih.patch'
-	'unbundle-sirit.patch'
 	'unbundle-xbyak.patch'
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -57,14 +58,14 @@ b2sums=(
 	'3e0faf4c5ef6a836001af09b90ebb7f9a0e3b9dc42c1a312815f4ad9c4dc1ed79672539cecdbaf7ce01f2297a76dc3f17579f058c5515d8f328fc286705192b6'
 	'7508b5e6ca43f44eeecd8b91ca8bdfe3350a37601d8c626ce300435d0e3976ae48068ed014c7b4e1712359ef025fff59fef3a0a3adf5f5bf499129492f840df5'
 	'f9df47354efda0ef25685e4dc13426a0f8ee2ba61a7af5af18eaaa00de142d0a60208a3f8c7002ea85922cda666288e156ff81449c0e4d74c0931de481b84092'
-	'612844bef9e93cef97d6c832fdf2474a0610db3fe070b22e1b1ac2a8ad3479cbc4cb570e00bbc5ae65bb87c4e095a0ebeab11afea95e1da68cc6ef7461f82dfc'
 	'c3139235f6ddc5e9ddd3fe9fb7d129674b26930a4aa5eeb4ec822585ee3817f3e043610d2facd058c40eff3ec482a3b82782eb9559cd87c335748a0426243da5'
 )
 
 prepare() {
 	cd yuzu-mainline
-	git submodule init externals/{mbedtls,soundtouch}
+	git submodule init externals/{mbedtls,sirit,soundtouch}
 	git config submodule.mbedtls.url ../yuzu-mbedtls
+	git config submodule.sirit.url ../sirit
 	git config submodule.soundtouch.url ../citra-soundtouch
 	git submodule update
 	install -Dm644 "../gamedb-$(date -I).json" ../build/dist/compatibility_list/compatibility_list.json
@@ -74,9 +75,9 @@ prepare() {
 	patch -Np1 < ../unbundle-dynarmic.patch
 	patch -Np1 < ../unbundle-httplib.patch
 	patch -Np1 < ../unbundle-inih.patch
-	patch -Np1 < ../unbundle-sirit.patch
 	patch -Np1 < ../unbundle-xbyak.patch
 	rm .gitmodules
+	sed -i '/SPIRV-Headers/d' externals/sirit/CMakeLists.txt
 }
 
 build() {
@@ -119,7 +120,6 @@ package() {
 		'libfmt.so'
 		'libhttplib.so'
 		'libINIReader.so'
-		'libsirit.so'
 		'libswscale.so'
 		'libusb-1.0.so'
 	)
