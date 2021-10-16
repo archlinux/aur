@@ -4,7 +4,7 @@
 
 pkgname=odin-git
 _pkgname=odin
-pkgver=r4572.15c309b0
+pkgver=r4802.3337d386
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=(x86_64)
@@ -42,4 +42,5 @@ package() {
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cp -r examples "${pkgdir}/usr/share/doc/${_pkgname}/examples"
+    cp -r vendor "${pkgdir}/usr/lib/${_pkgname}/vendor"    
 }
