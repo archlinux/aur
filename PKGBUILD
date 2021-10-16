@@ -3,6 +3,8 @@
 # Contributor: Randy Heydon <randy dot heydon at clockworklab dot net>
 # Contributor: saxonbeta <saxonbeta at gmail __com
 
+_fragment=${FRAGMENT:-#branch:devel}
+
 # Configuration.
 if (( DISABLE_TRILINOS ))
   then _CMAKE_FLAGS+=(-DWITH_Trilinos=OFF)
@@ -46,7 +48,7 @@ provides=('elmerfem')
 conflicts=('elmerfem')
 options=(!emptydirs !staticlibs)
 
-source=('git+https://github.com/ElmerCSC/elmerfem.git'
+source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
         "$_pkgname.desktop"
         "arpack.patch")
 
