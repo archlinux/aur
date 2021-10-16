@@ -3,12 +3,12 @@
 
 pkgname=plasma5-applets-thermal-monitor
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma applet for monitoring temperatures of existing sensors including CPU, GPU and HDD."
 arch=(any)
 url="https://gitlab.com/agurenko/plasma-applet-thermal-monitor/"
 license=(GPL)
-depends=(plasma-workspace qt5-graphicaleffects)
+depends=(plasma-workspace ksysguard qt5-graphicaleffects)
 makedepends=(extra-cmake-modules)
 source=(${url}/-/archive/${pkgver}/${pkgname/5-applets/-applet}-${pkgver}.tar.bz2
         ${pkgname}-fix-window-size.patch::${url}/-/commit/c780ccea2bf8c6050a4ecdacc006ed0f73edb9bb.patch
