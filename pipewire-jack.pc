@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+server_libs=-L/usr/lib/pipewire-0.3/jack/ -ljackserver
+
+Name: jack
+Description: the Jack Audio Connection Kit: a low-latency synchronous callback-based media server
+Version: 1.9.19
+Libs: -L/usr/lib/pipewire-0.3/jack/ -ljack
+Cflags: -I/usr/include
