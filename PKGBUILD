@@ -1,6 +1,6 @@
 # Maintainer: Emil Rasmus Merzin <rasmusmerzin@gmail.com>
 pkgname=osoy
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Git repository manager'
 arch=('i686' 'x86_64')
@@ -8,9 +8,10 @@ url='https://gitlab.com/osoy/osoy'
 license=('MIT')
 provides=('osoy')
 makedepends=('cargo')
-source=("https://downloads.sourceforge.net/project/osoy/osoy-v${pkgver}-src.tar.gz")
-sha1sums=('965b78cba7eefb0dff68e6ac940a504345a41ab3')
-md5sums=('76509d41b8e79a330c4e0549520d47d9')
+optdepends=('make')
+source=("https://downloads.sourceforge.net/project/osoy/osoy-v0.5.1-src.tar.gz")
+sha1sums=('f0bad1e418852dd12bcf3e36d8b1dfb3bc3ed390')
+md5sums=('b5902e71a6697f711ebfe6eef0858fa2')
 
 build() {
 	cd "${srcdir}"
