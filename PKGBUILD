@@ -7,7 +7,7 @@ _bundle_pandoc=false
 
 pkgname=zettlr
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -39,6 +39,8 @@ fi
 
 prepare() {
     cd "Zettlr-${pkgver}"
+    
+    patch -Np1 -i $srcdir/0001-Do-not-download-pandoc.patch
 
     # csl:refresh from package.json
     find "${srcdir}/locales-$_csl_locale_commit" -name "*.xml" \
