@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=osu!lazer
+MimeType=application/x-osu-skin;application/x-osu-replay;application/x-osu-archive;x-scheme-handler/osu;
 Icon=/usr/share/pixmaps/osu-lazer.png
 Comment=Open source free-to-win rhythm game
 Exec=/usr/bin/osu-lazer

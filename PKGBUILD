@@ -2,14 +2,14 @@
 ## Contributor: Tyler Nelson <neo@cybercat.cc>
 
 pkgname=osu-lazer-bin
-pkgver=2021.1006.1
+pkgver=2021.1016.0
 pkgrel=1
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=('x86_64')
 url="https://osu.ppy.sh"
 license=('MIT' 'custom:CC-BY-NC 4.0')
 groups=()
-depends=(ffmpeg zlib libgl sdl2 fuse2)
+depends=(ffmpeg zlib libgl fuse2 osu-mime)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download
         "$pkgname-LICENCE.md::https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md"
         "osu-lazer.desktop")
 noextract=("$pkgname-$pkgver.AppImage")
-sha256sums=("56d384bdc67b69a93ecdf7dc322e7ab3177fe1aa1482b77cdf9c904be35d92c7"
+sha256sums=("65d6df3de55ed62d0728cab18539ad71fccc9e7bb99e84dab39e89b474278476"
             "36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10"
             "30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244"
             "026a1db53b94cea60d30079e0050140096e3d1ef9b2a2035d8acafa04d9519d5")
