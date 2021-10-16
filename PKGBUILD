@@ -2,7 +2,7 @@
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
 pkgver=40.0
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -11,7 +11,8 @@ depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
          gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas gtk3
          libgtop nm-connection-editor sound-theme-freedesktop upower libpwquality
          gnome-color-manager smbclient libmm-glib libgnomekbd grilo libibus
-         cheese libgudev bolt udisks2 libhandy gsound colord-gtk libfirmware-manager
+         cheese libgudev bolt udisks2 libhandy gsound colord-gtk
+         libfirmware-manager
 #         libs76-hidpi-widget
          )
 makedepends=(docbook-xsl modemmanager git python meson)
@@ -27,19 +28,13 @@ optdepends=('system-config-printer: Printer settings'
 provides=("$_pkgname" 'firmware-manager-virtual')
 conflicts=("$_pkgname")
 _commit=49d71c07b5b3ce59e035b785310cba4fcf903868  # tags/40.0^0
+_pop_commit=b0ac308c24521fbd8e82f74b479a99e68167d109 # 1:40.0-1ubuntu5pop0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git'
-        'git+https://gitlab.gnome.org/GNOME/libhandy.git'
-        '0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch'
-        'pop-mouse-accel.patch'
-#        'pop-hidpi.patch'
-        'system76-firmware.patch')
+        "pop-gcc::git+https://github.com/pop-os/gnome-control-center.git#commit=$_pop_commit")
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
-            'a038b6d1c5c8dd5e80c1b6e24d650d616d1434486c5e86b270694b540449e3f3'
-            '4d5a9de5f629982b66a8a9ce3a8bb1c1dd76df1214f3a2d5e1c0621b475dfa7a'
-            '33fc2be90935fa9b913cccde12677d7234763821d47d71edf3586034d7eece2d')
+            'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -49,14 +44,13 @@ pkgver() {
 prepare() {
   cd $_pkgname
   git submodule init
-  git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
-  git config --local submodule.subprojects/libhandy.url "$srcdir/libhandy"
+  git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
 
-  patch -Np1 -i ../'0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch'
-  patch -Np1 -i ../pop-mouse-accel.patch
-#  patch -Np1 -i ../pop-hidpi.patch
-  patch -Np1 -i ../system76-firmware.patch
+  patch -Np1 -i ../pop-gcc/debian/patches/pop/'0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch'
+  patch -Np1 -i ../pop-gcc/debian/patches/pop/pop-mouse-accel.patch
+#  patch -Np1 -i ../pop-gcc/debian/patches/pop/pop-hidpi.patch
+  patch -Np1 -i ../pop-gcc/debian/patches/pop/system76-firmware.patch
 }
 
 

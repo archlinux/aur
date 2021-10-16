@@ -5,7 +5,3 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch
-!pop-hidpi.patch
-!pop-mouse-accel.patch
-!system76-firmware.patch
