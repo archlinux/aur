@@ -2,7 +2,7 @@
 # Maintainer: Marek 'seqre' Grzelak <aur@seqre.dev>
 
 pkgname='baca-cli'
-pkgver='v0.2.0'
+pkgver='v0.3.1'
 pkgrel=1
 pkgdesc="CLI client for the Jagiellonian University's BaCa online judge"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -24,8 +24,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-	# TODO: Add --locked back after creator creates Cargo.lock in the repository
-	RUSTUP_TOOLCHAIN=stable cargo build --release --all-features --target-dir=target
+	RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
 }
 
 check() {
