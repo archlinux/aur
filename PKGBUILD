@@ -1,5 +1,4 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-# Contributor: Thomas Roos (Roosted7) <mail [at] thomasroos [dot] nl>
+# Maintainer: Maciej Dems <macdems@gmail.com>
 
 pkgname=aliza-free
 pkgver=1.98.57
