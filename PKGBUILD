@@ -1,8 +1,9 @@
 # Maintainer: Todd E Johnson <todd@toddejohnson.net>
-options=(!strip !buildflags debug )
-pkgname=trunk-recorder-git
+options=(!strip !buildflags debug)
+_name=trunk-recorder
+pkgname=${_name}-git
 pkgver=r1629.b3d1776
-pkgrel=1
+pkgrel=2
 pkgdesc="Records calls from a Trunked Radio System (P25 & SmartNet)"
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
 url="https://github.com/robotastic/trunk-recorder"
@@ -10,7 +11,9 @@ license=("GPL3")
 depends=("gnuradio" "gnuradio-osmosdr" "libuhd" "boost" "boost-libs" "sox" "fdkaac")
 makedepends=("git" "cmake" "cppunit")
 optdepends=()
-source=(${pkgname}::git+"https://github.com/robotastic/trunk-recorder.git"
+conflicts=('trunk-recorder')
+provides=('trunk-recorder')
+source=(${_name}::git+"https://github.com/robotastic/trunk-recorder.git"
   'trunk-recorder.service'
   'trunk-recorder.sysusers'
   'trunk-recorder.tmpfiles')
@@ -20,7 +23,7 @@ sha256sums=('SKIP'
   'c20344ba366fcab3f3552e2b5e537f394406ab634f35c2b8858423ffa63fd0e8')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_name"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -30,7 +33,7 @@ prepare() {
 }
 build() {
   cd build
-  cmake "../${pkgname}" \
+  cmake "../${_name}" \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
@@ -39,9 +42,9 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
   install -D -d -m755 "$pkgdir/etc/trunk-recorder"
-  install -D -m644 "../${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m644 "../trunk-recorder.service" "$pkgdir/usr/lib/systemd/system/trunk-recorder.service"
-  install -D -m644 "../trunk-recorder.sysusers" "$pkgdir/usr/lib/sysusers.d/trunk-recorder.conf"
-  install -D -m644 "../trunk-recorder.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/trunk-recorder.conf"
+  install -D -m644 "../${_name}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 "../${_name}.service" "$pkgdir/usr/lib/systemd/system/${_name}.service"
+  install -D -m644 "../${_name}.sysusers" "$pkgdir/usr/lib/sysusers.d/${_name}.conf"
+  install -D -m644 "../${_name}.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${_name}.conf"
 }
 
