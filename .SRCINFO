@@ -1,6 +1,6 @@
 pkgbase = python-fluiddyn
 	pkgdesc = FluidDyn project | Framework for studying fluid dynamics.
-	pkgver = 0.3.3
+	pkgver = 0.3.4.post0
 	pkgrel = 1
 	url = https://fluiddyn.readthedocs.io
 	arch = any
@@ -12,14 +12,13 @@ pkgbase = python-fluiddyn
 	depends = python-matplotlib
 	depends = python-h5py
 	depends = python-psutil
-	depends = python-cached-property
+	depends = python-distro
 	depends = python-h5netcdf
 	optdepends = python-pyfftw: Calculate FFT
 	optdepends = python-pillow: Image I/O
 	provides = python-fluiddyn
 	conflicts = python2-fluiddyn-hg
-	source = https://files.pythonhosted.org/packages/source/f/fluiddyn/fluiddyn-0.3.3.tar.gz
-	sha256sums = 904e075fc6fd3516fac1bc96090a58701fdae49065464dc39c97ca8e5625835f
+	source = https://files.pythonhosted.org/packages/source/f/fluiddyn/fluiddyn-0.3.4.post0.tar.gz
+	sha256sums = b1a40ca5631860be6da0f305d49252932e9b29bf792735ccdfe25653830c4a1a
 
 pkgname = python-fluiddyn
-
