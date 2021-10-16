@@ -1,9 +1,10 @@
 # Maintainer: Antoine Viallon <antoine@lesviallon.fr>
 
 pkgname=starpu
-pkgdesc=""
+pkgdesc="Task programming library for hybrid architectures"
+url="https://starpu.gitlabpages.inria.fr/"
 pkgver=1.3.8
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 source=(
 	https://files.inria.fr/starpu/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc}
@@ -18,6 +19,9 @@ makedepends=(
 	valgrind
 	openmpi
 	binutils
+	openblas-lapack
+	intel-mkl
+	numactl
 )
 
 depends=(
@@ -25,10 +29,7 @@ depends=(
 	magma
 	hdf5
 	glpk
-	intel-mkl
-	numactl
 	ocl-icd
-	openblas-lapack
 	simgrid
 )
 
