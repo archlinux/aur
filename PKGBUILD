@@ -6,14 +6,12 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language
-#pkgname=(swift swift-lldb)
-_swiftver=swift-5.4.1-RELEASE
-pkgver=5.4.2
+_swiftver=swift-5.5-RELEASE
+pkgver=5.5.0
 pkgrel=1
-swiftargumentparserversion=0.4.3
-swiftformatversion=swift-5.4-RELEASE
-tensorflowswiftapisversion=v0.2
-yamsver=3.0.1
+swiftargumentparserver=0.4.3
+swiftcryptover=1.1.5
+yamsver=4.0.2
 
 pkgdesc="The Swift programming language and debugger"
 arch=('x86_64')
@@ -26,7 +24,7 @@ source=(
     "git+https://github.com/apple/swift#tag=${_swiftver}"
     "cmark::git+https://github.com/apple/swift-cmark#tag=${_swiftver}"
     "llbuild::git+https://github.com/apple/swift-llbuild#tag=${_swiftver}"
-    "swift-argument-parser::git+https://github.com/apple/swift-argument-parser#tag=${swiftargumentparserversion}"
+    "swift-argument-parser::git+https://github.com/apple/swift-argument-parser#tag=${swiftargumentparserver}"
     "swift-driver::git+https://github.com/apple/swift-driver#tag=${_swiftver}"
     "swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=${_swiftver}"
     "swiftpm::git+https://github.com/apple/swift-package-manager#tag=${_swiftver}"
@@ -42,10 +40,11 @@ source=(
     "indexstore-db::git+https://github.com/apple/indexstore-db#tag=${_swiftver}"
     "yams::git+https://github.com/jpsim/Yams#tag=${yamsver}"
     "sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=${_swiftver}"
-    "swift-format::git+https://github.com/apple/swift-format#tag=${swiftformatversion}"
+    "swift-crypto::git+https://github.com/apple/swift-crypto#tag=${swiftcryptover}"
+    "swift-format::git+https://github.com/apple/swift-format#tag=${_swiftver}"
+    "swift-installer-scripts::git+https://github.com/apple/swift-installer-scripts#branch=main"
     "swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=${_swiftver}"
     "swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=${_swiftver}"
-    "tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git#tag=${tensorflowswiftapisversion}"
 )
 noextract=()
 md5sums=(
@@ -64,6 +63,7 @@ md5sums=(
     'SKIP'
     'SKIP'
     '07526bd1b9167f9dfbfb9ab9c8c5948e'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'

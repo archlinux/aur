@@ -1,6 +1,6 @@
 pkgbase = swift-language
 	pkgdesc = The Swift programming language and debugger
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
@@ -21,28 +21,29 @@ pkgbase = swift-language
 	depends = ncurses
 	provides = swift-language
 	options = !strip
-	source = git+https://github.com/apple/swift#tag=swift-5.4.1-RELEASE
-	source = cmark::git+https://github.com/apple/swift-cmark#tag=swift-5.4.1-RELEASE
-	source = llbuild::git+https://github.com/apple/swift-llbuild#tag=swift-5.4.1-RELEASE
+	source = git+https://github.com/apple/swift#tag=swift-5.5-RELEASE
+	source = cmark::git+https://github.com/apple/swift-cmark#tag=swift-5.5-RELEASE
+	source = llbuild::git+https://github.com/apple/swift-llbuild#tag=swift-5.5-RELEASE
 	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser#tag=0.4.3
-	source = swift-driver::git+https://github.com/apple/swift-driver#tag=swift-5.4.1-RELEASE
-	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.4.1-RELEASE
-	source = swiftpm::git+https://github.com/apple/swift-package-manager#tag=swift-5.4.1-RELEASE
-	source = swift-syntax::git+https://github.com/apple/swift-syntax#tag=swift-5.4.1-RELEASE
-	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester#tag=swift-5.4.1-RELEASE
-	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#tag=swift-5.4.1-RELEASE
-	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#tag=swift-5.4.1-RELEASE
-	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=swift-5.4.1-RELEASE
-	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=swift-5.4.1-RELEASE
-	source = llvm-project::git+https://github.com/apple/llvm-project#tag=swift-5.4.1-RELEASE
+	source = swift-driver::git+https://github.com/apple/swift-driver#tag=swift-5.5-RELEASE
+	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.5-RELEASE
+	source = swiftpm::git+https://github.com/apple/swift-package-manager#tag=swift-5.5-RELEASE
+	source = swift-syntax::git+https://github.com/apple/swift-syntax#tag=swift-5.5-RELEASE
+	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester#tag=swift-5.5-RELEASE
+	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#tag=swift-5.5-RELEASE
+	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#tag=swift-5.5-RELEASE
+	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=swift-5.5-RELEASE
+	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=swift-5.5-RELEASE
+	source = llvm-project::git+https://github.com/apple/llvm-project#tag=swift-5.5-RELEASE
 	source = 0001-arch-aur-pachtes.patch
-	source = indexstore-db::git+https://github.com/apple/indexstore-db#tag=swift-5.4.1-RELEASE
-	source = yams::git+https://github.com/jpsim/Yams#tag=3.0.1
-	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=swift-5.4.1-RELEASE
-	source = swift-format::git+https://github.com/apple/swift-format#tag=swift-5.4-RELEASE
-	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.4.1-RELEASE
-	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=swift-5.4.1-RELEASE
-	source = tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git#tag=v0.2
+	source = indexstore-db::git+https://github.com/apple/indexstore-db#tag=swift-5.5-RELEASE
+	source = yams::git+https://github.com/jpsim/Yams#tag=4.0.2
+	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=swift-5.5-RELEASE
+	source = swift-crypto::git+https://github.com/apple/swift-crypto#tag=1.1.5
+	source = swift-format::git+https://github.com/apple/swift-format#tag=swift-5.5-RELEASE
+	source = swift-installer-scripts::git+https://github.com/apple/swift-installer-scripts#branch=main
+	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.5-RELEASE
+	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=swift-5.5-RELEASE
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -58,6 +59,7 @@ pkgbase = swift-language
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 07526bd1b9167f9dfbfb9ab9c8c5948e
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
