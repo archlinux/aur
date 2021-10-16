@@ -11,10 +11,6 @@ post_install() {
   echo "cd /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com"
   echo "sudo mv stylesheet.css.back stylesheet.css"
   echo ""
-  echo "Fix for Workspaces to Dock:"
-  echo "cd /usr/share/doc/orchis-theme/workspaces-to-dock"
-  echo "sudo ./install.sh "
-  echo ""
 }
 
 post_upgrade() {

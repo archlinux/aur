@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=orchis-theme-git
-pkgver=2021.06.25.r52.geb279b5
+pkgver=2021.10.16.r0.g18811c4
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
 url="https://www.pling.com/p/1357889"
 license=('GPL2')
 depends=('gtk3' 'gnome-themes-extra')
-makedepends=('git' 'sassc')
+makedepends=('git' 'gnome-shell' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'kvantum-theme-orchis: Matching Kvantum theme'
             'tela-circle-icon-theme: Recommended icon theme')
@@ -42,6 +42,6 @@ package() {
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
   cp -r src/firefox "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-  # Fix for Dash to panel & Workspaces to Dock
-  cp -r src/gnome-shell/extensions "$pkgdir/usr/share/doc/${pkgname%-git}"
+  # Fix for Dash to panel
+  cp -r src/gnome-shell/extensions/dash-to-panel "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
