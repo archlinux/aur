@@ -1,7 +1,7 @@
 pkgbase = ignition-tools
 	pkgdesc = Ignition tools provide the ign command line tool that accepts multiple subcommands.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/ignitionrobotics/ign-tools
 	arch = any
 	groups = development
@@ -11,8 +11,7 @@ pkgbase = ignition-tools
 	makedepends = pkg-config
 	makedepends = ruby-ronn
 	depends = ruby
-	source = https://github.com/ignitionrobotics/ign-tools/archive/ignition-tools_1.0.0.tar.gz
-	sha256sums = ea7036e73ad7893fee7c7dc06e1760f11e0cac57c024886a371359ce2768cce7
+	source = https://github.com/ignitionrobotics/ign-tools/archive/ignition-tools_1.2.0.tar.gz
+	sha256sums = fe6dfb5bfca51b0c7fdfc1aec1550102b4ee55b84e9b6b9f86e119ac9c94d9c5
 
 pkgname = ignition-tools
-
