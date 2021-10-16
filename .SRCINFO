@@ -1,14 +1,15 @@
 pkgbase = osoy-bin
 	pkgdesc = Git repository manager
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://gitlab.com/osoy/osoy
 	arch = x86_64
 	license = MIT
+	optdepends = make
 	provides = osoy
 	conflicts = osoy
-	source = https://downloads.sourceforge.net/project/osoy/osoy-VERSION.tar.gz
-	md5sums = ('b58541b03a67e22f85d31cd55088cbe7')
-	sha1sums = ('821b35c0792fae34a342760262bc86adf4837d30')
+	source = https://downloads.sourceforge.net/project/osoy/osoy-v0.5.1.tar.gz
+	md5sums = c46b836161064287bf00b6d6ba54afd3
+	sha1sums = 1531c97bb87a9308d2a6e27ae7afa0808bb08b11
 
 pkgname = osoy-bin
