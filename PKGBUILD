@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/kj7rrv/hamclock/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('ac9fb741161d34c1385db2e4471fb9484a91e4b652e407db4ee545611b2d3c3f')
+sha256sums=('b6f893351ba9255f08f4c766d37d55d2ddb73ff5d53bc4b489ea6c5f10d68287')
 validpgpkeys=()
 
 prepare() {
