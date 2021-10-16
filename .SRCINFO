@@ -1,7 +1,7 @@
 pkgbase = sxemacs-git
 	pkgdesc = A derivation of xemacs - git checkout
-	pkgver = 22.1.17.1.ga354e10
-	pkgrel = 1
+	pkgver = 22.1.17.4.g66cd362
+	pkgrel = 2
 	url = http://www.sxemacs.org/
 	arch = i686
 	arch = x86_64
@@ -30,4 +30,3 @@ pkgbase = sxemacs-git
 	md5sums = SKIP
 
 pkgname = sxemacs-git
-

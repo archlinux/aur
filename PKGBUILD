@@ -2,7 +2,7 @@
 
 pkgname=sxemacs-git
 pkgver=22.1.17.4.g66cd362
-pkgrel=1
+pkgrel=2
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
 url="http://www.sxemacs.org/"
@@ -10,24 +10,23 @@ license=('GPL')
 depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils' 
 	 'compface' 'libpulse' 'libxaw' 'sox' 'openssl' 'ffmpeg' 'xaw3d'
 	 'postgresql-libs')
-# dependancy postgresql-libs can be avoided using --with-postgres=no in configure statement
+# dependency postgresql-libs can be avoided using --with-postgres=no in configure statement
 makedepends=('git' 'texinfo' 'xbitmaps')
 provides=('sxemacs')
 conflicts=('sxemacs' 'xemacs')
 source=('git+http://git.sxemacs.org/sxemacs')
 md5sums=('SKIP')
-_gitname="sxemacs"
 
 pkgver() {
-  cd ${_gitname}
+  cd ${pkgname%-git}
   git describe --tags | sed -e 's|-|.|g' -e 's|v||'
 }
 
 prepare() {
-  cd ${_gitname}/etc
+  cd ${pkgname%-git}/etc
   sed -i 's+StartupWMClass=Emacs+StartupWMClass=SXEmacs+' sxemacs.desktop.in
   cd ../..
-  [ -d ${_gitname}/libltdl/m4 ] || mkdir -p ${_gitname}/libltdl/m4
+  [ -d ${pkgname%-git}/libltdl/m4 ] || mkdir -p ${pkgname%-git}/libltdl/m4
   [ -d build ] || mkdir -p build
 }
 
