@@ -5,15 +5,21 @@
 pkgbase=qtkeychain
 pkgname=(qtkeychain-qt5 qtkeychain-qt6)
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides support for secure credentials storage'
 arch=(x86_64)
 url='https://github.com/frankosterfeld/qtkeychain'
 license=(BSD)
 depends=(libsecret)
 makedepends=(cmake qt5-tools qt6-tools)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/frankosterfeld/qtkeychain/archive/v$pkgver.tar.gz")
-sha256sums=('cc547d58c1402f6724d3ff89e4ca83389d9e2bdcfd9ae3d695fcdffa50a625a8')
+source=(https://github.com/frankosterfeld/qtkeychain/archive/v$pkgver/$pkgname-$pkgver.tar.gz
+        https://github.com/frankosterfeld/qtkeychain/commit/ae1f9a47.patch)
+sha256sums=('cc547d58c1402f6724d3ff89e4ca83389d9e2bdcfd9ae3d695fcdffa50a625a8'
+            '7a0d29a04a8950ab5e674fc5738373acded775c496050e06a59897773f859150')
+
+prepare() {
+  patch -d $pkgbase-$pkgver -p1 < ae1f9a47.patch # Fix Qt dependency in cmake config
+}
 
 build() {
   cmake -B build-qt5 -S $pkgbase-$pkgver \
