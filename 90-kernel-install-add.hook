@@ -7,7 +7,5 @@ Target = usr/lib/modules/*/vmlinuz
 [Action]
 Description = Installing kernel and initrd to $BOOT (kernel-install)
 When = PostTransaction
-Exec = /bin/bash -c 'while read -r vmlinuz; do : && kver="$(basename "$(dirname "$vmlinuz")")" && vmlinuz="$(realpath "${vmlinuz}")" && echo + kernel-install add "$kver" "$vmlinuz" && kernel-install -v add "$kver" "$vmlinuz" | sed "/^\+/d"; done'
-Depends = bash
-Depends = systemd
+Exec = /usr/share/libalpm/scripts/kernel-install.sh add
 NeedsTargets

@@ -7,7 +7,5 @@ Target = usr/lib/modules/*/vmlinuz
 [Action]
 Description = Removing kernel and initrd from $BOOT (kernel-install)
 When = PreTransaction
-Exec = /bin/bash -c 'while read -r vmlinuz; do : && kver="$(basename "$(dirname "$vmlinuz")")" && echo + kernel-install remove "$kver" && kernel-install -v remove "$kver" | sed "/^\+/d"; done'
-Depends = bash
-Depends = systemd
+Exec = /usr/share/libalpm/scripts/kernel-install.sh remove
 NeedsTargets
