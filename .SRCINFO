@@ -1,6 +1,6 @@
 pkgbase = comic-dl
 	pkgdesc = Comic-dl is a command line tool to download Comics and Manga from various Manga and Comic sites easily.
-	pkgver = 2021.06.13
+	pkgver = 1.0.434
 	pkgrel = 1
 	url = https://github.com/Xonshiz/comic-dl
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = comic-dl
 	depends = phantomjs
 	depends = nodejs
 	optdepends = phantomjs: to access some sites
-	source = comic-dl-2021.06.13.tar.gz::https://github.com/Xonshiz/comic-dl/archive/1.0.398.tar.gz
-	sha256sums = bcf7a26b88552bc17b1ec4cd3d6bd7253f37959043fb07cfdc09d583c5e8f81f
+	source = comic-dl-1.0.434.tar.gz::https://github.com/Xonshiz/comic-dl/archive/1.0.434.tar.gz
+	sha256sums = 70b9c0c7878651c685f7ba70a1ecef2905749988f2453d03730a17cd09547ca4
 
 pkgname = comic-dl
