@@ -1,26 +1,31 @@
-# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
+# Contributor: Nathan Owens <ndowens @ artixlinux.org>
+# Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=python-tatsu
-pkgver=5.0.0
+pkgver=5.6.1
 pkgrel=1
-pkgdesc="A tool that takes grammars in a variation of EBNF as input, and outputs memoizing (Packrat) PEG parsers in Python"
-arch=('any')
+pkgdesc="TatSu takes a grammar in a variation of EBNF as input, and outputs a memoizing PEG/Packrat parser in Python."
+arch=("any")
 url="https://github.com/neogeny/TatSu"
-license=('BSD')
-depends=('python')
-makedepends=('python-setuptools'
-	     'git')
-source=("git+https://github.com/neogeny/TatSu#tag=v$pkgver")
-sha256sums=('SKIP')
+license=("BSD")
+depends=("python")
+optdepends=("python-regex")
+makedepends=('python-setuptools')
+source=("https://pypi.io/packages/source/T/TatSu/TatSu-${pkgver}.zip")
+sha256sums=("6a4f07aa7bfe9dfbee8015824feaf13f0b1a89577e2ee5a4a62c18630c309d4e")
+
+build() {
+    cd "TatSu-${pkgver}"
+
+    python setup.py build
+}
 
 package() {
-  cd "$srcdir/TatSu"
+    cd "TatSu-${pkgver}"
 
-  python setup.py install --root="$pkgdir/" --optimize=1
-
-  rm -rf "$pkgdir"/usr/lib/python3.*/site-packages/test
-
-  install -Dm644 README.rst "$pkgdir"/usr/share/doc/$pkgname/README.rst
-  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+    PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-tatsu/LICENSE.txt"
+    install -Dm644 README.rst "${pkgdir}/usr/share/doc/python-tatsu/README.rst"
+    install -Dm644 CHANGELOG.rst "${pkgdir}/usr/share/doc/python-tatsu/CHANGELOG.rst"
 }
