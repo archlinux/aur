@@ -1,0 +1,20 @@
+pkgbase = vim-test-git
+	pkgdesc = Vim wrapper for running tests at different granularities
+	pkgver = 2.1.0.r379.g5fe8ada
+	pkgrel = 1
+	url = https://github.com/vim-test/vim-test
+	install = test.install
+	arch = any
+	groups = vim-plugin
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-test
+	conflicts = vim-test
+	source = vim-test-git::git+https://github.com/vim-test/vim-test?signed
+	source = LICENSE
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha256sums = SKIP
+	sha256sums = ce338bdebfc2cb38380b598d0bb482d582d01338ce8d82ffb6412dc404286100
+
+pkgname = vim-test-git
