@@ -1,0 +1,22 @@
+pkgbase = neovim-neorg-git
+	pkgdesc = Org-mode inspired life organization tool
+	pkgver = r388.376e3e6
+	pkgrel = 1
+	url = https://github.com/nvim-neorg/neorg
+	install = neorg.install
+	arch = any
+	groups = neovim-plugin
+	license = GPL3
+	makedepends = git
+	depends = neovim>=0.5
+	depends = neovim-plenary
+	optdepends = neovim-tree-sitter
+	optdepends = neovim-cmp: completion engine
+	provides = neovim-neorg
+	provides = neovim-cmp-neorg
+	conflicts = neovim-neorg
+	conflicts = neovim-cmp-neorg
+	source = neovim-neorg-git::git+https://github.com/nvim-neorg/neorg
+	md5sums = SKIP
+
+pkgname = neovim-neorg-git
