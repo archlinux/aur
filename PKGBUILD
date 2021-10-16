@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/Asthowen/MangasOrigines/'
 license=('GNUv3')
 makedepends=('python-setuptools')
-depends=('python>=3.6' 'python-aiohttp' 'python-aiofiles' 'python-beautifulsoup4')
+depends=('python>=3.6' 'python-aiohttp' 'python-aiofiles' 'python-beautifulsoup4' 'python-setproctitle')
 source=("https://pypi.io/packages/source/M/MangasOrigines/MangasOrigines-$pkgver.tar.gz")
 sha256sums=('SKIP')
 

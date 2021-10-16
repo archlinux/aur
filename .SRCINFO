@@ -10,6 +10,7 @@ pkgbase = python-mangasorigines
 	depends = python-aiohttp
 	depends = python-aiofiles
 	depends = python-beautifulsoup4
+	depends = python-setproctitle
 	source = https://pypi.io/packages/source/M/MangasOrigines/MangasOrigines-0.0.7.tar.gz
 	sha256sums = SKIP
 
