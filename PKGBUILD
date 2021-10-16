@@ -3,8 +3,8 @@
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
 
 pkgname=substance-painter
-pkgver=7.2.3
-_build=1197
+pkgver=7.3.0
+_build=1272
 pkgrel=1
 pkgdesc="3D painting software allowing you to texture, render and share your work."
 arch=('x86_64')
@@ -12,10 +12,10 @@ url='https://download.substance3d.com/substance-painter'
 license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip') # PNG assets here should be left untouched!
-# https://download.substance3d.com/adobe-substance-3d-painter/7.x/Adobe_Substance_3D_Painter-7.2.3-1197-linux-x64-standard.rpm
+# https://download.substance3d.com/adobe-substance-3d-painter/7.x/Adobe_Substance_3D_Painter-7.3.0-1272-linux-x64-standard.rpm
 source=("https://download.substance3d.com/adobe-substance-3d-painter/7.x/Adobe_Substance_3D_Painter-${pkgver}-${_build}-linux-x64-standard.rpm")
 
-sha256sums=('38698e50973671ce36cb52062bce55515e88ec0d8bb96ddb5d4712b5b72a5600')
+sha256sums=('8f6949966d364559b0b86aae6a768d7c56452610a83bdb8501d16454a7730aac')
 
 validpgpkeys=()
 
