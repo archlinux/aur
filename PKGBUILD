@@ -3,7 +3,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-toml-git
-pkgver=r73.8f40e6d
+pkgver=r75.717bd87
 pkgrel=1
 epoch=1
 pkgdesc="Vim syntax for TOML"
