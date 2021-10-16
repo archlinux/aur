@@ -1,7 +1,7 @@
 pkgbase = shortwave-bin-hack
 	pkgdesc = Find and listen to internet radio stations.
-	pkgver = f6e31bf9
-	pkgrel = 2
+	pkgver = 1570577
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Shortwave/
 	arch = any
 	license = GPL
@@ -10,10 +10,10 @@ pkgbase = shortwave-bin-hack
 	depends = gst-plugins-bad
 	depends = libadwaita
 	depends = libsoup
-	source = https://gitlab.gnome.org/World/Shortwave/-/jobs/1557054/artifacts/download?file_type=archive
+	source = https://gitlab.gnome.org/World/Shortwave/-/jobs/1570577/artifacts/download?file_type=archive
 	source = fix_flatpak.rs
 	source = shortwave
-	sha256sums = 5b72f434160dce871c902218e8bfd3053ce54a028ec9b2a725356c8326e7d8d8
+	sha256sums = 889a9c1da5eb508996e7593d0bcb7f21365ec1db56420b671bf2c53d1693ebdc
 	sha256sums = f51670378a964043ad835ee0c6fba088056c111762831e320fbfe5093a307aae
 	sha256sums = bdd3140b737646d38e801d7cfa2092e47126b968e32ffe32250c9046ddc76a6a
 

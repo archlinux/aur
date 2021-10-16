@@ -1,16 +1,16 @@
-# Maintainer: sigmacool
+# Maintainer: sigmasd
 
 pkgname=shortwave-bin-hack
-pkgver=f6e31bf9
-pkgrel=2
+pkgver=1570577
+pkgrel=1
 pkgdesc="Find and listen to internet radio stations."
 arch=(any)
 url="https://gitlab.gnome.org/World/Shortwave/"
 license=(GPL)
 makedepends=(cargo ostree)
 depends=('gst-plugins-bad' 'libadwaita' 'libsoup')
-source=("$url-/jobs/1557054/artifacts/download?file_type=archive" "fix_flatpak.rs" "shortwave")
-sha256sums=('5b72f434160dce871c902218e8bfd3053ce54a028ec9b2a725356c8326e7d8d8'
+source=("$url-/jobs/$pkgver/artifacts/download?file_type=archive" "fix_flatpak.rs" "shortwave")
+sha256sums=('889a9c1da5eb508996e7593d0bcb7f21365ec1db56420b671bf2c53d1693ebdc'
             'f51670378a964043ad835ee0c6fba088056c111762831e320fbfe5093a307aae'
             'bdd3140b737646d38e801d7cfa2092e47126b968e32ffe32250c9046ddc76a6a')
 
@@ -24,8 +24,8 @@ package() {
   ostree init --repo=shortwave_repo
   ostree --repo=shortwave_repo config set core.min-free-space-percent 0
   ostree static-delta apply-offline --repo=shortwave_repo shortwave-dev.flatpak
-  ostree --repo=shortwave_repo checkout -U c6d9bca966412dc84cf01f6bbceffb7964b401e880d4387599db32111dd4c3c6 shortwave_build
-
+  commit=$(find -name "*commit" | cut -d/ --output-delimiter= -f4- | tr -d '\0' | xargs -i basename {} .commit)
+  ostree --repo=shortwave_repo checkout -U $commit shortwave_build
 
   # Entry point
   install -Dm755 "$srcdir/shortwave_build/files/bin/shortwave" "$pkgdir/usr/share/shortwave/shortwave"
