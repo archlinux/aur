@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=libcutefish
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="System library for Cutefish applications"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bluez-qt' 'kscreen' 'modemmanager-qt' 'networkmanager-qt' 'qt5-quickco
          'accountsservice')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
 source=("https://github.com/cutefishos/libcutefish/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('44ecfffc82f6114c349a18961ca91c1bc1362a8f7c18bd92b42631bdec9e1dcafda52b7dbdf089ab62cd4d450f90dd7c851cc21ede83dbbcb8daea20f0962bcc')
+sha512sums=('e6220947e22ffe3688407965a41cfbaa913033f3fcd8707f41a59577680822f9524868c252562a88b85b8d6b01ad24d5675544834c1cf4663a5ad69db38be828')
 
 build() {
   cd $pkgname-$pkgver
