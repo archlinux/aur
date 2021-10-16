@@ -1,6 +1,6 @@
 # Maintainer: Steffen Hansen <steffengrundsoe@gmail.com>
 pkgname=quickemu
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="Quickly create and run optimised Windows, macOS and Linux desktop virtual machines."
 arch=(any)
@@ -10,7 +10,7 @@ depends=('qemu' 'coreutils' 'grep' 'jq' 'procps' 'python3' 'cdrtools' 'usbutils'
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/wimpysworld/quickemu/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('111b8f0d96d199279c76162d7a12c91c')
+md5sums=('10e82cc84e46aa28a33b657bc3f07d60')
 
 prepare() {
   sed -i 's+/usr/share/OVMF/OVMF_CODE_4M.fd+/usr/share/OVMF/x64/OVMF_CODE.fd+g' $srcdir/$pkgname-$pkgver/quickemu
