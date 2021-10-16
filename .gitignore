@@ -1,4 +1,4 @@
 pkg/
 src/
-ntfs3-*.patch
 *.pkg.tar.*
+*.tar.gz
