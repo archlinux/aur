@@ -2,7 +2,7 @@
 # Maintainer: squitch
 
 pkgname=tess-git
-pkgver=0.5.1.r0.g1968340
+pkgver=0.5.1.r0.g5dec68d
 pkgrel=1
 epoch=1
 pkgdesc="Hackable, simple, rapid and beautiful terminal for the new era"
@@ -25,6 +25,7 @@ package() {
   install -D tesshere.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/tesshere.desktop"
   install -D appintess.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/appintess.desktop"
   install -D build/icon.png "${pkgdir}/usr/share/pixmaps/tess.png"
+  cp -r -f ./man/* "${pkgdir}/usr/share/man/"
 
   if type "$kbuildsycoca5" > /dev/null; then
     kbuildsycoca5
