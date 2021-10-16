@@ -1,0 +1,19 @@
+pkgbase = neovim-material-git
+	pkgdesc = Material colorscheme for Neovim
+	pkgver = r184.f8e663a
+	pkgrel = 1
+	url = https://github.com/marko-cerovac/material.nvim
+	install = material.install
+	arch = any
+	groups = neovim-plugin
+	license = GPL2
+	makedepends = git
+	depends = neovim>=0.5.0
+	provides = neovim-material
+	provides = neovim-lualine-material
+	conflicts = neovim-material
+	conflicts = neovim-lualine-material
+	source = neovim-material-git::git+https://github.com/marko-cerovac/material.nvim
+	md5sums = SKIP
+
+pkgname = neovim-material-git
