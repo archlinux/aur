@@ -1,6 +1,6 @@
 pkgname=carla-bridges-linux32
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="Carla linux32 bridge (Stable)"
 arch=('x86_64')
 url="https://kxstudio.linuxaudio.org/Applications:Carla"
@@ -13,7 +13,7 @@ makedepends=('alsa-lib' 'file' 'fluidsynth' 'gcc-multilib' 'glib2' 'gtk2' 'gtk3'
 conflicts=('carla-bridges-linux32-git')
 provides=('carla-bridges-linux32')
 source=("https://github.com/falkTX/Carla/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('960a1288ef82543df27e0896a174dae8ff68d24594b6efe0b952105797162c0e')
+sha256sums=('bbb188a672ea8871b11648d36770ba013497d03407ca9c73ed68429016f7536f')
 
 build() {
   cd "$srcdir/Carla-${pkgver}"
