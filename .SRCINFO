@@ -1,0 +1,14 @@
+pkgbase = f3d-bin
+	pkgdesc = A fast and minimalist 3D viewer
+	pkgver = 1.1.0
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.kitware.com/${pkgname}/${pkgname}
+	arch = x86_64
+	license = BSD
+	provides = f3d
+	conflicts = f3d
+	source = https://gitlab.kitware.com/f3d/f3d/uploads/937b2b6c8a14b40538983195395b4094/f3d-1.1.0-Linux.tar.xz
+	sha256sums = 8a0968437463a1713e16be16216fe30fea5a34ae1546de6ceb5187effd96dbc1
+
+pkgname = f3d-bin
