@@ -1,6 +1,7 @@
 # Maintainer: t-ask <t-ask-aur at cixera.com>
 # Co-maintainer: Oscar Morante <spacepluk@gmail.com>
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
+# Co-maintainer: Robbie Powell <lehthanis@gmail.com>
 
 pkgname=substance-painter
 pkgver=7.3.0
