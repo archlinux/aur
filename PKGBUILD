@@ -2,7 +2,7 @@
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
 pkgver=21.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="http://www.picolisp.com"
 arch=('x86_64')
@@ -25,6 +25,7 @@ package() {
   install -d -m755 ${BINDIR:=$pkgdir/usr/bin}
   mv $LIBDIR/bin/picolisp $BINDIR
   mv $LIBDIR/bin/pil $BINDIR
+  mv $LIBDIR/bin/vip $BINDIR
 
   install -d -m755 ${MAN1DIR:=$pkgdir/usr/share/man/man1}
   mv $LIBDIR/man/man1/*.1 $MAN1DIR
