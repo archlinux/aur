@@ -1,16 +1,20 @@
 pkgbase = makedeb
-	pkgdesc = Create Debian archives from PKGBUILDs (stable release)
-	pkgver = 6.3.11
+	pkgdesc = The modern packaging tool for Debian archives (stable release)
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = https://github.com/makedeb/makedeb
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = tar
 	depends = binutils
+	depends = lsb-release
+	depends = dpkg
+	depends = asciidoctor
 	depends = makedeb-makepkg
 	conflicts = makedeb-beta
 	conflicts = makedeb-alpha
-	source = https://github.com/makedeb/makedeb/archive/refs/tags/v6.3.11-stable.tar.gz
+	source = git+https://github.com/makedeb/makedeb/#tag=v7.1.2-stable
 	sha256sums = SKIP
 
 pkgname = makedeb
