@@ -8,8 +8,7 @@ pkgdesc='Plugin for VapourSynth: awsmfunc (GIT version)'
 arch=('x86_64')
 url='https://git.concertos.live/AHD/awsmfunc'
 license=('GPL')
-depends=('vapoursynth>=R49'
-         'vapoursynth-plugin-vsutil'
+depends=('vapoursynth-plugin-vsutil'
          'vapoursynth-plugin-rekt'
          'vapoursynth-plugin-remapframes'
          'vapoursynth-plugin-fillborders'
