@@ -1,6 +1,6 @@
 pkgbase = xpra-git
 	pkgdesc = multi-platform screen and application forwarding system screen for X11
-	pkgver = v4.2.r429.g91bdd984e
+	pkgver = v4.2.r1118.g4e13a3288
 	pkgrel = 1
 	url = https://www.xpra.org
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = xpra-git
 	depends = libxtst
 	depends = xf86-video-dummy
 	depends = libxkbfile
+	depends = libxres
 	optdepends = python-opengl: client OpenGL accelerated rendering (client)
 	optdepends = python-pycups: Printing
 	optdepends = xf86-video-dummy-xpra-patch: Xdummy with constant-dpi. Recommended by Xpra

@@ -2,7 +2,7 @@
 # Maintainer: leuko <aur_et_aydos_de>
 _pkgname=xpra
 pkgname=${_pkgname}-git
-pkgver=v4.2.r429.g91bdd984e
+pkgver=v4.2.r1118.g4e13a3288
 pkgrel=1
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('x86_64')
@@ -31,6 +31,7 @@ depends=(
 	'libxtst'
 	'xf86-video-dummy'
 	'libxkbfile'
+	'libxres'
 )
 optdepends=(
 	# unless otherwise noted, the deps are both for client and server
