@@ -1,0 +1,4 @@
+pkg/
+src/
+09launcher/
+*.pkg.tar.zst
