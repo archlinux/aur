@@ -1,16 +1,16 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=todo
-pkgver=2.1
+pkgver=2.3
 pkgrel=1
-pkgdesc='Todo CLI program'
+pkgdesc='Simple tasks organizer'
 arch=('x86_64')
 url='https://github.com/sioodmy/todo'
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('5ce4c6f07b22bbf6de4facab1eaaf3fe1d86d604b542d83e0d6c26b8a8ff6838')
+sha256sums=('cbca43dee4651dcd207c6e7db80c0c3a21c8ec2dc7b5c23f4939a2ba6eeec8e0')
 
 prepare() {
 	cd "$pkgname-$pkgver"

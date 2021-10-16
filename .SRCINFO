@@ -1,13 +1,13 @@
 pkgbase = todo
-	pkgdesc = Todo CLI program
-	pkgver = 2.1
+	pkgdesc = Simple tasks organizer
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/sioodmy/todo
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = gcc-libs
-	source = todo-2.1.tar.gz::https://github.com/sioodmy/todo/archive/2.1.tar.gz
-	sha256sums = 5ce4c6f07b22bbf6de4facab1eaaf3fe1d86d604b542d83e0d6c26b8a8ff6838
+	source = todo-2.3.tar.gz::https://github.com/sioodmy/todo/archive/2.3.tar.gz
+	sha256sums = cbca43dee4651dcd207c6e7db80c0c3a21c8ec2dc7b5c23f4939a2ba6eeec8e0
 
 pkgname = todo
