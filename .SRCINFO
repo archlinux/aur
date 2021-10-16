@@ -1,6 +1,6 @@
 pkgbase = sdtui-git
 	pkgdesc = StarDict terminal UI
-	pkgver = r194.20fcf2a
+	pkgver = r223.33e9888
 	pkgrel = 1
 	url = https://git.janouch.name/p/sdtui
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = sdtui-git
 	depends = ncurses
 	depends = pango
 	optdepends = libxcb: X11 selection watcher
+	optdepends = gtk3: sdgui
 	provides = sdtui
 	conflicts = sdtui
 	options = zipman
