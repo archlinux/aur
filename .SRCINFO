@@ -1,0 +1,15 @@
+pkgbase = neovim-tree-lua
+	pkgdesc = File tree explorer for Neovim
+	pkgver = 1.6.7
+	pkgrel = 1
+	url = https://github.com/kyazdani42/nvim-tree.lua
+	install = setup.install
+	arch = any
+	groups = neovim-plugins
+	license = GPL3
+	depends = neovim>=0.5.0
+	optdepends = neovim-web-devicons
+	source = neovim-tree-lua-1.6.7.tar.gz::https://github.com/kyazdani42/nvim-tree.lua/archive/1.6.7.tar.gz
+	sha256sums = 89d946fb04127a586c1ea41a7976eb0498bd09243ecb7137256622d80c1b881a
+
+pkgname = neovim-tree-lua
