@@ -3,7 +3,7 @@
 pkgname=gnome-chemistry-utils
 pkgver=0.14.17
 _majorver=$(echo ${pkgver}|cut -c1-4)
-pkgrel=3
+pkgrel=4
 pkgdesc="Gnome Chemistry Utilities (gcu). Includes gchempaint, a tool to draw molecules."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/gchemutils/"
@@ -17,7 +17,7 @@ depends=('bodr' 'libglade' 'goffice>=0.10.0' 'gtkglext' 'openbabel' 'hicolor-ico
 	#libgsf required by goffice
 	#cairo required by gtk3 required by goffice
 	#shared-mime-info required by gtk3 required by goffice
-makedepends=('pkgconfig' 'intltool' 'gettext' 'gnome-doc-utils' 'boost' 'desktop-file-utils')
+makedepends=('pkgconfig' 'intltool' 'gettext' 'gnome-doc-utils' 'boost' 'desktop-file-utils' 'gcc10')
 optdepends=('yelp: Viewing help manuals' \
 	    'gnumeric>1.12.0: gnumeric plugin'\
 	    'gnome-doc-utils')
@@ -41,7 +41,9 @@ build() {
 				--sysconfdir=/etc \
 				--libexecdir=/usr/lib/${pkgname} \
 				--disable-update-databases \
-				--disable-schemas-compile
+				--disable-schemas-compile \
+				CC="gcc-10" CXX="g++-10" CPP="gcc-10 -E" CXXCPP="g++-10 -E"
+				
 	make || return 1
 }
 
