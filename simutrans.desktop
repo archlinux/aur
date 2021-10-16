@@ -6,4 +6,5 @@ Icon=simutrans
 Terminal=false
 Type=Application
 Categories=Game;Simulation;
-
+X-Purism-FormFactor=Workstation;Mobile;
+X-KDE-FormFactors=desktop;tablet;handset;
