@@ -1,6 +1,6 @@
 # Maintainer: Y7n05h <Y7n05h(aT)protonmail--d0t--com>
 pkgname=mariadb-connector-cpp-git
-pkgver=20210717
+pkgver=20211016
 pkgrel=1
 pkgdesc=" MariaDB Connector for C++ ."
 arch=('x86_64')
@@ -37,5 +37,7 @@ package() {
   cd "$srcdir/$pkgname/build"
 
   make DESTDIR="${pkgdir}" install
+  mv "${pkgdir}"/usr/lib/mariadb/* "${pkgdir}"/usr/lib/
+  rmdir "${pkgdir}"/usr/lib/mariadb/
 }
 
