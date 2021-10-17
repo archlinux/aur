@@ -10,7 +10,6 @@ url="https://github.com/shougo/ddc.vim"
 license=('MIT')
 depends=('deno')
 makedepends=('git')
-source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 source=("$pkgbase::git+$url")
 sha256sums=('SKIP')
 
@@ -21,6 +20,8 @@ pkgver() {
 package_vim-ddc-git() {
 	depends+=('vim>=8.2.0662' 'vim-denops')
 	groups=('vim-plugins')
+	provides=("${pkgname%-git}")
+	conflicts=("${pkgname%-git}")
 
 	cd "$pkgbase"
 	find autoload denops doc -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
@@ -30,7 +31,8 @@ package_vim-ddc-git() {
 
 package_neovim-ddc-git() {
 	depends+=('neovim>=0.5.0' 'neovim-denops')
-	conflicts=('vim-ddc')
+	provides=("${pkgname%-git}")
+	conflicts=("${pkgname%-git}" 'vim-ddc')
 
 	cd "$pkgbase"
 	find autoload denops doc -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;

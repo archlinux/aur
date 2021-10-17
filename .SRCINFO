@@ -15,9 +15,13 @@ pkgname = vim-ddc-git
 	depends = deno
 	depends = vim>=8.2.0662
 	depends = vim-denops
+	provides = vim-ddc
+	conflicts = vim-ddc
 
 pkgname = neovim-ddc-git
 	depends = deno
 	depends = neovim>=0.5.0
 	depends = neovim-denops
+	provides = neovim-ddc
+	conflicts = neovim-ddc
 	conflicts = vim-ddc
