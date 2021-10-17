@@ -1,0 +1,23 @@
+pkgbase = vim-ddc-git
+	pkgdesc = Dark deno-powered completion framework
+	pkgver = 0.17.0.r22.gb787b80
+	pkgrel = 1
+	url = https://github.com/shougo/ddc.vim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = deno
+	source = vim-ddc-git::git+https://github.com/shougo/ddc.vim
+	sha256sums = SKIP
+
+pkgname = vim-ddc-git
+	groups = vim-plugins
+	depends = deno
+	depends = vim>=8.2.0662
+	depends = vim-denops
+
+pkgname = neovim-ddc-git
+	depends = deno
+	depends = neovim>=0.5.0
+	depends = neovim-denops
+	conflicts = vim-ddc
