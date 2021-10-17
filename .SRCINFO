@@ -1,0 +1,15 @@
+pkgbase = vim-dadbod
+	pkgdesc = Modern database interface for Vim
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/tpope/vim-dadbod
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = vim-dadbod::git+https://github.com/tpope/vim-dadbod#tag=v1.4?signed
+	validpgpkeys = 881804A5DA541152FA12C105E09E474A404A3A45
+	md5sums = SKIP
+
+pkgname = vim-dadbod
