@@ -1,7 +1,7 @@
 pkgbase = cloud-hypervisor-bin
 	pkgdesc = A Rust-VMM based cloud hypervisor from Intel (binary source)
 	pkgver = 19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloud-hypervisor/cloud-hypervisor
 	arch = x86_64
 	arch = aarch64
@@ -12,11 +12,11 @@ pkgbase = cloud-hypervisor-bin
 	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v19.0/ch-remote
 	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v19.0/cloud-hypervisor
 	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v19.0/cloud-hypervisor-static
-	sha512sums = 4ec3e7789a56fccf2eee169b25b6c874c095dc43085af70916a3e8253b0587782ed443a283992903eec91b2cc65af7317b5934a51644330c2153abb45b2ffa0a
+	sha512sums = 92d53d8bd0cfd90fbe486f585277cbf069a43fcf48839050f1b2cd92ef494de819b6b1c350a7d9d046286cd29039e70cf0bb2d2b3cdc9247a0946724c9d2b076
 	sha512sums = d11da6ddefa668a4cced43adf3aeb2779b055ff93ec7b0bb4d0296d5ff988572882f024496aecd90da065462af8d57d9695f7ecf299aa3430988c73f92fef5b5
-	sha512sums = c96e0c85e003af4756cfd54f2d3140b37042b0839a62f26828b312edde2461a1b932303fa7d22fd6d58e779e62779b4c74331543777039e9869f8539cd7dfa58
-	b2sums = b0edc4b5f5c8f5bb162972eac2048ea94544f2c453cf02d2697ef8676ff57c0c723d4760f35b4bce0b632158b5c8323eb34ddf784bff06d44350b508ccd96311
+	sha512sums = 847af45b6803ac664a01005a5067ced11834ceeee8159ea4c374391c78971fdd7366d39cb2e0c03ce09e57613681e94edc83bcda78a9f6fbc3b72f154e5eeef2
+	b2sums = 574016c78b223fe7405ab27365fe5d8df171887d3302f4c3f54189bda4e8dbd5d80d8b86c86627690c966b7e0115f72e4f8216014933663f0cf797e9156a8a6b
 	b2sums = 5797b948c7950bdac890c3bb6b5edf330fd2a3ac7e2e778043e44298fa79029ac7eb5f6b15b20745e854a880bdfc2dede4e1932b4429f1911bb019038b610fda
-	b2sums = 8240bed0bdc779b150575e26a3c0c4c0a25f04cf32e9401972854264d5be8eadfc263007be73ae046f3d305b03c9d695442f6fe3fa14b6c1675501d46249a65c
+	b2sums = 867e480d80b798c2ee3dafe19f3a6c134d2eabb77252e3643dc12674d50f914efb7bc49f12f68392c763fa84ab109ad1993425ac69e343f5519da99d14bb4ed2
 
 pkgname = cloud-hypervisor-bin
