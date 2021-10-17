@@ -1,0 +1,24 @@
+pkgbase = 86box-git
+	pkgdesc = Emulator of x86-based machines based on PCem.
+	pkgver = r5776.bd9b6766
+	pkgrel = 1
+	url = https://86box.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake>=3.15
+	makedepends = ffmpeg
+	depends = freetype2
+	depends = sdl2
+	depends = libpng
+	depends = openal
+	depends = alsa-lib
+	optdepends = 86box-roms-git: ROM files
+	provides = 86box
+	source = 86box-git::git+https://github.com/86Box/86Box.git
+	source = 86box.desktop
+	sha256sums = SKIP
+	sha256sums = 45b69e5663065130439ae615a98e3eab8a526e97964133956cdc71a500e42945
+
+pkgname = 86box-git
