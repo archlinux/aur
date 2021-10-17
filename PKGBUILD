@@ -36,6 +36,7 @@ source=(
     "swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=${_swiftver}"
     "llvm-project::git+https://github.com/apple/llvm-project#tag=${_swiftver}"
     "0001-arch-aur-pachtes.patch"
+    "0002-asprintf-exists.patch"
     # swift src to check afterwards
     "indexstore-db::git+https://github.com/apple/indexstore-db#tag=${_swiftver}"
     "yams::git+https://github.com/jpsim/Yams#tag=${yamsver}"
@@ -47,7 +48,7 @@ source=(
     "swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=${_swiftver}"
 )
 noextract=()
-md5sums=(
+sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
@@ -62,7 +63,8 @@ md5sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    '07526bd1b9167f9dfbfb9ab9c8c5948e'
+    'd5eff4ffedba65a20b4600f36f09527f9fe1ea425302ea35c56f38e403e1d451'
+    'f450b7470ae26f3353f5201d692ebde9493015cd4c493c1e253770c07dd86e8a'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -83,6 +85,7 @@ options=(!strip)
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
+    ( cd swift-corelibs-foundation && patch -p1 -i "$srcdir/0002-asprintf-exists.patch" )
 }
 
 #pkgver() {
