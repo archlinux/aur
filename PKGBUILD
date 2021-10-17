@@ -1,15 +1,17 @@
 # Maintainer: Manuel Hüsers <aur@huesers.de>
 # Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
-pkgname=polkit-explorer
+pkgname=polkit-explorer-git
 pkgver=15.fac8d70
-pkgrel=1
+pkgrel=2
 pkgdesc='Present PolicyKit information in a human-readable form.'
 arch=('any')
-url="https://github.com/scarygliders/${pkgname}"
+url="https://github.com/scarygliders/${pkgname//-git}"
 license=('ISC')
 depends=('python-pyqt5' 'python-lxml')
-source=("git://github.com/scarygliders/${pkgname}.git")
+conflicts=('polkit-explorer')
+provides=('polkit-explorer')
+source=("git://github.com/scarygliders/${pkgname//-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
