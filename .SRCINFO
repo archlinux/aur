@@ -1,12 +1,12 @@
 pkgbase = eprosima-fast-cdr
 	pkgdesc = eProsima's Fast-CDR for serialization and deserialization
-	pkgver = 1.0.21
+	pkgver = 1.0.22
 	pkgrel = 1
 	url = https://github.com/eProsima/Fast-CDR
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	source = https://github.com/eProsima/Fast-CDR/archive/v1.0.21.tar.gz
-	sha256sums = c1f32bdd76910ada00d551eb8828de7561ad2b2846d063cb4316f9262c03c77d
+	source = https://github.com/eProsima/Fast-CDR/archive/v1.0.22.tar.gz
+	sha256sums = 7ca7f09c633963622431bdb216eeb4145e378f81a2ce5113e341b9eee55e4f44
 
 pkgname = eprosima-fast-cdr
