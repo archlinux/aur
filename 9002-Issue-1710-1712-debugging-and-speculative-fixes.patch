@@ -1,0 +1,196 @@
+From 4d786a0766d8304561103b3e7dd5515fd451ba64 Mon Sep 17 00:00:00 2001
+From: Scott B <arglebargle@arglebargle.dev>
+Date: Mon, 18 Oct 2021 08:57:31 -0700
+Subject: [PATCH] Issue 1710/1712 debugging and speculative fixes
+
+Squashed commit of the following:
+
+commit 2853b58fe17777669adc9f5b5559328e6395561c
+Author: Scott B <arglebargle@arglebargle.dev>
+Date:   Thu Oct 14 02:22:21 2021 -0700
+
+    TEST: Replaces "don't wait to signal GFXOFF"
+
+    replacement for 4df3adab896f843afe5bca5960fbca6ff2cc407e per lijo lazar
+    see: https://gitlab.freedesktop.org/drm/amd/-/issues/1710#note_1102805
+
+commit 7280f96d75240bbf3f5dfe8b566b69353ee5e0b0
+Author: Scott B <arglebargle@arglebargle.dev>
+Date:   Thu Oct 14 02:16:16 2021 -0700
+
+    Revert "drm/amdgpu: During s0ix don't wait to signal GFXOFF"
+
+    This reverts commit 4df3adab896f843afe5bca5960fbca6ff2cc407e.
+
+commit cc786a1616f3fbe9b65f3dd5a22d5fdf830dcbcb
+Author: Mario Limonciello <mario.limonciello@amd.com>
+Date:   Tue Sep 28 11:00:40 2021 -0500
+
+    TEST: platform/x86: amd-pmc: explicitly check for GFXOFF mask
+
+    (( this patch needed changes to apply after queued changes in platform/x86 -next
+    see: https://git.kernel.org/pub/scm/linux/kernel/git/pdx86/platform-drivers-x86.git/commit/?h=for-next&id=40635cd32f0d83573a558dc30e9ba3469e769249
+    original commit message follows -SB ))
+
+    (This patch is for testing only and should not be upstreamed in
+    this state)
+
+    Explicitly check the value of GFXOFF before setting OS_HINT.  If
+    it's not valid, continue retrying to read it - for up to 2 seconds.
+
+    If it's still not valid, abort the suspend routine.
+
+    Possible outcomes:
+    * If this makes all failed suspends "go away" 100% success -> there is
+      a timing problem remaining in amdgpu as it pertains to when GFXOFF is
+      set relative to when AMD_PMC sends OS_HINT
+
+      There should be a message "gfxoff not asserted retrying"
+    * If the suspend entry fails now with "gfxoff not asserted after 2000000us"
+      -> GFXOFF is also a symptom and not the root cause of failed s0i3 entry
+
+    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+    Change-Id: Ic3a1ed188abad21f94c8dd82c2eeed43117b1dbe
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c       | 14 ++-------
+ .../gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c   |  2 ++
+ drivers/platform/x86/amd-pmc.c                | 29 ++++++++++++++++---
+ 3 files changed, 29 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
+index 1795d448c700..b4ced45301be 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
+@@ -31,8 +31,6 @@
+ /* delay 0.1 second to enable gfx off feature */
+ #define GFX_OFF_DELAY_ENABLE         msecs_to_jiffies(100)
+ 
+-#define GFX_OFF_NO_DELAY 0
+-
+ /*
+  * GPU GFX IP block helpers function.
+  */
+@@ -560,8 +558,6 @@ int amdgpu_gfx_enable_kcq(struct amdgpu_device *adev)
+ 
+ void amdgpu_gfx_off_ctrl(struct amdgpu_device *adev, bool enable)
+ {
+-	unsigned long delay = GFX_OFF_DELAY_ENABLE;
+-
+ 	if (!(adev->pm.pp_feature & PP_GFXOFF_MASK))
+ 		return;
+ 
+@@ -577,14 +573,8 @@ void amdgpu_gfx_off_ctrl(struct amdgpu_device *adev, bool enable)
+ 
+ 		adev->gfx.gfx_off_req_count--;
+ 
+-		if (adev->gfx.gfx_off_req_count == 0 &&
+-		    !adev->gfx.gfx_off_state) {
+-			/* If going to s2idle, no need to wait */
+-			if (adev->in_s0ix)
+-				delay = GFX_OFF_NO_DELAY;
+-			schedule_delayed_work(&adev->gfx.gfx_off_delay_work,
+-					      delay);
+-		}
++		if (adev->gfx.gfx_off_req_count == 0 && !adev->gfx.gfx_off_state)
++			schedule_delayed_work(&adev->gfx.gfx_off_delay_work, GFX_OFF_DELAY_ENABLE);
+ 	} else {
+ 		if (adev->gfx.gfx_off_req_count == 0) {
+ 			cancel_delayed_work_sync(&adev->gfx.gfx_off_delay_work);
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c b/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c
+index 9a9c24a6ec35..3891fe8cd7fb 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c
+@@ -1376,6 +1376,8 @@ static ssize_t renoir_get_gpu_metrics(struct smu_context *smu,
+ 
+ static int renoir_gfx_state_change_set(struct smu_context *smu, uint32_t state)
+ {
++	if (state == sGpuChangeState_D3Entry)
++		smu_v12_0_gfx_off_control(smu, true);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
+index dc851c2c4d1c..cf49fb975b36 100644
+--- a/drivers/platform/x86/amd-pmc.c
++++ b/drivers/platform/x86/amd-pmc.c
+@@ -87,6 +87,9 @@
+ #define DELAY_MIN_US		2000
+ #define DELAY_MAX_US		3000
+ #define FIFO_SIZE		4096
++
++#define GFX_IDLE_MASK		0x00000080
++
+ enum amd_pmc_def {
+ 	MSG_TEST = 0x01,
+ 	MSG_OS_HINT_PCO,
+@@ -189,7 +192,7 @@ static int amd_pmc_get_smu_version(struct amd_pmc_dev *dev)
+ }
+ 
+ static int amd_pmc_idlemask_read(struct amd_pmc_dev *pdev, struct device *dev,
+-				 struct seq_file *s)
++				 struct seq_file *s, u32 *val_out)
+ {
+ 	u32 val;
+ 
+@@ -203,6 +206,8 @@ static int amd_pmc_idlemask_read(struct amd_pmc_dev *pdev, struct device *dev,
+ 	default:
+ 		return -EINVAL;
+ 	}
++	if (val_out)
++		*val_out = val;
+ 
+ 	if (dev)
+ 		dev_dbg(pdev->dev, "SMU idlemask s0i3: 0x%x\n", val);
+@@ -276,7 +281,7 @@ static int amd_pmc_idlemask_show(struct seq_file *s, void *unused)
+ 	int rc;
+ 
+ 	if (dev->major > 56 || (dev->major >= 55 && dev->minor >= 37)) {
+-		rc = amd_pmc_idlemask_read(dev, NULL, s);
++		rc = amd_pmc_idlemask_read(dev, NULL, s, NULL);
+ 		if (rc)
+ 			return rc;
+ 	} else {
+@@ -449,6 +454,7 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
+ {
+ 	struct amd_pmc_dev *pdev = dev_get_drvdata(dev);
+ 	int rc;
++	u32 val = 0;
+ 	u8 msg;
+ 
+ 	/* Reset and Start SMU logging - to monitor the s0i3 stats */
+@@ -456,7 +462,22 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
+ 	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_START, 0);
+ 
+ 	/* Dump the IdleMask before we send hint to SMU */
+-	amd_pmc_idlemask_read(pdev, dev, NULL);
++	amd_pmc_idlemask_read(pdev, dev, NULL, &val);
++	if (!(val & GFX_IDLE_MASK)) {
++		uint32_t i;
++		dev_err(pdev->dev, "gfxoff not asserted, retrying\n");
++		for (i = 0; i < PMC_MSG_DELAY_MIN_US * RESPONSE_REGISTER_LOOP_MAX; i++) {
++			udelay(PMC_MSG_DELAY_MIN_US);
++			amd_pmc_idlemask_read(pdev, dev, NULL, &val);
++			if (val & GFX_IDLE_MASK)
++				break;
++		}
++		if (!(val & GFX_IDLE_MASK)) {
++			dev_err(pdev->dev, "gfxoff not asserted after %dus\n",
++				PMC_MSG_DELAY_MIN_US * RESPONSE_REGISTER_LOOP_MAX);
++			return -EBUSY;
++		}
++	}
+ 	msg = amd_pmc_get_os_hint(pdev);
+ 	rc = amd_pmc_send_cmd(pdev, 1, NULL, msg, 0);
+ 	if (rc)
+@@ -483,7 +504,7 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
+ 	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_DUMP_DATA, 0);
+ 
+ 	/* Dump the IdleMask to see the blockers */
+-	amd_pmc_idlemask_read(pdev, dev, NULL);
++	amd_pmc_idlemask_read(pdev, dev, NULL, NULL);
+ 
+ 	/* Write data incremented by 1 to distinguish in stb_read */
+ 	if (enable_stb)
+-- 
+2.33.1
+

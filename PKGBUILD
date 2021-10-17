@@ -155,6 +155,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # squashed s0ix enablement
         "9001-v5.14.13-s0ix-patch-2021-10-17.patch"
+        "9002-Issue-1710-1712-debugging-and-speculative-fixes.patch"
         )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -196,7 +197,8 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c'
             '7dbfdd120bc155cad1879579cb9dd1185eb5e37078c8c93fef604a275a163812'
             '1444af2e125080934c67b6adb4561fd354a72ce47d3de393b24f53832ee492ac'
-            'b12244f9abf0091d66e3218d2a5b78b5de0b7d0471793ed8c4f95963dbbce356')
+            'b12244f9abf0091d66e3218d2a5b78b5de0b7d0471793ed8c4f95963dbbce356'
+            '4dac7dbb618fe43f49f946435814ab48927689d1db44e0ac87363dbac0258dc1')
 
 # apply UKSM patch; TODO: note to self: don't forget to update the sum here during major version changes
 #
