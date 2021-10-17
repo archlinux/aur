@@ -3,7 +3,7 @@
 pkgbase=vim-denops
 pkgname=('vim-denops' 'neovim-denops')
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/vim-denops/denops.vim"
 license=('MIT')
@@ -14,7 +14,7 @@ sha256sums=('4a75756d84a1d65ab150034a20b0901562a8dfee7b46d34c63b55adf0be7a105')
 package_vim-denops() {
 	pkgdesc="Vim ecosystem for writing plugins in Deno"
 	groups=('vim-plugins')
-	depends=('vim>=8.2.3081')
+	depends+=('vim>=8.2.3081')
 
 	cd "denops.vim-$pkgver"
 	find autoload denops doc plugin -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
@@ -25,7 +25,7 @@ package_vim-denops() {
 package_neovim-denops() {
 	pkgdesc="Neovim ecosystem for writing plugins in Deno"
 	groups=('neovim-plugins')
-	depends=('neovim>=0.5.0')
+	depends+=('neovim>=0.5.0')
 	conflicts=('vim-denops')
 
 	cd "denops.vim-$pkgver"
