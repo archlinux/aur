@@ -3,13 +3,13 @@
 _name=transonic
 pkgname=python-${_name}
 pkgver=0.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="AOT / JIT compiler frontend for modern Python-Numpy code"
 arch=('any')
 url="https://${_name}.readthedocs.io"
 license=('BSD')
 depends=(
-  'autopep8' 'python' 'python-setuptools' 'python-astunparse' 'python-beniget'
+  'autopep8' 'python' 'python-setuptools' 'python-beniget'
   'python-gast' 'python-numpy'
 )
 optdepends=(

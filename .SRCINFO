@@ -1,7 +1,7 @@
 pkgbase = python-transonic
 	pkgdesc = AOT / JIT compiler frontend for modern Python-Numpy code
 	pkgver = 0.4.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://transonic.readthedocs.io
 	arch = any
 	license = BSD
@@ -10,7 +10,6 @@ pkgbase = python-transonic
 	depends = autopep8
 	depends = python
 	depends = python-setuptools
-	depends = python-astunparse
 	depends = python-beniget
 	depends = python-gast
 	depends = python-numpy
