@@ -1,6 +1,6 @@
 pkgbase = plots-git
 	pkgdesc = A graph plotting app for GNOME
-	pkgver = 0.6.1.r124.g710082f
+	pkgver = 0.6.1.r125.gfe2fb0f
 	pkgrel = 1
 	url = https://github.com/alexhuntley/Plots/
 	arch = any
