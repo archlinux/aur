@@ -36,6 +36,7 @@ pkgbase = swift-language
 	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=swift-5.5-RELEASE
 	source = llvm-project::git+https://github.com/apple/llvm-project#tag=swift-5.5-RELEASE
 	source = 0001-arch-aur-pachtes.patch
+	source = 0002-asprintf-exists.patch
 	source = indexstore-db::git+https://github.com/apple/indexstore-db#tag=swift-5.5-RELEASE
 	source = yams::git+https://github.com/jpsim/Yams#tag=4.0.2
 	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=swift-5.5-RELEASE
@@ -44,28 +45,29 @@ pkgbase = swift-language
 	source = swift-installer-scripts::git+https://github.com/apple/swift-installer-scripts#branch=main
 	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.5-RELEASE
 	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=swift-5.5-RELEASE
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 07526bd1b9167f9dfbfb9ab9c8c5948e
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d5eff4ffedba65a20b4600f36f09527f9fe1ea425302ea35c56f38e403e1d451
+	sha256sums = f450b7470ae26f3353f5201d692ebde9493015cd4c493c1e253770c07dd86e8a
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = swift-language
