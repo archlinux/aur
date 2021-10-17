@@ -1,0 +1,49 @@
+pkgbase = nginx-quic-vkontakte
+	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch with improvements from VKontakte
+	pkgver = 1.21.3
+	pkgrel = 1
+	url = https://github.com/VKCOM/nginx-quic
+	install = nginx.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	makedepends = go
+	depends = geoip
+	depends = libxcrypt
+	depends = mailcap
+	depends = pcre
+	depends = zlib
+	provides = nginx
+	provides = nginx-mainline
+	conflicts = nginx
+	conflicts = nginx-quic
+	backup = etc/nginx/fastcgi.conf
+	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/koi-win
+	backup = etc/nginx/koi-utf
+	backup = etc/nginx/nginx.conf
+	backup = etc/nginx/scgi_params
+	backup = etc/nginx/uwsgi_params
+	backup = etc/nginx/win-utf
+	backup = etc/logrotate.d/nginx
+	source = nginx-quic-vkontakte::git+https://github.com/VKCOM/nginx-quic#commit=b004ed98591e14a592d7f253e5aee14ded83eab4
+	source = git+https://boringssl.googlesource.com/boringssl#commit=bb88f52261f3231005c7fa43e55cc888d2f9f582
+	source = service
+	source = logrotate
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b
+	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
+
+pkgname = nginx-quic-vkontakte
+
+pkgname = nginx-quic-vkontakte-src
+	pkgdesc = Source code of nginx-quic 1.21.3, useful for building modules
+	arch = any
+	depends = 
+	provides = nginx-src
+	provides = nginx-mainline-src
+	conflicts = nginx-src
+	backup = 
