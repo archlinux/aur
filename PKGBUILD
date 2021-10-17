@@ -1,15 +1,16 @@
-# Maintainer: imtbl <imtbl at mser dot at>
+# Maintainer: Michael Serajnik <m at mser dot at>
 pkgname=filemaid-git
 _pkgname=filemaid
 pkgver=r4.45edb3b
 pkgrel=1
 pkgdesc="Rule-based file- and folder-organization tool inspired by Belvedere and similar programs such as Hazel and DropIt"
-arch=('any')
+arch=("any")
 url="https://github.com/cryzed/${_pkgname}"
-license=('MIT')
-depends=('python' 'python-magic' 'python-pyaml')
+license=("MIT")
+depends=("python" "python-magic" "python-pyaml")
+makedepends=("git")
 source=("git+https://github.com/cryzed/${_pkgname}.git")
-sha256sums=('SKIP')
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"

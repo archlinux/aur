@@ -5,6 +5,7 @@ pkgbase = filemaid-git
 	url = https://github.com/cryzed/filemaid
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python
 	depends = python-magic
 	depends = python-pyaml
@@ -12,4 +13,3 @@ pkgbase = filemaid-git
 	sha256sums = SKIP
 
 pkgname = filemaid-git
-
