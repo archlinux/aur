@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 
 pkgname=nordselect
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Select the ideal NordVPN server"
 arch=('any')
@@ -11,11 +11,11 @@ depends=('curl' 'liboping')
 makedepends=('rustup')
 provides=('nordselect')
 source=("https://github.com/editicalu/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=("350a7fc537d3300ab3051c4660584b79f7365e6e60836f6604b787326e58b7f85d46b05740968e4f934acad6fcbf53041a688f41acee41b73a7f330a15fbe915")
+sha512sums=("dd2908eb8a9713a519256b96d668d15cd94bbeb88eebdbecf3775c64271c750de86081f8d2266f794ee5e1a4d5198254f221ebba2127c73826a313e6063f2f8f")
 
 build() {
 	cd "$pkgname-$pkgver"
-	rustup override set 1.49.0
+	rustup override set 1.55.0
 	cargo build --release --locked
 }
 
