@@ -1,0 +1,13 @@
+pkgbase = hyperpad
+	pkgdesc = A fast, simple and open-source text editor
+	pkgver = 0.60
+	pkgrel = 1
+	url = https://github.com/ecsuarez/hyperpad
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt5-base
+	source = hyperpad-0.60.tar.gz::https://github.com/ecsuarez/hyperpad/archive/v0.60.tar.gz
+	md5sums = 8d3b67ec1434b8596d1b7b67e2fdb32b
+
+pkgname = hyperpad
