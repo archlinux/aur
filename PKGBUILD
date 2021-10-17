@@ -23,7 +23,7 @@ package_neovim-deoplete() {
 }
 
 package_vim-deoplete() {
-	depends+=('vim' 'python-pynvim>=0.3.0' 'neovim-yarp' 'vim-hug-neovim-rpc')
+	depends+=('vim' 'python-pynvim>=0.3.0' 'nvim-yarp' 'vim-hug-neovim-rpc')
 	groups=('vim-plugins')
 	conflicts=('neovim-deoplete')
 

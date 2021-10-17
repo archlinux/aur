@@ -20,6 +20,6 @@ pkgname = vim-deoplete
 	depends = python-msgpack>=1.0.0
 	depends = vim
 	depends = python-pynvim>=0.3.0
-	depends = neovim-yarp
+	depends = nvim-yarp
 	depends = vim-hug-neovim-rpc
 	conflicts = neovim-deoplete
