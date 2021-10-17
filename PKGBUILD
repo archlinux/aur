@@ -2,7 +2,7 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=dprint
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc='Pluggable and configurable code formatting platform'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'bzip2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dprint/dprint/archive/$pkgver.tar.gz")
-sha512sums=('408287c6e4dd58648108d6a694a4a1c661024b379431348c641ac690f77d2053ca5bbb6e4ecd80062bb2f7143af6c96d3c95bb2e47b46da06c1af2830b41e6fe')
+sha512sums=('884ccd1783be999845b2c527353b0d734beccbfe051122e594e7b3430c0cc145a20e51c24644b6f3cc1f0ed931013e1c4956082849722ca3fa92b4817be7c156')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -35,7 +35,7 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm 755 target/release/dprint -t "$pkgdir/usr/bin/"
+	install -D target/release/dprint -t "$pkgdir/usr/bin/"
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	find docs -type f -exec install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" '{}' \+
