@@ -1,0 +1,18 @@
+pkgbase = neovim-lsp-status-git
+	pkgdesc = Utility functions for generating statusline components
+	pkgver = r71.e8e5303
+	pkgrel = 1
+	url = https://github.com/nvim-lua/lsp-status.nvim
+	install = lsp-status.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim>=0.5
+	optdepends = nerd-fonts
+	provides = neovim-lsp-status
+	conflicts = neovim-lsp-status
+	source = neovim-lsp-status-git::git+https://github.com/nvim-lua/lsp-status.nvim
+	md5sums = SKIP
+
+pkgname = neovim-lsp-status-git
