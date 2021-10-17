@@ -1,7 +1,7 @@
 pkgbase = python-kucoin-git
 	pkgdesc = Unofficial Python wrapper for KuCoin's API
-	pkgver = 2.1.1.r14.gd7ba653
-	pkgrel = 1
+	pkgver = 2.1.1.r27.g6245e0a
+	pkgrel = 2
 	url = https://github.com/sammchardy/python-kucoin
 	arch = any
 	license = MIT
