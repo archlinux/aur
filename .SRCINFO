@@ -1,0 +1,17 @@
+pkgbase = neovim-luatab-git
+	pkgdesc = Tabline plugin for Neovim
+	pkgver = r22.da6a8f7
+	pkgrel = 1
+	url = https://github.com/alvarosevilla95/luatab.nvim
+	install = luatab.install
+	arch = any
+	groups = neovim-plugin
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-luatab
+	conflicts = neovim-luatab
+	source = neovim-luatab-git::git+https://github.com/alvarosevilla95/luatab.nvim
+	md5sums = SKIP
+
+pkgname = neovim-luatab-git
