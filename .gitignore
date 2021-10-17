@@ -1,0 +1,5 @@
+*.xz
+*.zst
+/pkg
+/src
+/fchat
