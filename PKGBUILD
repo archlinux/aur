@@ -1,6 +1,6 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=cloud-hypervisor
-pkgver=18.0
+pkgver=19.0
 pkgrel=1
 pkgdesc="A Rust-VMM based cloud hypervisor from Intel"
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
@@ -11,9 +11,9 @@ optdepends=(
 )
 makedepends=('rust')
 source=("https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v${pkgver}.tar.gz")
-sha512sums=("8acda894aec9399a0612fe4dc7291a702975b2e39d0e9c1b0b15efd91c3488ba01447ca13d2bb91bee33826517ca141b9f5cd2b78ee9ecfd43415480f90e4af7")
-b2sums=("47f0ad286c9decf0e496d155f91ae9c44fa364a4ac93e9789e7f397e994e45aee102a5ee1100dcd33c24d3e41c86137d48c08902d103b4a53e7f0f27693a03f9")
-b3sums=("7b0286affec04963cc09641138a505feff49efd08d28d5b2bd51597a957ca77c")
+sha512sums=("59a0157d715e5ccb9ce21ad9313e60a48ccce79f5696417c075d57f65150f621aa354dacb0aebcb7eed83e44b830c871986d55cf7078ce3da6cc5def629f6f62")
+b2sums=("8f4d861732962a22010416621a9743cfa1a3bac1a62957e653f659d3d3a5febd5f9a6c9ecec2aec009541340584711a62a167286f1ba7c5f24bfda2802b0c332")
+b3sums=("9d6fc4877a86233a56ba18827a5ec9d7e1f39d0df2afaf4dba6aa4711023a5d6")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
