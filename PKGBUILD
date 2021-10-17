@@ -1,16 +1,16 @@
 # Maintainer: Benjamin Gallois <benjamin.gallois at fasttrack dot sh>
 pkgbase=fasttrack
 pkgname=(fasttrack fasttrack-cli)
-pkgver=5.3.5
-pkgrel=3
+pkgver=6.0.0
+pkgrel=4
 pkgdesc='Multiple objects tracking software, easy to use, and performant.'
 arch=(any)
 url='https://www.fasttrack.sh'
 license=(GPL3)
 groups=()
-depends=('opencv>=4.0.0' qt5-base qt5-webengine gcc-libs)
+depends=('opencv>=4.0.0' qt6-base qt6-webengine gcc-libs)
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/FastTrackOrg/FastTrack/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('0027fceb2bb21e6ddfed89904188f89660cfa76a4da7b747326a2824070b2a3a')
+sha256sums=('97c5624f2c60ed8932b072f913cf896bf6b7b0262b486abde7567fa43997b481')
 
 prepare() {
   mv "FastTrack-$pkgver" "$pkgbase-$pkgver"
@@ -35,6 +35,3 @@ package_fasttrack-cli() {
   cd "$pkgbase-$pkgver"
   install -D build_cli/fasttrack-cli "$pkgdir"/usr/bin/fasttrack-cli
 }
-sha256sums=('a2f00e5fa9c32ab1947b7e7390a0e1550e6d316dedfc816d90c0fa456960bc71')
-sha256sums=('a2f00e5fa9c32ab1947b7e7390a0e1550e6d316dedfc816d90c0fa456960bc71')
-sha256sums=('a2f00e5fa9c32ab1947b7e7390a0e1550e6d316dedfc816d90c0fa456960bc71')
