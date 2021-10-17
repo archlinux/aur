@@ -2,7 +2,7 @@
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=v1.0.0.alpha.25.1.22.r17.g4a9418d69
+pkgver=1.0.0.alpha.25.1.22.r17.g4a9418d69
 pkgrel=1
 epoch=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
@@ -26,7 +26,7 @@ md5sums=('SKIP')
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
