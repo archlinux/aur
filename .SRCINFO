@@ -6,10 +6,10 @@ pkgbase = intel-ucode-clear
 	arch = x86_64
 	provides = intel-ucode
 	source = 35140-Manifest.linux-firmware::https://cdn.download.clearlinux.org/update/35140/Manifest.linux-firmware
-	source = 35140-00-intel-ucode.cpio.tar::https://cdn.download.clearlinux.org/update/35140/files/bc47f2af60b233283139cb601cb1a99e0918ce25d3512025848feb111f06051a.tar
-	source = 35140-i915-firmware.cpio.xz.tar::https://cdn.download.clearlinux.org/update/35140/files/3ad47d963e7d1975559f954d867203c2c1c762bd0d3afd2d82cb0de4269c5efa.tar
+	source = 35140-00-intel-ucode.cpio.tar::https://cdn.download.clearlinux.org/update/35060/files/bc47f2af60b233283139cb601cb1a99e0918ce25d3512025848feb111f06051a.tar
+	source = 35140-i915-firmware.cpio.xz.tar::https://cdn.download.clearlinux.org/update/35060/files/3ad47d963e7d1975559f954d867203c2c1c762bd0d3afd2d82cb0de4269c5efa.tar
 	sha256sums = d8d67dedde5ae311d149212f4d33667c9dc38b83d593e328dac19b08a944b02a
-	sha256sums = 4682130b3c3eb1228250ed05cf39578e16037a6edb9d33dc4f82f926b903ef4b
-	sha256sums = f08e953a2fef92ba5e9d88296c8db14236cc3a1bcbc2b9e66df58272a042e115
+	sha256sums = 6f51f9d92790e77533b4a97948187b839e3c0a27b8790adb205eb345c41dddd5
+	sha256sums = 271d0f119e9ca8685927e9229a64b922dabb4c1023dcb30d548859dfbf231e44
 
 pkgname = intel-ucode-clear
