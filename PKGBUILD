@@ -1,5 +1,5 @@
 pkgname=icalingua-git
-pkgver=2.3.2_19_g5b164d0
+pkgver=2.3.2_40_g0d621e0
 pkgrel=1
 pkgdesc='A Linux client for QQ and more'
 license=('GPL')
