@@ -1,8 +1,8 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname="python-kucoin-git"
-pkgver=2.1.1.r14.gd7ba653
-pkgrel=1
+pkgver=2.1.1.r27.g6245e0a
+pkgrel=2
 pkgdesc="Unofficial Python wrapper for KuCoin's API"
 arch=('any')
 url="https://github.com/sammchardy/${pkgname%-git}"
@@ -26,5 +26,4 @@ build() {
 package() {
     cd "${srcdir}"/${pkgname%-git}
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -D 'LICENSE' "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
