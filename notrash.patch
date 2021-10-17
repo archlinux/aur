@@ -1,7 +1,7 @@
-diff -rudp Thunar-1.6.6.orig/thunar/thunar-application.c Thunar-1.6.6/thunar/thunar-application.c
---- Thunar-1.6.6.orig/thunar/thunar-application.c	2015-03-09 23:42:56.000000000 -0400
-+++ Thunar-1.6.6/thunar/thunar-application.c	2015-03-09 23:43:34.000000000 -0400
-@@ -1776,9 +1776,16 @@ thunar_application_unlink_files (ThunarA
+diff -rudp thunar-4.16.10.orig/thunar/thunar-application.c thunar-4.16.10/thunar/thunar-application.c
+--- thunar-4.16.10.orig/thunar/thunar-application.c	2021-10-15 22:57:55.000000000 -0400
++++ thunar-4.16.10/thunar/thunar-application.c	2021-10-15 23:01:06.000000000 -0400
+@@ -2146,9 +2146,16 @@ thunar_application_unlink_files (ThunarA
    gchar     *message;
    guint      n_path_list = 0;
    gint       response;
@@ -18,7 +18,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-application.c Thunar-1.6.6/thunar/thu
  
    /* determine the paths for the files */
    for (lp = g_list_last (file_list); lp != NULL; lp = lp->prev, ++n_path_list)
-@@ -1800,8 +1807,8 @@ thunar_application_unlink_files (ThunarA
+@@ -2170,8 +2177,8 @@ thunar_application_unlink_files (ThunarA
    if (G_UNLIKELY (permanently))
      {
        /* parse the parent pointer */
@@ -29,81 +29,56 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-application.c Thunar-1.6.6/thunar/thu
        /* generate the question to confirm the delete operation */
        if (G_LIKELY (n_path_list == 1))
          {
-diff -rudp Thunar-1.6.6.orig/thunar/thunar-preferences.c Thunar-1.6.6/thunar/thunar-preferences.c
---- Thunar-1.6.6.orig/thunar/thunar-preferences.c	2015-03-09 23:42:56.000000000 -0400
-+++ Thunar-1.6.6/thunar/thunar-preferences.c	2015-03-09 23:46:00.000000000 -0400
-@@ -75,6 +75,7 @@ enum
-   PROP_MISC_VOLUME_MANAGEMENT,
+diff -rudp thunar-4.16.10.orig/thunar/thunar-preferences.c thunar-4.16.10/thunar/thunar-preferences.c
+--- thunar-4.16.10.orig/thunar/thunar-preferences.c	2021-10-15 22:57:55.000000000 -0400
++++ thunar-4.16.10/thunar/thunar-preferences.c	2021-10-15 23:06:04.000000000 -0400
+@@ -78,6 +78,7 @@ enum
    PROP_MISC_CASE_SENSITIVE,
    PROP_MISC_DATE_STYLE,
+   PROP_MISC_DATE_CUSTOM_STYLE,
 +  PROP_MISC_ENABLE_TRASH,
    PROP_EXEC_SHELL_SCRIPTS_BY_DEFAULT,
    PROP_MISC_FOLDERS_FIRST,
    PROP_MISC_FULL_PATH_IN_TITLE,
-@@ -759,6 +760,18 @@ thunar_preferences_class_init (ThunarPre
-                          THUNAR_ICON_SIZE_SMALLEST,
+@@ -870,6 +871,18 @@ thunar_preferences_class_init (ThunarPre
+                          THUNAR_ICON_SIZE_16,
                           EXO_PARAM_READWRITE);
  
-+ /**
++  /**
 +   * ThunarPreferences:misc-enable-trash:
 +   *
-+   * If trash is disabled, files will be deleted permanently
++   * If trash is disabled, files will be deleted permanently.
 +   **/
 +  preferences_props[PROP_MISC_ENABLE_TRASH] =
 +      g_param_spec_boolean ("misc-enable-trash",
-+			 "misc-enable-trash",
-+                         NULL,
-+                         TRUE,
-+                         EXO_PARAM_READWRITE);
++                            "misc-enable-trash",
++                            NULL,
++                            TRUE,
++                            EXO_PARAM_READWRITE);
 +
    /* install all properties */
    g_object_class_install_properties (gobject_class, N_PROPERTIES, preferences_props);
  }
-diff -rudp Thunar-1.6.6.orig/thunar/thunar-preferences-dialog.c Thunar-1.6.6/thunar/thunar-preferences-dialog.c
---- Thunar-1.6.6.orig/thunar/thunar-preferences-dialog.c	2015-03-09 23:42:56.000000000 -0400
-+++ Thunar-1.6.6/thunar/thunar-preferences-dialog.c	2015-03-09 23:43:34.000000000 -0400
-@@ -381,7 +381,7 @@ thunar_preferences_dialog_init (ThunarPr
-   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-   gtk_widget_show (label);
- 
--  table = gtk_table_new (2, 2, FALSE);
-+  table = gtk_table_new (3, 2, FALSE);
-   gtk_table_set_row_spacings (GTK_TABLE (table), 6);
-   gtk_table_set_col_spacings (GTK_TABLE (table), 12);
-   gtk_container_set_border_width (GTK_CONTAINER (table), 12);
-@@ -599,7 +599,7 @@ thunar_preferences_dialog_init (ThunarPr
-   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-   gtk_widget_show (label);
- 
--  table = gtk_table_new (2, 2, FALSE);
-+  table = gtk_table_new (3, 2, FALSE);
-   gtk_table_set_row_spacings (GTK_TABLE (table), 6);
-   gtk_table_set_col_spacings (GTK_TABLE (table), 12);
-   gtk_container_set_border_width (GTK_CONTAINER (table), 12);
-@@ -626,12 +626,18 @@ thunar_preferences_dialog_init (ThunarPr
-   gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, TRUE, 0);
-   gtk_widget_show (frame);
+diff -rudp thunar-4.16.10.orig/thunar/thunar-preferences-dialog.c thunar-4.16.10/thunar/thunar-preferences-dialog.c
+--- thunar-4.16.10.orig/thunar/thunar-preferences-dialog.c	2021-10-15 22:57:55.000000000 -0400
++++ thunar-4.16.10/thunar/thunar-preferences-dialog.c	2021-10-15 23:19:19.000000000 -0400
+@@ -856,6 +856,12 @@ thunar_preferences_dialog_init (ThunarPr
+   thunar_gtk_label_set_a11y_relation (GTK_LABEL (label), combo);
+   gtk_widget_show (combo);
  
 +  button = gtk_check_button_new_with_mnemonic (_("Move items to Trash on _deletion."));
 +  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "misc-enable-trash", G_OBJECT (button), "active");
-+  thunar_gtk_widget_set_tooltip (button, _( "By default, items are sent to the Trash on deletion. By disabling this option, items will be removed on deletion and will be lost forever. (DANGEROUS)" ) );
-+  gtk_table_attach (GTK_TABLE (table), button, 0,1,2,3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++  gtk_widget_set_tooltip_text (button, _( "By default, items are sent to the Trash on deletion. By disabling this option, items will be removed on deletion and will be lost forever. (DANGEROUS)"));
++  gtk_grid_attach (GTK_GRID (grid), button, 0, 2, 1, 1);
 +  gtk_widget_show (button);
 +
-   label = gtk_label_new (_("Volume Management"));
-   gtk_label_set_attributes (GTK_LABEL (label), thunar_pango_attr_list_bold ());
-   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-   gtk_widget_show (label);
- 
--  table = gtk_table_new (2, 2, FALSE);
-+  table = gtk_table_new (3, 2, FALSE);
-   gtk_table_set_row_spacings (GTK_TABLE (table), 6);
-   gtk_table_set_col_spacings (GTK_TABLE (table), 12);
-   gtk_container_set_border_width (GTK_CONTAINER (table), 12);
-diff -rudp Thunar-1.6.6.orig/thunar/thunar-shortcuts-model.c Thunar-1.6.6/thunar/thunar-shortcuts-model.c
---- Thunar-1.6.6.orig/thunar/thunar-shortcuts-model.c	2015-03-09 23:42:56.000000000 -0400
-+++ Thunar-1.6.6/thunar/thunar-shortcuts-model.c	2015-03-09 23:43:34.000000000 -0400
-@@ -952,6 +952,8 @@ thunar_shortcuts_model_shortcut_places (
+   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
+   gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, TRUE, 0);
+   gtk_widget_show (frame);
+diff -rudp thunar-4.16.10.orig/thunar/thunar-shortcuts-model.c thunar-4.16.10/thunar/thunar-shortcuts-model.c
+--- thunar-4.16.10.orig/thunar/thunar-shortcuts-model.c	2021-10-15 22:57:55.000000000 -0400
++++ thunar-4.16.10/thunar/thunar-shortcuts-model.c	2021-10-15 23:01:06.000000000 -0400
+@@ -1068,6 +1068,8 @@ thunar_shortcuts_model_shortcut_places (
    GFile          *desktop;
    GFile          *trash;
    ThunarFile     *file;
@@ -112,7 +87,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-shortcuts-model.c Thunar-1.6.6/thunar
  
    /* add the places heading */
    shortcut = g_slice_new0 (ThunarShortcut);
-@@ -992,9 +994,13 @@ thunar_shortcuts_model_shortcut_places (
+@@ -1110,9 +1112,13 @@ thunar_shortcuts_model_shortcut_places (
      }
    g_object_unref (desktop);
    g_object_unref (home);
@@ -127,10 +102,10 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-shortcuts-model.c Thunar-1.6.6/thunar
      {
        trash = thunar_g_file_new_for_trash ();
        file = thunar_file_get (trash, NULL);
-diff -rudp Thunar-1.6.6.orig/thunar/thunar-tree-model.c Thunar-1.6.6/thunar/thunar-tree-model.c
---- Thunar-1.6.6.orig/thunar/thunar-tree-model.c	2015-03-09 23:42:56.000000000 -0400
-+++ Thunar-1.6.6/thunar/thunar-tree-model.c	2015-03-09 23:43:34.000000000 -0400
-@@ -286,12 +286,18 @@ thunar_tree_model_init (ThunarTreeModel
+diff -rudp thunar-4.16.10.orig/thunar/thunar-tree-model.c thunar-4.16.10/thunar/thunar-tree-model.c
+--- thunar-4.16.10.orig/thunar/thunar-tree-model.c	2021-10-15 22:57:55.000000000 -0400
++++ thunar-4.16.10/thunar/thunar-tree-model.c	2021-10-15 23:01:06.000000000 -0400
+@@ -288,12 +288,18 @@ thunar_tree_model_init (ThunarTreeModel
    GList               *devices;
    GList               *lp;
    GNode               *node;
@@ -149,13 +124,13 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-tree-model.c Thunar-1.6.6/thunar/thun
 +
    /* initialize the model data */
    model->sort_case_sensitive = TRUE;
-   model->visible_func = (ThunarTreeModelVisibleFunc) exo_noop_true;
-@@ -324,7 +330,7 @@ thunar_tree_model_init (ThunarTreeModel
-     g_object_unref (desktop);
+   model->visible_func = (ThunarTreeModelVisibleFunc) (void (*)(void)) exo_noop_true;
+@@ -327,7 +333,7 @@ thunar_tree_model_init (ThunarTreeModel
+   system_paths = g_list_append (system_paths, g_object_ref (home));
  
    /* append the trash icon if the trash is supported */
 -  if (thunar_g_vfs_is_uri_scheme_supported ("trash"))
 +  if (isTrashEnabled && thunar_g_vfs_is_uri_scheme_supported ("trash"))
      system_paths = g_list_append (system_paths, thunar_g_file_new_for_trash ());
  
-   /* append the network icon if browsing the network is supported */
+   /* append the root file system */

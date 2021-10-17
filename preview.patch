@@ -1,7 +1,7 @@
-diff -ru Thunar-1.6.10.orig/configure.ac Thunar-1.6.10/configure.ac
---- Thunar-1.6.10.orig/configure.ac	2016-12-05 04:11:30.000000000 -0500
-+++ Thunar-1.6.10/configure.ac	2016-12-05 04:24:20.000000000 -0500
-@@ -112,6 +112,19 @@
+diff -rudp thunar-4.16.10.orig/configure.ac thunar-4.16.10/configure.ac
+--- thunar-4.16.10.orig/configure.ac	2021-10-16 13:53:35.000000000 -0400
++++ thunar-4.16.10/configure.ac	2021-10-16 19:23:03.000000000 -0400
+@@ -112,6 +112,19 @@ AC_ARG_WITH([helper-path-prefix],
              [HELPER_PATH_PREFIX="$libdir"])
  AC_SUBST([HELPER_PATH_PREFIX])
  
@@ -21,9 +21,9 @@ diff -ru Thunar-1.6.10.orig/configure.ac Thunar-1.6.10/configure.ac
  dnl ***********************************************
  dnl *** Work-around system-specific limitations ***
  dnl ***********************************************
-@@ -173,6 +186,14 @@
- XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1],
-                            [0.34], [dbus], [D-BUS support])
+@@ -182,6 +195,14 @@ dnl **********************************
+ XDT_CHECK_OPTIONAL_PACKAGE([GIO_UNIX], [gio-unix-2.0],
+                            [2.30.0], [gio-unix], [GIO UNIX features])
  
 +dnl *************************************************
 +dnl *** Optional support for gstreamer            ***
@@ -36,7 +36,7 @@ diff -ru Thunar-1.6.10.orig/configure.ac Thunar-1.6.10/configure.ac
  dnl ***************************************************************
  dnl *** Optional support for GUDev (required for thunar-volman) ***
  dnl ***************************************************************
-@@ -267,6 +288,11 @@
+@@ -272,6 +293,11 @@ echo "* GIO UNIX features:
  else
  echo "* GIO UNIX features:                  no"
  fi
@@ -48,12 +48,12 @@ diff -ru Thunar-1.6.10.orig/configure.ac Thunar-1.6.10/configure.ac
  if test x"$GUDEV_FOUND" = x"yes"; then
  echo "* GUDev (required for thunar-volman): yes"
  else
-diff -ru Thunar-1.6.10.orig/thunar/Makefile.am Thunar-1.6.10/thunar/Makefile.am
---- Thunar-1.6.10.orig/thunar/Makefile.am	2016-12-05 04:11:30.000000000 -0500
-+++ Thunar-1.6.10/thunar/Makefile.am	2016-12-05 04:11:39.000000000 -0500
-@@ -269,6 +269,14 @@
- 	$(DBUS_LIBS)
- endif
+diff -rudp thunar-4.16.10.orig/thunar/Makefile.am thunar-4.16.10/thunar/Makefile.am
+--- thunar-4.16.10.orig/thunar/Makefile.am	2021-10-16 13:53:35.000000000 -0400
++++ thunar-4.16.10/thunar/Makefile.am	2021-10-16 19:23:03.000000000 -0400
+@@ -235,6 +235,14 @@ thunar_LDADD =								\
+ thunar_DEPENDENCIES =							\
+ 	$(top_builddir)/thunarx/libthunarx-$(THUNARX_VERSION_API).la
  
 +if HAVE_GSTREAMER
 +Thunar_CFLAGS +=							\
@@ -66,16 +66,18 @@ diff -ru Thunar-1.6.10.orig/thunar/Makefile.am Thunar-1.6.10/thunar/Makefile.am
  if HAVE_GIO_UNIX
  thunar_CFLAGS +=							\
  	$(GIO_UNIX_CFLAGS)
-diff -ru Thunar-1.6.10.orig/thunar/thunar-abstract-icon-view.c Thunar-1.6.10/thunar/thunar-abstract-icon-view.c
---- Thunar-1.6.10.orig/thunar/thunar-abstract-icon-view.c	2016-12-05 04:11:30.000000000 -0500
-+++ Thunar-1.6.10/thunar/thunar-abstract-icon-view.c	2016-12-05 04:11:39.000000000 -0500
-@@ -483,9 +483,16 @@
-   ThunarPreferences *preferences;
-   gboolean           in_tab;
-   const gchar       *action_name;
-+  
+diff -rudp thunar-4.16.10.orig/thunar/thunar-abstract-icon-view.c thunar-4.16.10/thunar/thunar-abstract-icon-view.c
+--- thunar-4.16.10.orig/thunar/thunar-abstract-icon-view.c	2021-10-16 13:53:35.000000000 -0400
++++ thunar-4.16.10/thunar/thunar-abstract-icon-view.c	2021-10-16 19:23:03.000000000 -0400
+@@ -586,12 +586,18 @@ thunar_abstract_icon_view_button_press_e
+                                               GdkEventButton         *event,
+                                               ThunarAbstractIconView *abstract_icon_view)
+ {
 +  ThunarStandardView *standard_view = THUNAR_STANDARD_VIEW (abstract_icon_view);
-+  GtkWidget *real_view = GTK_BIN (standard_view)->child;
++  GtkWidget *real_view = gtk_bin_get_child (GTK_BIN (standard_view));
+   GtkTreePath       *path;
+ 
+   abstract_icon_view->priv->button_pressed = TRUE;
  
    if (event->type == GDK_BUTTON_PRESS && event->button == 3)
      {
@@ -86,17 +88,16 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-abstract-icon-view.c Thunar-1.6.10/thu
        /* open the context menu on right clicks */
        if (exo_icon_view_get_item_at_pos (view, event->x, event->y, &path, NULL))
          {
-@@ -511,12 +518,21 @@
-       
+@@ -617,12 +623,21 @@ thunar_abstract_icon_view_button_press_e
+ 
            /* open the context menu */
-           thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (abstract_icon_view), event->button, event->time);
--        }
-+        
+           thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (abstract_icon_view));
++
 +#ifdef HAVE_GSTREAMER
 +          /* turn audio-preview back on */
-+	  g_signal_connect (G_OBJECT (real_view), "motion-notify-event", G_CALLBACK (thunar_standard_view_try_preview), standard_view);
++          g_signal_connect (G_OBJECT (real_view), "motion-notify-event", G_CALLBACK (thunar_standard_view_try_preview), standard_view);
 +#endif
-+	}
+         }
  
        return TRUE;
      }
@@ -109,61 +110,73 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-abstract-icon-view.c Thunar-1.6.10/thu
        /* unselect all currently selected items */
        exo_icon_view_unselect_all (view);
  
-@@ -552,6 +568,11 @@
+@@ -635,6 +650,11 @@ thunar_abstract_icon_view_button_press_e
+           /* try to open the path as new window/tab, if possible */
+           _thunar_standard_view_open_on_middle_click (THUNAR_STANDARD_VIEW (abstract_icon_view), path, event->state);
  
++#ifdef HAVE_GSTREAMER
++          /* we just clicked on a file so let the audio-preview work again */
++          g_signal_connect (G_OBJECT (real_view), "motion-notify-event", G_CALLBACK (thunar_standard_view_try_preview), standard_view);
++#endif
++
            /* cleanup */
            gtk_tree_path_free (path);
-+	  
-+#ifdef HAVE_GSTREAMER	  
-+	  /* we just clicked on a file so let the audio-preview work again */
-+	  g_signal_connect (G_OBJECT (real_view), "motion-notify-event", G_CALLBACK (thunar_standard_view_try_preview), standard_view);
-+#endif
          }
-       else if (event->type == GDK_BUTTON_PRESS)
-         {
-@@ -583,6 +604,9 @@
-                                                 ThunarAbstractIconView *abstract_icon_view)
- {
-   GtkAction *action;
-+  
-+  ThunarStandardView *standard_view = THUNAR_STANDARD_VIEW (abstract_icon_view);
-+  GtkWidget *real_view = GTK_BIN (standard_view)->child;
+@@ -670,6 +690,9 @@ thunar_abstract_icon_view_button_release
+   const XfceGtkActionEntry *action_entry;
+   GtkWidget                *window;
  
++  ThunarStandardView *standard_view = THUNAR_STANDARD_VIEW (abstract_icon_view);
++  GtkWidget *real_view = gtk_bin_get_child (GTK_BIN (standard_view));
++
    _thunar_return_val_if_fail (EXO_IS_ICON_VIEW (view), FALSE);
    _thunar_return_val_if_fail (THUNAR_IS_ABSTRACT_ICON_VIEW (abstract_icon_view), FALSE);
-@@ -610,6 +634,11 @@
+   _thunar_return_val_if_fail (abstract_icon_view->priv->gesture_expose_id > 0, FALSE);
+@@ -698,6 +721,11 @@ thunar_abstract_icon_view_button_release
    /* redraw the abstract_icon view */
    gtk_widget_queue_draw (GTK_WIDGET (view));
  
-+#ifdef HAVE_GSTREAMER  
-+  /* re-allow the audio-preview */
++#ifdef HAVE_GSTREAMER
++  /* re-allow the audio preview */
 +  g_signal_connect (G_OBJECT (real_view), "motion-notify-event", G_CALLBACK (thunar_standard_view_try_preview), standard_view);
 +#endif
 +
    return FALSE;
  }
  
-diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.c Thunar-1.6.10/thunar/thunar-standard-view.c
---- Thunar-1.6.10.orig/thunar/thunar-standard-view.c	2016-12-05 04:11:30.000000000 -0500
-+++ Thunar-1.6.10/thunar/thunar-standard-view.c	2016-12-05 04:11:39.000000000 -0500
-@@ -31,6 +31,7 @@
+diff -rudp thunar-4.16.10.orig/thunar/thunar-standard-view.c thunar-4.16.10/thunar/thunar-standard-view.c
+--- thunar-4.16.10.orig/thunar/thunar-standard-view.c	2021-10-16 13:53:35.000000000 -0400
++++ thunar-4.16.10/thunar/thunar-standard-view.c	2021-10-16 22:13:23.000000000 -0400
+@@ -57,6 +57,28 @@
+ #include <gdk/gdkx.h>
  #endif
  
- #include <gdk/gdkkeysyms.h>
-+#include <gdk/gdkcursor.h>
- 
- #include <thunar/thunar-application.h>
- #include <thunar/thunar-create-dialog.h>
-@@ -59,7 +60,7 @@
- #endif
- 
- 
--
++static char *music_note[] = {
++"16 16 2 1 0 0",
++"   s none  m none  c none",
++"#  s black m black c black",
++"                ",
++"                ",
++"       ####     ",
++"       ######   ",
++"       ##  ###  ",
++"       ##    #  ",
++"       ##       ",
++"       ##       ",
++"       ##       ",
++"       ##       ",
++"  #######       ",
++" ########       ",
++" ########       ",
++" #######        ",
++"  #####         ",
++"                "
++};
 +#define MUSIC_NOTE { 0x00, 0x00, 0x00, 0x00, 0x80, 0x07, 0x80, 0x1f, 0x80, 0x39, 0x80, 0x21, 0x80, 0x01, 0x80, 0x01, 0x80, 0x01, 0x80, 0x01, 0xfc, 0x01, 0xfe, 0x01, 0xfe, 0x01, 0xfe, 0x00, 0x7c, 0x00, 0x00, 0x00 };
- #define THUNAR_STANDARD_VIEW_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), THUNAR_TYPE_STANDARD_VIEW, ThunarStandardViewPrivate))
  
  
-@@ -287,6 +288,7 @@
+ /* Property identifiers */
+@@ -246,6 +268,7 @@ static gboolean             thunar_stand
  static void                 thunar_standard_view_drag_scroll_timer_destroy  (gpointer                  user_data);
  static gboolean             thunar_standard_view_drag_timer                 (gpointer                  user_data);
  static void                 thunar_standard_view_drag_timer_destroy         (gpointer                  user_data);
@@ -171,7 +184,7 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.c Thunar-1.6.10/thunar/t
  static void                 thunar_standard_view_finished_thumbnailing      (ThunarThumbnailer        *thumbnailer,
                                                                               guint                     request,
                                                                               ThunarStandardView       *standard_view);
-@@ -780,6 +782,15 @@
+@@ -688,6 +711,15 @@ thunar_standard_view_constructor (GType
    /* stay informed about changes to the sort column/order */
    g_signal_connect (G_OBJECT (standard_view->model), "sort-column-changed", G_CALLBACK (thunar_standard_view_sort_column_changed), standard_view);
  
@@ -186,21 +199,21 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.c Thunar-1.6.10/thunar/t
 +
    /* setup support to navigate using a horizontal mouse wheel and the back and forward buttons */
    g_signal_connect (G_OBJECT (view), "scroll-event", G_CALLBACK (thunar_standard_view_scroll_event), object);
-   g_signal_connect (G_OBJECT (view), "button-press-event", G_CALLBACK (thunar_standard_view_button_press_event), object);
-@@ -924,6 +935,12 @@
  
+@@ -835,6 +867,12 @@ thunar_standard_view_finalize (GObject *
    /* release the scroll_to_files hash table */
    g_hash_table_destroy (standard_view->priv->scroll_to_files);
-+  
+ 
 +#ifdef HAVE_GSTREAMER
 +  /* stop audio-preview and release the gstreamer reference */
 +  gst_element_set_state (standard_view->play, GST_STATE_NULL);
 +  gst_object_unref (GST_OBJECT (standard_view->play));
 +#endif
- 
++
    (*G_OBJECT_CLASS (thunar_standard_view_parent_class)->finalize) (object);
  }
-@@ -3043,6 +3060,214 @@
+ 
+@@ -2314,6 +2352,212 @@ thunar_standard_view_motion_notify_event
  
  
  
@@ -224,18 +237,18 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.c Thunar-1.6.10/thunar/t
 +  gchar *view_type;
 +  gboolean item_found;
 +  gboolean wrong_mime = TRUE;
-+  
++
 +  GtkTreePath *path = NULL;
 +  GtkTreeIter iter;
-+  
++
 +  ThunarFile *file;
 +  gchar *mime_type;
 +  GList *preview_timer_list = NULL;
-+  
++
 +  preferences = thunar_preferences_get();
 +  g_object_get(G_OBJECT(preferences), "last-view", &view_type, NULL);
 +  g_object_unref(preferences);
-+  
++
 +  if (strncmp(view_type, "ThunarDetailsView", 17) == 0)
 +    {
 +      item_found = gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW(real_view), event->x, event->y, &path, NULL, NULL, NULL);
@@ -244,48 +257,48 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.c Thunar-1.6.10/thunar/t
 +    {
 +      item_found = exo_icon_view_get_item_at_pos (EXO_ICON_VIEW (real_view), event->x, event->y, &path, NULL);
 +    }
-+    
++
 +  g_free(view_type);
-+  
++
 +  if (G_LIKELY (item_found))
 +    {
 +      gtk_tree_model_get_iter (GTK_TREE_MODEL (standard_view->model), &iter, path);
 +      file = thunar_list_model_get_file (standard_view->model, &iter);
-+      
++
 +      if (G_LIKELY (file != NULL))
 +        {
-+	  mime_type = thunar_file_get_content_type (file);
-+	  if (G_LIKELY (mime_type != NULL))
-+	    {
-+	      wrong_mime = strncmp(mime_type, "audio/", 6);
-+	    }
-+	}
-+      
++          mime_type = thunar_file_get_content_type (file);
++          if (G_LIKELY (mime_type != NULL))
++            {
++              wrong_mime = strncmp(mime_type, "audio/", 6);
++            }
++        }
++
 +      if (G_UNLIKELY (!wrong_mime))
 +        { 
-+	  if (G_LIKELY (path != NULL))
-+	    {
-+	      preview_timer_list = g_list_append(preview_timer_list, standard_view);
-+	      preview_timer_list = g_list_append(preview_timer_list, g_file_get_uri(thunar_file_get_file(file)));
-+	      
-+	      gtk_tree_path_free(path);
-+	      g_timeout_add (50, (GtkFunction)thunar_standard_view_preview_timer, preview_timer_list);
-+	      g_signal_handlers_disconnect_by_func (real_view, thunar_standard_view_try_preview, standard_view);
-+	      
-+	      return FALSE;
-+	    }
-+	}
++          if (G_LIKELY (path != NULL))
++            {
++              preview_timer_list = g_list_append(preview_timer_list, standard_view);
++              preview_timer_list = g_list_append(preview_timer_list, g_file_get_uri(thunar_file_get_file(file)));
++
++              gtk_tree_path_free(path);
++              g_timeout_add (50, (GSourceFunc)thunar_standard_view_preview_timer, preview_timer_list);
++              g_signal_handlers_disconnect_by_func (real_view, thunar_standard_view_try_preview, standard_view);
++
++              return FALSE;
++            }
++        }
 +      else
 +        {
-+	  g_object_unref (G_OBJECT (file));
-+	}
++          g_object_unref (G_OBJECT (file));
++        }
 +    }
-+    
++
 +    if (standard_view->playing)
 +      {
-+	gdk_window_set_cursor (GTK_WIDGET (standard_view)->window, NULL);
-+	gst_element_set_state (standard_view->play, GST_STATE_NULL);
-+	standard_view->playing = FALSE;
++        gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (standard_view)), NULL);
++        gst_element_set_state (standard_view->play, GST_STATE_NULL);
++        standard_view->playing = FALSE;
 +      }
 +    return FALSE;
 +}
@@ -297,34 +310,32 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.c Thunar-1.6.10/thunar/t
 +{
 +  ThunarStandardView *standard_view = user_data->data;
 +  gchar *absolute_path = user_data->next->data;
-+  
-+  GtkWidget *real_view = GTK_BIN (standard_view)->child;
++
++  GtkWidget *real_view = gtk_bin_get_child (GTK_BIN (standard_view));
 +  ThunarPreferences *preferences;
 +  gchar *view_type;
 +  gboolean item_found;
-+  
++
 +  GdkCursor *cursor;
-+  GdkPixmap *bitmap;
-+  GdkColor fg = { 0, 0, 0, 0 };
-+  GdkColor bg = { 0, 65535, 65535, 65535 };
-+  static unsigned char music_note_bits[] = MUSIC_NOTE;
-+  
++  GdkPixbuf *pixbuf;
++  //static unsigned char music_note_bits[] = MUSIC_NOTE;
++
 +  GtkTreePath *new_path = NULL;
 +  GtkTreeIter iter;
 +  ThunarFile *file;
 +  gint x, y;
 +  gint wx, wy;
 +  gint bx, by;
-+  
++
 +  static int call_number = 0;
-+  
++
 +  g_signal_handlers_disconnect_by_func (real_view, thunar_standard_view_try_preview, standard_view);
 +  gtk_widget_get_pointer (GTK_WIDGET (standard_view), &wx, &wy);
-+  
++
 +  preferences = thunar_preferences_get();
 +  g_object_get(G_OBJECT(preferences), "last-view", &view_type, NULL);
 +  g_object_unref(preferences);
-+  
++
 +  if (strncmp(view_type, "ThunarDetailsView", 17) == 0)
 +    {
 +      gtk_tree_view_convert_widget_to_bin_window_coords (GTK_TREE_VIEW(real_view), wx, wy, &bx, &by);
@@ -335,71 +346,71 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.c Thunar-1.6.10/thunar/t
 +      exo_icon_view_widget_to_icon_coords(EXO_ICON_VIEW (real_view), wx, wy, &x, &y);
 +      item_found = exo_icon_view_get_item_at_pos (EXO_ICON_VIEW (real_view), x, y, &new_path, NULL);
 +    }
-+    
++
 +  g_free(view_type);
-+  
++
 +  if (standard_view->playing)
 +    {
 +      if (!item_found)
 +        {
-+	  gdk_window_set_cursor (GTK_WIDGET (standard_view)->window, NULL);
-+	  gst_element_set_state (standard_view->play, GST_STATE_NULL);
-+	  standard_view->playing = FALSE;
++          gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (standard_view)), NULL);
++          gst_element_set_state (standard_view->play, GST_STATE_NULL);
++          standard_view->playing = FALSE;
 +        }
 +      else
 +        {
-+	  gtk_tree_model_get_iter (GTK_TREE_MODEL (standard_view->model), &iter, new_path);
++          gtk_tree_model_get_iter (GTK_TREE_MODEL (standard_view->model), &iter, new_path);
 +          file = thunar_list_model_get_file (standard_view->model, &iter);
-+	  
++
 +          if (strcmp(g_file_get_uri(thunar_file_get_file(file)), absolute_path))
-+	    {
-+	      gdk_window_set_cursor (GTK_WIDGET (standard_view)->window, NULL);
-+	      gst_element_set_state (standard_view->play, GST_STATE_NULL);
-+	      standard_view->playing = FALSE;
-+	    }
++            {
++              gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (standard_view)), NULL);
++              gst_element_set_state (standard_view->play, GST_STATE_NULL);
++              standard_view->playing = FALSE;
++            }
 +        }
 +    }
 +  else
 +    {
 +      if (item_found)
 +        {
-+	  gtk_tree_model_get_iter (GTK_TREE_MODEL (standard_view->model), &iter, new_path);
++          gtk_tree_model_get_iter (GTK_TREE_MODEL (standard_view->model), &iter, new_path);
 +          file = thunar_list_model_get_file (standard_view->model, &iter);
-+	  
++
 +          if (!strcmp(g_file_get_uri(thunar_file_get_file(file)), absolute_path))
-+	    {
-+	      call_number++;
-+	      
-+	      if (call_number == 1)
-+	        {
-+		  bitmap = gdk_bitmap_create_from_data (NULL, music_note_bits, 16, 16);
-+		  cursor = gdk_cursor_new_from_pixmap (bitmap, bitmap, &fg, &bg, 8, 8);
-+		  gdk_window_set_cursor (GTK_WIDGET (standard_view)->window, cursor);
-+		  
-+		  g_object_set (G_OBJECT (standard_view->play), "uri", g_file_get_uri(thunar_file_get_file(file)), NULL);
-+		}
-+		
-+	      if (call_number > 40)
-+	        {
-+		  gst_element_set_state (standard_view->play, GST_STATE_PLAYING);
-+		  standard_view->playing = TRUE;
-+		
-+		  call_number = 0;
-+		  gtk_tree_path_free (new_path);
-+		  g_signal_connect (G_OBJECT (real_view), "motion-notify-event", G_CALLBACK (thunar_standard_view_try_preview), standard_view);
-+		  return FALSE;
-+	        }
-+	      return TRUE;
-+	    }
-+	  else
-+	    {
-+	      gdk_window_set_cursor (GTK_WIDGET (standard_view)->window, NULL);
-+	    }
++            {
++              call_number++;
++
++              if (call_number == 1)
++                {
++                  pixbuf = gdk_pixbuf_new_from_xpm_data (music_note);
++                  cursor = gdk_cursor_new_from_pixbuf (gdk_display_get_default (), pixbuf, 8, 8);
++                  gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (standard_view)), cursor);
++
++                  g_object_set (G_OBJECT (standard_view->play), "uri", g_file_get_uri(thunar_file_get_file(file)), NULL);
++                }
++
++              if (call_number > 40)
++                {
++                  gst_element_set_state (standard_view->play, GST_STATE_PLAYING);
++                  standard_view->playing = TRUE;
++
++                  call_number = 0;
++                  gtk_tree_path_free (new_path);
++                  g_signal_connect (G_OBJECT (real_view), "motion-notify-event", G_CALLBACK (thunar_standard_view_try_preview), standard_view);
++                  return FALSE;
++                }
++              return TRUE;
++            }
++          else
++            {
++              gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (standard_view)), NULL);
++            }
 +        }
 +      else
 +        {
-+	  gdk_window_set_cursor (GTK_WIDGET (standard_view)->window, NULL);
-+	}
++          gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (standard_view)), NULL);
++        }
 +    }
 +
 +  call_number = 0;
@@ -415,14 +426,14 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.c Thunar-1.6.10/thunar/t
  static gboolean
  thunar_standard_view_scroll_event (GtkWidget          *view,
                                     GdkEventScroll     *event,
-@@ -3945,7 +4170,15 @@
+@@ -3182,7 +3426,15 @@ THUNAR_THREADS_LEAVE
  static void
  thunar_standard_view_drag_scroll_timer_destroy (gpointer user_data)
  {
 -  THUNAR_STANDARD_VIEW (user_data)->priv->drag_scroll_timer_id = 0;
 +  ThunarStandardView *standard_view = THUNAR_STANDARD_VIEW (user_data);
-+  GtkWidget *view = GTK_BIN (standard_view)->child;
-+  
++  GtkWidget *view = gtk_bin_get_child (GTK_BIN (standard_view));
++
 +  standard_view->priv->drag_scroll_timer_id = 0;
 +
 +#ifdef HAVE_GSTREAMER
@@ -432,9 +443,9 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.c Thunar-1.6.10/thunar/t
  }
  
  
-diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.h Thunar-1.6.10/thunar/thunar-standard-view.h
---- Thunar-1.6.10.orig/thunar/thunar-standard-view.h	2016-12-05 04:11:30.000000000 -0500
-+++ Thunar-1.6.10/thunar/thunar-standard-view.h	2016-12-05 04:11:39.000000000 -0500
+diff -rudp thunar-4.16.10.orig/thunar/thunar-standard-view.h thunar-4.16.10/thunar/thunar-standard-view.h
+--- thunar-4.16.10.orig/thunar/thunar-standard-view.h	2021-10-16 13:53:35.000000000 -0400
++++ thunar-4.16.10/thunar/thunar-standard-view.h	2021-10-16 19:23:03.000000000 -0400
 @@ -27,6 +27,10 @@
  #include <thunar/thunar-preferences.h>
  #include <thunar/thunar-view.h>
@@ -446,26 +457,25 @@ diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.h Thunar-1.6.10/thunar/t
  G_BEGIN_DECLS;
  
  typedef struct _ThunarStandardViewPrivate ThunarStandardViewPrivate;
-@@ -139,6 +143,11 @@
-   ExoBinding                *loading_binding;
+@@ -145,6 +149,11 @@ struct _ThunarStandardView
    gboolean                   loading;
+   GtkAccelGroup             *accel_group;
  
 +#ifdef HAVE_GSTREAMER
-+  gboolean		     playing;
-+  GstElement		    *play;
++  gboolean                   playing;
++  GstElement                *play;
 +#endif
 +
    ThunarStandardViewPrivate *priv;
  };
  
-@@ -159,6 +168,10 @@
- 
- ThunarHistory *thunar_standard_view_copy_history  (ThunarStandardView *standard_view);
- 
-+gboolean thunar_standard_view_try_preview (GtkWidget          *real_view,
-+						  GdkEventMotion     *event,
-+						  ThunarStandardView *standard_view);
-+
+@@ -167,6 +176,9 @@ void           thunar_standard_view_appe
+ void           _thunar_standard_view_open_on_middle_click (ThunarStandardView       *standard_view,
+                                                            GtkTreePath              *tree_path,
+                                                            guint                     event_state);
++gboolean       thunar_standard_view_try_preview           (GtkWidget                *real_view,
++                                                           GdkEventMotion           *event,
++                                                           ThunarStandardView       *standard_view);
  G_END_DECLS;
  
  #endif /* !__THUNAR_STANDARD_VIEW_H__ */
