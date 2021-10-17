@@ -6,7 +6,6 @@ pkgbase = lua-lunacolors-git
 	arch = any
 	license = BSD
 	makedepends = git
-	depends = hilbish
 	provides = lua-lunacolors
 	conflicts = lua-lunacolors
 	source = lua-lunacolors-git::git+https://github.com/hilbis/lunacolors

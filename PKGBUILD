@@ -7,7 +7,6 @@ pkgdesc="ANSI colors library for Hilbish"
 arch=('any')
 url="https://github.com/hilbis/lunacolors"
 license=('BSD')
-depends=('hilbish')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
