@@ -1,0 +1,22 @@
+pkgbase = gdbm-git
+	pkgdesc = GNU database library
+	pkgver = 1.21.r32.gf505b9c
+	pkgrel = 1
+	url = https://www.gnu.org.ua/software/gdbm/gdbm.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = readline
+	makedepends = rsync
+	depends = glibc
+	depends = sh
+	provides = gdbm
+	provides = libgdbm.so
+	provides = libgdbm_compat.so
+	conflicts = gdbm
+	options = staticlibs
+	source = git+https://git.gnu.org.ua/gdbm.git
+	sha256sums = SKIP
+
+pkgname = gdbm-git
