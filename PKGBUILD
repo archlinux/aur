@@ -93,10 +93,9 @@ package() {
   ln -s "/usr/share/processing/processing" "$pkgdir/usr/bin/processing"
   ln -s "/usr/share/processing/processing-java" "$pkgdir/usr/bin/processing-java"
 
-  # Redirect processing's internal java-command to the system's one
+  # Link processing's internal java-command to the system's one
   mkdir -p "$pkgdir/usr/share/processing/java/bin/"
-  echo -e '#!/bin/sh\n/usr/lib/jvm/java-17-openjdk/bin/java "$@"' > "$pkgdir/usr/share/processing/java/bin/java"
-  chmod a+x "$pkgdir/usr/share/processing/java/bin/java"
+  ln -s /usr/lib/jvm/java-17-openjdk/bin/java "$pkgdir/usr/share/processing/java/bin/java"
 
   # Link processing's internal ffmpeg-command to the system's one
   ln -s /usr/bin/ffmpeg "$pkgdir/usr/share/processing/tools/MovieMaker/tool/"
