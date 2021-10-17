@@ -2,7 +2,7 @@
 Name=Darkan
 GenericName=Darkan
 Comment=Open source 2021 Runescape Emulation
-Exec=Darkan
+Exec=darkan
 Icon=Darkan
 Terminal=false
 Type=Application

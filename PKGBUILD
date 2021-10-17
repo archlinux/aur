@@ -12,7 +12,7 @@ source=("https://darkan.org/assets/uploads/files/Darkan.jar"
     Darkan.desktop
     Darkan.png)
 sha256sums=('97030d81757c7b8a797cc1de543a8138ebb89b703baa1f94ea850d89a193ea1a'
-    '1df8e4e54c0a4218d5cba6e2cc2f281b614fb5f59cab3fe3691113024182b5cc'
+    '0e0d95bf26fdf362206ad81f9856b94900ea60b54d668b56aa183884a858f58b'
     'dbea124d36be28026b313b9300c172f78db0f9d3dbb91e98e0b5bd48a7486fe6')
 noextract=('Darkan.jar')
 
