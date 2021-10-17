@@ -5,7 +5,7 @@
 # Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=gamehub-git
-pkgver=0.16.0.108.dev.r0.gee370d2
+pkgver=0.16.1.7.dev.r0.gebe7c95
 pkgrel=1
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle"
 arch=(i686 x86_64 armv6h armv7h aarch64)
