@@ -1,4 +1,4 @@
-pkg/
-src/
-gtk-vector-screenshot/
-*.tar.xz
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
