@@ -1,45 +1,45 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=hilbish-git
-_pkgname=${pkgname%-git}
-pkgver=0.5.0.r0.g36ea20b
-pkgrel=2
-pkgdesc="A shell written in Go and extended with Lua"
+pkgver=0.5.1.r64.gb97e1ef
+pkgrel=1
+pkgdesc="The flower shell for Lua users"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rosettea/hilbish"
 license=('MIT')
-depends=('readline' 'lua51-lunacolors-git')
+depends=('readline' 'lua-lunacolors' 'lua-succulent')
 makedepends=('git' 'go>=1.16')
-optdepends=('lua')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 install="$pkgname.install"
-source=("$pkgname::git+$url")
+options=('!emptydirs')
+source=("$pkgname::git+$url?signed")
 sha256sums=('SKIP')
+validpgpkeys=('098F50DFBCEEC71A4EAB6DA450EE40A2809851F5')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
-  cd "$pkgname"
-  sed -i '\|/etc/shells|d' Makefile
+	cd "$pkgname"
+	sed -i '\|/etc/shells|d' Makefile
 }
 
 build() {
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  cd "$pkgname"
-  make dev
+	cd "$pkgname"
+	make dev
 }
 
 package() {
-  cd "$pkgname"
-  DESTDIR="$pkgdir/" make install
-  install -Dm 444 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm 444 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	cd "$pkgname"
+	DESTDIR="$pkgdir/" make install
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }

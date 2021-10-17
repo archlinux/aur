@@ -1,7 +1,7 @@
 pkgbase = hilbish-git
-	pkgdesc = A shell written in Go and extended with Lua
-	pkgver = 0.5.0.r0.g36ea20b
-	pkgrel = 2
+	pkgdesc = The flower shell for Lua users
+	pkgver = 0.5.1.r64.gb97e1ef
+	pkgrel = 1
 	url = https://github.com/rosettea/hilbish
 	install = hilbish-git.install
 	arch = x86_64
@@ -10,11 +10,13 @@ pkgbase = hilbish-git
 	makedepends = git
 	makedepends = go>=1.16
 	depends = readline
-	depends = lua51-lunacolors-git
-	optdepends = lua
+	depends = lua-lunacolors
+	depends = lua-succulent
 	provides = hilbish
 	conflicts = hilbish
-	source = hilbish-git::git+https://github.com/rosettea/hilbish
+	options = !emptydirs
+	source = hilbish-git::git+https://github.com/rosettea/hilbish?signed
+	validpgpkeys = 098F50DFBCEEC71A4EAB6DA450EE40A2809851F5
 	sha256sums = SKIP
 
 pkgname = hilbish-git
