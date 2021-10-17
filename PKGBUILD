@@ -3,7 +3,7 @@
 _pkgname=myrowing
 pkgname=${_pkgname}-git
 _pkgorg=gitlab.com/${_pkgname} 
-pkgver=v0.2.4
+pkgver=v0.2.4.r0.gc143f9e
 pkgrel=1
 pkgdesc="Analyze your rowing training data"          
 arch=(any) 
@@ -20,7 +20,10 @@ provides=(myrowing)
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
  
 build() {

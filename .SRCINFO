@@ -1,6 +1,6 @@
 pkgbase = myrowing-git
 	pkgdesc = Analyze your rowing training data
-	pkgver = v0.2.4
+	pkgver = v0.2.4.r0.gc143f9e
 	pkgrel = 1
 	url = https://gitlab.com/myrowing/myrowing
 	arch = any
