@@ -1,12 +1,12 @@
 pkgbase = rebuild-initramfs-dracut
 	pkgdesc = A helper script to rebuild initramfs images using dracut
-	pkgver = 1.3.3
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch
 	arch = any
 	license = MIT
 	depends = dracut
-	source = rebuild-initramfs-dracut-1.3.3.tar.gz::https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch/archive/1.3.3.tar.gz
-	sha256sums = b8f80878daf299250623b158edf575f306e354e133ef844a51a8deb42bfe088c
+	source = rebuild-initramfs-dracut-1.4.1.tar.gz::https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch/archive/1.4.1.tar.gz
+	sha256sums = ee8a9d600814603bedc793c566adc8222f27e136fa55136ed9ecb25691c87dc2
 
 pkgname = rebuild-initramfs-dracut
