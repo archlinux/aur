@@ -1,7 +1,7 @@
 pkgbase = tremulous-grangerhub-bin
 	pkgdesc = Team based FPS/RTS hybrid built on the open ioq3 engine. GrangerHub
 	pkgver = 1.3.0_alpha.0.14
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/grangerhub/tremulous
 	arch = x86_64
 	license = GPL

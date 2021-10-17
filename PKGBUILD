@@ -4,7 +4,7 @@ _name=tremulous
 _version=1.3.0-alpha.0.14
 pkgname="${_name}-grangerhub-bin"
 pkgver=1.3.0_alpha.0.14
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Team based FPS/RTS hybrid built on the open ioq3 engine. GrangerHub"
 url="https://github.com/grangerhub/tremulous"
 arch=(x86_64)
@@ -32,15 +32,15 @@ package() {
   install -D -m755 "renderer_opengl1.so" "${pkgdir}/opt/tremulous/renderer_opengl1.so"
   install -D -m755 "renderer_opengl2.so" "${pkgdir}/opt/tremulous/renderer_opengl2.so"
 
-  cp -a "gpp" "${pkgdir}/opt/tremulous/"
-  cp -a "gpp_11" "${pkgdir}/opt/tremulous/"
+  cp -a "gpp"     "${pkgdir}/opt/tremulous/"
+  cp -a "gpp_11"  "${pkgdir}/opt/tremulous/"
   cp -a "scripts" "${pkgdir}/opt/tremulous/"
 
   # Install the .desktop, icon files, license, etc.
   install -D -m644 "${srcdir}/tremulous.xpm" "${pkgdir}/usr/share/pixmaps/tremulous.xpm"
   install -D -m644 "${srcdir}/tremulous.desktop" "${pkgdir}/usr/share/applications/tremulous.desktop"
-  install -D -m644 "${srcdir}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
-  install -D -m644 "${srcdir}/GPL" "${pkgdir}/usr/share/licenses/${_pkgname}/GPL"
+  install -D -m644 "${srcdir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -D -m644 "${srcdir}/GPL" "${pkgdir}/usr/share/licenses/${pkgname}/GPL"
 }
 
 sha256sums=('cc2c085c75b8ef8f77173bd918feec0628377e40ec87d49e851881df07fe6358'
