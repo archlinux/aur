@@ -1,16 +1,16 @@
 pkgbase = ruby-tzinfo-data
 	pkgdesc = Timezone data for ruby-tzinfo
-	pkgver = 1.2021.3
+	pkgver = 1.2021.4
 	pkgrel = 1
 	url = https://github.com/tzinfo/tzinfo-data
 	arch = x86_64
 	license = MIT
 	depends = ruby
 	depends = ruby-tzinfo
-	noextract = tzinfo-data-1.2021.3.gem
+	noextract = tzinfo-data-1.2021.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/tzinfo-data-1.2021.3.gem
-	sha512sums = a7b17ba72293017b05beb488f9219927c95f309f00cf12887f2873cdb4418649a8c147cb8f37112a587ca13d299a1c399529a15c3f699be53dc5d8fca54790d7
-	b2sums = 7bd82c545ba2e8854ac851d0cd5222dfd1ace2e60572dde4277c9d8e9f3375377a59388cfe247fe8e7ebc29f54d41d2323e8907835f66f9d0156d266ca1a6640
+	source = https://rubygems.org/downloads/tzinfo-data-1.2021.4.gem
+	sha512sums = e7feb9db2492cb89890fbea5ee9477f9cf7d4e5c634be6122fe3e25cf494e6746131f065436c9792bbb259d79874503848d5dda519e901f8c38cdb44515ee8ff
+	b2sums = 08ec52a6f05a0ec7e2b87d15f03ecdb74aaa7d7755bda112a259b46da383789cabc56cdb82853c3a77c1d22ca11b8d065abb6de804086f412a90eaf856c70ce7
 
 pkgname = ruby-tzinfo-data
