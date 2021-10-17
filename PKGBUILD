@@ -2,7 +2,7 @@
 
 pkgname=python-datalad
 _pkgname=datalad
-pkgver=0.14.7
+pkgver=0.15.2
 pkgrel=1
 pkgdesc='Keep code, data, containers under control with git and git-annex '
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'git-annex' 'python-msgpack' 'python-appdirs' 'python-simplejs
 makedepends=('python-setuptools')
 optdepends=()
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/datalad/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('6372c7fa7913f1719e00cf870b638ee5555c33402cd4fc3c21c16b11875dc9e3701f74cf3ea582dfc7b2faae415d47fa3e557855c5ede3db9af7adcb61cfca45')
+sha512sums=('f0206855439c2d376172218ec6bf1ffa3277508256a5a49a2ec65a57bb5720e039481329c16459ed62eb1c9ed0126dc178ca34fa2c3b8dfdf8b8a0706a2b8658')
 
 build()
 {
