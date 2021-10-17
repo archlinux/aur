@@ -6,7 +6,7 @@ pkgrel=13
 pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit templates.'
 arch=('any')
 license=('GPL3')
-depends=('bash' 'grep' 'java-runtime-headless>=8' 'openbsd-netcat' 'sed' 'jq' 'screen' 'sudo')
+depends=('bash' 'grep' 'java-runtime>=16' 'openbsd-netcat' 'sed' 'jq' 'screen' 'sudo')
 provides=('mcsctl')
 conflicts=('mcsctl')
 install="$pkgname.install"
