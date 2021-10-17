@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=guile-hall
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Project manager and build tool for GNU guile'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('git' 'guile' 'guile-config' 'texinfo')
 optdepends=('guix: for GNU Guix integration')
 source=("https://gitlab.com/a-sassmannshausen/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5bd47c4e38af0fc64d411d7c6626921b40dd42170798b48fb190e47f3ff359a9')
+sha256sums=('547085953485164a981ca982dd5b8bef0d17cc5b8d6a50ef841a1c80ef39c31a')
 
 build() {
   cd "$pkgname-$pkgver"
