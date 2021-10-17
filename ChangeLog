@@ -1,3 +1,14 @@
+4.9.3 (2021-10-13 17:24:38)
+
+    Fixes an issue in the ARM debugger where SP value was displayed instead of PC value,
+    Fixes the drawing of ARM instructions when PC value is outside of the application memory space,
+    Removes all usages of the deprecated WebKit classe.
+
+4.9.2 (2021-09-21 17:26:40)
+
+    Fixes an issue where selectors were not properly displayed in pseudo-code of methods extracted from a DYLD cache,
+    Fixes an issue where the wrong symbol name would be displayed on executables extracted from an Apple Silicon DYLD cache.
+
 4.9.0 (2021-09-14 15:47:43)
 
     Fixes loading of the new dyld shared cache,
