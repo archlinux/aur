@@ -5,6 +5,7 @@ pkgbase = rkvm-git
 	url = https://github.com/htrefil/rkvm
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = clang
 	makedepends = libevdev
 	makedepends = rust
@@ -19,4 +20,3 @@ pkgbase = rkvm-git
 	sha256sums = 031de233ee12593a3d3344d6dbacdcdff4cf68ad8067b80955bdb1bab964daef
 
 pkgname = rkvm-git
-

@@ -1,20 +1,20 @@
-# Maintainer: imtbl <imtbl at mser dot at>
+# Maintainer: Michael Serajnik <m at mser dot at>
 pkgname=rkvm-git
 _pkgname=rkvm
 pkgver=0.2.0.r9.gbf13366
 pkgrel=1
 pkgdesc="Virtual KVM switch for Linux machines"
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/htrefil/${_pkgname}"
-license=('MIT')
-depends=('openssl')
-makedepends=('clang' 'libevdev' 'rust')
+license=("MIT")
+depends=("openssl")
+makedepends=("git" "clang" "libevdev" "rust")
 source=("git+https://github.com/htrefil/${_pkgname}.git"
         rkvm-client.service
         rkvm-server.service)
-sha256sums=('SKIP'
-            'b3c39452aefb93f9a620a907d6947db66b0c907cfc351f72e2cc4953a081a038'
-            '031de233ee12593a3d3344d6dbacdcdff4cf68ad8067b80955bdb1bab964daef')
+sha256sums=("SKIP"
+            "b3c39452aefb93f9a620a907d6947db66b0c907cfc351f72e2cc4953a081a038"
+            "031de233ee12593a3d3344d6dbacdcdff4cf68ad8067b80955bdb1bab964daef")
 backup=("etc/${_pkgname}/client.toml"
         "etc/${_pkgname}/server.toml")
 
