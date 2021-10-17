@@ -1,0 +1,13 @@
+--- xvjp2k.c
++++ xvjp2k.c
+@@ -76,8 +76,8 @@
+ */
+ int jas_getdbglevel(void) {return 0;}
+ int jas_setdbglevel(int n) {return 0;}
+-int jas_memdump(FILE *fp,void *data,size_t len) {return 0;}
+-
++int jas_memdump(FILE *fp,const void *data,size_t len) {return 0;}
++void jas_deprecated(const char *s) {return;}
+ int jas_eprintf(const char *fmt,...)         /* Handle JasPer Library message */
+ {
+     static char error[] = "error: ", warning[]= "warning: ";
