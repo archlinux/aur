@@ -1,7 +1,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.2.1
+pkgrel=1
 epoch=
 pkgdesc="Syncing dotfiles and more"
 arch=("any")
@@ -23,7 +23,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/blurgyy/dt/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("9b4cea5f092194793a624ebc3ece43f84fb0daaeba0b7e9200b9982e32679f81")
+sha256sums=("e4963bb74b0335f30138db990011ea225bbb5389b86a1edc612c2e994cd2c2dd")
 noextract=()
 validpgpkeys=()
 
