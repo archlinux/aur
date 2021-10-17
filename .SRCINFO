@@ -1,6 +1,6 @@
 pkgbase = python-pytablereader
 	pkgdesc = Load structured table data from various file formats
-	pkgver = 0.31.0
+	pkgver = 0.31.1
 	pkgrel = 1
 	url = https://github.com/thombashi/pytablereader
 	arch = any
@@ -9,23 +9,24 @@ pkgbase = python-pytablereader
 	depends = python>=3.6
 	depends = python-beautifulsoup4>=4.4.1
 	depends = python-beautifulsoup4<5
-	depends = python-dataproperty>=0.50.1
+	depends = python-dataproperty>=0.54.2
 	depends = python-dataproperty<2
 	depends = python-jsonschema>=2.5.1
-	depends = python-jsonschema<4
+	depends = python-jsonschema<5
 	depends = python-mbstrdecoder>=1.0.0
 	depends = python-mbstrdecoder<2
-	depends = python-path
+	depends = python-path>=13
+	depends = python-path<17
 	depends = python-pathvalidate>=2.3.0
 	depends = python-pathvalidate<3
 	depends = python-tabledata>=1.1.1
 	depends = python-tabledata<2
-	depends = python-typepy>=1.1.4
+	depends = python-typepy>=1.2.0
 	depends = python-typepy<2
-	source = python-pytablereader-0.31.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pytablereader/pytablereader-0.31.0.tar.gz
-	source = python-pytablereader-0.31.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytablereader/pytablereader-0.31.0.tar.gz.asc
+	source = python-pytablereader-0.31.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pytablereader/pytablereader-0.31.1.tar.gz
+	source = python-pytablereader-0.31.1.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytablereader/pytablereader-0.31.1.tar.gz.asc
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
-	sha256sums = 9977677c19883e29f7e2cd6c0eda588ce1fbde6d73632f64d670a531bc4a9cf7
+	sha256sums = d4723759526a3262f98fb1bde80166f98ba2a9efbdc731ba0652220465bb5795
 	sha256sums = SKIP
 
 pkgname = python-pytablereader
