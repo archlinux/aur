@@ -1,6 +1,6 @@
 pkgbase = waypipe
 	pkgdesc = A proxy for Wayland protocol applications; like ssh -X
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/waypipe
 	arch = i686
@@ -24,8 +24,7 @@ pkgbase = waypipe
 	depends = libva
 	optdepends = openssh: recommended transport
 	optdepends = systemtap: a makedepend, for tracing hooks
-	source = https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v0.8.0/waypipe-v0.8.0.tar.gz
-	sha256sums = e61fa816a770d0bc22aa2545547c61edc24cf52ca5bb3da32351f2ac9ff94d02
+	source = https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v0.8.1/waypipe-v0.8.1.tar.gz
+	sha256sums = a6f71fa325ca37d998705fa864e39af8d32fb5dca252fc1d3e41542bb40e758b
 
 pkgname = waypipe
-
