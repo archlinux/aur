@@ -1,0 +1,18 @@
+pkgbase = swift-ubuntu-bin
+	pkgdesc = Swift language toolchain based on Ubuntu release. CLion supported.
+	pkgver = 5.5
+	pkgrel = 1
+	url = https://swift.org
+	arch = x86_64
+	license = apache
+	makedepends = patchelf
+	depends = libutil-linux
+	depends = libxml2
+	depends = python36
+	provides = swift-language
+	replaces = swift-language-bin
+	options = !strip
+	source = https://swift.org/builds/swift-5.5-release/ubuntu2004/swift-5.5-RELEASE/swift-5.5-RELEASE-ubuntu20.04.tar.gz
+	sha256sums = aaf7eaefdc3f90f77b21b8829546fc2648e02928af476437d6a58556cb858ec6
+
+pkgname = swift-ubuntu-bin
