@@ -1,7 +1,7 @@
 pkgbase = kwinft
 	pkgdesc = Wayland compositor and X11 window manager
 	pkgver = 5.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/kwinft/kwinft
 	install = kwinft.install
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = kwinft
 	depends = kdisplay
 	depends = kidletime
 	depends = kscreenlocker
-	depends = kdecoration-git
+	depends = kdecoration>=5.23.0
 	depends = libqaccessibilityclient
 	depends = python
 	depends = wlroots

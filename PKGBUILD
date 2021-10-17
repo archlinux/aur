@@ -1,12 +1,12 @@
 pkgname=kwinft
 pkgver=5.23.0
 _pkgver=5.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wayland compositor and X11 window manager'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/kwinft"
 license=(LGPL)
-depends=(xcb-util-cursor plasma-framework kcmutils breeze kinit qt5-sensors qt5-script wrapland disman kdisplay kidletime kscreenlocker kdecoration-git libqaccessibilityclient python wlroots)
+depends=(xcb-util-cursor plasma-framework kcmutils breeze kinit qt5-sensors qt5-script wrapland disman kdisplay kidletime kscreenlocker kdecoration">=${pkgver}" libqaccessibilityclient python wlroots)
 makedepends=(extra-cmake-modules qt5-tools kdoctools wrapland)
 optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
 provides=("kwin=${pkgver}")
