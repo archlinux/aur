@@ -1,6 +1,6 @@
 #!/usr/bin/env raku
 
-my $pkgver := '0.9.2';
+unit sub MAIN ($pkgver);
 
 put 'Downloading checksums file.';
 
@@ -19,8 +19,9 @@ $PKGBUILD ~~ s/<?after ^^'pkgver='>\N+/$pkgver/;
 
 # Set package checksums
 for %checksums.kv -> $linux, $checksum {
-    $PKGBUILD ~~ s/<?after ^^ 'sha256sums_x86_64='> \N+/('$checksum')/ if $linux ~~ /amd64/;
-    $PKGBUILD ~~ s/<?after ^^ 'sha256sums_i686='> \N+/('$checksum')/ if $linux ~~ /386/;
+    $PKGBUILD ~~ s/<?after ^^ 'sha256sums_x86_64='> \N+/('$checksum')/  if $linux.contains: 'amd64';
+    $PKGBUILD ~~ s/<?after ^^ 'sha256sums_i686='> \N+/('$checksum')/    if $linux.contains: '386';
+    $PKGBUILD ~~ s/<?after ^^ 'sha256sums_aarch64='> \N+/('$checksum')/ if $linux.contains: 'arm64';
 }
 
 put 'Writing to PKGBUILD.';
