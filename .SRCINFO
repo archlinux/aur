@@ -1,0 +1,14 @@
+pkgbase = ostrichriders
+	pkgdesc = free clone of the arcade game Joust
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = https://github.com/dulsi/ostrichriders
+	arch = x86_64
+	license = GPL-3
+	depends = sfml
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	source = https://github.com/dulsi/ostrichriders/archive/refs/tags/release-0.6.5.tar.gz
+	sha256sums = 68a7714e58a45a2b4b62354f9627e5b976aa0bd49c9952dea4c92e942164067f
+
+pkgname = ostrichriders
