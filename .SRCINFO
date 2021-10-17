@@ -1,7 +1,7 @@
 pkgbase = linux-cacule-rdb
-	pkgdesc = Linux-cacule-rdb Kernel by CachyOS and with some other patches and other improvements
-	pkgver = 5.14.12
-	pkgrel = 3
+	pkgdesc = Linux-cacule Kernel by CachyOS and with some other patches and other improvements
+	pkgver = 5.14.13
+	pkgrel = 1
 	url = https://github.com/ptr1337/linux-cacule
 	arch = x86_64
 	arch = x86_64_v3
@@ -19,7 +19,7 @@ pkgbase = linux-cacule-rdb
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.12.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.13.tar.xz
 	source = config
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/arch-patches-v10/0001-arch-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE/v5.14/cacule-5.14-full.patch
@@ -52,7 +52,7 @@ pkgbase = linux-cacule-rdb
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/0001-winesync.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14/0001-v4l2loopback.patch
 	source = auto-cpu-optimization.sh
-	md5sums = a52286fe206a3f7664ca5a6c5995b9ed
+	md5sums = dd8c7efa62d69eb9a50806f2b0d6da01
 	md5sums = 73e5d9dfaffee6b36924a77dd0172f24
 	md5sums = 581faf85cd625c41bbdd0cadbd0e451e
 	md5sums = 024a0126cfcd18e000a2241f35c4d69e
@@ -87,7 +87,7 @@ pkgbase = linux-cacule-rdb
 	md5sums = 21c98f19e883879dd3336c1fa143fd31
 
 pkgname = linux-cacule-rdb
-	pkgdesc = The Linux-cacule-rdb Kernel by CachyOS and with some other patches and other improvements kernel and modules
+	pkgdesc = The Linux-cacule Kernel by CachyOS and with some other patches and other improvements kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -98,6 +98,6 @@ pkgname = linux-cacule-rdb
 	provides = WIREGUARD-MODULE
 
 pkgname = linux-cacule-rdb-headers
-	pkgdesc = Headers and scripts for building modules for the Linux-cacule-rdb Kernel by CachyOS and with some other patches and other improvements
-	depends = linux-cacule-rdb=5.14.12
+	pkgdesc = Headers and scripts for building modules for the Linux-cacule Kernel by CachyOS and with some other patches and other improvements
+	depends = linux-cacule-rdb=5.14.13
 	depends = pahole
