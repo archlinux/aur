@@ -1,0 +1,22 @@
+pkgbase = pywal-16-colors
+	pkgdesc = Generate and change color-schemes on the fly.
+	pkgver = 3.3.0.r128.g4997a49
+	pkgrel = 1
+	url = https://github.com/sonjiku/pywal
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = imagemagick
+	optdepends = feh: set wallpaper
+	optdepends = nitrogen: set wallpaper
+	optdepends = python2: reload gtk2 themes on the fly
+	provides = pywal
+	provides = python-pywal
+	conflicts = pywal
+	conflicts = pywal-git
+	conflicts = python-pywal
+	source = git+https://github.com/sonjiku/pywal.git
+	sha256sums = SKIP
+
+pkgname = pywal-16-colors
