@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+Name=AVIF Images
+Name[en_GB]=AVIF Images
+Name[pt]=Imagens AVIF
+Name[pt_BR]=Imagens AVIF
+X-KDE-ServiceTypes=ThumbCreator
+MimeType=image/avif;
+X-KDE-Library=imagethumbnail
+CacheThumbnail=true
