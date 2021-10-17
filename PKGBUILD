@@ -8,11 +8,11 @@ _pkgver=9.0.0
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-crt-git
-pkgver=9.0.0.20210601
+pkgver=9.0.0.20211016
 pkgrel=1
 pkgdesc="MinGW-w64 CRT for Windows (git version)"
 arch=('any')
-url="https://mingw-w64.org/doku.php"
+url="https://www.mingw-w64.org/"
 license=('custom')
 groups=('mingw-w64-toolchain' 'mingw-w64')
 makedepends=('git'
