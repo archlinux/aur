@@ -1,8 +1,8 @@
 # Maintainer: L B <leobaldin dot 2000 at gmail dot com>
 
 pkgname=java-openjfx-bin
-_majorver=16
-pkgver=16
+_majorver=17.0.0.1
+pkgver=17
 pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} client application platform (Gluon build)."
 arch=('x86_64')
@@ -14,9 +14,9 @@ conflicts=("java${pkgver}-openjfx")
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-javadoc.zip")
-sha256sums=('5bd4392d0d2d6a4ddc12bedf8d912d4af17f8622f0560dbe0281f56c4f9ed14c'
-            '6d9d974119efafc9d3634c588dc4c94315db76d41693d09470b43922557bcfb4'
-            'aa4868df6bea6f6bb0802a2d4aa102285b618987124fa3733021ed1c4dfd8a79')
+sha256sums=('d03f61535fe05c3e648ccf457f96289ed0e094bb119423bc612e80e11ad20502'
+            '7763a658f838b8107904af5743a943cc3febb8e74df2875374962b784977880a'
+            'b569b3b4e6c7110264784ffb440938da4cb3064460961eed4c4dd6fc1b76648f')
 
 _jvmdir=usr/lib/jvm/java-${pkgver}-openjdk
 
@@ -24,7 +24,9 @@ package() {
     # Install
     install -d "${pkgdir}/${_jvmdir}"
     cp -a "javafx-sdk-${_majorver}/lib" "${pkgdir}/${_jvmdir}/"
-    mv "${pkgdir}/${_jvmdir}/lib/src.zip" "${pkgdir}/${_jvmdir}/lib/javafx-src.zip"
+    # Copy source archive
+    cp -a "javafx-sdk-${_majorver}/src.zip" "${pkgdir}/${_jvmdir}/"
+    mv "${pkgdir}/${_jvmdir}/src.zip" "${pkgdir}/${_jvmdir}/lib/javafx-src.zip"
     # Legal
     install -d "${pkgdir}/usr/share/licenses/java${pkgver}-openjdk"
     cp -a "javafx-sdk-${_majorver}/legal" "${pkgdir}/usr/share/licenses/java${pkgver}-openjdk/"
