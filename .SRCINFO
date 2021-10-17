@@ -10,7 +10,6 @@ pkgbase = blosc2
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	depends = lz4
