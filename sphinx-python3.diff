@@ -1,0 +1,16 @@
+diff -r -u Botan-1.10.17.orig/doc/conf.py Botan-1.10.17/doc/conf.py
+--- Botan-1.10.17.orig/doc/conf.py	2017-10-02 09:00:00.000000000 +0300
++++ Botan-1.10.17/doc/conf.py	2021-10-17 09:59:02.300020295 +0300
+@@ -40,10 +40,10 @@
+ def check_sphinx_version():
+     import sphinx
+ 
+-    version = map(int, sphinx.__version__.split('.'))
++    version = list(map(int, sphinx.__version__.split('.')))
+     if version[0] == 1 and version[1] == 0 and version[2] < 7:
+         # Exit rather than throwing to avoid a confusing backtrace
+-        print "This Sphinx is too old - upgrade to at least 1.0.7"
++        print("This Sphinx is too old - upgrade to at least 1.0.7")
+         import sys
+         sys.exit(1)
+ 
