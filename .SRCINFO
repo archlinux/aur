@@ -1,5 +1,5 @@
 pkgbase = pywal-16-colors
-	pkgdesc = Generate and change color-schemes on the fly.
+	pkgdesc = Generate and change color-schemes on the fly, now with 16 colors
 	pkgver = 3.3.0.r128.g4997a49
 	pkgrel = 1
 	url = https://github.com/sonjiku/pywal
