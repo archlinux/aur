@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://zydis.re/'
 license=('MIT')
 depends=('glibc')
-makedepends=('cmake' 'git' 'ninja' 'zycore-c>=1.0.0.r19.g6c93d9a')
+makedepends=('cmake' 'git' 'ninja' 'zycore-c>=1.0.0.r19')
 provides=("$_pkgname=$pkgver" 'libZydis.so')
 conflicts=("$_pkgname")
 source=("git+https://github.com/zyantific/$_pkgname.git")

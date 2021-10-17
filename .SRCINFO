@@ -8,7 +8,7 @@ pkgbase = zydis-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	makedepends = zycore-c>=1.0.0.r19.g6c93d9a
+	makedepends = zycore-c>=1.0.0.r19
 	depends = glibc
 	provides = zydis=3.1.0.r132.gab535b1
 	provides = libZydis.so
