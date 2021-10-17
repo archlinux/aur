@@ -2,7 +2,7 @@
 pkgname=fvim-bin
 pkgver=0.3.489_g98c4036
 _pkgver=$(echo "${pkgver}" | sed -e "s/_/-/g")
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform Neovim front-end UI, built with F# + Avalonia"
 arch=('x86_64')
 url="https://github.com/yatli/fvim"
@@ -20,6 +20,6 @@ options=('staticlibs')
 
 package() {
 	cd $srcdir
-        rpmextract.sh fvim-linux-x86_64.rpm
+        rpmextract.sh fvim-linux-x86_64-v0.3.489+g98c4036.rpm
 	cp -r "$srcdir/usr" "$pkgdir"
 }
