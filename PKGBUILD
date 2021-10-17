@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.9.beta2.r11.gd56dff08
+pkgver=0.5.9.1.r0.gf4dee7ea
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-gobject' 'python-yaml' 'python-evdev' 'python-dbus' 'gtk3'
          'python-pillow' 'python-requests' 'gnome-desktop' 'webkit2gtk'
          'mesa-demos' 'python-dbus' 'python-distro' 'python-magic' 'python-lxml')
 makedepends=('git' 'meson')
-#checkdepends=('xorg-server-xvfb' 'python-nose-cover3' 'wine' 'xterm')
+checkdepends=('appstream-glib')
 optdepends=(
   'wine: easiest way to get all the libraries missing from the Lutris runtime'
   'vulkan-icd-loader: Vulkan support'
@@ -45,11 +45,9 @@ build() {
   meson compile -C build
 }
 
-#check() {
-#  cd "$srcdir/${pkgname%-git}"
-#  xvfb-run nosetests --cover-erase --with-xunit --xunit-file=nosetests.xml \
-#    --with-coverage --cover-package=lutris --cover-xml-file=coverage.xml
-#}
+check() {
+  appstream-util validate-relax --nonet build/net.lutris.Lutris.metainfo.xml
+}
 
 package() {
   meson install -C build --destdir "$pkgdir"
