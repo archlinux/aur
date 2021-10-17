@@ -1,0 +1,11 @@
+--- a/build/share/tools/MovieMaker/build.xml
++++ b/build/share/tools/MovieMaker/build.xml
+@@ -74,7 +74,7 @@
+            nowarn="true" />
+   </target>
+ 
+-  <target name="build" depends="compile, prepare-ffmpeg" description="Build Movie Maker Tool">
++  <target name="build" depends="compile" description="Build Movie Maker Tool">
+     <mkdir dir="tool" />
+     <jar basedir="bin" destfile="tool/MovieMaker.jar" />
+   </target>
