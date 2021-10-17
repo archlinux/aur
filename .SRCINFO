@@ -1,14 +1,13 @@
 pkgbase = cloudmonkey-bin
 	pkgdesc = Command line tool for Apache CloudStack
-	pkgver = 6.1.0
-	pkgrel = 2
+	pkgver = 6.2.0
+	pkgrel = 1
 	url = https://github.com/apache/cloudstack-cloudmonkey
 	arch = x86_64
 	license = Apache
 	provides = cmk
 	conflicts = cmk
-	source = cloudmonkey-bin-6.1.0::https://github.com/apache/cloudstack-cloudmonkey/releases/download/6.1.0/cmk.linux.x86-64
-	sha256sums = d745900b0f14e9bd35d961c7649d9eb46e7b394c67f45f5f02ce0141bef23df6
+	source = cloudmonkey-bin-6.2.0::https://github.com/apache/cloudstack-cloudmonkey/releases/download/6.2.0/cmk.linux.x86-64
+	b2sums = d7e2fed751a12710027084f5e9cc82a48f7f63ea36c4a483063c3c76267c56f9af28217eab980d386d853fb4d9a149f5c5c8fab1c2010472c7262755e6ff9da2
 
 pkgname = cloudmonkey-bin
-

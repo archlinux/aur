@@ -1,20 +1,20 @@
 # Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=cloudmonkey-bin
-_pkgname="${pkgname%-bin}"
+_pkgname="cmk"
 _pkgtool=cmk
-pkgver=6.1.0
-pkgrel=2
+pkgver=6.2.0
+pkgrel=1
 pkgdesc='Command line tool for Apache CloudStack'
 arch=('x86_64')
 _goos=linux
-url="https://github.com/apache/cloudstack-$_pkgname"
+url="https://github.com/apache/cloudstack-${pkgname%-bin}"
 license=('Apache')
-provides=("$_pkgtool")
-conflicts=("$_pkgtool")
-source=("$pkgname-$pkgver::https://github.com/apache/cloudstack-$_pkgname/releases/download/$pkgver/$_pkgtool.$_goos.x86-64")
-sha256sums=(d745900b0f14e9bd35d961c7649d9eb46e7b394c67f45f5f02ce0141bef23df6)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname-$pkgver::$url/releases/download/$pkgver/$_pkgname.$_goos.${arch/_/-}")
+b2sums=(d7e2fed751a12710027084f5e9cc82a48f7f63ea36c4a483063c3c76267c56f9af28217eab980d386d853fb4d9a149f5c5c8fab1c2010472c7262755e6ff9da2)
 
 package() {
-	install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgtool"
+	install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
 }
