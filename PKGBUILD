@@ -1,37 +1,32 @@
-# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
-_pkgname=nerdtree
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
+
 pkgname=vim-nerdtree-git
-pkgver=5.0.0.973.5782b22
+pkgver=6.10.16.r0.g9310f91
 pkgrel=1
 pkgdesc='Tree explorer plugin for navigating the filesystem'
-arch=('any') 
-url='https://github.com/scrooloose/nerdtree'
+arch=('any')
+url='https://github.com/preservim/nerdtree'
 license=('custom:WTFPL')
-depends=('vim')
-makedepends=('git')
 groups=('vim-plugins')
+depends=('vim-plugin-runtime')
+makedepends=('git')
 provides=('vim-nerdtree')
 conflicts=('vim-nerdtree')
-source=("git+https://github.com/scrooloose/nerdtree")
-sha512sums=('SKIP')            
+source=("$pkgname::git+$url?signed")
+sha256sums=('SKIP')
+validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23')
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C "$pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  install -d \
-    "${pkgdir}/usr/share/vim/vimfiles/"{autoload,lib/nerdtree,doc,nerdtree_plugin,plugin,syntax}
-  cp -dr lib/nerdtree/* "${pkgdir}/usr/share/vim/vimfiles/lib/nerdtree"
-  cp -dr autoload/* "${pkgdir}/usr/share/vim/vimfiles/autoload"
-  install -m644 doc/NERDTree.txt "${pkgdir}/usr/share/vim/vimfiles/doc/"
-  install -m644 nerdtree_plugin/{exec_menuitem,fs_menu}.vim \
-    "${pkgdir}/usr/share/vim/vimfiles/nerdtree_plugin/"
-  install -m644 plugin/NERD_tree.vim "${pkgdir}/usr/share/vim/vimfiles/plugin/"
-  install -m644 syntax/nerdtree.vim "${pkgdir}/usr/share/vim/vimfiles/syntax/"
-  install -D -m644 LICENCE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "$pkgname"
+  find autoload doc lib nerdtree_plugin plugin syntax -type f \
+    -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  install -Dm 644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 README.markdown "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim:set et sw=2 ts=2 tw=79:
