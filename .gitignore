@@ -1,4 +1,4 @@
-/*.tar.zst
-/pkg
 /rkvm
+/pkg
 /src
+/*-*.pkg.tar*
