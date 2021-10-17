@@ -1,29 +1,25 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=blacktex
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
-pkgdesc="A LaTex code prettifier and formatter"
+pkgdesc="LaTex code prettifier and formatter"
 arch=('any')
 url="https://github.com/nschloe/blacktex"
 license=('GPL3')
-depends=('python>=3.7')
-makedepends=('python-setuptools' 'python-dephell')
+depends=('python>=3.6')
+optdepends=('python-importlib_metadata: required for python<3.8')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('b9b72d4be55bf3c0b004883ef0442be255450263740b9673bf22e6bc6f700048')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  dephell deps convert --from pyproject.toml --to setup.py
-}
+sha256sums=('1a0660ea8438ae7c640977a19b5b2c326a3555d0af2e32eb06e67758a4f0d40a')
 
 build() {
-  cd "$pkgname-$pkgver"
-  python setup.py build
+	cd "$pkgname-$pkgver"
+	python -c 'from setuptools import setup; setup()' build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 444 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	cd "$pkgname-$pkgver"
+	python -c 'from setuptools import setup; setup()' install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
