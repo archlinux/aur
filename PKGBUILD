@@ -3,7 +3,7 @@
 # Contributor: xantares
 
 pkgname=python-pytablewriter
-pkgver=0.64.0
+pkgver=0.64.1
 pkgrel=1
 pkgdesc='Python library to write a table in various formats'
 arch=('any')

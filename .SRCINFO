@@ -1,6 +1,6 @@
 pkgbase = python-pytablewriter
 	pkgdesc = Python library to write a table in various formats
-	pkgver = 0.64.0
+	pkgver = 0.64.1
 	pkgrel = 1
 	url = https://github.com/thombashi/pytablewriter
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-pytablewriter
 	depends = python-tcolorpy<1
 	depends = python-typepy>=1.2.0
 	depends = python-typepy<2
-	source = python-pytablewriter::git+https://github.com/thombashi/pytablewriter#tag=v0.64.0?signed
+	source = python-pytablewriter::git+https://github.com/thombashi/pytablewriter#tag=v0.64.1?signed
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
 	sha256sums = SKIP
 
