@@ -1,34 +1,41 @@
-# Maintainer: Kyle Brennan <kyle@metalspork.xyz>
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
+# Contributor: Kyle Brennan <kyle@metalspork.xyz>
+
 pkgname=resticprofile
-pkgver=0.11.0
+pkgver=0.15.0
+_commit_hash="8e7cf44c0d6775602ab0ce3412cd3d981ef543e5"
 pkgrel=1
-pkgdesc='Configuration profiles for restic backup'
-arch=('x86_64')
-url='https://github.com/creativeprojects/resticprofile'
-license=('GPL3.0')
-depends=('glibc' 'restic')
-makedepends=('git' 'make' 'go')
-provides=('resticprofile')
-source=("https://github.com/creativeprojects/resticprofile/archive/v$pkgver.tar.gz")
-sha256sums=('219d2c5155d23a3a6816fb6028639e70861fb03dccef0e5b54cf8b081b61b30b')
-
-importpath='github.com/restic/resticprofile'
-
-prepare() {
-    mv $pkgname-$pkgver $pkgname
-}
+pkgdesc="Configuration profiles for restic backup"
+arch=("x86_64")
+url="https://github.com/creativeprojects/resticprofile"
+license=("GPL3")
+depends=("glibc" "restic")
+makedepends=("go")
+source=("https://github.com/creativeprojects/resticprofile/archive/v${pkgver}.tar.gz")
+sha256sums=("10e7335b821d6e1399bd1f718eed5c1b726a8210fd36f20338cd0b4e2211efd4")
 
 build() {
-    cd "$pkgname"
-    make build-linux
+    cd "resticprofile-${pkgver}"
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+    LC_ALL=C _build_date="$(date)"
+
+    go mod vendor
+    go build -o resticprofile -v -ldflags "-X 'main.commit=${_commit_hash}' -X 'main.date=${_build_date}' -X 'main.builtBy=makepkg'"
 }
 
 package() {
-    install -Dm755 "$pkgname/resticprofile_linux" "$pkgdir/usr/bin/resticprofile"
-    install -Dm644 "$pkgname/LICENSE"             "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$pkgname/README.md"           "$pkgdir/usr/share/doc/$pkgname/README"
-    install -dm644 "$pkgdir/usr/share/resticprofile/examples/"
-    pwd
-    ls
-    install -Dm644 $pkgname/examples/*          "$pkgdir/usr/share/resticprofile/examples/"
+    cd "resticprofile-${pkgver}"
+
+    install -Dm755 resticprofile "${pkgdir}/usr/bin/resticprofile"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/resticprofile/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/resticprofile/README.md"
+
+    install -dm644 "${pkgdir}/usr/share/resticprofile/examples/"
+    install -Dm644 examples/* "${pkgdir}/usr/share/resticprofile/examples/"
 }
