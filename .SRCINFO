@@ -1,7 +1,7 @@
 pkgbase = python-fluiddyn
 	pkgdesc = FluidDyn project | Framework for studying fluid dynamics.
 	pkgver = 0.3.4.post0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fluiddyn.readthedocs.io
 	arch = any
 	license = custom:"CeCILL-B"
@@ -14,6 +14,7 @@ pkgbase = python-fluiddyn
 	depends = python-psutil
 	depends = python-distro
 	depends = python-h5netcdf
+	depends = python-qtpy
 	optdepends = python-pyfftw: Calculate FFT
 	optdepends = python-pillow: Image I/O
 	provides = python-fluiddyn

@@ -4,14 +4,14 @@ _proj=fluiddyn
 _name=fluiddyn
 pkgname=python-${_name}
 pkgver=0.3.4.post0
-pkgrel=1
+pkgrel=2
 pkgdesc="FluidDyn project | Framework for studying fluid dynamics."
 arch=('any')
 url="https://${_name}.readthedocs.io"
 license=('custom:"CeCILL-B"')
 depends=(
   'python' 'python-numpy' 'python-matplotlib' 'python-h5py' 'python-psutil'
-  'python-distro' 'python-h5netcdf'
+  'python-distro' 'python-h5netcdf' 'python-qtpy'
 )
 optdepends=(
   'python-pyfftw: Calculate FFT'
