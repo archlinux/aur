@@ -1,20 +1,20 @@
 pkgbase = foss-fpga-tools-nightly
 	pkgdesc = Meta package for the nightly version of the FOSS FPGA Tools
-	pkgver = 20211016
+	pkgver = 20211017
 	pkgrel = 1
 	epoch = 1
 	url = https://aur.archlinux.org/packages/foss-fpga-tools-nightly/
 	arch = any
 	license = custom:ISC
-	depends = yosys-nightly>=yosys_0.9_5638_g92ecfb2b_20211016
-	depends = symbiyosys-nightly>=15278f1_20211016
-	depends = nextpnr-generic-nightly>=c71a20e8_20211016
-	depends = icestorm-nightly>=83b8ef9_20211016
-	depends = nextpnr-ice40-nightly>=c71a20e8_20211016
-	depends = prjtrellis-nightly>=1.1_20211016
-	depends = nextpnr-ecp5-nightly>=c71a20e8_20211016
-	depends = prjoxide-nightly>=318331f_20211016
-	depends = nextpnr-nexus-nightly>=c71a20e8_20211016
+	depends = yosys-nightly>=yosys_0.9_5639_g0dd42d40_20211017
+	depends = symbiyosys-nightly>=15278f1_20211017
+	depends = nextpnr-generic-nightly>=c71a20e8_20211017
+	depends = icestorm-nightly>=83b8ef9_20211017
+	depends = nextpnr-ice40-nightly>=c71a20e8_20211017
+	depends = prjtrellis-nightly>=1.1_20211017
+	depends = nextpnr-ecp5-nightly>=c71a20e8_20211017
+	depends = prjoxide-nightly>=318331f_20211017
+	depends = nextpnr-nexus-nightly>=c71a20e8_20211017
 	options = !strip
 
 pkgname = foss-fpga-tools-nightly
