@@ -8,7 +8,6 @@ pkgbase = wgrib2
 	license = Apache
 	license = custom
 	makedepends = gcc-fortran
-	makedepends = tar
 	depends = glibc
 	depends = gcc-libs
 	source = https://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2.tgz.v3.1.0
