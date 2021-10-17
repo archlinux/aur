@@ -1,7 +1,7 @@
 # Maintainer: Vlad Frolov <frolvlad@gmail.com>
 
 pkgname=cargo-hack
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="A cargo subcommand to provide various options useful for testing and continuous integration"
 url="https://github.com/taiki-e/cargo-hack"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT' 'APACHE')
 source=(https://github.com/taiki-e/cargo-hack/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('126c9235d00190558a0561906a48deb7e2222bfa7c61a44025738976f26c76d6d11249f042f56dfa69a68f6c5518a39991bbd42655ed418cba3ac5a9a0dea9bd')
+sha512sums=('8599f3020f58e21dc59e74f55f6fba243b354bbd1999a16b757813d4c1d956254a4cf847891a6dac822e3496fce9af9632092e51460d18c5da3a359bda93ef54')
 
 build() {
   cd "cargo-hack-${pkgver}"
