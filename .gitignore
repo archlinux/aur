@@ -1,4 +1,4 @@
 /patool
 /pkg
 /src
-/*.tar.zst
+/*-*.pkg.tar*
