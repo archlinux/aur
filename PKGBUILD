@@ -26,7 +26,7 @@ source=(
   "fofix.png"
 )
 md5sums=('e8ec6f5e9fa4c39bd5b23a0c9fd8f864'
-         '1f2bee779634f951dc09ab3b28758d7c'
+         '816b52ec85a60e005e9ff2ee428770c2'
          'f886a7fdfa7592b50aa9f62901910e03')
 
 package() {
