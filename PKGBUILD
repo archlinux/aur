@@ -1,7 +1,7 @@
 # Maintainer: Vasil Bakalov <jens300304@gmail.com>
 pkgname=python-slider
 url="https://llllllllll.github.io/slider/index.html"
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Utilities for working with osu! files and data."
 arch=('any')
@@ -10,7 +10,7 @@ source=(
     "https://github.com/llllllllll/slider/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    '01bedc68480e4b6ff3db459707edd78f48e8ab43dbe05eaf5a934e8fcd3a5c3d'
+    '806f5b5ba33e6eea57ff8d511e644d250612144822f3ee6ccfbcd8b38787cb25'
 )
 depends=(
     'python>=3.6'

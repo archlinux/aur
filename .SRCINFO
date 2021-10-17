@@ -1,6 +1,6 @@
 pkgbase = python-slider
 	pkgdesc = Utilities for working with osu! files and data.
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://llllllllll.github.io/slider/index.html
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-slider
 	depends = python-requests
 	depends = python-scipy
 	conflicts = python-slider-git
-	source = https://github.com/llllllllll/slider/archive/refs/tags/v0.5.2.tar.gz
-	sha256sums = 01bedc68480e4b6ff3db459707edd78f48e8ab43dbe05eaf5a934e8fcd3a5c3d
+	source = https://github.com/llllllllll/slider/archive/refs/tags/v0.5.3.tar.gz
+	sha256sums = 806f5b5ba33e6eea57ff8d511e644d250612144822f3ee6ccfbcd8b38787cb25
 
 pkgname = python-slider
