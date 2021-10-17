@@ -1,12 +1,13 @@
 # Maintainer: Mohammad Mostafa Farzan <m2_farzan@yahoo.com>
 # Contributor: mjbogusz <mjbogusz+github@gmail.com>
 # Contributor: yuanyuyuan <az6980522@gmail.com>
+# Contributor: Rémy B. (github.com/KirrimK)
 # Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
 # package, maintained by T. Borgert.
 
 pkgname=ros2-galactic
 pkgver=2021.07.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
@@ -53,7 +54,7 @@ prepare() {
     ## Eclipse iceoryx: fix building error with GCC 11
     git -C $srcdir/ros2/src/eclipse-iceoryx/iceoryx checkout v1.0.1
     ## Eclipse CycloneDDS: latest release
-    git -C $srcdir/ros2/src/eclipse-cyclonedds/cyclonedds checkout 0.8.0rc1
+    git -C $srcdir/ros2/src/eclipse-cyclonedds/cyclonedds checkout 0.8.1
     ## yaml_cpp_vendor: fix handling of CMAKE_C[XX]_FLAGS lists
     git -C $srcdir/ros2/src/ros2/yaml_cpp_vendor checkout a00f059a79e98bd3899e8fe4261ea61da807b6ef
     ## ros1_bridge
