@@ -1,0 +1,30 @@
+pkgbase = neovim-deoplete-git
+	pkgdesc = Dark powered asynchronous completion framework
+	pkgver = 6.1.r13.g18788fc
+	pkgrel = 1
+	url = https://github.com/shougo/deoplete.nvim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-msgpack>=1.0.0
+	source = neovim-deoplete-git::git+https://github.com/shougo/deoplete.nvim
+	sha256sums = SKIP
+
+pkgname = neovim-deoplete-git
+	groups = neovim-plugins
+	depends = python-msgpack>=1.0.0
+	depends = neovim>=0.3.0
+	depends = python-pynvim>=0.3.0
+	provides = neovim-deoplete
+	conflicts = neovim-deoplete
+
+pkgname = vim-deoplete-git
+	groups = vim-plugins
+	depends = python-msgpack>=1.0.0
+	depends = vim
+	depends = python-pynvim>=0.3.0
+	depends = nvim-yarp
+	depends = vim-hug-neovim-rpc
+	provides = vim-deoplete
+	conflicts = vim-deoplete
+	conflicts = neovim-deoplete
