@@ -1,6 +1,6 @@
 pkgbase = pulsemeeter-git
 	pkgdesc = A pulseaudio audio routing application
-	pkgver = 1.0.r20.eae3def
+	pkgver = 1.1.r0.e687a9f
 	pkgrel = 1
 	url = https://github.com/theRealCarneiro/pulsemeeter
 	arch = i686
@@ -11,7 +11,9 @@ pkgbase = pulsemeeter-git
 	makedepends = make
 	depends = python-gobject
 	depends = gtk3
+	depends = noise-suppression-for-voice
 	optdepends = glade: customize interface
+	optdepends = pulseaudio
 	provides = pulsemeeter
 	source = pulsemeeter::git+https://github.com/theRealCarneiro/pulsemeeter.git
 	md5sums = SKIP
