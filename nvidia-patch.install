@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = nvidia-tweaks
+
+[Action]
+Description = Applying nvidia-patch from keylase
+When = PostTransaction
+Exec = /bin/sh -c 'nvidia-patch-nvenc; nvidia-patch-fbc'
+NeedsTargets

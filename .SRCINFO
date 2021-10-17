@@ -1,0 +1,23 @@
+pkgbase = nvidia-tweaks
+	pkgdesc = A collection of tweaks and improvements to the NVIDIA driver
+	pkgver = 470
+	pkgrel = 1
+	url = https://www.nvidia.com/
+	arch = any
+	license = custom
+	depends = NVIDIA-MODULE
+	depends = nvidia-utils
+	source = nvidia-tweaks.hook
+	source = nvidia-patch.install
+	source = nvidia-patch.remove
+	source = 60-nvidia.rules
+	source = https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch-fbc.sh
+	source = https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh
+	sha256sums = a69ab5f55ce0ccc15edc434b5ab625b3303ba3bd77f64a065668f985d9167cc0
+	sha256sums = 81464bfeda86b9683a6f739a1cec1a2fe37717af5480671be70fe43f51fba420
+	sha256sums = b4bde9eecd90fc9498a8d47c7bb7edfe877ae64ea9e7069c405710a76c749144
+	sha256sums = c8fd71e3885b18c88c800cc9693112846d1889a008ae7dc6cbc9bb6fadd67ec6
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nvidia-tweaks

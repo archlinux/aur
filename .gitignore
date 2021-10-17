@@ -1,0 +1,11 @@
+.*
+!.gitignore
+!.SRCINFO
+*~
+*.pkg
+*.sh
+*.bak
+*.tar.gz
+*.tar.zst
+src/
+pkg/

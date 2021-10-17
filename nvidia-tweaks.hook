@@ -1,0 +1,13 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=nvidia-tweaks
+
+[Action]
+Description=Update Nvidia module in initcpio (for DRM KMS)
+Depends=mkinitcpio
+When=PostTransaction
+NeedsTargets
+Exec=/usr/bin/mkinitcpio -P

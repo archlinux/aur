@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = nvidia-tweaks
+
+[Action]
+Description = Remove nvidia-patch
+Depends = nvidia-utils
+When = PreTransaction
+Exec = /bin/sh -c 'nvidia-patch-nvenc -r; nvidia-patch-fbc -r'
+NeedsTargets
