@@ -1,6 +1,6 @@
 pkgbase = sdrpp-git
 	pkgdesc = The Bloat-free SDR Receiver
-	pkgver = 0.3.0
+	pkgver = 1.0.4
 	pkgrel = 5
 	url = https://github.com/AlexandreRouma/SDRPlusPlus
 	arch = any
@@ -16,6 +16,8 @@ pkgbase = sdrpp-git
 	makedepends = airspyhf-git
 	makedepends = hackrf
 	makedepends = libsdrplay
+	makedepends = bladerf
+	makedepends = limesuite
 	depends = fftw
 	depends = glfw
 	depends = glew
@@ -25,12 +27,13 @@ pkgbase = sdrpp-git
 	optdepends = libiio
 	optdepends = libad9361
 	optdepends = rtl-sdr
-	optdepends = airspy-git
+	optdepends = airspy
 	optdepends = airspyhf-git
 	optdepends = hackrf
 	optdepends = libsdrplay
+	optdepends = bladerf
+	optdepends = limesuite
 	source = git+https://github.com/AlexandreRouma/SDRPlusPlus
 	md5sums = SKIP
 
 pkgname = sdrpp-git
-
