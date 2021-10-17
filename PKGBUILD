@@ -3,7 +3,7 @@
 
 pkgname=fofix
 pkgver=3.122
-pkgrel=2
+pkgrel=3
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire"
 url="https://github.com/fofix/fofix"
 arch=(any)
@@ -21,9 +21,9 @@ depends=(
 )
 replaces=('fofix')
 source=(
-  'https://github.com/fofix/fofix/archive/v3.122.tar.gz'
-  'fofix.desktop'
-  'fofix.png'
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/fofix/fofix/archive/v${pkgver}.tar.gz"
+  "fofix.desktop"
+  "fofix.png"
 )
 md5sums=('e8ec6f5e9fa4c39bd5b23a0c9fd8f864'
          '1f2bee779634f951dc09ab3b28758d7c'
