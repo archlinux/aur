@@ -2,8 +2,8 @@
 
 pkgbase=neovim-zenbones
 pkgname=('neovim-zenbones' 'neovim-zenbones-extras')
-pkgver=0.13
-pkgrel=2
+pkgver=0.14
+pkgrel=1
 pkgdesc="Contrast-focused Neovim colorscheme"
 arch=('any')
 url="https://github.com/mcchrish/zenbones.nvim"
