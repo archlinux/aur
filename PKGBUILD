@@ -1,4 +1,4 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Joris Vaišvila <yoris01@protonmail.com>
 
 pkgname=elementary-wallpapers-git
 pkgver=r124.47b25c2
