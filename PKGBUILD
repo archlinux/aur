@@ -1,8 +1,8 @@
 #Maintainer: Raimar Buehmann <raimar at buehmann dot de>
 
 pkgname=eclipse-rcp-source
-pkgver=4.13
-_buildTime=201909161045
+pkgver=4.21
+_buildTime=202109060500
 pkgrel=1
 pkgdesc='RCP sources for Eclipse IDE'
 arch=('any')
@@ -14,7 +14,7 @@ options=('!strip')
 source=(
 	"https://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-${pkgver}-${_buildTime}/org.eclipse.rcp.source-${pkgver}.zip&r=1"
 )
-sha256sums=('51eba88050b02cc126f94aeaaaf30e1cdc6224cf2bef0d7464d4e3d712766fe6')
+sha256sums=('cc5a35a6ce818b5aee182ab5915955b51604e8214a42cba2258f434a837271fe')
 
 package() {
   # remove binary and features folder
