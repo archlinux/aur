@@ -1,8 +1,8 @@
 pkgbase = linux-pds
 	pkgdesc = Linux
-	pkgver = 5.14.7.arch1
+	pkgver = 5.14.12.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.14.7-arch1
+	url = https://github.com/archlinux/linux/commits/v5.14.12-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,10 +20,10 @@ pkgbase = linux-pds
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v5.14.7-arch1
+	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v5.14.12-arch1
 	source = git+https://github.com/graysky2/kernel_compiler_patch.git
 	source = config
-	source = 0009-prjc_v5.14-r2.patch
+	source = 0009-prjc_v5.14-r3.patch
 	source = 0005-glitched-pds.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -31,8 +31,8 @@ pkgbase = linux-pds
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 3cc14d059f44f88c118602cdfd6e2130ba45388261318c4dbbca6161f92989c13a07119a05bb044a3b29e2eb5ef15c8b153176187c3603f72177964910ea61a6
-	sha512sums = cde5ffaff37aa4246542434d07b4114e5fec2d202ea4d14a934f306e89d674045c55b8b67bc36f43ca6a7284ca4ebcb98e79d6fa48e8c0084da5c6ed37efd53c
+	sha512sums = e0d40ae407753e6b35263b52782a4e82904a2af00093a115c2cd14ff3b4ff9838944dc2560128efd64a690779ac10f50b63b80eb348c7e3aa4bf47dbebc3e41c
+	sha512sums = 9719b022a1798a7909cd7160917816c40310eb42fa4144f7b122dd57950c1088f2ab6fb9202f30591d7b793c6634a7b97e77af2e192043b95ae44751451af7cc
 	sha512sums = 889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57
 
 pkgname = linux-pds
