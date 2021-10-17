@@ -1,6 +1,6 @@
 pkgbase = ytcc-git
 	pkgdesc = Command line tool to keep track of playlists
-	pkgver = r366.4ff3e47
+	pkgver = r419.094790f
 	pkgrel = 1
 	url = https://github.com/woefe/ytcc
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = ytcc-git
 	depends = python-wcwidth
 	optdepends = mpv
 	optdepends = fzf
+	optdepends = yt-dlp
 	provides = ytcc
 	conflicts = ytcc
 	source = ytcc-git::git+https://github.com/woefe/ytcc.git
 	sha256sums = SKIP
 
 pkgname = ytcc-git
-
