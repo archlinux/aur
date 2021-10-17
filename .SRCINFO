@@ -1,13 +1,11 @@
 pkgbase = storageexplorer
 	pkgdesc = Microsoft Azure Storage Explorer is a standalone app from Microsoft that allows you to easily work with Azure Storage data on Windows, macOS and Linux.
 	pkgver = 1.21.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/AzureStorageExplorer/releases
 	arch = x86_64
 	license = unknown
 	depends = glibc
-	depends = gnome-keyring
-	depends = libgnome-keyring
 	depends = dotnet-runtime-3.1
 	provides = storageexplorer
 	source = Linux.StorageExplorer-linux-x64-v1.21.2.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.21.2/Linux_StorageExplorer-x64.tar.gz
