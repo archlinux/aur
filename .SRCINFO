@@ -1,0 +1,18 @@
+pkgbase = darkan
+	pkgdesc = Authentic, Open Source 2012 Runescape Era Game
+	pkgver = 1
+	pkgrel = 1
+	url = https://darkan.org
+	arch = x86_64
+	license = unknown
+	depends = java-runtime>=8
+	depends = bash
+	noextract = Darkan.jar
+	source = https://darkan.org/assets/uploads/files/Darkan.jar
+	source = Darkan.desktop
+	source = Darkan.png
+	sha256sums = 97030d81757c7b8a797cc1de543a8138ebb89b703baa1f94ea850d89a193ea1a
+	sha256sums = 1df8e4e54c0a4218d5cba6e2cc2f281b614fb5f59cab3fe3691113024182b5cc
+	sha256sums = dbea124d36be28026b313b9300c172f78db0f9d3dbb91e98e0b5bd48a7486fe6
+
+pkgname = darkan

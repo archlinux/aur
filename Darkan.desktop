@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Darkan
+GenericName=Darkan
+Comment=Open source 2021 Runescape Emulation
+Exec=Darkan
+Icon=Darkan
+Terminal=false
+Type=Application
+Categories=Game;
