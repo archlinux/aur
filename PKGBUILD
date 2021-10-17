@@ -2,7 +2,7 @@
 # Contributor: BrainDamage
 
 pkgname="comic-dl"
-pkgver=1.0.434
+pkgver=1.0.437
 pkgrel=1
 pkgdesc="Comic-dl is a command line tool to download Comics and Manga from various Manga and Comic sites easily."
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/Xonshiz/${pkgname}"
 license=("MIT")
 optdepends=('phantomjs: to access some sites')
 depends=("python" "python-tqdm" "python-requests" "python-cfscrape" "python-clint" "img2pdf" "python-colorama" "python-future" "python-beautifulsoup4" "python-cloudscraper" "phantomjs" "nodejs")
-sha256sums=('70b9c0c7878651c685f7ba70a1ecef2905749988f2453d03730a17cd09547ca4')
+sha256sums=('a4875e3342d5ecdacc2f89da1ed301e69e311aa8ebc9c621fc9e5345e12856b6')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Xonshiz/comic-dl/archive/$pkgver.tar.gz")
 
 prepare() {
