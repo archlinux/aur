@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=zydis
 pkgname=$_pkgname-git
-pkgver=3.1.0.r131.g746faa4
+pkgver=3.1.0.r132.gab535b1
 pkgrel=1
 pkgdesc='Fast and lightweight x86/x86-64 disassembler library'
 arch=('x86_64')
@@ -11,22 +11,12 @@ depends=('glibc')
 makedepends=('cmake' 'git' 'ninja' 'zycore-c>=1.0.0.r19.g6c93d9a')
 provides=("$_pkgname=$pkgver" 'libZydis.so')
 conflicts=("$_pkgname")
-source=(
-	"git+https://github.com/zyantific/$_pkgname.git"
-	"0001-zydis-unbundle-zycore.patch::https://github.com/zyantific/$_pkgname/pull/250.patch"
-)
-b2sums=(
-	'SKIP'
-	'4ea5883a235572cb2e090900c4a52ae41b54d2219eafc3336df8b3e4e2ac85247a216770ffdb64261873b53aaa5414fbdd67a5798c7cbec13e9fb3943ff3ff8e'
-)
+source=("git+https://github.com/zyantific/$_pkgname.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	patch -d $_pkgname -Np1 < 0001-zydis-unbundle-zycore.patch
 }
 
 build() {
