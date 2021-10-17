@@ -1,5 +1,5 @@
 pkgname=neovim-lspinstall
-pkgver=08ea726
+pkgver=79ec242
 pkgrel=1
 pkgdesc='Provides the missing :LspInstall for nvim-lspconfig.'
 arch=('any')

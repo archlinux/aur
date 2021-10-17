@@ -1,6 +1,6 @@
 pkgbase = neovim-lspinstall
 	pkgdesc = Provides the missing :LspInstall for nvim-lspconfig.
-	pkgver = 08ea726
+	pkgver = 79ec242
 	pkgrel = 1
 	url = https://github.com/kabouzeid/nvim-lspinstall
 	arch = any
