@@ -2,6 +2,7 @@ pkgbase = ntfs3-dkms
 	pkgdesc = NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1.
 	pkgver = 5.15
 	pkgrel = 1
+	epoch = 1
 	url = https://www.paragon-software.com/home/ntfs3-driver-faq/
 	arch = any
 	license = GPL2
