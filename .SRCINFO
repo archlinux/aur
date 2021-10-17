@@ -1,6 +1,6 @@
 pkgbase = python-pysolar
 	pkgdesc = Collection of Python libraries for simulating the irradiation of any point on earth by the sun. It includes code for extremely precise ephemeris calculations.
-	pkgver = 0.9
+	pkgver = 0.10
 	pkgrel = 1
 	url = http://pysolar.org/
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = python-pysolar
 	depends = python
 	depends = python-numpy
 	depends = python-setuptools
-	source = https://github.com/pingswept/pysolar/archive/0.9.tar.gz
-	md5sums = 3bd64fddb4ea992a7e63978532561a6c
+	source = https://github.com/pingswept/pysolar/archive/0.10.tar.gz
+	md5sums = 517b66360690f90ad4b5b1451562850c
 
 pkgname = python-pysolar
-
