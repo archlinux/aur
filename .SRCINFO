@@ -1,13 +1,13 @@
 pkgbase = 10ff-git
 	pkgdesc = Typing tests in CLI
-	pkgver = r35.fea0a73
+	pkgver = r53.10d48c2
 	pkgrel = 1
 	url = https://github.com/rr-/10ff
 	arch = any
 	license = WTFPL
+	makedepends = git
 	depends = python
 	source = git+https://github.com/rr-/10ff.git
 	md5sums = SKIP
 
 pkgname = 10ff-git
-

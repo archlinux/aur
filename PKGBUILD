@@ -1,15 +1,16 @@
-# Maintainer: Michael Serajnik <ms dot mserajnik dot at>
+# Maintainer: Michael Serajnik <m at mser dot at>
 pkgname=10ff-git
 _pkgname=10ff
-pkgver=r35.fea0a73
+pkgver=r53.10d48c2
 pkgrel=1
 pkgdesc="Typing tests in CLI"
-arch=('any')
+arch=("any")
 url="https://github.com/rr-/${_pkgname}"
-license=('WTFPL')
-depends=('python')
+license=("WTFPL")
+depends=("python")
+makedepends=("git")
 source=("git+https://github.com/rr-/${_pkgname}.git")
-md5sums=('SKIP')
+md5sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
