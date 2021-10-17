@@ -5,9 +5,9 @@
 
 pkgname=hmcl-dev
 _pkgname=hmcl
-pkgver=3.3.201
-_commit=5edd7a7b72e011a214ac8246561a8866e5e54a15
-pkgrel=2
+pkgver=3.4.208
+_commit=673bc75cd5b1376717c2fa99767674b47cd80c39
+pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular (development version)"
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -16,15 +16,25 @@ provides=('hmcl')
 conflicts=('hmcl')
 depends=('java8-openjfx'
          'jdk8-openjdk')
+makedepends=(git)
 source=("hmcl-launch-script"
         "${_pkgname}.desktop"
-        "${_pkgname}-${pkgver}.tgz::${url}/archive/${_commit}.tar.gz")
+        "git://github.com/huanghongxun/HMCL.git#commit=${_commit}"
+        "git://github.com/huanghongxun/JSTUN.git#commit=08ab1f8483aba307931494e695e27cbde0cc2657")
 sha256sums=('b9e66ecda49285fb076f2c383420854b639c56e4bb240e86dbf666f5929dc1a5'
             '5780cf70f1afec0eb3cd8fc43297d361903c7204e274a28c5edf9b8ac3eea83e'
-            '9e62ecfc4797836bff48ac9d29ccd671dfd543503e97285f5606e57c453d0c7c')
+            'SKIP'
+            'SKIP')
+
+prepare() {
+  cd HMCL
+  git submodule init
+  git config submodule.JSTUN.url "$srcdir/JSTUN"
+  git submodule update
+}
 
 build() {
-  cd "HMCL-${_commit}"
+  cd HMCL
   _java=$(ls /usr/lib/jvm | grep 8-openjdk)
   export JAVA_HOME=/usr/lib/jvm/$_java
   sh gradlew build
@@ -36,7 +46,7 @@ package() {
   # desktop file
   install -Dm644 "hmcl.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-  cd "HMCL-${_commit}/HMCL/build"
+  cd HMCL/HMCL/build
 
   # install jar
   _path=$(echo libs/HMCL*.jar)
