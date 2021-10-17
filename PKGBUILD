@@ -1,6 +1,6 @@
 # Contributor: ConnorBehan <connor.behan@gmail.com>
 pkgname=scale2x
-pkgver=3.2
+pkgver=4.0
 pkgrel=1
 pkgdesc="Bitmap scaling algorithm that improves the resolution of a PNG"
 arch=(i686 x86_64)
@@ -20,4 +20,4 @@ package() {
   make prefix="$pkgdir"/usr install
 }
 
-md5sums=('e047693762b52b563a24d16d6a98b04b')
+sha256sums=('996f2673206c73fb57f0f5d0e094d3774f595f7e7e80fcca8cc045e8b4ba6d32')
