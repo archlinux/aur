@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttc-iosevka-ss09-super
-pkgver=10.3.2
+pkgver=10.3.3
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/super-ttc-iosevka-ss09-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('d8d25d9d7cc51848a76c57721e6cb3e33a58172768e1609b3ee2e0d9a12cf301'
+sha256sums=('f52961631ed4e609eb0ec132fb43e0b551bf92a551a77815b2cfdf4169c247db'
             '72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80')
 
 package() {
