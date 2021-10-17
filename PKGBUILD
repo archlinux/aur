@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/wummel/${_pkgname}"
 license=("GPL3")
 depends=("python")
-makedepends=("python-setuptools")
+makedepends=("git" "python-setuptools")
 optdepends=("tar: extracting TAR files"
             "unrar: extracting RAR files"
             "p7zip: extracting ZIP and 7z files")

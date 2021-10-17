@@ -5,6 +5,7 @@ pkgbase = patool-git
 	url = https://github.com/wummel/patool
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	optdepends = tar: extracting TAR files
@@ -16,4 +17,3 @@ pkgbase = patool-git
 	sha256sums = SKIP
 
 pkgname = patool-git
-
