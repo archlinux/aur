@@ -1,0 +1,15 @@
+pkgbase = python-ftx-git
+	pkgdesc = Unofficial Python wrapper for FTX API
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/quan-digital/ftx
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-ciso8601
+	source = git+https://github.com/quan-digital/ftx.git
+	md5sums = SKIP
+
+pkgname = python-ftx-git
