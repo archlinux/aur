@@ -1,7 +1,7 @@
 pkgbase = linux-clear-lts2020
 	pkgdesc = Clear Linux lts2020
 	pkgver = 5.10.74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-lts2020
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = linux-clear-lts2020
 	makedepends = git
 	makedepends = kmod
 	makedepends = libelf
+	makedepends = pahole
 	makedepends = xmlto
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
@@ -39,3 +40,4 @@ pkgname = linux-clear-lts2020
 
 pkgname = linux-clear-lts2020-headers
 	pkgdesc = Headers and scripts for building modules for the Clear Linux lts2020 kernel
+	depends = pahole
