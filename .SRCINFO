@@ -1,0 +1,15 @@
+pkgbase = lua-succulent-git
+	pkgdesc = Lua functions and utilities for Hilbish
+	pkgver = r7.96dc95c
+	pkgrel = 1
+	url = https://github.com/rosettea/succulent
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = lua-succulent
+	conflicts = lua-succulent
+	source = lua-succulent-git::git+https://github.com/rosettea/succulent?signed
+	validpgpkeys = 098F50DFBCEEC71A4EAB6DA450EE40A2809851F5
+	sha256sums = SKIP
+
+pkgname = lua-succulent-git
