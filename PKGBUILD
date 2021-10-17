@@ -1,12 +1,13 @@
 # Maintainer: Michael Serajnik <m at mser dot at>
 pkgname=cproton-git
 _pkgname=ProtonUpdater
-pkgver=0.2.1.r8.gc1cc322
+pkgver=0.2.2.r0.g22a55c9
 pkgrel=1
 pkgdesc="Script to make it easier to update Proton GE to the latest version"
 arch=("any")
 url="https://github.com/flubberding/ProtonUpdater"
 license=("MIT")
+makedepends=("git")
 source=("git+https://github.com/flubberding/ProtonUpdater.git")
 sha512sums=("SKIP")
 
