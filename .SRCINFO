@@ -1,6 +1,6 @@
 pkgbase = nvim-cmp
 	pkgdesc = A completion plugin for neovim coded in Lua.
-	pkgver = f5393d5
+	pkgver = 4ecf2a2
 	pkgrel = 1
 	url = https://github.com/hrsh7th/nvim-cmp
 	arch = any

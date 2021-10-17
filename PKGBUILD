@@ -1,5 +1,5 @@
 pkgname=nvim-cmp
-pkgver=f5393d5
+pkgver=4ecf2a2
 pkgrel=1
 pkgdesc='A completion plugin for neovim coded in Lua.'
 arch=('any')
