@@ -2,7 +2,7 @@
 
 pkgname=hamclock
 pkgver=2.69
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (800x480 version)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/kj7rrv/hamclock/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('b6f893351ba9255f08f4c766d37d55d2ddb73ff5d53bc4b489ea6c5f10d68287')
+sha256sums=('fa67629f6fab65ba9ac669d4df661eb2bea95aa44a663f8d9ba448fff58956ce')
 validpgpkeys=()
 
 prepare() {
