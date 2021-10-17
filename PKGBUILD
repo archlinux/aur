@@ -1,13 +1,13 @@
 pkgname=bandwidth
-pkgver=1.10.1
+pkgver=1.10.4
 pkgrel=1
 pkgdesc="Benchmark memory bandwidth"
 arch=('i686' 'x86_64')
 url="http://zsmith.co/bandwidth.php"
 license=('GPL')
 makedepends=('nasm')
-options=(!makeflags)
-sha256sums=('b6bc9afbf7013488adb5001ce6d7329196c899e212a88a253bf63cb8e2348c69')
+options=(!makeflags !debug)
+sha256sums=('7bf78fdab03b12516b876678a93cd1191fdcc58d5423ab3e2d0f4e835c78ebf2')
 source=("https://zsmith.co/archives/${pkgname}-${pkgver}.tar.gz")
 
 build() {
@@ -16,9 +16,9 @@ build() {
   make clean
 
   if [ "${CARCH}" = "x86_64" ]; then
-     make bandwidth64
+     make -f Makefile-linux-x86_64 bandwidth64
    else
-     make bandwidth32
+     make -f Makefile-linux-i386 bandwidth32
   fi
 }
 
