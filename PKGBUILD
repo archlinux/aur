@@ -1,17 +1,18 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-pcsx2
 pkgname=$_pkgname-git
-pkgver=r12201.9ebb8710e
+pkgver=r12271.afdbc84bf
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
 url="https://github.com/libretro/pcsx2"
 license=('LGPL3')
 groups=('libretro')
-depends=('libaio' 'libgl' 'libretro-core-info')
-makedepends=('cmake' 'git' 'libglvnd' 'xxd')
+depends=('libaio' 'libchdr' 'libgl' 'libretro-core-info' 'yaml-cpp')
+makedepends=('cmake' 'git' 'libglvnd' 'ninja' 'xxd')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=('!lto') # https://github.com/libretro/pcsx2/issues/180
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
@@ -21,11 +22,18 @@ pkgver() {
 }
 
 prepare() {
-	sed -i '/ ccache)$/d' $_pkgname/CMakeLists.txt
+	cd $_pkgname
+	# remove ccache
+	sed -i '/ccache/d' CMakeLists.txt
+	# unbundle libchdr
+	sed -i '/libchdr/d' cmake/SearchForStuff.cmake
+	sed -i 's/chdr-static/chdr/' common/src/Utilities/CMakeLists.txt
+	# unbundle yaml-cpp
+	sed -i '/yaml-cpp/d' cmake/SearchForStuff.cmake
 }
 
 build() {
-	cmake -S $_pkgname -B build \
+	cmake -S $_pkgname -B build -G Ninja \
 		-DARCH_FLAG="" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DDISABLE_ADVANCE_SIMD=ON \
