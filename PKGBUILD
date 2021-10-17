@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=jsoncpp-git
-pkgver=1.9.4.r34.gc39fbda
-pkgrel=2
+pkgver=1.9.4.r35.g94a6220
+pkgrel=1
 pkgdesc="C++ library for interacting with JSON"
 arch=('i686' 'x86_64')
 url="https://github.com/open-source-parsers/jsoncpp"
 license=('MIT' 'custom')
 depends=('gcc-libs')
-makedepends=('git' 'meson' 'python')
+makedepends=('git' 'cmake')
 provides=('jsoncpp' 'libjsoncpp.so')
 conflicts=('jsoncpp')
 options=('staticlibs')
@@ -25,28 +25,24 @@ pkgver() {
 build() {
   cd "jsoncpp"
 
-  meson \
-    --buildtype=plain \
-    --prefix="/usr" \
-    --sbindir="bin" \
-    --default-library both \
-    "_build"
-  meson compile -C "_build"
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    ./
+  make -C "_build"
 }
 
 check() {
   cd "jsoncpp"
 
-  meson test -C "_build"
-
-  cd "test"
-  python "runjsontests.py" ../_build/jsontestrunner
-  python "rununittests.py" ../_build/jsoncpp_test
+  make -C "_build" test
 }
 
 package() {
   cd "jsoncpp"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  make -C "_build" DESTDIR="$pkgdir" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/jsoncpp"
 }
