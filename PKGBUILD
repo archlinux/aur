@@ -1,7 +1,7 @@
 # Maintainer: Igor <f2404@yandex.ru>
 _pkgname=xfce4-terminal
-pkgname=xfce4-terminal-git
-pkgver=0.8.9.2.r27.g13732432
+pkgname=${_pkgname}-git
+pkgver=0.9.0.r53.g3e0e4534
 pkgrel=1
 pkgdesc="A modern terminal emulator primarily for the Xfce desktop environment - git checkout"
 arch=('i686' 'x86_64')
@@ -13,8 +13,9 @@ makedepends=('intltool' 'git' 'xfce4-dev-tools' 'libxslt')
 provides=('xfce4-terminal')
 conflicts=('xfce4-terminal' 'terminal')
 replaces=('xfce4-terminal' 'terminal')
-source=(git://git.xfce.org/apps/$_pkgname)
+source=("${_pkgname}::git+https://gitlab.xfce.org/apps/${_pkgname}.git")
 sha256sums=('SKIP')
+
 pkgver() {
 	cd "$srcdir/$_pkgname"
 	git describe --long | sed -r "s/^${_pkgname}-//;s/([^-]*-g)/r\1/;s/-/./g"

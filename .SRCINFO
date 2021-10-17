@@ -19,8 +19,7 @@ pkgbase = xfce4-terminal-git
 	conflicts = terminal
 	replaces = xfce4-terminal
 	replaces = terminal
-	source = git://git.xfce.org/apps/xfce4-terminal
+	source = xfce4-terminal::git+https://gitlab.xfce.org/apps/xfce4-terminal.git
 	sha256sums = SKIP
 
 pkgname = xfce4-terminal-git
-
