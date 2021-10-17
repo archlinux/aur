@@ -1,6 +1,6 @@
 pkgbase = blosc2
 	pkgdesc = Next generation c-blosc
-	pkgver = 2.0.1
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://blosc-doc.readthedocs.io/en/latest/
 	arch = arm
@@ -17,7 +17,7 @@ pkgbase = blosc2
 	depends = zlib
 	depends = zstd
 	options = staticlibs
-	source = https://github.com/Blosc/c-blosc2/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = 35b93dfed479b1dfd9372d41d7843b60254ed1d71792577b95e489c28705874f
+	source = https://github.com/Blosc/c-blosc2/archive/refs/tags/v2.0.4.tar.gz
+	sha256sums = 90c78edcc262759dd16d243141513310624bb4fda3d98ac34dcfb78255e151c1
 
 pkgname = blosc2

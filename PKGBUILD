@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar DOT eu DOT org>
 
 pkgname=blosc2
-pkgver=2.0.1
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Next generation c-blosc"
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('lz4' 'zlib' 'zstd')
 makedepends=('git' 'cmake' 'ninja')
 options=('staticlibs')
 source=("https://github.com/Blosc/c-blosc2/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('35b93dfed479b1dfd9372d41d7843b60254ed1d71792577b95e489c28705874f')
+sha256sums=('90c78edcc262759dd16d243141513310624bb4fda3d98ac34dcfb78255e151c1')
 
 build() {
   cd c-${pkgname}-${pkgver}
