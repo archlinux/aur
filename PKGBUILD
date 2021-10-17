@@ -1,13 +1,14 @@
 # Maintainer: Michael Serajnik <m at mser dot at>
 pkgname=vpn-whitelist-git
 _pkgname=vpn-whitelist
-pkgver=r46.c51abb9
+pkgver=r47.bcb1b93
 pkgrel=1
 pkgdesc="Whitelist domains and addresses to bypass an active VPN connection"
 arch=("any")
 url="https://github.com/cryzed/${_pkgname}"
 license=("AGPL3")
 depends=("python" "python-psutil")
+makedepends=("git")
 optdepends=("networkmanager: support for automatic whitelisting of addresses"
             "ufw: support for whitelisting addresses in UFW")
 backup=("etc/vpn-whitelist.conf")
