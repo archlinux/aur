@@ -5,7 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=bux
-pkgver=1.5.0
+pkgver=1.6.0
 #pkgver=main
 pkgrel=1
 epoch=
