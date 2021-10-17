@@ -14,7 +14,7 @@ _merge_requests_to_use=()
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=40.4
+pkgver=40.5+7+gd52593ebc3
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -24,14 +24,14 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
          xorg-xwayland graphene libxkbfile)
-makedepends=(gobject-introspection git egl-wayland meson xorg-server)
+makedepends=(gobject-introspection git egl-wayland meson xorg-server
+             wayland-protocols)
 checkdepends=(xorg-server-xvfb pipewire-media-session)
 provides=(mutter mutter-781835-workaround libmutter-8.so)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-install=mutter.install
-_commit=2bfef7dbdc6f432a5433c93c1fcdbf00099367c8  # tags/40.4^0
+_commit=d52593ebc3d8879f86a3ad879829b35088583411  # tags/40.5^7
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
