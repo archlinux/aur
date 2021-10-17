@@ -1,0 +1,14 @@
+pkgbase = python-pacman
+	pkgdesc = Simple Python interface to Arch Linux package manager (pacman)
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/peakwinter/python-pacman
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = ::git+https://github.com/peakwinter/python-pacman.git#tag=0.4.2
+	sha512sums = SKIP
+
+pkgname = python-pacman
