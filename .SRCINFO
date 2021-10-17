@@ -1,7 +1,7 @@
 pkgbase = grace-openmotif
 	pkgdesc = 2D plotting tool
 	pkgver = 5.1.25
-	pkgrel = 2
+	pkgrel = 3
 	url = http://plasma-gate.weizmann.ac.il/Grace/
 	arch = i686
 	arch = x86_64
@@ -46,4 +46,3 @@ pkgbase = grace-openmotif
 	md5sums = 3b84533b7d54b4705232f4dfa0923c58
 
 pkgname = grace-openmotif
-

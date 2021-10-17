@@ -8,7 +8,7 @@
 
 pkgname=grace-openmotif
 pkgver=5.1.25
-pkgrel=2
+pkgrel=3
 pkgdesc="2D plotting tool"
 arch=(i686 x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
@@ -51,7 +51,7 @@ build() {
   patch -Np1 < ../meaningful_timestamp.patch
   patch -Np1 < ../handle_nans.patch
   
-  ./configure   --prefix=/usr --exec-prefix=/usr \
+  CFLAGS="-Wno-format-security" ./configure   --prefix=/usr --exec-prefix=/usr \
                 --enable-grace-home=/usr/share/grace \
                 --disable-xmhtml \
                 --without-bundled-xbae \
