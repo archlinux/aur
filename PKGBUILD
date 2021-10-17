@@ -50,21 +50,18 @@ prepare() {
 	git config submodule.ext/armips.url ../armips
 	git config submodule.ext/miniupnp.url ../miniupnp
 	git submodule update
-
 	# unbundle glslang
 	rmdir ext/glslang
 	ln -s /usr/include/glslang ext/glslang
 	sed -i '/glslang/d' ext/CMakeLists.txt
-
 	# unbundle spirv-cross
 	rmdir ext/SPIRV-Cross
 	ln -s /usr/include/spirv_cross ext/SPIRV-Cross
-	sed -i 's/spirv-cross-glsl/& spirv-cross-core/' CMakeLists.txt
 	sed -i '/SPIRV-Cross-build/d' ext/CMakeLists.txt
-
+	sed -i 's/spirv-cross-glsl/& spirv-cross-core/' CMakeLists.txt
 	# unbundle zstd
-	sed -i 's/libzstd_static/zstd/' CMakeLists.txt
 	sed -i '/zstd/d' ext/CMakeLists.txt
+	sed -i 's/libzstd_static/zstd/' CMakeLists.txt
 }
 
 build() {
