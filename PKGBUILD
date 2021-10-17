@@ -3,11 +3,11 @@
 pkgname=ostrichriders
 arch=('x86_64')
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="free clone of the arcade game Joust"
 license=('GPL-3')
 url="https://github.com/dulsi/ostrichriders"
-depends=('sfml' 'fontconfig' 'hicolor-icon-theme')
+depends=('sfml' 'fontconfig' 'hicolor-icon-theme' 'desktop-file-utils')
 source=("https://github.com/dulsi/ostrichriders/archive/refs/tags/release-${pkgver}.tar.gz")
 
 build() {
