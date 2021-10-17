@@ -11,17 +11,16 @@ _name=FreeRDP
 _pkgname=freerdp
 pkgname=freerdp-gstfree
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=('x86_64')
 url="https://www.freerdp.com/"
 license=('Apache')
-depends=('dbus-glib' 'glibc' 'libcups'
-'libjpeg-turbo' 'libgssglue' 'libx11' 'libxcursor' 'libxext' 'libxdamage'
-'libxfixes' 'libxkbcommon' 'libxi' 'libxinerama' 'libxkbfile' 'libxrandr'
-'libxrender' 'libxtst' 'openssl' 'pam' 'pcsclite' 'wayland')
-makedepends=('alsa-lib' 'cmake' 'docbook-xsl' 'ffmpeg' 'krb5' 'libpulse'
-'libusb' 'systemd-libs' 'xmlto' 'xorgproto')
+depends=('dbus-glib' 'glibc' 'libcups' 'libgssglue' 'libx11' 'libxcursor' 'libxext'
+         'libxdamage' 'libxfixes' 'libxkbcommon' 'libxi' 'libxinerama' 'libxkbfile' 'libxrandr'
+         'libxrender' 'libxtst' 'openssl' 'pcsclite' 'wayland')
+makedepends=('alsa-lib' 'cmake' 'docbook-xsl' 'ffmpeg' 'icu' 'krb5' 'libjpeg-turbo'
+             'libpulse' 'libusb' 'pam' 'systemd-libs' 'xmlto' 'xorgproto')
 conflicts=('freerdp')
 provides=('libfreerdp2.so' 'libfreerdp-client2.so' 'libfreerdp-server2'
 'libfreerdp-shadow2.so' 'libfreerdp-shadow-subsystem2.so' 'libwinpr2.so'
@@ -49,6 +48,7 @@ build() {
         -DWITH_PULSE=ON \
         -DWITH_CUPS=ON \
         -DWITH_PCSC=ON \
+        -DWITH_ICU=ON \
         -DWITH_JPEG=ON \
         -DWITH_SERVER=ON \
         -DWITH_SWSCALE=ON \
@@ -64,8 +64,8 @@ build() {
 }
 
 package() {
-  depends+=('libasound.so' 'libavcodec.so' 'libavutil.so' 'libpulse.so'
-  'libswscale.so' 'libswresample.so' 'libsystemd.so' 'libusb-1.0.so')
+  depends+=('libasound.so' 'libavcodec.so' 'libavutil.so' 'libicuuc.so' 'libjpeg.so' 'libpam.so' 'libpulse.so'
+            'libswscale.so' 'libswresample.so' 'libsystemd.so' 'libusb-1.0.so')
   cd "${_name}-${pkgver}"
   make DESTDIR="${pkgdir}" install -C build
   install -vDm 644 {ChangeLog,README.md} \
