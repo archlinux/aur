@@ -1,10 +1,9 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell
-	pkgver = 40.4
+	pkgver = 40.5
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
-	install = gnome-shell-performance.install
 	arch = x86_64
 	groups = gnome
 	license = GPL
@@ -42,10 +41,10 @@ pkgbase = gnome-shell-performance
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
-	provides = gnome-shell=40.4
-	provides = gnome-shell=1:40.4
+	provides = gnome-shell=40.5
+	provides = gnome-shell=1:40.5
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=20926bd559595a669a14f06694308fcc760ec21b
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=ad6f45f403fce7922392c43f30059c4af2aac561
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
