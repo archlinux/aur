@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
 	pkgver = 5.14.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = linux-clear
 	makedepends = git
 	makedepends = kmod
 	makedepends = libelf
+	makedepends = pahole
 	makedepends = xmlto
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.tar.xz
@@ -43,3 +44,4 @@ pkgname = linux-clear
 
 pkgname = linux-clear-headers
 	pkgdesc = Headers and scripts for building modules for the Clear Linux kernel
+	depends = pahole
