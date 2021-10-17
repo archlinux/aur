@@ -1,17 +1,17 @@
-# Maintainer: imtbl <imtbl at mser dot at>
+# Maintainer: Michael Serajnik <m at mser dot at>
 pkgbase=ant-dracula-kde-theme-git
-pkgname=(ant-dracula-kde-theme-git ant-dracula-kvantum-theme-git)
+pkgname=("ant-dracula-kde-theme-git" "ant-dracula-kvantum-theme-git")
 _pkgname=gtk
-pkgver=v1.3.0.r57.g1eb71ee
+pkgver=v2.0.r58.gf8baef3
 pkgrel=1
 pkgdesc="Ant Dracula theme for KDE Plasma"
-arch=(any)
+arch=("any")
 url="https://github.com/dracula/${_pkgname}"
-license=('GPL3')
-options=('!strip')
-makedepends=('git')
+license=("GPL3")
+options=("!strip")
+makedepends=("git")
 source=("git+https://github.com/dracula/${_pkgname}.git")
-sha256sums=('SKIP')
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -19,9 +19,9 @@ pkgver() {
 }
 
 package_ant-dracula-kde-theme-git() {
-  provides=('ant-dracula-kde-theme')
-  optdepends=('ant-dracula-gtk-theme: Matching GTK theme'
-              'ant-dracula-kvantum-theme-git: Ant Dracula theme for Kvantum Qt style (recommended)')
+  provides=("ant-dracula-kde-theme")
+  optdepends=("ant-dracula-gtk-theme: Matching GTK theme"
+              "ant-dracula-kvantum-theme-git: Ant Dracula theme for Kvantum Qt style (recommended)")
 
   cd "${_pkgname}/kde"
 
@@ -34,7 +34,7 @@ package_ant-dracula-kde-theme-git() {
 }
 
 package_ant-dracula-kvantum-theme-git() {
-  provides=('ant-dracula-kvantum-theme')
+  provides=("ant-dracula-kvantum-theme")
   pkgdesc="Ant Dracula theme for Kvantum Qt style"
   depends=(kvantum-qt5)
 
