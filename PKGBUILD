@@ -1,28 +1,44 @@
 # Maintainer: dreieck
 # Contributor: Gasparotto Mattia <gasmat04@gmail.com>
 
+### Note on python version for wammu 0.44: Python2.
+
 pkgname=wammu
 pkgver=0.44
-pkgrel=5
+pkgrel=6
 pkgdesc="A wxPython-based GUI for Gammu"
 arch=('any')
 url="https://wammu.eu/wammu/"
 license=('GPL')
-depends=('python2-gammu' 'wxpython' 'python2-six')
-makedepends=('python2-setuptools')
-optdepends=('gnome-bluetooth: Bluetooth support'
-            'python2-pybluez: Bluetooth support')
-source=(https://dl.cihar.com/$pkgname/v0/$pkgname-$pkgver.tar.xz)
-sha256sums=('bf8199f888cb60e4a24839e71ec6f8e8deb11fd22f592fe1112e3252bd4b9145')
-
+depends=(
+  'python2-gammu'
+  'python2-six'
+  'wxpython'
+)
+makedepends=(
+  'python2-setuptools'
+)
+optdepends=(
+  'gnome-bluetooth: Bluetooth support'
+  'python2-pybluez: Bluetooth support'
+)
+source=(
+  "https://dl.cihar.com/${pkgname}/v0/${pkgname}-${pkgver}.tar.xz"
+)
+sha256sums=(
+  'bf8199f888cb60e4a24839e71ec6f8e8deb11fd22f592fe1112e3252bd4b9145'
+)
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  sed -i 's_/usr/bin/env python_/usr/bin/env python2_' setup.py
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  for _pyfile in *.py; do
+    msg "Patching shabeng line for python 2 in '${_pyfile}' ..."
+    sed -E -i '1s|^#!(.*)python$|#!\1python2|' "${_pyfile}"
+  done
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }

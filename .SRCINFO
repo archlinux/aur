@@ -1,14 +1,14 @@
 pkgbase = wammu
 	pkgdesc = A wxPython-based GUI for Gammu
 	pkgver = 0.44
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wammu.eu/wammu/
 	arch = any
 	license = GPL
 	makedepends = python2-setuptools
 	depends = python2-gammu
-	depends = wxpython
 	depends = python2-six
+	depends = wxpython
 	optdepends = gnome-bluetooth: Bluetooth support
 	optdepends = python2-pybluez: Bluetooth support
 	source = https://dl.cihar.com/wammu/v0/wammu-0.44.tar.xz
