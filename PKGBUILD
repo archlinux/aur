@@ -11,7 +11,7 @@ backup=()
 source=('git+git://git.kira64.xyz/yafetch.git'
 	'arch.patch')
 sha256sums=('SKIP'
-	    '7a20081bbc1ad274b7a92a3ae26f8c48d241e2acf095cc0f1977137ec4a81019')
+	    '29f511eac93e917148d65dab16466b70ec354671ff2ca396a3225549b3a09c0b')
 
 prepare() {
 	cd yafetch

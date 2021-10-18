@@ -2,5 +2,5 @@
 +++ b/config.h
 @@ -1,5 +1,5 @@
  // Specify which ascii art the program uses
--#include "ascii/tux.h"
+-#include "ascii/gnu.h"
 +#include "ascii/arch.h"
