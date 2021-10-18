@@ -1,6 +1,6 @@
 # Maintainer: Jason Kercher <jkercher43 at gmail>
 pkgname=fql
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A SQL interpreter for text processing"
 arch=(x86_64)  # It is only tested on x86_64
@@ -10,7 +10,7 @@ depends=(antlr4-runtime pcre stdcsv)
 checkdepends=(check)
 provides=(libfql.so)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-md5sums=(fbb253eda765577a89a12ea5718b1518)
+md5sums=(082d0023465014e5456a05977e428040)
 
 build() {
 	cd "$pkgname-$pkgver"
