@@ -5,7 +5,7 @@ _pkgname=guarda
 
 pkgname="${_pkgname}"-appimage
 pkgver=1.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="a secure, easy-to-use open source multi-platform cryptocurrency wallet"
 arch=('x86_64')
 url="https://guarda.com/"
@@ -52,4 +52,8 @@ package() {
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+
+    # remove --no-sandbox option -- unnecessary for electron apps running outside of
+    # appimage and it's more secure
+    sed -ie 's/ --no-sandbox//' "$pkgdir/usr/share/applications/guarda.desktop"
 }

@@ -1,7 +1,7 @@
 pkgbase = guarda-appimage
 	pkgdesc = a secure, easy-to-use open source multi-platform cryptocurrency wallet
 	pkgver = 1.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://guarda.com/
 	arch = x86_64
 	license = GPLv3
