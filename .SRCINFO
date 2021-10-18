@@ -1,4 +1,4 @@
-pkgbase = whattodo
+pkgbase = whattodo-git
 	pkgdesc = Another todo command line Utility. (But this one is made in Java)
 	pkgver = 0.0.1
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = whattodo
 	source = git+https://github.com/will-t-f/whattodo.git
 	md5sums = SKIP
 
-pkgname = whattodo
+pkgname = whattodo-git
