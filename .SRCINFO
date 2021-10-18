@@ -1,6 +1,6 @@
 pkgbase = freedownloadmanager
 	pkgdesc = FDM is a powerful modern download accelerator and organizer.
-	pkgver = 6.15.2.4167
+	pkgver = 6.15.3.4236
 	pkgrel = 1
 	url = https://www.freedownloadmanager.org/
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = freedownloadmanager
 	depends = ffmpeg
 	depends = libtorrent
 	source = https://dn3.freedownloadmanager.org/6/latest/freedownloadmanager.deb
-	sha512sums = 964c5ffbd55ca8738772fd89c2a676c099c53c0b446a43126a20b4814d5cdebe4a2bbbfdd6f2af713d21a7cbb47fe6e575f39d307f5b09510ab408679b040b05
+	sha256sums = ca0ac5a1a8586f51714b31db5b41dee9a0cbf4c23a2dd76b8c39297d2a0f15fb
 
 pkgname = freedownloadmanager
