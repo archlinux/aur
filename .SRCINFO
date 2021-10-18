@@ -1,13 +1,13 @@
 pkgbase = stdcsv
 	pkgdesc = A tool/library for working with delimited files.
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/jasonKercher/libcsv
 	arch = x86_64
 	license = MIT
 	checkdepends = check
 	provides = libcsv.so
-	source = stdcsv-1.0::https://github.com/jasonKercher/libcsv/archive/refs/tags/1.0.tar.gz
-	md5sums = f55dd16fb53db59ccdff4ed0c00f97e1
+	source = stdcsv-1.0.1::https://github.com/jasonKercher/libcsv/archive/refs/tags/1.0.1.tar.gz
+	md5sums = 638cae31d2257a7cf6516c715da003e8
 
 pkgname = stdcsv
