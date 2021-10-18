@@ -8,13 +8,14 @@ _pkgname=pybluez
 pkgname=python2-pybluez
 epoch=1
 pkgver=0.22
-pkgrel=2
+pkgrel=3
 pkgdesc="python2 wrapper for the BlueZ Bluetooth stack"
 arch=(
   'i686'
   'x86_64'
 )
-url="https://pybluez.github.io/"
+url='https://github.com/pybluez/pybluez'
+# url="https://pybluez.github.io/"
 license=('GPL')
 depends=(
   'bluez-libs'
