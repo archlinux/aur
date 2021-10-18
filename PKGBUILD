@@ -1,16 +1,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=halibut-git
-pkgver=1.2.r17.gd9b77f1
+pkgver=1.2.r39.gce45faf
 pkgrel=1
 pkgdesc="free document preparation system"
 url="http://www.chiark.greenend.org.uk/~sgtatham/halibut/"
 arch=('i686' 'x86_64')
 license=('custom:MIT')
 depends=('glibc')
-makedepends=('git')
+makedepends=('git' 'cmake')
 conflicts=('halibut')
 provides=('halibut')
-source=(git://git.tartarus.org/simon/halibut.git git://git.tartarus.org/simon/charset.git)
+source=(git+https://git.tartarus.org/simon/halibut.git git+https://git.tartarus.org/simon/charset.git)
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
@@ -27,16 +27,17 @@ prepare() {
 
 build() {
   cd ${pkgname%-git}
-  ./autogen.sh
-  DOCDIR="$pkgdir"/usr/share/halibut/doc ./configure --prefix=/usr
+  cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr
   make  
 }
 
 package() {
   cd ${pkgname%-git}
   install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/${pkgname}/LICENCE 
-  install -Dm755 ${pkgname%-git} "$pkgdir"/usr/bin/${pkgname%-git} 
-  install -Dm644 ${pkgname%-git}.1 "$pkgdir"/usr/share/man/man1/${pkgname%-git}.1
+  install -Dm755 ${pkgname%-git} "$pkgdir"/usr/bin/${pkgname%-git}
+  
+  install -Dm644 doc/${pkgname%-git}.1 "$pkgdir"/usr/share/man/man1/${pkgname%-git}.1
+  cd doc/manual
   for _i in ${pkgname%-git}.info* 
   do 
     install -Dm644 $_i "$pkgdir"/usr/share/info/$_i 
