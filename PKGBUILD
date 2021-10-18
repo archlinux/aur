@@ -32,13 +32,12 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   for _pyfile in *.py; do
-    msg "Patching shabeng line for python 2 in '${_pyfile}' ..."
+    msg "Patching shabeng line for python2 in '${_pyfile}' ..."
     sed -E -i '1s|^#!(.*)python$|#!\1python2|' "${_pyfile}"
   done
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
