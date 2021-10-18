@@ -5,8 +5,8 @@
 
 pkgname=wammu
 pkgver=0.44
-pkgrel=7
-pkgdesc="A wxPython-based GUI for Gammu"
+pkgrel=8
+pkgdesc="A wxPython-based GUI for Gammu, a mobile phone manager."
 arch=('any')
 url="https://wammu.eu/wammu/"
 license=('GPL')
