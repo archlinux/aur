@@ -1,6 +1,6 @@
 pkgbase = koffe
 	pkgdesc = simple tool for creating easy to use and offline-friendly arch installers with aur support
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/konickss/koffe
 	arch = any
@@ -12,12 +12,7 @@ pkgbase = koffe
 	depends = libnewt
 	depends = wget
 	depends = git
-	source = koffe
-	source = pi.is
-	source = install
-	md5sums = SKIP
-	md5sums = SKIP
+	source = git+https://github.com/konickss/koffe.git
 	md5sums = SKIP
 
 pkgname = koffe
-
