@@ -1,7 +1,7 @@
 # Maintainer: Funami
 pkgname=dnspeep-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Spy on the DNS queries your computer is making"
 arch=('x86_64')
 url="https://github.com/jvns/dnspeep"

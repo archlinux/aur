@@ -1,10 +1,11 @@
 pkgbase = dnspeep-bin
-	pkgdesc = Like jq, but for HTML
+	pkgdesc = Spy on the DNS queries your computer is making
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jvns/dnspeep
 	arch = x86_64
 	license = MIT
+	depends = libpcap
 	provides = dnspeep
 	conflicts = dnspeep
 	source = https://github.com/jvns/dnspeep/releases/download/v0.1.2/dnspeep-linux.tar.gz
