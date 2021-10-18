@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.14.0.r259.g59fa3637
+pkgver=0.14.0.r303.gf7ea33da
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version)'
@@ -11,6 +11,7 @@ provides=("libwlroots.so" "wlroots=${pkgver%%.r*}")
 conflicts=(wlroots)
 options=(debug)
 depends=(
+	glslang
 	libinput
 	libxcb
 	libxkbcommon
@@ -21,10 +22,12 @@ depends=(
 	xcb-util-renderutil
 	xcb-util-wm
 	seatd
+	vulkan-icd-loader
 	xorg-xwayland)
 makedepends=(
 	git
 	meson
+	vulkan-headers
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}::git+${url}")
