@@ -1,28 +1,48 @@
+# Maintainer: dreieck
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: cs-cam - me.at.camdaniel.com
 
-_pkgname=PyBluez
+_pkgname=pybluez
 pkgname=python2-pybluez
 pkgver=0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="python2 wrapper for the BlueZ Bluetooth stack"
-arch=('x86_64')
+arch=(
+  'i686'
+  'x86_64'
+)
 url="https://pybluez.github.io/"
 license=('GPL')
-depends=('python2' 'bluez-libs')
-makedepends=('python2-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c8f04d2e78951eaa9de486b4d49381704e8943d0a6e6e58f55fcd7b8582e90de')
-b2sums=('6a234d5c41dc0bb9f08559431eafcf1d1fb1c881d2cb912cc048e2717bfe8a06f09aae045d2961c9ba5e087422cfc8249a1907368eb6dc45942175bcf97b1841')
+depends=(
+  'bluez-libs'
+  'python2'
+)
+makedepends=(
+  'python2-setuptools'
+)
+source=(
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/pybluez/pybluez/archive/refs/tags/${pkgver}.tar.gz"
+)
+sha256sums=(
+  '2c5234a27d8bd560c65eee73d0b72e65ddfdf018b256b4eccab0680d577db1d5'
+)
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  for _pyfile in *.py; do
+    msg2 "Patching shabeng line for python2 in '${_pyfile}' ..."
+    sed -E -i '1s|^#!(.*)python$|#!\1python2|' "${_pyfile}"
+  done
+}
 
 build() {
-    cd "${srcdir}"/${_pkgname}-${pkgver}
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
     python2 setup.py build
 }
 
 package_python2-pybluez() {
-    cd "${srcdir}"/${_pkgname}-${pkgver}
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
