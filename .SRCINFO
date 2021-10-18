@@ -1,0 +1,24 @@
+pkgbase = media-session-git
+	pkgdesc = Example session manager for PipeWire
+	pkgver = r7643.c374e0ea9
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/pipewire/media-session
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = alsa-lib
+	makedepends = dbus
+	makedepends = pipewire
+	makedepends = systemd
+	source = git+https://gitlab.freedesktop.org/pipewire/media-session.git
+	sha256sums = SKIP
+
+pkgname = media-session-git
+	install = media-session.install
+	depends = libpipewire-0.3.so
+	depends = libasound.so
+	depends = libdbus-1.so
+	depends = libsystemd.so
+	provides = pipewire-media-session
+	conflicts = pipewire-media-session

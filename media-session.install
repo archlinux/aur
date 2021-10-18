@@ -1,0 +1,7 @@
+post_install() {
+  systemctl --global enable pipewire-media-session.service
+}
+
+pre_remove() {
+  systemctl --global disable pipewire-media-session.service
+}
