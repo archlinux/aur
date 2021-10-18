@@ -1,4 +1,4 @@
 #!/bin/sh
 export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
 cd /usr/share/diylc
-sh ./run.sh
+exec sh ./run.sh
