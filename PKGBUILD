@@ -5,7 +5,7 @@
 
 pkgname=wammu
 pkgver=0.44
-pkgrel=6
+pkgrel=7
 pkgdesc="A wxPython-based GUI for Gammu"
 arch=('any')
 url="https://wammu.eu/wammu/"
