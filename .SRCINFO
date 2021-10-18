@@ -1,0 +1,11 @@
+pkgbase = fire-hpp-git
+	pkgdesc = Fire for C++
+	pkgver = r154.8753e2b
+	pkgrel = 1
+	url = https://github.com/kongaskristjan/fire-hpp
+	arch = any
+	license = Boost Software License
+	source = git+https://github.com/kongaskristjan/fire-hpp.git
+	sha256sums = SKIP
+
+pkgname = fire-hpp-git
