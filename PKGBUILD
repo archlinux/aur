@@ -5,8 +5,8 @@
 pkgname=('pamac-aur-git')
 _pkgname=pamac
 pkgver=10.2.2.r1.g125033f
-_pkgver=10.2.1
-pkgrel=1
+_pkgver=10.2.2
+pkgrel=2
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
