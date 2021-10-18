@@ -5,7 +5,7 @@
 
 pkgname=wammu
 pkgver=0.44
-pkgrel=12
+pkgrel=13
 pkgdesc="A wxPython-based GUI for Gammu, a mobile phone manager."
 arch=('any')
 url="https://wammu.eu/wammu/"
@@ -21,7 +21,7 @@ makedepends=(
 )
 optdepends=(
   'gnome-bluetooth: Bluetooth support'
-  'python2-pybluez: Bluetooth support'
+  'python2-pybluez<1:0.23: Bluetooth support'
 )
 source=(
   "https://dl.cihar.com/${pkgname}/v0/${pkgname}-${pkgver}.tar.xz"
