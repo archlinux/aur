@@ -15,7 +15,7 @@ pkgname=(pipewire-full-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
          )
-pkgver=0.3.37.r44.gd2f05733
+pkgver=0.3.38.r171.gb78371f7
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -31,8 +31,10 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              vulkan-headers vulkan-icd-loader
              ffmpeg
              )
-source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
-sha256sums=('SKIP')
+source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git'
+        'git+https://gitlab.freedesktop.org/pipewire/media-session.git')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd $_pkgbase
@@ -40,16 +42,8 @@ pkgver() {
 }
 
 prepare() {
-  cd $_pkgbase
-
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
-    patch -Np1 < "../$src"
-  done
+  cd $_pkgbase/subprojects
+  ln -s ../../media-session .
 }
 
 build() {
