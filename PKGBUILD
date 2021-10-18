@@ -2,7 +2,7 @@
 
 pkgname=systemd-kexec
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="systemd for kexec"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
