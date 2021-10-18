@@ -1,0 +1,12 @@
+pkgbase = python-luadata
+	pkgdesc = Serialize/unserialise between Python lists/dictionaries and Lua tables
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/leafvmaple/luadata
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	source = python-luadata-1.0.5.tar.gz::https://github.com/leafvmaple/luadata/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = 173e8a750a120f6459f1741a43552e01d53c2d5a694b9dd0cec4749c308a6cf0
+
+pkgname = python-luadata
