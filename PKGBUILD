@@ -1,14 +1,15 @@
-# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
+# Maintainer: Tavian Barnes <tavianator@tavianator.com>
 
 pkgname=arcanist
-pkgver=2021.11
-_commit=5d9e971ab0e0ac0b7b15f4023336a253e78a60e1
+pkgver=2021.23
+_commit=4f70fcffa8a5393e210d64f237ffdaa256256d6a
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
 arch=('any')
 url="https://www.phacility.com/phabricator/"
 license=('Apache')
-depends=('libphutil' 'php' 'python')
+depends=('libphutil' 'php' 'python' 'ca-certificates-utils')
 optdepends=('git: Git VCS support'
             'subversion: Subversion VCS support'
             'mercurial: Mercurial VCS support')
@@ -21,4 +22,5 @@ package() {
   cp -a $pkgname/* "$pkgdir/usr/share/php/$pkgname/"
   install -Dm644 $pkgname/support/shell/hooks/bash-completion.sh "$pkgdir/usr/share/bash-completion/completions/arc"
   ln -s ../share/php/$pkgname/bin/arc "$pkgdir/usr/bin/arc"
+  ln -sf ../../../../../../etc/ssl/cert.pem "$pkgdir/usr/share/php/arcanist/resources/ssl/default.pem"
 }
