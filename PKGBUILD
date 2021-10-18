@@ -1,5 +1,5 @@
 # Maintainer: Jonas Schwartz
-pkgname=galaxybudsclient
+pkgname=galaxybudsclient-bin
 _pkgname=GalaxyBudsClient
 pkgver=4.4.1
 pkgrel=1
@@ -22,6 +22,6 @@ sha256sums_x86_64=('eef881b49f5bceea153870c7b82633e2a5eeec82ddc6949883a7c9ed3e07
 
 package() {
 	install -Dm755 ${_pkgname}_Linux_64Bit_Portable.bin "$pkgdir/usr/bin/galaxybudsclient"
-	install -Dm644 "$srcdir/${pkgname}.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "$srcdir/${pkgname}.desktop" -t "$pkgdir/usr/share/applications/galaxybudsclient.desktop"
 	install -Dm644 "$srcdir/icon_white.png" "$pkgdir/usr/share/pixmaps/galaxybudsclient.png"
 }
