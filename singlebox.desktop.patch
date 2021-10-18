@@ -1,0 +1,10 @@
+--- squashfs-root/singlebox.desktop
++++ squashfs-root/singlebox.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=Singlebox
+-Exec=AppRun --no-sandbox %U
++Exec=/usr/bin/singlebox %F
+ Terminal=false
+ Type=Application
+ Icon=singlebox
