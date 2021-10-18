@@ -2,7 +2,7 @@
 
 pkgname=systemd-kexec
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="systemd for kexec"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -33,5 +33,5 @@ package() {
 install -Dm644 kexec-load@.service  "/etc/systemd/system/kexec-load@.service"
 }
 
-groups=(lcj211)
+groups=('lcj211')
 
