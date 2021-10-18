@@ -7,7 +7,7 @@ pkgdesc="systemd for kexec"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
 arch=('any')
-#depends=('procps-ng' 'hwids' 'karchive' 'kauth' 'qt5-charts' 'qt5-quickcontrols2' 'qt5-base>=5.9' 'botan>=2.2.0' 'qt5-svg' 'qt5-xmlpatterns' 'qt5-base')
+depends=('kexec-tools')
 #makedepends=('cmake>=3.3' 'qt5-tools' 'karchive' 'gcc>=8' 'extra-cmake-modules')
 #optdepends=(
 #	'vulkan-tools: For vulkaninfo'
@@ -15,7 +15,8 @@ arch=('any')
 #	'util-linux: For lscpu'
 #)
 #source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-#sha512sums=('c5b564d0dc7c9fdb02de6494eef98e03d1aa0b82d8018382ede5d8908fe1dc14ec7323ad1f435c291f33b973d8b2cd0fc1484a91248715aef5b43d64372ed169')
+source=("kexec-load@.service")
+sha512sums=('cde894488d4587b7b0272956dedfdd7684c4fe423726e008f6217eb59a5d5dfbb5289dabde5a354ab7b612c4b5b25ce2c397e632a6c4acc7f77c6d2b8fe7bdf4')
 
 #build() {
  # rm -rf build
@@ -27,7 +28,10 @@ arch=('any')
 
 #}
 
+package() {
+# make -C build DESTDIR="$pkgdir" install
+install -Dm644 kexec-load@.service  "/etc/systemd/system/"
+}
 
-#package() {
- # make -C build DESTDIR="$pkgdir" install
-#}
+
+
