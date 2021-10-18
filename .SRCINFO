@@ -1,0 +1,15 @@
+pkgbase = eztrace2-git
+	pkgdesc = Tool that automatically generates OTF2 execution traces from HPC programs
+	pkgver = r1987.8a7647b0
+	pkgrel = 1
+	url = https://gitlab.com/eztrace/eztrace/-/tree/eztrace-2.0
+	arch = x86_64
+	arch = x86_64_v3
+	license = Custom:CeCILL-B
+	makedepends = git
+	depends = openmpi
+	depends = bash
+	source = git+https://gitlab.com/eztrace/eztrace#branch=eztrace-2.0
+	sha1sums = SKIP
+
+pkgname = eztrace2-git
