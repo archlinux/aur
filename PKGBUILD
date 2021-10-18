@@ -7,12 +7,28 @@
 pkgbase=regolith-de
 pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-gaps-wm i3-gaps-wm-dbg i3-snapshot i3xrocks gnome-flashback ubiquity-slideshow-regolith)
         regolith-i3xrocks # allll the i3xrocks shit
+	i3xrocks-app-launcher
+	i3xrocks-battery
+	i3xrocks-cpu-usage
+	i3xrocks-focused-window-name
+	i3xrocks-info
+	i3xrocks-key-indicator
+	i3xrocks-media-player
+	i3xrocks-memory
+	i3xrocks-net-traffic
+	i3xrocks-nm-vpn
+	i3xrocks-openvpn
+	i3xrocks-temp
+	i3xrocks-time
+	i3xrocks-volume
+	i3xrocks-weather
+	i3xrocks-wifi
         regolith-styles # alll the styles shit
         regolith-st 
         regolith-desktop-config
 	remontoire-regolith)
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url=https://github.com/regolith-linux/regolith-desktop
 url2=https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files
@@ -21,7 +37,7 @@ url4=http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/
 url5=https://launchpad.net/~regolith-linux/+archive/ubuntu/stable/+files
 license=('custom: multiple')
 groups=('regolith-de')
-makedepends=('wget' 'python' 'meson' 'ninja' 'gtk3' 'git' 'vala')
+makedepends=('wget' 'python' 'meson' 'ninja' 'gtk3' 'git')
 
 source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-theme/ayu-theme_0.2.2-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/c/cahuella/cahuella_1.0.3-1_amd64.deb
@@ -235,25 +251,250 @@ package_regolith-i3xrocks () {
     groups=('regolith-de')
 
     extract_deb "${srcdir}"/i3xrocks_1.3.5-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-app-launcher_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-battery_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-cpu-usage_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-focused-window-name_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-info_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-key-indicator_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-media-player_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-memory_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-net-traffic_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-nm-vpn_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-openvpn_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-temp_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-time_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-volume_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-weather_3.6.4-1_amd64.deb
-    extract_deb "${srcdir}"/i3xrocks-wifi_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-app-launcher_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-battery_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-cpu-usage_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-focused-window-name_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-info_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-key-indicator_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-media-player_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-memory_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-net-traffic_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-nm-vpn_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-openvpn_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-temp_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-time_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-volume_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-weather_3.6.4-1_amd64.deb
+#    extract_deb "${srcdir}"/i3xrocks-wifi_3.6.4-1_amd64.deb
 
     move_copyright
 
+}
+
+
+package_i3xrocks-app-launcher () {
+    pkgdesc="App launcher blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-app-launcher')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-app-launcher_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-battery () {
+    pkgdesc="Battery blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-battery')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-battery_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-cpu-usage () {
+    pkgdesc="CPU usage blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-cpu-usage')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-cpu-usage_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-focused-window-name () {
+    pkgdesc="Focused window name blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-focused-window-name')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-focused-window-name_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-info () {
+    pkgdesc="Info/remontoire blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'remontoire' 'accountsservice' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-info')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-info_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-key-indicator () {
+    pkgdesc="Key indicator blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-key-indicator')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-key-indicator_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-media-player () {
+    pkgdesc="media-player blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'alsa-utils' 'bc' 'ttf-font-awesome' 'playerctl' 'regolith-i3')
+    conflicts=()
+    provides=('i3xrocks-media-player')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-media-player_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-memory () {
+    pkgdesc="RAM blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome' 'perl')
+    conflicts=()
+    provides=('i3xrocks-memory')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-memory_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-net-traffic () {
+    pkgdesc="Network traffic blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'iproute2' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-net-traffic')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-net-traffic_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-nm-vpn () {
+    pkgdesc="nmcli vpn blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'networkmanager' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-nm-vpn')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-nm-vpn_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-openvpn () {
+    pkgdesc="OpenVPN blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'openvpn' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-openvpn')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-openvpn_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-temp () {
+    pkgdesc="CPU temperature blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'lm_sensors')
+    conflicts=()
+    provides=('i3xrocks-temp')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-temp_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+
+package_i3xrocks-time () {
+    pkgdesc="Time blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-time')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-time_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-volume () {
+    pkgdesc="Volume blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'alsa-utils' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-volume')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-volume_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-weather () {
+    pkgdesc="Weather blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'curl' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-weather')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-weather_3.6.4-1_amd64.deb
+    move_copyright
+}
+
+
+package_i3xrocks-wifi () {
+    pkgdesc="Wifi blocklet for i3xrocks"
+    license=('GPLv3')
+    arch=('x86_64')
+    depends=('glibc' 'accountsservice' 'networkmanager' 'bc' 'ttf-font-awesome')
+    conflicts=()
+    provides=('i3xrocks-wifi')
+    groups=('regolith-de')
+
+    extract_deb "${srcdir}"/i3xrocks-wifi_3.6.4-1_amd64.deb
+    move_copyright
 }
 
 
