@@ -2,7 +2,7 @@
 _release_type=alpha
 
 pkgname=makedeb-alpha
-pkgver=8.0.7
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release_type} release)"
 arch=('any')
