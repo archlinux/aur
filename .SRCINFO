@@ -1,7 +1,7 @@
 pkgbase = cast_control
 	pkgdesc = Control Chromecasts from Linux and D-Bus
 	pkgver = 0.11.8.post0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/alexdelorenzo/cast_control
 	arch = any
@@ -13,7 +13,8 @@ pkgbase = cast_control
 	depends = python-daemons
 	depends = python-gobject
 	depends = python-mpris_server
-	depends = python-pychromecast
+	depends = python-pychromecast>=9.2.0
+	depends = python-pychromecast<9.3.0
 	depends = python-pydbus
 	depends = python-typing_extensions
 	optdepends = playerctl: Get the D-Bus name for your device
