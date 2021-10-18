@@ -5,7 +5,7 @@
 
 pkgname=wammu
 pkgver=0.44
-pkgrel=11
+pkgrel=12
 pkgdesc="A wxPython-based GUI for Gammu, a mobile phone manager."
 arch=('any')
 url="https://wammu.eu/wammu/"
@@ -16,6 +16,7 @@ depends=(
   'wxpython'
 )
 makedepends=(
+  'python2-pybluez<1:0.23'
   'python2-setuptools'
 )
 optdepends=(
