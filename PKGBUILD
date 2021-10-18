@@ -1,8 +1,8 @@
 # Maintainer: riey <creeper844@gmail.com>
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 pkgname=kime-git
-pkgver=2.5.5.r0.0de87e7
-pkgrel=2
+pkgver=2.5.6.r2.34c5e1b
+pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
@@ -12,7 +12,7 @@ optdepends=('gtk2: gtk2 support'
             'gtk4: gtk4 support'
             'qt5-base: qt5 support'
             'qt6-base: qt6 support')
-makedepends=('cargo' 'clang' 'llvm' 'cmake' 'cairo' 'libxcb' 'dbus')
+makedepends=('cargo' 'clang' 'llvm' 'cmake' 'dbus' 'fontconfig' 'freetype2')
 arch=('any')
 license=('GPL3')
 source=("${pkgname}::git+${url}")
