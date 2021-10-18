@@ -2,7 +2,7 @@
 
 pkgname=mesa-d3d12
 pkgdesc="Mesa with D3D12 Gallium backend"
-pkgver=21.2.3
+pkgver=21.2.4
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -48,7 +48,7 @@ url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE)
-sha512sums=('a5841c200416c19b60563a3823dd51592627e64f5f794c9fa3fba630e33a126048866e9b425739d88f2832770646a7ba8752a718a50d06266392b92d1a7370ea'
+sha512sums=('245915260b1366beed15d4790e09d050352614daaea2ed052128d54f26dda202d7abf125b9fa5098ef77604b18977b0ce4209df51746d123871ebf8708f7425d'
             'SKIP'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
