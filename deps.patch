@@ -1,13 +1,19 @@
 diff --git a/setup.py b/setup.py
-index dd929fe..7cb1e1a 100755
+index e6f0dc3..3220eb2 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -22,7 +22,7 @@ requires = (
-     "tqdm>=4.61.2",
+@@ -22,12 +22,12 @@ requires = (
+     "tqdm>=4.62.3",
      "requests>=2.26.0",
-     "simplejson>=3.17.3",
+     "simplejson>=3.17.5",
 -    "packaging>=21.0",
 +    "packaging>=20.9",
      # iOS dependencies:
-     "iOSbackup>=0.9.912",
+     "iOSbackup>=0.9.921",
      # Android dependencies:
+     "adb-shell>=0.4.1",
+-    "libusb1>=2.0.1",
++    "libusb1>=1.9.3",
+ )
+ 
+ def get_package_data(package):
