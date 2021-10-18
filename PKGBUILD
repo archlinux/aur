@@ -20,7 +20,7 @@ source=("${_pkgname}::git+https://github.com/jnsh/${_pkgname}.git")
 md5sums=('SKIP')
 
 # Latest stable Arch package versions
-_cinnamonver=4.8
+_cinnamonver=5.0
 _gnomeshellver=40
 _gtk3ver=3.24
 _gtk4ver=4.4
