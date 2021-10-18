@@ -1,0 +1,14 @@
+pkgbase = whattodo
+	pkgdesc = Another todo command line Utility. (But this one is made in Java)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/will-t-f/whattodo.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = jdk-openjdk
+	source = git+https://github.com/will-t-f/whattodo.git
+	md5sums = SKIP
+
+pkgname = whattodo
