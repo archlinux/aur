@@ -2,8 +2,8 @@
 options=(!strip !buildflags debug)
 _name=trunk-recorder
 pkgname=${_name}-git
-pkgver=r1629.b3d1776
-pkgrel=2
+pkgver=r1643.804df23
+pkgrel=1
 pkgdesc="Records calls from a Trunked Radio System (P25 & SmartNet)"
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
 url="https://github.com/robotastic/trunk-recorder"
