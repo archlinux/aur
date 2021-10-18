@@ -2,7 +2,7 @@
 _release_type=beta
 
 pkgname=makedeb-beta
-pkgver=7.1.2
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release_type} release)"
 arch=('any')
@@ -44,6 +44,11 @@ package() {
 
   cat "src/makedeb.sh" >> "${pkgdir}/usr/bin/makedeb"
   chmod 555 "${pkgdir}/usr/bin/makedeb"
+  
+  # Copy over extra utilities.
+  cd ./src/utils/
+  find ./ -type f -exec install -Dm 755 '{}' "${pkgdir}/usr/share/makedeb/utils/{}" \;
+  cd ../../
 
   # Set up man pages
   SOURCE_DATE_EPOCH="$(git log -1 --pretty='%ct' man/makedeb.8.adoc)" \
