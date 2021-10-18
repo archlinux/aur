@@ -5,7 +5,7 @@
 
 pkgname=wammu
 pkgver=0.44
-pkgrel=8
+pkgrel=9
 pkgdesc="A wxPython-based GUI for Gammu, a mobile phone manager."
 arch=('any')
 url="https://wammu.eu/wammu/"
@@ -35,6 +35,11 @@ prepare() {
     msg "Patching shabeng line for python2 in '${_pyfile}' ..."
     sed -E -i '1s|^#!(.*)python$|#!\1python2|' "${_pyfile}"
   done
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py build
 }
 
 package() {

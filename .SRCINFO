@@ -1,7 +1,7 @@
 pkgbase = wammu
 	pkgdesc = A wxPython-based GUI for Gammu, a mobile phone manager.
 	pkgver = 0.44
-	pkgrel = 8
+	pkgrel = 9
 	url = https://wammu.eu/wammu/
 	arch = any
 	license = GPL
