@@ -9,7 +9,7 @@ _pkgname="python2-${_upstreamname}"
 pkgname="${_pkgname}-0.22"
 epoch=0
 pkgver=0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="python2 wrapper for the BlueZ Bluetooth stack. Version 0.22, the probably latest one with python2 support."
 arch=(
   'i686'
@@ -27,7 +27,7 @@ makedepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
-  "${_upstreamname}2"
+  "${_upstreamname}2=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
