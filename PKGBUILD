@@ -6,7 +6,7 @@
 
 _pkgname=wireplumber
 pkgname="${_pkgname}-git"
-pkgver=0.4.0.r8.g1075d23
+pkgver=0.4.4.r3.g1bdb8c2
 pkgrel=1
 pkgdesc="Session / policy manager implementation for PipeWire"
 arch=('x86_64')
@@ -36,6 +36,7 @@ build() {
     -Dsystem-lua=true \
     -Dsystemd-system-service=true \
     -Dsystemd-user-service=true \
+    -Delogind=disabled \
     build
 
   ninja -C build
