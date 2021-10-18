@@ -2,7 +2,7 @@
 
 pkgname=cutefish-kwin-plugins-git
 _pkgname=cutefish-kwin-plugins
-pkgver=0.4.r15.gfab9898
+pkgver=0.5.r0.g8194fb2
 pkgrel=1
 pkgdesc="CutefishOS KWin Plugins"
 arch=('x86_64')
