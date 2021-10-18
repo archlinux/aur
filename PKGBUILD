@@ -2,7 +2,7 @@
 _release_type=beta
 
 pkgname=makedeb-makepkg-beta
-pkgver=8.8.0
+pkgver=8.10.1
 pkgrel=1
 pkgdesc="Arch Linux build utility, modified for use with makedeb (beta release)"
 arch=(any)
