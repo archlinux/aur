@@ -1,6 +1,6 @@
 pkgbase = coturn-git
 	pkgdesc = Open-source implementation of TURN and STUN server (git)
-	pkgver = 4.5.1.2+r1+g113f138
+	pkgver = 4.5.2+r120+g3865842
 	pkgrel = 1
 	url = https://github.com/coturn/coturn
 	arch = i686
@@ -28,4 +28,3 @@ pkgbase = coturn-git
 	sha256sums = d765d14ff3a6527498257e4dc9e76231742cd41d8fe658004e171b8937db6a75
 
 pkgname = coturn-git
-
