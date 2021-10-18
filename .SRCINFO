@@ -1,0 +1,21 @@
+pkgbase = dusk-git
+	pkgdesc = Just another fork of dwm
+	pkgver = r467.4cce9d6
+	pkgrel = 1
+	url = https://github.com/bakkeby/dusk
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = libx11
+	depends = libxcb
+	depends = libxinerama
+	depends = libxft
+	depends = imlib2
+	depends = yajl
+	optdepends = dmenu: default application launcher
+	optdepends = st: default terminal
+	source = git+https://github.com/bakkeby/dusk.git
+	sha256sums = SKIP
+
+pkgname = dusk-git
