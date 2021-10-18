@@ -1,7 +1,7 @@
 pkgbase = cnijfilter-mp280
 	pkgdesc = Canon IJ Printer Driver (mp280 series)
 	pkgver = 3.40.1
-	pkgrel = 3.1
+	pkgrel = 4
 	url = http://support-au.canon.com.au/contents/AU/EN/0100302002.html
 	install = cnijfilter-mp280.install
 	arch = i686
