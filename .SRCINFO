@@ -1,0 +1,22 @@
+pkgbase = networkmanager-openconnect-useragent-git
+	pkgdesc = NetworkManager VPN plugin for OpenConnect with support for custom useragent
+	pkgver = 1.0
+	pkgrel = 1.0
+	url = https://wiki.gnome.org/Projects/NetworkManager
+	arch = x86_64
+	license = GPL
+	makedepends = libnma
+	makedepends = intltool
+	makedepends = python
+	makedepends = git
+	depends = libnm
+	depends = libsecret
+	depends = openconnect
+	depends = libopenconnect.so
+	optdepends = libnma: GUI support
+	provides = networkmanager-openconnect
+	conflicts = networkmanager-openconnect
+	source = git+https://gitlab.gnome.org/patradebasish1987/NetworkManager-openconnect.git
+	sha256sums = SKIP
+
+pkgname = networkmanager-openconnect-useragent-git
