@@ -1,7 +1,7 @@
 pkgbase = twitchnotifier-git
 	pkgdesc = A tool that sits in the background and notifies you using libnotify if a channel you follow comes online or goes offline
-	pkgver = 20150214
-	pkgrel = 3
+	pkgver = 20201013
+	pkgrel = 1
 	url = https://github.com/GiedriusS/TwitchNotifier
 	install = TwitchNotifier.install
 	arch = any
