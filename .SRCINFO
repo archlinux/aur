@@ -1,27 +1,31 @@
 pkgbase = photobroom
 	pkgdesc = Photos managing tool
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/Kicer86/photobroom
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = exiv2
-	makedepends = openlibrary
+	makedepends = magic_enum
 	makedepends = qt5-tools
-	makedepends = dlib
-	depends = jsoncpp
+	makedepends = imagemagick
 	depends = openlibrary
+	depends = exiv2
 	depends = qt5-base
-	source = https://codeload.github.com/Kicer86/photobroom/tar.gz/v1.4.0
-	source = cmake_modules::git+https://github.com/Kicer86/cmake_modules.git#commit=05a523fd464b6020ac3839e410236ebc859721cb
+	depends = dlib
+	depends = openlibrary
+	provides = photobroom
+	conflicts = photobroom
+	source = https://codeload.github.com/Kicer86/photobroom/tar.gz/v1.5.0
+	source = cmake_modules::git+https://github.com/Kicer86/cmake_modules.git#commit=b1e3891453826887411c952315227d5c91e204b6
 	source = kwidgetsaddons::git+https://invent.kde.org/frameworks/kwidgetsaddons.git#commit=a2adad286075e4033bbba14ce0a3798a256622ac
 	source = face_recognition_models::git+https://github.com/ageitgey/face_recognition_models.git#commit=e67de717267507d1e9246de95692eb8be736ab61
-	md5sums = 506a3f7f621091da3e2847fb0e552bfc
+	source = github_api::git+https://github.com/Kicer86/github_api.git#commit=61267f15d558819bab7218c353a03d0d449774f9
+	md5sums = 074f2042886875a21f79ef156589f737
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = photobroom
-
