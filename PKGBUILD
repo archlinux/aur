@@ -1,6 +1,6 @@
 # Maintainer: Aaron Esau <contact@aaronesau.com>
 pkgname="heaptrace-git"
-pkgver="2.2.4"
+pkgver="2.2.5"
 pkgrel="1"
 license=("BSD")
 arch=("x86_64")
@@ -22,6 +22,5 @@ check() {
 }
 
 package() {
-    # copy files over and change perms
     install -D "${srcdir}/${pkgname}-${pkgver}/heaptrace" "${pkgdir}/usr/bin/heaptrace" --mode=755 --owner="root" --group="root"
 }
