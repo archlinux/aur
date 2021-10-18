@@ -1,3 +1,17 @@
+=== Morgen 2.3.0
+New Features
+- Zapier integration
+
+Improvements
+-Starting from this release, Morgen persists the latest calendar view settings and restores them when you restart the app. For example, if you normally work on the monthly view, you will start from the same monthly view after a restart. Similarly, if you prefer not to see weekends, you will not need to toggle them off every time anymore.
+
+Bug Fixes
+- Fixed the calendar widget not appearing when editing the end date of a recurrence
+- Fixed parsing of some events, which was causing the end date to be wrong (and in the wrong timezone)
+- Fixed notifications with CalDAV calendars, that were not delivered reliably
+- Fixed a minor style issue with the notes fields in the Scheduler sidebar tab
+
+
 === Morgen 2.2.6
 Improvements
 - Often an event timezone differs from the current local timezone. We have improved the event detail widget to show both the event original time and the time in the local timezone. Moreover, when the start and end timezones are different (long flights are a common example), Morgen now shows both. 
