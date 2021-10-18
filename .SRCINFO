@@ -1,0 +1,15 @@
+pkgbase = python-uniseg
+	pkgdesc = A Python package to determine Unicode text segmentations.
+	pkgver = 0.7.1.post2
+	pkgrel = 1
+	url = https://bitbucket.org/emptypage/uniseg-py
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-uniseg
+	conflicts = python-uniseg
+	source = https://files.pythonhosted.org/packages/40/42/e725e1812e539053dff0c09aa20f4e0551736ca5b220704888f6ef314372/uniseg-0.7.1.post2.zip
+	md5sums = 649af359840efeb4f82ba8a0098dc4b6
+
+pkgname = python-uniseg
