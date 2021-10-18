@@ -1,8 +1,8 @@
 # Maintainer: matheuz1210 <matheuz1210 at gmail dot com>
 
 pkgname=wsid
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='web show image directory'
 arch=(any)
 url='https://github.com/matheuz1210/wsid'
@@ -15,7 +15,7 @@ optdepends=(
     'python-pyqt5: for gui' )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz" )
-b2sums=('98f2dfea2e9e98493c336c9fc0e8b5d027617090021c4074f44ebd68e7fc5be9f4df1fe148f63efc1f730228e24d7586c3d92a2cef6645ad24861b0a9c06a49f')
+b2sums=('d4ece43dc546f5cd9c820818b341f4aee4c19f284027738802366f5df42fd61b3980189166498818dfb8c500b51206eb05651d7655e55ced3e64d7c98cec6390')
 
 build(){
     cd "${pkgname}-${pkgver}"
