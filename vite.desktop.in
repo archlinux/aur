@@ -1,0 +1,10 @@
+[Desktop Entry]
+# Version=@PACKAGE_VERSION@
+Name=Vite
+Comment=Pajé and OTF trace explorer.
+Exec=/usr/bin/vite %f
+StartupNotify=true
+Terminal=false
+Icon=@PACKAGE_NAME@
+Type=Application
+Categories=Development;
