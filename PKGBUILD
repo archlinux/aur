@@ -5,7 +5,7 @@
 
 pkgname=cnijfilter-mp280
 pkgver=3.40.1
-pkgrel=3.1
+pkgrel=4
 _pkgrealver=3.40
 _pkgrealrel=1
 pkgdesc="Canon IJ Printer Driver (mp280 series)"
