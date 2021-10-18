@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+
+depend() {
+  need udev udev-trigger
+  after getty
+}
+
+
+# Use the following PID-file:
+_PIDFILE="/var/run/touchegg-daemon.pid"
+
+# The exeecutable to run
+_DAEMON="/usr/bin/touchegg"
+
+# The options for the daemon
+_DAEMON_ARGS=('--daemon')
+# _DAEMON_ARGS+=('--quiet')
+# _DAEMON_ARGS+=('--verbose')
+
+# Use the following logfile
+# _LOGFILE="/dev/null"
+_LOGFILE="/var/log/touchegg-daemon.log"
+
+start() {
+  ebegin "Starting touchegg daemon"
+
+  # Create $_PIDFILE
+  touch "${_PIDFILE}"
+
+  start-stop-daemon --pidfile "${_PIDFILE}" --make-pidfile --start --background --verbose -1 "${_LOGFILE}" -2 "${_LOGFILE}" --exec "${_DAEMON}" -- "${_DAEMON_ARGS[@]}"
+
+  eend "$?"
+}
+
+stop() {
+  ebegin "Stopping touchegg daemon"
+
+  start-stop-daemon --pidfile "${_PIDFILE}" --stop --verbose
+
+  eend "$?"
+}
