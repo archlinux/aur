@@ -1,0 +1,15 @@
+pkgbase = dnspeep-bin
+	pkgdesc = Like jq, but for HTML
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/jvns/dnspeep
+	arch = x86_64
+	license = MIT
+	provides = dnspeep
+	conflicts = dnspeep
+	source = https://github.com/jvns/dnspeep/releases/download/v0.1.2/dnspeep-linux.tar.gz
+	source = https://raw.githubusercontent.com/jvns/dnspeep/v0.1.2/License.md
+	sha256sums = 842e6656486f44022c1c9be145a7f186e6dfa129ecd64f0da7a6c1432bbf1d38
+	sha256sums = 6b13fac99d17c5c42a3929e363aaa2ea75fc791da671e599a0dab5f9ac432b0d
+
+pkgname = dnspeep-bin
