@@ -9,8 +9,10 @@ arch=('x86_64')
 url="https://github.com/cutefishos/core"
 license=('GPL')
 groups=('cutefish-git')
-depends=('fishui-git' 'libpulse' 'libxtst' 'polkit-qt5')
-makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools' 'git')
+depends=('fishui-git' 'libcutefish-git' 'qt5-quickcontrols2' 'libpulse' 'libxcursor' 'libxtst'
+          'polkit-qt5')
+makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools'  'xf86-input-libinput'
+              'xf86-input-synaptics' 'xorg-server-devel' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
