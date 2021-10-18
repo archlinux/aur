@@ -5,7 +5,7 @@
 
 pkgname=wammu
 pkgver=0.44
-pkgrel=9
+pkgrel=10
 pkgdesc="A wxPython-based GUI for Gammu, a mobile phone manager."
 arch=('any')
 url="https://wammu.eu/wammu/"
@@ -44,5 +44,5 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
