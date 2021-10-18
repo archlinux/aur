@@ -1,0 +1,17 @@
+pkgbase = python-xsge
+	pkgdesc = xSGE is a collection of higher-level extensions for the SGE which enhance the core functionality in an implementation-independent way.
+	pkgver = 2021.10.11
+	pkgrel = 1
+	url = https://python-sge.github.io/
+	arch = x86_64
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pygame
+	depends = python-sge
+	provides = python-xsge
+	conflicts = python-xsge
+	source = https://github.com/python-sge/xsge/archive/refs/tags/v2021.10.11.tar.gz
+	md5sums = 3e0f3e7e57d3cdb6d868c0e72db1e02a
+
+pkgname = python-xsge
