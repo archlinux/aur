@@ -10,6 +10,7 @@ arch=("x86_64")
 url="https://music.163.com/"
 license=('custom')
 depends=('gtk2' 'gtk3' 'vlc')
+makedepends=(gcc)
 source=(
 	"https://d1.music.126.net/dmusic/netease-cloud-music_${pkgver}_amd64_ubuntu_${_pkgdate}.deb"
 	"https://music.163.com/html/web2/service.html"

@@ -5,6 +5,7 @@ pkgbase = netease-cloud-music
 	url = https://music.163.com/
 	arch = x86_64
 	license = custom
+	makedepends = gcc
 	depends = gtk2
 	depends = gtk3
 	depends = vlc
