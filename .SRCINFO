@@ -1,14 +1,12 @@
 pkgbase = galaxybudsclient-bin
 	pkgdesc = Galaxy Buds Client for Linux
 	pkgver = 4.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ThePBone/GalaxyBudsClient
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = git
-	makedepends = wget
 	provides = galaxybudsclient-bin
 	conflicts = galaxybudsclient-bin
 	options = !strip
@@ -18,5 +16,9 @@ pkgbase = galaxybudsclient-bin
 	sha256sums = 04b551470a2e0ccd99b266d313265321113886f5808b872bf928a97442bf930a
 	source_x86_64 = https://github.com/ThePBone/GalaxyBudsClient/releases/download/4.4.1/GalaxyBudsClient_Linux_64Bit_Portable.bin
 	sha256sums_x86_64 = eef881b49f5bceea153870c7b82633e2a5eeec82ddc6949883a7c9ed3e074ae4
+	source_armv7h = https://github.com/ThePBone/GalaxyBudsClient/releases/download/4.4.1/GalaxyBudsClient_Linux_arm_Portable.bin
+	sha256sums_armv7h = aa17d71d9a539fdac508ce60d0ec8f078a7662d85c91f58ac3e4da31c3be8074
+	source_aarch64 = https://github.com/ThePBone/GalaxyBudsClient/releases/download/4.4.1/GalaxyBudsClient_Linux_arm64_Portable.bin
+	sha256sums_aarch64 = 892ca971816cf6cdcc0fc4d46004ad88fefa4cafd97b491e45aec79c43a81251
 
 pkgname = galaxybudsclient-bin
