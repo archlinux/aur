@@ -3,7 +3,7 @@ _pkgname=mindustry-server
 pkgname=${_pkgname}-bin
 _build=133
 pkgver="7.0_${_build}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Server of a sandbox tower defense game written in Java"
 arch=("any")
@@ -17,7 +17,7 @@ source=("${pkgname}-${_build}.jar::https://github.com/Anuken/Mindustry/releases/
         "${pkgname}.icns::https://github.com/Anuken/Mindustry/raw/v${_build}/core/assets/icons/icon.icns"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha256sums=('7c32ce4ab9020d394258d2aef752757231dbcddc96e3326290e13498b663f5ec'
+sha256sums=('d9c9d4cceadaee4389fde1081d06a6872afb860c25ad776fed06ea8e20b8cc4c'
             '16fcae782b13a8460e631d265c505f56393acd14700b016904744bd44aa290eb'
             '679727847ba70773cee4f902114345e095b27f425aa00c4d3860d247705ed1f0'
             '053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241')
