@@ -1,13 +1,12 @@
 pkgbase = pamac-zsh-completions
 	pkgdesc = ZSH completions for pamac
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	arch = any
 	license = GPL
 	depends = zsh
 	depends = pamac
 	source = _pamac
-	sha256sums = 12281bc86d5c6359a1b46a2c167a1a04f53ff7279d84912b5c84e1f0466b71ab
+	sha256sums = d1e23a0093494dc8868962695493c6f476f8730ced945e29b910b7de4443358f
 
 pkgname = pamac-zsh-completions
-

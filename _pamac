@@ -36,7 +36,7 @@ _pamac_completions_all_packages() {
         typeset -U packages
         ${seq} _wanted repo_packages expl "repository/package" compadd ${sep[@]} ${(@)packages}
     else
-        packages=( $(_call_program packages pacman -Sql) )
+        packages=( $(_call_program packages pamac search -q ${words[CURRENT]}) )
         typeset -U packages
         ${seq} _wanted packages expl "packages" compadd ${sep[@]} - "${(@)packages}"
 
@@ -60,12 +60,6 @@ _pamac_completions_installed_packages() {
     packages_long=(/var/lib/pacman/local/*(/))
     packages=( ${${packages_long#/var/lib/pacman/local/}%-*-*} )
     compadd "$@" -a packages
-}
-
-_pamac_all_packages() {
-    _alternative : \
-        'localpkgs:local packages:_pamac_completions_installed_packages' \
-        'repopkgs:repository packages:_pamac_completions_all_packages'
 }
 
 _pamac_completions_all_packages_and_groups() {
@@ -169,7 +163,7 @@ _pamac_command_info() {
     _arguments : \
         "(1 * -)--help[show help for command]" \
         "(-a --aur)"{-a,--aur}"[also search in AUR]" \
-        "*:packages:_pamac_all_packages"
+        "*:packages:_pamac_completions_all_packages"
 }
 
 _pamac_command_list() {
@@ -180,14 +174,14 @@ _pamac_command_list() {
         "(-m --foreign)"{-m,--foreign}"[list packages that were not found in the repositories]" \
         "(-g --groups)"{-g,--groups}"[list all packages that are members of the given groups, if no group is given list all groups]:groups:_pamac_completions_all_groups" \
         "(-r --repos)"{-r,--repos}"[list all packages available in the given repos, if no repo is given list all repos]:repos:_pamac_completions_repositories" \
-        "(-f --files)"{-f,--files}"[list files owned by the given packages]:packages:_pamac_all_packages"
+        "(-f --files)"{-f,--files}"[list files owned by the given packages]:packages:_pamac_completions_all_packages"
 }
 
 _pamac_command_install() {
     _arguments : \
         "(1 * -)--help[show help for command]" \
-        "(--ignore)--ignore[ignore a package upgrade, multiple packages can be specified by separating them with a comma]:packages:_pamac_all_packages" \
-        "(--overwrite)--override[overwrite conflicting files, multiple patterns can be specified by separating them with a comma]:glob:_files" \
+        "(--ignore)--ignore[ignore a package upgrade, multiple packages can be specified by separating them with a comma]:packages:_pamac_completions_all_packages" \
+        "(--overwrite)--overwrite[overwrite conflicting files, multiple patterns can be specified by separating them with a comma]:glob:_files" \
         "(--no-confirm)--no-confirm[bypass any and all confirmation messages]" \
         "*:packages:_pamac_completions_all_packages_groups_and_local"
 }
@@ -207,7 +201,7 @@ _pamac_command_clone() {
         "(--builddir)--builddir[build directory, if no directory is given the one specified in pamac.conf file is used]:dir:_path_files -/" \
         "(-r --recurse)"{-r,--recurse}"[also clone needed dependencies]" \
         "(--overwrite)--overwrite[overwrite existing files]" \
-        "*:packages:_pamac_all_packages"
+        "*:packages:_pamac_completions_all_packages"
 }
 
 _pamac_command_build() {
@@ -217,7 +211,7 @@ _pamac_command_build() {
         "(-k --keep)"{-k,--keep}"[keep built packages in cache after installation]" \
         "(--no-clone)--no-clone[do not clone build files from AUR, only use local files]" \
         "(--no-confirm)--no-confirm[bypass any and all confirmation messages]" \
-        "*:packages:_pamac_all_packages"
+        "*:packages:_pamac_completions_all_packages"
 }
 
 _pamac_command_remove() {
