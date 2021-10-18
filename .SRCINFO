@@ -1,6 +1,6 @@
 pkgbase = neovim-gitsigns-git
 	pkgdesc = Git signs written in pure Lua
-	pkgver = r410.ceb2dcb
+	pkgver = 0.3.r14.g1859435
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/lewis6991/gitsigns.nvim
