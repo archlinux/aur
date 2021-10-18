@@ -1,5 +1,5 @@
 pkgname=opencl-headers-git
-pkgver=2021.06.30.3.g835558e
+pkgver=2021.06.30.6.g1fc6fc1
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
@@ -13,12 +13,8 @@ makedepends=('git'
              )
 provides=('opencl-headers')
 conflicts=('opencl-headers')
-source=('git+https://github.com/KhronosGroup/OpenCL-Headers.git'
-        'https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-Headers/pull/178.diff'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            )
+source=('git+https://github.com/KhronosGroup/OpenCL-Headers.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd OpenCL-Headers
@@ -27,8 +23,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  patch -d OpenCL-Headers -p1 -i "${srcdir}/178.diff"
 
   # fix .cmake path
   sed 's|cmake/OpenCLHeaders|OpenCLHeaders/cmake|g' -i OpenCL-Headers/CMakeLists.txt
