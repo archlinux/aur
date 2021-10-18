@@ -1,6 +1,6 @@
 pkgbase = nodejs-ungit
 	pkgdesc = Git made easy
-	pkgver = 1.5.17
+	pkgver = 1.5.18
 	pkgrel = 1
 	url = https://www.npmjs.com/package/ungit
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = nodejs-ungit
 	conflicts = ungit
 	options = !emptydirs
 	options = !strip
-	source = nodejs-ungit-1.5.17.tgz::https://registry.npmjs.org/ungit/-/ungit-1.5.17.tgz
-	sha512sums = b54c0451602ed0d1bc7256a0f9eeeaf403e6dc4881ab79b935dbce00d81d0260f0754615ff2102828606ba93b2615375cbb117c2b7798ed7bd8fbdc29b3435c9
+	source = nodejs-ungit-1.5.18.tgz::https://registry.npmjs.org/ungit/-/ungit-1.5.18.tgz
+	sha512sums = 13c7ee573b3b2a17ea5b293e310f8ba8fd80d085c55bae375eed81242c3888ba66141a0a1e5fbb014679ab8a36a9e7ded4316800c8a399b16cc5b21c983baf5a
 
 pkgname = nodejs-ungit
-
