@@ -43,7 +43,7 @@ pkgver() {
 
 prepare() {
   cd $_pkgbase/subprojects
-  ln -s ../../media-session .
+  ln -sf ../../media-session .
 }
 
 build() {
