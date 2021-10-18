@@ -1,0 +1,16 @@
+[Unit]
+Description=GoDns  %i service 
+Documentation=man:godns
+DefaultDependencies=no
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/godns -c=/etc/conf.d/%i.conf
+Restart=always
+KillMode=process
+RestartSec=30s
+
+[Install]
+WantedBy=multi-user.target
+
+

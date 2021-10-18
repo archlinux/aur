@@ -1,0 +1,12 @@
+pkgbase = systemd-godns
+	pkgdesc = systemd for godns
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	groups = lcj
+	license = GPL3
+	depends = godns
+	source = godns@.service
+	sha512sums = e9a1b8601db10bf65c6dc2ff7c06caa5f5bda80119d18165e621ae49c95d3a747cb7cc114838e287c0e1967f7e5303e819c82ee714ab9e021a891a8eba15f3e9
+
+pkgname = systemd-godns
