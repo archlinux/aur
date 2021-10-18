@@ -1,5 +1,5 @@
 pkgname=foundationdb-server-bin
-pkgver=6.3.9
+pkgver=6.3.18
 pkgrel=1
 pkgdesc="FoundationDB server. FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions. This package contains the server."
 arch=('x86_64')
@@ -12,7 +12,7 @@ install=${pkgname}.install
 # Remove DLAGENTS once apple can fix their stuff https://bbs.archlinux.org/viewtopic.php?id=262737
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 source_x86_64=("https://www.foundationdb.org/downloads/${pkgver}/ubuntu/installers/foundationdb-server_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_x86_64=('599cff5f3dd663ba0ef508a92765cc421738726e6b8908fa253a4ae95bc20e21')
+sha256sums_x86_64=('d5e452b71f85d6e5d16a2d707b8699a4ae1addeaaa456f002007b81d30bb39bf')
 
 package(){
 
