@@ -2,10 +2,13 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: cs-cam - me.at.camdaniel.com
 
+## NOTE: DO NOT UPGRADE to version 0.23 or higher, since that in fact will break things for python2. Python2 compatibility only up to version 0.22.
+
 _pkgname=pybluez
 pkgname=python2-pybluez
-pkgver=0.23
-pkgrel=2
+epoch=1
+pkgver=0.22
+pkgrel=1
 pkgdesc="python2 wrapper for the BlueZ Bluetooth stack"
 arch=(
   'i686'
@@ -24,7 +27,7 @@ source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/pybluez/pybluez/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=(
-  '2c5234a27d8bd560c65eee73d0b72e65ddfdf018b256b4eccab0680d577db1d5'
+  'SKIP'
 )
 
 prepare() {

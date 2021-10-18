@@ -1,7 +1,8 @@
 pkgbase = python2-pybluez
 	pkgdesc = python2 wrapper for the BlueZ Bluetooth stack
-	pkgver = 0.23
-	pkgrel = 2
+	pkgver = 0.22
+	pkgrel = 1
+	epoch = 1
 	url = https://pybluez.github.io/
 	arch = i686
 	arch = x86_64
@@ -9,7 +10,7 @@ pkgbase = python2-pybluez
 	makedepends = python2-setuptools
 	depends = bluez-libs
 	depends = python2
-	source = pybluez-0.23.tar.gz::https://github.com/pybluez/pybluez/archive/refs/tags/0.23.tar.gz
-	sha256sums = 2c5234a27d8bd560c65eee73d0b72e65ddfdf018b256b4eccab0680d577db1d5
+	source = pybluez-0.22.tar.gz::https://github.com/pybluez/pybluez/archive/refs/tags/0.22.tar.gz
+	sha256sums = SKIP
 
 pkgname = python2-pybluez
