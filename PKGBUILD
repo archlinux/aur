@@ -6,6 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.3.0
+_dxvkver=1.9.2
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
@@ -121,9 +122,9 @@ source=(
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
+    https://raw.githubusercontent.com/Sporif/dxvk-async/${_dxvkver}/dxvk-async.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
-    dxvk-async.patch
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
@@ -192,6 +193,7 @@ prepare() {
     popd
 
     pushd media-converter
+        export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${srcdir}"/build/.cargo
         cargo update
         cargo fetch --locked --target "i686-unknown-linux-gnu"
@@ -205,11 +207,11 @@ prepare() {
         patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
 
-    # Uncomment to enable dxvk async patch.
-    # Enable at your own risk. If you don't know what it is,
-    # and its implications, leave it as is. You have been warned.
-    # I am not liable if anything happens to you by using it.
     pushd dxvk
+        # Uncomment to enable dxvk async patch.
+        # Enable at your own risk. If you don't know what it is,
+        # and its implications, leave it as is. You have been warned.
+        # I am not liable if anything happens to you by using it.
         patch -p1 -i "$srcdir"/dxvk-async.patch
     popd
 
@@ -270,6 +272,7 @@ build() {
     # MingW Wine builds fail with relro
     export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
+    export RUSTUP_TOOLCHAIN=stable
     export WINEESYNC=0
     export WINEFSYNC=0
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
@@ -329,10 +332,9 @@ sha256sums=('SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             'eb67426ff60ed6395b70437e838883ee08b6189cad84faf036b1a4d7366a34e2'
+            '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
             'b4e9c0c4959fcb3f7b7f25e35e5e0577dac5d54fe18e6edb15852a2a4196f2a2'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            'acdb652830d642829057a035ebc69481697078a734f57ac974ee5b54454470ff'
             '8399d0684a9c732bf405a37f1f3cc779435f2c68a8d042382e9e0538576ab854'
-            '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
-            '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-)
+            '8be5e0ae9f71d686c72ac094a4eaca14ea288276195d4c0c217a4f3974fbcc70'
+            '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3')

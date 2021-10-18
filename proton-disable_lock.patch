@@ -1,8 +1,8 @@
 diff --git a/proton b/proton
-index 8183820..7acc32a 100755
+index 4423e05..becbbcc 100755
 --- a/proton
 +++ b/proton
-@@ -102,7 +102,6 @@ class Proton:
+@@ -291,7 +291,6 @@ class Proton:
          self.user_settings_file = self.path("user_settings.py")
          self.wine_bin = self.bin_dir + "wine"
          self.wineserver_bin = self.bin_dir + "wineserver"
@@ -10,41 +10,22 @@ index 8183820..7acc32a 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -114,35 +113,14 @@ class Proton:
-             not filecmp.cmp(self.version_file, self.path("dist/version"))
+@@ -1247,8 +1246,6 @@ if __name__ == "__main__":
  
-     def extract_tarball(self):
--        with self.dist_lock:
--            if self.need_tarball_extraction():
--                if os.path.exists(self.dist_dir):
--                    shutil.rmtree(self.dist_dir)
--                tar = None
--                for sf in ["", ".xz", ".bz2", ".gz"]:
--                    if os.path.exists(self.path("proton_dist.tar" + sf)):
--                        tar = tarfile.open(self.path("proton_dist.tar" + sf), mode="r:*")
--                        break
--                if not tar:
--                    log("No proton_dist tarball??")
--                    sys.exit(1)
--                tar.extractall(path=self.dist_dir)
--                tar.close()
--                try_copy(self.version_file, self.dist_dir)
-+        return True
+     g_proton = Proton(os.path.dirname(sys.argv[0]))
  
-     def missing_default_prefix(self):
-         '''Check if the default prefix dir is missing. Returns true if missing, false if present'''
-         return not os.path.isdir(self.default_pfx_dir)
+-    if g_proton.need_tarball_extraction():
+-        g_proton.extract_tarball()
  
-     def make_default_prefix(self):
--        with self.dist_lock:
--            local_env = dict(g_session.env)
--            if self.missing_default_prefix():
--                #make default prefix
--                local_env["WINEPREFIX"] = self.default_pfx_dir
--                local_env["WINEDEBUG"] = "-all"
--                g_session.run_proc([self.wine_bin, "wineboot"], local_env)
--                g_session.run_proc([self.wineserver_bin, "-w"], local_env)
-+        return True
+     g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
- class CompatData:
-     def __init__(self, compatdata):
+@@ -1257,7 +1254,8 @@ if __name__ == "__main__":
+     g_session.init_wine()
+ 
+     if g_proton.missing_default_prefix():
+-        g_proton.make_default_prefix()
++        log("Default prefix is missing, something is very wrong.")
++        sys.exit(1)
+ 
+     g_session.init_session(sys.argv[1] != "runinprefix")
+ 
