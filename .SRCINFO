@@ -1,7 +1,7 @@
 pkgbase = piwigo
 	pkgdesc = Photo gallery software for the web
 	pkgver = 11.5.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://piwigo.org/
 	arch = any
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = piwigo
 	backup = etc/webapps/piwigo/apache.conf
 	backup = etc/nginx/sites-available/piwigo.conf
 	backup = etc/php7/php-fpm.d/piwigo.conf
-	source = piwigo.zip::https://piwigo.org/download/dlcounter.php?code=latest
+	source = piwigo.zip::https://piwigo.org/download/dlcounter.php?code=11.5.0
 	source = apache.conf
 	source = piwigo.perm.sh
 	source = nginx.conf

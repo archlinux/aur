@@ -3,7 +3,7 @@
 
 pkgname=piwigo
 pkgver=11.5.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Photo gallery software for the web'
 arch=(any)
 url="https://piwigo.org/"
@@ -23,7 +23,7 @@ backup=('etc/webapps/piwigo/apache.conf'
         'etc/nginx/sites-available/piwigo.conf'
         'etc/php7/php-fpm.d/piwigo.conf')
 options=(emptydirs)
-source=('piwigo.zip::https://piwigo.org/download/dlcounter.php?code=latest'
+source=("piwigo.zip::https://piwigo.org/download/dlcounter.php?code=${pkgver}"
         'apache.conf'
         'piwigo.perm.sh'
         'nginx.conf'
