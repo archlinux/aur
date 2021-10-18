@@ -1,12 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Sean Anderson <seanga2@gmail.com>
-_commit=976cc9c1c4cd943cb25ba683902906cb83471fa6
 pkgname=mmdebstrap
-pkgver=0.7.5
+pkgver=0.8.1
 pkgrel=1
 epoch=
 pkgdesc="create a Debian chroot"
@@ -32,19 +26,19 @@ install=
 changelog=
 source=("$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('4db7f5fdce5d63af13fdae0892b91d865c6ba56a2e6b32e940780f32102559eb')
+sha256sums=('762dc8108c87d443bf556a14a167c4195a4a6f5cadcace32ece00dd3959bc9e3')
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver-$_commit"
+	cd "$pkgname"
 }
 
 build() {
-	cd "$pkgname-$pkgver-$_commit"
+	cd "$pkgname"
 }
 
 package() {
-	cd "$pkgname-$pkgver-$_commit"
+	cd "$pkgname"
 
 	source <(perl -V:vendorarch)
 	mkdir -p $pkgdir$vendorarch
