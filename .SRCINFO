@@ -1,0 +1,13 @@
+pkgbase = diann
+	pkgdesc = DIA-NN - a universal software for data-independent acquisition (DIA) proteomics data processing
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/vdemichev/DiaNN
+	arch = x86_64
+	license = custom
+	source = https://github.com/vdemichev/DiaNN/releases/download/1.8/diann_1.8.deb
+	source = https://raw.githubusercontent.com/vdemichev/DiaNN/master/LICENSE.txt
+	sha256sums = 03efec31370b7be0cba9bcb60a99dacb42a818af031fd712df76b493c966e422
+	sha256sums = SKIP
+
+pkgname = diann
