@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index 9ded1c5..dde5e8a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -50,7 +50,6 @@ AC_CONFIG_SUBDIRS(sdk)
+ # AC_GNU_SOURCE
+ AC_USE_SYSTEM_EXTENSIONS
+ 
+-AM_INIT_AUTOMAKE([1.11 foreign silent-rules])
+ AC_CONFIG_HEADERS([src/megacmdconfig.h]) #this avoids inline definitions of stuff already defined in sdk's config.h (e.g: -DPACKAGE_NAME)
+ 
+ LT_INIT([shared disable-static win32-dll])
