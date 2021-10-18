@@ -1,7 +1,7 @@
 pkgbase = pamac-aur
 	pkgdesc = A Gtk3 frontend, Package Manager based on libalpm with AUR and Appstream support
-	pkgver = 10.2.1
-	pkgrel = 2
+	pkgver = 10.2.2
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	install = pamac.install
 	arch = i686
@@ -39,12 +39,12 @@ pkgbase = pamac-aur
 	depends = git
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
-	provides = pamac=10.2.1-2
+	provides = pamac=10.2.2-1
 	conflicts = pamac
 	conflicts = pamac-tray-appindicator
 	options = !emptydirs
 	options = !strip
-	source = pamac-10.2.1-2.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/c84f52c0c17a94e3fd20eccc9e2870f0210e851a/pamac-c84f52c0c17a94e3fd20eccc9e2870f0210e851a.tar.gz
-	sha256sums = fcd6c91da9e2f94c983f0dc23392c11751c4e94435aa9b5aa048338129bd4915
+	source = pamac-10.2.2-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/125033f1da74b617c9ef3b74c8b26d4156ed7daa/pamac-125033f1da74b617c9ef3b74c8b26d4156ed7daa.tar.gz
+	sha256sums = ee8a7ef693cce365127bd19adce75b389ed92fbc7da91a0f6c7f0df384e3cff3
 
 pkgname = pamac-aur
