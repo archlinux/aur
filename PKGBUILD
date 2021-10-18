@@ -33,5 +33,5 @@ package() {
 install -Dm644 kexec-load@.service  "/etc/systemd/system/kexec-load@.service"
 }
 
-groups=('lcj211')
+groups=('lcj')
 
