@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.14.0.r239.g9579d62a
+pkgver=0.14.0.r303.gf7ea33da
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
@@ -11,6 +11,7 @@ provides=("libwlroots.so" "wlroots=${pkgver%%.r*}")
 conflicts=(wlroots wlroots-git)
 options=(debug)
 depends=(
+	glslang
 	libinput
 	libxcb
 	libxkbcommon
@@ -21,18 +22,20 @@ depends=(
 	xcb-util-renderutil
 	xcb-util-wm
 	seatd
-	systemd)
+	vulkan-icd-loader
+	xorg-xwayland)
 makedepends=(
 	git
 	meson
+	vulkan-headers
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}::git+${url}"
         # "xwayland_hidpi.diff::https://github.com/swaywm/wlroots/pull/2064.diff"
         "xwayland_hidpi.diff::https://github.com/swaywm/wlroots/compare/master...MisterDA:xwayland_hidpi.diff"
        )
-sha512sums=('SKIP'
-            'eade099a5db472a3feb6617a03c588e04a980ee474211461bc5d69dcaf09493f6ce55498e649aadf5808a996e52abb24cc32d9107e8400bf93ea17d2f6ba1a2a')
+sha256sums=('SKIP'
+            'bd3a5295c404be332372d1504177d1e7c7fd8649b0bc9ef603c586843a46f4b4')
 
 pkgver () {
 	cd "${pkgname}"
@@ -50,6 +53,7 @@ prepare () {
 
 build () {
 	arch-meson \
+		--buildtype=debug \
 		-Dwerror=false \
 		-Dexamples=false \
 		"${pkgname}" build

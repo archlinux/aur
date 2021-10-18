@@ -1,14 +1,16 @@
 pkgbase = wlroots-hidpi-git
 	pkgdesc = Modular Wayland compositor library, with XWayland HiDPI (git version)
-	pkgver = 0.14.0.r239.g9579d62a
+	pkgver = 0.14.0.r303.gf7ea33da
 	pkgrel = 1
 	url = https://github.com/swaywm/wlroots
 	arch = x86_64
 	license = custom:MIT
 	makedepends = git
 	makedepends = meson
+	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	makedepends = xorgproto
+	depends = glslang
 	depends = libinput
 	depends = libxcb
 	depends = libxkbcommon
@@ -19,7 +21,8 @@ pkgbase = wlroots-hidpi-git
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = seatd
-	depends = systemd
+	depends = vulkan-icd-loader
+	depends = xorg-xwayland
 	provides = libwlroots.so
 	provides = wlroots=0.14.0
 	conflicts = wlroots
@@ -27,7 +30,7 @@ pkgbase = wlroots-hidpi-git
 	options = debug
 	source = wlroots-hidpi-git::git+https://github.com/swaywm/wlroots
 	source = xwayland_hidpi.diff::https://github.com/swaywm/wlroots/compare/master...MisterDA:xwayland_hidpi.diff
-	sha512sums = SKIP
-	sha512sums = eade099a5db472a3feb6617a03c588e04a980ee474211461bc5d69dcaf09493f6ce55498e649aadf5808a996e52abb24cc32d9107e8400bf93ea17d2f6ba1a2a
+	sha256sums = SKIP
+	sha256sums = bd3a5295c404be332372d1504177d1e7c7fd8649b0bc9ef603c586843a46f4b4
 
 pkgname = wlroots-hidpi-git
