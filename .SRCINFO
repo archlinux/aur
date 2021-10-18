@@ -12,6 +12,7 @@ pkgbase = pulsemeeter-git
 	depends = python-gobject
 	depends = gtk3
 	depends = noise-suppression-for-voice
+	depends = swh-plugins
 	optdepends = glade: customize interface
 	optdepends = pulseaudio
 	provides = pulsemeeter
