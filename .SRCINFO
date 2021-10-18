@@ -3,6 +3,7 @@ pkgbase = systemd-kexec
 	pkgver = 1.0.0
 	pkgrel = 7
 	arch = any
+	groups = lcj211
 	license = GPL3
 	depends = kexec-tools
 	source = kexec-load@.service
