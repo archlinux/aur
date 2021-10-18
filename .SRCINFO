@@ -28,7 +28,7 @@ pkgbase = elmerfem-git
 	conflicts = elmerfem
 	options = !emptydirs
 	options = !staticlibs
-	source = git+https://github.com/ElmerCSC/elmerfem.git#branch:devel
+	source = git+https://github.com/ElmerCSC/elmerfem.git#branch=devel
 	source = elmerfem.desktop
 	source = arpack.patch
 	source = qwt6.patch::https://github.com/ElmerCSC/elmerfem/pull/294.patch

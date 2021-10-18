@@ -3,7 +3,7 @@
 # Contributor: Randy Heydon <randy dot heydon at clockworklab dot net>
 # Contributor: saxonbeta <saxonbeta at gmail __com
 
-_fragment=${FRAGMENT:-#branch:devel}
+_fragment=${FRAGMENT:-#branch=devel}
 
 # Configuration.
 if (( DISABLE_TRILINOS ))
