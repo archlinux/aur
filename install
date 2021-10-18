@@ -1,7 +1,0 @@
-post_upgrade() {
-  if (( $(vercmp $2 1.8.8-2) < 0)); then
-    printf 'In order to adhere upstream, we now ship with bundled pandoc binary'
-    printf "If you want to export documents with Arch's system pandoc"
-    printf 'Please choose NOT to export with built-in pandoc in Preference/Export tab'
-  fi
-}

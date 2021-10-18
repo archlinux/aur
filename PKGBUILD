@@ -7,7 +7,7 @@ _bundle_pandoc=false
 
 pkgname=zettlr
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -21,7 +21,6 @@ _csl_locale_commit=0cc3885f6100e26ac6c6d103efa6f3d7195fd21b # Oct 17, 2021
 _csl_style_commit=3a6a0a7bc1410075c606e51cab45877cc76f1f69
 _pandoc_binary_ver=2.14.2 # check scripts/get-pandoc.sh for update
 options=(!strip)
-install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Zettlr/Zettlr/archive/v${pkgver}.tar.gz"
         '0001-Do-not-download-pandoc.patch'
         # citation style
