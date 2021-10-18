@@ -1,0 +1,744 @@
+#compdef pastel
+
+autoload -U is-at-least
+
+_pastel() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'-m+[Specify the terminal color mode: 24bit, 8bit, off, *auto*]: :(24bit 8bit off auto)' \
+'--color-mode=[Specify the terminal color mode: 24bit, 8bit, off, *auto*]: :(24bit 8bit off auto)' \
+'--color-picker=[Use a specific tool to pick the colors]: :(gpick xcolor grabc colorpicker chameleon kcolorchooser)' \
+'-f[Alias for --mode=24bit]' \
+'--force-color[Alias for --mode=24bit]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+":: :_pastel_commands" \
+"*::: :->pastel" \
+&& ret=0
+    case $state in
+    (pastel)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:pastel-command-$line[1]:"
+        case $line[1] in
+            (take)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(show)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(display)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(color)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" \
+'-s+[Sort order]: :(brightness luminance hue chroma random)' \
+'--sort=[Sort order]: :(brightness luminance hue chroma random)' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(random)
+_arguments "${_arguments_options[@]}" \
+'-s+[Randomization strategy:
+   vivid:    random hue, limited saturation and lightness values
+   rgb:      samples uniformly in RGB space
+   gray:     random gray tone (uniform)
+   lch_hue:  random hue, fixed lightness and chroma
+
+Default strategy: '\''vivid'\''
+ ]: :(vivid rgb gray lch_hue)' \
+'--strategy=[Randomization strategy:
+   vivid:    random hue, limited saturation and lightness values
+   rgb:      samples uniformly in RGB space
+   gray:     random gray tone (uniform)
+   lch_hue:  random hue, fixed lightness and chroma
+
+Default strategy: '\''vivid'\''
+ ]: :(vivid rgb gray lch_hue)' \
+'-n+[Number of colors to generate]' \
+'--number=[Number of colors to generate]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(distinct)
+_arguments "${_arguments_options[@]}" \
+'-m+[Distance metric to compute mutual color distances. The CIEDE2000 is more accurate, but also much slower.]: :(CIEDE2000 CIE76)' \
+'--metric=[Distance metric to compute mutual color distances. The CIEDE2000 is more accurate, but also much slower.]: :(CIEDE2000 CIE76)' \
+'--print-minimal-distance[Only show the optimized minimal distance]' \
+'-v[Print simulation output to STDERR]' \
+'--verbose[Print simulation output to STDERR]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':number -- Number of distinct colors in the set:_files' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(sort)
+_arguments "${_arguments_options[@]}" \
+'-r[Reverse the sort order]' \
+'--reverse[Reverse the sort order]' \
+'-u[Remove duplicate colors (equality is determined via RGB values)]' \
+'--unique[Remove duplicate colors (equality is determined via RGB values)]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':sort-order -- Sort order:(brightness luminance hue chroma random)' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(sort-by)
+_arguments "${_arguments_options[@]}" \
+'-r[Reverse the sort order]' \
+'--reverse[Reverse the sort order]' \
+'-u[Remove duplicate colors (equality is determined via RGB values)]' \
+'--unique[Remove duplicate colors (equality is determined via RGB values)]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':sort-order -- Sort order:(brightness luminance hue chroma random)' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(pick)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':count -- Number of colors to pick:_files' \
+&& ret=0
+;;
+(format)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':type -- Output format type. Note that the 'ansi-*-escapecode' formats print ansi escape sequences to the terminal that will not be visible unless something else is printed in addition.:(rgb rgb-float hex hsl hsl-hue hsl-saturation hsl-lightness lch lch-lightness lch-chroma lch-hue lab lab-a lab-b luminance brightness ansi-8bit ansi-24bit ansi-8bit-escapecode ansi-24bit-escapecode cmyk name)' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(paint)
+_arguments "${_arguments_options[@]}" \
+'-o+[Use the specified background color]' \
+'--on=[Use the specified background color]' \
+'-b[Print the text in bold face]' \
+'--bold[Print the text in bold face]' \
+'-i[Print the text in italic font]' \
+'--italic[Print the text in italic font]' \
+'-u[Draw a line below the text]' \
+'--underline[Draw a line below the text]' \
+'-n[Do not print a trailing newline character]' \
+'--no-newline[Do not print a trailing newline character]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':color -- The foreground color. Use '-' to read the color from STDIN.:_files' \
+'::text -- The text to be printed in color. If no argument is given, the input is read from STDIN.:_files' \
+&& ret=0
+;;
+(gradient)
+_arguments "${_arguments_options[@]}" \
+'-n+[Number of colors to generate]' \
+'--number=[Number of colors to generate]' \
+'-s+[The colorspace in which to interpolate]: :(Lab LCh RGB HSL)' \
+'--colorspace=[The colorspace in which to interpolate]: :(Lab LCh RGB HSL)' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':color -- Color stops in the color gradient:_files' \
+&& ret=0
+;;
+(mix)
+_arguments "${_arguments_options[@]}" \
+'-s+[The colorspace in which to interpolate]: :(Lab LCh RGB HSL)' \
+'--colorspace=[The colorspace in which to interpolate]: :(Lab LCh RGB HSL)' \
+'-f+[The number between 0.0 and 1.0 determining how much to mix in from the base color.]' \
+'--fraction=[The number between 0.0 and 1.0 determining how much to mix in from the base color.]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':base -- The base color which will be mixed with the other colors:_files' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(colorblind)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':type -- The type of colorblindness that should be simulated (protanopia, deuteranopia, tritanopia):(prot deuter trit)' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(set)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':property -- The property that should be changed:(lightness hue chroma lab-a lab-b red green blue hsl-hue hsl-saturation hsl-lightness)' \
+':value -- The new numerical value of the property:_files' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(saturate)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':amount -- Amount of saturation to add (number between 0.0 and 1.0):_files' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(desaturate)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':amount -- Amount of saturation to subtract (number between 0.0 and 1.0):_files' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(lighten)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':amount -- Amount of lightness to add (number between 0.0 and 1.0):_files' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(darken)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':amount -- Amount of lightness to subtract (number between 0.0 and 1.0):_files' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(rotate)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':degrees -- angle by which to rotate (in degrees, can be negative):_files' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(complement)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(gray)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':lightness -- Lightness of the created gray tone (number between 0.0 and 1.0):_files' \
+&& ret=0
+;;
+(to-gray)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(textcolor)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::color -- Colors can be specified in many different formats, such as #RRGGBB, RRGGBB, #RGB, 'rgb(…, …, …)', 'hsl(…, …, …)', 'gray(…)' or simply by the name of the color. The identifier '-' can be used to read a single color from standard input. Also, the special identifier 'pick' can be used to run an external color picker to choose a color. If no color argument is specified, colors will be read from standard input.
+Examples (all of these specify the same color):
+  - lightslategray
+  - '#778899'
+  - 778899
+  - 789
+  - 'rgb(119, 136, 153)'
+  - '119,136,153'
+  - 'hsl(210, 14.3%, 53.3%)':_files' \
+&& ret=0
+;;
+(colorcheck)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_pastel_commands] )) ||
+_pastel_commands() {
+    local commands; commands=(
+        "color:Display information about the given color" \
+"list:Show a list of available color names" \
+"random:Generate a list of random colors" \
+"distinct:Generate a set of visually distinct colors" \
+"sort-by:Sort colors by the given property" \
+"pick:Interactively pick a color from the screen (pipette)" \
+"format:Convert a color to the given format" \
+"paint:Print colored text using ANSI escape sequences" \
+"gradient:Generate an interpolating sequence of colors" \
+"mix:Mix two colors in the given colorspace" \
+"colorblind:Simulate a color under a certain colorblindness profile" \
+"set:Set a color property to a specific value" \
+"saturate:Increase color saturation by a specified amount" \
+"desaturate:Decrease color saturation by a specified amount" \
+"lighten:Lighten color by a specified amount" \
+"darken:Darken color by a specified amount" \
+"rotate:Rotate the hue channel by the specified angle" \
+"complement:Get the complementary color (hue rotated by 180°)" \
+"gray:Create a gray tone from a given lightness" \
+"to-gray:Completely desaturate a color (preserving luminance)" \
+"textcolor:Get a readable text color for the given background color" \
+"colorcheck:Check if your terminal emulator supports 24-bit colors." \
+"help:Prints this message or the help of the given subcommand(s)" \
+    )
+    _describe -t commands 'pastel commands' commands "$@"
+}
+(( $+functions[_pastel__color_commands] )) ||
+_pastel__color_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel color commands' commands "$@"
+}
+(( $+functions[_pastel__colorblind_commands] )) ||
+_pastel__colorblind_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel colorblind commands' commands "$@"
+}
+(( $+functions[_pastel__colorcheck_commands] )) ||
+_pastel__colorcheck_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel colorcheck commands' commands "$@"
+}
+(( $+functions[_pastel__complement_commands] )) ||
+_pastel__complement_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel complement commands' commands "$@"
+}
+(( $+functions[_pastel__darken_commands] )) ||
+_pastel__darken_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel darken commands' commands "$@"
+}
+(( $+functions[_pastel__desaturate_commands] )) ||
+_pastel__desaturate_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel desaturate commands' commands "$@"
+}
+(( $+functions[_display_commands] )) ||
+_display_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'display commands' commands "$@"
+}
+(( $+functions[_pastel__display_commands] )) ||
+_pastel__display_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel display commands' commands "$@"
+}
+(( $+functions[_pastel__distinct_commands] )) ||
+_pastel__distinct_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel distinct commands' commands "$@"
+}
+(( $+functions[_pastel__format_commands] )) ||
+_pastel__format_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel format commands' commands "$@"
+}
+(( $+functions[_pastel__gradient_commands] )) ||
+_pastel__gradient_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel gradient commands' commands "$@"
+}
+(( $+functions[_pastel__gray_commands] )) ||
+_pastel__gray_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel gray commands' commands "$@"
+}
+(( $+functions[_pastel__help_commands] )) ||
+_pastel__help_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel help commands' commands "$@"
+}
+(( $+functions[_pastel__lighten_commands] )) ||
+_pastel__lighten_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel lighten commands' commands "$@"
+}
+(( $+functions[_pastel__list_commands] )) ||
+_pastel__list_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel list commands' commands "$@"
+}
+(( $+functions[_pastel__mix_commands] )) ||
+_pastel__mix_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel mix commands' commands "$@"
+}
+(( $+functions[_pastel__paint_commands] )) ||
+_pastel__paint_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel paint commands' commands "$@"
+}
+(( $+functions[_pastel__pick_commands] )) ||
+_pastel__pick_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel pick commands' commands "$@"
+}
+(( $+functions[_pastel__random_commands] )) ||
+_pastel__random_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel random commands' commands "$@"
+}
+(( $+functions[_pastel__rotate_commands] )) ||
+_pastel__rotate_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel rotate commands' commands "$@"
+}
+(( $+functions[_pastel__saturate_commands] )) ||
+_pastel__saturate_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel saturate commands' commands "$@"
+}
+(( $+functions[_pastel__set_commands] )) ||
+_pastel__set_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel set commands' commands "$@"
+}
+(( $+functions[_pastel__show_commands] )) ||
+_pastel__show_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel show commands' commands "$@"
+}
+(( $+functions[_show_commands] )) ||
+_show_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'show commands' commands "$@"
+}
+(( $+functions[_pastel__sort_commands] )) ||
+_pastel__sort_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel sort commands' commands "$@"
+}
+(( $+functions[_sort_commands] )) ||
+_sort_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'sort commands' commands "$@"
+}
+(( $+functions[_pastel__sort-by_commands] )) ||
+_pastel__sort-by_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel sort-by commands' commands "$@"
+}
+(( $+functions[_pastel__take_commands] )) ||
+_pastel__take_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel take commands' commands "$@"
+}
+(( $+functions[_take_commands] )) ||
+_take_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'take commands' commands "$@"
+}
+(( $+functions[_pastel__textcolor_commands] )) ||
+_pastel__textcolor_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel textcolor commands' commands "$@"
+}
+(( $+functions[_pastel__to-gray_commands] )) ||
+_pastel__to-gray_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'pastel to-gray commands' commands "$@"
+}
+
+_pastel "$@"
