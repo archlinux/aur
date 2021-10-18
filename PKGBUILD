@@ -1,7 +1,7 @@
 # Maintainer: Funami
 pkgname=coredns-fanout
 pkgver=1.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS server that chains plugins - with module fanout"
 arch=('x86_64' 'i686')
 url="https://github.com/networkservicemesh/fanout"
@@ -20,7 +20,8 @@ build() {
   export GOPATH="$srcdir/build"
   cd "coredns-$pkgver"
   echo 'fanout:github.com/networkservicemesh/fanout' >> plugin.cfg
-  make
+  make BUILDOPTS='-v -trimpath -buildmode=pie -mod=readonly -modcacherw'
+  go clean -modcache
 }
 
 package() {
