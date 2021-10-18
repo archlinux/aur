@@ -8,7 +8,7 @@ url="https://singlecellsoftware.com/caustic"
 license=('custom')
 depends=('deepin-wine5' 'deepin-wine-helper')
 provides=(caustic3=$pkgver)
-source=("https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/caustic3.tar.gz")
+source=("https://github.com/Brx86/yun/releases/download/2/caustic3.tar.gz")
 noextract=()
 md5sums=("3f5c3cd4a28b9438533178cb0e237889")
 
