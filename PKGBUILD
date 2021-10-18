@@ -4,11 +4,11 @@
 
 ## NOTE: DO NOT UPGRADE to version 0.23 or higher, since that in fact will break things for python2. Python2 compatibility only up to version 0.22.
 
-_pkgname=pybluez
-pkgname=python2-pybluez
+_upstreramname=pybluez
+pkgname="python2-${_upstreramname}"
 epoch=1
 pkgver=0.22
-pkgrel=3
+pkgrel=4
 pkgdesc="python2 wrapper for the BlueZ Bluetooth stack"
 arch=(
   'i686'
@@ -24,15 +24,21 @@ depends=(
 makedepends=(
   'python2-setuptools'
 )
+provides=(
+  "${_upstreramname}2=${pkgver}"
+)
+conflicts=(
+  "${_upstreramname}2"
+)
 source=(
-  "${_pkgname}-${pkgver}.tar.gz::https://github.com/pybluez/pybluez/archive/refs/tags/${pkgver}.tar.gz"
+  "${_upstreramname}-${pkgver}.tar.gz::https://github.com/pybluez/pybluez/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=(
   '53db881a2668791062985e1ff7afbe6527cdd9af3676a3160420a235bee3c768'
 )
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_upstreramname}-${pkgver}"
   for _pyfile in *.py; do
     msg2 "Patching shabeng line for python2 in '${_pyfile}' ..."
     sed -E -i '1s|^#!(.*)python$|#!\1python2|' "${_pyfile}"
@@ -40,13 +46,13 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_upstreramname}-${pkgver}"
 
     python2 setup.py build
 }
 
 package_python2-pybluez() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_upstreramname}-${pkgver}"
 
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
