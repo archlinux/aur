@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=coturn-git
-pkgver=4.5.1.2+r1+g113f138
+pkgver=4.5.2+r120+g3865842
 pkgrel=1
 pkgdesc='Open-source implementation of TURN and STUN server (git)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${srcdir}/coturn
-  git describe --tags | sed 's#-#+#g;s#+#+r#'
+  git describe --tags --exclude '*/*' | sed 's#-#+#g;s#+#+r#'
 }
 
 build() {
