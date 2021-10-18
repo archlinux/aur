@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=7.56a
-pkgrel=0
+pkgrel=1
 epoch=41
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
@@ -111,8 +111,8 @@ package(){
 
     # Bulk copy everything
     if [ ${CARCH} = "armv7h" ]; then
-        cp --preserve=mode -r J* Devices README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
-    else cp --preserve=mode -r J* Doc Samples ETC Devices README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
+        cp --preserve=mode -r J* Devices README.txt GDBServer Firmwares lib* "${pkgdir}/opt/SEGGER/JLink"
+    else cp --preserve=mode -r J* Doc Samples ETC Devices README.txt Firmwares GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
     fi
     if [ ${CARCH} = "x86_64" ]; then
         cp --preserve=mode -r x86 "${pkgdir}/opt/SEGGER/JLink"
