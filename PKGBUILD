@@ -1,15 +1,16 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: kfgz <kfgz at interia dot pl>
+# Contributor: olegfink
 
 pkgname=nbench-byte
 pkgver=2.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A CPU benchmark utility"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.tux.org/~mayer/linux/bmark.html"
 license=('unknown')
 options=(!makeflags)
-source=(https://fossies.org/linux/misc/${pkgname}-${pkgver}.tar.gz
+source=(http://www.math.utah.edu/~mayer/linux/${pkgname}-${pkgver}.tar.gz
         Makefile
         nbench)
 md5sums=(285dfab361080759d477ea1fe7d3093a
