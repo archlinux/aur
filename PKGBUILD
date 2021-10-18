@@ -8,7 +8,7 @@ _pkgname=pybluez
 pkgname=python2-pybluez
 epoch=1
 pkgver=0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="python2 wrapper for the BlueZ Bluetooth stack"
 arch=(
   'i686'
@@ -27,7 +27,7 @@ source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/pybluez/pybluez/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=(
-  'SKIP'
+  '53db881a2668791062985e1ff7afbe6527cdd9af3676a3160420a235bee3c768'
 )
 
 prepare() {
