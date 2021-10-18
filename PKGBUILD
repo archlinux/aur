@@ -1,8 +1,8 @@
 # Maintainer: li <lcj211@aihlp.com>
 
 pkgname=systemd-kexec
-pkgver=1.0.0
-pkgrel=8
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="systemd for kexec"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -30,7 +30,7 @@ sha512sums=('cde894488d4587b7b0272956dedfdd7684c4fe423726e008f6217eb59a5d5dfbb52
 
 package() {
 # make -C build DESTDIR="$pkgdir" install
-install -Dm644 kexec-load@.service  "/etc/systemd/system/kexec-load@.service"
+install -o root -g root -Dm644 kexec-load@.service  "/etc/systemd/system/kexec-load@.service"
 }
 
 groups=('lcj')
