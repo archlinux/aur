@@ -1,5 +1,5 @@
 # Maintainer: Michael Lass <bevan@bi-co.net>
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Doug Newgard <dnewgard at outlook dot com>
 # Contributor: reflexing <reflexing@reflexing.ru>
 
 # Instructions were copied from ttf-ms-win8 and slightly modified:
@@ -42,7 +42,7 @@
 
 pkgbase=ttf-ms-win10
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.19042.789
+pkgver=10.0.19043.1055
 pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
@@ -235,7 +235,7 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             'd3e4bad27651d120ac8f2cea42cf4b4f077264fb243f66b3caffcfd35465f49b'
             '3f9e512f82eaf6f1b7869b82013fb79f6eaf1a41e75a0e7b96f31f35b1022ae4'
             'd8bbdb72e3f930157824b2e59677d3a912d4512c14a948e6656a2e3fb0c935ad'
-            'f23225869ceb58b78a836b84207d1726cc5d9c3f5fe2ae8a295ff62a98df09a0'
+            '8b89481f274ee1ad6fe49f539fc4435e114bc684beecb3fdafd6c7817bd05d85'
             '2ca2cfde263fa420e8d39420f075ee9ac80bc0794272c53ac4571a88f8a075a6'
             '97226e81f19eff8c8fb191745748bab920472c005d3ec4e23d9a50a12c471d92'
             'b7397adf2dcc24ca790348a3c26deb2122b45e5728fd25fc588de4cf5a75b469'
