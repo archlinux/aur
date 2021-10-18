@@ -2,14 +2,15 @@
 
 pkgname=retux
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="ReTux is a libre open source action platformer loosely inspired by the Mario games, utilizing the art assets from the SuperTux project."
 arch=('x86_64')
 url="https://retux-game.github.io/"
 license=('GPL3')
-depends=('python' 'python-pip' 'python-pygame')
+depends=('python' 'python-sge' 'python-xsge')
 provides=('retux')
 conflicts=('retux' 'retux-bin')
+_name=${pkgname#python-}
 source=("https://github.com/retux-game/retux/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.zip"
         "${pkgname}.desktop"
 	"${pkgname}.sh")
@@ -22,7 +23,6 @@ noextract=("${pkgname}-${pkgver}-src.zip")
 prepare() {
 	unzip ${srcdir}/${pkgname}-${pkgver}-src.zip
 	mv ${srcdir}/${pkgname}-${pkgver}-src ${srcdir}/${pkgname}
-	pip install -U uniseg sge xsge_gui xsge_lighting xsge_path xsge_physics xsge_tiled
 }
 
 package() {
