@@ -1,7 +1,7 @@
 pkgbase = python-pystun3
 	pkgdesc = A Python STUN client for getting NAT type and external IP
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/talkiq/pystun3
 	arch = any
 	license = MIT
