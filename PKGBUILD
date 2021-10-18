@@ -10,7 +10,7 @@ url="https://github.com/cutefishos/kwin-plugins"
 license=('GPL')
 groups=('cutefish-git')
 depends=('kconfig' 'kdecoration' 'kguiaddons' 'kcoreaddons' 'kconfigwidgets' 'kwindowsystem'
-         'kwayland' 'kwin')
+         'kwayland' 'kwin' 'kdeclarative' 'plasma-framework' 'fishui-git')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "deepin-kwin")
