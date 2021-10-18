@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-book-theme
 	pkgdesc = A lightweight book theme built off of the pydata sphinx theme
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://sphinx-book-theme.readthedocs.io
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-sphinx-book-theme
 	checkdepends = python-pydata-sphinx-theme
 	checkdepends = python-beautifulsoup4
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-book-theme/sphinx-book-theme-0.1.5.tar.gz
-	md5sums = ad88b3d2c700b0b22518bff87c9935ba
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-book-theme/sphinx-book-theme-0.1.6.tar.gz
+	md5sums = 9889519ee1ad9390e02f64fbc30724c0
 
 pkgname = python-sphinx-book-theme
 	depends = python-yaml
