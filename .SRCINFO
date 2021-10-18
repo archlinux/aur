@@ -14,15 +14,17 @@ pkgbase = cnijfilter-mp280
 	depends = glibc
 	depends = libpng>=1.0.9
 	depends = libtiff>=3.4
+	depends = gtk2
 	conflicts = cnijfilter-common
 	source = http://gdlp01.c-wss.com/gds/0/0100003020/01/cnijfilter-source-3.40-1.tar.gz
-	source = fix.patch
+	source = configure-fixes.patch
 	source = cups-fixes.patch
 	source = cn-ppd-support-mp280.patch
+	source = glibc-deprecated-fix.patch
 	md5sums = 609975a05d6050fcca88f312d3f35c6a
-	md5sums = 1f4f7aa58be271e2d60b5f9615b1104d
-	md5sums = 55a10cc83b072c12ba50ea6864d3b18f
+	md5sums = d1c346d063e7fc54dc74dc72bc5615ad
+	md5sums = 10e68bf7d29a6206171be05893e826e1
 	md5sums = 1b76cb2d4a46f6a10e6aced051729bb7
+	md5sums = 494a454cc2e91a3e8f14a6fb81131c10
 
 pkgname = cnijfilter-mp280
-

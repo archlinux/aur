@@ -1,4 +1,4 @@
-# Maintainer: Jakub Klinkovský <j.l.k@gmx.com>
+# Maintainer: zvova7890 <zvova7890.gmail.com>
 # Contributor: Alireza Savand <alireza.savand@gmail.com>
 # Special thanks to: olive, mirrr, GUiHKX, alessiofachechi, jeremy33,
 #		     jstitch, plv, lahwaacz
@@ -13,11 +13,12 @@ url="http://support-au.canon.com.au/contents/AU/EN/0100302002.html"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=(
-	'libcups'
-	'popt'
+    'libcups'
+    'popt'
     'glibc'
     'libpng>=1.0.9'
     'libtiff>=3.4'
+    'gtk2'
 )
 makedepends=(
 	'autoconf>=2.59'
@@ -27,27 +28,33 @@ conflicts=('cnijfilter-common')
 install=cnijfilter-mp280.install
 source=(
     'http://gdlp01.c-wss.com/gds/0/0100003020/01/cnijfilter-source-3.40-1.tar.gz'
-    'fix.patch'
+    'configure-fixes.patch'
     'cups-fixes.patch'
     'cn-ppd-support-mp280.patch'
+    'glibc-deprecated-fix.patch'
 )
 md5sums=(
     '609975a05d6050fcca88f312d3f35c6a'
-    '1f4f7aa58be271e2d60b5f9615b1104d'
-    '55a10cc83b072c12ba50ea6864d3b18f'
+    'd1c346d063e7fc54dc74dc72bc5615ad'
+    '10e68bf7d29a6206171be05893e826e1'
     '1b76cb2d4a46f6a10e6aced051729bb7'
+    '494a454cc2e91a3e8f14a6fb81131c10'
 )
 
-build() {
+
+prepare() {
     cd "$srcdir/cnijfilter-source-$_pkgrealver-$_pkgrealrel"
-    patch -p0 < "$startdir/fix.patch"
+    patch -p1 < "$startdir/configure-fixes.patch"
     patch -p1 < "$startdir/cups-fixes.patch"
     patch -p1 < "$startdir/cn-ppd-support-mp280.patch"
+    patch -p1 < "$startdir/glibc-deprecated-fix.patch"
     
     sed -i -e 's/png_p->jmpbuf/png_jmpbuf(png_p)/' cnijfilter/src/bjfimage.c
     cp cnijfilter/src/config* lgmon/src/
     cp cnijfilter/src/config* cngpijmon/cnijnpr/cnijnpr/
-  
+}
+
+build() {
     cd "$srcdir/cnijfilter-source-$_pkgrealver-$_pkgrealrel/libs"
     ./autogen.sh --prefix=/usr --program-suffix=mp280
     make
