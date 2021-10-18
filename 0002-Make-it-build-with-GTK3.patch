@@ -1,0 +1,86 @@
+From 0b64ce64711a5d1af202fe3c180d9738469d96f1 Mon Sep 17 00:00:00 2001
+From: Connor Behan <connor.behan@gmail.com>
+Date: Mon, 18 Oct 2021 18:34:35 -0400
+Subject: [PATCH 2/5] Make it build with GTK3
+
+This is the bare minimum of changes that should be made. There are still
+plenty of function calls that should be moved over to non-deprecated
+versions.
+
+Signed-off-by: Connor Behan <connor.behan@gmail.com>
+---
+ panel-plugin/generic-slider.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/panel-plugin/generic-slider.c b/panel-plugin/generic-slider.c
+index 43e1527..e18207d 100644
+--- a/panel-plugin/generic-slider.c
++++ b/panel-plugin/generic-slider.c
+@@ -369,7 +369,7 @@ static void generic_slider_read_rc_file(XfcePanelPlugin *plugin, Generic_Slider
+ 	}
+ 	
+ 	g_free(color_string);
+-	generic_slider -> timeout_id = g_timeout_add(TIMEOUT, (GtkFunction)timer_cb, generic_slider);
++	generic_slider -> timeout_id = g_timeout_add(TIMEOUT, (GSourceFunc)timer_cb, generic_slider);
+ 	generic_slider -> active = 1;
+ }
+ 
+@@ -529,9 +529,9 @@ static void generic_slider_properties_dialog(XfcePanelPlugin *plugin, Generic_Sl
+ 	GtkWidget *table;
+ 	GtkWidget *dialog;
+ 	
+-	GtkObject *adjustment_1;
+-	GtkObject *adjustment_2;
+-	GtkObject *adjustment_3;
++	GtkAdjustment *adjustment_1;
++	GtkAdjustment *adjustment_2;
++	GtkAdjustment *adjustment_3;
+ 	GtkWidget *spin_1;
+ 	GtkWidget *spin_2;
+ 	GtkWidget *spin_3;
+@@ -573,9 +573,9 @@ static void generic_slider_properties_dialog(XfcePanelPlugin *plugin, Generic_Sl
+ 	adjustment_1 = gtk_adjustment_new(((gdouble)(generic_slider -> adjust_denominator)), 1.0, 1000.0, 1.0, 1.0, 0.0);
+ 	adjustment_2 = gtk_adjustment_new(((gdouble)(generic_slider -> sync_denominator)), 1.0, 1000.0, 1.0, 1.0, 0.0);
+ 	adjustment_3 = gtk_adjustment_new(((gdouble)(generic_slider -> description_denominator)), 1.0, 1000.0, 1.0, 1.0, 0.0);
+-	spin_1 = gtk_spin_button_new(GTK_ADJUSTMENT(adjustment_1), 0.5, 0);
+-	spin_2 = gtk_spin_button_new(GTK_ADJUSTMENT(adjustment_2), 0.5, 0);
+-	spin_3 = gtk_spin_button_new(GTK_ADJUSTMENT(adjustment_3), 0.5, 0);
++	spin_1 = gtk_spin_button_new(adjustment_1, 0.5, 0);
++	spin_2 = gtk_spin_button_new(adjustment_2, 0.5, 0);
++	spin_3 = gtk_spin_button_new(adjustment_3, 0.5, 0);
+ 	g_signal_connect(G_OBJECT(adjustment_1), "value_changed", G_CALLBACK(generic_slider_update_denominators), &(generic_slider -> adjust_denominator));
+ 	g_signal_connect(G_OBJECT(adjustment_2), "value_changed", G_CALLBACK(generic_slider_update_denominators), &(generic_slider -> sync_denominator));
+ 	g_signal_connect(G_OBJECT(adjustment_3), "value_changed", G_CALLBACK(generic_slider_update_denominators), &(generic_slider -> description_denominator));
+@@ -662,13 +662,13 @@ static void generic_slider_orientation_or_mode_changed(XfcePanelPlugin *plugin,
+ 	
+ 	if (vertical) {
+ 		gtk_alignment_set(GTK_ALIGNMENT(aligned_box), 0.5, 0.5, 0.0, 1.0);
+-		gtk_progress_bar_set_orientation(GTK_PROGRESS_BAR(slider), GTK_PROGRESS_LEFT_TO_RIGHT);
++		gtk_orientable_set_orientation(GTK_ORIENTABLE(slider), GTK_ORIENTATION_HORIZONTAL);
+ 		gtk_widget_set_size_request(slider, -1, WIDTH);
+ 		gtk_widget_set_size_request(GTK_WIDGET(plugin), xfce_panel_plugin_get_size(plugin), -1);
+ 		gtk_orientable_set_orientation(GTK_ORIENTABLE(box), GTK_ORIENTATION_VERTICAL);
+ 	} else {
+ 		gtk_alignment_set(GTK_ALIGNMENT(aligned_box), 0.5, 0.5, 1.0, 0.0);
+-		gtk_progress_bar_set_orientation(GTK_PROGRESS_BAR(slider), GTK_PROGRESS_BOTTOM_TO_TOP);
++		gtk_orientable_set_orientation(GTK_ORIENTABLE(slider), GTK_ORIENTATION_VERTICAL);
+ 		gtk_widget_set_size_request(slider, WIDTH, -1);
+ 		gtk_widget_set_size_request(GTK_WIDGET(plugin), -1, xfce_panel_plugin_get_size(plugin));
+ 		gtk_orientable_set_orientation(GTK_ORIENTABLE(box), GTK_ORIENTATION_HORIZONTAL);
+@@ -790,11 +790,11 @@ static void generic_slider_construct(XfcePanelPlugin *plugin) {
+ 	gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(slider), 0.5);
+ 	
+ 	if (xfce_panel_plugin_get_orientation(plugin) == GTK_ORIENTATION_HORIZONTAL) {
+-		gtk_progress_bar_set_orientation(GTK_PROGRESS_BAR(slider), GTK_PROGRESS_BOTTOM_TO_TOP);
++		gtk_orientable_set_orientation(GTK_ORIENTABLE(slider), GTK_ORIENTATION_VERTICAL);
+ 		gtk_widget_set_size_request(slider, WIDTH, -1);
+ 		box = gtk_hbox_new(FALSE, 0);
+ 	} else {
+-		gtk_progress_bar_set_orientation(GTK_PROGRESS_BAR(slider), GTK_PROGRESS_LEFT_TO_RIGHT);
++		gtk_orientable_set_orientation(GTK_ORIENTABLE(slider), GTK_ORIENTATION_HORIZONTAL);
+ 		gtk_widget_set_size_request(slider, -1, WIDTH);
+ 		box = gtk_vbox_new(FALSE, 0);
+ 	}
+-- 
+2.33.0
+

@@ -1,0 +1,85 @@
+From f5cd298584bf5b2018acbf18797b5a7e8c9ad3ac Mon Sep 17 00:00:00 2001
+From: Connor Behan <connor.behan@gmail.com>
+Date: Mon, 18 Oct 2021 18:48:15 -0400
+Subject: [PATCH 5/5] Change the packing order
+
+I think box(event_box(slider), label) will work better than
+event_box(box(slider, label)).
+
+Signed-off-by: Connor Behan <connor.behan@gmail.com>
+---
+ panel-plugin/generic-slider.c | 25 ++++++++++++-------------
+ 1 file changed, 12 insertions(+), 13 deletions(-)
+
+diff --git a/panel-plugin/generic-slider.c b/panel-plugin/generic-slider.c
+index c8ae428..a0a5017 100644
+--- a/panel-plugin/generic-slider.c
++++ b/panel-plugin/generic-slider.c
+@@ -657,19 +657,17 @@ static void generic_slider_orientation_or_mode_changed(XfcePanelPlugin *plugin,
+ 	GtkWidget *slider = generic_slider -> slider;
+ 	GtkWidget *label = generic_slider -> label;
+ 	GtkWidget *box = gtk_widget_get_ancestor(label, GTK_TYPE_BOX);
+-	GtkWidget *event_box = gtk_widget_get_ancestor(slider, GTK_TYPE_EVENT_BOX);
+-	GtkWidget *aligned_box = gtk_container_get_children(GTK_CONTAINER(event_box)) -> data;
+ 	
+ 	if (vertical) {
+-		gtk_widget_set_halign(aligned_box, GTK_ALIGN_CENTER);
+-		gtk_widget_set_valign(aligned_box, GTK_ALIGN_FILL);
++		gtk_widget_set_halign(box, GTK_ALIGN_CENTER);
++		gtk_widget_set_valign(box, GTK_ALIGN_FILL);
+ 		gtk_orientable_set_orientation(GTK_ORIENTABLE(slider), GTK_ORIENTATION_HORIZONTAL);
+ 		gtk_widget_set_size_request(slider, -1, WIDTH);
+ 		gtk_widget_set_size_request(GTK_WIDGET(plugin), xfce_panel_plugin_get_size(plugin), -1);
+ 		gtk_orientable_set_orientation(GTK_ORIENTABLE(box), GTK_ORIENTATION_VERTICAL);
+ 	} else {
+-		gtk_widget_set_halign(aligned_box, GTK_ALIGN_FILL);
+-		gtk_widget_set_valign(aligned_box, GTK_ALIGN_CENTER);
++		gtk_widget_set_halign(box, GTK_ALIGN_FILL);
++		gtk_widget_set_valign(box, GTK_ALIGN_CENTER);
+ 		gtk_orientable_set_orientation(GTK_ORIENTABLE(slider), GTK_ORIENTATION_VERTICAL);
+ 		gtk_widget_set_size_request(slider, WIDTH, -1);
+ 		gtk_widget_set_size_request(GTK_WIDGET(plugin), -1, xfce_panel_plugin_get_size(plugin));
+@@ -780,10 +778,10 @@ static void generic_slider_construct(XfcePanelPlugin *plugin) {
+ 
+ 	stupid_hack = g_list_append(stupid_hack, generic_slider);
+ 	stupid_hack = g_list_append(stupid_hack, plugin);
+-	gtk_widget_set_events(slider, gtk_widget_get_events(slider) | GDK_LEAVE_NOTIFY_MASK | GDK_BUTTON_PRESS_MASK);
+-	g_signal_connect(G_OBJECT(slider), "button-press-event", G_CALLBACK(adjust_slider_cb), stupid_hack);
+-	g_signal_connect(G_OBJECT(slider), "scroll-event", G_CALLBACK(scroll_slider_cb), stupid_hack);
++	g_signal_connect(G_OBJECT(event_box), "button-press-event", G_CALLBACK(adjust_slider_cb), stupid_hack);
++	g_signal_connect(G_OBJECT(event_box), "scroll-event", G_CALLBACK(scroll_slider_cb), stupid_hack);
+ 	gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(slider), 0.5);
++	gtk_progress_bar_set_inverted(GTK_PROGRESS_BAR(slider), TRUE);
+ 	
+ 	if (xfce_panel_plugin_get_orientation(plugin) == GTK_ORIENTATION_HORIZONTAL) {
+ 		gtk_orientable_set_orientation(GTK_ORIENTABLE(slider), GTK_ORIENTATION_VERTICAL);
+@@ -795,9 +793,9 @@ static void generic_slider_construct(XfcePanelPlugin *plugin) {
+ 		box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+ 	}
+ 	
++	gtk_container_add(GTK_CONTAINER(event_box), slider);
+ 	gtk_box_pack_start(GTK_BOX(box), label, FALSE, FALSE, 0);
+-	gtk_box_pack_start(GTK_BOX(box), slider, FALSE, FALSE, 0);
+-	gtk_container_add(GTK_CONTAINER(event_box), box);
++	gtk_box_pack_start(GTK_BOX(box), event_box, FALSE, FALSE, 0);
+ 	
+ 	xfce_panel_plugin_menu_show_configure (plugin);
+ 	
+@@ -811,11 +809,12 @@ static void generic_slider_construct(XfcePanelPlugin *plugin) {
+ 	g_signal_connect(plugin, "free-data", G_CALLBACK(generic_slider_free_data), generic_slider);
+ 	g_signal_connect(plugin, "save", G_CALLBACK(generic_slider_write_rc_file), generic_slider);
+ 
+-	gtk_container_add(GTK_CONTAINER(plugin), event_box);
++	gtk_container_add(GTK_CONTAINER(plugin), box);
++	xfce_panel_plugin_add_action_widget(plugin, box);
+ 	xfce_panel_plugin_add_action_widget(plugin, event_box);
+ 	xfce_panel_plugin_add_action_widget(plugin, slider);
+ 	xfce_panel_plugin_add_action_widget(plugin, label);
+-	gtk_widget_show_all(event_box);
++	gtk_widget_show_all(box);
+ 	
+ 	/* The default color only corresponds to the theme in use once all widgets are shown! */
+ 	pre_rc = gtk_widget_get_style(generic_slider -> slider);
+-- 
+2.33.0
+

@@ -1,0 +1,62 @@
+From a81308cb0b0bd76e1bd704d3db84585146e454c2 Mon Sep 17 00:00:00 2001
+From: Connor Behan <connor.behan@gmail.com>
+Date: Mon, 18 Oct 2021 18:44:18 -0400
+Subject: [PATCH 4/5] Use GtkGrid instead of GtkTable
+
+One could also use GtkBuilder for this but I prefer C.
+
+Signed-off-by: Connor Behan <connor.behan@gmail.com>
+---
+ panel-plugin/generic-slider.c | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/panel-plugin/generic-slider.c b/panel-plugin/generic-slider.c
+index 3ee0800..c8ae428 100644
+--- a/panel-plugin/generic-slider.c
++++ b/panel-plugin/generic-slider.c
+@@ -579,25 +579,25 @@ static void generic_slider_properties_dialog(XfcePanelPlugin *plugin, Generic_Sl
+ 	g_signal_connect(G_OBJECT(adjustment_1), "value_changed", G_CALLBACK(generic_slider_update_denominators), &(generic_slider -> adjust_denominator));
+ 	g_signal_connect(G_OBJECT(adjustment_2), "value_changed", G_CALLBACK(generic_slider_update_denominators), &(generic_slider -> sync_denominator));
+ 	g_signal_connect(G_OBJECT(adjustment_3), "value_changed", G_CALLBACK(generic_slider_update_denominators), &(generic_slider -> description_denominator));
+-	table = gtk_table_new(3, 4, FALSE);
+-	gtk_table_attach_defaults(GTK_TABLE(table), label_1_a, 0, 1, 0, 1);
+-	gtk_table_attach_defaults(GTK_TABLE(table), entry_1, 1, 2, 0, 1);
+-	gtk_table_attach_defaults(GTK_TABLE(table), label_1_b, 2, 3, 0, 1);
+-	gtk_table_attach_defaults(GTK_TABLE(table), spin_1, 3, 4, 0, 1);
+-	gtk_table_attach_defaults(GTK_TABLE(table), label_2_a, 0, 1, 1, 2);
+-	gtk_table_attach_defaults(GTK_TABLE(table), entry_2, 1, 2, 1, 2);
+-	gtk_table_attach_defaults(GTK_TABLE(table), label_2_b, 2, 3, 1, 2);
+-	gtk_table_attach_defaults(GTK_TABLE(table), spin_2, 3, 4, 1, 2);
+-	gtk_table_attach_defaults(GTK_TABLE(table), label_3_a, 0, 1, 2, 3);
+-	gtk_table_attach_defaults(GTK_TABLE(table), entry_3, 1, 2, 2, 3);
+-	gtk_table_attach_defaults(GTK_TABLE(table), label_3_b, 2, 3, 2, 3);
+-	gtk_table_attach_defaults(GTK_TABLE(table), spin_3, 3, 4, 2, 3);
+-	bbox_1 = gtk_vbutton_box_new();
+-	bbox_2 = gtk_vbutton_box_new();
++	table = gtk_grid_new();
++	gtk_grid_attach(GTK_GRID(table), label_1_a, 0, 0, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), entry_1, 1, 0, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), label_1_b, 2, 0, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), spin_1, 3, 0, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), label_2_a, 0, 1, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), entry_2, 1, 1, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), label_2_b, 2, 1, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), spin_2, 3, 1, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), label_3_a, 0, 2, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), entry_3, 1, 2, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), label_3_b, 2, 2, 1, 1);
++	gtk_grid_attach(GTK_GRID(table), spin_3, 3, 2, 1, 1);
++	bbox_1 = gtk_button_box_new(GTK_ORIENTATION_VERTICAL);
++	bbox_2 = gtk_button_box_new(GTK_ORIENTATION_VERTICAL);
+ 	gtk_button_box_set_layout(GTK_BUTTON_BOX(bbox_1), GTK_BUTTONBOX_SPREAD);
+ 	gtk_button_box_set_layout(GTK_BUTTON_BOX(bbox_2), GTK_BUTTONBOX_SPREAD);
+-	gtk_button_box_set_spacing(GTK_BUTTON_BOX(bbox_1), 10);
+-	gtk_button_box_set_spacing(GTK_BUTTON_BOX(bbox_2), 10);
++	//gtk_button_box_set_spacing(GTK_BUTTON_BOX(bbox_1), 10);
++	//gtk_button_box_set_spacing(GTK_BUTTON_BOX(bbox_2), 10);
+ 	label_4 = gtk_label_new("Slider");
+ 	label_5 = gtk_label_new("Label");
+ 	label_6 = gtk_label_new("Both");
+-- 
+2.33.0
+

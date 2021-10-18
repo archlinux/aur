@@ -1,0 +1,85 @@
+From 63cf77d0863e2997ee6cd4c0eb9d33ad5ed561fe Mon Sep 17 00:00:00 2001
+From: Connor Behan <connor.behan@gmail.com>
+Date: Mon, 18 Oct 2021 18:33:07 -0400
+Subject: [PATCH 1/5] Use plugin API 2.0
+
+This just checks for the right versions of the libraries so we can begin
+porting.
+
+Signed-off-by: Connor Behan <connor.behan@gmail.com>
+---
+ configure.ac.in                        |  4 ++--
+ panel-plugin/generic-slider.c          | 13 +++++++++----
+ panel-plugin/generic-slider.desktop.in |  2 +-
+ 3 files changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/configure.ac.in b/configure.ac.in
+index a4ad5ec..37a8670 100644
+--- a/configure.ac.in
++++ b/configure.ac.in
+@@ -70,8 +70,8 @@ XDT_CHECK_LIBX11_REQUIRE()
+ dnl ***********************************
+ dnl *** Check for required packages ***
+ dnl ***********************************
+-XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.12.0])
+-XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.12.0])
++XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.12.0])
++XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-2.0], [4.12.0])
+ 
+ dnl ***********************************
+ dnl *** Check for debugging support ***
+diff --git a/panel-plugin/generic-slider.c b/panel-plugin/generic-slider.c
+index cbb3a91..43e1527 100644
+--- a/panel-plugin/generic-slider.c
++++ b/panel-plugin/generic-slider.c
+@@ -3,12 +3,17 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <unistd.h>
+-#include <libxfce4panel/xfce-panel-plugin.h>
+-#include <libxfce4util/libxfce4util.h>
++#include <libxfce4panel/libxfce4panel.h>
+ #include <libxfce4ui/libxfce4ui.h>
+ #define TIMEOUT 1000
+ #define WIDTH 8
+ 
++#ifdef LIBXFCE4PANEL_CHECK_VERSION
++#if LIBXFCE4PANEL_CHECK_VERSION (4,9,0)
++#define PANEL490
++#endif
++#endif
++
+ typedef struct generic_slider {
+ 	GtkWidget *slider;
+ 	GtkWidget *label;
+@@ -670,7 +675,7 @@ static void generic_slider_orientation_or_mode_changed(XfcePanelPlugin *plugin,
+ 	}
+ }
+ 
+-#if defined (LIBXFCE4PANEL_CHECK_VERSION) && LIBXFCE4PANEL_CHECK_VERSION (4,9,0)
++#ifdef PANEL490
+ static void generic_slider_mode_changed(XfcePanelPlugin *plugin, XfcePanelPluginMode mode, Generic_Slider *generic_slider) {
+ 	GtkWidget *label = generic_slider -> label;
+ 	
+@@ -801,7 +806,7 @@ static void generic_slider_construct(XfcePanelPlugin *plugin) {
+ 	
+ 	xfce_panel_plugin_menu_show_configure (plugin);
+ 	
+-#if defined (LIBXFCE4PANEL_CHECK_VERSION) && LIBXFCE4PANEL_CHECK_VERSION (4,9,0)
++#ifdef PANEL490
+ 	g_signal_connect(plugin, "mode-changed", G_CALLBACK(generic_slider_mode_changed), generic_slider);
+ #else	
+ 	g_signal_connect(plugin, "orientation-changed", G_CALLBACK(generic_slider_orientation_changed), generic_slider);
+diff --git a/panel-plugin/generic-slider.desktop.in b/panel-plugin/generic-slider.desktop.in
+index 3395624..d252e38 100644
+--- a/panel-plugin/generic-slider.desktop.in
++++ b/panel-plugin/generic-slider.desktop.in
+@@ -7,4 +7,4 @@ Icon=gtk-remove
+ X-XFCE-Module=generic-slider
+ X-XFCE-Internal=false
+ X-XFCE-Unique=false
+-X-XFCE-API=1.0
++X-XFCE-API=2.0
+-- 
+2.33.0
+
