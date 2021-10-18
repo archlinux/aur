@@ -5,7 +5,7 @@
 
 pkgname=wammu
 pkgver=0.44
-pkgrel=10
+pkgrel=11
 pkgdesc="A wxPython-based GUI for Gammu, a mobile phone manager."
 arch=('any')
 url="https://wammu.eu/wammu/"
@@ -32,7 +32,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   for _pyfile in *.py; do
-    msg "Patching shabeng line for python2 in '${_pyfile}' ..."
+    msg2 "Patching shabeng line for python2 in '${_pyfile}' ..."
     sed -E -i '1s|^#!(.*)python$|#!\1python2|' "${_pyfile}"
   done
 }
