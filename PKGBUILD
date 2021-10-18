@@ -79,7 +79,6 @@ package()
     # shellcheck disable=SC2154
     mkdir -p "${pkgdir}"/etc/systemd/system/php-fpm.service.d/
     mkdir -p "${pkgdir}"/usr/share/doc/"${_pkgname}"/
-    mkdir -p "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
     mkdir -p "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
 
     # Install the software.
