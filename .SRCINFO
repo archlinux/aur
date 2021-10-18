@@ -1,6 +1,6 @@
 pkgbase = cutefish-dock-git
 	pkgdesc = CutefishOS application dock
-	pkgver = 0.4.r34.g74273d6
+	pkgver = 0.5.r3.ga1761b3
 	pkgrel = 1
 	url = https://github.com/cutefishos/dock
 	arch = x86_64

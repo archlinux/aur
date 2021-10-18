@@ -2,7 +2,7 @@
 
 pkgname=cutefish-dock-git
 _pkgname=cutefish-dock
-pkgver=0.4.r34.g74273d6
+pkgver=0.5.r3.ga1761b3
 pkgrel=1
 pkgdesc="CutefishOS application dock"
 arch=('x86_64')
