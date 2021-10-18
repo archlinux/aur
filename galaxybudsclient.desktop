@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GalaxyBudsClient
+Comment=Galaxy Buds client
+GenericName=Galaxy buds client
+Exec=/usr/bin/galaxybudsclient
+Icon=galaxybudsclient
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK
