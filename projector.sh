@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-exec electron /usr/share/projector/app $@
+exec electron10 /usr/share/projector/app $@
