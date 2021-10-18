@@ -1,8 +1,8 @@
 pkgbase = wammu
 	pkgdesc = A wxPython-based GUI for Gammu
 	pkgver = 0.44
-	pkgrel = 4
-	url = https://wammu.eu/
+	pkgrel = 5
+	url = https://wammu.eu/wammu/
 	arch = any
 	license = GPL
 	makedepends = python2-setuptools
@@ -15,4 +15,3 @@ pkgbase = wammu
 	sha256sums = bf8199f888cb60e4a24839e71ec6f8e8deb11fd22f592fe1112e3252bd4b9145
 
 pkgname = wammu
-

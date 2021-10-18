@@ -3,10 +3,10 @@
 
 pkgname=wammu
 pkgver=0.44
-pkgrel=4
+pkgrel=5
 pkgdesc="A wxPython-based GUI for Gammu"
 arch=('any')
-url="https://wammu.eu/"
+url="https://wammu.eu/wammu/"
 license=('GPL')
 depends=('python2-gammu' 'wxpython' 'python2-six')
 makedepends=('python2-setuptools')
