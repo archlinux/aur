@@ -61,7 +61,6 @@ package()
     # Assure that the directories exist.
     # shellcheck disable=SC2154
     mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # Install the software.
     cd "${srcdir}"/"${pkgname}"-v"${pkgver}"/build/ || exit
