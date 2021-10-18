@@ -1,7 +1,7 @@
 pkgbase = galaxybudsclient-bin
 	pkgdesc = Galaxy Buds Client for Linux
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThePBone/GalaxyBudsClient
 	arch = x86_64
 	arch = armv7h
