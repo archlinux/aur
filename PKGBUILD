@@ -2,8 +2,8 @@
 # Last images added on 2021-10-17
 
 pkgname="trougnouf-backgrounds"
-pkgver=2.0
-pkgrel=3
+pkgver=2.1
+pkgrel=1
 pkgdesc="Wallpapers made of photographs posted by User:Trougnouf on Wikimedia Commons, with GNOME integration and transitions built-in to match the time pictures were taken"
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
