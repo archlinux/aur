@@ -2,7 +2,7 @@
 
 pkgname=cutefish-terminal-git
 _pkgname=cutefish-terminal
-pkgver=0.4.r59.g7d78596
+pkgver=0.5.r5.gd363be1
 pkgrel=1
 pkgdesc="A terminal emulator for Cutefish"
 arch=('x86_64')
