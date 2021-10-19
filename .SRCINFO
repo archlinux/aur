@@ -1,0 +1,14 @@
+pkgbase = plotinus-unityx-git
+	pkgdesc = HUD for UnityX
+	pkgver = git
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = vala
+	makedepends = cmake
+	depends = gtk3
+	source = plotinus::git+https://gitlab.com/ubuntu-unity/unity-x/plotinus.git
+	sha256sums = SKIP
+
+pkgname = plotinus-unityx-git
