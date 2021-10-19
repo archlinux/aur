@@ -13,7 +13,7 @@ conflicts=('msquic' 'libmsquic.so')
 source=("$pkgname::git+https://github.com/microsoft/msquic.git#branch=prerelease/1.8"
         'cmake_args.patch')
 sha512sums=('SKIP'
-            'd0854c3cbab909dc55d879a86870ad2c118fdb19521606de6c1294348e3c7bd9056d5a2f7ede36881a2632925d58665dfcefe4cfa1e2a35124efa1cf350dff74')
+            '9d18293f34d1d83574cdcfb544bf6c0ff5f98f90ea33335bf0c7bfff9f4101b60d18c176e81f8249065b30e643be691ee2800c26727da97b6a56d79da8cd0d7f')
 
 pkgver() {
   cd "$pkgname"
