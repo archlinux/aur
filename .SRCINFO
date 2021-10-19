@@ -1,18 +1,14 @@
 pkgbase = nft-blackhole
 	pkgdesc = Script / Daemon to blocking IP in nftables by country and black lists
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/tomasz-c/nft-blackhole
 	arch = any
 	license = MIT
-	makedepends = git
-	depends = systemd
 	depends = nftables
-	depends = python
 	depends = python-yaml
 	backup = etc/nft-blackhole.conf
-	source = git+https://github.com/tomasz-c/nft-blackhole.git
-	sha256sums = SKIP
+	source = nft-blackhole-1.0.0.tar.gz::https://github.com/tomasz-c/nft-blackhole/archive/v1.0.0.tar.gz
+	sha256sums = 5ec91e00eae0f6dfbf2d21df185288a565144878886d14e957186e55cbf8f55d
 
 pkgname = nft-blackhole
-
