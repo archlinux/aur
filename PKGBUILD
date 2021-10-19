@@ -13,10 +13,10 @@ source=("$pkgname-$pkgver.tar.gz"::"https://github.com/wimpysworld/quickemu/arch
 md5sums=('10e82cc84e46aa28a33b657bc3f07d60')
 
 package() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm755 quickemu "$pkgdir/usr/bin/quickemu"
-	install -Dm755 macrecovery "$pkgdir/usr/bin/macrecovery"
-	install -Dm755 quickget "$pkgdir/usr/bin/quickget"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 quickemu "$pkgdir/usr/bin/quickemu"
+  install -Dm755 macrecovery "$pkgdir/usr/bin/macrecovery"
+  install -Dm755 quickget "$pkgdir/usr/bin/quickget"
 }
