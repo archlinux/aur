@@ -5,6 +5,6 @@ Name=86Box
 Exec=/usr/bin/86Box -R /usr/share/86box/roms -P ~/.config/86box
 Terminal=true
 Type=Application
-Icon=86box
+Icon=86Box
 Comment=Emulator of x86-based machines.
 Categories=System;

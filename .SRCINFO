@@ -17,8 +17,8 @@ pkgbase = 86box-git
 	optdepends = 86box-roms-git: ROM files
 	provides = 86box
 	source = 86box-git::git+https://github.com/86Box/86Box.git
-	source = 86box.desktop
+	source = 86Box.desktop
 	sha256sums = SKIP
-	sha256sums = 45b69e5663065130439ae615a98e3eab8a526e97964133956cdc71a500e42945
+	sha256sums = a7a62cfd0ab1088406879a15245d1a9c9ef1e6d69d72e9d63ed3da14b8d298ac
 
 pkgname = 86box-git

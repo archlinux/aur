@@ -1,6 +1,6 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=r5776.bd9b6766
+pkgver=r5805.6c463219
 pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('GPL2')
 depends=('freetype2' 'sdl2' 'libpng' 'openal' 'alsa-lib')
 makedepends=('git' 'cmake>=3.15' 'ffmpeg')
 optdepends=('86box-roms-git: ROM files')
-source=("${pkgname}::git+https://github.com/86Box/86Box.git" '86box.desktop')
-sha256sums=('SKIP' '45b69e5663065130439ae615a98e3eab8a526e97964133956cdc71a500e42945')
+source=("${pkgname}::git+https://github.com/86Box/86Box.git" '86Box.desktop')
+sha256sums=('SKIP' 'a7a62cfd0ab1088406879a15245d1a9c9ef1e6d69d72e9d63ed3da14b8d298ac')
 provides=('86box')
 
 pkgver() {
@@ -19,14 +19,14 @@ pkgver() {
 }
 
 build() {
-    cmake -S"${pkgname}" -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DRELEASE=on -DUSB=on
+    cmake -S"${pkgname}" -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DRELEASE=on
     cmake --build build
 }
 
 package() {
     DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
     mkdir -p "$pkgdir/usr/share/pixmaps" "$pkgdir/usr/share/applications"
-    ffmpeg -i "$srcdir/$pkgname/src/win/icons/86Box.ico" "$pkgdir/usr/share/pixmaps/86box.png"
-    chmod 644 "$pkgdir/usr/share/pixmaps/86box.png"
-    install -Dm644 86box.desktop "$pkgdir/usr/share/applications"
+    ffmpeg -i "$srcdir/$pkgname/src/win/icons/86Box-green.ico" "$pkgdir/usr/share/pixmaps/86Box.png"
+    chmod 644 "$pkgdir/usr/share/pixmaps/86Box.png"
+    install -Dm644 86Box.desktop "$pkgdir/usr/share/applications"
 }
