@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=btop-git
-pkgver=r132.78c417b
+pkgver=1.0.18.r292.a0ee404
 pkgrel=1
 pkgdesc="A monitor of resources"
 arch=(any)
@@ -16,8 +16,9 @@ options=(!strip)
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
+  _pkgver="$(cat CHANGELOG.md | grep '^##' | sed 's/## v//g' | head -1)"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

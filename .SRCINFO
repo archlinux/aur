@@ -1,6 +1,6 @@
 pkgbase = btop-git
 	pkgdesc = A monitor of resources
-	pkgver = r132.78c417b
+	pkgver = 1.0.18.r292.a0ee404
 	pkgrel = 1
 	url = https://github.com/aristocratos/btop
 	arch = any
