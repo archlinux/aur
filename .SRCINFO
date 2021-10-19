@@ -17,6 +17,7 @@ pkgbase = gnome-pomodoro-git
 	depends = sqlite
 	depends = gstreamer
 	depends = libcanberra
+	depends = gobject-introspection
 	provides = gnome-pomodoro
 	conflicts = gnome-pomodoro
 	conflicts = gnome-shell-pomodoro
