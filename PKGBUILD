@@ -1,15 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher' 'pop-shell-plugin-system76-power')
 pkgbase=pop-launcher
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('GPL3')
 depends=('fd' 'gtk3' 'libqalculate')
 makedepends=('cargo')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('92927d1133648bcab4e960219e14d4681f921f458b653a4ed39f35678263957b')
+sha256sums=('29c795c1397fcf709043ca5023957d7cf7fc571a2b425e8d7f4643cc9182cc96')
 
 prepare() {
   cd "launcher-$pkgver"
