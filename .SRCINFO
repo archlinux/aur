@@ -1,11 +1,12 @@
 pkgbase = lcj
 	pkgdesc = All tools for Lcj
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	groups = lcj
 	license = GPL3
 	depends = systemd-kexec
 	depends = systemd-godns
+	depends = git-tools
 
 pkgname = lcj

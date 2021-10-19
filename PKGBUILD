@@ -2,12 +2,12 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
 arch=('any')
-depends=('systemd-kexec' 'systemd-godns')
+depends=('systemd-kexec' 'systemd-godns' 'git-tools')
 #makedepends=('cmake>=3.3' 'qt5-tools' 'karchive' 'gcc>=8' 'extra-cmake-modules')
 #optdepends=(
 #	'vulkan-tools: For vulkaninfo'
