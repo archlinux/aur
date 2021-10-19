@@ -1,7 +1,7 @@
 pkgbase = lcj
 	pkgdesc = All tools for Lcj
 	pkgver = 1.0.0
-	pkgrel = 6
+	pkgrel = 7
 	arch = any
 	groups = lcj
 	license = GPL3
