@@ -1,6 +1,6 @@
 pkgbase = lib32-gdbm
 	pkgdesc = GNU database library (32-bit)
-	pkgver = 1.21
+	pkgver = 1.22
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdbm/gdbm.html
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lib32-gdbm
 	makedepends = lib32-gcc-libs
 	depends = gdbm
 	depends = lib32-glibc
-	source = ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.21.tar.gz
-	sha512sums = b2a31802d1af9f97b24d3dd01cb048bab4a8e748297f1b70851c0342400dde4281242b7f80bd92a36035e22398d240d131b550ab444ee838a077522a6921fa43
+	source = ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.22.tar.gz
+	sha512sums = 67461fc4f41e825d0134175ff99c913ccb4aa7ea3d0f64f32bdedbc7677b3ecabd2c525ac6b2ee47a9561e002e4224e492b72088d57bb4862a1f8c089521ec51
 
 pkgname = lib32-gdbm

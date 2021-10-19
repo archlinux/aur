@@ -5,7 +5,7 @@
 # Maintainer: Hurricane Pootis <hurricanepootis@protonmail.com>
 
 pkgname=lib32-gdbm
-pkgver=1.21
+pkgver=1.22
 pkgrel=1
 pkgdesc='GNU database library (32-bit)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gdbm' 'lib32-glibc')
 makedepends=('gcc-multilib' 'lib32-gcc-libs')
 source=("ftp://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz")
 #options=('!makeflags')
-sha512sums=('b2a31802d1af9f97b24d3dd01cb048bab4a8e748297f1b70851c0342400dde4281242b7f80bd92a36035e22398d240d131b550ab444ee838a077522a6921fa43')
+sha512sums=('67461fc4f41e825d0134175ff99c913ccb4aa7ea3d0f64f32bdedbc7677b3ecabd2c525ac6b2ee47a9561e002e4224e492b72088d57bb4862a1f8c089521ec51')
 
 
 build() {
