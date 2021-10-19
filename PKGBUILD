@@ -5,7 +5,7 @@
 
 pkgname=cryptomator
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('x86_64')
 url="https://cryptomator.org/"
@@ -41,6 +41,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/cryptomator-${pkgver}"
+  mvn versions:set -DnewVersion="${pkgver}"
   mvn -B clean package -DskipTests -Plinux
 
   cp LICENSE.txt target
@@ -77,7 +78,8 @@ build() {
     --java-options "-Dcryptomator.ipcSocketPath=\"~/.config/Cryptomator/ipc.socket\"" \
     --java-options "-Dcryptomator.mountPointsDir=\"~/.local/share/Cryptomator/mnt\"" \
     --java-options "-Dcryptomator.showTrayIcon=false" \
-    --java-options "-Dcryptomator.buildNumber=\"aur-${pkgver}\"" \
+    --java-options "-Dcryptomator.buildNumber=\"aur-${pkgrel}\"" \
+    --java-options "-Dcryptomator.appVersion=\"${pkgver}\"" \
     --app-version "${pkgver}" \
     --verbose
 }

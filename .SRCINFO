@@ -1,7 +1,7 @@
 pkgbase = cryptomator
 	pkgdesc = Multiplatform transparent client-side encryption of your files in the cloud.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cryptomator.org/
 	arch = x86_64
 	license = GPL3
