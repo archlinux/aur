@@ -1,6 +1,7 @@
 # Maintainer: Aaron Graves <linux@ajgraves.com>
 # Contributor: Morten Linderud <morten@linderud.pw>
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
+# Contributor: Julian Raufelder <arch@raufelder.com>
 
 pkgname=cryptomator-bin
 pkgver=1.5.17
@@ -12,6 +13,7 @@ license=('GPL3')
 depends=('fuse2')
 conflicts=('cryptomator')
 replaces=('cryptomator')
+optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords')
 source=("cryptomator-${pkgver}-${pkgrel}-x86_64.AppImage::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}-x86_64.AppImage"
         "cryptomator-${pkgver}-${pkgrel}-x86_64.AppImage.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}-x86_64.AppImage.asc"
         'org.cryptomator.Cryptomator.desktop'
