@@ -10,7 +10,7 @@ url='https://github.com/kejpies/bruh'
 depends=("alsa-utils")
 optdepends=("pulseaudio: ALSA alternative")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('850aafbf185d418341b36d6fd97bc20b34d5eb2d68d405228861b718963d5bef')
+sha256sums=('f01ff6fffbe657f1ef04c2ef9a5b8da81ad50be481756b569e30232794279171')
 build() {
    cd "$pkgname-$pkgver"
    make
