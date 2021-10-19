@@ -1,7 +1,7 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=flashplayer-standalone-debug
 pkgver=32.0.0.465
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone, debug version of Adobe Flash Player"
 arch=(x86_64 i686)
 url="https://www.adobe.com/support/flashplayer/debug_downloads.html"
