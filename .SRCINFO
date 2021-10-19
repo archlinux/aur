@@ -1,6 +1,6 @@
 pkgbase = bruh
 	pkgdesc = Bruh sound, but as a program. You can use it to make your software more fun.
-	pkgver = 1.1
+	pkgver = 2.0
 	pkgrel = 0
 	arch = i686
 	arch = x86_64

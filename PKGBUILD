@@ -1,6 +1,6 @@
 # Maintainer: Konrad Sekuła <konradsekula@outlook.com>
 pkgname=bruh
-pkgver=1.1
+pkgver=2.0
 pkgrel=0
 pkgdesc="Bruh sound, but as a program. You can use it to make your software more fun."
 arch=('i686' 'x86_64')
