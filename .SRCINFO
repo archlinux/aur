@@ -1,0 +1,23 @@
+pkgbase = msquic-prerelease-git
+	pkgdesc = MsQuic is a Microsoft implementation of the IETF QUIC protocol.
+	pkgver = 1.8.0.r0.g0b0e8b952
+	pkgrel = 1
+	url = https://github.com/microsoft/msquic
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cmake>=3.16
+	makedepends = dotnet-sdk>=3.1
+	makedepends = git
+	depends = openssl>=1.1.1
+	provides = msquic
+	provides = libmsquic.so
+	conflicts = msquic
+	conflicts = libmsquic.so
+	source = msquic-prerelease-git::git+https://github.com/microsoft/msquic.git#branch=prerelease/1.8
+	source = cmake_args.patch
+	sha512sums = SKIP
+	sha512sums = d0854c3cbab909dc55d879a86870ad2c118fdb19521606de6c1294348e3c7bd9056d5a2f7ede36881a2632925d58665dfcefe4cfa1e2a35124efa1cf350dff74
+
+pkgname = msquic-prerelease-git
