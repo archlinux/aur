@@ -9,17 +9,62 @@ post_install() {
 		    synapse user.
 
 		    cd /var/lib/synapse
-		    sudo -u synapse python2 -m synapse.app.homeserver \\
+		    sudo -u synapse python -m synapse.app.homeserver \\
 		      --server-name my.domain.name \\
 		      --config-path /etc/synapse/homeserver.yaml \\
 		      --generate-config \\
 		      --report-stats=yes
 
 		    N.B.: The default synapse config enables the webclient feature.
-		    Unless you have python2-matrix-angular-sdk installed this will make
-		    synapse fail to start.  Either disable it, or install
-		    python2-matrix-angular-sdk.
+		          You need to either disable it, install the syweb python package
+		          from matrix-angular-sdk, or set 'web_client_location' to a path
+		          to make synapse not try to serve it using syweb.
 		EOF
 		install -dm700 -o 198 -g 198 /var/lib/synapse
+	fi
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	if [[ "$(vercmp "$2" 1.4.0-2)" -lt 0 ]]; then
+		cat <<-EOF
+		==> Upstream email templates are no longer available in /var/lib/synapse/res/templates.
+
+		    If you want to customize the templates, you can copy the default ones from
+		    /usr/lib/python3.x/site-packages/synapse/res/templates/
+		EOF
+	fi
+
+	if [[ "$(vercmp "$2" 1.26.0-1)" -lt 0 ]]; then
+		cat <<-EOF
+		==> Synapse 1.26.0 includes a new database schema version.
+
+		    If you need to downgrade, see the following document:
+		    https://github.com/matrix-org/synapse/blob/v1.26.0/UPGRADE.rst#upgrading-to-v1260
+		EOF
+	fi
+
+	if [[ "$(vercmp "$2" 1.38.0)" -lt 0 ]]; then
+		cat <<-EOF
+		==> Synapse 1.38.0 includes a database migration that re-indexes the events table.
+
+		    > This could result in increased disk I/O for several hours or days
+		    > after upgrading while the migration completes. Furthermore,
+		    > because we have to keep the old indexes until the new indexes are
+		    > ready, it could result in a significant, temporary, increase in
+		    > disk space.
+
+		    See https://matrix-org.github.io/synapse/develop/upgrade#upgrading-to-v1380
+		EOF
+	fi
+
+	if [[ "$(vercmp "$2" 1.41.0)" -lt 0 ]]; then
+		cat <<-EOF
+		==> Synapse 1.41.0 changes how template directories are handled,
+		    and adds a new path for media workers.
+
+		    See https://matrix-org.github.io/synapse/v1.41/upgrade.html#upgrading-to-v1410
+		EOF
 	fi
 }

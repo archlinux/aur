@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.35.0.r0.g3fdaf4df5
+pkgver=1.45.0.r0.g95813ff43c
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -11,6 +11,7 @@ arch=('any')
 license=('Apache')
 
 depends=(
+	'libwebp'
 	'python-jsonschema'
 	'python-frozendict'
 	'python-unpaddedbase64'
@@ -36,9 +37,9 @@ depends=(
 	'python-netaddr'
 	'python-jinja'
 	'python-bleach'
-	'python-typing-extensions'
+	'python-typing_extensions'
+	'python-cryptography'
 	'python-ijson'
-
 	'python-systemd'
 	'systemd'
 )
@@ -52,11 +53,11 @@ checkdepends=(
 	'python-lxml'
 	'python-authlib'
 	'python-pyjwt'
+        'python-txredisapi'
+	'python-hiredis'
 )
 optdepends=(
-	'python-matrix-synapse-ldap3: LDAP3 auth provider'
 	'python-psycopg2: PostgreSQL support'
-	"python-txacme: ACME support (Let's Encrypt)"
 	'python-pysaml2: SAML2 support'
 	'python-authlib: OIDC support'
 	'python-lxml: URL previewing'
@@ -65,18 +66,28 @@ optdepends=(
 	'python-opentracing: tracing support'
 	'python-pyjwt: JWT support'
 	'python-txredisapi: worker communication via Redis'
-	'python-hiredis: worker communication via Redis (faster)'
+	'python-hiredis: faster worker communication via Redis'
 )
 
 source=(
 	"git+https://github.com/matrix-org/synapse.git#branch=master"
+        'generic_worker.yaml.example'
         'synapse.service'
+        'synapse.target'
+        'synapse-worker@.service'
         'sysusers-synapse.conf'
+        'tmpfiles-synapse.conf'
+        'override-hardened.conf'
 )
 
 md5sums=('SKIP'
-         '02539d38e16ba49573adebd029a71858'
-         'ecd9f66fb57fe1a2e1e2df07a460a35b')
+         '2ef84c75b422b701d60abb0f07dfa7cb'
+         '86f5af69a6123d913c97acc6e1738aa1'
+         'eb0191dd772ec34efa160febef726be2'
+         'ea198d6265d626af4a4c143bf3df9a66'
+         'ecd9f66fb57fe1a2e1e2df07a460a35b'
+         'e961c9ecad84a70345a57a7e9e6d5b09'
+         'e93ce7c015b3617f71c0fe2a4879f0e5')
 
 backup=('etc/synapse/log_config.yaml')
 install=synapse.install
@@ -106,16 +117,20 @@ build() {
 
 check() {
 	cd synapse
-	PYTHONPATH=. trial tests
+	PYTHONPATH=. trial $MAKEFLAGS tests
 }
 
 package() {
-	install -Dm644 synapse.service "$pkgdir"/usr/lib/systemd/system/synapse.service
-
 	cd synapse
 	python setup.py install --root "$pkgdir" --optimize=1 --skip-build
 
 	install -dm755 -o 198 -g 198 "$pkgdir"/etc/synapse
-	install -Dm644 contrib/systemd/log_config.yaml "$pkgdir"/etc/synapse/log_config.yaml
-	install -Dm644 "$srcdir"/sysusers-synapse.conf "$pkgdir"/usr/lib/sysusers.d/synapse.conf
+	install -vDm644 contrib/systemd/log_config.yaml "$pkgdir"/etc/synapse/log_config.yaml
+	install -vDm644 "$srcdir"/generic_worker.yaml.example "$pkgdir"/etc/synapse/workers/generic_worker.yaml.example
+
+	install -vDm644 -t "$pkgdir"/usr/lib/systemd/system/ "$srcdir"/synapse{,-worker@}.service "$srcdir"/synapse.target
+	install -vDm644 "$srcdir/override-hardened.conf" -t "$pkgdir/usr/lib/systemd/system/synapse.service.d"
+	install -vDm644 "$srcdir/override-hardened.conf" -t "$pkgdir/usr/lib/systemd/system/synapse-worker@.service.d"
+	install -vDm644 "$srcdir"/sysusers-synapse.conf "$pkgdir"/usr/lib/sysusers.d/synapse.conf
+	install -vDm644 "$srcdir"/tmpfiles-synapse.conf "$pkgdir"/usr/lib/tmpfiles.d/synapse.conf
 }
