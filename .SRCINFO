@@ -1,6 +1,6 @@
 pkgbase = lets-git
 	pkgdesc = CLI task runner - a better alternative to make
-	pkgver = v0.0.16.r2.g7e24f36
+	pkgver = v0.0.33.r2.g186f3ea
 	pkgrel = 1
 	url = https://github.com/lets-cli/lets
 	arch = i686
