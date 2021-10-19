@@ -1,6 +1,6 @@
 pkgbase = python-scipyx
 	pkgdesc = SciPy fixes and extensions
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/nschloe/scipyx
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = python-scipyx
 	checkdepends = python-pytest-codeblocks
 	makedepends = python-setuptools
 	depends = python-scipy
-	source = https://github.com/nschloe/scipyx/archive/0.0.16.tar.gz
-	sha512sums = f4177a6449c51ba752a51d0c8d21b2fa35a614fabda0199da74f074078a775fb2db29f29d69a3f13b07f2b287e6746f600cd4f4fb36f21174f8d8f7d8b1c1970
+	source = https://github.com/nschloe/scipyx/archive/0.0.17.tar.gz
+	sha512sums = 805538dbccb2111f64b948282027c2a4083a1c4d722427081fe669f6e58dbdb436e065ee3e11d913ae065e1d9b7fbc32cf88a406e88ae9d1a4f0069e2985bf65
 
 pkgname = python-scipyx

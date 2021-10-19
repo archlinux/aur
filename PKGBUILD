@@ -3,7 +3,7 @@
 _base=scipyx
 pkgname=python-${_base}
 pkgdesc="SciPy fixes and extensions"
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -12,7 +12,7 @@ depends=(python-scipy)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-codeblocks)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('f4177a6449c51ba752a51d0c8d21b2fa35a614fabda0199da74f074078a775fb2db29f29d69a3f13b07f2b287e6746f600cd4f4fb36f21174f8d8f7d8b1c1970')
+sha512sums=('805538dbccb2111f64b948282027c2a4083a1c4d722427081fe669f6e58dbdb436e065ee3e11d913ae065e1d9b7fbc32cf88a406e88ae9d1a4f0069e2985bf65')
 
 build() {
   cd "${_base}-${pkgver}"
