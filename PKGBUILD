@@ -12,11 +12,6 @@ conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/wimpysworld/quickemu/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('10e82cc84e46aa28a33b657bc3f07d60')
 
-prepare() {
-  sed -i 's+/usr/share/OVMF/OVMF_CODE_4M.fd+/usr/share/OVMF/x64/OVMF_CODE.fd+g' $srcdir/$pkgname-$pkgver/quickemu
-  sed -i 's+/usr/share/OVMF/OVMF_VARS_4M.fd+/usr/share/OVMF/x64/OVMF_VARS.fd+g' $srcdir/$pkgname-$pkgver/quickemu
-}
-
 package() {
 	cd "$pkgname-$pkgver"
 
