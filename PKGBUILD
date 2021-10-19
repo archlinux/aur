@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -15,8 +15,8 @@ depends=('systemd-kexec' 'systemd-godns' 'git-tools')
 #	'util-linux: For lscpu'
 #)
 #source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-#source=("kexec-load@.service")
-#sha512sums=('cde894488d4587b7b0272956dedfdd7684c4fe423726e008f6217eb59a5d5dfbb5289dabde5a354ab7b612c4b5b25ce2c397e632a6c4acc7f77c6d2b8fe7bdf4')
+source=("ipmac")
+sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd')
 
 #Package files should follow these general directory guidelines:
 #/etc	System-essential configuration files
@@ -45,7 +45,7 @@ depends=('systemd-kexec' 'systemd-godns' 'git-tools')
 
 #package() {
 # make -C build DESTDIR="$pkgdir" install
-#install  -Dm644 kexec-load@.service  "$pkgdir/usr/lib/systemd/system/kexec-load@.service"
+sudo install  -Dm4711 ipmac  "$pkgdir/usr/bin/ipmac"
 #}
 
 groups=('lcj')
