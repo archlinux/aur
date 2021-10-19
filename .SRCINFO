@@ -8,6 +8,9 @@ pkgbase = neovim-crates-git
 	groups = neovim-plugins
 	license = unknown
 	makedepends = git
+	depends = neovim
+	depends = neovim-plenary
+	depends = cargo
 	provides = neovim-crates
 	provides = neovim-cmp-crates
 	conflicts = neovim-crates
@@ -16,6 +19,3 @@ pkgbase = neovim-crates-git
 	md5sums = SKIP
 
 pkgname = neovim-crates-git
-	depends = neovim
-	depends = neovim-plenary
-	depends = cargo

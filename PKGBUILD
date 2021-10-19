@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/saecki/crates.nvim"
 license=('unknown')
 groups=('neovim-plugins')
+depends=('neovim' 'neovim-plenary' 'cargo')
 makedepends=('git')
 provides=("${pkgname%-git}" 'neovim-cmp-crates')
 conflicts=("${pkgname%-git}" 'neovim-cmp-crates')
@@ -21,8 +22,6 @@ pkgver() {
 }
 
 package() {
-	depends=('neovim' 'neovim-plenary' 'cargo')
-
 	cd "$pkgname"
 	find after lua plugin -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
