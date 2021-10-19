@@ -1,4 +1,5 @@
 # Maintainer: Liam Timms <timms5000@gmail.com>
+# Contributor: gj545rndmu <6zogm6z2nh at bljvf anonbox net>
 # Contributor: Pranav Jerry <libreinator@disroot.org>
 # Contributor:  Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
@@ -7,13 +8,13 @@
 
 pkgname=gnome-shell-pomodoro
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/gnome-pomodoro/gnome-pomodoro'
 license=('GPL3')
-depends=('gnome-desktop' 'gstreamer' 'gobject-introspection' 'libpeas' 'appstream-glib' 'gom')
-makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x' 'perl-xml-sax-expat' 'xorgproto')
+depends=('glib2' 'gom' 'gtk3' 'cairo' 'glibc' 'libpeas' 'sqlite' 'gstreamer' 'libcanberra')
+makedepends=('meson' 'vala')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnome-pomodoro/gnome-pomodoro/archive/$pkgver.tar.gz")
 sha256sums=('3fed04c14fe4f07cc412d75cc84d1348e7a9c51c91283bc1d7d57e63ac45d276')
 
