@@ -1,6 +1,6 @@
 pkgbase = mygnuhealth
 	pkgdesc = The GNU Health Personal Health Record (PHR)
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://www.gnuhealth.org
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mygnuhealth
 	depends = python-bcrypt
 	depends = pyside2
 	depends = kirigami2
-	source = https://files.pythonhosted.org/packages/source/M/MyGNUHealth/MyGNUHealth-1.0.4.tar.gz
-	sha256sums = 2cb44cae16c18f1635778a05b62c6732f35dd857b87fe960e6de933feb10e922
+	source = https://files.pythonhosted.org/packages/source/M/MyGNUHealth/MyGNUHealth-1.0.5.tar.gz
+	sha256sums = 1271ee4972e8a081eac83fb9b586779b8db86fc5117af54f97647dcc58cc99c9
 
 pkgname = mygnuhealth
