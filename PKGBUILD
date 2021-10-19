@@ -2,7 +2,7 @@
 
 pkgname=git-tools
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="git toools "
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -53,9 +53,9 @@ sha512sums=(
 
 package() {
 # make -C build DESTDIR="$pkgdir" install
-install  -Dm751 push  "$pkgdir/usr/bin/push"
-install  -Dm751 pull  "$pkgdir/usr/bin/pull"
-install  -Dm751 fetch  "$pkgdir/usr/bin/fetch"
+install  -Dm755 push  "$pkgdir/usr/bin/push"
+install  -Dm755 pull  "$pkgdir/usr/bin/pull"
+install  -Dm755 fetch  "$pkgdir/usr/bin/fetch"
 }
 
 groups=('lcj')
