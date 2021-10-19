@@ -2,7 +2,7 @@
 # Contributor: Matthew Gamble <git@matthewgamble.net>
 
 pkgname="monica-git"
-pkgver=3.1.3.r39.g06e7af41a
+pkgver=3.3.1.r30.g2b37ad1c4
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
 url="https://www.monicahq.com/"
@@ -39,7 +39,6 @@ package(){
  install -d "$pkgdir/usr/share/webapps/monica"
  cp -r * "$pkgdir/usr/share/webapps/monica"
 
- install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/monica/LICENSE"
  install -D -o root -g http -m 640 ".env.example" "$pkgdir/etc/webapps/monica/config.env"
  ln -s "/etc/webapps/monica/config.env" "$pkgdir/usr/share/webapps/monica/.env"
 
