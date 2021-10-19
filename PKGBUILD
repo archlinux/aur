@@ -2,7 +2,7 @@
 
 pkgname=plover-git
 pkgdesc="Free and open source real-time stenography engine."
-pkgver=4.0.0.dev8+434.g60779ea
+pkgver=4.0.0.dev10+98.gdafea02
 pkgrel=1
 arch=('any')
 license=('GPL2')
@@ -10,6 +10,7 @@ depends=(
   'python'
   'python-appdirs'
   'python-dbus'
+  'python-plover_stroke'
   'python-pyqt5'
   'python-pyserial'
   'python-setuptools'
@@ -21,6 +22,8 @@ makedepends=(
   'git'
   'python-babel'
   'python-pytest'
+  'python-pytest-qt'
+  'python-pytest-xvfb'
 )
 provides=('plover')
 conflicts=('plover')
@@ -47,7 +50,7 @@ build() {
 
 check() {
   cd "$pkgname"
-  python setup.py test
+  python -m pytest
 }
 
 package() {
