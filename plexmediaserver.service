@@ -5,6 +5,7 @@ After=network.target
 [Service]
 EnvironmentFile=/etc/conf.d/plexmediaserver
 ExecStart=/usr/lib/plexmediaserver/Plex\x20Media\x20Server
+SyslogIdentifier=plexmediaserver
 Type=simple
 User=plex
 Group=plex
