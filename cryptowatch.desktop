@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=0.4.3
+Version=0.4.4
 Name=cryptowatch
 Comment=Charting and trading for cryptocurrency
 Exec=/usr/bin/cryptowatch
