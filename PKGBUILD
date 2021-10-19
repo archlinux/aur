@@ -1,6 +1,6 @@
 # Maintainer: Lars Christensen <larsch@belunktum.dk>
 pkgname=grc-rs
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 epoch=
 pkgdesc="Generic Colouriser (grc) ported to Rust"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/larsch/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('1de3d2e1cf8028f1f0e50bc8745b4ea7356d3d5a3862518c9c8cb3d262b2d33f')
+sha256sums=('f6d4f8bc8f75e0654f7562d75ca0e7f671666b31bc4d07921c7edf0d6fc93866')
 validpgpkeys=()
 
 build() {
