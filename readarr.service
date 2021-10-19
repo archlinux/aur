@@ -5,6 +5,7 @@ After=syslog.target network.target
 [Service]
 User=readarr
 Group=readarr
+SyslogIdentifier=readarr
 ExecStart=/usr/lib/readarr/bin/Readarr -nobrowser -data=/var/lib/readarr
 Type=simple
 
