@@ -1,6 +1,6 @@
 # Maintainer: Victor <victor@xirion.net>
 pkgname=krew
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Krew is the package manager for kubectl plugins'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ depends=('kubectl' 'git')
 makedepends=('go')
 install=kubectl-krew.install
 source=("https://github.com/kubernetes-sigs/krew/archive/v${pkgver}.tar.gz")
-sha256sums=('b6108571ca6de34e85c880e4582aa3baabfc4c78b906c69e82ba5246496df13e')
+sha256sums=('db61152a01ac70fcf186ddf99536c307f5d3c2259ffbce02d53e8de050f99860')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
