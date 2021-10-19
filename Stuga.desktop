@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Game;
+Comment=Ancient Swedish text-based adventure
+Exec=gargoyle /usr/games/stuga/Stuga.z5
+Icon=user-home-symbolic
+Name=Stuga
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Games;

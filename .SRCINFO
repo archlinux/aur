@@ -1,0 +1,16 @@
+pkgbase = stuga
+	pkgdesc = An ancient Swedish text-based adventure game with roots from 1978
+	pkgver = 3
+	pkgrel = 1
+	url = http://microheaven.com/svenska/stuga.shtml
+	arch = any
+	groups = games
+	license = unknown
+	depends = gargoyle
+	noextract = Stuga.z5
+	source = http://microheaven.com/svenska/filarkiv/Stuga.z5
+	source = Stuga.desktop
+	md5sums = 3d6051d630820e6d3034e62e60d7ac1b
+	md5sums = 072d19ae13c0399a620026333d5bd7b8
+
+pkgname = stuga
