@@ -1,7 +1,7 @@
 pkgbase = love10
-	pkgdesc = An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic gaming experiences
+	pkgdesc = An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic g aming experiences
 	pkgver = 0.10.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://love2d.org/
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,7 @@ pkgbase = love10
 	depends = libmodplug
 	depends = sdl2
 	provides = love
-	conflicts = love
-	source = https://github.com/love2d/love/releases/download/0.10.2/love-0.10.2-linux-src.tar.gz
-	md5sums = SKIP
+	source = https://github.com/love2d/love/archive/refs/tags/0.10.2.tar.gz
+	md5sums = dae522353f40300ad30799517b4ccdc6
 
 pkgname = love10

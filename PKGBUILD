@@ -2,44 +2,43 @@
 # Contributor: Kyle McLamb <alloyed@tfwno.gf>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Linus Sjögren <thelinx@unreliablepollution.net>
-# Contributor: Eric Forgeot < http://anamnese.online.fr >, dreeze
-# Contributor: bageljr
+# Contributor: Eric Forgeot < http://anamnese.online.fr >
+# Contributor: dreeze, bageljr, pio
 pkgname=love10
 pkgver=0.10.2
-pkgrel=2
-pkgdesc="An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic gaming experiences"
+pkgrel=3
+pkgdesc="An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic g
+aming experiences"
 arch=(i686 x86_64)
 url="http://love2d.org/"
 license=('zlib')
 depends=('luajit' 'physfs' 'freetype2' 'mpg123' 'openal' 'libvorbis' 'libmodplug' 'sdl2')
-source=("https://github.com/love2d/love/releases/download/0.10.2/love-0.10.2-linux-src.tar.gz")
-conflicts=('love')
+source=("https://github.com/love2d/love/archive/refs/tags/$pkgver.tar.gz")
+md5sums=('dae522353f40300ad30799517b4ccdc6')
 provides=('love')
 makedepends=('git')
-md5sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/love-$pkgver/platform/unix"
+
+  # Update version information in configure script
+  sed -i 1s/HEAD/$pkgver/ configure.ac
+
+  # Skip installing desktop files, icons, etc
+  sed -i 4q Makefile.am
+}
 
 build() {
-  cd "$srcdir"/love-$pkgver
-  
-	# Update version information in configure script
-	echo "Updating version information"
-	head -c 15 configure.ac > configure.ac.tmp
-	echo " [0.10.2])" >> configure.ac.tmp
-	tail -n +2 configure.ac >> configure.ac.tmp
-	mv configure.ac.tmp platform/unix/configure.ac
+  cd "$srcdir/love-$pkgver"
 
-	# Skip installing desktop files, icons, etc
-	head -n 4 Makefile.am > Makefile.am.tmp
-	mv Makefile.am.tmp platform/unix/Makefile.am
+  # Generate a configure script, then configure
+  echo "Generating makefiles"
+  sh platform/unix/automagic 10 # this number names executable and library
+  ./configure --enable-silent-rules --prefix=/usr LDFLAGS=""
 
-	# Generate a configure script for love-hg (note the suffix), then configure
-	echo "Generating makefiles"
-	#sh platform/unix/automagic 10
-	./configure --enable-silent-rules --prefix=/usr LDFLAGS=""
-
-	# Finally build
-	echo "Building"
-	make
+  # Finally build
+  echo "Building"
+  make
 }
 
 package() {
@@ -47,5 +46,3 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm0644 "license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
