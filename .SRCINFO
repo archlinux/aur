@@ -1,5 +1,5 @@
 pkgbase = qt5-avif-image-plugin-git
-	pkgdesc = Qt5 plug-in to allow Qt and KDE based applications to read/write AVIF images (git version)
+	pkgdesc = Qt5 plug-in to allow Qt5 and KDE based applications to read/write AVIF images (git version)
 	pkgver = 0.4.5.r1.gc6cb0c8
 	pkgrel = 1
 	url = https://github.com/novomesk/qt-avif-image-plugin
