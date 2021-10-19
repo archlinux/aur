@@ -6,13 +6,13 @@
 _appname=Quaternion
 _pkgname=quaternion
 pkgname=quaternion-git
-pkgver=0.0.9.4a.r139.ge56c41b
+pkgver=0.0.95.1.flatpak.r6.g3a85cc4
 pkgrel=1
 pkgdesc='Qt5-based IM client for the Matrix protocol'
 url='https://matrix.org/docs/projects/client/quaternion.html'
 arch=('i686' 'x86_64')
 license=(GPL3)
-depends=(hicolor-icon-theme qt5-multimedia qt5-tools qt5-quickcontrols qt5-quickcontrols2 qt5-olm)
+depends=(hicolor-icon-theme qt5-multimedia qt5-tools qt5-quickcontrols qt5-quickcontrols2)
 makedepends=(cmake git)
 optdepends=('qtkeychain: Store access tokens in a keyring')
 provides=(quaternion)
