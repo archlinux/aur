@@ -1,0 +1,19 @@
+pkgbase = neovim-semshi-git
+	pkgdesc = Semantic highlighting for Python in Neovim
+	pkgver = r110.252f07f
+	pkgrel = 1
+	url = https://github.com/numirias/semshi
+	install = semshi.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	makedepends = python-setuptools
+	depends = neovim>=0.5.0
+	depends = python-pynvim
+	provides = neovim-semshi
+	conflicts = neovim-semshi
+	source = neovim-semshi-git::git+https://github.com/numirias/semshi
+	md5sums = SKIP
+
+pkgname = neovim-semshi-git

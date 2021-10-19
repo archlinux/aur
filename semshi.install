@@ -1,0 +1,4 @@
+post_install() {
+	echo ':: You may need to run `:UpdateRemotePlugins` to initialize this plugin.'
+}
+
