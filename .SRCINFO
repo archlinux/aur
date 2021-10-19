@@ -1,0 +1,17 @@
+pkgbase = supercollider-safety-limiter-git
+	pkgdesc = A zero-latency safety limiter for SuperCollider
+	pkgver = r6.236feb1
+	pkgrel = 1
+	url = https://github.com/nhthn/supercollider-safety-limiter
+	arch = any
+	groups = pro-audio
+	groups = supercollider-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = supercollider-headers-git
+	depends = supercollider
+	source = supercollider-safety-limiter-git::git+https://github.com/nhthn/supercollider-safety-limiter.git
+	md5sums = SKIP
+
+pkgname = supercollider-safety-limiter-git
