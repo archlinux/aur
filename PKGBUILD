@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=("python-libnacl" "python")
 makedepends=("python" "python-pip")
 build() {
-  pip install --no-deps --target="keepassxc-browser" keepassxc-browser==${pkgver}
+  pip install --upgrade --no-deps --target="keepassxc-browser" keepassxc-browser==${pkgver}
 }
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
