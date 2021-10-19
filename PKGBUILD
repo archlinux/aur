@@ -1,7 +1,7 @@
 # Maintainer: Konrad Sekuła <konradsekula@outlook.com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=bruh
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="bruh sound, but as a program"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/kejpies/bruh'
 depends=("alsa-utils")
 optdepends=("pulseaudio: ALSA alternative")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f01ff6fffbe657f1ef04c2ef9a5b8da81ad50be481756b569e30232794279171')
+sha256sums=('f58cc6371d09a0b77f208698b3842b02e41b335c9e620583fe01e37d64b697a2')
 build() {
    cd "$pkgname-$pkgver"
    make
