@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')

@@ -1,13 +1,16 @@
 pkgbase = lcj
 	pkgdesc = All tools for Lcj
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	arch = any
 	groups = lcj
 	license = GPL3
 	depends = systemd-kexec
 	depends = systemd-godns
 	depends = git-tools
+	depends = gfwlist-route
+	depends = pkgbuild-introspection
+	depends = pkgfile
 	source = ipmac
 	sha512sums = 8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd
 
