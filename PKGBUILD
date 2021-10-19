@@ -10,10 +10,10 @@
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=94.0.4606.71
+pkgver=95.0.4638.54
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=3
+_gcc_patchset=4
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -32,20 +32,26 @@ optdepends=(
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
+        maldoca-depend-on-zlib-instead-of-headers-only.patch
+        chromium-95-harfbuzz-3.patch
         replace-blacklist-with-ignorelist.patch
         add-a-TODO-about-a-missing-pnacl-flag.patch
         use-ffile-compilation-dir.patch
+        pipewire-do-not-typecheck-the-portal-session_handle.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         chromium-93-ffmpeg-4.4.patch
         chromium-94-ffmpeg-roll.patch
         unexpire-accelerated-video-decode-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('cabbba2e608c5ec110850b14ee5fead2608c44447a52edb80e2ba8261be3dc5b'
+sha256sums=('3eef88d745e6ddaeaf507358f1510482d6f399cf335061bb1226a5f7120061fd'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '22692bddaf2761c6ddf9ff0bc4722972bca4d4c5b2fd3e5dbdac7eb60d914320'
+            'bc6373f2470a9e6d947a4deaee0612f730112f69552b933c54bb6e60b82dd6f1'
+            '074b32078b9e53fd9b33709ce5785c120eb0346b015a93921897caed4f95f7b6'
+            'd9002f1e33390c3e770637773c81be6731584b18f68f086e955bcc3f66f4510d'
             'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
             'd53da216538f2e741a6e048ed103964a91a98e9a3c10c27fdfa34d4692fdc455'
             '921010cd8fab5f30be76c68b68c9b39fac9e21f4c4133bb709879592bbdf606e'
+            '1889d890ff512a8b82a0f88972e78c78131177d8034750ff53577dfad99b3e3e'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
             '56acb6e743d2ab1ed9f3eb01700ade02521769978d03ac43226dec94659b3ace'
@@ -117,6 +123,10 @@ prepare() {
   # https://crbug.com/1207478
   patch -Np0 -i ../unexpire-accelerated-video-decode-flag.patch
 
+  # Upstream fixes
+  patch -Np1 -i ../maldoca-depend-on-zlib-instead-of-headers-only.patch
+  patch -Np1 -i ../chromium-95-harfbuzz-3.patch
+
   # Revert transition to -fsanitize-ignorelist (needs newer clang)
   patch -Rp1 -i ../replace-blacklist-with-ignorelist.patch
 
@@ -124,12 +134,14 @@ prepare() {
   patch -Rp1 -i ../add-a-TODO-about-a-missing-pnacl-flag.patch
   patch -Rp1 -i ../use-ffile-compilation-dir.patch
 
+  # Fix desktop sharing via Pipewire with xdg-desktop-portal 1.10
+  patch -Np1 -d third_party/webrtc <../pipewire-do-not-typecheck-the-portal-session_handle.patch
+
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../patches/chromium-90-ruy-include.patch
-  patch -Np1 -i ../patches/chromium-94-CustomSpaces-include.patch
+  patch -Np1 -i ../patches/chromium-95-quiche-include.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
