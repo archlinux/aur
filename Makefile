@@ -13,6 +13,7 @@ update:
 	makepkg --printsrcinfo > .SRCINFO
 	git add ./PKGBUILD ./.SRCINFO
 	git commit -m "Bump version"
+	git push && git push aur master
 
 check:
 	./checkupdate.sh --dry-run
