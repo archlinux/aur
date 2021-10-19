@@ -1,7 +1,7 @@
 # Maintainer: Remi Gacogne <rgacogne(at)archlinux(dot)org>
 _pkgbase=lkrg
 pkgname=lkrg-dkms-git
-pkgver=r378.dd7fcec
+pkgver=r382.8fd4806
 pkgrel=1
 pkgdesc='Linux Kernel Runtime Guard (DKMS)'
 arch=('any')
@@ -23,9 +23,9 @@ pkgver() {
 
 prepare() {
   # Set version
-  cp ../dkms.conf "${_pkgbase}-${pkgver}/"
+  cp dkms.conf "${pkgname}/"
   sed -e "s/@PKGVER@/${pkgver}/" \
-      -i "${_pkgbase}-${pkgver}/dkms.conf"
+      -i "${pkgname}/dkms.conf"
 }
 
 package() {
@@ -36,5 +36,5 @@ package() {
   find "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/" -type d -exec chmod 755 {} \;
 
   # Copy OUR dkms.conf
-  install -Dm644 "${_pkgbase}-${pkgver}/dkms.conf" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+  install -Dm644 "${pkgname}/dkms.conf" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 }
