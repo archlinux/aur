@@ -1,7 +1,7 @@
 # Maintainer: Dylan Delgado <dylan1496 at live dot com>
 
 pkgname=ipython-git
-pkgver=7.12.0.r667.gd737c3250
+pkgver=7.12.0.r1042.g4e5c2e243
 pkgrel=1
 pkgdesc="An enhanced Interactive Python shell - git version"
 arch=('any')
@@ -20,7 +20,7 @@ provides=('ipython')
 # new optional thing: ipyparallel
 
 source=("git://github.com/ipython/ipython.git"
-        "https://www.packal.org/sites/default/files/public/styles/icon_large/public/workflow-files/nkeimipynbworkflow/icon/icon.png")
+        "ipython.png")
 md5sums=('SKIP'
          '2901d65f1b1fe354e72850085cd1c072')
 _pkgname=ipython
@@ -44,7 +44,7 @@ package() {
   install -Dm644 ipython.desktop "$pkgdir/usr/share/applications/ipython.desktop"
   #install -Dm644 ipython-qtconsole.desktop "$pkgdir/usr/share/applications/ipython-qtconsole.desktop"
   # FS#47046
-  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/ipython.png"
+  install -Dm644 "$srcdir/ipython.png" "$pkgdir/usr/share/pixmaps/ipython.png"
 
   #cd $srcdir/ipython-$pkgver/IPython/qt/console/resources/icon/
   #install -Dm644 IPythonConsole.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/ipython.svg"
