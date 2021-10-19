@@ -1,0 +1,12 @@
+pkgbase = maqao-bin
+	pkgdesc = MAQAO - Modular Assembly Quality Analyzer and Optimizer
+	pkgver = 2.14.1
+	pkgrel = 1
+	url = http://www.maqao.org
+	arch = x86_64
+	license = LGPL3
+	conflicts = maqao
+	source = http://www.maqao.org/release/maqao.intel64.2.14.1.tar.xz
+	md5sums = 6674c7d4b49ada24fc675e9da4110d78
+
+pkgname = maqao-bin
