@@ -3,7 +3,7 @@
 pkgname=bandwidthd
 _repouser=post-factum
 _reponame=bandwidthd
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 epoch=1
 pkgdesc="Daemon for graphing traffic of subnet machines"
@@ -14,7 +14,7 @@ depends=(sqlite libpcap libpng gd nginx)
 
 source=(${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/${_repouser}/${_reponame}/-/archive/v${pkgver}/${_reponame}-v${pkgver}.tar.bz2)
 
-sha256sums=('03c5267825e0f0fa49ecc6ff4374c78f011628dbf60bda0c30bbefd664d5025d')
+sha256sums=('639a3ae5bed15aac9b2de8495bc8c9ca91bf5bd70dc114dfef1e43af043e9608')
 
 backup=('etc/bandwidthd/bandwidthd.conf'
 		'etc/bandwidthd/bandwidthd-webui.conf')
