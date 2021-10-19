@@ -3,22 +3,23 @@
 # Maintainer: Xenhat Hex (me@xenh.at)
 
 
-pkgname=alchemy-next-viewer
+pkgname=alchemy-next-viewer-git
 pkgver=6.4.23.47436
 pkgrel=1
-pkgdesc="This is the next generation of Alchemy Viewer!"
+pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - git version"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
 depends=(dbus-glib glu gtk3 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
 optdepends=(
-  'alsa-lib: for ALSA support'
-  'freealut: for OpenAL support'
-  'lib32-libidn11: for voice support'
-  'libpulse: for PulseAudio support'
-  'mesa-libgl: For Intel, Radeon, Nouveau support'
-  'nvidia-libgl: for NVIDIA support'
-  'nvidia-utils: for NVIDIA support')
+  'alsa-lib: ALSA support'
+  'freealut: OpenAL support'
+  'gamemode: Gamemode support'
+  'lib32-libidn11: SLVoice support'
+  'libpulse: PulseAudio support'
+  'mesa-libgl: Intel, Radeon, Nouveau support'
+  'nvidia-libgl: NVIDIA support'
+  'nvidia-utils: NVIDIA support')
 makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
 conflicts=('alchemy')
 provides=('alchemy-next')
@@ -41,7 +42,6 @@ prepare() {
 		fi
 	fi
 	pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
-	git reset --hard 52025a7c
 	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON
 }
 
