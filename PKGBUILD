@@ -4,7 +4,7 @@
 
 
 pkgname=alchemy-next-viewer-git
-pkgver=6.4.23.47436
+pkgver=6.4.24.47527
 pkgrel=1
 pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - git version"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support')
 makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
-conflicts=('alchemy')
+conflicts=('alchemy-next-viewer')
 provides=('alchemy-next')
 
 source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git' 'alchemy-next.desktop')
@@ -42,7 +42,7 @@ prepare() {
 		fi
 	fi
 	pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
-	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON
+	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON -DVIEWER_CHANNEL="Alchemy Test"
 }
 
 build() {
@@ -54,13 +54,13 @@ package() {
 	mkdir -p "$pkgdir/opt"
 	mkdir -p "$pkgdir/usr/share/applications"
 
-	mv "${pkgname}/build-linux-64/newview/packaged" "$pkgdir/opt/alchemy-next"
+	mv "${pkgname}/build-linux-64/newview/packaged" "$pkgdir/opt/alchemy-next-viewer"
 
 	install -Dm644 "alchemy-next.desktop" "$pkgdir/usr/share/applications/alchemy-next.desktop"
 }
-sha256sums=('SKIP'
-            'd4eb1a048c26a17d5ab64c8961c1340007ba82502b88638cdf89f0af32ee3d50')
-b2sums=('SKIP'
-        '479bfaa80a807e81bda2a27fc44a330feb996272e5b99f4581ef516946d7d67fc20be8eb5f2ae41a2dc5afbf3dd448cb582c5fa3e123e83c92945aa35f2f009f')
 md5sums=('SKIP'
-         '6d65e849f37a05b8684d99185feaa07c')
+         '59114df2d7f081aad499ad5b7d8401b7')
+sha256sums=('SKIP'
+            '28f928d7620818db47e7903722173a49daf36973ae51091e9ab9845211448864')
+b2sums=('SKIP'
+        'da5639043f1854d9d2dc884fd62a4239fdc7ca2467cd95cfcb7f6bc73ac93e73cc0229e16000378efa22d646e3756a9495d2d8bb8c76049f77e4731c2a997729')

@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Alchemy
+Name=Alchemy (git build)
 Comment=Client for the On-line Virtual World, Second Life
-Exec=/opt/alchemy-next/etc/../alchemy
-Icon=/opt/alchemy-next/etc/../alchemy_icon.png
+Exec=/opt/alchemy-next-viewer/alchemy
+Icon=/opt/alchemy-next-viewer/alchemy_icon.png
 Terminal=false
 Type=Application
 Categories=Game;Simulation;
