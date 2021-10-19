@@ -8,16 +8,16 @@ ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 _pkgname=pamac
 pkgname=pamac-all-git
-pkgver=10.2.0beta.r0.gefeee38
-pkgrel=3
-_pkgfixver=10.2.0
+pkgver=10.2.2.r1.g125033f
+pkgrel=1
+_pkgfixver=10.2.2
 epoch=1
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('libnotify' 'libpamac-full-dev>=11.1.0beta' 'libhandy')
+depends=('libnotify' 'libpamac-full' 'libhandy')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
 conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git')
