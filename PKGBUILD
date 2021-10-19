@@ -2,7 +2,7 @@
 # Maintainer: Alexandru Cheltutior <acrandom at pm dot me>
 pkgname=protonvpn-cli
 _gitpkgname=linux-cli
-pkgver=3.9.1
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Official ProtonVPN Command Line Interface, maintained by the ProtonVPN team."
 arch=("any")
@@ -12,7 +12,7 @@ groups=("ProtonVPN")
 depends=("python-protonvpn-nm-lib" "python-pythondialog")
 makedepends=("python-setuptools")
 source=("https://github.com/ProtonVPN/linux-cli/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('067167836c6a19044ca6a40431cccabafb9642c4f9f70487d0192bfd4776704f')
+sha256sums=('617d9738ec4ab42c80de95bf6dcf205735a07b22c2d7659d2d689a03ea763b8a')
 validpgpkeys=("A884 41BD 4864 F95B EE08  E63A 71EB 4740 1994 0E11")
 
 build() {
