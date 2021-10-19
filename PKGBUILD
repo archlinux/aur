@@ -2,8 +2,8 @@
 
 _pkgname=bip39
 pkgname=$_pkgname-git
-pkgver=r10.2a4bf1e
-pkgrel=2
+pkgver=r14.9908de7
+pkgrel=1
 pkgdesc="Generate mnemonic codes according to BIP-0039"
 arch=('x86_64')
 depends=('libsodium')
