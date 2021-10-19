@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -euo pipefail
+#set -x
+#set -x 将在命令执行前打印出命令 方便调试
+
+set -e
+# -e 遇到错误将停止 
+set -o pipefail
+# pipefail set -e有一个例外情况，就是不适用于管道命令。所谓管道命令，就是多个子命令通过管道运算符（|）组合成为一个大的命令。Bash 会把最后一个子命令的返回值，作为整个命令的返回值。也就是说，只要最后一个子命令不失败，管道命令总是会执行成功，因此它后面命令依然会执行，set -e就失效了。
+
+set  -u
+# -u 遇到不存在的变量 将报错
+
+## 写法一
+#set -euxo pipefail
+## 写法二
+#set -eux
+#set -o pipefail
+#这两种写法建议放在所有 Bash 脚本的头部。另一种办法是在执行 Bash 脚本的时候，从命令行传入这些参数。
+#$ bash -euxo pipefail script.sh
+
+function check_ip 
+{
+    IP=$1
+    VALID_CHECK=$(echo $IP|awk -F. '$1<=255&&$2<=255&&$3<=255&&$4<=255{print "yes"}')
+    if echo $IP|grep -E "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}">/dev/null; then
+        if [ ${VALID_CHECK:-no} == "yes" ]; then
+            #echo "IP $IP available."
+            return 0
+        else
+           # echo "IP $IP not available!"
+             return 0
+        fi
+    else
+        # echo "IP format error!"
+        return 2
+    fi
+}
+function addip
+{
+   set +e
+	ip=$1
+	 
+  check_ip    $ip
+
+  err=$?
+if [ $err -eq 0 ]
+then  
+	#  echo  " route add -net  $ip gw 172.25.1.5 "
+	   ip -4 route add   $ip  dev $dev 2>/dev/null
+#	  sudo route add -net  $ip gw 172.25.1.5
+   err=$?
+    if [ $err -eq 2 ]
+    	 then
+    	  return  0;
+    else
+    	if [ $err -eq 0 ]
+    	then
+    			return  0;
+    	else
+    		echo ErrorCode:$err
+		echo ip: $ip
+    		exit $err
+    		return  $err  
+    	fi  	  
+   fi
+else
+	#echo  " ip -6 route add   $ip  via  fc00::5 "
+  ip -6 route add   $ip  dev $dev  2>/dev/null
+   err=$?
+    if [ $err -eq 2 ]
+    	 then
+    	  return  0;
+    else
+    	if [ $err -eq 0 ]
+    	then
+    			return  0;
+    	else
+    		echo ErrorCode:$err
+		echo ip: $ip
+    		exit $err
+    		return  $err  
+    	fi  	  
+   fi
+ fi
+
+ 
+
+
+
+   set -e  
+}
+
+set -e
+
+echo china-ip
+dev=$1
+ filename="/usr/share/chnroutes-alike/chnroutes-alike.txt"
+
+ cat $filename | while read line
+    do
+ #           echo $line
+	   set +e
+	   ipp=$(echo "$line" | grep "#")
+	   err=$?
+	   if [ $err -ne 0 ]
+	   then 
+		   set -e
+#		   addip "$line"
+if [[ ~$line = ~"" || ~$line = ~"^\s\+#" ]]
+then 
+#	echo $line
+set -e
+else
+	set -e
+	addip $line
+fi
+	   fi
+
+    done
+exit
+  for line in $(<$filename); 
+  do  
+  addip $line
+ done
+  
+  
+
+

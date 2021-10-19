@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -euo pipefail
+#set -x
+#set -x 将在命令执行前打印出命令 方便调试
+
+set -e
+# -e 遇到错误将停止 
+set -o pipefail
+# pipefail set -e有一个例外情况，就是不适用于管道命令。所谓管道命令，就是多个子命令通过管道运算符（|）组合成为一个大的命令。Bash 会把最后一个子命令的返回值，作为整个命令的返回值。也就是说，只要最后一个子命令不失败，管道命令总是会执行成功，因此它后面命令依然会执行，set -e就失效了。
+
+set  -u
+# -u 遇到不存在的变量 将报错
+
+## 写法一
+#set -euxo pipefail
+## 写法二
+#set -eux
+#set -o pipefail
+#这两种写法建议放在所有 Bash 脚本的头部。另一种办法是在执行 Bash 脚本的时候，从命令行传入这些参数。
+#$ bash -euxo pipefail script.sh
+
+echo down google ip 
+curl http://vps.aihlp.com/gfw/google-ip -o gfw/google-ip-tmp
+echo down github ip 
+curl http://vps.aihlp.com/gfw/github-ip -o gfw/github-ip-tmp
+echo down gfwlist ip 
+curl http://vps.aihlp.com/gfw/gfwlist-ip -o gfw/gfwlist-ip-tmp
+echo down dnsmasq  
+curl http://vps.aihlp.com/gfw/dnsmasq_gfwlist -o gfw/dnsmasq_gfwlist_Client-tmp.conf
+umask 0022
+chmod 744 -R gfw
+
+set +e
+pacman -S chnroutes-alike-git --noconfirm
+
+./compare-file-by-sha512 gfw/google-ip-tmp gfw/google-ip
+err=$?
+start=0
+if [ $err -ne 0 ]
+then
+	mv gfw/google-ip-tmp gfw/google-ip
+        start=1
+	echo update ggoogle-ip
+fi
+
+./compare-file-by-sha512 gfw/github-ip-tmp gfw/github-ip
+err=$?
+if [ $err -ne 0 ]
+then
+	mv gfw/github-ip-tmp gfw/github-ip
+	echo update github-ip
+        start=1
+fi
+
+./compare-file-by-sha512 gfw/gfwlist-ip-tmp gfw/gfwlist-ip
+err=$?
+if [ $err -ne 0 ]
+then
+	echo update gfwlist-ip
+	mv gfw/gfwlist-ip-tmp gfw/gfwlist-ip
+	start=1
+fi
+
+
+./compare-file-by-sha512 gfw/dnsmasq_gfwlist_Client-tmp.conf gfw/dnsmasq_gfwlist_Client.conf
+err=$?
+if [ $err -ne 0 ]
+then
+	echo update dnsmasq
+	mv gfw/dnsmasq_gfwlist_Client-tmp.conf gfw/dnsmasq_gfwlist_Client.conf
+	echo restart dnsmasq
+	systemctl restart dnsmasq
+fi
+
+if [ $start==1 ]
+then
+      echo restart wg-quick@wg
+      systemctl restart wg-quick@wg
+fi
+
+echo wg restart OK
+
