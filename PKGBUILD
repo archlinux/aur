@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='rage'
 pkgname="rust-$_pkgname-bin"
-pkgver='0.6.0'
+pkgver='0.7.0'
 pkgrel='1'
 pkgdesc='Rust implementation of the age encryption tool - binary version'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -18,9 +18,9 @@ source_armv7h=("$pkgname-$pkgver-$pkgrel-armv7h.deb::$_releaseurl/${_pkgname}_${
 source_aarch64=("$pkgname-$pkgver-$pkgrel-aarch64.deb::$_releaseurl/${_pkgname}_${pkgver}_arm64.deb")
 source=("$pkgname-$pkgver-$pkgrel-LICENSE-MIT::$url/raw/v$pkgver/LICENSE-MIT")
 sha256sums=('fe56c030c2d8c3404a37fe711cebb27ebea13d0aacf7e3524db4198335ad8cd1')
-sha256sums_x86_64=('30f6be2d606c8c7261a18e7102455a0f7c13f80aeede2038b4215fe4290ea92e')
-sha256sums_armv7h=('ceb0b9eaae33ece441b16188498744ad3232bd4d2a3e3fa1a6cbf69d2bf0359f')
-sha256sums_aarch64=('f9f27e6f3fc79cee915609bae327649452f220e2585b25568605d209ee895fd5')
+sha256sums_x86_64=('6cea62a228f421ca02088edceec946feb08fa72d4154cf2bed4b1148f65bc766')
+sha256sums_armv7h=('0e6379dc60ff1952947fae409c8ac3ab32983ae917ebdb4e435b0fddc7d79f6c')
+sha256sums_aarch64=('726d0ee510a5a7df46e91023dfd4d00b36f4c357818baf4a0b258b17046b8d8b')
 
 _sourcedirectory="$pkgname-$pkgver-$pkgrel"
 
