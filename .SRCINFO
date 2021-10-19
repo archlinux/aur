@@ -1,0 +1,18 @@
+pkgbase = supercollider-portedplugins-git
+	pkgdesc = SuperCollider plugins ported and remixed from other projects
+	pkgver = r279.61a2bc5
+	pkgrel = 1
+	url = https://github.com/madskjeldgaard/portedplugins
+	arch = any
+	groups = pro-audio
+	groups = supercollider-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = supercollider-headers-git
+	depends = supercollider
+	conflicts = supercollider-mkplugins
+	source = supercollider-portedplugins-git::git+https://github.com/madskjeldgaard/portedplugins.git
+	md5sums = SKIP
+
+pkgname = supercollider-portedplugins-git
