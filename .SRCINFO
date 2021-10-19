@@ -1,0 +1,17 @@
+pkgbase = supercollider-cd-skip-git
+	pkgdesc = A CD skipping UGen for SuperCollider
+	pkgver = r8.2b5af29
+	pkgrel = 1
+	url = https://github.com/nhthn/supercollider-cd-skip
+	arch = any
+	groups = pro-audio
+	groups = supercollider-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = supercollider-headers-git
+	depends = supercollider
+	source = supercollider-cd-skip-git::git+https://github.com/nhthn/supercollider-cd-skip.git
+	md5sums = SKIP
+
+pkgname = supercollider-cd-skip-git
