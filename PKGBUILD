@@ -4,7 +4,7 @@
 _pkgname=freetube
 pkgname=${_pkgname}-bin
 pkgver=0.15.0
-pkgrel=2
+pkgrel=1
 pkgdesc="An open source desktop YouTube player built with privacy in mind."
 arch=('x86_64' 'aarch64')
 url="https://github.com/FreeTubeApp/FreeTube"
