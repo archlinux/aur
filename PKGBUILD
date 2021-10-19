@@ -1,102 +1,351 @@
-# Maintainer: E-Hern Lee <ehern.lee@gmail.com>
+# Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
+# Contributor: E-Hern Lee <ehern.lee@gmail.com>
 # Contributor: anon@sansorgan.es
 # Contributor: heavysink <winstonwu91 at gmail>
 
 pkgname=proton
-_pkgver=6.3-7
-pkgver=${_pkgver//-/.}
+_srctag=6.3-7
+_commit=
+pkgver=${_srctag//-/.}
+_geckover=2.47.2
+_monover=6.3.0
+_dxvkver=1.9.2
 pkgrel=1
+epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
-arch=('x86_64')
-url="https://github.com/ValveSoftware/Proton/"
-license=('BSD')
-groups=()
+url="https://github.com/ValveSoftware/Proton"
+arch=(x86_64 x86_64_v3)
+options=(!staticlibs !lto)
+license=('custom')
+
 depends=(
-	'wine-valve'
+  attr             lib32-attr
+  fontconfig       lib32-fontconfig
+  lcms2            lib32-lcms2
+  libxml2          lib32-libxml2
+  libxcursor       lib32-libxcursor
+  libxrandr        lib32-libxrandr
+  libxdamage       lib32-libxdamage
+  libxi            lib32-libxi
+  gettext          lib32-gettext
+  freetype2        lib32-freetype2
+  glu              lib32-glu
+  libsm            lib32-libsm
+  gcc-libs         lib32-gcc-libs
+  libpcap          lib32-libpcap
+  'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
+  desktop-file-utils
+  python
+  steam-native-runtime
 )
-makedepends=(
-	'vulkan-headers'
+
+makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
+  git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
+  glslang vulkan-headers
+  giflib                lib32-giflib
+  libpng                lib32-libpng
+  gnutls                lib32-gnutls
+  libxinerama           lib32-libxinerama
+  libxcomposite         lib32-libxcomposite
+  libxmu                lib32-libxmu
+  libxxf86vm            lib32-libxxf86vm
+  libldap               lib32-libldap
+  mpg123                lib32-mpg123
+  openal                lib32-openal
+  v4l-utils             lib32-v4l-utils
+  alsa-lib              lib32-alsa-lib
+  libxcomposite         lib32-libxcomposite
+  mesa                  lib32-mesa
+  mesa-libgl            lib32-mesa-libgl
+  opencl-icd-loader     lib32-opencl-icd-loader
+  libxslt               lib32-libxslt
+  libpulse              lib32-libpulse
+  libva                 lib32-libva
+  gtk3                  lib32-gtk3
+  gst-plugins-base-libs lib32-gst-plugins-base-libs
+  vulkan-icd-loader     lib32-vulkan-icd-loader
+  'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
+  libcups               lib32-libcups
+  rust                  lib32-rust-libs
+  sane
+  libgphoto2
+  gsm
+  ffmpeg
+  samba
+  opencl-headers
 )
+
+optdepends=(
+  giflib                lib32-giflib
+  libpng                lib32-libpng
+  libldap               lib32-libldap
+  gnutls                lib32-gnutls
+  mpg123                lib32-mpg123
+  openal                lib32-openal
+  v4l-utils             lib32-v4l-utils
+  libpulse              lib32-libpulse
+  alsa-plugins          lib32-alsa-plugins
+  alsa-lib              lib32-alsa-lib
+  libjpeg-turbo         lib32-libjpeg-turbo
+  libxcomposite         lib32-libxcomposite
+  libxinerama           lib32-libxinerama
+  ncurses               lib32-ncurses
+  opencl-icd-loader     lib32-opencl-icd-loader
+  libxslt               lib32-libxslt
+  libva                 lib32-libva
+  gtk3                  lib32-gtk3
+  gst-plugins-base-libs lib32-gst-plugins-base-libs
+  vulkan-icd-loader     lib32-vulkan-icd-loader
+  sane
+  libgphoto2
+  gsm
+  ffmpeg
+  cups
+  samba           dosbox
+)
+
+makedepends=(${makedepends[@]} ${depends[@]})
+provides=('proton-native')
+conflicts=('proton-native')
+#install=${pkgname}.install
 source=(
-	"https://github.com/ValveSoftware/Proton/archive/$pkgname-$_pkgver.tar.gz"
-	"wined3d-interop.h"
+    proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-${_srctag}
+    wine-valve::git+https://github.com/ValveSoftware/wine.git
+    dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
+    openvr::git+https://github.com/ValveSoftware/openvr.git
+    liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
+    FAudio::git+https://github.com/FNA-XNA/FAudio.git
+    gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
+    gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
+    gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
+    gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
+    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
+    OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
+    dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
+    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
+    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
+    Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
+    https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
+    https://raw.githubusercontent.com/Sporif/dxvk-async/${_dxvkver}/dxvk-async.patch
+    wine-winevulkan_fsr.patch
+    wine-more_8x5_res.patch
+    proton-sanitize_makefile.patch
+    proton-disable_lock.patch
+    proton-user_compat_data.patch
+    proton-proton_native_transition.patch
 )
-sha512sums=(
-	'fa7b411d3729530184d36c8756401a4bf063e6d9df919425936c7427a8964bc562f1bdbefcf1dc1a3e8fcf77760b893d69ed5cb5c7d4bba4916108de868c98f4'
-	'f2caacca6bd55030331de7d017d85772b09e5ad9e5fdbfc6343f303ac5447595660fd3f83ba2a177ef321d9b54335245bac548ca804e6e3e9346690f29d55ad0'
+noextract=(
+    wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
+    wine-mono-${_monover}-x86.tar.xz
 )
 
 prepare() {
-	cd "Proton-$pkgname-$_pkgver"
-	cp $srcdir/wined3d-interop.h vrclient_x64/vrclient_x64/
+    # I know this is fugly and it should NOT be done
+    # but the afdko package from AUR breaks regularly.
+    # Install it from pip in a virtualenv
+    virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
+    source build_venv/bin/activate
+    pip install --no-cache-dir afdko
+    pip install --no-cache-dir pefile
+
+    [ ! -d gecko ] && mkdir gecko
+    mv wine-gecko-${_geckover}-x86{,_64}.tar.xz gecko/
+
+    [ ! -d mono ] && mkdir mono
+    mv wine-mono-${_monover}-x86.tar.xz mono/
+
+    [ ! -d build ] && mkdir build
+    cd proton
+
+    _submodules=(
+        wine-valve::wine
+        dxvk-valve::dxvk
+        openvr
+        liberation-fonts::fonts/liberation-fonts
+        FAudio
+        gstreamer
+        gst-plugins-base
+        gst-plugins-good
+        gst-orc
+        vkd3d-proton
+        OpenXR-SDK
+        dxvk-nvapi
+    )
+
+    for submodule in "${_submodules[@]}"; do
+        git submodule init "${submodule#*::}"
+        git config submodule."${submodule#*::}".url "$srcdir"/"${submodule%::*}"
+        git submodule update "${submodule#*::}"
+    done
+
+    pushd vkd3d-proton
+        for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
+            git submodule init "${submodule}"
+            git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
+            git submodule update "${submodule}"
+        done
+        pushd subprojects/dxil-spirv
+            git submodule init third_party/spirv-headers
+            git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
+            git submodule update third_party/spirv-headers
+        popd
+    popd
+
+    pushd dxvk-nvapi
+        git submodule init external/Vulkan-Headers
+        git config submodule.external/Vulkan-Headers.url "$srcdir"/Vulkan-Headers
+        git submodule update external/Vulkan-Headers
+    popd
+
+    pushd media-converter
+        export RUSTUP_TOOLCHAIN=stable
+        export CARGO_HOME="${srcdir}"/build/.cargo
+        cargo update
+        cargo fetch --locked --target "i686-unknown-linux-gnu"
+        cargo fetch --locked --target "x86_64-unknown-linux-gnu"
+    popd
+
+    pushd wine
+        # Add FSR for fshack
+        patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
+        # Adds more 16:10 resolutions for use with FSR
+        patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+    popd
+
+    pushd dxvk
+        # Uncomment to enable dxvk async patch.
+        # Enable at your own risk. If you don't know what it is,
+        # and its implications, leave it as is. You have been warned.
+        # I am not liable if anything happens to you by using it.
+        patch -p1 -i "$srcdir"/dxvk-async.patch
+    popd
+
+    patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
+    patch -p1 -i "$srcdir"/proton-disable_lock.patch
+    patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 }
 
 build() {
-	cd "Proton-$pkgname-$_pkgver"
+    source build_venv/bin/activate
 
-	export CXXFLAGS="$CXXFLAGS -Wno-attributes"
-	export WINEMAKEFLAGS="--nosource-fix --nolower-include --nodlls --nomsvcrt --dll -ldl"
-	export WINEMAKEFLAGS32="$WINEMAKEFLAGS --wine32"
-	export LDFLAGS="$LDFLAGS -L/usr/lib32/wine -lntdll.dll"
+    cd build
+    ROOTLESS_CONTAINER="" \
+    ../proton/configure.sh \
+        --container-engine="" \
+        --proton-sdk-image="" \
+        --steam-runtime=native \
+        --no-proton-sdk \
+        --build-name="${pkgname}"
 
-	# The build script provided has so much cruft that it's easier to make everything manually
-	mkdir -p build/lsteamclient.win32
-	cp -a lsteamclient/* build/lsteamclient.win32
-	cd build/lsteamclient.win32
-	winemaker $WINEMAKEFLAGS32 -DSTEAM_API_EXPORTS .
-	make
-	cd ../..
+    # Export CFLAGS used by upstream
+    # -O2 is adjusted to -O3 since AVX is disabled
+    # This overrides CFLAGS from makepkg.conf, if you comment these you are on your own
+    # If you want the "best" possbile optimizations for your system you can use
+    # `-march=native` and remove the `-mtune=core-avx2` option.
+    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
 
-	mkdir -p build/lsteamclient.win64
-	cp -a lsteamclient/* build/lsteamclient.win64
-	cd build/lsteamclient.win64
-	winemaker $WINEMAKEFLAGS -DSTEAM_API_EXPORTS .
-	make
-	cd ../..
+    # If using -march=native and the CPU supports AVX, launching a d3d9
+    # game can cause an Unhandled exception. The cause seems to be the
+    # combination of AVX instructions and tree vectorization (implied by O3),
+    # all tested archictures from sandybridge to haswell are affected.
+    # Disabling AVX (and AVX2 as a side-effect).
+    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
+    # crashing with AVX regardless, but 64bit applications worked just fine.
+    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
+    # AVX2 seems to degrade performance. So disregard the above.
+    # Relevant Wine issues
+    # https://bugs.winehq.org/show_bug.cgi?id=45289
+    # https://bugs.winehq.org/show_bug.cgi?id=43516
+    export CFLAGS+=" -mno-avx -mno-avx2"
+    export CXXFLAGS+=" -mno-avx -mno-avx2"
+    # Filter known bad flags before applying optimizations
+    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
+    # https://github.com/Joshua-Ashton/d9vk/issues/476
+    #export CFLAGS+=" -fno-stack-protector"
+    export CFLAGS="${CFLAGS// -fstack-protector*([\-all|\-strong])/}"
+    #export CXXFLAGS+=" -fno-stack-protector"
+    export CXXFLAGS="${CXXFLAGS// -fstack-protector*([\-all|\-strong])/}"
+    # From wine-staging PKGBUILD
+    # Doesn't compile with these flags in MingW so remove them.
+    # They are also filtered in Wine PKGBUILDs so remove them
+    # for winelib versions too.
+    # Doesn't compile without remove these flags as of 4.10
+    export CFLAGS="${CFLAGS/ -fno-plt/}"
+    export CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
+    export LDFLAGS="${LDFLAGS/,-z,now/}"
+    # MingW Wine builds fail with relro
+    export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
-	# Currently depends on the custom bundled wine
-	mkdir -p build/vrclient.win32
-	cp -a vrclient_x64/* build/vrclient.win32
-	rm -rf build/vrclient.win32/vrclient
-	mv build/vrclient.win32/vrclient_x64 build/vrclient.win32/vrclient
-	cd build/vrclient.win32/vrclient
-	mv -u vrclient_x64.spec vrclient.spec
-	winemaker -I.. $WINEMAKEFLAGS32 .
-	CXXFLAGS="$CXXFLAGS --std=c++0x" make
-	winebuild --dll --fake-module -E vrclient.spec -o vrclient.dll.fake
-	cd ../../..
-
-	mkdir -p build/vrclient.win64
-	cp -a vrclient_x64/* build/vrclient.win64
-	cd build/vrclient.win64/vrclient_x64
-	winemaker -I.. $WINEMAKEFLAGS .
-	CXXFLAGS="$CXXFLAGS --std=c++0x" make
-	winebuild --dll --fake-module -E vrclient_x64.spec -o vrclient_x64.dll.fake
+    export RUSTUP_TOOLCHAIN=stable
+    export WINEESYNC=0
+    export WINEFSYNC=0
+    SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
+        make -j1 dist
 }
 
 package() {
-	cd "Proton-$pkgname-$_pkgver"
+    cd build
 
-	install -d -m755 $pkgdir/usr/share/licenses/$pkgname
-	install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-	install -m644 LICENSE.proton $pkgdir/usr/share/licenses/$pkgname/LICENSE.proton
-	install -m644 dist.LICENSE $pkgdir/usr/share/licenses/$pkgname/dist.LICENSE
+    local _compatdir="$pkgdir/usr/share/steam/compatibilitytools.d"
+    mkdir -p "$_compatdir"
+    cp -rf --no-dereference --preserve=mode,links dist "$_compatdir/${pkgname}"
 
-	install -d -m755 $pkgdir/usr/share/doc/$pkgname
-	install -m644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
+    mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
+    mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
+        "$pkgdir/usr/share/licenses/${pkgname}"
 
-	install -d -m755 $pkgdir/usr/lib32/wine
-	install -m755 build/lsteamclient.win32/lsteamclient.dll.so $pkgdir/usr/lib32/wine/
-	install -m755 build/vrclient.win32/vrclient/vrclient.dll.so $pkgdir/usr/lib32/wine/
+    cd "$_compatdir/${pkgname}"
+    # Add old tool name in compatibilitytool.vdf
+    patch -p1 -i "$srcdir"/proton-proton_native_transition.patch
 
-	install -d $pkgdir/usr/lib32/wine/fakedlls
-	install -m644 build/vrclient.win32/vrclient/vrclient.dll.fake $pkgdir/usr/lib32/wine/fakedlls/vrclient.dll
+    cd "$_compatdir/${pkgname}/dist"
+    i686-w64-mingw32-strip --strip-unneeded \
+        $(find lib/wine \( -iname fakedlls \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
+    x86_64-w64-mingw32-strip --strip-unneeded \
+        $(find lib64/wine \( -iname fakedlls \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
 
-	install -d -m755 $pkgdir/usr/lib/wine
-	install -m755 build/lsteamclient.win64/lsteamclient.dll.so $pkgdir/usr/lib/wine/
-	install -m755 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.so $pkgdir/usr/lib/wine/
+    local _geckodir="share/wine/gecko/wine-gecko-${_geckover}"
+    i686-w64-mingw32-strip --strip-unneeded \
+        $(find "$_geckodir"-x86 -iname "*.dll" -or -iname "*.exe")
+    x86_64-w64-mingw32-strip --strip-unneeded \
+        $(find "$_geckodir"-x86_64 -iname "*.dll" -or -iname "*.exe")
 
-	install -d $pkgdir/usr/lib/wine/fakedlls
-	install -m644 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.fake $pkgdir/usr/lib/wine/fakedlls/vrclient_x64.dll
+    local _monodir="share/wine/mono/wine-mono-${_monover}"
+    i686-w64-mingw32-strip --strip-unneeded \
+        $(find "$_monodir"/lib/mono -iname "*.dll" -or -iname "*.exe")
+    i686-w64-mingw32-strip --strip-unneeded \
+        "$_monodir"/lib/x86/*.dll \
+        $(find "$_monodir" -iname "*x86.dll" -or -iname "*x86.exe")
+    x86_64-w64-mingw32-strip --strip-unneeded \
+        "$_monodir"/lib/x86_64/*.dll \
+        $(find "$_monodir" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
+            'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
+            'eb67426ff60ed6395b70437e838883ee08b6189cad84faf036b1a4d7366a34e2'
+            '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
+            'b4e9c0c4959fcb3f7b7f25e35e5e0577dac5d54fe18e6edb15852a2a4196f2a2'
+            '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
+            '8399d0684a9c732bf405a37f1f3cc779435f2c68a8d042382e9e0538576ab854'
+            '8be5e0ae9f71d686c72ac094a4eaca14ea288276195d4c0c217a4f3974fbcc70'
+            '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
+            '958f8e69bc789cc8fbe58cb6c9fc62f065692c3c165f20b0c21133ce94bad736')
