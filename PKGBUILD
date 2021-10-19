@@ -2,16 +2,15 @@
 
 pkgname=nft-blackhole
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Script / Daemon to blocking IP in nftables by country and black lists'
 arch=('any')
 url='https://github.com/tomasz-c/nft-blackhole'
 license=('MIT')
 depends=('nftables' 'python-yaml')
-makedepends=()
 backup=('etc/nft-blackhole.conf')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tomasz-c/nft-blackhole/archive/v${pkgver}.tar.gz")
-sha256sums=('b492c1b406e5f58d35c4f2e05bed92626695c09b817fea0d33d2f3e10f3918f4')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tomasz-c/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('c1ab1a2ec8f65215be5420f357eeff2614617ae3d75015008e3e95e24863924b')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
