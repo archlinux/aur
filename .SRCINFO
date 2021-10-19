@@ -1,7 +1,7 @@
 pkgbase = wolfssl
 	pkgdesc = small, fast, portable implementation of TLS/SSL for embedded devices to the cloud (formerly CyaSSL)
 	pkgver = 4.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wolfssl.com/
 	arch = i686
 	arch = x86_64
