@@ -2,16 +2,16 @@
 # Contributor: JP Cimalando <jp-dev at inbox dot ru>
 pkgname=ptcollab-git
 _pkgname=ptcollab
-pkgver=0.4.3.r40.g537c7e1
+pkgver=0.5.0.r0.gcbee073
 pkgrel=1
 epoch=
 pkgdesc="Multiplayer music editor"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://yuxshao.github.io/ptcollab/"
 license=('MIT')
 groups=()
 depends=('qt5-base' 'rtmidi')
-makedepends=('git' 'qt5-tools' 'qt5-multimedia' 'libogg')
+makedepends=('git' 'qt5-tools' 'qt5-multimedia' 'libogg' 'libvorbis')
 checkdepends=()
 optdepends=()
 provides=("$_pkgname")
@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  qmake ptcollab.pro CONFIG+=release PREFIX=/usr QMAKE_CXXFLAGS+='-D_FORTIFY_SOURCE=0'
+  qmake ptcollab.pro CONFIG+=release PREFIX=/usr QMAKE_CXXFLAGS+='-D_GLIBCXX_ASSERTIONS=0'
   make -j1 qmake_all
   make
 }
