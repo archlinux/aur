@@ -1,7 +1,7 @@
 pkgbase = lcj
 	pkgdesc = All tools for Lcj
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	arch = any
 	groups = lcj
 	license = GPL3
@@ -12,6 +12,8 @@ pkgbase = lcj
 	depends = pkgbuild-introspection
 	depends = pkgfile
 	source = ipmac
+	source = makesrcinfo
 	sha512sums = 8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd
+	sha512sums = 75978d30a68de00cb50c23ba882dd73d9f365497025aacc271375249e7dd4aaff34732ced2ed1cbf2fc64fc3421b2fefc2ec64b16ef068e40d4343894b8c8bfb
 
 pkgname = lcj

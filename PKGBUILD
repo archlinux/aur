@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=9
+pkgrel=10
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -15,8 +15,13 @@ depends=('systemd-kexec' 'systemd-godns' 'git-tools' gfwlist-route pkgbuild-intr
 #	'util-linux: For lscpu'
 #)
 #source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-source=("ipmac")
-sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd')
+source=("ipmac"
+makesrcinfo
+)
+sha512sums=(
+'8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd'
+75978d30a68de00cb50c23ba882dd73d9f365497025aacc271375249e7dd4aaff34732ced2ed1cbf2fc64fc3421b2fefc2ec64b16ef068e40d4343894b8c8bfb
+)
 
 #Package files should follow these general directory guidelines:
 #/etc	System-essential configuration files
@@ -45,7 +50,8 @@ sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b
 
 package() {
 # make -C build DESTDIR="$pkgdir" install
-install  -Dm4711 ipmac  "$pkgdir/usr/bin/ipmac"
+install  -Dm4755 ipmac  "$pkgdir/usr/bin/ipmac"
+install  -Dm755 makesrcinfo  "$pkgdir/usr/bin/makesrcinfo"
 }
 
 groups=('lcj')
