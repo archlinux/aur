@@ -1,7 +1,7 @@
 pkgbase = yubico-piv-tool
 	pkgdesc = Tool to interact with the PIV applet on a YubiKey NEO
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://developers.yubico.com/yubico-piv-tool/
 	arch = aarch64
 	arch = armv7h
@@ -15,8 +15,8 @@ pkgbase = yubico-piv-tool
 	depends = pcsclite
 	depends = openssl
 	options = !libtool
-	source = https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-2.2.0.tar.gz
-	source = https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-2.2.0.tar.gz.sig
+	source = https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-2.2.1.tar.gz
+	source = https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-2.2.1.tar.gz.sig
 	validpgpkeys = 0A3B0262BCA1705307D5FF06BCA00FD4B2168C0A
 	validpgpkeys = 20EE325B86A81BCBD3E56798F04367096FBA95E8
 	validpgpkeys = B70D62AA6A31AD6B9E4F9F4BDC8888925D25CA7A
@@ -29,11 +29,8 @@ pkgbase = yubico-piv-tool
 	validpgpkeys = 355C8C0186CC96CBA49F9CD8DAA17C2953914D9D
 	validpgpkeys = 9E885C0302F9BB9167529C2D5CBA11E6ADC7BCD1
 	validpgpkeys = 7FBB6186957496D58C751AC20E777DD85755AA4A
-	validpgpkeys = EE90AE0D19774C8386628FAAB428949EF7914718
-	validpgpkeys = 9AA9BDB11BB1B99A21285A330664A76954265E8C
 	validpgpkeys = DCB904FAB343CFA719076EF79EA90242958E0658
-	md5sums = aa71993a96f483cfbec3f9ba717d9fc6
+	md5sums = fdd64e16da13c464cfb0c7999b407cec
 	md5sums = SKIP
 
 pkgname = yubico-piv-tool
-
