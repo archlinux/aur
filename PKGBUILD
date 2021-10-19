@@ -2,16 +2,16 @@
 
 pkgname=kwin-effects-yet-another-magic-lamp
 pkgver=5.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Just Yet Another Magic Lamp effect"
 arch=('x86_64')
 url="https://github.com/zzag/$pkgname"
 license=('GPL3')
 depends=('kwin>=5.23.0')
 makedepends=(extra-cmake-modules)
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zzag/${pkgname}/archive/1c9fc49b53fedc95b1e4d0cd651b844c552974d3.tar.gz
+    source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zzag/${pkgname}/archive/refs/tags/${pkgver}.tar.gz
 )
-sha256sums=('8a7e5212b5f3bfff7724a74114da8f6581fe8967c0250d3d3c1828b23dba3d5e')
+sha256sums=('ae97a1f4cab9d3b7cf4e9238dd66dbe963ea06efae03da63e261e84eb8abaa7d')
 
 prepare() {
     mkdir -p build
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
     cd build
-    cmake ../$pkgname-1c9fc49b53fedc95b1e4d0cd651b844c552974d3 \
+    cmake ../$pkgname-$pkgver \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib
     make
