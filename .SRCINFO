@@ -6,6 +6,7 @@ pkgbase = bazarr
 	arch = any
 	license = GPL3
 	makedepends = unzip
+	makedepends = python-setuptools
 	depends = sqlite
 	depends = python
 	depends = python-gevent
