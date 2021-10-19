@@ -1,0 +1,16 @@
+pkgbase = xcursor-pixelfun-all
+	pkgdesc = Minimalistic cursor theme with a piece of old-school
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 1
+	install = xcursor-pixelfun-all.install
+	arch = any
+	license = unknown
+	makedepends = zstd
+	makedepends = tar
+	provides = xcursor-pixelfun-all
+	conflicts = xcursor-pixelfun3
+	source = xcur-pixelfun-all-merge.tar.zst
+	sha256sums = 051cf53acc366b90fddfb89c7cf78677834fe640f8274f02874aa132281f96b7
+
+pkgname = xcursor-pixelfun-all

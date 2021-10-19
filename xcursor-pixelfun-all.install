@@ -1,0 +1,17 @@
+post_upgrade() {
+  #
+	printf ">>    \n"
+	printf ">> Include all versions of pixelfun xcursor themes.    \n"
+	printf ">>  pixelfun2 original and pixelfun2-24px: \n"
+	printf ">> \e[1;34m https://www.gnome-look.org/p/1278934 \e[0m \n"
+	printf ">>  pixelfun3-fixed:   \n"
+	printf ">> \e[1;34m https://www.gnome-look.org/p/1190830 \e[0m \n"
+	printf ">>  pixelfun3-eclipse: \n"
+	printf ">> \e[1;34m https://www.gnome-look.org/p/1230923 \e[0m \n"
+	printf ">>    \n"
+}
+
+
+post_install() {
+  post_upgrade
+}
