@@ -2,7 +2,7 @@
 
 _pkgname=gbe-plus
 pkgname=${_pkgname}-git
-pkgver=r2502.d8b063b
+pkgver=r3206.107dc9a2
 pkgrel=1
 pkgdesc="DMG/GBC/GBA emulator and experimental NDS emulator."
 arch=('x86_64')
@@ -13,9 +13,9 @@ makedepends=('cmake' 'git')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/shonumi/gbe-plus.git"
-		"cmake-install-location.patch")
+	    "cmake-install-location.patch")
 sha256sums=('SKIP'
-			'98f2f2d2650b5a9c26dc4e7e19875ef802627fbe3b31455c9097fc09c07df237')
+	        '502f4cfb184338815285e27af59c5170d7298570332d48ff06b94f87e7054001')
 
 prepare() {
 	cd "$srcdir/${_pkgname}"
