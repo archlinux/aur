@@ -1,7 +1,7 @@
 pkgbase = git-tools
 	pkgdesc = git toools
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	groups = lcj
 	license = GPL3

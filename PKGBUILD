@@ -2,7 +2,7 @@
 
 pkgname=git-tools
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="git toools "
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -51,6 +51,7 @@ package() {
 # make -C build DESTDIR="$pkgdir" install
 install  -Dm755 push  "$pkgdir/usr/bin/push"
 install  -Dm755 pull  "$pkgdir/usr/bin/pull"
+install  -Dm755 fetch  "$pkgdir/usr/bin/fetch"
 }
 
 groups=('lcj')
