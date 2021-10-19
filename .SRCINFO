@@ -1,6 +1,6 @@
 pkgbase = 86box-git
 	pkgdesc = Emulator of x86-based machines based on PCem.
-	pkgver = r5776.bd9b6766
+	pkgver = r5805.6c463219
 	pkgrel = 1
 	url = https://86box.net/
 	arch = i686
