@@ -1,0 +1,14 @@
+pkgbase = ykcs11-p11-kit-module
+	pkgdesc = YubiKey PKCS#11 module configuration for p11-kit
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://developers.yubico.com/yubico-piv-tool/YKCS11/
+	arch = any
+	license = Unlicense
+	depends = yubico-piv-tool
+	depends = libp11-kit
+	provides = ykcs11-p11-kit-module
+	source = ykcs11.module
+	sha256sums = 576ad503a06f0d99e4dee211cc565b86e223bf1bc351df7b0ece503674a24ad6
+
+pkgname = ykcs11-p11-kit-module

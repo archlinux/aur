@@ -1,0 +1,2 @@
+# Yubico PKCS#11 PIV Library
+module: /usr/lib/libykcs11.so
