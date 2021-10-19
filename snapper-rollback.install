@@ -1,0 +1,30 @@
+# See https://wiki.archlinux.org/title/PKGBUILD#install
+
+## arg 1:  the new package version
+post_install() {
+    # migration from old to new config
+    if [ -f /etc/rollback.conf.pacsave ]; then
+        subvol_main="$(awk -F= '/^\s*subvolroot/ {print $NF}' /etc/rollback.conf.pacsave|xargs)"
+        subvol_snapshots="$(awk -F= '/^\s*subvolsnap/ {print $NF}' /etc/rollback.conf.pacsave|xargs)"
+        mountpoint="$(awk -F= '/^\s*subvolid5/ {print $NF}' /etc/rollback.conf.pacsave|xargs)"
+
+        sed -i -E "s/^subvol_main = @\$/subvol_main = $subvol_main/" /etc/snapper-rollback.conf
+        sed -i -E "s/^subvol_snapshots = @snapshots\$/subvol_snapshots = $subvol_snapshots/" /etc/snapper-rollback.conf
+        sed -i -E "s#^mountpoint = /btrfsroot\$#mountpoint = $mountpoint#" /etc/snapper-rollback.conf
+
+        cat >&2 << EOF
+
+********************************************************************************
+/etc/rollback.conf.pacsave has been automatically migrated to
+/etc/snapper-rollback.conf. Please take a look and make sure that all values are
+correct.
+You may now delete /etc/rollback.conf.pacsave.
+********************************************************************************
+
+EOF
+    fi
+}
+
+post_upgrade() {
+    post_install
+}

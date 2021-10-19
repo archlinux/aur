@@ -1,21 +1,20 @@
-pkgbase = rollback-git
+pkgbase = snapper-rollback
 	pkgdesc = Script to rollback to snapper snapshot using the layout proposed in the snapper arch wiki page https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout
-	pkgver = r6.e691387
-	pkgrel = 2
-	url = https://gitlab.freedesktop.org/Gabby/rollback
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jrabinow/snapper-rollback
+	install = snapper-rollback.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = coreutils
 	depends = python
 	depends = btrfs-progs
-	optdepends = doas: Automatic priv escalation
-	optdepends = sudo: Automatic priv escalation
-	provides = rollback
-	conflicts = rollback
-	backup = etc/rollback.conf
-	source = git+https://gitlab.freedesktop.org/Gabby/rollback.git
-	md5sums = SKIP
+	provides = snapper-rollback
+	conflicts = rollback-git
+	replaces = rollback-git
+	backup = etc/snapper-rollback.conf
+	source = git+https://github.com/jrabinow/snapper-rollback.git
+	sha256sums = SKIP
 
-pkgname = rollback-git
-
+pkgname = snapper-rollback
