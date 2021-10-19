@@ -5,11 +5,11 @@
 # ported from i3-gaps PKGBUILD
 
 pkgname=i3-gaps-desktop
-pkgver=4.19.1.1
-pkgrel=2
+pkgver=4.20
+pkgrel=1
 pkgdesc='A fork of i3-gaps with desktop manager support'
 arch=('i686' 'x86_64')
-url='https://git.tdem.in/tdemin/i3'
+url='https://github.com/tdemin/i3'
 license=('BSD')
 provides=('i3-wm')
 conflicts=('i3-wm')
@@ -26,10 +26,12 @@ optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
 backup=(etc/i3/config)
 options=('docs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}-desktop.tar.gz")
-sha256sums=('c10abd2833b5fbac1a4d938d4d040d279ff48c910272efac0ee8907a3a0833d1')
+sha256sums=('ed48e8a6cc77279faa02ff77744518132ff3e0b465c6705490ce7cc87c78a82b')
+
+_dir="i3-${pkgver}-desktop"
 
 build() {
-    cd "i3"
+    cd $_dir
     arch-meson \
         -Ddocs=true \
         -Dmans=true \
@@ -38,7 +40,7 @@ build() {
 }
 
 package() {
-    cd "i3"
+    cd $_dir
     DESTDIR="$pkgdir" meson install -C ../build
     install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
 }
