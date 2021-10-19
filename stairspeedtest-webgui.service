@@ -1,0 +1,14 @@
+[Unit]
+Description=Stair Speedtest Web GUI service
+
+[Service]
+User=root
+WorkingDirectory=/opt/stairspeedtest
+Type=exec
+ExecStart=/opt/stairspeedtest/tools/gui/websocketd --port=65430 --maxforks=1 --staticdir=tools/gui ./stairspeedtest /rpc
+KillMode=process
+KillSignal=SIGINT
+TimeoutStopSec=5min
+
+[Install]
+WantedBy=multi-user.target
