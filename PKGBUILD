@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.4.alpha.0.r29842.df00745ee'
+pkgver=0.15.4.alpha.2.r9.gd64ac2698
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -55,11 +55,7 @@ sha256sums=('SKIP'
 pkgver() {
 
 	cd "${_appname}" > /dev/null 2>&1
-
-	printf "'%s.r%s.%s'" \
-		"$(echo 'changequote([,])[]define([AC_INIT],[define([_PKGVER_],patsubst([[$2]],[-],[.]))])[]divert(-1)[]include([configure.ac])[]divert[]_PKGVER_' | m4)" \
-		"$(git rev-list --count HEAD)" \
-		"$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
 
