@@ -1,6 +1,6 @@
 pkgbase = spot-client
 	pkgdesc = Gtk/Rust native Spotify client
-	pkgver = 0.2.0.1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/xou816/spot
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = spot-client
 	depends = openssl
 	depends = pango
 	optdepends = org.freedesktop.secrets
-	source = spot-client-0.2.0.1-1.tar.gz::https://github.com/xou816/spot/archive/0.2.0.1.tar.gz
-	sha512sums = 2e0dd5b68d8f46fbf59d25fe37726f657d74d785b4c557b7665604dbc1b68bd288db003fa100b631f58aaa7f4a4f8aea361793c68ae9c52b6356fedbfe8a6296
+	source = spot-client-0.2.1-1.tar.gz::https://github.com/xou816/spot/archive/0.2.1.tar.gz
+	sha512sums = 11230a686a70e3719ddc29e3442efeafdb2e56f074e4c2f8c7595b9cd1e05f0c7874f046662cc5b36ba1adc8476814090c1232038be4a2d91e8dc75478b725ab
 
 pkgname = spot-client
