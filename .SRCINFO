@@ -1,8 +1,8 @@
 pkgbase = rbdl
 	pkgdesc = RBDL - Rigid Body Dynamics Library
-	pkgver = 3.0.0
+	pkgver = 3.1.3
 	pkgrel = 2
-	url = http://rbdl.bitbucket.org
+	url = https://github.com/ORB-HD/rbdl-orb
 	arch = x86_64
 	license = ZLIB
 	makedepends = cmake
@@ -12,8 +12,5 @@ pkgbase = rbdl
 	depends = eigen
 	provides = rbdl
 	conflicts = rbdl-hg
-	source = https://github.com/ORB-HD/rbdl-orb/archive/v3.0.0.tar.gz
-	sha256sums = 5da3c5b66fbc46cae37e651768ffe0bc2c3fb2ae8fc3ec52c4a09798de328028
 
 pkgname = rbdl
-
