@@ -15,8 +15,14 @@ arch=('any')
 #	'util-linux: For lscpu'
 #)
 #source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-#source=("ipmac")
-#sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd')
+source=(
+"gfwlist-route.service"
+"gfwlist-route.timer"
+)
+sha512sums=(
+'5238d70e79806c72d224bdf786fdc1b369886202bac1f263d59a0df87bb7de52d900ecc42799a9a675c99bbc087d8dbbc4dc06ef6a5d5946280e5348b4ee668c'
+'d9c16c83f1f2aca760f70c5652f2c18442d32ade766ed67033e861b80d76df5f3147b55b1dbd1024d00b0bfdd8b37e0a6e0dab6eb8ab33b58c074b645a562a2e'
+)
 
 #Package files should follow these general directory guidelines:
 #/etc	System-essential configuration files
@@ -43,10 +49,11 @@ arch=('any')
 
 #}
 
-#package() {
+package() {
 # make -C build DESTDIR="$pkgdir" install
-#install  -Dm4711 ipmac  "$pkgdir/usr/bin/ipmac"
-#}
+install  -Dm755 gfwlist-route.service  "$pkgdir/usr/lib/systemd/system/gfwlist-route.service"
+install  -Dm755 gfwlist-route.timer  "$pkgdir/usr/lib/systemd/system/gfwlist-route.timer"
+}
 
 groups=('lcj')
 
