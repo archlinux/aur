@@ -1,22 +1,22 @@
 # Maintainer: The3DmaN <the3dman dot appdev at protonmail dot com>
 
-pkgname=lord-almightys-modern-bible-git
-pkgver=r507.e62a2ae
+pkgname=lord-almightys-modern-bible
+pkgver=r519.ed94ea9
 pkgrel=1
 pkgdesc="Mobile version of the Bible"
 arch=("any")
-url="https://gitlab.com/The3DmaN/${pkgname%-git}"
+url="https://gitlab.com/The3DmaN/${pkgname%}"
 license=("GPL3")
 makedepends=("git")
-depends=("qt5-svg" "qt5-base" "qt5-webengine" "qt5-webview" "qt5-wayland" "qt5-quickcontrols2")
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("git+https://gitlab.com/The3DmaN/${pkgname%-git}.git")
+depends=("qt5-svg" "qt5-base" "qt5-webengine" "qt5-webview" "qt5-wayland" "qt5-quickcontrols" "qt5-quickcontrols2")
+provides=("${pkgname%}")
+conflicts=("${pkgname%}")
+source=("git+https://gitlab.com/The3DmaN/${pkgname%}.git")
 md5sums=("SKIP")
 
 build()
 {
-cd "$srcdir/${pkgname%-git}"
+cd "$srcdir/${pkgname%}"
 # and make qt gui
   qmake-qt5 USE_QRCODE=1 USE_UPNP=1
   make
@@ -25,13 +25,13 @@ cd "$srcdir/${pkgname%-git}"
 
 pkgver()
 {
-  cd "${pkgname%-git}"
+  cd "${pkgname%}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package()
 {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%}"
   install -Dm644 LAMB.desktop "$pkgdir"/usr/share/applications/LAMB.desktop
   install -Dm644 images/LAMB.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/LAMB.svg
   

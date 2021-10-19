@@ -1,6 +1,6 @@
-pkgbase = lord-almightys-modern-bible-git
+pkgbase = lord-almightys-modern-bible
 	pkgdesc = Mobile version of the Bible
-	pkgver = r507.e62a2ae
+	pkgver = r519.ed94ea9
 	pkgrel = 1
 	url = https://gitlab.com/The3DmaN/lord-almightys-modern-bible
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = lord-almightys-modern-bible-git
 	depends = qt5-webengine
 	depends = qt5-webview
 	depends = qt5-wayland
+	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	provides = lord-almightys-modern-bible
 	conflicts = lord-almightys-modern-bible
 	source = git+https://gitlab.com/The3DmaN/lord-almightys-modern-bible.git
 	md5sums = SKIP
 
-pkgname = lord-almightys-modern-bible-git
+pkgname = lord-almightys-modern-bible
