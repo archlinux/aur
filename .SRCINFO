@@ -1,7 +1,7 @@
 pkgbase = qnetwalk
 	pkgdesc = Connect all the terminals to the server, in as few turns as possible
-	pkgver = 1.5
-	pkgrel = 2
+	pkgver = 1.6
+	pkgrel = 1
 	url = https://github.com/AMDmi3/qnetwalk
 	arch = x86_64
 	license = GPL
@@ -9,11 +9,11 @@ pkgbase = qnetwalk
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = sdl_mixer
-	source = https://github.com/AMDmi3/qnetwalk/archive/1.5.tar.gz
-	md5sums = 5ca63903243d4ffdf77fa972c01581d3
-	sha1sums = b31aa30000b368bcc7dacf0a29ab568eed04b048
-	sha256sums = 69394a8007fd59c3117c72dedbee76620f3324045a1687ed384616a0b3b22bcb
-	sha384sums = 5c3509529bd9fe9e5fd6d8b3dfbeb4fc140408307680eb7d86ec36476c2c0826683202ef18afe377746e4c6f806d6708
-	sha512sums = f58d25033b515ee79e73d6f9528908818ee510083ba378c42481cb2fafe3eb041bf43425eaa335b6bfaeee959815916343fba77431aacf30b9ebdca9ac78735e
+	source = https://github.com/AMDmi3/qnetwalk/archive/1.6.tar.gz
+	md5sums = d0c53f06795bb1a72f434d87f05bbb05
+	sha1sums = d68c68856f3f0439417d8b546b7fc9b9f4c46868
+	sha256sums = 5712ba4fa245ab5de06bded4c8b48f2714c9c804637d77c414145248f208e44c
+	sha384sums = abb6cebd7a7eadf5db2ac721ca22ba167715d20a01857e2f5c8570b8e0738d1a7963d7a97362b712a6180159300815f6
+	sha512sums = 00286d969f353b2da0ad65e062648b7cf89872fbd6b0d27b3d6decee2cb33c8e858ab03c7e6c1e63c2902f6de405af65916ec260c293d1eab2a514a56b14f003
 
 pkgname = qnetwalk
