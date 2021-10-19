@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="9.1.356.0"
+pkgver="9.2.357.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-md5sums=('1fb5f02ba069e2fc21ec2f91f27cf309')
+md5sums=('1be165df300ecfdf414227b0f24368cf')
 
 prepare()
 {
@@ -61,10 +61,10 @@ package()
  install -Dm644 "$srcdir/FID_KeybHook64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/FowpKbd64.dll"
  install -Dm644 "$srcdir/FID_GD64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/GoogleDrive.pvp"
  install -Dm644 "$srcdir/FID_Markdown64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MarkdownPlugin.pvp"
- install -Dm644 "$srcdir/FID_ClientTelemetry64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/mip_ClientTelemetry.dll"
- install -Dm644 "$srcdir/FID_MipCore64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/mip_core.dll"
- install -Dm644 "$srcdir/FID_ProtectionSDK64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/mip_protection_sdk.dll"
- install -Dm644 "$srcdir/FID_UpeSDK64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/mip_upe_sdk.dll"
+ install -Dm644 "$srcdir/FID_ClientTelemetry64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_ClientTelemetry.dll"
+ install -Dm644 "$srcdir/FID_MipCore64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_core.dll"
+ install -Dm644 "$srcdir/FID_ProtectionSDK64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_protection_sdk.dll"
+ install -Dm644 "$srcdir/FID_UpeSDK64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_upe_sdk.dll"
  install -Dm644 "$srcdir/FID_OCR64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCRPlugin.pvp"
  install -Dm644 "$srcdir/FID_OD64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OneDrive.pvp"
  install -Dm644 "$srcdir/FID_PDFA64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/PDFAPlugin.pvp"
