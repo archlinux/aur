@@ -38,7 +38,7 @@ source_x86_64=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkg
 source_i686=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/redhat/plexmediaserver-${pkgver}-${_pkgsum}.i686.rpm")
 
 sha256sums=('b7f2fb1cbedde54a79a1794ec9f35f8bdeb033a4c5453ec77944ca7fe77cd9b7'
-            'a5d2cb13a734b0f3e12c6f9596aa632b012ff59f370eeefe00b7a78bfabd8b14'
+            'ef09d53d410f92ea5ec3e9549ad9d1ac6136a83a5b60a4ea7c67b67435d752d9'
             'a94c798e3a1b5614020e3dd6ec80d378c0401fa08f411769527ad87a6898e80c'
             'c597bee0bcbb59ed791651555a904e5f7e9d2e82f6c6986b6352e5fc38e5b557'
             'b7ff6525a3c7a8be885edc85bb523095f8e25ddb38873127e2a4e97b28f2c7ad'
