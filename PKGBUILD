@@ -3,7 +3,7 @@
 pkgname=lets-git
 _pkgname=lets
 pkgver=v0.0.33.r2.g186f3ea
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI task runner - a better alternative to make"
 arch=('i686' 'x86_64')
 url="https://github.com/lets-cli/lets"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    VER="$(curl --silent 'https://api.github.com/repos/lets-cli/lets/releases/latest' | jq -r .tag_name)"
+    VER="$(curl --silent 'https://api.github.com/repos/lets-cli/lets/releases/latest' | jq -r .tag_name | sed 's/v//')"
     go build -ldflags="-X main.version=$VER" -o $_pkgname *.go
 }
 
