@@ -1,0 +1,17 @@
+pkgbase = mallet-tunnel-bin
+	pkgdesc = TCP tunnel that works like VPN
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/ryotarai/mallet
+	arch = i386
+	arch = x86_64
+	license = unknown
+	depends = chisel-tunnel
+	provides = mallet-tunnel
+	conflicts = mallet-tunnel
+	source_i386 = mallet-tunnel-bin-0.0.4.tar.gz::https://github.com/ryotarai/mallet/releases/download/v0.0.4/mallet_linux_i386.tar.gz
+	sha256sums_i386 = e929ed8ab0d13a414ddd43f229b916764324f5a3e46feea8a50de5a6533cc633
+	source_x86_64 = mallet-tunnel-bin-0.0.4.tar.gz::https://github.com/ryotarai/mallet/releases/download/v0.0.4/mallet_linux_x86_64.tar.gz
+	sha256sums_x86_64 = ebbec83ae9b0b2ac901f8e67390907de5f84d69fcb795d4828293220bc98b3e3
+
+pkgname = mallet-tunnel-bin
