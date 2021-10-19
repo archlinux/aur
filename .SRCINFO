@@ -8,6 +8,7 @@ pkgbase = gnome-shell-pomodoro
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
+	depends = gobject-introspection
 	depends = glib2
 	depends = gom
 	depends = gtk3
