@@ -3,12 +3,12 @@
 
 pkgname=igvtools
 pkgver=2.4.17
-pkgrel=1
+pkgrel=2
 pkgdesc="IGV utilities for preprocessing bioinformatics data files"
 arch=('any')
 url="https://software.broadinstitute.org/software/igv"
 license=('GPL2')
-depends=('java-runtime-openjdk>=6')
+depends=('java-runtime' 'bash')
 source=(
   igvtools.sh
   http://data.broadinstitute.org/igv/projects/downloads/"${pkgver%.*}"/"${pkgname}"_"${pkgver}".zip
