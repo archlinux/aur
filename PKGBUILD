@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Mufeed Ali <lastweakness@tuta.io>
 pkgname=dialect
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
 url="https://apps.gnome.org/app/com.github.gi_lom.dialect"
