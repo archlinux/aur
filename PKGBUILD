@@ -2,19 +2,19 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-minimal
-pkgver=0.22.6
+pkgver=0.23.1
 pkgrel=1
-pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user."
+pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback over pipewire through socket connection as user."
 arch=(i686 x86_64 armv7h)
 url="https://www.musicpd.org/"
 license=(GPL)
-depends=(alsa-lib flac icu libmpdclient liburing systemd-libs zlib)
+depends=(flac fmt icu libmpdclient liburing pipewire systemd-libs zlib)
 makedepends=(boost meson python-sphinx systemd)
 provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
 source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha512sums=(5e417204e24d11fa609740ae92bc1d796aad2d63537655f655074d829cd79cadaf1ca025171dcf5486c1e557cc946152c21e299286b1cb74cc342da2b1f41343 SKIP)
-b2sums=(675b876415a343ba387e26ad800b2e562b40a5e3aaacdff31e0ec9d6ad09f0117406f82e519a08ba3187020b482dcd0434267f9e84dd13e9e1bf8565d1967c2c SKIP)
+sha512sums=(98af165881ee85c65ffd22bea77e0a62e13a8a5e8e30dc620761fe51422b605d886a957faf441bfe8f5e0728d651202c7f43e270335337a822258fcb5cd76e9e SKIP)
+b2sums=(7b517d72c536496c4ceb579fcce3d4822a45a9975c7f1f53ab3c6e1eb1b133364eea9d62fa4ef53065961e3edf4474ba454aac846d50c5a96428cbacacdb0d9d SKIP)
 validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
 
 build() {
@@ -46,7 +46,6 @@ build() {
            '-Dsmbclient=disabled'
            '-Dqobuz=disabled'
            '-Dsoundcloud=disabled'
-           '-Dtidal=disabled'
            '-Dbzip2=disabled'
            '-Diso9660=disabled'
            '-Dzzip=disabled'
@@ -62,6 +61,7 @@ build() {
            '-Dmad=disabled'
            '-Dmikmod=disabled'
            '-Dmodplug=disabled'
+           '-Dopenmpt=disabled'
            '-Dmpcdec=disabled'
            '-Dmpg123=disabled'
            '-Dopus=disabled'
@@ -78,7 +78,7 @@ build() {
            '-Dwave_encoder=false'
            '-Dlibsamplerate=disabled'
            '-Dsoxr=disabled'
-           '-Dalsa=enabled'
+           '-Dalsa=disabled'
            '-Dao=disabled'
            '-Dfifo=true'
            '-Dhttpd=false'
@@ -86,9 +86,11 @@ build() {
            '-Dopenal=disabled'
            '-Doss=disabled'
            '-Dpipe=false'
+           '-Dpipewire=enabled'
            '-Dpulse=disabled'
            '-Drecorder=false'
            '-Dshout=disabled'
+           '-Dsnapcast=false'
            '-Dsndio=disabled'
            '-Dsolaris_output=disabled'
            '-Ddbus=disabled'
@@ -102,7 +104,7 @@ build() {
            '-Dzeroconf=disabled'
     )
 
-    arch-meson ${_opts[@]} build
+    arch-meson ${_opts[@]} -D b_ndebug=true build
     ninja -C build
 }
 
