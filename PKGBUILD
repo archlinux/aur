@@ -70,10 +70,9 @@ sha256sums=('a69ab5f55ce0ccc15edc434b5ab625b3303ba3bd77f64a065668f985d9167cc0'
             'c8fd71e3885b18c88c800cc9693112846d1889a008ae7dc6cbc9bb6fadd67ec6'
             'SKIP'
             'SKIP')
+registrydwords='EnableBrightnessControl=1'
 
-package() {
-    # TODO: Move to prepare()
-    registrydwords='EnableBrightnessControl=1'
+prepare() {
     if [ ! -z $_powermizer_scheme ] && [ -z $_override_max_perf ]; then
         echo "You have selected the powermizer scheme: $_powermizer_scheme"
         echo "If you don't like it in time you can change it with the Xorg "RegistryDwords" option (in the bit value)"
@@ -101,7 +100,9 @@ package() {
             echo "You selected the wrong value for the performance level forcing. Please reread the option description in PKGBUILD."
         fi
     fi
+}
 
+package() {
     install -D -m644 <(printf '%s\n%s\n' "options nvidia NVreg_EnablePCIeGen3=1 NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_EnableStreamMemOPs=1 NVreg_RegistryDwords=${registrydwords}" "options nvidia_drm modeset=1") \
         "${pkgdir}/usr/lib/modprobe.d/90-${pkgname}.conf"
     install -D -m644 nvidia-tweaks.hook -t "${pkgdir}/usr/share/libalpm/hooks"
