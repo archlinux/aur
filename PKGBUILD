@@ -5,12 +5,13 @@
 
 pkgname=cryptomator-bin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('x86_64')
 url="https://cryptomator.org/"
 license=('GPL3')
 depends=('fuse2')
+provides=('cryptomator')
 conflicts=('cryptomator')
 replaces=('cryptomator')
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords')
