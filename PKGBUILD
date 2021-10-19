@@ -2,7 +2,7 @@
 
 pkgname=ansible-language-server
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Ansible Language Server'
 arch=('any')
 url="https://github.com/ansible/ansible-language-server"
@@ -24,7 +24,7 @@ package() {
 
     # Remove references to $srcdir
     local tmppackage="$(mktemp)"
-    local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
+    local pkgjson="$pkgdir/usr/lib/node_modules/@ansible/$pkgname/package.json"
     jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
     mv "$tmppackage" "$pkgjson"
     chmod 644 "$pkgjson"

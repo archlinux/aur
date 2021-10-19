@@ -1,7 +1,7 @@
 pkgbase = ansible-language-server
 	pkgdesc = Ansible Language Server
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ansible/ansible-language-server
 	arch = any
 	license = MIT
