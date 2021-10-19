@@ -26,7 +26,7 @@ fi
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
@@ -55,6 +55,11 @@ fi
 ## Choose between GCC and CLANG config (default is GCC)
 if [ -z ${_compiler+x} ]; then
   _compiler=gcc
+fi
+
+# Compress modules with ZSTD (to save disk space)
+if [ -z ${_compress_modules+x} ]; then
+  _compress_modules=y
 fi
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
@@ -257,6 +262,13 @@ prepare() {
     _LLVM=1
   fi
 
+  # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
+  scripts/config --enable CONFIG_STACK_VALIDATION
+
+  # Enable IKCONFIG following Arch's philosophy
+  scripts/config --enable CONFIG_IKCONFIG \
+                 --enable CONFIG_IKCONFIG_PROC
+
   # User set. See at the top of this file
   if [ "$use_tracers" = "n" ]; then
     msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
@@ -269,6 +281,12 @@ prepare() {
   if [ "$use_numa" = "n" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
+  fi
+
+  # Compress modules by default (following Arch's kernel)
+  if [ "$_compress_modules" = "y" ]; then
+    scripts/config --disable CONFIG_MODULE_COMPRESS_NONE \
+                   --enable CONFIG_MODULE_COMPRESS_ZSTD
   fi
 
   # This is intended for the people that want to build this package with their own config
@@ -308,7 +326,7 @@ prepare() {
       make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD="$HOME/.config/modprobed.db" localmodconfig
     else
       msg2 "No modprobed.db data found"
-      exit
+      exit 1
     fi
   fi
 

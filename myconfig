@@ -1,15 +1,6 @@
 #!/bin/bash
 
-## NOTE: Basic Arch compat. options:
-
-# CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
-scripts/config --enable CONFIG_STACK_VALIDATION
-
-# Enable IKCONFIG following Arch's philosophy
-scripts/config --enable CONFIG_IKCONFIG \
-               --enable CONFIG_IKCONFIG_PROC
-
-## XXX: This kernel package is primarily targeted at ASUS laptops, we switch to schedutil so the machine properly clocks down
+## XXX: As this kernel package is primarily targeted at ASUS laptops we default to schedutil so the machine properly clocks down
 
 scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
 scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
@@ -36,10 +27,6 @@ scripts/config --enable CONFIG_BPF_PRELOAD \
                --module CONFIG_BPF_PRELOAD_UMD
 scripts/config --enable CONFIG_BPF_LSM \
                --disable CONFIG_BPF_UNPRIV_DEFAULT_OFF
-
-# compress our modules
-scripts/config --disable CONFIG_MODULE_COMPRESS_NONE \
-               --enable CONFIG_MODULE_COMPRESS_ZSTD
 
 # sync some settings with Arch:
 scripts/config --enable CONFIG_TASKS_RUDE_RCU \
