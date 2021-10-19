@@ -4,8 +4,8 @@
 # Package Information
 _crate="refinery_cli"
 pkgname="$_crate"
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Provides the CLI for the Refinery crate'
 license=('MIT')
 
@@ -17,7 +17,7 @@ url="https://crates.io/crates/$_crate"
 depends=('gcc-libs' 'openssl' 'sqlite')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('317144130fe44632c15e5ac2bf1ba0d74121c964736aa97dc5ef5a46a53c586acd047a27dc01d97e5ae620f75c0c99e55238ce2e87b2f4546a4110821d80b581')
+sha512sums=('cb377e8a7aee097036380a519387cd0f43ffa6c4945e479360a7a10572993a17f83e2ef595369c74ef339e19a936a93c70c83265072cb4ba8a810cafa0aacb78')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
