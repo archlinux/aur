@@ -3,12 +3,12 @@
 pkgname=lets-git
 _pkgname=lets
 pkgver=v0.0.33.r2.g186f3ea
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI task runner - a better alternative to make"
 arch=('i686' 'x86_64')
 url="https://github.com/lets-cli/lets"
 license=('APACHE')
-makedepends=('git' 'go' 'jq')
+makedepends=('git' 'go' 'jq' 'curl')
 conflicts=('lets-bin' 'lets-git')
 provides=('lets')
 source=('git+https://github.com/lets-cli/lets.git')
