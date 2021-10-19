@@ -1,6 +1,6 @@
 # Maintainer: Darnell Andries <darnell@andries.ca>
 pkgname=sbsimple
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
 pkgdesc="Utility for setting up UEFI secure boot in a simple way"
@@ -21,14 +21,16 @@ install=
 changelog=
 noextract=()
 
-source=("git+https://github.com/djandries/sbsimple")
-sha256sums=("SKIP")
+source=($(ls | grep "^\(sbsimple[a-z\-]*\|LICENSE\)$"))
+sha256sums=()
+for i in "${!source[@]}"; do
+	sha256sums[i]="SKIP"
+done
 
 md5sums=()
 validpgpkeys=()
 
 package() {
-	cd "$pkgname"
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/sbsimple"
 
