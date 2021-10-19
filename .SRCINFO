@@ -8,6 +8,6 @@ pkgbase = bruh
 	depends = alsa-utils
 	optdepends = pulseaudio: ALSA alternative
 	source = bruh-2.1.tar.gz::https://github.com/kejpies/bruh/archive/2.1.tar.gz
-	sha256sums = f58cc6371d09a0b77f208698b3842b02e41b335c9e620583fe01e37d64b697a2
+	sha256sums = 3a181077b7c869b5fd2e6273bebcc7f666f1fb5a80d23d22d5b909ef813aa6e9
 
 pkgname = bruh
