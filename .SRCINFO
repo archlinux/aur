@@ -1,0 +1,18 @@
+pkgbase = comskip-git
+	pkgdesc = Comskip is a free MPEG commercial break detector.
+	pkgver = 0.82.009.r27.g9c89619
+	pkgrel = 1
+	url = http://github.com/erikkaashoek/Comskip/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = ffmpeg
+	depends = argtable
+	optdepends = sdl: comskip-gui
+	provides = comskip
+	conflicts = comskip
+	source = git+http://github.com/erikkaashoek/Comskip/
+	sha512sums = SKIP
+
+pkgname = comskip-git
