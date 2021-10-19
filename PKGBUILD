@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r399.1717b51
+pkgver=r426.349e5b2
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("any")
@@ -16,6 +16,7 @@ makedepends=(
   "dconf"     # Depends on glib2, which headers are also needed
   "wayland"
   "sqlite"
+  "xfconf"
 )
 optdepends=(
   "pciutils: GPU output"
