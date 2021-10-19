@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=subconverter-bin
-pkgver=0.6.4
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Utility to convert between various proxy subscription formats'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('subconverter')
 depends=('bash')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/subconverter_linux64.tar.gz")
-sha256sums=('9843bf8210041d03a17fd92eb36d89ba52122a214ce926e593eddcbe5e37685c')
+sha256sums=('978a6c0e5d3a0c77b1269567a68c4f37cf413f95c40140b7943f6ffcb52255b4')
 
 prepare() {
   cd "${srcdir}/subconverter"
