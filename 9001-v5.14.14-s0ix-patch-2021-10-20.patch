@@ -1,19 +1,13 @@
-From 96d064ca676e6f62cc4e8850bebc3ce56498c2a5 Mon Sep 17 00:00:00 2001
+From 4c3389c849eb7c8c196d6a2ba716f2007810bf94 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Sun, 17 Oct 2021 07:39:02 -0700
-Subject: [PATCH] v5.14.13 s0ix patch 2021-10-17
+Date: Wed, 20 Oct 2021 03:46:12 -0700
+Subject: [PATCH] v5.14.14 s0ix patch 2021-10-20
 
 Squashed commit of the following:
 
-commit 88230ab44d6f9fa6f76b6f24dc4e2ce6636715c5
-Author: Scott B <arglebargle@arglebargle.dev>
-Date:   Sun Oct 17 07:03:00 2021 -0700
-
-    pinctrl: amd: Fix wakeups when IRQ is shared with SCI (FIXUP)
-
-commit 71ec0b27fda84c20b2051f33d2830be749a21257
+commit db83e40c23aaef5deb611243ee1551fa2480f5de
 Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Fri Oct 15 09:43:32 2021 -0500
+Date:   Tue Oct 19 11:04:01 2021 -0500
 
     pinctrl: amd: Fix wakeups when IRQ is shared with SCI
 
@@ -26,9 +20,25 @@ Date:   Fri Oct 15 09:43:32 2021 -0500
     checker and an IRQ handler depending on the calling arguments.
 
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1738
+    Reported-by: Joerie de Gram <j.de.gram@gmail.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 5de6a0019bc8c145249a581c7f9a9d39a37e769c
+commit 24671cb3026db13a5004f5c1c3691be7e1275657
+Author: Mario Limonciello <mario.limonciello@amd.com>
+Date:   Tue Oct 19 11:04:00 2021 -0500
+
+    ACPI: Add stubs for wakeup handler functions
+
+    commit ddfd9dcf270c ("ACPI: PM: Add acpi_[un]register_wakeup_handler()")
+    added new functions for drivers to use during the s2idle wakeup path, but
+    didn't add stubs for when CONFIG_ACPI wasn't set.
+
+    Add those stubs in for other drivers to be able to use.
+
+    Fixes: ddfd9dcf270c ("ACPI: PM: Add acpi_[un]register_wakeup_handler()")
+    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+
+commit 821662ca1be39f1c3a82866a24368c1394e61ccb
 Author: Sachi King <nakato@nakato.io>
 Date:   Sat Oct 9 14:32:40 2021 +1100
 
@@ -45,7 +55,7 @@ Date:   Sat Oct 9 14:32:40 2021 +1100
 
     Signed-off-by: Sachi King <nakato@nakato.io>
 
-commit f7ebc28774dacd2005465491b477f1f4c22eb0e2
+commit 40822d84aa026272a3fd22e2c790b016e4764867
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Oct 5 21:26:41 2021 +0530
 
@@ -64,33 +74,7 @@ Date:   Tue Oct 5 21:26:41 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit eac3a5ace2bf72169c1b603f925cb31b064ec1fd
-Author: Sachi King <nakato@nakato.io>
-Date:   Sat Oct 2 14:18:40 2021 +1000
-
-    ACPI: PM: Include alternate AMDI0005 id in special behaviour
-
-    The Surface Laptop 4 AMD has used the AMD0005 to identify this
-    controller instead of using the appropriate ACPI ID AMDI0005.  The
-    AMD0005 needs the same special casing as AMDI0005.
-
-    Cc: <stable@vger.kernel.org> # 5.14+
-    Signed-off-by: Sachi King <nakato@nakato.io>
-
-commit cee45b2ead71565f22f31594d55addbeb1ac9f5e
-Author: Sachi King <nakato@nakato.io>
-Date:   Sat Oct 2 14:18:39 2021 +1000
-
-    platform/x86: amd-pmc: Add alternative acpi id for PMC controller
-
-    The Surface Laptop 4 AMD has used the AMD0005 to identify this
-    controller instead of using the appropriate ACPI ID AMDI0005.  Include
-    AMD0005 in the acpi id list.
-
-    Cc: <stable@vger.kernel.org> # 5.14+
-    Signed-off-by: Sachi King <nakato@nakato.io>
-
-commit b8ca017aaf1ccaf765d665b70033f31faae702cc
+commit c86b535203990d34e223b1a540962931133c5b7c
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Sep 28 16:21:22 2021 +0200
 
@@ -109,7 +93,7 @@ Date:   Tue Sep 28 16:21:22 2021 +0200
     Reported-by: Nathan Chancellor <nathan@kernel.org>
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
 
-commit 1b5d54074071b787f5f000e690bbbffe300039fe
+commit 021bdda6b847584b86a41deacfe44367235012cf
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Sep 24 12:32:06 2021 -0500
 
@@ -122,7 +106,7 @@ Date:   Fri Sep 24 12:32:06 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
 
-commit 43ad349462f59bec501a1204b7701d3dc2dd7b73
+commit 1e2aededb9ee5ac4a8be5745c2fcebec3385e8f3
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -134,7 +118,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 4711b9421ba64c864fdfd9b52c1425216559cc37
+commit f58c4e37e2cf7bd1104175e42362e5e8b1130c4d
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -149,7 +133,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 0bf64dbc15381fd63cef11035e54970c19052058
+commit 726051ecc7e5dad3c4938d58f91f564c4b9cc114
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -162,7 +146,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 6738be9a1e6a13dfc050482e6289e8b62df59e5d
+commit 87b57cfcbb0b2ce694660e25bbc9948e61d09a35
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -181,7 +165,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 9e06b4819516c194ed762b59ff345fde96835c5a
+commit 64b3fb09e517bfe85870f936e7a5f11c7a37c397
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -196,7 +180,7 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit c2690a5827ca0da39ebc5d52386e71d6e427f3a9
+commit 65619ed39d15713da55c8d7c210a1aa9a8c16fda
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:12 2021 +0530
 
@@ -209,7 +193,7 @@ Date:   Tue Aug 31 17:36:12 2021 +0530
 
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit ce18e7758d09249f615318a663c061c7cd56c036
+commit 7b6ed58f3a349c0be0d757faa3cd8e7c1e90e65c
 Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date:   Tue Aug 31 17:36:13 2021 +0530
 
@@ -223,12 +207,12 @@ Date:   Tue Aug 31 17:36:13 2021 +0530
     Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 ---
  drivers/acpi/processor_idle.c  |   3 +-
- drivers/acpi/x86/s2idle.c      |   9 +-
- drivers/pinctrl/Kconfig        |   2 +-
+ drivers/acpi/x86/s2idle.c      |   6 +
  drivers/pinctrl/pinctrl-amd.c  |  77 +++++++++++--
  drivers/pinctrl/pinctrl-amd.h  |   1 +
- drivers/platform/x86/amd-pmc.c | 200 ++++++++++++++++++++++++++++++++-
- 6 files changed, 276 insertions(+), 16 deletions(-)
+ drivers/platform/x86/amd-pmc.c | 199 ++++++++++++++++++++++++++++++++-
+ include/linux/acpi.h           |   8 ++
+ 6 files changed, 280 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index 095c8aca141e..1b6529396371 100644
@@ -245,7 +229,7 @@ index 095c8aca141e..1b6529396371 100644
  			drv->safe_state_index = count;
  		}
 diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
-index bd92b549fd5a..0b65d4623214 100644
+index 1c48358b43ba..0b65d4623214 100644
 --- a/drivers/acpi/x86/s2idle.c
 +++ b/drivers/acpi/x86/s2idle.c
 @@ -309,6 +309,12 @@ static void lpi_check_constraints(void)
@@ -261,38 +245,8 @@ index bd92b549fd5a..0b65d4623214 100644
  		if (adev->power.state < lpi_constraints_table[i].min_dstate)
  			acpi_handle_info(handle,
  				"LPI: Constraint not met; min power state:%s current power state:%s\n",
-@@ -371,7 +377,7 @@ static int lps0_device_attach(struct acpi_device *adev,
- 		return 0;
- 
- 	if (acpi_s2idle_vendor_amd()) {
--		/* AMD0004, AMDI0005:
-+		/* AMD0004, AMD0005, AMDI0005:
- 		 * - Should use rev_id 0x0
- 		 * - function mask > 0x3: Should use AMD method, but has off by one bug
- 		 * - function mask = 0x3: Should use Microsoft method
-@@ -390,6 +396,7 @@ static int lps0_device_attach(struct acpi_device *adev,
- 					ACPI_LPS0_DSM_UUID_MICROSOFT, 0,
- 					&lps0_dsm_guid_microsoft);
- 		if (lps0_dsm_func_mask > 0x3 && (!strcmp(hid, "AMD0004") ||
-+						 !strcmp(hid, "AMD0005") ||
- 						 !strcmp(hid, "AMDI0005"))) {
- 			lps0_dsm_func_mask = (lps0_dsm_func_mask << 1) | 0x1;
- 			acpi_handle_debug(adev->handle, "_DSM UUID %s: Adjusted function mask: 0x%x\n",
-diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
-index f38f12801f18..b225e28e433c 100644
---- a/drivers/pinctrl/Kconfig
-+++ b/drivers/pinctrl/Kconfig
-@@ -96,7 +96,7 @@ config PINCTRL_AT91PIO4
- config PINCTRL_AMD
- 	tristate "AMD GPIO pin control"
- 	depends on HAS_IOMEM
--	depends on ACPI || COMPILE_TEST
-+	depends on ACPI
- 	select GPIOLIB
- 	select GPIOLIB_IRQCHIP
- 	select PINMUX
 diff --git a/drivers/pinctrl/pinctrl-amd.c b/drivers/pinctrl/pinctrl-amd.c
-index 5b764740b829..0a9360ee6be1 100644
+index 5b764740b829..f5ecdd8f72a9 100644
 --- a/drivers/pinctrl/pinctrl-amd.c
 +++ b/drivers/pinctrl/pinctrl-amd.c
 @@ -445,6 +445,7 @@ static int amd_gpio_irq_set_wake(struct irq_data *d, unsigned int on)
@@ -361,7 +315,7 @@ index 5b764740b829..0a9360ee6be1 100644
  	}
 +	/* called from resume context on shared IRQ but didn't cause wake */
 +	if (irq < 0)
-+		return ret;
++		return false;
  
  	/* Signal EOI to the GPIO unit */
  	raw_spin_lock_irqsave(&gpio_dev->lock, flags);
@@ -371,10 +325,10 @@ index 5b764740b829..0a9360ee6be1 100644
  
 +static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
 +{
-+	return _amd_gpio_irq_handler(irq, dev_id) ? IRQ_HANDLED : IRQ_NONE;
++	return IRQ_RETVAL(_amd_gpio_irq_handler(irq, dev_id));
 +}
 +
-+static bool amd_gpio_check_wake(void *dev_id)
++static bool __maybe_unused amd_gpio_check_wake(void *dev_id)
 +{
 +	return _amd_gpio_irq_handler(-1, dev_id);
 +}
@@ -484,7 +438,7 @@ index 95e763424042..1d4317073654 100644
  
  /*  KERNCZ configuration*/
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index d6a7c896ac86..dc851c2c4d1c 100644
+index fc95620101e8..dc851c2c4d1c 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
 @@ -29,6 +29,16 @@
@@ -790,14 +744,25 @@ index d6a7c896ac86..dc851c2c4d1c 100644
  	platform_set_drvdata(pdev, dev);
  	amd_pmc_dbgfs_register(dev);
  	return 0;
-@@ -476,6 +665,7 @@ static const struct acpi_device_id amd_pmc_acpi_ids[] = {
- 	{"AMDI0006", 0},
- 	{"AMDI0007", 0},
- 	{"AMD0004", 0},
-+	{"AMD0005", 0},
- 	{ }
- };
- MODULE_DEVICE_TABLE(acpi, amd_pmc_acpi_ids);
+diff --git a/include/linux/acpi.h b/include/linux/acpi.h
+index 72e4f7fd268c..b31bcc0f4c89 100644
+--- a/include/linux/acpi.h
++++ b/include/linux/acpi.h
+@@ -976,6 +976,14 @@ static inline int acpi_get_local_address(acpi_handle handle, u32 *addr)
+ 	return -ENODEV;
+ }
+ 
++static inline int acpi_register_wakeup_handler(
++	int wake_irq, bool (*wakeup)(void *context), void *context)
++{
++	return -EINVAL;
++}
++static inline void acpi_unregister_wakeup_handler(
++	bool (*wakeup)(void *context), void *context) { }
++
+ #endif	/* !CONFIG_ACPI */
+ 
+ #ifdef CONFIG_ACPI_HOTPLUG_IOAPIC
 -- 
 2.33.1
 

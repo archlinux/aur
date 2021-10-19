@@ -1,11 +1,11 @@
-From 4d786a0766d8304561103b3e7dd5515fd451ba64 Mon Sep 17 00:00:00 2001
+From 9a33b20092f8512a60ab9672965afa1ae470c096 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Mon, 18 Oct 2021 08:57:31 -0700
+Date: Tue, 19 Oct 2021 09:54:24 -0700
 Subject: [PATCH] Issue 1710/1712 debugging and speculative fixes
 
 Squashed commit of the following:
 
-commit 2853b58fe17777669adc9f5b5559328e6395561c
+commit 4a7c5a628d7e4943321e1515b3bf62cee989ec41
 Author: Scott B <arglebargle@arglebargle.dev>
 Date:   Thu Oct 14 02:22:21 2021 -0700
 
@@ -14,7 +14,7 @@ Date:   Thu Oct 14 02:22:21 2021 -0700
     replacement for 4df3adab896f843afe5bca5960fbca6ff2cc407e per lijo lazar
     see: https://gitlab.freedesktop.org/drm/amd/-/issues/1710#note_1102805
 
-commit 7280f96d75240bbf3f5dfe8b566b69353ee5e0b0
+commit 5a5d7f9067780704c58d7e9600e91f61a458c43d
 Author: Scott B <arglebargle@arglebargle.dev>
 Date:   Thu Oct 14 02:16:16 2021 -0700
 
@@ -22,15 +22,16 @@ Date:   Thu Oct 14 02:16:16 2021 -0700
 
     This reverts commit 4df3adab896f843afe5bca5960fbca6ff2cc407e.
 
-commit cc786a1616f3fbe9b65f3dd5a22d5fdf830dcbcb
+commit 1a1086b0c5a1afc22b11f8dd3875a464f579e6cd
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Sep 28 11:00:40 2021 -0500
 
-    TEST: platform/x86: amd-pmc: explicitly check for GFXOFF mask
+    platform/x86: amd-pmc: explicitly check for GFXOFF mask (SEE NOTE)
 
-    (( this patch needed changes to apply after queued changes in platform/x86 -next
-    see: https://git.kernel.org/pub/scm/linux/kernel/git/pdx86/platform-drivers-x86.git/commit/?h=for-next&id=40635cd32f0d83573a558dc30e9ba3469e769249
-    original commit message follows -SB ))
+    NOTE: Updated patch to apply after queued changes in pdx86/for-next -SB
+    See: https://git.kernel.org/pdx86/platform-drivers-x86/c/40635cd32f0d83573a558dc30e9ba3469e769249
+
+    Original commit message:
 
     (This patch is for testing only and should not be upstreamed in
     this state)
