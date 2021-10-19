@@ -5,6 +5,7 @@
 pkgname=alchemy-next-viewer-bin
 pkgver=6.4.23.1220
 _projectname="AgileAkita"
+_pkgfolder="Alchemy_Project_${_projectname}_""$(echo "${pkgver}" | tr '.' '_')""_x86_64"
 pkgrel=1
 pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - Official CI Project build"
 arch=('x86_64')
@@ -20,10 +21,8 @@ optdepends=(
   'mesa-libgl: Intel, Radeon, Nouveau support'
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support')
-conflicts=('alchemy-next-viewer' 'alchemy-viewer')
 provides=('alchemy-next')
-pkgfolder="Alchemy_Project_${_projectname}_""$(echo "${pkgver}" | tr '.' '_')""_x86_64"
-source=('https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/Alchemy_Project_'"${_projectname}/${pkgver}/${pkgfolder}"'.tar.bz2' 'alchemy-next.desktop')
+source=("Alchemy-Next Project AgileAkita CI Build"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/Alchemy_Project_'"${_projectname}/${pkgver}/${_pkgfolder}"'.tar.bz2' 'alchemy-next.desktop')
 sha1sums=('b096624adab1c99cb2ad95572ab186f7c768eb19'
           'ceda56749a643b5baa17a236dfb89f76b8350f78')
 b2sums=('02aaab99adc8c492cca95b410632e3a5d0c6e6cd4a6d3308ad4f40f14249753592e666f1a0825ec982df0420c1c5f8ad50457e9e2af62048f04dcf82e39d58ff'
@@ -34,7 +33,7 @@ pkgver() {
 package() {
   mkdir -p "${pkgdir}"/usr/share/applications
   mkdir -p "${pkgdir}"/opt
-  mv "${srcdir}/${pkgfolder}" "$pkgdir/opt/$pkgname"
-  install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/share/applications/alchemy-next.desktop"
-  sed -i 's/Name=Alchemy/Name=Alchemy Project '"${_projectname}"'/' "${pkgdir}/usr/share/applications/alchemy-next.desktop"
+  mv "${srcdir}/${_pkgfolder}" "$pkgdir/opt/$pkgname"
+  install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  sed -i 's/Name=Alchemy/Name=Alchemy Project '"${_projectname}"'/' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
