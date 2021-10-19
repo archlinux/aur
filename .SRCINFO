@@ -1,0 +1,16 @@
+pkgbase = touchpad-emulator-git
+	pkgdesc = Virtual mouse for Linux phones
+	pkgver = r45.aa21403
+	pkgrel = 1
+	url = https://gitlab.com/CalcProgrammer1/TouchpadEmulator
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	depends = git
+	optdepends = 
+	provides = touchpad-emulator
+	conflicts = touchpad-emulator
+	source = TouchpadEmulator::git+https://gitlab.com/CalcProgrammer1/TouchpadEmulator.git
+	sha256sums = SKIP
+
+pkgname = touchpad-emulator-git
