@@ -6,6 +6,7 @@ After=network-online.target
 [Service]
 User=prowlarr
 Group=prowlarr
+SyslogIdentifier=prowlarr
 ExecStart=/usr/lib/prowlarr/bin/Prowlarr -nobrowser -data=/var/lib/prowlarr
 Type=simple
 
