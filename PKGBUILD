@@ -24,8 +24,14 @@ makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' '
 conflicts=('alchemy-next-viewer')
 provides=('alchemy-next')
 replaces=('alchemy-next-viewer')
-
 source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git' 'alchemy-next.desktop')
+md5sums=('SKIP'
+         '59114df2d7f081aad499ad5b7d8401b7')
+sha256sums=('SKIP'
+            '28f928d7620818db47e7903722173a49daf36973ae51091e9ab9845211448864')
+b2sums=('SKIP'
+        'da5639043f1854d9d2dc884fd62a4239fdc7ca2467cd95cfcb7f6bc73ac93e73cc0229e16000378efa22d646e3756a9495d2d8bb8c76049f77e4731c2a997729')
+
 pkgver() {
 	cat "$pkgname/build-linux-64/newview/viewer_version.txt"
 }
@@ -59,9 +65,3 @@ package() {
 
 	install -Dm644 "alchemy-next.desktop" "$pkgdir/usr/share/applications/alchemy-next.desktop"
 }
-md5sums=('SKIP'
-         '59114df2d7f081aad499ad5b7d8401b7')
-sha256sums=('SKIP'
-            '28f928d7620818db47e7903722173a49daf36973ae51091e9ab9845211448864')
-b2sums=('SKIP'
-        'da5639043f1854d9d2dc884fd62a4239fdc7ca2467cd95cfcb7f6bc73ac93e73cc0229e16000378efa22d646e3756a9495d2d8bb8c76049f77e4731c2a997729')
