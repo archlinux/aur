@@ -60,7 +60,7 @@ diff -rU5 hugetracker.orig/codegen.pas hugetracker/codegen.pas
 diff -rU5 hugetracker.orig/Global/vars.pas hugetracker/Global/vars.pas
 --- hugetracker.orig/Global/vars.pas	2021-10-11 11:50:37.267998796 +0200
 +++ hugetracker/Global/vars.pas	2021-10-11 15:02:55.781037214 +0200
-@@ -304,24 +304,41 @@
+@@ -304,14 +304,30 @@
                                    | Writing a value into 2100-21FF area will
                                    | select an appropriate ROM bank at
                                    | 4000-7FFF. RAM switching is not provided.
@@ -91,17 +91,6 @@ diff -rU5 hugetracker.orig/Global/vars.pas hugetracker/Global/vars.pas
  procedure load(Name: string);
  var
    cf: file;
-   m_rom: array[0..$180 - 1] of byte;
-   i, c1: byte;
-   S: string;
- begin
-   assignfile(cf, Name);
-+  Filemode := 0; // Open the file read-only
-   reset(cf, 1);
-   blockread(cf, {%H-}m_rom, $180);
-   closefile(cf);
-   buffer := '                ';
-   for i := 0 to 15 do
 diff -rU5 hugetracker.orig/hUGETracker.lpr hugetracker/hUGETracker.lpr
 --- hugetracker.orig/hUGETracker.lpr	2021-10-11 11:50:37.304664984 +0200
 +++ hugetracker/hUGETracker.lpr	2021-10-11 11:56:54.790145449 +0200
