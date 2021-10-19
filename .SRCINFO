@@ -1,5 +1,5 @@
 pkgbase = proton-ge-custom
-	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build
+	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build
 	pkgver = 6.19.GE.2
 	pkgrel = 1
 	epoch = 1
@@ -234,7 +234,7 @@ pkgbase = proton-ge-custom
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86_64.tar.xz
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-6.4.0/wine-mono-6.4.0-x86.tar.xz
 	source = wine-more_8x5_res.patch
-	source = proton-unfuck_makefile.patch
+	source = proton-sanitize_makefile.patch
 	source = proton-disable_lock.patch
 	source = proton-user_compat_data.patch
 	sha256sums = SKIP

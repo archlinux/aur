@@ -8,7 +8,7 @@ _geckover=2.47.2
 _monover=6.4.0
 pkgrel=1
 epoch=1
-pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
+pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
 arch=(x86_64 x86_64_v3)
 options=(!staticlibs !lto)
@@ -132,7 +132,7 @@ source=(
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     wine-more_8x5_res.patch
-    proton-unfuck_makefile.patch
+    proton-sanitize_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
 )
@@ -217,7 +217,7 @@ prepare() {
         patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
 
-    patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
+    patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 }
