@@ -2,8 +2,7 @@
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Eric Toombs
 
-_pkgname=python-binance
-pkgname=$_pkgname-git
+pkgname=python-binance-git
 pkgver=1.0.15.r2.g217f1e2
 pkgrel=1
 pkgdesc="An unofficial Python wrapper for the Binance exchange REST API"
@@ -14,28 +13,28 @@ depends=('python' 'python-aiohttp' 'python-dateparser'
          'python-requests' 'python-ujson' 'python-websockets=9.1')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest' 'python-requests-mock')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd $_pkgname
+    cd ${pkgname%-git}
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd $_pkgname
+    cd ${pkgname%-git}
     python setup.py build
 }
 
 check() {
-    cd $_pkgname
+    cd ${pkgname%-git}
     pytest
 }
 
 package() {
-    cd $_pkgname
+    cd ${pkgname%-git}
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$_pkgname
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
 }
