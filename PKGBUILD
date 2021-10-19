@@ -1,14 +1,14 @@
 # Maintainer: Samuel Walladge <samuel@swalladge.net>
 pkgname=pc
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Command line client for pastebins"
 arch=('i686' 'x86_64')
-url="https://git.sr.ht/~swalladge/pc"
-license=('APACHE' 'MIT')
+url="https://sr.ht/~swalladge/pc/"
+license=('GPL3')
 makedepends=('cargo')
-source=("${pkgname}-v${pkgver}.tar.gz::https://git.sr.ht/~swalladge/pc/archive/v${pkgver}.tar.gz")
-sha256sums=('0c58e9b1ac13f6c7d31da7ca1a32c4ec40f6c5aa907e220a9f8dad38ba4e5d24')
+source=("${pkgname}-v${pkgver}.tar.gz::https://git.sr.ht/~swalladge/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('446c5b905fea7efac45f2caf17fb11c947035818383f0b5c408d0cfcd7e00560')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
@@ -20,7 +20,6 @@ package() {
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-APACHE"
-  install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
