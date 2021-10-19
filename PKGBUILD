@@ -8,7 +8,7 @@
 
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(i686 x86_64)
