@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=2.2.0.r34.gd04767fa
+pkgver=2.4.0.r53.g765f969d
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
@@ -30,7 +30,9 @@ build() {
 
 check() {
   cd "${pkgname%-*}"
-  python setup.py test
+  pyver=$(python -c "import sys; print('{}.{}'.format(*sys.version_info[:2]))")
+  python setup.py install --root="$PWD/tmp_install" --skip-build
+  PYTHONPATH="$PWD/tmp_install/usr/lib/python$pyver/site-packages" pytest
 }
 
 package() {

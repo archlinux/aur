@@ -1,6 +1,6 @@
 pkgbase = streamlink-git
 	pkgdesc = CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)
-	pkgver = 2.2.0.r34.gd04767fa
+	pkgver = 2.4.0.r53.g765f969d
 	pkgrel = 1
 	url = https://streamlink.github.io/
 	arch = any
