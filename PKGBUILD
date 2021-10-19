@@ -23,6 +23,7 @@ package() {
   
   install -Dm 755 -o root bruh $pkgdir"/usr/bin/bruh"
   install -Dm 644 -o root bruh.wav $pkgdir"/usr/share/bruh/bruh.wav"
+  install -Dm 655 -o root bruh.1.gz $pkgdir"/usr/share/man/man1/bruh.1.gz"
 }
 
 md5sums=(SKIP)
