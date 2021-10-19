@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-pll-git
-pkgver=1
+pkgver=r2.c2d22d0
 pkgrel=1
 pkgdesc='Phase-locked loop for SuperCollider'
 arch=('any')
