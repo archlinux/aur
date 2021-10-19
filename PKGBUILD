@@ -1,8 +1,8 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=xfce4-mpc-plugin-update
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Updates the toggle button icon depending on what MPD is doing"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -29,5 +29,5 @@ package() {
 	make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('718e64748e46908a44cd0b96eacbda28'
-         '8019c8201fb32d7659bbb3ea66fdca80')
+sha256sums=('eefe78b7b6b95312b3a52814b7f632dc92970c1b3e9535de616315749bf67760'
+            '97805caee68cbeb070af0af43c0f71203a64eb6828cfd2f040a20c0f61919f87')
