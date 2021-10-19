@@ -1,0 +1,19 @@
+pkgbase = python-tzdata
+	pkgdesc = Provider of IANA time zone data
+	pkgver = 2021.2.post0
+	pkgrel = 1
+	url = https://github.com/python/tzdata
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pytest-subtests
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/tzdata/tzdata-2021.2.post0.tar.gz
+	sha256sums = 99d30a01967bb8d7868c03dc924862b1ae8a0e649a322a1107bacc1723c430b9
+	b2sums = 34648e3f086d395377be2f51dec7b1881942a7b72377d092a5338b8e4c3408c25eea693025ee75e4cd0f31667f19aa4da9fccdcad66ac23a0268142d62814bc0
+
+pkgname = python-tzdata
