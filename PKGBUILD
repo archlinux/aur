@@ -1,8 +1,8 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 pkgname=msquic-prerelease-git
 pkgver=1.8.0.r0.g0b0e8b952
-pkgrel=1
-pkgdesc="MsQuic is a Microsoft implementation of the IETF QUIC protocol."
+pkgrel=2
+pkgdesc="Microsoft implementation of the IETF QUIC protocol (prerelease, git)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/microsoft/msquic"
 license=('MIT')
