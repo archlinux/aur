@@ -1,0 +1,16 @@
+pkgbase = tabnine
+	pkgdesc = AI-powered autocompletion engine
+	pkgver = 3.7.17
+	pkgrel = 1
+	url = https://tabnine.com
+	arch = x86_64
+	arch = i686
+	license = custom:proprietary
+	source = TERMS
+	sha256sums = 77177f1e237c7139a241da39c9f7ef736e0c2677587e4a1fc4959097b93ba99e
+	source_x86_64 = tabnine-3.7.17-x86_64.zip::https://update.tabnine.com/bundles/3.7.17/x86_64-unknown-linux-musl/TabNine.zip
+	sha256sums_x86_64 = b7ac9f89154f723fe03f13a1d37a5e974b1940961466f081c479b1184db5e20b
+	source_i686 = tabnine-3.7.17-i686.zip::https://update.tabnine.com/bundles/3.7.17/i686-unknown-linux-musl/TabNine.zip
+	sha256sums_i686 = 77c8942dba5e3b1a19879761beca47929a931f747b32022b7e1d3d0079c04f8d
+
+pkgname = tabnine
