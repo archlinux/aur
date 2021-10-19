@@ -1,5 +1,5 @@
 pkgbase = snapper-rollback
-	pkgdesc = Script to rollback to snapper snapshot using the layout proposed in the snapper arch wiki page https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout
+	pkgdesc = Script to rollback snapper snapshots as described here https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/jrabinow/snapper-rollback
