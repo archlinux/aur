@@ -3,9 +3,11 @@
 _pkgname=bip39
 pkgname=$_pkgname-git
 pkgver=r14.9908de7
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate mnemonic codes according to BIP-0039"
 arch=('x86_64')
+url="https://github.com/kugland/bip39"
+license=('MIT')
 depends=('libsodium')
 makedepends=('git' 'make' 'gcc')
 conflicts=("$_pkgname")
