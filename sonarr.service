@@ -7,10 +7,12 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
+Type=simple
 User=sonarr
 Group=sonarr
+SyslogIdentifier=sonarr
 ExecStart=/usr/bin/mono --debug /usr/lib/sonarr/bin/Sonarr.exe -nobrowser -data=/var/lib/sonarr
-Type=simple
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
