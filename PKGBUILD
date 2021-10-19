@@ -1,4 +1,5 @@
-# Maintainer: Jakub Klinkovský <kuba.klinkovsky@gmail.com>
+# Maintainer: Muhammad Hidayat <hidayat.pcd@gmail.com>
+# Former maintainer: Jakub Klinkovský <kuba.klinkovsky@gmail.com>
 #
 # If you're going to adapt this package to other printer models,
 # here is a list of printer names and IDs:
@@ -19,7 +20,7 @@ _id=370
 
 pkgname=scangearmp-${_name}
 pkgver=1.60
-pkgrel=4
+pkgrel=5
 _pkgver=1.60-1
 pkgdesc="Canon Scanner Driver (${_name} series)"
 url="http://support-my.canon-asia.com/contents/MY/EN/0100303302.html"
@@ -39,10 +40,13 @@ makedepends=(
 )
 source=(http://gdlp01.c-wss.com/gds/3/0100003033/01/scangearmp-source-${_pkgver}.tar.gz
         fix_png15.patch
-        fix_configure.patch)
+        fix_configure.patch
+        fix_gimp2.9.patch
+)
 md5sums=('15782d670f9d5c5904e00610508114f3'
          '6609d7fe171e67451658a3665442972c'
-         '8c21b22ef834b17bcdad6e97d8916ca2')
+         '8c21b22ef834b17bcdad6e97d8916ca2'
+         'f90572fce7a3878438f7c93360f615e4')
 
 if [ "$CARCH" == "x86_64" ]; then  
     _libdir=libs_bin64
@@ -55,6 +59,7 @@ build() {
     cd "$srcdir/scangearmp-source-$_pkgver"
     patch -p1 -i "$srcdir/fix_png15.patch"
     patch -p1 -i "$srcdir/fix_configure.patch"
+    patch -p1 -i "$srcdir/fix_gimp2.9.patch"
     
     # Prepare build
     cd "$srcdir/scangearmp-source-$_pkgver/scangearmp"
