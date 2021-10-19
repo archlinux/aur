@@ -1,0 +1,14 @@
+pkgbase = opensc-gnutls-compat
+	pkgdesc = OpenSC configuration for GnuTLS PKCS #11
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/OpenSC/OpenSC
+	arch = any
+	license = Unlicense
+	depends = opensc
+	depends = gnutls
+	provides = opensc-gnutls-compat
+	source = opensc.module
+	sha256sums = fea71e2e2c1853bba034106d4eb40646a787ed900fef883e09d38dcb29675db4
+
+pkgname = opensc-gnutls-compat
