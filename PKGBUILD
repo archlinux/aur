@@ -2,7 +2,7 @@
 
 pkgname=systemd-godns
 pkgver=1.0.0
-pkgrel=3
+pkgrel=5
 pkgdesc="systemd for godns"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -45,7 +45,7 @@ sha512sums=('e9a1b8601db10bf65c6dc2ff7c06caa5f5bda80119d18165e621ae49c95d3a747cb
 
 package() {
 # make -C build DESTDIR="$pkgdir" install
-install  -Dm644 godns@.service  "$pkgdir/etc/systemd/system/godns@.service"
+install  -Dm644 godns@.service  "$pkgdir/usr/lib/systemd/system/godns@.service"
 }
 
 groups=('lcj')
