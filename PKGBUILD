@@ -16,10 +16,9 @@
 ##
 ##  build with 'env use_uksm=foo makepkg ...' to include UKSM patch
 ##
-##  NOTE: Don't enable UKSM and LRU_GEN together at runtime, they are incompatible and will crash
-##        If UKSM is enabled during build LRU_GEN will be disabled by default in the kernel config
+##  NOTE: Don't enable UKSM and LRU_GEN together at runtime, they are incompatible and will crash.
+##        If UKSM is enabled during build LRU_GEN will be boot-time disabled in the kernel config
 ##        You can still switch between them at runtime but do *not* attempt to use both.
-##
 if [[ -v use_uksm ]]; then
   use_uksm=y
 fi
@@ -214,8 +213,6 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 prepare() {
   cd "linux-${_major}"
 
-  # WARN: mangle Makefile versions here if needed to apply patches cleanly
-
   # Apply patches
   local src
   for src in "${source[@]}"; do
@@ -239,8 +236,6 @@ prepare() {
         ;;
     esac
   done
-
-  # WARN: mangle Makefile versions here if needed before calling setlocalversion
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -319,7 +314,8 @@ prepare() {
 
   make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
 
-  # let user choose microarchitecture optimization target;          NOTE: must run *after* make olddefconfig so any new uarch macros exist
+  # let user choose microarchitecture optimization target;
+  # NOTE: this script must run *after* make olddefconfig so any new uarch macros exist
   sh "${srcdir}/choose-gcc-optimization.sh" $_microarchitecture
 
   make -s kernelrelease > version
