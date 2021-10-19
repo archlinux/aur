@@ -2,13 +2,13 @@
 
 pkgname=roonserver
 _pkgname=RoonServer
-pkgver=1.8.814
-pkgrel=1
+pkgver=1.8.831
+pkgrel=2
 pkgdesc="The music player for music lovers"
 arch=('x86_64')
 url="https://roonlabs.com/"
 license=('custom')
-depends=('alsa-lib' 'glibc' 'ffmpeg' 'cifs-utils')
+depends=('alsa-lib' 'glibc' 'ffmpeg' 'cifs-utils' 'icu')
 source=("http://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2"
         'roonserver.service'
         'copyright')
