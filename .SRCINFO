@@ -1,7 +1,7 @@
 pkgbase = xfce4-generic-slider-git
 	pkgdesc = Xfce panel plugin for adjusting the value passed to a command
-	pkgver = 26.d1fc31f
-	pkgrel = 2
+	pkgver = 32.82e814f
+	pkgrel = 1
 	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-generic-slider
 	arch = i686
 	arch = x86_64
@@ -10,16 +10,7 @@ pkgbase = xfce4-generic-slider-git
 	makedepends = xfce4-dev-tools
 	depends = xfce4-panel
 	source = git+https://gitlab.xfce.org/panel-plugins/xfce4-generic-slider
-	source = 0001-Use-plugin-API-2.0.patch
-	source = 0002-Make-it-build-with-GTK3.patch
-	source = 0003-Stop-using-some-things.patch
-	source = 0004-Use-GtkGrid-instead-of-GtkTable.patch
-	source = 0005-Change-the-packing-order.patch
 	sha256sums = SKIP
-	sha256sums = 14cc51fc23d6f047e7cbb8732e1b421705a48d05313238fbf5214f0083692487
-	sha256sums = eb5dc13e27c2ecdc565a99024395c956eff21f06073a42bf6c809d20241b9d67
-	sha256sums = 46ba26148336db197c0abcaf87ea38168c9ad98ba35e3ef57ac26f46a189ea4a
-	sha256sums = 03df7e88edc4fdc6a2b6527b255060fae2819b70e64d9a9688a44eb5c29c0479
-	sha256sums = b25a78a082adfc3a76091acd885bda82dce7a8e6e2a26cb1f23ecee1e81d44c1
 
 pkgname = xfce4-generic-slider-git
+
