@@ -10,6 +10,7 @@ After=network-online.target
 Type=simple
 User=sonarr
 Group=sonarr
+SyslogIdentifier=sonarr
 ExecStart=/usr/bin/mono --debug /usr/lib/sonarr/bin/Sonarr.exe -nobrowser -data=/var/lib/sonarr
 Restart=on-failure
 
