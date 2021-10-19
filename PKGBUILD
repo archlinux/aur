@@ -2,7 +2,7 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=vim-clap
-pkgver=0.29
+pkgver=0.30
 pkgrel=1
 pkgdesc='Modern performant generic finder and dispatcher for Vim and NeoVim'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   'python: for the Python dynamic module'
   'ripgrep: for the files and grep providers')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0bd3036bc28240fda803e7bf87fde2b8ec8cdd0cf809ba851bd3ea12e5116837')
+sha256sums=('eb884b5b9c1db7f9593614b23ed7448b26601b28397186bb36025e06c65969cd')
 
 prepare() {
   cd "$pkgname-$pkgver"
