@@ -1,5 +1,5 @@
 pkgbase = proton-native
-	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution
+	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
 	pkgver = 6.3.7
 	pkgrel = 1
 	epoch = 1
@@ -222,7 +222,7 @@ pkgbase = proton-native
 	source = https://raw.githubusercontent.com/Sporif/dxvk-async/1.9.2/dxvk-async.patch
 	source = wine-winevulkan_fsr.patch
 	source = wine-more_8x5_res.patch
-	source = proton-unfuck_makefile.patch
+	source = proton-sanitize_makefile.patch
 	source = proton-disable_lock.patch
 	source = proton-user_compat_data.patch
 	sha256sums = SKIP

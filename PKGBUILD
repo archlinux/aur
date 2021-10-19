@@ -9,7 +9,7 @@ _monover=6.3.0
 _dxvkver=1.9.2
 pkgrel=1
 epoch=1
-pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
+pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
 arch=(x86_64 x86_64_v3)
 options=(!staticlibs !lto)
@@ -125,7 +125,7 @@ source=(
     https://raw.githubusercontent.com/Sporif/dxvk-async/${_dxvkver}/dxvk-async.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
-    proton-unfuck_makefile.patch
+    proton-sanitize_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
 )
@@ -215,7 +215,7 @@ prepare() {
         patch -p1 -i "$srcdir"/dxvk-async.patch
     popd
 
-    patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
+    patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 }
