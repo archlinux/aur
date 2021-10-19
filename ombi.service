@@ -6,6 +6,7 @@ After=network.target
 User=ombi
 Group=ombi
 Type=simple
+SyslogIdentifier=ombi
 WorkingDirectory=/usr/lib/ombi
 ExecStart=/usr/lib/ombi/Ombi --storage /var/lib/ombi --host http://*:5000
 Restart=always
