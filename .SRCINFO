@@ -1,6 +1,6 @@
 pkgbase = python-keepassxc-browser
 	pkgdesc = Access the KeepassXC Browser API from python
-	pkgver = 0.1.4
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/hrehfeld/python-keepassxc-browser
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = python-keepassxc-browser
 	depends = python
 
 pkgname = python-keepassxc-browser
-
