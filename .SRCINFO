@@ -42,6 +42,7 @@ pkgbase = alchemy-next-viewer-git
 	optdepends = nvidia-utils: NVIDIA support
 	provides = alchemy-next
 	conflicts = alchemy-next-viewer
+	replaces = alchemy-next-viewer
 	source = alchemy-next-viewer-git::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git
 	source = alchemy-next.desktop
 	md5sums = SKIP

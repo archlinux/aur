@@ -23,6 +23,7 @@ optdepends=(
 makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
 conflicts=('alchemy-next-viewer')
 provides=('alchemy-next')
+replaces=('alchemy-next-viewer')
 
 source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git' 'alchemy-next.desktop')
 pkgver() {
