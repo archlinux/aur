@@ -1,26 +1,45 @@
-# Maintainer: Yufan You <ouuansteve at gmail>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: Yufan You <ouuansteve at gmail>
 
-_npmname=server
-_npmscope=@volar
+_name=volar
 pkgname=volar-server
 pkgver=0.28.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast Vue Language Support Extension'
 arch=('any')
-url='https://github.com/johnsoncodehk/volar/tree/master/packages/server'
+url=https://github.com/johnsoncodehk/volar/tree/master/packages/server
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
-source=(https://registry.npmjs.org/$_npmscope/$_npmname/-/$_npmname-$pkgver.tgz)
-noextract=($_npmname-$pkgver.tgz)
-sha256sums=('2cb11b4f98c566e0fac790895bfbfdfa9ac322f9ca141ae971ea75411cc56888')
+makedepends=('typescript' 'yarn')
+source=("https://github.com/johnsoncodehk/volar/archive/v$pkgver/$_name-$pkgver.tar.gz")
+b2sums=('18e50ba737e7d56cfdb3f6c745a17c3438d14270ab24d75d6cb1a5e6d6c83ed526cb84066c1b81e7d57efff289cfc42196fda9edb04f1a3c87463b43a604e7bc')
+
+prepare() {
+  cd $_name-$pkgver
+  yarn --frozen-lockfile
+
+  # Emulate `npm prune --production` for server workspace
+  mv package.json{,.bak}
+  pushd packages/server
+  yarn --prefer-offline --ignore-scripts --no-bin-links --production \
+    --frozen-lockfile
+  popd
+  mv package.json{.bak,}
+}
+
+build() {
+  cd $_name-$pkgver
+  yarn compile
+}
 
 package() {
-    cd "$srcdir"
-    local _npmdir="$pkgdir/usr/lib/node_modules/"
-    mkdir -p "$_npmdir"
-    cd "$_npmdir"
-    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
-    chown -R root:root "${pkgdir}"
-    install -Dm644 "$_npmdir/$_npmscope/$_npmname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd $_name-$pkgver
+  local _npmdir=/usr/lib/node_modules/@volar/server
+  install -d "$pkgdir"{/usr/bin,"$_npmdir"}
+  ln -s "$_npmdir"/bin/volar-server.js "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+  cd packages/server
+  cp -r bin node_modules out package.json "$pkgdir/$_npmdir"
 }
+
+# vim:set ts=2 sw=2 et:
