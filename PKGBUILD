@@ -1,33 +1,39 @@
-# Maintainer: Phil A. <flying-sheep@web.de>
+# Maintainer: Jordan Cook <JCook83@gmail.com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: Aniket Pradhan <aniket17133[at]iiitd[dot]ac[dot]in>
 # Contributor: Roman Haritonov <reclosedev[at]gmail[dot]com>
-
-_pkgname=requests-cache
-pkgname=python-requests-cache
-pkgver=0.7.4
+_base=requests-cache
+pkgname=python-${_base}
+pkgdesc="Transparent persistent cache for http://python-requests.org library"
+pkgver=0.8.1
 pkgrel=1
-pkgdesc='Transparent persistent cache for http://python-requests.org/ library.'
-arch=(x86_64)
-url="https://github.com/reclosedev/$_pkgname"
-license=(BSD)
-depends=(python python-requests python-url-normalize python-itsdangerous python-attrs)
-makedepends=(python-setuptools)
-conflicts=(python2-requests-cache)
+arch=('any')
+url="https://github.com/reclosedev/${_base}"
+license=('custom:BSD-2-clause')
+depends=(python-requests python-url-normalize python-cattrs python-appdirs)
+makedepends=(python-build python-install python-poetry)
+optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
+	'python-redis: Cache backend for Redis cache'
+	'python-pymongo: Cache backend for MongoDB database')
 source=("https://files.pythonhosted.org/packages/source/r/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('4786190991b5f9e8ecfa97a1a6fd02475486e522a6d62f4bea53c32a7c1172c9')
+checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('245ee7059afab50f32af9c8831fe11c14d5bd53fe6bbf02e5844974e0e5ea6c33e005f234485f245ee418ae03277c6e2cc41046a385ff138e58785cf37b119ea')
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	python setup.py build
-	# poetry build --format wheel
+	cd "${_base}-${pkgver}"
+	python -m build --wheel --skip-dependency-check --no-isolation
+}
+
+check() {
+	cd "${_base}-${pkgver}"
+	python -m pytest --ignore=tests/integration
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	# PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps dist/*.whl
-
-	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
+	cd "${_base}-${pkgver}"
+	export PYTHONHASHSEED=0
+	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
