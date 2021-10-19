@@ -1,0 +1,8 @@
+# Ignore all files.
+*
+
+# But not these files.
+!.gitignore
+!PKGBUILD
+!*.install
+!.SRCINFO
