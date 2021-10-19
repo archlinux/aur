@@ -1,0 +1,13 @@
+pkgbase = plasma-splash-witcher-git
+	pkgdesc = A Witcher splash screen for KDE Plasma.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/abrahammurciano/plasma-splash-witcher
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = plasma-desktop
+	source = git://github.com/abrahammurciano/plasma-splash-witcher.git
+	sha256sums = SKIP
+
+pkgname = plasma-splash-witcher-git
