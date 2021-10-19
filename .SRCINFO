@@ -1,5 +1,5 @@
 pkgbase = msquic
-	pkgdesc = Microsoft implementation of the IETF QUIC protocol.
+	pkgdesc = Microsoft implementation of the IETF QUIC protocol (release)
 	pkgver = 1.1.8
 	pkgrel = 3
 	epoch = 1
