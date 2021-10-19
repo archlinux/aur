@@ -1,0 +1,17 @@
+pkgbase = neovim-staline-git
+	pkgdesc = Modern lightweight statusline and bufferline
+	pkgver = r229.ad1bef9
+	pkgrel = 1
+	url = https://github.com/tamton-aquib/staline.nvim
+	install = staline.install
+	arch = any
+	groups = neovim-plugin
+	license = MIT
+	makedepends = git
+	depends = neovim>=0.5.0
+	provides = neovim-staline
+	conflicts = neovim-staline
+	source = neovim-staline-git::git+https://github.com/tamton-aquib/staline.nvim
+	md5sums = SKIP
+
+pkgname = neovim-staline-git
