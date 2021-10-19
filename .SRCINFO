@@ -1,7 +1,7 @@
 pkgbase = msquic-prerelease
-	pkgdesc = Microsoft implementation of the IETF QUIC protocol.
+	pkgdesc = Microsoft implementation of the IETF QUIC protocol (prerelease)
 	pkgver = 1.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/microsoft/msquic
 	arch = x86_64
 	arch = armv7h

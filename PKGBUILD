@@ -2,8 +2,8 @@
 _pkgname=msquic
 pkgname=$_pkgname-prerelease
 pkgver=1.8.0
-pkgrel=3
-pkgdesc="Microsoft implementation of the IETF QUIC protocol."
+pkgrel=4
+pkgdesc="Microsoft implementation of the IETF QUIC protocol (prerelease)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/microsoft/msquic"
 license=('MIT')
