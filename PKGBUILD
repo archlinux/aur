@@ -2,7 +2,7 @@
 
 pkgname=wind-bin
 _pkgname=wind
-pkgver=21.4.1.3
+pkgver=21.5.0.3
 pkgrel=1
 pkgdesc="Wind financial terminal, 万得金融终端"
 arch=("x86_64")
@@ -14,7 +14,7 @@ install=wind-bin.install
 source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wind.wft/com.wind.wft_${pkgver}_amd64.deb")
 
 
-sha512sums=('32e28a88f03620e9315216f323f44e8ccf27b742d4742c0cb94b50023b7ef009b41f1796fb2185120c58c1abc4e2f9665e6e5505026d3cf052e94cc9771e0f36')
+sha512sums=('38f03e37b39b721d56fb7ee705a9441e9a7427497bf21b3f892bd40988e4ba2df093110d0a4594782074579bf23d036362d90b276475a4a77259e8616dec9a7c')
 
 prepare(){
     cd ${srcdir}
