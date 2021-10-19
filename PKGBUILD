@@ -1,6 +1,6 @@
 # Maintainer: Gabby <28601 dash gabby at users dot noreply dot gitlab dot freedesktop dot org>
 pkgname=rollback-git
-pkgver=r6.e691387
+pkgver=r14.43dc1d9
 pkgrel=2
 pkgdesc='Script to rollback to snapper snapshot using the layout proposed in the snapper arch wiki page https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout'
 arch=('any')
@@ -13,6 +13,7 @@ makedepends=('git')
 provides=('rollback')
 conflicts=('rollback')
 backup=(etc/rollback.conf)
+install=rollback-git.install
 source=(git+"https://gitlab.freedesktop.org/Gabby/rollback.git")
 md5sums=('SKIP')
 

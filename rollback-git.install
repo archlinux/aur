@@ -1,0 +1,24 @@
+
+# See https://wiki.archlinux.org/title/PKGBUILD#install
+
+## arg 1:  the new package version
+post_install() {
+    cat >&2 <<EOF
+
+********************************************************************************
+This package is being obsoleted and replaced with snapper-rollback
+https://aur.archlinux.org/packages/snapper-rollback/
+Further development will continue with the snapper-rollback package.
+
+rollback-git will be requested for merging into snapper-rollback on Saturday
+2021-11-20.
+
+For more info, please see https://aur.archlinux.org/packages/snapper-rollback/
+********************************************************************************
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
