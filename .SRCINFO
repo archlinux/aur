@@ -8,6 +8,7 @@ pkgbase = lets-git
 	license = APACHE
 	makedepends = git
 	makedepends = go
+	makedepends = jq
 	provides = lets
 	conflicts = lets-bin
 	conflicts = lets-git
@@ -15,4 +16,3 @@ pkgbase = lets-git
 	md5sums = SKIP
 
 pkgname = lets-git
-
