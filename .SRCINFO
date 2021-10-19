@@ -1,7 +1,7 @@
 pkgbase = systemd-kexec
 	pkgdesc = systemd for kexec
 	pkgver = 1.0.1
-	pkgrel = 6
+	pkgrel = 7
 	arch = any
 	groups = lcj
 	license = GPL3
