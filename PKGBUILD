@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-bqf-git
-pkgver=r117.46e6469
+pkgver=0.2.0.r0.g5be723b
 pkgrel=1
 pkgdesc="Better quickfix window in Neovim"
 arch=('any')
@@ -17,8 +17,7 @@ source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
