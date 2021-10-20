@@ -1,13 +1,13 @@
 pkgbase = python-guardonce
 	pkgdesc = Utilities for converting from C/C++ include guards to #pragma once and back again
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cgmb/guardonce
 	arch = any
 	license = MIT
 	makedepends = git
-	source = git+https://github.com/cgmb/guardonce.git?signed#tag=v2.4.0
+	source = python-guardonce-2.4.0.tar.gz::https://github.com/cgmb/guardonce/archive/v2.4.0.tar.gz
 	validpgpkeys = 0CE06FE392AA48F8D22E4471F9EF8EE0C021630F
-	sha256sums = SKIP
+	sha256sums = 15da5792fba8bfaa246afc03f558ac24b06beee6f072ac81c6aee7c8c3e36395
 
 pkgname = python-guardonce
