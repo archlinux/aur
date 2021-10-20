@@ -1,6 +1,6 @@
 pkgbase = unityx
 	pkgdesc = A modern and functional DE
-	pkgver = git
+	pkgver = 10.0.rc5.r0.gc309f15
 	pkgrel = 1
 	arch = any
 	license = GPL
