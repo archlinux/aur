@@ -1,0 +1,18 @@
+pkgbase = orca-c-git
+	pkgdesc = An esoteric programming language, designed to create procedural sequencers
+	pkgver = a7090ef
+	pkgrel = 1
+	url = https://git.sr.ht/~rabbits/orca
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv8
+	arch = riscv32
+	arch = riscv64
+	license = MIT
+	depends = ncurses5-compat-libs
+	depends = portmidi
+	source = git+https://github.com/hundredrabbits/Orca-c.git
+	sha256sums = SKIP
+
+pkgname = orca-c-git
