@@ -2,13 +2,13 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=6.18.307_r86.ffafdb4
+pkgver=6.18.320_r478.f1c4905
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
 license=('GPL3')
-depends=('bash' 'procps-ng' 'unzip' 'vim' 'wget' 'which' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
+depends=('bash' 'procps-ng' 'unzip' 'vim' 'wget' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
 makedepends=('git')
 optdepends=(
 	'strace: write a strace log of the launched game'
@@ -30,7 +30,6 @@ optdepends=(
 	'usbutils: optional for a quick VR HMD presence check'
 	'jq: optional for extracting game names from the steam api'
 	'rsync: optional for backing up steamuser files from proton games'
-	'openssl: optional for generating a random hex string for Non-Steam games'
 	'imagemagick: optional to scale a custom installed game header picture and for converting game icons'
 	'p7zip: optional for extracting SpecialK archives'
 )
