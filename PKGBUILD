@@ -1,6 +1,6 @@
 # Maintainer: Bent Hillerkus <benthillerkus+aur@gmail.com>
 
-pkgrel=0
+pkgrel=1
 pkgver=3.3
 
 pkgname=jetuml
@@ -8,7 +8,7 @@ _gitname=JetUML
 _iconname=jet
 _jarname=$_gitname-$pkgver
 _installdirectory=/usr/share/java/$pkgname
-_javaver=16
+_javaver=17
 pkgdesc="A desktop application for fast UML diagramming"
 changelog=CHANGELOG
 arch=('any')
