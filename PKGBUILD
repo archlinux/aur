@@ -18,7 +18,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('709469528c0c2e9245ccbd8e9cd049829c36a15fdef6b545e6646c1d6060c042')
+sha256sums_x86_64=('907cdf250582d610f554d716e6b08d21701fbfdad54a1fe9521cc1552af22747')
 
 prepare() {
     chmod +x "${_appimage}"

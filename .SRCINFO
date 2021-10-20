@@ -15,6 +15,6 @@ pkgbase = obsidian-appimage
 	noextract = obsidian-appimage-0.12.19.AppImage
 	options = !strip
 	source_x86_64 = obsidian-appimage-0.12.19.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v0.12.19/Obsidian-0.12.19.AppImage
-	sha256sums_x86_64 = 709469528c0c2e9245ccbd8e9cd049829c36a15fdef6b545e6646c1d6060c042
+	sha256sums_x86_64 = 907cdf250582d610f554d716e6b08d21701fbfdad54a1fe9521cc1552af22747
 
 pkgname = obsidian-appimage
