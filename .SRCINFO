@@ -1,0 +1,17 @@
+pkgbase = vim-dadbod-ui-git
+	pkgdesc = Simple UI for vim-dadbod
+	pkgver = r261.5f2bd84
+	pkgrel = 1
+	url = https://github.com/kristijanhusak/vim-dadbod-ui
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	depends = vim-dadbod
+	provides = vim-dadbod-ui
+	conflicts = vim-dadbod-ui
+	source = vim-dadbod-ui-git::git+https://github.com/kristijanhusak/vim-dadbod-ui
+	md5sums = SKIP
+
+pkgname = vim-dadbod-ui-git
