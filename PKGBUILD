@@ -2,7 +2,7 @@
 
 pkgname=flarectl
 _pkgname=cloudflare-go
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='CLI application for interacting with a Cloudflare account'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/cloudflare/cloudflare-go/tree/v${pkgver}/cmd/flarectl"
 license=('BSD')
 makedepends=('go')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/cloudflare/$_pkgname/archive/v$pkgver.tar.gz")
-b2sums=(760144110ebfb183b632f91cca543a496d32d9a40b0c85bdb88e37e3a2d2cb10dddddfabde71799ef2403bf77598c151324eb3b6b0633d4355a259952b9efc0e)
+b2sums=(2a15eaa9f560edb90099e642118396baccbce9b0c2f9d9e18e5584b1f77b742b54f6ca12686ea8d3ec1c7461ad876de8ff88b627126bde5f1883500a6ef664f5)
 
 prepare() {
 	# https://wiki.archlinux.org/title/Go_package_guidelines
