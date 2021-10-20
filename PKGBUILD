@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=x42-sisco-cv-git
 pkgdesc="Oscilloscope, varient of sisco.lv2 but with CV ports"
-pkgver=r228.ce8139f
+pkgver=r233.7db7157
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -12,7 +12,8 @@ groups=()
 depends=('lv2' 'pango' 'cairo' 'mesa')
 makedepends=()
 provides=()
-conflicts=('x42-plugins')
+# conflicts=('x42-plugins')
+conflicts=()
 source=($pkgname::git+https://github.com/x42/sisco.lv2)
 md5sums=('SKIP')
 
