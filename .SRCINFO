@@ -1,13 +1,13 @@
 pkgbase = elasticsearch-xpack
 	pkgdesc = Distributed RESTful search engine built on top of Lucene
-	pkgver = 7.15.0
+	pkgver = 7.15.1
 	pkgrel = 1
 	url = https://www.elastic.co/products/elasticsearch
 	arch = x86_64
 	license = custom:Elastic2
 	depends = java-runtime-headless
 	depends = systemd
-	provides = elasticsearch=7.15.0
+	provides = elasticsearch=7.15.1
 	conflicts = elasticsearch
 	backup = etc/default/elasticsearch
 	backup = etc/elasticsearch/elasticsearch.yml
@@ -17,8 +17,8 @@ pkgbase = elasticsearch-xpack
 	backup = etc/elasticsearch/role_mapping.yml
 	backup = etc/elasticsearch/users
 	backup = etc/elasticsearch/users_roles
-	source = https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.0-x86_64.rpm
-	source = https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.0-x86_64.rpm.asc
+	source = https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.1-x86_64.rpm
+	source = https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.1-x86_64.rpm.asc
 	source = elasticsearch-env
 	source = elasticsearch.service
 	source = elasticsearch@.service
@@ -29,7 +29,7 @@ pkgbase = elasticsearch-xpack
 	source = elasticsearch-tmpfile.conf
 	source = elasticsearch.default
 	validpgpkeys = 46095ACC8548582C1A2699A9D27D666CD88E42B4
-	sha512sums = 22ad404695321720c3579655826558c4b87175453c7368d9c493db5b7b365d2e1e54f71814bf257de02cc8238499fb04428c06f0a9ce960ff613ccec45f1456f
+	sha512sums = c9b03db45d6f8e35ac46cbfee37cccddc5ee001fa5f0ded39917697de8b73f5da79ecde34692f0d31b664073d7d8dd5c8e1cc279759dd02895788bffa9ae8b7a
 	sha512sums = SKIP
 	sha512sums = 52556e0709590f0e15039d89b64c08c9bbeb0c61d29e3cd5a4471744968c882eb559081db1c89e846fa33d50b31e2fe9ba46d7e7e2cf5d4a23e78bc97a50c853
 	sha512sums = 8280cfd911c1762a1cba67a72bf01c593dbcec00ab02b5f7ca2ef05dbcbae835f2d0e20f3143b0f601e233708e7a60148a1b2087aaff0e0b239361ca4792409f
