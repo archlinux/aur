@@ -1,6 +1,6 @@
 pkgbase = plotinus-unityx-git
 	pkgdesc = HUD for UnityX
-	pkgver = git
+	pkgver = v10.0.rc4.r1.gdf9443a
 	pkgrel = 1
 	arch = any
 	license = GPL
