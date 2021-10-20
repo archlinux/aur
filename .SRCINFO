@@ -1,7 +1,7 @@
 pkgbase = obsidian-appimage
 	pkgdesc = Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files
 	pkgver = 0.12.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsidian.md/
 	arch = x86_64
 	license = custom:Commercial
