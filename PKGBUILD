@@ -1,4 +1,5 @@
-# Maintainer: maniacata <maniaciachao at gmail dot com>
+# Maintainer: Paragoumba <paragoumba at protonmail dot com>
+# Contributor: maniacata <maniaciachao at gmail dot com>
 # Contributor: Martin Thierer <thierer@web.de>
 # Contributor: Amy Wilson <awils_1[at]xsmail[dot]com>
 # Contributor: Simon Doppler <dopsi[at]dopsi[dot]ch>
@@ -8,8 +9,8 @@
 
 pkgname=logisim-evolution-bin
 _name=logisim-evolution
-pkgver=3.4.1
-pkgrel=2
+pkgver=3.7.0
+pkgrel=1
 pkgdesc='An educational tool for designing and simulating digital logic circuits (binary version)'
 provides=('logisim-evolution')
 conflicts=('logisim-evolution-git' 'logisim-evolution')
@@ -21,7 +22,7 @@ source=("${_name}-${pkgver}.jar::https://github.com/reds-heig/logisim-evolution/
     'logisim-evolution.desktop'
     'logisim-evolution.sh'
     'logisim-evolution.xml')
-sha256sums=('1b72dd3397290b7be95f886b933bd37a2d9182b8d33247fa5f059d0867e8111c'
+sha256sums=('44a0e6af326afd3668eb8f4dfd7132e5c4651d9b738792bf50f360100e747da7'
             'c374a6cf85c020014b1c446c0a871842d98a283a14338662a2230e4110a6765e'
             'd5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba'
             '7d071777cfeb56d2ff957d8e63d2eb45157ff00f8c1c6943db4d5fee774d94fc')
@@ -35,12 +36,10 @@ package() {
     install -Dm644 ${_name}.xml "${pkgdir}/usr/share/mime/packages/${_name}.xml"
     install -Dm644 ${_name}.desktop "${pkgdir}/usr/share/applications/${_name}.desktop"
 
-    for SIZE in 16 20 24 48 64 128; do
+    for SIZE in 16 32 48 128 256; do
       install -Dm644 "resources/logisim/img/logisim-icon-${SIZE}.png" \
         "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/${_name}.png"
     done
-    install -Dm644 "resources/logisim/img/logisim-icon.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_name}.svg"
 
     install -Dm755 "${_name}.sh" "${pkgdir}/usr/bin/${_name}"
 }
