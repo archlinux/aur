@@ -4,7 +4,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=fox-devel
-pkgver=1.7.75
+pkgver=1.7.77
 pkgrel=1
 pkgdesc="Free Objects for X: GUI Toolkit for C++, development version."
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(LGPL 'custom')
 depends=(glu libsm libtiff libxcursor libxft libxi libxrandr)
 makedepends=(mesa)
 source=("http://www.fox-toolkit.org/ftp/fox-${pkgver}.tar.gz")
-sha512sums=('370836f935d870664fbb30847f13b1b46381b93f23c4545d8acaefe68100db0b1c4cbbe3bc2c10977f0e09fbf407cda19e1164f9b63958a9344088c6f119ff7f')
+sha512sums=('65835161d42e1fd57aff3f10b3ff7ab7e881f44df30868b6e1fd414ded4375a4772b18f2829b3fc9acfd91920c99f664f128da4445225e66ed10e98aa20a8388')
 
 build() {
   cd "fox-${pkgver}"
