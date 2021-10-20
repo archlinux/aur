@@ -1,19 +1,19 @@
 # Maintainer: Addison Bean <addisonbean@gmail.com>
 
 pkgname=ttf-scientifica
-pkgver=2.1
+pkgver=2.3
 pkgrel=0
 pkgdesc="tall, condensed, bitmap font for geeks."
 arch=("any")
 url="https://github.com/NerdyPepper/scientifica"
 license=("OFL")
 source=(
-	"https://github.com/NerdyPepper/scientifica/releases/download/v2.1/scientifica-v2.1.tar"
-	"https://raw.githubusercontent.com/NerdyPepper/scientifica/e51563ba9ab5d15a3091b599d568ad8764791123/LICENSE"
+	"https://github.com/NerdyPepper/scientifica/releases/download/v2.3/scientifica.tar"
+	"https://raw.githubusercontent.com/NerdyPepper/scientifica/8cdde9def8b20080b0de9f52d86802ff218d8fc1/LICENSE"
 )
 sha256sums=(
-	"3159ce09e7850309c3c32a884870f77ed5fcb01f7a2e6ebc9a84bba7cd7e5ab6"
-	"0ee971a4d5eefffd0fd3998da2d4901f5b6e5c2bdc96465dd4d451f4cc1831a4"
+	"f0857869a0e846c6f175dcb853dd1f119ea17a75218e63b7f0736d5a8e1e8a7f"
+	"5fe3133335d5a3a32865f2b5cc133ed092c12aa65fcde525b68045e14312cd61"
 )
 
 package() {
