@@ -6,11 +6,11 @@ pkgver=1.1.1.5
 pkgrel=0
 arch=('any')
 pkgdesc="ACS Sphinx client module"
-url="http://sigursys.com/download_current.php"
+url="https://www.sigur.com/download/"
 license=('custom')
-source=("http://sigursys.com/dl/spnxclient_${pkgver}-${pkgrel}_all.deb"
+source=("https://www.sigur.com/dl/spnxclient_${pkgver}-${pkgrel}_all.deb"
         "spnx-client.desktop")
-sha256sums=('2206a26f36515d2f4a24f08b17aeec70ed26d495bc07082a4c0c5da6d85aaf0d'
+sha256sums=('c8556e883c74c9716b16b3f2871c6385a2f21f92d7e2f5b1308748a4fe0ad34b'
             '6ba598b7bac9667cf3520222f1b2201f2fb7f37b96ee9c6de7222bd6bf360552')
 
 prepare() {
