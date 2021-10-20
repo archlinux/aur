@@ -1,6 +1,6 @@
 pkgbase = slade-git
 	pkgdesc = SLADE3 Doom editor (git version)
-	pkgver = 3.2.0_b3+44+gdfeecacb
+	pkgver = 3.2.0_b3+45+g05de0e3e
 	pkgrel = 1
 	url = http://slade.mancubus.net/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = slade-git
 	depends = bzip2
 	depends = curl
 	depends = fluidsynth>=2.2
-	depends = fmt>=7
+	depends = fmt>=8.0.1
 	depends = freeimage
 	depends = ftgl
 	depends = glew>=2.2
