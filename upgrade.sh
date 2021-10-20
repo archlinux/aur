@@ -14,7 +14,7 @@ tmp="$(mktemp)"
 cleanup() { rm -f "$tmp"; }
 trap cleanup EXIT
 
-curl -sL "${source[0]}" -o "$tmp"
+curl -fsL "${source[0]}" -o "$tmp"
 sum="$(sha256sum "$tmp" | cut -c -64)"
 
 cleanup
