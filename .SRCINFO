@@ -1,0 +1,21 @@
+pkgbase = annotator
+	pkgdesc = Image annotation for Elementary OS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/phase1geo/Annotator
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = vala
+	depends = libxml2
+	depends = libhandy
+	depends = libgee
+	depends = granite
+	provides = Annotator
+	source = https://github.com/phase1geo/Annotator/archive/refs/tags/1.0.0.tar.gz
+	sha1sums = cafc3e6235b10321154e8537f14092ff9835dadb
+
+pkgname = annotator
