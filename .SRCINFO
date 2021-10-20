@@ -1,6 +1,6 @@
 pkgbase = odb
 	pkgdesc = C++ Object-Relational Mapping compiler
-	pkgver = 2.5.0b19
+	pkgver = 2.5.0b21
 	pkgrel = 1
 	url = https://www.codesynthesis.com/products/odb/
 	arch = i686
@@ -12,4 +12,3 @@ pkgbase = odb
 	options = !libtool
 
 pkgname = odb
-
