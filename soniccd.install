@@ -4,3 +4,14 @@ post_install() {
 	echo "Alternatively, you may simply run 'soniccd' directly from any " \
 "folder containing compatible data files."
 }
+
+post_upgrade() {
+	old_revision=$(egrep -o '[0-9]+' <<< $2 | head -n 1)
+
+	# Not sure what was the exact commit that changed the binary name, but it
+	# doesn't really matter.
+	if [[ $old_revision < 377 ]]; then
+		echo '"soniccd" has been renamed to "RSDKv3", "soniccd-launcher" '\
+'remains unaffected'
+	fi
+}

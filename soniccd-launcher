@@ -12,7 +12,7 @@ if [[ ! -d "$data_folder" ]]; then
 fi
 
 cd "$data_folder"
-/usr/bin/soniccd
+/usr/bin/RSDKv3
 
 exit_code=$?
 
