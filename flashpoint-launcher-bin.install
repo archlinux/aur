@@ -1,6 +1,6 @@
 post_install(){
-    echo "make sure to install data files with 'flashpoint-install-data-files install'" 
+    echo "Make sure to install data files with 'flashpoint-install-data-files install'." 
 }
 post_upgrade(){
-    echo "make sure to install data files with 'flashpoint-install-data-files install'" 
+    echo "Fixed games not loading – run 'flashpoint-install-data-files fix' to Apply." 
 }
