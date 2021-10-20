@@ -119,9 +119,9 @@ if [ "$_cpusched" = "cacule" ]  && [ -n "$_use_llvm_lto" ]; then
 elif  [ "$_cpusched" = "rdb" ] && [ -n "$_use_llvm_lto" ]; then
   pkgbase=linux-cachyos-rc-rdb-lto
 elif [ "$_cpusched" = "cacule" ]; then
-  pkgbase=linux-cachyos-rc
+  pkgbase=linux-cachyos-cacule-rc
 elif [ "$_cpusched" = "rdb" ]; then
-  pkgbase=linux-cachyos-rdb-rc
+  pkgbase=linux-cacule-rdb-rc
 fi
 _major=5.15
 #_minor=1

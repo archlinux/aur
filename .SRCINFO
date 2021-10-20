@@ -1,4 +1,4 @@
-pkgbase = linux-cachyos-rc
+pkgbase = linux-cachyos-cacule-rc
 	pkgdesc = Linux-CacULE Kernel-RC by Hamad Marri and with some other patchsets
 	pkgver = 5.15.rc6
 	pkgrel = 1
@@ -56,7 +56,7 @@ pkgbase = linux-cachyos-rc
 	md5sums = 373a1df8cddeb7807b6adf7b2ab03bc2
 	md5sums = 21c98f19e883879dd3336c1fa143fd31
 
-pkgname = linux-cachyos-rc
+pkgname = linux-cachyos-cacule-rc
 	pkgdesc = The Linux-CacULE Kernel-RC by Hamad Marri and with some other patchsets kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -65,7 +65,7 @@ pkgname = linux-cachyos-rc
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 
-pkgname = linux-cachyos-rc-headers
+pkgname = linux-cachyos-cacule-rc-headers
 	pkgdesc = Headers and scripts for building modules for the Linux-CacULE Kernel-RC by Hamad Marri and with some other patchsets kernel
-	depends = linux-cachyos-rc=5.15.rc6
+	depends = linux-cachyos-cacule-rc=5.15.rc6
 	depends = pahole
