@@ -1,18 +1,21 @@
 pkgbase = gr-cc1111-git
 	pkgdesc = CC1111 packet encoder/decoder for GNU Radio
-	pkgver = 6b5eb0
+	pkgver = r10.20141005.e6b5eb0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/funoverip/gr-cc1111
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = cmake
 	makedepends = boost
+	makedepends = git
 	depends = gnuradio
+	depends = libvolk
 	depends = swig
-	source = git+https://github.com/funoverip/gr-cc1111.git
-	md5sums = SKIP
+	provides = gr-cc1111=r10.20141005.e6b5eb0
+	conflicts = gr-cc1111
+	source = gr-cc1111::git+git://github.com/funoverip/gr-cc1111.git
+	sha256sums = SKIP
 
 pkgname = gr-cc1111-git
-
