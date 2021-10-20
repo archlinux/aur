@@ -2,7 +2,7 @@
 # Contributor: desbma
 
 pkgname=zoxide
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="A smarter cd command for your terminal"
 arch=('x86_64')
@@ -14,8 +14,8 @@ optdepends=(
   'fzf: for interactive selection'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b2c095601f4adc9d4dcb6d59733c73752e37e9014f446dc0d87aa31a5c3b3f4921bca5273f55a720d0c4d5e875c89f46512cb64e9234731a0e5f115c089e491c')
-b2sums=('b3a38588d1e5ec493a9c80fc75f8a986cf2412871416d1aaa27a09cf2c12c194ba8215ac914396d2bb05b03c6fb577f3ae81451ce06c7cacab92cb7e11a911e6')
+sha512sums=('0c861c5b51f967784e25f57277377246d34e8abc63b6489d54112c52592c5314c4ab542a8f44693591f6d3702ee1de2cc5bb388e8cffd59d1cd0f0a130703b0e')
+b2sums=('9cdd12a1508319f555659a64aa9f6a121ae264ff83e0d394196668d4f97965b2e57b6fbf21365d3ecea09f9070ff68e683a8524ad8be3101fce0bf05b23a96de')
 
 prepare() {
   cd "$pkgname-$pkgver"
