@@ -1,0 +1,21 @@
+## tip to edit configure file.
+post_install() {
+        cat << EOF
+Remember to edit "/etc/webapps/freenom/freenom.conf" and set your email and password
+To schedule domain renewals and updates, use these commands:
+- systemctl enable freenom.timer
+- systemctl start freenom.timer
+EOF
+}
+
+## stop freenom timer.
+pre_remove() {
+  systemctl stop freenom.timer
+  systemctl disable systemctl
+}
+
+## remove log folder
+post_remove() {
+  rm -rf /var/log/freenom/*/
+  rm -df /var/log/freenom/ 2>/dev/null
+}

@@ -1,0 +1,19 @@
+pkgbase = freenom-git
+	pkgdesc = Freenom domain name renews automatically
+	pkgver = 20211018
+	pkgrel = 1
+	url = https://github.com/luolongfei/freenom
+	install = freenom.install
+	arch = any
+	license = MIT
+	depends = php
+	provides = freenom
+	options = !strip
+	source = freenom::git+https://github.com/luolongfei/freenom.git
+	source = freenom.service
+	source = freenom.timer
+	sha512sums = SKIP
+	sha512sums = b84774484f29b64583255f283cc2d3db0d7682c645a350627c8a7e8b728541bd627d54e177410ecf3fade9e4508a0fddc06c9d14bafe71699bb5fbb2a5a89dbf
+	sha512sums = 0d7b19b9d00d93ce71c29c30fc5613d820dfa783ace7bf222c7cc920a785545eda8bb8d41c1e04bd253953341d9893eab6faaeb89c423b8d31412551c436d1f5
+
+pkgname = freenom-git

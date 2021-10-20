@@ -1,0 +1,11 @@
+[Unit]
+Description="Time freenom renew all domains repetitively"
+
+[Timer]
+# Run on every day at 10:00am
+OnCalendar=*-*-* 10:00:00
+RandomizedDelaySec=60
+Persistent=true
+
+[Install]
+WantedBy=timers.target

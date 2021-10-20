@@ -1,0 +1,7 @@
+[Unit]
+Description="Renew all freenom domains"
+
+[Service]
+Type=oneshot
+WorkingDirectory=/usr/share/webapps/freenom
+ExecStart=/usr/bin/php run
