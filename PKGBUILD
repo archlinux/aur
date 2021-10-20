@@ -1,14 +1,14 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-tensorflow-addons-cuda-git
-pkgver=r1365.97eb293d
+pkgver=r1399.334cd7ca
 pkgrel=1
 pkgdesc="Useful extra functionality for TensorFlow 2.x, built with CUDA support"
 url="https://github.com/tensorflow/addons"
 arch=('any')
 license=('APACHE')
-depends=('tensorflow-cuda' 'python-tensorflow' 'python-typeguard' 'cuda' 'cudnn' 'gcc10-libs')
-makedepends=('python-setuptools' 'bazel3' 'rsync' 'gcc10<=1:10.2.0')
+depends=('tensorflow-cuda' 'python-tensorflow' 'python-typeguard' 'cuda' 'cudnn')
+makedepends=('python-setuptools' 'bazel3' 'rsync')
 source=("git+https://github.com/tensorflow/addons.git"
 	"bazel-cuda-build-fix.patch")
 sha256sums=('SKIP'
@@ -21,8 +21,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"/addons
-  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-10
-  export HOST_CXX_COMPILER_PATH=/usr/bin/gcc-10
 
   # Force OpenJDK-11
   export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
