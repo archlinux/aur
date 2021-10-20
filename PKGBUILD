@@ -1,24 +1,27 @@
 # Maintainer: Michael Migliore <mcmigliore+aur@gmail.com>
 
 pkgname=vtk9
-pkgver=9.0.1
-pkgrel=4
+pkgver=9.0.3
+pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization'
 arch=('x86_64')
 url="http://vtk.org"
 license=('BSD')
 depends=('freetype2' 'jsoncpp' 'libharu' 'libjpeg-turbo' 'libogg' 'libpng' 'libtheora' 'libtiff' 'libxml2' 'lzip' 'python' 'sqlite' 'zlib' 'ospray' 'openimagedenoise' 'libxt' 'double-conversion' 'glew' 'eigen' 'expat' 'lz4' 'hdf5' 'proj' 'utf8cpp' 'pugixml' 'netcdf' 'pegtl' 'gl2ps')
-makedepends=('cmake')
+makedepends=('cmake' 'eigen' )
 provides=('vtk')
 conflicts=('vtk')
 source=("https://gitlab.kitware.com/vtk/vtk/-/archive/v${pkgver}/vtk-v${pkgver}.tar.gz"
-        "freetype.patch")
-sha256sums=("15c269946a8a8ed578bbd28a59672c251089185d582cd1268658908bf414e017"
-            "aa2daca929f4bc75809dcfe959b1bf6f8b81450a8c29892c73420711823d1438")
+        "freetype.patch"
+	"limits.patch")
+sha256sums=("4d27b42d208bd61506f8508cbb1c35ee803a4432b4146fd8ac0d45bf1a7ffce8"
+            "aa2daca929f4bc75809dcfe959b1bf6f8b81450a8c29892c73420711823d1438"
+            "e626da07b165c59fcd54db8be2218696b76c5d239688b12bf229a4972c54bd1f")
 
 prepare() {
     cd "$srcdir/vtk-v${pkgver}"
     patch -p1 < "${srcdir}/freetype.patch"
+    patch -p1 < "${srcdir}/limits.patch"
 }
 
 build() {
@@ -32,30 +35,10 @@ build() {
           -DVTK_SMP_IMPLEMENTATION_TYPE=TBB \
           -DVTK_WRAP_PYTHON=ON \
           -DVTK_PYTHON_VERSION=3 \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_doubleconversion=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_eigen=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_expat=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_freetype=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_glew=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_jpeg=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=ON \
+          -DVTK_USE_EXTERNAL=ON \
           -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_libxml2=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_lz4=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_lzma=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_netcdf=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_ogg=ON \
           -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_png=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_theora=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_tiff=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_zlib=ON \
+          -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=OFF \
           -DVTK_MODULE_ENABLE_VTK_RenderingRayTracing=WANT \
           -DVTK_ENABLE_OSPRAY=OFF \
           ..
