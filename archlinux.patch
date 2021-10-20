@@ -1,0 +1,28 @@
+diff --git a/Make.rules b/Make.rules
+index 94f68f7..020deea 100644
+--- a/Make.rules
++++ b/Make.rules
+@@ -84,7 +84,7 @@ INSTALL		:= install
+ INSTALLDIR	:= $(INSTALL) -d
+ 
+ CFLAGS		?= -g -O2
+-CFLAGS_ALL	:= -Werror -Wall -Wstrict-prototypes -D_GNU_SOURCE -std=gnu99 -fPIC
++CFLAGS_ALL	:= -Wall -Wstrict-prototypes -D_GNU_SOURCE -std=gnu99 -fPIC
+ CFLAGS_ALL	+= $(CFLAGS)
+ 
+ LDFLAGS		?= -g
+diff --git a/Makefile b/Makefile
+index 9a70d20..2f4159c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -12,8 +12,8 @@ export VERSION
+ # Default directories
+ 
+ DESTDIR		:=
+-SBINDIR		:= /sbin
+-LIBDIR		:= /lib
++SBINDIR		:= /usr/bin
++LIBDIR		:= /usr/lib
+ CONFDIR		:= /etc/apk
+ MANDIR		:= /usr/share/man
+ DOCDIR		:= /usr/share/doc/apk
