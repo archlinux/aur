@@ -1,7 +1,7 @@
 pkgbase = flashpoint-data-files-installer
 	pkgdesc = script to install BlueMaxima's Flashpoint data files
 	pkgver = 10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FlashpointProject/launcher
 	install = flashpoint-launcher-bin.install
 	arch = x86_64
@@ -9,6 +9,6 @@ pkgbase = flashpoint-data-files-installer
 	depends = p7zip
 	depends = wget
 	source = flashpoint-install-data-files.sh
-	sha512sums = 6987c8afd49dbd41fd65625a8807b83c196e8abcbfddbd0a29a2a27cc1cecd621485f6551bf36434b6ee11ac9f2da259d1e63a2ee1546ec9177fc9c4ceb41a76
+	sha512sums = a1c4ebbe58e7a87b4c2269a16ba948db135ebf9480aaf0bf5b6c4344f3059f1ae10392fbc211b125ceb712cef72cae61de219fa98b46ff82a2fd0deaeff74281
 
 pkgname = flashpoint-data-files-installer
