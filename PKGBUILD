@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jamesdsp-pulse
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
@@ -38,10 +38,10 @@ build() {
 
 package() {
   cd "$srcdir/JDSP4Linux"
-  install -Dm755 build/src/jamesdsp -t "$pkgdir/usr/bin"
+  install -Dm755 build/src/jamesdsp -t "$pkgdir/usr/bin/"
   install -Dm644 resources/icons/icon.png \
     "$pkgdir/usr/share/pixmaps/jamesdsp.png"
   install -Dm644 resources/icons/icon.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/jamesdsp.svg"
-  install -Dm644 "$srcdir/jamesdsp.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/jamesdsp.desktop" -t "$pkgdir/usr/share/applications/"
 }
