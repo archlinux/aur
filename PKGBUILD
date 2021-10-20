@@ -9,7 +9,7 @@ url='https://github.com/sorayuki/obs-multi-rtmp'
 license=('GPL')
 depends=('obs-studio')
 makedepends=('cmake')
-_obsver="$(obs -V | grep -Po '(\d+\.)+\d+')"
+_obsver="$(obs -V | grep -Po '(\d+\.)+\d+') | head -1"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "obs-studio-${_obsver}.tar.gz::https://github.com/obsproject/obs-studio/archive/${_obsver}.tar.gz")
 sha256sums=('5962afa7df714884c49ab8b48f3b1f8bdc7efa57c54da802ca259ee9d1a9d664'
