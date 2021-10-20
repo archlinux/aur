@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -uo pipefail
+#set -x
+#set -x 将在命令执行前打印出命令 方便调试
+
+
+
+function push-remote()
+{
+        var=$1
+        echo git -C $file push $var --all  -v --progress        
+        git push --all      --progress $var
+        echo git -C $file push $var --tags  -v --progress   
+        git push --tags     --progress $var       
+
+        echo 
+}
+
+function pushall(){
+
+    for file in $work_path/*
+    do  
+    if test -d $file
+    then    
+        
+        if [   -d ${file}'/.git'   ] ; then 
+          
+        cd $file       
+        echo $file 
+
+        mm=$(git remote) ;  
+         
+        echo $mm ;    
+        for var in $mm ; do
+
+        if [ "$var"x = alix ] || [ "$var"x = githubx ]   || [ "$var"x = lix ]  || [ "$var"x = giteex ];  
+            then
+              continue ;
+        fi
+
+#        lastc=${var: -1}
+#        if [ "$lastc"x = "0x" ] ;
+#        then
+#          git remote remove $var;
+#          echo  git remote remove $var;
+#        fi;
+#        continue ;
+        if [[ $# -gt 0 ]]; then
+            rt=$(echo $* | grep -w $var)
+
+ #           echo ALL:$*  var:$var  rt  :  $rt
+            if [[ "$rt"xx = xx ]]; then            
+                continue ;
+            else
+                push-remote $var
+            fi            
+        else
+            push-remote $var
+        fi 
+       
+        done       
+    
+        fi   
+    fi
+    echo 
+    done
+    
+}
+
+work_path=$(dirname $(dirname $(readlink -f $0)))
+pushall  $*
+work_path=$work_path/AndroidLib
+pushall  $* 
+
+
+
+
+
+
