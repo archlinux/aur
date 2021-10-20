@@ -1,6 +1,6 @@
 pkgbase = paths-bookmarks-git
 	pkgdesc = Save often used directories like bookmarks
-	pkgver = r66.ac6c392
+	pkgver = r81.0832ace
 	pkgrel = 1
 	url = https://github.com/sproott/pat.hs
 	install = paths-bookmarks-git.install
