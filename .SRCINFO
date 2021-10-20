@@ -1,0 +1,20 @@
+pkgbase = fairseq
+	pkgdesc = sequence modeling toolkit
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/pytorch/fairseq
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = cuda
+	depends = nccl
+	depends = python-antlr4
+	depends = python-bitarray
+	depends = python-hydra
+	depends = python-omegaconf
+	depends = python-pytorch
+	optdepends = python-apex: Faster training
+	source = https://github.com/pytorch/fairseq/archive/refs/tags/v0.10.2.tar.gz
+	sha256sums = 4328a7cb5fe6aea874817a863eb7f1ace91d621bc504345e6d022ce64e065da0
+
+pkgname = fairseq
