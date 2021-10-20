@@ -64,7 +64,7 @@ depends=('ffmpeg'
         'python-service-identity'  # ~= 18.1.0
         'python-markdown'  # ~= 3.2.0
         'python-bleach'  # ~= 3.1.0
-        'python-feedparser-dev>=6'  # ~= 6.0.0
+        'python-feedparser>=6'  # ~= 6.0.0
         'python-watchdog'  # ~= 1.0.2
 )
 makedepends=(git)

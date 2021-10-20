@@ -60,7 +60,7 @@ pkgbase = funkwhale
 	depends = python-service-identity
 	depends = python-markdown
 	depends = python-bleach
-	depends = python-feedparser-dev>=6
+	depends = python-feedparser>=6
 	depends = python-watchdog
 	optdepends = apache: to use the Apache web server
 	optdepends = certbot-apache: for the server to be accessible from outside
