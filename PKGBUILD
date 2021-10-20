@@ -5,7 +5,7 @@
 pkgname=minecraft-server
 pkgver=1.17.1
 _nonce=a16d67e5807f57fc4e550299cf20226194497dc2
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="https://minecraft.net/"
@@ -15,6 +15,7 @@ optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 conflicts=('minecraft-server-systemd' 'minecraft-canary')
 backup=('etc/conf.d/minecraft')
+install="${pkgname}.install"
 # See https://launchermeta.mojang.com/mc/game/version_manifest.json for a list of all releases
 source=("minecraft_server.${pkgver}.jar"::"https://launcher.mojang.com/v1/objects/${_nonce}/server.jar"
 	"minecraftd-backup.service"
@@ -32,7 +33,7 @@ sha512sums=('fe6e48e2cee38224d2c88f04c19afca9c21fddbe6077b5538e0a0581c2f6c4478ec
             'a62c8c04e08dbac0db0aa2eeb505d70f8fd925bd2e427899512ba3ac828d4644e1c43c8d92325c6bc49c8d9ecb40cb5c44bf5957a63980b1e2cf86fdb38a05a7'
             'a74f4e31065b6c6f5c830182de05a8c75a6de6eaac7b3dc26479827646ef20ab872509aac88be613048c97d378711c38612ec7ac92d22134acefd40f6e0a99da'
             '30e434ba183527da8047b1ffe403a083f1af34dbd229b5871222e9da0004cdf5d4152eaa4b73215befcb1233d08cc757af32ad6b572f4b6d2a623b6f120aa0d9'
-            '52ff440342aa218e81aaca452db2e7a867809e3dc4a99b3726aa7189ed38a9e08e838475d60578e87dda90fa0ece86ea6d496ab3ef901365dc9e809c548ea281')
+            '855afa53509439adc26e12a54d63659dcafc90b423e633a52862e71bbb58107a46f228cac60b79e5cf677b3c49e36e715ec05c7b56329559fac9fe0e7ea0fb9c')
 
 _game="minecraft"
 _server_root="/srv/minecraft"
