@@ -1,10 +1,11 @@
+# Maintainer: Tianrui Wei <archlinux_aur at mail dot tianrui-wei dot com>
+# Contributor: Marcio Silva <marcionps at gmail dot com>
 # Based  on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer: Marcio Silva <marcionps at gmail dot com>
 
 _pkgname=sunsama
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="The daily planner for elite professionals. Organize everything you need to do today in one place. Tasks, meetings, emails, you name it."
 arch=('x86_64')
@@ -13,9 +14,9 @@ license=('custom:Commercial')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://desktop.sunsama.com/linux/sunsama-${pkgver}.AppImage")
+source_x86_64=("${_appimage}::https://desktop.sunsama.com/linux/appImage/x64")
 noextract=("${_appimage}")
-sha256sums_x86_64=('eac725bd73db55980c0079829d840d093235e22c7b288237c261ae0eb627ec5f')
+sha256sums_x86_64=('068c46df54249eab8e9482e863a2d7983001c9d3f4d5dd03e0276645f7ff62b1')
 
 prepare() {
     chmod +x "${_appimage}"
