@@ -6,6 +6,10 @@ command="/usr/bin/vmware-networks"
 command_args="--start"
 pidfile="undefined"
 
+start_pre() {
+	modprobe vmnet
+}
+
 depend() {
 	after vmware-networks-configuration
 	use vmware-networks-configuration

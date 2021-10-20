@@ -5,3 +5,7 @@ description="VMware Networks Configuration Generation"
 command="/usr/bin/vmware-networks"
 command_args="--postinstall vmware-player,0,1"
 start_stop_daemon_args=" -k 0077"
+
+start_pre() {
+	modprobe vmnet
+}
