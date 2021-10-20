@@ -1,0 +1,3 @@
+post_install() {
+	echo ':: If you choose not to install neovim-lush, you must set g:zenbones_compat to 1'
+}
