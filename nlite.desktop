@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=NLite
+Comment=NLite Client for NextPVR
+Exec=/usr/bin/nlite %U
+Icon=nlite
+Type=Application
+Categories=AudioVideo;Audio;;Video
