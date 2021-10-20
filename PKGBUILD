@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-3.0-bin
-pkgver=3.0.211013.53af51ad50ec
+pkgver=3.0.211020.ef9269bd62f3
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('x86_64')
@@ -50,11 +50,10 @@ build() {
 	sed -i "s/=Blender/=Blender-$_upstreamversion/" blender.desktop
 	#for f in datafiles/icons/*/apps/blender.* ; do chmod 644 $f && mv $f "${f%.*}-$_upstreamversion.${f#*.}" ; done
 	echo -n "[Thumbnailer Entry]
-TryExec=blender-$_upstreamversion-thumbnailer.py
-Exec=blender-$_upstreamversion-thumbnailer.py %u %o
+TryExec=blender-$_upstreamversion-thumbnailer
+Exec=blender-$_upstreamversion-thumbnailer %u %o
 MimeType=application/x-blender;
 " > blender.thumbnailer
-	sed -i '1s;^;#!/usr/share/blender/'"$_upstreamversion"'/python/bin/python3.7m\n;' blender-thumbnailer.py
 	echo -e "#!/bin/bash\nexec /usr/share/blender/blender-$_upstreamversion \$@" > blender-$_upstreamversion
 	echo -e "#!/bin/bash\nexec /usr/share/blender/blender-softwaregl-$_upstreamversion \$@" > blender-$_upstreamversion-softwaregl
 }
@@ -75,5 +74,5 @@ package() {
 	install -Dm755 blender-$_upstreamversion "$pkgdir/usr/bin/blender-$_upstreamversion"
 	install -Dm755 blender-softwaregl "$pkgdir/usr/share/blender/blender-softwaregl-$_upstreamversion"
 	install -Dm755 blender-$_upstreamversion-softwaregl "$pkgdir/usr/bin/blender-$_upstreamversion-softwaregl"
-	install -Dm755 blender-thumbnailer.py "$pkgdir/usr/bin/blender-$_upstreamversion-thumbnailer.py"
+	install -Dm755 blender-thumbnailer "$pkgdir/usr/bin/blender-$_upstreamversion-thumbnailer"
 }
