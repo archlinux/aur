@@ -1,15 +1,15 @@
 pkgbase = ruby-pg-query
 	pkgdesc = Ruby extension to parse, deparse and normalize SQL queries using the PostgreSQL query parser
-	pkgver = 2.0.3
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/lfittl/pg_query
 	arch = any
 	license = BSD-3-CLAUSE
 	makedepends = rubygems
 	depends = ruby
-	noextract = pg_query-2.0.3.gem
-	source = https://rubygems.org/downloads/pg_query-2.0.3.gem
-	sha256sums = 4f6566d174b477b25736f89d6e5455668df44962a4582c68fcc2dffbe63031d6
+	noextract = pg_query-2.1.1.gem
+	source = https://rubygems.org/downloads/pg_query-2.1.1.gem
+	sha256sums = 99286431de6316d31d1882c5ebc812bd23ac4dea4216d1675386da6f4f5ac131
 
 pkgname = ruby-pg-query
 
