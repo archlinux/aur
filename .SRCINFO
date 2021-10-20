@@ -1,0 +1,19 @@
+pkgbase = mesen-sx-git
+	pkgdesc = A cross-platform Super Nintendo emulator
+	pkgver = 0.4.0.r198.gdd9e689
+	pkgrel = 1
+	url = https://github.com/SourMesen/Mesen-S
+	arch = x86_64
+	license = GPL3
+	makedepends = clang
+	makedepends = gendesk
+	makedepends = zip
+	depends = mono
+	depends = sdl2
+	conflicts = mesen-s
+	conflicts = mesen-s-bin
+	conflicts = mesen-s-git
+	source = Mesen-S::git+https://github.com/NovaSquirrel/Mesen-SX.git
+	sha256sums = SKIP
+
+pkgname = mesen-sx-git
