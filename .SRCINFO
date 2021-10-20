@@ -1,0 +1,18 @@
+pkgbase = gpujpeg-git
+	pkgdesc = JPEG encoder and decoder library and console application for NVIDIA GPUs (from git)
+	pkgver = r762.2252eaf
+	pkgrel = 1
+	url = https://github.com/CESNET/GPUJPEG
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = cuda
+	depends = glew
+	provides = gpujpeg
+	provides = libgpujpeg.so
+	conflicts = gpujpeg
+	source = gpujpeg-git::git+https://github.com/CESNET/GPUJPEG.git
+	sha256sums = SKIP
+
+pkgname = gpujpeg-git
