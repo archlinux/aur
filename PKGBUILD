@@ -2,7 +2,7 @@
 pkgname=goobook-git
 _gitname=goobook
 pkgver=3.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Search your google contacts from the command-line or mutt."
 arch=('any')
 url="https://gitlab.com/goobook/goobook"
@@ -22,12 +22,15 @@ pkgver() {
   git describe --tags --always | sed 's|-|.|g'
 }
 
+build() {
+  cd "$_gitname"
+  python setup.py build
+}
+
 package() {
   cd "$_gitname"
-  python setup.py install --root="${pkgdir}" --optimize=1 || return 1
+  python setup.py install --root="${pkgdir}" --optimize=1
   rst2man.py --strict "$_gitname.1.rst" "$_gitname.1"
   install -Dm644 -Dt "$pkgdir/usr/share/man/man1" "$_gitname.1"
   install -Dm644 -Dt "$pkgdir/usr/share/doc/$_gitname" "README.rst" "CHANGES.rst"
 }
-
-# vim:set ts=2 sw=2 et:

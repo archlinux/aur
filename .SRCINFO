@@ -1,7 +1,7 @@
 pkgbase = goobook-git
 	pkgdesc = Search your google contacts from the command-line or mutt.
 	pkgver = 3.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/goobook/goobook
 	install = goobook.install
 	arch = any
@@ -22,4 +22,3 @@ pkgbase = goobook-git
 	md5sums = SKIP
 
 pkgname = goobook-git
-
