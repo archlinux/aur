@@ -2,11 +2,11 @@
 _pkgname=networkmanager-dmenu
 _gitname=networkmanager-dmenu
 pkgname=$_pkgname-git
-pkgver=r58.2770261
+pkgver=r143.c98810b
 pkgrel=1
 pkgdesc="Control NetworkManager via dmenu"
 arch=('any')
-url="https://github.com/firecat53/networkmanager-dmenu"
+url="git+https://github.com/firecat53/networkmanager-dmenu"
 license=('MIT')
 depends=('python' 'networkmanager' 'python-gobject')
 makedepends=('git')
