@@ -1,0 +1,21 @@
+--- quake2-r0.16.2/src/client/client.h.orig	2021-10-19 19:01:04.759948327 -0400
++++ quake2-r0.16.2/src/client/client.h	2021-10-19 19:01:09.269967879 -0400
+@@ -49,7 +49,6 @@
+ #ifdef QMAX
+ #define random()	((rand () & 0x7fff) / ((float)0x7fff))
+ #define crandom()	(2.0 * (random() - 0.5))
+-vec3_t clientOrg; //lerped org of client for server->client side effects
+ 
+ void vectoangles2 (vec3_t value1, vec3_t angles);
+ 
+--- quake2-r0.16.2/src/rogue/g_local.h.orig	2021-10-19 18:48:36.838227524 -0400
++++ quake2-r0.16.2/src/rogue/g_local.h	2021-10-19 18:48:42.321615327 -0400
+@@ -22,7 +22,7 @@
+ //==================================================================
+ 
+ #ifndef _WIN32
+-#include <bits/nan.h>
++#include <math.h>
+ #define min(a,b) ((a) < (b) ? (a) : (b))
+ #define max(a,b) ((a) > (b) ? (a) : (b))
+ #ifdef __sun__

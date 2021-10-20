@@ -24,7 +24,7 @@ source=("http://www.icculus.org/quake2/files/quake2-${pkgver}.tar.gz"
     'http://www.icculus.org/quake2/files/pak17.pak'
     'http://www.icculus.org/quake2/files/pak19.pak'
     'quake2.sh' 'q2ded.sh' 'xatrix.sh' 'rogue.sh' 'ctf.sh' 'snd_alsa.c'
-    'gnusource.patch' 'map_command_fix.patch')
+    'gnusource.patch' 'map_command_fix.patch' 'updates_for_gcc.patch')
 sha256sums=('98cea3cbd70bd1f195e5190d0ae047c636e00e21dbc6cc5bdee4acd52876d3e9'
             '94bf596cd85d38ea294b99ccb0ebb5e4b9776cca335001b3803e2d8407395589'
             'ceefb2fd748961cb0bc3244220f3eb09d8f7b8ca2eb32cdf9b284727a2fdc919'
@@ -45,7 +45,8 @@ sha256sums=('98cea3cbd70bd1f195e5190d0ae047c636e00e21dbc6cc5bdee4acd52876d3e9'
             'ea50ae5cca9d633fe2ad30c59beb2ad350130bdd2a78f773639794f2c12d1ed1'
             'fd434189a6242ad288e5827c8285e0dca3f26fe447be50204d4b6817cb1ae624'
             '9ac34f2bebbb6d4a19c590e00db8e5b0034b3ffe2a245a595e28ab43d65d7617'
-            '7ce69543faf226e871dbe78c058a3499f5c283860ae2d9e39e397178123264ec')
+            '7ce69543faf226e871dbe78c058a3499f5c283860ae2d9e39e397178123264ec'
+            '637c94188ee5fb147fae56fd368b7b184f3a111adc1099ec0da0a95046c93d6a')
 PKGEXT='.pkg.tar'
 
 # Computer Architecture Variable used by Quake2
@@ -106,6 +107,9 @@ prepare() {
 
     # Map command fix by h3xx
     /usr/bin/patch -p1 < "${srcdir}/map_command_fix.patch"
+
+    # Updates to compile using newer gcc releases
+    /usr/bin/patch -p1 < "${srcdir}/updates_for_gcc.patch"
 
     msg "Quake 2 patching complete"
 }
