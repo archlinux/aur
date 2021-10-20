@@ -1,0 +1,22 @@
+[Desktop Entry]
+Categories=Development;IDE;Qt;
+Comment[ru_RU]=
+Comment=
+Exec=qtcreator %F
+GenericName[ru_RU]=C++ IDE for developing Qt applications
+GenericName=C++ IDE for developing Qt applications
+Icon=QtProject-qtcreator
+MimeType=text/x-c++src;text/x-c++hdr;application/x-designer;
+Name[ru_RU]=Qt Creator
+Name=Qt Creator
+Path=
+StartupNotify=true
+StartupWMClass=qtcreator
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-StartupNotify=true
+X-KDE-SubstituteUID=false
+X-KDE-Username=

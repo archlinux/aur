@@ -33,10 +33,10 @@ provides=(qtcreator qbs)
 conflicts=(qtcreator qbs)
 source=('git+https://code.qt.io/qt-creator/qt-creator.git'
         'git+https://code.qt.io/qbs/qbs.git'
-        'qtcreator-clang-plugins.patch')
+        'org.qt-project.qtcreator.desktop')
 sha256sums=('SKIP'
             'SKIP'
-            '26382c282c36aa6716af2deadae864ed21ffba0dd568f9b8f8f8048ce304f436')
+            '90addb552923db0897f7096d166c2d1bf1c3390ae9c79687fc4ce7c4e57ee810')
 
 pkgver() {
     cd qt-creator
@@ -51,11 +51,6 @@ prepare() {
 
     # fix hardcoded libexec path
     sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qtcreator.pri
-
-    # Load analyzer plugins on demand, since upstream clang doesn't link to all plugins
-    # see http://code.qt.io/cgit/clang/clang.git/commit/?id=7f349701d3ea0c47be3a43e265699dddd3fd55cf
-    # and https://bugs.archlinux.org/task/59492
-    patch -p1 -i ../qtcreator-clang-plugins.patch
 
     # Do *NOT* use system Qbs: qt creator master is *NOT* compatible with any released Qbs!
     ( cd src/shared && rm -rf qbs && ln -s ../../../qbs qbs )
@@ -79,4 +74,7 @@ package() {
 
     install -Dm644 "${srcdir}/qt-creator/LICENSE.GPL3-EXCEPT" \
         "${pkgdir}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT"
+        
+    mkdir -p "${pkgdir}/usr/share/applications/"
+    cp "${srcdir}/org.qt-project.qtcreator.desktop" "${pkgdir}/usr/share/applications/"
 }

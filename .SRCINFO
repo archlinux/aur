@@ -35,10 +35,9 @@ pkgbase = qtcreator-git
 	options = docs
 	source = git+https://code.qt.io/qt-creator/qt-creator.git
 	source = git+https://code.qt.io/qbs/qbs.git
-	source = qtcreator-clang-plugins.patch
+	source = org.qt-project.qtcreator.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 26382c282c36aa6716af2deadae864ed21ffba0dd568f9b8f8f8048ce304f436
+	sha256sums = 90addb552923db0897f7096d166c2d1bf1c3390ae9c79687fc4ce7c4e57ee810
 
 pkgname = qtcreator-git
-
