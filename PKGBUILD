@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2115
 
 pkgname=vte3-nohang
-pkgver=0.64.2
+pkgver=0.66.0
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget (plus no-hang patch)"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
