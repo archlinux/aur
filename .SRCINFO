@@ -1,7 +1,7 @@
 pkgbase = lcj
 	pkgdesc = All tools for Lcj
 	pkgver = 1.0.0
-	pkgrel = 11
+	pkgrel = 12
 	arch = any
 	groups = lcj
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = lcj
 	depends = systemd-godns
 	depends = git-tools
 	depends = gfwlist-route
-	depends = pkgbuild-introspection
 	depends = pkgfile
 	optdepends = pkgbuild-introspection: For mksrcinfo
 	source = ipmac
