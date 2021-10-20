@@ -1,5 +1,5 @@
 pkgname="plotinus-unityx-git"
-pkgver="git"
+pkgver=v10.0.rc4.r1.gdf9443a
 pkgrel=1
 pkgdesc="HUD for UnityX"
 arch=(any)
