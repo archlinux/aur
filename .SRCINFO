@@ -1,0 +1,48 @@
+pkgbase = glibc-x86_64
+	pkgver = 2.34
+	pkgrel = 1
+	url = https://www.gnu.org/software/libc
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = gd
+	makedepends = lib32-gcc-libs
+	makedepends = python
+	optdepends = perl: for mtrace
+	options = !strip
+	options = staticlibs
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.34.tar.xz
+	source = locale.gen.txt
+	source = locale-gen
+	source = lib32-glibc.conf
+	source = sdt.h
+	source = sdt-config.h
+	md5sums = 31998b53fb39cb946e96abc310af1c89
+	md5sums = 07ac979b6ab5eeb778d55f041529d623
+	md5sums = 476e9113489f93b348b21e144b6a8fcf
+	md5sums = 6e052f1cb693d5d3203f50f9d4e8c33b
+	md5sums = 91fec3b7e75510ae2ac42533aa2e695e
+	md5sums = 680df504c683640b02ed4a805797c0b2
+
+pkgname = glibc-x86_64
+	pkgdesc = GNU C Library
+	install = glibc.install
+	depends = linux-api-headers>=4.10
+	depends = tzdata
+	depends = filesystem
+	optdepends = gd: for memusagestat
+	provides = glibc=2.34
+	conflicts = glibc
+	backup = etc/gai.conf
+	backup = etc/locale.gen
+	backup = etc/nscd.conf
+
+pkgname = lib32-glibc-x86_64
+	pkgdesc = GNU C Library (32-bit)
+	depends = glibc=2.34
+	provides = lib32-glibc=2.34
+	conflicts = lib32-glibc
+	options = !strip
+	options = staticlibs
+	options = !emptydirs
