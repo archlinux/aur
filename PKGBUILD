@@ -1,5 +1,6 @@
 # Maintainer: dreamscached <dreamscache.d@gmail.com>
-pkgname=recaf
+_pkgname=recaf
+pkgname="${_pkgname}-bin"
 pkgver=2.21.2
 pkgrel=1
 pkgdesc="A modern Java bytecode editor"
@@ -7,10 +8,11 @@ arch=("any")
 url="https://github.com/Col-E/Recaf"
 license=("MIT")
 depends=("java-runtime" "java-openjfx")
+replaces=("recaf")
 makedepends=("jdk-openjdk")
-noextract=("$pkgname-$pkgver-J8-jar-with-dependencies.jar")
+noextract=("$_pkgname-$pkgver-J8-jar-with-dependencies.jar")
 source=(
-    "https://github.com/Col-E/Recaf/releases/download/$pkgver/$pkgname-$pkgver-J8-jar-with-dependencies.jar"
+    "https://github.com/Col-E/Recaf/releases/download/$pkgver/$_pkgname-$pkgver-J8-jar-with-dependencies.jar"
     "https://raw.githubusercontent.com/Col-E/Recaf/$pkgver/LICENSE"
 )
 sha256sums=(
