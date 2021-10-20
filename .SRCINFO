@@ -19,7 +19,7 @@ pkgbase = slade-git
 	depends = glu
 	depends = gtk3
 	depends = libgl
-	depends = lua53
+	depends = lua
 	depends = mpg123
 	depends = sfml>=2.5
 	depends = webkit2gtk
