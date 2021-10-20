@@ -1,6 +1,6 @@
 pkgbase = gamescope
 	pkgdesc = The micro-compositor formerly known as steamcompmgr
-	pkgver = 3.9.4
+	pkgver = 3.9.5
 	pkgrel = 1
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
@@ -38,10 +38,10 @@ pkgbase = gamescope
 	conflicts = gamescope-git
 	conflicts = libliftoff
 	replaces = steamcompmgr
-	source = gamescope-3.9.4.tar.gz::https://github.com/Plagman/gamescope/archive/3.9.4.tar.gz
+	source = gamescope-3.9.5.tar.gz::https://github.com/Plagman/gamescope/archive/3.9.5.tar.gz
 	source = libliftoff-b7a6958.tar.gz::https://github.com/emersion/libliftoff/archive/b7a6958bcacdedf6e451d8821c807299943ef150.tar.gz
 	source = wlroots-9579d62.tar.gz::https://github.com/swaywm/wlroots/archive/9579d62a160821a107763325a515d3aee0a1e158.tar.gz
-	sha256sums = 8d48b4982495d82cb1c8e289ba6677a55714ee881cad156061564593908c047f
+	sha256sums = b49c407f6db1bde0765fdab5b8aaa424cc962b8608f2fbd98873de6e3e820eab
 	sha256sums = f9b7969e2f33270b8d7df1f15741cffaf8022fe80548975f823b1ce3e5df495c
 	sha256sums = 878970564de649c81365cd3e34384309b35a848c117821837102f1ac9094c5d6
 

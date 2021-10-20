@@ -1,7 +1,7 @@
 # Maintainer: Samuel "scrufulufugus" Monson <smonson at irbash dot net>
 # Original PKGBUILD Contributor: "PedroHLC"
 pkgname="gamescope"
-pkgver=3.9.4
+pkgver=3.9.5
 pkgrel=1
 pkgdesc="The micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -21,7 +21,7 @@ _wlrootsver=9579d62a160821a107763325a515d3aee0a1e158 # wlroots commit version
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "libliftoff-${_libliftver:0:7}.tar.gz::https://github.com/emersion/libliftoff/archive/${_libliftver}.tar.gz"
         "wlroots-${_wlrootsver:0:7}.tar.gz::https://github.com/swaywm/wlroots/archive/${_wlrootsver}.tar.gz")
-sha256sums=('8d48b4982495d82cb1c8e289ba6677a55714ee881cad156061564593908c047f'
+sha256sums=('b49c407f6db1bde0765fdab5b8aaa424cc962b8608f2fbd98873de6e3e820eab'
             'f9b7969e2f33270b8d7df1f15741cffaf8022fe80548975f823b1ce3e5df495c'
             '878970564de649c81365cd3e34384309b35a848c117821837102f1ac9094c5d6')
 
