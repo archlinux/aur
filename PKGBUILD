@@ -2,8 +2,8 @@
 
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud' 'mangohud-common')
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.6
+pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
@@ -11,19 +11,19 @@ makedepends=('meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
              'vulkan-headers' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader'
              'libxnvctrl' 'dbus')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v$pkgver.tar.gz")
-sha256sums=('a1cb0bef85fd46a6e5e7426b86e0d16714e5ec68f96c724f6f53a357f516f78b')
+sha256sums=('8221aa46c6a86e9b249f26b9ce9dd6208e95cb0f7ab42ab219dfba3c6bcbe3b5')
 
 _srcdir="MangoHud-$pkgver"
 
 build() {
-    arch-meson -Dappend_libdir_mangohud=false -Duse_system_vulkan=enabled "$_srcdir" build64
+    arch-meson --wrap-mode default -Dappend_libdir_mangohud=false -Duse_system_vulkan=enabled "$_srcdir" build64
     ninja -C build64
 
     export CC="gcc -m32"
     export CXX="g++ -m32"
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
     export LLVM_CONFIG="/usr/bin/llvm-config32"
-    arch-meson -Dappend_libdir_mangohud=false -Duse_system_vulkan=enabled "$_srcdir" build32 --libdir lib32
+    arch-meson --wrap-mode default -Dappend_libdir_mangohud=false -Duse_system_vulkan=enabled "$_srcdir" build32 --libdir lib32
     ninja -C build32
 }
 

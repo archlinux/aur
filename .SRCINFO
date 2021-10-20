@@ -1,6 +1,6 @@
 pkgbase = mangohud
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.6.6
+	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
 	license = MIT
@@ -14,8 +14,8 @@ pkgbase = mangohud
 	makedepends = lib32-vulkan-icd-loader
 	makedepends = libxnvctrl
 	makedepends = dbus
-	source = mangohud-0.6.1.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v0.6.1.tar.gz
-	sha256sums = a1cb0bef85fd46a6e5e7426b86e0d16714e5ec68f96c724f6f53a357f516f78b
+	source = mangohud-0.6.6.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v0.6.6.tar.gz
+	sha256sums = 8221aa46c6a86e9b249f26b9ce9dd6208e95cb0f7ab42ab219dfba3c6bcbe3b5
 
 pkgname = mangohud
 	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more
@@ -35,4 +35,3 @@ pkgname = lib32-mangohud
 pkgname = mangohud-common
 	pkgdesc = Common files for mangohud and lib32-mangohud
 	optdepends = bash: mangohud helper script
-
