@@ -3,9 +3,9 @@
 _pkgname=cuberite
 pkgname=cuberite-bin
 _pkgver=1.12.2
-_build_i686=268
-_build_x86_64=258
-_build_armv7h=258
+_build_i686=294
+_build_x86_64=284
+_build_armv7h=290
 pkgver="${_pkgver}b${_build_x86_64}"
 pkgrel=3
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
