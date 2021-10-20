@@ -1,12 +1,12 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=lith-git
-pkgver=1.2.3.r1.gb26c390
+pkgver=1.2.15.r2.g71a63ae
 pkgrel=1
 pkgdesc='A multiplatform WeeChat relay client'
 arch=('x86_64')
 url='https://github.com/LithApp/Lith'
 license=('GPL')
-depends=('qt5-base' 'qt5-declarative' 'qt5-websockets' 'qt5-multimedia' 'qt5-quickcontrols2')
+depends=('qt6-base' 'qt6-multimedia' 'qt6-quick3d' 'qt6-websockets')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,7 +23,7 @@ build() {
     cd "$srcdir/${pkgname%-git}"
     mkdir -p build
     cd build
-    qmake ..
+    qmake6 ..
     make
 }
 
