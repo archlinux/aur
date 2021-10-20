@@ -6,7 +6,6 @@ pkgbase = mallet-tunnel-bin
 	arch = i386
 	arch = x86_64
 	license = unknown
-	depends = chisel-tunnel
 	provides = mallet-tunnel
 	conflicts = mallet-tunnel
 	source_i386 = mallet-tunnel-bin-0.0.4.tar.gz::https://github.com/ryotarai/mallet/releases/download/v0.0.4/mallet_linux_i386.tar.gz

@@ -2,14 +2,13 @@
 
 pkgname=mallet-tunnel-bin
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="TCP tunnel that works like VPN"
 arch=('i386' 'x86_64')
 url="https://github.com/ryotarai/mallet"
 license=('unknown')
 provides=('mallet-tunnel')
 conflicts=('mallet-tunnel')
-depends=('chisel-tunnel')
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/ryotarai/mallet/releases/download/v$pkgver/mallet_linux_x86_64.tar.gz")
 source_i386=("$pkgname-$pkgver.tar.gz::https://github.com/ryotarai/mallet/releases/download/v$pkgver/mallet_linux_i386.tar.gz")
 
