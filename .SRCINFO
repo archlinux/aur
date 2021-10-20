@@ -1,7 +1,7 @@
 pkgbase = python-openfermion
 	pkgdesc = The electronic structure package for quantum computers.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quantumlib/OpenFermion
 	arch = any
 	license = Apache
@@ -21,6 +21,7 @@ pkgbase = python-openfermion
 	sha256sums = a6b7a78671c1a2b88b22a26fb945e90456f809731c338cdba58f739314ad6146
 
 pkgname = python-openfermion
+	depends = python-deprecation
 	depends = python-h5py
 	depends = python-networkx
 	depends = python-numpy

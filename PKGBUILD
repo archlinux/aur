@@ -5,7 +5,7 @@ _name=${_Name,,}
 pkgname=python-$_name
 
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The electronic structure package for quantum computers."
 arch=('any')
 url="https://github.com/quantumlib/OpenFermion"
@@ -46,7 +46,8 @@ check() {
 package() {
   cd "$srcdir/$_Name-$pkgver"
   conflicts=('python-openfermion-0.11')
-  depends=('python-h5py'
+  depends=('python-deprecation'
+           'python-h5py'
            'python-networkx'
            'python-numpy'
 	   'python-scipy'
