@@ -1,0 +1,116 @@
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -10,14 +10,10 @@ LIBRETRO_COMMON_DIR  = $(LIBRETRO_DEPS_DIR)/libretro-common
+ INCFLAGS :=  \
+ 	-I$(CORE_DIR)/src \
+ 	-I$(LIBRETRO_COMMON_DIR)/include \
+-	-I$(LIBRETRO_DEPS_DIR)/ \
+-	-I$(LIBCHDR_DIR)/include \
+-	-I$(LZMA_DIR)/include \
+-	-I$(LIBOGG_DIR)/include \
+-	-I$(LIBVORBIS_DIR)/include \
+-	-I$(LIBVORBIS_DIR)/lib \
+-	-I$(ZLIB_DIR) \
+-	-I$(MINIZIP_DIR)
++	-I$(LIBCHDR_DIR)/include/dr_libs \
++	$(shell pkg-config --cflags libchdr minizip vorbisfile)
++
++LIBS += $(shell pkg-config --libs libchdr minizip vorbisfile)
+ 
+ SOURCES_CXX :=\
+ 	$(CORE_DIR)/src/archive.cpp \
+@@ -66,13 +62,6 @@ SOURCES_C := \
+ 	$(CORE_DIR)/src/3rdparty/musashi/m68kopnz.c \
+ 	$(CORE_DIR)/src/3rdparty/musashi/m68kops.c
+ 
+-SOURCES_C += \
+-	$(LIBCHDR_DIR)/src/libchdr_bitstream.c \
+-	$(LIBCHDR_DIR)/src/libchdr_cdrom.c \
+-	$(LIBCHDR_DIR)/src/libchdr_chd.c \
+-	$(LIBCHDR_DIR)/src/libchdr_flac.c \
+-	$(LIBCHDR_DIR)/src/libchdr_huffman.c
+-
+ SOURCES_C += \
+ 	$(LIBRETRO_COMMON_DIR)/compat/compat_posix_string.c \
+ 	$(LIBRETRO_COMMON_DIR)/compat/compat_strcasestr.c \
+@@ -94,59 +83,6 @@ SOURCES_C += \
+ 	$(LIBRETRO_COMMON_DIR)/string/stdstring.c \
+ 	$(LIBRETRO_COMMON_DIR)/vfs/vfs_implementation.c
+ 
+-SOURCES_C += \
+-	$(LZMA_DIR)/src/Alloc.c \
+-	$(LZMA_DIR)/src/Bra86.c \
+-	$(LZMA_DIR)/src/BraIA64.c \
+-	$(LZMA_DIR)/src/CpuArch.c \
+-	$(LZMA_DIR)/src/Delta.c \
+-	$(LZMA_DIR)/src/LzFind.c \
+-	$(LZMA_DIR)/src/Lzma86Dec.c \
+-	$(LZMA_DIR)/src/LzmaDec.c \
+-	$(LZMA_DIR)/src/LzmaEnc.c \
+-	$(LZMA_DIR)/src/Sort.c
+-
+-SOURCES_C += \
+-	$(LIBOGG_DIR)/src/bitwise.c \
+-	$(LIBOGG_DIR)/src/framing.c
+-
+-SOURCES_C += \
+-	$(LIBVORBIS_DIR)/lib/bitrate.c \
+-	$(LIBVORBIS_DIR)/lib/block.c \
+-	$(LIBVORBIS_DIR)/lib/codebook.c \
+-	$(LIBVORBIS_DIR)/lib/envelope.c \
+-	$(LIBVORBIS_DIR)/lib/floor0.c \
+-	$(LIBVORBIS_DIR)/lib/floor1.c \
+-	$(LIBVORBIS_DIR)/lib/info.c \
+-	$(LIBVORBIS_DIR)/lib/lookup.c \
+-	$(LIBVORBIS_DIR)/lib/lpc.c \
+-	$(LIBVORBIS_DIR)/lib/lsp.c \
+-	$(LIBVORBIS_DIR)/lib/mapping0.c \
+-	$(LIBVORBIS_DIR)/lib/mdct.c \
+-	$(LIBVORBIS_DIR)/lib/psy.c \
+-	$(LIBVORBIS_DIR)/lib/registry.c \
+-	$(LIBVORBIS_DIR)/lib/res0.c \
+-	$(LIBVORBIS_DIR)/lib/sharedbook.c \
+-	$(LIBVORBIS_DIR)/lib/smallft.c \
+-	$(LIBVORBIS_DIR)/lib/synthesis.c \
+-	$(LIBVORBIS_DIR)/lib/vorbisfile.c \
+-	$(LIBVORBIS_DIR)/lib/window.c
+-
+-SOURCES_C += \
+-	$(ZLIB_DIR)/adler32.c \
+-	$(ZLIB_DIR)/crc32.c \
+-	$(ZLIB_DIR)/deflate.c \
+-	$(ZLIB_DIR)/infback.c \
+-	$(ZLIB_DIR)/inffast.c \
+-	$(ZLIB_DIR)/inflate.c \
+-	$(ZLIB_DIR)/inftrees.c \
+-	$(ZLIB_DIR)/trees.c \
+-	$(ZLIB_DIR)/zutil.c
+-
+-SOURCES_C += \
+-	$(MINIZIP_DIR)/ioapi.c \
+-	$(MINIZIP_DIR)/unzip.c
+-
+ ifneq ($(STATIC_LINKING),1)
+ SOURCES_C +=	$(SRC_LIBRETRO_COMMON)
+ endif
+--- a/src/flacfile.cpp
++++ b/src/flacfile.cpp
+@@ -1,6 +1,6 @@
+ #include <cstring>
+ 
+-//#define DR_FLAC_IMPLEMENTATION
++#define DR_FLAC_IMPLEMENTATION
+ #include "flacfile.h"
+ 
+ size_t drflac_read_cb(void* pUserData, void* pBufferOut, size_t bytesToRead)
+--- a/src/flacfile.h
++++ b/src/flacfile.h
+@@ -4,7 +4,7 @@
+ #include <array>
+ 
+ #include "abstractfile.h"
+-#include "dr_libs/dr_flac.h"
++#include "dr_flac.h"
+ 
+ class FlacFile
+ {

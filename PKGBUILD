@@ -1,39 +1,43 @@
-# Maintainer:  Oliver Jaksch <arch-aur at com-in dot de>
-
-pkgname=libretro-neocd-git
-pkgver=105.ffa5ae0
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Oliver Jaksch <arch-aur at com-in dot de>
+_pkgname=libretro-neocd
+pkgname=$_pkgname-git
+pkgver=r114.33b8f9c
 pkgrel=1
-pkgdesc="Neo Geo CD emulator for libretro"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+pkgdesc="SNK Neo Geo CD core"
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/libretro/neocd_libretro"
 license=('LGPL3')
 groups=('libretro')
-depends=('zlib' 'glibc' 'libretro-core-info' 'flac' 'libogg' 'libvorbis' 'zlib')
-makedepends=('git' 'cmake')
-
-_libname=neocd_libretro
-_gitname=neocd_libretro
-source=("git+https://github.com/libretro/${_gitname}.git")
-sha256sums=('SKIP')
+depends=('gcc-libs' 'libchdr' 'libretro-core-info' 'libvorbis' 'minizip')
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=(
+	"$_pkgname::git+$url.git"
+	'unbundle-libs.patch'
+)
+b2sums=(
+	'SKIP'
+	'f033a8315cc072510be10e39d7bd434f94b905d7c84e70ea526f27ed291b0b6657be27e0f12469bd987e7aefbc3c40a3fb95f222592b078128c0d50ab833419c'
+)
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${_gitname}"
-  git submodule update --init --recursive
+	cd $_pkgname
+	patch -Np1 < ../unbundle-libs.patch
+	sed -i 's/-Ofast//g' Makefile
 }
 
 build() {
-  cd "${_gitname}"
-  make
+	make -C $_pkgname
 }
 
 package() {
-  install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_gitname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-  msg2 "\e[1;32mneocd requires a bunch of BIOS files placed in the libretro 'system' folder. \e[0m"
-  msg2 "\e[1;32mPlease have a look at https://github.com/libretro/neocd_libretro how to accomplish this. \e[0m"
+	# shellcheck disable=SC2154
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/neocd_libretro.so
 }
