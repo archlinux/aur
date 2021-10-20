@@ -1,11 +1,11 @@
 pkgbase = python-keepmenu-git
 	pkgdesc = Dmenu/Rofi frontend for Keepass databases.
-	pkgver = r8.7418838
+	pkgver = r176.dbcf6dc
 	pkgrel = 1
-	url = https://github.com/firecat53/keepmenu
+	url = git+https://github.com/firecat53/keepmenu
 	install = python-keepmenu.install
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = git
 	depends = python
 	depends = python-pykeepass
@@ -19,4 +19,3 @@ pkgbase = python-keepmenu-git
 	md5sums = SKIP
 
 pkgname = python-keepmenu-git
-

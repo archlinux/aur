@@ -2,13 +2,13 @@
 _pkgname=python-keepmenu
 _gitname=keepmenu
 pkgname=$_pkgname-git
-pkgver=r8.7418838
+pkgver=r176.dbcf6dc
 pkgrel=1
 pkgdesc="Dmenu/Rofi frontend for Keepass databases."
 
 arch=('any')
-url="https://github.com/firecat53/keepmenu"
-license=('GPLv3')
+url="git+https://github.com/firecat53/keepmenu"
+license=('GPL3')
 depends=('python' 'python-pykeepass' 'python-pynput')
 makedepends=('git')
 optdepends=('dmenu: either dmenu or rofi is required'
@@ -25,12 +25,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  install -Dm755 "$srcdir/$_gitname/keepmenu" "$pkgdir/usr/bin/keepmenu"
-  install -Dm644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/$_gitname/README.rst" "$pkgdir/usr/share/doc/$pkgname/README.rst"
-  install -Dm644 "$srcdir/$_gitname/keepmenu.1" "$pkgdir/usr/share/man/man1/keepmenu.1"
-  install -Dm644 "$srcdir/$_gitname/config.ini.example" "$pkgdir/usr/share/doc/$pkgname/config.ini.example"
+build() {
+  cd "$_gitname"
+  python setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd "$_gitname"
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$_gitname/keepmenu.1" "$pkgdir/usr/share/man/man1/keepmenu.1"
+}
