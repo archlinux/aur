@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookintelcontroller
-pkgver=0.2beta
-pkgrel=2
+pkgver=0.3beta
+pkgrel=1
 pkgdesc="Application for the performance management of Intel processors"
 arch=('any')
 url="https://github.com/slimbook/slimbookintelcontroller"
@@ -11,7 +11,7 @@ depends=('dbus-python' 'gtk3' 'intel-undervolt' 'libappindicator-gtk3' 'libnotif
          'pciutils' 'python-gobject' 'python-pillow' 'systemd-libs')
 install="$pkgname.install"
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('2a36bb471c488714dc15261bfa6a2d06cfd1e08a2a409a1cb6ac354f2587e055')
+sha256sums=('c675637ec9b0b049bca38921aeae5e987a7ec764263ec9874dfc64fee39f2e99')
 
 package() {
   bsdtar xf data.tar.xz -C "$pkgdir"
@@ -20,13 +20,13 @@ package() {
   rm -rf "$pkgdir/usr/share/doc"
 
   # Install locales
-  cd "$pkgdir/usr/share/$pkgname/src/locale"
+  cd "$pkgdir/usr/share/$pkgname/src/translations"
   for lang in $(ls -d */); do
     install -d "$pkgdir/usr/share/locale/${lang}LC_MESSAGES"
-    mv "$pkgdir/usr/share/$pkgname/src/locale/${lang}LC_MESSAGES"/*.mo \
+    mv "$pkgdir/usr/share/$pkgname/src/translations/${lang}LC_MESSAGES"/*.mo \
       "$pkgdir/usr/share/locale/${lang}LC_MESSAGES"
   done
-  rm -rf "$pkgdir/usr/share/$pkgname/src/locale"
+  rm -rf "$pkgdir/usr/share/$pkgname/src/translations"
   rm "$pkgdir/usr/share/$pkgname/src/update_po.sh"
 
   # App permissions
