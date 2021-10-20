@@ -1,6 +1,6 @@
 # Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 pkgname=evcxr_repl
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A Rust REPL based on evcxr"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=('evcxr_repl')
 source=("https://github.com/google/evcxr/archive/v${pkgver}.tar.gz")
-sha256sums=("a97af8120708f83c5b7d8908601bd47d5c6dc876c47044fd87efc180f746f289")
+sha256sums=("8274dd36d179f7c60b41e02f6c79807c713db293c051980cb1153ad6771967da")
 
 build() {
   cd "$srcdir/evcxr-$pkgver/$pkgname"
