@@ -1,6 +1,6 @@
 pkgbase = hal-git
 	pkgdesc = The Hardware Analyzer for Hardware Reversing from emsec. (git version)
-	pkgver = v2.0.0.r144.gd0c81a07
+	pkgver = v3.3.0.r14.gccab704606
 	pkgrel = 1
 	url = https://github.com/emsec/hal
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = hal-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ccache
+	makedepends = z3
 	depends = lcov
 	depends = gcovr
 	depends = doxygen
@@ -29,4 +30,3 @@ pkgbase = hal-git
 	md5sums = SKIP
 
 pkgname = hal-git
-

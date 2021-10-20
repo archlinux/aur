@@ -1,6 +1,6 @@
 # Maintainer: theguy147 <yakamoz147 (at) protonmail (dot) com>
 pkgname=hal-git
-pkgver=v2.0.0.r144.gd0c81a07
+pkgver=v3.3.0.r14.gccab704606
 pkgrel=1
 pkgdesc='The Hardware Analyzer for Hardware Reversing from emsec. (git version)'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/emsec/hal'
 license=('MIT')
 depends=('lcov' 'gcovr' 'doxygen' 'boost' 'qt5-svg' 'libsodium' 'igraph' 'ninja' 'rapidjson' 'spdlog' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-jedi' 'python-pip' 'python-dateutil' 'pybind11')
 optdepends=('graphviz: for documentation')
-makedepends=('git' 'cmake' 'ccache')
+makedepends=('git' 'cmake' 'ccache' 'z3')
 source=("$pkgname::git+https://github.com/emsec/hal.git")
 md5sums=('SKIP')
 
