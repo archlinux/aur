@@ -1,11 +1,11 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=5.99.0.r6895.gbd63c018c9
+pkgver=5.99.0.r12888.gc5e5d8e0d4
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
-url="http://kicad-pcb.org/"
+url="https://kicad.org/"
 license=('GPL')
 depends=('glew' 'wxgtk3' 'desktop-file-utils' 'boost-libs' 'python'
          'glm' 'curl' 'swig' 'python-wxpython' 'opencascade' 'ngspice>=27')
