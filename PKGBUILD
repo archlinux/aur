@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-indent-blankline-git
-pkgver=r224.0a98fa8
+pkgver=2.6.4.r1.g0a98fa8
 pkgrel=1
 pkgdesc="Indent guides for Neovim"
 arch=('any')
@@ -17,8 +17,7 @@ source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
