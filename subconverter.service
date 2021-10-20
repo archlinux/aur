@@ -1,0 +1,12 @@
+[Unit]
+Description=Subconverter service
+
+[Service]
+User=root
+Type=simple
+ExecStart=/opt/subconverter/subconverter.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
