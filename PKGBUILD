@@ -1,4 +1,4 @@
-# Maintainer: janoosh <jwty@catgirls.party>
+# Maintainer: jwty <janoosh@catgirls.party>
 
 _pkgbasename=libffi
 pkgname=libffi7
