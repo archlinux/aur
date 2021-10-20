@@ -1,6 +1,6 @@
 # Maintainer: Joël Krähemann <jkraehemann@gmail.com>
 pkgname=gsequencer
-pkgver=3.12.2
+pkgver=3.12.3
 pkgrel=1
 pkgdesc="Advanced Gtk+ Sequencer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('alsa-lib' 'atk' 'dssi' 'fftw' 'glib2' 'gobject-introspection' 'gtk
 checkdepends=('cunit' 'xorg-server-xvfb')
 provides=('libgsequencer.so' 'libags_thread.so' 'libags_server.so' 'libags_gui.so' 'libags_audio.so' 'libags.so')
 source=("https://download.savannah.gnu.org/releases/gsequencer/3.12.x/$pkgname-$pkgver.tar.gz")
-sha512sums=('50105971d2c33aa64ee55229ac7125532ffc1342fa8354ba302b2df3f56c8cd9f702ae3d8f917fc0ef141c007073a020f275bdd8966fa6c150cb3e8f3ca3363b')
+sha512sums=('967baaa486d8bff423dff47b163e721374702169be5391ab1b44be8525ab259648e1e4baf70ce7848a252d95be461e009759d58187033a6b23a31ff3960193b3')
 # validpgpkeys=('ECD34CA97E55AE2AF14FBE9F25B4B3AE3388A17A') # key not available on key servers
 
 prepare() {
