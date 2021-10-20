@@ -1,11 +1,12 @@
 pkgbase = vtk9
 	pkgdesc = A software system for 3D computer graphics, image processing, and visualization
-	pkgver = 9.0.1
-	pkgrel = 4
+	pkgver = 9.0.3
+	pkgrel = 1
 	url = http://vtk.org
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = eigen
 	depends = freetype2
 	depends = jsoncpp
 	depends = libharu
@@ -36,10 +37,11 @@ pkgbase = vtk9
 	depends = gl2ps
 	provides = vtk
 	conflicts = vtk
-	source = https://gitlab.kitware.com/vtk/vtk/-/archive/v9.0.1/vtk-v9.0.1.tar.gz
+	source = https://gitlab.kitware.com/vtk/vtk/-/archive/v9.0.3/vtk-v9.0.3.tar.gz
 	source = freetype.patch
-	sha256sums = 15c269946a8a8ed578bbd28a59672c251089185d582cd1268658908bf414e017
+	source = limits.patch
+	sha256sums = 4d27b42d208bd61506f8508cbb1c35ee803a4432b4146fd8ac0d45bf1a7ffce8
 	sha256sums = aa2daca929f4bc75809dcfe959b1bf6f8b81450a8c29892c73420711823d1438
+	sha256sums = e626da07b165c59fcd54db8be2218696b76c5d239688b12bf229a4972c54bd1f
 
 pkgname = vtk9
-
