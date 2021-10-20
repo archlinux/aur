@@ -36,12 +36,9 @@ build(){
   chmod +x "$srcdir/RPMLauncher/build/linux/x64/release/bundle/updater"
 }
 package() {
-  cd "$srcdir/RPMLauncher/build/linux/x64/release/bundle/"
   mkdir -p "$pkgdir/usr/share/applications"
-  mkdir "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/opt/RPMLauncher"
-  cp -r * "$pkgdir/opt/RPMLauncher"
-  cd "$pkgdir/usr/share/applications"
+  cp -r "$srcdir/RPMLauncher/build/linux/x64/release/bundle/*" "$pkgdir/opt/RPMLauncher"
   echo "[Desktop Entry]
 Categories=Game;ArcadeGame;
 Comment=Edit
@@ -53,5 +50,5 @@ Path=/opt/RPMLauncher
 StartupNotify=false
 Terminal=true
 Type=Application
-Version=$PKGVER" >> RPMLauncher.desktop
+Version=$PKGVER" >> "$pkgdir/usr/share/applications/RPMLauncher.desktop"
 }
