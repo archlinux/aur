@@ -3,7 +3,7 @@
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
 pkgver=1.3.1.r1.ge1ae23dd
-pkgrel=1
+pkgrel=2
 url="https://github.com/bit-team/backintime"
 license=('GPL')
 arch=('any')
@@ -27,10 +27,10 @@ build() {
 }
 
 check() {
-  #LC_ALL=en_US.UTF-8 make -C $_pkgname/common test
+  #LC_ALL=C make -C $_pkgname/common test
 
   # Isolate some of the integration tests (~/.ssh/ files, ...)
-  LC_ALL=en_US.UTF-8 HOME=tmp make -C $_pkgname/common test
+  LC_ALL=C HOME=tmp make -C $_pkgname/common test
   rm -rf $_pkgname/common/tmp
 }
 
