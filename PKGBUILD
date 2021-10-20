@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=igvtools
-pkgver=2.4.18
+pkgver=2.4.19
 pkgrel=1
 pkgdesc="IGV utilities for preprocessing bioinformatics data files"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   http://data.broadinstitute.org/igv/projects/downloads/"${pkgver%.*}"/"${pkgname}"_"${pkgver}".zip
 )
 sha256sums=('e6a4ff3026b6cb7f86e9417d5232834d9d48d224ec6113f04d5f596258660dce'
-            '8236e31e4264e63e39956c1070028b83284a3fd56f46353504e47a12daa58dd2')
+            '7b351dde496ef9026b9da46f1962ce56b4a03ac04a212ddd59c3ba3caa9957c8')
 
 package() {
   install -Dm775 "${srcdir}"/"${pkgname}".sh "${pkgdir}"/usr/bin/"${pkgname}"
