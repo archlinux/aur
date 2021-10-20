@@ -1,6 +1,6 @@
 pkgbase = regolith-de
 	pkgver = 1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/regolith-linux/regolith-desktop
 	arch = x86_64
 	groups = regolith-de
@@ -149,8 +149,7 @@ pkgname = regolith-i3
 	license = MIT
 	depends = i3-gaps
 	depends = i3status
-	depends = xorg-server-common
-	depends = xorg-server-devel
+	depends = xorg-server
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	depends = libev
