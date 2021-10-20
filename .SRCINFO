@@ -1,7 +1,7 @@
 pkgbase = stairspeedtest-reborn-bin
 	pkgdesc = Proxy performance batch tester based on Shadowsocks(R) and V2Ray
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tindy2013/stairspeedtest-reborn
 	arch = x86_64
 	arch = armv7h
