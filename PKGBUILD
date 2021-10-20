@@ -23,7 +23,7 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-daily=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('151a1136475d609dc363acb45ecff3818800abb4f30899926444f305376c558a')
+sha256sums_x86_64=('f5a72c59b4490627836ab7003c462a15124697e1476986a53ea0ba009e17aeec')
 source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
 
 package() {
