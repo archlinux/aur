@@ -4,10 +4,10 @@ pkgname=papermc
 # curl -X GET "https://papermc.io/api/v2/projects/paper" -H  "accept: application/json"
 _pkgver=1.17.1
 # curl -X GET "https://papermc.io/api/v2/projects/paper/versions/${_pkgver}" -H  "accept: application/json"
-_build=243
+_build=341
 _license_commit=f25facb
 pkgver="${_pkgver}+b${_build}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance"
 arch=('any')
 url="https://papermc.io/"
