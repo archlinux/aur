@@ -1,15 +1,14 @@
 pkgbase = gomod
 	pkgdesc = Go modules analysis tool
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Helcaraxan/gomod
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
 	makedepends = glibc
-	provides = gomod
-	source = git+https://github.com/Helcaraxan/gomod.git#tag=v0.7.1
-	sha256sums = SKIP
+	source = gomod-0.7.1.tar.gz::https://github.com/Helcaraxan/gomod/archive/v0.7.1.tar.gz
+	sha256sums = b3fc070c32454691a1e48f643b83563d3aa1c6c2c96ddd9ce892ac0f20cae68c
 
 pkgname = gomod
