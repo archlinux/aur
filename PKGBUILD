@@ -8,6 +8,7 @@ arch=("any")
 url="https://github.com/Col-E/Recaf"
 license=("MIT")
 depends=("java-runtime" "java-openjfx")
+conflicts=("recaf")
 replaces=("recaf")
 makedepends=("jdk-openjdk")
 noextract=("$_pkgname-$pkgver-J8-jar-with-dependencies.jar")
