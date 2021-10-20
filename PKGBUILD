@@ -1,7 +1,7 @@
 # Maintainer: Leon Schumacher <leonsch@protonmail.com>
 # vim: ft=sh:
 pkgname=shsysusers
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="A replacement for systemd-sysusers written in bash "
 arch=('any')
@@ -12,7 +12,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	'20-shsysusers.hook'
 )
-sha256sums=('6100a0cd21bc4358aa76b61f0aca43ce6a0fd9e0c1e104f46b2e3010afccc72d'
+sha256sums=('dc2b77214e379ff9fdea9c0e0aa2785b492d0ebe0bfb6d887b25f234831681d9'
             'fe6eb1752d6b4a08b34c13276a19b5b521c700348e405cdbd74e13cdf7c8c07b')
 
 package() {
