@@ -1,11 +1,12 @@
+# Maintainer: Tianrui Wei <archlinux_aur at mail dot tianrui-wei dot com>
+# Contributor: Marcio Silva <marcionps at gmail dot com>
 # Based  on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer: Marcio Silva <marcionps at gmail dot com>
 
 _pkgname=obsidian
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.12.15
-pkgrel=2
+pkgver=0.12.19
+pkgrel=1
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
 arch=('x86_64')
 url="https://obsidian.md/"
