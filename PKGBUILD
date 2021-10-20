@@ -2,7 +2,7 @@
 # Contributor: Stéphane Meyer <tigerlost at tigerfunk dot tk>
 
 pkgname=btspk
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Commandline utility to easily connect bluetooth audio devices."
 arch=('any')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$url/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 noextract=()
-sha256sums=(e5d1aebf5ac3faf5cda6f5552a14271b0864b9ff4bb6654744bffb2bc166397a)
+sha256sums=(9b4b901e2c88a4bc9485d91bdf818c01bb46abd274dbea60e79966864680cff3)
 
 package() {
   cd "$pkgname-$pkgver"
