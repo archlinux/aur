@@ -2,7 +2,7 @@
 # vim: ft=sh:
 pkgname=runit-services
 pkgver=feb30bc458_1
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of services for runit - stolen from Artix Linux"
 arch=('any')
 url="https://gitea.artixlinux.org/artix/runit-services"
@@ -39,4 +39,10 @@ package() {
 
 	# make everything executable
 	find "$SVDIR" -type f -exec chmod 755 {} \;
+
+	# rename check files
+	find "$SVDIR" -name '*.check' \
+	| while read -r file; do
+		mv "$file" "$(dirname "$file")/check"
+	done
 }

@@ -1,7 +1,7 @@
 pkgbase = runit-services
 	pkgdesc = A collection of services for runit - stolen from Artix Linux
 	pkgver = feb30bc458_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitea.artixlinux.org/artix/runit-services
 	arch = any
 	license = unknown
