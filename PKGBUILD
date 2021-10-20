@@ -10,7 +10,7 @@ depends=(antlr4-runtime pcre stdcsv)
 checkdepends=(check)
 provides=(libfql.so)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-md5sums=(260cd9fc36cad3feb410ef5bbb8c72b9)
+md5sums=(369d0ad051767ddb933c9005f7c4320e)
 
 build() {
 	cd "$pkgname-$pkgver"
