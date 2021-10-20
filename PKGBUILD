@@ -2,7 +2,7 @@
 _pluginname=scale-to-sound
 pkgname=obs-${_pluginname}-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OBS filter plugin to make a source scale reactively to sound"
 arch=("x86_64")
 url="https://github.com/Qufyy/obs-scale-to-sound"
@@ -16,13 +16,13 @@ sha512sums=("a068906b45e7e840777e7f2c20997721e9b9f775c528b8f1b03d877c3ec2fd4c027
 	 "SKIP")
 
 package() {
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/obs-${_pluginname}/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pluginname}/LICENSE"
 
-	cd ${srcdir}/obs-${_pluginname}
+	cd ${srcdir}/${_pluginname}
 
 	install -d ${pkgdir}/usr/lib/obs-plugins/
-	install -d ${pkgdir}/usr/share/obs/obs-plugins/obs-${_pluginname}/
+	install -d ${pkgdir}/usr/share/obs/obs-plugins/${_pluginname}/
 
-	install -Dm755 ./bin/64bit/obs-${_pluginname}.so ${pkgdir}/usr/lib/obs-plugins/
-	install -Dm755 data/* ${pkgdir}/usr/share/obs/obs-plugins/obs-${_pluginname}/
+	install -Dm755 ./bin/64bit/${_pluginname}.so ${pkgdir}/usr/lib/obs-plugins/
+	install -Dm755 data/* ${pkgdir}/usr/share/obs/obs-plugins/${_pluginname}/
 }
