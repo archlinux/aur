@@ -1,16 +1,15 @@
 pkgbase = tabview-git
 	pkgdesc = Curses CSV/tabular data viewer
-	pkgver = r33.d0d3417
-	pkgrel = 2
+	pkgver = r226.77846ac
+	pkgrel = 1
 	url = https://github.com/tabviewer/tabview
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = git
 	depends = python
 	provides = tabview
 	conflicts = tabview
-	source = git://github.com/tabviewer/tabview.git
+	source = git+https://github.com/tabviewer/tabview.git
 	md5sums = SKIP
 
 pkgname = tabview-git
-

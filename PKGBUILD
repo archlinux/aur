@@ -1,25 +1,30 @@
 # Maintainer: Scott Hansen (firecat53) firecat4153 at gmail
 pkgname=tabview-git
-pkgver=r33.d0d3417
-pkgrel=2
+pkgver=r226.77846ac
+pkgrel=1
 pkgdesc="Curses CSV/tabular data viewer"
 arch=('any')
 url="https://github.com/tabviewer/tabview"
-license=('GPL')
+license=('MIT')
 conflicts=('tabview')
 provides=('tabview')
 depends=('python')
 makedepends=('git')
-source=("git://github.com/tabviewer/tabview.git")
+source=("git+https://github.com/tabviewer/tabview.git")
 _gitname="tabview"
 md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "$_gitname"
+  python setup.py build
+}
+  
 package() {
   cd "$_gitname"
-  ./setup.py install --root=${pkgdir} --optimize=1 || return 1
+  python setup.py install --root=${pkgdir} --optimize=1
 }
