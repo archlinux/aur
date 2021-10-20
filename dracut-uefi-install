@@ -6,24 +6,24 @@ ESP_PATH=$(bootctl --print-esp-path)
 MACHINE_ID=$(</etc/machine-id)
 source <(grep '^BUILD_ID=' /etc/os-release)
 
-kernels=()
+declare -A kernels
 dracut_update=0
 
 while read -r line; do
-    if [[ $line != 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
+    if [[ $line =~ ^usr/lib/modules/([^/]+)/pkgbase$ ]]; then
+        read -r pkgbase < "/${line}"
+        kernels["${pkgbase}"]="${BASH_REMATCH[1]}"
+    else
         dracut_update=1 # Dracut files have been updated
-        continue 
+        break 
     fi
-
-    read -r pkgbase < "/${line}"
-    kernels+=("${pkgbase}")
 done
 
 if (( dracut_update )); then
-    kernels=()
-    for file in /lib/modules/*/pkgbase; do
-        if read -r pkgbase &> /dev/null < "$file"; then
-            kernels+=("${pkgbase}")
+    for candidate in /usr/lib/modules/*; do
+        [ -f "$candidate/pkgbase" ] || continue
+        if read -r pkgbase &> /dev/null < "$candidate/pkgbase"; then
+            kernels["${pkgbase}"]="$(basename "$candidate")"
         fi
     done
 fi
@@ -40,9 +40,10 @@ if [[ "$hook_for_pretty_name" == "true" ]]; then
     trap unmount_os_release EXIT
 fi
 
-for kernel in "${kernels[@]}"; do
-    path="$(grep -lE "^${kernel}\$" /usr/lib/modules/*/pkgbase)"
-    version=$(basename "${path%/pkgbase}")
+for kernel in "${!kernels[@]}"; do
+    version="${kernels[$kernel]}"
+    path="/usr/lib/modules/${version}/pkgbase"
+    
     read -r pkgbase < "$path"
 
     echo "==> Building linux image $kernel ($version)"
