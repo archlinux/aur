@@ -23,7 +23,7 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-daily=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('f5a72c59b4490627836ab7003c462a15124697e1476986a53ea0ba009e17aeec')
+sha256sums_x86_64=('a9002615274706d2326a225299b519ef3313af888f70346a287362ddb7a9e43f')
 source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
 
 package() {
@@ -37,10 +37,10 @@ package() {
   cd "$srcdir"
   tar Jxf data.tar.xz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
-
-  cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
-  ln -sf /usr/bin/pandoc ./
-  ln -sf /usr/bin/pandoc-citeproc ./
+  # 2021-10-19: dan: appears pandoc folder no longer exists
+  #cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
+  #ln -sf /usr/bin/pandoc ./
+  #ln -sf /usr/bin/pandoc-citeproc ./
 
   find "$pkgdir/usr" -type d -print0 | xargs -0 chmod 755
   find "$pkgdir/usr" -type f -name '*.so.*' -print0 | xargs -0 chmod 644
