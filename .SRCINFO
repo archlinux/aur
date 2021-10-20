@@ -1,0 +1,17 @@
+pkgbase = vim-themis-git
+	pkgdesc = Vim script testing framework
+	pkgver = 1.6.0.r0.g3a01ba9
+	pkgrel = 1
+	url = https://github.com/thinca/vim-themis
+	arch = any
+	groups = vim-plugins
+	license = Zlib
+	checkdepends = vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-themis
+	conflicts = vim-themis
+	source = vim-themis-git::git+https://github.com/thinca/vim-themis
+	md5sums = SKIP
+
+pkgname = vim-themis-git
