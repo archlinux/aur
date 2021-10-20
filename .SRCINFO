@@ -1,6 +1,6 @@
 pkgbase = gimp-devel
 	pkgdesc = GNU Image Manipulation Program (Development version)
-	pkgver = 2.99.6
+	pkgver = 2.99.8
 	pkgrel = 1
 	url = http://www.gimp.org/
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = gimp-devel
 	makedepends = iso-codes
 	makedepends = aalib
 	makedepends = zlib
+	makedepends = libjxl
 	makedepends = gjs
 	makedepends = luajit
 	makedepends = meson
@@ -46,7 +47,7 @@ pkgbase = gimp-devel
 	depends = openexr
 	depends = mypaint-brushes1
 	depends = babl>=0.1.78
-	depends = gegl>=0.4.30
+	depends = gegl>=0.4.32
 	depends = cairo
 	depends = python-gobject
 	depends = appstream-glib
@@ -59,6 +60,7 @@ pkgbase = gimp-devel
 	optdepends = libxpm: XPM support
 	optdepends = webkit2gtk: HTML renderer and web content engine
 	optdepends = libheif: HEIF support
+	optdepends = libjxl: JPEG XL support
 	optdepends = libwebp: WebP support
 	optdepends = libmng: MNG support
 	optdepends = iso-codes: Language support
@@ -67,12 +69,11 @@ pkgbase = gimp-devel
 	optdepends = gjs: JavaScript scripting support
 	optdepends = luajit: LUA scripting support
 	optdepends = lua51-lgi: LUA scripting support
-	provides = gimp=2.99.6
+	provides = gimp=2.99.8
 	conflicts = gimp
-	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.6.tar.bz2
+	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.8.tar.bz2
 	source = linux.gpl
-	sha256sums = 8d264b28445a3df2b940f30ee0b89b469255e975e8563b889fd57fb2f58f66a0
+	sha256sums = dd916bd3474ef2efc652a0510280977ab8ea95e3d95d918394b0662261c32aae
 	sha256sums = 1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3
 
 pkgname = gimp-devel
-
