@@ -215,7 +215,7 @@ package_regolith-i3 () {
     pkgdesc="Regolith's i3-gaps-based DE's underpinnings and gnome foundational dependencies"
     license=('MIT')
     arch=('x86_64')
-    depends=('i3-gaps' 'i3status' 'xorg-server' 'xcb-util-keysyms'  'xcb-util-wm'  'libev'  
+    depends=('i3-gaps' 'i3status' 'xorg-server' 'xcb-util-keysyms' 'xcb-util-wm'  'libev'  
              'yajl'  'startup-notification'  'pango'  'perl' 'xorg-server'
              'xcb-util-xrm'  'libxkbcommon-x11' 'python-i3ipc' 'gnome-flashback' 
              'accountsservice' 'cups-pk-helper' 'libgtop' 'gnome-control-center' 'gnome-desktop' 
