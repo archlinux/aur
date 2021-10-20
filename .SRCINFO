@@ -1,0 +1,13 @@
+pkgbase = libffi7
+	pkgdesc = Portable foreign function interface library (ABI version 7)
+	pkgver = 3.3
+	pkgrel = 1
+	url = http://sourceware.org/libffi
+	arch = x86_64
+	license = MIT
+	checkdepends = dejagnu
+	depends = glibc
+	source = https://sourceware.org/pub/libffi/libffi-3.3.tar.gz
+	sha1sums = 8df6cb570c8d6596a67d1c0773bf00650154f7aa
+
+pkgname = libffi7
