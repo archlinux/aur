@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=polylenticular.lv2-git
 pkgdesc="Ports of VCV Rack modules to LV2"
-pkgver=r81.89fc961
+pkgver=r91.d112707
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -35,6 +35,7 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
   git submodule update --init --recursive
+  sed -i '/\"\"/d' Makefile
 }
 
 build() {
