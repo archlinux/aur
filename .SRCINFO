@@ -1,5 +1,5 @@
 pkgbase = mesen-sx-git
-	pkgdesc = A cross-platform Super Nintendo emulator
+	pkgdesc = A cross-platform Super Nintendo emulator. Based on NovaSquirrel's fork
 	pkgver = 0.4.0.r198.gdd9e689
 	pkgrel = 1
 	url = https://github.com/SourMesen/Mesen-S
