@@ -1,0 +1,8 @@
+## arg 1:  the new package version
+post_install() {
+cat <<End-of-message
+
+Copy /usr/share/doc/keepmenu-git/config.ini.example into ~/.config/keepmenu/config.ini and edit. Add Keepass database/keyfile paths.
+    
+End-of-message
+}
