@@ -3,7 +3,7 @@
 _pkgname=stairspeedtest
 pkgname=${_pkgname}-reborn-bin
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Proxy performance batch tester based on Shadowsocks(R) and V2Ray"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tindy2013/${_pkgname}-reborn"
@@ -23,6 +23,17 @@ sha256sums_x86_64=('236f328f7dbeaa1a63e59aa62c9ee8fdda30ebfdc6379edf5e1f8f191a12
 sha256sums_armv7h=('7e854bc19b23d9e4352ce6cf724a356eb5ebe310ebda1ba2c2d7f48e9b489a54')
 sha256sums_aarch64=('8b9398f01eb5c8ef5b28b237754cbf94cbc26123fb6b481aa3ea1599a26e1253')
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  cat > stairspeedtest.sh << "EOF"
+#!/bin/bash
+pushd "$(dirname "$(readlink -f "${0}")")"
+./stairspeedtest
+popd
+EOF
+  chmod 755 stairspeedtest.sh
+}
+
 package() {
   cd "${pkgdir}"
   
@@ -37,5 +48,5 @@ package() {
   install -Dm644 "${srcdir}"/${_pkgname}-webserver.service  ./usr/lib/systemd/system/${_pkgname}-webserver.service
   
   mkdir -pv ./usr/bin
-  ln -vsf /opt/${_pkgname}/stairspeedtest ./usr/bin/stairspeedtest
+  ln -vsf /opt/${_pkgname}/stairspeedtest.sh ./usr/bin/stairspeedtest
 }
