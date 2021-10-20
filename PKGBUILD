@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-indent-blankline-git
-pkgver=r155.a702f80
+pkgver=r224.0a98fa8
 pkgrel=1
 pkgdesc="Indent guides for Neovim"
 arch=('any')
 url="https://github.com/lukas-reineke/indent-blankline.nvim"
 license=('MIT')
-groups=('neovim-plugin')
-depends=('neovim')
+groups=('neovim-plugins')
+depends=('neovim>=0.5.0')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -20,6 +20,7 @@ pkgver() {
 	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 package() {
 	cd "$pkgname"
 	find autoload doc lua plugin -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
