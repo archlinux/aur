@@ -1,10 +1,12 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Jordan Cook <JCook83@gmail.com>
+# Contributor: Benoit Pierre <benoit.pierre@gmail.com>
 # Contributor: Marc Plano-Lesay <kernald@enoent.fr>
 _base=url-normalize
 pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
 pkgver=1.4.3
-pkgrel=12
+pkgrel=13
 arch=('any')
 url="https://github.com/niksite/${_base}"
 license=(MIT)
@@ -16,7 +18,10 @@ sha512sums=('46eaa1753b37e89d56cb19818144a7cf5b38653811720eb506732c35bb3732ef0c5
 
 build() {
   cd "${_base}-${pkgver}"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  # Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
+  # from incorrectly using a parent git checkout info.
+  # https://github.com/pypa/build/issues/384#issuecomment-947675975
+  GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
@@ -28,9 +33,5 @@ package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --optimize=1 --destdir="${pkgdir}" dist/*.whl
-  if [ "${BUILDDIR}" != "/tmp/makepkg" ]; then
-    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    install -Dm644 url_normalize/*.py -t "${pkgdir}${site_packages}/url_normalize"
-  fi
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
