@@ -1,10 +1,10 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Adria Arrufat <swiftscythe at gmail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Tim Jester-Pfadt <t.jp<at>gmx.de>
 
 _pkgname=gnome-builder
 pkgname=gnome-builder-git
-pkgver=3.36.0+2+g43e2b0b57
+pkgver=41.1+39+g725c6e135
 pkgrel=1
 pkgdesc='An IDE for writing GNOME-based software'
 arch=(i686 x86_64)
@@ -13,8 +13,8 @@ license=(GPL3)
 conflicts=(gnome-builder)
 provides=(gnome-builder)
 depends=(gtksourceview4 devhelp libgit2-glib gjs python-gobject clang desktop-file-utils
-         ctags libpeas vte3 vala python-jedi autoconf-archive sysprof flatpak gspell libdazzle-git
-         template-glib jsonrpc-glib python-sphinx webkit2gtk glade sysprof-git libportal)
+         ctags libpeas vte3 vala python-jedi autoconf-archive sysprof flatpak gspell libdazzle
+         template-glib jsonrpc-glib python-sphinx webkit2gtk glade sysprof libportal cmark)
 makedepends=(intltool llvm gobject-introspection gtk-doc yelp-tools appstream-glib vala git
              mm-common meson)
 optdepends=('gnome-code-assistance: Legacy assistance services'

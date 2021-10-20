@@ -1,6 +1,6 @@
 pkgbase = gnome-builder-git
 	pkgdesc = An IDE for writing GNOME-based software
-	pkgver = 3.36.0+2+g43e2b0b57
+	pkgver = 41.1+39+g725c6e135
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Builder
 	arch = i686
@@ -33,14 +33,15 @@ pkgbase = gnome-builder-git
 	depends = sysprof
 	depends = flatpak
 	depends = gspell
-	depends = libdazzle-git
+	depends = libdazzle
 	depends = template-glib
 	depends = jsonrpc-glib
 	depends = python-sphinx
 	depends = webkit2gtk
 	depends = glade
-	depends = sysprof-git
+	depends = sysprof
 	depends = libportal
+	depends = cmark
 	optdepends = gnome-code-assistance: Legacy assistance services
 	optdepends = python-lxml: documentation support for Python auto-completion
 	provides = gnome-builder
@@ -49,4 +50,3 @@ pkgbase = gnome-builder-git
 	sha256sums = SKIP
 
 pkgname = gnome-builder-git
-
