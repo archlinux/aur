@@ -1,0 +1,16 @@
+pkgbase = osintdb-git
+	pkgdesc = An OSINT ressource collection manager
+	pkgver = 0.1.0.r0.g61e455c
+	pkgrel = 1
+	url = https://github.com/theosintguy/osintdb
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.14
+	makedepends = npm
+	depends = libobjectbox
+	source = osintdb-git::git+https://github.com/theosintguy/osintdb.git
+	source = osintdb.desktop
+	sha256sums = SKIP
+	sha256sums = cfee7e4dba6b574877a3f3ca5adad94a5895d60b7043231d27fd1530e6e34666
+
+pkgname = osintdb-git

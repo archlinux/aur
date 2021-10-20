@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=OsintDB
+Exec=/usr/bin/osintdb
+Type=Application
+Categories=Osint
