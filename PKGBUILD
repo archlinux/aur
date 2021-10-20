@@ -20,7 +20,7 @@ _fragment=${FRAGMENT:-#branch=master}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-develop-git
-pkgver=3.0.r107522.gaa321211747
+pkgver=3.0.r109522.g16eafdadf60
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -118,6 +118,8 @@ package() {
   _suffix=${pkgver%%.r*}
   export DESTDIR="$pkgdir"
   if ((DISABLE_NINJA)); then make -C "$srcdir/build" install; else ninja -C "$srcdir/build" install; fi
+  msg 'move new thumbnailer to default location'
+  mv "${pkgdir}"/usr/blender-thumbnailer "${pkgdir}"/usr/bin/
 
     msg "add -${_suffix} suffix to desktop shortcut"
     sed -i "s/=blender/=blender-${_suffix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
@@ -126,7 +128,7 @@ package() {
 
     msg "add -${_suffix} suffix to binaries"
     mv "${pkgdir}/usr/bin/blender" "${pkgdir}/usr/bin/blender-${_suffix}"
-    mv "${pkgdir}/usr/bin/blender-thumbnailer.py" "${pkgdir}/usr/bin/blender-${_suffix}-thumbnailer.py"
+    mv "${pkgdir}/usr/bin/blender-thumbnailer" "${pkgdir}/usr/bin/blender-${_suffix}-thumbnailer" || bash
 
     msg "mv doc/blender to doc/blender-${_suffix}"
     mv "${pkgdir}/usr/share/doc/blender" "${pkgdir}/usr/share/doc/blender-${_suffix}"

@@ -1,6 +1,6 @@
 pkgbase = blender-develop-git
 	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 3.0.r107522.gaa321211747
+	pkgver = 3.0.r109522.g16eafdadf60
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
