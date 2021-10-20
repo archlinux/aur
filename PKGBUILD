@@ -1,9 +1,9 @@
 # Maintainer: Fabius
 _npmname=is-up-cli
-_npmver=3.0.0
+_npmver=4.0.0
 pkgname=nodejs-is-up-cli
-pkgver=3.0.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Check whether a website is up or down using the isitup.org API"
 arch=(any)
 url="https://github.com/sindresorhus/is-up-cli"
@@ -13,7 +13,7 @@ depends=('nodejs')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=(04ebc7bb7363f07a452463263d1c92ffd52fcd469af30bd45dbe860d4c4b932e)
+sha256sums=(073cc281e5e9d6c0fbd6148b4a153b8f9b3a857c0da88c365b0daff54970c5bd)
 
 package() {
   cd $srcdir
