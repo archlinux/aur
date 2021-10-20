@@ -1,5 +1,5 @@
 pkgname="unityx"
-pkgver=10.0.rc5.r0.g5b9f6b4
+pkgver=10.0.rc5.r1.gcf64655
 pkgrel=1
 pkgdesc="A modern and functional DE"
 arch=(any)
