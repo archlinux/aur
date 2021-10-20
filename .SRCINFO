@@ -1,0 +1,11 @@
+pkgbase = libobjectbox
+	pkgdesc = The library for objectbox. A database for objects and structs.
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/objectbox/objectbox-c
+	arch = x86_64
+	license = MIT
+	source = libobjectbox-0.14.0::https://github.com/objectbox/objectbox-c/releases/download/v0.14.0/objectbox-linux-x64.tar.gz
+	sha256sums = 78c7b55ba5258c198e03b355bbdb17b3696e8d85b3a6f564a9641dff2f2f8354
+
+pkgname = libobjectbox
