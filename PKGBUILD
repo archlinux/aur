@@ -5,8 +5,8 @@
 
 _grub4dos_version=0.4.5
 pkgname='easy2boot'
-pkgver='2.09'
-pkgrel='2'
+pkgver='2.10'
+pkgrel='1'
 pkgdesc='Highly-configurable USB drive multiboot software with support for Secure UEFI booting'
 url='http://www.easy2boot.com/'
 arch=('any')
@@ -25,12 +25,16 @@ md5sums=('SKIP')
 prepare() {
 
   json=$(cat fosshub.html | sed -n 's/.*var.*settings.*=//p' | jq)
+
   projectId=$(echo ${json} | jq '{projectId: .projectId}')
+
   tempJson=$(echo ${json} | jq --arg _fileName ${_fileName} '.pool.f[] | select(.n==$_fileName) | {fileName: .n, releaseId: .r}')
-  # echo ${tempJson}
+
+  echo ${tempJson}
+
   postData=$(echo ${projectId} ${tempJson} '{"projectUri": "${_projectName}.html","source":"CF"}' | jq -s 'add')
 
-  # echo $postData | jq
+  echo $postData | jq
 
   _url=$(wget -O- --post-data="${postData}" --header='Content-Type:application/json' https://api.fosshub.com/download/ | jq '.data.url' | sed -e 's/^"//' -e 's/"$//')
 
