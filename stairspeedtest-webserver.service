@@ -2,13 +2,9 @@
 Description=Stair Speedtest Web service
 
 [Service]
-User=github-actions
-WorkingDirectory=/opt/stairspeedtest
-Type=exec
-ExecStart=/opt/stairspeedtest/stairspeedtest /web
-KillMode=process
-KillSignal=SIGINT
-TimeoutStopSec=5min
+User=root
+Type=simple
+ExecStart=/opt/stairspeedtest/webserver.sh
 
 [Install]
 WantedBy=multi-user.target
