@@ -81,7 +81,7 @@
 +
 +    # set max upload size
 +    client_max_body_size 512M;
-+    fastcgi_buffers 64 4K;
++    # fastcgi_buffers 64 4K; only required when using fastcgi (see below)
 +
      index index.html index.php;
  
