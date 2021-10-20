@@ -38,4 +38,5 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}-browser.sh"  "${pkgdir}/usr/bin/${pkgname}-browser"
     install -Dm755 "${srcdir}/${pkgname}-debug.sh"    "${pkgdir}/usr/bin/${pkgname}-debug"
     install -Dm755 "${srcdir}/${pkgname}-electron.sh" "${pkgdir}/usr/bin/${pkgname}-electron"
+    ln -s "/usr/bin/${pkgname}-browser" "${pkgdir}/usr/bin/${pkgname}" # keep backwards compatibility
 }
