@@ -1,16 +1,16 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=pizarra-git
-pkgver=1.3.1.r18.9b63476
+pkgver=1.4.0.r2.125437b
 pkgrel=1
-pkgdesc="Simple Gtk drawing application"
+pkgdesc='Simple Gtk drawing application'
 arch=('i686' 'x86_64')
-url="https://gitlab.com/categulario/pizarra-gtk"
+url='https://gitlab.com/categulario/pizarra-gtk'
 license=('GPL3')
 depends=('gtk3')
 makedepends=('cargo' 'git')
 provides=('pizarra')
 conflicts=('pizarra')
-source=("pizarra-git::git+https://gitlab.com/categulario/pizarra-gtk")
+source=('pizarra-git::git+https://gitlab.com/categulario/pizarra-gtk')
 sha256sums=('SKIP')
 
 pkgver() {
