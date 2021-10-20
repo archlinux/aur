@@ -37,9 +37,9 @@ package() {
   cd "$srcdir"
   tar Jxf data.tar.xz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
-  # 2021-10-19: dan: appears pandoc folder no longer exists
-  #cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
-  #ln -sf /usr/bin/pandoc ./
+
+  cd "$pkgdir/usr/lib/rstudio/bin/quarto/bin/"
+  ln -sf /usr/bin/pandoc ./pandoc
   #ln -sf /usr/bin/pandoc-citeproc ./
 
   find "$pkgdir/usr" -type d -print0 | xargs -0 chmod 755
