@@ -1,4 +1,5 @@
-# Maintainer: Vladimir Tsanev <tsachev@gmail.com>
+# Maintainer: Aditya Sirish <aditya@saky.in>
+# Contributor: Vladimir Tsanev <tsachev@gmail.com>
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 _pkgname=asm
