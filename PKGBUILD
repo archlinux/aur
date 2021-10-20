@@ -47,10 +47,6 @@ _lrng_enable=y
 ## Samba3 Server
 _ksmbd_enable=
 
-# Tweak kernel options prior to a build via nconfig
-_makenconfig=
-
-
 ## Apply Kernel automatic Optimization
 _use_auto_optimization=y
 
@@ -123,7 +119,7 @@ elif [ "$_cpusched" = "cacule" ]; then
 elif [ "$_cpusched" = "rdb" ]; then
   pkgbase=linux-cachyos-cacule-rdb
 fi
-pkgver=5.14.13
+pkgver=5.14.14
 pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-cacule Kernel by CachyOS and with some other patches and other improvements'
@@ -141,22 +137,21 @@ _caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.14"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
   "config"
-  #        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
   "${_patchsource}/arch-patches-v10/0001-arch-patches.patch"
   "${_caculepatches}/v5.14/cacule-5.14-full.patch"
   "${_patchsource}/0001-CK-TIMER.patch"
   "${_patchsource}/0001-preempt-hz-cfs.patch"
-  "${_patchsource}/misc/amd/0006-amd-cppc.patch"
+  "${_patchsource}/cpufreq-patches/0001-cpufreq-patches.patch"
   "${_patchsource}/misc/0008-remove-LightNVM.patch"
   "${_patchsource}/ll-patches/0004-mm-set-8-megabytes-for-address_space-level-file-read.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
   "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
-  "${_patchsource}/block-patches/0001-block-patches.patch"
-  "${_patchsource}/btrfs-patches-v7/0001-btrfs-patches.patch"
-  "${_patchsource}/fixes-miscellaneous-v6/0001-fixes-miscellaneous.patch"
+  "${_patchsource}/block-patches-v2/0001-block-patches.patch"
+  "${_patchsource}/btrfs-patches-v8/0001-btrfs-patches.patch"
+  "${_patchsource}/fixes-miscellaneous-v7/0001-fixes-miscellaneous.patch"
   "${_patchsource}/futex-xanmod-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-xanmod-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/ksmbd-patches-v18/0001-ksmbd-patches.patch"
+  "${_patchsource}/ksmbd-patches-v19/0001-ksmbd-patches.patch"
   "${_patchsource}/hwmon-patches-v5/0001-hwmon-patches.patch"
   "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
   "${_patchsource}/lrng-patches-v2/0001-lrng-patches.patch"
@@ -183,11 +178,11 @@ if [ -n "$_use_pgo" ]; then
 fi
 
 if [ -n "$_use_llvm_lto" ]; then
-  LLVMOPTS="LLVM=1 LLVM_IAS=1"
-  CLANGOPTS="CC=clang LD=ld.lld"
-else
-  LLVMOPTS=""
-  CLANGOPTS=""
+
+  BUILD_FLAGS=(
+    LLVM=1
+    LLVM_IAS=1
+  )
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -459,7 +454,7 @@ prepare() {
   scripts/config --enable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
   scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
   scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
-  echo "Enable AMD PSTATE v3 driver"
+  echo "Enable AMD PSTATE v2 driver"
   scripts/config --enable CONFIG_X86_AMD_PSTATE
 
 
@@ -499,11 +494,11 @@ prepare() {
   fi
 
   echo "Applying default config..."
-  make $LLVMOPTS olddefconfig
-  make $LLVMOPTS -s kernelrelease > version
+  make ${BUILD_FLAGS[*]} olddefconfig
+  make ${BUILD_FLAGS[*]} -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 
-  [[ -z "$_makenconfig" ]] || $LLVMOPTS nconfig
+  [[ -z "$_makenconfig" ]] || make ${BUILD_FLAGS[*]} nconfig
 
   ### Save configuration for later reuse
   cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
@@ -514,7 +509,7 @@ build() {
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Build failed! \E[0m"
     exit 1
   )
-  make $LLVMOPTS -j$(nproc) all
+  make ${BUILD_FLAGS[*]} -j$(nproc) all
 }
 
 _package() {
@@ -542,7 +537,7 @@ _package() {
   echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
 
   echo "Installing modules..."
-  make  $CLANGOPTS INSTALL_MOD_PATH="${pkgdir:?}/usr" INSTALL_MOD_STRIP=1 modules_install
+  make  ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir:?}/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "${modulesdir}/"{source,build}
@@ -636,23 +631,23 @@ _package-headers() {
 
 }
 
-md5sums=('dd8c7efa62d69eb9a50806f2b0d6da01'
+md5sums=('9646d53502447936773c65cac149572c'
          '6918c6961e213ae5ee0c9d374bb9a06b'
          '581faf85cd625c41bbdd0cadbd0e451e'
          '024a0126cfcd18e000a2241f35c4d69e'
          '04c5865e765e07cff0649824c2a8d810'
          'f88c3290ece724c81921059df14965cf'
-         '430972ae1e936f99d8dc2a1f4fdaf774'
+         'b87b77bd4273817f2b792d6fe965e417'
          'eb39a5681a153f5a1f5a67e8b9e957a5'
          'f0d84fc024b9933bc19db696e0393a4e'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
-         'a3f2cbf318dd2a63af9673f9e34e7125'
-         'cb9f92bf2ce143d5552dc89b037fb1f7'
-         'f364618bad6154856085c7025d388d3b'
+         '1eaf224f9f46096efb75c153b712d702'
+         '87c3ca227283a573646377e5d7e31089'
+         '7c0ff8bd5d8f1069ab34aec2060109c9'
          'fd934f7d11131d5a5043e4aea640583b'
          '8a96c5e8346bd5b430776ac8a41f96b0'
-         '1b82eb13c4d3eaa368340b5a4f514ed1'
+         'c5cc719fcd48592d437610c19b9a997b'
          '5c9334532387ae8df80cff9bb5890954'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '366c90b64f9582c0733b8fb607a07594'
