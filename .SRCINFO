@@ -1,0 +1,16 @@
+pkgbase = gmnisrv
+	pkgdesc = simple Gemini protocol server
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/gmnisrv
+	arch = x86_64
+	license = GPL3
+	makedepends = scdoc
+	depends = openssl
+	depends = mailcap
+	source = gmnisrv-1.0.tar.gz::https://git.sr.ht/~sircmpwn/gmnisrv/archive/1.0.tar.gz
+	source = gmnisrv.service
+	b2sums = 977e93d8826f5aab5fe00f1fa6fb39ca317caf8439116b5dd8f2ab7b811d6a4f650e94e25d7b24a7f22c33956effbe904fcb5bd3bdcd59ddec6caaff60ac6cd4
+	b2sums = 7a33cf875f7012d8dedd3f9fc41ef9bc5022c85cfc7dd79b254f8fc25eef164335802d67acc426124ab61922de8882945941951dae4eb7be4a57fe4efb08f3dd
+
+pkgname = gmnisrv
