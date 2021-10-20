@@ -9,14 +9,14 @@ pkgdesc="Virtual Terminal Emulator widget (plus no-hang patch)"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
 arch=(x86_64)
 license=(LGPL)
-depends=(gtk3 pcre2 gnutls fribidi systemd-libs)
+depends=(gtk3 pcre2 gnutls fribidi systemd)
 makedepends=(gobject-introspection vala git gtk-doc gperf meson)
 source=("git+https://gitlab.gnome.org/GNOME/vte.git#tag=$pkgver"
   fix-exit-regression.patch)
 sha256sums=('SKIP'
   '582edbac0c92cb023a4c0a8f70cb74c85606c139ab8c8f83f6093a21e3033a5c')
 
-depends+=(vte-common)
+depends+=("vte-common=$pkgver")
 provides=("vte3=$pkgver" libvte-2.91.so)
 conflicts=(vte3)
 
@@ -35,7 +35,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   # remove vte-common
   rm -r "$pkgdir"/etc
