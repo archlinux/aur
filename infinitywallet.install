@@ -4,6 +4,9 @@ post_install() {
 	# Link to the binary
 	ln -sf '/opt/InfinityWallet/infinitywallet' '/usr/bin/infinitywallet'
 
+	# SUID chrome-sandbox for Electron 5+
+	chmod 4755 '/opt/InfinityWallet/chrome-sandbox' || true
+
 	update-mime-database /usr/share/mime || true
 	update-desktop-database /usr/share/applications || true
 	update-desktop-database -q
