@@ -1,0 +1,18 @@
+pkgbase = mesen-x-git
+	pkgdesc = A cross-platform NES/Famicom emulator. Based on NovaSquirrel's fork.
+	pkgver = 0.9.9.r213.g7ef06f46
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = clang
+	makedepends = gendesk
+	makedepends = zip
+	depends = mono
+	depends = sdl2
+	provides = mesen
+	conflicts = mesen
+	conflicts = mesen-git
+	source = Mesen::git+https://github.com/NovaSquirrel/Mesen-X.git
+	sha256sums = SKIP
+
+pkgname = mesen-x-git
