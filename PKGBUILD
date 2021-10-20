@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.0.r108561.g257c7753e9b
+pkgver=3.0.r109525.gf605ce7e9af
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -122,6 +122,7 @@ build() {
 package() {
   _suffix=${pkgver%%.r*}
   DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+  rm "${pkgdir}"/usr/blender-thumbnailer
 
   if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
