@@ -1,6 +1,6 @@
 pkgbase = dialect
 	pkgdesc = A translation app for GNOME.
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://apps.gnome.org/app/com.github.gi_lom.dialect
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = dialect
 	depends = gst-python
 	conflicts = gnabel
 	replaces = gnabel
-	source = git+https://github.com/dialect-app/dialect.git#tag=1.4.0
+	source = git+https://github.com/dialect-app/dialect.git#tag=1.4.1
 	source = git+https://github.com/dialect-app/po.git
 	sha256sums = SKIP
 	sha256sums = SKIP

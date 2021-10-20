@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Mufeed Ali <lastweakness@tuta.io>
 pkgname=dialect
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
