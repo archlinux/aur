@@ -1,7 +1,7 @@
 # Maintainer: Gregory G Danielson III <gregdan3@protonmail.com>
 
 pkgname=doppler-cli-bin
-pkgver=3.34.0
+pkgver=3.34.1
 pkgrel=1
 pkgdesc="A CLI utility for Doppler, environment and secrets manager."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('Apache')
 depends=()
 url=https://doppler.com
 source=("$pkgname.$pkgver.tar.gz::https://cli.doppler.com/download?os=linux&arch=amd64&format=tar")
-sha256sums=('bc34b8e0e445d3a0bbd53591bb737e711420c7aaa4f582a1904d38c6fa54d07c')
+sha256sums=('63fb0cefa89bd4ab0ce38c711ce3097c4dc7555bc505c80204d19626217139a8')
 _sourcedir=(".")
 
 package() {
