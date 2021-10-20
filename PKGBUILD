@@ -3,7 +3,7 @@
 # Contributor: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=build2
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="build2 build system"
 arch=(i686 x86_64)
@@ -14,8 +14,8 @@ depends=('sqlite3' 'pkgconf')
 source=("https://download.build2.org/${pkgver}/build2-toolchain-${pkgver}.tar.xz"
 		"build.patch")
 
-sha256sums=('bafabcab4d5efdc489af59755a3ba7ce90834b479125cf21c34828857cc91506'
-            'd6c3b46e2fd014a6f9771626647c6a9a33ec2c1caefab47d15db129c9c42b66a')
+sha256sums=('18efc6b2d41498f7516e7a8a5c91023f6182c867d423792398390dd0c004cfdd'
+            '8405b849e6dc68830102d9e1ce9e934b6bbb63fee05d3dd000c3ed943e5e3638')
 
 build() {
   cd ${srcdir}/build2-toolchain-${pkgver}
