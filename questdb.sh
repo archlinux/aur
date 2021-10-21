@@ -39,8 +39,9 @@ case `uname` in
        ;;
 esac
 
-if [ -f "/etc/questdb/questdb.env" ]; then
-    source "/etc/questdb/questdb.env"
+## jvm java_opt configurations
+if [ -f "/etc/questdb/jvm.env" ]; then
+    source "/etc/questdb/jvm.env"
 fi
 
 function read_link {
@@ -173,11 +174,12 @@ function start {
 
     JAVA_LIB="$BASE/questdb.jar"
 
-    JAVA_OPTS="
+    JAVA_OPTS="${JAVA_OPTS}
     -D$QDB_PROCESS_LABEL
     -ea -Dnoebug
     -XX:+UnlockExperimentalVMOptions
     -XX:+AlwaysPreTouch
+    -XX:+UseParallelOldGC
     "
 
     JAVA_MAIN="io.questdb/io.questdb.ServerMain"

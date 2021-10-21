@@ -1,7 +1,7 @@
 # Maintainer: Ning Sun <n@sunng.info>
 
 pkgname=questdb
-pkgver=6.0.8
+pkgver=6.0.9
 pkgrel=1
 pkgdesc='Fast timeseries database'
 arch=('any')
