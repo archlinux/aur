@@ -1,4 +1,4 @@
-# Maintainer: Danilo Bargen <aur ät dbrgn döt ch>
+# Contributor: Danilo Bargen <aur ät dbrgn döt ch>
 # Maintainer: monosans
 # Based on wlroots-git PKGBUILD
 pkgname=wlroots-eglstreams-git
