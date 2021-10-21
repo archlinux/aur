@@ -11,8 +11,8 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20210901.r4054.d4bd00489
-pkgrel=1
+pkgver=20211021.r4088.940e2ecd2
+pkgrel=2
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -55,7 +55,9 @@ check() {
   # Run tests
   cd $_pkgname
   ./bin/unittests
-  xvfb-run --auto-display ./bin/integtests
+  # Integration tests on Linux are broken
+  # https://github.com/symless/synergy-core/issues/7106
+  #xvfb-run --auto-display ./bin/integtests
 }
 
 package() {
