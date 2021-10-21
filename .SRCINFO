@@ -1,7 +1,7 @@
 pkgbase = mallet-tunnel-bin
 	pkgdesc = TCP tunnel that works like VPN
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryotarai/mallet
 	arch = i386
 	arch = x86_64
