@@ -4,13 +4,13 @@ pkgbase = python-river-git
 	pkgrel = 1
 	url = https://riverml.xyz
 	arch = x86_64
-	license = BSD
+	license = custom:BSD 3-clause
 	makedepends = git
 	makedepends = cython
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-pandas
-	source = git://github.com/online-ml/river.git
+	source = https://github.com/online-ml/river.git
 	sha512sums = SKIP
 
 pkgname = python-river-git

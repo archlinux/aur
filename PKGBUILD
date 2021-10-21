@@ -5,10 +5,10 @@ pkgrel=1
 pkgdesc="Online machine learning in Python"
 arch=("x86_64")
 url="https://riverml.xyz"
-license=('BSD')
+license=('custom:BSD 3-clause')
 depends=("python-numpy" "python-scipy" "python-pandas")
 makedepends=("git" "cython")
-source=("git://github.com/online-ml/river.git")
+source=("https://github.com/online-ml/river.git")
 sha512sums=("SKIP")
 
 package() {
