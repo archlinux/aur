@@ -1,6 +1,6 @@
 pkgbase = cardinal-git
 	pkgdesc = DPF'ied build of VCVRack, allowing it to be used as an audio plugin.
-	pkgver = r109.ede7ed7
+	pkgver = r112.f178251
 	pkgrel = 1
 	url = https://github.com/DISTRHO/Cardinal
 	arch = x86_64

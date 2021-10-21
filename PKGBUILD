@@ -1,8 +1,10 @@
+# experimental/wip: not using sys dependencies
+#
 # Maintainer: redtide <redtid3@gmail.com>
 
 _pkgname="cardinal"
 pkgname="${_pkgname}-git"
-pkgver=r109.ede7ed7
+pkgver=r112.f178251
 pkgrel=1
 pkgdesc="DPF'ied build of VCVRack, allowing it to be used as an audio plugin."
 url="https://github.com/DISTRHO/Cardinal"
@@ -24,7 +26,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${_pkgname}"
-    make
+    make PREFIX=/usr
 }
 package() {
     cd "${srcdir}/${_pkgname}"
