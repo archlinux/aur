@@ -1,0 +1,25 @@
+pkgbase = graphite-web
+	pkgdesc = Graphite-web, without the interface. Just the rendering HTTP API.
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/graphite-project/graphite-web/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-pytz
+	depends = python-six
+	depends = python-flask
+	depends = python-structlog
+	depends = python-yaml
+	depends = python-tzlocal
+	depends = python-cairocffi
+	depends = python-pyparsing
+	depends = python-django
+	optdepends = python-flask-cache: For caching
+	optdepends = python-raven: For sentry support
+	source = graphite-web-1.1.8.tar.gz::https://github.com/graphite-project/graphite-web/archive/1.1.8.tar.gz
+	source = graphite-web.service
+	sha256sums = SKIP
+	sha256sums = 12a8b2449f8a630d66ba37635caae520852936cc9b73adfb1e0985192aa2d522
+
+pkgname = graphite-web
