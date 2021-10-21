@@ -1,0 +1,5 @@
+# Ignore all makepgk-related files 
+pkg/
+src/
+river.git
+
