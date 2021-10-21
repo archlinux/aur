@@ -1,0 +1,11 @@
+pkgbase = otf-fira-go
+	pkgdesc = An independent Open Source typeface — FiraGO
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://github.com/bBoxType/FiraGO
+	arch = any
+	license = OFL
+	source = otf-fira-go-715cd3e8b59179822cd5b86933ecfc254cd1e74e.tar.gz::https://github.com/bBoxType/FiraGO/archive/715cd3e8b59179822cd5b86933ecfc254cd1e74e.tar.gz
+	sha256sums = 70baf5380062b7e4d185ae71b02e4efb5378878950d777f7fa9783e23afeffae
+
+pkgname = otf-fira-go
