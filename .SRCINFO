@@ -1,7 +1,7 @@
 pkgbase = parca
 	pkgdesc = Continuous profiling for analysis of CPU, memory usage over time, and down to the line number.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://parca.dev
 	arch = x86_64
 	license = Apache

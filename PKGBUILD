@@ -5,7 +5,7 @@
 
 pkgname=parca
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Continuous profiling for analysis of CPU, memory usage over time, and down to the line number.'
 url='https://parca.dev'
@@ -42,11 +42,10 @@ build() {
     ./cmd/parca
 }
 
-# Fails due to some proftest...
-# check() {
-#   cd $srcdir/parca-$pkgver
-#   go test -short ./...
-# }
+check() {
+  cd $srcdir/parca-$pkgver
+  go test -short ./...
+}
 
 package() {
   install -Dm644 parca.service "$pkgdir"/usr/lib/systemd/system/parca.service
