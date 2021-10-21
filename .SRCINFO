@@ -1,6 +1,6 @@
 pkgbase = python-ipympl
 	pkgdesc = Matplotlib Jupyter Extension
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://pypi.org/project/ipympl/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-ipympl
 	makedepends = python-setuptools
 	makedepends = python-jupyter_packaging
 	depends = python
-	source = https://pypi.python.org/packages/9d/ec/6f0430ac2947f42733bc60bbae91134cccb1c853f4dc40bda436620356ca/ipympl-0.8.0.tar.gz
+	source = https://pypi.python.org/packages/9d/ec/6f0430ac2947f42733bc60bbae91134cccb1c853f4dc40bda436620356ca/ipympl-0.8.1.tar.gz
 	sha512sums = 651ded94bc7f6702887693d9f4152ffad7cbac15bb195e11161210ab840fd2022cfb6a19a5e7c6a75b41edbebeae1bfb1fec958e4cab38f66268fbc2b0404488
 
 pkgname = python-ipympl

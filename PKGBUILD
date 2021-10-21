@@ -3,7 +3,7 @@
 
 pkgname=python-ipympl
 _pkgname="${pkgname#*-}"
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
