@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch-git
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 6.18.320_r478.f1c4905
+	pkgver = 6.18.321_r482.b38546c
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = steamtinkerlaunch-git
 	optdepends = net-tools: for optional network monitoring
 	optdepends = boxtron: for optional Boxtron support
 	optdepends = scummvm: for optional ScummVM support via Roberta
-	optdepends = wine: for optional Vortex Mod Manager support
+	optdepends = wine: for optional wine support
 	optdepends = gameconqueror: for optional cheating
 	optdepends = gamescope: for optional GameScope support
 	optdepends = libnotify: for optional Notifier
