@@ -2,7 +2,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gzdoom
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64')
