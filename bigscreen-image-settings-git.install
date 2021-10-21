@@ -1,0 +1,4 @@
+post_install() {
+  systemctl --user enable cec-daemon.service
+  systemctl --user enable auto-resolution.service
+}

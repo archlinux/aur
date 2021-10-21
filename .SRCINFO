@@ -1,0 +1,20 @@
+pkgbase = bigscreen-image-settings-git
+	pkgdesc = Plasma Bigscreen configurations for Bigscreen Images
+	pkgver = r01.8977fdbf
+	pkgrel = 1
+	url = https://invent.kde.org/plasma-bigscreen/bigscreen-image-settings
+	install = bigscreen-image-settings-git.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	provides = bigscreen-image-settings
+	conflicts = bigscreen-image-settings
+	source = git+https://invent.kde.org/plasma-bigscreen/bigscreen-image-settings
+	sha512sums = SKIP
+
+pkgname = bigscreen-image-settings-git
