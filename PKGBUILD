@@ -45,7 +45,7 @@ optdepends=('rlwrap: readline support for awesome-client'
 provides=(notification-daemon awesome)
 conflicts=(awesome)
 backup=('etc/xdg/awesome/rc.lua')
-_archive="$pkgname-$pkgver"
+_archive="awesome-$pkgver"
 source=("https://github.com/awesomeWM/awesome/releases/download/v$pkgver/$_archive.tar.xz"{,.asc})
 sha512sums=('c5ef1e8dc593e7783b895d22143154aea8f211beeda24672a7ee4ed5112b4f4284043f848a151f3d3c4f569e91308670367a4353f705b20511b36495b22fa3f5'
             'SKIP')
