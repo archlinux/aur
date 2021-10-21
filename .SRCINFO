@@ -1,19 +1,16 @@
 pkgbase = lib32-gssdp
 	pkgdesc = A GObject-based API for handling resource discovery and announcement over SSDP (32-bit)
-	pkgver = 1.2.3
+	pkgver = 1.4.0.1
 	pkgrel = 1
 	url = http://gupnp.org/
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = gobject-introspection
-	makedepends = lib32-gtk3
 	makedepends = meson
 	makedepends = vala
 	depends = lib32-libsoup
 	depends = gssdp
-	source = git+https://git.gnome.org/browse/gssdp#commit=a4eb74313a3df17c3ac5b99f3131522e6e8bccf4
+	source = git+https://git.gnome.org/browse/gssdp#commit=4e742a15cde4c330828d17c14185080cd7a6e9a0
 	sha256sums = SKIP
 
 pkgname = lib32-gssdp
-
