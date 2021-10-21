@@ -6,7 +6,7 @@ pkgbase = cpuctl-git
 	arch = any
 	license = GPLv2
 	makedepends = nimble
-	provides = cpuctl-git
+	provides = cpuctl
 	conflicts = cpuctl
 	conflicts = cpuctl-git
 	source = cpuctl::git+https://gitlab.com/juxuanu/cpuctl.git#branch=main
