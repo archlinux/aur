@@ -1,8 +1,8 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=uxplay-git
 _gitname=UxPlay
-pkgver=r71.5a9d101
-pkgrel=2
+pkgver=r233.8ebac4c
+pkgrel=1
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
 url="https://github.com/FDH2/$_gitname"
@@ -36,4 +36,10 @@ package() {
   install -Dm 644 "$srcdir/uxplay.desktop" "$pkgdir/usr/share/applications/uxplay.desktop"
 
   printf "%b" "\e[1;33m==> WARNING: \e[0mIn order for UxPlay to work, the avahi systemd service has to be running. Enable it with: systemctl enable --now avahi-daemon\n"
+  # install manpage
+  install -Dm 644 "$srcdir/$_gitname/uxplay.1" "$pkgdir/usr/share/man/man1/uxplay.1"
+  # install doc
+  install -Dm 644 -d "$pkgdir/usr/share/doc/uxplay" "$srcdir/$_gitname/README.*"
+  # install license
+  install -Dm 644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/uxplay/LICENSE"
 }
