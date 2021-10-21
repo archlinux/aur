@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=6.18.320_r478.f1c4905
+pkgver=6.18.321_r482.b38546c
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
 	'net-tools: for optional network monitoring'
 	'boxtron: for optional Boxtron support'
 	'scummvm: for optional ScummVM support via Roberta'
-	'wine: for optional Vortex Mod Manager support'
+	'wine: for optional wine support'
 	'gameconqueror: for optional cheating'
 	'gamescope: for optional GameScope support'
 	'libnotify: for optional Notifier'
@@ -50,7 +50,7 @@ package() {
 	install -Dm755 stl -t "$pkgdir/usr/bin"
 
   install -d "$pkgdir/usr/share/stl"
-  cp -r categories eval guicfgs lang misc reshadepresets "$pkgdir/usr/share/stl"
+  cp -r categories eval guicfgs lang misc "$pkgdir/usr/share/stl"
 
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
