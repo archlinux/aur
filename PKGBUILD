@@ -3,7 +3,7 @@
 
 pkgname=lean-community
 _pkgname=lean
-pkgver=3.33.0
+pkgver=3.34.0
 pkgrel=1
 pkgdesc='Lean Theorem Prover, maintained by the Lean community'
 arch=('x86_64' 'i386')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'ninja' 'python')
 optdepends=('python-mathlibtools')
 conflicts=('lean-bin' 'lean-git' 'lean3-bin' 'lean2-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/leanprover-community/lean/archive/v$pkgver.tar.gz")
-sha256sums=('bb9b4cc1a6516726433f51d181c5089ba1eb20c2e08dc7c48c9bd862008d4003')
+sha256sums=('bb60abd644bc52f56a7d0fed707d25f6732adc86cb92df6a037f259c8b92c97e')
 
 build() {
   cd "$_pkgname-$pkgver"
