@@ -1,5 +1,4 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
-# Contributor: Simon Kronberg <Simon.Kronberg at gmail dot com>
 
 pkgname=waterfox-g4-bin
 pkgver=0.0.1
