@@ -1,0 +1,15 @@
+pkgbase = cpuctl-git
+	pkgdesc = Simple CPU scaling governor utility for CPUFreq
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/juxuanu/cpuctl
+	arch = any
+	license = GPLv2
+	makedepends = nimble
+	provides = cpuctl
+	conflicts = cpuctl
+	conflicts = cpuctl-git
+	source = cpuctl::git+https://gitlab.com/juxuanu/cpuctl.git#branch=main
+	md5sums = SKIP
+
+pkgname = cpuctl-git
