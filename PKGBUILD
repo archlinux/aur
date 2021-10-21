@@ -3,7 +3,7 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.33.25
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
 url='https://brave.com/download-nightly'
@@ -39,6 +39,7 @@ package() {
     
     install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/brave-nightly"
     install -Dm0644 "brave/opt/brave.com/brave-nightly/product_logo_128_nightly.png" "$pkgdir/usr/share/pixmaps/brave-browser-nightly.png"
-
     install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "brave/opt/brave.com/brave-nightly/LICENSE"
+    # allow firejail users to get the suid sandbox working
+    chmod 4755 "$pkgdir/opt/brave.com/brave-nightly/chrome-sandbox"
 }
