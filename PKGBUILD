@@ -2,7 +2,7 @@
 _release_type=beta
 
 pkgname=makedeb-beta
-pkgver=8.1.0
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release_type} release)"
 arch=('any')
