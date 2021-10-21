@@ -2,8 +2,8 @@
 # Upstream: Bitwig GmbH <support@bitwig.com>
 
 pkgname='bitwig-studio'
-pkgver='4.0.5'
-_pkgver='4.0.5'
+pkgver='4.0.6'
+_pkgver='4.0.6'
 pkgrel='1'
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -16,7 +16,7 @@ replaces=()
 conflicts=('bitwig-studio-legacy' 'bitwig-8-track')
 options=(!strip)
 source=("https://downloads.bitwig.com/stable/${_pkgver}/bitwig-studio-${_pkgver}.deb")
-sha256sums=('62d44ccf57518a5f0071d0d490807d5869dc7dca505ca49f8ac9cbf6a6d039ec')
+sha256sums=('e021b5a6509a94ecbe014695a4a753f806ceeb0ec183ac4e42c1bdd5e4ed27ce')
 
 package() {
   # Unpack package contents
