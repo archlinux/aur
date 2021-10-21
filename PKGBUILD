@@ -1,5 +1,5 @@
 pkgname=xclicker
-pkgver=v1.0.1.r0.g3ad8a0e
+pkgver=v1.1.0.r5.g940149c
 pkgrel=1
 pkgdesc='A blazing fast gui autoclicker for linux'
 arch=('x86_64' 'aarch64')
@@ -18,14 +18,14 @@ pkgver() {
 build() {
   cd $pkgname
 
-  make
+  make release
 }
 
 package() {
   cd $pkgname
 
   install -Dm 644 img/icon.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-  install -Dm 755 build/src/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  install -Dm 755 build/release/src/${pkgname} ${pkgdir}/usr/bin/${pkgname}
   install -Dm 755 xclicker.desktop ${pkgdir}/usr/share/applications/xclicker.desktop
 }
 
