@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Fabric Installer
+Comment=Installer for Fabric, a lightweight, experimental modding toolchain for Minecraft.
+Exec=fabric-installer
+Categories=Game;
+Icon=fabric-installer.png
+StartupWMClass=fabric-installer
