@@ -1,0 +1,18 @@
+pkgbase = osintdb-bin
+	pkgdesc = An OSINT ressource collection manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/theosintguy/osintdb
+	arch = x86_64
+	license = MIT
+	depends = libobjectbox
+	provides = osintdb
+	conflicts = osintdb-git
+	source = https://github.com/theosintguy/osintdb/releases/download/0.1.0/osintdb
+	source = https://github.com/theosintguy/osintdb/releases/download/0.1.0/tools.min.json
+	source = osintdb.desktop
+	sha256sums = 9cd69159938f2fa01658ff93ac09d7592ae076def6444190b16d45b331db84b6
+	sha256sums = b8817fbef105cd14ebc21e835d0c1f394b0f854973f59ac2a572e4fbe004c274
+	sha256sums = cfee7e4dba6b574877a3f3ca5adad94a5895d60b7043231d27fd1530e6e34666
+
+pkgname = osintdb-bin
