@@ -5,19 +5,21 @@
 
 _pkgname=touchegg
 pkgname=touchegg-nosystemd
-pkgver=2.0.11
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="Multitouch gesture recognizer (with systemd support disabled)"
 arch=('i686' 'x86_64')
 url="https://github.com/JoseExposito/touchegg/"
 license=('GPL3')
 depends=('libinput' 'cairo' 'libx11' 'libxi' 'libxrandr' 'libxtst' 'pugixml' 'gtk3' 'glib2')
+optdepends=( 'touchegg-openrc: openrc unit files for touchegg (no systemd)' )
+#' This somehow fixes syntax highlighting with nvim
 makedepends=('cmake')
 provides=('touchegg')
 conflicts=('touchegg')
 # Workaround until 2.0.10
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=(ba75a42110a3d2bf482a433fbfdb85f17cbd55332a21d58b62605f5f0211ccfd9cdf3651734f0d225adf6593a8ed92d8c886c164153b28c7a702c3f80ae80909)
+sha256sums=(f0ee467522c7c9f1295365324515d861888ed7645ffeccecca507ee87eed3e37)
 
 build() {
 	cmake -B build -S "$_pkgname-$pkgver" \
