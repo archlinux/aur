@@ -7,7 +7,6 @@ pkgdesc="Expose your local web server to the internet with a public URL."
 arch=('any')
 url="https://tunnelto.dev/"
 license=('MIT')
-makedepends=('cargo')
 conflicts=('tunnelto')
 provides=('tunnelto')
 source=("tunnelto-linux-$pkgver.tar.gz::https://github.com/agrinman/$_gitname/releases/download/$pkgver/tunnelto-linux.tar.gz" "https://raw.githubusercontent.com/agrinman/$_gitname/$pkgver/LICENSE")

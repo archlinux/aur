@@ -5,7 +5,6 @@ pkgbase = tunnelto-bin
 	url = https://tunnelto.dev/
 	arch = any
 	license = MIT
-	makedepends = cargo
 	provides = tunnelto
 	conflicts = tunnelto
 	source = tunnelto-linux-0.1.18.tar.gz::https://github.com/agrinman/tunnelto/releases/download/0.1.18/tunnelto-linux.tar.gz
@@ -14,4 +13,3 @@ pkgbase = tunnelto-bin
 	sha256sums = 4cebbaca47e31d07a63c35507d43daf85daaf0e34408263c433dff6022415ba2
 
 pkgname = tunnelto-bin
-
