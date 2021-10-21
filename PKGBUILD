@@ -13,7 +13,6 @@ arch=('x86_64')
 options=('!strip')
 url="http://www.jetbrains.com/webstorm"
 license=('custom')
-depends=()
 
 source=(https://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
         jetbrains-webstorm-eap.desktop
