@@ -1,0 +1,30 @@
+pkgbase = waterfox-g4-bin
+	pkgdesc = Fourth generation of customizable privacy-conscious web browser.
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://www.waterfox.net
+	arch = x86_64
+	license = MPL
+	depends = gtk3
+	depends = gtk2
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = ffmpeg
+	depends = ttf-font
+	depends = hicolor-icon-theme
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = alsa-lib: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
+	provides = waterfox-g4=0.0.1
+	conflicts = waterfox-g4
+	source = waterfox-g4.desktop
+	source = https://github.com/WaterfoxCo/Waterfox/releases/download/G4.0.0.1/waterfox-G4.0.0.1.en-US.linux-x86_64.tar.bz2
+	sha256sums = 76fde87eda671338d58a29d78ab081ca47aac2cde8faccafa646b0546b22bcfb
+	sha256sums = bb55675a2c9fac7c43042f4292de9ec2ee3645ab44a52c0c7c2b32adef1d236f
+
+pkgname = waterfox-g4-bin
