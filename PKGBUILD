@@ -2,7 +2,7 @@
 
 pkgname=ada-web-server
 pkgver=2021
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete embeddable web application framework for Ada."
 
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ url=http://libre.adacore.com/tools/aws
 license=(GPL)
 groups=(gcc-ada)
 
-depends=(gcc-ada)
+depends=(gcc-ada openssl)
 makedepends=(git gprbuild texlive-bin python-sphinx)
 
 provides=(aws)
@@ -44,7 +44,7 @@ build()
 
     cd $srcdir/aws
 
-    make prefix=/usr setup
+    make prefix=/usr SOCKET=openssl setup
     make -j1 build
 
     cd $srcdir/aws/docs

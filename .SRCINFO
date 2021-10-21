@@ -1,7 +1,7 @@
 pkgbase = ada-web-server
 	pkgdesc = A complete embeddable web application framework for Ada.
 	pkgver = 2021
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libre.adacore.com/tools/aws
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = ada-web-server
 	makedepends = texlive-bin
 	makedepends = python-sphinx
 	depends = gcc-ada
+	depends = openssl
 	provides = aws
 	source = git+https://github.com/AdaCore/aws#commit=5ddd74408d86363411714957baad72be76012b35
 	source = git+https://github.com/AdaCore/templates-parser#commit=2ed90c02deb53d5e453e62a4105354a9497c9ecd
