@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=freecheck-git
-pkgver=0.30_6_g5f80e5a
+pkgver=0.30_8_g9806307
 pkgrel=1
 _branch=devel
 url=https://github.com/alerque/"${pkgname%-git}"
@@ -11,6 +11,7 @@ license=('GPL2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=('perl' 'gnumicr')
+makedepends=(git)
 optdepends=(
       'cups: printing support'
       'ghostscript: output to pdf files'
