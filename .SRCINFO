@@ -1,6 +1,6 @@
 pkgbase = sauklaue
 	pkgdesc = Notetaking application for lecturing with an external graphics tablet
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/fagu/sauklaue
 	arch = x86_64
@@ -18,8 +18,7 @@ pkgbase = sauklaue
 	depends = kconfig
 	depends = kconfigwidgets
 	depends = kguiaddons
-	source = sauklaue-1.0.4.tar.gz::https://github.com/fagu/sauklaue/archive/v1.0.4.tar.gz
-	sha256sums = 922ef578304bd9fccc1988bbb1f4159c80b031564ccb495e48c0033564b5fb5e
+	source = sauklaue-1.0.5.tar.gz::https://github.com/fagu/sauklaue/archive/v1.0.5.tar.gz
+	sha256sums = 658a21df771c8e713f4ec246d75fc9e82616fc82bbef70c0fbaa1586efbc3a73
 
 pkgname = sauklaue
-
