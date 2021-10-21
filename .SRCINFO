@@ -1,11 +1,11 @@
 pkgbase = touchegg-openrc
 	pkgdesc = OpenRC init script for touchegg daemon.
 	pkgver = 20211018.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/title/touchegg
 	arch = any
 	license = GPL3
-	depends = touchegg-nosystemd
+	depends = touchegg-nosystemd>=2
 	optdepends = openrc: To make use of this initscript.
 	options = !emptydirs
 	source = copying-info.txt

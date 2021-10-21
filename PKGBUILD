@@ -3,12 +3,12 @@
 _pkgname=touchegg-openrc
 pkgname="${_pkgname}"
 pkgver=20211018.1
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenRC init script for touchegg daemon.'
 url='https://wiki.archlinux.org/title/touchegg'
 license=('GPL3')
 arch=('any')
-depends=('touchegg-nosystemd')
+depends=('touchegg-nosystemd>=2')
 makedepends=()
 optdepends=('openrc: To make use of this initscript.')
 provides=()
