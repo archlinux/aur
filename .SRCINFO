@@ -1,0 +1,12 @@
+pkgbase = pacman-dropins
+	pkgdesc = Configure pacman to read drop-in conf files.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/pacman-dropins/
+	install = pacman-dropins.install
+	arch = any
+	license = ISC,
+	license = GPL
+	depends = pacman
+
+pkgname = pacman-dropins

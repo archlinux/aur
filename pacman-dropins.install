@@ -1,0 +1,11 @@
+#!/bin/sh
+
+post_install() {
+  # Configure pacman to load drop-in config files.
+  grep -qe 'Include = \/etc\/pacman.d\/\*.conf' etc/pacman.conf || \
+    printf '[options]\nInclude = /etc/pacman.d/*.conf' >> etc/pacman.conf
+}
+
+post_upgrade() {
+  post_install
+}
