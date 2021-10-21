@@ -5,7 +5,7 @@ pkgname=${_pkgname}-bin
 _projectname=skycoin
 _githuborg=${_projectname}
 pkgdesc="Skywire: Building a New Internet. Skycoin.com"
-_pkgver='0.4.2'
+_pkgver='0.5.0'
 _tag_ver="v${_pkgver}"
 pkgver=${_pkgver//-/.}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
@@ -20,15 +20,15 @@ install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
 # "PKGBUILD.sig")
-sha256sums=('ca6f604f5d925a8c37b99a709661196a29b1f9db961e3510e357265ce79772ed')
-sha256sums_i686=('93d2dec6f6ae3a4d1aad097f3cd79acba491ab617182e88ced8a0f5f4a7fe598')
-sha256sums_x86_64=('1d1a24d50c7838ae369a15ff914777c0a54352383b9b2ffd319e6a61f1bc1659')
-sha256sums_aarch64=('a0fc5f7b17e6e6e22b0d4fc144bf9ee19ab7d78a3fa785bbfdb5a653de936253')
-sha256sums_armv8=('a0fc5f7b17e6e6e22b0d4fc144bf9ee19ab7d78a3fa785bbfdb5a653de936253')
-sha256sums_armv7=('89956549bedcc53393895c9d37146e5423da0836acf10824a0d8b95775134737')
-sha256sums_armv7l=('89956549bedcc53393895c9d37146e5423da0836acf10824a0d8b95775134737')
-sha256sums_armv7h=('89956549bedcc53393895c9d37146e5423da0836acf10824a0d8b95775134737')
-sha256sums_arm=('89956549bedcc53393895c9d37146e5423da0836acf10824a0d8b95775134737')
+sha256sums=('e1c3c6634bd754f6f5a9be15f8cf2692c48d45f2029ad6c70740883082ed2e31')
+sha256sums_i686=('391d0980e2582e608606f946afc968c0e279836e98c5ddd9e5a2f7846b72b2eb')
+sha256sums_x86_64=('382e3db67778ab551d05778b75550b114df0b0bd0c91b41aa8e59ff7473a0895')
+sha256sums_aarch64=('98294b08649e76f4e8df4c120cb0a642767cd781b6dee72c9fc72691fab262bb')
+sha256sums_armv8=('98294b08649e76f4e8df4c120cb0a642767cd781b6dee72c9fc72691fab262bb')
+sha256sums_armv7=('fa7df58d8930e2547341d381283711d068c58ef960a5449427c0babe71257600')
+sha256sums_armv7l=('fa7df58d8930e2547341d381283711d068c58ef960a5449427c0babe71257600')
+sha256sums_armv7h=('fa7df58d8930e2547341d381283711d068c58ef960a5449427c0babe71257600')
+sha256sums_arm=('fa7df58d8930e2547341d381283711d068c58ef960a5449427c0babe71257600')
 #            'SKIP')
 #https://github.com/skycoin/skywire/releases/download/v0.3.0/skywire-v0.3.0-linux-amd64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v0.3.0/skywire-v0.3.0-linux-386.tar.gz
@@ -75,15 +75,15 @@ install -Dm755 ${srcdir}/${_pkgname}-cli ${pkgdir}/${_skybin}/
 ln -rTsf ${pkgdir}/${_skybin}/${_pkgname}-cli ${pkgdir}/usr/bin/${_pkgname}-cli
 _msg2 'installing app binaries'
 _msg3 'skychat'
-install -Dm755 ${srcdir}/skychat ${pkgdir}/${_skyapps}/
+install -Dm755 ${srcdir}/apps/skychat ${pkgdir}/${_skyapps}/
 _msg3 'skysocks'
-install -Dm755 ${srcdir}/skysocks ${pkgdir}/${_skyapps}/
+install -Dm755 ${srcdir}/apps/skysocks ${pkgdir}/${_skyapps}/
 _msg3 'skysocks-client'
-install -Dm755 ${srcdir}/skysocks-client ${pkgdir}/${_skyapps}/
+install -Dm755 ${srcdir}/apps/skysocks-client ${pkgdir}/${_skyapps}/
 _msg3 'vpn-client'
-install -Dm755 ${srcdir}/vpn-client ${pkgdir}/${_skyapps}/
+install -Dm755 ${srcdir}/apps/vpn-client ${pkgdir}/${_skyapps}/
 _msg3 'vpn-server'
-install -Dm755 ${srcdir}/vpn-server ${pkgdir}/${_skyapps}/
+install -Dm755 ${srcdir}/apps/vpn-server ${pkgdir}/${_skyapps}/
 _msg2 'installing scripts'
 _skywirescripts=$( ls ${srcdir}/${_scripts}/${_pkgname} )
 for i in ${_skywirescripts}; do
