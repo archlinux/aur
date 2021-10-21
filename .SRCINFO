@@ -1,14 +1,14 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java
-	pkgver = 17
+	pkgver = 17.0.1
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = custom
 	makedepends = python-html2text
-	noextract = jdk-17_doc-all.zip
-	source = https://download.oracle.com/java/17/archive/jdk-17_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn-pub/java/jdk/17+35/0d483333a00540d886896bac774ff48b/jdk-17_doc-all.zip
+	noextract = jdk-17.0.1_doc-all.zip
+	source = https://download.oracle.com/java/17/archive/jdk-17.0.1_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/17.0.1+12/2a2082e5a09d4267845be086888add4f/jdk-17.0.1_doc-all.zip
 	source = java-17-jdk-license.html::https://download.oracle.com/otndocs/jcp/java_se-17-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
@@ -16,8 +16,8 @@ pkgbase = jdk
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 106e3fc31b9fe4d0fd76c6c92b1931bdd1b0ac4d788747951de0f92cc73b1ffe
-	sha256sums = 0b6870176449abdedae5c4a98ad69684f68831d02900b9b6ccea54213ff2cca7
+	sha256sums = 6f25bcb94d3e22fb52a4632c74e03b403834e81b68701ab7ecd900fb9cd89f43
+	sha256sums = 126a130be9a45d3f079d462c0b2ece8bcef7d422d252d06d1c8ca37c835e7cf8
 	sha256sums = ab50940bda40a9e8935d1a8f002debda0fdd0b3e2bcc0319827ec19acd8b34f3
 	sha256sums = f17fe6e3d1b7ffbe854364e127509144057878a344d74673393782b90b6f054a
 	sha256sums = 321dc88a1a0289c1f0a3113e75bd2f488829a0b82c11ac047272e464fb3f3ab3
@@ -42,10 +42,10 @@ pkgname = jre
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=17
 	provides = java-runtime-jdk17
-	provides = jre17-jdk=17-1
+	provides = jre17-jdk=17.0.1-1
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-jdk=17
-	provides = jre17-jdk-headless=17-1
+	provides = jre17-jdk-headless=17.0.1-1
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
 	backup = etc/java-jdk/management/management.properties
@@ -65,12 +65,12 @@ pkgname = jdk
 	pkgdesc = Oracle Java Development Kit
 	install = jdk.install
 	depends = java-environment-common
-	depends = jre=17-1
+	depends = jre=17.0.1-1
 	depends = zlib
 	depends = hicolor-icon-theme
 	provides = java-environment=17
 	provides = java-environment-jdk=17
-	provides = jdk17-jdk=17-1
+	provides = jdk17-jdk=17.0.1-1
 
 pkgname = jdk-doc
 	pkgdesc = Oracle Java documentation
