@@ -42,7 +42,7 @@ makedepends=(asciidoctor
 optdepends=('rlwrap: readline support for awesome-client'
             'dex: autostart your desktop files'
             'vicious: widgets for the Awesome window manager')
-provides=(awesome notification-daemon)
+provides=(notification-daemon awesome)
 conflicts=(awesome)
 backup=('etc/xdg/awesome/rc.lua')
 _archive="$pkgname-$pkgver"
