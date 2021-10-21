@@ -3,7 +3,7 @@
 
 pkgname=brave-dev-bin
 pkgver=1.32.77
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default (dev binary release).'
 arch=('x86_64')
 url='https://brave.com/download-dev'
@@ -40,4 +40,5 @@ package() {
     install -Dm0644 "brave/opt/brave.com/brave-dev/product_logo_128_dev.png" "$pkgdir/usr/share/pixmaps/brave-browser-dev.png"
 
     install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "brave/opt/brave.com/brave-dev/LICENSE"
+    chmod 4755 "$pkgdir/opt/brave.com/brave-dev/chrome-sandbox"
 }
