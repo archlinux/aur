@@ -1,15 +1,11 @@
 post_install() {
-    chown -R whoogle.whoogle /opt/whoogle-search/app/static/config
-    systemctl enable --now whoogle
+    mkdir -p /opt/whoogle-search/app/static
+    chown -R whoogle.whoogle /opt/whoogle-search/app/static
     echo ""
-    echo "Enabled the Whoogle systemd service."
-    echo "Visit localhost:5000 to start searching!"
+    echo "Enable the SystemD unit and visit localhost:5000 to start searching!"
     echo ""
 }
 
 post_upgrade() {
-    chown -R whoogle.whoogle /opt/whoogle-search/app/static/config
-    systemctl daemon-reload
-    systemctl restart whoogle
-    echo "Restarted Whoogle systemd service."
+    chown -R whoogle.whoogle /opt/whoogle-search/app/static/
 }
