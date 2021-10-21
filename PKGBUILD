@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=booster-git
-pkgver=0.4.r1.gef03e48
+pkgver=0.7.r18.g3b8f6e9
 pkgrel=1
 pkgdesc='Fast and secure initramfs generator'
 arch=(x86_64)
@@ -10,7 +10,11 @@ license=(MIT)
 depends=(bash)
 makedepends=(git go ruby-ronn-ng)
 #checkdepends=(qemu-headless linux tang)
-optdepends=('busybox: to enable emergency shell at the boot time')
+optdepends=(
+  'busybox: to enable emergency shell at the boot time'
+  'yubikey-personalization: for clevis Yubikey challenge-response support'
+  'libfido2: for systemd-enroll with FIDO2'
+)
 backup=(etc/booster.yaml)
 provides=(booster initramfs)
 conflicts=(booster)
