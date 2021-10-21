@@ -1,6 +1,6 @@
 pkgbase = pizarra-bin
 	pkgdesc = Simple Gtk drawing application
-	pkgver = 1.4.0.r2.125437b
+	pkgver = 1.4.1.r1.f66e046
 	pkgrel = 1
 	url = https://gitlab.com/categulario/pizarra-gtk
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pizarra-bin
 	depends = gtk3
 	provides = pizarra
 	conflicts = pizarra
-	source = https://pizarra.categulario.tk/releases/pizarra-1.4.0.r2.125437b-x86_64.tar.gz
-	sha256sums = 3cfc97beca3ad0791f674a67649ec7fbc1f0e5c23e657e726b40576e7506cacc
+	source = https://pizarra.categulario.tk/releases/pizarra-1.4.1.r1.f66e046-x86_64.tar.gz
+	sha256sums = cfe849693383d64425879d8963afb859a650b91180ec110176f2b841be2d6bed
 
 pkgname = pizarra-bin
