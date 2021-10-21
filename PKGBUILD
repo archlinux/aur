@@ -2,14 +2,14 @@
 
 pkgname='python-scalene-git'
 pkgver=r2002.1fea191
-pkgrel=1
+pkgrel=2
 pkgdesc='Scalene is a high-performance, high-precision CPU and memory profiler for Python'
 arch=('any')
 url='https://github.com/emeryberger/scalene'
 license=('Apache-2.0')
 depends=('python>=3.7' 'python-numpy' 'python-cloudpickle' 'python-rich' 'python-pynvml')
 makedepends=('python-setuptools' 'make' 'clang' 'git')
-source=("${pkgname}::git+https://github.com/emeryberger/scalene.git"
+source=("${pkgname}::git+https://github.com/plasma-umass/scalene.git"
         "git+https://github.com/emeryberger/Heap-Layers")
 sha256sums=('SKIP' 'SKIP')
 provides=('python-scalene')
