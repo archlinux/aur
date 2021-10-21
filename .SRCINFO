@@ -1,4 +1,4 @@
-pkgbase = multimc-git
+pkgbase = devlauncher-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 0.6.13.r0.ge2355eb2
 	pkgrel = 2
@@ -30,4 +30,4 @@ pkgbase = multimc-git
 	sha512sums = SKIP
 	sha512sums = 0005a23628afbecb40591e9ef0fd2fc63367ca1be71a874de6791fb19ae112b5907e19975b40b770122e9e34cc3297b14d2a9d72c42f3fbfac221e41cbc67890
 
-pkgname = multimc-git
+pkgname = devlauncher-git
