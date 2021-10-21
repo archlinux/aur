@@ -4,7 +4,7 @@
 # Contributor: Simonas Racinas <racinas at icloud.com>
 pkgname=visual-paradigm-community
 pkgver=16.3
-pkgrel=20210827
+pkgrel=20211004
 pkgdesc="UML design application"
 url='http://www.visual-paradigm.com/download/community.jsp'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://$_server.dl.visual-paradigm.com/visual-paradigm/vpce$pkgver/$pk
   'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('8ac0eaea5dd5a0a77102771891a45d461d2d22052d931c2e5e6d615c7dd10102'
+sha256sums=('ad11dee577a724d9db749b3c3e7824771af349ac99d8d56a0c481d54a7678682'
             '52d244345f2ce8080d2b20c8c75b3ef833dfe9c5d605cac7129013b087bf2806'
             '5cdc0f50573d805938172c1f35664aa264fc5964fd92daed09b467565a6347b1'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
