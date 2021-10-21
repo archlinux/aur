@@ -3,7 +3,7 @@
 
 _basename=imagemagick
 pkgname=lib32-imagemagick
-pkgver=7.1.0.4
+pkgver=7.1.0.10
 pkgrel=1
 pkgdesc='An image viewing/manipulation program (32-bit)'
 url='https://www.imagemagick.org/'
@@ -15,9 +15,9 @@ makedepends=(ghostpcl ghostscript ghostxps lib32-glu lib32-jbigkit lib32-ocl-icd
 checkdepends=(ttf-dejavu)
 _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
-source=(https://imagemagick.org/download/releases/$_tarname.tar.xz{,.asc}
+source=(https://download.imagemagick.org/ImageMagick/download/releases/$_tarname.tar.xz{,.asc}
         arch-fonts.diff)
-sha256sums=('1a54bd46947f16fb29cf083be3614a14135f2fe9d1aa20665a85a8940bf6dc65'
+sha256sums=('b6b242e89ed7b2f681a2e83340d95a0cc97c1077f189dc1b675ec93f7e05ac7d'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
@@ -48,9 +48,10 @@ build() {
         PSDelegate=/usr/bin/gs \
         XPSDelegate=/usr/bin/gxps \
         PCLDelegate=/usr/bin/gpcl6 \
+        --disable-static \
         --enable-hdri \
         --enable-opencl \
-        --without-gslib \
+        --enable-shared \
         --with-lqr \
         --with-modules \
         --with-openjp2 \
@@ -64,9 +65,12 @@ build() {
         --without-fftw \
         --without-fpx \
         --without-gcc-arch \
+        --without-gslib \
         --without-gvc \
+        --without-jxl \
         --without-libzip \
-        --without-openexr
+        --without-openexr \
+        --without-perl \
 
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
