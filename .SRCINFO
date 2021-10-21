@@ -11,6 +11,7 @@ pkgbase = neovim-lsp_signature-git
 	makedepends = git
 	depends = neovim>=0.5.0
 	provides = neovim-lsp_signature
+	provides = neovim-lsp-signature
 	conflicts = neovim-lsp_signature
 	replaces = neovim-lsp-signature-git
 	source = neovim-lsp_signature-git::git+https://github.com/ray-x/lsp_signature.nvim

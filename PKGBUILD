@@ -11,7 +11,7 @@ groups=('neovim-plugins')
 depends=('neovim>=0.5.0')
 makedepends=('git')
 checkdepends=('neovim-plenary')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'neovim-lsp-signature')
 conflicts=("${pkgname%-git}")
 replaces=('neovim-lsp-signature-git')
 install=lsp_signature.install
