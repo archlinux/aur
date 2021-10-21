@@ -1,14 +1,14 @@
 pkgbase = betterdiscord-installer
 	pkgdesc = Installer for BetterDiscord
-	pkgver = 1.0.0.hotfix
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/BetterDiscord/Installer
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs
 	makedepends = yarn
 	replaces = betterdiscord
-	source = betterdiscord-installer-1.0.0-hotfix.tar.gz::https://github.com/BetterDiscord/Installer/archive/v1.0.0-hotfix.tar.gz
-	sha256sums = c06a30f8c77dc41dfff2e88b5f9f02e8ece2240f7abe7fb51dfa9e6238836a95
+	source = betterdiscord-installer-1.1.0.tar.gz::https://github.com/BetterDiscord/Installer/archive/v1.1.0.tar.gz
+	sha256sums = 987d3993f3df84cd7e3cb1c0e2bdc9edaef9032336feb0453eed33dc64bbda8a
 
 pkgname = betterdiscord-installer
