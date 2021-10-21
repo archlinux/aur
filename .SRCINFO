@@ -1,7 +1,7 @@
 pkgbase = rubymine-eap
 	pkgdesc = Ruby and Rails IDE with the full stack of essential developer tools (EAP).
 	pkgver = 213.4928.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/ruby/
 	install = rubymine.install
 	arch = i686
@@ -19,3 +19,9 @@ pkgbase = rubymine-eap
 	sha256sums = fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd
 
 pkgname = rubymine-eap
+	optdepends = rubymine-eap-jre: JetBrains custom Java Runtime (Recommended)
+	optdepends = java-runtime: JRE - Required if webstorm-jre is not installed
+
+pkgname = rubymine-eap-jre
+	pkgdesc = JBR (JetBrains Runtime) for RubyMine EAP - a patched JRE
+	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime

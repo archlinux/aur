@@ -1,9 +1,10 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
-pkgname=rubymine-eap
+pkgbase=rubymine-eap
+pkgname=(rubymine-eap rubymine-eap-jre)
 pkgver=213.4928.2
 _pkgname=RubyMine
 _pkgver=2021.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools (EAP)."
 arch=('i686' 'x86_64')
 options=('!strip')
@@ -20,33 +21,45 @@ sha256sums=('eb67cd09f3d9f75881168a0c1ec894241be7071db08a96941dfa74db5246bb4f'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    rm Install-Linux-tar.txt
-    rm help/ReferenceCardForMac.pdf
+  rm Install-Linux-tar.txt
+  rm help/ReferenceCardForMac.pdf
 }
 
-package() {
-    cd "${srcdir}"
-    [ $CARCH == "x86_64" ] && SUFFIX=64
+package_rubymine-eap() {
+  optdepends=('rubymine-eap-jre: JetBrains custom Java Runtime (Recommended)'
+              'java-runtime: JRE - Required if webstorm-jre is not installed')
 
-    install -d ${pkgdir}/{opt,usr/share}
+  cd "${srcdir}"
+  [ $CARCH == "x86_64" ] && SUFFIX=64
 
-    # Pre-packaged program files
-    cp --recursive "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
+  install -d ${pkgdir}/{opt,usr/share}
 
-    # Desktop file
-    install -Dm644 "${pkgdir}/opt/${pkgname}/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
-    install -Dm644 "rubymine-eap.desktop" "${pkgdir}/usr/share/applications/rubymine-eap.desktop"
-    install -d -m 755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/bin/rubymine.sh" "${pkgdir}/usr/bin/${pkgname}"
+  # Pre-packaged program files
+  cp --recursive "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
+  rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
-    # License
-    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    find "$srcdir/$_pkgname-$pkgver/license/" -type f -exec \
-        install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
+  # Desktop file
+  install -Dm644 "${pkgdir}/opt/${pkgname}/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+  install -Dm644 "rubymine-eap.desktop" "${pkgdir}/usr/share/applications/rubymine-eap.desktop"
+  install -d -m 755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/bin/rubymine.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-    # Java config
-    sed -i 's/lcd/on/' "${pkgdir}/opt/$pkgname/bin/rubymine${SUFFIX}.vmoptions"
-    echo "-Dswing.aatext=true" >> "${pkgdir}/opt/$pkgname/bin/rubymine${SUFFIX}.vmoptions"
+  # License
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  find "$srcdir/$_pkgname-$pkgver/license/" -type f -exec \
+    install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
+
+  # Java config
+  sed -i 's/lcd/on/' "${pkgdir}/opt/$pkgname/bin/rubymine${SUFFIX}.vmoptions"
+  echo "-Dswing.aatext=true" >> "${pkgdir}/opt/$pkgname/bin/rubymine${SUFFIX}.vmoptions"
+}
+
+package_rubymine-eap-jre() {
+  pkgdesc="JBR (JetBrains Runtime) for RubyMine EAP - a patched JRE"
+  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+
+  install -dm755 "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}/${_pkgname}-${pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
