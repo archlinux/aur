@@ -8,7 +8,7 @@ pkgname=ledger-live-bin
 pkgdesc='Ledger Live - Desktop (AppImage version)'
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
-pkgver=2.34.2
+pkgver=2.34.3
 pkgrel=1
 arch=('x86_64')
 depends=('ledger-udev')
@@ -20,7 +20,7 @@ source=(
   "${_package}::${url}/releases/download/v${pkgver}/${_package}"
   "LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live-desktop/v${pkgver}/LICENSE"
 )
-sha512sums=('6e49e1ae6fadc131851e26d5a7a8b68641e917a22e47fd663b0c25b6bc1490330fd4ad0f54c3bea1545c60547a4f38450eda18b122a11ad990da1de2cd243667'
+sha512sums=('52dfd819ee347f3952cb95439fac570cec65c664cc17ab0d6ed9bf305b1d042de3055dc4770c8b76414a93cbe3f87476a21b80bd64bdf7bdc84d529a1ab2dc79'
             '915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318')
 
 
