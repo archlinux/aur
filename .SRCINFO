@@ -1,0 +1,21 @@
+pkgbase = sozu
+	pkgdesc = HTTP reverse proxy, configurable at runtime, fast and safe, built in Rust
+	pkgver = 0.13.6
+	pkgrel = 1
+	url = https://github.com/sozu-proxy/sozu
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	depends = openssl>=1.0.1
+	conflicts = sozu-git
+	backup = etc/sozu/config.toml
+	source = git://github.com/sozu-proxy/sozu#commit=e4e7488232ad6523791b94ad201239bcf7eb9b30
+	source = config.toml
+	source = sozu.service
+	sha256sums = SKIP
+	sha256sums = 350a1cd876d380c2fb64cf59858d922814c291c528e2a7688209150f71ded692
+	sha256sums = b2799a98514bb284fbd10bdbac2d4b330145180fcf9fddede887807d6b08ff84
+
+pkgname = sozu
