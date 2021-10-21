@@ -1,6 +1,6 @@
 pkgbase = linux-mini
 	pkgdesc = Linux kernel and modules with minimal configuration
-	pkgver = 5.14.12
+	pkgver = 5.14.14
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = linux-mini
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.12.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.14.xz
 	source = more-uarches-20210914.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210914.tar.gz
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -30,7 +30,7 @@ pkgbase = linux-mini
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = 7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2
 	sha256sums = SKIP
-	sha256sums = 1553ab8d8e8485716be25c220850496522065b49ac6e4a8d3f9129439c2ed46d
+	sha256sums = 980f6c10adfb866ec6060fc28a1adc4b2d766ccdf9062a3c6bf618eb16d752d3
 	sha256sums = b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611
 	sha256sums = f5d3635520c9eb9519629f6df0d9a58091ed4b1ea4ddb1acd5caf5822d91a060
 
