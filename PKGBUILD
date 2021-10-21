@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=audacity-git
-pkgver=3.0.4.r239.g6d3dd0c62
+pkgver=3.1.0.beta.1.r20.g2d5320dd3
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=(i686 x86_64)
@@ -30,14 +30,16 @@ pkgver() {
 }
 
 build() {
-  mkdir audacity/build
-  cd audacity/build
+  cd audacity
+  mkdir build && cd build
   CC=gcc cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    audacity_use_ffmpeg:STRING=loaded \
+    -DwxBUILD_TOOLKIT:STRING=gtk3 \
+    -Daudacity_use_wxwidgets=local \
+    -Daudacity_use_ffmpeg:STRING=loaded \
     ..
-  make .
+  cmake --build .
 }
 
 package() {
