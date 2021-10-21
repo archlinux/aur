@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=uxplay
 _gitname=UxPlay
-pkgver=1.38
+pkgver=1.38b
 pkgrel=1
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 conflicts=('uxplay')
 provides=('uxplay')
 source=("$_gitname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "uxplay.desktop")
-sha256sums=('6fc53d7d03e0220ac54a072ff0af1a61755cadc7d9e2a9d72650fb0bebec5159' '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
+sha256sums=('315ee9f937b6ed175df08c736ff7ecc1f3ee00a2a3dca1d5e3a049b99e9b73e9' '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
 
 build() {
   cd "$srcdir/$_gitname-$pkgver"
@@ -29,4 +29,11 @@ package() {
   install -Dm 644 "$srcdir/uxplay.desktop" "$pkgdir/usr/share/applications/uxplay.desktop"
 
   printf "%b" "\e[1;33m==> WARNING: \e[0mIn order for UxPlay to work, the avahi systemd service has to be running. Enable it with: systemctl enable --now avahi-daemon\n"
+  # install manpage
+  install -Dm 644 "$srcdir/$_gitname-$pkgver/uxplay.1" "$pkgdir/usr/share/man/man1/uxplay.1"
+  # install doc
+  install -d "$pkgdir/usr/share/doc/uxplay"
+  install -Dm 644 "$srcdir/$_gitname-$pkgver"/README.* "$pkgdir/usr/share/doc/uxplay"
+  # install license
+  install -Dm 644 "$srcdir/$_gitname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/uxplay/LICENSE"
 }
