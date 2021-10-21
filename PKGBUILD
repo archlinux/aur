@@ -1,18 +1,16 @@
-# Maintainer: Johan Förberg <johan@forberg.se>
+# Maintainer: Ben Cooper <contactme@bengcooper.co.uk>
+# Contributor: Johan Förberg <johan@forberg.se>
 pkgname=magicq
-pkgver=1.7.3.8
+pkgver=1.9.1.6
 pkgrel=1
-pkgdesc='Lighting control software from Chamsys'
+pkgdesc='Lighting control software from ChamSys'
 arch=(x86_64)
-url='https://secure.chamsys.co.uk/magicq'
+url='https://chamsyslighting.com/products/magicq'
 groups=()
-depends=(ffmpeg-compat-55 libcups glu qt5-multimedia libusb-compat qt5-webkit
-         libarchive)
 options=('!strip') # Binaries are already stripped.
 
-# You can obtain this file from https://secure.chamsys.co.uk/download
-source=("local://magicq_${pkgver}_amd64.deb")
-sha1sums=('66d027f2faa2c19f839b6b0a223131716e01c5bc')
+source=('http://files.magicq.co.uk/v1_9_1_6/magicq_ubuntu_v1_9_1_6.deb')
+sha1sums=('4061bbab7aee24f4e5e54eae86d6de55d33ee120')
 
 # I've been unable to find any formal license for Magicq. The website only
 # states that it's available free of charge. There don't seem to be any
@@ -21,9 +19,12 @@ sha1sums=('66d027f2faa2c19f839b6b0a223131716e01c5bc')
 license=(unknown)
 
 package() {
+    depends=(alsa-lib ffmpeg glu gst-plugins-base gst-plugins-good
+    libarchive libcups libusb libx11 libxcb qt5-multimedia qt5-webkit zlib)
+
     cd "$pkgdir"
 
-    bsdtar xf "$srcdir/data.tar.gz"
+    bsdtar xf "$srcdir/data.tar.xz"
 
     # We use the system libraries instead of the bundled binaries.
     rm -rf opt/magicq/lib*.so*
