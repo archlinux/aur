@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=rnote
-pkgver=0.1.1
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A simple note taking application written in Rust and GTK4"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('gtk4' 'glib2' 'libadwaita')
 makedepends=('meson' 'rust')
 checkdepends=('appstream-glib')
-source=(https://github.com/flxzt/rnote/archive/v0.1.1.tar.gz)
-sha512sums=('37849c00435949557c4242dea74d99302f0f51c29b9dafda3bdabe6747d45b2081728a51c9d3ceeb44ee3516a40d126c44f10ac535a4dabca4a9a4de71385aae')
+source=($url/archive/v$pkgver.tar.gz)
+sha512sums=('a196a5a9af6e5567949bcd680e0a6bc54128a9b80c89d5a574c0a12b911d076848983f3ddc769dce34ee82f7f176bea54988d639fd71eb2d6a4609bc0d17d32d')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
@@ -19,9 +19,9 @@ build() {
 }
 
 #check() {
-#  meson test -C build --print-errorlogs
+#  meson test -C build
 #}
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
