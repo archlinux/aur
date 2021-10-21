@@ -3,7 +3,7 @@ _pkgname=pcgen
 pkgname=${_pkgname}-git
 provides=(pcgen)
 pkgrel=1
-pkgver=6.09.00_DEV.g13a608a30e
+pkgver=6.09.06.g5f55b50ddf
 conflicts=(pcgen)
 pkgdesc="An RPG Character Generator."
 arch=(any)
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 pkgver(){
     cd "${srcdir}/${pkgname}"
     githash=$(git rev-parse --short HEAD)
-    ver=$(grep 'version=' gradle.properties | cut -d'=' -f2 | sed 's/-/_/g')
+    ver=$(grep '^version=' gradle.properties | head -n1 | cut -d'=' -f2 | sed 's/-/_/g')
     echo ${ver}.g${githash}
 }
 
