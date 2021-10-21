@@ -1,21 +1,21 @@
 pkgbase = atlauncher
 	pkgdesc = A launcher for Minecraft which integrates multiple different modpacks to allow you to download and install modpacks easily and quickly.
-	pkgver = 3.4.7.4
+	pkgver = 3.4.8.0
 	pkgrel = 1
 	url = https://github.com/ATLauncher/ATLauncher
 	arch = any
 	license = GPL3
-	makedepends = java-environment=8
-	depends = java-runtime=8
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
 	depends = openal
 	provides = atlauncher
 	conflicts = atlauncher-bin
-	source = ATLauncher-3.4.7.4.tar.gz::https://github.com/ATLauncher/ATLauncher/archive/v3.4.7.4.tar.gz
+	source = ATLauncher-3.4.8.0.tar.gz::https://github.com/ATLauncher/ATLauncher/archive/v3.4.8.0.tar.gz
 	source = atlauncher
 	source = atlauncher.desktop
 	source = atlauncher.png
 	source = atlauncher.svg
-	sha256sums = fda5bc386c9f2de189310ed543e0446677a7334938616f8f74cf213e7c641619
+	sha256sums = 4355fec9944600c419f66fae2012a7cfad77c1671bdcd9f009c451cba5cc4780
 	sha256sums = f689c1721553b28457fece057516872a9cc7e57e62cf45fd65eba1a8690682a6
 	sha256sums = 2e7eed9ae7174e0c94ff0a71d3735b73b6742f911033dccd6b52853d511d766c
 	sha256sums = dd370888c78fdb652d656d97e4a7f7e8c90aa8d75d4f4d01d0bd32e95c327c47
