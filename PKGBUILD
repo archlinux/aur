@@ -3,7 +3,7 @@
 pkgbase=berry
 _pkgname=berry
 pkgname=berry-git
-_pkgver=fdfd800
+_pkgver=972f953
 pkgver=git+$_pkgver
 pkgrel=1
 pkgdesc="A healthy, bite-sized window manager written over the XLib Library"
@@ -36,7 +36,7 @@ package() {
 
 	# These variables are used in the Makefile to create the file directories.
 	PREFIX="/usr/local/"
-	MANPREFIX="${PREFIX}/share/"
+	MANPREFIX="${PREFIX}share/"
 	EXAMPLEPREFIX="/etc/xdg/berry/"
 	
 	# Set the variables and install the files.
