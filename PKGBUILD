@@ -29,7 +29,7 @@ prepare() {
 
 package_rubymine-eap() {
   optdepends=('rubymine-eap-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime: JRE - Required if webstorm-jre is not installed')
+              'java-runtime: JRE - Required if rubymine-jre is not installed')
 
   cd "${srcdir}"
   [ $CARCH == "x86_64" ] && SUFFIX=64
