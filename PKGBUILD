@@ -7,7 +7,7 @@
 pkgname=mullvad-vpn-beta
 _pkgver=2021.5
 _channel=beta
-_rel=1
+_rel=2
 # beta
 pkgver=${_pkgver}.${_channel}${_rel}
 # stable
