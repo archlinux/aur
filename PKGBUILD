@@ -3,7 +3,7 @@
 pkgname=graphite-web
 pkgver=1.1.8
 pkgrel=1
-pkgdesc="Graphite-web, without the interface. Just the rendering HTTP API."
+pkgdesc="a Django-based web application that renders graphs and dashboards"
 url="https://github.com/graphite-project/graphite-web/"
 license=('Apache')
 depends=('python-pytz' 'python-six' 'python-flask' 'python-structlog'

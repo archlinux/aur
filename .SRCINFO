@@ -1,5 +1,5 @@
 pkgbase = graphite-web
-	pkgdesc = Graphite-web, without the interface. Just the rendering HTTP API.
+	pkgdesc = a Django-based web application that renders graphs and dashboards
 	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/graphite-project/graphite-web/
