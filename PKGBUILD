@@ -3,7 +3,7 @@
 
 _basename=gd
 pkgname=lib32-gd
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Library for the dynamic creation of images by programmers (32-bit)"
 arch=('x86_64')
@@ -12,8 +12,18 @@ license=('custom')
 depends=('lib32-fontconfig' 'lib32-libheif' 'lib32-libraqm' 'lib32-libtiff' 'lib32-libwebp'
          'lib32-libxpm' 'gd')
 checkdepends=('ttf-liberation')
-source=("https://github.com/libgd/libgd/archive/${_basename}-${pkgver}.tar.gz")
-sha256sums=('dcc22244d775f469bee21dce1ea42552adbb72ba0cc423f9fa6a64601b3a1893')
+source=("https://github.com/libgd/libgd/archive/${_basename}-${pkgver}.tar.gz"
+        "https://github.com/libgd/libgd/commit/bdc281eadb1d58d5c0c7bbc1125ee4674256df08.patch")
+sha256sums=('24429f9d0dbe0f865aaa4b1a63558242396ba9134e6cfd32ca5e486a84483350'
+            '2ae91e3e018440c74c1628bac5deed2851234f2b5bfea49bf805312c64d0115e')
+
+prepare() {
+    cd libgd-${_basename}-${pkgver}
+
+    # Re-add macros that are used in PHP
+    # See https://github.com/php/php-src/pull/7490
+    patch -p1 -R -i "$srcdir/bdc281eadb1d58d5c0c7bbc1125ee4674256df08.patch"
+}
 
 build() {
     cd libgd-${_basename}-${pkgver}
@@ -36,7 +46,7 @@ build() {
 check() {
     cd libgd-${_basename}-${pkgver}
 
-    make check || :
+    TMP=$(mktemp -d) make check || :
 }
 
 package() {
