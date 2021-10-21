@@ -1,7 +1,7 @@
 pkgbase = calibre-web-git
 	pkgdesc = Web app for browsing, reading and downloading eBooks stored in a Calibre database
-	pkgver = 0.6.9.r277.g2d3ae71a
-	pkgrel = 1
+	pkgver = 0.6.13.r95.gfe4db16a
+	pkgrel = 2
 	url = https://github.com/janeczku/calibre-web
 	arch = any
 	license = GPL3
@@ -21,6 +21,7 @@ pkgbase = calibre-web-git
 	depends = python-unidecode
 	depends = python-blinker
 	depends = python-iso639
+	depends = python-flask-wtf
 	provides = calibre-web
 	conflicts = calibre-web
 	source = git+https://github.com/janeczku/calibre-web.git
@@ -33,4 +34,3 @@ pkgbase = calibre-web-git
 	md5sums = 40101a01e29b944c7eb889b34849d8c5
 
 pkgname = calibre-web-git
-
