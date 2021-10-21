@@ -8,7 +8,7 @@ arch=(any)
 url="https://gitlab.com/juxuanu/cpuctl"
 license=('GPLv2')
 makedepends=(nimble)
-provides=(cpuctl)
+provides=(cpuctl-git)
 conflicts=(cpuctl cpuctl-git)
 source=('cpuctl::git+https://gitlab.com/juxuanu/cpuctl.git#branch=main')
 md5sums=('SKIP')
