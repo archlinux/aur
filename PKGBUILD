@@ -1,7 +1,7 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A system information fetcher, with an (unhealthy) emphasis on performance."
 
@@ -14,7 +14,7 @@ optdepends=('wmctrl: window manager support')
 makedepends=('rust' 'cargo' 'git')
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf7de54fa04073d26f6ed2bddc08631ee4f20e81c78af166bc3a47b187b65a1c')
+sha256sums=('fc39c793c34dd1766af2df1dde98626dd2f0145facb5e53ffdfb8cdbc116bcdf')
 
 build() {
 	cd "$pkgname-$pkgver"
