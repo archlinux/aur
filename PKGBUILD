@@ -2,13 +2,13 @@
 
 pkgname=zur
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR helper written in Zig"
 arch=("x86_64")
 url="https://github.com/hspak/zur"
 license=("MIT")
 depends=("pacman" "curl")
-makedepends=("zig-git" "git")
+makedepends=("zig" "git")
 provides=("$pkgname")
 conflicts=("$pkgname" "$pkgname-git")
 source=("https://github.com/hspak/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
