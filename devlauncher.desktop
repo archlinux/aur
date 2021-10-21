@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=DevLauncher
+GenericName=Minecraft Launcher
+Comment=Free, open source launcher and instance manager for Minecraft.
+Type=Application
+Terminal=false
+Exec=devlauncher
+Icon=devlauncher
+Categories=Game
+Keywords=game;minecraft;
