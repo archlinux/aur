@@ -3,7 +3,7 @@
 _pkgname=swisswatch
 pkgname=${_pkgname}-git
 pkgver=20211019.43a1c9e
-pkgrel=1
+pkgrel=2
 pkgdesc='X11 clock that looks like a station clock in Switzerland'
 url='https://github.com/sleinen/swisswatch'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')

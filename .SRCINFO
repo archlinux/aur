@@ -1,7 +1,7 @@
 pkgbase = swisswatch-git
 	pkgdesc = X11 clock that looks like a station clock in Switzerland
 	pkgver = 20211019.43a1c9e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sleinen/swisswatch
 	arch = i686
 	arch = x86_64
