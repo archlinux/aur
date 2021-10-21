@@ -2,7 +2,7 @@
 
 pkgname=globalprotect-openconnect-git
 _pkgname=globalprotect-openconnect
-pkgver=1.3.3+snapshot139.g80403fe
+pkgver=1.3.3+snapshot140.gc2d2e67
 pkgrel=1
 pkgdesc="A GlobalProtect VPN client (GUI) for Linux based on Openconnect and built with Qt5, supports SAML auth mode. (development version)"
 arch=(x86_64 aarch64)
