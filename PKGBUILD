@@ -25,9 +25,9 @@ build() {
 }
 
 check() {
-    cd ${srcdir}/${_pyname}-${pkgver}/build/lib.linux-${CARCH}-${_pyver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest
+    pytest "build/lib.linux-${CARCH}-${_pyver}" || warning "Tests failed"
 }
 
 package() {
