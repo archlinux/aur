@@ -1,7 +1,7 @@
 pkgbase = anki-bin
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently. Installed with wheel.
 	pkgver = 2.1.48
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apps.ankiweb.net/
 	arch = x86_64
 	license = AGPL3

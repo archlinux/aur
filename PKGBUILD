@@ -7,7 +7,7 @@ _py=cp38
 
 pkgname=anki-bin
 pkgver=2.1.48
-pkgrel=2
+pkgrel=3
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
 arch=('x86_64')
@@ -51,9 +51,9 @@ conflicts=(anki)
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_anki::1}/$_anki/$_anki-$pkgver-$_py-abi3-manylinux2014_$arch.whl"
 	"https://files.pythonhosted.org/packages/py3/${_aqt::1}/$_aqt/$_aqt-$pkgver-py3-none-any.whl"
-	"https://raw.githubusercontent.com/ankitects/anki/2.1.48/qt/runanki.py"
-	"https://raw.githubusercontent.com/ankitects/anki/2.1.48/qt/linux/anki.desktop"
-	"https://raw.githubusercontent.com/ankitects/anki/2.1.48/qt/linux/anki.png"
+	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/runanki.py"
+	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/linux/anki.desktop"
+	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/linux/anki.png"
 )
 noextract=("${source[@]##*/}")
 sha256sums=('7611846cc73eceda888f342e5b6f70fb3dc651505095b6a2de42001b5b2c6d93'
