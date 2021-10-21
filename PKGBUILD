@@ -7,7 +7,7 @@
 
 pkgname=('luajit-lgi')
 pkgver=0.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc='LuaJIT bindings for gnome/gobject using gobject-introspection library'
 url='https://github.com/pavouk/lgi'
 arch=('x86_64')
