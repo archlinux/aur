@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=17
+pkgrel=18
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -58,6 +58,7 @@ sha512sums=(
 
 package() {
 # make -C build DESTDIR="$pkgdir" install
+install  -dm755   "$pkgdir/etc/systemd/system"
 install  -Dm755 ipmac  "$pkgdir/usr/bin/ipmac"
 install  -Dm755 pushall  "$pkgdir/usr/bin/pushall"
 install  -Dm755 pullall  "$pkgdir/usr/bin/pullall"
