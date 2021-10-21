@@ -2,4 +2,5 @@ post_install() {
 	printf "$(tput setaf 4)To use gkraken as non-root user you need to reload the udev rules$(tput sgr0)\n"
 	printf "$(tput setaf 2)sudo udevadm control --reload-rules$(tput sgr0)\n"
 	printf "$(tput setaf 2)sudo udevadm trigger --subsystem-match=usb --attr-match=idVendor=1e71 --action=add$(tput sgr0)\n"
+	printf "$(tput setaf 2)sudo udevadm trigger --subsystem-match=usb --attr-match=idVendor=2433 --action=add$(tput sgr0)\n"
 }
