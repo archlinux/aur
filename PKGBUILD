@@ -2,7 +2,7 @@
 _release_type=stable
 
 pkgname=makedeb
-pkgver=7.1.2
+pkgver=7.1.2+bugfix1
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release_type} release)"
 arch=('any')
