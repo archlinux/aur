@@ -4,7 +4,7 @@
 pkgname=qemu-user-static
 pkgdesc="Statically linked binaries of Qemu with user emulation. Useful for containers/chroot environment with binfmt."
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -69,6 +69,7 @@ _configure() {
             --disable-capstone \
             --disable-zstd \
             --disable-linux-io-uring \
+            --disable-bpf \
             --static
 }
 

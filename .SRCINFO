@@ -1,7 +1,7 @@
 pkgbase = qemu-user-static
 	pkgdesc = Statically linked binaries of Qemu with user emulation. Useful for containers/chroot environment with binfmt.
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.qemu.org/
 	arch = x86_64
 	arch = aarch64
