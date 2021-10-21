@@ -7,7 +7,7 @@ pkgdesc="Simple CPU scaling governor utility for CPUFreq"
 arch=(any)
 url="https://gitlab.com/juxuanu/cpuctl"
 license=('GPLv2')
-makedepends=(nimble)
+makedepends=(nim nimble)
 provides=(cpuctl)
 conflicts=(cpuctl cpuctl-git)
 source=('cpuctl::git+https://gitlab.com/juxuanu/cpuctl.git#branch=main')

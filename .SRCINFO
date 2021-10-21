@@ -5,6 +5,7 @@ pkgbase = cpuctl-git
 	url = https://gitlab.com/juxuanu/cpuctl
 	arch = any
 	license = GPLv2
+	makedepends = nim
 	makedepends = nimble
 	provides = cpuctl
 	conflicts = cpuctl
