@@ -2,7 +2,7 @@ pkgbase = python-keepmenu-git
 	pkgdesc = Dmenu/Rofi frontend for Keepass databases.
 	pkgver = r176.dbcf6dc
 	pkgrel = 1
-	url = git+https://github.com/firecat53/keepmenu
+	url = https://github.com/firecat53/keepmenu
 	install = python-keepmenu.install
 	arch = any
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = python-keepmenu-git
 	optdepends = xdotool: required for typing non-U.S. Unicode characters
 	provides = python-keepmenu
 	conflicts = python-keepmenu
-	source = git://github.com/firecat53/keepmenu.git
+	source = git+https://github.com/firecat53/keepmenu.git
 	md5sums = SKIP
 
 pkgname = python-keepmenu-git
