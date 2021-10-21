@@ -1,4 +1,4 @@
-# Maintainer: <user11681 at gmail dot com>
+# Maintainer: <me at auoeke dot net>
 pkgname=fabric-installer
 pkgver=0.8.0
 pkgrel=1
