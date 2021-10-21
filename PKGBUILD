@@ -4,7 +4,7 @@
 # Contributor: liberodark
 
 pkgname=frostwire
-pkgver=6.9.2
+pkgver=6.9.5
 pkgrel=1
 pkgdesc='Cloud Downloader, BitTorrent Client and Media Player'
 arch=('x86_64')
@@ -12,8 +12,10 @@ url='http://www.frostwire.com'
 license=('GPL')
 depends=('hicolor-icon-theme' 'java-environment' 'bash' 'zlib')
 optdepends=('mplayer: Media playback support')
-source=("${pkgname}-${pkgver}.deb::https://prime.frostwire.com/frostwire/${pkgver}/frostwire-${pkgver}.amd64.deb")
-sha256sums=('eeafbc1de76c55e8e5c6ba6a3964db91447aa0c4abe62e26abda08bf5d72390e')
+source=(https://github.com/${pkgname}/${pkgname}/releases/download/${pkgname}-desktop-${pkgver}-build-308/${pkgname}-${pkgver}.amd64.deb)
+sha256sums=('a6de8305bd15983aed50193e9e589240345a1d325f1ae58ebc0b3d79a9678318')
+
+
  
 package() {
   tar xvf data.tar.xz -C "${pkgdir}"
