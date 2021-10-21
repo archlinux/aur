@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/appimages/./krita.AppImage $@
+exec /opt/appimages/./krita.AppImage "$@"

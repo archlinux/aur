@@ -3,7 +3,7 @@
 _pkgname=krita
 pkgname=${_pkgname}-appimage
 pkgver=4.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Edit and paint images"
 arch=('x86_64')
 url="https://krita.org"
