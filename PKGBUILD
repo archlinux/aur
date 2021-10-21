@@ -16,7 +16,7 @@ source=("git+$url.git"
         whoogle.conf
         whoogle)
 sha256sums=('SKIP'
-            '7630105a0613d6758f0e298a8d197f307cb2d1657f7cedf10dc340c8f21c4511'
+            'fc410ab9280fcc79072c7c8a3e562f13e72015e7c09df7dee50ef0655f31d4c9'
             '51cda92f3ad2166eb2cb63ff80561f48b39688a57b66291d2eee5e1c7fcd8ee3'
             'e30ff5ecef199ce2a37b097709461c51ca07bdbbcc4609db74203834b62c60b1')
 install=whoogle.install
@@ -35,12 +35,14 @@ build() {
   pip install -r requirements.txt
   
   # Cleanup unsed
-  rm -r .git .github docs test .dockerignore .gitignore .replit docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt setup.py
+  rm -r .git .github docs test .dockerignore .gitignore .replit docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt setup.py .github
 }
 
 package() {
+  install -m0644 -D "$srcdir/whoogle" "$pkgdir/etc/default/whoogle"
   install -m0644 -D "$srcdir/whoogle.conf" "$pkgdir/usr/lib/sysusers.d/whoogle.conf"
   install -m0644 -D "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
+  install -Dm0644 "$srcdir/$pkgname-search/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -dm0755 "$pkgdir/opt/whoogle-search"
-  cp -r "$srcdir/whoogle-search/" "$pkgdir/opt/"
+  cp -r "$srcdir/$pkgname-search/" "$pkgdir/opt/"
 }
