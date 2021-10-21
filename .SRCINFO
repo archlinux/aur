@@ -1,6 +1,6 @@
 pkgbase = emblem
 	pkgdesc = Generate project avatars for your Matrix rooms an git forges
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/design/emblem
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = emblem
 	depends = gtk4
 	depends = libadwaita
 	depends = glib2
-	source = https://gitlab.gnome.org/World/design/emblem/-/archive/0.1.1/emblem-0.1.1.tar
-	sha512sums = 0198a07cd73aead83fa9db8139f3dd8c46832433f791509fc74bdebb512c92e1ea8cf80210fe4f40ca64d2998626ef72ed48a4257f1caa4f92d21a7f2cead8db
+	source = https://gitlab.gnome.org/World/design/emblem/-/archive/0.1.2/emblem-0.1.2.tar
+	sha512sums = 319d46bab4c689e98dfa9160d32d17aa205679f23892864913bb40a3cd165235f03b8629d3c86ec3d85b86c22de0e2001501255500201a3dc71b9797a3d5a4f7
 
 pkgname = emblem
