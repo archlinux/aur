@@ -6,8 +6,8 @@
 
 pkgbase=virtualbox-bin
 pkgname=('virtualbox-bin' 'virtualbox-bin-guest-iso' 'virtualbox-bin-sdk')
-pkgver=6.1.26
-_build=145957
+pkgver=6.1.28
+_build=147628
 _rev=88402
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
@@ -29,8 +29,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'LICENSE.sdk'
         '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('ea0e96aaab9f0c3965d73d40865950cd59227e27367e039c660f3fce81ea7c25'
-            'c0b5fbd78d6e1ac7a4b33365eb173eb6508390e8c673241ccbbd002eb73a785c'
+sha256sums=('0a95692b641a4e51677ed7275767e72e64e723db178c59468a904ca40acfd9c2'
+            '68a80843453cf3f2a6086555dc7c4629e058cd165955df4263f84f4490e701c5'
             '61eab70173ec0c4959ec3b8bf9fa19cfac49bb223a0bb041fe12aa14742db15a'
             'bff06f916a9c02fce12d3aaf76572766e8f75d54c179fb26d2fda060a7473af1'
             '2ef58e7f24ed9114dbf29dfa77372b5e15962a2244315ffbfb592cdc10920ad8'
@@ -179,7 +179,6 @@ package_virtualbox-bin-sdk() {
     
     local _dir
     local _installdir='opt/VirtualBox'
-    export PYTHONHASHSEED='0'
     
     install -d -m755 "${pkgdir}/${_installdir}/sdk"
     while read -r -d '' _dir
