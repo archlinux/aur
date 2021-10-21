@@ -1,10 +1,11 @@
 # Maintainer: Janek Thomaschewski <janek[at]artos-hosting[dot]de>
+# Contributor: Axel Navarro <navarroaxel[at]gmail[dot]com>
 # Contributor: Testuser_01 <arch[at]nico-siebler[dot]de>
 # Contributor: Pablo Vilas <pablovilas89[at]gmail[dot]com>
 
 pkgname=webstorm-eap
 _pkgname=WebStorm
-pkgver=213.4928.9
+pkgver=213.5281.15
 _pkgver=2021.3
 pkgrel=1
 pkgdesc="JavaScript IDE and HTML editor. Early Access Program."
@@ -12,20 +13,27 @@ arch=('x86_64')
 options=('!strip')
 url="http://www.jetbrains.com/webstorm"
 license=('custom')
-depends=()
 
 source=(https://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
         jetbrains-webstorm-eap.desktop
         ${_pkgname}_license.txt)
 
-sha256sums=('822bfefd868641ce8a0aeaec3dc4c145f8d2957485f462955ac0c1cb375ee847'
+sha256sums=('7fd3f63b2fde8a8f7d82783986b3009e538a41be7bb22f69c3f8f7ed19f84b54'
             'e8d1be7f980b7d371ef5aa65f2375397d970e887659bf3b280601cced8498e32'
             '8464fc766dbb4f6a0de4acd84007fc2916b50ca48ce7d22654144f549c8c6f4c')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  rm Install-Linux-tar.txt
+  rm help/ReferenceCardForMac.pdf
+}
+
 
 package() {
   cd "${srcdir}"
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  cp -r ${srcdir}/${_pkgname}-${pkgver}/* "${pkgdir}/opt/${pkgname}"
+  cp --recursive ${srcdir}/${_pkgname}-${pkgver}/* "${pkgdir}/opt/${pkgname}"
 
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/applications"
