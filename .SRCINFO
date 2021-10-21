@@ -1,18 +1,19 @@
 pkgbase = lib32-libsrtp
 	pkgdesc = Library for SRTP (Secure Realtime Transport Protocol) (32-bit)
-	pkgver = 2.3.0
-	pkgrel = 3
+	pkgver = 2.4.2
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/cisco/libsrtp
 	arch = x86_64
 	license = BSD
 	checkdepends = procps-ng
 	makedepends = git
+	makedepends = lib32-libpcap
+	makedepends = meson
 	depends = lib32-glibc
+	depends = lib32-nss
 	depends = libsrtp
-	options = staticlibs
-	source = git+https://github.com/cisco/libsrtp#commit=d02d21111e379c297e93a9033d7b653135f732ee
+	source = git+https://github.com/cisco/libsrtp#commit=90d05bf8980d16e4ac3f16c19b77e296c4bc207b
 	sha256sums = SKIP
 
 pkgname = lib32-libsrtp
-
