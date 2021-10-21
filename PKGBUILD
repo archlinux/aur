@@ -7,7 +7,7 @@ _py=cp38
 
 pkgname=anki-bin
 pkgver=2.1.48
-pkgrel=1
+pkgrel=2
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
 arch=('x86_64')
@@ -42,9 +42,9 @@ makedepends=(
 	'python-pip'
 )
 optdepends=(
-#	'lame: record sound'
-#	'mpv: play sound. prefered over mplayer'
-#	'mplayer: play sound'
+	'lame: record sound'
+	'mpv: play sound. prefered over mplayer'
+	'mplayer: play sound'
 )
 provides=(anki=$pkgver)
 conflicts=(anki)
