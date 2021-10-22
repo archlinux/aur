@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Deezer Enhanced
+GenericName=Music Player
+Comment=An unofficial application for Deezer with enhanced features
+Icon=deezer-enhanced
+Exec=deezer-enhanced
+Categories=GTK;Music;Player;
+StartupNotify=true
