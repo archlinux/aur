@@ -102,6 +102,7 @@ optdepends=(
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
+provides=('proton')
 #install=${pkgname}.install
 source=(
     proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=${_srctag}
@@ -276,6 +277,7 @@ build() {
 
     export WINEESYNC=0
     export WINEFSYNC=0
+    export DISPLAY=""
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
 }
