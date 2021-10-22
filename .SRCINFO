@@ -1,17 +1,12 @@
 pkgbase = dxflib
 	pkgdesc = Open source C++ library mainly for parsing DXF files
-	pkgver = 2.5.0.0
-	pkgrel = 2
+	pkgver = 3.26.4
+	pkgrel = 1
 	url = http://www.ribbonsoft.com/en/what-is-dxflib
 	arch = x86_64
 	arch = i686
 	license = GPL
-	source = http://www.ribbonsoft.com/archives/dxflib/dxflib-2.5.0.0-1.src.tar.gz
-	source = dxflib-type92.diff
-	source = dxflib-automake.diff
-	md5sums = 97a22444c10fb3cff5cec9f9c21d5c55
-	md5sums = 7f635aa41cdbb53928640b9068150a3d
-	md5sums = 4f1b6ab56de5be85840b92c175ab541f
+	source = https://qcad.org/archives/dxflib/dxflib-3.26.4-src.tar.gz
+	md5sums = 70f23a9d2ed64d4f039aef1fb2109d11
 
 pkgname = dxflib
-
