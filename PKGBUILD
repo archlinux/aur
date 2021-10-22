@@ -6,7 +6,7 @@ _srcver="${pkgver%.*}.0${pkgver##*.}"
 _gmmver=21.2.1
 _igcver=1.0.8744
 _lzver="1.2.0${pkgver##*.}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)'
 arch=('x86_64')
 url='https://github.com/intel/compute-runtime/'
@@ -19,13 +19,13 @@ conflicts=('intel-compute-runtime' 'intel-gmmlib')
 options=('!strip' '!emptydirs')
 source=("https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-opencl-icd_${_srcver}_amd64.deb"
         "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-level-zero-gpu_${_lzver}_amd64.deb"
-        "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-gmmlib-devel_${_gmmver}_amd64.deb"
-        "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-gmmlib_${_gmmver}_amd64.deb"
+        "${pkgname}-${pkgver}-gmmlib-devel-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-gmmlib-devel_${_gmmver}_amd64.deb"
+        "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-gmmlib_${_gmmver}_amd64.deb"
         'LICENSE')
 noextract=("intel-opencl-icd_${_srcver}_amd64.deb"
            "intel-level-zero-gpu_${_lzver}_amd64.deb"
-           "intel-gmmlib-devel_${_gmmver}_amd64.deb"
-           "intel-gmmlib_${_gmmver}_amd64.deb")
+           "${pkgname}-${pkgver}-gmmlib-devel-${_gmmver}_amd64.deb"
+           "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
 sha256sums=('00e9e4be09571e73ea2a7d88ccba598ddfdcfe97577df1d1f53e7836b18118ff'
             '30ef0010f447d1e7b4f0edaf01286dc7d7308baa04ba16e9debd920cdfacf9c3'
             '2b74ad22f194c4e65ad95466bf45a901b95412f18c739b95a0b70d9b67e3a64a'
@@ -36,8 +36,8 @@ prepare() {
     mkdir -p {opencl,level-zero-gpu,gmmlib{,-devel}}-"$pkgver"
     bsdtar -xf "intel-opencl-icd_${_srcver}_amd64.deb" -C "opencl-${pkgver}"
     bsdtar -xf "intel-level-zero-gpu_${_lzver}_amd64.deb" -C "level-zero-gpu-${pkgver}"
-    bsdtar -xf "intel-gmmlib-devel_${_gmmver}_amd64.deb" -C "gmmlib-devel-${pkgver}"
-    bsdtar -xf "intel-gmmlib_${_gmmver}_amd64.deb" -C "gmmlib-${pkgver}"
+    bsdtar -xf "${pkgname}-${pkgver}-gmmlib-devel-${_gmmver}_amd64.deb" -C "gmmlib-devel-${pkgver}"
+    bsdtar -xf "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb" -C "gmmlib-${pkgver}"
 }
 
 package() {
