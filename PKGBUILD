@@ -27,7 +27,7 @@ depends=(
 	'python-systemd')
 optdepends=(
 	'maestral-qt: Qt interface for the maestral daemon'
-	'python-importlib_metadata: REQUIRED for python<3.8')
+	'python-importlib-metadata: REQUIRED for python<3.8')
 makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-benchmark')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
