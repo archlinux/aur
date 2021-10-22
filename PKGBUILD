@@ -2,7 +2,7 @@
 
 pkgname=cling
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
@@ -78,6 +78,10 @@ package() {
     # `find_package(Cling REQUIRED)`
     install -Dm644 "$srcdir/build/lib/cmake/cling/ClingTargets.cmake" \
         "$pkgdir/opt/cling/lib/cmake/cling"
+
+    # adjust cling target locations
+    sed -Ei 's#(IMPORTED_LOCATION_RELEASE) ".*/([^/]*)"#\1 "/opt/cling/lib/\2"#g' \
+        "$pkgdir/opt/cling/lib/cmake/cling/ClingTargets.cmake"
 
     # omit man page for clang's scan-build
     rm -f "$pkgdir/opt/cling/share/man/man1/scan-build.1"
