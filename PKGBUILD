@@ -7,10 +7,10 @@ pkgdesc="Lightweight Well-Known Geometry Parsing"
 url="https://cran.r-project.org/package=wk"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("i686" "x86_64")
-depends=("r" )
+depends=("r" "r-rcpp")
 optdepends=("r-testthat" "r-vctrs" "r-sf" "r-tibble")
 makedepends=()
 
