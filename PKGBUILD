@@ -2,10 +2,10 @@
 
 pkgname=java-r5rcore
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 
-pkgdesc="Conveyal R5 Routing Engine"
-url="https://github.com/conveyal/r5"
+pkgdesc="Rapid Realistic Routing with 'R5' (java engine for R package)"
+url="https://github.com/ipeaGIT/r5r"
 license=("MIT")
 
 arch=("i686" "x86_64")
