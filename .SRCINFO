@@ -1,6 +1,6 @@
 pkgbase = media-session-git
-	pkgdesc = Example session manager for PipeWire
-	pkgver = r7643.c374e0ea9
+	pkgdesc = Low-latency audio/video router and processor - Session manager
+	pkgver = 0.4.0.r1.g4bf1b295
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/pipewire/media-session
 	arch = x86_64
@@ -9,16 +9,25 @@ pkgbase = media-session-git
 	makedepends = meson
 	makedepends = alsa-lib
 	makedepends = dbus
-	makedepends = pipewire
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = pipewire>=0.3.39
 	makedepends = systemd
 	source = git+https://gitlab.freedesktop.org/pipewire/media-session.git
 	sha256sums = SKIP
 
 pkgname = media-session-git
 	install = media-session.install
+	depends = pipewire>=0.3.39
 	depends = libpipewire-0.3.so
 	depends = libasound.so
 	depends = libdbus-1.so
 	depends = libsystemd.so
 	provides = pipewire-media-session
+	provides = pipewire-session-manager
 	conflicts = pipewire-media-session
+
+pkgname = media-session-docs-git
+	pkgdesc = Low-latency audio/video router and processor - Session manager - documentation
+	provides = pipewire-media-session-docs
+	conflicts = pipewire-media-session-docs

@@ -2,36 +2,69 @@
 
 _pkgbase=media-session
 pkgbase=media-session-git
-pkgname=(media-session-git)
-pkgver=r7643.c374e0ea9
+pkgname=(media-session-git media-session-docs-git)
+pkgver=0.4.0.r1.g4bf1b295
 pkgrel=1
-pkgdesc="Example session manager for PipeWire"
-url="https://gitlab.freedesktop.org/pipewire/media-session"
+pkgdesc="Low-latency audio/video router and processor - Session manager"
+url="https://gitlab.freedesktop.org/pipewire/${_pkgbase}"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson alsa-lib dbus pipewire systemd)
+makedepends=(git meson
+             alsa-lib dbus doxygen graphviz 'pipewire>=0.3.39' systemd)
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   # make AUR helper happy
   rm -rf builddir || true
-  arch-meson $_pkgbase builddir
+  arch-meson $_pkgbase builddir \
+    -D docs=enabled \
+    -D with-module-sets=[]
+
   meson compile -C builddir
 }
 
+check() {
+  meson test -C builddir --print-errorlogs
+}
+
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
 package_media-session-git() {
-  depends=(libpipewire-0.3.so libasound.so libdbus-1.so libsystemd.so)
-  provides=(pipewire-media-session)
+  depends=('pipewire>=0.3.39' libpipewire-0.3.so
+           libasound.so libdbus-1.so libsystemd.so)
+  provides=(pipewire-media-session pipewire-session-manager)
   conflicts=(pipewire-media-session)
   install=media-session.install
 
   meson install -C builddir --destdir "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
+
+  cd "$pkgdir"
+
+  _pick docs usr/share/doc
+}
+
+package_media-session-docs-git() {
+  pkgdesc+=" - documentation"
+  provides=(pipewire-media-session-docs)
+  conflicts=(pipewire-media-session-docs)
+
+  mv docs/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }
