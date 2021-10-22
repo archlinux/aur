@@ -1,7 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kvantum-theme-orchis-git
 _gitname=Orchis-kde
-pkgver=r5.018fd0f
+pkgver=r22.745c749
 pkgrel=1
 pkgdesc="Orchis theme for Kvantum"
 arch=('any')
@@ -15,12 +16,12 @@ source=('git+https://github.com/vinceliuice/Orchis-kde.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/$_gitname"
-	install -d "$pkgdir/usr/share"
-	cp -r Kvantum "$pkgdir/usr/share"
+  cd "$srcdir/$_gitname"
+  install -d "$pkgdir/usr/share"
+  cp -r Kvantum "$pkgdir/usr/share"
 }

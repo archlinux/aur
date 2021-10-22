@@ -1,6 +1,6 @@
 pkgbase = kvantum-theme-orchis-git
 	pkgdesc = Orchis theme for Kvantum
-	pkgver = r5.018fd0f
+	pkgver = r22.745c749
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Orchis-kde
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = kvantum-theme-orchis-git
 	sha256sums = SKIP
 
 pkgname = kvantum-theme-orchis-git
-
