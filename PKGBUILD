@@ -1,18 +1,18 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=hilbish
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="The flower shell for Lua users"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rosettea/hilbish"
 license=('MIT')
-depends=('readline' 'lua-lunacolors' 'lua-succulent')
+depends=('readline' 'lua-lunacolors' 'lua-succulent' 'lua-inspect')
 makedepends=('go>=1.16')
 install="$pkgname.install"
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8d9ddcf1227015c567db5ec6380194d0ae14a36fe88e09a19bd890c399e37e7d')
+sha256sums=('bafcb560e6ffaff7409480a412135e62013c286d96e9e9c4b7f94e94b2dfa8a0')
 
 prepare() {
 	cd "Hilbish-$pkgver"
