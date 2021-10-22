@@ -2,7 +2,7 @@
 # Maintainer: Dennis Schubert <mail@dennis-schubert.de>
 
 pkgname=ruby-install
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Installs Ruby, JRuby, Rubinius, MRuby or TruffleRuby."
 arch=(any)
@@ -12,7 +12,7 @@ depends=('bash')
 optdepends=('zsh')
 makedepends=('gnupg')
 source=("https://github.com/postmodern/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('72a998b76f787c32a1575f10494594ec2d963f5ad5748004292841b33f8013e7')
+sha256sums=('e2f69949757d032d48ee5c028be020bdc8863c41d5648b53328903d2e16ab3b2')
 
 prepare() {
   if gpg --fingerprint 0xB9515E77 >/dev/null 2>&1; then
