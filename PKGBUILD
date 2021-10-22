@@ -2,7 +2,7 @@
 # Author: Jonathan Lebon
 
 pkgname=firefox-extension-textern-native-git
-pkgver=0.5.2b9415a
+pkgver=0.6.876a83b
 pkgrel=1
 url="https://github.com/jlebon/textern"
 license=('GPL')
@@ -11,6 +11,7 @@ arch=('any')
 source=("git+https://github.com/jlebon/textern"
         "git+https://github.com/chrisjbillington/inotify_simple")
 depends=('python' 'firefox')
+makedepends=('git')
 md5sums=('SKIP' 'SKIP')
 
 prepare() {
