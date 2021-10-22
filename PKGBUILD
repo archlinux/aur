@@ -1,7 +1,7 @@
-# Maintainer: Ke Liu <spcter119 AT gmail.com>
+# Maintainer: Specter119 <spcter119 AT gmail.com>
 
 pkgname=jupyter-lsp
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server.'
 arch=(any)
@@ -19,11 +19,11 @@ optdepends=(
   r-languageserver
   texlab
   sql-language-server
-  vscode-css-languageserver-bin
-  vscode-json-languageserver-bin
+  vscode-css-languageserver
+  vscode-json-languageserver
   yaml-language-server)
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('baf12d9a7cc95d03e9c5d9c871fd7ff3d1202a889b322b155032eb3f677fb487')
+sha256sums=('3b423ab38c93c8b951a0c20cc4c0ba56920cde09b226001353b967b1e5bcfae2')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
