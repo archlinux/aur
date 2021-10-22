@@ -2,8 +2,8 @@
 
 pkgname=health
 _reponame=Health
-pkgver=0.92.6
-pkgrel=2
+pkgver=0.93.1
+pkgrel=1
 pkgdesc="A health tracking app for the GNOME desktop"
 arch=(x86_64)
 url=https://gitlab.gnome.org/Cogitri/Health
@@ -12,7 +12,7 @@ depends=(libadwaita)
 checkdepends=(appstream-glib)
 makedepends=(meson rust)
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_reponame-$pkgver.tar.gz")
-sha512sums=('1aab783b9880c03e8779c5207317ae3fddf6446ed691eec4a318c9ffc7ed1d6cc281f49b92aa6dd9dbc36f42845a8d7068ce6a16a2a37ab576d516b60bb33e9f')
+sha512sums=('576001da38a9069ffb9a322c821fa58da1972aa2a4afab2a02245b8a3cc9c2f742031b8658fff76dd064aec1eb5e0b0a0545671582f2e2b5ac8df9be330c00e1')
 
 build() {
 	arch-meson "$_reponame-$pkgver" build

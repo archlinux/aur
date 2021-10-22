@@ -1,7 +1,7 @@
 pkgbase = health
 	pkgdesc = A health tracking app for the GNOME desktop
-	pkgver = 0.92.6
-	pkgrel = 2
+	pkgver = 0.93.1
+	pkgrel = 1
 	url = https://gitlab.gnome.org/Cogitri/Health
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = health
 	makedepends = meson
 	makedepends = rust
 	depends = libadwaita
-	source = health-0.92.6.tar.gz::https://gitlab.gnome.org/Cogitri/Health/-/archive/0.92.6/Health-0.92.6.tar.gz
-	sha512sums = 1aab783b9880c03e8779c5207317ae3fddf6446ed691eec4a318c9ffc7ed1d6cc281f49b92aa6dd9dbc36f42845a8d7068ce6a16a2a37ab576d516b60bb33e9f
+	source = health-0.93.1.tar.gz::https://gitlab.gnome.org/Cogitri/Health/-/archive/0.93.1/Health-0.93.1.tar.gz
+	sha512sums = 576001da38a9069ffb9a322c821fa58da1972aa2a4afab2a02245b8a3cc9c2f742031b8658fff76dd064aec1eb5e0b0a0545671582f2e2b5ac8df9be330c00e1
 
 pkgname = health
