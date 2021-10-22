@@ -7,9 +7,9 @@ pkgdesc="A translation app for GNOME."
 arch=('any')
 url="https://apps.gnome.org/app/com.github.gi_lom.dialect"
 license=('GPL3')
-depends=('gtk3' 'libhandy' 'python-gobject' 'python-googletrans' 'python-gtts'
-         'python-httpx' 'gst-python')
-makedepends=('meson' 'git' 'gobject-introspection')
+depends=('gst-python' 'gtk3' 'libhandy' 'python-gobject' 'python-googletrans'
+         'python-gtts' 'python-httpx' )
+makedepends=('git' 'gobject-introspection' 'meson')
 checkdepends=('appstream-glib')
 conflicts=('gnabel')
 replaces=('gnabel')
@@ -35,5 +35,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
