@@ -2,3 +2,5 @@
 /src/
 /Sonic-1-2-2013-Decompilation/
 /*.tar.zst
+/stb/
+/tinyxml2/
