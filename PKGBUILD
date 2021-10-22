@@ -1,7 +1,7 @@
 # Maintainer: Michael Teuscher <michael.teuscher+aur@pm.me>
 pkgname=libfprint-goodix-521d
 _pkgdirname=libfprint
-pkgver=1.90.7.r319.g5b92de7
+pkgver=1.90.7.r319.b6bfc7a
 pkgrel=1
 pkgdesc="Library for fingerprint readers - For Goodix 521d"
 arch=(x86_64)
