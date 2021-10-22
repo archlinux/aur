@@ -1,0 +1,12 @@
+pkgbase = cariddi-git
+	pkgdesc = A web reconnaissance tool
+	pkgver = v1.1.2.r0.g24e120d
+	pkgrel = 1
+	url = https://github.com/edoardottt/cariddi
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go>=1.13
+	source = cariddi-git::git+https://github.com/edoardottt/cariddi.git
+	sha256sums = SKIP
+
+pkgname = cariddi-git
