@@ -2,9 +2,9 @@
 # Maintainer: Chris Pacejo <chris [at] pacejo.net>
 pkgname=snam
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="SNAM cursor positioning system"
-arch=("x86_64" "arm")
+arch=("x86_64" "aarch64")
 depends=()
 url="http://chris.pacejo.net/programs/snam"
 license=('UNLICENSED')
