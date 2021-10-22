@@ -38,7 +38,7 @@ build(){
 package() {
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/opt/RPMLauncher"
-  cp -r "$srcdir/RPMLauncher/build/linux/x64/release/bundle/*" "$pkgdir/opt/RPMLauncher"
+  cp -R "$srcdir/RPMLauncher/build/linux/x64/release/bundle/." "$pkgdir/opt/RPMLauncher"
   echo "[Desktop Entry]
 Categories=Game;ArcadeGame;
 Comment=Edit
