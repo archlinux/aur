@@ -1,7 +1,7 @@
 pkgbase = openexr-thumbnailer
 	pkgdesc = Tool to display thumbnails for OpenEXR images in your file manager.
 	pkgver = 1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/afichet/openexr-thumbnailer
 	arch = any
 	license = GPL
