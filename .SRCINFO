@@ -1,0 +1,18 @@
+pkgbase = gala-layoutpw-plugin
+	pkgdesc = Gala plugin to switch layouts per window
+	pkgver = 6.1.0
+	pkgrel = 1
+	url = https://github.com/Dirli/gala-layoutpw-plugin
+	install = install.sh
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = libgee
+	depends = gala
+	source = gala-layoutpw-plugin-6.1.0.tar.gz::https://github.com/Dirli/gala-layoutpw-plugin/archive/refs/tags/6.1.0.tar.gz
+	sha256sums = 7a3039cdc90967b589936d1d7190433c3c74c6fb222654b72ec47e3c51a9a5c4
+
+pkgname = gala-layoutpw-plugin
