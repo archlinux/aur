@@ -1,0 +1,17 @@
+pkgbase = java-r5rcore
+	pkgdesc = Conveyal R5 Routing Engine
+	pkgver = 0.5.0
+	pkgrel = 2
+	url = https://github.com/conveyal/r5
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gradle
+	makedepends = git
+	depends = jdk11-openjdk
+	depends = java-r5
+	depends = java-environment
+	source = java-r5rcore-0.5.0.tar.gz::https://github.com/ipeaGIT/r5r/archive/refs/tags/v0.5.0.tar.gz
+	sha512sums = c8d4b003de55aa48b8a7f3d50cc265a0462ab2789c194c9d95e3cac3158fa793060da48d5310046220c889b6321e0d6e45d6757cda95748a7aa4e3d5422a49bd
+
+pkgname = java-r5rcore
