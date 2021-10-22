@@ -1,6 +1,6 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-pyzotero')
-pkgver=1.4.25
+pkgver=1.4.26
 pkgrel=1
 _name=pyzotero
 pkgdesc="Python client for the Zotero API"
@@ -8,10 +8,9 @@ arch=('any')
 url="https://github.com/urschrei/pyzotero"
 license=('MIT')
 source=("$_name-$pkgver.tar.gz::https://github.com/urschrei/pyzotero/archive/v$pkgver.tar.gz")
-sha512sums=('d00d30da57d7f988b9e301d496a26bd983933567ffeb87d6d494dd7c93290315ad7fda8e791c4be382bedfda51ab5928ed37230f6649f60ce731f6b2f8ddfd39')
+sha512sums=('a0b0bf92458746b0dd0c01511efb05dd8fb471434c9e813c9d6dab7741a2eb1a10af2b9c5f68daa4c681353ba8c93cab140ec2da5962d06c76e8a229d4742009')
 makedepends=('python-setuptools')
-depends=('python-feedparser>5.1.0' 
-         'python-feedparser<6.0.0'
+depends=('python-feedparser>=6.0.0'
          'python-pytz' 
          'python-pathlib' 
          'python-bibtexparser')
