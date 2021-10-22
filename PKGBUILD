@@ -2,7 +2,7 @@
 # Maintainer: <aur at shyim.de>
 
 pkgname=php-sw-frosh-plugin-uploader
-pkgver=0.3.16
+pkgver=0.3.17
 pkgrel=1
 pkgdesc="Tool for uploading new plugin releases to Shopware Store"
 arch=('any')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('php>=7.4.0')
 source=("frosh-plugin-upload-${pkgver}.phar::https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/${pkgver}/frosh-plugin-upload.phar"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/FriendsOfShopware/FroshPluginUploader/${pkgver}/LICENSE")
-sha256sums=('eed398f80a075bf33ad1cfaf71caa0f748cd81ad41536a8ac24c56f8b7418a91'
-            '4548218c4b3b8ee1da3806f1b6e1d6c285a12335722add43abce71b599b6d518')
+sha256sums=('8fb0a54be18498ca9e1da92046a94b55e05a4e80086b1551a853b85ba7823447'
+            '9648e2fef7056bf270b185946a47c0284e1ccae640282fb4339b5822e47e8391')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
