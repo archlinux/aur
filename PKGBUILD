@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=wike
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wikipedia Reader for the GNOME Desktop"
-arch=('x86_64')
+arch=('any')
 url="https://apps.gnome.org/app/com.github.hugolabe.Wike"
 license=('GPL3')
 depends=('gtk3' 'libhandy' 'python-gobject' 'python-requests' 'webkit2gtk')

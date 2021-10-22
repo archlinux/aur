@@ -1,9 +1,9 @@
 pkgbase = wike
 	pkgdesc = Wikipedia Reader for the GNOME Desktop
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.gnome.org/app/com.github.hugolabe.Wike
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = meson
 	depends = gtk3
