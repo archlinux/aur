@@ -1,7 +1,7 @@
 pkgbase = tlauncher-bin
 	pkgdesc = TLauncher Legacy is freeware launcher of Minecraft.
 	pkgver = 2.82
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tlauncher.org
 	arch = x86_64
 	license = custom
@@ -10,7 +10,6 @@ pkgbase = tlauncher-bin
 	depends = jre8-openjdk
 	depends = jre8-openjdk-headless
 	provides = tlauncher
-	provides = minecraft
 	source = tlauncher-bin-2.82::https://dl2.tlauncher.org/f.php?f=files%2FTLauncher-2.82.zip
 	source = tlauncher.desktop
 	sha512sums = f0a2c4824ee2bd645c3112e66a1aa6a3a84e32cf4fadc6501aeea0b8adea160cfb2df33bf335a25c94abfef3061d1d706ad045f59dd0607dcae3044be4a33a71

@@ -2,8 +2,8 @@
 
 pkgname=tlauncher-bin
 pkgver=2.82
-pkgrel=1
-provides=("tlauncher" "minecraft")
+pkgrel=2
+provides=("tlauncher")
 pkgdesc="TLauncher Legacy is freeware launcher of Minecraft."
 url="https://tlauncher.org"
 arch=("x86_64")
