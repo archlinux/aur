@@ -1,13 +1,13 @@
 # $Id$
 
 pkgname=xscreensaver-xmatrix-color
-pkgver=5.45
+pkgver=6.02
 pkgrel=1
 pkgdesc="Screen saver and locker for the X Window System, modified xmatrix with variable color."
 arch=('i686' 'x86_64')
 url="http://www.jwz.org/xscreensaver/"
 license=('BSD')
-depends=('libglade' 'libxmu' 'glu' 'xorg-appres' 'perl-libwww')
+depends=('libglade' 'libxmu' 'glu' 'xorg-appres' 'perl-libwww' 'gdk-pixbuf-xlib')
 makedepends=('bc' 'intltool' 'libxpm')
 optdepends=('gdm: for login manager support')
 conflicts=('xscreensaver')
@@ -17,9 +17,9 @@ source=(http://www.jwz.org/xscreensaver/${pkgname%%-*}-${pkgver}.tar.gz
 	xscreensaver-add-electricsheep.diff
 	xmatrix-color.diff
 	LICENSE)
-sha1sums=('933cd5451bdfc4a2bf15bc49f629a8c8665cae62'
+sha1sums=('fd87403e1f5a3e98867362cb0046cdd83b2d9dd9'
           'e8dc57b6471fb3867ee099304ac6bf628351cb98'
-          '1922fb51bcc07df2b74a7220ac4d2f6b17e9a5bc'
+          '061a488885bf0265529a04772eae63b24912c1a1'
           'bf8995d86609cdab678ca277ae685407f82691db')
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 build() {
   cd ${pkgname%%-*}-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib --with-x-app-defaults=/usr/share/X11/app-defaults \
+    --libexecdir=/usr/lib \
     --with-pam --with-login-manager --with-gtk --with-gl \
     --without-gle --with-pixbuf --with-jpeg
   make
