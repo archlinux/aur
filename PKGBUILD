@@ -1,8 +1,9 @@
-# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Maintainer: Caepom <caepom at gmail dot com>
+# Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
 url='https://github.com/coelckers/Raze'
