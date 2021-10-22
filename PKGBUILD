@@ -2,8 +2,8 @@
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=slack-wayland
-_name="${pkgname%-wayland}"
-pkgver=4.19.2
+_name="slack"
+pkgver=4.20.0
 pkgrel=1
 pkgdesc="Slack Desktop with system Electron and Ozone enabled for native Wayland support"
 arch=('x86_64')
@@ -13,9 +13,9 @@ depends=('electron')
 optdepends=('libappindicator-gtk3: for notification indicator in the status bar on GNOME')
 provides=("${_name}" "${_name}-desktop")
 conflicts=("${_name}-desktop")
-source=("https://downloads.slack-edge.com/linux_releases/slack-desktop-$pkgver-amd64.deb"
-        'slack.sh')
-sha256sums=('aa2ce20f6f724e28ee8b9ceed555902f4ce822ea1bce01bc600706caf3add70a'
+source=("https://downloads.slack-edge.com/releases/linux/$pkgver/prod/x64/slack-desktop-$pkgver-amd64.deb"
+        'slack-wayland.sh')
+sha256sums=('b08207389246837536ea769425d458411c08dc6802ffaae9249092e387461ce5'
             '9a6efa826134234744ab83b2a0ff67d99ceb55e5e3efdb776029b3e7d4914ed2')
 
 prepare() {
@@ -29,12 +29,12 @@ prepare() {
 }
 
 package() {
-  install -Dm755 "${_name}.sh" "$pkgdir/usr/bin/${_name}"
+  install -Dm755 "slack-wayland.sh" "$pkgdir/usr/bin/${_name}"
 
   install -dm755 "$pkgdir/usr/lib/${_name}/"
-  cp -dr --no-preserve=ownership usr/lib/${_name}/resources/* "$pkgdir/usr/lib/${_name}/"
+  cp -a --no-preserve=ownership usr/lib/${_name}/resources/* "$pkgdir/usr/lib/${_name}/"
 
   install -Dm644 "usr/share/applications/${_name}.desktop" -t "$pkgdir/usr/share/applications"
   install -Dm644 "usr/share/pixmaps/${_name}.png" -t "$pkgdir/usr/share/pixmaps"
-  install -Dm644 "usr/lib/${_name}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "usr/lib/${_name}/LICENSE" "$pkgdir/usr/share/licenses/$_name/LICENSE"
 }
