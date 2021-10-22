@@ -1,11 +1,12 @@
 # Maintainer: feinedsquirrel < feinedsquirrel at gmail dot com >
+# Maintainer: edpibu < archlinux at edgarpierre dot fr >
 
 # instructions by photoview author:
 # https://photoview.github.io/docs/installation-manual/
 
 pkgname=photoview
 pkgver=2.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Photo gallery for self-hosted personal servers"
 arch=('x86_64')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -59,7 +60,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkg_name_ver}/ui"
-  npm install --yes
+  npm install --yes --omit=dev --ignore-scripts
   npm run build
 
   cd "${srcdir}/${_pkg_name_ver}/api"
