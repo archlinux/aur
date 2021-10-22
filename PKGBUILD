@@ -3,13 +3,13 @@
 _pkgbase=tbsecp3-driver-git
 pkgname=${_pkgbase}-dkms
 pkgver=r20210710.060305.7d89106
-pkgrel=1
+pkgrel=2
 pkgdesc="TBSECP3 driver - standalone version (DKMS)"
 arch=('i686' 'x86_64')
 url="https://github.com/AlexanderS/tbsecp3-driver"
 license=('GPL2')
 makedepends=('git')
-depends=('dkms')
+depends=('dkms' 'tbs-firmware')
 conflicts=("${_pkgbase}" 'tbs-dvb-drivers' 'tbs-linux_media-git-dkms' 'tbs-linux_media-git')
 provides=("${_pkgbase}")
 source=('git+https://github.com/AlexanderS/tbsecp3-driver.git'
