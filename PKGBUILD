@@ -1,10 +1,11 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=21.41.21220
+pkgver=21.42.21270
+_srcver="${pkgver%.*}.0${pkgver##*.}"
 _gmmver=21.2.1
 _igcver=1.0.8744
-_lzver="1.2.${pkgver##*.}"
+_lzver="1.2.0${pkgver##*.}"
 pkgrel=1
 pkgdesc='Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)'
 arch=('x86_64')
@@ -13,63 +14,45 @@ license=('MIT')
 depends=("intel-graphics-compiler-bin=1:${_igcver}")
 optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
-makedepends=('cmake')
 provides=('intel-compute-runtime' 'intel-gmmlib' 'level-zero-driver' 'opencl-driver')
 conflicts=('intel-compute-runtime' 'intel-gmmlib')
 options=('!strip' '!emptydirs')
-source=("https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-opencl_${pkgver}_amd64.deb"
-        "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-ocloc_${pkgver}_amd64.deb"
+source=("https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-opencl-icd_${_srcver}_amd64.deb"
         "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-level-zero-gpu_${_lzver}_amd64.deb"
-        "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-gmmlib_${_gmmver}_amd64.deb"
-        "https://github.com/intel/gmmlib/archive/intel-gmmlib-${_gmmver}/intel-gmmlib-${_gmmver}.tar.gz"
+        "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-gmmlib-devel_${_gmmver}_amd64.deb"
+        "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-gmmlib_${_gmmver}_amd64.deb"
         'LICENSE')
-noextract=("intel-opencl_${pkgver}_amd64.deb"
-           "intel-ocloc_${pkgver}_amd64.deb"
+noextract=("intel-opencl-icd_${_srcver}_amd64.deb"
            "intel-level-zero-gpu_${_lzver}_amd64.deb"
-           "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('f300691bf6a4846bf48550a37cf8d42504b4962b8d1337d24fae37c0b784fd8e'
-            'c61769406d0cab3bbe678c05216c95574ae9b509d067e3f781402df9a5a7949a'
-            'aa4fc09cf41031c79b82d9dc3e53a43efae45bf5974d9d535a89a5ff6d90d08b'
-            '33fb78fe7c9c43185237fcd45f61db1d1a32bd925f372e29097c52082f15f803'
-            '912cd86e4cb564b6fa549d69a28b72b9cdcb5a3eab9320955ed70ac37381fc2f'
+           "intel-gmmlib-devel_${_gmmver}_amd64.deb"
+           "intel-gmmlib_${_gmmver}_amd64.deb")
+sha256sums=('00e9e4be09571e73ea2a7d88ccba598ddfdcfe97577df1d1f53e7836b18118ff'
+            '30ef0010f447d1e7b4f0edaf01286dc7d7308baa04ba16e9debd920cdfacf9c3'
+            '2b74ad22f194c4e65ad95466bf45a901b95412f18c739b95a0b70d9b67e3a64a'
+            '35634be75056b83c3e215380599afab1fe50e8a53a3f751f61be39cd6baad5b8'
             '73783f7cd3b35aa7d23fa64e400c8c6a6cf6256b62b35e4827094719a9acb172')
 
 prepare() {
-    mkdir -p {opencl,ocloc,level-zero-gpu,gmmlib}-"$pkgver"
-    bsdtar -xf "intel-opencl_${pkgver}_amd64.deb" -C "opencl-${pkgver}"
-    bsdtar -xf "intel-ocloc_${pkgver}_amd64.deb" -C "ocloc-${pkgver}"
+    mkdir -p {opencl,level-zero-gpu,gmmlib{,-devel}}-"$pkgver"
+    bsdtar -xf "intel-opencl-icd_${_srcver}_amd64.deb" -C "opencl-${pkgver}"
     bsdtar -xf "intel-level-zero-gpu_${_lzver}_amd64.deb" -C "level-zero-gpu-${pkgver}"
-    bsdtar -xf "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb" -C "gmmlib-${pkgver}"
-}
-
-build() {
-    # only for installing the gmmlib headers (need to build for some headers to be correct)
-    cmake -B build-gmmlib -S "gmmlib-intel-gmmlib-${_gmmver}" \
-        -DBUILD_TYPE='None' \
-        -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DRUN_TEST_SUITE:BOOL='ON' \
-        -Wno-dev
-    make -C build-gmmlib package
+    bsdtar -xf "intel-gmmlib-devel_${_gmmver}_amd64.deb" -C "gmmlib-devel-${pkgver}"
+    bsdtar -xf "intel-gmmlib_${_gmmver}_amd64.deb" -C "gmmlib-${pkgver}"
 }
 
 package() {
-    mkdir -p gmmlib-devel
     bsdtar -xf "opencl-${pkgver}/data.tar.xz" -C "$pkgdir"
-    bsdtar -xf "ocloc-${pkgver}/data.tar.xz" -C "$pkgdir"
     bsdtar -xf "level-zero-gpu-${pkgver}/data.tar.xz" -C "$pkgdir"
+    bsdtar -xf "gmmlib-devel-${pkgver}/data.tar.xz" -C "$pkgdir"
     bsdtar -xf "gmmlib-${pkgver}/data.tar.xz" -C "$pkgdir"
-    bsdtar -xf build-gmmlib/intel-gmmlib-devel-*-${CARCH}.tar.xz -C gmmlib-devel
-    mv "${pkgdir}/usr/local"/{bin,include,lib} "${pkgdir}/usr"
-    cp -dr --no-preserve='ownership' gmmlib-devel/usr/include/* "${pkgdir}/usr/include"
-    cp -dr --no-preserve='ownership' gmmlib-devel/usr/lib/pkgconfig "${pkgdir}/usr/lib"
+    mv "${pkgdir}/usr/local/include"/* "${pkgdir}/usr/include"
+    mv "${pkgdir}/usr/local/lib"/* "${pkgdir}/usr/lib"
+    mv "${pkgdir}/usr/lib/${CARCH}-linux-gnu"/* "${pkgdir}/usr/lib"
     chown -R root:root "$pkgdir"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libigdgmm.so.[0-9]*' -exec basename {} \;)" "${pkgdir}/usr/lib/libigdgmm.so"
     ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libze_intel_gpu.so.[0-9]*' -exec basename {} \;)" "${pkgdir}/usr/lib/libze_intel_gpu.so"
-    sed -i 's|/usr/local|/usr|' "${pkgdir}/etc/OpenCL/vendors/intel.icd"
-    
-    local _gmmlibver
-    _gmmlib="$(find "${pkgdir}/usr/lib" -type f -name 'libigdgmm.so.*.*.*' -exec basename {} +)"
-    sed -i "/^Version:/s/^.*$/Version: ${_gmmlib#*.so.}/" "${pkgdir}/usr/lib/pkgconfig/igdgmm.pc"
+    sed -i "s|/usr/lib/${CARCH}-linux-gnu|/usr/lib|" "${pkgdir}/etc/OpenCL/vendors/intel.icd"
+    sed -i 's|/usr/local|/usr|'  "${pkgdir}/usr/lib/pkgconfig/igdgmm.pc"
+    rm "${pkgdir}/usr/share/doc"/intel-{level-zero-gpu,opencl-icd}/{changelog.gz,copyright}
+    rm -r "${pkgdir}/var/lib/libze_intel_gpu"
 }
