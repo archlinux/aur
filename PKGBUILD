@@ -1,9 +1,9 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=sdtui-git
 _pkgname=sdtui
-pkgver=r223.33e9888
+pkgver=r243.5190601
 pkgrel=1
-pkgdesc="StarDict terminal UI"
+pkgdesc="StarDict TUI and GUI"
 url="https://git.janouch.name/p/sdtui"
 arch=('i686' 'x86_64')
 license=('custom:0BSD')
