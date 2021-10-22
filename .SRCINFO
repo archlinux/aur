@@ -1,0 +1,16 @@
+pkgbase = xray-plugin-git
+	pkgdesc = A SIP003 plugin based on v2ray for shadowsocks (git version)
+	pkgver = 1.5.0.r0.g4a86196
+	pkgrel = 1
+	url = https://github.com/teddysun/xray-plugin
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	makedepends = git
+	depends = glibc
+	conflicts = xray-plugin
+	conflicts = shadowsocks-xray-plugin
+	source = xray-plugin-git::git+https://github.com/teddysun/xray-plugin.git
+	sha256sums = SKIP
+
+pkgname = xray-plugin-git
