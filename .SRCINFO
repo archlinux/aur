@@ -1,0 +1,12 @@
+pkgbase = analyticsrelationships-git
+	pkgdesc = Get related domains / subdomains by looking at Google Analytics IDs
+	pkgver = r14.c920eed
+	pkgrel = 1
+	url = https://github.com/Josue87/AnalyticsRelationships
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go>=1.13
+	source = analyticsrelationships-git::git+https://github.com/Josue87/AnalyticsRelationships.git
+	sha256sums = SKIP
+
+pkgname = analyticsrelationships-git
