@@ -10,14 +10,15 @@
 
 pkgname=nodejs-lts-gallium
 pkgver=16.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 javascript'
 arch=('x86_64')
 url='https://nodejs.org/'
 license=('MIT')
 depends=('openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares') # 'http-parser' 'v8')
 makedepends=('python' 'procps-ng')
-optdepends=('npm: nodejs package manager')
+optdepends=('npm: nodejs package manager'
+            'corepack: zero-runtime-dependency package acting as bridge between Node projects and their package managers.')
 provides=("nodejs=$pkgver")
 conflicts=(nodejs)
 source=("https://github.com/nodejs/node/archive/v$pkgver/nodejs-$pkgver.tar.gz"
