@@ -3,12 +3,13 @@
 pkgname=dialect-git
 pkgver=1.3.0.r33.gdf3f41c
 pkgrel=1
+epoch=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
 url="https://apps.gnome.org/app/com.github.gi_lom.dialect"
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'python-gobject' 'python-googletrans' 'python-gtts'
-         'python-httpx' 'gst-python')
+depends=('gst-python' 'gtk4' 'libadwaita' 'python-gobject' 'python-googletrans'
+         'python-gtts' 'python-httpx')
 makedepends=('meson' 'git' 'gobject-introspection')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
@@ -41,5 +42,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
