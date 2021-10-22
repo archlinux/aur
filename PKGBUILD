@@ -10,7 +10,7 @@ url="https://apps.gnome.org/app/com.github.gi_lom.dialect"
 license=('GPL3')
 depends=('gst-python' 'gtk4' 'libadwaita' 'python-gobject' 'python-googletrans'
          'python-gtts' 'python-httpx')
-makedepends=('meson' 'git' 'gobject-introspection')
+makedepends=('git' 'gobject-introspection' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'gnabel')
