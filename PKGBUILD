@@ -3,7 +3,7 @@
 # Maintainer: Clarence <xjh.azzbcc@gmail.com>
 
 pkgname=myodbc
-pkgver=8.0.26
+pkgver=8.0.27
 pkgrel=1
 pkgdesc="ODBC driver/connector for MySQL"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ optdepends=('gtk3: graphical interface')
 license=('GPL')
 options=('libtool')
 source=("https://cdn.mysql.com/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-$pkgver-src.tar.gz")
-md5sums=('ddf7be526b88609ff09d9ac0d8bcd352')
+md5sums=('6d4fb763d07bd4e65fa5ab64daae96ae')
 
 build() {
   cd $srcdir/mysql-connector-odbc-${pkgver}-src
