@@ -1,0 +1,14 @@
+pkgbase = wayback-rs-git
+	pkgdesc = Fetch all the URLs that the Wayback Machine knows about for a domain. (Rust version)
+	pkgver = r8.7b106e7
+	pkgrel = 1
+	url = https://github.com/pfahard/wayback-rs
+	arch = any
+	license = MIT
+	makedepends = cargo
+	provides = wayback-rs
+	conflicts = wayback-rs
+	source = wayback-rs-git::git+https://github.com/pfahard/wayback-rs.git
+	sha256sums = SKIP
+
+pkgname = wayback-rs-git
