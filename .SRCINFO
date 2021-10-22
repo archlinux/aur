@@ -1,0 +1,12 @@
+pkgbase = snam
+	pkgdesc = SNAM cursor positioning system
+	pkgver = 0.1
+	pkgrel = 0
+	url = http://chris.pacejo.net/programs/snam
+	arch = x86_64
+	arch = arm
+	license = UNLICENSED
+	source = https://hub.darcs.net/squirrel/snam/dist
+	sha512sums = SKIP
+
+pkgname = snam
