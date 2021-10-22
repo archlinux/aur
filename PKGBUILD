@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=6.1.26
+pkgver=6.1.28
 _tarver=${pkgver}
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
@@ -40,9 +40,9 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarv
         '018-xclient.patch'
         )
 sha256sums=(
-    '0212602eea878d6c9fd7f4a3e0182da3e4505f31d25f5539fb8f7b1fbe366195'
+    '8d34993d8e9c0cf35e7bd44dd26c8c757f17a3b7d5a64052f945d00fd798ebfe'
     '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
-    '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
+    'f876e9f55243eded423fda4fc2ffe3b174dca90380a6315f7c9b3cd1c9d07206'
     '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
     'e372841789d7216af625703ec3b7daa6b5834a3e30d746b693d0b2c28e751854'
     '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
@@ -134,7 +134,6 @@ package() {
 
     # components
     install -dm0755 "$pkgdir/usr/lib/virtualbox/components"
-    rm components/VBoxREM.so # TODO: remove when dead link is fixed
     install -m0755 components/* -t "$pkgdir/usr/lib/virtualbox/components"
 
     # extensions packs
