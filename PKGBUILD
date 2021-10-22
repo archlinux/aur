@@ -1,7 +1,7 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 
 pkgname=tfk8s
-pkgver=0.1.3
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="If you want to copy examples from the Kubernetes documentation or migrate existing YAML manifests and use them with Terraform without having to convert YAML to HCL by hand, this tool is for you."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver-source.tar.gz::https://${_vendor}/archive/v${pkgver}.tar.gz")
-sha256sums=('0dfb441441ab270e745e31830918efab2e51d38e9535c3293d797bf90c944822')
+sha256sums=('02607090e93ed081dc0f926db4ca08cded6b31243977726b8374d435e25beab9')
 _vendorpath="gopath/src/$_vendor"
 
 build() {

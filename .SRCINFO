@@ -1,14 +1,13 @@
 pkgbase = tfk8s
 	pkgdesc = If you want to copy examples from the Kubernetes documentation or migrate existing YAML manifests and use them with Terraform without having to convert YAML to HCL by hand, this tool is for you.
-	pkgver = 0.1.3
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/jrhouston/tfk8s
 	arch = any
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = tfk8s-0.1.3-source.tar.gz::https://github.com/jrhouston/tfk8s/archive/v0.1.3.tar.gz
-	sha256sums = 0dfb441441ab270e745e31830918efab2e51d38e9535c3293d797bf90c944822
+	source = tfk8s-0.1.7-source.tar.gz::https://github.com/jrhouston/tfk8s/archive/v0.1.7.tar.gz
+	sha256sums = 02607090e93ed081dc0f926db4ca08cded6b31243977726b8374d435e25beab9
 
 pkgname = tfk8s
-
