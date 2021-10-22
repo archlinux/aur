@@ -1,0 +1,15 @@
+pkgbase = duperemove-service
+	pkgdesc = A configurable systemd service to deduplicate the filesystem
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://codeberg.org/mek101/duperemove-service
+	arch = any
+	license = GPL3
+	makedepends = shellcheck
+	depends = duperemove>=0.11,
+	depends = systemd>=213.0
+	backup = etc/duperemove-service/default.conf
+	source = duperemove-service-1.0.4.tar.gz::https://codeberg.org/mek101/duperemove-service/archive/1.0.4.tar.gz
+	sha256sums = fb96de2cef7c6c84d7e8dbaf977928ae5a82a95c7410f45bce2058e2155885d0
+
+pkgname = duperemove-service
