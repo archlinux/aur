@@ -2,8 +2,8 @@
 # Contributor: navigaid <navigaid@gmail.com>
 
 pkgname=naiveproxy
-pkgdesc='Make a fortune quietly'
-pkgver=94.0.4606.61
+pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
+pkgver=95.0.4638.54
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
@@ -47,19 +47,21 @@ _update_helper() {
   rm -r "${pkgname}-${pkgver}-${pkgrel}"
 }
 
-_clang_path='clang-llvmorg-14-init-1002-gb5e470aa-1.tgz'
-_PGO_PATH='chrome-linux-4606-1632147900-2674511630c4bfe602871b9780dec43586d68327.profdata'
+
+_clang_path='clang-llvmorg-14-init-3191-g0e03450a-1.tgz'
+_PGO_PATH='chrome-linux-4638-1634308623-72bf2d0e0b11b9cb785718016169434ba1d25ee3.profdata'
 _gn_version='git_revision:69ec4fca1fa69ddadae13f9e6b7507efa0675263'
 _gn_revision='39a87c0b36310bdf06b692c098f199a0d97fc810'
 
 sha256sums=(
-  "26c00dfe14284ff19fe78e4185649a48292582adf7d6e3d2d0e994098c393097"
+  "ccfb2462d91d9c0a77be23aef33962a0ce761a63e8e77c9a34e815c504dceac0"
   "ec7e686edd39068acd3122bbae4f4e83ba8540ffdb9fe30790679e72c7318d33"
   "723979ea8245a297fac101ff71e1e9f97f138e0bfb0e84176ef5ca70cc96bf8e"
-  "bed9118082c98d990434c02230d9eec5e3aa3158b479d4cd3317482906d4e897"
-  "d729c99079a619fc0fa33b3f79a731942cad7fcefae0a683678e3c32530d1bf7"
+  "dd7479d43ce61401e057a5dee8b7e32bc2bd0d0e15d4f46c6858daf9170c9978"
+  "252703067ad0897cc0f39f618eb792b0899769bb0e1b715b64bee15bcfba6f0b"
   "8bedd600ac58311f384e5113ab6a544bc72edb587ccb8f9e784c4dff208872c4"
 )
+
 
 source=(
   "${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/refs/tags/v${pkgver}-${pkgrel}.tar.gz"
