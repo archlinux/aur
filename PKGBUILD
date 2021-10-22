@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 pkgname=obs-rtspserver
-pkgver=2.1.1
+pkgver=2.1.2
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="This is a plugin for obs-studio, encoding the output and publish rtsp stream"
@@ -14,7 +14,7 @@ source=(
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
-  "1de87019fe2cae7687a75331638cbfa974b7dc965f7403d3c6a6f371ecb4d9ec"
+  "7e7f95f5fe25d3b93aebf6627ba8b198ff0742175397bb2b810d69151062328d"
   "c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e"
 )
 
