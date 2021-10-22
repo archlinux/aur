@@ -102,6 +102,7 @@ optdepends=(
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
+provides=('proton')
 #install=${pkgname}.install
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=experimental-${_srctag}
@@ -279,6 +280,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export WINEESYNC=0
     export WINEFSYNC=0
+    export DISPLAY=""
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
 }

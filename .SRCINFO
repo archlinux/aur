@@ -195,6 +195,7 @@ pkgbase = proton-experimental
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
+	provides = proton
 	noextract = wine-gecko-2.47.2-x86.tar.xz
 	noextract = wine-gecko-2.47.2-x86_64.tar.xz
 	noextract = wine-mono-6.4.1-x86.tar.xz
