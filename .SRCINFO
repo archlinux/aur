@@ -1,8 +1,8 @@
 pkgbase = cppmicroservices-git
 	pkgdesc = The C++ Micro Services library provides a dynamic service registry and module system, partially based the OSGi Core Release 5 specifications.
-	pkgver = v2.1.1.r0.g13080ed
+	pkgver = 3.0.0.r369.g4635f63f
 	pkgrel = 1
-	url = https://github.com/saschazelzer/CppMicroServices
+	url = https://github.com/CppMicroServices/CppMicroServices
 	arch = i686
 	arch = x86_64
 	license = custom: Apache2.0
@@ -11,8 +11,9 @@ pkgbase = cppmicroservices-git
 	depends = gcc-libs
 	provides = cppmicroservices
 	conflicts = cppmicroservices
-	source = cppmicroservices::git://github.com/saschazelzer/CppMicroServices.git
+	source = cppmicroservices::git+https://github.com/CppMicroServices/CppMicroServices.git
+	source = git+https://github.com/boostorg/nowide.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = cppmicroservices-git
-

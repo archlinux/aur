@@ -1,24 +1,29 @@
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
-# Contributor: 
+# Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=cppmicroservices-git
-pkgver=v2.1.1.r0.g13080ed
+pkgver=3.0.0.r369.g4635f63f
 pkgrel=1
 pkgdesc="The C++ Micro Services library provides a dynamic service registry and module system, partially based the OSGi Core Release 5 specifications."
 arch=('i686' 'x86_64')
-url="https://github.com/saschazelzer/CppMicroServices"
+url="https://github.com/CppMicroServices/CppMicroServices"
 license=('custom: Apache2.0')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=('cppmicroservices::git://github.com/saschazelzer/CppMicroServices.git')
-md5sums=('SKIP')
+source=('cppmicroservices::git+https://github.com/CppMicroServices/CppMicroServices.git'
+	'git+https://github.com/boostorg/nowide.git')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd "${pkgname%-*}"
 
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+prepare() {
+	cd "${pkgname%-*}"
+	git config submodule.third_party/boost/nowide.url $srcdir/nowide
+	git submodule update
 }
 
 build() {
