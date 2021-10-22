@@ -1,0 +1,19 @@
+pkgbase = coreutils-arch
+	pkgdesc = GNU arch command (from coreutils)
+	pkgver = 9.0
+	pkgrel = 1
+	url = https://www.gnu.org/software/coreutils/coreutils.html
+	arch = x86_64
+	license = GPL3
+	makedepends = gettext
+	makedepends = gperf
+	makedepends = gzip
+	makedepends = perl
+	makedepends = rsync
+	makedepends = tar
+	makedepends = texinfo
+	depends = coreutils
+	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz
+	sha256sums = ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce
+
+pkgname = coreutils-arch
