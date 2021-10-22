@@ -5,8 +5,8 @@
 # https://photoview.github.io/docs/installation-manual/
 
 pkgname=photoview
-pkgver=2.3.8
-pkgrel=2
+pkgver=2.3.9
+pkgrel=1
 pkgdesc="Photo gallery for self-hosted personal servers"
 arch=('x86_64')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -48,10 +48,8 @@ source=(
   "$url/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgname}.env.patch"
 )
-sha512sums=(
-  'c33b593c15584b97d280f5e4241e84423edc094fa95bf1ee50efc3b2386c83ea20bdc00e0686d76f1d8304f58efed93a66ed61d1c9c86364d839f27a424e7214'
-  'aa9b3fe32883af83c183a3cf1d0646b6140f2294c5b58d6df3cac4b1f9b89300f955f46fa125d50ccaac866ab60a752d42f547af19772159e6a2f176c0cf6369'
-)
+sha512sums=('81d06aba4686ac0afac461e0226222550ec7f1ba2fe002cc2373bac937d12f0d2de911bc279a596f36146b34210ac210e53c9c5b79c72e9a5341e6847e6709ef'
+            'aa9b3fe32883af83c183a3cf1d0646b6140f2294c5b58d6df3cac4b1f9b89300f955f46fa125d50ccaac866ab60a752d42f547af19772159e6a2f176c0cf6369')
 
 prepare() {
   cd "${srcdir}/${_pkg_name_ver}"
