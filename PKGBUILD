@@ -4,7 +4,7 @@ _pkgnamebase=CuteLogger
 pkgver=r92.5001249
 pkgrel=1
 pkgdesc="Simple, convenient and thread safe logger for Qt-based C++ apps"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/dept2/CuteLogger"
 license=('LGPL2.1')
 provides=('cutelogger')
@@ -22,7 +22,7 @@ build() {
     mkdir "$srcdir/$_pkgnamebase/build"
     cd "$srcdir/$_pkgnamebase/build"
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-    make -j
+    make
 }
 
 package() {

@@ -5,6 +5,7 @@ pkgbase = cutelogger
 	url = https://github.com/dept2/CuteLogger
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = LGPL2.1
 	makedepends = git
 	makedepends = cmake
