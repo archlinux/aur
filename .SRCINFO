@@ -1,18 +1,19 @@
 pkgbase = serial-studio-git
 	pkgdesc = Multi-purpose serial data visualization & processing program
-	pkgver = 1.0.20.r4.93482e8
+	pkgver = 1.0.23.r131.4a01aca
 	pkgrel = 1
 	url = https://github.com/Serial-Studio/Serial-Studio
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = qt5-charts
-	depends = qt5-serialport
-	depends = qt5-quickcontrols2
+	depends = qt6-serialport
+	depends = qt6-quickcontrols2
+	depends = qt6-5compat
+	depends = qt6-base
+	depends = qt6-svg
 	provides = serial-studio
 	conflicts = serial-studio
 	source = serial-studio::git+https://github.com/Serial-Studio/Serial-Studio
 	md5sums = SKIP
 
 pkgname = serial-studio-git
-
