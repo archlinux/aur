@@ -5,14 +5,14 @@
 # Contributor: moostik <mooostik_at_gmail.com>
 
 pkgname=veusz
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc="A 2D and 3D scientific plotting package, designed to create publication-ready PDF or SVG output"
 arch=('x86_64')
 url="https://veusz.github.io/"
 license=('GPL2')
-depends=('python-pyqt5' 'python-numpy' 'python-sip4' 'hicolor-icon-theme')
-makedepends=('sip4')
+depends=('python-pyqt5' 'python-numpy' 'hicolor-icon-theme')
+makedepends=('sip>=5.0')
 optdepends=('python-h5py:  HDF5 support'
 #             'pyemf >= 2.0.0: EMF export   https://github.com/jeremysanders/pyemf (Python 3 port in development) - package missing
             'python-dbus: dbus interface'
@@ -20,15 +20,11 @@ optdepends=('python-h5py:  HDF5 support'
             'python-astropy: VO table import and FITS import'
             'ghostscript: for EPS/PS output')
 source=("https://github.com/veusz/veusz/releases/download/veusz-${pkgver}/veusz-${pkgver}.tar.gz")
-sha256sums=('e02960630894db5c070ef7b6abd708b520156fd85b47617e7c973cce7188f0e0')
+sha256sums=('cd9fb0a7df1cfcdb671883435de968b52dffe11145613e42459a8979efd9cc5c')
 
 
 build() {
   cd "${pkgname}-${pkgver}"
-  [[ -d NEW ]] || mkdir -p NEW
-  [[ -d NEW/PyQt5 ]] && rm -rf NEW/PyQt5
-  ln -s /usr/lib/python3.9/site-packages/PyQt5/bindings/ NEW/PyQt5
-  export SIP_DIR=NEW/
   python setup.py build
 }
 
