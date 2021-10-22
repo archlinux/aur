@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.38.r171.gb78371f7
+	pkgver = 0.3.39.r1.g651f0dec
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -31,8 +31,6 @@ pkgbase = pipewire-full-git
 	makedepends = vulkan-icd-loader
 	makedepends = ffmpeg
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
-	source = git+https://gitlab.freedesktop.org/pipewire/media-session.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pipewire-full-git
@@ -55,6 +53,7 @@ pkgname = pipewire-full-git
 	depends = libldacBT_abr.so
 	depends = libfreeaptx.so
 	depends = libfdk-aac.so
+	optdepends = pipewire-session-manager: Session manager
 	optdepends = pipewire-full-docs-git: Documentation
 	optdepends = pipewire-full-alsa-git: ALSA configuration
 	optdepends = pipewire-full-jack-git: JACK support
@@ -64,12 +63,10 @@ pkgname = pipewire-full-git
 	optdepends = gst-plugin-pipewire-full-git: GStreamer support
 	optdepends = ofono: ofono Bluetooth HFP support
 	optdepends = hsphfpd: hsphfpd Bluetooth HSP/HFP support
-	provides = pipewire
-	provides = pipewire-media-session
+	provides = pipewire=0.3.39.r1.g651f0dec
 	provides = alsa-card-profiles
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
-	conflicts = pipewire-media-session
 	conflicts = alsa-card-profiles
 
 pkgname = pipewire-full-docs-git
@@ -82,6 +79,7 @@ pkgname = pipewire-full-docs-git
 pkgname = pipewire-full-alsa-git
 	pkgdesc = Low-latency audio/video router and processor - ALSA configuration
 	depends = pipewire-full-git
+	depends = pipewire-session-manager
 	provides = pipewire-alsa
 	provides = pulseaudio-alsa
 	conflicts = pipewire-alsa
@@ -90,15 +88,17 @@ pkgname = pipewire-full-jack-git
 	pkgdesc = Low-latency audio/video router and processor - JACK support
 	license = MIT
 	license = GPL2
+	depends = bash
+	depends = pipewire-session-manager
 	depends = pipewire-full-git
 	depends = libpipewire-0.3.so
-	depends = bash
 	provides = pipewire-jack
 	conflicts = pipewire-jack
 
 pkgname = pipewire-full-pulse-git
 	pkgdesc = Low-latency audio/video router and processor - PulseAudio replacement
 	install = pipewire-pulse.install
+	depends = pipewire-session-manager
 	depends = pipewire-full-git
 	depends = libpipewire-0.3.so
 	depends = libpulse.so
@@ -111,6 +111,14 @@ pkgname = pipewire-full-pulse-git
 	conflicts = pulseaudio
 	conflicts = pulseaudio-bluetooth
 
+pkgname = pipewire-full-v4l2-git
+	pkgdesc = Low-latency audio/video router and processor - V4L2 interceptor
+	depends = pipewire-session-manager
+	depends = pipewire-full-git
+	depends = libpipewire-0.3.so
+	provides = pipewire-v4l2
+	conflicts = pipewire-v4l2
+
 pkgname = pipewire-full-zeroconf-git
 	pkgdesc = Low-latency audio/video router and processor - Zeroconf support
 	depends = pipewire-full-git
@@ -122,9 +130,10 @@ pkgname = pipewire-full-zeroconf-git
 
 pkgname = gst-plugin-pipewire-full-git
 	pkgdesc = Multimedia graph framework - pipewire plugin
+	depends = gst-plugins-base-libs
+	depends = pipewire-session-manager
 	depends = pipewire-full-git
 	depends = libpipewire-0.3.so
-	depends = gst-plugins-base-libs
 	provides = gst-plugin-pipewire
 	conflicts = gst-plugin-pipewire
 
