@@ -1,14 +1,15 @@
 # Maintainer: Frank Seifferth <frankseifferth@posteo.net>
 pkgname=nscde
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern and functional CDE desktop based on FVWM'
 arch=('any')
 url='https://github.com/NsCDE/NsCDE/'
 depends=('ksh' 'xdotool' 'imagemagick' 'python-yaml' 'python-pyqt5'
     'qt5ct' 'qt5-styleplugins' 'stalonetray' 'xterm' 'python-psutil'
     'python-pyxdg' 'libstroke' 'xsettingsd' 'fvwm3' 'perl-file-mimeinfo'
-    'gkrellm' 'rofi' 'xclip')
+    'gkrellm' 'rofi' 'xclip' 'xorg-server' 'xorg-xrefresh' 'xorg-xrdb'
+    'xorg-xdpyinfo')
 optdepends=('xscreensaver')
 license=('GPL3')
 source=("https://github.com/NsCDE/NsCDE/archive/$pkgver.tar.gz")
