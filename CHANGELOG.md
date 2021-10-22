@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.6.1-1] - 2021-10-21
+
+### Added
+
+- Ability to run multiple code blocks in a single slide (thanks to [@linw1995](https://github.com/linw1995)).
+- Word wrapping support (thanks to [@gsol10](https://github.com/gsol10)).
+- Ability to use custom date format `YYY-MM-DD` for date formatting in metadata (thanks to [@cuducos](https://github.com/cuducos)).
+- Vim-like navigation (`5D`: go to slide 5, `gg`: go to first slide, `G`: go to last slide) (thanks to [@stoovon](https://github.com/stoovon)).
+- Added rust support to code execution (thanks to [@darmiel](https://github.com/darmiel)).
+
+## [0.6.0-1] - 2021-10-21
+
+### Removed
+
+- Removed redundent ruby tests.
+
 ## [0.5.0-1] - 2021-08-25
 
 ### Added
@@ -155,6 +171,23 @@ examples/import.md
 #### Added
 
 - Added this changelog document.
+
+## [0.1.1-3] - 2021-06-09
+
+### AUR
+
+#### Added
+
+- Added note in PKGBUILD about broken `check()` functionality due to
+  https://github.com/maaslalani/slides/issues/14
+
+## [0.1.1-2] - 2021-06-08
+
+### AUR
+
+#### Changed
+
+- Fixed declared PKGBUILD dependencies.
 
 ## [0.1.1-1] - 2021-06-07
 
