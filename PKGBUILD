@@ -3,7 +3,7 @@
 
 _pkgname='rapidfuzz'
 pkgname="python-${_pkgname}"
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Rapid fuzzy string matching in Python and C++ using the Levenshtein Distance'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
 )
 optdepends=('python-numpy')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('83fff37acf0367314879231264169dcbc5e7de969a94f4b82055d06a7fddab9a')
+sha256sums=('73aed694e0f36764b61418a9d5d75e9e428fbd954e154e71ad1e34912f2e85ab')
 
 build() {
   cd "${_pkgname}-${pkgver}"
