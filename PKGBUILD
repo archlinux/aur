@@ -4,7 +4,8 @@
 # Latest Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ffmpeg-compat-57
 pkgver=3.4.8
-pkgrel=2
+pkgrel=3
+options=('!lto')
 pkgdesc="Compatibility package for ffmpeg to provide versions 57 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
@@ -17,7 +18,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libomxil-bellagio'
          'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
          'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so'
-         'libvpx.so' 'libx264' 'libx265.so' 'libxvidcore.so')
+         'libvpx' 'libx264' 'libx265.so' 'libxvidcore.so')
 makedepends=('yasm' 'libvdpau')
 provides=('libavcodec.so=57' 'libavdevice.so=57' 'libavfilter.so=6'
           'libavformat.so=57' 'libavresample.so=3' 'libavutil.so=55'
