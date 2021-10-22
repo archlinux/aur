@@ -9,7 +9,7 @@ _pkgver='0.5.0'
 _tag_ver="v${_pkgver}"
 pkgver=${_pkgver//-/.}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgrel=1
+pkgrel=2
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 makedepends=()
@@ -20,7 +20,7 @@ install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
 # "PKGBUILD.sig")
-sha256sums=('0989894ee2f00333cbe69dab2af8c6852559d441399c96ace8df5fd8d2af6d20')
+sha256sums=('7e6fb964a4c9cc2daf9a4f88691ce0b6607432b115b35fa1587da09035508309')
 sha256sums_i686=('391d0980e2582e608606f946afc968c0e279836e98c5ddd9e5a2f7846b72b2eb')
 sha256sums_x86_64=('382e3db67778ab551d05778b75550b114df0b0bd0c91b41aa8e59ff7473a0895')
 sha256sums_aarch64=('98294b08649e76f4e8df4c120cb0a642767cd781b6dee72c9fc72691fab262bb')
@@ -29,11 +29,6 @@ sha256sums_armv7=('fa7df58d8930e2547341d381283711d068c58ef960a5449427c0babe71257
 sha256sums_armv7l=('fa7df58d8930e2547341d381283711d068c58ef960a5449427c0babe71257600')
 sha256sums_armv7h=('fa7df58d8930e2547341d381283711d068c58ef960a5449427c0babe71257600')
 sha256sums_arm=('fa7df58d8930e2547341d381283711d068c58ef960a5449427c0babe71257600')
-#            'SKIP')
-#https://github.com/skycoin/skywire/releases/download/v0.3.0/skywire-v0.3.0-linux-amd64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v0.3.0/skywire-v0.3.0-linux-386.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v0.3.0/skywire-v0.3.0-linux-arm64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v0.3.0/skywire-v0.3.0-linux-arm.tar.gz
 _release_url=("${url}/releases/download/${_tag_ver}/${_pkgname}-${_tag_ver}-linux")
 source_x86_64=("${_release_url}-amd64.tar.gz")
 source_aarch64=("${_release_url}-arm64.tar.gz")
@@ -93,16 +88,11 @@ done
 #rename visor to skywire
 [[ -f ${pkgdir}/usr/bin/${_pkgname}-visor ]] && mv ${pkgdir}/usr/bin/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}
 
-#install the system.d services (from the source)
-#install -Dm644 ${srcdir}/go/src/${_pkggopath}/init/${_pkgname}-hypervisor.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}-hypervisor.service
-#install -Dm644 ${srcdir}/go/src/${_pkggopath}/init/${_pkgname}-visor.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}-visor.service
-
 #install the patched system.d services
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${pkgdir}/${_systemddir}/${_pkgname}.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${pkgdir}/${_systemddir}/${_pkgname}-visor.service
 
 #tls key and certificate generation
-#install -Dm755 ${srcdir}/${_pkgname}/static/skywire-manager-src/ssl/generate-1.sh ${pkgdir}/${_skydir}/ssl/generate.sh
 install -Dm755 ${srcdir}/${_scripts}/ssl/generate.sh ${pkgdir}/${_skydir}/ssl/generate.sh
 ln -rTsf ${pkgdir}/${_skydir}/ssl/generate.sh ${pkgdir}/usr/bin/${_pkgname}-tls-gen
 install -Dm644 ${srcdir}/${_scripts}/ssl/certificate.cnf ${pkgdir}/${_skydir}/ssl/certificate.cnf
