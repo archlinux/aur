@@ -2,8 +2,8 @@
 _base=pygmsh
 pkgname=python-${_base}
 pkgdesc="Gmsh for Python"
-pkgver=7.1.12
-pkgrel=2
+pkgver=7.1.13
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -11,7 +11,7 @@ depends=(python-meshio gmsh)
 makedepends=(python-setuptools python-pip)
 checkdepends=(python-pytest-codeblocks) # python-matplotlib
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('060e6e86b6bbfa05d130c2d95bcc8e45d3f91b321ed20f001a40933c85a599afe0f6700862576d1f82adc83eaf290f9af8c209d2c16c2c5afde801ff6619c718')
+sha512sums=('89842156b1e8faed3cd3805a3c6ae8d34b3704420fb552f9cf8f8b596a05a424823b95954a9798f551803b6e6936948308e8faab2c8bde01a010993341346af9')
 
 build() {
   cd "${_base}-${pkgver}"
