@@ -2,7 +2,7 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp
-pkgver=2021.10.10
+pkgver=2021.10.22
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes'
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=('ffmpeg: for video post-processing'
             'atomicparsley: for embedding thumbnails into m4a files'
             'aria2: for using aria2 as external downloader')
 source=("https://github.com/yt-dlp/yt-dlp/archive/${pkgver}.tar.gz")
-sha256sums=('b07c21f7403f2501181c221aa576dedd371b50763d4bf583b6f6ace399cb93db')
+sha256sums=('63f267cb0f2e9d18afc8e51267be2a13ce60030eab7c04b25b94d6b90d2ba6d3')
 
 prepare() {
     cd "$pkgname-$pkgver"
