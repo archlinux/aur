@@ -4,6 +4,7 @@
 pkgname=ib-tws
 pkgver=10.10.2r
 pkgrel=1
+epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"

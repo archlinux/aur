@@ -2,6 +2,7 @@ pkgbase = ib-tws
 	pkgdesc = Electronic trading platform from discount brokerage firm Interactive Brokers
 	pkgver = 10.10.2r
 	pkgrel = 1
+	epoch = 1
 	url = http://interactivebrokers.com/
 	arch = any
 	license = custom
