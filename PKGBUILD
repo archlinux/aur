@@ -2,7 +2,7 @@
 
 pkgname=alpine
 pkgver=2.25
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64')
 pkgdesc="A free software email client, a rewrite of Pine which was a continuation of the venerable ELM."
 url="http://alpine.x10host.com/"
@@ -35,15 +35,15 @@ build() {
 	# Apply select patches to Alpine
 	# http://alpine.x10host.com/alpine/
 	# Maildir patch
-	patch -p1 -i "${srcdir}/fancy.patch"
+	patch -p1 -i "${srcdir}/fancy-${pkgver}.patch"
 	# Fancy Thread Interface
-	patch -p1 -i "${srcdir}/maildir.patch"
+	patch -p1 -i "${srcdir}/maildir-${pkgver}.patch"
 	# Justify paragraphs that contain more than one level of quoting
-	patch -p1 -i "${srcdir}/fillpara.patch"
+	patch -p1 -i "${srcdir}/fillpara-${pkgver}.patch"
 	# Add new subcommands to the compose command
-	patch -p1 -i "${srcdir}/compose.patch"
+	patch -p1 -i "${srcdir}/compose-${pkgver}.patch"
 	# Recognize multiline URLs
-	patch -p1 -i "${srcdir}/longurl.patch"
+	patch -p1 -i "${srcdir}/longurl-${pkgver}.patch"
 
 	# Configure Alpine
 	LIBS+="-lpam -lkrb5 -lcrypto" ./configure --prefix=/usr \
