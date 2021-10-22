@@ -1,0 +1,18 @@
+pkgbase = unvpk-git
+	pkgdesc = Extract Valve VPK archives
+	pkgver = r108.1f1f44f
+	pkgrel = 1
+	url = https://github.com/panzi/unvpk
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = fuse
+	depends = boost-libs
+	provides = unvpk
+	conflicts = unvpk
+	source = unvpk::git+https://github.com/panzi/unvpk.git
+	b2sums = SKIP
+
+pkgname = unvpk-git
