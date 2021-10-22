@@ -2,7 +2,7 @@
 
 pkgname=docs-gl
 _pkgname=docs.gl
-pkgver=20200306
+pkgver=20211022
 pkgrel=1
 pkgdesc='an improved version of the official OpenGL documentation'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = docs-gl
 	pkgdesc = an improved version of the official OpenGL documentation
-	pkgver = 20200306
+	pkgver = 20211022
 	pkgrel = 1
 	url = http://docs.gl/
 	arch = any
@@ -9,4 +9,3 @@ pkgbase = docs-gl
 	sha512sums = SKIP
 
 pkgname = docs-gl
-
