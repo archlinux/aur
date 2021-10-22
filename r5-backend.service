@@ -1,0 +1,14 @@
+[Unit]
+Description = Conveyal R5 Routing Engine backend
+
+[Service]
+Type = simple
+
+User = r5-backend
+Group = r5-backend
+
+WorkingDirectory = /etc/r5/
+ExecStart = /usr/bin/java -Xmx2g --class-path /usr/share/java/r5/r5-all.jar com.conveyal.analysis.BackendMain
+
+[Install]
+WantedBy = multi-user.target
