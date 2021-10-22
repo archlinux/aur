@@ -9,10 +9,11 @@ pkgname=(pipewire-common-git
          pipewire-common-alsa-git
          pipewire-common-jack-git
          pipewire-common-pulse-git
+         pipewire-common-v4l2-git
          pipewire-common-zeroconf-git
          gst-plugin-pipewire-common-git
          )
-pkgver=0.3.38.r171.gb78371f7
+pkgver=0.3.39.r1.g651f0dec
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -25,19 +26,12 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              avahi
              gst-plugins-base-libs
              )
-source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git'
-        'git+https://gitlab.freedesktop.org/pipewire/media-session.git')
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
   git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd $_pkgbase/subprojects
-  ln -sf ../../media-session .
 }
 
 build() {
@@ -49,6 +43,7 @@ build() {
     -D libcamera=disabled \
     -D sdl2=disabled \
     -D roc=disabled \
+    -D session-managers=[] \
     -D jack=disabled \
     -D vulkan=disabled \
     -D ffmpeg=disabled \
@@ -79,7 +74,8 @@ package_pipewire-common-git() {
            libwebrtc_audio_processing.so libusb-1.0.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libfreeaptx.so libfdk-aac.so)
-  optdepends=('pipewire-common-docs-git: Documentation'
+  optdepends=('pipewire-session-manager: Session manager'
+              'pipewire-common-docs-git: Documentation'
               'pipewire-common-alsa-git: ALSA configuration'
               'pipewire-common-jack-git: JACK support'
               'pipewire-common-pulse-git: PulseAudio replacement'
@@ -87,8 +83,8 @@ package_pipewire-common-git() {
               'gst-plugin-pipewire-common-git: GStreamer support'
               'ofono: ofono Bluetooth HFP support'
               'hsphfpd: hsphfpd Bluetooth HSP/HFP support')
-  provides=(pipewire pipewire-media-session alsa-card-profiles libpipewire-$_ver.so)
-  conflicts=(pipewire pipewire-media-session alsa-card-profiles)
+  provides=("pipewire=$pkgver" alsa-card-profiles libpipewire-$_ver.so)
+  conflicts=(pipewire alsa-card-profiles)
   install=pipewire.install
 
   meson install -C build --destdir "$pkgdir"
@@ -105,13 +101,14 @@ package_pipewire-common-git() {
 
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/share/man/man1/pw-jack.1
-  _pick jack usr/share/pipewire/{jack.conf,media-session.d/with-jack}
+  _pick jack usr/share/pipewire/jack.conf
 
   _pick pulse usr/bin/pipewire-pulse
   _pick pulse usr/lib/pipewire-$_ver/libpipewire-module-protocol-pulse.so
   _pick pulse usr/lib/pipewire-$_ver/libpipewire-module-pulse-tunnel.so
   _pick pulse usr/lib/systemd/user/pipewire-pulse.*
-  _pick pulse usr/share/pipewire/media-session.d/with-pulseaudio
+
+  _pick v4l2 usr/bin/pw-v4l2 usr/lib/pipewire-$_ver/v4l2
 
   _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-zeroconf-discover.so
 
@@ -132,7 +129,7 @@ package_pipewire-common-docs-git() {
 
 package_pipewire-common-alsa-git() {
   pkgdesc+=" - ALSA configuration"
-  depends=(pipewire-common-git)
+  depends=(pipewire-common-git pipewire-session-manager)
   provides=(pipewire-alsa pulseaudio-alsa)
   conflicts=(pipewire-alsa)
 
@@ -147,18 +144,23 @@ package_pipewire-common-alsa-git() {
 package_pipewire-common-jack-git() {
   pkgdesc+=" - JACK support"
   license+=(GPL2)
-  depends=(pipewire-common-git libpipewire-$_ver.so bash)
+  depends=(bash pipewire-session-manager pipewire-common-git
+           libpipewire-$_ver.so)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
 
   mv jack/* "$pkgdir"
+
+  install -Dm644 /dev/null \
+    "$pkgdir/usr/share/pipewire/media-session.d/with-jack"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }
 
 package_pipewire-common-pulse-git() {
   pkgdesc+=" - PulseAudio replacement"
-  depends=(pipewire-common-git libpipewire-$_ver.so libpulse.so
+  depends=(pipewire-session-manager pipewire-common-git
+           libpipewire-$_ver.so libpulse.so
            libavahi-{client,common}.so
            )
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
@@ -166,6 +168,21 @@ package_pipewire-common-pulse-git() {
   install=pipewire-pulse.install
 
   mv pulse/* "$pkgdir"
+
+  install -Dm644 /dev/null \
+    "$pkgdir/usr/share/pipewire/media-session.d/with-pulseaudio"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
+}
+
+package_pipewire-common-v4l2-git() {
+  pkgdesc+=" - V4L2 interceptor"
+  depends=(pipewire-session-manager pipewire-common-git
+           libpipewire-$_ver.so)
+  provides=(pipewire-v4l2)
+  conflicts=(pipewire-v4l2)
+
+  mv v4l2/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }
@@ -184,7 +201,8 @@ package_pipewire-common-zeroconf-git() {
 
 package_gst-plugin-pipewire-common-git() {
   pkgdesc="Multimedia graph framework - pipewire plugin"
-  depends=(pipewire-common-git libpipewire-$_ver.so gst-plugins-base-libs)
+  depends=(gst-plugins-base-libs pipewire-session-manager
+           pipewire-common-git libpipewire-$_ver.so)
   provides=(gst-plugin-pipewire)
   conflicts=(gst-plugin-pipewire)
 
