@@ -1,6 +1,6 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=pizarra-git
-pkgver=1.4.1.r1.f66e046
+pkgver=1.4.2.r0.4328dd8
 pkgrel=1
 pkgdesc='Simple Gtk drawing application'
 arch=('i686' 'x86_64')
