@@ -1,0 +1,14 @@
+pkgbase = eclipse-ft9xx
+	pkgdesc = Bridgetek FT9xx Eclipse Plugins
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://brtchip.com/ft9xx-toolchain/
+	arch = any
+	license = EPL
+	depends = eclipse
+	depends = p7zip
+	optdepends = bugzilla: ticketing support
+	source = https://github.com/perigoso/eclipse-ft9xx/archive/refs/tags/V2.5.0.tar.gz
+	sha512sums = SKIP
+
+pkgname = eclipse-ft9xx
