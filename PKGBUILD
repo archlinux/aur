@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxo-git
-pkgver=1.3.10.r0.gbab39f3
+pkgver=1.4.1.r0.g7104780
 pkgrel=1
 pkgdesc="Generic C-implementation for ODL (Object Definition Language)"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
