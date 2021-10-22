@@ -15,15 +15,16 @@ source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/${pkgname%-gtk}-$pkgver
 sha256sums=('22d8132e9c3bc62b3ec090275abd8b211d9d99b89812dc69e987cd315f898d0d')
 
 build() {
-	arch-meson "${pkgname%-gtk}-$pkgver" build
-	meson compile -C build
+  arch-meson "${pkgname%-gtk}-$pkgver" build
+  meson compile -C build
 }
 
 check() {
-	meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
-	ln -s /usr/bin/com.gitlab.bitseater.meteo "$pkgdir/usr/bin/${pkgname%-gtk}"
+  meson install -C build --destdir "$pkgdir"
+
+  ln -s /usr/bin/com.gitlab.bitseater.meteo "$pkgdir/usr/bin/${pkgname%-gtk}"
 }
