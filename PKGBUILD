@@ -1,4 +1,4 @@
-# Maintainer: peippo <christoph+aur@christophfink.com> 
+# Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=wk
 _cranver=0.5.0
