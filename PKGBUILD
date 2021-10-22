@@ -10,7 +10,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 
 arch=("i686" "x86_64")
-depends=("r" "r-rcpp")
+depends=("r" "r-rcpp" "udunits")
 optdepends=("r-udunits2" "r-nistunits" "r-measurements" "r-xml2" "r-magrittr" "r-pillar" "r-dplyr" "r-vctrs" "r-knitr" "r-testthat" "r-ggforce" "r-rmarkdown")
 makedepends=()
 
