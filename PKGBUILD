@@ -4,7 +4,7 @@
 
 _pkgname=fastlbry-terminal
 pkgname=${_pkgname}-git
-pkgver=0.5.r147.g7bce7b7
+pkgver=0.5.r148.g6531cad
 pkgrel=1
 pkgdesc="A fully featured, terminal application to interact with LBRY"
 arch=('any')
@@ -12,6 +12,8 @@ url="https://www.notabug.org/jyamihud/FastLBRY-terminal"
 license=('GPL3')
 makedepends=('git')
 depends=('python')
+optdepends=('lbry-app-bin: for login support to the LBRY network',
+            'lbry-desktop-git: for login support to the LBRY network')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
