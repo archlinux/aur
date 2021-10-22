@@ -1,7 +1,7 @@
 pkgbase = openexr-viewer
 	pkgdesc = Simple viewer for OpenEXR files with detailed metadata display
 	pkgver = 0.5.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/afichet/openexr-viewer
 	arch = any
 	license = BSD
