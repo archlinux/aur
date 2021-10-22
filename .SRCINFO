@@ -1,14 +1,17 @@
 pkgbase = maestral
-	pkgdesc = A light-weight and open-source CLI Dropbox client.
-	pkgver = 1.4.3
+	pkgdesc = Open-source Dropbox client
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/SamSchott/maestral
-	arch = x86_64
+	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-benchmark
 	makedepends = python-setuptools
-	depends = python>=3.9
-	depends = python-click>=7.1.1
-	depends = python-desktop-notifier>=3.1.2
+	makedepends = python-wheel
+	depends = python>=3.6
+	depends = python-click>=8.0.0
+	depends = python-desktop-notifier>=3.3.0
 	depends = python-dropbox>=10.9.0
 	depends = python-dropbox<12.0
 	depends = python-fasteners>=0.15
@@ -20,18 +23,15 @@ pkgbase = maestral
 	depends = python-requests>=2.16.2
 	depends = python-sdnotify>=0.3.2
 	depends = python-setuptools
-	depends = python-survey>=3.2.2
+	depends = python-survey>=3.4.3
 	depends = python-survey<4.0
-	depends = python-watchdog
+	depends = python-watchdog-git
 	depends = python-systemd
-	depends = python-wheel
 	optdepends = maestral-qt: Qt interface for the maestral daemon
-	provides = maestral
-	conflicts = maestral-git
-	source = https://github.com/SamSchott/maestral/archive/v1.4.3.tar.gz
+	optdepends = importlib_metadata: REQUIRED for python<3.8
+	source = maestral-1.5.1.tar.gz::https://github.com/SamSchott/maestral/archive/v1.5.1.tar.gz
 	source = maestral@.service
-	md5sums = 75883c2d356df51087e6e2f5be935480
-	md5sums = 25d1041b158c1b1ea42d7290c9c0f91d
+	sha256sums = a239110c54448d88742a0b23f29cf4d4f8c5569ade9e6c081f3ff5e338c48ac0
+	sha256sums = 79f48787cec441c252b1fcbecbce1342bbac1de275e90fe9dfbd1b9cad2ba2c8
 
 pkgname = maestral
-
