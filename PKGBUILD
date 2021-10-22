@@ -2,9 +2,9 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=7.3.0
-_pkgver=7.3
-pkgrel=2
+pkgver=7.4.0
+_pkgver=7.4
+pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
@@ -26,7 +26,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
 
-md5sums=('2fb0ad897be38114f36aaf071b027d28'
+md5sums=('a6101b3fcd48a494f3b44cbd7ddbc4a7'
          'SKIP')
 
 
@@ -41,10 +41,10 @@ prepare() {
 build() {  
   cd $srcdir/  
  
-  if  [ -d "$srcdir/build/" ]; then
-    rm -rf $srcdir/build/
+   if  [ -d "$srcdir/build/" ]; then
+	rm -rf $srcdir/build/
    fi
-  mkdir $srcdir/build/
+   mkdir $srcdir/build/
  
    cd $srcdir/build
  
@@ -75,7 +75,8 @@ build() {
   -DOTB_USE_SHARK=ON \
   -DITK_DIR=/opt/insight-toolkit4 \
   -DCMAKE_PREFIX_PATH=/opt/insight-toolkit4 \
-  -DCMAKE_CXX_STANDARD=14
+  -DCMAKE_CXX_STANDARD=14 \
+  -DBoost_USE_STATIC_LIBS=ON
          
   make
  
