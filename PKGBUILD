@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
-_cranver=1.2.0
+_cranver=1.2.1
 pkgname=r-bsda
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('r' 'r-e1071')
 replaces=('r-cran-bsda')
 source=("https://cran.r-project.org/src/contrib/BSDA_"$_cranver".tar.gz")
-sha512sums=('b169d21dfa74498f6c8244229162d340e7995bf1be4dd7a6149981d3bdba3bdd777b7d91127f93a887b2c5ee645781503fd1b14200ed2e84b4d371cb0a49ea53')
+sha512sums=('f4a6f755b95dd492b124342585ba5960659773e26901f0802e5e92a25a2c01919b86dc79250189b4a30153332c673ed746bad7ea3e983499d62fe63953679a34')
 
 build(){
     R CMD INSTALL BSDA_"$_cranver".tar.gz -l "$srcdir"
