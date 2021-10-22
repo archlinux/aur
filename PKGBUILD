@@ -7,11 +7,11 @@ pkgname=('pipewire-git'
          'pipewire-alsa-git'
          'pipewire-pulse-git'
          'pipewire-ffmpeg-git'
-         'pipewire-media-session-git'
          'alsa-card-profiles-git'
          'pipewire-zeroconf-git'
+         'pipewire-v4l2-git'
          )
-pkgver=0.3.38.15.gb418b876e
+pkgver=0.3.39.1.g651f0dece
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -72,7 +72,8 @@ build() {
     -D roc=disabled \
     -D ffmpeg=enabled \
     -D jack-devel=TRUE \
-    -D libjack-path=/usr/lib
+    -D libjack-path=/usr/lib \
+    -D session-managers=[]
 
   ninja
 }
@@ -118,6 +119,7 @@ package_pipewire-git() {
               'pipewire-media-session-git: Default session manager'
               'gst-plugin-pipewire-git: gstreamer support'
               'pipewire-zeroconf-git: Zeroconf support'
+              'pipewire-v4l2-git: V4L2 interceptor'
               )
   provides=('pipewire'
             "libpipewire-${pkgver:0:3}.so"
@@ -135,25 +137,23 @@ package_pipewire-git() {
 
   _pick docs usr/share/doc
 
-  _pick pms usr/bin/pipewire-media-session
-  _pick pms usr/lib/systemd/user/pipewire-media-session.service
-  _pick pms usr/share/pipewire/media-session.d/*.conf
-
   _pick jack usr/bin/pw-jack usr/lib/libjack* usr/lib/pkgconfig/jack.pc
   _pick jack usr/lib/spa-0.2/jack/libspa-jack.so
   _pick jack usr/include/jack
-  _pick jack usr/share/pipewire/{jack.conf,media-session.d/with-jack}
+  _pick jack usr/share/pipewire/jack.conf
   _pick jack usr/share/man/man1/pw-jack.1
 
   _pick pulse usr/bin/pipewire-pulse
   _pick pulse "usr/lib/pipewire-${pkgver:0:3}/libpipewire-module-protocol-pulse.so"
   _pick pulse "usr/lib/pipewire-${pkgver:0:3}/libpipewire-module-pulse-tunnel.so"
   _pick pulse usr/lib/systemd/user/pipewire-pulse.*
-  _pick pulse usr/share/pipewire/media-session.d/with-pulseaudio
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
 
   _pick zeroconf "usr/lib/pipewire-${pkgver:0:3}/libpipewire-module-zeroconf-discover.so"
+
+  _pick v4l2 usr/bin/pw-v4l2
+  _pick v4l2 "usr/lib/pipewire-${pkgver:0:3}/v4l2"
   )
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
@@ -173,7 +173,7 @@ package_pipewire-docs-git() {
 package_pipewire-jack-git() {
   pkgdesc+=" - JACK support (GIT version)"
   license+=('GPL2')  # libjackserver
-  depends=("pipewire-media-session-git=${pkgver}"
+  depends=('pipewire-session-manager'
            "libpipewire-${pkgver:0:3}.so"
            )
   backup=('usr/share/pipewire/jack.conf')
@@ -190,12 +190,14 @@ package_pipewire-jack-git() {
 
   mv jack/* "${pkgdir}"
 
+  install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-jack"
+
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
 package_pipewire-pulse-git() {
   pkgdesc+=" - PulseAudio replacement (GIT version)"
-  depends=("pipewire-media-session-git=${pkgver}"
+  depends=('pipewire-session-manager'
            "libpipewire-${pkgver:0:3}.so"
            'libpulse.so'
            'libavahi-client.so'
@@ -214,12 +216,14 @@ package_pipewire-pulse-git() {
 
   mv pulse/* "${pkgdir}"
 
+  install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-pulseaudio"
+
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
 package_pipewire-alsa-git() {
   pkgdesc+=" - ALSA configuration (GIT version)"
-  depends=("pipewire-media-session-git=${pkgver}")
+  depends=('pipewire-session-manager')
   provides=('pipewire-alsa'
             'pulseaudio-alsa'
             )
@@ -249,22 +253,6 @@ package_pipewire-ffmpeg-git() {
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
-package_pipewire-media-session-git() {
-  pkgdesc+=" - Session manager (GIT version)"
-  depends=("pipewire-git=${pkgver}"
-           "libpipewire-${pkgver:0:3}.so"
-           )
-  provides=('pipewire-media-session')
-  conflicts=('pipewire-media-session')
-  backup=('usr/share/pipewire/media-session.d/media-session.conf'
-           usr/share/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf
-          )
-  install=pipewire-media-session.install
-
-  mv pms/* "${pkgdir}"
-
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
-}
 
 package_alsa-card-profiles-git() {
   pkgdesc+=" - ALSA card profiles (GIT version)"
@@ -289,6 +277,17 @@ package_pipewire-zeroconf-git() {
   conflicts=('pipewire-zeroconf')
 
   mv zeroconf/* "${pkgdir}"
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+}
+
+package_pipewire-v4l2-git() {
+  pkgdesc+=" - V4L2 interceptor (GIT version)"
+  depends=('pipewire-session-manager'
+           "libpipewire-${pkgver:0:3}.so"
+           )
+
+  mv v4l2/* "${pkgdir}"
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
