@@ -1,36 +1,36 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = The Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 5.14.13.arch1
+	pkgver = 5.14.14.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.14.13-arch1
+	url = https://github.com/archlinux/linux/commits/v5.14.14-arch1
 	arch = x86_64
 	license = GPL2
-	noextract = linux-5.14.13.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-headers-5.14.13.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-docs-5.14.13.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-5.14.14.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-headers-5.14.14.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-docs-5.14.14.arch1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-5.14.13.arch1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-headers-5.14.13.arch1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-docs-5.14.13.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = a81552928c4a3378bfa01b482d8a3a48dde543c64ab910acfa744474a2763a1a
-	sha256sums = f5b75f8f86c7071fe2132771383ed6e23589456a228119f3b173d0338fbaca9d
-	sha256sums = 3f83245db105ff30dd5ca62786621593747d816c267d20a7046c7b82dfa7c0de
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-5.14.14.arch1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-headers-5.14.14.arch1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-docs-5.14.14.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 347705024f4180e0fe4bf71f5e8615d98ecdc2b0ea1af49b9a385d54f117eaec
+	sha256sums = 13c31457b7b3c009fc512234029f9f5bae3488c941780f38c37ba16c9d9539c8
+	sha256sums = 921909d077aaf094be5dce0f85f19944054f7eeb8395208ca361fb10ecd3f249
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.14.13.arch1-1-bin
-	depends = linux5.14.13.arch1-1-bin
+	pkgdesc = Dummy package depending on linux5.14.14.arch1-1-bin
+	depends = linux5.14.14.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.14.13.arch1-1-headers-bin
-	depends = linux5.14.13.arch1-1-headers-bin
+	pkgdesc = Dummy package depending on linux5.14.14.arch1-1-headers-bin
+	depends = linux5.14.14.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.14.13.arch1-1-docs-bin
-	depends = linux5.14.13.arch1-1-docs-bin
+	pkgdesc = Dummy package depending on linux5.14.14.arch1-1-docs-bin
+	depends = linux5.14.14.arch1-1-docs-bin
 
-pkgname = linux5.14.13.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.14.13-arch1-1
+pkgname = linux5.14.14.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.14.14-arch1-1
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -42,11 +42,11 @@ pkgname = linux5.14.13.arch1-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux5.14.13.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.14.13-arch1-1
+pkgname = linux5.14.14.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.14.14-arch1-1
 	depends = pahole
 	conflicts = linux-headers
 
-pkgname = linux5.14.13.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.14.13-arch1-1
+pkgname = linux5.14.14.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.14.14-arch1-1
 	conflicts = linux-docs
