@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Embrilliance
+Comment=Render, convert and digitize embroidery designs.
+Exec=embrilliance
+Icon=embrilliance
+Type=Application
+Terminal=false
+StartupNotify=true
+StartupWMClass=embroidery.exe
+Categories=Graphics;
+Encoding=UTF-8

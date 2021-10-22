@@ -1,0 +1,26 @@
+pkgbase = embrilliance
+	pkgdesc = Render, convert and digitize embroidery designs. Windows version.
+	pkgver = 1.17.2
+	pkgrel = 1
+	url = https://embrilliance.com/downloads
+	install = embrilliance.install
+	arch = x86_64
+	license = unknown
+	makedepends = icoutils
+	makedepends = innoextract
+	makedepends = unzip
+	depends = wine
+	depends = wine-mono
+	depends = wine-gecko
+	noextract = Embrilliance1172Setup.zip
+	options = !strip
+	source = https://www.embrilliance.com/emb_downloads/Embrilliance1172Setup.zip
+	source = embrilliance.bash
+	source = embrilliance.desktop
+	source = LICENSE
+	sha512sums = 05852dbc1e1ab1dfd16f22c29d49831497c34f20fee1675d3deb9c7f78b07381068943bf38415d861fe542f1b0ca5d66eb9dda49c4c036fd348e1b8d496ff8f7
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = embrilliance
