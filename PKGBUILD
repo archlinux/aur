@@ -1,9 +1,9 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=timetrace
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
-pkgdesc="A simple time-tracking CLI tool"
+pkgdesc="Simple time-tracking CLI tool"
 arch=('x86_64')
 url="https://github.com/dominikbraun/timetrace"
 license=('Apache')
@@ -13,7 +13,7 @@ optdepends=('bash-completion: built-in completions')
 install="$pkgname.install"
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bdfe2c2e93d729f1e933d4b78ed4e17378a7f627e6f7bddd3ad9285036ad03e6')
+sha256sums=('998e2b8bfd37eb5887dc0f3f3c7d0e1136e6bcc163fe60744715356405ef4676')
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -30,12 +30,6 @@ build() {
 }
 
 check() {
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
 	cd "$pkgname-$pkgver"
 	go test ./...
 }
