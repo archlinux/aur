@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-degiro-connector"
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Yet another library to access Degiro's API"
 url="https://github.com/Chavithra/degiro-connector"
@@ -13,8 +13,8 @@ conflicts=("python-degiro-connector")
 # not adding "python-orjson" because it is not compatible with ARM architectures yet
 depends=("python-grpcio" "python-onetimepass" "python-pandas" "python-protobuf" "python-requests" "python-wrapt")
 makedepends=("python-dephell" "python-setuptools")
-source=("https://github.com/Chavithra/degiro-connector/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('cfdb5ee556cde363ed69051c1ab834d071087fc36d7b27bd46f6daccb671a659')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Chavithra/degiro-connector/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('c07eddb361e0e5cc58f335e27197865749e0f48e815bf1b7f2c09bbed2d024e0')
 
 prepare(){
  cd "degiro-connector-$pkgver"
