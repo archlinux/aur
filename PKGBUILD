@@ -1,7 +1,7 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 
 pkgname=tflint
-pkgver=0.30.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="A linter for Terraform code"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver-source.tar.gz::https://${_vendor}/archive/v${pkgver}.tar.gz")
-sha256sums=('b9f49c96f2457427140507dec17d24821d73acf1d76dd9656e17827e87b479f2')
+sha256sums=('a204e2ae311b08cedcf31fd621a0913cc3cda0cf78b42a8475af309f72716337')
 _vendorpath="gopath/src/$_vendor"
 
 build() {
