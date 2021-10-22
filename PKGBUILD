@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=4577.r0.60a7195a9b
+pkgver=4638.r2.839d18189f
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -25,11 +25,14 @@ md5sums=('SKIP'
 pkgver() {
 
   cd $srcdir/pdfium
-
+  
+  # Default branch can be either master or main
+  local _default_branch=$(git symbolic-ref refs/remotes/origin/HEAD | cut -f4 -d"/")
+  
   # Version = branch name/number + number of commits since branch creation
   # + short head
   printf  "%s.r%s.%s" $(git rev-parse --abbrev-ref HEAD | cut -d '/' -f2)\
-   $(git rev-list --count master..) $(git rev-parse --short HEAD)
+   $(git rev-list --count $_default_branch..) $(git rev-parse --short HEAD)
 
 }
 
