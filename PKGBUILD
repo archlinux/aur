@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=breeze-plymouth
-pkgver=5.22.2.1
+pkgver=5.23.1
 pkgrel=1
 pkgdesc="Breeze theme for plymouth"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(extra-cmake-modules)
 optdepends=(noto-fonts)
 source=("http://download.kde.org/stable/plasma/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.sig}
 				'breeze-plymouth.cpiohook')
-sha256sums=('64c5d151a27948ec5a8b9e476ebcd1572a4f6d3eda285a7b7f23bc77b2bc1dcc'
+sha256sums=('1ca705f28dc7e3309423b5853f30fb40315ebbd09bde95ed13512a01c9ed9438'
             'SKIP'
             'e87418d5694514b6227a0fa81fbc71dfa05d50092a90082a4a4467f4d2d08385')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
