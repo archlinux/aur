@@ -1,6 +1,6 @@
 pkgbase = libfprint-goodix-521d
 	pkgdesc = Library for fingerprint readers - For Goodix 521d
-	pkgver = 1.90.7.r319.g5b92de7
+	pkgver = 1.90.7.r319.b6bfc7a
 	pkgrel = 1
 	url = https://fprint.freedesktop.org/
 	arch = x86_64
