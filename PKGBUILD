@@ -1,7 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kvantum-theme-matcha-git
 _gitname=Matcha-kde
-pkgver=r9.283b5b1
+pkgver=r11.a3b247b
 pkgrel=1
 pkgdesc="Matcha theme for Kvantum"
 arch=('any')
@@ -15,13 +16,12 @@ source=('git+https://github.com/vinceliuice/Matcha-kde.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/$_gitname"
-	install -d "$pkgdir/usr/share"
-	cp -r Kvantum "$pkgdir/usr/share"
+  cd "$srcdir/$_gitname"
+  install -d "$pkgdir/usr/share"
+  cp -r Kvantum "$pkgdir/usr/share"
 }
-
