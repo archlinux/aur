@@ -1,0 +1,14 @@
+pkgbase = ecspresso
+	pkgdesc = Deployment tool for Amazon ECS
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/kayac/ecspresso
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/kayac/ecspresso/archive/refs/tags/v1.6.2.tar.gz
+	sha256sums = 4c24e13aa96495c48c934521b902701bfd680cb44c132c1e97552b55119f9bc4
+
+pkgname = ecspresso
