@@ -3,9 +3,9 @@
 # Contributor: Dominik Braun <mail at dominikbraun dot io>
 
 pkgname=timetrace-bin
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
-pkgdesc="A simple CLI for tracking your working time."
+pkgdesc="Simple CLI for tracking your working time."
 arch=("x86_64")
 url="https://github.com/dominikbraun/timetrace"
 license=("Apache")
@@ -15,7 +15,7 @@ provides=('timetrace')
 conflicts=('timetrace')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/timetrace-linux-amd64.tar.gz"
         "README-$pkgver.md::https://raw.githubusercontent.com/dominikbraun/timetrace/v$pkgver/README.md")
-sha256sums=('e5a7f0e7c91b811c868e8091475dcfe9a287776425a9da7e4d0af701da1699af'
+sha256sums=('adb40c879a996f1078489cc450e752fb8582f5e15e86586e788ef612906da3ca'
             'a65bbb025d4ba57d8d186fd366a2ca93e3ebc1d410906063718e9080e1bb165e')
 
 build() {
