@@ -7,10 +7,10 @@ pkgdesc="Spatial Data Analysis"
 url="https://cran.r-project.org/package=terra"
 license=("GPL (>= 3)")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("i686" "x86_64")
-depends=("r" "r-rcpp")
+depends=("r" "r-rcpp" "gdal")
 optdepends=("r-tinytest" "r-ncdf4" "r-sf" "r-deldir" "r-raster")
 makedepends=()
 
