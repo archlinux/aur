@@ -1,0 +1,7 @@
+nodejs-nativefier-*.pkg.tar.zst
+nodejs-nativefier-*.pkg.tar.xz
+nodejs-nativefier-*.tgz
+nodejs-nativefier-*.log
+PKGBUILD-namcap.log
+pkg/
+src/

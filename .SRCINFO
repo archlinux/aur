@@ -1,6 +1,6 @@
 pkgbase = nodejs-nativefier
-	pkgdesc = Wrap web apps natively
-	pkgver = 45.0.1
+	pkgdesc = A command-line tool to easily create a desktop app for any web site with minimal configuration
+	pkgver = 45.0.4
 	pkgrel = 1
 	url = https://github.com/nativefier/nativefier#readme
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = nodejs-nativefier
 	makedepends = npm
 	depends = nodejs
 	depends = unzip
-	noextract = nativefier-45.0.1.tgz
-	source = http://registry.npmjs.org/nativefier/-/nativefier-45.0.1.tgz
-	sha256sums = 7e2faca780c66fa6188bd7e55093822cffcee950c008240c21799ab5edf312e6
+	noextract = nodejs-nativefier-45.0.4.tgz
+	source = nodejs-nativefier-45.0.4.tgz::http://registry.npmjs.org/nativefier/-/nativefier-45.0.4.tgz
+	sha1sums = 2f5c032acdefcb410a60d6ef5ceefa1a1a8b021e
+	sha256sums = 7c60f25d0e45bfcd7a33fd0571af6eb741d904a8793789137a218658a1d11113
 
 pkgname = nodejs-nativefier
