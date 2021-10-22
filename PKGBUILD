@@ -5,7 +5,7 @@ _vlcver=3.0.16
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -120,6 +120,11 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  # Fix to build against libcaca 0.99.beta20
+  sed -i 's/cucul_/caca_/g' modules/video_output/caca.c
+  sed -i 's/CUCUL_COLOR/CACA/g' modules/video_output/caca.c
+
   autoreconf -vf
 }
 
