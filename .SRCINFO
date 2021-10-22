@@ -1,6 +1,6 @@
 pkgbase = kvantum-theme-vimix-git
 	pkgdesc = Vimix theme for Kvantum
-	pkgver = 2021.09.05.r1.g5b8f265
+	pkgver = 2021.09.05.r6.g39dc03a
 	pkgrel = 1
 	url = https://github.com/vinceliuice/vimix-kde
 	arch = any

@@ -1,7 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kvantum-theme-vimix-git
 _gitname=vimix-kde
-pkgver=2021.09.05.r1.g5b8f265
+pkgver=2021.09.05.r6.g39dc03a
 pkgrel=1
 pkgdesc="Vimix theme for Kvantum"
 arch=('any')
