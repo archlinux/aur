@@ -1,6 +1,6 @@
 pkgbase = thedude
 	pkgdesc = Mikrotik The Dude network monitoring client
-	pkgver = 6.46.4
+	pkgver = 6.49
 	pkgrel = 1
 	url = http://www.mikrotik.com
 	install = thedude.install
@@ -11,7 +11,7 @@ pkgbase = thedude
 	depends = findutils
 	depends = wine
 	optdepends = ttf-ms-fonts: for better fonts
-	source = thedude-6.46.4.exe::http://download.mikrotik.com/routeros/6.46.4/dude-install-6.46.4.exe
+	source = thedude-6.49.exe::http://download.mikrotik.com/routeros/6.49/dude-install-6.49.exe
 	source = thedude.desktop
 	source = thedude.png
 	source = thedude
@@ -21,4 +21,3 @@ pkgbase = thedude
 	sha256sums = a5a64f3f4ad9d17c66775afbc33f0c3f36dd30cc506848004c9252ecdcc7acf2
 
 pkgname = thedude
-
