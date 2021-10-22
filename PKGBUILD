@@ -4,14 +4,14 @@
 
 pkgname=rust-motd-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautiful, useful MOTD generation with zero runtime dependencies"
 url="https://github.com/rust-motd/rust-motd"
 license=("MIT")
 arch=("x86_64")
 provides=("rust-motd")
 conflicts=("rust-motd")
-source=("https://github.com/rust-motd/rust-motd/releases/download/v$pkgver/rust-motd-$pkgver-x86_64.tar.gz")
+source=("https://github.com/rust-motd/rust-motd/releases/download/v$pkgver/rust-motd-$pkgver-archlinux-x86_64.tar.gz")
 sha256sums=("990ea3528d1d1ca65bac69fb511fe9d3811ee86c547f7e525d6190508f369234")
 
 package() {
