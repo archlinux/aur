@@ -2,7 +2,7 @@
 
 pkgname=zesarux
 pkgver=10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support"
 arch=('i686' 'x86_64')
 url="https://github.com/chernandezba/zesarux"
@@ -18,7 +18,8 @@ install="zesarux.install"
 
 build() {
 	cd "${srcdir}/ZEsarUX-${pkgver}"
-	./configure --prefix /usr --enable-memptr --enable-visualmem --enable-cpustats
+        # Working around a bug of libcaca
+	./configure --prefix /usr --enable-memptr --enable-visualmem --enable-cpustats --disable-caca
 	sed -i 's/tar -C/#tar -C/g' Makefile
 	make bintargz
 }
