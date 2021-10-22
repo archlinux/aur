@@ -1,6 +1,6 @@
 pkgname=completion-nvim
-pkgver=139fb6c
-pkgrel=2
+pkgver=87b0f86
+pkgrel=1
 pkgdesc='A async completion framework aims to provide completion to neovim.'
 arch=('any')
 url=https://github.com/nvim-lua/completion-nvim
