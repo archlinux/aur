@@ -1,0 +1,18 @@
+pkgbase = r-geometries
+	pkgdesc = Convert Between R Objects and Geometric Structures
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=geometries
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-rcpp
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/geometries_0.2.0.tar.gz
+	md5sums = efeccd6972b857d760e3985583c6ad15
+
+pkgname = r-geometries
