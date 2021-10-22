@@ -32,15 +32,15 @@ prepare() {
 
 build() {
   cd build
-  ../${_gitname}/autogen.sh 
+  ../${pkgname%-git}/autogen.sh 
   CFLAGS="$CFLAGS -I/usr/include/freetype2" \
-	../${_gitname}/configure --prefix=/usr --with-openssl --with-athena=3d \
+	../${pkgname%-git}/configure --prefix=/usr --with-openssl --with-athena=3d \
 	--without-database
   make
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "build"
   make DESTDIR="$pkgdir/" install
 # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.sxemacs}
