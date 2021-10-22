@@ -1,10 +1,11 @@
 # Maintainer: Peter blackman <peter at pblackman dot plus dot com>
 # Build package from OBS source
+# 22-Oct-2021
 # See http://www.c-evo.org/
 
 pkgname=c-evo
 pkgver=400
-pkgrel=4
+pkgrel=5
 pkgdesc="Empire Building Game, C-evo: New Horizons"
 arch=('x86_64')
 url="https://app.zdechov.net/c-evo"
@@ -13,10 +14,10 @@ makedepends=('fpc' 'lazarus-gtk2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo-bin')
-source=("$pkgname-$pkgver.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_$pkgver+dfsg.4.orig.tar.xz"
-        "$pkgname-$pkgver.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_$pkgver+dfsg.4-1.debian.tar.xz")
-sha256sums=('e0b9d0dd50124e083440179bc71e767ba7e6921f67823d8973cdafe49ae1dea4'
-            'ef8fedf34f10811016357a56c92e65f073bf1daf9f9954dfb1a588168e38a003')
+source=("$pkgname-$pkgver.5.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_$pkgver+dfsg5.orig.tar.xz"
+        "$pkgname-$pkgver.5.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_$pkgver+dfsg5-2.debian.tar.xz")
+sha256sums=('6d967cdc5b5b2466578ebe9f79adfb00182715fd273b9d0d31c75793c4b495c1'
+            '9226f46e102fff63ff2071ee87a138142f7804ba303a11dd3d061d47a24f8e48')
 
 prepare() {
   cd "${srcdir}"
@@ -42,7 +43,7 @@ prepare() {
   patch -Np1 < debian/patches/024-mapfilename.patch
   patch -Np1 < debian/patches/025-common.patch
   patch -Np1 < debian/patches/026-help.patch
-  patch -Np1 < debian/patches/027-rangechecks.patch
+  patch -Np1 < debian/patches/028-bigbuttons.patch
 
   # Arch does not use a 'games' folder
   sed -i "s|share/games|share|"   debian/extras/$pkgname-launch-gtk2
@@ -151,7 +152,6 @@ package() {
   install -Dm 644 debian/extras/Tutorial.html       -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/extras/C-evo-HOWTO.html    -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/extras/Release-Notes.txt   -t "$pkgdir/usr/share/doc/$pkgname"
-# install -Dm 644 debian/extras/C-evo-Mil.html      -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/extras/c-evo-launch-gtk2.6 -t "$pkgdir/usr/share/man/man6"
   install -Dm 644 debian/extras/c-evo-gtk2.6        -t "$pkgdir/usr/share/man/man6"
   install -Dm 644 debian/c-evo-gtk2.metainfo.xml    -t "$pkgdir/usr/share/metainfo"
@@ -160,6 +160,7 @@ package() {
   install -Dm 644 Language2.txt                     -t "$pkgdir/usr/share/$pkgname"
   install -Dm 644 Fonts.txt                         -t "$pkgdir/usr/share/$pkgname"
 
+  install -Dm 644 debian/extras/ButtonsC2.png       -t "$pkgdir/usr/share/$pkgname/Graphics"
   install -Dm 644 Graphics/*                        -t "$pkgdir/usr/share/$pkgname/Graphics"
   install -Dm 644 Help/*                            -t "$pkgdir/usr/share/$pkgname/Help"
   install -Dm 644 Maps/*                            -t "$pkgdir/usr/share/$pkgname/Maps"

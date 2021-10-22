@@ -1,7 +1,7 @@
 pkgbase = c-evo
 	pkgdesc = Empire Building Game, C-evo: New Horizons
 	pkgver = 400
-	pkgrel = 4
+	pkgrel = 5
 	url = https://app.zdechov.net/c-evo
 	arch = x86_64
 	license = GPL2
@@ -10,9 +10,9 @@ pkgbase = c-evo
 	depends = gtk2
 	optdepends = ffmpeg: Needed for sounds
 	conflicts = c-evo-bin
-	source = c-evo-400.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_400+dfsg.4.orig.tar.xz
-	source = c-evo-400.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_400+dfsg.4-1.debian.tar.xz
-	sha256sums = e0b9d0dd50124e083440179bc71e767ba7e6921f67823d8973cdafe49ae1dea4
-	sha256sums = ef8fedf34f10811016357a56c92e65f073bf1daf9f9954dfb1a588168e38a003
+	source = c-evo-400.5.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_400+dfsg5.orig.tar.xz
+	source = c-evo-400.5.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_400+dfsg5-2.debian.tar.xz
+	sha256sums = 6d967cdc5b5b2466578ebe9f79adfb00182715fd273b9d0d31c75793c4b495c1
+	sha256sums = 9226f46e102fff63ff2071ee87a138142f7804ba303a11dd3d061d47a24f8e48
 
 pkgname = c-evo
