@@ -3,7 +3,7 @@
 _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.55.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (PLEASE READ COMMENTS FIRST) (official build, mingw-w64)"
 arch=('x86_64')
@@ -24,15 +24,15 @@ source=("https://static.rust-lang.org/dist/cargo-${pkgver}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('1ab9296faf1909fe3ac619ba208aeff905c39124504991c14e06462b9328493e'
+sha256sums=('f972125810d2db7df2e0af56d9f6a3dcdacc52d983bdf0ca17309b45fc44209b'
             'SKIP'
-            'a602f4178d5adfa8428f89bd4045df029586d1bb87e04ae6ec2da7eb702a403d'
+            '2a5f919e2036496c02ab4707a5eb8bd8a4ce6ea589e01cb39f25d213a26dcdfe'
             'SKIP'
-            '160873f5ba5099b21202a1e62eb7b0588aabf88dd709f886b142ce60356b3006'
+            'f693e4f41a959d62528e0043b0b010c4815fb9f5887267ae34ff8b860f8ec4ae'
             'SKIP'
-            '0b9bd34677d795c53d5919c56b537e401ae0cb635bf265d412d1987f27c0a1ce'
+            '6a45b6064dda39519cef1ca53599534d106ba2c01aac6ef395168f7322fa6ea4'
             'SKIP'
-            '41f870bd58fc763dcc3a9b5265439af239fd0442ffa3842ae79ba41f4daa22f1'
+            '4d9edabb4dd44f4aea08880694de4f612cb0c2d5fc6a4856ae373ffe4c5b1615'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
@@ -112,13 +112,6 @@ EOF
   fi
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
 rustflags = [
-EOF
-  if [[ ! -f "/usr/i686-w64-mingw32/bin/libgcc_s_dw2-1.dll" ]] ; then
-    cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
-             "-C", "panic=abort",
-EOF
-  fi
-  cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
             ]
 
 EOF
@@ -135,13 +128,6 @@ EOF
   fi
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
 rustflags = [
-EOF
-  if [[ ! -f "/usr/x86_64-w64-mingw32/bin/libgcc_s_seh-1.dll" ]] ; then
-    cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
-             "-C", "panic=abort",
-EOF
-  fi
-  cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
             ]
 
 EOF
