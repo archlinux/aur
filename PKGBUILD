@@ -1,8 +1,8 @@
 # Maintainer: Omar Pakker <archlinux@opakker.nl>
 
-pkgname=spflashtool-bin
 _pkgname=spflashtool
-pkgver="6.2124"
+pkgname="${_pkgname}-bin"
+pkgver="6.2136"
 pkgrel=1
 pkgdesc="SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone."
 arch=('x86_64')
@@ -10,12 +10,12 @@ url="http://spflashtools.com/category/linux"
 license=('unknown')
 depends=('qt5-serialport' 'qt5-xmlpatterns')
 makedepends=('gendesk')
-provides=('spflashtool')
-conflicts=('spflashtool')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("https://spflashtools.com/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip"
         'spflashtool.png'
         '60-spflashtool.rules')
-sha256sums=('45fb7885b87a1b7c340d6a1267eac9559fea52c9d59f656f9ec014d13bda92a1'
+sha256sums=('9cee4d1f0ceb73ec164a54693804ab1da98956697df5714a7da7dd8aa7bf5ded'
             'fe0b9c1de77c687623bfc07733041d1387f755493cdf904e6afcb47f784d34c7'
             'a0e20dea13cfc63a92444e3763c764701162cfb5a8d04092dc69169f4214fb8d')
 
