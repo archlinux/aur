@@ -4,7 +4,7 @@
 
 _pkgname=discover
 pkgname=discover-snap
-pkgver=5.22.5
+pkgver=5.23.1
 pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI with snap support'
 arch=(x86_64)
@@ -19,9 +19,9 @@ optdepends=('packagekit-qt5: to manage packages from Arch Linux repositories' 'f
             'fwupd: firmware update support')
 groups=(plasma)
 source=("https://download.kde.org/stable/plasma/${pkgver}/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('c9809ec8f3f26909ce9901d6f7cd03cf52d4854431cfdf5340a4daa8404842b0'
+sha256sums=('44255c9b1a8df70a4c710396ccbdaf1725f93694a040d4197e4bf45285e6ee71'
             'SKIP')
-validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
+validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
