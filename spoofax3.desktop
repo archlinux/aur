@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Spoofax 3
 Comment=A modular and incremental textual language workbench running on the JVM
-Icon=eclipse
+Icon=spoofax3
 Exec=spoofax3
 Terminal=false
 Type=Application
