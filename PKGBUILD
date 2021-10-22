@@ -1,7 +1,7 @@
 pkgname=xray-plugin-git
 pkgver=1.5.0.r0.g4a86196
 pkgrel=1
-pkgdesc='A SIP003 plugin based on v2ray for shadowsocks (git version)'
+pkgdesc='A SIP003 plugin based on xray for shadowsocks (git version)'
 arch=(x86_64)
 url='https://github.com/teddysun/xray-plugin'
 license=(MIT)
