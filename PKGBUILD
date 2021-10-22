@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux-git
-pkgver=10.0.r1.gd7a0e8ca
+pkgver=10.0.r15.gc2a1f7ec
 _ver=10.0
 pkgrel=1
 pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. WARNING. This is a Snapshot version and not a stable one. Some features may not work or suffer random crashes or abnormal CPU use"
@@ -26,7 +26,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/zesarux-code/src"
-	./configure --prefix /usr --enable-memptr --enable-visualmem --enable-cpustats
+	# disable libcaca for now
+	./configure --prefix /usr --enable-memptr --enable-visualmem --enable-cpustats --disable-caca 
 	sed -i 's/tar -C/#tar -C/g' Makefile
 	make bintargz
 }
