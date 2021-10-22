@@ -3,7 +3,8 @@
 # Contributor: Testuser_01 <arch[at]nico-siebler[dot]de>
 # Contributor: Pablo Vilas <pablovilas89[at]gmail[dot]com>
 
-pkgname=webstorm-eap
+pkgbase=webstorm-eap
+pkgname=(webstorm-eap webstorm-eap-jre)
 _pkgname=WebStorm
 pkgver=213.5744.37
 _pkgver=2021.3
@@ -29,11 +30,14 @@ prepare() {
   rm help/ReferenceCardForMac.pdf
 }
 
+package_webstorm-eap() {
+  optdepends=('webstorm-eap-jre: JetBrains custom Java Runtime (Recommended)'
+              'java-runtime: JRE - Required if webstorm-jre is not installed')
 
-package() {
   cd "${srcdir}"
   mkdir -p "${pkgdir}/opt/${pkgname}"
   cp --recursive ${srcdir}/${_pkgname}-${pkgver}/* "${pkgdir}/opt/${pkgname}"
+  rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/applications"
@@ -45,4 +49,12 @@ package() {
   install -m 644 "${startdir}/${_pkgname}_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt"
 
   ln -s "/opt/${pkgname}/bin/webstorm.sh" "${pkgdir}/usr/bin/${pkgname}"
+}
+
+package_webstorm-eap-jre() {
+  pkgdesc="JBR (JetBrains Runtime) for WebStorm EAP - a patched JRE"
+  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+
+  install -dm755 "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}/${_pkgname}-${pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
