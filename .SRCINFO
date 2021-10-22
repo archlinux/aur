@@ -1,0 +1,14 @@
+pkgbase = lsparu
+	pkgdesc = A fzf TUI for paru
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/salkin-mada/lsparu
+	arch = any
+	license = GPL3
+	depends = fzf
+	depends = paru
+	depends = bash
+	source = lsparu-1.0.0.tar.gz::https://github.com/salkin-mada/lsparu/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = d7f547406531eb8429796fea7db26df816f751e2dbfaa23de334fe66399dd803
+
+pkgname = lsparu
