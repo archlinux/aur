@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 pkgname=linmath
-_pkgver=70d7f11
-pkgver="1.${_pkgver}"
+_pkgver=0538757
+pkgver="2.${_pkgver}"
 pkgrel=1
 pkgdesc="lean linear math library, aimed at graphics programming"
 arch=("any")
