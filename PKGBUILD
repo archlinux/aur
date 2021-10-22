@@ -4,7 +4,7 @@
 # Contributor: Jesse Jaara <jesse.jaara@gmail.com>
 
 pkgname=ibus-m17n
-pkgver=1.4.7
+pkgver=1.4.8
 pkgrel=1
 pkgdesc='M17N engine for IBus'
 arch=('x86_64')
@@ -12,7 +12,7 @@ url='https://github.com/ibus/ibus-m17n'
 license=('LGPL')
 depends=('ibus' 'm17n-db' 'm17n-lib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ibus/ibus-m17n/archive/${pkgver}.tar.gz")
-sha512sums=('07a8588e2c931ffa4b48b2abfbd5bbb51ad6a7043aabf052e5787a9340ee40eca15437884428116a38e74fb3b555bb354850470fffc382dac46703197dae8e51')
+sha512sums=('f99c34301c3c7c1344bbf132a56776329d92c3138c3874320d6544c0cbd5b056ade773391beb471a5c21049760a59dfb97e3ce479c76d492e9829d4e252d7b21')
 
 prepare() {
   cd $pkgname-$pkgver
