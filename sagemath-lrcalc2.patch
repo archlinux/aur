@@ -1,12 +1,13 @@
 diff --git a/build/pkgs/lrcalc/checksums.ini b/build/pkgs/lrcalc/checksums.ini
-index 7a0e6a1b96..70de56c40d 100644
+index 7a0e6a1b96..8b8620ba52 100644
 --- a/build/pkgs/lrcalc/checksums.ini
 +++ b/build/pkgs/lrcalc/checksums.ini
 @@ -1,4 +1,5 @@
- tarball=lrcalc-VERSION.tar.gz
+-tarball=lrcalc-VERSION.tar.gz
 -sha1=89c288875bc3e3e2919876cb645bdfd7316b5965
 -md5=6bba16c0cca9debccd0af847bd3d4a23
 -cksum=3738483656
++tarball=liblrcalc-VERSION.tar.gz
 +sha1=2a98661eb39c7ef526c932f7886fc3142fd639ab
 +md5=7cfa8f67287f2b70a15a833b94bc24b6
 +cksum=2250996027
@@ -114,17 +115,123 @@ index 707da176a6..0000000000
 --- 
 -2.1.1.1.g1fb337f
 -
+diff --git a/build/pkgs/lrcalc/spkg-configure.m4 b/build/pkgs/lrcalc/spkg-configure.m4
+index f2f8b74f8f..da66e31fbc 100644
+--- a/build/pkgs/lrcalc/spkg-configure.m4
++++ b/build/pkgs/lrcalc/spkg-configure.m4
+@@ -2,8 +2,7 @@ SAGE_SPKG_CONFIGURE([lrcalc], [
+     AC_CHECK_HEADERS([lrcalc/schublib.h], [
+           AC_SEARCH_LIBS([mult_poly_schubert], [lrcalc], [], [sage_spkg_install_lrcalc=yes])
+     ], [sage_spkg_install_lrcalc=yes],
+-    [[#ifndef _HASHTAB_H
+-      #include <lrcalc/hashtab.h>
+-      #include <lrcalc/vector.h>
++    [[#ifndef _IVECTOR_H
++      #include <lrcalc/ivector.h>
+       #endif]])
+ ])
 diff --git a/build/pkgs/lrcalc/spkg-install.in b/build/pkgs/lrcalc/spkg-install.in
-index d6665bfb42..a34493b776 100644
+index d6665bfb42..a863950189 100644
 --- a/build/pkgs/lrcalc/spkg-install.in
 +++ b/build/pkgs/lrcalc/spkg-install.in
-@@ -7,3 +7,6 @@ cp "$SAGE_ROOT"/config/config.sub .
+@@ -1,9 +1,5 @@
+ cd src
+ 
+-# Use newer version of config.guess and config.sub (see Trac #19725)
+-cp "$SAGE_ROOT"/config/config.guess .
+-cp "$SAGE_ROOT"/config/config.sub .
+-
  sdh_configure
  sdh_make
  sdh_make_install
+diff --git a/build/pkgs/lrcalc_python/SPKG.rst b/build/pkgs/lrcalc_python/SPKG.rst
+new file mode 100644
+index 0000000000..cff9d7d7fb
+--- /dev/null
++++ b/build/pkgs/lrcalc_python/SPKG.rst
+@@ -0,0 +1,22 @@
++lrcalc_python: Littlewood-Richardson calculator
++===============================================
 +
-+cd python
-+sdh_pip_install .
++Description
++-----------
++
++Python bindings for the Littlewood-Richardson Calculator
++
++http://sites.math.rutgers.edu/~asbuch/lrcalc/
++
++License
++-------
++
++GNU General Public License V2+
++
++
++Upstream Contact
++----------------
++
++Anders S. Buch (asbuch@math.rutgers.edu)
++
++https://bitbucket.org/asbuch/lrcalc
+diff --git a/build/pkgs/lrcalc_python/checksums.ini b/build/pkgs/lrcalc_python/checksums.ini
+new file mode 100644
+index 0000000000..bdfef8711e
+--- /dev/null
++++ b/build/pkgs/lrcalc_python/checksums.ini
+@@ -0,0 +1,5 @@
++tarball=lrcalc-VERSION.tar.gz
++sha1=3e9366d9e8b8beccec70b07d174b8f6683c01574
++md5=4ae444d12ed8e0dd770594ea3ef4a208
++cksum=2741305196
++upstream_url=https://pypi.io/packages/source/l/lrcalc/lrcalc-VERSION.tar.gz
+diff --git a/build/pkgs/lrcalc_python/dependencies b/build/pkgs/lrcalc_python/dependencies
+new file mode 100644
+index 0000000000..63e5177ae0
+--- /dev/null
++++ b/build/pkgs/lrcalc_python/dependencies
+@@ -0,0 +1,5 @@
++$(PYTHON) lrcalc | $(PYTHON_TOOLCHAIN) cython
++
++----------
++All lines of this file are ignored except the first.
++It is copied by SAGE_ROOT/build/make/install into SAGE_ROOT/build/make/Makefile.
+diff --git a/build/pkgs/lrcalc_python/install-requires.txt b/build/pkgs/lrcalc_python/install-requires.txt
+new file mode 100644
+index 0000000000..8b44d97f4b
+--- /dev/null
++++ b/build/pkgs/lrcalc_python/install-requires.txt
+@@ -0,0 +1 @@
++lrcalc ~=2.1
+diff --git a/build/pkgs/lrcalc_python/package-version.txt b/build/pkgs/lrcalc_python/package-version.txt
+new file mode 100644
+index 0000000000..879b416e60
+--- /dev/null
++++ b/build/pkgs/lrcalc_python/package-version.txt
+@@ -0,0 +1 @@
++2.1
+diff --git a/build/pkgs/lrcalc_python/spkg-install.in b/build/pkgs/lrcalc_python/spkg-install.in
+new file mode 100644
+index 0000000000..deba1bb42b
+--- /dev/null
++++ b/build/pkgs/lrcalc_python/spkg-install.in
+@@ -0,0 +1 @@
++cd src && sdh_pip_install .
+diff --git a/build/pkgs/lrcalc_python/type b/build/pkgs/lrcalc_python/type
+new file mode 100644
+index 0000000000..a6a7b9cd72
+--- /dev/null
++++ b/build/pkgs/lrcalc_python/type
+@@ -0,0 +1 @@
++standard
+diff --git a/build/pkgs/sagelib/dependencies b/build/pkgs/sagelib/dependencies
+index 960eb95c1c..a68ac961f1 100644
+--- a/build/pkgs/sagelib/dependencies
++++ b/build/pkgs/sagelib/dependencies
+@@ -1,4 +1,4 @@
+-FORCE $(SCRIPTS) arb boost_cropped $(BLAS) brial cliquer cypari cysignals cython ecl eclib ecm flint libgd gap giac givaro glpk gmpy2 gsl iml jinja2 jupyter_core lcalc lrcalc libbraiding libhomfly libpng linbox m4ri m4rie memory_allocator mpc mpfi mpfr $(MP_LIBRARY) ntl numpy pari pip pkgconfig planarity ppl pplpy pycygwin $(PYTHON) ratpoints rw sage_conf singular symmetrica zn_poly $(PCFILES) | $(PYTHON_TOOLCHAIN) sage_setup
++FORCE $(SCRIPTS) arb boost_cropped $(BLAS) brial cliquer cypari cysignals cython ecl eclib ecm flint libgd gap giac givaro glpk gmpy2 gsl iml jinja2 jupyter_core lcalc lrcalc_python libbraiding libhomfly libpng linbox m4ri m4rie memory_allocator mpc mpfi mpfr $(MP_LIBRARY) ntl numpy pari pip pkgconfig planarity ppl pplpy pycygwin $(PYTHON) ratpoints rw sage_conf singular symmetrica zn_poly $(PCFILES) | $(PYTHON_TOOLCHAIN) sage_setup
+ 
+ ----------
+ All lines of this file are ignored except the first.
 diff --git a/src/sage/libs/lrcalc/lrcalc.pxd b/src/sage/libs/lrcalc/lrcalc.pxd
 deleted file mode 100644
 index 10b88db93f..0000000000
@@ -212,10 +319,10 @@ diff --git a/src/sage/libs/lrcalc/lrcalc.pyx b/src/sage/libs/lrcalc/lrcalc.py
 similarity index 65%
 rename from src/sage/libs/lrcalc/lrcalc.pyx
 rename to src/sage/libs/lrcalc/lrcalc.py
-index 1cf67dc15a..d4e2f5d538 100644
+index b591081ec4..65db959944 100644
 --- a/src/sage/libs/lrcalc/lrcalc.pyx
 +++ b/src/sage/libs/lrcalc/lrcalc.py
-@@ -187,180 +187,16 @@ AUTHORS:
+@@ -187,180 +187,24 @@ AUTHORS:
  #                  https://www.gnu.org/licenses/
  # ****************************************************************************
  
@@ -224,7 +331,11 @@ index 1cf67dc15a..d4e2f5d538 100644
  from sage.combinat.partition import _Partitions
  from sage.combinat.permutation import Permutation
 -from sage.combinat.skew_tableau import SkewTableau
--
++from sage.combinat.skew_tableau import SkewTableaux
++from sage.combinat.skew_partition import SkewPartition
++from sage.rings.integer import Integer
++import lrcalc
+ 
 -
 -cdef vector* iterable_to_vector(it):
 -    """
@@ -285,9 +396,12 @@ index 1cf67dc15a..d4e2f5d538 100644
 -    """
 -    A wrapper function which transforms the data set ``st`` used in
 -    ``lrcalc`` to a ``SkewTableau`` in Sage.
--
--    TESTS::
--
++def _lrcalc_dict_to_sage(result):
++    r"""
++    Translate from lrcalc output format to Sage expected format.
+ 
+     TESTS::
+ 
 -        sage: from sage.libs.lrcalc.lrcalc import test_skewtab_to_SkewTableau
 -        sage: test_skewtab_to_SkewTableau([],[])
 -        []
@@ -329,11 +443,11 @@ index 1cf67dc15a..d4e2f5d538 100644
 -cdef dict sf_hashtab_to_dict(hashtab *ht):
 -    """
 -    Return a dictionary representing a Schur function. The keys are
--    partitions and the values are integers <type 'sage.rings.integer.Integer'>.
+-    partitions and the values are integers <class 'sage.rings.integer.Integer'>.
 -
 -    EXAMPLES::
 -
--        sage: from sage.libs.lrcalc.lrcalc import mult
+         sage: from sage.libs.lrcalc.lrcalc import mult
 -        sage: sorted(mult([1],[1]).items())        #indirect doctest
 -        [([1, 1], 1), ([2], 1)]
 -        sage: assert isinstance(mult([1],[1]),dict)#indirect doctest
@@ -352,7 +466,7 @@ index 1cf67dc15a..d4e2f5d538 100644
 -cdef dict schubert_hashtab_to_dict(hashtab *ht):
 -    """
 -    Return a dictionary corresponding to a Schubert polynomial whose keys
--    are permutations and whose values are integers <type 'sage.rings.integer.Integer'>.
+-    are permutations and whose values are integers <class 'sage.rings.integer.Integer'>.
 -
 -    EXAMPLES::
 -
@@ -373,14 +487,16 @@ index 1cf67dc15a..d4e2f5d538 100644
 -cdef dict vp_hashtab_to_dict(hashtab *ht):
 -    """
 -    Return a dictionary corresponding to the coproduct of a Schur function whose keys are
--    pairs of partitions and whose values are integers <type 'sage.rings.integer.Integer'>.
+-    pairs of partitions and whose values are integers <class 'sage.rings.integer.Integer'>.
 -
 -    EXAMPLES::
 -
 -        sage: from sage.libs.lrcalc.lrcalc import coprod
 -        sage: coprod([1])      #indirect doctest
 -        {([1], []): 1}
--    """
++        sage: mult([2,1],[3,2,1],3) # indirect doctest
++        {[3, 3, 3]: 1, [4, 3, 2]: 2, [4, 4, 1]: 1, [5, 2, 2]: 1, [5, 3, 1]: 1}
+     """
 -    cdef hash_itr itr
 -    cdef vecpair* vp
 -    cdef dict result = {}
@@ -392,18 +508,12 @@ index 1cf67dc15a..d4e2f5d538 100644
 -        result[(p1, p2)] = Integer(hash_intvalue(itr))
 -        hash_next(itr)
 -    return result
-+from sage.combinat.skew_tableau import SkewTableaux
-+from sage.combinat.skew_partition import SkewPartition
-+from sage.combinat.words.word import Word
-+from sage.rings.integer import Integer
-+import lrcalc
- 
-+def _lrcalc_dict_to_sage(result):
-+    return dict({_Partitions(i):Integer(k) for i,k in result.items()})
+-
++    return {_Partitions(la):Integer(k) for la,k in result.items()}
  
  def lrcoef_unsafe(outer, inner1, inner2):
      r"""
-@@ -392,18 +228,7 @@ def lrcoef_unsafe(outer, inner1, inner2):
+@@ -392,18 +236,7 @@ def lrcoef_unsafe(outer, inner1, inner2):
          sage: lrcoef_unsafe([2,1,1,1,1], [2,1], [2,1])
          0
      """
@@ -423,7 +533,7 @@ index 1cf67dc15a..d4e2f5d538 100644
  
  
  def lrcoef(outer, inner1, inner2):
-@@ -510,44 +335,23 @@ def mult(part1, part2, maxrows=None, level=None, quantum=None):
+@@ -510,44 +343,24 @@ def mult(part1, part2, maxrows=None, level=None, quantum=None):
      if quantum is not None and (level is None or maxrows is None):
          raise ValueError('missing parameters maxrows or level')
  
@@ -473,7 +583,8 @@ index 1cf67dc15a..d4e2f5d538 100644
 +    P = quantum.parent()
 +    output = {}
 +    for i,k in result.items():
-+        output[_Partitions(i[0])] = output.get(_Partitions(i[0]), P.zero()) + k*quantum**(i[1])
++        la = _Partitions(i[0])
++        output[la] = output.get(la, P.zero()) + k*quantum**(i[1])
 +    return output
 +
 +
@@ -481,7 +592,7 @@ index 1cf67dc15a..d4e2f5d538 100644
      """
      Compute the Schur expansion of a skew Schur function.
  
-@@ -572,14 +376,7 @@ def skew(outer, inner, maxrows=0):
+@@ -572,14 +385,7 @@ def skew(outer, inner, maxrows=0):
          sage: sorted(skew([2,1],[1]).items())
          [([1, 1], 1), ([2], 1)]
      """
@@ -497,7 +608,7 @@ index 1cf67dc15a..d4e2f5d538 100644
  
  
  def coprod(part, all=0):
-@@ -609,12 +406,8 @@ def coprod(part, all=0):
+@@ -609,12 +415,8 @@ def coprod(part, all=0):
          sage: sorted(coprod([2,1]).items())
          [(([1, 1], [1]), 1), (([2], [1]), 1), (([2, 1], []), 1)]
      """
@@ -508,11 +619,11 @@ index 1cf67dc15a..d4e2f5d538 100644
 -    hash_free(ht)
 -    return result
 +    result = lrcalc.coprod(part, all)
-+    return dict({tuple(_Partitions(j) for j in i):Integer(k) for i,k in result.items()})
++    return {tuple(_Partitions(mu) for mu in la):Integer(k) for la,k in result.items()}
  
  
  def mult_schubert(w1, w2, rank=0):
-@@ -646,17 +439,11 @@ def mult_schubert(w1, w2, rank=0):
+@@ -646,17 +448,11 @@ def mult_schubert(w1, w2, rank=0):
           ([6, 4, 3, 1, 2, 5], 1), ([6, 5, 2, 1, 3, 4], 1),
           ([7, 3, 4, 1, 2, 5, 6], 1), ([7, 4, 2, 1, 3, 5, 6], 1)]
      """
@@ -525,7 +636,7 @@ index 1cf67dc15a..d4e2f5d538 100644
 -    hash_free(ht)
 -    return result
 +    result = lrcalc.schubmult(w1, w2, rank)
-+    return dict({Permutation(list(i)):Integer(k) for i,k in result.items()})
++    return {Permutation(list(la)):Integer(k) for la,k in result.items()}
  
  
 -def lrskew(outer, inner, weight=None, maxrows=0):
@@ -533,7 +644,7 @@ index 1cf67dc15a..d4e2f5d538 100644
      r"""
      Iterate over the skew LR tableaux of shape ``outer / inner``.
  
-@@ -703,21 +490,23 @@ def lrskew(outer, inner, weight=None, maxrows=0):
+@@ -703,21 +499,20 @@ def lrskew(outer, inner, weight=None, maxrows=0):
          sage: list(lrskew([3,2,1],[2], weight=[3,1]))
          [[[None, None, 1], [1, 1], [2]]]
      """
@@ -547,12 +658,9 @@ index 1cf67dc15a..d4e2f5d538 100644
 -        yield skewtab_to_SkewTableau(st)
 -        while st_next(st):
 -            yield skewtab_to_SkewTableau(st)
-+        while True:
-+            try:
-+                word = Word([i+1 for i in next(iterator)])
-+                yield SkewTableaux().from_shape_and_word(shape, word)
-+            except StopIteration:
-+                break
++        ST = SkewTableaux()
++        for data in iterator:
++            yield ST.from_shape_and_word(shape, [i+1 for i in data])
      else:
          wt = _Partitions(weight)
 -        r = skewtab_to_SkewTableau(st)
@@ -563,11 +671,11 @@ index 1cf67dc15a..d4e2f5d538 100644
 -            if r.weight() == wt:
 -                yield r
 -    st_free(st)
-+        while True:
-+            try:
-+                word = Word([i+1 for i in next(iterator)])
-+                r = SkewTableaux().from_shape_and_word(shape, word)
-+                if r.weight() == wt:
-+                    yield r
-+            except StopIteration:
-+                break
++        ST = SkewTableaux()
++        for data in iterator:
++            m = max(data) + 1
++            w = [0] * m
++            for j in data:
++                w[j] += 1
++            if w == wt:
++                yield ST.from_shape_and_word(shape, [i+1 for i in data])

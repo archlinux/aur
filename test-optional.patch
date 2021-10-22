@@ -2,24 +2,16 @@ diff --git a/src/sage/doctest/control.py b/src/sage/doctest/control.py
 index 2d93841e50..937e20cd2e 100644
 --- a/src/sage/doctest/control.py
 +++ b/src/sage/doctest/control.py
-@@ -357,20 +357,6 @@ class DocTestController(SageObject):
-                 # Special case to run all optional tests
-                 options.optional = True
-             else:
--                # We replace the 'optional' tag by all optional
--                # packages for which the installed version matches the
--                # latest available version (this implies in particular
--                # that the package is actually installed).
--                if 'optional' in options.optional:
--                    options.optional.discard('optional')
+@@ -357,11 +357,6 @@ class DocTestController(SageObject):
+                 # that the package is actually installed).
+                 if 'optional' in options.optional:
+                     options.optional.discard('optional')
 -                    from sage.misc.package import list_packages
 -                    for pkg in list_packages('optional', local=True).values():
 -                        if pkg['installed'] and pkg['installed_version'] == pkg['remote_version']:
 -                            options.optional.add(pkg['name'])
 -
--                    from sage.features import package_systems
--                    options.optional.update(system.name for system in package_systems())
--
-                 # Check that all tags are valid
-                 for o in options.optional:
-                     if not optionaltag_regex.search(o):
+                     from sage.features import package_systems
+                     options.optional.update(system.name for system in package_systems())
+ 
+ 
