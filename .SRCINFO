@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-tzdata
+	pkgdesc = Sources for time zone and daylight saving time data (mingw-w64)
+	pkgver = 2021a
+	pkgrel = 1
+	url = https://www.iana.org/time-zones
+	arch = any
+	license = custom: public domain
+	makedepends = tzdata
+	options = !emptydirs
+	source = https://www.iana.org/time-zones/repository/releases/tzdata2021a.tar.gz
+	source = https://www.iana.org/time-zones/repository/releases/tzdata2021a.tar.gz.asc
+	validpgpkeys = 7E3792A9D8ACF7D633BC1588ED97E90E62AA7E34
+	sha512sums = 7cdd762ec90ce12a30fa36b1d66d1ea82d9fa21e514e2b9c7fcbe2541514ee0fadf30843ff352c65512fb270857b51d1517b45e1232b89c6f954ba9ff1833bb3
+	sha512sums = SKIP
+
+pkgname = mingw-w64-tzdata
