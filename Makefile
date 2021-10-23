@@ -1,9 +1,9 @@
 srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
-	rm steampipe-*.tgz
+	rm -rf steampipe-*.tgz
 
 integrity:
-	rm -rf cloudctl-linux-*
+	rm -rf steampipe-*.tgz
 	makepkg -g
 
 generate:
