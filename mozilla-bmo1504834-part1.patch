@@ -1,0 +1,121 @@
+# HG changeset patch
+# Parent  b5471d23321d16a0bacc25b7afd27d2e16adba1a
+Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1504834
+
+diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
+--- a/gfx/2d/DrawTargetSkia.cpp
++++ b/gfx/2d/DrawTargetSkia.cpp
+@@ -130,18 +130,17 @@ static IntRect CalculateSurfaceBounds(co
+   Rect sampledBounds = inverse.TransformBounds(*aBounds);
+   if (!sampledBounds.ToIntRect(&bounds)) {
+     return surfaceBounds;
+   }
+ 
+   return surfaceBounds.Intersect(bounds);
+ }
+ 
+-static const int kARGBAlphaOffset =
+-    SurfaceFormat::A8R8G8B8_UINT32 == SurfaceFormat::B8G8R8A8 ? 3 : 0;
++static const int kARGBAlphaOffset = 0;  // Skia is always BGRA SurfaceFormat::A8R8G8B8_UINT32 == SurfaceFormat::B8G8R8A8 ? 3 : 0;
+ 
+ static bool VerifyRGBXFormat(uint8_t* aData, const IntSize& aSize,
+                              const int32_t aStride, SurfaceFormat aFormat) {
+   if (aFormat != SurfaceFormat::B8G8R8X8 || aSize.IsEmpty()) {
+     return true;
+   }
+   // We should've initialized the data to be opaque already
+   // On debug builds, verify that this is actually true.
+diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
+--- a/gfx/2d/Types.h
++++ b/gfx/2d/Types.h
+@@ -84,25 +84,18 @@ enum class SurfaceFormat : int8_t {
+   Depth,
+ 
+   // This represents the unknown format.
+   UNKNOWN,
+ 
+ // The following values are endian-independent synonyms. The _UINT32 suffix
+ // indicates that the name reflects the layout when viewed as a uint32_t
+ // value.
+-#if MOZ_LITTLE_ENDIAN()
+   A8R8G8B8_UINT32 = B8G8R8A8,  // 0xAARRGGBB
+   X8R8G8B8_UINT32 = B8G8R8X8,  // 0x00RRGGBB
+-#elif MOZ_BIG_ENDIAN()
+-  A8R8G8B8_UINT32 = A8R8G8B8,  // 0xAARRGGBB
+-  X8R8G8B8_UINT32 = X8R8G8B8,  // 0x00RRGGBB
+-#else
+-#  error "bad endianness"
+-#endif
+ 
+   // The following values are OS and endian-independent synonyms.
+   //
+   // TODO(aosmond): When everything blocking bug 1581828 has been resolved, we
+   // can make this use R8B8G8A8 and R8B8G8X8 for non-Windows platforms.
+   OS_RGBA = A8R8G8B8_UINT32,
+   OS_RGBX = X8R8G8B8_UINT32
+ };
+diff --git a/gfx/skia/skia/third_party/skcms/skcms.cc b/gfx/skia/skia/third_party/skcms/skcms.cc
+--- a/gfx/skia/skia/third_party/skcms/skcms.cc
++++ b/gfx/skia/skia/third_party/skcms/skcms.cc
+@@ -25,16 +25,18 @@
+         // it'd be a lot slower.  But we want all those headers included so we
+         // can use their features after runtime checks later.
+         #include <smmintrin.h>
+         #include <avxintrin.h>
+         #include <avx2intrin.h>
+         #include <avx512fintrin.h>
+         #include <avx512dqintrin.h>
+     #endif
++#else
++    #define SKCMS_PORTABLE
+ #endif
+ 
+ // sizeof(x) will return size_t, which is 32-bit on some machines and 64-bit on others.
+ // We have better testing on 64-bit machines, so force 32-bit machines to behave like 64-bit.
+ //
+ // Please do not use sizeof() directly, and size_t only when required.
+ // (We have no way of enforcing these requests...)
+ #define SAFE_SIZEOF(x) ((uint64_t)sizeof(x))
+@@ -275,30 +277,38 @@ enum {
+     skcms_Signature_sf32 = 0x73663332,
+     // XYZ is also a PCS signature, so it's defined in skcms.h
+     // skcms_Signature_XYZ = 0x58595A20,
+ };
+ 
+ static uint16_t read_big_u16(const uint8_t* ptr) {
+     uint16_t be;
+     memcpy(&be, ptr, sizeof(be));
+-#if defined(_MSC_VER)
++#if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
++    return be;
++#else
++    #if defined(_MSC_VER)
+     return _byteswap_ushort(be);
+-#else
++    #else
+     return __builtin_bswap16(be);
++    #endif
+ #endif
+ }
+ 
+ static uint32_t read_big_u32(const uint8_t* ptr) {
+     uint32_t be;
+     memcpy(&be, ptr, sizeof(be));
+-#if defined(_MSC_VER)
++#if __BYTE_ORDER == __ORDER_BIG_ENDIAN__
++    return be;
++#else
++    #if defined(_MSC_VER)
+     return _byteswap_ulong(be);
+-#else
++    #else
+     return __builtin_bswap32(be);
++    #endif
+ #endif
+ }
+ 
+ static int32_t read_big_i32(const uint8_t* ptr) {
+     return (int32_t)read_big_u32(ptr);
+ }
+ 
+ static float read_big_fixed(const uint8_t* ptr) {

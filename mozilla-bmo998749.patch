@@ -1,0 +1,29 @@
+# HG changeset patch
+# User msirringhaus@suse.de
+# Date 1583738770 -3600
+#      Mon Mar 09 08:26:10 2020 +0100
+# Node ID 34676feac1a542e409e22acf5b98735f8313b1ce
+# Parent  506857dace0a08d1c9685e3ac264646590b3e27f
+[mq]: mozilla-bmo998749.patch
+
+diff -r 506857dace0a -r 34676feac1a5 gfx/2d/FilterProcessing.h
+--- a/gfx/2d/FilterProcessing.h	Fri Feb 28 12:31:51 2020 +0100
++++ b/gfx/2d/FilterProcessing.h	Mon Mar 09 08:26:10 2020 +0100
+@@ -13,10 +13,17 @@
+ namespace mozilla {
+ namespace gfx {
+ 
++#if MOZ_BIG_ENDIAN()
++const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_B = 3;
++const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_G = 2;
++const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_R = 1;
++const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_A = 0;
++#else
+ const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_B = 0;
+ const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_G = 1;
+ const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_R = 2;
+ const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_A = 3;
++#endif
+ 
+ class FilterProcessing {
+  public:
