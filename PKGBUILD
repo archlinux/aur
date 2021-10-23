@@ -1,8 +1,8 @@
 # Maintainer: Huang-Huang Bao <eh5@sokka.cn>
 
 _pkgbase=media-session
-pkgbase=media-session-git
-pkgname=(media-session-git media-session-docs-git)
+pkgbase=pipewire-media-session-git
+pkgname=(pipewire-media-session-git pipewire-media-session-docs-git)
 pkgver=0.4.0.r1.g4bf1b295
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor - Session manager"
@@ -43,12 +43,12 @@ _pick() {
   done
 }
 
-package_media-session-git() {
+package_pipewire-media-session-git() {
   depends=('pipewire>=0.3.39' libpipewire-0.3.so
            libasound.so libdbus-1.so libsystemd.so)
   provides=(pipewire-media-session pipewire-session-manager)
   conflicts=(pipewire-media-session)
-  install=media-session.install
+  install=pipewire-media-session.install
 
   meson install -C builddir --destdir "$pkgdir"
 
@@ -59,7 +59,7 @@ package_media-session-git() {
   _pick docs usr/share/doc
 }
 
-package_media-session-docs-git() {
+package_pipewire-media-session-docs-git() {
   pkgdesc+=" - documentation"
   provides=(pipewire-media-session-docs)
   conflicts=(pipewire-media-session-docs)
