@@ -34,11 +34,11 @@ build() {
   fi
 
   make build ARCH=$_arch COMP=gcc
+  make strip
 }
 
 package() {
   cd ${pkgname%-git}/src
-  make strip
   make PREFIX="$pkgdir"/usr install
 }
 
