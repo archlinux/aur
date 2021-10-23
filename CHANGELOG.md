@@ -1,5 +1,6 @@
 # Changelog
 
+* [2.4.6](#2-4-6)
 * [2.4.5](#2-4-5)
 * [2.4.4](#2-4-4)
 * [2.4.3](#2-4-3)
@@ -24,6 +25,30 @@
 * [2.1.0](#2-1-0)
 * [2.0.0](#2-0-0)
 * [1.1.7](#1-1-7)
+
+
+## 2.4.6
+
+### Added
+
+* UnicodeData updated to 14.0
+
+
+### Fixed
+
+* ‘wc’ field in `struct fcft_glyph` being assigned font index instead
+  of Unicode codepoint in `fcft_grapheme_rasterize()` and
+  `fcft_text_run_rasterize()`.
+* Assertion in `glyph_cache_resize()`, triggered by trying to
+  rasterize, and _failing_, a large amount of code points
+  (https://codeberg.org/dnkl/foot/issues/763).
+* Bad performance of grapheme cache when rasterizing many grapheme
+  clusters.
+
+
+### Contributors
+
+* [emersion](https://codeberg.org/emersion)
 
 
 ## 2.4.5
