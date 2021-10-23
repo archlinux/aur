@@ -1,6 +1,6 @@
 pkgbase = keepmenu-git
 	pkgdesc = Dmenu/Rofi frontend for Keepass databases.
-	pkgver = r176.dbcf6dc
+	pkgver = r177.aecb894
 	pkgrel = 1
 	url = https://github.com/firecat53/keepmenu
 	install = keepmenu.install

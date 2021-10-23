@@ -1,8 +1,9 @@
 # Maintainer: Scott Hansen (firecat53) firecat4153 at gmail dot com
+
 _pkgname=keepmenu
 _gitname=keepmenu
 pkgname=$_pkgname-git
-pkgver=r176.dbcf6dc
+pkgver=r177.aecb894
 pkgrel=1
 pkgdesc="Dmenu/Rofi frontend for Keepass databases."
 
@@ -10,7 +11,7 @@ arch=('any')
 url="https://github.com/firecat53/keepmenu"
 license=('GPL3')
 depends=('python' 'python-pykeepass' 'python-pynput')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required'
             'xdotool: required for typing non-U.S. Unicode characters')
