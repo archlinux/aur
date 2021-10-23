@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('gtk3' 'libsecret' 'libolm' 'jsoncpp')
 provides=('syphon')
 source=("https://github.com/syphon-org/syphon/releases/download/$pkgver/$_pkgname.linux.x64.tar.gz")
-sha256sums=('5530cfb6d431de95ebe898d8c50981385b8f7b6ccbe2c1494b1440bf5bc99ea2')
+sha256sums=('31940e53b78b672acd048d3ac9d79b8dcd272a640a37b94dfa4168414af6c3ed')
 
 package() {
     install -d ${pkgdir}/opt/${_pkgname}
