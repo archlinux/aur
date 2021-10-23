@@ -1,7 +1,7 @@
 pkgbase = nscde
 	pkgdesc = Modern and functional CDE desktop based on FVWM
 	pkgver = 1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/NsCDE/NsCDE/
 	arch = any
 	license = GPL3
@@ -28,7 +28,7 @@ pkgbase = nscde
 	depends = xorg-xrdb
 	depends = xorg-xdpyinfo
 	depends = dunst
-	optdepends = xscreensaver
+	depends = xscreensaver
 	source = https://github.com/NsCDE/NsCDE/archive/1.3.tar.gz
 	md5sums = 4311655591c3da1aaadb556abd3c0c26
 
