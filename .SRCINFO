@@ -1,12 +1,12 @@
 pkgbase = expresslrs-configurator
 	pkgdesc = Cross platform configuration & build tool for the ExpressLRS radio link
-	pkgver = 1.0.8
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/ExpressLRS/ExpressLRS-Configurator
 	arch = x86_64
 	license = GPL
 	depends = electron
-	source = https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v1.0.8/expresslrs-configurator-1.0.8.pacman
-	md5sums = 2fb6e1276b0f447a39eca507f895d3bb
+	source = https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v1.1.0/expresslrs-configurator-1.1.0.pacman
+	md5sums = 6e9d61110cee7bab77420e96e8d1c4ad
 
 pkgname = expresslrs-configurator
