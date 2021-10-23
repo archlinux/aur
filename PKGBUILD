@@ -1,18 +1,16 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-module-install-repository'
 pkgver='0.06'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Automatically sets repository URL from svn/svk/Git checkout"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
-makedepends=('perl-path-class')
-url='http://search.cpan.org/dist/Module-Install-Repository'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Module-Install-Repository-0.06.tar.gz')
-md5sums=('cea8fc958cebe19e1be64d7cadbbc470')
+makedepends=('perl-module-install')
+url='https://search.cpan.org/dist/Module-Install-Repository'
+source=('https://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Module-Install-Repository-0.06.tar.gz')
 sha512sums=('793db0c81ddded246dc2feb9358ed2367492de077639f947b56290d381ec6310cfa5dc123bd7cd5cbdb2b770850a47c57206110c4dabb53cb577df33a445d54c')
 _distdir="Module-Install-Repository-0.06"
 
@@ -42,9 +40,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
