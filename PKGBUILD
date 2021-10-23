@@ -19,7 +19,8 @@ depends=('mingw-w64-fontconfig'
          'mingw-w64-glib2')
 makedepends=('mingw-w64-configure'
              'mingw-w64-librsvg'
-             'mingw-w64-poppler')
+             'mingw-w64-poppler'
+             'gtk-doc')
 conflicts=("${pkgname}-bootstrap")
 replaces=("${pkgname}-bootstrap")
 options=('!strip' '!buildflags' 'staticlibs')

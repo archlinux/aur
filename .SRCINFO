@@ -9,6 +9,7 @@ pkgbase = mingw-w64-cairo
 	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-librsvg
 	makedepends = mingw-w64-poppler
+	makedepends = gtk-doc
 	depends = mingw-w64-fontconfig
 	depends = mingw-w64-pixman
 	depends = mingw-w64-libpng
@@ -29,4 +30,3 @@ pkgbase = mingw-w64-cairo
 	sha256sums = 7e244c20eec8c7b287dbee1d34de178d9b0c419dc4c2b11c90eaf626c92bf781
 
 pkgname = mingw-w64-cairo
-
