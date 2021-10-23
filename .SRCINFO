@@ -1,0 +1,9 @@
+pkgbase = osc-udev-storage
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = osc-udev-storage.tar.gz
+	sha256sums = ded0c66c0b5b5f7e0d4b0af26ebdea0c77f9d6ca4eff95497eaefa06371e092b
+
+pkgname = osc-udev-storage
