@@ -23,17 +23,14 @@ prepare () {
 }
 
 build () {
-  cd $pkgname-$pkgver
-
-  cmake \
+  cmake -S "$srcdir/$pkgname-$pkgver" -B build \
     -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
     -DBUILD_SHARED_LIBS=ON \
     -DUSE_ELAS=OFF
 
-  make
+  cmake --build build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make install
+  cmake --install build
 }
