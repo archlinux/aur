@@ -3,14 +3,14 @@
 
 _gemname=image_size
 pkgname=ruby-${_gemname}
-pkgver=2.1.2
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="measure image size using pure Ruby"
 arch=(any)
 url=https://github.com/toy/image_size
 license=(RUBY GPL)
 depends=(ruby)
-checkdepends=(ruby-rspec)
+checkdepends=(ruby-rspec ruby-webrick)
 makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(git+https://github.com/toy/image_size.git?tag=v$pkgver)
