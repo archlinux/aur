@@ -1,4 +1,4 @@
-pkgbase = ufetch-git
+pkgbase = ufetch-artix-git
 	pkgdesc = Tiny system info for Unix-like operating systems
 	pkgver = v0.1.r26.21f22c2
 	pkgrel = 1
@@ -6,7 +6,8 @@ pkgbase = ufetch-git
 	arch = any
 	license = ISC
 	makedepends = git
+	provides = ufetch
 	source = git+https://gitlab.com/jschx/ufetch.git
 	md5sums = SKIP
 
-pkgname = ufetch-git
+pkgname = ufetch-artix-git
