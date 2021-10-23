@@ -1,0 +1,15 @@
+pkgbase = python-sphinx-reredirects
+	pkgdesc = Handles redirects for moved pages in Sphinx documentation projects
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://gitlab.com/documatt/sphinx-reredirects
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-sphinx
+	source = python-sphinx-reredirects-0.0.0.tar.gz::https://gitlab.com/documatt/sphinx-reredirects/-/archive/v0.0.0/sphinx-reredirects-v0.0.0.tar.gz
+	sha256sums = 2d1074ccc9122a8ff878599b48555880013262f833a51ed380d186e7dce39e78
+
+pkgname = python-sphinx-reredirects
