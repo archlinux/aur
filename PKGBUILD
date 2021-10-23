@@ -3,7 +3,7 @@
 _pkgname=mir-core
 pkgname=d-$_pkgname
 pkgver=1.1.14
-pkgrel=4
+pkgrel=5
 pkgdesc='Base software building blocks and conventions for libmir'
 arch=('x86_64')
 url='https://github.com/libmir/mir-core'
@@ -44,4 +44,3 @@ package() {
 
   install -Dm 644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
