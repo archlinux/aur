@@ -1,7 +1,7 @@
 # Maintainer: Romain Lecat <romain.lecat@outscale.com>
 pkgname=osc-udev-storage
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc=""
 arch=('any')
@@ -30,6 +30,6 @@ package() {
 	cp "${srcdir}/udev/"*.rules "${pkgdir}/etc/udev/rules.d/"
 
 	# binaries
-	install -dm 755 "${pkgdir}/bin"
-	cp "${srcdir}/bin/"* "${pkgdir}/bin/"
+	install -dm 755 "${pkgdir}/usr/bin"
+	cp "${srcdir}/bin/"* "${pkgdir}/usr/bin/"
 }
