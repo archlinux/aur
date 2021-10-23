@@ -1,0 +1,18 @@
+pkgbase = neovim-magic
+	pkgdesc = Pluggable framework for using AI code assistance
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/jameshiew/nvim-magic
+	install = magic.install
+	changelog = CHANGELOG.md
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	depends = neovim>=0.5.0
+	depends = curl
+	depends = neovim-plenary
+	depends = neovim-nui
+	source = neovim-magic-0.3.1.tar.gz::https://github.com/jameshiew/nvim-magic/archive/0.3.1.tar.gz
+	sha256sums = ce12efbf05354914a0577840474b9725f1b7cba42f660ff93c333790cd674a00
+
+pkgname = neovim-magic
