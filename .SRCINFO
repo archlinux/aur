@@ -1,0 +1,19 @@
+pkgbase = quickjspp
+	pkgdesc = QuickJS C++ wrapper
+	pkgver = 20210913
+	pkgrel = 1
+	url = https://github.com/ftk/quickjspp
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = CC0
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	source = quickjspp::git+https://github.com/ftk/quickjspp.git
+	sha256sums = SKIP
+
+pkgname = quickjspp
