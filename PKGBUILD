@@ -98,7 +98,7 @@ _xan=linux-5.14.y-xanmod
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,sign}
         config         # the main kernel config file
         "more-uarches-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_gcc_more_v}.tar.gz"
-        "xanmod-patches-from-ck-${_commit}.tar.gz::https://hub.fastgit.org/xanmod/linux-patches/archive/${_commit}.tar.gz"
+        "xanmod-patches-from-ck-${_commit}.tar.gz::https://github.com/xanmod/linux-patches/archive/${_commit}.tar.gz"
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch
         0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch
