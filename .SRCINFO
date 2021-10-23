@@ -1,6 +1,6 @@
 pkgbase = com.seewo.easinote5
 	pkgdesc = Seewo EasiNote5 希沃白板5
-	pkgver = 5.1.17.1876
+	pkgver = 5.1.17.2126
 	pkgrel = 1
 	url = https://gitlab.gz.cvte.cn/front-end/enow-cloud
 	install = com.seewo.easinote5.install
@@ -17,7 +17,7 @@ pkgbase = com.seewo.easinote5
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/YidaozhanYa/seewo-uos-bin/releases/download/main/EasiNote5_5.1.17.1876.deb
-	sha512sums = ac8983af4397c17c324efb1505f98028866ab68f385f05deea92e73ab1d0efe2f2c50ff591c26091e8318366f6ff16dec846b4f908083fb55325d86988b4be87
+	source = http://static.cvte.com/file/myou/uploads/android_rom/1aca70f7b5682c38298aff6d3105613e6b38f2d2/EasiNote5_5.1.17.2126-66e81.deb
+	sha512sums = 4707bf47942ffa3340c4f7e0e49be576bcf5c8d8df2f9c7e93c68b60da1021b5a5302d04b3c092236add2c5863184598203751040037ce854f0bcc6b08f3e0e8
 
 pkgname = com.seewo.easinote5
