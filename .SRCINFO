@@ -1,7 +1,7 @@
 pkgbase = krita-git
 	pkgdesc = A full-featured free digital painting studio. Git version.
-	pkgver = 4.3.0.prealpha.6708.g97865cd60c
-	pkgrel = 1
+	pkgver = 4.3.0.prealpha.7876.g8e7ccd3cd7
+	pkgrel = 2
 	url = https://krita.org
 	arch = x86_64
 	license = GPL3
@@ -34,7 +34,7 @@ pkgbase = krita-git
 	depends = fftw
 	depends = giflib
 	depends = openjpeg2
-	depends = opencolorio1
+	depends = opencolorio
 	depends = hicolor-icon-theme
 	optdepends = poppler-qt5: PDF filter
 	optdepends = ffmpeg: to save animations
@@ -43,13 +43,11 @@ pkgbase = krita-git
 	optdepends = libheif: HEIF filter
 	optdepends = kseexpr: SeExpr generator layer
 	optdepends = kimageformats: PSD support
-	provides = krita=4.3.0.prealpha.6708.g97865cd60c
+	provides = krita=4.3.0.prealpha.7876.g8e7ccd3cd7
 	conflicts = calligra-krita
 	conflicts = krita-il10n
 	conflicts = krita
 	source = git+https://github.com/KDE/krita.git
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/4877333d60835f6531cc990af955cedb39158893/trunk/krita-opencolorio1.patch
-	sha256sums = SKIP
-	sha256sums = 2f892449e20abc370fe3dc8b5dd12f9964d1d402a909e775641e28685b1719b3
+	sha512sums = SKIP
 
 pkgname = krita-git
