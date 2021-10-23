@@ -5,7 +5,6 @@ pkgbase = python-requirements-parser
 	url = https://github.com/davidfischer/requirements-parser
 	arch = any
 	license = BSD
-	checkdepends = python-nose
 	makedepends = python-setuptools
 	depends = python
 	source = https://pypi.org/packages/source/r/requirements-parser/requirements-parser-0.2.0.tar.gz

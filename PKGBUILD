@@ -10,7 +10,6 @@ url="https://github.com/davidfischer/requirements-parser"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
-checkdepends=('python-nose')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"{,.asc}
         '0001-Dont-fail-with-valid-options-in-requirements_txt-files.patch')
 sha256sums=('5963ee895c2d05ae9f58d3fc641082fb38021618979d6a152b6b1398bd7d4ed4'
@@ -28,11 +27,6 @@ prepare() {
 build() {
   cd "$_name-$pkgver"
   python setup.py build
-}
-
-check() {
-  cd "$_name-$pkgver"
-  python setup.py test
 }
 
 package() {
