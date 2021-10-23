@@ -6,7 +6,7 @@ pkgdesc="GRand Unified Bootloader, version 2 (Zorin theme)"
 
 deb_pkgver="1.2.3"
 pkgver="${deb_pkgver}"
-pkgrel="0"
+pkgrel="1"
 
 arch=('any')
 url="https://zorinos.com/"
