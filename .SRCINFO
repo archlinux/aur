@@ -1,8 +1,8 @@
 pkgbase = ao
 	pkgdesc = An Electron wrapper for Microsoft To-Do
-	pkgver = 6.9.0
-	pkgrel = 5
-	url = https://github.com/klaussinani/ao/
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://github.com/pythonInRelay/ao/
 	arch = x86_64
 	license = MIT
 	depends = gconf
@@ -12,8 +12,7 @@ pkgbase = ao
 	depends = libxss
 	provides = ao
 	conflicts = ao-git
-	source = https://github.com/klaussinani/ao//releases/download/v6.9.0/ao_6.9.0_amd64.deb
-	md5sums = 8fe0128134c2aca685049a14cf0fd6bf
+	source = https://github.com/pythonInRelay/ao//releases/download/7.0.1/ao_7.0.1_amd64.deb
+	sha256sums = a7bb700ecfdb06db2447e4c5aa2ef19d6cce54d35e7e791b420bff0edccdbe17
 
 pkgname = ao
-
