@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=replxx
-pkgver=0.0.2
+pkgver=0.0.4
 pkgrel=1
 epoch=
 pkgdesc="A readline and libedit replacement that supports UTF-8, syntax highlighting, hints and Windows and is BSD licensed."
@@ -16,7 +16,7 @@ optdepends=()
 provides=("lib$pkgname.so")
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/release-$pkgver.tar.gz")
-sha256sums=('6f5c58b4cd23550d5a589d134727296438793cb818ce7158fbd5e1b0db1548ba')
+sha256sums=('a22988b2184e1d256e2d111b5749e16ffb1accbf757c7b248226d73c426844c4')
 
 prepare() {
 	mv -f "$pkgname-release-$pkgver" "$pkgname-$pkgver"
@@ -24,7 +24,6 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	mkdir -p "build"
 
-	sed -i 's/VERSION 3.0/VERSION 3.13.0/' CMakeLists.txt
 	sed -i 's/\(set_target_properties(.*\))/\1 VERSION ${PROJECT_VERSION} SOVERSION ${PROJECT_VERSION_MAJOR})/' CMakeLists.txt
 }
 
@@ -32,7 +31,7 @@ build() {
 	cd "$pkgname-$pkgver/build"
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_UNITY_BUILD=ON \
+		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 		..
 	make
