@@ -3,8 +3,8 @@
 
 pkgname=jamulus
 _pkgname=Jamulus
-pkgver=3.8.0
-pkgrel=3
+pkgver=3.8.1
+pkgrel=1
 pkgdesc="Internet jam session software"
 arch=('x86_64')
 url='https://jamulus.io/'
@@ -32,4 +32,4 @@ package() {
   install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
-sha1sums=('7c285c3dafd5cf8fc0184a2ef97e6cebdacf61ea')
+sha1sums=('cdf9edb1b551917c0e14201277abc64e7e263c0b')
