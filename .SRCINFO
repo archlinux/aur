@@ -1,7 +1,7 @@
 pkgbase = corefreq
 	pkgdesc = A CPU monitoring software with BIOS like functionalities
 	pkgver = 1.87.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyring/CoreFreq
 	arch = x86_64
 	license = GPL2
@@ -14,14 +14,11 @@ pkgbase = corefreq
 pkgname = corefreq-client
 	pkgdesc = CoreFreq client
 	depends = corefreq-server=1.87.4
-	provides = corefreq-client
 
 pkgname = corefreq-server
 	pkgdesc = CoreFreq server
 	depends = corefreq-dkms=1.87.4
-	provides = corefreq-server
 
 pkgname = corefreq-dkms
 	pkgdesc = CoreFreq - kernel module sources
 	depends = dkms
-	provides = corefreq-dkms=1.87.4

@@ -13,7 +13,7 @@ pkgbase=corefreq
 pkgname=(corefreq-client corefreq-server corefreq-dkms)
 _gitname=CoreFreq
 pkgver=1.87.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
 url='https://github.com/cyring/CoreFreq'
@@ -36,7 +36,6 @@ build() {
 package_corefreq-dkms() {
   pkgdesc="CoreFreq - kernel module sources"
   depends=('dkms')
-  provides=("corefreq-dkms=$pkgver")
   _kernelmodule=corefreqk
 
   # Copy simple dkms.conf
@@ -46,7 +45,7 @@ package_corefreq-dkms() {
       -e "s/@PKGVER@/${pkgver}/" \
       -e "s/@_KERNELMODULE@/${_kernelmodule}/" \
       -i "${pkgdir}/usr/src/${pkgbase}-${pkgver}/dkms.conf"
-  
+
   # Copy sources (including Makefile)
   cp -r "${_gitname}-${pkgver}"/{*.c,*.h,Makefile} "${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
 }
@@ -54,7 +53,6 @@ package_corefreq-dkms() {
 package_corefreq-server() {
   pkgdesc="CoreFreq server"
   depends=("corefreq-dkms=$pkgver")
-  provides=('corefreq-server')
 
   cd "${_gitname}-${pkgver}"
   install -Dm755 corefreqd "${pkgdir}/usr/bin/corefreqd"
@@ -64,7 +62,6 @@ package_corefreq-server() {
 package_corefreq-client() {
   pkgdesc="CoreFreq client"
   depends=("corefreq-server=$pkgver")
-  provides=('corefreq-client')
 
   cd "${_gitname}-${pkgver}"
   install -Dm755 corefreq-cli "${pkgdir}/usr/bin/corefreq-cli"
