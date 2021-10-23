@@ -62,8 +62,8 @@ _minor=14
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=11
-_pfrel=5
+_unpatched_sublevel=13
+_pfrel=6
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -664,7 +664,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '2e2b94ac357bba826780362b5ebc4d971ee1f6c956660330e585068b695bfc6c'
             '8723eb2d5e3473db978bfa7e8d94c80efeac61d71e7fad2f1214ad55671a33a2'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '2786efbaf6a7970321b0a3bbfa2ebdea37e053bf6727e0a0243bd215109e4cba'
+            'd6ad4228c129be853ffcd6bde397783be8322b2fb0ea04bc562e2b768527a38b'
             '2e2247183034fa4a2ea1cd943d3d24ee9ea52daf70d47e69d5564f8ac1367aa2'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
