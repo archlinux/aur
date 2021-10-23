@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=6.18.321_r482.b38546c
+pkgver=6.18.323_r491.f9b5921
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -52,5 +52,7 @@ package() {
   install -d "$pkgdir/usr/share/stl"
   cp -r categories eval guicfgs lang misc "$pkgdir/usr/share/stl"
 
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm644 "misc/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "misc/${pkgname%-git}.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 }
