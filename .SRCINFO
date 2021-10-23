@@ -1,0 +1,16 @@
+pkgbase = scoutfish-git
+	pkgdesc = A fast, powerful chess query engine
+	pkgver = r99.00cec13
+	pkgrel = 1
+	url = https://github.com/mcostalba/scoutfish
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	provides = scoutfish
+	conflicts = scoutfish
+	source = git+https://github.com/mcostalba/scoutfish
+	sha256sums = SKIP
+
+pkgname = scoutfish-git
