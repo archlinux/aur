@@ -5,7 +5,7 @@ _author=jfalcou
 
 pkgname=${_name}-git
 pkgver=v2021.10.0.r0.gaeb09001c
-pkgrel=1
+pkgrel=2
 pkgdesc="Expressive Velocity Engine - SIMD in C++ Goes Brrrr"
 arch=('any')
 url="https://github.com/${_author}/${_name}"
