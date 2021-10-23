@@ -5,7 +5,7 @@
 
 # Maintainer: Moritz Sokoll <moritz@sokoll.com>
 pkgname=vct
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 epoch=
 pkgdesc="a vocabulary trainer written in rust"
@@ -23,13 +23,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.sokoll.com/moritz/vct/-/archive/88984fc6311e562ff82882ddfee1e3cce55e1f87/vct-88984fc6311e562ff82882ddfee1e3cce55e1f87.tar.gz")
+source=("https://gitlab.sokoll.com/moritz/vct/-/archive/bc40988bf263e8163e397ba39f7a543724b17800/vct-bc40988bf263e8163e397ba39f7a543724b17800.tar.gz")
 noextract=()
-sha256sums=("6e0db23314ebea22412cab2a03f9eb0a23e7f426dab5fcd15c939ab8b9d15c16")
+sha256sums=("8c6405acb4af151b8acc4d9b64ec0eaaee3b7f4f29d25a6c66133c1f2a0a9d60")
 validpgpkeys=()
 
 build() {
-	cd 'vct-88984fc6311e562ff82882ddfee1e3cce55e1f87'
+	cd 'vct-bc40988bf263e8163e397ba39f7a543724b17800'
 	rustup install $(cat rust-toolchain)
 	./configure.sh -p "$pkgdir/usr"
 	make
@@ -41,7 +41,7 @@ build() {
 #}
 
 package() {
-	cd 'vct-88984fc6311e562ff82882ddfee1e3cce55e1f87'
+	cd 'vct-bc40988bf263e8163e397ba39f7a543724b17800'
 	mkdir -p "$pkgdir"/usr/bin
 	make install
 }
