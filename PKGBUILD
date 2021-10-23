@@ -2,14 +2,14 @@
 
 pkgname=quickjspp
 pkgver=20210913
-pkgrel=1
+pkgrel=2
 pkgdesc='QuickJS C++ wrapper'
 url='https://github.com/ftk/quickjspp'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('CC0')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-makedepends=('cmake' 'git' 'gcc')
+makedepends=('cmake' 'git')
 
 pkgver() {
   cd ${pkgname}
