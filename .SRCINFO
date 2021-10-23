@@ -1,6 +1,6 @@
 pkgbase = mapserver-git
 	pkgdesc = Platform for publishing spatial data and interactive mapping applications to the web
-	pkgver = 7.6.0.r692.geef595475
+	pkgver = rel.7.6.0.r741.g67b1f043c
 	pkgrel = 1
 	url = http://www.mapserver.org
 	arch = i686
@@ -25,9 +25,10 @@ pkgbase = mapserver-git
 	depends = python
 	depends = libsvg-cairo
 	depends = fribidi
-	provides = mapserver=7.6.0.r692.geef595475
+	depends = pixman
+	depends = exempi
 	conflicts = mapserver
-	source = mapserver-git::git+https://github.com/mapserver/mapserver.git
+	source = mapserver-git::git://github.com/mapserver/mapserver.git
 	md5sums = SKIP
 
 pkgname = mapserver-git

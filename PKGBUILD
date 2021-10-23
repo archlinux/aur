@@ -1,29 +1,31 @@
-# Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
-# Contributor: Marcos Piccinini <x@nofxx.com>
-# Contributor: Jonathan Hudson <jh+arch@daria.co.uk>
+# Current Maintainer: Samuel Fernando Mesa Giraldo <samuelmesa@linuxmail.org>
+# Original Maintainer:: Marcos Piccinini <x@nofxx.com>
+# Original Maintainer::  	Jonathan Hudson <jh+arch@daria.co.uk>
+
 pkgname=mapserver-git
-pkgver=7.6.0.r692.geef595475
+pkgver=rel.7.6.0.r741.g67b1f043c
 pkgrel=1
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
 license=('MIT')
 url="http://www.mapserver.org"
 depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'libpqxx' 'pdflib-lite' 'geos' 'agg' 'apache' 'protobuf-c'
-'fcgi' 'mod_fcgid' 'python' 'libsvg-cairo' 'fribidi' )
+'fcgi' 'mod_fcgid' 'python' 'libsvg-cairo' 'fribidi' 'pixman' 'exempi')
+## For v8 support require v8-3.20; for PHP mapscript require php, php-pear, php-apache
 makedepends=('cfitsio')
-options=()
-provides=("mapserver=${pkgver}")
 conflicts=('mapserver')
-source=("${pkgname}"::'git+https://github.com/mapserver/mapserver.git')
+options=()
+source=("$pkgname"::'git://github.com/mapserver/mapserver.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/^rel-//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$pkgname"
+  # Use the tag of the last commit
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${srcdir}/${pkgname}
+	cd "$srcdir/$pkgname"
   
   if [ -f CMakeCache.txt ]  
     then
@@ -31,6 +33,10 @@ build() {
   fi	
   rm -rf build && mkdir build
   cd build
+
+  ## Compile with python
+  ## -DPYTHON_LIBRARIES=/usr/lib/python2.7 \
+	## -DPYTHON_INCLUDE_PATH=/usr/include/python2.7 \
     
   cmake .. \
   -DCMAKE_INSTALL_PREFIX=/usr \
@@ -72,21 +78,24 @@ build() {
 	-DWITH_WCS=ON \
 	-DWITH_WFS=ON \
 	-DWITH_WMS=ON \
+	-DWITH_OGCAPI=ON \
+	-DWITH_PIXMAN=ON \
+	-DWITH_EXEMPI=ON \
 	-DWITH_XMLMAPFILE=OFF \
 	-DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
     
   make clean	
-  make
+  make -j$(nproc)
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
+  cd "$srcdir/$pkgname/build"
   
-  make
+  make || return 1
   make DESTDIR=${pkgdir} install
   
   #Copy the headers a include for ZooWPS project
   install -d "$pkgdir"/usr/include/mapserver  
-  install -Dm644 "${srcdir}/${pkgname}"/build/*.h "$pkgdir"/usr/include/mapserver/
-  install -Dm644 "${srcdir}/${pkgname}"/*.h "$pkgdir"/usr/include/mapserver/
+  install -Dm644 $srcdir/$pkgname//build/*.h "$pkgdir"/usr/include/mapserver/
+  install -Dm644 $srcdir/$pkgname/*.h "$pkgdir"/usr/include/mapserver/
 }
