@@ -15,7 +15,7 @@ md5sums=('d93d3a1ef16ac90e36f806123f38f0ff')
 
 build() {
   cd "prawoauth2-${pkgver}"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
