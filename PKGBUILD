@@ -4,7 +4,7 @@ _pkgname="zorin-icon-themes"
 pkgname="${_pkgname}"
 pkgdesc="The Zorin icon theme provided in a variety of color combinations"
 
-deb_pkgver="2.8.11"
+deb_pkgver="2.9"
 pkgver="${deb_pkgver}"
 pkgrel="1"
 
@@ -16,12 +16,8 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 depends=()
 optdepends=()
 
-source=(
-    "https://launchpad.net/~zorinos/+archive/ubuntu/stable/+files/${_pkgname}_${deb_pkgver}_all.deb"
-)
-md5sums=(
-    'SKIP'
-)
+source=("https://launchpad.net/~zorinos/+archive/ubuntu/stable/+files/${_pkgname}_${deb_pkgver}_all.deb")
+md5sums=('96311ca33d2837054c2415b5e0e70453')
 
 prepare(){
     while read -r pkg; do
@@ -32,5 +28,5 @@ prepare(){
 }
 
 package() {
-    cp -arv "${srcdir}/data/"* "${pkgdir}"
+    cp -rv "${srcdir}/data/"* "${pkgdir}"
 }
