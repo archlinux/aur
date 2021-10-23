@@ -1,6 +1,6 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=canokey-usbip-git
-pkgver=r899.ba5e1bf
+pkgver=r900.037a846
 pkgrel=1
 pkgdesc="A virtual canokey based on USB/IP"
 arch=('x86_64')
