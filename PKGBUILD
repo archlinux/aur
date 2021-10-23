@@ -2,7 +2,7 @@
 
 _gemname=benchmark-ips
 pkgname=ruby-$_gemname
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Provides iteration per second benchmarking for Ruby"
 arch=(any)
@@ -12,8 +12,8 @@ depends=(ruby)
 checkdepends=(ruby-minitest)
 makedepends=(rubygems ruby-rdoc ruby-hoe ruby-rake)
 options=(!emptydirs)
-source=(https://github.com/evanphx/benchmark-ips/archive/$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('ca499ffa6cb6756f612fd7cbaab97f4bbcca99830128cdaf40c91cdfd9edd5c6')
+source=(https://github.com/evanphx/benchmark-ips/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('1d2f515360497a1ded3a837509816e801c4d7c310a62dc1ea392cdc30c3f9454')
 
 prepare() {
   cd $_gemname-$pkgver

@@ -1,6 +1,6 @@
 pkgbase = ruby-benchmark-ips
 	pkgdesc = Provides iteration per second benchmarking for Ruby
-	pkgver = 2.9.1
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://github.com/evanphx/benchmark-ips
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ruby-benchmark-ips
 	makedepends = ruby-rake
 	depends = ruby
 	options = !emptydirs
-	source = https://github.com/evanphx/benchmark-ips/archive/2.9.1/benchmark-ips-2.9.1.tar.gz
-	sha256sums = ca499ffa6cb6756f612fd7cbaab97f4bbcca99830128cdaf40c91cdfd9edd5c6
+	source = https://github.com/evanphx/benchmark-ips/archive/v2.9.2/benchmark-ips-2.9.2.tar.gz
+	sha256sums = 1d2f515360497a1ded3a837509816e801c4d7c310a62dc1ea392cdc30c3f9454
 
 pkgname = ruby-benchmark-ips
