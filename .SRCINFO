@@ -7,8 +7,8 @@ pkgbase = eve-git
 	license = MIT
 	makedepends = cmake
 	makedepends = make
-	provides = eve-simd
-	conflicts = eve-simd
+	provides = eve
+	conflicts = eve
 	source = eve-git::git+https://github.com/jfalcou/eve.git#branch=main
 	sha256sums = SKIP
 
