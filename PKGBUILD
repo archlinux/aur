@@ -1,8 +1,8 @@
 # Maintainer: Bradford Smith <aur@bradfords.me>
 
 pkgname=informant
-pkgver=0.4.4
-pkgrel=2
+pkgver=0.4.5
+pkgrel=1
 pkgdesc="An Arch Linux News reader and pacman hook"
 arch=('any')
 url="https://github.com/bradford-smith94/$pkgname"
@@ -11,7 +11,7 @@ install=informant.install
 depends=('python' 'python-docopt' 'python-dateutil' 'python-feedparser' 'python-html2text' 'python-cachecontrol' 'python-lockfile')
 source=("https://github.com/bradford-smith94/$pkgname/archive/v$pkgver.tar.gz")
 options=(zipman)
-sha256sums=('4f8745bec30fb82396b141f99a529d542085bcda982a9d178ebba5c07fd4425f')
+sha256sums=('b82d6accae509bcda3fc4a02b849e9093cbc18f0f728422f27570539c9c53751')
 
 
 build() {
