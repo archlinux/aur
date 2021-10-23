@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=amazon-corretto-11
-pkgver=11.0.12.7.1
+pkgver=11.0.13.8.1
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
@@ -19,5 +19,5 @@ package() {
   cp -a "amazon-corretto-$pkgver-linux-x64" "$pkgdir/usr/lib/jvm/java-11-amazon-corretto"
 }
 
-md5sums=('55e5ca4565737598ff24c6d927253275'
+md5sums=('06714b22de9a6e1329fe6c16583794dd'
          'SKIP')
