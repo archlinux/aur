@@ -1,0 +1,22 @@
+pkgbase = vim-aquarium-git
+	pkgdesc = Vibrant dark colorscheme
+	pkgver = r16.ffc3007
+	pkgrel = 1
+	url = https://github.com/frenzyexists/aquarium-vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-aquarium
+	provides = vim-airline-aquarium
+	provides = vim-lightline-aquarium
+	provides = neovim-lualine-aquarium
+	conflicts = vim-aquarium
+	conflicts = vim-airline-aquarium
+	conflicts = vim-lightline-aquarium
+	conflicts = neovim-lualine-aquarium
+	source = vim-aquarium-git::git+https://github.com/frenzyexists/aquarium-vim
+	md5sums = SKIP
+
+pkgname = vim-aquarium-git
