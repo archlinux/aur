@@ -1,7 +1,7 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=polly
-pkgver=12.0.1
+pkgver=13.0.0
 pkgrel=1
 pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
 arch=('x86_64')
@@ -11,10 +11,12 @@ depends=('gcc-libs')
 makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/$pkgname-$pkgver.src.tar.xz{,.sig}
+        add-missing-loadPolly.patch
         $_source_base/llvm-$pkgver.src.tar.xz{,.sig})
-sha256sums=('2254e25312708a567b1ab00716362db379d265e47a97a94ed74211d57a4cd5f9'
+sha256sums=('cd93672c3be35146e199b1e221fb81a39403a0cdeabcad4a47ae878655eea872'
             'SKIP'
-            '7d9a8405f557cefc5a21bf5672af73903b64749d9bc3a50322239f56f34ffddf'
+            'be0866a1c7d2677f6ba7625413dcd5bd7e47e86097b5c19f2057b50e6ed57eb0'
+            '408d11708643ea826f519ff79761fcdfc12d641a2510229eec459e72f8163020'
             'SKIP')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
@@ -22,6 +24,8 @@ validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstel
 prepare() {
   cd "$srcdir/$pkgname-$pkgver.src"
   mkdir build
+
+  patch -Np2 -i ../add-missing-loadPolly.patch
 }
 
 build() {
@@ -49,7 +53,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver.src/build"
 
   DESTDIR="$pkgdir" ninja install
-  install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Remove documentation sources
   rm -r "$pkgdir"/usr/share/doc/$pkgname/html/{_sources,.buildinfo}

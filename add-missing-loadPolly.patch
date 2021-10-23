@@ -1,0 +1,21 @@
+From 15375631049acbf9c5729754ad5623a2670120a3 Mon Sep 17 00:00:00 2001
+From: Michael Kruse <llvm-project@meinersbur.de>
+Date: Tue, 24 Aug 2021 13:44:48 -0500
+Subject: [PATCH] [Polly][test] Add missing %loadPolly.
+
+This fixes check-polly when using the -load mechanism,
+i.e. LLVM_POLLY_LINK_INTO_TOOLS=OFF.
+---
+ polly/test/Isl/CodeGen/OpenMP/scev-rewriting.ll | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/polly/test/Isl/CodeGen/OpenMP/scev-rewriting.ll b/polly/test/Isl/CodeGen/OpenMP/scev-rewriting.ll
+index 13fffa3d9486d..0f6ca904e2592 100644
+--- a/polly/test/Isl/CodeGen/OpenMP/scev-rewriting.ll
++++ b/polly/test/Isl/CodeGen/OpenMP/scev-rewriting.ll
+@@ -1,4 +1,4 @@
+-; RUN: opt < %s -polly-vectorizer=polly -polly-parallel -polly-parallel-force -polly-process-unprofitable -polly-codegen -S | FileCheck %s
++; RUN: opt %loadPolly < %s -polly-vectorizer=polly -polly-parallel -polly-parallel-force -polly-process-unprofitable -polly-codegen -S | FileCheck %s
+ ; CHECK: define internal void @DoStringSort_polly_subfn
+ target datalayout = "e-m:e-i8:8:32-i16:16:32-i64:64-i128:128-n32:64-S128"
+ target triple = "aarch64-unknown-linux-gnueabi"
