@@ -2,7 +2,7 @@
 pkgname=svstudio-bin
 _pkgname=svstudio
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Synthesizer V Studio, a high-quality singing synthesis software."
 url="https://dreamtonics.com"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     'svstudio.svg'
 )
 sha512sums=('17b7ea213b86739167ad66b5a3b02844c7a1ba025b6f778c512e9d10940c36290790742ad5ccba03832a3197c5a4948a2e2f1034656f3a6aab03fcbb7f2ce167'
-            'd361e7557d8aa11dbeea466ed1e60c8c40166788ef9a344c0a7954ded672f408c26d1ce37dc3ba7cb745efbcd41896be9db71f63f51c2a4d59ab62c74ea69998')
+            'ee2fbe1a3d4c63f2fed31368396c4b3315fbe01368341ce73d7d4c1cb5e0fe3d9f529083ce45890a860624debc57543e2a873940c4fa14135f4e5f013d88cde2')
 install=svstudio-bin.install
 package(){
     cd "${srcdir}"
