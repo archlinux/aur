@@ -3,7 +3,7 @@
 pkgname=cotp
 pkgver=0.1.8
 pkgrel=1
-pkgdesc='Trustworthy encrypted command line authenticator app compatible with multiple backups.'
+pkgdesc='Trustworthy, encrypted, command-line TOTP/HOTP authenticator app with import functionality.'
 arch=('x86_64')
 url='https://github.com/replydev/cotp'
 license=('GPL3')

@@ -1,5 +1,5 @@
 pkgbase = cotp
-	pkgdesc = Trustworthy encrypted command line authenticator app compatible with multiple backups.
+	pkgdesc = Trustworthy, encrypted, command-line TOTP/HOTP authenticator app with import functionality.
 	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/replydev/cotp
