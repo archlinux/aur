@@ -1,4 +1,3 @@
 #!/bin/bash
 
-cd /opt/freyr/ &&
-    exec node cli.js
+node /opt/freyr/cli.js "$@"
