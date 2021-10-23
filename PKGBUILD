@@ -2,14 +2,14 @@
 
 pkgname=ttf-plemoljp
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Mono Language JP'
 arch=('any')
 url='https://github.com/yuru7/PlemolJP'
 license=('custom:OFL')
 provides=('ttf-font')
 makedepends=('fontforge' 'python-fonttools' 'ttfautohint')
-source=("git+https://github.com/yuru7/PlemolJP.git#tag=${pkgver}")
+source=("git+https://github.com/yuru7/PlemolJP.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
