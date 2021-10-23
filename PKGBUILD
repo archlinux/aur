@@ -2,7 +2,7 @@
      
 pkgname=nvidia-pf
 pkgver=470.74
-pkgrel=1
+pkgrel=2
 _goodkver=5.14
 _badkver=5.15
 _modver=${_goodkver}-pf
