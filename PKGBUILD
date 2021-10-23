@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=yosys-nightly
-pkgver=yosys_0.9_5656_g5cebf6a8_20211022
+pkgver=yosys_0.9_5657_g52ba31b1_20211023
 pkgrel=1
 epoch=1
 pkgdesc="Yosys Open SYnthesis Suite, A framework for RTL synthesis"
@@ -15,7 +15,7 @@ optdepends=("graphviz: Schematics display support" "xdot: Design netlist display
 makedepends=("git" "gcc" "bison" "flex" "pkgconf" "gawk" "protobuf")
 conflicts=("yosys" "yosys-git")
 replaces=("yosys" "yosys-git")
-source=("yosys::git+https://github.com/YosysHQ/yosys.git"#commit=5cebf6a8
+source=("yosys::git+https://github.com/YosysHQ/yosys.git"#commit=52ba31b1
 		"yosys-abc::git+https://github.com/YosysHQ/abc.git"#commit=26025777
 		"yosys.conf")
 sha256sums=(
