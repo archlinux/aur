@@ -9,7 +9,7 @@ _pkgver='0.5.1'
 _tag_ver="v${_pkgver}"
 pkgver=${_pkgver//-/.}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgrel=4
+pkgrel=6
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 makedepends=()
@@ -20,7 +20,7 @@ install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
 # "PKGBUILD.sig")
-sha256sums=('b12bd0aaa80a53129bf852a724ff10a6ace7f3c0f517d8bed376318ce82fd217')
+sha256sums=('e9ad73bdf29f1a8faf207ef8f05eb056050b8bfcd32ddd1c7377ae286ce6413e')
 sha256sums_i686=('6c600e33593e2b4053c5d08fdeb5cedcde425f019e4fc7b2d0b3b3adb7f322f6')
 sha256sums_x86_64=('c661fb78caa9dae961800069b188f8035b36cc151fe5665c8eb59c16da7c5781')
 sha256sums_aarch64=('bc5c2227de16bc71d16c73cafcdf071c9f6c40f715d9c5416bea66dcc5659eed')
