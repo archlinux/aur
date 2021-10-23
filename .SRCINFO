@@ -1,21 +1,20 @@
 pkgbase = blanket-git
 	pkgdesc = Improve focus and increase your productivity by listening to different sounds.
-	pkgver = 0.2.0.r54.gec7bc31
+	pkgver = 0.5.0.r18.g3593315
 	pkgrel = 1
 	url = https://github.com/rafaelmardojai/blanket
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = meson
+	depends = gstreamer
+	depends = gtk4
+	depends = libadwaita
 	depends = python
 	depends = python-gobject
-	depends = gtk3
-	depends = libhandy
-	depends = gstreamer
 	provides = blanket
 	conflicts = blanket
 	source = git+https://github.com/rafaelmardojai/blanket.git
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = blanket-git
-
