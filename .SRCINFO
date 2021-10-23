@@ -1,6 +1,6 @@
 pkgbase = librist-git
 	pkgdesc = A library that can be used to add the RIST protocol to applications (git version)
-	pkgver = 0.2.1.r0.g567431a
+	pkgver = 0.2.6.r41.g8c604c4
 	pkgrel = 1
 	url = https://code.videolan.org/rist/librist/
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = librist-git
 	source = git+https://code.videolan.org/rist/librist.git
 	source = 010-librist-disable-multicast-tests.patch
 	sha256sums = SKIP
-	sha256sums = 60004953f606bb96418be5dcc6bae2fa0883ce83c4f2246f33a2eda8c9c5a56b
+	sha256sums = a9dc0c1a3690fea576252e687123ec2d7dfaec7c1a8b0e02c8518bdcb8e9b954
 
 pkgname = librist-git

@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=librist-git
-pkgver=0.2.1.r0.g567431a
+pkgver=0.2.6.r41.g8c604c4
 pkgrel=1
 pkgdesc='A library that can be used to add the RIST protocol to applications (git version)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('librist')
 source=('git+https://code.videolan.org/rist/librist.git'
         '010-librist-disable-multicast-tests.patch')
 sha256sums=('SKIP'
-            '60004953f606bb96418be5dcc6bae2fa0883ce83c4f2246f33a2eda8c9c5a56b')
+            'a9dc0c1a3690fea576252e687123ec2d7dfaec7c1a8b0e02c8518bdcb8e9b954')
 
 prepare() {
     patch -d librist -Np1 -i "${srcdir}/010-librist-disable-multicast-tests.patch"
