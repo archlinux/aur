@@ -3,43 +3,40 @@
 
 pkgname=scummvm-git
 _pkgname=scummvm
-pkgver=r70525.75d1385
+pkgver=r124006.fc7f51afb0d
 pkgrel=1
-pkgdesc="A 'virtual machine' for several classic graphical point-and-click adventure games."
-arch=('i686' 'x86_64')
+pkgdesc="A 'virtual machine' for several classic graphical point-and-click adventure games. - git version"
+arch=('x86_64')
 url="http://www.scummvm.org"
 license=('GPL')
-depends=('sdl' 'libmad' 'fluidsynth' 'libgl' 'libtheora' 'faad2')
-makedepends=('git')
+depends=('libpng' 'libtheora' 'sdl2' 'sdl2_net' 'fluidsynth' 'flac' 'faad2' 'libvorbis' 'libmad' 'freetype2'
+         'libgl' 'glu' 'libjpeg-turbo' 'libmpeg2' 'curl' 'a52dec')
+makedepends=('git' 'mesa')
 conflicts=('scummvm')
 provides=('scummvm')
 source=("$_pkgname"::'git+https://github.com/scummvm/scummvm.git')
 md5sums=('SKIP')
 install=${_pkgname}.install
- 
+
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
 
   echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
- 
-build() {
-  cd "$srcdir/$_pkgname"
- 
-  ./configure --backend=sdl \
-              --with-flac-prefix=/usr \
-              --prefix=/usr \
-              --enable-all-engines
 
+build() {
+  cd "${srcdir}/${_pkgname}"
+
+  ./configure \
+    --enable-c++11 \
+    --enable-release \
+    --enable-all-engines \
+    --prefix=/usr
   make
 }
- 
+
 package() {
-  cd "$srcdir/$_pkgname"
- 
-  make DESTDIR="$pkgdir" install
-
-  install -D -m 644 dists/scummvm.desktop "$pkgdir/usr/share/applications/scummvm.desktop"
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 dists/${_pkgname}.desktop "${pkgdir}"/usr/share/applications/${_pkgname}.desktop
 }
-
-# vim:set ts=2 sw=2 et:
