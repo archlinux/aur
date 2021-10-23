@@ -2,12 +2,12 @@
 _pkgname=freyr
 pkgname=freyr-git
 pkgver=r820.3092133
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for downloading songs from music streaming services like Spotify and Apple Music."
 arch=('any')
 url="https://github.com/miraclx/freyr-js"
 license=('Apache')
-depends=('nodejs' 'atomicparsley')
+depends=('nodejs' 'atomicparsley' 'ffmpeg')
 makedepends=('git' 'npm' 'jq')
 provides=("$_pkgname")
 conflicts=("$_pkgname")

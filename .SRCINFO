@@ -1,7 +1,7 @@
 pkgbase = freyr-git
 	pkgdesc = A tool for downloading songs from music streaming services like Spotify and Apple Music.
 	pkgver = r820.3092133
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/miraclx/freyr-js
 	arch = any
 	license = Apache
@@ -10,6 +10,7 @@ pkgbase = freyr-git
 	makedepends = jq
 	depends = nodejs
 	depends = atomicparsley
+	depends = ffmpeg
 	provides = freyr
 	conflicts = freyr
 	source = freyr-git::git+https://github.com/miraclx/freyr-js.git#branch=master
