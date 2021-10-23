@@ -33,9 +33,9 @@ package() {
 	ln -s /usr/lib/qt/plugins/platforms "${pkgdir}/opt/${pkgname}/${_tarball_base_name}"
 	
 	mkdir -p ${pkgdir}/usr/share/applications
-	mv ${pkgdir}/opt/${pkgname}/${_tarball_base_name}/SecureCRT.desktop ${pkgdir}/usr/share/applications
-	mv ${pkgdir}/opt/${pkgname}/${_tarball_base_name}/SecureFX.desktop ${pkgdir}/usr/share/applications
+	cp -ar ${srcdir}/${_bundle_name}-${pkgver}/SecureCRT.desktop ${pkgdir}/usr/share/applications
+	cp -ar ${srcdir}/${_bundle_name}-${pkgver}/SecureFX.desktop ${pkgdir}/usr/share/applications
 	mkdir -p ${pkgdir}/usr/share/vandyke/data
-	mv ${pkgdir}/opt/${pkgname}/${_tarball_base_name}/securecrt_64.png ${pkgdir}/usr/share/vandyke/data/securecrt_64.png
-	mv ${pkgdir}/opt/${pkgname}/${_tarball_base_name}/securefx_64.png ${pkgdir}/usr/share/vandyke/data/securefx_64.png
+	cp -ar ${srcdir}/${_bundle_name}-${pkgver}/securecrt_64.png ${pkgdir}/usr/share/vandyke/data/securecrt_64.png
+	cp -ar ${srcdir}/${_bundle_name}-${pkgver}/securefx_64.png ${pkgdir}/usr/share/vandyke/data/securefx_64.png
 }
