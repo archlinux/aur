@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=20
+pkgrel=21
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -24,7 +24,7 @@ fetchall
 pppoecheck
 pppoecheck.service
 pppoecheck.timer
-
+check-file-exists
 )
 sha512sums=(
 
@@ -36,7 +36,7 @@ sha512sums=(
 a0603b1a51571f5308e228ae02fdfa30bfa0c8d989f137aeee223b585ff8a6ffd5cc738de92494a8a9b13e62f6e8f28da112aed229d4a5ab8e2a79cfb812fbbc  
 b0cddef03746a5b8c2ca6be899a7e63fc25e2bbbd743f4a3566a4b4e1dd71419b3010f0dd16b80b5d943fab2b37ef1dae8819006ed916cba3a51960deb2a7696  
 29fc3a014cf6fd4babf1c21ffcffd2a7c891a5dc4e6399788f9994a2a26496bd40b78579df314aaedc4918e78c2e1bb097a93fd358afa69e6f322b080525353a  
-
+5b0340e455bdd1dcb960e6d5d57e2194c6a60e21da70bf9ed37bd22662866eb918ac5a8801ab5020b596261301d267800dfd3387abab2f69bb650c0f49362592
 
 )
 
@@ -76,6 +76,7 @@ install  -Dm755 makesrcinfo  "$pkgdir/usr/bin/makesrcinfo"
 install  -Dm644  pppoecheck.service  "$pkgdir/usr/lib/systemd/system/pppoecheck.service"
 install  -Dm644  pppoecheck.timer  "$pkgdir/usr/lib/systemd/system/pppoecheck.timer"
 install  -Dm755  pppoecheck  "$pkgdir/usr/lib/$pkgname/pppoecheck"
+install  -Dm755 check-file-exists  "$pkgdir/usr/bin/check-file-exists"
 
 }
 
