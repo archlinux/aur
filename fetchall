@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -euo pipefail
+#set -x
+#set -x 将在命令执行前打印出命令 方便调试
+
+
+function fetch-remote()
+{
+        var=$1
+        echo fetch   from   $var  $2   ; 
+        git  fetch  $var  -v --progress 
+        echo 
+}
+function fetchall(){
+
+    for file in $work_path/*
+    do  
+ #    echo $file 
+    if test -d $file
+    then    
+        
+        if [   -d ${file}'/.git'   ] ; then 
+          
+        cd $file       
+#        echo $file 
+
+        mm=$(git remote) ;  
+         
+        echo $mm ;    
+        for var in $mm ; do
+
+        if [ "$var"x = alix ] ;  
+            then
+              continue ;
+        fi
+
+        if [[ $# -gt 0 ]]; then
+            rt=$(echo $* | grep -w $var)
+
+ #           echo ALL:$*  var:$var  rt  :  $rt
+            if [[ "$rt"xx = xx ]]; then            
+                continue ;
+            else
+                fetch-remote $var $file 
+            fi            
+        else
+            fetch-remote $var $file 
+        fi 
+ 
+
+
+        done       
+    
+        fi   
+    fi
+    echo 
+    done
+    
+}
+set +e
+cur=$(dirname $(dirname $(readlink -f $0)))
+echo $cur
+work_path=$cur
+
+fetchall  $*
+work_path=$cur/AndroidLib
+fetchall  $* 
+work_path=$cur/yt
+fetchall  $* 
+
+

@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -uo pipefail
+#set -x
+#set -x 将在命令执行前打印出命令 方便调试
+
+
+
+function pull-remote()
+{
+        var=$1	
+        echo git -C $file  pull   $var  $2  -v  --progress  
+        git pull   $var $2 -v  --progress
+        echo 
+}
+function pullall(){
+
+    for file in $work_path/*
+    do  
+    if test -d $file
+    then    
+        
+        if [   -d ${file}'/.git'   ] ; then 
+          
+        cd $file       
+              
+        cbr=`git symbolic-ref --short -q HEAD` 
+
+        if [ "$cbr"x = x ] ;
+        then
+            continue ;
+        fi
+
+        mm=$(git remote) ;
+		
+        echo $mm ;    		
+		
+	for var in $mm ; do
+
+        if [ "$var"x = alix ] ||  [ "$var"x = dsmx ]||  [ "$var"x = dsmnfsx ]   ;  
+            then
+              continue ;
+        fi
+
+        if [[ $# -gt 0 ]]; then
+            rt=$(echo $* | grep -w $var)
+
+ #           echo ALL:$*  var:$var  rt  :  $rt
+            if [[ "$rt"xx = xx ]]; then            
+                continue ;
+            else
+                pull-remote $var $cbr $file 
+            fi            
+        else
+            pull-remote $var $cbr $file 
+        fi 
+ 
+		echo
+
+        done 
+		
+        fi   
+    fi
+    echo 
+    done    
+}
+cur=$(dirname $(dirname $(readlink -f $0)))
+work_path=$cur
+pullall $*
+work_path=$cur/AndroidLib
+pullall $*
+work_path=$cur/yt
+pullall $*
+
+
+
+
+
+
