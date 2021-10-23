@@ -1,0 +1,19 @@
+pkgbase = neovim-persistence-git
+	pkgdesc = Simple session management for Neovim
+	pkgver = r9.77cf5a6
+	pkgrel = 1
+	url = https://github.com/folke/persistence.nvim
+	install = persistence.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	depends = neovim>=0.5.0
+	provides = neovim-persistence
+	conflicts = neovim-persistence
+	source = neovim-persistence-git::git+https://github.com/folke/persistence.nvim?signed
+	validpgpkeys = 97ADEDA7F079E45EF2AD1004707FE6FEB82F7984
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	md5sums = SKIP
+
+pkgname = neovim-persistence-git
