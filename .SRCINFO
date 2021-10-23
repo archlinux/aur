@@ -1,6 +1,6 @@
 pkgbase = pax-mc-bin
 	pkgdesc = The MC modpack manager for professionals. Binary version
-	pkgver = 1.9.3
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://github.com/froehlicha/pax
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pax-mc-bin
 	provides = pax-mc
 	conflicts = pax-mc
 	conflicts = pax-mc-git
-	source = pax-1.9.3::https://github.com/froehlichA/pax/releases/download/v1.9.3/pax
-	sha256sums = 19bfcd46258e2221d742ca828c8333beea3a44267e8d3d8570ffab5389dbc93f
+	source = pax-1.9.4::https://github.com/froehlichA/pax/releases/download/v1.9.4/pax
+	sha256sums = 4aad764ac5c1366aa6a1863bb2a8ea7d087860402639f482793539831f23bc18
 
 pkgname = pax-mc-bin
