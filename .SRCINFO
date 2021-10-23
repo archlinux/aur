@@ -1,7 +1,7 @@
 pkgbase = python-sklearn-pandas
 	pkgdesc = Pandas integration with scikit-learn
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-learn-contrib/sklearn-pandas
 	arch = any
 	license = custom:zlib/bsd
@@ -9,10 +9,10 @@ pkgbase = python-sklearn-pandas
 	checkdepends = python-joblib
 	makedepends = python-setuptools
 	depends = python
-	depends = python-scikit-learn>=0.23.0
-	depends = python-scipy>=1.5.1
-	depends = python-pandas>=1.1.4
-	depends = python-numpy>=1.18.1
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-numpy
 	source = python-sklearn-pandas-2.2.0.tar.gz::https://github.com/scikit-learn-contrib/sklearn-pandas/archive/v2.2.0.tar.gz
 	b2sums = 290c587a1d6a74ebf2046b7753143cfedfe498fdb5b8b7318aee96fc98b20c12410bf7f03feb7a86fa5351a0dd899f7dce44b13090f49755cf20c15fa14082aa
 
