@@ -13,8 +13,8 @@ license=('MIT')
 
 depends=()
 makedepends=('cmake' 'make')
-provides=('eve-simd')
-conflicts=('eve-simd')
+provides=('eve')
+conflicts=('eve')
 
 source=("$pkgname::git+https://github.com/${_author}/${_name}.git#branch=main")
 sha256sums=('SKIP')
