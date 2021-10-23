@@ -27,10 +27,7 @@ build () {
 
   cmake \
     -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
-    -DLIBMMG2D_SHARED=ON \
-    -DLIBMMG3D_SHARED=ON \
-    -DLIBMMGS_SHARED=ON \
-    -DLIBMMG_SHARED=ON \
+    -DBUILD_SHARED_LIBS=ON \
     -DUSE_ELAS=OFF
 
   make
