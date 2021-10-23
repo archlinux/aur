@@ -1,0 +1,16 @@
+pkgbase = sciplot-git
+	pkgdesc = A modern C++ scientific plotting library powered by gnuplot
+	pkgver = v0.2.2.r59.gd568f1f
+	pkgrel = 1
+	url = https://github.com/sciplot/sciplot
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	depends = gnuplot
+	provides = sciplot
+	conflicts = sciplot
+	source = sciplot-git::git+https://github.com/sciplot/sciplot.git#branch=master
+	sha256sums = SKIP
+
+pkgname = sciplot-git
