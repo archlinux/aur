@@ -8,6 +8,7 @@ pkgbase = scoutfish-git
 	arch = armv7h
 	license = GPL3
 	makedepends = git
+	depends = gcc-libs
 	provides = scoutfish
 	conflicts = scoutfish
 	source = git+https://github.com/mcostalba/scoutfish

@@ -7,6 +7,7 @@ pkgdesc="A fast, powerful chess query engine"
 arch=(i686 x86_64 armv7h)
 url=https://github.com/mcostalba/scoutfish
 license=(GPL3)
+depends=(gcc-libs)
 makedepends=(git)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
