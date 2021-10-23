@@ -1,6 +1,6 @@
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 pkgname=i3keys
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc='Lists used and unused keys in your i3wm or Sway config'
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/RasmusLindroth/$pkgname"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/RasmusLindroth/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('614ac0cff665129e1f68543f97fe30c589e13c9f0089c5f7c8aeead6f65c134b')
+sha256sums=('e7051bca203db8888584cf5ba7ccb7951fe7f1a21870e42342ee4acd098ebad9')
 
 build() {
   cd $pkgname-$pkgver
