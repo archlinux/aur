@@ -1,7 +1,7 @@
 pkgbase = dt-cli-git
 	pkgdesc = Syncing dotfiles and more
-	pkgver = v0.1.0.62.gfea47a7
-	pkgrel = 2
+	pkgver = v0.2.1.13.g0827c86
+	pkgrel = 1
 	url = https://github.com/blurgyy/dt
 	arch = any
 	license = MIT OR Apache 2.0
