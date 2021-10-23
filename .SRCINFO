@@ -1,7 +1,7 @@
 pkgbase = ognibuild
 	pkgdesc = Detect and invoke build systems
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jelmer/ognibuild
 	arch = any
 	license = GPL2
@@ -9,7 +9,11 @@ pkgbase = ognibuild
 	depends = python-buildlog-consultant
 	depends = python-requirements-parser
 	depends = python-setuptools
+	depends = python-toml
 	source = https://pypi.org/packages/source/o/ognibuild/ognibuild-0.0.9.tar.gz
+	source = https://pypi.org/packages/source/o/ognibuild/ognibuild-0.0.9.tar.gz.asc
+	validpgpkeys = DC837EE14A7E37347E87061700806F2BD729A457
 	sha256sums = cc68b574c20676187688a31415a16b3bba7ba2e9ab7e6747255bf17767ab5ac2
+	sha256sums = SKIP
 
 pkgname = ognibuild
