@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -euo pipefail
+#set -x
+#set -x 将在命令执行前打印出命令 方便调试
+
+
+
+
+ mm=$(ip a | grep -w ppp0) ;
+ #echo $mm
+ if [[ "$mm"xx = xx ]]; then            
+    echo PPPOE NOT EXIST
+    echo 重新启动 PPPOE
+    netctl restart pppoe
+    systemctl restart godns@godns4 godns@godns6
+ else
+    echo PPPOE OK
+fi    
+
+
+

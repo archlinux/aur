@@ -15,6 +15,10 @@ optdepends=(
 #source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
 source=("ipmac"
 makesrcinfo
+pppoecheck
+pppoecheck.service
+pppoecheck.timer
+
 )
 sha512sums=(
 '8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd'
@@ -49,7 +53,11 @@ sha512sums=(
 package() {
 # make -C build DESTDIR="$pkgdir" install
 install  -Dm4755 ipmac  "$pkgdir/usr/bin/ipmac"
-install  -Dm755 makesrcinfo  "$pkgdir/usr/bin/makesrcinfo"
+install  -Dm755  makesrcinfo  "$pkgdir/usr/bin/makesrcinfo"
+install  -Dm644  pppoecheck.service  "$pkgdir/usr/lib/systemd/system/pppoecheck.service"
+install  -Dm644  pppoecheck.timer  "$pkgdir/usr/lib/systemd/system/pppoecheck.timer"
+install  -Dm755  pppoecheck  "$pkgdir/usr/lib/$pkg/pppoecheck"
+
 }
 
 groups=('lcj')

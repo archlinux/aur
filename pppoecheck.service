@@ -1,0 +1,13 @@
+[Unit]
+Description='PPPOE Check Service'
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/usr/lib/lcj/
+ExecStart=/usr/lib/lcj/pppoecheck
+Restart=on-failure
+#Restart=always
+#RestartSec=5
