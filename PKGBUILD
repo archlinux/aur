@@ -7,11 +7,13 @@ pkgver=v0.3.6
 pkgrel=3
 license=("BSD 2-Clause")
 pkgdesc="A wlroots and dwl based tiling-windowmanager based around creating layouts"
+depends=(
+    "lua"
+    )
 makedepends=(
     "meson"
     "git"
     "wlroots"
-    "lua"
     "wayland"
     "wayland-protocols"
     "libnotify"
