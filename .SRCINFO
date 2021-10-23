@@ -1,7 +1,7 @@
 pkgbase = ignition-common
 	pkgdesc = A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers.
-	pkgver = 4.3.0
-	pkgrel = 2
+	pkgver = 4.4.0
+	pkgrel = 1
 	url = https://ignitionrobotics.org/libs/common
 	arch = any
 	groups = development
@@ -9,7 +9,7 @@ pkgbase = ignition-common
 	makedepends = ignition-cmake>=2
 	makedepends = util-linux
 	depends = ignition-utils
-	source = https://github.com/ignitionrobotics/ign-common/archive/ignition-common4_4.3.0.tar.gz
-	sha256sums = 130386df1dbdff630eb3bf86e2fccc7fc2e08d5e1c4353c632b6f336fc5dfea0
+	source = https://github.com/ignitionrobotics/ign-common/archive/ignition-common4_4.4.0.tar.gz
+	sha256sums = 78b8ffab2c340276638c0aa10ed55c057ce863b46528355346647bef8b1c225b
 
 pkgname = ignition-common
