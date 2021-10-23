@@ -1,14 +1,15 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Michael Kogan (PhotonX) <michael.kogan@gmx.net>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=python2-gobject2
 pkgver=2.28.7
-pkgrel=6
+pkgrel=7
 pkgdesc="Legacy Python 2 bindings for GObject"
 url="https://wiki.gnome.org/Projects/PyGObject"
 arch=(x86_64)
 license=(LGPL)
-depends=(glib2 python2)
+depends=(glib2 libffi python2)
 makedepends=(git)
 provides=("pygobject2-devel=$pkgver-$pkgrel")
 conflicts=(pygobject2-devel)
