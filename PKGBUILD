@@ -6,7 +6,7 @@
 # Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=gamehub-epic-git
-pkgver=0.13.1.33.dev.r450.g934c717
+pkgver=0.16.0.934c717
 pkgrel=1
 pkgdesc="Games manager, downloader, library that supports GOG, Steam, Epic, itch.io and Humble Bundle"
 arch=(i686 x86_64 armv6h armv7h aarch64)
