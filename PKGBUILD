@@ -1,4 +1,4 @@
-# Maintainer: Ken Enda <buhibuhidog@gmail.com>
+# Maintainer: endaaman <endaaman@frontier.hokudai.ac.jp>
 
 pkgname=tym
 pkgver=3.1.2
