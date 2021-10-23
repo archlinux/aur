@@ -115,5 +115,7 @@ scripts/config --module CONFIG_ACPI_APEI_ERST_DEBUG
 # enable multigen LRU by default
 scripts/config --enable CONFIG_LRU_GEN_ENABLED
 
-# AMD pstate
-scripts/config --enable CONFIG_X86_AMD_PSTATE
+## AMD pstate
+#scripts/config --module CONFIG_X86_AMD_PSTATE
+# NOTE: We'll ignore this for now, it's configured as a module in Xanmod's config
+#       when we figure out how to enable it on Zen2/3 APUs I'll think about making it the default
