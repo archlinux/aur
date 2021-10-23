@@ -1,11 +1,12 @@
 # Maintainer: Yamada Hayao <hayao@fascode.net>
 
-_pkgver="20"
+_pkgver="24"
 
 _extname='desktop-icons-ng'
 pkgname="gnome-shell-extension-${_extname}"
 _uuid="ding@rastersoft.com"
-pkgver="0.${_pkgver}.0"
+#pkgver="0.${_pkgver}.0"
+pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="A fork from the official desktop icons project, with several enhancements like Drag'n'Drop."
 arch=('x86_64' 'i686')
@@ -15,11 +16,9 @@ depends=('gnome-shell')
 makedepends=('git' 'meson' 'glib2')
 conflicts=("${pkgname}-git")
 
-source+=(
-    "${_extname}-${pkgver}.tar.gz::https://gitlab.com/rastersoft/${_extname}/-/archive/${_pkgver}/${_extname}-${_pkgver}.tar.gz"
-)
-sha256sums+=("88350594fc886b0afb5642b0b24a92e476b4745140feb310c21d07a5d783c23f")
-sha512sums+=("b827d3ea2726bb0c738650fef34f93c0786d4a5c48fb4dca97eae7d334035a7833779e0b3aa3a344f8cd0a738bdfec43dc83b4690daab6c47320172f92bc9f33")
+source=("${_extname}-${pkgver}.tar.gz::https://gitlab.com/rastersoft/${_extname}/-/archive/${_pkgver}/${_extname}-${_pkgver}.tar.gz")
+sha256sums=('403da492e1507e2e204c8019a2522c633096ec25ff5152ea40e6e3079ec1dfb4')
+sha512sums=('aae4a20544f5ffbcae5dd87f0233dff4f72895db6c5eba8c6c56c97a782ec8a774a355af55cde6c42754c9267aa8d905e3ed718c47d4b307ab02ff50b382a537')
 
 package() {
 
