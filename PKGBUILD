@@ -3,10 +3,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=5.5
+pkgver=5.6
 pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=5.7
+_wwwpkgver=5.8
 _now=`date +%N`
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
@@ -41,10 +41,10 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 	    piholeDebug.sh
 )
 
-sha256sums=('9038d5815570b4117bbceadca5393d6f981026bbb982a63ee9a8cecf1088533c'
-            '2f20ad75c2c473c8f7f37bc51cd08cb2fcd6c35fcf5de1ea43ba6f15434013ef'
-            'a149dc20614b63215dc193e0b7130a97d2aa361f1bf8865b05981c43ad6b3380'
-            '64184953abf366a4152f93230eacd4d05c8bc151a9e2fde0e8565b2b43fa8a50'
+sha256sums=('c65f31418bdbfbf9ed482e5380f0b7f8370e69817dd1db70bea98f337198bf47'
+            'b594374bd3d6361ad5fa35958b17a08965fcc77d3ef4c4a7938410116b0cf5be'
+            'b384a19a795638dfeeb4a03bef704989e385340ae7066567cac40e3f9c3ec326'
+            '001cd1a7eee38dcb51de5aa0d0bb2fef26f473b99fd88e83a6b7e287fff77b7f'
             '96c1fb8b15e1d0e99c18dc768f5dc3d4991184fb2631af84c5e2111028bc5287'
             '6495a9db2e77cc2e6b822f3c93d637842acdb7447811dd6dda9ded94bb205630'
             '032770450ba4a1085bcb0bf3f944c436c5702f3a3faf984fbbba2d3dbc6accea'
@@ -75,7 +75,7 @@ package() {
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/chronometer.sh "$pkgdir"/opt/pihole/chronometer.sh
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/list.sh "$pkgdir"/opt/pihole/list.sh
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/webpage.sh "$pkgdir"/opt/pihole/webpage.sh
-  install -Dm755 $_pkgname-$pkgver/advanced/Scripts/wildcard_regex_converter.sh "$pkgdir"/opt/pihole/wildcard_regex_converter.sh
+# install -Dm755 $_pkgname-$pkgver/advanced/Scripts/wildcard_regex_converter.sh "$pkgdir"/opt/pihole/wildcard_regex_converter.sh
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/query.sh "$pkgdir"/opt/pihole/query.sh
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/pihole-reenable.sh "$pkgdir"/opt/pihole/pihole-reenable.sh
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/piholeARPTable.sh "$pkgdir"/opt/pihole/piholeARPTable.sh
