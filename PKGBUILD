@@ -5,9 +5,8 @@ url='https://wiki.ros.org/urdf'
 
 pkgname='ros-noetic-urdf'
 pkgver='1.13.2'
-_pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -73,4 +72,6 @@ build() {
 package() {
 	cd "${srcdir}/build"
 	make DESTDIR="${pkgdir}/" install
+	cd "${pkgdir}/opt/ros/noetic/share/urdf/cmake"
+	sed -i '119s@\$<\$<\(NOT:\$<\)*CONFIG:Debug>*>:@@g' urdfConfig.cmake
 }
