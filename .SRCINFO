@@ -4,7 +4,6 @@ pkgbase = nuxhash-git
 	pkgrel = 3
 	url = https://github.com/YoRyan/nuxhash
 	arch = x86_64
-	arch = i686
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
