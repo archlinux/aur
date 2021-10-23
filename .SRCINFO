@@ -6,7 +6,6 @@ pkgbase = japokwm-git
 	arch = x86_64
 	license = BSD 2-Clause
 	makedepends = meson
-	makedepends = lua
 	makedepends = git
 	makedepends = wlroots
 	makedepends = wayland
