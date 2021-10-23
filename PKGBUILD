@@ -1,4 +1,4 @@
-# Maintainer: Mateusz Kaczanowski <kaczanowski.mateusz@gmail.com>
+# Maintainer: Alex Wicks <alex@awicks.io>
 pkgname='packer-provisioner-goss'
 provides=('packer-provisioner-goss')
 pkgver=3.1.2
