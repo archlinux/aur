@@ -13,7 +13,7 @@ pkgbase=corefreq-git
 pkgname=(corefreq-client-git corefreq-server-git corefreq-dkms-git)
 _gitname=CoreFreq
 _pkgbase=${pkgbase%-*}
-pkgver=1.86.3.r0.g99cfa91
+pkgver=1.87.4.r20.g246c509
 pkgrel=1
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
@@ -53,7 +53,7 @@ package_corefreq-dkms-git() {
       -e "s/@PKGVER@/${pkgver}/" \
       -e "s/@_KERNELMODULE@/${_kernelmodule}/" \
       -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
-  
+
   # Copy sources (including Makefile)
   cp -r "${_gitname}"/{*.c,*.h,Makefile} "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
 }
