@@ -27,8 +27,8 @@ build() {
   .
 
   mkdir completion
-  conftest completion bash > completion/conftest
-  conftest completion zsh > completion/_conftest
+  ./conftest completion bash > completion/conftest
+  ./conftest completion zsh > completion/_conftest
 }
 
 package() {
