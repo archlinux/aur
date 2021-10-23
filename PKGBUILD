@@ -1,36 +1,39 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-lualine-git
-pkgver=r214.9726824
-pkgrel=2
-pkgdesc="A blazing fast and easy to configure neovim statusline plugin"
+pkgver=r394.ef063f7
+pkgrel=1
+pkgdesc="Lua-based statusline for Neovim"
 arch=('any')
-url="https://github.com/hoob3rt/lualine.nvim"
+url="https://github.com/nvim-lualine/lualine.nvim"
 license=('MIT')
 groups=('neovim-plugins')
 depends=('neovim>=0.5.0')
 makedepends=('git')
-# checkdepends=('luacheck')
+checkdepends=('neovim-plenary')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" 'vim-airline' 'vim-lightline')
-install="$pkgname.install"
+conflicts=("${pkgname%-git}")
+install=lualine.install
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# check() {
-#   cd "$pkgname"
-#   make check
-# }
+check() {
+	cd "$pkgname"
+	## from make test
+	nvim --headless --noplugin --clean -u lua/tests/minimal_init.lua \
+		-c "lua require('plenary.test_harness').test_directory('lua/tests', \
+		{ minimal_init = './lua/tests/minimal_init.lua' })"
+}
 
 package() {
-  cd "$pkgname"
-  find doc lua \
-    -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-  install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	cd "$pkgname"
+	find doc lua \
+		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md THEMES.md BREAKING_CHANGES.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
