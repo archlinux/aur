@@ -18,6 +18,8 @@ sha256sums=('43869a70967f573ff6f00451db3f4642684834bdad1fd3926380e3789016b446')
 build() {
 	cd Xyce-Release-"$pkgver"
 
+	sed -i 's/3.7, 3.6, 3.5, 3.4, 3.3, 3.2, 3.1, 3.0/3.8, 3.7, 3.6, 3.5, 3.4, 3.3, 3.2, 3.1, 3.0/g' configure.ac
+
 	./bootstrap
 
 	./configure \
