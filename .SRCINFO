@@ -1,0 +1,20 @@
+pkgbase = packer-provisioner-goss
+	pkgdesc = Goss Provisioner for Packer
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/YaleUniversity/packer-provisioner-goss
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	depends = goss
+	depends = multipath-tools
+	provides = packer-provisioner-goss
+	source = git://github.com/YaleUniversity/packer-provisioner-goss.git#tag=v3.1.2
+	sha256sums = SKIP
+
+pkgname = packer-provisioner-goss
