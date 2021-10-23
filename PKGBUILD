@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=19
+pkgrel=20
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -75,7 +75,7 @@ install  -Dm755 fetchall  "$pkgdir/usr/bin/fetchall"
 install  -Dm755 makesrcinfo  "$pkgdir/usr/bin/makesrcinfo"
 install  -Dm644  pppoecheck.service  "$pkgdir/usr/lib/systemd/system/pppoecheck.service"
 install  -Dm644  pppoecheck.timer  "$pkgdir/usr/lib/systemd/system/pppoecheck.timer"
-install  -Dm755  pppoecheck  "$pkgdir/usr/lib/$pkg/pppoecheck"
+install  -Dm755  pppoecheck  "$pkgdir/usr/lib/$pkgname/pppoecheck"
 
 }
 
