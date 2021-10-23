@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=92.0.1
+pkgver=93.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=a0c9416afc032611d6171e58cf711d3cb86c705f
+_patchrev=50beb7700dd95dc4b58b25e1bd9d5c5c7b2a25ba
 options=('!emptydirs')
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -103,6 +103,12 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         fix_csd_window_buttons.patch
         # Workaround #14
         fix-wayland-build.patch
+        # MOZILLA#1725828
+        # https://bugzilla.mozilla.org/show_bug.cgi?id=1725828
+        0033-bmo-1725828-Preload-dependencies-for-the-Widevine-CD.patch
+        # MOZILLA#1730397
+        # https://bugzilla.mozilla.org/show_bug.cgi?id=1730397
+        0034-bmo-1730397-Update-packed_simd-to-a-version-that-sup.patch
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -165,6 +171,14 @@ prepare() {
 
   # Workaround #14
   patch -Np1 -i "$srcdir"/fix-wayland-build.patch
+
+
+  # shorter living bugfixes, likely fixed in the next release
+  # MOZILLA#1725828
+  patch -Np1 -i "$srcdir"/0033-bmo-1725828-Preload-dependencies-for-the-Widevine-CD.patch
+  # MOZILLA#1730397
+  patch -Np1 -i "$srcdir"/0034-bmo-1730397-Update-packed_simd-to-a-version-that-sup.patch
+
 
   if [ $_pgo ] ; then
     # Fix MOZILLA#1516803
@@ -279,9 +293,9 @@ md5sums=('SKIP'
          'a26a061efb4def6572d5b319d657f1d6'
          '4c23d9c0a691d70919beb1dafbbecbd3'
          '05bb69d25fb3572c618e3adf1ee7b670'
-         'c0f68250d27f208efcdee710207cd3e4'
+         'b386ac38ffb7e545b9473e516455a25f'
          '43c65f6513fbc28aaa8238ad3bdb4e26'
-         '14ada9ebd479223d5f95a615caa50bcd'
+         '36a422712ca00b5d42cbed41b2ec943c'
          '0a5733b7a457a2786c2dd27626a1bf88'
          '9ad2dc49bf1cf74f70df2917d673c888'
          'fe24f5ea463013bb7f1c12d12dce41b2'
@@ -298,4 +312,6 @@ md5sums=('SKIP'
          'd928ecb61da7628d4e7981ebf7e4c879'
          '5cf84ebbd3c787b56198c32a91b4df16'
          'f49ac3b9f5146e33ce587e6b23eb1a86'
-         '2cf74781f6b742d6b7e6f7251f49311a')
+         '2cf74781f6b742d6b7e6f7251f49311a'
+         'f1bf067ed6b8a4ae82a8a448fe422ece'
+         'a50a5fcda823771277efd20cabfdb8ff')
