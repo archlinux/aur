@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=roadrunner
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
@@ -16,8 +16,8 @@ source=(
 	".rr.yaml.sample-minimal"
 )
 sha256sums=(
-	'4fff8296bf3dd1b1b5dcb6354b301f32b3ad092067149774f22c81693541fe92'
-	'a42004adee31886d6d470c7b67810a878a6ea7cb9ee31468dba079852f17ac93'
+	'a04dd6b333e1b6d942d5a4611dbc8b4352f227288598e33748d225c11dec6118'
+	'35b866f0ae1731e1a2d15ee83a076d15558e3fae7e245feb6269b442ff933cb3'
 	SKIP
 	SKIP
 )
@@ -51,8 +51,10 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$pkgname-binary-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
+	make test_coverage
 
+	cd "$srcdir/$pkgname-binary-$pkgver"
 	go test -race -covermode=atomic -coverprofile ./coverage.txt ./...
 }
 

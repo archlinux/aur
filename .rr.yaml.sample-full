@@ -48,7 +48,7 @@ logs:
   # Default: "development"
   mode: development
 
-  # Logging level can be "panic", "error", "warning", "info", "debug".
+  # Logging level can be "panic", "error", "warn", "info", "debug".
   #
   # Default: "debug"
   level: debug
