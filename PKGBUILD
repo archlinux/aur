@@ -3,7 +3,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=nodejs-n
-pkgver=7.5.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Node version management"
 arch=(any)
@@ -12,7 +12,7 @@ url=https://github.com/tj/n
 license=(MIT)
 install=$pkgname.install
 source=(https://github.com/tj/n/archive/v$pkgver/n-$pkgver.tar.gz)
-sha256sums=('d4da7ea91f680de0c9b5876e097e2a793e8234fcd0f7ca87a0599b925be087a3')
+sha256sums=('9e8879dc4f1c4c0fe4e08a108ed6c23046419b6865fe922ca5176ff7998ae6ff')
 
 package() {
   cd n-$pkgver
