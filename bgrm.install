@@ -1,0 +1,14 @@
+post_install() {
+    cd /opt/bgrm/
+
+    echo "Setting up proper virtual environment."
+    source scripts/setup-venv.sh
+    
+    echo "Patching v4l2 python library."
+    source scripts/patch-v4l2-py-mod.sh
+}
+
+post_uninstall() {
+    rm -rf /opt/bgrm
+}
+
