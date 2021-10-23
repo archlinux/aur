@@ -1,6 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.7.2] - 2021-10-20
+### Fixed
+- prevent infinite loop when calculating semantic tokens if an escape character is not followed by any actual content ([rcjsuen/dockerfile-language-service#95](https://github.com/rcjsuen/dockerfile-language-service/issues/95))
+- prevent infinite loop when calculating semantic tokens if an escape character is embedded within a variable ([rcjsuen/dockerfile-language-service#96](https://github.com/rcjsuen/dockerfile-language-service/issues/96))
+
+## [0.7.1] - 2021-09-21
+### Fixed
+- textDocument/publishDiagnostics
+  - prevent merging of instructions if it contains an escape character and spans multiple lines ([rcjsuen/dockerfile-utils#103](https://github.com/rcjsuen/dockerfile-utils/issues/103))
+  - ignore comments embedded in an instruction's keyword ([rcjsuen/dockerfile-utils#104](https://github.com/rcjsuen/dockerfile-utils/issues/104))
+- textDocument/semanticTokens/full
+  - prevent infinite loop when calculating semantic tokens for an instruction with a keyword that spans multiple lines ([rcjsuen/dockerfile-language-service#94](https://github.com/rcjsuen/dockerfile-language-service/issues/94))
+
 ## [0.7.0] - 2021-09-19
 ### Added
 - textDocument/publishDiagnostics
@@ -631,7 +644,9 @@ All notable changes to this project will be documented in this file.
 - textDocument/formatting
 - textDocument/rangeFormatting
 
-[Unreleased]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.2...HEAD
+[0.7.2]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.1...v0.7.2
+[0.7.1]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.4.1...v0.5.0
