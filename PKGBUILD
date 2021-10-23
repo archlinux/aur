@@ -3,7 +3,7 @@
 
 pkgname=mega
 _pkgname=mega
-pkgver=11.0.7
+pkgver=11.0.9
 pkgrel=1
 pkgdesc=" Molecular Evolutionary Genetics Analysis"
 arch=('x86_64')
@@ -16,8 +16,8 @@ depends=(
 	'hicolor-icon-theme'
 	'metasploit>=2.0'
 )
-source=("https://megasoftware.net/releases/mega_${pkgver}-1_amd64_alpha.deb")
-sha256sums=('d90e5012ac339f4daae722a3438a7f9659977cbe97585278dd248840ea63157a')
+source=(""https://www.megasoftware.net/releases/mega_$pkgver-1_amd64.deb)
+sha256sums=('6c84c998d5873888a8496f6ac5a5d6f438923e3d6548e226803d1f757928e6b3')
 
 package() {
 	tar -p -xf data.tar.xz -C "${pkgdir}"
