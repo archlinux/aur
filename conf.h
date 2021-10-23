@@ -1,8 +1,5 @@
-/* framebuffer device */
-#define FBDEV		"/dev/fb0"
-
 /* list of tags */
-#define TAGS		"xnlhtr01uiva-"
+#define TAGS		"xnlhtr01uiva "
 #define TAGS_SAVED	""
 
 /* programs mapped to m-c, m-m, m-e */
@@ -10,8 +7,8 @@
 #define EDITOR		{"vim"}
 #define MAIL		{"mutt"}
 
-/* fbval_t should match framebuffer depth */
-typedef unsigned int fbval_t;
+/* TERM variable for launched programs */
+#define TERM        "linux"
 
 /* tinyfont files for regular, italic, and bold fonts */
 #define FR		"/usr/share/fbpad/font-r.tf"
