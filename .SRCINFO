@@ -9,6 +9,7 @@ pkgbase = yabridge
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = wine<6.20
 	depends = wine
 	depends = boost
 	depends = libxcb

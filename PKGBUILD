@@ -9,7 +9,9 @@ url="https://github.com/robbert-vdh/yabridge"
 license=('GPL3')
 depends=('wine' 'boost'  'libxcb' 'lib32-boost-libs>=1.72.0' 'lib32-libxcb')
 optdepends=('yabridgectl: utility for setting up and managing yabridge')
-makedepends=('git' 'meson' 'ninja')
+# FIXME: Wine 6.20 broke compilation again. Yabridge's latest master branch
+#        contains a workaround for this.
+makedepends=('git' 'meson' 'ninja' 'wine<6.20')
 options=('!strip')
 install=yabridge.install
 source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
