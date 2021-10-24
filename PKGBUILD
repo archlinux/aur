@@ -1,8 +1,8 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=python-pingparsing
-_name="${pkgname#python-}"
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='CLI and library parser and transmitter for `ping`'
 arch=('any')
@@ -21,28 +21,34 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest>=6.0.1' 'python-pytest-runner' 'python-dateutil' 'python-pytz')
 provides=('pingparsing')
 replaces=('pingparsing')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz.asc")
-sha256sums=('70dfb238c6b9b8fdae98e7aa336c60009388c5c19713b77a730c78104732a0c6'
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pingparsing/pingparsing-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pingparsing/pingparsing-$pkgver.tar.gz.asc")
+sha256sums=('daeb6de8c3c7d51c3dd70f066602b9c4fdad9bb9d80da68fb20fe44e8e2ca972'
             'SKIP')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
+prepare() {
+  cd "pingparsing-$pkgver"
+  sed -i \
+    '/packages=/c\packages=setuptools.find_packages(exclude=['tests*', 'examples*']),' \
+    setup.py
+}
+
 build() {
-  cd "$_name-$pkgver"
+  cd "pingparsing-$pkgver"
   python setup.py build
 }
 
 check() {
-  cd "$_name-$pkgver"
+  cd "pingparsing-$pkgver"
   python setup.py pytest
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "pingparsing-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  rm -rf "$pkgdir/usr/lib/python"*'/site-packages/examples'
 }
 
 # vim: ts=2 sw=2 et:
