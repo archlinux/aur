@@ -3,7 +3,7 @@
 pkgname=devmode-git
 _pkgname=devmode
 pkgver=1e1be59
-pkgrel=1
+pkgrel=2
 pkgdesc="Devmode is a code management utility for developers."
 arch=('i686' 'x86_64')
 url="https://github.com/edfloreshz/devmode"
@@ -23,10 +23,14 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
+	cd dmd
+	cargo build --release --locked
+	cd .. && cd dmdt
 	cargo build --release --locked
 }
 
 package() {
 	cd "$_pkgname"
-	install -Dm755 target/release/devmode "$pkgdir"/usr/bin/devmode
+	install -Dm755 dmd/target/release/dmd "$pkgdir"/usr/bin/dmd
+	install -Dm755 dmdt/target/release/dmdt "$pkgdir"/usr/bin/dmdt
 }

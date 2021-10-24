@@ -1,7 +1,7 @@
 pkgbase = devmode-git
 	pkgdesc = Devmode is a code management utility for developers.
 	pkgver = 1e1be59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/edfloreshz/devmode
 	arch = i686
 	arch = x86_64
