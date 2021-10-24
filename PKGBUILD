@@ -9,13 +9,11 @@
 ## -- Build options -- ##
 #########################
 
-_use_wayland=0           # Build Wayland NOTE: extremely experimental and don't work at this moment
-
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=96.0.4651.0
+pkgver=97.0.4676.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -42,12 +40,10 @@ depends=(
 #          'libvpx'
          'libva'
          'opus'
+         'openjpeg2'
          'bluez-libs'
          'libnet'
-         )
-if [ "${_use_wayland}" = "1" ]; then
-  depends+=('pipewire')
-fi
+         'pipewire')
 makedepends=(
              'gperf'
              'ninja'
@@ -77,7 +73,7 @@ source=(
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo.
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-93-EnumTable-crash.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-96-EnumTable-crash.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-93-InkDropHost-crash.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-shim_headers.patch'
         # Misc Patches.
@@ -91,7 +87,7 @@ sha256sums=(
             'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
-            'f5058b3d359072833319d622eb3b0e068f45165038041411e9c89f618cefc2d6'
+            'bf0ab64df0121908ff0aa260643f73c02fe402a30eea824f89017ad3b9f518cf'
             '04bba6fb19ea5a4ab3949b65f06c88728a00ab296f42022ece62ca2fa25ec2e7'
             'fabf66cfb15449011a20e377d600573b6338cc4c52e3f28f80e0541772659e8b'
             # Misc Patches
@@ -196,6 +192,7 @@ _keeplibs=(
            'third_party/devtools-frontend/src/front_end/third_party/wasmparser'
            'third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n'
            'third_party/devtools-frontend/src/third_party'
+           'third_party/distributed_point_functions'
            'third_party/dom_distiller_js'
            'third_party/eigen3'
            'third_party/emoji-segmenter'
@@ -204,6 +201,8 @@ _keeplibs=(
            'third_party/fft2d'
            'third_party/ffmpeg'
            'third_party/flatbuffers'
+           'third_party/freetype'
+           'third_party/freetype-testing'
            'third_party/fusejs'
            'third_party/gemmlowp'
            'third_party/google_input_tools'
@@ -227,6 +226,7 @@ _keeplibs=(
            'third_party/libaom/source/libaom/third_party/vector'
            'third_party/libaom/source/libaom/third_party/x86inc'
            'third_party/libavif'
+           'third_party/libdrm'
            'third_party/libgav1'
            'third_party/libgifcodec'
            'third_party/libjingle'
@@ -328,6 +328,7 @@ _keeplibs=(
            'third_party/utf'
            'third_party/vulkan'
            'third_party/wayland'
+           'third_party/wayland-protocols'
            'third_party/web-animations-js'
            'third_party/webdriver'
            'third_party/webgpu-cts'
@@ -400,35 +401,24 @@ _flags=(
         'clang_use_chrome_plugins=true'
         'use_gold=false'
         'use_dbus=true'
-        'use_ozone=true'
-        'ozone_auto_platforms=false'
-        'ozone_platform_headless=true'
         'use_thin_lto=false'
         'enable_pseudolocales=false'
         'enable_platform_hevc=true'
         'enable_platform_hevc_decoding=true'
         'dcheck_always_on=false'
         'dcheck_is_configurable=false'
+        'use_system_harfbuzz=false'
+        'use_system_freetype=false'
+        'use_system_lcms2=true'
+        'use_system_minigbm=true'
+        'use_system_libwayland=true'
+        'use_system_libpng=true'
+#         'use_system_libsync=true'
+        'use_system_libopenjpeg2=true'
+        'use_system_wayland_scanner=true'
+        'rtc_use_pipewire=true'
+        'rtc_link_pipewire=true'
         )
-
-if [ "${_use_wayland}" = "1" ]; then
-  _flags+=(
-           'ozone_platform_wayland=true'
-           'use_system_libdrm=true'
-#            'use_system_minigbm=true'
-           'use_system_libwayland=true'
-           'use_system_harfbuzz=false'
-           'use_v4l2_codec=true'
-           'use_xkbcommon=true'
-           "ozone_platform=\"wayland\""
-           'rtc_use_pipewire=true'
-           'rtc_link_pipewire=true'
-           )
-elif [ "${_use_wayland}" = "0" ]; then
-  _flags+=('ozone_platform_x11=true'
-           "ozone_platform=\"x11\""
-           )
-fi
 
 # Set the bundled/external components.
 # TODO: need ported to GN as GYP doing before. see status page: https://crbug.com/551343.
@@ -436,7 +426,7 @@ _use_system=(
 #              'ffmpeg'       # I'm not sure why, but all videos stop playback if use system ffmpeg.
              'flac'
              'fontconfig'
-             'freetype'
+#              'freetype'
 #              'harfbuzz-ng'
 #              'icu'          # https://crbug.com/678661.
              'libdrm'
@@ -451,7 +441,6 @@ _use_system=(
              'opus'
 #              're2'
 #              'snappy'
-#              'yasm'
 #              'zlib'         # NaCL needs it
              )
 
@@ -462,15 +451,14 @@ CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
 
 # Conditionals.
 if check_option strip y; then
-  _flags+=(
-           'symbol_level=0'
-           )
+  _flags+=('symbol_level=0')
 fi
 
 if check_buildoption ccache y; then
   # Avoid falling back to preprocessor mode when sources contain time macros.
   export CCACHE_CPP2=yes
   export CCACHE_SLOPPINESS=time_macros
+  _flags+=("cc_wrapper=\"ccache\"")
 fi
 
 if [ ! -f "${BUILDDIR}/PKGBUILD" ]; then
@@ -533,11 +521,6 @@ prepare() {
   sed -e 's|chrome-sandbox|chrome_sandbox|g'\
       -i sandbox/linux/suid/client/setuid_sandbox_host.cc
 
-  # If use ccache, set it.
-  if check_buildoption ccache y; then
-    sed '36s|""|'ccache'|g' -i build/toolchain/cc_wrapper.gni
-  fi
-
   msg2 "Patching the sources"
 
   # Misc patches.
@@ -560,7 +543,7 @@ prepare() {
 #   patch -p1 -i "${srcdir}/fix_hevc_in_non_cromeos_r1.patch"
 
   # # Patch from Gentoo
-  patch -p1 -i "${srcdir}/chromium-93-EnumTable-crash.patch"
+  patch -p1 -i "${srcdir}/chromium-96-EnumTable-crash.patch"
   patch -p1 -i "${srcdir}/chromium-93-InkDropHost-crash.patch"
   patch -p1 -i "${srcdir}/chromium-shim_headers.patch"
 
@@ -630,11 +613,12 @@ build() {
   chromium/scripts/generate_gn.py
   popd &> /dev/null
 
-  # new chromium seems not like this flag. see base/allocator/allocator_shim.cc:408
+  # New chromium seems not like this flag. see base/allocator/allocator_shim.cc:411
   CFLAGS="${CFLAGS/-fexceptions/}"
   CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
   msg2 "Starting building Chromium..."
+#   LC_ALL=C buildtools/linux64/gn args out/Release --list && exit # Debug: this command list the build options.
   LC_ALL=C buildtools/linux64/gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python
 
   # Build all.
@@ -696,13 +680,8 @@ package() {
           'MEIPreload/manifest.json'
           'MEIPreload/preloaded_data.pb'
           'vk_swiftshader_icd.json'
+          'angledata/VkICD_mock_icd.json'
           )
-
-  if [ "${_use_wayland}" = "0" ]; then
-    _blobs+=(
-             'angledata/VkICD_mock_icd.json'
-             )
-  fi
 
   for i in "${_blobs[@]}"; do
     install -Dm644 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
