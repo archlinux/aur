@@ -1,6 +1,6 @@
 pkgbase = evernote-beta-bin
 	pkgdesc = Official Evernote client for Linux (beta, early-access)
-	pkgver = 10.23.0
+	pkgver = 10.23.10
 	pkgrel = 1
 	url = https://evernote.com/earlyaccess
 	install = evernote-beta-bin.install
@@ -15,8 +15,8 @@ pkgbase = evernote-beta-bin
 	provides = evernote
 	conflicts = evernote-for-linux-bin
 	conflicts = evernote-bin
-	noextract = Evernote-Beta-10.23.0-linux-ddl-beta-2961.deb
-	source = https://cdn1.evernote.com/boron/linux/builds/Evernote-Beta-10.23.0-linux-ddl-beta-2961.deb
-	sha256sums = 138f2f45be658b15d31fa4f70ee72c22016e6b89cdd1a2c909b12839cdf0e531
+	noextract = Evernote-Beta-10.23.10-linux-ddl-beta-3027.deb
+	source = https://cdn1.evernote.com/boron/linux/builds/Evernote-Beta-10.23.10-linux-ddl-beta-3027.deb
+	sha256sums = 460f0223fb3796a0acb056ecd926cf19b28dbc076876dca4d1d9e12593226797
 
 pkgname = evernote-beta-bin
