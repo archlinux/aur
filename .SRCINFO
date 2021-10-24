@@ -1,7 +1,7 @@
 pkgbase = deezer-enhanced-git
 	pkgdesc = An unofficial application for Deezer with enhanced features, that is not just an electron wrapper.
 	pkgver = v0.1.0.r1.g47e2cc3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/duzda/deezer-enhanced
 	arch = x86_64
 	arch = armv7h
