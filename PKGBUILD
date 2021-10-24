@@ -1,4 +1,4 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-hide-git'
 _extname='nautilus-hide'
