@@ -1,6 +1,6 @@
 pkgbase = fish-abbreviation-tips-git
 	pkgdesc = Alias abbreviation tips for fish shell
-	pkgver = 0.5.1.r33.g71662df
+	pkgver = 0.5.1.r40.ge877e28
 	pkgrel = 1
 	url = https://github.com/gazorby/fish-abbreviation-tips
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = fish-abbreviation-tips-git
 	depends = fish
 	provides = fish-abbreviation-tips
 	conflicts = fish-abbreviation-tips
-	source = fish-abbreviation-tips::git+https://github.com/gazorby/fish-abbreviation-tips
+	source = fish-abbreviation-tips-git::git+https://github.com/gazorby/fish-abbreviation-tips
 	sha256sums = SKIP
 
 pkgname = fish-abbreviation-tips-git
-

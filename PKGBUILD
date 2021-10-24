@@ -1,7 +1,7 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=fish-abbreviation-tips-git
-_pkgname=${pkgname%-git}
-pkgver=0.5.1.r33.g71662df
+pkgver=0.5.1.r40.ge877e28
 pkgrel=1
 pkgdesc="Alias abbreviation tips for fish shell"
 arch=('any')
@@ -11,25 +11,24 @@ groups=('fish-plugins')
 depends=('fish')
 makedepends=('git')
 checkdepends=('fish-fishtape')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+$url")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/-/.r/;s/-/./'
+	git -C "$pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 check() {
-  cd "$_pkgname"
-  fish -Pc "fishtape test/fish-abbreviation-tips.fish"
+	cd "$pkgname"
+	fish -Pc "fishtape test/*"
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm644 conf.d/abbr_tips.fish "$pkgdir/etc/fish/conf.d/abbr_tips.fish"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  find functions -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/fish/{}" \;
+	cd "$pkgname"
+	install -Dm 644 conf.d/abbr_tips.fish -t "$pkgdir/usr/share/fish/vendor_conf.d/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	find functions -type f -exec install -Dm644 -t "$pkgdir/usr/share/fish/vendor_functions.d/" '{}' \+
 }
-
