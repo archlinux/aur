@@ -1,13 +1,13 @@
 pkgbase = twitch-downloader-bin
 	pkgdesc = Twitch VOD/Clip Downloader - Chat Download/Render/Replay
-	pkgver = 1.40.3
+	pkgver = 1.40.4
 	pkgrel = 1
 	url = https://github.com/lay295/TwitchDownloader
 	arch = x86_64
 	license = MIT
 	optdepends = ffmpeg: rendering videos
 	options = !strip
-	source = https://github.com/lay295/TwitchDownloader/releases/download/1.40.3/TwitchDownloaderCLI-Linux-x64.zip
+	source = https://github.com/lay295/TwitchDownloader/releases/download/1.40.4/TwitchDownloaderCLI-Linux-x64.zip
 	sha512sums = 99c6af5ccbd1b663cc7f183d3437bd9c054c32173de2439b17dc9ea577b6620b12cc81b07fcc6c0b20b780d6de8e3be30387ac49ea059f86d0dcab6d166b0492
 
 pkgname = twitch-downloader-bin

@@ -1,7 +1,7 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 
 pkgname=twitch-downloader-bin
-pkgver=1.40.3
+pkgver=1.40.4
 pkgrel=1
 pkgdesc="Twitch VOD/Clip Downloader - Chat Download/Render/Replay"
 arch=("x86_64")
