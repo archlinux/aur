@@ -2,14 +2,14 @@
 pkgname=topcat
 pkgver=4.8.2
 _pkgver=4.8-2
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool for OPerations on Catalogues And Tables"
 arch=('any')
 url="http://www.star.bris.ac.uk/~mbt/topcat/"
 depends=('java-runtime' 'sh')
 license=('GPL')
 noextract=('topcat-full.jar')
-source=("http://www.star.bris.ac.uk/~mbt/topcat/topcat-full.jar"
+source=("http://andromeda.star.bristol.ac.uk/releases/topcat/v${_pkgver}/topcat-full.jar"
         "https://raw.githubusercontent.com/Starlink/starjava/master/topcat/src/docs/tclogo.svg"
         "topcat" "topcat.desktop")
 md5sums=('a65430e71f9dc2817f321f919c6bbd89'

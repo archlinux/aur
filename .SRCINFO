@@ -1,14 +1,14 @@
 pkgbase = topcat
 	pkgdesc = Tool for OPerations on Catalogues And Tables
 	pkgver = 4.8.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.star.bris.ac.uk/~mbt/topcat/
 	arch = any
 	license = GPL
 	depends = java-runtime
 	depends = sh
 	noextract = topcat-full.jar
-	source = http://www.star.bris.ac.uk/~mbt/topcat/topcat-full.jar
+	source = http://andromeda.star.bristol.ac.uk/releases/topcat/v4.8-2/topcat-full.jar
 	source = https://raw.githubusercontent.com/Starlink/starjava/master/topcat/src/docs/tclogo.svg
 	source = topcat
 	source = topcat.desktop
