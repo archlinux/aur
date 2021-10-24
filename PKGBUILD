@@ -1,7 +1,7 @@
 # Maintainer: Ryo Munakata <afpacket@gmail.com>
 pkgname=isic
 pkgver=0.07
-pkgrel=1
+pkgrel=2
 pkgdesc="IP Stack Integrity Checker"
 arch=('i686' 'x86_64')
 url="http://isic.sourceforge.net/"
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('libnet>=1.1.0')
 options=(!buildflags)
 source=(
-  "http://downloads.sourceforge.net/project/isic/isic/ISIC%20v0.07/isic-0.07.tgz"
+  "https://downloads.sourceforge.net/project/isic/isic/ISIC%20v0.07/isic-0.07.tgz"
   "$pkgname-$pkgver.patch"
 )
 md5sums=(
