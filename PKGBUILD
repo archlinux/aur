@@ -35,7 +35,7 @@ package_vim-zenbones() {
 	install=vim.install
 
 	cd "$pkgbase"
-	find autoload doc colors lua \
+	find autoload doc colors \
 		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
