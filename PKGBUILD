@@ -3,7 +3,7 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.9.3
+pkgver=1.10.4
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
@@ -15,6 +15,11 @@ optdepends=('gvfs: access virtual filesystem')
 source=("git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 install='maptool.install'
+
+prepare() {
+	cd "${pkgname}"
+	sed -i -r 's|jdkHome = jdkDownload.+$|jdkHome = "/usr/lib/jvm/default"|' 'build.gradle'
+}
 
 build() {
 	cd "${pkgname}"
