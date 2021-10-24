@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -84,6 +84,9 @@ prepare() {
 
   ## libobs/audio-monitoring: Fix PulseAudio monitoring volume for u8 format (https://github.com/obsproject/obs-studio/commit/85f45a3ef6bbb6ca54310dc9599a86f0f7dde4b0)
   git cherry-pick --no-commit 85f45a3ef6bbb6ca54310dc9599a86f0f7dde4b0
+
+  ## obs-ffmpeg: Fix unwritten audio-only output (https://github.com/obsproject/obs-studio/commit/499af309b51234b0e5dda81753fb655f893ce217)
+  git cherry-pick --no-commit 499af309b51234b0e5dda81753fb655f893ce217
 
   ## libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
   patch -Np1 < "$srcdir/python_fix.patch"
