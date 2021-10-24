@@ -21,10 +21,12 @@ checkdepends=(python-gobject)
 _commit=67c7bdbf8757c51d3b1bc1f5c40eaeddef9e3a89
 source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
         'git+https://gitlab.gnome.org/GNOME/libgd.git'
-        nautilus-restore-typeahead.patch)
+        nautilus-restore-typeahead.patch
+        meson-fix.patch)
 sha256sums=('SKIP'
             'SKIP'
-            'd3e1a3df1042a412aa23d0a1710c490c117239cd4d9ae9bae2ee32e190c8c03f')
+            'd3e1a3df1042a412aa23d0a1710c490c117239cd4d9ae9bae2ee32e190c8c03f'
+            '1283bbe4a8614f994983373140d936c38ca9fd1dae7c72d016c001200eed9a96')
 
 prepare() {
   cd "$_pkgbase"
@@ -34,6 +36,8 @@ prepare() {
   git submodule update
 
   patch -p1 -i ../nautilus-restore-typeahead.patch
+  patch -p1 -i ../meson-fix.patch
+
 }
 
 pkgver() {
@@ -42,6 +46,9 @@ pkgver() {
 }
 
 build() {
+  if [ -e build ] ; then
+      rm -r build
+  fi
   arch-meson "$_pkgbase" build \
     -D docs=true \
     -D packagekit=false

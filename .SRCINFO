@@ -27,9 +27,11 @@ pkgbase = nautilus-typeahead
 	source = git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=67c7bdbf8757c51d3b1bc1f5c40eaeddef9e3a89
 	source = git+https://gitlab.gnome.org/GNOME/libgd.git
 	source = nautilus-restore-typeahead.patch
+	source = meson-fix.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = d3e1a3df1042a412aa23d0a1710c490c117239cd4d9ae9bae2ee32e190c8c03f
+	sha256sums = 1283bbe4a8614f994983373140d936c38ca9fd1dae7c72d016c001200eed9a96
 
 pkgname = nautilus-typeahead
 	groups = gnome
