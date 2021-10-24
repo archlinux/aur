@@ -1,15 +1,17 @@
 pkgbase = sbcli-git
 	pkgdesc = A better REPL for SBCL
-	pkgver = r24.de774ef
-	pkgrel = 1
+	pkgver = r89.11cfe35
+	pkgrel = 2
 	url = https://github.com/hellerve/sbcli
 	arch = any
 	license = gpl3
 	depends = sbcl
 	depends = quicklisp
+	optdepends = python-pygments: Syntax Highlighting support
 	options = !strip
 	source = git+https://github.com/hellerve/sbcli
+	source = quicklisp.patch
 	sha256sums = SKIP
+	sha256sums = 6b3064e234c149d936dd7eaa2ee0d4880294feeaa387506128c9bbc9a1499e85
 
 pkgname = sbcli-git
-
