@@ -1,17 +1,18 @@
-# Maintainer: Maxim Baz <cerebro@maximbaz.com>
+# Maintainer: Krzysztof Saczuk <zakku@zakku.eu>
+# Contributor: Maxim Baz <cerebro@maximbaz.com>
 pkgname=cerebro-git
 _pkgname=cerebro
-pkgver=v0.3.0.r10.g554391c
+pkgver=v0.4.0.r4.gb2039c2
 pkgrel=1
 pkgdesc='Open-source productivity booster with a brain.'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://cerebroapp.com/'
 license=('MIT')
 conflicts=('cerebro')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-makedepends=('gendesk' 'python2' 'yarn' 'npm')
+depends=('nss' 'gtk3')
+makedepends=('gendesk' 'python2' 'git') #'npm' 'yarn')
 provides=('cerebro')
-source=('git://github.com/KELiON/cerebro.git')
+source=('git://github.com/cerebroapp/cerebro.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,50 +21,35 @@ pkgver() {
 }
 
 prepare() {
-  gendesk -f -n --name=Cerebro --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="System"
+    gendesk -f -n --name="Cerebro" --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" \
+        --exec="${pkgdir}/opt/${_pkgname}/${_pkgname}" --categories="Utility"
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
 
   yarn && cd ./app && yarn && cd ../
-  yarn run build
-
-  if [ $CARCH == 'x86_64' ]; then
-    node_modules/.bin/build --linux --x64 --dir
-  elif [ $CARCH == 'i686' ]; then
-    node_modules/.bin/build --linux --ia32 --dir
-  else
-    echo "Unknown architecture"; exit 1;
-  fi
+  yarn run build --linux --dir
 }
 
 package() {
-  # Place files
-  install -d "${pkgdir}/usr/lib/${_pkgname}"
-  if [ $CARCH == 'x86_64' ]; then
-    cp -a "${srcdir}/${_pkgname}/release/linux-unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
-  elif [ $CARCH == 'i686' ]; then
-    cp -a "${srcdir}/${_pkgname}/release/linux-ia32-unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
-  else
-    echo "Unknown architecture"; exit 1;
-  fi
+    cd "${srcdir}"
 
-  # Symlink main binary
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    echo "Creating desktop entry file.."
+    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/application/" "${srcdir}/${_pkgname}.desktop"
 
-  # Place desktop entry and icon
-  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}.desktop"
-  for res in 16x16 32x32 48x48 128x128 256x256 512x512 1024x1024; do
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
-    install -Dm644 "${srcdir}/${_pkgname}/build/icons/${res}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_pkgname}.png"
-  done
+    echo "Coping icons..."
+    install -D "${srcdir}/${_pkgname}/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
-  # Place license files
-  for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
-    install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
-    rm "${pkgdir}/usr/lib/${_pkgname}/${license}"
-  done
+    for size in 16 32 48 128 256 512 1024; do
+        install -D "${srcdir}/${_pkgname}/build/icons/${size}x${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png"
+    done
+
+    echo "Coping build..."
+    mkdir -p "${pkgdir}/opt/${_pkgname}"
+    cp -rf "${srcdir}/${_pkgname}/release/linux-unpacked/." "${pkgdir}/opt/${_pkgname}"
+
+    echo "Linking binary file"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "${pkgdir}/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
