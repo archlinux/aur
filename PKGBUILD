@@ -2,7 +2,7 @@
 
 pkgname=systemd-kexec
 pkgver=1.0.1
-pkgrel=8
+pkgrel=9
 pkgdesc="systemd for kexec"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -57,10 +57,10 @@ fe6f620d45145436bc46d7a497fe3aef3a4efea42f8f32444e2dc66acc5583e0e71b756d8a9ecaa8
 package() {
 # make -C build DESTDIR="$pkgdir" install
 install  -Dm644 kexec@.service  "$pkgdir/usr/lib/systemd/system/kexec@.service"
-install  -Dm644 systemctl-restart-mainline  "$pkgdir/usr/bin/systemctl-restart-mainline"
-install  -Dm644 systemctl-restart-lts  "$pkgdir/usr/bin/systemctl-restart-lts"
-install  -Dm644 systemctl-restart-zen  "$pkgdir/usr/bin/systemctl-restart-zen"
-install  -Dm644 systemctl-restart  "$pkgdir/usr/bin/systemctl-restart"
+install  -Dm755 systemctl-restart-mainline  "$pkgdir/usr/bin/systemctl-restart-mainline"
+install  -Dm755 systemctl-restart-lts  "$pkgdir/usr/bin/systemctl-restart-lts"
+install  -Dm755 systemctl-restart-zen  "$pkgdir/usr/bin/systemctl-restart-zen"
+install  -Dm755 systemctl-restart  "$pkgdir/usr/bin/systemctl-restart"
 }
 
 groups=('lcj')
