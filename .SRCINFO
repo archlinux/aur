@@ -9,9 +9,10 @@ pkgbase = fish-autopair-git
 	makedepends = git
 	depends = fish
 	provides = fish-autopair
+	conflicts = fish-autopair
 	conflicts = fish-pisces
-	source = fish-autopair-git::git+https://github.com/jorgebucaran/autopair.fish
+	source = fish-autopair-git::git+https://github.com/jorgebucaran/autopair.fish?signed
+	validpgpkeys = CA88B7CBEDCEE375F2376C53E54BA3C0E646DB30
 	sha256sums = SKIP
 
 pkgname = fish-autopair-git
-

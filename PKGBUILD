@@ -1,4 +1,5 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=fish-autopair-git
 pkgver=1.0.3.r0.g1222311
 pkgrel=1
@@ -9,20 +10,20 @@ license=('MIT')
 groups=('fish-plugins')
 depends=('fish')
 makedepends=('git')
-provides=('fish-autopair')
-conflicts=('fish-pisces')
-source=("$pkgname::git+$url")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'fish-pisces')
+source=("$pkgname::git+$url?signed")
 sha256sums=('SKIP')
+validpgpkeys=('CA88B7CBEDCEE375F2376C53E54BA3C0E646DB30')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/-/.r/;s/-/./'
+  git -C "$pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 package() {
   cd "$pkgname"
-  install -Dm644 conf.d/autopair.fish "$pkgdir/etc/fish/conf.d/autopair.fish"
-  find functions -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/fish/{}" \;
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.md"
+  install -Dm 644 conf.d/autopair.fish -t "$pkgdir/usr/share/fish/vendor_conf.d/"
+  find functions -type f -exec install -Dm 644 -t "$pkgdir/usr/share/fish/vendor_functions.d/" '{}' \+
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-
