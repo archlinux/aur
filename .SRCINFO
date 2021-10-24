@@ -1,6 +1,6 @@
 pkgbase = wooting-rgb-sdk-bin
 	pkgdesc = Customize colors on Wooting Keyboard #WootDev
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/WootingKb/wooting-rgb-sdk
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = wooting-rgb-sdk-bin
 	provides = libwooting-rgb-sdk
 	provides = wooting-rgb-sdk
 	conflicts = libwooting-rgb-sdk
-	source = https://github.com/WootingKb/wooting-rgb-sdk/releases/download/v1.4.0/wooting-rgb-sdk-v1.4.0-linux-x64.zip
-	sha512sums = c42e48b0b9f7f5512d5ed35d14822b747d620d66b180a11cb7a2e544d970ab8655909e9a1b89ff3af317f4b1eab5f34dd89ad6c2ed52a0847183516521571ed8
+	source = https://github.com/WootingKb/wooting-rgb-sdk/releases/download/v1.5.0/wooting-rgb-sdk-v1.5.0-linux-x64.zip
+	sha512sums = 4f768a04057f7b9ba66715e93236ea0de2f7836eea0c9ad9b9578e40dc72ff7b08155c886199f92973cfee5b5ae3b9334c2ce4da8f36d1ba133d642cdcd96fee
 
 pkgname = wooting-rgb-sdk-bin
-
