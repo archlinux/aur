@@ -27,22 +27,22 @@ sha256sums=('SKIP'
             'd3e1a3df1042a412aa23d0a1710c490c117239cd4d9ae9bae2ee32e190c8c03f')
 
 prepare() {
-  cd $_pkgbase
+  cd "$_pkgbase"
 
   git submodule init
-  git config submodule.libgd.url $srcdir/libgd
+  git config submodule.libgd.url "$srcdir/libgd"
   git submodule update
 
   patch -p1 -i ../nautilus-restore-typeahead.patch
 }
 
 pkgver() {
-  cd $_pkgbase
+  cd "$_pkgbase"
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  arch-meson $_pkgbase build \
+  arch-meson "$_pkgbase" build \
     -D docs=true \
     -D packagekit=false
   meson compile -C build
