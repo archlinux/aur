@@ -1,5 +1,5 @@
 pkgname=turtlico-git
-pkgver=0.5.0.r98.g51bb8f3
+pkgver=0.5.0.r107.g043b23c
 pkgrel=1
 pkgdesc="The easy programming tool"
 arch=('any')
