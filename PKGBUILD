@@ -4,7 +4,7 @@
 
 pkgname=python-binance-git
 pkgver=1.0.15.r2.g217f1e2
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial Python wrapper for the Binance exchange REST API"
 arch=('any')
 url="https://github.com/sammchardy/python-binance"
