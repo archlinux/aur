@@ -78,7 +78,7 @@ build() {
   cd FreeCAD
 
   cmake -Wno-dev -G Ninja -B build_dir -S . \
-    -D BUILD_ENABLE_CXX_STD=C++14 \
+    -D BUILD_ENABLE_CXX_STD=C++17 \
     -D BUILD_QT5=ON \
     -D BUILD_FEM=ON \
     -D BUILD_MESH=ON \
