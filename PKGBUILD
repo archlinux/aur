@@ -1,4 +1,4 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
 # Contributor: midgard <arch.midgard AT janmaes DOT com> 
 # Contributor: TrialnError <autumn-wind AT web DOT de>
 # Contributor: Yardena Cohen <yardenack AT gmail DOT com>
