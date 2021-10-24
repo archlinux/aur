@@ -1,11 +1,10 @@
 pkgbase = openbsd-manpages
 	pkgdesc = The OpenBSD manuals
 	pkgver = 7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://man.openbsd.org/
 	arch = any
 	license = BSD
-	makedepends = signify
 	options = !strip
 	source = https://ftp.openbsd.org/pub/OpenBSD/7.0/openbsd-70-base.pub
 	source = SHA256::https://ftp.openbsd.org/pub/OpenBSD/7.0/amd64/SHA256.sig
@@ -15,9 +14,9 @@ pkgbase = openbsd-manpages
 	source = manfmt
 	sha256sums = db407b2015126ec80cedebb9b3248ee3c3a6e9369236828db758e6898c05fdbd
 	sha256sums = c67fb553cdb3ff4c76d3d2a41cb197b4edde02bda64cef3203b404b9904bfdd3
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = f4286a6c13aa861f5092fd5eaa3ba1e414e60901773d6739d00ec8b4a524d489
+	sha256sums = 0508b0b0c9adf26bdb6a5d650dab232c60864ebdc6a1c1f1c716669a20445fa2
+	sha256sums = 43b7ed233bd820de8a0c87bf50060be915e2869d96433e4b598ed15c00fb7e13
 	sha256sums = 335fa03d90fa0829327b8ba861fd5fda18d8da83a3d3e04ff21fde27037b62bb
 
 pkgname = openbsd-manpages
