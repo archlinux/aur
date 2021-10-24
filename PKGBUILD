@@ -4,8 +4,8 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-spotdl
-pkgver=3.8.0
-pkgrel=3
+pkgver=3.9.0
+pkgrel=1
 
 pkgdesc="Download your Spotify playlists and songs along with album art and metadata (from YouTube if a match is found)."
 arch=('any')
@@ -29,7 +29,7 @@ makedepends=('python-setuptools')
 install="spotdl.install"
 
 source=("https://pypi.io/packages/source/s/spotdl/spotdl-$pkgver.tar.gz")
-b2sums=('9c46ae90a26fb09b70ac8e611a8962dcf6a579fb1cfc966b15bf067d47cb7677870996ebb746d965b6d0069fbcf272c3f061077c5cf5d7883898b7a636434135')
+b2sums=('523b81f907e078dd0edbb699cc3014531870b447e079c4f56f80ed9bc671356d7d36d31524eb4ebbafe2b96fdbd36e1d7b8c7b8b847f54774b94b855e36c2d26')
 
 build() {
   cd spotdl-$pkgver

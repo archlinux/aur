@@ -1,12 +1,12 @@
 #!/bin/bash
 
-BPurple='\033[1;35m' # Bold purple
-Cyan='\033[0;36m'    # Cyan
-Reset='\033[0m'      # Reset
+B='\033[1;36m' # Bold cyan
+C='\033[0;36m' # Cyan
+R='\033[0m \a' # Reset all colors and ring a bell
 
 call_to_action() {
-	echo -e "$Cyan"
-	echo " +-----------------------------------------------------------------------------------------+"
+	echo -e "$C"
+	echo -e " +-$B=[ python-spotdl ]=$C---------------------------------------------------------------------+"
 	echo " |   Remember,                                                                             |"
 	echo " |   YouTube Music must be available in your country for spotDL to work.                   |"
 	echo " |   This is because we use YouTube Music to filter search results.                        |"
@@ -14,7 +14,7 @@ call_to_action() {
 	echo " |   by visiting \`https://music.youtube.com/\`.                                             |"
 	echo " |                                                                                         |"
 	echo " |   If your country doesn't support YouTube Music,                                        |"
-	echo " |   you can try using any vpn or proxychains with tor.                                    |"
+	echo " |   you can try using any vpn or torsocks.                                                |"
 	echo " |                                                                                         |"
 	echo " |   You can,                                                                              |"
 	echo " |   run this app by executing 'spotdl' on your terminal                                   |"
@@ -24,34 +24,25 @@ call_to_action() {
 	echo " |   report issue about the app at : https://github.com/spotDL/spotify-downloader/issues   |"
 	echo " |   - zoorat.                                                                             |"
 	echo " +-----------------------------------------------------------------------------------------+"
-	echo -e "$Reset"
+	echo -e "$R"
 }
 
 after_remove() {
-	echo -e "$Cyan"
-	echo " +--------------------------------------------------------------------------------+"
+	echo -e "$C"
+	echo -e " +-$B=[ python-spotdl ]=$C------------------------------------------------------------+"
 	echo " |   You should remove all '.spotdl-cache' files.                                 |"
 	echo " |   to find that file run \` tree -fia /mnt /home | grep \".spotdl-cache\" \`        |"
 	echo " |   - zoorat.                                                                    |"
 	echo " +--------------------------------------------------------------------------------+"
-	echo -e "$Reset"
+	echo -e "$R"
 }
 
-# arg 1:  the new package version
 post_install() {
-	echo -e "$BPurple:: done installing 'python-spotdl $1' $Reset"
 	call_to_action
 }
-
-# arg 1:  the new package version
-# arg 2:  the old package version
 post_upgrade() {
-	echo -e "$BPurple:: done upgrading python-spotdl from '$2' to '$1' $Reset"
 	call_to_action
 }
-
-# arg 1:  the old package version
 post_remove() {
-	echo -e "$BPurple:: done removing 'python-spotdl $1' $Reset"
 	after_remove
 }
