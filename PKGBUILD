@@ -3,7 +3,7 @@
 
 _pkgname=FishFight
 pkgname=fishfight-git
-pkgver=r279.643eec4
+pkgver=r284.4c941f7
 pkgrel=1
 pkgdesc="A tactical 2D shooter game"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("${pkgname%-git}")
 source=("git+${url}"
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '7ba8b5635f316c9bf1d4eeae5cc7a84a8076f4c496cd107b4207cf8b4a86fb81')
+            'e10f28372998d4863ad4ef511daac8930d5e8cf66fdda3c9acecd2caf33202b0')
 
 pkgver() {
   cd "$_pkgname"
@@ -45,7 +45,6 @@ package() {
 
   mkdir -p "$pkgdir/opt/${pkgname%-git}"
   cp -r "assets" "$pkgdir/opt/${pkgname%-git}/"
-  cp -r "temp" "$pkgdir/opt/${pkgname%-git}/"
   find "$pkgdir/opt/${pkgname%-git}/assets/sounds/" -type f -exec chmod 444 {} \;
 
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"

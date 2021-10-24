@@ -1,6 +1,6 @@
 pkgbase = fishfight-git
 	pkgdesc = A tactical 2D shooter game
-	pkgver = r279.643eec4
+	pkgver = r284.4c941f7
 	pkgrel = 1
 	url = https://github.com/fishfight/FishFight
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = fishfight-git
 	source = git+https://github.com/fishfight/FishFight
 	source = fishfight.sh
 	sha256sums = SKIP
-	sha256sums = 7ba8b5635f316c9bf1d4eeae5cc7a84a8076f4c496cd107b4207cf8b4a86fb81
+	sha256sums = e10f28372998d4863ad4ef511daac8930d5e8cf66fdda3c9acecd2caf33202b0
 
 pkgname = fishfight-git
