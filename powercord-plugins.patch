@@ -1,5 +1,5 @@
 diff --git a/src/Powercord/apis/commands.js b/src/Powercord/apis/commands.js
-index a823920..4d5b3ce 100644
+index a8239208..4d5b3ce5 100644
 --- a/src/Powercord/apis/commands.js
 +++ b/src/Powercord/apis/commands.js
 @@ -52,8 +52,8 @@ class CommandsAPI extends API {
@@ -14,10 +14,12 @@ index a823920..4d5b3ce 100644
      if (typeof command === 'string') {
        console.error('no');
 diff --git a/src/Powercord/managers/plugins.js b/src/Powercord/managers/plugins.js
-index b904caa..8a04d3c 100644
+index b904caaf..4976527d 100644
 --- a/src/Powercord/managers/plugins.js
 +++ b/src/Powercord/managers/plugins.js
-@@ -2,9 +2,12 @@ const { resolve } = require('path');
+@@ -1,10 +1,13 @@
+-const { resolve } = require('path');
++const { resolve, join } = require('path');
  const { readdirSync } = require('fs');
  const { rmdirRf } = require('powercord/util');
  
@@ -93,7 +95,7 @@ index b904caa..8a04d3c 100644
        if (powercord.settings.get('disabledPlugins', []).includes(plugin.entityID)) {
          continue;
 diff --git a/src/fake_node_modules/powercord/entities/Plugin.js b/src/fake_node_modules/powercord/entities/Plugin.js
-index 3522a54..fa0e0a5 100644
+index 3522a549..fa0e0a5c 100644
 --- a/src/fake_node_modules/powercord/entities/Plugin.js
 +++ b/src/fake_node_modules/powercord/entities/Plugin.js
 @@ -63,7 +63,7 @@ class Plugin extends Updatable {
