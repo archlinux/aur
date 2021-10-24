@@ -1,0 +1,9 @@
+--- repl_original.lisp	2021-10-24 10:51:45.566977458 +0200
++++ repl.lisp	2021-10-24 10:52:44.390167063 +0200
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env -S sbcl --script
+-(load "~/quicklisp/setup")
++(load "/usr/lib/quicklisp/setup")
+ 
+ (let ((*standard-output* (make-broadcast-stream)))
+   (ql:quickload "alexandria")
