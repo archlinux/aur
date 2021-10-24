@@ -1,4 +1,4 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
 # Contributor: somepaulo <burafino AT gmail DOT com>
 # Contributor: Massimo Branchini <max.bra.gtalk AT gmail DOT com>
 
