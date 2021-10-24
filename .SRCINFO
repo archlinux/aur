@@ -1,16 +1,23 @@
 pkgbase = firefox-developer-edition-firefox-symlink-latest
-	pkgdesc = Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks icon- and .desktop-files.
-	pkgver = 95.0b4
+	pkgdesc = Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks extensions, icon- and .desktop-files.
+	pkgver = 96.0b6
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/firefox-developer-edition-firefox-symlink-latest
+	install = firefox-developer-edition-firefox-symlink.install
 	arch = any
 	license = custom: public domain
 	depends = firefox-developer-edition
-	provides = firefox-developer-edition-firefox-symlink=95.0b4
-	provides = firefox=95.0b4
+	provides = firefox-developer-edition-firefox-symlink=96.0b6
+	provides = firefox=96.0b6
 	conflicts = firefox-developer-edition-firefox-symlink
 	conflicts = firefox
+	source = firefox-developer-edition-firefox-symlinks-create.bash
+	source = firefox-developer-edition-firefox-symlinks-delete.bash
+	source = firefox-developer-edition-firefox-symlink.hook
 	source = license-metapackage-pd.txt
+	sha256sums = d64c249647cf5c31757a2398e067b48009941d24395637e974aeb842d13b8b95
+	sha256sums = 2c0a6ff047c163df20d9b3248595ee19de7498d8b5a9c65df4a07260014b3538
+	sha256sums = 24ef877acd05f7e352f1841efce4e1bcd1d9163b3883f73e9cc6de918301f50e
 	sha256sums = 1e86f8ac1ad7315c76f4db8bf6a1dbdde6825ac95ff468e431bbe452b6865ae6
 
 pkgname = firefox-developer-edition-firefox-symlink-latest

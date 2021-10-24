@@ -1,0 +1,18 @@
+post_install() {
+  echo >&2 'Removing symlinks for firefox-developer-edition...'
+  /usr/share/libalpm/scripts/firefox-developer-edition-firefox-symlinks-delete
+  echo >&2 'Creating symlinks for firefox-developer-edition...'
+  /usr/share/libalpm/scripts/firefox-developer-edition-firefox-symlinks-create
+}
+
+post_upgrade() {
+  echo >&2 'Removing symlinks for firefox-developer-edition...'
+  /usr/share/libalpm/scripts/firefox-developer-edition-firefox-symlinks-delete
+  echo >&2 'Creating symlinks for firefox-developer-edition...'
+  /usr/share/libalpm/scripts/firefox-developer-edition-firefox-symlinks-create
+}
+
+pre_remove() {
+  echo >&2 'Removing symlinks for firefox-developer-edition...'
+  /usr/share/libalpm/scripts/firefox-developer-edition-firefox-symlinks-delete
+}

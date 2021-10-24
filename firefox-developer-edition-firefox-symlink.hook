@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/firefox/*
+
+[Action]
+Description = Updating symlinks for firefox-developer-edition...
+Exec = /bin/bash -c "cd /usr/share/libalpm/scripts && ./firefox-developer-edition-firefox-symlinks-delete && ./firefox-developer-edition-firefox-symlinks-create"
+When = PostTransaction
+Depends = firefox-developer-edition
