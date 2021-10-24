@@ -1,0 +1,17 @@
+pkgbase = whatstux
+	pkgdesc = Super simple Rust+GTK WhatsApp Web Client
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/nexxontech/whatstux
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = gtk3
+	depends = webkit2gtk
+	source = https://gitlab.com/nexxontech/whatstux/-/archive/0.1.0/whatstux-0.1.0.tar.gz
+	source = whatstux.desktop
+	sha512sums = 1489b69967465cbcc8010d9a62b4a800d924d24b4727b712eab4772f4df0ac43d0fad53291aabf59892fa41f06f8fb959f503c332c41cfe5d8b0316ced4fc81a
+	sha512sums = c09392e9c4bae32fa59d32b3ae78b77e079ea526af96454e89638179b6357dec25edaf304f1699aaf5375a5f8e1ba82caeba441c5ab4a30c7c35440d71cf8ee1
+
+pkgname = whatstux

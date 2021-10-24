@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=WhatsTux
+Comment=Super simple Rust+GTK WhatsApp Web Client
+Exec=/usr/bin/whatstux
+Terminal=false
+Type=Application
+Categories=Chat
