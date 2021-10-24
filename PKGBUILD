@@ -1,5 +1,5 @@
 pkgname=mictray
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Lightweight application which lets you control the microphone state and volume from system tray"
 url="https://github.com/Junker/MicTray"
@@ -8,7 +8,7 @@ license=('GPL-3')
 makedepends=('vala' 'meson' 'ninja' 'libpulse' 'libnotify')
 depends=('gtk3' 'libgee')
 source=("https://github.com/Junker/${pkgname}/archive/${pkgver}.zip")
-md5sums=('4d313a7c9cf094bcf316c2515ec5c89f')
+md5sums=('86f58f4bb46c3c14fd76a3068f26519d')
 
 build() {
 cd $srcdir/${pkgname}-$pkgver
