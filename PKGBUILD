@@ -1,11 +1,11 @@
 # Maintainer: Joost Bremmer <toost dot b at gmail dot com>
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 # Co-Maintainer: Mubashshir <ahmubashshir at gmail dot com>
-# pkg: git
+# from: git
 
 pkgname=trackma-git
-pkgver=0.8.4.r52.gcade202
-pkgrel=2
+pkgver=0.8.4.r54.g55728fd
+pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
