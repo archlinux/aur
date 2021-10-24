@@ -16,4 +16,3 @@ pkgbase = gnome-shell-extension-desktop-icons
 	sha256sums = 7b2886ce3a1376d54de870943ca283a60275004094a27f44b9ab5998cdc02780
 
 pkgname = gnome-shell-extension-desktop-icons
-
