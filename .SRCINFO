@@ -1,0 +1,16 @@
+pkgbase = xdg-desktop-portal-lxqt-git
+	pkgdesc = A backend implementation for xdg-desktop-portal using Qt/KF5
+	pkgver = 0.0.0.r1.b3710c0
+	pkgrel = 1
+	url = https://github.com/lxqt/xdg-desktop-portal-lxqt
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = kwindowsystem
+	provides = xdg-desktop-portal-impl
+	source = git+https://github.com/lxqt/xdg-desktop-portal-lxqt
+	sha256sums = SKIP
+
+pkgname = xdg-desktop-portal-lxqt-git
