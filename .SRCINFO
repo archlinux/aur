@@ -1,6 +1,6 @@
 pkgbase = osc-udev-storage
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 2.0
+	pkgrel = 1
 	arch = any
 	license = GPL
 	source = osc-udev-storage.tar.gz

@@ -1,7 +1,7 @@
 # Maintainer: Romain Lecat <romain.lecat@outscale.com>
 pkgname=osc-udev-storage
-pkgver=1.0
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 epoch=
 pkgdesc=""
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname.tar.gz")
 noextract=()
-sha256sums=('ded0c66c0b5b5f7e0d4b0af26ebdea0c77f9d6ca4eff95497eaefa06371e092b')
+sha256sums=('6a711875c76a533d3938ec8e5ad8f3b12f6f1b0d1c2c3ccb91bafd0de563b5ef')
 validpgpkeys=()
 
 package() {
