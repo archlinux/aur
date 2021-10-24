@@ -2,7 +2,7 @@
 pkgname=('drill-search-cli' 'drill-search-gtk')
 pkgbase=drill-search
 pkgver=571+45+gafc2b997
-pkgrel=1
+pkgrel=2
 pkgdesc="Search files without indexing, but clever crawling"
 arch=('x86_64')
 url="https://drill.software"
@@ -31,6 +31,7 @@ build() {
 
 package_drill-search-cli() {
   pkgdesc+=" (CLI version)"
+  depends=('bash')
 
   cd "$srcdir/Drill/Build/Drill-CLI-linux-$CARCH-release"
   install -d "$pkgdir/"{opt/$pkgname,usr/bin}

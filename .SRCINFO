@@ -1,7 +1,7 @@
 pkgbase = drill-search
 	pkgdesc = Search files without indexing, but clever crawling
 	pkgver = 571+45+gafc2b997
-	pkgrel = 1
+	pkgrel = 2
 	url = https://drill.software
 	arch = x86_64
 	license = GPL2
@@ -18,6 +18,7 @@ pkgbase = drill-search
 
 pkgname = drill-search-cli
 	pkgdesc = Search files without indexing, but clever crawling (CLI version)
+	depends = bash
 
 pkgname = drill-search-gtk
 	pkgdesc = Search files without indexing, but clever crawling (GTK version)
