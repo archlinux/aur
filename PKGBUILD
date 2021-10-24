@@ -1,6 +1,6 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
 # Contributor: moormaster <moormaster AT gmx DOT net>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname='gnome-activity-journal'
 pkgver='1.0.0'
