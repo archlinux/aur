@@ -1,0 +1,37 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 965d913..10d1a4a 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -6,5 +6,5 @@
+ bin_PROGRAMS = ifo_dump
+ 
+ ifo_dump_SOURCES = ifo_dump.c
+-ifo_dump_LDADD = -ldvdnav @DL_LIBS@
++ifo_dump_LDADD = -ldvdread @DL_LIBS@
+ 
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 76c0174..3d32c2a 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -101,7 +101,7 @@ install_sh = @install_sh@
+ bin_PROGRAMS = ifo_dump
+ 
+ ifo_dump_SOURCES = ifo_dump.c
+-ifo_dump_LDADD = -ldvdnav @DL_LIBS@
++ifo_dump_LDADD = -ldvdread @DL_LIBS@
+ subdir = src
+ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+ CONFIG_HEADER = $(top_builddir)/config.h
+diff --git a/src/ifo_dump.c b/src/ifo_dump.c
+index 6a48d59..dba34f2 100644
+--- a/src/ifo_dump.c
++++ b/src/ifo_dump.c
+@@ -26,7 +26,7 @@
+ #include <getopt.h>
+ #endif
+ 
+-#include <dvdnav/ifo_print.h>
++#include <dvdread/ifo_print.h>
+ 
+ static char *program_name;
+ 
