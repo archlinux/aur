@@ -51,7 +51,6 @@ pkgbase = obs-studio-tytan652
 	source = FindLibpci.cmake
 	source = vaapi_set_dri_devices.patch
 	source = pa_buffer_aggressive.patch
-	source = pa_fix_monitor_s32.patch
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8
 	sha256sums = SKIP
@@ -61,7 +60,6 @@ pkgbase = obs-studio-tytan652
 	sha256sums = 916f9fb3819c9d952140d65434e9dffc77b688dc1dc027b39226c33ee97be63f
 	sha256sums = 5c18a85f95090f01a9eb24aeea13220f8698f8d433970e4dc6391432d033f065
 	sha256sums = 4b90a29e75eb7281cbe754408327d44192c0892557f03bd3c612f3658af739fc
-	sha256sums = ada96c76492dbdf8835754009b0e2178653aa56fbc778b52985fdca703c84a86
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -58,7 +58,6 @@ source=(
         "FindLibpci.cmake" # https://github.com/carlocastoldi/obs-studio/blob/2936-fix/cmake/Modules/FindLibpci.cmake
         "vaapi_set_dri_devices.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/5336.patch
         "pa_buffer_aggressive.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4908.patch
-        "pa_fix_monitor_s32.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/5400.patch
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
@@ -70,7 +69,6 @@ sha256sums=(
         "916f9fb3819c9d952140d65434e9dffc77b688dc1dc027b39226c33ee97be63f"
         "5c18a85f95090f01a9eb24aeea13220f8698f8d433970e4dc6391432d033f065"
         "4b90a29e75eb7281cbe754408327d44192c0892557f03bd3c612f3658af739fc"
-        "ada96c76492dbdf8835754009b0e2178653aa56fbc778b52985fdca703c84a86"
         "SKIP"
         "SKIP"
 )
@@ -80,6 +78,12 @@ prepare() {
   git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
+
+  ## libobs/audio-monitoring: Fix PulseAudio monitoring volume for s32 format (https://github.com/obsproject/obs-studio/commit/0eed7ca98f256c1661f0c3237993a61da5c9912f)
+  git cherry-pick --no-commit 0eed7ca98f256c1661f0c3237993a61da5c9912f
+
+  ## libobs/audio-monitoring: Fix PulseAudio monitoring volume for u8 format (https://github.com/obsproject/obs-studio/commit/85f45a3ef6bbb6ca54310dc9599a86f0f7dde4b0)
+  git cherry-pick --no-commit 85f45a3ef6bbb6ca54310dc9599a86f0f7dde4b0
 
   ## libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
   patch -Np1 < "$srcdir/python_fix.patch"
@@ -100,9 +104,6 @@ prepare() {
 
   ## pulse: fill audio monitor buffer more aggressively (https://github.com/obsproject/obs-studio/pull/4908)
   patch -Np1 < "$srcdir/pa_buffer_aggressive.patch"
-
-  ## linux-pulseaudio: Fix monitoring volume for s32 format (https://github.com/obsproject/obs-studio/pull/5400)
-  patch -Np1 < "$srcdir/pa_fix_monitor_s32.patch"
 }
 
 build() {
