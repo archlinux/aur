@@ -1,0 +1,16 @@
+post_install() {
+  echo "Now you should back up /etc/ufw/after.rules, and run:"
+  echo "  # ufw-docker install"
+  echo "If you want to show help , just run:"
+  echo "  # ufw-docker help"
+  echo "Check installing status, run:"
+  echo "  # ufw-docker check"
+  echo "Check status, run:"
+  echo "  # ufw-docker status"
+}
+
+post_remove() {
+  echo "rest after.rules to default"
+  rm /etc/ufw/after.rules
+  mv /etc/ufw/after.rules-ufw-docker* /etc/ufw/after.rules
+}
