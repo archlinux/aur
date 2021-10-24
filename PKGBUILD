@@ -10,6 +10,7 @@ url='https://github.com/AmusementClub/nnedi3_resample'
 license=('GPL')
 depends=('vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-mvsfunc-git'
+         'vapoursynth-plugin-havsfunc-git'
          )
 optdepends=('vapoursynth-plugin-nnedi3-git'
             'vapoursynth-plugin-znedi3-git'

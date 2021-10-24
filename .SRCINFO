@@ -8,6 +8,7 @@ pkgbase = vapoursynth-plugin-nnedi3_resample-git
 	makedepends = git
 	depends = vapoursynth-plugin-fmtconv-git
 	depends = vapoursynth-plugin-mvsfunc-git
+	depends = vapoursynth-plugin-havsfunc-git
 	optdepends = vapoursynth-plugin-nnedi3-git
 	optdepends = vapoursynth-plugin-znedi3-git
 	optdepends = vapoursynth-plugin-nnedi3cl-git
