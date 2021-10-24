@@ -5,7 +5,7 @@
 
 pkgname=anbox-git
 pkgver=r1358.84f0268
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
@@ -20,7 +20,6 @@ source=("git+https://github.com/anbox/anbox.git"
 	'lxc.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/fc60972afd4ff0c096498e28557b9a16e801aa7f/community/anbox/lxc4.patch'
 	'sdbus.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/fc60972afd4ff0c096498e28557b9a16e801aa7f/community/anbox/no-bundled-sdbus.patch'
 	'delayed-start.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/70a1a8afb7b6ac37291d382e6e5cc7561fc88626/community/anbox/give-more-time-to-start.patch'
-	'dbus-launch.patch::https://github.com/anbox/anbox/pull/1918.patch'
 	'desktop-dir.patch'
 	'anbox-container-manager.service'
 	'anbox-session-manager.service'
@@ -36,7 +35,6 @@ sha256sums=('SKIP'
             'c1071203defdeaee56122913a6d7e67ac496c889a0c59cb889d94a58bc655bfa'
             '7c0626afaf1ce004ac2c57cd89db393f9a6ba21f1087001d15278a7bd79c8219'
             '253c211455ff0cfaa058a0b80eb41d58f84ee646c0c67dbcbcc888b5833009a7'
-            '90263a05d1578ac7fc964656ba8b84efa2253474a8bf2845487cc925fa4dad72'
             'd1e2e3fa1299b423f1d98cbd3c591d853f1ce8646f508ef838fe714f986fc5b2'
             'be18c27f349560d46f7d7912b3b84d503e477fb643c55e4a7d6de9a84be93d0b'
             '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8'
@@ -63,7 +61,7 @@ prepare() {
   truncate -s 0 cmake/FindGMock.cmake
   truncate -s 0 tests/CMakeLists.txt
   sed -i '1i\#include <cstdint>' "$srcdir/anbox/src/anbox/input/manager.cpp"
-  for each in lxc sdbus delayed-start desktop-dir dbus-launch;do
+  for each in lxc sdbus delayed-start desktop-dir;do
     patch -p1 < "$srcdir/$each.patch"
   done
 
