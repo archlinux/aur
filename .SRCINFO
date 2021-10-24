@@ -1,6 +1,6 @@
 pkgbase = topcat
 	pkgdesc = Tool for OPerations on Catalogues And Tables
-	pkgver = 4.8.1
+	pkgver = 4.8.2
 	pkgrel = 3
 	url = http://www.star.bris.ac.uk/~mbt/topcat/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = topcat
 	source = https://raw.githubusercontent.com/Starlink/starjava/master/topcat/src/docs/tclogo.svg
 	source = topcat
 	source = topcat.desktop
-	md5sums = 27fd20a4f11cf3e6dfd022e636892b94
+	md5sums = a65430e71f9dc2817f321f919c6bbd89
 	md5sums = a8df7717765aa85d16dfbf296ea8d76e
 	md5sums = 5f2df6a05c72b5641bf6a2b1c29173ed
 	md5sums = c00fecfd325398c2bcbd08ac76456c6e
