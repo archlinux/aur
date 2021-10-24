@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=terri-fried-git
 pkgver=r34.463aa1e
-pkgrel=9
+pkgrel=10
 pkgdesc="A multi-platform C++ game made for Ludum Dare 46"
 arch=('x86_64')
 url="https://github.com/polymarsdev/terri-fried"
@@ -10,8 +10,9 @@ depends=('raylib' 'pulseaudio')
 makedepends=('git' 'raylib' 'gcc')
 source=("$pkgname::git+https://github.com/polymarsdev/terri-fried" 'terri-fried' 'terri-fried.desktop')
 sha512sums=('SKIP'
-            'dfe61f184aa329210ca1d60eb4a38c1f319a285e0b26a7e15b6f714cd98e835e87d910a3d41f9db83b9a5dc34f5e97a7b290f91fbcb4e87cad393302c5a121a7'
+            '8d900d1de8c1ea4a4d337dc19664808540e14380cc99a147e4f3cbff3946f20f7db8fb4f3723e84f30703a23ddd704faa6d2c9e83f87ff85e3f6310929ccd9a4'
             'cb435d7f26523d1af1182cd5f4af010c45cb4630133e04155ff806ca500c9e6882ae14ab0319b062aa3686bf72fd9e8569f449eef62571c8e080d7998b9100be')
+
 pkgver() {
 	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"

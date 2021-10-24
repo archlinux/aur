@@ -3,7 +3,7 @@
 
 cd "$HOME/.config" || exit
 
-if ls | grep terri-fried 1> /dev/null
+if test -e terri-fried 
 then
 	echo "bruh" > /dev/null
 else 
