@@ -1,0 +1,15 @@
+pkgbase = xencelabs
+	pkgdesc = Driver for the Xencelabs Pen Tablets
+	pkgver = 1.1.0.2
+	pkgrel = 1
+	url = https://www.xencelabs.com
+	install = xencelabs.install
+	arch = x86_64
+	license = LGPL3
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = icu
+	source_x86_64 = https://www.xencelabs.com/wp-content/uploads/2021/10/Linux-1.1.0-2-driver.zip
+	sha256sums_x86_64 = 7063c441cd594f7200f6a14c25505f25c1a129749a017478b802915f8df1b226
+
+pkgname = xencelabs

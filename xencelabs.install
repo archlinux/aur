@@ -1,0 +1,11 @@
+post_install() {
+  echo "--------------------------------------------------------------------------------"
+  echo "WARNING: Make sure you create the folder ~/.local/share/xencelabs/"
+  echo "WARNING: and copy the contents of /usr/lib/xencelabs/config/ into it."
+  echo "WARNING: xencelabs will not work unless you do this."
+  echo "--------------------------------------------------------------------------------"
+}
+
+post_upgrade() {
+  post_install
+}
