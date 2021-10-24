@@ -1,0 +1,14 @@
+pkgbase = wootingprofileswitcher-git
+	pkgdesc = Automatically switch Wooting keyboard profiles
+	pkgver = r46.d0863d3
+	pkgrel = 1
+	url = https://github.com/ShayBox/wootingprofileswitcher
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = wootingprofileswitcher
+	conflicts = wootingprofileswitcher
+	source = git+https://github.com/ShayBox/wootingprofileswitcher.git
+	md5sums = SKIP
+
+pkgname = wootingprofileswitcher-git
