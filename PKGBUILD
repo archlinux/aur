@@ -4,7 +4,7 @@
 pkgname=bucklespring-libinput-git
 _pkgname=bucklespring
 pkgver=latest
-pkgrel=7
+pkgrel=8
 pkgdesc="Nostalgia bucklespring keyboard sound, sampled from IBM's Model-M. libinput version"
 arch=('i686' 'x86_64')
 url="https://github.com/zevv/bucklespring"
@@ -24,7 +24,7 @@ sha1sums=('SKIP'
           '26461f59226c610d54d3d6fb3824c537475cc8cd')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/$_pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
