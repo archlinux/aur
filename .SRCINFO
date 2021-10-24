@@ -1,6 +1,6 @@
 pkgbase = fclones-bin
 	pkgdesc = Efficient Duplicate File Finder
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/pkolaczk/fclones
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fclones-bin
 	depends = gcc-libs
 	provides = fclones
 	conflicts = fclones
-	source_x86_64 = fclones-bin-0.16.0.tgz::https://github.com/pkolaczk/fclones/releases/download/v0.16.0/fclones-0.16.0.tgz
-	sha512sums_x86_64 = 0269bf4c9c86221779867515a6869c887fd6271313db5aa7db4637915c0c1e9bc578a1bb2f4f2973ac520b177b97c91f07e75062353918de5159a9008d22b196
+	source_x86_64 = fclones-bin-0.17.0.tgz::https://github.com/pkolaczk/fclones/releases/download/v0.17.0/fclones-0.17.0.tgz
+	sha512sums_x86_64 = 7902de590a74bebe521f8f896354f36a45a2accc88e0572ece1741c8e081c1d0c0b78d7867a6e0158b44e00d8e9de60c927118d0ee648fa50c39cb40d63412bb
 
 pkgname = fclones-bin
