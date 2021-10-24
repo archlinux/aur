@@ -2,7 +2,7 @@
 
 pkgname=steampipe-bin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Steampipe CLI'
 url='https://github.com/turbot/steampipe'
 license=('AGPL-3.0')
