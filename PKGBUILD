@@ -1,7 +1,8 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=roadrunner
-pkgver=2.5.0
+pkgver=2.5.2
+_rr_ver=2.5.0
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
@@ -10,14 +11,14 @@ license=(MIT)
 depends=("php>=7.3")
 makedepends=("go>=1.16")
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/spiral/$pkgname/archive/v$pkgver.tar.gz"
+	"$pkgname-$_rr_ver.tar.gz::https://github.com/spiral/$pkgname/archive/v$_rr_ver.tar.gz"
 	"$pkgname-binary-$pkgver.tar.gz::https://github.com/spiral/$pkgname-binary/archive/v$pkgver.tar.gz"
 	".rr.yaml.sample-full"
 	".rr.yaml.sample-minimal"
 )
 sha256sums=(
 	'a04dd6b333e1b6d942d5a4611dbc8b4352f227288598e33748d225c11dec6118'
-	'35b866f0ae1731e1a2d15ee83a076d15558e3fae7e245feb6269b442ff933cb3'
+	'bf9da2b20f49db395d29887327f742962f53a99a1c923995aa7ac6228095d02b'
 	SKIP
 	SKIP
 )
@@ -27,7 +28,7 @@ prepare() {
 	export GOPATH="$srcdir"/gopath
 
 	cd "$srcdir/$pkgname-binary-$pkgver"
-	go mod edit -replace "github.com/spiral/roadrunner/v2=../roadrunner-$pkgver"
+	go mod edit -replace "github.com/spiral/roadrunner/v2=../roadrunner-$_rr_ver"
 	go mod tidy
 	go mod download
 }
@@ -51,9 +52,6 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make test_coverage
-
 	cd "$srcdir/$pkgname-binary-$pkgver"
 	go test -race -covermode=atomic -coverprofile ./coverage.txt ./...
 }
