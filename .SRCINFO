@@ -1,0 +1,16 @@
+pkgbase = revolt-desktop-adblock-git
+	pkgdesc = Fork of revolt-desktop-git with AdBlocker
+	pkgver = 33.adff38a
+	pkgrel = 1
+	url = https://revolt.chat
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = npm
+	depends = electron
+	provides = revolt-desktop
+	conflicts = revolt-desktop-git
+	source = git+https://github.com/janderedev/revolt-desktop-adblock.git
+	md5sums = SKIP
+
+pkgname = revolt-desktop-adblock-git
