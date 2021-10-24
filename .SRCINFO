@@ -1,6 +1,6 @@
 pkgbase = xplr-git
 	pkgdesc = A hackable, minimal, fast TUI file explorer (git)
-	pkgver = 0.15.0.r4.gac1b407
+	pkgver = 0.15.2.r4.gc5f6095
 	pkgrel = 1
 	url = https://github.com/sayanarijit/xplr
 	arch = x86_64
