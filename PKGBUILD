@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/gazorby/fish-abbreviation-tips"
 license=('MIT')
 groups=('fish-plugins')
-depends=('fish')
+depends=('fish>=3.1.0')
 makedepends=('git')
 checkdepends=('fish-fishtape')
 provides=("${pkgname%-git}")
