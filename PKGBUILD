@@ -1,4 +1,4 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
 
 pkgname='gnunet-fuse'
 pkgver='0.15.0'
@@ -202,7 +202,7 @@ _pkg_mirrors=("ftp://ftp.gnu.org/gnu/gnunet/${pkgname}-${pkgver}.tar.gz"
 
 # General function for scanning a list of mirrors
 _get_mirror() {
-	# Author: grufo <madmurphy333@gmail.com>
+	# Author: grufo <madmurphy333 AT gmail DOT com>
 	local -n url_list=$1
 	local url_item
 	for url_item in ${url_list[@]}; do
