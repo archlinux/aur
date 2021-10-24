@@ -12,6 +12,7 @@ pkgbase = python-binance-git
 	depends = python
 	depends = python-aiohttp
 	depends = python-dateparser
+	depends = python-pytz
 	depends = python-requests
 	depends = python-ujson
 	depends = python-websockets=9.1
