@@ -1,0 +1,21 @@
+diff -up src/libgksu-2.0.12/libgksu/libgksu.c.orig src/libgksu-2.0.12/libgksu/libgksu.c
+--- src/libgksu-2.0.12/libgksu/libgksu.c.orig	2021-10-24 14:38:42.899999999 -0600
++++ src/libgksu-2.0.12/libgksu/libgksu.c	2021-10-24 14:41:17.249999999 -0600
+@@ -1277,7 +1277,7 @@ sudo_prepare_xauth (GksuContext *context
+   context->dir = g_strdup (mkdtemp(template));
+   if (!context->dir)
+     {
+-      fprintf (stderr, strerror(errno));
++      fprintf (stderr, "%s", strerror(errno));
+       return FALSE;
+     }
+ 
+@@ -2238,7 +2238,7 @@ gksu_su_fuller (GksuContext *context,
+ 					  " %s"), converted_str, "gksu: waiting");
+ 	      g_free (converted_str);
+ 
+-	      g_set_error (error, gksu_quark, GKSU_ERROR_HELPER, emsg);
++	      g_set_error (error, gksu_quark, GKSU_ERROR_HELPER, "%s", emsg);
+ 	      g_free (emsg);
+ 
+ 	      if (context->debug)

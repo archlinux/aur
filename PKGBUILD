@@ -3,9 +3,9 @@
 
 pkgname=libgksu
 pkgver=2.0.12
-pkgrel=8
+pkgrel=9
 pkgdesc="gksu authorization library"
-arch=(x86_64)
+arch=(x86_64 i686)
 url="http://www.nongnu.org/gksu/index.html"
 license=(GPL)
 depends=('gconf' 'gtk2' 'libgnome-keyring' 'libgtop' 'startup-notification')
@@ -18,7 +18,8 @@ source=(http://people.debian.org/~kov/gksu/${pkgname}-${pkgver}.tar.gz
 	libgksu-2.0.12-notests.patch
         libgksu-2.0.12-revert-forkpty.patch
         libgksu-2.0.7-libs.patch
-        libgksu-2.0.7-polinguas.patch)
+        libgksu-2.0.7-polinguas.patch
+	libgksu-2.0.12-security-format.patch)
 md5sums=('c7154c8806f791c10e7626ff123049d3'
          '063a2b45d8e7cbba898d1db413242da0'
          '2eeb34ad9b5bf29e8e2ebf8c8a5a28b6'
@@ -26,7 +27,8 @@ md5sums=('c7154c8806f791c10e7626ff123049d3'
          '4179d0487d6032e56b8a925010694c0a'
          'aebbe57e5286c654e27cf714cf3b704a'
          '58d3a4a9d2ac741951720043ea3f7b5f'
-         '0b5c3d5d9b32cb3e65d9f0bfbcb11a76')
+         '0b5c3d5d9b32cb3e65d9f0bfbcb11a76'
+         '784873f5384b76be85991c22ee6417ad')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -37,6 +39,7 @@ prepare() {
   patch -Np0 -i "${srcdir}/libgksu-2.0.12-fix-make-3.82.patch"
   patch -Np1 -i "${srcdir}/libgksu-2.0.12-notests.patch"
   patch -Np1 -i "${srcdir}/libgksu-2.0.12-automake-1.11.2.patch"
+  patch -Np2 -i "${srcdir}/libgksu-2.0.12-security-format.patch"
 
   touch NEWS README
 

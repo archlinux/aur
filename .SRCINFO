@@ -1,9 +1,10 @@
 pkgbase = libgksu
 	pkgdesc = gksu authorization library
 	pkgver = 2.0.12
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.nongnu.org/gksu/index.html
 	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = intltool
 	makedepends = gtk-doc
@@ -21,6 +22,7 @@ pkgbase = libgksu
 	source = libgksu-2.0.12-revert-forkpty.patch
 	source = libgksu-2.0.7-libs.patch
 	source = libgksu-2.0.7-polinguas.patch
+	source = libgksu-2.0.12-security-format.patch
 	md5sums = c7154c8806f791c10e7626ff123049d3
 	md5sums = 063a2b45d8e7cbba898d1db413242da0
 	md5sums = 2eeb34ad9b5bf29e8e2ebf8c8a5a28b6
@@ -29,6 +31,6 @@ pkgbase = libgksu
 	md5sums = aebbe57e5286c654e27cf714cf3b704a
 	md5sums = 58d3a4a9d2ac741951720043ea3f7b5f
 	md5sums = 0b5c3d5d9b32cb3e65d9f0bfbcb11a76
+	md5sums = 784873f5384b76be85991c22ee6417ad
 
 pkgname = libgksu
-
