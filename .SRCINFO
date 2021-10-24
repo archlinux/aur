@@ -7,7 +7,7 @@ pkgbase = kst-git
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-        depends = hdf5
+        depends = hdf5<1.12.1
 	depends = gsl
 	depends = qt5-base
 	depends = muparser
@@ -21,7 +21,7 @@ pkgbase = kst-git
 	source = https://invent.kde.org/graphics/kst-plot.git
         source = 0001-Fixed-HDF5-patch-for-archlinux-users.patch
 	md5sums = SKIP
-        md5sums = bcb70f7257da37e57938879ebfbd7466
+        md5sums = 4913f0bdccfa8adba09f6b6bf5bb2d11
 
 pkgname = kst-git
 
