@@ -21,8 +21,8 @@ set  -u
 #这两种写法建议放在所有 Bash 脚本的头部。另一种办法是在执行 Bash 脚本的时候，从命令行传入这些参数。
 #$ bash -euxo pipefail script.sh
 
-systemctl restart kexec@linux-mainline
-systemctl kexec
+sudo systemctl restart kexec@linux-mainline
+sudo systemctl kexec
 
 
 
