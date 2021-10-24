@@ -7,6 +7,6 @@ pkgbase = steampipe-bin
 	license = AGPL-3.0
 	provides = steampipe
 	source = steampipe-0.9.0-1.tgz::https://github.com/turbot/steampipe/releases/download/v0.9.0/steampipe_linux_amd64.tar.gz
-	md5sums = a26a9439b686c658c547db508af5c1187781eb3014964f3f312ab94042480cfa
+	sha256sums = a26a9439b686c658c547db508af5c1187781eb3014964f3f312ab94042480cfa
 
 pkgname = steampipe-bin
