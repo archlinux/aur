@@ -2,12 +2,15 @@
 
 pkgname=systemd-autossh
 pkgver=1.0.0
-pkgrel=23
+pkgrel=24
 pkgdesc="systemd for autossh"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
 arch=('any')
-#depends=('systemd-kexec' 'systemd-godns' 'git-tools' gfwlist-route  pkgfile)
+depends=(
+autossh
+
+)
 #makedepends=('cmake>=3.3' 'qt5-tools' 'karchive' 'gcc>=8' 'extra-cmake-modules')
 #optdepends=(
 # 'pkgbuild-introspection: For mksrcinfo'
