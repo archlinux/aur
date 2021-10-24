@@ -1,6 +1,6 @@
 pkgbase = zls-git
 	pkgdesc = Zig LSP implementation + Zig Language Server
-	pkgver = r752.affbd2d
+	pkgver = r837.0f65093
 	pkgrel = 1
 	url = https://github.com/zigtools/zls
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = zls-git
 	sha256sums = SKIP
 
 pkgname = zls-git
-
