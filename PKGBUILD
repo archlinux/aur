@@ -2,12 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=huniq-git
-pkgver=r52.5d6f22b
-pkgrel=2
+pkgver=r54.3669147
+pkgrel=1
 pkgdesc="Filter out duplicates on the command line (git)"
 arch=('x86_64')
 url="https://github.com/koraa/huniq"
 license=('BSD')
+depends=('gcc-libs')
 makedepends=('rust' 'git')
 source=("git+${url}")
 sha512sums=('SKIP')
@@ -17,15 +18,20 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked
+}
+
 build() {
   cd "${pkgname%-git}"
   sed -n '/Copyright/,//p' readme.md > LICENSE
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
