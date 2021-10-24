@@ -1,39 +1,33 @@
 # Maintainer: Keinv Yue <yuezk001@gmail.com>
 
 pkgname=globalprotect-openconnect
-_gitname=GlobalProtect-openconnect
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="A GlobalProtect VPN client (GUI) for Linux based on Openconnect and built with Qt5, supports SAML auth mode."
 arch=(x86_64 aarch64)
-url="https://github.com/yuezk/${_gitname}"
+url="https://github.com/yuezk/GlobalProtect-openconnect"
 license=('GPL3')
 depends=('openconnect>=8.0.0' qt5-base qt5-webengine qt5-websockets)
-makedepends=()
-source=(
-    "${_gitname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-    "https://github.com/itay-grudev/SingleApplication/archive/v3.0.19.tar.gz"
-    "https://github.com/SergiusTheBest/plog/archive/1.1.5.tar.gz"
-)
+makedepends=(cmake)
+provides=('gpclient' 'gpservice')
 
-sha256sums=(
-    '0294620194df2cf3fde78b198395a87637c978903a9ced5d4dc17bca571343d0'
-    '9405fd259288b2a862e91e5135bccee936f0438e1b32c13603277132309d15e0'
-    '6c80b4701183d2415bec927e1f5ca9b1761b3b5c65d3e09fb29c743e016d5609'
-);
+source=("${pkgname}.tar.gz")
+sha256sums=('SKIP')
 
-prepare() {
-    mv "$srcdir/SingleApplication-3.0.19" -T "$srcdir/${_gitname}-${pkgver}/singleapplication"
-    mv "$srcdir/plog-1.1.5" -T "$srcdir/${_gitname}-${pkgver}/plog"
+pkgver() {
+    cd $srcdir/$pkgname-*/
+    cat VERSION VERSION_SUFFIX
 }
 
 build() {
-    cd "$srcdir/${_gitname}-${pkgver}"
-    qmake CONFIG+=release "${srcdir}/${_gitname}-${pkgver}/GlobalProtect-openconnect.pro"
-    make
+    cd $srcdir/$pkgname-*/
+    cmake -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_CXX_FLAGS_RELEASE=-s
+    make -j$(nproc) -C build
 }
 
 package() {
-    cd "$srcdir/${_gitname}-${pkgver}"
-    make INSTALL_ROOT="$pkgdir/" install
+    cd $srcdir/$pkgdir-*/
+    make DESTDIR="$pkgdir/" install -C build
 }
