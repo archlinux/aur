@@ -1,4 +1,4 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
 
 _libname='libconfini'
 pkgname="${_libname}-git"
