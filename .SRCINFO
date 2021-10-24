@@ -1,0 +1,13 @@
+pkgbase = ttf-google-thai
+	pkgdesc = Some of the best Thai fonts from google
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://fonts.google.com/
+	arch = any
+	license = OFL
+	makedepends = curl
+	makedepends = wget
+	source = fonts.txt
+	md5sums = SKIP
+
+pkgname = ttf-google-thai
