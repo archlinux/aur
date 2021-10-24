@@ -1,0 +1,12 @@
+pkgbase = systemd-autossh
+	pkgdesc = systemd for autossh
+	pkgver = 1.0.0
+	pkgrel = 21
+	arch = any
+	groups = lcj
+	license = GPL3
+	optdepends = pkgbuild-introspection: For mksrcinfo
+	source = autossh@.service
+	sha512sums = 47c8c136a317734e62901dedc67d75d2df6c25cb35488f5717f055db4de0a280a5fa4c43121e2aeb1b89b8e22648f140117c25279b5e34b6877413012f3c866c
+
+pkgname = systemd-autossh
