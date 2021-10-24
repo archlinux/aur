@@ -1,4 +1,4 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
 # Contributor: Tobias Frisch <thejackimonster@gmail.com>
 
 pkgname='cadet-gtk'
