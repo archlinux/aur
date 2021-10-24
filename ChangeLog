@@ -1,3 +1,9 @@
+4.9.4 (2021-10-22 16:51:37)
+
+    Fixes the loading of iOS application bundles downloaded from M1 Macs,
+    Improves method signature detection for some Swift internal methods,
+    Fixes a few issues with some dialogs when types contained some very long names.
+
 4.9.3 (2021-10-13 17:24:38)
 
     Fixes an issue in the ARM debugger where SP value was displayed instead of PC value,
