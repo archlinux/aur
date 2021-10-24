@@ -1,0 +1,12 @@
+post_install() {
+post_upgrade
+}
+
+post_upgrade() {
+cat << EOF
+
+To be able to access the USBasp device, make sure that your user
+is part of the 'uucp' group.
+
+EOF
+}
