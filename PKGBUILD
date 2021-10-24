@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "$_srcname/"
-    cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DLIEF_ROOT=/usr
+    cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DLIEF_ROOT=/usr -DLIEF_LIBRARY=/usr/lib/libLIEF.so
     make -C build
 }
 
