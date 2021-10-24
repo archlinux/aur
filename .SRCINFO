@@ -1,0 +1,29 @@
+pkgbase = evolution-on-appindicator-git
+	pkgdesc = Plugin to put evolution in system tray (with appindicator support).
+	pkgver = v3.24.2.r6.g5f77162
+	pkgrel = 1
+	url = https://github.com/zsugabubus/evolution-on
+	install = evolution-on-appindicator-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf>=2.53
+	makedepends = automake>=1.8libtool>=1.4.3
+	makedepends = glib2>=2.2.0
+	makedepends = pkgconf>=1.5.1
+	makedepends = intltool>=0.25
+	makedepends = gnome-common>=2.3.0
+	depends = evolution>=2.30
+	depends = gconf
+	depends = libnotify
+	provides = evolution-on
+	conflicts = evolution-on
+	conflicts = evolution-tray
+	conflicts = evolution-tray-arch
+	replaces = evolution-tray
+	replaces = evolution-tray-arch
+	source = evolution-on::git+https://github.com/zsugabubus/evolution-on.git
+	md5sums = SKIP
+
+pkgname = evolution-on-appindicator-git
