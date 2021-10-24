@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=24
+pkgrel=25
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -10,9 +10,8 @@ arch=('any')
 depends=('systemd-kexec' 'systemd-godns' 'git-tools' gfwlist-route  pkgfile systemd-autossh
 systemd-wol
 archlinuxcn-keyring
-devtools-archlinuxcn
 archlinuxcn-mirrorlist
-
+devtools
 )
 #makedepends=('cmake>=3.3' 'qt5-tools' 'karchive' 'gcc>=8' 'extra-cmake-modules')
 optdepends=(
