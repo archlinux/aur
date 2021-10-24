@@ -1,0 +1,27 @@
+post_install() {
+    echo ""
+    echo "==> The important keys in FreeDink are:"
+    echo "    spacebar -> talk"
+    echo "    ctrl     -> confirm / attack"
+    echo "    enter    -> open & close inventory"
+    echo ""
+    echo "Press and move the mouse to move in FreeDink, or use the arrow keys."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> The keyboard buttons in FreeDink are:"
+    echo "    spacebar -> talk"
+    echo "    ctrl     -> confirm / attack"
+    echo "    shift    -> magic attack"
+    echo "    esc      -> open menu"
+    echo "    enter    -> open & close inventory"
+    echo "    m        -> open & close map"
+    echo "    tab"     -> turbo mode (pressed)
+    echo ""
+    echo "To walk, press and move the mouse or use the arrow keys."
+    echo "Fullscreen can be toggled by alt + backspace."
+    echo "Actions assigned to »Button 7« will be mapped to key »6«."
+    echo ""
+}
