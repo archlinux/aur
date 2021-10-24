@@ -1,0 +1,16 @@
+pkgbase = gate88-win
+	pkgdesc = Game where you defend your space station (uses Wine)
+	pkgver = 19.05
+	pkgrel = 1
+	url = https://www.questygames.com/gate88
+	arch = x86_64
+	license = custom
+	license = LGPL
+	makedepends = gendesk
+	depends = wine
+	source = https://www.queasygames.com/gate88/Gate88_Mar19_05.zip
+	source = https://www.queasygames.com/gate88/gate88_1.jpg
+	b2sums = ca6bddd82c44d7bc130d909c48fad00e2088a2816c32cbdf95594dd82e218c4fd73a2c1aad428cbfac2ea0064d57e9bd0022b121b983777c46cb3e5cbdb0e473
+	b2sums = 3a79c4074e21085a048af9a44b05bfb1c055326f9115e5bcbbba2ddec27f494598bc97d049f6c2d627751e4924852a2870a2e17c4d77cbdcce4099a2420a6acc
+
+pkgname = gate88-win
