@@ -1,0 +1,4 @@
+post_remove() {
+  # delete files added after user configure
+  rm -f /etc/linux-enable-ir-emitter.yaml
+}
