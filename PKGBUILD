@@ -2,7 +2,7 @@
 
 pkgname=systemd-autossh
 pkgver=1.0.0
-pkgrel=22
+pkgrel=23
 pkgdesc="systemd for autossh"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -48,7 +48,7 @@ sha512sums=(
 package() {
 # make -C build DESTDIR="$pkgdir" install
 install  -Dm644  autossh@.service  "$pkgdir/usr/lib/systemd/system/autossh@.service"
-install  -dm750   "$pkgdir/etc/$pkgname"
+install  -dm755   "$pkgdir/etc/$pkgname"
 
 }
 

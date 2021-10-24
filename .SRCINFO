@@ -1,7 +1,7 @@
 pkgbase = systemd-autossh
 	pkgdesc = systemd for autossh
 	pkgver = 1.0.0
-	pkgrel = 22
+	pkgrel = 23
 	arch = any
 	groups = lcj
 	license = GPL3
