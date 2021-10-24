@@ -1,0 +1,11 @@
+[Unit]
+Description=Configure Wake-up on LAN
+
+[Service]
+Type=oneshot
+#RemainAfterExit=yes
+ExecStart=/usr/bin/wol  $(cat /etc/systemd-wol/%i.conf)
+
+#[Install]
+#WantedBy=basic.target
+

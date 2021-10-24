@@ -1,0 +1,13 @@
+[Unit]
+Description=Wakeonlan timer 
+
+[Timer]
+OnUnitActiveSec=30s
+OnBootSec=10s
+OnCalendar=*-*-* 22:00:00
+Persistent=true
+AccuracySec=1us
+RandomizedDelaySec=10s
+
+[Install]
+WantedBy=timers.target

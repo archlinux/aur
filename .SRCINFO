@@ -1,0 +1,14 @@
+pkgbase = systemd-wol
+	pkgdesc = systemd for wol
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	groups = lcj
+	license = GPL3
+	depends = wol
+	source = wol@.service
+	source = wol@.timer
+	sha512sums = e76d9d6ce5980446c5a6028a23b89688124854ee5145fb5e2ef954c576cda34dd7385a35864e73518566339dca344dae44f3b50bb333617055fa03e0e6f6b380
+	sha512sums = acbea5360240c8914c7a9c3244d9eb256ce6308d43f8461bf8379c358b853ea09dc3c9f48e25423d59083902d3f85f8f245ca5c9f7fa4296a4ccc569390c0748
+
+pkgname = systemd-wol
