@@ -16,4 +16,3 @@ pkgbase = proot-git
 	sha1sums = SKIP
 
 pkgname = proot-git
-

@@ -1,4 +1,4 @@
-# Maintainer: grufo <madmurphy333 at gmail.com>
+# Maintainer: madmurphy <madmurphy333 at gmail.com>
 
 pkgname='proot-git'
 _pkgname='proot'
