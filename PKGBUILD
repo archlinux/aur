@@ -1,12 +1,12 @@
 # Maintainer: Mateusz Janczuk <devqore@gmail.com>
 pkgname=adeskbar
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="application launcher"
 arch=('any')
 url="https://github.com/adcomp/adeskbar-0.5"
 license=('GPL')
-depends=('python2' 'pygtk' 'python2-xdg' 'gnome-menus')
+depends=('libffi7' 'python2' 'pygtk' 'python2-xdg' 'gnome-menus')
 optdepends=('python2-pyinotify: notifications'
             'python2-xlib: systray'
             'python2-wnck: tasklist/showdesktop/intellihide')

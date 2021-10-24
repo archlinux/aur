@@ -1,11 +1,12 @@
 pkgbase = adeskbar
 	pkgdesc = application launcher
 	pkgver = 0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/adcomp/adeskbar-0.5
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = libffi7
 	depends = python2
 	depends = pygtk
 	depends = python2-xdg
@@ -21,4 +22,3 @@ pkgbase = adeskbar
 	sha256sums = SKIP
 
 pkgname = adeskbar
-
