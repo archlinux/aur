@@ -1,6 +1,6 @@
 pkgbase = yaru-colors-gtk-theme-git
 	pkgdesc = A fork of Ubuntu's Yaru theme - in different colors
-	pkgver = 21.04.r5.gf0c98166
+	pkgver = 21.04.r6.gdbcbbff1
 	pkgrel = 1
 	url = https://github.com/Jannomag/Yaru-Colors
 	arch = any
@@ -29,4 +29,3 @@ pkgname = yaru-colors-icon-theme-git
 pkgname = yaru-colors-wallpapers-git
 	provides = yaru-colors-wallpapers
 	conflicts = yaru-colors-wallpapers
-
