@@ -9,10 +9,10 @@ _tinyfiledialogs_commit=cc6b593c029110af8045826ce691f540c85e850c
 _tinyxml2_commit=bf15233ad88390461f6ab0dbcf046cce643c5fcb
 
 pkgname=vimix
-pkgver=0.6.0
-pkgrel=1
+pkgver=0.6.1
+pkgrel=2
 arch=('x86_64')
-pkgdesc="Live video mixer"
+pkgdesc="Live video editor"
 url="https://brunoherbelin.github.io/vimix/"
 license=('GPL3')
 depends=('glfw' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gtk3')
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/brunoherbelin/vimix/archive
         "stb-${_stb_commit}.tar.gz::https://github.com/nothings/stb/archive/${_stb_commit}.tar.gz"
         "tinyfiledialogs-${_tinyfiledialogs_commit}.tar.gz::https://github.com/native-toolkit/tinyfiledialogs/archive/${_tinyfiledialogs_commit}.tar.gz"
 	"tinyxml2-${_tinyxml2_commit}.tar.gz::https://github.com/leethomason/tinyxml2/archive/${_tinyxml2_commit}.tar.gz")
-sha512sums=('38bacd11577e91e5c6a033a40a5f317d7eb7a2ab0972ff2e368e9be3948b48c509929fdccb96323ff83929bf74288e231d7c3abc6b5505c0c6db998eeb725696'
+sha512sums=('a4ae24db9779ef5d7c807a05db1624372ee12c4749e23caf180ac896ecc028e97962222c0d291ba5d96715b3ff13480a8bf393207618fc468df6939a645c7db6'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -49,13 +49,16 @@ prepare() {
       -C   "$pkgname-$pkgver/ext/tfd/"
   tar -xzf "tinyxml2-${_tinyxml2_commit}.tar.gz" --strip 1 \
       -C   "$pkgname-$pkgver/ext/tinyxml2/"
+
+  sed -i 's|${SNAP}/meta/gui/||' \
+         "$pkgname-$pkgver/snap/gui/$pkgname.desktop"
 }
 
 build() {
   cd $pkgname-$pkgver
   cmake -GNinja \
         -Bbuild \
-        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
   ninja -C build/
 }
@@ -63,4 +66,9 @@ build() {
 package() {
   cd $pkgname-$pkgver
   DESTDIR="$pkgdir" ninja -C build/ install
+
+  install -Dm 644 snap/gui/$pkgname.desktop \
+                 "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm 644 snap/gui/$pkgname.svg \
+                 "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
 }
