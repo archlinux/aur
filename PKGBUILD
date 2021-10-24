@@ -1,5 +1,5 @@
 pkgname=rpmlauncher-bin
-pkgver=${{ secrets.VERSION  }}.${{ secrets.VERSION_CODE }}
+pkgver=1.0.0.645
 pkgrel=1
 pkgdesc="A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart"
 license=('GPL')
