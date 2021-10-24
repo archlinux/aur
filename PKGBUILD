@@ -1,8 +1,9 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
-# Contributor: Sergi Jimenez <sjr@redhat.com>
+# Maintainer: jbpratt <jbpratt78 at gmail dot com>
+# Contributor: Felix Golatofski <contact at xdfr dot de>
+# Contributor: Sergi Jimenez <sjr at redhat dot com>
 
 pkgname=virtctl-bin
-_virtctl_version=0.30.2
+_virtctl_version=0.46.1
 pkgver=${_virtctl_version//-/_}
 pkgrel=1
 pkgdesc="Kubernetes Virtualization API and runtime in order to define and manage virtual machines (CLI)"
@@ -12,7 +13,7 @@ arch=('x86_64')
 provides=('virtctl')
 conflicts=('virtctl')
 source=("https://github.com/kubevirt/kubevirt/releases/download/v${_virtctl_version}/virtctl-v${_virtctl_version}-linux-amd64")
-sha512sums=('59d8b9b5586b8c5d407e714885cd93d4e473a61ff6c96d86a0a40d94b1df27cdc2ca1d47f01871074e5a828ce7da945e5e533afa1db1076397c0263b429f2e86')
+sha512sums=('a0ba1ef015586afdd55c01958d9fe707b2b5b26070c74c8a29154ba9df81c01b17789331d78f77c9b80ff26cdb01a67eda561cc8d64e32ef8fd5755565d99658')
 
 package() {
   install -Dm755 "${srcdir}/virtctl-v${_virtctl_version}-linux-amd64" "${pkgdir}/usr/bin/virtctl"
