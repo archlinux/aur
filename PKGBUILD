@@ -6,6 +6,7 @@ pkgver=95.0b4
 pkgrel=1
 pkgdesc="Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks icon- and .desktop-files."
 arch=("any")
+url='https://aur.archlinux.org/packages/firefox-developer-edition-firefox-symlink-latest'
 license=('custom: public domain')
 depends=("firefox-developer-edition")
 provides=(
