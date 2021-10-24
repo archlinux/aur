@@ -4,7 +4,7 @@
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
 
 pkgname=gnudatalanguage
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
@@ -15,7 +15,7 @@ depends=("eccodes" "eigen" "fftw" "glpk" "graphicsmagick" "gsl" "hdf4"
 makedepends=("cmake")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/archive/v${pkgver}.tar.gz"
         "gdl.profile")
-sha512sums=("05de98725b63e553ad103d24e36994c5be948c9a05bfb092325d7fb049a852f10381445992ff4c158e98c07ace31e38ee78ba23b70f3b4e38f13e497dac330ce"
+sha512sums=("9d15f114d26d03c34dce6177a5d5115e81c128ec21752c01d171f8427e6cb21b9d0b69a44e29891b5e8fc2bd4d0b89d1a8dcd189f362a13c6e59182528b5842d"
             "b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f")
 
 build() {
