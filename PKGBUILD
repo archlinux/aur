@@ -7,7 +7,6 @@ _UPLOAD_MONTH=10
 pkgname=xencelabs
 pkgver=${_TARBALL_PKGVER/-/.}
 pkgrel=1
-#FIXME: find somewhere where they have a better description than in their .desktop file
 pkgdesc='Driver for the Xencelabs Pen Tablets'
 arch=(x86_64)
 url='https://www.xencelabs.com'
