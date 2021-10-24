@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.20.0.r1693.g8bb582f23f
+pkgver=0.20.0.r1934.g9f2dd4a363
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -82,7 +82,6 @@ build() {
 
   cmake -Wno-dev -G Ninja -B build_dir -S . \
     -D BUILD_ENABLE_CXX_STD=C++17 \
-    -D BUILD_QT5=ON \
     -D BUILD_FEM=ON \
     -D BUILD_MESH=ON \
     -D BUILD_MESH_PART=ON \
