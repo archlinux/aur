@@ -1,4 +1,4 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
 # Contributor: redfish <redfish AT galactica DOT pw>
 # Contributor: kertase <kertase AT gmail DOT com>
 # Contributor: Sergej Pupykin <pupykin DOT s+arch AT gmail.com>
