@@ -2,13 +2,13 @@
 
 pkgname=fish-abbreviation-tips
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Alias abbreviation tips for fish shell"
 arch=('any')
 url="https://github.com/gazorby/fish-abbreviation-tips"
 license=('MIT')
 groups=('fish-plugins')
-depends=('fish')
+depends=('fish>=3.1.0')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('3d4a323d8b854e87af818a3831c2d696fcfd8cb605f394c8d333bbac9411ce99')
