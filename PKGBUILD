@@ -2,7 +2,7 @@
 # Contributor: Thor K. Høgås <thor that-circular-a roht dot no>
 
 pkgname='omnetpp-preview'
-pkgver=6.0pre11
+pkgver=6.0pre13
 pkgrel=1
 _pkgname='omnetpp'
 pkgdesc='OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: preview version'
@@ -24,17 +24,18 @@ install=omnetpp-preview.install
 
 source=(OMNeT++.desktop
         omnetpp.sh
-        "${_pkgname}-${pkgver}-src-linux.tgz::https://github.com/omnetpp/omnetpp/releases/download/omnetpp-${pkgver}/omnetpp-${pkgver}-src-linux.tgz")
+        "${_pkgname}-${pkgver}-src-linux.tgz::https://github.com/omnetpp/omnetpp/releases/download/omnetpp-${pkgver}/omnetpp-${pkgver}-linux-x86_64.tgz")
 
 sha512sums=('a5772a605592ed2db839609f8298d1d71fb9141eb1b30dac584b788414dfe49b250ba803351a3a84f90c6b89f8e09e7b129a037af17c9b94c22dff2003a5edd8'
             'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1'
-            '1353a6243109a6a0f531f57968f7608117c89d5d19ed04f9b7ecc6f6a354d24ea47a3d8596108017bb0ae13f22e5dcd8c50eea28b484ebfaad9d2f71a8b96dab')
+            'ccb88c39c9573ccad453104b46e354ab4c2bb771063f72fe64cb65924fca5f813d31db849f016326cf41ba3229f7c073f1fc559c98c74bdfbd54308778812f3f')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 	echo WITH_OSGEARTH=no >> configure.user
 	# Fix configure script
 	sed -i "2152 a ac_configure_args=$(echo $ac_configure_args | sed s/\'//g)" configure
+	source setenv
 	./configure --prefix=/opt --libdir=/opt/lib --libexecdir=/opt/lib
 	PATH=${srcdir}/${_pkgname}-${pkgver}/bin:$PATH
 	LD_LIBRARY_PATH=${srcdir}/${_pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
