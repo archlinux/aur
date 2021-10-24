@@ -1,7 +1,7 @@
 # Maintainer: Wali Waqar <waliwaqars@gmail.com>
 
 pkgname=pensela-bin
-_pkgver=v1.2.3
+_pkgver=v1.2.4
 pkgver=${_pkgver#v}
 pkgrel=1
 pkgdesc="The Swiss Army Knife of Screen Annotation Tools"
