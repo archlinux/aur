@@ -44,12 +44,12 @@ prepare() {
     esac
 
     # Validate hashes from the PGP signed "Release" file
-    echo $(awk "/^SHA256/,/7\/binary-${archtoken}\/Packages\$/ {hash = \$1} END {print hash}" ${pkgname}-${pkgver}-${_agentrel}-Release) ${pkgname}-${pkgver}-${_agentrel}-${archtoken}-Packages \
+    echo $(awk "/^SHA256/,/7\/binary-${archtoken}\/Packages\$/ {hash = \$1} END {print hash}" "${pkgname}-${pkgver}-${_agentrel}-Release") "${pkgname}-${pkgver}-${_agentrel}-${archtoken}-Packages" \
        > "${pkgname}-${pkgver}-${_agentrel}-${archtoken}-Packages.sha256"
     sha256sum -c "${pkgname}-${pkgver}-${_agentrel}-${archtoken}-Packages.sha256"
 
     # Validate the .deb
-    echo $(pcregrep -A 20 -M "datadog-agent\nVersion: 1:${pkgver}-${_agentrel}" ${pkgname}-${pkgver}-${_agentrel}-${archtoken}-Packages | grep ^SHA256 | awk '{print $2}') ${pkgname}_${pkgver}-${_agentrel}_${archtoken}.deb \
+    echo $(pcregrep -A 20 -M "datadog-agent\nVersion: 1:${pkgver}-${_agentrel}" "${pkgname}-${pkgver}-${_agentrel}-${archtoken}-Packages" | grep ^SHA256 | awk '{print $2}') "${pkgname}_${pkgver}-${_agentrel}_${archtoken}.deb" \
         > "${pkgname}-${pkgver}-${_agentrel}_${archtoken}.deb.sha256"
     sha256sum -c "${pkgname}-${pkgver}-${_agentrel}_${archtoken}.deb.sha256"
 }
@@ -62,8 +62,8 @@ package() {
     install -Dm644 "$srcdir"/datadog-agent.sysusers "$pkgdir"/usr/lib/sysusers.d/datadog-agent.conf
     install -Dm644 "$srcdir"/datadog-agent.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/datadog-agent.conf
 
-    mv ${pkgdir}/lib/systemd ${pkgdir}/usr/lib/
-    rmdir ${pkgdir}/lib
+    mv "${pkgdir}/lib/systemd" "${pkgdir}/usr/lib/"
+    rmdir "${pkgdir}/lib"
 
     ln -sf /opt/datadog-agent/bin/agent/agent "${pkgdir}/usr/bin/datadog-agent"
 }
