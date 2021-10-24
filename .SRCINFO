@@ -1,17 +1,19 @@
 pkgbase = vapoursynth-plugin-nnedi3_resample-git
 	pkgdesc = Plugin for Vapoursynth: nnedi3_resample (GIT version)
-	pkgver = 19.7d446bf
+	pkgver = 22.e79c702
 	pkgrel = 1
-	url = https://github.com/AmusementClub/VapourSynth-script
+	url = https://github.com/AmusementClub/nnedi3_resample
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = vapoursynth-plugin-fmtconv-git
 	depends = vapoursynth-plugin-mvsfunc-git
-	depends = vapoursynth-plugin-nnedi3-git
+	optdepends = vapoursynth-plugin-nnedi3-git
+	optdepends = vapoursynth-plugin-znedi3-git
+	optdepends = vapoursynth-plugin-nnedi3cl-git
 	provides = vapoursynth-plugin-nnedi3_resample
 	conflicts = vapoursynth-plugin-nnedi3_resample
-	source = nnedi3_resample::git+https://github.com/AmusementClub/VapourSynth-script.git
+	source = nnedi3_resample::git+https://github.com/AmusementClub/nnedi3_resample.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-nnedi3_resample-git
