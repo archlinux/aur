@@ -2,10 +2,10 @@
 
 pkgname=gate88-win
 pkgver=19.05
-pkgrel=1
+pkgrel=2
 pkgdesc='Game where you defend your space station (uses Wine)'
 arch=(x86_64)
-url='https://www.questygames.com/gate88'
+url='https://www.queasygames.com/gate88'
 license=(custom LGPL)
 depends=(wine)
 makedepends=(gendesk)
