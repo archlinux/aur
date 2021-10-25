@@ -7,7 +7,7 @@ _bundle_pandoc=false
 
 pkgname=zettlr
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -34,6 +34,8 @@ if ${_bundle_pandoc} ; then
     # pandoc binary
     source+=("https://github.com/jgm/pandoc/releases/download/${_pandoc_binary_ver}/pandoc-${_pandoc_binary_ver}-linux-amd64.tar.gz")
     sha256sums+=('1a0548b15255b1c11722f3d4e12fc7a652edf8c9a329a8458f1e765517aec1be')
+else
+    depends+=(pandoc)
 fi
 
 prepare() {
