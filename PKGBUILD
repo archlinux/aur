@@ -8,7 +8,7 @@
 
 pkgname=petsc-complex
 _pkgname=petsc
-pkgver=3.15.0
+pkgver=3.16.0
 pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -47,7 +47,7 @@ optdepends=(${_depends[@]} 'trilinos')
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${_pkgname}-lite-${pkgver/_/-}.tar.gz
         test_optdepends.sh)
-sha256sums=('ac46db6bfcaaec8cd28335231076815bd5438f401a4a05e33736b4f9ff12e59a'
+sha256sums=('5aaad7deea127a4790c8aa95c42fd9451ab10b5d6c68b226b92d4853002f438d'
             '902f8d222706868184cfeff94b1c26a781fd9553a43a66deac7cc1317de82a86')
 
 _install_dir=/opt/petsc/${_config}

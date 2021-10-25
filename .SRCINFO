@@ -1,6 +1,6 @@
 pkgbase = petsc-complex
 	pkgdesc = Portable, extensible toolkit for scientific computation (complex scalars)
-	pkgver = 3.15.0
+	pkgver = 3.16.0
 	pkgrel = 1
 	url = https://www.mcs.anl.gov/petsc/
 	install = petsc.install
@@ -36,10 +36,9 @@ pkgbase = petsc-complex
 	provides = petsc
 	conflicts = petsc
 	options = staticlibs
-	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.15.0.tar.gz
+	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.16.0.tar.gz
 	source = test_optdepends.sh
-	sha256sums = ac46db6bfcaaec8cd28335231076815bd5438f401a4a05e33736b4f9ff12e59a
+	sha256sums = 5aaad7deea127a4790c8aa95c42fd9451ab10b5d6c68b226b92d4853002f438d
 	sha256sums = 902f8d222706868184cfeff94b1c26a781fd9553a43a66deac7cc1317de82a86
 
 pkgname = petsc-complex
-
