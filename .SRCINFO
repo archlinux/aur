@@ -1,12 +1,12 @@
 pkgbase = rpi-poe-fan-dkms-git
 	pkgdesc = Hwmon driver for Raspberry Pi PoE(+)HAT fan
-	pkgver = 2.b422a76
+	pkgver = 3.b422a76
 	pkgrel = 1
 	url = https://github.com/raspberrypi/linux/blob/b422a76/drivers/hwmon/rpi-poe-fan.c
 	arch = any
 	license = GPL
 	depends = dkms
-	provides = rpi-poe-fan=2.b422a76-1
+	provides = rpi-poe-fan=3.b422a76-1
 	conflicts = rpi-poe-fan
 	source = https://raw.githubusercontent.com/raspberrypi/linux/b422a76/drivers/hwmon/rpi-poe-fan.c
 	source = https://raw.githubusercontent.com/raspberrypi/linux/b422a76/include/soc/bcm2835/raspberrypi-firmware.h

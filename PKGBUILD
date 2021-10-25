@@ -3,7 +3,7 @@
 _pkgbase=rpi-poe-fan
 _commit=b422a76
 pkgname=rpi-poe-fan-dkms-git
-pkgver=2.${_commit}
+pkgver=3.${_commit}
 pkgrel=1
 pkgdesc='Hwmon driver for Raspberry Pi PoE(+)HAT fan'
 url=https://github.com/raspberrypi/linux/blob/${_commit}/drivers/hwmon/rpi-poe-fan.c
