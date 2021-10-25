@@ -2,7 +2,7 @@
 
 pkgname=microshift-bin
 pkgver=4.7.0_0.microshift_2021_08_31_224727
-pkgrel=1
+pkgrel=2
 pkgdesc="A small form factor OpenShift/Kubernetes optimized for edge computing"
 url="https://github.com/redhat-et/microshift"
 arch=("x86_64" "aarch64")
@@ -10,10 +10,10 @@ backup=(
   "etc/cni/net.d/100-crio-bridge.conf"
   "usr/lib/systemd/system/microshift.service"
 )
+provides=("microshift")
+conflicts=("microshift")
 depends=("cri-o" "crictl" "kubectl" "conntrack-tools")
 license=("APACHE")
-
-# TODO: systemd unit?
 
 source=(
   "https://raw.githubusercontent.com/redhat-et/microshift/${pkgver//_/-}/LICENSE"
@@ -34,7 +34,7 @@ sha256sums_aarch64=("57db74c418e5b74e2bea3c3700256a020e2c80eaff692ec5ca841a0b7c6
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/microshift"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-*}/LICENSE"
 
   # install -Dm644 "${srcdir}/microshift.service" "${pkgdir}/usr/lib/systemd/system/microshift.service"
 
