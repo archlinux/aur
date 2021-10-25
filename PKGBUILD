@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gftools
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=(any)
@@ -33,7 +33,7 @@ depends=(absl-py
 makedepends=(python-setuptools-scm)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('e6746136a57e7143a23beb36de4786fe32755e75ba10c5bba4b52ad5a17f1723')
+sha256sums=('32aad8567c2c41704e74b8ad8080a96ad274d30bd3051d8594d9a6f527061c36')
 
 prepare() {
 	cd "$_archive"
