@@ -1,7 +1,7 @@
 pkgbase = microshift-bin
 	pkgdesc = A small form factor OpenShift/Kubernetes optimized for edge computing
 	pkgver = 4.7.0_0.microshift_2021_08_31_224727
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redhat-et/microshift
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,8 @@ pkgbase = microshift-bin
 	depends = crictl
 	depends = kubectl
 	depends = conntrack-tools
+	provides = microshift
+	conflicts = microshift
 	backup = etc/cni/net.d/100-crio-bridge.conf
 	backup = usr/lib/systemd/system/microshift.service
 	source = https://raw.githubusercontent.com/redhat-et/microshift/4.7.0-0.microshift-2021-08-31-224727/LICENSE
