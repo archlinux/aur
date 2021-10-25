@@ -2,18 +2,18 @@
 
 pkgname=squaw
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simplistic quiet user agent for the Web'
 url='http://fenua.org/gaetan/src/'
 arch=('i686' 'x86_64')
 license=('ISC')
-depends=('webkit2gtk')
+depends=('webkit2gtk-unstable')
 source=("${url}/${pkgname}-${pkgver}.c")
 sha256sums=('e68cf39a6cfdd91d35c1d8613595293a356f75b889815f6c0857f483ce1a675b')
 
 build() {
 	cd "${srcdir}"
-	cc $(pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.0) \
+	cc $(pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.1) \
 		${CPPFLAGS} ${CFLAGS} ${LDFLAGS} \
 		-o ${pkgname} ${pkgname}-${pkgver}.c
 }
