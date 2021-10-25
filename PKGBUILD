@@ -1,5 +1,5 @@
 pkgname=xclicker
-pkgver=v1.1.1.r0.g4b594b1
+pkgver=v1.1.2.r0.g99af460
 pkgrel=1
 pkgdesc='A blazing fast gui autoclicker for linux'
 arch=('x86_64' 'aarch64')
