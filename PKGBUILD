@@ -7,19 +7,18 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2021.4
+pkgver=2021.5
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
-makedepends=('cargo' 'git' 'go' 'nvm')
+makedepends=('cargo' 'git' 'go' 'npm')
 install="$pkgname.install"
-_commit=3a236d50fd1ffb67cd3d29fbfc31393cdf03a224
+_commit=19a97997b188855d0ba5aedb7419683df45d93bc
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
-#        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed" # unverified commit by mvd-ows
-        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit"
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "$pkgname.sh"
        )
 sha256sums=('SKIP'
@@ -31,17 +30,6 @@ validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
              )
               # David Lönnhager (code signing) <david.l@mullvad.net>
 
-_ensure_local_nvm() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="$srcdir/.nvm"
-
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
 prepare() {
   cd "$srcdir/mullvadvpn-app"
   git submodule init dist-assets/binaries
@@ -51,6 +39,7 @@ prepare() {
   # Disable building of rpm
   sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
 
+  export RUSTUP_TOOLCHAIN=stable
   echo "Removing old Rust build artifacts"
   cargo clean
 
@@ -61,10 +50,6 @@ prepare() {
   # one becomes root or changes the write permissions.
   export GOPATH="$srcdir/gopath"
   go clean -modcache
-
-  # Build fails with Node.js 16, use 15
-  _ensure_local_nvm
-  nvm install 15.14.0
 }
 
 build() {
@@ -130,7 +115,6 @@ build() {
 
   # Build Electron GUI app
   pushd gui
-  _ensure_local_nvm
   echo "Installing JavaScript dependencies..."
   npm ci --cache "$srcdir/npm-cache"
   echo "Packing final release artifact..."
