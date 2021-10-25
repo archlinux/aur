@@ -6,7 +6,7 @@ pkgdesc="cython wrapper for khash-sets/maps, efficient implementation of isin an
 url="https://github.com/realead/cykhash/"
 
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 license=("MIT")
@@ -18,10 +18,6 @@ depends=(
     "cython"
     "python"
 )
-# checkdepends=(
-#     "python-pytest"
-#     "python-virtualenv"
-# )
 
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
@@ -36,12 +32,6 @@ build() {
     cd "${srcdir}"/${_name}-${pkgver}
     python setup.py build
 }
-
-# check() {
-#     cd "${srcdir}"/${_name}-${pkgver}
-#     local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-#     PYTHONPATH="$PWD/build/lib.linux-$CARCH-${python_version}" pytest
-# }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
