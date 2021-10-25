@@ -6,7 +6,7 @@ _snap=iHVATX2faqAJciG5YGNM241W8fE8UvsF
 
 pkgname=whatpulse-bin
 pkgver=3.5.10
-pkgrel=2
+pkgrel=4
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('x86_64')
 url=http://www.whatpulse.org
@@ -28,7 +28,7 @@ source=(
 	LICENSE
 )
 source_x86_64=("${pkgname%*-bin}-$pkgver.sfs::https://api.snapcraft.io/api/v1/snaps/download/${_snap}_${pkgver##*.}.snap")
-sha256sums=('aba7e6b28ccebdb6115245dae1a7ca8e88afa2ecb1619037b66f65090a284363'
+sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
             'bbbc3e1e63e8300f247897c24487ecad6f313c1972417604bf8d991ca4408b03'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
 sha256sums_x86_64=('ffb8dae8045f6af1ab059e12372130f85455607461d25b25cb2df69366a18623')
@@ -58,6 +58,6 @@ package() {
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 	for size in 16 20 22 24 28 32 36 44 48 64 72 96 128 150 192 256 310 384 512 1024;do
 		install -Dm 644 "icons/whatpulse-$size.png" \
-			"${pkgdir}/usr/share/icons/hicolor/${size}x${size}/whatpulse.png"
+			"${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/whatpulse.png"
 	done
 }
