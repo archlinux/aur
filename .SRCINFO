@@ -1,0 +1,18 @@
+pkgbase = libhanjp-git
+	pkgdesc = Library for write Japanese scripts by Korean hangul script
+	pkgver = r184.373a95c
+	pkgrel = 1
+	url = https://github.com/Hanjp-IM/libhanjp
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = check
+	depends = libhangul-git
+	depends = glib2
+	source = git+https://github.com/Hanjp-IM/libhanjp#branch=develop
+	source = git+https://github.com/libhangul/libhangul.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libhanjp-git
