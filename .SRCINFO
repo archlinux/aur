@@ -1,6 +1,6 @@
 pkgbase = rpmlauncher-bin
 	pkgdesc = A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart
-  pkgver = 1.0.0.646
+  pkgver = 1.0.0.647
   pkgrel = 1
   arch = x86_64
   license = GPL
