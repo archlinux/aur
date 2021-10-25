@@ -1,7 +1,7 @@
 pkgbase = zwavejs2mqtt
 	pkgdesc = Zwave to Mqtt gateway and Control Panel Web UI.
 	pkgver = 5.10.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zwave-js/zwavejs2mqtt
 	arch = any
 	license = MIT
