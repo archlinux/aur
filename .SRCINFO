@@ -1,0 +1,11 @@
+pkgbase = dbcc
+	pkgdesc = CAN DBC to C (and CSV, JSON and XML) compiler
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/howerj/dbcc
+	arch = x86_64
+	license = MIT
+	source = https://github.com/howerj/dbcc/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = da7db21db480360f792eea93dab46a31a622dada9836824a64fccd6a41375d3b
+
+pkgname = dbcc
