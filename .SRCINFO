@@ -1,6 +1,6 @@
 pkgbase = svtplay-dl-git
 	pkgdesc = Media downloader for play sites (e.g. SVT Play)
-	pkgver = 4.4.r0.g4edb96f
+	pkgver = 4.7.r4.gb3fd51d
 	pkgrel = 1
 	url = https://github.com/spaam/svtplay-dl
 	arch = any
