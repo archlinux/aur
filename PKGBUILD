@@ -1,3 +1,5 @@
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+
 pkgname=watchman-bin
 pkgver=2021.10.18.00
 pkgrel=1
