@@ -1,9 +1,6 @@
 #!/bin/sh
 
-if [ ! -e casparcg.config ]
-then
-    # config file must be in working directory
-    cp /opt/casparcg/casparcg.config .
-fi
+# config file must be in working directory
+cp --no-clobber /opt/casparcg/casparcg.config .
 
 exec /opt/casparcg/bin/casparcg "$@"

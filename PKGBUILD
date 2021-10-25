@@ -3,7 +3,7 @@ pkgname=casparcg-server
 pkgver=2.3.3
 _pkgver=$pkgver-lts-stable
 _cef_version=3.3578.1870.gc974488
-pkgrel=1
+pkgrel=2
 pkgdesc="Software used to play out professional graphics, audio and video to multiple outputs"
 arch=('x86_64')
 url="https://github.com/CasparCG/server"
@@ -27,7 +27,7 @@ sha256sums=('6d8e973949009e95bb5a6496e26cbe680efd77666936e131df0da569f8f7c7e1'
             '8c417d204e98aa46328a2682bd197a44c479e9dc4ad498a29f57dc1b1f2fa1c6'
             '5c6f2a3007e3a8739bc1f3eaec3c694af9836aed1943217843a92acff80950c1'
             'b7c5401f342917ece7be583566bfc48b5cc1a8ff9f6470d396130b4aca7dfb22'
-            '57e3f93ba51fe2bdc6bd222f0bcbe949d32bd9a066d6d878373b64cdc134e92e')
+            'ce9dd83ae2ef9289e551f0a3ecbe246537195049c15f69bbfdc6c3ddd23291c2')
 
 prepare() {
     cd "$srcdir/server-$_pkgver"
