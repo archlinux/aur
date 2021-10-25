@@ -1,6 +1,6 @@
 pkgbase = winscp
 	pkgdesc = Free SFTP, SCP and FTP client for Wine
-	pkgver = 5.19.3
+	pkgver = 5.19.4
 	pkgrel = 1
 	url = https://winscp.net/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = winscp
 	makedepends = unzip
 	depends = wine
 	depends = hicolor-icon-theme
-	source = http://downloads.sourceforge.net/project/winscp/WinSCP/5.19.3/WinSCP-5.19.3-Portable.zip
+	source = http://downloads.sourceforge.net/project/winscp/WinSCP/5.19.4/WinSCP-5.19.4-Portable.zip
 	source = winscp
 	source = winscp.desktop
 	source = winscp-16.png
