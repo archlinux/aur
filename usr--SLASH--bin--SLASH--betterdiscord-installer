@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+env BD_SKIP_UPDATECHECK=1 /opt/betterdiscord-installer-bin/betterdiscord-installer "$@"
