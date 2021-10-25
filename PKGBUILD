@@ -7,14 +7,14 @@ ROOT_LABEL='Archlinux'
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## --- PKGBUILD
 
 ## Major kernel version
 _major=5.14
 ## Minor kernel version
-_minor=13
+_minor=14
 
 pkgbase=linux-multimedia
 #pkgver=${_major}
@@ -42,7 +42,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('832b78b4c098a99f5c0c50160e3fa58a81412419734c5e8e1b04342fcb4b964d'
+sha256sums=('4dff4e96d4052195002538027f8a810411ba6116a41bff5575952702d509d06a'
 			'SKIP'
 			'SKIP'
 			'SKIP'
