@@ -33,15 +33,11 @@ pkgver() {
 	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
+build() {
 	cd "$srcdir/plasma-settings"
 	cmake -B build \
 	      -DCMAKE_INSTALL_PREFIX="/usr" 
-}
 
-
-build() {
-	cd "$srcdir/plasma-settings"
 	cmake --build build
 }
 
