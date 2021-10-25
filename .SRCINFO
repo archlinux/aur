@@ -1,7 +1,7 @@
 pkgbase = fish-systemd-git
 	pkgdesc = Comfortable fish aliases for systemctl commands
-	pkgver = r8.b570b22
-	pkgrel = 1
+	pkgver = r10.4e922a2
+	pkgrel = 2
 	url = https://github.com/wawa19933/fish-systemd
 	arch = any
 	groups = fish-plugins
@@ -9,8 +9,8 @@ pkgbase = fish-systemd-git
 	makedepends = git
 	depends = fish
 	provides = fish-systemd
+	conflicts = fish-systemd
 	source = fish-systemd-git::git+https://github.com/wawa19933/fish-systemd
 	sha256sums = SKIP
 
 pkgname = fish-systemd-git
-
