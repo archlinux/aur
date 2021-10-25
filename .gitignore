@@ -1,3 +1,4 @@
-src/
-pkg/
-*.zip
+/src/
+/pkg/
+/*.zip
+/*.pkg.tar.zst
