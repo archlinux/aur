@@ -1,6 +1,6 @@
 # Maintainer: Peter Jirasek <aur@dbs.sk>
 pkgname=eea
-pkgver=8.0.3.0
+pkgver=8.1.4.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux'
@@ -21,13 +21,13 @@ optdepends=(
   'linux-hardened-headers: build modules against the HARDENED kernel [requires at least one set of kernel headers]'
   'linux-zen-headers: build modules against the ZEN kernel [requires at least one set of kernel headers]'
 )
-conflicts=('esets' 'eea-dkms')
+conflicts=('esets' 'eea-dkms' 'eea7-dkms')
 install=${pkgname}.install
 
 # https://www.eset.com/int/business/endpoint-antivirus-linux/download/
 source=("https://download.eset.com/com/eset/apps/business/eea/linux/g2/latest/${pkgname}u.${arch}.bin" "${pkgname}.install")
 sha256sums=(
-  'ef535cd5341fcf2ed8bbe2a44cc9ab82d51bb2ec88375ec2f42ce03370f08f33'
+  '956ff6766b792d665e3d7fd27fc479e80f88b8815f304800d58debad1cdef9f6'
   'ab027704f39b684fe138182bf23d7d0d3eb556c6e5dc3751cc3b09ac97f71214'
 )
 
