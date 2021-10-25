@@ -1,30 +1,35 @@
-# Maintainer: sudokode <sudokode@gmail.com>
+# Contributor: sudokode <sudokode@gmail.com>
 
 pkgname=python-netifaces-git
-pkgver=1.0.0.r6.098dfda
+epoch=1
+pkgver=0.11.0.r127.53fcdb6
 pkgrel=1
-pkgdesc="Portable module to access network interface information in Python 3"
-arch=('i686' 'x86_64')
-url="https://github.com/kelleyk/py3k-netifaces"
+pkgdesc="Portable module to access network interface information in Python"
+arch=('x86_64')
+url="https://alastairs-place.net/netifaces/"
 license=('MIT')
+provides=('python-netifaces')
+conflicts=('python-netifaces')
 depends=('python')
-makedepends=('git' 'python-distribute')
-source=("$pkgname::git://github.com/kelleyk/py3k-netifaces.git")
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/al45tair/netifaces")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
+  echo "0.11.0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
-  echo "1.0.0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+build() {
+  cd $pkgname
+  python setup.py build
 }
 
 package() {
   cd $pkgname
 
-  python setup.py install --root "$pkgdir"
+  python setup.py install --root "${pkgdir}" --skip-build
 
-  install -Dm644 README "$pkgdir"/usr/share/python-netifaces/README
-  install -Dm644 README "$pkgdir"/usr/share/licenses/python-netifaces/LICENSE
+  # Install license, that is inside the readme file
+  install -Dm644 README.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
