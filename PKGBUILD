@@ -15,6 +15,7 @@ depends=('vapoursynth-plugin-rgsf-git'
          'vapoursynth-plugin-mvtools_sf-git'
          'vapoursynth-plugin-temporalmedian-git'
          )
+makedepends=('git')
 source=("${_plug}::git+https://github.com/mysteryx93/xClean.git")
 sha256sums=('SKIP')
 

@@ -5,6 +5,7 @@ pkgbase = vapoursynth-plugin-xclean-git
 	url = https://forum.doom9.org/showthread.php?t=183245
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = vapoursynth-plugin-rgsf-git
 	depends = vapoursynth-plugin-knlmeanscl-git
 	depends = vapoursynth-plugin-fmtconv
