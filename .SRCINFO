@@ -1,7 +1,7 @@
 pkgbase = herokuish
 	pkgdesc = Utility for emulating Heroku build and runtime tasks in containers
 	pkgver = 0.5.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gliderlabs/herokuish
 	arch = x86_64
 	license = MIT
