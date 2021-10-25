@@ -1,45 +1,40 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
-_name=Crimson
-pkgbase='python-crimson'
-pkgname=('python-crimson' 'python2-crimson')
-pkgver=0.3.0
+pkgname=python-crimson
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Bioinformatics tool outputs converter to JSON or YAML"
 arch=('any')
-url="https://pypi.python.org/pypi/crimson"
+url='https://git.sr.ht/~bow/crimson'
 license=('BSD')
-makedepends=(
-  'python' 'python-setuptools' 'python2-wheel'
-  'python2' 'python2-setuptools' 'python-wheel')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/bf/8e/cdddc397f92fc1199195f01446bd3407dcb6f6ab8983f32a5e8798348809/Crimson-0.3.0.tar.gz)
-sha256sums=('7f78aca574cc9be93ca61baa91873867b40254441b77dddf86099b9071623a9b')
+depends=(
+	'python>=3.7'
+	'python-click>=7.0'
+	'python-yaml>=5.2'
+	'python-single-source>=0.2.0')
+makedepends=('python-setuptools' 'python-dephell')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('65859b0d55bf632b227a536505bca43f419f114636e824e25f86473075c1a766')
 
 prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
+	cd "crimson-$pkgver"
+	dephell deps convert --from pyproject.toml --to setup.py
 }
 
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
+build() {
+	cd "crimson-$pkgver"
+	python setup.py build
 }
 
-package_python2-crimson() {
-  depends=('python2' 'python2-click' 'python2-yaml')
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+check() {
+	cd "crimson-$pkgver"
+	pytest -x
 }
 
-package_python-crimson() {
-  depends=('python' 'python-click' 'python-yaml')
-
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+package() {
+	cd "crimson-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
