@@ -8,7 +8,7 @@
 
 pkgname=khal-git
 _pkgname=khal
-pkgver=0.10.4.dev6+g4e9fb7c
+pkgver=0.10.5.dev13+g38e0a8e
 pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV (Git)'
 arch=('any')
