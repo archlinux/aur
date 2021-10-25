@@ -12,9 +12,9 @@ url="https://betterdiscord.app/"
 license=('MIT')
 
 depends=("nss" "gtk3" "libxss")
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-replaces=("$_pkgname")
+provides=("betterdiscord" "$_pkgname")
+conflicts=("betterdiscord" "$_pkgname")
+replaces=("betterdiscord" "$_pkgname")
 options=(debug !strip emptydirs zipman)
 options=(strip emptydirs zipman)
 install="$pkgname.install"
