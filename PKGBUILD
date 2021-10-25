@@ -39,7 +39,7 @@ fi
 
 pkgbase=linux-cpu-optimized
 _major=5.14
-_minor=12
+_minor=14
 pkgver=${_major}.${_minor}
 _branch=5.x
 pkgrel=1
@@ -75,9 +75,9 @@ validpgpkeys=(
     #source+=("${_patch}::https://raw.gigthubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 #done
 
-sha256sums=('8d272679dc5285136bfe1f6d54548c7cf9f1ed8925c04b8bae149c8983eb5c37'
+sha256sums=('4dff4e96d4052195002538027f8a810411ba6116a41bff5575952702d509d06a'
             'SKIP'
-            'fd62c062a9dbf9fd0666f14953b953409bb329f3d62349eb7c2ceeba696721c5'
+            'be98ee1a3b9b4eaa547ca6d54692513d3073cdb776785c8608eb05afc259ac6d'
             '2f99d9e37f372925e054115bfead4723a328ffbdb7bf958753aab2ac48dc5673'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
