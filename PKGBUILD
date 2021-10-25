@@ -2,8 +2,8 @@
 
 _pkgname=bip39
 pkgname=$_pkgname-git
-pkgver=r14.9908de7
-pkgrel=2
+pkgver=r18.c019fc1
+pkgrel=1
 pkgdesc="Generate mnemonic codes according to BIP-0039"
 arch=('x86_64')
 url="https://github.com/kugland/bip39"
