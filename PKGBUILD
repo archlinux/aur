@@ -1,42 +1,28 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Sonny Piers <sonny at fastmail dot net>
 pkgname=tangram
-pkgver=1.3.1+5+g8934dcd
+pkgver=1.3.2
 pkgrel=1
-pkgdesc="Run web apps on your desktop."
+pkgdesc="Browser for your pinned tabs"
 arch=('any')
 url="https://apps.gnome.org/app/re.sonny.Tangram"
 license=('GPL3')
-depends=('gjs' 'libsoup' 'webkit2gtk')
+depends=('gjs' 'gtk3' 'libsoup' 'webkit2gtk')
+makedepends=('git' 'meson')
+#checkdepends=('appstream-glib')
 conflicts=('gigagram' "$pkgname-web")
 replaces=("$pkgname-web")
-makedepends=('git' 'npm' 'meson')
-#checkdepends=('appstream-glib')
-_commit=8934dcdb3ab43a04e2a210ec508c97c338a72ffe
-source=("${pkgname%-web}::git+https://github.com/sonnyp/Tangram.git#commit=$_commit"
-#source=("${pkgname%-web}::git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver"
-        'git+https://github.com/sonnyp/troll.git')
-sha256sums=('SKIP'
-            'SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+source=("${pkgname%-web}::git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  git submodule init
-  git config submodule.src/troll.url $srcdir/troll
-  git submodule update
+  cd "$srcdir/${pkgname%-web}"
+
+  # correct version
+  sed -i "s/version: '1.3.1'/version: '1.3.2'/g" meson.build
 }
 
 build() {
-  pushd "$srcdir/$pkgname"
-  npm install --cache "$srcdir/npm-cache"
-  ./node_modules/.bin/rollup -c
-  popd
-
   arch-meson "$pkgname" build
   meson compile -C build
 }
@@ -48,7 +34,7 @@ check() {
 }
 
 package(){
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
 # Conflicts with tangram-bin binary
 #  ln -s /usr/bin/re.sonny.Tangram "$pkgdir/usr/bin/$pkgname"
