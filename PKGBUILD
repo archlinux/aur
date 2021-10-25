@@ -16,6 +16,7 @@ makedepends=('git'
              'avisynthplus'
              'vapoursynth'
              'cuda'
+             'boost'
              )
 source=("${_plug}::git+https://github.com/AmusementClub/VapourSynth-EEDI2CUDA.git"
         'git+https://github.com/boostorg/sync.git'
