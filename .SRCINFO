@@ -1,0 +1,19 @@
+pkgbase = neovim-cmp-npm-git
+	pkgdesc = npm source for neovim-cmp
+	pkgver = r15.c412be1
+	pkgrel = 1
+	url = https://github.com/david-kunz/cmp-npm
+	install = cmp-npm.install
+	arch = any
+	groups = neovim-plugins
+	license = Unlicense
+	makedepends = git
+	depends = neovim-cmp
+	depends = neovim-plenary
+	depends = npm
+	provides = neovim-cmp-npm
+	conflicts = neovim-cmp-npm
+	source = neovim-cmp-npm-git::git+https://github.com/david-kunz/cmp-npm
+	md5sums = SKIP
+
+pkgname = neovim-cmp-npm-git
