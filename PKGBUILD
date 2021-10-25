@@ -3,7 +3,7 @@
 _plug=fftspectrum
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r1.1.g0fe5160
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Beatrice-Raws/FFTSpectrum'
