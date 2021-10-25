@@ -2,9 +2,9 @@
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
 pkgver=1.37.16
-pkgrel=1
+pkgrel=2
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
 license=('MIT')
 depends=('mono' 'mono-msbuild' 'mono-msbuild-sdkresolver')
