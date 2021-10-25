@@ -1,0 +1,21 @@
+pkgbase = instater
+	pkgdesc = An easy solution for system/dotfile configuration
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/nayaverdier/instater
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-jinja
+	depends = python-passlib
+	depends = python-rich
+	depends = python-yaml
+	source = https://files.pythonhosted.org/packages/source/i/instater/instater-0.2.0.tar.gz
+	sha256sums = 2fda4dce324872b13ddda619c6db25d9cca9faacf93d24761d2196642db40d4c
+	b2sums = f6035eb4dbfabc8a5b40494919f27033c2d8f756bc148c2d6ce84d5e32884958734284788afa30f219c4b792eb694cca976ea7698a0d625bd29212ca25e9722b
+
+pkgname = instater
