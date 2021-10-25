@@ -132,6 +132,10 @@ prepare() {
   scripts/config --disable CONFIG_BPF_LIRC_MODE2
   scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
 
+  # make it size optimized
+  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_SIZE
+
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   scripts/config --enable CONFIG_PSI_DEFAULT_DISABLED
 
