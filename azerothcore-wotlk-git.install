@@ -1,0 +1,75 @@
+post_install() {
+	_realmlist_ip=$(cat /tmp/azerothcore-wotlk-git-realmlist-ip)
+
+	# Enable needed services
+  sudo systemctl enable acore-auth-server.service
+  sudo systemctl enable acore-world-server.service
+  sudo systemctl enable mariadb.service
+
+  # Display some instructions
+	echo ''
+	echo ''
+	echo '#####################  IMPORTANT  #####################'
+	echo ''
+	echo "The installation has finished. please, follow these steps to connect to the server:"
+
+	echo ''
+	echo ''
+	echo "a default user has been created with the following credentials:"
+	echo ''
+	echo 'username: security4'
+	echo 'password: console'
+
+	echo ''
+	echo ''
+	echo "It is an account that has security level 4 (not recommended), so use it to create a GM account by running the following GM commands in game chat:"
+	echo ''
+	echo '.account create myuser mypass'
+	echo '.account set gmlevel myuser 3 -1'
+
+	echo ''
+	echo ''
+	echo "If you want to create a non-GM account, type the following instead:"
+	echo ''
+	echo '.account create myuser mypass'
+	echo '.account set gmlevel myuser 0 -1'
+
+	echo ''
+	echo ''
+	echo "replace the content in your realmlist.wtf file with the following:"
+	echo ''
+	echo "set realmlist ${_realmlist_ip}"
+
+	echo ''
+	echo ''
+	echo "#######################  NOTES  #######################"
+
+	echo ''
+	echo "the server is already running. If you reboot the computer, the server will also automatically run on boot (you can disable this by running 'sudo systemctl disable acore-{auth,world}-server.service')"
+
+	echo ''
+	echo ''
+	echo "a list of GM commands is available on this link: https://www.azerothcore.org/wiki/gm-commands"
+
+	echo ''
+	echo ''
+	echo 'the server may take some time to fully boot up, so if you can login, but is stuck at realm selection screen, maybe the server is still booting up, in this case just wait a few minutes and try again'
+}
+
+pre_remove() {
+	_user=$(cat /etc/passwd | grep /home | cut -d ':' -f 1)
+	sudo rm -rf /home/${_user}/azeroth-server
+	sudo mysql -u root -e "DROP DATABASE acore_auth"
+	sudo mysql -u root -e "DROP DATABASE acore_characters"
+	sudo mysql -u root -e "DROP DATABASE acore_world"
+
+	sudo systemctl stop acore-auth-server.service
+	sudo systemctl stop acore-world-server.service
+
+	sudo systemctl disable acore-auth-server.service
+	sudo systemctl disable acore-world-server.service
+
+	sudo rm -f /etc/systemd/system/acore-auth-server.service
+	sudo rm -f /etc/systemd/system/acore-world-server.service
+	sudo systemctl daemon-reload
+}
