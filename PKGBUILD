@@ -3,7 +3,7 @@
 pkgname=grapejuice-git
 _pkgname=grapejuice
 _repository=https://gitlab.com/brinkervii/grapejuice.git
-pkgver=3.61.15.b188bc3
+pkgver=3.65.16.fce7ae7
 pkgrel=1
 pkgdesc='Simple Wine+Roblox management tool'
 arch=('x86_64')
