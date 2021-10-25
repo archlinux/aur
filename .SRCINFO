@@ -1,7 +1,7 @@
 pkgbase = plugn
 	pkgdesc = Hook system that lets users extend your application with plugins
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dokku/plugn
 	arch = x86_64
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = plugn
 	sha256sums = b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046
 
 pkgname = plugn
-
