@@ -28,6 +28,9 @@ b2sums=(
 prepare() {
     # Make the driver use local raspberrypi-firmware.h copy with new values, as they are not yet upstreamed
     sed -i -e 's|<soc/bcm2835/raspberrypi-firmware.h>|"raspberrypi-firmware.h"|' rpi-poe-fan.c
+
+    # Fix for linux 5.12+
+    sed -i -e 's|thermal_cdev_update|//thermal_cdev_update|' rpi-poe-fan.c
 }
 
 package() {
