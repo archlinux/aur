@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.19-GE-2
+_srctag=6.20-GE-1
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=6.4.0
+_monover=6.4.1
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
@@ -148,6 +148,7 @@ prepare() {
     # Install it from pip in a virtualenv
     virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
     source build_venv/bin/activate
+    pip install --no-cache-dir meson==0.59.3
     pip install --no-cache-dir afdko
     pip install --no-cache-dir pefile
 
@@ -343,7 +344,7 @@ sha256sums=('SKIP'
             'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            '0473570207938f983994addb1ff3c3904a30f6cc07ecaa291c7900f5f7e4cc21'
+            'a70c865e590058fa6fc3aa47425646405bdda27f78b9aa6d2030d2d2a8efadbb'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
             '253ddfdf066fd182395c80c6be462f5970ed3017a9fba00f2e75d0f2b99ea1a9'
             '27b75be282c5f235171569aebce80020b330d6117becdb3b1670d3124eb52489'
