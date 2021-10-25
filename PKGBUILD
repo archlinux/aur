@@ -1,6 +1,6 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'yasm' 'git')
-_tag=b41ffb53f1000ab2227c1736d8c1355aa5081c40
+_tag=626ff35955c2c35b806b3e0ecf551a1a8611cdbf
 source=(git+https://chromium.googlesource.com/webm/libvpx#tag=${_tag}
         'configure.patch')
 sha256sums=('SKIP'
@@ -67,7 +67,7 @@ package() {
 
     #Move the hacked in shared libs to bin
     mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll ${pkgdir}/usr/${_arch}/bin/
-    mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll.6* ${pkgdir}/usr/${_arch}/bin/
+    mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll.7* ${pkgdir}/usr/${_arch}/bin/
 
     #Install implib
     install -m 0644 ${srcdir}/libvpx/build-${_arch}/libvpx.dll.a ${pkgdir}/usr/${_arch}/lib/libvpx.dll.a
