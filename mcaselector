@@ -1,7 +1,7 @@
 #!/bin/sh
 
-JV="$(javac -version | sed -e "s,.* ,,")"
+JV="/usr/lib/jvm/default"
 
-export PATH="/usr/lib/jvm/java-${JV}-openjdk/bin/:$PATH"
+export PATH="${JV}/bin/:$PATH"
 
-java --module-path /usr/lib/jvm/java-${JV}-openjdk/lib/javafx.base.jar:/usr/lib/jvm/java-${JV}-openjdk/lib/javafx.controls.jar:/usr/lib/jvm/java-${JV}-openjdk/lib/javafx.graphics.jar:/usr/lib/jvm/java-${JV}-openjdk/lib/javafx.swing.jar --add-modules javafx.base,javafx.controls,javafx.graphics,javafx.swing -jar /usr/share/java/mcaselector.jar "$@"
+java --module-path ${JV}/lib/javafx.base.jar:${JV}/lib/javafx.controls.jar:${JV}/lib/javafx.graphics.jar:${JV}/lib/javafx.swing.jar --add-modules javafx.base,javafx.controls,javafx.graphics,javafx.swing -jar /usr/share/java/mcaselector.jar "$@"
