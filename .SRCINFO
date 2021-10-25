@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-accept-language-per-site
+	pkgdesc = Firefox extension to change Accept-Language for different sites
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/sorz/accept-language-per-site
+	arch = any
+	groups = firefox-addons
+	license = custom:MIT
+	makedepends = jq
+	depends = firefox
+	options = !strip
+	source = firefox-extension-accept-language-per-site-0.2.3.zip::https://github.com/sorz/accept-language-per-site/archive/refs/tags/v0.2.3.zip
+	sha512sums = 97106aca7bb67a8e601653806aa82e6db41f68b27c99c72f1f69beb3edeb08097b63a582a3cd562541b977dea9366e75d927139b1b522fbbe5762b32e71a6ef5
+
+pkgname = firefox-extension-accept-language-per-site
