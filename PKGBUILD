@@ -2,7 +2,7 @@
 
 _plug=d2vsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.2.12.g5ddeb06
+pkgver=v1.2.15.g0a56d1f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -26,15 +26,13 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd "${_plug}"
 }
 
 build() {
   (cd "${_plug}"; ./autogen.sh)
 
   cd build
-  ../"${_plug}"/configure \
+  "../${_plug}/configure" \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 

@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-d2vsource-git
 	pkgdesc = Plugin for Vapoursynth: d2vsource (GIT version)
-	pkgver = v1.2.12.g5ddeb06
+	pkgver = v1.2.15.g0a56d1f
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=166399
 	arch = x86_64
