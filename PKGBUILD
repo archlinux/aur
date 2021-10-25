@@ -1,7 +1,7 @@
 # Maintainer: Frederic Van Assche <frederic@fredericva.com>
 
 pkgname=python-influxdb-client
-pkgver=1.15.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="Python client for InfluxDB 1.8+ and 2.0"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 optdepends=('influxdb')
 options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://github.com/influxdata/influxdb-client-python/archive/v$pkgver.tar.gz)
-sha512sums=('bb27cddb84c40fde88a2cc4be04434258d5edd17707bc4721591a5a886327c5dd2941f89dcfdc924b0fcf701a025fb1737af0e6c3a7560b0315f7615a4065d40')
+sha512sums=('4e744ffabb6e39c53d8522b1a1b2a96ce19853feb30ceffe509be0d404bf78f0e41f38c9f12130e0c0a022ca6010206e11633782d781e78acf13cb55920d3224')
 
 build() {
   cd "$srcdir/influxdb-client-python-$pkgver"
