@@ -1,14 +1,14 @@
 pkgbase = prometheus-libvirt-exporter
 	pkgdesc = A prometheus exporter for libvirt
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zhangjianweibj/prometheus-libvirt-exporter
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = prometheus-libvirt-exporter-1.2.0::git+https://github.com/zhangjianweibj/prometheus-libvirt-exporter#tag=1.2.0
+	source = prometheus-libvirt-exporter-1.2.0::https://github.com/zhangjianweibj/prometheus-libvirt-exporter/archive/refs/tags/1.2.0.tar.gz
 	source = prometheus-libvirt-exporter.service
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = f73940ebf884f26001151be085fe7a04e4f83b097b9344d67b1751bf7a9ddc46
+	sha256sums = b31552e3ce21a5c5e4e683b78e2fb4be0c1f56378271b14e1b39e925d0913085
 
 pkgname = prometheus-libvirt-exporter
