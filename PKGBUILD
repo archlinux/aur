@@ -1,6 +1,6 @@
 # Maintainer: Caleb Fontenot <foley2431 at gmail dot com>
 pkgname=mmsd-tng-git
-pkgver=1.2.r0.gd4e1cd8
+pkgver=1.5.r0.g2bbeaa2
 pkgrel=1
 pkgdesc="Multimedia Messaging Service Daemon - The Next Generation"
 url="https://git.kernel.org/pub/scm/network/ofono/mmsd.git"
@@ -8,7 +8,8 @@ arch=('x86_64' 'aarch64')
 license=("GPL2")
 provides=("mmsd" "mmsd-tng")
 conflicts=("mmsd" "mmsd-tng")
-makedepends=("git" "meson" "c-ares")
+depends=("c-ares")
+makedepends=("git" "meson")
 source=("$pkgname::git+https://gitlab.com/kop316/mmsd.git")
 sha256sums=("SKIP")
 
