@@ -15,6 +15,7 @@ depends=('vapoursynth-plugin-havsfunc-git'
          )
 makedepends=('git'
              'python-poetry'
+             'python-pip'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -34,4 +35,9 @@ build() {
 package() {
   cd "${_plug}"
   pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+
+  rm -fr "${pkgdir}${_site_packages}"/{README.md,LICENSE}
+
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
