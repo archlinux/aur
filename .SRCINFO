@@ -1,0 +1,15 @@
+pkgbase = tree-sitter-cpp
+	pkgdesc = C++ grammar for tree-sitter
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-cpp
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter
+	makedepends = npm
+	depends = gcc-libs
+	source = tree-sitter-cpp-0.20.0.tar.gz::https://github.com/tree-sitter/tree-sitter-cpp/archive/v0.20.0.tar.gz
+	sha256sums = 8f8281a73106982b9a4921a24361643b1d30446295c3ee601fcd4486b6ad95c9
+
+pkgname = tree-sitter-cpp
