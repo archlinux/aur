@@ -36,7 +36,7 @@ package() {
     cd "${srcdir}"
 
     echo "Creating desktop entry file.."
-    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/application/" "${srcdir}/${_pkgname}.desktop"
+    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}.desktop"
 
     echo "Coping icons..."
     install -D "${srcdir}/${_pkgname}/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
