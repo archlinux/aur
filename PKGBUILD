@@ -2,7 +2,7 @@
 
 pkgname=zwavejs2mqtt
 pkgver=5.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Zwave to Mqtt gateway and Control Panel Web UI."
 arch=('any')
 url="https://github.com/zwave-js/zwavejs2mqtt"
@@ -28,7 +28,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  # taken from hedagedoc in [community], thanks Mr. van der Waa :)
+  # taken from hedgedoc in [community], thanks Mr. van der Waa :)
   # removing unneeded files and directories
   find node_modules -type f \
           \( \
@@ -88,6 +88,7 @@ package() {
          -iwholename '*/win32-x64' -o \
          -iwholename '*/__pycache__' -o \
          -iwholename '*/darwin-x64' \
+         -not -iwholename '*/zwave-js/*'
          \) \
          -exec rm -rvf {} +
 
