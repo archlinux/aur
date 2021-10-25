@@ -1,11 +1,12 @@
 # Maintainer: Andrew Shark <ashark @ at @ linuxcomp.ru>
 pkgname=bookmarksync-git
-pkgver=0.1.1.r1.g936eec8
+pkgver=0.1.1.r9.g1d21df0
 pkgrel=1
 pkgdesc="sync file picker bookmarks for KDE and GTK"
 arch=(x86_64)
 url="https://github.com/jlu5/bookmarksync"
 license=('GPLv3')
+depends=(qt5-base)
 makedepends=(git)
 source=(git+https://github.com/jlu5/bookmarksync.git)
 sha256sums=("SKIP")
