@@ -2,7 +2,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-hidpi-git
-pkgver=21.1.2.r232.g7c63c582a
+pkgver=21.1.2.901.r270.gccffe90c3
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -55,7 +55,6 @@ build() {
 #  export LDFLAGS=${LDFLAGS/,-z,now}
 
   arch-meson xserver build \
-    -D os_vendor="Arch Linux" \
     -D ipv6=true \
     -D xvfb=false \
     -D xnest=false \
@@ -88,4 +87,3 @@ package() {
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
 }
-
