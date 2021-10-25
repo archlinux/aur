@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=oscclip
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Utilities for managing the clipboard using OSC52'
 arch=(any)
@@ -11,7 +11,7 @@ depends=("python")
 makedepends=("python-setuptools")
 optdepends=()
 source=("https://codeberg.org/rumpelsepp/oscclip/archive/v${pkgver}.tar.gz")
-sha256sums=('beb71f7e67af652ffaf5f08dd106ecd529adcae1bcfb501fcb001184362b0167')
+sha256sums=('631d3edd5518590ac53c6e597846a2a771d13b87a1fe390b56fe5ac7fc65edec')
 
 build() {
     cd "$pkgname"
