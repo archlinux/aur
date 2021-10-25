@@ -6,7 +6,7 @@ url='https://wiki.ros.org/urdf'
 pkgname='ros-noetic-urdf'
 pkgver='1.13.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
@@ -73,5 +73,5 @@ package() {
 	cd "${srcdir}/build"
 	make DESTDIR="${pkgdir}/" install
 	cd "${pkgdir}/opt/ros/noetic/share/urdf/cmake"
-	perl -i -pe 's/\$.+?>:|>//g' urdfConfig.cmake
+	perl -i -pe 's/\$.+?>:|>//g if $. == 119' urdfConfig.cmake
 }
