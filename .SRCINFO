@@ -1,6 +1,6 @@
 pkgbase = python-opentsne
 	pkgdesc = Extensible, parallel implementations of t-SNE
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://opentsne.readthedocs.io/en/latest/
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = python-opentsne
 	depends = python-scikit-learn
 	depends = python-numba
 	depends = python-pynndescent
-	source = https://pypi.io/packages/source/o/openTSNE/openTSNE-0.6.0.tar.gz
-	sha256sums = 62571d0da9585bb764a1dfc6a6ed51e9afcfea48a1c92a72002bd663f07b7151
+	source = https://pypi.io/packages/source/o/openTSNE/openTSNE-0.6.1.tar.gz
+	sha256sums = 79e7c84f485cc5bcdb03c172823968a055239ed9d2a8d8e7f7ba676e4d95b907
 
 pkgname = python-opentsne
-
