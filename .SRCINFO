@@ -1,7 +1,7 @@
 pkgbase = chrysalis
 	pkgdesc = Graphical configurator for Kaleidoscope-powered keyboards
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keyboardio/Chrysalis
 	arch = x86_64
 	license = GPL3

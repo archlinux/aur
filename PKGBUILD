@@ -3,7 +3,7 @@
 pkgname=chrysalis
 pkgdesc='Graphical configurator for Kaleidoscope-powered keyboards'
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/keyboardio/${pkgname^}"
 license=(GPL3)
@@ -38,7 +38,7 @@ build() {
 
 package() {
 	sed -E "s/electron/$_electron/" "$pkgname.sh" |
-		install -Dm0755 -t "$pkgdir/usr/bin/" /dev/stdin
+		install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
 	cd "$_archive"
 	local _dist=dist/linux-unpacked/resources
 	install -Dm0644 -t "$pkgdir/usr/lib/$pkgname/" "$_dist/app.asar"
