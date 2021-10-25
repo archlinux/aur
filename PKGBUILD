@@ -7,7 +7,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.4.1
 _dxvkver=1.9.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -142,6 +142,7 @@ prepare() {
     # Install it from pip in a virtualenv
     virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
     source build_venv/bin/activate
+    pip install --no-cache-dir meson==0.59.3
     pip install --no-cache-dir afdko
     pip install --no-cache-dir pefile
 
