@@ -6,13 +6,14 @@ pkgdesc="An alternative to Google's Python Protobuf library."
 url="https://github.com/appnexus/pyrobuf"
 
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 license=("Apache")
 
 makedepends=(
     "python-setuptools"
+    "python-wheel"
 )
 depends=(
     "cython"
