@@ -1,0 +1,15 @@
+pkgbase = tree-sitter-c
+	pkgdesc = C grammar for tree-sitter
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-c
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = Apache
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = libtree-sitter-c.so
+	source = tree-sitter-c-0.20.1.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/v0.20.1.tar.gz
+	sha256sums = ffcc2ef0eded59ad1acec9aec4f9b0c7dd209fc1a85d85f8b0e81298e3dddcc2
+
+pkgname = tree-sitter-c
