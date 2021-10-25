@@ -32,11 +32,11 @@ optdepends=(
 )
 checkdepends=(
     "python-anyio"
-    "python-coverage"
     "python-igraph"
     "python-networkx"
     "python-pandana"
     "python-pytest"
+    "python-pytest-cov"
 )
 
 source=(
