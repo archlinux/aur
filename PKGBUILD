@@ -2,7 +2,7 @@
 # Contributor: Eric Bélanger <eric at archlinux dot org>
 pkgname=hardinfo-git
 pkgver=0.6.alpha.1371.gc9d9f9c
-pkgrel=2
+pkgrel=3
 pkgdesc="A system information and benchmark tool."
 arch=('x86_64')
 url="https://github.com/lpereira/hardinfo"
@@ -14,7 +14,6 @@ optdepends=('dmidecode: Memory Devices module'
             'lm_sensors: Sensors module'
             'pciutils: PCI Devices module'
             'sysbench: SysBench CPU benchmark'
-            'udisks: Storage module'
             'usbutils: USB Devices module')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
