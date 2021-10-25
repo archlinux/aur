@@ -1,0 +1,12 @@
+pkgbase = simple-screenshot
+	pkgdesc = A very simple screenshot tool, entirely contained in this PKGBUILD
+	pkgver = 0.0.1
+	pkgrel = 0
+	arch = any
+	license = MIT
+	depends = hacksaw
+	depends = shotgun
+	depends = xclip
+	depends = xdialog
+
+pkgname = simple-screenshot
