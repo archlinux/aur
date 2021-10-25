@@ -1,0 +1,16 @@
+pkgbase = python-pygeos
+	pkgdesc = Wraps GEOS geometry functions in numpy ufuncs.
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://pygeos.readthedocs.io/
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = cython
+	depends = geos
+	depends = python
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/p/pygeos/pygeos-0.10.2.tar.gz
+	sha256sums = 08cd7fe047a7d7f9f94eaa9a65e0b4fd4057ffebc15e6179a0290a9576a0bbbc
+
+pkgname = python-pygeos
