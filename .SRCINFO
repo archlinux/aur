@@ -1,0 +1,21 @@
+pkgbase = neovim-cmp_git-git
+	pkgdesc = Git source for neovim-cmp
+	pkgver = r27.501f910
+	pkgrel = 1
+	url = https://github.com/petertriho/cmp-git
+	install = cmp-git.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	depends = neovim-cmp
+	depends = neovim-plenary
+	depends = git
+	depends = curl
+	optdepends = github-cli
+	optdepends = gitlab
+	provides = neovim-cmp_git
+	conflicts = neovim-cmp_git
+	source = neovim-cmp_git-git::git+https://github.com/petertriho/cmp-git
+	md5sums = SKIP
+
+pkgname = neovim-cmp_git-git
