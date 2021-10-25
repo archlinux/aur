@@ -1,7 +1,7 @@
 # Maintainer: Andrew Shark <ashark @ at @ linuxcomp.ru>
 pkgname=bookmarksync-git
 pkgver=0.1.1.r9.g1d21df0
-pkgrel=1
+pkgrel=2
 pkgdesc="sync file picker bookmarks for KDE and GTK"
 arch=(x86_64)
 url="https://github.com/jlu5/bookmarksync"

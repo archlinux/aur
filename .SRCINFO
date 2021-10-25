@@ -1,7 +1,7 @@
 pkgbase = bookmarksync-git
 	pkgdesc = sync file picker bookmarks for KDE and GTK
 	pkgver = 0.1.1.r9.g1d21df0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jlu5/bookmarksync
 	arch = x86_64
 	license = GPLv3
