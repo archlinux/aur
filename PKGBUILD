@@ -6,13 +6,14 @@ pkgdesc="An alternative to Google's Python Protobuf library."
 url="https://github.com/appnexus/pyrobuf"
 
 pkgver=0.9.3
-pkgrel=3
+pkgrel=4
 
 arch=("x86_64")
 license=("Apache")
 
 makedepends=(
     "python-pip"
+    "python-pytest-runner"
     "python-setuptools"
     "python-wheel"
 )
@@ -33,10 +34,11 @@ build() {
     python setup.py build
 }
 
+# tests currently incomplete in PyPi packages: https://github.com/appnexus/pyrobuf/issues/160
 # check() {
 #     cd "${srcdir}"/${_name}-${pkgver}
 #     local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-#     PYTHONPATH="$PWD/build/lib.linux-$CARCH-${python_version}" pytest
+#     PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-${python_version}" py.test
 # }
 
 package() {

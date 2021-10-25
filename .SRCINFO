@@ -1,11 +1,12 @@
 pkgbase = python-pyrobuf
 	pkgdesc = An alternative to Google's Python Protobuf library.
 	pkgver = 0.9.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/appnexus/pyrobuf
 	arch = x86_64
 	license = Apache
 	makedepends = python-pip
+	makedepends = python-pytest-runner
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = cython
