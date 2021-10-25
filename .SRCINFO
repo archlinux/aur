@@ -1,0 +1,18 @@
+pkgbase = qt-ffmpeg-imageplugin-git
+	pkgdesc = Qt image plugin using ffmpeg for webm, apng, avif and more
+	pkgver = r30.33eea70
+	pkgrel = 1
+	url = https://github.com/sandsmark/qt-ffmpeg-imageplugin
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = ffmpeg
+	provides = qt-ffmpeg-imageplugin
+	conflicts = qt-ffmpeg-imageplugin
+	source = git+https://invent.kde.org/sandsmark/qt-ffmpeg-imageplugin.git
+	md5sums = SKIP
+
+pkgname = qt-ffmpeg-imageplugin-git
