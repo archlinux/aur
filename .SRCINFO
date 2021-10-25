@@ -1,14 +1,13 @@
 pkgbase = python-minifier
 	pkgdesc = Transform Python source code into it's most compact representation
-	pkgver = 2.4.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/dflook/python-minifier
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.io/packages/source/p/python-minifier/python_minifier-2.4.1.tar.gz
-	sha256sums = 1220c5c71713e5a151fee70dcf96dd473dfdfc9d2ffbb70cb3c997b90cf39f8c
+	source = https://pypi.io/packages/source/p/python-minifier/python_minifier-2.5.0.tar.gz
+	sha256sums = 81397b9ec5bf1690e76b358c45af4ba6fa01be2739b478d4c1362b1fcdcf790b
 
 pkgname = python-minifier
-
