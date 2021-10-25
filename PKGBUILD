@@ -3,7 +3,7 @@
 # Contributor: Jonas Malaco <jonas@protocubo.io>
 
 pkgname=vgrep
-pkgver=5.2.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="Reimpementation of the ancient cgvg perl scripts"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('go')
 url="https://github.com/vrothberg/vgrep"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vrothberg/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5132ef6b254bfb8535b4021c297aaeafa1e641de5ab3d1ba0e1748586f97d192')
+sha256sums=('d2fa1c1ac7e196d591b834cccff1cb457d20e66d03558e7f7b3b966bef3ab86c')
 
 build() {
   cd "$pkgname-$pkgver"
