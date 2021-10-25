@@ -12,17 +12,18 @@ conflicts=('cerebro')
 depends=('nss' 'gtk3')
 makedepends=('gendesk' 'python2' 'git' 'npm' 'yarn')
 provides=('cerebro')
-source=('git://github.com/cerebroapp/cerebro.git')
-sha256sums=('SKIP')
+source=(
+    'cerebro.desktop'
+    'git://github.com/cerebroapp/cerebro.git'
+)
+sha256sums=(
+    '3f6cf397952372f1bdf144b61dc02c977a127b04d52166947173aadf94cf3274'
+    'SKIP'
+)
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed 's/-/.r/;s/-/./g'
-}
-
-prepare() {
-    gendesk -f -n --name="Cerebro" --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" \
-        --exec="${pkgdir}/opt/${_pkgname}/${_pkgname}" --categories="Utility"
 }
 
 build() {
@@ -36,7 +37,7 @@ package() {
     cd "${srcdir}"
 
     echo "Creating desktop entry file.."
-    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}.desktop"
+    install -D "${srcdir}/cerebro.desktop" "${pkgdir}/usr/share/applications/cerebro.desktop"
 
     echo "Coping icons..."
     install -D "${srcdir}/${_pkgname}/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
@@ -57,5 +58,5 @@ package() {
 
     echo "Linking binary file"
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "${pkgdir}/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }

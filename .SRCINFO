@@ -14,7 +14,9 @@ pkgbase = cerebro-git
 	depends = gtk3
 	provides = cerebro
 	conflicts = cerebro
+	source = cerebro.desktop
 	source = git://github.com/cerebroapp/cerebro.git
+	sha256sums = 3f6cf397952372f1bdf144b61dc02c977a127b04d52166947173aadf94cf3274
 	sha256sums = SKIP
 
 pkgname = cerebro-git
