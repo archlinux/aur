@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus@mullvad.net>
-#              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984'
+              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984'
              )
               # David Lönnhager (code signing) <david.l@mullvad.net>
 
