@@ -1,0 +1,27 @@
+pkgbase = ncurses-versioned
+	pkgdesc = System V Release 4.0 curses emulation library with versioned symbols
+	pkgver = 6.2
+	pkgrel = 2
+	url = https://invisible-island.net/ncurses/ncurses.html
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	optdepends = bash: for ncursesw6-config
+	provides = libncurses++w.so
+	provides = libformw.so
+	provides = libmenuw.so
+	provides = libpanelw.so
+	provides = libncursesw.so
+	provides = ncurses
+	conflicts = ncurses
+	replaces = alacritty-terminfo
+	source = https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.2.tar.gz
+	source = https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.2.tar.gz.sig
+	validpgpkeys = C52048C0C0748FEE227D47A2702353E0F7E48EDB
+	sha512sums = 4c1333dcc30e858e8a9525d4b9aefb60000cfc727bc4a1062bace06ffc4639ad9f6e54f6bdda0e3a0e5ea14de995f96b52b3327d9ec633608792c99a1e8d840d
+	sha512sums = SKIP
+	b2sums = 6680cd7a369a4cb8234442a70869c283f0db6db9d7da1da2a7a5c519eb862a2c9b9411957d99f9ebb5089cad00b42e1ca6bc0784327461113df2eeaec695913c
+	b2sums = SKIP
+
+pkgname = ncurses-versioned
