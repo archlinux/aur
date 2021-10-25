@@ -1,14 +1,19 @@
 pkgbase = hardinfo-git
 	pkgdesc = A system information and benchmark tool.
-	pkgver = 0.6.alpha.1361.g2e09eee
-	pkgrel = 2
+	pkgver = 0.6.alpha.1371.gc9d9f9c
+	pkgrel = 1
 	url = https://github.com/lpereira/hardinfo
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
+	makedepends = setconf
 	depends = gtk3
 	depends = libsoup
+	optdepends = sysbench
+	optdepends = fwupd
+	optdepends = udisks
+	optdepends = mesa-demos
 	provides = hardinfo
 	conflicts = hardinfo
 	options = debug
@@ -17,4 +22,3 @@ pkgbase = hardinfo-git
 	sha256sums = SKIP
 
 pkgname = hardinfo-git
-
