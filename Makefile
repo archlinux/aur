@@ -1,5 +1,5 @@
 obj-m += rpi-poe-fan.o
-KERNEL=/usr/lib/modules/$(shell uname -r)/build
+KERNEL=/usr/lib/modules/${KERNELRELEASE}/build
 all:
 	make -C ${KERNEL} M=$(PWD) modules
 
