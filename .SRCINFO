@@ -1,0 +1,20 @@
+pkgbase = whatpulse-bin
+	pkgdesc = Measures your keyboard, mouse and application usage, network traffic and uptime.
+	pkgver = 3.5.10
+	pkgrel = 1
+	url = http://www.whatpulse.org
+	arch = x86_64
+	license = custom:whatpulse_tos
+	makedepends = squashfs-tools
+	depends = qt5-svg
+	optdepends = libpcap: for capturing network statistics
+	provides = whatpulse=3.5
+	conflicts = whatpulse
+	source = whatpulse.desktop
+	source = LICENSE
+	sha256sums = aba7e6b28ccebdb6115245dae1a7ca8e88afa2ecb1619037b66f65090a284363
+	sha256sums = cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619
+	source_x86_64 = whatpulse-3.5.10.sfs::https://api.snapcraft.io/api/v1/snaps/download/iHVATX2faqAJciG5YGNM241W8fE8UvsF_10.snap
+	sha256sums_x86_64 = ffb8dae8045f6af1ab059e12372130f85455607461d25b25cb2df69366a18623
+
+pkgname = whatpulse-bin
