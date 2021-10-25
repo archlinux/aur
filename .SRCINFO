@@ -1,5 +1,5 @@
 pkgbase = doasedit-git
-	pkgdesc = A POSIX shell script that implements the sudoedit functionality for doas utility.
+	pkgdesc = A POSIX shell script that implements the sudoedit functionality for doas utility
 	pkgver = r14.ba75016
 	pkgrel = 1
 	url = https://github.com/monesonn/doasedit

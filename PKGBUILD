@@ -3,7 +3,7 @@
 pkgname='doasedit-git'
 pkgver=r14.ba75016
 pkgrel=1
-pkgdesc='A POSIX shell script that implements the sudoedit functionality for doas utility.'
+pkgdesc='A POSIX shell script that implements the sudoedit functionality for doas utility'
 arch=('any')
 url='https://github.com/monesonn/doasedit'
 license=('ISC')
