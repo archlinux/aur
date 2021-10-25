@@ -12,7 +12,7 @@ makedepends=('git' 'meson')
 #checkdepends=('appstream-glib')
 conflicts=('gigagram' "$pkgname-web")
 replaces=("$pkgname-web")
-source=("${pkgname%-web}::git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver")
+source=("$pkgname::git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
