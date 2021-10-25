@@ -8,7 +8,7 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-git
-pkgver=4.3.0.prealpha.7876.g8e7ccd3cd7
+pkgver=4.3.0.prealpha.7877.g6e8aab8fd8
 pkgrel=2
 pkgdesc='A full-featured free digital painting studio. Git version.'
 arch=('x86_64')
@@ -16,13 +16,13 @@ url='https://krita.org'
 license=('GPL3')
 
 depends=(
-	kitemviews kitemmodels ki18n kcompletion karchive kguiaddons kcrash
+	kitemviews kitemmodels ki18n kcompletion kguiaddons kcrash
 	qt5-svg qt5-multimedia quazip gsl libraw exiv2 openexr fftw giflib
 	openjpeg2 opencolorio hicolor-icon-theme
 )
 makedepends=(
 	git extra-cmake-modules kdoctools boost eigen vc poppler-qt5
-	python-pyqt5 libheif sip4 python-sip4 kseexpr
+	python-pyqt5 libheif qt5-tools sip kseexpr
 )
 optdepends=(
 	'poppler-qt5: PDF filter'
