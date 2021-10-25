@@ -1,18 +1,19 @@
-# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer: SanskritFritz (gmail)
+# Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: Michal Malek <michalm@jabster.pl>
 
 pkgname=fontmatrix
-pkgver=0.6.0
-pkgrel=9
+pkgver=0.9.100
+pkgrel=1
 pkgdesc="Font manager for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL')
-depends=('qtwebkit-bin')
+depends=('qtwebkit')
 makedepends=('cmake' 'mesa') 
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('fa3ca2b189115c24c628f15334e0b506298d7a16e294bcc21bde79cba9c44a84')
+sha256sums=('241021e24b0e2cdbc4bdf516d41ddfd23675a5a098bdaa0f7564d866cd292659')
 
 build() {
   cd $pkgname-$pkgver

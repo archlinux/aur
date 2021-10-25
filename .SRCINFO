@@ -1,16 +1,15 @@
 pkgbase = fontmatrix
 	pkgdesc = Font manager for Linux
-	pkgver = 0.6.0
-	pkgrel = 9
+	pkgver = 0.9.100
+	pkgrel = 1
 	url = https://github.com/fontmatrix/fontmatrix
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = mesa
-	depends = qtwebkit-bin
-	source = https://github.com/fontmatrix/fontmatrix/archive/v0.6.0.tar.gz
-	sha256sums = fa3ca2b189115c24c628f15334e0b506298d7a16e294bcc21bde79cba9c44a84
+	depends = qtwebkit
+	source = https://github.com/fontmatrix/fontmatrix/archive/v0.9.100.tar.gz
+	sha256sums = 241021e24b0e2cdbc4bdf516d41ddfd23675a5a098bdaa0f7564d866cd292659
 
 pkgname = fontmatrix
-
