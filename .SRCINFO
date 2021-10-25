@@ -1,0 +1,20 @@
+pkgbase = ukulele-git
+	pkgdesc = Simple self-contained Discord music bot
+	pkgver = r129.553d2d4
+	pkgrel = 1
+	url = https://github.com/freyacodes/ukulele
+	install = ukulele.install
+	arch = any
+	license = MIT
+	makedepends = java-environment>=11
+	makedepends = gradle
+	makedepends = git
+	makedepends = sed
+	depends = java-runtime>=11
+	backup = etc/ukulele/ukulele.yml
+	source = git+https://github.com/freyacodes/ukulele.git
+	source = ukulele.service
+	sha512sums = SKIP
+	sha512sums = f7eeabdc2fdf4d2b14006a0eb36c0b3a99caf806eac5495ab07f23b49b599bfdc791423e14bd569f98fec80aa93f50292a6d0fef374658b1f3dbbd1cbbf1fa4d
+
+pkgname = ukulele-git

@@ -1,0 +1,7 @@
+post_install() {
+	echo
+	echo "==> Remember to set the \"token\" field in the config file before starting the service."
+	echo "==> The following is a guide on how to create a bot token:"
+	echo "==> https://discordjs.guide/preparations/setting-up-a-bot-application.html"
+	echo
+}

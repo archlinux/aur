@@ -1,0 +1,11 @@
+[Unit]
+Description=Simple self-contained Discord music bot
+Wants=network-online.target
+After=network-online.target nss-lookup.target
+
+[Service]
+ExecStart=/usr/bin/java -jar /usr/share/ukulele/ukulele.jar --spring.config.location=/etc/ukulele/ukulele.yml
+Nice=10
+
+[Install]
+WantedBy=multi-user.target
