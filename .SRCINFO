@@ -1,6 +1,6 @@
 pkgbase = plasma-bigscreen-git
 	pkgdesc = A big launcher giving you easy access to any installed apps and skills.
-	pkgver = r340.749c303
+	pkgver = r411.7344fe3
 	pkgrel = 1
 	url = https://plasma-bigscreen.org/
 	arch = any
@@ -31,4 +31,3 @@ pkgbase = plasma-bigscreen-git
 	md5sums = SKIP
 
 pkgname = plasma-bigscreen-git
-

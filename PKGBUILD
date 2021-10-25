@@ -1,6 +1,6 @@
 # Maintainer: Archie Meng <archiemeng@protonmail.com>
 pkgname=plasma-bigscreen-git
-pkgver=r340.749c303
+pkgver=r411.7344fe3
 pkgrel=1
 pkgdesc="A big launcher giving you easy access to any installed apps and skills."
 arch=('any')
@@ -41,17 +41,13 @@ pkgver() {
 	printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
+build() {
 	cd "$srcdir/plasma-bigscreen"
 	cmake -B build \
 	      -DCMAKE_INSTALL_PREFIX="/usr" \
       	      -DCMAKE_BUILD_TYPE=Release 
 
-}
-
-
-build() {
-	cd "$srcdir/plasma-bigscreen/build"
+	cd build
 	make
 }
 
