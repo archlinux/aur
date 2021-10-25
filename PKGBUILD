@@ -1,7 +1,7 @@
 # Maintainer: Speykious <speykious@gmail.com>
 
 pkgname=vignette-git
-pkgver='2021.1011.0'
+pkgver='2021.1011.0.r3.bf97c61'
 pkgrel=1
 pkgdesc='The open source VTuber software toolkit. ❤'
 arch=('i686' 'x86_64')
@@ -25,9 +25,8 @@ pkgver() {
 build() {
   cd "$pkgname"
   rm -rf compiled
-  dotnet_runtime="$(dotnet --info | grep -F RID | cut -d: -f2 | tr -d '[:space:]')"
   env DOTNET_CLI_TELEMETRY_OPTOUT="${DOTNET_CLI_TELEMETRY_OPTOUT-1}" \
-  dotnet publish Vignette.Desktop --no-self-contained -c Release -r "$dotnet_runtime" -o compiled
+  dotnet publish Vignette.Desktop --no-self-contained -c Release -r ubuntu.20.04-x64 -o compiled
 }
 
 package() {
