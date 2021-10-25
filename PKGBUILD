@@ -13,7 +13,7 @@ source=("https://gitlab.com/ApexAI/ade-cli/-/jobs/1341322851/artifacts/raw/dist/
 sha256sums=('723dc8b1f2f37a591195e846cd2a1b0e7713f63de1fcb72aa1d88a9ac34adb33')
 
 package() {
-  mkdir -p ${pkgdir}/usr/local/bin
-  cp ade+x86_64 ${pkgdir}/usr/local/bin/ade
-  chmod +x ${pkgdir}/usr/local/bin/ade
+  mkdir -p ${pkgdir}/usr/bin
+  cp ade+x86_64 ${pkgdir}/usr/bin/ade
+  chmod +x ${pkgdir}/usr/bin/ade
 }
