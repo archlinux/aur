@@ -1,0 +1,8 @@
+post_install() {
+  echo "=> Append the following line to the correct file yourself"
+  echo
+  echo -e "\texport PATH=\"\$HOME/.crenv/bin:\$PATH\""
+  echo -e "\teval \"\$(crenv init -)\""
+  echo
+  echo "=> Close and reopen your terminal to start using crenv"
+}
