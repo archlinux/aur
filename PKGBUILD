@@ -2,7 +2,7 @@
 
 pkgname=zwavejs2mqtt
 pkgver=5.10.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Zwave to Mqtt gateway and Control Panel Web UI."
 arch=('any')
 url="https://github.com/zwave-js/zwavejs2mqtt"
@@ -81,8 +81,6 @@ package() {
          -iwholename '*.github' -o \
          -iwholename '*.tscache' -o \
          -iwholename '*/man' -o \
-         -iwholename '*/test' -a \
-         -not -iwholename '*/@zwave-js' -o \
          -iwholename '*/scripts' -o \
          -iwholename '*/git-hooks' -o \
          -iwholename '*/win32-ia32' -o \
