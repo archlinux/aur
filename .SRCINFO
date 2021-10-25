@@ -1,0 +1,16 @@
+pkgbase = ft32-elf-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the Bridgetek FT9xx (bare-metal) target
+	pkgver = 2.37
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.bz2
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.bz2.sig
+	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha512sums = b3f5184697f77e94c95d48f6879de214eb5e17aa6ef8e96f65530d157e515b1ae2f290e98453e4ff126462520fa0f63852b6e1c8fbb397ed2e41984336bc78c6
+	sha512sums = SKIP
+
+pkgname = ft32-elf-binutils
