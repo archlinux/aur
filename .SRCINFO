@@ -1,0 +1,15 @@
+pkgbase = avro-tools
+	pkgdesc = Avro command line tools and utilities
+	pkgver = 1.10.2
+	pkgrel = 1
+	url = https://avro.apache.org/
+	arch = any
+	license = Apache
+	depends = java-runtime>=8
+	depends = sh
+	provides = avro-tools
+	noextract = avro-tools-1.10.2.jar
+	source = https://dlcdn.apache.org/avro/avro-1.10.2/java/avro-tools-1.10.2.jar
+	sha256sums = ab158f4af8f767d2358a29d8678939b2a0f96017490acfb4e7ed0708cea07913
+
+pkgname = avro-tools
