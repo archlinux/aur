@@ -16,7 +16,7 @@ source=("${pkgname%-web}::git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/${pkgname%-web}"
+  cd "$srcdir/$pkgname"
 
   # correct version
   sed -i "s/version: '1.3.1'/version: '1.3.2'/g" meson.build
