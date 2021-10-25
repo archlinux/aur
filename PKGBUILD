@@ -2,7 +2,7 @@
 
 pkgname=mint
 pkgver=0.14.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A refreshing language for the front-end web'
 arch=('x86_64')
 url='https://github.com/mint-lang/mint'
@@ -30,6 +30,8 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -Dm755 "bin/mint" "${pkgdir}/usr/bin/mint"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/mint/LICENSE"
+  install -Dm755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
