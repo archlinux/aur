@@ -1,0 +1,31 @@
+diff --git a/setup.py b/setup.py
+index 13aa417..b64e566 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,21 +1,16 @@
+-
+-import os
+-import sys
+ from setuptools import setup
+ 
+-version_py = os.path.join(os.path.dirname(__file__), 'gffutils', 'version.py')
+-version = open(version_py).read().strip().split('=')[-1].replace('"', '')
+-requirements = open(os.path.join(os.path.dirname(__file__), 'requirements.txt')).readlines()
++with open('requirements.txt') as f:
++    requirements = f.readlines()
++
+ setup(
+     name='gffutils',
+-    version=version,
++    version='@PKGVER@',
+     install_requires=requirements,
+-    packages=['gffutils', 'gffutils.scripts', 'gffutils.test',
+-              'gffutils.test.data'],
++    packages=['gffutils', 'gffutils.scripts'],
+     scripts=['gffutils/scripts/gffutils-cli'],
+     author='Ryan Dale',
+     package_dir={'gffutils': 'gffutils'},
+-    package_data = {'gffutils': ['test/data/*']},
+     description="Work with GFF and GTF files in a flexible "
+     "database framework",
+     author_email='dalerr@niddk.nih.gov',
