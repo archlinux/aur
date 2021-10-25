@@ -6,6 +6,7 @@ pkgbase = vapoursynth-plugin-bestaudiosource-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = meson
 	depends = vapoursynth
 	depends = libavcodec.so
 	depends = libavformat.so
