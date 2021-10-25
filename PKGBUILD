@@ -12,6 +12,7 @@ arch=("x86_64")
 license=("Apache")
 
 makedepends=(
+    "python-pip"
     "python-setuptools"
     "python-wheel"
 )

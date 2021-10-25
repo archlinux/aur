@@ -5,6 +5,7 @@ pkgbase = python-pyrobuf
 	url = https://github.com/appnexus/pyrobuf
 	arch = x86_64
 	license = Apache
+	makedepends = python-pip
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = cython
