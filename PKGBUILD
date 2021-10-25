@@ -1,8 +1,8 @@
 # Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=ansible-language-server
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc='Ansible Language Server'
 arch=('any')
 url="https://github.com/ansible/ansible-language-server"
@@ -12,7 +12,7 @@ optdepends=('ansible-lint: required for linter support')
 makedepends=('npm' 'jq')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@ansible/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('da0af174f457176cd49aca2fd811f0dae4cec1913574e68a2866230e2906ef8a')
+sha256sums=('00e7204342728ec12afae398414550a31f210908c2c4601c1a50e6e94275ebbd')
 
 package() {
     npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
