@@ -1,7 +1,7 @@
 # Maintainer: Wallun <wallun@disroot.org>
 pkgname=prometheus-libvirt-exporter
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A prometheus exporter for libvirt"
 arch=('x86_64')
 url="https://github.com/zhangjianweibj/prometheus-libvirt-exporter"
@@ -12,10 +12,10 @@ optdepends=()
 makedepends=(
   'go'
 )
-source=("${pkgname}-${pkgver}::git+${url}#tag=${pkgver}"
+source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz"
         prometheus-libvirt-exporter.service)
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('f73940ebf884f26001151be085fe7a04e4f83b097b9344d67b1751bf7a9ddc46'
+            'b31552e3ce21a5c5e4e683b78e2fb4be0c1f56378271b14e1b39e925d0913085')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || 1
