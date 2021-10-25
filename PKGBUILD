@@ -3,7 +3,7 @@
 pkgname=cerebro-git
 _pkgname=cerebro
 pkgver=v0.4.0.r4.gb2039c2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source productivity booster with a brain.'
 arch=('x86_64')
 url='https://cerebroapp.com/'
@@ -48,6 +48,12 @@ package() {
     echo "Coping build..."
     mkdir -p "${pkgdir}/opt/${_pkgname}"
     cp -rf "${srcdir}/${_pkgname}/release/linux-unpacked/." "${pkgdir}/opt/${_pkgname}"
+
+    echo "Copying licenses..."
+    for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
+        install -D "${pkgdir}/opt/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgdir}/${license}"
+        rm "${pkgdir}/opt/${_pkgname}/${license}"
+    done
 
     echo "Linking binary file"
     mkdir -p "${pkgdir}/usr/bin"
