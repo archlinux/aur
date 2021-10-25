@@ -6,7 +6,7 @@ pkgdesc="A Python tool to parse OSM data from Protobuf format into GeoDataFrame.
 url="https://pyrosm.readthedocs.io/"
 
 pkgver=0.6.1
-pkgrel=1
+pkgrel=3
 
 arch=("any")
 license=("MIT")
@@ -26,13 +26,16 @@ depends=(
     "python-shapely"
 )
 optdepends=(
-    "python-pandana: convert graph to pandana.Network"
     "python-igraph: convert graph to igraph.Graph"
     "python-networkx: convert graph to networkx.Graph"
+    "python-pandana: convert graph to pandana.Network"
 )
 checkdepends=(
     "python-anyio"
     "python-coverage"
+    "python-igraph"
+    "python-networkx"
+    "python-pandana"
     "python-pytest"
 )
 
@@ -52,7 +55,8 @@ build() {
 
 check() {
     cd "${srcdir}"/${_name}-${pkgver}
-    pytest
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    PYTHONPATH="build/lib.linux-$CARCH-${python_version}" pytest
 }
 
 package() {
