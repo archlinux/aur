@@ -1,0 +1,17 @@
+pkgbase = fish-hydro-git
+	pkgdesc = Ultra-pure, lag-free Fish shell prompt with async git status
+	pkgver = r98.e5f98b8
+	pkgrel = 1
+	url = https://github.com/jorgebucaran/hydro
+	arch = any
+	groups = fish-plugins
+	license = MIT
+	makedepends = git
+	depends = fish
+	provides = fish-prompt
+	replaces = hydro-git
+	source = fish-hydro-git::git+https://github.com/jorgebucaran/hydro?signed
+	validpgpkeys = CA88B7CBEDCEE375F2376C53E54BA3C0E646DB30
+	md5sums = SKIP
+
+pkgname = fish-hydro-git
