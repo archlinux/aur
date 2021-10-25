@@ -1,10 +1,10 @@
 pkgname=watchman-bin
-pkgver=2021.08.23.00
+pkgver=2021.10.18.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
 arch=(x86_64)
-license=(Apache)
+license=(MIT)
 depends=(openssl gcc-libs)
 makedepends=(patchelf python)
 provides=("watchman=$pkgver")
@@ -14,7 +14,7 @@ install=watchman.install
 
 # https://github.com/facebook/watchman/releases
 source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip")
-sha256sums=('a15bd0779725d2f2f511e50539ffd0b8a7a61ed793ca93f6300c10ef97b6091f')
+sha256sums=('7d9ada98cbaf16f1ba6d46af8ea72e6fae24186efd35a5d9c0dcdcd910d83c5c')
 
 prepare() {
   cd watchman-v$pkgver-linux
@@ -25,7 +25,7 @@ from pathlib import Path
 data = Path("bin/watchman").read_bytes()
 
 badpath  = b"/usr/local/var/run/watchman\\x00"
-goodpath = b"/run/watchman\\x00"
+goodpath = b"/run/./././././././watchman\\x00"
 
 goodpath = goodpath.ljust(len(badpath), b"\\x00")
 data = data.replace(badpath, goodpath)
@@ -36,6 +36,8 @@ END
   patchelf \
     --replace-needed /usr/local/lib/libgflags.so.2.2 libgflags.so.2.2 \
     --replace-needed /usr/local/lib/libglog.so.0 libglog.so.0 \
+    --replace-needed /usr/local/lib/libsnappy.so.1 libsnappy.so.1 \
+    --replace-needed /usr/local/lib/libzstd.so.1 libzstd.so.1 \
     bin/* lib/*
 
   patchelf --set-rpath /usr/lib/watchman bin/* lib/*
@@ -75,7 +77,6 @@ Requires=watchman.socket
 
 [Service]
 ExecStart=/usr/bin/watchman --foreground --inetd --logfile=/
-Restart=on-failure
 StandardInput=socket
 StandardOutput=journal
 StandardError=inherit
