@@ -9,8 +9,8 @@
 pkgname=julia-mkl
 _pkgname=julia
 epoch=2
-pkgver=1.6.1
-pkgrel=3
+pkgver=1.6.3
+pkgrel=1
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)'
 url='https://julialang.org/'
@@ -24,9 +24,10 @@ backup=(etc/julia/startup.jl)
 source=("https://github.com/JuliaLang/julia/releases/download/v$pkgver/$_pkgname-$pkgver-full.tar.gz"
         julia-hardcoded-libs.patch
         make-install-no-build.patch)
-sha256sums=('71d8e40611361370654e8934c407b2dec04944cf3917c5ecb6482d6b85ed767f'
+sha256sums=('29aad934582fb4c6dd9f9dd558ad649921f43bc7320eab54407fdf6dd3270a33'
             '7497bff3cc6faac0a0664e620fd5525d7bb19d1bc3d2ff7f4d900dc36d476ceb'
             '8be4605f92a009072ca7e843549c225fc4e959893498e7c4f8f79e861e63714d')
+options=(!buildflags !makeflags)
 
 prepare() {
   cd $_pkgname-$pkgver
