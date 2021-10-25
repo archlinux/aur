@@ -1,12 +1,12 @@
-pkgbase = cell-bin
+pkgbase = cell-bino
 	pkgdesc = A minimal command line text editor developed using Rust
 	pkgver = 0.1.0
 	pkgrel = 1
 	arch = x86_64
 	license = GNU
 	provides = cell
-	conflicts = cell
+	conflicts = cell-bin
 	source = https://github.com/humblepengi/cell/releases/download/v0.1.0/cell-0.1.0-x86_64.tar.gz
 	sha256sums = f671ad55d940c60e46ec51aecd198f8ac71dc5e6b4fc3e0e5346f4451d3e79f3
 
-pkgname = cell-bin
+pkgname = cell-bino
