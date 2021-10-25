@@ -1,7 +1,7 @@
 pkgbase = tangram
 	pkgdesc = Run web apps on your desktop.
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgver = 1.3.1+5+g8934dcd
+	pkgrel = 1
 	url = https://apps.gnome.org/app/re.sonny.Tangram
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = tangram
 	conflicts = gigagram
 	conflicts = tangram-web
 	replaces = tangram-web
-	source = tangram::git+https://github.com/sonnyp/Tangram.git#tag=v1.3.1
+	source = tangram::git+https://github.com/sonnyp/Tangram.git#commit=8934dcdb3ab43a04e2a210ec508c97c338a72ffe
 	source = git+https://github.com/sonnyp/troll.git
 	sha256sums = SKIP
 	sha256sums = SKIP

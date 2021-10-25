@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Sonny Piers <sonny at fastmail dot net>
 pkgname=tangram
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.1+5+g8934dcd
+pkgrel=1
 pkgdesc="Run web apps on your desktop."
 arch=('any')
 url="https://apps.gnome.org/app/re.sonny.Tangram"
@@ -12,10 +12,17 @@ conflicts=('gigagram' "$pkgname-web")
 replaces=("$pkgname-web")
 makedepends=('git' 'npm' 'meson')
 #checkdepends=('appstream-glib')
-source=("${pkgname%-web}::git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver"
+_commit=8934dcdb3ab43a04e2a210ec508c97c338a72ffe
+source=("${pkgname%-web}::git+https://github.com/sonnyp/Tangram.git#commit=$_commit"
+#source=("${pkgname%-web}::git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver"
         'git+https://github.com/sonnyp/troll.git')
 sha256sums=('SKIP'
             'SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
   cd "$srcdir/$pkgname"
