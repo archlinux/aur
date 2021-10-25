@@ -1,7 +1,7 @@
 # Maintainer: Stanislav <monesonn@tuta.io>
 
 pkgname='doasedit-git'
-pkgver=r15.7a37709
+pkgver=r14.ba75016
 pkgrel=1
 pkgdesc='A POSIX shell script that implements the sudoedit functionality for doas utility.'
 arch=('any')
