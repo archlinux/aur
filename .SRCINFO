@@ -1,7 +1,7 @@
 pkgbase = conda-zsh-completion
 	pkgdesc = Zsh completion for conda and mamba
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esc/conda-zsh-completion
 	arch = any
 	license = custom
