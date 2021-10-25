@@ -17,11 +17,14 @@ depends=('kio'
 	'plasma-framework' 
 	'kirigami2' 
 	'kcmutils' 
+    'knotifications'
 	'kwayland'
+    'kwayland-integration'
+    'kwindowsystem'
 	'xorg-server-xwayland'  
 	'plasma-wayland-session'
 	'plasma-nano'
-	'plasma-meta')
+    'plasma-settings')
 
 makedepends=('cmake' 'extra-cmake-modules' 'git') 
 optdepends=('libcec: add USB-CEC support in order to be controled by TV remotes'
