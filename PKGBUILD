@@ -1,15 +1,16 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=meli
-pkgver=0.6.2
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A MUA for the terminal aiming for configurability and extensibility with sane defaults"
 arch=('x86_64')
 url='https://meli.delivery/'
 license=('GPL')
+depends=('dbus-glib')
 makedepends=('cargo')
 source=("https://git.meli.delivery/meli/meli/archive/alpha-$pkgver.tar.gz")
-sha256sums=('ae6651d11c5edd449e1a57729c792f5dc425fbc153fa180f9a6a6131d23a19fa')
+sha256sums=('79114ff38f9f8279cdf1a68f5d45a5786b33bd39fb47c4c522ca240247ef42ae')
 
 build() {
   cd "$pkgname"
