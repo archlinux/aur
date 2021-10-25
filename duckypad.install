@@ -1,0 +1,6 @@
+post_install() {
+  echo "To activate udev rules run the following commands as root:"
+  echo "udevadm trigger; udevadm control --reload-rules"
+  /bin/true
+}
+
