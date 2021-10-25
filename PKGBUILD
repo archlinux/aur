@@ -2,7 +2,7 @@
 
 _plug=vsgan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.0.77.gb92cb6b
+pkgver=1.3.0.0.gd700baa
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -10,11 +10,17 @@ url='https://github.com/rlaPHOENiX/VSGAN'
 license=('MIT')
 depends=('vapoursynth-plugin-mvsfunc-git'
          'python-numpy'
-         'python-pytorch'
          )
 makedepends=('git'
              'python-build'
+             'python-pip'
+             'puyhon-wheel'
              )
+optdepends=('python-pytorch: CPU'
+            'python-pytorch-opt: CPU with AVX2 optimizations'
+            'python-pytorch-cuda: CUDA and CPU'
+            'python-pytorch-opt-cuda: CUDA with CPU with AVX2 optimizations'
+            )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/rlaPHOENiX/VSGAN.git")
