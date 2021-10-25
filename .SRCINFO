@@ -1,6 +1,6 @@
 pkgbase = vignette-git
 	pkgdesc = The open source VTuber software toolkit. ❤
-	pkgver = 2021.1011.0.r3.bf97c61
+	pkgver = 2021.1025.0
 	pkgrel = 1
 	url = https://github.com/vignette-project/vignette
 	arch = i686
