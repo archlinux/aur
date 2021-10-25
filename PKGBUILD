@@ -4,9 +4,9 @@
 
 pkgname=('pamac-aur-git')
 _pkgname=pamac
-pkgver=10.2.2.r1.g125033f
+pkgver=10.2.2.r2.gfc4898b
 _pkgver=10.2.2
-pkgrel=2
+pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -39,7 +39,7 @@ build() {
   cd $_pkgname
   mkdir -p builddir
   cd builddir
-  meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true --buildtype=release
+  meson --prefix=/usr --sysconfdir=/etc --buildtype=release -Denable-fake-gnome-software=true
   # build
   ninja
 }
@@ -51,7 +51,11 @@ package() {
   cd builddir
   DESTDIR="$pkgdir" ninja install
   # removed pamac-mirrorlist-timer, useless for Archlinux
-  # remove pamac-tray-appindicator
+  # remove pamac-gnome-integration
+  rm "$pkgdir/usr/bin/gnome-software"
+  rm "$pkgdir/usr/share/applications/org.gnome.Software.desktop"
+  rm "$pkgdir/usr/share/dbus-1/services/org.gnome.Software.service"
+
 }
 
 #vim:set ts=2 sw=2 et:
