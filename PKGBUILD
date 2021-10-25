@@ -6,8 +6,8 @@
 _pkgname=eea
 pkgname="${_pkgname}-dkms"
 _pkgver_major=8
-pkgver=8.1.3.0
-pkgrel=2
+pkgver=8.1.4.0
+pkgrel=1
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux (DKMS)'
 url='https://www.eset.com/int/business/endpoint-antivirus-linux/'
@@ -19,7 +19,7 @@ depends=(
   'systemd-libs'
   'openssl-1.0'
 )
-conflicts=('esets' "${_pkgname}")
+conflicts=('esets' "${_pkgname}" "${_pkgname}7-dkms")
 install=${_pkgname}.install
 
 _bundle_url=https://download.eset.com/com/eset/apps/business/eea/linux/g2/v${_pkgver_major}/${pkgver}
@@ -34,7 +34,7 @@ source=("${_bundle_url}/${_bundle_file}"
   "dkms_postinst"
 )
 
-sha256sums=('932d6cef253d4c7d4d5484911889f19a51fe268201ef8a50e40ddb7f4b3741ed'
+sha256sums=('956ff6766b792d665e3d7fd27fc479e80f88b8815f304800d58debad1cdef9f6'
             '0ff7dd79c8811afbc95b121f322bbec4839d7ce7334e5825fa447e3f3ad129e7'
             '20539f7116bf44defc2df0f244d8c02722b06b97fe6be8a049c4ecafce2d744c')
 
