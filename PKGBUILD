@@ -20,7 +20,8 @@ prepare() {
   cd "$srcdir/${pkgname%-git}"
 
   # ignore odr-violation errors
-  setconf "${pkgname%-git}.desktop.cmake" Exec "sh -c 'env ASAN_OPTIONS=detect_odr_violation=0 @CMAKE_INSTALL_FULL_BINDIR@/hardinfo'"
+  setconf "${pkgname%-git}.desktop.cmake" Exec \
+    "sh -c 'env ASAN_OPTIONS=detect_odr_violation=0 @CMAKE_INSTALL_FULL_BINDIR@/hardinfo'"
 }
 
 pkgver() {
