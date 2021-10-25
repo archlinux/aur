@@ -1,0 +1,166 @@
+From patchwork Wed Aug 11 05:58:24 2021
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-Patchwork-Submitter: Sean Wang <sean.wang@mediatek.com>
+X-Patchwork-Id: 12430087
+Return-Path: 
+ <SRS0=F7c8=NC=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
+	aws-us-west-2-korg-lkml-1.web.codeaurora.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF140C4338F
+	for <linux-mediatek@archiver.kernel.org>;
+ Wed, 11 Aug 2021 05:58:51 +0000 (UTC)
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [198.137.202.133])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPS id 6EA8660F22
+	for <linux-mediatek@archiver.kernel.org>;
+ Wed, 11 Aug 2021 05:58:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6EA8660F22
+Authentication-Results: mail.kernel.org;
+ dmarc=fail (p=none dis=none) header.from=mediatek.com
+Authentication-Results: mail.kernel.org;
+ spf=none smtp.mailfrom=lists.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zqwCf1wF0+ErPNhtjRbCj4B3OiJi2vKeWaIY3rcWyzM=; b=Pn1raIF1Y7itg2
+	5Hh2mOVpGC3EzT5iKl0dqTPXq/F1JDSkbTYTlg/E1fsw/xrQ/Vj6N+mZ+i9Rq45ItAA/+WjwmEoc3
+	p/E6cH3KZ/LuIM2r+dg7U0CWhuXQV3EdR81hvsYmAcd1NZsGM/6LYsmNXY278TMI2KJwy3Isdb2gg
+	KEWVRtn3Wl9PVaSE1IMdLBQi8ZWOQtiYzOrROLLlANJTGKCdp+Wp+b+HyEMPmefawiA9eP9e7UHIi
+	qX4mtT3g/Va9w4Omr/r5ZvWE3jjBKAKlzXJNJQD8guBDB21clU2outwgUKBEthwxi21IDQtoIrHhR
+	1SCu5xO+zENxRMb9hNQA==;
+Received: from localhost ([::1] helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1mDhGC-005g7t-9M; Wed, 11 Aug 2021 05:58:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mDhG5-005g5e-Pb
+ for linux-mediatek@lists.infradead.org; Wed, 11 Aug 2021 05:58:39 +0000
+X-UUID: 36cbea32a76241348b9f64a456d1d50b-20210810
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=mediatek.com;
+ s=dk;
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=BFFbKW23QDVEO7rPg7xuD9YWpv13ZtrEV8dbFDolRdc=;
+ b=mLOzjopiB9MbhA2W4c8ZamQV95jHEfb02jvUUjmH7Db6MNtPgR0jvGbyVc/lBv09cJa84p46pNVOFgagqURCRW2f8WvsWnjgHBtTjAMwzDDL2Ntd/Nc+eIToaHG0DS/rFwrsiMvL7lv2WXVIIt6TXFhPIhM+aZ5Iec7UIBu7vxE=;
+X-UUID: 36cbea32a76241348b9f64a456d1d50b-20210810
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 361943851; Tue, 10 Aug 2021 22:58:28 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 10 Aug 2021 22:58:27 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 Aug 2021 13:58:25 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 11 Aug 2021 13:58:25 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+ <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
+ <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] mt76: mt7921: fix firmware usage of RA info using legacy
+ rates
+Date: Wed, 11 Aug 2021 13:58:24 +0800
+Message-ID: 
+ <4be4378630c93ae32a4db8bc3e0871c7b15150a6.1628661185.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+MIME-Version: 1.0
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20210810_225835_290471_E1D27441 
+X-CRM114-Status: GOOD (  12.83  )
+X-BeenThere: linux-mediatek@lists.infradead.org
+X-Mailman-Version: 2.1.34
+Precedence: list
+List-Id: <linux-mediatek.lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek@lists.infradead.org>
+List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
+Errors-To: 
+ linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+
+From: Sean Wang <sean.wang@mediatek.com>
+
+According to the firmware usage, OFDM rates should fill out bit 6 - 13
+while CCK rates should fill out bit 0 - 3 in legacy field of RA info to
+make the rate adaption runs propertly. Otherwise, a unicast frame might be
+picking up the unsupported rate to send out.
+
+Fixes: 1c099ab44727 ("mt76: mt7921: add MCU support")
+Reported-by: Joshua Emele <jemele@chromium.org>
+Co-developed-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 11 ++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h |  2 ++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index a2555dc0f003..27e45f4fc05f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -719,6 +719,7 @@ void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
+ 	struct sta_rec_state *state;
+ 	struct sta_rec_phy *phy;
+ 	struct tlv *tlv;
++	u16 supp_rates;
+ 
+ 	/* starec ht */
+ 	if (sta->ht_cap.ht_supported) {
+@@ -767,7 +768,15 @@ void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
+ 
+ 	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_RA, sizeof(*ra_info));
+ 	ra_info = (struct sta_rec_ra_info *)tlv;
+-	ra_info->legacy = cpu_to_le16((u16)sta->supp_rates[band]);
++
++	supp_rates = sta->supp_rates[band];
++	if (band == NL80211_BAND_2GHZ)
++		supp_rates = FIELD_PREP(RA_LEGACY_OFDM, supp_rates >> 4) |
++			     FIELD_PREP(RA_LEGACY_CCK, supp_rates & 0xf);
++	else
++		supp_rates = FIELD_PREP(RA_LEGACY_OFDM, supp_rates);
++
++	ra_info->legacy = cpu_to_le16(supp_rates);
+ 
+ 	if (sta->ht_cap.ht_supported)
+ 		memcpy(ra_info->rx_mcs_bitmask, sta->ht_cap.mcs.rx_mask,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index ab77289c0541..9dfdf7625844 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -124,6 +124,8 @@ struct sta_rec_state {
+ 	u8 rsv[1];
+ } __packed;
+ 
++#define RA_LEGACY_OFDM GENMASK(13, 6)
++#define RA_LEGACY_CCK  GENMASK(3, 0)
+ #define HT_MCS_MASK_NUM 10
+ struct sta_rec_ra_info {
+ 	__le16 tag;

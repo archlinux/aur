@@ -1,0 +1,139 @@
+From patchwork Mon Aug 23 02:26:51 2021
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-Patchwork-Submitter: Sean Wang <sean.wang@mediatek.com>
+X-Patchwork-Id: 12451819
+Return-Path: 
+ <SRS0=it3p=NO=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
+	aws-us-west-2-korg-lkml-1.web.codeaurora.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01111C4338F
+	for <linux-mediatek@archiver.kernel.org>;
+ Mon, 23 Aug 2021 02:27:23 +0000 (UTC)
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [198.137.202.133])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPS id B53A461361
+	for <linux-mediatek@archiver.kernel.org>;
+ Mon, 23 Aug 2021 02:27:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B53A461361
+Authentication-Results: mail.kernel.org;
+ dmarc=fail (p=none dis=none) header.from=mediatek.com
+Authentication-Results: mail.kernel.org;
+ spf=none smtp.mailfrom=lists.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hTPARlexnTrmX4k4i5ctcWwoDVkLg9MQHHpMgUIBRRw=; b=zYMvjY8/550AJm
+	Pxk+jm34UaLMEIkioPNFo5ubxlUnggp6cL2zSA0irE2d2HPqypYkNGG7LxwgSWkkKJMjCD4FIfbd6
+	Zic8aFX7og0rl9yzwNeg7QeEVC57fat744k5os3nLXJ1ZFgKuGf8x6xb/MkX64hNHi9Lf/9WQQkl5
+	+NS/4Cgr6Qos0Sj0mSarfhc2tNsEK5ZvSr1Aoc7zHyc6dseuQesG06gTJRfOjDn02RqCGl6Bj+hlQ
+	2kN3X4ACC5KIpxxBrsqonPrZDl7CJKbCuhlci88iFtack/OyhUkZj6iYKrsl9EaetZ7vYEXk4HdWj
+	HwHI1PQt/pjyww5v4uCA==;
+Received: from localhost ([::1] helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1mHzg3-00FChW-Qr; Mon, 23 Aug 2021 02:27:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mHzfz-00FCgj-I5
+ for linux-mediatek@lists.infradead.org; Mon, 23 Aug 2021 02:27:07 +0000
+X-UUID: aef938ea2bc34f6695fcc527f366760a-20210822
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=mediatek.com;
+ s=dk;
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=q89acb8ctpCqH7/PdsfVg1HDy9o+OgGBP2spYzVdU8U=;
+ b=KA+7nMVSpnHnPfzccOZoz6koMz2HQ+7NXWwaFmj2ZXVgSS1Q8XpubAQ0Tx3pJP/BSFs3kRQwFG6hy8dIRjsaLSA/5/xWXwGPuNJDZJmc/PlaXUyPjAlHXK+83lHnZ20rszwAKryICFKz7UEtvDjNm93eG+g3/xfhGOOMFA4AZ3g=;
+X-UUID: aef938ea2bc34f6695fcc527f366760a-20210822
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 408158283; Sun, 22 Aug 2021 19:26:55 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 22 Aug 2021 19:26:54 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 Aug 2021 10:26:52 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 23 Aug 2021 10:26:52 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+ <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] mt76: mt7921: fix the inconsistent state between bind and
+ unbind
+Date: Mon, 23 Aug 2021 10:26:51 +0800
+Message-ID: 
+ <9c71befbdf8a97f72f4538c39a71041ccffbaf83.1629685207.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+MIME-Version: 1.0
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20210822_192703_670236_8A0AF262 
+X-CRM114-Status: GOOD (  10.69  )
+X-BeenThere: linux-mediatek@lists.infradead.org
+X-Mailman-Version: 2.1.34
+Precedence: list
+List-Id: <linux-mediatek.lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek@lists.infradead.org>
+List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
+Errors-To: 
+ linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+
+From: Sean Wang <sean.wang@mediatek.com>
+
+We shouldn't put back the device into fw own state after wifi reset at
+driver unbind stage to fix the following error because that is not the
+consistent state the current driver bind stage expects.
+
+localhost ~ # echo 0000:01:00.0 > /sys/bus/pci/drivers/mt7921e/unbind
+localhost ~ # echo 0000:01:00.0 > /sys/bus/pci/drivers/mt7921e/bind
+...
+[  481.172969] mt7921e 0000:01:00.0: ASIC revision: feed0000
+[  482.133547] mt7921e: probe of 0000:01:00.0 failed with error -110
+-bash: echo: write error: No such device
+
+Fixes: c1af184ba830 ("mt76: mt7921: fix dma hang in rmmod")
+Co-developed-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 1f37e64b6038..3e84ef8f5358 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -279,7 +279,6 @@ void mt7921_unregister_device(struct mt7921_dev *dev)
+ 	mt7921_mcu_drv_pmctrl(dev);
+ 	mt7921_dma_cleanup(dev);
+ 	mt7921_mcu_exit(dev);
+-	mt7921_mcu_fw_pmctrl(dev);
+ 
+ 	tasklet_disable(&dev->irq_tasklet);
+ 	mt76_free_device(&dev->mt76);
