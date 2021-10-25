@@ -5,18 +5,18 @@
 # Contributor: Andrew Kravchuk <awkravchuk at gmail dot com>
 #
 pkgname="aarchup"
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://gitlab.com/artafinde/aarchup/"
 arch=('i686' 'x86_64')
 license=('GPL3')
 provides=("${pkgname}")
-depends=('libnotify' 'gtk2' 'pacman-contrib')
-makedepends=('libnotify' 'meson' 'ninja' 'gzip' 'git')
+depends=('libnotify')
+makedepends=('meson' 'ninja' 'gzip')
 optdepends=('auracle: AUR support(--aur)')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/aarchup-${pkgver}.tar.gz")
-b2sums=('d3ebc415fb7668863441036f2de59d78c7fac3079f8b49f681b4237d243f02686a6bc75552b8b377581b280466dd8fde393e61a992a9b06063986b8d1fcd5310')
+b2sums=('dc766f7c126e91ac389fc3644f2ea487158bc0f26a68e923d99e6bedb45fca9a600418b87f66765f038bc9a4edd074cf52ae3fcc4dd3b981ba8b8e00b685d091')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -27,12 +27,12 @@ build() {
     )
     [[ -d build ]] && meson_args+=(--wipe)
     meson build "${meson_args[@]}"
-    ninja -C build
+    meson compile -C build
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
-    DESTDIR="$pkgdir" ninja -C build install
+    DESTDIR="$pkgdir" meson install -C build
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
