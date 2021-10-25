@@ -1,0 +1,22 @@
+pkgbase = python-pandana
+	pkgdesc = A Python tool to parse OSM data from Protobuf format into GeoDataFrame.
+	pkgver = 0.6.1
+	pkgrel = 3
+	url = https://pyrosm.readthedocs.io/
+	arch = any
+	license = AGPL
+	makedepends = python-setuptools
+	depends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-pytables
+	depends = python-requests
+	depends = python-scikit-learn
+	optdepends = python-osmnet
+	source = https://files.pythonhosted.org/packages/source/p/pandana/pandana-0.6.1.tar.gz
+	source = python-pandana-0.6.1_LICENSE::https://raw.githubusercontent.com/UDST/pandana/v0.6.1/LICENSE.txt
+	sha256sums = 7bcaf6e7bb3faccaf306846bf30838d8e94b3ebd58e971da8c3fe426f1f9288c
+	sha256sums = cb1cbc85fa3c01c538774e9f2c877c365ad8d1a9264d332f93ef39b5ca8b95cb
+
+pkgname = python-pandana
