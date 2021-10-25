@@ -1,7 +1,7 @@
 pkgbase = gate88-win
-	pkgdesc = Game where you defend your space station (uses Wine)
-	pkgver = 19.05
-	pkgrel = 2
+	pkgdesc = RTS game in space (uses Wine)
+	pkgver = Mar19.05
+	pkgrel = 3
 	url = https://www.queasygames.com/gate88
 	arch = x86_64
 	license = custom
