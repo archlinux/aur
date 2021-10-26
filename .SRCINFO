@@ -1,6 +1,6 @@
 pkgbase = instater
 	pkgdesc = An easy solution for system/dotfile configuration
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/nayaverdier/instater
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = instater
 	depends = python-passlib
 	depends = python-rich
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/source/i/instater/instater-0.2.0.tar.gz
-	sha256sums = 2fda4dce324872b13ddda619c6db25d9cca9faacf93d24761d2196642db40d4c
-	b2sums = f6035eb4dbfabc8a5b40494919f27033c2d8f756bc148c2d6ce84d5e32884958734284788afa30f219c4b792eb694cca976ea7698a0d625bd29212ca25e9722b
+	source = https://files.pythonhosted.org/packages/source/i/instater/instater-0.3.0.tar.gz
+	sha256sums = c49e65f6549d037ba9cb828eccba3cb08f10b3f29f051f72aeef2db4e213ba1b
+	b2sums = 283d69d24c21f2bb2ae1213d26cf198c0fd7af2cb141bb2bdd067d9de8ad580c27b4424d674543b240fb392e55358a6f08bdd7b86fc348c80defe8ac5efca4f3
 
 pkgname = instater
