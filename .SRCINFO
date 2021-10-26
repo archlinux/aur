@@ -1,0 +1,16 @@
+pkgbase = splan-notify-git
+	pkgdesc = Easily get Notifications from the StarPlaner timetables
+	pkgver = 1.0.r1.g1c6718f
+	pkgrel = 1
+	url = https://github.com/TripleTrable/splan-notify
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = awk
+	depends = libnotify
+	depends = grep
+	source = git+https://github.com/TripleTrable/splan-notify
+	md5sums = SKIP
+
+pkgname = splan-notify-git
