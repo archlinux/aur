@@ -1,0 +1,15 @@
+pkgbase = gobble
+	pkgdesc = Window swallowing on any WM
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/EmperorPenguin18/gobble/
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = pandoc
+	makedepends = gzip
+	depends = libxcb
+	source = gobble-1.2.tar.gz::https://github.com/EmperorPenguin18/gobble/archive/refs/tags/1.2.tar.gz
+	sha256sums = a2fef6f612950cdc0595c39b7688bfb10300a10dfd4738d4e94ba979531dcc61
+
+pkgname = gobble
