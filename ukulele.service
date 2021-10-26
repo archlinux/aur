@@ -4,7 +4,7 @@ Wants=network-online.target
 After=network-online.target nss-lookup.target
 
 [Service]
-ExecStart=/usr/bin/java -jar /usr/share/ukulele/ukulele.jar --spring.config.location=/etc/ukulele/ukulele.yml
+ExecStart=/usr/bin/java -jar /usr/share/java/ukulele/ukulele.jar --spring.config.location=/etc/ukulele/ukulele.yml
 Nice=10
 
 [Install]

@@ -2,7 +2,7 @@
 _pkgname=ukulele
 pkgname=$_pkgname-git
 pkgver=r129.553d2d4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple self-contained Discord music bot"
 arch=('any')
 url="https://github.com/freyacodes/ukulele"
@@ -16,7 +16,7 @@ backup=('etc/ukulele/ukulele.yml')
 install="ukulele.install"
 source=('git+https://github.com/freyacodes/ukulele.git' 'ukulele.service')
 sha512sums=('SKIP'
-            'f7eeabdc2fdf4d2b14006a0eb36c0b3a99caf806eac5495ab07f23b49b599bfdc791423e14bd569f98fec80aa93f50292a6d0fef374658b1f3dbbd1cbbf1fa4d')
+            '566ae27160a02f2318e2f7211fe074c7429cf462762b568014e4fc666f94f51c27af2a1600a6f73e03d378dfc255b7b8a0038f55b5ceb71232e5c6c0b73ba653')
 
 build() {
   cd "$srcdir/$_pkgname"
