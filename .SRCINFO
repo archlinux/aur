@@ -1,7 +1,7 @@
 pkgbase = hc-utils
 	pkgdesc = Utilities to provide an easier and automaic use of features of the Hetzer Cloud platform (e.g. private networks, block storage)
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hetznercloud/hc-utils
 	arch = any
 	license = MIT
