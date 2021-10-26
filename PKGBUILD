@@ -6,9 +6,9 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=6.19-GE-1
+_srctag=6.20-GE-1
 pkgver=${_srctag//-/.}
-pkgrel=2
+pkgrel=1
 
 #_winever=${pkgver%.*}
 _winever=$pkgver
@@ -233,6 +233,9 @@ package() {
 
   i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib32/wine/i386-windows/*.{dll,exe}
   x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.{dll,exe}
+
+  find "$pkgdir"/usr/lib{,32}/wine -iname "*.a" -delete
+  find "$pkgdir"/usr/lib{,32}/wine -iname "*.def" -delete
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
