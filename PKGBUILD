@@ -22,5 +22,5 @@ build () {
 package () {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 target/release/gobble -t "$pkgdir/usr/bin"
-  install -Dm644 $startdir/gobble.1.gz "$pkgdir/usr/share/man/man1/gobble.1.gz"
+  install -Dm644 gobble.1.gz "$pkgdir/usr/share/man/man1/gobble.1.gz"
 }
