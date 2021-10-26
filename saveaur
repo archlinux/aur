@@ -24,7 +24,11 @@ set  -u
 
 mksrcinfo
 git add --all 
+if [ $# eq  0 ] ; then
+git commit -m  AutoCommit
+else
 git commit -m $*
+fi
 push aur
 
 
