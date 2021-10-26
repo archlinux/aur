@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=libliftoff-git
-pkgver=v0.1.0.r0.ga58b638736ad5efe
+pkgver=0.1.0.r26.ge777229
 pkgrel=1
 pkgdesc="Lightweight KMS plane library"
 arch=(x86_64)
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 pkgver() {
     cd "$pkgname"
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

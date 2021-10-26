@@ -1,6 +1,6 @@
 pkgbase = libliftoff-git
 	pkgdesc = Lightweight KMS plane library
-	pkgver = v0.1.0.r0.ga58b638736ad5efe
+	pkgver = 0.1.0.r26.ge777229
 	pkgrel = 1
 	url = https://github.com/emersion/libliftoff
 	arch = x86_64
