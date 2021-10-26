@@ -1,7 +1,7 @@
 pkgbase = psarc
 	pkgdesc = Utility for extracting PSARC files
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ferb.fr/ps3/PSARC
 	arch = x86_64
 	license = unknown
