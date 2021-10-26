@@ -15,7 +15,7 @@ depends=(python-pyosf)
 
 optdepends=('python-seaborn: For nice graphs')
 source=("https://github.com/psychopy/psychopy/archive/${pkgver}.tar.gz")
-sha512sums=('ac0504779a3cfa8e51f6b641fb6c1453b790fed0c924a0bab9d9fba91ddfd1cd0ffadf52cf5e7f1b73bbf394aee43fb213cf472664d9e671adacf2cb27923fd7')
+sha512sums=('7c802face85a48db2b4212e9dbb6a3a596c33c23970dd326a9156b558b1a97330aeb07bfe15d26d37b48e18bdf2aa998e8aa4ec376df3c5ca3895339a70a56ca')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
