@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=35
+pkgrel=36
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -42,7 +42,7 @@ mkbiosvda
 wgcheck
 wgcheck.service
 wgcheck.timer
-
+kill-port
 )
 sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd'
             '75978d30a68de00cb50c23ba882dd73d9f365497025aacc271375249e7dd4aaff34732ced2ed1cbf2fc64fc3421b2fefc2ec64b16ef068e40d4343894b8c8bfb'
@@ -61,7 +61,9 @@ sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b
             '5da2acfdd1d0c3334694b052c9f9bf7738c1ad35c8f26a0ce3ab287996f132fb1ab6e349def8c52afc1719161b188dce5ec9735687ec894bb671dfa66ed776d2'
             '0105f9fe7f324b4e0f881c86ee7c4139fac1662174bcef4364d619ea10cc0d3834d32a151e766d5b187a3f99f20588e8a5b4c71da189ac457b717a9d11947b36'
             '48ae9bfaf442595afda4ab52ac288f6ff1361c04316a58cf93c340539375acbdb7e4284ca3254fdff38660c757eb8f53be06e63e9a81e598d52d79f0a09c5bad'
-            'a00127e2ff7ba71a9d52c1cb0fe454c5e4bbc076b69e1ce2e5dcf1abd28518f8e8514ee25002afaa262353688aff4578de639275681a717803034aa347240c81')
+            'a00127e2ff7ba71a9d52c1cb0fe454c5e4bbc076b69e1ce2e5dcf1abd28518f8e8514ee25002afaa262353688aff4578de639275681a717803034aa347240c81'
+cf1ba08cf593d6619cb17870850ef13379ee750799c334d1bc9c6456464823ab851ab17a527e8caadeb4e0d01391af6f0ef18f77f6aece733f5bf23a0062f06a
+	    )
 
 
 
@@ -111,6 +113,7 @@ install  -Dm755 saveaur  "$pkgdir/usr/bin/saveaur"
 install  -Dm755 mkmvngitignore  "$pkgdir/usr/bin/mkmvngitignore"
 install  -Dm755 mkuefi  "$pkgdir/usr/bin/mkuefi"
 install  -Dm755 mkbiosvda  "$pkgdir/usr/bin/mkbiosvda"
+install  -Dm755 kill-port  "$pkgdir/usr/bin/kill-port"
 
 }
 
