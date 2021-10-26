@@ -27,51 +27,62 @@ if [ ! -d $gfwPathName ]; then
   mkdir -pv $gfwPathName
 fi
 set +e
-echo down google ip 
+echo down google ip ....
 curl http://vps.aihlp.com/gfw/google-ip -o $gfwPathName/google-ip-tmp
-echo down github ip 
-curl http://vps.aihlp.com/gfw/github-ip -o $gfwPathName/github-ip-tmp
-echo down gfwlist ip 
-curl http://vps.aihlp.com/gfw/gfwlist-ip -o $gfwPathName/gfwlist-ip-tmp
-echo down dnsmasq  
-curl http://vps.aihlp.com/gfw/dnsmasq_gfwlist -o $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf
-echo down over
-set +e
-#pacman -S chnroutes-alike-git --noconfirm
-
-compare-file-by-sha512 $gfwPathName/google-ip-tmp $gfwPathName/google-ip
 err=$?
-start=0
+if [ $err -ne 0 ]
+then
+	compare-file-by-sha512 $gfwPathName/google-ip-tmp $gfwPathName/google-ip
+err=$?
+
 if [ $err -ne 0 ]
 then
 	mv $gfwPathName/google-ip-tmp $gfwPathName/google-ip
-        start=1
-	echo update ggoogle-ip
+	echo update google-ip
 	iproutefile $gfwPathName/google-ip $dev
 fi
-
+else 
+   iproutefile $gfwPathName/google-ip $dev
+fi	
+fi
+echo down github ip 
+curl http://vps.aihlp.com/gfw/github-ip -o $gfwPathName/github-ip-tmp
+err=$?
+if [ $err -ne 0 ]
+then
 compare-file-by-sha512 $gfwPathName/github-ip-tmp $gfwPathName/github-ip
 err=$?
 if [ $err -ne 0 ]
 then
 	mv $gfwPathName/github-ip-tmp $gfwPathName/github-ip
-	echo update github-ip
-        start=1
+	echo update github-ip    
 	iproutefile $gfwPathName/github-ip $dev
 fi
-
+else
+		iproutefile $gfwPathName/github-ip $dev
+fi
+echo down gfwlist ip 
+curl http://vps.aihlp.com/gfw/gfwlist-ip -o $gfwPathName/gfwlist-ip-tmp
+err=$?
+if [ $err -ne 0 ]
+then
 compare-file-by-sha512 $gfwPathName/gfwlist-ip-tmp $gfwPathName/gfwlist-ip
 err=$?
 if [ $err -ne 0 ]
 then
 	echo update gfwlist-ip
 	mv $gfwPathName/gfwlist-ip-tmp $gfwPathName/gfwlist-ip
-	start=1
 	iproutefile $gfwPathName/gfwlist-ip $dev
 fi
-
-
-compare-file-by-sha512 $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf $gfwPathName/dnsmasq_gfwlist_Client.conf
+else
+iproutefile $gfwPathName/gfwlist-ip $dev
+fi
+echo down dnsmasq  
+curl http://vps.aihlp.com/gfw/dnsmasq_gfwlist -o $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf
+err=$?
+if [ $err -ne 0 ]
+then
+	compare-file-by-sha512 $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf $gfwPathName/dnsmasq_gfwlist_Client.conf
 err=$?
 if [ $err -ne 0 ]
 then
@@ -80,10 +91,4 @@ then
 	echo restart dnsmasq
 	systemctl restart dnsmasq
 fi
-
-#if [ $start==1 ]
-#then
-#      echo restart wg-quick@wg
-#      systemctl restart wg-quick@wg
-#fi
-
+fi
