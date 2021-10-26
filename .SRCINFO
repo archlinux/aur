@@ -1,7 +1,7 @@
 pkgbase = python-yaml-git
 	pkgdesc = Python bindings for YAML, using fast libYAML library
 	pkgver = 6.0.r0.g8cdff2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyyaml.org/wiki/PyYAML
 	arch = any
 	license = MIT

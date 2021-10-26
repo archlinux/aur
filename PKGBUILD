@@ -4,7 +4,7 @@
 
 pkgname=python-yaml-git
 pkgver=6.0.r0.g8cdff2c
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for YAML, using fast libYAML library'
 url='https://pyyaml.org/wiki/PyYAML'
 arch=('any')
@@ -39,7 +39,7 @@ package() {
   cd ${pkgname%-git}
   python setup.py  --with-libyaml install --prefix=/usr --root="${pkgdir}" -O1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
-  install -Dm 644 CHANGES README -t "${pkgdir}"/usr/share/doc/${pkgname}
+  install -Dm 644 CHANGES README.md -t "${pkgdir}"/usr/share/doc/${pkgname}
 }
 
 # vim: ts=2 sw=2 et:
