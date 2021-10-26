@@ -1,7 +1,7 @@
-pkgbase = godot-git
-	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine.
-	pkgver = 4.0.dev
-	pkgrel = 3
+pkgbase = godot-mono-git
+	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine. (C#/Mono integration)
+	pkgver = 4.0.r1.f2cf52e
+	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = godot-git
 	depends = alsa-lib
 	depends = freetype2
 	depends = mesa
-	provides = godot
-	conflicts = godot
-	source = godot.desktop
+	depends = mono
+	provides = godot-mono
+	conflicts = godot-mono
+	source = godot-mono.desktop
 	source = icon.png
-	sha256sums = 2ae039a3879b23e157f2125e0b326fa1ef66d56bfd596c790e8943d27652e93a
+	sha256sums = 9e5c418d381aaf954c058701b4b4eadbdd767f318af0898d458a74aae111aed5
 	sha256sums = 99f9d17c4355b274ef0c08069cf6e756a98cd5c9d9d22d1b39f79538134277e1
 
-pkgname = godot-git
-
+pkgname = godot-mono-git
