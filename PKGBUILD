@@ -15,10 +15,11 @@ depends=('gtk2' 'libticalcs')
 makedepends=('intltool')
 optdepends=('gfm: to manage and manipulate TI Group Files (backups)')
 source=("http://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-${pkgver}/tilp2-${pkgver}.tar.bz2"
-        "remove-broken-kde-support.patch")
+        "remove-broken-kde-support.patch"
+        "xdg-basedir.patch")
 md5sums=('daff9cb7a86af8965453e737f8fba781'
          'b678c0fade4b2daffc5662d7094b1544'
-         '68543707468eaa33052f2cb23a004e7e')
+         'e9625355dd5b49dc7cf8f77b843100b9')
 
 prepare() {
   cd "${srcdir}/tilp2-${pkgver}"
