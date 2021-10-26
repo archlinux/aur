@@ -35,11 +35,11 @@ _jvmdir="/usr/lib/jvm/${_jdkname}"
 
 package() {
   if [ "${CARCH}" = "aarch64" ]; then
-    cd "zulu${_zulu_build}-jdk${pkgver}-linux_aarch64"
+    cd "$srcdir/zulu${_zulu_build}-jdk${pkgver}-linux_aarch64"
   elif [ "${CARCH}" = "i686" ]; then
-    cd "zulu${_zulu_build}-jdk${pkgver}-linux_i686"
+    cd "$srcdir/zulu${_zulu_build}-jdk${pkgver}-linux_i686"
   else
-    cd "zulu${_zulu_build}-jdk${pkgver}-linux_x64"
+    cd "$srcdir/zulu${_zulu_build}-jdk${pkgver}-linux_x64"
   fi
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
