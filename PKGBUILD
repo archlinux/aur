@@ -1,7 +1,7 @@
 # Maintainer: Olivier Le Moal <mail@olivierlemoal.fr>
 pkgname='python-pycrate'
-pkgver=0.4
-pkgrel=4
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Python library for manipulating various digital formats in an easy way."
 arch=(any)
 conflicts=("python-pycrate-git")
@@ -12,7 +12,7 @@ optdepends=('python-lxml: The pycrate_diameter part uses lxml as optional depend
 url="https://github.com/P1sec/pycrate"
 license=('LGPL2.1')
 source=(https://github.com/P1sec/pycrate/archive/${pkgver}.tar.gz)
-md5sums=('0a3a6747c3d87929bd50e3be349b2dea')
+md5sums=('defec86609af5c54bdc55f2126dcd285')
 
 package() {
     cd pycrate-${pkgver}
