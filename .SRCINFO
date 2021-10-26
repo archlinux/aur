@@ -15,6 +15,7 @@ pkgbase = lcj
 	depends = archlinuxcn-keyring
 	depends = archlinuxcn-mirrorlist
 	depends = devtools
+	depends = wireguard-tools-china
 	optdepends = pkgbuild-introspection: For mksrcinfo
 	source = ipmac
 	source = makesrcinfo

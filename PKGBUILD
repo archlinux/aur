@@ -12,6 +12,9 @@ systemd-wol
 archlinuxcn-keyring
 archlinuxcn-mirrorlist
 devtools
+wireguard-tools-china
+
+
 )
 #makedepends=('cmake>=3.3' 'qt5-tools' 'karchive' 'gcc>=8' 'extra-cmake-modules')
 optdepends=(
