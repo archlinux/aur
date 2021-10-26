@@ -6,7 +6,7 @@ _obsver=27.0.0
 pkgrel=1
 pkgdesc="Gradient Source for OBS studio"
 arch=("i686" "x86_64" "aarch64")
-url="https://obsproject.com/forum/resources/gradient-source.1172/e"
+url="https://obsproject.com/forum/resources/gradient-source.1172/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
