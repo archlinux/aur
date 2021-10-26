@@ -2,7 +2,7 @@
 # Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 
 pkgname=netcoredbg
-_ver=1.2.0-786
+_ver=2.0.0-859
 pkgver=`echo "$_ver" | tr - _`
 pkgrel=1
 pkgdesc='Debugger for .NET Core runtime'
@@ -16,8 +16,14 @@ source=(
     "$pkgname-$_ver.tar.gz::https://github.com/Samsung/netcoredbg/archive/refs/tags/$_ver.tar.gz"
 )
 sha256sums=(
-    "818c2df57f3f691d758829c22f532eb96212c63cd9504b4843eb068ee655c2da"
+    "aa63a23c293592d74d30efeec84d8b2e3152230392ac157ed71cf638dcadda3d"
 )
+
+prepare() {
+  # Add missing include
+  cd "$pkgname-$_ver"/src/debugger/
+  echo -e "#include <limits>\n$(cat frames.cpp)" > frames.cpp
+}
 
 build() {
   cd "$pkgname-$_ver"
