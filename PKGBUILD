@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=33
+pkgrel=35
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -39,8 +39,11 @@ saveaur
 mkmvngitignore
 mkuefi
 mkbiosvda
-)
+wgcheck
+wgcheck.service
+wgcheck.timer
 
+)
 sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd'
             '75978d30a68de00cb50c23ba882dd73d9f365497025aacc271375249e7dd4aaff34732ced2ed1cbf2fc64fc3421b2fefc2ec64b16ef068e40d4343894b8c8bfb'
             '7fa56ac8779f4c3695f2ef2d4c86a35cc33ccdfa60a2f97665bf542dbca6381c70b16b94d0a67661ba0915b94c9a38b8706a81fdb970ec89fe377f7f92cb2075'
@@ -55,7 +58,10 @@ sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b
             '83a7a5d5408590eb94e009493a9b1521cd6d948399d7b1b4d7e812ef9b2f9ee831573e066181a07cc3fed4dd43e3e95fed55a55e0518f40751e9097f5767a372'
             '97ac6b71f77219f74d6f02cac7c5eb4e4e0a68074d0d972107d35127daf4f4804e7e6cd07591ae15b8a50b520e24970fa7945e440b324cfd4dd1301f8d71dc81'
             '4a1553a27e259da06eead3070449bea1469a431db60b7da4044f261ce7146e4de33be8938f060d6a763d79875cab526967d5823c5d6df971262519105cfece67'
-            '5da2acfdd1d0c3334694b052c9f9bf7738c1ad35c8f26a0ce3ab287996f132fb1ab6e349def8c52afc1719161b188dce5ec9735687ec894bb671dfa66ed776d2')
+            '5da2acfdd1d0c3334694b052c9f9bf7738c1ad35c8f26a0ce3ab287996f132fb1ab6e349def8c52afc1719161b188dce5ec9735687ec894bb671dfa66ed776d2'
+            '0105f9fe7f324b4e0f881c86ee7c4139fac1662174bcef4364d619ea10cc0d3834d32a151e766d5b187a3f99f20588e8a5b4c71da189ac457b717a9d11947b36'
+            '48ae9bfaf442595afda4ab52ac288f6ff1361c04316a58cf93c340539375acbdb7e4284ca3254fdff38660c757eb8f53be06e63e9a81e598d52d79f0a09c5bad'
+            'a00127e2ff7ba71a9d52c1cb0fe454c5e4bbc076b69e1ce2e5dcf1abd28518f8e8514ee25002afaa262353688aff4578de639275681a717803034aa347240c81')
 
 
 
@@ -87,21 +93,24 @@ sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b
 package() {
 # make -C build DESTDIR="$pkgdir" install
 install  -dm755   "$pkgdir/etc/systemd/system"
-install  -m755 ipmac  "$pkgdir/usr/bin/ipmac"
-install  -m755 pushall  "$pkgdir/usr/bin/pushall"
-install  -m755 pullall  "$pkgdir/usr/bin/pullall"
-install  -m755 fetchall  "$pkgdir/usr/bin/fetchall"
-install  -m755 makesrcinfo  "$pkgdir/usr/bin/makesrcinfo"
-install  -m644  pppoecheck.service  "$pkgdir/usr/lib/systemd/system/pppoecheck.service"
-install  -m644  pppoecheck.timer  "$pkgdir/usr/lib/systemd/system/pppoecheck.timer"
-install  -m755  pppoecheck  "$pkgdir/usr/lib/$pkgname/pppoecheck"
-install  -m755 check-file-exists  "$pkgdir/usr/bin/check-file-exists"
-install  -m755 compare-file-by-sha512  "$pkgdir/usr/bin/compare-file-by-sha512"
-install  -m755 savegitignore  "$pkgdir/usr/bin/savegitignore"
-install  -m755 saveaur  "$pkgdir/usr/bin/saveaur"
-install  -m755 mkmvngitignore  "$pkgdir/usr/bin/mkmvngitignore"
-install  -m755 mkuefi  "$pkgdir/usr/bin/mkuefi"
-install  -m755 mkbiosvda  "$pkgdir/usr/bin/mkbiosvda"
+install  -Dm755 ipmac  "$pkgdir/usr/bin/ipmac"
+install  -Dm755 pushall  "$pkgdir/usr/bin/pushall"
+install  -Dm755 pullall  "$pkgdir/usr/bin/pullall"
+install  -Dm755 fetchall  "$pkgdir/usr/bin/fetchall"
+install  -Dm755 wgcheck  "$pkgdir/usr/bin/wgcheck"
+install  -Dm755 makesrcinfo  "$pkgdir/usr/bin/makesrcinfo"
+install  -Dm644  pppoecheck.service  "$pkgdir/usr/lib/systemd/system/pppoecheck.service"
+install  -Dm644  wgcheck.service  "$pkgdir/usr/lib/systemd/system/wgcheck.service"
+install  -Dm644  pppoecheck.timer  "$pkgdir/usr/lib/systemd/system/pppoecheck.timer"
+install  -Dm644  wgcheck.timer  "$pkgdir/usr/lib/systemd/system/wgcheck.timer"
+install  -Dm755  pppoecheck  "$pkgdir/usr/lib/$pkgname/pppoecheck"
+install  -Dm755 check-file-exists  "$pkgdir/usr/bin/check-file-exists"
+install  -Dm755 compare-file-by-sha512  "$pkgdir/usr/bin/compare-file-by-sha512"
+install  -Dm755 savegitignore  "$pkgdir/usr/bin/savegitignore"
+install  -Dm755 saveaur  "$pkgdir/usr/bin/saveaur"
+install  -Dm755 mkmvngitignore  "$pkgdir/usr/bin/mkmvngitignore"
+install  -Dm755 mkuefi  "$pkgdir/usr/bin/mkuefi"
+install  -Dm755 mkbiosvda  "$pkgdir/usr/bin/mkbiosvda"
 
 }
 

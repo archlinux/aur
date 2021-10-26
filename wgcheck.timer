@@ -1,0 +1,12 @@
+[Unit]
+Description=GfwClient Update  Peer Half Hour  
+
+[Timer]
+Persistent=true
+OnBootSec=2min
+OnUnitActiveSec=2min
+AccuracySec=1us
+RandomizedDelaySec=5min
+
+[Install]
+WantedBy=timers.target
