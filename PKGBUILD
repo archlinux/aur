@@ -2,7 +2,7 @@
 
 pkgname=betterdiscord-installer
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Installer for BetterDiscord'
 arch=('x86_64')
 url='https://github.com/BetterDiscord/Installer'
@@ -26,6 +26,6 @@ package() {
     install -Dm755 /dev/stdin "$pkgdir"/usr/bin/betterdiscord-installer <<'EOF'
 #!/usr/bin/sh
 
-env BD_SKIP_UPDATECHECK=1 exec /opt/BetterDiscord/betterdiscord-installer "$@"
+exec env BD_SKIP_UPDATECHECK=1 /opt/BetterDiscord/betterdiscord-installer "$@"
 EOF
 }

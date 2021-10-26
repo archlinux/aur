@@ -1,7 +1,7 @@
 pkgbase = betterdiscord-installer
 	pkgdesc = Installer for BetterDiscord
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BetterDiscord/Installer
 	arch = x86_64
 	license = MIT
