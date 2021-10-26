@@ -1,18 +1,17 @@
 pkgbase = ibus-libthai
 	pkgdesc = IBus engine module for LibThai
-	pkgver = 0.1.4
-	pkgrel = 3
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/tlwg/ibus-libthai
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	depends = ibus
 	depends = libthai
-	provides = ibus-libthai=0.1.4
+	provides = ibus-libthai=0.1.5
 	conflicts = ibus-libthai-svn
 	replaces = ibus-libthai-svn
-	source = https://github.com/tlwg/ibus-libthai/archive/v0.1.4.tar.gz
-	sha256sums = b5debc5cd9da3e32b3262d2da9aab296bf8ef27f85f44ef4c2200b0b883845e0
+	source = https://github.com/tlwg/ibus-libthai/releases/download/v0.1.5/ibus-libthai-0.1.5.tar.xz
+	sha256sums = 7a0031b6d8f0b8a883a08b8996ea0e4c9768b456497ba64e98981d885080c31d
 
 pkgname = ibus-libthai
-
