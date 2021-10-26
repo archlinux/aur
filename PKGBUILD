@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=36
+pkgrel=37
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -13,7 +13,7 @@ archlinuxcn-keyring
 archlinuxcn-mirrorlist
 devtools
 wireguard-tools-china
-
+firewalld-service
 
 )
 #makedepends=('cmake>=3.3' 'qt5-tools' 'karchive' 'gcc>=8' 'extra-cmake-modules')

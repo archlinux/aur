@@ -1,7 +1,7 @@
 pkgbase = lcj
 	pkgdesc = All tools for Lcj
 	pkgver = 1.0.0
-	pkgrel = 36
+	pkgrel = 37
 	arch = any
 	groups = lcj
 	license = GPL3
@@ -16,6 +16,7 @@ pkgbase = lcj
 	depends = archlinuxcn-mirrorlist
 	depends = devtools
 	depends = wireguard-tools-china
+	depends = firewalld-service
 	optdepends = pkgbuild-introspection: For mksrcinfo
 	source = ipmac
 	source = makesrcinfo
