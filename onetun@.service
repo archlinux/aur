@@ -1,0 +1,23 @@
+[Unit]
+Description=onetun %I
+After=network-online.target nss-lookup.target
+Wants=network-online.target nss-lookup.target
+PartOf=onetun.target
+
+[Service]
+Type=simple
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes # Prevent service from reading files in /home
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectKernelLogs=yes
+MemoryDenyWriteExecute=yes
+LockPersonality=yes
+ExecStart=/usr/bin/onetun
+EnvironmentFile=/etc/onetun/%i.conf
+
+[Install]
+WantedBy=multi-user.target
