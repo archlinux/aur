@@ -1,4 +1,5 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
+
 _pluginname=media-controls
 pkgname=obs-$_pluginname
 pkgver=0.3.4
@@ -11,7 +12,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-media-controls#commit=f2b7b4284ad8798db57a7e2453e9b3f7e2a408cc"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=f2b7b4284ad8798db57a7e2453e9b3f7e2a408cc"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
@@ -23,8 +24,8 @@ prepare() {
   rm -rf fakeroot
 
   cd "obs-studio-$_obsver"/UI/frontend-plugins
-  cp -r "$srcdir/$pkgname-$pkgver" .
-  echo "add_subdirectory($pkgname-$pkgver)" | tee -a CMakeLists.txt >/dev/null
+  cp -r "$srcdir/$pkgname" .
+  echo "add_subdirectory($pkgname)" | tee -a CMakeLists.txt >/dev/null
 }
 
 # Need to compile plugin in OBS compilation process
