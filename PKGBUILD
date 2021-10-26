@@ -1,7 +1,7 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
 
 pkgname=whoogle-git
-pkgver=0.6.0_r391.g20976f2
+pkgver=0.6.0_r416.g5118ddb
 pkgrel=1
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
@@ -42,7 +42,7 @@ package() {
   install -m0644 -D "$srcdir/whoogle" "$pkgdir/etc/default/whoogle"
   install -m0644 -D "$srcdir/whoogle.conf" "$pkgdir/usr/lib/sysusers.d/whoogle.conf"
   install -m0644 -D "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
-  install -Dm0644 "$srcdir/$pkgname-search/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 "$srcdir/whoogle-search/LICENSE" "$pkgdir/usr/share/licenses/whoogle-search/LICENSE"
   install -dm0755 "$pkgdir/opt/whoogle-search"
-  cp -r "$srcdir/$pkgname-search/" "$pkgdir/opt/"
+  cp -r "$srcdir/whoogle-search/" "$pkgdir/opt/"
 }
