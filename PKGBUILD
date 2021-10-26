@@ -2,9 +2,9 @@
 # Contributor: FD <fxd@seznam.cz>
 
 pkgname=nomachine-enterprise-client
-pkgver=8.10.1
-_x64_rel=1
-_i686_rel=1
+pkgver=8.11.3
+_x64_rel=4
+_i686_rel=4
 pkgrel=1
 pkgdesc="Remote desktop application, client only"
 groups=('network')
@@ -17,14 +17,15 @@ install=nomachine-client.install
 backup=(etc/NX/player/localhost/{player,client}.cfg)
 
 source=(player.cfg client.cfg nomachine-client)
+source_x86_64=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgname}_${pkgver}_${_x64_rel}_x86_64.tar.gz")
+source_i686=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgname}_${pkgver}_${_i686_rel}_i686.tar.gz")
+
 sha256sums=('05cd2ff2a6b613f0502d0abbf8f063b6fbd4f06f6a4ff6ba55756fabe11afd8e'
             '81489fe47c19685bc06cc3a0bc35ade4915a36d80b550608e952c675f1c0e3d8'
             'f6c071ad1d4b167fd3395536baabf954e6bd8d567e734bb5a58eacaaab15e9a1')
-sha256sums_x86_64=('ee01c0e0ccc6bc82698de131e25a40bc9c344e84dc5c2a6620ff728820331f63')
-sha256sums_i686=('21b0b17cd242fed227e8874dd439cb5135f6413b051d89574b813c8f1568184e')
 
-source_x86_64=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgname}_${pkgver}_${_x64_rel}_x86_64.tar.gz")
-source_i686=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgname}_${pkgver}_${_i686_rel}_i686.tar.gz")
+sha256sums_x86_64=('506a35b1333543fd3b3609f75ac4dce5830a5a5f1eee74655e739b174c83ae34')
+sha256sums_i686=('d64d0c12193c9fc4065e66eadfc315a79d1cc226b3e1e540e5c21083b95fb363')
 
 
 package()
