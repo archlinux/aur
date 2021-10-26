@@ -1,7 +1,7 @@
 # Maintainer: fossdd <fossdd@tutanota.com>
 pkgname=fossil-gemini-git
 _pkgname=${pkgname%-gemini-git}
-pkgver=v1.3.r3.ge1d069f
+pkgver=v1.3.r7.g1d069fc
 pkgrel=1
 pkgdesc="A simple GTK Gopher/Gemini client written in Vala"
 url='https://github.com/koyuspace/fossil'
