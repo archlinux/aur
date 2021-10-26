@@ -1,6 +1,6 @@
 pkgbase = sway-systemd-git
 	pkgdesc = Systemd integration for Sway session
-	pkgver = v0.1.2.r3.71d697e2b0196c85
+	pkgver = 0.2.0.r0.gcd7d0a8
 	pkgrel = 1
 	url = https://github.com/alebastr/sway-systemd
 	arch = any

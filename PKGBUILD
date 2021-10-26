@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=sway-systemd-git
-pkgver=v0.1.2.r3.71d697e2b0196c85
+pkgver=0.2.0.r0.gcd7d0a8
 pkgrel=1
 pkgdesc="Systemd integration for Sway session"
 arch=(any)
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
-        printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
