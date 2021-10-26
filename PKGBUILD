@@ -7,7 +7,7 @@ _zulu_build=8.58.0.13-ca
 pkgver=8.0.312
 pkgrel=1
 pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
-arch=('x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url='https://www.azul.com/products/zulu-community/'
 license=('custom')
 depends=(
@@ -27,15 +27,17 @@ provides=(
   "java-runtime-openjdk=$_java_ver"
 )
 install="$pkgname.install"
-_tarballname="zulu${_zulu_build}-jdk${pkgver}-linux_x64"
-source=("https://cdn.azul.com/zulu/bin/${_tarballname}.tar.gz")
-sha256sums=('73417488fa4b7f7f8c0c5940dabea87908b29a23e1ee6c948b2f0ca8b9af231d')
+source_aarch64=("https://cdn.azul.com/zulu-embedded/bin/zulu${_zulu_build}-jdk${pkgver}-linux_aarch64.tar.gz")
+source_i686=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_i686.tar.gz")
+source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
+sha256sums_aarch64=('a3e9f7cfe55eb9ed9dfd87e38d61240c8bbf8543125ff9ae905ffb73bc625e06')
+sha256sums_i686=('3718a47bb272c93a3eb0cb9a44ec571aa95799ca6e0f998e668aec6ef925744b')
+sha256sums_x86_64=('73417488fa4b7f7f8c0c5940dabea87908b29a23e1ee6c948b2f0ca8b9af231d')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
 # Upstream config files that should go to etc and get backup
 _conf_files=(
-  amd64/jvm.cfg
   calendars.properties
   content-types.properties
   flavormap.properties
@@ -54,7 +56,16 @@ _conf_files=(
 )
 
 package() {
-  cd "$srcdir/${_tarballname}"
+  if [ "${CARCH}" = "aarch64" ]; then
+    _conf_files+=('aarch64/jvm.cfg')
+    cd "$srcdir/zulu${_zulu_build}-jdk${pkgver}-linux_aarch64"
+  elif [ "${CARCH}" = "i686" ]; then
+    _conf_files+=('i386/jvm.cfg')
+    cd "$srcdir/zulu${_zulu_build}-jdk${pkgver}-linux_i686"
+  else
+    _conf_files+=('amd64/jvm.cfg')
+    cd "$srcdir/zulu${_zulu_build}-jdk${pkgver}-linux_x64"
+  fi
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
   cp -a . "${pkgdir}/${_jvmdir}/"
