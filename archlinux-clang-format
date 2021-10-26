@@ -18,7 +18,7 @@ Available options
 
 get_available_binaries()
 {
-    ls -1 clang-format-*
+    ls -v1 clang-format-*
     exit 0
 }
 

@@ -2,7 +2,7 @@
 _gittag=master-f3a37dd2
 pkgname=clang-format-static-bin
 pkgver=7.f3a37dd2
-pkgrel=1
+pkgrel=2
 pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12.0.1, 13)"
 arch=('x86_64')
 url="https://github.com/muttleyxd/clang-format-static-binaries"
@@ -25,7 +25,7 @@ source=("archlinux-clang-format"
         "${_gittag}-clang-format-13::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/clang-format-13_linux-amd64"
         "${_gittag}-LICENSE.TXT.clang-8-and-lower::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/LICENSE.TXT.clang-8-and-lower"
         "${_gittag}-LICENSE.TXT.clang-9-and-higher::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/LICENSE.TXT.clang-9-and-higher")
-sha256sums=('cba2926c0b1983332ef1db7921714f3f6f5f8acb46532319ef566919f141cfa8'
+sha256sums=('6fe5f05f710d6c02a0c9d7af6aaa15a5353bff4142a622dc45dd1fd591ab9ce0'
             '63878d91ddf6de7ab7c7aae4c7c9d0ecb652ef53b5e34bcf24a00fb2b91493d9'
             '9484d40f396e2c08c24d052f1ad026b28d12df007f3615c72806543142ea1eaa'
             '76c6201c9b0f4a141da283ae9e20767ec763aff5b5a923bd26c987e65097c11b'
