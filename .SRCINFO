@@ -1,0 +1,12 @@
+pkgbase = cue2pops
+	pkgdesc = Convert Playstation Games To VCD for Popstarter
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/makefu/cue2pops-linux
+	arch = any
+	license = GPL2
+	makedepends = make
+	source = git+https://github.com/makefu/cue2pops-linux
+	md5sums = SKIP
+
+pkgname = cue2pops
