@@ -2,7 +2,7 @@
 # Contributor: FD <fxd@seznam.cz>
 
 pkgname=nomachine-enterprise-client
-pkgver=7.10.1
+pkgver=8.1.2
 _x64_rel=1
 _i686_rel=1
 pkgrel=1
@@ -22,8 +22,8 @@ sha256sums=(SKIP SKIP SKIP)
 source_x86_64=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgname}_${pkgver}_${_x64_rel}_x86_64.tar.gz")
 source_i686=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgname}_${pkgver}_${_i686_rel}_i686.tar.gz")
 
-sha256sums_x86_64=('d8fa1fb80792e2d429592c24ca9100ddd3c16796cb321426674bd7a7163c84c3')
-sha256sums_i686=('3afdfa337d11496167ebfc41edf6e92ddf19f3c4c3314a78be866b5698d29f67')
+sha256sums_x86_64=('fa54228e86ae782d9bea457fd040b00331b8dc76f9faef42883dc4d892127ecc')
+sha256sums_i686=('7994fe1b52ffc2e7bc1a5c36cbb900eda7b7a1d432e7b7bc5b691ef9b0dad613')
 
 package()
 {
@@ -37,6 +37,6 @@ package()
     mkdir -p "${pkgdir}/usr/share"
 
     cd "${pkgdir}/usr/share"
-    tar -xzf "${srcdir}/NX/etc/NX/player/packages/nxclient.tar.gz"
+    tar -xzf "${srcdir}/NX/etc/NX/player/packages/nxrunner.tar.gz"
     tar -xzf "${srcdir}/NX/etc/NX/player/packages/nxplayer.tar.gz"
 }
