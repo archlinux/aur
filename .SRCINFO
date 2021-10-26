@@ -1,0 +1,15 @@
+pkgbase = cookcli-bin
+	pkgdesc = CookCLI is provided as a command-line tool to make Cook recipe management easier, and enable automation and scripting workflows for the CookLang ecosystem. Binary
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/cooklang/CookCLI
+	arch = x86_64
+	license = MIT
+	provides = cookcli
+	conflicts = cookcli
+	source = CookCLI_0.0.7.zip::https://github.com/cooklang/CookCLI/archive/refs/tags/v0.0.7.tar.gz
+	sha256sums = 0d874d908396a17b772a7d93a8b50b505dcb1be55b12c1a2076949bba0fc4428
+	source_x86_64 = CookCLI_0.0.7_linux_amd64.zip::https://github.com/cooklang/CookCLI/releases/download/v0.0.7/CookCLI_0.0.7_linux_amd64.zip
+	sha256sums_x86_64 = ee568b51a1cd02d6e3c1dec8626def5058d323c1118708e23412ef6d25257293
+
+pkgname = cookcli-bin
