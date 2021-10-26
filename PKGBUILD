@@ -2,7 +2,7 @@
 
 pkgname=mizu-bin
 pkgver=0.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple-yet-powerful API traffic viewer for Kubernetes enabling you to view all API communication between microservices to help your debug and troubleshoot regressions."
 arch=('x86_64')
 url="https://github.com/up9inc/mizu"
