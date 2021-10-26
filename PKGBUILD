@@ -1,7 +1,7 @@
 # Maintainer: MidAutumnMoon <mid.autumn0moon@gmail.com>
 
 pkgname=agate-bin
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Very simple server for the Gemini hypertext protocol"
 arch=( 'x86_64' 'aarch64' 'armv6h' 'armv7h' )
@@ -23,10 +23,10 @@ sha256sums=(
   '2281a345cd0e70f275e7630fb585eac94938d97a80f1db12f048a7cbb0e6c253'
   '3ae91c3090f65bc95b7dee277e357061408560c468546e50f5acc6e58b3f1042'
 )
-sha256sums_x86_64=( 'f043a40f9a2bfd51d99643478da63917ed20d67a32bd8d553a7f752989547f20' )
-sha256sums_aarch64=( '83a069824797662b1307efe10ba924a507b1647c4e15c4000f620a7d7a7cde21' )
-sha256sums_armv6h=( '1f681f8642f14a4381c4679c05d16c97d7a87573a574d44becde566ead1fc06f' )
-sha256sums_armv7h=( '1a3fe6ab0ecf2f06a488eef00ca905d2131ad095280dabdae4a557aeb0eb5b3c' )
+sha256sums_x86_64=( '88026e37eab2325301d994b9e81d6302af4ef347101c4e6814b8128e6eceb1dc' )
+sha256sums_aarch64=( 'd892a9b4075393168c031757968143165c47a84a52d6154df198b08f26c26c7f' )
+sha256sums_armv6h=( '63e15d0f1693d93ba7c287f408aba0fbf96d904a37f54f7e4db44dbea82d6aaa' )
+sha256sums_armv7h=( '095c524df53b82e025fcfb076b8b7ceae1fbcb0a44c6fc158114ac61b0dd30b5' )
 
 backup=( 'etc/agate/agate.conf' )
 
