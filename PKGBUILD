@@ -32,7 +32,7 @@ build() {
   pip install -r requirements.txt
   
   # Cleanup unsed
-  rm -r docs test .dockerignore .gitignore .replit docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt setup.py .github
+  rm -r docs test .dockerignore .gitignore .replit docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt setup.py
 }
 
 package() {
@@ -41,5 +41,5 @@ package() {
   install -m0644 -D "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
   install -Dm0644 "$srcdir/$pkgname-search/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -dm0755 "$pkgdir/opt/whoogle-search"
-  cp -r "$srcdir/$pkgname-search/" "$pkgdir/opt/"
+  cp -r "$srcdir/whoogle-search/" "$pkgdir/opt/"
 }
