@@ -19,7 +19,7 @@ source=("http://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-${pkgver}/
         "xdg-basedir.patch")
 md5sums=('daff9cb7a86af8965453e737f8fba781'
          'b678c0fade4b2daffc5662d7094b1544'
-         '8db4c209408cada1b7aa124ca5760e70')
+         '59fdb64da7c1b123afb92ded69d25059')
 
 prepare() {
   cd "${srcdir}/tilp2-${pkgver}"
