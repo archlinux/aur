@@ -1,7 +1,7 @@
 pkgbase = lcj
 	pkgdesc = All tools for Lcj
 	pkgver = 1.0.0
-	pkgrel = 25
+	pkgrel = 26
 	arch = any
 	groups = lcj
 	license = GPL3
@@ -25,6 +25,7 @@ pkgbase = lcj
 	source = pppoecheck.service
 	source = pppoecheck.timer
 	source = check-file-exists
+	source = compare-file-by-sha512
 	sha512sums = 8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd
 	sha512sums = 75978d30a68de00cb50c23ba882dd73d9f365497025aacc271375249e7dd4aaff34732ced2ed1cbf2fc64fc3421b2fefc2ec64b16ef068e40d4343894b8c8bfb
 	sha512sums = 7fa56ac8779f4c3695f2ef2d4c86a35cc33ccdfa60a2f97665bf542dbca6381c70b16b94d0a67661ba0915b94c9a38b8706a81fdb970ec89fe377f7f92cb2075
@@ -34,5 +35,6 @@ pkgbase = lcj
 	sha512sums = b0cddef03746a5b8c2ca6be899a7e63fc25e2bbbd743f4a3566a4b4e1dd71419b3010f0dd16b80b5d943fab2b37ef1dae8819006ed916cba3a51960deb2a7696
 	sha512sums = 29fc3a014cf6fd4babf1c21ffcffd2a7c891a5dc4e6399788f9994a2a26496bd40b78579df314aaedc4918e78c2e1bb097a93fd358afa69e6f322b080525353a
 	sha512sums = 5b0340e455bdd1dcb960e6d5d57e2194c6a60e21da70bf9ed37bd22662866eb918ac5a8801ab5020b596261301d267800dfd3387abab2f69bb650c0f49362592
+	sha512sums = e11f0a4ef4cd6e534f2778a44c2ad988d1032fa4b01d57debe563d7f4e4cb5ba1e7f1123fc6f6d53ad3b81ada063a585332ffb7368ca4c8f4b6cc90e5b537033
 
 pkgname = lcj
