@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.6.0.r0.g3c1fcf6202
+pkgver=0.6.1.r27.g42f8873b23
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -60,7 +60,7 @@ prepare() {
 	git submodule update
 	python scripts/gen-license.py > XEMU_LICENSE
 	# unbundle xxhash
-	sed -i 's/"xxHash\/xxh3\.h"/<xxh3.h>/' hw/xbox/nv2a/pgraph.c
+	sed -i 's/"util\/xxHash\/xxh3\.h"/<xxh3.h>/' util/fast-hash.c
 }
 
 build() {
