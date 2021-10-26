@@ -1,0 +1,13 @@
+pkgbase = zgreending-bin
+	pkgdesc = Simple, yet usable web browser made with mono, Webkit sharp and WebkitGTK (Webkit2GTK for C#)
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = mono
+	depends = webkit2-sharp
+	source = https://github.com/DisableGraphics/zGreending/releases/download/1.0.0/zGreending.zip
+	sha512sums = SKIP
+
+pkgname = zgreending-bin
