@@ -3,7 +3,7 @@
 
 pkgname='ivideon-server'
 pkgver='3.12.0'
-pkgrel='7786'
+pkgrel='7788'
 _rel='98b5587'
 pkgdesc='Ivideon Server (with QT5 GUI)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ noextract=("${source[@]%%::*}")
 source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-video-server/ivideon-video-server_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
 	"https://packages.ivideon.com/ubuntu/pool/non-free/libq/libqt54-ivideon/libqt54-ivideon_5.4.2.0_amd64.deb"
 	"${pkgname}_infinity_camera_list.patch")
-sha256sums=('fb581261a39ef635ae3f4b67cf79a56fedac4bbdae84ff94e860f45e1e998c33'
+sha256sums=('a91b5817fc95614a06f8e1e424cd29a66eeea3d12d73128a7afad5beafd776af'
             'cbc6481b30a058a2bd8707bfaa06d600ce7be0304140a92ac56340ae13b1e062'
             'a220cf727c7520d8c94fe11a28e7fb9a17614dff8f41343e35070c1ff59f754f')
 
