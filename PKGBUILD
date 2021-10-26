@@ -2,7 +2,7 @@
 
 _appname=hoverclock
 pkgname=hoverclock-appimage
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Hoverclock - A simple, customizable floating clock for linux made with QT"
 arch=('x86_64')
