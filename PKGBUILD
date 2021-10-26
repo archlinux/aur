@@ -12,7 +12,7 @@ provides=('hoverclock')
 options=(!strip)
 source_x86_64=("Hoverclock-x86_64.AppImage::$url/releases/download/v$pkgver/Hoverclock-x86_64.AppImage"
                 "https://raw.githubusercontent.com/kostoskistefan/hoverclock/main/LICENSE")
-sha256sums_x86_64=('3540d32ba493bb49c5aea8844abbaa52aaf2c615676441f2ec4b390d09b28649'
+sha256sums_x86_64=('11f102401989eefdd58f530e2122aed07410e9d4646f20f31ede1281be08f28e'
                    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 prepare() {
