@@ -1,0 +1,15 @@
+pkgbase = cd-bin
+	pkgdesc = A vector graphics toolkit with device independent output. Pre-compiled.
+	pkgver = 5.14
+	pkgrel = 1
+	epoch = 0
+	url = https://www.tecgraf.puc-rio.br/cd/
+	arch = x86_64
+	license = MIT
+	conflicts = iup
+	conflicts = libcd
+	options = !strip
+	source = https://downloads.sourceforge.net/project/canvasdraw/5.14/Linux%20Libraries/cd-5.14_Linux54_64_lib.tar.gz
+	sha256sums = 7A1B2A748C192CD5A3C7A86FAB6A1EAF5085175A6C20BACAB5CE893E411EB623
+
+pkgname = cd-bin
