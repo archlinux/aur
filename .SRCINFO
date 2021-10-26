@@ -1,6 +1,6 @@
 pkgbase = harrison-32c-vst
-	pkgdesc = Harrison Consoles 32C Console VST Plugin
-	pkgver = 1.0.0
+	pkgdesc = Harrison Consoles 32C Console VST Plugins
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://harrisonconsoles.com/product/32c-channel-plugin/
 	arch = x86_64
@@ -12,4 +12,6 @@ pkgbase = harrison-32c-vst
 	depends = glibc
 	depends = libcurl-gnutls
 
-pkgname = harrison-32c-vst
+pkgname = harrison-32c-channel-vst
+
+pkgname = harrison-32c-vip-vst
