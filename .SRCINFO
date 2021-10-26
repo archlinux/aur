@@ -1,0 +1,14 @@
+pkgbase = android-material-icons
+	pkgdesc = Material Design icons by Google for Android Studio
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://google.github.io/material-design-icons/
+	arch = any
+	license = Apache
+	optdepends = android-studio: the official Android IDE
+	noextract = android-material-icons-4.0.0.tar.gz
+	options = !strip
+	source = android-material-icons-4.0.0.tar.gz::https://github.com/google/material-design-icons/archive/4.0.0.tar.gz
+	sha512sums = b55dfa39d050346d080ab6213836955d6e1799b8acd2cad96d9d04fa0ffab2477f9ea6b47b44af1542c99c5e69498196c81510b5dc632a6c9582487d3a79d85e
+
+pkgname = android-material-icons
