@@ -2,8 +2,8 @@
 pkgbase=decklink
 pkgname=(decklink mediaexpress)
 _pkgname=decklink
-pkgver=12.1
-pkgrel=2
+pkgver=12.2
+pkgrel=0
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
 url="https://www.blackmagicdesign.com/support/family/capture-and-playback"
@@ -14,7 +14,7 @@ options=('!strip' 'staticlibs')
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/114f976c4d3642168d24344d5f5b2afc"
+_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/f3106b481e2b4cd5934a650c869be25f"
 _pkgsrc_file=${_pkgname}-${pkgver}.tar.gz
 
 DLAGENTS=("https::/usr/bin/curl \
@@ -29,10 +29,8 @@ DLAGENTS=("https::/usr/bin/curl \
               )"
 )
 
-source=("${_pkgsrc_file}"::"${_pkgsrc_url}"
-        "bm_util.c_5.13.4-200.fc34.x86_64.patch")
-sha256sums=('51febf247d22412beea2d637fcc34cc19b1a46df9a5bf0e157d95705bf7c7b73'
-            '66e4bd6a55fcabb1c774c326318daba7fbeb6febcf8867f55c54bf00fc113504')
+source=("${_pkgsrc_file}"::"${_pkgsrc_url}")
+sha256sums=('62954a18b60d9040aa4a959dff30ac9c260218ef78d6a63cbb243788f7abc05f')
 
 prepare() {
   cd $srcdir/Blackmagic_Desktop_Video_Linux_$pkgver/other/${_arch}
@@ -41,16 +39,12 @@ prepare() {
 
   cd desktopvideo-*/usr/src
 
-  for p in ${srcdir}/*.patch;
-  do
-    echo "Applying ${p}"
-    patch --forward --strip=1 --input="${p}"
-  done
+  # for p in ${srcdir}/*.patch;
+  # do
+  #   echo "Applying ${p}"
+  #   patch --forward --strip=1 --input="${p}"
+  # done
 
-
-  # fix error related to "initialization of « unsigned int (*)(struct tty_struct *) » from pointer type « int (*)(struct tty_struct *) »"
-  sed "s:^EXTRA_CFLAGS +=:EXTRA_CFLAGS += -Wno-error=incompatible-pointer-types:" -i blackmagic-io-*/Makefile
-  sed "s:^EXTRA_CFLAGS +=:EXTRA_CFLAGS += -Wno-error=incompatible-pointer-types:" -i blackmagic-[0-9]*/Makefile
 }
 
 package_decklink() {
