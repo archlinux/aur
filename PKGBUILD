@@ -1,4 +1,5 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
+
 _pluginname=gradient-source
 pkgname=obs-$_pluginname
 pkgver=0.2.0
@@ -11,7 +12,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-gradient-source#commit=fe42abcc8d3fbb2fec82ca85b741ea70f37ab45f"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=fe42abcc8d3fbb2fec82ca85b741ea70f37ab45f"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
@@ -24,8 +25,8 @@ prepare() {
 
   cd "obs-studio-$_obsver"/plugins
 
-  cp -r "$srcdir/$pkgname-$pkgver" .
-  echo "add_subdirectory($pkgname-$pkgver)" | tee -a CMakeLists.txt >/dev/null
+  cp -r "$srcdir/$pkgname" .
+  echo "add_subdirectory($pkgname)" | tee -a CMakeLists.txt >/dev/null
 }
 
 # Need to compile plugin in OBS compilation process
