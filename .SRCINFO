@@ -1,0 +1,18 @@
+pkgbase = python-yaml-git
+	pkgdesc = Python bindings for YAML, using fast libYAML library
+	pkgver = 6.0.r0.g8cdff2c
+	pkgrel = 1
+	url = https://pyyaml.org/wiki/PyYAML
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = libyaml
+	makedepends = cython
+	depends = python
+	depends = libyaml
+	provides = python-yaml
+	conflicts = python-yaml
+	source = python-yaml::git+https://github.com/yaml/pyyaml.git
+	sha512sums = SKIP
+
+pkgname = python-yaml-git
