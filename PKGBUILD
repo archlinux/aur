@@ -2,7 +2,7 @@
 pkgname=libfprint-goodix-521d
 _pkgdirname=libfprint
 pkgver=1.94.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for fingerprint readers - For Goodix 521d"
 arch=(x86_64)
 url="https://fprint.freedesktop.org/"
@@ -14,7 +14,7 @@ optdepends=()
 provides=(libfprint libfprint-2.so libfprint-goodix-521d)
 conflicts=(libfprint)
 groups=(fprint)
-source=("git+https://github.com/infinytum/libfprint.git#branch=driver/goodix-521d")
+source=("git+https://github.com/infinytum/libfprint.git#branch=unstable")
 sha256sums=('SKIP')
 
 build() {
