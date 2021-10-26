@@ -1,4 +1,5 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
+
 _pluginname=transition-table
 pkgname=obs-$_pluginname
 pkgver=0.2.1
@@ -11,7 +12,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-transition-table#commit=7e6ba5cc715f724dd78582fd12651e0cf82962eb"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=7e6ba5cc715f724dd78582fd12651e0cf82962eb"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
@@ -23,8 +24,8 @@ prepare() {
   rm -rf fakeroot
 
   cd "obs-studio-$_obsver"/UI/frontend-plugins
-  cp -r "$srcdir/$pkgname-$pkgver" .
-  echo "add_subdirectory($pkgname-$pkgver)" | tee -a CMakeLists.txt >/dev/null
+  cp -r "$srcdir/$pkgname" .
+  echo "add_subdirectory($pkgname)" | tee -a CMakeLists.txt >/dev/null
 }
 
 # Need to compile plugin in OBS compilation process
