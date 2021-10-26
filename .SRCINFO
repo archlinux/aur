@@ -4,6 +4,8 @@ pkgbase = zulu-17-bin
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = zulu-17-bin.install
+	arch = aarch64
+	arch = i686
 	arch = x86_64
 	license = custom
 	depends = java-environment-common>=3
@@ -15,7 +17,11 @@ pkgbase = zulu-17-bin
 	provides = java-runtime-headless-openjdk=17
 	provides = java-runtime=17
 	provides = java-runtime-openjdk=17
-	source = https://cdn.azul.com/zulu/bin/zulu17.30.15-ca-jdk17.0.1-linux_x64.tar.gz
-	sha256sums = 9b8e4d1e47b02b9c2392462ee82988c189357471de3224c37173fa58e2b25112
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.30.15-ca-jdk17.0.1-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 4d9c9116eb0cdd2d7fb220d6d27059f4bf1b7e95cc93d5512bd8ce3791af86c7
+	source_i686 = https://cdn.azul.com/zulu/bin/zulu17.30.15-ca-jdk17.0.1-linux_i686.tar.gz
+	sha256sums_i686 = 31db6972e14c33f4f2136f3ea8fc016d2265d840b914bfbf6446473605aefdda
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu17.30.15-ca-jdk17.0.1-linux_x64.tar.gz
+	sha256sums_x86_64 = 9b8e4d1e47b02b9c2392462ee82988c189357471de3224c37173fa58e2b25112
 
 pkgname = zulu-17-bin
