@@ -1,2 +1,5 @@
-/*.pkg.tar.xz
+/*.pkg.tar.zst
+/.vscode
 /gwenhywfar/
+/pkg
+/src
