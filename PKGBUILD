@@ -6,17 +6,17 @@
 #              WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=steamos-compositor-plus
 pkgver=1.8.4
-pkgrel=1
-pkgdesc="Compositor used by SteamOS with some added tweaks and fixes"
+pkgrel=2
+pkgdesc="Compositor used by SteamOS 2.x with some added tweaks and fixes"
 arch=('i686' 'x86_64')
-url="https://github.com/gamer-os/steamos-compositor-plus"
+url="https://github.com/chimeraos/steamos-compositor-plus"
 license=('custom')
 depends=('libxfixes' 'libxext' 'libxcomposite' 'libxdamage' 'libxrender' 'libxxf86vm' 'sdl_image' 'libgl' 'lsb-release' 'ttf-dejavu' 'xorg-xrandr' 'steam')
 optdepends=('sxhkd' 'alsa-utils')
 makedepends=('mesa')
 conflicts=('steamos-compositor')
 _msver=1.10
-source=("https://github.com/gamer-os/steamos-compositor-plus/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chimeraos/${pkgname}/archive/${pkgver}.tar.gz"
         "https://repo.steampowered.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_${_msver}.tar.xz")
 md5sums=('cd527d869883cd733eb264eedbb36382'
          'ab8b731fb917aff183aa338bf3298495')
