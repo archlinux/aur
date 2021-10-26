@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
 
 pkgname=python-google-cloud-speech
 _name=google-cloud-speech
-pkgver=2.9.3
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='A google cloud speech api for python to convert audio to text.'
 url='https://github.com/googleapis/python-speech'
@@ -23,7 +23,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('3fa65a6b8036773697f724a656e8e6dfed687bab31ecbf0bb472417788d66af8c26f3a5b70688f04b4b1e991b6a4b49db9cb3076970cf2cebcb00f1def3162db')
+b2sums=('e296a2e3fbc51e65befe6a343742edf2cec666d876838431e0f32688279299eef5d5cf3258fe495eff791052fe1ac09b424da13055a3233f7104ee8f3d1541c8')
 
 build() {
   cd "$_name-$pkgver" || exit
