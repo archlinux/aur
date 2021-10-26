@@ -22,7 +22,5 @@ set  -u
 #$ bash -euxo pipefail script.sh
 
 
-ip -4 route add   172.20.0.0/16  via  172.25.1.2
-ip -4 route add   172.20.11.0/24  via  172.25.1.2
-ip -4 route add   172.21.0.0/16  via  172.25.1.2
+ip -4 route add   172.20.0.0/16  dev wg 
 
