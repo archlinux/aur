@@ -1,14 +1,39 @@
---- a/tllocalmgr	2020-12-02 16:46:49.214712042 +0100
-+++ b/tllocalmgr	2020-12-02 17:05:02.476194535 +0100
-@@ -171,7 +171,10 @@
+--- a/tllocalmgr	2021-10-26 20:36:35.893293400 +0200
++++ b/tllocalmgr	2021-10-26 20:37:50.127537318 +0200
+@@ -171,7 +171,13 @@
  		$installedcol_versions{$col} = $ver;
  		my @list = ();
  		unless ( -f "$INSTALLEDPKGS/texlive-$col\_$ver.pkgs" ) {
 -			die "Cannot open $INSTALLEDPKGS/texlive-$col\_$ver.pkgs\n"
 +			print BOLD RED "Cannot open $INSTALLEDPKGS/texlive-$col\_$ver.pkgs!\n";
-+			print RED "-- Likely the package texlive-$col does not create the 'pkgs' file.\n";
++			print RED "-- Likely the package texlive-$col does not create the '*.pkgs' file.\n";
++			print RED "-- We will not process it further; please contact upstream maintainer\n";
++			print RED "-- to have this fixed.\n";
++			delete $installedcol_versions{$col};
 +			print LOG "Cannot open $INSTALLEDPKGS/texlive-$col\_$ver.pkgs!\n";
 +			next;
  		};
  		open INST, "<$INSTALLEDPKGS/texlive-$col\_$ver.pkgs" ;
  		while (<INST>) {
+@@ -415,6 +421,10 @@
+ sub run_install {
+ 	foreach (@_) {
+         my $tlpkg  = $tlpdb->get_package($_);
++	if (! $tlpkg) {
++		warning "$_ is unknown" ;
++		next ;
++	}
+         my $pkgrev = $tlpkg->revision;
+ 		if ( $locallyinstalledpkg_versions{$_} ) {
+ 			echo "$_ is already installed with texlive-local-$_";
+@@ -451,6 +461,10 @@
+ sub run_installdoc {
+ 	foreach (@_) {
+         my $tlpkg  = $tlpdb->get_package($_);
++	if (! $tlpkg) {
++		warning "$_ is unknown" ;
++		next ;
++	}
+         my $pkgrev = $tlpkg->revision;
+ 		if ( $locallyinstalleddoc_versions{$_} ) {
+ 			echo "$_ is already installed with texlive-local-$_-doc";
