@@ -2,7 +2,7 @@
 # Contributor: FD <fxd@seznam.cz>
 
 pkgname=nomachine-enterprise-client
-pkgver=7.8.2
+pkgver=7.9.2
 _x64_rel=1
 _i686_rel=1
 pkgrel=1
@@ -22,8 +22,8 @@ sha256sums=(SKIP SKIP SKIP)
 source_x86_64=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgname}_${pkgver}_${_x64_rel}_x86_64.tar.gz")
 source_i686=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgname}_${pkgver}_${_i686_rel}_i686.tar.gz")
 
-sha256sums_x86_64=('8d69c07a0eecccf8e2cfbbed24986003f9fcf909170d0792e3e93488ab996ddb')
-sha256sums_i686=('3e706df92f82bf4413455f0b062dd1874caff0bd1d5bfaaefd92eb8a45f9664a')
+sha256sums_x86_64=('7e743675c61ddce615fa2dd6064c7362acfd553aa69655205c36867eedaa0d7c')
+sha256sums_i686=('3ae415fa20ca3d1b028cdf70cfcef6d91bc780122ce97ce85f5d9c6aa4514aba')
 
 package()
 {
