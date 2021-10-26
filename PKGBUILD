@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=26
+pkgrel=27
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -32,6 +32,7 @@ pppoecheck.timer
 check-file-exists
 savegitignore
 saveaur
+mkmvngitignore
 )
 sha512sums=(
 
@@ -46,6 +47,7 @@ b0cddef03746a5b8c2ca6be899a7e63fc25e2bbbd743f4a3566a4b4e1dd71419b3010f0dd16b80b5
 5b0340e455bdd1dcb960e6d5d57e2194c6a60e21da70bf9ed37bd22662866eb918ac5a8801ab5020b596261301d267800dfd3387abab2f69bb650c0f49362592
 966811ad453d6db13a51c294504e8ed0c6a0ffe2cdff756cfa88fb22b2998de8228cd2265c2eaab8ae01116531412831d06b1b9bf54af4b8b09bb065e3771816
 605b630b286f702c05bd14a42d2a2f17516cb04275f8caeb81fab15ea35210c45c9276c62823882e0fe5d40026e6b59597499651ed22ba7e4777809e2cd549d0
+97ac6b71f77219f74d6f02cac7c5eb4e4e0a68074d0d972107d35127daf4f4804e7e6cd07591ae15b8a50b520e24970fa7945e440b324cfd4dd1301f8d71dc81
 
 )
 
@@ -88,6 +90,7 @@ install  -Dm755  pppoecheck  "$pkgdir/usr/lib/$pkgname/pppoecheck"
 install  -Dm755 check-file-exists  "$pkgdir/usr/bin/check-file-exists"
 install  -Dm755 savegitignore  "$pkgdir/usr/bin/savegitignore"
 install  -Dm755 saveaur  "$pkgdir/usr/bin/saveaur"
+install  -Dm755 mkmvngitignore  "$pkgdir/usr/bin/mkmvngitignore"
 
 }
 
