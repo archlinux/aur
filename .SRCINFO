@@ -1,6 +1,6 @@
 pkgbase = owfs
 	pkgdesc = An easy way to use the powerful 1-wire system of Dallas/Maxim.
-	pkgver = 3.2p3
+	pkgver = 3.2p4
 	pkgrel = 1
 	url = http://www.owfs.org/
 	arch = i686
@@ -10,16 +10,13 @@ pkgbase = owfs
 	depends = avahi
 	depends = fuse
 	depends = perl
-	source = https://github.com/owfs/owfs/releases/download/v3.2p3/owfs-3.2p3.tar.gz
-	source = gcc10.patch
+	source = https://github.com/owfs/owfs/releases/download/v3.2p4/owfs-3.2p4.tar.gz
 	source = systemd_journal.patch
 	source = sysmacros.patch
 	source = owfs.conf
-	sha1sums = c7c7ee31062f15ff7ed40f8acde1b7bb92d185ec
-	sha1sums = ffa508b864ad69caf0bddad869844e286cd42844
+	sha1sums = 972ec907dc2d6db238288fb5de730e9b78790955
 	sha1sums = ff13b0a3d56206e32cf0307042351298e3f27d2d
 	sha1sums = 98d66d560509e1be20e4ad3cb812d934ed1e3bbe
 	sha1sums = 99a72935a8d2bdcd79a745983cda85fd5d3035f4
 
 pkgname = owfs
-
