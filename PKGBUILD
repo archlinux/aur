@@ -1,4 +1,5 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
+
 _pluginname=move-transition
 pkgname=obs-$_pluginname
 pkgver=2.5.2
@@ -11,7 +12,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-move-transition#commit=56a708ae58ed8a293c71b3510a8c7670f9f421a3"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=56a708ae58ed8a293c71b3510a8c7670f9f421a3"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
@@ -23,8 +24,8 @@ prepare() {
   rm -rf fakeroot
 
   cd "obs-studio-$_obsver"/plugins
-  cp -r "$srcdir/$pkgname-$pkgver" .
-  echo "add_subdirectory($pkgname-$pkgver)" >> CMakeLists.txt
+  cp -r "$srcdir/$pkgname" .
+  echo "add_subdirectory($pkgname)" >> CMakeLists.txt
 }
 
 # Need to compile plugin in OBS compilation process
