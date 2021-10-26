@@ -1,8 +1,8 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 
 pkgname=anki-release-source
-pkgver=2.1.48
-pkgrel=3
+pkgver=2.1.49
+pkgrel=1
 pkgdesc="Helps you remember facts efficiently. Latest release building locally"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -57,7 +57,7 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz"
 "no-update.patch"
 )
-sha256sums=('a7928008ff945d64d06b8df52ac85d42902585b39d0eaf360aa8e3f4077634a4'
+sha256sums=('0a072f9a2babdde67b233104c73450e297c7feff41e0a43b76dd590bafcef5d5'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
 )
 
