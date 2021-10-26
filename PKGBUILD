@@ -2,42 +2,35 @@
 # Upstream URL: https://gitlab.gnome.org/gabmus/hydrapaper
 
 pkgname=hydrapaper-git
-pkgver=3.0.0.r0.ga0b4bb1
+pkgver=3.1.0.r7.gbcc1d1f
 pkgrel=1
-pkgdesc='Wallpaper manager with multimonitor support'
+pkgdesc="Wallpaper manager with multi monitor support"
 arch=('any')
-url='https://gitlab.gnome.org/gabmus/hydrapaper'
+url="https://hydrapaper.gabmus.org"
 license=('GPL3')
-depends=(
-  'gtk4'
-  'python'
-  'python-pillow'
-  'libadwaita'
-  'gobject-introspection'
-  'python-gobject'
-)
-makedepends=('git' 'meson')
-provides=('hydrapaper')
-conflicts=('hydrapaper')
-source=("hydrapaper::git+https://gitlab.gnome.org/gabmus/hydrapaper")
+depends=('gtk4' 'libadwaita' 'dbus-python' 'python-gobject' 'python-pillow')
+makedepends=('git' 'gobject-introspection' 'meson' 'pandoc')
+checkdepends=('appstream')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://gitlab.gnome.org/GabMus/HydraPaper.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/hydrapaper"
+  cd "$srcdir/${pkgname%-git}"
   git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/hydrapaper"
-  rm -rf build
-  mkdir build
-  cd build
-  meson --prefix /usr --buildtype release ..
-  ninja
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "$srcdir/hydrapaper"
-  cd build
-  DESTDIR="$pkgdir" ninja install
+  meson install -C build --destdir "$pkgdir"
 }
+
