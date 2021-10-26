@@ -2,4 +2,5 @@
 !.gitignore
 !/.SRCINFO
 !/PKGBUILD
+!/fabric-installer
 !/fabric-installer.desktop

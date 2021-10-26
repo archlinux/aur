@@ -2,7 +2,7 @@
 # Contributor: Péter Tombor <aur at tmbpeter dot com>
 pkgname=fabric-installer
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='installer for the Minecraft mod loader Fabric'
 arch=('any')
 url='https://fabricmc.net'
@@ -11,19 +11,13 @@ depends=('java-environment>=8')
 source=("https://maven.fabricmc.net/net/fabricmc/fabric-installer/$pkgver/fabric-installer-$pkgver.jar"
         'https://raw.githubusercontent.com/FabricMC/fabric-installer/master/LICENSE'
         'https://fabricmc.net/assets/logo.png'
-        "$pkgname.desktop")
+        'fabric-installer'
+        'fabric-installer.desktop')
 sha256sums=('9ff97d46e058fb036a9aa1e93882f48fe503d4a16438cc75370aa31813903f0d'
             'b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1'
             'a41878c3c4c5790cfc920eabf98d3404103a74a6f3df69d632ceb220c9ec9dc7'
+            '20b3368adc352dfc241b84d62aabd05734863650225ae3930deee9ca53a2c0a8'
             'e832b760542f9b224512aca6dfd9fe20dec6c3b59cc86842096f35055ffcea55')
-
-build() {
-    cd "$srcdir"
-
-    # Create shell script to launch the application
-    echo "#!/bin/sh" > $pkgname
-    echo "java -jar /usr/share/java/$pkgname.jar" >> $pkgname
-}
 
 package() {
     install -Dm 644 fabric-installer-$pkgver.jar "$pkgdir/usr/share/java/$pkgname.jar"
