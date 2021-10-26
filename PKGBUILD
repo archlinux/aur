@@ -7,7 +7,7 @@
 pkgname=texlive-localmanager-git
 _pkgname="${pkgname%-git}"
 pkgver=r84.bbd8488
-pkgrel=3
+pkgrel=4
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
 url='https://gitlab.archlinux.org/remy/texlive-localmanager.git'
@@ -33,7 +33,7 @@ sha256sums=('SKIP'
             'cd12f1927fa9d950855aab91b30039d0cbb328a8c7899382286d3ace16bb6a3b'
             '22222ff329919ee6a16ffd489b0213b14f8169d9daf6ef1a82aa5ab37538c236'
             'a7698d0076f4e1a7ef401899c174ed9a290674a7e89e9c818ba078e17548c6e7'
-            '1538426adada826f8faeed826e9be5f5610ade23ce0437535e39662294e6e108'
+            '23f103c606eb595d8c114aee2ca3006a09588370087b959419f86a4a8ce25a43'
             'd7064657f6336bed7be230fc05df800e6bdcee31d10c718b4b9b1b55f7f26c8a')
 
 pkgver() {
