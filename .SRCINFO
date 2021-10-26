@@ -1,15 +1,13 @@
 pkgbase = d-spy
 	pkgdesc = A D-Bus explorer for GNOME
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/d-spy
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = meson
-	makedepends = gcc
 	makedepends = git
-	depends = libadwaita
 	source = git+https://gitlab.gnome.org/GNOME/d-spy.git#commit=85e405da58e39c67afe98785d4b16df26a1322dd
 	md5sums = SKIP
 

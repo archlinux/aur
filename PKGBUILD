@@ -4,13 +4,12 @@ pkgname=(d-spy libdspy)
 pkgbase=d-spy
 _commit=85e405da58e39c67afe98785d4b16df26a1322dd
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A D-Bus explorer for GNOME'
 arch=(x86_64)
 url=https://gitlab.gnome.org/GNOME/d-spy
 license=(GPL3)
-depends=(libadwaita)
-makedepends=(meson gcc git)
+makedepends=(meson git)
 checkdepends=(appstream-glib)
 source=("git+$url.git#commit=$_commit")
 md5sums=(SKIP)
