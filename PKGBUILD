@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=linux-wifi-hotspot
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="Feature-rich wifi hotspot creator"
 arch=('x86_64' 'aarch64')
@@ -16,12 +16,7 @@ conflicts=('wihotspot' 'create_ap')
 backup=('etc/create_ap.conf')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ffc65f24a3a8bc3f023c7407fd6eb44b7028d6a2f5a9471ef62904980b09a976')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  sed -i 's/sudo/wheel/g' src/scripts/policies/polkit.rules
-}
+sha256sums=('39d3476b60c92ac7de5405b998828570f3c0a3dfb3f0b4d4d874c05265bdf411')
 
 build() {
   cd "$pkgname-$pkgver"

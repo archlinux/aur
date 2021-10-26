@@ -1,6 +1,6 @@
 pkgbase = linux-wifi-hotspot
 	pkgdesc = Feature-rich wifi hotspot creator
-	pkgver = 4.3.2
+	pkgver = 4.3.3
 	pkgrel = 1
 	url = https://github.com/lakinduakash/linux-wifi-hotspot
 	install = linux-wifi-hotspot.install
@@ -22,7 +22,7 @@ pkgbase = linux-wifi-hotspot
 	conflicts = wihotspot
 	conflicts = create_ap
 	backup = etc/create_ap.conf
-	source = linux-wifi-hotspot-4.3.2.tar.gz::https://github.com/lakinduakash/linux-wifi-hotspot/archive/v4.3.2.tar.gz
-	sha256sums = ffc65f24a3a8bc3f023c7407fd6eb44b7028d6a2f5a9471ef62904980b09a976
+	source = linux-wifi-hotspot-4.3.3.tar.gz::https://github.com/lakinduakash/linux-wifi-hotspot/archive/v4.3.3.tar.gz
+	sha256sums = 39d3476b60c92ac7de5405b998828570f3c0a3dfb3f0b4d4d874c05265bdf411
 
 pkgname = linux-wifi-hotspot
