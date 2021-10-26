@@ -11,7 +11,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-source-dock#commit=3fb1477a04c158be188ac0ee6b94d71da1bfbb56"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=3fb1477a04c158be188ac0ee6b94d71da1bfbb56"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
@@ -23,8 +23,8 @@ prepare() {
   rm -rf fakeroot
 
   cd "obs-studio-$_obsver"/UI/frontend-plugins
-  cp -r "$srcdir/$pkgname-$pkgver" .
-  echo "add_subdirectory($pkgname-$pkgver)" | tee -a CMakeLists.txt >/dev/null
+  cp -r "$srcdir/$pkgname" .
+  echo "add_subdirectory($pkgname)" | tee -a CMakeLists.txt >/dev/null
 }
 
 # Need to compile plugin in OBS compilation process
