@@ -26,6 +26,7 @@ if [ ! -d $gfwPathName ]; then
 	echo mkdir $gfwPathName
   mkdir -pv $gfwPathName
 fi
+set +e
 echo down google ip 
 curl http://vps.aihlp.com/gfw/google-ip -o $gfwPathName/google-ip-tmp
 echo down github ip 

@@ -2,7 +2,7 @@
 
 pkgname=gfwlist-route
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="gwflist ip for china . and add it to route "
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -24,7 +24,7 @@ route-ar  route-cn  route-cr
 )
 
 
-sha512sums=('50c4c33f73fade7163224775e7a3b8b7f3269b810621d9be0030937180de2ef794720345b759ffe65fd18f2db189ea2bfa89bb99bbf4ea385ecce67d8fef654d'
+sha512sums=('b53b9ccdc6a2170ac04092c64ed023fc5c61d9cb7d819e3e92d471a220d7e3d48c3c2df7fb67cad6a524068cfa334a03412bfb5955aa8117a37e5a8cf3695439'
             'd88ccb3dc7bd6c8de6b4b34ae3e815c57a59fa3c5a781d56a699fbd36f5aed3b92e1828ef6e73b6c22bbabedbd32e9b640f648b97a934facb16f9a28d1275d70'
             'd9c16c83f1f2aca760f70c5652f2c18442d32ade766ed67033e861b80d76df5f3147b55b1dbd1024d00b0bfdd8b37e0a6e0dab6eb8ab33b58c074b645a562a2e'
             '6acdbe76975b2047f2f8124948e4cae9b372f30574556e867f3d30fbf771db2e48ad6453e802bb03988f61b64815484deaa408ac373d9bc61963c41e5768b712'
