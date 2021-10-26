@@ -2,7 +2,7 @@
 
 pkgname=python-pywhat
 _pkgname=pyWhat
-pkgver=4.3.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Identify emails, IP addresses and more"
 arch=("any")
@@ -21,7 +21,7 @@ optdepends=(
 url="https://github.com/bee-san/pyWhat"
 license=("MIT")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("26970a4523e2fad2ac42cf419ca15e5040f9fa3beb28553a1b1257db713b8b77")
+sha256sums=("52f74c4cb48cea03aaed25400bb4ef0a570e12f20869d45354be15afe88703ce")
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
