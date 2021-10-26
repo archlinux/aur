@@ -1,0 +1,10 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.patch
+!*.service
+!*.service.user
+!*.conf.d
+!*.default
