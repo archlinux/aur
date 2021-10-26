@@ -23,7 +23,7 @@ set  -u
 
 
 mksrcinfo
-makepkg -sc
+makepkg -sic
 rm *-any.pkg.tar.zst
 git add --all 
 if [ $# -eq  0 ] ; then
