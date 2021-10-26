@@ -2,13 +2,13 @@
 
 pkgname=xmobar-dynamic
 pkgver=0.39
-pkgrel=16
-pkgdesc='Minimalistic Text Based Status Bar. Compiled using -dynamic flag.'
+pkgrel=18
+pkgdesc='Minimalistic Text Based Status Bar'
 url='https://hackage.haskell.org/package/xmobar'
 license=('BSD')
 arch=('x86_64')
 provides=('xmobar')
-conflicts=('xmobar')
+conflicts=('xmobar' 'xmobar-git')
 depends=('libxft' 'libxinerama' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
          'haskell-x11-xft' 'haskell-utf8-string' 'haskell-network-uri'
          'haskell-hinotify' 'haskell-parsec-numbers'
@@ -69,3 +69,4 @@ package() {
 }
 
 # vim: ts=2 sw=2 et:
+
