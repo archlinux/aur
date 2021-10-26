@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -euo pipefail
+#set -x
+#set -x 将在命令执行前打印出命令 方便调试
+
+set -e
+# -e 遇到错误将停止 
+set -o pipefail
+# pipefail set -e有一个例外情况，就是不适用于管道命令。所谓管道命令，就是多个子命令通过管道运算符（|）组合成为一个大的命令。Bash 会把最后一个子命令的返回值，作为整个命令的返回值。也就是说，只要最后一个子命令不失败，管道命令总是会执行成功，因此它后面命令依然会执行，set -e就失效了。
+
+set  -u
+# -u 遇到不存在的变量 将报错
+
+## 写法一
+#set -euxo pipefail
+## 写法二
+#set -eux
+#set -o pipefail
+#这两种写法建议放在所有 Bash 脚本的头部。另一种办法是在执行 Bash 脚本的时候，从命令行传入这些参数。
+#$ bash -euxo pipefail script.sh
+
+
+echo $*  >> .gitignore
+git rm --cached -r $* 
+
+
+
+

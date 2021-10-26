@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=25
+pkgrel=26
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -30,6 +30,8 @@ pppoecheck
 pppoecheck.service
 pppoecheck.timer
 check-file-exists
+savegitignore
+saveaur
 )
 sha512sums=(
 
@@ -42,6 +44,8 @@ a0603b1a51571f5308e228ae02fdfa30bfa0c8d989f137aeee223b585ff8a6ffd5cc738de92494a8
 b0cddef03746a5b8c2ca6be899a7e63fc25e2bbbd743f4a3566a4b4e1dd71419b3010f0dd16b80b5d943fab2b37ef1dae8819006ed916cba3a51960deb2a7696  
 29fc3a014cf6fd4babf1c21ffcffd2a7c891a5dc4e6399788f9994a2a26496bd40b78579df314aaedc4918e78c2e1bb097a93fd358afa69e6f322b080525353a  
 5b0340e455bdd1dcb960e6d5d57e2194c6a60e21da70bf9ed37bd22662866eb918ac5a8801ab5020b596261301d267800dfd3387abab2f69bb650c0f49362592
+966811ad453d6db13a51c294504e8ed0c6a0ffe2cdff756cfa88fb22b2998de8228cd2265c2eaab8ae01116531412831d06b1b9bf54af4b8b09bb065e3771816
+605b630b286f702c05bd14a42d2a2f17516cb04275f8caeb81fab15ea35210c45c9276c62823882e0fe5d40026e6b59597499651ed22ba7e4777809e2cd549d0
 
 )
 
@@ -82,6 +86,8 @@ install  -Dm644  pppoecheck.service  "$pkgdir/usr/lib/systemd/system/pppoecheck.
 install  -Dm644  pppoecheck.timer  "$pkgdir/usr/lib/systemd/system/pppoecheck.timer"
 install  -Dm755  pppoecheck  "$pkgdir/usr/lib/$pkgname/pppoecheck"
 install  -Dm755 check-file-exists  "$pkgdir/usr/bin/check-file-exists"
+install  -Dm755 savegitignore  "$pkgdir/usr/bin/savegitignore"
+install  -Dm755 saveaur  "$pkgdir/usr/bin/saveaur"
 
 }
 
