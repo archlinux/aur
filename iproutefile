@@ -47,7 +47,7 @@ function addip
 if [ $err -eq 0 ]
 then  
 	#  echo  " route add -net  $ip gw 172.25.1.5 "
-	   ip -4 route add   $ip  via  172.25.1.5 2>/dev/null
+	   ip -4 route add   $ip  dev $devname  2>/dev/null
 #	  sudo route add -net  $ip gw 172.25.1.5
    err=$?
     if [ $err -eq 2 ]
@@ -65,7 +65,7 @@ then
    fi
 else
 	#echo  " ip -6 route add   $ip  via  fc00::5 "
-  ip -6 route add   $ip  via  fc00::5   2>/dev/null
+  ip -6 route add   $ip  dev $devname  2>/dev/null
    err=$?
     if [ $err -eq 2 ]
     	 then
@@ -91,28 +91,14 @@ else
 
 set -e
 
-echo Google-ip
- filename="/home/li/GitRepo/cmd/gfw/google-ip"
+
+ filename=$1
+ devname=$2
   for line in $(<$filename); 
   do  
   addip $line
  done
   
-echo Github-ip
- filename="/home/li/GitRepo/cmd/gfw/github-ip"
-  for line in $(<$filename); 
-  do  
- addip $line
- done
-  
-echo gfwlist-ip
-
-
- filename="/home/li/GitRepo/cmd/gfw/gfwlist-ip"
-  for line in $(<$filename); 
-  do  
- addip $line
- done
   
 
 

@@ -20,6 +20,7 @@ set  -u
 #set -o pipefail
 #这两种写法建议放在所有 Bash 脚本的头部。另一种办法是在执行 Bash 脚本的时候，从命令行传入这些参数。
 #$ bash -euxo pipefail script.sh
+dev=wg
 gfwPathName=/var/tmp/gfwlist-route/927fe1ad-ade4-485a-ad71-7acb1dc5e1ac/
 if [ ! -d $gfwPathName ]; then
 	echo mkdir $gfwPathName
@@ -45,6 +46,7 @@ then
 	mv $gfwPathName/google-ip-tmp $gfwPathName/google-ip
         start=1
 	echo update ggoogle-ip
+	iproutefile $gfwPathName/google-ip $dev
 fi
 
 compare-file-by-sha512 $gfwPathName/github-ip-tmp $gfwPathName/github-ip
@@ -54,6 +56,7 @@ then
 	mv $gfwPathName/github-ip-tmp $gfwPathName/github-ip
 	echo update github-ip
         start=1
+	iproutefile $gfwPathName/github-ip $dev
 fi
 
 compare-file-by-sha512 $gfwPathName/gfwlist-ip-tmp $gfwPathName/gfwlist-ip
@@ -63,6 +66,7 @@ then
 	echo update gfwlist-ip
 	mv $gfwPathName/gfwlist-ip-tmp $gfwPathName/gfwlist-ip
 	start=1
+	iproutefile $gfwPathName/gfwlist-ip $dev
 fi
 
 
