@@ -1,7 +1,7 @@
 pkgbase = gwenhywfar-git
 	pkgdesc = OS abstraction functions for various projects
-	pkgver = 4.99.17rc1+3+g31fbb242
-	pkgrel = 2
+	pkgver = 5.7.0beta+137+g23e6944f
+	pkgrel = 1
 	url = https://www.aquamaniac.de/rdm/projects/gwenhywfar
 	arch = x86_64
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = gwenhywfar-git
 	sha256sums = SKIP
 
 pkgname = gwenhywfar-git
-

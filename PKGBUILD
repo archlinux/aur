@@ -1,8 +1,9 @@
-# Maintainer: Sebastian J. Bronner <waschtl@sbronner.com>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Sebastian J. Bronner <waschtl@sbronner.com>
 
 pkgname=gwenhywfar-git
-pkgver=4.99.17rc1+3+g31fbb242
-pkgrel=2
+pkgver=5.7.0beta+137+g23e6944f
+pkgrel=1
 pkgdesc="OS abstraction functions for various projects"
 arch=(x86_64 i686)
 url=https://www.aquamaniac.de/rdm/projects/gwenhywfar
@@ -25,11 +26,13 @@ prepare() {
 }
 
 build() {
-  $_sourcedir/configure --prefix=/usr --sysconfdir=/etc --enable-system-certs --with-guis="gtk3 qt5"
+  cd $_sourcedir
+  ./configure --prefix=/usr --sysconfdir=/etc --enable-system-certs --with-guis="gtk3 qt5"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
+  cd $_sourcedir
   make DESTDIR=$pkgdir install
 }
