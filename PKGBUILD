@@ -4,7 +4,7 @@
 # Package Information
 _crate="cargo-duplicates"
 pkgname="$_crate"
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Cargo subcommand for displaying when different versions of a same dependency are pulled in'
 license=('MIT')
@@ -17,7 +17,7 @@ url="https://crates.io/crates/$_crate"
 depends=('gcc-libs' 'curl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('9c3e9fb817f8734359c79423fd6b56bd8be4c980b854dd5bf58737e1810043543620bdf6bc56109d721ac2b433c00f0e798821f61c0509629d19ff54b7960f57')
+sha512sums=('c7374faebdb8edef5688c10572adda76b2d1d40e3de29ac390fce9660552a656675ad5ea326c36d298351194fa29862d8cb68d59c82d9d30fa74a1fab59c0ea8')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
