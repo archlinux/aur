@@ -1,0 +1,14 @@
+pkgbase = podbit
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/ethanv2/podbit
+	arch = any
+	license = GPL3
+	makedepends = go
+	depends = mpv
+	depends = ncurses
+	optdepends = newsboat: enqueue podcasts from RSS
+	source = podbit-1.1.1.tgz::https://github.com/ethanv2/podbit/archive/v1.1.1.tar.gz
+	md5sums = cad26ee15316a3f4867702d1b9fa5d54
+
+pkgname = podbit
