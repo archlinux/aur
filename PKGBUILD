@@ -1,4 +1,5 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
+
 _pluginname=replay-source
 pkgname=obs-$_pluginname
 pkgver=1.6.9
@@ -11,7 +12,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git")
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-replay-source#commit=2af7f09de62b90684cde2d0b11019bb71810142b"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=2af7f09de62b90684cde2d0b11019bb71810142b"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
@@ -23,8 +24,8 @@ prepare() {
   rm -rf fakeroot
 
   cd "obs-studio-$_obsver"/plugins
-  cp -r "$srcdir/$pkgname-$pkgver" .
-  echo "add_subdirectory($pkgname-$pkgver)" | tee -a CMakeLists.txt >/dev/null
+  cp -r "$srcdir/$pkgname" .
+  echo "add_subdirectory($pkgname)" | tee -a CMakeLists.txt >/dev/null
 }
 
 # Need to compile plugin in OBS compilation process
