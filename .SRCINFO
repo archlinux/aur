@@ -1,0 +1,12 @@
+pkgbase = vscode-codicons-git
+	pkgdesc = The icon font for Visual Studio Code
+	pkgver = 0.0.25.r14.aeba110
+	pkgrel = 1
+	url = https://microsoft.github.io/vscode-codicons/dist/codicon.html
+	arch = any
+	license = custom:Creative Commons Attribution 4.0 International Public License
+	makedepends = git
+	source = git+https://github.com/microsoft/vscode-codicons.git
+	md5sums = SKIP
+
+pkgname = vscode-codicons-git
