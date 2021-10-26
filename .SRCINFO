@@ -1,0 +1,15 @@
+pkgbase = im-bin
+	pkgdesc = A toolkit for image representation, storage, capture and processing. Pre-compiled.
+	pkgver = 3.15
+	pkgrel = 1
+	epoch = 0
+	url = https://www.tecgraf.puc-rio.br/im/
+	arch = x86_64
+	license = MIT
+	conflicts = iup
+	conflicts = libcd
+	options = !strip
+	source = https://downloads.sourceforge.net/project/imtoolkit/3.15/Linux%20Libraries/im-3.15_Linux54_64_lib.tar.gz
+	sha256sums = CEE034DB27D2D42CE66CAB8B74903D389657316931F7DA390E6DE5477AE2C008
+
+pkgname = im-bin
