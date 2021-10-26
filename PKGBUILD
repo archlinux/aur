@@ -1,7 +1,7 @@
 # Maintainer: suliman altassan <suliman.p2019@gmail.com>
 
 pkgname=alusus
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=4
 pkgdesc="ALUSUS PROGRAMMING LANGUAGE - لغة الأسس البرمجية"
 arch=('x86_64')
