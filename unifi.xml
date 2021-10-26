@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service version="v1.0">
+  <short>unifi</short>
+  <description>unifi Service</description>
+  <port port="59147" protocol="udp"/>
+  <port port="10001" protocol="udp"/>
+  <port port="33757" protocol="udp"/>
+  <port port="3478" protocol="udp"/>
+  <port port="52786" protocol="udp"/>
+  <port port="53301" protocol="udp"/>
+  <port port="5514" protocol="udp"/>
+  <port port="56434" protocol="udp"/>
+  <port port="1900" protocol="udp"/>
+  <port port="5353" protocol="udp"/>
+  <port port="8443" protocol="tcp"/>
+  <port port="6789" protocol="tcp"/>
+  <port port="8843" protocol="tcp"/>
+  <port port="8080" protocol="tcp"/>
+  <port port="8880" protocol="tcp"/>
+  <port port="33237" protocol="udp"/>
+  <port port="33527" protocol="udp"/>
+  <port port="52767" protocol="udp"/>
+</service>

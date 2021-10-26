@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service version="v1.0">
+  <short>广播UDP</short>
+  <description>允许广播地址的UDP报文</description>
+  <protocol value="udp"/>
+  <destination ipv4="255.255.255.255"/>
+</service>

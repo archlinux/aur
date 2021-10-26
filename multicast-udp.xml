@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service version="v1.0">
+  <short>多播UDP</short>
+  <description>允许所有多播地址的UDP报文</description>
+  <protocol value="udp"/>
+  <destination ipv4="224.0.0.0/4" ipv6="ff00::/8"/>
+</service>
