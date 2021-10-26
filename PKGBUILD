@@ -1,4 +1,4 @@
-# Maintainer: Kridsada Thanabulpong <sirn@ogsite.net>
+# Maintainer: Ada Joule <ada dot fulmina at gmail dot com>
 pkgname="ibus-libthai"
 pkgver="0.1.5"
 pkgrel=1
