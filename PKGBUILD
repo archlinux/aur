@@ -11,5 +11,5 @@ source=("https://github.com/up9inc/mizu/releases/download/${pkgver}/mizu_linux_a
 sha256sums=('d9aa21a16f06487ec9c2607e1bdb26f5249e11c9c740cc0c9a43bb6f8d3abb60')
 
 package() {
-	install -D -m755 mizu_linux_amd64 -t "${pkgdir}/usr/bin"
+	install -D -m755 mizu_linux_amd64 -T "${pkgdir}/usr/bin/mizu"
 }
