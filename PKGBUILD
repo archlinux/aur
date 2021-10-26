@@ -9,14 +9,19 @@ pkgdesc='Metapackage to install modules of DUNE Numerics.'
 arch=(any)
 license=(none)
 url='https://dune-project.org'
-depends=(dune-common
-  dune-istl
+depends=(dune-alugrid
+  dune-common
+  dune-foamgrid
+  dune-functions
   dune-geometry
-  dune-localfunctions
   dune-grid
+  dune-grid-glue
+  dune-istl
+  dune-localfunctions
+  dune-logging
+  dune-multidomaingrid
+  dune-pdelab
+  dune-spgrid
   dune-typetree
   dune-uggrid
-  dune-functions
-  dune-logging
-  dune-alugrid
 )
