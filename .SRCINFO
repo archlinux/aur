@@ -7,6 +7,7 @@ pkgbase = hc-utils
 	license = MIT
 	depends = iproute2
 	depends = curl
+	depends = dhclient
 	source = https://packages.hetzner.com/hcloud/deb/hc-utils_0.0.4-1_all.deb
 	source = LICENSE
 	sha256sums = 151e780568cc23970e5f26f24b82dea383a5116197fd91cae9254ec2b23918a7
