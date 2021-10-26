@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-mmal
 	pkgdesc = ffmpeg built with MMAL hardware acceleration support for Raspberry Pi
 	pkgver = 4.4
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 2
 	url = https://ffmpeg.org/
 	arch = armv6h
