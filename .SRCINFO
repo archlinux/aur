@@ -1,7 +1,7 @@
 pkgbase = gfwlist-route
 	pkgdesc = gwflist ip for china . and add it to route
 	pkgver = 1.0.0
-	pkgrel = 6
+	pkgrel = 7
 	arch = any
 	groups = lcj
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = gfwlist-route
 	source = route-ar
 	source = route-cn
 	source = route-cr
-	sha512sums = b53b9ccdc6a2170ac04092c64ed023fc5c61d9cb7d819e3e92d471a220d7e3d48c3c2df7fb67cad6a524068cfa334a03412bfb5955aa8117a37e5a8cf3695439
+	sha512sums = ea06f58ac8ea77eeb53fecf17ed5d5f11f1bd811028455603b12152602aae7f08363e62a7fb5871acc7ddfa928c6a76205904fb4623668981ce9da0d8b0540d8
 	sha512sums = d88ccb3dc7bd6c8de6b4b34ae3e815c57a59fa3c5a781d56a699fbd36f5aed3b92e1828ef6e73b6c22bbabedbd32e9b640f648b97a934facb16f9a28d1275d70
 	sha512sums = d9c16c83f1f2aca760f70c5652f2c18442d32ade766ed67033e861b80d76df5f3147b55b1dbd1024d00b0bfdd8b37e0a6e0dab6eb8ab33b58c074b645a562a2e
 	sha512sums = 6acdbe76975b2047f2f8124948e4cae9b372f30574556e867f3d30fbf771db2e48ad6453e802bb03988f61b64815484deaa408ac373d9bc61963c41e5768b712

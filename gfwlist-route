@@ -81,10 +81,9 @@ then
 	systemctl restart dnsmasq
 fi
 
-if [ $start==1 ]
-then
-      echo restart wg-quick@wg
-      systemctl restart wg-quick@wg
-fi
-echo wg restart OK
+#if [ $start==1 ]
+#then
+#      echo restart wg-quick@wg
+#      systemctl restart wg-quick@wg
+#fi
 
