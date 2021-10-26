@@ -10,8 +10,12 @@ provides=("mmsd" "mmsd-tng")
 conflicts=("mmsd" "mmsd-tng")
 depends=("c-ares")
 makedepends=("git" "meson")
-source=("$pkgname::git+https://gitlab.com/kop316/mmsd.git")
-sha256sums=("SKIP")
+source=("$pkgname::git+https://gitlab.com/kop316/mmsd.git"
+        "https://salsa.debian.org/DebianOnMobile-team/mmsd-tng/-/raw/debian/latest/debian/mmsd-tng.user.service"
+)
+sha256sums=("SKIP"
+            "SKIP"
+)
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -33,4 +37,7 @@ check() {
 package() {
 	cd "$srcdir/$pkgname"
 	DESTDIR="$pkgdir" meson install -C build
+	# Not sure if this is the "right way" to do this but whatever
+    mkdir -p $pkgdir/usr/lib/systemd/user
+    cp $srcdir/mmsd-tng.user.service $pkgdir/usr/lib/systemd/user/
 }
