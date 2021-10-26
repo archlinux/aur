@@ -2,6 +2,7 @@
 Type=Application
 Name=WhatPulse
 GenericName=Usage Statistics Tracker & Sharer
+Comment=Track & share your computer usage
 Exec=whatpulse
 Icon=whatpulse
 StartupNotify=true

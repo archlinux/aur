@@ -1,47 +1,67 @@
 # Maintainer: Thor K. H. <thor alfakrøll roht dott no>
+# Co-Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # Contributor: Tim Besard <tim $dot$ besard $at$ gmail $dot$ com>
 # Contributor: Jelle van der Waa <jellevdwaa @ gmail.com>
 # Contributor: Pieter Kokx <pieter $at$ kokx $dot$ .nl>
+# from: snap beta
+# what: whatpulse
+_snap=iHVATX2faqAJciG5YGNM241W8fE8UvsF
 
 pkgname=whatpulse
-pkgver=2.8.4
+pkgver=3.5.10
 pkgrel=1
+
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('x86_64')
 url=http://www.whatpulse.org
-# I have yet to find the actual licence, but alternatively: it's basically freeware
+
 license=(custom:whatpulse_tos)
-changelog="$pkgname.changelog"
-install="$pkgname.install"
-depends=(qt4)
+depends=(
+	qt5-svg
+	hicolor-icon-theme
+)
+makedepends=(
+	squashfs-tools
+	imagemagick
+)
 optdepends=(
     'libpcap: for capturing network statistics'
 )
-source=('whatpulse.desktop')
-source_x86_64=("http://static.whatpulse.org/files/whatpulse-linux-archlinux-64bit-$pkgver.tar.gz")
-sha256sums=('aba7e6b28ccebdb6115245dae1a7ca8e88afa2ecb1619037b66f65090a284363')
-sha256sums_x86_64=('763d603962db4a6e78d53ebbc7a2142419119ab3df40e28793ea7937260131eb')
+source=(
+	'whatpulse.desktop'
+	'assets.zip::https://whatpulse.org/images/assets/whatpulse-assets-all.zip'
+	LICENSE
+)
+source_x86_64=("${pkgname%*-bin}-$pkgver.sfs::https://api.snapcraft.io/api/v1/snaps/download/${_snap}_${pkgver##*.}.snap")
+sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
+            'bbbc3e1e63e8300f247897c24487ecad6f313c1972417604bf8d991ca4408b03'
+            'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
+sha256sums_x86_64=('ffb8dae8045f6af1ab059e12372130f85455607461d25b25cb2df69366a18623')
 
-build() {
-	# Extract the tiny, tiny bit of license/usage information that exists
-	# in this piece of software distribution.
-	sed -n '/By installing/,/ any way./p' README.txt > LICENSE
+prepare() {
+	rm -rf sfs
+	unsquashfs -q -i -n -d sfs \
+		"${pkgname%*-bin}-$pkgver.sfs" \
+		usr/bin/whatpulse
 }
 
 package() {
-    cd $srcdir/
-    # Install the binary
-    mkdir -p ${pkgdir}/usr/bin
-    install -m0755 whatpulse ${pkgdir}/usr/bin/
-    # Install the freedesktop shortcut
-    mkdir -p ${pkgdir}/usr/share/applications
-    install -m0644 whatpulse.desktop ${pkgdir}/usr/share/applications/
-    # Install the input rules 
-    mkdir -p ${pkgdir}/etc/udev/rules.d/
-    cat >${pkgdir}/etc/udev/rules.d/99-whatpulse-input.rules <<__EOF__
-KERNEL=="event*", NAME="input/%k", MODE="640", GROUP="input"
-__EOF__
+    install -Dm 755 sfs/usr/bin/whatpulse   "${pkgdir}/usr/bin/whatpulse"
+    install -Dm 644 whatpulse.desktop       "${pkgdir}/usr/share/applications/whatpulse.desktop"
+	install -Dm 644 LICENSE                 "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 
-	 # Install the license
-	 install -Dm0755 LICENSE ${pkgdir}/usr/share/licenses/whatpulse/LICENSE
+    # Set capabilities so that whatpulse can monitor network traffic
+    setcap    cap_net_raw,cap_net_admin=eip "${pkgdir}/usr/bin/whatpulse"
+
+	# Generate and install icons
+	for size in 16 20 22 24 28 32 36 44 48 64 72 96 128 150 192 256 310 384 512 1024
+	do
+		install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+		convert \
+				+gravity -crop 615x680+0+0 +repage \
+				-resize "${size}x${size}" -background none \
+				-gravity center -extent "${size}x${size}" \
+				whatpulse-logo-color.png \
+				"${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/whatpulse.png"
+	done
 }
