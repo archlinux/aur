@@ -23,7 +23,6 @@ depends=(
     'cairo'
     'alsa-lib'
     'nss'
-    'gcc-libs'
     'libnotify'
     'libxss'
     'glibc>=2.28-4'
@@ -39,13 +38,10 @@ makedepends=(
     'yarn'
     'jq'
     'libxdmcp'
-    'bash'
     'git'
     'git-lfs'
     'patch'
     'python'
-    'make'
-    'gcc'
     'pkg-config'
 )
 source=(
@@ -59,10 +55,6 @@ sha256sums=(
     '63eccd0977b9dc783a11ff401940f48bbabd0d098b9563b7ef26402495dc9b88'
 )
 provides=('codium')
-conflicts=(
-    'vscodium-git'
-    'vscodium-bin'
-)
 
 ###############################################################################
 
