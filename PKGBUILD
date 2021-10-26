@@ -2,9 +2,9 @@
 # Contributor: FD <fxd@seznam.cz>
 
 pkgname=nomachine-enterprise-client
-pkgver=8.12.12
-_x64_rel=4
-_i686_rel=4
+pkgver=8.13.1
+_x64_rel=1
+_i686_rel=1
 pkgrel=1
 pkgdesc="Remote desktop application, client only"
 groups=('network')
@@ -23,8 +23,8 @@ source_i686=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgna
 sha256sums=('05cd2ff2a6b613f0502d0abbf8f063b6fbd4f06f6a4ff6ba55756fabe11afd8e'
             '81489fe47c19685bc06cc3a0bc35ade4915a36d80b550608e952c675f1c0e3d8'
             'f6c071ad1d4b167fd3395536baabf954e6bd8d567e734bb5a58eacaaab15e9a1')
-sha256sums_x86_64=('820f25325a3a85a0eefcb78785254165f8cd09823b4b42b1fd20e789b98bec5f')
-sha256sums_i686=('c677cf421a09440ca4431af5cb8914f88e8111a34b86b253917a824a9557d64b')
+sha256sums_x86_64=('a44f8cbfc77de8c4060e78c51c8313c4d44cbc8af0a124d7c88fefcd5a555af2')
+sha256sums_i686=('e7497af13e8b75b767af77a684ab365c2ef9fc6630a31d5c7d58b537f06a5b58')
 
 
 
