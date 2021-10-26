@@ -1,4 +1,5 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
+
 _pluginname=scrab
 pkgname=obs-$_pluginname
 pkgver=1.1
