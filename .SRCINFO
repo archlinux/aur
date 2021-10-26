@@ -1,11 +1,11 @@
 pkgbase = vct
 	pkgdesc = a vocabulary trainer written in rust
-	pkgver = 1.3.8
+	pkgver = 1.3.9
 	pkgrel = 1
 	arch = any
 	license = MIT
 	makedepends = rustup
-	source = https://gitlab.sokoll.com/moritz/vct/-/archive/32311f9f49ea547bbd478fff4ec90e93d213f609/vct-32311f9f49ea547bbd478fff4ec90e93d213f609.tar.gz
-	sha256sums = 4f3c4fe39901545f799f4c6cb3d3baaabdd8e3cc25da68e3a6d6b1cca4cf6694
+	source = https://gitlab.sokoll.com/moritz/vct/-/archive/3fa206001abfb103405c272434d4a30b48760bfe/vct-3fa206001abfb103405c272434d4a30b48760bfe.tar.gz
+	sha256sums = a7a6780ef8b1bceac6656edf686096fe90b5cf746f44fc928486f5ef81151fdc
 
 pkgname = vct
