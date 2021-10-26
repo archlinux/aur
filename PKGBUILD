@@ -1,18 +1,18 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-# Decide whether to install pandoc binary
+# Decide whether to include pandoc binary into zettlr package
 # Default to false, the application will use Arch's pandoc
 _bundle_pandoc=false
 
 pkgname=zettlr
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
 license=('GPL' 'custom') # Noted that the icon and name are copyrighted
-depends=(electron)
+depends=(electron 'nodejs>=14.0.0')
 makedepends=(git yarn)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
@@ -27,15 +27,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Zettlr/Zettlr/archive/v
         "locales-${pkgver}-${pkgrel}.zip::https://github.com/citation-style-language/locales/archive/${_csl_locale_commit}.zip"
         "chicago-author-date-${pkgver}-${pkgrel}.csl::https://github.com/citation-style-language/styles/raw/${_csl_style_commit}/chicago-author-date.csl")
 sha256sums=('281747d7f123164f94f5878fb98ae48616a902e5be2cfdea2bfe3d859253463d'
-            '97d1e620226324a1b7e5571ca800286a62f17e3729b08383918be81b64530287'
+            'a0fe981dade0ce52be190d8e8a2fd7f6c05c32c7d44d96c63f6f494460d483ef'
             '9b3e987aefb10da8b2baadd06e751e978ea23dc7b6297802cbda0ec6806744e2'
             '1455e57b314fd13ba155f4ab93f061e3e6393c13cd0f16380adb9d73614f7930')
 if ${_bundle_pandoc} ; then
-    # pandoc binary
+    # pandoc binary source
     source+=("https://github.com/jgm/pandoc/releases/download/${_pandoc_binary_ver}/pandoc-${_pandoc_binary_ver}-linux-amd64.tar.gz")
     sha256sums+=('1a0548b15255b1c11722f3d4e12fc7a652edf8c9a329a8458f1e765517aec1be')
-else
-    depends+=(pandoc)
 fi
 
 prepare() {
@@ -51,9 +49,11 @@ prepare() {
 
 if ${_bundle_pandoc} ; then
     # Put pandoc binary in place
-    cp "${srcdir}/pandoc-${_pandoc_binary_ver}/bin/pandoc" resources/pandoc
+    cp "${srcdir}/pandoc-${_pandoc_binary_ver}/bin/pandoc" resources/pandoc-linux-x64
+    ln -sf pandoc-linux-x64 resources/pandoc
 else
-    # Fake pandoc
+    # Using Arch's pandoc, need to fake a link
+    ln -sf /usr/bin/pandoc resources/pandoc-linux-x64
     ln -sf /usr/bin/pandoc resources/pandoc
 fi
 }
@@ -74,12 +74,14 @@ build() {
     # Remove references to $srcdir
     find renderer -type f -name 'index.js.map' -exec sed -i "s,${srcdir}/Zettlr,/usr/lib/${pkgname},g" {} +
 
-    # Remove resources for other OSs
+    # Remove resources for other OSs and leftovers
     cd "${srcdir}/Zettlr-${pkgver}/resources"
     rm -rfv NSIS
     rm -rfv icons/dmg
     rm -rfv icons/*icns
     rm -rfv icons/*.ico
+    rm -rfv screenshots
+    rm -r .gitignore
 
     # Remove fonts
     cd "${srcdir}/Zettlr-${pkgver}/static"

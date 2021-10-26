@@ -1,29 +1,34 @@
-From f4eba18c684a952f916816b7a005744a4fb1418f Mon Sep 17 00:00:00 2001
+From 134b69946ba94932aed157a724202fab10eeb585 Mon Sep 17 00:00:00 2001
 From: BrLi <brli@chakralinux.org>
-Date: Mon, 26 Apr 2021 14:38:31 +0800
-Subject: [PATCH 2/2] Do-not-download-pandoc
+Date: Tue, 26 Oct 2021 17:01:05 +0800
+Subject: [PATCH] Do not download pandoc
 
+- The downloading of extra binary from internet during building is not desired
+- To ease possible error, we deal the file installation and faking from
+  PKGBUILD instead of upstream build system.
 ---
- forge.config.js | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ forge.config.js | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
 diff --git a/forge.config.js b/forge.config.js
-index 4cfe7b2a..8010d8e6 100644
+index 232aca3d..a57a5826 100644
 --- a/forge.config.js
 +++ b/forge.config.js
-@@ -102,10 +102,10 @@ module.exports = {
+@@ -82,12 +82,9 @@ module.exports = {
          try {
            await fs.lstat(path.join(__dirname, `./resources/pandoc-${platform}-${arch}`))
          } catch (err) {
 -          await downloadPandoc(platform, arch)
 +          console.log('\nSkip pandoc executable download on Arch')
          }
- 
+-
 -        await fs.copyFile(path.join(__dirname, `./resources/pandoc-${platform}-${arch}`), path.join(__dirname, './resources/pandoc'))
+-
+-        forgeConfig.packagerConfig.extraResource.push(path.join(__dirname, './resources/pandoc'))
 +        console.log('\nDo not copy pandoc executable, is taking cared of via PKGBUILD')
- 
-         forgeConfig.packagerConfig.extraResource.push('./resources/pandoc')
        } else {
+         // If someone is building this on an unsupported platform, drop a warning.
+         console.log(`\nBuilding for an unsupported platform/arch-combination ${targetPlatform}/${targetArch} - not bundling Pandoc.`)
 -- 
-2.31.1
+2.33.1
 
