@@ -1,0 +1,7 @@
+--- src/tilp-git/tilp/trunk/src/tilp_paths.h.o	2021-10-26 18:30:11.123687827 +0200
++++ src/tilp-git/tilp/trunk/src/tilp_paths.h	2021-10-26 18:31:23.503690390 +0200
+@@ -32,3 +32,3 @@
+ #if defined(__LINUX__) || defined(__BSD__) || defined(__MACOSX__)
+-# define INI_FILE  "/.tilp"
++# define INI_FILE  "/.config/tilp/config"
+ #elif defined(__WIN32__)
