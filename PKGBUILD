@@ -5,7 +5,7 @@ pkgname=podbit
 pkgver=1.1.1
 pkgrel=1
 
-pkgdesk='Podboat Improved: A podcast client for your terminal'
+pkgdesc='Podboat Improved: A podcast client for your terminal'
 arch=('any')
 url="https://github.com/ethanv2/$pkgname"
 license=('GPL3')
