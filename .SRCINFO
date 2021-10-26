@@ -1,6 +1,6 @@
 pkgbase = python-contextily
 	pkgdesc = Context geo-tiles in Python
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/geopandas/contextily
 	arch = any
@@ -11,9 +11,10 @@ pkgbase = python-contextily
 	depends = python-mercantile
 	depends = python-pillow
 	depends = python-rasterio
+	depends = python-requests
 	depends = python-joblib
-	source = https://files.pythonhosted.org/packages/source/c/contextily/contextily-1.1.0.tar.gz
-	sha256sums = 3324cba6f9e49c70e8841957d0d8907275cd0baf001b8d1feda4868c53a9557b
+	depends = python-xyzservices
+	source = https://files.pythonhosted.org/packages/source/c/contextily/contextily-1.2.0.tar.gz
+	b2sums = d89bccc391d3ec0b3426b2ec3ad4560143a1284c04eb9f705085c59f1178b388dc50473dcd6ecb15e09164a06dabd79b99e02be4659e5618438ae4b35925d3be
 
 pkgname = python-contextily
-
