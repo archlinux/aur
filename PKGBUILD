@@ -2,8 +2,8 @@
 
 _name=language_tool_python
 pkgname=python-languagetool-git
-pkgver=2.5.1
-pkgrel=4
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="A free grammar checker for Python"
 url="https://pypi.org/project/language-tool-python"
 depends=('python' 'python-tqdm' 'python-requests')
