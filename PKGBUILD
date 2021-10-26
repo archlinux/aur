@@ -1,11 +1,12 @@
+# Maintainer: tas <tasgon_@out/look.com>
 # Maintainer: QuantMint <qua/ntmint@/protonm/ail.com>
 # Contributor: Cristian Porras <porrascristian@gmail.com>
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 _pkgname=godot
 pkgname=${_pkgname}-git
-pkgver=4.0.dev
-pkgrel=3
+pkgver=4.0.r1.64faa37
+pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
 license=('MIT')
