@@ -1,7 +1,7 @@
 pkgbase = firewalld-service
 	pkgdesc = All tools for Lcj
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	groups = lcj
 	license = GPL3

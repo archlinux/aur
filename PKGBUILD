@@ -2,7 +2,7 @@
 
 pkgname=firewalld-service
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -58,10 +58,10 @@ sha512sums=('9dcac73926206ae46b058f5873894d64fc25f260ee63d7b8348ecd7deeb3fe9878b
 
 package() {
 # make -C build DESTDIR="$pkgdir" install
-install  -Dm644  broadcast-udp.xml  "$pkgdir/etc/firewalld/services/broadcast-udp.xml"
-install  -Dm644  multicast-igmp.xml  "$pkgdir/etc/firewalld/services/multicast-igmp.xml"
-install  -Dm644  multicast-udp.xml  "$pkgdir/etc/firewalld/services/multicast-udp.xml"
-install  -Dm644  unifi.xml  "$pkgdir/etc/firewalld/services/unifi.xml"
+install  -Dm644  broadcast-udp.xml  "$pkgdir/usr/lib/firewalld/services/broadcast-udp.xml"
+install  -Dm644  multicast-igmp.xml  "$pkgdir/usr/lib/firewalld/services/multicast-igmp.xml"
+install  -Dm644  multicast-udp.xml  "$pkgdir/usr/lib/firewalld/services/multicast-udp.xml"
+install  -Dm644  unifi.xml  "$pkgdir/usr/lib/firewalld/services/unifi.xml"
 
 }
 
