@@ -1,6 +1,6 @@
 pkgbase = nomachine-enterprise-client
 	pkgdesc = Remote desktop application, client only
-	pkgver = 8.3.1
+	pkgver = 8.4.2
 	pkgrel = 1
 	url = http://www.nomachine.com
 	install = nomachine-client.install
@@ -22,9 +22,9 @@ pkgbase = nomachine-enterprise-client
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = http://download.nomachine.com/download/8.3/Linux/nomachine-enterprise-client_8.3.1_1_x86_64.tar.gz
-	sha256sums_x86_64 = 784c92b28643eba2e22e8c8235765c43bff33755240c58743d835761f144c1cb
-	source_i686 = http://download.nomachine.com/download/8.3/Linux/nomachine-enterprise-client_8.3.1_1_i686.tar.gz
-	sha256sums_i686 = b8f89d87d04b9153136a7564391878dcd3b0ad52f884b819cf55cea80993bd71
+	source_x86_64 = http://download.nomachine.com/download/8.4/Linux/nomachine-enterprise-client_8.4.2_2_x86_64.tar.gz
+	sha256sums_x86_64 = 2871a6f9531bf1691b5b2b73a942083b8304e9d514b6dfffad0f39c351eca19a
+	source_i686 = http://download.nomachine.com/download/8.4/Linux/nomachine-enterprise-client_8.4.2_1_i686.tar.gz
+	sha256sums_i686 = c8531a905e370dd311e787ae9eb2125dab77688b494052cbbb4a11343a0b4c8b
 
 pkgname = nomachine-enterprise-client
