@@ -1,6 +1,6 @@
 pkgbase = python2-sphinxcontrib-serializinghtml
 	pkgdesc = Sphinx extension which outputs "serialized" HTML files (json and pickle)
-	pkgver = 1.1.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/sphinx-doc/sphinxcontrib-serializinghtml
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-sphinxcontrib-serializinghtml
 	checkdepends = python2-pytest
 	checkdepends = python2-sphinx
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-serializinghtml/sphinxcontrib-serializinghtml-1.1.5.tar.gz
-	sha256sums = aa5f6de5dfdf809ef505c4895e51ef5c9eac17d0f287933eb49ec495280b6952
-	b2sums = e2da8b1e1300a327b8d508ce98e7c0d3eff1e0cea28cd874df4fbd9ed0bd4de6c17e107e622ec72e00bb237025ae26b2c5aaa33b2156cee2fad7c8f8d2c65ed5
+	source = git+https://github.com/sphinx-doc/sphinxcontrib-serializinghtml#tag=1.0.0
+	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = python2-sphinxcontrib-serializinghtml
