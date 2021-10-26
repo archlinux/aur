@@ -1,17 +1,17 @@
 pkgbase = vim-melange
-	pkgdesc = Warm colorscheme for Neovim and beyond
-	pkgver = 0.3.0
+	pkgdesc = Warm colorscheme for Vim and others
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/savq/melange
 	arch = any
-	groups = vim-plugins
-	groups = neovim-plugins
 	license = MIT
-	depends = vim-plugin-runtime
-	provides = neovim-melange
-	conflicts = neovim-melange
-	source = vim-melange-0.3.0.tar.gz::https://github.com/savq/melange/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 7cd8fbdcfdf4aef2cadcaf1f80d0a814e338d0909e98591e61501e9d8a06a1a2
+	source = vim-melange-0.7.1.tar.gz::https://github.com/savq/melange/archive/v0.7.1.tar.gz
+	sha256sums = 3b938b11c60a01d1122fae4f3251de5c86a054258eb9a92a01ebe83208588df7
 
 pkgname = vim-melange
+	groups = vim-plugins
+	depends = vim-plugin-runtime
+	optdepends = neovim-lush: extends colorscheme
 
+pkgname = vim-melange-extras
+	pkgdesc = Extra config files using Melange colorscheme
