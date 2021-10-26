@@ -1,6 +1,6 @@
 pkgbase = tabnine
 	pkgdesc = AI-powered autocompletion engine
-	pkgver = 3.7.20
+	pkgver = 3.7.25
 	pkgrel = 1
 	url = https://tabnine.com
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tabnine
 	license = custom:proprietary
 	source = TERMS
 	sha256sums = 77177f1e237c7139a241da39c9f7ef736e0c2677587e4a1fc4959097b93ba99e
-	source_x86_64 = tabnine-3.7.20-x86_64.zip::https://update.tabnine.com/bundles/3.7.20/x86_64-unknown-linux-musl/TabNine.zip
-	sha256sums_x86_64 = b9918e1ce9b4b6bbe9ffbf6bcd78a90de7588b1b789f89047290a60ba20b50fa
-	source_i686 = tabnine-3.7.20-i686.zip::https://update.tabnine.com/bundles/3.7.20/i686-unknown-linux-musl/TabNine.zip
-	sha256sums_i686 = 1ce4eb132dff77a17cbc494c8963de34ec01c5a2862cb833661d12389073e59b
+	source_x86_64 = tabnine-3.7.25-x86_64.zip::https://update.tabnine.com/bundles/3.7.25/x86_64-unknown-linux-musl/TabNine.zip
+	sha256sums_x86_64 = 3a7f92a249b6f8157725b2302bca0f3baf3cd85396065812680a77540c91f913
+	source_i686 = tabnine-3.7.25-i686.zip::https://update.tabnine.com/bundles/3.7.25/i686-unknown-linux-musl/TabNine.zip
+	sha256sums_i686 = 068ee1f0f676cd1a3edb718e8cc3ddf0ae2e82474a5cca88e9474b9b5469befa
 
 pkgname = tabnine
