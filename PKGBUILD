@@ -4,7 +4,7 @@
 # Package Information
 _crate="cargo-diet"
 pkgname="$_crate"
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Make your crate lean by computing size-optimal include directives for Cargo manifests'
 license=('MIT')
@@ -17,7 +17,7 @@ url="https://crates.io/crates/$_crate"
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('96077e11f68a319b4ad83a637bdda5b6b12d1cf495b3a0f6a62e6393680af919d841fe82c5f0a23077698daf1fdc71dd7b54eb8a950d84fd3c30ae01e5366b3f')
+sha512sums=('f3917a2a625e7dee9f675a87b07843674cb96ba0b0b95bcc7fa9bf2843c8dfdb9ad37a48847dc35d804a9058bee179235714ad0c5676a1f1d931408375a15445')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
