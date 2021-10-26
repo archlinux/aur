@@ -1,7 +1,7 @@
 _invoke() {
     # arg1: --install | --update | --uninstall
     # NX_INSTALL_DEBUG=1
-    NX_INSTALL_PREFIX=/usr/share /usr/share/NX/scripts/setup/nxclient "$1" arch
+    NX_INSTALL_PREFIX=/usr/share /usr/share/NX/scripts/setup/nxplayer "$1" arch
 }
 
 
@@ -11,7 +11,7 @@ _check_remove_old_prefix()
         echo "Old installation (/usr) found, removing"
 
         if [ -x /usr/NX/scripts/setup/nxclient ]; then
-            NX_INSTALL_PREFIX=/usr /usr/NX/scripts/setup/nxclient --uninstall fedora
+            NX_INSTALL_PREFIX=/usr /usr/NX/scripts/setup/nxplayer --uninstall fedora
         fi
 
         rm -rf /usr/NX
