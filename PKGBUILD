@@ -1,7 +1,7 @@
 # Maintainer: Michael Teuscher <michael.teuscher+aur@pm.me>
 pkgname=libfprint-goodix-521d
 _pkgdirname=libfprint
-pkgver=1.90.7.r319.b6bfc7a
+pkgver=1.94.1
 pkgrel=1
 pkgdesc="Library for fingerprint readers - For Goodix 521d"
 arch=(x86_64)
@@ -14,7 +14,7 @@ optdepends=()
 provides=(libfprint libfprint-2.so libfprint-goodix-521d)
 conflicts=(libfprint)
 groups=(fprint)
-source=("git+https://github.com/infinytum/libfprint.git#branch=feat-5110-images")
+source=("git+https://github.com/infinytum/libfprint.git#branch=driver/goodix-521d")
 sha256sums=('SKIP')
 
 pkgver() {
