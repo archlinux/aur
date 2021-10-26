@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=30
+pkgrel=31
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -37,6 +37,7 @@ savegitignore
 saveaur
 mkmvngitignore
 mkuefi
+mkbiosvda
 )
 sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd'
             '75978d30a68de00cb50c23ba882dd73d9f365497025aacc271375249e7dd4aaff34732ced2ed1cbf2fc64fc3421b2fefc2ec64b16ef068e40d4343894b8c8bfb'
@@ -50,7 +51,9 @@ sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b
             '966811ad453d6db13a51c294504e8ed0c6a0ffe2cdff756cfa88fb22b2998de8228cd2265c2eaab8ae01116531412831d06b1b9bf54af4b8b09bb065e3771816'
             'b1d3136d75260e135edb806c8ccfc48b61a539a518b79ad45937789283d2dc637d1c169264f2adf3d687454b4bb314a0ce24b3fd4e738bc4c865ccbd98245a8f'
             '97ac6b71f77219f74d6f02cac7c5eb4e4e0a68074d0d972107d35127daf4f4804e7e6cd07591ae15b8a50b520e24970fa7945e440b324cfd4dd1301f8d71dc81'
-            '4a1553a27e259da06eead3070449bea1469a431db60b7da4044f261ce7146e4de33be8938f060d6a763d79875cab526967d5823c5d6df971262519105cfece67')
+            '4a1553a27e259da06eead3070449bea1469a431db60b7da4044f261ce7146e4de33be8938f060d6a763d79875cab526967d5823c5d6df971262519105cfece67'
+'5da2acfdd1d0c3334694b052c9f9bf7738c1ad35c8f26a0ce3ab287996f132fb1ab6e349def8c52afc1719161b188dce5ec9735687ec894bb671dfa66ed776d2'
+	    )
 
 
 #Package files should follow these general directory guidelines:
@@ -94,6 +97,7 @@ install  -Dm755 savegitignore  "$pkgdir/usr/bin/savegitignore"
 install  -Dm755 saveaur  "$pkgdir/usr/bin/saveaur"
 install  -Dm755 mkmvngitignore  "$pkgdir/usr/bin/mkmvngitignore"
 install  -Dm755 mkuefi  "$pkgdir/usr/bin/mkuefi"
+install  -Dm755 mkbiosvda  "$pkgdir/usr/bin/mkbiosvda"
 
 }
 
