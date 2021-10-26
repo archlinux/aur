@@ -1,16 +1,13 @@
 pkgbase = navicat15-premium-cs
 	pkgdesc = Navicat Premium is a multi-connection database development tool. (Chinese Simplified)
-	pkgver = 15.0.29
+	pkgver = 15.0.30
 	pkgrel = 1
 	url = https://www.navicat.com/en/navicat-15-highlights
 	arch = x86_64
 	license = GPL3
-	noextract = glib2-2.68.4-1-x86_64.pkg.tar.zst
-	source = navicat15-premium-cs-15.0.29.AppImage::http://download.navicat.com.cn/download/navicat15-premium-cs.AppImage
-	source = https://archive.archlinux.org/packages/g/glib2/glib2-2.68.4-1-x86_64.pkg.tar.zst
+	source = navicat15-premium-cs-15.0.30.AppImage::http://download.navicat.com.cn/download/navicat15-premium-cs.AppImage
 	source = navicat15.desktop
-	sha256sums = 795935c79e65693f4203079bd7e44c634a6f81fadf8b5f6a317897039603e563
-	sha256sums = e8e759bd9abb58c93067e199088077f3d6fa2c608ebc6f571cb9dd814812bcea
+	sha256sums = b6bffd11b5e43a1c41515b61a5d1bf51c54a54e4721bc5b8fd67f3781557d540
 	sha256sums = 2c69105cc3ceda6075e36ebfd2931f1a023929045c18087a0a4504c0e5c4a4a1
 
 pkgname = navicat15-premium-cs
