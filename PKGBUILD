@@ -1,7 +1,7 @@
 # Maintainer: jxir <aur@jxir.de>
 
 pkgname=katex
-pkgver=0.13.18
+pkgver=0.13.19
 pkgrel=1
 pkgdesc='Fast math typesetting for the web'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('763436b0d761fd9eb350c93ed514b2d598b8ba0636cdea01db62dbf07e6c21aa')
+sha256sums=('220d31188761b6004747ea406172e95e6226e8e5cb9c5235794a74bf24eb2000')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
