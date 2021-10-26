@@ -4,7 +4,7 @@
 pkgname=tgl-ttf
 pkgver=1.0
 pkgrel=4
-url="https://www.1001fonts.com/download/tgl-font.html"
+url="https://www.1001fonts.com/tgl-font.html"
 license=('custom:SIL Open Font License v1.1')
 pkgdesc='TGL DIN ISO custom font'
 arch=('any')
