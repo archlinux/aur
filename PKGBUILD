@@ -54,13 +54,12 @@ pkgver() {
 }
 
 build() {
-    ls
-    # cd "${srcdir}"/${_pkgname}
-    # sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
-    # scons platform=linuxbsd werror=no tools=yes module_mono_enabled=yes mono_glue=no -j$((`nproc`+1))
-    # ./bin/godot.linuxbsd.opt.tools.${_arch}.mono --generate-mono-glue modules/mono/glue
-    # scons platform=linuxbsd target=release_debug werror=no tools=yes module_mono_enabled=yes mono_glue=yes -j$((`nproc`+1))
-    # scons platform=linuxbsd target=release_debug werror=no tools=no module_mono_enabled=yes mono_glue=yes -j$((`nproc`+1))
+    cd "${srcdir}"/${_pkgname}
+    sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
+    scons platform=linuxbsd werror=no tools=yes module_mono_enabled=yes mono_glue=no -j$((`nproc`+1))
+    ./bin/godot.linuxbsd.opt.tools.${_arch}.mono --generate-mono-glue modules/mono/glue
+    scons platform=linuxbsd target=release_debug werror=no tools=yes module_mono_enabled=yes mono_glue=yes -j$((`nproc`+1))
+    scons platform=linuxbsd target=release_debug werror=no tools=no module_mono_enabled=yes mono_glue=yes -j$((`nproc`+1))
 }
 
 package() {
