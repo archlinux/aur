@@ -2,8 +2,8 @@
 # Contributor: Daniel Moch <daniel AT danielmoch DOT com>
 _base=pytest-flakes
 pkgname=python-${_base}
-pkgver=4.0.3
-pkgrel=3
+pkgver=4.0.4
+pkgrel=1
 pkgdesc="pytest plugin to check source code with pyflakes"
 arch=('any')
 url="https://github.com/asmeurer/${_base}"
@@ -12,7 +12,7 @@ depends=(python-pytest python-pyflakes)
 makedepends=(python-setuptools)
 checkdepends=(python-coverage python-pytest-pep8)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('ca63d68063cf48789d86dee3707b3ea7c5076fc1f636e17f408ad6f444303fb3a701af8d1e464d49af745e350272bffe8596853a52c01baa0bdb0b6b0c0bb303')
+sha512sums=('f3bc82bef2dad4a1bf145179f1d25330adcb123cb6e2dd9802b0696be56ef66a8c705725a4e05a9fbbdc37d7482af7fe615735e0e94055f66b0893cc4cf15e53')
 
 build() {
   cd "${_base}-${pkgver}"
