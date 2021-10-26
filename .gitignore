@@ -1,0 +1,10 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.desktop
+
+!*.cfg
+!nomachine-client
+!*.install
