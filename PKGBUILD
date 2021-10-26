@@ -3,7 +3,7 @@
 #Configuration:
 _fragmant="${FRAGMENT:-#branch=dev}"
 pkgname=rizin-git
-pkgver=0.3.0.r26328.6436b239a7
+pkgver=0.4.0.r26837.d5dea0a088
 pkgrel=1
 epoch=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
@@ -39,7 +39,7 @@ build() {
   arch-meson build                      \
     -D use_sys_capstone=enabled         \
     -D use_sys_magic=enabled            \
-    -D use_sys_zip=enabled              \
+    -D use_sys_libzip=enabled           \
     -D use_sys_zlib=enabled             \
     -D use_sys_lz4=enabled              \
     -D use_sys_xxhash=enabled           \
