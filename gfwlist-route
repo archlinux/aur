@@ -20,56 +20,58 @@ set  -u
 #set -o pipefail
 #这两种写法建议放在所有 Bash 脚本的头部。另一种办法是在执行 Bash 脚本的时候，从命令行传入这些参数。
 #$ bash -euxo pipefail script.sh
-
+gfwPathName=/var/tmp/gfwlist-route/927fe1ad-ade4-485a-ad71-7acb1dc5e1ac/
+if [ ! -d $gfwPathName ]; then
+	echo mkdir $gfwPathName
+  mkdir -pv $gfwPathName
+fi
 echo down google ip 
-curl http://vps.aihlp.com/gfw/google-ip -o gfw/google-ip-tmp
+curl http://vps.aihlp.com/gfw/google-ip -o $gfwPathName/google-ip-tmp
 echo down github ip 
-curl http://vps.aihlp.com/gfw/github-ip -o gfw/github-ip-tmp
+curl http://vps.aihlp.com/gfw/github-ip -o $gfwPathName/github-ip-tmp
 echo down gfwlist ip 
-curl http://vps.aihlp.com/gfw/gfwlist-ip -o gfw/gfwlist-ip-tmp
+curl http://vps.aihlp.com/gfw/gfwlist-ip -o $gfwPathName/gfwlist-ip-tmp
 echo down dnsmasq  
-curl http://vps.aihlp.com/gfw/dnsmasq_gfwlist -o gfw/dnsmasq_gfwlist_Client-tmp.conf
-umask 0022
-chmod 744 -R gfw
-
+curl http://vps.aihlp.com/gfw/dnsmasq_gfwlist -o $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf
+echo down over
 set +e
-pacman -S chnroutes-alike-git --noconfirm
+#pacman -S chnroutes-alike-git --noconfirm
 
-./compare-file-by-sha512 gfw/google-ip-tmp gfw/google-ip
+compare-file-by-sha512 $gfwPathName/google-ip-tmp $gfwPathName/google-ip
 err=$?
 start=0
 if [ $err -ne 0 ]
 then
-	mv gfw/google-ip-tmp gfw/google-ip
+	mv $gfwPathName/google-ip-tmp $gfwPathName/google-ip
         start=1
 	echo update ggoogle-ip
 fi
 
-./compare-file-by-sha512 gfw/github-ip-tmp gfw/github-ip
+compare-file-by-sha512 $gfwPathName/github-ip-tmp $gfwPathName/github-ip
 err=$?
 if [ $err -ne 0 ]
 then
-	mv gfw/github-ip-tmp gfw/github-ip
+	mv $gfwPathName/github-ip-tmp $gfwPathName/github-ip
 	echo update github-ip
         start=1
 fi
 
-./compare-file-by-sha512 gfw/gfwlist-ip-tmp gfw/gfwlist-ip
+compare-file-by-sha512 $gfwPathName/gfwlist-ip-tmp $gfwPathName/gfwlist-ip
 err=$?
 if [ $err -ne 0 ]
 then
 	echo update gfwlist-ip
-	mv gfw/gfwlist-ip-tmp gfw/gfwlist-ip
+	mv $gfwPathName/gfwlist-ip-tmp $gfwPathName/gfwlist-ip
 	start=1
 fi
 
 
-./compare-file-by-sha512 gfw/dnsmasq_gfwlist_Client-tmp.conf gfw/dnsmasq_gfwlist_Client.conf
+compare-file-by-sha512 $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf $gfwPathName/dnsmasq_gfwlist_Client.conf
 err=$?
 if [ $err -ne 0 ]
 then
 	echo update dnsmasq
-	mv gfw/dnsmasq_gfwlist_Client-tmp.conf gfw/dnsmasq_gfwlist_Client.conf
+	mv $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf $gfwPathName/dnsmasq_gfwlist_Client.conf
 	echo restart dnsmasq
 	systemctl restart dnsmasq
 fi
@@ -79,6 +81,5 @@ then
       echo restart wg-quick@wg
       systemctl restart wg-quick@wg
 fi
-
 echo wg restart OK
 

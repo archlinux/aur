@@ -6,8 +6,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 User=root
-WorkingDirectory=/home/li/GitRepo/cmd/
-ExecStart=/home/li/GitRepo/cmd/gfwclient
+ExecStart=/usr/lib/gfwlist-route/gfwlist-route
 Restart=on-failure
 #Restart=always
 RestartSec=5

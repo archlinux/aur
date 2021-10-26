@@ -16,13 +16,15 @@ arch=('any')
 #)
 #source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
 source=(
-"gfwlist-route.service"
-"gfwlist-route.timer"
+gfwlist-route  
+gfwlist-route.service  
+gfwlist-route.timer
 )
-sha512sums=(
-'5238d70e79806c72d224bdf786fdc1b369886202bac1f263d59a0df87bb7de52d900ecc42799a9a675c99bbc087d8dbbc4dc06ef6a5d5946280e5348b4ee668c'
-'d9c16c83f1f2aca760f70c5652f2c18442d32ade766ed67033e861b80d76df5f3147b55b1dbd1024d00b0bfdd8b37e0a6e0dab6eb8ab33b58c074b645a562a2e'
-)
+#sha512sums=(
+#80b16d2a95805c6f894c9775e6989568c2b2147d2b4403970358d37a2cf0a055b2b30323f7a01f9aa547eb5720393b9425914c34c57ea23a775c247184af0d3e
+
+
+#)
 
 #Package files should follow these general directory guidelines:
 #/etc	System-essential configuration files
@@ -51,8 +53,9 @@ sha512sums=(
 
 package() {
 # make -C build DESTDIR="$pkgdir" install
-install  -Dm755 gfwlist-route.service  "$pkgdir/usr/lib/systemd/system/gfwlist-route.service"
-install  -Dm755 gfwlist-route.timer  "$pkgdir/usr/lib/systemd/system/gfwlist-route.timer"
+install  -Dm755 gfwlist-route  "$pkgdir/usr/lib/$pkgname/gfwlist-route"
+install  -Dm644 gfwlist-route.service  "$pkgdir/usr/lib/systemd/system/gfwlist-route.service"
+install  -Dm644 gfwlist-route.timer  "$pkgdir/usr/lib/systemd/system/gfwlist-route.timer"
 }
 
 groups=('lcj')
