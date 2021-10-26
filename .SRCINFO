@@ -1,0 +1,15 @@
+pkgbase = iup-bin
+	pkgdesc = A multi-platform toolkit for building graphical user interfaces. Pre-compiled.
+	pkgver = 3.30
+	pkgrel = 1
+	epoch = 0
+	url = https://www.tecgraf.puc-rio.br/iup/
+	arch = x86_64
+	license = MIT
+	conflicts = iup
+	conflicts = libcd
+	options = !strip
+	source = https://downloads.sourceforge.net/project/iup/3.30/Linux%20Libraries/iup-3.30_Linux54_64_lib.tar.gz
+	sha256sums = 7f97b70f8bbf1a59f6b3dd002a381eebacd51855b28dac69f95c9a3d90cbd65a
+
+pkgname = iup-bin
