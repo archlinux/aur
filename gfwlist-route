@@ -33,62 +33,64 @@ err=$?
 if [ $err -ne 0 ]
 then
 	compare-file-by-sha512 $gfwPathName/google-ip-tmp $gfwPathName/google-ip
-err=$?
-
-if [ $err -ne 0 ]
-then
-	mv $gfwPathName/google-ip-tmp $gfwPathName/google-ip
-	echo update google-ip
-	iproutefile $gfwPathName/google-ip $dev
-fi
+   err=$?
+	if [ $err -ne 0 ]
+	then
+		mv $gfwPathName/google-ip-tmp $gfwPathName/google-ip
+		echo update google-ip
+		iproutefile $gfwPathName/google-ip $dev
+	fi
 else 
    iproutefile $gfwPathName/google-ip $dev
 fi	
-fi
+
 echo down github ip 
 curl http://vps.aihlp.com/gfw/github-ip -o $gfwPathName/github-ip-tmp
 err=$?
 if [ $err -ne 0 ]
 then
-compare-file-by-sha512 $gfwPathName/github-ip-tmp $gfwPathName/github-ip
-err=$?
-if [ $err -ne 0 ]
-then
-	mv $gfwPathName/github-ip-tmp $gfwPathName/github-ip
-	echo update github-ip    
-	iproutefile $gfwPathName/github-ip $dev
-fi
+	compare-file-by-sha512 $gfwPathName/github-ip-tmp $gfwPathName/github-ip
+	err=$?
+	if [ $err -ne 0 ]
+	then
+		mv $gfwPathName/github-ip-tmp $gfwPathName/github-ip
+		echo update github-ip    
+		iproutefile $gfwPathName/github-ip $dev
+	fi
 else
 		iproutefile $gfwPathName/github-ip $dev
 fi
+
 echo down gfwlist ip 
 curl http://vps.aihlp.com/gfw/gfwlist-ip -o $gfwPathName/gfwlist-ip-tmp
 err=$?
 if [ $err -ne 0 ]
 then
-compare-file-by-sha512 $gfwPathName/gfwlist-ip-tmp $gfwPathName/gfwlist-ip
-err=$?
-if [ $err -ne 0 ]
-then
-	echo update gfwlist-ip
-	mv $gfwPathName/gfwlist-ip-tmp $gfwPathName/gfwlist-ip
-	iproutefile $gfwPathName/gfwlist-ip $dev
-fi
+	compare-file-by-sha512 $gfwPathName/gfwlist-ip-tmp $gfwPathName/gfwlist-ip
+	err=$?
+	if [ $err -ne 0 ]
+	then
+		echo update gfwlist-ip
+		mv $gfwPathName/gfwlist-ip-tmp $gfwPathName/gfwlist-ip
+		iproutefile $gfwPathName/gfwlist-ip $dev
+	fi
 else
-iproutefile $gfwPathName/gfwlist-ip $dev
+      iproutefile $gfwPathName/gfwlist-ip $dev
 fi
+
+
 echo down dnsmasq  
 curl http://vps.aihlp.com/gfw/dnsmasq_gfwlist -o $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf
 err=$?
 if [ $err -ne 0 ]
 then
 	compare-file-by-sha512 $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf $gfwPathName/dnsmasq_gfwlist_Client.conf
-err=$?
-if [ $err -ne 0 ]
-then
-	echo update dnsmasq
-	mv $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf $gfwPathName/dnsmasq_gfwlist_Client.conf
-	echo restart dnsmasq
-	systemctl restart dnsmasq
-fi
+	err=$?
+	if [ $err -ne 0 ]
+	then
+		echo update dnsmasq
+		mv $gfwPathName/dnsmasq_gfwlist_Client-tmp.conf $gfwPathName/dnsmasq_gfwlist_Client.conf
+		echo restart dnsmasq
+		systemctl restart dnsmasq
+	fi
 fi
