@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=systemfonts
-_cranver=1.0.2
+_cranver=1.0.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MIT)
 depends=('r>=3.2.0' fontconfig freetype2 'r-cpp11>=0.2.1')
 optdepends=(r-testthat r-covr r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('21ac96412846e06a4062362b159213cb9d83bd60fdf03aa235992b6c49fb36a9')
+sha256sums=('647c99d5ea6f90a49768ea7b10b39816af6be85168475273369fd973a20dbbba')
 
 build() {
   cd "${srcdir}"
