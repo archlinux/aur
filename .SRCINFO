@@ -1,5 +1,5 @@
 pkgbase = java-openj9
-	pkgver = 16.0.2.u7_openj9_0.27.0
+	pkgver = 17.0.1.u12_openj9_0.29.0
 	pkgrel = 1
 	url = http://www.eclipse.org/openj9/
 	arch = x86_64
@@ -25,20 +25,23 @@ pkgbase = java-openj9
 	makedepends = lcms2
 	makedepends = libnet
 	makedepends = bash
+	makedepends = harfbuzz
+	makedepends = gcc-libs
+	makedepends = glibc
 	makedepends = numactl
 	makedepends = nasm
 	makedepends = cmake
-	source = openj9-openjdk-jdk16-0.27.0.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk16/archive/v0.27.0-release.tar.gz
-	source = https://github.com/eclipse/openj9/archive/openj9-0.27.0.tar.gz
-	source = openj9-omr-0.27.0.tar.gz::https://github.com/eclipse/openj9-omr/archive/openj9-0.27.0.tar.gz
+	source = openj9-openjdk-jdk17-v0.29.0-release.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk17/archive/v0.29.0-release.tar.gz
+	source = https://github.com/eclipse/openj9/archive/openj9-0.29.0.tar.gz
+	source = openj9-omr-0.29.0.tar.gz::https://github.com/eclipse/openj9-omr/archive/openj9-0.29.0.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	source = omr-omrstr-iconv-failure-overflow.patch
 	source = omr-fam.patch
-	sha256sums = f4b90b065cf1ff9ec60da7f0a78635be499fba436b4a42cb7e0ce1b95b9275fd
-	sha256sums = b50e0846e12089f4f7956e1ed060835e8583a0793450b9757388352d67d89825
-	sha256sums = de90911d2fb49ea4b3758914503af913d967733403d909e87d2984243fe04fe5
+	sha256sums = d9998660b3ff0a806bfcdf2c419f00ed09a042b336e00f13464a8502d48c2a01
+	sha256sums = eb70d4aa0ffb1c941169c15c41a071063abd9484cb60862a296ce376c5d00f40
+	sha256sums = 1b9a0b507b4716f73839e7d9a6bf9a4f72738c7021fbcb862952171dad258393
 	sha256sums = 7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230
 	sha256sums = bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd
 	sha256sums = bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975
@@ -46,19 +49,26 @@ pkgbase = java-openj9
 	sha256sums = c288b0a1a2424967d9c00e4d07d16f5d703f6b9b1195839753480fcd9810faf5
 
 pkgname = jre-openj9-headless
-	pkgdesc = OpenJDK Java 16 headless runtime environment
+	pkgdesc = OpenJDK Java 17 headless runtime environment
 	install = install_jre-openj9-headless.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
 	depends = nss
 	depends = libjpeg-turbo
+	depends = libjpeg.so
 	depends = lcms2
+	depends = liblcms2.so
 	depends = libnet
 	depends = freetype2
+	depends = libfreetype.so
+	depends = harfbuzz
+	depends = libharfbuzz.so
+	depends = glibc
+	depends = gcc-libs
 	optdepends = java-rhino: for some JavaScript support
-	provides = java-runtime-headless=16
-	provides = java-runtime-headless-openj9=16
-	provides = jre16-openj9-headless=16.0.2.u7_openj9_0.27.0-1
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-openj9=17
+	provides = jre17-openj9-headless=17.0.1.u12_openj9_0.29.0-1
 	backup = etc/java-openj9/logging.properties
 	backup = etc/java-openj9/management/jmxremote.access
 	backup = etc/java-openj9/management/jmxremote.password.template
@@ -75,34 +85,36 @@ pkgname = jre-openj9-headless
 	backup = etc/java-openj9/sound.properties
 
 pkgname = jre-openj9
-	pkgdesc = OpenJDK Java 16 full runtime environment
+	pkgdesc = OpenJDK Java 17 full runtime environment
 	install = install_jre-openj9.sh
-	depends = jre16-openj9-headless=16.0.2.u7_openj9_0.27.0-1
+	depends = jre17-openj9-headless=17.0.1.u12_openj9_0.29.0-1
 	depends = giflib
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-runtime=16
-	provides = java-runtime-openj9=16
-	provides = jre16-openj9=16.0.2.u7_openj9_0.27.0-1
+	provides = java-runtime=17
+	provides = java-runtime-openj9=17
+	provides = jre17-openj9=17.0.1.u12_openj9_0.29.0-1
 
 pkgname = jdk-openj9
-	pkgdesc = OpenJDK Java 16 development kit
+	pkgdesc = OpenJDK Java 17 development kit
 	install = install_jdk-openj9.sh
-	depends = jre16-openj9=16.0.2.u7_openj9_0.27.0-1
+	depends = jre17-openj9=17.0.1.u12_openj9_0.29.0-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
-	provides = java-environment=16
-	provides = java-environment-openj9=16
-	provides = jdk16-openj9=16.0.2.u7_openj9_0.27.0-1
+	depends = glibc
+	depends = gcc-libs
+	provides = java-environment=17
+	provides = java-environment-openj9=17
+	provides = jdk17-openj9=17.0.1.u12_openj9_0.29.0-1
 
 pkgname = openj9-src
-	pkgdesc = OpenJDK Java 16 sources
-	depends = jdk16-openj9=16.0.2.u7_openj9_0.27.0-1
-	provides = openj916-src=16.0.2.u7_openj9_0.27.0-1
+	pkgdesc = OpenJDK Java 17 sources
+	depends = jdk17-openj9=17.0.1.u12_openj9_0.29.0-1
+	provides = openj917-src=17.0.1.u12_openj9_0.29.0-1
 
 pkgname = openj9-doc
-	pkgdesc = OpenJDK Java 16 documentation
-	depends = jdk16-openj9=16.0.2.u7_openj9_0.27.0-1
-	provides = openj916-doc=16.0.2.u7_openj9_0.27.0-1
+	pkgdesc = OpenJDK Java 17 documentation
+	depends = jdk17-openj9=17.0.1.u12_openj9_0.29.0-1
+	provides = openj917-doc=17.0.1.u12_openj9_0.29.0-1

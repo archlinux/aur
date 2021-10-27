@@ -6,11 +6,11 @@
 
 pkgbase=java-openj9
 pkgname=('jre-openj9-headless' 'jre-openj9' 'jdk-openj9' 'openj9-src' 'openj9-doc')
-_majorver=16
+_majorver=17
 _minorver=0
-_securityver=2
-_updatever=7
-_openj9ver=0.27.0
+_securityver=1
+_updatever=12
+_openj9ver=0.29.0
 pkgrel=1
 pkgver=${_majorver}${_minorver:+.${_minorver}}${_securityver:+.${_securityver}}.u${_updatever}_openj9_${_openj9ver}
 arch=('x86_64')
@@ -19,8 +19,8 @@ license=('custom')
 makedepends=('java-environment>=11' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'numactl' 'nasm' 'cmake')
-source=(openj9-openjdk-jdk${_majorver}-${_openj9ver}.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk${_majorver}/archive/v${_openj9ver}-release.tar.gz
+             'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'numactl' 'nasm' 'cmake')
+source=(openj9-openjdk-jdk${_majorver}-v${_openj9ver}-release.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk${_majorver}/archive/v${_openj9ver}-release.tar.gz
         https://github.com/eclipse/openj9/archive/openj9-${_openj9ver}.tar.gz
         openj9-omr-${_openj9ver}.tar.gz::https://github.com/eclipse/openj9-omr/archive/openj9-${_openj9ver}.tar.gz
         freedesktop-java.desktop
@@ -28,9 +28,9 @@ source=(openj9-openjdk-jdk${_majorver}-${_openj9ver}.tar.gz::https://github.com/
         freedesktop-jshell.desktop
         omr-omrstr-iconv-failure-overflow.patch
         omr-fam.patch)
-sha256sums=('f4b90b065cf1ff9ec60da7f0a78635be499fba436b4a42cb7e0ce1b95b9275fd'
-            'b50e0846e12089f4f7956e1ed060835e8583a0793450b9757388352d67d89825'
-            'de90911d2fb49ea4b3758914503af913d967733403d909e87d2984243fe04fe5'
+sha256sums=('d9998660b3ff0a806bfcdf2c419f00ed09a042b336e00f13464a8502d48c2a01'
+            'eb70d4aa0ffb1c941169c15c41a071063abd9484cb60862a296ce376c5d00f40'
+            '1b9a0b507b4716f73839e7d9a6bf9a4f72738c7021fbcb862952171dad258393'
             '7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230'
             'bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd'
             'bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975'
@@ -65,6 +65,8 @@ prepare() {
          -e '/^OPENJ9_TAG :=/s/:=.*/:= openj9-'${_openj9ver}/ \
          -e '/^OPENJ9OMR_SHA :=/s/:=.*/:= openj9-'${_openj9ver}/ \
          closed/OpenJ9.gmk
+
+  find openj9/ omr/ -name CMakeLists.txt -exec sed -i -e '/set(OMR_WARNINGS_AS_ERRORS ON/s/ON/OFF/' {} + || die
 }
 
 build() {
@@ -94,13 +96,11 @@ build() {
   #  --with-extra-cflags="${CFLAGS}"
   #  --with-extra-cxxflags="${CXXFLAGS}"
   #  --with-extra-ldflags="${LDFLAGS}"
-  # See also paragraph "Configure Control Variables from "jdk${_majorver}-${_hg_tag}/common/doc/building.md
+  # See also paragraph "Configure Control Variables from "jdk${_majorver}-${_git_tag}/common/doc/building.md
   unset CFLAGS
   unset CXXFLAGS
   unset LDFLAGS
 
-  # !@#$ing openj9
-  export EXTRA_CMAKE_ARGS="-DOMR_WARNINGS_AS_ERRORS=OFF"
   bash configure \
     --with-version-build="${_updatever}" \
     --with-version-pre="" \
@@ -114,23 +114,33 @@ build() {
     --with-libpng=system \
     --with-lcms=system \
     --with-zlib=system \
+    --with-harfbuzz=system \
     --with-jvm-features=zgc \
     --enable-unlimited-crypto \
     --disable-warnings-as-errors{,-omr,-openj9} \
     --disable-ddr \
-    --with-cmake=yes
+    --with-cmake \
     ${NUM_PROC_OPT}
     #--disable-javac-server
 
-  make images legacy-jre-image docs
+
+  make EXTRA_CMAKE_ARGS="-DCMAKE_C_FLAGS='${CFLAGS}' -DJ9JIT_EXTRA_CFLAGS='${CFLAGS}' -DCMAKE_CXX_FLAGS='${CXXFLAGS}' -DJ9JIT_EXTRA_CXXFLAGS='${CXXFLAGS}' -DCMAKE_EXE_LINKER_FLAGS='${LDFLAGS}'" images legacy-jre-image docs
 
   # https://bugs.openjdk.java.net/browse/JDK-8173610
   find "../${_imgdir}" -iname '*.so' -exec chmod +x {} \;
 }
 
+check() {
+  cd ${_jdkdir}
+  # TODO package jtreg
+  # make -k check
+}
+
 package_jre-openj9-headless() {
   pkgdesc="OpenJDK Java ${_majorver} headless runtime environment"
-  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2')
+  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
+           'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
+           'glibc' 'gcc-libs')
   optdepends=('java-rhino: for some JavaScript support')
   provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-openj9=${_majorver}" "jre${_majorver}-openj9-headless=${pkgver}-${pkgrel}")
   backup=(etc/${pkgbase}/logging.properties
@@ -211,7 +221,8 @@ package_jre-openj9() {
 
 package_jdk-openj9() {
   pkgdesc="OpenJDK Java ${_majorver} development kit"
-  depends=("jre${_majorver}-openj9=${pkgver}-${pkgrel}" 'java-environment-common=3' 'hicolor-icon-theme' 'libelf')
+  depends=("jre${_majorver}-openj9=${pkgver}-${pkgrel}" 'java-environment-common=3'
+           'hicolor-icon-theme' 'libelf' 'glibc' 'gcc-libs')
   provides=("java-environment=${_majorver}" "java-environment-openj9=${_majorver}" "jdk${_majorver}-openj9=${pkgver}-${pkgrel}")
   install=install_jdk-openj9.sh
 
