@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://web-eid.eu/"
 license=('MIT')
 depends=('qt5-base' 'pcsclite')
-makedepends=('git' 'qt5-tools' 'gtest' 'gmock')
+makedepends=('git' 'qt5-tools' 'qt5-svg' 'gtest' 'gmock')
 source=("$pkgname::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_rls_tag"
         "web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git"
         "web-eid-libpcsc-cpp::git+https://github.com/web-eid/libpcsc-cpp.git"

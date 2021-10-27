@@ -7,6 +7,7 @@ pkgbase = web-eid
 	license = MIT
 	makedepends = git
 	makedepends = qt5-tools
+	makedepends = qt5-svg
 	makedepends = gtest
 	makedepends = gmock
 	depends = qt5-base
