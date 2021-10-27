@@ -1,11 +1,11 @@
 # Maintainer: Mubashshir <ahmubashshir at gmail dot com>
 # Inspired by: aur/anbox-image-gapps
 # shellcheck shell=bash disable=SC2034,SC2164,SC2154
-# from: git
+# from: pkgver
 
 pkgname=anbox-image-nocsd-gapps
 pkgver=1.gapps.20211027
-pkgrel=1
+pkgrel=2
 pkgdesc="Android image for running in Anbox, with no-csd patch, OpenGApps and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -35,14 +35,14 @@ source=(
   "open_gapps-x86_64-7.1-pico-$_gapps_rel.zip::https://downloads.sourceforge.net/project/opengapps/x86_64/$_gapps_rel/open_gapps-x86_64-7.1-pico-$_gapps_rel.zip"
 )
 
-md5sums=('SKIP'
+md5sums=('6c31bf493856f982da3d7d78b6e23b85'
          '7ebf618b1af94a02322d9f2d2610090b'
          '5ca37e1629edb7d13b18751b72dc98ad'
          '360c6d7b14a538c8034b282b0371be9b'
          '2c96f31ead428ee2d1fbd2a65dd6962d'
          '9f0dd33e444d816ab62fe8e8514a0c0e'
          '0a59e1a43891f21a09fe06f18f0f5feb'
-         'SKIP')
+         'bbe49d1c9c935e7f5d642291c105599d')
 
 pkgver () {
   echo "${_anbox_rel#*v}.gapps.$_gapps_rel"
