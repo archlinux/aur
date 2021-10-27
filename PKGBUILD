@@ -1,4 +1,6 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+#!/bin/hint/bash
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Submiter: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Dumitru Ursu <dima@ceata.org>
 
 pkgname=opencolorio1
