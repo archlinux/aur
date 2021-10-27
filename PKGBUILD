@@ -1,7 +1,7 @@
 # Maintainer: Chjara Yebgui <tuxcrafting@airmail.cc>
 pkgname=fasmg
 pkgver=jg8x
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Assembler with advanced macro-instruction abilities"
 arch=('x86_64')
@@ -35,5 +35,5 @@ package() {
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/doc/fasmg"
     cp fasmg.x64 "$pkgdir/usr/bin/fasmg"
     chmod +x "$pkgdir/usr/bin/fasmg"
-    cp -r docs/* examples "$pkgdir/usr/share/doc/"
+    cp -r docs/* examples "$pkgdir/usr/share/doc/fasmg"
 }

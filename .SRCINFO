@@ -1,7 +1,7 @@
 pkgbase = fasmg
 	pkgdesc = Assembler with advanced macro-instruction abilities
 	pkgver = jg8x
-	pkgrel = 1
+	pkgrel = 2
 	url = http://flatassembler.net/
 	arch = x86_64
 	license = BSD
