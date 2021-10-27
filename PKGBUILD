@@ -1,7 +1,7 @@
 # Maintainer: François-Xavier Payet <fx.payet@tfdn.org>
 pkgname=snapraid-btrfs-git
-pkgver=v0.14.0.r2.4f51a6d
-pkgrel=2
+pkgver=0.14.0
+pkgrel=3
 pkgdesc="snapraid-btrfs is a script for using SnapRAID with data drives which are formatted with btrfs."
 arch=('any')
 url="https://github.com/automorphism88/snapraid-btrfs.git"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --tags | cut -c 2- | cut -d - -f 1)"
 }
 
 package() {
