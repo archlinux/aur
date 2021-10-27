@@ -1,8 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=tree-sitter-git
-pkgver=0.19.5.r78.g2b83500b
+pkgver=0.20.0.r129.g67de9435
 pkgrel=1
 pkgdesc='An incremental parsing system for programming tools'
 arch=('x86_64')
@@ -18,17 +18,23 @@ pkgver() {
 	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
+prepare() {
+	cd "$pkgname/cli"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
 	cd "$pkgname"
 	make
 	cd cli
-	cargo build --release --locked --all-features
+	RUSTUP_TOOLCHAIN=stable
+	CARGO_TARGET_DIR=target
+	cargo build --release --frozen --all-features
 }
 
 package() {
 	cd "$pkgname"
 	make DESTDIR="$pkgdir" PREFIX=/usr install
-	install -Dm 755 target/release/tree-sitter -t "$pkgdir"/usr/bin
-	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -D target/release/tree-sitter -t "$pkgdir"/usr/bin
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
