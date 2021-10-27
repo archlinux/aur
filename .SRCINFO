@@ -1,6 +1,6 @@
 pkgbase = linux-rk3328
-	pkgver = 5.14.8
-	pkgrel = 2
+	pkgver = 5.14.14
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
 	license = GPL2
@@ -30,10 +30,10 @@ pkgbase = linux-rk3328
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.8.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.14.xz
 	md5sums = a082ef5748b813abca0649dab8be5f52
 	md5sums = b712c1d1b1de3091acca6f4fd8bca831
-	md5sums = 887e3f019b822c55ab5dcaba0d8ba4df
+	md5sums = c20bb1340f334d6224a5da00ef38b642
 	md5sums = 1300797c69bf7f6a26672011334c6a96
 	md5sums = 010810596a08c508c1b57350de3c1ee5
 	md5sums = ccb144e753dce358915ed615329d2067
@@ -43,11 +43,11 @@ pkgbase = linux-rk3328
 	md5sums = 966cbe04ab5848bf6972411166adfee4
 	md5sums = 7a18066683f3351b2bbd2653db783f80
 	md5sums = 6dfa62f14b2a3390b1a4ca2e5cf5c9a2
-	md5sums = 2d717e8a8ac828b393fdde8d2e27f21d
+	md5sums = ac6652b7c4006532606faa45d9d03c14
 	md5sums = 66e0ae63183426b28c0ec0c7e10b5e16
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 3dc88030a8f2f5a5f97266d99b149f77
-	md5sums = 767e2bd13b4f1497f7500877792cbff2
+	md5sums = 7b8dc63cfdb806b3c5953bf9b0615daa
 
 pkgname = linux-rk3328
 	pkgdesc = The Linux Kernel and modules - AArch64 kernel for RK3328
@@ -57,7 +57,7 @@ pkgname = linux-rk3328
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.14.8
+	provides = linux=5.14.14
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -65,5 +65,5 @@ pkgname = linux-rk3328
 
 pkgname = linux-rk3328-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for RK3328
-	provides = linux-headers=5.14.8
+	provides = linux-headers=5.14.14
 	conflicts = linux-headers
