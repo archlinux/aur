@@ -21,11 +21,6 @@ source=("git+https://github.com/Lucki/GameHub.git#branch=epic" 0001-New-Steam-li
 sha256sums=('SKIP'
             '2a73ea08c0d1cce0887c040d4c784a9a806cc4344e8881b818243aee7bd432d0')
 
-pkgver() {
-  cd "GameHub"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
   cd "GameHub"
   patch --forward --strip=1 --input="${srcdir}/0001-New-Steam-libraryfolders-format.patch"
