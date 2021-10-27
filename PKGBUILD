@@ -1,11 +1,12 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=threadwatcher
 pkgver=r35.6a3b13d
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep a list of 4chan threads to watch over and continually download media from"
 arch=(any)
 depends=(
 	'jq'
+	'perl-html-parser'
 	)
 makedepends=('git')
 optdepends=(
