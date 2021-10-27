@@ -1,12 +1,12 @@
 # Maintainer: Alban Fichet <alban.fichet@inria.fr>
 pkgname=gthumb-openexr-extension
-pkgver=3.10.1
-pkgrel=12
+pkgver=3.12.0
+pkgrel=13
 pkgdesc="Extension for gThumb to support OpenEXR"
 arch=('any')
 url="https://github.com/afichet/gthumb-openexr-extension"
 license=('GPL')
-depends=('git' 'gthumb>=3.10' 'glib2' 'gtk3' 'gconf' 'openexr')
+depends=('git' 'gthumb>=3.12' 'glib2' 'gtk3' 'gconf' 'openexr')
 makedepends=('git' 'gnome-common' 'cmake')
 checkdepends=()
 provides=($pkgname=$pkgver)
