@@ -124,6 +124,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # AMD pstate cpufreq driver v2                                                  # included in xanmod tree
 
+        # squelch overzealous 802.11 regdomain not set warnings
+        "cfg80211-dont-WARN-if-a-self-managed-device.patch"
+
         # ASUS ROG enablement
         "asus-wmi-Add-panel-overdrive-functionality.patch"                              # landing in 5.15
         "asus-wmi-Add-dgpu-disable-method.patch"                                        # "
@@ -173,6 +176,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
+            '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '1ab75535772c63567384eb2ac74753e4d5db2f3317cb265aedf6151b9f18c6c2'
             '8cc771f37ee08ad5796e6db64f180c1415a5f6e03eb3045272dade30ca754b53'
             'f3461e7cc759fd4cef2ec5c4fa15b80fa6d37e16008db223f77ed88a65aa938e'

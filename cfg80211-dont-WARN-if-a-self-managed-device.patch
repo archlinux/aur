@@ -1,0 +1,38 @@
+From: Luca Coelho <luca@coelho.fi>
+To: johannes@sipsolutions.net
+Cc: linux-wireless@vger.kernel.org
+Subject: [PATCH 05/15] cfg80211: don't WARN if a self-managed device doesn't have a regdom
+Date: Fri,  9 Apr 2021 12:40:18 +0300	[thread overview]
+Message-ID: <iwlwifi.20210409123755.ba2ea961f4ae.I8fde32d3196e860efa3b4ec464c42194195b42ec@changeid> (raw)
+In-Reply-To: <20210409094028.356611-1-luca@coelho.fi>
+
+From: Emmanuel Grumbach <emmanuel.grumbach@intel.com>
+
+This can happen if it booted in RF-Kill and didn't have a
+chance to get its regulatory domain yet.
+This can happen for example if hostapd is started on a device
+that is blocked by RF-Kill.
+
+Signed-off-by: Emmanuel Grumbach <emmanuel.grumbach@intel.com>
+Signed-off-by: Luca Coelho <luciano.coelho@intel.com>
+---
+ net/wireless/nl80211.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/net/wireless/nl80211.c b/net/wireless/nl80211.c
+index 521d36bb0803..f56307185b8a 100644
+--- a/net/wireless/nl80211.c
++++ b/net/wireless/nl80211.c
+@@ -7742,8 +7742,8 @@ static int nl80211_get_reg_do(struct sk_buff *skb, struct genl_info *info)
+ 			       REGULATORY_WIPHY_SELF_MANAGED;
+ 		regdom = get_wiphy_regdom(wiphy);
+ 
+-		/* a self-managed-reg device must have a private regdom */
+-		if (WARN_ON(!regdom && self_managed)) {
++		/* a self-managed-reg device should have a private regdom */
++		if (!regdom && self_managed) {
+ 			nlmsg_free(msg);
+ 			rtnl_unlock();
+ 			return -EINVAL;
+-- 
+2.31.0
