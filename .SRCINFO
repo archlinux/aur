@@ -1,6 +1,6 @@
 pkgbase = alire
 	pkgdesc = A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://alire.ada.dev/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = alire
 	makedepends = git
 	makedepends = gprbuild
 	depends = gnatcoll-core
-	source = alire-1.1.0.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v1.1.0.tar.gz
+	source = alire-1.1.1.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v1.1.1.tar.gz
 	source = alire.patch
 	source = git+https://github.com/alire-project/xmlezout.git#commit=1fcbd0b9303d044d8f09a8ef652afa8c0400ee8b
 	source = git+https://github.com/mosteo/ajunitgen.git#commit=e5d01db5e7834d15c4066f0a8e33d780deae3cc9
@@ -27,7 +27,7 @@ pkgbase = alire
 	source = git+https://github.com/mosteo/optional#commit=0c7d20c0c8b48ccb6b25fb648d48382e598c25c3
 	source = git+https://github.com/mosteo/stopwatch#commit=b43f3e6e6fdc8ed5d36c30d1ce57738989a45977
 	source = git+https://github.com/mosteo/toml_slicer#commit=1c0286bd724c6f257a36fc89412fcefd4f555228
-	b2sums = 564111730c38f63078806fec455b392053b4d890e82ddb8fc9906947c01e0d5d0e5539b201016453f312082ac36dd84dfaae59c49738b8e601a87ae6aab92a55
+	b2sums = 1d8f5125d9420206c8c302edfa1275bccdd469bb69d1d323d6aa10529c1b6831c2d6da5b57d49223a935f3650125e5ed6da3683d2cca55c4a77ecd2d2a82b998
 	b2sums = ed26931226df0009965e75aedf726f6ccd76766b4108ebf99895e1afff28d35122a4bee953d43713564ffaea67fb28bcea381602fcc457e84de94326710a613f
 	b2sums = SKIP
 	b2sums = SKIP
