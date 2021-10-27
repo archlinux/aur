@@ -2,10 +2,10 @@
 pkgname=gamehub-bin
 _pkgver=0.16.0-1
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle"
 arch=("x86_64")
-url="https://tkashkin.tk/projects/gamehub/"
+url="https://tkashkin.github.io/projects/gamehub/"
 license=(GPL3)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
