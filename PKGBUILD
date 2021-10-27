@@ -1,14 +1,15 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
+
 pkgname=obs-rtspserver
 pkgver=2.1.2
 _obsver=27.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a plugin for obs-studio, encoding the output and publish rtsp stream"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-rtspserver.1037/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git")
+makedepends=("cmake")
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/iamscottxu/obs-rtspserver/archive/v$pkgver.tar.gz"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
@@ -19,20 +20,21 @@ sha256sums=(
 )
 
 prepare() {
-  rm -rf fakeroot
-
   cd "obs-studio-$_obsver"/plugins
+
   cp -r "$srcdir/$pkgname-$pkgver" .
+
   echo "add_subdirectory($pkgname-$pkgver)" | tee -a CMakeLists.txt >/dev/null
 }
 
 # Need to compile plugin in OBS compilation process
 build() {
   cd "obs-studio-$_obsver"
+
   cmake -B build \
-  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
-  -DDISABLE_UI=ON \
+  -DENABLE_UI=ON \
   -DENABLE_WAYLAND=OFF \
   -DENABLE_PIPEWIRE=OFF \
   -DENABLE_SCRIPTING=OFF \
@@ -54,11 +56,17 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/lib/obs-plugins
-  mkdir -p "$pkgdir"/usr/share/obs/obs-plugins
+  mkdir -p $pkgdir/usr/lib/obs-plugins
+  mkdir -p $pkgdir/usr/share/obs/obs-plugins
 
   cd "obs-studio-$_obsver"
-  make -C build DESTDIR="$srcdir/fakeroot/" install
-  cp -a "$srcdir"/fakeroot/usr/lib/obs-plugins/$pkgname.so "$pkgdir"/usr/lib/obs-plugins/
-  cp -a "$srcdir"/fakeroot/usr/share/obs/obs-plugins/$pkgname "$pkgdir"/usr/share/obs/obs-plugins/
+
+  _fake_install_dir="$srcdir/obs-install"
+
+  make -C build DESTDIR="$_fake_install_dir/" install
+
+  cp -a $_fake_install_dir/usr/lib/obs-plugins/$pkgname.so $pkgdir/usr/lib/obs-plugins/
+  cp -a $_fake_install_dir/usr/share/obs/obs-plugins/$pkgname $pkgdir/usr/share/obs/obs-plugins/
+
+  rm -rf $_fake_install_dir
 }
