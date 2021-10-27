@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Threema
+Comment=Desktop client for Threema (requires the mobile app)
+Exec=threema %U
+Icon=threema
+Type=Application
+StartupNotify=true
+Categories=Social Media;
+
