@@ -1,24 +1,26 @@
-# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
 pkgname=vim-sneak
-pkgver=1.8.1
+pkgver=1.9
 pkgrel=1
-pkgdesc='The missing motion for Vim'
+pkgdesc='Motion plugin for Vim'
 arch=('any')
 url='https://github.com/justinmk/vim-sneak'
 license=('MIT')
-depends=('vim')
 groups=('vim-plugins')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/justinmk/vim-sneak/archive/${pkgver}.tar.gz")
-sha512sums=('1ad0f8542cf6ed9ab351d882723000789e60669f347e48bf7c4ccb010e344735b6cff313aabf6a5d2b11a85e1bd169c4beb2d16526914c0226a71cbc2384e401')
+depends=('vim-plugin-runtime')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('26a8cded35a91b3cd8f680d2fe966a6c615a27027590f7425e11e8d39605e549')
+
+PURGE_TARGETS=('.gitignore')
 
 package() {
-  cd "${srcdir}/vim-sneak-${pkgver}"
-
-  install -d "${pkgdir}/usr/share/vim/vimfiles/"{plugin,doc,autoload/sneak}
-  install -D -m644 autoload/sneak/*.vim "${pkgdir}/usr/share/vim/vimfiles/autoload/sneak/"
-  install -D -m644 plugin/sneak.vim "${pkgdir}/usr/share/vim/vimfiles/plugin/"
-  install -D -m644 doc/sneak.txt "${pkgdir}/usr/share/vim/vimfiles/doc/"
+  cd "$pkgname-$pkgver"
+  find autoload doc plugin -type f -exec install -Dm 644 '{}' \
+    "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim:set et sw=2 ts=2 tw=79:

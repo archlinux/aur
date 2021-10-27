@@ -1,14 +1,13 @@
 pkgbase = vim-sneak
-	pkgdesc = The missing motion for Vim
-	pkgver = 1.8.1
+	pkgdesc = Motion plugin for Vim
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/justinmk/vim-sneak
 	arch = any
 	groups = vim-plugins
 	license = MIT
-	depends = vim
-	source = vim-sneak-1.8.1.tar.gz::https://github.com/justinmk/vim-sneak/archive/1.8.1.tar.gz
-	sha512sums = 1ad0f8542cf6ed9ab351d882723000789e60669f347e48bf7c4ccb010e344735b6cff313aabf6a5d2b11a85e1bd169c4beb2d16526914c0226a71cbc2384e401
+	depends = vim-plugin-runtime
+	source = vim-sneak-1.9.tar.gz::https://github.com/justinmk/vim-sneak/archive/1.9.tar.gz
+	sha256sums = 26a8cded35a91b3cd8f680d2fe966a6c615a27027590f7425e11e8d39605e549
 
 pkgname = vim-sneak
-
