@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dmidiplayer
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="MIDI file player based on Drumstick"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('drumstick' 'uchardet')
 makedepends=('cmake' 'qt5-tools' 'pandoc')
 source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('d2d00eaf787bbb390366eea7aaa0c956487e9a96774fc7a1704a53243fc0911e88f66314524bc82a47b7af4a4e1a771969f07d87fdd63b6a3388f10e2aae9885')
+sha512sums=('5407f2535e1ba50b46d99a251bcb9b94cc1906acb3c34eb5f694c0d25e84961403061b94b0f4c0a7a3d0aee0345566350dc07f78afcb4fe1196d017b49bda6f2')
 
 build() {
 	cmake -B "$pkgname-$pkgver/build" \
