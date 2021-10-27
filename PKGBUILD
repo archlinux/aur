@@ -1,6 +1,7 @@
 # Maintainer: Sammay Sarkar <(my-name-without-vowels)@gmail.com>
 # Co-Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# from: git
+# from: github
+# what: OpenBangla/OpenBangla-keyboard
 
 pkgname="openbangla-keyboard"
 pkgver="2.0.0"
