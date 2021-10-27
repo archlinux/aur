@@ -1,6 +1,6 @@
 pkgbase = obsidian-native-window
 	pkgdesc = Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files
-	pkgver = 0.12.15
+	pkgver = 0.12.19
 	pkgrel = 1
 	url = https://obsidian.md/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = obsidian-native-window
 	conflicts = obsidian
 	conflicts = obsidian-appimage
 	conflicts = obsidian-insider
-	noextract = obsidian-native-window-0.12.15.AppImage
+	noextract = obsidian-native-window-0.12.19.AppImage
 	options = !strip
-	source_x86_64 = obsidian-native-window-0.12.15.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v0.12.15/Obsidian-0.12.15.AppImage
-	sha256sums_x86_64 = 709469528c0c2e9245ccbd8e9cd049829c36a15fdef6b545e6646c1d6060c042
+	source_x86_64 = obsidian-native-window-0.12.19.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v0.12.19/Obsidian-0.12.19.AppImage
+	sha256sums_x86_64 = 907cdf250582d610f554d716e6b08d21701fbfdad54a1fe9521cc1552af22747
 
 pkgname = obsidian-native-window
