@@ -1,7 +1,7 @@
 # Maintainer: Luka Žaja (luka dot zaja at protonmail dot com)
 
 pkgname=refind-btrfs
-pkgver=0.3.13
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Generate rEFInd manual boot stanzas from Btrfs snapshots'
 url='https://github.com/Venom1991/refind-btrfs'
@@ -20,9 +20,10 @@ depends=('btrfs-progs'
          'python-watchdog'
          'refind')
 makedepends=('python-setuptools')
+optdepends=('python-pillow: custom generated boot stanza icon support')
 source=("https://github.com/Venom1991/refind-btrfs/archive/v${pkgver}.tar.gz")
 backup=('etc/refind-btrfs.conf')
-sha256sums=('307c024c7d1ce22a655d7c29686d854e3c2a144dc0b98318cd4a9dcd1c91ee90')
+sha256sums=('03d12eac6208a05c8318c2741383453e0ee06ebdd66d9a615201b27d4783bcd3')
 
 build() {
     cd "${srcdir}/refind-btrfs-${pkgver}"
@@ -35,14 +36,22 @@ package() {
 
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
+    libdir="${pkgdir}/var/lib/${pkgname}"
+
+    install -d -m755 "${libdir}"
+
     pushd build/lib/refind_btrfs/data
 
     install -D -m755 refind-btrfs "${pkgdir}/usr/bin/refind-btrfs"
     install -D -m644 refind-btrfs.conf-sample "${pkgdir}/etc/refind-btrfs.conf"
     install -D -m644 refind-btrfs.service "${pkgdir}/usr/lib/systemd/system/refind-btrfs.service"
 
+    btrfslogodir="${libdir}/icons/btrfs_logo"
+
+    install -d "${btrfslogodir}"
+    install -D icons/btrfs_logo/* -t "${btrfslogodir}"
+
     popd
 
-    install -d -m755 "${pkgdir}/var/lib/${pkgname}"
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
