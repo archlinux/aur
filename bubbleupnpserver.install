@@ -11,7 +11,3 @@ post_upgrade() {
   chown bubbleupnp:bubbleupnp /var/lib/bubbleupnp
   chown bubbleupnp:bubbleupnp /usr/share/bubbleupnpserver
 }
-
-post_remove() {
-
-}
