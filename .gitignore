@@ -1,0 +1,4 @@
+pkg/
+src/
+zsh-autoswitch-virtualenv/
+*.pkg.tar.zst

@@ -1,0 +1,17 @@
+pkgbase = zsh-autoswitch-virtualenv-git
+	pkgdesc = ZSH plugin that switches python virtualenvs automatically as you move between directories.
+	pkgver = 3.3.2.r0.gecc53e3
+	pkgrel = 1
+	url = https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pwgen
+	depends = python
+	depends = zsh
+	optdepends = python-pipenv: Pipenv integration
+	optdepends = python-poetry: Poetry integration
+	source = zsh-autoswitch-virtualenv::git+https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git
+	md5sums = SKIP
+
+pkgname = zsh-autoswitch-virtualenv-git
