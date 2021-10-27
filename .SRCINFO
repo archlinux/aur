@@ -1,7 +1,7 @@
 pkgbase = dt-cli
 	pkgdesc = Syncing dotfiles and more
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blurgyy/dt
 	arch = any
 	license = MIT OR Apache 2.0
@@ -11,6 +11,6 @@ pkgbase = dt-cli
 	conflicts = dt-cli-git
 	conflicts = dt-cli-bin
 	source = https://github.com/blurgyy/dt/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = e4963bb74b0335f30138db990011ea225bbb5389b86a1edc612c2e994cd2c2dd
+	sha256sums = 63486548b53627dbcc870c1c15543992d9ec52fbb2228e1c8c70e6ae7c61abfc
 
 pkgname = dt-cli
