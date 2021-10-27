@@ -2,7 +2,7 @@
 
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A neovim plugin to independently run snippets of code'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('cargo' 'gcc-libs')
 changelog=CHANGELOG.md
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c463d367557b6a8780515a3968f54c730316e2bfac3294acc9458a08df134c43')
+sha256sums=('5e9893edeaaf9502669a4670e74313c247c2387cdbf1a1dbd747f07255aa3ccd')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
