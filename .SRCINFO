@@ -27,4 +27,3 @@ pkgbase = deepin-dock-git
 	sha512sums = SKIP
 
 pkgname = deepin-dock-git
-
