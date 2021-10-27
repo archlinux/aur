@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=rlang
-_cranver=0.4.11
+_cranver=0.4.12
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,12 +12,11 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=('r>=3.3.0')
 optdepends=(r-cli r-covr r-crayon r-glue r-magrittr r-pak r-pillar r-rmarkdown r-testthat r-vctrs r-withr)
-source=("${pkgname}-${pkgver}.tar.gz::https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('740e926b20b00788a7ea64cb92ddfdc94cdf256b05b0c57059edf7292511d5dd')
-noextract=(${pkgname}-${pkgver}.tar.gz)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('2a26915738be120a56ec93e781bcb50ffa1031e11904544198b4a15c35029915')
 
 build() {
-  R CMD INSTALL ${pkgname}-${pkgver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_cranname}-${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
