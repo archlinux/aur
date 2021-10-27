@@ -1,7 +1,7 @@
 pkgbase = golang-deepin-gir-git
 	pkgdesc = Generate static golang bindings for GObject
-	pkgver = 2.0.2.r7.g847d94d
-	pkgrel = 1
+	pkgver = 2.0.2.r8.g911db08
+	pkgrel = 2
 	url = https://github.com/linuxdeepin/go-gir-generator
 	arch = any
 	groups = deepin-git
@@ -20,4 +20,3 @@ pkgbase = golang-deepin-gir-git
 	sha512sums = f39080fe660de5bf9e8d8fd7db5c9449866594c7286c013392768eeb4af9f459c0fff2956c9a07d4df772a7facd249d890930796dd7692a3a401832b4160bef6
 
 pkgname = golang-deepin-gir-git
-
