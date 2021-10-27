@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=SummarizedExperiment
-_bcver=1.22.0
+_bcver=1.23.5
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(Artistic-2.0)
 depends=('r>=4.0.0' 'r-matrixgenerics>=1.1.3' 'r-genomicranges>=1.41.5' r-biobase 'r-biocgenerics>=0.37.0' 'r-s4vectors>=0.27.12' 'r-iranges>=2.23.9' 'r-genomeinfodb>=1.13.1' 'r-delayedarray>=0.15.10')
 optdepends=(r-hdf5array r-annotate r-annotationdbi r-hgu95av2.db r-genomicfeatures r-txdb.hsapiens.ucsc.hg19.knowngene r-jsonlite r-rhdf5 r-airway r-biocstyle r-knitr r-rmarkdown r-runit r-testthat r-digest)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('2f58077942686218a01ef5645a41516a71eea7f666450a2b32713d69662cd79a')
+sha256sums=('61b5154f1a985949a7edffb115fe25f82e4c7138012cc1635ae199842f7c98f0')
 
 build() {
   cd "${srcdir}"
