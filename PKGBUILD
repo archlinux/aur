@@ -1,7 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: ryanvade
 pkgname=gnome-shell-extension-hibernate-status-git
-pkgver=1.10.r6.ga2af921
+pkgver=1.10.r18.g32008bc
 pkgrel=1
 pkgdesc="GNOME Shell extension that adds a hibernate/hybrid suspend button in Status menu."
 arch=('any')
@@ -15,16 +16,16 @@ source=('git+https://github.com/arelange/gnome-shell-extension-hibernate-status.
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	make
+  cd "$srcdir/${pkgname%-git}"
+  make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir" install
+  cd "$srcdir/${pkgname%-git}"
+  make DESTDIR="$pkgdir" install
 }
