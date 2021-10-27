@@ -1,0 +1,35 @@
+diff --unified --recursive --text a/build.gradle b/build.gradle
+--- a/build.gradle	2021-10-14 15:56:23.135659680 +0000
++++ b/build.gradle	2021-10-14 16:06:01.380243952 +0000
+@@ -2,12 +2,11 @@
+     id 'java'
+     id 'com.github.johnrengelman.shadow' version '6.0.0'
+     id 'maven-publish'
+-    id 'com.palantir.git-version' version '0.12.3'
+ }
+
+ group = 'com.conveyal'
+ // set version to `git describe --tags --always --first-parent`, plus '.dirty' if local changes are present.
+-version gitVersion()
++version 'v6.4'
+
+ java {
+     sourceCompatibility = JavaVersion.VERSION_11
+@@ -93,14 +92,13 @@
+ // such as the full commit ID and branch name, rather than just the version available in the JAR manifest.
+ task createVersionProperties(dependsOn: processResources) {
+     doLast {
+-        def details = versionDetails()
+         def dir = new File(buildDir, "resources/main/com/conveyal/r5/")
+         mkdir(dir)
+         new File(dir, "version.properties").withWriter { w ->
+             Properties p = new Properties()
+-            p['version'] = project.version.toString()
+-            p['commit'] = details.gitHashFull
+-            p['branch'] = details.branchName ?: "NONE" // avoid NPE when building pushed tag
++            p['version'] = version
++            p['commit'] = ""
++            p['branch'] = ""
+             p.store w, null
+         }
+         // Also make a simple one-line version.txt for scripts to use
