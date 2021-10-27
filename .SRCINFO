@@ -14,8 +14,8 @@ pkgbase = obs-advanced-scene-switcher
 	depends = libxtst
 	depends = opencv
 	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.16.1
-	source = git+https://github.com/chriskohlhoff/asio.git
-	source = git+https://github.com/zaphoyd/websocketpp.git
+	source = asio::git+https://github.com/chriskohlhoff/asio.git
+	source = websocketpp::git+https://github.com/zaphoyd/websocketpp.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

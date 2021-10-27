@@ -11,8 +11,8 @@ depends=("obs-studio" "libxss" "libxtst" "opencv")
 makedepends=("cmake" "git")
 source=(
   "$pkgname::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=$pkgver"
-  "git+https://github.com/chriskohlhoff/asio.git"
-  "git+https://github.com/zaphoyd/websocketpp.git"
+  "asio::git+https://github.com/chriskohlhoff/asio.git"
+  "websocketpp::git+https://github.com/zaphoyd/websocketpp.git"
 )
 sha256sums=(
   "SKIP"
