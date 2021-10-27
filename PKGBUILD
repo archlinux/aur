@@ -2,7 +2,7 @@
 # Contributor: Jooa <aur at (name) dot xyz>
 
 _cranname=raster
-_cranver=3.4-13
+_cranver=3.5-2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,10 @@ pkgdesc="Geographic Data Analysis and Modeling"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
-depends=('r>=3.5.0' 'r-sp>=1.4.1' r-rcpp)
-optdepends=(r-rgdal r-rgeos r-ncdf4 r-igraph r-rastervis r-sf r-tinytest r-gstat r-fields)
+depends=('r>=3.5.0' 'r-sp>=1.4.1' r-rcpp r-terra)
+optdepends=(r-rgdal r-rgeos r-ncdf4 r-igraph r-rastervis r-sf r-tinytest r-gstat r-fields r-exactextractr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('39c284c40a18000ef37773f4952e67bda187be7c1ab62723eab935fee6221388')
+sha256sums=('99565167f3ef41ade08b8466a172fc471c73184815c9fb199f9555db63e03d72')
 
 build() {
   cd "${srcdir}"
