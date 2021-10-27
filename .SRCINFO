@@ -1,0 +1,15 @@
+pkgbase = ly-runit
+	pkgdesc = runit service scripts for ly
+	pkgver = r3
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/ly-runit
+	arch = any
+	license = GPL
+	depends = runit
+	depends = ly
+	source = ly.run
+	source = ly.finish
+	sha256sums = 4b7a1223808a30295a4b09a875dfc7dd1381316f6652f2e043609724f9c6329b
+	sha256sums = d3f8534ffd8c01e27e5d91a807c3017e3d94ae0b05d56a53b0741739943e7983
+
+pkgname = ly-runit
