@@ -94,3 +94,4 @@ then
 		systemctl restart dnsmasq
 	fi
 fi
+echo exe over
