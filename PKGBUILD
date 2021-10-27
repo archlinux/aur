@@ -13,7 +13,7 @@
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=97.0.4676.0
+pkgver=97.0.4681.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -496,14 +496,15 @@ prepare() {
   tools/clang/scripts/update.py
 
   # Use chromium-dev as brand name.
-  sed -e 's|=Chromium|&-dev|g' \
+  sed -e 's|=Chromium|&-Dev|g' \
       -i chrome/app/theme/chromium/BRANDING
   sed -e '0,/output_name = "chrome"/s/= "chrome"/= "chromium-dev"/' \
       -e 's|root_out_dir/chrome"|root_out_dir/chromium-dev"|g' \
       -i chrome/BUILD.gn
   sed -e 's|"chromium-browser"|"chromium-dev"|g' \
+      -e 's|"Chromium"|"Chromium-Dev"|g' \
       -i media/audio/pulse/pulse_util.cc
-  sed -e 's|"Chromium|&-dev|g' \
+  sed -e 's|"Chromium|&-Dev|g' \
       -i chrome/common/chrome_constants.cc
   sed -e 's|chromium-browser|chromium-dev|g' \
       -i chrome/browser/shell_integration_linux.cc \
@@ -514,7 +515,7 @@ prepare() {
       -e 's|/usr/share/chromium|&-dev|' \
       -i chrome/common/chrome_paths.cc
   sed -e 's|/etc/chromium|&-dev|' \
-      -e "s|'app_name': 'Chromium|&-dev|g" \
+      -e "s|'app_name': 'Chromium|&-Dev|g" \
       -i components/policy/tools/template_writers/writer_configuration.py
 
   # Fix(?) the name of the sandbox.
@@ -583,7 +584,7 @@ prepare() {
 }
 
 build() {
-  # set python 2 for build pnacl.
+  # set python for build pnacl.
   export PNACLPYTHON=/usr/bin/python
 
   msg2 "Build the Launcher"
@@ -618,7 +619,7 @@ build() {
   CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
   msg2 "Starting building Chromium..."
-#   LC_ALL=C buildtools/linux64/gn args out/Release --list && exit # Debug: this command list the build options.
+#   LC_ALL=C buildtools/linux64/gn args out/Release --list && exit # DEBUG: this command list the build options.
   LC_ALL=C buildtools/linux64/gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python
 
   # Build all.
