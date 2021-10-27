@@ -126,6 +126,7 @@ exit
   addip $line
  done
   
+  echo add china-ip Over
   
 
 
