@@ -1,8 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=romvault
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A tool for managing your ROMs and DATs for emulators"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.zip::$url/download/ROMVault_V$pkgver.zip"
         "$pkgname.desktop"
         "$pkgname.png"
         'tmpfiles.d.conf')
-sha256sums=('d593c1069e2725810aaea0666b691f3ca546bf88406e2378cdd8983a14349399'
+sha256sums=('b2ae37a83f8766bada95d29e492b3c104c27c6612d2a055ada1e9cf7b576c0fe'
             '996bf0d32dc11506ea2635d64474c24399fab25933463f27d70cfa1d50431a16'
             'fab2a40272370226000afbd5dffb9502a664d1b93896b15583f1f3705250e5f4'
             '7970f3966dee1f9aa7d5b311753dbeaa7a7878e9fa7cb14e6be886900706a41d'
