@@ -1,6 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # from: gitlab gitlab.gnome.org
 # what: GNOME/gedit
+# match! alpha[0-9]*$
 
 pkgname=gedit-menubar
 pkgver=41.alpha
