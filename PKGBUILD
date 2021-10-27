@@ -1,11 +1,11 @@
 # Maintainer: Mubashshir <ahmubashshir at gmail dot com>
 # Inspired by: aur/anbox-image-gapps
 # shellcheck shell=bash disable=SC2034,SC2164,SC2154
-# from: pkgver
+# from: function
 
 pkgname=anbox-image-nocsd-gapps
 pkgver=1.gapps.20211027
-pkgrel=2
+pkgrel=3
 pkgdesc="Android image for running in Anbox, with no-csd patch, OpenGApps and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -21,18 +21,15 @@ _gapps_list=(
   'vending-x86_64'
 )
 
-_anbox_rel="$(curl --config /dev/null -o /dev/null -Ls https://github.com/thdaemon/anbox/releases/latest -w '%{url_effective}\n'|xargs basename)"
-_gapps_rel="$(curl -s -L https://api.opengapps.org/list | sed -r 's/.*-x86_64-7.1-pico-([0-9]+).zip'\"'.*/\1/')"
-_gapps_md5="$(curl -s "https://downloads.sourceforge.net/project/opengapps/x86_64/$_gapps_rel/open_gapps-x86_64-7.1-pico-$_gapps_rel.zip.md5"|sed -E 's/^([[:alnum:]]+)\s.*/\1/g')"
 source=(
-  "android_amd64.img::https://github.com/thdaemon/anbox/releases/download/$_anbox_rel/android.img"
+  "android_amd64.img::https://github.com/thdaemon/anbox/releases/download/ssd-pr-v${pkgver%.gapps*}/android.img"
   "houdini_y.sfs::https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
   "houdini_z.sfs::https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
   "media_codecs.xml"
   "media_codecs_google_video.xml"
   "media_codecs_google_audio.xml"
   "media_codecs_google_telephony.xml"
-  "open_gapps-x86_64-7.1-pico-$_gapps_rel.zip::https://downloads.sourceforge.net/project/opengapps/x86_64/$_gapps_rel/open_gapps-x86_64-7.1-pico-$_gapps_rel.zip"
+  "open_gapps-x86_64-7.1-pico-${pkgver#*gapps.}.zip::https://downloads.sourceforge.net/project/opengapps/x86_64/${pkgver#*gapps.}/open_gapps-x86_64-7.1-pico-${pkgver#*gapps.}.zip"
 )
 
 md5sums=('6c31bf493856f982da3d7d78b6e23b85'
@@ -44,7 +41,12 @@ md5sums=('6c31bf493856f982da3d7d78b6e23b85'
          '0a59e1a43891f21a09fe06f18f0f5feb'
          'bbe49d1c9c935e7f5d642291c105599d')
 
-pkgver () {
+function:pkgver () {
+  local _anbox_rel _gapps_rel
+
+  _anbox_rel="$(curl --config /dev/null -o /dev/null -Ls https://github.com/thdaemon/anbox/releases/latest -w '%{url_effective}\n'|xargs basename)"
+  _gapps_rel="$(curl -s -L https://api.opengapps.org/list | sed -r 's/.*-x86_64-7.1-pico-([0-9]+).zip'\"'.*/\1/')"
+
   echo "${_anbox_rel#*v}.gapps.$_gapps_rel"
 }
 
