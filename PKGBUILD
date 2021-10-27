@@ -42,7 +42,7 @@ source=("https://gitlab.freedesktop.org/${pkgname}/${pkgname}/-/archive/${pkgver
 
 sha256sums=('55a461003ece0a4daeffb8b7ac2178977c5ce024a7e688d24f6d2230465b50ba'
             'de4369ad5a5511b684305e3a882c2c56204696514ea8ccdb556dd656eca062e7'
-            '7afa97d21444cbac7a6213edda09d9fa73ecbef1a6cea1e745f56669760c6120'
+            '748e0cfa0e10ab781bc202fceeed46e765ed788784f1b85945187b0f29eafad7'
             '373ec20fe4c47e693a0c45cc06dd906e35dd1d70a85546bd1d571391de11763a'
             '06b31999cf60f49e536c7a12bc1c4f75f2671feb848bf5ccb91a963147e2680d'
             '86d0230d9393c9d83eb7bb430e6b0fb5e3f32e78fcd30f3ecd4e6f3c30b18f71'
@@ -108,8 +108,9 @@ package() {
 	for i in {sddm,lxdm,lightdm}-plymouth.service; do
 		install -Dm644 "$srcdir/$i" "$pkgdir/usr/lib/systemd/system/$i"
 	done
-	
-	ln -s "/usr/lib/systemd/system/gdm.service" "$pkgdir/usr/lib/systemd/system/gdm-plymouth.service"
+
+# soft-linking gdm-plymouth is deprecated and no longer necessary	
+#	ln -s "/usr/lib/systemd/system/gdm.service" "$pkgdir/usr/lib/systemd/system/gdm-plymouth.service"
 
 	install -Dm644 "$srcdir/plymouth-deactivate.service" 	"$pkgdir/usr/lib/systemd/system/plymouth-deactivate.service"
 #	install -Dm644 "$srcdir/plymouth-start.path" 	"$pkgdir/usr/lib/systemd/system/plymouth-start.path"
