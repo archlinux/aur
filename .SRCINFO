@@ -1,6 +1,6 @@
 pkgbase = deepin-pw-check-git
 	pkgdesc = deepin-pw-check is a tool to verify the validity of the password
-	pkgver = 5.0.11.r0.ge65055d
+	pkgver = 5.0.11.r12.g5131a8b
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-pw-check
 	arch = x86_64
@@ -13,8 +13,9 @@ pkgbase = deepin-pw-check-git
 	depends = cracklib
 	depends = iniparser
 	depends = pam
+	provides = deepin-pw-check
+	conflicts = deepin-pw-check
 	source = deepin-pw-check-git::git://github.com/linuxdeepin/deepin-pw-check
 	sha512sums = SKIP
 
 pkgname = deepin-pw-check-git
-
