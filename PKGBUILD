@@ -2,11 +2,16 @@
 
 pkgname="mpv-handler"
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("x86_64")
-depends=("mpv" "youtube-dl")
+depends=("mpv")
+optdepends=(
+  "youtube-dl: ytdl-hook support"
+  "yt-dlp: alternatives ytdl-hook support"
+)
 makedepends=("cargo" "git")
+install="mpv-handler.install"
 url="https://github.com/akiirui/mpv-handler/"
 license=("MIT")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akiirui/mpv-handler/archive/v$pkgver.tar.gz")
