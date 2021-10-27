@@ -1,0 +1,12 @@
+post_install() {
+	echo " ==> Add the mullvad daemon to system startup wtih 'rc-update add mullvadd default'"
+	echo " ==> Start the mullvad daemon now with 'rc-service mullvadd start'"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+pre_remove() {
+	echo " ==> Make sure you run 'rc-update del mullvadd default'"
+}
