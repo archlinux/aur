@@ -1,6 +1,6 @@
 pkgbase = startdde-git
 	pkgdesc = starter of deepin desktop environment
-	pkgver = 5.8.9.r25.gf8a4fc3
+	pkgver = 5.8.22.r50.g95661a3
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/startdde
 	arch = x86_64
@@ -27,4 +27,3 @@ pkgbase = startdde-git
 	sha512sums = SKIP
 
 pkgname = startdde-git
-
