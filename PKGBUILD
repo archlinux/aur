@@ -1,8 +1,8 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname=ttf-plemoljp
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Plex Mono Language JP'
 arch=('any')
 url='https://github.com/yuru7/PlemolJP'
