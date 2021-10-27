@@ -47,4 +47,3 @@ pkgbase = deepin-file-manager-git
 	sha512sums = SKIP
 
 pkgname = deepin-file-manager-git
-
