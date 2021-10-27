@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=6.18.323_r491.f9b5921
+pkgver=7.0_r513.bfda272
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
