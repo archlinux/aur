@@ -1,0 +1,16 @@
+pkgbase = python-awesomeversion-git
+	pkgdesc = One version package to rule them all.
+	pkgver = 21.10.1.r1.g7121d5e
+	pkgrel = 1
+	url = https://github.com/ludeeus/awesomeversion
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	provides = python-awesomeversion
+	conflicts = python-awesomeversion
+	source = git+https://github.com/ludeeus/awesomeversion.git
+	sha512sums = SKIP
+
+pkgname = python-awesomeversion-git
