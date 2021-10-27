@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.13.13.arch1
+pkgver=5.14.14.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -21,7 +21,9 @@ source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
   bfq-default.patch
-  futex2-tkg.patch
+  'https://raw.githubusercontent.com/Frogging-Family/linux-tkg/67c26a6228341deb4a85484e50971897dc93d841/linux-tkg-patches/5.14/0007-v5.14-fsync.patch'
+  'https://raw.githubusercontent.com/Frogging-Family/linux-tkg/67c26a6228341deb4a85484e50971897dc93d841/linux-tkg-patches/5.14/0007-v5.14-futex2_interface.patch'
+  'https://raw.githubusercontent.com/Frogging-Family/linux-tkg/67c26a6228341deb4a85484e50971897dc93d841/linux-tkg-patches/5.14/0007-v5.14-winesync.patch'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -30,10 +32,12 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'cc223f9f6eb7fc72cc8f5939e68fa1965210b105966f40cf64666eef1ccb9dd9'
+            '29f1d67f358a610e9fe821e27c5a093a192a38c57b1c9d531476da636234de79'
             # -- covolunablu-gaming patches --
             'f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d'
-            '32cf6c57412a8ac7272c83a7f44da56f1c6ef9c3ad389d7f37cdc4f8ffd6ae6e'
+            'aa67e81a27d9062e463594acb91eca6dd13388f23cbe53ca56298f9dba61cc10'
+            'efe5e21706fdf64559ead866c85a5d88c5c3f743d814410df3810ca61cc5b966'
+            '034d12a73b507133da2c69a34d61efd2f6b6618549650aa26d748142d22002e1'
 )
 
 export KBUILD_BUILD_HOST=covolunablu
@@ -60,7 +64,8 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-  
+  diff -u ../config .config || :
+
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
