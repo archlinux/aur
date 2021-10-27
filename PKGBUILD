@@ -1,9 +1,6 @@
 # Maintainer: Prayz Jomba <prayzjomba@protonmail.com>
 pkgname=ywatch-git
-pkgver=0.6.3.r61.b5a1352
-pkgver() { cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Watch youtube videos with mpv while saving the video to disk."
 arch=(any)
@@ -14,8 +11,9 @@ makedepends=('git' 'make' 'python-setuptools')
 provides=(yw)
 install=
 changelog=
-source=("$pkgname"::"git+$url#branch=0.6.3")
+source=("$pkgname"::"git+$url#branch=$pkgver")
 md5sums=('SKIP')
+
 
 pkgver() {
   cd "$pkgname"
