@@ -57,7 +57,9 @@ package() {
     make DESTDIR="$pkgdir/" install
     mkdir -p $pkgdir/usr/share/chromium/extensions
     mkdir -p $pkgdir/etc/chromium/native-messaging-hosts
-    ln -sf "/etc/opt/chrome/native-messaging-hosts/eu.webeid.json" "$pkgdir/etc/chromium/native-messaging-hosts/eu.webeid.json"
+    mkdir -p $pkgdir/etc/opt/chrome/native-messaging-hosts
+    ln -sf "/usr/share/chrome-token-signing/eu.webeid.json" "$pkgdir/etc/chromium/native-messaging-hosts/eu.webeid.json"
+    ln -sf "/usr/share/chrome-token-signing/eu.webeid.json" "$pkgdir/etc/opt/chrome/native-messaging-hosts/eu.webeid.json"
     ln -sf "/usr/share/google-chrome/extensions/ncibgoaomkmdpilpocfeponihegamlic.json" "$pkgdir/usr/share/chromium/extensions/ncibgoaomkmdpilpocfeponihegamlic.json"
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/web-eid/LICENSE"
 }
