@@ -1,18 +1,21 @@
 pkgbase = telegrand-git
 	pkgdesc = A Telegram client for GNOME
-	pkgver = r306.47975be
+	pkgver = r438.a846f05
 	pkgrel = 1
 	url = https://github.com/melix99/telegrand
 	arch = x86_64
-	arch = i686
 	license = GPL3
 	makedepends = git
-	makedepends = rust
 	makedepends = meson
+	makedepends = rust
 	depends = gtk4
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-bad
 	depends = libadwaita-git
 	depends = telegram-tdlib
+	provides = telegrand
+	conflicts = telegrand
 	source = git+https://github.com/melix99/telegrand.git
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = telegrand-git
