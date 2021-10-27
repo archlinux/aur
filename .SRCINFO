@@ -1,0 +1,22 @@
+pkgbase = hydrapaper-no-pandoc-git
+	pkgdesc = Wallpaper manager with multi monitor support (without pandoc dependency, this disables the man page)
+	pkgver = 3.1.0.r7.gbcc1d1f
+	pkgrel = 1
+	url = https://hydrapaper.gabmus.org
+	arch = any
+	license = GPL3
+	checkdepends = appstream
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = dbus-python
+	depends = python-gobject
+	depends = python-pillow
+	provides = hydrapaper
+	conflicts = hydrapaper
+	source = hydrapaper::git+https://gitlab.gnome.org/GabMus/HydraPaper.git
+	sha256sums = SKIP
+
+pkgname = hydrapaper-no-pandoc-git
