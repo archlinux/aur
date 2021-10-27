@@ -8,7 +8,7 @@ pkgname=cnijfilter-common
 _pkgname=cnijfilter
 
 pkgver=4.10
-pkgrel=3
+pkgrel=4
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (Common Package)"
@@ -17,7 +17,8 @@ url="http://www.canon-europe.com/support/pixma_software/"
 arch=('i686' 'x86_64')
 license=('custom')
 
-conflicts=('lib32-cnijfilter320')
+conflicts=('lib32-cnijfilter320'
+           'canon-pixma-mx920-complete')
 
 makedepends_x86_64=('gcc-multilib')
 depends_x86_64=('lib32-libcups' 'lib32-popt' 'lib32-libusb' 'lib32-libxml2')
