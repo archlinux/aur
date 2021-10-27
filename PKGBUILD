@@ -21,7 +21,7 @@ depends=("pandoc=$_pandoc_ver")
 makedepends=('stack' 'pandoc')
 source=("$pkgname::git+$url.git" ver-bump.patch)
 sha256sums=('SKIP'
-            '2b0bc163d95cd13de4db1d07ab998e0e8ea15087302a65b3c10dd224bd2bbbba')
+            'f10608b2271bc7ca6df5a6066755f6f779560d91c1aad842261636688da747a4')
 
 pkgver() {
     cd "$pkgname"
