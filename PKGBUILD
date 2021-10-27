@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=web-eid
-pkgver=1.0.0.512
-_rls_tag=1.0.0
+pkgver=1.0.2.512
+_rls_tag=v1.0.2
 pkgrel=1
 pkgdesc="Web eID browser extension for chromium and native application"
 arch=('x86_64')
