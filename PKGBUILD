@@ -16,7 +16,7 @@
 
 
 pkgname=zoneminder
-pkgver=1.36.9
+pkgver=1.36.10
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
