@@ -1,0 +1,14 @@
+pkgbase = snapraid-btrfs-git
+	pkgdesc = snapraid-btrfs is a script for using SnapRAID with data drives which are formatted with btrfs.
+	pkgver = v0.14.0.r2.4f51a6d
+	pkgrel = 1
+	url = https://github.com/automorphism88/snapraid-btrfs.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	optdepends = snapraid: tool for Snapshot RAID
+	source = git+https://github.com/automorphism88/snapraid-btrfs
+	sha256sums = SKIP
+
+pkgname = snapraid-btrfs-git
