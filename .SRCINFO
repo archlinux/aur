@@ -1,0 +1,16 @@
+pkgbase = ignore-it
+	pkgdesc = ignore-it - your command line tool for creating .gitignore files
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/lolcatbois/ignore-it
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-colorize
+	depends = ruby-thor
+	noextract = ignore-it-1.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ignore-it-1.1.0.gem
+	sha256sums = e4acae96ed20e568f82ac7cc98973550d16f6952e1eb113909c74be325b47a96
+
+pkgname = ignore-it
