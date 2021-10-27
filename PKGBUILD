@@ -2,7 +2,7 @@
 # Contributor: Static_Rocket
 
 pkgname=asusctl
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="Asus hardware control utilities"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libusb' 'systemd' 'power-profiles-daemon')
 optdepends=('acpi_call: fan control')
 makedepends=('git' 'rust')
 conflicts=('asusctl-git')
-_commit=c52582a413eac38d9f2c6349c179bb7de55c62f2  # tags/4.0.4^0
+_commit=a925cbaed513bb453075fd74f53a17ad000c55ef  # tags/4.0.5^0
 source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
