@@ -3,7 +3,7 @@
 pkgname=obs-midi
 _pkgver=0.9.3-ALPHA-3.66
 pkgver=`echo "$_pkgver" | tr - _`
-pkgrel=2
+pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/advanced-scene-switcher.395/"
