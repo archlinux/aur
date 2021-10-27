@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=sdtui-git
 _pkgname=sdtui
-pkgver=r243.5190601
+pkgver=r254.46e9b7b
 pkgrel=1
 pkgdesc="StarDict TUI and GUI"
 url="https://git.janouch.name/p/sdtui"
@@ -10,7 +10,7 @@ license=('custom:0BSD')
 options=(zipman)
 conflicts=('sdtui')
 provides=('sdtui')
-makedepends=('cmake' 'pkg-config' 'git' 'asciidoctor')
+makedepends=('cmake' 'pkg-config' 'git' 'asciidoctor' 'librsvg')
 depends=('zlib' 'glib2' 'ncurses' 'pango')
 optdepends=('libxcb: X11 selection watcher' 'gtk3: sdgui')
 source=("git+https://git.janouch.name/p/$_pkgname")

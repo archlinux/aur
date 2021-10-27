@@ -1,6 +1,6 @@
 pkgbase = sdtui-git
 	pkgdesc = StarDict TUI and GUI
-	pkgver = r243.5190601
+	pkgver = r254.46e9b7b
 	pkgrel = 1
 	url = https://git.janouch.name/p/sdtui
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = sdtui-git
 	makedepends = pkg-config
 	makedepends = git
 	makedepends = asciidoctor
+	makedepends = librsvg
 	depends = zlib
 	depends = glib2
 	depends = ncurses
