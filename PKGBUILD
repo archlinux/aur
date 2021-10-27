@@ -7,8 +7,8 @@ arch=('i686' 'x86_64')
 url='http://santuario.apache.org/'
 license=('Apache')
 depends=('xerces-c' 'xalan-c')
-source=("https://www.apache.org/dist/santuario/c-library/$pkgname-$pkgver.tar.bz2.asc"
-        "https://www.apache.org/dist/santuario/c-library/$pkgname-$pkgver.tar.bz2"
+source=("https://archive.apache.org/dist/santuario/c-library/$pkgname-$pkgver.tar.bz2.asc"
+        "https://archive.apache.org/dist/santuario/c-library/$pkgname-$pkgver.tar.bz2"
         "xalan-c-1.12.patch")
 sha256sums=('SKIP'
             '39e963ab4da477b7bda058f06db37228664c68fe68902d86e334614dd06e046b'
