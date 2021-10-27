@@ -3,12 +3,13 @@ pkgname=threema-desktop
 _binname=threema
 pkgver=1.0.3
 _threema_web_ver=2.3.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Threema Desktop (Threema Web in Electron)."
 arch=("x86_64")
 url="https://github.com/threema-ch/threema-web-electron"
 license=('AGPL')
 depends=(electron)
+makedepends=(npm)
 source=(
   "https://github.com/threema-ch/threema-web-electron/archive/refs/tags/release-${pkgver}-latest.tar.gz"
   "https://github.com/threema-ch/threema-web/archive/refs/tags/v${_threema_web_ver}.tar.gz"
