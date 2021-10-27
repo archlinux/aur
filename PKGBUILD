@@ -1,4 +1,5 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
+
 _pluginname=scale-to-sound
 pkgname=obs-$_pluginname
 pkgver=1.0.0
@@ -20,10 +21,10 @@ sha256sums=(
 )
 
 prepare() {
-  rm -rf fakeroot
-
   cd "obs-studio-$_obsver"/plugins
+
   cp -r "$srcdir/$pkgname-$pkgver" .
+
   echo "add_subdirectory($pkgname-$pkgver)" >> CMakeLists.txt
 }
 
@@ -55,11 +56,17 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/lib/obs-plugins
-  mkdir -p "$pkgdir"/usr/share/obs/obs-plugins
+  mkdir -p $pkgdir/usr/lib/obs-plugins
+  mkdir -p $pkgdir/usr/share/obs/obs-plugins
 
   cd "obs-studio-$_obsver"
-  make -C build DESTDIR="$srcdir/fakeroot/" install
-  cp -a "$srcdir"/fakeroot/usr/lib/obs-plugins/$_pluginname.so "$pkgdir"/usr/lib/obs-plugins/
-  cp -a "$srcdir"/fakeroot/usr/share/obs/obs-plugins/$_pluginname "$pkgdir"/usr/share/obs/obs-plugins/
+
+  _fake_install_dir="$srcdir/obs-install"
+
+  make -C build DESTDIR="$_fake_install_dir/" install
+
+  cp -a $_fake_install_dir/usr/lib/obs-plugins/$_pluginname.so $pkgdir/usr/lib/obs-plugins/
+  cp -a $_fake_install_dir/usr/share/obs/obs-plugins/$_pluginname $pkgdir/usr/share/obs/obs-plugins/
+
+  rm -rf $_fake_install_dir
 }
