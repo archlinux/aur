@@ -8,7 +8,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-skia-bin
-pkgver=1.2.29
+pkgver=1.2.30
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v${pkgver}/Asepr
 'aseprite.desktop'
 )
 noextract=('Skia-Linux-Release-x64.zip')
-sha256sums=('ed37e12495bf81ad1126076ec2634b132976c40dd56d4f3924e6fddad4a1e2e4'
+sha256sums=('9f4b098fe2327f2e9d73eb9f2aeebecad63e87ff2cf6fb6eeeee3c0778bb8874'
             '37cb146efbffb0571a541c48acd7926ed6571cd3aa50be67f8a9b97901e26769'
             'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25')
 
@@ -66,6 +66,7 @@ build() {
   var=$(ninja aseprite | tee /dev/tty)
   var=$(echo $var | grep -o -P '(?<=&&).*(?=&&)')
   var=${var/"lib/libwebp.a"}
+  printf "\n\n:: Executing the linking command. Please wait...\n\n"
   $var
 
 }
