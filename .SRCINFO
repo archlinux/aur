@@ -1,6 +1,6 @@
 pkgbase = pulsemeeter-git
 	pkgdesc = A pulseaudio audio routing application
-	pkgver = 1.2.r2.cc07c2a
+	pkgver = 1.2.r4.b419075
 	pkgrel = 1
 	url = https://github.com/theRealCarneiro/pulsemeeter
 	arch = i686
