@@ -1,0 +1,16 @@
+pkgbase = obs-infowriter
+	pkgdesc = This plugin writes a timestamp to a textfile that you can use to mark specific events for later editing of your videos or streams
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://obsproject.com/forum/resources/infowriter.345/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MPL2
+	depends = obs-studio
+	source = OBSInfoWriter-2.1.tar.gz::https://github.com/partouf/OBSInfoWriter/archive/v2.1.tar.gz
+	source = Crosscables-cf621ae938e69cc63e37d4d32a7cbdc32486787b.tar.gz::https://github.com/partouf/Crosscables/archive/cf621ae938e69cc63e37d4d32a7cbdc32486787b.tar.gz
+	sha256sums = 711b207fbd6b17f7964d2cab3a25546b20f55c0c952c08d1f426b99313562a4c
+	sha256sums = 4ba2db4a35aaf5bb1f1d10f07d72218ac81e88ae5c4a5f81c93ee14b3192ec00
+
+pkgname = obs-infowriter
