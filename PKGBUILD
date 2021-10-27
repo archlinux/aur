@@ -1,6 +1,7 @@
 # Maintainer: Sammay Sarkar <(my-name-without-vowels)@gmail.com>
 # Co-Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # from: git
+
 pkgname="openbangla-keyboard"
 pkgver="2.0.0"
 pkgrel=7
@@ -19,6 +20,11 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP')
+
+pkgver() {
+    cd ${pkgname}
+    git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
     cd "$pkgname"
