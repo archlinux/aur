@@ -1,0 +1,12 @@
+post_install() {
+	echo " ==> Add the expressvpn daemon to system startup wtih 'rc-update add expressvpnd default'"
+	echo " ==> Start the expressvpn daemon now with 'rc-service expressvpnd start'"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+pre_remove() {
+	echo " ==> Make sure you run 'rc-update del expressvpnd default'"
+}

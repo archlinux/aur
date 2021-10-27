@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+command=/usr/sbin/expressvpnd
+command_args=""
+pidfile=/var/run/expressvpnd.pid
+name="ExpressVPN Daemon"
+command_background="yes"
+ 
+depend() {
+        # need net
+        :
+}
