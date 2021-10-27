@@ -1,27 +1,27 @@
-diff --unified --recursive --text --color mujoco200_linux/sample/makefile mujoco200_linux.new/sample/makefile
---- mujoco200_linux/sample/makefile	2018-10-02 02:30:53.000000000 -0400
-+++ mujoco200_linux.new/sample/makefile	2020-04-07 15:31:03.552608317 -0400
+diff --unified --recursive --text --color mujoco210/sample/Makefile mujoco210.new/sample/Makefile
+--- mujoco210/sample/Makefile	2018-10-02 02:30:53.000000000 -0400
++++ mujoco210.new/sample/Makefile	2020-04-07 15:31:03.552608317 -0400
 @@ -1,12 +1,12 @@
 -COMMON=-O2 -I../include -L../bin -std=c++11 -mavx -pthread -Wl,-rpath,'$$ORIGIN'
 +COMMON=-O2 -I../include -L../bin -std=c++11 -mavx -pthread $(LDFLAGS)
  
  all:
- 	g++ $(COMMON) testxml.cpp    -lmujoco200nogl                             -o ../bin/testxml
- 	g++ $(COMMON) testspeed.cpp  -lmujoco200nogl                             -o ../bin/testspeed
- 	g++ $(COMMON) compile.cpp    -lmujoco200nogl                             -o ../bin/compile
- 	g++ $(COMMON) derivative.cpp -lmujoco200nogl -fopenmp                    -o ../bin/derivative
--	g++ $(COMMON) basic.cpp      -lmujoco200 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/basic
--	g++ $(COMMON) record.cpp     -lmujoco200 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/record
-+	g++ $(COMMON) basic.cpp      -lmujoco200 -lGL -lGLEW -lglfw -o ../bin/basic
-+	g++ $(COMMON) record.cpp     -lmujoco200 -lGL -lGLEW -lglfw -o ../bin/record
+ 	g++ $(COMMON) testxml.cc    -lmujoco210nogl                             -o ../bin/testxml
+ 	g++ $(COMMON) testspeed.cc  -lmujoco210nogl                             -o ../bin/testspeed
+ 	g++ $(COMMON) compile.cc    -lmujoco210nogl                             -o ../bin/compile
+ 	g++ $(COMMON) derivative.cc -lmujoco210nogl -fopenmp                    -o ../bin/derivative
+-	g++ $(COMMON) basic.cc      -lmujoco210 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/basic
+-	g++ $(COMMON) record.cc     -lmujoco210 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/record
++	g++ $(COMMON) basic.cc      -lmujoco210 -lGL -lGLEW -lglfw -o ../bin/basic
++	g++ $(COMMON) record.cc     -lmujoco210 -lGL -lGLEW -lglfw -o ../bin/record
  	gcc -c -O2 -mavx -I../include ../include/uitools.c
--	g++ $(COMMON) uitools.o simulate.cpp -lmujoco200 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/simulate
-+	g++ $(COMMON) uitools.o simulate.cpp -lmujoco200 -lGL -lGLEW -lglfw -o ../bin/simulate
+-	g++ $(COMMON) uitools.o simulate.cc -lmujoco210 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/simulate
++	g++ $(COMMON) uitools.o simulate.cc -lmujoco210 -lGL -lGLEW -lglfw -o ../bin/simulate
  	rm *.o
-diff --unified --recursive --text --color mujoco200_linux/sample/testxml.cpp mujoco200_linux.new/sample/testxml.cpp
---- mujoco200_linux/sample/testxml.cpp	2018-10-02 02:30:53.000000000 -0400
-+++ mujoco200_linux.new/sample/testxml.cpp	2020-04-07 15:24:45.969266528 -0400
-@@ -139,13 +139,12 @@
+diff --unified --recursive --text --color mujoco210/sample/testxml.cc mujoco210.new/sample/testxml.cc
+--- mujoco210/sample/testxml.cc	2018-10-02 02:30:53.000000000 -0400
++++ mujoco210.new/sample/testxml.cc	2020-04-07 15:24:45.969266528 -0400
+@@ -141,13 +141,12 @@
      if( !d )
          return finish("Could not allocate mjData", m);
  
@@ -41,7 +41,7 @@ diff --unified --recursive --text --color mujoco200_linux/sample/testxml.cpp muj
  
      // save
      if( !mj_saveLastXML(tempfile.c_str(), m, error, 1000) )
-@@ -166,6 +165,7 @@
+@@ -168,6 +167,7 @@
      // delete temp model and file
      mj_deleteModel(mtemp);
      remove(tempfile.c_str());

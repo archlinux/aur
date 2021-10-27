@@ -1,13 +1,13 @@
 # Maintainer: Eric Langlois <eric@langlois.xyz>
 pkgname=mujoco-bin
-pkgver=2.00
+pkgver=2.1.0
 _pkgname="${pkgname%-bin}"
-_pkgnamever="${_pkgname}${pkgver/.}"
-pkgrel=3
-pkgdesc="A fast and accurate physics engine for research and development."
+_pkgnamever="${_pkgname}${pkgver//./}"
+pkgrel=1
+pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
 arch=('x86_64')
-url="https://www.roboti.us"
-license=('custom')
+url="https://www.mujoco.org"
+license=('Apache')
 # A headless version could exclude all of these gl dependencies
 # but I figure the graphical use-case is common enough that it's better to
 # include them and avoid issues when people are not aware that they should
@@ -19,54 +19,31 @@ license=('custom')
 depends=('libgl' 'glew' 'glfw')
 provides=('mujoco')
 conflicts=('mujoco')
-backup=("usr/share/licenses/${_pkgname}/mjkey.txt")
-source=("$url/download/${_pkgnamever}_linux.zip"
-        "${_pkgnamever}_resourcelicense.txt::https://www.roboti.us/resourcelicense.txt"
-        "${pkgname}.patch"
-        "mjkey://mjkey.txt")
-sha256sums=("ba8560040f6ca47dbd89e4731bc9e06080a99eba4583cda95cdedca802389153"
-            "4baa3f457085060d512b24997e448e93a47745ac0de3165b4020f09fbc9befc2"
-            "1a4ba8d66acbde166071d4dadaf0c27a5474243d577683aa4f520d7a52c0dc58"
+source=("$url/download/${_pkgnamever}-linux-x86_64.tar.gz"
+        "${pkgname}.patch")
+sha256sums=("a436ca2f4144c38b837205635bbd60ffe1162d5b44c87df22232795978d7d012"
             "SKIP")
-DLAGENTS+=("mjkey::/usr/bin/echo %u - ${BOLD}${RED} Obtain a license from $url/license.html and place mjkey.txt in \"$PWD\" ${ALL_OFF}")
 
 prepare() {
-	cd "${_pkgnamever}_linux"
-
-	# License Key
-	if ! [ -f "${srcdir}/mjkey.txt" ]; then
-		echo ""
-		echo "MuJoCo Requires a License"
-		echo "========================="
-		echo "Obtain a license from $url/license.html"
-		echo "Place mjkey.txt in the same directory as PKGBUILD"
-		echo ""
-		exit 1
-	fi
-
-	# MuJoCo examples expect license key in current directory.
-	# Change this to the license install location.
-	sed -i'' -e "s#\"mjkey.txt\"#\"/usr/share/licenses/${_pkgname}/mjkey.txt\"#g" sample/*.cpp
+	cd "${_pkgnamever}"
 
 	# Patch testxml so that it works when the model directory is read only
 	patch --forward --strip=1 --input="${srcdir}/${pkgname}.patch"
 }
 
 build() {
-	cd "${_pkgnamever}_linux/sample"
+	cd "${_pkgnamever}/sample"
 
 	# Compile sample programs
 	make
 }
 
 package() {
-	cd "${_pkgnamever}_linux"
+	cd "${_pkgnamever}"
 
 	# Licenses
-	install -Dm644 -t "$pkgdir/usr/share/licenses/${_pkgname}" \
-		"${srcdir}/mjkey.txt" "doc/REFERENCE.txt"
-	install -Dm644 "${srcdir}/${_pkgnamever}_resourcelicense.txt" \
-		"$pkgdir/usr/share/licenses/${_pkgname}/resourcelicense.txt"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/${_pkgname}/" \
+		THIRD_PARTY_NOTICES
 
 	# Include headers
 	install -Dm644 -t "$pkgdir/usr/include/${_pkgname}" include/*.h
@@ -81,7 +58,7 @@ package() {
 		bin/{basic,compile,derivative,record,simulate,testspeed,testxml}
 
 	# Documentation
-	install -Dm644 -t "$pkgdir/usr/share/doc/${_pkgname}" doc/README.txt
+	# install -Dm644 -t "$pkgdir/usr/share/doc/${_pkgname}" doc/README.txt
 	install -Dm644 -t "$pkgdir/usr/share/doc/${_pkgname}/model" model/*
 	install -Dm644 -t "$pkgdir/usr/share/doc/${_pkgname}/sample" sample/*
 
