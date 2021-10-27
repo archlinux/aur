@@ -2,7 +2,7 @@
 
 pkgname=termius-app
 _pkgname=${pkgname%-*}
-pkgver=7.12.0
+pkgver=7.23.2
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
