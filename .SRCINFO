@@ -19,4 +19,3 @@ pkgbase = deepin-polkit-agent-git
 	sha512sums = SKIP
 
 pkgname = deepin-polkit-agent-git
-
