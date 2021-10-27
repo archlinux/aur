@@ -15,12 +15,6 @@ source=("$pkgname"::"git+$url#branch=$pkgver")
 md5sums=('SKIP')
 
 
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-
 build() {
 	cd "$pkgname"
 	python setup.py build
