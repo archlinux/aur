@@ -1,7 +1,7 @@
 # Maintainer: Prayz Jomba <prayzjomba@protonmail.com>
 pkgname=ywatch-git
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch youtube videos with mpv while saving the video to disk."
 arch=(any)
 url="https://github.com/prayzjomba/ywatch.git"
@@ -14,10 +14,9 @@ changelog=
 source=("$pkgname"::"git+$url#branch=$pkgver")
 md5sums=('SKIP')
 
-
 pkgver() {
   cd "$pkgname"
-  printf "0.6.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 

@@ -1,7 +1,7 @@
 pkgbase = ywatch-git
 	pkgdesc = Watch youtube videos with mpv while saving the video to disk.
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prayzjomba/ywatch.git
 	arch = any
 	license = GPL
