@@ -1,0 +1,15 @@
+pkgbase = brother-mfc-j5845dw
+	pkgdesc = LPR driver and CUPS wrapper for Brother MFC-J5845DW printer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcj5845dw_us
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	optdepends = brscan4
+	source = https://download.brother.com/welcome/dlf103885/mfcj5845dwpdrv-1.0.0-0.i386.deb
+	md5sums = 1a273e62c454f8000e79350cd8bfe57e
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j5845dw
