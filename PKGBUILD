@@ -51,14 +51,11 @@ optdepends=('bluedevil: needed for lxqt-kcm-bluetooth'
             'plasma-desktop: needed for lxqt-kcm-appearance colors and styles'
             'kcm-wacomtablet: wacom tablet kcm support'
             'print-manager: printing kcm support'
-	    'fancontrol-kcm: fancontrol kcm support'
-	    'kcm-fcitx: fcitx input method kcm support'
-	    'kcm-fcitx5-git: fcitx5 input method kcm support'
 	    'plymouth-kcm: plymouth kcm support'
 	    'sddm-kcm: sddm kcm support'
 	    'kdeconnect: kdeconnect kcm support'
 	    'plasma-thunderbolt: thunderbolt kcm support'
-	    'nx-firewall-git: ufw firewall kcm support'
+	    'plasma-firewall: ufw firewall kcm support'
 	   )
 
     provides=('lxqt-kcm-integration-extra' 'lxqt-kcm-integration-git' 'lxqt-kcm-integration')

@@ -20,15 +20,11 @@ pkgname = lxqt-kcm-integration-extra-git
 	optdepends = plasma-desktop: needed for lxqt-kcm-appearance colors and styles
 	optdepends = kcm-wacomtablet: wacom tablet kcm support
 	optdepends = print-manager: printing kcm support
-	optdepends = fancontrol-kcm: fancontrol kcm support
-	optdepends = kcm-fcitx: fcitx input method kcm support
-	optdepends = kcm-fcitx5-git: fcitx5 input method kcm support
 	optdepends = plymouth-kcm: plymouth kcm support
 	optdepends = sddm-kcm: sddm kcm support
 	optdepends = kdeconnect: kdeconnect kcm support
 	optdepends = plasma-thunderbolt: thunderbolt kcm support
-	optdepends = nx-firewall-git: ufw firewall kcm support
+	optdepends = plasma-firewall: ufw firewall kcm support
 	provides = lxqt-kcm-integration-extra
 	provides = lxqt-kcm-integration-git
 	provides = lxqt-kcm-integration
-
