@@ -1,17 +1,17 @@
 pkgbase = r-generics
 	pkgdesc = Common S3 Generics not Provided by Base R Methods Related to Model Fitting
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=generics
 	arch = any
 	license = GPL2
-	depends = r>=3.1
+	depends = r>=3.2
 	optdepends = r-covr
 	optdepends = r-pkgload
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/generics_0.1.0.tar.gz
-	sha256sums = ab71d1bdbb66c782364c61cede3c1186d6a94c03635f9af70d926e2c1ac88763
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/generics_0.1.1.tar.gz
+	sha256sums = a2478ebf1a0faa8855a152f4e747ad969a800597434196ed1f71975a9eb11912
 
 pkgname = r-generics
-

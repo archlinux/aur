@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=generics
-_cranver=0.1.0
+_cranver=0.1.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,10 @@ pkgdesc="Common S3 Generics not Provided by Base R Methods Related to Model Fitt
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
-depends=('r>=3.1')
-optdepends=(r-covr r-pkgload r-testthat r-tibble)
+depends=('r>=3.2')
+optdepends=(r-covr r-pkgload r-testthat r-tibble r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('ab71d1bdbb66c782364c61cede3c1186d6a94c03635f9af70d926e2c1ac88763')
+sha256sums=('a2478ebf1a0faa8855a152f4e747ad969a800597434196ed1f71975a9eb11912')
 
 build() {
   cd "${srcdir}"
