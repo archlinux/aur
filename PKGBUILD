@@ -7,7 +7,7 @@
 pkgname=zenmap
 _pkgname=nmap
 pkgver=7.92
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical Nmap frontend and results viewer"
 url="https://nmap.org/"
 arch=("any")
