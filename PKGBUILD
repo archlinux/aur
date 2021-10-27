@@ -1,14 +1,15 @@
+# Maintainer: PrivateGER <privateger@privateger.me>
 pkgname=patreon-dl
-pkgver=0.1.1
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc='A downloader for Patreon content.'
 arch=('x86_64' 'arm' 'aarch64')
-url="https://github.com/PrivateGER/$pkgname"
+url="https://github.com/PrivateGER/patreon-dl"
 license=('Unlicense')
 depends=('glibc')
 makedepends=('go')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fa706a5902b9d9f3c86f1fbbfa3fad8bde4a0c15e2c0e32328e5ec6ee6a65990')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('1cd9d5123f4af5c9ca93c655f376c3d65ec7c5a13cdd505eb502ce9dc93b21b8')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -22,7 +23,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="-Wl,-z,relro,-z,now"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -ldflags "-X main.buildVersion=$VERSION" -o build ./...
+  go build -ldflags "-X main.version=$pkgver" -o build ./...
 }
 
 check() {
