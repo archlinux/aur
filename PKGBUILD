@@ -1,7 +1,7 @@
 # Maintainer: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 
 pkgname=teamspeak
-pkgver=5.0.0beta65.1
+pkgver=5.0.0beta66
 pkgrel=1
 pkgdesc="Software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
@@ -65,30 +65,39 @@ depends=('alsa-lib'
 	'zstd')
 optdepends=('libpulse')
 arch=('x86_64')
-source=('teamspeak.desktop'
-        'teamspeak.svg'
-        "teamspeak-client-$pkgver.tar.xz::http://update.teamspeak.com/linux/x64/latest/0-1632399768.patch")
-sha512sums=('57c618d386023d27fcb5f6b7e5ce38fe7012680988aff914eeb6c246d855b190689bbad08d9824c864c1776af322e8df34019234128beb306a09b114673b37c9'
-            '3b0c7fe2e71eb207a9874c3fba31c18067867481d81c7a8a2a9fef5956f04cfbd559186f6996e2e3d79292d1aaaae443ab6ea6272d0f6b3205fdd12387de27b0'
-            '793a1cc3bcf6241edce2c8a0bf6e3ecc3546e79c69100926942768211ad24b233b68d41ccf2e3472a96081acf574dbcb02123d105d43eff8fddeabf9f02e1b80')
+source=("teamspeak-client-$pkgver.tar.xz::http://update.teamspeak.com/linux/x64/latest/0-1635340287.patch")
+sha512sums=('35ea17c6ae379b3b9e31aac351a4a64f108226ac60c09a0c02bf1b70d27ebfc2fbb38179d6103efa334e5da117eae4ff973a9f6c4cf49c04a38f48b51f8b61e5')
 # Following authorization token is hard-coded. It is not bound to any account, but without it you will get 403 Forbidden error from any request to update.teamspeak.com
 # The archive starts at offset of 200 bytes
 DLAGENTS=("http::/usr/bin/curl --basic -u teamspeak5:LFZ6Z^kvGrnX~an,\$L#4gxL3'a7/a[[&_7>at}A3ARRGY -A teamspeak.downloader/1.0 -C 200 -o %o %u")
 
+prepare() {
+  # Fix not functional desktop activator
+  # This is done automatically by built-in downloader
+  # and points to installation
+  echo "Exec=teamspeak %u" >> "$srcdir/teamspeak-client.desktop"
+}
+
 package() {
   install -d "${pkgdir}/usr/bin/"
   install -d "${pkgdir}/usr/share/licenses/"
+  install -d "${pkgdir}/usr/share/pixmaps/"
   install -d "${pkgdir}/usr/lib/${pkgname}"
 
   # Recursively installing all top-level regular files and directories from srcdir
   #   Files supplied to makepkg as sources are present in srcdir using symbolic links
   #   That way we can only copy files extracted from source archives
-  find "${srcdir}" -mindepth 1 -maxdepth 1 -type d,f -exec cp -r {} "${pkgdir}/usr/lib/${pkgname}/" \;
+  find "${srcdir}" \
+    -mindepth 1 \
+    -maxdepth 1 \
+    -type d,f \
+    ! -name teamspeak-client.desktop \
+    -exec cp -r {} "${pkgdir}/usr/lib/${pkgname}/" \;
 
   chmod 755 "${pkgdir}/usr/lib/${pkgname}/TeamSpeak"
 
-  install -Dm644 "${srcdir}/teamspeak.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${srcdir}/teamspeak.svg" "${pkgdir}/usr/share/pixmaps/teamspeak.svg"
+  install -Dm644 "${srcdir}/teamspeak-client.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  ln -s /usr/lib/${pkgname}/logo-256.png "${pkgdir}/usr/share/pixmaps/teamspeak-client.png"
 
   ln -s /usr/lib/${pkgname}/licenses "${pkgdir}/usr/share/licenses/${pkgname}"
 
