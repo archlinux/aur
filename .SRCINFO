@@ -14,7 +14,7 @@ pkgbase = corplink-bin
 	optdepends = networkmanager: NetworkManager integration
 	options = !strip
 	options = !emptydirs
-	source = https://oss.ifeilian.com/linux/FeiLian_Linux_v2.0.7_r13_fc9f71.deb
+	source = https://oss-s3.ifeilian.com/linux/FeiLian_Linux_v2.0.7_r13x_fc9f71.deb
 	sha512sums = 823a870d69305a0856d5ecbea2c5e57cec9d20124dc82c5ec9d1347a47c0e9b3a2a864372d65b80480c1cf379aeadbff92d3f03a90616831332759fdc2f1c86a
 
 pkgname = corplink-bin
