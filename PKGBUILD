@@ -7,14 +7,15 @@ pkgdesc="'Java' Data Exchange for 'R' and 'rJava'"
 url="https://cran.r-project.org/package=jdx"
 license=("GPL (>= 2) | BSD_3_clause")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 depends=("r" "r-rjava")
 optdepends=("r-testthat" "r-knitr" "r-rmarkdown" "r-pander")
 makedepends=()
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+# source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_cranname}_${_cranver}.tar.gz")
 md5sums=("d9c9d467a99401afc09e0bcb0455acdf")
 
 build() {
