@@ -1,0 +1,15 @@
+pkgbase = vim-wolfram-git
+	pkgdesc = Syntax Highlighting for Wolfram Language in Vim
+	pkgver = r17.cfc6118
+	pkgrel = 1
+	url = https://github.com/arnoudbuzing/wolfram-vim
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-wolfram
+	conflicts = vim-wolfram
+	source = vim-wolfram-git::git+https://github.com/arnoudbuzing/wolfram-vim
+	sha256sums = SKIP
+
+pkgname = vim-wolfram-git
