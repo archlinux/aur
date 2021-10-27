@@ -1,15 +1,15 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgbase=web-eid-webextension
 pkgname=("firefox-extension-web-eid" "chromium-extension-web-eid")
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Web eID browser extension"
 arch=('any')
 url="https://web-eid.eu/"
 license=('MIT')
 depends=('web-eid')
 makedepends=('git' 'nodejs-lts-fermium' 'npm')
-source=("$pkgbase::git+https://github.com/web-eid/web-eid-webextension.git#tag=$pkgver")
+source=("$pkgbase::git+https://github.com/web-eid/web-eid-webextension.git?signed#tag=v$pkgver")
 sha256sums=("SKIP")
 validpgpkeys=(
     '1282B0F8809D0DC632C85A3F86B611CE24492160'  # Mart Somermaa
