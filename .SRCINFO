@@ -1,0 +1,18 @@
+pkgbase = neovim-cmp-treesitter-git
+	pkgdesc = neovim-cmp source for treesitter
+	pkgver = r10.0ba0a99
+	pkgrel = 1
+	url = https://github.com/ray-x/cmp-treesitter
+	install = cmp-treesitter.install
+	arch = any
+	groups = neovim-plugins
+	license = GPL3
+	makedepends = git
+	depends = neovim-cmp
+	depends = tree-sitter
+	provides = neovim-cmp-treesitter
+	conflicts = neovim-cmp-treesitter
+	source = neovim-cmp-treesitter-git::git+https://github.com/ray-x/cmp-treesitter
+	md5sums = SKIP
+
+pkgname = neovim-cmp-treesitter-git
