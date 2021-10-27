@@ -1,24 +1,17 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname='xml-security-c'
-pkgver='2.0.2'
-pkgrel='3'
+pkgver='2.0.3'
+pkgrel='1'
 pkgdesc='C++ Implementation of W3C security standards for XML'
 arch=('i686' 'x86_64')
 url='http://santuario.apache.org/'
 license=('Apache')
 depends=('xerces-c' 'xalan-c')
-source=("https://archive.apache.org/dist/santuario/c-library/$pkgname-$pkgver.tar.bz2.asc"
-        "https://archive.apache.org/dist/santuario/c-library/$pkgname-$pkgver.tar.bz2"
-        "xalan-c-1.12.patch")
+source=("https://dlcdn.apache.org/santuario/c-library/$pkgname-$pkgver.tar.bz2.asc"
+        "https://dlcdn.apache.org/santuario/c-library/$pkgname-$pkgver.tar.bz2")
 sha256sums=('SKIP'
-            '39e963ab4da477b7bda058f06db37228664c68fe68902d86e334614dd06e046b'
-            'fe009b1cadcbce62015229138ab9a8a07981264e802213d0888c281538748907')
+            '803029f129005a9b453aa45f0b3e44c28b8f2ec5eb526c20c74f93995cf6da69')
 validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/xalan-c-1.12.patch"
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
