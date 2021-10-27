@@ -4,9 +4,9 @@
 pkgbase=mediawiki-lts
 _pkgname=mediawiki
 pkgname=('mediawiki-lts' 'mediawiki-math-lts')
-pkgver=1.35.1
+pkgver=1.35.4
 _basever=${pkgver%.*}
-_hash=a412f37
+_hash=93930b1
 pkgrel=1
 pkgdesc="Latests MediaWiki LTS engine"
 arch=('any')
@@ -35,9 +35,9 @@ validpgpkeys=('41B2ABE817ADD3E52BDA946F72BC1C5D23107F8A'
 source=("https://releases.wikimedia.org/mediawiki/${_basever}/mediawiki-$pkgver.tar.gz"{,.sig}
 	"mediawiki-math-${_basever}.tar.gz::https://codeload.github.com/wikimedia/mediawiki-extensions-Math/legacy.tar.gz/REL${_basever/./_}"
 	apache.example.conf)
-sha256sums=('8e65a61d4a16ea6f3e60a2828483f8d50047b89f94f1313fcc2da113fdabe315'
+sha256sums=('1902f7b9375dc7813aa50df9c23a758ba431d2e8a4116345c1eb5775dda94868'
             'SKIP'
-            'a1fe8aaa3ebb0c54b263a24f2e5a70e3c0875342c416800a636021f946a3c604'
+            'cacaca559909e3cd5ba74c53b9f1c53476e58a7f454c796d18c678da925c4a24'
             'cfeff68331e930b6a93f166c12666ac59a84aa24334f94520eff3f988f37ce2b')
 
 package_mediawiki-lts() {
