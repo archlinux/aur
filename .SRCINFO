@@ -1,7 +1,7 @@
 pkgbase = deepin-gettext-tools-git
 	pkgdesc = Deepin Gettext Tools
 	pkgver = 1.0.8.r4.g0282bcd
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/linuxdeepin/deepin-gettext-tools
 	arch = any
 	groups = deepin-git
@@ -17,4 +17,3 @@ pkgbase = deepin-gettext-tools-git
 	sha512sums = SKIP
 
 pkgname = deepin-gettext-tools-git
-
