@@ -10,12 +10,14 @@ mkdir -p /root/amd-stb-captures
 
 case "$1" in
   "pre")
-    echo "taking STB capture pre suspend at $(date)..." >/root/amd-stb-captures/capture.log
-    cat /sys/kernel/debug/amd_pmc/stb_read >"/root/amd-stb-captures/$(/usr/bin/date +%s)-pre.stb" && /usr/bin/sync
+    #echo "taking STB capture pre suspend at $(date)..." >/root/amd-stb-captures/capture.log
+    cat /sys/kernel/debug/amd_pmc/stb_read >"/root/amd-stb-captures/$(/usr/bin/date +%s)-pre.stb"
+    /usr/bin/sync /root/amd-stb-captures/*
     ;;
   "post")
-    echo "taking STB capture post suspend at $(date)..." >>/root/amd-stb-captures/capture.log
-    cat /sys/kernel/debug/amd_pmc/stb_read >"/root/amd-stb-captures/$(/usr/bin/date +%s)-post.stb" && /usr/bin/sync
+    #echo "taking STB capture post suspend at $(date)..." >>/root/amd-stb-captures/capture.log
+    cat /sys/kernel/debug/amd_pmc/stb_read >"/root/amd-stb-captures/$(/usr/bin/date +%s)-post.stb"
+    /usr/bin/sync /root/amd-stb-captures/*
     ;;
 esac
 
