@@ -1,6 +1,6 @@
 # Maintainer: Robin Krahl <robin.krahl@ireas.org>
 pkgname=rusty-man
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Command-line viewer for rustdoc documentation"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 )
 validpgpkeys=('28B13CD28267111859622B686D533958F070C57C')
 sha512sums=(
-	'798d0384cd34fd03b66ee73a6804d3b3bdf015471644e312d86f5a5d331fd57606de77986ee2a6103faf6bcfa6c19328df497e167d30146a4af454c3a948469f'
+	'ccac1b28a0dc93685843ac12c1b2382da93f440dd6421e4c46d1908da3705198935d9946f39fe1c7600e60b63663cb4c8bb9507647e071c8f7950c494f0929c4'
 )
 
 prepare() {
