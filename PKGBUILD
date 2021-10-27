@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron13
-pkgver=13.5.2
-_commit=2727847acabd39933ccd95b92f2c12454c0a24e7
+pkgver=13.6.0
+_commit=9d3baaae586416c8e30429c47b181cbd909c60fb
 _chromiumver=91.0.4472.164
 _gcc_patchset=5
 pkgrel=1
@@ -10,8 +10,8 @@ pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
 license=('MIT' 'custom')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxslt' 'minizip'
-         'nss' 're2' 'snappy')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
+         'snappy')
 makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'java-runtime-headless' 'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja'
              'npm' 'pciutils' 'pipewire' 'python2' 'wget' 'yarn')
