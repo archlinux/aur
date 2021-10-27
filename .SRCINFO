@@ -1,5 +1,5 @@
 pkgbase = obs-text-pango
-	pkgdesc = This plugin provides a text source for OBS Studio which is layed out and rendered using Pango
+	pkgdesc = Prefer obs-text-pthread instead | This plugin provides a text source for OBS Studio which is layed out and rendered using Pango
 	pkgver = 1.0
 	pkgrel = 2
 	url = https://github.com/kkartaltepe/obs-text-pango
@@ -13,4 +13,3 @@ pkgbase = obs-text-pango
 	sha256sums = 059b6364966f8c90044b27efc100136ca03e8093c69cc91c10b79b0f26640669
 
 pkgname = obs-text-pango
-
