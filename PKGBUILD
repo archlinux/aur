@@ -10,7 +10,7 @@ url="https://opencolorio.org"
 license=('BSD')
 depends=('lcms2' 'tinyxml' 'yaml-cpp')
 makedepends=('boost' 'cmake')
-source=($pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v$pkgver.tar.gz
+source=("$pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v$pkgver.tar.gz"
         8d48ee8da42de2d878db7b42586db8b3c67f83e1.patch
         make-coinstallable.patch)
 sha512sums=('bed722f9ddce1887d28aacef2882debccd7c3f3c0c708d2723fea58a097de9f02721af9e85453e089ffda5406aef593ab6536c6886307823c132aa787e492e33'
@@ -49,7 +49,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 ../LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   rm -r "$pkgdir"/usr/lib/{cmake,pkgconfig} # krita provides its own FindOCIO
   rm -r "$pkgdir"/usr/share/ocio
