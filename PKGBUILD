@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=14.1.1
-_commit=3b1127ccbd4b27ea1c55098cb45cbb003e1d48aa
+pkgver=14.2.0
+_commit=c2b3c974e07a9743ab758cb98db323dceddd6903
 _chromiumver=93.0.4577.82
 _gcc_patchset=6
 # shellcheck disable=SC2034
@@ -23,18 +23,24 @@ url='https://electronjs.org/'
 # shellcheck disable=SC2034
 license=('MIT' 'custom')
 # shellcheck disable=SC2034
-depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxslt' 'minizip'
-         'nss' 're2' 'snappy')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
+         'snappy')
 # shellcheck disable=SC2034
 makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'java-runtime-headless' 'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja'
-             'npm' 'pciutils' 'pipewire' 'python2' 'wget' 'yarn')
+             'npm' 'pciutils' 'pipewire' 'python' 'wget' 'yarn')
 # shellcheck disable=SC2034
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'pipewire: WebRTC desktop sharing under Wayland'
             'trash-cli: file deletion support (trash-put)'
             "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
+if [[ ${_use_suffix} == 0 ]]; then
+  # shellcheck disable=SC2034
+  conflicts=("electron${_major_ver}")
+  # shellcheck disable=SC2034
+  provides=("electron${_major_ver}")
+fi
 # shellcheck disable=SC2034
 source=('git+https://github.com/electron/electron.git'
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
@@ -58,7 +64,7 @@ sha256sums=('SKIP'
             '3953f532a3ea5fce19ee33600c6ead89dcd066df6a01d3c3ab4c24f96e46fca2'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             '75bac9c4ad32ff9329399b8587f9772e208c009fd822cdfce61b2bd1ee9ac828'
-            'f16103daf05713dea632b5f01e45db20ff12d1770a6539b4e8d3957a0242dd54'
+            '7cb11fb44aaf4d15f36caca3c0d1b082a723c30d43cd44db147248db5683a2a9'
             '268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3'
             '253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5'
             'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
@@ -98,9 +104,7 @@ prepare() {
     sed -i "s|@ELECTRON_NAME@|Electron|" electron.desktop
   fi
 
-  mkdir -p "${srcdir:?}/python2-path"
-  ln -sf /usr/bin/python2 "${srcdir}/python2-path/python"
-  export PATH="${srcdir}/python2-path:${PATH}:${srcdir}/depot_tools"
+  export PATH="${PATH}:${srcdir:?}/depot_tools"
 
   echo "Fetching chromium..."
   git clone --branch=${_chromiumver} --depth=1 \
@@ -119,13 +123,13 @@ prepare() {
   },
 ]" > .gclient
 
-  python2 "${srcdir}/depot_tools/gclient.py" sync \
+  python "${srcdir}/depot_tools/gclient.py" sync \
       --with_branch_heads \
       --with_tags \
       --nohooks
 
   echo "Running hooks..."
-  # python2 "${srcdir}/depot_tools/gclient.py" runhooks
+  # python "${srcdir}/depot_tools/gclient.py" runhooks
   src/build/landmines.py
   src/build/util/lastchange.py -o src/build/util/LASTCHANGE
   src/build/util/lastchange.py -m GPU_LISTS_VERSION \
