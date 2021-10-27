@@ -4,13 +4,13 @@ pkgbase=endpoint-verification
 pkgname=("endpoint-verification" "endpoint-verification-chrome")
 _pkgver="2021.07.22.c386220900-00"
 pkgver="$(tr '-' '_' <<< $_pkgver)"
-pkgrel=1
+pkgrel=2
 pkgdesc="Endpoint Verification Helper"
 arch=(x86_64)
 url="https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg"
 license=(unknown)
 sha256sums=("9599361fdf40c9b4f8bee13aaa6d2ef6f60ba66289cbb7b463677ebf2403dc32" "SKIP")
-source=("${pkgbase}.deb::https://packages.cloud.google.com/apt/pool/${pkgbase}_${_pkgver}_amd64_${sha256sums[0]}.deb"
+source=("https://packages.cloud.google.com/apt/pool/${pkgbase}_${_pkgver}_amd64_${sha256sums[0]}.deb"
 	"endpoint-verification.service")
 
 prepare() {
