@@ -7,7 +7,7 @@ pkgdesc="Rapid Realistic Routing with 'R5'"
 url="https://cran.r-project.org/package=r5r"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 depends=("java-r5" "java-r5rcore" "r" "r-checkmate" "r-curl" "r-data.table" "r-httr" "r-raster" "r-rjava" "r-sf" "r-sfheaders")
@@ -31,7 +31,7 @@ package() {
 
     ln -sf \
         /usr/share/java/r5/r5-all.jar \
-        "${pkgdir}/usr/lib/R/library/${_cranname}/jar/r5-v6.4-all_20210820.jar"
+        "${pkgdir}/usr/lib/R/library/${_cranname}/jar/r5-v6.4-all_20211021.jar"
 
         # TODO: don’t hardcode these paths!
 
