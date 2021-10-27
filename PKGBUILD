@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkwidget-git
-pkgver=5.4.1.r53.gb7d7807f
+pkgver=5.5.17.1.r50.gf123cd7c
 pkgrel=1
 pkgdesc='Deepin graphical user interface library'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/linuxdeepin/dtkwidget"
 license=('LGPL3')
 depends=('deepin-qt-dbus-factory-git' 'dtkcore-git' 'dtkgui-git' 'librsvg' 'qt5-multimedia' 'qt5-svg'
          'qt5-x11extras' 'startup-notification')
-makedepends=('git' 'qt5-tools' 'gtest')
+makedepends=('git' 'qt5-tools' 'gtest' 'dtkcore-git' 'dtkgui-git')
 provides=('dtkwidget')
 conflicts=('dtkwidget')
 groups=('deepin-git')
@@ -23,10 +23,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  sed -i 's/5\.5//g' examples/dwidget-examples/collections/collections.pro
-  sed -i 's/5\.5//g' tests/tests.pro
-  sed -i 's/5\.5//g' tools/svgc/svgc.pro
-  sed -i 's/5\.5//g' src/src.pro
 }
 
 build() {
