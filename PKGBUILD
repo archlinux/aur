@@ -2,8 +2,8 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=0.42.0
-_flutterversion=2.5.2-stable
+pkgver=0.42.1
+_flutterversion=2.5.3-stable
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=("$pkgname")
 source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutterversion}.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('371234b5b9c127fcd3053b4b04e45c0024657d95f7371eb9d9422a7da5297717'
-            '303d96ee165a4bb7d98def65ee432195734bf2a7a96eb720f98c597dc53c3fe2')
+sha256sums=('b32d04a9fa5709326b4e724e0de64ff1b2b70268f89dd3c748e6360ac937fe01'
+            'f90a7d562eb391cdaf1f73ad71980164457534e463925d5bc1e79099479af710')
 
 prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"
