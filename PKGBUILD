@@ -3,7 +3,7 @@
 _pkgname="mpv-handler"
 pkgname="mpv-handler-git"
 pkgver=0.2.13.r0.g1ef30ab
-pkgrel=2
+pkgrel=3
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("x86_64")
 depends=("mpv")
