@@ -12,7 +12,7 @@ arch=('any')
 optdepends=(
 #	'vulkan-tools: For vulkaninfo'
 #	'mesa-demos: For glxinfo',
-chnroutes-alike-git For chinaIP
+'chnroutes-alike-git: For chinaIP'
 #	'util-linux: For lscpu'
 )
 #source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
