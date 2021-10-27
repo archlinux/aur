@@ -18,7 +18,7 @@ source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
 sha256sums=('6da519d47477ac8e2ab297eb6bc1513cd33dc736660a3b9a9449e14efdf2b3a2')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # Meson won't apply any new options or update wraps if they already exist, so
   # if we're building from a dirty src/ directory we'll just nuke any cached
@@ -64,7 +64,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver/build"
+  cd "$srcdir/$pkgname-$pkgver/build"
 
   install -dm755 "${pkgdir}"/usr/bin
   install yabridge-{host,group}.exe{,.so} "${pkgdir}"/usr/bin
