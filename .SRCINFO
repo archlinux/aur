@@ -54,4 +54,3 @@ pkgbase = deepin-daemon-git
 	sha512sums = 808c02d4fec4cbbb01119bbb10499090199e738b7dd72c28a57dde098eef6132723f3434c151f79e21d9f788c7f7bae8046573ac93ba917afe0e803fbffa6d5a
 
 pkgname = deepin-daemon-git
-
