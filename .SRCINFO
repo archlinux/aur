@@ -1,7 +1,7 @@
 pkgbase = endpoint-verification
 	pkgdesc = Endpoint Verification Helper
 	pkgver = 2021.07.22.c386220900_00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg
 	arch = x86_64
 	license = unknown

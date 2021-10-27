@@ -3,7 +3,7 @@ Description=Endpoint Verification Service
 
 [Service]
 Type=oneshot
-ExecStart=/opt/google/endpoint-verification/endpoint-verification start
+ExecStart=/opt/google/endpoint-verification/bin/endpoint-verification start
 RemainAfterExit=yes
 
 [Install]
