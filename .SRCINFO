@@ -1,6 +1,6 @@
 pkgbase = python-rapidfuzz
 	pkgdesc = Rapid fuzzy string matching in Python and C++ using the Levenshtein Distance
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/maxbachmann/rapidfuzz
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = python-rapidfuzz
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/r/rapidfuzz/rapidfuzz-1.8.1.tar.gz
-	sha256sums = 73aed694e0f36764b61418a9d5d75e9e428fbd954e154e71ad1e34912f2e85ab
+	source = https://files.pythonhosted.org/packages/source/r/rapidfuzz/rapidfuzz-1.8.2.tar.gz
+	sha256sums = d6efbb2b6b18b3a67d7bdfbcd9bb72732f55736852bbef823bdf210f9e0c6c90
 
 pkgname = python-rapidfuzz
