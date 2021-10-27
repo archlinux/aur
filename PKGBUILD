@@ -1,21 +1,21 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=r5r
-_cranver=0.5.0
+_cranver=0.6.0
 pkgname=r-${_cranname,,}
 pkgdesc="Rapid Realistic Routing with 'R5'"
 url="https://cran.r-project.org/package=r5r"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("any")
-depends=("java-r5" "java-r5rcore" "r" "r-checkmate" "r-curl" "r-data.table" "r-httr" "r-jdx" "r-raster" "r-rjava" "r-sf" "r-sfheaders")
+depends=("java-r5" "java-r5rcore" "r" "r-checkmate" "r-curl" "r-data.table" "r-httr" "r-raster" "r-rjava" "r-sf" "r-sfheaders")
 optdepends=("r-akima" "r-covr" "r-dplyr" "r-ggplot2" "r-knitr" "r-mapview" "r-rmarkdown" "r-rgdal" "r-testthat")
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=("7b045a635a998b02d064b22c5f1f71e0")
+sha512sums=("8b766bc98ef6e9caa85c0e7e7b922c26ac4b63a9eba24313078cd9b46293cad761dff0883e69e79f02f7b01fd901ea75d63a01edb4c1df2741e5bff6ac316ee8")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
@@ -31,7 +31,7 @@ package() {
 
     ln -sf \
         /usr/share/java/r5/r5-all.jar \
-        "${pkgdir}/usr/lib/R/library/${_cranname}/jar/r5-v6.2-all_20210408.jar"
+        "${pkgdir}/usr/lib/R/library/${_cranname}/jar/r5-v6.4-all_20210820.jar"
 
         # TODO: don’t hardcode these paths!
 
