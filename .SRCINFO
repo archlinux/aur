@@ -19,4 +19,3 @@ pkgbase = deepin-qt5integration-git
 	sha512sums = SKIP
 
 pkgname = deepin-qt5integration-git
-
