@@ -1,21 +1,52 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Maintainer: Ong Yong Xin <ongyongxin2020+github AT gmail DOT com>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=audacity-git
-pkgver=3.1.0.beta.1.r20.g2d5320dd3
+pkgver=3.1.0.beta.1.r28.g81bcb372d
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=(i686 x86_64)
 url="https://www.audacityteam.org/"
 license=(GPL2 CCPL)
 groups=(pro-audio)
-depends=(alsa-lib libx11 gtk3 expat libid3tag libogg libsndfile
-         libvorbis lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch)
-makedepends=(git cmake gcc sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
-             ffmpeg jack nasm conan)
-# can't find system lame portmidi
+depends=(
+  alsa-lib
+  expat
+  flac
+  gtk3
+  libid3tag
+  libmad
+  libogg
+  libsndfile
+  libsoxr
+  libvorbis
+  libx11
+  lilv
+  lv2
+  portaudio
+  portsmf
+  soundtouch
+  suil
+  twolame
+  vamp-plugin-sdk
+  zlib
+)
+makedepends=(
+  cmake
+  conan
+  ffmpeg
+  gcc
+  git
+  gst-plugins-bad-libs
+  gstreamer
+  jack
+  libnotify
+  libsoup
+  nasm
+  sdl2
+)
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity)
 conflicts=(audacity)
@@ -38,6 +69,7 @@ build() {
     -DwxBUILD_TOOLKIT:STRING=gtk3 \
     -Daudacity_use_wxwidgets=local \
     -Daudacity_use_ffmpeg:STRING=loaded \
+    -Daudacity_lib_preference=system \
     ..
   cmake --build .
 }
