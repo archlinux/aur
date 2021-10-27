@@ -1,7 +1,6 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
-_pluginname=advanced-scene-switcher
-pkgname=obs-$_pluginname
+pkgname=obs-advanced-scene-switcher
 pkgver=1.16.1
 pkgrel=2
 pkgdesc="An automated scene switcher for OBS Studio"
@@ -11,7 +10,7 @@ license=("GPL2")
 depends=("obs-studio" "libxss" "libxtst" "opencv")
 makedepends=("cmake" "git")
 source=(
-  "$_pluginname"::"git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=$pkgver"
+  "$pkgname::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=$pkgver"
   "git+https://github.com/chriskohlhoff/asio.git"
   "git+https://github.com/zaphoyd/websocketpp.git"
 )
@@ -22,7 +21,7 @@ sha256sums=(
 )
 
 prepare() {
-  cd $_pluginname
+  cd $pkgname
 
   git config submodule.deps/asio.url $srcdir/asio
   git config submodule.deps/websocketpp.url $srcdir/websocketpp
@@ -30,7 +29,7 @@ prepare() {
 }
 
 build() {
-  cd $_pluginname
+  cd $pkgname
 
   cmake -B build \
   -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -42,7 +41,7 @@ build() {
 }
 
 package() {
-  cd $_pluginname
+  cd $pkgname
 
   make -C build DESTDIR="$pkgdir/" install
 }
