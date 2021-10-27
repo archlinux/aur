@@ -1,0 +1,19 @@
+pkgbase = obs-midi
+	pkgdesc = An automated scene switcher for OBS Studio
+	pkgver = 0.9.3_ALPHA_3.66
+	pkgrel = 2
+	url = https://obsproject.com/forum/resources/advanced-scene-switcher.395/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = obs-studio
+	depends = jack
+	source = obs-midi::git+https://github.com/cpyarger/obs-midi.git#tag=tag-0.9.3-ALPHA-3.66
+	source = libremidi::git+https://github.com/jcelerier/libremidi.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = obs-midi
