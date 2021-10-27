@@ -45,8 +45,8 @@ source=("$_mutter_src"
         "$_shell_blur_c_src"
         "$_setting_src")
 sha256sums=('SKIP'
-            '2502b64ecff2ac051b3e1cda5d8c424ca0caa71aa5055a48ba2e8441358c6ab1'
-            'c9eb42bdb6f8f1dbed2d6e6d1c47f5826f308411e91838eb407ba2aeab98b535'
+            '9fd2e457f2ef76b454bafee91b5d2d9fb2ac2e17b5aee780cd1dd2c7832a00c4'
+            'd749f90825025ef597ba20f9e51c11eeefd1ba359f9e01a369d0c0428f134bf5'
             'c47f3a998e5b8dbb53951be450a5f561f91ad8803a653dab2bcee69b1400e6d4'
             '2ec553a260497f0ac0180512201c9819b10159a15fcbc6d5007932d8e2a44844'
             'a02e991156dc3b4418899b73a2e65187a43990851fb235ea128ed7650c839a3b'

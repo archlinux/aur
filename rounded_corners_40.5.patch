@@ -249,10 +249,10 @@ index 1770550d4..26efc84c1 100644
 +}
 \ No newline at end of file
 diff --git a/src/compositor/meta-window-actor-private.h b/src/compositor/meta-window-actor-private.h
-index 64741e416..a0dc4f69d 100644
+index 64741e416..98495f3d7 100644
 --- a/src/compositor/meta-window-actor-private.h
 +++ b/src/compositor/meta-window-actor-private.h
-@@ -99,4 +99,16 @@ void meta_window_actor_update_regions (MetaWindowActor *self);
+@@ -99,4 +99,15 @@ void meta_window_actor_update_regions (MetaWindowActor *self);
  
  gboolean meta_window_actor_can_freeze_commits (MetaWindowActor *self);
  
@@ -264,7 +264,6 @@ index 64741e416..a0dc4f69d 100644
 +void meta_window_actor_create_blur_actor (MetaWindowActor *self);
 +void meta_window_actor_set_blur_behind (MetaWindowActor *self);
 +void meta_window_actor_update_blur_position_size (MetaWindowActor *self);
-+void meta_window_actor_remove_blur (MetaWindowActor *self);
 +void meta_window_actor_update_blur_sigmal (MetaWindowActor *self);
 +void meta_window_actor_update_blur_brightness (MetaWindowActor *self);
 +void meta_window_actor_update_blur_window_opacity (MetaWindowActor *self);
@@ -385,7 +384,7 @@ index e4769e087..60d376858 100644
  
        /* The frame bounds are already subtracted from actor_x11->shadow_clip
 diff --git a/src/compositor/meta-window-actor.c b/src/compositor/meta-window-actor.c
-index d4fc9a43a..e0d1d7a78 100644
+index d4fc9a43a..61ba8416b 100644
 --- a/src/compositor/meta-window-actor.c
 +++ b/src/compositor/meta-window-actor.c
 @@ -41,6 +41,9 @@
@@ -702,7 +701,7 @@ index d4fc9a43a..e0d1d7a78 100644
    return TRUE;
  }
  
-+void
++static void
 +meta_window_actor_remove_blur (MetaWindowActor *self)
 +{
 +  MetaWindowActorPrivate *priv =
@@ -719,21 +718,19 @@ index d4fc9a43a..e0d1d7a78 100644
  static void
  meta_window_actor_after_effects (MetaWindowActor *self)
  {
-@@ -675,7 +950,13 @@ meta_window_actor_after_effects (MetaWindowActor *self)
+@@ -675,6 +950,12 @@ meta_window_actor_after_effects (MetaWindowActor *self)
  
    if (priv->needs_destroy)
      {
--      clutter_actor_destroy (CLUTTER_ACTOR (self));
 +      if (priv->round_clip_effect)
 +        {
 +          clutter_actor_remove_effect (CLUTTER_ACTOR(self),
 +                                       CLUTTER_EFFECT(priv->round_clip_effect));
 +          meta_window_actor_remove_blur(self);
-+          clutter_actor_destroy (CLUTTER_ACTOR (self));
 +        }
+       clutter_actor_destroy (CLUTTER_ACTOR (self));
      }
    else
-     {
 @@ -803,6 +1084,19 @@ meta_window_actor_queue_destroy (MetaWindowActor *self)
      clutter_actor_destroy (CLUTTER_ACTOR (self));
  }
