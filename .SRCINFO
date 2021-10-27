@@ -1,0 +1,20 @@
+pkgbase = opencolorio1
+	pkgdesc = A color management framework for visual effects and animation
+	pkgver = 1.1.1
+	pkgrel = 3
+	url = https://opencolorio.org
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = cmake
+	depends = lcms2
+	depends = tinyxml
+	depends = yaml-cpp
+	source = opencolorio1-1.1.1.tar.gz::https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v1.1.1.tar.gz
+	source = 8d48ee8da42de2d878db7b42586db8b3c67f83e1.patch
+	source = make-coinstallable.patch
+	sha512sums = bed722f9ddce1887d28aacef2882debccd7c3f3c0c708d2723fea58a097de9f02721af9e85453e089ffda5406aef593ab6536c6886307823c132aa787e492e33
+	sha512sums = fd1c6e134ef898a8715333b1e85a606736685ec0fce07188c0fba68ae048edb61dc4f107eff8de79a53dbbf226a1f84bb0a7d046a15fafb981ce02568350fd49
+	sha512sums = e7ed107012f94e14bc883baade73ac11c136fbd315832b2c770ca4f0e8cb39ca160da86d848f7762c5e531af88315f2e27b65ef294bf05a6a2130af7285e5369
+
+pkgname = opencolorio1
