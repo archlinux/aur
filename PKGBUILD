@@ -3,7 +3,7 @@
 
 _pkgname=onedrive_tray
 pkgname=$_pkgname-git
-pkgver=r23.68f5123
+pkgver=r28.6883538
 pkgrel=1
 pkgdesc="OneDrive system tray program"
 arch=('i686' 'x86_64')
@@ -13,13 +13,21 @@ depends=('qt5-base' 'onedrive')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("onedrive_tray=$pkgver")
 conflicts=("onedrive_tray")
-source=('git+https://github.com/DanielBorgesOliveira/onedrive_tray.git')
-md5sums=('SKIP')
+source=('git+https://github.com/DanielBorgesOliveira/onedrive_tray.git'
+	'0001-Fix-binary-location-to-usr-bin.patch')
+md5sums=('SKIP'
+         'dad2a29aa7d4eacb4ee9dad0bfaa8eb5')
 
 pkgver() {
 	cd "$_pkgname"
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare () {
+	cd "$_pkgname"
+
+	patch -p1 -i "$srcdir/0001-Fix-binary-location-to-usr-bin.patch"
 }
 
 build() {

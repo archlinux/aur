@@ -1,0 +1,39 @@
+From 52bed3d54b20981f85e0eabd1914442b2a348e2b Mon Sep 17 00:00:00 2001
+From: "j.r" <j.r@jugendhacker.de>
+Date: Wed, 27 Oct 2021 19:29:50 +0200
+Subject: [PATCH] Fix binary location to /usr/bin
+
+---
+ onedrive_tray.service | 2 +-
+ systray.pro           | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/onedrive_tray.service b/onedrive_tray.service
+index 9b076f8..31064ed 100644
+--- a/onedrive_tray.service
++++ b/onedrive_tray.service
+@@ -5,7 +5,7 @@ After=network-online.target
+ Wants=network-online.target
+ 
+ [Service]
+-ExecStart=/usr/local/bin/onedrive_tray -s
++ExecStart=/usr/bin/onedrive_tray -s
+ Restart=on-failure
+ RestartSec=7
+ RestartPreventExitStatus=3
+diff --git a/systray.pro b/systray.pro
+index b5b3155..1dc5cda 100644
+--- a/systray.pro
++++ b/systray.pro
+@@ -4,7 +4,7 @@ DEPENDPATH += .
+ INCLUDEPATH += .
+ 
+ # Install info
+-target.path += /usr/local/bin/
++target.path += /usr/bin/
+ unitfile.path += /usr/lib/systemd/user/
+ unitfile.files = onedrive_tray.service
+ INSTALLS += target
+-- 
+2.33.1
+
