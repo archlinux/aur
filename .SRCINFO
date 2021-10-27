@@ -20,4 +20,3 @@ pkgbase = deepin-polkit-agent-ext-gnomekeyring-git
 	sha512sums = SKIP
 
 pkgname = deepin-polkit-agent-ext-gnomekeyring-git
-
