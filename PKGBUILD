@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=disomaster-git
-pkgver=5.0.7.r1.gb65d359
+pkgver=5.0.7.r2.g157dd8f
 pkgrel=1
 pkgdesc='Library to manipulate DISC burning.'
 arch=('x86_64')

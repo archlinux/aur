@@ -1,6 +1,6 @@
 pkgbase = disomaster-git
 	pkgdesc = Library to manipulate DISC burning.
-	pkgver = 5.0.7.r1.gb65d359
+	pkgver = 5.0.7.r2.g157dd8f
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/disomaster
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = disomaster-git
 	sha512sums = SKIP
 
 pkgname = disomaster-git
-
