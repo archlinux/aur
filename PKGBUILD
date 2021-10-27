@@ -1,7 +1,7 @@
 # Maintainer: vojvoda343 <voj343@yandex.com>
 pkgname=mullvad-openrc
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="mullvad openrc service"
 arch=('any')
 url='https://github.com/vojvoda343/mullvad-openrc'
