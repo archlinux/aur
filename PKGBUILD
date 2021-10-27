@@ -1,7 +1,7 @@
 # Maintainer: Prayz Jomba <prayzjomba@protonmail.com>
 pkgname=ywatch-git
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch youtube videos with mpv while saving the video to disk."
 arch=(any)
 url="https://github.com/prayzjomba/ywatch.git"
