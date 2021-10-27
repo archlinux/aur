@@ -1,7 +1,7 @@
 # Contributor: Alexandr Parkhomenko <it@52tour.ru>
 
 pkgname=python-orange-canvas-core
-pkgver=0.1.19
+pkgver=0.1.23
 pkgrel=1
 pkgdesc="Orange Canvas core workflow editor."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('python-setuptools')
 depends=('python-docutils' 'python-anyqt' 'python-pip' 'python-requests' 'python-cachecontrol' 'python-dictdiffer' 'python-commonmark')
 source=("https://github.com/biolab/orange-canvas-core/archive/${pkgver}.tar.gz")
-sha256sums=('13482b20aec0a11bbb27325943df57c5f17f2f3cef3dd6569933c3ba478e8359')
+sha256sums=('c9a53fa86b61b626cc5626607d83f94e213f90f8b8d5d2baf6866b0e46d74780')
 
 build() {
   cd "${srcdir}/orange-canvas-core-$pkgver"
@@ -21,4 +21,3 @@ package() {
   cd "${srcdir}/orange-canvas-core-$pkgver"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
-
