@@ -1,7 +1,7 @@
 pkgbase = mpv-handler
 	pkgdesc = Play website videos and songs with mpv & youtube-dl.
 	pkgver = 0.2.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/akiirui/mpv-handler/
 	install = mpv-handler.install
 	arch = x86_64
