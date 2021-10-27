@@ -2,18 +2,19 @@
 
 pkgname=gfwlist-route
 pkgver=1.0.0
-pkgrel=11
+pkgrel=12
 pkgdesc="gwflist ip for china . and add it to route "
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
 arch=('any')
-depends=(chnroutes-alike-git)
+#depends=(chnroutes-alike-git)
 #makedepends=('cmake>=3.3' 'qt5-tools' 'karchive' 'gcc>=8' 'extra-cmake-modules')
-#optdepends=(
+optdepends=(
 #	'vulkan-tools: For vulkaninfo'
 #	'mesa-demos: For glxinfo',
+chnroutes-alike-git For chinaIP
 #	'util-linux: For lscpu'
-#)
+)
 #source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
 source=(
 gfwlist-route  

@@ -1,11 +1,13 @@
 pkgbase = gfwlist-route
 	pkgdesc = gwflist ip for china . and add it to route
 	pkgver = 1.0.0
-	pkgrel = 11
+	pkgrel = 12
 	arch = any
 	groups = lcj
 	license = GPL3
-	depends = chnroutes-alike-git
+	optdepends = chnroutes-alike-git
+	optdepends = For
+	optdepends = chinaIP
 	source = gfwlist-route
 	source = gfwlist-route.service
 	source = gfwlist-route.timer
