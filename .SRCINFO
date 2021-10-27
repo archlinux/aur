@@ -1,6 +1,6 @@
 pkgbase = deepin-network-utils-git
 	pkgdesc = DDE network utils
-	pkgver = 5.4.6.r4.g50d37d5
+	pkgver = 5.4.9.r10.g4996611
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-network-utils
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = deepin-network-utils-git
 	sha512sums = SKIP
 
 pkgname = deepin-network-utils-git
-
