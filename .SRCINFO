@@ -1,0 +1,13 @@
+pkgbase = srt-edit
+	pkgdesc = A simple tool to edit .srt subtitles from the command line
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/fyulita/srt-edit
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python>=3
+	source = srt-edit::git+https://github.com/fyulita/srt-edit.git
+	md5sums = SKIP
+
+pkgname = srt-edit
