@@ -1,0 +1,16 @@
+pkgbase = qbittorrent-cli
+	pkgdesc = Command line interface for QBittorrent
+	pkgver = 1.7.21116.1
+	pkgrel = 1
+	url = https://github.com/fedarovich/qbittorrent-cli
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MIT
+	depends = dotnet-runtime>=3.1.0
+	options = !strip
+	source = https://github.com/fedarovich/qbittorrent-cli/releases/download/v1.7.21116.1/qbt-netcore31-1.7.21116.1.tar.gz
+	sha256sums = 6063231629f6531b4ede4a41702b27729fe93495e7ddd5843e2591d099a030f6
+
+pkgname = qbittorrent-cli
