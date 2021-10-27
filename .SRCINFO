@@ -1,0 +1,21 @@
+pkgbase = ywatch-git
+	pkgdesc = Watch youtube videos with mpv while saving the video to disk.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/prayzjomba/ywatch.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = python-setuptools
+	depends = youtube-dl
+	depends = xclip
+	depends = mpv
+	depends = python-rich
+	depends = python-pyperclip
+	depends = python-func-timeout
+	provides = yw
+	source = ywatch-git::git+https://github.com/prayzjomba/ywatch.git#branch=0.6.3
+	md5sums = SKIP
+
+pkgname = ywatch-git
