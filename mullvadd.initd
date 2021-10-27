@@ -8,5 +8,5 @@ depend() {
 supervisor="supervise-daemon"
 command="/opt/Mullvad\ VPN/resources/mullvad-daemon"
 command_args="${MULLVPN_OPTS}"
-#pidfile="/run/${SVCNAME}.pid"
+pidfile="/run/${RC_SVCNAME}.pid"
 command_background=true
