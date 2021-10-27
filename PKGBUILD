@@ -73,5 +73,3 @@ package() {
   install -dm755 "${pkgdir}"/usr/lib
   install libyabridge-{vst2,vst3}.so "${pkgdir}"/usr/lib
 }
-
-# vim:set ts=2 sw=2 et:
