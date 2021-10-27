@@ -26,14 +26,8 @@
 		compatible = "gpio-leds";
 		red-led {
 			label = "red_led";
-			gpios = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "mmc0";
-			default-state = "on";
-		};
-		white-led {
-			label = "white_led";
-			gpios = <&gpio2 RK_PC7 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "none";
+			gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_HIGH>;
+			linux,default-trigger = "heartbeat";
 			default-state = "on";
 		};
 	};
@@ -45,10 +39,11 @@
 		#clock-cells = <0>;
 	};
 
+	/* Power sequence for SDIO WiFi module */
 	sdio_pwrseq: sdio-pwrseq {
 		compatible = "mmc-pwrseq-simple";
 		pinctrl-names = "default";
-		pinctrl-0 = <&wifi_enable_h>;
+		pinctrl-0 = <&wifi_reg_on_h>;
 
 		/*
 		 * On the module itself this is one of these (depending
@@ -56,12 +51,12 @@
 		 * - SDIO_RESET_L_WL_REG_ON
 		 * - PDN (power down when low)
 		 */
-		reset-gpios = <&gpio1 18 GPIO_ACTIVE_LOW>;
+		reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
 	};
 
-	vcc_sys_5v: vcc-sys-5v-regulator {
+	dc_5v: dc-5v {
 		compatible = "regulator-fixed";
-		regulator-name = "vcc_sys_5v";
+		regulator-name = "dc_5v";
 		regulator-min-microvolt = <5000000>;
 		regulator-max-microvolt = <5000000>;
 		regulator-always-on;
@@ -77,7 +72,7 @@
 
 	vcc_sd: sdmmc-regulator {
 		compatible = "regulator-fixed";
-		gpio = <&gpio0 30 GPIO_ACTIVE_LOW>;
+		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&sdmmc0m1_pin>;
 		regulator-name = "vcc_sd";
@@ -136,14 +131,6 @@
 		};
 	};
 
-	wireless-wlan {
-		compatible = "wlan-platdata";
-		rockchip,grf = <&grf>;
-		wifi_chip_type = "rtl8723bs";
-		sdio_vref = <1800>;
-		WIFI,host_wake_irq = <&gpio1 19 GPIO_ACTIVE_HIGH>;
-		status = "okay";
-	};
 };
 
 &analog_sound {
@@ -193,6 +180,7 @@
 };
 
 &sdio {
+	vmmc-supply = <&vccio_3v3_reg>;
 	bus-width = <4>;
 	cap-sd-highspeed;
 	cap-sdio-irq;
@@ -202,7 +190,16 @@
 	non-removable;
 	pinctrl-names = "default";
 	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
+	#address-cells = <1>;
+	#size-cells = <0>;
 	status = "okay";
+
+	// rtl8723bs: wifi@1 {
+	//	reg = <1>;
+	//	interrupt-parent = ;
+	//	interrupts = ;
+	//	interrupt-names = "host-wake";
+	// }
 };
 
 &sdmmc {
@@ -223,7 +220,7 @@
 	phy-supply = <&vcc_phy>;
 	clock_in_out = "output";
 	assigned-clock-rate = <50000000>;
-    assigned-clocks = <&cru SCLK_MAC2PHY>;
+	assigned-clocks = <&cru SCLK_MAC2PHY>;
 	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
 	status = "okay";
 };
@@ -308,9 +305,8 @@
 &pinctrl {
 
 	sdio-pwrseq {
-		wifi_enable_h: wifi-enable-h {
-		rockchip,pins =
-			<1 18 RK_FUNC_GPIO &pcfg_pull_none>;
+		wifi_reg_on_h: wifi-reg-on-h {
+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
 
@@ -326,12 +322,30 @@
 		};
 	};
 
+	wifi {
+		wifi_host_wake_l: wifi-host-wake-l {
+			rockchip,pins = <1 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+	};
+
 };
 
 &tsadc {
 	rockchip,hw-tshut-mode = <0>;
 	rockchip,hw-tshut-polarity = <0>;
 	status = "okay";
+};
+
+&uart0 {
+	uart-has-rtscts;
+	status = "okay";
+
+	bluetooth {
+		compatible = "realtek,rtl8723bs-bt";
+		device-wake-gpios = <&gpio1 RK_PC7 GPIO_ACTIVE_HIGH>;
+		host-wake-gpios = <&gpio1 RK_PD2 GPIO_ACTIVE_HIGH>;
+		enable-gpios = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
+	};
 };
 
 &uart2 {
