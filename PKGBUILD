@@ -4,7 +4,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 # from: github
 # what: libvirt/libvirt
-
+# !match: -rc[0-9]+$
 pkgname=libvirt-xen
 pkgver=7.8.0
 pkgrel=1
