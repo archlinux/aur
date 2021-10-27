@@ -2,7 +2,7 @@
 
 pkgname=anki-release-source
 pkgver=2.1.49
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts efficiently. Latest release building locally"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -63,6 +63,8 @@ sha256sums=('0a072f9a2babdde67b233104c73450e297c7feff41e0a43b76dd590bafcef5d5'
 
 prepare(){
     cd "anki-$pkgver"
+    # pro-actively prevent "module not found" error
+    [ -d ts/node_modules ] && rm -r ts/node_modules
     patch -p1 < "$srcdir/no-update.patch"
     rm .bazelversion
 }
