@@ -3,7 +3,7 @@
 # Contributor: Dominik Braun <mail at dominikbraun dot io>
 
 pkgname=timetrace-bin
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="Simple CLI for tracking your working time."
 arch=("x86_64")
@@ -13,9 +13,10 @@ depends=('glibc')
 optdepends=('bash-completion')
 provides=('timetrace')
 conflicts=('timetrace')
+changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/timetrace-linux-amd64.tar.gz"
         "README-$pkgver.md::https://raw.githubusercontent.com/dominikbraun/timetrace/v$pkgver/README.md")
-sha256sums=('adb40c879a996f1078489cc450e752fb8582f5e15e86586e788ef612906da3ca'
+sha256sums=('e8d70efd2cd66d60148c2e371f1eb6cb5f47afcb5a88d0b1d87162d1d571fb55'
             'a65bbb025d4ba57d8d186fd366a2ca93e3ebc1d410906063718e9080e1bb165e')
 
 build() {
