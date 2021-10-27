@@ -29,5 +29,3 @@ package() {
 
   install yabridgectl "${pkgdir}"/usr/bin
 }
-
-# vim:set ts=2 sw=2 et:
