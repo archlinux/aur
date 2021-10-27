@@ -12,7 +12,7 @@ pkgver=21.09
 _buildver=21.09.14-1631646245
 _pkgverpostfix=""
 _electronver="9.4.4"
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A zooming presentation editor and player based on SVG and JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -377,7 +377,7 @@ package_sozi() {
 
 package_sozi-extras_texts2paths() {
   pkgdesc="An script for converting Text objects of a SVG to Path objects"
-  depends=("python2-lxml" "inkscape")
+  depends=("python-lxml" "inkscape")
   conflicts=("sozi-tools_texts2paths")
 
   cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
