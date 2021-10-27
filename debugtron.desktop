@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Debugtron
+Comment=Debug in-production Electron based app 
+GenericName=Electron Fiddle
+Exec=/opt/Debugtron/Debugtron %U
+Icon=Electron
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+
