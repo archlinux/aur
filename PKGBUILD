@@ -2,8 +2,8 @@
 
 pkgname=mons-git
 _pkgname=${pkgname%-git}
-pkgver=r117.261ecbc
-pkgrel=2
+pkgver=r120.375bbba
+pkgrel=1
 pkgdesc="KISS and POSIX Shell script to quickly manage three monitors on X"
 arch=("any")
 url="https://github.com/Ventto/mons"
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
   cd ${srcdir}
   rm -r ${_pkgname}/libshlist
-  mv 'libshlist' ${_pkgname}/libshlist
+  mv libshlist ${_pkgname}/libshlist
 }
 
 package() {
