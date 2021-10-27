@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=snow
-_cranver=0.4-3
+_cranver=0.4-4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=('r>=2.13.1')
 optdepends=(r-rmpi r-rlecuyer r-nws)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('8512537daf334ea2b8074dbb80cf5e959a403a78d68bc1e97664e8a4f64576d8')
+sha256sums=('84587f46f222a96f3e2fde10ad6ec6ddbd878f4e917cd926d632f61a87db13c9')
 
 build(){
     cd "${srcdir}"
