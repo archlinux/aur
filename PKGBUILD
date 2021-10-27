@@ -46,4 +46,7 @@ package() {
   cd compiled
   find . -type f -exec install -Dm644 '{}' "$pkgdir/usr/lib/vignette/{}" ';'
   cd ..
+
+  # Hack for Cubism
+  ln -s "$HOME/.local/state/vignette/libLive2DCubismCore.so" "$pkgdir/usr/lib/vignette/libLive2DCubismCore.so"
 }
