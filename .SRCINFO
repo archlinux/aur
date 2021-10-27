@@ -7,7 +7,7 @@ pkgbase = pandoc-crossref-static-git
 	license = GPL2
 	makedepends = stack
 	makedepends = pandoc
-	depends = pandoc=2.14.2
+	depends = pandoc=2.15
 	provides = pandoc-crossref=0.3.12.0c.r0.gfe8033c
 	conflicts = pandoc-crossref
 	replaces = pandoc-crossref-bin
@@ -16,6 +16,6 @@ pkgbase = pandoc-crossref-static-git
 	source = pandoc-crossref-static-git::git+https://github.com/lierdakil/pandoc-crossref.git
 	source = ver-bump.patch
 	sha256sums = SKIP
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 2b0bc163d95cd13de4db1d07ab998e0e8ea15087302a65b3c10dd224bd2bbbba
 
 pkgname = pandoc-crossref-static-git
