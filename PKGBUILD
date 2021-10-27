@@ -11,8 +11,9 @@ license=('custom')
 provides=("$_pkgname")
 depends=('gmp')
 makedepends=('cabal-install')
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git" 0001-Build-with-GHC-8.10.4-and-9.0.1.patch)
+sha256sums=('SKIP'
+            '32deb5f7a9278a989980fb19740504c362cdc8787717ee506ec2c3bb3f13690b')
 
 # based on fanficfare-git
 pkgver() {
@@ -22,6 +23,12 @@ pkgver() {
     "$(git blame -L /^version:/,+1 *.cabal -p | head -n1 | cut -d' ' -f1)"
   git describe --long --tags --match='v*' \
     | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+
+    git am ../0001-Build-with-GHC-8.10.4-and-9.0.1.patch
 }
 
 build() {

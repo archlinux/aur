@@ -10,7 +10,8 @@ pkgbase = cabal-fmt-static-git
 	depends = gmp
 	provides = cabal-fmt
 	source = git+https://github.com/phadej/cabal-fmt.git
-	md5sums = SKIP
+	source = 0001-Build-with-GHC-8.10.4-and-9.0.1.patch
+	sha256sums = SKIP
+	sha256sums = 32deb5f7a9278a989980fb19740504c362cdc8787717ee506ec2c3bb3f13690b
 
 pkgname = cabal-fmt-static-git
-
