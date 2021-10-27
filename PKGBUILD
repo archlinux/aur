@@ -7,10 +7,10 @@
 pkgname=gamehub
 _pkgver=0.16.1-2
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle"
 arch=(i686 x86_64 armv6h armv7h aarch64)
-url="https://tkashkin.tk/projects/gamehub/"
+url="https://tkashkin.github.io/projects/gamehub/"
 license=(GPL3)
 depends=(gtk3 glib2 libgee libsoup json-glib sqlite webkit2gtk libmanette libxtst)
 makedepends=(meson ninja vala)
