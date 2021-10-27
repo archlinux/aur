@@ -21,7 +21,7 @@ optdepends=(
         'gvfs: For move to trash functionality'
         'libdbusmenu-glib: For KDE global menu'
 )
-provides=('codium')
+provides=('codium' 'vscodium')
 conflicts=('vscodium' 'vscodium-git')
 
 sha256sums=('65e6b053e6d8be61763801312ded64a82cf835d77a6eabe1b9d7eb9e87b2e49b'
