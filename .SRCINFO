@@ -1,13 +1,12 @@
 pkgbase = r-genomeinfodbdata
 	pkgdesc = Species and taxonomy ID look up tables used by GenomeInfoDb
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/data/annotation/html/GenomeInfoDbData.html
 	arch = any
 	license = Artistic-2.0
 	depends = r>=3.5.0
-	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/GenomeInfoDbData_1.2.6.tar.gz
-	sha256sums = 09209adea5f0ea69535b27710b191f2679f83ccc0bd4342a4d91a9dcf0f91f31
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/GenomeInfoDbData_1.2.7.tar.gz
+	sha256sums = 217cbad0dd3ed8f0da6b21c7d35df5737bcbd21e317ca71d2fb6ec4c316b1987
 
 pkgname = r-genomeinfodbdata
-
