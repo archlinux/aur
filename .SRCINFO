@@ -26,4 +26,3 @@ pkgbase = deepin-session-ui-git
 	sha512sums = SKIP
 
 pkgname = deepin-session-ui-git
-
