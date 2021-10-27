@@ -17,17 +17,17 @@ source=('git+https://github.com/robbert-vdh/yabridge')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_yabridge"
+  cd "$srcdir/$_yabridge"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_yabridge/tools/yabridgectl"
+  cd "$srcdir/$_yabridge/tools/yabridgectl"
   cargo build --release --locked --all-features --target-dir=target
 }
 
 package() {
-  cd "$_yabridge/tools/yabridgectl"
+  cd "$srcdir/$_yabridge/tools/yabridgectl"
   install -Dm 755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
 }
 
