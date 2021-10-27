@@ -2,19 +2,19 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=dada2
-_bcver=1.20.0
+_bcver=1.21.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
 pkgdesc="Accurate, high-resolution sample inference from amplicon sequencing data"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=(LGPL3)
+license=(LGPL2)
 depends=('r>=3.4.0' 'r-rcpp>=0.12.0' 'r-biostrings>=2.42.1' 'r-ggplot2>=2.1.0' 'r-reshape2>=1.4.1' 'r-shortread>=1.32.0' 'r-rcppparallel>=4.3.0' 'r-iranges>=2.6.0' 'r-xvector>=0.16.0' 'r-biocgenerics>=0.22.0')
 makedepends=(make)
 optdepends=(r-biocstyle r-knitr r-rmarkdown)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('85242fcf2c2f273d72a08869128f2e85d388c709531c1523c241ece8bb9d69f1')
+sha256sums=('2e150e9606cdb54fd6a777df0e610e26cd006bf2b8e63fedef36cabcf2ede592')
 
 build() {
   cd "${srcdir}"
