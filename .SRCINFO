@@ -1,17 +1,15 @@
 pkgbase = r-geosphere
 	pkgdesc = Spherical Trigonometry
-	pkgver = 1.5.10
+	pkgver = 1.5.14
 	pkgrel = 1
 	url = https://cran.r-project.org/package=geosphere
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc
 	depends = r>=3.0.0
 	depends = r-sp
 	optdepends = r-raster
-	source = https://cran.r-project.org/src/contrib/geosphere_1.5-10.tar.gz
-	md5sums = 6e29eb221218e3e80bba9e8d4e3ee5b6
+	source = https://cran.r-project.org/src/contrib/geosphere_1.5-14.tar.gz
+	sha256sums = f2c3a4ae1c87c86c123d48f134721c809fb33675cb5cd0959080049eabdbe42d
 
 pkgname = r-geosphere
-

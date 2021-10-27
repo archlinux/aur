@@ -2,7 +2,7 @@
 # Contributor: Jooa <aur at (name) dot xyz>
 
 _cranname=geosphere
-_cranver=1.5-10
+_cranver=1.5-14
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,10 +11,9 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 depends=('r>=3.0.0' r-sp)
-makedepends=(gcc)
 optdepends=(r-raster)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('6e29eb221218e3e80bba9e8d4e3ee5b6')
+sha256sums=('f2c3a4ae1c87c86c123d48f134721c809fb33675cb5cd0959080049eabdbe42d')
 
 build() {
   cd "${srcdir}"
