@@ -30,5 +30,3 @@ package() {
   cd "$srcdir/$_yabridge/tools/yabridgectl"
   install -Dm 755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
 }
-
-# vim:set ts=2 sw=2 et:
