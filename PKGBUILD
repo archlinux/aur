@@ -2,7 +2,7 @@
 
 pkgname="mpv-handler"
 pkgver=0.2.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("x86_64")
 depends=("mpv")
