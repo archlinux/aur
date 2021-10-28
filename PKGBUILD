@@ -1,10 +1,9 @@
 pkgbase=harrison-32c-vst
 pkgname=("harrison-32c-channel-vst" "harrison-32c-vip-vst")
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Harrison Consoles 32C Console VST Plugins"
 arch=('x86_64')
-url="https://harrisonconsoles.com/product/32c-channel-plugin/"
 license=('EULA')
 groups=('vst-plugins' 'pro-audio')
 depends=('glibc' 'libcurl-gnutls')
@@ -20,12 +19,14 @@ prepare () {
 }
 
 package_harrison-32c-channel-vst() {
+	url="https://harrisonconsoles.com/product/32c-channel-plugin/"
 	## Install 32C VST Plugin
 	mkdir -p $pkgdir/usr/lib/vst/
 	cp -r "$srcdir/Harrison_32C/vst/32C-Channel.so" $pkgdir/usr/lib/vst/32C-Channel.so
 }
 
 package_harrison-32c-vip-vst() {
+	url="https://harrisonconsoles.com/product/32c-vocal-intensity-processor/"
 	## Install 32C VST Plugin
 	mkdir -p $pkgdir/usr/lib/vst/
 	cp -r "$srcdir/Harrison_32C/vst/32C-VIP.so" $pkgdir/usr/lib/vst/32C-VIP.so

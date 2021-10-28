@@ -1,8 +1,7 @@
 pkgbase = harrison-32c-vst
 	pkgdesc = Harrison Consoles 32C Console VST Plugins
 	pkgver = 1.0.1
-	pkgrel = 1
-	url = https://harrisonconsoles.com/product/32c-channel-plugin/
+	pkgrel = 2
 	arch = x86_64
 	groups = vst-plugins
 	groups = pro-audio
@@ -13,5 +12,7 @@ pkgbase = harrison-32c-vst
 	depends = libcurl-gnutls
 
 pkgname = harrison-32c-channel-vst
+	url = https://harrisonconsoles.com/product/32c-channel-plugin/
 
 pkgname = harrison-32c-vip-vst
+	url = https://harrisonconsoles.com/product/32c-vocal-intensity-processor/
