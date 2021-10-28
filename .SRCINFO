@@ -1,0 +1,23 @@
+pkgbase = lua-liluat
+	pkgdesc = Lightweight Lua Template engine
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/FSMaxB/liluat
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	source = lua-liluat-1.2.0.tar.gz::https://github.com/FSMaxB/liluat/archive/v1.2.0.tar.gz
+	sha256sums = dfedc89a05a5b26f9ec2d52ea324eb5a9e69b81b2fde2528102d6f80d4ad0093
+	b2sums = e4acd9209c86088bd460384538a70887371add4d9a8538d6ae0ce87f5084abf48ac61b8442fccc6fdabdf40042f5bce4574d1389e2279d7408975b319e66ba7a
+
+pkgname = lua-liluat
+
+pkgname = lua51-liluat
+
+pkgname = lua52-liluat
+
+pkgname = lua53-liluat
