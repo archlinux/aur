@@ -2,12 +2,12 @@
 
 pkgname=mmg
 pkgver=5.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Anisotropic tetrahedral remesher and moving mesh generator'
 url="http://www.mmgtools.org/"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('scotch' 'vtk')
+depends=('scotch')
 makedepends=('cmake' 'netcdf' 'proj' 'qt5-base' 'glew' 'python' 'libogg' 'libtheora')
 provides=('mmg3d')
 conflicts=('mmg3d')
@@ -26,7 +26,8 @@ build () {
   cmake -S "$srcdir/$pkgname-$pkgver" -B build \
     -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
     -DBUILD_SHARED_LIBS=ON \
-    -DUSE_ELAS=OFF
+    -DUSE_ELAS=OFF \
+    -DUSE_VTK=OFF
 
   cmake --build build
 }
