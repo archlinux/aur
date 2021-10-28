@@ -1,14 +1,14 @@
 # Maintainer: Florian Mounier <paradoxxx.zero at gmail dot com>
 
 # This package rebuild only the i915 module with this patch applied: https://gitlab.freedesktop.org/drm/intel/-/issues/1627
-# Must use --overwrite "*/i915.ko.zst" as it replaces the module, waiting for finding a better solution
+# Must use --overwrite "*/i915.ko.zst" as it replaces the module, for a lack of a better solution
 
 pkgname=linux-i915-module-patched
 pkgbase=linux-i915-module-patched
 # pkgver=$(curl --silent "https://api.github.com/repos/archlinux/linux/tags" | grep name | head -n 1 | sed -E 's/.*"v([^"]+)".*/\1/')
 pkgver=$(curl --silent https://raw.githubusercontent.com/archlinux/svntogit-packages/master/linux/trunk/PKGBUILD | grep pkgver= | sed -E 's/pkgver=//')
 pkgrel=1
-pkgdesc='Linux Patched'
+pkgdesc='Linux i915 module with this patch applied: https://gitlab.freedesktop.org/drm/intel/-/issues/1627 /!\\ Must use --overwrite "*/i915.ko.zst" as it replaces the module '
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
@@ -76,9 +76,7 @@ package() {
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  pkgdesc="The $pkgdesc kernel and modules"
   echo "Installing i915 module... ${src} ${srcdir} ${_srcname} ${pkgdir} "
-
   zstd -z -19 "./drivers/gpu/drm/i915/i915.ko"
   install -D -m644 "./drivers/gpu/drm/i915/i915.ko.zst" "${modulesdir}/kernel/drivers/gpu/drm/i915/i915.ko.zst"
 }
