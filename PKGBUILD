@@ -7,9 +7,9 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=5.0
-_pkgver=${_pkgvermajmin}.2
-_verpostfix=""
+_pkgvermajmin=6.0
+_pkgver=${_pkgvermajmin}.0
+_verpostfix="beta2"
 pkgver="${_pkgver}${_verpostfix}"
 pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
@@ -39,7 +39,7 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt6-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha512sums=('a2111f0687fa2177a5c0b7c4a8768544d5f63b1aa7b53e1d1f9dcc69fc49a00f12399f988da35b1243de9d690d23aa05029d4385ea3882014a56b022a4a0e447')
+sha512sums=('e6460befcc1c34147350c06fa04a803c72f06b8033380095f41afc2e9491d7b1650aac7b1bd1b3057c0d7f72d482659b898895cb5abaac2ef6b547165fb1ad87')
 
 prepare() {
   cd ${srcdir}/${_filename}
@@ -55,8 +55,8 @@ build() {
   cd ${srcdir}/${_filename}
 
   # chokes with Qt 6
-  # -spec linux-clang \
   qmake6 \
+    -spec linux-clang \
     -r \
     DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES \
     ${srcdir}/${_filename}/qtcreator.pro
