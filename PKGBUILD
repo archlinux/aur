@@ -5,7 +5,7 @@
 
 pkgname=libev-static
 _pkgname=libev
-pkgver=4.22
+pkgver=4.33
 pkgrel=1
 pkgdesc="A full-featured and high-performance event loop (static library)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('glibc')
 optdepends=('libev: headers and pkg-config files')
 source=(http://dist.schmorp.de/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
-sha1sums=('4affcba78dc17239f2ccd84d6e3e6dec2bd1f8ba')
+sha1sums=('133587b89c34dba0b3a2d2a90ba59f6748f6c368')
 options=('staticlibs')
 
 build() {
