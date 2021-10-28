@@ -1,0 +1,17 @@
+pkgbase = lxgw-new-clear-gothic-fonts
+	pkgdesc = A Simplified Chinese sans-serif font derived from IPAex Gothic
+	pkgver = 0.235
+	pkgrel = 1
+	url = https://github.com/lxgw/LxgwNewClearGothic
+	arch = any
+	license = custom:IPA_Font_License
+	source = lxgw-new-clear-gothic-fonts-0.235-LICENSE.txt::https://github.com/lxgw/LxgwNewClearGothic/raw/v0.235/LICENSE.txt
+	source = lxgw-new-clear-gothic-fonts-0.235-LXGWFasmartGothic.ttf::https://github.com/lxgw/LxgwNewClearGothic/releases/download/v0.235/LXGWFasmartGothic.ttf
+	source = lxgw-new-clear-gothic-fonts-0.235-LXGWNewClearGothic-Book.ttf::https://github.com/lxgw/LxgwNewClearGothic/releases/download/v0.235/LXGWNewClearGothic-Book.ttf
+	source = lxgw-new-clear-gothic-fonts-0.235-LXGWNewClearGothic-Regular.ttf::https://github.com/lxgw/LxgwNewClearGothic/releases/download/v0.235/LXGWNewClearGothic-Regular.ttf
+	sha256sums = 1ed8b0e4c4a640816241d0a1cedcd2652b2f42cc155527256e8e54b6266c915f
+	sha256sums = f2cdf6caf1c305f4048f5cf5bc56f251288408b4a31b6dfa0cc7db5e10e1db92
+	sha256sums = 6128153f595f18cf15f97b99b008d60c957712ac6fdbff6e91e64d7845741963
+	sha256sums = b25db58ca4cfbcd8774a84563e9728e4481075ca22ad139d9fbfed68c64e82a8
+
+pkgname = lxgw-new-clear-gothic-fonts
