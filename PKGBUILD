@@ -5,9 +5,9 @@
  
 _appname=Quaternion
 pkgname=quaternion
-pkgver=0.0.9.5
-_beta_suffix="beta2"
-pkgrel=3
+pkgver=0.0.95.1
+_suffix=""
+pkgrel=1
 pkgdesc='Qt5-based IM client for the Matrix protocol'
 url='https://matrix.org/docs/projects/client/quaternion.html'
 arch=('x86_64' 'aarch64')
@@ -17,11 +17,11 @@ optdepends=('qtkeychain')
 makedepends=('cmake')
 provides=('quaternion')
 conflicts=('quaternion-git')
-source=("https://github.com/quotient-im/Quaternion/archive/$pkgver-$_beta_suffix.tar.gz")
-sha512sums=('3456973d03c0315105e108ef9ff176ef9a434f96962fb98c8eaf62f46ae9695e2811cb9b180fa9d1e162c300df6812d6e83dae4102aedc6aa6b5242b67b5bad3')
+source=("https://github.com/quotient-im/Quaternion/archive/refs/tags/${pkgver}${_suffix}.tar.gz")
+sha512sums=('465e49b90fef88b252f26b5791c2d491bfa451dd3b876b1fce8732bf96276437343fd368d1d48d20a2b5ec993a3e0a36709232f60fadd176548a7b942b22b678')
 
 build() {
-  cd ${_appname}-${pkgver}-$_beta_suffix
+  cd "${_appname}-${pkgver}${_suffix}"
   cmake -H. -Bbuild \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
     -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd ${_appname}-${pkgver}-$_beta_suffix
+  cd "${_appname}-${pkgver}${_suffix}"
   cmake --build build -- DESTDIR="$pkgdir/" install
 }
 
