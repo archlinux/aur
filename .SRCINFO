@@ -15,4 +15,3 @@ pkgbase = mingw-w64-gst-editing-services-git
 	sha256sums = SKIP
 
 pkgname = mingw-w64-gst-editing-services-git
-
