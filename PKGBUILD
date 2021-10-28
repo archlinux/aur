@@ -10,7 +10,7 @@ url="http://3drealms.com/"
 license=('custom: shareware')
 depends=('eduke32')
 makedepends=('unzip')
-source=("ftp://ftp.3drealms.com/share/3dduke13.zip")
+source=("http://dukeworld.duke4.net/classic%20dukeworld/share/3dduke13.zip")
 sha256sums=('c67efd179022bc6d9bde54f404c707cbcbdc15423c20be72e277bc2bdddf3d0e')
 
 prepare() {
