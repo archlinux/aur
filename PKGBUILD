@@ -1,4 +1,4 @@
-# Maintainer: ta180m@gmail.com
+# Maintainer: Anthony Wang <ta180m@pm.me>
 
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
