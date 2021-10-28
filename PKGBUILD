@@ -15,7 +15,7 @@ makedepends=(
 )
 url="https://github.com/benoit-pierre/plover_stroke"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benoit-pierre/plover_stroke/archive/refs/tags/$pkgver.tar.gz")
-sha1sums=(SKIP)
+sha256sums=(350919399c4d29098b6147d10d175755d75d082e9ecd85fd48af70c4170269b0)
 
 build() {
   cd "plover_stroke-$pkgver"
