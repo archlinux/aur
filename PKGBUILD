@@ -2,7 +2,7 @@
 # Contributor: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 
 pkgname=scaleway-cli
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Scaleway CLI is a tool to help you pilot your Scaleway infrastructure directly from your terminal."
 arch=('x86_64')
@@ -10,7 +10,6 @@ url="https://scaleway.com"
 license=('Apache')
 makedepends=('go' 'git')
 source=("https://github.com/scaleway/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('36c362ad87a5c81dc1cf4a0aaa6e9ba323d59ecdf49e351039b41d25e13c974a')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -38,4 +37,5 @@ package() {
   #PATH=.:$PATH scw autocomplete script shell=bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/scw"
 }
 
+sha256sums=('7baa6d7af5602703bc9b1f54beb5a36642151cc12d6584d6ab76df8bb088365e')
 # vim:set ts=2 sw=2 et:
