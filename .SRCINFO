@@ -1,7 +1,7 @@
 pkgbase = tldr++
 	pkgdesc = Community driven man pages improved with smart user interaction
 	pkgver = 1.0.0.alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://isacikgoz.me/tldr
 	arch = i686
 	arch = x86_64
@@ -11,13 +11,7 @@ pkgbase = tldr++
 	makedepends = go
 	provides = tldr
 	conflicts = tldr
-	conflicts = nodejs-tldr
-	conflicts = tldr-bash-git
-	conflicts = tealdeer
-	conflicts = tldr-cpp-client
-	conflicts = tldr-python-client
 	source = tldr++-1.0.0-alpha.tar.gz::https://github.com/isacikgoz/tldr/archive/refs/tags/v1.0.0-alpha.tar.gz
 	sha256sums = d40e1c602d84acc67cdee3b9bed001fb8ec198c7049c1d05eb071ab05af66c19
 
 pkgname = tldr++
-
