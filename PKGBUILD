@@ -5,7 +5,7 @@ _author=sciplot
 
 pkgname=${_name}-git
 pkgver=v0.2.2.r59.gd568f1f
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern C++ scientific plotting library powered by gnuplot"
 arch=('any')
 url="https://github.com/${_author}/${_name}"
