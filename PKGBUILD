@@ -109,6 +109,7 @@ ac_add_options --with-system-libevent
 ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
 ac_add_options --with-system-jpeg
+ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/wasi-sysroot
 
 # Features
 ac_add_options --enable-pulseaudio
