@@ -1,12 +1,12 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 
 pkgname=libcamera-clang-git
-pkgver=r3045.a3b15398
+pkgver=r3203.76bd9f3d
 pkgrel=1
-pkgdesc='A complex camera support library for Linux, Android, and ChromeOS (built with clang)'
+pkgdesc='A complex camera support library for Linux, Android, and ChromeOS (built with LLVM toolchain)'
 arch=('x86_64' 'i686')
 url='https://libcamera.org/'
-provides=('libcamera' 'libcamera-clang' 'libcamera-git')
+provides=('libcamera' 'libcamera-git')
 conflicts=('libcamera')
 makedepends=(
   'python-yaml' 'python-ply' 'python-jinja' 'pkgconf' 'gnutls' 'openssl' 'git' 
@@ -15,7 +15,7 @@ makedepends=(
   'qt5-tools'   # for 'qcam'
   'libevent'    # for 'cam'
   #'gtest'      # for 'lc-compliance'
-  'meson>=0.55'
+  'meson'
   'clang>=5.0'
 )
 depends=(

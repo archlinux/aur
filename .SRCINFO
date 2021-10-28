@@ -1,6 +1,6 @@
 pkgbase = libcamera-clang-git
-	pkgdesc = A complex camera support library for Linux, Android, and ChromeOS (built with clang)
-	pkgver = r3045.a3b15398
+	pkgdesc = A complex camera support library for Linux, Android, and ChromeOS (built with LLVM toolchain)
+	pkgver = r3203.76bd9f3d
 	pkgrel = 1
 	url = https://libcamera.org/
 	arch = x86_64
@@ -22,14 +22,13 @@ pkgbase = libcamera-clang-git
 	makedepends = gstreamer
 	makedepends = qt5-tools
 	makedepends = libevent
-	makedepends = meson>=0.55
+	makedepends = meson
 	makedepends = clang>=5.0
 	depends = libc++
 	depends = gst-plugins-base-libs
 	optdepends = qt5-base: for qcam test application
 	optdepends = libevent: for test commands
 	provides = libcamera
-	provides = libcamera-clang
 	provides = libcamera-git
 	conflicts = libcamera
 	options = !docs
