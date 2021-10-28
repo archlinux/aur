@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-serialbus-static
-_qtver=6.2.0
+_qtver=6.2.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtserialbus-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('b8cfe2a5b49f8e06c76072021015c107fb35a678d1d28beaba9e629be18aac41')
+sha256sums=('15e7a0a578dc9ed306ff2598edb9822081902ef1a4b52b20f1d2dd6461239f85')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
