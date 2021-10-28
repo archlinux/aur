@@ -2,27 +2,15 @@
 
 pkgbase=qhotkey
 pkgname=('qhotkey-qt6' 'qhotkey-qt5')
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Library for creating global shortcut/hotkey for desktop Qt6 applications'
 arch=('x86_64')
 url='https://github.com/Skycoder42/QHotkey/'
 license=('BSD')
 makedepends=('cmake' 'libx11' 'qt5-base' 'qt5-x11extras' 'qt6-base')
-source=("https://github.com/Skycoder42/QHotkey/archive/${pkgver}/qhotkey-${pkgver}.tar.gz"
-        '010-qhotkey-add-qt6-support.patch'::'https://github.com/Skycoder42/QHotkey/commit/25f21849b3335f437ec6ee2cc74f043d174aaebb.patch'
-        '020-qhotkey-fix-cmake-exported-include-dir.patch'::'https://github.com/Skycoder42/QHotkey/commit/6b3cc35bbd91562ee5192b6b9e9e510a00769c97.patch'
-        '030-qhotkey-cmake-private-linking.patch'::'https://github.com/Skycoder42/QHotkey/commit/79e5dd65be78ccd43db69a40a40624a6203b1f51.patch')
-sha256sums=('a6d5505a50c52bcc876c8d0bf2bb8a1dcd9f5ea60dacea07d8372137115b7f6d'
-            '3762df7dc75cabd644003783eb5d616379b5233da1128efed54746f58df23e26'
-            '0a06f2f424a512681f6768a248025b59bb038880aa016b4ce7dd9f951e9ae177'
-            '012a837dfe6bf1f91f53597198d75d919a7f07454eae268f1897968a2eee8ebc')
-
-prepare() {
-    patch -d "QHotkey-${pkgver}" -Np1 -i "${srcdir}/010-qhotkey-add-qt6-support.patch"
-    patch -d "QHotkey-${pkgver}" -Np1 -i "${srcdir}/020-qhotkey-fix-cmake-exported-include-dir.patch"
-    patch -d "QHotkey-${pkgver}" -Np1 -i "${srcdir}/030-qhotkey-cmake-private-linking.patch"
-}
+source=("https://github.com/Skycoder42/QHotkey/archive/${pkgver}/qhotkey-${pkgver}.tar.gz")
+sha256sums=('87d9df1bad8b8ac3c4fe38a3abebd035a9ef7f31b657dfde78fad21f418f523e')
 
 build() {
     local -a _common_opts=(
@@ -34,7 +22,7 @@ build() {
     cmake -B build-qt6 -S "QHotkey-${pkgver}" \
         -DCMAKE_INSTALL_INCLUDEDIR:PATH='include/qhotkey-qt6' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib/qhotkey-qt6' \
-        -DQT_MAJOR:STRING='6' \
+        -DQT_DEFAULT_MAJOR_VERSION:STRING='6' \
         "${_common_opts[@]}"
     make -C build-qt6
     
