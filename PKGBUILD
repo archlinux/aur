@@ -14,7 +14,7 @@ _microarchitecture=98
 ## Major kernel version
 _major=5.14
 ## Minor kernel version
-_minor=14
+_minor=15
 
 pkgbase=linux-multimedia
 #pkgver=${_major}
@@ -42,11 +42,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('4dff4e96d4052195002538027f8a810411ba6116a41bff5575952702d509d06a'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
+sha256sums=('74f39a0c69e9d7c94d290515645396725e3ce3667b85baf4b3c3f6f303c7a406'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
