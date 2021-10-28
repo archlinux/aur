@@ -28,7 +28,7 @@ build() {
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
       -D examples=disabled \
-      -D gtk_doc=disabled \
+      -D doc=disabled \
       -D package-name="GStreamer (Arch Linux)" \
       -D package-origin="http://www.archlinux.org/" ..
     ninja
