@@ -1,0 +1,35 @@
+pkgbase = nvidia-utils-beta-nvlax
+	pkgdesc = NVIDIA drivers utilities (beta version) with NVENC and NvFBC patched with nvlax
+	pkgver = 495.44
+	pkgrel = 1
+	url = https://github.com/illnyang/nvlax/
+	install = nvidia-utils-beta.install
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	depends = xorg-server
+	depends = libglvnd
+	depends = egl-wayland
+	optdepends = nvidia-settings-beta=495.44: configuration tool
+	optdepends = xorg-server-devel: nvidia-xconfig
+	optdepends = opencl-nvidia-beta=495.44: OpenCL support
+	provides = nvidia-utils-beta=495.44
+	provides = nvidia-utils=495.44
+	provides = nvidia-utils-nvlax
+	provides = vulkan-driver
+	provides = opengl-driver
+	provides = nvidia-libgl
+	conflicts = nvidia-libgl
+	replaces = nvidia-libgl
+	options = !strip
+	source = nvidia-drm-outputclass.conf
+	source = nvidia-utils-beta.sysusers
+	source = NVIDIA-Linux-x86_64-495.44.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/495.44/NVIDIA-Linux-x86_64-495.44.run
+	source = nvlax::git+https://github.com/illnyang/nvlax.git
+	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
+	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
+	sha512sums = bc9054e6028ba172906e6eb9a0b8f5cfc3ae74d57f3e95e0f9057879e3af07a4b19479e80d81e948872bc47bbd674f77f5f81d4debd2e2c3ce45058cd9211802
+	sha512sums = SKIP
+
+pkgname = nvidia-utils-beta-nvlax
