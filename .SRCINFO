@@ -1,0 +1,18 @@
+pkgbase = mdmg
+	pkgdesc = A scaffold prototype code tool
+	pkgver = 0.1.2_alpha.2
+	pkgrel = 1
+	url = https://github.com/himanoa/mdmg
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/himanoa/mdmg/archive/v0.1.2-alpha.2.tar.gz
+	sha256sums = 0efef44157f153e5284e7c2b0f6acd4bdec5eec54ce4048047b166ed2d7818b5
+
+pkgname = mdmg
