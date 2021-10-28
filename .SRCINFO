@@ -1,7 +1,7 @@
 pkgbase = fcp-bin
 	pkgdesc = A significantly faster alternative to the classic Unix cp(1) command.
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svetlitski/fcp/
 	arch = x86_64
 	license = BSD
