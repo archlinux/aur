@@ -3,7 +3,7 @@
 
 pkgname=python-awesomeversion-git
 pkgver=21.10.1.r1.g7121d5e
-pkgrel=1
+pkgrel=2
 pkgdesc="One version package to rule them all."
 arch=('any')
 url="https://github.com/ludeeus/awesomeversion"
@@ -25,7 +25,7 @@ prepare() {
     cd awesomeversion
 
     # replace version "main" with correct version
-    sed -e "s|version=\"main\"|version=\"$pkgver\"|" -i setup.py
+    sed -e "s|version=\"main\"|version=\"${pkgver/.r*}\"|" -i setup.py
 }
 
 check() {
