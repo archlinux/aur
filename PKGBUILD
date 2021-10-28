@@ -8,7 +8,7 @@ url="https://github.com/jhunt/$pkgname"
 arch=('x86_64')
 license=('MIT')
 makedepends=('git')
-conflicts=('xclipd-git')
+provides=('xclipd')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('6dfa2226f2482f8e05ca0a1076a672944a2551d020c6871d1e4165e79aa6d151')
 
