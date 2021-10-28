@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc="A significantly faster alternative to the classic Unix cp(1) command."
 url="https://github.com/svetlitski/fcp/"
 provides=('fcp')
-conflicts=('fcp')
 arch=('x86_64')
 license=('BSD')
 source=(
