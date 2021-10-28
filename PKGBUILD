@@ -7,7 +7,7 @@
 
 pkgname=mutter-rounded
 pkgver=40.5
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="A window manager for GNOME, with rounded corners patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -28,11 +28,11 @@ _commit=2b2b3ab8502a5bcc2436e169279d2421f6f1a605  # tags/40.5^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.h"
 _shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.c"
-_setting_src="mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/b1ba5b74faf000b93a4ddcbd73ddcb98/main.js"
+_setting_src="mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/8f8e3f8d39f31e602c2d09884a6c5dd1/main.js"
 
 if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
   _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
-  _setting_src="mutter_setting::https://gitee.com/lluo/mutter-rounded-setting/attach_files/847740/download/main.js"
+  _setting_src="mutter_setting::https://gitee.com/lluo/mutter-rounded-setting/attach_files/865566/download/main.js"
 fi
 
 source=("$_mutter_src"
@@ -45,14 +45,14 @@ source=("$_mutter_src"
         "$_shell_blur_c_src"
         "$_setting_src")
 sha256sums=('SKIP'
-            '9fd2e457f2ef76b454bafee91b5d2d9fb2ac2e17b5aee780cd1dd2c7832a00c4'
-            'd749f90825025ef597ba20f9e51c11eeefd1ba359f9e01a369d0c0428f134bf5'
+            '0c2fc381c7529d012d3d8a4368941db7b60ce6128005008b5ddfb4da16dc2b83'
+            '579f8b6164beba2b7ee273bb6843f1681f697d59362d1d97a414cc484ef9b458'
             'c47f3a998e5b8dbb53951be450a5f561f91ad8803a653dab2bcee69b1400e6d4'
             '2ec553a260497f0ac0180512201c9819b10159a15fcbc6d5007932d8e2a44844'
             'a02e991156dc3b4418899b73a2e65187a43990851fb235ea128ed7650c839a3b'
             '8fb024306843153b28db2f5347775ef7e8add1dd846345148a572ad5336e168b'
             'd58056b5028e1cf02a029036792f52e3429bd5f71a9403b5be93d95a7ba8252a'
-            '0182ba6d60c1bcc13d959b018662ea0bc1cc2347e6648fd455212fa3221dfd79')
+            'c0eff82301060044d231f0b674025e5a00d1152e515e08d16fd18363da5187e5')
 
 pkgver() {
   cd $pkgname
