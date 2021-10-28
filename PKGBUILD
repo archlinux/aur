@@ -1,23 +1,25 @@
 # Maintainer: Devin Pohl <pohl.devin@gmail.com>
 
 pkgbase=linux-x570-vfio-openrgb-sm2262+sm2263
-pkgver=5.12.5.arch1
+pkgver=5.14.10.arch1
 pkgrel=4
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
-url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
+url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git initramfs
 )
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
+  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
+  add-acs-overrides.patch
+  i915-vga-arbiter.patch
   amd-noflr.patch
   openrgb.patch
   SM2262-SM2263.patch
@@ -28,10 +30,12 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '635d06ae764d466cdfc0019bc1773932c0fcccb5ebde8bfbb5b2c4271a939f61'
+            'cada4ca234a96e1f78da61ad29310bf076523d157ad55aadfc93465d3865c9e3'
+            'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
+            '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6'
             '37f306146b1bdf9233c544e87d0e392a8152aab679d0e4145d14f425c0438e23'
             'e7d724ac15daf428aa1e6a03737e5c1d040892d55fda8a66897fcac9323f285c'
-	    '96febff9e2177ef85b253217bb0927a11169e4a11e66ab139e48f2e7ccd50c1f')
+	        '016715498862dcc7c29063c6b6ce9d5e4160eace594f6cb1f20de9783e077bd1')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -56,20 +60,20 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  #make nconfig # new CLI menu for configuration
-  #make menuconfig # CLI menu for configuration
-  #make xconfig # X-based configuration
-  make oldconfig # using old config from previous kernel version
+  #make -j$(nproc) nconfig # new CLI menu for configuration
+  #make -j$(nproc) menuconfig # CLI menu for configuration
+  #make -j$(nproc) xconfig # X-based configuration
+  make -j$(nproc) olddefconfig # using old config from previous kernel version
   # ... or manually edit .config
 
-  make -s kernelrelease > version
+  make -j$(nproc) -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make all
-  make htmldocs
+  make -j$(nproc) all
+  make -j$(nproc) htmldocs
 }
 
 _package() {
@@ -87,13 +91,13 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -j$(nproc) -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make -j$(nproc) INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -101,6 +105,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -133,6 +138,9 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -168,6 +176,9 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"

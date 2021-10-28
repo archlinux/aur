@@ -1,25 +1,31 @@
-From bc8ffb65a1955f3c3abbb95a781acbeb6aefb13e Mon Sep 17 00:00:00 2001
+From 2b724a547f7fa754173d05b198e01c2071236633 Mon Sep 17 00:00:00 2001
 From: Devin Pohl <pohl.devin@gmail.com>
-Date: Tue, 18 May 2021 11:02:12 -0600
-Subject: [PATCH] PCI: Quirk Silicon Motion SM2262/SM2263 NVMe controller reset
+Date: Thu, 28 Oct 2021 14:57:46 -0600
+Subject: [PATCH] [PATCH] PCI: Quirk Silicon Motion SM2262/SM2263 NVMe
+ controller reset
 
 This is a patch upon a patch. The initial patch has the info:
 - https://bugzilla.kernel.org/show_bug.cgi?id=202055
 - commit b5a553a6ed8385eb6cafc1f18c7f9d559850a2e1
 - Author: Alex Williamson <alex.williamson@redhat.com>
 
-Combined, this commit fixes vfio rebinding for NVME controlers that use SM2262 and SM2263 controlers. This will allow the vfio-pci driver to properly rebind when requested and allow PCIE passthrough of these drives.
+Combined, this commit fixes vfio rebinding for NVME controlers that
+use SM2262 and SM2263 controlers. This will allow the vfio-pci driver
+to properly rebind when requested and allow PCIE passthrough of these
+drives.
+
+Updates have been made recently to reflect upstream work.
 ---
  drivers/pci/pci.c    |  2 +-
  drivers/pci/pci.h    |  1 +
- drivers/pci/quirks.c | 26 ++++++++++++++++++++++++++
- 3 files changed, 28 insertions(+), 1 deletion(-)
+ drivers/pci/quirks.c | 27 +++++++++++++++++++++++++++
+ 3 files changed, 29 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-index e4d4e399004b..fa49e9d9100e 100644
+index a4eb0c042ca3..8efd2abb9539 100644
 --- a/drivers/pci/pci.c
 +++ b/drivers/pci/pci.c
-@@ -4930,7 +4930,7 @@ int pci_bridge_secondary_bus_reset(struct pci_dev *dev)
+@@ -4995,7 +4995,7 @@ int pci_bridge_secondary_bus_reset(struct pci_dev *dev)
  }
  EXPORT_SYMBOL_GPL(pci_bridge_secondary_bus_reset);
  
@@ -29,10 +35,10 @@ index e4d4e399004b..fa49e9d9100e 100644
  	struct pci_dev *pdev;
  
 diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
-index ef7c4661314f..93fcaaa6b7c8 100644
+index 93dcdd431072..640d9d26837e 100644
 --- a/drivers/pci/pci.h
 +++ b/drivers/pci/pci.h
-@@ -41,6 +41,7 @@ int pci_mmap_fits(struct pci_dev *pdev, int resno, struct vm_area_struct *vmai,
+@@ -35,6 +35,7 @@ int pci_mmap_fits(struct pci_dev *pdev, int resno, struct vm_area_struct *vmai,
  
  int pci_probe_reset_function(struct pci_dev *dev);
  int pci_bridge_secondary_bus_reset(struct pci_dev *dev);
@@ -41,13 +47,14 @@ index ef7c4661314f..93fcaaa6b7c8 100644
  
  #define PCI_PM_D2_DELAY         200	/* usec; see PCIe r4.0, sec 5.9.1 */
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 653660e3ba9e..7ce2b09819c9 100644
+index 8c3c1ef92171..82255ebd70ca 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -3913,6 +3913,29 @@ static int delay_250ms_after_flr(struct pci_dev *dev, int probe)
+@@ -3999,6 +3999,30 @@ static int reset_hinic_vf_dev(struct pci_dev *pdev, int probe)
  	return 0;
  }
  
++
 +/*
 + * The Silicon Motion SM2262 is an NVMe controller used by several vendors
 + * which is know to corrupt its MSI-X capability after FLR (PBA offset from
@@ -74,16 +81,16 @@ index 653660e3ba9e..7ce2b09819c9 100644
  static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
  	{ PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_82599_SFP_VF,
  		 reset_intel_82599_sfp_virtfn },
-@@ -3922,6 +3945,9 @@ static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
- 		reset_ivb_igd },
+@@ -4009,6 +4033,9 @@ static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
  	{ PCI_VENDOR_ID_SAMSUNG, 0xa804, nvme_disable_and_flr },
  	{ PCI_VENDOR_ID_INTEL, 0x0953, delay_250ms_after_flr },
+ 	{ PCI_VENDOR_ID_INTEL, 0x0a54, delay_250ms_after_flr },
 +	{ 0x126f, 0x2262, prefer_bus_reset },
 +	{ 0x126f, 0x2263, prefer_bus_reset },
 +	{ PCI_VENDOR_ID_INTEL, 0xf1a6, prefer_bus_reset },
  	{ PCI_VENDOR_ID_CHELSIO, PCI_ANY_ID,
  		reset_chelsio_generic_dev },
- 	{ 0 }
+ 	{ PCI_VENDOR_ID_HUAWEI, PCI_DEVICE_ID_HINIC_VF,
 -- 
-2.31.1
+2.33.1
 

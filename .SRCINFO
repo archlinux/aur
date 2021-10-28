@@ -1,13 +1,18 @@
 pkgbase = linux-x570-vfio-openrgb-sm2262+sm2263
 	pkgdesc = Linux
-	pkgver = 5.12.5.arch1
+	pkgver = 5.14.10.arch1
 	pkgrel = 4
-	url = https://git.archlinux.org/linux.git/log/?h=v5.12.5-arch1
+	url = https://github.com/archlinux/linux/commits/v5.14.10-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -16,8 +21,10 @@ pkgbase = linux-x570-vfio-openrgb-sm2262+sm2263
 	makedepends = git
 	makedepends = initramfs
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.12.5-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.14.10-arch1
 	source = config
+	source = add-acs-overrides.patch
+	source = i915-vga-arbiter.patch
 	source = amd-noflr.patch
 	source = openrgb.patch
 	source = SM2262-SM2263.patch
@@ -25,10 +32,12 @@ pkgbase = linux-x570-vfio-openrgb-sm2262+sm2263
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 635d06ae764d466cdfc0019bc1773932c0fcccb5ebde8bfbb5b2c4271a939f61
+	sha256sums = cada4ca234a96e1f78da61ad29310bf076523d157ad55aadfc93465d3865c9e3
+	sha256sums = b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77
+	sha256sums = 856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6
 	sha256sums = 37f306146b1bdf9233c544e87d0e392a8152aab679d0e4145d14f425c0438e23
 	sha256sums = e7d724ac15daf428aa1e6a03737e5c1d040892d55fda8a66897fcac9323f285c
-	sha256sums = 96febff9e2177ef85b253217bb0927a11169e4a11e66ab139e48f2e7ccd50c1f
+	sha256sums = 016715498862dcc7c29063c6b6ce9d5e4160eace594f6cb1f20de9783e077bd1
 
 pkgname = linux-x570-vfio-openrgb-sm2262+sm2263
 	pkgdesc = The Linux kernel and modules
@@ -44,7 +53,7 @@ pkgname = linux-x570-vfio-openrgb-sm2262+sm2263
 
 pkgname = linux-x570-vfio-openrgb-sm2262+sm2263-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	depends = pahole
 
 pkgname = linux-x570-vfio-openrgb-sm2262+sm2263-docs
 	pkgdesc = Documentation for the Linux kernel
-
