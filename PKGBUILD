@@ -27,4 +27,4 @@ package(){
     mkdir -p "$pkgdir/usr/bin"
     make DESTDIR="$pkgdir/usr/bin/" install
 }
-sha256sums=('79b5fe316ba9d5917307ccbd3d4db9dca7bb34c4f7b6127113b5a183a2d0fa55')
+sha256sums=('SKIP')
