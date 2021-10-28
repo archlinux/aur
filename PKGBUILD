@@ -12,5 +12,6 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=("4d013e76d27686edfcbefcc28010d631")
 
 package() {
-  install -d "$pkgdir/usr/share/gnome-shell/extensions" && cp -a "$srcdir/$pkgname-$pkgver/screen-autorotate@kosmospredanie.yandex.ru" "$_"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions" \
+    && cp -a "$srcdir/$pkgname-$pkgver/screen-autorotate@kosmospredanie.yandex.ru" "$_"
 }
