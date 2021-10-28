@@ -2,13 +2,15 @@
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
 pkgver=1.14.0.r103.g774efc7
-pkgrel=1
+pkgrel=2
+_electronversion=11
+_nodeversion=12.22.7
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('CC0-1.0')
-depends=('electron11')
-makedepends=('git' 'nvm' 'yarn')
+depends=("electron${_electronversion}")
+makedepends=('git' 'nvm' 'python' 'yarn')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
             'nss-mdns: for companion server')
@@ -40,15 +42,16 @@ _ensure_local_nvm() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
   _ensure_local_nvm
-  nvm install 12.22.6
+  nvm install "$_nodeversion"
 }
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  electronDist=/usr/lib/electron11
-  electronVer=$(sed s/^v// /usr/lib/electron11/version)
+  electronDist="/usr/lib/electron${_electronversion}"
+  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   _ensure_local_nvm
-  yarn install --cache-folder "$srcdir/yarn-cache"
+  yarn config set cache-folder "$srcdir/yarn-cache"
+  yarn install
   npx electron-builder --linux --dir -p always --config electron-builder64.yml \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
