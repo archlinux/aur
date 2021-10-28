@@ -20,8 +20,11 @@ pkgver() {
 }
 
 package() {
-  install -d "$pkgdir/usr/share/gnome-shell/extensions" && cp -a "$srcdir/$pkgname/unite@hardpixel.eu" "$_"
-  install -d "$pkgdir/usr/share/glib-2.0" && mv "$pkgdir/usr/share/gnome-shell/extensions/unite@hardpixel.eu/schemas" "$_"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions" \
+    && cp -a "$srcdir/$pkgname/unite@hardpixel.eu" "$_"
+
+  install -d "$pkgdir/usr/share/glib-2.0" \
+    && mv "$pkgdir/usr/share/gnome-shell/extensions/unite@hardpixel.eu/schemas" "$_"
 
   rm -f "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled"
 }
