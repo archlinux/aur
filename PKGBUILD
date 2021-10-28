@@ -12,7 +12,7 @@ url="https://github.com/${_author}/${_name}"
 license=('MIT')
 
 depends=('gnuplot')
-makedepends=('cmake' 'make')
+makedepends=('git' 'cmake' 'make')
 provides=('sciplot')
 conflicts=('sciplot')
 
