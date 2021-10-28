@@ -1,0 +1,22 @@
+pkgbase = vvmplayer-git
+	pkgdesc = VVM Player is a front end GUI to display, play, and delete visual voicemails
+	pkgver = 1.3.r1.gad02bfb
+	pkgrel = 1
+	url = https://gitlab.com/kop316/vvmplayer
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = libhandy
+	depends = gstreamer
+	depends = evolution-data-server
+	depends = callaudiod
+	depends = vvmd
+	provides = vvmplayer
+	conflicts = vvmplayer
+	source = vvmplayer::git+https://gitlab.com/kop316/vvmplayer
+	sha256sums = SKIP
+
+pkgname = vvmplayer-git
