@@ -1,7 +1,8 @@
 See the full changelog for all versions at:
 https://github.com/krathalan/wtwitch/blob/master/FULLCHANGELOG
 
-2.3.2 (October 22, 2021)
-    Fixed issue #2 (wrong command when using hyphens)
-    Fixed issue #3 (vod titles cut off)
-    Fixed issue #5 (added tab completion for vods)
+2.3.3 (October 27, 2021)
+    Added more German translations from incompetentcoder (PR#6)
+    Fixed an issue where wtwitch would not use the correct `date` command on non-GNU systems under certain circumstances
+    Using wtwitch on *BSD systems will now correctly require GNU date (`gdate`) to be installed
+    Updated man page to reflect code changes, other minor man page improvements
