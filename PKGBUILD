@@ -1,7 +1,7 @@
 # Maintainer: RichieMay
 
 pkgname=intellij-idea-ultimate-with-jbr
-pkgver=2021.2.2
+pkgver=2021.2.3
 pkgrel=1
 pkgdesc="Intellij Idea Ultimate"
 arch=(x86_64)
@@ -17,7 +17,7 @@ source=(
 
 sha256sums=(
     # https://download.jetbrains.com/idea/ideaIU-${pkgver}.tar.gz.sha256
-    '36807af6a60a31590fb51f40a87c764007dae6866b05586ebb15d2d13933bde6'
+    '16929fd22b84b400d0b9e24fd356dd2e7a614511a2d779ee37082c90df179c25'
     'a8a31e45e8abed10f71c3e948064fe7258dc9cb3d60d6f48de7b009b05625f88')
 
 
