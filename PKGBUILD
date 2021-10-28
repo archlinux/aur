@@ -2,7 +2,7 @@
 
 pkgbase=qhotkey-git
 pkgname=('qhotkey-qt6-git' 'qhotkey-qt5-git')
-pkgver=1.4.2.r6.g7f5840f
+pkgver=1.5.0.r0.g6a0cc37
 pkgrel=1
 pkgdesc='Library for creating global shortcut/hotkey for desktop Qt6 applications (git version)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
     cmake -B build-qt6 -S QHotkey \
         -DCMAKE_INSTALL_INCLUDEDIR:PATH='include/qhotkey-qt6' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib/qhotkey-qt6' \
-        -DQT_MAJOR:STRING='6' \
+        -DQT_DEFAULT_MAJOR_VERSION:STRING='6' \
         "${_common_opts[@]}"
     make -C build-qt6
     
