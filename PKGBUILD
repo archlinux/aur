@@ -13,5 +13,6 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=("dedba8894ee08e8f1ef48c2cc718cebe")
 
 package() {
-  install -d "$pkgdir/usr/share/gnome-shell/extensions" && cp -a "$srcdir/hotel-manager-$pkgver/hotel-manager@hardpixel.eu" "$_"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions" \
+    && cp -a "$srcdir/hotel-manager-$pkgver/hotel-manager@hardpixel.eu" "$_"
 }
