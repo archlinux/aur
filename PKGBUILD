@@ -12,6 +12,7 @@ license=('GPL')
 depends=('gnome-shell')
 makedepends=('git')
 provides=('gnome-shell-extension-hibernate-status')
+conflicts=('gnome-shell-extension-hibernate-status')
 install=gnome-shell-extension-hibernate-status.install
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('126918dd31f2b282087a3abfaed7dd0a9ba84d2fee75669864fc752e23237d7c')
