@@ -1,7 +1,7 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 pkgname=digital
 pkgver=0.28
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital logic designer and circuit simulator."
 arch=('x86_64')
 url="https://github.com/hneemann/Digital"
@@ -31,15 +31,15 @@ package() {
 	install -vDm644 "$srcdir/Digital/ReleaseNotes.txt" "$pkgdir/usr/share/doc/$pkgname/changelog.txt"
 	install -vDm644 "$srcdir/Digital/Digital.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 	install -vDm644 "$srcdir/Digital/linux/digital-simulator.xml" "$pkgdir/usr/share/mime/packages/digital-simulator.xml"
-	cd "$srcdir/Digital/lib/"
-	find . -exec install -vDm644 "{}" "$pkgdir/usr/share/java/$pkgname/lib/{}" \;
-	cd ../examples
-	find . -exec install -vDm644 "{}" "$pkgdir/usr/share/java/$pkgname/examples/{}" \;
-	cd ../../../
 	install -vDm644 digital.desktop "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
 	install -vDm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 	for SIZE in 16 32 48 128 256 512
 	do
 	    install -vDm644 "$srcdir/digital_${SIZE}x${SIZE}.png" "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/digital.png"
 	done
+	cd "$srcdir/Digital/lib/"
+	find . -exec install -vDm644 "{}" "$pkgdir/usr/share/java/$pkgname/lib/{}" \;
+	cd ../examples
+	find . -exec install -vDm644 "{}" "$pkgdir/usr/share/java/$pkgname/examples/{}" \;
+	cd ../../../
 }
