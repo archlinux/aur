@@ -6,7 +6,7 @@ _base=url-normalize
 pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
 pkgver=1.4.3
-pkgrel=13
+pkgrel=14
 arch=('any')
 url="https://github.com/niksite/${_base}"
 license=(MIT)
@@ -32,6 +32,6 @@ check() {
 package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
