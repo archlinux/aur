@@ -1,0 +1,12 @@
+pkgbase = evine
+	pkgdesc = Interactive CLI Web Crawler.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/saeeddhqan/evine
+	arch = x86_64
+	license = GPL3
+	provides = evine
+	source = https://github.com/saeeddhqan/evine/releases/latest/download/evine_linux_amd64.tar.xz
+	sha256sums = SKIP
+
+pkgname = evine
