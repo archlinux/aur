@@ -3,7 +3,7 @@
 
 pkgname=python-typedload
 _name=typedload
-pkgver=2.9
+pkgver=2.12
 pkgrel=1
 pkgdesc='Load and dump data from json-like format into typed data structures'
 arch=('any')
@@ -13,10 +13,11 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('mypy')
 source=("${_name}-$pkgver.tar.gz::https://github.com/ltworf/$_name/archive/$pkgver.tar.gz")
-sha256sums=('bee2272828af072608279f01dfc3bebfb397bf5241469b81c26d842f35c404cc')
+sha256sums=('a1c7b0c8dd56d877be91dd3d6889ac9e575002ad2bfcbb15661077ebfdc37915')
 
 build() {
   cd "${_name}-${pkgver}"
+  make setup.py
   python setup.py build
 }
 
