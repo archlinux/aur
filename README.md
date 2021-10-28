@@ -41,14 +41,10 @@ This is an Arch linux `linux-xanmod` derived kernel with hardware enablement pat
     Jun 19 18:56:26 arch-zephyrus kernel: nvme nvme0: Abort status: 0x371
     Jun 19 18:56:26 arch-zephyrus kernel: nvme nvme0: Abort status: 0x371
     ```
-    See this project on github to produce an ACPI override ramdisk that works around the issue while you wait for ASUS to publish a fixed BIOS:
-    https://github.com/foundObjects/GA503QR-StorageD3Enable-DSDT-Patch
+    See this project to generate an ACPI override ramdisk that works around the issue while you wait for ASUS to publish a fixed BIOS:
+    https://gitlab.com/smbruce/GA503QR-StorageD3Enable-DSDT-Patch
 
     If you're experiencing this yourself *please* go make a vendor support ticket with ASUS and ask them to fix their BIOS.
-
-  - UKSM is an optional feature in the PKGBUILD for those that want to use it. Now that lru_gen is available I no longer recommend using UKSM.
-
-    * WARNING: Do *not* turn on UKSM and the multigenerational LRU together at runtime. The PKGBUILD disables automatic lru_gen when UKSM is included in the build, switching both on at runtime is practically guaranteed to crash your system.
 
 See the commit log for full version history and changes.
 

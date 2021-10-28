@@ -11,18 +11,9 @@
 ##
 ## Xanmod-ROG options:
 ##
-## Ultra Kernel Samepage Merging, enable this to perform fast in-use memory deduplication
-## See: https://github.com/dolohow/uksm
-##
-##  build with 'env use_uksm=foo makepkg ...' to include UKSM patch
-##
-##  NOTE: Don't enable UKSM and LRU_GEN together at runtime, they are incompatible and will crash.
-##        If UKSM is enabled during build LRU_GEN will be boot-time disabled in the kernel config
-##        You can still switch between them at runtime but do *not* attempt to use both.
-if [[ -v use_uksm ]]; then
-  use_uksm=y
-fi
+## none for now...
 
+## Xanmod options:
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
@@ -205,14 +196,6 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '0bbc0ae2e85b82f8bbd73597dbc8d09a77bea79bf33916bb27218e0cd422c77f'
             '7ad0449622915bcc9297dc51f567e9f1bf71a43971280d0da07a8cb63b6ed81b')
 
-# apply UKSM patch; TODO: note to self: don't forget to update the sum here during major version changes
-#
-_uksm_patch="https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-${_major}.patch"
-if [[ -v use_uksm ]]; then
-  source+=("${_uksm_patch##*/}::${_uksm_patch}")
-  sha256sums+=('d38e2ee1f43bd6ca18845c80f5e68c0e597db01780004ff47607dd605e9aa086')
-fi
-
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-"$pkgbase"}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
@@ -312,14 +295,6 @@ prepare() {
       break
     fi
   done
-
-  ## disable lru_gen by default if UKSM is selected for the build; these crash if used together, see README
-  if [[ -v use_uksm ]]; then
-     msg2 "UKSM selected, disabling LRU_GEN by default"
-     set -x
-     scripts/config --disable CONFIG_LRU_GEN_ENABLED
-     { set +x; } >& /dev/null
-  fi
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
