@@ -12,5 +12,6 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 md5sums=("befb01c84162d97345ce171947074aa8")
 
 package() {
-  install -d "$pkgdir/usr/share/gnome-shell/extensions" && cp -a "$srcdir/gnome-extension-development-utility-$pkgver/extension-development-utility@maestroschan.fr" "$_"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions" \
+    && cp -a "$srcdir/gnome-extension-development-utility-$pkgver/extension-development-utility@maestroschan.fr" "$_"
 }
