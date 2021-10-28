@@ -1,13 +1,13 @@
 pkgbase = perfmode
 	pkgdesc = A fan-control utility for ASUS TUF Gaming series of Laptops
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://github.com/icebarf/perfmode
 	arch = x86_64
 	license = GPL
 	makedepends = gcc
-	optdepends = faustus: A 3rd party kernel module for ASUS TUF Laptops
-	source = https://github.com/icebarf/perfmode/archive/refs/tags/1.0.0.tar.gz
-	sha256sums = a489978fb5560be50fc4a751d4bf65984dc7a871bc9ee3a5cde7decbe8273017
+	optdepends = faustus-dkms: A 3rd party kernel module for ASUS TUF Laptops
+	source = https://github.com/icebarf/perfmode
+	sha256sums = 79b5fe316ba9d5917307ccbd3d4db9dca7bb34c4f7b6127113b5a183a2d0fa55
 
 pkgname = perfmode
