@@ -3,7 +3,7 @@
 _pkgname=nvidia-utils-beta
 pkgname=${_pkgname}-nvlax
 pkgver=495.44
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA drivers utilities (beta version) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -82,7 +82,6 @@ package() {
 
   # Wayland/GBM
   install -D -m755 libnvidia-egl-gbm.so.1* -t "${pkgdir}/usr/lib/"
-  install -D -m644 15_nvidia_gbm.json "${pkgdir}/usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json"
   mkdir -p "${pkgdir}/usr/lib/gbm"
   ln -sr "${pkgdir}/usr/lib/libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/gbm/nvidia-drm_gbm.so"
 
