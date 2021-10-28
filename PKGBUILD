@@ -3,14 +3,14 @@
 pkgbase=qhotkey
 pkgname=('qhotkey-qt6' 'qhotkey-qt5')
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for creating global shortcut/hotkey for desktop Qt6 applications'
 arch=('x86_64')
 url='https://github.com/Skycoder42/QHotkey/'
 license=('BSD')
 makedepends=('cmake' 'libx11' 'qt5-base' 'qt5-x11extras' 'qt6-base')
 source=("https://github.com/Skycoder42/QHotkey/archive/${pkgver}/qhotkey-${pkgver}.tar.gz")
-sha256sums=('87d9df1bad8b8ac3c4fe38a3abebd035a9ef7f31b657dfde78fad21f418f523e')
+sha256sums=('e8ca5ba77ad04662c18dce8de4b37b373bcb693a7e062fca3d832bf63473b143')
 
 build() {
     local -a _common_opts=(
