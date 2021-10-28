@@ -1,7 +1,7 @@
 pkgbase = video-trimmer
 	pkgdesc = Trim videos quickly
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.gnome.org/app/org.gnome.gitlab.YaLTeR.VideoTrimmer
 	arch = x86_64
 	license = GPL3

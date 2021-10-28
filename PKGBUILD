@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=video-trimmer
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Trim videos quickly"
 arch=('x86_64')
 url="https://apps.gnome.org/app/org.gnome.gitlab.YaLTeR.VideoTrimmer"
@@ -14,6 +14,7 @@ sha256sums=('afe6a3e1975af0396bf92efb59b4cca289d4417300499396e4bde55a08240a38')
 
 prepare() {
   cd "$pkgname-v$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -28,5 +29,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
