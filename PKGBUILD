@@ -75,9 +75,9 @@ sha256sums=('SKIP'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '3eb9580ea35a96789e02815270498226fa33726f4210a5ee36f3868af2ffae1f'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
-            '5e22afcb91b5402bc09e80630c5323d61013c3fccb0bbd9b23d1e79a400b00d0'
-            '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+            '3c98446e9a8ed28b71caa2ff20958660dfc73baca7a09089f232c42dab67aeb3'
+            'e1fe1c9066baf440fb7a59613128e7720c5ccd88c6698aa691bb0d3d2e641294'
+            'a0da5bd1720b3d3d8bb18abe87403338a561b2520938c5735e17b10606a83051')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
