@@ -8,6 +8,6 @@ pkgbase = perfmode
 	makedepends = gcc
 	optdepends = faustus-dkms: A 3rd party kernel module for ASUS TUF Laptops
 	source = https://github.com/icebarf/perfmode
-	sha256sums = 79b5fe316ba9d5917307ccbd3d4db9dca7bb34c4f7b6127113b5a183a2d0fa55
+	sha256sums = SKIP
 
 pkgname = perfmode
