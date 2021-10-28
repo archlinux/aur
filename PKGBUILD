@@ -1,10 +1,12 @@
+# Maintainer: Jordan Cook <JCook83@gmail.com>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Benoit Pierre <benoit.pierre@gmail.com>
 # Contributor: LinArcX <LinArcX at gmail . com>
 _base=requests-cache
 pkgname=python-${_base}-git
 _pkgname=${pkgname%-git}
 pkgdesc="Transparent persistent cache for http://python-requests.org library (git version)"
-pkgver=0.8.1.r20.g217397b
+pkgver=0.8.1.r43.g0199f06
 pkgrel=1
 arch=('any')
 url="https://github.com/reclosedev/${_base}"
@@ -28,7 +30,10 @@ pkgver() {
 
 build() {
   cd "${_base}"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  # Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
+  # from incorrectly using a parent git checkout info.
+  # https://github.com/pypa/build/issues/384#issuecomment-947675975
+  GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
@@ -39,6 +44,6 @@ check() {
 package() {
   cd "${_base}"
   export PYTHONHASHSEED=0
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
