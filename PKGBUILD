@@ -1,15 +1,15 @@
-# Maintainer: xerus <27jf at pm dot me>
+# Maintainer: xeruf <27jf at pm dot me>
 
 _pkgname=stretchly
 pkgname=${_pkgname}-xeruf-git
 pkgver=986.1312677
 pkgrel=1
-pkgdesc="The break time reminder app, hardened"
+pkgdesc="The break time reminder app with more restrictive menus"
 arch=('any')
 url="https://github.com/xeruf/stretchly"
 license=('BSD')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'electron')
-makedepends=('git' 'nvm' 'jq' 'python')
+makedepends=(git nvm jq python)
 optdepends=('libxss')
 provides=("$_pkgname")
 source=("git+${url}.git")
