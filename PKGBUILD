@@ -1,6 +1,6 @@
 # Maintainer: Oleksandr Bilko <aur at bil dot com dot ua>
 pkgname=meowsql
-pkgver=0.4.11
+pkgver=0.4.12
 _pkgver="v${pkgver}-alpha"
 pkgrel=1
 pkgdesc="An attempt to port a very useful GUI database client HeidiSQL to C++/Qt"
@@ -29,4 +29,3 @@ package() {
 	install -D -m644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
 	install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-
