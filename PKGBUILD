@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/icebarf/perfmode")
+source=("https://github.com/icebarf/perfmode/archive/refs/tags/$pkgver.tar.gz")
 build() {
     cd "$pkgname-$pkgver"
     make pkg
@@ -27,4 +27,4 @@ package(){
     mkdir -p "$pkgdir/usr/bin"
     make DESTDIR="$pkgdir/usr/bin/" install
 }
-sha256sums=('SKIP')
+sha256sums=('7294770d90bc4e9ff9f49b953d24da920e0eba22902bad49f18206874cb29ac3')
