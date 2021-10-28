@@ -8,7 +8,7 @@ _base=requests-cache
 pkgname=python-${_base}
 pkgdesc="Transparent persistent cache for http://python-requests.org library"
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/reclosedev/${_base}"
 license=('custom:BSD-2-clause')
@@ -37,6 +37,6 @@ check() {
 package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
