@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hpipm
-pkgver=0.1.2
+pkgver=0.1.3
 pkgdesc="High-performance interior-point-method QP solvers"
 url='https://github.com/giaf/hpipm'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD 2-Clause')
 makedepends=('cmake')
 depends=('blasfeo')
 source=("${pkgname}-${pkgver}::https://github.com/giaf/hpipm/archive/${pkgver}.tar.gz")
-sha256sums=('ee0aba9ca906f2d5dea018f3d9ca9d2fca93e3f2490a1f1df8f92e734f8410ff')
+sha256sums=('1c8182577608db535762706064787eee143b981af94bf4690a840bdc1728623b')
 
 build() {
   mkdir -p ${srcdir}/${pkgname}-${pkgver}/build
@@ -17,6 +17,7 @@ build() {
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DHPIPM_TESTING=OFF \
     -DCMAKE_BUILD_TYPE="Release"
 
   make
