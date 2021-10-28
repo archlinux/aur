@@ -15,7 +15,7 @@ sha256sums=('afe6a3e1975af0396bf92efb59b4cca289d4417300499396e4bde55a08240a38')
 prepare() {
   cd "$pkgname-v$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
