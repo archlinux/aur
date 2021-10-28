@@ -1,6 +1,6 @@
 # Maintainer: Kat Witten <turtlewit@live.com>
 pkgname=sway-launcher-desktop
-pkgver=1.5.3
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="TUI Application launcher with Desktop Entry support."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=(fzf)
 optdepends=('ttf-nerd-fonts-symbols: for launcher icon symbols')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Biont/sway-launcher-desktop/archive/v$pkgver.tar.gz")
-md5sums=('a98ad4ed61b45c9fb6e7b7438b8699da')
+md5sums=('6a7ea642a48a8a9753d8cb6afb2aedb3')
 
 package() {
 	# sway-launcher-desktop.sh installed as /usr/bin/sway-launcher-desktop
