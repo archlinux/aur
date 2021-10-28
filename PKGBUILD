@@ -1,8 +1,9 @@
 # Maintainer: Saurabh Kumar Sharma <imesskayesss@protonmail.com>
 
 pkgname=lolminer
+#check download link before pushing.
 notagver=1.34
-pkgtag=
+pkgtag="a"
 pkgver=${notagver}${pkgtag}
 pkgrel=2
 pkgdesc="Unofficial installer for lolMiner"
@@ -10,7 +11,7 @@ arch=("x86_64")
 url='https://github.com/Lolliedieb/lolMiner-releases'
 license=('custom: lolMiner License Agreement')
 options=('!strip')
-source=("https://github.com/Lolliedieb/lolMiner-releases/releases/download/${notagver}/lolMiner_v${pkgver}_Lin64.tar.gz")
+source=("https://github.com/Lolliedieb/lolMiner-releases/releases/download/${pkgver}/lolMiner_v${pkgver}_Lin64.tar.gz")
 sha256sums=('SKIP')
 
 package(){
