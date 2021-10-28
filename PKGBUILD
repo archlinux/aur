@@ -46,11 +46,11 @@ build() {
 
 package() {
     # https://github.com/rohit-px2/nvui/blob/main/BUILDING.md#packaging-executable
-    install -Dm755 nvui.sh "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 nvui.sh "$pkgdir/usr/bin/nvui"
     install -Dm644 nvui.desktop -t "$pkgdir/usr/share/applications"
     cd "$pkgname"
-    find assets vim -type f -exec install -Dm 644 "{}" "${pkgdir}/opt/$pkgname/{}" \;
-    install -Dm755 build/nvui -t "$pkgdir/opt/$pkgname/bin"
-    install -Dm644 assets/appicon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    find assets vim -type f -exec install -Dm 644 "{}" "${pkgdir}/opt/nvui/{}" \;
+    install -Dm755 build/nvui -t "$pkgdir/opt/nvui/bin"
+    install -Dm644 assets/appicon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/nvui.png"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/nvui"
 }
