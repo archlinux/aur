@@ -11,8 +11,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=("5bc7c151dc346da467f70c873907da22")
 
 package() {
-  install -d "$pkgdir/usr/share/gnome-shell/extensions" && cp -a "$srcdir/dark-variant-$pkgver/dark-variant@hardpixel.eu" "$_"
-  install -d "$pkgdir/usr/share/glib-2.0" && mv "$pkgdir/usr/share/gnome-shell/extensions/dark-variant@hardpixel.eu/schemas" "$_"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions" \
+    && cp -a "$srcdir/dark-variant-$pkgver/dark-variant@hardpixel.eu" "$_"
+
+  install -d "$pkgdir/usr/share/glib-2.0" \
+    && mv "$pkgdir/usr/share/gnome-shell/extensions/dark-variant@hardpixel.eu/schemas" "$_"
 
   rm -f "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled"
 }
