@@ -3,10 +3,10 @@
 _pkgname=bukubrow
 pkgname=bukubrow-bin
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Host application for the Bukubrow WebExtension, precompiled"
 url="https://github.com/samhh/bukubrow-host/"
-conflicts=('bukubrow')
+provides=('bukubrow')
 arch=('x86_64')
 license=('GPL3')
 source=("${url}/releases/download/v${pkgver}/bukubrow-linux-amd64")
