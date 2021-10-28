@@ -1,6 +1,6 @@
 pkgbase = devilutionx
 	pkgdesc = Diablo devolved for linux
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/diasurgical/devilutionX
 	install = devilutionx.install
@@ -12,14 +12,14 @@ pkgbase = devilutionx
 	arch = x86_64
 	license = custom:unlicense
 	makedepends = cmake
-	makedepends = gcc-libs
-	depends = graphite
+	makedepends = gettext
+	makedepends = smpq
+	depends = fmt
+	depends = libpng
 	depends = libsodium
-	depends = sdl2_mixer
-	depends = sdl2_ttf
+	depends = sdl2
 	options = strip
-	source = https://github.com/diasurgical/devilutionX/archive/1.2.1.tar.gz
-	sha256sums = 002dcbd4d4a5bdf8db1a3ec01139e5bfbed46d6a1caa32b17c9f2df161ad3521
+	source = https://github.com/diasurgical/devilutionX/archive/1.3.0.tar.gz
+	sha256sums = 3c0a7767444b4a604e99ec5537a240c492b679fedcde521ee7e926a8fc7268fc
 
 pkgname = devilutionx
-

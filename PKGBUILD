@@ -4,31 +4,22 @@
 
 _pkgname=devilutionX
 pkgname=devilutionx
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Diablo devolved for linux"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
-depends=('graphite' 'libsodium' 'sdl2_mixer' 'sdl2_ttf')
-makedepends=('cmake' 'gcc-libs')
+depends=('fmt' 'libpng' 'libsodium' 'sdl2')
+makedepends=('cmake' 'gettext' 'smpq')
 install="${pkgname}".install
 options=('strip')
 source=("${url}/archive/${pkgver}.tar.gz")
-
-prepare() {
-  cd "${srcdir}/${_pkgname}-$pkgver"
-  if [ -d build ]; then
-    rm -rf build
-  fi
-  mkdir build
-}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DBINARY_RELEASE=ON \
     -DVERSION_NUM="${pkgver}"
 
   cmake --build .
@@ -40,4 +31,4 @@ package() {
     cmake --install .
 }
 
-sha256sums=('002dcbd4d4a5bdf8db1a3ec01139e5bfbed46d6a1caa32b17c9f2df161ad3521')
+sha256sums=('3c0a7767444b4a604e99ec5537a240c492b679fedcde521ee7e926a8fc7268fc')
