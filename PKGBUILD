@@ -4,7 +4,7 @@
 #set -o xtrace
 
 pkgname=libconnman-qt-git
-pkgver=20190409.f15eac1
+pkgver=20210114.f5b49d8
 pkgrel=1
 pkgdesc='Qt Quick wrappers for connman'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('libconnman-qt')
 conflicts=('libconnman-qt')
 depends=('qt5-tools' 'qt5-base' 'qt5-declarative' 'connman')
 makedepends=('qt5-base')
-source=("git+https://git.merproject.org/mer-core/libconnman-qt.git")
+source=("git+https://github.com/sailfishos/libconnman-qt.git")
 sha256sums=('SKIP')
 
 pkgver () {
