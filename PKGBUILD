@@ -1,7 +1,7 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
-pkgver=0.9.5
-pkgrel=3
+pkgver=0.9.7
+pkgrel=1
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
@@ -11,6 +11,7 @@ makedepends=('git' 'cmake')
 install='lokinet.install'
 backup=('etc/conf.d/lokinet')
 source=("https://github.com/oxen-io/lokinet/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
+        "https://github.com/zeromq/libzmq/releases/download/v4.3.3/zeromq-4.3.3.tar.gz"
         'lokinet.conf'
         'lokinet.service'
         'lokinet-vpn.service'
@@ -20,10 +21,11 @@ source=("https://github.com/oxen-io/lokinet/releases/download/v$pkgver/lokinet-v
         'lokinet.sysusers'
         'lokinet.tmpfiles'
         'lokinet.pkla'
-        'lokinet.rules'
-        'fix-stl-oob.patch')
-sha256sums=('456d4e6baf2357c98a46c3453f98bb7b5f906620d4fb07984df1bad46faed307'
+        'lokinet.rules')
+noextract=('zeromq-4.3.3.tar.gz')
+sha256sums=('5471bd00d9d22de98be191c57745e37f4a72f50b42abf73acd9b61fa4f3006c4'
             'SKIP'
+            '9d9285db37ae942ed0780c016da87060497877af45094ff9e1a1ca736e3875a2'
             'ff5e7db4e65463e50978da0185487bd4a7f213f04bdb6256e221089f833c6ab6'
             '41f02f6ca693cd596165a7431795f36a2559504361857063278d31f833b3b7b1'
             'cb31c1783998ec11d3d6eb4e5e4e138a8d423ee1aeb0ae2ebe66a52b0f87b642'
@@ -33,19 +35,18 @@ sha256sums=('456d4e6baf2357c98a46c3453f98bb7b5f906620d4fb07984df1bad46faed307'
             '137cf7eeebc8737d62f3ccfad2398fb1c442a91cb9db7d650429b218dd949a00'
             '53837c9cfc90b93d55558045108a5d1d7a8b8a75a266af264d7f9101363d043f'
             'e37178d0edaca5b764ed2381e4c670cb4a8c3565c6ab59533f2a783155fe1efc'
-            '6ea4d917ce2e46b2c31af31b8c8c28054c5f977bab5b050c44e2029ab3248713'
-            'b0a9e5500f225d103737b7525f824bfca58034623e8bc93ff355d857170932cd')
+            '6ea4d917ce2e46b2c31af31b8c8c28054c5f977bab5b050c44e2029ab3248713')
 validpgpkeys=('67EF6BA68E7B0B0D6EB4F7D4F357B3B42F6F9B05') # Jeff Becker (probably not evil) <jeff@i2p.rocks>
-
-prepare() {
-    cd "$pkgname-v$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/fix-stl-oob.patch"
-}
 
 build() {
 	cd "lokinet-v$pkgver"
 
 	rm -rf build && mkdir build && cd build
+
+	# do not let cmake access network
+	mkdir -p libzmq/src
+	cp "$srcdir/zeromq-4.3.3.tar.gz" libzmq/src/
+
 	# XXX cmake stuff overrides CFLAGS
 	cmake \
 		-DCMAKE_BUILD_TYPE=Release \
@@ -53,15 +54,14 @@ build() {
 		-DCMAKE_C_FLAGS="$CFLAGS" \
 		-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
 		-DNATIVE_BUILD=OFF \
-		-DUSE_NETNS=OFF \
 		-DUSE_AVX2=OFF \
-		-DXSAN=OFF \
 		-DWITH_TESTS=OFF \
 		-DDOWNLOAD_SODIUM=OFF \
 		-DSUBMODULE_CHECK=OFF \
 		-DWITH_SYSTEMD=ON \
+		-DWITH_SETCAP=OFF \
+		-DBUILD_LIBLOKINET=OFF \
 		-DFORCE_OXENMQ_SUBMODULE=ON \
-		-DBUILD_SHARED_LIBS=ON \
 		-Wno-dev \
 		..
 	make
