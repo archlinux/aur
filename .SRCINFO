@@ -1,14 +1,15 @@
 pkgbase = plotly-orca-appimage
 	pkgdesc = Command line application for generating static images of interactive plotly charts
 	pkgver = 1.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/plotly/orca
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = hicolor-icon-theme
 	optdepends = python-plotly: python interface
-	optdepends = python-tenacity: allow small delay in orca response to python-plotly
+	optdepends = python-tenacity: allow small delay in orca response to python-plotly,
+	optdepends = xorg-server-xvfb: needed if use_xvfb will be true
 	noextract = orca-1.3.1.AppImage
 	options = !strip
 	source = https://github.com/plotly/orca/releases/download/v1.3.1/orca-1.3.1.AppImage
