@@ -1,13 +1,12 @@
 pkgbase = doclifter
 	pkgdesc = translate troff requests into docbook
-	pkgver = 2.19
+	pkgver = 2.20
 	pkgrel = 1
 	url = http://www.catb.org/~esr/doclifter/
 	arch = any
 	license = BSD
 	depends = python2
-	source = http://www.catb.org/~esr/doclifter/doclifter-2.19.tar.gz
+	source = http://www.catb.org/~esr/doclifter/doclifter-2.20.tar.gz
 	sha256sums = SKIP
 
 pkgname = doclifter
-

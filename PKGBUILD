@@ -1,7 +1,7 @@
 # Maintainer: Mario Blättermann <mario.blaettermann@gmail.com>
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 pkgname=doclifter
-pkgver=2.19
+pkgver=2.20
 pkgrel=1
 pkgdesc="translate troff requests into docbook"
 arch=('any')
