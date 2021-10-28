@@ -7,24 +7,29 @@ pkgrel=1
 arch=('any')
 license=('GPL2')
 depends=('python')
-makedepends=('python-pytest' 'python-setuptools')
+makedepends=(
+    'python-build'
+    'python-install'
+    'python-pytest'
+    'python-setuptools'
+)
 url="https://github.com/benoit-pierre/plover_stroke"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benoit-pierre/plover_stroke/archive/refs/tags/$pkgver.tar.gz")
 sha1sums=(SKIP)
 
 build() {
   cd "plover_stroke-$pkgver"
-  python setup.py build_ext --inplace build
+  pyproject-build --no-isolation --skip-dependency-check --wheel
 }
 
 check() {
   cd "plover_stroke-$pkgver"
-  python -m pytest
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')" pytest test
 }
 
 package() {
   cd "plover_stroke-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m install --destdir="$pkgdir" --optimize=1 dist/*.whl
   chmod og+rX -R "$pkgdir"
 }
 
