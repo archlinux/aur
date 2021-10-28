@@ -3,4 +3,5 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+!*.install
 

@@ -12,6 +12,7 @@ depends=("networkmanager" "networkmanager-openvpn" "networkmanager-strongswan" "
 makedepends=('git')
 source=("git+${url}.git")
 md5sums=('SKIP')
+install="nm-vpngate.install"
 
 pkgver() {
     cd "${_pkgname}"

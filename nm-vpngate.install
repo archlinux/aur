@@ -1,0 +1,16 @@
+_reload_systemd(){
+    systemctl daemon-reload
+}
+
+post_install(){
+    _reload_systemd
+}
+
+post_upgrade(){
+    _reload_systemd
+}
+
+post_remove(){
+    _reload_systemd
+}
+
