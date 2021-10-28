@@ -3,10 +3,10 @@
 _reponame=bukubrow-host
 pkgname=bukubrow
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Host application for the Bukubrow WebExtension"
 url="https://github.com/samhh/$_reponame/"
-conflicts=('bukubrow-bin')
+provides=('bukubrow')
 makedepends=('cargo')
 arch=('x86_64')
 license=('GPL3')
