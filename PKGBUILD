@@ -2,12 +2,12 @@
 
 pkgname=mmg-git
 pkgver=5.6.0.beta1.1.g71e46c5b
-pkgrel=1
+pkgrel=2
 pkgdesc='Anisotropic tetrahedral remesher and moving mesh generator'
 url="http://www.mmgtools.org/"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('scotch' 'vtk')
+depends=('scotch')
 makedepends=('cmake' 'netcdf' 'proj' 'qt5-base' 'glew' 'python' 'libogg' 'libtheora')
 provides=('mmg3d' 'mmg')
 conflicts=('mmg3d' 'mmg')
