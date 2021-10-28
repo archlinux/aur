@@ -13,8 +13,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=("48b3336c69047f92058dc32498cf0cc0")
 
 package() {
-  install -d "$pkgdir/usr/share/gnome-shell/extensions" && cp -a "$srcdir/$pkgname-$pkgver/." "$_/$_uuid"
-  install -d "$pkgdir/usr/share/glib-2.0" && cp -a "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas" "$_"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions" \
+    && cp -a "$srcdir/$pkgname-$pkgver/." "$_/$_uuid"
+
+  install -d "$pkgdir/usr/share/glib-2.0" \
+    && cp -a "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas" "$_"
 
   rm -f "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled"
 }
