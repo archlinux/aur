@@ -13,8 +13,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=("10cc2fbfe1c205cb92aaea2f77fe3559")
 
 package() {
-  install -d "$pkgdir/usr/share/gnome-shell/extensions" && cp -a "$srcdir/dash-to-plank-$pkgver/dash-to-plank@hardpixel.eu" "$_"
-  install -d "$pkgdir/usr/share/glib-2.0" && mv "$pkgdir/usr/share/gnome-shell/extensions/dash-to-plank@hardpixel.eu/schemas" "$_"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions" \
+    && cp -a "$srcdir/dash-to-plank-$pkgver/dash-to-plank@hardpixel.eu" "$_"
+
+  install -d "$pkgdir/usr/share/glib-2.0" \
+    && mv "$pkgdir/usr/share/gnome-shell/extensions/dash-to-plank@hardpixel.eu/schemas" "$_"
 
   rm -f "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled"
 }
