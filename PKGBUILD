@@ -27,6 +27,7 @@ source=(
     nvui.desktop
     nvui.sh
 )
+conflict=('nvui')
 sha256sums=(
 	'SKIP'
 	'529e087f9ea5d212c05e1cfd7da51f5e5718acc186a1925f937707c641ebd509'
