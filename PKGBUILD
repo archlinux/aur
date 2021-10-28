@@ -1,4 +1,5 @@
-# Maintainer: mars <gzhqyz at gmail dot com>
+# Maintainer: Sung Mingi <FiestaLake@protonmail.com>
+# Contributor: mars <gzhqyz at gmail dot com>
 # Contributor: Ryan Owens <RyanOwens at linux dot com>
 
 pkgname=gnome-shell-extension-hibernate-status
@@ -10,7 +11,7 @@ url="https://github.com/arelange/gnome-shell-extension-hibernate-status"
 license=('GPL')
 depends=('gnome-shell')
 makedepends=('git')
-conflicts=('gnome-shell-extension-hibernate-status-git')
+provides=('gnome-shell-extension-hibernate-status')
 install=gnome-shell-extension-hibernate-status.install
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('126918dd31f2b282087a3abfaed7dd0a9ba84d2fee75669864fc752e23237d7c')
