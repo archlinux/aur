@@ -1,7 +1,7 @@
 # Maintainer: Vasil Bakalov <jens300304@gmail.com>
 pkgname=python-ossapi
 url="https://github.com/circleguard/ossapi"
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A python wrapper for the osu! api."
 arch=('any')
@@ -10,7 +10,7 @@ source=(
     "https://github.com/circleguard/ossapi/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    '09c5e5f89ed822a269dbcd63c86a11a3b3720467466a6baa3d9fe3405cf985fc'
+    'a60b586bb96ee11c8be29393db2d40149799dabe71a0e7d760c720e0da2159fd'
 )
 depends=(
     'python'
