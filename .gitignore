@@ -1,3 +1,4 @@
 /src
 /pkg
 /lokinet-*.tar.*
+/zeromq-*.tar.*
