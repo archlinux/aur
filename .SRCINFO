@@ -1,17 +1,17 @@
 pkgbase = juju
 	pkgdesc = Simple, secure devops tooling built to manage today's complex applications wherever you run your software.
-	pkgver = 2.9.16
+	pkgver = 2.9.17
 	pkgrel = 1
 	url = https://github.com/juju/juju
 	arch = x86_64
 	license = AGPL3
 	makedepends = go>=1.11
 	optdepends = lxd
-	source = https://github.com/juju/juju/archive/juju-2.9.16.tar.gz
+	source = https://github.com/juju/juju/archive/juju-2.9.17.tar.gz
 	source = build.patch
-	sha512sums = 1d15065afcc1ad6bf61b1cbcdea8c5a351d3d4707c2f5348329d3f5c250a2027dbc4b998f0aed8cb5cc93b7139f3aa100d1b35e683ceb3dd72e063bed18b9a02
+	sha512sums = 246798b45cee2de087e11d944cee09f89646cb896b8e2a368e85d209775bc5c1a2ec3ddd85ce618a6f3a82d78be51ca323a00f5bdd1ddd046d69711bd7c287a0
 	sha512sums = 3f2da865fb180cdbd170aaaa25bccc2d279e4921a9ad2e34f5894a2aaf02b18a8519331a9f4ec67da6f06b132c1732b41d4b24fb02b56d2c47f69eac65f6ab6e
-	b2sums = 66e24a3911e27106fb5fe9ee9bbe764d303e3f21ae7b5dadea991e529828d418994eebdaef01a449656b29cb721ea145787d2ff0b2ea3fd73dc550525332095a
+	b2sums = a45a66d5faf4140e646e1893d078ac8b39b01fb75669d7a6a52a00be82f7f3b0a5b3ee7b13bca0cdddd5a9c4ea7921ba802c32c939dd56107250962273b74b72
 	b2sums = 06af486139bfdcf3ce5fcf400bc6b6e47b001f19711d365c171eb68f7a382401d92c3e7bb2aaafeff6cd83fd823b1c84e613f22a027f391f7249152f2908aacc
 
 pkgname = juju
