@@ -1,7 +1,7 @@
 pkgbase = dune-pdelab
 	pkgdesc = New generalized discretization module for a wide range of discretization methods
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dune-project.org/modules/dune-pdelab
 	arch = x86_64
 	license = LGPL3
@@ -26,6 +26,6 @@ pkgbase = dune-pdelab
 	optdepends = dune-alugrid: for creation ALUGrid from gmsh file
 	optdepends = dune-multidomaingrid: for Multiple-Domain Grid Function Space test for Poisson
 	source = https://gitlab.dune-project.org/pdelab/dune-pdelab/-/archive/releases/2.7/dune-pdelab-releases-2.7.tar.gz
-	sha512sums = fa0e30bf247bb7d4ecf5843e94c65058f8a52f02f29c87f63d72791c657d75975d9e004ab67550e9719c030d15b4bd2d50b52150c09ae9f8651499269ce7fbdc
+	sha512sums = f080d6ac1cec818c92629cffbf6e6ae17dc8a8c7121a5d72e98e4fea1320ab4d331d77faeabc6ef4aac14d06fd5f834eaa7ea4e9520afc51f213a877d7f1f47d
 
 pkgname = dune-pdelab
