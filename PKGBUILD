@@ -1,9 +1,8 @@
-# Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
-#
+# Maintainer: Alice S. <quarkyalice@disroot.org>
 # Contributor: Stefano Capitani <@ste74>
 
 pkgname=kernel-alive-git
-pkgver=r30.3182821
+pkgver=r31.ab1144d
 pkgrel=2
 pkgdesc="port of Manjaro kernel-alive, keep previous kernel modules until next reboot."
 arch=('x86_64' 'i686')
