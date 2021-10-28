@@ -1,0 +1,39 @@
+diff --git a/plugins/platforms/lib/kwinutils.cpp b/plugins/platforms/lib/kwinutils.cpp
+index 4f2f7c58a..d022392ea 100644
+--- a/plugins/platforms/lib/kwinutils.cpp
++++ b/plugins/platforms/lib/kwinutils.cpp
+@@ -148,6 +148,12 @@ public:
+     static Cursor *s_self;
+ };
+ 
++class Cursors : public QObject
++{
++public:
++    static Cursors *s_self;
++};
++
+ class AbstractClient : public QObject {};
+ class Options {
+ public:
+@@ -606,7 +612,21 @@ QObject *KWinUtils::tabBox()
+ 
+ QObject *KWinUtils::cursor()
+ {
++#if defined(KWIN_VERSION) && KWIN_VERSION <= KWIN_VERSION_CHECK(5, 18, 4, 0)
+     return KWin::Cursor::s_self;
++#else
++    /*
++     * kwin:6abd23ed0220b14a4a05fa280869ba3c953565e3
++     * Make it possible to have a separate cursor for the tablet
++     * Summary:
++     * As is KWin only had 1 Cursor which was a singleton. This made it impossible for
++     * us to properly implement the tablet (as in drawing tablets) support and show where
++     * we're drawing.
++     * This patch makes it possible to have different Cursors in KWin, it makes all the
++     * current code still follow the mouse but the tablet can still render a cursor.
++     */
++    return KWin::Cursors::s_self;
++#endif
+ }
+ 
+ QObject *KWinUtils::virtualDesktop()
