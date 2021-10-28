@@ -3,6 +3,8 @@
 
 This is an Arch linux `linux-xanmod` derived kernel with hardware enablement patches for ASUS ROG laptops.
 
+Package repo: https://gitlab.com/arglebargle-arch/xanmod-rog-PKGBUILD
+
 ### Notes:
 
   - Xanmod builds with the performance governor by default; this is great for performance but doesn't clock down easily and reduces battery life when used on mobile devices. Since this kernel package is primarily targeted at ROG laptop users I've switched the build config to default to the schedutil governor. I strongly suggest making a couple of bash aliases to make switching modes/governors easier, this allows you to easily boost performance or conserve battery power as needed.
