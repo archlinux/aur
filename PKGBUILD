@@ -5,7 +5,7 @@
 pkgbase='concourse-git'
 pkgname=('concourse-git' 'concourse-fly-cli-git')
 pkgver=v7.5.0.r331.gf138a7a9a
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://concourse-ci.org'
 license=('Apache-2.0')
@@ -53,7 +53,7 @@ package_concourse-git() {
 
   cd "${pkgbase%-git}"
 
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/concourse"
+  install -Dm755 concourse "${pkgdir}/usr/bin/concourse"
   install -Dm755 init "${pkgdir}/usr/lib/concourse/bin/init"
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
