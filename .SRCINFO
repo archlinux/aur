@@ -1,0 +1,21 @@
+pkgbase = vvmd-git
+	pkgdesc = Visual Voicemail Daemon
+	pkgver = 0.6.1.r0.gc319b09
+	pkgrel = 1
+	url = https://gitlab.com/kop316/vvmd
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	depends = mobile-broadband-provider-info
+	depends = libmm-glib
+	depends = libphonenumber
+	provides = vvmd
+	conflicts = vvmd
+	source = vvmd-git::git+https://gitlab.com/kop316/vvmd
+	source = vvmd.service
+	sha256sums = SKIP
+	sha256sums = b4bfd3b3758427975eee8ca5b4a39fb43ce7ea36b56d7c82a23fdacdb4161c50
+
+pkgname = vvmd-git
