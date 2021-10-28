@@ -2,7 +2,7 @@
 
 pkgname=nats-cclient-git
 _pkgname=nats.c
-pkgver=r485.cb773ae
+pkgver=r736.b74c83f
 pkgrel=1
 pkgdesc="NATS & NATS Streaming - C Client"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=()
 provides=('nats-cclient')
 conflicts=('nats-cclient')
 replaces=('nats-cclient')
-source=(${_pkgname}::git+https://github.com/nats-io/nats.c.git#branch=master)
+source=(${_pkgname}::git+https://github.com/nats-io/nats.c.git#branch=main)
 md5sums=('SKIP')
 
 pkgver() {
