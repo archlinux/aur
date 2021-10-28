@@ -1,0 +1,36 @@
+From 34dd4f5dfe9291045cb4a847704debb9b89b4afa Mon Sep 17 00:00:00 2001
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Thu, 28 Oct 2021 11:54:01 -0500
+Subject: [PATCH] r8152: fix spurious wakeups from s0i3
+
+When an r8152 supported network controller enters runtime suspend
+it's configured that phy activity will wake up.  This makes sense
+for system runtime, but if programmed across s0i3 such an interrupt
+leads to waking the system.
+
+To prevent this from happening rewrite wakeup registers to those
+that were saved which if the user didn't intentionally program
+phy wakeup will solve the spurious events.
+
+Reported-by: Matthias Hensler <cubbi@cubbi.de>
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ drivers/net/usb/r8152.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/net/usb/r8152.c b/drivers/net/usb/r8152.c
+index 79832374f78d..34f09dd730ad 100644
+--- a/drivers/net/usb/r8152.c
++++ b/drivers/net/usb/r8152.c
+@@ -8425,6 +8425,8 @@ static int rtl8152_system_suspend(struct r8152 *tp)
+ 		napi_enable(napi);
+ 		tasklet_enable(&tp->tx_tl);
+ 	}
++	if (!pm_suspend_via_firmware() && tp->rtl_ops.autosuspend_en)
++		tp->rtl_ops.autosuspend_en(tp, false);
+ 
+ 	return 0;
+ }
+-- 
+2.25.1
+
