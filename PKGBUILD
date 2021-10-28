@@ -5,7 +5,7 @@
 _name='Beekeeper Studio'
 _pkgname='beekeeper-studio'
 pkgname="${_pkgname}-bin"
-pkgver=2.1.1
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source=("${_pkgname}-${pkgver}-license::${_url_source}/raw/v${pkgver}/LICENSE.md
 source_x86_64=("${_url_source}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_url_source}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 sha256sums=('787ebc78ce29cd0cea3e52651936df7fef96b117782882fce389c3b7ce5683f5')
-sha256sums_x86_64=('ee5d6834c46ebc3ae4597fa49c920e1d1fd5a911e0189281517562e2363a5ff7')
-sha256sums_aarch64=('ef18ac7544485b37c882eca03e8b7aa6719c8eabb2f7faf608a1389747fb975c')
+sha256sums_x86_64=('c452b2e4807695bfd3479916210531dd353f4b086163c3c18b9836339130d75e')
+sha256sums_aarch64=('d7aa6177206b4842fcbda64fc1e732d4c20166db7359bc1cc3e6ccd654af0a35')
 
 package() {
   tar -xvf 'data.tar.xz' -C "${pkgdir}"
