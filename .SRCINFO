@@ -1,0 +1,13 @@
+pkgbase = nbt-cpp
+	pkgdesc = NBT C++ Library
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/handtruth/nbt-cpp
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = cppcheck
+	source = nbt-cpp-0.1.1.tar.gz::https://github.com/handtruth/nbt-cpp/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 607990066658a3ea33dd7bcffd81cd240865424649b603e4a0817243dec23659
+
+pkgname = nbt-cpp
