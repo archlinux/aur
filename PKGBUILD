@@ -2,7 +2,7 @@
 
 _pkgname="nm-vpngate"
 pkgname="${_pkgname}-git"
-pkgver=r35.6715ade
+pkgver=r67.9efc8b9
 pkgrel=1
 pkgdesc="A script that makes it easy to connect Network Manager to a VPN Gate"
 arch=('any')
