@@ -2,10 +2,10 @@
 # Contributor: LIN Rs <LinRs[d]users.noreply.github.com>
 
 pkgname=devilutionx-git
-pkgver=1.2.1.r2128.06801789e
+pkgver=1.3.0.r11.c5d7ca9d4
 pkgrel=1
 pkgdesc="Diablo devolved for linux (git version)"
-arch=('x86_64')
+arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
 depends=('fmt' 'libpng' 'libsodium' 'sdl2')
