@@ -1,0 +1,20 @@
+pkgbase = cardinal-lv2-git
+	pkgdesc = DPF'ied build of VCVRack, allowing it to be used as an audio plugin.
+	pkgver = r163.e111534
+	pkgrel = 1
+	url = https://github.com/DISTRHO/Cardinal
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = jansson
+	depends = libarchive
+	depends = libgl
+	depends = libsamplerate
+	depends = libx11
+	depends = speexdsp
+	provides = cardinal
+	conflicts = cardinal
+	source = cardinal::git+https://github.com/DISTRHO/Cardinal
+	sha512sums = SKIP
+
+pkgname = cardinal-lv2-git
