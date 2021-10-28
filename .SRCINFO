@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-nox-git
 	pkgdesc = A bittorrent client programmed in C++ / Qt that uses libtorrent-rasterbar (w/o GUI)
-	pkgver = 4.2.5.r666.gbfef40341
+	pkgver = 4.4.0beta3.r102.g559a97953
 	pkgrel = 1
 	url = https://www.qbittorrent.org/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = qbittorrent-nox-git
 	license = custom
 	makedepends = git
 	makedepends = boost
+	makedepends = cmake
 	makedepends = qt5-tools
 	depends = glibc
 	depends = libtorrent-rasterbar
@@ -19,4 +20,3 @@ pkgbase = qbittorrent-nox-git
 	sha256sums = SKIP
 
 pkgname = qbittorrent-nox-git
-
