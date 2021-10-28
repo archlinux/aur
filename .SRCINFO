@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-activeqt
 	pkgdesc = ActiveX integration framework (mingw-w64)
-	pkgver = 6.2.0
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,11 +21,11 @@ pkgbase = mingw-w64-qt6-activeqt
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.2/6.2.0/submodules/qtactiveqt-everywhere-src-6.2.0.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.1/submodules/qtactiveqt-everywhere-src-6.2.1.tar.xz
 	source = 0001-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch
 	source = 0002-Build-tools-for-the-target-platform.patch
-	sha256sums = ed991638e27e2e8eac487c2002845827097d1e66397100eea2061d8ad790ded2
-	sha256sums = a5b8d3518ab40bee6ecab2ff09b69b836f24fa22f402fdd000a9d5bfdb1e8b3f
-	sha256sums = 492770fe044c7907e2b34728e729667fd0a826975a1b864d59bcc60fae94f77c
+	sha256sums = 26f5e3638e171e9aa2c8c82267328bd1fa8a31bad154638bd9d41b2db51bedf1
+	sha256sums = 557ad60dac72595de41c567c0e051409bb3dc5b4f5ed94bc166702906484c590
+	sha256sums = 1bf90b20051e411219f8f618a533aff98531189c210610fb73cb509683af6717
 
 pkgname = mingw-w64-qt6-activeqt
