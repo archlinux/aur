@@ -1,0 +1,12 @@
+pkgbase = hakrawler
+	pkgdesc = Fast golang web crawler for gathering URLs and JavaSript file locations. This is basically a simple implementation of the awesome Gocolly library.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/hakluke/hakrawler
+	arch = any
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/hakluke/hakrawler.git
+	sha256sums = SKIP
+
+pkgname = hakrawler
