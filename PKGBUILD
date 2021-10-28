@@ -5,7 +5,7 @@ pkgbase="lua-${_rockname,,}-git"
 pkgname=($pkgbase ${pkgbase/lua/lua53} ${pkgbase/lua/lua52})
 pkgver=0.80.r2.g2efd76b
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Remote debugger for Lua'
 arch=('i686' 'x86_64')
 url="https://github.com/pkulchenko/$_rockname"
@@ -30,15 +30,18 @@ _package_helper() {
 
 package_lua-mobdebug-git() {
   depends=('lua' 'lua-socket')
+  provides=("${pkgname%-git}")
   _package_helper 5.4
 }
 
 package_lua53-mobdebug-git() {
   depends=('lua53' 'lua53-socket')
+  provides=("${pkgname%-git}")
   _package_helper 5.3
 }
 
 package_lua52-mobdebug-git() {
   depends=('lua52' 'lua52-socket')
+  provides=("${pkgname%-git}")
   _package_helper 5.2
 }
