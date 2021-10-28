@@ -2,12 +2,12 @@
 
 pkgname=rmview
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a fast live viewer for reMarkable 1 and 2"
 arch=('any')
 url="https://github.com/bordaigorl/rmview"
 license=('GPL3')
-depends=('python' 'python-pyqt5' 'python-paramiko' 'python-twisted')
+depends=('python' 'python-pyqt5' 'python-paramiko' 'python-twisted' 'python-pyjwt' 'python-service-identity')
 makedepends=('git' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('3d93f065dce2a251e891ca51a88d6cfc63d2f39f7584b69c66235cfe6b8a76fc')
