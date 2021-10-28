@@ -2,11 +2,10 @@
 
 pkgname=diffsitter-bin
 pkgver=0.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A tree-sitter based AST difftool to get meaningful semantic diffs"
 url="https://github.com/afnanenayet/diffsitter"
 provides=('diffsitter')
-conflicts=('diffsitter')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
 license=('MIT')
 source=("$url/archive/v$pkgver.tar.gz")
