@@ -19,7 +19,7 @@ source=("${url}/installers/${_runname}"
         "tracker.sh"
         "tracker.desktop")
 md5sums=('cb73133d6318f7d8c5ff8b6b163af037'
-         '4f457c6b8231a48eb3cd302c7629fd9d'
+         'e4992f3524a65352f4db93257c8d7fb9'
          '805138863c7eb51258022e4d66edab92')
 
 package() {
