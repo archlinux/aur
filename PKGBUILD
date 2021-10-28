@@ -8,13 +8,13 @@ pkgver() {
 pkgname=xclipd-git
 _pkgname=xclipd
 pkgver=1.0.0.r0.gedd8a64
-pkgrel=1
+pkgrel=2
 pkgdesc='An X11 clipboard manager.'
 url="https://github.com/jhunt/$_pkgname"
 arch=('x86_64')
 license=('MIT')
 makedepends=('git')
-conflicts=('xclipd')
+provides=('xclipd')
 source=(git+$url.git)
 sha256sums=(SKIP)
 
