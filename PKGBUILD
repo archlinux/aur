@@ -10,12 +10,12 @@ arch=('x86_64')
 license=('GPL')
 provides=('kdenlive')
 conflicts=('kdenlive')
-source=("https://download.kde.org/stable/kdenlive/21.08/linux/${_pkgname}-${pkgver}a-${arch}.appimage"
+source=("https://download.kde.org/stable/kdenlive/21.08/linux/${_pkgname}-${pkgver}-${arch}.appimage"
         ${_pkgname}.sh)
 md5sums=('5d2cea51e9e12a9ee6527b022263f19b'
          '9f6bcd19b67bd5efaf25ea902301968d')
 options=(!strip)
-_filename=./${_pkgname}-${pkgver}a-${arch}.appimage
+_filename=./${_pkgname}-${pkgver}-${arch}.appimage
 
 prepare() {
   cd "${srcdir}"
