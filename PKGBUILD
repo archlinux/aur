@@ -11,6 +11,7 @@ license=('GPL')
 depends=('gnome-shell')
 makedepends=('git')
 provides=('gnome-shell-extension-hibernate-status')
+conflicts=('gnome-shell-extension-hibernate-status')
 source=('git+https://github.com/arelange/gnome-shell-extension-hibernate-status.git')
 sha256sums=('SKIP')
 
