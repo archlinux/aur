@@ -5,6 +5,7 @@ pkgbase = eve-git
 	url = https://github.com/jfalcou/eve
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = cmake
 	makedepends = make
 	provides = eve
