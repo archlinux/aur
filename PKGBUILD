@@ -2,7 +2,7 @@
 
 pkgname=xclipd
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An X11 clipboard manager.'
 url="https://github.com/jhunt/$pkgname"
 arch=('x86_64')
