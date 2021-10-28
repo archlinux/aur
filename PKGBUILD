@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-multimedia
-_qtver=6.2.0
+_qtver=6.2.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('f12b96e6da2ebfe84105c0cb6e96fbc6bda012de8998ec5c96b58c85dcb40b4f')
+sha256sums=('07764ad31d4d4ef679c3ceb861e762d12690b4fa899b3ccec45e5353309a90d0')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
