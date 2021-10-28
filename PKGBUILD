@@ -1,12 +1,12 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
 license=('GPL3')
-depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite' 'ngtcp2' 'jemalloc')
+depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite' 'jemalloc')
 makedepends=('git' 'cmake')
 install='lokinet.install'
 backup=('etc/conf.d/lokinet')
