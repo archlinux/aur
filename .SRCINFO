@@ -8,7 +8,6 @@ pkgbase = gnome-shell-extension-hibernate-status-git
 	makedepends = git
 	depends = gnome-shell
 	provides = gnome-shell-extension-hibernate-status
-	conflicts = gnome-shell-extension-hibernate-status
 	source = git+https://github.com/arelange/gnome-shell-extension-hibernate-status.git
 	sha256sums = SKIP
 

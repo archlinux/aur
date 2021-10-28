@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Sung Mingi <FiestaLake@protonmail.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: ryanvade
 pkgname=gnome-shell-extension-hibernate-status-git
@@ -10,8 +10,7 @@ url="https://github.com/arelange/gnome-shell-extension-hibernate-status"
 license=('GPL')
 depends=('gnome-shell')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=('gnome-shell-extension-hibernate-status')
 source=('git+https://github.com/arelange/gnome-shell-extension-hibernate-status.git')
 sha256sums=('SKIP')
 
