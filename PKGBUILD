@@ -2,10 +2,9 @@
 
 _rockname=MobDebug
 pkgbase="lua-${_rockname,,}-git"
-pkgname=($pkgbase ${pkgbase/lua/lua53} ${pkgbase/lua/lua52})
+pkgname=("$pkgbase" "${pkgbase/lua/lua53}" "${pkgbase/lua/lua52}")
 pkgver=0.80.r2.g2efd76b
-_rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Remote debugger for Lua'
 arch=('i686' 'x86_64')
 url="https://github.com/pkulchenko/$_rockname"
@@ -22,9 +21,10 @@ pkgver() {
 _package_helper() {
   cd "$_rockname"
   _rockver="$(git describe --abbrev=0)"
+  shopt -s nullglob
+  _rockspecs=("misc/${_rockname,,}-$_rockver-"*".rockspec")
   luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
-    make --deps-mode=none --no-manifest \
-    "misc/${_rockname,,}-$_rockver-$_rockrel.rockspec"
+    make --deps-mode=none --no-manifest "${_rockspecs[-1]}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
