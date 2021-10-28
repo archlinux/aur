@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia-git
 _pkgname=authelia
-pkgver=4.32.2.r39.g9bd97402
+pkgver=4.32.2.r40.g38689f49
 pkgrel=1
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
