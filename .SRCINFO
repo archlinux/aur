@@ -1,0 +1,13 @@
+pkgbase = unbound-china-list-git
+	pkgdesc = Configuration for hot China domains to accelerate via Unbound
+	pkgver = 0.130735.227b400e59
+	pkgrel = 1
+	url = https://github.com/felixonmars/dnsmasq-china-list
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = unbound
+	source = git+https://github.com/felixonmars/dnsmasq-china-list.git
+	md5sums = SKIP
+
+pkgname = unbound-china-list-git
