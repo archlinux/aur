@@ -3,7 +3,7 @@
 _appname=hoverclock
 pkgname=hoverclock-appimage
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Hoverclock - A simple, customizable floating clock for linux made with QT"
 arch=('x86_64')
 url="https://github.com/kostoskistefan/hoverclock"
@@ -12,7 +12,7 @@ provides=('hoverclock')
 options=(!strip)
 source_x86_64=("Hoverclock-x86_64.AppImage::$url/releases/download/v$pkgver/Hoverclock-x86_64.AppImage"
                 "https://raw.githubusercontent.com/kostoskistefan/hoverclock/main/LICENSE")
-sha256sums_x86_64=('11f102401989eefdd58f530e2122aed07410e9d4646f20f31ede1281be08f28e'
+sha256sums_x86_64=('7709614de7ac89db2fb6011123ae4cea4bc0915663852e6946a222ff89d45c23'
                    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 prepare() {
