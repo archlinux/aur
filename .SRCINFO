@@ -1,6 +1,6 @@
 pkgbase = splan-notify-git
 	pkgdesc = Easily get Notifications from the StarPlaner timetables
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/TripleTrable/splan-notify
 	arch = any

@@ -2,7 +2,7 @@
 pkgname=splan-notify-git
 _name="${pkgname%-git}"
 pkgver() { git -C "$_name" describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'; }
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 
 pkgdesc="Easily get Notifications from the StarPlaner timetables"
