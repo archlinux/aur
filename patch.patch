@@ -1,0 +1,13 @@
+diff --git a/drivers/gpu/drm/i915/display/intel_ddi.c b/drivers/gpu/drm/i915/display/intel_ddi.c
+index 73d0f4648c06..17123a49ac03 100644
+--- a/drivers/gpu/drm/i915/display/intel_ddi.c
++++ b/drivers/gpu/drm/i915/display/intel_ddi.c
+@@ -3175,7 +3175,7 @@ static void intel_enable_ddi_hdmi(struct intel_encoder *encoder,
+ 			       connector->base.id, connector->name);
+ 
+ 	/* Display WA #1143: skl,kbl,cfl */
+-	if (DISPLAY_VER(dev_priv) == 9 && !IS_BROXTON(dev_priv)) {
++	if (false && DISPLAY_VER(dev_priv) == 9 && !IS_BROXTON(dev_priv)) {
+ 		/*
+ 		 * For some reason these chicken bits have been
+ 		 * stuffed into a transcoder register, event though

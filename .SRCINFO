@@ -1,0 +1,33 @@
+pkgbase = linux-i915-module-patched
+	pkgdesc = Linux Patched
+	pkgver = 5.14.15.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v5.14.15-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.14.15-arch1
+	source = patch.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	sha256sums = SKIP
+	sha256sums = c5e09bf109f6291727cdd4ba65f0d8160656026ec3a87f9549ebef7aeff98686
+
+pkgname = linux-i915-module-patched
+	pkgdesc = The Linux Patched kernel and modules
