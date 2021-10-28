@@ -1,5 +1,5 @@
 pkgbase = mech
-	pkgdesc = An anonymous media downloader and web API client.
+	pkgdesc = An anonymous automated instagram, reddit, soundcloud, vimeo, and youtube downloader.
 	pkgver = 1.36.3
 	pkgrel = 1
 	url = https://github.com/89z/mech
