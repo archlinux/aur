@@ -1,0 +1,19 @@
+pkgbase = mech
+	pkgdesc = An anonymous media downloader and web API client.
+	pkgver = 1.36.3
+	pkgrel = 1
+	url = https://github.com/89z/mech
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	source = mech.tar.gz::https://github.com/89z/mech/archive/refs/tags/v1.36.3.tar.gz
+	sha256sums = a050a1fe936728356eaced07f5b776294bf5bf43aeb746f2898130aa577d2c81
+
+pkgname = mech
