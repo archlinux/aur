@@ -1,6 +1,6 @@
-# Maintainer: Mattéo Delabre <spam@delab.re>
+# Maintainer: Mattéo Delabre <aur.matteo@delab.re>
 pkgname=rmapi
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 pkgdesc='Access reMarkable tablet files through the Cloud API'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('606101d385c1b396d0e0a3cc06b382f9b3498895e0402f717652c8b3e54a0c86')
+sha256sums=('5c2d0d051f2ae08a0e52b41812094b33536489afe6bb9492905e6ef0fe7ce004')
 
 prepare() {
     cd "$pkgname-$pkgver"
