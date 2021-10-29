@@ -2,8 +2,8 @@
 
 pkgname=matrix-mirage
 _name=mirage
-pkgver=0.7.3
-pkgrel=1
+pkgver=0.7.2
+pkgrel=2
 pkgdesc='A fancy, customizable, keyboard-operable Matrix chat client for encrypted and decentralized communication.'
 arch=('any')
 url='https://github.com/mirukana/mirage'
