@@ -1,0 +1,20 @@
+pkgbase = openrocket-git
+	pkgdesc = A free and fully featured rocket flight simulator - 6 degrees of freedom
+	pkgver = r2955.f67ea41c
+	pkgrel = 1
+	url = https://github.com/openrocket/openrocket
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = ant
+	depends = java-environment=8
+	depends = desktop-file-utils
+	provides = openrocket
+	conflicts = openrocket
+	noextract = openrocket.sh
+	source = git+https://github.com/openrocket/openrocket.git#branch=unstable
+	source = openrocket.sh
+	sha256sums = SKIP
+	sha256sums = 74ab605cb11161784d4af96d018eb88adf7a2e4a8b1088a64b94b1e8ec5e18d1
+
+pkgname = openrocket-git
