@@ -31,5 +31,5 @@ package () {
     cd "${srcdir}"
     mkdir -p termite-build-dir
     meson install -C build --skip-subprojects vte --destdir="termite-build-dir"
-    install -Dm755  "build/termite-build-dir/usr/local/bin/termite" "$pkgdir/usr/bin/termite"
+    sudo install -Dm755  "build/termite-build-dir/usr/local/bin/termite" "/usr/bin/termite"
 }
