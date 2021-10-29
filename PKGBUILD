@@ -3,7 +3,7 @@
 _base=cplot
 pkgname=python-${_base}
 pkgdesc="Color maps for complex-valued functions"
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -12,7 +12,7 @@ depends=(python-colorio python-mplx)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-codeblocks) # python-mpmath python-scipy python-meshzoo
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('18f5a6ede655018d93b8fe24bf43caccfdeec3cd40afee1bdf07a96294b7690a31e3193602b1ade8e4c7b941859d20926dd815e8fbd44808fb74853064495e3e')
+sha512sums=('3fa54ec2864f8fb11dd4a3448e966b138932efe63072a07f9d91aacf8470287ea598c93dbba74e8da4ce6559d18bb584f14b5f2e64986ec0deafd1a9f6f62e34')
 
 build() {
   cd "${_base}-${pkgver}"
