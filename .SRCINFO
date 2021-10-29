@@ -9,6 +9,7 @@ pkgbase = python-hyperspy
 	checkdepends = python-pytest-mpl
 	checkdepends = python-pytest-xdist
 	checkdepends = python-pytest-rerunfailures
+	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
 	depends = python
 	depends = python-scipy>=1.1
@@ -38,7 +39,6 @@ pkgbase = python-hyperspy
 	optdepends = cython: enables acceleration of certain operations (must be installed at package build time)
 	optdepends = python-imagecodecs: speed
 	optdepends = python-matplotlib-scalebar: scalebar in images
-	optdepends = python-cov: coverage
 	optdepends = python-sphinx>=1.7: build documentation
 	optdepends = python-sphinx_rtd_theme: build documentation
 	provides = hyperspy

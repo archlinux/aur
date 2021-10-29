@@ -46,7 +46,6 @@ optdepends=('python-scikit-learn: machine learning features'
             'cython: enables acceleration of certain operations (must be installed at package build time)'
             'python-imagecodecs: speed'
             'python-matplotlib-scalebar: scalebar in images'
-            'python-cov: coverage'
             'python-sphinx>=1.7: build documentation'
             'python-sphinx_rtd_theme: build documentation'
              )
@@ -57,6 +56,7 @@ checkdepends=('python-pytest>=3.6'
               'python-pytest-mpl'
               'python-pytest-xdist'
               'python-pytest-rerunfailures'
+              'python-pytest-cov'
                )
 
 replaces=('hyperspy')
