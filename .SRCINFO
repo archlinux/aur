@@ -7,8 +7,8 @@ pkgbase = 4scanner
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python3
-	depends = python-requests>=2.20
+	depends = python>=3.0.0
+	depends = python-requests>=2.20.0
 	source = 4scanner-1.6.2.tar.gz::https://github.com/pboardman/4scanner/archive/refs/tags/1.6.2.tar.gz
 	sha256sums = dc7470615353b137a0af4732b995428c5e794e4b85aeb70f84ba76e2f86224b1
 
