@@ -1,7 +1,7 @@
 # Maintainer: Spencer Muise <smuise@spencermuise.ca>
 pkgname=bookstack
 _camelname=BookStack
-pkgver=21.08.6
+pkgver=21.10.2
 pkgrel=1
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
@@ -14,13 +14,13 @@ depends=(
 )
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BookStackApp/BookStack/archive/v${pkgver}.tar.gz")
-md5sums=('95fb5e0eabc41f488e30626a29425f53')
+md5sums=('ccb91c905b2d5d51f3f2974ac4c7ae00')
 options=('!strip')
 backup=("etc/webapps/$pkgname/config.env")
 
 package() {
     cd "$srcdir/$_camelname-$pkgver"
-    composer install --no-scripts --no-dev --ignore-platform-reqs --no-interaction
+    composer install --no-dev --ignore-platform-reqs --no-interaction
 
     install -d "$pkgdir/usr/share/webapps/$pkgname" "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/etc/webapps/$pkgname"
     cp -r * "$pkgdir/usr/share/webapps/$pkgname"
