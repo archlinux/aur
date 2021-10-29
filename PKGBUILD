@@ -8,10 +8,11 @@ arch=('any')
 license=('GPL2')
 depends=('python')
 makedepends=(
-    'python-build'
-    'python-install'
-    'python-pytest'
-    'python-setuptools'
+  'python-build'
+  'python-install'
+  'python-pytest'
+  'python-setuptools'
+  'python-wheel'
 )
 url="https://github.com/benoit-pierre/rtf_tokenize"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benoit-pierre/rtf_tokenize/archive/refs/tags/$pkgver.tar.gz")
