@@ -1,14 +1,13 @@
 pkgbase = edrawmax-cn
 	pkgdesc = 强大的办公绘图、工程绘图、图文编辑、彩页设计软件
-	pkgver = 10.5.3
-	pkgrel = 3
+	pkgver = 11.1.2
+	pkgrel = 1
 	url = https://www.edrawsoft.cn/edrawmax/
 	arch = x86_64
 	license = Commercial
 	conflicts = edrawmax
 	options = !strip
-	source_x86_64 = https://www.edrawsoft.cn/2download/x86_64/edrawmax-10-5-cn.deb
-	sha256sums_x86_64 = SKIP
+	source_x86_64 = https://www.edrawsoft.cn/2download/x86_64/edrawmax_11.1.2_cn_x86_64.deb
+	sha256sums_x86_64 = ef22f795d5088e17136100b34ba8c6ba6cd179834f53fc74002e7cd68f9dc944
 
 pkgname = edrawmax-cn
-
