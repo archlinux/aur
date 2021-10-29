@@ -8,7 +8,7 @@ pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
 url="https://github.com/timche/gmail-desktop"
 license=('MIT')
-depends=('electron12')
+depends=("electron${_electronversion}")
 makedepends=('nvm' 'yarn')
 optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
