@@ -8,7 +8,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=3.3.0
+pkgver=3.4.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -16,19 +16,20 @@ url='https://buildbot.net'
 license=(GPL2)
 checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-mock python-subunit
-              python-graphql-core python-unidiff
+              python-unidiff
               openssh chromium)
 makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy
-             python-sqlalchemy-migrate python-dateutil python-txaio
+             python-alembic python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml
+             python-graphql-core python-hvac
              python-setuptools python-future
-             python-sphinx-jinja python-sphinxcontrib-blockdiag
+             python-sphinx-jinja
              python-sphinx_rtd_theme
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
-sha256sums=('2ffa268d7c328545d7e93fce2de1167527a2119c4b4ff0b6faa6ccc257074191'
+sha256sums=('da729c7f4dc2e30f5a5d69e34dd629b0b3d97001b12d72aeb691bb2f0ef0efeb'
             'SKIP'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9')
@@ -50,9 +51,10 @@ prepare() {
   # We take care about the command order manually
   sed -i '/egg_info=EggInfoCommand/d' pkg/buildbot_pkg.py
 
-  sed -i '/buildbot_windows_service/d' master/setup.py
+  # https://github.com/buildbot/buildbot/pull/6178 removes Windows
+  # services from console scripts, while the following files still make
+  # namcap-git complain
   rm -v master/buildbot/scripts/windows_service.py
-  sed -i '/buildbot_worker_windows_service/d' worker/setup.py
   rm -v worker/buildbot_worker/scripts/windows_service.py
 
   cd "$srcdir"/buildbot-contrib
@@ -125,14 +127,15 @@ package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
   # include setuptools as plugins are enumerated via pkg_resources
   depends=(buildbot-common python-twisted python-jinja python-zope-interface python-sqlalchemy
-           python-sqlalchemy-migrate python-dateutil python-txaio
+           python-alembic python-dateutil python-txaio
            python-autobahn python-pyjwt python-yaml python-setuptools)
   optdepends=(
     # reporters
     'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
     # secrets
     'pass: to use SecretInPass provider'
-    'vault: to use HashiCorpVaultSecretProvider provider'
+    'vault: to use HashiCorpVaultSecretProvider or HashiCorpVaultKvSecretProvider provider'
+    'python-hvac: to use HashiCorpVaultKvSecretProvider provider'
     # statistics
     'python-influxdb: for using InfluxDB to store statistics'
     # steps
@@ -148,6 +151,7 @@ package_buildbot() {
     'python-docker: for Docker latent worker'
     'python-novaclient: for OpenStack latent worker'
     # www
+    'python-graphql-core: GraphQL API for buildbot'
     'python-ldap3: to authenticate users via LDAP'
     'python-pypugjs: to use custom Pug.js templates'
 
