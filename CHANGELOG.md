@@ -1,3 +1,10 @@
+## v1.0.2
+- fix issue with API functions & callbacks
+- fix double checkhealt crash issue
+
+## v1.0.1
+- fix issue when using sniprun with an empty config
+
 ## v1.0.0
 - LCOV coverage
 - Many (non inherently REPL) interpreters accept cli arguments when invoked from `:%SnipRun <args>`
