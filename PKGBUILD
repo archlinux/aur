@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxm-git
-pkgver=0.0.34.r0.g130850e
+pkgver=0.0.35.r0.gb24692f
 pkgrel=1
 pkgdesc="Generic C-implementation of modular support"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
