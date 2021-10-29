@@ -1,7 +1,7 @@
 # Maintainer: Lukas Burgey <lukas.burgey@kit.edu>
 pkgname=oidc-agent-git
 basepkgname=${pkgname%-git}
-pkgver=v4.2.1.r12.eaf7c5a
+pkgver=v4.2.2.r1.d4b4c44
 pkgrel=1
 pkgdesc='A set of tools to manage OpenID Connect tokens and make them easily usable from the command line'
 arch=('x86_64')
@@ -9,11 +9,12 @@ url='https://github.com/indigo-dc/oidc-agent'
 license=('MIT')
 groups=()
 depends=(
+	'curl'
 	'libmicrohttpd'
 	'libseccomp'
 	'libsecret'
 	'libsodium'
-	'curl'
+	'qrencode'
 )
 makedepends=(
 	'git'

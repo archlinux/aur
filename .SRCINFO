@@ -1,17 +1,18 @@
 pkgbase = oidc-agent-git
 	pkgdesc = A set of tools to manage OpenID Connect tokens and make them easily usable from the command line
-	pkgver = v4.2.1.r12.eaf7c5a
+	pkgver = v4.2.2.r1.d4b4c44
 	pkgrel = 1
 	url = https://github.com/indigo-dc/oidc-agent
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = help2man
+	depends = curl
 	depends = libmicrohttpd
 	depends = libseccomp
 	depends = libsecret
 	depends = libsodium
-	depends = curl
+	depends = qrencode
 	provides = oidc-agent
 	conflicts = oidc-agent
 	source = git+https://github.com/indigo-dc/oidc-agent#branch=master
