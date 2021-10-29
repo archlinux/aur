@@ -2,7 +2,7 @@
 pkgname=abyss-engine-git
 pkgver=r156.4a6ad0e
 pkgrel=1
-pkgdesc="a game engine designed to run games similar to 2000's style ARPGs such as Diablo II"
+pkgdesc="A game engine designed to run games similar to 2000's style ARPGs such as Diablo II"
 arch=('i686' 'x86_64')
 url="https://github.com/AbyssEngine/AbyssEngine"
 license=('GPL3')
@@ -14,6 +14,8 @@ source=("${pkgname%-git}::git+${url}"
   "opendiablo2::git+https://github.com/AbyssEngine/OpenDiablo2"
   "opendiablo2.sh"
 )
+install="${pkgname%-git}.install"
+
 sha256sums=('SKIP'
             'SKIP'
             '45666f5f052518b30217aef2a310b80eefff6e3a3822e3fec9aa3666dc8989e9')
