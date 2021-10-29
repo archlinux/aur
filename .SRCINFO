@@ -1,0 +1,21 @@
+pkgbase = quarg
+	pkgdesc = A command-line search tool for Quassel
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://oriole.systems/posts/quarg
+	arch = x86_64
+	license = MIT
+	makedepends = signify
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dateutil
+	depends = python-sqlalchemy>=1.4
+	optdepends = python-psycopg2: for PostgreSQL
+	source = https://git.oriole.systems/quarg/snapshot/quarg-0.1.2.tar.gz
+	source = quarg-0.1.2.tar.gz.signify::https://git.oriole.systems/quarg/snapshot/quarg-0.1.2.tar.gz.asc
+	source = quarg-release.pub::https://oriole.systems/release.pub
+	sha256sums = 1b6610c2417f36b5b1df5208c3c641b8b2ac3283dae87f453801cdc8c4ffb80a
+	sha256sums = c820f44030dec6ead840c96dea32186fb77aec2e7ea9e2bd3551ccfb57fadedd
+	sha256sums = 9a9b86aabca218831ba3a03878b4473b7c2407be46a5fae11716ba18d2a78918
+
+pkgname = quarg
