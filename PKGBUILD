@@ -17,7 +17,7 @@ source_x86_64=("${_pkgname}_${pkgver}_amd64.deb"::"https://codeberg.org/attachme
 source_aarch64=("${_pkgname}_${pkgver}_aarch64.deb"::"https://codeberg.org/attachments/18c2e29f-7c91-4466-9da0-313306886bef")
 
 package() {
-    bsdtar -xzvf 'data.tar.gz' -C "${pkgdir}"
+    bsdtar -xzf 'data.tar.gz' -C "${pkgdir}"
     install -d "${pkgdir}/usr/bin"
 }
 
