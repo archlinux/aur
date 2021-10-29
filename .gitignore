@@ -4,3 +4,4 @@
 /clang-*.tgz
 /chrome-*.profdata
 /gn-*.zip
+*.log

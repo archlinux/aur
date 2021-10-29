@@ -9,7 +9,8 @@ arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=('nspr' 'nss')
-makedepends=("clang" "lld" "ninja" "gn" "python2" "gcc" "llvm" "ccache")
+makedepends=("ninja" "python2" "unzip")
+optdepends=("ccache: Speed up compilation")
 
 _WITH_CLANG='Linux_x64'
 _WITH_PGO='linux'
