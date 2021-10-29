@@ -1,8 +1,8 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkcommon-git
-pkgver=5.5.17.r5.g0b6f555
-pkgrel=1
+pkgver=5.5.17.r8.gfe3dd87
+pkgrel=7
 pkgdesc='DTK common modules'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dtkcommon"
