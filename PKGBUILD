@@ -4,9 +4,9 @@
 
 
 pkgname=alchemy-next-viewer-git
-pkgver=6.4.24.47540
+pkgver=6.4.24.47563
 pkgrel=1
-_branch="${GIT_BRANCH:=master}"
+_branch="${AL_GIT_BRANCH:=master}"
 pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - git version"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -40,7 +40,8 @@ pkgver() {
 prepare() {
 	cd "$pkgname" || exit 1
 	git fetch --prune
-	git checkout origin/${_branch}
+	git checkout "origin/${_branch}" || git checkout master
+	git pull --autostash
 	virtualenv ".venv" -p python3
 	source ".venv/bin/activate"
 	if command -v autobuild; then
