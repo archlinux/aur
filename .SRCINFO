@@ -1,6 +1,6 @@
 pkgbase = libjxl-git
 	pkgdesc = JPEG XL image format reference implementation (git version)
-	pkgver = 0.3.7.r484.g47a65ca
+	pkgver = 0.3.7.r545.g2b5e77c
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = libjxl-git
 	makedepends = libpng
 	makedepends = openexr
 	makedepends = gtest
-	makedepends = gmock
 	makedepends = java-environment
 	makedepends = python
 	makedepends = asciidoc

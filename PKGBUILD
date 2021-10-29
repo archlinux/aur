@@ -2,7 +2,7 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r484.g47a65ca
+pkgver=0.3.7.r545.g2b5e77c
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -10,8 +10,8 @@ url='https://jpeg.org/jpegxl/'
 license=('BSD')
 makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
              'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'gtest'
-             'gmock' 'java-environment' 'python' 'asciidoc' 'doxygen'
-             'graphviz' 'xdg-utils' 'highway')
+             'java-environment' 'python' 'asciidoc' 'doxygen' 'graphviz'
+             'xdg-utils' 'highway')
 source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/lvandeve/lodepng.git'
