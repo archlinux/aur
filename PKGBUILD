@@ -19,3 +19,5 @@ package() {
     chmod 755 "$pkgdir"/opt/Debugtron/Debugtron
     chmod 4755 "$pkgdir"/opt/Debugtron/chrome-sandbox
 }
+sha256sums=('6808e728514d1f053bc3c63963cbf549f6e5fcb47220d964b793ac9be6172baf'
+            '3725a52f0dfc698a3a93b2a49d6a7896e57e7a65f482a6a6ebb00874ef62e281')
