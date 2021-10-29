@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/edfloreshz/devmode"
 license=('GPL2')
 depends=()
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'python-sphinx')
 optdepends=()
 provides=('devmode')
 conflicts=('devmode')
@@ -27,10 +27,14 @@ build() {
 	cargo build --release --locked
 	cd .. && cd dmdt
 	cargo build --release --locked
+	cd man-pages
+	make man
 }
 
 package() {
 	cd "$_pkgname"
 	install -Dm755 dmd/target/release/dmd "$pkgdir"/usr/bin/dmd
+	install -Dm644 "dmd/dmd.1" -t "$pkgdir"/usr/share/man/man1
 	install -Dm755 dmdt/target/release/dmdt "$pkgdir"/usr/bin/dmdt
+	install -Dm644 "dmdt/man-pages/_build/man/dmdt.1" -t "$pkgname"/usr/share/man/man1
 }

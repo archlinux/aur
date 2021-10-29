@@ -8,6 +8,7 @@ pkgbase = devmode-git
 	license = GPL2
 	makedepends = cargo
 	makedepends = git
+	makedepends = python-sphinx
 	provides = devmode
 	conflicts = devmode
 	source = devmode::git+https://github.com/edfloreshz/devmode
