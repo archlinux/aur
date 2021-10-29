@@ -1,10 +1,15 @@
 pkgbase = python-hyperspy
 	pkgdesc = Hyperspectral data analysis
 	pkgver = 1.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hyperspy.org
 	arch = any
 	license = GPL3
+	checkdepends = pytest>=3.6
+	checkdepends = pytest-mpl
+	checkdepends = pytest-xdist
+	checkdepends = pytest-rerunfailures
+	checkdepends = pytest-instafail
 	makedepends = python-setuptools
 	depends = python
 	depends = python-scipy>=1.1
@@ -30,8 +35,13 @@ pkgbase = python-hyperspy
 	optdepends = python-scikit-learn: machine learning features
 	optdepends = python-hyperspy-gui-ipywidgets: GUI components for Jupyter
 	optdepends = python-hyperspy-gui-traitsui: GUI components for desktop
-	optdepends = python-blosc: mrcz file support
+	optdepends = python-blosc>=1.5: mrcz file support
 	optdepends = cython: enables acceleration of certain operations (must be installed at package build time)
+	optdepends = python-imagecodecs: speed
+	optdepends = python-matplotlib-scalebar: scalebar in images
+	optdepends = python-cov: coverage
+	optdepends = python-sphinx>=1.7: build documentation
+	optdepends = python-sphinx_rtd_theme: build documentation
 	provides = hyperspy
 	conflicts = hyperspy
 	replaces = hyperspy

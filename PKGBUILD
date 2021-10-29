@@ -4,7 +4,7 @@
 pkgname=python-hyperspy
 pkgshort=hyperspy
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
@@ -42,10 +42,23 @@ depends=('python'
 optdepends=('python-scikit-learn: machine learning features'
             'python-hyperspy-gui-ipywidgets: GUI components for Jupyter' # AUR
             'python-hyperspy-gui-traitsui: GUI components for desktop'  # AUR
-	    'python-blosc: mrcz file support'
-            'cython: enables acceleration of certain operations (must be installed at package build time)' )
+	    'python-blosc>=1.5: mrcz file support'
+            'cython: enables acceleration of certain operations (must be installed at package build time)'
+            'python-imagecodecs: speed'
+            'python-matplotlib-scalebar: scalebar in images'
+            'python-cov: coverage'
+            'python-sphinx>=1.7: build documentation'
+            'python-sphinx_rtd_theme: build documentation'
+             )
 
 makedepends=('python-setuptools' )
+
+checkdepends=('pytest>=3.6'
+              'pytest-mpl'
+              'pytest-xdist'
+              'pytest-rerunfailures'
+              'pytest-instafail'
+               )
 
 replaces=('hyperspy')
 conflicts=('hyperspy')
