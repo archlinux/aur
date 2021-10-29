@@ -2,8 +2,8 @@
 
 pkgname=imgui-sfml
 pkgver=2.3
-pkgrel=1
-_imguiver=1.82
+pkgrel=2
+_imguiver=1.85
 pkgdesc="Library which allows you to use ImGui with SFML"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/eliasdaler/imgui-sfml/"
@@ -11,7 +11,7 @@ license=("MIT")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eliasdaler/${pkgname}/archive/v${pkgver}.tar.gz"
 		"imgui-${_imguiver}.tar.gz::https://github.com/ocornut/imgui/archive/v${_imguiver}.tar.gz")
 sha512sums=('2c7c848cf99a2a2ecc834e20aa65252c1986aabe397c9241f7ae8eb5e78ffa49ad70cc140fba37001386df9e515bf847abcc16631c7bdea944926b1128d55b9f'
-			'210076c2b04c09e63a4924e1f874bfe240668f4d2656511c96dd5499efe04d795ad01d5af8e2aa2543849d3ca5ef1a6c6555a9232d4d92f95bf98c41e8505b58')
+			'830ff36681a661d77754fb7818bb13cc63da58a293d343a8d6847a586f00c6e0bfc3ffe51cdf882849e5083d4ddca52cdbdc1b3abc9b794a96f89ae7628f1fc2')
 depends=("sfml")
 makedepends=("cmake")
 
