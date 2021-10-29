@@ -2,7 +2,7 @@ pkgbase = libglibutil
 	pkgdesc = Library of glib utilities
 	pkgver = 1.0.56
 	pkgrel = 1
-	url = https://git.sailfishos.org/mer-core/libglibutil
+	url = https://github.com/sailfishos/libglibutil
 	arch = x86_64
 	arch = i686
 	arch = armv7h
@@ -10,7 +10,7 @@ pkgbase = libglibutil
 	license = BSD
 	makedepends = git
 	depends = glib2
-	source = libglibutil::git+https://git.sailfishos.org/mer-core/libglibutil.git#commit=7321c8e782bbe5a679446d9df03d7c22abe8e73b
+	source = libglibutil::git+https://github.com/sailfishos/libglibutil.git#commit=879364374508fec2093aa904d9a4e1b06e6f5107
 	sha512sums = SKIP
 
 pkgname = libglibutil
