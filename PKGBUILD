@@ -73,7 +73,7 @@ _makenconfig=
 pkgbase=linux-xanmod-rog
 xanmod=5.14.15-xanmod1
 pkgver=${xanmod//-/.}
-#pkgver=5.14.14.xanpre0     # NOTE: start 4th position with 'xan...', we rely on parsing for '.xan...' later
+#pkgver=5.14.14.xanpre0     # NOTE: start 4th position with 'xan...', we parse for this pattern later
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
@@ -100,7 +100,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # incremental kernel.org patch ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.1.xz"
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.14.13-14.xz"
-        # stable rc patches
         #"Linux-5.14.5-rc1.patch"
 
         # don't drop shared caches on C3 state transitions
@@ -112,8 +111,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # k10temp support for Zen3 APUs
         #"x86-amd_nb-Add-AMD-family-19h-model-50h-PCI-ids.patch"                        # included in 5.14
         "hwmon-k10temp-support-Zen3-APUs.patch"                                         # landing in 5.15
-
-        # AMD pstate cpufreq driver v2                                                  # included in xanmod tree
 
         # squelch overzealous 802.11 regdomain not set warnings
         "cfg80211-dont-WARN-if-a-self-managed-device.patch"
@@ -131,9 +128,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"                          # -next
 
         # mediatek mt7921 bt/wifi patches
-        #"Bluetooth-btusb-Fixed-too-many-in-token-issue-for-Me.patch"
-        #"Bluetooth-btusb-Add-support-for-Lite-On-Mediatek-Chi.patch"
-        #"mt76-mt7921-continue-to-probe-driver-when-fw-already.patch"
         "mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
         "mt76-mt7921-Add-mt7922-support.patch"
         "1-1-Bluetooth-btusb-Enable-MSFT-extension-for-Mediatek-Chip-MT7921.patch"
