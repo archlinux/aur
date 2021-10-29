@@ -22,6 +22,8 @@ depends=(
 makedepends=(
   'git'
   'python-babel'
+  'python-build'
+  'python-install'
   'python-pytest'
   'python-pytest-qt'
   'python-pytest-xvfb'
@@ -46,17 +48,17 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  python setup.py build
+  pyproject-build --no-isolation --skip-dependency-check --wheel
 }
 
 check() {
   cd "$pkgname"
-  python -m pytest
+  pytest test
 }
 
 package() {
   cd "$pkgname"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m install --destdir="$pkgdir" --optimize=1 dist/*.whl
   install -vDm644 -t "${pkgdir}/usr/share/pixmaps" plover/assets/plover.png
   install -vDm644 -t "${pkgdir}/usr/share/applications" linux/plover.desktop
   chmod og+rX -R "$pkgdir"
