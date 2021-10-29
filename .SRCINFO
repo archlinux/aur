@@ -1,0 +1,18 @@
+pkgbase = opentapes-bin
+	pkgdesc = A convergent/adaptive app for streaming Hip-Hop mixtapes. Made with Vue.js & Tauri.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/xaviers/Opentapes
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = gtk3
+	depends = webkit2gtk
+	provides = opentapes
+	conflicts = opentapes
+	source_x86_64 = opentapes_0.1.0_amd64.deb::https://codeberg.org/attachments/c8877719-f904-4b0e-a7ff-5e0ae5ebc0fe
+	md5sums_x86_64 = b94299b7cfae153ab464224cafeb043d
+	source_aarch64 = opentapes_0.1.0_aarch64.deb::https://codeberg.org/attachments/18c2e29f-7c91-4466-9da0-313306886bef
+	md5sums_aarch64 = 00120573481fd5f7f117570bd3fdfed5
+
+pkgname = opentapes-bin
