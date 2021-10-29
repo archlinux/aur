@@ -1,14 +1,14 @@
 pkgbase = eslint-plugin-vue
 	pkgdesc = Official ESLint plugin for Vue.js
-	pkgver = 8.0.0
+	pkgver = 8.0.1
 	pkgrel = 1
 	url = https://github.com/vuejs/eslint-plugin-vue
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = eslint
-	noextract = eslint-plugin-vue-8.0.0.tgz
-	source = http://registry.npmjs.org/eslint-plugin-vue/-/eslint-plugin-vue-8.0.0.tgz
-	sha256sums = 9cc0757f7506b87a8fce216786e7951bd6bb040e51413ba746eac50d9375b6cf
+	noextract = eslint-plugin-vue-8.0.1.tgz
+	source = http://registry.npmjs.org/eslint-plugin-vue/-/eslint-plugin-vue-8.0.1.tgz
+	sha256sums = 434f219c45a620a1af2f2f0f5c04859588823ae8f00839bb4ab7b2077d72f0ba
 
 pkgname = eslint-plugin-vue
