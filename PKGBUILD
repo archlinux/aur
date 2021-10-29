@@ -30,5 +30,5 @@ build () {
 package () {
     cd "${srcdir}"
     meson install -C build --skip-subprojects vte --destdir="${pkgdir}/opt/termite"
-    install -Dm755  "$pkgdir/opt/termite/usr/local/bin/termite" "$pkgdir/usr/bin/termite"
+    install -Dm755  "$pkgdir/opt/termite/usr/local/bin/termite" "$pkgdir/usr/bin/aperezdc"
 }
