@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extensions-fly-pie
+	pkgdesc = Fly-Pie is an innovative marking menu written as a GNOME Shell extension
+	pkgver = 8
+	pkgrel = 1
+	url = https://github.com/Schneegans/Fly-Pie
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = zip
+	depends = gnome-shell>=1:40
+	source = https://github.com/Schneegans/Fly-Pie/archive/v8.tar.gz
+	sha512sums = ff6a3ddfde4d5f301f550c3c1e19f6dbabc4dc06809458fd2c9dbe4f6f2d5b5b715f4ac8af23d39b1e02dd4e5721602e6d41842890e07d77582114db668f2c07
+
+pkgname = gnome-shell-extensions-fly-pie
