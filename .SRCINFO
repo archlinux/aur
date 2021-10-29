@@ -1,6 +1,6 @@
-pkgbase = pkgbase
+pkgbase = yggdrasil-sr
 	pkgdesc = Yggdrasil Screenreader -- Make Linux Accessible!
-	pkgver = 0.1a
+	pkgver = 0.1b
 	pkgrel = 1
 	url = https://yggdrasil-sr.github.io/
 	arch = x86_64
@@ -8,6 +8,6 @@ pkgbase = pkgbase
 	license = GPL3
 	depends = clang
 	depends = rustup
-	provides = yggdrasil
+	provides = yggdrasil-sr
 
 pkgname = yggdrasil-sr

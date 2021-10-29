@@ -1,8 +1,7 @@
-# Maintainer Tait Hoyem <tait+yggdrasil-sr-aur@tait.tech>
+# Maintainer Tait Hoyem <tait+ygg_aur@tait.tech>
 
-pkgbase=pkgbase
 pkgname=yggdrasil-sr
-pkgver=0.1a
+pkgver=0.1b
 pkgrel=1
 pkgdesc="Yggdrasil Screenreader -- Make Linux Accessible!"
 url="https://yggdrasil-sr.github.io/"
