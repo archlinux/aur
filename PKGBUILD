@@ -29,7 +29,7 @@ build () {
 
 package () {
     cd "${srcdir}"
-
     meson install -C build --skip-subprojects vte --destdir="${pkgdir}/opt/termite"
-    ln -sf /opt/termite/usr/local/bin/termite  /usr/bin/termite
+    mkdir -p ${pkgdir}/usr/bin
+    ln -sf ${pkgdir}/opt/termite/usr/local/bin/termite ${pkgdir}/usr/bin/termite
 }
