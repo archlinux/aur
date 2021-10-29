@@ -27,6 +27,7 @@ makedepends=(
   'python-pytest'
   'python-pytest-qt'
   'python-pytest-xvfb'
+  'python-wheel'
 )
 provides=('plover')
 conflicts=('plover')

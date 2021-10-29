@@ -12,6 +12,7 @@ pkgbase = plover-git
 	makedepends = python-pytest
 	makedepends = python-pytest-qt
 	makedepends = python-pytest-xvfb
+	makedepends = python-wheel
 	depends = python
 	depends = python-appdirs
 	depends = python-dbus
