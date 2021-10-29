@@ -14,7 +14,7 @@ sha512sums=('aca5863d36b333c4c896549074242fb4c2c0a4d6598b27baa794944436527bdd6e1
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	make
+	make INSTPATH="/nonexistent/intel-ipsec-mb.h"
 }
 
 package() {
