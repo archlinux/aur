@@ -32,5 +32,6 @@ package () {
 
     meson install -C build --skip-subprojects vte --destdir="${pkgdir}/opt/termite"
     mkdir -p ${pkgdir}/usr/bin
-    sudo ln -sf /opt/termite/usr/local/bin/termite /usr/bin/termite
+    touch ${pkgdir}/usr/bin/termite
+    ln -sf ${pkgdir}/opt/termite/usr/local/bin/termite  ${pkgdir}/usr/bin/termite
 }
