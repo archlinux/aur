@@ -1,18 +1,13 @@
 pkgbase = kodi-addon-script-module-inputstreamhelper
-	pkgdesc = A simple Kodi module that makes life easier for add-on developers relying on InputStream based add-ons and DRM playback.
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgdesc = A simple Kodi module that makes life easier for add-on developers relying on InputStream based add-ons and DRM playback
+	pkgver = 0.5.8
+	pkgrel = 1
 	url = https://github.com/emilsvennesson/script.module.inputstreamhelper
 	arch = any
-	groups = kodi
-	license = GPL
+	license = MIT
 	makedepends = git
-	depends = kodi
 	depends = kodi-addon-inputstream-adaptive
-	provides = kodi-addon-script-module-inputstreamhelper
-	conflicts = kodi-addon-script-module-inputstreamhelper
-	source = https://github.com/emilsvennesson/script.module.inputstreamhelper/releases/download/v0.5.2/script.module.inputstreamhelper-0.5.2+matrix.1.zip
-	sha256sums = 262fd3356c653f5e65002de29621854247deccf8972d276047e0308986b76491
+	source = https://github.com/emilsvennesson/script.module.inputstreamhelper/releases/download/v0.5.8/script.module.inputstreamhelper-0.5.8+matrix.1.zip
+	sha512sums = 4c2e504a4ea5319640cf6ae89bb2335a6047044c0c1c90058409dd8b106b2c688c6c27648b6aff1ace9a5612ee7fc96436e165425b4df3ec939ab817b744fbc5
 
 pkgname = kodi-addon-script-module-inputstreamhelper
-
