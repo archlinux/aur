@@ -5,7 +5,7 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=2.40.0
+pkgver=2.44.0
 pkgrel=1
 _distname="Pyfa-${pkgver}"
 pkgdesc="EVE Online Fitting Assistant"
@@ -20,10 +20,11 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pyfa-org/Pyfa/archive/v$
         pyfa.desktop
         pyfa-start.sh
         0001-python-3.10-compatibility.patch
-        add_broken_warning.patch
        )
-sha256sums=('ce50635e73e0cb61ddee802523785a9d4cfd6cd88142a677870ff3b6a453792f'
-            SKIP SKIP SKIP SKIP)
+sha256sums=('5a68c569bc6b999021476843899fb9b48619aaeb1a235ec4ddda20dc776dd7c3'
+            'b54ef367e93d7916f6ef3106a27018571d35afc1aa9eadcccc79463050e70786'
+            '0fa4a1cb835ddbb764957cd00426f9bfa52b17bcb6d5dc7428afc256da5e01da'
+            'f3e1ec098917ef88b579f1d847e29819d396dd8ae91e3ea6d7e984effe9a299c')
 
 build() {
   cd "${srcdir}"/"${_distname}"
@@ -32,11 +33,8 @@ build() {
   echo "Applying 0001-python-3.10-compatibility.patch"
   patch --binary -l -p1 < ../0001-python-3.10-compatibility.patch
 
-  echo "Applying add_broken_warning.patch"
-  patch --binary -l -p1 < ../add_broken_warning.patch
-
-  python db_update.py
-  find . -name "__pycache__" -type d -prune -exec rm -r "{}" \;
+  PYTHONDONTWRITEBYTECODE=1 python db_update.py
+  #find . -name "__pycache__" -type d -prune -exec rm -r "{}" \;
 }
 
 package() {
@@ -65,9 +63,8 @@ package() {
   install -Dm644 "${srcdir}"/pyfa.desktop "${pkgdir}"/usr/share/applications/pyfa.desktop
   install -Dm755 "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa
 
-  echo -e "\n!!! THIS PACKAGE IS PARTIALLY BROKEN !!!"
-  echo "wxPython, dependency of Pyfa, is incomaptible with python3.10 (for now)."
-  echo "For more details (and place for bug reports) see: https://github.com/pyfa-org/Pyfa/issues/2391"
-  echo -e "Known issues:\n- Implants tab does not work and will keep erroring out until closed\n"
+  echo -e "\nWARNING: This build of pyfa is running with un-tested dependencies (python3.10, wxPython 3.2)"
+  echo "Expect bugs and crashes."
+  echo -e "For more details (and place for bug reports) see: https://github.com/pyfa-org/Pyfa/issues/2391\n"
 }
 
