@@ -1,7 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
 pkgver=2.25.3
-pkgrel=5
+pkgrel=6
+_electronversion=12
+_nodeversion=14
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
 url="https://github.com/timche/gmail-desktop"
@@ -35,14 +37,14 @@ prepare() {
   sed -i '/husky/d' package.json
 
   _ensure_local_nvm
-  nvm install 14.18.0
+  nvm install "$_nodeversion"
 }
 
 build() {
   cd "$pkgname-$pkgver"
   _ensure_local_nvm
-  electronDist=/usr/lib/electron12
-  electronVer=$(sed s/^v// /usr/lib/electron12/version)
+  electronDist="/usr/lib/electron$_electronversion"
+  electronVer="$(sed s/^v// /usr/lib/electron$_electronversion/version)"
   yarn config set cache-folder "$srcdir/yarn-cache"
   yarn install
   yarn compile
