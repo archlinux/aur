@@ -1,11 +1,12 @@
 # Maintainer: tuberry
+# Contributor: simsilver
 
 _version=1.0.0
 _srcname=dict-ecdict
 _csvname=ultimate.csv
 _zipname=ecdict-ultimate-csv.zip
 pkgname=dict-ecdict-git
-pkgver=1.0.0.r10.3b5d8ad
+pkgver=1.0.0.r13.51a10e0
 pkgrel=1
 pkgdesc="A port of Ultimate ECDICT database for dictd et al."
 arch=('any')
@@ -30,6 +31,8 @@ pkgver()
 build()
 {
   cd ${_srcname}
+  ln -sf ${srcdir}/${_zipname} ${_zipname}
+  touch ${srcdir}/${_csvname}
   ln -sf ${srcdir}/${_csvname} ecdict.csv
   make
 }
