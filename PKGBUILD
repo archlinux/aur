@@ -1,11 +1,11 @@
 # Maintainer: MatMoul <matmoul@gmail.com>
 
 _pkggit=octopi
-_gitcommit=29525448bc22252b0eb72d7b40c0fc0b2d4b4b70
+_gitcommit=cc27dcadecd4bc7baa8200234c61087cd54465a6
 pkgbase=octopi-dev
 pkgname='octopi-dev'
 pkgver=0.12.0
-pkgrel=5
+pkgrel=6
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs"
 arch=('i686' 'x86_64')
 url="https://tintaescura.com/projects/octopi/"
