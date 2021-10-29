@@ -62,6 +62,8 @@ package() {
   install -vDm644 -t "${pkgdir}/usr/share/pixmaps" plover/assets/plover.png
   install -vDm644 -t "${pkgdir}/usr/share/applications" linux/plover.desktop
   chmod og+rX -R "$pkgdir"
+  # Workaround `python-install` bug: console scripts missing execute permissions...
+  chmod +x "$pkgdir/usr/bin"/*
 }
 
 # vim:set sw=2 sts=2 et:
