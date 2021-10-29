@@ -1,0 +1,18 @@
+pkgbase = abyss-engine-git
+	pkgdesc = a game engine designed to run games similar to 2000's style ARPGs such as Diablo II
+	pkgver = r156.4a6ad0e
+	pkgrel = 1
+	url = https://github.com/AbyssEngine/AbyssEngine
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = ffmpeg
+	depends = lua
+	provides = abyss-engine
+	conflicts = abyss-engine
+	source = abyss-engine::git+https://github.com/AbyssEngine/AbyssEngine
+	sha256sums = SKIP
+
+pkgname = abyss-engine-git
