@@ -1,2 +1,5 @@
-src
-*.zip
+*
+!*.desktop
+!*.sh
+!PKGBUILD
+!.SRCINFO
