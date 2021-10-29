@@ -40,6 +40,8 @@ package() {
   cd "$_pkgdist"
   python -m install --destdir="$pkgdir" --optimize=1 dist/*.whl
   chmod og+rX -R "$pkgdir"
+  # Workaround `python-install` bug: console scripts missing execute permissions...
+  chmod +x "$pkgdir/usr/bin"/*
 }
 
 # vim:set sw=2 sts=2 et:
