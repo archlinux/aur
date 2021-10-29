@@ -1,7 +1,7 @@
 # Maintainer: epitron <chris@ill-logic.com>
 pkgname=kiwix-tools-bin
 pkgver=3.1.2
-pkgrel=1
+pkgrel=5
 pkgdesc="kiwix command line tools (kiwix-serve, kiwix-search, kiwix-manage, kiwix-read) as statically linked binaries"
 url='https://www.kiwix.org/en/downloads/kiwix-serve/'
 license=(GPL3)
@@ -11,18 +11,17 @@ conflicts=(kiwix)
 
 if [ ${CARCH} == 'x86_64' ]; then
   _pkg_arch=x86_64
-  sha256sums=('63d3e32f184fbc1fdfe4c206575daf3d39b9d949ed7fa38e7ea18bab64e5364e')
+  sha256sums=('24e074fa56939b039eaafabc4c9ceff3fd8e5906488d0edc8f78d7bafbaeacbe')
 else
   _pkg_arch=i586
-  sha256sums=('cd9906b99b70c96df5882502c6033cacc099ac3e7695e8db995ba0c72376315c')
+  sha256sums=('f194499c3e12013b34da2295e7ecec2baf34e4652b4cdda91b58ffe6b55eca60')
 fi
-
-source=("https://mirrors.dotsrc.org/kiwix/release/kiwix-tools/kiwix-tools_linux-${_pkg_arch}-${pkgver}.tar.gz")
+source=("https://mirrors.dotsrc.org/kiwix/release/kiwix-tools/kiwix-tools_linux-${_pkg_arch}-${pkgver}-${pkgrel}.tar.gz")
 
 package() {
   dest="${pkgdir}/usr/bin"
   mkdir -p "$dest"
 
-	cd "${srcdir}/kiwix-tools_linux-${_pkg_arch}-${pkgver}"
+	cd "${srcdir}/kiwix-tools_linux-${_pkg_arch}-${pkgver}-${pkgrel}"
   install -t "$dest" kiwix-*
 }
