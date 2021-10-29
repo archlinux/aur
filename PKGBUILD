@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxrt-git
-pkgver=1.2.0.r0.g2747711
+pkgver=1.3.0.r0.g5bb94c8
 pkgrel=1
 pkgdesc="Ambiorix application runtime"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
