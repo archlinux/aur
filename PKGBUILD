@@ -3,7 +3,7 @@
 pkgname=python-rtf_tokenize
 pkgdesc="A simple RTF tokenizer."
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 arch=('any')
 license=('GPL2')
 depends=('python')
