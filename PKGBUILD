@@ -2,7 +2,7 @@
 # Contributor: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=lib32-libzip
-pkgver=1.7.3
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A C library for reading, creating, and modifying zip archives"
 url="https://libzip.org/"
@@ -13,7 +13,7 @@ makedepends=('cmake')
 checkdepends=('perl')
 options=('!libtool')
 source=("https://libzip.org/download/libzip-$pkgver.tar.gz")
-sha512sums=('3f550c41ea72b97155bb17a1936cefc5aad3d15a813a77bf4e004d6ee9e2aca4e2646f2f41429ade84e78f37f5b70b7ec0c89ce628d657e02fa8c24b85908efb')
+sha512sums=('a70da02b55a7bace2b21b74f33f4d6c7c7b29f706340e2be240d0c9a307de0af4bb93d4677c087d57c651a4ca556ca362ddab2dee1ded86f2d55e54a0329a074')
 
 build() {
   cd "libzip-$pkgver"
