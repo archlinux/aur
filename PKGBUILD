@@ -2,7 +2,7 @@
 
 pkgname=deepin-gettext-tools-git
 pkgver=1.0.8.r4.g0282bcd
-pkgrel=5
+pkgrel=16
 pkgdesc='Deepin Gettext Tools'
 arch=('any')
 url="https://github.com/linuxdeepin/deepin-gettext-tools"
