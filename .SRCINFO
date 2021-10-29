@@ -11,10 +11,7 @@ pkgbase = openttd-jgrpp
 	depends = fontconfig
 	depends = freetype2
 	depends = hicolor-icon-theme
-	depends = icu
-	depends = libpng
-	depends = sdl2
-	optdepends = lzo: (de)compressing of old (pre OpenTTD 0.3.0) savegames
+	depends = lzo
 	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.43.2.tar.gz
 	sha256sums = b2b2d11eebb915f2082634e1e43acbbf24b5919e2ca977d4805e8fae73dcf6c1
 

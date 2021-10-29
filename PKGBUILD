@@ -9,8 +9,7 @@ arch=('i686' 'x86_64')
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
 license=('GPL')
 makedepends=('cmake')
-depends=('fluidsynth' 'fontconfig' 'freetype2' 'hicolor-icon-theme' 'icu' 'libpng' 'sdl2')
-optdepends=('lzo: (de)compressing of old (pre OpenTTD 0.3.0) savegames')
+depends=('fluidsynth' 'fontconfig' 'freetype2' 'hicolor-icon-theme' 'lzo')
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-${pkgver}.tar.gz")
 sha256sums=('b2b2d11eebb915f2082634e1e43acbbf24b5919e2ca977d4805e8fae73dcf6c1')
 
