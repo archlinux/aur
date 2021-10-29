@@ -1,0 +1,10 @@
+post_install() {
+  cat << EOF
+  You need to create a json file with the directory names,
+  the boards you want to search and the keywords.
+  You can either use the 4genconf command or create the
+  file manually. An example is under /usr/share/doc/4scanner/example.json.
+  Under /usr/share/doc/4scanner/4scanner.service you will
+  also find a systemd unit file.
+EOF
+}
