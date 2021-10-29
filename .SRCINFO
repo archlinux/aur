@@ -9,7 +9,6 @@ pkgbase = python-hyperspy
 	checkdepends = python-pytest-mpl
 	checkdepends = python-pytest-xdist
 	checkdepends = python-pytest-rerunfailures
-	checkdepends = python-pytest-instafail
 	makedepends = python-setuptools
 	depends = python
 	depends = python-scipy>=1.1

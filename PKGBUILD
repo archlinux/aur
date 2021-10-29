@@ -57,7 +57,6 @@ checkdepends=('python-pytest>=3.6'
               'python-pytest-mpl'
               'python-pytest-xdist'
               'python-pytest-rerunfailures'
-              'python-pytest-instafail'
                )
 
 replaces=('hyperspy')
