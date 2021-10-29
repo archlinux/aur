@@ -3,11 +3,12 @@ pkgbase = cryptomator
 	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://cryptomator.org/
-	arch = x86_64
+	arch = any
 	license = GPL3
+	makedepends = java-environment=17
 	makedepends = maven
 	depends = fuse2
-	depends = java-environment=17
+	depends = libjffi
 	depends = alsa-lib
 	depends = hicolor-icon-theme
 	depends = libxtst

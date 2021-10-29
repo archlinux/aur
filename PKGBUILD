@@ -7,11 +7,11 @@ pkgname=cryptomator
 pkgver=1.6.1
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
-arch=('x86_64')
+arch=('any')
 url="https://cryptomator.org/"
 license=('GPL3')
-depends=('fuse2' 'java-environment=17' 'alsa-lib' 'hicolor-icon-theme' 'libxtst' 'libnet' 'libxrender')
-makedepends=('maven')
+depends=('fuse2' 'libjffi' 'alsa-lib' 'hicolor-icon-theme' 'libxtst' 'libnet' 'libxrender')
+makedepends=('java-environment=17' 'maven')
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords')
 source=("cryptomator-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "cryptomator-${pkgver}.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}.tar.gz.asc"
@@ -92,7 +92,8 @@ package() {
   install -Dm644 "${srcdir}/org.cryptomator.Cryptomator.svg" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/org.cryptomator.Cryptomator.DirIcon"
 
   mkdir -p "${pkgdir}/opt/cryptomator/"
-  cp -R "${srcdir}/cryptomator-${pkgver}/target/cryptomator" ${pkgdir}/opt/
+  cp -R "${srcdir}/cryptomator-${pkgver}/target/cryptomator" "${pkgdir}/opt/"
+  install -Dm644 "${srcdir}/cryptomator-${pkgver}/target/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/opt/cryptomator/bin/cryptomator" "${pkgdir}/usr/bin/cryptomator"
