@@ -11,8 +11,14 @@ pkgbase = abyss-engine-git
 	depends = ffmpeg
 	depends = lua
 	provides = abyss-engine
+	provides = opendiablo2-git
 	conflicts = abyss-engine
+	conflicts = opendiablo2-git
 	source = abyss-engine::git+https://github.com/AbyssEngine/AbyssEngine
+	source = opendiablo2::git+https://github.com/AbyssEngine/OpenDiablo2
+	source = opendiablo2.sh
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 45666f5f052518b30217aef2a310b80eefff6e3a3822e3fec9aa3666dc8989e9
 
 pkgname = abyss-engine-git
