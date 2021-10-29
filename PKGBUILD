@@ -5,7 +5,7 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=2.55.0
+pkgver=2.57.3
 pkgrel=1
 _distname="Pyfa-${pkgver}"
 pkgdesc="EVE Online Fitting Assistant"
@@ -19,20 +19,14 @@ options=(!strip)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pyfa-org/Pyfa/archive/v$pkgver.tar.gz
         pyfa.desktop
         pyfa-start.sh
-        0001-python-3.10-compatibility.patch
        )
 
-sha256sums=('301d1b870d5f481e13e81184614db559b00464d0e5229f08f2421070857441db'
+sha256sums=('851a0997424f8f56f4431f4cbe0f48a3a6cbd81f78058b77cd48cde503904b84'
             'b54ef367e93d7916f6ef3106a27018571d35afc1aa9eadcccc79463050e70786'
-            '0fa4a1cb835ddbb764957cd00426f9bfa52b17bcb6d5dc7428afc256da5e01da'
-            'f3e1ec098917ef88b579f1d847e29819d396dd8ae91e3ea6d7e984effe9a299c')
+            '0fa4a1cb835ddbb764957cd00426f9bfa52b17bcb6d5dc7428afc256da5e01da')
 
 build() {
   cd "${srcdir}"/"${_distname}"
-
-  # "Temporary" fix for python310 and wxPython>4.0.6
-  echo "Applying 0001-python-3.10-compatibility.patch"
-  patch --binary -l -p1 < ../0001-python-3.10-compatibility.patch
 
   PYTHONDONTWRITEBYTECODE=1 python db_update.py
   #find . -name "__pycache__" -type d -prune -exec rm -r "{}" \;
@@ -63,10 +57,6 @@ package() {
 
   install -Dm644 "${srcdir}"/pyfa.desktop "${pkgdir}"/usr/share/applications/pyfa.desktop
   install -Dm755 "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa
-
-  echo -e "\nWARNING: This build of pyfa is running with un-tested dependencies (python3.10+, wxPython 3.2+)"
-  echo "Expect bugs and crashes."
-  echo -e "For more details (and place for bug reports) see: https://github.com/pyfa-org/Pyfa/issues/2391\n"
 }
 
 
