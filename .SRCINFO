@@ -1,7 +1,7 @@
 pkgbase = disomaster-git
 	pkgdesc = Library to manipulate DISC burning.
 	pkgver = 5.0.7.r2.g157dd8f
-	pkgrel = 1
+	pkgrel = 9
 	url = https://github.com/linuxdeepin/disomaster
 	arch = x86_64
 	groups = deepin-git
