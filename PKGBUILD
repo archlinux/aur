@@ -2,11 +2,12 @@
 
 pkgname=libjffi
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Java bindings for libffi'
 arch=('any')
 url='https://github.com/jnr/jffi'
 license=('APACHE')
+depends=('libffi')
 makedepends=('ant' 'maven')
 provides=('libjffi.so')
 source=("https://github.com/jnr/jffi/archive/refs/tags/jffi-$pkgver.tar.gz")
@@ -19,6 +20,6 @@ build() {
 }
 
 package() {
-  install -Dm 644 "${srcdir}/jffi-jffi-$pkgver/target/jni/${CARCH}-Linux/${pkgname}-1.2.so" -t "${pkgdir}/usr/lib/"
-  install -Dm 644 "${srcdir}/jffi-jffi-$pkgver/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 "${srcdir}/jffi-jffi-${pkgver}/target/jni/${CARCH}-Linux/${pkgname}-1.2.so" -t "${pkgdir}/usr/lib/"
+  install -Dm 644 "${srcdir}/jffi-jffi-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
