@@ -12,7 +12,7 @@ makedepends=('extra-cmake-modules' 'expac' 'ninja' 'qt5-tools')
 source=("$pkgname::git://github.com/linuxdeepin/dde-kwin/"
         tabbox-chameleon-rename.patch
         added-functions-from-their-forked-kwin.patch
-	fix-crash.patch
+        fix-crash.patch
         fix-x11.patch)
 sha512sums=('SKIP'
             'c98ee0d884f833b58c207437bddfca9f8c31d71c28d9bfc4de880e937e0bb9094466d1ccf348bae2b3581c2159af448b218cfe3d79c8c4d74c7effda491162bb'
