@@ -5,11 +5,11 @@ pkgbase = python-hyperspy
 	url = http://hyperspy.org
 	arch = any
 	license = GPL3
-	checkdepends = pytest>=3.6
-	checkdepends = pytest-mpl
-	checkdepends = pytest-xdist
-	checkdepends = pytest-rerunfailures
-	checkdepends = pytest-instafail
+	checkdepends = python-pytest>=3.6
+	checkdepends = python-pytest-mpl
+	checkdepends = python-pytest-xdist
+	checkdepends = python-pytest-rerunfailures
+	checkdepends = python-pytest-instafail
 	makedepends = python-setuptools
 	depends = python
 	depends = python-scipy>=1.1
