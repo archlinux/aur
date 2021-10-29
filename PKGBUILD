@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=nvidia-vpf
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='NVIDIA Video Processing Framework'
 arch=('x86_64')
@@ -10,8 +10,17 @@ license=('Apache')
 depends=('cuda' 'nvidia-utils' 'ffmpeg' 'python')
 makedepends=('cmake' 'nvidia-sdk')
 options=('!emptydirs')
-source=("https://github.com/NVIDIA/VideoProcessingFramework/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('849d98221abb8a7641600c2755367b92fba4a7b5bbc4661a71d43eec7a1d9aea')
+source=("https://github.com/NVIDIA/VideoProcessingFramework/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        '010-nvidia-vpf-add-missing-header.patch'::'https://github.com/NVIDIA/VideoProcessingFramework/commit/abba228ab1fe7c446efd52ed9949410ae2224fde.patch'
+        '020-nvidia-vpf-fix-a-type-initialization.patch'::'https://github.com/NVIDIA/VideoProcessingFramework/commit/4c817ab63038bbfba9de2ec4c22bfca3ef8828d0.patch')
+sha256sums=('b844d58bb4345b8622624c9ee5c83b141ac4e8d7fbeb6e541717fefa485d9325'
+            'b350a5aa8d275ceddc8b712d34ed765ec60469a1a2cf7d1baf597cecabf36abe'
+            '570da8accabaeaabd2897c5a95f648afd6bfa68811ec03756a048fb1c8e65351')
+
+prepare() {
+    patch -d "VideoProcessingFramework-${pkgver}" -Np1 -i "${srcdir}/010-nvidia-vpf-add-missing-header.patch"
+    patch -d "VideoProcessingFramework-${pkgver}" -Np1 -i "${srcdir}/020-nvidia-vpf-fix-a-type-initialization.patch"
+}
 
 build() {
     export CUDAToolkit_ROOT='/opt/cuda'
