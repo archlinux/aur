@@ -2,7 +2,7 @@
 
 pkgname=golang-deepin-gir-git
 pkgver=2.0.2.r8.g911db08
-pkgrel=2
+pkgrel=13
 pkgdesc='Generate static golang bindings for GObject'
 arch=('any')
 url="https://github.com/linuxdeepin/go-gir-generator"
