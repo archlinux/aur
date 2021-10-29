@@ -1,6 +1,6 @@
 pkgbase = amxb-inspect-git
 	pkgdesc = Ambiorix Backend inspector/validation tool
-	pkgver = 1.1.0.r0.g29be275
+	pkgver = 1.1.1.r0.gec3141e
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/applications/amxb-inspect.git
 	arch = x86_64
