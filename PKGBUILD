@@ -53,11 +53,11 @@ optdepends=('python-scikit-learn: machine learning features'
 
 makedepends=('python-setuptools' )
 
-checkdepends=('pytest>=3.6'
-              'pytest-mpl'
-              'pytest-xdist'
-              'pytest-rerunfailures'
-              'pytest-instafail'
+checkdepends=('python-pytest>=3.6'
+              'python-pytest-mpl'
+              'python-pytest-xdist'
+              'python-pytest-rerunfailures'
+              'python-pytest-instafail'
                )
 
 replaces=('hyperspy')
