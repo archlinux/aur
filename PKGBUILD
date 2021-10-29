@@ -6,7 +6,7 @@ pkgdesc="Command line tool to download images from multiple imageboards"
 arch=('any')
 url="https://github.com/pboardman/4scanner/"
 license=('MIT')
-depends=('python3' 'python-requests>=2.20')
+depends=('python>=3.0.0' 'python-requests>=2.20.0')
 makedepends=('python-setuptools')
 install=4scanner.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/pboardman/4scanner/archive/refs/tags/$pkgver.tar.gz)
