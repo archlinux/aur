@@ -1,6 +1,6 @@
 pkgbase = blender-develop-git
 	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 3.0.r109522.g16eafdadf60
+	pkgver = 3.1.r109937.g657923cf939
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -41,8 +41,8 @@ pkgbase = blender-develop-git
 	depends = libpng
 	depends = openimagedenoise
 	optdepends = cuda: CUDA support in Cycles
-	provides = blender=3.0
-	conflicts = blender=3.0
+	provides = blender=3.1
+	conflicts = blender=3.1
 	source = git://git.blender.org/blender.git#branch=master
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
