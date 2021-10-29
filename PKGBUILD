@@ -2,7 +2,7 @@
 
 pkgname=golang-github-linuxdeepin-go-x11-client-git
 pkgver=0.6.7.r1.g4a6f952
-pkgrel=2
+pkgrel=13
 pkgdesc='X11 protocol go language binding'
 arch=('any')
 url="https://github.com/linuxdeepin/go-x11-client"
