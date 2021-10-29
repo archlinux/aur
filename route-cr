@@ -23,4 +23,5 @@ set  -u
 
 
 ip -4 route add   172.20.0.0/16  dev wg 
+ip -4 route add   172.25.2.0/24  dev wg 
 
