@@ -171,7 +171,7 @@ package_jdk8-adoptopenjdk() {
 }
 
 package_adoptopenjdk8-src() {
-  pkgdesc='AdoptOpenJDK Java ${pkgver%u*} sources'
+  pkgdesc="AdoptOpenJDK Java ${pkgver%u*} sources"
 
   install -D "${srcdir}/jdk${pkgver/b/-b}/src.zip" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/src.zip"
 }
