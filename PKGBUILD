@@ -2,7 +2,7 @@
 
 pkgname=flashpoint-launcher-bin
 pkgver=10.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Launcher for BlueMaxima's Flashpoint"
 arch=('x86_64')
 url="https://github.com/FlashpointProject/launcher"
@@ -12,6 +12,8 @@ depends=('nss>=3.0'
 				 'gtk3'
 				 'libxss'
 				 'wine'
+				 'qemu'
+				 'qemu-arch-extra'
 				 'flashpoint-data-files-installer')
 optdepends=('flashplayer-standalone: native Flash support')
 conflicts=('flashpoint-bin' 'flashpoint-launcher-git')
