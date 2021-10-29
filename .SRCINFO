@@ -18,6 +18,8 @@ pkgbase = dtkcore-git
 	provides = dtkcore
 	conflicts = dtkcore
 	source = dtkcore-git::git://github.com/linuxdeepin/dtkcore.git
+	source = fix-ut.patch
 	sha512sums = SKIP
+	sha512sums = 1ace18326ddd5fd14bf652b21db9ee9f706f1dae63f23e9712e7d9142487bff43e1464d2d5bf46e2cfec6663e3153629749ec5e99c1b5e9e785071d6fa9301b2
 
 pkgname = dtkcore-git

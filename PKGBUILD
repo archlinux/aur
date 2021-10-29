@@ -12,12 +12,20 @@ makedepends=('git' 'qt5-tools' 'gtest' 'dtkcommon-git')
 conflicts=('dtkcore')
 provides=('dtkcore')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dtkcore.git")
-sha512sums=('SKIP')
+source=("$pkgname::git://github.com/linuxdeepin/dtkcore.git"
+        "fix-ut.patch"
+       )
+sha512sums=('SKIP'
+            '1ace18326ddd5fd14bf652b21db9ee9f706f1dae63f23e9712e7d9142487bff43e1464d2d5bf46e2cfec6663e3153629749ec5e99c1b5e9e785071d6fa9301b2')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+  patch -p1 -i ../fix-ut.patch
 }
 
 build() {
