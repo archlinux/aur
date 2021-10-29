@@ -1,7 +1,7 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=quarg
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A command-line search tool for Quassel'
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('python-psycopg2: for PostgreSQL')
 source=("https://git.oriole.systems/quarg/snapshot/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.signify::https://git.oriole.systems/quarg/snapshot/${pkgname}-${pkgver}.tar.gz.asc"
         "quarg-release.pub::https://oriole.systems/release.pub")
-sha256sums=('1b6610c2417f36b5b1df5208c3c641b8b2ac3283dae87f453801cdc8c4ffb80a'
-            'c820f44030dec6ead840c96dea32186fb77aec2e7ea9e2bd3551ccfb57fadedd'
+sha256sums=('f11473a0228e6674d06352abda402bf976f0f5e8e27213502deb8b1016c35e2a'
+            'b1baf17ccadd453cf05e6db430fdb8e581e7bbebffe538c452c31bd2a5375f94'
             '9a9b86aabca218831ba3a03878b4473b7c2407be46a5fae11716ba18d2a78918')
 
 prepare() {
