@@ -9,6 +9,8 @@ pkgbase = octofetch-git
 	makedepends = git
 	depends = gcc-libs
 	depends = openssl
+	provides = octofetch
+	conflicts = octofetch
 	source = octofetch-git::git+https://github.com/azur1s/octofetch
 	sha256sums = SKIP
 

@@ -9,6 +9,8 @@ url="https://github.com/azur1s/octofetch"
 license=('unknown')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
