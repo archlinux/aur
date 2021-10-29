@@ -1,13 +1,12 @@
 pkgbase = guiscrcpy-git
 	pkgdesc = Open Source GUI based Android Screen Mirroring System
-	pkgver = 4.11.0.r1265.gffc2243
-	pkgrel = 1
+	pkgver = 4.11.0.r1270.gd7a36da
+	pkgrel = 2
 	url = https://guiscrcpy.github.io
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-pip
-	makedepends = python-poetry
+	makedepends = python-dephell
 	depends = scrcpy
 	depends = python-pynput
 	depends = python-qtpy
