@@ -40,8 +40,9 @@ pkgver() {
 prepare() {
 	cd "$pkgname" || exit 1
 	git fetch --prune
-	git checkout "origin/${_branch}" || git checkout master
+	git checkout master
 	git pull --autostash
+	git checkout "origin/${_branch}"
 	virtualenv ".venv" -p python3
 	source ".venv/bin/activate"
 	if command -v autobuild; then
