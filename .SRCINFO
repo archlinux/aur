@@ -1,18 +1,18 @@
 pkgbase = libbluray-git
 	pkgdesc = Library to access Blu-Ray disks for video playback. (GIT version)
-	pkgver = 1.3.0.3.g06d7ce99
+	pkgver = 1.3.0.11.g060d8f05
 	pkgrel = 1
 	url = http://www.videolan.org/developers/libbluray.html
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
 	makedepends = apache-ant
-	makedepends = java-environment<=16
+	makedepends = java-environment<=17
 	depends = libxml2
 	depends = fontconfig
 	depends = libfreetype.so
 	optdepends = libaacs: Enable AACS decryption
-	optdepends = java-runtime<=16: BD-J library
+	optdepends = java-runtime<=17: BD-J library
 	provides = libbluray
 	provides = libbluray.so
 	conflicts = libbluray

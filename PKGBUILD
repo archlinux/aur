@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbluray-git
-pkgver=1.3.0.3.g06d7ce99
+pkgver=1.3.0.11.g060d8f05
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
 arch=('x86_64')
@@ -13,10 +13,10 @@ depends=('libxml2'
          )
 makedepends=('git'
              'apache-ant'
-             'java-environment<=16'
+             'java-environment<=17'
              )
 optdepends=('libaacs: Enable AACS decryption'
-            'java-runtime<=16: BD-J library'
+            'java-runtime<=17: BD-J library'
             )
 provides=('libbluray'
           'libbluray.so'
@@ -43,8 +43,8 @@ prepare() {
 }
 
 build() {
-  export JDK_HOME="/usr/lib/jvm/java-16-openjdk"
-  export JAVAC="/usr/lib/jvm/java-16-openjdk/bin/javac"
+  export JDK_HOME="/usr/lib/jvm/java-17-openjdk"
+  export JAVAC="/usr/lib/jvm/java-17-openjdk/bin/javac"
 
   cd libbluray
   ./bootstrap
@@ -57,8 +57,8 @@ build() {
 }
 
 package() {
-  export JDK_HOME="/usr/lib/jvm/java-16-openjdk"
-  export JAVAC="/usr/lib/jvm/java-16-openjdk/bin/javac"
+  export JDK_HOME="/usr/lib/jvm/java-17-openjdk"
+  export JAVAC="/usr/lib/jvm/java-17-openjdk/bin/javac"
 
   make -C build DESTDIR="${pkgdir}" install
 }
