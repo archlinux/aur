@@ -2,13 +2,13 @@
 
 FILENAME="./flashpoint-10-linux-x64.7z"
 DOWNLOAD_URL="https://bluepload.unstable.life/flashpoint-10-linux-x64.7z"
-VALID_SIGNATURE="af8a8ff804a4d5416e15625f67ab4ad5d6bbb5d0d15e83ff5bdb813a7ddf8de8  $FILENAME"
+VALID_SIGNATURE="af8a8ff804a4d5416e15625f67ab4ad5d6bbb5d0d15e83ff5bdb813a7ddf8de8"
 DOWNLOAD_PATH=~/.cache/flashpoint-data
 DOWNLOAD_FULLPATH="$DOWNLOAD_PATH/$FILENAME"
 INSTALL_PARENT=~/.local/share/
 INSTALL_PATH=${INSTALL_PARENT}flashpoint
 FILECHECK_PATH=$INSTALL_PATH/Manual.pdf
-FILECHECK_SIGNATURE="050348bc0435fa4490ff1be635b1b171b135bcf0d990383be001332241489761"
+FILECHECK_SIGNATURE="80f4cece7c9fdb8fc7de6de26e14095e7eef0db167abecd4c86b405a600350b3"
 
 
 download(){
@@ -17,11 +17,15 @@ download(){
 }
 
 getfilesignature(){
-	sha256sum $FILENAME
+	checksum=($(sha256sum $FILENAME))
+	echo $checksum
 }
 
 printfilesignature(){
-	echo "Actual download signature: \n$(getfilesignature)\nExpected download signature: \n$VALID_SIGNATURE\n"
+	echo \
+"Actual download signature: $(getfilesignature)
+Expected download signature: $VALID_SIGNATURE
+"
 }
 
 checkfilesignature(){
@@ -105,7 +109,7 @@ download_check (){
 	echo "Downloading data ..."
 		if [ -f $FILENAME ]; then
 			echo "Download already found"
-						echo "File Signature: $(getfilesignature) $VALID_SIGNATURE"
+			echo "File Signature: $(getfilesignature) $VALID_SIGNATURE"
 			if $(checkfilesignature); then
 				echo "valid signature > using cached file"
 			else
@@ -149,7 +153,7 @@ Actual File checksum: $(getfilechecksignature)"
 			echo "Verification of Install failed"
 		fi
 	else
-		echo "ERROR: Not Installed or nor fully extracted"
+		echo "ERROR: Not Installed or not fully extracted"
 	fi
 	
 }
@@ -175,6 +179,7 @@ case $1 in
 		uninstall
 		download_check
 		install
+		check_install
 	;;
 	'uninstall')
 		uninstall
@@ -184,19 +189,19 @@ case $1 in
 	 ;;
 	* )
 		if [[ $1 != '' ]] ; then
-			echo "unknown command $1
+			echo "ERROR: unknown command $1
+
 "
 		fi
 
-		echo \
-"Command line tool to install Flashpoint data files
+		echo "Command line tool to install Flashpoint data files
 
 Commands:
 
 install : Iinstall files with integrity check
 reinstall: Reinstall files - Keeping user data 
 fix: fix installed files (nessesary for installs before 10/21/2021 )
-force-install: install without integrity check
+force-install: install without integrity checks
 full-reinstall: reinstall files — REMOVES USER DATA
 uninstall: ininstall files — REMOVES USER DATA"
 esac
