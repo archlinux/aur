@@ -2,7 +2,7 @@
 
 _gemname=chef-utils
 pkgname=ruby-$_gemname
-pkgver=17.7.22
+pkgver=17.7.29
 pkgrel=1
 pkgdesc="Basic utility functions for Core Chef Infra development"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('a1354f354aa45c1b4892cdb06740c88f3fa0f1aaca57757300ef8fa16f34e43c63d5fa557c62a6c30e69b561e0a613f0913a914b6725475e4c1d239fced94bf2')
-b2sums=('f7160fe1faf1996add86737394571f187f4319268607c11ef1b5b49f392f2e8d03e529218bbf552c1947284626c9450fd6eeb806f8fd12a3c4d23f67a2d13df7')
+sha512sums=('2533104f0a79053c30ecf940ec6aa814cb2b892ad0a59de765be5350326026d41607b2a42b6c3afc592400bf4604c16bca9b67402550a0d96bd2a8a82552a6bf')
+b2sums=('701b50225532dafc9794dcf1dead25a65f484a799c4dbe65717b5bb986a6a72a3be361471ce5e15331e6491451cc6239fc7cb28079cdb35f3f9ac5da4c8b5ec6')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
