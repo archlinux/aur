@@ -2,14 +2,15 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-cloud-bigquery
-pkgver=2.28.1
+pkgver=2.29.0
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
-url="https://pypi.org/project/google-cloud-bigquery/"
+url="https://github.com/googleapis/python-bigquery"
 license=('Apache')
 depends=(
 	'python>=3.6'
+	'python-dateutil>=2.7.2'
 	'python-google-api-core>=1.29.0'
 	'python-google-cloud-core>=1.4.1'
 	'python-google-resumable-media>=0.6.0'
@@ -20,7 +21,7 @@ depends=(
 	'python-requests>=2.18.0')
 makedepends=('python-setuptools' 'python-sphinx' 'python-recommonmark')
 optdepends=(
-	'python-arrow>=1.0.0: pyarrow support'
+	'python-arrow>=3.0.0: pyarrow support'
 	'python-pandas>=0.23.0: pandas support'
 	'python-tqdm>=4.7.4: tqdm support'
 	'python-fastparquet: fastparquet support'
@@ -28,7 +29,7 @@ optdepends=(
 	'python-llvmlite: fastparquet support')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/python-bigquery/archive/v$pkgver.tar.gz")
-sha256sums=('7697a28f61a04020e6b906dd2a2b733e8ee2218bfac29a1c5b948c8825b38f53')
+sha256sums=('c142a8d1cd7055156cf82b647fb2d2762db8e7720eb3cf117f51802082a1af92')
 
 build() {
 	cd "python-bigquery-$pkgver"
