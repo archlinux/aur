@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=38
+pkgrel=39
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -47,6 +47,8 @@ kill-port
  reflectorall
         reflectorcn
         reflectorus
+  file-ntospace
+        file-spaceton
 
 
 )
@@ -72,7 +74,9 @@ sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b
             'cf1ba08cf593d6619cb17870850ef13379ee750799c334d1bc9c6456464823ab851ab17a527e8caadeb4e0d01391af6f0ef18f77f6aece733f5bf23a0062f06a'
             '6d8ab59d8787c89b179bbee99b8a1977c94763763c9df488dc1a9fa433b2e47d053583fa319a6ee110af555b3d28faa384cf8dfd5b5c0eb358c2b78e2997fe4c'
             '06f5de6b3c5c52dcdaffc67a306dfa9c2a0194bebd8d806ea1dc8c31ef7fd4edbbc9d28b8e8eed949092c107e1e39b646fa3f2727f0b31963a469815a2497223'
-            '546fbc05717b59e6fca0d99b189c01abc1030b66ccc4b2beead0ea01e1e92efda83ed5b5daa53ceefebcfbff0e781696c6b0d26adbca1f7a3fa8f9180aaef6aa')
+            '546fbc05717b59e6fca0d99b189c01abc1030b66ccc4b2beead0ea01e1e92efda83ed5b5daa53ceefebcfbff0e781696c6b0d26adbca1f7a3fa8f9180aaef6aa'
+            'a25a51bd0aec369d741db960227a36e06e0acfe5d801d4d83a463b31b2fd3bb071794d5c550b5267417e6d81d9a003171aca1ac09608325a9e9c31ae03fcb985'
+            'bc770db134d0f8ead799ed0f56cb27593771ce5b3921db6e10df62ae95dea846b5140c866b9cb0823242e77e97120d98a5621bf321fa6362b3b1bf58ebc59b24')
 
 
 
