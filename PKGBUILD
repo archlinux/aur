@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=qeh-git
-pkgver=r13.3f82632
+pkgver=r41.41f1f40
 pkgrel=1
 pkgdesc='Very simple and fast image viewer'
 arch=('i686' 'x86_64')
@@ -11,14 +11,15 @@ depends=('qt5-base' 'qt5-x11extras')
 makedepends=('cmake' 'git')
 conflicts=(qeh)
 provides=(qeh)
-source=('git://github.com/sandsmark/qeh.git')
+source=('git+https://github.com/sandsmark/qeh.git')
 optdepends=(
     'kimageformats: Support for Windows cursors, AVIF, EPS, OpenEXR, Radiance HDR, HEIF, Krita, OpenRaster, Gimp, pic, Photoshop, SunOS raster, SGI RGB, Targa'
+    'qt-ffmpeg-imageplugin-git: Support for webm, avif, apng, flic and more'
     'qt5-imageformats: Support for WebP, JPEG 2000, Targa, TIFF, Wireless Bitmap, MNG, DirectX textures, Apple icons'
     'qvtf-git: Support for Valve Texture Files'
     'qt5-jpegxl-image-plugin: Support for JPEG XL'
     'qt5-apng-plugin: Support for Animated PNG'
-    'qt-avif-image-plugin-git: Alternative to kimageformats for AVIF support'
+    'qt5-avif-image-plugin: Alternative to kimageformats for AVIF support'
     'qt5-pbfimageplugin: Support for Mapbox vector tiles'
     'extra-imageformats-qt: Support for BPG, FUIF and PGF'
     'qtraw: Support for RAW files via libraw'
