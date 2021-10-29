@@ -1,0 +1,35 @@
+From 2de69a76165678e50df8975a3434a2a11fb4c88b Mon Sep 17 00:00:00 2001
+From: wereii <8504482+wereii@users.noreply.github.com>
+Date: Sun, 13 Feb 2022 19:00:39 +0100
+Subject: [PATCH] Add broken warning to error dialog
+
+---
+ gui/errorDialog.py | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/gui/errorDialog.py b/gui/errorDialog.py
+index 769821091..32c2fda5c 100644
+--- a/gui/errorDialog.py
++++ b/gui/errorDialog.py
+@@ -83,6 +83,18 @@ class ErrorFrame(AuxiliaryFrame):
+                "information about how this was triggered. Please contact the developers with the \n"
+                "information provided through the EVE Online forums or file a GitHub issue.")
+ 
++        desc = desc + "\n".join(
++                    (
++                        "\n!!!", # yep, double newline
++                        "AUR PACKAGER WARNING: Pyfa is currently BROKEN on Arch Linux, many errors are to be expected.",
++                        "There are some incompatibilites between Pyfa's dependency - wxPython and python3.10.",
++                        "Until that is resolved some functionality of Pyfa will not work.",
++                        "",
++                        "PLEASE do not create new issues in Pyfa repository, instead use Pyfa's AUR page or this issue:",
++                        "https://github.com/pyfa-org/Pyfa/issues/2391",
++                    )
++                )
++
+         self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
+ 
+         mainSizer = wx.BoxSizer(wx.VERTICAL)
+-- 
+2.35.1
+
