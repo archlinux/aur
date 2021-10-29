@@ -1,3 +1,18 @@
+2021.9.28:
+- [GUI][new feature] add compact view and filter for DItems in downloads tab, issue #274
+- [gui] add new option to store website authentication user/pass, issue #282
+- fix "prefer_mp4" option.
+- add more themes, issues #273, #279, thanks to @ahmed-tasaly and @Mr-Personality.
+- [cmdline] add more options.
+- [cmdline] fix for windows portable version.
+- [gui] add button to select dash audio in main tab, and playlist window issue #276
+- fix download from "my.mail.ru", issue #280
+- [gui] easily share a theme thru "share" button in settings tab.
+- [gui] fix selected videos and estimated size in playlist window.
+- [gui] fix side-frame collapse/expand behaviour
+- [gui] add cut-copy-past context menu to log window
+- multiple fixes and improvements.
+
 2021.9.5:
 - command line support, issue #135.
 - [new feature] ability to use "custom video extractors" under setting folder/extractors
