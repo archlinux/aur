@@ -1,24 +1,35 @@
+# Maintainer: SamuelLira99 <samuellira99@bol.com.br>
+
 pkgname='azerothcore-wotlk-git'
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 arch=('x86_64')
-pkgdesc="Automatic installer for azerothcore-wotlk that makes it ready to login"
+pkgdesc="Open-source game-server application for World of Warcraft, currently supporting the 3.3.5a game version"
 url="http://www.azerothcore.org"
 license=('AGPL3')
 depends=('mariadb' 'boost' 'cmake' 'clang')
-makedepends=('curl' 'unzip')
+makedepends=('git' 'curl' 'unzip')
 install="${pkgname}.install"
 
-_SERVER_ROOT=$HOME/azeroth-server
+_SERVER_ROOT=/opt/azeroth-server
+_SRC_DIR=/opt/azerothcore
 
 prepare() {
+  # Create needed directories
+  sudo mkdir ${_SERVER_ROOT}
+  sudo mkdir ${_SRC_DIR}
+
+  # Change ownership for needed directories
+  sudo chown ${USER}:${USER} ${_SERVER_ROOT}
+  sudo chown ${USER}:${USER} ${_SRC_DIR}
+
   # Start mysql services
   sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
   sudo systemctl start mariadb.service
 
   # Download azerothcore-wotlk
-  git clone https://github.com/azerothcore/azerothcore-wotlk.git --branch master --single-branch ${pkgname}
-	cd ${srcdir}/${pkgname}
+  git clone https://github.com/azerothcore/azerothcore-wotlk.git --branch master --single-branch ${_SRC_DIR}
+	cd ${_SRC_DIR}
 	mkdir build
 	cd build
 	cmake ../ -DCMAKE_INSTALL_PREFIX=${_SERVER_ROOT}/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS=0 -DSCRIPTS=static
@@ -35,13 +46,13 @@ prepare() {
 }
 
 build() {
-	cd ${srcdir}/${pkgname}/build
+	cd ${_SRC_DIR}/build
 	make -j $(nproc --all)
 }
 
 package() {
   # Install azerothcore to /home/user/azeroth-server
-	cd ${srcdir}/${pkgname}/build
+	cd ${_SRC_DIR}/build
 	make install
 
   # Extract data folder into azeroth-server
@@ -59,7 +70,7 @@ package() {
   sudo mysql -u root < ${srcdir}/create_mysql.sql
 
   # Install systemd units
-  sed -i 's@/home/samuel@'"$HOME"'@' ${srcdir}/azerothcore-systemd-units/acore-{auth,world}-server.service
+  sed -i 's@/home/samuel/azeroth-server@'"${_SERVER_ROOT}"'@' ${srcdir}/azerothcore-systemd-units/acore-{auth,world}-server.service
   sudo cp ${srcdir}/azerothcore-systemd-units/acore-{auth,world}-server.service /etc/systemd/system
   sudo systemctl daemon-reload
 
@@ -67,7 +78,6 @@ package() {
   echo ''
   echo 'generating database tables, please wait... (it may take 60 seconds)'
   sudo systemctl start acore-auth-server.service
-  sudo systemctl start acore-world-server.service
 
   sleep 60
 

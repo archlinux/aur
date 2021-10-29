@@ -1,6 +1,12 @@
 post_install() {
 	_realmlist_ip=$(cat /tmp/azerothcore-wotlk-git-realmlist-ip)
 
+	# Restart authserver
+  sudo systemctl restart acore-auth-server.service
+
+	# Start worldserver
+  sudo systemctl start acore-world-server.service
+
 	# Enable needed services
   sudo systemctl enable acore-auth-server.service
   sudo systemctl enable acore-world-server.service
@@ -57,11 +63,15 @@ post_install() {
 }
 
 pre_remove() {
-	_user=$(cat /etc/passwd | grep /home | cut -d ':' -f 1)
-	sudo rm -rf /home/${_user}/azeroth-server
-	sudo mysql -u root -e "DROP DATABASE acore_auth"
-	sudo mysql -u root -e "DROP DATABASE acore_characters"
-	sudo mysql -u root -e "DROP DATABASE acore_world"
+	_SERVER_ROOT=/opt/azeroth-server
+	_SRC_DIR=/opt/azerothcore
+
+	sudo rm -rf ${_SERVER_ROOT}
+	sudo rm -rf ${_SRC_DIR}
+
+	sudo mysql -u root -e "DROP DATABASE IF EXISTS acore_auth"
+	sudo mysql -u root -e "DROP DATABASE IF EXISTS acore_characters"
+	sudo mysql -u root -e "DROP DATABASE IF EXISTS acore_world"
 
 	sudo systemctl stop acore-auth-server.service
 	sudo systemctl stop acore-world-server.service

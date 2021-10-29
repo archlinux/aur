@@ -1,11 +1,12 @@
 pkgbase = azerothcore-wotlk-git
-	pkgdesc = Automatic installer for azerothcore-wotlk that makes it ready to login
-	pkgver = 1.0
+	pkgdesc = Open-source game-server application for World of Warcraft, currently supporting the 3.3.5a game version
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://www.azerothcore.org
 	install = azerothcore-wotlk-git.install
 	arch = x86_64
 	license = AGPL3
+	makedepends = git
 	makedepends = curl
 	makedepends = unzip
 	depends = mariadb
