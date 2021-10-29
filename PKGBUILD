@@ -8,7 +8,8 @@ url="https://github.com/icebarf/perfmode"
 license=('GPL')
 groups=()
 depends=()
-makedepends=('gcc')
+makedepends=('gcc'
+             'gtk4')
 optdepends=('faustus-dkms: A 3rd party kernel module for ASUS TUF Laptops')
 provides=()
 conflicts=()
