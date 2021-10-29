@@ -1,14 +1,14 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 
 pkgname=gerbolyze
-pkgver=2.0.6
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A high-resolution image-to-PCB converter"
 arch=('any')
 url="https://gerbolyze.jaseg.net/"
 license=('AGPL')
 depends=("usvg" "pugixml" "opencv" "pango" "cairo" "python-numpy" "python-slugify" "python-lxml" "python-click" "python-pcb-tools" "python-pcb-tools-extension")
-makedepends=('python-setuptools' 'pkgconf' 'git')
+makedepends=('python-setuptools' 'pkgconf' 'git' 'clang')
 source=("${pkgname}-${pkgver}::git+https://github.com/jaseg/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
