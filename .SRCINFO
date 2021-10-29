@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extensions-hotkeys-popup
+	pkgdesc = GNOME Shell Extension that displays currently configured Gnome hotkeys in a popup.
+	pkgver = 4
+	pkgrel = 1
+	url = https://github.com/mipmip/gnome-shell-extensions-hotkeys-popup
+	arch = any
+	license = GPL3
+	makedepends = zip
+	depends = gnome-shell
+	source = https://github.com/mipmip/gnome-shell-extensions-hotkeys-popup/archive/v4.tar.gz
+	sha512sums = 94c09831979cfc939bb00a5ea0fd5b8a4198f64e6688fb8b31cfcbbadab945f8b61f11c2d70414fc20af1753a4c55577c18c662577b4dcf6aab87f42548f9433
+
+pkgname = gnome-shell-extensions-hotkeys-popup
