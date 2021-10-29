@@ -1,33 +1,28 @@
 # Maintainer: René Wagner <rwagner@rw-net.de>
 
-pkgname=cgmnlm-git
+pkgname=cgmnlm
 pkgrel=1
-pkgver=r173.7e4e43b
+pkgver=1.0
 pkgdesc="colorful gemini line mode client - fork of gmni"
 url="https://src.clttr.info/rwa/cgmnlm"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
-source=("cgmnlm::git+https://src.clttr.info/rwa/cgmnlm.git")
-conflicts=('gmni-git')
+source=("${pkgname}::https://src.clttr.info/rwa/${pkgname}/archive/${pkgver}.tar.gz")
+conflicts=('gmni-git' 'cgmnlm-git')
 depends=('bearssl')
 makedepends=('git' 'scdoc')
-sha256sums=('SKIP')
-
-pkgver() {
-    cd cgmnlm
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+sha256sums=('fbfecea428ef4b938d5d76f48dc708847ae2b2c71c10507543d1ac4660b338d7')
 
 build() {
-    cd cgmnlm
+    cd "${srcdir}/${pkgname}"
 
-    mkdir build && cd build
+    mkdir -p build && cd build
     # errors? what errors :)
     CFLAGS=-Wno-error ../configure --prefix=/usr
     make PREFIX="/usr"
 }
 
 package() {
-    cd cgmnlm/build
+    cd "${srcdir}/${pkgname}/build"
     make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
