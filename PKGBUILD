@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxd-git
-pkgver=3.2.9.r0.g5219d19
+pkgver=3.2.10.r0.g63c1c7d
 pkgrel=1
 pkgdesc="Generic C-implementation for managing a data model"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
