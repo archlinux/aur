@@ -1,0 +1,15 @@
+pkgbase = pragmata-pro
+	pkgdesc = Pragmata Pro font
+	pkgver = 0.829
+	pkgrel = 1
+	url = https://github.com/impostersussy/PragmataPro
+	arch = any
+	license = custom
+	makedepends = git
+	provides = pragmata-pro
+	source = git+https://github.com/impostersussy/PragmataPro.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = b70524967fb5a4dbf03ae23115b6d46b88f3b42f296339d12fe322d6ca2c78fe
+
+pkgname = pragmata-pro
