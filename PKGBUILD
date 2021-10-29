@@ -15,7 +15,7 @@ makedepends=(
 )
 url="https://github.com/benoit-pierre/rtf_tokenize"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benoit-pierre/rtf_tokenize/archive/refs/tags/$pkgver.tar.gz")
-sha1sums=(SKIP)
+sha256sums=(bcaecdf0d6092659ab988a8f4a406a72fd7d712791446d002b2818738289ae40)
 
 build() {
   cd "rtf_tokenize-$pkgver"

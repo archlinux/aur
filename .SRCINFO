@@ -11,6 +11,6 @@ pkgbase = python-rtf_tokenize
 	makedepends = python-setuptools
 	depends = python
 	source = python-rtf_tokenize-1.0.0.tar.gz::https://github.com/benoit-pierre/rtf_tokenize/archive/refs/tags/1.0.0.tar.gz
-	sha1sums = SKIP
+	sha256sums = bcaecdf0d6092659ab988a8f4a406a72fd7d712791446d002b2818738289ae40
 
 pkgname = python-rtf_tokenize
