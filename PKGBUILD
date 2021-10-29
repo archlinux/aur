@@ -2,7 +2,7 @@
 
 pkgname=deepin-api-git
 pkgver=5.4.9.r17.gc2516df
-pkgrel=1
+pkgrel=7
 pkgdesc='Golang bindings for dde-daemon'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-api"
