@@ -2,8 +2,8 @@
 # -*- mode: sh -*-
 
 pkgname=atto
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='A tiny Nano wallet, focused on ease of use through simplicity'
 arch=('x86_64')
 url='https://github.com/codesoap/atto'
@@ -15,19 +15,19 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 md5sums=(
-  'f2aad9484ce412773f28964aa65af1dd'
+  '3511eb2abe53bc610dc16df674b12546'
 )
 sha1sums=(
-  '5ea5cbdba8d04ad6cd9c87acf377b35ade9bfb04'
+  '917451ada0f23839450ff1e78fb640bcfe87a69b'
 )
 sha256sums=(
-  '2cb206b069484fa4a7732669f236fc6182786ec8d7bdcd4933d0aa17200e3eb7'
+  '5f62539cec81fa3847222907186dc02df353b9e43b2d9fe400cdc2f3cf9cf781'
 )
 sha512sums=(
-  '194d0d58a70ce4c4fd5677ff9fe7995cc4de7c9eb63876c0563297f5ab1d43011be0ffb05151543997bea8ddde655354b51cb340f73b653d0ccf9c75bdecd675'
+  '844c6bb0bc7fb1655d7c39dd58c963427c8748f26f8b1021a765accc68cf5192376f84a54edc2f5dc2454d2f30684ce3088b0ba1576222f15ec77a378aecb0f1'
 )
 b2sums=(
-  '411315fd3cf2ac13b42c4885182d2bfa81077f60607f11a9eaf9f6415354fcf13d0219dc9b228970aa4cbc5f34438fc79f77e8438933d2b9f7918b76ab168084'
+  '8954a4e1af9e13265f650df6a7bb2de6dde7475533b0b000fb94672d232007b8fec11ff1bd7589977a37804dd38ff171768c5daea7520e0d1de55eb0a2f295b3'
 )
 
 build() {
