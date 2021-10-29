@@ -1,17 +1,17 @@
 pkgbase = clion-eap
 	pkgdesc = C/C++ IDE. 30-day evaluation.
-	pkgver = 213.4928.11
+	pkgver = 213.5449.26
 	pkgrel = 1
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	makedepends = rsync
-	noextract = CLion-213.4928.11.tar.gz
+	noextract = CLion-213.5449.26.tar.gz
 	options = !strip
-	source = https://download.jetbrains.com/cpp/CLion-213.4928.11.tar.gz
+	source = https://download.jetbrains.com/cpp/CLion-213.5449.26.tar.gz
 	source = jetbrains-clion-eap.desktop
-	sha256sums = fa74a1e1433fdcd662d7cfae50b914f0b2eb3275b21a9e1caa50efac0f913a81
+	sha256sums = 65db612f75c8ce2c24e3c18be6548c20d4ed4142cce913d8b1c69fbd97fd570b
 	sha256sums = e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0
 
 pkgname = clion-eap
