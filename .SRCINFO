@@ -1,6 +1,6 @@
 pkgbase = lib_amxj-git
 	pkgdesc = JSON Reader/generation - JSON string variant
-	pkgver = 0.3.32.r0.g4a4f1c7
+	pkgver = 0.3.33.r0.g6685b75
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxj.git
 	arch = x86_64
