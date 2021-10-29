@@ -2,9 +2,9 @@
 # Contributor: Domenico Iezzi <domenico.iezzi.201@gmail.com>
 
 pkgname=eiffelstudio-bin
-_major=19
-_minor=05
-_build=103187
+_major=20
+_minor=11
+_build=105048
 pkgver=${_major}.${_minor}.${_build}
 pkgrel=2
 pkgdesc="IDE for the Eiffel programming language (opensource edition)"
@@ -16,10 +16,10 @@ provides=("eiffelstudio")
 conflicts=("eiffelstudio")
 options=("staticlibs")
 source=("eiffel-studio.profile"
-        "https://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%20${_major}.${_minor}/Build_${_build}/Eiffel_${_major}.${_minor}_gpl_${_build}-linux-x86-64.tar.bz2"
+	"https://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%20${_major}.${_minor}/Build_${_build}/Eiffel_${_major}.${_minor}_rev_${_build}-linux-x86-64.tar.bz2"
         "eiffel-studio.desktop")
 sha256sums=('3660f50b6900cecc22e79913d502a641a3355b9353bdf4b97185e6be100bb59a'
-            'd2cf46dbf20fdcf3b1fcd27acb6ac5457dcc8d3de51613663ede8a4adf7f383e'
+            '90d9bcd613bc8880d076c653a6bdb204c160b611f64c05f3cdb4aed7aa97a2dd'
             'bee49bd0a0fc335e32881918ff5374e4b1b9ecac32f72943f0256ee26e80345f')
 
 prepare() {
