@@ -4,7 +4,7 @@
 # Contributor: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mainline-mod-fancyindex
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=7
 _modname="${pkgname#nginx-mainline-mod-}"
 pkgdesc="Fancy indexes module for the nginx web server"
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('nginx-mainline')
 makedepends=('nginx-mainline-src')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz")
-sha256sums=('238bd5521d6c9b55780e6871339a7ea79508b9a6758ad2fa4451f2dfe26d94c9')
+sha256sums=('c3dd84d8ba0b8daeace3041ef5987e3fb96e9c7c17df30c9ffe2fe3aa2a0ca31')
 
 prepare() {
   install -d nginx
