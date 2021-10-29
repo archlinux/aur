@@ -3,7 +3,7 @@
 pkgname=plover_plugins_manager
 pkgdesc="Plugins manager for Plover."
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL2')
 depends=(
