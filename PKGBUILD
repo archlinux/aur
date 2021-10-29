@@ -2,7 +2,7 @@
 
 pkgbase=nvidia-340xx-settings
 pkgname=('nvidia-340xx-settings' 'libxnvctrl-340xx')
-pkgver=340.107
+pkgver=340.108
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver, 340xx legacy branch'
 url='https://github.com/NVIDIA/nvidia-settings'
@@ -12,7 +12,7 @@ makedepends=('git' 'inetutils' 'gtk2' 'jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidi
 options=('staticlibs')
 source=(nvidia-settings-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         libxnvctrl_so.patch)
-sha512sums=('5419aeac964345612d3933d2dd7249e8c18f9b1ce7fe8aa711d4ab54ba51505c3cf8caf24983fee7084ca8f2dc0be199236c99750038da12502bf91f83953899'
+sha512sums=('9b940382eeea6658bb9adcf8cc9abc7cfe73a69644092cd2c48e1443e2ab95ec65b53623bf7baf09a1193edd50ec25dc7ccdc5e74f0bb4b1beb4ab49ed936cb1'
             '4d39721610adc54d272b0bbb4e9cd5edd29c0c1250c2ccb6c19927703bb3bc95fd826ffb24f3134af3ba0428f6fb400afeb9e3e1cb9b33f1ce59ea64885e5ddf')
 
 prepare() {
