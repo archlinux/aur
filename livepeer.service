@@ -4,14 +4,38 @@ After=network.target
 Wants=network-online.target
 
 [Service]
-Restart=always
+User=livepeer
+Group=livepeer
 Type=simple
 EnvironmentFile=/etc/go-livepeer/environment
 
-ExecStart=/usr/bin/livepeer -network mainnet -orchestrator -transcoder \
-	-maxSessions $sessions -cliAddr $cliaddr -nvidia $nvidia -ethAcctAddr $ethaddr \
-	-ethPassword $ethpass -ethUrl $ethurl -pricePerUnit $unitprice \
-	-serviceAddr $serviceaddr -maxGasPrice $maxgas -reward=$reward -monitor=$monitor
+ExecStart=/usr/bin/livepeer $ARGS
+ExecStop=/usr/bin/kill --signal SIGTERM $MAINPID
+ExecReload=/usr/bin/kill --signal SIGUSR1 $MAINPID
+
+Restart=on-failure
+RestartSec=1
+
+ProtectHome=yes
+ProtectClock=yes
+PrivateDevices=yes
+ProtectHostname=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+ProtectKernelLogs=yes
+RestrictNamespaces=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ProtectKernelTunables=yes
+SystemCallErrorNumber=EPERM
+ReadOnlyPaths=/etc/go-livepeer
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+ReadWritePaths=/var/cache/livepeer /var/lib/livepeer
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
