@@ -7,7 +7,21 @@ Package repo: https://gitlab.com/arglebargle-arch/xanmod-rog-PKGBUILD
 
 ### Notes:
 
-  - Xanmod builds with the performance governor by default; this is great for performance but doesn't clock down easily and reduces battery life when used on mobile devices. Since this kernel package is primarily targeted at ROG laptop users I've switched the build config to default to the schedutil governor. I strongly suggest making a couple of bash aliases to make switching modes/governors easier, this allows you to easily boost performance or conserve battery power as needed.
+  - Suspend on systems using modern hybrid sleep (usually S0i3) can be a little dodgy, this kernel package includes
+      current work collected from various kernel mailing lists and any useful patches collected from the amdgpu issue
+      tracker but you may still encounter the occasional problem. If you're willing to help improve support visit the
+      [amdgpu issue tracker][2] and find an issue that matches your problem or open a new one.
+
+      Xanmod-rog builds with most useful s0ix kernel cmdline flags enabled at compile time, any dmesg or kernel journal
+      logs captured during a failure should be useful. See the included `capture_stb.sh` script if a developer asks you
+      to supply SmartTrace Buffer (STB) logs during a suspend failure, the script will gather them for you automatically
+      during every suspend. These STB logs can be found in /root/amd-stb-captures/.
+
+  - Xanmod builds with the performance governor by default; this is great for performance but doesn't clock down easily
+      and reduces battery life when used on mobile devices. Since this kernel package is primarily targeted at ROG
+      laptop users I've switched the build config to default to the schedutil governor. I strongly suggest making a
+      couple of bash aliases to make switching modes/governors easier, this allows you to easily boost performance or
+      conserve battery power as needed.
 
     * `alias gosilent='(set -x; asusctl profile silent -t false -f silent; sudo cpupower frequency-set -g schedutil >&/dev/null;)'`
     * `alias gonormal='(set -x; asusctl profile normal -t true -f normal; sudo cpupower frequency-set -g schedutil >&/dev/null;)'`
@@ -17,13 +31,15 @@ Package repo: https://gitlab.com/arglebargle-arch/xanmod-rog-PKGBUILD
 
   - Use the included `myconfig` script fragment to make minor changes to the kernel configuration during build.
 
-  - We now build for the `x86-64-v3` target by default; this supports Haswell era and newer CPUs and should be ~10% more performant than a generic `x86_64` build while maintaining wide compatibility. This supports all recent ROG laptops, including Intel machines.
+  - We now build for the `x86-64-v3` target by default; this supports Haswell era and newer CPUs and should be ~10%
+      more performant than a generic `x86_64` build while maintaining wide compatibility. This supports all recent ROG
+      laptops, including Intel machines.
   - Package now requires GCC >= 11 to support the new default build target.
   - Suggested architecture build targets:
 
     * `_microarchitecture=14 makepkg ...` Zen2 optimization; AMD 4000 series CPUs, 2020 AMD ROG laptops
     * `_microarchitecture=15 makepkg ...` Zen3 optimization; most AMD 5000 series CPUs, 2021 AMD ROG laptops
-    * `_microarchitecture=38 makepkg ...` Skylake optimization; Use this on [Comet Lake](https://wiki.gentoo.org/wiki/Safe_CFLAGS#Skylake.2C_Kaby_Lake.2C_Kaby_Lake_R.2C_Coffee_Lake.2C_Comet_Lake) machines
+    * `_microarchitecture=38 makepkg ...` Skylake optimization; Use this on [Comet Lake][1] machines
     * `_microarchitecture=92 makepkg ...` x86-64-v2; compatible with most machines from 2008 onward
     * `_microarchitecture=93 makepkg ...` x86-64-v3; the PKGBUILD default, most machines from 2013/2014 onward are supported
     * `_microarchitecture=98 makepkg ...` Intel -march=native
@@ -44,10 +60,13 @@ Package repo: https://gitlab.com/arglebargle-arch/xanmod-rog-PKGBUILD
     Jun 19 18:56:26 arch-zephyrus kernel: nvme nvme0: Abort status: 0x371
     ```
     See this project to generate an ACPI override ramdisk that works around the issue while you wait for ASUS to publish a fixed BIOS:
+
     https://gitlab.com/smbruce/GA503QR-StorageD3Enable-DSDT-Patch
 
     If you're experiencing this yourself *please* go make a vendor support ticket with ASUS and ask them to fix their BIOS.
 
 See the commit log for full version history and changes.
 
+[1]: https://wiki.gentoo.org/wiki/Safe_CFLAGS#Skylake.2C_Kaby_Lake.2C_Kaby_Lake_R.2C_Coffee_Lake.2C_Comet_Lake
+[2]: https://gitlab.freedesktop.org/drm/amd/-/issues?label_name[]=s0ix
 [//]: # ( vim: set tw=120: )
