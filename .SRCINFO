@@ -1,0 +1,16 @@
+pkgbase = lejos-nxj-bin
+	pkgdesc = Tiny Java Virtual Machine ported to the LEGO NXT brick
+	pkgver = 0.9.1beta_3
+	pkgrel = 1
+	url = https://lejos.sourceforge.io/nxj.php
+	arch = x86_64
+	license = GPL
+	depends = jdk8-openjdk
+	conflicts = lejos-nxj
+	replaces = lejos-nxj
+	source = https://downloads.sourceforge.net/project/nxt.lejos.p/0.9.1beta-3/leJOS_NXJ_0.9.1beta-3.tar.gz
+	source = https://archive.apache.org/dist/ant/source/apache-ant-1.6.5-src.tar.gz
+	sha256sums = f10234b60f98c7449b6e0102dc06a01f3a96af44354416b56a2206bae04d94a2
+	sha256sums = ca311ad9c282a6d9a57d3deb776e87a41f87cdf3b7710b29a1806e1629d0cd57
+
+pkgname = lejos-nxj-bin
