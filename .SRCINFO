@@ -1,0 +1,11 @@
+pkgbase = fcitx5-solarized
+	pkgdesc = Solarized color theme for Fcitx5
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mingyech/fcitx5-solarized
+	arch = any
+	license = MIT
+	source = fcitx5-solarized-0.1.tar.gz::https://github.com/mingyech/fcitx5-solarized/archive/refs/tags/v0.1.tar.gz
+	sha256sums = 1753a089b0ea55858bb6d4f9a5252fc9ec4323dd77704a80656f43109f65b22a
+
+pkgname = fcitx5-solarized
