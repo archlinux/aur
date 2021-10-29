@@ -1,12 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=android-messages-desktop
 pkgver=5.1.1
-pkgrel=3
+pkgrel=4
+_electronversion=11
+_nodeversion=14
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
 url="https://github.com/OrangeDrangon/android-messages-desktop"
 license=('MIT')
-depends=('electron11')
+depends=("electron${_electronversion}")
 makedepends=('git' 'nvm' 'yarn')
 optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
@@ -30,13 +32,13 @@ _ensure_local_nvm() {
 
 prepare() {
   _ensure_local_nvm
-  nvm install 14.18.0
+  nvm install "$_nodeversion"
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  electronDist=/usr/lib/electron11
-  electronVer=$(sed s/^v// /usr/lib/electron11/version)
+  electronDist="/usr/lib/electron$_electronversion"
+  electronVer="$(sed s/^v// /usr/lib/electron$_electronversion/version)"
   _ensure_local_nvm
   yarn config set cache-folder "$srcdir/yarn-cache"
   yarn install
