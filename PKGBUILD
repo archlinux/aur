@@ -1,6 +1,6 @@
 # Maintainer: Wojciech Kepka <wojciech@wkepka.dev>
 pkgname=epick
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 epoch=
 pkgdesc="Color picker for creating harmonic color palettes"
