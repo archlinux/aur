@@ -3,3 +3,4 @@
 !*.sh
 !PKGBUILD
 !.SRCINFO
+!*.patch
