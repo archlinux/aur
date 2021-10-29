@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=jc
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="serializes the output of command line tools to structured JSON"
 arch=('any')
