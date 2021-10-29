@@ -2,24 +2,24 @@
 # Contributor: Shengyu Zhang <la@archlinuxcn.org>
 
 pkgname=uivonim
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="A Neovim GUI designed for programming"
 arch=('x86_64')
 license=('AGPL')
 url='https://github.com/smolck/uivonim'
+depends=('neovim>=0.5.0' 'electron' 'nodejs')
 makedepends=('npm' 'asar')
-depends=('neovim-git' 'electron11' 'nodejs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
 
-sha256sums=('74732b381bf1b8d50a31cb7d1918180abec9c3bd5acc7358398999527dbf8ed6'
-            '1271540ca173226cbfc106294155abf3de31cf28a8b3813a94ddb8acbf1cea7c'
+sha256sums=('9e22522b70d1b57bdcf6722b744f06c362bc60db7a67989a34521ef8473e735a'
+            '6586fb00ced506b207e9e1c39ea605584311642d0a097453f2789c5d8e9b5191'
             '178ff70ae743cae77899e982a89b958b179793e7394b6384d9d2165d00622302')
 
 prepare() {
-	_dist='/usr/lib/electron11'
+	_dist='/usr/lib/electron'
 	_ver="$(cat $_dist/version)"
 	cd "$pkgname-$pkgver"
 	sed -i "s|\"electron\": \".*\"|\"electron\": \"$_ver\"|" package.json

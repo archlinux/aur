@@ -1,20 +1,20 @@
 pkgbase = uivonim
 	pkgdesc = A Neovim GUI designed for programming
-	pkgver = 0.28.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/smolck/uivonim
 	arch = x86_64
 	license = AGPL
 	makedepends = npm
 	makedepends = asar
-	depends = neovim-git
-	depends = electron11
+	depends = neovim>=0.5.0
+	depends = electron
 	depends = nodejs
-	source = uivonim-0.28.0.tar.gz::https://github.com/smolck/uivonim/archive/refs/tags/v0.28.0.tar.gz
+	source = uivonim-0.29.0.tar.gz::https://github.com/smolck/uivonim/archive/refs/tags/v0.29.0.tar.gz
 	source = uivonim.sh
 	source = uivonim.desktop
-	sha256sums = 74732b381bf1b8d50a31cb7d1918180abec9c3bd5acc7358398999527dbf8ed6
-	sha256sums = 1271540ca173226cbfc106294155abf3de31cf28a8b3813a94ddb8acbf1cea7c
+	sha256sums = 9e22522b70d1b57bdcf6722b744f06c362bc60db7a67989a34521ef8473e735a
+	sha256sums = 6586fb00ced506b207e9e1c39ea605584311642d0a097453f2789c5d8e9b5191
 	sha256sums = 178ff70ae743cae77899e982a89b958b179793e7394b6384d9d2165d00622302
 
 pkgname = uivonim
