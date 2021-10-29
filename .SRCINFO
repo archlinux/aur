@@ -1,7 +1,7 @@
 pkgbase = hoverclock-appimage
 	pkgdesc = Hoverclock - A simple, customizable floating clock for linux made with QT
 	pkgver = 0.0.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/kostoskistefan/hoverclock
 	arch = x86_64
 	license = GPL3
