@@ -2,7 +2,7 @@
 
 pkgname=spl-token-cli
 _pkgname="${pkgname%-cli}"
-pkgver=2.0.14
+pkgver=2.0.15
 pkgrel=1
 pkgdesc='Command line utility for creating and using tokens on the Solana blockchain'
 arch=(
@@ -21,7 +21,7 @@ conflicts=(
 	"$pkgname-git"
 )
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=(537e3955e953a44aaab85f79b8cf169eb6fb4f132ccce201d798699f85bb2bb136da3f71115973c3c85d797fb78829ce0407bcdb8cc48face19d9f3b6f916e1f)
+b2sums=(fa5d089fc0c7bb20670cf0778df28c287e2e924fdced3286b6fec8bd90df7459952dc651a9bbfe81e64eb50cd102b53e7ce7e7cf34437914f622573eb0b8bd0a)
 
 prepare() {
 	cd "$pkgname-$pkgver"
