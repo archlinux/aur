@@ -1,11 +1,8 @@
-# Contributor: sballert <sballert@posteo.de>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-
-_gituser="politza"
+_gituser="vedang"
 _gitrepo="pdf-tools"
 
 pkgname=emacs-pdf-tools-git
-pkgver=0.90.r28.gd780b82
+pkgver=0.90.r86.gf68899c
 pkgrel=1
 pkgdesc="Emacs support library for PDF files."
 url="https://github.com/${_gituser}/${_gitrepo}"
