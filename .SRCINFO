@@ -1,14 +1,13 @@
 pkgbase = python-pcpp
 	pkgdesc = A C99 preprocessor with partial preprocessing capabilities writen in Python
-	pkgver = 1.22
+	pkgver = 1.30
 	pkgrel = 1
 	url = https://github.com/ned14/pcpp
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pcpp/pcpp-1.22.tar.gz
-	sha256sums = d7d7df201fe643a44b2fb2fd967aaa8a84608aa2d3511d87abad0cc54bfc0141
+	source = https://files.pythonhosted.org/packages/source/p/pcpp/pcpp-1.30.tar.gz
+	sha256sums = 5af9fbce55f136d7931ae915fae03c34030a3b36c496e72d9636cedc8e2543a1
 
 pkgname = python-pcpp
-
