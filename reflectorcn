@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -euo pipefail
+#set -x
+#set -x 将在命令执行前打印出命令 方便调试
+
+
+
+sudo reflector -p https,http  --verbose --latest 200000 -c CN  --age 24  --fastest  1000   --sort rate --save /etc/pacman.d/mirrorlist 
+
