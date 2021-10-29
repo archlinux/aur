@@ -1,14 +1,15 @@
-# Maintainer: Kenneth Flak <kennethflak@protonmail.com>
+# Maintainer: Mathias Buhr <napcode@aparatus.de>
+# Contributor: Kenneth Flak <kennethflak@protonmail.com>
 
 pkgname=touchosc-bin
-pkgver=1.0.5.109
+pkgver=1.0.7.117
 pkgrel=1
 pkgdesc='Modular control surface'
 arch=('x86_64')
 url=http://hexler.net
 license=(custom:TouchOSC)
 source=("https://hexler.net/pub/touchosc/touchosc-$pkgver-linux-$arch.deb")
-sha256sums=('bd6a736aebc1b3640f4c7e29114802835c5438648673b0588a0c4ace9baeade9')
+sha256sums=('a33166fafd44b1eb0861fd917b252060d2f4924fe2d3e7d0da121c640c247bba')
 
 package() {
 
