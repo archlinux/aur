@@ -1,6 +1,6 @@
 pkgbase = pyfa
 	pkgdesc = EVE Online Fitting Assistant
-	pkgver = 2.39.0
+	pkgver = 2.39.1
 	pkgrel = 1
 	url = https://github.com/pyfa-org/Pyfa
 	arch = any
@@ -25,10 +25,10 @@ pkgbase = pyfa
 	depends = python-requests-cache
 	depends = webkit2gtk
 	options = !strip
-	source = pyfa-2.39.0.tar.gz::https://github.com/pyfa-org/Pyfa/archive/v2.39.0.tar.gz
+	source = pyfa-2.39.1.tar.gz::https://github.com/pyfa-org/Pyfa/archive/v2.39.1.tar.gz
 	source = pyfa.desktop
 	source = pyfa-start.sh
-	sha256sums = 2951b0dc7a320d8cbb3948e96080e161185c14654d295bd89e1359255df3b025
+	sha256sums = c0c87847ea64e7dbcebd2eda890b8ac47153a0c73d3b04de6a380b043211b6f0
 	sha256sums = SKIP
 	sha256sums = SKIP
 
