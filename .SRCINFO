@@ -1,9 +1,8 @@
 pkgbase = python-gps3
 	pkgdesc = Python GPSD interface
 	pkgver = 0.33.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wadda/gps3
-	install = gps3.install
 	arch = any
 	license = MIT
 	makedepends = python-pip
@@ -14,4 +13,3 @@ pkgbase = python-gps3
 	sha256sums = 79b976c5c314ca8828c95deb8a2c9cc28f1c93b0c74f4e6dd1dbe0ff8b972288
 
 pkgname = python-gps3
-

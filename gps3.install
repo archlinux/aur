@@ -1,8 +1,0 @@
-post_install() {
-	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	python -O -m compileall "$site_packages/gps3"
-}
-
-post_upgrade() {
-	post_install
-}
