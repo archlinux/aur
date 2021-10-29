@@ -1,0 +1,16 @@
+pkgbase = git-image-merge-git
+	pkgdesc = Simple visual diff and merging tool for images
+	pkgver = r6.6e25058
+	pkgrel = 1
+	url = https://github.com/sandsmark/git-image-merge
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	provides = git-image-merge
+	conflicts = git-image-merge
+	source = git+https://github.com/sandsmark/git-image-merge.git
+	md5sums = SKIP
+
+pkgname = git-image-merge-git
