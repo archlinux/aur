@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/jnr/jffi'
 license=('APACHE')
 depends=('libffi')
-makedepends=('ant' 'maven')
+makedepends=('ant' 'maven' 'make' 'gcc')
 provides=('libjffi.so')
 source=("https://github.com/jnr/jffi/archive/refs/tags/jffi-$pkgver.tar.gz")
 
