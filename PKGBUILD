@@ -1,8 +1,8 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-pw-check-git
-pkgver=5.0.11.r12.g5131a8b
-pkgrel=1
+pkgver=5.1.2.r5.gef201e1
+pkgrel=6
 pkgdesc='deepin-pw-check is a tool to verify the validity of the password'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-pw-check"
