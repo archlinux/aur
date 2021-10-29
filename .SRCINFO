@@ -1,7 +1,7 @@
 pkgbase = python-awesometkinter
 	pkgdesc = Pretty tkinter widgets
-	pkgver = 2021.6.4
-	pkgrel = 2
+	pkgver = 2021.10.12
+	pkgrel = 1
 	url = https://github.com/Aboghazala/AwesomeTkinter
 	changelog = python-awesometkinter.changelog
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-awesometkinter
 	depends = tk
 	depends = python-pillow
 	depends = python-bidi
-	source = python-awesometkinter-2021.6.4.tar.gz::https://github.com/Aboghazala/AwesomeTkinter/tarball/ecbd05f4227679af856cbf724e7dc879fba76262
-	b2sums = da894c4f86502cf1baf66057a2b1fd5d631a92350141711cc8e4526045b769dd4e0cd3e6e6ef371eab05af0e86ff8b8c4bd0987b7a3fcb4924ebcffed297faa8
+	source = python-awesometkinter-2021.10.12.tar.gz::https://github.com/Aboghazala/AwesomeTkinter/archive/refs/tags/2021.10.12.tar.gz
+	b2sums = 96c4fa47a9c090f2819dcdc4acb14ba444c4dea30be0aacfd8d3081cf12afc5796372a00a35319c9504c6fce9a9e149e5bed83da8e8d2f25af8fe3883a84efe4
 
 pkgname = python-awesometkinter
