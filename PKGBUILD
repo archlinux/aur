@@ -4,7 +4,7 @@
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
 _pkgname=multi-monitors-add-on
 pkgver=23.r0.g0cec99d
-pkgrel=2
+pkgrel=3
 pkgdesc="Adds panels and thumbnails for additional monitors."
 arch=('any')
 url="https://github.com/spin83/multi-monitors-add-on"
@@ -13,10 +13,10 @@ depends=('gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/spin83/multi-monitors-add-on.git'\
+source=('git+https://github.com/spin83/multi-monitors-add-on.git'
         'https://github.com/spin83/multi-monitors-add-on/pull/159.patch')
 sha256sums=('SKIP'
-            'e9f7f7c71c52fa88b7a231804e2bc877bff6799c65b339d7f818c921d1b3a354')
+            '13019cce907dd59f531ab56d4425139f41752590e2e9fd79b571a75ec3c1657e')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -31,22 +31,18 @@ prepare() {
 }
 
 package() {
-  _uuid="$_pkgname@spin83"
-
   cd "$srcdir/$_pkgname"
 
-  for locale in "$_uuid"/locale/*/; do
-    install -Dm644 -t "$pkgdir/usr/share/${locale}/LC_MESSAGES" \
-      "${locale}/LC_MESSAGES"/*.mo
-  done
+  _uuid="$_pkgname@spin83"
+  _schema="org.gnome.shell.extensions.$_pkgname.gschema.xml"
 
-  install -d "$pkgdir/usr/share/gnome-shell/extensions"
-  cp -a "$_uuid" "$pkgdir/usr/share/gnome-shell/extensions"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/locale"
-  rm "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/$_pkgname.pot"
+  rm "$_uuid/$_pkgname.pot"
 
-  install -d "$pkgdir/usr/share/glib-2.0/schemas"
-  ln -s "/usr/share/gnome-shell/extensions/$_uuid/schemas/org.gnome.shell.extensions.$_pkgname.gschema.xml" \
-    "$pkgdir/usr/share/glib-2.0/schemas"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/"
+  cp -a "$_uuid/" "$pkgdir/usr/share/gnome-shell/extensions/"
+
+  install -d "$pkgdir/usr/share/glib-2.0/schemas/"
+  ln -s "/usr/share/gnome-shell/extensions/$_uuid/schemas/$_schema" \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
 }
 
