@@ -1,7 +1,7 @@
 # Maintainer: Justus Tartz <aur at jrtberlin dot de>
 pkgname=beataroni-bin
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 _archivename="Beataroni-linux64-${pkgver}"
 pkgdesc="A graphical Beat Saber mod installer for Linux"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/$pkgver/${_archivename}.tar.gz"
         "beataroni.desktop"
 	"beataroni.png")
-sha256sums=('8eae352080b93b6e4b6ec55705bfe62aff3749ceef78f820ae04f94b6a9afd9b'
+sha256sums=('4d1a81ae320b6f4aec902a659e8b4fd994e540228508b3c2915cb613c0221075'
             'SKIP'
             'SKIP')
 options=("!strip")
