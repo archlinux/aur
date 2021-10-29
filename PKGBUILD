@@ -3,7 +3,7 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
@@ -11,28 +11,28 @@ url="http://hyperspy.org"
 license=('GPL3')
 
 depends=('python'
-         'python-scipy'
-         'python-matplotlib'
-         'python-numpy'
-         'python-traits'
+         'python-scipy>=1.1'
+         'python-matplotlib>=3.1.0,<3.5'
+         'python-numpy>=1.17.1'
+         'python-traits>=4.5.0'
          'python-natsort'
          'python-requests'
-         'python-tqdm'
+         'python-tqdm>=4.9.0'
          'python-sympy'
-         'python-h5py'
-         'python-dateutil'
-         'python-dask'
-         'python-pint'
+         'python-h5py>=2.3'
+         'python-dateutil>=2.5.0'
+         'python-dask>2.1.0'
+         'python-pint>=0.10'
          'python-numexpr'
          'python-pyaml'
          'python-prettytable'
          'python-dill'  # AUR
          'python-ipyparallel'  # AUR
-         'python-scikit-image'  # AUR
+         'python-scikit-image>=0.15'  # AUR
          'python-sparse'  # AUR
        # 'python-imageio'  # AUR (from scikit-image)
        # 'python-pywavelets' # AUR (from scikit-image)
-       # 'python-tifffile'  # AUR (from scikit-image)        
+       # 'python-tifffile>=2019.12.3'  # AUR (from scikit-image)        
        # 'python-numba'  # AUR (from python-sparse)
        # 'python-llvmlite' # AUR (from python-numba)
        # 'python-llvmlite-bin' # AUR (from python-numba, but require bin package to avoid version mismatches)
@@ -57,5 +57,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-# vim:set ts=2 sw=2 et:
-md5sums=('ecaf5a0bb6c35c7cb52c3836bd24b2de')
+md5sums=('67aebe07b41f1bd945b0edaae0e8f976')
