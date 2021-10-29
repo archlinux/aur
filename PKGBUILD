@@ -3,16 +3,15 @@
 
 pkgbase=java8-adoptopenjdk
 pkgname=("${pkgbase/java/jre}-headless" "${pkgbase/java/jre}" "${pkgbase/java/jdk}" "${pkgbase/java8-/}8-src")
-pkgver=8u302b08
-_jdk_build=08
+pkgver=8u312b07
 pkgrel=1
-pkgdesc="AdoptOpenJDK ${pkgver%u*} HotSpot"
+pkgdesc="AdoptOpenJDK ${pkgver%u*} HotSpot - Adoptium Temurin"
 arch=("x86_64")
-url="https://${pkgbase/java8-/}.net/"
+url="https://adoptium.net/"
 license=("custom")
 makedepends=("ca-certificates-utils" "hicolor-icon-theme" "java-environment-common" "java-runtime-common" "nss" "xdg-utils")
 source=("https://github.com/adoptium/temurin${pkgver%u*}-binaries/releases/download/jdk${pkgver/b/-b}/OpenJDK${pkgver%u*}U-jdk_x64_linux_hotspot_${pkgver}.tar.gz")
-sha256sums=("cc13f274becf9dd5517b6be583632819dfd4dd81e524b5c1b4f406bdaf0e063a")
+sha256sums=("699981083983b60a7eeb511ad640fae3ae4b879de5a3980fe837e8ade9c34a08")
 
 _nonheadless=(
   "bin/policytool"
