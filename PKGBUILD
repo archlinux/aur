@@ -12,7 +12,8 @@ license=('GPL3')
 
 depends=('python'
          'python-scipy>=1.1'
-         'python-matplotlib>=3.1.0,<3.5'
+         'python-matplotlib>=3.1.0'
+         'python-matplotlib<3.5'
          'python-numpy>=1.17.1'
          'python-traits>=4.5.0'
          'python-natsort'
