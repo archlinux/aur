@@ -1,27 +1,28 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=easyrpg-player
-pkgver=0.6.2.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter"
 arch=('i686' 'x86_64')
 url="https://easyrpg.org"
 license=('GPL3')
-depends=("liblcf>=${pkgver:0:5}" 'sdl2_mixer' 'pixman' 'freetype2' 'libvorbis' 'mpg123'
-         'libsndfile' 'speexdsp' 'wildmidi')
+depends=("liblcf>=${pkgver:0:5}" 'sdl2' 'pixman' 'fmt' 'harfbuzz' 'libvorbis'
+         'mpg123' 'libsndfile' 'speexdsp' 'wildmidi' 'opusfile')
 optdepends=('wine: for installing the run time packages (RTP)'
             'libxmp: decoder for tracker music, used by few games'
-            'fluidsynth: another midi decoder'
+            'alsa-lib: native MIDI playback'
+            'fluidsynth: better MIDI decoder'
             'rpg2000-rtp: run time package for some 2k games'
             'rpg2003-rtp: run time package for some 2k3 games')
 install=$pkgname.install
 source=("https://easyrpg.org/downloads/player/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('6702b78949b26aeb6d1e26dbffa33f6352ca14111774bfd433bc140c146087d0')
+sha256sums=('12149f89cc84f3a7f1b412023296cf42041f314d73f683bc6775e7274a1c9fbc')
 
 build() {
   cd $pkgname-$pkgver
 
-  ./configure --prefix=/usr --enable-fmmidi=fallback
+  ./configure --prefix=/usr --enable-fmmidi
   make
 }
 
