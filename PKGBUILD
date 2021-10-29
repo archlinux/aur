@@ -23,7 +23,6 @@ pkgver() {
 
 build () {
 	cd "${srcdir}"
-    
     meson setup build termite
     meson compile -C build
 }
@@ -33,5 +32,5 @@ package () {
 
     meson install -C build --skip-subprojects vte --destdir="${pkgdir}/opt/termite"
     mkdir -p ${pkgdir}/usr/bin
-    ln -sf ${pkgdir}/opt/termite/usr/local/bin/termite ${pkgdir}/usr/bin/termite
+    sudo ln -sf /opt/termite/usr/local/bin/termite /usr/bin/termite
 }
