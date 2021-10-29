@@ -1,6 +1,6 @@
 pkgbase = matrix-mirage-git
 	pkgdesc = A fancy, customizable, keyboard-operable Matrix chat client for encrypted and decentralized communication.
-	pkgver = r2552.bbadc739
+	pkgver = r2637.9a4ababd
 	pkgrel = 2
 	url = https://github.com/mirukana/mirage
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = matrix-mirage-git
 	depends = python-filetype
 	depends = python-html-sanitizer
 	depends = python-lxml
-	depends = python-mistune
+	depends = python-mistune1
 	depends = python-blist
 	depends = python-matrix-nio>=0.17.0
 	depends = libxss
@@ -48,4 +48,3 @@ pkgbase = matrix-mirage-git
 	sha256sums = SKIP
 
 pkgname = matrix-mirage-git
-
