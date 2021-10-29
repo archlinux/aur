@@ -5,7 +5,7 @@
 pkgname=mindmaster_cn
 _pkgname=MindMaster-9
 _softname=mindmaster
-pkgver=9.0.0
+pkgver=9.0.4
 pkgrel=1
 arch=('x86_64')
 options=(!strip)
@@ -14,25 +14,25 @@ replaces=('mindmaster-cn')
 pkgdesc="多功能，高颜值，易使用的专业思维导图软件"
 license=('Commercial')
 url="https://www.edrawsoft.cn/mindmaster/"
-source_x86_64=("https://www.edrawsoft.cn/2download/x86_64/${_softname}_${pkgver}_cn.${arch}.rpm")
-sha256sums_x86_64=('7facb6cf72cc12e38bf0e5790c5e64ceec8cae7abc204c83188e121cf539f427')
-noextract=("${_softname}_${pkgver}_cn.${arch}.rpm")
-            
+source_x86_64=("https://www.edrawsoft.cn/2download/x86_64/${_softname}_${pkgver}_cn.${arch}.deb")
+sha256sums_x86_64=('47a9ad72b6ffdd1ec3d9147e1fbde7de095c5d00ba9db52abd4daae86acf8f98')
+noextract=("${_softname}_${pkgver}_cn.${arch}.deb")
+
 prepare() {
 #    ar -x *.rpm
 	mkdir -p ${pkgname}
-    bsdtar -xf "${srcdir}/${_softname}_${pkgver}_cn.${arch}.rpm" --numeric-owner -C "${pkgname}"
+    bsdtar -xf "${srcdir}/${_softname}_${pkgver}_cn.${arch}.deb" --numeric-owner -C "${srcdir}/${pkgname}"
 }
 
-package() {	
+package() {
     export LC_CTYPE="zh_CN.UTF-8"
-    mv  ${srcdir}/${pkgname}/* ${pkgdir}
-    
+    bsdtar -xf "${srcdir}/${pkgname}/data.tar.xz" --numeric-owner -C "${pkgdir}"
+
     install -dm0755  "${pkgdir}/usr/share/pixmaps/" \
                     "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/" \
                     "${pkgdir}/usr/share/mime/packages/" \
                     "${pkgdir}/usr/share/applications/"
-   
+
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${_softname}" << EOF
 #!/bin/sh
 /opt/${_pkgname}/MindMaster "\$@" --no-sandbox
