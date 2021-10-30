@@ -1,29 +1,30 @@
 # Maintainer:
-# Contributor: Felix Golatofski <contact@xdfr.de>
-pkgname=litecoin-daemon
-pkgver=0.17.1
-pkgrel=1
-arch=('i686' 'x86_64')
-url="http://www.litecoin.org/"
-license=('MIT')
-pkgdesc="Peer-to-peer digital currency, official binary release for servers (includes litecoind and litecoin-cli)"
-options=('!strip')
-depends=('openssl')
-source_x86_64=("https://download.litecoin.org/litecoin-$pkgver/linux/litecoin-$pkgver-x86_64-linux-gnu.tar.gz")
-source_i686=("https://download.litecoin.org/litecoin-$pkgver/linux/litecoin-$pkgver-i686-pc-linux-gnu.tar.gz")
-md5sums_i686=('9e28e4d172821d485423acbd05655b57')
-md5sums_x86_64=('a152828cd984c4dda16719aa406609ff')
 
+pkgname=litecoin-daemon
+pkgver=0.18.1
+pkgrel=1
+arch=('x86_64')
+url="https://www.litecoin.org/"
+license=('MIT')
+pkgdesc="Peer-to-peer digital currency (includes litecoind and litecoin-cli)"
+depends=('openssl' 'boost-libs' 'libevent' 'miniupnpc' 'zeromq' 'db4.8')
+makedepends=('boost')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/litecoin-project/litecoin/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('2d67cba11adc5890b9698ccddeb68dd3c2ff6af19bf3ed0f1c719348b914042f')
+
+build() {
+    cd litecoin-${pkgver}
+    ./autogen.sh
+    ./configure --prefix=/usr --without-gui
+    make
+}
 
 package() {
-  cd "$srcdir/litecoin-$pkgver/bin"
-
-  destdir="$pkgdir/opt/$pkgname"
-
-  mkdir -p "$destdir"
-  cp * "$destdir"
-
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/litecoin-cli" "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/litecoind" "$pkgdir/usr/bin"
+    cd litecoin-${pkgver}
+    # make DESTDIR="${pkgdir}" install # for standard install
+    install -Dm755 -t "$pkgdir/usr/bin" src/litecoin{d,-cli}
+    install -Dm644 -t "$pkgdir/usr/share/man/man1" doc/man/litecoin{d,-cli}.1
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set ts=4 sw=4 et:
