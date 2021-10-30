@@ -107,9 +107,9 @@ _use_current=
 _makenconfig=
 
 if [ -n "$_use_llvm_lto" ]; then
-  pkgbase=linux-cachyos-tt-lto
+  pkgbase=linux-tt-lto
 else
-  pkgbase=linux-cachyos-tt
+  pkgbase=linux-tt
 fi
 pkgver=5.14.15
 pkgrel=2
