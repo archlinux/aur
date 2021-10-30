@@ -1,0 +1,13 @@
+pkgbase = zash
+	pkgdesc = A blazing fast gui autoclicker for linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/robiot/zash
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = cargo
+	source = git+https://github.com/robiot/zash.git
+	sha512sums = SKIP
+
+pkgname = zash
