@@ -1,6 +1,6 @@
 # Maintainer: MF Akane <aur at sorairo dot pictures>
 pkgname=mackerel-check-plugins-git
-pkgver=0.40.1
+pkgver=0.41.1
 pkgrel=1
 pkgdesc="Check Plugins for monitoring written in golang"
 arch=('i686' 'x86_64' 'armv7h')
