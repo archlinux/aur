@@ -7,7 +7,7 @@ arch=('any')
 url='http://www.astrometa.com.tw/'
 license=('unknown')
 makedepends=('p7zip')
-source=('https://dl.dropbox.com/s/nggcmw3uewduchp/AMDVBT2_Setup_200917.exe')
+source=("https://dl.dropbox.com/s/nggcmw3uewduchp/AMDVBT2_Setup_$pkgver.exe")
 b2sums=('632548b4a7feae81379aa5b6db925b368b24eea65bf4190c4beac2ee6f004c85245db9d875936d292cdbebce5fec4c42d12ac443b029a8bdea261ecc8b8c9565')
 
 prepare() {
