@@ -1,0 +1,20 @@
+pkgbase = sqreenshot-git
+	pkgdesc = Simple screenshot tool based on Gnome Screenshot
+	pkgver = r1.2e7be2f
+	pkgrel = 1
+	url = https://github.com/redtide/sqreenshot
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = libx11
+	depends = libxfixes
+	provides = sqreenshot
+	conflicts = sqreenshot
+	source = sqreenshot-git::git+https://github.com/redtide/sqreenshot
+	sha512sums = SKIP
+
+pkgname = sqreenshot-git
