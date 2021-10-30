@@ -1,7 +1,7 @@
 # Maintainer: HMH <henry@freedesk.net>
 
 pkgname=weylus
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Use your tablet as graphic tablet/touch screen on your computer."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/H-M-H/Weylus"
 license=('AGPL3')
 conflicts=('weylus-bin')
 source=("$pkgname-$pkgver.zip::https://github.com/H-M-H/Weylus/archive/v$pkgver.zip")
-sha256sums=('0d0be95b5f13f508cba44905043c21ad6511d7f4961b23ba356fc05d7318238e')
+sha256sums=('5c8af860ae23a71203d547a5f1d8012bf51c00543ad1110d0fceb0de0c3ae33d')
 
 makedepends=(rust typescript gcc libx11 pkg-config git make cmake)
 
@@ -25,3 +25,4 @@ package() {
 }
 
 depends=(libxtst libxcursor libxinerama libxft libxrandr libxcomposite libdrm libva ffmpeg dbus gst-plugins-base-libs)
+optdepends=("gst-plugin-pipewire: Wayland support")
