@@ -113,7 +113,7 @@ _use_current=
 _makenconfig=y
 
 
-pkgbase=linux-cacule
+pkgbase=linux-cachyos-cacule-rc
 _major=5.15
 #_minor=1
 #_minorc=$((_minor+1))
