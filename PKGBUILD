@@ -24,8 +24,8 @@ options=()
 install=${pkgname}.install
 changelog=
 source_x86_64=("bench::https://github.com/Shravan-1908/bench/releases/download/v0.3.0/bench-linux-amd64"
-               "https://raw.githubusercontent.com/Shravan-1908/bench/main/LICENSE"
-               "https://raw.githubusercontent.com/Shravan-1908/bench/main/README.md"
+               "https://raw.githubusercontent.com/Shravan-1908/bench/master/LICENSE"
+               "https://raw.githubusercontent.com/Shravan-1908/bench/master/README.md"
               )
 noextract=("bench")
 sha256sums_x86_64=('641427383e9daa952ef952c422e78abcd314ea60ea8019f586231746e2a8fe65'
