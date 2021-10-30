@@ -20,6 +20,6 @@ pkgver() {
 package() {
     cd "${srcdir}/${pkgname}"
     install -dm755 "${srcdir}/${pkgname%-git}/notifyupdates" "${pkgdir}/usr/bin/"
-    install -dm644 "${srcdir}/${pkgname%-git}/notifyupdates.service" "${pkgdir}/lib/systemd/user/"
-    install -dm644 "${srcdir}/${pkgname%-git}/notifyupdates.timer" "${pkgdir}/lib/systemd/user/"
+    install -dm755 "${srcdir}/${pkgname%-git}/notifyupdates.service" "${pkgdir}/usr/lib/systemd/user/"
+    install -dm755 "${srcdir}/${pkgname%-git}/notifyupdates.timer" "${pkgdir}/usr/lib/systemd/user/"
 }
