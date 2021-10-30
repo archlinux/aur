@@ -1,7 +1,7 @@
 pkgbase = gdrive-search
 	pkgdesc = A TUI to quickly find files in your Google Drive
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jalada/gdrive-search
 	arch = x86_64
 	license = GPL3
