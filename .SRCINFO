@@ -1,10 +1,10 @@
 pkgbase = satisfactory-server
 	pkgdesc = Dedicated server for the Satisfactory PC game
 	pkgver = 0.5.170636
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.satisfactorygame.com/
 	arch = x86_64
-	license = custom:IronGateLicense
+	license = custom:CoffeeStainLicense
 	makedepends = steamcmd
 	depends = zlib
 	depends = gcc-libs

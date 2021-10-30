@@ -5,7 +5,7 @@
 
 pkgname=satisfactory-server
 pkgver=0.5.170636
-pkgrel=1
+pkgrel=2
 pkgdesc="Dedicated server for the Satisfactory PC game"
 arch=('x86_64')
 url='https://www.satisfactorygame.com/'
