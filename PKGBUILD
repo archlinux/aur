@@ -15,11 +15,10 @@ arch=('x86_64')
 license=('unknown')
 depends=('glibc')
 
-source=("https://github.com/starsareintherose/${_pkgname}/releases/download/${pkgver}/${_pkgname}_${pkgver}.zip" "gblocks.desktop")
-sha256sums=('338b2a48b03b0a53242e9bf6804c8f998b3891ca7cfb23cef39ce88d8496e353'
-            '1a523d8159873b8541aabb7f2f19af2de4dc3b61cf6974eec71aae2288d02b14')
+source=("http://molevol.cmima.csic.es/castresana/Gblocks/Gblocks_Linux64_${pkgver}.tar.Z")
+sha256sums=('563658f03cc5e76234a8aa705bdc149398defec813d3a0c172b5f94c06c880dc')
 
 package() {
+  cd ${_pkgname}_${pkgver}
   install -Dm755 ${_pkgname}_$pkgver/$_pkgname "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/gblocks.desktop" "${pkgdir}/usr/share/applications/gblocks.desktop"
 }
