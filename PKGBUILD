@@ -1,6 +1,6 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=pizarra-bin
-pkgver=1.4.4.r0.8a00bfa
+pkgver=1.5.0.r1.c65d5a1
 pkgrel=1
 pkgdesc='Simple Gtk drawing application'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3')
 provides=('pizarra')
 conflicts=('pizarra')
 source=("https://pizarra.categulario.tk/releases/pizarra-$pkgver-$arch.tar.gz")
-sha256sums=('2a0b67ee75c620dace6915daf2f20357dad0994a8a20f3cbdf07a2a41900a237')
+sha256sums=('8dd1bc1c1d386eae246e2bdfe25b1f18399928ca3f127c3aac3df5fbf5205093')
 
 package() {
     cd "$srcdir/build"
