@@ -1,7 +1,7 @@
 pkgname=zash
 pkgver=0.1.0
 pkgrel=1
-pkgdesc='A blazing fast gui autoclicker for linux'
+pkgdesc='Zash - A Zuper Awesome Shell'
 arch=('x86_64' 'aarch64')
 url='https://github.com/robiot/zash'
 license=('GPL-3.0')
