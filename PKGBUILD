@@ -1,33 +1,24 @@
-﻿
 # Maintainer: chenss <ufbycd@163.com>
 
 pkgname=nueclipse
 _pkgname=NuEclipse
-pkgver=1.01.017
+pkgver=1.01.018
 pkgrel=1
 pkgdesc="Ecipse base C/C++ IDE for Nuvoton Microcontroller"
 arch=('x86_64')
 url="www.nuvoton.com"
 license=('custom')
 groups=()
-depends=("java-runtime" "arm-none-eabi-gcc" "arm-none-eabi-newlib" "arm-none-eabi-gdb")
+depends=("arm-none-eabi-gcc" "arm-none-eabi-newlib" "arm-none-eabi-gdb")
 makedepends=()
 optdepends=()
 provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip)
 source=("https://www.nuvoton.com.cn/export/resource-files/${_pkgname}_V${pkgver}_Linux_Setup.tar.gz")
-#https://www.nuvoton.com.cn/export/resource-files/NuEclipse_V1.01.017_Linux_Setup.tar.gz
-md5sums=('34746445962d68f6e622099b61772268')
-#GCC_VERSION=gcc-arm-none-eabi-6-2017-q1-update
-
-prepare() {
-    cd "$srcdir/${_pkgname}_V${pkgver}_Linux_Setup"
-    sed -i -e '2c /usr/bin' eclipse/eclipse.ini
-    rm -rf eclipse/java-*
-}
+md5sums=('8ec3fbc4f3225ed858fe17630ebc2b3f')
 
 package() {
     cd "$srcdir/${_pkgname}_V${pkgver}_Linux_Setup"
@@ -56,3 +47,5 @@ Categories=Development;IDE;Java;
 StartupNotify=true
 END
 }
+
+# makepkg --printsrcinfo > .SRCINFO
