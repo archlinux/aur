@@ -1,0 +1,14 @@
+pkgbase = libb6
+	pkgdesc = Library for interfacing with SkyRC B6xx series chargers
+	pkgver = r5.4e330d5
+	pkgrel = 1
+	url = https://github.com/maciek134/libb6
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = libusb
+	source = git+https://github.com/maciek134/libb6.git#commit=4e330d5
+	sha256sums = SKIP
+
+pkgname = libb6
