@@ -5,15 +5,15 @@
 
 pkgname="xournalpp-micro"
 
-pkgver=1.0.20_cust
-pkgrel=3
+pkgver=1.1.0_cust
+pkgrel=1
 pkgdesc='Handwriting notetaking software with PDF annotation support (custom patches)'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Microeinstein/xournalpp-custom"
 license=('GPL2')
 makedepends=('git' 'cmake' 'cppunit')
 depends=('texlive-bin' 'gtk3' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'lua' 'libzip')
-optdepends=('xdg-desktop-portal' 'xdg-desktop-portal-kde')
+optdepends=('xdg-desktop-portal' 'xdg-desktop-portal-kde' 'texlive-latexextra: LaTeX package')
 provides=('xournalpp')
 conflicts=('xournalpp')
 install="xournalpp.install"
@@ -38,8 +38,8 @@ build() {
 	cd "${srcdir}/${pkgname}/build"
 
 	cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DDEV_CONFIG_DIR="$configdir/xournalpp" -DENABLE_CPPUNIT=ON ..
-        cmake --build . --target pot
-        cmake --build . --target translations
+    cmake --build . --target pot
+    cmake --build . --target translations
 	cmake --build .
 }
 
