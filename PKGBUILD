@@ -8,9 +8,9 @@
 
 
 ## Helpful internal stuff
-_commit=aa48b23dcf92ea1d85d8e8dbca8c0a0c37e159f8
-_mozcver=2.26.4520.102
-_utdicver=20211009
+_commit=5e7fdb7551b1928d09eaf2114f19601458bc6c31
+_mozcver=2.26.4538.102
+_utdicver=20211031
 
 pkgname='fcitx5-mozc-ut'
 pkgver=${_mozcver}.${_utdicver}
@@ -28,7 +28,7 @@ provides=("fcitx5-mozc=${_mozcver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
         "fcitx5.patch")
 sha256sums=('SKIP'
-            'a4e74f6295dc9e23f9207657cd2e2e75acb35a2fc684f016538b36b33a38c812')
+            '83977d10efe8e7c05211b185da28c1568451d6ee076dd5866f7881cae09d388f')
 
 prepare() {
     cd ${pkgname}-git
