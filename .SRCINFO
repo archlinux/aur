@@ -1,0 +1,18 @@
+pkgbase = stargate
+	pkgdesc = A digital audio workstation (DAW) with a powerful pattern-based workflow
+	pkgver = 21.10.9
+	pkgrel = 1
+	url = https://stargateaudio.github.io/
+	arch = x86_64
+	license = GPL
+	makedepends = cython
+	depends = python-pyqt5
+	depends = fftw
+	depends = libsndfile
+	depends = portaudio
+	depends = portmidi
+	depends = python-mido
+	source = https://github.com/stargateaudio/stargate/archive/refs/tags/release-21.10.9.tar.gz
+	sha256sums = c5c22b03787b192431a830eb9a20cdd5e2295d5b70ec270096e7fc098b1f58ad
+
+pkgname = stargate
