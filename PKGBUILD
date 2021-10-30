@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  ./bootstrap
+  ./bootstrap --enable-debug
   ./configure --prefix=/usr --enable-rtmidi
   make
 }

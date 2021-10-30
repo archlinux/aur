@@ -25,4 +25,3 @@ pkgname = seq66-devel-git
 	depends = libasound.so
 	depends = libjack.so
 	depends = liblo.so
-
