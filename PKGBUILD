@@ -3,10 +3,16 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=crema-git
 _pkgname=crema
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories"
-arch=(any)
+arch=(
+    x86_64
+    arm
+    armv6h
+    armv7h
+    aarch64
+ )
 url="https://$_pkgorg/$_pkgname"
 license=(GPL3)
 source=("git+https://$_pkgorg/$_pkgname.git")
@@ -14,17 +20,20 @@ validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fs
 md5sums=(SKIP)
 depends=(
     binutils
-    devtools
-    git
     pacman
     rsync
     sudo
 )
+depends_x86_64=(devtools)
+depends_arm=(devtools-alarm)
+depends_armv6h=(devtools-alarm)
+depends_armv7h=(devtools-alarm)
+depends_aarch64=(devtools-alarm)
 makedepends=(
     git
     go
     make
-    pandoc
+    asciidoctor
 )
 optdepends=(gnupg)
 provides=(crema)
@@ -32,7 +41,10 @@ conflicts=(crema)
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
+  ( set -o pipefail
+    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
