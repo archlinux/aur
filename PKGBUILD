@@ -8,6 +8,7 @@ license=('GPL-3.0')
 makedepends=('cargo')
 sha512sums=('SKIP')
 source=("git+https://github.com/robiot/$pkgname.git")
+install=zash.install
 
 build() {
   cd $pkgname
@@ -17,7 +18,5 @@ build() {
 
 package() {
   cd $pkgname
-
   install -Dm 755 target/release/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
-
