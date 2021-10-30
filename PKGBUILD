@@ -3,7 +3,7 @@
 pkgname=evernote-beta-bin
 pkgver=10.24.4
 buildver=3050
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Evernote client for Linux (beta, early-access)"
 arch=('x86_64')
 url="https://evernote.com/earlyaccess"
