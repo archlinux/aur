@@ -26,7 +26,7 @@ prepare() {
 
 package() {
   unpacked_file=$(find ${tmp_dir} -name ponyup -type f)
-  install_dir=$HOME/.local/share/ponyup/bin/ponyup
+  install_dir=$HOME/.local/share/ponyup/bin
   mkdir -p $install_dir
   install -Dm755  $unpacked_file $install_dir
 }
