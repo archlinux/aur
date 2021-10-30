@@ -60,13 +60,13 @@ _subarch=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+_localmodcfg=yes
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-lts
-pkgver=5.10.75
-pkgrel=2
+pkgver=5.10.76
+pkgrel=3
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -89,7 +89,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('7f636f61ad70c6a23859b8ad97c29bb1526f2f69f2d05e9470dea1ae169b8e9bebb86b90e90d89b7897915ec5de871836e528cfeb7f4b46408200b7e6cb9f495'
+b2sums=('8ee89f5cac2044e6cd9ff3be25cd59450cdab89aaeccdc90cc9dae4a121d719e0cfd71b9c80818a8a2ceb28f47d17f518aab5691ddbba25b65f57fe147543801'
         'SKIP'
         '74b6ea3f314aa8291c9e2c3b5763f9b0c8aabbc0e714e30529f557955a7a315b44b0cd2f2d665ffe3ba48e7df71274c5901d3891ed395191ceb6ca88f69cdb1a'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
@@ -133,8 +133,8 @@ prepare() {
   scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
 
   # make it size optimized
-  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_SIZE
+#  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+#  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_SIZE
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   scripts/config --enable CONFIG_PSI_DEFAULT_DISABLED
