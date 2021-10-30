@@ -7,47 +7,6 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-_enable_gcc_more_v="y"
-# Optionally select a sub architecture by number if building in a clean chroot
-# Leaving this entry blank will require user interaction during the build
-# which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 32.
-#
-#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
-#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
-#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
-#  4. AMD Barcelona (MBARCELONA)
-#  5. AMD Bobcat (MBOBCAT)
-#  6. AMD Jaguar (MJAGUAR)
-#  7. AMD Bulldozer (MBULLDOZER)
-#  8. AMD Piledriver (MPILEDRIVER)
-#  9. AMD Steamroller (MSTEAMROLLER)
-#  10. AMD Excavator (MEXCAVATOR)
-#  11. AMD Zen (MZEN)
-#  12. AMD Zen 2 (MZEN2)
-#  13. Intel P4 / older Netburst based Xeon (MPSC)
-#  14. Intel Atom (MATOM)
-#  15. Intel Core 2 (MCORE2)
-#  16. Intel Nehalem (MNEHALEM)
-#  17. Intel Westmere (MWESTMERE)
-#  18. Intel Silvermont (MSILVERMONT)
-#  19. Intel Goldmont (MGOLDMONT)
-#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
-#  21. Intel Sandy Bridge (MSANDYBRIDGE)
-#  22. Intel Ivy Bridge (MIVYBRIDGE)
-#  23. Intel Haswell (MHASWELL)
-#  24. Intel Broadwell (MBROADWELL)
-#  25. Intel Skylake (MSKYLAKE)
-#  26. Intel Skylake X (MSKYLAKEX)
-#  27. Intel Cannon Lake (MCANNONLAKE)
-#  28. Intel Ice Lake (MICELAKE)
-#  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Intel Cooper Lake (MCOOPERLAKE)
-#  31. Intel Tiger Lake (MTIGERLAKE)
-#  32. Generic-x86-64 (GENERIC_CPU)
-#  33. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=
-
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
@@ -61,9 +20,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=224
+_minor=253
 _srcname=linux-${_major}
-_clr=${_major}.222-154
+_clr=${_major}.253-179
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -71,14 +30,12 @@ pkgdesc='Clear Linux lts2017'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
 license=('GPL2')
-makedepends=('bc' 'git' 'kmod' 'libelf' 'xmlto')
+makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'pahole' 'xmlto')
 options=('!strip')
-_gcc_more_v='20200615'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "${pkgbase}::git+https://github.com/clearlinux-pkgs/linux-lts2017.git#tag=${_clr}"
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -89,116 +46,111 @@ prepare() {
     cd ${_srcname}
 
     ### Add upstream patches
-        echo "Add upstream patches"
-        patch -Np1 -i ../patch-${pkgver}
+    echo "Add upstream patches"
+    patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
-        echo "Setting version..."
-        scripts/setlocalversion --save-scmversion
-        echo "-$pkgrel" > localversion.10-pkgrel
-        echo "${pkgbase#linux}" > localversion.20-pkgname
+    echo "Setting version..."
+    scripts/setlocalversion --save-scmversion
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2017.spec | grep -Ev '^Patch0127' | sed -n 's/.*: //p'); do
+    for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2017.spec | grep -Ev '^Patch0127' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/${pkgbase}/${i}"
-        done
+    done
 
     ### Setting config
-        echo "Setting config..."
-        cp -Tf $srcdir/${pkgbase}/config ./.config
+    echo "Setting config..."
+    cp -Tf $srcdir/${pkgbase}/config ./.config
 
     ### Enable extra stuff from arch kernel
-        echo "Enable extra stuff from arch kernel..."
+    echo "Enable extra stuff from arch kernel..."
 
-        # General setup
-        scripts/config --enable IKCONFIG \
-                       --enable-after IKCONFIG IKCONFIG_PROC \
-                       --undefine RT_GROUP_SCHED
+    # General setup
+    scripts/config --enable IKCONFIG \
+                   --enable-after IKCONFIG IKCONFIG_PROC \
+                   --undefine RT_GROUP_SCHED
 
-        # Power management and ACPI options
-        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
-                       --enable ACPI_TABLE_UPGRADE
+    # Power management and ACPI options
+    scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
+                   --enable ACPI_TABLE_UPGRADE
 
-        # Enable loadable module support
-        scripts/config --undefine MODULE_SIG_FORCE \
-                       --enable MODULE_COMPRESS \
-                       --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
+    # Enable loadable module support
+    scripts/config --undefine MODULE_SIG_FORCE \
+                   --enable MODULE_COMPRESS \
+                   --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
 
-        # Networking support
-        scripts/config --enable NETFILTER_INGRESS
+    # Networking support
+    scripts/config --enable NETFILTER_INGRESS
 
-        # Device Drivers
-        scripts/config --module PATA_JMICRON \
-                       --enable SOUND_OSS_CORE \
-                       --enable SND_OSSEMUL \
-                       --module-after SND_OSSEMUL SND_MIXER_OSS \
-                       --module-after SND_MIXER_OSS SND_PCM_OSS \
-                       --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
+    # Device Drivers
+    scripts/config --module PATA_JMICRON \
+                   --enable SOUND_OSS_CORE \
+                   --enable SND_OSSEMUL \
+                   --module-after SND_OSSEMUL SND_MIXER_OSS \
+                   --module-after SND_MIXER_OSS SND_PCM_OSS \
+                   --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
 
-        # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
-        scripts/config --enable SECTION_MISMATCH_WARN_ONLY
+    # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
+    scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
-        # Security options
-        scripts/config --enable SECURITY_SELINUX \
-                       --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
-                       --set-val SECURITY_SELINUX_BOOTPARAM_VALUE 0 \
-                       --enable SECURITY_SMACK \
-                       --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
-                       --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
-                       --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
-                       --enable SECURITY_TOMOYO \
-                       --enable SECURITY_APPARMOR \
-                       --set-val SECURITY_APPARMOR_BOOTPARAM_VALUE 0 \
-                       --enable SECURITY_YAMA
+    # Security options
+    scripts/config --enable SECURITY_SELINUX \
+                   --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
+                   --set-val SECURITY_SELINUX_BOOTPARAM_VALUE 0 \
+                   --enable SECURITY_SMACK \
+                   --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
+                   --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
+                   --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
+                   --enable SECURITY_TOMOYO \
+                   --enable SECURITY_APPARMOR \
+                   --set-val SECURITY_APPARMOR_BOOTPARAM_VALUE 0 \
+                   --enable SECURITY_YAMA
 
-        make olddefconfig
+    make olddefconfig
+    diff -u $srcdir/$pkgbase/config .config || :
 
-    ### Patch source to unlock additional gcc CPU optimizations
-        # https://github.com/graysky2/kernel_gcc_patch
-        if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Applying enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v4.19-v5.4.patch ..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v4.19-v5.4.patch"
-        fi
-
-    ### Get kernel version
-        if [ "${_enable_gcc_more_v}" = "y" ] || [ -n "${_subarch}" ]; then
-        yes "$_subarch" | make oldconfig
+    ### Optionally use running kernel's config
+    # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
+    if [ -n "$_use_current" ]; then
+        if [[ -s /proc/config.gz ]]; then
+            echo "Extracting config from /proc/config.gz..."
+            # modprobe configs
+            zcat /proc/config.gz > ./.config
         else
-        make prepare
+            warning "Your kernel was not compiled with IKCONFIG_PROC!"
+            warning "You cannot read the current config!"
+            warning "Aborting!"
+            exit
         fi
-
-    ### Prepared version
-        make -s kernelrelease > version
-        echo "Prepared %s version %s" "$pkgbase" "$(<version)"
+    fi
 
     ### Optionally load needed modules for the make localmodconfig
-        # See https://aur.archlinux.org/packages/modprobed-db
-        if [ -n "$_localmodcfg" ]; then
-          if [ -e $HOME/.config/modprobed.db ]; then
+    # See https://aur.archlinux.org/packages/modprobed-db
+    if [ -n "$_localmodcfg" ]; then
+        if [ -e $HOME/.config/modprobed.db ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
-          else
+        else
             echo "No modprobed.db data found"
             exit
-          fi
         fi
+    fi
 
-    ### do not run `make olddefconfig` as it sets default options
-        yes "" | make config >/dev/null
+    make -s kernelrelease > version
+    echo "Prepared $pkgbase version $(<version)"
 
-    ### Running make nconfig
-
-        [[ -z "$_makenconfig" ]] || make nconfig
+    [[ -z "$_makenconfig" ]] || make nconfig
 
     ### Save configuration for later reuse
-
-        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
+    cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 }
 
 build() {
     cd ${_srcname}
-    make -j$(nproc) bzImage modules
+    make all
 }
 
 _package() {
@@ -224,17 +176,15 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    echo "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+    depends=(pahole)
 
     cd ${_srcname}
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -252,9 +202,6 @@ _package-headers() {
     # add xfs and shmem for aufs building
     mkdir -p "$builddir"/{fs/xfs,mm}
 
-    # ???
-    mkdir "$builddir/.tmp_versions"
-
     echo "Installing headers..."
     cp -t "$builddir" -a include
     cp -t "$builddir/arch/x86" -a arch/x86/include
@@ -263,13 +210,16 @@ _package-headers() {
     install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
     install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-    # http://bugs.archlinux.org/task/13146
+    # https://bugs.archlinux.org/task/13146
     install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-    # http://bugs.archlinux.org/task/20402
+    # https://bugs.archlinux.org/task/20402
     install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
     install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
     install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+    # https://bugs.archlinux.org/task/71392
+    install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
     echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -306,12 +256,12 @@ _package-headers() {
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+    echo "Stripping vmlinux..."
+    strip -v $STRIP_STATIC "$builddir/vmlinux"
+
     echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-    echo "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -324,9 +274,8 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'a644325b768cd6dcdacdc753131a3d059b9839712e8e559eb88a37ac47d04f23'
-            'SKIP'
-            '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90')
+            'f68dced69dbfd34ae489f2e4558de71cc25dd5b0692f79597071875b1b750274'
+            'SKIP')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
