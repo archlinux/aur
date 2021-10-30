@@ -1,0 +1,26 @@
+pkgbase = blink-git
+	pkgdesc = Fully featured, easy to use SIP client with a Qt based UI
+	pkgver = 5.1.7.r1293.c615548
+	pkgrel = 1
+	url = https://icanblink.com
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3+
+	depends = icu
+	depends = libvncserver
+	depends = python-gevent
+	depends = python-gmpy2
+	depends = python-google-api-python-client
+	depends = python-oauth2client
+	depends = python-pyopenssl
+	depends = python-pyqt5
+	depends = python-service-identity
+	depends = python-sipsimple
+	depends = qt5-svg
+	depends = qt5-webkit
+	optdepends = x11vnc: for screen sharing
+	conflicts = blink
+	source = blink-git::git+https://github.com/AGProjects/blink-qt.git
+	sha512sums = SKIP
+
+pkgname = blink-git
