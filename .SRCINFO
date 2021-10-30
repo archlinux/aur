@@ -8,13 +8,11 @@ pkgbase = python-otr
 	license = LGPL-2.1+
 	depends = python-gmpy2
 	depends = python-zope-interface
-	depends = python3-application
+	depends = python-application
 	provides = python3-otr
 	conflicts = python3-otr
 	replaces = python3-otr
 	source = https://github.com/AGProjects/python3-otr/archive/2.0.1.tar.gz
 	sha512sums = 3fc0a49b30e752f77be7533744a418a8471486a2860f50b7d9157f2bc25fe593cf4b486ae856cb3944695f61466a87e1ca34cdaf48eea7ef9ba2feaef78332c7
 
-
 pkgname = python-otr
-
