@@ -1,0 +1,4 @@
+[Satisfactory]
+title=Satisfactory
+description=Satisfactory Dedicated Server
+ports=7777,15000,15777/udp

@@ -1,0 +1,35 @@
+[Unit]
+Description=Satisfactory Dedicated Server
+Wants=network-online.target
+After=syslog.target network.target nss-lookup.target network-online.target
+
+[Service]
+Type=simple
+User=satisfactory
+Group=satisfactory
+StandardOutput=journal
+Restart=on-failure
+Environment="LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH"
+EnvironmentFile=/etc/satisfactory/server.conf
+ExecStart=/opt/satisfactory-server/FactoryServer.sh -ServerQueryPort=${QUERYPORT} -BeaconPort=${BEACONPORT} -Port=${PORT}
+WorkingDirectory=/opt/satisfactory-server
+KillSignal=SIGINT
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+LockPersonality=true
+MemoryDenyWriteExecute=false
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
