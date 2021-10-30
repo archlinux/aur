@@ -1,0 +1,13 @@
+pkgbase = brother-hll2360dw-lpr-bin
+	pkgdesc = LPR driver for Brother HL-L2360D series printers
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us_ot&lang=en&prod=hll2360dw_us
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf101916/hll2360dlpr-3.2.0-1.i386.deb
+	md5sums = 1d489aeb223382882f3618f10be378ad
+
+pkgname = brother-hll2360dw-lpr-bin
