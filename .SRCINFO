@@ -1,0 +1,21 @@
+pkgbase = nsxiv-git
+	pkgdesc = Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer (GIT VERSION)
+	pkgver = 27.1.r825.d0b5005
+	pkgrel = 1
+	url = https://github.com/nsxiv/nsxiv.git
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = imlib2
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = libexif
+	depends = libxft
+	depends = giflib
+	depends = libwebp
+	conflicts = nsxiv
+	source = nsxiv::git+https://github.com/nsxiv/nsxiv.git
+	sha256sums = SKIP
+
+pkgname = nsxiv-git
