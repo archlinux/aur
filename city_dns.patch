@@ -1,0 +1,26 @@
+--- PerfectPrivacyVpnWindow.py.old	2021-10-29 18:04:26.406643379 +0200
++++ PerfectPrivacyVpnWindow.py	2021-10-29 18:15:25.199953162 +0200
+@@ -18,6 +18,8 @@
+ # noinspection PyUnresolvedReferences
+ from gi.repository import Gtk, Gdk, GObject  # pylint: disable=E0611
+ import logging
++import requests
++import json
+ from perfect_privacy_vpn_lib.helpers import get_media_file
+ 
+ from perfect_privacy_vpn_lib import Window
+@@ -362,7 +364,13 @@
+         message = vpn_state.full_message
+ 
+         def do():
+-            self.ui.label_status.set_label(message)
++            if vpn_state.is_connected():
++                response = requests.get("https://checkip.perfect-privacy.com/json")
++                j = json.loads(response.content)
++                self.ui.label_status.set_label(message + "\nIP: " + j["IP"] + "\nDNS: " + j["DNS"] + "\n" + j["CITY"] + ", " + j["COUNTRY"])             
++            else:
++                self.ui.label_status.set_label(message)
++
+             self.ui.image_status.set_from_file(image_path)
+ 
+         GObject.idle_add(do)
