@@ -5,7 +5,7 @@
 
 _pkgname=touchegg
 pkgname=${_pkgname}-git
-pkgver=r508.f6c64bb
+pkgver=2.0.12.r3.g439d3b7
 pkgrel=1
 pkgdesc='Linux multi-touch gesture recognizer'
 arch=('x86_64')
@@ -17,11 +17,11 @@ depends=('cairo' 'gtk3' 'pugixml' 'systemd-libs' 'libinput' 'libx11' 'libxrandr'
 makedepends=('cmake' 'git')
 sha256sums=('SKIP')
 conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 
 pkgver() {
     cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
