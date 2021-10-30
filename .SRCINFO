@@ -1,0 +1,12 @@
+pkgbase = notifyupdates-git
+	pkgdesc = Notify you every 5 hours when there's updates available Arch Linux
+	pkgver = r2.9a5db5b
+	pkgrel = 1
+	url = https://github.com/alicela1n/notifyupdates-arch.git
+	arch = any
+	license = GPL
+	depends = libnotify
+	source = notifyupdates-git::git+https://github.com/alicela1n/notifyupdates-arch.git
+	sha256sums = SKIP
+
+pkgname = notifyupdates-git

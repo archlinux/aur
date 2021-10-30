@@ -1,0 +1,25 @@
+# Maintainer: Alice S. <quarkyalice@disroot.org>
+pkgname=notifyupdates-git
+pkgver=r2.9a5db5b
+pkgrel=1
+pkgdesc="Notify you every 5 hours when there's updates available Arch Linux"
+arch=('any')
+url="https://github.com/alicela1n/notifyupdates-arch.git"
+license=('GPL')
+depends=('libnotify')
+
+source=("${pkgname}::git+${url}")
+
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd "${srcdir}/${pkgname}"
+    install -dm755 "${srcdir}/${pkgname%-git}/notifyupdates" "${pkgdir}/usr/bin/"
+    install -dm644 "${srcdir}/${pkgname%-git}/notifyupdates.service" "${pkgdir}/lib/systemd/user"
+    install -dm644 "${srcdir}/${pkgname%-git}/notifyupdates.timer" "${pkgdir}/lib/systemd/user"
+}
