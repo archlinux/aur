@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Dustin Falgout <dustin@falgout.us>
 pkgname='ttf-google-fonts-typewolf'
-pkgver='20210326'
-_commit='d30e32013facd83ea722ad3df98bd75aa38d85c4'
+pkgver='20211019'
+_commit='463567a2ace0017f54b005f7bc111f9823e6138e'
 pkgrel='1'
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project"
 arch=('any')
@@ -11,13 +11,13 @@ license=('custom:SIL Open Font License v1.1' 'Apache')
 provides=(
 	'ttf-alegreya'
 	'ttf-alegreya-sans'
-	'ttf-anonymous-pro'
 	'ttf-archivo-narrow'
 	'ttf-bio-rhyme'
 	'ttf-cardo'
 	'ttf-chivo'
 	'ttf-cormorant'
 	'ttf-crimson-text'
+	'ttf-dm-sans'
 	'ttf-eczar'
 	'ttf-fira-sans'
 	'ttf-ibm-plex-sans'
@@ -52,41 +52,28 @@ provides=(
 	# Aliases
 	'adobe-source-sans-pro-fonts'
 	'adobe-source-serif-pro-fonts'
+	'montserrat-ttf'
+	'ttf-librebaskerville'
 	'ttf-opensans'
+	'ttf-sourcesanspro'
 	'ttf-spacemono'
 )
 conflicts=(
 	"${provides[@]}"
+	'adobe-source-sans-fonts'
+	'adobe-source-serif-fonts'
 	'ttf-adobe-fonts'
 	'ttf-google-fonts-git'
 	'ttf-google-fonts-opinionated-git'
 	'ttf-ibm-plex'
 )
 _ignore=(
-	'ArchivoNarrow-Italic[wght].ttf'
-	'ArchivoNarrow[wght].ttf'
 	'Inconsolata[wdth,wght].ttf'
-	'Karla[wght].ttf'
-	'Karla-Italic[wght].ttf'
-	'LibreFranklin[wght].ttf'
-	'LibreFranklin-Italic[wght].ttf'
-	'Lora[wght].ttf'
-	'Lora-Italic[wght].ttf'
-	'PlayfairDisplay[wght].ttf'
-	'PlayfairDisplay-Italic[wght].ttf'
-	'Raleway[wght].ttf'
-	'Raleway-Italic[wght].ttf'
 	'Roboto[wdth,wght].ttf'
 	'Roboto-Italic[wdth,wght].ttf'
-	'RobotoSlab[wght].ttf'
-	'Rubik[wght].ttf'
-	'Rubik-Italic[wght].ttf'
-	'SpaceGrotesk[wght].ttf'
-	'WorkSans[wght].ttf'
-	'WorkSans-Italic[wght].ttf'
 )
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/google/fonts/archive/$_commit.tar.gz")
-sha256sums=('6a9b0b952fe01577bc0c0efb185d2962a79a9d4945a4fae9c1e04fad99271d72')
+sha512sums=('f6e7f049bb69d6dc12d5724468bcc494d8a13905089fbdf76a68ee85789c0acca273d2493740306c229fdfd90a642cb7f748eb26191a773352c6ea9f79c5b9ad')
 
 package() {
 	cd "$srcdir/fonts-$_commit/"
