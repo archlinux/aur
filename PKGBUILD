@@ -1,6 +1,6 @@
 # Maintainer: Alice S. <quarkyalice@disroot.org>
 pkgname=notifyupdates-git
-pkgver=r2.9a5db5b
+pkgver=r3.764c564
 pkgrel=1
 pkgdesc="Notify you every 5 hours when there's updates available Arch Linux"
 arch=('any')
@@ -20,6 +20,6 @@ pkgver() {
 package() {
     cd "${srcdir}/${pkgname}"
     install -dm755 "${srcdir}/${pkgname%-git}/notifyupdates" "${pkgdir}/usr/bin/"
-    install -dm644 "${srcdir}/${pkgname%-git}/notifyupdates.service" "${pkgdir}/lib/systemd/user"
-    install -dm644 "${srcdir}/${pkgname%-git}/notifyupdates.timer" "${pkgdir}/lib/systemd/user"
+    install -dm644 "${srcdir}/${pkgname%-git}/notifyupdates.service" "${pkgdir}/lib/systemd/user/"
+    install -dm644 "${srcdir}/${pkgname%-git}/notifyupdates.timer" "${pkgdir}/lib/systemd/user/"
 }
