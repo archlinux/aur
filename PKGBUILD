@@ -116,7 +116,7 @@ package_pipewire-git() {
               'pipewire-alsa-git: ALSA support'
               'pipewire-pulse-git: PulseAudio support'
               'pipewire-ffmpeg-git: ffmpeg support'
-              'pipewire-session-manager-git: Default session manager'
+              'pipewire-session-manager: Session manager'
               'gst-plugin-pipewire-git: gstreamer support'
               'pipewire-zeroconf-git: Zeroconf support'
               'pipewire-v4l2-git: V4L2 interceptor'
