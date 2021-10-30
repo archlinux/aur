@@ -1,7 +1,7 @@
 pkgbase = multimc-native
 	pkgdesc = MultiMC without the non-native download script.
 	pkgver = 0.6.13.2519
-	pkgrel = 1
+	pkgrel = 2
 	url = https://multimc.org/
 	arch = x86_64
 	license = Apache

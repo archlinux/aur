@@ -4,7 +4,7 @@ pkgname=multimc-native
 _pkgname=multimc
 pkgver=0.6.13.2519
 _pkgver=$(sed 's/.[0-9]\+$//' <<< "$pkgver")
-pkgrel=1
+pkgrel=2
 pkgdesc="MultiMC without the non-native download script."
 arch=('x86_64')
 url="https://multimc.org/"
@@ -27,11 +27,6 @@ sha256sums=('96a660ca8b81c4214489bfb390911bce554c65c980e7b5ee0d5d8e11becd15bd'
             '8c2c1ff1f4ce4ca7a7453ec1f7f666087f4319db7c654f81a7827a34f0c17e33'
             '6d12903a5630c9ff7aa35769566f29a8b4b591024cc61be826f4a3b1e8bea3bc'
             '3daa7b436cd7230d06a8808a9c9b5e6b4612572350d928149125a88a1ca5a515')
-
-pkgver() {
-  cd ${srcdir}/MultiMC/bin
-  echo $(./MultiMC -V) | head -n1 | sed 's/^.*Version \([0-9.-]*\).*$/\1/' | sed 's/-/\./g'
-}
 
 package() {
   cd "${srcdir}"
