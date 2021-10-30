@@ -1,18 +1,23 @@
 pkgbase = maxcso-git
-	pkgdesc = Fast ISO to CSO compressor
-	pkgver = 1.9.0.r2.f0798c12
+	pkgdesc = A fast ISO to CSO compression program for use with PSP and PS2 emulators
+	pkgver = 1.13.0.r10.161f99d8
 	pkgrel = 1
 	url = https://github.com/unknownbrackets/maxcso
 	arch = x86_64
 	license = custom:ISCL
 	makedepends = git
+	depends = gcc-libs
+	depends = glibc
 	depends = libuv
 	depends = lz4
 	depends = zlib
 	provides = maxcso
 	conflicts = maxcso
-	source = maxcso::git+https://github.com/unknownbrackets/maxcso.git
-	md5sums = SKIP
+	source = git+https://github.com/unknownbrackets/maxcso.git
+	source = maxcso-system-flags.patch
+	source = maxcso-system-libs.patch
+	b2sums = SKIP
+	b2sums = 5619e8dcc204dd130f724fb7f08009cfad5d122ffbafa42fe64e3776fd4a25894d9a6a0333192b091bdcf0051e5e4f8cb1f9bf177294d6e822440ac9baa8b23a
+	b2sums = 9f136c8091ad19b842e02e74e780b1e865afe2e71af010c58e28cb23a79e6d8470eb049a8c571588266c597dbdd525ce5999fe71c6f1aec41d6c4d32cf71d983
 
 pkgname = maxcso-git
-

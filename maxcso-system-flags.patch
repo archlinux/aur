@@ -1,0 +1,24 @@
+diff '--color=auto' -rupN maxcso.orig/Makefile maxcso/Makefile
+--- maxcso.orig/Makefile	2021-09-02 11:23:11.924222645 +0200
++++ maxcso/Makefile	2021-09-02 11:24:58.177464161 +0200
+@@ -5,8 +5,9 @@ MANDIR ?= $(PREFIX)/share/man
+ CC ?= gcc
+ CXX ?= g++
+ 
+-CFLAGS ?= -O2
+-CXXFLAGS ?= $(CFLAGS)
++CFLAGS ?= ${CFLAGS}
++CXXFLAGS ?= ${CXXFLAGS}
++LDFLAGS ?= ${LDFLAGS}
+ 
+ SRC_CFLAGS += -W -Wall -Wextra -Wno-implicit-function-declaration -DNDEBUG=1
+ SRC_CXXFLAGS += -W -Wall -Wextra -std=c++11 -Izopfli/src -I7zip -DNDEBUG=1 \
+@@ -32,7 +33,7 @@ ZOPFLI_C_OBJ = $(ZOPFLI_C_SRC:.c=.o)
+ 
+ # TODO: Perhaps detect and use system libdeflate if available.
+ maxcso: $(SRC_CXX_OBJ) $(CLI_CXX_OBJ) $(ZOPFLI_C_OBJ) 7zip/7zip.a libdeflate/libdeflate.a
+-	$(CXX) -o $@ $(SRC_CXXFLAGS) $(CXXFLAGS) $^ -luv -llz4 -lz
++	$(CXX) -o $@ $(SRC_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) $^ -luv -llz4 -lz
+ 
+ 7zip/7zip.a:
+ 	$(MAKE) -C 7zip 7zip.a

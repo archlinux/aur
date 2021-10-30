@@ -1,0 +1,66 @@
+diff '--color=auto' -rupN maxcso.orig/Makefile maxcso/Makefile
+--- maxcso.orig/Makefile	2021-09-02 11:25:45.865244668 +0200
++++ maxcso/Makefile	2021-09-02 11:26:59.628790478 +0200
+@@ -10,20 +10,13 @@ CXXFLAGS ?= ${CXXFLAGS}
+ LDFLAGS ?= ${LDFLAGS}
+ 
+ SRC_CFLAGS += -W -Wall -Wextra -Wno-implicit-function-declaration -DNDEBUG=1
+-SRC_CXXFLAGS += -W -Wall -Wextra -std=c++11 -Izopfli/src -I7zip -DNDEBUG=1 \
+-	-Ilibdeflate -Wno-unused-parameter -Wno-unused-variable -pthread
++SRC_CXXFLAGS += -W -Wall -Wextra -std=c++11 -I7zip -DNDEBUG=1 \
++	-Wno-unused-parameter -Wno-unused-variable -pthread
+ 
+ SRC_CXX_SRC = $(wildcard src/*.cpp)
+ SRC_CXX_OBJ = $(SRC_CXX_SRC:.cpp=.o)
+ CLI_CXX_SRC = $(wildcard cli/*.cpp)
+ CLI_CXX_OBJ = $(CLI_CXX_SRC:.cpp=.o)
+-ZOPFLI_C_SRC = zopfli/src/zopfli/blocksplitter.c zopfli/src/zopfli/cache.c \
+-               zopfli/src/zopfli/deflate.c zopfli/src/zopfli/gzip_container.c \
+-               zopfli/src/zopfli/hash.c zopfli/src/zopfli/katajainen.c \
+-               zopfli/src/zopfli/lz77.c zopfli/src/zopfli/squeeze.c \
+-               zopfli/src/zopfli/tree.c zopfli/src/zopfli/util.c \
+-               zopfli/src/zopfli/zlib_container.c zopfli/src/zopfli/zopfli_lib.c
+-ZOPFLI_C_OBJ = $(ZOPFLI_C_SRC:.c=.o)
+ 
+ %.o: %.cpp
+ 	$(CXX) -c $(SRC_CXXFLAGS) $(CXXFLAGS) -o $@ $<
+@@ -31,16 +24,12 @@ ZOPFLI_C_OBJ = $(ZOPFLI_C_SRC:.c=.o)
+ %.o: %.c
+ 	$(CC) -c $(SRC_CFLAGS) $(CFLAGS) -o $@ $<
+ 
+-# TODO: Perhaps detect and use system libdeflate if available.
+-maxcso: $(SRC_CXX_OBJ) $(CLI_CXX_OBJ) $(ZOPFLI_C_OBJ) 7zip/7zip.a libdeflate/libdeflate.a
+-	$(CXX) -o $@ $(SRC_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) $^ -luv -llz4 -lz
++maxcso: $(SRC_CXX_OBJ) $(CLI_CXX_OBJ) 7zip/7zip.a
++	$(CXX) -o $@ $(SRC_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) $^ -luv -llz4 -lz -lzopfli -ldeflate
+ 
+ 7zip/7zip.a:
+ 	$(MAKE) -C 7zip 7zip.a
+ 
+-libdeflate/libdeflate.a:
+-	$(MAKE) -C libdeflate libdeflate.a
+-
+ install: all
+ 	mkdir -p $(DESTDIR)$(BINDIR)
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man1
+@@ -54,7 +43,7 @@ uninstall:
+ 	rm -f $(DESTDIR)$(MANDIR)/man1/maxcso.1
+ 
+ clean:
+-	rm -f $(SRC_CXX_OBJ) $(CLI_CXX_OBJ) $(ZOPFLI_C_OBJ) maxcso
++	rm -f $(SRC_CXX_OBJ) $(CLI_CXX_OBJ) maxcso
+ 	$(MAKE) -C 7zip clean
+ 
+ all: maxcso
+diff '--color=auto' -rupN maxcso.orig/src/sector.cpp maxcso/src/sector.cpp
+--- maxcso.orig/src/sector.cpp	2021-09-02 11:25:45.858577379 +0200
++++ maxcso/src/sector.cpp	2021-09-02 11:27:27.438050698 +0200
+@@ -3,7 +3,7 @@
+ #include "compress.h"
+ #include "cso.h"
+ #include "buffer_pool.h"
+-#include "zopfli/zopfli.h"
++#include "zopfli.h"
+ #include "libdeflate.h"
+ #ifndef NO_DEFLATE7Z
+ #include "deflate7z.h"
