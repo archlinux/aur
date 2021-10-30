@@ -3,6 +3,7 @@
 pkgname=lug-helper
 pkgver=1.11.1
 pkgrel=1
+epoch=1
 pkgdesc="Star Citizen's Linux Users Group Helper Script"
 arch=('any')
 depends=('bash' 'coreutils' 'curl' 'bc')
