@@ -1,13 +1,13 @@
 pkgbase = fortune-mod-anarchism
 	pkgdesc = Anarchist fortune quotes
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notabug.org/PangolinTurtle/BLAG-fortune
 	arch = any
 	groups = fortune-mods
 	license = custom:public domain
 	depends = fortune-mod
-	source = https://notabug.org/PangolinTurtle/BLAG-fortune/archive/1.8.0.tar.gz
-	sha256sums = SKIP
+	source = fortune-mod-anarchism-1.8.0.tar.gz::https://notabug.org/PangolinTurtle/BLAG-fortune/archive/1.8.0.tar.gz
+	sha256sums = 669b37d85d0617a7c411274eb371cd26453b3c41731abadc7abf2a29b515569e
 
 pkgname = fortune-mod-anarchism
