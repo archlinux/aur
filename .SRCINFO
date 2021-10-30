@@ -1,0 +1,19 @@
+pkgbase = multicolor-sddm-theme
+	pkgdesc = An SDDM theme that has nine colorschemes available
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://gitlab.com/dwt1/multicolor-sddm-theme
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sddm>=0.14.0
+	optdepends = otf-raleway: raleway font support
+	optdepends = ttf-impallari-raleway-family: raleway font support
+	optdepends = otf-font-awesome: Fontawesome support
+	optdepends = ttf-font-awesome: Fontawesome support
+	optdepends = ttf-google-fonts-git: Open fonts from google, included raleway
+	provides = multicolor-sddm-theme
+	source = git+https://gitlab.com/dwt1/multicolor-sddm-theme
+	md5sums = SKIP
+
+pkgname = multicolor-sddm-theme
