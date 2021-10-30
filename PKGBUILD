@@ -1,11 +1,11 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=5.r127.gcce7e4ee
+pkgver=5.r128.g4dcebc18
 pkgrel=1
 pkgdesc='An ARM dynamic recompiler'
 arch=('x86_64')
-url="https://github.com/MerryMage/$_pkgname"
+url="https://github.com/merryhime/$_pkgname"
 license=('BSD')
 makedepends=(
 	'boost>=1.57'
@@ -20,22 +20,12 @@ makedepends=(
 checkdepends=('catch2>=2.13.1')
 provides=("$_pkgname=$pkgver" 'libdynarmic.so')
 conflicts=("$_pkgname")
-source=(
-	"git+$url.git"
-	"0009-dynarmic-add-cmake-install-rules.diff::$url/pull/636.diff"
-)
-b2sums=(
-	'SKIP'
-	'a53af744acc50c6e592cc6942c374e7cf96a74d39a11eebeed59c869cd980983bc13364485e5bb493f3ff1bf9ed36c3ef810036f1f93feea918012968e25ebd7'
-)
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/^r//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	patch -d $_pkgname -Np1 < 0009-dynarmic-add-cmake-install-rules.diff
 }
 
 build() {
