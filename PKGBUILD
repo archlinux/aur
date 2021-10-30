@@ -3,21 +3,20 @@
 pkgbase=duckdb
 pkgname=('duckdb' 'python-duckdb')
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance analytical database system"
 arch=('x86_64')
 url="https://duckdb.org"
 license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('git' 'cmake' 'python-setuptools' 'pybind11' 'python-numpy' 'python-pandas' 'libutf8proc' 'python-pip' 'python-wheel' 'python-setuptools-scm')
-conflicts=('duckdb-git')
 _commit='46a0fc50aa00ac019aee2157cf3382b85993f728'
 source=("$pkgbase::git+https://github.com/duckdb/duckdb.git#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
   cd "$pkgbase"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^[vV]//;s/-/+/g'
 }
 
 prepare() {
@@ -48,6 +47,7 @@ build() {
 }
 
 package_duckdb() {
+  conflicts=('duckdb-git')
   DESTDIR="$pkgdir" cmake --install build
 
   # sqlite wrapper
@@ -61,6 +61,7 @@ package_python-duckdb() {
   pkgdesc+=" (Python API)"
   depends=('python')
   optdepends=('python-numpy' 'python-pandas')
+  conflicts=('python-duckdb-git')
 
   # library
   python "$pkgbase/tools/pythonpkg/setup.py" install --root="$pkgdir" --optimize=1 --skip-build
