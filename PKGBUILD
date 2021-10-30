@@ -13,7 +13,7 @@ conflicts=('lug-helper')
 url="https://github.com/the-sane/lug-helper"
 license=('GPL3')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/the-sane/lug-helper/archive/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/the-sane/lug-helper/archive/${pkgver}.tar.gz"
     'lug-helper.desktop'
 )
 sha256sums=(
