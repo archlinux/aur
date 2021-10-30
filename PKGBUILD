@@ -12,7 +12,7 @@ url="https://github.com/AGProjects/python3-otr"
 depends=(
   'python-gmpy2'
   'python-zope-interface'
-  'python3-application'
+  'python-application'
   )
 conflicts=('python3-otr')
 provides=('python3-otr')
