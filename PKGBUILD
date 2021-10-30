@@ -10,7 +10,7 @@ url="https://github.com/cosmos/${_pkgname}"
 license=('Apache')
 provides=("${_pkgname}d")
 source=(
-	"${_pkgname}d::https://github.com/cosmos/${_pkgname}/releases/download/v${pkgver}/${_pkgname}d-v${pkgver}-linux-amd64"
+	"https://github.com/cosmos/${_pkgname}/releases/download/v${pkgver}/${_pkgname}d-v${pkgver}-linux-amd64"
 	"https://raw.githubusercontent.com/cosmos/${_pkgname}/v${pkgver}/LICENSE"
 )
 sha256sums=(
@@ -19,6 +19,6 @@ sha256sums=(
 )
 
 package() {
-	install -Dt "$pkgdir/usr/bin" "${_pkgname}d"
+	install -D "${_pkgname}d-v${pkgver}-linux-amd64" "$pkgdir/usr/bin/${_pkgname}d"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
