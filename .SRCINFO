@@ -1,0 +1,13 @@
+pkgbase = brother-hll2360dw-cups-bin
+	pkgdesc = CUPS wrapper for Brother HL-L2360D series printers
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us_ot&lang=en&prod=hll2360dw_us
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf101917/hll2360dcupswrapper-3.2.0-1.i386.deb
+	md5sums = 27b11605d505b6897c6ca857add21d6f
+
+pkgname = brother-hll2360dw-cups-bin
