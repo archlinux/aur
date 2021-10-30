@@ -6,7 +6,7 @@
 # Maintainer: Changseo Jang <changseo.jang@korea.edu>
 pkgname='pbkit'
 pkgver='v0.0.22'
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc='Protobuf Dependency Manager'
 arch=('x86_64')
@@ -31,8 +31,8 @@ validpgpkeys=()
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
-  deno compile -f --unstable -A -o pollapo "$srcdir/pbkit/cli/pollapo/entrypoint.ts"
+  deno compile --unstable -A -o pollapo "$srcdir/pbkit/cli/pollapo/entrypoint.ts"
   cp "${srcdir}/pollapo" "${pkgdir}/usr/bin/pollapo"
-  deno compile -f --unstable -A -o pb "$srcdir/pbkit/cli/pb/entrypoint.ts"
+  deno compile --unstable -A -o pb "$srcdir/pbkit/cli/pb/entrypoint.ts"
   cp "${srcdir}/pb" "${pkgdir}/usr/bin/pb"
 }
