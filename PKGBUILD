@@ -6,7 +6,7 @@ _name="${pkgname%-git}"
 
 epoch=1
 pkgver() { git -C "$_name" describe --long | sed 's/^v//;s/-/.r/;s/-g/./'; }
-pkgver=6.18.4.r2.1febf7c
+pkgver=6.18.5.r0.3b8bc16
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
@@ -14,7 +14,7 @@ arch=('any')
 url="https://$_name.org"
 license=('GPL2')
 
-provides=("getmail=$pkgver" "${pkgname%-git}")
+provides=("getmail=$pkgver" "$_name")
 conflicts=('getmail')
 
 makedepends=('git' 'python-setuptools')
@@ -29,12 +29,12 @@ b2sums=('SKIP')
 
 build() {
   cd "$_name"
-  python setup.py build
+  PYTHONHASHSEED=0 python setup.py build
 }
 
 package() {
   cd "$_name"
-  PYTHONHASHSEED=0 python setup.py install --skip-build --optimize=1 --root="$pkgdir"
+  python setup.py install --skip-build --optimize=1 --root="$pkgdir"
 }
 
 
