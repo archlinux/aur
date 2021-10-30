@@ -1,7 +1,7 @@
 pkgbase = font-manager
 	pkgdesc = A simple font management application for GTK+ Desktop Environments
 	pkgver = 0.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fontmanager.github.io
 	arch = x86_64
 	arch = i686
@@ -22,6 +22,8 @@ pkgbase = font-manager
 	depends = webkit2gtk
 	optdepends = file-roller
 	source = https://github.com/FontManager/master/releases/download/0.8.7/font-manager-0.8.7.tar.xz
+	source = font-manager-gcc11.patch::https://github.com/FontManager/font-manager/commit/f9c4621389dae5999ca9d2f3c8402c2512a9ea60.patch
 	sha256sums = 0375119e332e807c71b1da94fbab2d5d3433e62fa308181afa8558e796ce6cda
+	sha256sums = 2e71c7ee6f8b691b7544afee7dd5f2200df24f8631ce26f9a9744ba413846409
 
 pkgname = font-manager
