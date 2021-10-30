@@ -9,6 +9,8 @@ pkgbase = gnome-shell-extensions-fly-pie-git
 	makedepends = make
 	makedepends = zip
 	depends = gnome-shell>=1:40
+	provides = gnome-shell-extensions-fly-pie
+	conflicts = gnome-shell-extensions-fly-pie
 	source = git+https://github.com/Schneegans/Fly-Pie.git
 	sha256sums = SKIP
 

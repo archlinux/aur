@@ -10,6 +10,8 @@ url="https://github.com/Schneegans/Fly-Pie"
 license=('MIT')
 depends=('gnome-shell>=1:40')
 makedepends=('git' 'make' 'zip')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=(git+$url.git)
 sha256sums=('SKIP')
 
