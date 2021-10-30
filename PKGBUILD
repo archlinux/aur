@@ -1,7 +1,7 @@
 # Maintainer: OriginCode <self@origincode.me>
 
 pkgbase=linux-froidzen
-pkgver=5.14.6.zen1
+pkgver=5.14.15.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with Patches and Modifications'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -27,8 +27,8 @@ validpgpkeys=(
   'C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D'  # Steven Barrett <steven@liquorix.net>
 )
 sha256sums=('SKIP'
-            'e4dafc832ab5c7401d06a4758048e40e9a3ba7db6e764061708c9bf063e05bff'
-            '0b4b31fd91628c3ac35aa18ae4a78900ba03474451a64d5ad17b1f8b00d095b7')
+            '81e0e128281e32025961a20bc0cee5f9ca1f094d4ce8bb387623fd8125970192'
+            'a3850d0103fffbca4004d04fc4302ec87f74ea176d5935e202faf3cea5edfd80')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -53,6 +53,8 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
+  make olddefconfig
+  diff -u ../config .config || :
 
   # Enable MUQSS
   sed -i "s/# CONFIG_SCHED_MUQSS is not set/CONFIG_SCHED_MUQSS=y/g" .config
