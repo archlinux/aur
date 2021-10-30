@@ -2,15 +2,25 @@
 
 pkgname=caffeine-ng-git
 _pkgname=caffeine-ng
-pkgver=3.5.1.post25+g683d5dc
+pkgver=3.5.1.post52+g7b193de
 pkgrel=1
 pkgdesc="Status bar application able to temporarily inhibit the screensaver and sleep mode."
 arch=(any)
 url="https://github.com/caffeine-ng/caffeine-ng"
 license=(GPL3)
-depends=(python-gobject python-xdg python-dbus python-click python-ewmh gtk3
-         libnotify python-setproctitle python-wheel python-pulsectl)
-optdepends=("libindicator-gtk3: AppIndictor support.")
+depends=(
+  python-gobject
+  python-xdg
+  python-dbus
+  python-click
+  python-ewmh
+  gtk3
+  libnotify
+  python-setproctitle
+  python-wheel
+  python-pulsectl
+  libindicator-gtk3
+)
 makedepends=(git python-setuptools-scm)
 conflicts=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 provides=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
