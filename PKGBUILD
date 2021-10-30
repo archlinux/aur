@@ -9,9 +9,9 @@ license=('LGPL-2.1+')
 arch=('aarch64' 'x86_64')
 url="https://github.com/AGProjects/python3-msrplib"
 depends=(
-  'python3-application'
-  'python3-gnutls'
-  'python3-eventlib'
+  'python-application'
+  'python-gnutls'
+  'python-eventlib'
   'python-twisted'
   'python-zope-interface'
   )
