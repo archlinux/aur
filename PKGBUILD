@@ -12,12 +12,12 @@ pkgdesc='The GNU Compiler Collection with rust support'
 arch=($CARCH)
 license=(GPL LGPL FDL custom)
 url='https://github.com/Rust-GCC/gccrs'
-makedepends=(git binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python libxcrypt)
+makedepends=(git binutils libmpc gcc-ada-git doxygen lib32-glibc lib32-gcc-libs-git python libxcrypt)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
 
-source=("${pkgname}::git+https://github.com/Rust-GCC/gccrs.git"
+source=("${pkgname%-git}::git+https://github.com/Rust-GCC/gccrs.git"
         $_isl_link/$_isl
         c89 c99
         gdc_phobos_path.patch
@@ -46,7 +46,7 @@ prepare() {
   cd gccrs
 
   # link isl for in-tree build
-  ln -s ../${_isl%.tar.xz} isl
+  ln -s ../${_isl%.tar.xz} isl ||:
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
