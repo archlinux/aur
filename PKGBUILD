@@ -1,7 +1,7 @@
 # Maintainer: Bojan Momcilov <bojan.momcilov@yandex.com>
 
 pkgname=eidmiddleware
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="AKD eID Middleware basic user package"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Custom')
 depends=('qt5-base' 'openssl-1.0' 'ccid')
 source=("${url}/datastore/filestore/10/${pkgname}_v${pkgver}_amd64.deb")
 options=('!strip' 'staticlibs')
-sha512sums=('2fa46b583025fe064fe95d1b1dc59e8b960d9b94a3a24df9be3cc39e643e5e345c5841ca27b33a039ce832fcc2dd4af0a57fc5e98a70b07e40c0a46105951bc5')
+sha512sums=('40f5b6197990326de19857d9927c99ed41e6542cf38859c362ce9c1495030dbb9619ca43027b5497ffbf49a45c03fa2b08849107dc269cd0cfeaa5902e7ce531')
 
 package() {
 
