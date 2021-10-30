@@ -2,8 +2,8 @@
 
 pkgname=deezer-enhanced-git
 _pkgname=deezer-enhanced
-pkgver=v0.1.0.r1.g47e2cc3
-pkgrel=3
+pkgver=v0.2.0.r0.g57b61c6
+pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features, that is not just an electron wrapper.'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/duzda/deezer-enhanced"
@@ -42,7 +42,7 @@ package() {
 
   cd ..
   # License
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cd dist
   # Post install
