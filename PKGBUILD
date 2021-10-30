@@ -1,7 +1,7 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 
 pkgbase=linux-chromium44
-pkgver=4.4.250
+pkgver=4.4.290
 pkgrel=1
 pkgdesc='Chromium OS 4.4'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -16,7 +16,7 @@ makedepends=(
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "git+https://chromium.googlesource.com/chromiumos/third_party/kernel#branch=release-R89-13729.B-chromeos-4.4"
+  "git+https://chromium.googlesource.com/chromiumos/third_party/kernel#tag=v4.4.290"
   config         # the main kernel config file
   sphinx-workaround.patch
 )

@@ -1,6 +1,6 @@
 pkgbase = linux-chromium44
 	pkgdesc = Chromium OS 4.4
-	pkgver = 4.4.250
+	pkgver = 4.4.290
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/third_party/kernel
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = linux-chromium44
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = git+https://chromium.googlesource.com/chromiumos/third_party/kernel#branch=release-R89-13729.B-chromeos-4.4
+	source = git+https://chromium.googlesource.com/chromiumos/third_party/kernel#tag=v4.4.290
 	source = config
 	source = sphinx-workaround.patch
 	sha256sums = SKIP
@@ -35,4 +35,3 @@ pkgname = linux-chromium44
 
 pkgname = linux-chromium44-headers
 	pkgdesc = Headers and scripts for building modules for the Chromium OS 4.4 kernel
-
