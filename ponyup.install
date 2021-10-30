@@ -1,5 +1,17 @@
 post_install() {
-    echo 'Warning: ponyup requires being added to the PATH, please log out and back in, or "source /etc/profile.d/ponyup.sh" manually'
+    echo
+    echo 'NOTE: ponyup was installed to ~/.local/share/ponyup/bin/ponyup'
+    echo 'NOTE: you may now invoke it like so ~/.local/share/ponyup/bin/ponyup'
+    echo
+    echo 'NOTE: if you would like to invoke ponyup from the command line please add ~/.local/share/ponyup/bin/ponyup to your PATH'
+    echo 'NOTE: export PATH=~/.local/share/ponyup/bin/ponyup:$PATH'
+    echo
+    echo 'NOTE: if this is your first time using ponyup please visit https://github.com/ponylang/ponyup'
+    echo 'NOTE: if you would just like to get going:'
+    echo 'ponyup update ponyc nightly'
+    echo 'ponyup update ponyc release'
+    echo
+    echo
 }
 
 post_remove() {

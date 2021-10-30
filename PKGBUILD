@@ -1,37 +1,32 @@
-# Maintainer: Sérgio Gomes <superherointj at gmail dot com>
-
+# Maintainer: thomashrb <thomashrb AT protonmail DOT com>
+# Contributor: Sérgio Gomes <superherointj at gmail dot com>
 pkgname=ponyup
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="The Pony language toolchain multiplexer"
 arch=('x86_64')
 url="https://github.com/ponylang/ponyup"
 license=('BSD')
+makedepends=(
+  'curl'
+  'sed'
+  'tar'
+)
 depends=('openssl')
-makedepends=('git' 'ponyc' 'pony-stable')
-source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/ponylang/ponyup/archive/$pkgver.tar.gz"
-  "ponyup.sh"
-)
-sha256sums=(
-  'eaf46b5a181e69f86a2dd80829efb9aa3bf5e2b3cbe6933b4bab451aa4c21462'
-  'e3685b937791d8fbd1a7d5181163395805d9454611ae384633603973f4b2fd6a'
-)
-install=ponyup.install
+source_x86_64=($ponyup-$pkgver-x86_64.tar.gz::https://dl.cloudsmith.io/public/ponylang/releases/raw/versions/$pkgver/ponyup-x86-64-unknown-linux.tar.gz)
+sha256sums_x86_64=('SKIP')
+
+install=${pkgname}.install
 
 prepare() {
-    cd "$pkgname"-"$pkgver"
-    stable fetch
-}
-
-build() {
-    cd "$pkgname"-"$pkgver"
-    make BUILD_DIR="./build" ssl="1.1.x" arch="x86-64" version="$pkgver" static=false linker=bfd
+  tmp_dir=/tmp/ponyup
+  mkdir -p "${tmp_dir}"
+  tar -xzf "${tmp_dir}/ponyup-x86-64-unknown-linux.tar.gz" -C "${tmp_dir}"
 }
 
 package() {
-    cd "$pkgname"-"$pkgver"
-    install -D -m755 ./build/ponyup "$pkgdir"/usr/bin/ponyup
-    install -D -m644 "$srcdir"/ponyup.sh "$pkgdir"/etc/profile.d/ponyup.sh
-    install -D -m644 ./LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"
+  unpacked_file=$(find ${tmp_dir} -name ponyup -type f)
+  install_dir=$HOME/.local/share/ponyup/bin/ponyup
+  mkdir -p $install_dir
+  install -Dm755  $unpacked_file $install_dir
 }
