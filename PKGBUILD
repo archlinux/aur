@@ -40,7 +40,7 @@ package() {
 
   # Install the application.
   install -d $pkgdir/{opt/$pkgname,usr/bin}
-  cp -a bin lib jre license plugins product-info.json build.txt LICENSE.txt NOTICE.txt icons.db $pkgdir/opt/$pkgname
+  cp -a bin lib jre license plugins product-info.json build.txt LICENSE.txt NOTICE.txt $pkgdir/opt/$pkgname
   ln -s /opt/$pkgname/bin/studio.sh $pkgdir/usr/bin/$pkgname
 
   # Add the icon and desktop file.
