@@ -6,13 +6,13 @@
 #
 pkgname="aarchup"
 pkgver=2.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://gitlab.com/artafinde/aarchup/"
 arch=('i686' 'x86_64')
 license=('GPL3')
 provides=("${pkgname}")
-depends=('libnotify')
+depends=('libnotify' 'pacman-contrib')
 makedepends=('meson' 'ninja' 'gzip')
 optdepends=('auracle: AUR support(--aur)')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/aarchup-${pkgver}.tar.gz")
