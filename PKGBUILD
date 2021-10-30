@@ -1,4 +1,5 @@
-# Maintainer: Tony Fettes <feihaoxiang2014@gmail.com>
+# Maintainer: Phantasm <phantasm@centrum.cz>
+# Contributor: Tony Fettes <feihaoxiang2014@gmail.com>
 
 pkgname=matcha-kde-git
 _gitname=Matcha-kde
