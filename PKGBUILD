@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Phantasm <phantasm@centrum.cz>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kvantum-theme-qogir-git
 _gitname=Qogir-kde
