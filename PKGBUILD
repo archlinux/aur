@@ -4,9 +4,8 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Selecting CacULE or CacULE-RDB scheduler, default:cacule
-_cpusched='cacule'
 #_cpusched='rdb'
-
+#_cpusched='tt'
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
@@ -48,7 +47,7 @@ _lrng_enable=y
 _ksmbd_enable=
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=y
 
 
 ## Apply Kernel automatic Optimization
@@ -85,10 +84,10 @@ _zstd_module_level='normal'
 _fork_brute=
 
 ## Enable it for compiling with LLVM and THINLTO
-_use_llvm_lto=
+_use_llvm_lto=y
 
 # Enable it for using the LLVM CFI PATCH for a better security
-_use_cfi=
+_use_cfi=y
 
 ## Enable PGO (patch is failing when cfi is also used)
 _use_pgo=
@@ -111,27 +110,19 @@ _localmodcfg=
 _use_current=
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=y
 
 
-if [ "$_cpusched" = "cacule" ]  && [ -n "$_use_llvm_lto" ]; then
-  pkgbase=linux-cachyos-cacule-rc-lto
-elif  [ "$_cpusched" = "rdb" ] && [ -n "$_use_llvm_lto" ]; then
-  pkgbase=linux-cachyos-rc-rdb-lto
-elif [ "$_cpusched" = "cacule" ]; then
-  pkgbase=linux-cachyos-cacule-rc
-elif [ "$_cpusched" = "rdb" ]; then
-  pkgbase=linux-cacule-rdb-rc
-fi
+pkgbase=linux-cacule
 _major=5.15
 #_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc6
+_rcver=rc7
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
 _srcname=linux-${_stablerc}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE Kernel-RC by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/cachyos/linux-cachyos"
@@ -146,7 +137,8 @@ _caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15"
 source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
   "config"
-  "${_caculepatches}/v5.15/cacule-5.15-full.patch"
+  "${_patchsource}/0001-add-600hz-cfs-fixes.patch"
+  "${_patchsource}/0001-amdpstate.patch"
   "${_patchsource}/0001-bbr2.patch"
   "${_patchsource}/0001-zstd.patch"
   "${_patchsource}/0001-mm.patch"
@@ -157,11 +149,7 @@ source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
   "${_patchsource}/0001-hwmon.patch"
   "${_patchsource}/0001-sitemap.patch"
   "${_patchsource}/0001-bitops.patch"
-  "${_patchsource}/0001-disable-SCHEDUTIL.patch"
-  #  "${_patchsource}/0001-clearlinux.patch"
-  "${_patchsource}/0001-hz-dynamicpreept.patch"
-  "${_patchsource}/misc/0002-init-Kconfig-enable-O3-for-all-arches.patch"
-  "${_patchsource}/0001-pstate.patch"
+  "${_patchsource}/0001-var.patch"
   "auto-cpu-optimization.sh"
 )
 if [ -n "$_use_llvm_lto" ]; then
@@ -420,14 +408,6 @@ prepare() {
   echo "Enabling FULLCONENAT..."
   scripts/config --module CONFIG_IP_NF_TARGET_FULLCONENAT
   scripts/config --module CONFIG_NETFILTER_XT_TARGET_FULLCONENAT
-  echo "Setting performance governor..."
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
-  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
   echo "Enable AMD PSTATE v2 driver"
   scripts/config --enable CONFIG_X86_AMD_PSTATE
 
@@ -591,21 +571,19 @@ for _p in "${pkgname[@]}"; do
 done
 
 
-md5sums=('3577e4e5970c537de05e0a96ade385b5'
-         'f3f883a7af43bd61c84c9a892c32573e'
-         'afdbe964cd00357ef7248553ab9db091'
+md5sums=('9d41c6fb84bd69b5e477c7cd302b0e4f'
+         '18aaf622d2e8292feec718c754a58ab3'
+         '146bf117e5aef77478aca8e2422d2554'
+         'a5cedf5e8027082246f9a485baf859c1'
          '2a8097ba46be56fbbe3967e9c34c9a0b'
          'e6c5e75b6e71f7a3d81f5dbad64188a8'
          'e422617aff583cec11129e0f185e9549'
          '7d5cf45bcce33f1ed82f660efb089d3c'
          'acbaad682b7660e691d756680a8a3274'
-         'b2a3fe5958abed934b14c345ab32a698'
-         'ff4b20b981d9ae0bdda68f012b03e756'
+         '7fa046fd98013a89ed5f57b18c612068'
+         'ba2b51078c24de01aa604d24673326d6'
          '9788f0fb9ae2b72bd8bdab660c8cbddc'
          '41f2c3ccfdef3ed7ceb43a345841933c'
          '02ce3ecc02498f26a18a02717f808432'
-         '95243b2c7d4d3e56a38fabc85786afcc'
-         'f88c3290ece724c81921059df14965cf'
-         'ceb9020f754c9a0c3f526b38abc714dd'
-         '373a1df8cddeb7807b6adf7b2ab03bc2'
+         'bf01cd68a9f188bd9baa891f1c07ad30'
          '21c98f19e883879dd3336c1fa143fd31')
