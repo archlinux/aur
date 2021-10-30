@@ -1,0 +1,30 @@
+pkgbase = duckdb
+	pkgdesc = A high-performance analytical database system
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://duckdb.org
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-setuptools
+	makedepends = pybind11
+	makedepends = python-numpy
+	makedepends = python-pandas
+	makedepends = libutf8proc
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = gcc-libs
+	depends = openssl
+	conflicts = duckdb-git
+	source = duckdb::git+https://github.com/duckdb/duckdb.git#commit=46a0fc50aa00ac019aee2157cf3382b85993f728
+	b2sums = SKIP
+
+pkgname = duckdb
+
+pkgname = python-duckdb
+	pkgdesc = A high-performance analytical database system (Python API)
+	depends = python
+	optdepends = python-numpy
+	optdepends = python-pandas
