@@ -1,6 +1,6 @@
 # Maintainer: BeyondMagic <koetemagie@gmail.com>
 pkgname=nincat-git
-pkgver=2.9.r83.afd6520.r83.afd6520.r87.60e011e.r87.60e011e.r87.60e011e
+pkgver=3.0
 pkgrel=1
 pkgdesc="This a simple script that loads an ASCII art centered in your terminal."
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd nincat-git
-  printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "$pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
