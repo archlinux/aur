@@ -2,10 +2,11 @@
 
 pkgname=nsxiv
 pkgver=27.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer'
 arch=('x86_64')
 license=('GPL2')
+conflicts=('nsxiv-git')
 url='https://github.com/nsxiv/nsxiv'
 depends=('imlib2' 'desktop-file-utils' 'xdg-utils' 'hicolor-icon-theme' 'libexif' 'libxft' 'giflib')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/nsxiv/nsxiv/archive/v$pkgver.tar.gz")
