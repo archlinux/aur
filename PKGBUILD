@@ -1,6 +1,6 @@
 pkgname=openblack-git
-pkgver=r1039.51cb468
-pkgrel=2
+pkgver=r1103.ac816c1
+pkgrel=1
 pkgdesc="Open source reimplementation of the game Black & White (2001)."
 arch=('x86_64')
 url="https://github.com/openblack/openblack"
@@ -14,6 +14,11 @@ provides=("${pkgname%-git}")
 source=('git://github.com/openblack/openblack.git')
 sha256sums=('SKIP')
 
+prepare() {
+  cd "${srcdir}/${pkgname%-git}"
+  git submodule update --init externals/imgui
+}
+
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -22,6 +27,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-git}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DOPENBLACK_USE_BUNDLED_BGFX=OFF \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
   cmake --build .
 }
