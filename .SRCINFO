@@ -1,5 +1,5 @@
 pkgbase = zgreending-bin
-	pkgdesc = Web browser that protects you from onlookers. Made with mono, Webkit sharp and WebkitGTK (Webkit2GTK) in C#
+	pkgdesc = Simple, yet usable web browser made with mono, Webkit sharp and WebkitGTK (Webkit2GTK for C#)
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any
@@ -7,7 +7,6 @@ pkgbase = zgreending-bin
 	makedepends = unzip
 	depends = mono
 	depends = webkit2-sharp
-	depends = noto-fonts
 	source = https://github.com/DisableGraphics/zGreending/releases/download/1.0.0/zGreending.zip
 	sha512sums = SKIP
 
