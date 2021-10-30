@@ -2,8 +2,8 @@
 
 _gemname=oedipus_lex
 pkgname=ruby-${_gemname}
-pkgver=2.5.3
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="This is not your father's lexer"
 arch=(any)
 depends=(ruby)
@@ -13,7 +13,7 @@ url=https://github.com/seattlerb/oedipus_lex
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/seattlerb/oedipus_lex/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('40326fbd256766c630a2be72fb746e860a8d4325053e37bb17ff988571586066')
+sha256sums=('5c2742687f220dcd96e99b2f06bb82429889e49366cba6f5934221bf1b6dc0a7')
 
 prepare() {
   cd $_gemname-$pkgver
