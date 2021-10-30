@@ -121,7 +121,7 @@ package_pipewire-git() {
               'pipewire-zeroconf-git: Zeroconf support'
               'pipewire-v4l2-git: V4L2 interceptor'
               )
-  provides=('pipewire'
+  provides=("pipewire=${pkgver}"
             "libpipewire-${pkgver:0:3}.so"
             )
   conflicts=('pipewire')

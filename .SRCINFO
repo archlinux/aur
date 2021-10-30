@@ -60,7 +60,7 @@ pkgname = pipewire-git
 	optdepends = gst-plugin-pipewire-git: gstreamer support
 	optdepends = pipewire-zeroconf-git: Zeroconf support
 	optdepends = pipewire-v4l2-git: V4L2 interceptor
-	provides = pipewire
+	provides = pipewire=0.3.39.57.g9facfca45
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
 	backup = usr/share/pipewire/pipewire.conf
