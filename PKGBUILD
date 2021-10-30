@@ -18,25 +18,25 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_gitname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd ${_gitname}
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd ${srcdir}/${_gitname}
-  install -dm755 "${pkgdir}/usr/share/aurorae/themes"
-  cp -r aurorae/Matcha-sea "${pkgdir}/usr/share/aurorae/themes"
-  install -dm755 "${pkgdir}/usr/share/color-schemes"
-  cp -r color-schemes/*.colors "${pkgdir}/usr/share/color-schemes"
-  install -dm755 "${pkgdir}/usr/share/plasma/desktoptheme"
-  cp -r plasma/desktoptheme/Matcha-sea "${pkgdir}/usr/share/plasma/desktoptheme"
-  cp color-schemes/MatchaSeaDark.colors \
-    "${pkgdir}/usr/share/plasma/desktoptheme/Matcha-sea/colors"
-  install -dm755 "${pkgdir}/usr/share/plasma/look-and-feel"
-  cp -r plasma/look-and-feel/com.github.vinceliuice.Matcha-sea \
-    "${pkgdir}/usr/share/plasma/look-and-feel"
-  install -dm755 "${pkgdir}/usr/share/wallpapers/Matcha"
-  cp -r wallpaper/*.jpg "${pkgdir}/usr/share/wallpapers/Matcha"
-  install -dm755 "${pkgdir}/usr/share/Kvantum"
-  cp -r Kvantum/* "${pkgdir}/usr/share/Kvantum"
+	cd ${srcdir}/${_gitname}
+	install -dm755 "${pkgdir}/usr/share/aurorae/themes"
+	cp -r aurorae/Matcha-sea "${pkgdir}/usr/share/aurorae/themes"
+	install -dm755 "${pkgdir}/usr/share/color-schemes"
+	cp -r color-schemes/*.colors "${pkgdir}/usr/share/color-schemes"
+	install -dm755 "${pkgdir}/usr/share/plasma/desktoptheme"
+	cp -r plasma/desktoptheme/Matcha-sea "${pkgdir}/usr/share/plasma/desktoptheme"
+	cp color-schemes/MatchaSeaDark.colors \
+		"${pkgdir}/usr/share/plasma/desktoptheme/Matcha-sea/colors"
+	install -dm755 "${pkgdir}/usr/share/plasma/look-and-feel"
+	cp -r plasma/look-and-feel/com.github.vinceliuice.Matcha-sea \
+		"${pkgdir}/usr/share/plasma/look-and-feel"
+	install -dm755 "${pkgdir}/usr/share/wallpapers/Matcha"
+	cp -r wallpaper/*.jpg "${pkgdir}/usr/share/wallpapers/Matcha"
+	install -dm755 "${pkgdir}/usr/share/Kvantum"
+	cp -r Kvantum/* "${pkgdir}/usr/share/Kvantum"
 }
