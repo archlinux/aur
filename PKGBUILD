@@ -1,14 +1,14 @@
 # Maintainer: zpyg <pu.mb@outlook.com>
 pkgname=zinit-git
-pkgver=v3.7.r33.g9ea1c9bc
-pkgrel=2
+pkgver=v3.1.r485.g9ea1c9b
+pkgrel=3
 pkgdesc='A flexible and fast Zsh plugin manager.'
 arch=('x86_64')
 url='https://github.com/zdharma/zinit'
 license=('MIT')
 depends=('git' 'curl' 'zsh')
 makedepend=('git')
-source=('zinit::git+https://github.com/zdharma/zinit.git')
+source=('zinit::git+https://github.com/zdharma-continuum/zinit.git')
 sha256sums=('SKIP')
 install=zinit-git.install
 pkgver() {
