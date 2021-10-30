@@ -26,18 +26,24 @@ prepare() {
 }
 
 build() {
-
     cd "$srcdir/Drawj2d"
     JAVACMD=/usr/lib/jvm/java-11-openjdk/bin/java ant -f build.xml
+
+    cd "$srcdir/Drawj2d/dist"
+
+    touch drawj2d-arch
+    echo "#! /bin/bash" >> drawj2d-arch
+    echo "exec /usr/bin/java -jar '/usr/share/java/drawj2d/drawj2d.jar' \"\$@\"" >> drawj2d-arch
+    chmod +x drawj2d-arch
 }
 
 package() {
     cd "$srcdir/Drawj2d/dist"
-    mkdir /usr/share/java/drawj2d
-    cp drawj2d.jar /usr/share/java/drawj2d/
 
-    touch /usr/bin/drawj2d
-    echo "#! /bin/bash" >> /usr/bin/drawj2d
-    echo "exec /usr/bin/java -jar '/usr/share/java/drawj2d/drawj2d.jar' \"\$@\"" >> /usr/bin/drawj2d
-    chmod +x /usr/bin/drawj2d
+    ## Move jar to /usr/share/java/drawj2d/ ##
+    install -dm0755 "$pkgdir"/usr/share/java/$pkgname
+    cp drawj2d.jar "$pkgdir"/usr/share/java/$pkgname/
+
+    install -dm0755 "$pkgdir"/usr/bin
+    cp drawj2d-arch "$pkgdir"/usr/bin/drawj2d
 }
