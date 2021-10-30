@@ -11,7 +11,11 @@
 ##
 ## Xanmod-ROG options:
 ##
-## none for now...
+## 'amd_pstate' - Setting this variable to 'n' will disable amd-pstate
+##                unset/default enables the driver
+if [ -z ${amd_pstate+x} ]; then
+  amd_pstate=y
+fi
 
 ## Xanmod options:
 ##
@@ -273,6 +277,13 @@ prepare() {
   if [ "$_compress_modules" = "y" ]; then
     scripts/config --disable CONFIG_MODULE_COMPRESS_NONE \
                    --enable CONFIG_MODULE_COMPRESS_ZSTD
+  fi
+
+  if [ "$amd_pstate" = "n" ]; then
+    msg2 "Disabling amd-pstate driver..."
+    scripts/config --disable CONFIG_X86_AMD_PSTATE
+  else
+    scripts/config --enable CONFIG_X86_AMD_PSTATE
   fi
 
   # let user choose microarchitecture optimization target;
