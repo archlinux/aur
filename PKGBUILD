@@ -3,7 +3,7 @@
 pkgname=alephium-wallet-bin
 pkgdesc="The official Alephium desktop wallet."
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/alephium/alephium-wallet"
 license=('LGPL3')
@@ -15,8 +15,8 @@ sha256sums_x86_64=('2ffa3a3a5a7a7e6fc61f3a268176f4cc7bb0699480156ad40a16bd306d07
 package() {
 	tar -xf data.tar.xz -C "$pkgdir"
 
-	# Move the icon to the right directory.
-	mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
-	mv "$pkgdir/usr/share/icons/hicolor/0x0/apps/alephium.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/alephium.png"
+	# Fix the icon installation path
+	install -Dm644 "$pkgdir/usr/share/icons/hicolor/0x0/apps/${pkgname%-wallet-bin}.png" \
+	  -t "$pkgdir/usr/share/icons/hicolor/512x512/apps"
 	rm -r "$pkgdir/usr/share/icons/hicolor/0x0"
 }
