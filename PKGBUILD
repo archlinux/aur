@@ -1,6 +1,6 @@
 # Maintainer: silverhikari
 pkgname=gingerblue
-pkgver=1.8.0
+pkgver=2.0.1
 pkgrel=1
 epoch=
 pkgdesc="for musicians who compose, record, and share original music"
@@ -10,10 +10,11 @@ license=("GPL")
 depends=("intltool" "gst-plugins-bad" "libshout" "gtk3" "libchamplain" "geocode-glib")
 provides=("gingerblue")
 source=("https://www.gingerblue.org/src/${pkgname}-${pkgver}.tar.xz")
-sha256sums=("2acc6be188feda7e22e0b0ff0ce7f39ac9812a6f8549fe96efe957e939a166c3")
+sha256sums=("118dc659d229e2fa7e6c03c8b7aef738f0e9e7e773cc941329b5afbeb82e88a9")
 
 build() {
 	cd "$pkgname-$pkgver"
+	autoupdate
 	autoreconf
 	aclocal
 	automake --add-missing
