@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Loraines When They Shine
+Name[zh_CN]=洛兰绽放之时
+GenericName=Visual novel
+GenericName[zh_CN]=视觉小说
+Exec=/opt/loraines-when-they-shine/LorainesWhenTheyShine.sh
+Comment=Visual novel "Loraines When They Shine"
+Comment[zh_CN]=视觉小说《洛兰绽放之时》
+Icon=loraines-when-they-shine
+Terminal=false
+StartupNotify=true
+Categories=Game;
