@@ -1,14 +1,14 @@
 # Maintainer: BeyondMagic <koetemagie@gmail.com>
 pkgname=nincat-git
-pkgver=2.9.r83.afd6520.r83.afd6520
+pkgver=2.9.r83.afd6520.r83.afd6520.r87.60e011e.r87.60e011e.r87.60e011e
 pkgrel=1
 pkgdesc="This a simple script that loads an ASCII art centered in your terminal."
 arch=(any)
 url="https://github.com/BeyondMagic/nincat"
 license=('GPL3')
 makedepends=(git)
-checkdepends=(coreutils)
-optdepends=(c-lolcat)
+checkdepends=(coreutils c-lolcat)
+#optdepends=(c-lolcat)
 provides=(nincat)
 conflicts=(nincat)
 source=("$pkgname::git+$url")
