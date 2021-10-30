@@ -3,7 +3,8 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Suvojit Ghosh <ghoshsuvojit2012@gmail.com>
+# Developer: Ronak Sanpui
 pkgname=senpahe-git
 pkgver=r26.`6c4fa5f`
 pkgrel=1
