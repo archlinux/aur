@@ -6,7 +6,7 @@
 # Maintainer: Changseo Jang <changseo.jang@korea.edu>
 pkgname='pbkit'
 pkgver='v0.0.22'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Protobuf Dependency Manager'
 arch=('x86_64')
