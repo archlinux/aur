@@ -1,7 +1,7 @@
 pkgbase = mod-app-git
 	pkgdesc = Desktop application of the MOD interface and backend, natively integrated in the OS
 	pkgver = 0.0.1.r155.gf2f1c2f
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/moddevices/mod-app
 	arch = x86_64
 	license = GPL3
@@ -22,4 +22,3 @@ pkgbase = mod-app-git
 	md5sums = SKIP
 
 pkgname = mod-app-git
-

@@ -1,7 +1,7 @@
 # Maintainer: jujudusud <jujudusud@gmail.com>
 pkgname=mod-app-git
 pkgver=0.0.1.r155.gf2f1c2f
-pkgrel=1
+pkgrel=3
 pkgdesc="Desktop application of the MOD interface and backend, natively integrated in the OS"
 arch=('x86_64')
 url="https://github.com/moddevices/mod-app"
