@@ -8,16 +8,12 @@ arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://sourceforge.net/projects/$pkgname"
 license=('GPLv2')
 depends=('java-runtime>=8')
-conflicts+=('java-runtime>11')
 makedepends=(
     'ant'
-    'java-environment>=8'
-    'java-environment<=11'
-    'jdk11-openjdk=11' #11.0.12.u7-1
+    'jdk11-openjdk=11.0.12.u7-1'
 )
 conflicts=('drawj2d')
 provides=('drawj2d')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://iweb.dl.sourceforge.net/project/$pkgname/$pkgver/Drawj2d-$pkgver.src.tar.gz")
 sha256sums=('fd437d1f13fa09d0c65da82698e919f6c3c94c6109432152a175bc6ef8addb4b')
 

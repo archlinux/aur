@@ -10,9 +10,7 @@ pkgbase = drawj2d
 	arch = aarch64
 	license = GPLv2
 	makedepends = ant
-	makedepends = java-environment>=8
-	makedepends = java-environment<=11
-	makedepends = jdk11-openjdk=11
+	makedepends = jdk11-openjdk=11.0.12.u7-1
 	depends = java-runtime>=8
 	provides = drawj2d
 	conflicts = drawj2d
