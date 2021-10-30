@@ -1,13 +1,12 @@
 pkgbase = sambamba
 	pkgdesc = Tools for working with SAM/BAM data
-	pkgver = 0.7.1
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = http://lomereiter.github.io/sambamba
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = https://github.com/biod/sambamba/releases/download/v0.7.1/sambamba-0.7.1-linux-static.gz
-	sha256sums = d6e3faaa4a5440067e65b396c9a23188765ea5acc6621485c48ac86158fa62f3
+	source = https://github.com/biod/sambamba/releases/download/v0.8.1/sambamba-0.8.1-linux-amd64-static.gz
+	sha256sums = 016481afe62190e6ef499a08a86cdb86000a4de53d4dfba31efe7cd7308b7089
 
 pkgname = sambamba
-
