@@ -1,0 +1,13 @@
+pkgbase = gdrive-search
+	pkgdesc = A TUI to quickly find files in your Google Drive
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jalada/gdrive-search
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	source = gdrive-search-0.1.0.tar.gz::https://static.crates.io/crates/gdrive-search/gdrive-search-0.1.0.crate
+	sha512sums = 961bc9ce07f37c4cdd6dcf3451b316270f78841273345be103a0ed295022ddf6df057df6c0870997f0085d0db95844965eddee225beea38c2bde849667ff43e1
+
+pkgname = gdrive-search
