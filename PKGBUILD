@@ -30,6 +30,6 @@ sha256sums=('SKIP')
 validpgpkeys=()
 
 package() {
-  deno install --unstable -A -n pollapo "$srcdir/pbkit/cli/pollapo/entrypoint.ts"
-  deno install --unstable -A -n pb "$srcdir/pbkit/cli/pb/entrypoint.ts"
+  deno install -f --unstable -A -n pollapo "$srcdir/pbkit/cli/pollapo/entrypoint.ts"
+  deno install -f --unstable -A -n pb "$srcdir/pbkit/cli/pb/entrypoint.ts"
 }
