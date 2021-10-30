@@ -14,7 +14,7 @@ url="https://github.com/gaurav/taxondna"
 license=('GPL2')
 source=("https://github.com/gaurav/taxondna/releases/download/v${pkgver}/SequenceMatrix-${pkgver}.zip" "seqencematrix.desktop")
 sha256sums=('ba46fe8672ded973c835ea0a636c251d28fa2f80ee30a69469a4a7fab204e814'
-            '391168a6dc8ed31fde009c3f103836c2400bf32c882f28ec21332a915eae7bd0')
+            '0b9e5d75ef093495064fbb6f22d71a50282e4bd9f2daec0f995897a744ab4468')
 
 package() {
     install -dm755 "$pkgdir"/usr/share/{seqencematrix,applications}
