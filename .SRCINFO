@@ -1,14 +1,13 @@
 pkgbase = pbkit
 	pkgdesc = Protobuf Dependency Manager
 	pkgver = v0.0.22
-	pkgrel = 4
+	pkgrel = 5
+	url = https://github.com/pbkit/pbkit
 	arch = x86_64
 	license = MIT
 	license = APACHE
 	makedepends = git
 	makedepends = deno
-	provides = pollapo
-	provides = pb
 	source = pbkit::git://github.com/pbkit/pbkit.git#tag=v0.0.22
 	sha256sums = SKIP
 

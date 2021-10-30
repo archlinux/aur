@@ -1,38 +1,26 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Changseo Jang <changseo.jang@korea.edu>
 pkgname='pbkit'
 pkgver='v0.0.22'
-pkgrel=4
-epoch=
+pkgrel=5
 pkgdesc='Protobuf Dependency Manager'
 arch=('x86_64')
-url=''
+url='https://github.com/pbkit/pbkit'
 license=('MIT' 'APACHE')
-groups=()
 depends=()
 makedepends=('git' 'deno')
-checkdepends=()
-optdepends=()
-provides=('pollapo' 'pb')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("pbkit::git://github.com/pbkit/pbkit.git#tag=${pkgver}")
-noextract=()
 sha256sums=('SKIP')
-validpgpkeys=()
+
+build() {
+  cd "$pkgname"
+
+  deno compile --unstable -A -o pollapo ./cli/pollapo/entrypoint.ts
+  deno compile --unstable -A -o pb ./cli/pb/entrypoint.ts
+}
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  deno compile --unstable -A -o pollapo "$srcdir/pbkit/cli/pollapo/entrypoint.ts"
-  cp "${srcdir}/pollapo" "${pkgdir}/usr/bin/pollapo"
-  deno compile --unstable -A -o pb "$srcdir/pbkit/cli/pb/entrypoint.ts"
-  cp "${srcdir}/pb" "${pkgdir}/usr/bin/pb"
+  cd "$pkgname"
+
+  install -Dm 755 pollapo -t "$pkgdir"/usr/bin
+  install -Dm 755 pb -t "$pkgdir"/usr/bin
 }
