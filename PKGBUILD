@@ -3,7 +3,7 @@
 pkgname='python-mido'
 _name='mido'
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for working with MIDI messages and ports"
 url="https://mido.readthedocs.io/"
 depends=('python-rtmidi')
