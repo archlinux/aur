@@ -2,7 +2,7 @@
 
 _pyname=pydyf
 pkgname=python-$_pyname
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='a low-level PDF generator written in Python and based on PDF specification 1.7'
 arch=(any)
@@ -17,7 +17,7 @@ checkdepends=(ghostscript
               python-pytest)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('1a6eb2bb94c49eebe4cbd69c8c3c5664b16857cdf00e8347bff97b40c72a33e8')
+sha256sums=('1e2f5de48174f505de025a7d1e7cf01bbdd9422ca8ab9451782bf00ee178602c')
 
 prepare() {
 	cd "$_archive"
@@ -37,6 +37,5 @@ check() {
 
 package() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
