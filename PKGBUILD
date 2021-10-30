@@ -11,7 +11,7 @@ pkgname=('pipewire-git'
          'pipewire-zeroconf-git'
          'pipewire-v4l2-git'
          )
-pkgver=0.3.39.1.g651f0dece
+pkgver=0.3.39.57.g9facfca45
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -161,7 +161,7 @@ package_pipewire-git() {
 
 package_pipewire-docs-git() {
   pkgdesc+=" - documentation (GIT Version)"
-  provides=('pipewire-docs')
+  provides=("pipewire-docs=${pkgver}")
   conflicts=('pipewire-docs')
   arch=('any')
 
@@ -177,7 +177,7 @@ package_pipewire-jack-git() {
            "libpipewire-${pkgver:0:3}.so"
            )
   backup=('usr/share/pipewire/jack.conf')
-  provides=('pipewire-jack'
+  provides=("pipewire-jack=${pkgver}"
             'jack2'
             'jack'
             'libjack.so'
@@ -203,7 +203,7 @@ package_pipewire-pulse-git() {
            'libavahi-client.so'
            'libavahi-common.so'
            )
-  provides=('pipewire-pulse'
+  provides=("pipewire-pulse=${pkgver}"
             'pulseaudio'
             'pulseaudio-bluetooth'
             )
@@ -211,7 +211,6 @@ package_pipewire-pulse-git() {
              'pulseaudio'
              'pulseaudio-bluetooth'
              )
-  arch=('x86_64')
   install=pipewire-pulse.install
 
   mv pulse/* "${pkgdir}"
@@ -224,7 +223,7 @@ package_pipewire-pulse-git() {
 package_pipewire-alsa-git() {
   pkgdesc+=" - ALSA configuration (GIT version)"
   depends=('pipewire-session-manager')
-  provides=('pipewire-alsa'
+  provides=("pipewire-alsa=${pkgver}"
             'pulseaudio-alsa'
             )
   conflicts=('pipewire-alsa')
@@ -245,7 +244,7 @@ package_pipewire-ffmpeg-git() {
            "libpipewire-${pkgver:0:3}.so"
            'ffmpeg'
            )
-  provides=('pipewire-ffmpeg')
+  provides=("pipewire-ffmpeg=${pkgver}")
   conflicts=('pipewire-ffmpeg')
 
   mv ffmpeg/* "${pkgdir}"
@@ -256,7 +255,7 @@ package_pipewire-ffmpeg-git() {
 
 package_alsa-card-profiles-git() {
   pkgdesc+=" - ALSA card profiles (GIT version)"
-  provides=('alsa-card-profiles')
+  provides=("alsa-card-profiles=${pkgver}")
   conflicts=('alsa-card-profiles')
   license=('LGPL')
   arch=('any')
@@ -273,7 +272,7 @@ package_pipewire-zeroconf-git() {
            'libavahi-client.so'
            'libavahi-common.so'
            )
-  provides=('pipewire-zeroconf')
+  provides=("pipewire-zeroconf=${pkgver}")
   conflicts=('pipewire-zeroconf')
 
   mv zeroconf/* "${pkgdir}"
@@ -286,6 +285,8 @@ package_pipewire-v4l2-git() {
   depends=('pipewire-session-manager'
            "libpipewire-${pkgver:0:3}.so"
            )
+  provides=("pipewire-v4l2=${pkgver}")
+  conflicts=('pipewire-v4l2')
 
   mv v4l2/* "${pkgdir}"
 
