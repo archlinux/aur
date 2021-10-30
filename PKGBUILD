@@ -105,7 +105,7 @@ build() {
       --enable-install-libiberty \
       --enable-linker-build-id \
       --enable-lto \
-      --disable-multilib \
+      --enable-multilib \
       --enable-plugin \
       --enable-shared \
       --enable-threads=posix \
@@ -129,7 +129,7 @@ check() {
   sed -i '/maybe-check-target-libphobos \\/d' Makefile
 
   make check-rust || true
-  "$srcdir/gcc/contrib/test_summary"
+  "$srcdir/gccrs/contrib/test_summary"
 }
 
 package_gccrs-libs-git() {
