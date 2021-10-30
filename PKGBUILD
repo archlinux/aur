@@ -3,7 +3,7 @@
 pkgname=go-cqhttp-bin
 
 pkgver=v1.0.0_beta7_fix2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Lightweight, native cross-platform implementation of cqhttp in Golang."
 arch=("i686" "x86_64" "armv7h" "aarch64")
@@ -11,6 +11,8 @@ url="https://github.com/Mrs4s/go-cqhttp/releases"
 license=("AGPL3")
 
 optdepends=("ffmpeg: support voice sending in any format")
+
+provides=('go-cqhttp')
 
 source_i686=("${pkgname}-i686-${pkgver//_/-}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${pkgver//_/-}/go-cqhttp_linux_386.tar.gz")
 source_x86_64=("${pkgname}-x86_64-${pkgver//_/-}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${pkgver//_/-}/go-cqhttp_linux_amd64.tar.gz")
