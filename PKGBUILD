@@ -3,11 +3,18 @@
 pkgname=loraines-when-they-shine-bin
 _pkgname=loraines-when-they-shine
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('imagemagick')
-depends=('hicolor-icon-theme')
+depends=(
+    'hicolor-icon-theme'
+    'libglvnd'
+    'libx11'
+    'libxcb'
+    'libxau'
+    'libxdmcp'
+)
 pkgdesc='视觉小说《洛兰绽放之时》'
 arch=('x86_64' 'i686')
 url='https://github.com/MAY-game-studio/Loraines_when_they_shine'

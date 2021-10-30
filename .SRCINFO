@@ -1,16 +1,21 @@
 pkgbase = loraines-when-they-shine-bin
 	pkgdesc = 视觉小说《洛兰绽放之时》
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MAY-game-studio/Loraines_when_they_shine
 	arch = x86_64
 	arch = i686
 	license = custom
 	makedepends = imagemagick
 	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
 	provides = loraines-when-they-shine
 	conflicts = loraines-when-they-shine
-	source = loraines-when-they-shine-bin-1.0-1.zip::https://cloud.tsinghua.edu.cn/f/b834452fb9eb42008eab/?dl=1
+	source = loraines-when-they-shine-bin-1.0-2.zip::https://cloud.tsinghua.edu.cn/f/b834452fb9eb42008eab/?dl=1
 	source = loraines-when-they-shine.desktop
 	sha256sums = 33c00afa4d04a79fa3ddf6ebff7ee98c4f2d7dd533301d16787cbee34035d4b0
 	sha256sums = 9a98ccd8cf024bfd3d22579d7e9a122180cefe81899417004a198d7ce6c2bdb3
