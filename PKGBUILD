@@ -1,7 +1,7 @@
 # Maintainer: Ismo Toijala <ismo.toijala@gmail.com>
 pkgname=python-simpleeval
 _name=${pkgname#python-}
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=3
 pkgdesc="A simple, safe single expression evaluator library."
 arch=(any)
@@ -17,10 +17,8 @@ source=(
 	"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 	"https://raw.githubusercontent.com/danthedeckie/simpleeval/${pkgver}/LICENCE"
 )
-sha256sums=(
-	692055488c2864637f6c2edb5fa48175978a2a07318009e7cf03c9790ca17bea
-	91efc982fa45add893fa80ec3ab1524f31e50a1386adba1424ddcf432359850a
-)
+sha256sums=('5c2012f724cd6ba2b8b5d0624a6d073ce778028e38683eb9afc4a5c0c95c35fa'
+            '91efc982fa45add893fa80ec3ab1524f31e50a1386adba1424ddcf432359850a')
 
 prepare() {
 	cd "${_name}-${pkgver}"
@@ -29,6 +27,10 @@ prepare() {
 [easy_install]
 find_links = file:///dev/null
 index_url = file:///dev/null
+EOF
+    cat >> setup.py <<EOF
+from setuptools import setup
+setup()
 EOF
 }
 
