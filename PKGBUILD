@@ -1,25 +1,35 @@
 # Maintainer: Mike Nagie <echo 'cHJvbWlrZTE5ODdAZ21haWwuY29tCg==' | base64 -d>
+# Maintainer: Jose Lopes <josemslopes at gmail dot com>
+
+_pkgname=python3-otr
 pkgname=python-otr
-pkgver=1.2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Off-The-Record Messaging protocol implementation for Python"
-arch=(any)
-url="https://github.com/AGProjects/python-otr"
-license=('LGPL')
-depends=('python2')
-#makedepends=()
-source=("https://github.com/AGProjects/$pkgname/archive/master.zip")
- 
-md5sums=('0d9d7f148f5ed4d0cad8c94f44a4b172')
- 
- 
- 
+license=('LGPL-2.1+')
+arch=('aarch64' 'x86_64')
+url="https://github.com/AGProjects/python3-otr"
+depends=(
+  'python-gmpy2'
+  'python-zope-interface'
+  'python3-application'
+  )
+conflicts=('python3-otr')
+provides=('python3-otr')
+replaces=('python3-otr')
+source=("https://github.com/AGProjects/${_pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('3fc0a49b30e752f77be7533744a418a8471486a2860f50b7d9157f2bc25fe593cf4b486ae856cb3944695f61466a87e1ca34cdaf48eea7ef9ba2feaef78332c7')
+
 build() {
-    cd "$pkgname-master"
-    python2 setup.py build
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python3 setup.py build
 }
- 
+
 package() {
-    cd "$pkgname-master"
-    python2 setup.py install --prefix=/usr --root="${pkgdir}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+  # license
+  install -Dm644 LICENSE \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
