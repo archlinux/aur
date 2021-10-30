@@ -1,5 +1,5 @@
 pkgname=rpmlauncher-git
-pkgver=1.0.0.625.r0.g4318a47
+pkgver=1.0.0.654.r0.g8a9376f
 pkgrel=1
 pkgdesc="A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart"
 license=('GPL')
