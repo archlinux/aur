@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extensions-fly-pie-git
 _pkgname=Fly-Pie
 pkgver=r1250.50cb9e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fly-Pie is an innovative marking menu written as a GNOME Shell extension"
 arch=('any')
 url="https://github.com/Schneegans/Fly-Pie"
