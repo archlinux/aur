@@ -1,91 +1,58 @@
 # -*- mode: shell-script -*-
-# Maintainer: Dylon Edwards <deltaecho at archlinux dot us>
+# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Contributor: Dylon Edwards <deltaecho at archlinux dot us>
 
-pkgbase='python-tensorly'
-pkgname=(
-    python{,2}-tensorly
-)
-pkgver=0.3.0
+pkgname='python-tensorly'
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Simple and Fast Tensor Learning in Python"
-arch=('x86_64')
-url="http://tensorly.org/stable/home.html"
+arch=('any')
+url="https://tensorly.org/stable/home.html"
 license=('BSD')
 depends=(
-    python{,2}
+    python
 )
-checkdepends=(
-    python{,2}-pytest
+makedepends=(
+    python-setuptools
 )
 optdepends=(
-    mxnet
-    python{,2}-numpy
-    python{,2}-pytorch{,-cuda}
+    python-numpy
+    python-pytorch
+    python-tensorflow
 )
-changelog="${pkgbase}.changelog"
+checkdepends=(
+    python-pytest
+    ${optdepends[@]}
+)
+# skipped backend tests
+# - mxnet: somehow some tests fail
+# - cupy: needs a GPU for tests
+# - jax: build fails (https://github.com/google/jax/issues/7712)
+optdepends+=(
+    mxnet
+    python-cupy
+    python-jax
+)
+changelog="${pkgname}.changelog"
 source=("tensorly-${pkgver}.tar.gz::https://github.com/tensorly/tensorly/archive/${pkgver}.tar.gz")
-md5sums=('d2bb823c87246b4ff45a175f984beb3d')
+sha256sums=('e36a9124efd34f76fc727b0c45e92655a256231b56897591ee0d451ada279262')
 
-function check() {
+build() {
     cd "tensorly-${pkgver}"
-
-    # ------- #
-    # Python3 #
-    # ------- #
-
-    if pacman -Qsq '^python-numpy$' &>/dev/null; then
-        echo "Testing against the numpy backend for Python3 ..."
-        TENSORLY_BACKEND='numpy' pytest -v tensorly
-    fi
-
-    if pacman -Qsq '^python-pytorch(-cuda)?$' &>/dev/null; then
-        echo "Testing against the pytorch backend for Python3 ..."
-        TENSORLY_BACKEND='pytorch' pytest -v tensorly
-    fi
-
-    if pacman -Qsq '^mxnet$' &>/dev/null; then
-        echo "Testing against the mxnet backend for Python3 ..."
-        TENSORLY_BACKEND='mxnet' pytest -v tensorly
-    fi
-
-    # ------- #
-    # Python2 #
-    # ------- #
-
-    if pacman -Qsq '^python2-numpy$' &>/dev/null; then
-        echo "Testing against the numpy backend for Python2 ..."
-        TENSORLY_BACKEND='numpy' pytest2 -v tensorly
-    fi
-
-    if pacman -Qsq '^python2-pytorch(-cuda)?$' &>/dev/null; then
-        echo "Testing against the pytorch backend for Python2 ..."
-        TENSORLY_BACKEND='pytorch' pytest2 -v tensorly
-    fi
+    python setup.py build
 }
 
-function package_python-tensorly() {
-    depends=(
-        python
-    )
-    optdepends=(
-        mxnet
-        python-numpy
-        python-pytorch{,-cuda}
-    )
+check() {
+    cd "tensorly-${pkgver}"
 
+    for backend in numpy pytorch tensorflow; do
+        echo Testing against the $backend backend
+        TENSORLY_BACKEND=$backend pytest -v tensorly
+    done
+}
+
+package() {
     cd "tensorly-${pkgver}"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
-}
-
-function package_python2-tensorly() {
-    depends=(
-        python2
-    )
-    optdepends=(
-        python2-numpy
-        python2-pytorch{,-cuda}
-    )
-
-    cd "tensorly-${pkgver}"
-    python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
+    install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname
 }
