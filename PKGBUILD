@@ -33,6 +33,6 @@ package() {
 
   ln -Tsf omreg.d/omreg-hapi.cfg "${pkgdir}/opt/dell/srvadmin/etc/omreg.cfg"
 
-  mkdir -p "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/bin"
   ln -Tsf /opt/dell/dcc/cctk "${pkgdir}/usr/bin/cctk"
 }
