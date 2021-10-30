@@ -21,7 +21,7 @@ _750_HZ_ticks=
 _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
-pkgbase=linux-cachyos-cacule-lts
+pkgbase=linux-cacule-lts
 pkgver=5.10.76
 pkgrel=1
 pkgdesc='LTS Linux'

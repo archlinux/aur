@@ -1,4 +1,4 @@
-pkgbase = linux-cachyos-cacule-lts
+pkgbase = linux-cacule-lts
 	pkgdesc = LTS Linux
 	pkgver = 5.10.76
 	pkgrel = 1
@@ -52,7 +52,7 @@ pkgbase = linux-cachyos-cacule-lts
 	sha256sums = 56cc0ffee3005fc81b0488348861ceea035ebd1356eec1512c53e786e206ff06
 	sha256sums = 137811c7d916c608f9ebb7e4d82ec93ea7592d99fe6394cf908c0e12e9881a7d
 
-pkgname = linux-cachyos-cacule-lts
+pkgname = linux-cacule-lts
 	pkgdesc = The LTS Linux kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -63,5 +63,5 @@ pkgname = linux-cachyos-cacule-lts
 	provides = WIREGUARD-MODULE
 	replaces = wireguard-lts
 
-pkgname = linux-cachyos-cacule-lts-headers
+pkgname = linux-cacule-lts-headers
 	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel
