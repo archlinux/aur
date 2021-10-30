@@ -9,7 +9,6 @@ url="https://www.gnome.org"
 license=('GPL2')
 depends=('gtk3' 'hicolor-icon-theme' 'dbus-glib')
 makedepends=('gnome-common' 'gtk-doc' 'intltool')
-#options=('!emptydirs')
 source=("https://download-fallback.gnome.org/sources/gnome-session/${pkgver%.*}/gnome-session-${pkgver}.tar.xz"
         'https://raw.githubusercontent.com/chenxiaolong/AUR-Files/b8632ea084b21e5fdef70a5ba7787c5567403146/gnome-session-properties/0001-Remove-unneeded-stuff.patch'
         'https://raw.githubusercontent.com/chenxiaolong/AUR-Files/b8632ea084b21e5fdef70a5ba7787c5567403146/gnome-session-properties/0002-Fix-GTK-3.14-incompatibilities.patch')
@@ -21,6 +20,9 @@ prepare() {
   cd "gnome-session-${pkgver}"
   patch -p1 -i ../0001-Remove-unneeded-stuff.patch
   patch -p1 -i ../0002-Fix-GTK-3.14-incompatibilities.patch
+
+  sed -ri '/^Icon/ s/session-/gnome-session-/g' \
+    "data/$pkgname.desktop.in.in"
 }
 
 build() {
@@ -38,7 +40,4 @@ package() {
   for f in ${files}; do
     mv "${f}" "${f/apps\/session-/apps\/gnome-session-}"
   done
-
-  sed -ri '/^Icon/ s/session-/gnome-session-/g' \
-    "${pkgdir}/usr/share/applications/gnome-session-properties.desktop"
 }

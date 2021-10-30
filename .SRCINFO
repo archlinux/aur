@@ -19,4 +19,3 @@ pkgbase = gnome-session-properties
 	sha256sums = a06118f85b26ef13d82f666f8a86cae1fb3e9ca12cd45703ef4dd9ecadfa3aab
 
 pkgname = gnome-session-properties
-
