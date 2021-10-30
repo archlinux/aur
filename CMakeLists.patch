@@ -1,0 +1,16 @@
+--- CMakeLists.txt	2021-10-30 15:30:08.340985000 +0200
++++ CMakeLists.txt	2021-10-30 15:31:03.176972991 +0200
+@@ -24,11 +24,10 @@
+ add_executable(ChargeGuru ${SOURCES})
+ qt5_use_modules(ChargeGuru Core Gui Widgets Charts)
+ 
++target_link_libraries(ChargeGuru b6)
++
+ find_package(libusb-1.0)
+ if (LIBUSB_1_FOUND)
+     include_directories(${LIBUSB_1_INCLUDE_DIRS})
+     target_link_libraries(ChargeGuru ${LIBUSB_1_LIBRARIES})
+ endif(LIBUSB_1_FOUND)
+-
+-target_link_libraries(ChargeGuru b6)
+-

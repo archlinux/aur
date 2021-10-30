@@ -1,0 +1,20 @@
+pkgbase = charge-guru
+	pkgdesc = Application to control SkyRC B6* chargers
+	pkgver = r8.38563a9
+	pkgrel = 1
+	url = https://github.com/maciek134/charge-guru
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = libb6
+	makedepends = gendesk
+	depends = qt5-base
+	depends = qt5-charts
+	optdepends = adwaita-icon-theme: battery icon
+	source = git+https://github.com/maciek134/charge-guru.git#commit=38563a9
+	source = CMakeLists.patch
+	sha256sums = SKIP
+	sha256sums = 54f8609c7d6a187845e83f85edf8dc4e38f8bb832cba2402ddb65580d0e3ac1b
+
+pkgname = charge-guru
