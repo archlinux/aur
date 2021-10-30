@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='py_cui'
 pkgname="python-$_projectname"
-pkgver='0.1.3'
+pkgver='0.1.4'
 pkgrel='1'
 pkgdesc='Python library for creating all-ascii CUI/TUI interfaces with pre-built widgets'
 arch=('any')
 url="https://github.com/jwlodek/$_projectname"
 license=('BSD')
-depends=('python>=3.2.0')
-makedepends=('python-setuptools')
+depends=('python>=3.6.0')
+makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('47f5b21dd47ff3e475188fe367bab74170fac735b1d516e5860b8005efe1665d')
+sha256sums=('9d7ebac19fde15249442d141ea42e0b150cd296547d8bb0646d84f6031cc72d8')
 
 _sourcedirectory="$_projectname-$pkgver"
 
