@@ -5,7 +5,7 @@
 _pkgname=fastlbry-terminal
 pkgname=${_pkgname}-git
 pkgver=0.5.r157.g3bcbc1a
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully featured, terminal application to interact with LBRY"
 arch=('any')
 url="https://www.notabug.org/jyamihud/FastLBRY-terminal"
@@ -40,9 +40,9 @@ package() {
 
   install -dm 0755 "${pkgdir}/usr/share/licenses/${_pkgname}"
   install -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/"
-  install -m 0644 LBRYNET-LICENSE.md "${pkgdir}/usr/share/licenses${_pkgname}/"
+  install -m 0644 LBRYNET-LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
-  install -dm755 "${pkgdir}/usr/bin/"
+  install -dm 0755 "${pkgdir}/usr/bin/"
   cd "${pkgdir}/usr/bin/"
   echo "#!/bin/sh" > ${_pkgname}
   echo "cd /usr/lib/${_pkgname} && exec python run.py" >> ${_pkgname}
