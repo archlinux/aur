@@ -1,14 +1,14 @@
 pkgbase = halibut
 	pkgdesc = free document preparation system
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = http://www.chiark.greenend.org.uk/~sgtatham/halibut/
 	arch = i686
 	arch = x86_64
 	license = custom:MIT
+	makedepends = cmake
 	depends = glibc
-	source = https://www.chiark.greenend.org.uk/~sgtatham/halibut/halibut-1.2/halibut-1.2.tar.gz
-	sha256sums = 1aedfb6240f27190c36a390fcac9ce732edbdbaa31c85ee675b994e2b083163f
+	source = https://www.chiark.greenend.org.uk/~sgtatham/halibut/halibut-1.3/halibut-1.3.tar.gz
+	sha256sums = aaa0f7696f17f74f42d97d0880aa088f5d68ed3079f3ed15d13b6e74909d3132
 
 pkgname = halibut
-
