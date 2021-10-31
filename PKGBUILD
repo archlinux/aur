@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-ibus-tweaker-git
 commit=bc14a13
-pkgver=20211017+${commit}
+pkgver=20211030+${commit}
 pkgrel=1
 pkgdesc="Tweaker of ibus in gnome-shell for orientation, theme, font and input mode auto-switch."
 arch=('any')
