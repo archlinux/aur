@@ -9,7 +9,7 @@ url='https://github.com/SuNNjek/fluent-decoration'
 arch=('x86_64')
 license=('GPL')
 depends=('kdecoration')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url#branch=$_branch")
