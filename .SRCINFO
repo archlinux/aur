@@ -1,6 +1,6 @@
 pkgbase = sqls
 	pkgdesc = Implementation of the Language Server Protocol for SQL
-	pkgver = 0.2.19
+	pkgver = 0.2.20
 	pkgrel = 1
 	url = https://github.com/lighttiger2505/sqls
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sqls
 	optdepends = mysql
 	optdepends = sqlite3
 	optdepends = postgresql
-	source = sqls-0.2.19.tar.gz::https://github.com/lighttiger2505/sqls/archive/v0.2.19.tar.gz
-	sha256sums = 436296c598608add44f27d43a93a9a2435a70a2ffb9efd074c146d0b5110e871
+	source = sqls-0.2.20.tar.gz::https://github.com/lighttiger2505/sqls/archive/v0.2.20.tar.gz
+	sha256sums = ab9a7cfc4cd881df88efd388fa2b27e7807b0580c0d9b21165946cc452905cdb
 
 pkgname = sqls
