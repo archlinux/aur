@@ -2,6 +2,7 @@ pkgname=kya
 pkgver=0.1.7
 pkgrel=1
 makedepends=('rust' 'cargo')
+url="https://github.com/gert7/kya"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Watches for new screenshots and sends them to Gyazo"
 license=('MIT')
