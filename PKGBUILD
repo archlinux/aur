@@ -1,7 +1,7 @@
 # Maintainer: Austin Haedicke <austin.haedicke@gamil.com>
 
 pkgname=dnd-tools
-pkgver=baefb9e
+pkgver=r36.baefb9e
 pkgrel=1
 pkgdesc='Interactive CLI tools for Dungeons and Dragons 5e'
 depends=('python')
@@ -15,8 +15,8 @@ source=(git://github.com/savagezen/dnd-tools.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
-  git rev-parse --short HEAD
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
