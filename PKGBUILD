@@ -1,7 +1,7 @@
 # Maintainer: SamuelLira99 <samuellira99@bol.com.br>
 
 pkgname='azerothcore-wotlk-git'
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Open-source game-server application for World of Warcraft, currently supporting the 3.3.5a game version"
@@ -16,8 +16,8 @@ _SRC_DIR=/opt/azerothcore
 
 prepare() {
   # Create needed directories
-  sudo mkdir ${_SERVER_ROOT}
-  sudo mkdir ${_SRC_DIR}
+  sudo mkdir -p ${_SERVER_ROOT}
+  sudo mkdir -p ${_SRC_DIR}
 
   # Change ownership for needed directories
   sudo chown ${USER}:${USER} ${_SERVER_ROOT}
@@ -30,7 +30,7 @@ prepare() {
   # Download azerothcore-wotlk
   git clone https://github.com/azerothcore/azerothcore-wotlk.git --branch master --single-branch ${_SRC_DIR}
 	cd ${_SRC_DIR}
-	mkdir build
+	mkdir -p build
 	cd build
 	cmake ../ -DCMAKE_INSTALL_PREFIX=${_SERVER_ROOT}/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS=0 -DSCRIPTS=static
 
