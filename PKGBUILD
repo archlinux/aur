@@ -5,7 +5,7 @@ _arch=armv7l
 _kernel_arch=arm
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-linux-api-headers
-pkgver=5.10.55
+pkgver=5.10.76
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace ($_target)"
 arch=(any)
@@ -14,7 +14,7 @@ license=(GPL2)
 makedepends=(rsync)
 options=(!strip)
 source=(https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.{xz,sign})
-sha256sums=('7581113dad67a095bc5cc32b457e1a9283f91579e248f3b547a7302157fe8889'
+sha256sums=('480a09ba1962862ff18df9453fa0df6ba11cbe19eefedeab81bf2c84f49e1890'
             'SKIP')
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
