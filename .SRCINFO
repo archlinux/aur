@@ -1,6 +1,6 @@
 pkgbase = r-summarizedexperiment
 	pkgdesc = SummarizedExperiment container
-	pkgver = 1.23.5
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-summarizedexperiment
 	optdepends = r-runit
 	optdepends = r-testthat
 	optdepends = r-digest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SummarizedExperiment_1.23.5.tar.gz
-	sha256sums = 61b5154f1a985949a7edffb115fe25f82e4c7138012cc1635ae199842f7c98f0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SummarizedExperiment_1.24.0.tar.gz
+	sha256sums = aa8864655e3a0efdbcdd6554282126112eedcf91a52b70993b7aa71895e8f662
 
 pkgname = r-summarizedexperiment
