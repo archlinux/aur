@@ -1,6 +1,6 @@
 # Contributor: Jed Liu <jed-archlinux@uma.litech.org>
 pkgname=tmpreaper
-pkgver=1.6.14+nmu1
+pkgver=1.6.14+nmu2
 pkgrel=1
 pkgdesc="Cleans up files in directories based on their age"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=()
 install=
 source=(http://ftp.debian.org/debian/pool/main/t/tmpreaper/${pkgname}_${pkgver}.tar.gz)
 noextract=()
-sha512sums=('0109665ba2a6c076944e85462946aa743b67912886524820bc6107f17aa3576ea8759675aa91f6ec4c6b70d306bd172dfea2dff0000641c52f36dede75c2033a')
+sha512sums=('694dad36351aa52a375d6070caad135fe5f3bd3ebac95a68f9f789c04a03f163401c7f42111beb0f34a27725ff22b5cd063910c04f771997980346e212f3f2f9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
