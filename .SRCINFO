@@ -1,0 +1,11 @@
+pkgbase = mouselogger
+	pkgdesc = MouseLogger for University DataScience Project
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Studienarbeit-Mouse-Dynamics-DHBW-FN/MouseLogger-App
+	arch = any
+	license = MIT
+	source = https://github.com/Studienarbeit-Mouse-Dynamics-DHBW-FN/MouseLogger-App
+	sha512sums = SKIP
+
+pkgname = mouselogger
