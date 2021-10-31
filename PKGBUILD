@@ -77,7 +77,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.14.14
+pkgver=5.14.15
 pkgrel=1
 _major=5.14
 _gcc_more_v=20210914
@@ -117,7 +117,7 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 
-b2sums=('c4f29298a98cfd42a4ee6d2cc94da5d213e57e1160918ddbb7796c511541a85eeed53f9e30203dc5c9e941ebb0a516b6b3f0b525f93f7752cb22d30f76432dfd'
+b2sums=('68d89bba3c35062e4ba93b4304d238541ced462d839ca4f49641f457f542d27fd11ae4ffe9f5474a5701a26b89858b16c7e667823dddd6945180acc2ef44070d'
         'SKIP'
         '0c1a2b78a73af299cbdc99ff8c2bd365ee855528a576e017f4c0c9efec2a064c2815e263d4675b553cb5f464275f7ddd8d172b84decd006e07ea8c33c2975ac1'
         'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
