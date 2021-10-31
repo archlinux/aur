@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=arrayfire
 pkgver=3.8.0
-pkgrel=13
+pkgrel=14
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd "${srcdir}/arrayfire-full-${pkgver}"
 
-  cmake . \
+  cmake \
       -GNinja \
       -Bbuild \
       -DUSE_CPU_MKL=ON \
