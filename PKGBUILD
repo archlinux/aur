@@ -3,7 +3,7 @@
 pkgname=vesta-rpm
 pkgver=3.5.7
 pkgrel=1
-pkgdesc="VESTA is a 3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies. "
+pkgdesc="A 3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies. "
 arch=('x86_64')
 url="http://www.jp-minerals.org/vesta/en/"
 license=('VESTA LICENSE')
