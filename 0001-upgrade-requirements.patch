@@ -1,4 +1,4 @@
-From 0787bbe596ef619e425087af7f55721db31e79f0 Mon Sep 17 00:00:00 2001
+From ed8c303502f3a438fe236c285fbe7508af4365be Mon Sep 17 00:00:00 2001
 From: atomlong <atom.long@hotmail.com>
 Date: Wed, 13 Oct 2021 11:36:00 +0800
 Subject: [PATCH] upgrade requirements
@@ -8,7 +8,7 @@ Subject: [PATCH] upgrade requirements
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/requirements.txt b/requirements.txt
-index 2be93f7..a67eaf6 100644
+index 7c0cf80..3e86042 100644
 --- a/requirements.txt
 +++ b/requirements.txt
 @@ -1,14 +1,14 @@
@@ -19,19 +19,19 @@ index 2be93f7..a67eaf6 100644
 -rsa==4.0
 -click==7.1.2
 +rsa==4.7.2
-+click==8.0.1
++click==8.0.3
  ruamel.base==1.0.0
  ruamel.yaml
 -colorama~=0.4.3
 +colorama~=0.4.4
  npyscreen==4.10.5
- windows-curses;platform_system=="Windows"
+ windows-curses;platform_system=="Windows" and python_version<"3.10"
 -pyperclip~=1.8.1
 +pyperclip~=1.8.2
  aria2p~=0.10.4
  Flask
- simplejson~=3.17.3
+ simplejson~=3.17.5
 \ No newline at end of file
 -- 
-2.33.0.windows.2
+2.33.1.windows.1
 
