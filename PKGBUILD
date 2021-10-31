@@ -2,9 +2,9 @@
 
 pkgbase=deepin-anything-git
 pkgname=(deepin-anything-git deepin-anything-dkms-git)
-pkgver=5.0.8.r9.g193e6a0
+pkgver=5.0.10.r11.gb5a2fa4
 _extramodules=extramodules-ARCH
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin Anything file search tool"
 arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-anything"

@@ -1,7 +1,7 @@
 pkgbase = deepin-anything-git
 	pkgdesc = Deepin Anything file search tool
-	pkgver = 5.0.8.r9.g193e6a0
-	pkgrel = 1
+	pkgver = 5.0.10.r11.gb5a2fa4
+	pkgrel = 2
 	url = https://github.com/linuxdeepin/deepin-anything
 	arch = x86_64
 	license = GPL3
