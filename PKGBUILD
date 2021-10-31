@@ -1,15 +1,15 @@
-# Maintainer: artemtech <sofyanartem@gmail.com>
+# Maintainer: veikk.com
 
 _pkgname=vktablet
 pkgname=veikk-tablet-bin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Veikk tablet driver retrieved from official veikk website"
 arch=("x86_64")
 url="https://www.veikk.com"
 license=("GPLv3")
 provides=("veikk-tablet-bin")
-source=("${_pkgname}-${pkgver}-${pkgrel}.${arch}.rpm::https://www.veikk.com/comp/xcompanyFile/download.do?fid=86&appId=24&id=41")
+source=("${_pkgname}-${pkgver}-${pkgrel}.${arch}.rpm::https://www.veikk.com/upload/file/20210824/vktablet-1.0.2-1.x86_64.rpm")
 md5sums=("SKIP")
 
 package() {
