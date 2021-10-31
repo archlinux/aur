@@ -6,7 +6,7 @@ _pkgname=sway
 pkgver=r6815.38020d15
 pkgrel=1
 license=("MIT")
-pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
+pkgdesc="sway-git, with --mask-modifiers option on bindsym for push-to-talk usage."
 makedepends=(
 	"git"
 	"meson"

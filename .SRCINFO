@@ -1,5 +1,5 @@
 pkgbase = sway-mask-modifiers-git
-	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager
+	pkgdesc = sway-git, with --mask-modifiers option on bindsym for push-to-talk usage.
 	pkgver = r6815.38020d15
 	pkgrel = 1
 	url = https://swaywm.org
