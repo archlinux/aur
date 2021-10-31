@@ -2,7 +2,7 @@
 
 pkgname=lua-i3ipc-git
 _pkgname="${pkgname%-git}"
-pkgver=v1.0.r0.g22378ed
+pkgver=v1.0.r1.g7a08c2f
 pkgrel=1
 pkgdesc="A lua library for controlling i3wm & Sway"
 arch=('any')
@@ -20,16 +20,21 @@ pkgver() {
 
 package() {
 	local luaver=5.1
-	local dir="$pkgdir/usr/share/lua/$luaver/"
+	cd "$srcdir/$_pkgname"
 	luarocks \
-		--lua-version $luaver \
+		--lua-version "$luaver" \
 		--tree "$pkgdir/usr" \
-		install --no-manifest luv
-	luarocks \
-		--lua-version $luaver \
-		--tree "$pkgdir/usr" \
-		install --no-manifest struct
-	mkdir -p $dir
-	cd $dir
-	cp -R "$srcdir/$_pkgname/i3ipc/" .
+		make --no-manifest \
+		$srcdir/$_pkgname/*.rockspec
+
+	# local dir="$pkgdir/usr/share/lua/$luaver/"
+	# for rock in ${rocks[@]}; do
+	# 	luarocks \
+	# 		--lua-version $luaver \
+	# 		--tree "$pkgdir/usr" \
+	# 		make --no-manifest "$rock"
+	# done
+	# mkdir -p $dir
+	# cd $dir
+	# cp -R "$srcdir/$_pkgname/i3ipc/" .
 }
