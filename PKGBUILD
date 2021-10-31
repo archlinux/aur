@@ -6,7 +6,7 @@
 pkgname=readline6
 _basever=6.3
 _patchlevel=008
-pkgver=$_basever.$_patchlevel
+pkgver=${_basever}.${_patchlevel}
 pkgrel=4
 pkgdesc="GNU readline library. Provides libreadline.so.${_basever:0:1}"
 arch=('x86_64')
