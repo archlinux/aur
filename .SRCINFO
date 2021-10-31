@@ -1,0 +1,15 @@
+pkgbase = dbviz-git
+	pkgdesc = Visualize your postgresql database schema as dot graph
+	pkgver = 1.0.0.r1.03cfe37
+	pkgrel = 1
+	url = https://github.com/yunmikun2/dbviz
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	provides = dbviz
+	source = git+https://github.com/yunmikun2/dbviz
+	md5sums = SKIP
+
+pkgname = dbviz-git
