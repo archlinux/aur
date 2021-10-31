@@ -1,7 +1,8 @@
 # Maintainer: thomashrb <thomashrb AT protonmail DOT com>
 # Contributor: Sérgio Gomes <superherointj at gmail dot com>
 pkgname=ponyup
-pkgver=0.6.1
+pkgver=0.6.4
+pkgzip=$pkgname-$pkgver-x86_64.tar.gz
 pkgrel=1
 pkgdesc="The Pony language toolchain multiplexer"
 arch=('x86_64')
@@ -13,7 +14,7 @@ makedepends=(
   'tar'
 )
 depends=('openssl')
-source_x86_64=($ponyup-$pkgver-x86_64.tar.gz::https://dl.cloudsmith.io/public/ponylang/releases/raw/versions/$pkgver/ponyup-x86-64-unknown-linux.tar.gz)
+source_x86_64=($pkgzip::https://dl.cloudsmith.io/public/ponylang/releases/raw/versions/$pkgver/ponyup-x86-64-unknown-linux.tar.gz)
 sha256sums_x86_64=('SKIP')
 
 install=${pkgname}.install
@@ -21,12 +22,14 @@ install=${pkgname}.install
 prepare() {
   tmp_dir=/tmp/ponyup
   mkdir -p "${tmp_dir}"
-  tar -xzf "${tmp_dir}/ponyup-x86-64-unknown-linux.tar.gz" -C "${tmp_dir}"
+  tar -xzf "${pkgzip}" -C "${tmp_dir}/"
 }
 
 package() {
-  unpacked_file=$(find ${tmp_dir} -name ponyup -type f)
-  install_dir=$HOME/.local/share/ponyup/bin
+  ponyup_bin=$(find ${tmp_dir} -name ponyup -type f)
+  ponyup_root=$HOME/.local/share/ponyup
+  install_dir=$ponyup_root/bin
   mkdir -p $install_dir
-  install -Dm755  $unpacked_file $install_dir
+  echo "x86_64-linux-gnu" > "${ponyup_root}/.platform"
+  install -Dm755  $ponyup_bin $install_dir
 }
