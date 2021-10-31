@@ -1,6 +1,6 @@
 # Maintainer: Pig Fang <g-plane@hotmail.com>
 pkgname=cabal-install-bin
-pkgver=3.4.0.0
+pkgver=3.6.0.0
 pkgrel=1
 pkgdesc="The command-line interface for Cabal and Hackage."
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=('glibc>=2.12')
 provides=(cabal-install)
 conflicts=(cabal-install)
 source=(
-  https://downloads.haskell.org/~cabal/cabal-install-$pkgver/cabal-install-$pkgver-$arch-ubuntu-16.04.tar.xz
+  https://downloads.haskell.org/~cabal/cabal-install-$pkgver/cabal-install-$pkgver-$arch-linux.tar.xz
   https://downloads.haskell.org/~cabal/cabal-install-$pkgver/cabal-install-$pkgver.tar.gz
 )
 sha256sums=(cf28f9ffd763476aa2b1730d85cbf155d366fac541f78ee3951e8cb2d6de63e6 SKIP)
