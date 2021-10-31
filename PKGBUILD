@@ -5,16 +5,18 @@ pkgname="${_target}-gcc"
 pkgver=11.2.0
 _islver=0.24
 _majorver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
 license=('GPL' 'LGPL' 'FDL' 'custom')
 depends=('gmp' 'libmpc' "${_target}-binutils" "${_target}-glibc" 'mpfr' 'sh' 'zlib' 'zstd')
 makedepends=("${_target}-linux-api-headers")
+provides=('mips64el-linux-gnuabi64-gcc' 'mips64el-linux-gnuabi32-gcc'
+          'mips64el-linux-gnuabin32-gcc' "${pkgname}-bootstrap")
+conflicts=('mips64el-linux-gnuabi64-gcc' 'mips64el-linux-gnuabi32-gcc'
+           'mips64el-linux-gnuabin32-gcc' "${pkgname}-bootstrap")
 options=('!emptydirs' '!strip' 'staticlibs')
-provides=("${pkgname}-bootstrap")
-conflicts=("${pkgname}-bootstrap")
 source=("https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"{,.sig}
         #"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "https://sourceforge.net/projects/libisl/files/isl-${_islver}.tar.xz"
@@ -112,6 +114,8 @@ check() {
 }
 
 package() {
+    
+    
     make -C build DESTDIR="$pkgdir" install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libgfortran,libquadmath}
     
     # allow using gnuabi${_abi} executables
@@ -119,9 +123,6 @@ package() {
     local _bin
     for _abi in "${_ABIS[@]}"
     do
-        provides+=("${pkgname/gnu/"gnuabi${_abi}"}")
-        conflicts+=("${pkgname/gnu/"gnuabi${_abi}"}")
-        
         for _bin in c++ cpp g++ gcc "gcc-${pkgver}"
         do
             if [ "$_abi" = "$_DEFAULT_ABI" ]
