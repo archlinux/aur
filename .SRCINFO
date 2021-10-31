@@ -1,0 +1,18 @@
+pkgbase = hydra-bin
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://www.github.com/Shravan-1908/hydra.git
+	install = hydra-bin.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = hydra
+	noextract = bench
+	source_x86_64 = hydra::https://github.com/Shravan-1908/hydra/releases/download/v2.2.0/hydra-linux-amd64
+	source_x86_64 = https://raw.githubusercontent.com/Shravan-1908/hydra/main/LICENSE
+	source_x86_64 = https://raw.githubusercontent.com/Shravan-1908/hydra/main/README.md
+	sha256sums_x86_64 = d040ee8ef4122ea20768ca026660227aa28cabdfb0a1ee2efb61492d95eb8f5e
+	sha256sums_x86_64 = da95d588c7c8b81746069efcafaaab40e81a5a007a1765e5b51ce8cc12d5ed8c
+	sha256sums_x86_64 = d8e76ac3832063259afde8dd0f000751d3a9f0d44ae7d9372c492a13788c722c
+
+pkgname = hydra-bin
