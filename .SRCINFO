@@ -1,14 +1,14 @@
 pkgbase = plasma5-applets-resources-monitor
 	pkgdesc = Plasma 5 applet for monitoring CPU and RAM
-	pkgver = 1.0.6
+	pkgver = 2.2.2_hotfix.1
 	pkgrel = 1
-	url = https://store.kde.org/p/998908/
+	url = https://www.pling.com/p/1527636/
 	arch = any
 	license = GPL
 	makedepends = extra-cmake-modules
+	depends = ksysguard
 	depends = plasma-workspace
-	source = https://github.com/kotelnik/plasma-applet-resources-monitor/archive/v1.0.6.tar.gz
-	sha256sums = 720498b76f94ce7aac2875c1b39fb864c12ad8548109fa6acf51528ac3cd673c
+	source = https://github.com/orblazer/plasma-applet-resources-monitor/archive/v2.2.2-hotfix.1.tar.gz
+	sha256sums = 93d377a853b38f85b0242e52b11d94761c6df4c2eb11826a21a79a16f27e1a6f
 
 pkgname = plasma5-applets-resources-monitor
-
