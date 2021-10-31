@@ -1,6 +1,6 @@
 pkgbase = sdrpp
 	pkgdesc = The Bloat-free SDR Receiver - Release Version
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/AlexandreRouma/SDRPlusPlus
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = sdrpp
 	optdepends = hackrf
 	optdepends = libsdrplay
 	conflicts = sdrpp-git
-	source = https://github.com/AlexandreRouma/SDRPlusPlus/archive/refs/tags/1.0.3.tar.gz
-	md5sums = 0fc1b8baf5386fef5601f2c996e35503
+	source = https://github.com/AlexandreRouma/SDRPlusPlus/archive/refs/tags/1.0.4.tar.gz
+	md5sums = dbebd79f56efa5fd4620db19f8135366
 
 pkgname = sdrpp
