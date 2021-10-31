@@ -1,0 +1,15 @@
+pkgbase = python-django-measurement
+	pkgdesc = A Model- & Form field for units.
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = https://github.com/coddingtonbear/django-measurement
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-django-appconf
+	depends = python-measurement
+	source = git+https://github.com/coddingtonbear/django-measurement.git#tag=3.2.3
+	sha256sums = SKIP
+
+pkgname = python-django-measurement
