@@ -1,0 +1,14 @@
+pkgbase = python-measurement
+	pkgdesc = High precision unit-aware measurement objects in Python.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/coddingtonbear/python-measurement
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-sympy
+	source = git+https://github.com/coddingtonbear/python-measurement.git#tag=3.2.0
+	sha256sums = SKIP
+
+pkgname = python-measurement
