@@ -11,13 +11,13 @@ pkgbase = autorestic-bin
 	depends = restic
 	provides = autorestic
 	conflicts = autorestic
-	source_x86_64 = autorestic-1.4.1-amd64.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.1/autorestic_1.4.1_linux_amd64.bz2
+	source_x86_64 = autorestic-1.4.1-x86_64.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.1/autorestic_1.4.1_linux_amd64.bz2
 	sha256sums_x86_64 = e995abe2ba96af7fd63423ad777ac6292999da2ed3d25d757d022ee4e1a956d1
-	source_i686 = autorestic-1.4.1-386.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.1/autorestic_1.4.1_linux_386.bz2
+	source_i686 = autorestic-1.4.1-i686.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.1/autorestic_1.4.1_linux_386.bz2
 	sha256sums_i686 = 625d250eac48122f4d59bf6f913c144484bdf76d40671df0625d068d673b9519
-	source_aarch32 = autorestic-1.4.1-arm.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.1/autorestic_1.4.1_linux_arm.bz2
+	source_aarch32 = autorestic-1.4.1-aarch32.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.1/autorestic_1.4.1_linux_arm.bz2
 	sha256sums_aarch32 = f77271428b3680418acdd01a9aefb14c04e2ce2e62283b15abd91c31f9d03eb0
-	source_aarch64 = autorestic-1.4.1-arm64.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.1/autorestic_1.4.1_linux_arm64.bz2
+	source_aarch64 = autorestic-1.4.1-aarch64.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.1/autorestic_1.4.1_linux_arm64.bz2
 	sha256sums_aarch64 = ebdb6b383986d6080f8451951f62c93eebc84605127527f94712eeb5b2c5c8d0
 
 pkgname = autorestic-bin

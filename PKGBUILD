@@ -20,10 +20,10 @@ sha256sums_i686=('625d250eac48122f4d59bf6f913c144484bdf76d40671df0625d068d673b95
 sha256sums_aarch32=('f77271428b3680418acdd01a9aefb14c04e2ce2e62283b15abd91c31f9d03eb0')
 sha256sums_aarch64=('ebdb6b383986d6080f8451951f62c93eebc84605127527f94712eeb5b2c5c8d0')
 
-source_i686=("${pkgname%-bin}-${pkgver}-${_arch_i686}.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_i686}.bz2")
-source_x86_64=("${pkgname%-bin}-${pkgver}-${_arch_x86_64}.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_x86_64}.bz2")
-source_aarch64=("${pkgname%-bin}-${pkgver}-${_arch_aarch64}.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_aarch64}.bz2")
-source_aarch32=("${pkgname%-bin}-${pkgver}-${_arch_aarch32}.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_aarch32}.bz2")
+source_i686=("${pkgname%-bin}-${pkgver}-$arch.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_i686}.bz2")
+source_x86_64=("${pkgname%-bin}-${pkgver}-$arch.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_x86_64}.bz2")
+source_aarch64=("${pkgname%-bin}-${pkgver}-$arch.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_aarch64}.bz2")
+source_aarch32=("${pkgname%-bin}-${pkgver}-$arch.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_aarch32}.bz2")
 
 prepare() {
   bzip2 -fdc ${pkgname%-bin}-${pkgver}-$arch.bz2 > autorestic
