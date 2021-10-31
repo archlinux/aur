@@ -1,4 +1,4 @@
-# Contributor: <asamk@gmx.de>
+# Maintainer: <asamk@gmx.de>
 # Contributor: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
 java_=17
