@@ -5,13 +5,13 @@
 _pkgname=clienteafirma
 pkgname=autofirma
 pkgver=1.6.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
 url='https://firmaelectronica.gob.es/'
 license=('GPL' 'custom:EUPL')
-depends=('java-runtime')
-makedepends=('jdk11-openjdk' 'maven')
+depends=('java-runtime=11')
+makedepends=('java-environment=11' 'maven')
 conflicts=('autofirma-bin' 'autofirma-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ctt-gob-es/${_pkgname}/archive/v${pkgver}.tar.gz"
         "autofirma"
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ctt-gob-es/${_pkgname}/
         "autofirma.svg"
         "eupl-1.1.txt")
 sha256sums=('0a7c931dae09f947c513865095ee4195d76bc91831533aee8cdcc4dea58b6b41'
-            'ab40c32a083bf6429580b057b21ab8341f8d819cedd91cd52b92fe5ae40212c9'
+            'd008cd566c7e7276f1887ec337c9ebfe0676ac45addd2040a9e35fc4f5d9ed64'
             '062cf72219e592e06218e47ea2a212d6517be66f0d4c58dcd03ef18d5c39300b'
             '428c5b7300dde7158a1a0918c8d2e8188f042dbc143d991c03f51d1c8a40efa4'
             'f7e525586103db08a2a38ccefdef93cc02407728de8b214e53ae3dc0631bab75'
