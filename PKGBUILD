@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=dmtx-utils
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="Utilities to libdmtx"
 url="http://www.libdmtx.org/"
@@ -22,4 +22,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('6fa365cd321609db40800f6b34a2387c0ac56ef4643f6101ac83cb762f5ce9ef')
+sha256sums=('0d396ec14f32a8cf9e08369a4122a16aa2e5fa1675e02218f16f1ab777ea2a28')
