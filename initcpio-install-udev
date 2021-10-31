@@ -56,7 +56,7 @@ build() {
         '60-persistent-storage.rules' \
         '64-btrfs.rules' \
         '80-drivers.rules'
-
+    
     map add_file \
         '/usr/lib/udev/ata_id' \
         '/usr/lib/udev/scsi_id'
