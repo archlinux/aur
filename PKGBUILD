@@ -7,7 +7,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=libsemanage
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="SELinux binary policy manipulation library"
 arch=('i686' 'x86_64' 'aarch64')
@@ -15,7 +15,7 @@ url='https://github.com/SELinuxProject/selinux'
 license=('LGPL2.1')
 groups=('selinux')
 makedepends=('flex' 'pkgconf' 'python' 'ruby' 'swig')
-depends=('libselinux>=3.2' 'audit')
+depends=('libselinux>=3.3' 'audit')
 optdepends=('python: python bindings'
             'ruby: ruby bindings')
 options=(!emptydirs) # For /var/lib/selinux
@@ -24,7 +24,7 @@ conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "semanage.conf")
-sha256sums=('d722a55ca4fe2d4e2b30527720db657e6238b28079e69e2e4affeb8e733ee511'
+sha256sums=('84d0ec5afa34bbbb471f602d8c1bf317d12443d07852a34b60741d428d597ce8'
             '5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0')
 
 build() {
@@ -35,10 +35,6 @@ build() {
   make all
   make PYTHON=/usr/bin/python3 pywrap
   make RUBY=/usr/bin/ruby rubywrap
-
-  # Build a libsemanage.so.1 to ease the transition from libsemanage 3.1 to 3.2
-  make -C src LIBVERSION=1 libsemanage.so.1
-  rm src/libsemanage.so
 }
 
 package() {
@@ -49,8 +45,6 @@ package() {
   /usr/bin/python3 -m compileall "${pkgdir}/$(/usr/bin/python3 -c 'from distutils.sysconfig import *; print(get_python_lib(plat_specific=1))')"
 
   install -D -m0644 "${srcdir}/semanage.conf" "${pkgdir}/etc/selinux/semanage.conf"
-
-  install -Dm755 src/libsemanage.so.1 "${pkgdir}/usr/lib"
 
   # Create /var/lib/selinux for the policy store
   mkdir -p "${pkgdir}/var/lib/selinux"
