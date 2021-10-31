@@ -10,7 +10,7 @@
 
 pkgname=shadow-selinux
 pkgver=4.8.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('x86_64' 'aarch64')
 url='https://github.com/shadow-maint/shadow'
@@ -18,7 +18,7 @@ license=('BSD')
 groups=('selinux')
 # libcap-ng needed by install scriptlet for 'filecap'
 depends=('bash' 'pam-selinux' 'acl' 'audit' 'libaudit.so' 'libcap-ng' 'libcap-ng.so'
-         'libxcrypt' 'libcrypt.so' 'libsemanage')
+         'libxcrypt' 'libcrypt.so' 'libsemanage>=3.2')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
