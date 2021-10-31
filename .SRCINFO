@@ -1,7 +1,7 @@
 pkgbase = autorestic-bin
 	pkgdesc = High level CLI utility for restic
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cupcakearmy/autorestic
 	arch = x86_64
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = autorestic-bin
 	sha256sums_x86_64 = b92de05eaca58593b80a4b9523fed9ed3cf5a8cdf6d375f05b073ebc3ad15504
 	source_i686 = autorestic-1.4.0-x86_64.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.0/autorestic_1.4.0_linux_386.bz2
 	sha256sums_i686 = 9cae86f2bd08c82088d3f3b4b29e9bd5fc699eab5d13973ab044d16d8ad882be
-	source_aarch32 = autorestic-1.4.0-x86_64.bz2::https://github.com/cupcakearmy/autorestic/autorestic-bin/releases/download/v1.4.0/autorestic_1.4.0_linux_arm.bz2
+	source_aarch32 = autorestic-1.4.0-x86_64.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.0/autorestic_1.4.0_linux_arm.bz2
 	sha256sums_aarch32 = b259e7ff8fc4a87d99b7bbec60a97008135528f270355d4e14c8754692f2ca6a
-	source_aarch64 = autorestic-1.4.0-x86_64.bz2::https://github.com/cupcakearmy/autorestic/autorestic-bin/releases/download/v1.4.0/autorestic_1.4.0_linux_arm64.bz2
+	source_aarch64 = autorestic-1.4.0-x86_64.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.4.0/autorestic_1.4.0_linux_arm64.bz2
 	sha256sums_aarch64 = d14aa9218a45f2ef05ddf610b2d6520dca5d31b83ff622a7033c5bf4f705a6bb
 
 pkgname = autorestic-bin

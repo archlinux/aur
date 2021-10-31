@@ -1,7 +1,7 @@
 pkgname="autorestic-bin"
 pkgver=1.4.0
 _pkgid="${pkgname%-bin}-${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="High level CLI utility for restic"
 arch=('x86_64' 'i686' 'aarch32' 'aarch64')
 url="https://github.com/cupcakearmy/${pkgname%-bin}"
