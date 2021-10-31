@@ -3,8 +3,8 @@
 
 pkgname=munt
 pkgdesc='Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I'
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.3
+pkgrel=0
 arch=('i686' 'x86_64')
 url='http://munt.sourceforge.net'
 license=('GPL2')
@@ -14,7 +14,7 @@ options=('staticlibs')
 __mt32suffix=libmt32emu
 source=("https://github.com/${pkgname}/${pkgname}/archive/${__mt32suffix}_${pkgver//./_}.zip")
 install=${pkgname}.install
-sha512sums=('a6ae2b45c8bd0d222ae2afbecbff7e29291f1d92dcbe188e5cf915324af7111700d293522a6514e8c7801557702225d2fa456997eb77a66534ad4e8e8b88c8fd')
+sha512sums=('a8a9c3698b37e1417952801574ae1b9a2f6ca9b27c9322a2b54ba7dc42d275509e2fbc1a713a0f249f0ef39d95d98f0eb16ba62f9923ff8a6cbf10fbd239b718')
 
 build() {
   cd "${srcdir}"
