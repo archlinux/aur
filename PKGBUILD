@@ -1,5 +1,6 @@
-# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-# Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+# Maintainer: Keith <k-aur at 3d3 dot ca>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-no-axrgb-assert-git
 pkgver=0.14.0.r328.g8e225261
 pkgrel=1
