@@ -1,0 +1,26 @@
+pkgbase = mips64el-linux-gnu-gdb
+	pkgdesc = The GNU Debugger for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)
+	pkgver = 11.1
+	pkgrel = 1
+	url = https://www.gnu.org/software/gdb/
+	arch = x86_64
+	license = GPL3
+	depends = expat
+	depends = gdb-common
+	depends = guile
+	depends = libelf
+	depends = ncurses
+	depends = mpfr
+	depends = python
+	depends = source-highlight
+	depends = xz
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/gdb/gdb-11.1.tar.xz
+	source = https://ftp.gnu.org/gnu/gdb/gdb-11.1.tar.xz.sig
+	source = 010-gdb-fix-build.patch
+	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
+	sha256sums = cccfcc407b20d343fb320d4a9a2110776dd3165118ffd41f4b1b162340333f94
+	sha256sums = SKIP
+	sha256sums = 9d21568bc109a13e37b27274815ba1a3cd4c16b19cc0bd555441bbe5ed1dc6ff
+
+pkgname = mips64el-linux-gnu-gdb
