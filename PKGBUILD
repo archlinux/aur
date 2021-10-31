@@ -2,14 +2,14 @@
 
 pkgbase=vim-denops
 pkgname=('vim-denops' 'neovim-denops')
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 arch=('any')
 url="https://github.com/vim-denops/denops.vim"
 license=('MIT')
 depends=('deno>=1.14.0')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4a75756d84a1d65ab150034a20b0901562a8dfee7b46d34c63b55adf0be7a105')
+sha256sums=('86c0e9911e857963dd2a7953eda0c8fabbd219f0639bc28fa5d4776a5b955032')
 
 package_vim-denops() {
 	pkgdesc="Vim ecosystem for writing plugins in Deno"
