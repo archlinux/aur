@@ -1,5 +1,5 @@
 pkgname=kya
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 makedepends=('rust' 'cargo')
 url="https://github.com/gert7/kya"
