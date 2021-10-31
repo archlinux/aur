@@ -21,7 +21,7 @@ set  -u
 #这两种写法建议放在所有 Bash 脚本的头部。另一种办法是在执行 Bash 脚本的时候，从命令行传入这些参数。
 #$ bash -euxo pipefail script.sh
 
-
+set +e
 ip -4 route add   172.20.0.0/16  dev wg 
 ip -4 route add   172.25.2.0/24  dev wg 
-
+echo save cr route
