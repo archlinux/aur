@@ -5,13 +5,13 @@
 pkgname=jrommanager
 _gitname=JRomManager
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Rom Manager entirely written in Java and released under GPL v2'
 arch=('any')
 license=('GPL2')
 url="https://github.com/optyfr/JRomManager"
 depends=('java-runtime>=11')
-makedepends=('java-environment=11')
+makedepends=('java-environment=11' 'git')
 options=(!strip)
 source=("git+https://github.com/optyfr/${_gitname}#tag=${pkgver}"
   "${_gitname}.desktop" 
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd $srcdir/$_gitname
-  LC_ALL="$(localectl list-locales | grep -1 utf8)" sh ./gradlew build
+  LC_ALL="$(localectl list-locales | grep -1 utf8)" JAVA_HOME=/usr/lib/jvm/java-11-openjdk sh ./gradlew build
 }
 
 package() {
