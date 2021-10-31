@@ -1,6 +1,6 @@
 pkgbase = r-crayon
 	pkgdesc = Colored Terminal Output
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=crayon
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = r-crayon
 	optdepends = r-rstudioapi
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/crayon_1.4.1.tar.gz
-	sha256sums = 08b6e42e748d096960b2f32b7ffe690c25742e29fe14c19d1834cd6ff43029c7
+	source = https://cran.r-project.org/src/contrib/crayon_1.4.2.tar.gz
+	sha256sums = ee34397f643e76e30588068d4c93bd3c9afd2193deacccacb3bffcadf141b857
 
 pkgname = r-crayon
-
