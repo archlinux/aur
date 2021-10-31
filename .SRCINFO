@@ -1,7 +1,7 @@
 pkgbase = python-tensorly
 	pkgdesc = Simple and Fast Tensor Learning in Python
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tensorly.org/stable/home.html
 	changelog = python-tensorly.changelog
 	arch = any
