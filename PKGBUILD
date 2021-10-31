@@ -78,9 +78,9 @@ _makenconfig=
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
 _major=5.14
-pkgver=${_major}.14
+pkgver=${_major}.15
 _branch=5.x
-xanmod=2
+xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 _patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
@@ -121,7 +121,7 @@ done
 
 b2sums=('0047f5aaa3940dff97f4055ef544faafbbb5282128e6afe21d2f47d8dc8c395806a17016febfa050117d16f59e74b882cb8b9c5011d68f119c230d0a4d120524'
         'SKIP'
-        'ee36d4fb287e1e078e6c0b0ecf039d5e6b577b95761f9f7a3f2f3dac81a9a4f62cbfd124ae95f2cd24d09766d46f34ab285424edbbeb05f94adc7895a698ac30'
+        'ae033905dedde6d42ae41477c7fd870e4b9e45fee7b34f6b0469d2d567bcac35d0b50687caa2d1cfafe2861ef4bcdcbe06f5f5ee9f0104de9d217cdd876a6ad5'
         '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
         '21d13b890e7b80c924e18ae11f675d69a80adffbe75e37bebd003024e7299c582346b0df60b67c709eba9678bcf6dda7da852c9cf18d43804ddd8ee9388b9ea5'
         '8f6d6263f0e517b6e7a1809fc57e01cc4b13dd261f778041026ec510f48257d4f525c3cb0b0935e291293960c9191282f5765ca0af3d948838e8f865c7deafcc'
