@@ -41,7 +41,6 @@ pkgname = linux-lts510
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	replaces = wireguard-lts
 
 pkgname = linux-lts510-headers
 	pkgdesc = Headers and scripts for building modules for the LTS 5.10 Linux kernel
