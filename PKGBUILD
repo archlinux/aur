@@ -1,33 +1,26 @@
-#
 # Maintainer: Ulrich Huber <ulrich@huberulrich.de>
 #
-# Based on the linux-mainline package by:
-# Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
-#
 # Based on the linux package by:
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-#pkgbase=linux-mainline               # Build stock -ARCH kernel
-pkgbase=linux-yoga9                   # Build kernel with a different name
-_tag=v5.14
-pkgver=5.14.1
+pkgbase=linux-yoga9
+pkgver=5.14.15.arch1
 pkgrel=1
-pkgdesc="Linux Mainline Yoga9"
+pkgdesc='Linux for Lenovo Yoga9'
+_srctag=v${pkgver%.*}-${pkgver##*.}
+url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
-url="https://kernel.org/"
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
-  git initramfs
+  git
 )
 options=('!strip')
-_srcname=linux-mainline
+_srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_tag"
-  config                    # the main kernel config file
+  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
+  config         # the main kernel config file
   'sw_lid.patch'      # the patch for the lid switch
   '0001-ucsi.patch'   # Patch for UCSI fix (1/7)
   '0002-ucsi.patch'   # Patch for UCSI fix (2/7)
@@ -41,9 +34,10 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
+  'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84' # config
+            'f5d3635520c9eb9519629f6df0d9a58091ed4b1ea4ddb1acd5caf5822d91a060' # config
             '0219bfd9264d0f8d8bc837da1f385984ba84e3152c008b8781f8ca740be24a0b' # sw_lid.ptach
             'debca80bf2c2019d99559a69c60d3a073988b7dd848b83294e6e06f7a3028bf1' # 0001-ucsi.patch
             '5c43de1d1c6e83b930f730a3001d46478ec8559fed092857b24330ae0f25fed7' # 0002-ucsi.patch
@@ -78,6 +72,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -95,7 +90,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-mainline wireguard-maineline)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
