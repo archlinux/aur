@@ -1,6 +1,6 @@
 pkgbase = r-rhtslib
 	pkgdesc = HTSlib high-throughput sequencing library as an R package
-	pkgver = 1.25.1
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/Rhtslib.html
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = r-rhtslib
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	options = staticlibs
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rhtslib_1.25.1.tar.gz
-	sha256sums = f2fdb78b1f109d4f501e57fe924334d391649338d3a94adfbabd65a2ce6bf4fd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rhtslib_1.26.0.tar.gz
+	sha256sums = 24bba61616e7d4fc57fda86172486b92ffcae31d1a7183d7b8ee29e324ff955f
 
 pkgname = r-rhtslib
