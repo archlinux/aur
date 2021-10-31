@@ -1,0 +1,15 @@
+pkgbase = videosubfinder
+	pkgdesc = Audio/Video processing software with focus on new generation HD formats, Blu-ray and HD DVD.
+	pkgver = 5.60
+	pkgrel = 1
+	url = https://sourceforge.net/projects/videosubfinder/
+	arch = x86_64
+	license = GPL2
+	depends = wine
+	depends = winetricks
+	source = videosubfinder-5.60.zip::https://netcologne.dl.sourceforge.net/project/videosubfinder/VideoSubFinder_5.60_x64.zip
+	source = start-videosubfinder.sh
+	sha256sums = 7b503df4397acd5fe05f57e64d5ae84e3849f2f9f3575555df4b74077dd4db6e
+	sha256sums = 6c043e16d468fc9c226d077aedac0ffaf6d378b6a4d731ceff2153dad898c904
+
+pkgname = videosubfinder
