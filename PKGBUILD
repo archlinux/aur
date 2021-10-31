@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=XVector
-_bcver=0.33.0
+_bcver=0.34.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(Artistic-2.0)
 depends=('r>=4.0.0' 'r-biocgenerics>=0.37.0' 'r-s4vectors>=0.27.12' 'r-iranges>=2.23.9' r-zlibbioc)
 optdepends=(r-biostrings r-drosophila2probe r-runit)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('39b1967fdb28da73fe0ff5062e3d17128103ca91aac461f14192910c097745d8')
+sha256sums=('80096b1ef4156e0af1072fcb327c72408230e866e0c9acc59489bb68ebc3241f')
 
 build() {
   cd "${srcdir}"
