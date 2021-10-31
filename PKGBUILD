@@ -5,13 +5,13 @@
 _pkgname=devilutionX
 pkgname=devilutionx
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Diablo devolved for linux"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
 depends=('fmt' 'libpng' 'libsodium' 'sdl2')
-makedepends=('cmake' 'gettext' 'smpq')
+makedepends=('cmake' 'gettext' 'git' 'smpq')
 install="${pkgname}".install
 options=('strip')
 source=("${url}/archive/${pkgver}.tar.gz")

@@ -1,7 +1,7 @@
 pkgbase = devilutionx
 	pkgdesc = Diablo devolved for linux
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diasurgical/devilutionX
 	install = devilutionx.install
 	arch = armv6h
@@ -13,6 +13,7 @@ pkgbase = devilutionx
 	license = custom:unlicense
 	makedepends = cmake
 	makedepends = gettext
+	makedepends = git
 	makedepends = smpq
 	depends = fmt
 	depends = libpng
