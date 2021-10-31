@@ -4,14 +4,14 @@
 
 pkgname=jrommanager
 _gitname=JRomManager
-pkgver=2.4.3
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='A Rom Manager entirely written in Java and released under GPL v2'
 arch=('any')
 license=('GPL2')
 url="https://github.com/optyfr/JRomManager"
-depends=('java-runtime>=8')
-makedepends=('java-environment=8')
+depends=('java-runtime>=11')
+makedepends=('java-environment=11')
 options=(!strip)
 source=("git+https://github.com/optyfr/${_gitname}#tag=${pkgver}"
   "${_gitname}.desktop" 
@@ -33,10 +33,9 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_gitname/build/distributions
+  cd $srcdir/$_gitname/$_gitname/build/distributions
 
   mkdir -p $_gitname-ext
-  bsdtar -xf $_gitname-$pkgver-install.jar
   bsdtar -xf $_gitname-$pkgver.zip -C $_gitname-ext
   cd $_gitname-ext
 
@@ -44,7 +43,7 @@ package() {
   install -Dm755 *.sh "$pkgdir/usr/share/java/$pkgname/"
   install -Dm644 *.jar "$pkgdir/usr/share/java/$pkgname/"
   install -Dm644 lib/*.jar "$pkgdir/usr/share/java/$pkgname/lib/"
-  cp -dr --preserve=mode {webclient,wrapper} "$pkgdir/usr/share/java/$pkgname/"
+  cp -dr --preserve=mode {certs,webclient,wrapper} "$pkgdir/usr/share/java/$pkgname/"
   install -Dm755 $srcdir/$_gitname.sh "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 $srcdir/$_gitname.desktop "$pkgdir/usr/share/applications/$_gitname.desktop"
