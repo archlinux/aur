@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=40
+pkgrel=41
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -12,7 +12,6 @@ systemd-wol
 archlinuxcn-keyring
 archlinuxcn-mirrorlist
 devtools
-wireguard-tools-china
 firewalld-service
 
 )
@@ -49,7 +48,7 @@ kill-port
         reflectorus
   file-ntospace
         file-spaceton
-
+peers.conf
 
 )
 
@@ -76,8 +75,8 @@ sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b
             '06f5de6b3c5c52dcdaffc67a306dfa9c2a0194bebd8d806ea1dc8c31ef7fd4edbbc9d28b8e8eed949092c107e1e39b646fa3f2727f0b31963a469815a2497223'
             '546fbc05717b59e6fca0d99b189c01abc1030b66ccc4b2beead0ea01e1e92efda83ed5b5daa53ceefebcfbff0e781696c6b0d26adbca1f7a3fa8f9180aaef6aa'
             'a25a51bd0aec369d741db960227a36e06e0acfe5d801d4d83a463b31b2fd3bb071794d5c550b5267417e6d81d9a003171aca1ac09608325a9e9c31ae03fcb985'
-            'bc770db134d0f8ead799ed0f56cb27593771ce5b3921db6e10df62ae95dea846b5140c866b9cb0823242e77e97120d98a5621bf321fa6362b3b1bf58ebc59b24')
-
+            'bc770db134d0f8ead799ed0f56cb27593771ce5b3921db6e10df62ae95dea846b5140c866b9cb0823242e77e97120d98a5621bf321fa6362b3b1bf58ebc59b24'
+            '302fb879c8d6fabd8d42776a91cb7d339dc88674fe48b44ff08a6baba5ba094c9bbcd708d0bd22751c936e29c674266515236a7e06e9d9ba2c7f89822a3f1f56')
 
 
 
@@ -143,6 +142,7 @@ install  -Dm755 mkmvngitignore  "$pkgdir/usr/bin/mkmvngitignore"
 install  -Dm755 mkuefi  "$pkgdir/usr/bin/mkuefi"
 install  -Dm755 mkbiosvda  "$pkgdir/usr/bin/mkbiosvda"
 install  -Dm755 kill-port  "$pkgdir/usr/bin/kill-port"
+install  -Dm644 peers.conf  "$pkgdir/etc/wireguard/peers.conf"
 
 }
 
