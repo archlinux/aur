@@ -1,0 +1,16 @@
+pkgbase = symfs-git
+	pkgdesc = A filesystem- and application- agnostic program that generates a collection of views to a collection of directories with associated metadata in the form of symlinks, grouping them based on a set of criteria against the metadata in those directories.
+	pkgver = TO_BE_DERIVED_FROM_GIT
+	pkgrel = 1
+	url = https://github.com/directed-graph/symfs
+	arch = x86_64
+	license = MIT
+	checkdepends = bazel
+	makedepends = git
+	makedepends = bazel
+	provides = symfs
+	conflicts = symfs
+	source = symfs-git::git+https://github.com/directed-graph/symfs.git
+	md5sums = SKIP
+
+pkgname = symfs-git
