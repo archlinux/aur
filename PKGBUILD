@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=IRanges
-_bcver=2.27.2
+_bcver=2.28.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(Artistic-2.0)
 depends=('r>=4.0.0' 'r-biocgenerics>=0.39.2' 'r-s4vectors>=0.29.19')
 optdepends=(r-xvector r-genomicranges r-rsamtools r-genomicalignments r-genomicfeatures r-bsgenome.celegans.ucsc.ce2 r-pasillabamsubset r-runit r-biocstyle)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('6f0a6c0f0862ddafcc7e2ba5b7aedcb8176d182412f296f07adc5ee02856fb1e')
+sha256sums=('ef860c47be9fbab4a5f413d17401d17ab910ce85b9981058609cbbc5c310fa1f')
 
 build() {
   cd "${srcdir}"
