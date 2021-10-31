@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 3.1.8
+	pkgver = 3.1.11
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = telegram-desktop-dev
 	depends = openal
 	depends = ttf-opensans
 	depends = qt5-imageformats
+	depends = qt5-svg
 	depends = xxhash
 	depends = libdbusmenu-qt5
 	depends = kwayland
@@ -38,7 +39,7 @@ pkgbase = telegram-desktop-dev
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v3.1.8
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v3.1.11
 	source = Catch::git+https://github.com/philsquared/Catch
 	source = cmake::git+https://github.com/desktop-app/cmake_helpers.git
 	source = codegen::git+https://github.com/desktop-app/codegen.git
