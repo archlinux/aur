@@ -1,6 +1,6 @@
-pkgbase = mumble-git
-	pkgdesc = An Open Source, low-latency, high quality voice chat software (git version)
-	pkgver = 1.4.0.development.snapshot.006.r170.g1bcbb7970
+pkgbase = mumble-one-ptt-git
+	pkgdesc = mumble-git, with push-to-talk modified to handle only one button
+	pkgver = 1.4.0.development.snapshot.006.r285.g756be79be
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mumble.info
@@ -43,12 +43,14 @@ pkgbase = mumble-git
 	source = git://github.com/mumble-voip/celt-0.7.0.git
 	source = git://github.com/mumble-voip/opus.git
 	source = git://github.com/mumble-voip/speex.git
+	source = mumble_one_ptt.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 1407b3c075a628e27539652bc0dbd2453476919dd7da38d7e3ddac9636f0d3aa
 
-pkgname = mumble-git
+pkgname = mumble-one-ptt-git
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme

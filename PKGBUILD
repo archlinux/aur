@@ -1,16 +1,17 @@
-# Maintainer: Radioactiveman <thomas-lange2@gmx.de>
+# Maintainer: Keith <k-aur at 3d3 dot ca>
+# Contributor: Radioactiveman <thomas-lange2@gmx.de>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Lauri Niskanen <ape@ape3000.com>
 # Contributor: Sebastian.Salich@gmx.de
 # Contributor: Doc Angelo
 
+pkgname=mumble-one-ptt-git
 _pkgname=mumble
-pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r282.gc453a8bde
+pkgver=1.4.0.development.snapshot.006.r285.g756be79be
 pkgrel=1
 epoch=1
-pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
+pkgdesc='mumble-git, with push-to-talk modified to handle only one button'
 arch=('i686' 'x86_64')
 url='https://www.mumble.info'
 license=('BSD')
@@ -29,7 +30,11 @@ source=('git://github.com/mumble-voip/mumble.git'
         'git://github.com/mumble-voip/opus.git'
         'git://github.com/mumble-voip/speex.git'
         'mumble_one_ptt.patch')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '1407b3c075a628e27539652bc0dbd2453476919dd7da38d7e3ddac9636f0d3aa')
 
 pkgver() {
   cd "$_pkgname"
