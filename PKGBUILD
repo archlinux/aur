@@ -8,14 +8,14 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=policycoreutils
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="SELinux policy core utilities"
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
 license=('GPL2')
 groups=('selinux')
-depends=('libsemanage>=3.2' 'pam')
+depends=('libsemanage>=3.3' 'pam')
 optdepends=('mcstrans: SELinux MCS translation daemon'
             'restorecond: SELinux daemon that fixes SELinux file contexts'
             'selinux-dbus-config: D-Bus configuration for SELinux'
@@ -26,7 +26,7 @@ optdepends=('mcstrans: SELinux MCS translation daemon'
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d1331c6fa766c547b071c491de90b9f343c8dbffdb119be8a5a7e491199b93a9')
+sha256sums=('4199040ced8a81f2ddd0522b4faf2aba62fc821473f4051dc8474fb1c4a01078')
 
 build() {
   cd "${pkgname}-${pkgver}"
