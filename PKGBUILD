@@ -64,7 +64,8 @@ package_cheese() {
 
 package_libcheese() {
   pkgdesc="Webcam widget for Clutter and GTK"
-  depends=(clutter gdk-pixbuf2 glib2 gstreamer clutter-gtk gtk3)
+  depends=(clutter clutter-gtk clutter-gst gdk-pixbuf2 glib2 gtk3 gstreamer
+           gst-plugins-base-libs gst-plugins-bad-libs)
   provides=(libcheese.so libcheese-gtk.so)
   mv libs/* "$pkgdir"
 }
