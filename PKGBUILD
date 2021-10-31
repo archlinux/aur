@@ -2,7 +2,7 @@
 
 pkgname=deepin-pw-check-git
 pkgver=5.1.2.r5.gef201e1
-pkgrel=6
+pkgrel=8
 pkgdesc='deepin-pw-check is a tool to verify the validity of the password'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-pw-check"

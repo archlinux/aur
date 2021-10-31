@@ -1,7 +1,7 @@
 pkgbase = deepin-pw-check-git
 	pkgdesc = deepin-pw-check is a tool to verify the validity of the password
 	pkgver = 5.1.2.r5.gef201e1
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/linuxdeepin/deepin-pw-check
 	arch = x86_64
 	groups = deepin-git
