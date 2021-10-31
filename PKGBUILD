@@ -32,6 +32,8 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+source PKGBUILD.include
+
 prepare() {
   cd $_srcname
 
@@ -48,6 +50,8 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  configure_arch
 
   echo "Setting config..."
   cp ../config .config

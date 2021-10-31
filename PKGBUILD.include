@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/env bash
 
 _major_ver=$(echo $pkgver | cut -d '.' -f 1-2)
 pkgbase="${pkgbase}-cpu-opt"
 pkgdesc="${pkgdesc} (with CPU optimizations patch)"
-sources+=("enable-cpu-optimizations-for-gcc10.patch::https://gitweb.gentoo.org/proj/linux-patches.git/plain/5013_enable-cpu-optimizations-for-gcc10.patch?h=${_major_ver}")
+sources+=("enable-cpu-optimizations-universal.patch::https://gitweb.gentoo.org/proj/linux-patches.git/plain/5013_enable-cpu-optimizations-universal.patch?h=${_major_ver}")
 
 function configure_arch() {
   microarch=$(echo -march=x86-64 $CFLAGS | sed -r 's/.*-march=([a-z0-9-]+).*/\1/')
@@ -11,17 +11,22 @@ function configure_arch() {
   _config_param_name=""
   case "$microarch" in
     native|k6|k7|k8|k10|bulldozer|piledriver|steamroller|excavator|atom|nehalem|westmere|silvermont|goldmont|sandybridge|ivybridge|haswell|broadwell|skylake|icelake|core2)
-        _config_param_name="$(echo $microarch | awk '{ print toupper($0) }')";;
-    znver1) _config_param_name="ZEN";;
-    znver2) _config_param_name="ZEN2";;
+        _config_param_name="M$(echo $microarch | awk '{ print toupper($0) }')";;
+    znver1) _config_param_name="MZEN";;
+    znver2) _config_param_name="MZEN2";;
+    znver3) _config_param_name="MZEN3";;
+	x86-64-v2) _config_param_name="GENERIC_CPU2";;
+	x86-64-v3) _config_param_name="GENERIC_CPU3";;
+	x86-64-v4) _config_param_name="GENERIC_CPU4";;
     *)
-        echo "Unrecognized microarch '${microarch}, using 'native' by default'"
-        _config_param_name="NATIVE" ;;
+        echo "Unrecognized microarch '${microarch}, using 'x86-64-v3' by default'"
+        _config_param_name="GENERIC_CPU3" ;;
   esac
   if [[ ! -z "${_config_param_name}" ]]; then
     echo -e "\nCONFIG_M${_config_param_name}=y" >> .config
     sed -e 's|^CONFIG_GENERIC_CPU=y|# CONFIG_GENERIC_CPU is not set|g' -i .config
   fi
 }
+
 
 
