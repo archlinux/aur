@@ -1,14 +1,14 @@
 # Maintainer: HMH <henry@freedesk.net>
 
 pkgname=weylus-bin
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="Weylus - Use your tablet as graphic tablet/touch screen on your computer."
 arch=('x86_64')
 url="https://github.com/H-M-H/Weylus"
 license=('AGPL3')
 source=("$pkgname-$pkgver.zip::https://github.com/H-M-H/Weylus/releases/download/v$pkgver/linux.zip")
-sha256sums=('51dc2d772594f2c4bda0228bb1ea22ae2a4a889390d7d6ba409ee606915ca27f')
+sha256sums=('8f0a640d37a8aa451eef5831c513c6ebae6cb411170208ef028678ba4b8a99f2')
 
 package() {
     install -vDm755 weylus "$pkgdir/usr/bin/weylus"
