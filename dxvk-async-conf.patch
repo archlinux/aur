@@ -1,0 +1,29 @@
+diff --git a/dxvk.conf b/dxvk.conf
+index 9ca21a5e..abf0f2bf 100644
+--- a/dxvk.conf
++++ b/dxvk.conf
+@@ -214,6 +214,24 @@
+ # dxvk.hud = 
+ 
+ 
++# Compile pipelines asynchronously if possible. This may reduce stuttering
++# in some games, but may also introduce rendering issues that might become
++# apparent over time. Do not report bugs with this option enabled.
++#
++# Supported values: True, False
++
++# dxvk.enableAsync = True
++
++
++# Sets number of async compiler threads.
++#
++# Supported values:
++# - 0 to automatically determine the number of threads to use
++# - any positive number to enforce the thread count
++
++# dxvk.numAsyncThreads = 0
++
++
+ # Reported shader model
+ #
+ # The shader model to state that we support in the device

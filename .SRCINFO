@@ -20,13 +20,16 @@ pkgbase = dxvk-mingw
 	conflicts = dxvk
 	conflicts = d9vk
 	options = !lto
+	options = !staticlibs
 	source = git+https://github.com/doitsujin/dxvk.git#tag=v1.9.2
-	source = setup_dxvk
-	source = dxvk-async.patch
+	source = https://raw.githubusercontent.com/Sporif/dxvk-async/1.9.2/dxvk-async.patch
+	source = dxvk-async-conf.patch
 	source = dxvk-extraopts.patch
+	source = setup_dxvk
 	sha256sums = SKIP
-	sha256sums = b2413cabd8cca56e2d308ef5513edf1c7f909036ed2ccfeae17536a0e864dc96
-	sha256sums = acdb652830d642829057a035ebc69481697078a734f57ac974ee5b54454470ff
+	sha256sums = 9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991
+	sha256sums = c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401
 	sha256sums = 2bf3515ce9a3ee426c2632aa3355b2556ee8fe5dd8d88e088f90803e3d5f10a6
+	sha256sums = b2413cabd8cca56e2d308ef5513edf1c7f909036ed2ccfeae17536a0e864dc96
 
 pkgname = dxvk-mingw

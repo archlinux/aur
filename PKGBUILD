@@ -1,7 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.9.2
+_dxvkver=1.9.2
+pkgver=$_dxvkver
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -11,22 +12,31 @@ depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader' 'bash')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'mingw-w64-gcc')
 provides=('dxvk' 'd9vk' "dxvk=$pkgver")
 conflicts=('dxvk' 'd9vk')
-options=(!lto)
+options=(!lto !staticlibs)
 source=(
-    "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
-    "setup_dxvk"
-    "dxvk-async.patch"
+    "git+https://github.com/doitsujin/dxvk.git#tag=v$_dxvkver"
+    "https://raw.githubusercontent.com/Sporif/dxvk-async/$_dxvkver/dxvk-async.patch"
+    "dxvk-async-conf.patch"
     "dxvk-extraopts.patch"
+    "setup_dxvk"
 )
 sha256sums=(
     'SKIP'
-    'b2413cabd8cca56e2d308ef5513edf1c7f909036ed2ccfeae17536a0e864dc96'
-    'acdb652830d642829057a035ebc69481697078a734f57ac974ee5b54454470ff'
+    '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
+    'c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401'
     '2bf3515ce9a3ee426c2632aa3355b2556ee8fe5dd8d88e088f90803e3d5f10a6'
+    'b2413cabd8cca56e2d308ef5513edf1c7f909036ed2ccfeae17536a0e864dc96'
 )
 
 prepare() {
     cd dxvk
+
+    # Uncomment to enable dxvk async patch.
+    # Enable at your own risk. If you don't know what it is,
+    # and its implications, leave it as is. You have been warned.
+    # I am not liable if anything happens to you by using it.
+    #patch -p1 -i "$srcdir"/dxvk-async.patch
+    #patch -p1 -i "$srcdir"/dxvk-async-conf.patch
 
     # Export CFLAGS used by proton
     # -O2 is adjusted to -O3 since AVX is disabled
@@ -36,11 +46,6 @@ prepare() {
     export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
     export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
 
-    # Uncomment to enable dxvk async patch.
-    # Enable at your own risk. If you don't know what it is,
-    # and its implications, leave it as is. You have been warned.
-    # I am not liable if anything happens to you by using it.
-    #patch -p1 -i "$srcdir"/dxvk-async.patch
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
     patch -p1 -i "$srcdir"/dxvk-extraopts.patch
