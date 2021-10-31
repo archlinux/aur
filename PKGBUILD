@@ -8,7 +8,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=libselinux
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
@@ -16,14 +16,14 @@ url='https://github.com/SELinuxProject/selinux'
 license=('custom')
 groups=('selinux')
 makedepends=('pkgconf' 'python' 'ruby' 'xz' 'swig')
-depends=('libsepol>=3.2' 'pcre')
+depends=('libsepol>=3.3' 'pcre')
 optdepends=('python: python bindings'
             'ruby: ruby bindings')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "libselinux.tmpfiles.d")
-sha256sums=('df758ef1d9d4811051dd901ea6b029ae334ffd7c671c128beb16bce1e25ac161'
+sha256sums=('acfdee27633d2496508c28727c3d41d3748076f66d42fccde2e6b9f3463a7057'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
 
 build() {
