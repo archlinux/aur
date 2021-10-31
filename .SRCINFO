@@ -7,6 +7,7 @@ pkgbase = superslicer-bin
 	license = AGPL3
 	depends = zlib
 	depends = fuse2
+	depends = glu
 	provides = superslicer=2.3.56.9
 	conflicts = superslicer
 	conflicts = superslicer-git
