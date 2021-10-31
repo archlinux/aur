@@ -1,6 +1,6 @@
 pkgbase = ruby-fusuma-plugin-wmctrl
 	pkgdesc = Window Manager plugin for Fusuma
-	pkgver = 0.4.3
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/iberianpig/fusuma-plugin-wmctrl
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = ruby-fusuma-plugin-wmctrl
 	depends = ruby
 	depends = ruby-fusuma
 	depends = wmctrl
-	noextract = fusuma-plugin-wmctrl-0.4.3.gem
+	noextract = fusuma-plugin-wmctrl-1.0.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fusuma-plugin-wmctrl-0.4.3.gem
-	sha1sums = 5cb17eb8bea8ffb3336b90ebc70cc85708e310a3
+	source = https://rubygems.org/downloads/fusuma-plugin-wmctrl-1.0.1.gem
+	sha1sums = ce8465f808dc4da84eadaa76bf54060dce13ce56
 
 pkgname = ruby-fusuma-plugin-wmctrl
-
