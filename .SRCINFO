@@ -73,12 +73,10 @@ pkgbase = gtk3-classic
 	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.30.tar.xz
 	source = gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/2e881c9916dd4babb5f9922fb07dce2345b3cb4b/trunk/gtk-query-immodules-3.0.hook
 	source = settings.ini
-	source = README.md
 	sha256sums = SKIP
 	sha256sums = ba75bfff320ad1f4cfbee92ba813ec336322cc3c660d406aad014b07087a3ba9
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
-	sha256sums = 1d2e3c41c7de03a31d717b09e053c88cbaca2ae74eefd982549c49de81c21ada
 
 pkgname = gtk3-classic
 	depends = atk

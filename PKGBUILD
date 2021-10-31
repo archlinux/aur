@@ -40,13 +40,11 @@ source=(
 	"https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-$_gtkver.tar.xz"
 	"gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/$__arch_pkg_commit/trunk/gtk-query-immodules-3.0.hook"
 	settings.ini
-	README.md
 )
 sha256sums=('SKIP'
             'ba75bfff320ad1f4cfbee92ba813ec336322cc3c660d406aad014b07087a3ba9'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
-            '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
-            '1d2e3c41c7de03a31d717b09e053c88cbaca2ae74eefd982549c49de81c21ada')
+            '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
 prepare()
 {
@@ -112,9 +110,6 @@ package_gtk3-classic()
 	install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk-query-immodules-3.0.hook
 
 	rm "$pkgdir/usr/bin/gtk-update-icon-cache"
-
-	install -Dm644 "$srcdir"/README.md "$pkgdir/usr/share/gtk-3.0/README.md"
-	sed -i 's/mushrooms/classic/g' "$pkgdir/usr/share/gtk-3.0/README.md"
 }
 
 package_lib32-gtk3-classic()
