@@ -4,7 +4,7 @@
 
 _pkgname=fastlbry-terminal
 pkgname=${_pkgname}-git
-pkgver=0.5.r148.g6531cad
+pkgver=0.5.r157.g3bcbc1a
 pkgrel=1
 pkgdesc="A fully featured, terminal application to interact with LBRY"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://www.notabug.org/jyamihud/FastLBRY-terminal"
 license=('GPL3')
 makedepends=('git')
 depends=('python')
-optdepends=('lbry-app-bin: for login support to the LBRY network',
+optdepends=('lbry-app-bin: for login support to the LBRY network'
             'lbry-desktop-git: for login support to the LBRY network')
 source=("git+$url.git")
 sha256sums=('SKIP')
@@ -25,17 +25,22 @@ pkgver() {
 package() {
   cd ${srcdir}/FastLBRY-terminal
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
+  install -dm 0755 "${pkgdir}/usr/lib/${_pkgname}"
   cp -r flbry "${pkgdir}/usr/lib/${_pkgname}/"
   cp -r help "${pkgdir}/usr/lib/${_pkgname}/"
   cp -r themes "${pkgdir}/usr/lib/${_pkgname}/"
+  install -m 0644 analytics.json "${pkgdir}/usr/lib/${_pkgname}/"
+  install -m 0644 devs.json "${pkgdir}/usr/lib/${_pkgname}/"
+  install -m 0644 How-To-Use.md "${pkgdir}/usr/lib/${_pkgname}/"
   install -m 0644 icon.png "${pkgdir}/usr/lib/${_pkgname}/"
+  install -m 0644 LBRYNET-LICENSE.md "${pkgdir}/usr/lib/${_pkgname}/"
   install -m 0644 LICENSE.md "${pkgdir}/usr/lib/${_pkgname}/"
   install -m 0644 README.md "${pkgdir}/usr/lib/${_pkgname}/"
   install -m 0644 run.py "${pkgdir}/usr/lib/${_pkgname}/"
 
-  install -dm755 "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -dm 0755 "${pkgdir}/usr/share/licenses/${_pkgname}"
   install -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  install -m 0644 LBRYNET-LICENSE.md "${pkgdir}/usr/share/licenses${_pkgname}/"
 
   install -dm755 "${pkgdir}/usr/bin/"
   cd "${pkgdir}/usr/bin/"
