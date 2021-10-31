@@ -6,7 +6,7 @@
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=249.r108.g6c39b39aa8
+pkgver=249.r1795.g2ad2925de5
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
@@ -69,7 +69,6 @@ build() {
     -Dlz4=false
     -Dmicrohttpd=false
     -Dpam=false
-    -Dpython=false
     -Dseccomp=false
 
     # components
