@@ -1,6 +1,6 @@
 pkgbase = lib32-apulse-git
 	pkgdesc = PulseAudio emulation for ALSA, x86_64 multilib version
-	pkgver = 0.1.13
+	pkgver = 0.1.13_r4_g6c4ce36
 	pkgrel = 1
 	url = https://github.com/i-rinat/apulse
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = lib32-apulse-git
 	md5sums = SKIP
 
 pkgname = lib32-apulse-git
-
