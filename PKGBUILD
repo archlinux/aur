@@ -1,10 +1,11 @@
+# Maintainer:  Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
 
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
-pkgver=470.74
+pkgver=470.82.00
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -16,7 +17,7 @@ source=('nvidia-drm-outputclass.conf'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
-            '21e4290d98bbbf09eed7be32df8743f0adf728f9e88869afb02fc1d0f0be87cf42af2d4f04322a76d68a1704ef044e83cd403377e60af917ff3ec0a04985801a')
+            'f4135efd748d8835e9719e6ef93a86c5646a4d771c63e31f0bdaa0cf6ddf25ce9356eca58c27addb988f4cbe88c9bdcc0536512a46915826261d8f4f4247ebd8')
 
 
 create_links() {
@@ -57,7 +58,8 @@ package_opencl-nvidia-470xx() {
     pkgdesc="OpenCL implemention for NVIDIA"
     depends=('zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
-    provides=('opencl-driver')
+    provides=('opencl-driver' 'opencl-nvidia')
+    conflicts=('opencl-nvidia')
     cd "${_pkg}"
 
     # OpenCL
@@ -93,8 +95,8 @@ package_nvidia-470xx-utils() {
     optdepends=('nvidia-470xx-settings: configuration tool'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia-470xx: OpenCL support')
-    conflicts=('nvidia-libgl')
-    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl')
+    conflicts=('nvidia-libgl' 'nvidia-utils')
+    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-utils')
     replaces=('nvidia-libgl')
     install="${pkgname}.install"
 
