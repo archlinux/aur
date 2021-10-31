@@ -1,5 +1,5 @@
 diff --git a/setup.py b/setup.py
-index e6f0dc3..3220eb2 100755
+index dc107b6..295ceeb 100755
 --- a/setup.py
 +++ b/setup.py
 @@ -22,12 +22,12 @@ requires = (
@@ -11,7 +11,7 @@ index e6f0dc3..3220eb2 100755
      # iOS dependencies:
      "iOSbackup>=0.9.921",
      # Android dependencies:
-     "adb-shell>=0.4.1",
+     "adb-shell>=0.4.2",
 -    "libusb1>=2.0.1",
 +    "libusb1>=1.9.3",
  )
