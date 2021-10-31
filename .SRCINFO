@@ -1,7 +1,7 @@
 pkgbase = fprintd-clients
 	pkgdesc = Fprintd without the daemon
 	pkgver = 1.90.1.r2.g54e56d6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.freedesktop.org/uunicorn/fprintd
 	arch = x86_64
 	license = GPL
@@ -21,9 +21,11 @@ pkgbase = fprintd-clients
 	conflicts = fprintd
 	conflicts = fprintd-clients
 	source = fprintd-clients::git+https://gitlab.freedesktop.org/uunicorn/fprintd.git#branch=debian/clients-only
-	source = disable-systemd-reactivated.diff
-	md5sums = SKIP
-	md5sums = b392087f0a6a824fcbceec21d2a38402
+	source = 0001-disable-systemd-reactivated.diff
+	source = 0002-Remove-ignored-positional-arguments.patch
+	sha256sums = SKIP
+	sha256sums = 05e537a783302f0b01984eee00368deb2bc846bfd16b8892a21aff79c9b7a6ab
+	sha256sums = 83458c77fd9b1c3022ed7230b92432a3edde00cc811a01e49b76c04629534b82
 
 pkgname = fprintd-clients
 	depends = glib2
@@ -33,4 +35,3 @@ pkgname = fprintd-clients
 	depends = dbus-glib
 	depends = libsystemd
 	depends = libfprint-2.so
-

@@ -1,0 +1,26 @@
+From 968864ccfc0ab6cf7543134382eea08f172ecf30 Mon Sep 17 00:00:00 2001
+From: "j.r" <j.r@jugendhacker.de>
+Date: Sun, 31 Oct 2021 21:12:22 +0100
+Subject: [PATCH] Remove ignored positional arguments
+
+Actually newer meson versions make it fail
+---
+ data/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index bada139..2acefc0 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -22,7 +22,7 @@ configure_file(
+ )
+ 
+ polkit_policy = 'net.reactivated.fprint.device.policy'
+-polkit_policy_target = i18n.merge_file(polkit_policy,
++polkit_policy_target = i18n.merge_file(
+     input: '@0@.in'.format(polkit_policy),
+     output: polkit_policy,
+     po_dir: meson.source_root() / 'po',
+-- 
+2.33.1
+
