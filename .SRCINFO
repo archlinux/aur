@@ -1,6 +1,6 @@
 pkgbase = postgresql-src-beta
-	pkgver = 11rc1
-	pkgrel = 8
+	pkgver = 14rc1
+	pkgrel = 1
 	url = http://www.postgresql.org/
 	arch = aarch64
 	arch = i686
@@ -9,18 +9,18 @@ pkgbase = postgresql-src-beta
 	makedepends = python
 	makedepends = perl
 	makedepends = openssl>=1.0.0
-	source = http://ftp.postgresql.org/pub/source/v11rc1/postgresql-11rc1.tar.bz2
+	source = http://ftp.postgresql.org/pub/source/v14rc1/postgresql-14rc1.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql.pam
 	source = postgresql.logrotate
 	source = postgresql.service
 	source = postgresql-check-db-dir
-	sha256sums = 608c35369b79a40239663c4213267fd08d3184c3a2cd4d6ff71103ca61930609
-	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
+	sha256sums = 586a816cb7811985f474eda0d4926fabd2378f0f6d5659d12fba421d38a07616
+	sha256sums = 70954ea0a5f68fa39131afa55837c0c29a0b38948030208d909e78f0ed1cc826
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
 	sha256sums = b48fe97f8e43ed0d2041d519119a4dafb70fcae72870951bf4fb7350fe169ac8
-	sha256sums = 7912aa25937cba9e971c071625e5117638509fe2cf4232e071d18fc53b585500
+	sha256sums = 981bc15147eaec368fe92386bd208bda2af171d38299a9b89d311330e5dc0d7b
 
 pkgname = postgresql-src-beta-libs
 	pkgdesc = Libraries for use with PostgreSQL
@@ -41,7 +41,7 @@ pkgname = postgresql-src-beta-docs
 pkgname = postgresql-src-beta
 	pkgdesc = A sophisticated object-relational DBMS (from source, LTO enabled)
 	install = postgresql.install
-	depends = postgresql-src-beta-libs>=11rc1
+	depends = postgresql-src-beta-libs>=14rc1
 	depends = krb5
 	depends = readline>=6.0
 	depends = openssl>=1.0.0
@@ -57,4 +57,3 @@ pkgname = postgresql-src-beta
 	options = staticlibs
 	backup = etc/pam.d/postgresql
 	backup = etc/logrotate.d/postgresql
-
