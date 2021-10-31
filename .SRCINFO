@@ -1,0 +1,12 @@
+pkgbase = btcdeb
+	pkgdesc = Bitcoin Script Debugger
+	pkgver = 0.3.20
+	pkgrel = 1
+	url = https://github.com/bitcoin-core/btcdeb
+	arch = x86_64
+	license = MIT
+	makedepends = automake
+	source = https://github.com/bitcoin-core/btcdeb/archive/refs/tags/0.3.20.tar.gz
+	md5sums = b2724041b93dfe24e434b6bd8038e9dd
+
+pkgname = btcdeb
