@@ -3,15 +3,15 @@
 
 pkgname=plasma5-applets-network-monitor
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma 5 applet that monitors network speed of currently active connections"
 arch=(any)
 url="http://kde-apps.org/content/show.php/Network+Monitor?content=169377"
 license=(GPL)
-depends=(plasma-workspace qt5-graphicaleffects)
+depends=(plasma-workspace qt5-graphicaleffects ksysguard)
 makedepends=(extra-cmake-modules)
 source=("https://github.com/kotelnik/plasma-applet-network-monitor/archive/v$pkgver.tar.gz")
-md5sums=('10512358e603b96339c244a1d4ac8588')
+sha256sums=('dff78d58f04aea11c8083cf1897e3c4b62057a6829a6666402be7188c75e2be9')
 
 prepare() {
   mkdir -p build
