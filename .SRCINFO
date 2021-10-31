@@ -1,0 +1,21 @@
+pkgbase = qtask-git
+	pkgdesc = An open-source organizer based on Taskwarrior
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jubnzv/qtask
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-base
+	depends = task
+	provides = qtask
+	conflicts = qtask
+	options = !strip
+	source = qtask-git::git+https://github.com/jubnzv/qtask.git
+	sha512sums = SKIP
+
+pkgname = qtask-git
