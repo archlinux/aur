@@ -1,7 +1,7 @@
 # Maintainer : René Wagner <rwagner at rw-net dot de>
 
 pkgname='perl-feed-find'
-pkgver='0.11'
+pkgver='0.12'
 pkgrel='1'
 pkgdesc="Perl interface for libcurl"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ options=('!emptydirs')
 depends=('perl-test-lwp-useragent' 'perl')
 url='https://metacpan.org/pod/Feed::Find'
 source=("https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/Feed-Find-${pkgver}.tar.gz")
-sha256sums=('0c1f101fbd13546ae6da376063053e602f912d5a3b2c4f0a262d569365f3d595')
+sha256sums=('e5ac20bdfd728426edb9328ebd501f70bbd575ec3fd2c57aec4910ddb78a9146')
 _distdir="Feed-Find-${pkgver}"
 
 build() {
