@@ -14,13 +14,17 @@ pkgname="${_target}-gcc-bootstrap"
 pkgver=11.2.0
 _islver=0.24
 _majorver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection - bootstrap/stage1 cross compiler for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
 license=('GPL' 'LGPL' 'FDL' 'custom')
 depends=('gmp' 'libmpc' "${_target}-binutils" 'mpfr' 'sh' 'zlib' 'zstd')
 makedepends=("${_target}-linux-api-headers")
+provides=('mips64el-linux-gnuabi64-gcc-bootstrap' 'mips64el-linux-gnuabi32-gcc-bootstrap'
+          'mips64el-linux-gnuabin32-gcc-bootstrap')
+conflicts=('mips64el-linux-gnuabi64-gcc-bootstrap' 'mips64el-linux-gnuabi32-gcc-bootstrap'
+           'mips64el-linux-gnuabin32-gcc-bootstrap')
 options=('!emptydirs')
 source=("https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"{,.sig}
         #"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
@@ -121,9 +125,6 @@ package() {
     local _bin
     for _abi in "${_ABIS[@]}"
     do
-        provides+=("${pkgname/gnu/"gnuabi${_abi}"}")
-        conflicts+=("${pkgname/gnu/"gnuabi${_abi}"}")
-        
         for _bin in c++ cpp g++ gcc "gcc-${pkgver}"
         do
             if [ "$_abi" = "$_DEFAULT_ABI" ]
