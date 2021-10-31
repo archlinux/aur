@@ -44,7 +44,7 @@ source=("sway::git+https://github.com/swaywm/sway.git"
 	"mask-modifiers.patch"
 	50-systemd-user.conf)
 sha512sums=('SKIP'
-	    'SKIP'
+            'd540153de3d20a1ad20607415495e6d06068500bc6299e4fb6e24f5a71a7bc48d057141ee57c4db80a62cebabbdca52245bef36f3588497db82e1065620d2848'
             '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
 provides=("sway" "sway-git")
 conflicts=("sway" "sway-git")
