@@ -1,13 +1,13 @@
 pkgbase = joker
 	pkgdesc = A Clojure interpreter and linter written in Go
-	pkgver = 0.17.2
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://github.com/candid82/joker
 	arch = x86_64
 	license = EPL
 	makedepends = go
 	depends = glibc
-	source = joker-0.17.2.tar.gz::https://github.com/candid82/joker/archive/v0.17.2.tar.gz
-	sha256sums = f965aeafb51cc6138506bd7a09b360b5834c2750aaaf37c280643e9edbfa7a3a
+	source = joker-0.17.3.tar.gz::https://github.com/candid82/joker/archive/v0.17.3.tar.gz
+	sha256sums = 69147c3eec1994a20cc1dd100c5b5d780300570266ce39ea9838c6b044df95a6
 
 pkgname = joker
