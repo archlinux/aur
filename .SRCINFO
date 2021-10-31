@@ -10,5 +10,6 @@ pkgbase = kya
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	depends = curl
 
 pkgname = kya

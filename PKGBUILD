@@ -1,6 +1,7 @@
 pkgname=kya
 pkgver=0.1.10
 pkgrel=1
+depends=('curl')
 makedepends=('rust' 'cargo')
 url="https://github.com/gert7/kya"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
