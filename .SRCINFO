@@ -1,0 +1,18 @@
+pkgbase = neovim-project-git
+	pkgdesc = Project management plugin
+	pkgver = r76.7b23fb7
+	pkgrel = 1
+	url = https://github.com/ahmedkhalf/project.nvim
+	install = project.install
+	arch = any
+	groups = neovim-plugins
+	license = Apache
+	makedepends = git
+	depends = neovim>=0.5.0
+	optdepends = neovim-telescope: builtin integration
+	provides = neovim-project
+	conflicts = neovim-project
+	source = neovim-project-git::git+https://github.com/ahmedkhalf/project.nvim
+	md5sums = SKIP
+
+pkgname = neovim-project-git
