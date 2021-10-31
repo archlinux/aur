@@ -1,7 +1,7 @@
 # Maintainer: Léo Chéneau <leocheneau+arch@gmail.com>
 
 pkgname=easena-git
-pkgver=5c26d5d
+pkgver=r430.g5c26d5d
 pkgrel=1
 pkgdesc="EAsy Specification of Evolutionary and Neural Algorithms is an Artificial Evolution platform developped by the SONIC (Stochastic Optimisation and Nature Inspired Computing) group of the BFO team at Université de Strasbourg. "
 arch=(i686 x86_64)
