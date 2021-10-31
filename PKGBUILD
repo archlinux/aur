@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _bcname=MatrixGenerics
-_bcver=1.5.4
+_bcver=1.6.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(Artistic-2.0)
 depends=(r 'r-matrixstats>=0.60.1')
 optdepends=(r-sparsematrixstats r-delayedmatrixstats r-summarizedexperiment r-testthat)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('12a3540cababe1eefd50798e324458d24d6ea6918f627ec65a65749c6d23b13a')
+sha256sums=('e3078d2873d7df131557d1ec8ad0900479f43ae23eaac536c844c89a33bae5e8')
 
 build() {
   cd "${srcdir}"
