@@ -1,13 +1,13 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.16.1
-pkgrel=2
+pkgver=1.16.3
+pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/advanced-scene-switcher.395/"
 license=("GPL2")
-depends=("obs-studio" "libxss" "libxtst" "opencv")
+depends=("obs-studio" "libxss" "libxtst" "opencv" "procps")
 makedepends=("cmake" "git")
 source=(
   "$pkgname::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=$pkgver"
@@ -36,6 +36,9 @@ build() {
   -DBUILD_OUT_OF_TREE=ON \
   -DLIBOBS_FRONTEND_INCLUDE_DIR='/usr/include/obs/' \
   -DLIBOBS_FRONTEND_API_LIB='/usr/lib/libobs-frontend-api.so'
+  #\
+  #-DPROCPS_INCLUDE_DIR='/usr/include/proc/' \
+  #-DPROCPS_LIBRARY='/usr/lib/libprocps.so'
 
   make -C build
 }

@@ -1,7 +1,7 @@
 pkgbase = obs-advanced-scene-switcher
 	pkgdesc = An automated scene switcher for OBS Studio
-	pkgver = 1.16.1
-	pkgrel = 2
+	pkgver = 1.16.3
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/advanced-scene-switcher.395/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = obs-advanced-scene-switcher
 	depends = libxss
 	depends = libxtst
 	depends = opencv
-	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.16.1
+	depends = procps
+	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.16.3
 	source = asio::git+https://github.com/chriskohlhoff/asio.git
 	source = websocketpp::git+https://github.com/zaphoyd/websocketpp.git
 	sha256sums = SKIP
