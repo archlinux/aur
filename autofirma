@@ -132,4 +132,5 @@ unset _autofirma_dir _cert_days
 trust_ca
 
 # Run app
-java -jar /usr/share/java/autofirma/autofirma.jar $@
+/usr/lib/jvm/java-11-openjdk/bin/java -jar \
+  /usr/share/java/autofirma/autofirma.jar $@
