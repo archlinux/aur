@@ -33,7 +33,7 @@ build() {
 }
 
 package_nvidia-470xx-settings() {
-  depends=('jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidia-utils' 'libxnvctrl')
+  depends=('jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidia-470xx-utils' 'libxnvctrl-470xx')
 
   cd ${_pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install

@@ -24,8 +24,8 @@ pkgname = nvidia-470xx-settings
 	depends = gtk3
 	depends = libxv
 	depends = libvdpau
-	depends = nvidia-utils
-	depends = libxnvctrl
+	depends = nvidia-470xx-utils
+	depends = libxnvctrl-470xx
 
 pkgname = libxnvctrl-470xx
 	pkgdesc = NVIDIA NV-CONTROL X extension
