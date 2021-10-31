@@ -2,7 +2,7 @@
 
 pkgname=deepin-desktop-schemas-git
 pkgver=5.9.16.r11.gbae658d
-pkgrel=8
+pkgrel=10
 pkgdesc='GSettings deepin desktop-wide schemas'
 arch=('any')
 url="https://github.com/linuxdeepin/deepin-desktop-schemas"
