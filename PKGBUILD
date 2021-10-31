@@ -2,7 +2,7 @@
 
 _pkgname=clienteafirma
 pkgname=autofirma-git
-pkgver=r6335.f01033006
+pkgver=r6398.1222bbef9
 pkgrel=1
 pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
@@ -32,6 +32,10 @@ pkgver() {
 build() {
   cd "${_pkgname}"
   export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
+  # FIX: https://github.com/ctt-gob-es/clienteafirma/issues/222
+  sed -i '76d' afirma-crypto-cades/src/main/java/es/gob/afirma/signers/cades/CAdESExtraParams.java
+  sed -i '65d' afirma-crypto-cades/src/main/java/es/gob/afirma/signers/cades/CAdESExtraParams.java
+  # FIX: end 222
   mvn clean install -Dmaven.test.skip=true
   mvn clean install -Denv=install -Dmaven.test.skip=true
 }

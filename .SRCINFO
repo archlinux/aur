@@ -1,6 +1,6 @@
 pkgbase = autofirma-git
 	pkgdesc = Cliente de firma electrónica ofrecido por la Administración Pública
-	pkgver = r6335.f01033006
+	pkgver = r6398.1222bbef9
 	pkgrel = 1
 	url = https://firmaelectronica.gob.es/
 	arch = any
@@ -26,4 +26,3 @@ pkgbase = autofirma-git
 	sha256sums = db78284b0be3db018205c8d1c8449c461275cb3b8b82dfec3f75e9a19d346542
 
 pkgname = autofirma-git
-
