@@ -2,7 +2,8 @@
 Version=1.0
 Type=Application
 Name=Beaker
-Comment=Peer-to-peer web browser with tools to create and host websites
+Comment=Experimental peer-to-peer web browser
 Exec=beaker
 Icon=beaker
-Categories=Network;WebBrowser;
+Categories=Network;WebBrowser;P2P;
+Terminal=false

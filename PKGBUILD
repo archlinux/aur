@@ -1,77 +1,41 @@
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
-# Contributor: Salamandar <felix at piedallu dot me>
+# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: Jean Lucas <jean@4ray.co>
 
-_pkgname=beaker
 pkgname=beaker-browser
-pkgver=0.7.11
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Peer-to-peer web browser with tools to create and host websites"
-arch=(x86_64)
-url="https://github.com/beakerbrowser/beaker"
-license=('MIT')
-depends=(
-  'electron'
-)
-makedepends=(
-  'git'
-  'npm'
-  'python2'
-)
-source=(
-  "${_pkgname}-${pkgver}.tar.gz::https://github.com/beakerbrowser/${_pkgname}/archive/${pkgver}.tar.gz"
-  "${_pkgname}.sh"
-  "${_pkgname}.desktop"
-)
-sha256sums=(
-  '5e3541868ffbf4a9085fb12e863192b682c84e7bb02899b3e7a4bd7125f505e8'
-  '23ea9820de249cb65d319e943d200940d929a3c8261b5d978848ddc44554728f'
-  'f6ac7e3d7d8d729afc32b804bab9b6f1b5ae0f0b8d350c17c8f6efba222b6165'
-)
-
-options=(!strip)
+pkgdesc='Experimental peer-to-peer web browser'
+arch=(i686 x86_64)
+url=https://beakerbrowser.com
+license=(MIT)
+depends=(alsa-lib atk at-spi2-atk cairo gcc-libs gdk-pixbuf2 glibc gtk3 libcups libsodium libx11 libxcb libxcomposite libxcursor libxdamage libxext libxfixes libxi libxrandr libxrender libxss libxtst nodejs nspr nss pango python)
+makedepends=(npm git python2)
+source=(beaker-$pkgver.tar.gz::https://github.com/beakerbrowser/beaker/archive/$pkgver.tar.gz
+        beaker.desktop)
+sha512sums=('39126782e1b81a39902b78b9bd9b7bc7a6c955e540f94cd7e59da0d46286e74cab9f5d43f96e48b2428538d7eae30146193b1999adbcca16d1021879c7177ff3'
+            '24210bb1900112d4b4ff37ed7e57055516b4134d277730bf78e69e7c30c2f2655fb21f5266719a60b3edd2dfea7c8ec9e0d56d71f9a9daf1b674f9108831df08')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  npm install
-  #see https://github.com/electron/electron/issues/5851
-  sed -i "s|--target=[^ ]* |--target=$(</usr/lib/electron/version) |" tasks/rebuild.js
-  sed -i 's|python|python2|' app/node_modules/sqlite3/deps/sqlite3.gyp
-  rm -r app/node_modules/*-native/prebuilds
-
+  cd beaker-$pkgver/scripts
+  npm i
+  npm run build
   npm run rebuild
+  npx electron-builder --dir
 }
 
 package() {
-  cd "${srcdir}"
+  install -Dm 644 beaker.desktop -t "$pkgdir"/usr/share/applications
 
-  mkdir -p "${pkgdir}/usr/"{lib,share/pixmaps}
+  cd beaker-$pkgver
 
-  install -Dm755 "${_pkgname}.sh"                             "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${_pkgname}.desktop"                        "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -dm755                                              "${pkgdir}/usr/share/licenses/${_pkgname}"
-  sed -n '/## License/,$p' "${_pkgname}-${pkgver}/README.md" >"${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
-  ln -s "../../lib/${_pkgname}/assets/img/logo.png"           "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  cp -r "${_pkgname}-${pkgver}/app"                           "${pkgdir}/usr/lib/${_pkgname}"
+  mkdir "$pkgdir"/usr/{lib,bin}
+  cp -a dist/linux-unpacked "$pkgdir"/usr/lib/beaker
+  ln -s /usr/lib/beaker/beaker-browser "$pkgdir"/usr/bin/beaker
 
-  # Clean up
-  find "${pkgdir}/usr/lib/${_pkgname}/node_modules" -name "package.json" \
-    -exec sed -e "s|${srcdir}/${_pkgname}|/usr/lib/${_pkgname}|" -i {} \; \
+  for i in 16 24 32 48 64 96 128 256 512 1024; do
+    install -Dm 644 build/icons/${i}x${i}.png \
+      "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/beaker.png
+  done
 
-  find "${pkgdir}/usr/lib/${_pkgname}/node_modules" \
-    \(  -name ".*" \
-    -or -name "*.gyp" \
-    -or -name "*.gypi" \
-    -or -name "*.mk" \
-    -or -name "*Makefile" \
-    -or -name "bin" \
-    -or -name "deps" \
-    -or -name "doc" \
-    -or -name "example" \
-    -or -name "man" \
-    -or -name "nan" \
-    -or -name "obj.target" \
-    -or -name "script" \
-    -or -name "test" \
-    -or -name "tmp" \
-    \) -prune -exec rm -r '{}' \;
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/beaker
 }
