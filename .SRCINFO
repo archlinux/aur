@@ -1,14 +1,14 @@
 pkgbase = katex
 	pkgdesc = Fast math typesetting for the web
-	pkgver = 0.15.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://katex.org
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = katex-0.15.0.tgz
-	source = https://registry.npmjs.org/katex/-/katex-0.15.0.tgz
-	sha256sums = b8ef22aca6a9c925b6a96bdb021c3412215c4f9637bdf06aeb4e435e9fc3562a
+	noextract = katex-0.15.1.tgz
+	source = https://registry.npmjs.org/katex/-/katex-0.15.1.tgz
+	sha256sums = c973742bb5664efeb2b182e79183d032dcec91ba1b1dab69b2ab3644d07f0c36
 
 pkgname = katex
