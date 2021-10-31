@@ -5,13 +5,13 @@
 _gitname=JRomManager
 pkgbase=jrommanager-bin
 pkgname=jrommanager-bin
-pkgver=2.4.3
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='A Rom Manager entirely written in Java and released under GPL v2'
 arch=('any')
 license=('GPL-2')
 url="https://github.com/optyfr/JRomManager"
-depends=('java-runtime>=8')
+depends=('java-runtime>=11')
 source=("https://github.com/optyfr/${_gitname}/releases/download/${pkgver}/${_gitname}-${pkgver}.zip"
 	"${_gitname}.desktop" 
 	"${_gitname}.png"
@@ -24,6 +24,7 @@ package() {
 	install -m644 lib/*.jar "${pkgdir}/usr/share/java/${pkgname}/lib/"
 	install -m644 *.jar "${pkgdir}/usr/share/java/${pkgname}/"
 	install -Dm755 *.sh "${pkgdir}/usr/share/java/${pkgname}/"
+	cp -dpr --no-preserve=ownership certs "${pkgdir}/usr/share/java/${pkgname}/"
 	cp -dpr --no-preserve=ownership webclient "${pkgdir}/usr/share/java/${pkgname}/"
 	cp -dpr --no-preserve=ownership wrapper "${pkgdir}/usr/share/java/${pkgname}/"
 	install -Dm755 ${_gitname}.sh "${pkgdir}/usr/bin/${pkgname}"
@@ -33,7 +34,7 @@ package() {
 }
 
 # makepkg -g >> PKGBUILD
-md5sums=('47fd1a1f8cf32bb7f43fafd14a18dde6'
+md5sums=('fd287035dfecb44fa2dd470136a5374c'
          '0b48b210cac43d094a01295534a68e70'
          'aa359e0e6eedc95e172355b83b2c6235'
          '12b2b7268a0034338d2eedc8c875f5aa')
