@@ -1,6 +1,6 @@
 # Maintainer: Travis Chen <travis.chen@everchanging.dev>
 pkgname=symfs-git
-pkgver=TO_BE_DERIVED_FROM_GIT
+pkgver=master
 pkgrel=1
 epoch=
 pkgdesc="A filesystem- and application- agnostic program that generates a collection of views to a collection of directories with associated metadata in the form of symlinks, grouping them based on a set of criteria against the metadata in those directories."
