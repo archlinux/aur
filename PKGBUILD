@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-javascript-minifier-xs'
-pkgver='0.14'
+pkgver='0.15'
 pkgrel='1'
 pkgdesc="XS based JavaScript minifier"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/JavaScript-Minifier-XS'
 source=("http://search.cpan.org/CPAN/authors/id/G/GT/GTERMARS/JavaScript-Minifier-XS-${pkgver}.tar.gz")
-sha256sums=('e6a4a2ae004981e2e412b417b1a109b15170f2fbcb366797ffe097c7db1dc081')
+sha256sums=('5d9b034f58f0b6ff5b64647bd3c5a9ce05b2a70edee339fbc3173aee747cc050')
 _distdir="JavaScript-Minifier-XS-${pkgver}"
 
 build() {
