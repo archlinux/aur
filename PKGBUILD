@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.14
-_minor=14
+_minor=15
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
