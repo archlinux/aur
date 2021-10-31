@@ -1,0 +1,12 @@
+--- squashfs-root/Slic3r.desktop
++++ squashfs-root/Slic3r.desktop
+@@ -1,7 +1,8 @@
+ [Desktop Entry]
+ Name=SuperSlicer
+-Exec=AppRun %F
++Exec=env DESKTOPINTEGRATION=false /usr/bin/superslicer %F
+ Icon=SuperSlicer
+ Type=Application
+ Categories=Utility;
+ MimeType=model/stl;application/vnd.ms-3mfdocument;application/prs.wavefront-obj;application/x-amf;
++X-AppImage-Version=pkgver
