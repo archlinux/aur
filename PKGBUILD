@@ -12,36 +12,32 @@ conflicts=(fprintd fprintd-clients)
 provides=($pkgname)
 url="https://gitlab.freedesktop.org/uunicorn/fprintd"
 source=("${pkgname}::git+${url}.git#branch=debian/clients-only"
-  disable-systemd-reactivated.diff)
-md5sums=('SKIP'
-         'b392087f0a6a824fcbceec21d2a38402')
+	'0001-disable-systemd-reactivated.diff')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $pkgname
-  git checkout 54e56d660bf9730f8abc8f2c6a358ef2fec675f2
-  patch -Np1 < $srcdir/disable-systemd-reactivated.diff
+	cd $pkgname
+	git checkout 54e56d660bf9730f8abc8f2c6a358ef2fec675f2
+	patch -Np1 < $srcdir/disable-systemd-reactivated.diff
 }
 
 build() {
-  arch-meson $pkgname build \
-    -D pam_modules_dir=/usr/lib/security
-  meson compile -C build
+	arch-meson $pkgname build \
+		-D pam_modules_dir=/usr/lib/security
+	meson compile -C build
 }
 
 check() {
-  meson test -C build
+	meson test -C build
 }
 
 package() {
-  depends+=(libfprint-2.so)
+	depends+=(libfprint-2.so)
 
-  DESTDIR=$pkgdir meson install -C build
-  install -d -m 700 "${pkgdir}/var/lib/fprint"
+	DESTDIR=$pkgdir meson install -C build
+	install -d -m 700 "${pkgdir}/var/lib/fprint"
 }
-
-# vim:set ts=2 sw=2 et:
