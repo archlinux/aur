@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDb
-_bcver=1.29.10
+_bcver=1.30.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(Artistic-2.0)
 depends=('r>=4.0.0' 'r-biocgenerics>=0.37.0' 'r-s4vectors>=0.25.12' 'r-iranges>=2.13.12' r-rcurl r-genomeinfodbdata)
 optdepends=(r-genomicranges r-rsamtools r-genomicalignments r-genomicfeatures r-txdb.dmelanogaster.ucsc.dm3.ensgene r-bsgenome r-bsgenome.scerevisiae.ucsc.saccer2 r-bsgenome.celegans.ucsc.ce2 r-bsgenome.hsapiens.ncbi.grch38 r-runit r-biocstyle r-knitr)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('2da8e008a954b909064ccb62e4e058993b118dd2059c9afb9d7b42bd1e880bd3')
+sha256sums=('da1a0d06fc4a0d6e549c74d9351eecf0f46d23f85a375e42ed18129e3e5d1ce4')
 
 build() {
   cd "${srcdir}"
