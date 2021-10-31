@@ -1,3 +1,4 @@
+# Maintainer:  Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
@@ -5,7 +6,7 @@
 _pkgbasename=nvidia-470xx-utils
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-470xx-utils' 'lib32-opencl-nvidia-470xx')
-pkgver=470.74
+pkgver=470.82.00
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -14,7 +15,7 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
-sha512sums=('21e4290d98bbbf09eed7be32df8743f0adf728f9e88869afb02fc1d0f0be87cf42af2d4f04322a76d68a1704ef044e83cd403377e60af917ff3ec0a04985801a')
+sha512sums=('f4135efd748d8835e9719e6ef93a86c5646a4d771c63e31f0bdaa0cf6ddf25ce9356eca58c27addb988f4cbe88c9bdcc0536512a46915826261d8f4f4247ebd8')
 
 create_links() {
     # create soname links
@@ -35,7 +36,7 @@ package_lib32-opencl-nvidia-470xx() {
     depends=('lib32-zlib' 'lib32-gcc-libs')
     conflicts=('lib32-opencl-nvidia')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
-    provides=('lib32-opencl-driver')
+    provides=('lib32-opencl-driver' 'lib32-opencl-nvidia')
 
     cd "${_pkg}"/32
 
@@ -51,9 +52,9 @@ package_lib32-opencl-nvidia-470xx() {
 
 package_lib32-nvidia-470xx-utils() {
     pkgdesc="NVIDIA drivers utilities (32-bit)"
-    depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' 'nvidia-utils')
+    depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' 'nvidia-470xx-utils')
     optdepends=('lib32-opencl-nvidia-470xx')
-    conflicts=('lib32-nvidia-libgl')
+    conflicts=('lib32-nvidia-libgl' 'lib32-nvidia-utils')
     provides=('lib32-vulkan-driver' 'lib32-opengl-driver' 'lib32-nvidia-470xx-libgl' 'lib32-nvidia-utils')
 
     cd "${_pkg}"/32
