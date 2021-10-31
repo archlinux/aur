@@ -1,17 +1,23 @@
 pkgbase = multimc5
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 0.6.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://multimc.org/
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = java-environment
+	makedepends = git
 	depends = zlib
 	depends = libgl
 	depends = qt5-base
+	depends = qt5-x11extras
 	depends = java-runtime
+	depends = qt5-svg
+	depends = xorg-xrandr
+	depends = zenity
+	depends = wget
 	optdepends = mcedit: Allows editing of minecraft worlds
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
@@ -19,15 +25,13 @@ pkgbase = multimc5
 	optdepends = glfw: to use system GLFW libraries
 	provides = multimc
 	conflicts = multimc
-	source = multimc5-0.6.13.tar.gz::https://github.com/MultiMC/MultiMC5/archive/0.6.13.tar.gz
-	source = https://github.com/MultiMC/libnbtplusplus/archive/multimc-0.6.1.tar.gz
-	source = https://github.com/MultiMC/quazip/archive/multimc-3.tar.gz
-	source = quazip-fix-build-with-qt-511.patch
+	source = multimc5::git+https://github.com/MultiMC/Launcher#tag=0.6.13
+	source = libnbtplusplus::git+https://github.com/MultiMC/libnbtplusplus#commit=dc72a20b7efd304d12af2025223fad07b4b78464
+	source = quazip::git+https://github.com/MultiMC/quazip#commit=b1a72ac0bb5a732bf887a535ab75c6f9bedb6b6b
 	source = modern-java.patch
-	sha512sums = c897f75d01c0e7f73a860166bce3b4efccb3e3f8ec8b811c7e465ac97986c67c0d1149130429fcccb4bdd9af323d01e687f3d7afb5cb7d2c0299e61c0298cad9
-	sha512sums = 81a1640a069d88df7ba0abf72089aecbe1e9d791c88acaaa7e70c8f0bcd0512cf8698178342657e363524ce8488dd072368a0aa8cc091a24912d6f8b6b0f4f2d
-	sha512sums = 2e9074203c67bc7ad98621c551047e5367f06e54cacfecc755a5bf2c9f99266eab42ad972f86ae28ed7e1507f6d27d8d2680a87ce9fd5b1e93a18bcb627ec3f0
-	sha512sums = ca7a350bdeecf65dbca7de8d6912c935c6ba603edcddcd4ffe71d8997e50e4046335dde6d1d7c629d35025073d18be4d112a960d43a8801de979687bc26e46d4
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = ede87db7e1ce67184409123720b48f65d35884bac5dfff34cc099c5d7520fd9173be00997df82ad29da4640928134a7199ffdd1cbaa83a72101dbed72736508b
 
 pkgname = multimc5

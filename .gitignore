@@ -1,0 +1,7 @@
+*.pkg.tar.zst
+*.tar.gz
+multimc5/
+libnbtplusplus/
+quazip/
+pkg/
+src/
