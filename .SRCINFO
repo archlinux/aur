@@ -3,6 +3,7 @@ pkgbase = obs-ndi
 	pkgver = 4.9.1
 	pkgrel = 2
 	url = https://github.com/Palakis/obs-ndi
+	install = obs-ndi.install
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
@@ -16,4 +17,3 @@ pkgbase = obs-ndi
 	sha256sums = 25ada71fef14b23fa03a0a5bcce87e36161f4f2488f34aa256634e5973d8e66b
 
 pkgname = obs-ndi
-

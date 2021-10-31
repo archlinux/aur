@@ -11,6 +11,7 @@ provides=('obs-ndi')
 conflicts=('obs-ndi-bin' 'obs-ndi-git')
 depends=('avahi' 'libndi' 'obs-studio')
 makedepends=('cmake')
+install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('25ada71fef14b23fa03a0a5bcce87e36161f4f2488f34aa256634e5973d8e66b')
 
