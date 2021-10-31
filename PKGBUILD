@@ -1,67 +1,79 @@
-# $Id$
-# Creator Anatol Pomozov <anatol.pomozov@gmail.com>
-# Adapt for MIPS64: Valentín Kivachuk <vk18496@gmail.com>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Valentín Kivachuk <vk18496@gmail.com>
 
 _target=mips64-linux-gnu
-pkgname=$_target-binutils
-pkgver=2.29
+pkgname="${_target}-binutils"
+pkgver=2.37
 pkgrel=1
-#_commit=2bd25930
-pkgdesc='A set of programs to assemble and manipulate binary and object files for the MIPS64 target (Big Endian)'
-arch=(i686 x86_64)
-url='http://www.gnu.org/software/binutils/'
-license=(GPL)
-depends=(zlib)
-source=(ftp://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha1sums=('4376bce1e58d591c6a5dd44fc8713f154208d735'
-          'SKIP')
-validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93')  # Tristan Gingold <gingold@adacore.com>
+pkgdesc='Tools to assemble and manipulate binary and object files for the MIPS64 target (for the toolchain with GNU C library and multilib ABI)'
+arch=('x86_64')
+url='https://www.gnu.org/software/binutils/'
+license=('GPL')
+depends=('libelf' 'zlib')
+options=('!emptydirs' 'staticlibs' '!distcc' '!ccache')
+_patchver='f26867fe4daec7299f59a82ae4a0d70cceb3e082'
+source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz"{,.sig}
+        "010-binutils-mips64-default-to-64-emulation-g${_patchver:0:7}.patch"::"https://raw.githubusercontent.com/openembedded/openembedded-core/${_patchver}/meta/recipes-devtools/binutils/binutils/0009-Change-default-emulation-for-mips64-linux.patch"
+        '020-binutils-build-fix.patch')
+sha256sums=('820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c'
+            'SKIP'
+            '2e0c71612d770d3b9531fa66211ac7ef810ddbe6253efe440ec1a069b08926b9'
+            '510296287d6e59b879e139e0b671ccc4d1ce5254b259a09dae4a20bacfe9cf63')
+validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton
 
 prepare() {
-  cd binutils-$pkgver
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+    mkdir -p build
+    patch -d "binutils-${pkgver}" -Np1 -i "${srcdir}/010-binutils-mips64-default-to-64-emulation-g${_patchver:0:7}.patch"
+    patch -d "binutils-${pkgver}" -Np1 -i "${srcdir}/020-binutils-build-fix.patch"
 }
 
 build() {
-  cd binutils-$pkgver
-
-  if [ "${CARCH}" != "i686" ];
-  then
-    # enabling gold linker at i686 makes the install fail
-    enable_gold='--enable-gold'
-  fi
-
-  ./configure --target=$_target \
-              --with-sysroot=/usr/$_target \
-              --prefix=/usr \
-              --disable-multilib \
-              --with-gnu-as \
-              --with-gnu-ld \
-              --disable-nls \
-              --enable-ld=default \
-              $enable_gold \
-              --enable-plugins \
-              --enable-deterministic-archives
-
-  make
+    cd build
+    "${srcdir}/binutils-${pkgver}/configure" \
+        --build="$CHOST" \
+        --host="$CHOST" \
+        --target="$_target" \
+        --prefix='/usr' \
+        --with-sysroot="/usr/${_target}" \
+        --enable-cet \
+        --enable-deterministic-archives \
+        --enable-gold \
+        --enable-ld='default' \
+        --enable-lto \
+        --enable-plugins \
+        --enable-relro \
+        --enable-threads \
+        --enable-multilib \
+        --disable-gdb \
+        --disable-werror \
+        --with-debuginfod \
+        --with-pic \
+        --with-system-zlib \
+        --with-gnu-as \
+        --with-gnu-ld
+    make
 }
 
 check() {
-  cd binutils-$pkgver
-  
-  # unset LDFLAGS as testsuite makes assumptions about which ones are active
-  # do not abort on errors - manually check log files
-  make -k LDFLAGS="" check || true
+    # unset LDFLAGS as testsuite makes assumptions about which ones are active
+    # ignore failures in gold testsuite...
+    make -C build -k LDFLAGS='' check || true
 }
 
 package() {
-  cd binutils-$pkgver
-
-  make DESTDIR="$pkgdir" install
-
-  # Remove file conflicting with host binutils and manpages for MS Windows tools
-  rm "$pkgdir"/usr/share/man/man1/$_target-{dlltool,nlmconv,windres,windmc}*
-
-  # Remove info documents that conflict with host version
-  rm -r "$pkgdir"/usr/share/info
+    make -C build DESTDIR="$pkgdir" install
+    
+    # remove unwanted Windows files
+    rm "${pkgdir}/usr/share/man/man1/${_target}"-{dlltool,windmc,windres}*
+    
+    # remove conflicting files
+    rm -r "${pkgdir}/usr"/{lib/bfd-plugins,share/{info,locale}}
+    
+    # replace cross-directory hardlinks with symlinks
+    local _file
+    rm "${pkgdir}/usr/${_target}/bin"/*
+    while read -r -d '' _file
+    do
+        ln -s "../../bin/${_file##*/}" "${pkgdir}/usr/${_target}/bin/${_file##*"${_target}-"}"
+    done < <(find "${pkgdir}/usr/bin" -type f -print0)
 }

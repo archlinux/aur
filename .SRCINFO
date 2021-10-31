@@ -1,17 +1,24 @@
 pkgbase = mips64-linux-gnu-binutils
-	pkgdesc = A set of programs to assemble and manipulate binary and object files for the MIPS64 target (Big Endian)
-	pkgver = 2.29
+	pkgdesc = Tools to assemble and manipulate binary and object files for the MIPS64 target (for the toolchain with GNU C library and multilib ABI)
+	pkgver = 2.37
 	pkgrel = 1
-	url = http://www.gnu.org/software/binutils/
-	arch = i686
+	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL
+	depends = libelf
 	depends = zlib
-	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.bz2
-	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.bz2.sig
-	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
-	sha1sums = 4376bce1e58d591c6a5dd44fc8713f154208d735
-	sha1sums = SKIP
+	options = !emptydirs
+	options = staticlibs
+	options = !distcc
+	options = !ccache
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.xz.sig
+	source = 010-binutils-mips64-default-to-64-emulation-gf26867f.patch::https://raw.githubusercontent.com/openembedded/openembedded-core/f26867fe4daec7299f59a82ae4a0d70cceb3e082/meta/recipes-devtools/binutils/binutils/0009-Change-default-emulation-for-mips64-linux.patch
+	source = 020-binutils-build-fix.patch
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha256sums = 820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c
+	sha256sums = SKIP
+	sha256sums = 2e0c71612d770d3b9531fa66211ac7ef810ddbe6253efe440ec1a069b08926b9
+	sha256sums = 510296287d6e59b879e139e0b671ccc4d1ce5254b259a09dae4a20bacfe9cf63
 
 pkgname = mips64-linux-gnu-binutils
-
