@@ -1,0 +1,13 @@
+pkgbase = kya
+	pkgdesc = Watches for new screenshots and sends them to Gyazo
+	pkgver = 0.1.7
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = kya
