@@ -1,6 +1,6 @@
 pkgbase = azerothcore-wotlk-git
 	pkgdesc = Open-source game-server application for World of Warcraft, currently supporting the 3.3.5a game version
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = http://www.azerothcore.org
 	install = azerothcore-wotlk-git.install
