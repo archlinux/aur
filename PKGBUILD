@@ -1,4 +1,5 @@
 # Maintainer: Shiroko <hhx.xxm at gmail.com>
+# Maintainer: Johnpoint <me at lvcshu.com>
 pkgname=clash-for-windows-bin
 pkgver=0.18.6
 pkgrel=1
