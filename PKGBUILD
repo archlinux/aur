@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.2.0.r1769.71bde1a
+pkgver=0.2.1.r2091.0d4a358
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
@@ -25,6 +25,9 @@ pkgver() {
 build() {
   _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
 
+  CFLAGS=${CFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
+  CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
+
   cmake -S"${pkgname}" -Bbuild \
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
@@ -39,7 +42,7 @@ check() {
   cd "${srcdir}/build"
   ./src/contour/contour version
   ./src/crispy/crispy_test
-  #./src/terminal/terminal_test
+  ./src/terminal/terminal_test
 }
 
 package() {
