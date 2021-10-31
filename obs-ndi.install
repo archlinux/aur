@@ -1,5 +1,5 @@
 post_upgrade() {
-    echo "ensure that the avahai daemon is running: sudo systemctl enable avahi-daemon.service --now"
+    echo "ensure that the avahi daemon is running: sudo systemctl enable avahi-daemon.service --now"
 }
 
 post_install() {
