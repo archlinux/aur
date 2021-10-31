@@ -1,0 +1,13 @@
+pkgbase = flowy
+	pkgdesc = A lean, privacy-preserving dynamic wallpaper changer written in Rust
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/vineetred/flowy
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	conflicts = flowy-git
+	source = flowy-0.4.0.tar.gz::https://github.com/vineetred/flowy/archive/0.4.0.tar.gz
+	sha256sums = a0c4b98140df25f4c0a6d129dd9f5394c930c304c93527b5a7c664d649b9d677
+
+pkgname = flowy
