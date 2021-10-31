@@ -2,7 +2,7 @@
 
 _gemname=fusuma-plugin-tap
 pkgname=ruby-$_gemname
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Tap and Hold gestures plugin for Fusuma"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-fusuma)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('8327c39482ad1f5c9f7eb66a9f40ec4c23f140fa')
+sha1sums=('2748c5ab9919ccb2dbfe76c0368dbae030b39d56')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
