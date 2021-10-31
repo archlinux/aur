@@ -1,0 +1,14 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 7379d2c..63f8cd8 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -34,2 +34,4 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
+ 
++source PKGBUILD.include
++
+ prepare() {
+@@ -51,2 +53,4 @@ prepare() {
+ 
++  configure_arch
++
+   echo "Setting config..."
