@@ -1,6 +1,6 @@
-pkgbase = wlroots-git
-	pkgdesc = Modular Wayland compositor library (git version)
-	pkgver = 0.14.0.r303.gf7ea33da
+pkgbase = wlroots-no-axrgb-assert-git
+	pkgdesc = wlroots-git, with argb/xrgb8888 assert removed to make nvidia driver work
+	pkgver = 0.14.0.r328.g8e225261
 	pkgrel = 1
 	url = https://github.com/swaywm/wlroots
 	arch = x86_64
@@ -24,10 +24,15 @@ pkgbase = wlroots-git
 	depends = vulkan-icd-loader
 	depends = xorg-xwayland
 	provides = libwlroots.so
+	provides = wlroots
+	provides = wlroots-git
 	provides = wlroots=0.14.0
 	conflicts = wlroots
+	conflicts = wlroots-git
 	options = debug
-	source = wlroots-git::git+https://github.com/swaywm/wlroots
+	source = wlroots-no-axrgb-assert-git::git+https://github.com/swaywm/wlroots
+	source = no-axrgb-assert.patch
 	sha512sums = SKIP
+	sha512sums = 34cab3eb72cf0c5f1e71c2eba8da780517469b952dba0a0950960e3ac4a5d9b2043debcde884d605dda3d15ee88870b2e55bceb97bbc928b2344b38620e19ef3
 
-pkgname = wlroots-git
+pkgname = wlroots-no-axrgb-assert-git

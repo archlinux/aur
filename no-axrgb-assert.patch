@@ -1,0 +1,12 @@
+diff --unified --recursive --text wlroots-no-axrgb-assert-git.orig/render/wlr_renderer.c wlroots-no-axrgb-assert-git.new/render/wlr_renderer.c
+--- wlroots-no-axrgb-assert-git.orig/render/wlr_renderer.c	2021-10-31 09:12:25.561443998 -0400
++++ wlroots-no-axrgb-assert-git.new/render/wlr_renderer.c	2021-10-31 09:13:24.259093275 -0400
+@@ -227,7 +227,7 @@
+ 			wl_display_add_shm_format(wl_display, fmt);
+ 		}
+ 	}
+-	assert(argb8888 && xrgb8888);
++	// assert(argb8888 && xrgb8888);
+ 
+ 	if (wlr_renderer_get_dmabuf_texture_formats(r) != NULL) {
+ 		if (wlr_renderer_get_drm_fd(r) >= 0) {

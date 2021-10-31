@@ -1,14 +1,14 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=wlroots-git
-pkgver=0.14.0.r303.gf7ea33da
+pkgname=wlroots-no-axrgb-assert-git
+pkgver=0.14.0.r328.g8e225261
 pkgrel=1
 license=(custom:MIT)
-pkgdesc='Modular Wayland compositor library (git version)'
+pkgdesc='wlroots-git, with argb/xrgb8888 assert removed to make nvidia driver work'
 url=https://github.com/swaywm/wlroots
 arch=(x86_64)
-provides=("libwlroots.so" "wlroots=${pkgver%%.r*}")
-conflicts=(wlroots)
+provides=("libwlroots.so" "wlroots" "wlroots-git" "wlroots=${pkgver%%.r*}")
+conflicts=(wlroots wlroots-git)
 options=(debug)
 depends=(
 	glslang
@@ -30,8 +30,10 @@ makedepends=(
 	vulkan-headers
 	wayland-protocols
 	xorgproto)
-source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
+source=("${pkgname}::git+${url}"
+	"no-axrgb-assert.patch")
+sha512sums=('SKIP'
+            '34cab3eb72cf0c5f1e71c2eba8da780517469b952dba0a0950960e3ac4a5d9b2043debcde884d605dda3d15ee88870b2e55bceb97bbc928b2344b38620e19ef3')
 
 pkgver () {
 	cd "${pkgname}"
@@ -40,6 +42,11 @@ pkgver () {
 		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
+}
+
+prepare() {
+	cd "$pkgname"
+	patch --forward --strip=1 --input="${srcdir}/no-axrgb-assert.patch"
 }
 
 build () {
