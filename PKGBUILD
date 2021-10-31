@@ -1,8 +1,9 @@
-# Maintainer: Drew DeVault <sir@cmpwn.com>
+# Maintainer: Keith <k-aur at 3d3 dot ca>
+# Contributor: Drew DeVault <sir@cmpwn.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=sway-git
+pkgname=sway-mask-modifiers-git
 _pkgname=sway
-pkgver=r6607.28cadf55
+pkgver=r6815.38020d15
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
@@ -39,17 +40,24 @@ optdepends=(
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://swaywm.org"
-source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
+source=("sway::git+https://github.com/swaywm/sway.git"
+	"mask-modifiers.patch"
 	50-systemd-user.conf)
 sha512sums=('SKIP'
+	    'SKIP'
             '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
-provides=("sway")
-conflicts=("sway")
+provides=("sway" "sway-git")
+conflicts=("sway" "sway-git")
 options=(debug)
 
 pkgver() {
 	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$_pkgname"
+	patch --forward --strip=1 --input="${srcdir}/mask-modifiers.patch"
 }
 
 build() {

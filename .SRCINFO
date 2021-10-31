@@ -1,6 +1,6 @@
-pkgbase = sway-git
+pkgbase = sway-mask-modifiers-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager
-	pkgver = r6607.28cadf55
+	pkgver = r6815.38020d15
 	pkgrel = 1
 	url = https://swaywm.org
 	arch = i686
@@ -31,13 +31,16 @@ pkgbase = sway-git
 	optdepends = wallutils: Timed wallpapers
 	optdepends = waybar: Highly customizable bar
 	provides = sway
+	provides = sway-git
 	conflicts = sway
+	conflicts = sway-git
 	options = debug
 	backup = etc/sway/config
 	source = sway::git+https://github.com/swaywm/sway.git
+	source = mask-modifiers.patch
 	source = 50-systemd-user.conf
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e
 
-pkgname = sway-git
-
+pkgname = sway-mask-modifiers-git
