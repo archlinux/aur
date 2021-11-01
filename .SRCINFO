@@ -1,0 +1,22 @@
+pkgbase = cjk-character-count
+	pkgdesc = Program that counts the amount of CJK characters based on Unicode ranges and Chinese encoding standards 字体汉字计数软件
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://github.com/NightFurySL2001/CJK-character-count
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-fonttools
+	optdepends = python-pyglet: for Chinese (Traditional) version
+	options = !emptydirs
+	options = !strip
+	source = CJK-character-count-v0.15.1.tar.gz::https://github.com/NightFurySL2001/CJK-character-count/archive/v0.15.1.tar.gz
+	source = CJK-character-count-en.desktop
+	source = CJK-character-count-zhs.desktop
+	source = CJK-character-count-zht.desktop
+	sha256sums = 776e4a6d8467e9b667586d5d17c72b9ed350449e685986c479c1397c4addc68a
+	sha256sums = 867a30183690e88ce0da13fd7c51abd7a436540fee24deefc68ac4dc8d19fae6
+	sha256sums = 34301f6b1b4812d97ba74f42382437a5794e4d1334ebc0f4dd514278b7fde5d0
+	sha256sums = df70a15a2b93fb55521aa88f187eee20416d3923edaa6544502ce63891b17173
+
+pkgname = cjk-character-count

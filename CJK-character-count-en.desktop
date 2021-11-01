@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name[zh_CN]=字体计数软件 (English version)
+Name=CJK character count (English version)
+GenericName[zh_CN]=字体计数软件 (English version)
+GenericName=CJK character count (English version)
+Comment[zh_CN]=以统一码（Unicode）区块与汉字编码标准统计字体内的汉字数量
+Comment=Program that counts the amount of CJK characters based on Unicode ranges and Chinese encoding standards
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=cjk-character-count
+Path=/usr/share/cjk-character-count
+Exec=python main.py
+Terminal=false
+Categories=Utility;
