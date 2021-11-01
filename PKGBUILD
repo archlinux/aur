@@ -1,20 +1,31 @@
 # Maintainer: Arglebargle < arglebargle DASH aur AT arglebargle DOT dev >
 
-# README: This package is a stub that allows you to replace ttf-liberation with ttf-ms-win10
-#         This package does not install, contain, or link to any of the copyrighted fonts required to build 'ttf-ms-win10'.
-#
-#         Before you install this package make sure you install 'ttf-ms-win10' first
+# README: This package is a stub that allows you to replace ttf-liberation with ttf-ms-win10/11
+#         Before you install this package make sure you install ttf-ms-win10/-win11 first
 
 pkgname=ttf-defenestration
-pkgver=1
+pkgver=2
 pkgrel=1
-pkgdesc="Shim package to satisfy 'ttf-liberation' dependencies via 'ttf-ms-win10'; see README.md for details"
+pkgdesc="Shim package to satisfy 'ttf-liberation' dependencies via 'ttf-ms-win1*'; see README.md for details"
 arch=(any)
 url="https://gitlab.com/arglebargle-arch/ttf-defenestration-PKGBUILD"
 license=('BSD')
-depends=('ttf-ms-win10>=10.0.0')
-provides=('ttf-liberation=10.0')
-conflicts=('ttf-liberation')
+provides=('ttf-liberation')
+conflicts=(
+  'ttf-liberation'
+  'ttf-ms-fonts<=0'   # this should prevent the actual 'ttf-ms-fonts' package from being accepted
+  'ttf-vista-fonts'
+  'ttf-win7-fonts'
+  'ttf-ms-win8'
+)
+
+package() {
+  depends=('ttf-ms-fonts')
+  optdepends=(
+    'ttf-ms-win10: Windows 10 fonts'
+    'ttf-ms-win11: Windows 11 fonts'
+  )
+}
 
 # Author's note: I've used this package with chrome/chromium/firefox and steam for many
 # months without any problems
@@ -39,7 +50,7 @@ conflicts=('ttf-liberation')
 #
 # arglebargle@arch-zephyrus]$ date
 # Sun Jun  6 07:21:32 AM PDT 2021
-# 
+#
 # [arglebargle@arch-zephyrus]$ yay -Qi ttf-ms-win10
 # Name            : ttf-ms-win10
 # Version         : 10.0.19042.789-1

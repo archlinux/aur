@@ -1,12 +1,18 @@
 pkgbase = ttf-defenestration
-	pkgdesc = Shim package to satisfy 'ttf-liberation' dependencies via 'ttf-ms-win10'; see README.md for details
-	pkgver = 1
+	pkgdesc = Shim package to satisfy 'ttf-liberation' dependencies via 'ttf-ms-win1*'; see README.md for details
+	pkgver = 2
 	pkgrel = 1
 	url = https://gitlab.com/arglebargle-arch/ttf-defenestration-PKGBUILD
 	arch = any
 	license = BSD
-	depends = ttf-ms-win10>=10.0.0
-	provides = ttf-liberation=10.0
+	provides = ttf-liberation
 	conflicts = ttf-liberation
+	conflicts = ttf-ms-fonts<=0
+	conflicts = ttf-vista-fonts
+	conflicts = ttf-win7-fonts
+	conflicts = ttf-ms-win8
 
 pkgname = ttf-defenestration
+	depends = ttf-ms-fonts
+	optdepends = ttf-ms-win10: Windows 10 fonts
+	optdepends = ttf-ms-win11: Windows 11 fonts
