@@ -17,7 +17,7 @@ pkgver=${_gtkver}
 pkgrel=1
 pkgdesc="GTK3 patched to provide a more classic experience. No ATK patch. No 32-bit libs. No printing, colord, etc. ( see PKGBUILD for details ) ."
 url="https://github.com/lah7/gtk3-classic"
-conflicts=(gtk3 gtk3-typeahead gtk3-print-backends)
+conflicts=(gtk3 gtk3-classic gtk3-typeahead gtk3-print-backends)
 provides=(gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends
           libgtk-3.so libgdk-3.so libgailutil-3.so)
 arch=(x86_64)
