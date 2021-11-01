@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=zbctl
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="CLI to interact with Zeebe"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 source=(
     "$pkgname-$pkgver::https://github.com/zeebe-io/zeebe/releases/download/$pkgver/zbctl")
 # noextract=("$pkgname-$pkgver")
-b2sums=('8096a933436c18ea472e0ad0f0d23faec3267c2c70dab0f55829d4bc7056ce66f462f71687375786032e7cc4a1b7df8b86ef9b05745eb29af61b93c9db8f916c')
+b2sums=('27ea8f2c253cc42a7e03137078167e159c0503e94be5bdf18fa2ee90680b9d2456d510c48427f6e8b034c944c568eca260c277cc4591906978c858a080b640ea')
 
 package() {
     install -Dm755 $srcdir/$pkgname-$pkgver $pkgdir/usr/bin/$pkgname
