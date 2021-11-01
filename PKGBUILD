@@ -6,7 +6,7 @@ pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.10.0
 _pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -286,7 +286,7 @@ _package() {
 }
 
 package_python-pytorch() {
-  pkgdesc+="${_pkgdesc} (with AVX2 CPU optimizations)"
+  pkgdesc="${_pkgdesc} (with AVX2 CPU optimizations)"
   replaces=(python-pytorch-opt)
   cd "${srcdir}/${_pkgname}-${pkgver}"
   _package
