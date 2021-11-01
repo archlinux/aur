@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=cargo-make
-pkgver=0.35.5
+pkgver=0.35.6
 pkgrel=1
 pkgdesc="Rust task runner and build tool"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/sagiegurari/cargo-make"
 license=('Apache')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('ab7c75a860eb1510fa25b9ac952dbf7c0d03ea1f9b43d7e9450831bc953d62f28d962bdab0a39279a1eb4345ce1f784a721540a0bc839587d8fc6d97018ac239')
-b2sums=('fb35444dfdc240055f24e2a0660d7235436e7edbb9369dcffc5e96be54525b4911a2002a0b8949b283f94e7c3da43f4464e472657023dd2a9675401be8e6eed3')
+sha512sums=('ccef958d172fb0209c957d1d96edd1719c34bbbc34085ef08a82bf981bba0ecf7fb32d4c13702cae4d1256683de259c547a5b9402761df3986c346aabc58368b')
+b2sums=('5f8e1355375222012f7d33440f138ecbfd972c59ee8f500e8c6c177175a84228d2de3b5e695ecd53e76282c887a0f36021ed29ec8ece33d25208eb6f73394a3e')
 
 prepare() {
   # download dependencies
@@ -27,11 +27,14 @@ package() {
   cd "$pkgname-$pkgver"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+  install -vDm755 -t "$pkgdir/usr/bin" target/release/{cargo-make,makers}
 
   # license
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" *.md
+
+  # shell auto-completion
+  install -vDm644 extra/shell/makers-completion.bash "$pkgdir/usr/share/bash-completion/completions/makers"
 }
