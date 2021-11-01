@@ -1,6 +1,6 @@
 pkgbase = av1an-git
 	pkgdesc = A cross-platform all-in-one tool for streamlining AV1 encoding
-	pkgver = 1.12.r1011.g9b1a007
+	pkgver = 0.2.0.r0.ga874dec
 	pkgrel = 1
 	url = https://github.com/master-of-zen/Av1an
 	arch = x86_64
