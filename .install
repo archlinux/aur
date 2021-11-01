@@ -1,0 +1,37 @@
+#!/bin/bash
+
+migrateUserData() {
+    local user
+    local homedir
+
+    # Get information from the user
+    if [[ $SUDO_USER ]] ; then
+        user="$SUDO_USER"
+    elif [[ $DOAS_USER ]] ; then
+        user="$DOAS_USER"
+    fi
+    homedir=$(getent passwd "$user" | cut -d: -f6)
+
+    # If needed, create userspace path
+    if [[ ! -d "$homedir/.local/share/odin2/Soundbanks" ]] ; then
+        sudo -u "$user" mkdir -p "$homedir/.local/share"
+    fi
+
+    # Create/Migrate the user data
+    if [[ -d /opt/odin2 ]] ; then
+        sudo -u "$user" cp -r '/opt/odin2' "$homedir/.local/share"
+        rm -rf /opt/odin2
+    else
+        if [[ ! -d "$homedir/.local/share/odin2/Soundbanks/User Patches" ]] ; then
+            mkdir -p "$homedir/.local/share/odin2/Soundbanks/User Patches"
+        fi
+    fi
+}
+
+pre_install() {
+    migrateUserData
+}
+
+pre_upgrade() {
+    migrateUserData
+}
