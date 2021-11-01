@@ -20,7 +20,7 @@ _fragment=${FRAGMENT:-#branch=master}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-develop-git
-pkgver=3.1.r110015.g2fb725ea308
+pkgver=3.1.r109937.g657923cf939
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -77,7 +77,6 @@ prepare() {
   fi
   ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
   git -C "$srcdir/blender" apply -v "${srcdir}"/{embree,openexr3}.patch
-  git -C "$srcdir/blender" revert --no-commit 43bc494892c3
 }
 
 build() {
