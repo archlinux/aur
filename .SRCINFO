@@ -1,0 +1,13 @@
+pkgbase = pacw-git
+	pkgdesc = Pacman wrapper and utility tool.
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/S0raWasTaken/pacw
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/S0raWasTaken/pacw.git
+	sha256sums = SKIP
+
+pkgname = pacw-git
