@@ -1,16 +1,34 @@
 Release Notes
 =============
 
+2.1.54
+------
+
+This release fixes a bug in ``--venv`` creation that could mask deeper
+errors populating PEX venvs.
+
+* Fix ``--venv`` mode short link creation. (#1505)
+  `PR #1505 <https://github.com/pantsbuild/pex/pull/1505>`_
+
 2.1.53
 ------
 
 This release fixes a bug identifying certain interpreters on macOS
-Monterey. Additionally, Pex now exposes the ``PEX`` environment
-variable inside running PEXes to allow application code to both detect
-it's running from a PEX and determine where that PEX is located.
+Monterey.
+
+Additionally, Pex has two new features:
+
+#. It now exposes the ``PEX`` environment variable inside running PEXes
+   to allow application code to both detect it's running from a PEX and
+   determine where that PEX is located.
+#. It now supports a ``--prompt`` option in the ``venv`` tool to allow
+   for customization of the venv activation prompt.
 
 * Guard against fake interpreters. (#1500)
   `PR #1500 <https://github.com/pantsbuild/pex/pull/1500>`_
+
+* Add support for setting custom venv prompts. (#1499)
+  `PR #1499 <https://github.com/pantsbuild/pex/pull/1499>`_
 
 * Introduce the ``PEX`` env var. (#1495)
   `PR #1495 <https://github.com/pantsbuild/pex/pull/1495>`_
