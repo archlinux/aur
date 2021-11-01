@@ -6,8 +6,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-vulkan
-pkgver=4.4
-pkgrel=2
+pkgver=4.4.1
+pkgrel=1
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64)
@@ -70,7 +70,8 @@ depends=(
   xz
   zlib
   vulkan-icd-loader
-  glslang-git
+  glslang
+  spirv-tools
 )
 makedepends=(
   amf-headers
