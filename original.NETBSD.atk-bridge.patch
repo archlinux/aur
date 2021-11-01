@@ -1,0 +1,63 @@
+$NetBSD: patch-configure.ac,v 1.2 2014/09/08 12:06:48 wiz Exp $
+
+Make gtk3-atk-bridge an option to avoid unwanted dbus dependency.
+
+--- 1/configure.ac
++++ 2/configure.ac
+@@ -1370,8 +1370,13 @@ AC_SUBST(GDK_DEP_CFLAGS)
+ # Check for Accessibility Toolkit flags
+ ########################################
+ 
+-if test x$enable_x11_backend = xyes; then
++AC_ARG_WITH(atk-bridge,
++           AS_HELP_STRING([--without-atk-bridge], [Do not use atk-bridge-2.0]),
++           :, with_atk_bridge=yes)
++
++if test x$enable_x11_backend = xyes -a x$with_atk_bridge = xyes; then
+    ATK_PACKAGES="atk atk-bridge-2.0"
++   AC_DEFINE([HAVE_ATK_BRIDGE], [1], [Define if we're using atk-bridge-2.0])
+ else
+    ATK_PACKAGES="atk"
+ fi
+$NetBSD: patch-config.h.in,v 1.2 2014/09/08 12:06:48 wiz Exp $
+
+Make gtk3-atk-bridge an option to avoid unwanted dbus dependency.
+
+--- 1/config.h.in
++++ 1/config.h.in
+@@ -10,6 +10,9 @@
+ /* Disable deprecation warnings from glib */
+ #undef GLIB_DISABLE_DEPRECATION_WARNINGS
+ 
++/* Define if we're using atk-bridge-2.0 */
++#undef HAVE_ATK_BRIDGE
++
+ /* Define to 1 if you have the `bind_textdomain_codeset' function. */
+ #undef HAVE_BIND_TEXTDOMAIN_CODESET
+ 
+Make gtk3-atk-bridge an option to avoid unwanted dbus dependency.
+--- 1/gtk/a11y/gtkaccessibility.c
++++ 1/gtk/a11y/gtkaccessibility.c
+@@ -38,8 +38,10 @@
+ #include <gtk/gtkaccessible.h>
+ 
+ #ifdef GDK_WINDOWING_X11
++#ifdef HAVE_ATK_BRIDGE
+ #include <atk-bridge.h>
+ #endif
++#endif
+ 
+ static gboolean gail_focus_watcher      (GSignalInvocationHint *ihint,
+                                          guint                  n_param_values,
+@@ -989,8 +991,10 @@ _gtk_accessibility_init (void)
+   do_window_event_initialization ();
+ 
+ #ifdef GDK_WINDOWING_X11
++#ifdef HAVE_ATK_BRIDGE
+   atk_bridge_adaptor_init (NULL, NULL);
+ #endif
++#endif
+ 
+   atk_misc_instance = g_object_new (GTK_TYPE_MISC_IMPL, NULL);
+ }
+

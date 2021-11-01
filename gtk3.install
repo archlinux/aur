@@ -1,0 +1,18 @@
+pre_remove() {
+    rm -f /usr/lib/gtk-3.0/3.0.0/immodules.cache
+}
+
+post_upgrade() {
+  #
+  printf ">>    \n"
+  printf ">>    Thank you for installing\e[1;34m gtk3-classic-noatk-64\e[0m\n"
+  printf ">>    \n"
+  printf ">>    Probably good to have this pkg in cache before reboot: \e[1;34m sudo pacman -Sddw gtk3 \e[0m \n"
+  printf ">>    \n"
+  printf ">>    If something failed ( you cant login in DM or have glitches ) - just fallback to original gtk3 package. \n"
+  printf ">>    With\e[1;34m pacman -S gtk3\e[0m or from cache\e[1;34m pacman -U /var/cache/pacman/pkg/gtk3* \e[0m and reboot\n"
+  printf ">>    \n"
+  printf ">>    More information about gtk3-classic at:\e[1;34m https://github.com/lah7/gtk3-classic \e[0m \n"
+  printf ">>    \n"
+}
+
