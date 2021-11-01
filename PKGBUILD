@@ -1,4 +1,4 @@
-# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='gnunet-fuse'
 pkgver='0.15.0'
@@ -7,7 +7,7 @@ pkgdesc='Read-only mounting of GNUnet directories as file systems using FUSE'
 arch=('i686' 'x86_64')
 url='https://gnunet.org/'
 license=('GPL')
-depends=('gnunet' 'fuse2')
+depends=('gnunet' 'fuse2' 'libextractor')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 
 # GNU mirrors

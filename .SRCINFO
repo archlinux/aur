@@ -8,6 +8,7 @@ pkgbase = gnunet-fuse
 	license = GPL
 	depends = gnunet
 	depends = fuse2
+	depends = libextractor
 	conflicts = gnunet-fuse-git
 	conflicts = gnunet-fuse-bin
 	source = ftp://ftp.gnu.org/gnu/gnunet/gnunet-fuse-0.15.0.tar.gz
