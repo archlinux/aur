@@ -1,7 +1,7 @@
 pkgbase = stgit
 	pkgdesc = Pushing/popping patches to/from a stack on top of Git, similar to Quilt
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stacked-git.github.io/
 	arch = any
 	license = GPL2
