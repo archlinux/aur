@@ -2,8 +2,8 @@
 # Contributor: Dino Morelli <dino@ui3.info>
 
 pkgname=hlint-static-git
-pkgver=3.3.4.r34.g918d3b99
-pkgrel=2
+pkgver=3.3.4.r39.g8e10b514
+pkgrel=1
 pkgdesc='Haskell source code suggestions'
 arch=('x86_64')
 url="https://github.com/ndmitchell/hlint"
@@ -12,18 +12,12 @@ makedepends=('git' 'stack')
 depends=('gmp')
 provides=('hlint')
 conflicts=('hlint' 'hlint-bin')
-source=("${pkgname}::git+${url}" ver-bump.patch)
-sha256sums=('SKIP'
-            '9a90d8aa9ccbc7668a6891c260a9038748954525ce36a7bf3d77f6ca4b922f67')
+source=("${pkgname}::git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
     git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "$pkgname"
-    patch --forward --strip=1 --input="${srcdir}/ver-bump.patch"
 }
 
 check() {
