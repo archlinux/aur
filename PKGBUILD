@@ -3,7 +3,7 @@
 _arch=powerpc
 _target=$_arch-none-eabi
 pkgname=$_target-toolchain
-pkgver=20210210
+pkgver=20211101
 pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc')
@@ -11,8 +11,8 @@ url="http://www.gnu.org"
 conflicts=($_target-elf-gcc $_arch-elf-binutils $_arch-elf-newlib)
 arch=('x86_64')
 depends=(libelf)
-_gcc=gcc-10.2.0
-_binutils=binutils-2.36.1
+_gcc=gcc-11.2.0
+_binutils=binutils-2.37
 _newlib=newlib-4.1.0
 license=('GPL' 'BSD')
 options=('!strip')
@@ -21,11 +21,12 @@ source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz"
 	"http://gnuftp.uib.no/binutils/${_binutils}.tar.xz"
 	"ftp://sourceware.org/pub/newlib/${_newlib}.tar.gz")
 
-sha512sums=('42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e'
-            'cc24590bcead10b90763386b6f96bb027d7594c659c2d95174a6352e8b98465a50ec3e4088d0da038428abe059bbc4ae5f37b269f31a40fc048072c8a234f4e9'
+sha512sums=('d53a0a966230895c54f01aea38696f818817b505f1e2bfa65e508753fcd01b2aedb4a61434f41f3a2ddbbd9f41384b96153c684ded3f0fa97c82758d9de5c7cf'
+            '5c11aeef6935860a6819ed3a3c93371f052e52b4bdc5033da36037c1544d013b7f12cb8d561ec954fe7469a68f1b66f1a3cd53d5a3af7293635a90d69edd15e7'
             '6a24b64bb8136e4cd9d21b8720a36f87a34397fd952520af66903e183455c5cf19bb0ee4607c12a05d139c6c59382263383cb62c461a839f969d23d3bc4b1d34')
 
-
+CFLAGS=${CFLAGS/-Werror=format-security/}
+CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
 prepare() {
 	cd "${srcdir}/${_gcc}"
@@ -33,14 +34,9 @@ prepare() {
 	#we use libiberty from binutils. Otherwise the compilation will fail.
 	rm -rf libiberty
 
-	for i in bfd binutils gas ld libiberty libctf opcodes; do ln -sv ../${_binutils}/$i; done
+	for i in bfd binutils gas gold ld libiberty libctf opcodes; do ln -sv ../${_binutils}/$i; done
 	for i in newlib libgloss; do ln -sf ../${_newlib}/$i; done
 
-	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-	_cppflags=$CPPFLAGS
-	unset CPPFLAGS
-
-	CFLAGS="$_cppflags $CFLAGS"
 	mkdir -p "${srcdir}/obj"
 }
 
