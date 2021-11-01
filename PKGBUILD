@@ -3,8 +3,8 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=7.3.0
-pkgrel=2
+pkgver=7.3.2
+pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
@@ -25,7 +25,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport
         "no-bpf.patch"
         "version-fix.patch")
 
-sha256sums=('0ebda4ebc5482a3e23302df696edf8ad60fb68466e41a4deecc05acf1e76c771'
+sha256sums=('1d4e19f8b46be57b8008ac33b9c2c11efe154b21875a4b28a467ae318286e423'
             '2074ee7e50720f20ff1b4da923434c05f6e1664e13694adde9522bf9ab09e0fd'
             '10ac25cea1b5c193d7f968ca28a1da0e54b847f29c2a0186b46fd853194be38a'
             '4bc17fdde981f91c5d9972ae0555ee5e8b63a6b67e007c28f83ada80823980fd'
