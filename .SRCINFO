@@ -1,13 +1,13 @@
 pkgbase = fclones
 	pkgdesc = Efficient Duplicate File Finder
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/pkolaczk/fclones
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = fclones-0.17.0.tar.gz::https://github.com/pkolaczk/fclones/archive/v0.17.0.tar.gz
-	sha512sums = a6d9f9503b8ac17b5c0d6814027ebdc7da0ed2d713d68bcbc23718e30a969385d27ad6988f7e664e24b02fc69cd3cbfca88f8da2718f36b7684f8ee2af6eb547
+	source = fclones-0.17.1.tar.gz::https://github.com/pkolaczk/fclones/archive/v0.17.1.tar.gz
+	sha512sums = a1b0bb06740e41f578c1be7f227bb06161af1766d3855cbf1515b41c89f9847c2f183919a597c8e0e4f48d124ce0d22dd76845b4d4a5c83ecd72313542d9c3dc
 
 pkgname = fclones
