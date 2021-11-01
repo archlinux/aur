@@ -3,8 +3,8 @@
 # -*- mode: sh -*-
 
 pkgname='mycorrhiza'
-pkgver=1.5.0
-pkgrel=5
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('x86_64' 'armv7h')
 url="https://github.com/bouncepaw/$pkgname"
@@ -15,19 +15,19 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 provides=('mycorrhiza')
 conflicts=('mycorrhiza' 'mycorrhiza-bin')
 md5sums=(
-  '9e7050204ec27b96b8f156f2b6436265'
+  '3591046525db38088a4dcffe24407e7b'
 )
 sha1sums=(
-  '016b292548bc33dec0ab9ac59d1d76f4a8b79c79'
+  '608995c2c7678ea8c12e5c526143d4499d7b9974'
 )
 sha256sums=(
-  '7f0f331afb341ec146464b103d2dc542e12fd00955aed11e60d3281a039f9d04'
+  'bbc197cf11b47ee14d4c65d25994766ab14679aad53ef25e52fdc67900b3e20c'
 )
 sha512sums=(
-  '03432807a7ee63b54fa377b61612fe0da5c6df27132e2c6c37db736cd5e142b1c5fd77d75cd728eb4d8e927ae896edcf78b4771ae59b0495d402cbd4700a7b4e'
+  'b3f86af24977aa19968afb78c24de19e6cde2ee5f536f1898fc510b288c36327ce5e9dcaa54a48bd57e7116b223cf1f56e0ee69f0ca2df4af30c00e859c89264'
 )
 b2sums=(
-  'd67395e2e3e73c997cf9ffeb887487e44cfc8ad6d16d72217a030d2a4be92cd1df49a11722621ed36bbad0d2c3b1f4d6ef8581fe4ebc990a7da27e5cecea0614'
+  '0c32cef7d2ec305ef8fccd277686f494d98445498aa385c420364ac290d1ca8bc6f3365d6a9b0be8af21f6458a95dfda452bdbcdb589760184890ee7a43b2097'
 )
 
 build() {
