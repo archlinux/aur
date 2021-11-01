@@ -4,7 +4,7 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.33.1.r211.gb3fccf0803
+pkgver=0.33.1.r398.gc82ffb6670
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -89,7 +89,6 @@ build() {
         '--enable-sdl2'
         '--enable-sdl2-gamepad'
         '--enable-libavdevice'
-        '--disable-ffmpeg-strict-abi'
         '--lua=52arch'
         
         '--enable-sdl2-audio'
