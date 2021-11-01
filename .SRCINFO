@@ -1,6 +1,6 @@
 pkgbase = nginx-h5bp-server-configs
 	pkgdesc = Nginx HTTP server boilerplate configs
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/h5bp/server-configs-nginx
 	install = .install
@@ -8,7 +8,7 @@ pkgbase = nginx-h5bp-server-configs
 	license = MIT
 	depends = nginx
 	provides = nginx-h5bp-server-configs
-	source = https://github.com/h5bp/server-configs-nginx/archive/4.0.0.tar.gz
+	source = https://github.com/h5bp/server-configs-nginx/archive/4.1.0.tar.gz
 	b2sums = 02828ee494334cdeca3775e0e27ebc4b7cecd678b1a1735183319a934d985e6c1256adcbdbe24a7baa00f9d71bf85038f095fe890eb2edf6a7f059746454e902
 
 pkgname = nginx-h5bp-server-configs

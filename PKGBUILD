@@ -3,7 +3,7 @@
 
 pkgname=nginx-h5bp-server-configs
 _pkgname=server-configs-nginx
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Nginx HTTP server boilerplate configs"
 arch=('any')
