@@ -1,7 +1,7 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
 pkgver=0.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
@@ -27,7 +27,7 @@ sha256sums=('5471bd00d9d22de98be191c57745e37f4a72f50b42abf73acd9b61fa4f3006c4'
             'SKIP'
             '9d9285db37ae942ed0780c016da87060497877af45094ff9e1a1ca736e3875a2'
             'ff5e7db4e65463e50978da0185487bd4a7f213f04bdb6256e221089f833c6ab6'
-            '41f02f6ca693cd596165a7431795f36a2559504361857063278d31f833b3b7b1'
+            'd23a6e591dfa141de11ff9646dd10f3e2e6fccd6936f6ff390030363e05128c4'
             'cb31c1783998ec11d3d6eb4e5e4e138a8d423ee1aeb0ae2ebe66a52b0f87b642'
             '21c9bc83f8466ab17fa927561d7f24f930f97c996a8aa0fbbbbb2b65cb97b342'
             '6ef779170b72856bbb8df40c34a808acffddd156684bdb66a55e71d50cf95841'
