@@ -1,7 +1,7 @@
 # Maintainer: Curve <curve.platin at gmail.com>
 pkgname=il2cpp-dumper-bin
 _pkgver=6.6.5
-pkgrel=1
+pkgrel=2
 pkgver=${_pkgver}
 pkgdesc='A tool to reverse engineer il2cpp games'
 arch=('x86_64')
