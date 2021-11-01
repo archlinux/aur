@@ -1,8 +1,7 @@
 # Maintainer: Curve <curve.platin at gmail.com>
 pkgname=il2cpp-dumper-bin
-_pkgver=6.6.5
-pkgrel=3
-pkgver=${_pkgver}
+pkgver=6.6.5
+pkgrel=4
 pkgdesc='A tool to reverse engineer il2cpp games'
 arch=('x86_64')
 url='https://github.com/Perfare/Il2CppDumper'
@@ -10,7 +9,7 @@ license=('MIT')
 depends=('dotnet-host' 'dotnet-runtime')
 provides=('il2cpp-dumper')
 conflicts=('il2cpp-dumper')
-source=("https://github.com/Perfare/Il2CppDumper/releases/download/v${_pkgver}/Il2CppDumper-netcore-v${_pkgver}.zip"
+source=("https://github.com/Perfare/Il2CppDumper/releases/download/v${pkgver}/Il2CppDumper-netcore-v${pkgver}.zip"
         'il2cpp-dumper'
         'https://raw.githubusercontent.com/Perfare/Il2CppDumper/master/LICENSE')
 sha256sums=('f72ee74361788e4c5e0234abd16bcf386b7088d334bbbbce5bd8b094e82df3a9'
