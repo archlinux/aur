@@ -29,6 +29,6 @@ package (){
 	mv "${pkgdir}"/opt/windterm.png "${pkgdir}"/usr/share/icons
 	mv "${pkgdir}"/opt/windterm "${pkgdir}"/usr/bin
 	mv "${pkgdir}"/opt/windterm.desktop "${pkgdir}"/usr/share/applications
-	chmod +x "${pkgdir}"/opt/WindTerm/WindTerm
-	chmod +x "${pkgdir}"/usr/bin/windterm
+	chmod a+x "${pkgdir}"/opt/WindTerm/WindTerm
+	chmod a+x "${pkgdir}"/usr/bin/windterm
 }
