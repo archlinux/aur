@@ -2,7 +2,7 @@
 pkgname=ttf-cairo
 _commit='7030db78cca3a7a7d94f9071b3f35dad7447ae71'
 pkgver=3.116
-pkgrel=1
+pkgrel=2
 pkgdesc="Cairo is a contemporary Arabic and Latin typeface family."
 arch=(any)
 url=https://github.com/Gue3bara/Cairo
@@ -21,7 +21,7 @@ source=("Cairo-Black.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts
         "Cairo-ExtraLight.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-ExtraLight.ttf"
         "Cairo-ExtraLightItalic.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-ExtraLightItalic.ttf"
         "Cairo-ExtraLightSlantLeft.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-ExtraLightSlantLeft.ttf"
-        "Cairo-ExtraLightSlantRight.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-ExtraLightSlantRight"
+        "Cairo-ExtraLightSlantRight.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-ExtraLightSlantRight.ttf"
         "Cairo-Heavy.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-Heavy.ttf"
         "Cairo-HeavyItalic.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-HeavyItalic.ttf"
         "Cairo-HeavySlantLeft.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-HeavySlantLeft.ttf"

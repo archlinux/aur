@@ -1,7 +1,7 @@
 pkgbase = ttf-cairo
 	pkgdesc = Cairo is a contemporary Arabic and Latin typeface family.
 	pkgver = 3.116
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gue3bara/Cairo
 	arch = any
 	license = custom:OFL
@@ -19,7 +19,7 @@ pkgbase = ttf-cairo
 	source = Cairo-ExtraLight.ttf::https://github.com/Gue3bara/Cairo/raw/7030db78cca3a7a7d94f9071b3f35dad7447ae71/fonts/ttf/Cairo-ExtraLight.ttf
 	source = Cairo-ExtraLightItalic.ttf::https://github.com/Gue3bara/Cairo/raw/7030db78cca3a7a7d94f9071b3f35dad7447ae71/fonts/ttf/Cairo-ExtraLightItalic.ttf
 	source = Cairo-ExtraLightSlantLeft.ttf::https://github.com/Gue3bara/Cairo/raw/7030db78cca3a7a7d94f9071b3f35dad7447ae71/fonts/ttf/Cairo-ExtraLightSlantLeft.ttf
-	source = Cairo-ExtraLightSlantRight.ttf::https://github.com/Gue3bara/Cairo/raw/7030db78cca3a7a7d94f9071b3f35dad7447ae71/fonts/ttf/Cairo-ExtraLightSlantRight
+	source = Cairo-ExtraLightSlantRight.ttf::https://github.com/Gue3bara/Cairo/raw/7030db78cca3a7a7d94f9071b3f35dad7447ae71/fonts/ttf/Cairo-ExtraLightSlantRight.ttf
 	source = Cairo-Heavy.ttf::https://github.com/Gue3bara/Cairo/raw/7030db78cca3a7a7d94f9071b3f35dad7447ae71/fonts/ttf/Cairo-Heavy.ttf
 	source = Cairo-HeavyItalic.ttf::https://github.com/Gue3bara/Cairo/raw/7030db78cca3a7a7d94f9071b3f35dad7447ae71/fonts/ttf/Cairo-HeavyItalic.ttf
 	source = Cairo-HeavySlantLeft.ttf::https://github.com/Gue3bara/Cairo/raw/7030db78cca3a7a7d94f9071b3f35dad7447ae71/fonts/ttf/Cairo-HeavySlantLeft.ttf
@@ -69,4 +69,3 @@ pkgbase = ttf-cairo
 	sha256sums = 17b90cece30db64934b7299fd76b033a3774c8a990e78badc74c59a5be8e0727
 
 pkgname = ttf-cairo
-
