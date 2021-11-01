@@ -1,7 +1,7 @@
 pkgbase = lcj
 	pkgdesc = All tools for Lcj
 	pkgver = 1.0.0
-	pkgrel = 42
+	pkgrel = 43
 	arch = any
 	groups = lcj
 	license = GPL3
@@ -42,6 +42,7 @@ pkgbase = lcj
 	source = file-ntospace
 	source = file-spaceton
 	source = peers.conf
+	source = docker-list-tags
 	sha512sums = 8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b325dd237b1f6054d19695fc3f533beb2d3ac863f831379819a9de81933fbd
 	sha512sums = 75978d30a68de00cb50c23ba882dd73d9f365497025aacc271375249e7dd4aaff34732ced2ed1cbf2fc64fc3421b2fefc2ec64b16ef068e40d4343894b8c8bfb
 	sha512sums = 7fa56ac8779f4c3695f2ef2d4c86a35cc33ccdfa60a2f97665bf542dbca6381c70b16b94d0a67661ba0915b94c9a38b8706a81fdb970ec89fe377f7f92cb2075
@@ -67,5 +68,6 @@ pkgbase = lcj
 	sha512sums = a25a51bd0aec369d741db960227a36e06e0acfe5d801d4d83a463b31b2fd3bb071794d5c550b5267417e6d81d9a003171aca1ac09608325a9e9c31ae03fcb985
 	sha512sums = bc770db134d0f8ead799ed0f56cb27593771ce5b3921db6e10df62ae95dea846b5140c866b9cb0823242e77e97120d98a5621bf321fa6362b3b1bf58ebc59b24
 	sha512sums = 15ea9fa9f111c180b37fa564ee796102ddf90df54c09a159ea8bbc8dc647b2d2a7b10be7589f6f37a6f7c49e37e75ff07c0dca74bacf4377db932d0950b58eff
+	sha512sums = 3b543f266e82c2d33474374c708f21d96949a9255bf1a3b194d57da592dcac1343edd968db2414ffd7fd042e94f4307b6ad0f70dd2af1c5a0fc3735d86d144c7
 
 pkgname = lcj

@@ -2,7 +2,7 @@
 
 pkgname=lcj
 pkgver=1.0.0
-pkgrel=42
+pkgrel=43
 pkgdesc="All tools for Lcj"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -49,6 +49,7 @@ kill-port
   file-ntospace
         file-spaceton
 peers.conf
+docker-list-tags
 
 )
 
@@ -76,8 +77,8 @@ sha512sums=('8183dfdf382991ce1c686c7138290e0113d336436ffa5b60e0671eedbe43c90167b
             '546fbc05717b59e6fca0d99b189c01abc1030b66ccc4b2beead0ea01e1e92efda83ed5b5daa53ceefebcfbff0e781696c6b0d26adbca1f7a3fa8f9180aaef6aa'
             'a25a51bd0aec369d741db960227a36e06e0acfe5d801d4d83a463b31b2fd3bb071794d5c550b5267417e6d81d9a003171aca1ac09608325a9e9c31ae03fcb985'
             'bc770db134d0f8ead799ed0f56cb27593771ce5b3921db6e10df62ae95dea846b5140c866b9cb0823242e77e97120d98a5621bf321fa6362b3b1bf58ebc59b24'
-            '15ea9fa9f111c180b37fa564ee796102ddf90df54c09a159ea8bbc8dc647b2d2a7b10be7589f6f37a6f7c49e37e75ff07c0dca74bacf4377db932d0950b58eff')
-
+            '15ea9fa9f111c180b37fa564ee796102ddf90df54c09a159ea8bbc8dc647b2d2a7b10be7589f6f37a6f7c49e37e75ff07c0dca74bacf4377db932d0950b58eff'
+            '3b543f266e82c2d33474374c708f21d96949a9255bf1a3b194d57da592dcac1343edd968db2414ffd7fd042e94f4307b6ad0f70dd2af1c5a0fc3735d86d144c7')
 
 
 
@@ -142,6 +143,7 @@ install  -Dm755 mkmvngitignore  "$pkgdir/usr/bin/mkmvngitignore"
 install  -Dm755 mkuefi  "$pkgdir/usr/bin/mkuefi"
 install  -Dm755 mkbiosvda  "$pkgdir/usr/bin/mkbiosvda"
 install  -Dm755 kill-port  "$pkgdir/usr/bin/kill-port"
+install  -Dm755 docker-list-tags  "$pkgdir/usr/bin/docker-list-tags"
 install  -Dm644 peers.conf  "$pkgdir/etc/wireguard/peers.conf"
 
 }
