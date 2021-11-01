@@ -2,10 +2,10 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.14.15
+gitver=v5.15
 patchver=20210914
-patchname=more-uarches-for-kernel-5.8-5.14.patch
-pkgver=5.14.v.15
+patchname=more-uarches-for-kernel-5.15+.patch
+pkgver=5.15.v.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -25,13 +25,13 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'dec4cf4bf85f80ff7598a1f00488b235f0557b848309ac4259cda984397c1007'
+            'ee6fca0b65dc12b88ffcdbd48df494fab06b978ec7a8a7775aeff7d865856d25'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #grayskypatch
-            '2f99d9e37f372925e054115bfead4723a328ffbdb7bf958753aab2ac48dc5673'
+            '14baea3bc9ffbe41737cfce6f0c5e6b536021571de7b5c7a9e39b31b94b23668'
 )
 
 _kernelname=${pkgbase#linux}
