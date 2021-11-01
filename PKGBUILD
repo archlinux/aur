@@ -2,12 +2,13 @@
 
 pkgname=pops-usb-setup
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Setup a USB drive for the POPS emulator"
 arch=('any')
 url="https://gitlab.com/tallero/pops-usb-setup"
 license=('AGPL3')
 depends=('python')
+options=(!strip)
 makedepends=('git' 'python-setuptools' 'wget')
 source=("git+$url")
 md5sums=(SKIP)
@@ -23,7 +24,7 @@ package() {
 
   cd ../../../
 
-  python3 setup.py install --root="$pkgdir" --optimize=1
+  python3 setup.py install --root="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
