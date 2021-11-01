@@ -33,7 +33,6 @@ pkgbase = gtk3-classic-noatk-64
 	makedepends = adwaita-icon-theme
 	provides = gtk3=3.24.30
 	provides = gtk3-typeahead=3.24.30
-	provides = gtk3-mushrooms=3.24.30
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so

@@ -18,7 +18,7 @@ pkgrel=1
 pkgdesc="GTK3 patched to provide a more classic experience. No ATK patch. No 32-bit libs. No printing, colord, etc. ( see PKGBUILD for details ) ."
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-classic gtk3-typeahead gtk3-print-backends)
-provides=(gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends
+provides=(gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-print-backends
           libgtk-3.so libgdk-3.so libgailutil-3.so)
 arch=(x86_64)
 license=(LGPL)
@@ -61,6 +61,7 @@ build()
         CXXFLAGS+=" -Os -pipe -fno-plt "
 
 	# Remove atk - patch (aka at-spi/atk-bridge removal patch)
+	# Installed atk package (libs) still required for build.
         # Original NETBSD patch included but not used ( file: original.NETBSD.atk-bridge.patch )
         # Here the same patch trough sed util:
 	sed -i 's/atk_bridge_adaptor_init.*$//g' "gtk+-$_gtkver/gtk/a11y/gtkaccessibility.c"
@@ -68,49 +69,36 @@ build()
 
 	# 64-bit build
 	# Enable or disable options by commenting lines ( or change true / false ) 
-	arch-meson --buildtype minsize --strip --optimization=3 gtk+-$_gtkver build \
-		-D broadway_backend=false \
-		-D demos=false \
-		-D tests=false \
-		-D installed_tests=false \
+        arch-meson --buildtype minsize --strip --optimization=3 gtk+-$_gtkver build \
+                -D broadway_backend=false \
+                -D demos=false \
+                -D tests=false \
+                -D installed_tests=false \
                 -D print_backends=file \
                 -D win32_backend=false \
                 -D quartz_backend=false  \
-                -D colord=no \
+                -D colord=auto \
                 -D cloudproviders=false \
                 -D gtk_doc=false \
                 -D examples=false \
-                -D introspection=false \
                 -D print_backends=file \
                 -D tracker3=false \
-               # -D ENABLE_NLS=0
-               # -D wayland_backend=false
-	ninja -C build
+                -D man=false
 
-#  User defined options
-#    auto_features   : enabled
-#    buildtype       : minsize
-#    libexecdir      : lib
-#    optimization    : 3
-#    prefix          : /usr
-#    sbindir         : bin
-#    strip           : True
-#    wrap_mode       : nodownload
-#    b_lto           : true
-#    b_pie           : true
-#    broadway_backend: false
-#    cloudproviders  : false
-#    colord          : no
-#    demos           : false
-#    examples        : false
-#    gtk_doc         : false
-#    installed_tests : false
-#    introspection   : false
-#    print_backends  : file
-#    quartz_backend  : false
-#    tests           : false
-#    tracker3        : false
-#    win32_backend   : false
+        ninja -C build
+# tracker3 is search backend
+# broadway_backend is allowing html5 gtk3 applications work
+# cloudproviders for nextcloud or similar projects integrations
+#
+# introspection=false can cause bugs:
+#   File "/usr/lib/python3.9/site-packages/gi/__init__.py", line 129, in require_version
+#    raise ValueError('Namespace %s not available for version %s' %
+# ValueError: Namespace Gtk not available for version 3.0
+#
+# oldflags:
+#                -D introspection=false \
+#                -D ENABLE_NLS=0 \
+#                -D wayland_backend=false
 
 }
 
