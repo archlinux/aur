@@ -1,6 +1,6 @@
 pkgbase = icedrive-appimage
 	pkgdesc = The next generation of cloud storage
-	pkgver = 20210808
+	pkgver = latest
 	pkgrel = 1
 	url = https://icedrive.net
 	arch = x86_64
@@ -11,6 +11,6 @@ pkgbase = icedrive-appimage
 	noextract = Icedrive_Portable_Linux-x64.AppImage
 	options = !strip
 	source = https://icedrive.net/downloads/portable/Icedrive_Portable_Linux-x64.AppImage
-	sha256sums = SKIP
+	sha512sums = 0e152b567df84e8295406f7f398666643366901d29645624f74d85543999e0a7ad775f422eaefa1c2b025469770e7fb257803e3c1b587c971b4aadf1efefa712
 
 pkgname = icedrive-appimage
