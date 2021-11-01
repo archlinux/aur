@@ -1,6 +1,6 @@
 pkgbase = calls
 	pkgdesc = Phone dialer and call handler
-	pkgver = 41.0
+	pkgver = 41.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/calls
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = calls
 	depends = libpeas
 	depends = modemmanager
 	depends = sofia-sip
-	source = https://gitlab.gnome.org/GNOME/calls/-/archive/41.0/calls-41.0.tar.gz
-	sha256sums = c6ccd265f4eec611eaac3b3920fd1127179d1946adcd2a4adfca9c304168b01f
+	source = https://gitlab.gnome.org/GNOME/calls/-/archive/41.1/calls-41.1.tar.gz
+	sha256sums = 8b9a217f9f33fea314b33ee373d893177595faa97b38248769b50b07c238ab3f
 
 pkgname = calls

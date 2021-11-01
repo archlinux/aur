@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls
-pkgver=41.0
+pkgver=41.1
 pkgrel=1
 pkgdesc='Phone dialer and call handler'
 arch=(x86_64 aarch64)
@@ -24,7 +24,7 @@ makedepends=(
 )
 _commit=${pkgver}
 source=("${url}/-/archive/${_commit}/calls-${_commit}.tar.gz")
-sha256sums=('c6ccd265f4eec611eaac3b3920fd1127179d1946adcd2a4adfca9c304168b01f')
+sha256sums=('8b9a217f9f33fea314b33ee373d893177595faa97b38248769b50b07c238ab3f')
 
 build() {
 	arch-meson calls-${_commit} build -D tests=false
