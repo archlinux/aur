@@ -3,13 +3,13 @@
 
 pkgsubn=darkreader
 pkgname=chromium-extension-dark-reader-git
-pkgver=v4.9.34.r347.gf49a2f015
+pkgver=v4.9.39.r111.g91b064df4
 pkgrel=1
 pkgdesc="Chrome/Chromium extension for Dark Reader - git/dev"
 arch=('any')
 url='https://github.com/darkreader/darkreader'
 license=('MIT')
-makedepends=(git nodejs npm unzip)
+makedepends=(git nodejs-lts-gallium npm unzip)
 source=("git+https://github.com/darkreader/darkreader.git")
 sha512sums=('SKIP')
 
