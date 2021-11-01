@@ -1,6 +1,6 @@
 pkgbase = lib32-egl-wayland-git
 	pkgdesc = EGLStream-based Wayland external platform (GIT version)(32-bit)
-	pkgver = 1.1.9.r0.gcd0d19a
+	pkgver = 1.1.9.r2.gdaab854
 	pkgrel = 1
 	url = https://github.com/NVIDIA/egl-wayland
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = lib32-egl-wayland-git
 	makedepends = wayland-protocols
 	makedepends = lib32-libglvnd
 	depends = lib32-wayland
-	depends = egl-wayland-git=1.1.9.r0.gcd0d19a
+	depends = egl-wayland-git=1.1.9.r2.gdaab854
 	provides = lib32-egl-wayland
 	provides = libnvidia-egl-wayland.so
 	conflicts = lib32-egl-wayland

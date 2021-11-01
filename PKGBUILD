@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lib32-egl-wayland-git
-pkgver=1.1.9.r0.gcd0d19a
+pkgver=1.1.9.r2.gdaab854
 pkgrel=1
 pkgdesc='EGLStream-based Wayland external platform (GIT version)(32-bit)'
 arch=('x86_64')
