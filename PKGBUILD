@@ -4,7 +4,7 @@ pkgbase=linux-slim
 _srcname=linux
 gitver=v5.15
 patchver=20210914
-patchname=more-uarches-for-kernel-5.8-5.14.patch
+patchname=more-uarches-for-kernel-5.15+.patch
 pkgver=5.15.v.0
 pkgrel=1
 arch=('x86_64')
@@ -25,13 +25,13 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '587f907c068199c8fc4bc26ae9feb027e35cb5f66fee952ec575cc77e7cef660'
+            '3fd461685f4e46be958298aaaaed435b99aaa11e9445f0eaa984b79b2fbdfa81'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #grayskypatch
-            '2f99d9e37f372925e054115bfead4723a328ffbdb7bf958753aab2ac48dc5673'
+            ''
            )
 
 _kernelname=${pkgbase#linux}
