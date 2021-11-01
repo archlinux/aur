@@ -13,7 +13,7 @@ pkgname=(
   'xorg-server-xvfb-git'
 )
 _pkgbase='xserver'
-pkgver=21.0.99.1.r111.gc93c2e771
+pkgver=21.0.99.1.r112.gc97397dc4
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -24,8 +24,7 @@ makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'xtrans' 'libxcvt'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
-             'libxshmfence' 'libunwind' 'systemd' 'meson' 'git'
-             'wayland-protocols' 'egl-wayland')
+             'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
 source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
         xvfb-run # with updates from FC master
         xvfb-run.1)
@@ -56,8 +55,6 @@ build() {
     -D xcsecurity=true \
     -D xorg=true \
     -D xephyr=true \
-    -D xwayland=true \
-    -D xwayland_eglstream=true \
     -D glamor=true \
     -D udev=true \
     -D systemd_logind=true \
@@ -100,7 +97,7 @@ package_xorg-server-common-git() {
 
   install -m644 -Dt "${pkgdir}/var/lib/xkb/" "${_pkgbase}"/xkb/README.compiled
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-git() {
@@ -108,7 +105,7 @@ package_xorg-server-git() {
   _pkgname='xorg-server'
   depends=(libepoxy libxfont2 pixman xorg-server-common-git libunwind
            dbus libgl xf86-input-libinput nettle
-           libpciaccess libdrm libxshmfence) # FS#52949
+           libpciaccess libdrm libxshmfence libxcvt) # FS#52949
 
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
@@ -130,7 +127,7 @@ package_xorg-server-git() {
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xephyr-git() {
@@ -140,13 +137,13 @@ package_xorg-server-xephyr-git() {
   conflicts=('xorg-server-xephyr')
   depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-common-git
            xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
-           nettle libtirpc systemd-libs)
+           nettle libtirpc)
 
   _install fakeinstall/usr/bin/Xephyr
   _install fakeinstall/usr/share/man/man1/Xephyr.1
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xvfb-git() {
@@ -164,7 +161,7 @@ package_xorg-server-xvfb-git() {
   install -m644 "${srcdir}/xvfb-run.1" "${pkgdir}/usr/share/man/man1/" # outda
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xnest-git() {
@@ -178,7 +175,7 @@ package_xorg-server-xnest-git() {
   _install fakeinstall/usr/share/man/man1/Xnest.1
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-devel-git() {
@@ -196,9 +193,9 @@ package_xorg-server-devel-git() {
   _install fakeinstall/usr/share/aclocal/xorg-server.m4
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 
   # make sure there are no files left to install
-  # rm fakeinstall/usr/bin/Xwayland
+  # rm -rf fakeinstall/usr/bin/cvt fakeinstall/usr/share/man/man1/cvt.1
   # find fakeinstall -depth -print0 | xargs -0 rmdir
 }
