@@ -2,13 +2,13 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
-pkgver=0.0.18
-pkgrel=2
+pkgver=0.0.19
+pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=(x86_64)
 url=https://rpcs3.net
 license=(GPL2)
-depends=(alsa-lib glew glu libavcodec.so libavutil.so libevdev libgl libice libncursesw.so libpng libpulse libsm libswscale.so libx11 libxext openal qt5-base qt5-declarative sdl2 vulkan-icd-loader zlib curl)
+depends=(alsa-lib glew glu libavcodec.so libavutil.so libevdev libgl libice libncursesw.so libpng libpulse libsm libswscale.so libx11 libxext openal qt5-base qt5-declarative qt5-multimedia qt5-svg sdl2 vulkan-icd-loader zlib curl)
 makedepends=(cmake git libglvnd python vulkan-validation-layers)
 options=(!emptydirs)
 source=(
