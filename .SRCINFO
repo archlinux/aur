@@ -1,6 +1,6 @@
 pkgbase = tgui-git
-	pkgdesc = Cross-platform C++ GUI library for SFML
-	pkgver = v0.9.1.r0.g588362edc
+	pkgdesc = Cross-platform modern c++ GUI library
+	pkgver = nightly_build.r0.g6ef550515
 	pkgrel = 1
 	url = https://tgui.eu/
 	arch = i686
@@ -10,10 +10,13 @@ pkgbase = tgui-git
 	makedepends = doxygen
 	makedepends = git
 	depends = sfml
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = glfw-x11
+	depends = freetype2
 	provides = tgui
 	conflicts = tgui
-	source = git+https://github.com/texus/TGUI.git#branch=0.9
+	source = git+https://github.com/texus/TGUI.git#branch=0.10
 	sha256sums = SKIP
 
 pkgname = tgui-git
-
