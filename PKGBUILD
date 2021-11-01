@@ -15,7 +15,7 @@ pkgbase=gtk3-classic-noatk-64
 pkgname=($pkgbase)
 pkgver=${_gtkver}
 pkgrel=1
-pkgdesc="GTK3 patched to provide a more classic experience. No ATK patch. No 32-bit libs. No printing, colord, etc. ( see PKGBUILD for details ) ."
+pkgdesc="GTK3 patched to provide a more classic experience. No ATK. No 32-bit libs. No printing, cloudproviders, etc. ( see PKGBUILD for details ) ."
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-classic gtk3-typeahead gtk3-print-backends)
 provides=(gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-print-backends
@@ -27,7 +27,7 @@ makedepends=(
 
 	atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 fribidi
 	libxcomposite libxdamage pango shared-mime-info libxkbcommon
-	json-glib librsvg  desktop-file-utils mesa gtk-update-icon-cache
+	json-glib librsvg desktop-file-utils mesa gtk-update-icon-cache
 	adwaita-icon-theme
 )
 install=gtk3.install
@@ -86,11 +86,13 @@ build()
                 -D man=false
 
         ninja -C build
-# tracker3 is search backend
-# broadway_backend is allowing html5 gtk3 applications work
-# cloudproviders for nextcloud or similar projects integrations
+# Tips:
 #
-# introspection=false can cause bugs:
+# tracker3         is search backend
+# broadway_backend is allowing html5 gtk3 applications work
+# cloudproviders   for nextcloud or similar projects integrations
+#
+# introspection=false can cause this bug:
 #   File "/usr/lib/python3.9/site-packages/gi/__init__.py", line 129, in require_version
 #    raise ValueError('Namespace %s not available for version %s' %
 # ValueError: Namespace Gtk not available for version 3.0

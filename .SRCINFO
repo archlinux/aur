@@ -1,5 +1,5 @@
 pkgbase = gtk3-classic-noatk-64
-	pkgdesc = GTK3 patched to provide a more classic experience. No ATK patch. No 32-bit libs. No printing, colord, etc. ( see PKGBUILD for details ) .
+	pkgdesc = GTK3 patched to provide a more classic experience. No ATK. No 32-bit libs. No printing, cloudproviders, etc. ( see PKGBUILD for details ) .
 	pkgver = 3.24.30
 	pkgrel = 1
 	url = https://github.com/lah7/gtk3-classic
