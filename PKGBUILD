@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=earthly-git
-pkgver=0.5.20.r27.gfdb0231a
+pkgver=0.6.0rc2.r1.ge1cc7ff1
 pkgrel=1
 pkgdesc='A build automation tool that executes in containers (git version)'
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=('docker')
 makedepends=('git' 'go')
 provides=('earthly')
 conflicts=('earthly')
+BUILDENV+=('!check')
 source=('git+https://github.com/earthly/earthly.git')
 sha256sums=('SKIP')
 
@@ -19,7 +20,7 @@ prepare() {
 }
 
 pkgver() {
-    git -C earthly describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C earthly describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/'
 }
 
 build() {
