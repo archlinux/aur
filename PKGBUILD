@@ -1,0 +1,21 @@
+# Maintainer: Abdur Rehman Imran <arehmanimran4@gmail.com>
+pkgname=fsorter
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="A folder organizer written in Python."
+arch=('x86_64')
+url="https://github.com/abdurehman4/fsorter"
+license=('GPL')
+depends=('python' 'python-termcolor')
+source=("git+https://github.com/abdurehman4/fsorter.git")
+md5sums=()
+
+
+package() {
+    cd fsorter
+    mkdir "$pkgdir/usr"
+    mkdir "$pkgdir/usr/bin"
+    cp ./fsorter "$pkgdir/usr/bin/"
+    chmod +x "$pkgdir/usr/bin/fsorter"
+}
+sha256sums=('SKIP')

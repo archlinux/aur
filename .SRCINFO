@@ -1,0 +1,13 @@
+pkgbase = fsorter
+	pkgdesc = A folder organizer written in Python.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/abdurehman4/fsorter
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = python-termcolor
+	source = git+https://github.com/abdurehman4/fsorter.git
+	sha256sums = SKIP
+
+pkgname = fsorter
