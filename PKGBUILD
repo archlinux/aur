@@ -10,7 +10,7 @@ license=('MIT')
 depends=('dotnet-host' 'dotnet-runtime')
 provides=('il2cpp-dumper')
 conflicts=('il2cpp-dumper')
-source=('https://github.com/Perfare/Il2CppDumper/releases/download/v${_pkgver}/Il2CppDumper-netcore-v${_pkgver}.zip'
+source=("https://github.com/Perfare/Il2CppDumper/releases/download/v${_pkgver}/Il2CppDumper-netcore-v${_pkgver}.zip"
         'il2cpp-dumper'
         'https://raw.githubusercontent.com/Perfare/Il2CppDumper/master/LICENSE')
 sha256sums=('f72ee74361788e4c5e0234abd16bcf386b7088d334bbbbce5bd8b094e82df3a9'
