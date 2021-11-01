@@ -4,20 +4,20 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=6.0.2.r0.g145d0ef9
+pkgver=6.1.4.r32.gf76cf2be
 pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
-depends=('gtkmm-4.0' 'glibmm-2.68' 'pipewire' 'lilv' 'lv2' 'libsigc++-3.0' 'libsndfile' 'libsamplerate' 'zita-convolver' 
-         'libebur128' 'rnnoise' 'rubberband' 'fftw' 'libbs2b' 'speexdsp' 'nlohmann-json')
+depends=('fftw' 'glibmm-2.68' 'gtkmm-4.0' 'libbs2b' 'libebur128' 'libsamplerate' 'libsigc++-3.0' 'libsndfile'
+  'lilv' 'lv2' 'nlohmann-json' 'pipewire' 'rnnoise' 'rubberband' 'speexdsp' 'tbb' 'zita-convolver')
 makedepends=('appstream-glib' 'git' 'itstool' 'meson')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
-            'lsp-plugins: equalizer, compressor, delay, loudness'
-            'zam-plugins: maximizer'
-            'mda.lv2: bass loudness'
-            'yelp: in-app help')
+  'lsp-plugins: equalizer, compressor, delay, loudness'
+  'zam-plugins: maximizer'
+  'mda.lv2: bass loudness'
+  'yelp: in-app help')
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
 source=("${pkgname%%-git}::git+${url}")
