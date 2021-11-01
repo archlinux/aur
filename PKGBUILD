@@ -2,13 +2,13 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=5.15.rc4.r117.gbc0de77d9b2b
+pkgver=5.15.r54.g7ef1e100619e
 pkgrel=1
 pkgdesc="Linux pf-kernel (git version)"
 _kernel_rel=5.15
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
-url=https://pf.natalenko.name/
+url=https://gitlab.com/post-factum/pf-kernel/wikis/README
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '29acc99bd10b9124b318a8804abf52039a5f489fa970d98efa7366bee428d1c5')
+            '8f944f1b7bda4a54c5b1ebc5cfe9745cb8057ec3a1b31b37676760b55f83b3fb')
 
 pkgver() {
   cd "${_srcname}"
@@ -55,6 +55,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
