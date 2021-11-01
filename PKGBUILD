@@ -3,7 +3,7 @@
 
 pkgname=vfio-kvm
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A systemd service that send a D-Bus signal when a QEMU evdev hotkey is pressed."
 arch=('any')
 url='https://github.com/dangle/vfio-kvm'
@@ -20,11 +20,11 @@ optdepends=('ddccontrol: switch monitor inputs')
 backup=('etc/vfio-kvm.yaml' 'etc/libvirt/hooks/qemu')
 provides=(${pkgname})
 conflicts=(${pkgname}-git)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dangle/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('723a647a564a80667e7cd93a47f22b3e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dangle/akeydo/archive/${pkgver}.tar.gz")
+md5sums=('afc7298cbdb39a9fa9893da4230002af')
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/akeydo-${pkgver}"
   install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 "config/vfio-kvm.yaml" -t "${pkgdir}/etc"
   install -Dm644 "config/dbus/vfio-kvm.xml" "${pkgdir}/etc/dbus-1/system.d/vfio-kvm.conf"
