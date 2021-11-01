@@ -1,7 +1,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli-git
 pkgver=v0.3.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Syncing dotfiles and more"
 arch=("any")
@@ -38,7 +38,7 @@ build() {
 
 check() {
     cd dt
-    cargo test --bin=dt-cli --lib=dt-core --all-features --locked
+    cargo test --bin=dt-cli --lib=dt-core --release --all-features --locked
 }
 
 package() {
