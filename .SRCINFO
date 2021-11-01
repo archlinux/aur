@@ -1,7 +1,7 @@
 pkgbase = pops-usb-setup
 	pkgdesc = Setup a USB drive for the POPS emulator
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tallero/pops-usb-setup
 	arch = any
 	license = AGPL3
@@ -9,6 +9,7 @@ pkgbase = pops-usb-setup
 	makedepends = python-setuptools
 	makedepends = wget
 	depends = python
+	options = !strip
 	source = git+https://gitlab.com/tallero/pops-usb-setup
 	md5sums = SKIP
 
