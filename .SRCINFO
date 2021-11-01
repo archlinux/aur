@@ -1,0 +1,20 @@
+pkgbase = python-tianshou
+	pkgdesc = An elegant PyTorch deep reinforcement learning library.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/thu-ml/tianshou
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gym
+	depends = python-tqdm
+	depends = python-numpy
+	depends = tensorboard
+	depends = python-pytorch
+	depends = python-numba
+	depends = python-h5py
+	options = !emptydirs
+	source = https://github.com/thu-ml/tianshou/releases/download/v0.4.4/tianshou-0.4.4.tar.gz
+	sha384sums = d0c846aa08c7318d7918cf727ca76e7807c2208ec5bcbf9935759e82b391bc94bb0c9e6bbb4eba0e2705645a7da0698e
+
+pkgname = python-tianshou
