@@ -20,7 +20,7 @@ conflicts=('gargoyle-mod')
 replaces=('gargoyle-mod')
 #backup=()
 #groups=(inform)
-source=("https://github.com/garglk/garglk/archive/${pkgver}.tar.gz" \
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/garglk/garglk/archive/${pkgver}.tar.gz" \
 	"0001-Increase-internal-linkage-in-garglk.patch" \
 	"0002-Fix-incorrect-global-declarations.patch" \
 	"gargoyle.sh" \
