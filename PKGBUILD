@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #grayskypatch
-            ''
+            '14baea3bc9ffbe41737cfce6f0c5e6b536021571de7b5c7a9e39b31b94b23668'
            )
 
 _kernelname=${pkgbase#linux}
