@@ -2,8 +2,8 @@
 # PRs/Issues: https://github.com/bbrks/aur-sync_gateway-community-bin
 
 pkgname=sync_gateway-community-bin
-pkgver=2.8.2
-pkgrel=2
+pkgver=2.8.3
+pkgrel=1
 pkgdesc="Manages access and synchronization between Couchbase Lite and Couchbase Server - Community Edition (CE)"
 url="https://github.com/couchbase/sync_gateway"
 arch=('x86_64')
@@ -17,10 +17,8 @@ source=(
 	'sync_gateway.service'
 )
 
-sha256sums=(
-	'952470ff2ca60808b2df8cfb3b1027693221b1e1388cbf46cb22fdf3da64ac01'
-	'4bc3c5843b2b6e31d954a53d43c9ecdce77faf3942b5da4ffdaba846f02dd381'
-)
+sha256sums=('f60ad9ad26aa0538fd883b78a5884e6a3858296140df1406a1dbee130acde2da'
+            '4bc3c5843b2b6e31d954a53d43c9ecdce77faf3942b5da4ffdaba846f02dd381')
 
 prepare () {
 	msg2 "Extracting the data.tar.gz file"

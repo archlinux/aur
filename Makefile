@@ -1,5 +1,12 @@
-package:
+package: clean
 	makepkg
+
+update: clean updatechecksums srcinfo
+		updpkgsums
+
+updatechecksums:
+	updpkgsums
+
 
 srcinfo: .SRCINFO
 
@@ -7,4 +14,4 @@ srcinfo: .SRCINFO
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf pkg src *.tar.xz *.tar.zst couchbase-sync-gateway-community_*_x86_64.deb
+	rm -rf pkg src *.tar.gz *.tar.xz *.tar.zst
