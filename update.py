@@ -86,8 +86,15 @@ def update():
     subprocess.check_call(['git', 'push'])
 
 if __name__ == '__main__':
-    if get_current() == get_latest():
-        print(f"{NAME}-versioned-bin is up to date")
+    current_version = get_current()
+    latest_version = get_latest()
+    if current_version != latest_version:
+        info = get_info(NAME)
+        archlinux_dot_org_version = f"{info['pkgver']}-{info['pkgrel']}"
+        if archlinux_dot_org_version == latest_version:
+            print(f"{NAME}-versioned-bin is out of date!")
+            update()
+        else:
+            print(f"{NAME}-versioned-bin is out of date, but not yet on archlinux.org")
     else:
-        print(f"{NAME}-versioned-bin is out of date!")
-        update()
+        print(f"{NAME}-versioned-bin is up to date")
