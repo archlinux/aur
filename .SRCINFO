@@ -1,11 +1,11 @@
 pkgbase = datree
 	pkgdesc = Prevent Kubernetes misconfigurations from reaching production (again triumph)! Datree is a CLI tool to ensure K8s manifests and Helm charts follow best practices as well as your organization’s policies.
-	pkgver = 0.14.26
+	pkgver = 0.14.29
 	pkgrel = 1
 	url = https://github.com/datreeio/datree
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/datreeio/datree/releases/download/0.14.26/datree-cli_0.14.26_Linux_x86_64.zip
-	sha256sums = 73be6942ca2b9f30e681960899918fedff55d71172150e5ec5fff089ce2b9426
+	source = https://github.com/datreeio/datree/releases/download/0.14.29/datree-cli_0.14.29_Linux_x86_64.zip
+	sha256sums = a4b4bef081b3f3ea5d84f457c5e74cbf8262548452456e8d660f3ffbb1cb7730
 
 pkgname = datree
