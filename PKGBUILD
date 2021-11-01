@@ -2,7 +2,7 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-git"
-pkgver=5.14.8+1032950+g069dac96633e
+pkgver=5.14.15+1033864+ge9daa0e5f673
 _kernver=4.19.0+783746+g54d1f99f63e9
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
 url="https://github.com/damentz/zen-kernel"
@@ -13,7 +13,7 @@ true && pkgname=("linux-zen-git" "linux-zen-git-headers")
 arch=("x86_64")
 conflicts=("linux-zen")
 provides=("linux-zen")
-pkgrel=2
+pkgrel=1
 options=("!strip")
 source=("linux-zen.conf"
         "linux-zen.preset"
