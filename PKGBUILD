@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=meteo-gtk
-pkgver=0.9.9
-pkgrel=2
+pkgver=0.9.9.1
+pkgrel=1
 pkgdesc="A forecast application using OpenWeatherMap API"
 arch=('x86_64')
 url="https://gitlab.com/bitseater/meteo"
@@ -11,7 +11,7 @@ makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream')
 provides=("${pkgname%-gtk}")
 conflicts=("${pkgname%-gtk}")
-_commit=03a2741eff4f9446e7d8b023019d31e563207f6f
+_commit=6bd48892ec86d7208cb4ad1dd8baf74ba72df68f
 source=("git+https://gitlab.com/bitseater/meteo.git#commit=$_commit?signed")
 sha256sums=('SKIP')
 validpgpkeys=('900E41F44EFF4B6D696EB80AE6BDC743AED36483') # Carlos Suárez <bitseater@gmail.com>
