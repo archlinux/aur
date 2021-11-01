@@ -1,0 +1,13 @@
+pkgbase = btrfs-snap-cpp-git
+	pkgdesc = Creates and transfers btrfs snapshots
+	pkgver = 0.1.r0.g8cdbef2
+	pkgrel = 1
+	url = https://github.com/alcubierre-drive/btrfs-snap
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = btrfs-progs
+	source = btrfs-snap-cpp-git::git+https://github.com/alcubierre-drive/btrfs-snap
+	sha256sums = SKIP
+
+pkgname = btrfs-snap-cpp-git
