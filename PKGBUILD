@@ -41,7 +41,9 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE.md"
-  install -Dm755 bazel-bin/${pkgname%-git}.par "$pkgdir"/usr/bin/${pkgname%-git}.par
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE.md"
+  install -Dm644 "install/systemd/${pkgname%-git}@.service" "${pkgdir}/usr/lib/systemd/user/${pkgname%-git}@.service"
+  install -Dm644 "install/systemd/${pkgname%-git}@.timer" "${pkgdir}/usr/lib/systemd/user/${pkgname%-git}@.timer"
+  install -Dm755 "bazel-bin/${pkgname%-git}.par" "${pkgdir}/usr/bin/${pkgname%-git}.par"
 }
