@@ -2,14 +2,14 @@
 pkgname=libfprint-goodix-521d
 _pkgdirname=libfprint
 pkgver=1.94.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Library for fingerprint readers - For Goodix 521d and 538d"
 arch=(x86_64)
 url="https://fprint.freedesktop.org/"
 license=(LGPL)
 depends=('libgusb>=0.3.0' nss pixman)
-makedepends=(git gobject-introspection gtk-doc 'meson>=0.49.0')
-checkdepends=(python python-cairo python-gobject 'umockdev>=0.13.2')
+makedepends=(git gobject-introspection gtk-doc 'meson>=0.49.0' cmake pkg-config)
+checkdepends=()
 optdepends=()
 provides=(libfprint libfprint-2.so libfprint-goodix-521d)
 conflicts=(libfprint)
