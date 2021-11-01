@@ -17,7 +17,7 @@ depends=('python')
 makedepends=('p7zip' 'python-setuptools')
 options=(!strip)
 makedepends=('git' 'python-setuptools' 'wget')
-source=("git+$url#branch=opl"
+source=("git+$url"
         "git+$_pops_url#commit=$_pops_commit"
         "$_opl_url/releases/download/v$_opl_ver/$_opl_name.7z"
         "https://archive.org/download/pops-iox/POPSTARTER.ELF"
