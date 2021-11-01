@@ -1,7 +1,7 @@
 pkgbase = crunchyroll-go
 	pkgdesc = A cli for downloading videos and entire series from crunchyroll
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ByteDream/crunchyroll-go
 	arch = x86_64
 	arch = i686

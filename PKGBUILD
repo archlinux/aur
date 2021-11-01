@@ -6,7 +6,7 @@ url="https://github.com/ByteDream/crunchyroll-go"
 license=('LGPL3')
 
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 
 optdepends=(
   'ffmpeg: convert output files'
@@ -23,6 +23,6 @@ build() {
 }
 
 package() {
-  # cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
