@@ -1,6 +1,6 @@
 pkgbase = qtcam-git
-	pkgdesc = A free, Open Source Linux Webcamera Software with more than 10 image control settings - alexzk1 fork
-	pkgver = r145.51ddb5d
+	pkgdesc = A free, Open Source Linux Webcamera Software with more than 10 image control settings
+	pkgver = r190.d989fea
 	pkgrel = 1
 	url = http://www.e-consystems.com/opensource-linux-webcam-software-application.asp
 	arch = i686
