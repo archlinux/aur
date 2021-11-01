@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Rewind
+Comment=Beatmap/replay analyzer for osu!
+Icon=/usr/share/pixmaps/rewind.png
+Path=/usr/bin
+Exec=rewind
+Terminal=false
+Categories=Game;Tool
