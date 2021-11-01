@@ -8,8 +8,7 @@ arch=('x86_64')
 depends=()
 license=('Apache-2.0')
 url='https://github.com/kingToolbox/WindTerm/'
-provides=('kingToolbox')
-options=(!strip)
+provides=('windterm')
 source=("${pkgname}-${pkgver}-${arch}.tar.gz::https://github.com/kingToolbox/WindTerm/releases/download/2.1/WindTerm_2.1.0_Linux_Portable.tar.gz"
 	"windterm.png::https://github.com/kingToolbox/WindTerm/raw/master/images/WindTerm_icon_1024x1024.png"
 	"windterm"
