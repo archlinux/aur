@@ -7,7 +7,7 @@ _pkgbasename=nvidia-470xx-utils
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-470xx-utils' 'lib32-opencl-nvidia-470xx')
 pkgver=470.82.00
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 #makedepends=('nvidia-libgl')  # To avoid conflict during installation in the build chroot
@@ -59,6 +59,9 @@ package_lib32-nvidia-470xx-utils() {
 
     cd "${_pkg}"/32
 
+    # Check http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/README/installedcomponents.html
+    # for hints on what needs to be installed where.
+
     install -D -m755 "libGLX_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/libGLX_nvidia.so.${pkgver}"
 
     # OpenGL libraries
@@ -77,6 +80,7 @@ package_lib32-nvidia-470xx-utils() {
     install -D -m755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-encode.so.${pkgver}"
     install -D -m755 "libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ml.so.${pkgver}"
     install -D -m755 "libnvidia-glvkspirv.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-glvkspirv.so.${pkgver}"
+    install -D -m755 "libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-allocator.so.${pkgver}"
 
     # VDPAU
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/vdpau/libvdpau_nvidia.so.${pkgver}"
