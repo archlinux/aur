@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Ryujinx
+Comment=${pkgdesc}
+Exec=Ryujinx
+Icon=/opt/ryujinx-ldn-bin/Ryujinx.ico
+Terminal=false
+Categories=Game;
