@@ -4,7 +4,7 @@
 
 pkgname=portainer-bin
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A lightweight docker management UI"
 arch=('armv6h' 'armv7h' 'aarch64' 'x86_64')
@@ -12,8 +12,9 @@ url="https://github.com/portainer/portainer"
 license=('custom:zlib')
 provides=('portainer')
 conflicts=('portainer')
-optdepends=('docker: local Docker support'
-            'docker-compose: local Docker support')
+depends=('docker' 'docker-compose')
+optdepends=()
+makedepends=()
 
 source=("portainer.service"
         "portainer.png"
