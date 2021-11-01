@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libffi
-pkgver=3.3
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Portable foreign function interface library (mingw-w64)"
 arch=(any)
@@ -9,8 +9,8 @@ makedepends=(mingw-w64-configure)
 options=(staticlibs !buildflags !strip)
 license=(MIT)
 url="http://sourceware.org/libffi"
-source=(https://sourceware.org/pub/libffi/libffi-$pkgver.tar.gz)
-sha256sums=('72fba7922703ddfa7a028d513ac15a85c8d54c8d67f55fa5a4802885dc652056')
+source=(https://github.com/libffi/libffi/releases/download/v$pkgver/libffi-$pkgver.tar.gz)
+sha256sums=('540fb721619a6aba3bdeef7d940d8e9e0e6d2c193595bc243241b77ff9e93620')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
