@@ -1,7 +1,7 @@
 pkgbase = openmsx
 	pkgdesc = The MSX emulator that aims for perfection.
 	pkgver = 17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openmsx.org/
 	install = openmsx.install
 	arch = i686
@@ -18,9 +18,6 @@ pkgbase = openmsx
 	optdepends = jack-audio-connection-kit
 	optdepends = glew
 	optdepends = libgl
-	optdepends = catalyst-utils
-	optdepends = nvidia-utils
-	optdepends = nvidia-304xx-utils
 	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_17_0/openmsx-17.0.tar.gz
 	md5sums = 3e03d3298d91d00bab77045c039d77f3
 

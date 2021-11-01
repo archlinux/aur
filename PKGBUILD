@@ -1,13 +1,13 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=openmsx
 pkgver=17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org/"
 license=('custom')
 depends=('libxml2' 'sdl' 'sdl_image' 'sdl2_ttf' 'tcl' 'libpng' 'zlib')
-optdepends=('python' 'jack-audio-connection-kit' 'glew' 'libgl' 'catalyst-utils' 'nvidia-utils' 'nvidia-304xx-utils')
+optdepends=('python' 'jack-audio-connection-kit' 'glew' 'libgl')
 install=${pkgname}.install
 source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
 
