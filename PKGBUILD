@@ -1,5 +1,5 @@
-# Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
+# Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: yurikoles <root@yurikoles.com>
 # Contributor: bearoso <bearoso@gmail.com>
 # Contributor: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
@@ -16,14 +16,16 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=14.0.0_r396592.7313a6d87c04
+pkgver=14.0.0_r403386.87a294d5eb5a
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx' 'python-sphinx-automodapi' 'lldb'
-                            'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
-                            'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua' 'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp')
+makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx'
+             'python-sphinx-automodapi' 'lldb' 'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
+             'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua53'
+             'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp')
+checkdepends=("python-psutil")
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
         "llvm-config.h")
 
@@ -92,7 +94,6 @@ build() {
 }
 
 check() {
-
     ninja -C _build $NINJAFLAGS check-llvm
     ninja -C _build $NINJAFLAGS check-clang
     ninja -C _build $NINJAFLAGS check-clang-tools
@@ -105,15 +106,14 @@ package_llvm-git() {
     pkgdesc="LLVM development version. includes clang and many other tools"
     depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl')
     optdepends=('python: for scripts'
-                           'python-setuptools: for using lit = LLVM Integrated Tester'
+                'python-setuptools: for using lit = LLVM Integrated Tester'
     )
     provides=(aur-llvm-git compiler-rt-git clang-git lldb-git lld-git polly-git
-                        llvm compiler-rt clang lldb polly lld )
+              llvm compiler-rt clang lldb polly lld )
     # A package always provides itself, so there's no need to provide llvm-git
     conflicts=('llvm' 'compiler-rt' 'clang' 'lldb' 'polly' 'lld')
     
-   DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
-
+    DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
 
     # Include lit for running lit-based tests in other projects
     pushd llvm-project/llvm/utils/lit
@@ -135,7 +135,6 @@ package_llvm-git() {
     rm -rf "$srcdir"/ocaml.{lib,doc}
     mv "$pkgdir"/usr/lib/ocaml "$srcdir"/ocaml.lib
     mv "$pkgdir"/usr/share/doc/llvm/ocaml-html "$srcdir"/ocaml.doc
-
     
     if [[ $CARCH == x86_64 ]]; then
         # Needed for multilib (https://bugs.archlinux.org/task/29951)
@@ -165,7 +164,7 @@ package_llvm-git() {
 
 package_llvm-libs-git() {
     pkgdesc="runtime libraries for llvm-git"
-    depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2' 'z3' 'lua')
+    depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2' 'z3' 'lua53')
     provides=(aur-llvm-libs-git llvm-libs)
     conflicts=('llvm-libs')
 
