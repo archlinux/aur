@@ -2,17 +2,22 @@
 # Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=qtcam-git
-pkgver=r145.51ddb5d
+pkgver=r190.d989fea
 pkgrel=1
 pkgdesc='A free, Open Source Linux Webcamera Software with more than 10 image control settings - alexzk1 fork'
 arch=('i686' 'x86_64')
 url='http://www.e-consystems.com/opensource-linux-webcam-software-application.asp'
 license=('GPL')
-depends=('qt5-declarative' 'ffmpeg' 'libusb')
-makedepends=('git')
+depends=('qt5-declarative' 'qt5-multimedia' 'ffmpeg' 'libusb')
+makedepends=('git' 'dpkg' 'lsb-release')
 source=('git://github.com/econsysqtcam/qtcam.git')
 sha256sums=('SKIP')
 _gitname='qtcam'
+
+prepare() {
+  cd "${srcdir}/${_gitname}/src"
+  sed -i 's|target.path = /usr/|target.path = /usr/share/|' qtcam.pro
+}
 
 pkgver() {
   cd "${_gitname}"
@@ -26,10 +31,9 @@ build() {
 }
 package() {
   cd "${srcdir}/${_gitname}/src"
-  #make INSTALL_ROOT="${pkgdir}" install
-  install -Dm644 "${srcdir}/${_gitname}/arch_linux/qtcam.desktop" "${pkgdir}/usr/share/applications/qtcam.desktop"
-  install -Dm644 "${srcdir}/${_gitname}/src/qml/qtcam/icon/images/icon.jpg" "${pkgdir}/usr/share/pixmaps/qtcam.jpg"
-	install -Dm755 "${srcdir}/${_gitname}/src/qtcam" "${pkgdir}/usr/bin/qtcam"
+  make INSTALL_ROOT="${pkgdir}" install
+  rm "${pkgdir}/usr/share/Qtcam"
+  install -Dm755 "${srcdir}/${_gitname}/src/Qtcam" "${pkgdir}/usr/bin/Qtcam"
 }
 
 # vim: set ts=2 sw=2 ft=sh noet:
