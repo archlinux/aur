@@ -2,7 +2,7 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=dprint
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc='Pluggable and configurable code formatting platform'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'bzip2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dprint/dprint/archive/$pkgver.tar.gz")
-sha512sums=('884ccd1783be999845b2c527353b0d734beccbfe051122e594e7b3430c0cc145a20e51c24644b6f3cc1f0ed931013e1c4956082849722ca3fa92b4817be7c156')
+sha256sums=('162dade20c396ba33f5d3530daf8d2d3cb62916481cc69e40e5f60534508ba46')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -25,13 +25,6 @@ build() {
 	cd "$pkgname-$pkgver"
 	cargo build --release --frozen --all-features
 }
-
-# check() {
-# 	export RUST_TOOLCHAIN=stable
-#
-# 	cd "$pkgname-$pkgver"
-# 	cargo test --frozen --all-features
-# }
 
 package() {
 	cd "$pkgname-$pkgver"
