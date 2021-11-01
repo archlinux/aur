@@ -4,7 +4,7 @@
 pkgname=nginx-h5bp-server-configs
 _pkgname=server-configs-nginx
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nginx HTTP server boilerplate configs"
 arch=('any')
 url="https://github.com/h5bp/server-configs-nginx"
@@ -13,7 +13,7 @@ depends=('nginx')
 provides=("$pkgname")
 install='.install'
 source=("https://github.com/h5bp/$_pkgname/archive/$pkgver.tar.gz")
-b2sums=('02828ee494334cdeca3775e0e27ebc4b7cecd678b1a1735183319a934d985e6c1256adcbdbe24a7baa00f9d71bf85038f095fe890eb2edf6a7f059746454e902')
+b2sums=('56454426a175c680ecbaa768d91de399f77dd7297f3bdbdcff192158315e5563311f5b1df271783712e846e7513ee9e1686fd29dae4d8454a08313f361485674')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
