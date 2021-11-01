@@ -1,12 +1,13 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 # Contributor: Chris Brendel <cdbrendel@gmail.com>
 
-pkgname=python-blis
-pkgver=0.7.4
+_pkgname=blis
+pkgname=python-${_pkgname}
+pkgver=0.7.5
 pkgrel=1
-pkgdesc="Fast matrix-multiplication as a self-contained Python library"
-arch=(i686 x86_64 armv7h aarch64)
-url="https://github.com/explosion/cython-blis"
+pkgdesc='Fast matrix-multiplication as a self-contained Python library'
+arch=(x86_64 aarch64)
+url='https://github.com/explosion/cython-blis'
 license=(MIT)
 depends=(
 	cython
@@ -15,8 +16,8 @@ depends=(
 	python-hypothesis
 )
 makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/b1/54/b0de9905ee80aebd64c333bc112cacfe06849a9b5a7230a02dfde73e7aad/blis-0.7.4.tar.gz")
-sha256sums=('7daa615a97d4f28db0f332b710bfe1900b15d0c25841c6d727965e4fd91e09cf')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('833e01e9eaff4c01aa6e049bbc1e6acb9eca6ee513d7b35b5bf135d49705ad33')
 
 build() {
 	cd "blis-${pkgver}"
