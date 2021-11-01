@@ -2,7 +2,7 @@
 # Contributor: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=sourcegraph-cli
-pkgver=3.33.4
+pkgver=3.33.5
 pkgrel=1
 pkgdesc="A command line interface to Sourcegraph"
 url="https://github.com/sourcegraph/src-cli"
@@ -13,7 +13,7 @@ makedepends=('go')
 checkdepends=('git')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0827872b862184f19e2d4948d80d36c5327f44fdf6e7d41d7614c0a4422b0be4')
+sha256sums=('e7811e874f3b48a003054a2ee6a1fde67ba394be110e21a63d45bd4ac7ef90ef')
 
 prepare() {
 	cd "src-cli-$pkgver"
