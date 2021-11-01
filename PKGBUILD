@@ -4,22 +4,22 @@
 
 pkgname=odin-git
 _pkgname=odin
-pkgver=r4802.3337d386
+pkgver=r4965.0bc3652f
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=(x86_64)
 url="https://github.com/odin-lang/odin"
 license=(BSD)
 depends=(glibc ncurses)
-makedepends=(git clang+llvm-binaries)
+makedepends=(git clang llvm lld)
 provides=(odin)
 conflicts=(odin)
 
 source=("git+https://github.com/odin-lang/odin.git"
-        "0001-use-clang-llvm11-binaries-package-to-build-odin.patch")
+	"0001-update-odin-to-use-llvm-12.patch")
 
 sha256sums=("SKIP"
-            "3aebc01fa0852ca9d14364558d6461b6211d7729010f2858ee591e240599a2fd")
+	    "950663559a9677db912babbc7372b16d41ba03d64d3ea0f39544680fce8a0a25")
 
 pkgver() {
     cd "${_pkgname}"
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    patch --forward --strip=1 --input="${srcdir}/0001-use-clang-llvm11-binaries-package-to-build-odin.patch"
+    patch --forward --strip=1 --input="${srcdir}/0001-update-odin-to-use-llvm-12.patch"
     make release
 }
 
