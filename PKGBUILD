@@ -2,7 +2,7 @@
 
 pkgname='nsxiv-git'
 _pkgname=nsxiv
-pkgver=27.1.r825.d0b5005
+pkgver=27.1.r43.gd8a4d71
 pkgrel=1
 pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer (GIT VERSION)'
 arch=('x86_64')
@@ -15,13 +15,13 @@ source=("${_pkgname}::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  printf "27.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 prepare() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   ln -s config.def.h config.h
 }
 
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install-all
 }
