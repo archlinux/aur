@@ -1,26 +1,24 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 pkgname=av1an
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('x86_64')
 url='https://github.com/master-of-zen/Av1an'
 license=('GPL3')
-makedepends=('cargo' 'nasm')
+makedepends=('cargo' 'nasm' 'clang')
 depends=('ffmpeg' 'aom' 'vapoursynth')
 optdepends=('svt-av1: SVT-AV1 encoder support'
             'rav1e: rav1e encoder support'
             'libvpx: vpx encoder support'
-            'svt-vp9: SVT-VP9 encoder support'
             'vmaf: VMAF calculation support'
             'mkvtoolnix-cli: mkvmerge support'
             'ffms2'
             'vapoursynth-plugin-lsmashsource')
-provides=('python-av1an')
 conflicts=('python-av1an')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('48b94bb6124015eff42f3f19f02c55b5371a5f50394cf690ef4fe76755289835')
+sha256sums=('988779c38626fdaa60a76ceb4156b95a26cb65696dc99a49a2b6cc1ba79755cd')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
