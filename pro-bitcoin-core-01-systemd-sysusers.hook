@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = pro-bitcoin-git
+
+[Action]
+Description = Adding bitcoin daemon user...
+Depends = systemd
+When = PostTransaction
+Exec = /usr/bin/systemd-sysusers /usr/lib/sysusers.d/pro-bitcoin.conf

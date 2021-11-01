@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = pro-bitcoin-git
+
+[Action]
+Description = Setting bitcoin daemon user directory permissions...
+Depends = coreutils
+When = PostTransaction
+Exec = /usr/bin/chown -R bitcoin:bitcoin /etc/bitcoin /var/lib/bitcoind
