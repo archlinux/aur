@@ -18,10 +18,12 @@ conflicts=($_arch-gcc)
 options=(!emptydirs !strip staticlibs)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
         #https://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
-        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
+        "https://libisl.sourceforge.io/isl-${_islver}.tar.xz"
+)
+
 sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
             'SKIP'
-            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0')
+            '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad')
 
 validpgpkeys=('F3691687D867B81B51CE07D9BBE43771487328A9'  # bpiotrowski@archlinux.org
               '86CFFCA918CF3AF47147588051E8B148A9999C34'  # evangelos@foutrelis.com
