@@ -1,16 +1,17 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Nikola Pavlica <pavlica.nikola@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
-pkgname=openssh-git
-pkgver=7.9.P1.r242.gf5abb05f
+pkgname=openssh-xdg-git
+pkgver=8.8.P1.r64.g0328a081
 pkgrel=1
-pkgdesc='Free version of the SSH connectivity tools'
+pkgdesc='Free version of the SSH connectivity tools (with XDG support)'
 url='http://www.openssh.org/portable.html'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
-makedepends=('git' 'linux-headers')
+makedepends=('git')
 depends=('krb5' 'openssl' 'libedit' 'ldns')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
@@ -47,6 +48,13 @@ pkgver() {
 			"$(git rev-list --count master)" \
 			"$(git rev-parse --short HEAD)"
 	fi
+}
+
+prepare() {
+	cd openssh/
+	echo -n "\"Patching\"..."
+	grep -rl "\.ssh" * | xargs sed -i 's/\.ssh/.config\/ssh/g'
+	echo "done"
 }
 
 build() {

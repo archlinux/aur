@@ -1,5 +1,5 @@
-pkgbase = openssh-git
-	pkgdesc = Free version of the SSH connectivity tools
+pkgbase = openssh-xdg-git
+	pkgdesc = Free version of the SSH connectivity tools (with XDG support)
 	pkgver = 7.9.P1.r242.gf5abb05f
 	pkgrel = 1
 	url = http://www.openssh.org/portable.html
@@ -7,7 +7,6 @@ pkgbase = openssh-git
 	arch = x86_64
 	license = custom:BSD
 	makedepends = git
-	makedepends = linux-headers
 	depends = krb5
 	depends = openssl
 	depends = libedit
@@ -34,5 +33,5 @@ pkgbase = openssh-git
 	sha256sums = 4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6
 	sha256sums = 64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846
 
-pkgname = openssh-git
+pkgname = openssh-xdg-git
 
