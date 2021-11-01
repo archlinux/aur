@@ -8,7 +8,7 @@
 
 pkgbase=qt5-base-git
 pkgname=(qt5-base-git qt5-xcb-private-headers-git)
-pkgver=5.15.2+kde_r43967.gd2bd04d9fe
+pkgver=5.15.2+kde_r43999.gc9fde86b0a
 pkgrel=1
 arch=($CARCH)
 url='https://www.qt.io'
@@ -37,8 +37,9 @@ sha256sums=('SKIP'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 pkgver() {
-  cd qtbase
-  echo "5.15.2+kde_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  cd qtbase/dist
+  _ver="$(ls | sort -V | tail -1 | sed 's/changes-//')"
+  echo "$_ver+kde_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -77,7 +78,7 @@ build() {
 package_qt5-base-git() {
   pkgdesc='A cross-platform application and UI framework'
   conflicts=(qt5-base)
-  provides=(qt5-base)
+  provides=(qt5-base=$pkgver)
 
   cd qtbase
   make INSTALL_ROOT="${pkgdir}" install
@@ -103,7 +104,7 @@ package_qt5-xcb-private-headers-git() {
 
   depends=("qt5-base-git=$pkgver")
   conflicts=(qt5-xcb-private-headers)
-  provides=(qt5-xcb-private-headers)
+  provides=(qt5-xcb-private-headers=$pkgver)
 
   cd qtbase
   install -d -m755 "$pkgdir"/usr/include/qtxcb-private
