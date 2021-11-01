@@ -2,8 +2,8 @@
 # Maintainer: Grey Christoforo <firstname@lastname.net>
 #
 pkgname=linux-wsl
-_tag=4.19.128-microsoft-standard 
-pkgver=${_tag%%-*}
+_tag=linux-msft-wsl-5.10.60.1
+pkgver=5.10.60.1
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/microsoft/WSL2-Linux-Kernel"
@@ -16,12 +16,16 @@ makedepends=(
 options=('!strip')
 
 source=(https://github.com/microsoft/WSL2-Linux-Kernel/archive/${_tag}.tar.gz)
-md5sums=('8bd41217336b726dac99e2320b35ef73')
+sha256sums=('64d6db83e0903cb42e459c1a6c26424605a1998c2fcd6a51fe8298cf8bdca762')
 
 _src_prefix="WSL2-Linux-Kernel-"
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=grey
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+
+pkgver() {
+  printf "%s" "${_tag##*-}"
+}
 
 prepare() {
   cd "${_src_prefix}${_tag}"
