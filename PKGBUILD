@@ -2,7 +2,7 @@
 
 pkgname='windterm-bin'
 pkgver='2.1.0'
-pkgrel='2.1'
+pkgrel=1
 pkgdesc='A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.'
 arch=('x86_64')
 depends=()
@@ -25,10 +25,10 @@ package (){
 	mkdir --parent "${pkgdir}"/usr/bin
 	mv "${srcdir}"/* "${pkgdir}"/opt
 	mv "${pkgdir}"/opt/WindTerm_2.1.0 "${pkgdir}"/opt/WindTerm
+	chmod -R 0775 "${pkgdir}"/opt/WindTerm
 	mv "${pkgdir}"/opt/windterm.png "${pkgdir}"/usr/share/icons
 	mv "${pkgdir}"/opt/windterm "${pkgdir}"/usr/bin
 	mv "${pkgdir}"/opt/windterm.desktop "${pkgdir}"/usr/share/applications
-	chmod -R 0700 "${pkgdir}"/opt/WindTerm/lib
 	chmod +x "${pkgdir}"/opt/WindTerm/WindTerm
 	chmod +x "${pkgdir}"/usr/bin/windterm
 }
