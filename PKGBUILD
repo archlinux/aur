@@ -1,4 +1,4 @@
-# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='gnunet-fuse-git'
 _appname='gnunet-fuse'
@@ -10,9 +10,9 @@ url='https://gnunet.org/'
 license=('GPL')
 provides=("${_appname}")
 conflicts=("${_appname}" "${_appname}-bin")
-depends=('gnunet' 'fuse2')
+depends=('gnunet' 'fuse2' 'libextractor')
 makedepends=('autoconf')
-source=("git+https://gnunet.org/git/${_appname}.git")
+source=("git+https://git.gnunet.org/git/${_appname}.git")
 
 md5sums=('SKIP')
 

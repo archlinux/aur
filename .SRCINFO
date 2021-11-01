@@ -8,10 +8,11 @@ pkgbase = gnunet-fuse-git
 	makedepends = autoconf
 	depends = gnunet
 	depends = fuse2
+	depends = libextractor
 	provides = gnunet-fuse
 	conflicts = gnunet-fuse
 	conflicts = gnunet-fuse-bin
-	source = git+https://gnunet.org/git/gnunet-fuse.git
+	source = git+https://git.gnunet.org/git/gnunet-fuse.git
 	md5sums = SKIP
 
 pkgname = gnunet-fuse-git
