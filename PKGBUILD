@@ -1,12 +1,12 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15stats-openrc
-pkgver=20210613
+pkgver=20211101
 pkgrel=1
 pkgdesc="g15stats init script for OpenRC"
 arch=('any')
 url="https://gitlab.com/menelkir/g15stats"
 license=('GPL2')
-depends=('g15stats' 'openrc')
+depends=('g15stats' 'g15daemon-openrc')
 _filename=('g15stats.initd' 'g15stats.confd')
 source=("https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.initd" 
         "https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.confd")
