@@ -5,12 +5,12 @@
 
 pkgname=fontmatrix
 pkgver=0.9.100
-pkgrel=1
+pkgrel=2
 pkgdesc="Font manager for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL')
-depends=('qtwebkit')
+depends=('qt5-webkit')
 makedepends=('cmake' 'mesa') 
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('241021e24b0e2cdbc4bdf516d41ddfd23675a5a098bdaa0f7564d866cd292659')
