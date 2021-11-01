@@ -1,16 +1,16 @@
 pkgbase = python-cyaron
-	pkgdesc = CYaRon: Yet Another Random Olympic-iNformatics test data generator, A library for automatically generating test data for Online Judge, Olympic Informatics or automatic application testing. The copyright belongs to Luogu
-	pkgver = 0.4.2
+	pkgdesc = Random Olympic-informatics test data generator
+	pkgver = 0.4.3
 	pkgrel = 1
-	url = https://www.luogu.org/
+	url = https://github.com/luogu-dev/cyaron
 	arch = any
-	license = LGPLv3
+	license = LGPL3
 	makedepends = python-setuptools
-	depends = python
+	makedepends = git
 	depends = python-colorful
 	depends = python-xeger
-	source = https://files.pythonhosted.org/packages/source/c/cyaron/cyaron-0.4.2.tar.gz
-	md5sums = b04af533e39ffb0232dc6fa9fb2a3250
+	source = python-cyaron::git+https://github.com/luogu-dev/cyaron#commit=825f2ff?signed
+	validpgpkeys = 517E4E3C364C6C55C907284915AC252CE20E3FC8
+	sha256sums = SKIP
 
 pkgname = python-cyaron
-
