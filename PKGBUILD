@@ -2,7 +2,7 @@
 
 pkgname=touplite
 pkgver=2.1.19728.20211022
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of the ToupTek Photonics's PC software ToupLite for Linux"
 arch=('i686' 'x86_64')
 url="http://touptek.com/download/showdownload.php?lang=en&id=28"
@@ -21,17 +21,17 @@ prepare() {
 }
 
 package() {
-  install -Dm755 touplite "${pkgdir}/usr/local/ToupLite/touplite"
+  install -Dm755 ToupLite -t "${pkgdir}/usr/local/ToupLite/"
   install -Dm644 libtoupcam.so libtoupnam.so -t "${pkgdir}/usr/local/ToupLite"
 
   install -dm755 "${pkgdir}/usr/bin/"
-  ln -s "/usr/local/ToupLite/touplite" "${pkgdir}/usr/bin/touplite"
+  ln -s "/usr/local/ToupLite/ToupLite" "${pkgdir}/usr/bin/ToupLite"
 
   install -Dm644 i18n/*.xml -t "${pkgdir}/usr/local/ToupLite/i18n/"
-  install -Dm644 touplite.png -t "${pkgdir}/usr/local/ToupLite/"
+  install -Dm644 ToupLite.png -t "${pkgdir}/usr/local/ToupLite/"
   install -Dm644 99-toupcam.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
 
-  install -Dm755 touplite.desktop -t "${pkgdir}/usr/share/applications"
+  install -Dm755 ToupLite.desktop -t "${pkgdir}/usr/share/applications/"
 }
 
 # vim:set ts=2 sw=2 et:
