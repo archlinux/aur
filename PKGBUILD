@@ -25,7 +25,7 @@ package (){
 	mkdir --parent "${pkgdir}"/usr/bin
 	mv "${srcdir}"/* "${pkgdir}"/opt
 	mv "${pkgdir}"/opt/WindTerm_2.1.0 "${pkgdir}"/opt/WindTerm
-	chmod -R 0755 "${pkgdir}"/opt/WindTerm
+	chmod -R 0644 "${pkgdir}"/opt/WindTerm
 	mv "${pkgdir}"/opt/windterm.png "${pkgdir}"/usr/share/icons
 	mv "${pkgdir}"/opt/windterm "${pkgdir}"/usr/bin
 	mv "${pkgdir}"/opt/windterm.desktop "${pkgdir}"/usr/share/applications
