@@ -7,7 +7,7 @@ _srcname=linux-5.14
 _major=5.14
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=7
+_minor=15
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,27 +30,27 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0003-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch
-  0004-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch
-  0005-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch
-  0006-ALSA-pci-rme-Set-up-buffer-type-properly.patch
-  0007-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch
+  0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch
+  0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch
+  0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch
+  0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch
+  0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('a788bd30b0c2986c841aa3455c11c749c568584ef7b71da4273266aa3580ff479333219f79373ff3b6ea855cba5d055f4338f3004c57328a0d7ee9fcdd13c00b'
+b2sums=('d1733ed5d9703c3ee38e28be9c77f12d622063cf520a46d89a11210ab58813a9c47459f209ea12b47dc06afc423f6b79280e57026174ca9081e8221af9d27e38'
         'SKIP'
-        '861405cd1333958cb829017b6c1d6692a7256d179a48fad751bb02cd02ba09227ff210d9252c592a99d3820c1fbdcc3a6e133cbed31fdecb68ba9cf27dfc8f78'
+        '68d89bba3c35062e4ba93b4304d238541ced462d839ca4f49641f457f542d27fd11ae4ffe9f5474a5701a26b89858b16c7e667823dddd6945180acc2ef44070d'
         'SKIP'
-        'a0f4869294fe26b51f88171b235377df3ab8ad7f93824933f98e7706057419bb9cf2adf31422c0fc654dd07376e375545bc06bd1148666bb638f6640ec281e7b'
-        'f16dd5c1ee0147a9a613fd48ffc3767573c380fdd8d7b936e0ba6ee94a53a7461360db9b3b317e995dea890622637067d332778c0042fea906c6c403f3d8a635'
-        'aa66e8b19dac7109a2dca121de8cee3b25332b1dc71b810b7133f3576af9844999034bb3c0a69fa701085a76c158cbe69f82d81965b0b0027029a46100c76bd0'
-        'ce6572e8c83d9c5ae7c7fe7d00663fa7719721d0567dc65f232c51794e5c73ca2c579b29a0171832bfdc8d5e92b4dc4f8fd11eec684e127ea55dcc6e94ce70d1'
-        'e32c9166d453f462da2270a9219b5c87fef552d67f5ce6adee22b68425ce82436b5c443c8464c3c7d6a20673ba2e8e80851bb5c26812224f4d4622465cc3c81d'
-        '3aef2a0b7e2e99efda96f03215ec87ec312eeee9ae207a257c336d5995587f6105cbc1687612b0f869d6a43fefce11598568a2b99a2f1de4d5480c30ec9401b0'
-        'ea2af5b7c3e581bfb93175d19e4e9a6ce810b4e1c2d058be683dfbedd19a329441384c26ffd6e38206007ca840f97e552da38d7f36c6fb6b05e5727fb57a873e')
+        'b1a9e77f94c03553d10714e6059f47603c9957f4be64082dd0b773d325498b85c26480407ae62bdef462d9002ab7da3c1fad426b4908d7de79b69fd6e4a7ff31'
+        'e9fed73ec3ca302f0d2d7e6eeecad79d3766a12cdc80a876cc434be4a2b0cd44c756d7bd7ad0a1796c70ab56dfcf41d8fc4ccd1534c4dd654ebb94660a381773'
+        '4249939a946f2ca43968053c4c271ce309ccb081ef6af3a413c9cc885bf7eb58675dd25ebc19903308a9389ddfb6bea574a276133724a545fed18984751f5d2d'
+        'c8cf9f5fd5edc385d4792be877624e415c45a272be29d0c43973e5e93b3255bf2a37f5c849635b9519fc95f552e37027018cde90ab806e97bd73f84172b4a5de'
+        'fcad8dd140637160baf8ef0223af1911423efbf27408dc64c2eeed88e262efda44f44a6b26cd18108bbb5bb83a641d403086b66af0d12c3cfd12ace2d61ae2ba'
+        'c316eb356292fd317fc9b5f2f49001a4d32606749e262622468c04afc7797a024aed77492c60619cdfc94949e9ec3f33637e02bdad37ea7849dac96fc3a00de6'
+        '94407bd5eee22bd52bbbff9476deec9951f9195ccf527c5f0f7d9079d230c6bb64d2e352df529001acb47fe8e49dd83216a6f1275bfd6c0058609cfdec498042')
 
 
 export KBUILD_BUILD_HOST=archlinux

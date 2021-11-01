@@ -1,7 +1,7 @@
-From f52321ae9ac4ec6eab46da100a5e39dd99e83fed Mon Sep 17 00:00:00 2001
+From df918cd13d4325028449d0ca9a4d564e05aa8869 Mon Sep 17 00:00:00 2001
 From: Takashi Iwai <tiwai@suse.de>
 Date: Mon, 9 Aug 2021 09:18:28 +0200
-Subject: [PATCH 6/8] ALSA: pci: rme: Set up buffer type properly
+Subject: [PATCH 5/7] ALSA: pci: rme: Set up buffer type properly
 
 Although the regression of the mmap was fixed in the recent commit
 dc0dc8a73e8e ("ALSA: pcm: Fix mmap breakage without explicit buffer
@@ -71,5 +71,5 @@ index f1aad38760d6..9ad2533925c4 100644
  	if (rme9652->playback_substream == NULL) {
  		rme9652_stop(rme9652);
 -- 
-2.33.0
+2.33.1
 

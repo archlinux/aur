@@ -1,7 +1,7 @@
-From fc1f203e5351121808892c76ff67b9ca3fbef8ef Mon Sep 17 00:00:00 2001
+From fe9651f56fd67182f3ca0da1cfdd1953edb3c3f0 Mon Sep 17 00:00:00 2001
 From: Wai Paulo Valerio Wang <waicool20@gmail.com>
 Date: Thu, 8 Jul 2021 04:00:59 +0800
-Subject: [PATCH 3/8] Bluetooth: btusb: Add support for IMC Networks Mediatek
+Subject: [PATCH 2/7] Bluetooth: btusb: Add support for IMC Networks Mediatek
  Chip
 
 This add supports for IMC Networks Wireless_Device Media Chip
@@ -75,5 +75,5 @@ index bd37d6fb88c2..e13a510e1698 100644
  	/* Additional Realtek 8723AE Bluetooth devices */
  	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
 -- 
-2.33.0
+2.33.1
 

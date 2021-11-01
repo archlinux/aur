@@ -1,7 +1,7 @@
-From 41fb214922237c05e592a1e515f74cafb516a2d8 Mon Sep 17 00:00:00 2001
+From 11a5f44ff585e8501111693a63522bb38af585f7 Mon Sep 17 00:00:00 2001
 From: Takashi Iwai <tiwai@suse.de>
 Date: Mon, 9 Aug 2021 09:18:29 +0200
-Subject: [PATCH 7/8] ALSA: pci: cs46xx: Fix set up buffer type properly
+Subject: [PATCH 6/7] ALSA: pci: cs46xx: Fix set up buffer type properly
 
 CS46xx driver switches the buffer depending on the number of periods,
 and in some cases it switches to the own buffer without updating the
@@ -91,5 +91,5 @@ index 1e1eb17f8e07..d43927dcd61e 100644
  	return 0;
  }
 -- 
-2.33.0
+2.33.1
 
