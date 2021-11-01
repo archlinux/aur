@@ -1,5 +1,5 @@
---- ArchiSteamFarm@.service	2021-10-02 09:33:14.377920543 +0200
-+++ ArchiSteamFarm@.service	2021-10-02 09:43:34.302219120 +0200
+--- ArchiSteamFarm@.service.org	2021-11-01 14:32:25.829188085 +0100
++++ ArchiSteamFarm@.service.new	2021-11-01 14:55:24.165098767 +0100
 @@ -3,7 +3,7 @@
  
  [Service]
@@ -9,12 +9,12 @@
  Restart=on-success
  RestartSec=5s
  SyslogIdentifier=asf-%i
-@@ -22,7 +22,7 @@
- ProtectKernelModules=yes
+@@ -24,7 +24,7 @@
  ProtectKernelTunables=yes
- ProtectSystem=full
--ReadWritePaths=/home/%i/ArchiSteamFarm /tmp/ASF
-+ReadWritePaths=%h /tmp/ASF
+ ProtectProc=invisible
+ ProtectSystem=strict
+-ReadWritePaths=/home/%i/ArchiSteamFarm /tmp
++ReadWritePaths=%h /tmp
  RemoveIPC=yes
  RestrictAddressFamilies=AF_INET AF_INET6
  RestrictNamespaces=yes

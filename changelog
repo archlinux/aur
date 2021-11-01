@@ -1,3 +1,15 @@
+2021-11-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.1.5.2-1:
+    Added ASF API endpoints for importing and removing ASF 2FA authenticators (@Abrynos #2426).
+    Added IPC localization through request headers (@Abrynos #2431 #2435).
+    Corrected several aspects of our ArchiSteamFarm@.service file for systemd in regards to initial feedback. We're also happy to say that it's now ready for general usage, see management section for details (@JustArchi).
+    ASF will now print a warning if you attempt to run it as an administrator (root). This warning will be corrected to an error in the next B cycle (likely .NET 6.0). See never run as administrator! (@JustArchi).
+    We've changed declaration of our docker services to utilize a non-root user for ASF process, rebuilding your containers isn't necessary right away, but will be in the future when we refuse to run as root (@JustArchi).
+    Improved !addlicense command which can now reflect a bit better the real result of the license activation attempt (@JustArchi @xPaw).
+    ASF will now print additional warnings upon detecting weak/insecure environment due to used passwords and/or crypt keys (@Abrynos #2419).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2021-10-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.1.4.0-2:
     pkg: create /tmp/ASF on bootup since asf expects this folder to exists (Failed to set up mount namespacing)
