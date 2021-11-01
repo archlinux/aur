@@ -1,0 +1,6 @@
+#!/bin/bash -e
+export XDG_RUNTIME_DIR=/opt/WindTerm/lib
+export RUNLEVEL=3
+cd /opt/WindTerm
+./WindTerm &
+
