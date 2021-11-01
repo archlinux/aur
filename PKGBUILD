@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=esbuild
-pkgver=0.13.6
+pkgver=0.13.12
 pkgrel=1
 pkgdesc="An extremely fast JavaScript/TypeScript bundler and minifier"
 arch=(any)
@@ -22,4 +22,4 @@ package() {
   find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
-sha256sums=('b68bc9e272090c4511e7a88c30f89f3a4ce7ebb604b5923e28ea403484c1f83c')
+sha256sums=('5f131af1aad00544fc1b2daec87fd2cad6752ef2d5d32d8079f573a68abccdb7')
