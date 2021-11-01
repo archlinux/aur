@@ -12,13 +12,13 @@ _microarchitecture=98
 ## --- PKGBUILD
 
 ## Major kernel version
-_major=5.14
+_major=5.15
 ## Minor kernel version
-_minor=15
+_minor=0
 
 pkgbase=linux-multimedia
-#pkgver=${_major}
-pkgver=${_major}.${_minor}
+pkgver=${_major}
+#pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
@@ -42,11 +42,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('74f39a0c69e9d7c94d290515645396725e3ce3667b85baf4b3c3f6f303c7a406'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
+sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+			'SKIP'
+			'SKIP'
+			'SKIP'
+			'1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -73,12 +73,12 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs-additions.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex2_interface.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
+  #patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex2_interface.patch
+  #patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
   
   msg2 "Apply GCC Optimization Patch..."
-  patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.8-5.14.patch
+  patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.15+.patch
 
   ### Setting config
   echo "Setting config..."
@@ -89,10 +89,6 @@ prepare() {
   
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
-
-  # (x86 kernels do not support NUMA)
-  msg2 "Disabling NUMA from kernel config..."
-  scripts/config --disable CONFIG_NUMA
 
   ### Set performance as default governor
   msg2 "Setting performance governor..."
@@ -130,11 +126,6 @@ prepare() {
   scripts/config --disable CONFIG_NO_HZ
   scripts/config --enable CONFIG_NO_HZ_COMMON
   
-  ### Use -03 KBuild For Performance
-  msg2 "Enabling KBUILD_CFLAGS -O3..."
-  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-  
   ### Enable Pre-emptation
   msg2 "Enable PREEMPT..."
   scripts/config --disable CONFIG_PREEMPT_NONE
@@ -143,16 +134,6 @@ prepare() {
   scripts/config --enable CONFIG_PREEMPT_COUNT
   scripts/config --enable CONFIG_PREEMPTION
   scripts/config --enable CONFIG_PREEMPT_DYNAMIC
-  
-  ### Enable New NTFS3 Driver
-  msg2 "Enable NTFS3..."
-  scripts/config --enable CONFIG_NTFS_FS
-  scripts/config --enable CONFIG_NTFS_RW
-  scripts/config --enable CONFIG_NTFS_DEBUG
-  scripts/config --enable CONFIG_NTFS3_FS
-  scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
-  scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
-  scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
   
   ### Enable Anbox Andriod Emulation
   msg2 "Enable Anbox..."
