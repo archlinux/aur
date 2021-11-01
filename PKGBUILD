@@ -6,36 +6,46 @@
 pkgname=evince-no-gnome
 _pkgname=evince
 pkgver=40.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Document viewer, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dconf' 'gtk3' 'libgxps' 'libspectre' 'poppler-glib' 'djvulibre' 'gsettings-desktop-schemas' 'gspell' 'libarchive' 'gst-plugins-base-libs' 'libsynctex' 'libhandy')
-makedepends=('meson' 'ninja' 'itstool' 'texlive-bin' 'intltool' 'docbook-xsl' 'python' 'gtk-doc' 'appstream-glib')
+depends=('gtk3' 'libgxps' 'libspectre' 'gsfonts' 'poppler-glib' 'djvulibre' 't1lib' 'dconf' 'libsynctex' 'gsettings-desktop-schemas' 'libarchive' 'gst-plugins-base-libs' 'gspell' 'libhandy')
+makedepends=('texlive-bin' 'docbook-xsl' 'python' 'gtk-doc' 'git' 'meson' 'ninja' 'appstream-glib' yelp-tools)
 optdepends=('texlive-bin: DVI support'
-			'gvfs: for session saving and bookmarking')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" "evince-light")
+            'gvfs: for session saving and bookmarking')
+provides=("$_pkgname" libev{document,view}3.so)
+conflicts=("$_pkgname" libev{document,view}3.so)
 options=('!emptydirs')
-source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:2}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('33420500e0e060f178a435063197d42dae7b67e39cc437a96510a33ddf7e95fb')
+_commit=d5639b30081f8ded08aa6be64ca0d1954f8daa52  # tags/40.4^0
+source=("git+https://gitlab.gnome.org/GNOME/evince.git#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $_pkgname
+}
 
 build() {
-	arch-meson "$_pkgname-${pkgver}" build \
-		-D ps=enabled \
-		-D nautilus=false \
-		-D introspection=false \
-		-D browser-plugin=false \
-		-D thumbnail_cache=disabled \
-		-D keyring=disabled
-	meson compile -C build
+    arch-meson "$_pkgname" build \
+        -D ps=enabled \
+        -D nautilus=false \
+        -D introspection=false \
+        -D browser_plugin=false \
+        -D thumbnail_cache=disabled \
+        -D keyring=disabled
+    meson compile -C build
 }
 
 check() {
-	meson test -C build --print-errorlogs
+    meson test -C build --print-errorlogs
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+    meson install -C build --destdir "$pkgdir"
 }
