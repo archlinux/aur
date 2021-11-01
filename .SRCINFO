@@ -14,4 +14,3 @@ pkgbase = vim-context-git
 	md5sums = SKIP
 
 pkgname = vim-context-git
-

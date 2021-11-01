@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=vim-context-git
 pkgver=r320.e38496f
 pkgrel=1
@@ -15,14 +16,14 @@ source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$pkgname"
-  find autoload plugin \
-    -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
-  install -Dvm 644 MIT-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	cd "$pkgname"
+	find autoload plugin \
+		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+	install -Dm 644 MIT-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
