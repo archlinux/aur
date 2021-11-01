@@ -1,7 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=utools
-pkgver=2.4.3
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="uTools Utilities"
 arch=('x86_64')
