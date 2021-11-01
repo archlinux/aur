@@ -1,7 +1,7 @@
 # Maintainer: Philip Jones <philj56@gmail.com>
 pkgname=greetd-mini-wl-greeter-git
 pkgver=r14.3af1857
-pkgrel=1
+pkgrel=2
 pkgdesc="Extremely minimal Wayland greeter for greetd."
 arch=("x86_64")
 url="https://github.com/philj56/greetd-mini-wl-greeter"
