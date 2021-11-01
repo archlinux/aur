@@ -1,29 +1,23 @@
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 # Contributor: zarra <zarraxx@gmail.com>
 pkgname=py++
-pkgver=1.0.0
-pkgrel=3
-pkgdesc="Py++ package and Boost.Python library provide a complete solution for interfacing Python and C++"
+pkgver=1.8.4
+pkgrel=1
+pkgdesc="Py++ - Boost.Python code generator"
 arch=('i686' 'x86_64')
-url="http://www.language-binding.net/index.html"
-license=('custom')
-depends=('pygccxml' 'python2')
-options=(!strip)
-
-
-source=(http://jaist.dl.sourceforge.net/sourceforge/pygccxml/pyplusplus-${pkgver}.zip)
-
-md5sums=('4997f61fa27a432e36fa0142dc3dc06c')
-
+url="https://pyplusplus.readthedocs.io/en/latest/"
+license=('Boost Software License')
+depends=('python' 'python-pygccxml' 'castxml')
+source=("https://github.com/ompl/pyplusplus/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('10379d3b2c78612d9097a6533b4da5ad91f91377022bb6f6052549579b4991ee')
 
 build() {
-  cd "$srcdir/Py++-${pkgver}"
-
-  python2 setup.py build
+  cd "$srcdir/pyplusplus-${pkgver}"
+  python setup.py build
 }
 
 package() {
-  cd "$srcdir/Py++-${pkgver}"
-
-  python2 setup.py install --prefix=/usr --root=$pkgdir
+  cd "$srcdir/pyplusplus-${pkgver}"
+  python setup.py install --prefix=/usr --root=$pkgdir
 }
