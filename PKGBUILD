@@ -2,13 +2,13 @@
 
 pkgname=olive-git
 _pkgname=${pkgname%-*}
-pkgver=continuous.r1315.g251b4d537
+pkgver=continuous.r1409.gcf1bd65b1
 pkgrel=1
 arch=('pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-depends=('ffmpeg' 'openimageio' 'opentimelineio-git' 'portaudio' 'qt5-base')
+depends=('ffmpeg' 'openimageio' 'opentimelineio' 'portaudio' 'qt5-base')
 makedepends=('cmake' 'git' 'ninja' 'qt5-svg' 'qt5-tools')
 
 # Temporarily, the "olive-git" package is incompatible
@@ -28,10 +28,17 @@ pkgver() {
 }
 
 prepare() {
+  cd $_pkgname
+
+  # Fixes for OpenTimelineIO integration
+  sed -i "s/CXX_STANDARD 14/CXX_STANDARD 17/" CMakeLists.txt
+  sed -i "s/(es/(es.outcome/g" \
+          app/task/project/loadotio/loadotio.cpp
+  sed -i "s/(es/(es.outcome/g" \
+          app/task/project/saveotio/saveotio.cpp
+
   # Currently the build crashes in the "ffmpegdecoder.cpp" file (-Werror=stringop-overflow).
   # The build completes normally when this warning is disabled.
-
-  cd $_pkgname
   sed -i "/Wshadow/a \    -Wno-stringop-overflow" CMakeLists.txt
 }
 
@@ -40,7 +47,8 @@ build() {
   cmake -GNinja \
         -Bbuild \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DOTIO_DEPS_INCLUDE_DIR=/usr/include/opentimelineio
   ninja -C build/
 }
 
