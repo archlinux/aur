@@ -20,15 +20,15 @@ sha512sums=('ae4eb424560929fdf0c76d3be69531b6551a0786ec68f08a52fff9109881fc3ca71
             '91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa')
 
 prepare() {
-  export PREFIX=/usr
-  export NV_USE_BUNDLED_LIBJANSSON=0
-  export OUTPUTDIR=out
   cd ${_pkgbase}-${pkgver}
   patch -p0 < "${srcdir}/libxnvctrl_so.patch"
 }
 
 build() {
   cd ${_pkgbase}-${pkgver}
+  export PREFIX=/usr
+  export NV_USE_BUNDLED_LIBJANSSON=0
+  export OUTPUTDIR=out
   make
   make -C src/libXNVCtrl
 }
