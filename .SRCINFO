@@ -1,7 +1,7 @@
 pkgbase = cgmnlm
 	pkgdesc = colorful gemini line mode client - fork of gmni
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://src.clttr.info/rwa/cgmnlm
 	arch = x86_64
 	arch = armv7h
