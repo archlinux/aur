@@ -3,7 +3,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=crema-git
 _pkgname=crema
-pkgver=2.4.4
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories"
 arch=(
@@ -20,7 +20,7 @@ validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fs
 md5sums=(SKIP)
 depends=(
     binutils
-    pacman
+    "pacman>=6.0.0"
     rsync
     sudo
 )
