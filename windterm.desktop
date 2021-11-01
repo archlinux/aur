@@ -7,10 +7,9 @@ Type=Application
 Icon=windterm
 StartupNotify=false
 StartupWMClass=Code
-Categories=Connect;SSH;Client;
-MimeType=application/windterm;
-Actions=new-empty-window;
-Keywords=windterm;
+Categories=Application;Development
+Actions=new-empty-window
+Keywords=windterm
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
