@@ -11,7 +11,7 @@ url='https://www.thewavewarden.com/odin2'
 provides=('odin2')
 conflicts=('odin2-synthesizer-bin')
 
-depends=(ttf-font)
+depends=('man-pages' 'ttf-font')
 makedepends=('atk'
              'cairo'
              'doxygen'
