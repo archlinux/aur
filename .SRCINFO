@@ -1,16 +1,16 @@
-pkgbase = nanominer
-	pkgdesc = nanopool mining software
-	pkgver = 3.3.13
+pkgbase = nanominer-cuda
+	pkgdesc = nanopool mining software (cuda version)
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://github.com/nanopool/nanominer/releases
-	install = nanominer.install
+	install = nanominer-cuda.install
 	arch = any
 	license = custom:nanopool
 	depends = pciutils
 	depends = bash
-	source = https://github.com/nanopool/nanominer/releases/download/v3.3.13/nanominer-linux-3.3.13.tar.gz
+	source = https://github.com/nanopool/nanominer/releases/download/v3.4.1/nanominer-linux-3.4.1-cuda11.tar.gz
 	source = https://github.com/nanopool/nanominer/raw/master/Terms%20of%20Use%20Nanominer.pdf
-	sha256sums = 3679580439e68bffafb3caede3870759f0ee9e6d9f6b0e4be377dbbcbc7ac2b3
+	sha256sums = b038ab5fec9a05dc8c2cdcdf523b59f158545ca82d2cc458dbd63e2c3163c03e
 	sha256sums = SKIP
 
-pkgname = nanominer
+pkgname = nanominer-cuda

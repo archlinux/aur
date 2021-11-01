@@ -1,17 +1,19 @@
-# Maintainer: Edvin Alvarado <ealvarado301 g-mail>
-pkgname=nanominer
-pkgver=3.3.13
+# Maintainer: Security XIII <securityxiii at gmail dot com>
+pkgname=nanominer-cuda
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="nanopool mining software"
 arch=('any')
 depends=('pciutils' 'bash')
 license=('custom:nanopool')
-install=$pkgname.install
+conflicts=('nanominer')
+install=$pkgname-cuda.install
 url='https://github.com/nanopool/nanominer/releases'
-sha256sums=("3679580439e68bffafb3caede3870759f0ee9e6d9f6b0e4be377dbbcbc7ac2b3"
+sha256sums=("b038ab5fec9a05dc8c2cdcdf523b59f158545ca82d2cc458dbd63e2c3163c03e"
 			"SKIP")
 
 prepare() {
+        mv nanominer-linux-$pkgver-cuda11 nanominer-cuda-linux-3.4.1
 	cd $pkgname-linux-$pkgver
 	
 	# copies config files in config_examples
@@ -35,8 +37,8 @@ prepare() {
 	done
 }
 
-source=("https://github.com/nanopool/$pkgname/releases/download/v$pkgver/$pkgname-linux-$pkgver.tar.gz"
-		"https://github.com/nanopool/$pkgname/raw/master/Terms%20of%20Use%20Nanominer.pdf")
+source=("https://github.com/nanopool/nanominer/releases/download/v$pkgver/nanominer-linux-$pkgver-cuda11.tar.gz"
+		"https://github.com/nanopool/nanominer/raw/master/Terms%20of%20Use%20Nanominer.pdf")
 
 package() {
 
@@ -51,4 +53,3 @@ package() {
 	mkdir -p $pkgdir/opt/"$pkgname" 
 	cp -R "$pkgname-linux-$pkgver"/* $pkgdir/opt/"$pkgname" 
 }
-
