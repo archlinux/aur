@@ -1,22 +1,20 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-plugins-git
-pkgver=2020.06.r119.g15b8cac9
-_basis_pkgver=2f43afcc97d0a5dafdb73b4e24e123cf9687a418
+pkgver=2020.06.r378.g236c04a3
+_basis_pkgver=1_15_update2
 pkgrel=1
 pkgdesc="Plugins for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
 url="https://magnum.graphics"
 license=('MIT')
-depends=('magnum-git' 'devil' 'faad2' 'libpng' 'libjpeg' 'freetype2' 'assimp' 'meshoptimizer' 'spirv-tools' 'glslang')
+depends=('magnum-git' 'devil' 'faad2' 'libpng' 'libjpeg' 'freetype2' 'assimp' 'meshoptimizer' 'openexr' 'spirv-tools' 'glslang' 'zstd')
 makedepends=('cmake' 'git' 'ninja')
 provides=('magnum-plugins')
 conflicts=('magnum-plugins')
 source=("git+git://github.com/mosra/magnum-plugins.git"
-        # A commit that's before the UASTC support (which is not implemented
-        # yet, because latest versions crash even on trivial tests)
-        "https://github.com/BinomialLLC/basis_universal/archive/${_basis_pkgver}.tar.gz")
+        "https://github.com/BinomialLLC/basis_universal/archive/v${_basis_pkgver}.tar.gz")
 sha1sums=('SKIP'
-          'b8d3995292c2c0bbedea943250087b0a9a92ca96')
+          'b9615d48ebfc62a53f333ebf8a582558a058b0e9')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
@@ -36,6 +34,7 @@ build() {
         -DWITH_ASSIMPIMPORTER=ON \
         -DWITH_BASISIMAGECONVERTER=ON \
         -DWITH_BASISIMPORTER=ON \
+        -DWITH_CGLTFIMPORTER=ON \
         -DWITH_DDSIMPORTER=ON \
         -DWITH_DEVILIMAGEIMPORTER=ON \
         -DWITH_DRFLACAUDIOIMPORTER=ON \
@@ -47,8 +46,12 @@ build() {
         -DWITH_ICOIMPORTER=ON \
         -DWITH_JPEGIMPORTER=ON \
         -DWITH_JPEGIMAGECONVERTER=ON \
+        -DWITH_KTXIMAGECONVERTER=ON \
+        -DWITH_KTXIMPORTER=ON \
         -DWITH_MESHOPTIMIZERSCENECONVERTER=ON \
         -DWITH_MINIEXRIMAGECONVERTER=ON \
+        -DWITH_OPENEXRIMAGECONVERTER=ON \
+        -DWITH_OPENEXRIMPORTER=ON \
         -DWITH_OPENGEXIMPORTER=ON \
         -DWITH_PNGIMAGECONVERTER=ON \
         -DWITH_PNGIMPORTER=ON \
@@ -56,6 +59,7 @@ build() {
         -DWITH_SPIRVTOOLSSHADERCONVERTER=ON \
         -DWITH_STANFORDIMPORTER=ON \
         -DWITH_STANFORDSCENECONVERTER=ON \
+        -DWITH_STBDXTIMAGECONVERTER=ON \
         -DWITH_STBIMAGECONVERTER=ON \
         -DWITH_STBIMAGEIMPORTER=ON \
         -DWITH_STBTRUETYPEFONT=ON \
