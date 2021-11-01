@@ -1,0 +1,5 @@
+post_install() {
+  printf '%s\n' "      > IMPORTANT: You _must_ set the _IFACE-variable in /etc/conf.d/minissdpd"
+  printf '%s\n' "        to an IP-address or network interface to make sense of the software."
+  printf '%s\n' "        Installation default is the loopback interface."
+}

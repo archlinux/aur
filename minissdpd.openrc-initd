@@ -1,0 +1,84 @@
+#!/sbin/openrc-run
+
+depend() {
+  before miniupnpd minidlna
+  after net
+}
+
+
+### The following configuration settings can be set in /etc/conf.d/minissdpd -- note that "_IFACE" _must_ be set there!, for the others "minissdpd" has defaults:
+# _IFACE -- Where to listen on -- specify either an IPv4 address with mask (e.g. "192.168.1.42/255.255.255.0"), or a network interface name (e.g. "eth0"). Can be multiple entries, specified as a bash array.
+# _PIDFILE -- Use the following PID-file:
+# _SOCKET -- Communicate via the following socket:
+# _IP6 -- Should we enable IPv6 in addidion to IPv4?
+# _TTL -- TTL of the package. By default 2 is used according to UDA.
+# _DEVFILTER -- search/filter a specific device type. Leave unset out to not apply the filter.
+# _DEBUG -- Should we generate log/ debug output?
+# _LOGFILE -- Logfile whis is used in case $_DEBUG is true
+
+
+# The exeecutable to run
+_DAEMON="/usr/bin/minissdpd"
+
+
+if [ -z "${_SOCKET}" ]; then
+  _SOCKET='/var/run/minissdpd.sock'
+fi
+if [ -z "${_PIDFILE}" ]; then
+  _PIDFILE='/var/run/minissdpd.pid'
+fi
+
+# The options for the daemon
+_DAEMON_ARGS=(
+  '-s' "${_SOCKET}"
+  '-p' "${_PIDFILE}"
+)
+
+if [ -n "${_TTL}" ]; then
+  _DAEMON_ARGS+=('-t' "${_TTL}")
+fi
+if [ -n "${_DEVFILTER}" ]; then
+  _DAEMON_ARGS+=('-f' "${_DEVFILTER}")
+fi
+
+for _if in "${_IFACE[@]}"; do
+  _DAEMON_ARGS+=('-i' "${_if}")
+done
+
+if "${_IP6}"; then
+  _DAEMON_ARGS+=('-6')
+fi
+
+if "${_DEBUG}"; then
+  _DAEMON_ARGS+=('-d')
+  _STARTSTOPDAEMON_DEBUG_ARGS=(
+    '--background'
+    '-1' "${_LOGFILE}" '-2' "${_LOGFILE}"
+  )
+else
+  _STARTSTOPDAEMON_DEBUG_ARGS=()
+fi
+
+
+start() {
+  ebegin "Starting $(basename "${_DAEMON}")"
+
+  if [ -z "${_IFACE}" ]; then
+    printf '%s\n' "Error: Variable '_IFACE' must be set in '/etc/conf.d/'."
+  fi
+
+  # Create $_PIDFILE
+  touch "${_PIDFILE}"
+
+  start-stop-daemon --pidfile "${_PIDFILE}" --start --verbose "${_STARTSTOPDAEMON_DEBUG_ARGS[@]}" --exec "${_DAEMON}" -- "${_DAEMON_ARGS[@]}"
+
+  eend "$?"
+}
+
+stop() {
+  ebegin "Stopping $(basename "${_DAEMON}")"
+
+  start-stop-daemon --pidfile "${_PIDFILE}" --stop --verbose
+
+  eend "$?"
+}
