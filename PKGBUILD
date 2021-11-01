@@ -1,6 +1,6 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
@@ -20,33 +20,18 @@ options=()
 install=
 changelog=
 source=("craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}.tar.gz"
-        "craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.6.1.tar.gz")
+        "craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('b13575d3982c0d09e5218157f5fb7e70e6847eaad7e65bafb23d15e949605947'
-            '39c589c64e4bc1206411bac712a9ffb3af67740a3849349e2a188806d692d391')
+sha256sums=('5d0247b4a808fe90dd99633e192b197f6b7d89b64c3b89911f13445d8c0a45c5'
+            '84a60cadb3e02ee74f63f76449d1c3ee5d912ec39efde8c1c858713b891d768e')
 validpgpkeys=()
 
 prepare() {
-    cp -R "craftos2-lua-2.6.1"/* "craftos2-$pkgver/craftos2-lua/"
+    cp -R "craftos2-lua-$pkgver"/* "craftos2-$pkgver/craftos2-lua/"
     cd "craftos2-$pkgver"
     mkdir icons
     unzip resources/linux-icons.zip -d icons
     make -C craftos2-lua -j$(nproc) linux
-    # NOTICE!!! Remove before v2.6.2!
-    if [ "$pkgver" == "2.6.1" -a "$(pacman -Q craftos-pc-data | awk '${print $2;}')" != "2.6.1-1" ]; then
-        patch -p1 <<EOF
---- a/resources/CraftOSTest.lua
-+++ b/resources/CraftOSTest.lua
-@@ -490,6 +490,7 @@
- 		"shell.allow_disk_startup",
- 		"shell.allow_startup",
- 		"shell.autocomplete",
-+		"shell.mobile_resize_with_keyboard",
- 		"shell.report_plugin_errors",
- 		"test",
- 		"test2"
-EOF
-    fi
 }
 
 build() {
@@ -64,8 +49,9 @@ package() {
 	cd "craftos2-$pkgver"
 	mkdir -p "$pkgdir/usr/bin"
 	DESTDIR="$pkgdir/usr/bin" make install
-    install -D -m 0755 craftos2-lua/src/liblua.so "$pkgdir/usr/lib/libcraftos2-lua.so"
+	install -D -m 0755 craftos2-lua/src/liblua.so "$pkgdir/usr/lib/libcraftos2-lua.so"
 	patchelf --replace-needed craftos2-lua/src/liblua.so libcraftos2-lua.so "$pkgdir/usr/bin/craftos"
+	cp -R api "$pkgdir/usr/include/CraftOS-PC"
 	install -D -m 0644 icons/CraftOS-PC.desktop "$pkgdir/usr/share/applications/CraftOS-PC.desktop"
 	install -D -m 0644 icons/16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/craftos.png"
 	install -D -m 0644 icons/24.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/craftos.png"
