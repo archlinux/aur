@@ -2,8 +2,8 @@
 
 pkgname=python-mamba-org
 _name=mamba
-pkgver=0.15.3
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc='The Fast Cross-Platform Package Manager'
 arch=(any)
 url=https://github.com/mamba-org/mamba
@@ -21,8 +21,8 @@ makedepends=(
   nlohmann-json)
 checkdepends=(pytest gtest gmock)
 conflicts=(python-mamba)
-source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/0.15.3.tar.gz)
-sha256sums=('f2ad92625954cd029b84725bc33f658020a589cefda0b18adb1b7825ab7d4a1f')
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
+sha256sums=('c5f4add077f41ca9ff905d95003cf793c59e9d6959f19a139325dc66c904733a')
 
 prepare() {
   cd $srcdir/$_name-$pkgver
