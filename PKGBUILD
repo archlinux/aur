@@ -5,9 +5,9 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-pipewire
-_tag='9ca9066d052acecb5b05369141a76993a753ee1e' # git rev-parse v${pkgver}
+_tag='v0.34.0' # git rev-parse v${pkgver}
 pkgver=0.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a free, open source, and cross-platform media player including an experimental PipeWire audio backend'
 arch=('x86_64')
 # We link against libraries that are licensed GPLv3 explicitly, so our
