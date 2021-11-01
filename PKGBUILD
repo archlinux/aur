@@ -1,6 +1,6 @@
 # Maintainer sakura1943 <1436700265@qq.com>
 
-pkgname='windterm-git'
+pkgname='windterm-bin'
 pkgver='2.1.0'
 pkgrel='2.1'
 pkgdesc='A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.'
