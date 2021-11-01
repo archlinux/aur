@@ -1,5 +1,5 @@
 pkgname=kya
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 depends=('curl')
 makedepends=('rust' 'cargo')
