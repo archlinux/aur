@@ -5,6 +5,7 @@ pkgbase = g15composer-systemd
 	url = https://gitlab.com/menelkir/g15composer
 	arch = any
 	license = GPL2
+	depends = g15composer
 	depends = g15daemon-systemd
 	source = https://gitlab.com/menelkir/g15composer/-/raw/master/contrib/init/g15composer.service
 	sha256sums = 243bfc145afc43241dcc042a7f79c9a542aff596d12e1b3d87fb04ae18b25c6b
