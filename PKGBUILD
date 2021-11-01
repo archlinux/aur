@@ -44,6 +44,7 @@ sha256sums=('SKIP'
 prepare()
 {
 	cd gtk+-$_gtkver
+	mv ../gtk3-classic ../$pkgbase
 	QUILT_PATCHES=../$pkgbase quilt push -av
 
 	rm -f "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css
@@ -56,7 +57,8 @@ build()
         #CFLAGS=" -DG_DISABLE_CAST_CHECKS -O3 -pipe -fno-plt"
         #CXXFLAGS=" -Os -pipe -fno-plt"
         #
-
+	CFLAGS+="  -O3 -pipe -fno-plt  -DG_DISABLE_CAST_CHECKS"
+        CXXFLAGS+=" -Os -pipe -fno-plt "
 
 	# Remove atk - patch (aka at-spi/atk-bridge removal patch)
         # Original NETBSD patch included but not used ( file: original.NETBSD.atk-bridge.patch )
@@ -84,6 +86,32 @@ build()
                # -D ENABLE_NLS=0
                # -D wayland_backend=false
 	ninja -C build
+
+#  User defined options
+#    auto_features   : enabled
+#    buildtype       : minsize
+#    libexecdir      : lib
+#    optimization    : 3
+#    prefix          : /usr
+#    sbindir         : bin
+#    strip           : True
+#    wrap_mode       : nodownload
+#    b_lto           : true
+#    b_pie           : true
+#    broadway_backend: false
+#    cloudproviders  : false
+#    colord          : no
+#    demos           : false
+#    examples        : false
+#    gtk_doc         : false
+#    installed_tests : false
+#    introspection   : false
+#    print_backends  : file
+#    quartz_backend  : false
+#    tests           : false
+#    tracker3        : false
+#    win32_backend   : false
+
 }
 
 package_gtk3-classic-noatk-64()
