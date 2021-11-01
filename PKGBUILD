@@ -4,8 +4,8 @@
 
 _pkgname=fastlbry-terminal
 pkgname=${_pkgname}-git
-pkgver=0.5.r157.g3bcbc1a
-pkgrel=2
+pkgver=0.5.r160.g06e50cd
+pkgrel=1
 pkgdesc="A fully featured, terminal application to interact with LBRY"
 arch=('any')
 url="https://www.notabug.org/jyamihud/FastLBRY-terminal"
