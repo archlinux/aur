@@ -6,7 +6,7 @@ pkgbase = g15stats-runit
 	arch = any
 	license = GPL2
 	depends = g15stats
-	depends = runit
+	depends = g15daemon-runit
 	source = https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.run
 	sha256sums = 44f2ed8416a75fd3f2299eb682d93c52c9833af7a7c0906660114d1dd3987834
 
