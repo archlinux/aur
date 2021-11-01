@@ -2,15 +2,15 @@
 
 pkgname='sacc'
 pkgver=1.04
-pkgrel=1
+pkgrel=2
 pkgdesc='sacc(omys), simple console gopher client with TLS support'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='gopher://bitreich.org/1/scm/sacc'
 _url_source='ftp://bitreich.org/releases/sacc'
 license=('ISC')
 depends=('libretls' 'ncurses')
-source=("${_url_source}/${pkgname}-${pkgver}.tgz")
-sha512sums=('d3ca4841e5c1d0cbaf16b92ba066d59abb2c4daa465943c69c917145d92f94b9d68ca2c25bc18ac8c04cf052e13e695d1d31f6b360a9c8fcbe2a6651e7e82e73')
+source=("${_url_source}/${pkgname}-${pkgver}.tar.lz")
+sha512sums=('3bd48f8d633b80fe335d5c87005bda335d65201b8a2388bdae3c32e790b7d745be2b02cf3bf18083ba3f71e5aaafe86b00fea361c1041b58d4e25c8a052436c9')
 
 build() {
   make -C "${pkgname}-${pkgver}"
