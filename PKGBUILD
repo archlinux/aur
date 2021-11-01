@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.1.r110015.g2fb725ea308
+pkgver=3.1.r110040.g75f5edcaf33
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -73,7 +73,6 @@ prepare() {
   # update the submodules
   git submodule update --init --recursive --remote
   git apply -v "${srcdir}"/{embree,usd_python,openexr3}.patch
-  git revert --no-commit 43bc494892c3
 }
 
 build() {
