@@ -3,10 +3,12 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
+# compile on debain using: makedeb --file PKGBUILD_DEIBAN -s
+# makedeb: https://github.com/makedeb/makedeb
 # Maintainer: Suvojit Ghosh <ghoshsuvojit2012@gmail.com>
 # Developer: Ronak Sanpui
 pkgname=senpahe-git
-pkgver=r26.`6c4fa5f`
+pkgver=r43.97821db
 pkgrel=1
 epoch=
 pkgdesc="Stream and download anime from animepahe right from the terminal!"
@@ -57,3 +59,4 @@ package() {
 	cd $pkgname/dist/
 	install -Dm755 ./senpahe "$pkgdir/usr/bin/senpahe"
 }
+md5sums=('SKIP')
