@@ -1,6 +1,6 @@
 pkgbase = senpahe-git
 	pkgdesc = Stream and download anime from animepahe right from the terminal!
-	pkgver = r43.97821db
+	pkgver = r45.b27ffec
 	pkgrel = 1
 	url = https://gitlab.com/TGS963/senpahe-git
 	arch = x86_64
