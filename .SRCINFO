@@ -1,6 +1,6 @@
 pkgbase = freerouting
 	pkgdesc = Advanced PCB autorouter
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/freerouting/freerouting
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = freerouting
 	makedepends = git
 	depends = jre11-openjdk>=11
 	optdepends = kicad: for use with PCB editor
-	source = https://github.com/freerouting/freerouting/archive/v1.4.4.tar.gz
+	source = https://github.com/freerouting/freerouting/archive/v1.4.5.tar.gz
 	source = freerouting.sh
-	md5sums = 356ffed40fd1b6ba88b4fd3d7289b84c
-	md5sums = 0943b58a132119e866098f083766a123
+	sha256sums = 4b38da7da2996661e881a5bab115a64d543fee7e964a769feb9fbe932af9dc41
+	sha256sums = 8144ced213d127ef0d16abc787055bc3dd646db66ddee762ae9ba02f55bb3f73
 
 pkgname = freerouting
-

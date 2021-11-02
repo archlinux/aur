@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=freerouting
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Advanced PCB autorouter"
 arch=('i686' 'x86_64')
@@ -12,13 +12,8 @@ makedepends=('jdk11-openjdk>=11' git)
 optdepends=('kicad: for use with PCB editor')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "freerouting.sh")
-md5sums=('356ffed40fd1b6ba88b4fd3d7289b84c'
-         '0943b58a132119e866098f083766a123')
-
-#pkgver() {
-#  cd "${pkgname}"
-#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
+sha256sums=('4b38da7da2996661e881a5bab115a64d543fee7e964a769feb9fbe932af9dc41'
+            '8144ced213d127ef0d16abc787055bc3dd646db66ddee762ae9ba02f55bb3f73')
 
 build() {
   # don't forget to set active JDK to 11 version before running makepkg:
@@ -30,7 +25,7 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  
+
   install -Dm644 build/libs/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/freerouting-executable.jar"
   install -Dm755 "${srcdir}/freerouting.sh" "${pkgdir}/usr/bin/freerouting"
 }
