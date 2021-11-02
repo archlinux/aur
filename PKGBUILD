@@ -4,7 +4,7 @@
 _pkgname='ants'
 pkgname="${_pkgname}-git"
 pkgver=v2.3.5.r64.g221dad77
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional \
 mappings to capture the statistics of brain structure and function'
 arch=('i686' 'x86_64')
@@ -50,10 +50,9 @@ build() {
       -DSuperBuild_ANTS_USE_GIT_PROTOC=ON \
       -DUSE_SYSTEM_ITK=OFF \
       -DUSE_SYSTEM_SlicerExecutionMode=OFF \
-      -DUSE_SYSTEM_VTK=ON \
       -DUSE_VTK=ON \
       ..
-  make -j1
+  make
 }
 
 package() {
