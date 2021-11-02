@@ -1,6 +1,6 @@
 # Maintainer: Bryce Kabat <brycekabat@onyxazryn.com>
 pkgname="trilium-bin"
-pkgver=0.48.4
+pkgver=0.48.5
 pkgrel=1
 pkgdesc="A hierarchical note taking application built on modern technologies."
 depends=('libxss' 'nss' 'gtk3')
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/zadam/trilium"
 license=('AGPL3')
 source=("https://github.com/zadam/trilium/releases/download/v$pkgver/trilium-linux-x64-$pkgver.tar.xz")
-sha512sums=('e830649a2f3be6bee6be2a79c671ccea05e6f409437a344b8eca18196adb4cd2cd862cfefbfda1479cb7262524a4c37e1514f08aff8adf8d2a0123bb7db206f7')
+sha512sums=('5612ed2f7525443e314d567c0039585223fab868df48c4eeefd847a6e7476131d12ea8a4337b71258bfc46e4bc963257c42fa59894ffa9a5d23f754bd0c302fb')
 
 package()
 {
