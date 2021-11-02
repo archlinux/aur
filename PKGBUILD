@@ -1,7 +1,7 @@
 # Maintainer: mnabila nblid48[at]gmail[dot]com
 
 pkgname=sqls-git
-pkgver=0.2.19.r0.ga2584ef
+pkgver=0.2.20.r4.gf65fc5f
 pkgrel=1
 pkgdesc="SQL language server written in Go."
 url="https://github.com/lighttiger2505/sqls"

@@ -1,6 +1,6 @@
 pkgbase = sqls-git
 	pkgdesc = SQL language server written in Go.
-	pkgver = 0.2.19.r0.ga2584ef
+	pkgver = 0.2.20.r4.gf65fc5f
 	pkgrel = 1
 	url = https://github.com/lighttiger2505/sqls
 	arch = x86_64
