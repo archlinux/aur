@@ -4,7 +4,7 @@
 
 pkgname=protonmail-bridge
 pkgver=1.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://protonmail.com/bridge"
@@ -23,7 +23,7 @@ options=('!emptydirs' '!strip')
 #        "protonmail-bridge.desktop")
 
 # Source to compile to a specific commit
-source=("git://github.com/ProtonMail/proton-bridge.git#commit=a219ecf3cbe4fa31517136131fc585e93b86c3dd"
+source=("git+https://github.com/ProtonMail/proton-bridge.git#commit=a219ecf3cbe4fa31517136131fc585e93b86c3dd"
         "protonmail-bridge.desktop")
 
 sha256sums=('SKIP'
