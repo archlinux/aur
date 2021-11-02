@@ -3,7 +3,7 @@
 _pkgbase=openocd-nuvoton
 pkgname=${_pkgbase}-git
 pkgver=0.9.0.r476.g849799e6
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of OpenOCD that has Nuvoton devices support'
 arch=('x86_64')
 url='https://github.com/OpenNuvoton/OpenOCD-Nuvoton'
@@ -87,6 +87,11 @@ package() {
   cd "$srcdir/$pkgname"
 
   make pkgdatadir="/usr/share/$pkgname" DESTDIR="$pkgdir" install
+
+  mkdir -p "$pkgdir/usr/lib/udev/rules.d"
+  mv "$pkgdir/usr/share/$pkgname/contrib/60-openocd-nuvoton.rules" "$pkgdir/usr/lib/udev/rules.d/60-openocd-nulink.rules"
+  mv "$pkgdir/usr/share/$pkgname/contrib/99-openocd.rules" "$pkgdir/usr/lib/udev/rules.d/99-${pkgname}.rules"
+
   rm -r "$pkgdir/usr/share/info"
 }
 
