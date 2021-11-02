@@ -8,16 +8,17 @@
 # https://github.com/michaellass/AUR
 
 _majorver=17
-_completever=17
-_updatever=35
+_completever=17.0.1
+_updatever=12
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
+[ $_majorver != $_completever ] && _versuffix=U
 
 pkgname=jdk-adoptopenjdk
-pkgdesc="OpenJDK Java ${_majorver} development kit (AdoptOpenJDK build)"
+pkgdesc="Temurin (OpenJDK ${_majorver} Java binaries by Adoptium, formerly AdoptOpenJDK)"
 arch=('x86_64')
-url='https://adoptopenjdk.net/'
+url='https://adoptium.net/'
 license=('custom')
 
 depends=('java-runtime-common>=3' 'ca-certificates-utils' 'desktop-file-utils' 'libxrender' 'libxtst' 'alsa-lib')
@@ -54,11 +55,11 @@ backup=(etc/${pkgname}/logging.properties
         etc/${pkgname}/sound.properties)
 install=install_jdk-adoptopenjdk.sh
 
-source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
+source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}${_versuffix}-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('6f1335d9a7855159f982dac557420397be9aa85f3f7bc84e111d25871c02c0c7'
+sha256sums=('6ea18c276dcbb8522feeebcfc3a4b5cb7c7e7368ba8590d3326c6c3efc5448b6'
             'f1e1a1d78c8696b79a7b12c31fcff519913bb52cb88c71997e5bf88444307be2'
             '245ef426db05c256fc1cc5e94293fc5538227bc322e4259eedf4a093e7dc7b5c'
             'd0dec731c8964dd1e42da135602e4d42f803f569d3c3df69bac94ee71971ced3')
