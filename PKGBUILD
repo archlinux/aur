@@ -35,4 +35,5 @@ package() {
 	mv "$srcdir/install/$_dirname/cmake" "${pkgdir}/usr/lib/cmake/UTemplate"
 	mv "$srcdir/install/$_dirname/include/UTemplate" "${pkgdir}/usr/include/"
 	mv "$srcdir/UTemplate/LICENSE" "${pkgdir}/usr/share/licenses/utemplate-git"
+	patch "${pkgdir}/usr/lib/cmake/UTemplate/UTemplateConfig.cmake" "${srcdir}/../fix.patch"
 }
