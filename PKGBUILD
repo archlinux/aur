@@ -13,7 +13,7 @@ sha512sums=("SKIP")
 package() {
     # Package
     mkdir -p "${pkgdir}/usr/bin"
-    wget https://github.com/Studienarbeit-Mouse-Dynamics-DHBW-FN/MouseLogger-App/releases/download/v1.0.0/mouselogger
+    wget https://github.com/Studienarbeit-Mouse-Dynamics-DHBW-FN/MouseLogger-App/releases/download/v1.0.0/mouselogger-linux
     cp "${srcdir}/mouselogger" "${pkgdir}/usr/bin/mouselogger"
     chmod +x "${pkgdir}/usr/bin/mouselogger"
 
