@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias.borgertt@gmail.com>
 
 pkgname=fineftp-server
-pkgver=1.0.10
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="FineFTP is a minimal FTP server library for Windows and Unix flavors"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('asio')
 makedepends=()
 optdepends=()
 source=(https://github.com/continental/fineftp-server/archive/v$pkgver.tar.gz)
-md5sums=('be3db15b563ca5484e1f370cbf639dc5')
+md5sums=('c1d6db6add56bfe25fb57542982924fe')
 
 build() {
     cd $pkgname-$pkgver
