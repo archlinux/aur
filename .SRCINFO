@@ -1,6 +1,6 @@
 pkgbase = taskopen
 	pkgdesc = Script for taking notes and open urls with taskwarrior
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = http://github.com/ValiValpas/taskopen/
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = taskopen
 	depends = perl-json
 	depends = task>=2.4.0
 	optdepends = xdg-utils: easily use default application associated with a file type
-	source = https://codeload.github.com/ValiValpas/taskopen/tar.gz/v1.1.4
-	sha256sums = 774dd89f5c92462098dd6227e181268e5ec9930bbc569f25784000df185c71ba
+	source = https://codeload.github.com/ValiValpas/taskopen/tar.gz/v1.1.5
+	sha256sums = edf9dc76dd70089e3334bac27fddf24450fc4385d0dc3089d7ecc983d19c977c
 
 pkgname = taskopen
-
