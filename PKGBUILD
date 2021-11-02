@@ -4,7 +4,7 @@
 pkgname=udrefl-git
 pkgver=0.10.5.r0.g9f73e2d
 pkgrel=1
-pkgdesc="Header-only, tiny (99 lines) and powerful C++20 static reflection library."
+pkgdesc="Ubpa Dynamic Reflection "
 arch=('any')
 url="https://github.com/Ubpa/USRefl"
 license=('MIT')
