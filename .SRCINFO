@@ -1,6 +1,6 @@
 pkgbase = xorg-server-bug865
 	pkgver = 1.20.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
@@ -35,8 +35,6 @@ pkgbase = xorg-server-bug865
 	makedepends = systemd
 	makedepends = meson
 	makedepends = git
-	makedepends = wayland-protocols
-	makedepends = egl-wayland
 	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.13.tar.xz
 	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.13.tar.xz.sig
 	source = xserver-autobind-hotplug.patch
@@ -73,6 +71,7 @@ pkgname = xorg-server-bug865
 	depends = libpciaccess
 	depends = libdrm
 	depends = libxshmfence
+	depends = libxcvt
 	provides = X-ABI-VIDEODRV_VERSION=24.0
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
