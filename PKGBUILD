@@ -2,14 +2,14 @@
 
 pkgname=qmodbus-git
 _gitname=qmodbus
-pkgver=r146.8c18311
+pkgver=r174.8ab168f
 pkgrel=1
 pkgdesc='QModBus is a free Qt-based implementation of a ModBus master application. A graphical user interface allows easy communication with ModBus slaves over serial line interface. QModBus also includes a bus monitor for examining all traffic on the bus.'
 arch=('x86_64' 'i686')
 url='http://qmodbus.sourceforge.net/'
 
 license=('GPLv2')
-depends=('qt4')
+depends=('qt5-base')
 makedepends=('git')
 optdepends=()
 provides=()
@@ -25,7 +25,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
 
-  qmake-qt4 .
+  qmake-qt5 .
   make
 }
 
