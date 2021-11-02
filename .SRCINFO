@@ -1,11 +1,11 @@
 pkgbase = vim-dispatch-git
 	pkgdesc = Asynchronous build and test dispatcher
-	pkgver = 1.8.r27.g4313cbb
+	pkgver = 1.8.r33.ga99a671
 	pkgrel = 1
 	url = https://github.com/tpope/vim-dispatch
 	arch = any
 	groups = vim-plugins
-	license = unknown
+	license = custom:vim
 	makedepends = git
 	depends = vim-plugin-runtime
 	provides = vim-dispatch
@@ -14,4 +14,3 @@ pkgbase = vim-dispatch-git
 	md5sums = SKIP
 
 pkgname = vim-dispatch-git
-
