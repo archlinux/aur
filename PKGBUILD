@@ -20,9 +20,16 @@ url='https://github.com/cyring/CoreFreq'
 license=('GPL2')
 depends=('dkms')
 source=(${pkgbase}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz"
-        'dkms.conf')
+        'dkms.conf'
+        'honor-archlinux-compiler-flags.patch')
 b2sums=('b3425f520776fcb80689fdce7c5a21d750fe89f2e6c57ad14e2ee11134cff11ca8e06d8c993b3289e294c340eb4d66e45764591ae520ff8b685446fc8e63a68c'
-        'c6d8849944f99195038ac252d010d3e3001cd1dcaee57218c4a7f58fa313aa38842e4ea991d4d9ff7d04063ebaa9900c06ff1eacfa6270341cf37fb752adc00c')
+        'c6d8849944f99195038ac252d010d3e3001cd1dcaee57218c4a7f58fa313aa38842e4ea991d4d9ff7d04063ebaa9900c06ff1eacfa6270341cf37fb752adc00c'
+        '3f5f9a27863412d620864e8c19e2683e3ef2103c4b95c126438330a9b532e2434664ce4860b6191552298131e434c09f5531428696dde7d70a1cb171b4f13edf')
+
+prepare(){
+  cd "${_gitname}-${pkgver}"
+  patch -Np1 < "$srcdir/honor-archlinux-compiler-flags.patch"
+}
 
 build() {
   cd "${_gitname}-${pkgver}"
