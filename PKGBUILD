@@ -4,7 +4,7 @@
 
 _pkgname=atoml
 pkgname=python-atoml
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Yet another style-preserving TOML library for Python."
 arch=("any")
@@ -15,7 +15,7 @@ _pkgname_prefix="${_pkgname:0:1}"
 _pkgname_underscored="${_pkgname//-/_}"
 _pkgurl="https://files.pythonhosted.org/packages/py3/$_pkgname_prefix/$_pkgname/$_pkgname_underscored-$pkgver-py3-none-any.whl"
 source=("$_pkgurl")
-sha512sums=('7e131dc4d90da83d80a200683e766efdac42b83725f576e9661386cdf37f1c3b04eca11325b8d439aac88bb0dbfcfc6e7cc2b769ca8a9d07825ec8b6b1c08c5f')
+sha512sums=('37505f8a74a301c0d9f7bea686f48ac94d6fdd5b36a4ec2c132e069df65307439b9270624f7b629dbaab28ad3d58eeed83fb8fc52579683db3fb545ddf11aa9c')
 
 package() {
   cd "$srcdir" || exit
