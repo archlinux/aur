@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full
-pkgver=0.33.1
-pkgrel=4
+pkgver=0.34.0
+pkgrel=1
 _wafver=2.0.20
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
@@ -26,17 +26,13 @@ optdepends=('youtube-dl: for video-sharing websites playback'
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
-BUILDENV=('!check')
 source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz"
-        "https://waf.io/waf-${_wafver}"
-        '010-mpv-libplacebo-fix.patch'::'https://github.com/mpv-player/mpv/commit/7c4465cefb27d4e0d07535d368febdf77b579566.patch')
-sha256sums=('100a116b9f23bdcda3a596e9f26be3a69f166a4f1d00910d1789b6571c46f3a9'
-            'bf971e98edc2414968a262c6aa6b88541a26c3cd248689c89f4c57370955ee7f'
-            'ae67fd51cc42db3f2629c9a5fd5cbd11390fea7cae90b5e5c12ab9e8ac5019a9')
+        "https://waf.io/waf-${_wafver}")
+sha256sums=('f654fb6275e5178f57e055d20918d7d34e19949bc98ebbf4a7371902e88ce309'
+            'bf971e98edc2414968a262c6aa6b88541a26c3cd248689c89f4c57370955ee7f')
 
 prepare() {
     install -D -m755 "waf-${_wafver}" "mpv-${pkgver}/waf"
-    patch -d "mpv-${pkgver}" -Np1 -i "${srcdir}/010-mpv-libplacebo-fix.patch"
 }
 
 build() {
@@ -81,10 +77,10 @@ build() {
         '--enable-sdl2'
         '--enable-sdl2-gamepad'
         '--enable-libavdevice'
-        '--disable-ffmpeg-strict-abi'
         '--lua=52arch'
         
         '--enable-sdl2-audio'
+        '--disable-oss-audio'
         '--enable-pulse'
         '--enable-jack'
         '--enable-openal'
@@ -157,12 +153,11 @@ build() {
     ./waf configure --disable-tests "${_common_opts[@]}"
     ./waf build
     
-    ## tests currently requires ffmpeg git master, disabling for the time being
     # build with tests on the mpv binary (for tests only)
-    #printf '%s\n' ' -> Building the test files (with tests)...'
-    #export WAFLOCK='.lock-waf_linux_build-tests'
-    #./waf distclean configure --enable-tests "${_common_opts[@]}"
-    #./waf build
+    printf '%s\n' ' -> Building the test files (with tests)...'
+    export WAFLOCK='.lock-waf_linux_build-tests'
+    ./waf distclean configure --enable-tests "${_common_opts[@]}"
+    ./waf build
 }
 
 check() {
@@ -174,7 +169,7 @@ check() {
         printf '%s\n' "  -> Running test '${_test}'..."
         build-tests/mpv --unittest="$_test"
     done < <(build-tests/mpv --unittest='help' |
-        awk 'FNR == 1 { next } !/all-simple|img_format|repack(|_zimg)$/ { printf "%s\0", $1 }')
+        awk 'FNR == 1 { next } !/all-simple/ { printf "%s\0", $1 }')
 }
 
 package() {
