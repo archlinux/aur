@@ -1,0 +1,22 @@
+pkgbase = perl-data-clean
+	pkgdesc = Clean data structure
+	pkgver = 0.507
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-Clean
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0
+	depends = perl-clone-pp>=0
+	depends = perl-data-dmp>=0.240
+	depends = perl-datetime>=0
+	depends = perl-log-ger>=0.037
+	depends = perl-string-linenumber>=0
+	depends = perl-string-perlquote>=0
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Data-Clean-0.507.tar.gz
+	md5sums = 41b4fb86f145fa22ff7658d91e107597
+	sha512sums = 1533f6f6f59090cd63f76c6dcd7e4e19e65da5f5cdf548fa0130a2e77a3ffa2e4bcb4a43ab621769499cd9dc010bb69901b78230494b1c18223b028ee759bae3
+
+pkgname = perl-data-clean
