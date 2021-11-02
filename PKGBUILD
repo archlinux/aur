@@ -4,14 +4,14 @@
 
 pkgname=fsv2
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="GTK2 port of fsv, the filesystem visualizer"
 arch=('i686' 'x86_64')
 url="https://github.com/mcuelenaere/fsv"
 license=('LGPL')
 depends=('gtkglarea' 'gtkmm' 'ftgl' 'gtk2')
-makedepends=('autoconf' 'automake' 'libtool')
+makedepends=('autoconf' 'automake' 'libtool' 'gtkglext')
 options=('!libtool')
 source=("https://github.com/mcuelenaere/fsv/archive/fsv-0.9-1.tar.gz"
         "fsv2.desktop")

@@ -1,7 +1,7 @@
 pkgbase = fsv2
 	pkgdesc = GTK2 port of fsv, the filesystem visualizer
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/mcuelenaere/fsv
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = fsv2
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = libtool
+	makedepends = gtkglext
 	depends = gtkglarea
 	depends = gtkmm
 	depends = ftgl
@@ -21,4 +22,3 @@ pkgbase = fsv2
 	md5sums = 0284ef25cd9fd798d5e863fc65485d6c
 
 pkgname = fsv2
-
