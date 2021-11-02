@@ -2,12 +2,12 @@
 pkgname=minetest-nodecore
 _pkgname=nodecore
 _pkgauthor=Warr1024
-pkgver=01472271
-_cdbrel=8919
+pkgver=01532876
+_cdbrel=9378
 pkgrel=1
 pkgdesc="Original, immersive puzzle/adventure game with NO popup GUIs, minimal HUDs."
 license=("MIT")
-sha256sums=('7bdf5b06cdc9dad78ea324c38b7e43ac1c91f2fbd1413bd7c4c264b401cfdb5e')
+sha256sums=('4b46464043686ab754894602f56565bb78b278b0682c98f7c0dc3d8ed5bee51b')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
@@ -17,7 +17,7 @@ options=(!strip)
 noextract=("${_pkgname}-${pkgver}.zip")
 
 package() {
-	# the nodecore release zip has the files in the root of the archive
+	# the release zip has the files in the root of the archive
 	install -d "${pkgdir}/usr/share/minetest/games/${_pkgname}"
 	unzip "${_pkgname}-${pkgver}.zip" -d "${pkgdir}/usr/share/minetest/games/${_pkgname}/"
 }
