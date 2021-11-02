@@ -1,6 +1,6 @@
 pkgbase = ucmake-git
 	pkgdesc = Ubpa CMake
-	pkgver = 0.6.4.r0.g478cf0e
+	pkgver = 0.6.4.r0.g868d8a2
 	pkgrel = 1
 	url = https://github.com/Ubpa/UCMake
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = ucmake-git
 	makedepends = git
 	makedepends = cmake
 	depends = cmake
+	provides = ucmake
 	source = git+https://github.com/Ubpa/UCMake.git
 	md5sums = SKIP
 
