@@ -1,7 +1,7 @@
 # Maintainer: Patrick Desaulniers <desaulniers dot patrick at carrefour dot cegepvicto dot ca>
 
 pkgname=bitrot-git
-pkgver=r7.75abdd1
+pkgver=r15.70534bc
 pkgrel=1
 pkgdesc="Bitrot audio plugins (LV2, VST2 and LADSPA)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('git' 'python')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname%-*}::git://github.com/grejppi/bitrot")
+source=("${pkgname%-*}::git+https://github.com/grejppi/bitrot.git")
 md5sums=('SKIP')
 
 pkgver() {
