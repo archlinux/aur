@@ -1,0 +1,15 @@
+pkgbase = usmallflat-git
+	pkgdesc = Ubpa small flat containers based on C++20
+	pkgver = 0.2.3.r1.g488d1f6
+	pkgrel = 1
+	url = https://github.com/Ubpa/USmallFlat
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = ucmake
+	provides = usmallflat
+	source = git+https://github.com/Ubpa/USmallFlat.git
+	md5sums = SKIP
+
+pkgname = usmallflat-git
