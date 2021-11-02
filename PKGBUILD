@@ -2,12 +2,12 @@
 pkgname=minetest-voxel-dungeon
 _pkgname=voxeldungeon
 _pkgauthor=Noodlemire
-pkgver=1.6.0
-_cdbrel=5023
+pkgver=1.6.1
+_cdbrel=9212
 pkgrel=1
 pkgdesc="This is a recreation and adaptation of an Android rogue-like game, Pixel Dungeon by Watabou. "
 license=("GPLv3")
-sha256sums=('1a3b6e01a13fc8b7f57e5d79e17884d6bdee399272ed3653175652135d8b5840')
+sha256sums=('f40319b6db064d046ac19f2c48cd1be12d7b6cb53d473711ae364b84b9168fe7')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
@@ -17,7 +17,6 @@ options=(!strip)
 noextract=("${_pkgname}-${pkgver}.zip")
 
 package() {
-	# the release zip has the files in the root of the archive
-	install -d "${pkgdir}/usr/share/minetest/games/${_pkgname}"
-	unzip "${_pkgname}-${pkgver}.zip" -d "${pkgdir}/usr/share/minetest/games/${_pkgname}/"
+	install -d "${pkgdir}/usr/share/minetest/games/"
+	unzip "${_pkgname}-${pkgver}.zip" -d "${pkgdir}/usr/share/minetest/games/"
 }
