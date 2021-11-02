@@ -10,7 +10,7 @@
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=95.0.4638.54
+pkgver=95.0.4638.69
 pkgrel=2
 _launcher_ver=8
 _gcc_patchset=4
@@ -35,6 +35,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         maldoca-depend-on-zlib-instead-of-headers-only.patch
         ozone-x11-fix-VA-API.patch
         chromium-95-harfbuzz-3.patch
+        xfce-set-zero-insets-on-maximising-the-window.patch
         replace-blacklist-with-ignorelist.patch
         add-a-TODO-about-a-missing-pnacl-flag.patch
         use-ffile-compilation-dir.patch
@@ -44,12 +45,13 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-94-ffmpeg-roll.patch
         unexpire-accelerated-video-decode-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('3eef88d745e6ddaeaf507358f1510482d6f399cf335061bb1226a5f7120061fd'
+sha256sums=('38a37d737c6c9a7198402ca614746b2dbb7abbb793bb2cb02dc796b62a22efe7'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'bc6373f2470a9e6d947a4deaee0612f730112f69552b933c54bb6e60b82dd6f1'
             '074b32078b9e53fd9b33709ce5785c120eb0346b015a93921897caed4f95f7b6'
             '3af6dfe5c4e6ed1be52a292c30bc0c447cc8498bb108f7973adb438239961474'
             'd9002f1e33390c3e770637773c81be6731584b18f68f086e955bcc3f66f4510d'
+            '3e45d88b805e61e990439820fbda802cf095972661e9944c5cd487c61d708f51'
             'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
             'd53da216538f2e741a6e048ed103964a91a98e9a3c10c27fdfa34d4692fdc455'
             '921010cd8fab5f30be76c68b68c9b39fac9e21f4c4133bb709879592bbdf606e'
@@ -129,6 +131,7 @@ prepare() {
   patch -Np1 -i ../maldoca-depend-on-zlib-instead-of-headers-only.patch
   patch -Np1 -i ../ozone-x11-fix-VA-API.patch
   patch -Np1 -i ../chromium-95-harfbuzz-3.patch
+  patch -Np1 -i ../xfce-set-zero-insets-on-maximising-the-window.patch
 
   # Revert transition to -fsanitize-ignorelist (needs newer clang)
   patch -Rp1 -i ../replace-blacklist-with-ignorelist.patch
