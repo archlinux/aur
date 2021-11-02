@@ -2,7 +2,7 @@
 # Contributor: Kim Scarborough <kim@scarborough.kim>
 pkgname=deluge1
 pkgver=1.3.15
-pkgrel=7
+pkgrel=8
 pkgdesc='A BitTorrent client with multiple interfaces in a client/server model (legacy 1.3.x version)'
 arch=('any')
 url='https://deluge-torrent.org/'
