@@ -1,6 +1,6 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=pizarra-bin
-pkgver=1.5.3
+pkgver=1.5.3.a
 pkgrel=1
 pkgdesc='A free-hand vector drawing application with infinite canvas'
 arch=('x86_64')
