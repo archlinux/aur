@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # /usr/bin/i3-scrot
 #
 # simple screenshot-script using scrot for manjaro-i3 by oberon@manjaro.org
@@ -15,16 +15,22 @@ if ! [ -d $scrot_dir ]; then
 	mkdir -p $scrot_dir
 fi
 
+if ! [[ -z "$2" ]]; then
+    cmd="scrot -d $2"
+else
+    cmd='scrot'
+fi
+
 case "$1" in
 	--desk|-d|$NULL)
 		cd $scrot_dir
-	        scrot &&
+	        $cmd &&
 		sleep 1 &&
 		notify-send "screenshot has been saved in $scrot_dir"
 		;;
 	--window|-w)
 		cd $scrot_dir
-		scrot -u &&
+		$cmd -u &&
 		sleep 1 &&
 		notify-send "screenshot has been saved in $scrot_dir"
 		;;
@@ -34,13 +40,38 @@ case "$1" in
 		scrot -s &&
 		sleep 1 && notify-send "screenshot has been saved in $scrot_dir"
 		;;
+	--desk-to-clipboard|-dc|$NULL)
+		cd $scrot_dir
+	  scrot -e 'xclip -selection clipboard -t image/png -i $f && rm $f' &&
+		sleep 1 &&
+		notify-send "screenshot has been copied to clipboard"
+		;;
+	--window-to-clipboard|-wc)
+		cd $scrot_dir
+		scrot -u -e 'xclip -selection clipboard -t image/png -i $f && rm $f' &&
+		sleep 1 &&
+		notify-send "screenshot has been copied to clipboard"
+		;;
+	--select-to-clipboard|-sc)
+		cd $scrot_dir
+		notify-send 'select an area for the screenshot' &
+	  scrot -s -e 'xclip -selection clipboard -t image/png -i $f && rm $f' &&
+		sleep 1 && notify-send "screenshot has been copied to clipboard"
+		;;
 	--help|-h)
 		echo "
 available options:
--d | --desk    full screen
--w | --window  active window
--s | --select  selection
--h | --help    display this information
+-d  | --desk                  full screen
+-w  | --window                active window
+-s  | --select                selection
+-dc | --desk-to-clipboard     full screen to clipboard
+-wc | --window-to-clipboard   active window to clipboard
+-sc | --select-to-clipboard   selection to clipboard
+-h  | --help                  display this information
+
+The -d, -w, -dc, and -wc options can be used with a delay
+by adding the number of seconds, like for example:
+'i3-scrot -w 5'
 
 Default option is 'full screen'.
 
@@ -53,10 +84,13 @@ Default is $scrot_dir
 == ! i3-scrot: missing or wrong argument ! ==
 
 available options:
--d | --desk    full screen
--w | --window  active window
--s | --select  selection
--h | --help    display this information
+-d  | --desk                  full screen
+-w  | --window                active window
+-s  | --select                selection
+-dc | --desk-to-clipboard     full screen to clipboard
+-wc | --window-to-clipboard   active window to clipboard
+-sc | --select-to-clipboard   selection to clipboard
+-h  | --help                  display this information
 
 Default option is 'full screen'.
 
