@@ -1,7 +1,7 @@
 pkgbase = anbox-modules-dkms
-	pkgdesc = Android kernel driver (binder/binderfs, ashmem) in DKMS format for Kernel 5.8 thru 5.12
+	pkgdesc = Android kernel driver fork by @choff (binder/binderfs & ashmem) in DKMS format
 	pkgver = 5
-	pkgrel = 12.1
+	pkgrel = 14
 	url = https://github.com/choff/anbox-modules
 	arch = x86_64
 	arch = aarch64
