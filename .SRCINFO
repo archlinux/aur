@@ -1,6 +1,6 @@
 pkgbase = efiboots-git
 	pkgdesc = Manage EFI boot loader entries with this simple GUI
-	pkgver = 0.1.r27.ga127150
+	pkgver = 1.0.r0.ga127150
 	pkgrel = 1
 	url = https://github.com/Elinvention/efiboots
 	arch = any
