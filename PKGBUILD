@@ -1,10 +1,10 @@
 # Maintainer: Pieter Joost van de Sande <pj@born2code.net>
 pkgname=argo
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Workflow engine for Kubernetes'
 url='https://github.com/argoproj/argo-workflows'
-arch=('any')
+arch=('x86_64')
 license=('MIT')
 makedepends=()
 depends=()
