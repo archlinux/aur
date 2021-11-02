@@ -1,12 +1,12 @@
 pkgbase = wasi-sdk-git
-	pkgdesc = libc for WebAssembly programs built on top of WASI system calls (from git repo)
+	pkgdesc = WASI-enabled WebAssembly C/C++ toolchain (from git repo)
 	pkgver = r121.77ba98a
 	pkgrel = 1
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	depends = llvm
 	depends = clang
+	depends = lld
 	provides = wasi-sdk
 	conflicts = wasi-sdk
 	options = !strip
