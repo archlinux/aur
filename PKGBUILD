@@ -86,6 +86,12 @@ export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 
+# wasi sdk
+ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
+export WASI_CC=/opt/wasi-sdk/bin/clang
+export WASI_CXX=/opt/wasi-sdk/bin/clang++
+export WASI_LD=/opt/wasi-sdk/bin/wasm-ld
+
 # Branding
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
@@ -109,7 +115,6 @@ ac_add_options --with-system-libevent
 ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
 ac_add_options --with-system-jpeg
-ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
 
 # Features
 ac_add_options --enable-pulseaudio
