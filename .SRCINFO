@@ -1,0 +1,14 @@
+pkgbase = vim-table-mode-git
+	pkgdesc = Automatic table creator and formatter
+	pkgver = 4.7.3.r17.g01a395d
+	pkgrel = 1
+	url = https://github.com/dhruvasagar/vim-table-mode
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = vim-table-mode-git::git+https://github.com/dhruvasagar/vim-table-mode
+	sha256sums = SKIP
+
+pkgname = vim-table-mode-git
