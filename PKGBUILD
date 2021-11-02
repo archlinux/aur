@@ -2,7 +2,7 @@
 
 _pkgname=efiboots
 pkgname="$_pkgname-git"
-pkgver=0.1.r27.ga127150
+pkgver=1.0.r0.ga127150
 pkgrel=1
 pkgdesc="Manage EFI boot loader entries with this simple GUI"
 url="https://github.com/Elinvention/efiboots"
