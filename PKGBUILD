@@ -2,12 +2,12 @@
 
 pkgname=highscore
 pkgver=40.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Highscore is a retro gaming application for the GNOME desktop"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/highscore"
 license=('GPL3')
-depends=('tracker' 'grilo' 'grilo-plugins' 'glib2' 'libsass' 'sassc' 'gtk3' 'libadwaita' 'libhandy' 'libevdev' 'libmanette' 'libarchive' 'retro-gtk' 'librsvg' 'libsoup' 'sqlite' 'libxml2')
+depends=('tracker' 'grilo' 'grilo-plugins' 'glib2' 'gtk3' 'libhandy' 'libmanette' 'libarchive' 'retro-gtk' 'librsvg' 'libsoup' 'sqlite' 'libxml2')
 makedepends=('cmake' 'meson' 'gcc' 'vala')
 optdepends=('kodi-addon-game-libretro: Libretro wrapper for Kodis Game API'
   'kodi-addon-game-libretro-beetle-psx: Libretro wrapper for Kodis Game API'
@@ -62,7 +62,7 @@ optdepends=('kodi-addon-game-libretro: Libretro wrapper for Kodis Game API'
 checkdepends=('appstream-glib')
 replaces=('gnome-games')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5d9048c48b85e2fe54e09440548bf1e7e991809f5bdbb9f09ecffd790e44e2dd')
+sha512sums=('39e1abfe4dae8a349449d8a42070a5f1eb9e7556c5857477ef24213710aff09faebffd0e77ce1aaf22f65ea3e7d057c6f8b590810dcab97324f8772dd22a31fa')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
@@ -70,9 +70,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
