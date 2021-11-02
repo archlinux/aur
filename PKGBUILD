@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname}"
-        meson --prefix /usr build
+        meson --prefix /usr -Dbuildtype=release build
 }
 
 build() {
