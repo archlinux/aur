@@ -1,14 +1,13 @@
 pkgbase = python-pox
 	pkgdesc = utilities for filesystem exploration and automated builds
-	pkgver = 0.2.8
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = http://pox.rtfd.io/
+	url = https://github.com/uqfoundation/pox
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/uqfoundation/pox/archive/0.2.8.tar.gz
-	sha1sums = 9662648d4e25b08ea3bbcd0876dfedc990cc6f7e
+	source = python-pox-0.3.0.tar.gz::https://github.com/uqfoundation/pox/archive/refs/tags/pox-0.3.0.tar.gz
+	sha256sums = c228f129e99cc871f25ec8c0c366c53ba773aa51613914e21581362c615e13d3
 
 pkgname = python-pox
-

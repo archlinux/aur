@@ -1,22 +1,22 @@
 pkgname=python-pox
-pkgver=0.2.8
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="utilities for filesystem exploration and automated builds"
-url="http://pox.rtfd.io/"
+url="https://github.com/uqfoundation/pox"
 arch=(any)
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/uqfoundation/pox/archive/$pkgver.tar.gz")
-sha1sums=('9662648d4e25b08ea3bbcd0876dfedc990cc6f7e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/uqfoundation/pox/archive/refs/tags/pox-$pkgver.tar.gz")
+sha256sums=('c228f129e99cc871f25ec8c0c366c53ba773aa51613914e21581362c615e13d3')
 
 build() {
-  cd "pox-${pkgver}"
+  cd pox-pox-${pkgver}
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/pox-$pkgver"
-  python setup.py install --root=${pkgdir} --optimize=1 --skip-build
+  cd pox-pox-$pkgver
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
