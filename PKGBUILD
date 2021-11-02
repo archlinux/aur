@@ -1,7 +1,8 @@
+# Maintainer: Philip <philip1731 protonmail ch>
+# Contributor: aksr <aksr at t-com dot me>
 # Contributor: adenosine
-# Maintainer: aksr <aksr at t-com dot me>
 pkgname=ocaml-gsl
-pkgver=1.24.0
+pkgver=1.24.3
 pkgrel=1
 license=('GPL3')
 arch=('i686' 'x86_64')
@@ -11,9 +12,9 @@ options=('!strip')
 depends=('ocaml' 'ocaml-base' 'ocaml-stdio' 'gsl')
 makedepends=('ocaml-findlib' 'dune')
 source=("https://github.com/mmottl/gsl-ocaml/archive/${pkgver}.tar.gz")
-md5sums=('edcbac12bd119a798a677437e2e68681')
-sha1sums=('687c8afa0149bc8c87c23500da0e2118b4ea6d8b')
-sha256sums=('ff901961f6c59f5c728e8a75ba77d236cc6557be5dfb977c003dc08579cc73ea')
+md5sums=('67ee4a9e0a60c48f9aad346afb30e014')
+sha1sums=('ba322865d99d92fd00fda45fc610534e2d2ae3ab')
+sha256sums=('0699c601fe8b60a96ee57daac9f0c252564c170898878ca13b0eaf45b40b083d')
 
 build() {
   cd "${srcdir}/gsl-ocaml-${pkgver}"
