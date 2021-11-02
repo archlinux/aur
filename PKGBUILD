@@ -1,13 +1,13 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=highscore-git
-pkgver=40.0.r222.ge25d33e5
+pkgver=40.0.r251.gea4d847d
 pkgrel=1
 pkgdesc="Highscore is a retro gaming application for the GNOME desktop"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/highscore"
 license=('GPL3')
-depends=('tracker' 'grilo' 'grilo-plugins' 'glib2' 'libsass' 'sassc' 'gtk4' 'libadwaita' 'libhandy' 'libevdev' 'libmanette' 'libarchive' 'retro-gtk-git' 'librsvg' 'libsoup' 'sqlite' 'libxml2')
+depends=('tracker' 'grilo' 'grilo-plugins' 'glib2' 'gtk4' 'libadwaita' 'libmanette' 'libarchive' 'retro-gtk-git' 'librsvg' 'libsoup' 'sqlite' 'libxml2')
 makedepends=('git' 'cmake' 'meson' 'gcc' 'vala')
 optdepends=('kodi-addon-game-libretro: Libretro wrapper for Kodis Game API'
   'kodi-addon-game-libretro-beetle-psx: Libretro wrapper for Kodis Game API'
@@ -77,9 +77,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
