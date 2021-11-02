@@ -1,6 +1,6 @@
 pkgname=ttf-win10
-pkgver=18362.30.190401
-_minor=1528.19h1
+pkgver=19043.928.210409
+_minor=1212.21h1
 _type="release_svc_refresh"
 pkgrel=1
 arch=(any)
@@ -13,7 +13,7 @@ conflicts=(ttf-vista-fonts ttf-ms-win8 ttf-win7-fonts ttf-office-2007-fonts)
 pkgdesc="Microsoft Windows 10 TrueType fonts"
 _file="${pkgver}-${_minor}_${_type}_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
 source=("https://software-download.microsoft.com/download/pr/${_file}")
-sha256sums=("ab4862ba7d1644c27f27516d24cb21e6b39234eb3301e5f1fb365a78b22f79b3")
+sha256sums=("026607e7aa7ff80441045d8830556bf8899062ca9b3c543702f112dd6ffe6078")
 
 
 prepare() {
