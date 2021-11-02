@@ -1,7 +1,7 @@
 # Maintainer: Emeric Grange <emeric.grange@gmail.com>
 
 pkgname=watchflower
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="WatchFlower is a plant monitoring application that reads and plots data from compatible Bluetooth sensors like Xiaomi 'Flower Care' or Parrot 'Flower Power'!"
 arch=("x86_64" "i686")
@@ -10,8 +10,8 @@ license=("GPL3")
 depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols2" "qt5-graphicaleffects" "qt5-connectivity" "qt5-charts" "qt5-svg")
 makedepends=("qt5-tools")
 
-source=("https://github.com/emericg/WatchFlower/archive/v${pkgver}.zip")
-sha256sums=('31d7fd761772b93bb5c7bd9a8d0f2d177f87da1c7eb150c568529b39a2d0da79')
+source=("https://github.com/emericg/WatchFlower/archive/v${pkgver}.tar.gz")
+sha256sums=('c40a23ba7d962b10b2d35e65fe5f0b55f3b97f1773d4304bfb25df6f42a33cac')
 
 build() {
   mkdir -p "WatchFlower-${pkgver}"
