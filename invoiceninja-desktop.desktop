@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Invoice Ninja
+Exec=/opt/invoiceninja-desktop/Invoice_Ninja
+Icon=/opt/invoiceninja-desktop/data/flutter_assets/assets/images/icon.png
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+
