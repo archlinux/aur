@@ -1,5 +1,5 @@
 pkgbase = skanpage
-	pkgdesc = Photo geotagging program
+	pkgdesc = Utility to scan images and multi-page documents
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://apps.kde.org/es/skanpage/

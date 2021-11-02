@@ -3,7 +3,7 @@
 pkgname=skanpage
 pkgver=1.0.0
 pkgrel=1
-pkgdesc='Photo geotagging program'
+pkgdesc='Utility to scan images and multi-page documents'
 arch=(x86_64)
 url='https://apps.kde.org/es/skanpage/'
 license=(GPL)
