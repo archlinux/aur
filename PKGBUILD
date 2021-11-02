@@ -1,7 +1,7 @@
 # Maintainer: second2050 <aur at second2050 dot me >
 
 pkgname='ttf-delugia-code'
-pkgver=2108.26.1
+pkgver=2110.31
 pkgrel=1
 pkgdesc="Cascadia Code + Nerd Fonts, with some small differences."
 arch=('any')
@@ -13,16 +13,16 @@ source=("https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugi
         "https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugia-mono-powerline.zip"
         "https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugia-powerline.zip"
         "https://raw.githubusercontent.com/adam7/delugia-code/master/LICENSE")
-sha512sums=('9feab7216949515b06bd41d4738823e45f6739c3aa810278a3fd9eceb969e4b30e3371438656a1eb79e5d8a8ae69548b0065d86b04d7a031b3dac866255199aa'
-            'e9093af5021d9ae6d376ac950b53bcc94d4cf1c62599fd1e301a95e069c03102178b2218ca2b45d6dc1095843815fde9661cb676fb8803a068e9a1596a823e25'
-            'fb913f752f2d97ca659eed1f34ee8c77a35867bdead3373d97bca2fd39339381153fa37002caf7ba6dd460da97a96f90e99ad2365e2cf01fddc7d4704d84f30d'
-            '87021261b29ffb1e990abcbb073844e9212fc77e4b8129ee788d456c0c3645edce050159ff099c442e943f4877f5d0074afb1df3b5860283af8ab3e7d092707f'
-            'c09155c2f8728156778a6837bb58ee27e7c74d3a9174c576603e485b84403da0366d181eff2b789f04fbcd1cf36f87a9532cdac0ace3ef86dc1099667743ad48'
+sha512sums=('a480d8b0534c37f05cdb73893081058ce473efeb3c410ec51918ac3782ff10fc2432680d730be077a6875838986d8ec1fc64197ec250746f0b4eb3bc18c69737'
+            '21be5abd509ab2806308c3d64221a370006bac30bf64c53669a670948c32393a754860c85fe668361ca519a6f844a66bc2658e7769687719982a7bdeeb9bdf0e'
+            '8b6ae9c915878e1e8a4916578d3b07856c21a4841e16fc3df4dc436e6fdc50f87a6d2102d1520b2ef0d97b65605afcf80aa23d90925ffce975bfacb6cfdb2f66'
+            'fd2a47f3f5694a13c1e4a9043b07ec0d1e9b5f3720e85d802dd5ebf9f45c9132bb7c519b07c9590b9c7b0122b12d5f5f0160030f16716d9979fdbd61e4ec800d'
+            'de04eb41cd1f46a8c66c2835805432da469c56182f0e9fa0f7ec1fee38868da5f5b5dbd18dd1dee7f40bf8a207c9556c973e96def1202cc2e475b87fce752ac6'
             'e8bd6f5cbf2e0c7684b41ad75a6df681fb8db4482592cae334f48efb45f70f091ebd9243df7872e60aaa0f1c7b0afce9a640879e930d71d836b7b3490ca7a7aa')
 
 package() {
-    cd ${srcdir}
-    install -d $pkgdir/usr/share/fonts/TTF/
+    cd "$srcdir"
+    install -d "$pkgdir/usr/share/fonts/TTF/"
     # delugia-book
     install -m644 delugia-book/DelugiaBook-Bold.ttf "$pkgdir/usr/share/fonts/TTF/"
     install -m644 delugia-book/DelugiaBook-BoldItalic.ttf "$pkgdir/usr/share/fonts/TTF/"
