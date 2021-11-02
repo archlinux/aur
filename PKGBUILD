@@ -14,13 +14,11 @@ source=("https://github.com/stargateaudio/stargate/archive/refs/tags/release-${p
 sha256sums=('c5c22b03787b192431a830eb9a20cdd5e2295d5b70ec270096e7fc098b1f58ad')
 
 build() {
-  cd stargate-release-$pkgver
-  cd src
+  cd stargate-release-${pkgver}/src
   make
 }
 
 package() {
-  cd stargate-release-$pkgver
-  cd src
+  cd stargate-release-${pkgver}/src
   PREFIX=${pkgdir}/usr make install
 }
