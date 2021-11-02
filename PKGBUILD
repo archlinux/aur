@@ -4,7 +4,7 @@
 _target=mips64-elf
 pkgname=${_target}-newlib
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('any')
 url='http://sourceware.org/newlib/'
@@ -14,12 +14,16 @@ options=( '!strip' '!emptydirs')
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
 sha256sums=('f296e372f51324224d387cc116dc37a6bd397198756746f93a2b02e9a5d40154')
 
+prepare() {
+  rm -rf build
+  mkdir build
+}
+
 build()
 {
-  rm -rf build
-  mkdir build && cd build
+  cd build
 
-  export CFLAGS_FOR_TARGET='-G0 -O2 -fcommon -ffunction-sections -fdata-sections -fomit-frame-pointer -DHAVE_ASSERT_FUNC'
+  export CFLAGS_FOR_TARGET='-O2 -ffunction-sections -fdata-sections -fomit-frame-pointer -DHAVE_ASSERT_FUNC'
 
   ../newlib-${pkgver}/configure \
     --prefix=/usr \
@@ -38,7 +42,7 @@ build()
 package()
 {
   cd build
-  make DESTDIR="${pkgdir}" install -j1
+  make DESTDIR="${pkgdir}" install
 
   find "$pkgdir"/usr/$_target/lib \( -name "*.a" -or -name "*.o" \) -exec $_target-objcopy -R .comment -R .note -R .debug_info -R .debug_aranges -R .debug_pubnames -R .debug_pubtypes -R .debug_abbrev -R .debug_line -R .debug_str -R .debug_ranges -R .debug_loc '{}' \;
 
