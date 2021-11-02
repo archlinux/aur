@@ -9,8 +9,8 @@ depends=()
 license=('Apache-2.0')
 url='https://github.com/kingToolbox/WindTerm/'
 provides=('windterm')
-source=("${pkgname}-${pkgver}-${arch}.tar.gz::https://github.com/kingToolbox/WindTerm/releases/download/2.1/WindTerm_2.1.0_Linux_Portable.tar.gz"
-	"windterm.png::https://github.com/kingToolbox/WindTerm/raw/master/images/WindTerm_icon_1024x1024.png"
+source=("${pkgname}-${pkgver}-${arch}.tar.gz::https://git.sakura1943.top/kingToolbox/WindTerm/releases/download/2.1/WindTerm_2.1.0_Linux_Portable.tar.gz"
+	"windterm.png::https://git.sakura1943.top/kingToolbox/WindTerm/raw/master/images/WindTerm_icon_1024x1024.png"
 	"windterm"
 	"windterm.desktop")
 sha512sums=('a948712add39ac5e2d4193a4049058e3d09587313ced0e0ca219da4f2b2128e517c14d071c3c617f5e4a51db4fff2cb866ec91451f25ffe64f4053fba71958cb'
@@ -26,9 +26,8 @@ package (){
 	mv "${srcdir}"/* "${pkgdir}"/opt
 	mv "${pkgdir}"/opt/WindTerm_2.1.0 "${pkgdir}"/opt/WindTerm
 	chmod -R 0644 "${pkgdir}"/opt/WindTerm
-	mv "${pkgdir}"/opt/windterm.png "${pkgdir}"/usr/share/icons
-	mv "${pkgdir}"/opt/windterm "${pkgdir}"/usr/bin
-	mv "${pkgdir}"/opt/windterm.desktop "${pkgdir}"/usr/share/applications
-	chmod a+x "${pkgdir}"/opt/WindTerm/WindTerm
-	chmod a+x "${pkgdir}"/usr/bin/windterm
+	install -Dm755 "${pkgdir}"/opt/windterm.png "${pkgdir}"/usr/share/icons
+	install -Dm755 "${pkgdir}"/opt/windterm "${pkgdir}"/usr/bin
+	install -Dm755 "${pkgdir}"/opt/windterm.desktop "${pkgdir}"/usr/share/applications
 }
+
