@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=playwright
-pkgver=1.16.2
+pkgver=1.16.3
 pkgrel=1
 pkgdesc="Node.js library to automate Chromium, Firefox and WebKit with a single API"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha512sums=('96a9ddc32e6b0c8a77b4e2dec799672d2ae5b689aac60564464462e78eeb5e84e5daacbb3d8dabb476d4a2e425eca6365e855279278409856afdb2c9f9b6c936')
-b2sums=('aeaf616e3a11791824d3757b87d7781074da2faefd9467d433e966a49a93241577e0707b502243f655eba9ae8cf78e1d29cbbe326291f2641de59b366e5eaaa8')
+sha512sums=('9df271fcea486fff0e7b12f7ad81b134debcee11b268cdd73697ee333a0f96b7a451122dcae8871ec3610bda100b1dc90e60a7e4edc4cb2c850a7ad98c7e8ca4')
+b2sums=('9a9f758f7631b957a5dc5f1a1ac1ec0f06d2d33ff25b22a559e5d9ca58c78772b0058cfafa008f989aed5baf8d04cc3b98ffa90e54a02b4de49b98b70338979e')
 
 package() {
   local NPM_FLAGS=(--no-audit --no-fund --no-update-notifier)
