@@ -3,7 +3,7 @@ _base=codepy
 pkgname=python-${_base}
 pkgdesc="Generate and execute native code at run time, from Python"
 pkgver=2019.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://documen.tician.de/${_base}"
 license=(MIT)
@@ -28,5 +28,5 @@ package() {
   cd "${_base}"
   export PYTHONHASHSEED=0
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  # install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
