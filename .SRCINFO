@@ -1,0 +1,14 @@
+pkgbase = minetest-castrum
+	pkgdesc = You are on a floor plan of a castle. Collect resources and rebuild the old castle.
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = https://content.minetest.net/packages/1248/castrum/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = castrum-1.11.2.zip
+	options = !strip
+	source = castrum-1.11.2.zip::https://content.minetest.net/packages/1248/castrum/releases/4788/download/
+	sha256sums = ffa126c795e3c3023a920461047557fc64d76b3f531ac48440db5be4ea1756b3
+
+pkgname = minetest-castrum
