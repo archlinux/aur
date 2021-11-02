@@ -1,7 +1,7 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=kubech
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 _commit=f2e337ed1bf8b92db3e84be16c53654cbb9c56cd
 pkgdesc='Set kubectl contexts/namespaces per shell/terminal to manage multi Kubernetes cluster at the same time.'
