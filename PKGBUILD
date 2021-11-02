@@ -3,8 +3,8 @@
 
 pkgbase=manimce
 pkgname=manim
-pkgver=0.11.0
-pkgrel=3
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT' 'custom')
 url="https://github.com/ManimCommunity/manim"
 
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('86c08f5c117bcf617eb8868c5d53347faeb121ca2f8d70d3fbccf99bb588854aa799e9cd790e0cf7c100c6ef074f3b59de78fa34641bc39d6b0c4f2cecc80826')
+sha512sums=('8276d560575de79b53338f0a8030ab577825a47529c6786054c7e36851f1d04c37cfe0b3a3ab3d3abf13ab0c2a78554ce82b8eb64f2d7760d89aa1c7fefe4343')
 
 conflicts=('python-manimlib')
 
@@ -48,7 +48,9 @@ depends=(
 	'python-screeninfo'
 	'python-skia-pathops'
 )
-makedepends=('python-setuptools')
+makedepends=(
+	'python-setuptools'
+)
 optdepends=(
 	'jupyterlab: Jupyter something'
 	'python-grpcio-tools: WebGL renderer'
