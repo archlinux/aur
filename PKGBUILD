@@ -3,7 +3,7 @@
 
 _target=mips64-elf
 pkgname=${_target}-gcc-stage1
-pkgver=11.1.0
+pkgver=11.2.0
 _islver=0.24
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
@@ -13,11 +13,11 @@ url="http://www.gnu.org/software/gcc/"
 depends=('libmpc' 'zstd' )
 makedepends=('gmp' 'mpfr' "${_target}-binutils")
 optdepends=("${_target}-newlib: Standard C library optimized for embedded systems")
-options=('!emptydirs' '!distcc' '!strip')
+options=('!emptydirs' '!strip')
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
-        "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
+        "https://libisl.sourceforge.io/isl-${_islver}.tar.xz"
         "mabi32.patch")
-sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
+sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
             '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
             '86c06dfb12295e665204441ca17440d4e597da24b6cffad052c94268ec562169')
 
@@ -35,10 +35,12 @@ prepare() {
 
   # patch multilib support for mabi=32
   patch --strip=1 --input="${srcdir}"/mabi32.patch
+
+  rm -rf "$srcdir"/build-gcc
+  mkdir "$srcdir"/build-gcc
 }
 
 build() {
-  mkdir -p "${srcdir}"/build-gcc
   cd build-gcc
 
   export CFLAGS_FOR_TARGET="-G0 -Os -pipe"
@@ -84,22 +86,14 @@ build() {
     --disable-threads \
     --disable-werror
 
-  make
+  make all-gcc all-target-libgcc
 }
 
 package() {
   cd build-gcc
 
-  make DESTDIR="${pkgdir}" install -j1
-
-  # strip target binaries
-  find "$pkgdir"/usr/lib/gcc/$_target/$pkgver -type f -and \( -name \*.a -or -name \*.o \) -exec $_target-objcopy -R .comment -R .note -R .debug_info -R .debug_aranges -R .debug_pubnames -R .debug_pubtypes -R .debug_abbrev -R .debug_line -R .debug_str -R .debug_ranges -R .debug_loc '{}' \;
-
-  # strip host binaries
-  find "$pkgdir"/usr/bin/ "$pkgdir"/usr/lib/gcc/$_target/$pkgver -type f -and \( -executable \) -exec strip '{}' \;
+  make install-strip-gcc install-strip-target-libgcc DESTDIR="$pkgdir"
 
   # Remove files that conflict with host gcc package
-  rm -r "$pkgdir"/usr/share/man/man7
-  rm -r "$pkgdir"/usr/share/info
-  rm "$pkgdir"/usr/lib/libcc1.*
+  rm -r "$pkgdir"/usr/{include,share}
 }
