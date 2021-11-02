@@ -1,0 +1,15 @@
+pkgbase = ttf-mulish
+	pkgdesc = Variable sans serif font based on Muli by Vernon Adams
+	pkgver = 3.600
+	pkgrel = 1
+	url = https://github.com/googlefonts/mulish
+	arch = any
+	license = custom:OFL
+	source = Mulish[wght].ttf::https://github.com/googlefonts/mulish/raw/6844cf9dd294f736d4864ba270805cb6e5a49403/fonts/variable/Mulish%5Bwght%5D.ttf
+	source = Mulish-Italic[wght].ttf::https://github.com/googlefonts/mulish/raw/6844cf9dd294f736d4864ba270805cb6e5a49403/fonts/variable/Mulish-Italic%5Bwght%5D.ttf
+	source = https://github.com/googlefonts/mulish/raw/6844cf9dd294f736d4864ba270805cb6e5a49403/OFL.txt
+	b2sums = ff0e0998f7df1fd888f9dfcfb58edc74785887a4aaffbf9422e0bf461d286f2a5f12f16a70a42ed2b99c316eeb41659b38d613ec20198446c1b2aee0568608c1
+	b2sums = 0b4a270fd2189de172fe4025b2696f0f20e3151029a2ec734d80ac7fb5bfad82147a626e25c969d3b1f58bb038462e8b3139e54eb2fe1bc9183c4d28f200e3ca
+	b2sums = 287f782607f522869089423ae4faa803802aae1891566d238721a8d75e04d24d7c376b3049dc87df0710bc5c25f73e5cfcb092dd576f2078d21d79862f06f559
+
+pkgname = ttf-mulish
