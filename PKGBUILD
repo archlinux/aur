@@ -5,7 +5,7 @@ pkgdesc="WASI-enabled WebAssembly C/C++ toolchain (from git repo)"
 arch=("x86_64")
 license=('Apache')
 depends=(clang lld)
-makedepends=(cmake git)
+makedepends=(cmake ninja git)
 source=('git+https://github.com/WebAssembly/wasi-sdk.git'
         'git+https://git.savannah.gnu.org/git/config.git'
         'git+https://github.com/llvm/llvm-project.git'
