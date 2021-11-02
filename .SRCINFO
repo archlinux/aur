@@ -6,6 +6,7 @@ pkgbase = wasi-sdk-git
 	license = Apache
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = python
 	makedepends = git
 	depends = clang
 	depends = lld
