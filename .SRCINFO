@@ -1,6 +1,6 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
-	pkgver = 15_beta
+	pkgver = 16_beta
 	pkgrel = 1
 	url = https://github.com/OpenVPN/openvpn3-linux
 	install = openvpn3.install
@@ -15,6 +15,7 @@ pkgbase = openvpn3
 	makedepends = git
 	makedepends = libnl
 	makedepends = python-jinja
+	makedepends = tinyxml2
 	depends = glib2>=2.50
 	depends = jsoncpp>=0.10.5
 	depends = libcap-ng>=0.7.5
@@ -29,8 +30,7 @@ pkgbase = openvpn3
 	optdepends = python-gobject
 	optdepends = polkit>=0.105: for systemd-resolved integration
 	optdepends = tinyxml2>=2.1.0: for AWS-VPC integration
-	optdepends = tinyxml2: for AWS-VPC integration
-	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v15_beta
+	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v16_beta
 	sha256sums = SKIP
 
 pkgname = openvpn3
