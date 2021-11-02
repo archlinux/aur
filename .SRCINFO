@@ -1,0 +1,14 @@
+pkgbase = minetest-minetest-extended
+	pkgdesc = The extended version of the default Minetest Game.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://content.minetest.net/packages/PetiAPocok/minetest_extended/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = minetest_extended-1.2.zip
+	options = !strip
+	source = minetest_extended-1.2.zip::https://content.minetest.net/packages/PetiAPocok/minetest_extended/releases/7305/download/
+	sha256sums = 4abcab682dba8b86ad31eec716222eff4f73603a98e1cfea89767ee2ad278c61
+
+pkgname = minetest-minetest-extended
