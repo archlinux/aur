@@ -125,6 +125,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # r8152 s0i3 wake fix
         "r8152-fix-spurious-wakeups-from-s0i3.patch"
 
+        # r8169 hwIDs for the G14?/G15
+        "r8169-Add-device-10ec-8162-to-driver-r8169.patch"
+
         # ASUS ROG enablement
         "asus-wmi-Add-panel-overdrive-functionality.patch"                              # landing in 5.15
         "asus-wmi-Add-dgpu-disable-method.patch"                                        # "
@@ -173,6 +176,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             'f47a5a5e329e410a0ae7d46b450707d5575a4deda5b3b58281f5eca14938fb21'
+            'e4e55dd548c7689596a7c5c42e49c8f072bd2613bd416c6910b5c6410120eb1d'
             '1ab75535772c63567384eb2ac74753e4d5db2f3317cb265aedf6151b9f18c6c2'
             '8cc771f37ee08ad5796e6db64f180c1415a5f6e03eb3045272dade30ca754b53'
             'f3461e7cc759fd4cef2ec5c4fa15b80fa6d37e16008db223f77ed88a65aa938e'
