@@ -4,7 +4,7 @@
 # https://wiki.archlinux.org/title/AUR_submission_guidelines
 
 pkgname="mouselogger-git"
-pkgver="1.0.1"
+pkgver="1.0.2"
 pkgrel="1"
 pkgdesc="MouseLogger for University DataScience Project"
 arch=("x86_64")
