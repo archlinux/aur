@@ -4,16 +4,12 @@
 
 pkgname=python-sklearn-pandas
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Pandas integration with scikit-learn'
 arch=(any)
 url='https://github.com/scikit-learn-contrib/sklearn-pandas'
 license=(custom:zlib/bsd)
-depends=('python'
-         'python-scikit-learn'
-         'python-scipy'
-         'python-pandas'
-         'python-numpy')
+depends=('python' 'python-scikit-learn' 'python-scipy' 'python-pandas' 'python-numpy')
 makedepends=(python-setuptools)
 checkdepends=(python-pytest python-joblib)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -32,7 +28,6 @@ check() {
 package() {
   cd "${srcdir}/sklearn-pandas-${pkgver}"
   python setup.py install --optimize=1 --skip-build --root="${pkgdir}"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
