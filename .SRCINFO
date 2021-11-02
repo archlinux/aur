@@ -29,8 +29,10 @@ pkgbase = wlroots-hidpi-git
 	conflicts = wlroots-git
 	options = debug
 	source = wlroots-hidpi-git::git+https://github.com/swaywm/wlroots
-	source = xwayland_hidpi.diff::https://github.com/swaywm/wlroots/compare/master...MisterDA:xwayland_hidpi.diff
+	source = 0001-xwayland-add-support-for-global-scale-factor.patch
+	source = 0002-xwayland-add-support-for-changing-global-scale-facto.patch
 	sha256sums = SKIP
-	sha256sums = bd3a5295c404be332372d1504177d1e7c7fd8649b0bc9ef603c586843a46f4b4
+	sha256sums = 68f1c7c550a317d8175311325b6c4809b0ec761b0badba7926eca7475d1bc27f
+	sha256sums = 9004f727c18129c667804fa987938c8d4a1a27ec8fed6bb2668f03284a884dcc
 
 pkgname = wlroots-hidpi-git

@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.14.0.r303.gf7ea33da
+pkgver=0.14.0.r330.g0855cdac
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
@@ -30,12 +30,14 @@ makedepends=(
 	vulkan-headers
 	wayland-protocols
 	xorgproto)
+# https://gitlab.freedesktop.org/MisterDA/wlroots/-/tree/xwayland_hidpi
 source=("${pkgname}::git+${url}"
-        # "xwayland_hidpi.diff::https://github.com/swaywm/wlroots/pull/2064.diff"
-        "xwayland_hidpi.diff::https://github.com/swaywm/wlroots/compare/master...MisterDA:xwayland_hidpi.diff"
+        "0001-xwayland-add-support-for-global-scale-factor.patch"
+        "0002-xwayland-add-support-for-changing-global-scale-facto.patch"
        )
 sha256sums=('SKIP'
-            'bd3a5295c404be332372d1504177d1e7c7fd8649b0bc9ef603c586843a46f4b4')
+            '68f1c7c550a317d8175311325b6c4809b0ec761b0badba7926eca7475d1bc27f'
+            '9004f727c18129c667804fa987938c8d4a1a27ec8fed6bb2668f03284a884dcc')
 
 pkgver () {
 	cd "${pkgname}"
@@ -48,7 +50,8 @@ pkgver () {
 
 prepare () {
 	cd "${pkgname}"
-	patch --forward --strip=1 --input="${srcdir}/xwayland_hidpi.diff"
+	patch -Np1 < "${srcdir}/0001-xwayland-add-support-for-global-scale-factor.patch"
+        patch -Np1 < "${srcdir}/0002-xwayland-add-support-for-changing-global-scale-facto.patch" 
 }
 
 build () {
