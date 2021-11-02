@@ -1,0 +1,17 @@
+pkgbase = python-codepy
+	pkgdesc = Generate and execute native code at run time, from Python
+	pkgver = 2019.1
+	pkgrel = 1
+	url = https://documen.tician.de/codepy
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-cgen
+	depends = boost
+	source = git+https://github.com/inducer/codepy.git?signed#tag=v2019.1
+	validpgpkeys = 900A958D9A0ACA58B1468F2471AA298BCA171145
+	sha512sums = SKIP
+
+pkgname = python-codepy
