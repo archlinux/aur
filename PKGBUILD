@@ -1,6 +1,6 @@
 # Maintainer: Pieter Joost van de Sande <pj@born2code.net>
 pkgname=gitsu
-pkgver=0.1.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A simple cli tool for switching git user easily.'
 url='https://github.com/matsuyoshi30/gitsu'
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('git')
 depends=('go' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6e17b8e73559543e902cc6e2066fa0b5f9543d7073216f28e5d6f6de49b10df3')
+sha256sums=('a00ea6fd4088f737d8dbf70e91185dcb330105444206681306815fcd05461866')
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
