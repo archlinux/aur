@@ -1,7 +1,7 @@
-From e2efcfb1c34a8f139af3cde474c91b55513d70b8 Mon Sep 17 00:00:00 2001
+From 7f907dc1beefcf57325372e6ebefa6df75e1af4c Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 7 Oct 2021 11:15:58 -0600
-Subject: [PATCH] LINUX 5.14: explicitly set set_page_dirty to default
+Subject: [PATCH 1/2] LINUX 5.14: explicitly set set_page_dirty to default
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -31,7 +31,18 @@ this is close to the minimum supported Linux version 2.6.18, we are not
 introducing an additional autoconf test to determine which header file
 the declaration for __set_page_dirty_buffers resides in.
 
-Change-Id: I8f2a00e374635ab1aa69d6eaef8cf97bb449d089
+Reviewed-on: https://gerrit.openafs.org/14826
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Tested-by: Michael Laß <lass@mail.uni-paderborn.de>
+Reviewed-by: Michael Laß <lass@mail.uni-paderborn.de>
+Tested-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Ralf Brunckhorst <rbrunckhorst@sinenomine.net>
+Tested-by: Ralf Brunckhorst <rbrunckhorst@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit ba485a13e965909b63b25103fdf810de381e4977)
+
+Change-Id: Iae61573e5ccf9458646eba4403322536fd86f2bf
 ---
  src/afs/LINUX/osi_vnodeops.c | 2 ++
  1 file changed, 2 insertions(+)
@@ -57,5 +68,5 @@ index f4bedae0f..00103a538 100644
    .write_begin =        afs_linux_write_begin,
    .write_end =          afs_linux_write_end,
 -- 
-2.33.0
+2.33.1
 
