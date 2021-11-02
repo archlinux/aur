@@ -1,7 +1,7 @@
 pkgbase = steamos-compositor-plus
 	pkgdesc = Compositor used by SteamOS 2.x with some added tweaks and fixes
-	pkgver = 1.8.4
-	pkgrel = 2
+	pkgver = 1.8.5
+	pkgrel = 1
 	url = https://github.com/chimeraos/steamos-compositor-plus
 	arch = i686
 	arch = x86_64
@@ -18,13 +18,15 @@ pkgbase = steamos-compositor-plus
 	depends = lsb-release
 	depends = ttf-dejavu
 	depends = xorg-xrandr
+	depends = xorg-xinput
+	depends = systemd
 	depends = steam
 	optdepends = sxhkd
 	optdepends = alsa-utils
 	conflicts = steamos-compositor
-	source = steamos-compositor-plus-1.8.4.tar.gz::https://github.com/chimeraos/steamos-compositor-plus/archive/1.8.4.tar.gz
+	source = steamos-compositor-plus-1.8.5.tar.gz::https://github.com/chimeraos/steamos-compositor-plus/archive/1.8.5.tar.gz
 	source = https://repo.steampowered.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_1.10.tar.xz
-	md5sums = cd527d869883cd733eb264eedbb36382
+	md5sums = 6196f972a0d19a5e951b287405370a09
 	md5sums = ab8b731fb917aff183aa338bf3298495
 
 pkgname = steamos-compositor-plus
