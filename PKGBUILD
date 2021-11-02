@@ -1,9 +1,9 @@
 # Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 
 pkgname=auracle-git
-_pkgname=auracle
+_pkgname="${pkgname%-git}"
 pkgver=r366.8739929
-pkgrel=1
+pkgrel=2
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
 url="https://github.com/falconindy/auracle.git"
