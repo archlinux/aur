@@ -12,7 +12,7 @@ options=('!strip')
 install="$pkgname.install"
 source=("https://production-alfaview-assets.alfaview.com/stable/linux/${pkgname}_${pkgver}.deb")
 noextract=("${pkgname}_${pkgver}.deb")
-sha256sums=('d6fb3ae5e53c210ae401cf001f3715d3cb61979f08a99dd1ed99458e47186a2a')
+sha256sums=('84e84b91052ab782540d536946b89a2d52cf320e8b6d1d9aa7cbf535d9378b67')
 
 
 prepare() {
