@@ -9,8 +9,8 @@ depends=()
 license=('Apache-2.0')
 url='https://github.com/kingToolbox/WindTerm/'
 provides=('windterm')
-source=("${pkgname}-${pkgver}-${arch}.tar.gz::https://git.sakura1943.top/kingToolbox/WindTerm/releases/download/2.1/WindTerm_2.1.0_Linux_Portable.tar.gz"
-	"windterm.png::https://git.sakura1943.top/kingToolbox/WindTerm/raw/master/images/WindTerm_icon_1024x1024.png"
+source=("${pkgname}-${pkgver}-${arch}.tar.gz::https://github.com/kingToolbox/WindTerm/releases/download/2.1/WindTerm_2.1.0_Linux_Portable.tar.gz"
+	"windterm.png::https://github.com/kingToolbox/WindTerm/raw/master/images/WindTerm_icon_1024x1024.png"
 	"windterm"
 	"windterm.desktop")
 sha512sums=('a948712add39ac5e2d4193a4049058e3d09587313ced0e0ca219da4f2b2128e517c14d071c3c617f5e4a51db4fff2cb866ec91451f25ffe64f4053fba71958cb'
@@ -19,16 +19,16 @@ sha512sums=('a948712add39ac5e2d4193a4049058e3d09587313ced0e0ca219da4f2b2128e517c
 	"ff9246d8075e65e9efce9e5c2f6e1d5ed9b03d848951b0d8cc5555c475f7af406c4ef51d2ee514399e28218850a866740eb79b411acccfa621d9df7efa0f9c0a")
 
 package (){
-	mkdir --parent "${pkgdir}"/opt
-	mkdir --parent "${pkgdir}"/usr/share/icons
-	mkdir --parent "${pkgdir}"/usr/share/applications
-	mkdir --parent "${pkgdir}"/usr/bin
+	install -d "${pkgdir}"/opt
+	install -d "${pkgdir}"/usr/share/icons
+	install -d "${pkgdir}"/usr/share/applications
+	install -d "${pkgdir}"/usr/bin
 	mv "${srcdir}"/* "${pkgdir}"/opt
 	mv "${pkgdir}"/opt/WindTerm_2.1.0 "${pkgdir}"/opt/WindTerm
 	chmod -R 0644 "${pkgdir}"/opt/WindTerm
 	install -Dm755 "${pkgdir}"/opt/windterm.png "${pkgdir}"/usr/share/icons
 	install -Dm755 "${pkgdir}"/opt/windterm "${pkgdir}"/usr/bin
 	install -Dm755 "${pkgdir}"/opt/windterm.desktop "${pkgdir}"/usr/share/applications
-	chmod 0755 "${pkgdir}"/opt/Windterm/Windterm
+	chmod 0755 "${pkgdir}"/opt/WindTerm/WindTerm
 }
 
