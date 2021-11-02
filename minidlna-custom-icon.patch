@@ -250,9 +250,9 @@ index 79e4ffe..6322fa1 100644
 --- a/options.c
 +++ b/options.c
 @@ -67,6 +67,10 @@ static const struct {
- 	{ MERGE_MEDIA_DIRS, "merge_media_dirs" },
  	{ WIDE_LINKS, "wide_links" },
  	{ TIVO_DISCOVERY, "tivo_discovery" },
+ 	{ ENABLE_SUBTITLES, "enable_subtitles" },
 +	{ ICON_PNG_SM, "icon_png_small" },
 +	{ ICON_PNG_LRG, "icon_png_large" },
 +	{ ICON_JPEG_SM, "icon_jpeg_small" },
@@ -265,9 +265,9 @@ index cb4c3be..f4c5e8f 100644
 --- a/options.h
 +++ b/options.h
 @@ -60,6 +60,10 @@ enum upnpconfigoptions {
- 	MERGE_MEDIA_DIRS,		/* don't add an extra directory level when there are multiple media dirs */
  	WIDE_LINKS,			/* allow following symlinks outside the defined media_dirs */
  	TIVO_DISCOVERY,			/* TiVo discovery protocol: bonjour or beacon. Defaults to bonjour if supported */
+ 	ENABLE_SUBTITLES,		/* Enable generic subtitle support for all clients by default */
 +	ICON_PNG_SM,			/* path to small png icon */
 +	ICON_PNG_LRG,			/* path to large png icon */
 +	ICON_JPEG_SM,			/* path to small jpeg icon */

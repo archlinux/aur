@@ -1,10 +1,8 @@
 pkgbase = minidlna-custom-icon
 	pkgdesc = A DLNA/UPnP-AV Media server (aka ReadyDLNA) with patch to set a custom icon (instead of a tux)
-	pkgver = 1.2.1
-	pkgrel = 2
-	url = http://sourceforge.net/projects/minidlna/
-	changelog = changelog
-	arch = i686
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/minidlna/
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -19,16 +17,11 @@ pkgbase = minidlna-custom-icon
 	conflicts = minidlna
 	conflicts = readymedia-transcode-git
 	backup = etc/minidlna.conf
-	source = minidlna::git://git.code.sf.net/p/minidlna/git#tag=v1_2_1
-	source = minidlna.service
-	source = minidlna.tmpfiles
-	source = minidlna.sysusers
+	source = minidlna::git+https://git.code.sf.net/p/minidlna/git#tag=v1_3_0
 	source = minidlna-custom-icon.patch
-	sha256sums = SKIP
-	sha256sums = dd0fd8f21b49de74c98cd848c820262634cbfb2d26a6fc360eb4455fe1089d1c
-	sha256sums = 63a6edd22f14ba19618e251f4e7117da65ab80c8136466cfe1035cff7e7fde81
-	sha256sums = b68ae22828629bc0143d2318e5ec58c94d399ec09bdac529972e35f50321628c
-	sha256sums = 9f871d5dd24fd272b84263b0061ef2ccbeb70a4a952df7ea7b380ae20fe5eeb3
+	source = minidlna.service
+	sha512sums = SKIP
+	sha512sums = dbeee5950fa05dfc52ee7561d80bc34314165348aaec3e77386d25db56bd46931b3ad8f7017e6248fe96c498a2bb7d03fb514c71b0a7bb1ac8c8ade13a5aba60
+	sha512sums = fc5692adf537e203a0466a923d350498faba4f29a219bb6e1ad527fc267d6143403fe8b4c6f5d746805f451142b1ba3ed4e9bb57e445255f3769df8e037a8b66
 
 pkgname = minidlna-custom-icon
-

@@ -3,10 +3,11 @@ Description=minidlna server
 After=network.target
 
 [Service]
-Type=simple
-User=minidlna
-Group=minidlna
+Type=exec
+DynamicUser=yes
 ExecStart=/usr/bin/minidlnad -S
+RuntimeDirectory=minidlna
+CacheDirectory=minidlna
 ProtectSystem=full
 ProtectHome=on
 PrivateDevices=on
