@@ -15,8 +15,8 @@
 
 #
 _pkg_name=codelite
-_pkg_ver=15.0.6
-_commit=c4971afd07a893b42a8aaf1d855fb54de895cc5f
+_pkg_ver=15.0.7
+#_commit=c4971afd07a893b42a8aaf1d855fb54de895cc5f
 
 # pkg
 pkgname=${_pkg_name}-unstable
@@ -67,7 +67,7 @@ source=(
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('713e65233d8d0ba87602c3ce68754a01'
+md5sums=('d39d6bbe560b607e20d944e15cc669b6'
          '20f3428eb831c3ff2539a7228afaa3b4')
 
 noextract=('wxgui.zip')
@@ -93,7 +93,7 @@ BUILD_DIR="_build"
 prepare()
 {
   cd "${srcdir}/${_pkg_name_ver}"
-  patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
+  #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
 }
 
 
