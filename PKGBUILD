@@ -1,14 +1,14 @@
 # Maintainer: Nogweii <me@nogweii.net>
 pkgname=zk
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool helping you to maintain a Zettelkasten or personal wiki.'
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/mickael-menu/${pkgname}"
 license=('GPL3')
 depends=('icu')
 makedepends=('go' 'git')
-source=("https://github.com/mickael-menu/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("zk-${pkgver}.tar.gz::https://github.com/mickael-menu/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c68168a99950598e2ecfc35aa75bbd9120ed958ce1c39a77c340c4e7f27f6de5')
 
 build() {
@@ -31,6 +31,6 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
-  mkdir -p "$pkgdir"/usr/share/docs/$pkgname
-  cp -r "docs" "$pkgdir"/usr/share/docs/$pkgname
+  mkdir -p "$pkgdir"/usr/share/doc
+  cp -r "docs" "$pkgdir"/usr/share/doc/$pkgname
 }
