@@ -2,15 +2,15 @@
 # Contributor: Niklas Bolander <niklas.bolander at gmail dot com>
 
 pkgname=zsh-fast-syntax-highlighting-git
-pkgver=r760.01471d8
+pkgver=r884.9a5a4a5
 pkgrel=1
 pkgdesc='Optimized and extended zsh-syntax-highlighting'
 arch=('any')
-url='https://github.com/zdharma/fast-syntax-highlighting'
+url='https://github.com/zdharma-continuum/fast-syntax-highlighting'
 license=('BSD')
 depends=('zsh')
 makedepends=('git')
-source=('git+https://github.com/zdharma/fast-syntax-highlighting.git')
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 _gitname='fast-syntax-highlighting'
