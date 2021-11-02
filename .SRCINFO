@@ -6,6 +6,7 @@ pkgbase = python-pymbolic
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python-pytools
 	depends = python
 	depends = python-sympy
 	depends = python-symengine
@@ -13,6 +14,7 @@ pkgbase = python-pymbolic
 	sha256sums = bdf050c0416d47c1f3462a6ff64f0eae6c8a58ba6f58aca7221e325491f23688
 
 pkgname = python-pymbolic
+	depends = python-pytools
 	depends = python
 	depends = python-sympy
 	depends = python-symengine
