@@ -8,7 +8,7 @@
 pkgname=ghc8.10-bin
 pkgver=8.10.7
 pkgrel=1
-pkgdesc='Legacy binary GHC 8.10 installed on /usr/bin/ghc-8.10 (Mar/2020 - Feb/2021).'
+pkgdesc='Legacy binary GHC 8.10 installed on /usr/bin/ghc-8.10 (Mar/2020 - Aug/2021).'
 arch=('x86_64')
 url='http://www.haskell.org/ghc/'
 license=('custom')
