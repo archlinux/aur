@@ -2,7 +2,7 @@
 
 _pkgname=libqpsd
 pkgname=libqpsd-git
-pkgver=20190113
+pkgver=20200419
 pkgrel=1
 pkgdesc="PSD & PSB Plugin for Qt/C++ (Qt4/Qt5) "
 arch=("x86_64")
