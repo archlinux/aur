@@ -1,6 +1,6 @@
 # Maintainer: Haris Gušić <harisgusic dot dev at gmail dot com>
 pkgname=tuterm
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A framework for real-time tutorials and demonstrations of CLI programs"
 arch=('x86_64')
