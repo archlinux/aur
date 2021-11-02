@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=gitqlient-git
-pkgver=v1.3.0.r50.7df3880
+pkgver=v1.3.2.r9.6b0a02f
 pkgrel=1
 pkgdesc="Development branch of GitQlient"
 arch=(x86_64)
@@ -16,18 +16,18 @@ sha256sums=(SKIP)
 _rootdir=GitQlient
 
 pkgver() {
-	cd "$_rootdir"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "$_rootdir"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-	cd "$_rootdir"
+    cd "$_rootdir"
     qmake PREFIX="/usr"
     make
 }
 
 package() {
-	cd "$_rootdir"
+    cd "$_rootdir"
     make INSTALL_ROOT="${pkgdir}" install
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/gitqlient"
 }
