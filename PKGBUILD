@@ -8,7 +8,7 @@
 # Maintainer: Suvojit Ghosh <ghoshsuvojit2012@gmail.com>
 # Developer: Ronak Sanpui
 pkgname=senpahe-git
-pkgver=r45.b27ffec
+pkgver=r50.7ea4895
 pkgrel=1
 epoch=
 pkgdesc="Stream and download anime from animepahe right from the terminal!"
