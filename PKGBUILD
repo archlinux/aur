@@ -2,16 +2,16 @@
 pkgbase=python-sncosmo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Python library for supernova cosmology"
 arch=('i686' 'x86_64')
 url="https://sncosmo.readthedocs.io"
 license=('BSD')
 makedepends=('cython' 'python-numpy')
-checkdepends=('python-pytest-astropy' 'python-scipy' 'python-astropy' 'python-extinction' 'python-iminuit' 'python-emcee' 'python-nestle' 'python-matplotlib')
+checkdepends=('python-pytest-astropy' 'python-scipy' 'python-astropy' 'python-extinction' 'python-iminuit' 'python-emcee' 'python-nestle' 'python-matplotlib' 'python-yaml')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('8ca17749ef0257330b9e93d268b9a25d')
+md5sums=('8554c21efd602ed35c7f4a703dfe26b9')
 
 prepare() {
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
@@ -26,11 +26,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-${_pyver}" || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-${_pyver}" -m "not might_download" || warning "Tests failed"
 }
 
 package() {
-    depends=('python>=3.5' 'python-scipy>=0.19.0' 'python-astropy>=1.3.0' 'python-extinction>=0.4.2')
+    depends=('python>=3.5' 'python-scipy>=0.19.0' 'python-astropy>=1.3.0' 'python-extinction>=0.4.2' 'python-yaml>=3.13')
     optdepends=('python-matplotlib: For plotting functions'
                 'python-iminuit: For light curve fitting using the Minuit minimizer in sncosmo.fit_lc'
                 'python-emcee: For MCMC light curve parameter estimation in sncosmo.mcmc_lc'
