@@ -43,4 +43,5 @@ build() {
 }
 
 package() {
+    true
 }
