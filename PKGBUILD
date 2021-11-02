@@ -14,7 +14,6 @@ options=(staticlibs !strip)
 install=powershell-preview.install
 sha256sums=('F93016A0CFD85711D8EB274A123B353F463F3E589BAA53C8AF18C5C269126A12')
 source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.deb_amd64.deb")
-sha256sums=('28434376D4A14F42805578D49C08D85611DE8D2984B868C8317BCA2E68D33434')
 
 # omi fix (details here https://github.com/jborean93/omi/): not tested, feedback needed
 # comment the two lines above and uncomment these lines down here
