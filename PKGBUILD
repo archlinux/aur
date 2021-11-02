@@ -1,6 +1,6 @@
 # Maintainer: Niklas Leinz <niklas[at]corusm[dot]de>
 pkgname="mouselogger-git"
-pkgver="1.0.0"
+pkgver="1.0.1"
 pkgrel="1"
 pkgdesc="MouseLogger for University DataScience Project"
 arch=("x86_64")
