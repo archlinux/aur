@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Threema
-Comment=Desktop client for Threema (requires the mobile app)
-Exec=threema %U
-Icon=threema
+Name={{appname}}
+Comment={{pkgdesc}}
+Exec={{binname}} %U
+Icon={{pkgname}}
 Type=Application
 StartupNotify=true
 Categories=Social Media;

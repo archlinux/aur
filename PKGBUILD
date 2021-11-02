@@ -1,10 +1,12 @@
 # Maintainer: Danilo <aur ät dbrgn döt ch>
 pkgname=threema-desktop
 _binname=threema
-pkgver=1.0.3
-_threema_web_ver=2.3.17
-pkgrel=2
+_variant=consumer
+_appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
+pkgver=1.0.3
+pkgrel=3
+_threema_web_ver=2.3.17 # Keep in sync with version used by threema-desktop
 arch=("x86_64")
 url="https://github.com/threema-ch/threema-web-electron"
 license=('AGPL')
@@ -18,7 +20,7 @@ source=(
 sha256sums=(
   "5ddd3ec7e7ec422c624a744a230bf1fb3d35e96ee731ee9af70ab6e89024e094"
   "15d80662188332d019ea82cf2486952b4deca39790b275b585a3c4178e7a8d54"
-  "fcea11858be11ca7c51f44fa0750b33d11b16065a48ddc8566d119b560ce5cb8"
+  "ccfdae3416e2a1f096cfaf67fd8f8dacb0d8348582fc666ecc8b5b0d08ef5bf2"
 )
 
 build() {
@@ -39,34 +41,38 @@ build() {
 
   # Build Electron app
   npm run app:install
-  TARGET_OS=linux-deb
-  TARGET_DIST=linux:deb
-  node tools/patches/post-patch-threema-web.js $TARGET_OS consumer
-  npm run electron:dist:$TARGET_DIST:consumer
+  _target_os=linux-deb
+  _target_dist=linux:deb
+  node tools/patches/post-patch-threema-web.js $_target_os $_variant
+  if [ "$_variant" = "red" ]; then tools/patches/red-patch-threema-web.sh; fi
+  npm run electron:dist:$_target_dist:$_variant
 }
 
 package() {
   cd "${srcdir}/"
 
-  # Set some variables
-  app_root="${srcdir}/threema-web-electron-release-${pkgver}-latest"
+  _app_root="${srcdir}/threema-web-electron-release-${pkgver}-latest"
 
   # Copy application
   mkdir -p "${pkgdir}/usr/lib/${pkgname}/resources/"
-  cp "${app_root}/app/build/dist-electron/packaged/Threema-linux-x64/resources/app.asar" \
+  cp "${_app_root}/app/build/dist-electron/packaged/${_appname}-linux-x64/resources/app.asar" \
      "${pkgdir}/usr/lib/${pkgname}/resources/"
 
   # Create launcher
   mkdir -p "${pkgdir}/usr/bin/"
-  LAUNCHER="${pkgdir}/usr/bin/${_binname}"
-  echo -e "#!/bin/sh\nexec electron '/usr/lib/${pkgname}/resources/app.asar' '$@'" > $LAUNCHER
-  chmod +x $LAUNCHER
+  _launcher="${pkgdir}/usr/bin/${_binname}"
+  echo -e "#!/bin/sh\nexec electron '/usr/lib/${pkgname}/resources/app.asar' '$@'" > "$_launcher"
+  chmod +x "$_launcher"
 
   # Copy desktop files
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/pixmaps"
-  cp "${srcdir}/threema.desktop" "${pkgdir}/usr/share/applications/threema.desktop"
-  cp "${app_root}/app/assets/icons/png/consumer-512x512.png" "${pkgdir}/usr/share/pixmaps/threema.png"
+  cp "${_app_root}/app/assets/icons/png/${_variant}-512x512.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  cp "${srcdir}/threema.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  sed -i -s "s/{{appname}}/${_appname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  sed -i -s "s/{{binname}}/${_binname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  sed -i -s "s/{{pkgname}}/${pkgname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  sed -i -s "s/{{pkgdesc}}/${pkgdesc}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
