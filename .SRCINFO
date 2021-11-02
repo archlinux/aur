@@ -1,0 +1,16 @@
+pkgbase = lib32-libcapi
+	pkgdesc = Modular libcapi20 (32 bit lib)
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = https://www.tabos.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	makedepends = git
+	depends = libcapi
+	conflicts = isdn4k-utils
+	options = !emptydirs
+	source = git+https://gitlab.com/tabos/libcapi.git#tag=v3.2.3
+	sha512sums = SKIP
+
+pkgname = lib32-libcapi
