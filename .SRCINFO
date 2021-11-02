@@ -6,7 +6,9 @@ pkgbase = usrefl-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = utemplate-git
+	depends = ucmake
+	depends = utemplate
+	provides = usrefl
 	source = git+https://github.com/Ubpa/USRefl.git
 	md5sums = SKIP
 

@@ -8,7 +8,8 @@ pkgdesc="Header-only, tiny (99 lines) and powerful C++20 static reflection libra
 arch=('any')
 url="https://github.com/Ubpa/USRefl"
 license=('MIT')
-depends=('utemplate-git')
+depends=('ucmake' 'utemplate')
+provides=('usrefl')
 makedepends=('git')
 source=(git+https://github.com/Ubpa/USRefl.git)
 md5sums=('SKIP')
@@ -30,7 +31,8 @@ package() {
 	_dirname=`ls $srcdir/install`
 	mkdir -p "${pkgdir}/usr/lib/cmake"
 	mkdir -p "${pkgdir}/usr/include"
+	mkdir -p "${pkgdir}/usr/share/licenses/usrefl-git"
 	mv "$srcdir/install/$_dirname/cmake" "${pkgdir}/usr/lib/cmake/USRefl"
 	mv "$srcdir/install/$_dirname/include/USRefl" "${pkgdir}/usr/include/"
-	patch "${pkgdir}/usr/lib/cmake/USRefl/USReflConfig.cmake" "${srcdir}/../fix.patch"
+	mv "$srcdir/USRefl/LICENSE" "${pkgdir}/usr/share/licenses/usrefl-git"
 }
