@@ -1,6 +1,7 @@
 pkgbase = ttf-cutive-mono
+	pkgdesc = Monospaced font based on the IBM Executive typewriters.
 	pkgver = 1.001
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vernnobile/CutiveFont/
 	arch = any
 	license = custom:OFL

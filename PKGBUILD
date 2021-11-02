@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=ttf-cutive-mono
 pkgver=1.001
-pkgrel=3
-description='Monospaced font based on the IBM Executive typewriters.'
+pkgrel=4
+pkgdesc='Monospaced font based on the IBM Executive typewriters.'
 url=https://github.com/vernnobile/CutiveFont/
 arch=('any')
 license=('custom:OFL')
