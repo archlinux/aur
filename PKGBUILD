@@ -5,10 +5,12 @@
 pkgname=pipewire-jack-replacement
 pkgdesc="Use pipewire-jack as replacement for JACK (building headers + pkgconfig)"
 pkgver=1.9.19
-pkgrel=2
+pkgrel=2.1
 makedepends=("git" "coreutils" "findutils")
 depends=("pipewire-jack" "pipewire-jack-dropin")
-provides=("jack" "libjacknet.so=0-64" "libjackserver.so=0-64" "libjack.so=0-64")
+provides=("libjacknet.so=0-64" "libjackserver.so=0-64" "libjack.so=0-64" "jack2" "jack")
+replaces=(jack2)
+conflicts=(jack2)
 
 url="https://github.com/jackaudio/headers/"
 source=("git+https://github.com/jackaudio/headers/" "pipewire-jack.pc")

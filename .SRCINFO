@@ -1,7 +1,7 @@
 pkgbase = pipewire-jack-replacement
 	pkgdesc = Use pipewire-jack as replacement for JACK (building headers + pkgconfig)
 	pkgver = 1.9.19
-	pkgrel = 2
+	pkgrel = 2.1
 	url = https://github.com/jackaudio/headers/
 	arch = any
 	license = GPL2
@@ -10,10 +10,13 @@ pkgbase = pipewire-jack-replacement
 	makedepends = findutils
 	depends = pipewire-jack
 	depends = pipewire-jack-dropin
-	provides = jack
 	provides = libjacknet.so=0-64
 	provides = libjackserver.so=0-64
 	provides = libjack.so=0-64
+	provides = jack2
+	provides = jack
+	conflicts = jack2
+	replaces = jack2
 	source = git+https://github.com/jackaudio/headers/
 	source = pipewire-jack.pc
 	sha256sums = SKIP
