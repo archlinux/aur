@@ -35,4 +35,5 @@ package() {
 	mv "$srcdir/install/$_dirname/cmake" "${pkgdir}/usr/lib/cmake/USRefl"
 	mv "$srcdir/install/$_dirname/include/USRefl" "${pkgdir}/usr/include/"
 	mv "$srcdir/USRefl/LICENSE" "${pkgdir}/usr/share/licenses/usrefl-git"
+	sed -i "s?\"\${CMAKE_CURRENT_LIST_DIR}/../include\"?\"/usr/include\"?g" "${pkgdir}/usr/lib/cmake/USRefl/USReflConfig.cmake"
 }
