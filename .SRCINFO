@@ -1,6 +1,6 @@
 pkgbase = setzer-git
 	pkgdesc = LaTeX editor written in Python with Gtk
-	pkgver = 0.4.1+4+ge9c96fa
+	pkgver = 0.4.1.r32.gf99cef8
 	pkgrel = 1
 	url = https://www.cvfosammmm.org/setzer/
 	arch = any
@@ -25,4 +25,3 @@ pkgbase = setzer-git
 	sha256sums = SKIP
 
 pkgname = setzer-git
-
