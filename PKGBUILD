@@ -41,3 +41,6 @@ build() {
     build/libcxx.BUILT \
     build/libcxxabi.BUILT
 }
+
+package() {
+}
