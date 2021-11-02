@@ -1,17 +1,17 @@
-From baaaec2cd485a409904c088f75ec106eb1200017 Mon Sep 17 00:00:00 2001
+From ce6a6b2421bbe496cb8c73b2efbdca6690713618 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 12 Sep 2020 20:30:49 +0200
-Subject: [PATCH 3/3] Enable pkg-config for mingw-w64 build
+Subject: [PATCH 2/2] Enable pkg-config for mingw-w64 build
 
 ---
  CMakeLists.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 640670f..5d7fb58 100644
+index 1c01b6a..8f19065 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -396,7 +396,7 @@ ENDIF()
+@@ -397,7 +397,7 @@ ENDIF()
  INCLUDE(${CC_SOURCE_DIR}/plugins/CMakeLists.txt)
  ADD_SUBDIRECTORY(include)
  ADD_SUBDIRECTORY(libmariadb)
@@ -21,5 +21,5 @@ index 640670f..5d7fb58 100644
  ENDIF()
  
 -- 
-2.31.1
+2.33.1
 

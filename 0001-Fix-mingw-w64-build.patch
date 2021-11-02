@@ -1,37 +1,38 @@
-From 72c4fd579384ec3c00500177f318df49f7502314 Mon Sep 17 00:00:00 2001
+From da872dd50dcccbb2e7b176c24b17a2cc88fe3e13 Mon Sep 17 00:00:00 2001
 From: Tilmann Meyer <allescrafterx@gmail.com>
 Date: Fri, 17 Apr 2020 02:12:23 +0200
-Subject: [PATCH 1/3] Fix mingw-w64 build
+Subject: [PATCH 1/2] Fix mingw-w64 build
 
 ---
- CMakeLists.txt                 | 34 +++++++++++++++------------
+ CMakeLists.txt                 | 35 ++++++++++++++++-------------
  cmake/install.cmake            |  4 ++--
  cmake/symlink.cmake            |  2 +-
  include/ma_global.h            |  4 ++--
  include/mysql.h                |  6 +----
  include/mysql/client_plugin.h  |  2 +-
- libmariadb/CMakeLists.txt      | 42 ++++++++++++++++++----------------
+ libmariadb/CMakeLists.txt      | 40 ++++++++++++++++++----------------
  plugins/auth/CMakeLists.txt    |  2 +-
  plugins/auth/caching_sha2_pw.c |  2 +-
  plugins/auth/ed25519.c         |  2 +-
  plugins/auth/sha256_pw.c       |  4 ++--
  plugins/io/CMakeLists.txt      |  2 +-
- 12 files changed, 54 insertions(+), 52 deletions(-)
+ 12 files changed, 54 insertions(+), 51 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 68250af..640670f 100644
+index 63c2066..1c01b6a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -2,6 +2,8 @@
- 
+@@ -3,6 +3,9 @@
  # This is the LGPL libmariadb project.
  
+ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++
 +add_definitions(-D_WIN32_WINNT=0x0601)
 +
- CMAKE_MINIMUM_REQUIRED(VERSION 2.8 FATAL_ERROR)
  INCLUDE(CheckFunctionExists)
  IF(COMMAND CMAKE_POLICY)
-@@ -51,20 +53,16 @@ MACRO(ADD_OPTION _name _text _default)
+   SET(NEW_POLICIES CMP0003 CMP0022 CMP0023 CMP0077 CMP0069 CMP0075)
+@@ -51,20 +54,16 @@ MACRO(ADD_OPTION _name _text _default)
  ENDMACRO()
  
  ### Options ###
@@ -57,7 +58,7 @@ index 68250af..640670f 100644
  ###############
  
  INCLUDE(${CC_SOURCE_DIR}/cmake/misc.cmake)
-@@ -224,14 +222,20 @@ IF(UNIX)
+@@ -224,14 +223,20 @@ IF(UNIX)
    SET(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${LIBNSL} ${LIBBIND} ${LIBICONV} ${LIBZ}
      ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBM} ${LIBPTHREAD})
    SET(SYSTEM_LIBS ${SYSTEM_LIBS} ${LIBNSL} ${LIBBIND} ${LIBICONV} ${LIBZ}
@@ -68,14 +69,14 @@ index 68250af..640670f 100644
 -    LIST(REMOVE_DUPLICATES CMAKE_REQUIRED_LIBRARIES)
 -  ENDIF()
 +    ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBDL} ${LIBM} ${LIBPTHREAD})
- ENDIF()
- 
++ENDIF()
++
 +IF(MINGW)
 +  FIND_PACKAGE(Threads)
 +  LIST(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBPTHREAD})
 +  LIST(APPEND SYSTEM_LIBS ${LIBPTHREAD})
-+ENDIF()
-+
+ ENDIF()
+ 
 +#remove possible dups from required libraries
 +LIST(LENGTH CMAKE_REQUIRED_LIBRARIES rllength)
 +IF(${rllength} GREATER 0)
@@ -85,10 +86,10 @@ index 68250af..640670f 100644
  IF(CMAKE_HAVE_PTHREAD_H)
    SET(CMAKE_REQUIRED_INCLUDES pthread.h)
 diff --git a/cmake/install.cmake b/cmake/install.cmake
-index 4a82dd9..e280afb 100644
+index 90bae8b..0fdde87 100644
 --- a/cmake/install.cmake
 +++ b/cmake/install.cmake
-@@ -61,12 +61,12 @@ ENDIF()
+@@ -62,13 +62,13 @@ ENDIF()
  #
  
  SET(INSTALL_BINDIR_DEFAULT "bin")
@@ -97,6 +98,7 @@ index 4a82dd9..e280afb 100644
  SET(INSTALL_PCDIR_DEFAULT "lib/pkgconfig")
  SET(INSTALL_INCLUDEDIR_DEFAULT "include/mariadb")
  SET(INSTALL_DOCDIR_DEFAULT "docs")
+ SET(INSTALL_MANDIR_DEFAULT "man")
  IF(NOT IS_SUBPROJECT)
 -  SET(INSTALL_PLUGINDIR_DEFAULT "lib/mariadb/plugin")
 +  SET(INSTALL_PLUGINDIR_DEFAULT "lib/plugin")
@@ -139,7 +141,7 @@ index e8ca7df..fbf6798 100644
  #define USE_MY_STAT_STRUCT	/* For my_lib */
  #ifdef _MSC_VER
 diff --git a/include/mysql.h b/include/mysql.h
-index 34f0985..111435b 100644
+index b66cf17..354d3db 100644
 --- a/include/mysql.h
 +++ b/include/mysql.h
 @@ -39,11 +39,7 @@ extern "C" {
@@ -154,7 +156,7 @@ index 34f0985..111435b 100644
  
  #ifndef my_socket_defined
  #define my_socket_defined
-@@ -467,7 +463,7 @@ struct st_mysql_client_plugin
+@@ -468,7 +464,7 @@ struct st_mysql_client_plugin
    MYSQL_CLIENT_PLUGIN_HEADER
  };
  
@@ -177,11 +179,11 @@ index 72939d2..77e4538 100644
                    int argc, ...);
  
 diff --git a/libmariadb/CMakeLists.txt b/libmariadb/CMakeLists.txt
-index 14e34ab..17fcdda 100644
+index cf96b9e..949803e 100644
 --- a/libmariadb/CMakeLists.txt
 +++ b/libmariadb/CMakeLists.txt
-@@ -386,7 +386,7 @@ IF(CMAKE_GENERATOR MATCHES Xcode)
- ENDIF()
+@@ -390,7 +390,7 @@ ENDIF()
+ FILE(WRITE ${CC_BINARY_DIR}/manpages.list "${MARIADB_LIB_SYMBOLS};${MYSQL_LIB_SYMBOLS}")
  
  IF(WIN32)
 -  SET_VERSION_INFO("TARGET:libmariadb"
@@ -189,7 +191,7 @@ index 14e34ab..17fcdda 100644
                     "FILE_TYPE:VFT_DLL"
                     "SOURCE_FILE:libmariadb/libmariadb.c"
                     "ORIGINAL_FILE_NAME:libmariadb.dll"
-@@ -398,17 +398,17 @@ ADD_LIBRARY(mariadbclient STATIC  ${MARIADB_OBJECTS} ${EMPTY_FILE})
+@@ -402,30 +402,28 @@ ADD_LIBRARY(mariadbclient STATIC  ${MARIADB_OBJECTS} ${EMPTY_FILE})
  TARGET_LINK_LIBRARIES(mariadbclient ${SYSTEM_LIBS})
  
  IF(UNIX)
@@ -198,11 +200,9 @@ index 14e34ab..17fcdda 100644
 +  ADD_LIBRARY(mariadb SHARED ${mariadb_RC} ${MARIADB_OBJECTS} ${EMPTY_FILE})
 +  SET_TARGET_PROPERTIES(mariadb PROPERTIES COMPILE_FLAGS "${CMAKE_SHARED_LIBRARY_C_FLAGS}")
  ELSE()
--  ADD_LIBRARY(libmariadb SHARED ${libmariadb_RC} mariadbclient.def)
--  TARGET_LINK_LIBRARIES(libmariadb LINK_PRIVATE mariadbclient)
+-  ADD_LIBRARY(libmariadb SHARED ${libmariadb_RC} ${MARIADB_OBJECTS} mariadbclient.def)
 -  SET_TARGET_PROPERTIES(libmariadb PROPERTIES LINKER_LANGUAGE C)
-+  ADD_LIBRARY(mariadb SHARED ${mariadb_RC} mariadbclient.def)
-+  TARGET_LINK_LIBRARIES(mariadb LINK_PRIVATE mariadbclient)
++  ADD_LIBRARY(mariadb SHARED ${libmariadb_RC} ${MARIADB_OBJECTS} mariadbclient.def)
 +  SET_TARGET_PROPERTIES(mariadb PROPERTIES LINKER_LANGUAGE C)
  ENDIF()
  
@@ -212,9 +212,7 @@ index 14e34ab..17fcdda 100644
 -SIGN_TARGET(libmariadb)
 +SIGN_TARGET(mariadb)
  
- IF(CMAKE_SIZEOF_VOID_P EQUAL 8 AND MSVC)
-   SET_TARGET_PROPERTIES(mariadbclient PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
-@@ -418,15 +418,13 @@ IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
+ IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
     CMAKE_SYSTEM_NAME MATCHES "kFreeBSD" OR
     CMAKE_SYSTEM_NAME MATCHES "GNU")
    IF (NOT WITH_ASAN AND NOT WITH_TSAN AND NOT WITH_UBSAN AND NOT WITH_MSAN)
@@ -233,7 +231,7 @@ index 14e34ab..17fcdda 100644
  
  #
  # Installation
-@@ -438,8 +436,8 @@ INCLUDE(${CC_SOURCE_DIR}/cmake/symlink.cmake)
+@@ -437,8 +435,8 @@ INCLUDE(${CC_SOURCE_DIR}/cmake/symlink.cmake)
  # use mariadb client library we provide libmysql symlinks
  
  IF(WITH_MYSQLCOMPAT)
@@ -244,7 +242,7 @@ index 14e34ab..17fcdda 100644
    IF(NOT CMAKE_SYSTEM_NAME MATCHES AIX)
      create_symlink(libmysqlclient${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
      create_symlink(libmysqlclient_r${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
-@@ -447,7 +445,7 @@ IF(WITH_MYSQLCOMPAT)
+@@ -446,7 +444,7 @@ IF(WITH_MYSQLCOMPAT)
  ENDIF()
  
  
@@ -253,7 +251,7 @@ index 14e34ab..17fcdda 100644
   ${CPACK_PACKAGE_VERSION_MAJOR}
   SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR})
  
-@@ -457,15 +455,19 @@ ENDIF()
+@@ -456,15 +454,19 @@ ENDIF()
  
  INSTALL(TARGETS mariadbclient
            COMPONENT Development
@@ -278,7 +276,7 @@ index 14e34ab..17fcdda 100644
             COMPONENT Development)
  ENDIF()
 diff --git a/plugins/auth/CMakeLists.txt b/plugins/auth/CMakeLists.txt
-index 2186f3b..fa5253f 100644
+index 0e3b547..d9aca9b 100644
 --- a/plugins/auth/CMakeLists.txt
 +++ b/plugins/auth/CMakeLists.txt
 @@ -4,7 +4,7 @@ INCLUDE_DIRECTORIES(${AUTH_DIR})
@@ -291,7 +289,7 @@ index 2186f3b..fa5253f 100644
    SET(CRYPT_LIBS crypt32 bcrypt)
  ELSEIF(WITH_SSL STREQUAL "OPENSSL")
 diff --git a/plugins/auth/caching_sha2_pw.c b/plugins/auth/caching_sha2_pw.c
-index 4bd45e8..225dcad 100644
+index 22154a8..6715f55 100644
 --- a/plugins/auth/caching_sha2_pw.c
 +++ b/plugins/auth/caching_sha2_pw.c
 @@ -20,7 +20,7 @@
@@ -304,7 +302,7 @@ index 4bd45e8..225dcad 100644
  #undef HAVE_OPENSSL
  #undef HAVE_GNUTLS
 diff --git a/plugins/auth/ed25519.c b/plugins/auth/ed25519.c
-index ed36ab0..73a74a6 100644
+index 918b8ba..4c63820 100644
 --- a/plugins/auth/ed25519.c
 +++ b/plugins/auth/ed25519.c
 @@ -20,7 +20,7 @@
@@ -317,7 +315,7 @@ index ed36ab0..73a74a6 100644
  #undef HAVE_OPENSSL
  #undef HAVE_GNUTLS
 diff --git a/plugins/auth/sha256_pw.c b/plugins/auth/sha256_pw.c
-index 3e22fb5..da5450c 100644
+index a3b5ec3..45da225 100644
 --- a/plugins/auth/sha256_pw.c
 +++ b/plugins/auth/sha256_pw.c
 @@ -20,7 +20,7 @@
@@ -351,5 +349,5 @@ index 8c304c9..e2e9c5a 100644
    ENDIF()
  ENDIF()
 -- 
-2.31.1
+2.33.1
 
