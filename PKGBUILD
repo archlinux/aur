@@ -6,12 +6,11 @@
 #
 pkgname="aarchup"
 pkgver=2.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://gitlab.com/artafinde/aarchup/"
 arch=('i686' 'x86_64')
 license=('GPL3')
-provides=("${pkgname}")
 depends=('libnotify' 'pacman-contrib')
 makedepends=('meson' 'ninja' 'gzip')
 optdepends=('auracle: AUR support(--aur)')
@@ -33,7 +32,6 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     DESTDIR="$pkgdir" meson install -C build
-    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: set ts=4 sw=4 et syn=sh ft=sh:
