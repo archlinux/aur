@@ -20,7 +20,7 @@ depends=(gtk3 libxt mime-types dbus-glib
 makedepends=(mercurial unzip zip diffutils yasm mesa imake inetutils
              autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard lld dump_syms
-             wasi-libc-git)
+             wasi-sdk-git)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -109,7 +109,7 @@ ac_add_options --with-system-libevent
 ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
 ac_add_options --with-system-jpeg
-ac_add_options --with-wasi-sysroot=/opt/wasi-libc
+ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
 
 # Features
 ac_add_options --enable-pulseaudio
