@@ -22,7 +22,8 @@ pkgver() {
 build() {
 	cd UDRefl
 	sed -i "60,61d" "src/core/CMakeLists.txt"
-	cmake -DCMAKE_INSTALL_PREFIX="$srcdir/install" -S . -B _build
+	sed -i "s?option(Ubpa_UDRefl_Build_Shared \"build shared library\" OFF)?option(Ubpa_UDRefl_Build_Shared \"build shared library\" ON)?g" "CMakeLists.txt"
+	cmake -DCMAKE_INSTALL_PREFIX="$srcdir/install" -S . -B _build -DCMAKE_BUILD_TYPE=Debug
 	cmake --build _build -j $(grep 'processor' /proc/cpuinfo | sort -u | wc -l)
 }
 
@@ -35,7 +36,9 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/licenses/udrefl-git"
 	mv "$srcdir/install/$_dirname/cmake" "${pkgdir}/usr/lib/cmake/UDRefl"
 	mv "$srcdir/install/$_dirname/include/UDRefl" "${pkgdir}/usr/include/"
-	mv "$srcdir/install/$_dirname/lib/libUDRefl_core.a" "${pkgdir}/usr/lib/"
+	mv "$srcdir/install/$_dirname/lib/libUDRefl_cored.so" "${pkgdir}/usr/lib/"
 	mv "$srcdir/UDRefl/LICENSE" "${pkgdir}/usr/share/licenses/udrefl-git"
 	sed -i "s?\"\${CMAKE_CURRENT_LIST_DIR}/../include\"?\"/usr/include\"?g" "${pkgdir}/usr/lib/cmake/UDRefl/UDReflConfig.cmake"
+	sed -i "s?\"\${_IMPORT_PREFIX}/UDRefl_0_10_5/include\"?\"/usr/include\"?g" "${pkgdir}/usr/lib/cmake/UDRefl/UDReflTargets.cmake"
+	sed -i "s?\"\${_IMPORT_PREFIX}/UDRefl_0_10_5/lib/libUDRefl_cored.so\"?\"/usr/lib/libUDRefl_cored.so\"?g" "${pkgdir}/usr/lib/cmake/UDRefl/UDReflTargets-debug.cmake"
 }
