@@ -1,0 +1,17 @@
+pkgbase = vim-quick-scope
+	pkgdesc = Always-on highlight for fast left-right movement between words
+	pkgver = 2.5.12
+	pkgrel = 1
+	url = https://github.com/unblevable/quick-scope
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = vim-quick-scope::git+https://github.com/unblevable/quick-scope#tag=v2.5.12?signed
+	validpgpkeys = 7E5E9FB83B0871E709F1EBA0896BA880CBBF2C53
+	validpgpkeys = E96D8B601BE35D08567314805C112E8DE408E502
+	validpgpkeys = 8C383C26D7A884B9098E0D5338C7564724AB8709
+	md5sums = SKIP
+
+pkgname = vim-quick-scope
