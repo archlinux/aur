@@ -3,8 +3,8 @@
 
 pkgname=stoplight-studio-appimage
 pkgver=2.3.0
-_realver=2.3.0-stable.6425.git-0073b80
-pkgrel=9
+_realver=2.3.0-stable.6547.git-2cf5b62 
+pkgrel=10
 pkgdesc="The modern editor for API Architects and Technical Writers."
 arch=('x86_64')
 url='https://stoplight.io/studio/'
@@ -15,7 +15,7 @@ source=(
   "stoplight-studio.desktop"
 )
 sha512sums=(
-  "06181e1cfe96f83caa21cd9cbf7e5f570350f614b0d3c02eac9a6f7c32b4017f0dcf5d513f06964a93602b0c88898deaf90a92249664e6f689c606af692da2c9"
+  "a7aba712ddc89118a42e6ea068a85335366324940a4c3dde19ba06f02c80f277c4346b81959e0dfcd7c1c80980f6c27a92f2ea79a64725453d97b8c8531506ee"
   "0c7c3742debb40ed5a3323467441890e900d4416ddc10e2778ddadd930b7b9f0447978c446b4b80fd5c6ee29f4ca65054e0b8ccf59cd1780a95c044867ec54af"
 )
 options=(!strip)
