@@ -25,6 +25,7 @@ prepare() {
   sed -i 's/#include "..\\x86\\x86.h"/#include "..\/x86\/x86.h"/' Source/LibJXR/image/sys/strcodec.h
   rm Source/LibJXR/common/include/guiddef.h
   sed -i "s,WIN32_CFLAGS =,WIN32_CFLAGS = -fpermissive -D__MINGW64_TOOLCHAIN__," Makefile.mingw
+  sed -i "58iWIN32_CXXFLAGS += -std=c++14" Makefile.mingw
   sed -i -e "s,#ifdef __GNUC__,#ifdef WHATEVER," -e "s,_MSC_VER,WINVER," Source/OpenEXR/IlmImf/ImfSystemSpecific.h
 }
 
