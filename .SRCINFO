@@ -1,0 +1,15 @@
+pkgbase = perl-string-perlquote
+	pkgdesc = Quote a string as Perl does
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/String-PerlQuote
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/String-PerlQuote-0.02.tar.gz
+	md5sums = ca6669525a822e7f309e588d78e1938d
+	sha512sums = 8ee33dfb27fd239c9171d088fde221678f8c6bfe7cae170eda052a293b76912cd1fa18557eae0ac3565ddae49185e500db2f527c6790f58e354fbc8ff1160dd1
+
+pkgname = perl-string-perlquote
