@@ -1,0 +1,5 @@
+post_install() {
+	echo ':: Treesitter integration only works on Neovim 0.5.0+'
+	echo ':: You must set it up manually in your init.vim or init.lua to work.'
+	echo ':: See upstream documentation for more details.'
+}

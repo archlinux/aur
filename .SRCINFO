@@ -1,18 +1,20 @@
 pkgbase = vim-matchup-git
 	pkgdesc = A modern drop-in replacement for matchit.vim and matchparen
-	pkgver = 0.6.0.r24.g5a51894
+	pkgver = 0.6.0.r162.g42c91ec
 	pkgrel = 1
 	url = https://github.com/andymass/vim-matchup
+	install = matchup-treesitter.install
 	arch = any
 	groups = vim-plugins
 	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime
+	optdepends = neovim-tree-sitter: builtin tree-sitter integration
 	provides = vim-matchup
 	conflicts = vim-matchup
 	replaces = neovim-matchup-opt-git
-	source = vim-matchup-git::git+https://github.com/andymass/vim-matchup
+	source = vim-matchup-git::git+https://github.com/andymass/vim-matchup?signed
+	validpgpkeys = 168D178A91F74875F03072A61673F578F47AE612
 	md5sums = SKIP
 
 pkgname = vim-matchup-git
-
