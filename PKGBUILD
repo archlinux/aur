@@ -10,8 +10,7 @@ license=('MIT')
 depends=('python-pytools')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-source=($url/archive/v$pkgver.tar.gz)
-source=($pkgname-$pkgver.tar.gz::https://github.com/inducer/cgen/archive/v$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 sha256sums=('3d7309225294b989a4759a9362a5cb8487ac69d97ef3a49e850905fa1c8d852f')
 
 build() {
