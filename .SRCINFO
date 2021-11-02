@@ -1,11 +1,11 @@
 pkgbase = lebiniou-data
 	pkgdesc = Data files for lebiniou
-	pkgver = 3.62.2
+	pkgver = 3.63.0
 	pkgrel = 1
 	url = https://biniou.net/
 	arch = any
 	license = GPL
-	source = https://gitlab.com/lebiniou/lebiniou-data/-/archive/version-3.62.2/lebiniou-data-version-3.62.2.tar.gz
-	sha256sums = 17c8b8e68e0777cdef23963fbe3a1496433a44cc0f29c791395cd99e4b001ca7
+	source = https://gitlab.com/lebiniou/lebiniou-data/-/archive/version-3.63.0/lebiniou-data-version-3.63.0.tar.gz
+	sha256sums = 4485db89ce1a79e3cabc0c8d7dc2c0a7678b66cf4a6c25000c77fa2cc4475e6d
 
 pkgname = lebiniou-data
