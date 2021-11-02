@@ -1,13 +1,13 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-git' 'libdragon-tools-git')
-pkgver=r314.2d20f7f
+pkgver=r374.f935b46
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
 arch=('x86_64')
 license=('custom:UNLICENSE')
-makedepends=('git' 'mips64-elf-gcc-stage1')
-depends=('libpng' 'mips64-elf-newlib')
+makedepends=('git')
+depends=('libpng' 'mips64-elf-gcc' 'mips64-elf-newlib')
 source=("git://github.com/DragonMinded/libdragon.git#branch=trunk")
 sha256sums=('SKIP')
 
@@ -18,7 +18,7 @@ pkgver() {
 
 build(){
   cd libdragon
-  N64_INST=/usr CFLAGS="" LDFLAGS="" ASFLAGS="" make
+  CFLAGS="" LDFLAGS="" ASFLAGS="" N64_INST=/usr make
   N64_INST=/usr make tools
 }
 
@@ -28,7 +28,7 @@ package_libdragon-git(){
   provides=('libdragon')
   conflicts=('libdragon')
   arch=('any')
-  depends=('mips64-elf-newlib')
+  depends=('mips64-elf-gcc' 'mips64-elf-newlib')
   install='libdragon.install'
 
   cd libdragon
@@ -38,7 +38,7 @@ package_libdragon-git(){
   chmod 755 "${pkgdir}/etc/profile.d/libdragon.sh"
 
   mkdir -p "${pkgdir}/usr/mips64-elf/"{include,lib} "${pkgdir}/usr/include"
-  make INSTALLDIR="${pkgdir}/usr" PREFIX="${pkgdir}/usr" install
+  make INSTALLDIR="${pkgdir}/usr" install
 
   # strip it manually
   find "${pkgdir}/usr/mips64-elf/lib" -type f -exec /usr/bin/mips64-elf-strip --strip-unneeded {} \; 2>/dev/null || true
