@@ -3,14 +3,14 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=vdr-epg-daemon
 pkgname=('epgd' 'mariadb-epglv')
-pkgver=1.1.162
+pkgver=1.1.165
 pkgrel=1
 url='http://projects.vdr-developer.org/projects/vdr-epg-daemon'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-makedepends=('curl' 'git' 'imlib2' 'jansson' 'libarchive' 'libjpeg' 'libmariadbclient' 'libmicrohttpd' 'libxslt' 'python')
+makedepends=('curl' 'imlib2' 'jansson' 'libarchive' 'libjpeg' 'libmariadbclient' 'libmicrohttpd' 'libxslt' 'python')
 source=("https://projects.vdr-developer.org/git/vdr-epg-daemon.git/snapshot/$pkgbase-$pkgver.tar.bz2")
-sha256sums=('5b71be706b170f4cdb278c639e337f3d637e5d21cbf0eb9ef3c7513534d6bf7b')
+sha256sums=('8f2a6b286f082b620b7b83891de0c88cef19dba67fb414a4ff77379b5d144058')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -19,7 +19,7 @@ build() {
 
 package_epgd() {
   pkgdesc='write epg data to a mysql database'
-  depends=('curl' 'imlib2' 'jansson' 'libarchive' 'libmariadbclient' 'libmicrohttpd' 'libxslt' 'python')
+  depends=('curl' 'imlib2' 'jansson' 'libarchive' 'libmariadbclient' 'libmicrohttpd' 'libxslt' 'python' 'perl')
 
   cd "$srcdir/$pkgbase-$pkgver"
 
