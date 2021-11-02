@@ -1,0 +1,16 @@
+pkgbase = perl-data-dmp
+	pkgdesc = Dump Perl data structures as Perl code
+	pkgver = 0.241
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-Dmp
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-regexp-stringify>=0
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Data-Dmp-0.241.tar.gz
+	md5sums = 7ec8b60711f28912a2f87bcfff9ea997
+	sha512sums = 0b45c3e91dcd6c40960aa69a4058544691a86917976682835da9eceb3a8677763a50b6f18244d13a03d8a3d4de1068b84943cdcb32187aaf90fd7cf9ce670d43
+
+pkgname = perl-data-dmp
