@@ -1,0 +1,14 @@
+pkgbase = minetest-lordofthetest
+	pkgdesc = Lord of the Test is a game which adds LOTR elements to Minetest
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Amaz/lordofthetest/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = lordofthetest-1.2.4.zip
+	options = !strip
+	source = lordofthetest-1.2.4.zip::https://content.minetest.net/packages/Amaz/lordofthetest/releases/4798/download/
+	sha256sums = c5eda772acd1f477ce8b9f134d79c2c5ca418780af3ed8ed99ce1be01f8061c2
+
+pkgname = minetest-lordofthetest
