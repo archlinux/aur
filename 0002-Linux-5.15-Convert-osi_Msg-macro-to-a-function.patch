@@ -1,0 +1,258 @@
+From 47d92d83d02a84d2e07a7374f71bdedbed5b1040 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 14 Oct 2021 10:18:07 -0600
+Subject: [PATCH 2/2] Linux 5.15: Convert osi_Msg macro to a function
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+With Linux 5.15-prerc1 printk is defined as a macro instead of a
+function ("printk: Userspace format indexing support" 33701557)
+
+This change is causing a build failure:
+
+ .../src/rx/rx_kernel.h:62:18: error: ‘printk’ undeclared (first use in
+   this function); did you mean ‘_printk’?
+   62 | # define osi_Msg printk)(
+      |                  ^~~~~~
+
+The definition and use of the osi_Msg and osi_VMsg macros are
+unconventional and the C preprocessor is not handling the macro
+expansion when printk is itself a macro.
+
+   ...
+   (osi_Msg "%s", x);
+
+Change osi_Msg to a function, and simply replace osi_VMsg with vprintf
+since osi_VMsg is only used at one location within user space code.
+
+osi_Msg is implemented in 2 locations, in rx_kcommon for kernel space
+and in rx_user for userspace.
+
+Note: The unconventional definitions of osi_Msg/osi_VMsg was historical
+and due to older compilers not supporting variadic macros.  All of
+the currently support platforms should now support variadic functions.
+
+Reviewed-on: https://gerrit.openafs.org/14791
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 22876c8b88f8e5e92f08b230e5e1959499f0c406)
+
+Change-Id: I48a67b2fe79b45403414bb7d962c29c9be07262e
+---
+ src/rx/rx.c          |  8 ++++----
+ src/rx/rx_internal.h |  3 +++
+ src/rx/rx_kcommon.c  | 13 +++++++++++++
+ src/rx/rx_kernel.h   |  7 -------
+ src/rx/rx_lwp.c      |  8 ++++----
+ src/rx/rx_user.c     | 21 +++++++++++++++------
+ src/rx/rx_user.h     |  3 ---
+ 7 files changed, 39 insertions(+), 24 deletions(-)
+
+diff --git a/src/rx/rx.c b/src/rx/rx.c
+index db46429e3..59cc2073f 100644
+--- a/src/rx/rx.c
++++ b/src/rx/rx.c
+@@ -1745,14 +1745,14 @@ rx_NewServiceHost(afs_uint32 host, u_short port, u_short serviceId,
+     clock_NewTime();
+ 
+     if (serviceId == 0) {
+-	(osi_Msg
++	osi_Msg(
+ 	 "rx_NewService:  service id for service %s is not non-zero.\n",
+ 	 serviceName);
+ 	return 0;
+     }
+     if (port == 0) {
+ 	if (rx_port == 0) {
+-	    (osi_Msg
++	    osi_Msg(
+ 	     "rx_NewService: A non-zero port must be specified on this call if a non-zero port was not provided at Rx initialization (service %s).\n",
+ 	     serviceName);
+ 	    return 0;
+@@ -1775,7 +1775,7 @@ rx_NewServiceHost(afs_uint32 host, u_short port, u_short serviceId,
+ 		     * installed; if the caller was intending to
+ 		     * change the security classes used by this
+ 		     * service, he/she loses. */
+-		    (osi_Msg
++		    osi_Msg(
+ 		     "rx_NewService: tried to install service %s with service id %d, which is already in use for service %s\n",
+ 		     serviceName, serviceId, service->serviceName);
+ 		    USERPRI;
+@@ -1820,7 +1820,7 @@ rx_NewServiceHost(afs_uint32 host, u_short port, u_short serviceId,
+     }
+     USERPRI;
+     rxi_FreeService(tservice);
+-    (osi_Msg "rx_NewService: cannot support > %d services\n",
++    osi_Msg("rx_NewService: cannot support > %d services\n",
+      RX_MAX_SERVICES);
+     return 0;
+ }
+diff --git a/src/rx/rx_internal.h b/src/rx/rx_internal.h
+index b420a23a6..274d981c2 100644
+--- a/src/rx/rx_internal.h
++++ b/src/rx/rx_internal.h
+@@ -75,3 +75,6 @@ extern int rxi_SendIovecs(struct rx_connection *conn, struct iovec *iov,
+ 			  int iovcnt, size_t length, int istack);
+ extern void rxi_SendRaw(struct rx_call *call, struct rx_connection *conn,
+ 			int type, char *data, int bytes, int istack);
++
++/* rx_kcommon.c / rx_user.c */
++extern void osi_Msg(const char *fmt, ...) AFS_ATTRIBUTE_FORMAT(__printf__, 1, 2);
+diff --git a/src/rx/rx_kcommon.c b/src/rx/rx_kcommon.c
+index e81a58305..885465882 100644
+--- a/src/rx/rx_kcommon.c
++++ b/src/rx/rx_kcommon.c
+@@ -1283,6 +1283,19 @@ osi_StopListener(void)
+ # endif /* RXK_LISTENER_ENV */
+ #endif /* !UKERNEL */
+ 
++void
++osi_Msg(const char *fmt, ...)
++{
++    va_list ap;
++    va_start(ap, fmt);
++#if defined(AFS_LINUX26_ENV)
++    vprintk(fmt, ap);
++#else
++    vprintf(fmt, ap);
++#endif
++    va_end(ap);
++}
++
+ #if !defined(AFS_LINUX26_ENV)
+ void
+ # if defined(AFS_AIX_ENV)
+diff --git a/src/rx/rx_kernel.h b/src/rx/rx_kernel.h
+index c6318f3e6..7aa6f4cc6 100644
+--- a/src/rx/rx_kernel.h
++++ b/src/rx/rx_kernel.h
+@@ -58,13 +58,6 @@ extern void osi_Panic(char *fmt, ...)
+     (void)((exp) || (osi_AssertFailK( #exp , __FILE__, __LINE__), 0))
+ # endif
+ 
+-#ifdef AFS_LINUX20_ENV
+-# define	osi_Msg printk)(
+-#else
+-# define	osi_Msg printf)(
+-#endif
+-#define osi_VMsg vprintf)(
+-
+ #define	osi_YieldIfPossible()
+ #define	osi_WakeupAndYieldIfPossible(x)	    rx_Wakeup(x)
+ 
+diff --git a/src/rx/rx_lwp.c b/src/rx/rx_lwp.c
+index fec4329ac..4aa8c598d 100644
+--- a/src/rx/rx_lwp.c
++++ b/src/rx/rx_lwp.c
+@@ -385,12 +385,12 @@ rxi_Listen(osi_socket sock)
+      */
+     if (fcntl(sock, F_SETFL, FNDELAY) == -1) {
+ 	perror("fcntl");
+-	(osi_Msg "rxi_Listen: unable to set non-blocking mode on socket\n");
++	osi_Msg("rxi_Listen: unable to set non-blocking mode on socket\n");
+ 	return -1;
+     }
+ 
+     if (sock > FD_SETSIZE - 1) {
+-	(osi_Msg "rxi_Listen: socket descriptor > (FD_SETSIZE-1) = %d\n",
++	osi_Msg("rxi_Listen: socket descriptor > (FD_SETSIZE-1) = %d\n",
+ 	 FD_SETSIZE - 1);
+ 	return -1;
+     }
+@@ -442,7 +442,7 @@ rxi_Sendmsg(osi_socket socket, struct msghdr *msg_p, int flags)
+ 
+ 	if (!sfds) {
+ 	    if (!(sfds = IOMGR_AllocFDSet())) {
+-		(osi_Msg "rx failed to alloc fd_set: ");
++		osi_Msg("rx failed to alloc fd_set: ");
+ 		perror("rx_sendmsg");
+ 		return -1;
+ 	    }
+@@ -460,7 +460,7 @@ rxi_Sendmsg(osi_socket socket, struct msghdr *msg_p, int flags)
+ 	if (err != EWOULDBLOCK && err != ENOBUFS)
+ #endif
+ 	{
+-	    (osi_Msg "rx failed to send packet: ");
++	    osi_Msg("rx failed to send packet: ");
+ 	    perror("rx_sendmsg");
+             if (err > 0)
+               return -err;
+diff --git a/src/rx/rx_user.c b/src/rx/rx_user.c
+index 7e6c06b24..04e154234 100644
+--- a/src/rx/rx_user.c
++++ b/src/rx/rx_user.c
+@@ -104,11 +104,11 @@ rxi_GetHostUDPSocket(u_int ahost, u_short port)
+ 
+ #if !defined(AFS_NT40_ENV)
+     if (ntohs(port) >= IPPORT_RESERVED && ntohs(port) < IPPORT_USERRESERVED) {
+-/*	(osi_Msg "%s*WARNING* port number %d is not a reserved port number.  Use port numbers above %d\n", name, port, IPPORT_USERRESERVED);
++/*	osi_Msg("%s*WARNING* port number %d is not a reserved port number.  Use port numbers above %d\n", name, port, IPPORT_USERRESERVED);
+ */ ;
+     }
+     if (ntohs(port) > 0 && ntohs(port) < IPPORT_RESERVED && geteuid() != 0) {
+-	(osi_Msg
++	osi_Msg(
+ 	 "%sport number %d is a reserved port number which may only be used by root.  Use port numbers above %d\n",
+ 	 name, ntohs(port), IPPORT_USERRESERVED);
+ 	goto error;
+@@ -144,7 +144,7 @@ rxi_GetHostUDPSocket(u_int ahost, u_short port)
+         break;
+     }
+     if (code) {
+-	(osi_Msg "%sbind failed\n", name);
++	osi_Msg("%sbind failed\n", name);
+ 	goto error;
+     }
+ #if !defined(AFS_NT40_ENV)
+@@ -191,7 +191,7 @@ rxi_GetHostUDPSocket(u_int ahost, u_short port)
+ 	     (socketFd, SOL_SOCKET, SO_RCVBUF, (char *)&len2,
+ 	      sizeof(len2)) >= 0);
+ 	if (!greedy)
+-	    (osi_Msg "%s*WARNING* Unable to increase buffering on socket\n",
++	    osi_Msg("%s*WARNING* Unable to increase buffering on socket\n",
+ 	     name);
+         if (rx_stats_active)
+             rx_atomic_set(&rx_stats.socketGreedy, greedy);
+@@ -230,13 +230,22 @@ rxi_GetUDPSocket(u_short port)
+     return rxi_GetHostUDPSocket(htonl(INADDR_ANY), port);
+ }
+ 
++void
++osi_Msg(const char *fmt, ...)
++{
++    va_list ap;
++    va_start(ap, fmt);
++    vfprintf(stderr, fmt, ap);
++    va_end(ap);
++}
++
+ void
+ osi_Panic(char *msg, ...)
+ {
+     va_list ap;
+     va_start(ap, msg);
+-    (osi_Msg "Fatal Rx error: ");
+-    (osi_VMsg msg, ap);
++    fprintf(stderr, "Fatal Rx error: ");
++    vfprintf(stderr, msg, ap);
+     va_end(ap);
+     fflush(stderr);
+     fflush(stdout);
+diff --git a/src/rx/rx_user.h b/src/rx/rx_user.h
+index ecc036f08..6b9dad98e 100644
+--- a/src/rx/rx_user.h
++++ b/src/rx/rx_user.h
+@@ -65,7 +65,4 @@ typedef afs_int32 osi_socket;
+ 
+ #define osi_Assert(e) opr_Assert(e)
+ 
+-#define	osi_Msg			    fprintf)(stderr,
+-#define osi_VMsg		    vfprintf)(stderr,
+-
+ #endif /* RX_USER_INCLUDE */
+-- 
+2.33.1
+

@@ -16,7 +16,9 @@ pkgbase = openafs-modules
 	options = !emptydirs
 	source = http://openafs.org/dl/openafs/1.8.8/openafs-1.8.8-src.tar.bz2
 	source = 0001-LINUX-5.14-explicitly-set-set_page_dirty-to-default.patch
+	source = 0002-Linux-5.15-Convert-osi_Msg-macro-to-a-function.patch
 	sha256sums = daa8ef86a7727facfcde3bc97a6ad143129c1c25ee35f3347080ec7e9d284da0
-	sha256sums = 0e348a09c9c8e5f2989e4e1773e2845898094c29b5bc3b3dbc5adc27c5e35446
+	sha256sums = 370a3588dc1c8f4d91fd8ea9cdea95b2754b42c0ddd8d074178fc2aa56be2748
+	sha256sums = efe7804e0631990d125871cc8754d903681c8da53e6a83e5344bd68c93508ba0
 
 pkgname = openafs-modules
