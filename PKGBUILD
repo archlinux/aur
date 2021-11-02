@@ -35,4 +35,5 @@ package() {
 	mv "$srcdir/install/$_dirname/cmake" "${pkgdir}/usr/lib/cmake/USmallFlat"
 	mv "$srcdir/install/$_dirname/include/USmallFlat" "${pkgdir}/usr/include/"
 	mv "$srcdir/USmallFlat/LICENSE" "${pkgdir}/usr/share/licenses/usmallflat-git"
+	sed -i "s?\"\${CMAKE_CURRENT_LIST_DIR}/../include\"?\"/usr/include\"?g" "${pkgdir}/usr/lib/cmake/USmallFlat/USmallFlatConfig.cmake"
 }
