@@ -1,6 +1,6 @@
 pkgbase = timeular
 	pkgdesc = A proprietary time tracking service
-	pkgver = 3.9.7
+	pkgver = 4.0.1
 	pkgrel = 0
 	url = https://timeular.com
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = timeular
 	depends = zlib
 	depends = hicolor-icon-theme
 	options = !strip
-	source = timeular-3.9.7.appimage::https://s3.amazonaws.com/timeular-desktop-packages/linux/production/Timeular.AppImage
+	source = timeular-4.0.1.appimage::https://s3.amazonaws.com/timeular-desktop-packages/linux/production/Timeular.AppImage
 	source = LICENSE
-	sha512sums = 1cb13209039d7654e0077c933d69e12c6499b33d7997292a199ee899799d63c59d6c264c8f5591b8b34009191b84cd8b788ecaecf446dc1f9643df5b8e879e12
+	sha512sums = 95e168465df140ce3695ee134ac971d3b66a2dc852b5c50c4e4aa773b6d2463fc0bca19fabf5c0fd736543fc59a4b869d33bd8d81e5c1a53029798cdd7ad0657
 	sha512sums = SKIP
 
 pkgname = timeular
