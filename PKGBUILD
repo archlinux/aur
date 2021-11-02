@@ -35,13 +35,12 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
   make \
-    PREFIX=/opt/wasi-sdk \
-    DESTDIR="$pkgdir" \
     build/wasi-libc.BUILT \
     build/libcxx.BUILT \
     build/libcxxabi.BUILT
 }
 
 package() {
-    true
+  cd "$srcdir/${pkgname%-git}"
+  cp -dr --preserve=mode,timestamp ./build/install/* "${pkgdir}"
 }
