@@ -1,0 +1,14 @@
+pkgbase = minetest-nomansland
+	pkgdesc = Survive No Man's Land, where TNT rains from the sky, and destroys everything.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Big_Caballito/no_mans_land/
+	arch = any
+	license = GPLv3
+	depends = minetest-common
+	noextract = no_mans_land-0.1.1.zip
+	options = !strip
+	source = no_mans_land-0.1.1.zip::https://content.minetest.net/packages/Big_Caballito/no_mans_land/releases/8685/download/
+	sha256sums = 7e6e4acddce66b09599e512355e8991975bdc817a8b8206cd0d2e56c105b02c4
+
+pkgname = minetest-nomansland
