@@ -2,7 +2,7 @@
 
 pkgname=python-pymbolic
 _module=pymbolic
-pkgver=2020.1
+pkgver=2021.1
 pkgrel=1
 pkgdesc="Pymbolic: A simple package to do symbolic math (focus on code gen and DSLs)"
 url="https://github.com/inducer/pymbolic"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/inducer/pymbolic/archive/v${pkgver}.tar.gz")
-sha256sums=('310d9997a13ffc8c24e22fc14c72ecab4defc3e83a0d390d8242f0521ceb459d')
+sha256sums=('bdf050c0416d47c1f3462a6ff64f0eae6c8a58ba6f58aca7221e325491f23688')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"

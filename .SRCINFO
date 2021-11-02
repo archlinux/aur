@@ -1,6 +1,6 @@
 pkgbase = python-pymbolic
 	pkgdesc = Pymbolic: A simple package to do symbolic math (focus on code gen and DSLs)
-	pkgver = 2020.1
+	pkgver = 2021.1
 	pkgrel = 1
 	url = https://github.com/inducer/pymbolic
 	arch = any
@@ -9,11 +9,10 @@ pkgbase = python-pymbolic
 	depends = python
 	depends = python-sympy
 	depends = python-symengine
-	source = https://github.com/inducer/pymbolic/archive/v2020.1.tar.gz
-	sha256sums = 310d9997a13ffc8c24e22fc14c72ecab4defc3e83a0d390d8242f0521ceb459d
+	source = https://github.com/inducer/pymbolic/archive/v2021.1.tar.gz
+	sha256sums = bdf050c0416d47c1f3462a6ff64f0eae6c8a58ba6f58aca7221e325491f23688
 
 pkgname = python-pymbolic
 	depends = python
 	depends = python-sympy
 	depends = python-symengine
-
