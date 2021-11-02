@@ -1,0 +1,23 @@
+pkgbase = wasi-sdk-git
+	pkgdesc = libc for WebAssembly programs built on top of WASI system calls (from git repo)
+	pkgver = r121.77ba98a
+	pkgrel = 1
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = llvm
+	depends = clang
+	provides = wasi-sdk
+	conflicts = wasi-sdk
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/WebAssembly/wasi-sdk.git
+	source = git+https://git.savannah.gnu.org/git/config.git
+	source = git+https://github.com/llvm/llvm-project.git
+	source = git+https://github.com/WebAssembly/wasi-libc.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = wasi-sdk-git
