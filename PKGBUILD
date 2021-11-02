@@ -2,9 +2,9 @@
 
 pkgname=gopass-jsonapi-git
 pkgver=r6.374b795
-pkgrel=1
+pkgrel=2
 pkgdesc="The jsonapi for gopass used for bridging to browsers"
-arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gopasspw/gopass-jsonapi"
 license=('MIT')
 makedepends=('go' 'git')
