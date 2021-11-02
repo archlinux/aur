@@ -6,7 +6,7 @@
 # If you would like to compile GHC yourself (AUR: ghc8.10),
 # you can use this to bootstrap compilation.
 pkgname=ghc8.10-bin
-pkgver=8.10.4
+pkgver=8.10.7
 pkgrel=1
 pkgdesc='Legacy binary GHC 8.10 installed on /usr/bin/ghc-8.10 (Mar/2020 - Feb/2021).'
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('ghc8.10')
 conflicts=('ghc8.10')
 source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-x86_64-deb10-linux.tar.xz")
 noextract=("ghc-${pkgver}-${CARCH}-deb10-linux.tar.xz")
-sha256sums=('816365565e9927459b035515a7db6a0db62f9796f327389b6f8a0035d12fbda0')
+sha256sums=('a13719bca87a0d3ac0c7d4157a4e60887009a7f1a8dbe95c4759ec413e086d30')
 
 prepare() {
 	# for some reason, bsdtar cannot unpack this file:
@@ -54,7 +54,7 @@ package() {
   mv ${pkgdir}/usr/bin/runghc     ${pkgdir}/usr/bin/runghc-8.10
   rm ${pkgdir}/usr/bin/runhaskell # use runghc-8.10 instead
 
-  mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-8.10.4
+  mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-8.10
 
   install -d            ${pkgdir}/usr/share/licenses/ghc-8.10
   install -m644 LICENSE ${pkgdir}/usr/share/licenses/ghc-8.10
