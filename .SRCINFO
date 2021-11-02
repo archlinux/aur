@@ -1,0 +1,14 @@
+pkgbase = minetest-minekart
+	pkgdesc = Racing game, with procedurally generated tracks
+	pkgver = 2021.10.11
+	pkgrel = 1
+	url = https://content.minetest.net/packages/wsor4035/minekart/
+	arch = any
+	license = MIT
+	depends = minetest-common
+	noextract = minekart-2021.10.11.zip
+	options = !strip
+	source = minekart-2021.10.11.zip::https://content.minetest.net/packages/wsor4035/minekart/releases/9477/download/
+	sha256sums = bccca22d360f516d72310bbb4e257dd0f311618907cf0b3aab33a0fa517e833f
+
+pkgname = minetest-minekart
