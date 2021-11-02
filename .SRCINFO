@@ -14,6 +14,7 @@ pkgbase = vignette-git
 	depends = ffmpeg
 	depends = libgl
 	depends = libgeotiff
+	depends = opencv
 	source = vignette-git::git+https://github.com/vignette-project/vignette.git
 	source = vignette-linux-meta::git+https://github.com/lionirdeadman/vignette-linux-meta
 	sha256sums = SKIP

@@ -1,13 +1,13 @@
 # Maintainer: Speykious <speykious@gmail.com>
 
 pkgname=vignette-git
-pkgver='2021.1025.1.r1.9cf8b28'
+pkgver='2021.1102.2'
 pkgrel=1
 pkgdesc='The open source VTuber software toolkit. ❤'
 arch=('i686' 'x86_64')
 url='https://github.com/vignette-project/vignette'
 license=('Non-Profit OSL')
-depends=('dotnet-runtime>=5' 'ffmpeg' 'libgl' 'libgeotiff')
+depends=('dotnet-runtime>=5' 'ffmpeg' 'libgl' 'libgeotiff' 'opencv')
 makedepends=('git' 'dotnet-sdk>=5' 'dotnet-targeting-pack>=5' 'netstandard-targeting-pack>=5')
 #provides=("${pkgname%-git}")
 #conflicts=("${pkgname%-git}")
@@ -46,7 +46,4 @@ package() {
   cd compiled
   find . -type f -exec install -Dm644 '{}' "$pkgdir/usr/lib/vignette/{}" ';'
   cd ..
-
-  # Hack for Cubism
-  ln -s "$HOME/.local/state/vignette/libLive2DCubismCore.so" "$pkgdir/usr/lib/vignette/libLive2DCubismCore.so"
 }
