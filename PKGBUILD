@@ -13,21 +13,29 @@ pkgbase=corefreq-git
 pkgname=(corefreq-client-git corefreq-server-git corefreq-dkms-git)
 _gitname=CoreFreq
 _pkgbase=${pkgbase%-*}
-pkgver=1.87.4.r20.g246c509
+pkgver=1.88.1.r2.g57548e5
 pkgrel=1
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
 url='https://github.com/cyring/CoreFreq'
 license=('GPL2')
 depends=('dkms')
+makedepends=('git')
 source=(git+"${url}.git#branch=develop"
-        'dkms.conf')
+        'dkms.conf'
+        'honor-archlinux-compiler-flags.patch')
 b2sums=('SKIP'
-        'c6d8849944f99195038ac252d010d3e3001cd1dcaee57218c4a7f58fa313aa38842e4ea991d4d9ff7d04063ebaa9900c06ff1eacfa6270341cf37fb752adc00c')
+        'c6d8849944f99195038ac252d010d3e3001cd1dcaee57218c4a7f58fa313aa38842e4ea991d4d9ff7d04063ebaa9900c06ff1eacfa6270341cf37fb752adc00c'
+        '3f5f9a27863412d620864e8c19e2683e3ef2103c4b95c126438330a9b532e2434664ce4860b6191552298131e434c09f5531428696dde7d70a1cb171b4f13edf')
 
 pkgver() {
   cd "${_gitname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare(){
+  cd "${_gitname}"
+  patch -Np1 < "$srcdir/honor-archlinux-compiler-flags.patch"
 }
 
 build() {

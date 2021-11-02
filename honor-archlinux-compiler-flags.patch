@@ -1,0 +1,62 @@
+diff --git a/Makefile b/Makefile
+index 0601f48..0dc3922 100644
+--- a/Makefile
++++ b/Makefile
+@@ -91,48 +91,48 @@ clean:
+ 	$(MAKE) -j1 -C $(KERNELDIR) M=$(PWD) clean
+ 
+ corefreqm.o: corefreqm.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreqm.c \
++	$(CC)  $(CFLAGS) $(LDFLAGS) -c corefreqm.c \
+ 	  $(DEFINITIONS) \
+ 	  -o corefreqm.o
+ 
+ corefreqd.o: corefreqd.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -pthread -c corefreqd.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -pthread -c corefreqd.c \
+ 	  $(DEFINITIONS) \
+ 	  -o corefreqd.o
+ 
+ corefreqd: corefreqd.o corefreqm.o
+-	$(CC) $(OPTIM_FLG) $(WARNING) corefreqd.c corefreqm.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) corefreqd.c corefreqm.c \
+ 	  $(DEFINITIONS) \
+ 	  -o corefreqd -lpthread -lm -lrt
+ 
+ corefreq-ui.o: corefreq-ui.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreq-ui.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c corefreq-ui.c \
+ 	  $(DEFINITIONS) \
+ 	  -o corefreq-ui.o
+ 
+ corefreq-cli.o: corefreq-cli.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreq-cli.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c corefreq-cli.c \
+ 	  $(DEFINITIONS) $(LAYOUT) \
+ 	  -o corefreq-cli.o
+ 
+ corefreq-cli-rsc.o: corefreq-cli-rsc.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreq-cli-rsc.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c corefreq-cli-rsc.c \
+ 	  $(DEFINITIONS) $(LAYOUT) \
+ 	  -o corefreq-cli-rsc.o
+ 
+ corefreq-cli-json.o: corefreq-cli-json.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreq-cli-json.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c corefreq-cli-json.c \
+ 	  $(DEFINITIONS) \
+ 	  -o corefreq-cli-json.o
+ 
+ corefreq-cli-extra.o: corefreq-cli-extra.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreq-cli-extra.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c corefreq-cli-extra.c \
+ 	  $(DEFINITIONS) \
+ 	  -o corefreq-cli-extra.o
+ 
+ corefreq-cli: corefreq-cli.o corefreq-ui.o corefreq-cli-rsc.o \
+ 		corefreq-cli-json.o corefreq-cli-extra.o
+-	$(CC) $(OPTIM_FLG) $(WARNING) \
++	$(CC) $(CFLAGS) $(LDFLAGS) \
+ 	  corefreq-cli.c corefreq-ui.c corefreq-cli-rsc.c \
+ 	  corefreq-cli-json.c corefreq-cli-extra.c \
+ 	  $(DEFINITIONS) $(LAYOUT) \
