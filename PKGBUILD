@@ -29,5 +29,6 @@ package (){
 	install -Dm755 "${pkgdir}"/opt/windterm.png "${pkgdir}"/usr/share/icons
 	install -Dm755 "${pkgdir}"/opt/windterm "${pkgdir}"/usr/bin
 	install -Dm755 "${pkgdir}"/opt/windterm.desktop "${pkgdir}"/usr/share/applications
+	chmod 0755 "${pkgdir}"/opt/Windterm/Windterm
 }
 
