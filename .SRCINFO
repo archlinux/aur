@@ -1,0 +1,17 @@
+pkgbase = nsh-git
+	pkgdesc = A command-line shell like fish, but POSIX compatible
+	pkgver = 0.4.2.581.g5760767
+	pkgrel = 1
+	url = https://github.com/nuta/nsh
+	arch = i686
+	arch = x86_64
+	license = CC0-1.0
+	license = MIT
+	makedepends = git
+	makedepends = rustup
+	provides = nsh
+	conflicts = nsh
+	source = nsh::git+https://github.com/nuta/nsh.git
+	sha256sums = SKIP
+
+pkgname = nsh-git
