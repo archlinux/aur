@@ -8,14 +8,13 @@ pkgbase = ayatana-ido
 	arch = pentium4
 	license = LGPL2.1
 	license = LGPL3
-	makedepends = mate-common
-	makedepends = gtk-doc
+	makedepends = cmake-extras
 	makedepends = gobject-introspection
-	makedepends = vala
+	depends = glibc
+	depends = vala
 	depends = gtk3
 	depends = glib2
 	source = https://github.com/AyatanaIndicators/ayatana-ido/archive/0.8.2.tar.gz
 	md5sums = f72ce8fb7bdedf80c20d6083fa371e19
 
 pkgname = ayatana-ido
-

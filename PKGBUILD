@@ -7,26 +7,22 @@ pkgdesc="Ayatana Indicator Display Objects"
 arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/ayatana-ido"
 license=("LGPL2.1" "LGPL3")
-depends=("gtk3" "glib2")
-makedepends=("mate-common" "gtk-doc" "gobject-introspection" "vala")
+makedepends=("cmake-extras" "gobject-introspection")
+depends=("glibc" "vala" "gtk3" "glib2")
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("f72ce8fb7bdedf80c20d6083fa371e19")
 
-prepare()
-{
-    cd "$pkgname-$pkgver"
-    NOCONFIGURE=1 ./autogen.sh
-}
-
 build()
 {
-    cd "$pkgname-$pkgver"
-    ./configure --prefix=/usr
+    cd ${pkgname}-${pkgver}
+    mkdir build
+    cd build
+    cmake ..
     make
 }
 
 package()
 {
-    cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+    cd ${pkgname}-${pkgver}/build
+    make DESTDIR="${pkgdir}" install
 }
