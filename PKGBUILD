@@ -10,11 +10,13 @@ license=('GPL3')
 makedepends=('intltool'
 	'libtorrent-rasterbar'
 	'python2-chardet'
-	'python2-pyopenssl'
-	'python2-xdg')
+	'python2-pyopenssl')
 depends=('python2'
+        'python2-gobject2'
+	'python2-pyxdg-git'
 	'python2-twisted-git'
 	'python2-incremental-git'
+        'pygtk'
 	'desktop-file-utils'
 	'hicolor-icon-theme')
 optdepends=('python2-service-identity'

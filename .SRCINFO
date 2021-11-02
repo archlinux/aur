@@ -9,10 +9,12 @@ pkgbase = deluge1
 	makedepends = libtorrent-rasterbar
 	makedepends = python2-chardet
 	makedepends = python2-pyopenssl
-	makedepends = python2-xdg
 	depends = python2
+	depends = python2-gobject2
+	depends = python2-pyxdg-git
 	depends = python2-twisted-git
 	depends = python2-incremental-git
+	depends = pygtk
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	optdepends = python2-service-identity
@@ -42,4 +44,3 @@ pkgbase = deluge1
 	sha256sums = b4c397cc4ffede983554331c2b31e40feadda3a03e2ee377c3892c88b096b564
 
 pkgname = deluge1
-
