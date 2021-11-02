@@ -1,13 +1,13 @@
 pkgbase = fortune-mod-lorquotes
 	pkgdesc = The selected citations from a site Linux.Org.Ru (UTF8)
-	pkgver = 2020.09
+	pkgver = 2021.07
 	pkgrel = 1
 	url = http://lorquotes.ru/
 	arch = any
 	groups = fortune-mods
 	license = ?
-	makedepends = wget
 	depends = fortune-mod
+	source = lorquotes.zst
+	sha256sums = 92ae169e46d5dc79b17d01d30e4cb16c4002d9c76eee5f1af3180c206aadc9ff
 
 pkgname = fortune-mod-lorquotes
-
