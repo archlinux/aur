@@ -10,7 +10,7 @@
 pkgname=firedragon-hg
 _pkgname=FireDragon
 __pkgname=firedragon
-pkgver=92.0a1.r654890
+pkgver=96.0a1.r668262
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 x86_64_v3 aarch64)
@@ -171,20 +171,23 @@ ac_add_options --enable-jack
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-strip
 
+# This seems to be required since 96 as the build wouldn't succeed
+ac_add_options --without-wasm-sandboxed-libraries
+
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
 mk_add_options MOZ_DATA_REPORTING=0
 mk_add_options MOZ_SERVICES_HEALTHREPORT=0
 mk_add_options MOZ_TELEMETRY_REPORTING=0
 
-# options for ci / weaker build systems
+# Options for ci / weaker build systems
 # mk_add_options MOZ_MAKE_FLAGS="-j4"
 # ac_add_options --enable-linker=gold
 END
 
 if [[ $CARCH == 'aarch64' ]]; then
   cat >>../mozconfig <<END
-# taken from manjaro build:
+# Taken from manjaro build:
 ac_add_options --enable-optimize="-g0 -O2"
 # from ALARM
 # ac_add_options --disable-webrtc
