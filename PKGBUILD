@@ -3,7 +3,7 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=2.3.6.r56.g666d25e2
+pkgver=2.4.7.r55.gfbb038b5
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
@@ -11,18 +11,16 @@ url='https://github.com/sumneko/lua-language-server'
 arch=('x86_64')
 provides=('lua-language-server')
 conflicts=('lua-language-server')
-depends=('lua')
-makedepends=('ninja' 'git')
+depends=('bash' 'gcc-libs')
+makedepends=('git' 'ninja')
 source=(
   "${pkgname}::git+https://github.com/sumneko/${_pkgname}.git"
   'wrapper'
 )
-cksums=('SKIP'
-        '1766996792')
 sha256sums=('SKIP'
-            'd61e2b4544bb3a4ef052f7d1c6dbc14a3bfd45e0488d231cccdd553b7e22243b')
+            '117a7926e0d4a8cc55b6c5c4d621bbcbbfeb872f9eec0bb87707b9bbbb68fbae')
 b2sums=('SKIP'
-        'f89be7c8e62bb1eb5fe36964f79a28cc6590358a2b6270c1a22c0929444c275a62d3dd36f27b40612de7d1a5867bf6bf4f1547e878a37870d4fa81e8447ea82d')
+        'ec365fac615949e55c0a7cae3764f8b73172cd99f09f2ab31278b78c8d6b926ea41988ae066a55e33792bdd5e69101862abe96f69bd615dc07f78588b05f590e')
 
 pkgver() {
   cd "${pkgname}"
@@ -49,15 +47,14 @@ build() {
 package() {
   cd "${pkgname}"
 
-  install -dm0755 "${pkgdir}/usr/lib/${_pkgname}"
-  cp -a bin/Linux/* "${pkgdir}/usr/lib/${_pkgname}"
+  install -dm0755 "$pkgdir/usr/lib/$_pkgname/bin"
+  install -m0755 -t "$pkgdir/usr/lib/$_pkgname/bin" bin/Linux/$_pkgname
+  install -m0644 -t "$pkgdir/usr/lib/$_pkgname/bin" bin/Linux/main.lua
 
-  install -dm0755 "${pkgdir}/usr/share/${_pkgname}"
+  install -m0644 -t "$pkgdir/usr/lib/$_pkgname" {debugger,main}.lua
+  cp -r locale meta script "$pkgdir/usr/lib/$_pkgname"
 
-  cp -a \
-    main.lua platform.lua debugger.lua \
-    locale script meta \
-    "${pkgdir}/usr/share/${_pkgname}"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -Dm0755 ../wrapper "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm0755 "$srcdir/wrapper" "${pkgdir}/usr/bin/${_pkgname}"
 }
