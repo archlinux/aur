@@ -1,7 +1,7 @@
 pkgbase = ttf-win10
 	pkgdesc = Microsoft Windows 10 TrueType fonts
 	pkgver = 19043.928.210409
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.microsoft.com/en-us/typography/
 	arch = any
 	license = custom

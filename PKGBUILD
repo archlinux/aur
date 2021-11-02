@@ -1,8 +1,11 @@
+# Maintainer: Hanna Rose <imhxnna@gmail.com>
+# Contributor: Jambon <jambonmcyeah@gmail.com>
+
 pkgname=ttf-win10
 pkgver=19043.928.210409
 _minor=1212.21h1
 _type="release_svc_refresh"
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://docs.microsoft.com/en-us/typography/'
 license=(custom)
