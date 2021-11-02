@@ -10,6 +10,6 @@ pkgbase = cursor-theme-macos-big-sur
 	depends = libxcursor
 	depends = libpng
 	source = git+https://github.com/ful1e5/apple_cursor.git
-	sha1sums = 591082cf9ace37c6195818a1a5ae66c32119f0a1
+	sha1sums = 79e0d03c02c47f0f3de13d9ae36e42a2bd8a7309
 
 pkgname = cursor-theme-macos-big-sur
