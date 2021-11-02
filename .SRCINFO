@@ -1,0 +1,15 @@
+pkgbase = perl-string-linenumber
+	pkgdesc = Give line number to each line of string
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://metacpan.org/release/String-LineNumber
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/String-LineNumber-0.01.tar.gz
+	md5sums = 34fe251e284aac79f8db6e8f68f49c20
+	sha512sums = e5763dc1c3317c5afd91b330edf2874ab6351ec36413e524ff147010d71dced28d1b1767da8a56483207d50e5bb4e155515b4fd5f8c429b5ec1a2268952b906a
+
+pkgname = perl-string-linenumber
