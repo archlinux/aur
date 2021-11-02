@@ -4,12 +4,13 @@
 
 pkgname=gnunet-gtk
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A frontend for GNUnet'
 arch=('x86_64')
 url='https://gnunet.org'
 license=('GPL')
 depends=('gnunet' 'glade')
+optdepends=('qrencode')
 source=(https://ftp.gnu.org/gnu/gnunet/$pkgname-$pkgver.tar.gz)
 sha256sums=('14b2e5aa943b05ffa835152fc7b227895c45baccbfb4f63110fd93e95185ee1f')
 
