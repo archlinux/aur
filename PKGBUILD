@@ -2,7 +2,7 @@
 ## Contributor: Tyler Nelson <neo@cybercat.cc>
 
 pkgname=osu-lazer-bin
-pkgver=2021.1028.0
+pkgver=2021.1103.0
 pkgrel=1
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=('x86_64')
