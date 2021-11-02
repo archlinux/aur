@@ -2,7 +2,7 @@
 # template start; name=git; version=1;
 # template start; name=git-source; version=1;
 pkgname=skylobby-git
-pkgver=0.3.2.r0.g8a42ba6
+pkgver=0.7.5.r0.g6039080
 pkgdesc="A Spring RTS lobby and replay viewer written in Clojure"
 pkgrel=1
 arch=('any')
@@ -35,8 +35,15 @@ build() {
   cd ${_gitname:-$pkgname}
   clojure -M:uberjar
   cat <<-'EOF' > ./dist/skylobby
-	#!/bin/sh
-	exec /usr/bin/java -Dglass.gtk.uiScale=1.1 -jar '/usr/share/java/skylobby/skylobby.jar' "$@"
+#!/bin/sh
+exec /usr/bin/java -Dglass.gtk.uiScale=1.1 \
+  -server \
+  -Xmx2g \
+  -XX:+ExitOnOutOfMemoryError \
+  -XX:+DoEscapeAnalysis \
+  -XX:+UseCompressedOops \
+  -jar '/usr/share/java/skylobby/skylobby.jar' \
+  "$@"
 	EOF
   chmod a+x dist/skylobby 
 }
