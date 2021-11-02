@@ -1,12 +1,12 @@
 # Maintainer: Jérôme Deuchnord <jerome@deuchnord.fr>
 
 pkgname=kosmorro
-pkgver=0.10.2
+pkgver=0.10.4
 pkgrel=1
-pkgdesc='A program to compute the ephemerides'
-depends=('python>=3.7.0' 'python<4.0.0'
-         'python-kosmorrolib>=0.11.0'
-	     'python-termcolor'
+pkgdesc='A program to calculate the ephemerides'
+depends=('python'
+         'python-kosmorrolib>=1.0.0'
+         'python-termcolor'
          'python-tabulate'
          'python-dateutil'
         )
@@ -21,8 +21,8 @@ arch=('any')
 url='https://kosmorro.space'
 license=('AGPL3')
 
-source=("$pkgname-v$pkgver.tar.gz::https://github.com/Kosmorro/kosmorro/archive/v${pkgver}.tar.gz")
-sha256sums=("580ec60d7a5c904f28b02c5e9a531650ba33d44cfd164b84d31d9d0fab241bb0")
+source=("$pkgname-v$pkgver.tar.gz::https://codeload.github.com/Kosmorro/kosmorro/tar.gz/v$pkgver")
+sha256sums=("17196fb00e42f2e0c9d1d1c29729418511fdb33fa9dff084ab583a014252b447")
 
 build() {
     pip install --user --isolated Babel
