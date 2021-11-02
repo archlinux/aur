@@ -3,7 +3,7 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
 pkgver=20.04.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -28,7 +28,8 @@ depends=(
   'system76-firmware-daemon'
   'usbutils'
   'wireless_tools')
-makepdepends=(
+makedepends=(
+  'git'
   'python-pyflakes')
 optdepends=(
   'firmware-manager: Manage System76 firmware updates via standalone application'
@@ -44,19 +45,25 @@ optdepends=(
   'xorg-xhost: To enable GUI applications on Wayland'
   'xorg-xbacklight: To use the backlight service')
 install="$pkgname.install"
+_commit=e10c83da63cee72fdd80991289401e14f3a2efdd
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/pop-os/system76-driver/archive/$pkgver.tar.gz"
+  "git+https://github.com/pop-os/system76-driver.git#commit=$_commit?signed"
   'cli.patch'
   'wayland.patch'
   'actions.patch')
-sha256sums=('f4a9c6703e6c15602f401b7f2f09a10a2406e4b0c92c5b285346fe0dc76b1f67'
+sha256sums=('SKIP'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
             '2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3'
             '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119')
+validpgpkeys=('DA0878FCF806089ED4FDDF58E988B49EE78A7FB1') # Jeremy Soller <jeremy@system76.com>
 
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
 
   # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
   patch --no-backup-if-mismatch -Np1 -i $srcdir/cli.patch
@@ -73,12 +80,12 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
 
   # Install base package
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
