@@ -1,7 +1,7 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=kubech
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 _commit=f2e337ed1bf8b92db3e84be16c53654cbb9c56cd
 pkgdesc='Set kubectl contexts/namespaces per shell/terminal to manage multi Kubernetes cluster at the same time.'
@@ -21,7 +21,7 @@ package() {
   install -Dm755 $srcdir/kubech/completion/kubech.bash "$pkgdir/opt/kubech/completion/kubech.bash"
   
   mkdir -p $pkgdir/etc/profile.d
-  echo "source $pkgdir/opt/kubech/kubech" > $pkgdir/etc/profile.d/kubech.sh
+  echo "source /opt/kubech/kubech" > "$pkgdir/etc/profile.d/kubech.sh"
   install -Dm644 $srcdir/kubech/completion/kubech.bash "$pkgdir/usr/share/bash-completion/completions/kubech"
   #install -Dm644 kubech/completion/kubech.zsh "$pkgdir/usr/share/zsh/site-functions/_kubech"
 }
