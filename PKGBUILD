@@ -7,7 +7,7 @@ pkgdesc="Pacman wrapper and utility tool."
 arch=('x86_64')
 url="https://github.com/S0raWasTaken/pacw"
 license=('MIT')
-makedepends=('cargo' 'git')
+makedepends=('rust' 'git')
 source=("git+https://github.com/S0raWasTaken/pacw.git")
 sha256sums=('SKIP')
 
