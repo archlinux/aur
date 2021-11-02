@@ -1,0 +1,15 @@
+pkgbase = gitini-git
+	pkgdesc = Create repository on Github and upload the current folder
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/florianfelix/gitini
+	arch = any
+	license = MIT OR Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = gitini-git::git+https://github.com/florianfelix/gitini
+	sha256sums = SKIP
+
+pkgname = gitini-git
+
