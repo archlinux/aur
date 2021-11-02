@@ -1,0 +1,17 @@
+diff --git a/t/04greet.t b/t/04greet.t
+deleted file mode 100755
+index 8b06178..0000000
+--- a/t/04greet.t
++++ /dev/null
+@@ -1,11 +0,0 @@
+-#!/usr/bin/perl
+-
+-use warnings;
+-use strict;
+-use lib 't/testlib';
+-use Test::More tests => 2;
+-
+-use MyExport qw(:greet);
+-
+-is(hello(), MyExport::hello(), 'exported sub hello()');
+-is(hi(),    MyExport::hi(),    'exported sub hi()');
