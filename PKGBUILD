@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.3.8.0
+pkgver=2.3.9.1
 pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
@@ -27,7 +27,7 @@ depends=(
 	'mingw-w64-libheif'
 )
 makedepends=('mingw-w64-cmake' 'mingw-w64-robin-map' 'mingw-w64-wine')
-#checkdepends=('mingw-w64-wine' 'python')
+#checkdepends=('python')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
@@ -35,7 +35,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-	'0b0495e7c2c5213b1c68e9fd4e89e153355b0f61b244d77c50e7999219b07f44'
+	'59d3bc8dabc8ac99e2d94461b9f87554049a187f0e48e65b2775e37bb9175870'
 )
 
 _srcdir="oiio-${pkgver}"
@@ -44,7 +44,7 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DND
 	-DBUILD_DOCS=OFF -DBUILD_MISSING_FMT=OFF -DBUILD_MISSING_ROBINMAP=OFF
 	-DUSE_EXTERNAL_PUGIXML=ON -DCMAKE_CXX_STANDARD=20 -DINSTALL_DOCS=OFF 
 	-DUSE_PYTHON=OFF -DUSE_QT=OFF -DUSE_CCACHE=OFF 
-	-DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS=""
+	-DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS=''
 	-DUSE_EMBEDDED_LIBSQUISH=OFF
 	-DREQUIRED_DEPS='JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg;HDF5;LibRaw;Libheif' )
 
