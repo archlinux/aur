@@ -3,7 +3,7 @@
 # deps: pyproject
 
 pkgname=trakt-scrobbler-git
-pkgver=1.3.2.r4.g3e7519b
+pkgver=1.3.2.r5.g8366593
 pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
