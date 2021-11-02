@@ -76,9 +76,9 @@ _makenconfig=
 
 pkgbase=linux-xanmod-rog
 xanmod=5.14.15-xanmod1
-pkgver=${xanmod//-/.}
-#pkgver=5.14.14.xanpre0     # NOTE: start 4th position with 'xan...', we parse for this pattern later
-pkgrel=2.1
+#pkgver=${xanmod//-/.}
+pkgver=5.14.16.xanpre0     # NOTE: start 4th position with 'xan...', we parse for this pattern later
+pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -103,7 +103,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # incremental kernel.org patch ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.1.xz"
-        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.14.13-14.xz"
+        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.14.15-16.xz"
         #"Linux-5.14.5-rc1.patch"
 
         # amd-pstate update
@@ -170,6 +170,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'e3999a9e5957b425656bcda2a6d938175478ae9b17d15d38010e486ffbcf2076'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
+            '3c7ae911838cda30992d5a7fdf34b40494d31ba5765b834549aa276b1fa833e3'
             'deffeac14f6d9393e82595f6b6ec0e2a71f3b873a1996159577aa2522d6207c4'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
