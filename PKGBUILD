@@ -88,9 +88,8 @@ export RANLIB=llvm-ranlib
 
 # wasi sdk
 ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
-export WASI_CC=/opt/wasi-sdk/bin/clang
-export WASI_CXX=/opt/wasi-sdk/bin/clang++
-export WASI_LD=/opt/wasi-sdk/bin/wasm-ld
+export WASM_CC=/opt/wasi-sdk/bin/clang
+export WASM_CXX=/opt/wasi-sdk/bin/clang++
 
 # Branding
 ac_add_options --enable-official-branding
