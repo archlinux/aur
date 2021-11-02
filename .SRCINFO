@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-jxrlib
+	pkgdesc = Open source implementation of jpegxr (mingw-w64)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://archive.codeplex.com/?p=jxrlib
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://github.com/glencoesoftware/jxrlib/archive/v0.2.1.tar.gz
+	source = https://raw.githubusercontent.com/archlinux/svntogit-community/packages/jxrlib/trunk/CMakeLists.txt
+	sha256sums = 5ae964ae61f301f38a62b8e18eb8d2eee27eaf2b942477b033435ebf38fa4a19
+	sha256sums = SKIP
+
+pkgname = mingw-w64-jxrlib
