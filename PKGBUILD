@@ -1,4 +1,5 @@
-# Maintainer: Dan Beste <drb@wishalloy.io>
+# Contributor: Rafael Silva <perigoso@riseup.net>
+# Contributor: Dan Beste <drb@wishalloy.io>
 
 pkgname='gog-stardew-valley'
 pkgver=1.4.5
@@ -14,18 +15,19 @@ arch=('x86_64')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  'local:///stardew_valley_1_4_5_433754439_36068.sh'
+  'local:///stardew_valley_1_5_4_1396293314_48235.sh'
   'StardewValley'
 )
 sha256sums=(
   '9f51b56b351824493c381731f29175b0897fa0dc4169a9b9160b5a12003883dc'
   'ca0fe151f73f5e8b594b226e1b0539655a2d95a7848eb0e43961cb6daa0de2ff'
-  '1770fccdf0e159adaf891b0f0293630d11a2217b47a40232b0efd6e0abe36070'
+  'a3716bd7e3f3419e1ce28abc047b7a07153826d9a17a60dab1901ff1572ec816'
   '0c6826084d72917748e54f9308b7395f8d3780b4a745860839203e2af428d202'
 )
+
 package() {
   install -d "${pkgdir}/opt/${pkgname}/"
-  install -d "${pkgdir}/opt/${pkgname}/support/"
+  install -d "${pkgdir}/opt/${pkgname}/support/yad/64"
   install -d "${pkgdir}/usr/bin/"
   install -d "${pkgdir}/usr/share/applications/"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -43,6 +45,12 @@ package() {
   install -m 755                     \
     data/noarch/support/*.{sh,shlib} \
     "${pkgdir}/opt/${pkgname}/support/"
+  install -m 755                     \
+    'data/noarch/support/yad/yad.sh' \
+    "${pkgdir}/opt/${pkgname}/support/yad/"
+  install -m 755                     \
+    'data/noarch/support/yad/64/yad' \
+    "${pkgdir}/opt/${pkgname}/support/yad/64/"
   install -m 644                                      \
     'data/noarch/docs/End User License Agreement.txt' \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
