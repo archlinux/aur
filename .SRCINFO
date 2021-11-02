@@ -1,0 +1,13 @@
+pkgbase = proton-usage-bin
+	pkgdesc = Lists Steam applications that have specified a Steam Play compatibility tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rfvgyhn/proton-usage
+	arch = x86_64
+	license = MIT
+	provides = proton-usage
+	conflicts = proton-usage
+	source = https://github.com/rfvgyhn/proton-usage/releases/download/v0.1.0/proton-usage_v0.1.0_linux-x64.tar.gz
+	sha256sums = c300f61904b19e3f67e2795b6ac4d219f41f82b4a2b091a853a9e9bb40b8e923
+
+pkgname = proton-usage-bin
