@@ -36,13 +36,8 @@ build() {
   cd "$srcdir/${pkgname%-git}"
   make \
     PREFIX=/opt/wasi-sdk \
+    DESTDIR="$pkgdir" \
     build/wasi-libc.BUILT \
     build/libcxx.BUILT \
     build/libcxxabi.BUILT
 }
-
-package() {
-  cd "$srcdir/${pkgname%-git}"
-  make install INSTALL_DIR="$pkgdir"
-}
-
