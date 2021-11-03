@@ -55,6 +55,9 @@ fi
 start() {
   ebegin "Starting $(basename "${_DAEMON}")"
 
+  touch "${_PIDFILE}"
+  chown "${_USER}" "${_PIDFILE}"
+  chmod 664 "${_PIDFILE}"
   start-stop-daemon --pidfile "${_PIDFILE}" --make-pidfile --background --start --verbose --exec "${_DAEMON}" -- "${_DAEMON_ARGS[@]}"
 
   eend "$?"
