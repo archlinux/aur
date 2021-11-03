@@ -2,7 +2,7 @@
 # Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 _pyname=scikit-sparse
 pkgname=python-$_pyname
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc='Scikit sparse matrix package'
 url="https://pypi.python.org/pypi/$_pyname/"
@@ -12,7 +12,7 @@ makedepends=('cython')
 license=('GPL')
 arch=('x86_64')
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-sha256sums=('8d0cdba40cba1063474fd30bc6d3bf2b74dfb1c1fc81cf6ee45e201933d478f8')
+sha256sums=('f2de653920c2adf666de5c8a28abaa9f2218a1001d2d96e403a1f553938561c3')
 
 prepare() {
   cd "$_pyname-$pkgver"
