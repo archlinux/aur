@@ -3,7 +3,7 @@
 _pkgname=ryaml
 pkgname="python-${_pkgname}"
 pkgver=0.2.0.post1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple yaml serializer and deserializer using Rust."
 arch=(x86_64)
 url="https://pypi.org/project/${_pkgname}"
@@ -25,7 +25,8 @@ prepare() {
 build() {
   cd "$_pkgname-$pkgver"
 
-  maturin build --no-sdist --release --strip
+  maturin build --no-sdist --release --strip \
+    --cargo-extra-args="--features=abi3"
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = python-ryaml
 	pkgdesc = A simple yaml serializer and deserializer using Rust.
 	pkgver = 0.2.0.post1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/ryaml
 	arch = x86_64
 	license = MIT
