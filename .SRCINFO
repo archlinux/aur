@@ -1,13 +1,13 @@
 pkgbase = mqtt-cli-bin
 	pkgdesc = MQTT 5.0 and 3.1.1 compatible and feature-rich MQTT Command Line Interface.
-	pkgver = 4.7.0
-	pkgrel = 2
+	pkgver = 4.7.2
+	pkgrel = 1
 	url = https://hivemq.github.io/mqtt-cli
 	arch = x86_64
 	license = Apache
 	depends = bash
 	depends = java-runtime>=1.8
-	source = https://github.com/hivemq/mqtt-cli/releases/download/v4.7.0/mqtt-cli-4.7.0.deb
-	md5sums = f5b766924ea41644ac1dc168a64288c9
+	source = https://github.com/hivemq/mqtt-cli/releases/download/v4.7.2/mqtt-cli-4.7.2.deb
+	md5sums = 26307625c11b816445182359c69c4b0b
 
 pkgname = mqtt-cli-bin
