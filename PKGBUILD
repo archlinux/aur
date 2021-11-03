@@ -1,7 +1,7 @@
 # Maintainer: steadfasterX <steadfasterX [at] gmail -dot- com>
 pkgname=jodin3-bin
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="JOdin3 allows you to flash Samsung firmware on Linux (pre-compiled jar)"
 arch=('x86_64')
 url="https://github.com/plaili/android-casual"
@@ -23,6 +23,7 @@ _ROOTDIR=$(pwd)
 build(){
     cat > jodin3-starter.sh << _EOB
 #!/bin/bash
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk/bin/java
 java -Xmx8096m --module-path /usr/lib/jvm/java-11-openjfx/lib/ --add-modules javafx.controls,javafx.fxml -jar /usr/share/${pkgname}/JOdin3CASUAL-${pkgver}.jar
 _EOB
 }
