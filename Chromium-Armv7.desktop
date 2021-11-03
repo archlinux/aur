@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+TryExec=/usr/bin/chromium-armhf
+Exec=/usr/bin/chromium-armhf
+Name=Chromium Docker
+GenericName=Web Browser
+Comment=Browser for Netflix, Amazon and Spotify
+Icon=/usr/share/chromium-docker/chromium.png
+Categories=Network;WebBrowser;

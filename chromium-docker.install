@@ -1,0 +1,37 @@
+post_install() {
+    # Start Docker services
+    printf "\n=== PREPARING SYSTEM ===\n"
+    echo "Enabling and starting docker service"
+    systemctl enable docker --now
+    echo "Creating docker group and adding user to it"
+    groupadd docker
+    usermod -aG docker $(whoami)
+    echo "Enabling xhost forwarding"
+    xhost +local:docker
+
+    # Build Docker Image
+    printf "\n=== BUILD DOCKER IMAGE (might take some time) ===\n"
+    cd /usr/share/chromium-docker/git
+    docker build -t hthiemann/chromium-armhf .
+
+    #Creating Volume
+    printf "\n=== CREATING CHROMIUM HOME VOLUME ==\n"
+    docker volume create chromium_home
+
+    printf "\n\nSuccessfully installed Chromium inside of a Docker container\n"
+    printf "\n=== IMPORTANT NOTICE ===\n"
+    echo "Docker requires you to reboot to get permissions right and start the service properly."
+    echo "Uninstalling this package will also remove the 'chromium-armhf' docker container."
+    echo "Uninstalling this package will leave the chromium_home volume in place."
+}
+
+post_upgrade() {
+    cd /usr/share/chromium-docker/git
+    docker build -t hthiemann/chromium-armhf .
+}
+
+post_remove() {
+    docker rmi hthiemann/chromium-armhf
+    rm -rf /usr/share/chromium-docker
+}
+
