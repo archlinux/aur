@@ -1,0 +1,13 @@
+pkgbase = bisection
+	pkgdesc = Algorithm for solving equations
+	pkgver = r2.cad6efa
+	pkgrel = 1
+	url = https://github.com/GVBilokorenko/bisection
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = go
+	source = bisection::git://github.com/GVBilokorenko/bisection.git
+	sha512sums = SKIP
+
+pkgname = bisection
