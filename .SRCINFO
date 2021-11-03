@@ -1,0 +1,16 @@
+pkgbase = ruby-squire
+	pkgdesc = Squire handles your configuration by common config DSL.
+	pkgver = 1.3.7
+	pkgrel = 1
+	url = https://github.com/smolnar/squire
+	arch = any
+	license = MIT
+	makedepends = ruby-bundler
+	makedepends = ruby-rake
+	depends = ruby
+	depends = ruby-activesupport
+	options = !emptydirs
+	source = ruby-squire-1.3.7.tar.gz::https://github.com/smolnar/squire/archive/v1.3.7.tar.gz
+	sha512sums = b3851b9936c918eea43553b4c257c7fb87885a9ae1af97561cc38833ed784de8d7226bcabea9791836b2dce3e2541fd5391e7e7f9a253164d849b479c8a2b3c5
+
+pkgname = ruby-squire
