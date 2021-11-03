@@ -1,6 +1,6 @@
 pkgbase = qtutilities
 	pkgdesc = Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models
-	pkgver = 6.5.1
+	pkgver = 6.5.2
 	pkgrel = 1
 	url = https://github.com/Martchus/qtutilities
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = qtutilities
 	depends = c++utilities
 	depends = qt5-base
 	optdepends = qtutilities-doc: API documentation
-	source = qtutilities-6.5.1.tar.gz::https://github.com/Martchus/qtutilities/archive/v6.5.1.tar.gz
-	sha256sums = a0bb997e9ea8b53c4ba7ae40affd945d015c757f43d7a313b575a8a425bea180
+	source = qtutilities-6.5.2.tar.gz::https://github.com/Martchus/qtutilities/archive/v6.5.2.tar.gz
+	sha256sums = 01afcb59312615129de29d339255224ca09c5fee050659b7896ea880483bd311
 
 pkgname = qtutilities
