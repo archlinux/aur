@@ -3,7 +3,7 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname=fd-git
-pkgver=8.2.0.r92.g3ba90dd
+pkgver=8.2.0.r114.gf1b39d4
 pkgrel=1
 pkgdesc='A simple, fast and user-friendly alternative to find.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/sharkdp/fd'
 license=('APACHE' 'MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
-provides=('fd')
+provides=("fd=$pkgver")
 conflicts=('fd')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
@@ -42,7 +42,7 @@ check() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 target/release/fd -t "$pkgdir/usr/bin/"
+  install -D target/release/fd -t "$pkgdir/usr/bin/"
   install -Dm644 target/release/build/fd-find-*/out/fd.bash "$pkgdir/usr/share/bash-completion/completions/fd"
   install -Dm644 target/release/build/fd-find-*/out/fd.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
   install -Dm644 contrib/completion/_fd -t "$pkgdir/usr/share/zsh/site-functions/"
