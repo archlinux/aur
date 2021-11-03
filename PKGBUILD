@@ -1,31 +1,30 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=python-folium
 _pkgname=folium
-pkgver=0.11.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Python Data. Leaflet.js maps"
 arch=('any')
 url="https://github.com/python-visualization/folium"
 license=('MIT')
-checkdepends=('python-pillow' 'python-pytest' 'python-selenium')
-depends=('python-jinja' 'python-branca')
+checkdepends=('chromedriver' 'python-branca' 'python-pillow' 'python-pytest' 'python-selenium')
+depends=('python' 'python-jinja' 'python-branca')
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/python-visualization/$_pkgname/archive/v$pkgver.tar.gz"
-    "https://patch-diff.githubusercontent.com/raw/python-visualization/folium/pull/1324.patch")
-sha256sums=('5b32ffb900b6d09a0b3e23d44bfda39c6f84b63a447b0700eb01725cb6a5f0bd'
-            '4b168908e9184f8f3b883c5409b887c8448614f640e308d0484d5085266965d4')
-prepare() {
+source=("$pkgname-$pkgver.tar.gz::https://github.com/python-visualization/$_pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('3e0cb5bc1817db67ff216af3875a45b50b453c1ae9adf5c4b610413a91b3e1cc')
+
+build() {
     cd "$_pkgname-$pkgver"
-    patch -p1 -i ../1324.patch
+    python setup.py build
 }
 
-check() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    PYTHONPATH=. pytest
-}
+#check() {
+    #cd "$_pkgname-$pkgver"
+    #PYTHONPATH=. pytest
+#}
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    cd "$_pkgname-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.txt"
 }
