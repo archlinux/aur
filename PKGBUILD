@@ -1,7 +1,7 @@
 # Maintainer: MidAutumnMoon <mid.autumn0moon@gmail.com>
 
 pkgname=dnslookup-bin
-pkgver=1.4.9
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Simple command line utility to make DNS lookups to the specified server"
 arch=( 'x86_64' 'i686' 'aarch64' 'armv7h' )
@@ -13,10 +13,10 @@ source_i686=( https://github.com/ameshkov/dnslookup/releases/download/v${pkgver}
 source_aarch64=( https://github.com/ameshkov/dnslookup/releases/download/v${pkgver}/dnslookup-linux-arm64-v${pkgver}.tar.gz )
 source_armv7h=( https://github.com/ameshkov/dnslookup/releases/download/v${pkgver}/dnslookup-linux-arm-v${pkgver}.tar.gz )
 
-sha256sums_x86_64=( 'a03d2348cb224253871e08685fb9cba513cf6050c808b76b2a7260af964af53b' )
-sha256sums_i686=( '9ec9cbee69a24a4f09aa39f375dbacca58b6f2ac91081b09c84eaa907e92fe80' )
-sha256sums_aarch64=( '1561d76d9c2aafc701715ca057db46592dc6ac21c6f7eadd656e7f6d76229e49' )
-sha256sums_armv7h=( '64d8011572e6f55951ae10076cfc21a0a058c1204c7d0c96a3dac11c3f39feed' )
+sha256sums_x86_64=( '4352133b1dae233a7e80a47d6fe68e61709340749c9a8860ea74a2c8fbb1d8cf' )
+sha256sums_i686=( '8ad03205172392bcf8ddcc7f0b99b7736bf3f86e3f28df627b4222c0a4808101' )
+sha256sums_aarch64=( 'cbdc0297d4191073c2f1cbcf5db277e5a847336251bb1c9ed5f655ca3ad6c879' )
+sha256sums_armv7h=( '4abbe7dea9df2a03afc3b67846d6c59367176b70e0be2aa38e9d99929e29c48a' )
 
 provides=( 'dnslookup' )
 conflicts=( 'dnslookup-git' 'dnslookup' )
