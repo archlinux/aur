@@ -1,0 +1,15 @@
+pkgbase = rubichess-git
+	pkgdesc = Just another UCI compliant chess engine.
+	pkgver = 2.2.r15.g49e8417
+	pkgrel = 1
+	url = https://github.com/Matthies/RubiChess
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = rubichess
+	conflicts = rubichess
+	source = RubiChess::git+https://github.com/Matthies/RubiChess.git
+	md5sums = SKIP
+
+pkgname = rubichess-git
