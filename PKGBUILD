@@ -8,6 +8,7 @@ pkgrel=1
 pkgdesc="SDK for building Kubernetes APIs"
 url="https://github.com/kubernetes-sigs/kubebuilder"
 license=('APACHE')
+conflicts=('kubebuilder-bin')
 source=("https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${pkgver}/kubebuilder_linux_amd64")
 sha256sums=('102bb0f586dcb50951aded67856483a2ee114057c56475b3cda6051a12832a72')
 arch=('x86_64')
