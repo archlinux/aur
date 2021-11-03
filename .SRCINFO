@@ -1,0 +1,17 @@
+pkgbase = mediaget
+	pkgdesc = radio player
+	pkgver = 3.200.4007
+	pkgrel = 1
+	url = https://zvvubuntu.blogspot.com
+	arch = i386
+	arch = x86_64
+	license = custom
+	depends = python-pyqt5
+	depends = vlc
+	conflicts = zvvradio-git
+	source = mediaget_3.200.4007.tar.xz::https://mediaget.com/ld/get_installer.php?os=linux&mgsite=1&r=ms_google
+	source = mediaget.desktop
+	md5sums = 5974fa98ea6b3dbae7bee4fffb50a7d5
+	md5sums = aa7a66686c3f439f3e1c39d2069679b4
+
+pkgname = mediaget

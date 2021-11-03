@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=MediaGet
+Keywords=torrent;player;
+Comment=Torrent-Client
+Type=Application
+Terminal=false
+Categories=AudioVideo;
+StartupWMClass=MediaGet
+Exec=/usr/bin/mediaget %u
+TryExec=/usr/bin/mediaget
+MimeType=x-scheme-handler/mediagettorrentfile;x-scheme-handler/mediagetvideofile;x-scheme-handler/mediagetcatalogparams;
+X-KDE-Protocols=torrent
+Icon=/opt/mediaget/resources/mediaget.png
