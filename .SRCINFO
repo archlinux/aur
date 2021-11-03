@@ -1,6 +1,6 @@
 pkgbase = shadered
 	pkgdesc = Lightweight tool for creating and testing HLSL and GLSL shaders.
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/dfranx/SHADERed
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = shadered
 	depends = glew
 	depends = glm
 	depends = spirv-headers
-	source = git+https://github.com/dfranx/SHADERed.git#tag=v1.5.5
+	source = git+https://github.com/dfranx/SHADERed.git#tag=v1.5.6
 	source = git+https://github.com/dfranx/ImGuiColorTextEdit
 	source = git+https://github.com/dfranx/SPIRV-VM.git
 	source = git+https://github.com/dfranx/ShaderExpressionParser
