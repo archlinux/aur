@@ -6,7 +6,7 @@ arch=("x86_64")
 license=('Apache')
 depends=(clang lld)
 makedepends=(cmake ninja python git)
-source=('git+https://github.com/WebAssembly/wasi-sdk.git'
+source=('git+https://github.com/whitequark/wasi-sdk#branch=exception-handling'
         'git+https://git.savannah.gnu.org/git/config.git'
         'git+https://github.com/llvm/llvm-project.git'
         'git+https://github.com/WebAssembly/wasi-libc.git')
@@ -37,7 +37,6 @@ build() {
   CC="clang" \
   CXX="clang++" \
   LD="lld" \
-  CXXFLAGS="$CXXFLAGS -fno-exceptions" \
     make build strip
 }
 
