@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 prepare() {
 	cd "$srcdir/$_pkgname"
 	
-	sed -i "s|\$\$\[QT_INSTALL_PLUGINS\]|$pkgdir/usr/lib/qt/plugins|" QPsdPlugin.pro
+	sed -i "s|\$\$\[QT_INSTALL_PLUGINS\]|/usr/lib/qt/plugins|" QPsdPlugin.pro
 	
 	mkdir -p build
 	cd build
