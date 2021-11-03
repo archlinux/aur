@@ -15,6 +15,7 @@ package() {
     cd fsorter
     mkdir "$pkgdir/usr"
     mkdir "$pkgdir/usr/bin"
+    rm -R "$pkgdir/usr/bin/fsorter"
     cp ./fsorter "$pkgdir/usr/bin/"
     chmod +x "$pkgdir/usr/bin/fsorter"
 }
