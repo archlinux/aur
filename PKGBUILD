@@ -28,7 +28,7 @@ source=("Cairo-Black.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts
         "Cairo-HeavySlantRight.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-HeavySlantRight.ttf"
         "Cairo-Italic.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-Italic.ttf"
         "Cairo-Light.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-Light.ttf"
-        "Cairo-LightItalic.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-Black.ttf"
+        "Cairo-LightItalic.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-LightItalic.ttf"
         "Cairo-LightSlantRight.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-LightSlantRight.ttf"
         "Cairo-Regular.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-Regular.ttf"
         "Cairo-SemiBold.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-SemiBold.ttf"
