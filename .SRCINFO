@@ -1,0 +1,16 @@
+pkgbase = ouch-bin
+	pkgdesc = Painless compression and decompression in the terminal (binary release)
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/ouch-org/ouch
+	arch = x86_64
+	license = MIT
+	provides = ouch
+	conflicts = ouch
+	conflicts = ouch-git
+	source = ouch::https://github.com/ouch-org/ouch/releases/download/0.3.1/ouch-x86_64-linux-musl
+	source = LICENSE::https://raw.githubusercontent.com/ouch-org/ouch/master/LICENSE
+	sha256sums = 48843b18aee48273e60456267c408163d51df046ad79a6cdd99c75c45cb79afe
+	sha256sums = f082ccc8a66b3fdbeb6d53d5fe084934fc6f480a9d1d9243d2c5d9e45ec76938
+
+pkgname = ouch-bin
