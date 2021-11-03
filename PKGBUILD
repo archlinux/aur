@@ -2,8 +2,8 @@
 
 pkgname=roonserver
 _pkgname=RoonServer
-pkgver=1.8.831
-pkgrel=2
+pkgver=1.8.846
+pkgrel=1
 pkgdesc="The music player for music lovers"
 arch=('x86_64')
 url="https://roonlabs.com/"
