@@ -1,0 +1,24 @@
+pkgbase = upower-silent-mouse
+	pkgdesc = Abstraction for enumerating power devices, listening to device events and querying history and statistics, patched with guiambros' silent-mouse notification fix
+	pkgver = 0.99.13
+	pkgrel = 1
+	url = https://upower.freedesktop.org
+	arch = x86_64
+	license = GPL
+	makedepends = docbook-xsl
+	makedepends = gobject-introspection
+	makedepends = python
+	makedepends = git
+	makedepends = gtk-doc
+	depends = systemd
+	depends = libimobiledevice
+	depends = libgudev
+	provides = upower
+	conflicts = upower
+	backup = etc/UPower/UPower.conf
+	source = git+https://gitlab.freedesktop.org/upower/upower.git#commit=0f6cc0a10be22d7ddd684e1cd851e4364a440494
+	source = https://github.com/guiambros/silent-mouse/raw/main/up-device-0_99_13.patch
+	sha256sums = SKIP
+	sha256sums = ebff59c52ea3d9ced604fd6507e8f99e62467785b40443da52f41bf3b5f941dd
+
+pkgname = upower-silent-mouse
