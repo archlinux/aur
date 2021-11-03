@@ -1,0 +1,16 @@
+pkgbase = ruby-secure_headers
+	pkgdesc = Manages application of security headers with many safe defaults.
+	pkgver = 6.3.3
+	pkgrel = 1
+	url = https://github.com/github/secure_headers
+	arch = any
+	license = MIT
+	makedepends = ruby-bundler
+	makedepends = ruby-rake
+	makedepends = ruby-rspec
+	depends = ruby
+	options = !emptydirs
+	source = ruby-secure_headers-6.3.3.tar.gz::https://github.com/github/secure_headers/archive/v6.3.3.tar.gz
+	sha512sums = 364d970ea418132f2e685dc5eaf1487c967170a11888ad2817555846d1f43594e385bdc4e99c6b3f1d021baf2f7ba125ff885b03ec7e8cfcc3ae99f6b4c6a1fc
+
+pkgname = ruby-secure_headers
