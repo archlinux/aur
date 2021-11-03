@@ -10,6 +10,8 @@ url="https://github.com/Mirko-r/extrattor"
 depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip')
 license=("GPL-3.0")
 conflicts=("extrattor")
+makedepends=('git')
+provides=('extrattor')
 source=("git+https://github.com/Mirko-r/extrattor.git")
 sha512sums=("SKIP")
 
