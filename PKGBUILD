@@ -8,7 +8,7 @@ depends=(clang lld)
 makedepends=(cmake ninja python git)
 source=('git+https://github.com/whitequark/wasi-sdk#branch=exception-handling'
         'git+https://git.savannah.gnu.org/git/config.git'
-        'git+https://github.com/whitequark/llvm-project.git#commit=d8b07963c8c324bf50d77e25857a7fd9e669cb8b'
+        'git+https://github.com/whitequark/llvm-project.git#branch=wasm-unwinding'
         'git+https://github.com/WebAssembly/wasi-libc.git')
 md5sums=('SKIP'
          'SKIP'
@@ -24,6 +24,8 @@ prepare() {
   git config submodule.src/config.url "$srcdir/config"
   git config submodule.src/llvm-project.url "$srcdir/llvm-project"
   git config submodule.src/wasi-libc.url "$srcdir/wasi-libc"
+  git submodule set-branch src/llvm-project wasm-unwinding
+  git submodule update --remote src/llvm-project
   git submodule update
 }
 
