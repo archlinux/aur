@@ -2,18 +2,19 @@
 # Contributor: Michael Eckert <michael.eckert@linuxmail.org>
 
 pkgname=deltarpm
-pkgver=3.6.2
-pkgrel=2
+pkgver=3.6.3
+pkgrel=1
 pkgdesc="Create deltas between rpms"
 arch=('i686' 'x86_64')
 license=('custom:BSD')
 url="https://github.com/rpm-software-management/$pkgname"
-depends=('rpm-tools' 'zlib' 'zstd')
+depends=('rpm-tools' 'zlib' 'zstd>=1.3.8')
 makedepends=('python2' 'python')
-optdepends=('python2: for python2 module'
+optdepends=('perl: for drpmsync command'
+            'python2: for python2 module'
             'python: for python3 module')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('495fb5d807bba6b10d1ecba49cf707a0')
+sha256sums=('5a24a92baa9c4b6c650f02fe8addd2002f3afde3fd5bd526d9988cf6ecdb682b')
 
 build() {
 	cd "$pkgname-$pkgver"
