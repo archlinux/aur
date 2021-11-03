@@ -1,8 +1,8 @@
-# Maintainer: dobo <dobo90_at_gmail.com>
+# Contributor: dobo <dobo90_at_gmail.com>
 
 pkgname=sdlhack
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper for SDL which lets you force fullscreen games to minimize.'
 arch=(i686 x86_64)
 url=http://jspenguin.org:81/software/sdlhack/
@@ -12,7 +12,7 @@ depends=(glibc bash)
 makedepends=(sdl)
 [ ${CARCH} = x86_64 ] && makedepends+=(gcc-multilib)
 source=(http://jspenguin.org:81/software/sdlhack/${pkgname}-${pkgver}.tar.gz)
-md5sums=(d154bcc2f6e82dad6d5b7fbe7a681115)
+md5sums=(b028e64931871e2eb76c9aeb74f6e86c)
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
