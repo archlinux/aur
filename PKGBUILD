@@ -1,7 +1,7 @@
 # Maintainer: Rajter <rajterandrija@gmail.com>
 pkgname=picket
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Linux screen color picker with magnifier and custom user defined formats."
 arch=('any')
 url="https://github.com/rajter/Picket"
