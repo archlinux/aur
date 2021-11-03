@@ -8,7 +8,7 @@ depends=(clang lld)
 makedepends=(cmake ninja python git)
 source=('git+https://github.com/whitequark/wasi-sdk#branch=exception-handling'
         'git+https://git.savannah.gnu.org/git/config.git'
-        'git+https://github.com/llvm/llvm-project.git'
+        'git+https://github.com/whitequark/llvm-project.git'
         'git+https://github.com/WebAssembly/wasi-libc.git')
 md5sums=('SKIP'
          'SKIP'
