@@ -9,7 +9,7 @@
 # /opt/OpenFOAM/OpenFOAM-v2012
 
 pkgname=openfoam-com
-pkgver=v2012
+pkgver=v2106
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
 pkgrel=1
@@ -20,9 +20,9 @@ license=('GPL')
 install="${pkgname}.install"
 depends=('gcc' 'cgal' 'fftw' 'boost' 'openmpi' 'paraview' 'utf8cpp' 'scotch' 'parmetis')
 
-source=("https://sourceforge.net/projects/openfoam/files/v2012/OpenFOAM-v2012.tgz")
+source=('https://sourceforge.net/projects/openfoam/files/v2106/OpenFOAM-v2106.tgz')
 
-md5sums=('4b83938a8c939a84b7e985e4f5ab7543')
+md5sums=('e5fe7768407fdccc3e160d9c1b2d0a1c')
 
 prepare() {
   if [ -n "$WM_PROJECT_DIR" ]
@@ -70,6 +70,11 @@ build() {
       echo "No $projectDir/etc/bashrc found"
       return 1
   }
+
+  # changes to avoid linking problems related to gcc 11
+  # check this for the next upgrade!
+  pwd
+  sed -i 's/g++ -std=c++11/g++ -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=0/g' $projectDir/wmake/rules/General/Gcc/c++
 
   # Avoid external influence on the environment
   export FOAM_CONFIG_MODE="o"
