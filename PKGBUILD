@@ -1,11 +1,11 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 
 pkgname=zmeventnotification
-pkgver=6.1.27
+pkgver=6.1.28
 pkgrel=1
 pkgdesc='A machine learning powered, secure websocket & MQTT based event notification server for ZoneMinder'
 arch=('any')
-url='https://github.com/pliablepixels/zmeventnotification'
+url='https://github.com/ZoneMinder/zmeventnotification'
 license=('GPL')
 depends=('opencv' 'perl-config-inifiles' 'perl-crypt-eksblowfish' 'perl-json' 'perl-lwp-protocol-https' 'perl-net-mqtt-simple'
          'perl-net-websocket-server' 'python-face_recognition' 'python-gifsicle' 'python-future' 'python-imageio' 'python-imageio-ffmpeg'
@@ -22,7 +22,7 @@ backup=('etc/zoneminder/zmeventnotification.ini'
         'etc/zoneminder/objectconfig.ini'
         'etc/zoneminder/es_rules.json')
 install=${pkgname}.install
-source=("${pkgname}-git::git+https://github.com/pliablepixels/${pkgname}.git#tag=v${pkgver}"
+source=("${pkgname}-git::git+https://github.com/ZoneMinder/${pkgname}.git#tag=v${pkgver}"
         # YOLOv3
         'https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg'
         'https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names'
