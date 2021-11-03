@@ -9,7 +9,7 @@ pkgdesc='Todo list, checklist, and task manager app'
 arch=('any')
 url='https://www.ticktick.com'
 license=('MIT')
-depends=('electron')
+depends=('electron', 'libnotify')
 makedepends=('nodejs-nativefier' 'imagemagick')
 source=("${pkgname}.png"
         "${pkgname}.desktop")
