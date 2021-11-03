@@ -2,7 +2,7 @@
 
 pkgname=fish-fzf
 pkgver=7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="fzf key-bindings into fish"
 arch=('any')
 url="https://github.com/PatrickF1/fzf.fish"
@@ -10,8 +10,8 @@ license=('MIT')
 groups=('fish-plugins')
 depends=('fish>=3.2.0' 'fzf>=0.27.2')
 optdepends=(
-	'fd>=7.5.0: faster, friendlier alternative to find'
-	'bat>=0.16.0: smarter cat with syntax highlighting'
+	'fd>=7.5.0: required for search directory feature'
+	'bat>=0.16.0: required for search directory feature'
 	'git')
 makedepends=('git')
 # checkdepends=('fish-fishtape')
