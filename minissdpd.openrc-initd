@@ -50,11 +50,13 @@ if "${_IP6}"; then
 fi
 
 if "${_DEBUG}"; then
-  _DAEMON_ARGS+=('-d')
-  _STARTSTOPDAEMON_DEBUG_ARGS=(
-    '--background'
-    '-1' "${_LOGFILE}" '-2' "${_LOGFILE}"
-  )
+  if [ "${_DEBUG}" == "true" ];  then
+    _DAEMON_ARGS+=('-d')
+    _STARTSTOPDAEMON_DEBUG_ARGS=(
+      '--background'
+      '-1' "${_LOGFILE}" '-2' "${_LOGFILE}"
+    )
+  fi
 else
   _STARTSTOPDAEMON_DEBUG_ARGS=()
 fi
