@@ -1,7 +1,8 @@
 #Maintainer: Mirko Rovere
+
 pkgname="extrattor-git"
 pkgver="beta"
-pkgrel="6"
+pkgrel="1"
 pkgdesc="A simple Linux utility to extract one or more archives from the terminal"
 arch=("x86_64")
 depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip')
