@@ -3,7 +3,7 @@
 # Contributor: redfish
 
 pkgname=python-base58
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Bitcoin-compatible Base58 and Base58Check implementation"
 arch=('any')
@@ -21,4 +21,4 @@ package() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('d1cfb2069bdc5afe842e31d21dd6d639')
+sha256sums=('5df25ce3b3d2f7e9d5289b2c75ba9e5291b59b1c34f4f7c90df5ae5f87fe5fb9')

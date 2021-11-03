@@ -1,6 +1,6 @@
 pkgbase = python-base58
 	pkgdesc = Bitcoin-compatible Base58 and Base58Check implementation
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/keis/base58
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-base58
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = python-base58-2.1.0.tar.gz::https://github.com/keis/base58/archive/v2.1.0.tar.gz
-	md5sums = d1cfb2069bdc5afe842e31d21dd6d639
+	source = python-base58-2.1.1.tar.gz::https://github.com/keis/base58/archive/v2.1.1.tar.gz
+	sha256sums = 5df25ce3b3d2f7e9d5289b2c75ba9e5291b59b1c34f4f7c90df5ae5f87fe5fb9
 
 pkgname = python-base58
