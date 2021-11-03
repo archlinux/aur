@@ -1,7 +1,7 @@
 # Maintainer: calzonealamuerte <wilburn22 at messageden dot com>
 
 pkgname=cliphist-bin
-pkgver=0.1.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='clipboard history “manager” for wayland'
 arch=('x86_64')
