@@ -34,7 +34,7 @@ build() {
   _ensmall_threads=1
 
   msg2 "First ensmall the step files"
-  find -name '*.step' -print0 | xargs -0 -n 1 -P ${_ensmall_threads} -I % sh -c 'stepreduce % %.reduced; mv %.reduced %'
+  find -name '*.step' -print0 | xargs -0 -P ${_ensmall_threads} -I % sh -c 'stepreduce % %.reduced; mv %.reduced %'
   
   msg2 'Then use cmake to "build"'
   cmake \
