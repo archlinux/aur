@@ -1,0 +1,15 @@
+pkgbase = keyring-cli
+	pkgdesc = A very basic cli keyring tool to use accross various OS.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vbouchaud/keyring
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = MPL2
+	makedepends = go
+	source = keyring-1.0.0.tar.gz::https://github.com/vbouchaud/keyring/archive/v1.0.0.tar.gz
+	sha256sums = 944f49a7aab08605e55c0641fe52673ad853cf001ecfec715c38c38c8293f6b6
+
+pkgname = keyring-cli
