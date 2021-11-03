@@ -6,9 +6,9 @@
 
 _pkgname=instantclient-jdbc
 pkgname=oracle-${_pkgname}
-pkgver=21.1.0.0.0
-_urlver=211000
-_unzippath=instantclient_21_1
+pkgver=21.3.0.0.0
+_urlver=213000
+_unzippath=instantclient_21_3
 pkgrel=1
 pkgdesc="Additional support for XA, Internationalization, and RowSet operations under JDBC"
 arch=('x86_64')
@@ -25,9 +25,9 @@ DLAGENTS+=('manual::/usr/bin/false');
 source=(LICENSE
         "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'c0242c683b990dc199d18502be771ca5')
+         'd91c5c1b2011007734f8a27393b5f40f')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '76c866272712f2b432cc4be675605b22deca02f7a88a292b5ed8d29212d79dc7')
+            '9e453b311d77520463fc207842e759424c7554087c03cd5f50b45eaf6a98e1fc')
 
 plain "If you run into any problems downloading the files, get the .zip version from"
 plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
