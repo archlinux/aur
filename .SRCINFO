@@ -1,0 +1,19 @@
+pkgbase = neovim-null-ls-git
+	pkgdesc = Uses Neovim as a language server to inject diagnostics, code actions, and more
+	pkgver = r675.3c5cf2d
+	pkgrel = 1
+	url = https://github.com/jose-elias-alvarez/null-ls.nvim
+	install = null-ls.install
+	arch = any
+	groups = neovim-plugins
+	license = Unlicense
+	makedepends = git
+	depends = neovim>=0.5.0
+	depends = neovim-plenary
+	depends = neovim-lspconfig
+	provides = neovim-null-ls
+	conflicts = neovim-null-ls
+	source = neovim-null-ls-git::git+https://github.com/jose-elias-alvarez/null-ls.nvim
+	md5sums = SKIP
+
+pkgname = neovim-null-ls-git
