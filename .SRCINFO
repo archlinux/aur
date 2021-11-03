@@ -1,0 +1,21 @@
+pkgbase = gerbera-openrc
+	pkgdesc = OpenRC init script for gerbera daemon.
+	pkgver = 20211103.1
+	pkgrel = 1
+	url = https://gerbera.io/
+	arch = any
+	license = GPL3
+	depends = gerbera
+	optdepends = openrc: To make use of this initscript.
+	options = !emptydirs
+	backup = etc/conf.d/gerbera
+	source = gerbera.conf.d
+	source = gerbera.openrc-initd
+	source = copying-info.txt
+	source = license-gpl3.txt::https://www.gnu.org/licenses/gpl-3.0.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 8921a140fb29beec3e9a32cfc9a85c99d1c8718db806656cc443cbaf2bee8f1a
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = gerbera-openrc

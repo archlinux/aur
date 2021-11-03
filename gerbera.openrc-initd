@@ -1,0 +1,69 @@
+#!/sbin/openrc-run
+
+depend() {
+  after net minissdpd
+}
+
+
+_DAEMON_ARGS=()
+
+### Configuration settings to be set in /etc/conf.d/gerbera
+
+if [ -z "${_DAEMON}" ]; then
+  _DAEMON="/usr/bin/gerbera"
+fi
+if [ -n "${_CONFIGFILE}" ]; then
+  _DAEMON_ARGS+=(--config "${_CONFIGFILE}")
+elif [ -n "${_CONFIG_HOME}" ]; then
+  _DAEMON_ARGS+=(--home "${_CONFIG_HOME}")
+  if [ -n "${_CONFIG_HOME_FOLDER}" ]; then
+    _DAEMON_ARGS+=(--cfgdir "${_CONFIG_HOME_FOLDER}")
+  fi
+else
+  eerror "Either '_CONFIGFILE' or '_CONFIG_HOME' must be set in '/etc/conf.d/gerbera'."
+  return 1
+fi
+if [ -z "${_USER}" ]; then
+  _USER=gerbera
+fi
+_DAEMON_ARGS+=(--user "${_USER}")
+if [ -n "${_IFACE}" ]; then
+  _DAEMON_ARGS+=(--interface "${_IFACE}")
+fi
+if [ -n "${_PORT}" ]; then
+  _DAEMON_ARGS+=(--port "${_POR}")
+fi
+if [ -n "${_IP}" ]; then
+  _DAEMON_ARGS+=(--ip "${_IP}")
+fi
+if [ -n "${_DEBUG}" ]; then
+  if [ "${_DEBUG}" == "true" ];  then
+    _DAEMON_ARGS+=(--debug)
+  fi
+fi
+if [ -z "${_LOGFILE}" ]; then
+  _LOGFILE='/var/log/gerbera.log'
+fi
+_DAEMON_ARGS+=(--logfile "${_LOGFILE}")
+if [ -z "${_PIDFILE}" ]; then
+  _PIDFILE='/var/run/gerbera.pid'
+fi
+# _DAEMON_ARGS+=(--pidfile "${_PIDFILE}") # Dont currently (as of 2021-11-03) let gerbera handle pidfile and daemonisation, since gerbera crashes with `--pidfile`, see https://github.com/gerbera/gerbera/issues/2124. So, instead let start-stop-daemon take care of that.
+# _DAEMON_ARGS+=(--daemon)
+
+
+start() {
+  ebegin "Starting $(basename "${_DAEMON}")"
+
+  start-stop-daemon --pidfile "${_PIDFILE}" --make-pidfile --background --start --verbose --exec "${_DAEMON}" -- "${_DAEMON_ARGS[@]}"
+
+  eend "$?"
+}
+
+stop() {
+  ebegin "Stopping $(basename "${_DAEMON}")"
+
+  start-stop-daemon --pidfile "${_PIDFILE}" --stop --verbose
+
+  eend "$?"
+}
