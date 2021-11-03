@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://github.com/GVBilokorenko/bisection"
 license=("MIT")
 depends=("go")
-makedepends=("git" "binutils" "base-devel")
+makedepends=("git" "binutils")
 source=("bisection::git://github.com/GVBilokorenko/bisection.git")
 sha512sums=("SKIP")
 
