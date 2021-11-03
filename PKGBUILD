@@ -1,7 +1,8 @@
-# Maintainer: Nils Grunwald <nils [@] grunwald [dot] fr>
+# Contributor: Nils Grunwald <nils [@] grunwald [dot] fr>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=janet-lang-bin
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='A dynamic Lisp dialect and bytecode vm'
 arch=('x86_64')
@@ -11,14 +12,13 @@ provides=('janet')
 conflicts=('janet-lang' 'janet-lang-git')
 
 source=("https://github.com/janet-lang/janet/releases/download/v${pkgver}/${pkgname/\-lang-bin/}-v${pkgver}-linux-x64.tar.gz" "https://github.com/janet-lang/janet/releases/download/v${pkgver}/${pkgname/\-lang-bin/}.h")
+sha256sums=('8d1a7408d61e177e6496911ffb22e5015f077a99cef7abe270eb9d791773f451'
+            '1bcf23d0426d7fbe999f7f11bd3614e8407adaf2b9dbcf500a87ec8b5de461c2')
 
-sha256sums=('f3d2c148e28beed108fc336510ea4e88a84aa5ee2d2d46380230c6639a4db31c'
-            '7420414dc283b59a0d6a5b93e64df61f81c7102d352dc9028d2081acd6e1ea6e')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname/\-lang-bin/}-v${pkgver}-linux/bin/janet" "${pkgdir}/usr/bin/janet"
-  install -Dm755 "${srcdir}/${pkgname/\-lang-bin/}-v${pkgver}-linux/bin/jpm" "${pkgdir}/usr/bin/jpm"
-  install -dm777 "${pkgdir}/usr/local/lib/janet"
-  install -dm777 "${pkgdir}/usr/local/lib/janet/.cache"
+  install -dm777 "${pkgdir}/usr/lib/janet"
+  install -dm777 "${pkgdir}/usr/lib/janet/.cache"
   install -Dm644 "${srcdir}/janet.h" "${pkgdir}/usr/include/janet.h"
 }
