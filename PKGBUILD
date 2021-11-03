@@ -2,7 +2,7 @@
 
 pkgname="python-flake8-quotes"
 _pkgname="flake8-quotes"
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Flake8 lint for quotes"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/zheller/${_pkgname}"
 license=('MIT')
 depends=('flake8')
 source=("https://github.com/zheller/flake8-quotes/archive/$pkgver.tar.gz")
-md5sums=('eeb206b4e444833ea1f3b45afb52c3a3')
+sha256sums=('c70a70a9a123ae5c700420b88430733b0a343af7d32d65b44a8cd652b5e9fbbe')
 
 build() {
     cd "${_pkgname}-${pkgver}"
