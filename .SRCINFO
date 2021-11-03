@@ -1,0 +1,22 @@
+pkgbase = torctl-git
+	pkgdesc = Script to redirect all traffic through tor network including dns queries for anonymizing entire system.
+	pkgver = 0.r26.202e4b2
+	pkgrel = 1
+	url = https://github.com/BlackArch/torctl
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = tor
+	depends = systemd
+	depends = curl
+	depends = iptables
+	depends = secure-delete
+	depends = iproute2
+	depends = macchanger
+	provides = torctl
+	source = git://github.com/BlackArch/torctl.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = torctl-git
