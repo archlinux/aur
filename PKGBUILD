@@ -2,20 +2,28 @@
 
 pkgname=kosmorro
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A program to calculate the ephemerides'
-depends=('python'
-         'python-kosmorrolib>=1.0.0'
-         'python-termcolor'
-         'python-tabulate'
-         'python-dateutil'
-        )
+depends=(
+    'python'
+    'python-kosmorrolib>=1.0.0'
+    'python-termcolor'
+    'python-tabulate'
+    'python-dateutil'
+)
 
-optdepends=('texlive-bin: PDF creation support'
-            'python-latex: PDF creation support')
+optdepends=(
+    'texlive-bin: PDF creation support'
+    'python-latex: PDF creation support'
+)
 
-makedepends=('python-pip' 'python-setuptools' 'python-wheel'
-             'ruby-ronn')
+makedepends=(
+    'python-pip'
+    'python-setuptools'
+    'python-wheel'
+    'python-babel'
+    'ruby-ronn'
+)
 
 arch=('any')
 url='https://kosmorro.space'
@@ -25,8 +33,6 @@ source=("$pkgname-v$pkgver.tar.gz::https://codeload.github.com/Kosmorro/kosmorro
 sha256sums=("17196fb00e42f2e0c9d1d1c29729418511fdb33fa9dff084ab583a014252b447")
 
 build() {
-    pip install --user --isolated Babel
-
     cd "${srcdir}/kosmorro-${pkgver}"
     make i18n build
 }
