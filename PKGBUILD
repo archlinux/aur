@@ -2,17 +2,27 @@
 # Contributor: koraynilay <koray.fra@gmail.com>
 
 pkgname="extrattor-git"
-pkgver="1.2.2"
-pkgrel="2"
+pkgver=r136.fc5e3c4
+pkgrel=1
 pkgdesc="A simple bash wrapper to extract one or more archives from the terminal"
 arch=("x86_64")
 url="https://github.com/Mirko-r/extrattor"
 depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip')
 license=("GPL-3.0")
 conflicts=("extrattor")
-source=("https://raw.githubusercontent.com/Mirko-r/extrattor/master/extrattor/extrattor.sh")
+source=("git+https://github.com/Mirko-r/extrattor.git")
 sha512sums=("SKIP")
 
+_name='extrattor'
+
+pkgver() {
+	cd "$_name"
+	( set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
+
 package(){
-    install -Dm0755 "${srcdir}/extrattor.sh" "${pkgdir}/usr/bin/extrattor"
+    install -Dm0755 "${srcdir}/extrattor/extrattor/extrattor.sh" "${pkgdir}/usr/bin/extrattor"
 }
