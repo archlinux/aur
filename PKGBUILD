@@ -3,7 +3,7 @@
 _pkgbase=luau
 pkgname=luau
 pkgver=0.501
-pkgrel=3
+pkgrel=4
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
 arch=('any')
@@ -14,8 +14,15 @@ makedepends=('unzip' 'cmake')
 conflicts=("$_pkgbase"-git "$_pkgbase"-bin)
 provides=("$_pkgbase")
 
-source=("https://github.com/Roblox/luau/archive/refs/tags/$pkgver.zip")
-sha512sums=('8f48af3714827ad188a05dded313ffdb5a403f4f660f9aa2077407272a010c334c727aaee606f5980aa304067d61801c932f149c015c791b70d9ff8b8f3cf3df')
+source=(
+    "https://github.com/Roblox/luau/archive/refs/tags/$pkgver.zip"
+    'Luau.pc'
+)
+
+sha512sums=(
+    '8f48af3714827ad188a05dded313ffdb5a403f4f660f9aa2077407272a010c334c727aaee606f5980aa304067d61801c932f149c015c791b70d9ff8b8f3cf3df'
+    'b17989fc739e2c101e0d515ded8815b4de3f54b2a67e1893cd1e9aa88cc541b3f667514cdf8a04db60aa9db050971cdbd8b386cd1458f567e784de983f63e88a'
+)
 
 prepare() {
     unzip -o "$pkgver.zip"
@@ -35,9 +42,28 @@ build() {
     cmake --build . --target Luau.Repl.CLI Luau.Analyze.CLI --config Release
 }
 
+_install_headers() {
+    _header_source=$1
+    for file in $(find "$_header_source" -type f -name *.h); do
+        install -Dm644 "$file" "$pkgdir/usr/include/Luau/${file#${_header_source}}"
+    done
+}
+
 package() {
     _build_dir=$srcdir/build
+    _luau_root=$srcdir/luau-$pkgver
 
     install -Dm755 "$_build_dir/luau" "$pkgdir/usr/bin/luau"
     install -Dm755 "$_build_dir/luau-analyze" "$pkgdir/usr/bin/luau-analyze"
+
+    for file in $(find "$_build_dir" -type f -name *.a); do
+        install -Dm644 "$file" "$pkgdir/usr/lib/Luau/${file#${_build_dir}}"
+    done
+
+    _install_headers "$_luau_root/Analysis/include"
+    _install_headers "$_luau_root/Ast/include"
+    _install_headers "$_luau_root/Compiler/include"
+    _install_headers "$_luau_root/VM/include"
+
+    install -Dm644 "$srcdir/Luau.pc" "$pkgdir/usr/lib/pkgconfig/Luau.pc"
 }

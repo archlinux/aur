@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+includedir=${prefix}/include/
+libdir=${prefix}/lib/Luau
+
+Name: Luau
+Description: A fast, small, safe, gradually typed embeddable scripting language derived from Lua
+Version: 0.501
+Cflags: -I${includedir}/Luau
+Libs: -L${libdir} -lLuau.Analysis -lLuau.Ast -lLuau.Compiler -lLuau.VM
