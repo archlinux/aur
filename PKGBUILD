@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://github.com/Mirko-r/extrattor"
 depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip')
 license=("GPL-3.0")
-source=("https://raw.githubusercontent.com/Mirko-r/extrattor/e8bef76b12dee43c3325de4b562745f570069b02/extrattor/extrattor.sh")
+source=("https://github.com/Mirko-r/extrattor/releases/download/1.2.2/extrattor.sh")
 sha512sums=("SKIP")
 
 package(){
