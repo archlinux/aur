@@ -1,23 +1,20 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype
-pkgver=2.1
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="GNOME audio player for transcription"
 arch=('any')
 url="https://github.com/gkarsay/parlatype"
 license=('GPL3')
-# Automatic speech recognition is recommendend to be turned off by developper
-# If you want ASR, add 'sphinxbase' 'pocketsphinx' 'python-atspi' as dependencies
-# and -Dasr=true in the build command
-depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good')
-makedepends=('appstream' 'appstream-glib' 'meson' 'gettext' 'gobject-introspection' 'yelp-tools' 'desktop-file-utils')
+depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'iso-codes')
+makedepends=('appstream' 'appstream-glib' 'meson' 'gettext' 'gobject-introspection' 'yelp-tools' 'desktop-file-utils' 'gtk-doc')
 optdepends=('parlatype-libreoffice-extension: LibreOffice macros')
 source=("https://github.com/gkarsay/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('13f1f2895a3ae5bb8809bfd0608baa84138e81388d5648577aface7c808aebf6')
+sha256sums=('27d9c395d2bbd16544d4604b7c722ac68a67a07c06936dae9f1161a034e26bd4')
 
 build() {
 	cd "$pkgname-$pkgver"
-	arch-meson build -Dasr=false -Dgir=true
+	arch-meson build -Dgir=true -Dgtk-doc=true
 	cd build
 	ninja
 }
