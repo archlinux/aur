@@ -1,0 +1,12 @@
+pkgbase = microsoft-edge-stable
+	pkgdesc = Microsoft Edge Web Browser
+	pkgver = 95.0.1020.40
+	pkgrel = 1
+	url = https://www.microsoft.com/edge/
+	arch = x86_64
+	license = GPL3
+	options = !strip
+	source = microsoft-edge-stable_95.0.1020.40-1_amd64.deb::https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_95.0.1020.40-1_amd64.deb
+	sha256sums = c5d4965c2216803874bca1b03a354b887e1a468d3a494462f24eb1c7efc4c66a
+
+pkgname = microsoft-edge-stable
