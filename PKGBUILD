@@ -11,7 +11,7 @@ provides=('cliphist')
 depends=('wl-clipboard')
 optdepends=('xdg-utils: for image mime inferance')
 source=("${url}/releases/download/v${pkgver}/v${pkgver}-linux-amd64")
-sha256sums=('624c07319357d422c60a4646feaa680513196306aa002ab7d5f20839ad5294fb')
+sha256sums=('b33dbe4a615d38689e2342ad9f8c6c41260b63a327b33032b97f699312501116')
 
 package() {
   install -Dm755 "${srcdir}"/v${pkgver}-linux-amd64 "${pkgdir}/usr/bin/cliphist"
