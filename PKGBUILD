@@ -1,7 +1,7 @@
 # Maintainer : Erik Dubois <erik.dubois@gmail.com>
 # Previous Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=numix-circle-icon-theme-git
-pkgver=21.05.31.r0.gedbcc1d
+pkgver=21.10.31.r0.gfccd3b9
 pkgrel=1
 pkgdesc='Circle icon theme from the Numix project'
 arch=('any')
