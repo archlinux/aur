@@ -2,10 +2,10 @@
 _perlmod=XML-CompactTree
 pkgname=perl-xml-compacttree
 pkgver=0.03
-pkgrel=2
+pkgrel=3
 pkgdesc="Builder of compact tree structures from XML documents"
 arch=("any")
-url="http://search.cpan.org/~pajas/$_perlmod/"
+url="https://metacpan.org/dist/$_perlmod/"
 license=('GPL' 'PerlArtistic')
 groups=()
 depends=('perl')
@@ -16,8 +16,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=(http://search.cpan.org/CPAN/authors/id/P/PA/PAJAS/$_perlmod-$pkgver.tar.gz)
-md5sums=('f69c3390578f3e70b4f664a6bcfe9f7e')
+source=(https://cpan.metacpan.org/authors/id/P/PA/PAJAS/$_perlmod-$pkgver.tar.gz)
+sha256sums=('87faace2f1bfa17bd8afbe6a2794aa881b1d921a93f3f8e3519a879c2e910300')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
