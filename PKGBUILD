@@ -4,8 +4,8 @@
 # Contributor: koraynilay <koray.fra@gmail.com>
 
 pkgname="extrattor-git"
-pkgver="1.2.1"
-pkgrel="4"
+pkgver="1.2.2"
+pkgrel="1"
 pkgdesc="A simple bash wrapper to extract one or more archives from the terminal"
 arch=("x86_64")
 url="https://github.com/Mirko-r/extrattor"
