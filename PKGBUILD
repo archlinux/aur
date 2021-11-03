@@ -3,11 +3,11 @@ _base=islpy
 pkgname=python-${_base}
 pkgdesc="Python wrapper for isl, an integer set library"
 pkgver=2021.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://documen.tician.de/${_base}"
 license=(MIT)
-depends=(python-pytools isl pybind11)
+depends=(python-pytools pybind11)   # isl
 makedepends=(python-setuptools git) # barvinok boost
 checkdepends=(python-pytest)        # python-pcpp
 source=("git+https://github.com/inducer/${_base}.git?signed#tag=v${pkgver}")
@@ -20,7 +20,6 @@ build() {
   python3 ./configure.py \
     --enable-shared \
     --python-exe=python3 \
-    --no-use-shipped-isl \
     --no-use-shipped-imath \
     --isl-inc-dir=/usr/include \
     --isl-lib-dir=/usr/lib \
@@ -28,6 +27,7 @@ build() {
   python setup.py build
   # make
 }
+# --no-use-shipped-isl \
 # --use-barvinok \
 check() {
   cd "${_base}"
