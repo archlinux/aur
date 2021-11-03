@@ -1,3 +1,4 @@
 #!/bin/sh
 export ELECTRON_IS_DEV=0
-exec electron11 /usr/lib/bitwarden/resources/app.asar $@
+cd /usr/lib/bitwarden
+exec electron14 /usr/lib/bitwarden/app.asar $@
