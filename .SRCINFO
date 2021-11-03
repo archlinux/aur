@@ -1,0 +1,17 @@
+pkgbase = ruby-simple_form
+	pkgdesc = Forms made easy!
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/heartcombo/simple_form
+	arch = any
+	license = MIT
+	makedepends = ruby-bundler
+	makedepends = ruby-rake
+	depends = ruby
+	depends = ruby-actionpack
+	depends = ruby-activemodel
+	options = !emptydirs
+	source = ruby-simple_form-5.1.0.tar.gz::https://github.com/heartcombo/simple_form/archive/v5.1.0.tar.gz
+	sha512sums = 78c15d22bd1092cf76bea1e7e82253338016c0e4d62212b8bfa9cc34734d5ee520956299abf1ffe2bccadf30b3c2e79d1028d45668918a26f932830231500fde
+
+pkgname = ruby-simple_form
