@@ -1,30 +1,31 @@
 # Maintainer:  Nigel Kukard <nkukard@lbsd.net>
 
-_commit=f2e9119a8f05e8a0e65aee0a52e4ae35dc8deda2
+_commit=9c4dbde42d5555f40909177831380eab76b0a8fc
 pkgname=cputool
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='CPUTool is a utility which can be used to control the CPU utilization of almost any process'
 arch=('i686' 'x86_64')
 url="https://gitlab.devlabs.linuxassist.net/cputool/cputool"
 license=('GPL3')
-makedepends=('docbook2x')
+makedepends=('meson' 'python-docutils')
 source=(
 	"https://gitlab.devlabs.linuxassist.net/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-${pkgver}.tar.bz2"
 )
 sha256sums=(
-	'7c6230cfd30aed823577f23f4c554e668006a850e6eb3662b94d0d4da9864e5b'
+	'3244d1475ed04975012bc12f356c84cdee81e74ef1377c1c591d737fac653e1b'
 )
 
 build() {
 	cd "${srcdir}/${pkgname}-v${pkgver}-${_commit}"
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+	meson --prefix="${pkgdir}/usr" build
+	cd build
+	ninja
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-v${pkgver}-${_commit}"
-	make DESTDIR="${pkgdir}/" PREFIX=/usr install
+	cd build
+	ninja install
 }
 
