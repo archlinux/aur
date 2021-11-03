@@ -1,13 +1,12 @@
 pkgbase = smtpping
 	pkgdesc = A simple, portable tool for measuring SMTP server delay, delay variation and throughput.
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/halon/smtpping
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	source = https://github.com/halon/smtpping/archive/v1.1.3.tar.gz
-	sha256sums = bd2ca014d8bda46398ad65dc5429ab43de785658214d3b73bb5a879433210707
+	source = https://github.com/halon/smtpping/archive/v1.1.4.tar.gz
+	sha256sums = beca8c44133b91ebe9fdfd044d8dee0947aa7683cba7b0e509ce15cda8fef74a
 
 pkgname = smtpping
-
