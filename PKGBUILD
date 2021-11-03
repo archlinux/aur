@@ -3,9 +3,9 @@
 _pkgname=minissdpd-openrc
 pkgname="${_pkgname}"
 pkgver=20211101.1
-pkgrel=6
+pkgrel=7
 pkgdesc='OpenRC init script for minissdpd daemon.'
-url='http://miniupnp.free.fr/minissdpd.html'
+url='https://miniupnp.tuxfamily.org/minissdpd.html'
 license=('GPL3')
 arch=('any')
 depends=('minissdpd')

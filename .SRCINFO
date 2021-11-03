@@ -1,8 +1,8 @@
 pkgbase = minissdpd-openrc
 	pkgdesc = OpenRC init script for minissdpd daemon.
 	pkgver = 20211101.1
-	pkgrel = 6
-	url = http://miniupnp.free.fr/minissdpd.html
+	pkgrel = 7
+	url = https://miniupnp.tuxfamily.org/minissdpd.html
 	install = minissdpd-openrc.install
 	arch = any
 	license = GPL3
