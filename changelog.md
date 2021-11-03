@@ -2648,4 +2648,12 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 1.1.93 add: add stock_rank_cxd_ths interface
 
 1.1.94 fix: fix fund_portfolio_hold_em interface
+
+1.1.95 fix: fix stock_board_concept_hist_ths interface
+
+1.1.96 add: add bond_zh_hs_cov_min interface
+
+1.1.97 add: add stock_rank_lxsz_ths interface
+
+1.1.98 add: add stock_rank_lxxd_ths interface
 ```
