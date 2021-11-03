@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ProtonUp-Qt
+Exec=pupgui2
+Icon=pupgui2
+Type=Application
+Terminal=false
+Categories=Utility;
+Comment=Wine/Proton Installer
