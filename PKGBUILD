@@ -18,8 +18,7 @@ package() {
 
     tar -xJvf data.tar.xz -C "${pkgdir}"
 
-    for icon in product_logo_64.png product_logo_32.png product_logo_48.png product_logo_128.png product_logo_256.png product_logo_16.png product_logo_24.png ; do
-        size="$(echo ${icon} | sed 's/[^0-9]//g')"
-        install -D "$pkgdir/opt/microsoft/msedge/${icon}" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/microsoft-edge.png"
+    for size in 16 24 32 48 64 128 256 ; do
+        install -D "$pkgdir/opt/microsoft/msedge/product_logo_${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/microsoft-edge.png"
     done
 }
