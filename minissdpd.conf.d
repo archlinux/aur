@@ -13,7 +13,7 @@ _PIDFILE="/var/run/minissdpd.pid"
 # Communicate via the following socket:
 _SOCKET="/var/run/minissdpd.sock"
 
-# The exeecutable to run
+# The executable to run
 _DAEMON="/usr/bin/minissdpd"
 
 # Should we enable IPv6 in addidion to IPv4?

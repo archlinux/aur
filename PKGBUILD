@@ -3,7 +3,7 @@
 _pkgname=minissdpd-openrc
 pkgname="${_pkgname}"
 pkgver=20211101.1
-pkgrel=7
+pkgrel=8
 pkgdesc='OpenRC init script for minissdpd daemon.'
 url='https://miniupnp.tuxfamily.org/minissdpd.html'
 license=('GPL3')
@@ -25,8 +25,8 @@ source=(
   "${install}"
 )
 sha256sums=(
-  '270810bc090a6d4cee27f535e5dd8748ceb5d514e012d5ae8336e88840de4d30' # minissdpd.conf.d
-  'ab36444ff69daa7fb2a7c9f676e672215a94ee0a6a3b3ee369f797d53d001739' # minissdpd.openrc-initd
+  '0b59887884b83db5130de2de457a366b03a018bedcafb9e24e8e07ed1c06ac75' # minissdpd.conf.d
+  '08b28ab5da3a1835c3cc04bcc9e853d86736905d7e49cbc2bdd9c4ae6642c90c' # minissdpd.openrc-initd
   '8921a140fb29beec3e9a32cfc9a85c99d1c8718db806656cc443cbaf2bee8f1a' # copying-info.txt
   '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' # license-gpl3.txt
   '0edf2cf0a848660aaf790b0f151474bcc736aa29ed4e740c022b24d7716bbde1' # $install

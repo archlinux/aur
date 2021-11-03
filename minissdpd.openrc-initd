@@ -8,6 +8,7 @@ depend() {
 
 ### The following configuration settings can be set in /etc/conf.d/minissdpd -- note that "_IFACE" _must_ be set there!, for the others "minissdpd" has defaults:
 # _IFACE -- Where to listen on -- specify either an IPv4 address with mask (e.g. "192.168.1.42/255.255.255.0"), or a network interface name (e.g. "eth0"). Can be multiple entries, specified as a bash array.
+# _DAEMON -- The daemon to run
 # _PIDFILE -- Use the following PID-file:
 # _SOCKET -- Communicate via the following socket:
 # _IP6 -- Should we enable IPv6 in addidion to IPv4?
@@ -17,10 +18,9 @@ depend() {
 # _LOGFILE -- Logfile whis is used in case $_DEBUG is true
 
 
-# The exeecutable to run
-_DAEMON="/usr/bin/minissdpd"
-
-
+if [ -z "${_DAEMON}" ]; then
+  _DAEMON="/usr/bin/minissdpd"
+fi
 if [ -z "${_SOCKET}" ]; then
   _SOCKET='/var/run/minissdpd.sock'
 fi
