@@ -1,15 +1,14 @@
 pkgbase = picket
 	pkgdesc = Linux screen color picker with magnifier and custom user defined formats.
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/rajter/Picket
 	arch = any
 	license = MIT
 	makedepends = cmake
 	depends = gtkmm3
 	depends = libx11
-	source = https://github.com/rajter/picket/archive/v1.1.tar.gz
-	md5sums = c8f792ce4a521e0ca16070f15343ec6c
+	source = https://github.com/rajter/picket/archive/v1.2.tar.gz
+	md5sums = 23a231a95acaa366e5bd7215ae22e28b
 
 pkgname = picket
-
