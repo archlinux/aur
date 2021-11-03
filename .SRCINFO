@@ -1,14 +1,15 @@
 pkgbase = jodin3-bin
 	pkgdesc = JOdin3 allows you to flash Samsung firmware on Linux (pre-compiled jar)
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plaili/android-casual
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
 	depends = java11-openjfx
 	depends = jre11-openjdk
-	depends = heimdall
+	optdepends = heimdall
+	optdepends = heimdall-git
 	noextract = JOdin3CASUAL-0.9.0.jar
 	source = https://github.com/plaili/android-casual/raw/master/dist/JOdin3CASUAL-0.9.0.jar
 	md5sums = 7f6f8b2f394944dcc6e8e3e04812b4be

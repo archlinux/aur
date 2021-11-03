@@ -5,3 +5,4 @@ src/*
 *.swp
 *.zst
 jodin3-starter.sh
+*.jar
