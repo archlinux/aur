@@ -1,0 +1,16 @@
+pkgbase = keyring-cli-bin
+	pkgdesc = A very basic cli keyring tool to use accross various OS.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vbouchaud/keyring
+	arch = x86_64
+	arch = aarch64
+	license = MPL2
+	provides = keyring-cli
+	conflicts = keyring-cli
+	source_x86_64 = keyring::https://github.com/vbouchaud/keyring/releases/download/v1.0.0/keyring.linux.amd64
+	sha256sums_x86_64 = 63f55a4910e4a922caa14fab2dde1f30e1f081f51d803b5fec4d3552c62f9ed3
+	source_aarch64 = keyring::https://github.com/vbouchaud/keyring/releases/download/v1.0.0/keyring.linux.arm64
+	sha256sums_aarch64 = 040d553ea90f54da461964c36656b427853538439bf22f06ae4b0f7d98b91202
+
+pkgname = keyring-cli-bin
