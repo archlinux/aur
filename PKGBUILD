@@ -14,12 +14,12 @@ _microarchitecture=98
 ## Major kernel version
 _major=5.10
 ## Minor kernel version
-_minor=76
+_minor=77
 
 pkgbase=linux-multimedia-lts
 #pkgver=${_major}
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Multimedia Optimized (LTS)'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -42,7 +42,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('480a09ba1962862ff18df9453fa0df6ba11cbe19eefedeab81bf2c84f49e1890'
+sha256sums=('d3b64edfc1dd7212e62ed733aeeb73d64ffd6d9658d322d44cddf1b41d5b8fc3'
 			'SKIP'
 			'SKIP'
 			'SKIP'
@@ -87,19 +87,6 @@ prepare() {
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
-  # (x86 kernels do not support NUMA)
-  msg2 "Disabling NUMA from kernel config..."
-  scripts/config --disable CONFIG_NUMA
-
-  ### Set performance as default governor
-  msg2 "Setting performance governor..."
-  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
-
   ### Set tickrate to 1000HZ
   msg2 "Setting tick rate to 1k..."
   scripts/config --disable CONFIG_HZ_300
@@ -126,11 +113,6 @@ prepare() {
   scripts/config --enable CONFIG_NO_HZ_FULL
   scripts/config --disable CONFIG_NO_HZ
   scripts/config --enable CONFIG_NO_HZ_COMMON
-
-  ### Use -03 KBuild For Performance
-  msg2 "Enabling KBUILD_CFLAGS -O3..."
-  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
 
   ### Enable Pre-emptation
   msg2 "Enable PREEMPT..."
@@ -303,7 +285,7 @@ _package-bootloader() {
   echo "title ${ROOT_LABEL} Multimedia LTS" > $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
   echo "linux /vmlinuz-${pkgbase}" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
   echo "initrd /initramfs-${pkgbase}.img" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
-  echo "options root=LABEL=\"${ROOT_LABEL}\" rootflags=subvol=@ loglevel=3 acpi=force intel_pstate=disable mitigations=off nowatchdog nvidia-drm.modeset=1 threadirqs usbcore.autosuspend=-1 rw" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
+  echo "options root=LABEL=\"${ROOT_LABEL}\" rootflags=subvol=@ loglevel=3 nvidia-drm.modeset=1 threadirqs usbcore.autosuspend=-1 rw" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
   chmod 755 $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia-lts.conf
 }
 
