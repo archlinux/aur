@@ -1,0 +1,19 @@
+pkgbase = python-premailer
+	pkgdesc = Turns CSS blocks into style attributes
+	pkgver = 3.10.0
+	pkgrel = 1
+	url = https://premailer.io/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-lxml
+	depends = python-cssselect
+	depends = python-cssutils
+	depends = python-requests
+	depends = python-cachetools
+	provides = python-premailer
+	conflicts = python-premailer
+	source = https://files.pythonhosted.org/packages/source/p/premailer/premailer-3.10.0.tar.gz
+	sha256sums = d1875a8411f5dc92b53ef9f193db6c0f879dc378d618e0ad292723e388bfe4c2
+
+pkgname = python-premailer
