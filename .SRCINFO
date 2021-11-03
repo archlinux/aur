@@ -1,16 +1,15 @@
 pkgbase = perl-xml-libxml-iterator
 	pkgdesc = XML-LibXML-Iterator perl module (XML::LibXML's tree iteration class)
-	pkgver = 1.04
-	pkgrel = 3
-	url = http://search.cpan.org/dist/XML-LibXML-Iterator/
+	pkgver = 1.06
+	pkgrel = 1
+	url = https://metacpan.org/dist/XML-LibXML-Iterator
 	arch = any
 	license = PerlArtistic
 	depends = perl
 	depends = perl-xml-libxml
 	depends = perl-xml-nodefilter
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHISH/XML-LibXML-Iterator-1.04.tar.gz
-	md5sums = bcbf474656bd4e1a1939c2459ca91ac1
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/XML-LibXML-Iterator-1.06.tar.gz
+	sha256sums = fd329a8ad2b0ec6328aee0bc15fc13f2e789ebe3b5e104a81f5a5b4f241d019d
 
 pkgname = perl-xml-libxml-iterator
-

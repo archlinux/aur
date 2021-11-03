@@ -1,11 +1,11 @@
 # Maintainer: Ondrej Kucera <ondrej.kucera@centrum.cz>
 _perlmod=XML-LibXML-Iterator
 pkgname=perl-xml-libxml-iterator
-pkgver=1.04
-pkgrel=3
+pkgver=1.06
+pkgrel=1
 pkgdesc="XML-LibXML-Iterator perl module (XML::LibXML's tree iteration class)"
 arch=("any")
-url="http://search.cpan.org/dist/XML-LibXML-Iterator/"
+url="https://metacpan.org/dist/XML-LibXML-Iterator"
 license=("PerlArtistic")
 depends=('perl' 'perl-xml-libxml' 'perl-xml-nodefilter')
 makedepends=()
@@ -15,8 +15,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=(http://search.cpan.org/CPAN/authors/id/P/PH/PHISH/${_perlmod}-$pkgver.tar.gz)
-md5sums=('bcbf474656bd4e1a1939c2459ca91ac1')
+source=(https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/${_perlmod}-$pkgver.tar.gz)
+sha256sums=('fd329a8ad2b0ec6328aee0bc15fc13f2e789ebe3b5e104a81f5a5b4f241d019d')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
