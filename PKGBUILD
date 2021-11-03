@@ -6,17 +6,16 @@ pkgver="${_npmver}"
 pkgrel=1
 pkgdesc="Repo and documentation at: https://github.com/Urigo/graphql-cli"
 arch=('any')
-url="https://github.com/Urigo/graphql-cli"
+url="https://www.npmjs.com/package/graphql-cli"
 license=('MIT')
-depends=('nodejs' 'npm')
-source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
+depends=('nodejs')
+makedepends=('npm')
+source=("${_npmname}-${_npmver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=("${_npmname}-${_npmver}.tgz")
 sha256sums=('c52d62ac108d4a3f711dbead0939bd02e3e2d0c82f8480fd76fc28f285602f5c')
 
 package() {
-    cd "${srcdir}"
-    local _npmdir="${pkgdir}/usr/lib/node_modules/"
-    mkdir -p "${_npmdir}"
-    cd "${_npmdir}"
-    npm install --user root -g --prefix "${pkgdir}/usr" "${_npmname}@${_npmver}"
+  export NODE_ENV=production
+  npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "${_npmname}-${_npmver}.tgz"
+  chown -R root:root "$pkgdir"
 }
