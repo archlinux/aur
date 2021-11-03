@@ -9,7 +9,8 @@ Type=simple
 NoNewPrivileges=yes
 PrivateTmp=yes
 ProtectSystem=strict
-ProtectHome=yes # Prevent service from reading files in /home
+# Prevent service from reading files in /home
+ProtectHome=yes
 ProtectControlGroups=yes
 ProtectKernelModules=yes
 ProtectKernelTunables=yes
