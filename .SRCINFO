@@ -1,0 +1,15 @@
+pkgbase = defenchess-git
+	pkgdesc = A free, open source UCI chess engine written in C++.
+	pkgver = 2.2.r3.ge5aa4be
+	pkgrel = 1
+	url = https://github.com/cetincan0/Defenchess
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = defenchess
+	conflicts = defenchess
+	source = Defenchess::git+https://github.com/cetincan0/Defenchess
+	md5sums = SKIP
+
+pkgname = defenchess-git
