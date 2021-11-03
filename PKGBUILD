@@ -6,9 +6,9 @@
 
 _pkgname=instantclient-sdk
 pkgname=oracle-${_pkgname}
-pkgver=21.1.0.0.0
-_urlver=211000
-_unzippath=instantclient_21_1
+pkgver=21.3.0.0.0
+_urlver=213000
+_unzippath=instantclient_21_3
 pkgrel=1
 pkgdesc="Additional header files for developing Oracle applications with Instant Client"
 arch=('x86_64')
@@ -25,9 +25,9 @@ DLAGENTS+=('manual::/usr/bin/false');
 source=(LICENSE
         "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'd7f0ed19a29607568d66efec72bdbedf')
+         'fbca970834144bb9c69fe5dd23c1ef37')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '80a465530a565ed327ab9ae0d9fc067ed42338536c7e8721cf2c26e474f4f75f')
+            '20b953e81b37c385c4ea5ddcc04aa6403b1fda25cf50dafef4e1bb7245d60353')
 
 plain "If you run into any problems downloading the files, get the .zip version from"
 plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
