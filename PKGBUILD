@@ -1,89 +1,62 @@
-# Maintainer Seva Alekseyev <sevaa@yarxi.ru>
-# Maintainer Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer: Markus Kannisto <m.kannisto01@gmail.com>
 
-pkgbase=pkgbase
-pkgname=yarxi
-pkgver=1.10
+pkgname=scribbit
+pkgver=2021.1102.1
 pkgrel=1
-pkgdesc="Japanese-Russian kanji and word dictionary"
-url="http://www.susi.ru/yarxi/"
-license=('custom')
-_source=(
-    "http://www.susi.ru/yarxi/yarxi_${pkgver}-${pkgrel}_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqtcore4_4.8.7+dfsg-11_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqtgui4_4.8.7+dfsg-11_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqt4-network_4.8.7+dfsg-11_amd64.deb"
-)
+
+dotnet_version=5.0
+
+pkgdesc="Scribbit is a simple, lightweight, and minimal text editor for Linux."
 arch=('x86_64')
-_md5sums=(
-    '812d2265816ed781751c5c0eb6664d91'
-    'b243ada8569b2b3d4586dc4178fd8d56'
-    '797e351a57c9d56368f710e7cba40f21'
-    'b3cff12767e21d3a76794046557d3df0'
+license=('GPL-3.0')
+url='https://github.com/Marakusa/Scribbit/'
+
+depends=("dotnet-runtime>=$dotnet_version.0")
+makedepends=(git "dotnet-sdk>=$dotnet_version.5.sdk202")
+
+source=(
+    "scribbit::git+https://github.com/Marakusa/Scribbit.git#tag=$pkgver"
+    'scribbit-launcher'
+    'scribbit.desktop'
+    'scribbit.png'
 )
-depends=(
-   ttf-sazanami nas
-)
 
-prepare() {
-    cd $srcdir/
-    echo "Due to 'makepkg' and 'PKGBUILD' specs limitations I need to dowanload sources and validate them by myself"
-    for source_url in ${_source[@]}; do
-        source_filename=${source_url##*/}
-        if [ ! -f "$source_filename" ]; then
-            echo "Downloading next source - $source_filename ..."
-            curl -A DUMMY -O "$source_url";
-        else
-            echo "Found already downloaded source - $source_filename"
-        fi
-    done
-    echo "And now we must validated dowanloaded sources ..."
-    for (( i=0; i<${#_source[@]}; ++i )); do
-        source_url=${_source[i]}
-        source_filename=${source_url##*/}
-        source_expected_md5sum=${_md5sums[i]}
-        source_actual_md5sum=$(md5sum $source_filename | awk '{print $1}')
-        if [ "$source_actual_md5sum" == "$source_expected_md5sum" ]; then
-            echo "Validated next source - $source_filename"
-        else
-            echo "Found corrupted source - $source_filename"; return 1
-        fi
-    done    
+sha256sums=('SKIP'
+            '6f4d77dce547ca1b8ba376a6fb1d5d7acf513f61f54d3e834504c6d835a3bd25'
+            'bf58390696dd90c27e036b20bfbe29adce0256f468412960599355490edff9d7'
+            'be938063dacac19788e0fb5ea2aebf1c63170639a8154d6dfbbc5b0aed8d190a')
+
+build()
+{
+    cd "scribbit"
+    output="./scribbit/bin/Release/net$dotnet_version/linux-x64"
+
+    dotnet publish          Scribbit                    \
+        --framework         net$dotnet_version          \
+        --configuration     Release                     \
+        --runtime           linux-x64                   \
+        --output            $output                     \
+        --no-self-contained                             \
+        /property:Version=$pkgver
 }
 
-build() {
-    cd $srcdir/
-    mkdir -p deb/{$pkgname,qt4core,qt4gui,qt4network}
-    bsdtar xf yarxi_${pkgver}-${pkgrel}_amd64.deb -C deb/$pkgname/
-    bsdtar xf libqtcore4_4.8.7+dfsg-11_amd64.deb -C deb/qt4core/
-    bsdtar xf libqtgui4_4.8.7+dfsg-11_amd64.deb -C deb/qt4gui/
-    bsdtar xf libqt4-network_4.8.7+dfsg-11_amd64.deb -C deb/qt4network/
-    for dir in deb/$pkgname deb/qt4core deb/qt4gui deb/qt4network; do
-        cd $dir; tar xf data.tar.*; cd $srcdir
-    done
-}
+package()
+{
+    # Launcher script
+    cd "$srcdir"
+    mkdir -p "$pkgdir/usr/bin"
+    install -m755 'scribbit-launcher' "$pkgdir/usr/bin/scribbit"
 
-package() {
-    cd $srcdir/
-    mkdir -p $pkgdir/usr/lib/
-    mkdir -p $pkgdir/usr/bin/
-    mkdir -p $pkgdir/usr/share/
-    mkdir -p $pkgdir/usr/share/applications/
-    mkdir -p $pkgdir/usr/share/doc/$pkgname/
-    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16/apps,32x32/apps,48x48/apps}/
-    mkdir -p $pkgdir/usr/share/pixmaps/
-    mkdir -p $pkgdir/usr/share/$pkgname/
-    install -m 0755 $srcdir/deb/$pkgname/usr/bin/$pkgname $pkgdir/usr/bin/$pkgname
-    install -m 0755 $srcdir/deb/qt4core/usr/lib/x86_64-linux-gnu/libQtCore.so.4.8.7 $pkgdir/usr/lib/libQtCore.so.4
-    install -m 0755 $srcdir/deb/qt4gui/usr/lib/x86_64-linux-gnu/libQtGui.so.4.8.7 $pkgdir/usr/lib/libQtGui.so.4
-    install -m 0755 $srcdir/deb/qt4network/usr/lib/x86_64-linux-gnu/libQtNetwork.so.4.8.7 $pkgdir/usr/lib/libQtNetwork.so.4
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/applications/seva-yarxi.desktop $pkgdir/usr/share/applications/
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/doc/$pkgname/copyright $pkgdir/usr/share/doc/$pkgname/
-    for icons in 16x16 32x32 48x48; do
-        install -m 0644 $srcdir/deb/$pkgname/usr/share/icons/hicolor/$icons/apps/seva-yarxi.png $pkgdir/usr/share/icons/hicolor/$icons/apps/
-    done
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/pixmaps/*.xpm $pkgdir/usr/share/pixmaps/
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/$pkgname/yarxice.db $pkgdir/usr/share/$pkgname/
-}
+    # Add .desktop file
+    mkdir -p "$pkgdir/usr/share/applications"
+    install -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-#vim: syntax=sh
+    # Application icon
+    mkdir -p "$pkgdir/usr/share/pixmaps"
+    install -m644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+
+    # Compiled binaries
+    mkdir -p "$pkgdir/usr/lib/$pkgname"
+    cd "$srcdir/scribbit/Scribbit/bin/Release/net$dotnet_version/"
+    cp -r "linux-x64"/* "$pkgdir/usr/lib/$pkgname/"
+}

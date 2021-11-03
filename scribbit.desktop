@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Scribbit
+#Icon=Scribbit
+Icon=text-editor
+Comment=Simple and lightweight text editor
+Exec=/usr/bin/scribbit %F
+Type=Application
+Terminal=false
+Categories=Utilities;TextEditor;
+X-Desktop-File-Install-Version=0.24
+StartupWMClass=scribbit
