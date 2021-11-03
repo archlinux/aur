@@ -2,7 +2,7 @@
 
 pkgname=cgmnlm-git
 pkgrel=1
-pkgver=1.0
+pkgver=1.0_6_g6e3c8e4
 pkgdesc="colorful gemini line mode client - fork of gmni"
 url="https://src.clttr.info/rwa/cgmnlm"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -22,8 +22,7 @@ build() {
     cd "${srcdir}/${pkgname}/"
 
     mkdir -p build && cd build
-    # errors? what errors :)
-    CFLAGS=-Wno-error ../configure --prefix=/usr
+    ../configure --prefix=/usr
     make PREFIX="/usr"
 }
 
