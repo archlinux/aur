@@ -10,7 +10,8 @@ pkgname=chromium-docker
 _pkgname=docker-chromium-armhf
 pkgdesc='Chromium Docker Image builder with widevine'
 pkgver=78.0.3904.97
-pkgrel=2
+_pkgver=52cc703f19c61732d4643171995ef4aff5b2d9e0
+pkgrel=3
 arch=('aarch64')
 url='https://github.com/HenningThiemann/docker-chromium-armhf'
 license=('custom')
@@ -19,12 +20,12 @@ depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss' 'xorg-xhost' 'docker' 'git' 'p7
 makedepends=('p7zip')
 options=()
 install=$pkgname.install
-source=("git+$url"
+source=("git+$url#$_pkgver"
         "chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html"
         "chromium.png"
         "Chromium-Armv7.desktop")
 sha256sums=('SKIP'
-            '0d847a4c7dd034af633b3f448fe107efd779e7f1873c587f07a45d3317413bfe'
+            'SKIP'
             '5c1d420c17b308987fda5fe731fc42b5bee3b9bd591aae571fd1cfc14eeb293b'
             '8ab59fc6c58324fcf33bf315c0b675a09ac31354ad99d24ac9cf54b92bb23644')
 
