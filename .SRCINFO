@@ -1,0 +1,16 @@
+pkgbase = python-ryaml
+	pkgdesc = A simple yaml serializer and deserializer using Rust.
+	pkgver = 0.2.0.post1
+	pkgrel = 1
+	url = https://pypi.org/project/ryaml
+	arch = x86_64
+	license = MIT
+	makedepends = maturin
+	makedepends = python-pip
+	makedepends = rust
+	depends = python
+	source = python-ryaml-0.2.0.post1.tar.gz::https://github.com/ethanhs/ryaml/archive/refs/tags/0.2.0.post1.tar.gz
+	sha256sums = 8ae4224ff8ea0aeabcc5090a31040b0607446ec38b8dc284ba455b0f1d3a077d
+	b2sums = 76fddd9979bf7dcb3881345c5c69ec0022729b5aa72432f0db0a8da85e55b886a52ee271fb0b072bddf78322ddda44d819e310ab68bf8f15da75e9d06cb787a3
+
+pkgname = python-ryaml
