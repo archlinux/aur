@@ -19,8 +19,8 @@ pkgver() {
 
 package() {
     cd "$pkgname"
-    echo "go run /usr/bin/bisection/main.go -l \"\$parameterL\" -u \"\$parameterU\" -a \"\$parameterA\" -c \"\$parameterC\"" >> "bisection.sh"
+    echo "go run /usr/bin/main.go -l \"\$parameterL\" -u \"\$parameterU\" -a \"\$parameterA\" -c \"\$parameterC\"" >> "bisection.sh"
     install -Dm755 ./bisection.sh "$pkgdir/usr/bin/bisection"
-    install -Dm755 ./main.go "/usr/bin/bisection/main.go"
+    install -Dm755 ./main.go "/usr/bin/main.go"
     install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
 }
