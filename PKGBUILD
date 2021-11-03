@@ -8,7 +8,7 @@ dotnet_version=5.0
 
 pkgdesc="Scribbit is a simple, lightweight, and minimal text editor for Linux."
 arch=('x86_64')
-license=('GPL-3.0')
+license=('GLP')
 url='https://github.com/Marakusa/Scribbit/'
 
 depends=("dotnet-runtime>=$dotnet_version.0")
