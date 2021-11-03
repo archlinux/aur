@@ -1,18 +1,21 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-bluetooth-battery-indicator-git
-pkgver=r27.9597668
-pkgrel=2
+pkgver=r31.16e39f2
+pkgrel=1
 pkgdesc="Gnome-Shell extension displaying battery percentage for bluetooth devices"
 arch=('any')
 url="https://github.com/MichalW/gnome-bluetooth-battery-indicator"
 license=('GPL3')
 depends=('gnome-shell' 'python-pybluez')
 makedepends=('git')
+optdepends=('bluez-utils: Get battery levels using bluetoothctl')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/MichalW/gnome-bluetooth-battery-indicator.git'
+        'https://github.com/MichalW/gnome-bluetooth-battery-indicator/pull/25.patch'
         'git+https://github.com/TheWeirdDev/Bluetooth_Headset_Battery_Level.git')
 sha256sums=('SKIP'
+            'aeb9f880715e8ceebecceb434bd2c2ea3c17c9873d339a5d8861a9950dfc4a09'
             'SKIP')
 
 pkgver() {
@@ -26,6 +29,9 @@ prepare() {
   git config submodule.Bluetooth_Headset_Battery_Level.url \
     "$srcdir/Bluetooth_Headset_Battery_Level"
   git submodule update
+
+  # pack scripts folder
+  patch -Np1 -i "$srcdir/25.patch"
 }
 
 build() {
