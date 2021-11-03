@@ -6,7 +6,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -61,7 +61,7 @@ provides=(
 )
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb')
+sha256sums=('9f0a68fbd74feb4e50dc220bddd59d84626774a53687fb737806ae00e5c6e9e6')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -71,6 +71,7 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
 
+  CFLAGS="$CFLAGS -Wno-deprecated-declarations"
 
   ./configure \
     --prefix=/usr \
