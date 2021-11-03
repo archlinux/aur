@@ -17,6 +17,7 @@ pkgbase = river
 	provides = river
 	provides = riverctl
 	provides = rivertile
+	conflicts = river-bin
 	conflicts = river-git
 	conflicts = river-noxwayland-git
 	source = https://github.com/riverwm/river/releases/download/v0.1.0/river-0.1.0.tar.gz

@@ -13,7 +13,7 @@ depends=(
 	'libevdev' 'pixman' 'xorg-xwayland' 'polkit'
 )
 provides=('river' 'riverctl' 'rivertile')
-conflicts=('river-git' 'river-noxwayland-git')
+conflicts=('river-bin' 'river-git' 'river-noxwayland-git')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('003fb95fcdc78d0993199057f8eaa83284d83b32890b29489496ddd71c209798')
 
