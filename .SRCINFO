@@ -13,7 +13,7 @@ pkgbase = extrattor-git
 	depends = gzip
 	depends = unzip
 	conflicts = extrattor
-	source = https://raw.githubusercontent.com/Mirko-r/extrattor/main/extrattor/extrattor.sh
+	source = https://raw.githubusercontent.com/Mirko-r/extrattor/master/extrattor/extrattor.sh
 	sha512sums = SKIP
 
 pkgname = extrattor-git

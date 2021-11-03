@@ -1,5 +1,3 @@
-
-  
 # Maintainer: Mirko Rovere <04mirko@libero.it>
 # Contributor: koraynilay <koray.fra@gmail.com>
 
@@ -12,7 +10,7 @@ url="https://github.com/Mirko-r/extrattor"
 depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip')
 license=("GPL-3.0")
 conflicts=("extrattor")
-source=("https://raw.githubusercontent.com/Mirko-r/extrattor/main/extrattor/extrattor.sh")
+source=("https://raw.githubusercontent.com/Mirko-r/extrattor/master/extrattor/extrattor.sh")
 sha512sums=("SKIP")
 
 package(){
