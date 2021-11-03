@@ -1,13 +1,13 @@
 pkgbase = fish-z-git
-	pkgdesc = Fish shell port of z, for directory jumping
-	pkgver = r121.d550028
+	pkgdesc = Fish port of z, for directory jumping
+	pkgver = 1.1.r58.g45a9ff6
 	pkgrel = 1
 	url = https://github.com/jethrokuan/z
 	arch = any
 	groups = fish-plugins
 	license = MIT
 	makedepends = git
-	depends = fish
+	depends = fish>=2.7.0
 	provides = fish-z
 	provides = z
 	conflicts = fish-z
@@ -17,4 +17,3 @@ pkgbase = fish-z-git
 	md5sums = SKIP
 
 pkgname = fish-z-git
-
