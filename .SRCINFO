@@ -1,10 +1,10 @@
 pkgbase = octofetch-git
 	pkgdesc = GitHub stats fetch tool
-	pkgver = 0.3.1.r2.gd584513
-	pkgrel = 1
+	pkgver = 0.3.2.r0.g323833a
+	pkgrel = 2
 	url = https://github.com/azur1s/octofetch
 	arch = x86_64
-	license = unknown
+	license = MIT
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
