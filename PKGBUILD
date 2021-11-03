@@ -1,7 +1,7 @@
 # Maintainer: Takumi <takuoh qt tutanota d0t com> # please replace q to a , 0 to o
 pkgname=fzpac-git
 _pkgname=fzpac
-pkgver=r206.ffa16be
+pkgver=r215.6f7adb3
 pkgrel=1
 pkgdesc="Arch Linux (pacman) package finder with fzf "
 arch=("any")

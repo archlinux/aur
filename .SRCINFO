@@ -1,6 +1,6 @@
 pkgbase = fzpac-git
 	pkgdesc = Arch Linux (pacman) package finder with fzf
-	pkgver = r206.ffa16be
+	pkgver = r215.6f7adb3
 	pkgrel = 1
 	url = https://github.com/sheepla/fzpac
 	install = fzpac-git.install
