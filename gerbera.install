@@ -1,0 +1,7 @@
+post_install() {
+  echo ":: You need to generate a configuration file before running gerbera, e.g.:"
+  echo "   gerbera --create-config | sudo tee /etc/gerbera/config.xml"
+  echo "   chown -R gerbera:gerbera /etc/gerbera"
+  echo ":: Make sure <home> points to /etc/gerbera in /etc/gerbera/config.xml:"
+  echo "   <home>/etc/gerbera</home>"
+}
