@@ -2,13 +2,13 @@
 
 pkgname=fish-z-git
 pkgver=1.1.r58.g45a9ff6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fish port of z, for directory jumping"
 arch=('any')
 url="https://github.com/jethrokuan/z"
 license=('MIT')
 groups=('fish-plugins')
-depends=('fish>=2.7.0')
+depends=('fish')
 makedepends=('git')
 provides=("${pkgname%-git}" 'z')
 conflicts=("${pkgname%-git}" 'z' 'zoxide')
