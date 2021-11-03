@@ -1,17 +1,15 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 # Contributor: Brice Méalier <mealier_brice@yahoo.fr>
 # Contributor: Stéphane Gaudreault <stephane.gaudreault@gmail.com>
-
 pkgname=laspack
 pkgver=1.12.2
 pkgrel=2
 pkgdesc="Package for solving large sparse systems of linear equations."
 url="http://www.mgnet.org/mgnet/Codes/laspack/html/laspack.html"
-license="GPL"
+license=('GPL')
 arch=('i686' 'x86_64')
 source=("http://www.netlib.org/linalg/$pkgname.tgz")
-md5sums=('fcfb3c86cc993e29eb477191b1136a8d')
-options=('staticlibs')
+sha256sums=('3bec92900e8fd60a962cb3b2e3d4fb7e55f00fd06b256683427e52cafc2286fa')
 
 build() {
     cd "$srcdir/$pkgname"

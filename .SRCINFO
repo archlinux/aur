@@ -6,9 +6,7 @@ pkgbase = laspack
 	arch = i686
 	arch = x86_64
 	license = GPL
-	options = staticlibs
 	source = http://www.netlib.org/linalg/laspack.tgz
-	md5sums = fcfb3c86cc993e29eb477191b1136a8d
+	sha256sums = 3bec92900e8fd60a962cb3b2e3d4fb7e55f00fd06b256683427e52cafc2286fa
 
 pkgname = laspack
-
