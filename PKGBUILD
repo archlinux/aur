@@ -2,14 +2,14 @@
 # Contributor: koraynilay <koray.fra@gmail.com>
 
 pkgname="extrattor"
-pkgver="1.2.1"
-pkgrel="4"
+pkgver="1.2.2"
+pkgrel="1"
 pkgdesc="A simple bash wrapper to extract one or more archives from the terminal"
 arch=("x86_64")
 url="https://github.com/Mirko-r/extrattor"
 depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip')
 license=("GPL-3.0")
-source=("https://raw.githubusercontent.com/Mirko-r/extrattor/fd4a213ef6da5b701729326af52608ef3ad0b94f/extrattor/extrattor.sh")
+source=("https://raw.githubusercontent.com/Mirko-r/extrattor/e8bef76b12dee43c3325de4b562745f570069b02/extrattor/extrattor.sh")
 sha512sums=("SKIP")
 
 package(){
