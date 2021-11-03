@@ -2,15 +2,15 @@
 
 pkgname=ouch-git
 _pkgname=${pkgname%-git}
-pkgver=r385.a1c4f03
-pkgrel=2
+pkgver=r389.2af0464
+pkgrel=1
 pkgdesc="Painless compression and decompression in the terminal"
 arch=('x86_64')
 url="https://github.com/ouch-org/ouch/"
 license=('MIT')
 makedepends=('git' 'cargo')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=(${_pkgname})
+conflicts=(${_pkgname} ${_pkgname}-bin)
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
@@ -40,6 +40,7 @@ check() {
 package() {
   cd "$srcdir/${_pkgname}"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 
   cd target/release/build/ouch-*/out/completions
   sed -i "s/':output -- The resulting file. It's extensions can be used to specify the compression formats:_files'/\":output -- The resulting file. It's extensions can be used to specify the compression formats:_files\"/" _ouch
