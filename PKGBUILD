@@ -1,6 +1,6 @@
 pkgname=systemc-ams
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SystemC-AMS is an Analog and Mixed-Signal extension library for SystemC"
 url="http://www.accellera.org/activities/working-groups/systemc-ams"
 arch=('x86_64' 'i686')
