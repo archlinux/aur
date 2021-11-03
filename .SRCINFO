@@ -9,6 +9,6 @@ pkgbase = cliphist-bin
 	optdepends = xdg-utils: for image mime inferance
 	provides = cliphist
 	source = https://github.com/sentriz/cliphist/releases/download/v0.3.0/v0.3.0-linux-amd64
-	sha256sums = 624c07319357d422c60a4646feaa680513196306aa002ab7d5f20839ad5294fb
+	sha256sums = b33dbe4a615d38689e2342ad9f8c6c41260b63a327b33032b97f699312501116
 
 pkgname = cliphist-bin
