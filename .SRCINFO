@@ -1,14 +1,16 @@
 pkgbase = neovim-notify
 	pkgdesc = Notification manager for Neovim
-	pkgver = 1.8.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/rcarriga/nvim-notify
 	install = notify.install
 	arch = any
 	groups = neovim-plugin
-	license = unknown
+	license = MIT
+	checkdepends = neovim-plenary
 	depends = neovim
-	source = neovim-notify-1.8.2.tar.gz::https://github.com/rcarriga/nvim-notify/archive/v1.8.2.tar.gz
-	sha256sums = 37d460afeaa709004185a94ab5bb25f084425028df1447d40b49bdec4fd582d1
+	optdepends = neovim-telescope
+	source = neovim-notify-1.10.0.tar.gz::https://github.com/rcarriga/nvim-notify/archive/v1.10.0.tar.gz
+	sha256sums = 5a68d9140f9cdd8cf2e837685d2c168529fe656287908dee1b48e827af26c2ea
 
 pkgname = neovim-notify
