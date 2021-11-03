@@ -1,0 +1,12 @@
+pkgbase = nonicons-git
+	pkgdesc = A next-generation icon set for developers that extends octicons.
+	pkgver = r51.6e4984b
+	pkgrel = 1
+	url = https://github.com/yamatsum/nonicons
+	arch = any
+	license = unknown
+	makedepends = git
+	source = git+https://github.com/yamatsum/nonicons.git
+	md5sums = SKIP
+
+pkgname = nonicons-git
