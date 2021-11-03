@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  make
+  make build strip
 }
 
 package() {
