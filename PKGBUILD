@@ -21,11 +21,15 @@ if [ -z ${amd_pstate+x} ]; then
   amd_pstate=y
 fi
 
+## 'no_makeflags_check' - If /etc/makepkg.conf MAKEFLAGS is null or unset we'll throw a big warning
+##                        and pause long enough for the user to cancel their build.
+##                        Set "no_makeflags_check" to anything to skip this.
+if [ -z ${no_makeflags_check+x} ]; then
+  makeflags_check=y
+fi
+
+##
 ## Xanmod options:
-##
-## The following variables can be customized at build time. Use env or export to change at your wish
-##
-##   Example: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
@@ -346,6 +350,11 @@ prepare() {
 }
 
 build() {
+
+  if [[ -z "$MAKEFLAGS" ]] && [[ "$makeflags_check" == "y" ]]; then
+    show_makeflags_warning
+  fi
+
   cd "linux-${_major}"
   make LLVM=$_LLVM LLVM_IAS=$_LLVM all
 }
@@ -464,5 +473,67 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
+
+# shellcheck disable=SC2059
+show_makeflags_warning() {
+  echo
+  warning "makepkg.conf MAKEFLAGS is not set, your kernel build may take many hours to complete!"
+  plainerr ""
+  plainerr "See https://wiki.archlinux.org/title/Makepkg#Improving_compile_times for help"
+  plainerr "or scan this handy-dandy QR code to go straight to the wiki article:"
+  plainerr ""
+  if [[ "$(/bin/date +%m%d)" == "0401" ]]; then
+    # Happy April 1!
+    cat <<-YEET >&2
+     ▄▄▄▄▄▄▄ ▄▄    ▄ ▄▄▄▄▄ ▄▄▄▄▄▄▄  
+     █ ▄▄▄ █ ▄  ▄▄█▄  ▀█ ▄ █ ▄▄▄ █  
+     █ ███ █ ██▄█ █ █▀▀▀█  █ ███ █  
+     █▄▄▄▄▄█ ▄▀▄ █▀▄ ▄▀█▀█ █▄▄▄▄▄█  
+     ▄▄▄▄  ▄ ▄▀ ▀ ▄▄▀▀███▀▄  ▄▄▄ ▄  
+     ▄▄█▄█▀▄▀▄▀   ▄▀ █ ▄▀█ ███ ▄▄▀  
+      █▄█▀▄▄▀ ▄ █▀██▄█▄▀▄▀▀▀▀▀▄▄ ▀  
+     █▀▄▀██▄ ▀▄█▀▄ █ █▀ ██▄▀█▄ ███  
+     █▀▄██ ▄ ▀ ▄▄▀ ▀▀▀ ▄ █▄▀▀█▄ █   
+     ▄▀▀▄▀ ▄▀██▄▄█ ▀█▄ ▀ ▀▀ █ ▀█▀   
+      ▄▀█▀▀▄▄▄▄▄▄█ █▄▀█▄███▄▄▄▄█    
+     ▄▄▄▄▄▄▄ ▀██▄█▄▄   ▀▄█ ▄ ██▀█▀  
+     █ ▄▄▄ █  ▀▄ ▄▀██▄▄▀ █▄▄▄█▀▄█▄  
+     █ ███ █ █ ▄█▀▄ ▀▀  ▀▀█ ▄▀▀▄ █  
+     █▄▄▄▄▄█ █  ▀  █▄█ ▀██  ▀ █ █
+YEET
+  else
+    cat <<-YEET >&2
+     ▄▄▄▄▄▄▄  ▄    ▄ ▄  ▄▄▄▄▄  ▄▄▄▄▄▄▄
+     █ ▄▄▄ █ ▀█▄█▀ ▀▀█ █ ██▀▄  █ ▄▄▄ █
+     █ ███ █ ▀▀▄▀▄█▀▄█▀ █▄ ▀██ █ ███ █
+     █▄▄▄▄▄█ █ █ ▄ ▄▀█▀█ █▀▄ ▄ █▄▄▄▄▄█
+     ▄▄▄▄▄ ▄▄▄▄▄ █▄██▀▄▀▄ ▀█▀▄▄ ▄ ▄ ▄ 
+     █ ██▀ ▄▄▀█ ▄▄▀▄▄▀█▀ ███▀▄ ▀▄▄▄▀█▀
+     ▄▀▄█▀▀▄ ▀█▀█ ▄█▀▀▄ ▀ ▀▄▀▀█▀▀▄▄▀  
+     █ ▀▀▀█▄▄█▄█ ▀ ▄▄█▄ ▀▄▄▄▀  █    █▀
+     ▀█▀▀██▄ ▀█  █▄█▀ ▄▀▀▀▀▄█▄▄ █▄ ▀▄ 
+     ▄▀▀ ▀█▄▀▄▀ ▄▄▄▀▄▀▀█▀██▄▀▄▄█▄▄█ █▀
+     ▀ ▄▄▀ ▄█▄█ █  ▀█▄▄ █ ▀▀█▄▄ ▄█ ▀▄ 
+     █▀▀▀█▄▄▄▄▄▀ ▀█▄▄██▀▀▀ ▄▀█ █▀ █ █▀
+     █ ▀ ▀▀▄█▀▄  █▀▄▀▀▄▀ ▄██▄██▄███▀ ▄
+     ▄▄▄▄▄▄▄ █▄▄▄▄  ▄█▄▀▀█▄▄██ ▄ ██▀▄▀
+     █ ▄▄▄ █ ▄███  ▀ ▀   ▀▀█▀█▄▄▄█▀▀  
+     █ ███ █ █▀▄ ▀██▄██ ▀██ ██▀▄▀▀▄▄▄ 
+     █▄▄▄▄▄█ █▄▀ █▀▄▄ ▄ █ ▀██▄▀█▄█▀▀▄ 
+YEET
+  fi
+  plainerr ""
+  plainerr "Edit your makepkg.conf and set appropriate MAKEFLAGS for your system to remove this warning"
+  plainerr "or run makepkg with 'env no_makeflags_check=y makepkg ...'"
+  plainerr ""
+  printf -- "${ALL_OFF}${BOLD} > ${YELLOW}Press CTRL-C now to cancel and fix this before continuing ${ALL_OFF}${BOLD}<\n" >&2
+  plainerr ""
+  printf -- "-> Continuing in 60s" >&2
+  for i in {1..60}; do
+    printf "." >&2
+    sleep 1
+  done
+  echo
+}
 
 # vim:set ts=8 sts=2 sw=2 et:
