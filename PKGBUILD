@@ -6,12 +6,12 @@ pkgname=(${pkgbase} python-${pkgbase})
 _tarver=2.8.0
 _tar="${_tarver}/${pkgbase}-${_tarver}.tar.gz"
 pkgver=${_tarver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Build system, infrastructure and foundation classes"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
 license=('custom:GPL2 with runtime exception')
-makedepends=('cmake' 'openmpi' 'tbb' 'texlive-latexextra' 'biber' 'doxygen' 'graphviz' 'python-sphinx' 'python-setuptools' 'python-portalocker')
+makedepends=('cmake' 'openmpi' 'lapack' 'texlive-latexextra' 'biber' 'doxygen' 'graphviz' 'python-sphinx' 'python-setuptools' 'python-portalocker')
 optdepends=('vc: C++ Vectorization library'
   'texlive-latexextra: Type setting system'
   'doxygen: Generate the class documentation from C++ sources'
@@ -60,7 +60,7 @@ build() {
 }
 
 package_dune-common() {
-  depends=('cmake' 'openmpi' 'python-docutils' 'git' 'lapack' 'tbb')
+  depends=('cmake' 'openmpi' 'python-docutils' 'git' 'lapack')
   provides=('dune-ctest' 'duneproject' 'dunecontrol' 'dunepackaging.py' 'dune-git-whitespace-hook' 'rmgenerated.py' 'setup-dunepy.py')
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install sphinx_html
   install -d ${pkgdir}/usr/share/doc/${pkgbase}/buildsystem
