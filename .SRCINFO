@@ -1,0 +1,17 @@
+pkgbase = extrattor
+	pkgdesc = A simple Linux utility to extract one or more archives from the terminal
+	pkgver = 1.5
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-3.0
+	depends = unarj
+	depends = unace
+	depends = p7zip
+	depends = tar
+	depends = pax
+	depends = gzip
+	depends = unzip
+	source = https://raw.githubusercontent.com/Mirko-r/extractor/10bec819cf879220466cfcb85c840c0ef0d8bfca/extractor/extrattor.sh
+	sha512sums = SKIP
+
+pkgname = extrattor
