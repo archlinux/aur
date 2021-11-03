@@ -1,11 +1,11 @@
 # Maintainer: alcubierre-drive
 
 pkgname=btrfs-snap-cpp-git
-pkgver=0.1.r0.g8cdbef2
+pkgver=0.1.r11.gc92211b
 pkgrel=1
 pkgdesc="Creates and transfers btrfs snapshots"
 license=('GPL3')
-depends=('btrfs-progs')
+depends=('btrfs-progs' 'boost')
 arch=('any')
 url="https://github.com/alcubierre-drive/btrfs-snap"
 makedepends=('git')
@@ -40,4 +40,5 @@ package() {
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}/build/btrfs-snap" "${pkgdir}/usr/bin/btrfs-snap-cpp"
+    install -Dm755 "${srcdir}/${pkgname}/btrfs-snap.conf" "${pkgdir}/etc/btrfs-snap-cpp.conf"
 }
