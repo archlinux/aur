@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=typescript-language-server
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='Language Server Protocol (LSP) implementation for TypeScript using tsserver'
 url=https://github.com/theia-ide/typescript-language-server
@@ -11,7 +11,7 @@ depends=('typescript')
 makedepends=('jq' 'yarn')
 checkdepends=('npm')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('c1d6ae258998c2164093e5045868760655d92b5d57df5a243001b82001d60ec1ad45848b04a68ddb2322c2c2fc34612ecc5e162192f4879ccdf9ea291432e931')
+b2sums=('4e1174af9714d66e406938e75b2ba4f1dda7f340601d2251c6eec21f75201c42d0e0f357fb087cfe442d6693a4e3bcd0ba6281098f24643ca06a3102806d7181')
 
 prepare() {
   cd $pkgname-$pkgver
