@@ -27,10 +27,21 @@ b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1
 create_links() {
     # create soname links
     find "$pkgdir" -type f -name '*.so*' ! -path '*xorg/*' -print0 | while read -d $'\0' _lib; do
-        _soname=$(dirname "${_lib}")/$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)
-        _base=$(echo ${_soname} | sed -r 's/(.*).so.*/\1.so/')
-        [[ -e "${_soname}" ]] || ln -s $(basename "${_lib}") "${_soname}"
-        [[ -e "${_base}" ]] || ln -s $(basename "${_soname}") "${_base}"
+        _dirname="$(dirname "${_lib}")"
+        _original="$(basename "${_lib}")"
+        _soname="$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)"
+        _base="$(echo ${_soname} | sed -r 's/(.*)\.so.*/\1.so/')"
+
+        pushd "${_dirname}" >/dev/null
+
+        if [[ -n "${_soname}" && ! -e "./${_soname}" ]]; then
+            ln -s $(basename "${_lib}") "./${_soname}"
+        fi
+        if [[ -n "${_base}" && ! -e "./${_base}" ]]; then
+            ln -s "./${_soname}" "./${_base}"
+        fi
+
+        popd >/dev/null
     done
 }
 
@@ -70,8 +81,8 @@ package_opencl-nvidia-390xx() {
     pkgdesc="OpenCL implemention for NVIDIA"
     depends=('zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
+    provides=('opencl-driver' 'opencl-nvidia')
     conflicts=('opencl-nvidia')
-    provides=('opencl-nvidia' 'opencl-driver')
     cd "${_pkg}"
 
     # OpenCL
@@ -107,12 +118,15 @@ package_nvidia-390xx-utils() {
     optdepends=('nvidia-390xx-settings: configuration tool'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia-390xx: OpenCL support')
-    conflicts=('nvidia-390xx-libgl' 'nvidia-utils' 'nvidia-libgl')
-    provides=('vulkan-driver' 'opengl-driver' 'nvidia-utils' 'nvidia-390xx-libgl' 'nvidia-libgl')
+    conflicts=('nvidia-libgl' 'nvidia-utils' 'nvidia-390xx-libgl')
+    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-utils' 'nvidia-390xx-libgl')
     replaces=('nvidia-390xx-libgl')
     install="${pkgname}.install"
 
     cd "${_pkg}"
+
+    # Check http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/README/installedcomponents.html
+    # for hints on what needs to be installed where.
 
     # X driver
     install -D -m755 nvidia_drv.so "${pkgdir}/usr/lib/xorg/modules/drivers/nvidia_drv.so"
