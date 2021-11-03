@@ -1,6 +1,6 @@
 pkgname=systemc-ams
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="SystemC-AMS is an Analog and Mixed-Signal extension library for SystemC"
 url="http://www.accellera.org/activities/working-groups/systemc-ams"
 arch=('x86_64' 'i686')
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=${pkgdir}/usr --with-layout=unix
+  ./configure --prefix=${pkgdir}/usr --with-layout=unix --with-systemc=/usr
   make -j $(getconf _NPROCESSORS_ONLN)
 }
 
