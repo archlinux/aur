@@ -24,7 +24,7 @@ prepare() {
   git config submodule.src/config.url "$srcdir/config"
   git config submodule.src/llvm-project.url "$srcdir/llvm-project"
   git config submodule.src/wasi-libc.url "$srcdir/wasi-libc"
-  git submodule set-branch src/llvm-project wasm-unwinding
+  git submodule set-branch --branch wasm-unwinding src/llvm-project
   git submodule update --remote src/llvm-project
   git submodule update
 }
