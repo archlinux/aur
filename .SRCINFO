@@ -1,6 +1,6 @@
 pkgbase = numix-icon-theme-git
 	pkgdesc = Base icon theme from the Numix project
-	pkgver = 21.04.14.r0.g97c01aee9
+	pkgver = 21.10.31.r0.g7a28092dd
 	pkgrel = 1
 	url = https://github.com/numixproject/numix-icon-theme
 	arch = any
@@ -16,4 +16,3 @@ pkgbase = numix-icon-theme-git
 	sha256sums = SKIP
 
 pkgname = numix-icon-theme-git
-
