@@ -34,10 +34,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  make \
-    build/wasi-libc.BUILT \
-    build/libcxx.BUILT \
-    build/libcxxabi.BUILT
+  make
 }
 
 package() {
