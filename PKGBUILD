@@ -1,9 +1,12 @@
-#Maintainer: Mirko Rovere <04mirko@libero.it>
+
+  
+# Maintainer: Mirko Rovere <04mirko@libero.it>
+# Contributor: koraynilay <koray.fra@gmail.com>
 
 pkgname="extrattor-git"
-pkgver="beta"
-pkgrel="3"
-pkgdesc="extract one or more archives from the terminal"
+pkgver="1.2.1"
+pkgrel="4"
+pkgdesc="A simple bash wrapper to extract one or more archives from the terminal"
 arch=("x86_64")
 url="https://github.com/Mirko-r/extrattor"
 depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip')
