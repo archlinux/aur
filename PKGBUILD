@@ -2,7 +2,7 @@
 pkgname=ttf-cairo
 _commit='7030db78cca3a7a7d94f9071b3f35dad7447ae71'
 pkgver=3.116
-pkgrel=2
+pkgrel=3
 pkgdesc="Cairo is a contemporary Arabic and Latin typeface family."
 arch=(any)
 url=https://github.com/Gue3bara/Cairo

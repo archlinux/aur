@@ -1,7 +1,7 @@
 pkgbase = ttf-cairo
 	pkgdesc = Cairo is a contemporary Arabic and Latin typeface family.
 	pkgver = 3.116
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Gue3bara/Cairo
 	arch = any
 	license = custom:OFL
