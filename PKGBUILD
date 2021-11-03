@@ -2,10 +2,10 @@
 
 pkgname=ktermlaunch
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Launch your preferred terminal emulator per your KDE settings'
 arch=(x86_64)
-url='https://nogweii.net/projects/ktermlauncher.html'
+url='https://nogweii.net/projects/ktermlaunch.html'
 license=(LGPL2.1)
 depends=(kservice)
 makedepends=(extra-cmake-modules kdoctools cmake ninja)
