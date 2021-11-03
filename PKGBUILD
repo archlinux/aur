@@ -9,18 +9,21 @@ _reponame_forkawesome=Fork-Awesome-$_pkgver_forkawesome
 _cfg=qt6
 pkgname=qtforkawesome-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications (using Qt 6)'
 license=('GPL')
 depends=('qt6-base')
-makedepends=('cmake' 'ninja' 'perl-yaml-libyaml' 'qtutilities-qt6' 'clang' 'mesa')
-optdepends=("$_name-doc: API documentation")
+makedepends=('cmake' 'ninja' 'perl-yaml-libyaml' 'qtutilities-qt6' 'qt6-declarative' 'clang' 'mesa')
+optdepends=(
+  'qt6-declarative: Qt Quick integration'
+  "$_name-doc: API documentation"
+)
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
         "${_reponame_forkawesome}::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/${_pkgver_forkawesome}.tar.gz")
-sha256sums=('d36634675424cc41536de22a9b64b3daaae2f18cd6a976a731a90926c761de12'
+sha256sums=('ce954a043b46538ced4518130ded93fdbcb2ecb9ca90d5d0f172450272b7d199'
             '23fba5f191f204e0414c547bf4c9b10fd7ca42c151260e8f64698449a75fbdb3')
 
 build() {
