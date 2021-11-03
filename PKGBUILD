@@ -1,5 +1,5 @@
 #Maintainer: Mirko Rovere
-pkgname="extrattor"
+pkgname="extrattor-git"
 pkgver="beta"
 pkgrel="6"
 pkgdesc="A simple Linux utility to extract one or more archives from the terminal"

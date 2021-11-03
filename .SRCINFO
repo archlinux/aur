@@ -1,4 +1,4 @@
-pkgbase = extrattor
+pkgbase = extrattor-git
 	pkgdesc = A simple Linux utility to extract one or more archives from the terminal
 	pkgver = beta
 	pkgrel = 6
@@ -14,4 +14,4 @@ pkgbase = extrattor
 	source = https://raw.githubusercontent.com/Mirko-r/extrattor/main/extrattor/extrattor.sh
 	sha512sums = SKIP
 
-pkgname = extrattor
+pkgname = extrattor-git
