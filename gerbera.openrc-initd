@@ -31,7 +31,7 @@ if [ -n "${_IFACE}" ]; then
   _DAEMON_ARGS+=(--interface "${_IFACE}")
 fi
 if [ -n "${_PORT}" ]; then
-  _DAEMON_ARGS+=(--port "${_POR}")
+  _DAEMON_ARGS+=(--port "${_PORT}")
 fi
 if [ -n "${_IP}" ]; then
   _DAEMON_ARGS+=(--ip "${_IP}")
