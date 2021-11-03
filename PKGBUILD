@@ -1,8 +1,9 @@
 # Maintainer: Jamie Magee <jamie DOT magee AT gmail DOT com>
+# Maintainer: Douglas Creager <dcreager AT dcreager DOT net>
 _npmname=azurite
-_npmver=3.13.0
+_npmver=3.14.3
 pkgname=nodejs-azurite3
-pkgver=3.13.0
+pkgver=3.14.3
 pkgrel=1
 pkgdesc="A lightweight server clone of Azure Storage that simulates most of the commands supported by it with minimal dependencies"
 arch=(any)
@@ -12,7 +13,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-b2sums=('795f3e1388abdb9785829461b6a607c8b164a360a18b8855e11a81aa771ce3eb046460dc603063c6c1b54226c8890e80bd6af25957c4a48e21d7ea638842195c')
+b2sums=('3e9dc227c04082d000019b15c5bc91e851c182d9e4ce420d28bb52e6d28e2fad6d8a1e850264a1222cc2a4edba261ee2f655d1ce0d79fcdc5d46045ad7c2e736')
 
 package() {
   cd "$srcdir"
