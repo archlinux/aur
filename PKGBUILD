@@ -1,8 +1,8 @@
 # Maintainer: Ace Breakpoint <chemistudio@gmail.com>
 
 pkgname=gnome-shell-extension-ibus-tweaker-git
-commit=bde69e5
-pkgver=20211101+${commit}
+commit=b93b58d
+pkgver=20211102+${commit}
 pkgrel=1
 pkgdesc="Tweaker of ibus in gnome-shell for orientation, theme, font and input mode auto-switch."
 arch=('any')
