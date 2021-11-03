@@ -8,6 +8,7 @@ pkgbase = audiveris-git
 	makedepends = java-environment=11
 	makedepends = gradle
 	depends = java-runtime=11
+	depends = archlinux-java-run>=7
 	depends = tesseract-data-eng
 	depends = freetype2
 	optdepends = tesseract-data: For languages other than english

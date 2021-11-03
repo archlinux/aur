@@ -10,6 +10,7 @@ url="https://github.com/Audiveris/audiveris"
 license=('AGPL3')
 depends=(
   'java-runtime=11'
+  'archlinux-java-run>=7'
   'tesseract-data-eng'
   'freetype2'
 )
@@ -44,6 +45,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
+  export JAVA_HOME=$(archlinux-java-run -a 11 -b 11 -f jdk -j)
   gradle build javadoc
 }
 
