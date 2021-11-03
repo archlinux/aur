@@ -2,8 +2,8 @@
 
 _target=xtensa-esp32-elf
 pkgname=$_target-binutils
-pkgver=2.35
-_overlay_commit=4d8c98d
+pkgver=2.37
+_overlay_commit=a5ab689
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the xtensa esp32 (bare-metal) target'
 arch=(x86_64)
@@ -12,9 +12,9 @@ license=(GPL)
 depends=(libelf)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig}
         xtensa-overlays-$_overlay_commit.tar.gz::https://codeload.github.com/espressif/xtensa-overlays/tar.gz/$_overlay_commit)
-sha256sums=('7d24660f87093670738e58bcc7b7b06f121c0fcb0ca8fc44368d675a5ef9cff7'
+sha256sums=('67fc1a4030d08ee877a4867d3dcab35828148f87e1fd05da6db585ed5a166bd4'
             'SKIP'
-            '88b054b60b8009d02184ed0703b7fe200b8965af5c45268b7e99a11820119344')
+            '0087aac5e7015d43ff904ef984278df1f99c6757709088c52632b27dc482268f')
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
               '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
@@ -26,6 +26,30 @@ prepare() {
 
 build() {
 	cd binutils-$pkgver
+
+	# espressif's crosstool-ng:
+	# 	CC_FOR_BUILD='x86_64-build_pc-linux-gnu-gcc'
+	# 	CFLAGS_FOR_BUILD='-O2 -g -I./.build/xtensa-esp32-elf/buildtools/include  '
+	# 	CXXFLAGS_FOR_BUILD='-O2 -g -I./.build/xtensa-esp32-elf/buildtools/include  '
+	# 	LDFLAGS_FOR_BUILD='-L./.build/xtensa-esp32-elf/buildtools/lib  '
+	# 	CFLAGS='-O2 -g -pipe -I./.build/xtensa-esp32-elf/buildtools/include  '
+	# 	CXXFLAGS='-O2 -g -pipe -I./.build/xtensa-esp32-elf/buildtools/include  '
+	# 	LDFLAGS='-L./.build/xtensa-esp32-elf/buildtools/lib  '
+	# 	'/usr/bin/bash'
+	# 	'./.build/xtensa-esp32-elf/src/binutils/configure'
+	# 		'--build=x86_64-build_pc-linux-gnu'
+	# 		'--host=x86_64-build_pc-linux-gnu'
+	# 		'--target=xtensa-esp32-elf'
+	# 		'--prefix=./builds/xtensa-esp32-elf'
+	# 		'--disable-werror'
+	# 		'--enable-ld=yes'
+	# 		'--enable-gold=no'
+	# 		'--with-pkgversion=crosstool-NG esp-2020r3-5-gc65c037'
+	# 		'--enable-multilib'
+	# 		'--disable-sim'
+	# 		'--disable-gdb'
+	# 		'--disable-nls'
+	# 		'--with-sysroot=./builds/xtensa-esp32-elf/xtensa-esp32-elf'
 
 	./configure \
 		--target=$_target \
@@ -39,7 +63,10 @@ build() {
 		--enable-ld=yes \
 		--enable-gold \
 		--enable-plugins \
-		--enable-deterministic-archives
+		--enable-deterministic-archives \
+		--disable-sim \
+		--disable-gdb \
+		--disable-nls
 	make
 }
 
@@ -56,11 +83,8 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 
-	# Remove file conflicting with host binutils and manpages for MS Windows tools
-	# rm "$pkgdir"/usr/share/man/man1/arm-none-eabi-{dlltool,windres,windmc}*
-
 	# Remove info documents that conflict with host version
-	rm -r "$pkgdir"/usr/share/info
+	rm -r "$pkgdir"/usr/share/info "$pkgdir"/usr/share/man "$pkgdir"/usr/lib/bfd-plugins
 }
 
 # vim: ts=2 sw=0 noet
