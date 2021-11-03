@@ -1,3 +1,8 @@
+2021-11-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.1.5.3-1:
+    Fixed 5.1.5.2 regression of IPC crash in generic-netf build, which doesn't support qps-Ploc culture (@JustArchi).
+    Fixed SIGINT signal (aka CTRL+C) not making the process exit in some circumstances (@JustArchi).
+    pkg: corrected a read-only /var/lib/asf by adding StateDirectory=%i to the service file (not ideal)
 2021-11-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.1.5.2-1:
     Added ASF API endpoints for importing and removing ASF 2FA authenticators (@Abrynos #2426).
