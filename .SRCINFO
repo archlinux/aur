@@ -1,16 +1,18 @@
 pkgbase = kwin-bismuth
 	pkgdesc = KWin tiling extension, that gets you down to bismuth. Krohnkite fork
-	pkgver = 1.1.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/gikari/bismuth
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = tar
 	makedepends = unzip
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = esbuild
 	depends = hicolor-icon-theme
-	source = bismuth.v1.1.0.tar.gz::https://github.com/gikari/bismuth/releases/download/v1.1.0/bismuth.tar.gz
-	source = https://raw.githubusercontent.com/gikari/bismuth/master/LICENSES/MIT.txt
-	sha256sums = 495f83b6aa7768bf0eb934c9476e0f629378a8d7f4e2098b024b82c2463b0f2a
-	sha256sums = b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0
+	depends = kdeclarative
+	source = bismuth.v2.0.0.tar.gz::https://github.com/gikari/bismuth/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = cc38af4931ced60e8c215dbf3693ae0411396d4c9a3ea543f85b3a3598afb67e
 
 pkgname = kwin-bismuth
