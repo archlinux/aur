@@ -7,8 +7,8 @@
 _pkgbase=nginx
 pkgbase=nginx-quic
 pkgname=(nginx-quic nginx-quic-src)
-pkgver=1.21.3
-pkgrel=2
+pkgver=1.21.4
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -27,8 +27,8 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx')
-source=("hg+https://hg.nginx.org/nginx-quic#revision=4ca8035c19a4"
-        "git+https://boringssl.googlesource.com/boringssl#commit=0446b59427f82d0138abe87fee05b10c696ab621"
+source=("hg+https://hg.nginx.org/nginx-quic#revision=61d0fa67b55e"
+        "git+https://boringssl.googlesource.com/boringssl#commit=cf8d3ad3cea51cf7184307d54f465da62b7d8408"
         "service"
         "logrotate")
 sha256sums=('SKIP'
