@@ -4,7 +4,7 @@ pkgbase = argo
 	pkgrel = 2
 	url = https://github.com/argoproj/argo-workflows
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	source = https://github.com/argoproj/argo-workflows/releases/download/v3.2.3/argo-linux-amd64.gz
 	sha256sums = 65b4265e0576e673175e3f4fdebdb8e0ddc14818143372e433137c2e3dcff374
 
