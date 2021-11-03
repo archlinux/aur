@@ -1,13 +1,14 @@
 pkgbase = ticktick-nativefier
 	pkgdesc = Todo list, checklist, and task manager app
 	pkgver = 2021.04.30
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ticktick.com
 	arch = any
 	license = MIT
 	makedepends = nodejs-nativefier
 	makedepends = imagemagick
 	depends = electron
+	depends = libnotify
 	source = ticktick-nativefier.png
 	source = ticktick-nativefier.desktop
 	sha256sums = c0153332b79acd7dc2d4891b123ec2d8fef2f6fdcf4d7ee40b0587371806d63b

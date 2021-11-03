@@ -4,12 +4,12 @@ _appname=TickTick
 _pkgname=ticktick
 pkgname=ticktick-nativefier
 pkgver=2021.04.30
-pkgrel=2
+pkgrel=3
 pkgdesc='Todo list, checklist, and task manager app'
 arch=('any')
 url='https://www.ticktick.com'
 license=('MIT')
-depends=('electron', 'libnotify')
+depends=('electron' 'libnotify')
 makedepends=('nodejs-nativefier' 'imagemagick')
 source=("${pkgname}.png"
         "${pkgname}.desktop")
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/"{opt,usr/{bin,share/applications}}
+    install -dm755 "${pkgdir}/"{opt,usr/{bin,lib,share/applications}}
 
     cp -rL "${srcdir}/${_appname}-linux-"* "${pkgdir}/opt/${_pkgname}"
     cp -L "${srcdir}/${pkgname}.png" "${pkgdir}/opt/${_pkgname}/resources/app/icon.png"
