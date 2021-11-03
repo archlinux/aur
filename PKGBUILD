@@ -3,9 +3,9 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=odin-dev-bin
-_pkgver=2021-10
+_pkgver=2021-11
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=(x86_64)
 url="https://odin-lang.org/"
@@ -17,8 +17,8 @@ conflicts=(odin)
 options=(!strip)
 source=("https://github.com/odin-lang/Odin/archive/refs/tags/dev-${_pkgver}.tar.gz")
 source_x86_64=("https://github.com/odin-lang/Odin/releases/download/dev-${_pkgver}/odin-ubuntu-amd64-dev-${_pkgver}.zip")
-sha256sums=('0dd43f018a469d9dd1a8666e35366a0895d59a92ca0499e28717c217abfacb76')
-sha256sums_x86_64=('28b7ac480b823efadb13488c3805f8ce079107a253748322ab81bd3b7091d88a')
+sha256sums=('f4a8fac2f49eb6e8e784257950c88db34a681a2149644441b145c3b502b64a2f')
+sha256sums_x86_64=('6ad91e2659c7221f72c081cdbc4fbd9c6fb853c912ddc1b63f1ade46c67fb5c1')
 
 build() {
   cd "${srcdir}/ubuntu_artifacts"
