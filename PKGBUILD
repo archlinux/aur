@@ -5,7 +5,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org> (gnome-control-center PKGBUILD)
 _pkgname='gnome-control-center'
 pkgname="$_pkgname-nocheese"
-pkgver='40.0'
+pkgver='41.0'
 _gvccommit='7a621180b46421e356b33972e3446775a504139c'
 pkgrel='1'
 pkgdesc="GNOME's main interface to configure various aspects of the desktop - without Cheese dependency"
@@ -16,10 +16,10 @@ groups=('gnome')
 depends=(
 	'accountsservice' 'bolt' 'colord-gtk' 'cups-pk-helper' 'gnome-bluetooth'
 	'gnome-color-manager' 'gnome-desktop' 'gnome-online-accounts'
-	'gnome-settings-daemon' 'grilo' 'gsettings-desktop-schemas' 'gsound' 'gtk3'
+	'gnome-settings-daemon' 'gsettings-desktop-schemas' 'gsound' 'gtk3'
 	'libgnomekbd' 'libgtop' 'libgudev' 'libhandy' 'libibus' 'libmm-glib'
-	'libpwquality' 'nm-connection-editor' 'smbclient' 'sound-theme-freedesktop'
-	'udisks2' 'upower'
+	'libpwquality' 'nm-connection-editor' 'power-profiles-daemon' 'smbclient'
+	'sound-theme-freedesktop' 'udisks2' 'upower'
 )
 optdepends=(
 	'gnome-user-share: WebDAV file sharing'
@@ -36,7 +36,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-gvc.tar.gz::https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/archive/$_gvccommit/libgnome-volume-control-$_gvccommit.tar.gz"
 )
-sha256sums=('dbcae924bb45118b0448057441854f1bcffd357f729f2d043d62446b9909fa98'
+sha256sums=('435f93577e277c4f1c7e375cf4ebb6bfec61554dad656a91c215f911329eb83e'
             '0bd8bb754ce3fb82b29c83e2186b2a84517be772acdba28d15eb928a44cadec3')
 
 _sourcedirectory="$_pkgname-$pkgver"
@@ -60,6 +60,6 @@ check() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" meson install -C build
+	meson install -C build --destdir "$pkgdir"
 	install -d -o root -g 102 -m 750 "$pkgdir/usr/share/polkit-1/rules.d"
 }
