@@ -5,7 +5,7 @@ _variant=consumer
 _appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 _threema_web_ver=2.3.17 # Keep in sync with version used by threema-desktop
 arch=("x86_64")
 url="https://github.com/threema-ch/threema-web-electron"
@@ -13,8 +13,8 @@ license=('AGPL')
 depends=(electron)
 makedepends=(npm)
 source=(
-  "https://github.com/threema-ch/threema-web-electron/archive/refs/tags/release-${pkgver}-latest.tar.gz"
-  "https://github.com/threema-ch/threema-web/archive/refs/tags/v${_threema_web_ver}.tar.gz"
+  "threema-web-electron-v${pkgver}.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/release-${pkgver}-latest.tar.gz"
+  "threema-web-v${_threema_web_ver}.tar.gz::https://github.com/threema-ch/threema-web/archive/refs/tags/v${_threema_web_ver}.tar.gz"
   "threema.desktop"
 )
 sha256sums=(
