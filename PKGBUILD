@@ -6,9 +6,9 @@
 
 _pkgname=instantclient-odbc
 pkgname=oracle-${_pkgname}
-pkgver=21.1.0.0.0
-_urlver=211000
-_unzippath=instantclient_21_1
+pkgver=21.3.0.0.0
+_urlver=213000
+_unzippath=instantclient_21_3
 pkgrel=1
 pkgdesc="Additional libraries for enabling ODBC applications with Instant Client"
 arch=('x86_64')
@@ -25,9 +25,9 @@ DLAGENTS+=('manual::/usr/bin/false');
 source=(LICENSE
         "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'c0177c183fba3277c5d3683e48d4c5e4')
+         'd3e7a08b949e9ca9587bb77903da1cee')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            'ec7722b522684f0a3f63481573d0eb3537764224eabed6223f33699dd940bf20')
+            'c90ce4c453065af2771bf78067b9e4cab568cf19454288500ca265431d38e4d0')
 
 plain "If you run into any problems downloading the files, get the .zip version from"
 plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
