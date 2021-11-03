@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp-git
-pkgver=7.5.RC2.r1.gb058865
+pkgver=7.5.2.beta.r2.g52c15d8
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -9,8 +9,8 @@ url=https://github.com/CadQuery/OCP
 license=('Apache')
 depends=(
 python
-opencascade-rc
-vtk9-java
+opencascade
+vtk
 )
 makedepends=(
 git
@@ -46,8 +46,9 @@ prepare(){
   cd OCP
   git submodule update --init --recursive
 
-  # opencascade is 7.5.2 not 7.5.1
-  sed 's,7.5.1,7.5.2,g' -i dump_symbols.py
+  # opencascade is 7.5.3 not 7.5.1
+  # TODO: unhardcode this crap
+  sed 's,7.5.1,7.5.3,g' -i dump_symbols.py
   
   # don't use the opencascade headers packaged here
   # instead use the ones from the installed opencascade package
