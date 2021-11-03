@@ -10,7 +10,7 @@ optdepends=()
 makedepends=('tar')
 conflicts=()
 provides=('systemc-ams')
-source=("https://www.coseda-tech.com/files/coside/user_files/Files/Proof-of-Concepts/${pkgname}-${pkgver}.tar.gz")
+source=("https://www.coseda-tech.com/files/Files/Proof-of-Concepts/systemc-ams-${pkgver}.tar.gz")
 md5sums=('b9f17695e2ef1677a4555fcd17efc741')
 
 noextract=("${pkgname}-${pkgver}.tar.gz")
