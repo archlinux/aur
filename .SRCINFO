@@ -1,0 +1,11 @@
+pkgbase = bamini-tamil-font
+	pkgdesc = Bamini tamil language font
+	pkgver = 1
+	pkgrel = 1
+	url = https://tamilfont.net
+	arch = any
+	license = unknown
+	source = https://tamilfont.net/wp-content/uploads/bamini.zip
+	sha256sums = 53fca96e0fc31ff2905a132979904b8acb6a53a591d0cb3b305ebd087fe3650e
+
+pkgname = bamini-tamil-font
