@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  CXXFLAGS="CXXFLAGS -fno-exceptions" make build strip
+  CXXFLAGS="$CXXFLAGS -fno-exceptions" make build strip
 }
 
 package() {
