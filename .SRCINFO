@@ -1,7 +1,7 @@
 pkgbase = ledmonutils
 	pkgdesc = Enclosure LED Utilities
 	pkgver = 0.95
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/intel/ledmon
 	arch = x86_64
 	license = GPL
