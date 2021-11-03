@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-library-3d-git
-pkgver=5.1.6.r26.gd8b7e8c5
+pkgver=5.1.6.r29.g1080b6e5
 pkgrel=1
 pkgdesc="https://gitlab.com/kicad/libraries/kicad-packages3D"
 arch=(any)
@@ -25,12 +25,18 @@ pkgver() {
 
 prepare() {
   cd kicad-packages3D
-  msg2 "ensmall the step files"
-  find -name '*.step' -exec stepreduce {} {}.reduced \; -exec mv {}.reduced {} \;
 }
 
 build() {
   cd kicad-packages3D
+
+  # use this many threads to shrink the step files
+  _ensmall_threads=1
+
+  msg2 "First ensmall the step files"
+  find -name '*.step' -print0 | xargs -0 -n 1 -P ${_ensmall_threads} -I % sh -c 'stepreduce % %.reduced; mv %.reduced %'
+  
+  msg2 'Then use cmake to "build"'
   cmake \
     -W no-dev \
     -D CMAKE_BUILD_TYPE=None \

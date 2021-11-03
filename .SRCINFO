@@ -1,6 +1,6 @@
 pkgbase = kicad-library-3d-git
 	pkgdesc = https://gitlab.com/kicad/libraries/kicad-packages3D
-	pkgver = 5.1.6.r26.gd8b7e8c5
+	pkgver = 5.1.6.r29.g1080b6e5
 	pkgrel = 1
 	url = https://gitlab.com/kicad/libraries/kicad-packages3D
 	arch = any
