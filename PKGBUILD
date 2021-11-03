@@ -3,14 +3,14 @@
 _pkgbase=luau
 pkgname=luau-git
 pkgver=0.501.dc83543
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua '
 arch=('any')
 url='https://github.com/Roblox/luau'
 license=('MIT')
 
-makedepends=('git' 'cmake' 'grep')
+makedepends=('git' 'cmake')
 conflicts=("$_pkgbase")
 provides=("$_pkgbase")
 
