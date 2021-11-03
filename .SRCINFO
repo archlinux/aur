@@ -1,0 +1,17 @@
+pkgbase = tinywl-git
+	pkgdesc = TinyWL
+	pkgver = 0.14.0.r335.ge13f3f86
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/wlroots/wlroots
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	makedepends = make
+	makedepends = wayland-protocols
+	depends = wlroots
+	provides = tinywl=0.14.0
+	conflicts = tinywl
+	source = tinywl-git::git+https://gitlab.freedesktop.org/wlroots/wlroots
+	sha512sums = SKIP
+
+pkgname = tinywl-git
