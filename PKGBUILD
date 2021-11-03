@@ -5,14 +5,14 @@
 
 _pkgname=triton
 pkgname=${_pkgname}-git
-pkgver=0.8.1.r49.g1b1da143
+pkgver=0.8.1.r266.g6b929c39
 pkgrel=1
 pkgdesc='Dynamic binary analysis framework'
 url='https://triton.quarkslab.com/'
 arch=('x86_64')
 license=('Apache')
 depends=('capstone' 'z3' 'python')
-makedepends=('git' 'boost')
+makedepends=('git' 'boost' 'cmake')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("$pkgname::git+https://github.com/JonathanSalwan/Triton.git")

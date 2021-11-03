@@ -1,12 +1,13 @@
 pkgbase = triton-git
 	pkgdesc = Dynamic binary analysis framework
-	pkgver = 0.8.1.r49.g1b1da143
+	pkgver = 0.8.1.r266.g6b929c39
 	pkgrel = 1
 	url = https://triton.quarkslab.com/
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = boost
+	makedepends = cmake
 	depends = capstone
 	depends = z3
 	depends = python
@@ -16,4 +17,3 @@ pkgbase = triton-git
 	sha256sums = SKIP
 
 pkgname = triton-git
-
