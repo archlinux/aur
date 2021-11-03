@@ -1,0 +1,13 @@
+pkgbase = ttf-iosevka-lyte
+	pkgdesc = lytedev's customized Iosevka font
+	pkgver = 7.2.8
+	pkgrel = 1
+	url = https://github.com/lytedev/Iosevka
+	arch = any
+	license = SIL Open Font License v1.1
+	source = https://files.lyte.dev/iosevkalyte/rel/iosevkalyte-7.2.8.tar.zstd
+	source = ttf-iosevka-lyte-7.2.8-1-LICENSE.md::https://files.lyte.dev/iosevkalyte/rel/iosevkalyte-7.2.8-LICENSE.md
+	sha256sums = b52d069ccdc28bce58c5ef640fa6782cd01ca0b603e9b87fa0f9b5c9eac47cb3
+	sha256sums = 72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80
+
+pkgname = ttf-iosevka-lyte
