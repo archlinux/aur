@@ -38,22 +38,24 @@ optdepends=('gstreamer: GStreamer videoplayer backend'
             'ruby: scripting'
             'python: scripting')
 
-source=("https://invent.kde.org/kde/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-sha256sums=('d7834346525813c3d5762c45fdbea2ef49c2db7d07af86b779b376e04c982e88')
+source=("https://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.xz"
+        "https://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.xz.sig")
+sha256sums=('ef9cb3c0c1fe1f40cf9d8e795859b9b28adf2da3be77a076d46bc28df4cd0255'
+            'SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF \
-    -DAPP_VERSION="${pkgver}"
-  make
+    -S . -B build
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  DESTDIR="${pkgdir}" cmake --install build
 }

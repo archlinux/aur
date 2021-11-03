@@ -26,7 +26,9 @@ pkgbase = subtitlecomposer
 	optdepends = kross-interpreters: Ruby and Python scripting support
 	optdepends = ruby: scripting
 	optdepends = python: scripting
-	source = https://invent.kde.org/kde/subtitlecomposer/-/archive/v0.7.1/subtitlecomposer-v0.7.1.tar.bz2
-	sha256sums = d7834346525813c3d5762c45fdbea2ef49c2db7d07af86b779b376e04c982e88
+	source = https://download.kde.org/stable/subtitlecomposer/subtitlecomposer-0.7.1.tar.xz
+	source = https://download.kde.org/stable/subtitlecomposer/subtitlecomposer-0.7.1.tar.xz.sig
+	sha256sums = ef9cb3c0c1fe1f40cf9d8e795859b9b28adf2da3be77a076d46bc28df4cd0255
+	sha256sums = SKIP
 
 pkgname = subtitlecomposer
