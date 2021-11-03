@@ -3,10 +3,10 @@
 _pkgbase=luau
 pkgname=luau
 pkgver=0.501
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua '
-arch=('any')
+arch=('x86_64')
 url='https://github.com/Roblox/luau'
 license=('MIT')
 
