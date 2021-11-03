@@ -2,9 +2,9 @@
 
 _target=xtensa-esp32-elf
 pkgname=$_target-gcc-bootstrap
-pkgver=10.2.0
-_islver=0.22.1
-_overlay_commit=4d8c98d
+pkgver=11.2.0
+_islver=0.24
+_overlay_commit=a5ab689
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler bootstrap package for xtensa esp32 (bare-metal) target'
 arch=(x86_64)
@@ -16,16 +16,15 @@ provides=($_target-gcc)
 conflicts=($_target-gcc)
 options=(!emptydirs !strip)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
+        https://libisl.sourceforge.io/isl-$_islver.tar.bz2
         xtensa-overlays-$_overlay_commit.tar.gz::https://codeload.github.com/espressif/xtensa-overlays/tar.gz/$_overlay_commit)
-sha256sums=('b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
+sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
             'SKIP'
-            '1a668ef92eb181a7c021e8531a3ca89fd71aa1b3744db56f68365ab0a224c5cd'
-            '88b054b60b8009d02184ed0703b7fe200b8965af5c45268b7e99a11820119344')
-validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
-              86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
-              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
-              33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
+            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
+            '0087aac5e7015d43ff904ef984278df1f99c6757709088c52632b27dc482268f')
+validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
+              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
 
 _basedir=gcc-$pkgver
 
@@ -46,8 +45,52 @@ prepare() {
 
 build() {
 	cd "$srcdir"/build-gcc
-	export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -mlongcalls'
-	export CXXFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -mlongcalls'
+	export CFLAGS="${CFLAGS/-Werror=format-security/}"
+	export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+	export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -fno-exceptions -mlongcalls'
+	export CXXFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -fno-exceptions -mlongcalls'
+
+	# espressif's crosstool-ng:
+	# 	CC_FOR_BUILD='x86_64-build_pc-linux-gnu-gcc'
+	# 	CFLAGS='-O2 -g -I./.build/xtensa-esp32-elf/buildtools/include  '
+	# 	CFLAGS_FOR_BUILD='-O2 -g -I./.build/xtensa-esp32-elf/buildtools/include  '
+	# 	CXXFLAGS='-O2 -g -I./.build/xtensa-esp32-elf/buildtools/include  '
+	# 	CXXFLAGS_FOR_BUILD='-O2 -g -I./.build/xtensa-esp32-elf/buildtools/include  '
+	# 	LDFLAGS='-L./.build/xtensa-esp32-elf/buildtools/lib   -lstdc++ -lm'
+	# 	CFLAGS_FOR_TARGET=' -mlongcalls'
+	# 	CXXFLAGS_FOR_TARGET=' -mlongcalls'
+	# 	LDFLAGS_FOR_TARGET='  -static'
+	# 	'/usr/bin/bash'
+	# 	'./.build/xtensa-esp32-elf/src/gcc/configure'
+	# 		'--build=x86_64-build_pc-linux-gnu'
+	# 		'--host=x86_64-build_pc-linux-gnu'
+	# 		'--target=xtensa-esp32-elf'
+	# 		'--prefix=./.build/xtensa-esp32-elf/buildtools'
+	# 		'--with-local-prefix=./builds/xtensa-esp32-elf/xtensa-esp32-elf'
+	# 		'--without-headers'
+	# 		'--with-newlib'
+	# 		'--enable-threads=no'
+	# 		'--disable-shared'
+	# 		'--with-pkgversion=crosstool-NG esp-2020r3-5-gc65c037'
+	# 		'--disable-__cxa_atexit'
+	# 		'--disable-libgomp'
+	# 		'--disable-libmudflap'
+	# 		'--disable-libmpx'
+	# 		'--disable-libssp'
+	# 		'--disable-libquadmath'
+	# 		'--disable-libquadmath-support'
+	# 		'--with-gmp=./.build/xtensa-esp32-elf/buildtools'
+	# 		'--with-mpfr=./.build/xtensa-esp32-elf/buildtools'
+	# 		'--with-mpc=./.build/xtensa-esp32-elf/buildtools'
+	# 		'--with-isl=./.build/xtensa-esp32-elf/buildtools'
+	# 		'--enable-lto'
+	# 		'--enable-target-optspace'
+	# 		'--without-long-double-128'
+	# 		'--disable-nls'
+	# 		'--enable-multiarch'
+	# 		'--enable-languages=c'
+	# 		'--enable-threads=posix'
+
 	"$srcdir"/$_basedir/configure \
 		--libexecdir=/usr/lib \
 		--prefix=/usr \
@@ -55,7 +98,6 @@ build() {
 		--with-gmp \
 		--with-gnu-as \
 		--with-gnu-ld \
-		--with-headers=/usr/$_target/include \
 		--with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' \
 		--with-isl \
 		--with-libelf \
