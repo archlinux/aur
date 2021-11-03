@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Comment=Odin for Linux (flashing Samsung firmware)
+Terminal=false
+Name=JOdin3
+Exec=/usr/bin/JOdin3
+Icon=/usr/share/jodin3-bin/odin-logo.jpg

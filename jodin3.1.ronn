@@ -1,0 +1,27 @@
+jodin3(1) -- a tool for flashing Samsung firmware on Linux 
+====
+
+## DESCRIPTION
+
+Odin is a well known tool on Windows systems for flashing Samsung firmware. JOdin3 runs on Linux und Mac and uses heimdall in its backend and is based on Casual-X.
+
+JOdin3 has been started by Adam Outler in 2014 but unfortunately he completely stopped developing in 2015. Based on Adam's sources Markus Plail fixed several issues for newer Samsung devices in 2021 and this is the version this package is based on.
+
+## /usr/bin/JOdin3-starter
+
+JOdin3 needs to be called by some specific arguments which is handled by this wrapper script
+
+## /usr/share/jodin3-bin/JOdin3CASUAL-X.X.X.jar 
+
+The actual JOdin3 java binary which gets executed by JOdin3-starter
+
+## AUTHOR
+
+* JOdin3 (2014-2015): Adam Outler
+* JOdin3 (2021): Markus Plail
+* AUR package: steadfasterX <steadfasterX |AT| gmail - com>
+
+## SEE ALSO
+
+* [JOdin3 sources by Adam Outler](https://github.com/adamoutler/android-casual)
+* [JOdin3 sources by Markus Plail](https://github.com/plaili/android-casual)
