@@ -1,7 +1,7 @@
 pkgbase = chromium-docker
 	pkgdesc = Chromium Docker Image builder with widevine
 	pkgver = 78.0.3904.97
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/HenningThiemann/docker-chromium-armhf
 	install = chromium-docker.install
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = chromium-docker
 	depends = paprefs
 	depends = inetutils
 	depends = vim
-	source = git+https://github.com/HenningThiemann/docker-chromium-armhf#52cc703f19c61732d4643171995ef4aff5b2d9e0
+	source = git+https://github.com/HenningThiemann/docker-chromium-armhf#commit=52cc703
 	source = chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html
 	source = chromium.png
 	source = Chromium-Armv7.desktop
