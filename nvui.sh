@@ -1,2 +1,3 @@
-#!/bin/bash
-/opt/nvui/bin/nvui "$@"
+#!/bin/sh
+
+/usr/share/nvui/bin/nvui --detached -- "$@"
