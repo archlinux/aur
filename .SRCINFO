@@ -1,12 +1,11 @@
 pkgbase = pebble
 	pkgdesc = Simple cli utility to manage database schema
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/avanciro/pebble
 	arch = x86_64
 	makedepends = go
-	source = https://github.com/avanciro/pebble/archive/v2.0.1.tar.gz
-	sha256sums = 1a024b81405cc811d1ee225254bcce479c6c722637e80f2a51091da70b9836b8
+	source = https://github.com/avanciro/pebble/archive/v2.0.2.tar.gz
+	sha256sums = b9226bf866e7e89e62ce1c84ccbf8e00ca3d0bfa24f6e1bf6ff49e62555c1e74
 
 pkgname = pebble
-
