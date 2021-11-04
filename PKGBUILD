@@ -1,23 +1,17 @@
 # Maintainer: Kalani Helekunihi <i [at] am [dot] guru>
 
 pkgname=xteve
-pkgver=2.1.2
+pkgver=2.2
 pkgrel=1
 pkgdesc="IPTV Proxy for Plex DVR"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://xteve.de"
 license=('MIT')
 source=("${pkgname}.service"
 	"${pkgname}.sysusers"
-	"${pkgname}.tmpfiles")
-source_x86_64=('https://xteve.de/download/xteve_2_linux_amd64.zip')
-source_aarch64=('https://xteve.de/download/xteve_2_linux_arm64.zip')
-
-md5sums=('d7f09bca696e34173dcc3fa4dba81650'
-         '8ad3c1b952d0b4a722439c60c8f6ceec'
-         '7991e718cab0bf566f22f499c720b325')
-md5sums_x86_64=('2910fac6f39f471513be693ef52c2228')
-md5sums_aarch64=('e5194e71791be007ad590bea3d5eb096')
+	"${pkgname}.tmpfiles"
+    "https://github.com/xteve-project/xTeVe-Downloads/raw/master/"$pkgname"_linux_amd64.tar.gz")
+sha256sums=('931947d35b91d5763ba6218bdc9096b792d6e1718a9fca0a77b0ffb186c5ed36' 'dbf54529cec6663f89bdc5600df30e3328014096f61c3d43f3d8196556919ce3' '17bbf3c47404d3876f99c20ed2cc8787f8c4fea29717d18514d459af852825fb' '4fbe2999fe8fa80196060321eeabd76fda80aed713022769f0c2d45b20c0d107' )
 
 package() {
 	install -Dm755 ${srcdir}/xteve $pkgdir/usr/bin/${pkgname}
