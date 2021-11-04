@@ -9,7 +9,8 @@ arch=(x86_64)
 url="https://wiki.gnome.org/Projects/libshumate"
 license=(LGPL)
 depends=(gtk4 libsoup sqlite protobuf-c)
-makedepends=(git gobject-introspection gtk-doc gi-docgen meson vala xorg-server-xvfb)
+makedepends=(git gobject-introspection gtk-doc gi-docgen meson vala)
+checkdepends=(xorg-server-xvfb)
 provides=(libshumate)
 
 source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
