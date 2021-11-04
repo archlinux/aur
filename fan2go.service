@@ -1,6 +1,6 @@
 [Unit]
 Description=Advanced Fan Control program
-After=lm-sensors.service
+After=lm_sensors.service
 
 [Service]
 LimitNOFILE=8192

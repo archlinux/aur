@@ -1,7 +1,7 @@
 # Maintainer: manvari <maxime.anvari+aur@gmail.com>
 pkgname=fan2go-git
 pkgver=0.0.18.r6.g0719fb2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple daemon providing dynamic fan speed control based on temperature sensors"
 arch=('x86_64')
 url="https://github.com/markusressel/fan2go"
