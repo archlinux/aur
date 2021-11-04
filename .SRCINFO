@@ -1,6 +1,6 @@
 pkgbase = apollo-rover
 	pkgdesc = CLI for Apollo's suite of GraphQL developer productivity tools
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/apollographql/rover
 	arch = x86_64
@@ -8,7 +8,15 @@ pkgbase = apollo-rover
 	makedepends = cargo
 	depends = gcc-libs
 	depends = zlib
-	source = apollo-rover-0.3.0.tar.gz::https://github.com/apollographql/rover/archive/v0.3.0.tar.gz
-	sha256sums = 1ba8ef546cfef89517a8ee9932aae683cab523d212ea8d3d4fe1359a15aa3be6
+	source = apollo-rover-0.4.0.tar.gz::https://github.com/apollographql/rover/archive/v0.4.0.tar.gz
+	sha256sums = ab7de6aa9b221a29360c16ebb855b43d29cd79a6111c3b89e77f0d4f29a2002c
 
 pkgname = apollo-rover
+	optdepends = apollo-rover-fed2: experimental Federation v2 support
+
+pkgname = apollo-rover-fed2
+	pkgdesc = Plugin for Apollo Rover enabling Federation v2 support
+	license = custom:EL2
+	depends = gcc-libs
+	depends = zlib
+	depends = apollo-rover=0.4.0
