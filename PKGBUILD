@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=lagrange
-pkgrel=1
+pkgrel=2
 pkgver=1.8.0
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
@@ -20,6 +20,7 @@ depends=(
     "openssl"
     "pcre"
     "sdl2"
+    "zip"
 )
 optdepends=("mpg123")
 makedepends=("cmake")
