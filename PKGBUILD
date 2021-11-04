@@ -39,5 +39,4 @@ cd /usr/share/${pkgname}
 EOF
 	chmod +x ${pkgdir}/usr/bin/${pkgname}
 
-	# Copy license
 }
