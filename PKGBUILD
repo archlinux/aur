@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ls_extended-git
-pkgver=1.1.0.r29.g026111b
+pkgver=2.0.0.r159
 pkgrel=1
 pkgdesc='ls with coloring and icons from git'
 arch=('x86_64')
@@ -14,10 +14,11 @@ conflicts=('ls_extended')
 provides=('ls_extended')
 source=("git+$url")
 md5sums=('SKIP')
-#commit=40f1c4b08e6ad8b52011799e5432862957986aa9#commit=40f1c4b08e6ad8b52011799e5432862957986aa9
+
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --tags | sed 's+-+.r+'| tr - . | cut -c2-
+  printf %s.r%s $(grep VERSION CMakeLists.txt| grep -v \( | cut -d " " -f2) \
+	 $(git rev-list --count HEAD)
 }
 
 build() {
