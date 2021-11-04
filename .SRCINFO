@@ -1,0 +1,11 @@
+pkgbase = has
+	pkgdesc = has checks presence of various command line tools and their versions on the path
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/kdabir/has
+	arch = any
+	license = MIT
+	source = has-1.4.0.tar.gz::https://github.com/kdabir/has/archive/v1.4.0.tar.gz
+	sha256sums = 0e73552dbf59e3da0d9254da87c94599595c9ea07c69a62a4853e69bbf3f0d7d
+
+pkgname = has
