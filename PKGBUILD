@@ -2,7 +2,7 @@
 
 pkgname=lunarvim-git
 pkgver=0.5.1.r388.ge05ced8e
-pkgrel=2
+pkgrel=3
 pkgdesc="An IDE layer for Neovim with sane defaults. Completely free and community driven."
 arch=('any')
 url='https://github.com/LunarVim/LunarVim'
@@ -46,7 +46,7 @@ source=("${pkgname}::git+https://github.com/LunarVim/LunarVim.git#branch=rolling
   "lvim")
 sha256sums=('SKIP'
             'SKIP'
-            'a47395027a6754183bb3c72dc7720a35887dc4b6535bf59a9728f49389e70a49'
+            '9927c6749d8f4cd5cfe2ff42be670fa7405909304004764da553e4df733c1b56'
             'bf8a977a1ceff5240e5709de79f0eb2543816f2d627d6a750e766a78bc28d503')
 
 pkgver() {
