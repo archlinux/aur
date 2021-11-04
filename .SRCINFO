@@ -1,18 +1,19 @@
 pkgbase = mediaget
 	pkgdesc = torrent player torrent-client
 	pkgver = 3.200.4007
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mediaget.com/
 	arch = i386
 	arch = x86_64
 	license = custom
-	depends = python-pyqt5
+	depends = libidn11
+	depends = gcc-libs
 	depends = vlc
-	source = _3.200.4007.tar.xz::https://mediaget.com/ld/get_installer.php?os=linux&mgsite=1&r=ms_google
+	source = mediaget.tar.xz::https://mediaget.com/ld/get_installer.php?os=linux&mgsite=1&r=ms_google
 	source = mediaget.desktop
 	source = mediaget
 	md5sums = 5974fa98ea6b3dbae7bee4fffb50a7d5
-	md5sums = aa7a66686c3f439f3e1c39d2069679b4
+	md5sums = a0d5c36d4c355317fba5eed5ad55880c
 	md5sums = 70f419b3a15bee508f8bd1beb3b85342
 
 pkgname = mediaget
