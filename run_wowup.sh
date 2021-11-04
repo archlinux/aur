@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec /usr/lib/wowup/wowup
+exec /usr/lib/wowup/wowup "$@"

@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=WowUp
-Exec=/usr/lib/wowup/wowup
+Exec=/usr/lib/wowup/wowup %u
 Terminal=false
 Type=Application
 Icon=wowup
 StartupWMClass=WowUp
 Comment=Word of Warcraft addon updater
 Categories=Game;
+MimeType=x-scheme-handler/wowup;

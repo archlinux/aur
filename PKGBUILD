@@ -2,7 +2,7 @@
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}
-_pkgver=2.4.7
+_pkgver=2.5.0
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='WowUp the World of Warcraft addon updater'
@@ -17,17 +17,13 @@ source=(
     wowup.desktop
     run_wowup.sh
 )
-sha256sums=('f85add9fea34514dbe96a03a2cffc74afa4c7628478fbb949f0eb2e11a866a8d'
-            'f8e0bbe6c138997f1dc1d9dfb83773cc6a8c4f6af254a73194a8874e078746b9'
-            '154da83623df19a3224f9777db0375f386ea1b9c108ba0fe84213be1cef56493')
+sha256sums=('a2f9869a444d149acf0f5051e2094801250ea22d74326139ba855f44827db050'
+            '5c18235b5c92c98a405335916efce577c8b9b5582b717abb1c49834884fbe1db'
+            '9a21969b0e9393f25a37a924fcf7c99ff7d671e252db0f99d46072e42ab670b7')
 
 prepare() {
     # set legacy peer deps in .npmrc file to dependency conflict since npm 7
     echo "legacy-peer-deps=true" >>"$_pkgname-$_pkgver/wowup-electron/.npmrc"
-
-    # angular will always remove output dir.
-    # create the dir to avoid failure in clean build.
-    mkdir "$_pkgname-$_pkgver/wowup-electron/dist"
 }
 
 build() {
