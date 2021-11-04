@@ -1,6 +1,6 @@
 pkgbase = blockbench
 	pkgdesc = A free, modern block model editor.
-	pkgver = 3.8.4
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://blockbench.net/
 	arch = x86_64
@@ -15,8 +15,7 @@ pkgbase = blockbench
 	depends = libutil-linux
 	depends = libappindicator-gtk3
 	depends = libsecret
-	source = https://github.com/JannisX11/blockbench/releases/download/v3.8.4/Blockbench_3.8.4.deb
-	sha512sums = 6b6b444a1d661372952a9259c46707a8176718c741ead1eb7a218457b89e7d67f3fcfc137116bded4d2d012aab319766c9be0f4bef87a86cb51633b9494c5aed
+	source = https://github.com/JannisX11/blockbench/releases/download/v4.0.3/Blockbench_4.0.3.deb
+	sha512sums = bbc6ccef6438d09e89dba276ee22c6ea8fb94171dbadecdce4dae5c0e35723236defa4bb5b2e25625c73b565cef9dd13253bf3c8acd6944c8dd6e0bcccbe7dbc
 
 pkgname = blockbench
-
