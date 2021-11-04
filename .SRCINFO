@@ -1,6 +1,6 @@
 pkgbase = nordic-kde-git
 	pkgdesc = Theme for KDE Plasma 5 using the awesome Nord color pallete
-	pkgver = 1.9.0.r33.gce75292
+	pkgver = 2.0.0.r24.gdd1a659
 	pkgrel = 1
 	url = https://github.com/EliverLara/Nordic
 	arch = any
@@ -27,4 +27,3 @@ pkgname = sddm-nordic-theme-git
 	pkgdesc = Nordic theme for SDDM
 	depends = sddm
 	provides = sddm-nordic-theme
-
