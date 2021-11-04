@@ -21,7 +21,7 @@ def get_latest():
 
 
 def get_info(pkgname):
-    url = f"https://archlinux.org/packages/core/x86_64/{pkgname}/json/"
+    url = f"https://archlinux.org/packages/extra/x86_64/{pkgname}/json/"
     data = subprocess.check_output(['curl', '-s', url]).decode()
     return json.loads(data)
 
