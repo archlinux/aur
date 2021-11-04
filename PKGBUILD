@@ -5,7 +5,7 @@
 
 pkgname=firefox-bin
 _pkgname=firefox
-pkgver=94.0
+pkgver=94.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - official prebuilt binary"
 arch=('x86_64')
@@ -20,10 +20,10 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'hunspell-en_US: Spell checking, American English')
 provides=("firefox=$pkgver")
 conflicts=('firefox')
-source=(https://archive.mozilla.org/pub/firefox/releases/94.0/linux-x86_64/en-US/firefox-94.0.tar.bz2
+source=(https://archive.mozilla.org/pub/firefox/releases/94.0.1/linux-x86_64/en-US/firefox-94.0.1.tar.bz2
         $_pkgname.sh
         $_pkgname.desktop)
-sha256sums=('9d91733d36b16bea6df2e988ccc8ec541bda558f8a8d9a4d4134225dd21ac7ec'
+sha256sums=('f40c7f084478f225a9611a971d71f5f59e63db7b9e9a42c95a2b7ad83c8a5b83'
             '9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
             'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
