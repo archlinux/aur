@@ -1,6 +1,8 @@
 # Maintainer: mrAppleXZ <mr.applexz@gmail.com> 
 
-pkgname=blockbench
+pkgname=blockbench-bin
+provides=(blockbench)
+conflicts=(blockbench)
 pkgname_orig=Blockbench
 pkgver=4.0.3
 pkgrel=1
