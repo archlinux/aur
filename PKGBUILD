@@ -3,7 +3,7 @@
 pkgname=osu-mime
 pkgdesc='Provides MIME types for osu! file formats'
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(AGPL3)
 depends=(xdg-utils shared-mime-info desktop-file-utils)
@@ -15,7 +15,7 @@ source=(https://raw.githubusercontent.com/ppy/osu-web/master/public/images/layou
         osu-file-extensions.xml)
 sha256sums=('e1aeaf9b81fa88e9b2b32d7f7c357a3f27c88df775fc19c1e4b65add9da7a1af'
             '5ef601206caf4d37cc028ccc3fd826af7b9810968c72f31a233c0eed920bae46'
-            '53235dddeadccad6a09eb251eac6357813a08440eb03e5410cdb470eba78b65f')
+            '32040d5b44699c46130b4ca6eb007c700e9af060840f58a0b233ad1cf5cd655a')
 
 build() {
     cd "$srcdir"

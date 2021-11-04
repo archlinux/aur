@@ -15,11 +15,11 @@
     <icon name="osu!"/>
     <comment>osu! storyboard</comment>
   </mime-type>
-  <mime-type type="application/x-osu-skin">
+  <mime-type type="application/x-osu-skin-archive">
     <glob pattern="*.osk"/>
     <sub-class-of type="application/zip"/>
     <icon name="osu!"/>
-    <comment>osu! skin</comment>
+    <comment>osu! skin archive</comment>
   </mime-type>
   <mime-type type="application/x-osu-replay">
     <glob pattern="*.osr"/>
@@ -27,13 +27,13 @@
     <icon name="osu!"/>
     <comment>osu! replay</comment>
   </mime-type>
-  <mime-type type="application/x-osu-archive">
+  <mime-type type="application/x-osu-beatmap-archive">
     <glob pattern="*.osz"/>
     <sub-class-of type="application/zip"/>
     <icon name="osu!"/>
     <comment>osu! beatmap archive</comment>
   </mime-type>
-  <mime-type type="application/x-osu-archive">
+  <mime-type type="application/x-osu-beatmap-archive">
     <glob pattern="*.osz2"/>
     <sub-class-of type="application/zip"/>
     <icon name="osu!"/>
