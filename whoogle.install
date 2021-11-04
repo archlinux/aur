@@ -9,3 +9,7 @@ post_install() {
 post_upgrade() {
     chown -R whoogle.whoogle /opt/whoogle-search/app/static/
 }
+
+post_remove() {
+    echo "Configuration files are still present in /opt/whoogle-search, run 'sudo rm -r /opt/whoogle-search' to remove them."
+}
