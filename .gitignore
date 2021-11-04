@@ -2,4 +2,5 @@ pkg/
 src/
 *.swp
 *.tar.xz
+*.tar.zst
 LibrePCB/

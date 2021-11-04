@@ -8,17 +8,26 @@
 # for more details # on package signing.
 pkgname=librepcb-git
 _fullname=LibrePCB
-pkgver=r2138.cf036e027
+pkgver=r2362.0f68659b2
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (git master)"
 arch=('x86_64' 'i686')
-url="http://librepcb.org/"
+url="https://librepcb.org/"
 license=('GPL')
 depends=(
-  'desktop-file-utils' 'hicolor-icon-theme' 'qt5-base' 'qt5-svg'
-  'quazip' 'polyclipping'
+  'qt5-svg'
+  'hicolor-icon-theme'
+  'muparser'
+  'quazip'
+  'polyclipping'
 )
-makedepends=('git' 'qt5-tools' 'fontobene-qt5')
+makedepends=(
+  'git'
+  'cmake'
+  'pkg-config'
+  'qt5-tools'
+  'fontobene-qt5'
+)
 provides=('librepcb')
 conflicts=('librepcb')
 source=('git+https://github.com/LibrePCB/LibrePCB')
@@ -30,28 +39,42 @@ build() {
   git clone --recursive "$srcdir/$_fullname" "$srcdir/$_fullname-build"
   cd "$srcdir/$_fullname-build"
 
-  # Prepare
+  # Remove unbundled libs from source to ensure they're not used
+  rm -rf libs/fontobene-qt5/
+  rm -rf libs/muparser/
+  rm -rf libs/polyclipping/
+  rm -rf libs/quazip/
+
+  # Remove bundled hoedown, it is not needed on Qt >=5.14
+  rm -rf libs/hoedown/
+
+  # Patch muparser include path
+  sed -i 's/muparser\/include\/muParser.h/muParser.h/' libs/librepcb/common/utils/mathparser.cpp
+
+  # Build
   cd "$srcdir/$_fullname-build"
   mkdir build && cd build
-  qmake -r ../librepcb.pro \
-    PREFIX="${pkgdir}/usr" \
-    CONFIG+=release \
-    UNBUNDLE+=quazip \
-    UNBUNDLE+=polyclipping \
-    UNBUNDLE+=fontobene-qt5
-
-  # Compile
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+    -DLIBREPCB_SHARE=/usr/share/librepcb \
+    -DUNBUNDLE_FONTOBENE_QT5=1 \
+    -DUNBUNDLE_MUPARSER=1 \
+    -DUNBUNDLE_POLYCLIPPING=1 \
+    -DUNBUNDLE_QUAZIP=1
   make
+}
+
+check() {
+  cd "$srcdir/$_fullname-build/build"
+
+  # Run unit tests
+  ./tests/unittests/librepcb-unittests
 }
 
 package() {
   cd "$srcdir/$_fullname-build/build"
   make install
-
-  # Install development utils
-  install -s -m 755 \
-    "output/uuid-generator" \
-    "${pkgdir}/usr/bin/librepcb-uuid-generator"
 }
 
 pkgver() {
