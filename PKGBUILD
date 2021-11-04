@@ -5,7 +5,7 @@
 pkgname=xamarin-android-new
 _buildid=43659 # Build ID from public Xamarin DevOps
 _version=11.4.99.0 # Version supplied from any artifact filename
-pkgver=${version}.${buildid}
+pkgver=${_version}.${_buildid}
 pkgrel=1
 provides=('xamarin-android-new')
 conflicts=('xamarin-android-git'
