@@ -2,37 +2,31 @@
 pkgname=trunk
 pkgver=0.8.0
 pkgrel=1
-pkgdesc="Build, bundle & ship your Rust WASM application to the web."
-arch=(x86_64)
-url="https://github.com/thedodd/trunk/"
-license=(APACHE MIT)
+pkgdesc='Build, bundle & ship your Rust WASM application to the web.'
+arch=('x86_64')
+url="https://github.com/thedodd/$pkgname/"
+license=('APACHE' 'MIT')
 depends=()
 makedepends=('cargo')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thedodd/trunk/archive/v${pkgver}.tar.gz")
+source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('5c5c320a42e4446292eb5f0843da86e5fa2d798b904801ce28c8295b678a83e5')
 
-prepare() {
-  cd trunk-${pkgver}
-  export CARGO_HOME="${srcdir}/cargo_home"
-  cargo fetch --locked
-}
-
 build() {
-  cd trunk-${pkgver}
-  export CARGO_HOME="${srcdir}/cargo_home"
-  cargo build --release --offline --all-features --target-dir=target
+    cd "$pkgname-$pkgver"
+
+    cargo build --release
 }
 
 check() {
-  cd trunk-${pkgver}
-  export CARGO_HOME="${srcdir}/cargo_home"
-  cargo test --release --offline --all-features --target-dir=target
+    cd "$pkgname-$pkgver"
+
+    cargo test --release
 }
 
 package(){
-  cd trunk-${pkgver}
-  find target/release -maxdepth 1 -executable -type f -exec install -Dm 755 "{}" -t "${pkgdir}"/usr/bin \;
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-MIT
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-APACHE
-}
+    cd "$pkgname-$pkgver"
 
+    install --mode 755 -D --target-directory "$pkgdir/usr/bin" target/release/trunk
+    install --mode 644 -D --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE-MIT
+    install --mode 644 -D --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE-APACHE
+}
