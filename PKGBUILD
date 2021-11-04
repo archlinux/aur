@@ -2,7 +2,7 @@
 # Contributor: Alkindi42
 pkgname=joplin-beta
 pkgver=2.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
 depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
@@ -11,7 +11,7 @@ makedepends=('git' 'npm' 'python2' 'rsync' 'jq' 'electron')
 optdepends=('libappindicator-gtk3: for tray icon')
 source=(
   "${pkgname%-*}-desktop.sh" "${pkgname%-*}.sh" "${pkgname%-*}.desktop"
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archlive/refs/tags/v${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/refs/tags/v${pkgver}.tar.gz"
   
 )
 conflicts=('joplin' 'joplin-desktop')
