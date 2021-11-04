@@ -6,6 +6,7 @@ pkgbase = python-symfit
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-pbr
 	depends = python
 	depends = python-numpy
 	depends = python-sympy
