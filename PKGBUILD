@@ -1,38 +1,37 @@
 # Maintainer: Triss Healy (trissylegs) <th at trissyle dot gs>
 
-pkgname=libshumate-git
+_pkgname=libshumate
+pkgname=${_pkgname}-git
+pkgver=r262.ec65526
 pkgrel=1
 pkgdesc="GTK4 widget to display maps (git version)"
 arch=(x86_64)
 url="https://wiki.gnome.org/Projects/libshumate"
 license=(LGPL)
-depends=(gtk4 libsoup sqlite)
-makedepends=(git gobject-introspection gtk-doc gi-docgen meson vala)
-provides=("libshumate")
+depends=(gtk4 libsoup sqlite protobuf-c)
+makedepends=(git gobject-introspection gtk-doc gi-docgen meson vala xorg-server-xvfb)
+provides=(libshumate)
 
-source=("git+https://gitlab.gnome.org/GNOME/${pkgname/-git/}.git")
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha256sums=('SKIP')
 
 # Use version once repo has been tagged. But use revision numbers for now.
 pkgver() {
-  cd "$pkgname"
+  cd "${_pkgname}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
-prepare() {
-  cd ${pkgname/-git/}
-}
-
 build() {
-  arch-meson ${pkgname/-git/} build -D gtk_doc=true
+  arch-meson ${_pkgname} build -D gtk_doc=true
   ninja -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+    # Run tests with headless x11 server.
+    xvfb-run meson test -C build --print-errorlogs
 }
 
 package() {
