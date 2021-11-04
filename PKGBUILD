@@ -3,7 +3,7 @@
 
 pkgname=ls_extended-git
 pkgver=2.0.0.r159
-pkgrel=1
+pkgrel=2
 pkgdesc='ls with coloring and icons from git'
 arch=('x86_64')
 url="https://github.com/Electrux/ls_extended"
@@ -23,12 +23,11 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  # ccp4m project build
   ./build.sh
 }
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname%-git}/license.txt
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
   install -D bin/ls_extended "$pkgdir"/usr/bin/${pkgname%-git}
 }
