@@ -1,0 +1,25 @@
+pkgbase = guestfs-tools
+	pkgdesc = Tools for accessing and modifying guest disk images
+	pkgver = 1.46.1
+	pkgrel = 1
+	url = http://libguestfs.org/
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = libisoburn
+	makedepends = ocaml-findlib
+	makedepends = perl-module-build
+	makedepends = bash-completion
+	depends = libguestfs
+	depends = perl-libintl-perl
+	backup = etc/virt-builder/repos.d/libguestfs.conf
+	backup = etc/virt-builder/repos.d/libguestfs.gpg
+	backup = etc/virt-builder/repos.d/opensuse.conf
+	backup = etc/virt-builder/repos.d/opensuse.gpg
+	source = http://download.libguestfs.org/guestfs-tools/1.46-stable/guestfs-tools-1.46.1.tar.gz
+	source = http://download.libguestfs.org/guestfs-tools/1.46-stable/guestfs-tools-1.46.1.tar.gz.sig
+	validpgpkeys = F7774FB1AD074A7E8C8767EA91738F73E1B768A0
+	sha256sums = 93acc3aeaeda102c7134b40eb3b59bf3ef7d06f5cd44245ec1401bec77ba36a8
+	sha256sums = SKIP
+
+pkgname = guestfs-tools
