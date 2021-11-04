@@ -1,7 +1,7 @@
 # Maintainer: Omar Sandoval <osandov at osandov dot com>
 
 pkgname=libkdumpfile-git
-pkgver=0.3.0.r271.gb11f14f
+pkgver=0.4.1.r0.gee29349
 pkgrel=1
 pkgdesc='Library for kernel core dump file access (git version)'
 arch=('x86_64')
@@ -9,6 +9,7 @@ url='https://github.com/ptesarik/libkdumpfile'
 license=('GPL')
 depends=('lzo' 'snappy' 'zlib')
 makedepends=('git')
+conflicts=('libkdumpfile')
 provides=('libkdumpfile')
 source=("$pkgname::git+https://github.com/ptesarik/libkdumpfile")
 sha256sums=('SKIP')
