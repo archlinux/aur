@@ -1,73 +1,72 @@
 # Maintainer: SamuelLira99 <samuellira99@bol.com.br>
 
 pkgname='azerothcore-wotlk-git'
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Open-source game-server application for World of Warcraft, currently supporting the 3.3.5a game version"
 url="http://www.azerothcore.org"
 license=('AGPL3')
 depends=('mariadb' 'boost' 'cmake' 'clang')
-makedepends=('git' 'curl' 'unzip')
+makedepends=('git')
 install="${pkgname}.install"
+conflicts=('azerothcore')
+source=(
+"${pkgname}::git+https://github.com/azerothcore/azerothcore-wotlk.git"
+"https://github.com/wowgaming/client-data/releases/download/v12/data.zip"
+"git+https://github.com/SamuelLira99/azerothcore-systemd-units.git"
+)
+sha1sums=(
+"SKIP"
+"SKIP"
+"SKIP"
+)
 
 _SERVER_ROOT=/opt/azeroth-server
 _SRC_DIR=/opt/azerothcore
 
 prepare() {
-  # Create needed directories
+  # Start mysql services
+  sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+  sudo systemctl start mariadb.service
+
+  # Create needed directories and copy azerothcore-wotlk to /opt/azerothcore
   sudo mkdir -p ${_SERVER_ROOT}
-  sudo mkdir -p ${_SRC_DIR}
+  sudo cp -rv ${srcdir}/${pkgname} ${_SRC_DIR}
 
   # Change ownership for needed directories
   sudo chown ${USER}:${USER} ${_SERVER_ROOT}
   sudo chown ${USER}:${USER} ${_SRC_DIR}
 
-  # Start mysql services
-  sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-  sudo systemctl start mariadb.service
-
-  # Download azerothcore-wotlk
-  git clone https://github.com/azerothcore/azerothcore-wotlk.git --branch master --single-branch ${_SRC_DIR}
-	cd ${_SRC_DIR}
-	mkdir -p build
+  cd ${_SRC_DIR}
+  mkdir -p build
 	cd build
-	cmake ../ -DCMAKE_INSTALL_PREFIX=${_SERVER_ROOT}/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS=0 -DSCRIPTS=static
-
-  # Download data folder
-  cd ${srcdir}
-  curl -O -L "https://github.com/wowgaming/client-data/releases/download/v12/data.zip"
-
-  # Download azerothcore-systemd-units
-  git clone https://github.com/SamuelLira99/azerothcore-systemd-units.git
-
-  # Download sql file to setup database for azerothcore
-  curl -O -L "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/master/data/sql/create/create_mysql.sql"
+  cmake ../ -DCMAKE_INSTALL_PREFIX=${_SERVER_ROOT}/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS=0 -DSCRIPTS=static
 }
 
 build() {
-	cd ${_SRC_DIR}/build
+  cd ${_SRC_DIR}/build
 	make -j $(nproc --all)
 }
 
 package() {
-  # Install azerothcore to /home/user/azeroth-server
+  # Install azerothcore to /opt/azeroth-server
 	cd ${_SRC_DIR}/build
 	make install
 
   # Extract data folder into azeroth-server
-  cd ${srcdir}
-  unzip -d "${_SERVER_ROOT}/data" data.zip
+  mkdir -p ${_SERVER_ROOT}/data
+  cp -rv ${srcdir}/Cameras ${srcdir}/dbc ${srcdir}/maps ${srcdir}/mmaps ${srcdir}/vmaps ${_SERVER_ROOT}/data
 
   # create authserver.conf and worldserver.conf
   cp ${_SERVER_ROOT}/etc/authserver.conf.dist ${_SERVER_ROOT}/etc/authserver.conf
   cp ${_SERVER_ROOT}/etc/worldserver.conf.dist ${_SERVER_ROOT}/etc/worldserver.conf
 
-  # set DataDir = /home/user/azeroth-server/data on worldserver.conf
+  # set DataDir = /opt/azeroth-server/data on worldserver.conf
   sed -i 's@DataDir\s=\s"\."@DataDir = "'"${_SERVER_ROOT}"'/data"@' ${_SERVER_ROOT}/etc/worldserver.conf
 
   # Setup database
-  sudo mysql -u root < ${srcdir}/create_mysql.sql
+  sudo mysql -u root < ${srcdir}/${pkgname}/data/sql/create/create_mysql.sql
 
   # Install systemd units
   sed -i 's@/home/samuel/azeroth-server@'"${_SERVER_ROOT}"'@' ${srcdir}/azerothcore-systemd-units/acore-{auth,world}-server.service
