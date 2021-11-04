@@ -1,0 +1,20 @@
+pkgbase = bch-gateway
+	pkgdesc = Hub Service for HARDWARIO USB Gateway
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = https://github.com/hardwario/bch-gateway
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-click>=6.0
+	depends = python-click-log>=0.2.1
+	depends = python-paho-mqtt>=1.0
+	depends = python-pyserial>=3.0
+	depends = python-pyaml>=3.11
+	depends = python-simplejson>=3.6.0
+	depends = python-schema>=0.6
+	depends = python-appdirs>=1.0
+	source = https://github.com/hardwario/bch-gateway/archive/refs/tags/v1.17.0.tar.gz
+	sha256sums = 6499619ce911d1a32c4269476256a754afe2fa05bd278dc4e43819235e958d96
+
+pkgname = bch-gateway
