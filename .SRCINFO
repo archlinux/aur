@@ -1,0 +1,21 @@
+pkgbase = bch-firmware-tool
+	pkgdesc = HARDWARIO Firmware Tool
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/hardwario/bch-firmware-tool
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-appdirs>=1.4
+	depends = python-pyserial>=3.5
+	depends = python-colorama>=0.3
+	depends = python-pyaml>=5.1
+	depends = python-schema>=0.6.8
+	depends = python-requests>=2.21
+	depends = python-click>=7.0
+	depends = python-intelhex>=2.2.1
+	depends = libftdi
+	source = https://github.com/hardwario/bch-firmware-tool/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = ab7562bd40197c8f05bd54f2d48c064128091881c43bbc4898e655555377c8c4
+
+pkgname = bch-firmware-tool
