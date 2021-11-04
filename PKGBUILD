@@ -3,7 +3,7 @@
 
 pkgname=river
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
 url='https://github.com/riverwm/river'
@@ -12,6 +12,7 @@ depends=(
 	'mesa' 'wlroots' 'wayland' 'wayland-protocols' 'libxkbcommon'
 	'libevdev' 'pixman' 'xorg-xwayland' 'polkit'
 )
+makedepends=('zig' 'git' 'scdoc')
 provides=('river' 'riverctl' 'rivertile')
 conflicts=('river-bin' 'river-git' 'river-noxwayland-git')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
