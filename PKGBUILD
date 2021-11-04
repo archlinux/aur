@@ -5,8 +5,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=apngasm
-pkgver=3.1.6
-pkgrel=2
+pkgver=3.1.10
+pkgrel=1
 pkgdesc="tool for assembling apng files"
 arch=('i686' 'x86_64')
 url="https://github.com/apngasm/apngasm"
@@ -14,7 +14,7 @@ license=('LGPL')
 conflicts=('apng-utils')
 depends=('libpng' 'boost-libs')
 makedepends=('cmake' 'boost' 'git')
-source=("git+$url.git#commit=de1c87cd7696384be3235eb07766766891474e09")
+source=("git+$url.git#commit=553cce10585283fabc1053977a09ad976aa3e2f0")
 sha512sums=('SKIP')
 
 build() {
