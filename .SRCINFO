@@ -1,6 +1,6 @@
 pkgbase = vignette-git
 	pkgdesc = The open source VTuber software toolkit. ❤
-	pkgver = 2021.1025.1.r1.9cf8b28
+	pkgver = 2021.1102.2
 	pkgrel = 1
 	url = https://github.com/vignette-project/vignette
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = vignette-git
 	depends = libgl
 	depends = libgeotiff
 	depends = opencv
-	source = vignette-git::git+https://github.com/vignette-project/vignette.git
+	source = vignette-git::git+https://github.com/vignette-project/vignette.git#branch=debut
 	source = vignette-linux-meta::git+https://github.com/lionirdeadman/vignette-linux-meta
 	sha256sums = SKIP
 	sha256sums = SKIP

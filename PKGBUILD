@@ -1,7 +1,7 @@
 # Maintainer: Speykious <speykious@gmail.com>
 
 pkgname=vignette-git
-pkgver='2021.1102.2'
+pkgver='2021.1102.2.r1.3bf9b44'
 pkgrel=1
 pkgdesc='The open source VTuber software toolkit. ❤'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'dotnet-sdk>=5' 'dotnet-targeting-pack>=5' 'netstandard-targe
 #conflicts=("${pkgname%-git}")
 #options=('!strip')
 _meta=vignette-linux-meta
-source=("$pkgname::git+https://github.com/vignette-project/vignette.git"
+source=("$pkgname::git+https://github.com/vignette-project/vignette.git#branch=debut"
         "$_meta::git+https://github.com/lionirdeadman/$_meta")
 sha256sums=(SKIP SKIP)
 
