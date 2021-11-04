@@ -1,6 +1,6 @@
 post_remove() {
   # delete files added after user configure
   rm -f /etc/linux-enable-ir-emitter.yaml
-  rm -f /etc/systemd/system/linux-enable-ir-emitter.service
+  rm -f /usr/lib/systemd/system/linux-enable-ir-emitter.service
   rm -f /etc/udev/rules.d/99-linux-enable-ir-emitter.rules
 }
