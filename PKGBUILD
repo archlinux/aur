@@ -36,7 +36,7 @@ package() {
     install -Dm755 ./zellij "${pkgdir}/usr/bin/zellij"
     install -Dm644 GOVERNANCE.md "${pkgdir}/usr/share/doc/zellij/GOVERNANCE.md"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/zellij/README.md"
-    install -Dm644 assets/man/zellij.1 "${pkgdir}/usr/man/man1/zellij.1"
+    install -Dm644 assets/man/zellij.1 "${pkgdir}/usr/share/man/man1/zellij.1"
     install -Dm644 assets/completions/zellij.bash "${pkgdir}/usr/share/bash-completion/completions/zellij"
     install -Dm644 assets/completions/zellij.fish "${pkgdir}/usr/share/fish/completions/zellij.fish"
     install -Dm644 assets/completions/_zellij "${pkgdir}/usr/share/zsh/site-functions/_zellij"

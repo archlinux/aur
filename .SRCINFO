@@ -18,4 +18,3 @@ pkgbase = zellij-git
 	sha256sums = SKIP
 
 pkgname = zellij-git
-
