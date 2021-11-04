@@ -4,7 +4,7 @@
 # Contributor: Nikolay Bryskin <nbryskin@gmail.com>
 
 pkgname=linux-enable-ir-emitter-git
-pkgver=3.2.0.r0.g2a3d6ff
+pkgver=3.2.2.r0.ged170c8
 pkgrel=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
 url="https://github.com/EmixamPP/linux-enable-ir-emitter"
@@ -41,9 +41,6 @@ package() {
 
     install -Dm 755 sources/driver/uvc/*query  -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/driver/uvc/
     install -Dm 755 sources/driver/uvc/*query.o  -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/driver/uvc/
-
-    # boot service
-    install -Dm 644 sources/linux-enable-ir-emitter.service -t ${pkgdir}/usr/lib/systemd/system/
 
     install -d "${pkgdir}"/usr/bin/
     chmod +x "${pkgdir}"/usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py
