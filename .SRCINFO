@@ -1,7 +1,7 @@
 pkgbase = extrattor-git
 	pkgdesc = A simple bash wrapper to extract one or more archives from the terminal
-	pkgver = r136.fc5e3c4
-	pkgrel = 2
+	pkgver = r138.3b0847e
+	pkgrel = 4
 	url = https://github.com/Mirko-r/extrattor
 	arch = x86_64
 	license = GPL-3.0
