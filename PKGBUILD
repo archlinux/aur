@@ -7,6 +7,7 @@ arch=(x86_64)
 url="https://github.com/thedodd/trunk/"
 license=(APACHE MIT)
 depends=()
+makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thedodd/trunk/archive/v${pkgver}.tar.gz")
 sha256sums=('5c5c320a42e4446292eb5f0843da86e5fa2d798b904801ce28c8295b678a83e5')
 
