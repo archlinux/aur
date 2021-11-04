@@ -1,4 +1,4 @@
-pkgbase = vssh-bin
+pkgbase = vssh
 	pkgdesc = A plugin for VirtualBox which gives easy CLI access to installed OpenSSH Servers on the system without populating the known_hosts file.
 	pkgver = 1.0
 	pkgrel = 0
@@ -11,4 +11,4 @@ pkgbase = vssh-bin
 	source = https://github.com/Eroldin/vssh/releases/download/v1.0/vssh-1.0.tbz2
 	sha256sums = 6f888ac72ed5769459cf6322a30a3a7f0e6eba2e8f2682b53175f48ff47583c1
 
-pkgname = vssh-bin
+pkgname = vssh

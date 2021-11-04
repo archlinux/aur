@@ -1,5 +1,5 @@
 # Maintainer: Eroldin <djnightchild at gmail dot com>
-pkgname=vssh-bin
+pkgname=vssh
 pkgver=1.0
 pkgrel=0
 pkgdesc="A plugin for VirtualBox which gives easy CLI access to installed OpenSSH Servers on the system without populating the known_hosts file."
