@@ -1,13 +1,13 @@
 pkgbase = advcpmv
 	pkgdesc = Advanced Copy is a mod for the GNU cp and GNU mv tools which adds a progress bar and provides some info on what's going on
-	pkgver = 8.32
-	pkgrel = 2
+	pkgver = 9.0
+	pkgrel = 1
 	url = https://github.com/jarun/advcpmv
 	arch = any
 	license = GPL3
 	makedepends = xz
-	source = http://ftp.gnu.org/gnu/coreutils/coreutils-8.32.tar.xz
-	source = https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.8-8.32.patch
+	source = http://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz
+	source = https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.9-9.0.patch
 	source = mv.1.gz
 	source = cp.1.gz
 	sha256sums = 4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa
@@ -16,4 +16,3 @@ pkgbase = advcpmv
 	sha256sums = 82054540db3ca04f62d95ef4a45ef79809c2c94df5bbfc2458a4970e9a862409
 
 pkgname = advcpmv
-

@@ -1,14 +1,14 @@
 # Maintainer: Vresod <lukebinkofsky@gmail.com>
 pkgname=advcpmv
-pkgver=8.32
-pkgrel=2
+pkgver=9.0
+pkgrel=1
 pkgdesc="Advanced Copy is a mod for the GNU cp and GNU mv tools which adds a progress bar and provides some info on what's going on"
 arch=( "any" )
 url="https://github.com/jarun/advcpmv"
 license=("GPL3")
-source=( "http://ftp.gnu.org/gnu/coreutils/coreutils-$pkgver.tar.xz" "https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.8-$pkgver.patch" "mv.1.gz" "cp.1.gz" )
-sha256sums=('4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'
-            '294e54c2a13d648dd5298df55369fa1a51d8f9960c90c558f316468e54b9e747'
+source=( "http://ftp.gnu.org/gnu/coreutils/coreutils-$pkgver.tar.xz" "https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.9-$pkgver.patch" "mv.1.gz" "cp.1.gz" )
+sha256sums=('ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce'
+            'b41f03d01c6e51db2ab491758bee594034cc02a815c87f4c19a4fafdfdfc9bd6'
             '6ab6916b1ea86be2c669c8c99dbd2b08848f19cd719b68aaf27a9d460ca2dd83'
             '82054540db3ca04f62d95ef4a45ef79809c2c94df5bbfc2458a4970e9a862409')
 depends=( )
@@ -18,8 +18,8 @@ makedepends=( "xz" )
 prepare() {
 	tar xvJf "coreutils-$pkgver.tar.xz"
 	cd coreutils-$pkgver
-	mv ../advcpmv-0.8-$pkgver.patch .
-	patch -p1 -i advcpmv-0.8-$pkgver.patch
+	mv ../advcpmv-0.9-$pkgver.patch .
+	patch -p1 -i advcpmv-0.9-$pkgver.patch
 	./configure
 	cd ..
 }
