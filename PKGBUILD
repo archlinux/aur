@@ -11,6 +11,7 @@ url="https://github.com/alcubierre-drive/btrfs-snap"
 makedepends=('git')
 source=("$pkgname::git+$url")
 sha256sums=( 'SKIP' )
+backup=( "etc/btrfs-snap-cpp.conf" )
 
 pkgver() {
     cd "$pkgname"
