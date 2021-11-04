@@ -6,14 +6,14 @@
 pkgname=fluidsynth2-compat
 _reponame=fluidsynth
 pkgver=2.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides libfluidsynth.so.2 (2.3.7) of fluidsynth2, needed for tuxguitar"
 arch=('x86_64')
 url="https://www.fluidsynth.org/"
 license=('LGPL2.1')
 groups=('pro-audio')
-depends=('glibc' 'sdl2')
-makedepends=('alsa-lib' 'cmake' 'dbus' 'doxygen' 'glib2' 'jack' 'ladspa'
+depends=('fluidsynth')
+makedepends=('glibc' 'sdl2' 'alsa-lib' 'cmake' 'dbus' 'doxygen' 'glib2' 'jack' 'ladspa'
 'libinstpatch' 'libpulse' 'libsndfile' 'portaudio' 'readline' 'systemd-libs')
 source=("$_reponame-$pkgver.tar.gz::https://github.com/${_reponame}/${_reponame}/archive/v$pkgver.tar.gz")
 sha512sums=('22ab9bb3c5d5e619c0624ced2031b23d9d68cf9ffd6da40087aa0049f486b8c6201ff19605fc73fa642358bec31c18bb43683a8b0d603b198626d9a23721bcd6')
@@ -45,9 +45,6 @@ check() {
 }
 
 package() {
-  depends+=('libasound.so' 'libdbus-1.so' 'libglib-2.0.so' 'libgmodule-2.0.so'
-  'libgobject-2.0.so' 'libinstpatch-1.0.so' 'libjack.so' 'libportaudio.so'
-  'libpulse-simple.so' 'libreadline.so' 'libsndfile.so' 'libsystemd.so')
   cd "${_reponame}-${pkgver}"
   # docs
   install -vDm 644 {AUTHORS,ChangeLog,{CONTRIBUTING,README}.md,THANKS,TODO} \
