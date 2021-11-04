@@ -1,12 +1,12 @@
 pkgbase = percona-server-mongodb-bin
 	pkgdesc = A free, open source drop-in replacement for MongoDB Community Edition but with enterprise-grade functionality.
-	pkgver = 4.4.3_5
+	pkgver = 4.4.9_10
 	pkgrel = 1
 	url = https://www.percona.com/software/mongodb/percona-server-for-mongodb/
 	arch = x86_64
 	license = SSPLv1
-	provides = mongodb=4.4.3_5
-	provides = mongodb-tools=4.4.3_5
+	provides = mongodb=4.4.9_10
+	provides = mongodb-tools=4.4.9_10
 	conflicts = mongodb
 	conflicts = mongodb-bin
 	conflicts = mongodb-tools
@@ -32,4 +32,3 @@ pkgbase = percona-server-mongodb-bin
 	sha256sums_x86_64 = 09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27
 
 pkgname = percona-server-mongodb-bin
-

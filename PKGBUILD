@@ -2,9 +2,9 @@
 #Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname="percona-server-mongodb-bin"
-pkgver="4.4.3_5"
-basever="4.4.3"
-origpkgver="4.4.3-5"
+pkgver="4.4.9_10"
+basever="4.4.9"
+origpkgver="4.4.9-10"
 basedist="focal"
 pkgrel="1"
 pkgdesc="A free, open source drop-in replacement for MongoDB Community Edition but with enterprise-grade functionality."
@@ -25,10 +25,10 @@ source_x86_64=(
     "mongodb.tmpfiles"
     "LICENSE")
 
-sha256sums_x86_64=('c84bc699eec8c7ed326523f8dc81d699f7f4137bbdfcf5de8b22e23cc598d257'
-                   'b3234289bc79e003d4b3cd13b033875b874704adf8de79b95cfaaf1153500173'
-                   '8d8934c283f143b35c7d29f930d63f576737c704630a21496837cacbf330366d'
-                   '21b0ae9cb4107ae7476fc7e91322ccee1b7442f638d94e64767215c18caccfe0'
+sha256sums_x86_64=('592f7f4ad6807ae0559d5c832d6c71df8df75854be2ee2b074043222a92acee5'
+                   '807854a8ba59eca555639f0be52eaae1e272b0685bb394009b104fd56375a627'
+                   '4eba1714b5d66388238001addd2ee5614ded2d01b237af54890bf6ba46bbc0d5'
+                   '5f95d96d3cfccdc552c6af81db34cd5ed0903b33f141439c10794c47b8828071'
                    '19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e'
                    'f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850'
                    '47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
