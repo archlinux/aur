@@ -28,7 +28,7 @@ pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-gaps-wm i3-
         regolith-desktop-config
 	remontoire-regolith)
 pkgver=1.6
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url=https://github.com/regolith-linux/regolith-desktop
 url2=https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files
@@ -37,27 +37,13 @@ url4=http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/
 url5=https://launchpad.net/~regolith-linux/+archive/ubuntu/stable/+files
 license=('custom: multiple')
 groups=('regolith-de')
-makedepends=('wget' 'fakeroot' 'binutils' 'patch' 'python' 'meson' 'ninja' 'gtk3' 'git' 'gcc' 'vala')
+makedepends=('wget' 'fakeroot' 'binutils' 'patch' 'python' 'meson' 'ninja' 'gtk3' 'git' 'gcc' 'vala' 'xcb-util-xrm' 'python-appdirs')
 
 source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-theme/ayu-theme_0.2.2-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/c/cahuella/cahuella_1.0.3-1_amd64.deb
         "${url2}"/i3-snapshot_1.0.1-2hirsute_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/i/i3xrocks/i3xrocks_1.3.5-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-battery_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-cpu-usage_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-focused-window-name_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-info_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-key-indicator_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-media-player_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-memory_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-net-traffic_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-nm-vpn_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-openvpn_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-temp_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-time_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-volume_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-weather_3.6.4-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/i3xrocks-wifi_3.6.4-1_amd64.deb
+	git+https://github.com/regolith-linux/i3xrocks.git
+        git+https://github.com/regolith-linux/regolith-i3xrocks-config
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/m/moka-icon-theme/moka-icon-theme_5.4.523-201905300105~daily~ubuntu19.04.1_all.deb
         "${url2}"/nordic_1.6.5-1ubuntu1ppa1_all.deb
 	"${url2}"/paper-icon-theme_1.5.723-201905252133~daily~ubuntu19.04.1_all.deb
@@ -70,7 +56,6 @@ source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-t
         "${url2}"/regolith-gdm3-theme_2.0.0-1ubuntu1~ppa1_amd64.deb
         "${url2}"/regolith-gnome-flashback_2.6.2-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3-gaps-config/regolith-i3-gaps-config_2.8.6-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-i3xrocks-config/regolith-i3xrocks-config_3.6.4-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-lightdm-config/regolith-lightdm-config_1.1.1-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-styles/regolith-look-ayu_2.9.7-1_amd64.deb
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/r/regolith-styles/regolith-look-ayu-dark_2.9.7-1_amd64.deb
@@ -94,7 +79,6 @@ source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-t
 	git+https://github.com/regolith-linux/regolith-rofication.git
 	http://launchpad.net/\~regolith-linux/+archive/ubuntu/release/+files/midnight-gtk-theme_1.1.0-1_all.deb
 	http://launchpad.net/\~regolith-linux/+archive/ubuntu/release/+files/regolith-look-solarized-light_2.9.7-1_amd64.deb
-	http://launchpad.net/\~regolith-linux/+archive/ubuntu/release/+files/i3xrocks-app-launcher_3.6.4-1_amd64.deb
 	https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files/regolith-look-midnight_2.9.7-1_amd64.deb
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/p/pop-icon-theme/pop-icon-theme_1.4.0~1565992228~18.04~2bac292_all.deb
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/p/pop-icon-theme/pop-icon-theme-extra_1.4.0~1565992228~18.04~2bac292_all.deb
@@ -105,28 +89,16 @@ source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-t
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_4.1.4\~1560290633\~18.04\~f75e86a_all.deb
         git+https://github.com/regolith-linux/remontoire.git
 	rofitheme.patch
-	midnight-rofi.patch)
+	midnight-rofi.patch
+	rofication.patch
+	regolith-look.patch)
 
 
 sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
             bc90c3f172fbff7b570a0bac516b9c76f7ed4cf3ca2a09003ff6c966fc03193d
 	    afab55c89c58210ce24bc0416cb1cf474deb446010b209df623c29d1bdc481fb
-            ed7b5e923a706ff10f94944ce568a49d05c0917b1ffb841ff531ed656fc2c0e6
-            362458ae72f749e8c42185b736500a7947f2580288a28ce8743230462c4e9e51
-            bcad5c52397bf04ad4320be5e62ccaad5b7e139f9fe86148a70d77dcf12c152f
-            19c063c5f92bf07b7aadc28d814bbd2578c707df51071b70f73c8e4b5043a9e3
-            ef699b935b2d919f3f2b8dc6cd78da8fdcac80463f48a0af11029b8b282986ee
-            4f32552584a21c01397c6ebe397b9903b31d2c26f7d7ac90489b84134f6bbb12
-            f7129b41e733a2572375b5b8a6675001c533de5d4170826ac894e03438db06e5
-            c6fbd5e44dabecb72ab297d697f7aa78ef547a85fc7ff43d40298fab1f7e61f6
-            1ae8f4051cb6e8256d146dcd8f4140188e850a5ca6e76ba8ba36db168ee1eb9d
-            b5cbb54801fcb621a5481c4ecc48c1fb468908336ba8d1942f4e18ec123c923c
-            35e10cf26fb83c2dec1c3394c8084f07617af20b594f1fb3ffc5fd40b5d3e689
-            12a99b6d9e87710e8321ebf5fe1dfa0c9db21d82ba6e50574eb3137efbf7256d
-            51de4f03eeac9de7c07391d53bb1f703eb57432352eb9971212bd79afeab8e93
-            dc605ad61d8657dd87c16b538ede4c011d00ceb9be53a96559aa181e2c302b68
-            4bc7b0f3380d2dfc502d67c5a7083aa2c82d4d43a8c9efaebff847b533e66939
-            32a5fcc332967f54e973a2ac8fcb17f7b2f91bffb0bf347694dc49560e3c2bc0
+	    'SKIP'
+	    'SKIP'
 	    ff2fc4ccaf083eeeb4fccabf027f673fe1654631d4885bd7bf740683ce5e2667
             05c66c372d378d2992ec59be553bd7de1cf0574d61313d84274f1e64bfe23d3b
             eea3b0004671455426336e21aa285dadb2d891d1d4917f2b3ebcbcc391fe6864
@@ -139,7 +111,6 @@ sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
             82050c4f1a95faeb4fd34eada50028f855527ffeda4277a7563a050e81f5cd02
             f8d8497b096f759797cb51c47adef958a6245e6608126db1e840097e2b3afdf5
             3a2c34cf6c4ccf9c205185286c45a61619a897fd7b5ad0dc6b48a16a66842231
-            366710eca08bc30da80759b29be8fbc6762fbed1ff9eb14862e60143b45ae3f5
             e9877b4c5c0013a1b2dfd0c4375fbe79461c01fb5246b19236b81ab6362d4f20
             e8c503b6adc0d299146d51fee5978c354d7bd4707de3697ef58ffc37516d25a2
             a4255f30cedd4223c256e84b09b613a4965ac7b6b8086c93e67b8a5c44077d13
@@ -163,7 +134,6 @@ sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
 	    'SKIP'
 	    528e231adb021eba916a2d9a82c5f4937f1103027d0588941d577112a1163161
 	    5c4752152bdfbf2936d0f5affd96b8be8a0e2ca341f2393737fa03f6261f7ead
-	    3aba80c709377e53c4beabc0e14cb274cc96e57e2fbf6e1e467e834f0033cf05
 	    4311b12f301b27bf24aaafa49528d251144c2a1071f999c1dae1341aa66b3c1a
 	    3309a0e7c851c063deeb696aab1f71d4233995cff1d44a432dbdd1f72581cb6a
 	    fbe43d68d44e2dd18c87be59212a483dcdd305d44bafbb24c6ed7b4a7fa516ba
@@ -174,13 +144,14 @@ sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
 	    eb44cac833c369dc0f3afe71e334a7bccaaef45836030b3c9ab3d9dc70500370
 	    SKIP
 	    SKIP
+	    SKIP
+	    SKIP
 	    SKIP)
 
 
 
 
 PKGEXT=".pkg.tar"
-
 
 # extracts a debian package
 # $1: deb file to extract
@@ -192,6 +163,20 @@ extract_deb() {
     ar x "$1"
     tar -C "${pkgdir}" -xf data.tar.xz
 }
+
+
+
+
+move_script() {
+    mkdir -p "${pkgdir}"/usr/share/i3xrocks
+    install -Dm755 "$1" "${pkgdir}"/usr/share/i3xrocks/"$2"
+}
+
+move_conf() {
+    mkdir -p "${pkgdir}"/etc/regolith/i3xrocks/conf.d
+    install -Dm644 "$1" "${pkgdir}"/etc/regolith/i3xrocks/conf.d/"$2"
+}
+
 # move ubuntu specific /usr/lib/x86_64-linux-gnu to /usr/lib
 # $1: debian package library dir (from x86_64 or i386)
 # $2: arch package library dir (goes to usr/lib or usr/lib32)
@@ -210,13 +195,13 @@ move_libdir() {
 # move copyright file to proper place and remove debian changelog
 move_copyright() {
     find ${pkgdir}/usr/share/doc -name "changelog.Debian.gz" -delete
-    mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+    mkdir -p ${pkgdir}/usr/share/licenses/
     find ${pkgdir}/usr/share/doc -name "copyright" -exec mv {} ${pkgdir}/usr/share/licenses/${pkgname} \;
     find ${pkgdir}/usr/share/doc -type d -empty -delete
 }
 
 package_regolith-i3 () {
-    pkgdesc="Regolith's i3-gaps-based DE's underpinnings and gnome foundational dependencies"
+pkgdesc="Regolith's i3-gaps-based DE's underpinnings and gnome foundational dependencies"
     license=('MIT')
     arch=('x86_64')
     depends=('i3-gaps' 'i3status' 'xorg-server' 'xcb-util-keysyms' 'xcb-util-wm'  'libev'
@@ -249,31 +234,18 @@ package_regolith-i3xrocks () {
     pkgdesc="Regolith's i3xrocks with associated widgets and config files"
     license=('GPLv3')
     arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'alsa-utils' 'bc' 'ttf-font-awesome')
+    depends=('glibc' 'accountsservice' 'alsa-utils' 'bc' 'ttf-font-awesome' 'xcb-util-xrm')
     conflicts=('i3xrocks')
     provides=('i3xrocks')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks_1.3.5-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-app-launcher_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-battery_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-cpu-usage_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-focused-window-name_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-info_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-key-indicator_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-media-player_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-memory_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-net-traffic_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-nm-vpn_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-openvpn_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-temp_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-time_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-volume_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-weather_3.6.4-1_amd64.deb
-#    extract_deb "${srcdir}"/i3xrocks-wifi_3.6.4-1_amd64.deb
 
-    move_copyright
-
+    cd "${srcdir}"/i3xrocks/
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make && make DESTDIR="${pkgdir}" install
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/01_setup
+    mkdir -p "${pkgdir}"/etc && install -Dm644 "${srcdir}"/i3xrocks/i3xrocks.conf "${pkgdir}"/etc/i3xrocks.conf
 }
 
 
@@ -286,8 +258,13 @@ package_i3xrocks-app-launcher () {
     provides=('i3xrocks-app-launcher')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-app-launcher_3.6.4-1_amd64.deb
-    move_copyright
+
+
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/app-launcher app-launcher
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/10_app-launcher 10_app-launcher
+
+#    extract_deb "${srcdir}"/i3xrocks-app-launcher_3.6.4-1_amd64.deb
+#    move_copyright
 }
 
 
@@ -300,8 +277,8 @@ package_i3xrocks-battery () {
     provides=('i3xrocks-battery')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-battery_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/battery battery
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/80_battery 80_battery
 }
 
 
@@ -314,8 +291,8 @@ package_i3xrocks-cpu-usage () {
     provides=('i3xrocks-cpu-usage')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-cpu-usage_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/cpu-usage cpu-usage
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/40_cpu-usage 40_cpu-usage
 }
 
 
@@ -328,8 +305,8 @@ package_i3xrocks-focused-window-name () {
     provides=('i3xrocks-focused-window-name')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-focused-window-name_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/focused-window-name focused-window-name
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/10_focused-window-name 10_focused-window-name
 }
 
 
@@ -342,8 +319,7 @@ package_i3xrocks-info () {
     provides=('i3xrocks-info')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-info_3.6.4-1_amd64.deb
-    move_copyright
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/20_info 20_info
 }
 
 
@@ -356,8 +332,8 @@ package_i3xrocks-key-indicator () {
     provides=('i3xrocks-key-indicator')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-key-indicator_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/key-indicator key-indicator
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/20_key-indicator 20_key-indicator
 }
 
 
@@ -370,8 +346,8 @@ package_i3xrocks-media-player () {
     provides=('i3xrocks-media-player')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-media-player_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/media-player media-player
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/30_media-player 30_media-player
 }
 
 
@@ -384,8 +360,8 @@ package_i3xrocks-memory () {
     provides=('i3xrocks-memory')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-memory_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/memory memory
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/50_memory 50_memory
 }
 
 
@@ -398,8 +374,8 @@ package_i3xrocks-net-traffic () {
     provides=('i3xrocks-net-traffic')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-net-traffic_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/net-traffic net-traffic
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/30_net-traffic 30_net-traffic
 }
 
 
@@ -412,8 +388,8 @@ package_i3xrocks-nm-vpn () {
     provides=('i3xrocks-nm-vpn')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-nm-vpn_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/nm-vpn nm-vpn
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/40_nm-vpn 40_nm-vpn
 }
 
 
@@ -426,8 +402,8 @@ package_i3xrocks-openvpn () {
     provides=('i3xrocks-openvpn')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-openvpn_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/openvpn openvpn
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/40_openvpn 40_openvpn
 }
 
 
@@ -440,8 +416,8 @@ package_i3xrocks-temp () {
     provides=('i3xrocks-temp')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-temp_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/temp temp
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/40_temp 40_temp
 }
 
 
@@ -455,8 +431,8 @@ package_i3xrocks-time () {
     provides=('i3xrocks-time')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-time_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/time time
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/90_time 90_time
 }
 
 
@@ -469,8 +445,8 @@ package_i3xrocks-volume () {
     provides=('i3xrocks-volume')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-volume_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/volume volume
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/80_volume 80_volume
 }
 
 
@@ -483,8 +459,8 @@ package_i3xrocks-weather () {
     provides=('i3xrocks-weather')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-weather_3.6.4-1_amd64.deb
-    move_copyright
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/weather weather
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/20_weather 20_weather
 }
 
 
@@ -497,15 +473,16 @@ package_i3xrocks-wifi () {
     provides=('i3xrocks-wifi')
     groups=('regolith-de')
 
-    extract_deb "${srcdir}"/i3xrocks-wifi_3.6.4-1_amd64.deb
-    move_copyright
+
+    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/wifi wifi
+    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/30_wifi 30_wifi
 }
 
 
 package_regolith-styles () {
     pkgdesc="Regolith's themes for i3, gdm, gtk, rofi, plymouth, etc."
     license=('custom: GPLv3')
-    depends=("regolith-i3" "gtk3" "ttf-iosevka-nerd" "ttf-jetbrains-mono" "adwaita-icon-theme" "otf-fira-mono" "ttf-ubuntu-font-family" "arc-icon-theme")
+    depends=("regolith-i3" "gtk3" "ttf-iosevka-nerd" "ttf-jetbrains-mono" "adwaita-icon-theme" "otf-fira-mono" "ttf-ubuntu-font-family" "arc-icon-theme" "python-appdirs")
     conflicts=("paper-icon-theme" "qogir-icon-theme" "moka-icon-theme-git" "nordic-theme-git" "gtk-theme-solarc-git" "gtk-theme-plano" "gtk-theme-plano-git")
     provides=("paper-icon-theme" "regolith-styles" "regolith-look" "gtk-theme-solarc" "gtk-theme-plano")
     groups=('regolith-de')
@@ -546,6 +523,7 @@ package_regolith-styles () {
 
     cd "${pkgdir}"
     patch -Np1 -i "${srcdir}"/midnight-rofi.patch
+    patch -Np1 -i "${srcdir}"/regolith-look.patch
     cp "${pkgdir}"/etc/regolith/styles/ayu/typeface "${pkgdir}"/etc/regolith/styles/lascaille/typeface
     cp "${pkgdir}"/etc/regolith/styles/ayu/typeface "${pkgdir}"/etc/regolith/styles/cahuella/typeface
 }
@@ -570,7 +548,6 @@ package_regolith-desktop-config () {
     extract_deb "${srcdir}"/regolith-rofi-config_1.3.1-1_amd64.deb
     extract_deb "${srcdir}"/regolith-system_1.5.3-1_amd64.deb
     extract_deb "${srcdir}"/ubiquity-slideshow-regolith_168.6-regolith1_all.deb
-    extract_deb "${srcdir}"/regolith-i3xrocks-config_3.6.4-1_amd64.deb
 
     move_copyright
 ## extra commands
@@ -582,9 +559,11 @@ package_regolith-desktop-config () {
     cd "${pkgdir}"
     patch -Np1 -i "${srcdir}"/rofitheme.patch
     cd "${srcdir}"/regolith-rofication
+    patch -Np1 -i "${srcdir}"/rofication.patch
     python setup.py build
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 "${srcdir}"/regolith-rofication/80_rofication "${pkgdir}"/etc/regolith/i3xrocks/conf.d/
+
+    move_conf "${srcdir}"/regolith-rofication/80_rofication 80_rofication
 }
 
 

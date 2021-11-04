@@ -1,0 +1,37 @@
+--- a/rofication/_metadata.py	2021-11-04 06:37:39.743263711 -0400
++++ b/rofication/_metadata.py	2021-11-04 06:26:58.530966694 -0400
+@@ -1,4 +1,11 @@
+ # I did not merge this file in _static to be easily parsable by the setup script
++import appdirs
++from appdirs import *
++import os
++appname = "regolith/rofication.rasi"
++
++
+ ROFICATION_NAME = 'rofication'
+ ROFICATION_URL = 'https://github.com/regolith-linux/regolith-rofication'
+ ROFICATION_VERSION = '1.2.2'
++ROFICATION_THEME = user_config_dir(appname)
+\ No newline at end of file
+--- a/rofication/_gui.py	2021-11-04 06:37:39.743263711 -0400
++++ b/rofication/_gui.py	2021-11-04 06:35:12.916912359 -0400
+@@ -2,6 +2,8 @@
+ import struct
+ import subprocess
+ from typing import Iterable, List
++from appdirs import *
++from ._metadata import ROFICATION_THEME
+ 
+ from gi.repository import GLib
+ 
+@@ -10,8 +12,10 @@
+ 
+ HTML_TAGS_PATTERN = re.compile(r'<[^>]*?>')
+ 
++
+ ROFI_COMMAND = ('rofi',
+                 '-dmenu',
++		'-theme', ROFICATION_THEME,
+                 '-p', 'Notifications',
+                 '-markup',
+                 '-kb-accept-entry', 'Control+j,Control+m,KP_Enter',
