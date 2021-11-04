@@ -9,10 +9,10 @@
 pkgname=librepcb
 pkgver=0.1.6
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
-url="http://librepcb.org/"
+url="https://librepcb.org/"
 license=('GPL')
 depends=(
   'qt5-svg'
