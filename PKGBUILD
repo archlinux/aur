@@ -1,8 +1,9 @@
 # Maintainer: Antoni Spaanderman <56turtle56@gmail.com>
 
 pkgname=simple-usb-automount
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
+pkgdesc="Really simple usb storage device auto mounter"
 arch=('any')
 url=https://github.com/antonilol/simple-usb-automount
 license=('MIT')
