@@ -2,9 +2,9 @@
 # Contributor: koraynilay <koray.fra@gmail.com>
 
 pkgname="extrattor-git"
-pkgver=r138.3b0847e
-pkgrel=4
-pkgdesc="A simple bash wrapper to extract one or more archives from the terminal"
+pkgver=r140.46aacec
+pkgrel=1
+pkgdesc="A simple bash wrapper to manage one or more archives from the terminal"
 arch=("x86_64")
 url="https://github.com/Mirko-r/extrattor"
 depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip')
