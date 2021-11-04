@@ -2,7 +2,7 @@
 # Contributor: yochananmarqos
 pkgname=lebiniou
 pkgver=3.63.0
-pkgrel=1
+pkgrel=2
 pkgdesc="User-friendly, powerful music visualization / VJing tool"
 arch=('x86_64' 'pentium4' 'i686')
 url="https://biniou.net"
@@ -15,7 +15,7 @@ build() {
 	cd "$pkgname-version-$pkgver"
 	./bootstrap
 	export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/imagemagick6/pkgconfig"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --disable-caca
 	make
 }
 
