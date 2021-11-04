@@ -30,4 +30,5 @@ depends=(
   'regolith-desktop-config'
   'regolith-st'
   'picom'
-  'remontoire-regolith')
+  'remontoire-regolith'
+  'python-appdirs')
