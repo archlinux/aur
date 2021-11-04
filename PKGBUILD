@@ -1,42 +1,52 @@
-# Maintainer:  Eden Rose <eenov1988@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Eden Rose <eenov1988@gmail.com>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Eugene Tan <jmingtan at gmail dot com>
 
 pkgname=librocket-git
-pkgver=1.2.2
+pkgver=r610.ecd648a
 pkgrel=1
-pkgdesc="The HTML/CSS User Interface library - No Longer Maintained Upstream; use librocket-asarium-git instead"
-arch=('i686' 'x86_64')
-url="https://github.com/libRocket/libRocket"
-license=('MIT')
-depends=('boost' 'freetype2' 'python2' 'libgl' 'glu')
-makedepends=('cmake' 'mesa')
-conflicts=('librocket')
-provides=('librocket' "$pkgname")
-source=("$pkgname::git+https://github.com/libRocket/libRocket.git")
+epoch=1
+pkgdesc="HTML/CSS User Interface library"
+arch=(x86_64 i686)
+url="https://asarium.github.io/libRocket/wiki/documentation.html"
+license=(MIT)
+depends=(boost-libs freetype2 python libgl lua)
+makedepends=(cmake mesa git boost)
+conflicts=(librocket)
+provides=(librocket)
+source=("${pkgname%-git}::git+https://github.com/asarium/libRocket.git")
 sha256sums=('SKIP')
 
-#prepare() {
-#  # fix samples folder
-#  sed 's|opt/Rocket/Samples|share/librocket/samples|' -i \
-#    libRocket-release-$pkgver/Build/CMakeLists.txt
-#}
+pkgver() {
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd $pkgname/Build
-  cmake -DCMAKE_INSTALL_PREFIX="" -DBUILD_SAMPLES=ON \
-    -DBUILD_PYTHON_BINDINGS=ON -DPYTHON_EXECUTABLE=/usr/bin/python2 .
+  cd "${pkgname%-git}/Build"
+
+  # Skip samples, they won't install nicely
+  #  -DSAMPLES_DIR="/usr/share/doc/$_pkgname/"
+
+  cmake -Wno-dev \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DBUILD_PYTHON_BINDINGS=True \
+    -DBUILD_LUA_BINDINGS=True \
+    -DBUILD_SAMPLES=False \
+    .
   make
 }
 
 package() {
-  cd $pkgname
-  make -C Build install DESTDIR="$pkgdir/usr"
+  cd "${pkgname%-git}"
+  make -C Build DESTDIR="${pkgdir}" install
 
   # doc
-  install -d "$pkgdir"/usr/share/doc/librocket
-  install -m644 readme.md changelog.txt "$pkgdir"/usr/share/doc/librocket
+  install -d "${pkgdir}/usr/share/doc/${pkgname}"
+  install -m644 readme.md changelog.txt "${pkgdir}/usr/share/doc/${pkgname}"
   # license
-  install -d "$pkgdir"/usr/share/licenses/librocket
-  tail -n20 readme.md > "$pkgdir"/usr/share/licenses/librocket/LICENSE.md
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  tail -n20 readme.md > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }

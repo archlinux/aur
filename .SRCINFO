@@ -1,23 +1,24 @@
 pkgbase = librocket-git
-	pkgdesc = The HTML/CSS User Interface library - No Longer Maintained Upstream; use librocket-asarium-git instead
-	pkgver = 1.2.2
+	pkgdesc = HTML/CSS User Interface library
+	pkgver = r610.ecd648a
 	pkgrel = 1
-	url = https://github.com/libRocket/libRocket
-	arch = i686
+	epoch = 1
+	url = https://asarium.github.io/libRocket/wiki/documentation.html
 	arch = x86_64
+	arch = i686
 	license = MIT
 	makedepends = cmake
 	makedepends = mesa
-	depends = boost
+	makedepends = git
+	makedepends = boost
+	depends = boost-libs
 	depends = freetype2
-	depends = python2
+	depends = python
 	depends = libgl
-	depends = glu
+	depends = lua
 	provides = librocket
-	provides = librocket-git
 	conflicts = librocket
-	source = librocket-git::git+https://github.com/libRocket/libRocket.git
+	source = librocket::git+https://github.com/asarium/libRocket.git
 	sha256sums = SKIP
 
 pkgname = librocket-git
-
