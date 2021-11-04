@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=osu!
-MimeType=application/x-osu-skin;application/x-osu-replay;application/x-osu-archive;
+MimeType=application/x-osu-skin-archive;application/x-osu-replay;application/x-osu-beatmap-archive;
 Exec=/usr/lib/osu-handler/osu-handler-wine 'C:\\windows\\system32\\start.exe' /ProgIDOpen osu! %f
 NoDisplay=true
 StartupNotify=true
