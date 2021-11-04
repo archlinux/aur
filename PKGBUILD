@@ -4,8 +4,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=93.0
-pkgrel=3
+pkgver=94.0
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -38,7 +38,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git")
 
-sha256sums=('a78f080f5849bc284b84299f3540934a12e961a7ea368b592ae6576ea1f97102'
+sha256sums=('b7bb8c5fcc74a74e9d2b55d1e9415b891305fe86520fb854cec25024d7e5de67'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP')
@@ -112,6 +112,31 @@ prepare() {
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
+  echo "---- Librewolf patches - UI"
+  # Show a warning saying that changing language is not allowed through the UI,
+  # and that it requires to visit our FAQ, instead of telling the user to check his connection.
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/add-language-warning.patch
+
+  # Remove references to Firefox from the settings UI, change text in some of the links,
+  # explain that we force en-US and suggest enabling history near the session restore checkbox.
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
+
+  # Remove Firefox references in the urlbar, when suggesting opened tabs.
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-branding-urlbar.patch
+
+  # Remove cfr UI elements, as they are disabled and locked already.
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-cfrprefs.patch
+
+  # Do not display your browser is being managed by your organization in the settings.
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-organization-policy-banner.patch
+
+  # Hide "snippets" section from the home page settings, as it was already locked.
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-snippets-from-home.patch
+
+  # Add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/sanitizing-description.patch
+
+  echo "---- Fixing build with Wayland"
   # Needed patch to have build working
   patch -Np1 -i ${_patches_dir}/misc/fix-wayland.patch
 
@@ -124,13 +149,15 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --with-ccache
+export AR=llvm-ar
 export CC='clang'
 export CXX='clang++'
-export RANLIB=llvm-ranlib
-export STRIP=llvm-strip
-export AR=llvm-ar
+export MOZ_APP_REMOTINGNAME=$_pkgname
+export MOZ_REQUIRE_SIGNING=
 export NM=llvm-nm
 export OBJCOPY='/usr/bin/llvm-objcopy'
+export RANLIB=llvm-ranlib
+export STRIP=llvm-strip
 
 # Branding
 ac_add_options --enable-update-channel=release

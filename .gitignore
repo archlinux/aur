@@ -1,0 +1,5 @@
+common/
+pkg/
+settings/
+src/
+*.tar.xz
