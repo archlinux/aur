@@ -1,0 +1,17 @@
+pkgbase = bch-control-tool
+	pkgdesc = HARDWARIO Hub Control Tool
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/hardwario/bch-control-tool
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-click>=r6.0
+	depends = python-click-log>=0.2.1
+	depends = python-paho-mqtt>=1.0
+	depends = python-pyaml>=3.11
+	depends = python-simplejson>=3.6.0
+	source = https://github.com/hardwario/bch-control-tool/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 94eff3184bf6b3e5dd519702e6c064933856a6ddfe84666e46c3f12582546374
+
+pkgname = bch-control-tool
