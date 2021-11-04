@@ -3,7 +3,7 @@
 
 pkgname="extrattor-git"
 pkgver=r136.fc5e3c4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple bash wrapper to extract one or more archives from the terminal"
 arch=("x86_64")
 url="https://github.com/Mirko-r/extrattor"
