@@ -18,9 +18,6 @@ source=('git://github.com/markusressel/fan2go'
 sha256sums=('SKIP'
 	'e9a9f1552fc039cb9dc9671490d4205198d7fb9bf6ec3911bf3dde1809259a08')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
