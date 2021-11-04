@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.5.4] - 2021-10-19
+- Fix not being able to login via Epic by adding User-Agent http header when requesting an Epic auth token
+
 ## [0.5.3] - 2021-06-09
 
 ### Bug Fixes
