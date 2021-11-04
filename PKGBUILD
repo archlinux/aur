@@ -2,14 +2,16 @@
 # Contributor:
 
 pkgname=haruna-git
-pkgver=0.6.3.r18.g6843f53
+pkgver=0.7.3.r4.g9e21bcc
 pkgrel=1
 pkgdesc="A Qt/QML video player built on top of libmpv"
 url="https://invent.kde.org/multimedia/haruna"
 arch=('x86_64')
 license=('GPL3')
-depends=('breeze' 'kfilemetadata' 'kio-extras' 'mpv' 'qqc2-desktop-style' 'youtube-dl')
+depends=('breeze' 'kfilemetadata' 'kio-extras' 'mpv' 'qqc2-desktop-style')
 makedepends=('extra-cmake-modules' 'git')
+optdepends=('yt-dlp: for video-sharing websites playback'
+            'youtube-dl: for video-sharing websites playback')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+${url}.git")
