@@ -1,6 +1,6 @@
 pkgbase = latex-template-lipics
 	pkgdesc = LaTeX template for LIPIcs (Leibniz International Proceedings in Informatics)
-	pkgver = 2019.1
+	pkgver = 2021.1.2
 	pkgrel = 1
 	url = https://www.dagstuhl.de/en/publications/lipics
 	install = texlive.install
@@ -8,8 +8,7 @@ pkgbase = latex-template-lipics
 	license = CCPL:by
 	makedepends = tar
 	depends = texlive-latex3
-	source = https://submission.dagstuhl.de/styles/download-tag/lipics/v2019.1/authors/tgz
-	sha256sums = 1ef4c8ad966460dad3deb72269b97b721972033e63c220bd637d760080a07f06
+	source = http://submission.dagstuhl.de/styles/download-tag/lipics/v2021.1.2/authors/tgz
+	sha256sums = 7eb0d0b526e0da34149d10178a74eb73bf0d25c20410b08a8bbe24472a4926dc
 
 pkgname = latex-template-lipics
-
