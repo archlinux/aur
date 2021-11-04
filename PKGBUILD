@@ -1,6 +1,6 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=r5826.ec147fb8
+pkgver=r5828.eae9b8c6
 pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('i686' 'x86_64')
@@ -25,8 +25,8 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
-    mkdir -p "$pkgdir/usr/share/pixmaps" "$pkgdir/usr/share/applications"
+    install -Dm644 86Box.desktop -t "$pkgdir/usr/share/applications"
+    mkdir -m755 "$pkgdir/usr/share/pixmaps"
     ffmpeg -i "$srcdir/$pkgname/src/win/icons/86Box-green.ico" "$pkgdir/usr/share/pixmaps/86Box.png"
     chmod 644 "$pkgdir/usr/share/pixmaps/86Box.png"
-    install -Dm644 86Box.desktop "$pkgdir/usr/share/applications"
 }
