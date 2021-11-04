@@ -1,8 +1,8 @@
 # Maintainer: Paul Bell <linux "at" dpb "dot" org "dot" uk>
 # Contributor: Natalia Portillo <claunia@clania.com>
 pkgname=rpcemu
-pkgver=0.9.3
-pkgrel=2
+pkgver=0.9.4
+pkgrel=1
 pkgdesc="An Emulator of classic Acorn computer systems, such as the Risc PC and A7000"
 url="http://www.marutan.net/rpcemu/"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ optdepends=('apulse: PulseAudio emulation for ALSA'
 backup=('usr/share/rpcemu/rpc.cfg')
 install="$pkgname.install"
 source=("http://www.marutan.net/rpcemu/cgi/download.php?sFName=${pkgver}/rpcemu-${pkgver}.tar.gz")
-sha256sums=('33b89e02e62b5621c625aa6d388d3a357e7ee013e74a00fcf53ef68f31d19605')
+sha256sums=('4df41542600a313aa7f618eee57e8b9e536a4c7753473013fdd9f926b7839ecf')
 _pkgnames=("rpcemu-recompiler" "rpcemu-interpreter")
 
 # set the _bool variable for whether you want rpcemu-recompiler (_bool=0)
