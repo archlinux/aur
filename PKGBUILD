@@ -1,8 +1,8 @@
 # Maintainer: Tobias Heider <me@tobhe.de>
 
 pkgname=openiked
-pkgver=6.9.0
-pkgrel=2
+pkgver=7.0
+pkgrel=1
 pkgdesc="Free implementation of the IKEv2 protocol"
 arch=('x86_64')
 url="https://www.openiked.org"
@@ -14,7 +14,7 @@ conflicts=('iked' 'ikectl')
 source=("https://cdn.openbsd.org/pub/OpenBSD/OpenIKED/openiked-${pkgver}.tar.gz"{,.asc}
         'openiked.service'
         'sysusers.conf')
-sha256sums=('f8a9a376c27a53b9d22a948a8245aa296f0c24fe5a40933d77b752b5e98ffa5d'
+sha256sums=('2357ddb7acc254ade8aa09b6a2017610fef63e236861c45649739c536466377e'
             'SKIP'
             '692eca0595a26e33b3d305909a4b70b2b62913118386117e91c81c2f85c3e612'
             '0b9806bc8e75fdc473db71d12b9096b6016cc0023835c84f83e36316e594847b')
