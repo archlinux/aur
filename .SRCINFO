@@ -1,0 +1,43 @@
+pkgbase = python-vula-git
+	pkgdesc = automatic local network encryption (includes vula_libnss)
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://codeberg.org/vula/vula
+	install = vula.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = wireguard-tools
+	depends = python-yaml
+	depends = python-click
+	depends = python-pynacl
+	depends = python-schema
+	depends = python-pip
+	depends = python-pydbus
+	depends = python-pyroute2
+	depends = python-pytest-runner
+	depends = python-pytest
+	depends = python-toml
+	depends = python-py
+	depends = python-packaging
+	depends = python-pluggy
+	depends = python-hkdf
+	depends = python-ifaddr
+	depends = python-cryptography
+	depends = python-dbus
+	depends = python-pygments
+	depends = python-systemd
+	depends = python-qrcode
+	depends = python-zeroconf
+	depends = python-sibc
+	provides = python-vula
+	source = python-vula::git+https://codeberg.org/vula/vula.git#tag=v0.1.12
+	source = pyroute2_version.patch
+	source = nss-altfiles::git+https://github.com/flatcar-linux/nss-altfiles.git#commit=9078c543ba7d2bc5011737675b3dddb882673ce
+	sha256sums = SKIP
+	sha256sums = ec81ae64841ed1eda1ae19fab53f0a767091bdb0e6e87801a2f3f3dafa60b647
+	sha256sums = SKIP
+
+pkgname = python-vula-git

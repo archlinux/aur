@@ -1,0 +1,11 @@
+# Maintainer: calesanz <contrib at calesanz dot me>
+
+post_install() {
+  vula configure nsswitch
+  systemctl daemon-reload
+  systemctl restart systemd-sysusers
+  systemctl reload dbus
+  echo "Start Service using 'systemctl enable --now vula-organize'"
+}
+
+# vim: ts=2 sw=2 et:
