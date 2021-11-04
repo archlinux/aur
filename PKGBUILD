@@ -1,6 +1,6 @@
 # Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
 pkgname=pcb-rnd
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="free/open source, flexible, modular Printed Circuit Board editor"
 url="http://www.repo.hu/projects/pcb-rnd/"
@@ -11,7 +11,7 @@ optdepends=('gd: gd based exports and pixmap imports (png, gif, jpeg)'
             'freetype2: import_ttf plugin'
             'fungw')
 source=("http://www.repo.hu/projects/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('6bf08f1f50d31fac8cc9ad7719639a2ab764e748c7c5c53fb3dc5622254fcc08')
+sha256sums=('c47e901a1871ae0063274680d32f130ba2850c01112b2ce96ec34fcf9faf485b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
