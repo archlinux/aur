@@ -1,13 +1,13 @@
 # Maintainer: Danil Doroshin <ddddanil5555 at gmail dot com>
 pkgname=kwin-bismuth
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="KWin tiling extension, that gets you down to bismuth. Krohnkite fork"
 arch=('x86_64')
 url="https://github.com/gikari/bismuth"
 license=('MIT')
 depends=('hicolor-icon-theme' 'kdeclarative')
-makedepends=('tar' 'unzip' 'cmake' 'ninja' 'extra-cmake-modules' 'esbuild')
+makedepends=('tar' 'cmake' 'ninja' 'extra-cmake-modules' 'kcoreaddons' 'kconfig' 'ki18n' 'kcmutils' 'esbuild')
 source=("bismuth.v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('cc38af4931ced60e8c215dbf3693ae0411396d4c9a3ea543f85b3a3598afb67e')
 
