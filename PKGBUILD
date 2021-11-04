@@ -2,7 +2,7 @@
 # Removes limitation introduced in: https://gitlab.gnome.org/GNOME/vte/-/commit/caf8a6a7a17a3f70fa5fc611c71ffb27a5cfee75
 
 pkgname=vte3-selectall
-pkgver=0.64.2
+pkgver=0.66.0
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget (plus select-all patch)"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
@@ -12,8 +12,8 @@ depends=(gtk3 pcre2 gnutls fribidi systemd-libs)
 makedepends=(gobject-introspection vala git gtk-doc gperf meson)
 source=("git+https://gitlab.gnome.org/GNOME/vte.git#tag=$pkgver"
   select-all.diff)
-sha256sums=('SKIP'
-            '4d2e5b6e234383b7c6b0dce670ad92211e30478eab10970d506023c3b2d43bf0')
+sha512sums=('SKIP'
+            'f0d0581802a49e635e23778d2d4a6b154c2ff0fa15188260218783d09b556520b08c46d1912003b0a73429fde5eb10089db28292751d67f7f6dc0b7c688db4f1')
 
 depends+=(vte-common)
 provides=("vte3=$pkgver" libvte-2.91.so)
