@@ -6,10 +6,7 @@ pkgbase = trunk
 	arch = x86_64
 	license = APACHE
 	license = MIT
-	depends = rust-wasm
-	depends = wasm-bindgen-cli
 	source = trunk-0.8.0.tar.gz::https://github.com/thedodd/trunk/archive/v0.8.0.tar.gz
 	sha256sums = 5c5c320a42e4446292eb5f0843da86e5fa2d798b904801ce28c8295b678a83e5
 
 pkgname = trunk
-
