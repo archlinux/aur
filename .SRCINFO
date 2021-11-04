@@ -1,0 +1,20 @@
+pkgbase = python-sibc-git
+	pkgdesc = Supersingular Isogeny Based Cryptographic constructions
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = https://github.com/JJChiDguez/sibc
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-matplotlib
+	depends = python-networkx
+	depends = python-numpy
+	depends = python-progress
+	provides = python-sibc
+	source = python-sibc::git+https://github.com/JJChiDguez/sibc.git
+	sha256sums = SKIP
+
+pkgname = python-sibc-git
