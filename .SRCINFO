@@ -5,6 +5,8 @@ pkgbase = simple-usb-automount
 	url = https://github.com/antonilol/simple-usb-automount
 	arch = any
 	license = MIT
+	makedepends = git
+	depends = libnotify
 	source = simple-usb-automount::git+https://github.com/antonilol/simple-usb-automount#tag=v1.0.3
 	md5sums = SKIP
 

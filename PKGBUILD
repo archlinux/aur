@@ -9,6 +9,8 @@ url=https://github.com/antonilol/simple-usb-automount
 license=('MIT')
 source=("simple-usb-automount::git+$url#tag=v$pkgver")
 md5sums=('SKIP')
+depends=('libnotify')
+makedepends=('git')
 
 package() {
   cd "$pkgname"
