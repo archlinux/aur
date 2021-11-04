@@ -3,7 +3,7 @@
 
 _pkgname="sat-yt"
 pkgname="$_pkgname"-git
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Youtube plugin for saturnon"
 arch=('any')
