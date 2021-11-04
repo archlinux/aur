@@ -6,41 +6,36 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.71.git.3.gbbb1ed00
+pkgver=2.71.git.354.gbf21a342
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
-url="http://asymptote.sourceforge.net/"
+url="https://asymptote.sourceforge.net/"
 license=('LGPL3')
 depends=('gc' 'python' 'freeglut' 'gsl' 'fftw' 'libsigsegv')
-makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'glm' 'librsvg')
+makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'librsvg')
 optdepends=('python-pyqt5:      for the xasy GUI'
             'tix:               for the xasy GUI'
 	    'python-cson:       for the xasy GUI')
 conflicts=('asymptote')
 provides=('asymptote')
-source=('git+https://github.com/vectorgraphics/asymptote.git' remove_include.patch)
-sha256sums=('SKIP'
-            '3f72eab932e4713a58fbfafba8e24df362f23d29cb75db94204c8280246f024e')
+source=('git+https://github.com/vectorgraphics/asymptote.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
   git describe --tags|sed s+git+.git+|tr - .
 }
 
-prepare() {
-  cd ${pkgname%-git}/
-  touch prc/config.h
-  patch -Np1 < "$srcdir"/remove_include.patch
-}
-
 build() {
   cd ${pkgname%-git}
   ./autogen.sh
-  ./configure --enable-gc=/usr \
-    --prefix=/usr \
-    --enable-offscreen \
-    --enable-texlive-build
+  export CXXFLAGS+=" -I${pkgname%-git}"
+  ./configure --disable-gc \
+	      --disable-gl \
+	      --prefix=/usr \
+	      --enable-offscreen \
+	      --enable-texlive-build
   make all
 }
 
