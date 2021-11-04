@@ -2,7 +2,7 @@
 # Contributor: Omar Roth <omarroth@protonmail.com>
 
 pkgname=urbit
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="An operating function"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/urbit/urbit"
 license=('MIT')
 conflicts=('urbit-git')
 source=($pkgname-$pkgver.tgz::https://bootstrap.urbit.org/$pkgname-v$pkgver-linux64.tgz)
-sha256sums=('2834c6b85f2f6d89a7ad3918453eedde4a3bf00c709a72a8111b279dde9e595b')
+sha256sums=('b43010e71f7fe3a1e2126ba234aca61ed9d4313aeb61c59f3ce8fe46b02c13de')
 
 package() {
   msg2 'Installing...'
