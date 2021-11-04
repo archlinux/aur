@@ -1,7 +1,7 @@
 pkgbase = osu-handler-git
 	pkgdesc = Provides a handler for osu! file formats (Git version)
 	pkgver = 0.3.0.r3.g4376b24
-	pkgrel = 1
+	pkgrel = 2
 	install = osu-handler-git.install
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = osu-handler-git
 	source = osu-file-extensions-handler.desktop
 	source = osu-url-handler.desktop
 	sha256sums = SKIP
-	sha256sums = 7b2be09150e4eec5b4d74b3c393fb1bb1c2b9896cb07d8fd362233286a8040b8
+	sha256sums = d280e18bea335ebce642993d3f975dc644dfb367232c093277a09fd6e39d0120
 	sha256sums = e5e8d5c1ff6c2e464cb61c88a7ea74b7062ba9f3b8a69e18d5313b9eec3c1e76
 
 pkgname = osu-handler-git
