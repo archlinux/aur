@@ -351,7 +351,7 @@ prepare() {
   [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
 
   # save configuration for later reuse or inspection
-  cat .config > "${SRCDEST}/config.last"
+  cat .config > "${startdir}/config.last"
 }
 
 build() {
