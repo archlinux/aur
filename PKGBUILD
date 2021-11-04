@@ -4,8 +4,8 @@
 
 _npmname=triton
 pkgname=nodejs-triton
-pkgver=7.15.0
-pkgrel=4
+pkgver=7.15.1
+pkgrel=1
 pkgdesc="Triton client tool and node.js library"
 arch=('any')
 url="https://github.com/joyent/node-triton"
@@ -14,7 +14,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('96d2f68caf6bb68187da619ccfa305f8d85126a2e5199b2830255a6b1fc9a67c')
+sha256sums=('e325641d2ba183c484597e196ee74ecf67e6a0bcb459dd7ef49d23c509eec984')
 
 package() {
     cd "$srcdir"
