@@ -8,7 +8,7 @@ pkgbase = python-elgato-streamdeck
 	makedepends = python-setuptools
 	depends = python-pillow
 	provides = streamdeck
-	source = https://github.com/abcminiuser/python-elgato-streamdeck/archive/0.8.5.tar.gz
+	source = https://github.com/abcminiuser/python-elgato-streamdeck/archive/refs/tags/0.8.5.tar.gz
 	sha512sums = 2ca02b45246b45b6aa9e7bdf78064274d55507fe551ee28aaf5d6c379ade5be5a89d0b9fd647cf81269c2f708a38f7a1ac46783211479ddc7752263f4bc5dd96
 
 pkgname = python-elgato-streamdeck

@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-pillow')
 makedepends=('python-setuptools')
 provides=('streamdeck')
-source=("https://github.com/abcminiuser/${pkgname}/archive/${pkgver}.tar.gz")
+source=("https://github.com/abcminiuser/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('2ca02b45246b45b6aa9e7bdf78064274d55507fe551ee28aaf5d6c379ade5be5a89d0b9fd647cf81269c2f708a38f7a1ac46783211479ddc7752263f4bc5dd96')
 
 build() {
