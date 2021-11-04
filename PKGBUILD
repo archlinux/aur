@@ -3,14 +3,14 @@
 
 pkgname=vim-clap
 pkgver=0.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern performant generic finder and dispatcher for Vim and NeoVim'
 arch=('x86_64')
 url=https://github.com/liuchengxu/vim-clap
 license=('MIT')
 groups=('vim-plugins')
 depends=('gcc-libs' 'vim-plugin-runtime')
-makedepends=('python' 'cargo')
+makedepends=('python' 'cargo' 'libgit2')
 optdepends=(
   'ctags: for the proj_tags provider'
   'git: for the bcommits, commits, files, gfiles or git_files, and git_diff_files providers'
