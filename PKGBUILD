@@ -1,4 +1,4 @@
-# Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=trunk
 pkgver=0.8.0
 pkgrel=1
