@@ -1,0 +1,9 @@
+# -*- sh -*-
+
+post_install() {
+    echo "foot-terminfo: to use, set 'term=foot-extra' in ~/.config/foot/foot.ini"
+}
+
+post_upgrade() {
+  post_install
+}
