@@ -2,7 +2,7 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-go
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
@@ -19,7 +19,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  b3048da2ee5232378242a81354cf7a10366ab3f2df431674873c39a9973d4ccd
+  3294a78f4039aeb4214db0c708252b90a6600cd5819df146efd509a22862be52
 )
 _srcname=flux
 
