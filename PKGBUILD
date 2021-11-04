@@ -13,7 +13,7 @@ depends=('imagemagick')
 _filename=pensela-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}")
 noextract=("${_filename}")
-sha256sums=('10b30a543017dc0352e8df4ebc4d06167ba3afcb7fe9374dffaff23ad726bbd3')
+sha256sums=('50abbfc3471d7bf4e2045fe90bdbd196dcc9e2fe9540aa8a3d0bfef12757c965')
 options=(!strip)
 
 package() {
