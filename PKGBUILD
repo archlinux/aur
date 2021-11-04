@@ -3,8 +3,8 @@
 
 pkgname=python-rebulk
 _name=${pkgname#python-}
-pkgver=3.0.1
-pkgrel=6
+pkgver=3.1.0
+pkgrel=0
 pkgdesc='Define simple search patterns in bulk to perform advanced matching on any string.'
 arch=('any')
 url='https://github.com/Toilal/rebulk'
@@ -17,7 +17,7 @@ checkdepends=(
 )
 optdepends=('python-regex')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('025d191c11abf9174c6aff0006579624047d3371a654333c4bf7a4b421552cdc')
+sha256sums=('809de3a97c68afa831f7101b10d316fe62e061dc9f7f67a44b7738128721173a')
 
 prepare() {
   cd "${_name}-${pkgver}"
