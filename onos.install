@@ -3,7 +3,7 @@ post_install() {
         groupadd sdn --system
     fi
     if ! getent passwd sdn >/dev/null; then
-        useradd -c 'ONOS user' -g sdn -d '/opt/onos' -s /bin/bash sdn --system
+        useradd -c 'SDN/ONOS daemon user' -g sdn -d '/opt/onos' -s /bin/bash sdn --system
     fi
 
     chown -R sdn:sdn '/opt/onos'

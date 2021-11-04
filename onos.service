@@ -5,14 +5,14 @@ After=local-fs.target
 
 [Service]
 Type=exec
-Environment="JAVA_HOME=/usr/lib/jvm/default"
 ExecStart=/opt/onos/bin/onos-service server
 ExecStop=/opt/onos/bin/onos-service stop
-SuccessExitStatus=143
 Restart=always
-RestartSec=1s
+RestartSec=2s
 User=sdn
 Group=sdn
 
 [Install]
 WantedBy=multi-user.target
+
+# vim: set ft=systemd :
