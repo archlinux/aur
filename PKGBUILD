@@ -1,8 +1,8 @@
 # Maintainer: Direct-A <songyicheng0@gmail.com>
 
 pkgname="rime-pure-git-direct"
-pkgver="1.1"
-pkgrel=2
+pkgver="1.1.6"
+pkgrel=1
 pkgdesc="一站式配置【四叶草拼音\小鹤双拼】，更新搜狗词库"
 arch=("x86_64")
 url="https://github.com/Direct-A/rime-pure"
@@ -13,7 +13,7 @@ conflicts=("rime-cloverpinyin")
 source=("git+${url}"
         "$pkgname.install")
 sha256sums=('SKIP'
-            'a7e53540a127f571f5085e4676fbd2d6f25154fe381f2075891e95035887bb94')
+            '6dc75c75af900877096457eda180b4c83d439de2d66e2de60796ace6cbf6db6b')
 
 install=${pkgname}.install
 
