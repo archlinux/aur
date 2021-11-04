@@ -1,12 +1,11 @@
 pkgbase = lunarvim-git
 	pkgdesc = An IDE layer for Neovim with sane defaults. Completely free and community driven.
-	pkgver = 0.5.1.r111.g0e09963a
+	pkgver = 0.5.1.r388.ge05ced8e
 	pkgrel = 1
 	url = https://github.com/LunarVim/LunarVim
 	install = lunarvim-git.install
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = neovim
 	depends = lua
 	depends = git
@@ -23,7 +22,7 @@ pkgbase = lunarvim-git
 	source = lvim
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 0bb4e331e3e47dab1610b04b1a2bcdf96a56f8880ef5cbf00ee0f3b1bd8c4873
+	sha256sums = 3d7be8c2534a15e502ca0f925d1c0c10454371c0bc584941e15265da10fb1e82
 	sha256sums = bf8a977a1ceff5240e5709de79f0eb2543816f2d627d6a750e766a78bc28d503
 
 pkgname = lunarvim-git

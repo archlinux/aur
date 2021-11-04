@@ -1,5 +1,9 @@
 post_install () {
+  echo "========================================================"
+  echo
   echo "Initialize runtime for current user:"
   echo "    /usr/share/lunarvim/init-lvim.sh"
   echo "See more at https://github.com/LunarVim/LunarVim"
+  echo
+  echo "========================================================"
 }
