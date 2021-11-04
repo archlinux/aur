@@ -10,4 +10,6 @@ engine_id = gost
 dynamic_path = /usr/lib/engines-1.1/gost.so
 default_algorithms = ALL
 CRYPT_PARAMS = id-Gost28147-89-CryptoPro-A-ParamSet
+init = 0
+
 # GOST Engine Configuration End

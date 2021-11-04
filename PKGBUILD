@@ -2,7 +2,7 @@
 
 pkgname=openssl-gost-engine-git
 pkgver=r507.aba6613
-pkgrel=1
+pkgrel=2
 pkgdesc="A reference implementation of the Russian GOST crypto algorithms for OpenSSL"
 arch=('i686' 'x86_64')
 url="https://github.com/gost-engine/engine/"
@@ -23,9 +23,9 @@ source=(
 )
 sha512sums=(
   SKIP
-  '431f810f822a347135d10c99f98ed2516e6afe310def77fc9aa0b41dc0578b05e2684f77e1062ea934961720f6d11f73f27e38548bccfe61709e81f8d53c484e'
-  '1e1b08e3a6bffebebe7f878f3bb5c16d6b3f31d4572f114663db75cee9237d9bee168cbfcaa2747c237f27fbe58b4f91f159b04ffce69e988bb9483e5bec3591'
-  'ed397370b43ae9eb4018ab322bbfc754e4c4af869a39fd986efa7f96584a3845474c32b95fba6eb3140ca7b8715b1cbca8fc982edd5bcee5583bc12d76e3f874'
+  '72baef8de46462399f591e4aba73f7f910c6d27f14814cf54764a6ca11851d3b69a138475fc677990a621049dec9939eb4f83be5dcf07f1e85f24b97c90332ad'
+  'b78d96d14edce1be96fab96da0e97e4c94c59e311428e2f84d77864366e7b3bbaaf6a8192d275552bb578075a5aada2200be83bec256ceb9aa057f0a892d6f8b'
+  '074bfac386e9756b8bf1da6d914885bc4e33f215aa5331dc78c6c2d23df9f087ea10141c49825773a19b2bab14c1b1dfcd5c790eb83799938826e85aa702f558'
 )
 install='openssl-gost-engine.install'
 backup=(

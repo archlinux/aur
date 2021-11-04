@@ -1,3 +1,43 @@
+_helpline(){
+echo "
+
+Attention! Внимание!
+----
+
+    You have to insert that line into your /etc/ssl/openssl.cnf
+    before any [section]
+
+# ---
+# Set GOST Configuration
+openssl_conf=openssl_gost
+# ---
+
+    And the content of gost.cnf at the very end of the openssl.cnf.
+    Do not .include it.
+
+How to check:
+____
+
+listings:
+  openssl dgst -list|grep gost
+  openssl engine gost -c
+  openssl ciphers|tr ':' '\n'|grep GOST
+
+hashsum: openssl dgst -engine gost -md_gost12_256 testfile
+keygen:  openssl genpkey -algorithm gost2012_256 -pkeyopt paramset:TCB -out ca.key
+
+TroubleShout
+____
+
+а) export OPENSSLDIR=/etc/ssl
+б) s/openssl_gost/openssl_def/g
+в) https://www.altlinux.org/%D0%93%D0%9E%D0%A1%D0%A2_%D0%B2_OpenSSL
+   http://wiki.rosalab.ru/ru/index.php/OpenSSL_%D0%B8_%D0%93%D0%9E%D0%A1%D0%A2
+
+"
+
+}
+
 ## arg 1:  the new package version
 #pre_install() {
   # do something here
@@ -6,17 +46,7 @@
 ## arg 1:  the new package version
 post_install() {
   if [ -z "`grep openssl_gost /etc/ssl/openssl.cnf`" ]; then
-  echo "
-
-    You have to insert those lines into your /etc/ssl/openssl.cnf
-    before any [section]
-
-# ---
-openssl_conf=openssl_gost # Set GOST Configuration
-.include gost.cnf
-# ---
-
-  "
+    helpline()
   fi
   enginesdir=`openssl version -e|perl -ne '/^ENGINESDIR: "(.+)"$/; print $1'`
   echo "
@@ -35,17 +65,7 @@ openssl_conf=openssl_gost # Set GOST Configuration
 ## arg 2:  the old package version
 post_upgrade() {
   if [ -z "`grep openssl_gost /etc/ssl/openssl.cnf`" ]; then
-    echo "
-
-      You have to insert those lines into your /etc/ssl/openssl.cnf
-      before any [section]
-
-# ---
-openssl_conf=openssl_gost # Set GOST Configuration
-.include gost.cnf
-# ---
-
-    "
+    helpline()
   fi
   enginesdir=`openssl version -e|perl -ne '/^ENGINESDIR: "(.+)"$/; print $1'`
   echo "

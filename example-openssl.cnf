@@ -3,7 +3,8 @@
 # This is mostly being used for generation of certificate requests.
 #
 
-openssl_conf=openssl_gost # Set GOST Configuration
+# Set GOST Configuration
+openssl_conf=openssl_gost
 
 # Note that you can include other files from the main configuration
 # file using the .include directive.
@@ -23,8 +24,6 @@ oid_section		= new_oids
 # extensions		=
 # (Alternatively, use a configuration file that has only
 # X.509v3 extensions in its main [= default] section.)
-
-.include gost.cnf
 
 [ new_oids ]
 
@@ -353,4 +352,18 @@ ess_cert_id_chain	= no	# Must the ESS cert id chain be included?
 ess_cert_id_alg		= sha1	# algorithm to compute certificate
 				# identifier (optional, default: sha1)
 
-.include $dir/gost.cnf # Include GOST Configuration file
+# GOST Engine Configuration
+[openssl_gost]
+engines = engine_section
+
+[engine_section]
+gost = gost_section
+
+[gost_section]
+engine_id = gost
+dynamic_path = /usr/lib/engines-1.1/gost.so
+default_algorithms = ALL
+CRYPT_PARAMS = id-Gost28147-89-CryptoPro-A-ParamSet
+init = 0
+
+# GOST Engine Configuration End
