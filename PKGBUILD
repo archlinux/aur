@@ -34,7 +34,13 @@ package() {
 	# Create launcher in /usr/bin
 	cat <<EOF > ${pkgdir}/usr/bin/${pkgname}
 #!/bin/sh
-cd /usr/share/${pkgname}
+origin_share=/usr/share/${pkgname}
+share=\${HOME}/.local/share/${pkgname}
+[[ -d \${share} ]] || mkdir -p \${share}
+cd \${share}
+[[ -f config.json ]] || cp \${origin_share}/config.json .
+[[ -e pack ]] || ln -s \${origin_share}/pack
+[[ -e focalboard-app ]] || ln -s \${origin_share}/focalboard-app
 ./focalboard-app \$@
 EOF
 	chmod +x ${pkgdir}/usr/bin/${pkgname}
