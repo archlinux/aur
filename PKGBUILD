@@ -136,7 +136,7 @@ package_gccrs-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC'
   depends=(glibc)
   options+=(!strip)
-  provides=("gcc-libs=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so libgphobos.so
+  provides=("gccrs-libs=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so libgphobos.so
             libubsan.so libasan.so libtsan.so liblsan.so)
   replaces=(gcc-multilib-git libgphobos-git)
 
@@ -185,7 +185,7 @@ package_gccrs-libs-git() {
 
 package_gccrs-git() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends"
-  depends=("gcc-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc)
+  depends=("gccrs-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc)
   groups=(base-devel-git)
   optdepends=('lib32-gcc-libs-git: for generating code for 32-bit ABI')
   provides=(gcc{,-multilib{,-git}})

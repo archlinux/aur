@@ -44,7 +44,7 @@ pkgbase = gccrs-git
 pkgname = gccrs-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends
 	groups = base-devel-git
-	depends = gcc-libs-git=12.0.0_r189195.gca0b06f86fd-1
+	depends = gccrs-libs-git=12.0.0_r189195.gca0b06f86fd-1
 	depends = binutils>=2.28
 	depends = libmpc
 	optdepends = lib32-gcc-libs-git: for generating code for 32-bit ABI
@@ -59,7 +59,7 @@ pkgname = gccrs-git
 pkgname = gccrs-libs-git
 	pkgdesc = Runtime libraries shipped by GCC
 	depends = glibc
-	provides = gcc-libs=12.0.0_r189195.gca0b06f86fd-1
+	provides = gccrs-libs=12.0.0_r189195.gca0b06f86fd-1
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	provides = libgo.so
