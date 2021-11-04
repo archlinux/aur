@@ -1,0 +1,18 @@
+pkgbase = sio2jail
+	pkgdesc = A tool for supervising execution of programs submitted in Polish national algorithmic competitions
+	pkgver = v1.3.0
+	pkgrel = 1
+	url = https://github.com/sio2project/sio2jail
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libcap
+	makedepends = tclap
+	makedepends = gcc-libs
+	makedepends = scdoc
+	depends = libseccomp
+	provides = sio2jail
+	source = sio2jail_v1.3.0::git+https://github.com/sio2project/sio2jail.git#tag=v1.3.0
+	md5sums = SKIP
+
+pkgname = sio2jail
