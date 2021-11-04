@@ -1,6 +1,6 @@
 pkgbase = btrfs-snap-cpp-git
 	pkgdesc = Creates and transfers btrfs snapshots
-	pkgver = 0.1.r11.gc92211b
+	pkgver = 0.1.r12.gc7ab905
 	pkgrel = 1
 	url = https://github.com/alcubierre-drive/btrfs-snap
 	arch = any
