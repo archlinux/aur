@@ -1,4 +1,4 @@
-pkgbase = xamarin-android
+pkgbase = xamarin-android-new
 	pkgdesc = Provides open-source bindings of the Android SDK for use with .NET managed languages
 	pkgver = .
 	pkgrel = 1
@@ -19,8 +19,9 @@ pkgbase = xamarin-android
 	depends = zlib>=1:1.2.0
 	optdepends = jdk8-openjdk: For building Xamarin.Android Apps
 	optdepends = fsharp: For compiling Xamarin.Android F# projects
-	provides = xamarin-android
+	provides = xamarin-android-new
 	conflicts = xamarin-android-git
+	conflicts = xamarin-android-new
 	conflicts = xamarin-android
 
-pkgname = xamarin-android
+pkgname = xamarin-android-new

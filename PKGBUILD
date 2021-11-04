@@ -2,14 +2,15 @@
 # Uses latest public Xamarin DevOps successfull run:
 # https://dev.azure.com/xamarin/public/_build?definitionId=48&view=runs&statusFilter=succeeded
 
-pkgname=xamarin-android
+pkgname=xamarin-android-new
 _buildid=43659 # Build ID from public Xamarin DevOps
 _version=11.4.99.0 # Version supplied from any artifact filename
 pkgver=${version}.${buildid}
 pkgrel=1
-provides=('xamarin-android')
+provides=('xamarin-android-new')
 conflicts=('xamarin-android-git'
-           'xamarin-android')
+           'xamarin-android-new'
+	   'xamarin-android')
 pkgdesc="Provides open-source bindings of the Android SDK for use with .NET managed languages"
 arch=('x86_64')
 depends=('msbuild'
