@@ -48,7 +48,7 @@ prepare() {
 	if command -v autobuild; then
 		abver="$(autobuild --version)"
 		echo "Found $abver"
-		if [[ "${abver}" != "autobuild 2.1.0" ]]; then
+		if [[ "${abver}" == "autobuild 2.1.0" ]]; then
 			echo "Reinstalling autobuild to work around some bugs"
 			pip3 uninstall --yes autobuild
 		fi
