@@ -1,0 +1,4 @@
+pkg/
+src/
+fluidsynth-*.tar.gz
+fluidsynth2-compat-*.pkg.*
