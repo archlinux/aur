@@ -2,7 +2,7 @@
 # Contributor: Tilman BLUMENBACH <tilman+aur AT ax86 DOT net>
 
 pkgname=(barrier barrier-headless)
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy"
 arch=(x86_64)
@@ -12,20 +12,24 @@ changelog=CHANGELOG.rst
 depends=(curl avahi libx11 libxrandr libxext
         libxinerama xorgproto libxtst libxi
         libsm libice openssl)
-makedepends=(cmake qt5-base hicolor-icon-theme gtest gmock)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/debauchee/barrier/archive/v${pkgver}.tar.gz")
-sha256sums=('259e75c150ca16d9db51870b026dc7aad56c410fa3d2f5fdccc19d4b6024bdc5')
+makedepends=(cmake git qt5-base hicolor-icon-theme)
+source=("git+https://github.com/debauchee/barrier.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
-    cd "barrier-${pkgver}"
-    # Doesn't build!
-    rm -rf ext/{gmock,gtest}
-    sed -i 's|add_library.*||g' src/test/CMakeLists.txt 
-    sed -i 's|set_target_properties.*||g' src/test/CMakeLists.txt 
+    cd "barrier"
+    git submodule update --init --recursive
+    # lib/platform: Fix encoding for text copied between linux and windows
+    # https://github.com/debauchee/barrier/commit/dd3ea8adfef868e52098ea24d2ed08320a90e3b9
+    git cherry-pick -n dd3ea8adfef868e52098ea24d2ed08320a90e3b9
+
+    # Add missing cstddef includes for NULL
+    # https://github.com/debauchee/barrier/commit/4b12265ae5d324b942698a3177e1d8b1749414d7
+    git cherry-pick -n 4b12265ae5d324b942698a3177e1d8b1749414d7
 }
 
 build() {
-    cd "barrier-${pkgver}"
+    cd "barrier"
 
     mkdir -p build
     cd build
@@ -42,7 +46,7 @@ build() {
 
 _package_common() {
     # Install binaries:
-    cd "barrier-${pkgver}/build"
+    cd "barrier/build"
     DESTDIR="${pkgdir}" make install
 
     # Install the license:
