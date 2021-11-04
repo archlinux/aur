@@ -1,6 +1,6 @@
 pkgbase = greetd-mini-wl-greeter-git
 	pkgdesc = Extremely minimal Wayland greeter for greetd.
-	pkgver = r22.5695f19
+	pkgver = r30.c28c524
 	pkgrel = 1
 	url = https://github.com/philj56/greetd-mini-wl-greeter
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = greetd-mini-wl-greeter-git
 	makedepends = meson
 	makedepends = git
 	makedepends = scdoc
+	makedepends = wayland-protocols
 	depends = cairo
 	depends = glib2
 	depends = json-c

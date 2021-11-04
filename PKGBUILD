@@ -1,6 +1,6 @@
 # Maintainer: Philip Jones <philj56@gmail.com>
 pkgname=greetd-mini-wl-greeter-git
-pkgver=r22.5695f19
+pkgver=r30.c28c524
 pkgrel=1
 pkgdesc="Extremely minimal Wayland greeter for greetd."
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/philj56/greetd-mini-wl-greeter"
 license=("MIT")
 groups=()
 depends=("cairo" "glib2" "json-c" "libepoxy" "libpng" "libxkbcommon" "pango" "wayland")
-makedepends=("meson" "git" "scdoc")
+makedepends=("meson" "git" "scdoc" "wayland-protocols")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
