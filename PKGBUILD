@@ -19,7 +19,6 @@ source=("$_reponame-$pkgver.tar.gz::https://github.com/${_reponame}/${_reponame}
 sha512sums=('22ab9bb3c5d5e619c0624ced2031b23d9d68cf9ffd6da40087aa0049f486b8c6201ff19605fc73fa642358bec31c18bb43683a8b0d603b198626d9a23721bcd6')
 b2sums=('5e9bd1c2182f73e36c748396e53957396b59a0325ca1fa1eab00af9f317d6134683902779d5c7f54da787e7f12149c257561c34b47956e31abe246e3825e6fb5')
 provides=(
-  libfluidsynth.so=2.3.7
   libfluidsynth.so.2
   libfluidsynth.so.2.3.7
 )

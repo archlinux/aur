@@ -22,7 +22,6 @@ pkgbase = fluidsynth2-compat
 	makedepends = readline
 	makedepends = systemd-libs
 	depends = fluidsynth
-	provides = libfluidsynth.so=2.3.7
 	provides = libfluidsynth.so.2
 	provides = libfluidsynth.so.2.3.7
 	source = fluidsynth-2.1.7.tar.gz::https://github.com/fluidsynth/fluidsynth/archive/v2.1.7.tar.gz
