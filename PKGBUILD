@@ -31,6 +31,7 @@ source=("https://download.kde.org/stable/${pkgname}/${_tar}.tar.xz"
         "https://download.kde.org/stable/${pkgname}/${_tar}.tar.xz.sig")
 sha256sums=('ef9cb3c0c1fe1f40cf9d8e795859b9b28adf2da3be77a076d46bc28df4cd0255'
             'SKIP')
+validpgpkeys=('76F79007A54A4B68F1547928E2418746EF9D9B26')
 
 build() {
   cmake -S "${srcdir}/${_tar}" -B "${srcdir}/build" \
