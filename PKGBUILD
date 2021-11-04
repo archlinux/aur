@@ -2,7 +2,7 @@
 
 pkgname=lunarvim-git
 pkgver=0.5.1.r388.ge05ced8e
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDE layer for Neovim with sane defaults. Completely free and community driven."
 arch=('any')
 url='https://github.com/LunarVim/LunarVim'
@@ -18,11 +18,9 @@ depends=(
   'nodejs'
   'yarn')
 makedepends=('git')
-optdepends=(
-  'ripgrep: optional dependencies for telescope.nvim')
+optdepends=('ripgrep: optional dependencies for telescope.nvim')
 install=${pkgname}.install
-langs=(
-  bash beancount bibtex
+langs=(bash beancount bibtex
   c c_sharp clojure cmake comment commonlisp cpp css cuda
   dart devicetree dockerfile dot
   elixir erlang
@@ -48,7 +46,7 @@ source=("${pkgname}::git+https://github.com/LunarVim/LunarVim.git#branch=rolling
   "lvim")
 sha256sums=('SKIP'
             'SKIP'
-            '3d7be8c2534a15e502ca0f925d1c0c10454371c0bc584941e15265da10fb1e82'
+            'a47395027a6754183bb3c72dc7720a35887dc4b6535bf59a9728f49389e70a49'
             'bf8a977a1ceff5240e5709de79f0eb2543816f2d627d6a750e766a78bc28d503')
 
 pkgver() {
