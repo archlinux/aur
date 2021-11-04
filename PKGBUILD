@@ -25,11 +25,11 @@ md5sums=('75a933c176cfeda8b642aef4c7f3b18c')
 validpgpkeys=()
 
 package() {
-	cd "$pkgname-app"
+	cd focalboard-app
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/${pkgname}"
 
 	# Copy data in /usr/share
-	cp -r focalboard-app focalboard.db pack config.json "${pkgdir}/usr/share/${pkgname}/"
+	cp -r focalboard-app pack config.json "${pkgdir}/usr/share/${pkgname}/"
 
 	# Create launcher in /usr/bin
 	cat <<EOF > ${pkgdir}/usr/bin/${pkgname}
