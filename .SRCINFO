@@ -1,6 +1,6 @@
 pkgbase = public-inbox-git
 	pkgdesc = An "archives first" approach to mailing lists
-	pkgver = 1.6.1.r1737.0bb44530
+	pkgver = 1.7.0.r0.e3056686
 	pkgrel = 1
 	url = https://public-inbox.org
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = public-inbox-git
 	conflicts = public-inbox-git
 	options = !emptydirs
 	options = purge
-	source = public-inbox-git::git+https://public-inbox.org/
+	source = public-inbox::git+https://public-inbox.org/
 	sha256sums = SKIP
 
 pkgname = public-inbox-git

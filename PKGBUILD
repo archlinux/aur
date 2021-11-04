@@ -2,7 +2,7 @@
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=public-inbox-git
-pkgver=1.6.1.r1737.0bb44530
+pkgver=1.7.0.r0.e3056686
 pkgrel=1
 pkgdesc='An "archives first" approach to mailing lists'
 arch=('any')
@@ -13,11 +13,11 @@ makedepends=('git')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
 options=('!emptydirs' purge)
-source=("$pkgname::git+https://public-inbox.org/")
+source=("${pkgname%-git}::git+https://public-inbox.org/")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 
 	printf "%s" "$(
 			git describe --long | sed \
@@ -27,7 +27,7 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 
 	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
@@ -36,14 +36,16 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/${pkgname%-git}"
+
 	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 	export PERL_MM_USE_DEFAULT=1
 	make check
 }
 
 package() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
+
 	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 	make DESTDIR="$pkgdir/" install
 }
