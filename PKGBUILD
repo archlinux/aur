@@ -32,17 +32,18 @@ PGO=auto
 pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
 pkgname=foot
 pkgver=1.9.2  # Don’t forget to update CHANGELOG.md
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 changelog=CHANGELOG.md
-depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'libutf8proc' 'fcft' 'foot-terminfo')
-makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')  # ‘llvm’, for PGO with clang
+depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'libutf8proc' 'ncurses' 'fcft')
+makedepends=('meson' 'ninja' 'scdoc' 'python' 'wayland-protocols' 'tllist')  # ‘llvm’, for PGO with clang
 checkdepends=('check')
-optdepends=('libnotify: desktop notifications'
-            'xdg-utils: URI launching'
-            'bash-completion: bash completions for foot itself')
+optdepends=("foot-terminfo: alternative to ncurses' terminfo, with additional non-standard capabilities"
+            "libnotify: desktop notifications"
+            "xdg-utils: URI launching"
+            "bash-completion: bash completions for foot itself")
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha256sums=('5859d8d7293da4c7c52f45a9756fc7989edc364057e8b86b4e1fbea7bc2b4009')
 
