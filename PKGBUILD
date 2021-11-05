@@ -15,7 +15,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir/libharu-RELEASE_${pkgver//./_}"
-  sed -i "s|WIN32 AND NOT CYGWIN|WIN32 AND NOT CYGWIN AND NOT MINGW|g" src/CMakeLists.txt
+  sed -i "s|WIN32 AND NOT CYGWIN|MSVC|g" src/CMakeLists.txt
   sed -i "s|install(DIRECTORY if DESTINATION .)|message(STATUS hello)|g" CMakeLists.txt
   sed -i "s|install(FILES README CHANGES INSTALL DESTINATION .)|message(STATUS hello)|g" CMakeLists.txt
   rm -f src/hpdf_shading.c && curl -L https://github.com/libharu/libharu/pull/157.patch | patch -p1
