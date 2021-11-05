@@ -4,7 +4,7 @@ _pkgname=prusa-slicer
 
 pkgname=${_pkgname}-git
 pkgver=2.4.0.beta1.r65.gaff9e1f7e
-pkgrel=1
+pkgrel=2
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url='https://github.com/prusa3d/PrusaSlicer'
@@ -30,12 +30,10 @@ makedepends=(
 )
 source=(
     "git+${url}"
-    'prusa-slicer.desktop'
     'prusa-slicer-boost-placeholders.patch'
 )
 sha256sums=(
     'SKIP'
-    '26b66701cb2512f0d524add44689e2478c0b875f73103034e74544a9574782c5'
     '58cae07a418a797222f4cb10950fa2fd7afb7570519785b082cc7d7e7f407c02'
 )
 conflicts=('prusa-slicer')
@@ -79,13 +77,8 @@ package () {
     cd "${srcdir}/PrusaSlicer/build"
     DESTDIR="${pkgdir}" ninja install
 
-    # Desktop file
-    install -Dm644 "${srcdir}/prusa-slicer.desktop" -t "${pkgdir}/usr/share/applications"
-
-    # Desktop icons
-    for i in '32' '128' '192' ; do
-        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/"
-        ln -s "/usr/share/PrusaSlicer/icons/PrusaSlicer_${i}px.png" \
-                 "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
+    # Patch desktop files
+    for i in PrusaGcodeviewer PrusaSlicer; do
+        sed -i '/^Name=/ s/$/ (Git version)/' "${pkgdir}/usr/share/applications/$i.desktop"
     done
 }
