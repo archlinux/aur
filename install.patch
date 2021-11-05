@@ -1,0 +1,48 @@
+@@ -4,7 +4,10 @@
+ set -e
+ set -x
+ 
+-if [ "$(uname)" = "Darwin" ]; then
++if [[ ! -z "MAKEFLAGS" ]] 
++then
++    JOBS="${MAKEFLAGS:2}"
++elif [ "$(uname)" = "Darwin" ]; then
+   num_cpus=$(sysctl -n hw.ncpu)
+   : "${JOBS:=$num_cpus}"
+ else
+@@ -30,7 +33,7 @@
+ SRCDIR=$1
+ OUTDIR=$2
+ 
+-COMMON_OPTIONS="-DGVARS=YES -DHELI=YES -DLUA=YES -Wno-dev -DCMAKE_BUILD_TYPE=Release"
++COMMON_OPTIONS="-DCMAKE_INSTALL_PREFIX=/usr -DGVARS=YES -DHELI=YES -DLUA=YES -Wno-dev -DCMAKE_BUILD_TYPE=Release"
+ if [ "$(uname)" = "Darwin" ]; then
+     COMMON_OPTIONS="${COMMON_OPTIONS} -DCMAKE_OSX_DEPLOYMENT_TARGET='10.9'"
+ elif [ "$(uname)" != "Linux" ]; then
+@@ -41,9 +44,9 @@
+   COMMON_OPTIONS="${COMMON_OPTIONS} -DVERSION_SUFFIX=$3"
+ fi
+ 
+-rm -rf build
+-mkdir build
+-cd build
++rm -rf ${OUTDIR}
++mkdir ${OUTDIR}
++cd ${OUTDIR}
+ 
+ cmake ${COMMON_OPTIONS} -DPCB=X9LITE ${SRCDIR}
+ make -j${JOBS} libsimulator
+@@ -128,13 +131,3 @@
+ cmake ${COMMON_OPTIONS} -DPCB=X12S ${SRCDIR}
+ make -j${JOBS} libsimulator
+ 
+-if [ "$(uname)" = "Darwin" ]; then
+-    make -j${JOBS} package
+-    cp *.dmg ${OUTDIR}
+-elif [ "$(uname)" = "Linux" ]; then
+-    make -j${JOBS} package
+-    cp *.AppImage ${OUTDIR}
+-else
+-    make installer
+-    cp companion/*.exe ${OUTDIR}
+-fi
