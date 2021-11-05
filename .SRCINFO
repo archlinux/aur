@@ -6,6 +6,7 @@ pkgbase = sc-im
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = BSD
 	depends = libxml2
 	depends = libzip
@@ -19,4 +20,3 @@ pkgbase = sc-im
 	sha256sums = 191c8537f75decb0bf8d00db9543b07985684bf10308ff63c6648de70b7ff6e5
 
 pkgname = sc-im
-
