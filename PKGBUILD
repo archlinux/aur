@@ -8,7 +8,7 @@ url="https://github.com/lcgamboa/picsimlab"
 license=('GPL2')
 conflicts=('picsimlab-bin')
 depends=('lxrad' 'simavr-picsimlab')
-optdepends=('cutecom')
+optdepends=('cutecom' 'tty0tty')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('9249bf1f3a37afed25fb16eb9f43a9bb61a32ba4bfd9ce939469d7d91befa704')
 
