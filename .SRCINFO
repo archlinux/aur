@@ -1,7 +1,7 @@
 pkgbase = neofetch-btw
 	pkgdesc = Fork of neofetch but tuned for archlinux btw
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/federicoantoniazzi/neofetch-btw
 	arch = any
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = neofetch-btw
 	optdepends = xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal
 	conflicts = neofetch
 	backup = etc/neofetch/config.conf
-	source = git+https://github.com/federicoantoniazzi/neofetch-btw.git#commit=5d9500c8ed8d99fba122d21868e1b46a43fbf6fd?signed
+	source = git+https://github.com/federicoantoniazzi/neofetch-btw.git#commit=6b85c9164df928606ba2ce4c42c0eaa77a9d8b48?signed
 	validpgpkeys = C55C90BF1849EB51631EC49A08F51F421DC997C6
 	sha256sums = SKIP
 
