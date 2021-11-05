@@ -1,6 +1,6 @@
 pkgbase = bitcoin-core
 	pkgdesc = Bitcoin Core headless P2P node
-	pkgver = 0.21.1
+	pkgver = 22.0
 	pkgrel = 1
 	url = https://bitcoincore.org
 	install = bitcoind.install
@@ -34,7 +34,7 @@ pkgbase = bitcoin-core
 	backup = etc/bitcoin/bitcoin.conf
 	backup = etc/logrotate.d/bitcoin
 	backup = etc/logrotate.d/bitcoind
-	source = https://bitcoincore.org/bin/bitcoin-core-0.21.1/bitcoin-0.21.1.tar.gz
+	source = https://bitcoincore.org/bin/bitcoin-core-22.0/bitcoin-22.0.tar.gz
 	source = bitcoin.conf
 	source = bitcoind.logrotate
 	source = bitcoind.service
@@ -44,7 +44,7 @@ pkgbase = bitcoin-core
 	source = bitcoin-core-01-userdel.hook
 	source = bitcoin-core-02-chown.hook
 	source = bitcoin-core-02-rm-rf.hook
-	sha256sums = caff23449220cf45753f312cefede53a9eac64000bb300797916526236b6a1e0
+	sha256sums = d0e9d089b57048b1555efa7cd5a63a7ed042482045f6f33402b1df425bf9613b
 	sha256sums = b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35
 	sha256sums = 7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73
 	sha256sums = 7429a9db1da6bc2eed1ae87f61ab9faecaa3d5d6113422f99a146cc1d8e4b5fd
@@ -56,4 +56,3 @@ pkgbase = bitcoin-core
 	sha256sums = 135addcc23c3b58c907618625aeb54e068fe5a6d996e14146c197e6e164027d3
 
 pkgname = bitcoin-core
-
