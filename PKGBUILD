@@ -4,7 +4,7 @@ _pkgname=prusa-slicer
 
 pkgname=${_pkgname}-git
 pkgver=2.4.0.beta1.r76.g7520e2f19
-pkgrel=1
+pkgrel=2
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url='https://github.com/prusa3d/PrusaSlicer'
@@ -31,12 +31,14 @@ makedepends=(
 source=(
     "git+${url}"
     'prusa-slicer.desktop'
-    'https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch'
+    'prusa-slicer-openexr3.patch'
+    'prusa-slicer-boost-placeholders.patch'
 )
 sha256sums=(
     'SKIP'
     '26b66701cb2512f0d524add44689e2478c0b875f73103034e74544a9574782c5'
     '1ef7c22f641b7c18de212202c21f14f6533834a36d7fe0c2b322bc9a13804c6b'
+    '58cae07a418a797222f4cb10950fa2fd7afb7570519785b082cc7d7e7f407c02'
 )
 conflicts=('prusa-slicer')
 
@@ -47,7 +49,10 @@ pkgver() {
 
 prepare() {
     cd "PrusaSlicer"
-    patch -p1 < "$srcdir/prusa-slicer-openexr3.patch" # Fix build with openEXR 3
+    # Fix build with openEXR 3
+    patch -p1 < "$srcdir/prusa-slicer-openexr3.patch"
+    # Fix build with Boost 1.76.0
+    patch -p1 < "$srcdir/prusa-slicer-boost-placeholders.patch"
 }
 
 build() {
