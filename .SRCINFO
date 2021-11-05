@@ -1,5 +1,5 @@
-pkgbase = gnupg1
-	pkgdesc = GNU Privacy Guard - a PGP replacement tool
+pkgbase = gnupg1-extended
+	pkgdesc = GNU Privacy Guard - a complete and free implementation of the OpenPGP standard
 	pkgver = 1.4.23
 	pkgrel = 1
 	url = http://www.gnupg.org/
@@ -28,5 +28,5 @@ pkgbase = gnupg1
 	sha1sums = 13747486ed5ff707f796f34f50f4c3085c3a6875
 	sha1sums = SKIP
 
-pkgname = gnupg1
+pkgname = gnupg1-extended
 
