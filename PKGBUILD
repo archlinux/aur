@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=stackdriver-collectd
-pkgver=6.1.3
+pkgver=6.1.4
 pkgrel=1
 
 pkgdesc="Stackdriver's monitoring agent based on collectd"
@@ -34,7 +34,7 @@ optdepends=(
 provides=('stackdriver-collectd')
 conflicts=('collectd')
 
-backup=('etc/collectd.conf')
+backup=('opt/collectd/etc/collectd.conf')
 source=(
 	"${pkgname}-v${pkgver}.tar.gz::https://github.com/Stackdriver/collectd/archive/${pkgver}.tar.gz"
 	"collectd.conf"
@@ -43,7 +43,7 @@ source=(
 	"Makefile.am.patch"
 )
 md5sums=(
-	'7c21988e0de3c8e002ec43a34d8fab51'
+	'9e52721f665f636765a6f4dee00109b5'
 	'7a2c4528d4ff161d7ac665daedc5fb3c'
 	'8b5e44065504669e4ec0eff9fb1484f4'
 	'e4da9e61c35f6d74d3d76a02eb441ff2'
