@@ -1,11 +1,11 @@
 pkgbase = kwin-bismuth
-	pkgdesc = KWin tiling extension, that gets you down to bismuth. Krohnkite fork
+	pkgdesc = Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers.
 	pkgver = 2.0.0
-	pkgrel = 3
-	url = https://github.com/gikari/bismuth
+	pkgrel = 4
+	url = https://github.com/Bismuth-Forge/bismuth
 	arch = x86_64
 	license = MIT
-	makedepends = tar
+	makedepends = npm
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = extra-cmake-modules
@@ -13,10 +13,17 @@ pkgbase = kwin-bismuth
 	makedepends = kconfig
 	makedepends = ki18n
 	makedepends = kcmutils
-	makedepends = esbuild
-	depends = hicolor-icon-theme
-	depends = kdeclarative
-	source = bismuth.v2.0.0.tar.gz::https://github.com/gikari/bismuth/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = cc38af4931ced60e8c215dbf3693ae0411396d4c9a3ea543f85b3a3598afb67e
+	makedepends = kdeclarative
+	depends = systemsettings
+	provides = bismuth=2.0.0
+	provides = kwin-bismuth=2.0.0
+	conflicts = bismuth
+	options = !strip
+	source = bismuth-2.0.0.tar.gz::https://github.com/Bismuth-Forge/bismuth/archive/refs/tags/v2.0.0.tar.gz
+	source = hide-tray-icon.patch
+	source = build.sh.patch
+	sha512sums = dac72dd2513443b94e50a3956c54cff48f9c632adb59751ce31221977062e98b07370f38161f9aead70c7ff332daf8783eefbea65d27f772add35ae865419bce
+	sha512sums = 333a495c907652bfc583a6f365acac70077fb622817a390853524f2ec21debad00841b29b3ffd88271077287182814790496b4961c90412d71eae6d1a9d6e919
+	sha512sums = 24f2b96f3384fa684acbdc417323957d0eae1f55f2df096992f14eac11c5b2799aa9990870ea27a3c22478b55554929cc3bb118c3790e5939afeeb00a670a72a
 
 pkgname = kwin-bismuth
