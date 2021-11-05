@@ -1,6 +1,6 @@
 pkgbase = python-cx-oracle
 	pkgdesc = Python interface to Oracle Database conforming to the Python DB API 2.0 specification
-	pkgver = 8.2.1
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = https://oracle.github.io/python-cx_Oracle
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = python-cx-oracle
 	makedepends = python-setuptools
 	depends = oracle-instantclient-basic
 	depends = python
-	source = cx_Oracle-8.2.1.tar.gz::https://files.pythonhosted.org/packages/source/c/cx_Oracle/cx_Oracle-8.2.1.tar.gz
-	sha512sums = 879f25323ea037499c773be860d7c9a4f9bc675f7107a79a1ac027db45f6a4d71b47579b656fba267b85dacb76316f012de238ffda66ea33395ce5989b982116
+	source = cx_Oracle-8.3.0.tar.gz::https://files.pythonhosted.org/packages/source/c/cx_Oracle/cx_Oracle-8.3.0.tar.gz
+	sha512sums = 9a2f50b929802311271e5270f118c96968886c6fd3c8677d2e08949d61e9d4d26846bc9e44c674e0bd12a7f8b57bcced9b979f3622a37656e0969ad8ea4e7f70
 
 pkgname = python-cx-oracle
