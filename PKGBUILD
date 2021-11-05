@@ -26,7 +26,7 @@ depends=('msbuild'
          'zlib>=1:1.2.0')
 makedepends=('nodejs'
              'npm'
-             'wget'
+             'curl'
              'unzip'
              'pv')
 optdepends=('jdk8-openjdk: For building Xamarin.Android Apps'
