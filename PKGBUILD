@@ -11,10 +11,12 @@ license=('GPL')
 depends=('jre-openjdk')
 source=("https://rsc.vet/downloads/OpenRSC.jar"
 	"openrsc-launcher.desktop"
-	"openrsc-launcher")
+	"openrsc-launcher"
+        "openrsc.png")
 sha256sums=('a9f263b2616e2cb942cb224c2ce39daf9a2b8f3fdd2268db37030079c2e7cfbb'
             'a30273d914d91bee40935f9327a3c4f8223a6a433dccbf8e156f52856376af04'
-            '51afc18c2c230da28c9af132960723e78f246483d02e6d38e28c828ca5597173')
+            '51afc18c2c230da28c9af132960723e78f246483d02e6d38e28c828ca5597173'
+            '2df32fac0b96310f3075bc201a95be3903fd2927d7f8ba77300a948243de96e1')
 
 package() {
 	cd "$srcdir"
@@ -25,6 +27,8 @@ package() {
 	install -D -m755 "${srcdir}/openrsc-launcher" "${pkgdir}/usr/bin/openrsc-launcher"
 	# Jar
 	install -D -m644 "${srcdir}/OpenRSC.jar" "${pkgdir}/usr/share/java/openrsc-launcher/OpenRSC.jar"
+        # Icon
+        install -D -m644 "${srcdir}/openrsc.png" "${pkgdir}/usr/share/pixmaps/openrsc.png"
 	# Desktop entry
 	install -D -m644 "${srcdir}/openrsc-launcher.desktop" "${pkgdir}/usr/share/applications/openrsc-launcher.desktop"
 	
