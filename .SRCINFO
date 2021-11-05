@@ -1,0 +1,12 @@
+pkgbase = python-patatt
+	pkgdesc = A simple library to add cryptographic attestation to patches sent via email
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/utils/patatt/patatt.git/about/
+	arch = any
+	license = MIT
+	depends = python-pynacl
+	source = https://files.pythonhosted.org/packages/source/p/patatt/patatt-0.4.9.tar.gz
+	sha256sums = a8784dc603f8def0528eb1e9d98833ab927f7fa632043e150d3a7d4b5b9deb3a
+
+pkgname = python-patatt
