@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk
-pkgver=9.0.1
+pkgver=9.1.0
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -9,17 +9,15 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-exp
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-pegtl2')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://www.vtk.org/files/release/${pkgver:0:3}/VTK-${pkgver}.tar.gz")
-sha256sums=('1b39a5e191c282861e7af4101eaa8585969a2de05f5646c9199a161213a622c7')
+sha256sums=('8fed42f4f8f1eb8083107b68eaa9ad71da07110161a3116ad807f43e5ca5ce96')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/VTK-${pkgver}"
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7611.patch | patch -p1
-  # fix libharu export
-  sed -i "s|WIN32 AND NOT CYGWIN|MSVC|g" ThirdParty/libharu/vtklibharu/src/CMakeLists.txt
-  # We have a patched libharu
+  # We have a patched libhariu
   sed -i "s|2.4.0|2.3.0|g" ThirdParty/libharu/CMakeLists.txt
+  sed -i "s|set(HPDF_DLL 1)|set(HPDF_DLL 0)|g" ThirdParty/libharu/CMakeLists.txt
 }
 
 
@@ -32,6 +30,8 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DVTK_USE_EXTERNAL=ON \
       -DVTK_BUILD_TESTING=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       ..
     make
     popd
