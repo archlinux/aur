@@ -1,19 +1,18 @@
 # Maintainer: Peter Spiess-Knafl <dev@spiessknafl.at>
 # Contributor: Daniel Bomar <dbdaniel42@gmail.com>
 pkgname=libjson-rpc-cpp
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="C++ framework for json-rpc 1.0 and 2.0"
 arch=('i686' 'x86_64')
 url="https://github.com/cinemast/libjson-rpc-cpp"
 license=('MIT')
 depends=('curl' 'argtable' 'jsoncpp' 'libmicrohttpd' 'hiredis')
 makedepends=('cmake')
-#checkdepends=('libcatch-cpp-headers')
 install=libjson-rpc-cpp.install
 changelog=ChangeLog
-source=('https://github.com/cinemast/libjson-rpc-cpp/archive/v1.0.0.tar.gz')
-sha256sums=('888c10f4be145dfe99e007d5298c90764fb73b58effb2c6a3fc522a5b60a18c6')
+source=('https://github.com/cinemast/libjson-rpc-cpp/archive/refs/tags/v1.4.0.tar.gz')
+sha256sums=('8fef7628eadbc0271c685310082ef4c47f1577c3df2e4c8bd582613d1bd10599')
 
 prepare() {
  cd "${srcdir}"/${pkgname}-${pkgver}
