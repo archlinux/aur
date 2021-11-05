@@ -1,0 +1,15 @@
+pkgbase = tty0tty
+	pkgdesc = tty0tty Virtual Serial Cable
+	pkgver = r31.319c8a2
+	pkgrel = 1
+	url = https://github.com/lcgamboa/tty0tty
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = tty0tty
+	source = git+https://github.com/lcgamboa/tty0tty
+	sha256sums = SKIP
+
+pkgname = tty0tty
