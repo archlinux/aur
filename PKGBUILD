@@ -16,7 +16,7 @@ source=("git+https://gitlab.gnome.org/GNOME/vte.git#tag=$pkgver"
 sha256sums=('SKIP'
   '582edbac0c92cb023a4c0a8f70cb74c85606c139ab8c8f83f6093a21e3033a5c')
 
-depends+=("vte-common=$pkgver")
+depends+=(vte-common)
 provides=("vte3=$pkgver" libvte-2.91.so)
 conflicts=(vte3)
 
