@@ -6,17 +6,17 @@
 # Contributor: David Zaragoza <david@zaragoza.com.ve>
 
 pkgname=cpuid
-pkgver=20201006
+pkgver=20211031
 pkgrel=1
 pkgdesc="Linux tool to dump x86 CPUID information about the CPU(s)"
 url="http://www.etallen.com/cpuid.html"
 license=('GPL')
 arch=('i686' 'x86_64')
 makedepends=('perl')
-depends=('glibc')
+depends=('glibc' 'perl')
 groups=('system')
 source=("http://www.etallen.com/$pkgname/${pkgname}-${pkgver}.src.tar.gz")
-md5sums=('19705900ec4e918af3bb8ee934f98824')
+md5sums=('8bbc06c59553da06e3076a8b5c820f7a')
 
 #
 #
