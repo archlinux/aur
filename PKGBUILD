@@ -12,9 +12,9 @@ pkgdesc="EEPROM Editor for EdgeTX RC transmitter firmwares"
 arch=('x86_64')
 url='https://edgetx.org/'
 license=('GPL-2.0')
-depends=('qt5-base' 'qt5-multimedia' 'sdl' 'hicolor-icon-theme')
+depends=('hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'sdl')
 optdepends=('dfu-util: tool for flashing stm32 based radios')
-makedepends=('cmake' 'gcc' 'git' 'xsd' 'bc' 'python' 'avr-gcc' 'avr-libc' 'sed' 'qt5-tools' 'python-pyqt5' 'arm-none-eabi-gcc' 'arm-none-eabi-binutils' 'arm-none-eabi-newlib' 'fox' 'python-pillow')
+makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib' 'avr-gcc' 'avr-libc' 'bc' 'cmake' 'fox' 'gcc' 'git' 'python' 'python-pillow' 'python-pyqt5' 'qt5-svg' 'qt5-tools' 'qt5-translations' 'sed' 'xsd')
 provides=('companion')
 conflicts=('companion')
 source=("git+https://github.com/EdgeTX/edgetx.git#tag=v${pkgver}"
@@ -22,7 +22,7 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v${pkgver}"
 
 )
 sha256sums=('SKIP'
-            'f156dfd0800251ea78ff01fb32704e5a5a826360d3f2da57b7d877521ba61a45')
+            '36bf7c59adfe9221f8b03809e0ca0dc537328e239b2384829fb17290137e5005')
 
 prepare() {
   cd ${_pkgbase}

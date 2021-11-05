@@ -1,16 +1,15 @@
-@@ -4,7 +4,10 @@
+@@ -4,7 +4,9 @@
  set -e
  set -x
  
 -if [ "$(uname)" = "Darwin" ]; then
-+if [[ ! -z "MAKEFLAGS" ]] 
-+then
-+    JOBS="${MAKEFLAGS:2}"
++if [[ ! -z "MAKEFLAGS" ]]; then
++  JOBS="${MAKEFLAGS:2}"
 +elif [ "$(uname)" = "Darwin" ]; then
    num_cpus=$(sysctl -n hw.ncpu)
    : "${JOBS:=$num_cpus}"
  else
-@@ -30,7 +33,7 @@
+@@ -30,7 +32,7 @@
  SRCDIR=$1
  OUTDIR=$2
  
@@ -19,7 +18,7 @@
  if [ "$(uname)" = "Darwin" ]; then
      COMMON_OPTIONS="${COMMON_OPTIONS} -DCMAKE_OSX_DEPLOYMENT_TARGET='10.9'"
  elif [ "$(uname)" != "Linux" ]; then
-@@ -41,9 +44,9 @@
+@@ -41,9 +43,9 @@
    COMMON_OPTIONS="${COMMON_OPTIONS} -DVERSION_SUFFIX=$3"
  fi
  
@@ -32,7 +31,7 @@
  
  cmake ${COMMON_OPTIONS} -DPCB=X9LITE ${SRCDIR}
  make -j${JOBS} libsimulator
-@@ -128,13 +131,3 @@
+@@ -128,13 +130,3 @@
  cmake ${COMMON_OPTIONS} -DPCB=X12S ${SRCDIR}
  make -j${JOBS} libsimulator
  
