@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mmg
-pkgver=5.5.2
-pkgrel=4
+pkgver=5.6.0
+pkgrel=1
 pkgdesc='Anisotropic tetrahedral remesher and moving mesh generator'
 url="http://www.mmgtools.org/"
 license=('GPL')
@@ -14,7 +14,7 @@ conflicts=('mmg3d')
 replaces=('mmg3d')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MmgTools/mmg/archive/v$pkgver.tar.gz"
 	cmake.patch)
-sha256sums=('58e3b866101e6f0686758e16bcf9fb5fb06c85184533fc5054ef1c8adfd4be73'
+sha256sums=('bbf9163d65bc6e0f81dd3acc5a51e4a8c47a7fdae849abc26277e01154fe2437'
             '9716e5a64f577fdb08c25bc5d1eb73ff7bf32607e04719d78b247e4136bbcf15')
 
 prepare () {
