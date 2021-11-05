@@ -1,0 +1,79 @@
+diff --git i/CMakeLists.txt w/CMakeLists.txt
+index 7a3cc9a..901846e 100644
+--- i/CMakeLists.txt
++++ w/CMakeLists.txt
+@@ -61,7 +61,8 @@ message(STATUS "Python executable: ${Python_EXECUTABLE}")
+ message(STATUS "Python library: ${Python_LIBRARIES}")
+ 
+ message(STATUS "Using JUCE from ${BESPOKE_JUCE_LOCATION}")
+-add_subdirectory(${BESPOKE_JUCE_LOCATION} ${CMAKE_BINARY_DIR}/JUCE EXCLUDE_FROM_ALL)
++# add_subdirectory(${BESPOKE_JUCE_LOCATION} ${CMAKE_BINARY_DIR}/JUCE EXCLUDE_FROM_ALL)
++find_package(JUCE COMPONENTS REQUIRED)
+ 
+ if (BESPOKE_VST2_SDK_LOCATION)
+     juce_set_vst2_sdk_path(${BESPOKE_VST2_SDK_LOCATION})
+diff --git i/Source/CMakeLists.txt w/Source/CMakeLists.txt
+index 532bcde..9dbcd5d 100644
+--- i/Source/CMakeLists.txt
++++ w/Source/CMakeLists.txt
+@@ -420,7 +420,6 @@ target_link_libraries(BespokeSynth PRIVATE
+     bespoke::3dxware
+     bespoke::exprtk
+     bespoke::freeverb
+-    bespoke::json
+     bespoke::leathers
+     bespoke::nanovg
+     bespoke::psmove
+@@ -428,7 +427,7 @@ target_link_libraries(BespokeSynth PRIVATE
+     bespoke::pybind11
+     bespoke::xwax
+ 
+-    tuning-library
++    jsoncpp
+     oddsound-mts
+ 
+     juce::juce_audio_basics
+@@ -439,6 +438,12 @@ target_link_libraries(BespokeSynth PRIVATE
+     juce::juce_opengl
+     juce::juce_osc
+ 
++    ogg
++    FLAC
++    vorbis
++    vorbisenc
++    vorbisfile
++
+     ${Python_LIBRARIES}
+     $<$<BOOL:${MINGW}>:dbghelp>
+     )
+diff --git i/libs/CMakeLists.txt w/libs/CMakeLists.txt
+index 2b174b1..9681a59 100644
+--- i/libs/CMakeLists.txt
++++ w/libs/CMakeLists.txt
+@@ -1,7 +1,10 @@
+ add_subdirectory(3dxware EXCLUDE_FROM_ALL)
+ add_subdirectory(exprtk EXCLUDE_FROM_ALL)
+ add_subdirectory(freeverb EXCLUDE_FROM_ALL)
+-add_subdirectory(json EXCLUDE_FROM_ALL)
++# add_subdirectory(json EXCLUDE_FROM_ALL)
++include(FindPkgConfig)
++pkg_search_module(json REQUIRED jsoncpp)
++
+ add_subdirectory(leathers EXCLUDE_FROM_ALL)
+ add_subdirectory(nanovg EXCLUDE_FROM_ALL)
+ add_subdirectory(oddsound-mts EXCLUDE_FROM_ALL)
+@@ -9,11 +12,12 @@ add_subdirectory(psmove EXCLUDE_FROM_ALL)
+ add_subdirectory(push2 EXCLUDE_FROM_ALL)
+ 
+ set(PYBIND11_NOPYTHON TRUE)
+-add_subdirectory(pybind11 EXCLUDE_FROM_ALL)
++# add_subdirectory(pybind11 EXCLUDE_FROM_ALL)
++find_package(pybind11 COMPONENTS REQUIRED)
+ add_library(bespoke_pybind11_wrapper INTERFACE)
+ target_compile_definitions(bespoke_pybind11_wrapper INTERFACE PYBIND11_EXPORT=)
+ target_link_libraries(bespoke_pybind11_wrapper INTERFACE pybind11::pybind11)
+ add_library(bespoke::pybind11 ALIAS bespoke_pybind11_wrapper)
+ 
+-add_subdirectory(tuning-library EXCLUDE_FROM_ALL)
++# add_subdirectory(tuning-library EXCLUDE_FROM_ALL)
+ add_subdirectory(xwax EXCLUDE_FROM_ALL)
