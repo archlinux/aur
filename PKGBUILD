@@ -3,14 +3,14 @@
 
 pkgname="extrattor"
 pkgver="1.3"
-pkgrel="3"
+pkgrel="4"
 epoch="3"
 pkgdesc="A simple bash wrapper to manage one or more archives from the terminal"
 arch=("x86_64")
 url="https://github.com/Mirko-r/extrattor"
 depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip')
 license=("GPL-3.0")
-source=("https://raw.githubusercontent.com/Mirko-r/extrattor/043ea6fecda8c6692be6e47e36bc8762e1540689/extrattor/extrattor.sh")
+source=("https://github.com/Mirko-r/extrattor/releases/download/1.3/extrattor.sh")
 sha512sums=("SKIP")
 
 package(){
