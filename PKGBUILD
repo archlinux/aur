@@ -1,6 +1,6 @@
-# Maintainer: Gingka Akiyama <gingkathfox @ gmail . com>
+# Maintainer: Gingka/Ginger Pepper <gingkathfox @ gmail . com>
 pkgname=uwupp-git
-pkgver=0.2.0.r0.g4b993e7
+pkgver=0.2.0.r4.g4fcc0fe
 pkgrel=1
 pkgdesc="The next generation esoteric language."
 arch=('x86_64')
@@ -40,4 +40,7 @@ package() {
         mv ./UwUpp-exe ./uwupp
         echo -e "\n\n\e[1;33mBinary has been renamed to \"uwupp\".\e[0m\n\n"
     fi # If the file doesn't exist, just ignore it
+}
+makesrcinfo() {
+    makepkg --printsrcinfo > .SRCINFO
 }

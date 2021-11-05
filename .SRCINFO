@@ -1,6 +1,6 @@
 pkgbase = uwupp-git
 	pkgdesc = The next generation esoteric language.
-	pkgver = 0.2.0.r0.g4b993e7
+	pkgver = 0.2.0.r4.g4fcc0fe
 	pkgrel = 1
 	url = https://github.com/Deltaphish/UwUpp/
 	arch = x86_64
