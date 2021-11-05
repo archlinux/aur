@@ -13,7 +13,7 @@
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=97.0.4681.0
+pkgver=97.0.4688.2
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -43,7 +43,8 @@ depends=(
          'openjpeg2'
          'bluez-libs'
          'libnet'
-         'pipewire')
+         'pipewire'
+         )
 makedepends=(
              'gperf'
              'ninja'
