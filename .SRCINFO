@@ -1,13 +1,16 @@
 pkgbase = dbmate
-	pkgdesc = A lightweight, framework-agnostic database migration tool.
-	pkgver = 1.12.0
+	pkgdesc = A lightweight, framework-agnostic database migration tool
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/amacneil/dbmate
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = dbmate-1.12.0.tar.gz::https://github.com/amacneil/dbmate/archive/v1.12.0.tar.gz
-	sha512sums = 4ac2da3c32559492f042ce52127dbc753e3a5f73a644e952dcbcdcac14aef95f22541189c7f8daaa88c87e67b8a09498d75111339cee6ec308e65c1b2362198f
+	makedepends = git
+	depends = glibc
+	optdepends = postgresql: for local instance of PostgreSQL
+	source = dbmate-1.12.1.tar.gz::https://github.com/amacneil/dbmate/archive/v1.12.1.tar.gz
+	sha512sums = 2661bc995255c1ad54dacf987f8d5ed2d494aecd49bdf91be31d3c3b09a7a81cea11ca7b107cffc8593250becaa4bb96434357abf90cc551a5af8778af4790b3
+	b2sums = d80a0757663e2e166cbc78c42a0cb3a713a27d045e57b199f10cc77bef1b19319a758ba1437c8132884008110674337842bc105e29ef8eaa2f5d754db8e9c08e
 
 pkgname = dbmate
-
