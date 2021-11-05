@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Microsoft OpenJDK Java 16 Shell
+Comment=Microsoft OpenJDK Java 16 Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/java-16-microsoft-openjdk/bin/jshell
+Terminal=true
+Type=Application
+Categories=Application;System;

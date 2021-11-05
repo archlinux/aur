@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Microsoft OpenJDK Java 16 Console
+Comment=Microsoft OpenJDK Java 16 Monitoring & Management Console
+Keywords=java;console;monitoring
+Exec=/usr/lib/jvm/java-16-microsoft-openjdk/bin/jconsole
+Terminal=false
+Type=Application
+Categories=Application;System;

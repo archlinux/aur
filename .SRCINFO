@@ -1,0 +1,40 @@
+pkgbase = jdk16-microsoft-openjdk
+	pkgdesc = Microsoft Build of OpenJDK 16
+	pkgver = 16.0.2.u7.b1
+	pkgrel = 1
+	url = https://www.microsoft.com/openjdk
+	install = install_jdk16-microsoft-openjdk.sh
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = desktop-file-utils
+	depends = libxrender
+	depends = libxtst
+	depends = alsa-lib
+	optdepends = gtk2: for the Gtk+ 2 look and feel
+	optdepends = gtk3: for the Gtk+ 3 look and fell
+	provides = java-runtime-headless=16
+	provides = java-runtime-headless-openjdk=16
+	provides = jre16-openjdk-headless=16.0.2.u7
+	provides = jre-openjdk-headless=16.0.2.u7
+	provides = java-runtime=16
+	provides = java-runtime-openjdk=16
+	provides = jre16-openjdk=16.0.2.u7
+	provides = jre-openjdk=16.0.2.u7
+	provides = java-environment=16
+	provides = java-environment-openjdk=16
+	provides = jdk16-openjdk=16.0.2.u7
+	provides = jdk-openjdk=16.0.2.u7
+	provides = openjdk16-src=16.0.2.u7
+	provides = openjdk-src=16.0.2.u7
+	source = https://aka.ms/download-jdk/microsoft-jdk-16.0.2.7.1-linux-x64.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = 77c0a8fa9c326003200e96bd09ca0efda483fd4cc2fbb8b3c8a73ea4bdcf8d55
+	sha256sums = 7ed68488d8178733a23d4f009977ee6d3bebcdca3ed074fb6d0be6039c451d7d
+	sha256sums = 67c0102694dbfdc1141c6cbc2fa1a7153cbfa81f596744860d7c801a6b1df844
+	sha256sums = 424ee7a00116757a819b62bd670d583eea90e0ebee4a679f54b71980dbb28597
+
+pkgname = jdk16-microsoft-openjdk
