@@ -1,6 +1,6 @@
 pkgbase = selene-linter
 	pkgdesc = Blazing-fast modern Lua linter written in Rust
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/Kampfkarren/selene
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = selene-linter
 	makedepends = rust
 	depends = gcc-libs
 	depends = openssl
-	source = https://github.com/Kampfkarren/selene/archive/0.14.0/selene-0.14.0.tar.gz
-	b2sums = 1033f2ca41ca101b5e676a4036bf96c5fd376b38fcb315e4e3ee3b2c541dda47e6ee8955a43a058a7ada59f15c43e4fe65deff63d686ebafc4b88f1452e5d1d4
+	source = https://github.com/Kampfkarren/selene/archive/0.15.0/selene-0.15.0.tar.gz
+	b2sums = b18764d28691a1977041cdd35c5ba34efb52f5c0582e904309edc3820dc5626416f1d22f6ebbb0c7f321cc2bb1cff1f52c85c2476a3d8e206298570b7da53772
 
 pkgname = selene-linter
