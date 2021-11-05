@@ -6,6 +6,7 @@ pkgbase = sc-im-git
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = BSD
 	depends = libxml2
 	depends = libzip
@@ -19,4 +20,3 @@ pkgbase = sc-im-git
 	md5sums = 1fbfee20dfb2f3150bd9b20748a9cca1
 
 pkgname = sc-im-git
-
