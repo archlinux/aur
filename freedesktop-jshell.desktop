@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Microsoft OpenJDK Java 11 Shell
+Comment=Microsoft OpenJDK Java 11 Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/java-11-microsoft-openjdk/bin/jshell
+Terminal=true
+Type=Application
+Categories=Application;System;
