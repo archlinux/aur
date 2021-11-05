@@ -1,3 +1,5 @@
+/.vscode
+/buck-out
 /src
 /pkg
 *.xz
