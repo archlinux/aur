@@ -5,8 +5,8 @@ pkgbase = scribbit
 	url = https://github.com/Marakusa/Scribbit
 	arch = x86_64
 	license = GPL
-	depends = dotnet-runtime>=$dotnet_version.0
-	depends = dotnet-sdk>=$dotnet_version.5.sdk202
+	depends = dotnet-runtime
+	depends = dotnet-sdk
 
 pkgname = scribbit
 
