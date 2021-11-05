@@ -1,5 +1,7 @@
 # Maintainer: TheAirBlow <pilexet.danila at gmail dot com>
+# Maintainer: C_Schmidpeter <hidden>
 # Contributor: indjera <indjera at gmail dot com>
+
 # Uses latest public Xamarin DevOps successfull run:
 # https://dev.azure.com/xamarin/public/_build?definitionId=48&view=runs&statusFilter=succeeded
 
