@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=5455
-_version=1.0.5455
+_tag=5520
+_version=1.0.5520
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -30,6 +30,7 @@ source=(
 
 build() {
         cd "$pkgname"
+        rm -f "package-lock.json"
         npm install
         make
         make source-package
@@ -45,7 +46,7 @@ package() {
         install -d "$CONFDIR"
 
         tar xjvf "jitsi-meet.tar.bz2" -C "$DESTDIR" --strip 1
-	install -Dm644 -t "$DESTDIR" manifest.json
+        install -Dm644 -t "$DESTDIR" manifest.json
 
         install -d "$DESTDIR/load-test"
         cp -r resources/load-test/{index.html,libs} "$DESTDIR/load-test"
