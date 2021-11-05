@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.10.76
+pkgver=5.10.77
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -18,6 +18,7 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-gcc-plugins-modern-gcc-plugin-infrastructure-requres.patch
+  fix-gpu-hang.diff
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -26,11 +27,12 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('480a09ba1962862ff18df9453fa0df6ba11cbe19eefedeab81bf2c84f49e1890'
+sha256sums=('d3b64edfc1dd7212e62ed733aeeb73d64ffd6d9658d322d44cddf1b41d5b8fc3'
             'SKIP'
-            'ec0ed69545aa0cbc60251984fd81393721fcc613c9c60596605f092b45c1d7a0'
+            '1bd3c9f284c568ca751db050e456f2053fc8f1ebfd6f7b2ef7d7e9f0ac6544df'
             '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
             'bb935ad2467637966185b88d18a3f9be2f37d3acdc71ed361eae326ca898d6fc'
+            '8ca93ae059d95aa709b4e09d7e1ff4f31b4247745b2306f949520089998830b5'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
             '1c621f67bbf9efef610d1b2d1afd727fca9ceaa298f807bd0348b59ec6ce9562')
 
@@ -40,6 +42,10 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 prepare() {
   cd $_srcname
+
+  # fix amd gpu hang - https://bugs.archlinux.org/task/72620
+  # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?h=v5.10.77&id=c21b4002214c1c7e7b627b9b53375612f7aab6db
+  patch -Rp1 -i ../fix-gpu-hang.diff
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion

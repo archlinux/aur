@@ -1,0 +1,40 @@
+From c21b4002214c1c7e7b627b9b53375612f7aab6db Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
+Date: Wed, 20 Oct 2021 19:19:46 +0200
+Subject: drm/ttm: fix memleak in ttm_transfered_destroy
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+commit 0db55f9a1bafbe3dac750ea669de9134922389b5 upstream.
+
+We need to cleanup the fences for ghost objects as well.
+
+Signed-off-by: Christian König <christian.koenig@amd.com>
+Reported-by: Erhard F. <erhard_f@mailbox.org>
+Tested-by: Erhard F. <erhard_f@mailbox.org>
+Reviewed-by: Huang Rui <ray.huang@amd.com>
+Bug: https://bugzilla.kernel.org/show_bug.cgi?id=214029
+Bug: https://bugzilla.kernel.org/show_bug.cgi?id=214447
+CC: <stable@vger.kernel.org>
+Link: https://patchwork.freedesktop.org/patch/msgid/20211020173211.2247-1-christian.koenig@amd.com
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/gpu/drm/ttm/ttm_bo_util.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/ttm/ttm_bo_util.c b/drivers/gpu/drm/ttm/ttm_bo_util.c
+index fb2a25f8408fc..8fba425a76268 100644
+--- a/drivers/gpu/drm/ttm/ttm_bo_util.c
++++ b/drivers/gpu/drm/ttm/ttm_bo_util.c
+@@ -322,6 +322,7 @@ static void ttm_transfered_destroy(struct ttm_buffer_object *bo)
+ 	struct ttm_transfer_obj *fbo;
+ 
+ 	fbo = container_of(bo, struct ttm_transfer_obj, base);
++	dma_resv_fini(&fbo->base.base._resv);
+ 	ttm_bo_put(fbo->bo);
+ 	kfree(fbo);
+ }
+-- 
+cgit 1.2.3-1.el7
+
