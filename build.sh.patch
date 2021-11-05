@@ -1,0 +1,21 @@
+--- scripts/build.sh
++++ scripts/build.sh
+@@ -16,4 +16,2 @@
+ 
+-echo "👮 Checking using TS Compiler..."
+-npx tsc --noEmit --incremental
+ 
+@@ -36,13 +34,2 @@
+ 
+-echo "📦 Zipping KWin Script..."
+-KWINPKG_NAME="bismuth.kwinscript"
+-
+-# Temporary change directory for archive tools
+-cd "$KWINSCRIPT_BUILDDIR"
+-# Remove old packages
+-rm -f "$KWINPKG_NAME"
+-# Create new .kwinscript package
+-zip -qr "$KWINPKG_NAME" ./contents/ ./metadata.desktop
+-# Get back to the original directory
+-cd - > /dev/null
+ 
