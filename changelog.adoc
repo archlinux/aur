@@ -2,6 +2,24 @@
 
 // scriv-insert-here
 
+== 3.1.3 (2021-11-05)
+
+Enhancements:
+
+* The `--help` text for `globus endpoint create` now clarifies the meaning of `--personal`.
+* Errors for use of mutually exclusive options to `globus endpoint create` have been improved.
+
+Bugfixes:
+
+* Fix an error when `globus ls --recursive` is used on an empty directory, or
+  filtered such that a recursive listing has no results
+* The help text printed by `--batch` when stdin is a tty has been removed. This
+  text explained CLI v2.x behavior, and is not accurate for CLI v3.x
+* Fix a bug in `globus session consent` in which an `id_token` was expected as
+  part of the token data, but the `openid` scope was not provided to the login
+  flow
+* Fix a crash that occurs when running `globus task event-list {task-id}`
+
 == 3.1.2 (2021-10-13)
 
 Bugfixes:
