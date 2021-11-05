@@ -5,8 +5,12 @@
 # Contributor: Yoshi2889 <rick.2889 at gmail dot com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
-
+# --
 # shellcheck disable=SC2034,SC2164
+
+## The following variables can be customized at build time. Use env or export to change at your wish
+##
+##   Example: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
 
 ##
 ## Xanmod-ROG options:
@@ -52,10 +56,10 @@ if [ -z ${_compiler+x} ]; then
   _compiler=gcc
 fi
 
-# Compress modules with ZSTD (to save disk space)
-if [ -z ${_compress_modules+x} ]; then
-  _compress_modules=y
-fi
+## Compress modules with ZSTD (to save disk space)
+#if [ -z ${_compress_modules+x} ]; then
+#  _compress_modules=y
+#fi
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
@@ -65,7 +69,7 @@ fi
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-if [ -z "${_localmodcfg}" ]; then
+if [ -z ${_localmodcfg+x} ]; then
   _localmodcfg=n
 fi
 
@@ -75,10 +79,10 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.14.15-xanmod1
+xanmod=5.15.0-xanmod1
 #pkgver=${xanmod//-/.}
-pkgver=5.14.16.xanpre0     # NOTE: start 4th position with 'xan...', we parse for this pattern later
-pkgrel=1
+pkgver=5.15.1rc1.xanpre0     # NOTE: start 4th position with 'xan...', we parse for this pattern later
+pkgrel=0
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -103,47 +107,38 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # incremental kernel.org patch ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.1.xz"
-        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.14.15-16.xz"
-        #"Linux-5.14.5-rc1.patch"
+        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.14.15-16.xz"
+        "Linux-5.15.1-rc1.patch"
 
-        # amd-pstate update
-        "amd-pstate-v3.diff"
+        # amd-pstate v3 included in Xanmod
 
-        # don't drop shared caches on C3 state transitions
-        "x86-ACPI-State-Optimize-C3-entry-on-AMD-CPUs.patch"                            # landing in 5.15
+        # 5.16: don't drop shared caches on C3 state transitions
+        "x86-ACPI-State-Optimize-C3-entry-on-AMD-CPUs.patch"
 
-        # patch from Chromium developers; more accurately report battery state changes
-        "acpi-battery-Always-read-fresh-battery-state-on-update.patch"                  # awaiting ack ...
+        # -- patch from Chromium developers; more accurately report battery state changes
+        "acpi-battery-Always-read-fresh-battery-state-on-update.patch"
 
-        # k10temp support for Zen3 APUs
-        #"x86-amd_nb-Add-AMD-family-19h-model-50h-PCI-ids.patch"                        # included in 5.14
-        "hwmon-k10temp-support-Zen3-APUs.patch"                                         # landing in 5.15
+        # 5.15: k10temp support for Zen3 APUs
 
         # 5.16 spectre defaults
         "x86-change-default-to-spec_store_bypass_disable-prct.patch"
 
-        # squelch overzealous 802.11 regdomain not set warnings
+        # -- squelch overzealous 802.11 regdomain not set warnings
         "cfg80211-dont-WARN-if-a-self-managed-device.patch"
 
-        # r8152 s0i3 wake fix
+        # -- r8152 s0i3 wake fix
         "r8152-fix-spurious-wakeups-from-s0i3.patch"
 
-        # r8169 hwIDs for the G14?/G15
-        "r8169-Add-device-10ec-8162-to-driver-r8169.patch"
+        # 5.15: r8169 hwIDs for the G14?/G15
 
         # ASUS ROG enablement
-        "asus-wmi-Add-panel-overdrive-functionality.patch"                              # landing in 5.15
-        "asus-wmi-Add-dgpu-disable-method.patch"                                        # "
-        "asus-wmi-Add-egpu-enable-method.patch"                                         # "
-        "HID-asus-Prevent-Claymore-sending-suspend-event.patch"                         # "
-        "HID-asus-Reduce-object-size-by-consolidating-calls.patch"                      # awaiting ack ...
-        "v5-asus-wmi-Add-support-for-platform_profile.patch"                            # landing in 5.15
-        "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"                          # -next
+        "HID-asus-Reduce-object-size-by-consolidating-calls.patch"
+        "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
 
         # mediatek mt7921 bt/wifi patches
         "mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
         "mt76-mt7921-Add-mt7922-support.patch"
-        "1-1-Bluetooth-btusb-Enable-MSFT-extension-for-Mediatek-Chip-MT7921.patch"
+        #"1-1-Bluetooth-btusb-Enable-MSFT-extension-for-Mediatek-Chip-MT7921.patch"
         "1-2-mt76-mt7915-send-EAPOL-frames-at-lowest-rate.patch"
         "2-2-mt76-mt7921-send-EAPOL-frames-at-lowest-rate.patch"
         "mt76-mt7921-enable-VO-tx-aggregation.patch"
@@ -161,37 +156,28 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip-MT7921.patch"
 
         # squashed s0ix enablement
-        "9001-v5.14.16-s0ix-patch-2021-11-02.patch"
+        "9001-v5.15-s0ix-patch-2021-11-04.patch"
         )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
+sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'e3999a9e5957b425656bcda2a6d938175478ae9b17d15d38010e486ffbcf2076'
+            '8209a82fe051a99f8fd6df23966278d329b98c27899d4eea4b75b5f96c6f9010'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
-            '3c7ae911838cda30992d5a7fdf34b40494d31ba5765b834549aa276b1fa833e3'
-            'deffeac14f6d9393e82595f6b6ec0e2a71f3b873a1996159577aa2522d6207c4'
+            '98fc296ed8f68d77e0655298ac1775edde06234007a17dc32617bc9801b030a9'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
-            'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
             'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             'f47a5a5e329e410a0ae7d46b450707d5575a4deda5b3b58281f5eca14938fb21'
-            'e4e55dd548c7689596a7c5c42e49c8f072bd2613bd416c6910b5c6410120eb1d'
-            '1ab75535772c63567384eb2ac74753e4d5db2f3317cb265aedf6151b9f18c6c2'
-            '8cc771f37ee08ad5796e6db64f180c1415a5f6e03eb3045272dade30ca754b53'
-            'f3461e7cc759fd4cef2ec5c4fa15b80fa6d37e16008db223f77ed88a65aa938e'
-            'ec317cc2c2c8c1186c4f553fdd010adc013c37600a499802473653fd8e7564df'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
-            '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
-            '9f6b8c3ea6e1c285e0a7efda4d743dbae343bc6ee7ad599a4ab7d380c750bc83'
             '4bfbff4eba07fc9de2ce78097a4a269509468ba0e24c15a82905cd94e093ad55'
             '021f8539ab2fb722b46937b95fdab22a2308236a24ecc1a9ea8db4853721dd39'
             '1ce9fd988201c4d2e48794c58acda5b768ec0fea1d29555e99d35cd2712281e4'
@@ -207,7 +193,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c'
             '7dbfdd120bc155cad1879579cb9dd1185eb5e37078c8c93fef604a275a163812'
             '1444af2e125080934c67b6adb4561fd354a72ce47d3de393b24f53832ee492ac'
-            '67421174b6dfd18beb9e6f06a54c15e425a9568cd9412cd0625d11fee65d3ab7')
+            '03a01e5caa9aa79c9f3643668f4b1e5d52ea2aeed191b8a5e3c869bca07f8c82')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-"$pkgbase"}
@@ -283,11 +269,10 @@ prepare() {
   fi
 
   # Compress modules by default (following Arch's kernel)
-  if [ "$_compress_modules" = "y" ]; then
-    scripts/config --disable CONFIG_MODULE_COMPRESS_NONE \
-                   --enable CONFIG_MODULE_COMPRESS_ZSTD
-  fi
+  scripts/config --disable CONFIG_MODULE_COMPRESS_NONE \
+                 --enable CONFIG_MODULE_COMPRESS_ZSTD
 
+  # Toggle AMD pstate if requested
   if [ "$amd_pstate" = "n" ]; then
     msg2 "Disabling amd-pstate driver..."
     scripts/config --disable CONFIG_X86_AMD_PSTATE
@@ -298,11 +283,17 @@ prepare() {
   # let user choose microarchitecture optimization target;
   sh "${srcdir}/choose-gcc-optimization.sh" $_microarchitecture
 
+  # apply package config customizations
+  if [[ -s ${startdir}/xanmod-rog-config ]]; then
+    msg2 "Applying package config customization..."
+    bash -x "${startdir}/xanmod-rog-config"
+  fi
+
   # This is intended for the people that want to build this package with their own config
-  # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
+  # Put the file "myconfig" at the package folder (this will take precedence) or "${XDG_CONFIG_HOME}/linux-xanmod-rog/myconfig"
   # If we detect partial file with scripts/config commands, we execute as a script
   # If not, it's a full config, will be replaced
-  for _myconfig in "${startdir}/myconfig" "${HOME}/.config/linux-xanmod/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
+  for _myconfig in "${SRCDEST}/myconfig" "${HOME}/.config/linux-xanmod-rog/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod-rog/myconfig" ; do
     # if file exists and size > 0 bytes
     if [ -s "${_myconfig}" ]; then
       if grep -q 'scripts/config' "${_myconfig}"; then

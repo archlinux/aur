@@ -1,11 +1,11 @@
-From dd99d42fd79c5cd66170f5a3892febd33b768556 Mon Sep 17 00:00:00 2001
+From 453ac7e441998d9fbd48e56506bdd6f697f85736 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Tue, 2 Nov 2021 14:33:52 -0700
-Subject: [PATCH] v5.14.16 s0ix patch 2021-11-02
+Date: Thu, 4 Nov 2021 20:03:10 -0700
+Subject: [PATCH] v5.15 s0ix patch 2021-11-04
 
 Squashed commit of the following:
 
-commit 3f296b0bccfc9ff5c855b817acb3df3c1e983aee
+commit 6bdd54fa7d0770fcfdde3a969876ed54673cfdd5
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Sep 28 11:00:40 2021 -0500
 
@@ -36,7 +36,7 @@ Date:   Tue Sep 28 11:00:40 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Change-Id: Ic3a1ed188abad21f94c8dd82c2eeed43117b1dbe
 
-commit 80cf43cdd48523059267f918aacac8e6c55aee4f
+commit 4ccffecb1210fd7b38e1b584b35d00d52fe685dc
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Oct 28 17:09:35 2021 +0530
 
@@ -54,7 +54,7 @@ Date:   Thu Oct 28 17:09:35 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 536c848847b97ceb286be562cb1229bdec630c0e
+commit c76c8b2d6497dcc828fbb5ca1c1a24b456feab52
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Oct 28 17:09:34 2021 +0530
 
@@ -65,7 +65,7 @@ Date:   Thu Oct 28 17:09:34 2021 +0530
 
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit f1966e02634cbb68d3ad8ac69cdcc5266e89efbf
+commit eb36880e53d06c51941c8760e951e455d2b4dc92
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Oct 28 17:09:33 2021 +0530
 
@@ -76,7 +76,7 @@ Date:   Thu Oct 28 17:09:33 2021 +0530
 
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit b3c98c2df6b0ad8f8c212294d83e01bf5e682150
+commit d7245e84b1abd655c34276c34b46e22786e196b0
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Sun Oct 31 20:48:53 2021 -0500
 
@@ -95,7 +95,7 @@ Date:   Sun Oct 31 20:48:53 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Acked-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 050a6d3ffb1f284f350952f43329ddd9818909be
+commit e63e24d5c814734ea52e21d85054ee98fa56fa0f
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Oct 29 15:40:16 2021 -0500
 
@@ -111,7 +111,7 @@ Date:   Fri Oct 29 15:40:16 2021 -0500
     Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit bce1facca6cf3fb3b2504b86fedb32bc67865b21
+commit 8f1609f26f32b629304f8fee5ff359c58e5eade0
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Nov 2 16:32:56 2021 +0100
 
@@ -127,7 +127,7 @@ Date:   Tue Nov 2 16:32:56 2021 +0100
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
     Acked-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 920a48001f0154e447f57b7e0394ce1389d2a4dc
+commit 4016da45040d2625a8cf822bc02091ca16d36409
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:43 2021 -0500
 
@@ -138,7 +138,7 @@ Date:   Tue Oct 26 12:14:43 2021 -0500
     Suggested-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 0c01fd295f6bd0aa960719cce745ce17afb0c9e9
+commit eac1b32f6cce4a8b416029fbaa0b9218353583fd
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:42 2021 -0500
 
@@ -150,7 +150,7 @@ Date:   Tue Oct 26 12:14:42 2021 -0500
     Suggested-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 6000883b8c6e0431c359bd69fedf195194c9b462
+commit 6c12d3aba8789b49bc4b82d76e905e4d1a84bbb9
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:41 2021 -0500
 
@@ -164,7 +164,7 @@ Date:   Tue Oct 26 12:14:41 2021 -0500
     Fixes: 59348401ebed ("platform/x86: amd-pmc: Add special handling for timer based S0i3 wakeup")
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit de3d852b6fb9cc59f6e1b7a9bc0ad6fa026e1229
+commit 6ac4a98e4ca2b1dcb72e49de93211acb9f399f1e
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Oct 20 11:29:46 2021 -0500
 
@@ -187,7 +187,7 @@ Date:   Wed Oct 20 11:29:46 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit a97c915815b2b6ade1ad43dd018a7f7220249ab5
+commit b7f215dee5b17eb26ff39c09fcf5dcc3b55c5570
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Oct 20 11:29:45 2021 -0500
 
@@ -201,7 +201,7 @@ Date:   Wed Oct 20 11:29:45 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 4a80b8cebdb3e71975640e015e7ff8815c872f2a
+commit c738c0930b1e8edc8a0f3425de9342cea0b7bfc0
 Author: Scott B <arglebargle@arglebargle.dev>
 Date:   Thu Oct 14 02:22:21 2021 -0700
 
@@ -210,7 +210,7 @@ Date:   Thu Oct 14 02:22:21 2021 -0700
     replacement for 4df3adab896f843afe5bca5960fbca6ff2cc407e per lijo lazar
     see: https://gitlab.freedesktop.org/drm/amd/-/issues/1710#note_1102805
 
-commit d6d7232eacc074260d0d7dc7300023c2ad2d5086
+commit 326ad78248530c566707ec74241d7f64d70199d1
 Author: Scott B <arglebargle@arglebargle.dev>
 Date:   Thu Oct 14 02:16:16 2021 -0700
 
@@ -218,7 +218,7 @@ Date:   Thu Oct 14 02:16:16 2021 -0700
 
     This reverts commit 4df3adab896f843afe5bca5960fbca6ff2cc407e.
 
-commit 6d4f4d2716c3e5152f3e9d5378b6c65201c26568
+commit bacdd913c9f333f1075bf8b8e26ca0fca0ba93a2
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Sep 28 16:21:22 2021 +0200
 
@@ -237,7 +237,7 @@ Date:   Tue Sep 28 16:21:22 2021 +0200
     Reported-by: Nathan Chancellor <nathan@kernel.org>
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
 
-commit cf14324fa87a87c518e63ea0c7ed94ed94e39410
+commit c93d488a712caa8c08b11802bf02305f2a157199
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Sep 24 12:32:06 2021 -0500
 
@@ -250,7 +250,7 @@ Date:   Fri Sep 24 12:32:06 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
 
-commit 94749039d6e1e5a34b61325789d147a614f4b84e
+commit d2b71a18d8ae450d26d2a475dc5bda28da09919e
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -262,7 +262,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 22b19142456dac63df6572e314bafdd0849bb05a
+commit d9eb018a52af1451a72389b76326f5246a67c543
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -277,7 +277,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 51a75d5d3b1662cee0445ab360fbee19259c2f37
+commit 4851b6540bd2fbae04435179be8f3ba2e46174f1
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -290,7 +290,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 2131722f974e158dbad412ec4caf65ffaf2f9844
+commit 053bd7d9cf67f78c37559ff3f63292065b788df9
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -309,7 +309,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 694f519cb333009c26b1ea82203928e5daf51469
+commit 5ba1eb1a6352b5c835b8a876f0e924c561be7c3e
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -323,46 +323,19 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
 
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-
-commit f219ce3e11d0da3f2057c187367266a4819bff49
-Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
-Date:   Tue Aug 31 17:36:12 2021 +0530
-
-    pinctrl: amd: Add irq field data
-
-    pinctrl_amd use gpiochip_get_data() to get their local state containers
-    back from the gpiochip passed as amd_gpio chip data.
-
-    Hence added irq field data to get directly using amd_gpio chip data.
-
-    Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
-
-commit 04de779b9e157850e083af79409468498b11a974
-Author: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
-Date:   Tue Aug 31 17:36:13 2021 +0530
-
-    pinctrl: amd: Handle wake-up interrupt
-
-    Enable/disable power management wakeup mode, which is disabled by
-    default. enable_irq_wake enables wakes the system from sleep.
-
-    Hence added enable/disable irq_wake to handle wake-up interrupt.
-
-    Signed-off-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 ---
  drivers/acpi/processor_idle.c                 |   3 +-
  drivers/acpi/x86/s2idle.c                     |   6 +
  drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c       |  14 +-
  .../gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c   |   2 +
- drivers/pinctrl/pinctrl-amd.c                 |  48 ++-
- drivers/pinctrl/pinctrl-amd.h                 |   1 +
+ drivers/pinctrl/pinctrl-amd.c                 |  29 +-
  drivers/platform/x86/Kconfig                  |   2 +-
  drivers/platform/x86/amd-pmc.c                | 322 ++++++++++++++++--
  include/linux/acpi.h                          |   9 +
- 9 files changed, 366 insertions(+), 41 deletions(-)
+ 8 files changed, 351 insertions(+), 36 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
-index 095c8aca141e..1b6529396371 100644
+index f37fba9e5ba0..9d378dc9e928 100644
 --- a/drivers/acpi/processor_idle.c
 +++ b/drivers/acpi/processor_idle.c
 @@ -789,7 +789,8 @@ static int acpi_processor_setup_cstates(struct acpi_processor *pr)
@@ -393,7 +366,7 @@ index 1c48358b43ba..0b65d4623214 100644
  			acpi_handle_info(handle,
  				"LPI: Constraint not met; min power state:%s current power state:%s\n",
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
-index 1795d448c700..b4ced45301be 100644
+index 1916ec84dd71..e7f06bd0f0cd 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
 @@ -31,8 +31,6 @@
@@ -432,10 +405,10 @@ index 1795d448c700..b4ced45301be 100644
  		if (adev->gfx.gfx_off_req_count == 0) {
  			cancel_delayed_work_sync(&adev->gfx.gfx_off_delay_work);
 diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c b/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c
-index 9a9c24a6ec35..3891fe8cd7fb 100644
+index 145f13b8c977..25d9e5b22cd3 100644
 --- a/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c
 +++ b/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c
-@@ -1376,6 +1376,8 @@ static ssize_t renoir_get_gpu_metrics(struct smu_context *smu,
+@@ -1378,6 +1378,8 @@ static ssize_t renoir_get_gpu_metrics(struct smu_context *smu,
  
  static int renoir_gfx_state_change_set(struct smu_context *smu, uint32_t state)
  {
@@ -445,34 +418,10 @@ index 9a9c24a6ec35..3891fe8cd7fb 100644
  	return 0;
  }
 diff --git a/drivers/pinctrl/pinctrl-amd.c b/drivers/pinctrl/pinctrl-amd.c
-index c5fd75bbf5d9..90f874434e23 100644
+index bae9d429b813..ecab9064a845 100644
 --- a/drivers/pinctrl/pinctrl-amd.c
 +++ b/drivers/pinctrl/pinctrl-amd.c
-@@ -445,6 +445,7 @@ static int amd_gpio_irq_set_wake(struct irq_data *d, unsigned int on)
- 	struct gpio_chip *gc = irq_data_get_irq_chip_data(d);
- 	struct amd_gpio *gpio_dev = gpiochip_get_data(gc);
- 	u32 wake_mask = BIT(WAKE_CNTRL_OFF_S0I3) | BIT(WAKE_CNTRL_OFF_S3);
-+	int err;
- 
- 	raw_spin_lock_irqsave(&gpio_dev->lock, flags);
- 	pin_reg = readl(gpio_dev->base + (d->hwirq)*4);
-@@ -457,6 +458,15 @@ static int amd_gpio_irq_set_wake(struct irq_data *d, unsigned int on)
- 	writel(pin_reg, gpio_dev->base + (d->hwirq)*4);
- 	raw_spin_unlock_irqrestore(&gpio_dev->lock, flags);
- 
-+	if (on)
-+		err = enable_irq_wake(gpio_dev->irq);
-+	else
-+		err = disable_irq_wake(gpio_dev->irq);
-+
-+	if (err)
-+		dev_err(&gpio_dev->pdev->dev, "failed to %s wake-up interrupt\n",
-+			on ? "enable" : "disable");
-+
- 	return 0;
- }
- 
-@@ -588,14 +598,14 @@ static struct irq_chip amd_gpio_irqchip = {
+@@ -598,14 +598,14 @@ static struct irq_chip amd_gpio_irqchip = {
  
  #define PIN_IRQ_PENDING	(BIT(INTERRUPT_STS_OFF) | BIT(WAKE_STS_OFF))
  
@@ -489,7 +438,7 @@ index c5fd75bbf5d9..90f874434e23 100644
  	u32  regval;
  	u64 status, mask;
  
-@@ -617,6 +627,14 @@ static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
+@@ -627,6 +627,14 @@ static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
  		/* Each status bit covers four pins */
  		for (i = 0; i < 4; i++) {
  			regval = readl(regs + i);
@@ -504,7 +453,7 @@ index c5fd75bbf5d9..90f874434e23 100644
  			if (!(regval & PIN_IRQ_PENDING) ||
  			    !(regval & BIT(INTERRUPT_MASK_OFF)))
  				continue;
-@@ -642,9 +660,12 @@ static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
+@@ -650,9 +658,12 @@ static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
  			}
  			writel(regval, regs + i);
  			raw_spin_unlock_irqrestore(&gpio_dev->lock, flags);
@@ -518,7 +467,7 @@ index c5fd75bbf5d9..90f874434e23 100644
  
  	/* Signal EOI to the GPIO unit */
  	raw_spin_lock_irqsave(&gpio_dev->lock, flags);
-@@ -656,6 +677,16 @@ static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
+@@ -664,6 +675,16 @@ static irqreturn_t amd_gpio_irq_handler(int irq, void *dev_id)
  	return ret;
  }
  
@@ -535,35 +484,7 @@ index c5fd75bbf5d9..90f874434e23 100644
  static int amd_get_groups_count(struct pinctrl_dev *pctldev)
  {
  	struct amd_gpio *gpio_dev = pinctrl_dev_get_drvdata(pctldev);
-@@ -932,7 +963,6 @@ static struct pinctrl_desc amd_pinctrl_desc = {
- static int amd_gpio_probe(struct platform_device *pdev)
- {
- 	int ret = 0;
--	int irq_base;
- 	struct resource *res;
- 	struct amd_gpio *gpio_dev;
- 	struct gpio_irq_chip *girq;
-@@ -955,9 +985,9 @@ static int amd_gpio_probe(struct platform_device *pdev)
- 	if (!gpio_dev->base)
- 		return -ENOMEM;
- 
--	irq_base = platform_get_irq(pdev, 0);
--	if (irq_base < 0)
--		return irq_base;
-+	gpio_dev->irq = platform_get_irq(pdev, 0);
-+	if (gpio_dev->irq < 0)
-+		return gpio_dev->irq;
- 
- #ifdef CONFIG_PM_SLEEP
- 	gpio_dev->saved_regs = devm_kcalloc(&pdev->dev, amd_pinctrl_desc.npins,
-@@ -1020,12 +1050,13 @@ static int amd_gpio_probe(struct platform_device *pdev)
- 		goto out2;
- 	}
- 
--	ret = devm_request_irq(&pdev->dev, irq_base, amd_gpio_irq_handler,
-+	ret = devm_request_irq(&pdev->dev, gpio_dev->irq, amd_gpio_irq_handler,
- 			       IRQF_SHARED, KBUILD_MODNAME, gpio_dev);
- 	if (ret)
+@@ -1033,6 +1054,7 @@ static int amd_gpio_probe(struct platform_device *pdev)
  		goto out2;
  
  	platform_set_drvdata(pdev, gpio_dev);
@@ -571,7 +492,7 @@ index c5fd75bbf5d9..90f874434e23 100644
  
  	dev_dbg(&pdev->dev, "amd gpio driver loaded\n");
  	return ret;
-@@ -1043,6 +1074,7 @@ static int amd_gpio_remove(struct platform_device *pdev)
+@@ -1050,6 +1072,7 @@ static int amd_gpio_remove(struct platform_device *pdev)
  	gpio_dev = platform_get_drvdata(pdev);
  
  	gpiochip_remove(&gpio_dev->gc);
@@ -579,23 +500,11 @@ index c5fd75bbf5d9..90f874434e23 100644
  
  	return 0;
  }
-diff --git a/drivers/pinctrl/pinctrl-amd.h b/drivers/pinctrl/pinctrl-amd.h
-index 95e763424042..1d4317073654 100644
---- a/drivers/pinctrl/pinctrl-amd.h
-+++ b/drivers/pinctrl/pinctrl-amd.h
-@@ -98,6 +98,7 @@ struct amd_gpio {
- 	struct resource         *res;
- 	struct platform_device  *pdev;
- 	u32			*saved_regs;
-+	int			irq;
- };
- 
- /*  KERNCZ configuration*/
 diff --git a/drivers/platform/x86/Kconfig b/drivers/platform/x86/Kconfig
-index d12db6c316ea..211c3156fb01 100644
+index e21ea3d23e6f..4cc2782635ec 100644
 --- a/drivers/platform/x86/Kconfig
 +++ b/drivers/platform/x86/Kconfig
-@@ -192,7 +192,7 @@ config ACER_WMI
+@@ -170,7 +170,7 @@ config ACER_WMI
  
  config AMD_PMC
  	tristate "AMD SoC PMC driver"
@@ -1099,7 +1008,7 @@ index fc95620101e8..2c1bebf972c1 100644
  
  static int amd_pmc_remove(struct platform_device *pdev)
 diff --git a/include/linux/acpi.h b/include/linux/acpi.h
-index 72e4f7fd268c..e29b4c1da377 100644
+index 974d497a897d..6224b1e32681 100644
 --- a/include/linux/acpi.h
 +++ b/include/linux/acpi.h
 @@ -976,6 +976,15 @@ static inline int acpi_get_local_address(acpi_handle handle, u32 *addr)

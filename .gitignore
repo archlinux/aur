@@ -1,9 +1,8 @@
-src-cache/
 src-cache
 src/
 pkg/
-patches/
 buildlog*
 *log
 *.pkg.tar.*
 *.sig
+config.last
