@@ -1,0 +1,17 @@
+pkgbase = qruler-git
+	pkgdesc = A simple on-screen pixel meter
+	pkgver = r1.433894f
+	pkgrel = 1
+	url = https://github.com/redtide/qruler
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = qruler
+	conflicts = qruler
+	source = qruler-git::git+https://github.com/redtide/qruler
+	sha512sums = SKIP
+
+pkgname = qruler-git
