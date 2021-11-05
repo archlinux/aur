@@ -2,8 +2,8 @@
 
 _pkgbase=luau
 pkgname=luau
-pkgver=0.501
-pkgrel=4
+pkgver=0.503
+pkgrel=1
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 )
 
 sha512sums=(
-    '8f48af3714827ad188a05dded313ffdb5a403f4f660f9aa2077407272a010c334c727aaee606f5980aa304067d61801c932f149c015c791b70d9ff8b8f3cf3df'
+    'e66b7f5381ce59d75bac1b88b175ba349170276bc394be9584a898841f6cc077f2748ae744800ff9f9098f8de46b34020d461754e04b46d6f0092a127126c095'
     'b17989fc739e2c101e0d515ded8815b4de3f54b2a67e1893cd1e9aa88cc541b3f667514cdf8a04db60aa9db050971cdbd8b386cd1458f567e784de983f63e88a'
 )
 
@@ -29,7 +29,7 @@ prepare() {
 }
 
 build() {
-    _build_dir=$srcdir/build
+    _build_dir=$srcdir/build-$pkgver
     _luau_root=$srcdir/luau-$pkgver
 
     _cpu_threads=$(grep -c processor /proc/cpuinfo)
@@ -50,7 +50,7 @@ _install_headers() {
 }
 
 package() {
-    _build_dir=$srcdir/build
+    _build_dir=$srcdir/build-$pkgver
     _luau_root=$srcdir/luau-$pkgver
 
     install -Dm755 "$_build_dir/luau" "$pkgdir/usr/bin/luau"
