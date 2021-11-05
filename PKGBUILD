@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname='xml-security-c'
-pkgver='2.0.3'
+pkgver='2.0.4'
 pkgrel='1'
 pkgdesc='C++ Implementation of W3C security standards for XML'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('xerces-c' 'xalan-c')
 source=("https://dlcdn.apache.org/santuario/c-library/$pkgname-$pkgver.tar.bz2.asc"
         "https://dlcdn.apache.org/santuario/c-library/$pkgname-$pkgver.tar.bz2")
 sha256sums=('SKIP'
-            '803029f129005a9b453aa45f0b3e44c28b8f2ec5eb526c20c74f93995cf6da69')
+            'c83ed1b7c0189cce27a49caa81986938e76807bf35597e6056259af30726beca')
 validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
 
 build() {
