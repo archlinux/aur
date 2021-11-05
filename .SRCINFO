@@ -27,11 +27,9 @@ pkgbase = prusa-slicer-git
 	conflicts = prusa-slicer
 	source = git+https://github.com/prusa3d/PrusaSlicer
 	source = prusa-slicer.desktop
-	source = prusa-slicer-openexr3.patch
 	source = prusa-slicer-boost-placeholders.patch
 	sha256sums = SKIP
 	sha256sums = 26b66701cb2512f0d524add44689e2478c0b875f73103034e74544a9574782c5
-	sha256sums = 325d97f8e648da1c8e90e3b30cf172afcc49f05f3e79971e6dacb9adf72f5bf9
 	sha256sums = 58cae07a418a797222f4cb10950fa2fd7afb7570519785b082cc7d7e7f407c02
 
 pkgname = prusa-slicer-git

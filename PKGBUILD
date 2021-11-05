@@ -31,13 +31,11 @@ makedepends=(
 source=(
     "git+${url}"
     'prusa-slicer.desktop'
-    'prusa-slicer-openexr3.patch'
     'prusa-slicer-boost-placeholders.patch'
 )
 sha256sums=(
     'SKIP'
     '26b66701cb2512f0d524add44689e2478c0b875f73103034e74544a9574782c5'
-    '325d97f8e648da1c8e90e3b30cf172afcc49f05f3e79971e6dacb9adf72f5bf9'
     '58cae07a418a797222f4cb10950fa2fd7afb7570519785b082cc7d7e7f407c02'
 )
 conflicts=('prusa-slicer')
@@ -49,8 +47,6 @@ pkgver() {
 
 prepare() {
     cd "PrusaSlicer"
-    # Fix build with openEXR 3
-    patch -p1 < "$srcdir/prusa-slicer-openexr3.patch"
     # Fix build with Boost 1.76.0
     patch -p1 < "$srcdir/prusa-slicer-boost-placeholders.patch"
 }
