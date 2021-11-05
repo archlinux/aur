@@ -1,0 +1,13 @@
+pkgbase = dynamic-wallpaper-macos-catalina-kde
+	pkgdesc = MacOS Catalina dynamic dekstop wallpaper for kde.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mikkra/dynamic-wallpaper-macos-catalina-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plasma5-wallpapers-dynamic
+	source = git+https://github.com/mikkra/dynamic-wallpaper-macos-catalina-kde.git
+	sha1sums = f95b011fe2bababd311c9a3925f97a69bef31d5e
+
+pkgname = dynamic-wallpaper-macos-catalina-kde
