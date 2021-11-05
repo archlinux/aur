@@ -13,7 +13,7 @@
 # makepkg --printsrcinfo > .SRCINFO
 
 pkgname=libreoffice-fresh-rpm
-pkgver=7.2.1
+pkgver=7.2.2
 pkgrel=1
 pkgdesc="Libre Office Suite installed from rpms"
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=('curl' 'awk')
 optdepends=('jre8-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 # WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.
 arch_mod='x86_64';
-sha256sums=('5f57b9842bc2d2644defc43605cb917cb73ff5cc0232e7fb6f69687d938f6b01')
+sha256sums=('36729be41ca4f546dc4bb642822c31dd6e1391eaca1566bbcbce1f6bd2765955')
 source=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 
 prepare() { ## prepare function

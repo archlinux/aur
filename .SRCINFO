@@ -1,6 +1,6 @@
 pkgbase = libreoffice-fresh-rpm
 	pkgdesc = Libre Office Suite installed from rpms
-	pkgver = 7.2.1
+	pkgver = 7.2.2
 	pkgrel = 1
 	url = https://www.libreoffice.org
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = libreoffice-fresh-rpm
 	conflicts = libreoffice-fresh
 	conflicts = libreoffice-base
 	conflicts = libreoffice-still
-	source = https://download.documentfoundation.org/libreoffice/stable/7.2.1/rpm/x86_64/LibreOffice_7.2.1_Linux_x86-64_rpm.tar.gz
-	sha256sums = 5f57b9842bc2d2644defc43605cb917cb73ff5cc0232e7fb6f69687d938f6b01
+	source = https://download.documentfoundation.org/libreoffice/stable/7.2.2/rpm/x86_64/LibreOffice_7.2.2_Linux_x86-64_rpm.tar.gz
+	sha256sums = 36729be41ca4f546dc4bb642822c31dd6e1391eaca1566bbcbce1f6bd2765955
 
 pkgname = libreoffice-fresh-rpm
