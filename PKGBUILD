@@ -1,4 +1,4 @@
-# Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Maintainer: Juanjo Gutierrez <juanjo at gutierrezdequevedo dot com>
 
 pkgname=lxrad
 pkgver=0.8.9
