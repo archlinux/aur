@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=_pkgver
+Type=Application
+Name=IntelliJ IDEA Ultimate EAP
+Comment=Intelligent Java IDE - EAP version
+Exec="/opt/intellij-idea-ue-eap/bin/idea.sh" %f
+Icon=/opt/intellij-idea-ue-eap/bin/idea.png
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-idea
