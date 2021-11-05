@@ -2,7 +2,7 @@
 
 pkgname=neofetch-btw
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of neofetch but tuned for archlinux btw"
 arch=('any')
 url="https://github.com/federicoantoniazzi/neofetch-btw"
@@ -26,7 +26,7 @@ optdepends=(
   'xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)'
   'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
 )
-_commit="5d9500c8ed8d99fba122d21868e1b46a43fbf6fd"
+_commit="6b85c9164df928606ba2ce4c42c0eaa77a9d8b48"
 source=("git+${url}.git#commit=${_commit}?signed")
 validpgpkeys=("C55C90BF1849EB51631EC49A08F51F421DC997C6")
 sha256sums=('SKIP')
