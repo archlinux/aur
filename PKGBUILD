@@ -2,12 +2,12 @@
 # Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname="among-us-dumpy-gif-maker"
-_pkgver="3.1.3"
+_pkgver="3.2.0"
 _jar="Among-Us-Dumpy-Gif-Maker-${_pkgver}-all.jar"
 
 pkgname="${_pkgname}"
 pkgver="${_pkgver}"
-pkgrel=4
+pkgrel=1
 pkgdesc="A tool that lets you make Among Us Dumpy GIFs"
 arch=("x86_64")
 url="https://github.com/ThatOneCalculator/Among-Us-Dumpy-Gif-Maker"
