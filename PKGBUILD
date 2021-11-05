@@ -3,7 +3,7 @@
 _base=meshplex
 pkgname=python-${_base}
 pkgdesc="Compute interesting points, areas, and volumes in simplex meshes of any dimension"
-pkgver=0.16.6
+pkgver=0.16.7
 pkgrel=1
 arch=('any')
 url="https://github.com/nschloe/${_base}"
@@ -15,7 +15,7 @@ optdepends=('python-matplotlib: for Matplotlib rendering'
 	'vtk: for create polygonal sphere'
 )
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('f6b0e5a59d3f410dfb730cead5b3af5b9edec6c6926d1b3a61a77a166e7c9164de8f4a69921f85aaa67705856e448b515521d4510dc252cd42ebe31716c6c9ce')
+sha512sums=('ab59159aaa4e4cbb28fa201074a856c9fb1d637b6d29d126b052df27f79fec94a8086ed6b298b2ab9864b50298b3e12ca86daefccd27f2e13496b64091abcef0')
 
 build() {
 	cd "${_base}-${pkgver}"
