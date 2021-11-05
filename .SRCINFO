@@ -1,13 +1,13 @@
 pkgbase = docker-image-labeler
 	pkgdesc = Adds and removes labels from docker images
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/dokku/docker-image-labeler
 	arch = x86_64
 	license = MIT
-	source = https://github.com/dokku/docker-image-labeler/releases/download/v0.3.2/docker-image-labeler_0.3.2_linux_amd64.tgz
-	source = LICENSE
-	sha256sums = f69130d2a7295f18600c2963239375d4c1d3281bdca5c3fd105d45831e40178d
-	sha256sums = e35631b792185502df2e65b8c3d4469351df0c6e31eed8e8548920f38b0fa203
+	source = https://github.com/dokku/docker-image-labeler/releases/download/v0.3.3/docker-image-labeler_0.3.3_linux_amd64.tgz
+	source = https://raw.githubusercontent.com/dokku/docker-image-labeler/master/LICENSE
+	sha256sums = 1540484446a088d6288241f2362c47d3a4023173f28934709cad2194abc5385f
+	sha256sums = 5cb0dbb3f10637c3a3dd3cff4f1f54cb269f842ee534548b98acd4b0178fe4d6
 
 pkgname = docker-image-labeler
