@@ -37,5 +37,5 @@ package() {
   install -Dm755 az "$pkgdir/usr/bin"
 
   install -Dm644 "$pkgdir/opt/azure-cli/az.completion" \
-    "$pkgdir/etc/bash_completion.d/azure-cli"
+    "$pkgdir/usr/share/bash-completion/completions/az"
 }
