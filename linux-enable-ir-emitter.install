@@ -1,3 +1,8 @@
+pre_remove() {
+  # disable service and remove targets
+  linux-enable-ir-emitter boot disable
+}
+
 post_remove() {
   # delete files added after user configure
   rm -f /etc/linux-enable-ir-emitter.yaml
