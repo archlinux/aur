@@ -1,12 +1,12 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=nxprayer
-pkgver=0.1.7.r114.ad77aaf
+pkgver=0.1.9
 pkgrel=1
-pkgdesc="Islamic prayers reminder, for your status bar and/or scripts."
+pkgdesc="Next Islamic prayer, for status bars."
 arch=('x86_64')
 url="https://github.com/AbdeltwabMF/nxprayer.git"
-license=('GPL-v3')
+license=('GPLv3')
 depends=(
 	'jq'
 	'libnotify'

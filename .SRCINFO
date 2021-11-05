@@ -1,10 +1,10 @@
 pkgbase = nxprayer
-	pkgdesc = Islamic prayers reminder, for your status bar and/or scripts.
-	pkgver = 0.1.7.r114.ad77aaf
+	pkgdesc = Next Islamic prayer, for status bars.
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/AbdeltwabMF/nxprayer.git
 	arch = x86_64
-	license = GPL-v3
+	license = GPLv3
 	makedepends = git
 	makedepends = python3
 	depends = jq
