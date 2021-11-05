@@ -1,7 +1,7 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=ttf-recursive
-pkgver=1.082
+pkgver=1.084
 pkgrel=1
 pkgdesc="A variable type family built for better code & UI"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/arrowtype/recursive"
 license=('OFL')
 _srcname=ArrowType-Recursive
 source=("${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.zip")
-sha256sums=('24c08f2967ccb6c8629f19c433eb71bebf898242cb81dc9dbb4399af361c7deb')
+sha256sums=('db1f760fefe164644dc2e5156c01cb6d47fe05e28fd1f949eb4d6f65abb9f19a')
 
 package() {
   install -d ${pkgdir}/usr/share/fonts/TTF/Recursive
