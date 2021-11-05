@@ -57,7 +57,6 @@ source=(
         "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
         "FindLibpci.cmake" # https://github.com/carlocastoldi/obs-studio/blob/2936-fix/cmake/Modules/FindLibpci.cmake
         "vaapi_set_dri_devices.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/5336.patch
-        "pa_buffer_aggressive.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4908.patch
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
@@ -68,7 +67,6 @@ sha256sums=(
         "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
         "916f9fb3819c9d952140d65434e9dffc77b688dc1dc027b39226c33ee97be63f"
         "5c18a85f95090f01a9eb24aeea13220f8698f8d433970e4dc6391432d033f065"
-        "4b90a29e75eb7281cbe754408327d44192c0892557f03bd3c612f3658af739fc"
         "SKIP"
         "SKIP"
 )
@@ -88,6 +86,9 @@ prepare() {
   ## obs-ffmpeg: Fix unwritten audio-only output (https://github.com/obsproject/obs-studio/commit/499af309b51234b0e5dda81753fb655f893ce217)
   git cherry-pick --no-commit 499af309b51234b0e5dda81753fb655f893ce217
 
+  ## pulse: fill audio monitor buffer more aggressively (https://github.com/obsproject/obs-studio/commit/5142a7685d6bbf38ed369137a6dce43e7b57852e)
+  git cherry-pick --no-commit 5142a7685d6bbf38ed369137a6dce43e7b57852e
+
   ## libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
   patch -Np1 < "$srcdir/python_fix.patch"
 
@@ -104,9 +105,6 @@ prepare() {
   patch -Np1 < "$srcdir/vaapi_set_dri_devices.patch"
   # Add CMake finder for libpci (pciutils)
   cp "$srcdir/FindLibpci.cmake" cmake/Modules/
-
-  ## pulse: fill audio monitor buffer more aggressively (https://github.com/obsproject/obs-studio/pull/4908)
-  patch -Np1 < "$srcdir/pa_buffer_aggressive.patch"
 }
 
 build() {
