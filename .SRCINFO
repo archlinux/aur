@@ -1,6 +1,6 @@
 pkgbase = cargo-pgx
 	pkgdesc = Build PostgreSQL extensions with Rust
-	pkgver = 0.1.25
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/zombodb/pgx
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = cargo-pgx
 	depends = clang
 	depends = llvm
 	optdepends = postgresql: to compile with system postgresql
-	source = cargo-pgx-0.1.25.tar.gz::https://static.crates.io/crates/cargo-pgx/cargo-pgx-0.1.25.crate
-	source = https://raw.githubusercontent.com/zombodb/pgx/v0.1.25/LICENSE
-	b2sums = 12c7ba03defe599851ea19e46b9d792b443cf6cfc9495f4405eb6513b36bc289893afa6af3c7cf47522ee0267e00d34e403330dde92667fd1e82ecd83e9043e6
+	source = cargo-pgx-0.2.0.tar.gz::https://static.crates.io/crates/cargo-pgx/cargo-pgx-0.2.0.crate
+	source = https://raw.githubusercontent.com/zombodb/pgx/v0.2.0/LICENSE
+	sha512sums = a925722326156a1395e31eef3e7cca0b7d6b08cc428aabc3512d069ff30e439b7994f36c7cb9b2c71810a580ef50a81cbaf2f0599769384bd8f055d20265973c
+	sha512sums = 1567db39266597101bec59f782c50ba28fad860e29626eed187980e671f1ade38a9b3a33ea56fbcf6bdc27c0960db0ddf7e6064e3c12c6fef1e1eb2f1721c535
+	b2sums = 1b81782e3ee72f5d8ee2adf74f20dd50fe3524c5f46a1dea2a5773ece3d0852466a253cd480ee985e275b2a6dacb21210555d8deafaf868a4b990c1c2aeec8ab
 	b2sums = 2cab3447814cebb834e21e3db43ac2dd42bd0ca064d304120ecf5d4f831b90dcd7fe5f9ddc10983e5f362689258d5af0ee4abedfcbf87f52ff31fe697511f165
 
 pkgname = cargo-pgx
