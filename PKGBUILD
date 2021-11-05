@@ -2,7 +2,7 @@
 HIDE_TRAY_ICON=0
 
 pkgname=kwin-bismuth-git
-pkgver=v2.0.0.r3.gbf4da30
+pkgver=2.0.0.r3.gbf4da30
 pkgrel=1
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64')
@@ -27,12 +27,12 @@ sha512sums=(
 )
 
 pkgver() {
-    cd "./bismuth"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/bismuth"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "./bismuth"
+    cd "${srcdir}/bismuth"
 
     patch -p0 -N -i "${srcdir}/build.sh.patch"
 
