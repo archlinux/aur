@@ -1,0 +1,16 @@
+pkgbase = rtl-wmbus-git
+	pkgdesc = Software defined receiver for wireless M-Bus with RTL-SDR
+	pkgver = r50.d2be82c
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	provides = rtl-wmbus
+	conflicts = rtl-wmbus
+	source = rtl-wmbus::git+https://github.com/xaelsouth/rtl-wmbus.git
+	md5sums = SKIP
+
+pkgname = rtl-wmbus-git
