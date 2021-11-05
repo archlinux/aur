@@ -2,16 +2,16 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # Arch Linux kernel source
-_ver=5.13.1.arch1
+_ver=5.15.arch1
 _srcname=archlinux-linux
 _srcurl="https://github.com/archlinux/linux.git"
 # Bcachefs kernel source
-_bcachefstag=v5.13
+_bcachefstag=v5.15
 _bcachefsname=bcachefs-linux
 _bcachefsurl="https://evilpiepirate.org/git/bcachefs.git"
 
 pkgbase=linux-simple-bcachefs-git
-pkgver=5.13.1.arch1.r914
+pkgver=5.15.arch1.r976
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${_ver%.*}-${_ver##*.}
@@ -25,7 +25,7 @@ makedepends=(
 options=('!strip')
 source=(config         # the main kernel config file
 )
-sha256sums=('6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84'
+sha256sums=('8a0bdb434ac26c16e3a96f127d68c5585f3c33ee9ed01e12a33e3a36889c9aeb'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -88,6 +88,7 @@ prepare() {
     "# CONFIG_BCACHEFS_DEBUG is not set" \
     "# CONFIG_BCACHEFS_TESTS is not set" >> .config
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
