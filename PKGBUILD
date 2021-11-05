@@ -4,7 +4,7 @@
 # Contributor: Nikolay Bryskin <nbryskin@gmail.com>
 
 pkgname=linux-enable-ir-emitter-git
-pkgver=3.2.2.r3.ge186c7d
+pkgver=3.2.2.r1.g1548988
 pkgrel=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
 url="https://github.com/EmixamPP/linux-enable-ir-emitter"
