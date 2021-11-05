@@ -1,10 +1,10 @@
 pkgbase = edgetx-companion
-	pkgdesc = EEPROM Editor for EdgeTX RC transmitter firmwares
+	pkgdesc = EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares
 	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://edgetx.org/
 	arch = x86_64
-	license = GPL-2.0
+	license = GPL2
 	makedepends = arm-none-eabi-binutils
 	makedepends = arm-none-eabi-gcc
 	makedepends = arm-none-eabi-newlib
