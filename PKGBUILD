@@ -2,8 +2,8 @@
 # Contributor: Echizen Ryoma <echizenryoma.zhang@gmail.com>
 
 pkgname=opensnitch
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
@@ -35,7 +35,7 @@ source=(
     "$url/archive/v$pkgver.tar.gz"
 )
 sha512sums=(
-    '58bc7eecdf129d219f2b4f16fccfd4788af02480f89e4042577a032114ddba176bc53ca299e60057ddd45b946de3cd89a5d21e3dad120aeedff0f62ce2b278a5'
+    'e2bdbe479ed1e52f6d036a21f0f6efa37cce88baff7998911e6274bc318ad5260f2b428b94d0c19fad6f4e388fb8332e6639a93d34ab1ef66f51bfe4f836996b'
 )
 
 prepare() {
@@ -87,6 +87,7 @@ package() {
     install -Dm644 daemon/system-fw.json -t "$pkgdir/etc/opensnitchd"
     install -Dm644 debian/opensnitch.logrotate "$pkgdir/etc/logrotate.d/opensnitch"
 
-    cd ui
+    pushd ui
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    popd
 }
