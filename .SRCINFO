@@ -1,7 +1,7 @@
 pkgbase = ansiweather
 	pkgdesc = A Shell script for displaying the current weather conditions in your terminal, with support for ANSI colors and Unicode symbols.
-	pkgver = 1.17.0
-	pkgrel = 2
+	pkgver = 1.18.0
+	pkgrel = 1
 	url = https://github.com/fcambus/ansiweather
 	arch = any
 	license = BSD
@@ -11,8 +11,7 @@ pkgbase = ansiweather
 	optdepends = wget: support for downloading with wget
 	optdepends = inetutils: support for downloading with ftp
 	provides = ansiweather
-	source = https://github.com/fcambus/ansiweather/archive/1.17.0.tar.gz
-	md5sums = 07e5ed61181250670e55cfa750e2da51
+	source = https://github.com/fcambus/ansiweather/archive/1.18.0.tar.gz
+	md5sums = b21421145b1cc94ac53b527689b56ea6
 
 pkgname = ansiweather
-

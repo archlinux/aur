@@ -1,8 +1,8 @@
 # Maintainer: Johannes Loher <johannes dor loher at fg4f dot de>
 
 pkgname='ansiweather'
-pkgver=1.17.0
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc='A Shell script for displaying the current weather conditions in your terminal, with support for ANSI colors and Unicode symbols.'
 arch=('any')
 url='https://github.com/fcambus/ansiweather'
@@ -12,7 +12,7 @@ optdepends=('wget: support for downloading with wget'
             'inetutils: support for downloading with ftp')
 provides=('ansiweather')
 source=("https://github.com/fcambus/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('07e5ed61181250670e55cfa750e2da51')
+md5sums=('b21421145b1cc94ac53b527689b56ea6')
 
 package(){
     cd "${srcdir}/${pkgname}-${pkgver}"
