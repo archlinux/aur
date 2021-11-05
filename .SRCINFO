@@ -1,12 +1,12 @@
 pkgbase = lambroll-bin
 	pkgdesc = Minimal deployment tool for AWS Lambda.
-	pkgver = 0.11.9
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/fujiwara/lambroll
 	arch = x86_64
 	license = MIT
-	optdepends = aws-cli
-	source = https://github.com/fujiwara/lambroll/releases/download/v0.11.9/lambroll_v0.11.9_linux_amd64.tar.gz
-	md5sums = e22a6c2552bc8f2725c4ae273740734f
+	optdepends = aws-cli: create aws login info
+	source = https://github.com/fujiwara/lambroll/releases/download/v0.12.0/lambroll_v0.12.0_linux_amd64.tar.gz
+	md5sums = 7d761ae923f7526d895ca04041ac47c7
 
 pkgname = lambroll-bin
