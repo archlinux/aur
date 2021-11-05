@@ -1,22 +1,17 @@
 # Contributor: Alex Suykov <axs@ukr.net>
 
 pkgname=ttf-code2002
-pkgver=2005.04.05
+epoch=1
+pkgver=0.919
 pkgrel=1
 pkgdesc="beta test font for Plane Two"
 arch=('any')
-url="https://web.archive.org/web/20101122141939/http://code2000.net/"
+url="https://www.code2001.com/"
 license=('custom')
-depends=(
-    'fontconfig'
-    'xorg-fonts-encodings'
-    'xorg-mkfontscale'
-    'xorg-mkfontdir'
-)
-source=('https://web.archive.org/web/20101122142710/http://code2000.net/CODE2002.ZIP')
-md5sums=('37526f6ad67a0ae0b589094988dab045')
-sha256sums=('0dbc65536c8f875a9aafe52a070a8103ea97f480ade03487c9fc10db6fa5ae87')
-sha512sums=('ebea82012f6d733a2f72b65910898e2f5efca8f6fb30d2b48a878914d0930df007bb17345ced2bd2af93331be2e814686cc28181f208aad0dd46501833f65c12')
+source=('http://www.code2001.com/CODE2002.ZIP')
+md5sums=('0f776123a1dd54544f984a6c61e09ca1')
+sha256sums=('421ba52665748023598ee1e873fb4f9c8bb7cd29ade333742c91c9aaef740f46')
+sha512sums=('ea85f9f5faf580be117a5a4e7c7798b3d42ae6c338ef846d1ef8635251fbc6174d07bd29d2dc3ebb1ecd4a6aac3abd46adaaf9037fbacc0275ad1efef422e3f2')
 
 package() {
   install -D -m644 CODE2002.TTF "$pkgdir/usr/share/fonts/TTF/Code2002.ttf"
