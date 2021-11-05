@@ -10,20 +10,20 @@ arch=("x86_64" "armv7h" "aarch64")
 conflicts=("k3s-git")
 
 source=(
-  "k3s.service"
-  "k3s.service.env"
+    "k3s.service"
+    "k3s.service.env"
 )
 
 source_x86_64=(
-  "k3s-${pkgver}-x86_64::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s"
+    "k3s-${pkgver}-x86_64::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s"
 )
 
 source_armv7h=(
-  "k3s-${pkgver}-armv7h::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s-armhf"
+    "k3s-${pkgver}-armv7h::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s-armhf"
 )
 
 source_aarch64=(
-  "k3s-${pkgver}-aarch64::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s-arm64"
+    "k3s-${pkgver}-aarch64::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s-arm64"
 )
 
 sha256sums=(
@@ -44,11 +44,11 @@ sha256sums_aarch64=(
 )
 
 package() {
-  install -Dm 755 $srcdir/k3s-${pkgver}-${CARCH} $pkgdir/usr/bin/k3s
+    install -Dm 755 $srcdir/k3s-${pkgver}-${CARCH} $pkgdir/usr/bin/k3s
 
-  install -dm 755 $pkgdir/usr/lib/systemd/system
-  install -dm 755 $pkgdir/etc/systemd/system
+    install -dm 755 $pkgdir/usr/lib/systemd/system
+    install -dm 755 $pkgdir/etc/systemd/system
 
-  install -m 644 $srcdir/k3s.service $pkgdir/usr/lib/systemd/system/k3s.service
-  install -m 400 $srcdir/k3s.service.env $pkgdir/etc/systemd/system/k3s.service.env
+    install -m 644 $srcdir/k3s.service $pkgdir/usr/lib/systemd/system/k3s.service
+    install -m 400 $srcdir/k3s.service.env $pkgdir/etc/systemd/system/k3s.service.env
 }
