@@ -1,6 +1,6 @@
 pkgbase = scribbit
 	pkgdesc = Simple and lightweight text editor
-	pkgver = 2021.1105.2
+	pkgver = 2021.1105.3
 	pkgrel = 1
 	url = https://github.com/Marakusa/Scribbit
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Markus Kannisto <m.kannisto01@gmail.com>
 
 pkgname=scribbit
-pkgver=2021.1105.2
+pkgver=2021.1105.3
 pkgrel=1
 
 dotnet_version=5.0
