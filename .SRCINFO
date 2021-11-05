@@ -67,9 +67,11 @@ pkgbase = librewolf-hg
 	source = librewolf-nightly.desktop
 	source = git+https://gitlab.com/vnepogodin/librewolf-common.git
 	source = git+https://gitlab.com/vnepogodin/librewolf-settings.git
+	source = 0001-Use-remoting-name-for-GDK-application-names.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk/0001-Use-remoting-name-for-GDK-application-names.patch
 	sha512sums = SKIP
 	sha512sums = 5a0932eeceba04a09133a7b61e9eee49cd5bdacb2daadc132e910fdd3ef8392262208b6401043655bff58068b2320022daa6722f11aed9284c5b5a008d570bcd
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = f00f547a55df90a2f96c7b5f3a3c46b033f985db9a12257cb57f617ae8e0df9558baf6a79a7825f4866de45f9f4875cbbf1f0b99cd44371e047c6bc5dc6c78ba
 
 pkgname = librewolf-hg

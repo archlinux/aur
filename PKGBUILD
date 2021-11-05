@@ -34,16 +34,19 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 backup=('usr/lib/librewolf-nightly/librewolf.cfg'
         'usr/lib/librewolf-nightly/distribution/policies.json')
 options=(!emptydirs !makeflags !strip)
+_arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
 _repo=https://hg.mozilla.org/mozilla-unified
 install=librewolf-nightly.install
 source=("hg+$_repo#revision=autoland"
         $_pkgname.desktop
         "git+https://gitlab.com/vnepogodin/librewolf-common.git"
-        "git+https://gitlab.com/vnepogodin/librewolf-settings.git")
+        "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
+        "0001-Use-remoting-name-for-GDK-application-names.patch::${_arch_git}/0001-Use-remoting-name-for-GDK-application-names.patch")
 sha512sums=('SKIP'
             '5a0932eeceba04a09133a7b61e9eee49cd5bdacb2daadc132e910fdd3ef8392262208b6401043655bff58068b2320022daa6722f11aed9284c5b5a008d570bcd'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'f00f547a55df90a2f96c7b5f3a3c46b033f985db9a12257cb57f617ae8e0df9558baf6a79a7825f4866de45f9f4875cbbf1f0b99cd44371e047c6bc5dc6c78ba')
 
 pkgver() {
   cd mozilla-unified
@@ -73,7 +76,7 @@ export CXX='clang++'
 # Branding
 ac_add_options --enable-update-channel=nightly
 ac_add_options --with-app-name=${_pkgname}
-ac_add_options --with-app-basename=Librewolf
+ac_add_options --with-app-basename=${__pkgname}
 ac_add_options --with-branding=browser/branding/${_pkgname}
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
@@ -113,7 +116,6 @@ ac_add_options --disable-ipdl-tests
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-webspeech
 ac_add_options --disable-webspeechtestbackend
-ac_add_options --disable-bootstrap
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
@@ -130,9 +132,6 @@ if [[ $CARCH == 'aarch64' ]]; then
   cat >>../mozconfig <<END
 # taken from manjaro build:
 ac_add_options --enable-optimize="-g0 -O2"
-# from ALARM
-# ac_add_options --disable-webrtc
-
 END
 
   export MOZ_DEBUG_FLAGS=" "
@@ -143,7 +142,7 @@ END
   # we should have more than enough RAM on the CI spot instances.
   # ...or maybe not?
   export LDFLAGS+=" -Wl,--no-keep-memory"
-  patch -Np1 -i ${_patches_dir}/arm.patch
+  # patch -Np1 -i ${_patches_dir}/arm.patch # not required anymore?
   patch -Np1 -i ${_patches_dir}/build-arm-libopus.patch
 
 else
@@ -153,6 +152,10 @@ else
 ac_add_options --enable-optimize
 END
 fi
+
+  # upstream Arch fix
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ${srcdir}/0001-Use-remoting-name-for-GDK-application-names.patch
 
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i ${_patches_dir}/remove_addons.patch
@@ -188,8 +191,35 @@ fi
 
   # change some hardcoded directory strings that could lead to unnecessarily
   # created directories
+  patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
 
-  # patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
+  # allow uBlockOrigin to run in private mode by default, without user intervention.
+  patch -Np1 -i ${_patches_dir}/allow-ubo-private-mode.patch
+
+  # ui patches
+
+  # show a warning saying that changing language is not allowed through the UI,
+  # and that it requires to visit our FAQ, instead of telling the user to check his connection.
+  patch -Np1 -i ${_patches_dir}/ui-patches/add-language-warning.patch
+
+  # remove references to firefox from the settings UI, change text in some of the links,
+  # explain that we force en-US and suggest enabling history near the session restore checkbox.
+  patch -Np1 -i ${_patches_dir}/ui-patches/pref-naming.patch
+
+  # remove firefox references in the urlbar, when suggesting opened tabs.
+  patch -Np1 -i ${_patches_dir}/ui-patches/remove-branding-urlbar.patch
+
+  # remove cfr UI elements, as they are disabled and locked already.
+  patch -Np1 -i ${_patches_dir}/ui-patches/remove-cfrprefs.patch
+
+  # do not display your browser is being managed by your organization in the settings.
+  patch -Np1 -i ${_patches_dir}/ui-patches/remove-organization-policy-banner.patch
+
+  # hide "snippets" section from the home page settings, as it was already locked.
+  patch -Np1 -i ${_patches_dir}/ui-patches/remove-snippets-from-home.patch
+
+  # add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
+  patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
 
   rm -f ${srcdir}/librewolf-common/source_files/mozconfig
   cp -r ${srcdir}/librewolf-common/source_files/* ./
@@ -267,6 +297,7 @@ ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
+ac_add_options --disable-bootstrap
 END
 
 fi
