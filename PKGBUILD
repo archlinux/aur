@@ -5,8 +5,8 @@ _pkgname=gerbera
 _pkgvariant=nosystemd
 _pkgsource=git
 pkgname="${_pkgname}-${_pkgvariant}-${_pkgsource}"
-pkgver=1.9.2.123+r4761.20211103.2d03e26c
-pkgrel=2
+pkgver=1.9.2.129+r4767.20211104.c7aa6316
+pkgrel=1
 pkgdesc="UPnP Media Server (Based on MediaTomb). Build without systemd dependencies."
 url="https://gerbera.io/"
 license=('GPL2')
@@ -46,7 +46,6 @@ install="gerbera.install"
 options=('emptydirs')
 source=(
   "${_pkgname}::git+git://github.com/gerbera/gerbera.git"
-  "pidfile-crash-error.patch::https://github.com/gerbera/gerbera/files/7469256/pidfile-crash-error.patch.txt"
   "gerbera.sysusers"
   "gerbera.tmpfiles"
   "${install}"
@@ -61,7 +60,6 @@ conflicts=(
 )
 sha256sums=(
   'SKIP' # main source (git checkout)
-  'fec4e5f74a0d26beb80dfe194427ea7e247743dc36a27fb24e2ddbed6b4cfa1e' # pidfile-crash-error.patch
   'b3f956a6eaee8753cff7a04b51091b8b283dd0da054190ced13362a5b050d73f' # gerbera.sysusers
   '452f5d4b5661e0262cb4a48d62a54f5f26d53c6d3aebf502cde072214a8b30d8' # gerbera.tmpfiles
   '5e573183e36cea20319f1b5398f7b0decfb6dd17cdccd1856163f7f9bedbba74' # $install
@@ -77,13 +75,13 @@ sha256sums=(
 #   "${_pkgname}-${_pkgvariant}-debug-${_pkgsource}=${pkgver}"
 # )
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  for _patch in 'pidfile-crash-error.patch'; do
-    msg2 "Applying patch '${_patch}' ..."
-    patch -N -p1 -i "${srcdir}/${_patch}"
-  done
-}
+# prepare() {
+#   cd "${srcdir}/${_pkgname}"
+#   for _patch in ; do
+#     msg2 "Applying patch '${_patch}' ..."
+#     patch -N -p1 -i "${srcdir}/${_patch}"
+#   done
+# }
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
