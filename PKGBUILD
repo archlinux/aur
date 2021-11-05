@@ -60,7 +60,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DSLIC3R_FHS=ON \
-        -DSLIC3R_PCH=OFF \
+        -DSLIC3R_PCH=ON \
         -DSLIC3R_WX_STABLE=ON \
         -DSLIC3R_GTK=3 \
         -DSLIC3R_STATIC=OFF \
