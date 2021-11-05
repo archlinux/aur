@@ -1,0 +1,19 @@
+pkgbase = sat-yt
+	pkgdesc = YouTube viewer based on saturnon
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://gitlab.com/TheDalaiAlpaca/sat-yt
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = coreutils
+	depends = ncurses
+	depends = yt-dlp
+	depends = mpv
+	depends = jq
+	depends = less
+	depends = grep
+	source = https://gitlab.com/TheDalaiAlpaca/sat-yt/-/archive/0.4.0/sat-yt-0.4.0.tar.gz
+	md5sums = SKIP
+
+pkgname = sat-yt
