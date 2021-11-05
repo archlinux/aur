@@ -1,8 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mmg-git
-pkgver=5.6.0.beta1.1.g71e46c5b
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
+epoch=1
 pkgdesc='Anisotropic tetrahedral remesher and moving mesh generator'
 url="http://www.mmgtools.org/"
 license=('GPL')
