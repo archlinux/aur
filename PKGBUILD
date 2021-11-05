@@ -1,7 +1,7 @@
 # Maintainer: Vasil Bakalov <jens300304@gmail.com>
 pkgname=python-circlevis
 url="https://github.com/circleguard/circlevis"
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A Qt Widget for visualizing osu! beatmaps and replays."
 arch=('any')
@@ -10,7 +10,7 @@ source=(
     "https://github.com/circleguard/circlevis/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    'd7361e0ed07d4fef834f18a14baef058907fb95af9191bad8d83dfc1d719db65'
+    '5c8a0af0f894f252d180752f9685e41142f3598b4d535714cd02928f5a626a92'
 )
 depends=(
     'python-circlecore>=5.2.3'
