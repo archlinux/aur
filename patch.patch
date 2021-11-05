@@ -15,3 +15,26 @@
 
  #ifndef        ZeroMemory
  #define        ZeroMemory(d,n)         memset((d), 0, (n))
+--- xnp2-0.86/x11/soundmng.c.old	2016-03-08 17:25:50.000000000 +0000
++++ xnp2-0.86/x11/soundmng.c	2021-11-04 00:00:00.000000000 +0000
+@@ -1179,8 +1179,9 @@
+ 		SNDBUF_FILLED_QUEUE_REMOVE_HEAD();
+ 		sndbuf_unlock();
+ 
+-		SDL_MixAudio(stream,
++		SDL_MixAudioFormat(stream,
+ 		    sndbuf->buf + (sndbuf->size - sndbuf->remain),
++		    AUDIO_S16SYS,
+ 		    sndbuf->remain, SDL_MIX_MAXVOLUME);
+ 		stream += sndbuf->remain;
+ 		len -= sndbuf->remain;
+@@ -1198,7 +1199,8 @@
+ 		sndbuf_unlock();
+ 	}
+ 
+-	SDL_MixAudio(stream, sndbuf->buf + (sndbuf->size - sndbuf->remain),
++	SDL_MixAudioFormat(stream, sndbuf->buf + (sndbuf->size - sndbuf->remain),
++	    AUDIO_S16SYS,
+ 	    len, SDL_MIX_MAXVOLUME);
+ 	sndbuf->remain -= len;
+ 
