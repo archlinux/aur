@@ -1,45 +1,74 @@
-# Maintainer: Arley Henostroza <arllk10[at]gmail[dot]com>
-
+# Maintainer: Ong Yong Xin <ongyongxin2020+github AT gmail DOT com>
+# Maintainer: Xuanrui Qi <me@xuanruiqi.com>
+# Contributor: Rayfalling <Rayfalling@outlook.com>
+# Contributor: facekapow, rayfalling, Ducksoft
 pkgname=genie-systemd-git
-_pkgname=genie
-pkgver=1.27.r5.gfd49285
+pkgver=1.44.r6.g52800cf
 pkgrel=1
-pkgdesc="A quick way into a systemd \"bottle\" for WSL (development version)"
+pkgdesc="A quick way into a systemd \"bottle\" for WSL"
 arch=('x86_64')
 url="https://github.com/arkane-systems/genie"
-license=('custom:The Unlicense')
-depends=('daemonize' 'dotnet-runtime>=3.1' 'dotnet-host>=3.1' 'inetutils')
-makedepends=('dotnet-sdk>=3.1')
-conflicts=('genie-systemd')
+license=('Unlicense')
+depends=('daemonize' 'dotnet-runtime>=5.0' 'dotnet-host>=5.0')
+makedepends=('dotnet-sdk>=5.0')
 provides=('genie-systemd')
-source=('git+https://github.com/arkane-systems/genie.git'
-        'LICENSE')
-sha256sums=('SKIP'
-            '88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd')
+conflicts=('genie-systemd')
+options=(!strip)
+source=("git+https://github.com/arkane-systems/genie.git")
+sha256sums=('SKIP')
+backup=('etc/genie.ini')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/$_pkgname"
+  cd genie
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
-  export DOTNET_CLI_TELEMETRY_OPTOUT=1
-  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
-  cd "$srcdir/$_pkgname/$_pkgname"
-  export DESTDIR=$pkgdir
-  ls -alh
-  make build
+  cd genie/binsrc
+  make -C genie
+  make -C runinwsl
 }
 
 package() {
-  cd "$srcdir/$_pkgname/$_pkgname"
-  make install
-  install -Dm 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd genie
+  
+  # Binaries
+  install -Dm4755 binsrc/genie/bin/Release/net5.0/linux-x64/publish/genie -t ${pkgdir}/usr/libexec/genie
+  install -Dm0755 binsrc/runinwsl/bin/Release/net5.0/linux-x64/publish/runinwsl -t ${pkgdir}/usr/libexec/genie
+
+  # Environment generator.
+  install -Dm0755 othersrc/scripts/80-genie-envar.sh -t ${pkgdir}/usr/libexec/genie
+
+  # Runtime dir mapping
+  install -Dm0755 othersrc/scripts/map-user-runtime-dir.sh -t ${pkgdir}/usr/libexec/genie
+  install -Dm0755 othersrc/scripts/unmap-user-runtime-dir.sh -t ${pkgdir}/usr/libexec/genie
+
+  # Configuration file.
+  install -Dm0644 othersrc/etc/genie.ini -t ${pkgdir}/etc
+
+  # genie symlink
   mkdir -p ${pkgdir}/usr/bin
-  chmod +x ${pkgdir}/usr/libexec/genie
-  ln -s /usr/libexec/genie/main/genie ${pkgdir}/usr/bin/genie
+  ln -s /usr/libexec/genie/genie ${pkgdir}/usr/bin/genie
+
+  # 10-genie-envar.sh symlinks
+  mkdir -p ${pkgdir}/usr/lib/systemd/user-environment-generators
+  mkdir -p ${pkgdir}/usr/lib/systemd/system-environment-generators
+  ln -s /usr/libexec/genie/80-genie-envar.sh ${pkgdir}/usr/lib/systemd/user-environment-generators/80-genie-envar.sh
+  ln -s /usr/libexec/genie/80-genie-envar.sh ${pkgdir}/usr/lib/systemd/system-environment-generators/80-genie-envar.sh
+
+	# Unit files.
+  install -Dm0644 othersrc/lib-systemd-system/wslg-xwayland.service -t ${pkgdir}/usr/lib/systemd/system
+  install -Dm0644 othersrc/lib-systemd-system/wslg-xwayland.socket -t ${pkgdir}/usr/lib/systemd/system
+  mkdir -p ${pkgdir}/usr/lib/systemd/system/sockets.target.wants
+  ln -s /usr/lib/systemd/system/wslg-xwayland.socket ${pkgdir}/usr/lib/systemd/system/sockets.target.wants/wslg-xwayland.socket
+
+  install -Dm0644 othersrc/lib-systemd-system/user-runtime-dir@.service.d/override.conf -t ${pkgdir}/usr/lib/systemd/system/user-runtime-dir@.service.d
+
+  # binfmt.d
+  install -Dm0644 othersrc/usr-lib/binfmt.d/WSLInterop.conf -t ${pkgdir}/usr/lib/binfmt.d
+
+  # man page
+  install -Dm0644 othersrc/docs/genie.8 -t ${pkgdir}/usr/share/man/man8
 }
+
+# vim:set ts=2 sw=2 et:
