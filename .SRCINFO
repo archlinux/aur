@@ -1,0 +1,16 @@
+pkgbase = breeze-lim
+	pkgdesc = Plugin based library to create window decorations
+	pkgver = 5.23.2
+	pkgrel = 1
+	url = https://kde.org/plasma-desktop/
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	provides = breeze
+	conflicts = breeze
+	source = https://invent.kde.org/agrinev/breeze/-/archive/lim/breeze-lim.zip
+	sha256sums = SKIP
+
+pkgname = breeze-lim
