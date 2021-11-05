@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-panwid
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A collection of widgets for urwid"
 url="https://github.com/tonycpsu/panwid"
@@ -17,7 +17,7 @@ source=(
   "exclude_tests.patch"
 )
 sha256sums=(
-  'e7932b92a87acc17d5e41690e0215b0bc07a94b97757974063ddb9d2a4adaf81'
+  '4c1718504799d98437cf5cfa4f596ae645c842e87ab67d37b4a4e2dfc1dd523c'
   'fa5bcff2ffbf73a214c52be6d2e31f1e6528a69a54478fdadded4038ecac7e22'
 )
 
