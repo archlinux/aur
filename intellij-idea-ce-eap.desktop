@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=_pkgver
+Type=Application
+Name=IntelliJ IDEA Community EAP
+Comment=Intelligent Java IDE - EAP version
+Exec="/opt/intellij-idea-ce-eap/bin/idea.sh" %f
+Icon=/opt/intellij-idea-ce-eap/bin/idea.png
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-idea-ce

@@ -14,7 +14,7 @@ _JBR=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=213.5449.25
+_buildver=213.5605.12
 _veryear=2021
 _verrelease=3
 _verextra=
@@ -27,42 +27,28 @@ url="http://www.jetbrains.com/idea/nextversion"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 if [ -n "${_JBR}" ]; then
-    source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}-${_JBR}.tar.gz")
-    sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" "))
+    _archive=("ideaIC-${_buildver}-${_JBR}.tar.gz")
 else
-    source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}.tar.gz")
-    sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" "))
+    _archive=("ideaIC-${_buildver}.tar.gz")
 fi
+source=("https://download.jetbrains.com/idea/${_archive}"
+        "intellij-idea-ce-eap.desktop")
+sha256sums=($(curl -s "https://download.jetbrains.com/idea/${_archive}.sha256" | cut -f1 -d" ")
+            '977f062d7db3a4c7bd50c24d2426e3226f7350c575f7cea6f5f50ea637bd1348')
 
 package() {
-    cd "$srcdir"
-    mkdir -p "${pkgdir}/opt/${pkgname}"
-    cp -R "${srcdir}/${_pkgname}-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
-(
-cat <<EOF
-[Desktop Entry]
-Version=$pkgver
-Type=Application
-Name=IntelliJ IDEA Community EAP
-Comment=Intelligent Java IDE - EAP version
-Exec="/opt/$pkgname/bin/idea.sh" %f
-Icon=/opt/$pkgname/bin/idea.png
-Comment=$pkgdesc
-Categories=Development;IDE;
-Terminal=false
-StartupNotify=true
-StartupWMClass=jetbrains-idea-ce
-EOF
-) > "${srcdir}/${pkgname}.desktop"
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+    cp -r --no-preserve='ownership' "${srcdir}/${_pkgname}-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
 
-    mkdir -p "${pkgdir}/usr/bin/"
-    mkdir -p "${pkgdir}/usr/share/applications/"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    for i in $(ls $srcdir/${_pkgname}-$_buildver/license/ ); do
-      ln -sf "${srcdir}/${_pkgname}-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
-    done
-    ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ce-eap"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    find "${srcdir}/${_pkgname}-${_buildver}/license/" -type f -exec \
+        install -Dm644 '{}' "${pkgdir}/usr/share/licenses/${pkgname}/" \;
+
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    sed -i "s/_pkgver/${pkgver}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+    install -dm755 -p "${pkgdir}/usr/bin/"
+    ln -s "${pkgdir}/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ce-eap"
 }
 
 # vim:set ts=4 sw=4 et:
