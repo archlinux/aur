@@ -1,0 +1,20 @@
+pkgbase = saturnon
+	pkgdesc = Treeview based file browser
+	pkgver = 0.40.2
+	pkgrel = 1
+	url = https://gitlab.com/TheDalaiAlpaca/saturnon
+	arch = any
+	license = GPL3
+	depends = bash>=4.2
+	depends = coreutils
+	depends = ncurses
+	depends = file
+	depends = util-linux
+	depends = grep
+	optdepends = less: for using saturnon to open textfiles
+	optdepends = vlc: for using saturnon with music.conf
+	optdepends = dbus: for using saturnon with music.conf
+	source = https://gitlab.com/TheDalaiAlpaca/saturnon/-/archive/0.40.2/saturnon-0.40.2.tar.gz
+	md5sums = SKIP
+
+pkgname = saturnon
