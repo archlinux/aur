@@ -6,6 +6,7 @@ pkgbase = simavr-picsimlab
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	depends = glu
 	depends = freeglut
 	provides = simavr
 	conflicts = simavr
