@@ -1,6 +1,6 @@
 pkgbase = librime-sbxlm-git
 	pkgdesc = Rime input method engine (声笔系列码 GIT version)
-	pkgver = 1.5.2.sbxlm.6a8d183
+	pkgver = 1.4.0.r278.g619f836
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/sbxlmdsl/librime
@@ -23,7 +23,7 @@ pkgbase = librime-sbxlm-git
 	provides = librime
 	conflicts = librime
 	source = 0001-fix-build.patch
-	source = git://github.com/sbxlmdsl/librime.git#commit=6a8d183dd1345a96f66bc74f0bc222e1b342cfc0
+	source = git://github.com/sbxlmdsl/librime.git#commit=619f836fe3532da1361ae1c4c41921e34af5b7aa
 	source = https://github.com/lotem/librime-octagram/archive/f92e083052b9983ee3cbddcda5ed60bb3c068e24/librime-octagram-f92e083052b9983ee3cbddcda5ed60bb3c068e24.tar.gz
 	source = https://github.com/hchunhui/librime-lua/archive/d45a41af2f9d731e3c1516a191cc3160e3cb8377/librime-lua-d45a41af2f9d731e3c1516a191cc3160e3cb8377.tar.gz
 	sha512sums = SKIP

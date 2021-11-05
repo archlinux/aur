@@ -5,8 +5,8 @@
 
 _pkgname=librime
 pkgname=$_pkgname-sbxlm-git
-pkgver=1.4.0.r275.g6a8d183
-_librimecommit=6a8d183dd1345a96f66bc74f0bc222e1b342cfc0
+pkgver=1.4.0.r278.g619f836
+_librimecommit=619f836fe3532da1361ae1c4c41921e34af5b7aa
 _octagramcommit=f92e083052b9983ee3cbddcda5ed60bb3c068e24
 _luacommit=d45a41af2f9d731e3c1516a191cc3160e3cb8377
 _charcodecommit=b569184772b12965e3ebe1dfd431026951fed81c
