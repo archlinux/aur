@@ -2,10 +2,11 @@
 # Maintainer: Allen Zhong <allen@moe.cat>
 # Contributor: Feishu Linux Team <contact@feishu.cn>
 pkgname=feishu-bin
-pkgver=4.8.0
-_pkgrel=24
+pkgver=4.11.6
+_pkgrel=2
 _pkgtyp=beta
-pkgrel=3
+_pkghash=v5x9pa
+pkgrel=1
 pkgdesc="Linux client of Feishu (Lark) from Bytedance."
 arch=('x86_64')
 url="https://www.feishu.cn/"
@@ -17,8 +18,8 @@ conflicts=('feishu')
 provides=('bytedance-feishu' 'feishu')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://sf3-cn.feishucdn.com/obj/suite-public-file-cn/b4f6bd/bytedance-feishu-${_pkgtyp}_${pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('0a7acca5f0af6cc23e770aaeb917ac1e9c8f534d14426953b2ae5bf0d61c27ec')
+source=("https://sf3-cn.feishucdn.com/obj/suite-public-file-cn/${_pkghash}/bytedance-feishu-${_pkgtyp}_${pkgver}-${_pkgrel}_amd64.deb")
+sha256sums=('9a844502ee721defb1bfe37764c7a3c0fe1dc64c99185ae9b6368826e2fefb5a')
 
 package(){
   # Extract package data
@@ -35,4 +36,7 @@ package(){
   mv "${pkgdir}"/usr/share/appdata/{bytedance-,}feishu.appdata.xml
   mv "${pkgdir}"/usr/share/man/man1/{bytedance-feishu,feishu}.1.gz
   mv "${pkgdir}"/usr/share/doc/{bytedance-feishu-${_pkgtyp},feishu}
+
+  # Fix directory permissions
+  find "${pkgdir}" -type d | xargs chmod 755
 }
