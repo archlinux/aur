@@ -1,0 +1,18 @@
+pkgbase = lxrad
+	pkgdesc = linux x11 rad tools
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/lcgamboa/lxrad
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = doxygen
+	makedepends = openal
+	makedepends = wxgtk2
+	depends = lunasvg
+	source = https://github.com/lcgamboa/lxrad/archive/refs/tags/v0.8.9.tar.gz
+	source = 0001-use-systems-lunasvg.patch
+	sha256sums = 63c89cc3253823c20aaaf38543eb5682362b76b187cef86a725e23343ba8b77f
+	sha256sums = a2d3583ca4865393382de5298cfe8f0fcba0aafc76cfbfdb9fbcadb8887722c3
+
+pkgname = lxrad

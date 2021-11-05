@@ -1,0 +1,37 @@
+diff -abBur lxrad-0.8.9/layout/layout2.h lxrad-0.8.9-patched/layout/layout2.h
+--- lxrad-0.8.9/layout/layout2.h	2021-07-24 20:47:09.000000000 +0200
++++ lxrad-0.8.9-patched/layout/layout2.h	2021-11-05 11:15:18.017354672 +0100
+@@ -28,7 +28,7 @@
+ #ifndef CPWINDOW2 
+ #define CPWINDOW2
+ 
+-#include<lxrad/lxrad.h>
++#include "../include/lxrad.h"
+ 
+ class CPWindow2:public CPWindow
+ {
+diff -abBur lxrad-0.8.9/lib/lxutils.cc lxrad-0.8.9-patched/lib/lxutils.cc
+--- lxrad-0.8.9/lib/lxutils.cc	2021-07-24 20:47:09.000000000 +0200
++++ lxrad-0.8.9-patched/lib/lxutils.cc	2021-11-05 11:25:30.536357153 +0100
+@@ -38,7 +38,8 @@
+ 
+ #include <iostream>
+ #include <cstring>
+-#include"../../lunasvg/include/document.h"
++
++#include <lunasvg.h>
+ 
+ using namespace lunasvg;
+ 
+diff -abBur lxrad-0.8.9/lib/Makefile.in lxrad-0.8.9-patched/lib/Makefile.in
+--- lxrad-0.8.9/lib/Makefile.in	2021-07-24 20:47:09.000000000 +0200
++++ lxrad-0.8.9-patched/lib/Makefile.in	2021-11-05 11:26:08.649862762 +0100
+@@ -5,7 +5,7 @@
+ LIBCFLAGS := $(CFLAGS) -fpic
+ ARCFLAGS := $(CFLAGS) -static
+ 
+-SVGLIB := -Wl,--whole-archive ../../lunasvg/build/liblunasvg.a -Wl,--no-whole-archive 
++SVGLIB := -Wl,--whole-archive -llunasvg -Wl,--no-whole-archive 
+ 
+ # .ao files are used for static archives
+ %.ao: %.cc
