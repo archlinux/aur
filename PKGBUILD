@@ -20,43 +20,53 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
               'D238EA65D64C67ED4C3073F28A861B1C7EFD60D9')
 
 build() {
-  cd "${srcdir}/${pkgname_}-${pkgver}"
-  ./configure --prefix=/usr \
-	--libexecdir=/usr/lib \
-	--enable-noexecstack
-  make
+    cd "${srcdir}/${pkgname_}-${pkgver}"
+
+    # Fix multiple definitions issue
+    env LDFLAGS="-z muldefs" \
+    ./configure \
+        --prefix=/usr/ \
+        --exec-prefix=/usr/ \
+        --libexecdir=/usr/lib/ \
+        --enable-maintainer-mode \
+        --enable-large-secmem \
+        --enable-noexecstack
+    make
 
 # Further options to prevent DNS leaks when working with TOR
 # https://trac.torproject.org/projects/tor/ticket/2846
 
-# --disable-dns-cert \
-# --disable-dns-pka \
-# --disable-dns-srv \
-# --disable-ldap \
+#    --disable-dns-pka \
+#    --disable-dns-srv \
+#    --disable-dns-cert \
+#    --disable-ldap \
 
-  #ln -s ${pkgname}-${pkgver}/scripts .. # seems obsolete now
 }
 
 check() {
-  cd "$srcdir/$pkgname_-$pkgver"
-  make -k check #All 27 tests passed
+    cd "${srcdir}/${pkgname_}-${pkgver}"
+    # All 27 tests should be passed successfully
+    make -k check
 }
 
 package () {
-  cd "${srcdir}/${pkgname_}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgname_}-${pkgver}"
 
-  # Fix file conflicts with gnupg2 pkg. Cd into directories to prevent
-  # unintentional transformation of the full path.
-  cd "$pkgdir/usr/share/man/man1"
-  rename gpg gpg1 gpg*
+    make DESTDIR="${pkgdir}" install
 
-  cd "$pkgdir/usr/bin"
-  rename gpg gpg1 gpg*
+    # Renaming to fix file name conflicts with gnupg (gnupg2) package
 
-#   cd "$pkgdir/usr/share/man/man7"
-#   rename gnupg gnupg1 gnupg*
+    cd "${pkgdir}"
 
-  # Correct multiple renames if makepkg is rerun.
-  find "$pkgdir" -name '*pg11*' -exec rename pg11 pg1 '{}' \+
+    find ./usr/bin ./usr/share/man/man1/ -type f -regextype 'posix-extended' -regex '.*/gpg[^-./]*' -exec mv -v '{}' '{}1' \;
+
+    find ./usr/bin ./usr/share/man/man1/ -type f -regextype 'posix-extended' -regex '.*/gpg[-.].*' -exec rename -v gpg gpg1 '{}' \;
+
+    find ./usr/bin ./usr/share/man/man1/ -type f -regextype 'posix-extended' -regex '.*/gpgv[-.].*' -exec rename -v gpgv gpgv1 '{}' \;
+
+    find ./ -type f -regextype 'posix-extended' -regex '.*/gnupg[^1/]*' -exec rename -v gnupg gnupg1 '{}' \;
+
+    find ./ -type d -regextype 'posix-extended' -regex '.*/gnupg[^1/]*' -exec rename -v gnupg gnupg1 '{}' \+
+
 }
+
