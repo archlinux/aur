@@ -3,8 +3,8 @@
 pkgname=buck
 pkgver=2020.05.14.01
 pkgrel=1
-pkgdesc='A fast build system that encourages the creation of small, \
-	   reusable modules over a variety of platforms and languages.'
+pkgdesc="A fast build system that encourages the creation of small,`
+  ` reusable modules over a variety of platforms and languages."
 arch=('any')
 depends=('python2')
 makedepends=('java-environment=11' 'ant')
