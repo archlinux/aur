@@ -1,0 +1,16 @@
+pkgbase = picsimlab
+	pkgdesc = Programmable IC Simulator Laboratory
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/lcgamboa/picsimlab
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	depends = lxrad
+	depends = simavr-picsimlab
+	optdepends = cutecom
+	conflicts = picsimlab-bin
+	source = https://github.com/lcgamboa/picsimlab/archive/refs/tags/v0.8.9.tar.gz
+	sha256sums = 9249bf1f3a37afed25fb16eb9f43a9bb61a32ba4bfd9ce939469d7d91befa704
+
+pkgname = picsimlab
