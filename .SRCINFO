@@ -1,7 +1,7 @@
 pkgbase = phoc-embedded-wlroots
 	pkgdesc = Wlroots based Phone compositor (matching wlroots embedded)
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Phosh/phoc
 	arch = x86_64
 	arch = aarch64
@@ -13,11 +13,12 @@ pkgbase = phoc-embedded-wlroots
 	makedepends = meson
 	makedepends = vala
 	depends = mutter
+	depends = seatd
 	depends = xcb-util-wm
 	depends = xcb-util-errors
 	provides = phoc
 	conflicts = phoc
-	source = git+https://gitlab.gnome.org/World/Phosh/phoc.git#tag=v0.8.0
+	source = git+https://gitlab.gnome.org/World/Phosh/phoc.git#tag=v0.9.0
 	source = git+https://source.puri.sm/Librem5/wlroots.git
 	sha256sums = SKIP
 	sha256sums = SKIP
