@@ -1,6 +1,6 @@
 pkgbase = opensnitch-ebpf-module
 	pkgdesc = eBPF process monitor module for opensnitch
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/evilsocket/opensnitch/tree/master/ebpf_prog
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = opensnitch-ebpf-module
 	makedepends = llvm
 	makedepends = bc
 	makedepends = rsync
-	depends = opensnitch=1.4.1
-	source = opensnitch-ebpf-module-1.4.1_opensnitch-1.4.1.tar.gz::https://github.com/evilsocket/opensnitch/archive/v1.4.1.tar.gz
-	source = opensnitch-ebpf-module-1.4.1_linux-5.8.tar.gz::https://github.com/torvalds/linux/archive/v5.8.tar.gz
-	b2sums = f04866a41306f92539a6763bd03994d8a0fa414276a9ad529b09098451e1fd295f8093246a5782add25540380c1d4bdb950a216ec5faef7d024400812638d2df
+	depends = opensnitch=1.4.2
+	source = opensnitch-ebpf-module-1.4.2_opensnitch-1.4.2.tar.gz::https://github.com/evilsocket/opensnitch/archive/v1.4.2.tar.gz
+	source = opensnitch-ebpf-module-1.4.2_linux-5.8.tar.gz::https://github.com/torvalds/linux/archive/v5.8.tar.gz
+	b2sums = 986612523de0e852fdf2fce109fdb3119fe54d79e46327a4d6ec0ea313adbc8cb13aca0903ed81bd25700d69a96f171eb4ece5a4303476ced4fa5c1af12a6f95
 	b2sums = 71bdb39b5477d244cfc735e98387f74bffd7d35f32faf7db6097d2d51d5ee9af644c1ad6a9d1a8f58713689e66ca8f881e0728031a0903e2ef5f82b209e516da
 
 pkgname = opensnitch-ebpf-module

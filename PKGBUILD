@@ -5,7 +5,7 @@ _base='opensnitch'
 _url="https://github.com/$_author/$_base"
 _kver='5.8'
 pkgname="$_base-ebpf-module"
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="eBPF process monitor module for $_base"
 arch=('any')
@@ -15,8 +15,8 @@ depends=("$_base=$pkgver")
 makedepends=('clang' 'llvm' 'bc' 'rsync')
 source=("$pkgname-${pkgver}_$_base-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz"
 		"$pkgname-${pkgver}_linux-$_kver.tar.gz::https://github.com/torvalds/linux/archive/v$_kver.tar.gz")
-b2sums=('f04866a41306f92539a6763bd03994d8a0fa414276a9ad529b09098451e1fd295f8093246a5782add25540380c1d4bdb950a216ec5faef7d024400812638d2df'
-		'71bdb39b5477d244cfc735e98387f74bffd7d35f32faf7db6097d2d51d5ee9af644c1ad6a9d1a8f58713689e66ca8f881e0728031a0903e2ef5f82b209e516da')
+b2sums=('986612523de0e852fdf2fce109fdb3119fe54d79e46327a4d6ec0ea313adbc8cb13aca0903ed81bd25700d69a96f171eb4ece5a4303476ced4fa5c1af12a6f95'
+        '71bdb39b5477d244cfc735e98387f74bffd7d35f32faf7db6097d2d51d5ee9af644c1ad6a9d1a8f58713689e66ca8f881e0728031a0903e2ef5f82b209e516da')
 
 #pkgver() {
 #	curl --silent "https://api.github.com/repos/$_author/$_base/releases/latest" | grep '"tag_name":' | perl -ne '/(?<="tag_name":).*"v(.+?)"/; print $1' # Incompatible with checksums and bumping _kver :(
