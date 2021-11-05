@@ -1,6 +1,9 @@
-# Maintainer: Saren Arterius <saren@wtako.net>
+# Patched package:
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
+# Co-maintainer: Saren Arterius <saren@wtako.net>
+# Co-maintainer: Sung Mingi <FiestaLake@protonmail.com>
 
+# Official package:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
@@ -14,7 +17,7 @@ _merge_requests_to_use=()
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=40.5+7+gd52593ebc3
+pkgver=41.1
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -26,12 +29,12 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols)
-checkdepends=(xorg-server-xvfb pipewire-media-session)
-provides=(mutter mutter-781835-workaround libmutter-8.so)
+checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
+provides=(mutter mutter-781835-workaround libmutter-9.so)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=d52593ebc3d8879f86a3ad879829b35088583411  # tags/40.5^7
+_commit=8de96d3d7c40e6b5289fd707fdd5e6d604f33e8f  # tags/41.1^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -162,8 +165,7 @@ _check() (
 )
 
 check() {
-  dbus-run-session xvfb-run \
-    -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
+  dbus-run-session xvfb-run -s '-nolisten local' \
     bash -c "$(declare -f _check); _check"
 }
 
