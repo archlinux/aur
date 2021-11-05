@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=waypoint
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A tool to build, deploy, and release any application on any platform"
 arch=('x86_64')
@@ -10,8 +10,15 @@ license=('MPL2')
 makedepends=('go' 'go-bindata')
 optdepends=('docker: for local development server')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hashicorp/waypoint/archive/v$pkgver.tar.gz")
-sha512sums=('527e1e371c6bcb5159548de27796b815969b928a6fb56d7e9199c51a28ea7a983b93a7973dd5b0283ce5254127d7176ae9f0b6a428908e98a84b21d448a2b823')
-b2sums=('81d3846378804a24d24ea711233507a128e69eee7ee5f0d0befbb6763ce3c74c930f3393c6a8ad8900bf1a777fa410ec1d807469743ef841e55f4158dece1b6d')
+sha512sums=('33f762c6a5e06670d70c32b5d2f1000d93c825d0af5deef0db74a474d5f99098546045186dcb3e856d1d674dff7cd3b8e82298d6f1caa788f01d81fe6142b090')
+b2sums=('5349891f0e2b269e29e0a77b2ff0e4ec26f52e3d5a33941370ed32f53952c3f9d551509e6a406819a10fba8a0c35ddd474730c12ba6582cd19b90711a0d14cf2')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  # download dependencies
+  go mod download
+}
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
