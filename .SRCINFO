@@ -1,0 +1,13 @@
+pkgbase = avml
+	pkgdesc = A portable volatile memory acquisition tool for Linux
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/microsoft/avml
+	arch = x86_64
+	license = MIT
+	makedepends = musl
+	makedepends = rust-musl
+	source = https://github.com/microsoft/avml/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = e9ae6f99c5278b7acf732e85753e9befcd76937e2343cd8785e096ed03ffe8d2
+
+pkgname = avml
