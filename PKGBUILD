@@ -1,4 +1,5 @@
-# Maintainer: Dominik Schrempf <dominik dot schrempf at gmail dot com>
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Dominik Schrempf <dominik dot schrempf at gmail dot com>
 
 # XXX: The following warning cannot be removed because CMAKE stores the build
 # directory in the executable 'iqtree'.
@@ -7,7 +8,7 @@
 # usr/bin/iqtree
 
 pkgname=iqtree
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood; multicore version (OMP)"
 arch=(x86_64)
@@ -15,7 +16,7 @@ url="http://www.iqtree.org/"
 license=('GPL2')
 depends=('cmake' 'boost' 'eigen' 'glibc' 'libstdc++5' 'zlib')
 source=("https://github.com/iqtree/iqtree2/archive/v${pkgver}.tar.gz")
-md5sums=('83e85d78b096b48607b7dbf91f8211a9')
+md5sums=('d20ca3e053852574dcbdd218f4e6ebfc')
 
 build() {
   cd iqtree2-${pkgver}
@@ -26,6 +27,8 @@ build() {
 }
 
 package() {
-  cd iqtree2-${pkgver}
-  install -D -m 755 build/iqtree2 ${pkgdir}/usr/bin/iqtree2
+  mkdir -p ${pkgdir}/usr/bin
+  cd "$srcdir"/iqtree2-${pkgver}/build 
+  chmod +x iqtree2
+  mv iqtree2 ${pkgdir}/usr/bin/iqtree
 }
