@@ -1,7 +1,7 @@
 # Maintainer: Dan Ginovker <danielginovker@gmail.com>
 # Contributor: Jae Beojkkoch <jae@jae.moe>
 
-pkgname=openrsc-launcher
+pkgname=openrsc-launcher-bin
 pkgver=20211006.185500
 pkgrel=1
 pkgdesc="Authentic, Open Source Runescape Classic Game Launcher"
