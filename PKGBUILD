@@ -64,6 +64,7 @@ build() {
         -DSLIC3R_WX_STABLE=ON \
         -DSLIC3R_GTK=3 \
         -DSLIC3R_STATIC=OFF \
+        -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB
 
     ninja
 }
