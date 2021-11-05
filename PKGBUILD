@@ -3,7 +3,8 @@
 
 pkgname="extrattor"
 pkgver="1.3"
-pkgrel="1"
+pkgrel="2"
+epoch="1"
 pkgdesc="A simple bash wrapper to manage one or more archives from the terminal"
 arch=("x86_64")
 url="https://github.com/Mirko-r/extrattor"
