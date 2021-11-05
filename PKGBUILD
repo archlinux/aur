@@ -4,7 +4,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-dynamic-buffering
-pkgver=40.5
+pkgver=41.1
 pkgrel=1
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -16,11 +16,11 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols)
-checkdepends=(xorg-server-xvfb pipewire-media-session)
-provides=(mutter libmutter-8.so)
+checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
+provides=(mutter libmutter-9.so)
 conflicts=(mutter)
 groups=(gnome)
-_commit=2b2b3ab8502a5bcc2436e169279d2421f6f1a605  # tags/40.5^0
+_commit=8de96d3d7c40e6b5289fd707fdd5e6d604f33e8f  # tags/41.1^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch')
 sha256sums=('SKIP'
@@ -65,8 +65,7 @@ _check_internal() (
 )
 
 _check_disabled() {
-  dbus-run-session xvfb-run \
-    -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
+  dbus-run-session xvfb-run -s '-nolisten local' \
     bash -c "$(declare -f _check_internal); _check_internal"
 }
 

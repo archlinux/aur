@@ -1,6 +1,6 @@
 pkgbase = mutter-dynamic-buffering
 	pkgdesc = A window manager for GNOME (with dynamic triple/double buffering)
-	pkgver = 40.5
+	pkgver = 41.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = mutter-dynamic-buffering
 	license = GPL
 	checkdepends = xorg-server-xvfb
 	checkdepends = pipewire-media-session
+	checkdepends = python-dbusmock
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = egl-wayland
@@ -32,9 +33,9 @@ pkgbase = mutter-dynamic-buffering
 	depends = graphene
 	depends = libxkbfile
 	provides = mutter
-	provides = libmutter-8.so
+	provides = libmutter-9.so
 	conflicts = mutter
-	source = mutter-dynamic-buffering::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=2b2b3ab8502a5bcc2436e169279d2421f6f1a605
+	source = mutter-dynamic-buffering::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=8de96d3d7c40e6b5289fd707fdd5e6d604f33e8f
 	source = mr1441.patch
 	sha256sums = SKIP
 	sha256sums = 07d3c9d6740e509b79adc4ca93d31e655317758ac2526b104a0c5c7fa435ebf0
