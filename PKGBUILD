@@ -62,10 +62,6 @@ prepare() {
     patch -N "${srcdir}/${pkgname%-synthesizer}/Builds/LinuxMakefile/Makefile" "${srcdir}/Makefile.patch"
 }
 
-pkgver() {
-    "${srcdir}/JUCE/extras/Projucer/Builds/LinuxMakefile/build/Projucer" --get-version "${srcdir}/${pkgname%-synthesizer}/Odin.jucer"
-}
-
 build() {
     cd "${srcdir}/odin2/Builds/LinuxMakefile"
     git checkout v2.3.1
