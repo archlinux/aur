@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=foss-fpga-tools-nightly
-pkgver=20211104
+pkgver=20211105
 pkgrel=1
 epoch=1
 pkgdesc="Meta package for the nightly version of the FOSS FPGA Tools"
@@ -11,15 +11,15 @@ license=("custom:ISC")
 groups=()
 options=("!strip")
 depends=(
-	"yosys-nightly>=yosys_0.9_5682_g11e58d54_20211104"
-	"symbiyosys-nightly>=5d19e46_20211104"
-	"nextpnr-generic-nightly>=06d58e6e_20211104"
-	"icestorm-nightly>=83b8ef9_20211104"
-	"nextpnr-ice40-nightly>=06d58e6e_20211104"
-	"prjtrellis-nightly>=1.1_20211104"
-	"nextpnr-ecp5-nightly>=06d58e6e_20211104"
-	"prjoxide-nightly>=318331f_20211104"
-	"nextpnr-nexus-nightly>=06d58e6e_20211104"
+	"yosys-nightly>=yosys_0.9_5682_g11e58d54_20211105"
+	"symbiyosys-nightly>=5d19e46_20211105"
+	"nextpnr-generic-nightly>=06d58e6e_20211105"
+	"icestorm-nightly>=83b8ef9_20211105"
+	"nextpnr-ice40-nightly>=06d58e6e_20211105"
+	"prjtrellis-nightly>=1.1_20211105"
+	"nextpnr-ecp5-nightly>=06d58e6e_20211105"
+	"prjoxide-nightly>=318331f_20211105"
+	"nextpnr-nexus-nightly>=06d58e6e_20211105"
 )
 
 package() {
