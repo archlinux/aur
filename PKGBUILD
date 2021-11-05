@@ -3,8 +3,9 @@
 pkgname=hotspotshield-bin
 pkgver=1.0.7
 pkgrel=1
+depends=('dbus' 'libnl' 'networkmanager')
 arch=('x86_64')
-pkgdesc='Stay secure and private on your Linux.'
+pkgdesc='VPN client for Linux, Stay secure and private on your Linux.'
 url='https://www.hotspotshield.com/'
 license=('other')
 source=("$pkgname-$pkgver.deb::https://control.kochava.com/v1/cpi/click?campaign_id=kohotspot-shield-web-linux-a29j1rn1c15263ed2db753&network_id=5798&ko_exchange=true&device_id=device_id&site_id=1&aftr=%7B%22vh%22%3A%22ext13a73100-89a7-11eb-8ab7-395ddfe0c16e%22%2C%22referrer%22%3A%22https%3A%2F%2Faccount.hotspotshield.com%2F%22%2C%22af_medium%22%3A%22serp%22%2C%22af_source%22%3A%22duckduckgo%22%2C%22af_campaign%22%3A%22seo-organic%22%7D&aftr_source=%2Fvpn%2Fvpn-for-linux%2F")
