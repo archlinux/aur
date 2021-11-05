@@ -1,7 +1,7 @@
 # Maintainer: Philipp Kühn <p dot kuehn at posteo dot de>
 pkgname=sioyek-git
-pkgver=0.31.6
-pkgrel=4
+pkgver=20211105
+pkgrel=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=('any')
 license=('GPL3')
@@ -11,6 +11,11 @@ depends=('qt5-base' 'qt5-3d' 'harfbuzz' 'gzip')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/ahrm/sioyek")
 md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/sioyek-git"
+	git log -1 --format="%cd" --date=short | sed 's|-||g'
+}
 
 prepare() {
 	cd "$pkgname"
