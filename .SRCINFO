@@ -1,5 +1,5 @@
 pkgbase = openrsc-launcher-bin
-	pkgdesc = Authentic, Open Source Runescape Classic Game Launcher
+	pkgdesc = Authentic, Open Source Runescape Classic Game (Launcher)
 	pkgver = 20211006.185500
 	pkgrel = 1
 	url = https://rsc.vet

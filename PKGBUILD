@@ -4,7 +4,7 @@
 pkgname=openrsc-launcher-bin
 pkgver=20211006.185500
 pkgrel=1
-pkgdesc="Authentic, Open Source Runescape Classic Game Launcher"
+pkgdesc="Authentic, Open Source Runescape Classic Game (Launcher)"
 arch=('x86_64')
 url="https://rsc.vet"
 license=('GPL')
