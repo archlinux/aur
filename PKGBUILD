@@ -1,7 +1,7 @@
 # Maintainer: Vasil Bakalov <jens300304@gmail.com>
 pkgname=danser-git
 url="https://github.com/Wieku/danser-go"
-pkgver=0.6.5.r0.g37218a72
+pkgver=0.6.6.r0.g948d25a9
 pkgrel=1
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go (git version)"
 arch=('any')
