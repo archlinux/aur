@@ -1,0 +1,16 @@
+pkgbase = vim-speeddating-git
+	pkgdesc = Proper date incrementing for Vim
+	pkgver = 20151024.r6.g95da3d7
+	pkgrel = 1
+	url = https://github.com/tpope/vim-speeddating
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-speeddating
+	conflicts = vim-speeddating
+	source = vim-speeddating-git::git+https://github.com/tpope/vim-speeddating
+	md5sums = SKIP
+
+pkgname = vim-speeddating-git
