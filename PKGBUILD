@@ -21,7 +21,7 @@ depends=(python python-opencv python-yaml usbutils)
 install=linux-enable-ir-emitter.install
 
 source=("https://github.com/EmixamPP/linux-enable-ir-emitter/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e66501bb370c23cdd5957e1f771067d60a3b94789c0dc983a445664bd19ad13d')
+sha256sums=('14de62e082d757f9d750a4f235fd963e45aa84ea98ad5c234eb3eff240aee1db')
 
 build() {
     make -C "${srcdir}/${pkgname}-${pkgver}/sources/driver/uvc"
