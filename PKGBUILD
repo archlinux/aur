@@ -1,15 +1,15 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=ima-evm-utils-git
-pkgver=v1.3.2.r0.g00a0e66
+pkgver=v1.4.r0.g318a3e6
 pkgrel=1
 pkgdesc='Produce and verify digital signatures which are used by Linux kernel integrity subsystem'
 arch=('x86_64')
-url='https://sourceforge.net/p/linux-ima/ima-evm-utils/ci/master/tree/'
+url='https://github.com/mimizohar/ima-evm-utils'
 license=('GPL')
 depends=('docbook-xml' 'ibm-tpm2-tss' 'openssl' 'tpm2-tss')
 provides=('ima-evm-utils')
 conflicts=('ima-evm-utils')
-source=("git+https://git.code.sf.net/p/linux-ima/ima-evm-utils")
+source=('git+https://github.com/mimizohar/ima-evm-utils.git')
 sha256sums=('SKIP')
 
 pkgver() {
