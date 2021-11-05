@@ -1,7 +1,7 @@
 # Maintainer: Markus Kannisto <m.kannisto01@gmail.com>
 
 pkgname=scribbit
-pkgver=2021.1105.1
+pkgver=2021.1105.2
 pkgrel=1
 
 dotnet_version=5.0
@@ -11,8 +11,8 @@ arch=('x86_64')
 license=('GLP')
 url='https://github.com/Marakusa/Scribbit/'
 
-depends=("dotnet-runtime>=$dotnet_version.0")
-makedepends=(git "dotnet-sdk>=$dotnet_version.5.sdk202")
+depends=("dotnet-runtime")
+makedepends=("git" "dotnet-sdk")
 
 source=(
     "scribbit::git+https://github.com/Marakusa/Scribbit.git#tag=$pkgver"
