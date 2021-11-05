@@ -1,17 +1,16 @@
 pkgbase = python-matrix-synapse-shared-secret-auth-git
 	pkgdesc = Shared Secret Authenticator password provider module for Matrix Synapse
-	pkgver = 1.0.1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/devture/matrix-synapse-shared-secret-auth
 	arch = any
 	license = AGPL
 	makedepends = python-setuptools
 	depends = python
-	depends = python-twisted
+	depends = matrix-synapse
 	provides = python-matrix-synapse-shared-secret-auth
 	conflicts = python-matrix-synapse-shared-secret-auth
 	source = git+https://github.com/devture/matrix-synapse-shared-secret-auth.git
 	sha256sums = SKIP
 
 pkgname = python-matrix-synapse-shared-secret-auth-git
-
