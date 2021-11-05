@@ -1,6 +1,6 @@
 pkgbase = mpv-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (git version)
-	pkgver = 0.33.0_360_gb3f3c3fec0
+	pkgver = 0.34.0_12_ga73e5cdbed
 	pkgrel = 1
 	url = https://mpv.io
 	install = mpv.install
@@ -15,7 +15,8 @@ pkgbase = mpv-git
 	makedepends = vulkan-headers
 	depends = ffmpeg
 	depends = hicolor-icon-theme
-	optdepends = youtube-dl: for --ytdl
+	optdepends = yt-dlp: for video-sharing websites playback (preferred)
+	optdepends = youtube-dl: for video-sharing websites playback
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs

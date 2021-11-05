@@ -47,7 +47,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.33.0_360_gb3f3c3fec0
+pkgver=0.34.0_12_ga73e5cdbed
 pkgrel=1
 _waf_version=2.0.20
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
@@ -56,7 +56,8 @@ license=('GPL')
 url='https://mpv.io'
 _undetected_depends=('hicolor-icon-theme')
 depends=('ffmpeg' "${_undetected_depends[@]}")
-optdepends=('youtube-dl: for --ytdl')
+optdepends=('yt-dlp: for video-sharing websites playback (preferred)'
+            'youtube-dl: for video-sharing websites playback')
 makedepends=('git' 'python-docutils' 'pacman-contrib' 'vulkan-headers')
 provides=('mpv')
 conflicts=('mpv')
