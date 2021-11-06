@@ -1,13 +1,13 @@
 pkgbase = jamesdsp-pulse-git
 	pkgdesc = An audio effect processor for PulseAudio clients
-	pkgver = 2.0.r3.gb6354fa
+	pkgver = 2.2.r4.gd8d41be
 	pkgrel = 1
 	url = https://github.com/Audio4Linux/JDSP4Linux
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = glibmm
-	depends = gst-plugins-base
+	depends = gst-plugins-good
 	depends = libpulse
 	depends = qt5-svg
 	provides = jamesdsp-pulse

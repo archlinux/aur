@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jamesdsp-pulse-git
-pkgver=2.0.r3.gb6354fa
+pkgver=2.2.r4.gd8d41be
 pkgrel=1
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
 license=('GPL3')
-depends=('glibmm' 'gst-plugins-base' 'libpulse' 'qt5-svg')
+depends=('glibmm' 'gst-plugins-good' 'libpulse' 'qt5-svg')
 makedepends=('git')
 provides=("${pkgname%-git}" 'jamesdsp')
 conflicts=("${pkgname%-git}" 'jamesdsp' 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
@@ -43,10 +43,10 @@ build() {
 
 package() {
   cd "$srcdir/JDSP4Linux"
-  install -Dm755 build/src/jamesdsp -t "$pkgdir/usr/bin"
+  install -Dm755 build/src/jamesdsp -t "$pkgdir/usr/bin/"
   install -Dm644 resources/icons/icon.png \
     "$pkgdir/usr/share/pixmaps/jamesdsp.png"
   install -Dm644 resources/icons/icon.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/jamesdsp.svg"
-  install -Dm644 "$srcdir/jamesdsp.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/jamesdsp.desktop" -t "$pkgdir/usr/share/applications/"
 }
