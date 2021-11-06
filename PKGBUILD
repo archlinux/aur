@@ -27,4 +27,4 @@ package() {
    install -Dm755 gqthres.desktop ${pkgdir}/usr/share/applications/gqthres.desktop
    install -Dm755 gqthres.png ${pkgdir}/usr/share/pixmaps/gqthres.png
 }  
-sha256sums=('aad104c763ae6ab3fa808f3e2a54965774963dd9b13ba1169ec1400cdcf0175d')
+sha256sums=('7bf4e333d8bfb58a449a96f42eac994581532a436fefcde92984d5656ea34d7d')
