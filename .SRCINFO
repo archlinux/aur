@@ -1,0 +1,12 @@
+pkgbase = piawgcli
+	pkgdesc = A tool to quickly and easily create WireGuard configuration files for PIA
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://gitlab.com/ddb_db/piawgcli
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	source = https://gitlab.com/ddb_db/piawgcli/-/archive/v0.0.8/piawgcli-v0.0.8.tar.bz2
+	sha384sums = 6d939de5b32c9616afa4f126ecdf8bbc18bb899508842e75216f3817add9b1d06f8ad35074416c6a219f6f06796ea51e
+
+pkgname = piawgcli
