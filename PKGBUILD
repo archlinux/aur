@@ -23,7 +23,7 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    bsdtar -xf `${srcdir}/${pkgname%-git}/release/MS-Office-Electron-Setup-0.3.6-x86_64.deb` -C "${srcdir}" --include data.tar.bz2
+    bsdtar -xf "${srcdir}/${pkgname%-git}/release/MS-Office-Electron-Setup-${pkgver}-x86_64.deb" -C "${srcdir}" --include data.tar.bz2
     bsdtar -xf ${srcdir}/data.tar.bz2 -C ${pkgdir}
 	install -d ${pkgdir}/usr/bin/
 	ln -s /opt/MS-Office-Electron/MS-Office-Electron ${pkgdir}/usr/bin/MS-Office-Electron
