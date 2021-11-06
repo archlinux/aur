@@ -10,7 +10,7 @@ license=('MIT')
 depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'util-linux-libs' 'xdg-utils')
 makedepends=('git' 'yarn' 'nodejs')
 provides=("${pkgname%-git}" 'MS-Office-Electron')
-conflicts=("${pkgname%-git}" 'MS-Office-Electron')
+conflicts=("ms-office-electron-bin")
 source=("${pkgname%-git}::git+https://github.com/agam778/MS-Office-Electron.git")
 sha256sums=('SKIP')
 

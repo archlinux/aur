@@ -7,6 +7,7 @@ pkgbase = ms-office-electron-git
 	license = MIT
 	makedepends = git
 	makedepends = yarn
+	makedepends = nodejs
 	depends = at-spi2-core
 	depends = desktop-file-utils
 	depends = gtk3
@@ -20,8 +21,7 @@ pkgbase = ms-office-electron-git
 	depends = xdg-utils
 	provides = ms-office-electron
 	provides = MS-Office-Electron
-	conflicts = ms-office-electron
-	conflicts = MS-Office-Electron
+	conflicts = ms-office-electron-bin
 	source = ms-office-electron::git+https://github.com/agam778/MS-Office-Electron.git
 	sha256sums = SKIP
 
