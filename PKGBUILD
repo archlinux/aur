@@ -16,7 +16,8 @@ provides=('bitwig-studio-earlyaccess')
 replaces=()
 conflicts=('bitwig-studio-legacy' 'bitwig-8-track' 'bitwig-studio')
 options=(!strip)
-source=("https://downloads.bitwig.com/beta/${_pkgver}/bitwig-studio-${_pkgver}.deb")
+source=("https://downloads.bitwig.com/beta/4.1/bitwig-studio-${_pkgver}.deb")
+#source=("https://downloads.bitwig.com/beta/${_pkgver}/bitwig-studio-${_pkgver}.deb")
 sha256sums=('1693f1ab9b2bf5911d0b0eee003616caa6ab3e453b7622a4d52bc0cc190daba1')
 
 package() {
