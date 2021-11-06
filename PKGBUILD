@@ -16,8 +16,10 @@ pkgrel=1
 pkgdesc="Provides open-source bindings of the Android SDK for use with .NET managed languages"
 arch=('x86_64')
 depends=('mono>=5.0.0' 'libzip')
-makedepends=('pv' 'unzip' 'curl')
-optdepends=('jdk8-openjdk: For building Xamarin.Android Apps')
+makedepends=('tar' 'findutils')
+optdepends=('jdk8-openjdk: For building Xamarin.Android Apps'
+            'rider: .NET IDE supporting Android app development via Xamarin.Forms / Xamarin.Native.'
+            'rider-eap: .NET IDE supporting Android app development via Xamarin.Forms / Xamarin.Native.')
 options=(!strip)
 provides=('xamarin-android')
 conflicts=('xamarin-android' 'xamarin-android-git')
