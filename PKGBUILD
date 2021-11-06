@@ -1,8 +1,8 @@
 # Maintainer: Hristos N. Triantafillou <me@hristos.co>
 pkgname=wem
 pkgver=0.8.5
-pkgrel=1
-pkgdesc='A tool for managing wine "envs" or prefixes.'
+pkgrel=2
+pkgdesc='Wine Environment Manager: A tool for managing wine "envs" or prefixes.'
 arch=('x86_64')
 url='https://git.sr.ht/~hristoast/wem'
 license=('GPL3')
