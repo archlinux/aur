@@ -1,21 +1,20 @@
 # Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="gdlauncher"
-pkgver="1.1.14"
+pkgver="1.1.15"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
 license=('GPL3')
-makedepends=('gendesk' 'git' 'nodejs' 'npm' 'rust' 'imagemagick')
+makedepends=('gendesk' 'nodejs' 'npm' 'rust')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3' 'electron' 'p7zip')
-conflicts=('gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-bin' 'gdlauncher-appimage')
+conflicts=('gdlauncher-beta' 'gdlauncher-beta-bin' 'gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-bin' 'gdlauncher-appimage')
 provides=('gdlauncher')
 source=("https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v${pkgver}.tar.gz"
         "use-system-7za-and-disable-updater.patch")
 md5sums=('d4dc9fd5c8f1f900c29008001edba440'
          '0ccba0e195278ab1de3fec6ea0445afa')
-icon_sizes=(48 128 256 1024)
 
 prepare() {
     # Generate .desktop
@@ -29,15 +28,16 @@ prepare() {
         -e 's$public/electron.js$build/electron.js$' \
         -e '/"dependencies"/i\  "bundledDependencies": ["7zip-bin"],'
     patch -p1 -i "${srcdir}/use-system-7za-and-disable-updater.patch"
-    mkdir .git  # Husky needs a .git folder to not die
+
+    # Create .git folder to stop Husky from crashing
+    mkdir -p .git
 }
 
 build() {
     cd "${srcdir}/GDLauncher-${pkgver}/"
 
     # Install required npm packages
-    export CARGO_HOME="${srcdir}/cargo-cache"
-    npm install --cache="${srcdir}"/npm-cache
+    npm install --cache="${srcdir}/npm-cache"
 
     # Build the program
     export CI=false \
@@ -45,7 +45,7 @@ build() {
         NODE_ENV=production \
         REACT_APP_RELEASE_TYPE=setup
     npx craco build
-    npx webpack --config scripts/electronWebpackConfig.js
+    npx webpack --config ./scripts/electronWebpackConfig.js
 }
 
 package() {
@@ -56,7 +56,7 @@ package() {
 
     # Create run script
     install -d -m755 "${pkgdir}/usr/bin/"
-    printf '#!/bin/sh\nexec electron /usr/lib/gdlauncher "$@"' > "${pkgdir}/usr/bin/gdlauncher"
+    printf '#!/bin/sh\ncd /usr/lib/gdlauncher/\nexec electron . "$@"' > "${pkgdir}/usr/bin/gdlauncher"
     chmod a+x "${pkgdir}/usr/bin/gdlauncher"
 
     # Desktop entry
@@ -64,8 +64,9 @@ package() {
     install -D -m644 "${srcdir}/GDLauncher.desktop" "${pkgdir}/usr/share/applications/GDLauncher.desktop"
 
     # Install icons
-    for size in "${icon_sizes[@]}"; do
-        install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/"
-        convert "${srcdir}/GDLauncher-${pkgver}/public/icon.png" -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+    cd "${srcdir}/GDLauncher-${pkgver}/public/linux-icons/"
+    for icon in *.png; do
+        install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${icon::-4}/apps/"
+        cp "$icon" "${pkgdir}/usr/share/icons/hicolor/${icon::-4}/apps/${pkgname}.png"
     done
 }

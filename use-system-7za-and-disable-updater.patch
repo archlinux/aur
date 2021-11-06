@@ -1,7 +1,7 @@
-diff --git i/src/app/desktop/utils/index.js w/src/app/desktop/utils/index.js
-index 343d5ad8..45d5a927 100644
---- i/src/app/desktop/utils/index.js
-+++ w/src/app/desktop/utils/index.js
+diff --git a/src/app/desktop/utils/index.js b/src/app/desktop/utils/index.js
+index a075ac72..1058cfdb 100644
+--- a/src/app/desktop/utils/index.js
++++ b/src/app/desktop/utils/index.js
 @@ -5,7 +5,6 @@ import { extractFull } from 'node-7z';
  import jimp from 'jimp/es';
  import makeDir from 'make-dir';
@@ -10,26 +10,39 @@ index 343d5ad8..45d5a927 100644
  import path from 'path';
  import crypto from 'crypto';
  import { exec, spawn } from 'child_process';
-@@ -301,14 +300,7 @@ export const isLatestJavaDownloaded = async (meta, userData, retry) => {
-   return isValid;
+@@ -314,26 +313,7 @@ export const isLatestJavaDownloaded = async (
  };
  
--export const get7zPath = async () => {
+ export const get7zPath = async () => {
 -  // Get userData from ipc because we can't always get this from redux
--  const baseDir = await ipcRenderer.invoke('getUserData');
--  if (process.platform === 'darwin' || process.platform === 'linux') {
+-  let baseDir = await ipcRenderer.invoke('getExecutablePath');
+-  const isDev = process.env.NODE_ENV === 'development';
+-  if (isDev) {
+-    baseDir = path.resolve(baseDir, '../../');
+-    if (process.platform === 'win32') {
+-      baseDir = path.join(baseDir, '7zip-bin/win/x64');
+-    } else if (process.platform === 'linux') {
+-      baseDir = path.join(baseDir, '7zip-bin/linux/x64');
+-    } else if (process.platform === 'darwin') {
+-      baseDir = path.resolve(baseDir, '../../../', '7zip-bin/mac/x64');
+-    }
+-  }
+-  if (process.platform === 'linux') {
 -    return path.join(baseDir, '7za');
 -  }
+-  if (process.platform === 'darwin') {
+-    return path.resolve(baseDir, isDev ? '' : '../', '7za');
+-  }
 -  return path.join(baseDir, '7za.exe');
--};
-+export const get7zPath = async () => '/usr/bin/7za';
++  return '/usr/bin/7za';
+ };
  
- export const extractNatives = async (libraries, instancePath) => {
-   const extractLocation = path.join(instancePath, 'natives');
-diff --git i/public/electron.js w/public/electron.js
-index 800a66f8..58bfb998 100644
---- i/public/electron.js
-+++ w/public/electron.js
+ get7zPath();
+
+diff --git a/public/electron.js b/public/electron.js
+index 4d1a2e6d..0314e7fc 100644
+--- a/public/electron.js
++++ b/public/electron.js
 @@ -12,7 +12,6 @@ const {
  } = require('electron');
  const path = require('path');
@@ -38,51 +51,49 @@ index 800a66f8..58bfb998 100644
  const log = require('electron-log');
  const fss = require('fs');
  const { promisify } = require('util');
-@@ -179,43 +178,6 @@ log.log(process.env.REACT_APP_RELEASE_TYPE, app.getVersion());
+@@ -200,40 +199,9 @@ if (
+ log.log(process.env.REACT_APP_RELEASE_TYPE, app.getVersion());
  
- const isDev = process.env.NODE_ENV === 'development';
- 
--async function extract7z() {
--  const baseDir = path.join(app.getAppPath(), 'node_modules', '7zip-bin');
--
--  let zipLocationAsar = path.join(baseDir, 'linux', 'x64', '7za');
+ const get7zPath = async () => {
+-  let baseDir = path.dirname(app.getPath('exe'));
+-  if (isDev) {
+-    baseDir = path.resolve(baseDir, '../../');
+-    if (process.platform === 'win32') {
+-      baseDir = path.join(baseDir, '7zip-bin/win/x64');
+-    } else if (process.platform === 'linux') {
+-      baseDir = path.join(baseDir, '7zip-bin/linux/x64');
+-    } else if (process.platform === 'darwin') {
+-      baseDir = path.resolve(baseDir, '../../../', '7zip-bin/mac/x64');
+-    }
+-  }
+-  if (process.platform === 'linux') {
+-    return path.join(baseDir, '7za');
+-  }
 -  if (process.platform === 'darwin') {
--    zipLocationAsar = path.join(baseDir, 'mac', 'x64', '7za');
+-    return path.resolve(baseDir, isDev ? '' : '../', '7za');
 -  }
--  if (process.platform === 'win32') {
--    zipLocationAsar = path.join(baseDir, 'win', 'x64', '7za.exe');
--  }
+-  return path.join(baseDir, '7za.exe');
++  return '/usr/bin/7za';
+ };
+ 
+-async function patchSevenZip() {
 -  try {
--    await fs.copyFile(
--      zipLocationAsar,
--      path.join(app.getPath('userData'), path.basename(zipLocationAsar))
--    );
--
 -    if (process.platform === 'linux' || process.platform === 'darwin') {
--      await promisify(exec)(
--        `chmod +x "${path.join(
--          app.getPath('userData'),
--          path.basename(zipLocationAsar)
--        )}"`
--      );
--      await promisify(exec)(
--        `chmod 755 "${path.join(
--          app.getPath('userData'),
--          path.basename(zipLocationAsar)
--        )}"`
--      );
+-      const sevenZipPath = await get7zPath();
+-      await promisify(exec)(`chmod +x "${sevenZipPath}"`);
+-      await promisify(exec)(`chmod 755 "${sevenZipPath}"`);
 -    }
 -  } catch (e) {
 -    log.error(e);
 -  }
 -}
 -
--extract7z();
+-patchSevenZip();
 -
  function createWindow() {
    mainWindow = new BrowserWindow({
      width: 1100,
-@@ -609,79 +571,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
+@@ -633,79 +601,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
      });
    });
  });
