@@ -1,8 +1,10 @@
-# Maintainer: Benjamin Hedrich <code at pagenotfound.de>
+# Maintainer: Platon Pronko <platon7pronko@gmail.com>
+# Contributor: Benjamin Hedrich <code at pagenotfound.de>
 
 pkgname=gerbera-git
-pkgver=3479.f0d54854
+pkgver=1.9.2.133+r4771.20211106.984c14d9
 pkgrel=1
+epoch=2
 pkgdesc="UPnP Media Server (Based on MediaTomb)"
 arch=(i686 x86_64 armv7h)
 url="https://github.com/gerbera/gerbera"
@@ -22,13 +24,23 @@ sha256sums=('SKIP'
             '452f5d4b5661e0262cb4a48d62a54f5f26d53c6d3aebf502cde072214a8b30d8')
 
 pkgver() {
-    cd $pkgname
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd "$pkgname"
+    _ver="$(git describe  --tags | sed 's|^v||' | sed 's|-[^-]*$||' | tr '-' '.')"
+    _rev="$(git rev-list --count HEAD)"
+    _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+    _hash="$(git rev-parse --short HEAD)"
+
+    if [ -z "${_ver}" ]; then
+        error "Version could not be determined."
+        return 1
+    else
+        printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
+    fi
 }
 
 build() {
     cd "$pkgname"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DWITH_AVCODEC=1 -DWITH_FFMPEGTHUMBNAILER=1
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DWITH_AVCODEC=1 -DWITH_FFMPEGTHUMBNAILER=1
     make
 }
 
