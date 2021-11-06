@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=93.0
+pkgver=94.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -26,17 +26,19 @@ backup=('usr/lib/librewolf/librewolf.cfg'
 options=(!emptydirs !makeflags !strip)
 _arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
 _common_tag="v${pkgver}-${pkgrel}"
-_settings_tag='2.1'
+_settings_tag='3.0'
 install='librewolf.install'
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         "git+https://gitlab.com/${pkgname}-community/browser/common.git#tag=${_common_tag}"
-        "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}")
+        "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}"
+        "0001-Use-remoting-name-for-GDK-application-names.patch::${_arch_git}/0001-Use-remoting-name-for-GDK-application-names.patch")
 source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
-sha256sums=('a78f080f5849bc284b84299f3540934a12e961a7ea368b592ae6576ea1f97102'
+sha256sums=('b7bb8c5fcc74a74e9d2b55d1e9415b891305fe86520fb854cec25024d7e5de67'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '51cca2cab0fa9798f96b81ed24c238b2a7c98524f589ec500224bac9797b66fb')
 sha256sums_aarch64=('2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
@@ -69,6 +71,7 @@ ac_add_options --with-distribution-id=io.gitlab.${pkgname}-community
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=
+export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -117,6 +120,10 @@ ac_add_options --enable-optimize
 END
 fi
 
+  # upstream Arch fix
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ${srcdir}/0001-Use-remoting-name-for-GDK-application-names.patch
+
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
@@ -162,6 +169,34 @@ fi
   # change some hardcoded directory strings that could lead to unnecessarily
   # created directories
   patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
+
+  # allow uBlockOrigin to run in private mode by default, without user intervention.
+  patch -Np1 -i ${_patches_dir}/allow-ubo-private-mode.patch
+
+  # ui patches
+
+  # show a warning saying that changing language is not allowed through the UI,
+  # and that it requires to visit our FAQ, instead of telling the user to check his connection.
+  patch -Np1 -i ${_patches_dir}/ui-patches/add-language-warning.patch
+
+  # remove references to firefox from the settings UI, change text in some of the links,
+  # explain that we force en-US and suggest enabling history near the session restore checkbox.
+  patch -Np1 -i ${_patches_dir}/ui-patches/pref-naming.patch
+
+  # remove firefox references in the urlbar, when suggesting opened tabs.
+  patch -Np1 -i ${_patches_dir}/ui-patches/remove-branding-urlbar.patch
+
+  # remove cfr UI elements, as they are disabled and locked already.
+  patch -Np1 -i ${_patches_dir}/ui-patches/remove-cfrprefs.patch
+
+  # do not display your browser is being managed by your organization in the settings.
+  patch -Np1 -i ${_patches_dir}/ui-patches/remove-organization-policy-banner.patch
+
+  # hide "snippets" section from the home page settings, as it was already locked.
+  patch -Np1 -i ${_patches_dir}/ui-patches/remove-snippets-from-home.patch
+
+  # add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
+  patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
