@@ -19,7 +19,6 @@ makedepends=(bc kmod libelf pahole cpio perl tar xz
   git)
 checkdepends=()
 optdepends=()
-provides=(linux-t2)
 conflicts=()
 replaces=()
 backup=()
@@ -59,10 +58,10 @@ https://raw.githubusercontent.com/jamlam/mbp-16.1-linux-wifi/main/9001-bluetooth
 https://raw.githubusercontent.com/jamlam/mbp-16.1-linux-wifi/main/9002-add-bluetooth-support-for-16,2.patch
 https://raw.githubusercontent.com/jamlam/mbp-16.1-linux-wifi/main/intel-lpss.patch
 )
-noextract=()
-md5sums=()
-validpgpkeys=()
 
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 prepare() {
 	cd $_srcname
 

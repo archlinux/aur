@@ -19,7 +19,6 @@ pkgbase = linux-t2-wifi
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = git
-	provides = linux-t2
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.sign
