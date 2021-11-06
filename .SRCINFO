@@ -1,0 +1,14 @@
+pkgbase = libbtc-git
+	pkgdesc = Tiny Bitcoin Library written in C with bitcointool CLI tool
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/libbtc/libbtc
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/libbtc/libbtc.git
+	source = https://raw.githubusercontent.com/jahway603/libbtc/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = 521d039fe41ccb983129b3a1d307ed7e413b4c4eb3d3c7616edd42633b588a11
+
+pkgname = libbtc-git
