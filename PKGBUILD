@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('GLP')
 url='https://github.com/Marakusa/Scribbit/'
 
-depends=("dotnet-runtime")
+depends=("dotnet-runtime" "gtk3")
 makedepends=("git" "dotnet-sdk")
 
 source=(
