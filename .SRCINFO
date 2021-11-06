@@ -1,6 +1,6 @@
 pkgbase = wolf-shaper-git
 	pkgdesc = Waveshaper plugin w/ graph editor
-	pkgver = 0.1.7.r27.g595d785
+	pkgver = 0.1.8.r62.g6b1ac64
 	pkgrel = 1
 	url = https://github.com/pdesaulniers/wolf-shaper
 	arch = i686
