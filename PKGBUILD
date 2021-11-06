@@ -1,13 +1,13 @@
 pkgname=cloudflare-dynamic-dns
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Updates AAAA records at Cloudflare according to the current IPv6 address'
 arch=('any')
 url='https://github.com/Zebradil/cloudflare-dynamic-dns'
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}::https://github.com/zebradil/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('e348dec6d56a1941e271e20618c97283a4fa50e2150b7f3e768a8ae8785ee208')
+sha256sums=('3d15072cc971075e6ec1e2e8b5e3f090f48a0c9975b623a84c5ec0b7a4859561')
 
 prepare() {
     cd "$pkgname-$pkgver"
