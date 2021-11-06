@@ -1,0 +1,13 @@
+pkgbase = webcord-bin
+	pkgdesc = A Discord web-based client made with the Electron API, developed with Electron Forge.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/SpacingBat3/WebCord
+	arch = x86_64
+	license = MIT
+	provides = webcord-bin
+	conflicts = webcord-git
+	source = https://github.com/SpacingBat3/WebCord/releases/download/v2.0.1/webcord_2.0.1_amd64.deb
+	sha512sums = 91adc836e47e8e7a49051d4246861ca8542337bf4af7e191461ac8774f0a58649f288b483698c38c3b1632ac6d95e9404052c054e623d8974d76ccda081d1474
+
+pkgname = webcord-bin
