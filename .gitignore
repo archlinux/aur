@@ -1,0 +1,5 @@
+pykdtree-*.tar.gz
+src
+pkg
+python-pykdtree-*.tar.zst
+*.log
