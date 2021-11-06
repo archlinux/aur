@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio-arm"
-pkgver=5.50d
+pkgver=5.66
 pkgrel=1
 pkgdesc="Segger Embedded Studio for ARM"
 arch=('x86_64' 'i686' 'arm' 'aarch64')
@@ -18,10 +18,10 @@ source_i686=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x86.tar.gz::https://w
 source_arm=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_arm.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_arm.tar.gz")
 source_aarch64=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_arm64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_arm64.tar.gz")
 
-md5sums_x86_64=('3314e8dffaedcf10e6c241a06f27aaa2')
-md5sums_i686=('8d814f61184b18399422fc27f2d6b0d1')
-md5sums_aarch64=('e58b9fa80b56e61b94b093a8b2c4d40a')
-md5sums_arm=('a7281ddd6c933240b0126476aff191e2')
+md5sums_x86_64=('1f272676d41ccec23c3f611e0e037932')
+md5sums_i686=('14c32a029ca349cc0f8b0afd59575e93')
+md5sums_aarch64=('b043d1607d6675bbf2d271bb2378b448')
+md5sums_arm=('0c53fb770cee383d83744dcee9e688a7')
 
 prepare(){
         # Change src path name
