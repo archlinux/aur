@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WebCord
+Comment=A Discord Web App made with the Electron API.
+GenericName=Internet Messenger
+Exec=webcord %U
+Icon=webcord
+Type=Application
+StartupNotify=true
+Categories=Network;InstantMessaging;
+
