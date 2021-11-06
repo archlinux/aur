@@ -1,15 +1,15 @@
 pkgbase = nextpnr-all-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - all
-	pkgver = 06d58e6e_20211105
+	pkgver = 1615b0a5_20211106
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
 	arch = any
 	license = custom:ISC
-	depends = nextpnr-ice40-nightly>=06d58e6e_20211105
-	depends = nextpnr-ecp5-nightly>=06d58e6e_20211105
-	depends = nextpnr-nexus-nightly>=06d58e6e_20211105
-	depends = nextpnr-generic-nightly>=06d58e6e_20211105
+	depends = nextpnr-ice40-nightly>=1615b0a5_20211106
+	depends = nextpnr-ecp5-nightly>=1615b0a5_20211106
+	depends = nextpnr-nexus-nightly>=1615b0a5_20211106
+	depends = nextpnr-generic-nightly>=1615b0a5_20211106
 	conflicts = nextpnr-git
 	options = !strip
 
