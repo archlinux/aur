@@ -12,23 +12,30 @@ pkgrel=1
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
 
-# locale, key account, original name, version, md5sum, (optional) replacement name
-_prams_Austria=(de_AT 29762 'CEWE Fotowelt' 7.1.4 c5bcef112990afeeccff2800e4330211)
-_prams_Belgie=(nl_BE 28049 'CEWE Photoservice' 7.1.4 31509d0a3cd4192529d73da07f6fc9e9)
-_prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4 6913455b5caf2f91e821eb2fd6fd598b)
-_prams_Czechia=(cs_CZ 4860 'CEWE FOTOLAB fotosvet' 7.1.3 a6a2db001621a25dd36db214ce420b94 "CEWE fotosvět")
-_prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.3 d05b5491c95c14d32195b5d8cbc27c23)
-_prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3 e34b967b54520f59a8241ece3c4bc8f2)
-_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.1.4 c4095abf2f8fd7873a007a3b2429e285 'CEWE Fotobuch')
-_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.1.4 1f48a372a529a1c114eab8a983f6b119)
-_prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.4 a3dc1ace80949d15e5a134082da224cc)
-_prams_Luxembourg=(fr_LU 32905 'CEWE Photoservice' 7.1.4 2fa22806e4a07b2035e6317576829db3)
-_prams_Netherlands=(nl_NL 28035 'CEWE Fotoservice' 7.1.4 f5b18fe02f517baae236d9d98bbf1f27)
-_prams_Poland=(pl_PL 29241 'CEWE Fotoswiat' 7.1.3 18f4cb458c729cee0bffb006bcc12a51 'CEWE Fotoświat')
-_prams_Slovakia=(sk_SK 31916 'CEWE fotosvet' 7.1.3 d7b4cee0eb3ebd0d0d24b7c2d15ea868)
-_prams_Slovenia=(sl_SI 17409 'CEWE Fotosvet' 7.0.4 a1eac1b0284af67a0ee6588902d22995)
-_prams_Spain=(es_ES 29227 'Taller CEWE' 7.1.3 6dd11fd49058311ab824e4a3df147b4c)
-_prams_UK=(en_GB 12611 'CEWE Creator' 7.1.3 7ebc546641a0417de04b8ae5e21acfa1)
+_scriptTailMd5sum=1b231f3988603dbec4e857e247784295
+
+# locale, key account, original name, version, (optional) replacement name, (optional) setup script tail md5sum
+_prams_Austria=(de_AT 29762 'CEWE Fotowelt' 7.1.4)
+_prams_Belgie=(nl_BE 28049 'CEWE Photoservice' 7.1.4)
+_prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4)
+_prams_Czechia=(cs_CZ 4860 'CEWE FOTOLAB fotosvet' 7.1.3 "CEWE fotosvět")
+_prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.3)
+_prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
+_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.2.1 'CEWE Fotobuch' d9edd2bb89870dc61692e73f81fe0efa)
+_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.2.1 '' d9edd2bb89870dc61692e73f81fe0efa)
+_prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.4)
+_prams_Luxembourg=(fr_LU 32905 'CEWE Photoservice' 7.1.4)
+_prams_Netherlands=(nl_NL 28035 'CEWE Fotoservice' 7.1.4)
+_prams_Poland=(pl_PL 29241 'CEWE Fotoswiat' 7.1.4 'CEWE Fotoświat')
+_prams_Slovakia=(sk_SK 31916 'CEWE fotosvet' 7.1.3)
+_prams_Slovenia=(sl_SI 17409 'CEWE Fotosvet' 7.0.4 '' ddeebfcc79f9af40e273e657a0907497)
+_prams_Spain=(es_ES 29227 'Taller CEWE' 7.1.3)
+_prams_UK=(en_GB 12611 'CEWE Creator' 7.1.3)
+
+pkgver() {
+	[ -z "$1" ] && set -- '$HPS_VER'
+	grep -m1 "my $1" ${2}install.pl | grep -Po "'.*'" | grep -Po "[^']+"
+}
 
 if [ -z "$_SETUP_FILE" ]
 then
@@ -39,13 +46,13 @@ else
 	mkdir -p src
 	bsdtar -xf "$_SETUP_FILE" -C src install.pl
 
-	_prams=('$FULL_LOCALE' '$KEYACCID' '$APPLICATION_NAME' '$HPS_VER' SKIP "$_RENAME")
+	_prams=('$FULL_LOCALE' '$KEYACCID' '$APPLICATION_NAME' '$HPS_VER' "$_RENAME" SKIP)
 	for _i in {0..3}
 	do
-		_prams[_i]="$(grep -m1 "my ${_prams[_i]}" src/install.pl | grep -Po "'.*'" | grep -Po "[^']+")"
+		_prams[_i]="$(pkgver "${_prams[_i]}" src/)"
 	done
 	source="$_SETUP_FILE"
-	[ $(whoami) != root -a -z "$_UPDATING" ] && echo "_prams_?=(${_prams[@]:0:2} '${_prams[2]}' ${_prams[3]} $(md5sum $source | grep -Po '^[^ ]*'))"
+	[ $(whoami) != root -a -z "$_UPDATING" ] && echo "_prams_?=(${_prams[@]:0:2} '${_prams[2]}' ${_prams[3]} '' $(md5sum <(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/d' src/install.pl) | grep -Po '^[^ ]*'))"
 	[ -n "$_PRAMS_ONLY" ] && exit
 fi
 
@@ -53,7 +60,8 @@ _keyaccount=${_prams[1]}
 # what they call their package (e.g. MY CEWE TOO MANY CAPITALS)
 _productUrname=${_prams[2]}
 # what I want to call it (e.g. CEWE Sensible Name)
-[ -z "${_prams[5]}" ] && _productRename="$_productUrname" || _productRename=${_prams[5]}
+[ -z "${_prams[4]}" ] && _productRename="$_productUrname" || _productRename=${_prams[4]}
+[ -n "${_prams[5]}" ] && _scriptTailMd5sum=${_prams[5]}
 
 # remove accents, lowercase and replace spaces for package name
 [ -z "$pkgname" ] && pkgname="$(iconv -t ascii//TRANSLIT <(echo $_productRename))"
@@ -66,7 +74,7 @@ conflicts=(${conflicts[@]/$pkgname/})
 
 pkgver=${_prams[3]}
 source=($source 'updater.pl')
-md5sums=(${_prams[4]} 'SKIP')
+md5sums=(SKIP SKIP)
 
 url="http://www.cewe.de/"
 license=("custom:eula")
@@ -77,6 +85,14 @@ source=($source 'updater.pl')
 install="$pkgname.install"
 
 _installDir=/usr/share/$pkgname
+
+check() {
+	local setRightDownloadServer="$(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/p;d' "$src"install.pl | grep -Po '^my \$DOWNLOAD_SERVER\t+= "https://dls.photoprintit.com";')"
+	local mentionDownloadServer="$(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/p;d' "$src"install.pl | grep -Po '.*\$DOWNLOAD_SERVER[^\r]*')"
+	local md5sum=$(md5sum <(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/d' "$src"install.pl) | grep -Po '^[^ ]*')
+
+	[ "$mentionDownloadServer" == "$setRightDownloadServer" ] && [ $_scriptTailMd5sum == SKIP -o $_scriptTailMd5sum == $md5sum ]
+}
 
 package() {
 	# put icons and mimetype in the right place
@@ -102,8 +118,6 @@ package() {
 	rm $_installDir/uninstall.pl
 
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
-        # pixmap for legacy customised mimetypes
-	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/$pkgname.xpm
 
 	# create startup script and desktop file
 	cat > $pkgdir/usr/bin/$pkgname <<-EOF
