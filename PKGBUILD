@@ -6,7 +6,7 @@ pkgbase=podman-git
 pkgname=(podman-git podman-docker-git)
 _pkgname=podman
 _pkgname_docker=podman-docker
-pkgver=4.0.0_dev.r12938.gb0d1c0fe2
+pkgver=4.0.0_dev.r13317.gabbd6c167
 pkgrel=1
 pkgdesc="Tool and library for running OCI-based containers in pods (git)"
 arch=('any')
@@ -62,6 +62,7 @@ package_podman-docker-git() {
 
   cd $_pkgname || exit 1
   make docker-docs EXTRA_LDFLAGS='-s -w -linkmode=external'
-  make install.docker-full DESTDIR="$pkgdir" PREFIX=/usr
+  make install.docker DESTDIR="$pkgdir" PREFIX=/usr
+  make install.docker-docs DESTDIR="$pkgdir" PREFIX=/usr
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname[1]}/LICENSE"
 }
