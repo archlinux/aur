@@ -2,7 +2,7 @@
 
 _plug=vsbasicvsrpp
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.3.0.1.g81fbf5f
+pkgver=1.4.1.0.g0076158
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -10,6 +10,8 @@ url='https://github.com/HolyWu/vs-basicvsrpp'
 license=('Apache')
 depends=('vapoursynth'
          'python-numpy'
+         'python-tqdm'
+         'python-requests'
          )
 makedepends=('git'
              'python-wheel'
@@ -29,6 +31,12 @@ pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
+
+prepare() {
+  cd "${_plug}/vsbasicvsrpp"
+  python __main__.py
+}
+
 
 build() {
   cd "${_plug}"
