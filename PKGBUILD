@@ -3,7 +3,7 @@
 _pkgname=hadolint
 
 pkgname=$_pkgname-bin
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Dockerfile linter, validate inline bash, written in Haskell"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('hadolint')
 conflicts=('hadolint')
 options=('!strip')
 source=("$_pkgname-$pkgver::https://github.com/hadolint/hadolint/releases/download/v$pkgver/$_pkgname-Linux-x86_64")
-sha256sums=('cdd5ca6f07f72053e8f2d18a9390a7b7fc6e819b6a251835971411f300dab8e6')
+sha256sums=('9dfc155139a1e1e9b3b28f3de9907736b9dfe7cead1c3a0ae7ff0158f3191674')
 
 package() {
   install -D -m755 "$srcdir/$_pkgname-$pkgver"  "$pkgdir/usr/bin/$_pkgname"
