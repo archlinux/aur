@@ -1,0 +1,17 @@
+pkgbase = solo2-cli
+	pkgdesc = Solo 2 CLI
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/solokeys/solo2-cli
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = systemd
+	depends = systemd-libs
+	conflicts = solo2-cli-git
+	source = solo2-cli-0.0.6.tar.gz::https://github.com/solokeys/solo2-cli/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = 083014e217779f190e49e4839ae99781c1559690a3ee5d96cbdcb1489e663049
+
+pkgname = solo2-cli
