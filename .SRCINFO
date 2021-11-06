@@ -1,6 +1,6 @@
 pkgbase = slides-bin
 	pkgdesc = Terminal based presentation tool
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/maaslalani/slides
 	changelog = CHANGELOG.md
@@ -9,7 +9,7 @@ pkgbase = slides-bin
 	provides = slides
 	conflicts = slides
 	conflicts = slides-git
-	source = https://github.com/maaslalani/slides/releases/download/v0.6.1/slides_0.6.1_linux_amd64.tar.gz
-	sha256sums = ba7950a1ca6dac7a2f137e943c1371b173baaa5bfeb385c58e9df4f3bffdbf8d
+	source = https://github.com/maaslalani/slides/releases/download/v0.7.0/slides_0.7.0_linux_amd64.tar.gz
+	sha512sums = 5a5d1f377ea77c987fdf0b050bd42fe61f6cd61230f9c003f646ad83fdcc7f86f6afe1b64412a8b97c89c1a678fce6c1675e5b9a6056b6f0d988f93376ac741a
 
 pkgname = slides-bin
