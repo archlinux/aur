@@ -1,14 +1,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: Jonas Seibert <jonas+aur at seibert dot ninja>
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
-
 pkgname=payara
 pkgver=5.2021.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Jakarta EE (Java EE) & MicroProfile compatible application server for production and containerized deployments."
 url="http://www.payara.fish/"
 license=("CDDL" "GPL2")
-depends=("java-environment>=8")
+depends=('java-environment>=11')
 arch=("any")
 options=(!strip)
 source=("https://search.maven.org/remotecontent?filepath=fish/${pkgname}/distributions/${pkgname}/${pkgver}/${pkgname}-${pkgver}.zip"

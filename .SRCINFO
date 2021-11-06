@@ -1,12 +1,12 @@
 pkgbase = payara
 	pkgdesc = Jakarta EE (Java EE) & MicroProfile compatible application server for production and containerized deployments.
 	pkgver = 5.2021.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.payara.fish/
 	arch = any
 	license = CDDL
 	license = GPL2
-	depends = java-environment>=8
+	depends = java-environment>=11
 	options = !strip
 	source = https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/5.2021.8/payara-5.2021.8.zip
 	source = payara.service
