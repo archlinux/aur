@@ -3,13 +3,12 @@
 pkgname=libbtc-git
 _pkgname=libbtc
 _commit=07933995e
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.1
+pkgrel=1
 pkgdesc='Tiny Bitcoin Library written in C with bitcointool CLI tool'
 url='https://github.com/libbtc/libbtc'
 arch=('x86_64')
 license=('MIT')
-makedepends=('git')
 source=("git+$url.git"
         "https://raw.githubusercontent.com/jahway603/libbtc/master/LICENSE")
 sha256sums=('SKIP'
@@ -33,9 +32,9 @@ package() {
   install -Dm755 "$srcdir/${_pkgname}/bitcoin-spv" "$pkgdir/opt/${_pkgname}/bitcoin-spv"
   install -Dm755 "$srcdir/${_pkgname}/bitcointool" "$pkgdir/opt/${_pkgname}/bitcointool"
 
-  install -d "${pkgdir}/usr/bin"
-  ln -s /opt/${_pkgname}/bitcoin-send-tx "${pkgdir}/usr/bin"
-  ln -s /opt/${_pkgname}/bitcoin-spv "${pkgdir}/usr/bin"
-  ln -s /opt/${_pkgname}/bitcointool "${pkgdir}/usr/bin"
+  install -d "$pkgdir/usr/bin"
+  ln -s /opt/${_pkgname}/bitcoin-send-tx "$pkgdir/usr/bin"
+  ln -s /opt/${_pkgname}/bitcoin-spv "$pkgdir/usr/bin"
+  ln -s /opt/${_pkgname}/bitcointool "$pkgdir/usr/bin"
 }
 
