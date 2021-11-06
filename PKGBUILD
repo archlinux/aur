@@ -2,7 +2,7 @@
 # Based on the PKGBUILD for gdlauncher.
 pkgname="gdlauncher-beta"
 _pkgname="gdlauncher"
-pkgver="1.1.15"
+pkgver="1.1.15.stable"
 _pkgver="1.1.15"
 pkgrel=1
 arch=('x86_64')
