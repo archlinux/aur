@@ -5,7 +5,7 @@
 pkgname=xamarin-android
 pkgver=11.4.99.0
 pkgrel=1
-pkgdesc="Xamarin android build from jenkins.mono-project"
+pkgdesc="Provides open-source bindings of the Android SDK for use with .NET managed languages"
 arch=('x86_64')
 depends=('mono>=5.0.0' 'libzip')
 makedepends=('tar' 'findutils')
