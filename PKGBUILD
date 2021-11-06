@@ -11,7 +11,7 @@ depends=('mono>=5.0.0' 'libzip')
 makedepends=('tar')
 options=(!strip)
 provides=('xamarin-android')
-conflicts=('xamarin-android')
+conflicts=('xamarin-android' 'xamarin-android-git')
 url="https://github.com/xamarin/xamarin-android"
 license=('MIT')
 _pkgname="xamarin.android-oss-v${pkgver}_Linux-${arch}_main_5e1e5cb7-Release"
