@@ -16,9 +16,8 @@ depends=('java-runtime-common>=3' 'java-environment-common=3'
 
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
-        pkgver=11.0.12
-        _build=11.50.19
-        sha256sums=('d947879ce086631918fd420a5576bdec8e7183700fd50461ebf078a6d8611b5e')
+        _build=11.52.13
+        sha256sums=('55eefd0c9b5fb70953e082576d86399f6426158cf79f14301ab55c2975abed4b')
         source=(${source:-"https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz"})
         ;;
     aarch64) _arch='aarch64'

@@ -25,7 +25,7 @@ pkgbase = zulu-embedded-jdk11
 	provides = java-runtime=11
 	provides = java-runtime-headless=11
 	options = !strip
-	source = https://cdn.azul.com/zulu-embedded/bin/zulu11.52.13-ca-jdk11.0.13-linux_aarch64.tar.gz
-	sha256sums = d947879ce086631918fd420a5576bdec8e7183700fd50461ebf078a6d8611b5e
+	source = https://cdn.azul.com/zulu-embedded/bin/zulu11.52.13-ca-jdk11.0.13-linux_aarch32hf.tar.gz
+	sha256sums = 55eefd0c9b5fb70953e082576d86399f6426158cf79f14301ab55c2975abed4b
 
 pkgname = zulu-embedded-jdk11
