@@ -13,7 +13,7 @@ pkgbase = webcord
 	provides = webcord=2.0.1
 	conflicts = webcord-bin
 	conflicts = webcord-git
-	options = !strip
+	options = !emptydirs
 	source = WebCord-2.0.1.tar.gz::https://github.com/SpacingBat3/WebCord/archive/refs/tags/v2.0.1.tar.gz
 	source = app.desktop
 	sha512sums = e0cae32c6fd2dc35521b6521f22f73b1403a7c902fd738ee263d289bbff997b94f6d45b4e23edd8fcbb273ad53c89fa35d8d16bc969ee46acd24153da79d1aa0

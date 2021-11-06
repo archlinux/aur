@@ -9,7 +9,7 @@ depends=('electron>=15.1.0' 'electron<16')
 makedepends=('npm>=7' 'typescript>=4.3.4' 'typescript<5')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
-options=('!strip')
+options=('!emptydirs')
 
 _srcname="WebCord-${pkgver}"
 
@@ -26,7 +26,7 @@ sha512sums=(
 build() {
     cd "${srcdir}/${_srcname}"
 
-    npm i -P --only=prod
+    npm i --only=prod
 
     tsc --sourceMap false &>/dev/null | true
 }
