@@ -1,4 +1,4 @@
-pkgbase = linux-cachyos-bmq-lto
+pkgbase = linux-cachyos-bmq
 	pkgdesc = Linux-bmq Kernel by CachyOS and with some other patches and other improvements
 	pkgver = 5.15
 	pkgrel = 3
@@ -18,10 +18,6 @@ pkgbase = linux-cachyos-bmq-lto
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
-	makedepends = clang
-	makedepends = llvm
-	makedepends = lld
-	makedepends = python
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.xz
 	source = config
@@ -78,7 +74,7 @@ pkgbase = linux-cachyos-bmq-lto
 	md5sums = a86ed27c2ef70973502660ca6804d6fe
 	md5sums = 21c98f19e883879dd3336c1fa143fd31
 
-pkgname = linux-cachyos-bmq-lto
+pkgname = linux-cachyos-bmq
 	pkgdesc = The Linux-bmq Kernel by CachyOS and with some other patches and other improvements kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -89,7 +85,7 @@ pkgname = linux-cachyos-bmq-lto
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
-pkgname = linux-cachyos-bmq-lto-headers
+pkgname = linux-cachyos-bmq-headers
 	pkgdesc = Headers and scripts for building modules for the Linux-bmq Kernel by CachyOS and with some other patches and other improvements
-	depends = linux-cachyos-bmq-lto=5.15
+	depends = linux-cachyos-bmq=5.15
 	depends = pahole
