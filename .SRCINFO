@@ -1,0 +1,17 @@
+pkgbase = next-prayer
+	pkgdesc = Islamic prayers reminder for status bars.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/abdeltwabmf/next-prayer.git
+	arch = x86_64
+	license = GPL-v3
+	makedepends = git
+	makedepends = python3
+	depends = jq
+	depends = libnotify
+	provides = next-prayer
+	conflicts = next-prayer
+	source = git+https://github.com/abdeltwabmf/next-prayer.git
+	sha1sums = SKIP
+
+pkgname = next-prayer
