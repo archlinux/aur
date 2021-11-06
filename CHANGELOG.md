@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.2-1] - 2021-11-01
+
+### Added
+
+- Improvements to Search (using `bubbles#TextInput` component) in `slides` by [@darmiel](https://github.com/darmiel) in [#119](https://github.com/maaslalani/slides/pull/119)
+
 ## [0.7.1-1] - 2021-11-01
 
 ### Added
