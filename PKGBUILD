@@ -58,7 +58,38 @@ https://raw.githubusercontent.com/jamlam/mbp-16.1-linux-wifi/main/9001-bluetooth
 https://raw.githubusercontent.com/jamlam/mbp-16.1-linux-wifi/main/9002-add-bluetooth-support-for-16,2.patch
 https://raw.githubusercontent.com/jamlam/mbp-16.1-linux-wifi/main/intel-lpss.patch
 )
-
+sha256sums=(
+        '57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+        'SKIP'
+        'SKIP'
+        '1ddd4443470ad66aff8075e0528ad7757de41d474152db1362e23be72e243919'
+        '6b4da532421cac5600d09c0c52742aa52d848af098f7853abe60c02e9d0a3752'
+        '2184069ab00ef43d9674756e9b7a56d15188bc4494d34425f04ddc779c52acd8'
+        '786dfc22e4c6ece883e7dedd0ba3f6c14018584df95450b2cb78f3da8b01f7cb'
+        '7366a08383900a09f8e742b1e4f0a02e0839a385e68e70a89d1815c197df3300'
+        '8d8401a99a9dfbc41aa2dc5b6a409a19860b1b918465e19de4a4ff18de075ea3'
+        '08d165106fe35b68a7b48f216566951a5db0baac19098c015bcc81c5fcba678d'
+        '459906cab172df9f6712a4168e7a5d529f85b2bb58a068f2d44746df14a6d27a'
+        '2827dab6eeb2d2a08034938024f902846b5813e967a0ea253dc1ea88315da383'
+        '398dec7d54c6122ae2263cd5a6d52353800a1a60fd85e52427c372ea9974a625'
+        '11565cff9c6a7db8846dc7d5930419045e9527863b8df5979a7465006211bd16'
+        '83f4be6849ba4d5f9fad647ad2eb78bf6409ee98a40ac62e8a5b80496233d70a'
+        '44bd3643b2b22fedc59d79511199f30ce6759fa0acdd9a66262a53c5e046da6b'
+        'eb04a492197783643b3e72b1d0cf0e856290381997bd165a14fbc63ac1489c25'
+        '69d56d42473526f7dbd4fb18c5e1baafe4e6d32995b2506bd48ff981c53b5385'
+        '1deeacae1875cf9075b858a8bfb2463ebc531c9030b7c2ab46bbb8e4c3b974db'
+        '40eff5e88bb30c51c6b97e85c2e7b8dec5f97916f768e6c07618d9c5afe68574'
+        'cac035fe07663a319185c644c5b39b34bef89ada348881fa4a02d15290260445'
+        '9dfa9f02d17c5cd9620fa2c1d43ca967b81b6a56d33c2bafae14e0c64e498baa'
+        '9640178d6251686c980c30fc528b3d70beac6ce8246bf433506a3f843808326c'
+        '90a6012cdd8a64ede8e0bbaf7331960bd68f628e0973b65459188eb1ccb5b829'
+        '66e91a3c4616a6c1dfaade969c78f8b3799006d208ac5b5ef314589ba684afce'
+        '8f5f6321d90a2c4e753d993e5ec5c8ad78ddb4415f5306117b40f40dd9e42af2'
+        'e9e564bdd8f45c552c0f1b32ffa142c887f449f9aadcd190f8d7d143c7567259'
+        '31e414978a947bdb71f27ed364c4da73b81fcf1921250cb69ee1bcf2bbd25636'
+        '57731fa10509eb689649e6d1ea33b2c3e20a8116617bd848b565d42379b2b6b6'
+        '22b2695afcc4103743e55ceeda4691a59ddce84a8f16d1d572159dd2ff7f8537'
+)
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
