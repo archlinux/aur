@@ -9,6 +9,7 @@ pkgbase = xamarin-android
 	makedepends = findutils
 	depends = mono>=5.0.0
 	depends = libzip
+	optdepends = jdk8-openjdk: For building Xamarin.Android Apps
 	provides = xamarin-android
 	conflicts = xamarin-android
 	conflicts = xamarin-android-git
