@@ -2,7 +2,7 @@
 HIDE_TRAY_ICON=0
 
 pkgname=kwin-bismuth-git
-pkgver=2.0.0.r3.gbf4da30
+pkgver=2.0.0.r5.g303fa6c
 pkgrel=1
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64')
@@ -39,8 +39,6 @@ build() {
     if [ ${HIDE_TRAY_ICON} = 1 ]; then
         patch -p0 -N -i "${srcdir}/hide-tray-icon.patch"
     fi
-
-    npm run clean >/dev/null
 
     npm i -P --production esbuild@'^0.12.26'
 
