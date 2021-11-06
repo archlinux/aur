@@ -1,43 +1,36 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: samarthj <dev@samarthj.com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+
+# shellcheck disable=2034,2148,2154
 
 pkgbase=pyexiftool
-pkgname=('python-pyexiftool' 'python2-pyexiftool')
-pkgver=0.2.0
+_pkgname=PyExifTool
+pkgname='python-pyexiftool'
+pkgver=0.4.9
 pkgrel=2
 pkgdesc="Library to communicate with an instance of ExifTool command-line application"
-url="https://github.com/smarnach/pyexiftool"
 arch=('any')
-license=('GPL3')
-makedepends=('python' 'python2' 'python-sphinx' 'perl-image-exiftool')
-options=('!makeflags')
-source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/smarnach/${pkgbase}/archive/v${pkgver}.tar.gz)
-sha512sums=('88595c01fa68f7c4d0b604182b6278a53e6a61832b16dfda306a5bb89e767a3629d030a0f0c6a8566e0cf2df4a449b87d39aa40baea91b4267a85824f61d492a')
+url="https://github.com/sylikc/${pkgbase}"
+license=("GPL3")
+makedepends=("python-pip")
+_pkgname_prefix="${_pkgname:0:1}"
+_pkgname_underscored="${_pkgname//-/_}"
+_pkgurl="https://files.pythonhosted.org/packages/py3/$_pkgname_prefix/$_pkgname/$_pkgname_underscored-$pkgver-py3-none-any.whl"
+source=("$_pkgurl")
+sha512sums=('e2726009f5f8131507ad15af8c154ec1d40affcae34cc37d14df90f11f88d38b6104f1f58c1856f853091dc5318e70aa267badc2f1cf22302688ece43692cf2b')
 
-check() {
-  cd ${pkgbase}-${pkgver}
-  PYTHONPATH=".:${PYTHONPATH}" python test/test_exiftool.py
-  PYTHONPATH=".:${PYTHONPATH}" python2 test/test_exiftool.py
+package() {
+  cd "$srcdir" || exit
+  PIP_CONFIG_FILE=/dev/null pip install \
+    --root="$pkgdir" \
+    --isolated \
+    --ignore-installed \
+    --no-deps \
+    --no-compile \
+    --no-warn-script-location \
+    ${_pkgname//-/_}-$pkgver-py3-none-any.whl
+  python -O -m compileall -j "$(nproc)" -s "$pkgdir" "$pkgdir/usr/lib/"
+  mapfile -t direct_url_file < <(find "$pkgdir"/usr/lib -type f -name 'direct_url.json')
+  rm -rvf "${direct_url_file[@]}" || true
+  install -Dm644 "${_pkgname//-/_}-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-build() {
-  cd ${pkgbase}-${pkgver}
-  make -C doc man text
-}
-
-package_python-pyexiftool() {
-  depends=('python' 'perl-image-exiftool')
-  cd ${pkgbase}-${pkgver}
-  python setup.py install -O1 --prefix=/usr --root="${pkgdir}"
-  install -Dm 644 doc/_build/text/index.txt "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm 644 doc/_build/man/${pkgbase}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
-}
-
-package_python2-pyexiftool() {
-  depends=('python2' 'perl-image-exiftool')
-  cd ${pkgbase}-${pkgver}
-  python2 setup.py install -O1 --prefix=/usr --root="${pkgdir}"
-  install -Dm 644 doc/_build/text/index.txt "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm 644 doc/_build/man/${pkgbase}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
-}
-
-# vim: ts=2 sw=2 et:
