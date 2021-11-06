@@ -1,6 +1,5 @@
-GDLauncher-*.zip
+GDLauncher-*.deb
 gdlauncher-bin-*-x86_64.pkg.tar.zst
-icon.png
 .directory
 pkg
 src
