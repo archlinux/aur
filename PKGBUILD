@@ -1,3 +1,7 @@
+# Maintainer: TheAirBlow <pilexet.danila at gmail dot com>
+# Maintainer: C_Schmidpeter <christoph.schmidpeter at gmx dot de>
+# Contributor: indjera <indjera at gmail dot com>
+
 pkgname=xamarin-android
 pkgver=11.4.99.0
 pkgrel=1
