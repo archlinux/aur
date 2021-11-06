@@ -15,7 +15,7 @@ depends=('device-mapper' 'libdevmapper.so' 'openssl' 'popt' 'util-linux-libs'
          'libuuid.so' 'json-c' 'libjson-c.so' 'argon2' 'libargon2.so')
 makedepends=('util-linux')
 provides=('libcryptsetup.so' 'cryptsetup')
-conflicts=('cryptsetup)
+conflicts=('cryptsetup')
 replaces=('cryptsetup')
 options=('!emptydirs')
 validpgpkeys=('2A2918243FDE46648D0686F9D9B0577BD93E98FC') # Milan Broz <gmazyland@gmail.com>
