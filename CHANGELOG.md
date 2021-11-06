@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.7.0-1] - 2021-10-29
+
+### Added
+
+#### Search Functionality
+
+To quickly jump to the right slide, you can use the search functionality.
+
+Press `/`, enter your search term, and press `Enter`.
+(The search term is interpreted as a regular expression. The `/i` flag causes case-insensitivity.).
+
+Press `ctrl+n` after a search to go to the next search result.
+
+Thanks to [@darmiel](https://github.com/darmiel)!
+
 ## [0.6.1-1] - 2021-10-21
 
 ### Added
