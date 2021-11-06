@@ -2,47 +2,65 @@
 # Maintainer: C_Schmidpeter <christoph.schmidpeter at gmx dot de>
 # Contributor: indjera <indjera at gmail dot com>
 
+# Uses latest public Xamarin DevOps successfull run:
+# https://dev.azure.com/xamarin/public/_build?definitionId=48&view=runs&statusFilter=succeeded
+_buildid=43659 # Build ID from public Xamarin DevOps
+_version=11.4.99.0 # Version supplied from any artifact filename
+_deb_filename=xamarin.android-oss_${_version}_amd64.deb # .deb artifact filename
+# Why use the .deb one? It already has everything we need and already
+# has the mono symlinks.
+
 pkgname=xamarin-android
-pkgver=11.4.99.0
+pkgver=${_version}.${_buildid}
 pkgrel=1
 pkgdesc="Provides open-source bindings of the Android SDK for use with .NET managed languages"
 arch=('x86_64')
 depends=('mono>=5.0.0' 'libzip')
-makedepends=('tar' 'findutils')
+makedepends=('pv' 'unzip' 'curl')
 optdepends=('jdk8-openjdk: For building Xamarin.Android Apps')
 options=(!strip)
 provides=('xamarin-android')
 conflicts=('xamarin-android' 'xamarin-android-git')
 url="https://github.com/xamarin/xamarin-android"
 license=('MIT')
-_pkgname="xamarin.android-oss-v${pkgver}_Linux-${arch}_main_5e1e5cb7-Release"
-source=("$pkgname.zip::https://artprodcus3.artifacts.visualstudio.com/Ad0adf05a-e7d7-4b65-96fe-3f3884d42038/6fd3d886-57a5-4e31-8db7-52a1b47c07a8/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL3hhbWFyaW4vcHJvamVjdElkLzZmZDNkODg2LTU3YTUtNGUzMS04ZGI3LTUyYTFiNDdjMDdhOC9idWlsZElkLzQzNjU5L2FydGlmYWN0TmFtZS9pbnN0YWxsZXJzLXVuc2lnbmVkKy0rTGludXg1/content?format=zip")
-sha256sums=('SKIP')
+source=('https://gist.githubusercontent.com/TheAirBlow/47668a5d2403baa4a06b927ebe4dc1e0/raw/index.js'
+         'https://gist.githubusercontent.com/TheAirBlow/47668a5d2403baa4a06b927ebe4dc1e0/raw/package.json')
+md5sums=('SKIP' 'SKIP')
 
+# Prepare build.zip
+# We check hashes here so we don't need
+# to redownload everything if hashes are valid
+# (filesize is very big)
 prepare() {
-    msg2 "Unpacking nested source folder. This may take a while..."
-    tar -xf "installers-unsigned - Linux/$_pkgname.tar.bz2" --strip-components=3
-
-    msg2 "Removing bin/tr folder, as it would clash with coreutil's tr command..."
-    rm -rf "bin/tr"
-
-    msg2 "Removing include/mono-2.0 folder, as it would clash with mono..."
-    rm -rf "include/mono-2.0"
+    cd ${srcdir}
+    cd ..
+    local hash
+    msg2 "Downloading npm modules..."
+    npm i >/dev/null 2>&1
+    msg2 "Getting download url..."
+    cd ${srcdir}
+    msg2 "Downloading build.zip..."
+    curl -o build.zip $(node index.js ${_buildid})
+    msg2 "Checking MD5 hashsum..."
+    cd ${srcdir}
+    msg2 "Extracting build.zip..."
+    unzip -o build.zip | pv -l >/dev/null
+    msg2 "Renaming..."
+    mv "installers-unsigned - Linux" "build"
 }
 
+# Package .deb artifact
+# We do not hashes here, cause it doesn't
+# download or extract anything big here
 package() {
-    # Install main folders
-    for folder in bin lib include; do
-        msg2 "Installing $folder folder..."
-        find "$folder" -type f -exec install -Dm755 {} "$pkgdir/usr/"{} \;
-    done
-
-    msg2 "Creating symlinks so that mono can find this package..."
-    mkdir -p $pkgdir/usr/lib/mono/{xbuild,xbuild-frameworks}
-    _linksrcdir=$pkgdir/usr/lib/xamarin.android
-    _linkdstdir=$pkgdir/usr/lib/mono
-    ln -sr "$_linksrcdir/xbuild/Novell"                       "$_linkdstdir/xbuild"
-    ln -sr "$_linksrcdir/xbuild/Xamarin"                      "$_linkdstdir/xbuild"
-    ln -sr "$_linksrcdir/xbuild-frameworks/Microsoft.Android" "$_linkdstdir/xbuild-frameworks"
-    ln -sr "$_linksrcdir/xbuild-frameworks/MonoAndroid"       "$_linkdstdir/xbuild-frameworks"
+    cd "${srcdir}/build"
+    msg2 "Extracting .deb artifact..."
+    bsdtar xf ${_deb_filename}
+    msg2 "Extracting .deb data..."
+    bsdtar xf data.tar.xz
+    _cleanup
+    msg2 "Installing..."
+    chmod -R g-w usr
+    mv usr "${pkgdir}"
+    msg2 "Done!"
 }
