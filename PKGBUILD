@@ -1,31 +1,50 @@
-#Maintainer: Alexander Adler <alexadler1@protonmail.com>
-#Contributor: Yan Burdonsky <psyrccio@gmail.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Alexander Adler <alexadler1@protonmail.com>
+# Contributor: Yan Burdonsky <psyrccio@gmail.com>
+
+# Copy your OGG|MP3|WAV noises into ~/ANoise or ~/.ANoise
+
 pkgname=anoise
-pkgver=0.0.29
-pkgrel=1
+pkgver=0.0.36
+pkgrel=2
 pkgdesc="Ambient Noise Player. Relax or concentrate with a noise"
 arch=('any')
+url="https://costales.github.io/projects/anoise"
 license=('GPL3')
-url="https://code.launchpad.net/anoise"
-options=()
-conflicts=()
-makedeps=('bison' 'flex')
-depends=('anoise-media' 'python-distutils-extra' 'gstreamer0.10' 'gstreamer0.10-python')
-optdepends=()
-source=("https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('SKIP')
+depends=('gst-python' 'webkit2gtk' 'anoise-media')
+makedepends=('python-distutils-extra')
+optdepends=('anoise-community-extension1: Sounds and icons from the users'
+            'anoise-community-extension2: Sounds and icons from the users'
+            'anoise-community-extension3: Sounds and icons from the users'
+            'anoise-community-extension4: Sounds and icons from the users'
+            'anoise-community-extension5: Sounds and icons from the users'
+            'anoise-gui: GUI for anoise'
+            'libappindicator-gtk3: tray icon')
+source=("https://launchpad.net/~costales/+archive/ubuntu/$pkgname/+sourcefiles/$pkgname/$pkgver/${pkgname}_${pkgver}.tar.gz"
+        'setup.patch')
+sha256sums=('cd6e2e1e8691b950c503b4319f7f9ecf6e66c745e5194724be0c3e026e9dd3ac'
+            'e561b2513e791c29d097e7eea7c83f9bbe3d993ead398e7dd0352bbb55ce451a')
+
+prepare() {
+  cd "$srcdir/$pkgname "
+  patch --forward --strip=1 --input="$srcdir/setup.patch"
+}
 
 build() {
-  cd "${srcdir}"
+  cd "$srcdir/$pkgname "
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}"
+  cd "$srcdir/$pkgname "
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-  ar x "${pkgname}_${pkgver}_all.deb" > /dev/null
-  tar -xJf data.tar.xz -C "${pkgdir}"
+  # This file is included in anoise-gui
+  rm "$pkgdir/usr/share/$pkgname/$pkgname.ui"
 
-  install -d -m755 "${pkgdir}/usr/"
-  rm ${pkgdir}/usr/share/anoise/preferences.py
-  cp ../preferences.py ${pkgdir}/usr/share/anoise/
+  # Files setup.py does not install
+  cp -r locale "$pkgdir/usr/share/locale"
+
+  install -Dm644 "build/share/applications/$pkgname.desktop" -t \
+    "$pkgdir/usr/share/applications"
 }

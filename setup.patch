@@ -1,0 +1,27 @@
+diff --unified --recursive --text anoise.orig/setup.py anoise.new/setup.py
+--- anoise.orig/setup.py	2020-04-21 17:47:31.000000000 -0600
++++ anoise.new/setup.py	2020-08-05 13:59:17.041960805 -0600
+@@ -18,7 +18,13 @@
+ # for more information.
+
+
+-import os, sys, DistUtilsExtra.auto
++import os, sys, glob, DistUtilsExtra.auto
++
++# Create data files
++data = [ ('/usr/share/anoise',                      glob.glob('anoise/*')),
++         ('/usr/share/icons/hicolor/scalable/apps', glob.glob('icons/hicolor/scalable/apps/*.svg')),
++         ('/usr/share/icons/hicolor/48x48/apps',    glob.glob('icons/hicolor/48x48/apps/*.png')),
++         ('/usr/share/icons/hicolor/16x16/apps',    glob.glob('icons/hicolor/16x16/apps/*.png'))]
+
+ # Setup stage
+ DistUtilsExtra.auto.setup(
+@@ -28,6 +34,7 @@
+     author       = "Marcos Alvarez Costales https://costales.github.io/",
+     author_email = "marcos.costales@gmail.com",
+     url          = "https://costales.github.io/projects/anoise/",
+-    license      = "GPL3"
++    license      = "GPL3",
++    data_files   = data
+     )
+

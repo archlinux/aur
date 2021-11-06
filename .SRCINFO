@@ -1,16 +1,24 @@
 pkgbase = anoise
 	pkgdesc = Ambient Noise Player. Relax or concentrate with a noise
-	pkgver = 0.0.29
-	pkgrel = 1
-	url = https://code.launchpad.net/anoise
+	pkgver = 0.0.36
+	pkgrel = 2
+	url = https://costales.github.io/projects/anoise
 	arch = any
 	license = GPL3
+	makedepends = python-distutils-extra
+	depends = gst-python
+	depends = webkit2gtk
 	depends = anoise-media
-	depends = python-distutils-extra
-	depends = gstreamer0.10
-	depends = gstreamer0.10-python
-	source = https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/anoise_0.0.29_all.deb
-	sha256sums = SKIP
+	optdepends = anoise-community-extension1: Sounds and icons from the users
+	optdepends = anoise-community-extension2: Sounds and icons from the users
+	optdepends = anoise-community-extension3: Sounds and icons from the users
+	optdepends = anoise-community-extension4: Sounds and icons from the users
+	optdepends = anoise-community-extension5: Sounds and icons from the users
+	optdepends = anoise-gui: GUI for anoise
+	optdepends = libappindicator-gtk3: tray icon
+	source = https://launchpad.net/~costales/+archive/ubuntu/anoise/+sourcefiles/anoise/0.0.36/anoise_0.0.36.tar.gz
+	source = setup.patch
+	sha256sums = cd6e2e1e8691b950c503b4319f7f9ecf6e66c745e5194724be0c3e026e9dd3ac
+	sha256sums = e561b2513e791c29d097e7eea7c83f9bbe3d993ead398e7dd0352bbb55ce451a
 
 pkgname = anoise
-
