@@ -6,7 +6,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=4.3.3
+pkgver=4.4.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -27,7 +27,8 @@ depends=(
   libmodplug
   librav1e.so
   libtheora
-  libva
+  libva  #libva-headlesss doesnt provide so version
+  libvidstab.so
   libvorbisenc.so
   libvorbis.so
   libvpx.so
@@ -36,6 +37,7 @@ depends=(
   libx265.so
   libxml2
   libxvidcore.so
+  libzimg.so
   opencore-amr
   openjpeg2
   opus
@@ -61,7 +63,7 @@ provides=(
 )
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('9f0a68fbd74feb4e50dc220bddd59d84626774a53687fb737806ae00e5c6e9e6')
+sha256sums=('eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -106,13 +108,14 @@ build() {
     --enable-libopus \
     --disable-libpulse \
     --enable-librav1e \
+    --disable-librsvg \
     --disable-libsoxr \
     --enable-libspeex \
     --disable-libsrt \
     --disable-libssh \
     --enable-libtheora \
     --enable-libv4l2 \
-    --disable-libvidstab \
+    --enable-libvidstab \
     --disable-libvmaf \
     --enable-libvorbis \
     --enable-libvpx \
@@ -122,6 +125,7 @@ build() {
     --disable-libxcb \
     --enable-libxml2 \
     --enable-libxvid \
+    --disable-libzimg \
     --disable-nvdec \
     --disable-nvenc \
     --enable-shared \
