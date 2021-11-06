@@ -14,8 +14,7 @@ pkgbase = wolf-shaper-git
 	optdepends = jack: for standalone application
 	provides = wolf-shaper
 	conflicts = wolf-shaper
-	source = wolf-shaper::git://github.com/pdesaulniers/wolf-shaper
+	source = wolf-shaper::git+https://github.com/wolf-plugins/wolf-shaper
 	md5sums = SKIP
 
 pkgname = wolf-shaper-git
-

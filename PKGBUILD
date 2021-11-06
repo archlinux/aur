@@ -1,7 +1,7 @@
 # Maintainer: Patrick Desaulniers <patrick dot desaulniers36 at gmail dot com>
 
 pkgname=wolf-shaper-git
-pkgver=0.1.7.r27.g595d785
+pkgver=0.1.8.r62.g6b1ac64
 pkgrel=1
 pkgdesc="Waveshaper plugin w/ graph editor"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('dssi' 'lv2' 'jack')
 optdepends=('jack: for standalone application')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname%-*}::git://github.com/pdesaulniers/wolf-shaper")
+source=("${pkgname%-*}::git+https://github.com/wolf-plugins/wolf-shaper")
 md5sums=('SKIP')
 
 pkgver() {
