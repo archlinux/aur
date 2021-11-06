@@ -8,6 +8,7 @@ url="https://git.phire.cc/me/wgnord"
 depends=('jq' 'curl' 'wireguard-tools')
 source=("https://git.phire.cc/me/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("cb4355a887b2371f9ad2a4ed142c5a17")
+backup=(var/lib/wgnord/template.conf)
 
 package() {
 	install -Dm644 "$srcdir/$pkgname/template.conf" "$pkgdir/var/lib/$pkgname/template.conf"
