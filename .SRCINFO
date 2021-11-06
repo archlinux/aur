@@ -1,5 +1,5 @@
 pkgbase = wem
-	pkgdesc = Wine Environment Manager: A tool for managing wine "envs" or prefixes.
+	pkgdesc = Wine Environment Manager: A CLI tool for managing wine "envs" or prefixes.
 	pkgver = 0.8.5
 	pkgrel = 2
 	url = https://git.sr.ht/~hristoast/wem
