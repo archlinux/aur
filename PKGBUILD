@@ -4,27 +4,27 @@
 pkgname=hashbrown
 _pkgname=hashbrown
 _app_id=dev.geopjr.Hashbrown
-pkgver=1.3.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
 arch=('x86_64')
 url="https://github.com/GeopJr/Hashbrown"
 license=('AGPL3')
-depends=('gtk3')
+depends=('gtk4' 'libadwaita')
 makedepends=('crystal' 'gobject-introspection' 'gobject-introspection-runtime' 'shards' 'spglib')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 _source=Hashbrown
-sha512sums=('4fe531d6b1c1afe4c9a44a72860d2ca74e32e4375557a9f9fb3838c7edc70c251af33ded43136081b1554333ce82b114e4747c33f489b4c6200959af583b988f')
+sha512sums=('bd2cd0f5dcdf5add34e3a5a3116891cbd6dbdf07a32883debee42460191bca0527950e7221f936bc3b87a52db3faa1a4f778eb4d22f988e1be840d4c50b79c7e')
 
 build() {
   cd "$_source-$pkgver"
   shards build --release --no-debug
 }
 
-#check() {
-#  cd "$_source-$pkgver"
-#  crystal spec
-#}
+check() {
+  cd "$_source-$pkgver"
+  crystal spec
+}
 
 package() {
   install -Dm755 "$_source-$pkgver/bin/hashbrown" "$pkgdir/usr/bin/$pkgname"
