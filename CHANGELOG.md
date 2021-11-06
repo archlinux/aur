@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.7.1-1] - 2021-11-01
+
+### Added
+
+- Added Page Up and Page Down navigation by [@Janszczyrek](https://github.com/Janszczyrek) in [#115](https://github.com/maaslalani/slides/pull/115)
+- Improvements to exit code handling & virtual text reset
+
+### Fixed
+
+- Fixed bug with executing the same code block multiple times.
+
 ## [0.7.0-1] - 2021-10-29
 
 ### Added
