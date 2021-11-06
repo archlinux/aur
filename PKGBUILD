@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.44.1
+pkgver=2.45.0
 pkgrel=1
 pkgdesc='Text editor'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=973236c640332e8a1e5ba5c24171f37648226e72") # tag: v2.44.1
+source=("git+$url#commit=1f14e434c90b0f9caf2de63593d9256ecc11d131") # tag: 2.45.0
 optdepends=('asciidoctor: for writing man pages'
             'astyle: for formatting C#'
             'autopep8: for formatting Python'
@@ -27,6 +27,7 @@ optdepends=('asciidoctor: for writing man pages'
             'kotlin: for compiling Kotlin'
             'lua: for compiling Lua'
             'lua-format: for formatting Lua'
+            'mlton: for compiling Standard ML'
             'mono: for compiling C#'
             'ocaml: for compiling and formatting OCaml'
             'odin: for compiling Odin'
@@ -50,8 +51,9 @@ build() {
 package() {
   cd $pkgname
   install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/light"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
   install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   DESTDIR="$pkgdir" make gui-install

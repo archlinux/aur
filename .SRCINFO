@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Text editor
-	pkgver = 2.44.1
+	pkgver = 2.45.0
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = o
 	optdepends = kotlin: for compiling Kotlin
 	optdepends = lua: for compiling Lua
 	optdepends = lua-format: for formatting Lua
+	optdepends = mlton: for compiling Standard ML
 	optdepends = mono: for compiling C#
 	optdepends = ocaml: for compiling and formatting OCaml
 	optdepends = odin: for compiling Odin
@@ -36,7 +37,7 @@ pkgbase = o
 	optdepends = tidy: for formatting HTML
 	optdepends = v: for compiling and formatting V
 	optdepends = zig: for compiling and formatting Zig
-	source = git+https://github.com/xyproto/o#commit=973236c640332e8a1e5ba5c24171f37648226e72
+	source = git+https://github.com/xyproto/o#commit=1f14e434c90b0f9caf2de63593d9256ecc11d131
 	b2sums = SKIP
 
 pkgname = o
