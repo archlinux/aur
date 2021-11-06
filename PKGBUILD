@@ -1,6 +1,6 @@
 # Maintainer: Vianney le Clément de Saint-Marcq <code@quartic.eu>
 pkgname=git-publish
-pkgver=1.5.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Prepare and store patch revisions as git tags"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'git')
 makedepends=('perl')
 source=("https://github.com/stefanha/git-publish/archive/v${pkgver}.tar.gz")
-sha256sums=('f33c687b1472ba1405087124df00bc228e892d9c561b3b57d33553aeb72c3687')
+sha256sums=('4080170d5a2ae942cc524dc5ff8bc81d4065965812202f768a059c22203bf37c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
