@@ -1,7 +1,7 @@
 # Maintainer: bmgtjonas <linuxus@mail.de>
 
 pkgname=gqthres
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=0
 pkgdesc="Resolver for Callsigns and Locators"
 arch=(any)
@@ -28,4 +28,4 @@ package() {
    install -Dm755 gqthres.desktop ${pkgdir}/usr/share/applications/gqthres.desktop
    install -Dm755 gqthres.png ${pkgdir}/usr/share/pixmaps/gqthres.png
 }  
-sha256sums=('7bf4e333d8bfb58a449a96f42eac994581532a436fefcde92984d5656ea34d7d')
+sha256sums=('c7fc5f8c5dd64824c9a87c23c91f1a6c967c803f68172f28c15938ec63d714e8')
