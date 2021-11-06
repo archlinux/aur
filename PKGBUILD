@@ -83,10 +83,10 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.15.0-xanmod1
-#pkgver=${xanmod//-/.}
-pkgver=5.15.1rc1.xanpre0     # NOTE: start 4th position with 'xan...', we parse for this pattern later
-pkgrel=0
+xanmod=5.15.1-xanmod1
+pkgver=${xanmod//-/.}
+#pkgver=5.15.1.xanpre0     # NOTE: start 4th position with 'xan...', we parse for this pattern later
+pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -110,9 +110,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "sphinx-workaround.patch"
 
         # incremental kernel.org patch ahead of official Xanmod release
-        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.1.xz"
+        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz"
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.14.15-16.xz"
-        "Linux-5.15.1-rc1.patch"
 
         # amd-pstate v3 included in Xanmod
 
@@ -169,10 +168,9 @@ validpgpkeys=(
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '8209a82fe051a99f8fd6df23966278d329b98c27899d4eea4b75b5f96c6f9010'
+            'dda0cf1f76115f4dcc419bc24ef42beea1d8e6b012d07c8e8b183124aaaa3474'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
-            '98fc296ed8f68d77e0655298ac1775edde06234007a17dc32617bc9801b030a9'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
