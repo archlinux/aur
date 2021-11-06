@@ -4,7 +4,7 @@
 
 pkgname=zef
 pkgver=0.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Rakudo (Perl6) Module Management"
 arch=('any')
 depends=('perl6')
@@ -29,6 +29,7 @@ package() {
 
   printf 'Installing documentation...\n'
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 755 bin/zef -t "$pkgdir/usr/bin"
 
   printf 'Installing...\n'
   export RAKUDO_LOG_PRECOMP=1
