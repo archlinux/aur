@@ -1,7 +1,7 @@
 # Maintainer: bitcoinlizard <bitcoinlizard at fastmail dot com>
 
 pkgname=specter-desktop
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Specter Desktop functions as a watch-only coordinator for multi-signature and single-key Bitcoin wallets."
 arch=('any')
@@ -10,14 +10,14 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python' 'libusb' 'systemd-libs' 'python-dotenv' 'python-flask' 'python-flask-login' 'python-flask-wtf' 'python-mnemonic' 'python-hwilib' 'python-embit' 'python-flask-cors' 'python-pgpy' 'python-pyopenssl' 'python-stem' 
 'python-typing_extensions' 'python-psutil' 'python-hidapi' 'python-ecdsa' 'python-protobuf' 'python-importlib-metadata' 'python-daemonize' 'python-noiseprotocol-git' 'python-wheel' 'python-pyasn1' 'python-cbor' 'python-urllib3' 'python-flask-babel')
-
+backup=(usr/lib/systemd/system/specter.service)
 source=("https://github.com/cryptoadvance/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         'specter.service'
 	'version.patch')
 
-sha256sums=('eb07d7f48ff869173ec0132b2bd7dbb66bc68729758bcc5da8376341f39efade'
+sha256sums=('d16c3441d30b61a90d11c8089141549ecc74fa62ba7640f5151b0ce20d955b9a'
             '9b5f57a0ebd48e6b7d1ac240913e4b502a6e3ffc5b64ff87ed263f1a4810a265'
-	    '9eb89b69d711b7bf4aa0894eef649f791d860d615d5cfe91308d980f9c1b263c')
+	    'af0abc0f034d587256ae3d5c956a29707cb6c52a67796d5b992d02e59cc19dbc')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
