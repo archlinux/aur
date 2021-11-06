@@ -1,10 +1,13 @@
 pkgbase = gqthres
 	pkgdesc = Resolver for Callsigns and Locators
-	pkgver = 1.0
-	pkgrel = 5
+	pkgver = 1.1.0
+	pkgrel = 0
 	url = https://github.com/BaumGuard/gqthres
-	arch = x86_64
+	arch = any
 	license = GPL
+	makedepends = git
 	depends = jre-openjdk
+	source = https://github.com/BaumGuard/gqthres/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = aad104c763ae6ab3fa808f3e2a54965774963dd9b13ba1169ec1400cdcf0175d
 
 pkgname = gqthres
