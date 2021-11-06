@@ -1,7 +1,7 @@
 pkgbase = bitwig-studio-earlyaccess
 	pkgdesc = Digital audio workstation for music production, remixing and live performance - early access version
 	pkgver = 4.1beta2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bitwig.com/
 	arch = x86_64
 	license = custom

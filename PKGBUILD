@@ -5,7 +5,7 @@
 pkgname='bitwig-studio-earlyaccess'
 pkgver='4.1beta2'
 _pkgver='4.1beta2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Digital audio workstation for music production, remixing and live performance - early access version'
 arch=('x86_64')
 url='https://www.bitwig.com/'
