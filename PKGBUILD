@@ -145,6 +145,7 @@ ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --prefix=/usr
+ac_add_options --enable-linker=lld
 ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
@@ -158,6 +159,7 @@ export NM=llvm-nm
 export OBJCOPY='/usr/bin/llvm-objcopy'
 export RANLIB=llvm-ranlib
 export STRIP=llvm-strip
+
 
 # Branding
 ac_add_options --enable-update-channel=release
@@ -264,8 +266,8 @@ build() {
 
   # -fno-plt with cross-LTO causes obscure LLVM errors
   # LLVM ERROR: Function Import: link error
-  # CFLAGS="${CFLAGS/-fno-plt/}"
-  # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+  CFLAGS="${CFLAGS/-fno-plt/}"
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   # Do 3-tier PGO
   echo "Building instrumented browser..."
