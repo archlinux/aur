@@ -1,14 +1,14 @@
-# Maintainer: Vianney le Clément <vleclement AT gmail·com>
+# Maintainer: Vianney le Clément <code@quartic.eu>
 _pkgname=pplatex
 pkgname=$_pkgname-git
-pkgver=20150915.g5cec891
-pkgrel=2
+pkgver=20210523.gba8191a
+pkgrel=1
 pkgdesc="Pretty-Print LaTeX: A tool to reformat the output of latex and friends into readable messages"
 arch=('i686' 'x86_64')
 url="https://github.com/stefanhepp/pplatex"
 license=('GPL3')
 depends=('pcre' 'texlive-bin')
-makedepends=('git' 'scons')
+makedepends=('git' 'cmake')
 source=("git+https://github.com/stefanhepp/$_pkgname.git")
 md5sums=('SKIP')
 
@@ -20,15 +20,16 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  scons
+  mkdir build
+  cd build
+  cmake "$srcdir/$_pkgname"
+  cmake --build .
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  install -Dm755 bin/pplatex "$pkgdir/usr/bin/pplatex"
+  install -Dm755 "$srcdir/build/src/pplatex" "$pkgdir/usr/bin/pplatex"
   ln -s pplatex "$pkgdir/usr/bin/ppdflatex"
-  install -Dm755 bin/ppluatex "$pkgdir/usr/bin/ppluatex"
+  install -Dm755 "$srcdir/$_pkgname/src/ppluatex" "$pkgdir/usr/bin/ppluatex"
 }
 
 # vim:set ts=2 sw=2 et:
