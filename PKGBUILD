@@ -2,7 +2,7 @@
 # Maintainer: Simon Lundström <simlu@su.se> (or you?)
 
 pkgname=rancid
-pkgver=3.11
+pkgver=3.13
 pkgrel=1
 pkgdesc="Really Awesome New Cisco confIg Differ"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,8 +11,8 @@ license=('BSD')
 depends=('expect')
 backup=('etc/rancid.conf')
 source=( https://shrubbery.net/pub/rancid/${pkgname}-${pkgver}.tar.gz{,.asc} )
-md5sums=('1e382f8ebe1c91f6508df56b43727744' '4e7fd29c835c7b7c581be1ddf32fb21e')
-sha256sums=('0678a1bad101d48d30308a8df7140eef02698b3a72b5368ff3318bd10394d21a' 'bcbebea9245265f00eb4c0aeb89d68d676e96e470f8d049fc28d8093584737eb')
+md5sums=('7146e8aafb0d2d6906167f8acb83c3a4' '732718edd6501ff14a8ba40ba33fd1fc')
+sha256sums=('7241d2972b1f6f76a28bdaa0e7942b1257e08b404a15d121c9dee568178f8bf5' 'f36711a821976689aaf58cf99dc014fea0feb3805044547047e76c4615acc7a7')
 validpgpkeys=('321D8166DE7230F9241C06ADFC860A57C2B34FCB')
 
 build() {
