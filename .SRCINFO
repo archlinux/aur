@@ -1,14 +1,14 @@
 pkgbase = nodejs-postcss-cli
 	pkgdesc = CLI for postcss
-	pkgver = 9.0.1
+	pkgver = 9.0.2
 	pkgrel = 1
 	url = https://github.com/postcss/postcss-cli
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = postcss-cli-9.0.1.tgz
-	source = https://registry.npmjs.org/postcss-cli/-/postcss-cli-9.0.1.tgz
-	sha256sums = ec698fb0c403bd33dc9826fa0eb3d064fdc8818013311b490393a16928c750ed
+	noextract = postcss-cli-9.0.2.tgz
+	source = https://registry.npmjs.org/postcss-cli/-/postcss-cli-9.0.2.tgz
+	sha256sums = a427a4415f823c8af811e279231a8c4208c56b5194d1e8285ca5f6e36fa24419
 
 pkgname = nodejs-postcss-cli
