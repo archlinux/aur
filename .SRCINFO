@@ -1,11 +1,10 @@
 pkgbase = gdrive
 	pkgdesc = Google Drive CLI Client
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prasmussen/gdrive
 	arch = x86_64
 	license = MIT
-	makedepends = dep
 	makedepends = git
 	makedepends = go
 	options = !strip
