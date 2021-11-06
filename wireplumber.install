@@ -1,0 +1,24 @@
+post_install() {
+  # Enable service by default, as it is aliased for
+  # pipewire-session-manager.service, which is required by pipewire.service
+  systemctl --global enable wireplumber.service
+}
+
+post_upgrade() {
+  if (( $(vercmp "$2" '0.4.4-2') < 0)); then
+    printf "\tReenable any per-user enabled wireplumber.service\n \
+      \tmanually to establish a new service alias for\n \
+      \tpipewire-session-manager.service added with 0.4.4.\n"
+    # reenable already enabled global pipewire-media-session.service, as an alias is introduced with 0.3.38
+    if systemctl --global is-enabled -q wireplumber.service; then
+      systemctl --global reenable wireplumber.service
+    fi
+    # in case the service has not been enabled before, enable it:
+    # wireplumber and pipewire-media-session conflict from this point on
+    systemctl --global enable wireplumber.service
+  fi
+}
+
+pre_remove() {
+  systemctl --global disable wireplumber.service
+}
