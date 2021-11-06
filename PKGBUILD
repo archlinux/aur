@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgbase=linux-t2-wifi
+pkgbase=linux-t2
 pkgver=5.15
 _srcname=linux-${pkgver}
 pkgrel=1

@@ -1,4 +1,4 @@
-pkgbase = linux-t2-wifi
+pkgbase = linux-t2
 	pkgdesc = Patched Linux Kernel with support for T2 Mac's and their newer broadcom firmware
 	pkgver = 5.15
 	pkgrel = 1
@@ -52,7 +52,7 @@ pkgbase = linux-t2-wifi
 	source = https://raw.githubusercontent.com/jamlam/mbp-16.1-linux-wifi/main/9002-add-bluetooth-support-for-16,2.patch
 	source = https://raw.githubusercontent.com/jamlam/mbp-16.1-linux-wifi/main/intel-lpss.patch
 
-pkgname = linux-t2-wifi
+pkgname = linux-t2
 	pkgdesc = The Patched Linux Kernel with support for T2 Mac's and their newer broadcom firmware kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -63,9 +63,9 @@ pkgname = linux-t2-wifi
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux-t2-wifi-headers
+pkgname = linux-t2-headers
 	pkgdesc = Headers and scripts for building modules for the Patched Linux Kernel with support for T2 Mac's and their newer broadcom firmware kernel
 	provides = linux-headers=5.15
 
-pkgname = linux-t2-wifi-docs
+pkgname = linux-t2-docs
 	pkgdesc = Documentation for the Patched Linux Kernel with support for T2 Mac's and their newer broadcom firmware kernel
