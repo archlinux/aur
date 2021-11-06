@@ -1,0 +1,8 @@
+[Unit]
+Description=Styli.sh - Switch Wallpaper
+
+[Service]
+ExecStart=/bin/sh -c '/usr/bin/styli.sh $STYLISH_FLAGS'
+
+[Install]
+WantedBy=default.target

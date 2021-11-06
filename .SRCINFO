@@ -1,7 +1,7 @@
 pkgbase = styli.sh-git
 	pkgdesc = wallpaper switching made easy
 	pkgver = r101.232f23c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thevinter/styli.sh
 	arch = any
 	license = GPL
@@ -9,6 +9,10 @@ pkgbase = styli.sh-git
 	provides = styli.sh
 	conflicts = styli.sh
 	source = styli.sh::git+https://github.com/thevinter/styli.sh
-	md5sums = SKIP
+	source = styli.sh.service
+	source = styli.sh.timer
+	sha256sums = SKIP
+	sha256sums = 22465fcb9402a8eaa3f104fc0f7a9461725c4c20657b4b1af248f0d4cd9a41c3
+	sha256sums = d8576d3b5d4dab9e29586eaedd6e32aeaa08472ba283e6f4aa9dffd85d102abd
 
 pkgname = styli.sh-git
