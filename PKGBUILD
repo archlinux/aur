@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Xamarin android build from jenkins.mono-project"
 arch=('x86_64')
 depends=('mono>=5.0.0' 'libzip')
-makedepends=('tar')
+makedepends=('tar' 'findutils')
 options=(!strip)
 provides=('xamarin-android')
 conflicts=('xamarin-android' 'xamarin-android-git')
