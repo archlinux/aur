@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=pueue-git
-pkgver=v1.0.0.rc.4.r15.g4c58cc4
+pkgver=v1.0.3.r31.gc0e4e1f
 pkgrel=1
 arch=('any')
 pkgdesc='A task manager and scheduler for shell commands'
@@ -10,7 +10,7 @@ makedepends=('git' 'cargo')
 conflicts=('pueue')
 provides=('pueue')
 url='https://github.com/nukesor/pueue'
-source=("$pkgname"::"git://github.com/nukesor/pueue.git")
+source=("$pkgname"::"git://github.com/nukesor/pueue.git#branch=v1.1.0")
 sha256sums=('SKIP')
 
 pkgver() {
