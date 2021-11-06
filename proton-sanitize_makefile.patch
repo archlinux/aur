@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 57ca0fb..6b913fe 100644
+index e07c04c..9450c6b 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -9,6 +9,15 @@ index 57ca0fb..6b913fe 100644
 -	export CCACHE_DISABLE := 1
  	DOCKER_OPTS := $(CCACHE_ENV) -e CCACHE_DISABLE=1 $(DOCKER_OPTS)
  endif
+ 
+@@ -121,7 +120,7 @@ container-build:
+ all32 $(MAKECMDGOALS32): container-build
+ all64 $(MAKECMDGOALS64): container-build
+ else
+-J = $(patsubst -j%,%,$(filter -j%,$(MAKEFLAGS)))
++J = $(patsubst -j%,%,$(SUBJOBS))
+ endif
+ 
  
 @@ -171,7 +170,8 @@ else
  endif
@@ -31,7 +40,7 @@ index 57ca0fb..6b913fe 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -409,6 +409,9 @@ endif # ifeq ($(CONTAINER),)
+@@ -410,6 +410,9 @@ endif # ifeq ($(CONTAINER),)
  ##
  
  GST_COMMON_MESON_ARGS := \
@@ -41,7 +50,7 @@ index 57ca0fb..6b913fe 100644
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -421,6 +424,7 @@ GST_COMMON_MESON_ARGS := \
+@@ -422,6 +425,7 @@ GST_COMMON_MESON_ARGS := \
  
  GST_ORC_MESON_ARGS := \
  	-Dorc-test=disabled \
@@ -49,7 +58,7 @@ index 57ca0fb..6b913fe 100644
  	$(GST_COMMON_MESON_ARGS)
  
  $(eval $(call rules-source,gst_orc,$(SRCDIR)/gst-orc))
-@@ -437,6 +441,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -438,6 +442,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -59,7 +68,7 @@ index 57ca0fb..6b913fe 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_DEPENDS = gst_orc
-@@ -475,6 +482,7 @@ GST_BASE_MESON_ARGS := \
+@@ -476,6 +483,7 @@ GST_BASE_MESON_ARGS := \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
  	-Dtools=disabled \
@@ -67,7 +76,7 @@ index 57ca0fb..6b913fe 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_DEPENDS = gst_orc gstreamer
-@@ -536,6 +544,7 @@ GST_GOOD_MESON_ARGS := \
+@@ -537,6 +545,7 @@ GST_GOOD_MESON_ARGS := \
  	-Dximagesrc=disabled \
  	-Dy4m=disabled \
  	-Dtools=disabled \
@@ -75,7 +84,7 @@ index 57ca0fb..6b913fe 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
-@@ -674,8 +683,14 @@ WINE_SOURCE_ARGS = \
+@@ -680,8 +689,14 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -90,7 +99,7 @@ index 57ca0fb..6b913fe 100644
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -804,17 +819,18 @@ VKD3D_CONFIGURE_ARGS = \
+@@ -810,17 +825,18 @@ VKD3D_CONFIGURE_ARGS = \
    --disable-tests \
    --disable-demos \
    --without-ncurses \
@@ -110,7 +119,7 @@ index 57ca0fb..6b913fe 100644
  
  VKD3D_LDFLAGS = -static-libgcc $(CROSSLDFLAGS)
  VKD3D_LDFLAGS32 = -L$(WINE_OBJ32)/dlls/vulkan-1/
-@@ -844,7 +860,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -850,7 +866,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
@@ -147,17 +156,17 @@ index 6567f05..cb41249 100644
  endif
  endef
 diff --git a/make/rules-cargo.mk b/make/rules-cargo.mk
-index 5369fb4..21db917 100644
+index 36ec054..91d8cf0 100644
 --- a/make/rules-cargo.mk
 +++ b/make/rules-cargo.mk
 @@ -14,7 +14,9 @@ $(OBJ)/.$(1)-configure$(3):
  $(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
--	cargo build --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
+-	cargo build $$(filter -j%,$$(MAKEFLAGS)) --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
 +	cargo update --offline --verbose
 +	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
-+	cargo build --locked --offline --verbose --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
++	cargo build -j$$(SUBJOBS) --locked --offline --verbose --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
  	touch $$@
  endif
  endef

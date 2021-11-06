@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=6.3-20211027
+_srctag=6.3-20211106
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
@@ -155,14 +155,6 @@ prepare() {
     [ ! -d build ] && mkdir build
     cd proton
 
-    pushd media-converter
-        export RUSTUP_TOOLCHAIN=stable
-        export CARGO_HOME="${srcdir}"/build/.cargo
-        cargo update
-        cargo fetch --locked --target "i686-unknown-linux-gnu"
-        cargo fetch --locked --target "x86_64-unknown-linux-gnu"
-    popd
-
     _submodules=(
         wine-valve::wine
         dxvk-valve::dxvk
@@ -204,6 +196,14 @@ prepare() {
         git submodule init external/Vulkan-Headers
         git config submodule.external/Vulkan-Headers.url "$srcdir"/Vulkan-Headers
         git submodule update external/Vulkan-Headers
+    popd
+
+    pushd media-converter
+        export RUSTUP_TOOLCHAIN=stable
+        export CARGO_HOME="${srcdir}"/build/.cargo
+        cargo update
+        cargo fetch --locked --target "i686-unknown-linux-gnu"
+        cargo fetch --locked --target "x86_64-unknown-linux-gnu"
     popd
 
     pushd wine
@@ -281,7 +281,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export WINEESYNC=0
     export WINEFSYNC=0
-    export DISPLAY=""
+    export DISPLAY=
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
 }
@@ -343,6 +343,6 @@ sha256sums=('SKIP'
             '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
             'b4e9c0c4959fcb3f7b7f25e35e5e0577dac5d54fe18e6edb15852a2a4196f2a2'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            'dd267386b793314b339a8b45e1335bc1820c77d4aa3c8c3946544f2017da2fce'
+            'ef93b93fca2288dedc7e0d17ef2b5770349b295c6aaaa97a876e599af35375b7'
             '12a587972a101a6d0c279a3820135277097c5f3e9f5990c5741d5fb1626dc770'
             'cfe984e2b3d65b01e2875e51b8ef8b8d6f1268dd09a88d5611655f24b46cff8d')
