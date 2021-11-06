@@ -1,7 +1,7 @@
 # Maintainer: bmgtjonas <linuxus@mail.de>
 
 pkgname=gqthres
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=0
 pkgdesc="Resolver for Callsigns and Locators"
 arch=(any)
@@ -12,10 +12,10 @@ depends=(jre-openjdk)
 source=("https://github.com/BaumGuard/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 
 build() {
-   cd ${pkgname}-${pkgver}
+   cd ${pkgname}-${pkgver}/src
 
-   javac -cp src/jsoup-1.13.1.jar src/gqthres.java
-   jar cfm src/gqthres.jar src/manifest src/*.class
+   javac -cp jsoup-1.13.1.jar gqthres.java
+   jar cfm gqthres.jar manifest *.class
 }
 
 package() {
