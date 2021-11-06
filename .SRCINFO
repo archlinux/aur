@@ -1,6 +1,6 @@
 pkgbase = jami-client-qt-git
 	pkgdesc = A free and private communication platform (QT client)
-	pkgver = r299.67a7efa
+	pkgver = r683.3dd206e
 	pkgrel = 1
 	url = https://git.jami.net/savoirfairelinux/jami-client-qt
 	arch = x86_64
