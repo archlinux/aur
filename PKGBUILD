@@ -16,6 +16,7 @@ makedepends=('git')
 checkdepends=('shellcheck')
 provides=('archiso')
 replaces=('archiso')
+conflicts=('archiso')
 optdepends=(
   'edk2-ovmf: for emulating UEFI with run_archiso'
   'openssl: for codesigning support when building netboot artifacts'
