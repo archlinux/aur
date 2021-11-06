@@ -3,7 +3,7 @@
 
 _qt='quicktext'
 pkgname="thunderbird-${_qt}"
-pkgver='2.15'
+pkgver='4.1'
 pkgrel='1'
 pkgdesc='Quicktext is an extension for Thunderbird that lets you create templates that can be easily inserted into your own emails'
 arch=('any')
@@ -11,7 +11,7 @@ url="http://extensions.hesslow.se/extension/4/"
 license=('AGPL')
 depends=('thunderbird')
 source=("${_qt}.xpi::https://addons.mozilla.org/thunderbird/downloads/latest/${_qt}/addon-640-latest.xpi?src=ss")
-sha256sums=('b5d5446f4a1ffe9a42fd628e7ba9f517aa735029c1b4073c27ff58a5358901c9')
+sha256sums=('391feeb6c53da0a17e478b9395cff5f5e5e02f57b4d33712676a99cc4a7826ae')
 noextract=(${source[@]%%::*})
 
 package() {
