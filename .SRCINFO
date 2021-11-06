@@ -5,7 +5,8 @@ pkgbase = scribbit
 	url = https://github.com/Marakusa/Scribbit
 	arch = x86_64
 	license = GPL
-	depends = dotnet-runtime gtk3
+	depends = dotnet-runtime
+	depends = gtk3
 	depends = dotnet-sdk
 
 pkgname = scribbit
