@@ -67,9 +67,9 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=59
-_rtpatchver=52
-_clr=${_major}.${_minor}-82
+_minor=73
+_rtpatchver=54
+_clr=${_major}.59-83
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
@@ -80,12 +80,12 @@ url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210818'
+_gcc_more_v='20210914'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.${_minor}-rt${_rtpatchver}.patch.xz"
-  "clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
+  "$pkgbase::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 )
 
@@ -107,15 +107,15 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-    for i in $(grep '^Patch' ${srcdir}/clearlinux-preempt-rt/linux-preempt-rt.spec |\
+    for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux-preempt-rt.spec |\
         grep -Ev '^Patch0000|^Patch0123' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
-        patch -Np1 -i "$srcdir/clearlinux-preempt-rt/${i}"
+        patch -Np1 -i "$srcdir/$pkgbase/${i}"
     done
 
     ### Setting config
     echo "Setting config..."
-    cp -Tf $srcdir/clearlinux-preempt-rt/config ./.config
+    cp -Tf $srcdir/$pkgbase/config ./.config
 
     ### Enable extra stuff from arch kernel
     echo "Enable extra stuff from arch kernel..."
@@ -165,11 +165,12 @@ prepare() {
     scripts/config --enable FONT_TER16x32
 
     make olddefconfig
+    diff -u $srcdir/$pkgbase/config .config || :
 
     # https://github.com/graysky2/kernel_compiler_patch
     # make sure to apply after olddefconfig to allow the next section
     echo "Patching to enable GCC optimization for other uarchs..."
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8-5.14.patch"
 
     if [ -n "$_subarch" ]; then
         # user wants a subarch so apply choice defined above interactively via 'yes'
@@ -202,7 +203,7 @@ prepare() {
 
 build() {
     cd ${_srcname}
-    make bzImage modules
+    make all
 }
 
 _package() {
@@ -228,7 +229,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
@@ -307,6 +308,9 @@ _package-headers() {
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+    echo "Stripping vmlinux..."
+    strip -v $STRIP_STATIC "$builddir/vmlinux"
+
     echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
@@ -320,11 +324,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('333cadc15f23e2060bb9701dbd9c23cfb196c528cded797329a0c369c2b6ea80'
+sha256sums=('edb228032b23efa14077a68d968bc5b0d4026c1d1ef8bb958547a87ccb030e76'
             'SKIP'
-            'bdf17a434c40f21f69cd60028e36347ebdbad76359e98ae8c6c9de2b6df8c644'
+            'b3daf450079e9cf4d95a6700a380727015670342129618c0f9e9a6915caaf86b'
             'SKIP'
-            'd361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf')
+            'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
