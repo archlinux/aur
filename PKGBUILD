@@ -2,8 +2,8 @@
 
 pkgname=lolminer
 #check download link before pushing.
-notagver=1.34
-pkgtag="a"
+notagver=1.35
+pkgtag=
 pkgver=${notagver}${pkgtag}
 pkgrel=2
 pkgdesc="Unofficial installer for lolMiner"
