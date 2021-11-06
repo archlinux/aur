@@ -3,51 +3,49 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=python-cartopy
-pkgver=0.19.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="A cartographic Python library with Matplotlib support for visualisation"
-url="https://scitools.org.uk/cartopy/docs/latest/"
-depends=('python-numpy' 'python-six' 'python-shapely' 'python-pyshp' 'proj6'
-         'geos' 'python-matplotlib' 'python-pillow' 'python-scipy')
-optdepends=('python-fiona: faster shapefile reading'
-            'python-gdal: for use with SRTM data'
-            'python-pyepsg: interface to https://epsg.io'
-            'python-owslib: access OGC clients')
+url="https://scitools.org.uk/cartopy/"
+depends=(
+    'geos' 'proj' 'python-certifi' 'python-matplotlib' 'python-numpy' 'python-pillow'
+    'python-pyproj' 'python-pyshp' 'python-scipy' 'python-shapely' 'python-six'
+)
+optdepends=(
+    'python-fiona: faster shapefile reading'
+    'python-gdal: for use with SRTM data'
+    'python-pyepsg: interface to https://epsg.io'
+    'python-pykdtree: faster warping of images'
+    'python-owslib: access OGC clients'
+)
 makedepends=('python-setuptools' 'cython' 'python-setuptools-scm')
 checkdepends=('python-pytest' 'python-flufl-lock')
 license=('LGPL3')
 arch=('x86_64')
 source=(
-  "cartopy-v$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/cartopy/Cartopy-$pkgver.post1.tar.gz"
-  'use-proj6.patch'
+    "https://files.pythonhosted.org/packages/source/c/cartopy/Cartopy-$pkgver.tar.gz"
 )
 sha256sums=(
-  '4b8b4773a98ed7009fe17d9b6ec87ac3ac62b7d14634d7768c190eadc647d576'
-  'f0367e38237739fe4c4700353eeae34f892a102a16ff43012b4758fcba564e9b'
+    '91f87b130e2574547a20cd634498df97d797abd12dcfd0235bc0cdbcec8b05e3'
 )
 
-prepare() {
-    cd "$srcdir/Cartopy-${pkgver}.post1"
-    patch -p0 -i "$srcdir/use-proj6.patch"
-}
-
 build() {
-    cd "$srcdir/Cartopy-${pkgver}.post1"
+    cd "$srcdir/Cartopy-${pkgver}"
     FORCE_CYTHON=1 python setup.py build
 }
 
 check() {
-    cd "$srcdir/Cartopy-${pkgver}.post1"
+    local PYVER=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
+    cd "$srcdir/Cartopy-${pkgver}/build/lib.linux-$CARCH-$PYVER"
 
     # The deselected tests fail an image comparison due to small changes in the
     # size and position of text labels.
-    PYVER=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
-    PYTHONDONTWRITEBYTECODE=1 pytest \
+    PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. pytest cartopy \
         -k "not test_gridliner and not test_contour_label" \
-        "build/lib.linux-${CARCH}-${PYVER}/cartopy"
+        --ignore-glob="*mpl/test_ticks.py"
 }
 
 package() {
-    cd "$srcdir/Cartopy-${pkgver}.post1"
+    cd "$srcdir/Cartopy-${pkgver}"
     python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1 --skip-build
 }
