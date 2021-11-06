@@ -1,9 +1,10 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: reggiiie <reggiiie@tutanota.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 # Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Martin Wimpress <code@flexion.org>
 
 pkgname=gpick-git
-pkgver=0.2.6rc1.r84.gebee8a0
+pkgver=0.2.6.r22.g0e858d3
 pkgrel=1
 pkgdesc="Advanced color picker written in C++ using GTK+ toolkit"
 arch=(i686 x86_64 armv7h aarch64)

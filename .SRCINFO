@@ -1,6 +1,6 @@
 pkgbase = gpick-git
 	pkgdesc = Advanced color picker written in C++ using GTK+ toolkit
-	pkgver = 0.2.6rc1.r84.gebee8a0
+	pkgver = 0.2.6.r22.g0e858d3
 	pkgrel = 1
 	url = http://www.gpick.org/
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = gpick-git
 	sha256sums = SKIP
 
 pkgname = gpick-git
-
