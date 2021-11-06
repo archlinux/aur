@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-git
-pkgver=3.1.0.20709.a149725ab
+pkgver=3.1.0.20710.31713138f
 pkgrel=1
 epoch=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
@@ -40,7 +40,6 @@ prepare() {
   
   # Generate m4 file for configure
   find plugins -name plugin.m4 | xargs cat > plugin-list.m4
-  sed -i '117d' plugins/aiksaurus/aiksaurusgtk3/AiksaurusGTK_picbutton.h
 }
 
 build() {
