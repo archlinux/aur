@@ -1,12 +1,11 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=glassfish
 pkgver=6.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source Jakarta EE (Java EE) Reference Implementation."
 url="https://github.com/eclipse-ee4j/glassfish"
 license=("EPL")
-depends=("java-environment>=8")
+depends=('java-environment>=11')
 arch=("any")
 options=(!strip)
 source=("https://github.com/eclipse-ee4j/${pkgname}/releases/download/${pkgver//_/-}/${pkgname}-${pkgver//_/-}.zip"

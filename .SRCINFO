@@ -1,11 +1,11 @@
 pkgbase = glassfish
 	pkgdesc = The Open Source Jakarta EE (Java EE) Reference Implementation.
 	pkgver = 6.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eclipse-ee4j/glassfish
 	arch = any
 	license = EPL
-	depends = java-environment>=8
+	depends = java-environment>=11
 	options = !strip
 	source = https://github.com/eclipse-ee4j/glassfish/releases/download/6.2.2/glassfish-6.2.2.zip
 	source = glassfish.service
