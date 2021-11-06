@@ -1,7 +1,7 @@
 pkgbase = gtherm
 	pkgdesc = A simple daemon to monitor thermal zones and cooling devices
-	pkgver = 0.0.2
-	pkgrel = 2
+	pkgver = 0.0.3
+	pkgrel = 1
 	url = https://source.puri.sm/Librem5/gtherm
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = gtherm
 	depends = glib2
 	provides = gtherm
 	conflicts = gtherm
-	source = git+https://source.puri.sm/Librem5/gtherm.git#tag=v0.0.2
+	source = git+https://source.puri.sm/Librem5/gtherm.git#tag=v0.0.3
 	sha256sums = SKIP
 
 pkgname = gtherm
-

@@ -1,8 +1,8 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=gtherm
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="A simple daemon to monitor thermal zones and cooling devices"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://source.puri.sm/Librem5/gtherm"
@@ -17,9 +17,9 @@ sha256sums=('SKIP')
 build() {
   arch-meson $pkgname build \
     -Dgtk_doc=true
-  ninja -C build 
+  meson compile -C build 
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir $pkgdir
 }
