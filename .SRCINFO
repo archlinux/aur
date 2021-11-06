@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-ndi
 	pkgdesc = Complete solution to record, convert and stream audio and video with NDI restored and enabled
-	pkgver = 4.4
-	pkgrel = 2
+	pkgver = 4.4.1
+	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = custom: nonfree and unredistributable
@@ -82,7 +82,7 @@ pkgbase = ffmpeg-ndi
 	provides = libswresample.so
 	provides = libswscale.so
 	conflicts = ffmpeg
-	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
+	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
 	source = vmaf-model-path.patch
 	source = Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/Revert-lavd-Remove-libndi_newtek.patch?inline=false
 	source = libndi_newtek_common.h::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false
@@ -98,4 +98,3 @@ pkgbase = ffmpeg-ndi
 	sha256sums = 04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36
 
 pkgname = ffmpeg-ndi
-
