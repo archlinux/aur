@@ -3,7 +3,7 @@
 pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=93.0
+pkgver=94.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -30,15 +30,12 @@ _uploadpath_sig_aarch64=${_base_url}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-aar
 _uploadpath_sig_x86_64=${_base_url}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums_x86_64=('77e7405a84d5fd63b717e365c0bd2b40c0a7a8ac3d77536337de17841f2bd8dc'
+sha256sums_x86_64=('4b1163137880cf8fbf9222ad75430f83adb5b690760ffb9ee63a8a19c0102be2'
                    'SKIP')
-sha256sums_aarch64=('67a14d166e00536f9ce72d95892ccc2bfaea7a02484373c7d4b0d0a89bc10b76'
+sha256sums_aarch64=('4352ba17f25191c13891bc049bd5b36ef296e7996be0dab721c171c2f8c50d29'
                     'SKIP')
 
 package() {
   # Yep, that's somewhat redundant. But it works.
   cp -r "${srcdir}"/usr "${pkgdir}"/
-
-  # temporary workaround for older uBlock version until AMO issues are fixed by Mozilla
-  sed -e 's/ublock_origin-1.38.0/ublock_origin-1.37.2/' -i ${pkgdir}/usr/lib/${pkgname//-bin/""}/distribution/policies.json
 }
