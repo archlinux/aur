@@ -1,0 +1,13 @@
+pkgbase = awesome-bling-git
+	pkgdesc = Utilities for the awesome window manager
+	pkgver = r238.92dabc8
+	pkgrel = 1
+	url = https://blingcorp.github.io/bling
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = awesome
+	source = git+https://github.com/BlingCorp/bling.git
+	md5sums = SKIP
+
+pkgname = awesome-bling-git
