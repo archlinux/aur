@@ -2,7 +2,7 @@
 
 pkgname=calibre-plugin-dedrm
 pkgver=7.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DeDRM tools for ebooks - Calibre plugin"
 arch=(x86_64)
 url=https://github.com/apprenticeharper/DeDRM_tools/
@@ -35,7 +35,7 @@ build() {
 
 	mkdir -p "${srcdir}/${_libalfcryptodir}"
 
-	unzip -oj alfcrypto_src.zip "*" -d "${srcdir}/${_libalfcryptodir}"
+	unzip -oj alfcrypto_src.zip -d "${srcdir}/${_libalfcryptodir}"
 	cd "${srcdir}/${_libalfcryptodir}"
 
 	rm -f libalfcrypto.so
