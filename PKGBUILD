@@ -5,12 +5,12 @@
 
 pkgname=jpilot
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop organizer application for the Palm Pilot"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/juddmon/jpilot/"
 license=('GPL2')
-depends=('openssl' 'gtk3' 'pilot-link')
+depends=('openssl' 'gtk3' 'pilot-link' 'slang')
 makedepends=('intltool')
 source=("https://codeload.github.com/juddmon/jpilot/legacy.tar.gz/ba8354f"
 	"https://raw.githubusercontent.com/eklausme/c/e637065e25e6a855dfac91ddf9683f5123ae612f/jpsqlite.c"
