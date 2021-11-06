@@ -2,7 +2,7 @@
 
 pkgname=xmobar-dynamic
 pkgver=0.39
-pkgrel=18
+pkgrel=19
 pkgdesc='Minimalistic Text Based Status Bar'
 url='https://hackage.haskell.org/package/xmobar'
 license=('BSD')
