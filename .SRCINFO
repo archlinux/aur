@@ -1,6 +1,6 @@
 pkgbase = extrattor-git
 	pkgdesc = A simple bash wrapper to manage one or more archives from the terminal
-	pkgver = r144.dc4b4d6
+	pkgver = r151.c72452d
 	pkgrel = 1
 	url = https://github.com/Mirko-r/extrattor
 	arch = x86_64
