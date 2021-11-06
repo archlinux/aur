@@ -1,14 +1,13 @@
 # Maintainer: Abdur Rehman Imran <arehmanimran4@gmail.com>
 pkgname=fsorter
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="A CLI folder organizer written in Python."
 arch=('x86_64')
 url="https://github.com/abdurehman4/fsorter"
 license=('GPL')
 depends=('python' 'python-termcolor')
 source=("git+https://github.com/abdurehman4/fsorter.git")
-md5sums=()
 
 
 package() {
