@@ -1,3 +1,8 @@
+4.9.5 (2021-10-26 12:44:47)
+
+    Fixes a crash when loading an old DYLD shared caches (iOS 13 and before),
+    Fixes a weird behaviour of the registration window which was disabling keyboard shortcuts in some situations.
+
 4.9.4 (2021-10-22 16:51:37)
 
     Fixes the loading of iOS application bundles downloaded from M1 Macs,
