@@ -1,0 +1,14 @@
+pkgbase = cssmodules-language-server
+	pkgdesc = Language server for CSS modules.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/antonk52/cssmodules-language-server
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = cssmodules-language-server-1.0.1.tgz
+	source = https://registry.npmjs.org/cssmodules-language-server/-/cssmodules-language-server-1.0.1.tgz
+	sha256sums = 883d969aaa8d7964086d5c9fcca99f4e11ff7bf01fa59aa697ea02ce366bb5a7
+
+pkgname = cssmodules-language-server
