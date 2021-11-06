@@ -4,13 +4,13 @@
 # Contributor: facekapow, rayfalling, Ducksoft
 pkgname=genie-systemd-git
 pkgver=1.44.r6.g52800cf
-pkgrel=1
+pkgrel=2
 pkgdesc="A quick way into a systemd \"bottle\" for WSL"
 arch=('x86_64')
 url="https://github.com/arkane-systems/genie"
 license=('Unlicense')
 depends=('daemonize' 'dotnet-runtime>=5.0' 'dotnet-host>=5.0')
-makedepends=('dotnet-sdk>=5.0')
+makedepends=('dotnet-sdk>=5.0' 'git')
 provides=('genie-systemd')
 conflicts=('genie-systemd')
 options=(!strip)
