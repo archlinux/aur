@@ -1,14 +1,14 @@
 pkgbase = android-google-apis-x86-64-system-image-30
 	pkgdesc = Android with Google APIs x86_64 Atom System Image, API 30
-	pkgver = r10
+	pkgver = r11
 	pkgrel = 1
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
 	license = custom
 	options = !strip
-	source = https://dl.google.com/android/repository/sys-img/google_apis/x86_64-30_r10.zip
+	source = https://dl.google.com/android/repository/sys-img/google_apis/x86_64-30_r11.zip
 	source = package.xml
-	sha256sums = 18d3f28ba24805db39132541548af1bfb3fabe6249e6053a2501fa78b6e9bed9
+	sha256sums = b2edb48102bb6e0d627180a62acdbe3c2a63a9a8f03c8bbef9c2ca2a23ece1ca
 	sha256sums = 9083cecfe118a97f74ba65cc46893dd96d46da8cc472f1677fec5366c5150544
 
 pkgname = android-google-apis-x86-64-system-image-30

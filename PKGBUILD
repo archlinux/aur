@@ -4,7 +4,7 @@
 
 _arch=x86_64
 pkgname=android-google-apis-${_arch/_/-}-system-image-30
-pkgver=r10
+pkgver=r11
 pkgrel=1
 pkgdesc="Android with Google APIs ${_arch} Atom System Image, API 30"
 arch=('any')
@@ -13,7 +13,7 @@ license=('custom')
 options=('!strip')
 source=("https://dl.google.com/android/repository/sys-img/google_apis/${_arch}-30_${pkgver}.zip"
         "package.xml")
-sha256sums=('18d3f28ba24805db39132541548af1bfb3fabe6249e6053a2501fa78b6e9bed9'
+sha256sums=('b2edb48102bb6e0d627180a62acdbe3c2a63a9a8f03c8bbef9c2ca2a23ece1ca'
             '9083cecfe118a97f74ba65cc46893dd96d46da8cc472f1677fec5366c5150544')
 
 prepare() {
