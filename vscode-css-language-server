@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec node /usr/lib/node_modules/vscode-langservers-extracted/bin/vscode-css-language-server "$@"
