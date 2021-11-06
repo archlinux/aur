@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FastLBRY Terminal
+GenericName=LBRY client
+Path=/usr/lib/fastlbry-terminal
+Exec=python run.py
+Terminal=true
+Type=Application
+Categories=Network;AudioVideo

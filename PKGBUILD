@@ -4,7 +4,7 @@
 
 _pkgname=fastlbry-terminal
 pkgname=${_pkgname}-git
-pkgver=0.5.r160.g06e50cd
+pkgver=0.5.r164.g1f6ffe9
 pkgrel=1
 pkgdesc="A fully featured, terminal application to interact with LBRY"
 arch=('any')
@@ -14,8 +14,9 @@ makedepends=('git')
 depends=('python')
 optdepends=('lbry-app-bin: for login support to the LBRY network'
             'lbry-desktop-git: for login support to the LBRY network')
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git"
+        "${_pkgname}.desktop")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd ${srcdir}/FastLBRY-terminal
@@ -23,6 +24,9 @@ pkgver() {
 }
 
 package() {
+  install -dm 0755 "${pkgdir}/usr/share/applications"
+  install -m 0644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications"
+
   cd ${srcdir}/FastLBRY-terminal
 
   install -dm 0755 "${pkgdir}/usr/lib/${_pkgname}"
@@ -45,7 +49,7 @@ package() {
   install -dm 0755 "${pkgdir}/usr/bin/"
   cd "${pkgdir}/usr/bin/"
   echo "#!/bin/sh" > ${_pkgname}
-  echo "cd /usr/lib/${_pkgname} && exec python run.py" >> ${_pkgname}
+  echo "cd /usr/lib/${_pkgname} && exec python3 run.py" >> ${_pkgname}
   chmod 755 ${_pkgname}
 }
 
