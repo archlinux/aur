@@ -23,6 +23,7 @@ package() {
 
    install -Dm755 gqthres ${pkgdir}/usr/bin/gqthres
    install -Dm755 src/gqthres.jar ${pkgdir}/usr/lib/gqthres/gqthres.jar
+   install -Dm755 src/jsoup-1.13.1.jar ${pkgdir}/usr/lib/gqthres/jsoup-1.13.1.jar
    install -Dm755 gqthres.conf ${pkgdir}/etc/gqthres.conf
    install -Dm755 gqthres.desktop ${pkgdir}/usr/share/applications/gqthres.desktop
    install -Dm755 gqthres.png ${pkgdir}/usr/share/pixmaps/gqthres.png
