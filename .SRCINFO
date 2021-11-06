@@ -1,7 +1,7 @@
 pkgbase = fsorter
 	pkgdesc = A CLI folder organizer written in Python.
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abdurehman4/fsorter
 	arch = x86_64
 	license = GPL
