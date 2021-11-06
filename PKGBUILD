@@ -3,7 +3,7 @@
 
 pkgname=('peercoin-cli' 'peercoin-daemon' 'peercoin-qt' 'peercoin-tx')
 pkgbase='peercoin'
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A peer-to-peer network-based digital currency"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('boost-libs' 'db' 'libevent' 'miniupnpc' 'openssl' 'qrencode' 'qt5-base' 'zeromq')
 makedepends=('boost' 'qt5-tools')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/peercoin/peercoin/archive/v${pkgver}ppc.tar.gz")
-b2sums=('1d39dacaf6502f22e5a3b3a976d5dfa5397eb67dcdbd659697bcbd39781f74bd7d7de0dcc0405773793733adaea7629a91f8427b5afaefde5af48ae17c992cbc')
+b2sums=('cdb74f8540399e064a6a44fe2dd984d7f5cd8b0ad5b37104d3fae357854189dd7075293f06f6e78956db77f15e868b90447003a6fe9e5498018593d5f41aaf5d')
 
 build() {
     cd "$pkgbase-${pkgver}ppc"
