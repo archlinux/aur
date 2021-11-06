@@ -2,7 +2,7 @@
 
 pkgbase=webos-sdk
 pkgname=('webos-cli' 'webos-emulator' 'webos-ide')
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 arch=('x86_64')
 url='http://webostv.developer.lge.com/sdk/installation/'
@@ -18,8 +18,8 @@ source=(
   'ide-launcher.sh'
 )
 sha512sums=('SKIP'
-            '18e071d96b0e4cc57f4f51818cd2919b916551b5a3353fa69c0f966246dddcd1c17347932d3350f608554a1f10cd88b1d84d80bd1cbdfccfc2011cafe3f5ea78'
-            '0eacf0a1f121f71df8fed007392d139d96817d18234026e6e2347d20e99ad0e4e5d1c9a8d31e2badef45ccf8f0d961d762f442da3aa8f98b74d23b8661525259'
+            'd2587eb95877c20ad37eb43147c4ce8538d9d3061b2b4b4ce5118a27880cbafcba8c3c0268865f47510f8a85b7d50a62e9978714e1ace78d8ec79862b5903d7b'
+            '7a7128a88ce824a7e4afb8b6590002cbb58655db8389b4c7535ef3645edae1f0c84ca628a86f0663a44ee96c6e448f1f4a5f53545ece3ad36115662ca6e029c3'
             'd71730e1463e08ac018c5d4782f36df9d6b93decfe823441e9836b51443a4c9ef473f3be931febc72c9c875539b5f79a1ca90a5539585c5f7067cc144e173cb4'
             '60655118d3880b07ea19af1a316ecfc4b649cdd2b9672db5c8ce5c32cb246b8ff3cc4ec82b176b042c3622f3897e6702e8e30c060576869b826f25d2d5a472f1'
             '62d6de217f9a02deda2b945793a9a4df56264688c32406e5962336b8c4a00d74d84dfd14f86a8651d1ffc4cccecf50b6f3e3ead34bc9033eea27b60f2643568f')
@@ -37,9 +37,9 @@ package_webos-cli() {
   cp -dr --no-preserve='ownership' CLI/LICENSE.txt "${pkgdir}"/usr/share/licenses/webos-sdk/
   cp -dr --no-preserve='ownership' CLI "${pkgdir}"/usr/share/webOS_TV_SDK/
   chmod +x "${pkgdir}"/usr/share/webOS_TV_SDK/CLI/bin/node
-  chmod +x "${pkgdir}"/usr/share/webOS_TV_SDK/CLI/bin/node
   chmod +x "${pkgdir}"/usr/share/webOS_TV_SDK/CLI/bin/ares
   chmod +x "${pkgdir}"/usr/share/webOS_TV_SDK/CLI/bin/ares-device-info
+  chmod +x "${pkgdir}"/usr/share/webOS_TV_SDK/CLI/bin/ares-extend-dev
   chmod +x "${pkgdir}"/usr/share/webOS_TV_SDK/CLI/bin/ares-generate
   chmod +x "${pkgdir}"/usr/share/webOS_TV_SDK/CLI/bin/ares-inspect
   chmod +x "${pkgdir}"/usr/share/webOS_TV_SDK/CLI/bin/ares-install
@@ -50,6 +50,7 @@ package_webos-cli() {
   chmod +x "${pkgdir}"/usr/share/webOS_TV_SDK/CLI/bin/ares-setup-device
   ln -sf /usr/share/webOS_TV_SDK/CLI/bin/ares "${pkgdir}"/usr/bin/ares
   ln -sf /usr/share/webOS_TV_SDK/CLI/bin/ares-device-info "${pkgdir}"/usr/bin/ares-device-info
+  ln -sf /usr/share/webOS_TV_SDK/CLI/bin/ares-extend-dev "${pkgdir}"/usr/bin/ares-extend-dev
   ln -sf /usr/share/webOS_TV_SDK/CLI/bin/ares-generate "${pkgdir}"/usr/bin/ares-generate
   ln -sf /usr/share/webOS_TV_SDK/CLI/bin/ares-inspect "${pkgdir}"/usr/bin/ares-inspect
   ln -sf /usr/share/webOS_TV_SDK/CLI/bin/ares-install "${pkgdir}"/usr/bin/ares-install
