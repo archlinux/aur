@@ -3,13 +3,13 @@
 
 pkgname=gerbera-git
 pkgver=1.9.2.133+r4771.20211106.984c14d9
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="UPnP Media Server (Based on MediaTomb)"
 arch=(i686 x86_64 armv7h)
 url="https://github.com/gerbera/gerbera"
 license=('GPL2')
-depends=('taglib' 'curl' 'sqlite' 'file' 'gcc-libs' 'libupnp-git' 'libmatroska'
+depends=('taglib' 'curl' 'sqlite' 'file' 'gcc-libs' 'libupnp' 'libmatroska'
    'duktape' 'libexif' 'expat' 'libebml' 'fmt' 'spdlog' 'pugixml' 'ffmpeg' 'ffmpegthumbnailer')
 makedepends=('cmake' 'git')
 install=gerbera.install
