@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.7.2-1] - 2021-11-01
+
+### Added
+
+- Improvements to Search (using `bubbles#TextInput` component) in `slides` by [@darmiel](https://github.com/darmiel) in [#119](https://github.com/maaslalani/slides/pull/119)
+
+## [0.7.1-1] - 2021-11-01
+
+### Added
+
+- Added Page Up and Page Down navigation by [@Janszczyrek](https://github.com/Janszczyrek) in [#115](https://github.com/maaslalani/slides/pull/115)
+- Improvements to exit code handling & virtual text reset
+
+### Fixed
+
+- Fixed bug with executing the same code block multiple times.
+
+## [0.7.0-1] - 2021-10-29
+
+### Added
+
+#### Search Functionality
+
+To quickly jump to the right slide, you can use the search functionality.
+
+Press `/`, enter your search term, and press `Enter`.
+(The search term is interpreted as a regular expression. The `/i` flag causes case-insensitivity.).
+
+Press `ctrl+n` after a search to go to the next search result.
+
+Thanks to [@darmiel](https://github.com/darmiel)!
+
 ## [0.6.1-1] - 2021-10-21
 
 ### Added
