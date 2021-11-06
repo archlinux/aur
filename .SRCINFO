@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve-studio
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.
-	pkgver = 17.4
+	pkgver = 17.4.1
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve.install
@@ -27,7 +27,7 @@ pkgbase = davinci-resolve-studio
 	conflicts = davinci-resolve
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = local://DaVinci_Resolve_Studio_17.4_Linux.zip
-	sha256sums = 4bb8459aceca89830975f0da4cd0f499c3407be8a0f8158e61168f1b977437c9
+	source = local://DaVinci_Resolve_Studio_17.4.1_Linux.zip
+	sha256sums = 70d7d96cda89dd706988953db5ed3fbdb49414c5170ed1a4aaf0f4ffe1aa52e0
 
 pkgname = davinci-resolve-studio
