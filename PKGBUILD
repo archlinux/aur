@@ -11,7 +11,7 @@ groups=('neovim-plugins')
 depends=('neovim>=0.5.0')
 install=indent-blankline.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f07cd6d43d7ec8ebd028f80d47014afd4f15e19c72b3bac2161669077f929d0b')
+sha256sums=('4644ebbf9d9f071ddf49f9a0034bee3afc8f9f7c29cc844637257bad3f8e95ef')
 
 package() {
 	cd "indent-blankline.nvim-$pkgver"
