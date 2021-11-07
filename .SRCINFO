@@ -1,6 +1,6 @@
 pkgbase = python-geventhttpclient
 	pkgdesc = A high performance, concurrent HTTP client library for python using gevent
-	pkgver = 1.4.4
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = http://github.com/gwik/geventhttpclient
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-geventhttpclient
 	depends = python-gevent
 	depends = python-certifi
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/g/geventhttpclient/geventhttpclient-1.4.4.tar.gz
+	depends = python-brotli
+	source = https://files.pythonhosted.org/packages/source/g/geventhttpclient/geventhttpclient-1.5.3.tar.gz
 	sha256sums = f59e5153f22e4a0be27b48aece8e45e19c1da294f8c49442b1c9e4d152c5c4c3
 
 pkgname = python-geventhttpclient
-
