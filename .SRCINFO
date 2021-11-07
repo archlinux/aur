@@ -1,14 +1,13 @@
 pkgbase = catgirl
-	pkgdesc = catgirl is a TLS-only terminal IRC client.
-	pkgver = 1.8
+	pkgdesc = TLS-only terminal IRC client
+	pkgver = 1.9a
 	pkgrel = 1
 	url = https://git.causal.agency/catgirl/
 	arch = x86_64
 	license = GPL3
 	depends = libretls
 	depends = ncurses
-	source = https://git.causal.agency/catgirl/snapshot/catgirl-1.8.tar.gz
-	md5sums = 40290e3f9216d138b9ffa3f5bd50c0df
+	source = https://git.causal.agency/catgirl/snapshot/catgirl-1.9a.tar.gz
+	md5sums = 11d1050876fce2d69002de5dfb3e61c0
 
 pkgname = catgirl
-
