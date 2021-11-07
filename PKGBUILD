@@ -1,8 +1,8 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=wiretrustee
-pkgver=0.0.8
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc='Connect your devices into a single secure private WireGuard®-based mesh network'
 url='https://wiretrustee.com'
 arch=(x86_64 aarch64 armv7h armv7l armv6h)
@@ -15,22 +15,18 @@ makedepends=(go)
 optdepends=()
 
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/v$pkgver-hotfix-1.tar.gz"
-  'config_readme'
+  "$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
   'environment'
   'wiretrustee@.service'
-  'wiretrustee-signal.service'
 )
 sha256sums=(
-  'b2014190dc883e1e6a866ccd16a594552ae0e8bd65a64dd7daae015d1a7266a6'
-  'e6e2bb1687510b9381202d95beb27b1bfbe30033f4f038e4bdde61e7a3f65f22'
-  'c72c3f27ee2f2fbb232108781e38f41d7f04272d11a42f59938541ac591bd393'
+  'cbe816f7d5f5188db46a26134644a5b57e13f2e7c3e92f0ec5e002d658f50e97'
+  '185d92f240e92c8d58dde91bb45d73d09ea22fc48090f30330596f12e6d265e7'
   '672235231a73743878d77e94827c5aba326464dae63457f94cd51708ac84ba58'
-  '79cae90dff3bb3177762b9d3a9c69e69ef79ced3dc3a85529ff5050bf17bcd85'
 )
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver-hotfix-1"
+  cd "$srcdir/$pkgname-$pkgver"
   mkdir -p build
 
   go mod download
@@ -38,32 +34,29 @@ prepare() {
 
 build() {
   export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
-  cd "$srcdir/$pkgname-$pkgver-hotfix-1"
+  cd "$srcdir/$pkgname-$pkgver"
 
   go build \
     -ldflags "-s -w -linkmode=external -extldflags \"$LDFLAGS\"" \
-    -o build/ \
-    .
+    -o build/"$pkgname" \
+    client/main.go
 }
 
 package() {
-  _source="$srcdir/$pkgname-$pkgver-hotfix-1"
+  _source="$srcdir/$pkgname-$pkgver"
 
   # binary
   install -Dm755 "$_source/build/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   # config directory
   install -Ddm755 -o root -g root "$pkgdir/etc/$pkgname"
-  install -Dm644 "config_readme" "$pkgdir/etc/$pkgname/README"
 
   # environment file
   install -Dm644 environment "$pkgdir/etc/default/$pkgname"
 
-  # systemd units
-  for kind in @ -signal; do
-    install -Dm644 "$pkgname$kind.service" \
-      "$pkgdir/usr/lib/systemd/system/$pkgname$kind.service"
-  done
+  # systemd unit
+  install -Dm644 "$pkgname@.service" \
+    "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
 
   # license
   install -Dm644 "$_source/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

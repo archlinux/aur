@@ -5,6 +5,3 @@ WIRETRUSTEE_ARGS="--log-level info"
 # additional options to pass to wiretrustee clients
 WIRETRUSTEE_CLIENT_ARGS="${WIRETRUSTEE_ARGS}"
 
-# additional options to pass to wiretrustee signal service
-WIRETRUSTEE_SIGNAL_ARGS="${WIRETRUSTEE_ARGS} --port 10000"
-
