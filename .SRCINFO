@@ -1,7 +1,7 @@
 pkgbase = instantbird
 	pkgdesc = Instant messenger using libpurple and xulrunner
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://instantbird.com
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = instantbird
 	depends = xulrunner<26.0
 	options = !buildflags
 	options = staticlibs
-	source = http://instantbird.com/downloads/1.5/instantbird-1.5.src.tgz
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/instantbird/instantbird-1.5.src.tgz
 	source = nss.patch
 	source = libxul-fixes.patch
 	source = shared-libs.patch

@@ -2,14 +2,14 @@
 
 pkgname=instantbird
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Instant messenger using libpurple and xulrunner"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="http://instantbird.com"
 depends=('xulrunner<26.0')
 makedepends=('unzip' 'zip' 'pkg-config' 'diffutils' 'python2' 'wireless_tools' 'yasm' 'libidl2' 'mesa' 'autoconf2.13')
-source=(http://instantbird.com/downloads/${pkgver}/${pkgname}-${pkgver}.src.tgz nss.patch libxul-fixes.patch shared-libs.patch mozconfig ${pkgname}.desktop)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.src.tgz nss.patch libxul-fixes.patch shared-libs.patch mozconfig ${pkgname}.desktop)
 options=('!buildflags' 'staticlibs')
 _xulnum=`ls /usr/lib | grep -m1 xulrunner-devel | sed -e 's/.*-//'`
 
