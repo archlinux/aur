@@ -1,13 +1,13 @@
 pkgbase = vk-messenger
 	pkgdesc = VK Messenger for Linux
 	pkgver = 5.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vk.com/messenger
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
 	depends = expat
-	depends = gtk2
+	depends = gtk3
 	depends = libgcrypt
 	depends = libgnome-keyring
 	depends = libnotify
