@@ -1,7 +1,7 @@
 pkgbase = itcl3
 	pkgdesc = Provides the extra language support needed to build large Tcl/Tk applications, version 3.4
 	pkgver = 3.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://incrtcl.sourceforge.net/
 	arch = i686
 	arch = x86_64

@@ -4,7 +4,7 @@
 
 pkgname=itcl3
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides the extra language support needed to build large Tcl/Tk applications, version 3.4"
 arch=('i686' 'x86_64')
 url="http://incrtcl.sourceforge.net/"
@@ -18,6 +18,7 @@ prepare() {
   cd "$srcdir"/itcl$pkgver
   sed -ri 's,\$\(INSTALL_DATA\) itclConfig\.sh \$\(DESTDIR\)\$\(libdir\),$(INSTALL_DATA) itclConfig.sh $(DESTDIR)$(pkglibdir),' Makefile.in
   sed -ri 's,(itcl_.*?)`pwd`,\1/usr/lib/itcl'${pkgver%.*}, configure
+  sed -ri 's,@itcl_SRC_DIR@,/usr/include/itcl'${pkgver%.*}, itclConfig.sh.in
 }
 
 build() {
@@ -38,8 +39,9 @@ package(){
   chmod 644 "$pkgdir"/usr/lib/itcl${pkgver%.*}/libitclstub${pkgver%.*}.a
 
   # conflict with tcl-8.6.0
-  rm -rf "$pkgdir"/usr/include
   rm -rf "$pkgdir"/usr/share/man
+  install -dm755 "$pkgdir"/usr/include/itcl${pkgver%.*}/generic
+  mv "$pkgdir"/usr/include/*.h "$pkgdir"/usr/include/itcl${pkgver%.*}/generic
 
   #cleaning
   rmdir "$pkgdir"/usr/bin
