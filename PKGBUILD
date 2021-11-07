@@ -1,6 +1,6 @@
 # Maintainer: Douglas Chimento <dchimento @ gmail.com>
 pkgname=pro-bitcoin-git
-pkgver=v22.0.r4.g9a1c9405a
+pkgver=v22.0.r3.g051d93856
 pkgrel=1
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://pro-bitcoin.io"
@@ -9,11 +9,11 @@ optdepends=('bitcoin-core' 'bitcoin-daemon')
 checkdepends=('python')
 makedepends=('autoconf' 'automake' 'binutils' 'libtool' 'm4' 'make' 'pkg-config' 'systemd' 'prometheus-cpp-git')
 pkgdesc="Prometheus enabled bitcoin node"
-url="https://github.com/dougEfresh/pro-bitcoin.git"
+url="https://github.com/pro-bitcoin/pro-bitcoin.git"
 license=('MIT')
 makedepends=('cmake' 'clang')
 backup=('etc/bitcoin/pro-bitcoin.conf')
-source=("${pkgname}::git+https://github.com/dougEfresh/pro-bitcoin.git"
+source=("${pkgname}::git+https://github.com/pro-bitcoin/pro-bitcoin.git"
 	pro-bitcoin.conf
         pro-bitcoind.service
         pro-bitcoin-sysusers.conf
@@ -31,7 +31,7 @@ build() {
   msg2 'Building...'
   cd "$srcdir/${pkgname}"
   ./autogen.sh
-  ./configure \
+  LIBS=-lz ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --libexecdir=/usr/lib/bitcoin \
@@ -44,7 +44,11 @@ build() {
     --disable-tests \
     --disable-gui-tests \
     --disable-bench \
+    --disable-libs \
     --without-miniupnpc \
+    --disable-util-cli \
+    --disable-util-tx \
+    --disable-util-util \
     --with-gnu-ld
   make -j$_nproc
 }
