@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-prerelease
-pkgver=2.3.57.3
+pkgver=2.3.57.4
 _pkgtag=$pkgver
 pkgrel=1
 epoch=1
@@ -9,16 +9,17 @@ pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
+options=(!emptydirs)
 depends=('cgal' 'glew' 'nlopt' 'openvdb' 'wxgtk3-dev-314-opt' 'boost-libs>=1.73.0' 'qhull>=2020.2-4')
 replaces=('slic3r++')
 makedepends=('cereal' 'cmake' 'ninja' 'eigen' 'libigl' 'openvdb' 'boost>=1.73.0' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-git')
-source=("https://github.com/supermerill//SuperSlicer/archive/$_pkgtag.tar.gz"
+source=("https://github.com/supermerill/SuperSlicer/archive/$_pkgtag.tar.gz"
         "0001-wxgtk3-is-broken-on-wayland.patch"
         "https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch")
-sha512sums=('38a9266545a1646baeec85d16f787e8041cf6b16bdce017677ab74e79907d793c5c0792fa4c777f7203919b71f6c11d4c555959c152bb8054a3fa92c59a9cbf8'
+sha512sums=('7d0375ac5d58def605c283fcccccb6761d669bd6b127a977abbbb3ba04adc8c984548cfd2302548deb720ee3bda36983e687db694af967f35006380e9ce050f2'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
             'c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98')
 
@@ -53,7 +54,7 @@ build()
 		-DSLIC3R_BUILD_TESTS=OFF \
 		-DSLIC3R_ALPHA=ON \
 		-DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev-314/bin/wx-config \
-		-DCMAKE_CXX_FLAGS="-Wl,-rpath=/opt/wxgtk-dev-314/lib"
+		-DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument -Wl,-rpath=/opt/wxgtk-dev-314/lib"
 
 	ninja
 }
