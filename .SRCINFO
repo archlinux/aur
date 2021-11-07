@@ -1,5 +1,5 @@
 pkgbase = makedeb-makepkg-alpha
-	pkgver = 8.11.0
+	pkgver = 8.11.1
 	pkgrel = 1
 	url = https://github.com/makedeb/makepkg
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = makedeb-makepkg-alpha
 	depends = makedeb-makepkg-alpha
 	conflicts = makedeb-makepkg
 	conflicts = makedeb-makepkg-beta
-	source = makepkg::git+https://github.com/makedeb/makepkg/#tag=v8.11.0-1-alpha
+	source = makepkg::git+https://github.com/makedeb/makepkg/#tag=v8.11.1-1-alpha
 	sha256sums = SKIP
 
 pkgname = makedeb-makepkg-alpha

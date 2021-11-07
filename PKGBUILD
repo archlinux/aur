@@ -3,7 +3,7 @@ _release=alpha
 _target=aur
 
 pkgname=makedeb-makepkg-alpha
-pkgver=8.11.0
+pkgver=8.11.1
 pkgrel=1
 arch=(any)
 depends=('awk' 'libarchive' 'bzip2' 'coreutils' 'fakeroot' 'file' 'findutils' 'gettext' 'gnupg' 'grep' 'gzip' 'sed' 'ncurses' 'xz' 'makedeb-makepkg-alpha')
@@ -22,5 +22,10 @@ prepare() {
 
 package() {
 	cd makepkg/
-	make package DESTDIR="${pkgdir}" TARGET_OS="${_target}"
+
+    if [[ "${_target}" == "local" || "${_target}" == "mpr" ]]; then
+        make package DESTDIR="${pkgdir}" PACMAN_BINARY=1
+    else
+	    make package DESTDIR="${pkgdir}"
+    fi
 }
