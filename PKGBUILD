@@ -3,7 +3,7 @@
 
 pkgname=('espeak-ng-git' 'espeak-ng-espeak-git')
 pkgbase=espeak-ng-git
-pkgver=1.50.r410.g49930f48
+pkgver=1.50.r527.gccb1c31b
 pkgrel=1
 pkgdesc="Multi-lingual software speech synthesizer (development version)"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -26,8 +26,7 @@ prepare() {
 build() {
   cd ${pkgname%-git}
   ./configure --prefix=/usr --with-extdict-{ru,cmn,yue}
-  make src/espeak-ng src/speak-ng
-  make -j1
+  make
 }
 
 package_espeak-ng-git() {
