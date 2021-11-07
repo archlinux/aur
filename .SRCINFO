@@ -1,6 +1,6 @@
 pkgbase = librewolf-firefox-shim
 	pkgdesc = A symlink for using librewolf as a firefox
-	pkgver = 93.0
+	pkgver = 94.0
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	arch = any
