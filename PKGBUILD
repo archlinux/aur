@@ -15,7 +15,7 @@ url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL2")
 arch=('x86_64')
 conflicts=("pandoc-crossref")
-provides=("$_pkgname=$pkgver")
+provides=("$_pkgname=${pkgver%%.r*}")
 replaces=('pandoc-crossref-bin' 'pandoc-crossref-static' 'pandoc-crossref-lite')
 depends=("pandoc=$_pandoc_ver")
 makedepends=('stack' 'pandoc')

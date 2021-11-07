@@ -8,7 +8,7 @@ pkgbase = pandoc-crossref-static-git
 	makedepends = stack
 	makedepends = pandoc
 	depends = pandoc=2.16.1
-	provides = pandoc-crossref=0.3.12.1.r0.g6ab340e
+	provides = pandoc-crossref=0.3.12.1
 	conflicts = pandoc-crossref
 	replaces = pandoc-crossref-bin
 	replaces = pandoc-crossref-static
