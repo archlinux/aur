@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mcfly-bin
-pkgver=0.5.9
+pkgver=0.5.10
 pkgrel=1
 pkgdesc="Fly through your shell history"
 arch=('i686' 'x86_64' 'arm' 'armv7h')
@@ -15,10 +15,10 @@ source_x86_64=("https://github.com/cantino/mcfly/releases/download/v$pkgver/mcfl
 source_arm=("https://github.com/cantino/mcfly/releases/download/v$pkgver/mcfly-v$pkgver-arm-unknown-linux-gnueabi.tar.gz")
 source_armv7h=("https://github.com/cantino/mcfly/releases/download/v$pkgver/mcfly-v$pkgver-armv7-unknown-linux-gnueabihf.tar.gz")
 sha256sums=('SKIP')
-sha256sums_i686=('aa550d37ae3e5245d4d354a2fb8cb027319dcea9b36f1fe8552dff1d8bf455bd')
-sha256sums_x86_64=('6b89e320e0dd31be81fd8bde44a55c8236e6471d444705cec9327ef6be36ce0a')
-sha256sums_arm=('ee4f17e6ac956a7dde88411f67b7ebeed6819b47ee9e0c90a97541b54d9d461d')
-sha256sums_armv7h=('013e8bf398f3db3c24e6e7306ca8ed73e5b3b1747e849f2518ef9d8b6679552c')
+sha256sums_i686=('6f922b644570eb8d5a6b51f60cf60829cf4ad55faa85ae02029087cfe75d9a8c')
+sha256sums_x86_64=('1bec061f6974ceed9e4d67129c65b4d64249dcb30751aa793551ab2a879c0d07')
+sha256sums_arm=('ffe33d81b988e0226390d1379c49539b09c3388e5c2bc7845b430313a4ea7fda')
+sha256sums_armv7h=('e71615905ae5da82affd728515fde310de4b51e5de30611758063e897c7c6ea3')
 
 
 package() {
