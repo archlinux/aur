@@ -5,33 +5,22 @@
 
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Control your monitor by software using the DDC/CI protocol"
 arch=('i686' 'x86_64')
 url="https://github.com/ddccontrol/ddccontrol"
 license=('GPL')
 depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2' 'icu' 'glib2')
-makedepends=('gtk2' 'autoconf' 'intltool' 'python')
+makedepends=('gtk2' 'autoconf' 'automake' 'intltool' 'python')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/${pkgver}.tar.gz")
 options=('!libtool')
-sha512sums=('909284f4c52d378f248d11fa949c1db01d60f2cf7bd8bec9faac8bd9844650760f728f7559fe5aef10487569f88ef9af29070a394ee7ee026c6d7d4989f6c0b0')
+sha512sums=('49e857e8ef8f2ba87dc51056b9511ce55f3e6471222cd9171a324e2ee179b8c96a8f4d90c63bb379260ccc8e1d9653964f90748d6589d298ff2bbe6982efd3e2')
 
 prepare() {
 	cd "${srcdir}"/${pkgbase}-${pkgver}
 
-	# fix for autoconf older than 2.70 (suggested by jbbr)
-	local _version_required="2.70-1"
-	local _version_installed="$(pacman -Q autoconf|cut -d\  -f2)"
-	local _is_older="$(vercmp $_version_required $_version_installed)"
-
-	if [ "$_is_older" = "1" ]; then
-		msg2 "Running autogen (for autoconf<$_version_required)"
-		test -f configure || ./autogen.sh
-	else
-		msg2 "Running autogen (for autoconf>=$_version_required)"
-		test -f configure || INTLTOOLIZE='intltoolize --force' autoreconf --install
-	fi
+	test -f configure || ./autogen.sh
 }
 
 build() {
