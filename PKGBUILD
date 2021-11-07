@@ -3,7 +3,7 @@
 pkgname=perl-prima
 _lastauthor=K/KA/KARASIK
 _pkgname=Prima
-pkgver=1.60
+pkgver=1.63
 pkgrel=1
 pkgdesc="a perl multiplatform graphic toolkit"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('perl-extutils-makemaker')
 checkdepends=()
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('b43d38f99ce6072959ad2dc6d19d69c9a7a02bf176dd35fc224a8068b849db1aca464f481e5bce8827e854528453dbe21b8e296b2c60dc36e661a083559eb114')
+sha512sums=('401187ac7590f0c598405f8b4d64d814fbb0c249e6a57f2ae27178fcf7d13a297899b58099f0b9acfd79409ca20bc961ede7dc7a123a18dd92f42b0d8d7d4127')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -27,10 +27,12 @@ build() {
   perl Makefile.PL
   make
 }
+
 #check() {
 #  cd "${srcdir}/${_pkgname}-${pkgver}"
 #  make test
 #}
+
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make install
