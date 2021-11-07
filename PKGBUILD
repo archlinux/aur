@@ -3,7 +3,7 @@
 
 _pkgname=pyexcel-io
 pkgname=python-$_pkgname
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="A library to read and write data in csv, zipped csv and to/from databases"
 arch=(any)
@@ -12,7 +12,7 @@ license=('BSD-3-clause')
 makedepends=('python-setuptools')
 depends=('python-lml')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('45329cd13a5107a9c6b2a0c047de6df944a05936cd47d3ec4158f9aefcde0a2f')
+sha256sums=('49db12c1f738fe4d689ece52fc74694a1c846df12e0b42a7ed74b9e331fc32f7')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
