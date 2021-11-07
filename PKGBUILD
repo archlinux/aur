@@ -31,7 +31,7 @@ build() {
   cd "${pkgname%-*}"
   export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
   export PATH="${JAVA_HOME}/bin:${PATH}"
-  gradle -Dorg.gradle.daemon=false build 
+  gradle -Dorg.gradle.daemon=false build
 }
 
 package() {
