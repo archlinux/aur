@@ -8,6 +8,7 @@ pkgbase = bluespec-bdw-git
 	makedepends = git
 	depends = bluespec-git
 	depends = tk-itk3
+	optdepends = gtkwave-tcl: gtkwave integration
 	source = git+https://github.com/b-lang-org/bdw.git
 	sha256sums = SKIP
 

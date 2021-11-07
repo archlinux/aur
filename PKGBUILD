@@ -8,6 +8,7 @@ arch=('x86_64')
 url='https://github.com/B-Lang-org/bdw'
 license=('BSD')
 depends=('bluespec-git' 'tk-itk3')
+optdepends=('gtkwave-tcl: gtkwave integration')
 makedepends=('git')
 source=("git+https://github.com/b-lang-org/bdw.git")
 sha256sums=('SKIP')
