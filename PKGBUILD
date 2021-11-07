@@ -2,8 +2,9 @@
 
 pkgname=elpa
 PkgName=ELPA
-pkgver=2021.05.001
-pkgrel=2
+pkgver=2021.05.002
+_pkgver=${pkgver}_bugfix
+pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de"
@@ -11,8 +12,8 @@ license=("LGPL3")
 depends=('scalapack')
 makedepends=('gcc-fortran' 'python' 'vim')
 provides=('elpa')
-source=("$url/software/tarball-archive/Releases/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('a4f1a4e3964f2473a5f8177f2091a9da5c6b5ef9280b8272dfefcbc3aad44d41')
+source=("$url/software/tarball-archive/Releases/$_pkgver/$pkgname-$_pkgver.tar.gz")
+sha256sums=('deabc48de5b9e4b2f073d749d335c8f354a7ce4245b643a23b7951cd6c90224b')
 options=(!makeflags !buildflags)
 
 prepare() {
@@ -62,7 +63,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_pkgver"
    ./configure --prefix=/usr                      \
                --enable-openmp                    \
                --enable-sse=$_SSE                 \
@@ -77,6 +78,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_pkgver"
   make DESTDIR="$pkgdir" install
 }
