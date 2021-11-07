@@ -3,7 +3,7 @@
 
 pkgname=python311
 pkgver=3.11.0a2
-pkgrel=1
+pkgrel=2
 _pyver=3.11.0
 _pybasever=3.11
 _pymajver=3
@@ -62,7 +62,7 @@ package() {
   make DESTDIR="${pkgdir}" altinstall maninstall
 
   # Split tests
-  rm -r "$pkgdir"/usr/lib/python*/{test,ctypes/test,distutils/tests,idlelib/idle_test,lib2to3/tests,sqlite3/test,tkinter/test,unittest/test}
+  rm -r "$pkgdir"/usr/lib/python*/{test,ctypes/test,distutils/tests,idlelib/idle_test,lib2to3/tests,tkinter/test,unittest/test}
 
   # Avoid conflicts with the main 'python' package.
   rm -f "${pkgdir}/usr/lib/libpython${_pymajver}.so"
