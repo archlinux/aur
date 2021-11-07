@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (mingw-w64)
-	pkgver = 4.4
+	pkgver = 4.4.1
 	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
@@ -49,14 +49,11 @@ pkgbase = mingw-w64-ffmpeg
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
 	source = vmaf-model-path.patch
 	source = configure.patch
-	source = windres.patch
 	sha256sums = SKIP
 	sha256sums = 8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
 	sha256sums = 3cec5d47cd190cc9cf7969b2c2c94690d7b15ffb5d7147bdd4e60eecb0991eed
-	sha256sums = c78ae2245fd1863ea495c115b24214d5692b86ff51b8899a23bc43a48c3385c0
 
 pkgname = mingw-w64-ffmpeg
-

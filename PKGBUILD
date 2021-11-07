@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=4.4
+pkgver=4.4.1
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -49,16 +49,14 @@ depends=(
 #'mingw-w64-svt-av1' (only 64 bit support)
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
-_tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
+_tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
         vmaf-model-path.patch
-        configure.patch
-        windres.patch)
+        configure.patch)
 sha256sums=('SKIP'
             '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
-            '3cec5d47cd190cc9cf7969b2c2c94690d7b15ffb5d7147bdd4e60eecb0991eed'
-            'c78ae2245fd1863ea495c115b24214d5692b86ff51b8899a23bc43a48c3385c0')
+            '3cec5d47cd190cc9cf7969b2c2c94690d7b15ffb5d7147bdd4e60eecb0991eed')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
@@ -71,8 +69,6 @@ prepare() {
   cd ffmpeg
 
   patch -Np1 -i "${srcdir}/configure.patch"
-
-  patch -Np1 -i "${srcdir}/windres.patch"
 
 # TODO: Add vmaf dependency
 #  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
