@@ -10,6 +10,8 @@ pkgbase = bluespec-bdw-git
 	depends = tk-itk3
 	optdepends = gtkwave-tcl: gtkwave integration
 	source = git+https://github.com/b-lang-org/bdw.git
+	source = bluespec-bdw.desktop
 	sha256sums = SKIP
+	sha256sums = f4ab26f8f7a2fdcc3c0bfbff39895fb5ceba79e468b72d138cc1178c9f9a62a1
 
 pkgname = bluespec-bdw-git

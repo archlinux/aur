@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Bluespec Workstation (BDW)
+Icon=/opt/bluespec/lib/tcllib/workstation/images/bDW.gif
+Type=Application
+Categories=Development;IDE;
+Exec=bdw %F
+StartupNotify=false
+Terminal=false

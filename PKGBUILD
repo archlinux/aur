@@ -10,8 +10,10 @@ license=('BSD')
 depends=('bluespec-git' 'tk-itk3')
 optdepends=('gtkwave-tcl: gtkwave integration')
 makedepends=('git')
-source=("git+https://github.com/b-lang-org/bdw.git")
-sha256sums=('SKIP')
+source=('git+https://github.com/b-lang-org/bdw.git'
+        'bluespec-bdw.desktop')
+sha256sums=('SKIP'
+            'f4ab26f8f7a2fdcc3c0bfbff39895fb5ceba79e468b72d138cc1178c9f9a62a1')
 _prefix="/opt/bluespec"
 
 pkgver() {
@@ -41,4 +43,5 @@ package() {
   done
 
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "$srcdir/bluespec-bdw.desktop" '/usr/share/applications/bluespec-bdw.desktop'
 }
