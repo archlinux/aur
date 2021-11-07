@@ -2,7 +2,7 @@
 
 _basename=java-cef
 pkgname="$_basename-git"
-pkgver=r257.4bb479a
+pkgver=r285.23a6e96
 pkgrel=1
 pkgdesc="Java Chromium Embedded Framework (JCEF). A simple framework for embedding Chromium-based browsers in other applications using the Java programming language."
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=()
 install=
 source=(
   "$pkgname::git://github.com/chromiumembedded/$_basename.git"
-  "0001-make-run.sh-from-any-location.patch"
+  "0001-update-gsutil-for-python3-compatibility.patch"
 )
 noextract=()
 md5sums=(
@@ -35,7 +35,7 @@ pkgver() {
 prepare () {
   cd ${pkgbase}
   mkdir -p jcef_build
-  patch -p1 -i "${srcdir}/0001-make-run.sh-from-any-location.patch"
+  patch -p1 -i "${srcdir}/0001-update-gsutil-for-python3-compatibility.patch"
 }
 
 build() {
