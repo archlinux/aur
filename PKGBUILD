@@ -1,9 +1,9 @@
 # Maintainer: Frontier (frontier314 at gmail dot com)
 
 pkgname=fbc
-pkgver=1.08.0
+pkgver=1.08.1
 pkgrel=1
-_bootver=1.08.0
+_bootver=1.08.1
 pkgdesc="FreeBASIC Compiler (Release version)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="http://www.freebasic.net"
@@ -13,7 +13,7 @@ provides=('fbc')
 conflicts=('freebasic' 'fbc-git')
 options=(staticlibs)
 source=("https://downloads.sourceforge.net/fbc/Source%20Code/FreeBASIC-${_bootver}-source.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('eaad3127c31f040a52b159932956e698acafb237')
 
 prepare() {
 if [ "$CARCH" = "i686" ]; then
