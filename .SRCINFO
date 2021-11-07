@@ -1,6 +1,6 @@
 pkgbase = kubectl-support-bundle-bin
 	pkgdesc = Kubectl plugin for post-installation troubleshooting and diagnostics (support bundles)
-	pkgver = 0.21.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://troubleshoot.sh
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kubectl-support-bundle-bin
 	depends = kubectl
 	provides = kubectl-support-bundle
 	conflicts = kubectl-support-bundle
-	source = support-bundle_0.21.0_linux_amd64.tar.gz::https://github.com/replicatedhq/troubleshoot/releases/download/v0.21.0/support-bundle_linux_amd64.tar.gz
-	b2sums = bc43a6510b903790e8c34fdf896328632ea89d2c03e04b712e4cf996994ee96a53b83761c1210f383760212a761a45f2188b8a35eae14bf886156f7731af549b
+	source = support-bundle_0.22.1_linux_amd64.tar.gz::https://github.com/replicatedhq/troubleshoot/releases/download/v0.22.1/support-bundle_linux_amd64.tar.gz
+	b2sums = 7648a5cb2a18541268efd4341b4ec5086257bde8962c5809be5ed405e92e4222d71168bcf626f3469e9a41f0131ea9da608fa7a08d696a1da519247b227a8401
 
 pkgname = kubectl-support-bundle-bin
