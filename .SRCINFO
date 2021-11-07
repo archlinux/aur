@@ -1,4 +1,4 @@
-pkgbase = hopper
+pkgbase = hopper4
 	pkgdesc = Reverse engineering tool that lets you disassemble, decompile and debug your applications
 	pkgver = 4.9.5
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = hopper
 	sha1sums = afffdd2dd86df24ddfd8a3e6bfe91a34b007e28e
 	sha1sums = c3f410d29524eb02a8bf3dc1b29aaeb82b1844e6
 
-pkgname = hopper
+pkgname = hopper4

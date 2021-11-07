@@ -1,6 +1,6 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_m2x.dev>
 
-pkgname=hopper
+pkgname=hopper4
 _pkgname=hopperv4
 pkgver=4.9.5
 pkgrel=1
