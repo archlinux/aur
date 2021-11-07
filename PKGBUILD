@@ -16,10 +16,12 @@ changelog=ChangeLog
 source=(
   'nvidia-fake-powerd.conf'
   'nvidia-fake-powerd.service'
+  'nvidia-fake-powerd.install'
 )
 sha256sums=(
   'ba38c83cec8fad091efec458e2bbcc4a886da6b66cece076374705064c23b63f'
   'f00f71c7de537a84210ef9d727e3ce140bb62adae33c27deec082aa7a6f8748e'
+  '403972013bfeb68f2cfe4850f40d28b8713e07a91b77f92ebd36bbecf958e659'
 )
 
 package() {
