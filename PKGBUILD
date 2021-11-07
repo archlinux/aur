@@ -1,12 +1,12 @@
 # Maintainer: Mikołaj "D1SoveR" Banasik <d1sover@gmail.com>
 pkgname='luxtorpeda-git'
-pkgver=45.0.0.r320.5f2e835
-pkgrel=2
+pkgver=46.0.0.r321.989a5a9
+pkgrel=1
 pkgdesc='Steam Play compatibility tool to run games using native Linux engines'
 arch=('x86_64' 'i686')
 url='https://github.com/luxtorpeda-dev/luxtorpeda'
 license=('GPL2')
-depends=('sdl2' 'openssl' 'xz')
+depends=('libusb' 'sdl2')
 makedepends=('git' 'rust')
 optdepends=('steam: The Steam client')
 provides=("${pkgname%-git}")
