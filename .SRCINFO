@@ -1,14 +1,14 @@
 pkgbase = mimemagic
 	pkgdesc = Powerful and versatile MIME sniffing package using pre-compiled glob patterns, magic number signatures, XML document namespaces, and tree magic for mounted volumes, generated from the XDG shared-mime-info database
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://github.com/zRedShift/mimemagic
-	arch = x86_64
-	license = MIT
+	url = https://godoc.org/github.com/zRedShift/mimemagic
+	arch = any
+	license = GPL2
 	makedepends = go
 	depends = glibc
-	source = mimemagic-1.1.0.tar.gz::https://github.com/zRedShift/mimemagic/archive/v1.1.0.tar.gz
-	sha256sums = 3f20e5a7e28080c3dd23721d40d9d419509f26e38c69f11b2c9838c8b41a1927
+	conflicts = mimemagic-git
+	source = mimemagic-1.2.0.tar.gz::https://github.com/zRedShift/mimemagic/archive/v1.2.0.tar.gz
+	sha256sums = 7131b6be01748a5a3498ae2f518e53f3a72bfd87e6208b5dc8cc8ecf948d6629
 
 pkgname = mimemagic
-

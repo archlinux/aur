@@ -1,35 +1,68 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Cynthetika <opensourceATcynthetikaDOTcom>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mimemagic
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Powerful and versatile MIME sniffing package using pre-compiled glob patterns, magic number signatures, XML document namespaces, and tree magic for mounted volumes, generated from the XDG shared-mime-info database"
-arch=('x86_64')
-url='https://github.com/zRedShift/mimemagic'
-license=('MIT')
+arch=('any')
+url='https://godoc.org/github.com/zRedShift/mimemagic'
+license=('GPL2')
 depends=('glibc')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3f20e5a7e28080c3dd23721d40d9d419509f26e38c69f11b2c9838c8b41a1927')
+conflicts=("$pkgname-git")
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zRedShift/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('7131b6be01748a5a3498ae2f518e53f3a72bfd87e6208b5dc8cc8ecf948d6629')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p build/
+  cd "$pkgname-$pkgver"
+
+  # create build output directory if not present
+  mkdir -p build
+
+  # update module fetching method for Go version >1.17
+  go mod tidy
+
+  # download Go module dependencies
+  go mod download
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
+  cd "$pkgname-$pkgver"
+
+  # set build flags per Arch hardening recommendations
   export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export CGO_LDFLAGS="-Wl,-O1,--sort-common,-z,relro,-z,now"
+  export GOFLAGS=" \
+    -buildmode=pie \
+    -trimpath \
+    -ldflags=-linkmode=external \
+    -ldflags=-extldflags=-Wl,-O1,--sort-common,-z,relro,-z,now \
+    -mod=readonly \
+    -modcacherw \
+  "
+
+  # recursively build all project binaries
   go build -o build ./cmd/...
 }
 
+check() {
+  cd "$pkgname-$pkgver"
+
+  # run build test
+  go test
+}
+
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm755 build/mimemagic "${pkgdir}/usr/bin/mimemagic"
-  install -Dm755 build/parser "${pkgdir}/usr/bin/parser"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$pkgname-$pkgver"
+
+  # install built Go binaries
+  install -Dm 755 -t "$pkgdir/usr/bin" build/$pkgname
+  install -Dm 755 -t "$pkgdir/usr/bin" build/parser
+
+  # install project "readme" documentation
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
