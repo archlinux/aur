@@ -1,7 +1,7 @@
 pkgbase = webcord
 	pkgdesc = A Discord web-based client made with the Electron API.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpacingBat3/WebCord
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = webcord
 	provides = webcord=2.0.1
 	conflicts = webcord-bin
 	conflicts = webcord-git
+	options = !strip
 	options = !emptydirs
 	source = WebCord-2.0.1.tar.gz::https://github.com/SpacingBat3/WebCord/archive/refs/tags/v2.0.1.tar.gz
 	source = app.desktop

@@ -1,6 +1,6 @@
 pkgname=webcord
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Discord web-based client made with the Electron API."
 arch=('any')
 url="https://github.com/SpacingBat3/WebCord"
@@ -9,7 +9,7 @@ depends=('electron>=15.1.0' 'electron<16')
 makedepends=('npm>=7' 'typescript>=4.3.4' 'typescript<5')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
-options=('!emptydirs')
+options=('!strip' '!emptydirs')
 
 _srcname="WebCord-${pkgver}"
 
@@ -28,15 +28,16 @@ build() {
 
     npm i --only=prod
 
-    tsc --sourceMap false &>/dev/null | true
+    tsc &>/dev/null | true
 }
 
 package() {
     cd "${srcdir}"
 
-    echo "#!/bin/sh" >"./webcord"
-    echo "electron \"/usr/lib/${pkgname}/\" \$@" >>"./webcord"
-    install -Dm755 -t "${pkgdir}/usr/bin/" "./webcord"
+    local bin="./${pkgname}"
+    echo "#!/bin/sh" >"${bin}"
+    echo "electron \"/usr/lib/${pkgname}/\" \$@" >>"${bin}"
+    install -Dm755 -t "${pkgdir}/usr/bin/" "${bin}"
 
     install -Dm644 "./app.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
@@ -44,7 +45,7 @@ package() {
 
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "./LICENSE"
 
-    local lib=$(install -dm755 "${pkgdir}/usr/lib/${pkgname}" && echo "$_")
+    local lib="${pkgdir}/usr/lib/${pkgname}"
 
     install -Dm644 -t "${lib}/" "./package.json"
     cp -rt "${lib}/" "./sources/" "./node_modules/"
@@ -52,8 +53,8 @@ package() {
     rm -r \
         "${lib}/sources/app/.build" \
         "${lib}/sources/app/build" \
-        "${lib}/sources/code" \
+        "${lib}/sources/code/build" \
         "${lib}/sources/assets/icons/app.ic"*
 
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps" && ln -s "/usr/lib/${pkgname}/sources/assets/icons/app.png" "$_/${pkgname}.png"
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps" && ln -s "/usr/lib/${pkgname}/sources/assets/icons/app.png" "$_/${pkgname}.png"
 }
