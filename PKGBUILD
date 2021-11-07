@@ -1,6 +1,6 @@
 # Maintainer: Chris Tam <LChris314 at gmail dot com>
 pkgname=megatools-bin
-_pkgver=1.11.0-git-20200830
+_pkgver=1.11.0-git-20211030
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc='Command line client application for Mega.nz. Precompiled.'
@@ -14,9 +14,9 @@ source_x86_64=("https://megatools.megous.com/builds/experimental/megatools-${_pk
 source_aarch64=("https://megatools.megous.com/builds/experimental/megatools-${_pkgver}-linux-aarch64.tar.gz")
 source_armv7h=("https://megatools.megous.com/builds/experimental/megatools-${_pkgver}-linux-arm.tar.gz")
 
-sha256sums_x86_64=('ec701c771b7c792f4626ae2d243bc6bd9d3b3c809daac6607b2ee19eb0560462')
-sha256sums_aarch64=('85c7c52214f70ac97ef7e251c5f2a17db2ec3b4366ede519031976653ac3701f')
-sha256sums_armv7h=('f37095115028d7f1be5ec02c95f0b46ca02113c08d0555b9a00edd2b9f5c115f')
+sha256sums_x86_64=('a08a77d2a4fad844eb8fc28518a82090bcc6f5be2c10f089ec144c10386622a1')
+sha256sums_aarch64=('b8101a8f0477fd04dbf6b256450873991b02a205008a2b29c41bca82dc37fcc8')
+sha256sums_armv7h=('340ac5b349552c33038873151b992de9ddf8f7dc3a5ee427ed66066222f8a50a')
 
 package() {
   _output="${srcdir}/megatools-${_pkgver}-linux-${CARCH%v7h}"
