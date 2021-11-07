@@ -10,7 +10,7 @@
 pkgname=pyinstaller
 _pkgname=pyinstaller
 pkgver=4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('x86_64' 'i686' 'aarch64')
 url="http://www.pyinstaller.org"
@@ -44,7 +44,7 @@ package() {
     --no-compile \
     --no-warn-script-location \
     "${_pkg_whlname_prefix}_${CARCH}.whl"
-  python -O -m compileall -j "$(nproc)" -s "$pkgdir" "$pkgdir/usr/lib/"
+  python -O -m compileall -s "$pkgdir" "$pkgdir/usr/lib/"
   mapfile -t direct_url_file < <(find "$pkgdir"/usr/lib -type f -name 'direct_url.json')
   rm -rvf "${direct_url_file[@]}" || true
   install -Dm644 "${_pkgname//-/_}-$pkgver.dist-info/COPYING.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
