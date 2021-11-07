@@ -3,7 +3,7 @@
 # Contributor: Shane Stone <shanewstone at gmail>
 
 pkgname=proselint
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='A linter for prose'
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('python-mock' 'python-nose' 'python-pytest')
 conflicts=('python-proselint')
 replaces=('python-proselint')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('20ecbf6e71e12d9f50a76e1cd803849faaa37b3530f90a2cd8bc4c8b0aac557243c1558bafd1173a74d22735175e2fb2082fa6e0d6851e39236a13c9e9e9a3dd')
+sha512sums=('31804ad7ee90a3e250337c2c6171b6ef7bbdb0a720ac0edff98c6b774001fa503db48597fda84eb108fe97ce943ef45caa53b160084087cbf2b1b564e84fb7cb')
 
 prepare() {
   cd "$pkgname-$pkgver"
