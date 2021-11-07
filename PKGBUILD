@@ -1,7 +1,7 @@
 # Maintainer: Alexander Chaplin Braz <contact@alexchaplinbraz.com>
 pkgname='ablavema-bin'
 _pkgname='ablavema'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgtarget='x86_64-unknown-linux-gnu'
 pkgrel=1
 pkgdesc='A Blender launcher and version manager'
@@ -15,7 +15,7 @@ optdepends=(
 )
 conflicts=('ablavema' 'ablavema-git')
 source_x86_64=("$url/releases/download/$pkgver/$_pkgname-$pkgver-$pkgtarget.tar.gz")
-sha256sums_x86_64=('b76140dd177ec5ee4e60464d52988505f44a3d75c8c111c7591a5eb8a7c864d7')
+sha256sums_x86_64=('2ba81e6134915a38cd37f1bf36974766a8e1331bbad71c971482eee4ad9c1532')
 
 package() {
 	install -Dm644 "$srcdir/$_pkgname-$pkgver-$pkgtarget/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
