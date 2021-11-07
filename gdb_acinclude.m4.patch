@@ -1,0 +1,13 @@
+diff --git a/gdb/acinclude.m4 b/gdb/acinclude.m4
+index 11cc0bc241..ad150bac3c 100644
+--- a/binutils-gdb/gdb/acinclude.m4
++++ b/binutils-gdb/gdb/acinclude.m4
+@@ -258,7 +258,7 @@ dnl Note: you must use first use SC_LOAD_TCLCONFIG!
+ AC_DEFUN([CY_AC_TCL_PRIVATE_HEADERS], [
+   AC_MSG_CHECKING([for Tcl private headers])
+   private_dir=""
+-  dir=`echo ${TCL_INCLUDE_SPEC}/tcl-private/generic | sed -e s/-I//`
++  dir=`echo ${TCL_INCLUDE_SPEC} | sed -e s/-I//`
+   if test -f ${dir}/tclInt.h ; then
+     private_dir=${dir}
+   fi

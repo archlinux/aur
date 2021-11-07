@@ -1,0 +1,11 @@
+--- ./insight/binutils-gdb/config/override.m4.a	2021-10-31 19:59:43.643542843 +0100
++++ ./insight/binutils-gdb/config/override.m4.b	2021-10-31 16:15:57.227235135 +0100
+@@ -44,7 +44,7 @@
+   [m4_fatal([Please use exactly Autoconf ]_GCC_AUTOCONF_VERSION[ instead of ]m4_defn([m4_PACKAGE_VERSION])[.])])
+ ])
+ m4_define([AC_INIT], m4_defn([AC_INIT])[
+-_GCC_AUTOCONF_VERSION_CHECK
++dnl _GCC_AUTOCONF_VERSION_CHECK
+ ])
+ 
+ 

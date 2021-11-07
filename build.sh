@@ -1,0 +1,17 @@
+./configure --prefix=/usr \
+--libdir=/usr/lib64 \
+--disable-binutils \
+--disable-elfcpp \
+--disable-gas \
+--disable-gold \
+--disable-gprof \
+--disable-ld \
+--disable-rpath \
+--disable-zlib \
+--enable-sim \
+--with-gdb-datadir=/usr/share/insight \
+--with-jit-reader-dir=/usr/lib64/insight \
+--with-separate-debug-dir='/usr/lib/debug' \
+--with-expat \
+--with-python \
+--without-libunwind
