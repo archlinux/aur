@@ -1,0 +1,10 @@
+post_install() {
+  systemctl reload dbus
+  echo "Enable and start nvidia-fake-powerd.service to stop the dbus log spam caused by the NVIDIA driver."
+  echo "# systemctl enable nvidia-fake-powerd"
+  echo "# systemctl start nvidia-fake-powerd"
+}
+
+post_upgrade() {
+  systemctl reload dbus
+}

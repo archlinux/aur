@@ -1,0 +1,16 @@
+[Unit]
+Description=NVIDIA fake powerd service
+
+[Service]
+Type=dbus
+BusName=nvidia.powerd.server
+ExecStart=/usr/bin/dbus-test-tool black-hole --system --name=nvidia.powerd.server
+User=dbus
+Group=dbus
+LimitNPROC=2
+ProtectHome=true
+ProtectSystem=full
+
+[Install]
+WantedBy=default.target
+Alias=dbus-nvidia.fake-powerd.service
