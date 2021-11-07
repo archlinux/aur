@@ -7,8 +7,9 @@ pkgbase = findex-git
 	license = GPL3
 	makedepends = rustup
 	depends = gtk3
-	provides = findex
-	conflicts = findex
+	provides = findex-git
+	conflicts = findex-git
+	conflicts = findex-bin
 	source = git+https://github.com/mdgaziur/findex
 	md5sums = SKIP
 
