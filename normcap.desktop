@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=NormCap
+Exec=normcap %F
+Icon=normcap
+Categories=Utility;
+Comment=OCR-powered screen-capture tool to capture information instead of images
