@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Beaker
-Comment=Experimental peer-to-peer web browser
-Exec=beaker
-Icon=beaker
-Categories=Network;WebBrowser;P2P;
-Terminal=false
