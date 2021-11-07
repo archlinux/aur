@@ -2,14 +2,14 @@
 
 pkgname=yubioath-desktop
 pkgdesc='Yubico Authenticator for Desktop'
-pkgver=5.0.5
+pkgver=5.1.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-desktop'
 license=('BSD')
 depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2'
-         'python-pyotherside' 'qt5-graphicaleffects' 'ccid' 'pcsclite'
-         'yubikey-manager')
+         'python-pyotherside' 'qt5-graphicaleffects' 'qt5-multimedia'
+         'ccid' 'pcsclite' 'yubikey-manager')
 makedepends=('git' 'python')
 source=("git+$url.git#tag=$pkgname-$pkgver?signed")
 validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3'  # Dag Heyman <dag@yubico.com>
@@ -32,6 +32,9 @@ package() {
     cd $pkgname
 
     make INSTALL_ROOT="$pkgdir" install
+
+    mkdir "$pkgdir"/usr/bin
+    mv "$pkgdir"/usr/{lib,bin}/yubioath-desktop
 
     install -Dm 644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
