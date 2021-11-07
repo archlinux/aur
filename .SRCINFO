@@ -1,7 +1,7 @@
 pkgbase = pyinstaller-hooks-contrib
 	pkgdesc = Community maintained hooks for PyInstaller
 	pkgver = 2021.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyinstaller/pyinstaller-hooks-contrib
 	arch = any
 	license = custom:PyInstaller

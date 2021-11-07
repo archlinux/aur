@@ -6,7 +6,7 @@
 pkgname=pyinstaller-hooks-contrib
 _pkgname=pyinstaller-hooks-contrib
 pkgver=2021.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Community maintained hooks for PyInstaller"
 arch=('any')
 url="https://github.com/pyinstaller/pyinstaller-hooks-contrib"
@@ -30,7 +30,7 @@ package() {
     --no-compile \
     --no-warn-script-location \
     "${_pkg_whlname}"
-  python -O -m compileall -j "$(nproc)" -s "$pkgdir" "$pkgdir/usr/lib/"
+  python -O -m compileall -s "$pkgdir" "$pkgdir/usr/lib/"
   mapfile -t direct_url_file < <(find "$pkgdir"/usr/lib -type f -name 'direct_url.json')
   rm -rvf "${direct_url_file[@]}" || true
   install -Dm644 "${_pkgname//-/_}-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
