@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python-cocotbext-uart-git
-pkgver=0.1.0.r0.g4f3a8f2
+pkgver=0.1.2.r0.gaad6c49
 pkgrel=1
 pkgdesc="UART modules for cocotb"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = python-cocotbext-uart-git
 	pkgdesc = UART modules for cocotb
-	pkgver = 0.1.0.r0.g4f3a8f2
+	pkgver = 0.1.2.r0.gaad6c49
 	pkgrel = 1
 	url = https://github.com/alexforencich/cocotbext-uart
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = python-cocotbext-uart-git
 	md5sums = SKIP
 
 pkgname = python-cocotbext-uart-git
-
