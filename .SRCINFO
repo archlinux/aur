@@ -1,7 +1,7 @@
 pkgbase = bluespec-git
 	pkgdesc = Bluespec Compiler (BSC)
-	pkgver = r301.9f4a447
-	pkgrel = 107
+	pkgver = r641.e330e11e
+	pkgrel = 264
 	url = https://github.com/B-Lang-org/bsc
 	arch = x86_64
 	license = BSD
@@ -9,13 +9,21 @@ pkgbase = bluespec-git
 	makedepends = gperf
 	makedepends = ghc
 	makedepends = tcl
+	makedepends = texlive-core
 	depends = haskell-old-time
 	depends = haskell-syb
 	depends = haskell-regex-compat
 	depends = haskell-split
-	optdepends = tcl: bluesim and bluetcl
 	source = git+https://github.com/b-lang-org/bsc.git
 	sha256sums = SKIP
 
 pkgname = bluespec-git
+	optdepends = tcl: bluesim and bluetcl
 
+pkgname = bluespec-vimfiles-git
+	pkgdesc = Bluespec vim files
+	depends = 
+
+pkgname = bluespec-docs-git
+	pkgdesc = Bluespec docs
+	depends = 
