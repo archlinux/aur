@@ -2,7 +2,7 @@
 
 pkgname=tk-itk3
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="OOP extension for Tk, version 3.4"
 arch=('x86_64')
 url="http://incrtcl.sourceforge.net/"
@@ -27,8 +27,9 @@ package() {
   install -Dm644 license.terms "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
   # conflict with tk-itk (latest version)
-  rm -rf "$pkgdir"/usr/include
   rm -rf "$pkgdir"/usr/share/man
+  install -dm755 "$pkgdir"/usr/include/itk${pkgver%.*}/generic
+  mv "$pkgdir"/usr/include/*.h "$pkgdir"/usr/include/itk${pkgver%.*}/generic
 
   rmdir "${pkgdir}/usr/bin"
 }

@@ -1,7 +1,7 @@
 pkgbase = tk-itk3
 	pkgdesc = OOP extension for Tk, version 3.4
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://incrtcl.sourceforge.net/
 	arch = x86_64
 	license = custom
