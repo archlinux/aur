@@ -2,10 +2,10 @@
 # Contributor: Dragutin Cirkovic <dragonmen@gmail.com>
 # Contributor: heinrich5991 <heinrich5991@gmail.com>
 pkgname=srs
-pkgver=3.0_r7
+pkgver=3.0_r8
 pkgrel=1
 pkgdesc="High performance RTMP Server"
-_pkgcommit=d72d05294df1dc4da956370a3df756af96a02eb0
+_pkgcommit=c2b133bd07cbb70302d9b130d40be64b4cb5c175
 arch=('x86_64')
 url="https://github.com/ossrs/srs"
 license=('MIT')
