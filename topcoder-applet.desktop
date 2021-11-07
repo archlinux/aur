@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name[en_US.UTF-8]=Topcoder Applet
+X-GNOME-FullName[en_US.UTF-8]=Topcoder Applet
+Comment[en_US.UTF-8]=
+Icon=/usr/bin/topcoder/topcoder_logo.png
+NoDisplay=false
+Exec=javaws ContestAppletProd7.2.jnlp
+Path=/usr/bin/topcoder
+Terminal=false
+X-GNOME-UsesNotifications=true
+Categories=Development;
+

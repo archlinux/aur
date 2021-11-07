@@ -1,0 +1,16 @@
+pkgbase = topcoder-applet
+	pkgdesc = Topcoder applet for participating and practicing on topcoder competitive programming events
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.topcoder.com/community/arena
+	arch = x86_64
+	license = unknown
+	depends = jre8
+	source = http://topcoder.com/contest/arena/ContestAppletProd7.2.jnlp
+	source = topcoder_logo.png
+	source = topcoder-applet.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = topcoder-applet
