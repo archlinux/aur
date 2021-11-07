@@ -1,5 +1,6 @@
 # Maintainer: Megameneer (Dennis Holierhoek) <dennis.hh@hotmail.com>
 # Maintainer: fshp (Maxim Moseychuk) <franchesko.salias.hudro.pedros@gmail.com>
+# Maintainer: maxlefou <buttbadger@gmail.com>
 pkgname=gimp-dds
 pkgver=3.0.1
 pkgrel=6
