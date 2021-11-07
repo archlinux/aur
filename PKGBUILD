@@ -2,10 +2,11 @@
 
 pkgname=otf-fira-go
 pkgver=1.001
-pkgrel=1
+pkgrel=2
 _commit=715cd3e8b59179822cd5b86933ecfc254cd1e74e
 pkgdesc="An independent Open Source typeface — FiraGO"
 arch=('any')
+conflicts=("ttf-fira-go")
 url="https://github.com/bBoxType/FiraGO"
 license=('OFL')
 source=("$pkgname-$_commit.tar.gz::https://github.com/bBoxType/FiraGO/archive/$_commit.tar.gz")
