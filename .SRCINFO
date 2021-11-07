@@ -1,0 +1,14 @@
+pkgbase = xchainkeys
+	pkgdesc = A standalone X11 program to create chained key bindings
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://henning-liebenau.de/xchainkeys/
+	arch = x86_64
+	license = GPL3
+	makedepends = p7zip
+	depends = libx11
+	provides = xchainkeys
+	source = https://github.com/hbekel/xchainkeys/archive/refs/heads/master.zip
+	sha256sums = 9a20fe575d2060b55c5c45e1ed04b576a8444ed67688e13a0dd353fde3e00019
+
+pkgname = xchainkeys
