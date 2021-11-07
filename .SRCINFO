@@ -1,11 +1,11 @@
 pkgbase = valentina-studio
 	pkgdesc = Create, administer, query and explore Valentina DB, MySQL, MariaDB, PostgreSQL and SQLite databases for FREE.
-	pkgver = 11.4.6
+	pkgver = 11.4.8
 	pkgrel = 1
 	url = http://www.valentina-db.com
 	arch = x86_64
 	license = custom
-	source_x86_64 = valentina-studio-11.4.6-x86_64.rpm::http://valentina-db.com/download/prev_releases/11.4.6/lin_64/vstudio_x64_11_lin.rpm
-	sha256sums_x86_64 = 876dec320bf20934a8855b4520f2675bbb9ac59daea14f207e3c98ce5814bc3a
+	source_x86_64 = valentina-studio-11.4.8-x86_64.rpm::http://valentina-db.com/download/prev_releases/11.4.8/lin_64/vstudio_x64_11_lin.rpm
+	sha256sums_x86_64 = 463d751d5a47a7250657b4c42996e28234c2baed828df1cea3043f96da713ca1
 
 pkgname = valentina-studio
