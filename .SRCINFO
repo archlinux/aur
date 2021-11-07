@@ -1,0 +1,13 @@
+pkgbase = nosqlbooster4mongo-appimage
+	pkgdesc = NoSQLBooster for MongoDB
+	pkgver = 7.0.4
+	pkgrel = 1
+	url = https://nosqlbooster.com/
+	arch = x86_64
+	license = GPL3
+	noextract = nosqlbooster4mongo-7.0.4.AppImage
+	options = !strip
+	source = https://s3.mongobooster.com/download/releasesv7/nosqlbooster4mongo-7.0.4.AppImage
+	md5sums = 18ba37c414e951a6394f6a42023bdd03
+
+pkgname = nosqlbooster4mongo-appimage
