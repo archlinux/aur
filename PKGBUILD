@@ -2,7 +2,7 @@
 
 pkgname=fbc
 pkgver=1.08.1
-pkgrel=1
+pkgrel=2
 _bootver=1.08.1
 pkgdesc="FreeBASIC Compiler (Release version)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -13,7 +13,7 @@ provides=('fbc')
 conflicts=('freebasic' 'fbc-git')
 options=(staticlibs)
 source=("https://downloads.sourceforge.net/fbc/Source%20Code/FreeBASIC-${_bootver}-source.tar.gz")
-sha256sums=('eaad3127c31f040a52b159932956e698acafb237')
+sha256sums=('SKIP')
 
 prepare() {
 if [ "$CARCH" = "i686" ]; then
