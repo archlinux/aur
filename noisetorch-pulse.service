@@ -1,0 +1,12 @@
+[Unit]
+Description=NoiseTorch noise supression (for PulseAudio)
+Requires=pulseaudio.socket
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/noisetorch -i
+ExecStop=/usr/bin/noisetorch -u
+
+[Install]
+WantedBy=default.target
