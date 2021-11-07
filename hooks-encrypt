@@ -191,7 +191,7 @@ _archiso_device() {
           do
             dev_label=$(blkid -s LABEL -o value "${device}")
             dev_type=$(blkid -s TYPE -o value "${device}")
-            if [ "${dev_label}" = "<your_iso_name>" ] && [ "${dev_type}" = "iso9660" ];
+            if [ "${dev_label}" = "${archisolabel}" ] && [ "${dev_type}" = "iso9660" ];
               then
                   archisodevice="${device}"
                   break
