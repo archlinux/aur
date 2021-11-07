@@ -2,7 +2,7 @@
 
 pkgname=bauh
 pkgver=0.9.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
@@ -35,7 +35,7 @@ optdepends=('flatpak: required for Flatpak support'
             'aria2: multi-threaded downloading support'
             'breeze: KDE Plasma main theme'
             'axel: multi-threaded downloading support')
-makedepends=('git' 'python' 'python-pip' 'python-setuptools' 'make' 'fakeroot')
+makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
 sha512sums=('1f3901f6f39613f2e131038047db3feb45261a7de66da29f40773c6bc1ced541f962ff481678a92e46960dddc157970a9ac1e0e0e894d8564b1bcdb6aab93127')
 

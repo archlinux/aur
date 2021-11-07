@@ -1,7 +1,7 @@
 pkgbase = bauh
 	pkgdesc = Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)
 	pkgver = 0.9.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinifmor/bauh
 	arch = any
 	license = zlib/libpng
@@ -9,8 +9,6 @@ pkgbase = bauh
 	makedepends = python
 	makedepends = python-pip
 	makedepends = python-setuptools
-	makedepends = make
-	makedepends = fakeroot
 	depends = python
 	depends = python-pyqt5
 	depends = python-pyqt5-sip
