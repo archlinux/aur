@@ -3,16 +3,16 @@
 
 pkgname=freeplane-git
 _NEXT_VERSION=1.9.x
-pkgver=1.9.x.562c6ce39
+pkgver=1.9.x.d1e6ba16a
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
 url="https://github.com/freeplane/freeplane.git"
 license=('GPL')
-makedepends=('git' 'gradle')
+makedepends=('git' 'gradle' 'ttf-opensans' 'fontconfig' 'jdk11-openjdk')
 conflicts=('freeplane')
 provides=('freeplane')
-depends=('java-environment' 'desktop-file-utils')
+depends=('java-environment=11' 'desktop-file-utils')
 source=("git+https://github.com/freeplane/freeplane.git#branch=${_NEXT_VERSION}"
         "freeplane.desktop::https://raw.githubusercontent.com/freeplane/freeplane/${_NEXT_VERSION}/freeplane/src/editor/resources/linux/freeplane.desktop"
         "freeplane.run")
@@ -21,15 +21,17 @@ sha256sums=('SKIP'
             '56ac3b9c1711a05f2d04f5587a27a9e05c5c06885d14027363e6c00d2614bc78')
 
 pkgver() {
-	cd "${pkgname%-*}"
-	# Use branch and last commit
-	local commit="$(git rev-parse --short HEAD)"
-	printf "%s" "${_NEXT_VERSION}.${commit}"
+  cd "${pkgname%-*}"
+  # Use branch and last commit
+  local commit="$(git rev-parse --short HEAD)"
+  printf "%s" "${_NEXT_VERSION}.${commit}"
 }
 
 build() {
-	cd "${pkgname%-*}"
-	gradle -Dorg.gradle.daemon=false build 
+  cd "${pkgname%-*}"
+  export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+  export PATH="${JAVA_HOME}/bin:${PATH}"
+  gradle -Dorg.gradle.daemon=false build 
 }
 
 package() {
@@ -47,22 +49,21 @@ package() {
   install -Dm644 freeplaneConsole.l4j.ini ${pkgdir}/usr/share/freeplane/freeplaneConsole.l4j.ini
   install -Dm644 freeplaneIcons.dll ${pkgdir}/usr/share/freeplane/freeplaneIcons.dll
   install -Dm644 freeplanelauncher.jar ${pkgdir}/usr/share/freeplane/freeplanelauncher.jar
-  install -Dm644 gitinfo.txt ${pkgdir}/usr/share/freeplane/gitinfo.txt
   install -Dm644 init.xargs ${pkgdir}/usr/share/freeplane/init.xargs
   install -Dm644 props.xargs ${pkgdir}/usr/share/freeplane/props.xargs
 
   # Where's the licence?
   #install -Dm644 license.txt ${pkgdir}/usr/share/freeplane/licence.txt
 
-  mkdir -p ${pkgdir}/usr/share/freeplane/core/org.freeplane.core/META-INF
-  mkdir -p ${pkgdir}/usr/share/freeplane/core/org.freeplane.core/lib
-  mkdir -p ${pkgdir}/usr/share/freeplane/resources/ortho
-  mkdir -p ${pkgdir}/usr/share/freeplane/resources/templates
-  mkdir -p ${pkgdir}/usr/share/freeplane/resources/xslt
-  mkdir -p ${pkgdir}/usr/share/freeplane/resources/xml
-  mkdir -p ${pkgdir}/usr/share/freeplane/fwdir/perms
-  mkdir -p ${pkgdir}/usr/share/freeplane/fwdir/condperm
-  mkdir -p ${pkgdir}/usr/share/freeplane/scripts
+  install -dm755  ${pkgdir}/usr/share/freeplane/core/org.freeplane.core/META-INF
+  install -dm755  ${pkgdir}/usr/share/freeplane/core/org.freeplane.core/lib
+  install -dm755  ${pkgdir}/usr/share/freeplane/resources/ortho
+  install -dm755  ${pkgdir}/usr/share/freeplane/resources/templates
+  install -dm755  ${pkgdir}/usr/share/freeplane/resources/xslt
+  install -dm755  ${pkgdir}/usr/share/freeplane/resources/xml
+  install -dm755  ${pkgdir}/usr/share/freeplane/fwdir/perms
+  install -dm755  ${pkgdir}/usr/share/freeplane/fwdir/condperm
+  install -dm755  ${pkgdir}/usr/share/freeplane/scripts
 
   install -Dm644 core/org.freeplane.core/META-INF/* ${pkgdir}/usr/share/freeplane/core/org.freeplane.core/META-INF/
   install -Dm644 core/org.freeplane.core/lib/* ${pkgdir}/usr/share/freeplane/core/org.freeplane.core/lib
@@ -70,7 +71,6 @@ package() {
   install -Dm644 resources/templates/* ${pkgdir}/usr/share/freeplane/resources/templates/
   install -Dm644 resources/xslt/* ${pkgdir}/usr/share/freeplane/resources/xslt/
   install -Dm644 resources/xml/* ${pkgdir}/usr/share/freeplane/resources/xml/
-  install -Dm644 resources/gitinfo.properties ${pkgdir}/usr/share/freeplane/resources/gitinfo.properties
   install -Dm644 scripts/* ${pkgdir}/usr/share/freeplane/scripts/
   cp -r doc ${pkgdir}/usr/share/freeplane/
   
