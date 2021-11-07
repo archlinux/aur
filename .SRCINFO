@@ -6,7 +6,6 @@ pkgbase = cfs-zen-tweaks
 	arch = any
 	license = GPL2
 	makedepends = cmake
-	makedepends = git
 	depends = gawk
 	depends = bash
 	depends = systemd
