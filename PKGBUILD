@@ -1,23 +1,18 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=imgbrd-grabber-git
-pkgver=v7.2.1.r202.096c955c
+pkgver=v7.6.2.r92.d6fb4bd7
 pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('i686' 'x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
 license=('Apache')
-depends=('qt5-multimedia' 'qt5-declarative' 'nodejs')
+depends=('qt5-multimedia' 'qt5-declarative' 'nodejs' 'qt5-networkauth' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'qt5-tools' 'npm')
+optdepends=('openssl: used for HTTPS sources')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/Bionus/imgbrd-grabber.git#branch=develop'
-        'git+https://github.com/LaurentGomila/qt-android-cmake.git'
-        'git+https://github.com/sakra/cotire.git'
-        'git+https://github.com/catchorg/Catch2.git')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+source=('git+https://github.com/Bionus/imgbrd-grabber.git#branch=develop' 'variableToString-instantiation-grabber.patch')
+md5sums=('SKIP' 'SKIP')
 
 
 pkgver() {
@@ -27,23 +22,18 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgname%-git}"
-    git submodule init
-    git config submodule.qt-android-cmake.url "$srcdir/qt-android-cmake"
-    git config submodule.qt-android-cmake.path "$srcdir/${pkgname%-git}/cmake/qt-android-cmake"
-    git config submodule.cotire.url "$srcdir/cotire"
-    git config submodule.cotire.path "$srcdir/${pkgname%-git}/cmake/cotire"
-    git config submodule.Catch2.url $srcdir/Catch2
-    git config submodule.Catch2.path "$srcdir/${pkgname%-git}/tests/src/vendor/catch"
-    git submodule update
+    patch -p1 -d src/ < ../variableToString-instantiation-grabber.patch
+    git submodule update --init --recursive
 }
 
 build() {
-    mkdir -p "$srcdir/build"
-    cd "$srcdir/build"
-
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    "$srcdir/${pkgname%-git}/src"
-    make
+    cmake -B build -S "${pkgname%-git}/src" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DUSE_QSCINTILLA=0 \
+        -DUSE_BREAKPAD=O \
+        -Wno-dev
+    make -C build
 }
 
 package() {
