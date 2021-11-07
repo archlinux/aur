@@ -2,7 +2,7 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-git
-pkgver=r394.8d454e4
+pkgver=r641.e330e11e
 pkgrel=1
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
@@ -26,6 +26,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/bsc"
   git submodule update --init --recursive
+
+  # workaround until PR #430 is merged
+  sed -ri 's/^TCL_ALT_SUFFIX=.*/TCL_ALT_SUFFIX=/' platform.sh
 }
 
 build(){
