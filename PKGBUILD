@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=etl
 pkgname=etlcpp
-pkgver=20.11.4
+pkgver=20.19.0
 pkgrel=1
 pkgdesc="Embedded Template Library"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=()
 checkdepends=()
 source=("https://github.com/ETLCPP/etl/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('15d528cea868e8606f258c0657d26e799af61f6d9d660aef1f32bd815c98d5bc')
+sha256sums=('ac62fe0cd3a52b6a8a5f5df48f8f3897d3210c93d2182a122bde16c122cc3193')
 
 prepare() {
     :

@@ -1,11 +1,11 @@
 pkgbase = etlcpp
 	pkgdesc = Embedded Template Library
-	pkgver = 20.11.4
+	pkgver = 20.19.0
 	pkgrel = 1
 	url = https://www.etlcpp.com/
 	arch = x86_64
 	license = MIT
-	source = https://github.com/ETLCPP/etl/archive/refs/tags/20.11.4.tar.gz
-	sha256sums = 15d528cea868e8606f258c0657d26e799af61f6d9d660aef1f32bd815c98d5bc
+	source = https://github.com/ETLCPP/etl/archive/refs/tags/20.19.0.tar.gz
+	sha256sums = ac62fe0cd3a52b6a8a5f5df48f8f3897d3210c93d2182a122bde16c122cc3193
 
 pkgname = etlcpp
