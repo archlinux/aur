@@ -1,6 +1,6 @@
 pkgbase = downloader-cli
 	pkgdesc = A simple downloader with an awesome progressbar
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 0
 	url = https://github.com/deepjyoti30/downloader-cli
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = downloader-cli
 	makedepends = python-setuptools
 	depends = python>=3.6
 	depends = python-urllib3
-	source = https://github.com/deepjyoti30/downloader-cli/archive/0.3.1.tar.gz
+	source = https://files.pythonhosted.org/packages/70/a3/4af8a9eb724212f5b61ea129a194b5023fd6426b72da489cf0b8e3c5b159/downloader_cli-0.3.2.tar.gz
 	md5sums = SKIP
 
 pkgname = downloader-cli
-
