@@ -186,21 +186,3 @@
                      "--ftz=true ";
    $cuda_library     = "-L/usr/local/cuda/lib";
    $arch_cc       = "cc";
-@@ -3080,7 +3070,7 @@
-   
-       # Only generate code for SM 7.0 on Summit
-       $arch_nvccflags   = "--ptxas-options=-v " .
--                      "-gencode arch=compute_30,code=compute_30 " .
-+                      "-gencode arch=compute_35,code=compute_35 " .
-                       "-gencode arch=compute_70,code=sm_70 " .
-                       "--ftz=true ";
-       $arch_nvccflags   .= " --machine 64 -O3 $cuda_include";
-@@ -3763,7 +3753,7 @@
- 
- .cu.ptx:
- 	\$(ECHO) "Compiling " \$< " --> " \$*.ptx " ..."; \\
--	\$(NVCC) \$(DEFINES) --use_fast_math $liboptix_include -gencode arch=compute_30,code=compute_30 -ptx \$< $arch_coptout$vmd_arch_dir/\$\@
-+	\$(NVCC) \$(DEFINES) --use_fast_math $liboptix_include -gencode arch=compute_35,code=compute_35 -ptx \$< $arch_coptout$vmd_arch_dir/\$\@
- 
- .y.o:
- 

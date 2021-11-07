@@ -5,8 +5,8 @@
 
 pkgname=vmd-src
 _pkgname=vmd
-pkgver=1.9.4a51
-pkgrel=5
+pkgver=1.9.4a55
+pkgrel=1
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
@@ -24,8 +24,8 @@ conflicts=("$_pkgname" "$_pkgname-bin")
 # and put it in the PKGBUILD folder.
 source=("local://$_pkgname-${pkgver}.src.tar.gz"
         "configure.patch")
-sha256sums=('b1c40b21111f5bab56d43d5e442c468d327159b07915af2ec175ba6b12842e5c'
-            'cef0605dfeb529616c7b760696ac0305aa84e80eeffbbcb6e5473bc5a46760f9')
+sha256sums=('cc8aef24cb61d8f9973e1b8d71c6356668456c115a846c47621b2edcd080508b'
+            '0494d263458014886068276b0d72ea8c93bc3a05466d554aaf7f1ab027768a15')
 
 prepare() {
   sed -i 's/ltcl8.5/ltcl/g' plugins/Make-arch

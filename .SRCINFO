@@ -1,7 +1,7 @@
 pkgbase = vmd-src
 	pkgdesc = Visual Molecular Dynamics
-	pkgver = 1.9.4a51
-	pkgrel = 5
+	pkgver = 1.9.4a55
+	pkgrel = 1
 	url = http://www.ks.uiuc.edu/Research/vmd/
 	arch = x86_64
 	arch = aarch64
@@ -22,9 +22,9 @@ pkgbase = vmd-src
 	optdepends = cuda: NVIDIA CUDA GPU acceleration functions
 	conflicts = vmd
 	conflicts = vmd-bin
-	source = local://vmd-1.9.4a51.src.tar.gz
+	source = local://vmd-1.9.4a55.src.tar.gz
 	source = configure.patch
-	sha256sums = b1c40b21111f5bab56d43d5e442c468d327159b07915af2ec175ba6b12842e5c
-	sha256sums = cef0605dfeb529616c7b760696ac0305aa84e80eeffbbcb6e5473bc5a46760f9
+	sha256sums = cc8aef24cb61d8f9973e1b8d71c6356668456c115a846c47621b2edcd080508b
+	sha256sums = 0494d263458014886068276b0d72ea8c93bc3a05466d554aaf7f1ab027768a15
 
 pkgname = vmd-src
