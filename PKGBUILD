@@ -3,8 +3,9 @@ _release=alpha
 _target=aur
 
 pkgname=makedeb-makepkg-alpha
-pkgver=8.11.1
+pkgver=8.12.0
 pkgrel=1
+pkgdesc="ABS packaging utility"
 arch=(any)
 depends=('awk' 'libarchive' 'bzip2' 'coreutils' 'fakeroot' 'file' 'findutils' 'gettext' 'gnupg' 'grep' 'gzip' 'sed' 'ncurses' 'xz' 'makedeb-makepkg-alpha')
 makedepends=('asciidoctor' 'git' 'make' 'jq')
