@@ -22,7 +22,7 @@ optdepends=(
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
 )
-source=("git+ssh://git@gitlab.com/tallero/archiso.git#branch=crypto")
+source=("git+ssh://git@gitlab.com/tallero/${_pkgname}#branch=crypto")
 sha256sums=('SKIP')
 
 check() {
