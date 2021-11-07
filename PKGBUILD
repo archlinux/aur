@@ -11,7 +11,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.16.12
+pkgver=3.16.13
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -30,7 +30,7 @@ source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
         qgis-qwt-6.2-1.patch   # https://github.com/qgis/QGIS/commit/6f9cbde7.patch
         qgis-qwt-6.2-2.patch)  # https://github.com/qgis/QGIS/commit/581cb406.patch
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
-sha256sums=('65e9634b5c885c98f3555cf77bc2e3fae5e19279aa17e3f6626ff5d7455fd2b9'
+sha256sums=('140fba4e65a784b18163bf395d62734c9671bb6f2b9a3d63d4c1ff5ad544254a'
             '0f61792b634355175306ddcc04b94febb8aadcc953e4e97f229b89f9b21f2450'
             '65708439be026a881cd4f1636eb60cce562a80d98a1427ff3a51942d7b93a7ae')
 
