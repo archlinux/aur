@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr52
 pkgver=52.9.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Standalone web browser from mozilla.org, Extended Support Release 52.x with NPAPI support'
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -37,7 +37,10 @@ source=("https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefo
         "gcc9_format-overflow.patch"
         "glibc-gettid-wrapper.patch"
         "gfxFont.patch"
-        "linux_remove_sysctl.patch")
+        "linux_remove_sysctl.patch"
+        "gcc11_limits.patch"
+        "mach_install_ignore_errors.patch"
+        "seamonkey-use-scoped-enums-in-IDBTransaction.patch"::"https://bugs.archlinux.org/task/71113?getfile=20366")
 sha256sums=('c01d09658c53c1b3a496e353a24dad03b26b81d3b1d099abc26a06f81c199dd6'
             '9efd02ff78c31f8690a12401faac2605dffcac12eaf11e1791ec4221570c2746'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
@@ -54,7 +57,10 @@ sha256sums=('c01d09658c53c1b3a496e353a24dad03b26b81d3b1d099abc26a06f81c199dd6'
             'b66a84af7cc1809fe9dd0d7737f6043be2919ebe0a2c752cca483d67957ad431'
             'e2f6353d2021bb2490acd7216762cd5bae41eb55a82e245813a62a7024c01229'
             'ba7858a8cb852388c870bb9acd20bedc5e9cb0b2cf7bdfa5c334e61350279232'
-            '1f324e9a5bf195a58416f622c025a9dd0aac7d802f838e44d9b55b34a0e56585')
+            '1f324e9a5bf195a58416f622c025a9dd0aac7d802f838e44d9b55b34a0e56585'
+            'f88b950d72d5edae01289fddb29dad75de075ed61735782da6687bf56af225d8'
+            '56d70daae3a867d3c026970a6b8589678f84a1e58cf14772a3d0ef1c717f6c19'
+            '6227a54ef4519c19ab8e39412bca71711fabab393491db691f7ef90dbe99f225')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -119,6 +125,15 @@ prepare() {
   
   # Fix for missing sysctl.h in memory/mozjemalloc/jemalloc.c
   patch -Np1 -i "${srcdir}/linux_remove_sysctl.patch"
+
+  # Fix for limits on BaseRect.h
+  patch -Np1 -i "${srcdir}/gcc11_limits.patch"
+
+  # Ignore mach install errors as it's buggy ATM
+  patch -Np1 -i "${srcdir}/mach_install_ignore_errors.patch"
+
+  # Fix for nss 3.66
+  patch -Np1 -i "${srcdir}/seamonkey-use-scoped-enums-in-IDBTransaction.patch"
 }
 
 build() {

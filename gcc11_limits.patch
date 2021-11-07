@@ -1,0 +1,23 @@
+diff -Naur firefox-52.9.0esr.orig/gfx/2d/BaseRect.h firefox-52.9.0esr/gfx/2d/BaseRect.h
+--- firefox-52.9.0esr.orig/gfx/2d/BaseRect.h	2017-04-11 04:13:04.000000000 +0200
++++ firefox-52.9.0esr/gfx/2d/BaseRect.h	2021-11-07 11:43:05.918263005 +0100
+@@ -7,6 +7,7 @@
+ #define MOZILLA_GFX_BASERECT_H_
+ 
+ #include <algorithm>
++#include <limits>
+ #include <cmath>
+ #include <ostream>
+ 
+diff -Naur firefox-52.9.0esr.orig/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/opus/audio_encoder_opus.cc firefox-52.9.0esr/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/opus/audio_encoder_opus.cc
+--- firefox-52.9.0esr.orig/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/opus/audio_encoder_opus.cc	2017-04-11 04:13:15.000000000 +0200
++++ firefox-52.9.0esr/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/opus/audio_encoder_opus.cc	2021-11-07 12:10:21.097272082 +0100
+@@ -8,6 +8,8 @@
+  *  be found in the AUTHORS file in the root of the source tree.
+  */
+ 
++#include <limits>
++
+ #include "webrtc/modules/audio_coding/codecs/opus/interface/audio_encoder_opus.h"
+ 
+ #include "webrtc/base/checks.h"
