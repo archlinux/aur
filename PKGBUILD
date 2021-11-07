@@ -13,7 +13,7 @@ pkgname=(
     'ruby-simpleitk'
     'tcl-simpleitk'
 )
-pkgver=2.0.2
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
@@ -21,7 +21,7 @@ url="http://www.simpleitk.org/"
 license=('Apache')
 provides=()
 conflicts=()
-depends=('gcc-libs' 'insight-toolkit>=5.1.2')
+depends=('gcc-libs' 'insight-toolkit>=5.2.1')
 makedepends=(
     'cmake'
     'git'
@@ -41,7 +41,7 @@ makedepends=(
 )
 optdepends=()
 source=("https://github.com/SimpleITK/SimpleITK/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e052c250bde5232d1eea62ac79c6b8cc667e7fecc7c96d0997320659cc519ecf')
+sha256sums=('e4c2d29d3d99f6aad361f9f66b68a65946fe7ad7cc23e848e87bdaf1d5384fc6')
 _lua53_version=$(pacman -Qi lua53 | grep '^Version' | grep -Eo '[0-9]\.[0-9]\.[0-9]')
 
 prepare() {
