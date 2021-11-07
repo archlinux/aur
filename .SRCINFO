@@ -15,16 +15,8 @@ pkgbase = bluespec-git
 	depends = haskell-syb
 	depends = haskell-regex-compat
 	depends = haskell-split
+	optdepends = tcl: bluesim and bluetcl
 	source = git+https://github.com/b-lang-org/bsc.git
 	sha256sums = SKIP
 
 pkgname = bluespec-git
-	optdepends = tcl: bluesim and bluetcl
-
-pkgname = bluespec-vimfiles-git
-	pkgdesc = Bluespec vim files
-	depends = 
-
-pkgname = bluespec-docs-git
-	pkgdesc = Bluespec docs
-	depends = 
