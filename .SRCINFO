@@ -1,12 +1,13 @@
 pkgbase = firefox-tridactyl-native
 	pkgdesc = Tridactyl native messaging host application for Firefox (native: 0.3.4)
 	pkgver = 1.21.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/tridactyl/tridactyl
 	arch = x86_64
 	license = Apache
 	makedepends = nim
 	makedepends = nimble
+	makedepends = git
 	source = firefox-tridactyl-native-1.21.1.tar.gz::https://github.com/tridactyl/native_messenger/archive/refs/tags/0.3.4.tar.gz
 	b2sums = 92caafbf4abfc73ea3b6423905ea56425c71cd2d2ecc29cf59b7405fe4a44ea43dddf31d97e6ed7ff95700341fec24a5ff516c167b7df8905d0dae162a55efc9
 
