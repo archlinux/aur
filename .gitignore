@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!PyCXX.pc
+!python-pycxx-7-change-include-paths.patch
