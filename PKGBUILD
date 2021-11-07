@@ -1,7 +1,7 @@
-# Maintainer: Magnus Groß magnus dot gross 21 at gmail dot com
+# Maintainer: Magnus Groß, for email contact please see the relevant AUR commits email
 _pkgname=quickcurver
 pkgname="$_pkgname"-git
-pkgver=r360.e3185b1
+pkgver=0.1.r2.g7e294b8
 pkgrel=1
 pkgdesc="Qt Material design implementation of Achtung die Kurve with online multiplayer"
 arch=('i686' 'x86_64')
@@ -15,28 +15,28 @@ md5sums=('SKIP'
 		'SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	cd "$_pkgname"
+	( set -o pipefail
+		git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
-  cd "$_pkgname"
-  git submodule init
-  git config submodule.fluid.url $srcdir/fluid
-  git submodule update
+	cd "$_pkgname"
+	git submodule init
+	git config submodule.fluid.url $srcdir/fluid
+	git submodule update
 }
 
 build() {
-  cd "$_pkgname"
-  mkdir build
-  cd build
-  qmake .. -config release
-  make
+	cd "$_pkgname"
+	mkdir build
+	cd build
+	qmake .. -config release
+	make
 }
 
 package() {
-  install -D "$srcdir/$_pkgname/build/src/QuickCurver" "$pkgdir/usr/bin/$_pkgname"
+	install -D "$srcdir/$_pkgname/build/src/QuickCurver" "$pkgdir/usr/bin/$_pkgname"
 }
