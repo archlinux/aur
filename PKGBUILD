@@ -2,12 +2,15 @@
 
 pkgname=nvidia-fake-powerd
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="dbus blackhole for nvidia.powerd.server for working around a bug in nvidia-495 drivers."
 arch=('any')
 url='https://forums.developer.nvidia.com/t/bug-nvidia-v495-29-05-driver-spamming-dbus-enabled-applications-with-invalid-messages/192892/9'
 license=('GPL')
-depends=('dbus')
+depends=(
+  'dbus'
+  'systemd'
+)
 install=nvidia-fake-powerd.install
 changelog=ChangeLog
 source=(
