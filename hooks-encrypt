@@ -187,10 +187,12 @@ _archiso_device() {
 
     if [ ! -f "${archisodevice}" ]; 
       then
-        for device in "/dev/disk/by-id";
+        for device in /dev/disk/by-id/*;
           do
+
             dev_label=$(blkid -s LABEL -o value "${device}")
             dev_type=$(blkid -s TYPE -o value "${device}")
+
             if [ "${dev_label}" = "${archisolabel}" ] && [ "${dev_type}" = "iso9660" ];
               then
                   archisodevice="${device}"

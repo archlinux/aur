@@ -6,7 +6,6 @@ _pkgname=cryptsetup
 pkgname=$_pkgname-archiso
 pkgver=2.4.1
 pkgrel=1
-epoch=1
 pkgdesc='Userspace setup tool for transparent encryption of block devices using dm-crypt'
 arch=(x86_64)
 license=('GPL')
