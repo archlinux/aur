@@ -7,7 +7,7 @@ pkgdesc="OOP extension for Tk, version 3.4"
 arch=('x86_64')
 url="http://incrtcl.sourceforge.net/"
 license=('custom')
-depends=('itcl3')
+depends=('itcl3' 'tk')
 source=("https://downloads.sourceforge.net/project/incrtcl/%5BIncr%20Tcl_Tk%5D-source/Itk%20$pkgver/itk$pkgver.tar.gz")
 sha256sums=('8e5746de402d4ac9920f35793a1d328cf084b0c3d6af8b057e00fd37c82ad2ec')
 

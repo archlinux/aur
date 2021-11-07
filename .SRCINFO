@@ -6,6 +6,7 @@ pkgbase = tk-itk3
 	arch = x86_64
 	license = custom
 	depends = itcl3
+	depends = tk
 	source = https://downloads.sourceforge.net/project/incrtcl/%5BIncr%20Tcl_Tk%5D-source/Itk%203.4.2/itk3.4.2.tar.gz
 	sha256sums = 8e5746de402d4ac9920f35793a1d328cf084b0c3d6af8b057e00fd37c82ad2ec
 
