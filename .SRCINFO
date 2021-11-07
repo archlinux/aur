@@ -1,14 +1,13 @@
 pkgbase = alexjs
 	pkgdesc = Catch insensitive, inconsiderate writing
-	pkgver = 9.1.0
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://alexjs.com
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/alex/-/alex-9.1.0.tgz
-	sha256sums = 99748d3262823a59b1e157c45f8d427c69a09d671c1f8606178b42a8baf5e8af
+	source = https://registry.npmjs.org/alex/-/alex-10.0.0.tgz
+	sha256sums = f17c41ddccb447904b4dba5ea4d491b87e28db214a587562a3b63ad9d3e965c5
 
 pkgname = alexjs
-
