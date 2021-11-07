@@ -6,17 +6,17 @@ _commit="a29e9a3"
 _chromiumver="87.0.4280.141"
 _cefver="${_version}+g${_commit}+chromium-${_chromiumver}"
 pkgver=`echo "$_cefver" | tr - _`
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
 arch=("i686" "x86_64" "aarch64")
 url="https://bitbucket.org/chromiumembedded/cef"
 license=("BSD")
 depends=("nss" "alsa-lib" "pango" "libxrandr" "libxcomposite"
          "at-spi2-atk" "libxkbcommon" "libcups" "mesa")
-makedepends=("cmake" "make")
+makedepends=("cmake")
 provides=("cef-minimal-obs=$_version")
 conflicts=("cef-minimal-obs")
-# Prevent people using link time optimisation for this package because it make OBS unable to be built against it
+# Prevent people from using link time optimisation for this package because it make OBS unable to be built against it
 options=('!lto')
 source_x86_64=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linux64_minimal.tar.bz2")
 source_i686=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linux32_minimal.tar.bz2")
@@ -53,9 +53,7 @@ build() {
 package() {
     mkdir -p "$pkgdir"/opt/cef-obs/
     cp -R "$srcdir"/cef_binary_${_cefver}_linux${_arch}_minimal/* "$pkgdir"/opt/cef-obs
-    rm -rf "$pkgdir"/opt/cef-obs/CMakeFiles/3.20.3/CompilerIdC/tmp
-    rm -rf "$pkgdir"/opt/cef-obs/CMakeFiles/3.20.3/CompilerIdCXX/tmp
-    rm -rf "$pkgdir"/opt/cef-obs/CMakeFiles/CMakeTmp
+    rm -rf "$pkgdir"/opt/cef-obs/CMakeFiles
+    rm -rf "$pkgdir"/opt/cef-obs/libcef_dll_wrapper/CMakeFiles
     install -Dm644 "$srcdir"/cef_binary_${_cefver}_linux${_arch}_minimal/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
-
