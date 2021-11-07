@@ -4,7 +4,7 @@
 
 _pkgname=pyexcel
 pkgname=python-$_pkgname
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Single API for reading, manipulating and writing data in excel files"
 arch=(any)
@@ -13,7 +13,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python-texttable' 'python-pyexcel-io')
 source=($pkgname-$pkgver.tar.gz::"$url/archive/v$pkgver.tar.gz")
-sha256sums=('062dea18d3e631686a09772ce96ccefd5f79e883bdf6304697a40b4dc5b1df8f')
+sha256sums=('844ca1744ce221423d803188f0fc5d7097a21dcb0a776d3350cee9ebfd5979d9')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
