@@ -1,0 +1,14 @@
+pkgbase = bluespec-bdw-git
+	pkgdesc = Bluespec Workstation (BDW)
+	pkgver = r11.5b61fa8
+	pkgrel = 1
+	url = https://github.com/B-Lang-org/bdw
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = bluespec-git
+	depends = tk-itk3
+	source = git+https://github.com/b-lang-org/bdw.git
+	sha256sums = SKIP
+
+pkgname = bluespec-bdw-git
