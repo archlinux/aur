@@ -1,0 +1,13 @@
+pkgbase = loongarch64-linux-gnu-linux-api-headers
+	pkgdesc = Kernel headers sanitized for use in userspace (loongarch64-linux-gnu)
+	pkgver = 5.15.0.r1044054.g4d7f11bd5339
+	pkgrel = 1
+	url = https://www.kernel.org
+	arch = any
+	groups = loongarch
+	license = GPL2
+	makedepends = rsync
+	source = git+https://github.com/loongson/linux.git#branch=loongarch-next
+	md5sums = SKIP
+
+pkgname = loongarch64-linux-gnu-linux-api-headers
