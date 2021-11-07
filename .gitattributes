@@ -1,2 +1,2 @@
-.SRCINFO binary
+.SRCINFO -whitespace
 0001-Build-with-GHC-8.10.4-and-9.0.1.patch binary
