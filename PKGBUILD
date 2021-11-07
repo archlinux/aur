@@ -1,8 +1,8 @@
 # Maintainer: Benjamin Landis <bmlandis2010@gmail.com>
 
 pkgname=mpv-vapoursynth
-_tag='4c9d3669a0f672e6754ac456acd324db570964d3' # git rev-parse v${pkgver}
-pkgver=0.33.1
+_tag='79b4060a573e83ae42d51d995bca1ccf80690997' # git rev-parse v${pkgver}
+pkgver=0.34.0
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with Vapoursynth libs)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ url='https://mpv.io/'
 depends=('alsa-lib' 'libasound.so' 'desktop-file-utils' 'ffmpeg' 'libavcodec.so' 'libavdevice.so'
          'libavfilter.so' 'libavformat.so' 'libavutil.so' 'libswresample.so' 'libswscale.so'
          'glibc' 'hicolor-icon-theme' 'jack' 'libjack.so' 'lcms2' 'liblcms2.so' 'libarchive'
-         'libarchive.so' 'libass' 'libass.so' 'libbluray' 'libbluray.so' 'libcaca' 'libcdio'
+         'libarchive.so' 'libass' 'libass.so' 'libbluray' 'libbluray.so' 'libcdio'
          'libcdio-paranoia' 'libdrm' 'libdvdnav' 'libdvdread' 'libegl' 'libgl' 'libglvnd'
          'libjpeg' 'libjpeg.so' 'libplacebo' 'libplacebo.so' 'libpulse' 'libpulse.so'
          'libva' 'libva.so' 'libva-drm.so' 'libva-wayland.so' 'libva-x11.so' 'libvdpau' 'libx11'
@@ -29,13 +29,6 @@ validpgpkeys=('145077D82501AA20152CACCE8D769208D5E31419') # sfan5 <sfan5@live.de
 source=("git+https://github.com/mpv-player/mpv.git#tag=${_tag}?signed")
 sha256sums=('SKIP')
 
-prepare() {
-  cd mpv
-
-  # vo_gpu: placebo: update for upstream API changes
-  git cherry-pick -n 7c4465cefb27d4e0d07535d368febdf77b579566
-}
-
 build() {
   cd mpv
 
@@ -47,6 +40,7 @@ build() {
     --enable-libarchive \
     --enable-libmpv-shared \
     --disable-build-date \
+    --disable-caca \
     --enable-vapoursynth
 
   waf build

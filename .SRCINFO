@@ -1,6 +1,6 @@
 pkgbase = mpv-vapoursynth
 	pkgdesc = A free, open source, and cross-platform media player (with Vapoursynth libs)
-	pkgver = 0.33.1
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://mpv.io/
 	arch = i686
@@ -39,7 +39,6 @@ pkgbase = mpv-vapoursynth
 	depends = libass.so
 	depends = libbluray
 	depends = libbluray.so
-	depends = libcaca
 	depends = libcdio
 	depends = libcdio-paranoia
 	depends = libdrm
@@ -85,9 +84,8 @@ pkgbase = mpv-vapoursynth
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
-	source = git+https://github.com/mpv-player/mpv.git#tag=4c9d3669a0f672e6754ac456acd324db570964d3?signed
+	source = git+https://github.com/mpv-player/mpv.git#tag=79b4060a573e83ae42d51d995bca1ccf80690997?signed
 	validpgpkeys = 145077D82501AA20152CACCE8D769208D5E31419
 	sha256sums = SKIP
 
 pkgname = mpv-vapoursynth
-
