@@ -1,0 +1,14 @@
+pkgbase = python-roundrobin
+	pkgdesc = This is rather small collection of round robin utilites
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/linnik/roundrobin
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	provides = python-roundrobin
+	conflicts = python-roundrobin
+	source = https://files.pythonhosted.org/packages/source/r/roundrobin/roundrobin-0.0.2.tar.gz
+	sha256sums = ac30cb78570a36bb0ce0db7b907af9394ec7a5610ece2ede072280e8dd867caa
+
+pkgname = python-roundrobin
