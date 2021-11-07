@@ -1,21 +1,5 @@
 pkgbase = rpmlauncher-git
 	pkgdesc = A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart
-	pkgver = 1.0.0.654.r0.g8a9376f
-	pkgrel = 1
-	arch = x86_64
-	license = GPL
-	makedepends = ninja
-	makedepends = cmake
-	makedepends = clang
-	makedepends = dart
-	makedepends = flutter-git
-	depends = git
-	source = RPMLauncher::git+https://github.com/RPMTW/RPMLauncher
-	md5sums = SKIP
-
-pkgname = rpmlauncher-git
-pkgbase = rpmlauncher-git
-	pkgdesc = A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart
 	pkgver = 1.0.0+724.r0.gd129b76
 	pkgrel = 1
 	arch = x86_64
