@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+	<mime-type type="application/x-scratch-project">
+		<sub-class-of type="application/zip"/>
+		<comment>MIT Scratch Project File</comment>
+		<comment xml:lang="zh_CN">Scratch 项目文件</comment>
+		<generic-icon name="scratch-desktop" />
+		<glob pattern="*.sb3"/>
+		<glob pattern="*.sb2"/>
+		<glob pattern="*.sb3"/>
+	</mime-type>
+	<mime-type type="application/x-scratch-sprite">
+		<sub-class-of type="application/zip"/>
+		<comment>MIT Scratch Sprite File</comment>
+		<comment xml:lang="zh_CN">Scratch 角色文件</comment>
+		<generic-icon name="scratch-sprite" />
+		<glob pattern="*.sprite"/>
+		<glob pattern="*.sprite2"/>
+		<glob pattern="*.sprite3"/>
+	</mime-type>
+</mime-info>
