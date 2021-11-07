@@ -2,9 +2,9 @@
 # Co-Maintainer: Davide Girardi <davidegirardi googlesmtp>
 # Contributor: Davbo <dave@davbo.org>
 pkgname=x3270
-pkgver=4.0ga14
+pkgver=4.1ga10
 pkgrel=1
-pkgpath=04.00
+pkgpath=04.01
 pkgdesc="An IBM 3270 terminal emulator for the X Window System"
 arch=('i686' 'x86_64')
 url="http://x3270.bgp.nu/"
@@ -16,7 +16,7 @@ install=x3270.install
 source=(http://x3270.bgp.nu/download/$pkgpath/suite3270-$pkgver-src.tgz
 	x3270.desktop)
 
-sha256sums=('9796f2b47ed222776d4fe2756a0db3617f84dbbf02d0a9374c36a13b1b416375'
+sha256sums=('8216572d0a14d4d18e65db97f6e2dd1aeb66eed02b4d544c79ed8d34ea54be71'
             'bb3f1a301ca4f6d6d4f4cafe451945a55a9af7995d712a0f314fc58dfb16da6f')
 
 build() {
@@ -35,9 +35,6 @@ build() {
 
    mkdir $pkgdir/usr/share/applications
    mkdir $pkgdir/usr/share/pixmaps
-   mkdir $pkgdir/usr/share/licenses
-   mkdir $pkgdir/usr/share/licenses/x3270
    install -m644 $srcdir/x3270.desktop $pkgdir/usr/share/applications/
    install -m644 $srcdir/suite3270-${pkgver:0:3}/x3270/x3270-icon2.xpm $pkgdir/usr/share/pixmaps/
-   install -m644 $srcdir/suite3270-${pkgver:0:3}/x3270/LICENSE $pkgdir/usr/share/licenses/x3270/
 }
