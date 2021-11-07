@@ -64,7 +64,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.14.16
+pkgver=5.15.1
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -76,8 +76,8 @@ options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # thankfully xanmod keeps the hrtimer patches up to date
-_commit=e2d48df5def86f498766b22e836a9c2f1bcb3809
-_xan=linux-5.14.y-xanmod
+_commit=8ba6612318090567422d49ccc79bc7bbe5484cfc
+_xan=linux-5.15.y-xanmod
 
 _gcc_more_v=20210914
 source=(
@@ -86,27 +86,17 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch
-  0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch
-  0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch
-  0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch
-  0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('e4935cb8e5cf04c100047ac85460c86bbcfd4202269d508c0c120bfc6169577e808e12f1a901b6b583b853df104abf76bb3501592c5b284a46aa0bd6ec24005c'
+b2sums=('4285adfbd99fb853f70db73aed2ba68e146645495d8afc060c5ddae21aa67b3a92c09e76c69809693d4b3b7bfe9dc64efa4c7c43044d19fbd66898459a3f8958'
         'SKIP'
-        'b1a9e77f94c03553d10714e6059f47603c9957f4be64082dd0b773d325498b85c26480407ae62bdef462d9002ab7da3c1fad426b4908d7de79b69fd6e4a7ff31'
+        '1277f65a86b4086639739335bfc07e0805e8287486ce7d5d8cb8de92039891480010592dd8c88258c7e343cf423fac753a304b79ac7e339be3d05906b6bf9354'
         'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
-        'bd20774ee2c9856601af2c89a3af95c6abc812b71253368090e9c252edcce452f416bfeed54ced0886d401b5a9e1cb72c16ea5f04a72d8ded596c0d083f80e42'
-        '99706dd57b5620066bdfcb46ccd07de489dea59d5eeda10932f11abe7a43a6a354e7759638d75bc14e115a252eea6ab0a68163c23e45989d6bae820c4d772691'
-        '45f51985ca1450fcd8669db715ae7ee105f6f8331acf56d747d1dd93b420a6e6fb8159e4d5e3575ab1a55ace6df42185b97f9bb1476e7ab43b9aadd3e924b715'
-        'c5fd318fc4d2aef30f9ebf4b724e2aa26966384db8762eaff82137dc6161d0148798e8181207d0f8ba52f94ca1853bc7817efdf3cbbf996c5cc1a3da1868cef7'
-        'a9f502ad881fb115a90ee3133feab8f5ab0927a415df4f5140e4d61f45a69bb53e0c7af20b35078f75fd3898c3cd1056f4a0c0ff372b5e10e1d52c9d5afd3473'
-        '1877429274d65accf2e8684078d052a9b44b0ef9f7b5fae13a679877f6a3b8b4749fcfd4223648907cf53e0e89cf229abefaf1e40494d6a8866a7258ad6c5800'
-        'f0337c83077501734e40663a3bb2e0da31ba1921960e40c3c6040a9265a63707f7fd524fc9e3eb3e1b23f6c5f9cd883348b6fdf7bc085b3e30565a8669006f19')
+        'cf589ec357a96b9e573bce298bb1d64fa50339ea047767f2a730a8dc9808e2316b3e7c885d730233ba50d570725d4c72632d1b74a371ef02ac471d4c944fe63e'
+        'c9d2fb487b12040f17a9a8eaefca776c2a2a1c37fb0fb6337630ff896f82f25c0303e1f26f0fa98e4f3e6eb143947d84a48a286678aa2977163711e291a90115')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -172,7 +162,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8-5.14.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.15+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
