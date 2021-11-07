@@ -1,0 +1,25 @@
+pkgbase = loongarch64-linux-gnu-glibc
+	pkgdesc = GNU C Library LoongArch target
+	pkgver = 2.34.r37772.g781922b2c5
+	pkgrel = 1
+	url = https://www.gnu.org/software/libc/
+	arch = x86_64
+	groups = loongarch
+	license = GPL
+	license = LGPL
+	makedepends = python
+	depends = loongarch64-linux-gnu-gcc
+	depends = loongarch64-linux-gnu-linux-api-headers
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/loongson/glibc.git#branch=loongarch_2_34_dev
+	source = sdt.h
+	source = sdt-config.h
+	source = ldd
+	sha1sums = SKIP
+	sha1sums = 16c61366b98681cd6a3f13c00849824bba3510f4
+	sha1sums = 56aaf6d347868055b752c7d8d6560545fa480389
+	sha1sums = ac0c9382c59de66a56bacb7b6dcf75be2dcbaca6
+
+pkgname = loongarch64-linux-gnu-glibc
