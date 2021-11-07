@@ -1,7 +1,7 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: patri9ck <patri9ck@gmail.com>
 pkgname=a2ln
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Android 2 Linux Notifications Server"
 arch=('any')
 url="https://github.com/patri9ck/a2ln-server"
