@@ -1,6 +1,6 @@
 pkgbase = perl-file-moreutil
 	pkgdesc = File-related utilities
-	pkgver = 0.624
+	pkgver = 0.625
 	pkgrel = 1
 	url = https://metacpan.org/release/File-MoreUtil
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = perl-file-moreutil
 	conflicts = perl-sharyanto-file-util
 	replaces = perl-sharyanto-file-util
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/File-MoreUtil-0.624.tar.gz
-	sha512sums = f298244a67683340bdc2b79397cf6bc1199abd406d35aa4eeb8702383455aa9250713b51d196c66d037210e76b3a8ea9c1a7803b76f34ef18134da2757602bf5
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/File-MoreUtil-0.625.tar.gz
+	sha512sums = ffac47df5f84276f8993b17b3d4f5933cdf4775d8dfceba719543ef0894c25987f8efb5a7cefe51ab6acfa7f22466c933d149a5931ccb0dc0b8f3be7d014716c
 
 pkgname = perl-file-moreutil
-

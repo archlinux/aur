@@ -3,7 +3,7 @@
 pkgname=perl-file-moreutil
 _lastauthor=P/PE/PERLANCAR
 _pkgname=File-MoreUtil
-pkgver=0.624
+pkgver=0.625
 pkgrel=1
 pkgdesc='File-related utilities'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl-rinci')
 checkdepends=('perl-file-slurper' 'perl-file-chdir')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('f298244a67683340bdc2b79397cf6bc1199abd406d35aa4eeb8702383455aa9250713b51d196c66d037210e76b3a8ea9c1a7803b76f34ef18134da2757602bf5')
+sha512sums=('ffac47df5f84276f8993b17b3d4f5933cdf4775d8dfceba719543ef0894c25987f8efb5a7cefe51ab6acfa7f22466c933d149a5931ccb0dc0b8f3be7d014716c')
 
 conflicts=("perl-sharyanto-file-util")
 provides=("perl-sharyanto-file-util")
