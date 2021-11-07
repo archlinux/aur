@@ -1,0 +1,13 @@
+pkgbase = loongarch64-linux-gnu-binutils
+	pkgdesc = Assemble and manipulate binary and object files for 64-bit LoongArch
+	pkgver = 2.37.r107028.g6672b06b122
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils/
+	arch = x86_64
+	groups = loongarch
+	license = GPL
+	makedepends = setconf
+	source = git+https://github.com/loongson/binutils-gdb.git#branch=loongarch-2_37
+	sha256sums = SKIP
+
+pkgname = loongarch64-linux-gnu-binutils
