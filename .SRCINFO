@@ -49,5 +49,3 @@ pkgname = linux-multimedia-lts
 pkgname = linux-multimedia-lts-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Multimedia Optimized (LTS) kernel
 	depends = pahole
-
-pkgname = linux-multimedia-lts-bootloader
