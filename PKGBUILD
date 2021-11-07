@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
 license=('BSD')
 depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split')
-makedepends=('git' 'gperf' 'ghc' 'tcl' 'texlive-latexextra')
+makedepends=('git' 'gperf' 'ghc' 'tcl' 'texlive-most')
 # workaround for pkgrel overwritten on regen (by TkG)
 # rebuild whenever some haskell depend is rebuilt
 eval pkgrel=$(pacman -Si ${depends[@]} | awk '/Version/{sum+=substr($0,match($0,/[^-]+$/))}END{print sum}')
