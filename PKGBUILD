@@ -22,10 +22,9 @@ build() {
 
 check() {
   cd $_name-$pkgver
-  mkdir -p temp
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  python -m install --optimize=1 --destdir=temp dist/*.whl
-  PYTHONPATH="$PWD/temp/$site_packages" pytest tests
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m install --optimize=1 dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
