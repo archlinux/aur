@@ -1,0 +1,23 @@
+pkgbase = qemu-loongarch64
+	pkgdesc = A generic and open source machine emulator and virtualizer
+	pkgver = 6.1.0.r91240.g59a245bd54
+	pkgrel = 1
+	url = https://wiki.qemu.org/
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	makedepends = glib2-static
+	makedepends = libffi-static
+	makedepends = libiscsi
+	makedepends = meson
+	makedepends = pcre-static
+	makedepends = python
+	makedepends = usbredir
+	makedepends = xfsprogs
+	source = git+https://github.com/loongson/qemu.git#branch=tcg-dev
+	source = qemu-loongarch64.conf
+	sha1sums = SKIP
+	sha1sums = 8834bc060ead1779ca82f3569789be49c03d2c0a
+
+pkgname = qemu-loongarch64
