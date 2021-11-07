@@ -1,10 +1,10 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: heinrich5991 <heinrich5991@gmail.com>
 pkgname=srs-state-threads
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Fork of state-threads, patched for SRS"
-_pkgcommit=1d48ef5317f306adb232b440bab11327f9ae3883
+_pkgcommit=bb94c45ac58bfe54d6544071da936be4d4e04dd1
 arch=('x86_64')
 url="https://github.com/ossrs/state-threads/"
 license=('GPL2' 'MPL')

@@ -1,13 +1,13 @@
 pkgbase = srs-state-threads
 	pkgdesc = Fork of state-threads, patched for SRS
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://github.com/ossrs/state-threads/
 	arch = x86_64
 	license = GPL2
 	license = MPL
 	makedepends = git
-	source = git+https://github.com/ossrs/state-threads/#commit=1d48ef5317f306adb232b440bab11327f9ae3883
+	source = git+https://github.com/ossrs/state-threads/#commit=bb94c45ac58bfe54d6544071da936be4d4e04dd1
 	sha256sums = SKIP
 
 pkgname = srs-state-threads
