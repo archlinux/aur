@@ -1,0 +1,19 @@
+pkgbase = joplin-desktop-bin
+	pkgdesc = An open source note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS
+	pkgver = 2.5.10
+	pkgrel = 1
+	url = https://joplinapp.org
+	install = joplin-desktop-bin.install
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = hicolor-icon-theme
+	provides = joplin-desktop
+	conflicts = joplin-desktop
+	options = !strip
+	source = joplin-desktop.sh
+	sha256sums = 6b6c0c40685ded41316351d7ced34c33107d0401ee29729be1dadb3ba5e859da
+	source_x86_64 = Joplin-2.5.10.AppImage::https://github.com/laurent22/joplin/releases/download/v2.5.10/Joplin-2.5.10.AppImage
+	sha512sums_x86_64 = d3af30f43668cf951a6898d127ebc7c04a434774581d6ad6b831a421e5ab88356c57a83d1315ac1deb63d853e7b90dc14cbf3f842a1ebfc1f157ce0f1eabd967
+
+pkgname = joplin-desktop-bin
