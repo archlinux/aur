@@ -2,7 +2,7 @@
 
 _pkgname=findatapy
 pkgname=python-$_pkgname
-pkgver=0.1.23
+pkgver=0.1.26
 pkgrel=1
 pkgdesc="Python library to download market data via Bloomberg, Quandl, Yahoo etc."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-pandas' 'python-keyring' 'python-twython'
 optdepends=('python-blpapi: Bloomberg Python Open API')
 makedepends=('python-setuptools')
 source=($pkgname-$pkgver.tar.gz::"$url/archive/v$pkgver.tar.gz")
-sha256sums=('89762876573317191d3a60facee192a0cb18b28c17f4cb13bd19163cc672af54')
+sha256sums=('caa8afbd1cd71f5c1b7ec8ea1c6b7c5ab685d8e314e989013baa40c1250f4c8b')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
