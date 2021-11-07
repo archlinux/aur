@@ -1,6 +1,6 @@
 pkgbase = shellcheck-bin
 	pkgdesc = Shell script analysis tool (binary release)
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://shellcheck.net
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = shellcheck-bin
 	license = AGPL3
 	provides = shellcheck
 	conflicts = shellcheck
-	source_x86_64 = https://github.com/koalaman/shellcheck/releases/download/v0.7.2/shellcheck-v0.7.2.linux.x86_64.tar.xz
-	sha512sums_x86_64 = 067e2b8ee1910218de1e62068f7cc86ed7048e97b2a9d7c475ea29ae81c17a944376ce5c240d5c783ef3251d9bee7d7d010351958314eadd0fc88b5decfd8328
-	source_armv6h = https://github.com/koalaman/shellcheck/releases/download/v0.7.2/shellcheck-v0.7.2.linux.armv6hf.tar.xz
-	sha512sums_armv6h = e4978167122178ed5d3475d7632bfc55331f412915f832c96118a436dd656ecdc47ec99c724643de3c091a5132c43b851e52f6d987aa4d39ef29e797b538e274
-	source_aarch64 = https://github.com/koalaman/shellcheck/releases/download/v0.7.2/shellcheck-v0.7.2.linux.aarch64.tar.xz
-	sha512sums_aarch64 = 467cc6455d665638e7803a36f1be65ccfb9dc92c5573b143110e8e259e50fb2213b8346fdef43bbd3e6077ec4d78fd6c30e678c96f472e6f056448b43834f7dc
+	source_x86_64 = https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz
+	sha512sums_x86_64 = 89317d97adb341e627b709e86477734ce236e9fb290de8a8c41cdc62769a3225622fa609deffebeabe9edb71f5639a086f61b677947e3ec4bc07c540fcbd0973
+	source_armv6h = https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.armv6hf.tar.xz
+	sha512sums_armv6h = a00a00a58d00d0879fbd9f601902eb96105da0b9ac5220a4176dce73d22c1ba8108435fb6f8c0ae0b450e32a207f49ecaf84d7830feb512359f27e8eae2ec190
+	source_aarch64 = https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.aarch64.tar.xz
+	sha512sums_aarch64 = 7082a5002a1ea2403cd6c24665149a0444960a66dc2002f2e38726a6ed4f7f0499a051679cef8de619e401e8754b13a65624fdb108d7225cb486219184c44c12
 
 pkgname = shellcheck-bin
