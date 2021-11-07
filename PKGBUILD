@@ -1,7 +1,7 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=downloader-cli
 pkgver=0.3.2
-pkgrel=0
+pkgrel=1
 pkgdesc="A simple downloader with an awesome progressbar"
 arch=("any")
 url="https://github.com/deepjyoti30/downloader-cli"
@@ -19,18 +19,18 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://files.pythonhosted.org/packages/70/a3/4af8a9eb724212f5b61ea129a194b5023fd6426b72da489cf0b8e3c5b159/downloader_cli-0.3.2.tar.gz")
+source=("https://files.pythonhosted.org/packages/2d/84/32d0b1623b907e35e5b401d8e179e1aa0ca0684cb415d12a460d5c024103/downloader_cli-0.3.2.post1.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
 build() {
-	cd "downloader_cli-${pkgver}"
+	cd "downloader_cli-${pkgver}.post${pkgrel}"
 	python setup.py build
 }
 
 package() {
-	cd "downloader_cli-${pkgver}"
+	cd "downloader_cli-${pkgver}.post${pkgrel}"
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

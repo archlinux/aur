@@ -1,7 +1,7 @@
 pkgbase = downloader-cli
 	pkgdesc = A simple downloader with an awesome progressbar
 	pkgver = 0.3.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/deepjyoti30/downloader-cli
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = downloader-cli
 	makedepends = python-setuptools
 	depends = python>=3.6
 	depends = python-urllib3
-	source = https://files.pythonhosted.org/packages/70/a3/4af8a9eb724212f5b61ea129a194b5023fd6426b72da489cf0b8e3c5b159/downloader_cli-0.3.2.tar.gz
+	source = https://files.pythonhosted.org/packages/2d/84/32d0b1623b907e35e5b401d8e179e1aa0ca0684cb415d12a460d5c024103/downloader_cli-0.3.2.post1.tar.gz
 	md5sums = SKIP
 
 pkgname = downloader-cli
