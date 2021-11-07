@@ -1,0 +1,19 @@
+pkgbase = libffi-static
+	pkgdesc = Portable foreign function interface library
+	pkgver = 3.4.2
+	pkgrel = 4
+	url = https://sourceware.org/libffi/
+	arch = x86_64
+	license = MIT
+	checkdepends = dejagnu
+	depends = glibc
+	options = !docs
+	options = !libtool
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = https://github.com/libffi/libffi/releases/download/v3.4.2/libffi-3.4.2.tar.gz
+	sha256sums = 540fb721619a6aba3bdeef7d940d8e9e0e6d2c193595bc243241b77ff9e93620
+	b2sums = a8137bc895b819f949fd7705e405be627219c6d1fdef280253330f7407d4a548bb057d7bb0e9225d1767d42f9bf5f0ab3c455db1c3470d7cc876bb7b7d55d308
+
+pkgname = libffi-static
