@@ -1,6 +1,6 @@
 pkgbase = lcarsde-app-menu
 	pkgdesc = lcarsde menu for showing, selecting and closing windows
-	pkgver = 20.1
+	pkgver = 21.1
 	pkgrel = 1
 	url = https://lcarsde.github.io
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = lcarsde-app-menu
 	depends = python-gobject
 	depends = gtk3
 	depends = python-posix_ipc
-	source = lcarsde-app-menu-git-20.1.tar.gz::https://github.com/lcarsde/menu/archive/20.1.tar.gz
-	md5sums = 8126d4b6962fd1d587e1d9e77fc2a30d
+	source = lcarsde-app-menu-21.1.tar.gz::https://github.com/lcarsde/menu/archive/21.1.tar.gz
+	md5sums = e63a60f173bd867b23dc4b94e2462dfc
 
 pkgname = lcarsde-app-menu
-
