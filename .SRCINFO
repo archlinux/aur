@@ -1,6 +1,6 @@
 pkgbase = xbacklight-auto
 	pkgdesc = Automatic brightness utility using the V4L2 camera api and xbacklight
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 0
 	arch = i686
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = xbacklight-auto
 	md5sums = SKIP
 
 pkgname = xbacklight-auto-git
-
