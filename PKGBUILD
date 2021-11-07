@@ -1,6 +1,6 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=ytmdl
-pkgver=2021.8.1
+pkgver=2021.11.7
 pkgrel=0
 pkgdesc="Download songs from YouTube with metadata from sources like Itunes, Gaana, Deezer etc."
 arch=("any")
@@ -40,7 +40,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://files.pythonhosted.org/packages/a3/3b/ea83f90df9af447e8453576f88ddab38c65f635daa0310a8adeabec27990/ytmdl-2021.8.1.tar.gz")
+source=("https://files.pythonhosted.org/packages/97/52/0250c51c93fcc1851b55420b0600502b9b1132ada9b1e2b9b689a633e60c/ytmdl-2021.11.7.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
