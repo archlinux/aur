@@ -1,0 +1,12 @@
+diff --unified --recursive --text package.orig/rand/makefile package.new/rand/makefile
+--- package.orig/rand/makefile	2021-11-07 12:40:56.179814028 +0300
++++ package.new/rand/makefile	2021-11-07 12:42:26.253458631 +0300
+@@ -24,7 +24,7 @@
+ package=rand
+ #`cat src/rand.c | grep -i "^#define" | grep VERSION | cut -d '"' -f 2`
+ version=1.0.4
+-CFLAGS=-Wall -O2
++CFLAGS=-Wall -O2 -Wl,-z,relro,-z,now
+ prefix=/usr/bin
+ mandir=/usr/share/man
+ 

@@ -1,0 +1,14 @@
+pkgbase = rand
+	pkgdesc = A simple program to write random numbers/characters to standard output
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://sourceforge.net/projects/rand/
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = rand-1.0.4.tar.gz::http://downloads.sourceforge.net/rand/rand-1.0.4.tar.gz
+	source = relro.patch
+	sha512sums = b98dc8f95089b5e80757018e7c3849c217702ffbe02aae4cda9af725bdb2a565149314ef696a16e131367c1ca5cdff7c8cdc92e1b3fb27375cae3da5d582fd42
+	sha512sums = SKIP
+
+pkgname = rand
