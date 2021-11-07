@@ -1,6 +1,6 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname=swayfloatingswitcher-git
-pkgver=0.1
+pkgver=0.1.r6.1e792be
 pkgrel=1
 pkgdesc="A simple Alt+Tab switcher for floating windows"
 _pkgfoldername=SwayFloatingSwitcher
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgfoldername
-  printf "0.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
