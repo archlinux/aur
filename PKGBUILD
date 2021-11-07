@@ -3,7 +3,7 @@
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
 
 pkgname=qtads
-pkgver=3.0.0
+pkgver=3.2.0
 pkgrel=1
 url="https://realnc.github.io/qtads/"
 license=('GPL')
@@ -13,7 +13,7 @@ depends=('qt5-base' 'fluidsynth' 'mpg123' 'libvorbis' 'hicolor-icon-theme' 'libs
 source=(
 	"https://github.com/realnc/qtads/releases/download/v${pkgver}/qtads-${pkgver}-source.tar.xz"
 )
-sha512sums=('e7b72350876475e0b5b9b8c8c953aa380f5f25dade25785d15c5004a6866bb614c3ca2a3b34f84989013e350f9e73d339ce8ddd7d36766d80a981cfbfda7d1c6')
+sha512sums=('db52ed092d676029cc1ff1d02ddf9e5a91e0bcd77fbfd8e43c923deea4413c452895b70835c519e234f8af0bddf61bad7ad3ec5209876335eacaabe63ed6390a')
 
 
 build() {
