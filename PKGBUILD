@@ -2,7 +2,7 @@
 
 pkgname=spfft
 _pkgname=SpFFT
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Sparse 3D FFT library with MPI, OpenMP, CUDA and ROCm support"
 arch=("x86_64")
@@ -14,13 +14,13 @@ optdepends=('cuda: GPU support')
 provides=('spfft')
 conflicts=('spfft-cuda-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7f04c0cff7dad825ec666c3a42b27583e65b6bcb8592245ecf06f96cc5a4938e')
+sha256sums=('43173ff813d616b36b47c4ed767e54eec74bc72c407fb89e18e4a44ffb151d89')
 
 prepare() {
   mkdir "$srcdir/build"
   
   # Checking if nvcc is in PATH
-  if [ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc ]
+  if command -v nvcc &> /dev/null
   then
       export _ACC=CUDA
       export LDFLAGS="$LDFLAGS -L/opt/cuda/lib64"
