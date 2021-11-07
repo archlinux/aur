@@ -3,8 +3,8 @@
 pkgname=perl-linux-inotify2
 _lastauthor=M/ML/MLEHMANN
 _pkgname=Linux-Inotify2
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="scalable directory/file change notification"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -13,7 +13,7 @@ depends=('perl-common-sense')
 makedepends=('perl-extutils-makemaker')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('dd41a20da5689fb2071eea23a383c4e0f8d85b462ba65baa6c4f53a254ed3433')
+sha256sums=('cb99150f9ffa51dbc3be5ee98d8e91c98cdfeae22eb88e718f2cf367bf270d17')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
