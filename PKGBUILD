@@ -2,7 +2,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=devtools-git
-pkgver=20210202
+pkgver=20210202.r23.g7dd29df
 pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
@@ -23,21 +23,22 @@ validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53'
               'B81B051F2D7FC867AAFF35A58DBD63B82072D77A'
               'F3691687D867B81B51CE07D9BBE43771487328A9'
               '6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD'
-              'E240B57E2C4630BA768E2F26FC1B547C8D8172C8')
+              'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'
+              'C7E7849466FE2358343588377258734B41C31549')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname/-git/}
+  cd ${pkgname}
   git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname/-git/}
+  cd ${pkgname}
   make PREFIX=/usr
 }
 
 package() {
-  cd ${pkgname/-git/}
+  cd ${pkgname}
   make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
 

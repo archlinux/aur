@@ -1,6 +1,6 @@
 pkgbase = devtools-git
 	pkgdesc = Tools for Arch Linux package maintainers
-	pkgver = 20210202
+	pkgver = 20210202.r23.g7dd29df
 	pkgrel = 1
 	url = https://git.archlinux.org/devtools.git/
 	arch = any
@@ -31,6 +31,7 @@ pkgbase = devtools-git
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
 	validpgpkeys = 6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD
 	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
 
 pkgname = devtools-git
