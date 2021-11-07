@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-indent-blankline
-pkgver=2.10.1
+pkgver=2.10.3
 pkgrel=1
 pkgdesc="Indent guides for Neovim"
 arch=('any')
