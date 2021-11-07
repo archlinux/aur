@@ -2,12 +2,12 @@
 # Contributor: koraynilay <koray.fra@gmail.com>
 
 pkgname="extrattor-git"
-pkgver=r151.c72452d
+pkgver=r156.556941c
 pkgrel=1
 pkgdesc="A simple bash wrapper to manage one or more archives from the terminal"
 arch=("x86_64")
 url="https://github.com/Mirko-r/extrattor"
-depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip')
+depends=('unarj' 'unace' 'p7zip' 'tar' 'pax' 'gzip' 'unzip' 'xz')
 license=("GPL-3.0")
 conflicts=("extrattor")
 provides=('extrattor')
