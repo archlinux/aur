@@ -23,8 +23,8 @@ source=(
 
 sha256sums=('SKIP'
             '6f4d77dce547ca1b8ba376a6fb1d5d7acf513f61f54d3e834504c6d835a3bd25'
-            'bf58390696dd90c27e036b20bfbe29adce0256f468412960599355490edff9d7'
-            '551cd7c70cb6044f49bcb1a4b92ec7312e48ad08')
+            'd07bdbf14069bbe3306b8b8738484153c00360c54ea2bf10f33d20f30709cffc'
+            'a4765db17d47dcbba05762b5f7652f2c5380923d696eb66cc573f574949a4421')
 
 build()
 {
