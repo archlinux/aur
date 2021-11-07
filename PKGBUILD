@@ -67,7 +67,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.14.15
+pkgver=5.15.1
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -76,8 +76,8 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=f80c19cfb1f7d07469ac73a15f7197c9a6680f42
-_prjc_version=5.14-r3
+_arch_config_commit=ec0fdb89a93a4bd87a9dc0963a7ec0739328dd7d
+_prjc_version=5.15-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20210914
 source=(
@@ -85,28 +85,18 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/9560aafb74c1cd209e8acbf6a45891be37397500.patch"
-  "0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch::https://github.com/archlinux/linux/commit/fe9651f56fd67182f3ca0da1cfdd1953edb3c3f0.patch"
-  "0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch::https://github.com/archlinux/linux/commit/346bbeb52c5c176f5008b57d7b9d7a41cf78f07f.patch"
-  "0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch::https://github.com/archlinux/linux/commit/137755d15c7d9a17b45a370f604a8969fa6511c0.patch"
-  "0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch::https://github.com/archlinux/linux/commit/df918cd13d4325028449d0ca9a4d564e05aa8869.patch"
-  "0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch::https://github.com/archlinux/linux/commit/11a5f44ff585e8501111693a63522bb38af585f7.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/6bdb2fe9154c05d2dfbd28e132db5539700a7cff.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('68d89bba3c35062e4ba93b4304d238541ced462d839ca4f49641f457f542d27fd11ae4ffe9f5474a5701a26b89858b16c7e667823dddd6945180acc2ef44070d'
+b2sums=('4285adfbd99fb853f70db73aed2ba68e146645495d8afc060c5ddae21aa67b3a92c09e76c69809693d4b3b7bfe9dc64efa4c7c43044d19fbd66898459a3f8958'
         'SKIP'
-        'b1a9e77f94c03553d10714e6059f47603c9957f4be64082dd0b773d325498b85c26480407ae62bdef462d9002ab7da3c1fad426b4908d7de79b69fd6e4a7ff31'
-        '27cd56595a131b7c9a45429d775ff3a0eea79f95674711acf0c0688716a0952150f335540457dc7aab05ac92c58e32e576ce3d392c7e0df51c93be28b17522b6'
+        '1277f65a86b4086639739335bfc07e0805e8287486ce7d5d8cb8de92039891480010592dd8c88258c7e343cf423fac753a304b79ac7e339be3d05906b6bf9354'
+        'ba2c15b074fac3cb01eddb1099b6292077aaf7af1de4721b365b8da40895c61388081ee164bbcde938fdcefe17eea292c56a175da0a23591ffc7a6c3680d86ae'
         'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
-        'da098f8b0493b9eef6e35c1a4ae3b737e947ef1f2077ee23475d8c73fd2b092c4abddbf62507659b92a818f21da73a5299cf2859f146808b8af66a60dca32281'
-        '39ec34f7838009c68b653e379b4047911a3718ddc5d345112c6c8cf984eaebfbde4f5ed04503002992dfaece257d4b00bbd7569c66f94154d35296f2c97b3ed6'
-        '27c8d70bd03ae33e8c40a24561b9dcfdfe64f0ff634ff95012df290c22327d4933669b52d3ca3b4174ab59c4098f4b502380b1dc05242a71ecfc396f35c4a44e'
-        '668131ef5e0b2d882101a277b0f433041bbb3a2c2b9a49742a88d3a840e37a38056002b18e426378213739c8ad0f721f755d630a85c62af21a470a49592ad620'
-        'd35ccf31dd7bd6f1e9d60bce3dc9937833dc9bb5380ac68b456cedfd10961130e9fa4be6582081141f940525f0eee1001c9669c869c5560ccc428a799494025b'
-        'c02668065422675a13a9e84554d51a8b96fdcb5f4f4497e006b633b198765a0df75340d53e31ad7430cc4315fb7d33208765c5b3521ba3e3b919019a74320fb4')
+        '289893ac223ce31a1fbd1497d15c1bd4071991d30ddb01098d4b13468f8d36a6b61bd9011f4294b4dab21ca97dcb51bef0738b7d5d5e62857e9b251895bad358')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
