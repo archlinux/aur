@@ -2,7 +2,7 @@
 
 pkgname=tk-itk
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OOP extension for Tk"
 arch=('x86_64')
 url="http://incrtcl.sourceforge.net/"
@@ -17,7 +17,7 @@ build() {
     --prefix=/usr \
     --mandir=/usr/share/man \
     --enable-64bit \
-    --with-itcl=/usr/lib/itcl4.2.0
+    --with-itcl=/usr/lib/itcl4.2.2
   make
 }
 
