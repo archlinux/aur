@@ -3,7 +3,7 @@
 pkgname=perl-rinci
 _author=PERLANCAR
 _pkgname=Rinci
-pkgver=1.1.96
+pkgver=1.1.98
 pkgrel=1
 pkgdesc='Language-neutral metadata for your code entities'
 arch=('any')
@@ -14,7 +14,7 @@ url="https://metacpan.org/release/${_pkgname}"
 
 _lastauthor=${_author:0:1}/${_author:0:2}/${_author}
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('460d097a8963882a25e3ed2c1dc7b6bb37bded4f10b1738eb85dcdea88fdc4632ddff4c8fff143e3349f80d97391abd7b6bffcf7bbba128a0d2435da86c6483a')
+sha512sums=('c19f4be738a28ea4157ec665d5ebdb18e5b83b2fbd6e4eb268629bc596d429c9227975d157171ae65bf10a997ce5506007c3fc8708e4d84ececa92592dd25494')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
