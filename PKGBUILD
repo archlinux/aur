@@ -2,23 +2,27 @@
 
 pkgname=securefs
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A better transparent encryption filesystem"
 arch=('i686' 'x86_64')
 url=https://github.com/netheril96/securefs
 license=('MIT')
-depends=('fuse' 'gcc-libs')
-makedepends=('cmake' 'git')
-source=("git+${url}.git#tag=${pkgver}" "git+https://github.com/JuliaStrings/utf8proc.git")
-sha256sums=('SKIP'
-            'SKIP')
+depends=('fuse' 'clang')
+makedepends=('cmake' 'git' 'python')
+source=("git+${url}.git#tag=${pkgver}")
+sha256sums=('SKIP')
+
+prepare() {
+    cd "$pkgname"
+    git submodule init && git submodule update
+}
 
 build() {
-    mv utf8proc securefs/external/
     cd "$pkgname"
     mkdir -p build && cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -Dlibdir=/usr/lib ..
+    CC=clang CXX=clang++ cmake -DCMAKE_INSTALL_PREFIX=/usr -Dlibdir=/usr/lib ..
     make
+    ctest
 }
 
 package() {
