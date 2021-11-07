@@ -1,14 +1,14 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
 url="https://github.com/Kicer86/photobroom"
 license=('GPL3')
 groups=()
-depends=('openlibrary' 'exiv2' 'qt5-base' 'dlib' 'openlibrary')
-makedepends=('cmake' 'magic_enum' 'qt5-tools' 'imagemagick')
+depends=('openlibrary' 'exiv2' 'qt6-base' 'dlib')
+makedepends=('cmake' 'magic_enum' 'qt6-tools' 'imagemagick')
 optdepends=()
 provides=('photobroom')
 conflicts=('photobroom')
@@ -24,7 +24,7 @@ source=(https://codeload.github.com/Kicer86/$pkgname/tar.gz/v$pkgver
         github_api::git+https://github.com/Kicer86/github_api.git#commit=61267f15d558819bab7218c353a03d0d449774f9
 )
 noextract=()
-md5sums=('074f2042886875a21f79ef156589f737'
+md5sums=('7b6b7404adffdc2f11aee2a7c96de6b1'
          'SKIP'
          'SKIP'
          'SKIP'
