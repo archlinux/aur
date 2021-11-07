@@ -7,6 +7,7 @@ pkgbase = wgnord
 	depends = jq
 	depends = curl
 	depends = wireguard-tools
+	depends = openresolv
 	backup = var/lib/wgnord/template.conf
 	source = https://git.phire.cc/me/wgnord/archive/0.1.8.tar.gz
 	md5sums = 469389884c5dc82dd770aea2879272b7
