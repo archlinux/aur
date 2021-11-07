@@ -1,17 +1,19 @@
 # Maintainer: Steven Guikal <aur-void@fluix.one>
 pkgname=sline
-pkgver=0.6.3
-pkgrel=1
+pkgver=1.0.1
+pkgrel=0
 pkgdesc='Simple line-editing and command history library.'
 arch=(x86_64)
 url='https://sr.ht/~arivigo/sline/'
 license=('MIT')
+depends=(glibc)
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~arivigo/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('8330726706c12f43578e05bef2c4285e1148abebf20bc327089ebfedc26644da0884d95e85920d63ec64b6ee98905286976e4488f46f1edfb8cbf9d53a278af2')
+sha512sums=('f938d1fcf895c1c3041c76e551c4efd14bb4f0c444cda93aa026af4a9448634dc0283433af87da0bebfa212857c00693520fa09b4e87cc4baf25e7a4909ab720')
 
 build() {
   cd "$pkgname-$pkgver"
-  make LDFLAGS="-Wl,-z,now"
+  sed -i "s/LDFLAGS.*$/&,-z,now/" config.mk
+  make
 }
 
 package() {
