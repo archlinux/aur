@@ -1,7 +1,7 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=mingw-w64-gtk4
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -33,7 +33,7 @@ source=(
   'gtk4-merge-3999-fix-find_library.patch'
   'gtk4-merge-4000-fix-includes.patch')
 sha256sums=(
-  'e0a1508f441686c3a20dfec48af533b19a4b2e017c18eaee31dccdb7d292505b'
+  '0faada983dc6b0bc409cb34c1713c1f3267e67c093f86b1e3b17db6100a3ddf4'
   'fca9be9278d60eeb28c9a41b2571e880e0ac4a6bf7baa90e87007d18b581052e'
   '6d043e449774f3c3bef58478dbea6359cf43301bdf573ca0cced14520cb87742')
 
