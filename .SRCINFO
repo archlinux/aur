@@ -1,0 +1,12 @@
+pkgbase = locale-mul_zz
+	pkgdesc = Multiple locales following UTC, UTF-8, and ISO 8601
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/Heptazhou/locale
+	arch = any
+	license = AGPL3
+	depends = glibc
+	source = locale-mul_zz-v2.0-rc1.tar.gz::https://github.com/Heptazhou/locale/archive/v2.0-rc1.tar.gz
+	sha256sums = SKIP
+
+pkgname = locale-mul_zz
