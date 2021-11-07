@@ -1,8 +1,5 @@
 ## --- Menu Config
 
-# Root filesystem label name
-ROOT_LABEL='Archlinux'
-
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
@@ -14,12 +11,12 @@ _microarchitecture=98
 ## Major kernel version
 _major=5.15
 ## Minor kernel version
-_minor=0
+_minor=1
 
 pkgbase=linux-multimedia
-pkgver=${_major}
-#pkgver=${_major}.${_minor}
-pkgrel=2
+#pkgver=${_major}
+pkgver=${_major}.${_minor}
+pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -42,7 +39,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+sha256sums=('32fdcd33c8ac571b9a7a297f33860f6171327961f2a2ea6bd54bf82275b614c8'
 			'SKIP'
 			'SKIP'
 			'SKIP'
@@ -272,16 +269,7 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-bootloader() {
-  mkdir -p $pkgdir/boot/loader/entries
-  echo "title ${ROOT_LABEL} Multimedia" > $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
-  echo "linux /vmlinuz-${pkgbase}" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
-  echo "initrd /initramfs-${pkgbase}.img" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
-  echo "options root=LABEL=\"${ROOT_LABEL}\" rootflags=subvol=@ loglevel=3 nvidia-drm.modeset=1 threadirqs usbcore.autosuspend=-1 rw" >> $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
-  chmod 755 $pkgdir/boot/loader/entries/$(echo ${ROOT_LABEL} | tr "[:upper:]" "[:lower:]")-multimedia.conf
-}
-
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-bootloader")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
