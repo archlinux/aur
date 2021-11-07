@@ -1,13 +1,13 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=blobdrop
 pkgname="$_pkgname"-git
-pkgver=r5.e75e543
+pkgver=r8.be35e17
 pkgrel=1
 pkgdesc="Drag and drop files directly out of the terminal"
 arch=('i686' 'x86_64')
 url="https://github.com/vimpostor/$_pkgname"
 license=('GPL3')
-depends=(qt6-base qt6-declarative qt6-svg qt6-quickcontrols2)
+depends=(qt6-base qt6-declarative qt6-svg)
 makedepends=(git cmake ninja)
 source=("git+https://github.com/vimpostor/$_pkgname.git")
 md5sums=('SKIP')
