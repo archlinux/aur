@@ -1,0 +1,19 @@
+pkgbase = pulse-vumeter-git
+	pkgdesc = A pulseaudio cli vumeter
+	pkgver = 0.11.r0.db03acc
+	pkgrel = 1
+	url = https://github.com/theRealCarneiro/pulse-vumeter
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libpulse
+	makedepends = make
+	depends = libpulse
+	optdepends = pipewire-pulse
+	optdepends = pulseaudio
+	provides = pulse-vumeter
+	source = pulse-vumeter::git+https://github.com/theRealCarneiro/pulse-vumeter.git
+	md5sums = SKIP
+
+pkgname = pulse-vumeter-git
