@@ -2,7 +2,7 @@
 
 pkgname=bauh-staging
 pkgver=0.9.20.RC
-pkgrel=3
+pkgrel=4
 _commit="c5aac8f3217fdd1ac086c29d8de87f45b7c3d898"
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly)."
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=('flatpak: required for Flatpak support'
             'aria2: multi-threaded downloading support'
             'breeze: KDE Plasma main theme'
             'axel: multi-threaded downloading support')
-makedepends=('git' 'python' 'python-pip' 'python-setuptools' 'make' 'fakeroot')
+makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
