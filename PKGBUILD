@@ -43,5 +43,5 @@ package() {
   done
 
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "$srcdir/bluespec-bdw.desktop" '/usr/share/applications/bluespec-bdw.desktop'
+  install -Dm644 "${srcdir}/bluespec-bdw.desktop" "${pkgdir}/usr/share/applications/bluespec-bdw.desktop"
 }
