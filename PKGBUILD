@@ -3,17 +3,17 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=hipsparse
-pkgver=4.3.1
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='rocSPARSE marshalling library.'
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#hipsparse'
 license=('MIT')
-depends=('hip-rocclr' 'rocsparse')
+depends=('hip' 'rocsparse')
 makedepends=('cmake' 'git' 'gcc-fortran')
 _git='https://github.com/ROCmSoftwarePlatform/hipSPARSE'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('e5757b5213b880237ae0f24616088f79c449c2955cf2133642dbbc9c655f4691')
+sha256sums=('1049c490fc2008d701a16d14e11004e3bc5b4da993aa48b117e3c44be5677e3c')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
@@ -25,7 +25,6 @@ build() {
   CXX=/opt/rocm/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -Wno-dev -S "$_dirname" \
-        -D__skip_rocmclang=ON \
         -DCMAKE_CXX_STANDARD=20 \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
