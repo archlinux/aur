@@ -18,13 +18,13 @@ source=(
     "scribbit::git+https://github.com/Marakusa/Scribbit.git#tag=$pkgver"
     'scribbit-launcher'
     'scribbit.desktop'
-    'scribbit.png'
+    'scribbit.svg'
 )
 
 sha256sums=('SKIP'
             '6f4d77dce547ca1b8ba376a6fb1d5d7acf513f61f54d3e834504c6d835a3bd25'
             'bf58390696dd90c27e036b20bfbe29adce0256f468412960599355490edff9d7'
-            'be938063dacac19788e0fb5ea2aebf1c63170639a8154d6dfbbc5b0aed8d190a')
+            '551cd7c70cb6044f49bcb1a4b92ec7312e48ad08')
 
 build()
 {
@@ -53,7 +53,7 @@ package()
 
     # Application icon
     mkdir -p "$pkgdir/usr/share/pixmaps"
-    install -m644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -m644 "$pkgname.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 
     # Compiled binaries
     mkdir -p "$pkgdir/usr/lib/$pkgname"
