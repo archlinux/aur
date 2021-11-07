@@ -33,6 +33,6 @@ pkgbase = edgetx-companion
 	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.5.0
 	source = install.patch
 	sha256sums = SKIP
-	sha256sums = 36bf7c59adfe9221f8b03809e0ca0dc537328e239b2384829fb17290137e5005
+	sha256sums = f9b62f82f402ea96153a7e45ec22aeaa4780039d57b28cc8ca8456e05c34ffe7
 
 pkgname = edgetx-companion
