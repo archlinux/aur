@@ -4,7 +4,7 @@
 
 
 pkgname=alchemy-next-viewer-git
-pkgver=6.4.24.47621
+pkgver=6.4.24.47624.8f828d4f90
 pkgrel=1
 _branch="${AL_GIT_BRANCH:=main}"
 pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - git version"
@@ -25,7 +25,7 @@ makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' '
 conflicts=('alchemy-next-viewer')
 provides=('alchemy-next')
 replaces=('alchemy-next-viewer')
-source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git' 'alchemy-next.desktop')
+source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')
 md5sums=('SKIP'
          '59114df2d7f081aad499ad5b7d8401b7')
 sha256sums=('SKIP'
@@ -34,7 +34,13 @@ b2sums=('SKIP'
         'da5639043f1854d9d2dc884fd62a4239fdc7ca2467cd95cfcb7f6bc73ac93e73cc0229e16000378efa22d646e3756a9495d2d8bb8c76049f77e4731c2a997729')
 
 pkgver() {
-	cat "$pkgname/build-linux-64/newview/viewer_version.txt"
+	cd "${pkgname}"
+	( set -o pipefail
+	    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	    printf "%s.%s.%s" "$(cat indra/newview/VIEWER_VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+	# echo "$(cat build-linux-64/newview/viewer_version.txt)-$(git show -s --format=%h)"
+	# popd >/dev/null || exit 1
 }
 
 prepare() {
@@ -53,11 +59,14 @@ prepare() {
 			pip3 uninstall --yes autobuild
 		fi
 	fi
-	pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
-	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON -DVIEWER_CHANNEL="Alchemy Test"
 }
 
 build() {
+	cd "$pkgname" || exit 1
+
+	pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
+	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON -DVIEWER_CHANNEL="Alchemy Test"
+
 	cd "$pkgname/build-linux-64" || exit 1
 	ninja -j$(nproc)
 }
