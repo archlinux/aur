@@ -51,6 +51,6 @@ package() {
   install -m644 "${srcdir}/data/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -m644 "${srcdir}/data/usr/share/applications/${pkgname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${pkgname}-url-handler.desktop"
 
-  cp -r "${srcdir}/data/usr/share/code-insiders/*" "${pkgdir}/opt/${pkgname}" -R
+  cp -r "${srcdir}/data/usr/share/code-insiders/"* "${pkgdir}/opt/${pkgname}" -R
   ln -s /opt/${pkgname}/bin/code-insiders "${pkgdir}"/usr/bin/code-insiders
 }
