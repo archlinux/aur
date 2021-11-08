@@ -13,5 +13,6 @@ pkgbase = topcoder-applet
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = topcoder-applet
