@@ -17,15 +17,11 @@ sha256sums=('a471c79b9aede1776a895cb46fcb81b5d163d6ca9c3e1e33096346fef46d3598')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver/htscodecs"
-  aclocal --force
-  autoreconf --force --install
-  automake --force --add-missing
+  autoreconf --force --install -v
   ./configure --prefix=/usr
 
   cd "$srcdir/$_pkgname-$pkgver"
-  aclocal --force
-  autoreconf --force --install
-  automake --force --add-missing
+  autoreconf --force --install -v
   ./configure --prefix=/usr
   make CFLAGS=-g
 }
