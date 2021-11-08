@@ -2,7 +2,7 @@
 
 pkgname=cmake-init
 _name=${pkgname#python-}
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="The missing CMake project initializer"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python3')
 makedepends=('python-pip')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('b430bb3cdc6be70ede7ef3cf32072b5588773bfe3c7f7456fbce025538c46e5a')
+sha256sums=('83e5b6f34feec9982a7c68f5e68a9562dfc202a9061ecca03e2d6b1988142c19')
 
 # build() {
 #         echo ''
