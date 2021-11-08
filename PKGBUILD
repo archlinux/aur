@@ -4,13 +4,13 @@ _wayland=false
 _branch=dev
 _pkgname=espanso
 pkgname=${_pkgname}-git
-pkgver=2.0.0.r53.g8f291f4
+pkgver=2.0.0.r146.g57450be
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
-depends=("xdotool" "xclip" "libxtst" "libnotify")
+depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk3")
 makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -38,7 +38,7 @@ prepare() {
 build() {
     cd "$_pkgname"
 
-    cargo make build-binary --profile release --env NO_X11=$_wayland
+    cargo make --env NO_X11=$_wayland --profile release build-binary
 }
 
 package() {
