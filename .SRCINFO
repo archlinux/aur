@@ -1,0 +1,19 @@
+pkgbase = python-async-timeout-git
+	pkgdesc = Asyncio-compatible timeout class
+	pkgver = 4.0.0.r2.g77f0cba
+	pkgrel = 1
+	url = https://github.com/aio-libs/async-timeout
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-aiohttp
+	makedepends = python-setuptools
+	depends = python
+	provides = python-async-timeout
+	conflicts = python-async-timeout
+	source = async-timeout::git+https://github.com/aio-libs/async-timeout
+	sha256sums = SKIP
+
+pkgname = python-async-timeout-git
