@@ -1,92 +1,32 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 pkgname=perl-wx
 pkgver=0.9932
-_author=M/MD/MDOOTSON
-_perlmod=Wx
-pkgrel=2
-pkgdesc="Wx - interface to the wxWidgets GUI toolkit"
-arch=('i686' 'x86_64')
-url="http://search.cpan.org/dist/Wx"
+pkgrel=3
+pkgdesc="Interface to the wxWidgets cross-platform GUI toolkit"
+arch=('x86_64')
+url="https://metacpan.org/dist/Wx"
 license=('GPL' 'PerlArtistic')
-depends=(wxgtk)
-makedepends=(
-perl-alien-wxwidgets
-perl-extutils-xspp
-xorg-server-xvfb
-#ExtUtils::MakeMaker    => perl
-#ExtUtils::ParseXS      => perl
-#File::Spec::Functions  => perl
-#Test::More             => perl
-#Test::Harness          => perl
-)
-checkdepends=(webkit2gtk)
-provides=(
-perl-wx-aui
-perl-wx-app
-perl-wx-artprovider
-perl-wx-calendar
-perl-wx-dnd
-perl-wx-dataview
-perl-wx-datetime
-perl-wx-docview
-perl-wx-dropsource
-perl-wx-event
-perl-wx-fs
-perl-wx-grid
-perl-wx-help
-perl-wx-html
-perl-wx-ipc
-perl-wx-locale
-perl-wx-mdi
-perl-wx-media
-perl-wx-menu
-perl-wx-mini
-perl-wx-overload-driver
-perl-wx-overload-handle
-perl-wx-perl-carp
-perl-wx-perl-splashfast
-perl-wx-perl-textvalidator
-perl-wx-perltest
-perl-wx-print
-perl-wx-propertygrid
-perl-wx-radiobox
-perl-wx-ribbon
-perl-wx-richtext
-perl-wx-stc
-perl-wx-socket
-perl-wx-timer
-perl-wx-webview
-perl-wx-xrc
-perl-wx-build-makemaker
-perl-wx-build-makemaker-any_os
-perl-wx-build-makemaker-any_wx_config
-perl-wx-build-makemaker-core
-perl-wx-build-makemaker-hacks
-perl-wx-build-makemaker-macosx_gcc
-perl-wx-build-makemaker-win32
-perl-wx-build-makemaker-win32_msvc
-perl-wx-build-makemaker-win32_mingw
-perl-wx-build-options
-perl-wx-build-utils
-perl-build-wx-xsp-enum
-perl-build-wx-xsp-event
-perl-build-wx-xsp-overload
-perl-build-wx-xsp-virtual
-)
+depends=('perl-alien-wxwidgets' 'perl-extutils-xspp' 'wxgtk2')
+checkdepends=('xorg-server-xvfb')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/M/MD/MDOOTSON/Wx-$pkgver.tar.gz")
 sha256sums=('1cfdb6535a0f4676e6f1aab2c9d8e16d577be3eb3b7cc04c8074d685e6651b70')
-unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
 build(){
-  cd "$srcdir"/$_perlmod-$pkgver
-  perl Makefile.PL
+  cd "Wx-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  perl Makefile.PL \
+    --wx-unicode \
+    --wx-version=$(wx-config --version | cut -d . -f 1-2) \
+    --wx-toolkit=gtk2 \
+    INSTALLDIRS=vendor
   make
 }
 check(){
-  cd "$srcdir"/$_perlmod-$pkgver
+  cd "Wx-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   if [[ -z "$DISPLAY" || -x /usr/bin/xvfb-run ]]; then
 #     warning 'Empty $DISPLAY - falling back to xvfb-run (xorg-server-xvfb)'
     xvfb-run -a -s "+extension GLX -screen 0 1280x1024x24" make test
@@ -95,6 +35,7 @@ check(){
   fi
 }
 package(){
-  cd "$srcdir"/$_perlmod-$pkgver
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  cd "Wx-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make DESTDIR="$pkgdir" install
 }
