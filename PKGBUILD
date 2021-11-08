@@ -1,4 +1,5 @@
 # Maintainer: Samuel Corsi-House <chouse.samuel@gmail.com>
+# Contributor: Artemii Sudakov <finziyr@yandex.ru>
 
 pkgname=termius-app
 _pkgname=${pkgname%-*}
