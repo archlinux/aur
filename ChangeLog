@@ -1,3 +1,17 @@
+=== Morgen 2.3.1
+New Features
+- Morgen Time Zone Assistant. 
+
+Improvements
+- Events marked as "not busy" are now displayed with different color shade to visually set them apart from busy events.
+- On Linux, the date-time picker gets format directly from the language and locale settings of the system. This makes the widget more consistent with what you see on web apps running in the browser.
+- We improved the way local-only events look like. If you are offline or your connection is unstable, Morgen allows you to continue editing your events. These events, however, are not synchronized with the calendar provider until you are back online, and this release makes this case more apparent.
+
+Bug Fixes
+- Fixed a problem causing duplicate events sometimes appearing in the calendar.
+- Fixed the connection to some CalDAV services, using non-standard connection ports.
+
+
 === Morgen 2.3.0
 New Features
 - Zapier integration
