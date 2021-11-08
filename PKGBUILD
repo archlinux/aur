@@ -1,6 +1,6 @@
-pkgname="mkdocs"
+pkgname=mkdocs-bin
 pkgver=1.2.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Project documentation with Markdown"
 url="https://www.mkdocs.org"
 license=("BSD")

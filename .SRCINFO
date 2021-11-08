@@ -1,7 +1,7 @@
-pkgbase = mkdocs
+pkgbase = mkdocs-bin
 	pkgdesc = Project documentation with Markdown
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.mkdocs.org
 	arch = any
 	license = BSD
@@ -29,4 +29,4 @@ pkgbase = mkdocs
 	source = https://download-ib01.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/m/mkdocs-1.2.3-1.fc36.noarch.rpm
 	sha256sums = 3a39b58133c8ef16415f1c14f592b3a8d9be3775035ce15b737919a9e433c6fe
 
-pkgname = mkdocs
+pkgname = mkdocs-bin
