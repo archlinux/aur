@@ -22,8 +22,8 @@ if [[ -z "${LINK}" ]]; then
   exit 1
 fi
 
-[[ -f "${SYSRC}" ]] && ADDR=$(cat "${SYSRC}")
-[[ -f "${USRRC}" ]] && ADDR=$(cat "${USRRC}")
+[[ -f "${SYSRC}" ]] && ADDR="$(cat "${SYSRC}")"
+[[ -f "${USRRC}" ]] && ADDR="$(cat "${USRRC}")"
 if [[ -z "${ADDR}" ]]; then
   echo "ERROR: no remote address configured"
   echo "       Place the address of the remote daemon in one of these locations:"
@@ -33,3 +33,4 @@ if [[ -z "${ADDR}" ]]; then
 fi
 
 transmission-remote "${ADDR}" -a "${LINK}"
+
