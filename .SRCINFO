@@ -1,7 +1,7 @@
 pkgbase = python-pyerfa
 	pkgdesc = Python wrapper for the ERFA library
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.0.1
+	pkgrel = 1
 	url = https://github.com/liberfa/pyerfa
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-pyerfa
 	depends = python>=3.6
 	depends = python-numpy>=1.16.0
 	depends = erfa>=1.7.3
-	source = https://files.pythonhosted.org/packages/source/p/pyerfa/pyerfa-2.0.0.tar.gz
-	sha512sums = 5f46708c73c09760db55dcfadf7e18ae5510c5edf0ed5e9607b18d67b28509f2b62366ff19099a0008c93591bc56d85472ce19a2461fc626977c559ec6684bae
+	source = https://files.pythonhosted.org/packages/source/p/pyerfa/pyerfa-2.0.0.1.tar.gz
+	sha512sums = 420e7bb2d00a9bd7d2290b6b0598b5963404ac021f713ae7bbf607135b9db6605f63dd89694d2cf406eb230b58b1028f2458f96ed834127ce9a398810cfea589
 
 pkgname = python-pyerfa
