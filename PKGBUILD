@@ -24,7 +24,7 @@ build() {
 package_svetovid-lib() {
 	cd "$pkgname"
 
-	install -Dm644 "dist/$pkgname.jar" -t "$pkgdir/usr/share/java/$pkgname"
+	install -Dm644 "dist/$pkgname.jar" -t "$pkgdir/usr/share/java"
 
 	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 "NOTICE" -t "$pkgdir/usr/share/licenses/$pkgname"
