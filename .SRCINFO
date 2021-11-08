@@ -1,6 +1,6 @@
 pkgbase = docker-slim-bin
 	pkgdesc = Don't change anything in your Docker container image and minify it by up to 30x (and for compiled languages even more) making it secure too! (free and open source)
-	pkgver = 1.37.0
+	pkgver = 1.37.1
 	pkgrel = 1
 	url = https://github.com/docker-slim/docker-slim
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = docker-slim-bin
 	provides = docker-slim
 	provides = docker-slim-sensor
 	conflicts = docker-slim
-	source_x86_64 = docker-slim-1.37.0.tar.gz::https://downloads.dockerslim.com/releases/1.37.0/dist_linux.tar.gz
-	sha512sums_x86_64 = 1205b05f79c07df77f96c3bce2357457887782a01278512380b59d854f6139f1479b403f0d7a8811aaf7035f4df563b3218d899ddbc16e3b9d97dce90a1c5cfd
-	source_aarch64 = docker-slim-1.37.0.tar.gz::https://downloads.dockerslim.com/releases/1.37.0/dist_linux_arm64.tar.gz
-	sha512sums_aarch64 = 1205b05f79c07df77f96c3bce2357457887782a01278512380b59d854f6139f1479b403f0d7a8811aaf7035f4df563b3218d899ddbc16e3b9d97dce90a1c5cfd
+	source_x86_64 = docker-slim-1.37.1.tar.gz::https://downloads.dockerslim.com/releases/1.37.1/dist_linux.tar.gz
+	sha512sums_x86_64 = 5e7d1cca5eb555c77f71fc2272e9c6fc9a680f1c27f35efdc80b96a35d6771d5958791074f56e4ba265fd6168f6630dd2c2b29581b88bc1ae5cdf9bc3f3dd42c
+	source_aarch64 = docker-slim-1.37.1.tar.gz::https://downloads.dockerslim.com/releases/1.37.1/dist_linux_arm64.tar.gz
+	sha512sums_aarch64 = 5e7d1cca5eb555c77f71fc2272e9c6fc9a680f1c27f35efdc80b96a35d6771d5958791074f56e4ba265fd6168f6630dd2c2b29581b88bc1ae5cdf9bc3f3dd42c
 
 pkgname = docker-slim-bin
-
