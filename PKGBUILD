@@ -1,5 +1,5 @@
 pkgname=rpmlauncher-bin
-pkgver=1.0.0.683
+pkgver=1.0.0+724.1
 pkgrel=1
 pkgdesc="A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart"
 license=('GPL')
@@ -14,26 +14,22 @@ replaces=()
 backup=()
 options=()
 changelog=
-source=("https://github.com/RPMTW/RPMLauncher/releases/download/1.0.0.683/RPMLauncher-Linux.AppImage"
-        "https://raw.githubusercontent.com/RPMTW/RPMLauncher/master/images/Logo.png")
-noextract=("RPMLauncher-Linux.AppImage"
-           "Logo.png")
-md5sums=('SKIP'
-         'SKIP')
+source=("$pkgname-$pkgver.zip::https://github.com/RPMTW/RPMLauncher/releases/download/$pkgver/RPMLauncher-Linux.zip")
+md5sums=('SKIP')
 package(){
-  install -Dm755 "${srcdir}"/"RPMLauncher-Linux.AppImage" "${pkgdir}"/opt/RPMLauncher/rpmlauncher
-  install -Dm755 "${srcdir}"/"Logo.png" "${pkgdir}"/opt/RPMLauncher/Logo.png
+  mkdir -p $pkgdir/opt/RPMLauncher
+  cp -rT $srcdir/RPMLauncher-Linux $pkgdir/opt/RPMLauncher
+  mkdir -p $pkgdir/usr/share/applications/
   echo "[Desktop Entry]
 Categories=Game;ArcadeGame;
 Comment=Edit
 Encoding=UTF-8
-Exec="/opt/RPMLauncher/Logo.png"
-Icon="/opt/RPMLauncher/data/flutter_assets/images/Logo.png"
+Exec="/opt/RPMLauncher/RPMLauncher"
+Icon="/opt/RPMLauncher/data/flutter_assets/images/"
 Name=RPMLauncher
 Path=/opt/RPMLauncher
 StartupNotify=false
 Terminal=true
 Type=Application
-Version=$PKGVER" >> "${srcdir}"/RPMLauncher.desktop
-  install -Dm755 "${srcdir}"/RPMLauncher.desktop "${pkgdir}"/usr/share/applications/RPMlauncher.desktop
+Version=$PKGVER" >> $pkgdir/usr/share/applications/RPMLauncher.desktop
 }
