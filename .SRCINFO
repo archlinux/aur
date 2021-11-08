@@ -9,6 +9,7 @@ pkgbase = topcoder-applet
 	source = http://topcoder.com/contest/arena/ContestAppletProd7.2.jnlp
 	source = topcoder_logo.png
 	source = topcoder-applet.desktop
+	source = exception.sites
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
