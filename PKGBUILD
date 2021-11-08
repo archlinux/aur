@@ -2,19 +2,19 @@
 
 pkgname=svetovid-lib-bin
 _name=svetovid-lib
-pkgver=0.5.0
-_ghver=0.5
+pkgver=0.5.1
+_ghver=0.5.1
 pkgrel=1
 pkgdesc='Supplement Library for Introductory Programming Courses'
 arch=(any)
-url='https://github.com/ivanpribela/svetovid-lib'
-license=('APACHE')
-depends=('java-runtime')
-provides=('svetovid-lib')
-conflicts=('svetovid-lib')
-source=("https://github.com/ivanpribela/${_name}/releases/download/v${_ghver}/svetovid-lib.jar"
-        "https://github.com/ivanpribela/${_name}/blob/v${_ghver}/LICENSE"
-				"https://github.com/ivanpribela/${_name}/blob/v${_ghver}/NOTICE")
+url=https://github.com/ivanpribela/svetovid-lib
+license=(APACHE)
+depends=(java-runtime)
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source=("https://github.com/ivanpribela/$_name/releases/download/v$_ghver/$_name.jar"
+        "https://github.com/ivanpribela/$_name/blob/v$_ghver/LICENSE"
+				"https://github.com/ivanpribela/$_name/blob/v$_ghver/NOTICE")
 noextract=('svetovid-lib.jar')
 sha512sums=('3e827a7aff7c6cdf3ab28a78c16aa3240c5c0619b52ee6ea3bccf51b055c4d1b08f9d9f42e8273b17d4da885ffde198ca3d4c4e02c467286fbea55a6770c0158'
             '54825fc8c8753230686c8076327f14ef401d49994f8f9d014c62c864bacdc055247029599a6908dc6d200ee0a36c09fb1c325d0ea92390d48d0ebe4a86ef959f'
@@ -23,8 +23,8 @@ sha512sums=('3e827a7aff7c6cdf3ab28a78c16aa3240c5c0619b52ee6ea3bccf51b055c4d1b08f
 package() {
 	cd "${srcdir}"
 
-	install -Dm644 "${_name}.jar" "${pkgdir}/usr/share/java/${_name}/${_name}.jar"
+	install -Dm644 "$_name.jar" -t "$pkgdir/usr/share/java"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
-	install -Dm644 "NOTICE" "${pkgdir}/usr/share/licenses/${_name}/NOTICE"
+	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 "NOTICE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
