@@ -1,5 +1,5 @@
 pkgbase = dature-cli
-	pkgdesc = A Crawler for Sina Blog and CSDN, Based on Node.js
+	pkgdesc = A Crawler for Sina Blog, Based on Node.js
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/dature
