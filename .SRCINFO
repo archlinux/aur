@@ -1,0 +1,14 @@
+pkgbase = dature-cli
+	pkgdesc = A Crawler for Sina Blog and CSDN, Based on Node.js
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://www.npmjs.com/package/dature
+	arch = any
+	license = ISC
+	makedepends = npm
+	depends = nodejs
+	noextract = dature-0.2.0.tgz
+	source = https://registry.npmjs.org/dature/-/dature-0.2.0.tgz
+	sha256sums = a1dfed8fa6a72bbbf0a812ffe74f7d999dec508068324bb0c35f28a24773678c
+
+pkgname = dature-cli
