@@ -7,7 +7,7 @@
 
 pkgname=dolphin-meld
 _pkgname=dolphin
-pkgver=21.08.1
+pkgver=21.08.3
 pkgrel=1
 pkgdesc='KDE File Manager, using Meld rather than Kompare'
 arch=(x86_64)
@@ -23,7 +23,7 @@ groups=(kde-applications kde-system)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         "dolphin-meld.patch"
         27bfcde4.patch)
-sha256sums=('6e5dce2629f8333b426074d0f35dc96d40b528948db101443f8270ea554cb3ee'
+sha256sums=('3b17bfd81dcb04d37810cea0d52d098ce5244289a2eb0173f575291ca97bd9a7'
             'SKIP'
             '9bf8e1d53bb482e3cc2f3a114fb894fc3d0216ad2933d0c6e1f0b7df6d640b7a'
             '9c17ce284b0623982b152fa76418ca3005e31c3977120f1f6bb5be351918e318')
