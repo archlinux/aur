@@ -1,7 +1,7 @@
 pkgname=riseup-vpn
 pkgrel=4
-pkgver=0.21.2
-_commit=7ed49b92ff19205af276dee371174579c8b4c811
+pkgver=0.21.6
+_commit=e01a926fb8fea4056fe4c594d59e4d8c7e0714ac
 pkgdesc="RiseupVPN is a branded build of Bitmask VPN. Bitmask VPN is a minimal rewrite of the Bitmask VPN Client, written in golang, that for now lacks client authentication, and is preconfigured to use a single provider."
 url="https://0xacab.org/leap/bitmask-vpn"
 arch=('x86_64')
