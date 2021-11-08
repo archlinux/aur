@@ -10,12 +10,8 @@ source=(
     "https://gitlab.com/free-astro/pysiril/-/archive/V0_0_9/pysiril-V0_0_9.tar.gz"
 )
 arch=('x86_64')
-md5sums=(
-    'SKIP'
-)
-depends=(
-   siril
-)
+md5sums=('SKIP')
+depends=(siril)
 
 package() {
     cd $srcdir/pysiril-V0_0_9
