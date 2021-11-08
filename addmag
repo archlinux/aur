@@ -13,9 +13,23 @@
 RCNAME="addmagrc"
 SYSRC="/etc/${RCNAME}"
 USRRC="${HOME}/.${RCNAME}"
+ADDR=
+NOTIFY=
+
+while getopts 'n' arg; do
+  case "${arg}" in
+    n) NOTIFY="true" ;;
+    *) echo "invalid argument '${arg}'"; exit 1;;
+  esac
+done
+
+shift $((OPTIND - 1))
 
 LINK="${1}"
-ADDR=
+
+notify() {
+  notify-send "${@}" || echo "notification failed"
+}
 
 if [[ -z "${LINK}" ]]; then
   echo "ERROR: no magnet link or torrent file specified"
@@ -32,5 +46,11 @@ if [[ -z "${ADDR}" ]]; then
   exit 1
 fi
 
-transmission-remote "${ADDR}" -a "${LINK}"
+if transmission-remote "${ADDR}" -a "${LINK}"; then
+  echo "added '${LINK}' to '${ADDR}'"
+  [[ -n "${NOTIFY}" ]] && notify -u normal -t 5000 "TORRENT ADDED" "Added torrent to '${ADDR}'"
+else
+  echo "ERROR: failed to add '${LINK}' to '${ADDR}'"
+  [[ -n "${NOTIFY}" ]] && notify -u critical -t 5000 "TORRENT ADD FAILED" "Failed to add torrent to '${ADDR}'"
+fi
 

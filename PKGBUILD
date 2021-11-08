@@ -1,8 +1,8 @@
 # Maintainer: aetherised <aetherised@gmail.com>
 
 pkgname=addmag
-pkgver=0.1.1
-pkgrel=4
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Opens magnet links using a remote Transmission daemon"
 arch=('any')
 url="https://github.com/aetherised/addmag"

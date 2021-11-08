@@ -2,7 +2,7 @@
 Name=addmag
 GenericName=Transmission Daemon Magnet Link Handler
 Comment=Open magnent links with a remote Transmission daemon
-Exec=addmag %U
+Exec=addmag -n %U
 Terminal=false
 TryExec=addmag
 Type=Application
