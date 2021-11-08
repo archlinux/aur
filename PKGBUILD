@@ -1,36 +1,43 @@
-# Maintainer: Artem Trokhycmhuk <yuc44w68t at relay dot firefox dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Artem Trokhycmhuk <yuc44w68t at relay dot firefox dot com>
+
 pkgname=noverify
-pkgver=0.3.0
+pkgver=0.5.2
 pkgrel=1
-pkgdesc="Pretty fast linter (code static analysis utility) for PHP"
-arch=(x86_64)
+pkgdesc="PHP7/8 code linter"
+arch=('x86_64' 'aarch64')
 url="https://github.com/VKCOM/noverify"
 license=('MIT')
 makedepends=('go')
-provides=(noverify)
-conflicts=(noverify-bin noverify-git)
-source=("https://github.com/VKCOM/noverify/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('282f59eb4704610fa3b78a3e55bbef148ade64ef3dd0fd4736e7870b56f1e35f')
+checkdepends=('git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('060272a4709fa88cd1a4d2aa213bfd2b2e4479ab806ec1831a5fff7797f18612')
 
-prepare(){
-    cd ${srcdir}/${pkgname}-${pkgver}
-    mkdir -p build/
+prepare() {
+	cd "$pkgname-$pkgver"
+	mkdir -p build/
 }
 
 build() {
-    ls
-  cd "$pkgname-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build 
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
+	local _PKG="${url#https://}/src/cmd"
+
+	cd "$pkgname-$pkgver"
+	go build -o build -ldflags "-linkmode=external -X $_PKG.BuildVersion=$pkgver"
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	go test -race -short ./...
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
-
+	cd "$pkgname-$pkgver"
+	install -D "build/$pkgname" -t "$pkgdir/usr/bin/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
