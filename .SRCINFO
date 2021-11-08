@@ -1,14 +1,13 @@
 pkgbase = sbsms
 	pkgdesc = Library for time stretching and pitch scaling of audio
-	pkgver = 2.0.2
-	pkgrel = 3
-	url = http://sbsms.sourceforge.net/
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/claytonotey/libsbsms
 	arch = x86_64
 	license = GPL
 	depends = gcc-libs
 	options = !staticlibs
-	source = http://downloads.sourceforge.net/project/sbsms/sbsms/2.0.2/libsbsms-2.0.2.tar.gz
-	sha512sums = 8aaab3e191f3e10e559683ab4ebdcb8d951cf0e776390234f25675a98640d60d20aed872061ba72fdc3bd7827b7d46bc27225fe947cdd7fa4312f75cbdd78e6c
+	source = sbsms-2.3.0.tar.gz::https://github.com/claytonotey/libsbsms/archive/2.3.0.tar.gz
+	sha512sums = e5b544c2bdbaa2169236987c7a043838c8d1761b25280c476d7a32656d482c6485cb33f579ea9d1ce586ec7b2913ed8fdcf1abe5c7cc8b9e4eef9ce87de54627
 
 pkgname = sbsms
-
