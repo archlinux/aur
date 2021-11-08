@@ -5,7 +5,7 @@
 
 pkgname=subliminal-git
 pkgver=2.1.0.r22.g160ea63
-pkgrel=4
+pkgrel=5
 pkgdesc="Python library and CLI tool for searching and downloading subtitles."
 arch=('any')
 url="https://github.com/Diaoul/subliminal"
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python-guessit' 'python-babelfish'  'python-enzyme' 'python-beautifulsoup4'
          'python-requests' 'python-click' 'python-dogpile.cache' 'python-stevedore'
          'python-chardet'  'python-pysrt' 'python-six' 'python-appdirs' 'python-rarfile'
-         'python-pytz')
+         'python-pytz' 'python-importlib_resources')
 makedepends=('git' 'python-setuptools' 'python-sphinxcontrib-programoutput'
              'python-sphinx_rtd_theme')
 provides=("${pkgname%-git}")
