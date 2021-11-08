@@ -1,7 +1,7 @@
 # Maintainer: Sýlvan Heuser <sylvan.heuser@gmx.net>
 
 pkgname=upterm
-pkgver=0.6.3
+pkgver=0.6.7
 pkgrel=1
 pkgdesc='Secure Terminal Sharing, an alternative to tmate'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/owenthereal/upterm/archive/v${pkgver}.tar.gz")
-sha256sums=('ed2c1f3cf7fe0484b2d82c1677bb6ec5f5b4f0b201987979380e4cd5493e07f1')
+sha256sums=('b3b6d856879dd3caa6a84ed8c31e7bbaffb0f98e03dcc7c942909b33a109c32a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
