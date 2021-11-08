@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=etcdadm
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Commandline tool for operating an etcd cluster'
 arch=('x86_64')
@@ -9,12 +9,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('0c2ae4401c6fe1c85d672e6f991c7e178ec7625ae2da27cf889174d1c7953e14')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  go mod download
-}
+sha256sums=('ad5a828d09e154b745fce0cd74d0257f61307ed4323a54272d3e2512d5a37eb9')
 
 build() {
   local _commit='' _ver=${pkgver%.?}
@@ -34,8 +29,8 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
-  go build -o "$pkgname" -ldflags "${_x[*]/#/-X=k8s.io/component-base/version.}"
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
+  go build -o "$pkgname" -ldflags "-linkmode=external ${_x[*]/#/-X=k8s.io/component-base/version.}" main.go
 }
 
 package() {
