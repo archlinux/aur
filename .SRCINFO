@@ -1,6 +1,6 @@
 pkgbase = silo-gsuite
 	pkgdesc = Standalone silo apps for the Google office suite (Drive, Documents, Sheets, and Slides)
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/intersimone999/silos-apps
 	arch = i686
