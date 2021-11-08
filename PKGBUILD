@@ -1,31 +1,50 @@
 # Maintainer: Hunter Brodie <hunterbrodie@gmail.com>
 pkgname='aurora-git'
-pkgver=r2.1711939
+pkgver=r5.a90eeb3
 pkgrel=1
-pkgdesc="Yet another wrapper for pacman to access the AUR written in Rust."
+pkgdesc="A minimal AUR helper written in Rust"
 arch=('x86_64')
 url="https://gitlab.com/hunterbrodie/aurora"
 license=('GPL')
-depends=('opendoas' 'git' 'pkgfile')
+depends=('pacman')
 makedepends=('cargo')
-source=('aurora-git::git+https://gitlab.com/hunterbrodie/aurora.git')
+source=("$pkgname::git+https://gitlab.com/hunterbrodie/aurora.git")
 md5sums=('SKIP')
 
 pkgver()
 {
-	cd "$srcdir/${pkgname%-VCS}"
-  
+	cd "$pkgname"
+	
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare()
+{
+	cd "$pkgname"
+
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build()
 {
 	cd "$pkgname"
-	cargo build --release --locked --all-features --target-dir=target
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
+}
+
+check()
+{
+	cd "$pkgname"
+
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
 }
 
 package()
 {
 	cd "$pkgname"
-	install -Dm 755 target/release/aurora -t "${pkgdir}/usr/bin"
+
+	install -Dm0755 -t "$pkgdir/usr/bin" "target/release/aurora"
 }
