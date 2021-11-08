@@ -1,12 +1,12 @@
 # Maintainer: robertfoster
 pkgname=abyss-engine-git
-pkgver=r156.4a6ad0e
+pkgver=r161.3867346
 pkgrel=1
 pkgdesc="A game engine designed to run games similar to 2000's style ARPGs such as Diablo II"
 arch=('i686' 'x86_64')
 url="https://github.com/AbyssEngine/AbyssEngine"
 license=('GPL3')
-depends=('ffmpeg' 'lua')
+depends=('ffmpeg' 'lua' 'sdl2_ttf')
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}" "opendiablo2-git")
 conflicts=("${pkgname%-git}" "opendiablo2-git")
@@ -22,9 +22,6 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-
-  # Git, tags available
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 
   # Git, no tags available
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
