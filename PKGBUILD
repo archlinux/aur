@@ -19,14 +19,8 @@ depends=(
     'python-numpy'
     'python-psutil'
     'python-yaml'
-    # TODO: remove python pip
-    # 'python-pymarshal'
-    # 'python-wavefile'
-    # TODO: do not require user to install either python-pyqt5/qt6
     'python-pyqt5'
-    # 'python-pyqt6
     'rubberband'
-    'sbsms'
 )
 makedepends=(
     'cython'
@@ -44,11 +38,9 @@ sha256sums=('ce196e5a6095707d33df8c4c5bba9cdf8713c061195350730d3ab70270ccc45f')
 build() {
   cd stargate-release-${pkgver}/src
   make
-  # TODO: make distro
 }
 
 package() {
   cd stargate-release-${pkgver}/src
   PREFIX=${pkgdir}/usr make install
-  # TODO: make install_distro
 }
