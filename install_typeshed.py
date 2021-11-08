@@ -52,7 +52,7 @@ def install_stubs_dir(stubs_dir: Path, install_dir: Path) -> None:
 
     package_name = stubs_dir.name
     package_dir_path = install_dir / f"{package_name}-stubs"
-    copytree(stubs_dir, package_dir_path)
+    copytree(stubs_dir, package_dir_path, dirs_exist_ok=True)
 
 
 skip_names = ('METADATA.toml', 'README.md')

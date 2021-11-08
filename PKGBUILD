@@ -1,6 +1,6 @@
 # Maintainer: igo95862
 pkgname='python-typeshed-git'
-pkgver=r4608.9d5046ee7
+pkgver=r4969.7c3c9d1a1
 pkgrel=1
 pkgdesc="Python typing stubs"
 arch=('any')
@@ -14,10 +14,11 @@ source=(
     "${pkgname}::git+https://github.com/python/typeshed.git"
     'install_typeshed.py'
 )
-md5sums=(
-    'SKIP'
-    'SKIP'
+optdepends=(
+    'mypy: Python type checker'
 )
+sha512sums=('SKIP'
+            'b87fe938f93da2665643a84a6c35473240732421a6271f503efe5aae7423e04bd773b1aa5943883d13872450b88ed034c98294bd2c410a8d4a73d6aa9ca3e6a9')
 
 pkgver() {
     cd "$srcdir/${pkgname}"
