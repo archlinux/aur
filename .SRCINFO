@@ -1,8 +1,8 @@
 pkgbase = atlas-lapack
 	pkgdesc = Automatically Tuned Linear Algebra Software
 	pkgver = 3.10.3
-	pkgrel = 5
-	url = http://math-atlas.sourceforge.net/
+	pkgrel = 6
+	url = http://math-atlas.sourceforge.net
 	install = atlas-lapack.install
 	arch = x86_64
 	license = BSD
@@ -13,15 +13,15 @@ pkgbase = atlas-lapack
 	provides = lapack
 	provides = cblas
 	provides = atlas-lapack-base
-	noextract = lapack-3.9.0.tar.gz
+	noextract = lapack-3.10.0.tar.gz
 	noextract = atlas3.10.3.tar.bz2
 	options = !makeflags
-	source = lapack-3.9.0.tar.gz::https://github.com/Reference-LAPACK/lapack/archive/v3.9.0.tar.gz
+	options = !buildflags
+	source = lapack-3.10.0.tar.gz::https://github.com/Reference-LAPACK/lapack/archive/v3.10.0.tar.gz
 	source = http://downloads.sourceforge.net/math-atlas/atlas3.10.3.tar.bz2
 	source = Makefile
-	sha256sums = 106087f1bb5f46afdfba7f569d0cbe23dacb9a07cd24733765a0e89dbe1ad573
+	sha256sums = 328c1bea493a32cac5257d84157dc686cc3ab0b004e2bea22044e0a59f6f8a19
 	sha256sums = 2688eb733a6c5f78a18ef32144039adcd62fabce66f2eb51dd59dde806a6d2b7
 	sha256sums = 7627446a0d598b55bc8f2795f8ff2028f134928b9ca597b76bf8dd5622dbff69
 
 pkgname = atlas-lapack
-
