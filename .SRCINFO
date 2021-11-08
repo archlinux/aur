@@ -1,0 +1,20 @@
+pkgbase = python2-flask
+	pkgdesc = Micro webdevelopment framework for Python2
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = http://flask.pocoo.org/
+	arch = any
+	license = custom:BSD
+	makedepends = python2-setuptools
+	makedepends = python2-werkzeug
+	makedepends = python2-jinja
+	makedepends = python2-itsdangerous
+	makedepends = python-click
+	depends = python2-werkzeug
+	depends = python2-jinja
+	depends = python2-itsdangerous
+	depends = python2-click
+	source = python2-flask-1.1.4.tar.gz::https://github.com/pallets/flask/archive/1.1.4.tar.gz
+	sha512sums = e7ca33d599c0f7b83542620e827c999124ffe30e31006815b49993a81f9cf0d61dd0433b73f57f922da5aeb76101beccfe63d9a7236e1850e326f838dc1f453f
+
+pkgname = python2-flask
