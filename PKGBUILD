@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=astc-encoder
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc='A tool for compressing and decompressing images using the ASTC texture compression standard'
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=("git+https://github.com/ARM-software/astc-encoder.git#tag=${pkgver}"
         '020-astc-encoder-use-shared-library.patch')
 sha256sums=('SKIP'
             'SKIP'
-            '9c29ba69d8e9e10683ba965d2e13cdd939e477dcbef6e8d7700dc13d50cc9974'
-            'df157a7b4041da008ca6ebeb7fbe7263ada7298e4e2190ba7f42b7871f881581')
+            '5f14b7a802b0548cdaa05238964d3a0181ea43961782500f7611e6ae9203bf92'
+            'a2f0c20dc8f08c3d8704721e5d6e8462eacf03a7399de7733452e47a9368001f')
 
 prepare() {
     git -C astc-encoder submodule init
