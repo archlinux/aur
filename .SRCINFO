@@ -1,7 +1,7 @@
 pkgbase = azpainterb
 	pkgdesc = PixelArt/Paint/Retouch Software
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://azsky2.html.xdomain.jp/soft/azpainterb.html
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = azpainterb
 	depends = libxext
 	depends = libxi
 	depends = zlib
-	source = http://azsky2.html.xdomain.jp/arc/azpainterb-1.1.3.tar.xz
-	sha256sums = 03777b03e92f679a0fc737e8ef1f851a18c73bd546bb9a4a26d609cad4c6df2b
+	source = https://gitlab.com/azelpg/azpainterb/-/archive/v1.1.3/azpainterb-v1.1.3.tar.bz2
+	sha256sums = 5cdcbc2cfb9ec2e3e005e7770ba6d87a8cab224744d4c2314f430a92b6696466
 
 pkgname = azpainterb
-

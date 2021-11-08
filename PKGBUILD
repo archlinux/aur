@@ -2,14 +2,14 @@
 
 pkgname=azpainterb
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PixelArt/Paint/Retouch Software"
 arch=('i686' 'x86_64')
 url="http://azsky2.html.xdomain.jp/soft/azpainterb.html"
 license=('GPL3')
 depends=('fontconfig' 'freetype2' 'libjpeg-turbo' 'libpng' 'libx11' 'libxext' 'libxi' 'zlib')
-source=("http://azsky2.html.xdomain.jp/arc/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('03777b03e92f679a0fc737e8ef1f851a18c73bd546bb9a4a26d609cad4c6df2b')
+source=("https://gitlab.com/azelpg/azpainterb/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
+sha256sums=('5cdcbc2cfb9ec2e3e005e7770ba6d87a8cab224744d4c2314f430a92b6696466')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
