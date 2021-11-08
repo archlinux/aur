@@ -1,1 +1,4 @@
-*.un~
+/pkg/
+/src/
+/*.tar.zst
+/*.tgz
