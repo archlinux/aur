@@ -1,7 +1,7 @@
 pkgbase = cloudflare-warp-bin
 	pkgdesc = Cloudflare Warp Client
 	pkgver = 2021.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://1.1.1.1
 	install = cloudflare-warp-bin.install
 	changelog = cloudflare-warp-bin.changelog

@@ -1,7 +1,7 @@
 # Maintainer: Leon Mergen <leon@solatis.com>
 pkgname=cloudflare-warp-bin
 pkgver=2021.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cloudflare Warp Client"
 url="https://1.1.1.1"
 license=("unknown")
