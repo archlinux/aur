@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=terri-fried-git
 pkgver=r34.463aa1e
-pkgrel=10
+pkgrel=11
 pkgdesc="A multi-platform C++ game made for Ludum Dare 46"
 arch=('x86_64')
 url="https://github.com/polymarsdev/terri-fried"
