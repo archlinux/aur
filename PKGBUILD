@@ -3,19 +3,18 @@ pkgname=cloudflare-warp-bin
 pkgver=2021.10.0
 pkgrel=2
 pkgdesc="Cloudflare Warp Client"
-
 url="https://1.1.1.1"
 license=("unknown")
-
 depends=("glibc" "dbus" "lz4" "zstd" "xz" "nftables" "libgpg-error")
 checkdepends=("coreutils")
 arch=('x86_64')
 provides=('warp-cli' 'warp-diag' 'warp-svc')
 conflicts=('cloudflare-warp')
-# zcat src/build/usr/usr/share/doc/cloudflare-warp/changelog.gz > cloudflare-warp-bin.changelog
+
+# zcat src/build/usr/share/doc/cloudflare-warp/changelog.gz  > cloudflare-warp-bin.changelog
 changelog=$pkgname.changelog
 
-# in ubuntu: apt-get --print-uris install cloudflare-warp
+# in ubuntu focal: apt-get --print-uris install cloudflare-warp
 source=("https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2021_10_0_1_amd64_916ef55734_amd64.deb")
 
 md5sums=('74db1c816442229cebfab10c66dc580e')
@@ -27,8 +26,7 @@ install=$pkgname.install
 prepare() {
     # We don't extract the usr/ subdirectory, which only contains debian changelogs
     tar -xzOf control.tar.gz ./md5sums \
-        | grep -v changelog \
-        | awk '{print $1, "'"${srcdir}"'/build/usr/" $2}' \
+        | awk '{print $1, "'"${srcdir}"'/build/" $2}' \
         > ${srcdir}/md5sums
 }
 
@@ -46,7 +44,7 @@ build() {
         && tar --extract \
                --gzip \
                --file=data.tar.gz \
-               -C "${srcdir}/build/usr/"
+               -C "${srcdir}/build/"
 }
 
 # Note that `${srcdir}/md5sums` contains the absolute path to the files on disk
@@ -54,13 +52,16 @@ build() {
 check() {
     msg2 "Validating packaged md5sums"
 
-    if ! md5sum --check ${srcdir}/md5sums
+    if ! md5sum --status --check ${srcdir}/md5sums
     then
         error "Packaged md5sum mismatch!"
         exit 1
     fi
+
+    msg2 "Validation succeeded"
 }
 
 package() {
-    cp -R ${srcdir}/build/ ${pkgdir}/
+    mkdir ${pkgdir}/usr/ || true
+    cp -R ${srcdir}/build/{bin,lib} ${pkgdir}/usr/
 }
