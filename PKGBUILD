@@ -1,16 +1,16 @@
 # Maintainer: Atle Solbakken <atle@goliathdns.no>
 pkgname="rrr"
-pkgver=1.19.1
+pkgver=1.21.1
 pkgrel=0
 pkgdesc="Read Route Record is a messaging daemon supporting HTTP, MQTT, TCP, UDP +++"
 arch=('i686' 'arm64' 'x86_64' 'aarch64')
 url="https://www.github.com/atlesn/rrr"
 license=('GPL')
-depends=('python3' 'perl' 'mariadb-clients' 'libnghttp2' 'json-c' 'libevent')
+depends=('python3' 'perl' 'mariadb-clients' 'libnghttp2' 'json-c' 'libevent' 'jemalloc')
 optdepends=('systemd: systemd daemon support')
 makedepends=('git')
 provides=('rrr')
-source=("git+https://github.com/atlesn/$pkgname.git#tag=v1.19-1")
+source=("git+https://github.com/atlesn/$pkgname.git#tag=v1.21-1")
 md5sums=('SKIP')
 
 pkgver() {
