@@ -2,7 +2,7 @@
 
 pkgname=qt5-jpegxl-image-plugin-git
 _pkgname=qt-jpegxl-image-plugin
-pkgver=0.3.1.r0.gc33ed32
+pkgver=0.3.2.r0.g811669b
 pkgrel=1
 pkgdesc='Qt5 plug-in to allow Qt5 and KDE based applications to read/write JXL images (git version)'
 arch=('x86_64')
