@@ -1,6 +1,6 @@
 # Maintainer: Hunter Brodie <hunterbrodie@gmail.com>
 pkgname='aurora-git'
-pkgver=r5.a90eeb3
+pkgver=r6.0e6df8b
 pkgrel=1
 pkgdesc="A minimal AUR helper written in Rust"
 arch=('x86_64')
