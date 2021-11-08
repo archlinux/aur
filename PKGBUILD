@@ -4,13 +4,13 @@ pkgname=hqplayer-embedded
 _rpmver=4.27.0-70
 _debpkgver=4.27.0-93
 pkgver=4.27.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'aarch64')
 url="http://www.signalyst.com/custom.html"
 license=('custom')
-depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'zip' 'unzip' 'wavpack' 'gupnp' 'openmp')
+depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'zip' 'unzip' 'wavpack' 'gupnp' 'openmp' 'mpg123')
 conflicts=('hqplayer-embedded-amd' 'hqplayer-embedded-rocm')
 source=('hqplayerd.service'
         'hqplayerd_user.service'
