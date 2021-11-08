@@ -1,7 +1,7 @@
 pkgbase = ouch-git
-	pkgdesc = Painless compression and decompression in the terminal
-	pkgver = r385.a1c4f03
-	pkgrel = 3
+	pkgdesc = Painless compression and decompression in the terminal (git version)
+	pkgver = r397.abf1d4e
+	pkgrel = 1
 	url = https://github.com/ouch-org/ouch/
 	arch = x86_64
 	license = MIT

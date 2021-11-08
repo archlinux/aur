@@ -2,9 +2,9 @@
 
 pkgname=ouch-git
 _pkgname=${pkgname%-git}
-pkgver=r389.2af0464
+pkgver=r397.abf1d4e
 pkgrel=1
-pkgdesc="Painless compression and decompression in the terminal"
+pkgdesc="Painless compression and decompression in the terminal (git version)"
 arch=('x86_64')
 url="https://github.com/ouch-org/ouch/"
 license=('MIT')
