@@ -1,11 +1,11 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.14.0.r330.g0855cdac
+pkgver=0.14.0.r339.ge326b769
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
-url=https://github.com/swaywm/wlroots
+url=https://gitlab.freedesktop.org/wlroots/wlroots.git
 arch=(x86_64)
 provides=("libwlroots.so" "wlroots=${pkgver%%.r*}")
 conflicts=(wlroots wlroots-git)
@@ -51,7 +51,7 @@ pkgver () {
 prepare () {
 	cd "${pkgname}"
 	patch -Np1 < "${srcdir}/0001-xwayland-add-support-for-global-scale-factor.patch"
-        patch -Np1 < "${srcdir}/0002-xwayland-add-support-for-changing-global-scale-facto.patch" 
+        patch -Np1 < "${srcdir}/0002-xwayland-add-support-for-changing-global-scale-facto.patch"
 }
 
 build () {
