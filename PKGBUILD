@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.4.0.r0.73d141ed
+pkgver=0.4.5.r97.ebfb68f7
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. (supports Wayland)"
 arch=("x86_64")
@@ -23,7 +23,7 @@ md5sums=(
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --tags --match "[0-9].[0-9].[0-9]" --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
