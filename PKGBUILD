@@ -22,28 +22,45 @@ md5sums=('74db1c816442229cebfab10c66dc580e')
 sha256sums=('1e724fd480ed96b8a2bd9dcf65129ae4556097b98b96d062de3a5134d5f58270')
 install=$pkgname.install
 
+# The .deb package contains the md5sums of the individual files as well -- we'll extract
+# it, and update the paths to those files.
 prepare() {
+    # We don't extract the usr/ subdirectory, which only contains debian changelogs
     tar -xzOf control.tar.gz ./md5sums \
-        | grep -v 'usr' \
-        | awk '{print $1, "'"${srcdir}"'/usr/" $2}' \
+        | grep -v changelog \
+        | awk '{print $1, "'"${srcdir}"'/build/usr/" $2}' \
         > ${srcdir}/md5sums
 }
 
+# Prepares our source directory, all cloudflare expected output will be placed
+# in `build/`
 build() {
-    if [[ -d ${srcdir}/usr/ ]]
+    # This is not stricly necessary, but it ensures we have a clean build every time.
+    if [[ -d ${srcdir}/build/ ]]
     then
-        rm -rf ${srcdir}/usr/
+        rm -rf ${srcdir}/build/
     fi
 
-    mkdir ${srcdir}/usr/ \
-          && tar -xzf data.tar.gz  --exclude="usr" -C "${srcdir}/usr/"
+    # We don't extract the usr/ subdirectory, which only contains debian changelogs
+    mkdir -p ${srcdir}/build/usr/ \
+        && tar --extract \
+               --gzip \
+               --file=data.tar.gz \
+               -C "${srcdir}/build/usr/"
 }
 
+# Note that `${srcdir}/md5sums` contains the absolute path to the files on disk
+# in the src paths.
 check() {
-    echo "==> Validating package contents"
-    md5sum -c ${srcdir}/md5sums
+    msg2 "Validating packaged md5sums"
+
+    if ! md5sum --check ${srcdir}/md5sums
+    then
+        error "Packaged md5sum mismatch!"
+        exit 1
+    fi
 }
 
 package() {
-    mv ${srcdir}/usr/ ${pkgdir}/usr/
+    cp -R ${srcdir}/build/ ${pkgdir}/
 }
