@@ -18,6 +18,6 @@ md5sums=('SKIP')
 package() {
     install -Dm644 "$startdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/$_pkgname/README.md" "$pkgdir/usr/share/$pkgname/README.md"
-    install -Dm644 "$srcdir/$_pkgname/misc/demo.gif" "$pkgdir/usr/share/$pkgname/extra/demo.gif"
+    install -Dm644 "$srcdir/$_pkgname/misc/demo.gif" "$pkgdir/usr/share/$pkgname/misc/demo.gif"
     install -Dm755 $srcdir/$_pkgname/reSnap.sh $pkgdir/usr/bin/resnap
 }
