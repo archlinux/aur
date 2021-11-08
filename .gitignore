@@ -1,0 +1,5 @@
+*.pkg.tar.zst
+adwaita-blue-icon-theme/
+pkg/
+src/
+

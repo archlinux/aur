@@ -1,0 +1,14 @@
+pkgbase = adwaita-blue-icon-theme-git
+	pkgdesc = Adwaita icon theme with blue folder icons
+	pkgver = 17
+	pkgrel = 1
+	url = https://github.com/realmazharhussain/adwaita-blue-icon-theme
+	arch = any
+	license = GPL
+	depends = adwaita-icon-theme
+	provides = adwaita-blue-icon-theme=1.0.1
+	conflicts = adwaita-blue-icon-theme
+	source = adwaita-blue-icon-theme::git+https://github.com/realmazharhussain/adwaita-blue-icon-theme.git
+	md5sums = SKIP
+
+pkgname = adwaita-blue-icon-theme-git
