@@ -10,6 +10,8 @@ url="https://github.com/jwilk/fbcat"
 license=("GPL2")
 optdepends=('imagemagick' 'netpbm' 'graphicsmagick')
 makedepends=('docbook-xsl')
+provides=('fbgrab')
+conflicts=('fbgrab')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.asc")
 sha256sums=('062ebd198814666bd1672ffadf2c820c344fc003d6e164ec968fac233b70061f'
