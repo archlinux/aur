@@ -1,6 +1,6 @@
 pkgname=bricscad-fr_fr
-pkgver=21.2.06
-pkgrel=2
+pkgver=21.2.07
+pkgrel=1
 pkgdesc="Logiciel de CAO DWG"
 arch=("x86_64")
 url="https://www.bricsys.com"
@@ -10,7 +10,7 @@ makedepends=(python-requests python-beautifulsoup4)
 provides=('bricscad')
 _lang=fr_FR
 _os=2
-_version=7021
+_version=7137
 
 # To download you must be logged in. The official website has no permanent link.
 DLAGENTS=("https::/usr/bin/python $PWD/dlagent.py %u %o $_os $_version")
@@ -69,5 +69,5 @@ post_remove() {
     if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then gtk-update-icon-cache --force /usr/share/icons/gnome ; fi
 }
 md5sums=('6327d08422ca88ee89393e82727b2a6e'
-         '0b190e5a07ea1e6de7cad948e0305cb8'
+         '6605c56b8be8cd908f07920b297d7ea9'
          'c1c55da4102090d790205b36ab213f94')
