@@ -1,0 +1,17 @@
+pkgbase = tcl-combobox
+	pkgdesc = A megawidget set based on [incr Tcl] and [incr Tk]
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://core.tcl-lang.org/jenglish/gutter/packages/combobox.html
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = make
+	makedepends = gcc
+	depends = tcl
+	depends = tk
+	depends = itk
+	source = http://tcltk.co.kr/files/combobox-2.3.zip
+	md5sums = 36e76912017d54481ac9567ab4abada6
+
+pkgname = tcl-combobox
