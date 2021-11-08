@@ -3,7 +3,7 @@
 
 _sieve='sieve'
 pkgname="thunderbird-${_sieve}"
-pkgver="0.5.3"
+pkgver="0.6.1"
 pkgrel='1'
 pkgdesc='This Extension implements the ManageSieve protocol for securely managing Sieve Script on a remote IMAP server'
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/thsmi/${_sieve}"
 license=('AGPL')
 depends=('thunderbird')
 source=("${url}/releases/download/${pkgver}/${_sieve}-${pkgver}.xpi")
-sha256sums=('60daabbe67f6cc5f4f41a9952fdf43884b5fd304b6070a6fd04e8707fdf2ba0e')
+sha256sums=('844a0b20af8b529d59e65c6b2218692269edfd0eb5e63e5d567363580a896143')
 noextract=("${source[@]%%::*}")
 
 package() {
