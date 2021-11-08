@@ -1,8 +1,8 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=lagrange
-pkgrel=2
-pkgver=1.8.0
+pkgrel=1
+pkgver=1.8.1
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -20,10 +20,12 @@ depends=(
     "openssl"
     "pcre"
     "sdl2"
-    "zip"
 )
 optdepends=("mpg123")
-makedepends=("cmake")
+makedepends=(
+    "cmake"
+    "zip"
+)
 
 build() {
     cmake -B build -S "$pkgname-${pkgver}" \
@@ -41,4 +43,4 @@ package() {
     make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('eff814565193b68726b04cf88e2c9c85d01c245175b40e73475565e10f6f571b')
+sha256sums=('5ecfbce492ffc2905f4980a95ec1f1b3118374c5de37120ad020d1fdaba19b32')
