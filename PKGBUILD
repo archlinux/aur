@@ -2,7 +2,7 @@
 
 pkgname=nerd-fonts-fantasque-sans-mono
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Patched font FantasqueSansMono from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
