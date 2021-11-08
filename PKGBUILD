@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com> 
 
 pkgname=libpamac
-pkgver=11.1.3
+pkgver=11.2.0
 pkgrel=1
 pkgdesc="Library for Pamac package manager based on libalpm"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 
 options=(!emptydirs)
 conflicts=('libpamac-aur' 'libpamac-full')
 source=(https://gitlab.manjaro.org/applications/libpamac/-/archive/$pkgver/libpamac-$pkgver.tar.bz2)
-sha256sums=('4618dce17f66857d4a2872fccfa60308e84dee83756524f6b5df59472f22496b')
+sha256sums=('8f05c025934756f77a1a8f00e3ae5abb710fda078876f8e44e0b300fd49d1347')
 
 build() {
   cd $pkgname-$pkgver
