@@ -129,13 +129,13 @@ _use_pgo=
 
 
 if [ "$_cpusched" = "cacule" ]  && [ -n "$_use_llvm_lto" ]; then
-  pkgbase=linux-cachyos-cacule-lto
+  pkgbase=linux-cacule-lto
 elif  [ "$_cpusched" = "rdb" ] && [ -n "$_use_llvm_lto" ]; then
-  pkgbase=linux-cachyos-cacule-rdb-lto
+  pkgbase=linux-cacule-rdb-lto
 elif [ "$_cpusched" = "cacule" ]; then
-  pkgbase=linux-cachyos-cacule
+  pkgbase=linux-cacule
 elif [ "$_cpusched" = "rdb" ]; then
-  pkgbase=linux-cachyos-cacule-rdb
+  pkgbase=linux-cacule-rdb
 fi
 _major=5.15
 _minor=1

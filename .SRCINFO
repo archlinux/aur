@@ -1,4 +1,4 @@
-pkgbase = linux-cachyos-cacule
+pkgbase = linux-cacule
 	pkgdesc = Linux CacULE scheduler Kernel by CachyOS and with some other patches and other improvements
 	pkgver = 5.15.1
 	pkgrel = 3
@@ -82,7 +82,7 @@ pkgbase = linux-cachyos-cacule
 	sha512sums = f78f8860df7e26dd13ec0cd7b51b1c820886603ceefa38fbb0e3dc297773d04c89c958b244c899cced4d2f5dfbe8da5cf4b6c41d767dc7a7e3c94059101d6d40
 	sha512sums = a54c01ba42e7d5f9433dacaa21f656d8aefdb6a5228fbca2b8e55b26eb02b35327ae3fd98a26a708452b8559e7f4acb32b6e685e26edc64497d1b7d10c5d86e1
 
-pkgname = linux-cachyos-cacule
+pkgname = linux-cacule
 	pkgdesc = The Linux CacULE scheduler Kernel by CachyOS and with some other patches and other improvements kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -93,7 +93,7 @@ pkgname = linux-cachyos-cacule
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
-pkgname = linux-cachyos-cacule-headers
+pkgname = linux-cacule-headers
 	pkgdesc = Headers and scripts for building modules for the Linux CacULE scheduler Kernel by CachyOS and with some other patches and other improvements
-	depends = linux-cachyos-cacule=5.15.1
+	depends = linux-cacule=5.15.1
 	depends = pahole
