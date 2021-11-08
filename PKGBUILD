@@ -3,11 +3,11 @@
 pkgname=yubioath-desktop
 pkgdesc='Yubico Authenticator for Desktop'
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-desktop'
 license=('BSD')
-depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2'
+depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2'
          'python-pyotherside' 'qt5-graphicaleffects' 'qt5-multimedia'
          'ccid' 'pcsclite' 'yubikey-manager')
 makedepends=('git' 'python')
