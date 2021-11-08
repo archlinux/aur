@@ -1,0 +1,14 @@
+pkgbase = python-pymarshal
+	pkgdesc = Pythonic implementation of Golang's (un)marshalling of structs to/from various data serialization formats
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/stargateaudio/pymarshal
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-pytest-runner
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pymarshal/pymarshal-2.2.0.tar.gz
+	sha256sums = 2f2377170261be43233375c9c2726fc9b8f9daacc75eb18458d2e1c6cd8578a2
+
+pkgname = python-pymarshal
