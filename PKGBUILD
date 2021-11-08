@@ -3,7 +3,7 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
@@ -29,7 +29,8 @@ optdepends=('python-google-cloud-storage: support for Google Cloud'
             'python-pyarrow: support for HDFS remote'
 	    )
 makedepends=('git')
-source=("git+${url}#tag=$pkgver")
+
+source=("git+${url}/#commit=4175f9ffa4948157436283bef11153a7233e90ca")
 sha256sums=('SKIP')
 
 package() {
