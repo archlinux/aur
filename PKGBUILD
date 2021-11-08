@@ -2,7 +2,7 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-git
-pkgver=r641.e330e11e
+pkgver=r644.91ad4276
 pkgrel=1
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
@@ -14,8 +14,10 @@ optdepends=('tcl: bluesim and bluetcl')
 # workaround for pkgrel overwritten on regen (by TkG)
 # rebuild whenever some haskell depend is rebuilt
 eval pkgrel=$(pacman -Si ${depends[@]} | awk '/Version/{sum+=substr($0,match($0,/[^-]+$/))}END{print sum}')
-source=("git+https://github.com/b-lang-org/bsc.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/b-lang-org/bsc.git"
+        "git+https://github.com/SRI-CSL/yices2.git")
+sha256sums=('SKIP'
+            'SKIP')
 _prefix="/opt/bluespec"
 
 pkgver() {
@@ -25,7 +27,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/bsc"
-  git submodule update --init --recursive
+  git submodule init
+  git config submodule.src/vendor/yices/v2.6/yices2.url "$srcdir/yices2"
+  git submodule update
 }
 
 build(){
