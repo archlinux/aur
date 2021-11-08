@@ -1,0 +1,17 @@
+pkgbase = docfx
+	pkgdesc = Tools for building and publishing API documentation for .NET projects
+	pkgver = 2.58.9
+	pkgrel = 1
+	url = https://dotnet.github.io/docfx/
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	depends = mono-msbuild
+	noextract = docfx.zip
+	options = !strip
+	source = docfx.zip::https://github.com/dotnet/docfx/releases/download/v2.58.9/docfx.zip
+	source = run.sh
+	sha256sums = 18e2277704b318d5c785681b69296aa072eca30ee5cab5b19de77ede830bbd3c
+	sha256sums = d7d9862b9d522c46587d21c5a88fde741cf12542587649426662b79921a6e3b0
+
+pkgname = docfx
