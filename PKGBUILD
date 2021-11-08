@@ -7,7 +7,7 @@ pkgdesc="Cloudflare Warp Client"
 url="https://developers.cloudflare.com/warp-client/"
 license=("unknown")
 
-depends=("glibc" "dbus")
+depends=("glibc" "dbus" "lz4" "zstd" "xz" "nftables" "libgpg-error")
 arch=('x86_64')
 provides=('warp-cli' 'warp-diag' 'warp-svc')
 conflicts=('cloudflare-warp')
