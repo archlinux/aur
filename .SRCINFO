@@ -1,7 +1,7 @@
 pkgbase = bricscad-fr_fr
 	pkgdesc = Logiciel de CAO DWG
-	pkgver = 21.2.06
-	pkgrel = 2
+	pkgver = 21.2.07
+	pkgrel = 1
 	url = https://www.bricsys.com
 	arch = x86_64
 	license = Custom:bricscad
@@ -16,10 +16,10 @@ pkgbase = bricscad-fr_fr
 	provides = bricscad
 	noextract = gtk3-1:3.24.30-2-x86_64.pkg.tar.zst
 	source = dlagent.py
-	source = BricsCAD-V21.2.06-1-fr_FR.x86_64.rpm::https://www.bricsys.com
+	source = BricsCAD-V21.2.07-1-fr_FR.x86_64.rpm::https://www.bricsys.com
 	source = gtk3-1:3.24.30-2-x86_64.pkg.tar.zst::https://archive.archlinux.org/packages/g/gtk3/gtk3-1%3A3.24.30-2-x86_64.pkg.tar.zst
 	md5sums = 6327d08422ca88ee89393e82727b2a6e
-	md5sums = 0b190e5a07ea1e6de7cad948e0305cb8
+	md5sums = 6605c56b8be8cd908f07920b297d7ea9
 	md5sums = c1c55da4102090d790205b36ab213f94
 
 pkgname = bricscad-fr_fr
