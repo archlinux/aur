@@ -25,6 +25,6 @@ the system configuration (in `/etc/addmagrc`).
 # LICENSE & COPYRIGHT
 
 Available under the terms of the **MIT license**. See included LICENSE file for
-the full text of the lisence.
+the full text of the license.
 
 Copyright 2021 **aetherised** <<aetherised@gmail.com>>
