@@ -8,6 +8,7 @@ url="https://1.1.1.1"
 license=("unknown")
 
 depends=("glibc" "dbus" "lz4" "zstd" "xz" "nftables" "libgpg-error")
+checkdepends=("coreutils")
 arch=('x86_64')
 provides=('warp-cli' 'warp-diag' 'warp-svc')
 conflicts=('cloudflare-warp')
