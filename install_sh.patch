@@ -1,18 +1,18 @@
---- install.sh.orig	2020-12-10 06:36:44.000000000 +0100
-+++ install.sh	2020-12-30 14:54:50.834734784 +0100
-@@ -10,7 +10,7 @@
- mkdir -p ${PREFIX}/share/anki
- cp -av * ${PREFIX}/share/anki/
- mkdir -p ${PREFIX}/bin
--ln -sf ${PREFIX}/share/anki/bin/Anki ${PREFIX}/bin/anki
-+ln -sf /usr/share/anki/bin/Anki ${PREFIX}/bin/anki
+--- install.sh.orig 2020-12-10 06:36:44.000000000 +0100
++++ install.sh  2020-12-30 14:54:50.834734784 +0100
+@@ -15,7 +15,7 @@
+ mkdir -p "$PREFIX"/share/anki
+ cp -av * "$PREFIX"/share/anki/
+ mkdir -p "$PREFIX"/bin
+-ln -sf "$PREFIX"/share/anki/bin/Anki "$PREFIX"/bin/anki
++ln -sf /usr/share/anki/bin/Anki "$PREFIX"/bin/anki
  # fix a previous packaging issue where we created this as a file
- (test -f ${PREFIX}/share/applications && rm ${PREFIX}/share/applications)||true
- mkdir -p ${PREFIX}/share/pixmaps
-@@ -21,9 +21,4 @@
- mv anki.desktop ${PREFIX}/share/applications/;\
- mv anki.1 ${PREFIX}/share/man/man1/)
- 
+ (test -f "$PREFIX"/share/applications && rm "$PREFIX"/share/applications)||true
+ mkdir -p "$PREFIX"/share/pixmaps
+@@ -26,9 +26,4 @@
+ mv anki.desktop "$PREFIX"/share/applications/;\
+ mv anki.1 "$PREFIX"/share/man/man1/)
+
 -xdg-mime install anki.xml --novendor
 -xdg-mime default anki.desktop application/x-colpkg
 -xdg-mime default anki.desktop application/x-apkg
