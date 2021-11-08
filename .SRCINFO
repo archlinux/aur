@@ -1,7 +1,7 @@
 pkgbase = torch7-cutorch-git
 	pkgdesc = A CUDA backend for Torch7
 	pkgver = r1026.5e9d86c
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/torch/cutorch
 	arch = x86_64
 	arch = i686
@@ -14,8 +14,9 @@ pkgbase = torch7-cutorch-git
 	conflicts = torch7-cutorch
 	source = torch7-cutorch-git::git+https://github.com/torch/cutorch
 	source = THCAtomics.cuh.patch
+	source = isManaged.patch
 	sha512sums = SKIP
 	sha512sums = 73de865f999774adeb55a11ff9354740373702276ebdc1b44a936f361254745241fafa856bb9b0973daa0246822ed6813cb443798e9d471feb774aafd3cfb5e9
+	sha512sums = aa5ffbf974bdbf71b47bfcd44717f7822c77ce366a890f5ea04ea467ab49e69106b3ef68f625ecb52e2df2b89c4ca881084a1dbf37d314b06cc10e7a842a56bc
 
 pkgname = torch7-cutorch-git
-

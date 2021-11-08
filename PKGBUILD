@@ -1,8 +1,8 @@
-# Maintainer: Jingbei Li <i@jingbei.li>
+# Maintainer: Rein Fernhout (LevitatingBusinessMan) <rein@reinfernhout.xyz>
 pkgdesc='A CUDA backend for Torch7'
 pkgname='torch7-cutorch-git'
 pkgver=r1026.5e9d86c
-pkgrel=1
+pkgrel=6
 makedepends=('cmake' 'git')
 depends=('torch7-git>=r819' 'cuda')
 conflicts=('torch7-cutorch')
