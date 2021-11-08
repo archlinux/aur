@@ -1,6 +1,6 @@
 pkgbase = termius-app
         pkgdesc = Desktop SSH Client
-        pkgver = 7.23.2
+        pkgver = 7.25.0
         pkgrel = 1
         url = https://www.termius.com/
         arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = termius-app
         depends = libxtst
         depends = xdg-utils
         depends = at-spi2-core
-        depends = libuuid.so
         depends = libappindicator-gtk3
         depends = libsecret
         provides = termius

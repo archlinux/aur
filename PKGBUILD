@@ -1,8 +1,8 @@
-# Maintainer: Artemii Sudakov <finziyr@yandex,ru>
+# Maintainer: Samuel Corsi-House <chouse.samuel@gmail.com>
 
 pkgname=termius-app
 _pkgname=${pkgname%-*}
-pkgver=7.23.2
+pkgver=7.25.0
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
@@ -10,8 +10,8 @@ arch=('x86_64')
 license=('custom')
 conflicts=('termius')
 provides=('termius')
-# Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libappindicator3-1, libsecret-1-0
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libuuid.so' 'libappindicator-gtk3' 'libsecret')
+# Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libuuid1, libappindicator3-1, libsecret-1-0
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libappindicator-gtk3' 'libsecret')
 makedepends=('grep' 'sed')
 # Now I will specify the dependencies that I got from the ldd output
 # You can view them by executing:
