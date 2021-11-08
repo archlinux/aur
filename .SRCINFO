@@ -1,6 +1,6 @@
 pkgbase = alchemy-next-viewer-bin
 	pkgdesc = Next generation of the Alchemy Viewer, an open-source Second Life client - Official CI Project build
-	pkgver = 6.4.23.1220
+	pkgver = 6.4.23.1264
 	pkgrel = 1
 	url = https://www.alchemyviewer.org
 	arch = x86_64
@@ -33,11 +33,11 @@ pkgbase = alchemy-next-viewer-bin
 	optdepends = nvidia-libgl: NVIDIA support
 	optdepends = nvidia-utils: NVIDIA support
 	provides = alchemy-next
-	source = Alchemy-Next Project AgileAkita CI Build::https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/Alchemy_Project_AgileAkita/6.4.23.1220/Alchemy_Project_AgileAkita_6_4_23_1220_x86_64.tar.bz2
+	source = alchemy-next-ci::https://git.alchemyviewer.org/alchemy/alchemy-next/-/package_files/914/download
 	source = alchemy-next.desktop
-	sha1sums = b096624adab1c99cb2ad95572ab186f7c768eb19
+	sha1sums = 340d20d7dc877050aeb68708db8e88d5bc8cbe9b
 	sha1sums = ceda56749a643b5baa17a236dfb89f76b8350f78
-	b2sums = 02aaab99adc8c492cca95b410632e3a5d0c6e6cd4a6d3308ad4f40f14249753592e666f1a0825ec982df0420c1c5f8ad50457e9e2af62048f04dcf82e39d58ff
+	b2sums = 2409e97dfed623d7bbc0d788f13be1d4f3be8909ff0aedde52930b22a03380d71d491a575ef07ce895fbfe4eda95759dc63cd356353d860ae534e1dd8a04c566
 	b2sums = 152ed008f85eb748528e74d07fcce577f3d6e7ebf4e1224242c10af9be420d9513db4ad0b252600ebac26949f69d73809554fe6a6d1bf2841af28e0da65ffc91
 
 pkgname = alchemy-next-viewer-bin
