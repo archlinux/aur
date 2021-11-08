@@ -1,7 +1,7 @@
 pkgbase = python-tensorly
 	pkgdesc = Simple and Fast Tensor Learning in Python
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://tensorly.org/stable/home.html
 	changelog = python-tensorly.changelog
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-tensorly
 	optdepends = mxnet
 	optdepends = python-cupy
 	optdepends = python-jax
-	source = tensorly-0.6.0.tar.gz::https://github.com/tensorly/tensorly/archive/0.6.0.tar.gz
-	sha256sums = e36a9124efd34f76fc727b0c45e92655a256231b56897591ee0d451ada279262
+	source = tensorly-0.7.0.tar.gz::https://github.com/tensorly/tensorly/archive/0.7.0.tar.gz
+	sha256sums = af6d61d58829d7e3267db59d0a8bf88a58ccf22e7acc9fbe1520dc20fde5cdc9
 
 pkgname = python-tensorly
