@@ -3,7 +3,7 @@
 
 pkgname=fbcat
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Framebuffer screenshot tool"
 arch=('x86_64' 'i686')
 url="https://github.com/jwilk/fbcat"
@@ -18,16 +18,18 @@ sha256sums=('062ebd198814666bd1672ffadf2c820c344fc003d6e164ec968fac233b70061f'
             'SKIP')
 validpgpkeys=('CDB5A1243ACDB63009AD07212D4EB3A6015475F5')
 
-build() {
+prepare() {
 	cd "$pkgname-$pkgver"
-	make
-	(cd doc && make)
+	sed -i -e '/PREFIX/s/=/?=/' -e '/DESTDIR/s/=/?=/' Makefile
+}
+
+build() {
+	make -C "$pkgname-$pkgver"
+	make -C "$pkgname-$pkgver/doc"
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -D fb{cat,grab} -t "$pkgdir/usr/bin/"
-	install -D -m644 doc/fb{cat,grab}.1 -t "$pkgdir/usr/share/man/man1/"
+	make -C "$pkgname-$pkgver" install PREFIX=/usr DESTDIR="$pkgdir/"
 }
 
 # vim:syntax=sh
