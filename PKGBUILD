@@ -2,16 +2,16 @@
 
 pkgname=game-devices-udev
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Udev rules for controllers"
-url='https://gitlab.com/fabis_cafe/game-devices-udev'
+url='https://gitlab.com/fabiscafe/game-devices-udev'
 arch=('any')
 license=('MIT')
 depends=('udev')
 makedepends=('git')
 install="install"
 _commit=381342ecb46818c663e170c4d967bbe869d98ae7 #tags/0.16^0
-source=("git+https://gitlab.com/fabis_cafe/game-devices-udev.git#commit=${_commit}"
+source=("git+${url}.git#commit=${_commit}"
         "uinput.conf")
 sha512sums=('SKIP'
             'a9b069ed121ffeee887e0583d8cb46035ecf1fa90a26a4ecb3aa11ff03178b2b08621f6676db6b2350f290694c04aabcf36f2ce3e0813a76dde9a33555edb112')
