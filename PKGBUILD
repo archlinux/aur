@@ -524,13 +524,10 @@ YEET
   plainerr "Edit your makepkg.conf and set appropriate MAKEFLAGS for your system to remove this warning"
   plainerr "or run makepkg with 'env no_makeflags_check=y makepkg ...'"
   plainerr ""
-  printf -- "${ALL_OFF}${BOLD} > ${YELLOW}Press CTRL-C now to cancel and fix this before continuing ${ALL_OFF}${BOLD}<\n" >&2
+  printf -- "${ALL_OFF}${BOLD} > ${YELLOW}Pressing CTRL-C now and fixing this before continuing is a very good idea ${ALL_OFF}${BOLD}<\n" >&2
   plainerr ""
-  printf -- "-> Continuing in 60s" >&2
-  for i in {1..60}; do
-    printf "." >&2
-    sleep 1
-  done
+  printf -- "-> Continuing in 60s " >&2
+  for i in {1..60}; do printf "." >&2 && sleep 1; done
   echo
 }
 
