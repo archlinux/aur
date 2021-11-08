@@ -1,0 +1,16 @@
+pkgbase = onnx
+	pkgdesc = C++ library for the open standard for machine learning interoperability
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://onnx.ai
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = python
+	depends = glibc
+	depends = protobuf
+	source = onnx-1.11.0.tar.gz::https://github.com/onnx/onnx/archive/v1.11.0.tar.gz
+	b2sums = dfc8ab81d4776f806fa26c751c1eb1e19ea4cf9f0aa498880dc18eca160fdd9c43eda0077124ea7a674082e5ed93de7497411c48c3f9a12146905072e6477af6
+
+pkgname = onnx
