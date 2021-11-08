@@ -1,0 +1,13 @@
+diff --git a/init.c b/init.c
+index 8b32a1a..fd17692 100644
+--- a/init.c
++++ b/init.c
+@@ -935,7 +935,7 @@ static int cutorch_isManagedPtr(lua_State *L)
+     lua_pushboolean(L, 0);
+   } else {
+     THCudaCheck(res);
+-    lua_pushboolean(L, attributes.isManaged);
++    lua_pushboolean(L, attributes.type == 3);
+   }
+   return 1;
+ }

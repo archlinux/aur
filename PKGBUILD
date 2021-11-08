@@ -2,7 +2,7 @@
 pkgdesc='A CUDA backend for Torch7'
 pkgname='torch7-cutorch-git'
 pkgver=r1026.5e9d86c
-pkgrel=5
+pkgrel=1
 makedepends=('cmake' 'git')
 depends=('torch7-git>=r819' 'cuda')
 conflicts=('torch7-cutorch')
@@ -10,8 +10,8 @@ provides=('torch7-cutorch')
 arch=('x86_64' 'i686')
 url='https://github.com/torch/cutorch'
 license=('BSD')
-source=("${pkgname}::git+${url}" 'THCAtomics.cuh.patch')
-sha512sums=('SKIP' '73de865f999774adeb55a11ff9354740373702276ebdc1b44a936f361254745241fafa856bb9b0973daa0246822ed6813cb443798e9d471feb774aafd3cfb5e9')
+source=("${pkgname}::git+${url}" 'THCAtomics.cuh.patch' 'isManaged.patch')
+sha512sums=('SKIP' '73de865f999774adeb55a11ff9354740373702276ebdc1b44a936f361254745241fafa856bb9b0973daa0246822ed6813cb443798e9d471feb774aafd3cfb5e9' 'aa5ffbf974bdbf71b47bfcd44717f7822c77ce366a890f5ea04ea467ab49e69106b3ef68f625ecb52e2df2b89c4ca881084a1dbf37d314b06cc10e7a842a56bc')
 
 pkgver(){
 	cd "${pkgname}"
@@ -27,6 +27,8 @@ prepare(){
 
 	# https://github.com/torch/cutorch/issues/834
 	patch -p1 < "${srcdir}"/THCAtomics.cuh.patch
+	# https://github.com/torch/cutorch/issues/848
+	patch -p1 < "${srcdir}"/isManaged.patch
 }
 
 build(){
