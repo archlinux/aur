@@ -1,0 +1,15 @@
+pkgbase = meme-cli
+	pkgdesc = A command line utility for creating memes
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/nomad-software/meme
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	options = !emptydirs
+	source = meme-1.0.1.tar.gz::https://github.com/nomad-software/meme/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 1fe4733e77ed49ca4634c5adcf3a5c506ee4e96506f96778c43f47b06c4b9bdc
+
+pkgname = meme-cli
