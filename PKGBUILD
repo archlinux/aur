@@ -1,27 +1,25 @@
-# Maintainer: Wouter Wijsman <wwijsman@live.nl>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Wouter Wijsman <wwijsman@live.nl>
 pkgname=minigalaxy
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple GOG client for Linux"
 arch=('any')
-url="https://github.com/sharkwouter/minigalaxy"
-license=('GPL-3')
-source=(https://github.com/sharkwouter/minigalaxy/archive/"$pkgver".tar.gz)
-md5sums=('4820ef83640f4206e43760757e76b647')
-depends=('python' 'python-requests' 'python-gobject' 'gtk3' 'webkit2gtk')
-optdepends=('scummvm' 'dosbox' 'wine')
-makedepends=('python' 'python-setuptools')
+url="https://sharkwouter.github.io/minigalaxy"
+license=('GPL3' 'CC-BY-3.0')
+depends=('gtk3' 'python-gobject' 'python-requests' 'webkit2gtk')
+makedepends=('python-setuptools')
+optdepends=('dosbox' 'scummvm' 'wine')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sharkwouter/minigalaxy/archive/$pkgver.tar.gz")
+sha256sums=('581e7abfb4af0c01d795dc57a93b1305644d8bdd11ecb533bb2787f85b4bc992')
 
 build() {
-        cd "$srcdir/$pkgname-$pkgver"
-        python setup.py build
+  cd "$srcdir/$pkgname-$pkgver"
+  python setup.py build
 }
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --prefix=/usr --skip-build
-	install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -D -m 644 THIRD-PARTY-LICENSES.md "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-LICENSES.md"
-	install -D -m 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -D -m 644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  cd "$srcdir/$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 THIRD-PARTY-LICENSES.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
