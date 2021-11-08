@@ -3,7 +3,7 @@
 
 _pkgname=nss-mdns
 pkgname=lib32-nss-mdns
-pkgver=0.15
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="glibc plugin providing host name resolution via mDNS"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('lib32-glibc')
 makedepends=('lib32-gcc-libs')
 source=("https://github.com/lathiat/nss-mdns/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a1814ed139bb0aa47b299c35b6ff8fc03a209464f55b8bfb4ef95ac1af65f507')
+sha256sums=('ddf71453d7a7cdc5921fe53ef387b24fd0c3c49f4dcf94a2a437498596761a21')
 
 build() {
     export CC="gcc -m32"
