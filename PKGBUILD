@@ -13,7 +13,7 @@ pkgname=(
 pkgver=6.0.0.sdk100
 _runtimever=6.0.0
 _sdkver=6.0.100
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -49,8 +49,8 @@ package_dotnet-runtime-bin() {
            'zlib'
   )
   optdepends=('lttng-ust: CoreCLR tracing')
-  provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-5.0")
-  conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-5.0")
+  provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-6.0")
+  conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-6.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -60,8 +60,8 @@ package_dotnet-runtime-bin() {
 package_aspnet-runtime-bin() {
   pkgdesc='The ASP.NET Core runtime (binary)'
   depends=('dotnet-runtime-bin')
-  provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-5.0")
-  conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-5.0")
+  provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-6.0")
+  conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-6.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -76,8 +76,8 @@ package_dotnet-sdk-bin() {
     'dotnet-targeting-pack-bin'
     'netstandard-targeting-pack-bin')
   optdepends=('aspnet-targeting-pack-bin: Build ASP.NET Core applications')
-  provides=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-5.0")
-  conflicts=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-5.0")
+  provides=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-6.0")
+  conflicts=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-6.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk templates "${pkgdir}"/usr/share/dotnet/
@@ -97,8 +97,8 @@ package_netstandard-targeting-pack-bin() {
 package_dotnet-targeting-pack-bin() {
   pkgdesc='The .NET Core targeting pack (binary)'
   depends=(netstandard-targeting-pack-bin)
-  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-5.0)
-  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-5.0)
+  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-6.0)
+  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-6.0)
 
   if [ $CARCH = 'x86_64' ]; then msarch=x64;
   elif [ $CARCH = 'armv7h' ]; then msarch=arm;
@@ -112,8 +112,8 @@ package_dotnet-targeting-pack-bin() {
 package_aspnet-targeting-pack-bin() {
   pkgdesc='The ASP.NET Core targeting pack (binary)'
   depends=(dotnet-targeting-pack-bin)
-  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-5.0)
-  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-5.0)
+  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-6.0)
+  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-6.0)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
