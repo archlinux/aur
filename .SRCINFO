@@ -19,7 +19,10 @@ pkgbase = archiso-encryption
 	optdepends = edk2-ovmf: for emulating UEFI with run_archiso
 	optdepends = openssl: for codesigning support when building netboot artifacts
 	optdepends = qemu: for run_archiso
-	source = git+ssh://git@gitlab.com/tallero/archiso.git#branch=crypto
+	provides = archiso
+	conflicts = archiso
+	replaces = archiso
+	source = git+https://gitlab.archlinux.org/tallero/archiso#branch=crypto
 	sha256sums = SKIP
 
 pkgname = archiso-encryption
