@@ -20,7 +20,28 @@ md5sums=('74db1c816442229cebfab10c66dc580e')
 sha256sums=('1e724fd480ed96b8a2bd9dcf65129ae4556097b98b96d062de3a5134d5f58270')
 install=$pkgname.install
 
+prepare() {
+    tar -xzOf control.tar.gz ./md5sums \
+        | grep -v 'usr' \
+        | awk '{print $1, "'"${srcdir}"'/usr/" $2}' \
+        > ${srcdir}/md5sums
+}
+
+build() {
+    if [[ -d ${srcdir}/usr/ ]]
+    then
+        rm -rf ${srcdir}/usr/
+    fi
+
+    mkdir ${srcdir}/usr/ \
+          && tar -xzf data.tar.gz  --exclude="usr" -C "${srcdir}/usr/"
+}
+
+check() {
+    echo "==> Validating package contents"
+    md5sum -c ${srcdir}/md5sums
+}
+
 package() {
-    mkdir ${pkgdir}/usr/
-    tar -xzvf data.tar.gz  --exclude="usr" -C "${pkgdir}/usr/"
+    mv ${srcdir}/usr/ ${pkgdir}/usr/
 }
