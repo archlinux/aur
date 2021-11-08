@@ -1,18 +1,33 @@
 pkgbase = lua-md5
-	pkgdesc = Basic cryptographic facilities for Lua.
+	pkgdesc = Basic cryptographic facilities for Lua
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keplerproject/md5
-	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = lua
-	source = https://github.com/keplerproject/md5/archive/refs/tags/1.3.tar.gz
-	source = Makefile.patch
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	source = lua-md5-1.3.tar.gz::https://github.com/keplerproject/md5/archive/1.3.tar.gz
+	source = install.patch
 	source = LICENSE
-	md5sums = 17b773591141091a4104d5183aad134b
-	md5sums = 6de2eb1764732e2337be3e163e72b0bd
-	md5sums = 9ac505254abc686b34763c2118dc2e1b
+	sha256sums = 0747a88d89c5d9b71e15fd614ac77a027627ce9ed222d3eb9ddee66f9fd46da4
+	sha256sums = ef2bb7d67992f5ebcce908d0664cf96015b779d873aec2d29aeb6610bdd525ae
+	sha256sums = 6b33a65cf51a300efeb5d76afa0d02c25b0c0080afd68a88680cb9ce685fef8d
 
 pkgname = lua-md5
+	pkgdesc = Basic cryptographic facilities for Lua 5.4
+	depends = lua
 
+pkgname = lua51-md5
+	pkgdesc = Basic cryptographic facilities for Lua 5.1
+	depends = lua51
+
+pkgname = lua52-md5
+	pkgdesc = Basic cryptographic facilities for Lua 5.2
+	depends = lua52
+
+pkgname = lua53-md5
+	pkgdesc = Basic cryptographic facilities for Lua 5.3
+	depends = lua53

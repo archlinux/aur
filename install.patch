@@ -1,0 +1,65 @@
+diff --git a/Makefile b/Makefile
+index 2dcc453..35ef065 100644
+--- a/Makefile
++++ b/Makefile
+@@ -22,11 +22,9 @@ src/$(DES56_LIBNAME) : $(DES56_OBJS) $(COMPAT52_OBJS)
+ 	$(CC) $(CFLAGS) $(LIB_OPTION) -o src/$(DES56_LIBNAME) $(DES56_OBJS) $(COMPAT52_OBJS)
+ 
+ install: src/$(MD5_LIBNAME) src/$(DES56_LIBNAME)
+-	cp src/$(DES56_LIBNAME) $(LUA_LIBDIR)
+-	mkdir -p $(LUA_LIBDIR)/md5
+-	cp src/$(MD5_LIBNAME) $(LUA_LIBDIR)/md5/
+-	mkdir -p $(LUA_DIR)
+-	cp $(MD5_LUAS) $(LUA_DIR)
++	install -Dm 644 src/$(DES56_LIBNAME) -t $(DESTDIR)/$(LUA_LIBDIR)
++	install -Dm 644 src/$(MD5_LIBNAME) -t $(DESTDIR)/$(LUA_LIBDIR)/md5/
++	install -Dm 644 $(MD5_LUAS) -t $(DESTDIR)/$(LUA_DIR)
+ 
+ clean:
+ 	rm -f $(MD5_OBJS) src/$(MD5_LIBNAME) $(DES56_OBJS) src/$(DES56_LIBNAME) $(COMPAT52_OBJS)
+diff --git a/config b/config
+index c06cb5e..bf92807 100644
+--- a/config
++++ b/config
+@@ -1,28 +1,32 @@
+ # Installation directories
+ 
+ # Default prefix
+-PREFIX = /usr/local
++PREFIX ?= /usr
++
++# Root prefix
++
++DESTDIR ?=
+ 
+ # Lua version
+ LUA_SYS_VER ?= 5.2
+ 
+ # System's libraries directory (where binary libraries are installed)
+-LUA_LIBDIR= $(PREFIX)/lib/lua/$(LUA_SYS_VER)
++LUA_LIBDIR = $(PREFIX)/lib/lua/$(LUA_SYS_VER)
+ 
+ # System's lua directory (where Lua libraries are installed)
+-LUA_DIR= $(PREFIX)/share/lua/$(LUA_SYS_VER)
++LUA_DIR = $(PREFIX)/share/lua/$(LUA_SYS_VER)
+ 
+ # Lua includes directory
+-LUA_INC= $(PREFIX)/include
++LUA_INC = $(PREFIX)/include
+ 
+ # OS dependent
+-LIB_OPTION= -shared #for Linux
++LIB_OPTION = -shared #for Linux
+ #LIB_OPTION= -bundle -undefined dynamic_lookup #for MacOS X
+ 
+ # Compilation directives
+-WARN= -O2 -Wall -fPIC -W -Waggregate-return -Wcast-align -Wmissing-prototypes -Wnested-externs -Wshadow -Wwrite-strings -Wpointer-arith
+-INCS= -I$(LUA_INC)
+-CFLAGS= $(WARN) $(INCS)
+-CC= gcc
++WARN = -O2 -Wall -fPIC -W -Waggregate-return -Wcast-align -Wmissing-prototypes -Wnested-externs -Wshadow -Wwrite-strings -Wpointer-arith
++INCS = -I$(LUA_INC)
++CFLAGS += $(WARN) $(INCS)
++CC ?= cc
+ 
+ # $Id: config,v 1.6 2007/10/29 23:00:23 carregal Exp $
