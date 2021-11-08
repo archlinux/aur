@@ -1,7 +1,7 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=('otf-rasa' 'ttf-rasa')
 pkgbase=rasa-font
-pkgver=2.002
+pkgver=2.003
 pkgrel=1
 pkgdesc='Serif font for continuous reading on the web (Gujarati included)'
 arch=(any)
@@ -9,10 +9,10 @@ url="https://github.com/rosettatype/yrsa-rasa"
 license=('OFL')
 groups=('yrsa-rasa-fonts')
 source=("$pkgbase-$pkgver.zip::$url/releases/download/v$pkgver/Rasa-fonts-v$pkgver.zip")
-sha256sums=('a0e340ed75d43b76cc384e66d5aee5d691f18189372e9a72c7e13988eb1c1034')
+sha256sums=('47b1e063bd271cc7eadec5e9ea5cb628a1c08a32355a88d32a9642a05bb5aaa7')
 
 _package() {
-	cd Rasa
+	cd "Rasa-fonts-v$pkgver"
 	install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
 
 	# txt file is actually a Markdown file:
