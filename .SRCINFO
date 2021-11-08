@@ -86,9 +86,9 @@ pkgname = linux-xanmod-rog
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = ASUS-WMI-FAN-CONTROL
 	provides = linux-rog
 
 pkgname = linux-xanmod-rog-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Xanmod kernel
 	depends = pahole
-	provides = linux-rog-headers
