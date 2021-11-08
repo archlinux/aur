@@ -16,7 +16,7 @@
 +endif()
  
  include(FindPkgConfig)
- pkg_check_modules(LibJXL REQUIRED IMPORTED_TARGET libjxl>=0.5.0)
+ pkg_check_modules(LibJXL REQUIRED IMPORTED_TARGET libjxl>=0.6.1)
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -18,7 +18,7 @@ function(kimageformats_add_plugin plugin)
