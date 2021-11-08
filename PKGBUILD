@@ -7,8 +7,8 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=4.4
-pkgrel=2
+pkgver=4.4.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -99,7 +99,7 @@ provides=(
   libswscale.so
   "ffmpeg=$pkgver"
 )
-_tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
+_tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
 conflicts=("$_name")
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
