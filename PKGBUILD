@@ -27,6 +27,7 @@ build(){
 check(){
   cd "Wx-$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
   if [[ -z "$DISPLAY" || -x /usr/bin/xvfb-run ]]; then
 #     warning 'Empty $DISPLAY - falling back to xvfb-run (xorg-server-xvfb)'
     xvfb-run -a -s "+extension GLX -screen 0 1280x1024x24" make test
