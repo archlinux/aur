@@ -20,5 +20,5 @@ install=$pkgname.install
 
 package() {
     mkdir ${pkgdir}/usr/
-    tar -xzvf  data.tar.gz -C "${pkgdir}/usr/"
+    tar -xzvf data.tar.gz  --exclude="usr" -C "${pkgdir}/usr/"
 }
