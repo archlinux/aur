@@ -6,9 +6,7 @@ pkgrel=1
 pkgdesc="Python package extending scripting capabilities, present natively in Siril."
 url="https://siril.org/tutorials/pysiril/"
 license=('custom')
-source=(
-    "https://gitlab.com/free-astro/pysiril/-/archive/V0_0_9/pysiril-V0_0_9.tar.gz"
-)
+source=("https://gitlab.com/free-astro/pysiril/-/archive/V0_0_9/pysiril-V0_0_9.tar.gz")
 arch=('x86_64')
 md5sums=('SKIP')
 depends=(siril)
