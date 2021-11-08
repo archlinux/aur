@@ -22,7 +22,7 @@ package() {
   install -dv "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "/usr/share/doc/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-md5sums=('14f98b59c71487c92b6b5d49cc2db79d'
-         '921ef9cd57fe1e0f6e8cb3cd7ce41029'
+md5sums=('13195ce80eb988cb35afe5e202779aa1'
+         'e002a458e6b015b1772a32e91ba1603e'
          '648ebc0775a7579d1f66bbf4b2381b83'
-         '0398bc2eabdc6bf328ca160dfd2074ad')
+         'a63a10443580b9bc1afc38a3690bafa1')
