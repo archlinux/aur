@@ -26,9 +26,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/bsc"
   git submodule update --init --recursive
-
-  # workaround until PR #430 is merged
-  sed -ri 's/^TCL_ALT_SUFFIX=.*/TCL_ALT_SUFFIX=/' platform.sh
 }
 
 build(){
