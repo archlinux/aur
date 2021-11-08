@@ -1,0 +1,12 @@
+pkgbase = font-editor
+	pkgdesc = A Easy Font Editor
+	pkgver = 1
+	pkgrel = 2
+	url = https://github.com/zzy-ac/
+	arch = x86_64
+	license = GPL
+	depends = electron
+	source = https://github.com/zzy-ac/fonteditor/raw/electron-pkg/font-editor.tar.gz
+	md5sums = 619d7d9f0d64575532f61f3580107626
+
+pkgname = font-editor
