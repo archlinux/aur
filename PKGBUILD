@@ -6,7 +6,7 @@ pkgdesc="Insight is a graphical user interface to GDB, the GNU Debugger written 
 url="https://sourceware.org/git/?p=insight.git"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('tcl' 'tk' 'gdb' 'itk' 'tcl-combobox' 'iwidgets')
+depends=('tcl' 'tk' 'gdb' 'incrtk' 'tcl-combobox' 'iwidgets')
 optdepends=()
 makedepends=(gcc make)
 conflicts=()
