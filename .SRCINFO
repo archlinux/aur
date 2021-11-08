@@ -14,6 +14,7 @@ pkgbase = octopi
 	optdepends = octopi-notifier-qt5: Notifier for Octopi using Qt5 libs
 	optdepends = octopi-notifier-frameworks: Notifier for Octopi with Knotifications support
 	optdepends = pacaur: for AUR support
+	optdepends = paru: for AUR support
 	optdepends = pikaur: for AUR support
 	optdepends = trizen: for AUR support
 	optdepends = yay: for AUR support

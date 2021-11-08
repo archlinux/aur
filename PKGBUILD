@@ -17,6 +17,7 @@ makedepends=('qt5-tools')
 optdepends=('octopi-notifier-qt5: Notifier for Octopi using Qt5 libs'
             'octopi-notifier-frameworks: Notifier for Octopi with Knotifications support'
             'pacaur: for AUR support'
+            'paru: for AUR support'
             'pikaur: for AUR support'
             'trizen: for AUR support'
             'yay: for AUR support'
