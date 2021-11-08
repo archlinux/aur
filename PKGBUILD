@@ -29,7 +29,7 @@ source=("http://topcoder.com/contest/arena/ContestAppletProd7.2.jnlp"
           "topcoder-applet.desktop"
           "exception.sites")
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 validpgpkeys=()
 programname="ContestAppletProd7.2.jnlp"
 logoname="topcoder_logo.png"
