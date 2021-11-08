@@ -12,6 +12,8 @@ checkdepends=("coreutils")
 arch=('x86_64')
 provides=('warp-cli' 'warp-diag' 'warp-svc')
 conflicts=('cloudflare-warp')
+# zcat src/build/usr/usr/share/doc/cloudflare-warp/changelog.gz > cloudflare-warp-bin.changelog
+changelog=$pkgname.changelog
 
 # in ubuntu: apt-get --print-uris install cloudflare-warp
 source=("https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2021_10_0_1_amd64_916ef55734_amd64.deb")

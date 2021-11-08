@@ -1,0 +1,73 @@
+cloudflare-warp (2021.10.0) unstable; urgency=medium
+
+  * Client now supports include only split tunnel rules while in Teams mode
+  * Improved overall reliability of DNS and general connectivity when in Teams modes
+  * Improved logging and fixed bug where we got incomplete logs from warp-diag
+  * Fixed connectivity issues some users experienced when coming out of sleep
+  * Fixed occasional registration issues when trying to join Teams organization
+  * Fixed bug in restoring previous DNS settings on crash
+  * Fixed bug in Linux firewall blocking certain DNS requests
+  * Fixed issues in handling SIGTERM/SIGINT
+
+  -- Matt Schulte <mschulte@cloudflare.com>  Wed, 27 Oct 2021 10:13:15 -0700
+
+cloudflare-warp (2021.8.1) unstable; urgency=low
+
+  * Minor fixes to network changes while in proxy mode
+  * Minor stability fixes and improvements
+
+  -- Jeff Hiner <jhiner@cloudflare.com>  Fri, 13 Aug 2021 15:50:50 -0600
+
+cloudflare-warp (2021.8.0) unstable; urgency=medium
+
+  * Rewrite teams-client enrollment flow for Linux clients, including no-auth
+  * Implement nftables support for Linux
+  * Fix potential stack overflow errors in some clients
+  * Fix an issue where the client would stop working properly after a suspend
+  * Various stability improvements and other minor fixes
+
+  -- Jeff Hiner <jhiner@cloudflare.com>  Thu, 12 Aug 2021 12:24:00 -0600
+
+cloudflare-warp (2021.7.1) unstable; urgency=medium
+
+  * Teams registration now correctly sends serial number
+  * Added reset-settings command to CLI
+  * Fixed an issue that could prevent Teams registration on some systems
+  * Clarified behavior of host-based tunnel exclusion in Teams mode.
+    (Not yet supported, but doesn't drop traffic.)
+  * Minor bug fixes and improvements
+
+  -- Jeff Hiner <jhiner@cloudflare.com>  Fri, 26 Jul 2021 12:11:01 -0600
+
+cloudflare-warp (2021.7.0) unstable; urgency=medium
+
+  * Logging into Teams can now be done automatically from the CLI.
+  * The client can now collect requested device metadata and device posture
+    information in Teams mode.
+  * The client now sets system resolvers to better capture DNS traffic.
+  * Logs have been move to /var/logs/cloudflare-warp.
+  * Minor bug fixes and improvements.
+
+  -- Brendan McMillion <brendan@cloudflare.com>  Fri, 9 Jul 2021 12:59:36 -0700
+
+cloudflare-warp (2021.6.0) unstable; urgency=medium
+
+  * warp-diag can now directly upload logs to Cloudflare.
+  * Improves performance of DNS resolution.
+  * Minor bug fixes and improvements.
+
+-- Brendan McMillion <brendan@cloudflare.com>  Thu, 10 Jun 2021 12:38:41 -0700
+
+cloudflare-warp (2021.5.0) unstable; urgency=medium
+
+  * No longer requires sudo to run warp-diag.
+  * Fills in extended metadata when Zendesk tickets are submitted.
+  * Minor bug fixes and improvements.
+
+ -- Brendan McMillion <brendan@cloudflare.com>  Tue, 04 May 2021 08:47:32 -0700
+
+cloudflare-warp (2021.4.1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- Brendan McMillion <brendan@cloudflare.com>  Mon, 03 May 2021 18:13:12 -0700
