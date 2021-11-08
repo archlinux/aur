@@ -1,6 +1,6 @@
 # Maintainer: Nick Econopouly <wry at mm dot st>
 pkgname=tiny-irc-client-git
-pkgver="0.8.0"
+pkgver="0.10.0"
 pkgrel=1
 pkgdesc="A console IRC client"
 arch=('x86_64')
@@ -9,21 +9,11 @@ conflicts=('tiny-irc-client')
 url="https://github.com/osa1/tiny"
 license=('MIT')
 depends=('openssl' 'dbus')
-makedepends=('git' 'rust-nightly')
+makedepends=('git' 'rust')
 source=(git+$url)
 sha512sums=(SKIP)
 
 build() {
-
-    #  Installs the Rust toolchain to a temporary directory. If you
-    #  already have the toolchain installed, e.g. via the script at
-    #  https://rustup.rs/ or another package, you can remove the
-    #  rust-nightly dependancy and comment out the following three
-    #  commands.
-
-    mkdir -p stable
-    export RUSTUP_HOME=$(pwd)/stable
-    rustup toolchain install stable
 
     # build tiny
     cd tiny
