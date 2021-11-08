@@ -1,2 +1,3 @@
-#!/bin/bash
-/opt/sqlcl/bin/sql $@
+#!/bin/sh
+
+/opt/sqlcl/bin/sql "$@"

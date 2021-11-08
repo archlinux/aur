@@ -1,30 +1,27 @@
-# Maintainer: Kevin Baxmann <kvbx@kvbx.de>
-# Previous Maintainer: Arne Hoch <arne@derhoch.de>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Kevin Baxmann <kvbx@kvbx.de>
+# Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=sqlcl
-pkgver=21.1.1.113.1704
+pkgver=21.3.2.287.1503
 pkgrel=1
 pkgdesc="SQL Developer command line interface for Oracle"
-arch=('i686' 'x86_64')
-url="http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html"
-license=('custom:OTN')
+arch=('any')
+url="https://oracle.com/database/technologies/appdev/sqlcl.html"
+license=('custom')
 depends=('java-runtime>=8')
+source=("$pkgname-$pkgver.zip::https://download.oracle.com/otn_software/java/sqldeveloper/$pkgname-$pkgver.zip"
+	      "$pkgname.sh"
+				'LICENSE')
+sha256sums=('96f6b2bacd8811b07f2aa88ef622111a91982914ff87ba19676ffbf66b87dc17'
+            '34c5f2be48639dcd8ec9f38f950916a394ae399a0e583fbde4020acdccf951e0'
+            '8f5642d74925ba3a4543c52b7a84b65c18aaa7dd3599c141e72ad5117e748929')
 
-source=("LICENSE"
-        "https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-${pkgver}.zip"
-        "sqlcl.sh")
-sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            'ac31dc1bef29bbf972f35d000a4ef9669941038ff503655ac804e35df15e1dfc'
-            '4a0469c0adc964d91c611a643075087235dc2de8332e87297abe9865d19c2a14')
+PURGE_TARGETS=(*.exe *.txt)
 
 package() {
-  cd ${srcdir}
-  install -d ${pkgdir}/opt/${pkgname}/lib
-  install -d ${pkgdir}/opt/${pkgname}/bin
-  install -d ${pkgdir}/opt/${pkgname}/lib/ext
-  install -d ${pkgdir}/usr/bin
-  install -m 644 ${pkgname}/lib/*.jar ${pkgdir}/opt/${pkgname}/lib
-  install -m 644 ${pkgname}/lib/ext/*.jar ${pkgdir}/opt/${pkgname}/lib/ext
-  install -m 755 ${pkgname}/bin/sql ${pkgdir}/opt/${pkgname}/bin/sql
-  install -m 755 ${srcdir}/sqlcl.sh ${pkgdir}/usr/bin/sqlcl
+	install -d "$pkgdir/opt/$pkgname/"
+	cp -a --no-preserve=ownership,mode "$pkgname"/* "$pkgdir/opt/$pkgname/"
+	install -D "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
