@@ -2,7 +2,7 @@
 
 _pkgname=apalache
 pkgname=$_pkgname-bin
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="A symbolic model checker for TLA+"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
 	'sys-install.patch'
 )
 sha256sums=(
-	'0189f7208d3d85a829ce70f620f45d8a4ac687cc2c99033aaaaf360636647d32'
+	'cd34ee7919bce3cd8df4557c5682eb9bfbc5090642ca5c25db889cb9a63721fa'
 	'825557bfdd2928787480e7d21e3b8397e48080fddc3fa6656d4b910db6c58c01'
 )
 
