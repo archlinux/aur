@@ -1,10 +1,11 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
+# Contributor: Gianluca Pettinello <g_pet@hotmail.com>
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Simon Pintarelli <simon.pintarelli@gmail.com>
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 pkgname=trilinos
-pkgver=13.0.1
+pkgver=13.2.0
 _pkgver=${pkgver//./-}
 pkgrel=3
 pkgdesc="algorithms for the solution of large-scale scientific problems"
@@ -14,9 +15,9 @@ license=('LGPL3')
 depends=('python' 'lapack' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
 makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'bc' 'python-numpy')
 checkdepends=('cmake')
-source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz"
+source=("https://github.com/trilinos/Trilinos/archive/refs/tags/trilinos-release-$_pkgver.tar.gz"
         'python-mpi-version.patch')
-sha256sums=('0bce7066c27e83085bc189bf524e535e5225636c9ee4b16291a38849d6c2216d'
+sha256sums=('0ddb47784ba7b8a6b9a07a4822b33be508feb4ccd54301b2a5d10c9e54524b90'
             '9920ddf718ff04a14d1263623dfd98791404b1db0a73d95ba48d87215e8409eb')
 
 prepare() {
