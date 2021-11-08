@@ -1,0 +1,11 @@
+pkgbase = foxglove-studio
+	pkgdesc = An integrated visualization and diagnosis tool for robotics
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://foxglove.dev/
+	arch = x86_64
+	license = MPL
+	source = foxglove-studio-0.21.0-x86_64.deb::https://github.com/foxglove/studio/releases/download/v0.21.0/foxglove-studio-0.21.0-linux-amd64.deb
+	sha512sums = f455210c589b569a00a822472f97a859fc162a3b9a46f635dfbd0fd499057f98c8c2bfb828afbae660c12e8eda7cea513020e197f736220161e1161479a27afd
+
+pkgname = foxglove-studio
