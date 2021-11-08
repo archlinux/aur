@@ -31,15 +31,10 @@ pkgver() {
 }
 
 prepare() {
-	#cd "$pkgname-$pkgver"
-	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-	pip3 install art
+	cd "minq_stopwatch"
 }
 
 build() {
-	#cd "$pkgname-$pkgver"
-	#./configure --prefix=/usr
-	#make
 	cd "minq_stopwatch"
 }
 
@@ -53,6 +48,7 @@ package() {
 	#cd "$pkgname-$pkgver"
 	#make DESTDIR="$pkgdir/" install
 	cd "minq_stopwatch"
+	pip3 install art
 	mkdir -p "${pkgdir}/opt/${pkgname}"
 	cp -rf * "${pkgdir}/opt/${pkgname}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
