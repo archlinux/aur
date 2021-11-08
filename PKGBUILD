@@ -1,50 +1,48 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=('lua-date' 'lua51-date' 'lua52-date')
-pkgver=2.1.2
+pkgname=('lua-date' 'lua51-date' 'lua52-date' 'lua53-date')
+pkgver=2.2
 pkgrel=1
-pkgdesc="Date & Time module for Lua 5.x"
+pkgdesc="Date & Time module for Lua"
 arch=('any')
-url='http://tieske.github.io/date'
+url='https://github.com/tieske/date'
 license=('MIT')
-makedepends=('luarocks')
-source=("https://github.com/Tieske/date/archive/version_${pkgver}.tar.gz")
-sha256sums=('91fc16bda7e326eeeedad3ad9ac09a76fa238a5bec533ed9ac3c08d109580874')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/version_$pkgver.tar.gz")
+sha256sums=('ea8c34cb18245c5219806a00c97ef92f452a33f3528bac2ae72743e4420897db')
 
-build() {
-  mkdir -p 5.1 5.2 5.3
+package_lua-date(){
+	depends=('lua')
 
-  # Build for 5.1
-  (cd 5.1; luarocks build --pack-binary-rock --lua-version=5.1 --deps-mode=none ../date-version_${pkgver}/"date-$pkgver-1.rockspec")
-  # Build for 5.2
-  (cd 5.2; luarocks build --pack-binary-rock --lua-version=5.2 --deps-mode=none ../date-version_${pkgver}/"date-$pkgver-1.rockspec")
-  # Build for 5.3
-  (cd 5.3; luarocks build --pack-binary-rock --lua-version=5.3 --deps-mode=none ../date-version_${pkgver}/"date-$pkgver-1.rockspec")
+	cd "date-version_$pkgver"
+	install -Dm 644 src/date.lua -t "$pkgdir/usr/share/lua/5.4/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-package_lua-date() {
-  pkgdesc='Date and Time module for Lua 5.3'
+package_lua51-date(){
+	depends=('lua51')
 
-  luarocks install --lua-version=5.3 --tree="$pkgdir/usr/" --deps-mode=none 5.3/*.rock
-  install -Dm644 "${srcdir}/date-version_${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  # remove luarocks-created root manifest
-  rm "$pkgdir/usr/lib/luarocks/rocks-5.3/manifest"
+	cd "date-version_$pkgver"
+	install -Dm 644 src/date.lua -t "$pkgdir/usr/share/lua/5.1/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-package_lua51-date() {
-  pkgdesc='Date and Time module for Lua 5.1'
+package_lua52-date(){
+	depends=('lua52')
 
-  luarocks install --lua-version=5.1 --tree="$pkgdir/usr/" --deps-mode=none 5.1/*.rock
-  install -Dm644 "${srcdir}/date-version_${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  # remove luarocks-created root manifest
-  rm "$pkgdir/usr/lib/luarocks/rocks-5.1/manifest"
+	cd "date-version_$pkgver"
+	install -Dm 644 src/date.lua -t "$pkgdir/usr/share/lua/5.2/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-package_lua52-date() {
-  pkgdesc='Date and Time module for Lua 5.2'
+package_lua53-date(){
+	depends=('lua53')
 
-  luarocks install --lua-version=5.2 --tree="$pkgdir/usr/" --deps-mode=none 5.2/*.rock
-  install -Dm644 "${srcdir}/date-version_${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  # remove luarocks-created root manifest
-  rm "$pkgdir/usr/lib/luarocks/rocks-5.2/manifest"
+	cd "date-version_$pkgver"
+	install -Dm 644 src/date.lua -t "$pkgdir/usr/share/lua/5.3/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
