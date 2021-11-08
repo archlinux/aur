@@ -2,8 +2,8 @@
 # Contributor: Andreas Gerlach <andigerlach76@gmail.com>
 pkgname=ijavascript
 pkgver=5.2.0
-pkgrel=4
-pkgdesc="IJavascript is a JavaScript kernel for the Jupyter notebook"
+pkgrel=5
+pkgdesc="JavaScript kernel for Jupyter"
 arch=(any)
 url="https://github.com/n-riesco/ijavascript"
 license=('BSD-3-Clause')
