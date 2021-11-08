@@ -1,7 +1,7 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=('otf-yrsa' 'ttf-yrsa')
 pkgbase=yrsa-font
-pkgver=2.002
+pkgver=2.003
 pkgrel=1
 pkgdesc='Serif font for continuous reading on the web'
 arch=(any)
@@ -9,9 +9,10 @@ url="https://github.com/rosettatype/yrsa-rasa"
 license=('OFL')
 groups=('yrsa-rasa-fonts')
 source=("$pkgbase-$pkgver.zip::$url/releases/download/v$pkgver/Yrsa-fonts-v$pkgver.zip")
-sha256sums=('9ad48d317fcff8fe1fb28f346a6798de9e4a163439d34aac07a5b02d6d64b203')
+sha256sums=('778f3fd7fc774b2da3bd0960fff47dfa5d71038073300076ffafedbc1dd2ad2f')
 
 _package() {
+	cd "Yrsa-fonts-v$pkgver"
 	install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
 
 	# txt file is actually a Markdown file:

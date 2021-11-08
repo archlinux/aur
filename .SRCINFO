@@ -1,13 +1,13 @@
 pkgbase = yrsa-font
 	pkgdesc = Serif font for continuous reading on the web
-	pkgver = 2.002
+	pkgver = 2.003
 	pkgrel = 1
 	url = https://github.com/rosettatype/yrsa-rasa
 	arch = any
 	groups = yrsa-rasa-fonts
 	license = OFL
-	source = yrsa-font-2.002.zip::https://github.com/rosettatype/yrsa-rasa/releases/download/v2.002/Yrsa-fonts-v2.002.zip
-	sha256sums = 9ad48d317fcff8fe1fb28f346a6798de9e4a163439d34aac07a5b02d6d64b203
+	source = yrsa-font-2.003.zip::https://github.com/rosettatype/yrsa-rasa/releases/download/v2.003/Yrsa-fonts-v2.003.zip
+	sha256sums = 778f3fd7fc774b2da3bd0960fff47dfa5d71038073300076ffafedbc1dd2ad2f
 
 pkgname = otf-yrsa
 	conflicts = ttf-yrsa
