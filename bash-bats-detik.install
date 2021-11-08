@@ -1,0 +1,4 @@
+post_install() {
+    echo -e "\nTo use bat-detik library add these lines\nto your bats test or common_setup function"    
+    echo -e '\nload "/lib/bats-detik/utils.bash" \nload "/lib/bats-detik/detik.bash"\n'
+}
