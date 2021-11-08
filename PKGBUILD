@@ -2,37 +2,37 @@
 
 pkgbase=svetovid-lib
 pkgname=(svetovid-lib svetovid-lib-doc)
-pkgver=0.5.0
-_commit=b7c003f8b277ed19be23b674c656b73b262e5769
-pkgrel=3
+pkgver=0.5.1
+_commit=a14c0bd96d5a57c24ad227872ed4a44d1d778e5e
+pkgrel=1
 pkgdesc='Supplement Library for Introductory Programming Courses'
 arch=(any)
-url='https://github.com/ivanpribela/svetovid-lib'
-license=('APACHE')
-depends=('java-runtime')
-makedepends=('ant' 'inkscape' 'git')
-source=("git+https://github.com/ivanpribela/svetovid-lib#commit=${_commit}")
-sha512sums=('SKIP')
+url=https://github.com/ivanpribela/svetovid-lib
+license=(APACHE)
+depends=(java-runtime)
+makedepends=(ant inkscape git)
+source=("git+https://github.com/ivanpribela/svetovid-lib#commit=$_commit")
+sha512sums=(SKIP)
 
 build() {
-	cd "${pkgname}"
+	cd "$pkgname"
 
 	ant pack.jar
 	ant generate.apidoc
 }
 
 package_svetovid-lib() {
-	cd "${pkgname}"
+	cd "$pkgname"
 
-	install -Dm644 "dist/${pkgname}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+	install -Dm644 "dist/$pkgname.jar" -t "$pkgdir/usr/share/java/$pkgname"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 "NOTICE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_svetovid-lib-doc() {
-	cd "${pkgbase}"
+	cd "$pkgbase"
 
-	install -dm755 "${pkgdir}/usr/share/doc"
-	cp -a "gendoc/api" "${pkgdir}/usr/share/doc/${pkgbase}"
+	install -d "$pkgdir/usr/share/doc"
+	cp -a "gendoc/api" "$pkgdir/usr/share/doc/$pkgbase"
 }
