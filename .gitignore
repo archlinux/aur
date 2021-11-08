@@ -1,0 +1,4 @@
+/picom-conf*
+/pkg
+/src
+*.tar*
