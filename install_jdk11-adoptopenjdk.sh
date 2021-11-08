@@ -1,5 +1,3 @@
-THIS_JDK='java-11-adoptopenjdk'
-
 fix_default() {
   if [ ! -x /usr/bin/java ]; then
     /usr/bin/archlinux-java unset
@@ -10,41 +8,21 @@ fix_default() {
 }
 
 post_install() {
-  default=$(fix_default)
-  case ${default} in
-    "")
-      /usr/bin/archlinux-java set ${THIS_JDK}
-      ;;
-    ${THIS_JDK})
-      # Nothing
-      ;;
-    *)
-      echo "Default Java environment is already set to '${default}'"
-      echo "See 'archlinux-java help' to change it"
-      ;;
-  esac
-
-  if [ ! -f /etc/ssl/certs/java/cacerts ]; then
-    /usr/bin/update-ca-trust
-  fi
+  echo
+  echo "WARNING: jdk11-adoptopenjdk has been replaced by jdk11-temurin!"
+  echo "         Please uninstall this package."
+  echo
 }
 
 post_upgrade() {
-  default=$(fix_default)
-  if [ -z "${default}" ]; then
-    /usr/bin/archlinux-java set ${THIS_JDK}
-  fi
-
-  if [ ! -f /etc/ssl/certs/java/cacerts ]; then
-    /usr/bin/update-ca-trust
-  fi
+  post_install
 }
 
 pre_remove() {
-  if [ "x$(fix_default)" = "x${THIS_JDK}" ]; then
-    # Check JRE is still available
-    if [ -x /usr/lib/jvm/${THIS_JDK}/bin/java ]; then
-      /usr/bin/archlinux-java unset
-    fi
+  if [ "x$(fix_default)" = "xjava-11-temurin" ]; then
+    # java-11-temurin might be accessed through java-11-adoptopenjdk.
+    # Explicitly set java-11-temurin as default.
+    /usr/bin/archlinux-java unset
+    /usr/bin/archlinux-java set java-11-temurin
   fi
 }
