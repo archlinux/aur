@@ -44,7 +44,6 @@ pkgbase = thunderbird-appmenu
 	depends = sqlite
 	depends = ttf-font
 	depends = libvpx
-	depends = libvpx.so
 	depends = zlib
 	depends = bzip2
 	depends = libbz2.so
