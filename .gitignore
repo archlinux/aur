@@ -1,0 +1,10 @@
+src
+pkg
+*.zst
+.PKGINFO
+.INSTALL
+.BUILDINFO
+.MTREE
+*.zip
+usr
+*.tar.gz

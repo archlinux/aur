@@ -1,0 +1,6 @@
+post_install() {
+	setcap cap_net_raw=+ep usr/bin/myping
+}
+post_upgrade() {
+	setcap cap_net_raw=+ep usr/bin/myping
+}

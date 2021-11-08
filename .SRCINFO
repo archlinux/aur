@@ -1,0 +1,12 @@
+pkgbase = myping
+	pkgver = 0.2
+	pkgrel = 1
+	install = myping.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = myping-0.2.tar.gz::https://github.com/9er/myping/archive/refs/tags/v0.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = myping
