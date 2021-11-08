@@ -1,10 +1,10 @@
 # Maintainer: David Goudou <david.goudou@gmail.com>
 pkgname=coffeetch-git
 pkgver=1.0.r10.bd76287
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimal command line system information tool written in C"
 arch=('x86_64')
-url="https://gksudo.org/coffeetch.git"
+url="https://git.dockside.org.uk/coffeetch.git"
 license=('MIT')
 depends=('gcc')
 makedepends=('git')
