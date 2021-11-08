@@ -2,7 +2,7 @@
 
 pkgname=deezer-enhanced-git
 _pkgname=deezer-enhanced
-pkgver=v0.2.0.r0.g57b61c6
+pkgver=v0.2.1.r0.g77922d1
 pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features, that is not just an electron wrapper.'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -47,7 +47,7 @@ package() {
   cd dist
   # Post install
   install -d "$pkgdir/usr/bin"
-  ln -sf "${pkgdir}/opt/Deezer Enhanced/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -sf "/opt/Deezer Enhanced/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   # SUID chrome-sandbox for Electron 5+
   chmod 4755 "${pkgdir}/opt/Deezer Enhanced/chrome-sandbox" || true
