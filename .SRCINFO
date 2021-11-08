@@ -29,5 +29,4 @@ pkgbase = code-insiders
 	source_armv7h = code_armhf_1_63_0_1636353036.tar.gz::https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-ia32
 	sha256sums_armv7h = SKIP
 
-pkgname = vscode-insiders
-
+pkgname = code-insiders
