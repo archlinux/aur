@@ -2663,4 +2663,22 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 
 1.2.2 fix: fix zh_subscribe_exchange_symbol interface
     1. fix encoding
+
+1.2.3 add: add stock_rank_xstp_ths interface
+
+1.2.4 fix: fix fund_portfolio_hold_em interface
+
+1.2.5 fix: fix index_stock_hist interface
+
+1.2.6 add: add stock_rank_xxtp_ths interface
+
+1.2.7 add: add stock_rank_ljqd_ths interface
+
+1.2.8 add: add stock_rank_ljqs_ths interface
+
+1.2.9 fix: fix stock_zh_a_gdhs interface
+
+1.2.10 fix: fix bond_zh_hs_daily interface
+
+1.2.11 add: add stock_zh_a_gdhs_detail_em interface
 ```
