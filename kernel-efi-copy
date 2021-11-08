@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# Copy kernel and initramfs images to EFI directory
+# /usr/local/bin/kernel-efi-copy.sh
+
+ESP_DIR="/efi"
+
+for file in /boot/vmlinuz*
+do
+        cp -af "$file" "$ESP_DIR/$(basename "$file")"
+        [[ $? -ne 0 ]] && exit 1
+done
+
+for file in /boot/initramfs*
+do
+        cp -af "$file" "$ESP_DIR/"
+        [[ $? -ne 0 ]] && exit 1
+done
+
+[[ -e /boot/intel-ucode.img ]] && cp -af /boot/intel-ucode.img "$ESP_DIR/"
+[[ -e /boot/amd-ucode.img ]] && cp -af /boot/amd-ucode.img "$ESP_DIR/"
+
+exit 0

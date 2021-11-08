@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/initcpio/*
+Target = boot/*-ucode.img
+
+[Action]
+Description = Copying linux and initramfs to EFI directory...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/kernel-efi-copy

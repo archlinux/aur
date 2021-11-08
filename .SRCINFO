@@ -1,0 +1,13 @@
+pkgbase = kernel-efi-copy-hook
+	pkgdesc = Pacman hook to upgrade efi kernel
+	pkgver = 1
+	pkgrel = 0
+	arch = any
+	license = GPL
+	depends = systemd
+	source = kernel-efi-copy.hook
+	source = kernel-efi-copy
+	md5sums = 47c052eaa7484faf424fe3299b6ee547
+	md5sums = 0b263bcdff120fc26a685c91122b132d
+
+pkgname = kernel-efi-copy-hook
