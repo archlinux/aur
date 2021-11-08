@@ -1,4 +1,5 @@
-# Maintainer: Peter Oehme <oehme.pb (at) gmail (dot) com>
+# Maintainer: Peter Oehme <oehme.pb at gmail dot com>
+# Maintainer: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=python-pymor
 _pkgname=pymor
