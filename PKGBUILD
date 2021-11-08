@@ -4,7 +4,7 @@
 
 pkgname=dogecoin-qt
 _binname=dogecoin
-pkgver=1.14.4
+pkgver=1.14.5
 pkgrel=1
 pkgdesc="Cryptocurrency"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ makedepends=('boost' 'gcc' 'make' 'git' 'qt5-tools' 'miniupnpc' 'boost-libs' 'pr
 source=("https://github.com/$_binname/$_binname/archive/v${pkgver}.tar.gz"
         "$_binname.desktop")
 install=$_binname.install
-sha256sums=('6b3a7579861d03b69b0f149e10d1396b713f4f8921eab935c7f7608a7b9cb6fb'
+sha256sums=('303200bd330476e2f63849c134d79891013890d0d6f6cb3d89b3ee6f9cc82caf'
             '04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6')
 options=(!lto)
 
