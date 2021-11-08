@@ -4,7 +4,7 @@
 # Feel free to send a PR to https://github.com/parca-dev/parca-archlinux
 
 pkgname=parca
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 
 pkgdesc='Continuous profiling for analysis of CPU, memory usage over time, and down to the line number.'
@@ -21,7 +21,7 @@ source=("parca-v$pkgver.tar.gz::https://github.com/parca-dev/parca/archive/refs/
         parca.sysusers
         parca.conf)
 
-sha256sums=('74f6fac9f70a6a797ac253fe4aafc496eb69c32dd440d371c71e22f95804d186'
+sha256sums=('93b8df2ffe26db891e2a6f98d0d8fefbfdb9878ae7e2079260b01d52df61db9a'
             '7ed83cee9ef9b186fdb26e48f19d1f0d37960afe6d983341e253db6a23bf7fe6'
             '4e3462335427c83919a58c6060f194e4c45b76234b24f330a06b1ecf16789de0'
             'd917730e72fc1db483fc7a64e4ade9c4cebb91df9199b3981a3a107232602e23')
