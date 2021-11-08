@@ -1,0 +1,12 @@
+pkgbase = aws-console-git
+	pkgdesc = Generate a temporary login URL for the AWS Console
+	pkgver = v0.1.1.r0.g3c0c80b
+	pkgrel = 1
+	url = https://github.com/joshdk/aws-console
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/joshdk/aws-console
+	sha256sums = SKIP
+
+pkgname = aws-console-git
