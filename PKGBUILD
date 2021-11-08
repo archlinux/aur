@@ -17,11 +17,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/sharkwouter/minigalaxy/arch
 sha256sums=('581e7abfb4af0c01d795dc57a93b1305644d8bdd11ecb533bb2787f85b4bc992')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py build
 }
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   install -Dm644 THIRD-PARTY-LICENSES.md -t "$pkgdir/usr/share/licenses/$pkgname/"
