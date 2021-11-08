@@ -53,4 +53,5 @@ package() {
 
   cp -r "${srcdir}/data/usr/share/code-insiders/"* "${pkgdir}/opt/${pkgname}" -R
   ln -s /opt/${pkgname}/bin/code-insiders "${pkgdir}"/usr/bin/code-insiders
+  ln -s /opt/${pkgname} ${pkgdir}/usr/share/code-insiders
 }
