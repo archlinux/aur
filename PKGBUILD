@@ -4,7 +4,7 @@ pkgver=2021.10.0
 pkgrel=2
 pkgdesc="Cloudflare Warp Client"
 
-url="https://developers.cloudflare.com/warp-client/"
+url="https://1.1.1.1"
 license=("unknown")
 
 depends=("glibc" "dbus" "lz4" "zstd" "xz" "nftables" "libgpg-error")
