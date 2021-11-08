@@ -27,7 +27,6 @@ prepare() {
 	sed -i "s/bin\/bypass/share\/clash\/bypass/g" clash.service
 	sed -i "s/\ iptabels.service//g" clash.service
 	sed -i "s/lib/share/g" 99-clash.rules
-	sed -i "/bash/,+38 s/tcp, udp/tcp, udp, icmp/g" setup-tun.sh
 	sed -i "s/1.0.0.1/198.18.0.2/g" clash-default
 	sed -i "s/bypass/\/usr\/share\/clash\/bypass/g" bypass-proxy
 }
