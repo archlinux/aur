@@ -1,8 +1,12 @@
 src-cache
+release*/
+builds
 src/
 pkg/
-buildlog*
 *log
 *.pkg.tar.*
 *.sig
 config.last
+oldconfig*
+*build.sh
+myconfig
