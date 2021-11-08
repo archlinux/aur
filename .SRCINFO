@@ -1,0 +1,19 @@
+pkgbase = minq_xvideos-git
+	pkgdesc = Watch xvideos in your terminal! Undesirable videos can be blocked!
+	pkgver = r13.d983a5287e2bb755d0410ce54b3ca2e7160aab46
+	pkgrel = 1
+	url = https://github.com/kuche1/minq_xvideos.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-beautifulsoup4
+	depends = viu
+	depends = mplayer
+	depends = yt-dlp
+	provides = minq_xvideos
+	source = git+https://github.com/kuche1/minq_xvideos.git
+	md5sums = SKIP
+
+pkgname = minq_xvideos-git
