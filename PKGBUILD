@@ -2,7 +2,7 @@
 HIDE_TRAY_ICON=0
 
 pkgname=kwin-bismuth-git
-pkgver=2.0.0.r5.g303fa6c
+pkgver=2.0.1.r1.ga005409
 pkgrel=1
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('systemsettings')
 makedepends=('npm' 'cmake' 'ninja' 'extra-cmake-modules' 'kcoreaddons' 'kconfig' 'ki18n' 'kcmutils' 'kdeclarative')
 provides=("bismuth" "kwin-bismuth")
 conflicts=('bismuth')
-options=('!strip')
+options=('!emptydirs')
 
 source=(
     "bismuth::git+${url}"
@@ -48,9 +48,9 @@ build() {
 package() {
     cd "${srcdir}/bismuth"
 
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/" && cp -r "./LICENSES/"* "$_"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/" && cp -r "./LICENSES/"* "$_"
 
-    mkdir -p "${pkgdir}/usr/share/kwin/scripts/bismuth/" && cp -r "./build/kwinscript/"* "$_"
+    install -dm755 "${pkgdir}/usr/share/kwin/scripts/bismuth/" && cp -r "./build/kwinscript/"* "$_"
 
     DESTDIR="${pkgdir}" cmake --install "./build/kcm"
 }
