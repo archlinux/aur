@@ -26,7 +26,8 @@ install=
 changelog=
 source=("http://topcoder.com/contest/arena/ContestAppletProd7.2.jnlp"
           "topcoder_logo.png"
-          "topcoder-applet.desktop")
+          "topcoder-applet.desktop"
+          "exception.sites")
 noextract=()
 md5sums=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=()
@@ -37,8 +38,10 @@ desktopname="topcoder-applet.desktop"
 package() {
   mkdir -p $pkgdir/usr/bin/topcoder
   mkdir -p $pkgdir$HOME/.local/share/applications
+  mkdir -p $pkgdir$HOME/.java/deployment/security
   cp $programname $pkgdir/usr/bin/topcoder/$programname
   cp $logoname $pkgdir/usr/bin/topcoder/$logoname
   cp $desktopname $pkgdir/$HOME/.local/share/applications
+  cp exception.sites $pkgdir$HOME/.java/deployment/security
 }
 
