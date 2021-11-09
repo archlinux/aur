@@ -15,4 +15,3 @@ pkgbase = wine-gui-git
 	sha256sums = SKIP
 
 pkgname = wine-gui-git
-
