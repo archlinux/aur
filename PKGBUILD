@@ -4,7 +4,7 @@
 # Contributor: Jon Sturm <Jasturm002@aol.com>
 # Contributor: Scott Garrett <Wintervenom@archlinux.us>
 
-pkgname=tilp
+pkgname=tilp-xdg
 pkgver=1.18
 pkgrel=1
 pkgdesc="TI graphing calculator link/transfer program - with Support for the XDG Base Directory Specification"

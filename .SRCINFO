@@ -1,4 +1,4 @@
-pkgbase = tilp
+pkgbase = tilp-xdg
 	pkgdesc = TI graphing calculator link/transfer program - with Support for the XDG Base Directory Specification
 	pkgver = 1.18
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = tilp
 	md5sums = b678c0fade4b2daffc5662d7094b1544
 	md5sums = 59fdb64da7c1b123afb92ded69d25059
 
-pkgname = tilp
+pkgname = tilp-xdg
