@@ -35,8 +35,4 @@ package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
   bsdtar xvf "build/$_uuid.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
-
-  install -d "$pkgdir/usr/share/glib-2.0/schemas/"
-  ln -s "/usr/share/gnome-shell/extensions/$_uuid/$_schema" \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
 }
