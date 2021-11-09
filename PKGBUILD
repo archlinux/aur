@@ -1,35 +1,41 @@
 # Maintainer: Tobias Backer Dirks <omgitsaheadcrab@gmail.com>
+# Contributor: Ivan "Penter" <ivaiva1999ivaiva@gmail.com>
 
 _pkgname=cpr
 pkgname=$_pkgname-git
-_pkgauthor=whoshuu
-pkgver=1.5.1.r31.g9ee5777
+_pkgauthor=omgitsaheadcrab
+pkgver=1.6.2.r90.g08a811e
 pkgrel=1
-pkgdesc="C++ requests library by whoshuu"
-arch=('i686' 'x86_64')
-url="https://github.com/whoshuu/cpr"
-license=('MIT')
-depends=('curl')
-makedepends=('git' 'cmake')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+$url")
-md5sums=('SKIP')
+pkgdesc="C++ Requests: Curl for People"
+arch=("i686" "x86_64")
+url="https://github.com/libcpr/cpr"
+license=("MIT")
+depends=("curl")
+makedepends=("git" "cmake")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${pkgname}-${pkgver}::git+${url}")
+sha512sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare (){
-	cd "$srcdir/$_pkgname"
+prepare () {
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	cmake -DCPR_LIBRARY=/usr/lib CPR_INCLUDE_DIR=/usr/include -DINSECURE_CURL=ON -DBUILD_CPR_TESTS=OFF -DUSE_SYSTEM_CURL=ON .
-	make
 }
 
-package(){
-	cd "$srcdir/$_pkgname"
-	mkdir "$pkgdir/usr"
-	cp -R include "$pkgdir/usr"
-	cp -R lib "$pkgdir/usr"
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	mkdir -p "${pkgdir}/usr/lib"
+    mkdir -p "${pkgdir}/usr/include"
+	cp -r lib/libcpr* "${pkgdir}/usr/lib"
+	cp -r include/cpr "${pkgdir}/usr/include"
 }
