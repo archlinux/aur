@@ -1,6 +1,6 @@
 pkgbase = minq_stopwatch-git
 	pkgdesc = A terminal based timer that remembers where you left off
-	pkgver = r3.dafa82bbab96551c5e9c64dd000cc0d941965d80
+	pkgver = r16.68b01790288d166a7e108eb8812e78eea609f66f
 	pkgrel = 1
 	url = https://github.com/kuche1/minq_stopwatch.git
 	arch = x86_64
