@@ -1,0 +1,16 @@
+pkgbase = minq_nhentai-git
+	pkgdesc = Search for hentai in nhentai based on specified tags
+	pkgver = r15.0af06f627bbb7cfbc90313b2df459841ec94b5f0
+	pkgrel = 1
+	url = https://github.com/kuche1/minq_nhentai.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-beautifulsoup4
+	provides = minq_nhentai
+	source = git+https://github.com/kuche1/minq_nhentai.git
+	md5sums = SKIP
+
+pkgname = minq_nhentai-git
