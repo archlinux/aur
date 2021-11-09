@@ -122,6 +122,7 @@ prepare() {
   # custom function: https://github.com/FFmpeg/FFmpeg/commit/591b88e6787c4
   # https://crbug.com/1251779
   patch -Rp1 -i ../chromium-94-ffmpeg-roll.patch
+  patch -p1 -i ../xdg-basedir.patch
 
   # https://crbug.com/1207478
   patch -Np0 -i ../unexpire-accelerated-video-decode-flag.patch
@@ -150,7 +151,6 @@ prepare() {
   # Wayland/EGL regression (crbug #1071528 #1071550)
   patch -Np1 -i ../wayland-egl.patch
 
-  patch -Np1 -i ../xdg-basedir.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$pkgver-1"
