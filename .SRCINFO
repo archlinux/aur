@@ -1,0 +1,18 @@
+pkgbase = erlang-sdl
+	pkgdesc = SDL and OpenGL bindings for Erlang
+	pkgver = 1.3.1
+	pkgrel = 4
+	url = https://github.com/dgud/esdl/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = mesa-libgl
+	makedepends = rebar
+	depends = erlang
+	depends = glu
+	depends = libgl
+	depends = sdl
+	source = esdl::git+https://github.com/dgud/esdl/#commit=dbd8ce9228aa
+	md5sums = SKIP
+
+pkgname = erlang-sdl
