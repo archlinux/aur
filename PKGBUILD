@@ -1,9 +1,9 @@
-# Maintainer: Stuart Mumford <stuart@cadair.com>
+# Maintainer: Corentin Cadiou <contact@cphyc.me>
 pkgname=python-unyt
 _module_name=unyt
 pkgver=2.8.0
 pkgrel=1
-pkgdesc="A package for handling numpy arrays with units.."
+pkgdesc="A package for handling numpy arrays with units."
 arch=(any)
 url="https://pypi.org/project/unyt/"
 license=('BSD')
@@ -17,5 +17,3 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
