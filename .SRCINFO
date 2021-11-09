@@ -8,6 +8,8 @@ pkgbase = pytango-git
 	depends = python
 	depends = python-six>=1.10
 	depends = python-numpy>=1.1
+	depends = python-setuptools
+	depends = python-gevent
 	depends = boost-libs
 	depends = tango
 	source = git+https://gitlab.com/tango-controls/pytango
