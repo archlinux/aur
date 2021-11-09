@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Radarr/Radarr"
 license=('GPL3')
 options=('!strip' 'staticlibs')
-depends=('ffmpeg' 'sqlite')
+depends=('sqlite')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'
