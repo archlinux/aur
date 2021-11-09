@@ -1,0 +1,14 @@
+pkgbase = doctave
+	pkgdesc = A batteries-included developer documentation site generator
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://www.doctave.com
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = doctave-0.3.1.tar.gz::https://github.com/Doctave/doctave/archive/0.3.1.tar.gz
+	sha512sums = cc51436834c0adf30c4b9ef14f45be4d2505cc20162fb89874194d722a3e135a0fb449dc8005e09188c59c37a395e000cfad025c629c91abc8ac9d75492655b1
+	b2sums = 906301b9bbec973a26da98663d1d9f3f0d1941ad847ce65a0341f800a09a771dbdd7575d9195c1a74665b7ac5bcfbc0b34d8f207c6b35788d4a9c0d4e4303522
+
+pkgname = doctave
