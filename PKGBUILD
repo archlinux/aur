@@ -31,12 +31,6 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse HEAD)"
 }
 
-check() {
-	cd "${_pkgname}"
-	python3 --version
-	echo "========== ${_pkgname}"
-}
-
 package() {
 	cd "${_pkgname}"
 	mkdir -p "${pkgdir}/opt/${pkgname}"
