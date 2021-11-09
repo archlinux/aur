@@ -3,8 +3,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=pymacs-git
-pkgver=0.26.r24.g56acc1a
-pkgrel=2
+pkgver=0.26.r32.g9deea58
+pkgrel=1
 pkgdesc='Interface between Emacs Lisp and Python.'
 arch=('any')
 url='https://github.com/dgentry/Pymacs'
@@ -19,12 +19,12 @@ install=${pkgname%-git}.install
 
 pkgver() {
   cd Pymacs
-    git describe --tags | sed 's+-+.r+' | tr - . | cut -c2-
+  git describe --tags | sed 's+-+.r+' | tr - . | cut -c2-
 }  
 
 build() {
   cd Pymacs
-  make PYTHON=python2 PREFIX=/usr 
+  make PREFIX=/usr 
   emacs -batch -f batch-byte-compile pymacs.el
   python ./setup.py build 
 }

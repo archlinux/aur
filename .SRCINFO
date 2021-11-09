@@ -1,7 +1,7 @@
 pkgbase = pymacs-git
 	pkgdesc = Interface between Emacs Lisp and Python.
-	pkgver = 0.26.r24.g56acc1a
-	pkgrel = 2
+	pkgver = 0.26.r32.g9deea58
+	pkgrel = 1
 	url = https://github.com/dgentry/Pymacs
 	install = pymacs.install
 	arch = any
@@ -17,4 +17,3 @@ pkgbase = pymacs-git
 	sha256sums = SKIP
 
 pkgname = pymacs-git
-
