@@ -47,7 +47,7 @@ package() {
   install -d -m 755 "${pkgdir}/usr/lib/radarr/bin"
   cp -dpr --no-preserve=ownership "${srcdir}/Radarr/"* "${pkgdir}/usr/lib/radarr/bin"
   chmod -R a=,a+rX,u+w "${pkgdir}/usr/lib/radarr/bin"
-  chmod +x "${pkgdir}/usr/lib/radarr/bin/Radarr"
+  chmod +x "${pkgdir}/usr/lib/radarr/bin/Radarr" "${pkgdir}/usr/lib/radarr/bin/ffprobe"
 
   # Disable built in updater.
   install -D -m 644 "${srcdir}/package_info" "${pkgdir}/usr/lib/radarr"
