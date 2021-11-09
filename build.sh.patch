@@ -1,21 +1,12 @@
---- scripts/build.sh
-+++ scripts/build.sh
-@@ -16,4 +16,2 @@
+--- scripts/build.sh	2021-11-10 00:52:43.729567787 +0300
++++ scripts/build.sh	2021-11-10 00:51:39.550509564 +0300
+@@ -5,9 +5,6 @@
  
--echo "👮 Checking using TS Compiler..."
--npx tsc --noEmit --incremental
+ set -e
  
-@@ -36,13 +34,2 @@
- 
--echo "📦 Zipping KWin Script..."
--KWINPKG_NAME="bismuth.kwinscript"
+-echo "🏗️ Building Bismuth..."
 -
--# Temporary change directory for archive tools
--cd "$KWINSCRIPT_BUILDDIR"
--# Remove old packages
--rm -f "$KWINPKG_NAME"
--# Create new .kwinscript package
--zip -qr "$KWINPKG_NAME" ./contents/ ./metadata.desktop
--# Get back to the original directory
--cd - > /dev/null
+ cmake -S "." -B "build" -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+ cmake --build "build"
+-ln -sf "$PWD/build/compile_commands.json" "./compile_commands.json" # For LSP
  
