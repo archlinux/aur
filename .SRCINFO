@@ -1,0 +1,13 @@
+pkgbase = driftwood
+	pkgdesc = lookup whether a private key is used for things like TLS or as a GitHub SSH key
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/trufflesecurity/driftwood
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = driftwood-1.0.0.tar.gz::https://github.com/trufflesecurity/driftwood/archive/v1.0.0.tar.gz
+	sha256sums = 0de16944692454c9ff82bc1f3b74f24be94737fa0f21f4546ac31a3ecfb85a11
+
+pkgname = driftwood
