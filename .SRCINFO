@@ -3,7 +3,6 @@ pkgbase = gnome-gesture-improvements
 	pkgver = r77.e3a93aa
 	pkgrel = 1
 	url = https://github.com/harshadgavali/gnome-gesture-improvements
-	install = gnome-gesture-improvements.install
 	arch = any
 	license = GPL3
 	makedepends = git

@@ -1,6 +1,0 @@
-post_install() {
-  echo ""
-  echo "On X11, you also need to install gnome-x11-gesture-daemon:"
-  echo "pamac install --as-deps gnome-x11-gesture-daemon"
-  echo ""
-}
